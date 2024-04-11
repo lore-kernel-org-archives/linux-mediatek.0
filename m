@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76B59CD128A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Apr 2024 06:46:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8848FCD1297
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Apr 2024 06:46:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7PtuyMnLEnJbClrqcUx/f3P7mZzM7Esss6WXp/AR7vg=; b=zTaFjPnXAydsOju3VDe1LwE2E2
-	b4ctJMmIl0ZTHmSu3TMi1qVE8unh8wPCniyDntWSOXwIkXqYvb0C4L8XcNi22WRpz0MHn4Tcorfia
-	34cxEqIrNFPVMtkeAue0XARnxCR3VKBb9w747dhcANPNIpkxi/Wrj/oiy/jw+i8uxW4xJMsl9F9pU
-	59H/aIANHTSEXx3ps0X/u427In/RdVwfhyp/rpxk4WvoPoIo+5cyOlNnlIF5w4ALozmsTZx9JV1Hy
-	V3ohxlEGz2xbuTDTkZFAooYb2FEI43kGMVcBh2KHhVyMws0OisNG7Gu6UKPWuNxLYvpkF6s0bp+qS
-	/441MVyQ==;
+	bh=LCS07IwaqzoOawpCoYZUCEB1zC4VYUIyaLN6jLXb97A=; b=A5zTtj50ZxjoWpLC28MV6hpgWK
+	LlVTthesmfpUyCG16k6wAHX7+kXTnNgYGLJ1iv1qMojLan3UF1aBn7iRJcVjL88sA+AXUzS6j8RDf
+	yv0afx6VOPfHUoGYcrZk131gM5CmOMXDoRV9mmKAfgscLgRXBkG3MS78VC6ZrWwejY3bdgitm3SWw
+	6sVtbdV1q690FENWkFLuLdKJIry+DkM94V7Ww7QJy3Jm7P+u0fsNAnye3UInJQF8YLtK5ucGS0RPI
+	nIPTFfVpZSXF8fPHv7lxspUtTiE/EcjngKAXr6SB183GV8wzxpPjzDaa78xMt7PIRsq/Uwo42Z8H5
+	6fB9zxZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruoCt-0000000AedV-3fea;
-	Thu, 11 Apr 2024 06:46:47 +0000
+	id 1ruoD2-0000000Aejf-02IJ;
+	Thu, 11 Apr 2024 06:46:56 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruoCp-0000000AebQ-3mnG;
-	Thu, 11 Apr 2024 06:46:45 +0000
+	id 1ruoCu-0000000Aedc-1HlQ;
+	Thu, 11 Apr 2024 06:46:51 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id E2B2D61FAB;
+	by dfw.source.kernel.org (Postfix) with ESMTP id B9A3061FA7;
+	Thu, 11 Apr 2024 06:46:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 41C94C433C7;
 	Thu, 11 Apr 2024 06:46:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6958DC433B1;
-	Thu, 11 Apr 2024 06:46:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1712818001;
-	bh=gMnoez56bAZd7APZvMyA7WH/YLAHsyDnpeBOij4GxtQ=;
+	s=k20201202; t=1712818007;
+	bh=21qdbRrqdGeNpdC7/Fy478NKAKlmZ/ysh6qtF4JrPnA=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=h/ZL7ededP7US0kHeZuRlSNuSKFS3IwH2l5s24Ojuq6QpEHY2CdCHDI5Cwy+3jyWz
-	 ewWgz/a47Zp7cvDTnbKSl4BMrI/QWpnsCR3WqsqjR5xmV7gJWWaGrkD8yEv1iDeZue
-	 HdflEQKF5uo4r1oi59xgDR5n/ZdIAy6ygI56+1A2a2VmPtwLvMC7RNO/zVfgpipMOd
-	 juJ7kZn6prkM56sHUQQ7LtBKZV6+1fsoMhr4T3foqrxFTA6JQiFahjPgccmp17QvO+
-	 BdDtOz6TPGiOOABg8TJlgeiY1yXMoHHM2GBLwC/Ibl7YrbF8+TsXBKLqMZ2ZIKZeVr
-	 M5B2vBYEusCYg==
+	b=GvOlDXDpmb5BZ1h0Yrf9VuMwYVPczU8wY65hiLQeXdcjBEqxT/jpUq+18+Fl5BMMF
+	 bM2xJTDZCeV48U2HD8E2c8lj6hY7/sOWX6uNTG3GeDavIokun2bqbgtkViGJfRIsh5
+	 l8xFi5MOzEsTz3CkonWwL2WTKdfVBVVsCe2BKASEvyPfF+aDoT+NQbIhHabTgqiF2R
+	 Qt+Nndp4X1uwBcVTu5OcGX5SvxAwYAERA5vvInO+2FrIMjDPBMqX4qlbOoyqsyt96B
+	 JBKVfSJZjyrRRnxD831cRlYVtXNWM5kfq2ysZP8ojDYXszLp2XVkzKxguuoDExdzeH
+	 NjJCw3rd/s0Jg==
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Dong Aisheng <aisheng.dong@nxp.com>,
 	Fabio Estevam <festevam@gmail.com>,
@@ -63,17 +63,17 @@ To: Dong Aisheng <aisheng.dong@nxp.com>,
 	linux-mediatek@lists.infradead.org,
 	linux-arm-msm@vger.kernel.org
 Cc: Krzysztof Kozlowski <krzk@kernel.org>
-Subject: [PATCH v2 2/5] pinctrl: mediatek: fix module autoloading
-Date: Thu, 11 Apr 2024 08:46:11 +0200
-Message-Id: <20240411064614.7409-2-krzk@kernel.org>
+Subject: [PATCH v2 3/5] pinctrl: loongson2: fix module autoloading
+Date: Thu, 11 Apr 2024 08:46:12 +0200
+Message-Id: <20240411064614.7409-3-krzk@kernel.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240411064614.7409-1-krzk@kernel.org>
 References: <20240411064614.7409-1-krzk@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240410_234644_014158_F81A0610 
-X-CRM114-Status: GOOD (  11.08  )
+X-CRM114-CacheID: sfid-20240410_234648_463970_B1C0614B 
+X-CRM114-Status: GOOD (  10.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,34 +100,21 @@ Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
 Changes in v2:
 1. None
 ---
- drivers/pinctrl/mediatek/pinctrl-mt6765.c | 1 +
- drivers/pinctrl/mediatek/pinctrl-mt6779.c | 1 +
- 2 files changed, 2 insertions(+)
+ drivers/pinctrl/pinctrl-loongson2.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt6765.c b/drivers/pinctrl/mediatek/pinctrl-mt6765.c
-index f6ec41eb6e0c..72609cf74760 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt6765.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt6765.c
-@@ -1086,6 +1086,7 @@ static const struct of_device_id mt6765_pinctrl_of_match[] = {
- 	{ .compatible = "mediatek,mt6765-pinctrl", .data = &mt6765_data },
+diff --git a/drivers/pinctrl/pinctrl-loongson2.c b/drivers/pinctrl/pinctrl-loongson2.c
+index a72ffeca26fb..4d4fbeadafb7 100644
+--- a/drivers/pinctrl/pinctrl-loongson2.c
++++ b/drivers/pinctrl/pinctrl-loongson2.c
+@@ -286,6 +286,7 @@ static const struct of_device_id loongson2_pinctrl_dt_match[] = {
+ 	},
  	{ }
  };
-+MODULE_DEVICE_TABLE(of, mt6765_pinctrl_of_match);
++MODULE_DEVICE_TABLE(of, loongson2_pinctrl_dt_match);
  
- static struct platform_driver mt6765_pinctrl_driver = {
- 	.driver = {
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt6779.c b/drivers/pinctrl/mediatek/pinctrl-mt6779.c
-index 62d4f5ad6737..591905e4132a 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt6779.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt6779.c
-@@ -762,6 +762,7 @@ static const struct of_device_id mt6779_pinctrl_of_match[] = {
- 	{ .compatible = "mediatek,mt6779-pinctrl", .data = &mt6779_data },
- 	{ }
- };
-+MODULE_DEVICE_TABLE(of, mt6779_pinctrl_of_match);
- 
- static struct platform_driver mt6779_pinctrl_driver = {
- 	.driver = {
+ static struct platform_driver loongson2_pinctrl_driver = {
+ 	.probe		= loongson2_pinctrl_probe,
 -- 
 2.34.1
 
