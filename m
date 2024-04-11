@@ -4,107 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08B44C41513
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Apr 2024 14:00:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67E96C4345F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Apr 2024 14:00:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tbcCaa8DX09SvsMoBHm+TyAMbhm9qLZzeE5P/R6GO7M=; b=DX3XJuOKIt5DiOZdRUCzM4sCgO
-	hkr99WGxsY2OuqwGfkm5HmmRl4VqJNdDIviy/tsGylcDw3JYK5002aed11ndW11w7o5tJgtlmYVxT
-	uCLC7sGidNXTIH3fwbLtSGjISTnbgwT2H7oLoJLSGF9QAexfP9sbyBq8UtEE61wdAxXHTy1EgmE3R
-	RsgVo8EYy7fUmmbk9e2yEkSopgo3nK6h1S1UpSg/pR/wuDtn1Qr9K399ui3+pfgEgu8TCX+QO+TT2
-	KwLsN0bwgMM26EVT8ju6s2Iv/MN19LIyrG2TEKMU6C9ITpA5bduB84GZOK/X+ScIyHZdbuJg/e/z1
-	7YkZ6YiQ==;
+	bh=2GDpaKQ90WYO0sLid+cb+1t26hG02cHYGSR1vXVItmw=; b=QqhPUBF5Kf8+xVaUj6T/Q0yX+O
+	mJk7Sjh35XCaf0mWA73JOLe8uIWedIvX8v7Cy5j44Evc/DBJkkAtECwUnG5qSElxO2Kk0IQPA/jHv
+	QBa1oi3rQ1ru3UYcT6ZmAYpGTD8SBNvhppQbOEiQAkkOuMXjoaed7F+TmvZNLv2pIusl5GGxBp/Q7
+	kUMLQnGKI7TtrKuwz6Lh0+e/8k2l4e9Gey+K3ZjDekrioL6q+X9D60HBpw9vg6fAi1U+hL511gRcT
+	nlhTZ6zh5i9vI+jUdL7A+QmoUzDVcurtbyMYMx2KRF09jgq83uMdjCbzhJjZdHTJWQ6qdqEbnDJBq
+	T2UhBLOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruuZ0-0000000CAQJ-11uw;
-	Thu, 11 Apr 2024 13:34:02 +0000
-Received: from mail-oo1-xc2f.google.com ([2607:f8b0:4864:20::c2f])
+	id 1ruuz4-0000000CJrW-3jCe;
+	Thu, 11 Apr 2024 14:00:58 +0000
+Received: from mail-ed1-f41.google.com ([209.85.208.41])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruuYq-0000000CAL1-1d66;
-	Thu, 11 Apr 2024 13:33:54 +0000
-Received: by mail-oo1-xc2f.google.com with SMTP id 006d021491bc7-5aa1fe2ad39so3327575eaf.2;
-        Thu, 11 Apr 2024 06:33:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1712842429; x=1713447229; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=tbcCaa8DX09SvsMoBHm+TyAMbhm9qLZzeE5P/R6GO7M=;
-        b=V3Th/eL4tuNu3JoYuiYDtfFPmXBR4TCMyGragmw+ZbtePsDWMOYiX17BNw5UTcMZVD
-         iCznmGIWbcUuqqSWI+BzLe9E7IeuSAz8AoUBwPlAfhDTdjoIIwlf8IU2ztLsUUPn5f/S
-         MrN4Sq8fbnWiBos2D9pjCu5WdtcbMbkrpMCCSI8z4Q5Cky9j/6srRHkbthAnnbSL/bo3
-         2vmp3mLpc8nV2BzDci4FPgBvkarO/k7C9Orxt168welTA1gb/Cn1A5x9vp/FKKvGJpmu
-         pfkxf0d4/CGO4uNxy4CRN1CR/cYT53uzQceTvYFN16JH/jQQdcRvkeF/t37m0igCu7ya
-         yfvw==
+	id 1ruuyW-0000000CJN2-1JH7;
+	Thu, 11 Apr 2024 14:00:29 +0000
+Received: by mail-ed1-f41.google.com with SMTP id 4fb4d7f45d1cf-56bdf81706aso10446232a12.2;
+        Thu, 11 Apr 2024 07:00:22 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1712842429; x=1713447229;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+        d=1e100.net; s=20230601; t=1712844021; x=1713448821;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=tbcCaa8DX09SvsMoBHm+TyAMbhm9qLZzeE5P/R6GO7M=;
-        b=etbO9BCMMSgVBSDnlCXyfRFu5G6jSRhxf+PXvZMWWzjk+MrgxOUtHIOLOuSJ8cSJuP
-         I0WPXcKfDsZnc2FhVzgGpG8BSCm6WzlFuzZT6XBHOewajvSufxIsG3gFR3z1tOvMBDXY
-         o739MLo8+rrgQymI0FhIEFkHF/LYWsVc6ojbwbOkScEBq7SJwxymzlF7xAG94LsQY2Ie
-         dPkn0EkAdhXY2yHlx9E5dwEYYd8cP6HIF2mMI1JN+E1GOgYfkERNZPg6Ovki0cyC9RRl
-         hvMplXJbfNJmoiygg8M1wWF3WKjUbXaT5ycrDDGsUkWYhabAiXu1eTLBpJqphCW3QvD4
-         8Ewg==
-X-Forwarded-Encrypted: i=1; AJvYcCUxCihbKu5A0WDnrPZkVhT1fdzPYNF+M2CCAVc9qxXgecH/e1j1Ke3E1GUGsmb0wn3Lv+93AuDUN3+jI/3CXLxYGmTmUr/qu/wUC0UJhux0H15pZqroyc6mwtgttDqxamYpUdMuqNuT71SDXP5IJURPQP45YAyzzFaJp6QpZwPN8N1QbvqF821k25JUA/FYPCS6hHf/fKpTgLlJKH6r6wyMnBOhBsdCwWmvgfHl8rVP0m7s+PZ2qg9BIM9k4N/XPbkkfw==
-X-Gm-Message-State: AOJu0YwhY4C1b3pIi3qAjwoYS9LI5K8GVzyzuyLq3PuIlVNFnoa51/6K
-	XgZQXGq58qpn4GYpHRu0t2XezQwL0k/qDcUuEzcFPiH/pa8mf8u+4fTFYCYY4hzvICEln+BEH9s
-	WtPgEuTNijIEMLgJ9doKqqwm4D8M=
-X-Google-Smtp-Source: AGHT+IG525FFbMbsm9efSCrv2KXUqFOj0YhoVxH+Cl2iHx5VYUfIZRxfPUChUh11UqyLT5/SR86etSAM7EFlCNkHgHs=
-X-Received: by 2002:a05:6870:b411:b0:22e:e6:673 with SMTP id
- x17-20020a056870b41100b0022e00e60673mr5611022oap.37.1712842429406; Thu, 11
- Apr 2024 06:33:49 -0700 (PDT)
+        bh=2GDpaKQ90WYO0sLid+cb+1t26hG02cHYGSR1vXVItmw=;
+        b=MMc+w+Q6fDdce6MfPK2rutanCVsh3ROGILca9F6i9HGhKMs0KSNx6Q+FCJJVMAY03O
+         29T+g2gcHN7tlOvm5S54QxQR4Vs3AX/4KuWDzz31Xmixef4ne3Ja9zEeqQUeTn/xcUzW
+         1XcGDwFmAl47ma0uiQdvhdhqDdYRLVYA6hAMUWKKIzvU05EZ/rFN99G9ikNUcwlomwET
+         R0O50271Ny8Vub5FyL/6hsoTeNSJspeC3xPbH+FnNCNo2ISvbsU4NgEMQA0icPmPWFlC
+         lPKPyineE3Q5h8eeNpA+zZOx9sLoYx3R4VNiPPJI947uKpo7A1vSDSVqFM8q6+D26jpz
+         odFA==
+X-Forwarded-Encrypted: i=1; AJvYcCXWjqTXzdZLlUNjHjFOetRDkcPd/IO77LP/ezplxOfm/Eq8IGkwKphLYcEYHYQ+fyxdQpCBBgH6DQS7KxjcMD5QnAWRbDpDgJagAyh8AAVoysjF4giu1oRBXF1i6OI671zlg/PZA01rT2bmzbQXwdzGGieR41dlgn8CV061SZhKNZNeECb903F7939QOq6pK6HOM4qY6rNCbVwoFwDl2BBsQxK64T5G0hfhJdk+rCwRcw==
+X-Gm-Message-State: AOJu0YynY5l/znciKIyfZTbN3afTD4sJNyfnE54CKxY/P7tHupaMuOLM
+	Z1EuARb1VGfTvr44ClR8kwWGB+Z3tQNv1W2jShcn3KCDREkDV0Js
+X-Google-Smtp-Source: AGHT+IFQB7CTD5vVZVKJvYchQtBMUSZkhyhJfcrxmoTEhqiVxx5mJf3J2kvOSx8nJClwvF+BlqBtkw==
+X-Received: by 2002:a50:9fc1:0:b0:56d:f00c:2b13 with SMTP id c59-20020a509fc1000000b0056df00c2b13mr3238272edf.32.1712844021389;
+        Thu, 11 Apr 2024 07:00:21 -0700 (PDT)
+Received: from localhost (fwdproxy-lla-118.fbsv.net. [2a03:2880:30ff:76::face:b00c])
+        by smtp.gmail.com with ESMTPSA id i29-20020a0564020f1d00b0056fe8a3d7d3sm597256eda.8.2024.04.11.07.00.20
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 11 Apr 2024 07:00:21 -0700 (PDT)
+From: Breno Leitao <leitao@debian.org>
+To: aleksander.lobakin@intel.com,
+	kuba@kernel.org,
+	davem@davemloft.net,
+	pabeni@redhat.com,
+	edumazet@google.com,
+	elder@kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	nbd@nbd.name,
+	sean.wang@mediatek.com,
+	Mark-MC.Lee@mediatek.com,
+	lorenzo@kernel.org,
+	taras.chornyi@plvision.eu,
+	ath11k@lists.infradead.org,
+	ath10k@lists.infradead.org,
+	linux-wireless@vger.kernel.org,
+	geomatsi@gmail.com,
+	kvalo@kernel.org
+Cc: quic_jjohnson@quicinc.com,
+	leon@kernel.org,
+	dennis.dalessandro@cornelisnetworks.com,
+	linux-kernel@vger.kernel.org,
+	netdev@vger.kernel.org,
+	bpf@vger.kernel.org,
+	idosch@idosch.org,
+	leitao@debian.org,
+	Ido Schimmel <idosch@nvidia.com>,
+	Jiri Pirko <jiri@resnulli.us>,
+	Simon Horman <horms@kernel.org>,
+	Daniel Borkmann <daniel@iogearbox.net>,
+	Sebastian Andrzej Siewior <bigeasy@linutronix.de>
+Subject: [PATCH net-next v6 03/10] net: create a dummy net_device allocator
+Date: Thu, 11 Apr 2024 06:59:27 -0700
+Message-ID: <20240411135952.1096696-4-leitao@debian.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20240411135952.1096696-1-leitao@debian.org>
+References: <20240411135952.1096696-1-leitao@debian.org>
 MIME-Version: 1.0
-References: <CAMhs-H82Ymc=isxu6AX4_s1QnNpSSNt74--ED1j7JxpzE=eCRg@mail.gmail.com>
- <20240411123917.GA2180141@bhelgaas>
-In-Reply-To: <20240411123917.GA2180141@bhelgaas>
-From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-Date: Thu, 11 Apr 2024 15:33:37 +0200
-Message-ID: <CAMhs-H_imwV4__G4_pt7eWHdyLPe9_fttWJ2a3x1ESP=B6bb_w@mail.gmail.com>
-Subject: Re: [PATCH v2 2/4] dt-bindings: PCI: mediatek,mt7621: add missing
- child node reg
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Bjorn Helgaas <bhelgaas@google.com>, 
-	Lorenzo Pieralisi <lpieralisi@kernel.org>, =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>, 
-	Alyssa Rosenzweig <alyssa@rosenzweig.io>, Ray Jui <rjui@broadcom.com>, 
-	Scott Branden <sbranden@broadcom.com>, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
-	Florian Fainelli <florian.fainelli@broadcom.com>, Jim Quinlan <jim2101024@gmail.com>, 
-	Nicolas Saenz Julienne <nsaenz@kernel.org>, Will Deacon <will@kernel.org>, 
-	Linus Walleij <linus.walleij@linaro.org>, Srikanth Thokala <srikanth.thokala@intel.com>, 
-	Ryder Lee <ryder.lee@mediatek.com>, Jianjun Wang <jianjun.wang@mediatek.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Daire McNamara <daire.mcnamara@microchip.com>, Bjorn Andersson <andersson@kernel.org>, 
-	Konrad Dybcio <konrad.dybcio@linaro.org>, Marek Vasut <marek.vasut+renesas@gmail.com>, 
-	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Shawn Lin <shawn.lin@rock-chips.com>, 
-	Heiko Stuebner <heiko@sntech.de>, Jingoo Han <jingoohan1@gmail.com>, 
-	Gustavo Pimentel <gustavo.pimentel@synopsys.com>, 
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, 
-	Bharat Kumar Gogada <bharat.kumar.gogada@amd.com>, Michal Simek <michal.simek@amd.com>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Mark Kettenis <kettenis@openbsd.org>, 
-	Tom Joseph <tjoseph@cadence.com>, Ahmad Zainie <wan.ahmad.zainie.wan.mohamad@intel.com>, 
-	Jiaxun Yang <jiaxun.yang@flygoat.com>, Kishon Vijay Abraham I <kishon@kernel.org>, 
-	Thippeswamy Havalige <thippeswamy.havalige@amd.com>, linux-pci@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	asahi@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
-	linux-rpi-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240411_063352_641538_A64FE344 
-X-CRM114-Status: GOOD (  27.90  )
+X-CRM114-CacheID: sfid-20240411_070024_445806_B217D335 
+X-CRM114-Status: GOOD (  18.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,117 +107,134 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Apr 11, 2024 at 2:39=E2=80=AFPM Bjorn Helgaas <helgaas@kernel.org> =
-wrote:
->
-> On Thu, Apr 11, 2024 at 08:13:18AM +0200, Sergio Paracuellos wrote:
-> > On Thu, Apr 11, 2024 at 8:01=E2=80=AFAM Krzysztof Kozlowski
-> > <krzysztof.kozlowski@linaro.org> wrote:
-> > > On 10/04/2024 23:26, Bjorn Helgaas wrote:
-> > > > On Wed, Apr 10, 2024 at 08:15:19PM +0200, Krzysztof Kozlowski wrote=
-:
-> > > >> MT7621 PCI host bridge has children which apparently are also PCI =
-host
-> > > >> bridges, at least that's what the binding suggest.
-> > > >
-> > > > What does it even mean for a PCI host bridge to have a child that i=
-s
-> > > > also a PCI host bridge?
-> > > >
-> > > > Does this mean a driver binds to the "parent" host bridge, enumerat=
-es
-> > > > the PCI devices below it, and finds a "child" host bridge?
-> >
-> > Yes, that is exactly what you can see on enumeration.
-> >
-> > The following is a typical boot trace where all bridges has a device al=
-so below:
-> >
-> > mt7621-pci 1e140000.pcie: host bridge /pcie@1e140000 ranges:
-> > mt7621-pci 1e140000.pcie:   No bus range found for /pcie@1e140000, usin=
-g [bus 00-ff]
-> > mt7621-pci 1e140000.pcie:      MEM 0x0060000000..0x006fffffff -> 0x0060=
-000000
-> > mt7621-pci 1e140000.pcie:       IO 0x001e160000..0x001e16ffff -> 0x0000=
-000000
-> > mt7621-pci 1e140000.pcie: PCIE0 enabled
-> > mt7621-pci 1e140000.pcie: PCIE1 enabled
-> > mt7621-pci 1e140000.pcie: PCIE2 enabled
-> > mt7621-pci 1e140000.pcie: PCI host bridge to bus 0000:00
->
-> 1e140000.pcie is a host bridge.  It has some CPU-specific bus on the
-> upstream side, standard PCI (domain 0000, buses 00-ff) on the
-> downstream side.
->
-> > pci 0000:00:00.0: [0e8d:0801] type 01 class 0x060400
-> > pci 0000:00:01.0: [0e8d:0801] type 01 class 0x060400
-> > pci 0000:00:02.0: [0e8d:0801] type 01 class 0x060400
->
-> > pci 0000:01:00.0: [1b21:0611] type 00 class 0x010185
->
-> > pci 0000:00:00.0: PCI bridge to [bus 01-ff]
-> > pci 0000:00:00.0:   bridge window [io  0x0000-0x0fff]
-> > pci 0000:00:00.0:   bridge window [mem 0x00000000-0x000fffff]
-> > pci 0000:00:00.0:   bridge window [mem 0x00000000-0x000fffff pref]
->
-> 00:00.0 looks like a PCIe Root Port to bus 01.  This is not a host
-> bridge; it's just a standard PCI-to-PCI bridge with PCI on both the
-> upstream and downstream sides.
->
-> > pci 0000:02:00.0: [1b21:0611] type 00 class 0x010185
->
-> > pci 0000:00:01.0: PCI bridge to [bus 02-ff]
-> > pci 0000:00:01.0:   bridge window [io  0x0000-0x0fff]
-> > pci 0000:00:01.0:   bridge window [mem 0x00000000-0x000fffff]
-> > pci 0000:00:01.0:   bridge window [mem 0x00000000-0x000fffff pref]
->
-> 00:01.0 is another Root Port to bus 02.
->
-> > pci 0000:03:00.0: [1b21:0611] type 00 class 0x010185
->
-> > pci 0000:00:02.0: PCI bridge to [bus 03-ff]
-> > pci 0000:00:02.0:   bridge window [io  0x0000-0x0fff]
-> > pci 0000:00:02.0:   bridge window [mem 0x00000000-0x000fffff]
-> > pci 0000:00:02.0:   bridge window [mem 0x00000000-0x000fffff pref]
-> > pci_bus 0000:03: busn_res: [bus 03-ff] end is updated to 03
->
-> And 00:02.0 is a third Root Port to bus 03.
->
-> > pci 0000:00:00.0: PCI bridge to [bus 01]
-> > pci 0000:00:00.0:   bridge window [io  0x0000-0x0fff]
-> > pci 0000:00:00.0:   bridge window [mem 0x60000000-0x600fffff]
-> > pci 0000:00:00.0:   bridge window [mem 0x60100000-0x601fffff pref]
-> > pci 0000:00:01.0: PCI bridge to [bus 02]
-> > pci 0000:00:01.0:   bridge window [io  0x1000-0x1fff]
-> > pci 0000:00:01.0:   bridge window [mem 0x60200000-0x602fffff]
-> > pci 0000:00:01.0:   bridge window [mem 0x60300000-0x603fffff pref]
-> > pci 0000:00:02.0: PCI bridge to [bus 03]
-> > pci 0000:00:02.0:   bridge window [io  0x2000-0x2fff]
-> > pci 0000:00:02.0:   bridge window [mem 0x60400000-0x604fffff]
-> >
-> > > I think the question should be towards Mediatek folks. I don't know w=
-hat
-> > > this hardware is exactly, just looks like pci-pci-bridge. The driver
-> > > calls the children host bridges as "ports".
-> >
-> > You can see the topology here in my first driver submit cover letter
-> > message [0].
-> >
-> >  [0]: https://lore.kernel.org/all/CAMhs-H-BA+KzEwuDPzcmrDPdgJBFA2XdYTBv=
-T4R4MEOUB=3DWQ1g@mail.gmail.com/t/
->
-> Nothing unusual here, this looks like the standard PCIe topology.
->
-> What *might* be unusual is describing the Root Ports in DT.  Since
-> they are standard PCI devices, they shouldn't need DT description
-> unless there's some unusual power/clock/reset control or something
-> that is not discoverable via PCI enumeration.
+It is impossible to use init_dummy_netdev together with alloc_netdev()
+as the 'setup' argument.
 
-It looks like it is necessary since every port has its own
-configuration registers, phy, clock, reset and interrupt.
+This is because alloc_netdev() initializes some fields in the net_device
+structure, and later init_dummy_netdev() memzero them all. This causes
+some problems as reported here:
 
-Thanks,
-    Sergio Paracuellos
+	https://lore.kernel.org/all/20240322082336.49f110cc@kernel.org/
 
-> Bjorn
+Split the init_dummy_netdev() function in two. Create a new function called
+init_dummy_netdev_core() that does not memzero the net_device structure.
+Then have init_dummy_netdev() memzero-ing and calling
+init_dummy_netdev_core(), keeping the old behaviour.
+
+init_dummy_netdev_core() is the new function that could be called as an
+argument for alloc_netdev().
+
+Also, create a helper to allocate and initialize dummy net devices,
+leveraging init_dummy_netdev_core() as the setup argument. This function
+basically simplify the allocation of dummy devices, by allocating and
+initializing it. Freeing the device continue to be done through
+free_netdev()
+
+Suggested-by: Jakub Kicinski <kuba@kernel.org>
+Signed-off-by: Breno Leitao <leitao@debian.org>
+Reviewed-by: Ido Schimmel <idosch@nvidia.com>
+---
+ include/linux/netdevice.h |  3 +++
+ net/core/dev.c            | 54 ++++++++++++++++++++++++++-------------
+ 2 files changed, 39 insertions(+), 18 deletions(-)
+
+diff --git a/include/linux/netdevice.h b/include/linux/netdevice.h
+index d45f330d083d..f849e7d110ed 100644
+--- a/include/linux/netdevice.h
++++ b/include/linux/netdevice.h
+@@ -4519,6 +4519,9 @@ static inline void netif_addr_unlock_bh(struct net_device *dev)
+ 
+ void ether_setup(struct net_device *dev);
+ 
++/* Allocate dummy net_device */
++struct net_device *alloc_netdev_dummy(int sizeof_priv);
++
+ /* Support for loadable net-drivers */
+ struct net_device *alloc_netdev_mqs(int sizeof_priv, const char *name,
+ 				    unsigned char name_assign_type,
+diff --git a/net/core/dev.c b/net/core/dev.c
+index c74b42bc6888..417abfd12871 100644
+--- a/net/core/dev.c
++++ b/net/core/dev.c
+@@ -10414,25 +10414,12 @@ int register_netdevice(struct net_device *dev)
+ }
+ EXPORT_SYMBOL(register_netdevice);
+ 
+-/**
+- *	init_dummy_netdev	- init a dummy network device for NAPI
+- *	@dev: device to init
+- *
+- *	This takes a network device structure and initializes the minimum
+- *	amount of fields so it can be used to schedule NAPI polls without
+- *	registering a full blown interface. This is to be used by drivers
+- *	that need to tie several hardware interfaces to a single NAPI
+- *	poll scheduler due to HW limitations.
++/* Initialize the core of a dummy net device.
++ * This is useful if you are calling this function after alloc_netdev(),
++ * since it does not memset the net_device fields.
+  */
+-void init_dummy_netdev(struct net_device *dev)
++static void init_dummy_netdev_core(struct net_device *dev)
+ {
+-	/* Clear everything. Note we don't initialize spinlocks
+-	 * as they aren't supposed to be taken by any of the
+-	 * NAPI code and this dummy netdev is supposed to be
+-	 * only ever used for NAPI polls
+-	 */
+-	memset(dev, 0, sizeof(struct net_device));
+-
+ 	/* make sure we BUG if trying to hit standard
+ 	 * register/unregister code path
+ 	 */
+@@ -10453,8 +10440,28 @@ void init_dummy_netdev(struct net_device *dev)
+ 	 * its refcount.
+ 	 */
+ }
+-EXPORT_SYMBOL_GPL(init_dummy_netdev);
+ 
++/**
++ *	init_dummy_netdev	- init a dummy network device for NAPI
++ *	@dev: device to init
++ *
++ *	This takes a network device structure and initializes the minimum
++ *	amount of fields so it can be used to schedule NAPI polls without
++ *	registering a full blown interface. This is to be used by drivers
++ *	that need to tie several hardware interfaces to a single NAPI
++ *	poll scheduler due to HW limitations.
++ */
++void init_dummy_netdev(struct net_device *dev)
++{
++	/* Clear everything. Note we don't initialize spinlocks
++	 * as they aren't supposed to be taken by any of the
++	 * NAPI code and this dummy netdev is supposed to be
++	 * only ever used for NAPI polls
++	 */
++	memset(dev, 0, sizeof(struct net_device));
++	init_dummy_netdev_core(dev);
++}
++EXPORT_SYMBOL_GPL(init_dummy_netdev);
+ 
+ /**
+  *	register_netdev	- register a network device
+@@ -11074,6 +11081,17 @@ void free_netdev(struct net_device *dev)
+ }
+ EXPORT_SYMBOL(free_netdev);
+ 
++/**
++ * alloc_netdev_dummy - Allocate and initialize a dummy net device.
++ * @sizeof_priv: size of private data to allocate space for
++ */
++struct net_device *alloc_netdev_dummy(int sizeof_priv)
++{
++	return alloc_netdev(sizeof_priv, "dummy#", NET_NAME_UNKNOWN,
++			    init_dummy_netdev_core);
++}
++EXPORT_SYMBOL_GPL(alloc_netdev_dummy);
++
+ /**
+  *	synchronize_net -  Synchronize with packet receive processing
+  *
+-- 
+2.43.0
+
 
