@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2AAB6CD1299
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Apr 2024 11:44:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECDA4CD128A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Apr 2024 11:44:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=feOr02qXAQSfNpWxNEUet/Dbpqdv1uzVCQLWEeJJgck=; b=JM45eORYCwh2AOx6nRIKWEvb2G
-	Ne3bIqxgw8woqRnkHDo+5+o+3fZ0ECzRL0e3h1/7ibQWfmn5C9t9nY498YSto1CKSNqtHFRaCgQ0R
-	OkUPcbMZzjjZacLZu2KTSeaIb6abr06opl0jFcks62gtxHGs5LN4/wznuqfWDSZoiGwEjdKPZqLQb
-	SZQxTQHyn/9ioSxtwqjtkoOO7Jv+Y+gf3Jrz8esDDwvpYm496qLxwdUj6exBRqyePO+1WvRmxxOhV
-	CBEBc2pKvZEOA7ziE7ph9uruprDl4gHXDBCDM0DSFBJkJLDk5TEzliMXsDsSvOTKa7HJw/2+A/Qom
-	b9RkYrmA==;
+	bh=4rMKet2MHKM6qH4XuZknwYU1eWOy95F7uZcheFCEP1E=; b=Wu9V5FwmYa/GaclvrSHhv2nHLP
+	mkpAP5itQIJDXj1hkGfBlNHA8oMGZqhOuyKs2WVuYYu4PyPQ3NMDONJD/IW2ETIX154XpAQcZWC8T
+	Z/8enwelESeuwn3+35IB0anmEARS6zY+5KdPTUZZ0OKqjyd/+/iQUkZROv8P4lcWtqArmCVP7EF0l
+	61xqCccI6riolGFB6d3QzNf5e+vVeaqwrVI+r7Kc1/8gO3cWQzawwRF40Tg0HhWXskvwLOeJ8D54d
+	LY6MO8RByh7WCUTzrIx50oAe0buv3YqpMkVydCbS93OGy4uALvhhaENeGMTOga7WFlVi2hI7VSjCB
+	+P3694lg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rusqh-0000000BmYn-1772;
-	Thu, 11 Apr 2024 11:44:11 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rusqr-0000000BmgU-1det;
+	Thu, 11 Apr 2024 11:44:21 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruspx-0000000Bm0o-3dqD;
+	id 1ruspy-0000000Bm0a-0BJA;
 	Thu, 11 Apr 2024 11:43:30 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1712835793;
-	bh=XK+I2rHX8gkIddpwg379tC6deWLfihQGpL9it+LQ4dA=;
+	s=mail; t=1712835791;
+	bh=mtHtsXrLALzqGVSNLxyK9tAZfpbHED2YLsLqlHv6qkE=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=gQwnAfHF0KS/oa6i2PPDzESXcAwD9eRMsGZUYtWIPXIg1KsDOslk2o2zgchV5v+2H
-	 j+ULGrUDmHGFcoCq8FCTgeC6pBwVo1At2zXU2g6nkt4k8930bRQ1KKlaW45TKZWdmQ
-	 ddZEztSEpPtmJAtPKnSNmJmvt+2e9wsgsAkPemBdJKQ0A0jWwsw0ic60ukWub9D6O9
-	 JYfHzWfUcrCKBQiuCYZ/kX+UPDnmFrs1vzC2GnKppMg2pCxPupGV402oFVtMoR79MS
-	 pyPscqiwAwif/AwglRt2DLwV0GiNShuq+5DW/RScwf+ggtrPZvHk436hqIHc4ctSAB
-	 oL/M5dDgDsp7g==
+	b=SBDjKEoLeJSByICvxlK6kzllOYSILJpwhl4ZaEm2KJtP3jP3wf5/ozfZZXfaEX6TV
+	 +IkerdfQsszv24/ZPKDYG1mFTyDFvdjdVcFDGBSY8PhapVdIjjZJzbNGFG3J3PCTbe
+	 +hx8bN8kUqXh6Rje6uI83K6oH1XgA/tqJSs5mUjStfafXxgLbT/+Dl/ElhceHBksa5
+	 MVZrNsNNBPvmJL1npnJ+hnOfmjLZV0PLSWpJjDNiQS2DxVD9CnbceijXGsalWxqNjB
+	 WELW8FXzc2wA+VGulzbj5mT+qsVMcqKHP/NKRuz0MEqNHZYLklETNFyv0pzPYUysPe
+	 dtgbGWqETWYPg==
 Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 909373782133;
-	Thu, 11 Apr 2024 11:43:12 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id C85B4378212C;
+	Thu, 11 Apr 2024 11:43:09 +0000 (UTC)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: linux-scsi@vger.kernel.org
 Cc: alim.akhtar@samsung.com,
@@ -64,18 +64,17 @@ Cc: alim.akhtar@samsung.com,
 	linux-kernel@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH v2 6/8] dt-bindings: ufs: mediatek,ufs: Document MT8195 compatible
-Date: Thu, 11 Apr 2024 13:42:58 +0200
-Message-ID: <20240411114300.169055-7-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2 4/8] scsi: ufs: ufs-mediatek: Avoid underscores in crypt clock names
+Date: Thu, 11 Apr 2024 13:42:56 +0200
+Message-ID: <20240411114300.169055-5-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.44.0
 In-Reply-To: <20240411114300.169055-1-angelogioacchino.delregno@collabora.com>
 References: <20240411114300.169055-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240411_044327_710552_934E0540 
-X-CRM114-Status: UNSURE (   7.37  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240411_044327_735916_23443091 
+X-CRM114-Status: GOOD (  10.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,26 +89,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the new mediatek,mt8195-ufshci string.
-This SoC's UFSHCI controller is compatible with MT8183.
+Change all of crypt_{mux,lp,perf} clock names to crypt-{mux,lp-perf}:
+retaining compatibility with the old names is ignored as there is no
+user of this driver declaring any of those clocks, and the binding
+also doesn't allow these ones at all.
 
+Fixes: 590b0d2372fe ("scsi: ufs-mediatek: Support performance mode for inline encryption engine")
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/ufs/host/ufs-mediatek.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml b/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
-index adcd13023866..e2c276da3f2c 100644
---- a/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
-+++ b/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
-@@ -22,6 +22,7 @@ properties:
-       - items:
-           - enum:
-               - mediatek,mt8192-ufshci
-+              - mediatek,mt8195-ufshci
-           - const: mediatek,mt8183-ufshci
+diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
+index 47f16e6720f4..5db6d27f75af 100644
+--- a/drivers/ufs/host/ufs-mediatek.c
++++ b/drivers/ufs/host/ufs-mediatek.c
+@@ -604,15 +604,15 @@ static int ufs_mtk_init_boost_crypt(struct ufs_hba *hba)
+ 		return -ENOMEM;
  
-   clocks:
+ 	cfg = host->crypt;
+-	ret = ufs_mtk_init_host_clk(hba, "crypt_mux", &cfg->clk_crypt_mux);
++	ret = ufs_mtk_init_host_clk(hba, "crypt-mux", &cfg->clk_crypt_mux);
+ 	if (ret)
+ 		goto out;
+ 
+-	ret = ufs_mtk_init_host_clk(hba, "crypt_lp", &cfg->clk_crypt_lp);
++	ret = ufs_mtk_init_host_clk(hba, "crypt-lp", &cfg->clk_crypt_lp);
+ 	if (ret)
+ 		goto out;
+ 
+-	ret = ufs_mtk_init_host_clk(hba, "crypt_perf", &cfg->clk_crypt_perf);
++	ret = ufs_mtk_init_host_clk(hba, "crypt-perf", &cfg->clk_crypt_perf);
+ 	if (ret)
+ 		goto out;
+ 
 -- 
 2.44.0
 
