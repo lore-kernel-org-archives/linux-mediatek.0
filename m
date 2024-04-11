@@ -4,70 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D860C001CC
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Apr 2024 15:18:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4A3BC4345F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Apr 2024 15:23:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MLTgAXKzaHwcIzRK82QcqPB52joRnxwkvU9YrFjXJPY=; b=L0Z+8r1cey6Ib2gUb77H0wdafl
-	68FwHuflRSxCulK62QC4geCkfTQeMGc69EXC9y886OEB0KBPL+p2ew9JqmU65/geJ+8VYqteB/qSW
-	/tna39fUBV3S8vhhIxTYmAepHsACL/xfL55lxrH4pBVDHva3kB9P2K8b6Nsaev05z4v92hPSnnwF9
-	p86xTnJY2z4+UjOEoUulVpSZnQSX7EGfX6YuV3lRGtOMlJPlSJlCXiiW8cbIIroFUSlQxrHajVoO0
-	o9cHjqgiLh9sYyugeZ7WzcH9IvpUCqg4V01lJn9Yl8RQO8VOFtL+EtC1+wRa7Uzi08XLs165z5yKQ
-	TjqUrA8Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6PngETkAThC6ND/4r6BZ66+N0dqCyyHogUD7zS5SWgo=; b=zAojwyPKHEdt2OWQfWRRYjUA6F
+	m1eQjSU1b7v44gMXwlQFjDcCjSj/VTNOeHFxr6Ag9m05A0Lv66h7y+55C8mpFmLPgHIEmUe2WXuwt
+	jRq1327HnA5YzGj6MPDMGyjCMkuvFZTfd9aHR4akWMzy+VDhgAzOn9ItB8ImVNhznEGzA5C7bEmN+
+	3+g7uVVP/fDN9wZ5IqoCrS8HwV6DPEzcpiy/HSV6xpXv2OLsCpCIymDoDp6AlQdWXylIFTWTZs3gN
+	geMP73Bc67LjCqKpmb5qiEmVWgGskpyL3LRWwrMgk2eyBQpot/FjF/Ny++Tv6WqrxivUi7nq3ssJe
+	IMFHy+Lg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruwCS-0000000ChrI-0h1N;
-	Thu, 11 Apr 2024 15:18:52 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1ruwH9-0000000Cig4-0lgj;
+	Thu, 11 Apr 2024 15:23:43 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruwCO-0000000Chps-0UbI;
-	Thu, 11 Apr 2024 15:18:49 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 08A4161D8E;
-	Thu, 11 Apr 2024 15:18:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DAC9AC072AA;
-	Thu, 11 Apr 2024 15:18:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1712848726;
-	bh=IVfpujiqFE7Wz//nwMyDR2FjbxTDeZ4CZN8xF6MI70w=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=R1tuCVeNUKpp6zEOSjIfgsnalqciR99+p5fDV76dBQnfwf1wpZNmhunVF9ebrmXDV
-	 5BMi57E1CkD4/YwFU2mwLj79o4lqqc9JLfTlwcVYieNh6CstJ+EYirLZi4f5B934Iu
-	 V2ci9VAl1j7ceZzaZsDvZA7P/x75QZvcvTNpCcM1DxSFq94oiO9SPGzy2O7X0TfxE2
-	 y84pB2PRT6PO6K5CNy2ZUId0v53FSOlbYYCIjr6mzXawZ/BNa8ItiVnVuqL0i9aIeS
-	 bAWfr0kXIhTQq+YPRlVcJihJvg4hLoKrz1GQRGj/9SpDmIu2fGYRH9XAdUnZVkBOXj
-	 VuoDEOZ9EW8xw==
-Date: Thu, 11 Apr 2024 16:18:40 +0100
-From: Conor Dooley <conor@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-scsi@vger.kernel.org, alim.akhtar@samsung.com,
-	avri.altman@wdc.com, bvanassche@acm.org, robh@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
-	peter.wang@mediatek.com, chu.stanley@gmail.com, jejb@linux.ibm.com,
-	martin.petersen@oracle.com, lgirdwood@gmail.com, broonie@kernel.org,
-	matthias.bgg@gmail.com, stanley.chu@mediatek.com,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
+	id 1ruwH5-0000000CifD-0hdY;
+	Thu, 11 Apr 2024 15:23:40 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1712849017;
+	bh=Izm5X0JHoxEV2++y1yn48NkTsf5UKs+w87DaG8fikmY=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=ori8kAhpjW95rzthQLl+EWqvlslOBuNBZGGCvI7aPQKBOndnzaByi/IbYumY+3GLz
+	 d1QVR7lOi09WnHCCCF9r6ECF8dr/7rki3kJAocAoFWvgtIi5jpJNPdu79SkNJesgBn
+	 qFMH4tMot6p2c4RdTeCEfMBjuLH5Pv1FdXiP37O5fu0JuL4FyaBfUMMgm+ziGllV8U
+	 FXuxPlw3Wm3OBgG38+uNLpwc+p8UX62DpRU8QJ/HFBX5okjxbfx0JNjfpTK1Cj0QpE
+	 BmWuh8yiSXLfkVNYncoChY3yKop9z3Dc2qRg1I5fRZzD58VuprZFWiO9r/3NHJ63xV
+	 wGYku57T8cSCw==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 46D783780C13;
+	Thu, 11 Apr 2024 15:23:36 +0000 (UTC)
+Message-ID: <229eeabc-7e70-4b09-997f-356e85e748dc@collabora.com>
+Date: Thu, 11 Apr 2024 17:23:35 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v2 7/8] dt-bindings: ufs: mediatek,ufs: Document
  additional clocks
-Message-ID: <20240411-curvy-satirical-8c50cf79d703@spud>
+To: Conor Dooley <conor@kernel.org>
+Cc: linux-scsi@vger.kernel.org, alim.akhtar@samsung.com, avri.altman@wdc.com,
+ bvanassche@acm.org, robh@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ conor+dt@kernel.org, peter.wang@mediatek.com, chu.stanley@gmail.com,
+ jejb@linux.ibm.com, martin.petersen@oracle.com, lgirdwood@gmail.com,
+ broonie@kernel.org, matthias.bgg@gmail.com, stanley.chu@mediatek.com,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 References: <20240411114300.169055-1-angelogioacchino.delregno@collabora.com>
  <20240411114300.169055-8-angelogioacchino.delregno@collabora.com>
  <20240411-filth-trekker-8a8c185d589b@spud>
  <f7fcbae7-fd54-4ad5-8dc6-4deb80088b79@collabora.com>
-MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="BPJ3krEP7ZWCC7l0"
-Content-Disposition: inline
-In-Reply-To: <f7fcbae7-fd54-4ad5-8dc6-4deb80088b79@collabora.com>
+ <20240411-curvy-satirical-8c50cf79d703@spud>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20240411-curvy-satirical-8c50cf79d703@spud>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240411_081848_269120_865BC701 
-X-CRM114-Status: GOOD (  25.04  )
+X-CRM114-CacheID: sfid-20240411_082339_383436_9BE5A603 
+X-CRM114-Status: GOOD (  18.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,100 +84,85 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Il 11/04/24 17:18, Conor Dooley ha scritto:
+> On Thu, Apr 11, 2024 at 05:14:34PM +0200, AngeloGioacchino Del Regno wrote:
+>> Il 11/04/24 17:10, Conor Dooley ha scritto:
+>>> On Thu, Apr 11, 2024 at 01:42:59PM +0200, AngeloGioacchino Del Regno wrote:
+>>>> Add additional clocks, used on all MediaTek SoCs' UFSHCI controllers:
+>>>
+>>> I appreciate being told they're on all, rather than it being unsaid and
+>>> having to ask.
+>>>
+>>
+>> You're welcome :-)
+>>
+>>>> some of these clocks are optional and used only for scaling purposes
+>>>> to save power, or to improve performance in the case of the crypt
+>>>> clocks.
+>>>>
+>>>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>>>> ---
+>>>>    .../devicetree/bindings/ufs/mediatek,ufs.yaml      | 14 +++++++++++++-
+>>>>    1 file changed, 13 insertions(+), 1 deletion(-)
+>>>>
+>>>> diff --git a/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml b/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
+>>>> index e2c276da3f2c..21b038db100c 100644
+>>>> --- a/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
+>>>> +++ b/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
+>>>> @@ -26,11 +26,23 @@ properties:
+>>>>              - const: mediatek,mt8183-ufshci
+>>>>      clocks:
+>>>> -    maxItems: 1
+>>>> +    minItems: 1
+>>>
+>>> Could you add an itemised list to the clocks property please?
+>>>
+>>
+>> Not really... Honestly, I'm not confident that the description will be 100%
+>> correct for all of them... can we do that at a later time, when I will be
+>> really that much confident in writing down a proper description for each
+>> of them?
+>>
+>> The only thing that I'm really sure of is exactly what I wrote in this commit,
+>> nothing less, nothing more... for now :')
+> 
+> fwiw, my motivation here was a better explanation for what "ufs" means
+> as a clock. When the block has some "ufs" clock and a "axi" clock it's
+> kinda clear what they do, but with 7 ufs clocks now, it's not really
+> clear what the bare "ufs" one actually does.
+> 
+> If you can't provide an itemised list, please set maxitems.
+>   
 
---BPJ3krEP7ZWCC7l0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Not exactly right now, as I said. I will set maxItems instead.
 
-On Thu, Apr 11, 2024 at 05:14:34PM +0200, AngeloGioacchino Del Regno wrote:
-> Il 11/04/24 17:10, Conor Dooley ha scritto:
-> > On Thu, Apr 11, 2024 at 01:42:59PM +0200, AngeloGioacchino Del Regno wr=
-ote:
-> > > Add additional clocks, used on all MediaTek SoCs' UFSHCI controllers:
-> >=20
-> > I appreciate being told they're on all, rather than it being unsaid and
-> > having to ask.
-> >=20
->=20
-> You're welcome :-)
->=20
-> > > some of these clocks are optional and used only for scaling purposes
-> > > to save power, or to improve performance in the case of the crypt
-> > > clocks.
-> > >=20
-> > > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@=
-collabora.com>
-> > > ---
-> > >   .../devicetree/bindings/ufs/mediatek,ufs.yaml      | 14 +++++++++++=
-++-
-> > >   1 file changed, 13 insertions(+), 1 deletion(-)
-> > >=20
-> > > diff --git a/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml =
-b/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
-> > > index e2c276da3f2c..21b038db100c 100644
-> > > --- a/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
-> > > +++ b/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
-> > > @@ -26,11 +26,23 @@ properties:
-> > >             - const: mediatek,mt8183-ufshci
-> > >     clocks:
-> > > -    maxItems: 1
-> > > +    minItems: 1
-> >=20
-> > Could you add an itemised list to the clocks property please?
-> >=20
->=20
-> Not really... Honestly, I'm not confident that the description will be 10=
-0%
-> correct for all of them... can we do that at a later time, when I will be
-> really that much confident in writing down a proper description for each
-> of them?
->=20
-> The only thing that I'm really sure of is exactly what I wrote in this co=
-mmit,
-> nothing less, nothing more... for now :')
+By the way, "ufs" == "core", I didn't want to rename that one to avoid
+breaking changes, of course.
 
-fwiw, my motivation here was a better explanation for what "ufs" means
-as a clock. When the block has some "ufs" clock and a "axi" clock it's
-kinda clear what they do, but with 7 ufs clocks now, it's not really
-clear what the bare "ufs" one actually does.
 
-If you can't provide an itemised list, please set maxitems.
-=20
-> > >     clock-names:
-> > > +    minItems: 1
-> > >       items:
-> > >         - const: ufs
-> > > +      - const: ufs-aes
-> >=20
-> >=20
-> > > +      - const: ufs-tick
-> > > +      - const: unipro-sys
-> > > +      - const: unipro-tick
-> > > +      - const: ufs-sap
-> > > +      - const: ufs-tx-symbol
-> > > +      - const: ufs-rx-symbol
-> > > +      - const: ufs-mem
-> > > +      - const: crypt-mux
-> > > +      - const: crypt-lp
-> > > +      - const: crypt-perf
-> > >     phys:
-> > >       maxItems: 1
-> > > --=20
-> > > 2.44.0
-> > >=20
->=20
+>>>>      clock-names:
+>>>> +    minItems: 1
+>>>>        items:
+>>>>          - const: ufs
+>>>> +      - const: ufs-aes
+>>>
+>>>
+>>>> +      - const: ufs-tick
+>>>> +      - const: unipro-sys
+>>>> +      - const: unipro-tick
+>>>> +      - const: ufs-sap
+>>>> +      - const: ufs-tx-symbol
+>>>> +      - const: ufs-rx-symbol
+>>>> +      - const: ufs-mem
+>>>> +      - const: crypt-mux
+>>>> +      - const: crypt-lp
+>>>> +      - const: crypt-perf
+>>>>      phys:
+>>>>        maxItems: 1
+>>>> -- 
+>>>> 2.44.0
+>>>>
+>>
 
---BPJ3krEP7ZWCC7l0
-Content-Type: application/pgp-signature; name="signature.asc"
 
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZhf/UAAKCRB4tDGHoIJi
-0jVLAQCdNb1Gih80RDqdXRY3kcs4MBVqtfkDT6i122nbuJOL1AEAx+wKLmQLY3RJ
-Ld/HWV+CNWWPYqHyLYE+D2RFn9PYlAo=
-=2ddv
------END PGP SIGNATURE-----
-
---BPJ3krEP7ZWCC7l0--
 
