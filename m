@@ -4,77 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26D20C4345F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Apr 2024 14:29:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F264C4345F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Apr 2024 14:48:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7n9sPVcJ4cwm7wLdynLPv6UEp0NysnuRVub+rz0c1rc=; b=wenPyb9JpnKYy88vGEc1TVVXXg
-	/3T76dtjS9XAy/wAEjlHISbYu8fi8kKG/Dw5QFa98Z9yMrzvmv8QOfNvvXYHhAJoT743geY9mhE1I
-	fwcIhrkNXIr0/bOeEz7JeCutuS8V7Nd1jCl/YKxNImqWZABDT+NhK7afagDllmKncb+vYnRdfBrRX
-	INVmUAS6h47lf0zdOeEUCXrYvcSDFAKLukEhYX8n2uC5+KxCTTM5XIPLJqZIsWAd7D/JsHKtzEn58
-	/oT1SZLv/6W2acnr1jdMiPBUNtAfwFzmUwwlWjsOrMZkuj6oxsDTebDRmBbDJtHXDZEH0i+B8LfiO
-	tolvhtBQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=UvneUqZfd27xdH7i7ElGM/qtZ3lKBc7X3RH0Dlr3png=; b=NdJYjXiOd020gvyvtuen3tdO8T
+	DdJefu6hXgpJoQDWzv0X3UROb7+5LL0HL1YCsyPNOPfc50872gr1sh7Bzp9w+pdtZWG6jDmLLrS8z
+	yJpqx1D3MK+FW71bTDhG7YEkyNb7UtINmmu/zZfmxZTRp7IK0YgYn7lDI7xdvEEXjSYe7a4jXsIVe
+	+h7p4lEofytFHlEgPGSBQqop9+XXRVAJ6UazKnzYRPL0K5J6Rjrj52mcYgUanwaz5izpYaDeymqtv
+	xbo8S0iCg5yCVxtCjNFPe6RK7ZNeCyQAQXzD/YIU/kBwxI33olwTZUFHLzVcafMVCbXe8w5a7e4a7
+	/js6pY5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruvQN-0000000CSMr-1u0U;
-	Thu, 11 Apr 2024 14:29:11 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1ruviq-0000000CYel-1ggl;
+	Thu, 11 Apr 2024 14:48:16 +0000
+Received: from mail-ed1-f47.google.com ([209.85.208.47])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruvQJ-0000000CSKv-1ih8;
-	Thu, 11 Apr 2024 14:29:08 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id B6075CE35A9;
-	Thu, 11 Apr 2024 14:29:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C86ADC4AF08;
-	Thu, 11 Apr 2024 14:29:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1712845744;
-	bh=/6/pHHNCDaJr4U1eB4i1Ub63noExMP9hU0/7JXz8Tj0=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=o/uY6WlZ9ZusFx/d0QGV7pqL3nqPlWFth84p3CC2B7Wzi083oQb+y2bzn0vSI1hf4
-	 MriX6liSPCjmfhdbi24tl/5vH1yJFj4QcejKXVLzhAsYJlbYUOhVI696/NJq8hcSTP
-	 TvenZV1IgBebPQSfK6/cO2whrfyVynwaabqpIdc//9OZab9GH5Pog7bhmBvlUs+14Y
-	 lsUuGgDEXeC+pv7pmqxdFed+cvwBc5Q7C+TD0KtQjlwO3W99/rLQwmsX9udkuFFJbS
-	 RpGnHAJS4qn3+GswMnRdugYUHNU2ncjvmlVHlQ1GeP0D5KQp81oyx5TnmvqJNkFRzA
-	 Gd/84fX+fIK0g==
-Received: by mail-lj1-f176.google.com with SMTP id 38308e7fff4ca-2d700beb60bso127219051fa.1;
-        Thu, 11 Apr 2024 07:29:04 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCU+d9mfi34U4vvCWp7RVKxr8+yu4ad4snlL20F7EoMEx8YYxsRX77uZSepyHXLrUMk1NEhdeheBzcf4XEuaRYayvtB2uAAUFjrLCkiGi3i7V2GTfccBJ9yvGzMbocV16f+UlQ9jpF8o3n52vMgC4fINiGPInwXV+yw=
-X-Gm-Message-State: AOJu0YzdAY4wux3WqmFH5R12EBH3k5kKcNTjZK4KZ6FIx41JhHMbvU1F
-	F4/H0qsTjuzOjxMz4Xijc4YTr4yTlAmv2TxVkqbMBF1vYotexdafVY8UwBO4T5v6ALi7WGMm+E/
-	XxnD6nwvK81mZoEC/8YQLom7NpQ==
-X-Google-Smtp-Source: AGHT+IHkxgk8HKIxXpgItwvxPouHfWy0GKfJySBa0JwtLQxB2FzUk/Bj/CMepI9EU70gf7zgbYKm98yjt5ElfnrOemA=
-X-Received: by 2002:a2e:9acb:0:b0:2d8:687d:b22 with SMTP id
- p11-20020a2e9acb000000b002d8687d0b22mr5503851ljj.20.1712845742968; Thu, 11
- Apr 2024 07:29:02 -0700 (PDT)
+	id 1ruugL-0000000CE8s-0vNJ;
+	Thu, 11 Apr 2024 13:41:48 +0000
+Received: by mail-ed1-f47.google.com with SMTP id 4fb4d7f45d1cf-56c5d05128dso8896230a12.0;
+        Thu, 11 Apr 2024 06:41:35 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1712842894; x=1713447694;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=UvneUqZfd27xdH7i7ElGM/qtZ3lKBc7X3RH0Dlr3png=;
+        b=aqD44Q0PKyJu4VvZkXghnfqftJAjtqmBkXKKK7pxdO2ISQLslZF/vo7QfHTHd3IHxJ
+         nLaxTC2r30tqLb0GJeHkuruigr1+Aq+mSfGz9ekTRRDK4wqnxIxTecOOHcfXbaI4QwbU
+         R07A52bIE5Z9vXfhHp4kwQfb5E0CJ/0u/JLDFD0O2jIQaOpKQzUUgRg24QL/4z0Zu/En
+         1fFxzsA8Xkqoe+3axj/ZHRRx7Tfd6dEFIQXPnTeHhMVTcF5v9QQXmJj4ABgo5wtAUXzU
+         rYgab2G2FuJVkzzHR5RebP4d1Qt3HsSW0Q/w6mJ5MPHT8KB9sNIThmAMG5ZfvVsAAnqj
+         Jmkg==
+X-Forwarded-Encrypted: i=1; AJvYcCUI91mMhmbxrhg3J8DBNgGjMPjtkLArE+SwPUC4TV2YsQvKcaK2NHRqUBeBKiz6or0SsoJ8N8ws65+0Tlik4PmWIpBeGmBxqh8pdWRzxeDlTnvSwFg8jFbrQWB6To7WngCq34Sr5DM6ActCvghP8FGVoOInNsomcXvuANdgxosEtyVB0Ka8gMbK4D2gcsbCvexB3RKuWNk8Nn/s5KDrXLexG90krIVa+fAoKwmtSgHThA==
+X-Gm-Message-State: AOJu0YyKpqk/Xni7i56oygRRvIYzgmTU+v/5Qk8eJ/n2d99YITREAw5d
+	4IxlSslyywqJuspH8DqJfnYqxDoJjJl2H4k6OXcTsGSimY3z7fDe
+X-Google-Smtp-Source: AGHT+IFVHCivSmrCJQ/y1EgrRPUwWuulRGSKey7Ag7Jr1OrzqAwr6UvPSa7kMM+1w1xBFvGGvQGbng==
+X-Received: by 2002:a50:8e15:0:b0:56f:e4f7:fbd9 with SMTP id 21-20020a508e15000000b0056fe4f7fbd9mr1606203edw.20.1712842894052;
+        Thu, 11 Apr 2024 06:41:34 -0700 (PDT)
+Received: from gmail.com (fwdproxy-lla-004.fbsv.net. [2a03:2880:30ff:4::face:b00c])
+        by smtp.gmail.com with ESMTPSA id j1-20020aa7de81000000b0056e62321eedsm706414edv.17.2024.04.11.06.41.32
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 11 Apr 2024 06:41:33 -0700 (PDT)
+Date: Thu, 11 Apr 2024 06:41:30 -0700
+From: Breno Leitao <leitao@debian.org>
+To: Jakub Kicinski <kuba@kernel.org>
+Cc: aleksander.lobakin@intel.com, davem@davemloft.net, pabeni@redhat.com,
+	edumazet@google.com, elder@kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, nbd@nbd.name,
+	sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
+	lorenzo@kernel.org, taras.chornyi@plvision.eu,
+	ath11k@lists.infradead.org, ath10k@lists.infradead.org,
+	linux-wireless@vger.kernel.org, geomatsi@gmail.com,
+	kvalo@kernel.org, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	quic_jjohnson@quicinc.com, leon@kernel.org,
+	dennis.dalessandro@cornelisnetworks.com,
+	linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
+	bpf@vger.kernel.org, idosch@idosch.org
+Subject: Re: [PATCH net-next v5 00/10] allocate dummy device dynamically
+Message-ID: <Zhfoim8HbQGlvbAC@gmail.com>
+References: <20240410131407.3897251-1-leitao@debian.org>
+ <20240411060926.308788bf@kernel.org>
 MIME-Version: 1.0
-References: <20240402202413.757283-1-robh@kernel.org> <171283980874.2354899.3662943965972729204.b4-ty@kernel.org>
-In-Reply-To: <171283980874.2354899.3662943965972729204.b4-ty@kernel.org>
-From: Rob Herring <robh@kernel.org>
-Date: Thu, 11 Apr 2024 09:28:49 -0500
-X-Gmail-Original-Message-ID: <CAL_JsqL5M0gvjBa7VvRm9B3kRpj8=c6f8k2MnG7LbA-jZstB8A@mail.gmail.com>
-Message-ID: <CAL_JsqL5M0gvjBa7VvRm9B3kRpj8=c6f8k2MnG7LbA-jZstB8A@mail.gmail.com>
-Subject: Re: (subset) [PATCH] dt-bindings: mfd: syscon: Add missing simple
- syscon compatibles
-To: Lee Jones <lee@kernel.org>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Andrew Lunn <andrew@lunn.ch>, Gregory Clement <gregory.clement@bootlin.com>, 
-	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Ray Jui <rjui@broadcom.com>, 
-	Scott Branden <sbranden@broadcom.com>, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240411060926.308788bf@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240411_072907_662489_3DF86591 
-X-CRM114-Status: GOOD (  11.98  )
+X-CRM114-CacheID: sfid-20240411_064137_608614_C1713D39 
+X-CRM114-Status: UNSURE (   9.26  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,31 +93,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Apr 11, 2024 at 7:50=E2=80=AFAM Lee Jones <lee@kernel.org> wrote:
->
-> On Tue, 02 Apr 2024 15:24:11 -0500, Rob Herring wrote:
-> > Add various "simple" syscon compatibles which were undocumented or
-> > still documented with old text bindings.
-> >
-> > apm,xgene-csw, apm,xgene-efuse, apm,xgene-mcb, apm,xgene-rb,
-> > fsl,ls1088a-reset, marvell,armada-3700-cpu-misc,
-> > mediatek,mt2712-pctl-a-syscfg, mediatek,mt6397-pctl-pmic-syscfg, and
-> > mediatek,mt8173-pctl-a-syscfg were all undocumented, but are in use
-> > already. Remove the old text binding docs for the others.
-> >
-> > [...]
->
-> Applied, thanks!
+On Thu, Apr 11, 2024 at 06:09:26AM -0700, Jakub Kicinski wrote:
+> On Wed, 10 Apr 2024 06:13:41 -0700 Breno Leitao wrote:
+> >   wifi: ath11k: allocate dummy net_device dynamically
+> 
+> Sorry Breno, I didn't notice earlier, patch 10 didn't make it
+> to the list. The series wasn't ingested by CI and tested because 
+> of this. Could you repost?
 
-Note that something is going haywire with b4 or you applied a subset
-of a single patch... I really wish b4 didn't change the subjects at
-all since Gmail is incapable of following standard threading.
+Thanks for the heads-up. I debugged it and it was my mistake, this is
+how I've sent it.
 
->
-> [1/1] dt-bindings: mfd: syscon: Add missing simple syscon compatibles
->       commit: 9f43ae67db2a3d85cf2b5eebc3b54c8891200b5c
->
-> --
-> Lee Jones [=E6=9D=8E=E7=90=BC=E6=96=AF]
->
+	git send-email patches/v5-000*
+
+I will repost.
 
