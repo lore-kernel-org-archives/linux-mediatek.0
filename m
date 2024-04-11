@@ -4,88 +4,169 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3519FCD1297
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Apr 2024 05:42:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A05BCD128A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Apr 2024 06:01:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=SxV6KgbdNWcpqKQkxd2HOEPbyuQhDemtmZp0jaWXqTI=; b=ybybIwFHkCDWL28uvz/YUDAsKe
-	UQWd0wCghvxj/WmAzBm8piYkSmDZwu0FQjyUq7cvMgs5F6/AdQ7Av7SB9EqzPC6wBQSMVuBsYeP1e
-	DYm0+GtsyjNhIiK0vRarHoo4KURdte89QKM0Qw4AVaMxrkbFHzL242JLYUDBJM9B1ArEZlUpFQggs
-	5boQ9PsA5tH8um/Z05Hv0i5wgUxWNNdKwidGzfLHyB+mbwSykt60g2NlptevIJXesI7NXkN3w2HEM
-	CJqNDKH38ZOXEEJjNyfMoAzRbPcx4N+lhBkm5X9aurahI1L0Vyp39ydTzBmhUJc6ReOM5PPUva4du
-	XgQwvnlA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=v8fmohO7T1++synaauLEpAb8emlhUfZcFIxEX439dfQ=; b=ag4JVayZYO0Mvg/DxVmNWDVtah
+	vO2cir+SYNB5Pf6FMAtQYLwlKxUoFegzplTfhEonWLYl0WPa2xVG/h5tvnlAjiZkut03z78Qpu6Ej
+	8Wb/UWoc+fm3Z0oarARfZMC2CfgTDaQtcqqPGd1cJTGim+ztJY8jJVJZR2qBQMmKQ21Uapn+KX/PQ
+	uhTJ2pUiX23DwfzyPIDmnALMBAMlU2l59WX0y9WBz/5fn25lq6y+ZZPh227V4u8sDi/is9bjk1+wd
+	W+v3fdLu2B+xwTN+JkGOJyEIACOz7M6GA1c431GENQCfNIVjtPmsOw0jUMS9ZrP9RmdIivS+I72VR
+	A4Uxc6cA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1runCX-0000000ATVL-3Zzy;
-	Thu, 11 Apr 2024 05:42:21 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1runVR-0000000AWHX-3aKY;
+	Thu, 11 Apr 2024 06:01:54 +0000
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1runCT-0000000ATSU-3XeP
+	id 1runVN-0000000AWEu-0Enj
 	for linux-mediatek@lists.infradead.org;
-	Thu, 11 Apr 2024 05:42:19 +0000
-X-UUID: 3daf8430f7c611eeac1957ae9f99f617-20240410
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=SxV6KgbdNWcpqKQkxd2HOEPbyuQhDemtmZp0jaWXqTI=;
-	b=Yvh+/1WMMedrptjf7aq70DYnoD5g/SDVZ7WlrNQ54al7GP+LPTf1URGP1YGJ2EozkitkQMtJBtlszMGgzzgiNrKqWl+r1d0Pib+SyLokLrEbcTXpW+stIjFeS3PZAsNQXA1w7ia9+oW1aMse7GBRTESGvEh1kLOxzn6+10e8p+E=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.37,REQID:6230efdf-15b5-4f98-9afc-1f35e12c1496,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:6f543d0,CLOUDID:45d7c7fa-ed05-4274-9204-014369d201e8,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 3daf8430f7c611eeac1957ae9f99f617-20240410
-Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw01.mediatek.com
-	(envelope-from <quan.zhou@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 778966272; Wed, 10 Apr 2024 22:42:10 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS14N2.mediatek.inc (172.21.101.76) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 11 Apr 2024 13:42:07 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 11 Apr 2024 13:42:06 +0800
-From: Quan Zhou <quan.zhou@mediatek.com>
-To: Quan Zhou <quan.zhou@mediatek.com>, Felix Fietkau <nbd@nbd.name>, "Lorenzo
- Bianconi" <lorenzo@kernel.org>
-CC: Sean Wang <sean.wang@mediatek.com>, Deren Wu <Deren.Wu@mediatek.com>,
-	Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
-	linux-wireless <linux-wireless@vger.kernel.org>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Shengxi Xu <shengxi.xu@mediatek.com>,
-	Hao Zhang <hao.zhang@mediatek.com>
-Subject: [PATCH v2] wifi: mt76: mt7921e: add LED control support
-Date: Thu, 11 Apr 2024 13:41:35 +0800
-Message-ID: <608cc2bb1c10c2f53a6bf26711bf49fe2c491e59.1712806947.git.quan.zhou@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+	Thu, 11 Apr 2024 06:01:50 +0000
+Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-41550858cabso51654805e9.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 10 Apr 2024 23:01:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1712815302; x=1713420102; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=v8fmohO7T1++synaauLEpAb8emlhUfZcFIxEX439dfQ=;
+        b=sBUYAgVZasmdh+VdIjbw8v2JsiU+P5QQrNESM5ZKS7wxkfVG6ZRftBzUosRU+5oy2K
+         cYUlARolyZKJmaSDgUAU4QTA2f/FO7xv3M9t0ZULGCIo/xdn1c6ee+72swmkDGx9Ts+T
+         29qZyBkgEFvWfFrz6+rKMNPTaKXsrXO8nSdJEVAtZW9f0nWEGIN+FueW8rw3LK4MKQj1
+         0PIphpk32DHQ/fkFqGGIOYiLSxXCv5qSllZ+srfwFTpsLwyd41hxg/gLPnneGa+Mkfpi
+         Yq2O7f/Ypj3GKG9Rmi7T8j6UzZNvYIdxhb6ot1o+siASF9F72O8xU2QHsu5Jo4UTsGhS
+         /J0g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1712815302; x=1713420102;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=v8fmohO7T1++synaauLEpAb8emlhUfZcFIxEX439dfQ=;
+        b=ZjqbNCoB2x1T1HgtwBbrvnRuL4MZd72f++zRhUF9irYa55HwbiLBuncdxpLftK9yXW
+         3eX25e14IndaizXw5kAigHTx+ZQRHp8gaY4Dvnb41l3u4Dz1UZqW6c2VlJ00Mgmyo3/a
+         vu0Tv2m2OeBVVBZZhd5EQtPYXhePWsZ/6PBMcc+VujjpXqBSWcWDcpRV4DhtIp3+5fD7
+         Knh8+J3+ynMknujjnIp6tUdTFxSfu0ge2YVAGULFm6oe6XPqRedJy+XPla/lF8sUS331
+         MkUYZJDbM4Iuv94OclE/N/aIU4yhj4ffAHgnlNTP6GlZZJq/OJLaQE7NOhZTnVHGFkQh
+         y0pQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWvgTCsfp0erDaeaCt8JoFM6mnecOsGutUZ7zCRSWk4+Qcosoz8nNTS+RbjWTvapFymwqvNvVESu0X8+XrCVwJkS+ZVX0GJqhL4q1SOZ4iM9cjQ
+X-Gm-Message-State: AOJu0YxdqiX6mxEPqiJ+GiyBS/Ix9zNt8P+y1rTMjav48F8YV0+Mc947
+	vaIv/A2rtGBR7trROyB6vUOYotWW1oeOezphKPAvDQQL7ezN+sf1olRe8xQaOoc=
+X-Google-Smtp-Source: AGHT+IExh/RwpZU2Xew7FQyFiljXtBGSrR2vUKJVXz5J8zfz2RaNPajH4w4YfMSAkgHDGGpC1LSCXg==
+X-Received: by 2002:a05:600c:46cd:b0:416:bed3:e537 with SMTP id q13-20020a05600c46cd00b00416bed3e537mr3400865wmo.38.1712815301511;
+        Wed, 10 Apr 2024 23:01:41 -0700 (PDT)
+Received: from [192.168.1.20] ([178.197.223.16])
+        by smtp.gmail.com with ESMTPSA id ay7-20020a05600c1e0700b00417d4f60692sm1151772wmb.44.2024.04.10.23.01.38
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 10 Apr 2024 23:01:40 -0700 (PDT)
+Message-ID: <458ce909-0616-487d-b4bd-42b58d059198@linaro.org>
+Date: Thu, 11 Apr 2024 08:01:37 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--5.172600-8.000000
-X-TMASE-MatchedRID: LfFKigXY8dyjnza2fEWZS1z+axQLnAVBP9lbOpiWOGaY/Ue6G7XIMkdL
-	WPsfsZfcR5KBY5usn0xiSVnIdboijzI0UzRdrW2opvwZ9GmdwDMraL2mh8ZVK/FJXtgF4GFLLiy
-	64RCveAbWSi0L5EUg4oDBTs5Ew35aqH7dGVt6/4kc9jA4mLo8uU8bishHzYP6VI7KaIl9Nhd8wI
-	mBQX2L/5MWaqBLFuhw4jsl8iMQTTG233Qz/szkZqwxbZnudyr7WjRJreaOWv5Vf6Cr7LfN72qMd
-	wbSsCOuXj+G1I2Cld9IynfAMy1qaw+19lUIN2z0ngIgpj8eDcAZ1CdBJOsoY8RB0bsfrpPIXzYx
-	eQR1Dvvfru9Z0GEiqIHaI3X2cVgglzyCCGBCKprLD+ckh/PNGe3nCdV0cOJX
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--5.172600-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 621C0CF8CDD7DC2E36FDE9DBD35A1918A4BD198626F6702484F135BE834E2CAF2000:8
-X-MTK: N
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 2/4] dt-bindings: PCI: mediatek,mt7621: add missing
+ child node reg
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: Bjorn Helgaas <bhelgaas@google.com>,
+ Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Hector Martin <marcan@marcan.st>,
+ Sven Peter <sven@svenpeter.dev>, Alyssa Rosenzweig <alyssa@rosenzweig.io>,
+ Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+ Broadcom internal kernel review list
+ <bcm-kernel-feedback-list@broadcom.com>,
+ Florian Fainelli <florian.fainelli@broadcom.com>,
+ Jim Quinlan <jim2101024@gmail.com>,
+ Nicolas Saenz Julienne <nsaenz@kernel.org>, Will Deacon <will@kernel.org>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ Srikanth Thokala <srikanth.thokala@intel.com>,
+ Ryder Lee <ryder.lee@mediatek.com>, Jianjun Wang
+ <jianjun.wang@mediatek.com>,
+ Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Daire McNamara <daire.mcnamara@microchip.com>,
+ Bjorn Andersson <andersson@kernel.org>,
+ Konrad Dybcio <konrad.dybcio@linaro.org>,
+ Marek Vasut <marek.vasut+renesas@gmail.com>,
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+ Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>,
+ Jingoo Han <jingoohan1@gmail.com>,
+ Gustavo Pimentel <gustavo.pimentel@synopsys.com>,
+ Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+ Bharat Kumar Gogada <bharat.kumar.gogada@amd.com>,
+ Michal Simek <michal.simek@amd.com>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Magnus Damm <magnus.damm@gmail.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>,
+ Mark Kettenis <kettenis@openbsd.org>, Tom Joseph <tjoseph@cadence.com>,
+ Ahmad Zainie <wan.ahmad.zainie.wan.mohamad@intel.com>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Kishon Vijay Abraham I <kishon@kernel.org>,
+ Thippeswamy Havalige <thippeswamy.havalige@amd.com>,
+ linux-pci@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, asahi@lists.linux.dev,
+ linux-arm-kernel@lists.infradead.org, linux-rpi-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
+References: <20240410212638.GA2159326@bhelgaas>
+Content-Language: en-US
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
+ 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
+ D2GYIS41Kv4Isx2dEFh+/Q==
+In-Reply-To: <20240410212638.GA2159326@bhelgaas>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240410_224217_935968_3FD6CD04 
-X-CRM114-Status: GOOD (  14.54  )
+X-CRM114-CacheID: sfid-20240410_230149_184288_6180ACDF 
+X-CRM114-Status: GOOD (  12.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,167 +181,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Hao Zhang <hao.zhang@mediatek.com>
+On 10/04/2024 23:26, Bjorn Helgaas wrote:
+> On Wed, Apr 10, 2024 at 08:15:19PM +0200, Krzysztof Kozlowski wrote:
+>> MT7621 PCI host bridge has children which apparently are also PCI host
+>> bridges, at least that's what the binding suggest.
+> 
+> What does it even mean for a PCI host bridge to have a child that is
+> also a PCI host bridge?
+> 
+> Does this mean a driver binds to the "parent" host bridge, enumerates
+> the PCI devices below it, and finds a "child" host bridge?
 
-Introduce wifi LED switch control, add flow to Control a wifi
-gpio pin based on the status of WIFI radio, if the pin is connected
-to an LED, the LED will indicate the status of the WiFi radio.
+I think the question should be towards Mediatek folks. I don't know what
+this hardware is exactly, just looks like pci-pci-bridge. The driver
+calls the children host bridges as "ports".
 
-Signed-off-by: Hao Zhang <hao.zhang@mediatek.com>
-Co-developed-by: Quan Zhou <quan.zhou@mediatek.com>
-Signed-off-by: Quan Zhou <quan.zhou@mediatek.com>
----
-v2:
- fix to avoid wake device when Hardware interface not pcie
----
- .../wireless/mediatek/mt76/mt76_connac_mcu.h  |  1 +
- .../net/wireless/mediatek/mt76/mt7921/main.c  | 27 ++++++++++++++++++-
- .../net/wireless/mediatek/mt76/mt7921/mcu.c   | 14 ++++++++++
- .../wireless/mediatek/mt76/mt7921/mt7921.h    |  5 ++++
- .../net/wireless/mediatek/mt76/mt7921/pci.c   |  8 +++++-
- 5 files changed, 53 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-index 836cc4d5b1d2..4c2de556dee1 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-@@ -1189,6 +1189,7 @@ enum {
- 	MCU_EXT_CMD_EFUSE_ACCESS = 0x01,
- 	MCU_EXT_CMD_RF_REG_ACCESS = 0x02,
- 	MCU_EXT_CMD_RF_TEST = 0x04,
-+	MCU_EXT_CMD_ID_RADIO_ON_OFF_CTRL = 0x05,
- 	MCU_EXT_CMD_PM_STATE_CTRL = 0x07,
- 	MCU_EXT_CMD_CHANNEL_SWITCH = 0x08,
- 	MCU_EXT_CMD_SET_TX_POWER_CTRL = 0x11,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-index ca36de34171b..ea6a113b7b36 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-@@ -242,6 +242,15 @@ int __mt7921_start(struct mt792x_phy *phy)
- 
- 	ieee80211_queue_delayed_work(mphy->hw, &mphy->mac_work,
- 				     MT792x_WATCHDOG_TIME);
-+	if (mt76_is_mmio(mphy->dev)) {
-+		err = mt7921_mcu_radio_led_ctrl(phy->dev, EXT_CMD_RADIO_LED_CTRL_ENABLE);
-+		if (err)
-+			return err;
-+
-+		err = mt7921_mcu_radio_led_ctrl(phy->dev, EXT_CMD_RADIO_ON_LED);
-+		if (err)
-+			return err;
-+	}
- 
- 	return 0;
- }
-@@ -259,6 +268,22 @@ static int mt7921_start(struct ieee80211_hw *hw)
- 	return err;
- }
- 
-+static void mt7921_stop(struct ieee80211_hw *hw)
-+{
-+	struct mt792x_dev *dev = mt792x_hw_dev(hw);
-+	int err = 0;
-+
-+	if (mt76_is_mmio(&dev->mt76)) {
-+		mt792x_mutex_acquire(dev);
-+		err = mt7921_mcu_radio_led_ctrl(dev, EXT_CMD_RADIO_OFF_LED);
-+		mt792x_mutex_release(dev);
-+		if (err)
-+			return;
-+	}
-+
-+	mt792x_stop(hw);
-+}
-+
- static int
- mt7921_add_interface(struct ieee80211_hw *hw, struct ieee80211_vif *vif)
- {
-@@ -1372,7 +1397,7 @@ static void mt7921_mgd_complete_tx(struct ieee80211_hw *hw,
- const struct ieee80211_ops mt7921_ops = {
- 	.tx = mt792x_tx,
- 	.start = mt7921_start,
--	.stop = mt792x_stop,
-+	.stop = mt7921_stop,
- 	.add_interface = mt7921_add_interface,
- 	.remove_interface = mt792x_remove_interface,
- 	.config = mt7921_config,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-index 8b4ce32a2cd1..2ebf0ffe78d5 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-@@ -606,6 +606,20 @@ int mt7921_run_firmware(struct mt792x_dev *dev)
- }
- EXPORT_SYMBOL_GPL(mt7921_run_firmware);
- 
-+int mt7921_mcu_radio_led_ctrl(struct mt792x_dev *dev, u8 value)
-+{
-+	struct {
-+		u8 ctrlid;
-+		u8 rsv[3];
-+	} __packed req = {
-+		.ctrlid = value,
-+	};
-+
-+	return mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD(ID_RADIO_ON_OFF_CTRL),
-+				&req, sizeof(req), false);
-+}
-+EXPORT_SYMBOL_GPL(mt7921_mcu_radio_led_ctrl);
-+
- int mt7921_mcu_set_tx(struct mt792x_dev *dev, struct ieee80211_vif *vif)
- {
- 	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-index 3016636d18c6..07023eb9e5b5 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-@@ -27,6 +27,10 @@
- #define MCU_UNI_EVENT_ROC  0x27
- #define MCU_UNI_EVENT_CLC  0x80
- 
-+#define EXT_CMD_RADIO_LED_CTRL_ENABLE   0x1
-+#define EXT_CMD_RADIO_ON_LED            0x2
-+#define EXT_CMD_RADIO_OFF_LED           0x3
-+
- enum {
- 	UNI_ROC_ACQUIRE,
- 	UNI_ROC_ABORT,
-@@ -196,6 +200,7 @@ int mt7921_mcu_fw_log_2_host(struct mt792x_dev *dev, u8 ctrl);
- void mt7921_mcu_rx_event(struct mt792x_dev *dev, struct sk_buff *skb);
- int mt7921_mcu_set_rxfilter(struct mt792x_dev *dev, u32 fif,
- 			    u8 bit_op, u32 bit_map);
-+int mt7921_mcu_radio_led_ctrl(struct mt792x_dev *dev, u8 value);
- 
- static inline u32
- mt7921_reg_map_l1(struct mt792x_dev *dev, u32 addr)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-index 0b69b225bc16..f768e9389ac6 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-@@ -427,6 +427,10 @@ static int mt7921_pci_suspend(struct device *device)
- 	wait_event_timeout(dev->wait,
- 			   !dev->regd_in_progress, 5 * HZ);
- 
-+	err = mt7921_mcu_radio_led_ctrl(dev, EXT_CMD_RADIO_OFF_LED);
-+	if (err < 0)
-+		goto restore_suspend;
-+
- 	err = mt76_connac_mcu_set_hif_suspend(mdev, true);
- 	if (err)
- 		goto restore_suspend;
-@@ -525,9 +529,11 @@ static int mt7921_pci_resume(struct device *device)
- 		mt76_connac_mcu_set_deep_sleep(&dev->mt76, false);
- 
- 	err = mt76_connac_mcu_set_hif_suspend(mdev, false);
-+	if (err < 0)
-+		goto failed;
- 
- 	mt7921_regd_update(dev);
--
-+	err = mt7921_mcu_radio_led_ctrl(dev, EXT_CMD_RADIO_ON_LED);
- failed:
- 	pm->suspended = false;
- 
--- 
-2.18.0
+Best regards,
+Krzysztof
 
 
