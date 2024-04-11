@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18A5FCD1284
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Apr 2024 08:32:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA64FCD1292
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Apr 2024 08:32:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=feOr02qXAQSfNpWxNEUet/Dbpqdv1uzVCQLWEeJJgck=; b=fykgBX04EwV8/0in3ieJbDcCxp
-	lvuGt6MMoeVSDlhg9RxCE9x9vSQA4xPQNwOCFYrXclmkpDopoGfCKGX6TndPBbEOnNDYV2OPPgTyF
-	6Glk4fMZ3ZPENc/tiFsrBjSKVqc76ecZkyBUyPGJ7ym5dtYDpskFv7Hw6fpKWl5u4pqNwi08DnbiN
-	BT25Nv8+x9iascLn8TkV8uRjdbIdq6rXKm9xNJSV5fTA1BUf2j8Pw7qwil+WsAFMGrNoAEV92MUix
-	TbFv5GvqcR8cHxo9TCkYJKwCh+6ISEpH49BPf3fJP0POHwh0jPfzPt5dm0UaroU6Plsyr9KGlHi5f
-	kgPhMbhw==;
+	bh=64IlTk+dQfzrJvgY4MluQj660M0DoxGmf/WuQTDZoS8=; b=Zfv3tv0VHpCka66gf/tkbFMXe+
+	y+QBX0m0nMcWLJbaBV6XU+oP3tcfoX/xpUccQpIn61H1TamB4nAnzdQSddUPwnAaoeCMkCL+GSlA0
+	BpjCUQDSt1YgQ35sme52QfK8BodSxMSQgTfneOCnb7JEF2OoXgsTk6jigH53lyyYpEPj1hnQK1kBn
+	ZW9c9R5G1Z8sUW2GQoHlHBg+dLAif8agIRzi3jjgcwyRu/FvV3Ff2tuHiSSdECwqf6uhwLdDN49gd
+	RJ+onHl2cCi5MLJuKqzlLIALypiLVezC+CkK53K5Qk0fu5GbiJrcBqFSYY13XFJ7QqcobPKHFjd79
+	SEUmO4iA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rupr6-0000000B62C-1Ogy;
-	Thu, 11 Apr 2024 08:32:24 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1ruprD-0000000B69A-2BqV;
+	Thu, 11 Apr 2024 08:32:31 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rupql-0000000B5jr-32AA;
-	Thu, 11 Apr 2024 08:32:05 +0000
+	id 1rupqn-0000000B5kj-0D7q;
+	Thu, 11 Apr 2024 08:32:07 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1712824322;
-	bh=XK+I2rHX8gkIddpwg379tC6deWLfihQGpL9it+LQ4dA=;
+	s=mail; t=1712824323;
+	bh=XK0zxw+V4wjxT5QG5ieb50qefYNILSY0qmHMtFLbqcI=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=JkCmh2eeCBX4DHpZmQp29q2isI1K3aQlJh5Cj03+1k9HcQ+ECwwStpNJ7wger2CtD
-	 w5CdrZ5gOg8buDDe/7hXusQ/Q4Z6m/aPND7t0ozlgds0X2DNu+NUHfyNOnEa6qhqbw
-	 /2cVEWaNbt0PWsUkWI+EdrT+k1VkXppQO59weIRZSX5uDaTOxuBbYmKTfH11Zqvzhs
-	 LK0P3OWFxkduW1O9GWr8nzLkqqIDWrdoQC4zOKbdc0TN7eeVND6goqRUSfg63xLly3
-	 Lmw7L30sqVoSbLoCn0MdjKvyBedpYrnMcvWRkpcwvy8xXqlcr2NbNK04oX+EZrZPu7
-	 /rI4dslVa7T7A==
+	b=LAFh3vc4lZpN/yQ0ihuB1SgL/ZUEWS0qCuhvzfxsPXTP1sbaxdJnovVkvq1DAtAZA
+	 +4FP1cAO2DL+XPgUy1jzRA3wW58cOSvaYrSuT4fl9m0iMcWUq4tZcGXaKXdFJ6gJ2B
+	 eZasrZfb4toePj7m0dFNWWmsPdgKkspV9sK84MmKIYTM9RvqdjNqmluXHf+e6mGaCS
+	 wUkMH4risTJOShZsB870kwBn6ZQvBuFecgcDV6Z2lKMNjFW/2olfkFzhM5WhksJuYS
+	 OgFCqqRmqfgcpGqgw9+uNDV0gQ/DdPOJPUcnfQpz/+Lt/pGdwHpAFi0k7SYfpL9gBv
+	 BArYlzDJz63JQ==
 Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 309B43782135;
-	Thu, 11 Apr 2024 08:32:01 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 99C193782137;
+	Thu, 11 Apr 2024 08:32:02 +0000 (UTC)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: linux-scsi@vger.kernel.org
 Cc: alim.akhtar@samsung.com,
@@ -65,17 +65,17 @@ Cc: alim.akhtar@samsung.com,
 	linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
 	kernel@collabora.com
-Subject: [PATCH v1 6/8] dt-bindings: ufs: mediatek,ufs: Document MT8195 compatible
-Date: Thu, 11 Apr 2024 10:31:47 +0200
-Message-ID: <20240411083149.78537-7-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v1 7/8] dt-bindings: ufs: mediatek,ufs: Document additional clocks
+Date: Thu, 11 Apr 2024 10:31:48 +0200
+Message-ID: <20240411083149.78537-8-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.44.0
 In-Reply-To: <20240411083149.78537-1-angelogioacchino.delregno@collabora.com>
 References: <20240411083149.78537-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240411_013203_926175_0B9A784A 
-X-CRM114-Status: UNSURE (   7.61  )
+X-CRM114-CacheID: sfid-20240411_013205_267194_BED9B0E4 
+X-CRM114-Status: UNSURE (   9.25  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -91,26 +91,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the new mediatek,mt8195-ufshci string.
-This SoC's UFSHCI controller is compatible with MT8183.
+Add additional clocks, used on all MediaTek SoCs' UFSHCI controllers:
+some of these clocks are optional and used only for scaling purposes
+to save power, or to improve performance in the case of the crypt
+clocks.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml | 1 +
- 1 file changed, 1 insertion(+)
+ .../devicetree/bindings/ufs/mediatek,ufs.yaml       | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
 
 diff --git a/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml b/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
-index adcd13023866..e2c276da3f2c 100644
+index e2c276da3f2c..df2e2d388e70 100644
 --- a/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
 +++ b/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
-@@ -22,6 +22,7 @@ properties:
-       - items:
-           - enum:
-               - mediatek,mt8192-ufshci
-+              - mediatek,mt8195-ufshci
+@@ -26,11 +26,22 @@ properties:
            - const: mediatek,mt8183-ufshci
  
    clocks:
+-    maxItems: 1
++    minItems: 1
+ 
+   clock-names:
++    minItems: 1
+     items:
+       - const: ufs
++      - const: ufs-aes
++      - const: ufs-tick
++      - const: unipro-sys
++      - const: unipro-tick
++      - const: ufs-sap
++      - const: ufs-tx-symbol
++      - const: ufs-mem
++      - const: crypt-mux
++      - const: crypt-lp
++      - const: crypt-perf
+ 
+   phys:
+     maxItems: 1
 -- 
 2.44.0
 
