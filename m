@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4931CD1284
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Apr 2024 11:43:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2BB3CD1284
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Apr 2024 11:43:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ZkWuWrBWFv8oRc4EnnO6eHDVPwBh4k48pWdLeKJmmBU=; b=1hKrBwjf6NzHG3XzKI+AZGik5j
-	JI4rdvda0SX8zUjjXv9Jj1EOvMRp/5eDizb74WX1fxzCDZU3tT7E+mPLsDDv8l99uNtVCtTMhzPS1
-	IHtyVsiWG6d7oyd8JQ11ODhpKQT4RHsz7FB9cTJSQFvE7tK8I2etW2OY4MltHkvzyK0afpNQ99tGU
-	xrZ42oSge+Fv5SV4ERas8mgjONW0ieZJvXh4f0NN52MnIcfxv7ZgX3dr90+YkCCJuZqjyHsnndSou
-	CsYQgov7eXitK+AuWspjdwxf2k+45RPkCNPWLp80L/bTSUnXID8ITqinTsA58Yfhx+ESj84dNBV8m
-	eVjoSWmA==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=bbDNE8CaIR5oPHXo8vPk6k44+EGdNnuv3F3hxI5LgU4=; b=WX5GCeKLUeqqQsBl9Nc6YVX1+L
+	Pw3ZExtmwRSF/O6HanCRm/AQ2Ano5l7cJxRlwdv+FG8+TgDFMaemJZzbwMvh8518RFPvX4glQH+Em
+	WWW3Le9a7HjOI23ikOtS30a6c9kthlCoSQUYV6N8SWch/+QWZfuWhlpPvNMJigmJh3cWSHVrmn6m+
+	dQd0p+O0GhW4GiT1FLoOa9KNTeSsgJZd+u8tKvu5C23iQY/ZjYdtuhppCsVlmL7ttitCvJqk8G7Ei
+	F2Ddj/gV9B8TDuLkTU1y9iZVl3DyzYIWpeJdb/UQCgUA/uvtzaH7XzU7APmGo0GPThn2WcSfG1LWo
+	Az0mnVIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rusq0-0000000Bm4n-3X4R;
-	Thu, 11 Apr 2024 11:43:28 +0000
+	id 1rusqA-0000000BmCL-3ZIr;
+	Thu, 11 Apr 2024 11:43:38 +0000
 Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruspf-0000000Blxf-0v8I;
-	Thu, 11 Apr 2024 11:43:08 +0000
+	id 1ruspg-0000000Blxn-0PX7;
+	Thu, 11 Apr 2024 11:43:09 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1712835785;
-	bh=hZOqM1m3fh6Pq5Sr9fpO6+gQjVeXP2CN8smO/JG0VAs=;
-	h=From:To:Cc:Subject:Date:From;
-	b=k7ulCCAuOzpzMtCSSwJbToT4VvETX+O+bmx76FwmVxTB56ycdPpWvbmYTO2D8Rw27
-	 278feKMJpxmNQX/zYDmA6NUF5apyPXCV4+mqb1PBul4EVNRZlIoO4Y87+yajpz7wSU
-	 raO/0wToFReAHXlskJ563wsQlst8BG0MVGCsM3FxMyaeFTga0LiD6BcUoK414GoCtq
-	 vpKeoAmEvvwQc+zfs0CQBVHQEwM10C/EEmf0IWmcSX8piRJA41m2gDjjoyCiDSlZdR
-	 /6Z47bX6wUecgnr9nxL3DT6aewxd9BwFEJbttrNb8SBCyaKdgDuTduRF8CvQdqdd1a
-	 goSDMWIlBbSjQ==
+	s=mail; t=1712835786;
+	bh=GYrCUPwSvlfdLE3J9cAWMICwrZAfevrC39qq1M3MwBM=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=s1EdeL4B5cOSHif/ZFFdTpG9TouVl498pjChgSA0FUVlM2B3gN0TMHvZ4wrQEu91o
+	 zLPVI5dibN2mRzaR5RQyl7IstTiTcwsOkmmhawK3fFlsmw/NRsosn3n40Gi7J64soA
+	 AMtVorjiFPd2gL6fqrAMgsxakW+/+V+Cbtq3xpENBn083MlJ+aIHtaRawZzUT8gtPI
+	 WMXAEhc10dwe9wh+bFIQ3yXMaAemh9yY8FCwlyjIdYQ4eKNI+A+mmG3t19Ktap6Ue7
+	 0weB6tQW3bWIzEnVVbGkslSqqUIlTHhrWzmLduYeCw0tZsyBkHt5glMeb73nSdycr4
+	 gafZx8zrVHIMg==
 Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id EF20D378208C;
-	Thu, 11 Apr 2024 11:43:03 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id A169237820A1;
+	Thu, 11 Apr 2024 11:43:05 +0000 (UTC)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: linux-scsi@vger.kernel.org
 Cc: alim.akhtar@samsung.com,
@@ -64,15 +64,17 @@ Cc: alim.akhtar@samsung.com,
 	linux-kernel@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH v2 0/8] MediaTek UFS fixes and cleanups - Part 1
-Date: Thu, 11 Apr 2024 13:42:52 +0200
-Message-ID: <20240411114300.169055-1-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2 1/8] scsi: ufs: ufs-mediatek: Remove useless mediatek,ufs-support-va09 property
+Date: Thu, 11 Apr 2024 13:42:53 +0200
+Message-ID: <20240411114300.169055-2-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.44.0
+In-Reply-To: <20240411114300.169055-1-angelogioacchino.delregno@collabora.com>
+References: <20240411114300.169055-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240411_044307_583929_B3DAF043 
-X-CRM114-Status: GOOD (  12.29  )
+X-CRM114-CacheID: sfid-20240411_044308_290303_200095AB 
+X-CRM114-Status: GOOD (  16.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,57 +89,98 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Changes in v2:
- - Rebased over next-20240409 (because of merge issue for patch 1)
- - Added ufs: prefix to patch 1
- - Added forgotten ufs-rx-symbol clock to the binding
+Remove checking the mediatek,ufs-support-va09 property to decide
+whether to try to support the VA09 regulator handling and change
+the ufs_mtk_init_va09_pwr_ctrl() function to make it call
+devm_regulator_get_optional(): if the regulator is present, then
+we set the UFS_MTK_CAP_VA09_PWR_CTRL, effectively enabling the
+handling of the VA09 regulator based on that.
 
+Also, make sure to pass the return value of the call to
+devm_regulator_get_optional() to the probe function, so that
+if it returns a probe deferral, the appropriate action will be
+taken.
 
-This series performs some fixes and cleanups for the MediaTek UFSHCI
-controller driver.
+While at it, remove the error print (disguised as info...) when
+the va09 regulator was not found.
 
-In particular, while adding the MT8195 compatible to the mediatek,ufs
-binding, I noticed that it was allowing just one clock, completely
-ignoring the optional ones, including the crypt-xxx clocks, all of
-the optional regulators, and other properties.
+Fixes: ac8c2459091c ("scsi: ufs-mediatek: Decouple features from platform bindings")
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/ufs/host/ufs-mediatek.c | 34 +++++++++++++++++++++++----------
+ 1 file changed, 24 insertions(+), 10 deletions(-)
 
-Between all the other properties, two are completely useless, as they
-are there just to activate features that, on SoCs that don't support
-these, won't anyway be activated because of missing clocks or missing
-regulators, or missing other properties;
-as for the other vendor-specific properties, like ufs-disable-ah8,
-ufs-broken-vcc, ufs-pmc-via-fastauto, since the current merge window
-is closing, I didn't do extensive research so I've left them in place
-but didn't add them to the devicetree binding yet.
-
-The plan is to check those later and eventually give them a removal
-treatment, or add them to the bindings in a part two series.
-
-For now, at least, this is already a big improvement.
-
-P.S.: The only SoC having UFSHCI upstream is MT8183, which only has
-just one clock, and *nothing else* uses properties, clocks, etc that
-were renamed in this cleanup.
-
-Cheers!
-
-
-AngeloGioacchino Del Regno (8):
-  scsi: ufs: ufs-mediatek: Remove useless mediatek,ufs-support-va09 property
-  scsi: ufs: ufs-mediatek: Fix property name for crypt boost voltage
-  scsi: ufs: ufs-mediatek: Remove useless mediatek,ufs-boost-crypt
-    property
-  scsi: ufs: ufs-mediatek: Avoid underscores in crypt clock names
-  dt-bindings: ufs: mediatek,ufs: Document MT8192 compatible with MT8183
-  dt-bindings: ufs: mediatek,ufs: Document MT8195 compatible
-  dt-bindings: ufs: mediatek,ufs: Document additional clocks
-  dt-bindings: ufs: mediatek,ufs: Document optional dvfsrc/va09
-    regulators
-
- .../devicetree/bindings/ufs/mediatek,ufs.yaml | 29 +++++-
- drivers/ufs/host/ufs-mediatek.c               | 91 +++++++++++--------
- 2 files changed, 80 insertions(+), 40 deletions(-)
-
+diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
+index 0b0c923b1d7b..e4643ac49033 100644
+--- a/drivers/ufs/host/ufs-mediatek.c
++++ b/drivers/ufs/host/ufs-mediatek.c
+@@ -622,27 +622,38 @@ static void ufs_mtk_init_boost_crypt(struct ufs_hba *hba)
+ 	return;
+ }
+ 
+-static void ufs_mtk_init_va09_pwr_ctrl(struct ufs_hba *hba)
++static int ufs_mtk_init_va09_pwr_ctrl(struct ufs_hba *hba)
+ {
+ 	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
++	int ret;
+ 
+-	host->reg_va09 = regulator_get(hba->dev, "va09");
+-	if (IS_ERR(host->reg_va09))
+-		dev_info(hba->dev, "failed to get va09");
+-	else
+-		host->caps |= UFS_MTK_CAP_VA09_PWR_CTRL;
++	host->reg_va09 = devm_regulator_get_optional(hba->dev, "va09");
++	if (IS_ERR(host->reg_va09)) {
++		ret = PTR_ERR(host->reg_va09);
++
++		/* Return an error only if this is a deferral */
++		if (ret == -EPROBE_DEFER)
++			return ret;
++
++		return 0;
++	}
++
++	host->caps |= UFS_MTK_CAP_VA09_PWR_CTRL;
++	return 0;
+ }
+ 
+-static void ufs_mtk_init_host_caps(struct ufs_hba *hba)
++static int ufs_mtk_init_host_caps(struct ufs_hba *hba)
+ {
+ 	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
+ 	struct device_node *np = hba->dev->of_node;
++	int ret;
+ 
+ 	if (of_property_read_bool(np, "mediatek,ufs-boost-crypt"))
+ 		ufs_mtk_init_boost_crypt(hba);
+ 
+-	if (of_property_read_bool(np, "mediatek,ufs-support-va09"))
+-		ufs_mtk_init_va09_pwr_ctrl(hba);
++	ret = ufs_mtk_init_va09_pwr_ctrl(hba);
++	if (ret)
++		return ret;
+ 
+ 	if (of_property_read_bool(np, "mediatek,ufs-disable-ah8"))
+ 		host->caps |= UFS_MTK_CAP_DISABLE_AH8;
+@@ -663,6 +674,7 @@ static void ufs_mtk_init_host_caps(struct ufs_hba *hba)
+ 		host->caps |= UFS_MTK_CAP_RTFF_MTCMOS;
+ 
+ 	dev_info(hba->dev, "caps: 0x%x", host->caps);
++	return 0;
+ }
+ 
+ static void ufs_mtk_scale_perf(struct ufs_hba *hba, bool scale_up)
+@@ -985,7 +997,9 @@ static int ufs_mtk_init(struct ufs_hba *hba)
+ 	}
+ 
+ 	/* Initialize host capability */
+-	ufs_mtk_init_host_caps(hba);
++	err = ufs_mtk_init_host_caps(hba);
++	if (err)
++		goto out;
+ 
+ 	ufs_mtk_init_mcq_irq(hba);
+ 
 -- 
 2.44.0
 
