@@ -4,90 +4,149 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52CAEC4345F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Apr 2024 09:13:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EF71C4345F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Apr 2024 09:17:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=st0bkxvZRoIXUfM0Z84FBtRvGpfmAN8pJ1WyykYc3zg=; b=GzmR3mlYqO6tdd0SJOf3/0dI4n
-	OJ2jmfmveL15FwSCxk5V8EQZLsYT4EDCu6/GbHxN/+E3AZXPusZ8NU1z12n+VUKCJYad536DLS10G
-	hlj1XvzCgko0lKgONgs3ukyISIb8fS/rAIODS9+XCb3Icv2jvmop867MpOKKgSdht95I3a1v92wCO
-	rvSJT5sTSlAWGNloXtIx+ocucBXeGKymFcCRnpMQVVpIWyFlEHZs0wqIvndOfKjboU+EUP9+YRA6p
-	nbGA3AYWCgCpSiqKpzc7r1I6E6DElFHl+cZ2WH2/zw6HN1YmvRRp8WRImOMeOKmTw7aO2D8iBeIAO
-	1leS/B6g==;
+	bh=etB2/l/COzzBw7bzJWtmcuFjR139PFoLKVkU1aqbU/4=; b=WuOukINg1G2YFmPgYhN30MXcaV
+	YLJFyyJenQPWRv3ELSUXhH77EnSJeaozEsOGKdjTrLmPcjy0n3OdU8Fa9mhsmvjTb9bqT9D3n2e1L
+	qs5ke769jiZL9UXwLRuCUuYexV5EC2UUecofPFKdbGkX0EZIW/tligKbGyWRc2ILv9RV6Vn+Qr9Xo
+	wpQM+p+yVBGLO8ome+Jv6FWJB3rCnxYCqCkH7CJSt0vZjBzeiPMWL5wYfjCAGQs4XTFSoeTa/trWc
+	Uqdu7Uqo7q67rFHAzm9GsvgtmDW4jUwwSkhZGgmSQVckALhCHxQ9m9HvQ5TF98XTeMj7fPxyCMvqV
+	dQP5JGLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rvCyM-0000000GM2K-3d1I;
-	Fri, 12 Apr 2024 09:13:26 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1rvD1x-0000000GNbP-04Lr;
+	Fri, 12 Apr 2024 09:17:09 +0000
+Received: from mail-dm6nam04on20600.outbound.protection.outlook.com ([2a01:111:f403:2409::600] helo=NAM04-DM6-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rvCv8-0000000GJxe-0rOE;
-	Fri, 12 Apr 2024 09:10:09 +0000
-X-UUID: 723ea988f8ac11ee96d5dfc950b7243d-20240412
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=st0bkxvZRoIXUfM0Z84FBtRvGpfmAN8pJ1WyykYc3zg=;
-	b=pmKS8e4fP7YvjK0lukpU9BFpaJXjINYP0RULNDLKigoVeo751tXtoU9dDbyS/IZ3NBVAEZgbWWh8uMGV+MlsGs4L+YMOMIZLFWHg9YrF8NRJNTQvf/eTxegZCIvdDswjBE2tChjOvmoSPdVQNBYE3gd8AJgaO0lw8e9S9XQqicY=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.37,REQID:9b0aaf3c-6906-4d97-9314-b6f2fb2688ab,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:6f543d0,CLOUDID:f9b21986-8d4f-477b-89d2-1e3bdbef96d1,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 723ea988f8ac11ee96d5dfc950b7243d-20240412
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <yunfei.dong@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1796557304; Fri, 12 Apr 2024 02:10:02 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 12 Apr 2024 17:09:25 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 12 Apr 2024 17:09:24 +0800
-From: Yunfei Dong <yunfei.dong@mediatek.com>
-To: Jeffrey Kardatzke <jkardatzke@google.com>,
-	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
-	<nfraprado@collabora.com>, Nathan Hebert <nhebert@chromium.org>, Nicolas
- Dufresne <nicolas.dufresne@collabora.com>, Hans Verkuil
-	<hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>, Sebastian Fricke
-	<sebastian.fricke@collabora.com>, Tomasz Figa <tfiga@chromium.org>, Mauro
- Carvalho Chehab <mchehab@kernel.org>, Marek Szyprowski
-	<m.szyprowski@samsung.com>
-CC: Chen-Yu Tsai <wenst@chromium.org>, Yong Wu <yong.wu@mediatek.com>, Hsin-Yi
- Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, Daniel
- Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>, Yunfei Dong
-	<yunfei.dong@mediatek.com>, Sumit Semwal <sumit.semwal@linaro.org>, Brian
- Starkey <Brian.Starkey@arm.com>, John Stultz <jstultz@google.com>, "T . J .
- Mercier" <tjmercier@google.com>, =?UTF-8?q?Christian=20K=C3=B6nig?=
-	<christian.koenig@amd.com>, Matthias Brugger <matthias.bgg@gmail.com>,
-	<linux-media@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v5,21/23] media: mediatek: vcodec: move vdec init interface to setup callback
-Date: Fri, 12 Apr 2024 17:08:49 +0800
-Message-ID: <20240412090851.24999-22-yunfei.dong@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20240412090851.24999-1-yunfei.dong@mediatek.com>
+	id 1rvD1s-0000000GNYQ-2i15;
+	Fri, 12 Apr 2024 09:17:06 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=R+uXAiwo7GPLKQMb+E85jarU6f9XdZ4O5UsGv+84rvXVuq0O4nvN6M3u+fQQFBYc3xek4BBcZB3iy2kLIZMGseTLXv6kEc3t9OYoQnqk9gy82weNI4FUZcXFai6FZypYtIOh+ZA1ESJUoMiQocowHNTagntAzLvLIzutCpSuvsbXBqE0Fg+MIZQqMTzmX2cSRiO3P1tcAK5LdPu75JG86bLQJSDirgv8jfXnVIhsr33XX2IMU/6dHj0O8O1Ly7iDEJ2zD94EmUTQ7iDLgzxn3DLJ025Hwf9QJDVk47emc8j3Eu4kkwLDndbuES0+G68jIMyTE4FkZGmzH3JTz+98HA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=etB2/l/COzzBw7bzJWtmcuFjR139PFoLKVkU1aqbU/4=;
+ b=WCERdvrkaC5YlyHrJmMK+sz5PYvtvu9FUoanlXQPLA3FSgNcullTYkV5f5rSruYEow2Bs8TyGIkEkVfMYGAnmcOih3DSGo3j4iv0QgZzE1VpI4DRHDxoM1sMAOPLWt0YZhLDkfzrUVO1xhKDDXsSnMdLJgJoCBCoejKc3kXieXbHwVds4ewpmUDnjD6PYLjGm93pMPQKBak9E/vEYafa1iGYch4mNqVoR9uvkS4jyE0T21itK2uyP5QBqcJ5fSXcaYvDVP5hqaRkUhKKpNUEEzi2Re4srLIhIBRknqAdUowZ6vUQcR7qsPceCAMPPdKrD7hMhXta7wj+MD73wwjC4Q==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
+ header.d=amd.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=etB2/l/COzzBw7bzJWtmcuFjR139PFoLKVkU1aqbU/4=;
+ b=p1q7E4AeMztu4/JUMZmhQAn/TbuNAawtGKapDp4czS6hWjNIBOynnEdMCWtlHji5RTPQtTXGKfW5+6snt+9IdnRbUfp/0HeVd2W73Ogt1HWnmE1WGuBbdCPRxVe3gIfxgdu8NhonKHtWy3gJded2mQNjlg2oubQpZ8YpvFRvqEA=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=amd.com;
+Received: from PH7PR12MB5685.namprd12.prod.outlook.com (2603:10b6:510:13c::22)
+ by SA1PR12MB7317.namprd12.prod.outlook.com (2603:10b6:806:2ba::14) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7409.46; Fri, 12 Apr
+ 2024 09:16:57 +0000
+Received: from PH7PR12MB5685.namprd12.prod.outlook.com
+ ([fe80::f2b6:1034:76e8:f15a]) by PH7PR12MB5685.namprd12.prod.outlook.com
+ ([fe80::f2b6:1034:76e8:f15a%6]) with mapi id 15.20.7409.053; Fri, 12 Apr 2024
+ 09:16:57 +0000
+Message-ID: <f3698562-5000-483e-bfd8-272bf6306b0e@amd.com>
+Date: Fri, 12 Apr 2024 11:16:47 +0200
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5,05/23] dma-buf: heaps: Deduplicate docs and adopt
+ common format
+To: Yunfei Dong <yunfei.dong@mediatek.com>,
+ Jeffrey Kardatzke <jkardatzke@google.com>,
+ =?UTF-8?Q?N=C3=ADcolas_F_=2E_R_=2E_A_=2E_Prado?= <nfraprado@collabora.com>,
+ Nathan Hebert <nhebert@chromium.org>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Sebastian Fricke <sebastian.fricke@collabora.com>,
+ Tomasz Figa <tfiga@chromium.org>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Marek Szyprowski <m.szyprowski@samsung.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>, Yong Wu <yong.wu@mediatek.com>,
+ Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
+ Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>,
+ Sumit Semwal <sumit.semwal@linaro.org>, Brian Starkey
+ <Brian.Starkey@arm.com>, John Stultz <jstultz@google.com>,
+ "T . J . Mercier" <tjmercier@google.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-media@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
 References: <20240412090851.24999-1-yunfei.dong@mediatek.com>
+ <20240412090851.24999-6-yunfei.dong@mediatek.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>
+In-Reply-To: <20240412090851.24999-6-yunfei.dong@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: FR4P281CA0188.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:d10:ca::13) To PH7PR12MB5685.namprd12.prod.outlook.com
+ (2603:10b6:510:13c::22)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: PH7PR12MB5685:EE_|SA1PR12MB7317:EE_
+X-MS-Office365-Filtering-Correlation-Id: 33931949-a65a-425a-d9ad-08dc5ad14d90
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 3l4SFNlYAF4xb4W0d9tt7fOOhz6vWSY75VqdZJ3EcPovuEXCgQFUsnrcf1xuTIDdn9AAHTedz6YYh1Fol4N1lC42WX2uSYC5RUq/jU+J5DgfETPlG8c9hp2u10EoIB5ZxDBPQ0aIWxB0IUhvRZ6gqklVJTUqaE4SggTuW1TkCNnpBKY91DYgMSFt2Q/Bv0lm7bgY974FiFEX8A7/cVNVDMobsh6IhDD0IB5G96xecI9V/9+zo/07iprSVNF5mXG12EXfJW/cLeodtXu1hl6WD5aHKBUnFexkxa0hh9pN2+m3zbxAc8gfVMA5VYuwFYDkhzqNEVkaTE5bRgXzxZgNGHIsUvVUVgZA3uEUIhMhumoekROT/oOonahiRU7Hyp/gtdw5JsLCKdl9Ev0tHgvIQqGGqj9s/IcqRBatUKd6w74MMKu0uhoBn9smsxIgzkUrTMSdpy+Z380NPVIWmcr4qweWQo8ZoabKLFduwsFquSJxsGJQaU/PcHP97xOea2qa+WDKLXaYglgEUUMp2Ze+lShL/5pnfmrICExu1WW16Z+oJpxuBeGWLoKGHFpYvgb9RbjkdtM8ONXLGTBgUnCOXnO3LnM2FIKcnbhW89e+bFE4Bpe+rbBK18h5ljSf6DxhpMMC7DbxcLWO/LTqEV7Pd5xGe2hpXMxPpBrQHCngKcRbNsh0VztmubakaWpdUD7iCmiDSq5Y6iuBzzwjQFNgxg==
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH7PR12MB5685.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(1800799015)(376005)(7416005)(366007)(921011);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?N1VmWUNGMjJFNHhJZXFta3I0MEEyMzF6WTlCa1cxTmdoTDVXc3RhV1MzZ25n?=
+ =?utf-8?B?Wm1veXBvYjlRdDd0cENQa2xPdGVTci9Ob2orblFUWHVJRUd0OGEreTd6VW1Z?=
+ =?utf-8?B?eVdnZjIxZG5zUzFJSkpJL0VyOThrN1V0NjRQeW5aMzUrNHhkQnAvbU1BTlJq?=
+ =?utf-8?B?UFZtcmFzQVRYM2FiSE1XODZsVDRKQVhhVk9YT0hXZ2YweDA5VjB1ZW9hUlNP?=
+ =?utf-8?B?NENCR0tPUnlIL1lpOGVKblBuRHE3RkJ2UXF0R3k0c09zS25WSUQ3QnBpaXlK?=
+ =?utf-8?B?RVBING1lamF5Mk1lNHJtdzVxbDNUN1NZTngyQkY2ckRwUUlaYXhZcjdhQzdt?=
+ =?utf-8?B?cm93cDlkSDhNTTdvK2hvbWJtNCtVbWd6UzFiSHR1VFJPd21EVE0wQ09odE56?=
+ =?utf-8?B?UERSNG1LZXk1QlJxck1FNU1aTU9UalFVRU5kL0FubTFVeUN4WFBXWCtsNnJG?=
+ =?utf-8?B?ZTA2eDlBUW1QcG0yakdsT3VDRnFBRE9ubjljeTBkSHhyNXhiL0I5emF4b3Bx?=
+ =?utf-8?B?M0lSK2dkT3hCTGVHL05LWmZOR3FIS0xRdjJMcXhuOTJZaklYdVpsSWRhaWpn?=
+ =?utf-8?B?dmgwcW44ODh0elQzQnJxT3ROc3l4Sll0dHY4cHJmSXQ4QmpGWDlVRFRsZHFo?=
+ =?utf-8?B?c2hZUkw2TWNXaHJiellXUTcwcDExditUaWlNeUdVamx3cEFpWnJObisxMlBo?=
+ =?utf-8?B?d3hWZm5RODJseEduSTE4M21BcUJxbU1FV3hLbEs5RGE1Vk9pYngyeisvbWlF?=
+ =?utf-8?B?OUc4VUlMaDIzRTE3bWx0NytSRDI4QmpKRno1ZGlCQUlqL0JMcDNYUUl6VmJU?=
+ =?utf-8?B?cGFQRkZNYWhyUlRiWHJPeUVMRGVYK3MvY2JLMWsrMU9iVVBSazIwQXJxZGJk?=
+ =?utf-8?B?QWJDQXBjeE4wdFJkVDd1Zngzc0RtSllncHhRb2J1UWdZdUNGazQ5aVd4TGZq?=
+ =?utf-8?B?ZVYzbCttWUVHYW45WGlqWVlCTk5vYkNnQmJCbGJXTlR4dCtveVNmb2xOem5D?=
+ =?utf-8?B?WFZUWDZ5RVo3dHd6bnJtb1g1aDdNL2NkejdVRm1BeWVuM0QyaGdRQW5TakxT?=
+ =?utf-8?B?alV2SGJOZnVEODByd3cvQUYxL2txdzVPMTVwbHZlQ2hoT1B0VmxmNUJyMU1H?=
+ =?utf-8?B?eXErV0QvSXpwLzh1eGtFOXVobndBTWNJaC9KVFZBL2REZk1vNStNUXZha3Bx?=
+ =?utf-8?B?dXZLMGZwSjJ4ai95Y1ZVNEc0S05iV3BpSXo5RU4wMUd5Y3RWNzNVOWpjeTRF?=
+ =?utf-8?B?Z0wvMWQ5RHN1SnlyTEVJbk01eHljczlJcHYvbGZuZk5BK09KL0tvRU93OVpT?=
+ =?utf-8?B?bElaTFJpT1FrNFJINlNVNDZkb2lnNnUzQU9oYUIxZkxrZHZ3cERQSGkzNTMv?=
+ =?utf-8?B?QmtxdVQyZmVJaExYaDJOU0wvaDB2ZkdVQkRhbnRFeURJTURNRHFxTE9iNHVm?=
+ =?utf-8?B?NmQwREJ2RzMzWFJKZU1qdkhQbE4zb1VvK3JMdndaUVZ3bko2RWJtWmNHZW1o?=
+ =?utf-8?B?Z3FIVFRveTVRaU9rRmE3cWg1ekpyVHdzb3F6NjBnMGNDOWNubEhYV2xPbkRm?=
+ =?utf-8?B?U0dENlNNM1ozeWRaR21OLzh6S3J4NTN6ejNsVVJRUXBCeG5uZm8vNWJZdDZC?=
+ =?utf-8?B?bXE0ODZtd3krdVUxQnZzR1Q2QUhLODJCOFNOdmw2VGdnVWVqZk5nSDNtSjZq?=
+ =?utf-8?B?OXRvOGwzajNzd1Q3STJzL0p3djR2ZUcvK3RYWkJjYzNydGY4Y01TemdtYzhO?=
+ =?utf-8?B?QjY4S1ljM2d1UU1Zak9pdHFMbExHSzB6VllUNW9wRTZKcEVwaHB1QlY1bWs2?=
+ =?utf-8?B?ZEl0WVN0cE9WdmR3Rk1QMlBQZ3luOGx3SFNSdkRFbTE4ZkR4bTBWN2xtWXVk?=
+ =?utf-8?B?U044U3hMa0pyUDdpdjFaWjdCL3g3UHlwdVZhQzZ5SU5nOHp4bVJXTDdxZ2dQ?=
+ =?utf-8?B?N2NTRkNGd25qdGNzVlFldnZ1azR0MVhLU0lxR3ZteitZODB2Qi94Q2hSZDBn?=
+ =?utf-8?B?M092aktuNHlhOGE1Rnl4MmlCYnNoOTZSUWtZNmh1TEdsSkJiQnlOckNnRnNC?=
+ =?utf-8?B?bUdxbDB3MDVKb1NjdzVRWlRSZnRsckV6Vjh5TDBqLzNZY1QvV0JZK0VTK2Zw?=
+ =?utf-8?Q?ZOl20oko1fk/SJRiPLEXs2kdZ?=
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 33931949-a65a-425a-d9ad-08dc5ad14d90
+X-MS-Exchange-CrossTenant-AuthSource: PH7PR12MB5685.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Apr 2024 09:16:57.6903
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: yolCHiEtICIj6ORmigBsCzCKISCXshZKkX5ByTXGRkK9ak7kL8dJlIA4Vahf4RPq
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR12MB7317
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240412_021006_552795_55FF1783 
-X-CRM114-Status: GOOD (  17.15  )
+X-CRM114-CacheID: sfid-20240412_021704_707859_49556E55 
+X-CRM114-Status: GOOD (  24.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,209 +161,156 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Getting secure video playback (svp) flag when request output buffer, then
-calling init interface to init svp parameters in optee-os.
+Am 12.04.24 um 11:08 schrieb Yunfei Dong:
+> From: "T.J. Mercier" <tjmercier@google.com>
+>
+> The docs for dma_heap_get_name were incorrect, and since they were
+> duplicated in the header they were wrong there too.
+>
+> The docs formatting was inconsistent so I tried to make it more
+> consistent across functions since I'm already in here doing cleanup.
+>
+> Remove multiple unused includes and alphabetize.
+>
+> Signed-off-by: T.J. Mercier <tjmercier@google.com>
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> [Yong: Just add a comment for "priv" to mute build warning]
+> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
----
- .../mediatek/vcodec/decoder/mtk_vcodec_dec.c  | 139 +++++++++++-------
- 1 file changed, 89 insertions(+), 50 deletions(-)
+If nobody objects I'm going to cherry pick this cleanup here into 
+drm-misc-next.
 
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
-index ebe21064616c..a07b6ba0ea82 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
-@@ -184,6 +184,69 @@ void mtk_vcodec_dec_set_default_params(struct mtk_vcodec_dec_ctx *ctx)
- 	q_data->bytesperline[1] = q_data->coded_width;
- }
- 
-+static int mtk_vcodec_dec_init_pic_info(struct mtk_vcodec_dec_ctx *ctx, enum v4l2_buf_type type)
-+{
-+	const struct mtk_vcodec_dec_pdata *dec_pdata = ctx->dev->vdec_pdata;
-+	struct mtk_q_data *q_data;
-+	int ret;
-+
-+	if (!ctx->current_codec)
-+		return 0;
-+
-+	if (V4L2_TYPE_IS_OUTPUT(type) && ctx->state == MTK_STATE_FREE) {
-+		q_data = mtk_vdec_get_q_data(ctx, V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE);
-+		if (!q_data)
-+			return -EINVAL;
-+
-+		ret = vdec_if_init(ctx, q_data->fmt->fourcc);
-+		if (ret) {
-+			mtk_v4l2_vdec_err(ctx, "[%d]: vdec_if_init() fail ret=%d",
-+					  ctx->id, ret);
-+			return -EINVAL;
-+		}
-+		ctx->state = MTK_STATE_INIT;
-+	}
-+
-+	if (!dec_pdata->uses_stateless_api)
-+		return 0;
-+
-+	/*
-+	 * If get pic info fail, need to use the default pic info params, or
-+	 * v4l2-compliance will fail
-+	 */
-+	ret = vdec_if_get_param(ctx, GET_PARAM_PIC_INFO, &ctx->picinfo);
-+	if (ret)
-+		mtk_v4l2_vdec_err(ctx, "[%d]Error!! Get GET_PARAM_PICTURE_INFO Fail",
-+				  ctx->id);
-+
-+	q_data = mtk_vdec_get_q_data(ctx, V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE);
-+	if (q_data->fmt->num_planes == 1) {
-+		q_data->sizeimage[0] = ctx->picinfo.fb_sz[0] + ctx->picinfo.fb_sz[1];
-+		q_data->bytesperline[0] = ctx->picinfo.buf_w;
-+	} else {
-+		if (ctx->is_secure_playback)
-+			q_data->sizeimage[0] = ctx->picinfo.fb_sz[0] + ctx->picinfo.fb_sz[1];
-+		else
-+			q_data->sizeimage[0] = ctx->picinfo.fb_sz[0];
-+
-+		q_data->bytesperline[0] = ctx->picinfo.buf_w;
-+		q_data->sizeimage[1] = ctx->picinfo.fb_sz[1];
-+		q_data->bytesperline[1] = ctx->picinfo.buf_w;
-+	}
-+
-+	q_data->coded_width = ctx->picinfo.buf_w;
-+	q_data->coded_height = ctx->picinfo.buf_h;
-+
-+	ctx->last_decoded_picinfo = ctx->picinfo;
-+	mtk_v4l2_vdec_dbg(2, ctx,
-+			  "[%d] init() plane:%d wxh=%dx%d pic wxh=%dx%d sz=0x%x_0x%x",
-+			  ctx->id, q_data->fmt->num_planes,
-+			  ctx->picinfo.buf_w, ctx->picinfo.buf_h,
-+			  ctx->picinfo.pic_w, ctx->picinfo.pic_h,
-+			  q_data->sizeimage[0], q_data->sizeimage[1]);
-+	return 0;
-+}
-+
- static int vidioc_vdec_qbuf(struct file *file, void *priv,
- 			    struct v4l2_buffer *buf)
- {
-@@ -479,17 +542,7 @@ static int vidioc_vdec_s_fmt(struct file *file, void *priv,
- 		ctx->ycbcr_enc = pix_mp->ycbcr_enc;
- 		ctx->quantization = pix_mp->quantization;
- 		ctx->xfer_func = pix_mp->xfer_func;
--
- 		ctx->current_codec = fmt->fourcc;
--		if (ctx->state == MTK_STATE_FREE) {
--			ret = vdec_if_init(ctx, q_data->fmt->fourcc);
--			if (ret) {
--				mtk_v4l2_vdec_err(ctx, "[%d]: vdec_if_init() fail ret=%d",
--						  ctx->id, ret);
--				return -EINVAL;
--			}
--			ctx->state = MTK_STATE_INIT;
--		}
- 	} else {
- 		ctx->capture_fourcc = fmt->fourcc;
- 	}
-@@ -502,46 +555,11 @@ static int vidioc_vdec_s_fmt(struct file *file, void *priv,
- 		ctx->picinfo.pic_w = pix_mp->width;
- 		ctx->picinfo.pic_h = pix_mp->height;
- 
--		/*
--		 * If get pic info fail, need to use the default pic info params, or
--		 * v4l2-compliance will fail
--		 */
--		ret = vdec_if_get_param(ctx, GET_PARAM_PIC_INFO, &ctx->picinfo);
--		if (ret) {
--			mtk_v4l2_vdec_err(ctx, "[%d]Error!! Get GET_PARAM_PICTURE_INFO Fail",
--					  ctx->id);
--		}
--
--		ctx->last_decoded_picinfo = ctx->picinfo;
--
--		if (ctx->q_data[MTK_Q_DATA_DST].fmt->num_planes == 1) {
--			ctx->q_data[MTK_Q_DATA_DST].sizeimage[0] =
--				ctx->picinfo.fb_sz[0] +
--				ctx->picinfo.fb_sz[1];
--			ctx->q_data[MTK_Q_DATA_DST].bytesperline[0] =
--				ctx->picinfo.buf_w;
--		} else {
--			ctx->q_data[MTK_Q_DATA_DST].sizeimage[0] =
--				ctx->picinfo.fb_sz[0];
--			ctx->q_data[MTK_Q_DATA_DST].bytesperline[0] =
--				ctx->picinfo.buf_w;
--			ctx->q_data[MTK_Q_DATA_DST].sizeimage[1] =
--				ctx->picinfo.fb_sz[1];
--			ctx->q_data[MTK_Q_DATA_DST].bytesperline[1] =
--				ctx->picinfo.buf_w;
--		}
--
--		ctx->q_data[MTK_Q_DATA_DST].coded_width = ctx->picinfo.buf_w;
--		ctx->q_data[MTK_Q_DATA_DST].coded_height = ctx->picinfo.buf_h;
--		mtk_v4l2_vdec_dbg(2, ctx,
--				  "[%d] init() plane:%d wxh=%dx%d pic wxh=%dx%d sz=0x%x_0x%x",
--				  ctx->id, pix_mp->num_planes,
--				  ctx->picinfo.buf_w, ctx->picinfo.buf_h,
--				  ctx->picinfo.pic_w, ctx->picinfo.pic_h,
--				  ctx->q_data[MTK_Q_DATA_DST].sizeimage[0],
--				  ctx->q_data[MTK_Q_DATA_DST].sizeimage[1]);
-+		if (f->type == V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE)
-+			ret = mtk_vcodec_dec_init_pic_info(ctx, f->type);
- 	}
--	return 0;
-+
-+	return ret;
- }
- 
- static int vidioc_enum_framesizes(struct file *file, void *priv,
-@@ -722,7 +740,7 @@ int vb2ops_vdec_queue_setup(struct vb2_queue *vq, unsigned int *nbuffers,
- {
- 	struct mtk_vcodec_dec_ctx *ctx = vb2_get_drv_priv(vq);
- 	struct mtk_q_data *q_data;
--	unsigned int i;
-+	unsigned int i, ret;
- 
- 	q_data = mtk_vdec_get_q_data(ctx, vq->type);
- 
-@@ -731,6 +749,25 @@ int vb2ops_vdec_queue_setup(struct vb2_queue *vq, unsigned int *nbuffers,
- 		return -EINVAL;
- 	}
- 
-+	if (vq->type == V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE) {
-+		if (vq->restricted_mem && !ctx->is_secure_playback) {
-+			ret = mtk_vcodec_dec_optee_open(ctx->dev->optee_private);
-+			if (ret) {
-+				mtk_v4l2_vdec_err(ctx, "Failed to open decoder optee os");
-+				return ret;
-+			}
-+			ctx->is_secure_playback = vq->restricted_mem;
-+			mtk_v4l2_vdec_dbg(1, ctx, "Getting secure decoder mode:%d",
-+					  ctx->is_secure_playback);
-+		}
-+
-+		ret = mtk_vcodec_dec_init_pic_info(ctx, vq->type);
-+		if (ret) {
-+			mtk_v4l2_vdec_err(ctx, "Failed to init picture information");
-+			return ret;
-+		}
-+	}
-+
- 	if (*nplanes) {
- 		if (vq->type == V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE) {
- 			if (*nplanes != q_data->fmt->num_planes)
-@@ -980,6 +1017,7 @@ int mtk_vcodec_dec_queue_init(void *priv, struct vb2_queue *src_vq,
- 	src_vq->lock		= &ctx->dev->dev_mutex;
- 	src_vq->dev             = &ctx->dev->plat_dev->dev;
- 	src_vq->allow_cache_hints = 1;
-+	src_vq->allow_restricted_mem = 1;
- 
- 	ret = vb2_queue_init(src_vq);
- 	if (ret) {
-@@ -996,6 +1034,7 @@ int mtk_vcodec_dec_queue_init(void *priv, struct vb2_queue *src_vq,
- 	dst_vq->lock		= &ctx->dev->dev_mutex;
- 	dst_vq->dev             = &ctx->dev->plat_dev->dev;
- 	dst_vq->allow_cache_hints = 1;
-+	dst_vq->allow_restricted_mem = 1;
- 
- 	ret = vb2_queue_init(dst_vq);
- 	if (ret)
--- 
-2.18.0
+Regards,
+Christian.
+
+> ---
+>   drivers/dma-buf/dma-heap.c | 27 +++++++++++++++------------
+>   include/linux/dma-heap.h   | 21 +--------------------
+>   2 files changed, 16 insertions(+), 32 deletions(-)
+>
+> diff --git a/drivers/dma-buf/dma-heap.c b/drivers/dma-buf/dma-heap.c
+> index 84ae708fafe7..22f6c193db0d 100644
+> --- a/drivers/dma-buf/dma-heap.c
+> +++ b/drivers/dma-buf/dma-heap.c
+> @@ -7,17 +7,15 @@
+>    */
+>   
+>   #include <linux/cdev.h>
+> -#include <linux/debugfs.h>
+>   #include <linux/device.h>
+>   #include <linux/dma-buf.h>
+> +#include <linux/dma-heap.h>
+>   #include <linux/err.h>
+> -#include <linux/xarray.h>
+>   #include <linux/list.h>
+> -#include <linux/slab.h>
+>   #include <linux/nospec.h>
+> -#include <linux/uaccess.h>
+>   #include <linux/syscalls.h>
+> -#include <linux/dma-heap.h>
+> +#include <linux/uaccess.h>
+> +#include <linux/xarray.h>
+>   #include <uapi/linux/dma-heap.h>
+>   
+>   #define DEVNAME "dma_heap"
+> @@ -28,9 +26,10 @@
+>    * struct dma_heap - represents a dmabuf heap in the system
+>    * @name:		used for debugging/device-node name
+>    * @ops:		ops struct for this heap
+> - * @heap_devt		heap device node
+> - * @list		list head connecting to list of heaps
+> - * @heap_cdev		heap char device
+> + * @priv:		private data for this heap
+> + * @heap_devt:		heap device node
+> + * @list:		list head connecting to list of heaps
+> + * @heap_cdev:		heap char device
+>    *
+>    * Represents a heap of memory from which buffers can be made.
+>    */
+> @@ -193,11 +192,11 @@ static const struct file_operations dma_heap_fops = {
+>   };
+>   
+>   /**
+> - * dma_heap_get_drvdata() - get per-subdriver data for the heap
+> + * dma_heap_get_drvdata - get per-heap driver data
+>    * @heap: DMA-Heap to retrieve private data for
+>    *
+>    * Returns:
+> - * The per-subdriver data for the heap.
+> + * The per-heap data for the heap.
+>    */
+>   void *dma_heap_get_drvdata(struct dma_heap *heap)
+>   {
+> @@ -205,8 +204,8 @@ void *dma_heap_get_drvdata(struct dma_heap *heap)
+>   }
+>   
+>   /**
+> - * dma_heap_get_name() - get heap name
+> - * @heap: DMA-Heap to retrieve private data for
+> + * dma_heap_get_name - get heap name
+> + * @heap: DMA-Heap to retrieve the name of
+>    *
+>    * Returns:
+>    * The char* for the heap name.
+> @@ -216,6 +215,10 @@ const char *dma_heap_get_name(struct dma_heap *heap)
+>   	return heap->name;
+>   }
+>   
+> +/**
+> + * dma_heap_add - adds a heap to dmabuf heaps
+> + * @exp_info: information needed to register this heap
+> + */
+>   struct dma_heap *dma_heap_add(const struct dma_heap_export_info *exp_info)
+>   {
+>   	struct dma_heap *heap, *h, *err_ret;
+> diff --git a/include/linux/dma-heap.h b/include/linux/dma-heap.h
+> index 0c05561cad6e..fbe86ec889a8 100644
+> --- a/include/linux/dma-heap.h
+> +++ b/include/linux/dma-heap.h
+> @@ -9,14 +9,13 @@
+>   #ifndef _DMA_HEAPS_H
+>   #define _DMA_HEAPS_H
+>   
+> -#include <linux/cdev.h>
+>   #include <linux/types.h>
+>   
+>   struct dma_heap;
+>   
+>   /**
+>    * struct dma_heap_ops - ops to operate on a given heap
+> - * @allocate:		allocate dmabuf and return struct dma_buf ptr
+> + * @allocate:	allocate dmabuf and return struct dma_buf ptr
+>    *
+>    * allocate returns dmabuf on success, ERR_PTR(-errno) on error.
+>    */
+> @@ -41,28 +40,10 @@ struct dma_heap_export_info {
+>   	void *priv;
+>   };
+>   
+> -/**
+> - * dma_heap_get_drvdata() - get per-heap driver data
+> - * @heap: DMA-Heap to retrieve private data for
+> - *
+> - * Returns:
+> - * The per-heap data for the heap.
+> - */
+>   void *dma_heap_get_drvdata(struct dma_heap *heap);
+>   
+> -/**
+> - * dma_heap_get_name() - get heap name
+> - * @heap: DMA-Heap to retrieve private data for
+> - *
+> - * Returns:
+> - * The char* for the heap name.
+> - */
+>   const char *dma_heap_get_name(struct dma_heap *heap);
+>   
+> -/**
+> - * dma_heap_add - adds a heap to dmabuf heaps
+> - * @exp_info:		information needed to register this heap
+> - */
+>   struct dma_heap *dma_heap_add(const struct dma_heap_export_info *exp_info);
+>   
+>   #endif /* _DMA_HEAPS_H */
 
 
