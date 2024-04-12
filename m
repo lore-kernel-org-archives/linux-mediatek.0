@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43956C4345F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Apr 2024 11:36:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96A34C4345F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Apr 2024 11:36:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:To:
 	From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=e3rpvx8CewU927cy2VDrV6y53+rbNznsqtOfYN+rLXQ=; b=LEFyc3bOZ+ZNDgHxoLoKEOKyGQ
-	WifTG1OlWnUDZqhWlXxINwV7f8+7a6WV6aNJZ3NBwYWtcJtUXOmV06KkMtVykViPdFhWxBSlb0ysc
-	OqKmKQQyyeWQK7TGKS29TLPNXuac3agI83anwx1cnThZAeI+I+hXbOkEb+XarUnBOUZbiCkFCdoW2
-	NG2eZ2/EaMSRjau1F2Z8tFdjlMXFPK3w+AyJpkvLm5mp80S+ZUuogs2SNU8+ele05QD8rE7dz3vHs
-	kjDnTxE1gYWwJP4yVRBWHU1mNZNHqFi6rmye8iE7FcRduQTI0WHlhnE8G1duIUX4IQxIEWMQ7H9xs
-	PjZp89ig==;
+	bh=QIGhNNrpPwcJMTKppRq6MkB2E8pEdyVxyN3iV+mEJEE=; b=Zf53XjCY3pKcfSp0WhFvKTvWfu
+	0T+TZF0Bz57SFAGwub2ztHH/gpjsGyJ4tf3f2/zFJUsa1jaaFVi6neQHOqxnwuaFJ/0moXDaSIS0K
+	YTqjdH3Ep8c7/ZvNO0VRKBkHWdGBgL1c4YEEoMy2X+5Q65ryLew7UHv8/J0i5vw/k0vjmM9cdxf7P
+	5yGFENTVD36L52/epp1fOrbla5tsqUglWR2t8W4Gr0pqitFwlcMVnxC2+7mFk30IXOu/Q/ufleEx1
+	IYY61Hkc3pT0dbwBu3QtKgGSBCdDLMy6vXnftw19tfEZo/smZJ9I8x3fpyUWlWHDlvw9QaMQrrUfN
+	vna3Os8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rvFCU-0000000GxPv-0M6O;
-	Fri, 12 Apr 2024 11:36:10 +0000
+	id 1rvFCq-0000000Gxcy-0qKd;
+	Fri, 12 Apr 2024 11:36:32 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rvFCN-0000000GxKq-2WK0;
-	Fri, 12 Apr 2024 11:36:05 +0000
+	id 1rvFCb-0000000GxUe-0xwX;
+	Fri, 12 Apr 2024 11:36:24 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id C1BA2621F2;
-	Fri, 12 Apr 2024 11:36:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BA4EFC113CC;
-	Fri, 12 Apr 2024 11:35:54 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 760A561BBA;
+	Fri, 12 Apr 2024 11:36:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C5279C113CC;
+	Fri, 12 Apr 2024 11:36:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1712921762;
-	bh=45cFDE/PDUHtIcaaHwj8IYsNzYdpntdj2aCgK/pRFXs=;
+	s=k20201202; t=1712921776;
+	bh=5BQ14V4MwSIWKlfSozpghxE/dQxOXZmas/FIhoygFxI=;
 	h=From:To:In-Reply-To:References:Subject:Date:From;
-	b=BFBr7Ba1JN9wm3zN/q42MzXb7lkG1Tjv67VUZoc5X7TxPXH3hGhtOPL+oDr47vi06
-	 PYHtlu2K9ePQpbT5GKyjlwUfUq6z2qcJB3djc05XmWyvBdIKWsp1mKY3XkH9aFeYVP
-	 EomH/3KWPfY5ZaqJx9UtaSxulfqCk7GVOszL5mE6xOFazlUaqmqNE8LuDfv0FDWUQS
-	 ueFpNmul0aKJXQpxmreVXZMNuXch9wEoq3EziFkVClRdsC9oYDnGQm/AXYkn2AJYsk
-	 GPrppQX0zjmwyANJ/TZoHEN8l/531YISlEmc6z40A0imi8VD5QYufedjZxund5HdDE
-	 2ZOEPVi/KGlYA==
+	b=AWpWX4KecPLDinQNtzsEukig5u9fLIEmD9bql4YmS4yCGoqoymU0Ec8riXMDGc2Kw
+	 mDZbX6G2+BXQYLh+QO1+hbac7ZLpkujAM6S63jGC46gumbiuE9fYWYxuzyCotphhBf
+	 Y1gJnbhYV8wyfXji6hpKFd2VjMDOUR4J5lZstFro1JDIxLxqpHXBHmoyLhLCGBsvXU
+	 oEKChHMkhBjZX8zZyYMUyAywc3XD0Yv7tiu4EQVH6G1K8hypBrlUovB+RO1+6FEyjI
+	 okhTGpOfR64FRpVyvpFCrmBXO3YVFT5l9umiwpKN9efS1MKboixziSgC97dX7C3ssH
+	 NLVQO8cCXcEUw==
 From: Vinod Koul <vkoul@kernel.org>
 To: Bc-bocun Chen <bc-bocun.chen@mediatek.com>, 
  Steven Liu <steven.liu@mediatek.com>, John Crispin <john@phrozen.org>, 
  Chunfeng Yun <chunfeng.yun@mediatek.com>, 
  Kishon Vijay Abraham I <kishon@kernel.org>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
  Conor Dooley <conor+dt@kernel.org>, 
  Matthias Brugger <matthias.bgg@gmail.com>, 
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
@@ -57,19 +57,19 @@ To: Bc-bocun Chen <bc-bocun.chen@mediatek.com>,
  linux-phy@lists.infradead.org, devicetree@vger.kernel.org, 
  linux-kernel@vger.kernel.org, netdev@vger.kernel.org, 
  Daniel Golle <daniel@makrotopia.org>
-In-Reply-To: <745f8b46f676e94c1a396df8c46aefe0e8b4771c.1707530671.git.daniel@makrotopia.org>
-References: <745f8b46f676e94c1a396df8c46aefe0e8b4771c.1707530671.git.daniel@makrotopia.org>
-Subject: Re: [PATCH v3 1/2] dt-bindings: phy: mediatek,mt7988-xfi-tphy: add
+In-Reply-To: <da5498096f71a40ca1eac4124b7bb601c82396fb.1712625857.git.daniel@makrotopia.org>
+References: <da5498096f71a40ca1eac4124b7bb601c82396fb.1712625857.git.daniel@makrotopia.org>
+Subject: Re: [PATCH v4 1/2] dt-bindings: phy: mediatek,mt7988-xfi-tphy: add
  new bindings
-Message-Id: <171292175438.599803.12725341666567867086.b4-ty@kernel.org>
-Date: Fri, 12 Apr 2024 17:05:54 +0530
+Message-Id: <171292176938.599803.1671196467939559140.b4-ty@kernel.org>
+Date: Fri, 12 Apr 2024 17:06:09 +0530
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
 X-Mailer: b4 0.12.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240412_043603_818782_AF32F0E3 
-X-CRM114-Status: UNSURE (   5.77  )
+X-CRM114-CacheID: sfid-20240412_043617_703502_2A7C8375 
+X-CRM114-Status: UNSURE (   5.93  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -86,7 +86,7 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-On Sat, 10 Feb 2024 02:10:08 +0000, Daniel Golle wrote:
+On Tue, 09 Apr 2024 03:23:54 +0100, Daniel Golle wrote:
 > Add bindings for the MediaTek XFI Ethernet SerDes T-PHY found in the
 > MediaTek MT7988 SoC which can operate at various interfaces modes:
 > 
