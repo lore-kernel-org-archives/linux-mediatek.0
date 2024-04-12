@@ -4,99 +4,163 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3ABC4C4345F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Apr 2024 17:41:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 156FEC4345F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Apr 2024 01:57:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HqO/PWGOb6n0sotJb3BszFaEcMzLvi0yOjcQVZ0Erv0=; b=YRdRG31nkjGXUAVZ/EIdUynLSy
-	jA4AVDm8J3qEzcCoH8TFfnMYX6gWBKvtzwemRXj19LKCZXR5C+p6e97bkZged7zeWvy8otbszpO84
-	C0HNYdJIXwUYsOCjQz24NlpZmSHJPUW8s09W6+PzNh2f/sFgS4kO8CKaiNYRpxSgmARAa8jAV23W1
-	ClvS/JdBjQVovg9Z6iIFTnGvsHgYetNgm7VsvmuX6aq1zUTUQvQdpBSARtlOPCyrenU8cXPCtIJVx
-	cK5BvcHphtaeJ/lFwspNZayJRFfDecsyGb4dK7VuIpNWK6UF3qMJ5kWFnBnC3pwqUvz2f37FGNBdr
-	gudM0d/g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	Date:References:Message-ID:In-Reply-To:From:Subject:Cc:To:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Q94u/ZO356jdLVqgxpoqXceWDZTKS5I/T+QjgoxNHpE=; b=2EKM09qX4junMBXbbk1/CAx2Vl
+	uoGO+5MQ8zGRrHTQSqdblJfgMnSNLD6RhEHdV7NKZ+McaFoEwJQ0WSreOL7/+ElY50CPpqkr7RK5Y
+	Tf6G6FFNFjC6eytdSy8PIOT3cLcjxAHGOmgwGvwuaaS2w2ihL2/WGATZgmJ4ciJLISOTt8Ko4JNLb
+	a7XUQi/NyJbIcACgwwxCAyDoFebZERl72HUz/XObcJUx784sP+TOa/Wy9zplHQ0OIeJ299bMYL3vq
+	ue5ihXbEExKkkBmVkT74rxK3wslEd/5JFMtI+3cA1n25Y7aOS2THDX4VENbpLD4yC6jWuzvPIANXh
+	BmzU+sbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruyQn-0000000DS8X-3Ciz;
-	Thu, 11 Apr 2024 17:41:49 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1rv6Ad-0000000Epm8-02Ap;
+	Fri, 12 Apr 2024 01:57:39 +0000
+Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruyQj-0000000DS67-10AA;
-	Thu, 11 Apr 2024 17:41:47 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 2531FCE1BB4;
-	Thu, 11 Apr 2024 17:41:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 61D7BC2BBFC;
-	Thu, 11 Apr 2024 17:41:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1712857302;
-	bh=DoJYSiMJhYT9Zt6gL2BrmpCKBnw00cmz4PnYnC16w5w=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=D57Dm9naJovNyxjN+f4aK9UEhia+7xBZ5MkhbWxsEKsouoD9VR5HyxJ5oTVAWHCjb
-	 dtJXrqqBbam7Ebzp9GS7S90fyxedAGal4WgfiO7sOcXo5myFf7hNnj0B/EH10Jxhsz
-	 8TiWXIpMKl7BCob/OsWv+skUeQDl/S0KYW0Vr/5EuGpJ16JCqcWzxaUvuHKJ9XUbbi
-	 CSENDnGpBt9rbplij+sVAGrhpZAtha0txZMtw6gUe8PkUKXdOJXiNbJsYo2NDTOcQL
-	 Y6PMOlqq3rqEDmXL2M0h33mpmxiQYTqjK5SqIn+kAlSm5TTPnngLQiq4aeZWDOr0eP
-	 I7UAhbLSYWkLg==
-Received: by mail-wr1-f44.google.com with SMTP id ffacd0b85a97d-343d7ff2350so8129f8f.0;
-        Thu, 11 Apr 2024 10:41:42 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCXW5vmeXt+DXJMfqq8V5cVXdltnWUjMrxKgm3R1yQz1KTCfR+yyO/pvrmiR0H7I0Xs5MZkn7nUaGyyB/FLsJ49JUnmOFCm/0bWSZhTOMjMExUoOFpNdiFVk5cW3eQ139u2cszc8hDQK6iIJFOH52SsxLT/p53YZy94pzb4Jp+ya0/XD+fwB/6puMmvkai8OCcK0be/Ms/MvwWz7okmgGV9OEv0B4kj6gcuToZyhediXLSY2GGBIfn7pjsQUUkDP2BOxyw==
-X-Gm-Message-State: AOJu0YyGF2A4eFE1MHBD5CigUCq2Qi+GvTPN1CdtZuY+j/j3MrRTzuiW
-	KgK+4t0EUV6PDTBEvgX2Ek3BKuWYeT2f365uYdRkx25gKh7KpEtyVzaYrw0is59vmSXFd3dWXVW
-	eHpBoI3CKG6D7a2FAgSevRYvE5A==
-X-Google-Smtp-Source: AGHT+IGTYTnd27cZwUZ7kXUf6/DQ0pj9531II4F7GuikLZRsZ/ZfHrcFFNL5HrA9aNOfAtjGuv7mboSXH/hsVf3pPeQ=
-X-Received: by 2002:a19:f60a:0:b0:517:535b:9f2d with SMTP id
- x10-20020a19f60a000000b00517535b9f2dmr231054lfe.25.1712857280506; Thu, 11 Apr
- 2024 10:41:20 -0700 (PDT)
+	id 1rv6Aa-0000000EplT-16Ah;
+	Fri, 12 Apr 2024 01:57:37 +0000
+Received: from pps.filterd (m0246629.ppops.net [127.0.0.1])
+	by mx0b-00069f02.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 43C1U0To014810;
+	Fri, 12 Apr 2024 01:57:29 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=to : cc : subject :
+ from : in-reply-to : message-id : references : date : content-type :
+ mime-version; s=corp-2023-11-20;
+ bh=Q94u/ZO356jdLVqgxpoqXceWDZTKS5I/T+QjgoxNHpE=;
+ b=faP8ar3bcAvNzY6yMy6Lt65rL1P0oi5HLDKVeL9eyv4HwS2PPy9IJTHFc3S0ho7Wy/t7
+ fXP0dGuxPfczqt7J+jb81MSpCuem72GA3BAv+SQu3dQ7GfyxqFOUS+UyXHzojsKEgYIg
+ 3PZvZXcIbFj4pyW1GgCS/82TipjMfeN0ulf+VMgJndFcTnjooiORqvmo+VmOZFeF2G+k
+ 0uD7ydwX9ZIzRzpsLw/epyKfhtmpGIvmWIbUutuUY4cJjh+JcCqcPpe/i4ctdzfhS1xK
+ XpguCYpCNFviOk8Bnzv2jX80Gn7Aka1CLa4OGNwCZQ0iY4jgDkXo9insbkLy1yPTlz6t Gw== 
+Received: from phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta01.appoci.oracle.com [138.1.114.2])
+	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3xax9baq1c-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Fri, 12 Apr 2024 01:57:29 +0000
+Received: from pps.filterd (phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
+	by phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (8.17.1.19/8.17.1.19) with ESMTP id 43C1d5Ud007848;
+	Fri, 12 Apr 2024 01:57:28 GMT
+Received: from nam10-dm6-obe.outbound.protection.outlook.com (mail-dm6nam10lp2100.outbound.protection.outlook.com [104.47.58.100])
+	by phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id 3xavuab7jq-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Fri, 12 Apr 2024 01:57:28 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=QGqy1qF8iAAr0A4bfzA5IwmWaRJsj7qUVFE9xg7VPp33OcMnvaY9vZZ3hKA3EydSBk51ZGwvVbxCveMvO3dIKfRpjU8t+kNtwwtVIRZNmVcEAB8rSTB7bswkKBIZBnXK6uzS4AOxap/1I2rU2C0F65EO7JHqVMt+36Ew1dKHvJJ11+/blX1kxVcbCtyXOUkZW+lwwqzrG10EAqFD8lNu7Ebrknr3UA+kJZ4GlxuAVtKuLoRWTaAkOc5OuSSZxYinV0wNSHh4aaozJdZgQvOjtR3C7w5am2gAoZavQKaniyMZ43296i+469qe5aNqj7yb0Fjp9WRmCHKXirr+NSOlnw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Q94u/ZO356jdLVqgxpoqXceWDZTKS5I/T+QjgoxNHpE=;
+ b=I3oz+qPdY7YWqZFl6WSXPhtcipm+11clTnPTXeqm+NqozZg0CPOP4RB/8lIfpLofb9Xm7vtxX9x3qmbclMWs3yCZq9QIsr0n3sgWwDnX7KdaWnCbSwue/uBm+7rLRLfwiiGHgs7AXaR6wLHPwmt/eTcnUPdpQ5TiiUJ1ORYB9W7EHudkj8fKvG+sLdVvWOl/ZPfJ0ZdBnLY37kOI/+AVQoR3IBJGRsEpmo2AG21R1KLE2ugF1bJ0niH3SEU+J5Nsof5CzN7YOPdUwa7pzHSLVgOrBtFAgWq1ntkGnSifkyuyPmyUfuXgSRNX/cIZqc0gDr5jWLtbiIqfCX9O42pInA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
+ dkim=pass header.d=oracle.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Q94u/ZO356jdLVqgxpoqXceWDZTKS5I/T+QjgoxNHpE=;
+ b=ggfz54H4GX5IK+lDVcSnNS1FCcq7blYwKxEKMwi/m/MQKYLuMJogyeoCCTJjuNKpKHZ6HcFh2wL7KBBpB550FkQh70aW/apxLNu5XrXpwiiFp52Gwi0eSTGnUAzgODyhBN2Dd7NaVRKwzyi4gRTVA3fXV/lfELnGmLi0ccOfCC8=
+Received: from PH0PR10MB4759.namprd10.prod.outlook.com (2603:10b6:510:3d::12)
+ by SA2PR10MB4667.namprd10.prod.outlook.com (2603:10b6:806:111::21) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7409.46; Fri, 12 Apr
+ 2024 01:57:26 +0000
+Received: from PH0PR10MB4759.namprd10.prod.outlook.com
+ ([fe80::7856:8db7:c1f6:fc59]) by PH0PR10MB4759.namprd10.prod.outlook.com
+ ([fe80::7856:8db7:c1f6:fc59%4]) with mapi id 15.20.7409.042; Fri, 12 Apr 2024
+ 01:57:26 +0000
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Peter Wang <peter.wang@mediatek.com>, Stanley Jhu
+ <chu.stanley@gmail.com>,
+        "James E.J. Bottomley" <jejb@linux.ibm.com>,
+        "Martin K. Petersen" <martin.petersen@oracle.com>,
+        Matthias Brugger
+ <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>,
+        linux-scsi@vger.kernel.org, linux-mediatek@lists.infradead.org,
+        linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+        Will McVicker
+ <willmcvicker@google.com>
+Subject: Re: [PATCH] scsi: ufs: mediatek: fix module autoloading
+From: "Martin K. Petersen" <martin.petersen@oracle.com>
+In-Reply-To: <20240409203954.80484-1-krzysztof.kozlowski@linaro.org>
+	(Krzysztof Kozlowski's message of "Tue, 9 Apr 2024 22:39:54 +0200")
+Organization: Oracle Corporation
+Message-ID: <yq1pluvjqbk.fsf@ca-mkp.ca.oracle.com>
+References: <20240409203954.80484-1-krzysztof.kozlowski@linaro.org>
+Date: Thu, 11 Apr 2024 21:57:24 -0400
+Content-Type: text/plain
+X-ClientProxiedBy: BL1PR13CA0063.namprd13.prod.outlook.com
+ (2603:10b6:208:2b8::8) To PH0PR10MB4759.namprd10.prod.outlook.com
+ (2603:10b6:510:3d::12)
 MIME-Version: 1.0
-References: <20240411142107.GA3537062-robh@kernel.org> <20240411161108.GA2184354@bhelgaas>
-In-Reply-To: <20240411161108.GA2184354@bhelgaas>
-From: Rob Herring <robh@kernel.org>
-Date: Thu, 11 Apr 2024 12:41:07 -0500
-X-Gmail-Original-Message-ID: <CAL_JsqKaJR9v=EEwm=rGf-XtXhhSd4_U2FUJoCoN_mcvPBtPBA@mail.gmail.com>
-Message-ID: <CAL_JsqKaJR9v=EEwm=rGf-XtXhhSd4_U2FUJoCoN_mcvPBtPBA@mail.gmail.com>
-Subject: Re: [PATCH v2 2/4] dt-bindings: PCI: mediatek,mt7621: add missing
- child node reg
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: Sergio Paracuellos <sergio.paracuellos@gmail.com>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Bjorn Helgaas <bhelgaas@google.com>, 
-	Lorenzo Pieralisi <lpieralisi@kernel.org>, =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>, 
-	Alyssa Rosenzweig <alyssa@rosenzweig.io>, Ray Jui <rjui@broadcom.com>, 
-	Scott Branden <sbranden@broadcom.com>, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
-	Florian Fainelli <florian.fainelli@broadcom.com>, Jim Quinlan <jim2101024@gmail.com>, 
-	Nicolas Saenz Julienne <nsaenz@kernel.org>, Will Deacon <will@kernel.org>, 
-	Linus Walleij <linus.walleij@linaro.org>, Srikanth Thokala <srikanth.thokala@intel.com>, 
-	Ryder Lee <ryder.lee@mediatek.com>, Jianjun Wang <jianjun.wang@mediatek.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Daire McNamara <daire.mcnamara@microchip.com>, Bjorn Andersson <andersson@kernel.org>, 
-	Konrad Dybcio <konrad.dybcio@linaro.org>, Marek Vasut <marek.vasut+renesas@gmail.com>, 
-	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Shawn Lin <shawn.lin@rock-chips.com>, 
-	Heiko Stuebner <heiko@sntech.de>, Jingoo Han <jingoohan1@gmail.com>, 
-	Gustavo Pimentel <gustavo.pimentel@synopsys.com>, 
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, 
-	Bharat Kumar Gogada <bharat.kumar.gogada@amd.com>, Michal Simek <michal.simek@amd.com>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Mark Kettenis <kettenis@openbsd.org>, 
-	Tom Joseph <tjoseph@cadence.com>, Ahmad Zainie <wan.ahmad.zainie.wan.mohamad@intel.com>, 
-	Jiaxun Yang <jiaxun.yang@flygoat.com>, Kishon Vijay Abraham I <kishon@kernel.org>, 
-	Thippeswamy Havalige <thippeswamy.havalige@amd.com>, linux-pci@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	asahi@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
-	linux-rpi-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: PH0PR10MB4759:EE_|SA2PR10MB4667:EE_
+X-MS-Office365-Filtering-Correlation-Id: 554f68bf-5586-490c-97a2-08dc5a93e732
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: LKf21Nzlw066cVpLdzCbMOMsnGufYVIGZBrLjtMDzyMQs9uQveXM0Q/S1wScE49Qlx9OPE9MWibQ5JVKeQPV4ITJvxOkITBkBkzaKpZL7LppG4MYgYXO3AeX58q84mGyJCmhX9h7kaTs6ruCzNE/Cmf3a0vnU+Zo1pdVVBnxx7jhi4lOJLySLx0dXRxJgQAFK9bLYawUfhRF/UlPrCG+c9KR4kbLR3keXAPY15ZTJJwBA+aMA96kzaPi7FDjfHi/QQ0Q+OSbpGYFAM/3ECJjKDSDeTsbBoCUzKSDsuugqy/XK3LpHdvBzOF69a8eaZL1ek72U16IiqA/scCxzxafTAXGAVE3TUgDNmLDO3S9rc4AE/fIzBi1eatg9CSr5Z9yQEJl6pduMAkSDrXUsFxIiMSSlkK8zi8tc9Qb/F2IfG0jRLUj5H2+/YIBI7DIRvoH20VQGAoPEp2eFna/+7+WLx3ABcO8R5K+qa8nLJp75sLxyErpClqcANWRLISggkwRzil9KSh9VVWKquraX6Ku9ddIGCObzDm/ZH7zL6njL87wCdnT40GTq8OpxySwNg9ae8iKK5qJtRcEnZY/QXsDYpQD34JhrxWCehMP704erQz2bIPLtgpxLYvy+zKwmOMpfOC64AWXmZ+aX6uM0o8z0cehMJ/OMKayF1cE0jIOPNE=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH0PR10MB4759.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(366007)(376005)(7416005)(1800799015);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?U3GSZeQuVaz7Zugap342zfol74o/DnwXaym1GMvepbGNxkvCiob9BVhPZ/py?=
+ =?us-ascii?Q?lV9vGhbuUL3Kzj1bUD8/RjwqrporwwsxUV7UGYSU9BjLns4QNY0iq/pNpfua?=
+ =?us-ascii?Q?ghlmUAxE1fvdDt4pNKfqQksKTLwWJaXQy7svt/CKl4zAmqdhR5ZAwqYPvrNQ?=
+ =?us-ascii?Q?+e0faFFjfF6EKj/7f2v0S2Ew+Zsc9R4YGIAB5MhXNrxfEaWuE81a13/ccXCl?=
+ =?us-ascii?Q?Z8o0CzqsOhZvHETkkaMvkGJiuneXBlQq5rjGLBjkKWsSnuxDyELVn/1iXu5T?=
+ =?us-ascii?Q?F4tmN2UzLxzE0zhxGLrnT9da6+lchCwsU7xQupNTnM5memc2tiX4pOxyT6p8?=
+ =?us-ascii?Q?pSvMWSCfeawCtfE3kK2G6PngJMmbOCCO05rgwbyye6Nzfe2JsR/46dpny9CE?=
+ =?us-ascii?Q?H+PH2IqhfMw6xO1+vOCYY5TYaIc3UqdDeZwa+VVlTzmdT3iA+//ftcpF8Vro?=
+ =?us-ascii?Q?neu+h0E8nTCat92iPWIyteiR229kEEBe+z5UgOmT9q7illeuGMB1yOWoGrq7?=
+ =?us-ascii?Q?9u+FrZqL5eCPCR9qleP4nAmV3JVR8tBwHwXme9Nvm4PU3lrbUO83F0HSSLSP?=
+ =?us-ascii?Q?pGX8WGxC/hJ+TmtS6EUDJbqMGLpbr5UmQLL+KbS4uD5CRKLdF3XyDaCUOQGB?=
+ =?us-ascii?Q?hSuzCKyebu1l+0dzD9Zd3ejOajZewh4czQQ8pFwv8+HYIWxaJ8dyqJVcFKhz?=
+ =?us-ascii?Q?rr9oVQATN+6Q+3rdvd8mPsmAtqdE4sOCkqeX5VrUne17+l+Wi9471+CsHWFD?=
+ =?us-ascii?Q?VdxfsaZc7L7UemS9Rh2CZ8E3fpdUQyy43oBsXJbnOwMrnhxFapy6dDxoBrYk?=
+ =?us-ascii?Q?h/Y7dIlj9ot4u3J2ApUnPnjpSI+VkRrtLotkBajT/nAAESlwRYB4wzqgjUec?=
+ =?us-ascii?Q?s4ayAoNm90nvnTFNOwpQul2DOESucbXMnK9zP91o9+t9cPuF73Y5pjl43A0Q?=
+ =?us-ascii?Q?cMS9xjltzEYvg1PjERZQ74Y0mhaFRlN7dGUhdulrpdyvY2Vpovda7wZMeNPJ?=
+ =?us-ascii?Q?u5t+m1NPyq2lYJ9oabThH0DNWsh9Oq2sK4lQz0ugUhmRqk8m3kSX1eKs1P1y?=
+ =?us-ascii?Q?/lgc0cPyzEyKNzn+LTJ4g8JXfRc88tMfMWlp0eDbAwe3/O9f8k+jfSGrvKH1?=
+ =?us-ascii?Q?ToY1r0DBkCUnfSHBOozx86YxNtz64Qu3hREVvzOjgSr2Ma4ei61EpCuUz12E?=
+ =?us-ascii?Q?m4pK36GTF4UxwJrnSJnsIYoRjLvyh7A8PSjA+1i15x4edChmmB2pY28HIEaF?=
+ =?us-ascii?Q?udORYI7+ieYR9idUkNzHgXvGaVRvXALoCmhK47DMhdJxSyAW3PHNpsxzje9J?=
+ =?us-ascii?Q?c5TOgU1+xiA11OvkqwJFuQQbL7ibWobgou7T/ab3DLxiJqVr1qzmyZ80p5LX?=
+ =?us-ascii?Q?0IXvmFH4LsezU0Np5Eswr1bZ+58e5YI2CJF8ytNl2zI1DkskUPEfeUHDbYaM?=
+ =?us-ascii?Q?Kogly4aO9JAtEkKE+Y5U8jLhG/EoUAWezWVFMhVTcv2kg+Zodt7VsBQIF6Sk?=
+ =?us-ascii?Q?A+k2oDPMQ1dZJMyPt0q88eAZtIJjL/5Qr0N8zTI4BjYWLrhThKp0ZpuY/YFE?=
+ =?us-ascii?Q?+A/VFqD6T0Y56e2d/R2SwRt1Q+ETTsNuEzBLY9Ervk4GMw8anZVSqlek8UG7?=
+ =?us-ascii?Q?tg=3D=3D?=
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: +Ds95xABJH8jR7xzs823sMgqiO/zfAVLXnEb9AgBn4a+LKB0O1hsrvXrfd+nilytOww5r5eotk7END2uiOm085Rtt6hwJZKTIkQ4IOj2H7+kLlpEMeo4vIcyGKxJ4kTT4OJ6psOFzfPNChDTtDw1kntPAbk2B8+X/cdk7078ufAqhXSpHe3C1Kr74gD2P7SBV4oYE3+qY9XAhQYGj/+Nd7q05sN0Wavi2WpaW0KEZLLo0bYJIXVwjgT/iyVQWfLOS3DFw3i5PLnps+MRxNSS0GtNMmE8bNi9Q85W4ezGBpAkpBoIa/ORYnyfJzUtJjxfLfHdF0wmhiyEAXgTJkRefGzK2xww2sqgy5Zy5aqq3uLlzSckFuPYB0eV4kXKAWWj353rWaHZ2J+w6DjMy/AY+9cBEv+9KRRdsCHyS1Ozbnil0H7fM7PuHznLG6bWdhFHuXV9Vc1jSou2p9f7nW5qEDuLjJcrM4GDa3iBjwn+cjuwiZ9mM9iTg3eE4ffvxOiDY1uSLAWMICJf/HlGDaqaVXhZ7L+Gn0J1p2Nm+okwIZZ6vpzUqOP8YXxyZ9Owl9PsXOXDExCRtNrxbELdGNJnAFM1dxPrkRVguzhQZhBoX9w=
+X-OriginatorOrg: oracle.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 554f68bf-5586-490c-97a2-08dc5a93e732
+X-MS-Exchange-CrossTenant-AuthSource: PH0PR10MB4759.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Apr 2024 01:57:26.6202
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: rsop+TsXbzFQCgjLm6FiG2WU+PUQV5G9MQq52c4yqy+nzbdcheiDubkN0m6BsZ+0UulcFglZKdgb0Vl1KsxVFeEDxxvdbLt7a7iLQjlucvU=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA2PR10MB4667
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.1011,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2024-04-11_14,2024-04-09_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999 suspectscore=0
+ mlxscore=0 adultscore=0 phishscore=0 bulkscore=0 spamscore=0
+ malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2404010000 definitions=main-2404120012
+X-Proofpoint-GUID: 4eJGC_KodX-MkISa4O37N4yP7F4CxILz
+X-Proofpoint-ORIG-GUID: 4eJGC_KodX-MkISa4O37N4yP7F4CxILz
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240411_104145_674074_CF37E7A8 
-X-CRM114-Status: GOOD (  33.92  )
+X-CRM114-CacheID: sfid-20240411_185736_331361_0FD532D6 
+X-CRM114-Status: GOOD (  10.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,103 +175,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Apr 11, 2024 at 11:11=E2=80=AFAM Bjorn Helgaas <helgaas@kernel.org>=
- wrote:
->
-> On Thu, Apr 11, 2024 at 09:21:07AM -0500, Rob Herring wrote:
-> > On Thu, Apr 11, 2024 at 07:39:17AM -0500, Bjorn Helgaas wrote:
-> > > On Thu, Apr 11, 2024 at 08:13:18AM +0200, Sergio Paracuellos wrote:
-> > > > On Thu, Apr 11, 2024 at 8:01=E2=80=AFAM Krzysztof Kozlowski
-> > > > <krzysztof.kozlowski@linaro.org> wrote:
-> > > > > On 10/04/2024 23:26, Bjorn Helgaas wrote:
-> > > > > > On Wed, Apr 10, 2024 at 08:15:19PM +0200, Krzysztof Kozlowski w=
-rote:
-> > > > > >> MT7621 PCI host bridge has children which apparently are also =
-PCI host
-> > > > > >> bridges, at least that's what the binding suggest.
-> > > > > >
-> > > > > > What does it even mean for a PCI host bridge to have a child th=
-at is
-> > > > > > also a PCI host bridge?
-> >
-> > It should say 'root port' instead as the binding description correctly
-> > says.
->
-> OK, that makes a lot more sense, and we should fix the commit log.
->
-> > > > > I think the question should be towards Mediatek folks. I don't kn=
-ow what
-> > > > > this hardware is exactly, just looks like pci-pci-bridge. The dri=
-ver
-> > > > > calls the children host bridges as "ports".
-> > > >
-> > > > You can see the topology here in my first driver submit cover lette=
-r
-> > > > message [0].
-> > > >
-> > > >  [0]: https://lore.kernel.org/all/CAMhs-H-BA+KzEwuDPzcmrDPdgJBFA2Xd=
-YTBvT4R4MEOUB=3DWQ1g@mail.gmail.com/t/
-> > >
-> > > Nothing unusual here, this looks like the standard PCIe topology.
-> > >
-> > > What *might* be unusual is describing the Root Ports in DT.  Since
-> > > they are standard PCI devices, they shouldn't need DT description
-> > > unless there's some unusual power/clock/reset control or something
-> > > that is not discoverable via PCI enumeration.
-> >
-> > It's only unusual because typically there's only 1 RP per host bridge
-> > and properties which really apply to the RP get stuck in the host bridg=
-e
-> > node because we don't have a RP node. An example is perst-gpios. That's
-> > not a property of the RP either, but the RP is the upstream side of a
-> > slot and we often don't have a node for the device either.
->
-> Makes sense.
->
-> I'm still confused about one thing, maybe just because I don't really
-> know how to read these bindings.  The binding now looks like this:
->
->   properties:
->     compatible:
->       const: mediatek,mt7621-pci
->
->     reg:
->       items:
->         - description: host-pci bridge registers
->         - description: pcie port 0 RC control registers       # A
->         - description: pcie port 1 RC control registers       # A
->         - description: pcie port 2 RC control registers       # A
->
->   patternProperties:
->     '^pcie@[0-2],0$':
->       type: object
->       $ref: /schemas/pci/pci-pci-bridge.yaml#
->
->       properties:
->         reg:                                                  # B
->           maxItems: 1
->
-> It looks like the "A" items are separate things from the "B" items?
->
-> But I think the relevant code is here:
->
->   mt7621_pcie_probe
->     mt7621_pcie_parse_dt
->       pcie->base =3D devm_platform_ioremap_resource(pdev, 0)             =
-# 1
->       for_each_available_child_of_node(node, child)
->         mt7621_pcie_parse_port
->           port->base =3D devm_platform_ioremap_resource(pdev, slot + 1)  =
-# 2
->
-> where it looks like both "1" and "2" use the items in the "A" list,
-> i.e., resources 0, 1, 2, 3, all from the same platform device.  Is
-> there code that uses the "B" item that this patch adds?
 
-The A items are in the host address space. The B item is a PCI
-address. Specifically, for PCI devices, the first entry is config
-space with just the device and function (devfn). The format is defined
-in the OpenFirmware PCI bus supplement.
+Krzysztof,
 
-Rob
+> Add MODULE_DEVICE_TABLE(), so the module could be properly autoloaded
+> based on the alias from of_device_id table.
+
+Applied to 6.10/scsi-staging, thanks!
+
+-- 
+Martin K. Petersen	Oracle Linux Engineering
 
