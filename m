@@ -4,149 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EF71C4345F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Apr 2024 09:17:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B63EC4345F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Apr 2024 09:19:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=etB2/l/COzzBw7bzJWtmcuFjR139PFoLKVkU1aqbU/4=; b=WuOukINg1G2YFmPgYhN30MXcaV
-	YLJFyyJenQPWRv3ELSUXhH77EnSJeaozEsOGKdjTrLmPcjy0n3OdU8Fa9mhsmvjTb9bqT9D3n2e1L
-	qs5ke769jiZL9UXwLRuCUuYexV5EC2UUecofPFKdbGkX0EZIW/tligKbGyWRc2ILv9RV6Vn+Qr9Xo
-	wpQM+p+yVBGLO8ome+Jv6FWJB3rCnxYCqCkH7CJSt0vZjBzeiPMWL5wYfjCAGQs4XTFSoeTa/trWc
-	Uqdu7Uqo7q67rFHAzm9GsvgtmDW4jUwwSkhZGgmSQVckALhCHxQ9m9HvQ5TF98XTeMj7fPxyCMvqV
-	dQP5JGLg==;
+	bh=CoQ1zDWJfKaUoreHOW2rlIAcB1/bu7SHnfh81khO/Q0=; b=omuriYp9J90ysrj41THHH7D7qO
+	WBADPdI5D/PDppyxoCQAuxlnrEV7ud160pDhCvVQiR9mz6CewHwGr9aV/qRzaPUBRJAp4Zu6LuoTM
+	CeAkEOOOBgdmrenz3W4xdzwJqaMjrBivnMHUSVtBRqg6zGqdqk7oGLTKEcGxNCKoEPx7cUyLCgEql
+	4DsCrtD9/2dw1q3M76mLfln6ZSy/vcrzf2c1f6nZtyJSD85A4zDQWae0n1/dgaf6l9CmOzmiXz8vY
+	z5BhAtFnUA1un8ZM4KUCTFmD0hblcJgmsMLiV+LeZdyk/wGfCermzJ4usomY+mxa9vmAwaFgPCW3M
+	BW2xlnVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rvD1x-0000000GNbP-04Lr;
-	Fri, 12 Apr 2024 09:17:09 +0000
-Received: from mail-dm6nam04on20600.outbound.protection.outlook.com ([2a01:111:f403:2409::600] helo=NAM04-DM6-obe.outbound.protection.outlook.com)
+	id 1rvD3v-0000000GOch-0rBS;
+	Fri, 12 Apr 2024 09:19:11 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rvD1s-0000000GNYQ-2i15;
-	Fri, 12 Apr 2024 09:17:06 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=R+uXAiwo7GPLKQMb+E85jarU6f9XdZ4O5UsGv+84rvXVuq0O4nvN6M3u+fQQFBYc3xek4BBcZB3iy2kLIZMGseTLXv6kEc3t9OYoQnqk9gy82weNI4FUZcXFai6FZypYtIOh+ZA1ESJUoMiQocowHNTagntAzLvLIzutCpSuvsbXBqE0Fg+MIZQqMTzmX2cSRiO3P1tcAK5LdPu75JG86bLQJSDirgv8jfXnVIhsr33XX2IMU/6dHj0O8O1Ly7iDEJ2zD94EmUTQ7iDLgzxn3DLJ025Hwf9QJDVk47emc8j3Eu4kkwLDndbuES0+G68jIMyTE4FkZGmzH3JTz+98HA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=etB2/l/COzzBw7bzJWtmcuFjR139PFoLKVkU1aqbU/4=;
- b=WCERdvrkaC5YlyHrJmMK+sz5PYvtvu9FUoanlXQPLA3FSgNcullTYkV5f5rSruYEow2Bs8TyGIkEkVfMYGAnmcOih3DSGo3j4iv0QgZzE1VpI4DRHDxoM1sMAOPLWt0YZhLDkfzrUVO1xhKDDXsSnMdLJgJoCBCoejKc3kXieXbHwVds4ewpmUDnjD6PYLjGm93pMPQKBak9E/vEYafa1iGYch4mNqVoR9uvkS4jyE0T21itK2uyP5QBqcJ5fSXcaYvDVP5hqaRkUhKKpNUEEzi2Re4srLIhIBRknqAdUowZ6vUQcR7qsPceCAMPPdKrD7hMhXta7wj+MD73wwjC4Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
- header.d=amd.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=etB2/l/COzzBw7bzJWtmcuFjR139PFoLKVkU1aqbU/4=;
- b=p1q7E4AeMztu4/JUMZmhQAn/TbuNAawtGKapDp4czS6hWjNIBOynnEdMCWtlHji5RTPQtTXGKfW5+6snt+9IdnRbUfp/0HeVd2W73Ogt1HWnmE1WGuBbdCPRxVe3gIfxgdu8NhonKHtWy3gJded2mQNjlg2oubQpZ8YpvFRvqEA=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=amd.com;
-Received: from PH7PR12MB5685.namprd12.prod.outlook.com (2603:10b6:510:13c::22)
- by SA1PR12MB7317.namprd12.prod.outlook.com (2603:10b6:806:2ba::14) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7409.46; Fri, 12 Apr
- 2024 09:16:57 +0000
-Received: from PH7PR12MB5685.namprd12.prod.outlook.com
- ([fe80::f2b6:1034:76e8:f15a]) by PH7PR12MB5685.namprd12.prod.outlook.com
- ([fe80::f2b6:1034:76e8:f15a%6]) with mapi id 15.20.7409.053; Fri, 12 Apr 2024
- 09:16:57 +0000
-Message-ID: <f3698562-5000-483e-bfd8-272bf6306b0e@amd.com>
-Date: Fri, 12 Apr 2024 11:16:47 +0200
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5,05/23] dma-buf: heaps: Deduplicate docs and adopt
- common format
-To: Yunfei Dong <yunfei.dong@mediatek.com>,
- Jeffrey Kardatzke <jkardatzke@google.com>,
- =?UTF-8?Q?N=C3=ADcolas_F_=2E_R_=2E_A_=2E_Prado?= <nfraprado@collabora.com>,
- Nathan Hebert <nhebert@chromium.org>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Sebastian Fricke <sebastian.fricke@collabora.com>,
- Tomasz Figa <tfiga@chromium.org>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Marek Szyprowski <m.szyprowski@samsung.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>, Yong Wu <yong.wu@mediatek.com>,
- Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
- Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>,
- Sumit Semwal <sumit.semwal@linaro.org>, Brian Starkey
- <Brian.Starkey@arm.com>, John Stultz <jstultz@google.com>,
- "T . J . Mercier" <tjmercier@google.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-media@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20240412090851.24999-1-yunfei.dong@mediatek.com>
- <20240412090851.24999-6-yunfei.dong@mediatek.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>
-In-Reply-To: <20240412090851.24999-6-yunfei.dong@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: FR4P281CA0188.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:d10:ca::13) To PH7PR12MB5685.namprd12.prod.outlook.com
- (2603:10b6:510:13c::22)
+	id 1rvAsj-0000000FguY-40ke;
+	Fri, 12 Apr 2024 06:59:41 +0000
+X-UUID: 30ca64c2f89a11ee96d5dfc950b7243d-20240411
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=CoQ1zDWJfKaUoreHOW2rlIAcB1/bu7SHnfh81khO/Q0=;
+	b=m4CdgHAWjRAb0ohZwMIEBy8T3fv3Fx61OrQ4sDhYk/F4DSMz9uFYuTz+Bn9Vp74lmDRKqDeVXOX2gjq9i1lxHEoScTKPJIDz1eWMYrwl+xhDTRVsU3ALc8hUhqw/XVquQaqDbAcDegnD4OQRksAvAaFokbRO2kMQ+s+S/gKQL/A=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.37,REQID:580cb924-0714-4c0c-aea9-e37a42433b16,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:6f543d0,CLOUDID:1b0e1886-8d4f-477b-89d2-1e3bdbef96d1,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 30ca64c2f89a11ee96d5dfc950b7243d-20240411
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
+	(envelope-from <yi-de.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 166185529; Thu, 11 Apr 2024 23:59:22 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Fri, 12 Apr 2024 14:57:46 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 12 Apr 2024 14:57:46 +0800
+From: Yi-De Wu <yi-de.wu@mediatek.com>
+To: Yingshiuan Pan <yingshiuan.pan@mediatek.com>, Ze-Yu Wang
+	<ze-yu.wang@mediatek.com>, Yi-De Wu <yi-de.wu@mediatek.com>, Rob Herring
+	<robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+	<conor+dt@kernel.org>, Jonathan Corbet <corbet@lwn.net>, Catalin Marinas
+	<catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, Richard Cochran
+	<richardcochran@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-doc@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<netdev@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, David Bradil
+	<dbrazdil@google.com>, Trilok Soni <quic_tsoni@quicinc.com>, My Chuang
+	<my.chuang@mediatek.com>, Shawn Hsiao <shawn.hsiao@mediatek.com>, PeiLun Suei
+	<peilun.suei@mediatek.com>, Liju Chen <liju-clr.chen@mediatek.com>, "Willix
+ Yeh" <chi-shen.yeh@mediatek.com>, Kevenny Hsieh <kevenny.hsieh@mediatek.com>
+Subject: [PATCH v10 12/21] virt: geniezone: Add ioeventfd support
+Date: Fri, 12 Apr 2024 14:57:09 +0800
+Message-ID: <20240412065718.29105-13-yi-de.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20240412065718.29105-1-yi-de.wu@mediatek.com>
+References: <20240412065718.29105-1-yi-de.wu@mediatek.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PH7PR12MB5685:EE_|SA1PR12MB7317:EE_
-X-MS-Office365-Filtering-Correlation-Id: 33931949-a65a-425a-d9ad-08dc5ad14d90
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 3l4SFNlYAF4xb4W0d9tt7fOOhz6vWSY75VqdZJ3EcPovuEXCgQFUsnrcf1xuTIDdn9AAHTedz6YYh1Fol4N1lC42WX2uSYC5RUq/jU+J5DgfETPlG8c9hp2u10EoIB5ZxDBPQ0aIWxB0IUhvRZ6gqklVJTUqaE4SggTuW1TkCNnpBKY91DYgMSFt2Q/Bv0lm7bgY974FiFEX8A7/cVNVDMobsh6IhDD0IB5G96xecI9V/9+zo/07iprSVNF5mXG12EXfJW/cLeodtXu1hl6WD5aHKBUnFexkxa0hh9pN2+m3zbxAc8gfVMA5VYuwFYDkhzqNEVkaTE5bRgXzxZgNGHIsUvVUVgZA3uEUIhMhumoekROT/oOonahiRU7Hyp/gtdw5JsLCKdl9Ev0tHgvIQqGGqj9s/IcqRBatUKd6w74MMKu0uhoBn9smsxIgzkUrTMSdpy+Z380NPVIWmcr4qweWQo8ZoabKLFduwsFquSJxsGJQaU/PcHP97xOea2qa+WDKLXaYglgEUUMp2Ze+lShL/5pnfmrICExu1WW16Z+oJpxuBeGWLoKGHFpYvgb9RbjkdtM8ONXLGTBgUnCOXnO3LnM2FIKcnbhW89e+bFE4Bpe+rbBK18h5ljSf6DxhpMMC7DbxcLWO/LTqEV7Pd5xGe2hpXMxPpBrQHCngKcRbNsh0VztmubakaWpdUD7iCmiDSq5Y6iuBzzwjQFNgxg==
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH7PR12MB5685.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(1800799015)(376005)(7416005)(366007)(921011);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?N1VmWUNGMjJFNHhJZXFta3I0MEEyMzF6WTlCa1cxTmdoTDVXc3RhV1MzZ25n?=
- =?utf-8?B?Wm1veXBvYjlRdDd0cENQa2xPdGVTci9Ob2orblFUWHVJRUd0OGEreTd6VW1Z?=
- =?utf-8?B?eVdnZjIxZG5zUzFJSkpJL0VyOThrN1V0NjRQeW5aMzUrNHhkQnAvbU1BTlJq?=
- =?utf-8?B?UFZtcmFzQVRYM2FiSE1XODZsVDRKQVhhVk9YT0hXZ2YweDA5VjB1ZW9hUlNP?=
- =?utf-8?B?NENCR0tPUnlIL1lpOGVKblBuRHE3RkJ2UXF0R3k0c09zS25WSUQ3QnBpaXlK?=
- =?utf-8?B?RVBING1lamF5Mk1lNHJtdzVxbDNUN1NZTngyQkY2ckRwUUlaYXhZcjdhQzdt?=
- =?utf-8?B?cm93cDlkSDhNTTdvK2hvbWJtNCtVbWd6UzFiSHR1VFJPd21EVE0wQ09odE56?=
- =?utf-8?B?UERSNG1LZXk1QlJxck1FNU1aTU9UalFVRU5kL0FubTFVeUN4WFBXWCtsNnJG?=
- =?utf-8?B?ZTA2eDlBUW1QcG0yakdsT3VDRnFBRE9ubjljeTBkSHhyNXhiL0I5emF4b3Bx?=
- =?utf-8?B?M0lSK2dkT3hCTGVHL05LWmZOR3FIS0xRdjJMcXhuOTJZaklYdVpsSWRhaWpn?=
- =?utf-8?B?dmgwcW44ODh0elQzQnJxT3ROc3l4Sll0dHY4cHJmSXQ4QmpGWDlVRFRsZHFo?=
- =?utf-8?B?c2hZUkw2TWNXaHJiellXUTcwcDExditUaWlNeUdVamx3cEFpWnJObisxMlBo?=
- =?utf-8?B?d3hWZm5RODJseEduSTE4M21BcUJxbU1FV3hLbEs5RGE1Vk9pYngyeisvbWlF?=
- =?utf-8?B?OUc4VUlMaDIzRTE3bWx0NytSRDI4QmpKRno1ZGlCQUlqL0JMcDNYUUl6VmJU?=
- =?utf-8?B?cGFQRkZNYWhyUlRiWHJPeUVMRGVYK3MvY2JLMWsrMU9iVVBSazIwQXJxZGJk?=
- =?utf-8?B?QWJDQXBjeE4wdFJkVDd1Zngzc0RtSllncHhRb2J1UWdZdUNGazQ5aVd4TGZq?=
- =?utf-8?B?ZVYzbCttWUVHYW45WGlqWVlCTk5vYkNnQmJCbGJXTlR4dCtveVNmb2xOem5D?=
- =?utf-8?B?WFZUWDZ5RVo3dHd6bnJtb1g1aDdNL2NkejdVRm1BeWVuM0QyaGdRQW5TakxT?=
- =?utf-8?B?alV2SGJOZnVEODByd3cvQUYxL2txdzVPMTVwbHZlQ2hoT1B0VmxmNUJyMU1H?=
- =?utf-8?B?eXErV0QvSXpwLzh1eGtFOXVobndBTWNJaC9KVFZBL2REZk1vNStNUXZha3Bx?=
- =?utf-8?B?dXZLMGZwSjJ4ai95Y1ZVNEc0S05iV3BpSXo5RU4wMUd5Y3RWNzNVOWpjeTRF?=
- =?utf-8?B?Z0wvMWQ5RHN1SnlyTEVJbk01eHljczlJcHYvbGZuZk5BK09KL0tvRU93OVpT?=
- =?utf-8?B?bElaTFJpT1FrNFJINlNVNDZkb2lnNnUzQU9oYUIxZkxrZHZ3cERQSGkzNTMv?=
- =?utf-8?B?QmtxdVQyZmVJaExYaDJOU0wvaDB2ZkdVQkRhbnRFeURJTURNRHFxTE9iNHVm?=
- =?utf-8?B?NmQwREJ2RzMzWFJKZU1qdkhQbE4zb1VvK3JMdndaUVZ3bko2RWJtWmNHZW1o?=
- =?utf-8?B?Z3FIVFRveTVRaU9rRmE3cWg1ekpyVHdzb3F6NjBnMGNDOWNubEhYV2xPbkRm?=
- =?utf-8?B?U0dENlNNM1ozeWRaR21OLzh6S3J4NTN6ejNsVVJRUXBCeG5uZm8vNWJZdDZC?=
- =?utf-8?B?bXE0ODZtd3krdVUxQnZzR1Q2QUhLODJCOFNOdmw2VGdnVWVqZk5nSDNtSjZq?=
- =?utf-8?B?OXRvOGwzajNzd1Q3STJzL0p3djR2ZUcvK3RYWkJjYzNydGY4Y01TemdtYzhO?=
- =?utf-8?B?QjY4S1ljM2d1UU1Zak9pdHFMbExHSzB6VllUNW9wRTZKcEVwaHB1QlY1bWs2?=
- =?utf-8?B?ZEl0WVN0cE9WdmR3Rk1QMlBQZ3luOGx3SFNSdkRFbTE4ZkR4bTBWN2xtWXVk?=
- =?utf-8?B?U044U3hMa0pyUDdpdjFaWjdCL3g3UHlwdVZhQzZ5SU5nOHp4bVJXTDdxZ2dQ?=
- =?utf-8?B?N2NTRkNGd25qdGNzVlFldnZ1azR0MVhLU0lxR3ZteitZODB2Qi94Q2hSZDBn?=
- =?utf-8?B?M092aktuNHlhOGE1Rnl4MmlCYnNoOTZSUWtZNmh1TEdsSkJiQnlOckNnRnNC?=
- =?utf-8?B?bUdxbDB3MDVKb1NjdzVRWlRSZnRsckV6Vjh5TDBqLzNZY1QvV0JZK0VTK2Zw?=
- =?utf-8?Q?ZOl20oko1fk/SJRiPLEXs2kdZ?=
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 33931949-a65a-425a-d9ad-08dc5ad14d90
-X-MS-Exchange-CrossTenant-AuthSource: PH7PR12MB5685.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Apr 2024 09:16:57.6903
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: yolCHiEtICIj6ORmigBsCzCKISCXshZKkX5ByTXGRkK9ak7kL8dJlIA4Vahf4RPq
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR12MB7317
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--10.047500-8.000000
+X-TMASE-MatchedRID: RpvSv/4NlMlFXAohF8vNJsnUT+eskUQPsjXBCUyiRiYExRMryOBAgVe/
+	KWmAuveA8AyWk2NFMNZM8qdoCvOVvj13WcdbGR6QpvwZ9GmdwDPDHSNFHFxB8/EJBoK3pfxusLN
+	r5TqhtfjcN0v5cWnqNbwpUHaPzI/rpljg/F9ExYQQNC45RlqcSyGlZBSK0BYbv8D7QPW2jo/ejM
+	lFftvg2a4Uh1vskGhf2dxeEJzYZ0jCn+Yz1AZqrdF8NCC76P7lKVrLOZD1BXTxxaAXDrCnszQIU
+	ZM7wXvCgcVTBKDzbcwvTVpPyCy/8BnsS71Oo/Hwo65WJt1k1O/8DPC67L8SeUMQltJudvfM4VGO
+	Wl7ttKyj0p+InAKZ8YCtxlBGOOJC4opohxsLtfbd+fuf9kcapq4E49lQCn4hFLXUWU5hGiH1LVN
+	7yAVQaElyv9hMt8vR4LqUZgEiKxEfLCnwVCuCFakVfngvx/3FHznaOB9+eYghvFjBsLEZNNzuzy
+	vdSEu2tDhCWeyepvNKg9hhahwVGfm9WstcRwZxVnhTcytb5dINBcDN4RU2pakp8F/qKdS/o8WMk
+	QWv6iXBcIE78YqRWo6HM5rqDwqtsuCQNCWRE0AChFGdDWfyk1FRveUde1Qe7hbf5BJsdsHJ1bLs
+	ZmnLfg==
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--10.047500-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 9850C953E9BE160B16501188DAA7B230564A9856E693848A0097896A1108CCF72000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240412_021704_707859_49556E55 
-X-CRM114-Status: GOOD (  24.93  )
+X-CRM114-CacheID: sfid-20240411_235930_310214_AD0F344F 
+X-CRM114-Status: GOOD (  31.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -161,156 +111,477 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am 12.04.24 um 11:08 schrieb Yunfei Dong:
-> From: "T.J. Mercier" <tjmercier@google.com>
->
-> The docs for dma_heap_get_name were incorrect, and since they were
-> duplicated in the header they were wrong there too.
->
-> The docs formatting was inconsistent so I tried to make it more
-> consistent across functions since I'm already in here doing cleanup.
->
-> Remove multiple unused includes and alphabetize.
->
-> Signed-off-by: T.J. Mercier <tjmercier@google.com>
-> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> [Yong: Just add a comment for "priv" to mute build warning]
-> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+From: "Yingshiuan Pan" <yingshiuan.pan@mediatek.com>
 
-If nobody objects I'm going to cherry pick this cleanup here into 
-drm-misc-next.
+Ioeventfd leverages eventfd to provide asynchronous notification
+mechanism for VMM. VMM can register a mmio address and bind with an
+eventfd. Once a mmio trap occurs on this registered region, its
+corresponding eventfd will be notified.
 
-Regards,
-Christian.
+Signed-off-by: Yingshiuan Pan <yingshiuan.pan@mediatek.com>
+Signed-off-by: Liju Chen <liju-clr.chen@mediatek.com>
+Signed-off-by: Yi-De Wu <yi-de.wu@mediatek.com>
+---
+ drivers/virt/geniezone/Makefile         |   3 +-
+ drivers/virt/geniezone/gzvm_ioeventfd.c | 276 ++++++++++++++++++++++++
+ drivers/virt/geniezone/gzvm_vcpu.c      |  27 ++-
+ drivers/virt/geniezone/gzvm_vm.c        |  17 ++
+ include/linux/soc/mediatek/gzvm_drv.h   |  13 ++
+ include/uapi/linux/gzvm.h               |  25 +++
+ 6 files changed, 359 insertions(+), 2 deletions(-)
+ create mode 100644 drivers/virt/geniezone/gzvm_ioeventfd.c
 
-> ---
->   drivers/dma-buf/dma-heap.c | 27 +++++++++++++++------------
->   include/linux/dma-heap.h   | 21 +--------------------
->   2 files changed, 16 insertions(+), 32 deletions(-)
->
-> diff --git a/drivers/dma-buf/dma-heap.c b/drivers/dma-buf/dma-heap.c
-> index 84ae708fafe7..22f6c193db0d 100644
-> --- a/drivers/dma-buf/dma-heap.c
-> +++ b/drivers/dma-buf/dma-heap.c
-> @@ -7,17 +7,15 @@
->    */
->   
->   #include <linux/cdev.h>
-> -#include <linux/debugfs.h>
->   #include <linux/device.h>
->   #include <linux/dma-buf.h>
-> +#include <linux/dma-heap.h>
->   #include <linux/err.h>
-> -#include <linux/xarray.h>
->   #include <linux/list.h>
-> -#include <linux/slab.h>
->   #include <linux/nospec.h>
-> -#include <linux/uaccess.h>
->   #include <linux/syscalls.h>
-> -#include <linux/dma-heap.h>
-> +#include <linux/uaccess.h>
-> +#include <linux/xarray.h>
->   #include <uapi/linux/dma-heap.h>
->   
->   #define DEVNAME "dma_heap"
-> @@ -28,9 +26,10 @@
->    * struct dma_heap - represents a dmabuf heap in the system
->    * @name:		used for debugging/device-node name
->    * @ops:		ops struct for this heap
-> - * @heap_devt		heap device node
-> - * @list		list head connecting to list of heaps
-> - * @heap_cdev		heap char device
-> + * @priv:		private data for this heap
-> + * @heap_devt:		heap device node
-> + * @list:		list head connecting to list of heaps
-> + * @heap_cdev:		heap char device
->    *
->    * Represents a heap of memory from which buffers can be made.
->    */
-> @@ -193,11 +192,11 @@ static const struct file_operations dma_heap_fops = {
->   };
->   
->   /**
-> - * dma_heap_get_drvdata() - get per-subdriver data for the heap
-> + * dma_heap_get_drvdata - get per-heap driver data
->    * @heap: DMA-Heap to retrieve private data for
->    *
->    * Returns:
-> - * The per-subdriver data for the heap.
-> + * The per-heap data for the heap.
->    */
->   void *dma_heap_get_drvdata(struct dma_heap *heap)
->   {
-> @@ -205,8 +204,8 @@ void *dma_heap_get_drvdata(struct dma_heap *heap)
->   }
->   
->   /**
-> - * dma_heap_get_name() - get heap name
-> - * @heap: DMA-Heap to retrieve private data for
-> + * dma_heap_get_name - get heap name
-> + * @heap: DMA-Heap to retrieve the name of
->    *
->    * Returns:
->    * The char* for the heap name.
-> @@ -216,6 +215,10 @@ const char *dma_heap_get_name(struct dma_heap *heap)
->   	return heap->name;
->   }
->   
-> +/**
-> + * dma_heap_add - adds a heap to dmabuf heaps
-> + * @exp_info: information needed to register this heap
-> + */
->   struct dma_heap *dma_heap_add(const struct dma_heap_export_info *exp_info)
->   {
->   	struct dma_heap *heap, *h, *err_ret;
-> diff --git a/include/linux/dma-heap.h b/include/linux/dma-heap.h
-> index 0c05561cad6e..fbe86ec889a8 100644
-> --- a/include/linux/dma-heap.h
-> +++ b/include/linux/dma-heap.h
-> @@ -9,14 +9,13 @@
->   #ifndef _DMA_HEAPS_H
->   #define _DMA_HEAPS_H
->   
-> -#include <linux/cdev.h>
->   #include <linux/types.h>
->   
->   struct dma_heap;
->   
->   /**
->    * struct dma_heap_ops - ops to operate on a given heap
-> - * @allocate:		allocate dmabuf and return struct dma_buf ptr
-> + * @allocate:	allocate dmabuf and return struct dma_buf ptr
->    *
->    * allocate returns dmabuf on success, ERR_PTR(-errno) on error.
->    */
-> @@ -41,28 +40,10 @@ struct dma_heap_export_info {
->   	void *priv;
->   };
->   
-> -/**
-> - * dma_heap_get_drvdata() - get per-heap driver data
-> - * @heap: DMA-Heap to retrieve private data for
-> - *
-> - * Returns:
-> - * The per-heap data for the heap.
-> - */
->   void *dma_heap_get_drvdata(struct dma_heap *heap);
->   
-> -/**
-> - * dma_heap_get_name() - get heap name
-> - * @heap: DMA-Heap to retrieve private data for
-> - *
-> - * Returns:
-> - * The char* for the heap name.
-> - */
->   const char *dma_heap_get_name(struct dma_heap *heap);
->   
-> -/**
-> - * dma_heap_add - adds a heap to dmabuf heaps
-> - * @exp_info:		information needed to register this heap
-> - */
->   struct dma_heap *dma_heap_add(const struct dma_heap_export_info *exp_info);
->   
->   #endif /* _DMA_HEAPS_H */
+diff --git a/drivers/virt/geniezone/Makefile b/drivers/virt/geniezone/Makefile
+index cebe5ad53f41..9956f4891df2 100644
+--- a/drivers/virt/geniezone/Makefile
++++ b/drivers/virt/geniezone/Makefile
+@@ -8,4 +8,5 @@ GZVM_DIR ?= ../../../drivers/virt/geniezone
+ 
+ gzvm-y := $(GZVM_DIR)/gzvm_main.o $(GZVM_DIR)/gzvm_vm.o \
+ 	  $(GZVM_DIR)/gzvm_mmu.o $(GZVM_DIR)/gzvm_vcpu.o \
+-	  $(GZVM_DIR)/gzvm_irqfd.o
++	  $(GZVM_DIR)/gzvm_irqfd.o $(GZVM_DIR)/gzvm_ioeventfd.o
++
+diff --git a/drivers/virt/geniezone/gzvm_ioeventfd.c b/drivers/virt/geniezone/gzvm_ioeventfd.c
+new file mode 100644
+index 000000000000..f751b3fa6171
+--- /dev/null
++++ b/drivers/virt/geniezone/gzvm_ioeventfd.c
+@@ -0,0 +1,276 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Copyright (c) 2023 MediaTek Inc.
++ */
++
++#include <linux/eventfd.h>
++#include <linux/file.h>
++#include <linux/syscalls.h>
++#include <linux/gzvm.h>
++#include <linux/soc/mediatek/gzvm_drv.h>
++#include <linux/wait.h>
++#include <linux/poll.h>
++#include <linux/module.h>
++#include <linux/slab.h>
++
++struct gzvm_ioevent {
++	struct list_head list;
++	__u64 addr;
++	__u32 len;
++	struct eventfd_ctx  *evt_ctx;
++	__u64 datamatch;
++	bool wildcard;
++};
++
++/**
++ * ioeventfd_check_collision() - Check collison assumes gzvm->slots_lock held.
++ * @gzvm: Pointer to gzvm.
++ * @p: Pointer to gzvm_ioevent.
++ *
++ * Return:
++ * * true			- collison found
++ * * false			- no collison
++ */
++static bool ioeventfd_check_collision(struct gzvm *gzvm, struct gzvm_ioevent *p)
++{
++	struct gzvm_ioevent *_p;
++
++	list_for_each_entry(_p, &gzvm->ioevents, list) {
++		if (_p->addr == p->addr &&
++		    (!_p->len || !p->len ||
++		     (_p->len == p->len &&
++		      (_p->wildcard || p->wildcard ||
++		       _p->datamatch == p->datamatch))))
++			return true;
++		if (p->addr >= _p->addr && p->addr < _p->addr + _p->len)
++			return true;
++	}
++
++	return false;
++}
++
++static void gzvm_ioevent_release(struct gzvm_ioevent *p)
++{
++	eventfd_ctx_put(p->evt_ctx);
++	list_del(&p->list);
++	kfree(p);
++}
++
++static bool gzvm_ioevent_in_range(struct gzvm_ioevent *p, __u64 addr, int len,
++				  const void *val)
++{
++	u64 _val;
++
++	if (addr != p->addr)
++		/* address must be precise for a hit */
++		return false;
++
++	if (!p->len)
++		/* length = 0 means only look at the address, so always a hit */
++		return true;
++
++	if (len != p->len)
++		/* address-range must be precise for a hit */
++		return false;
++
++	if (p->wildcard)
++		/* all else equal, wildcard is always a hit */
++		return true;
++
++	/* otherwise, we have to actually compare the data */
++
++	WARN_ON_ONCE(!IS_ALIGNED((unsigned long)val, len));
++
++	switch (len) {
++	case 1:
++		_val = *(u8 *)val;
++		break;
++	case 2:
++		_val = *(u16 *)val;
++		break;
++	case 4:
++		_val = *(u32 *)val;
++		break;
++	case 8:
++		_val = *(u64 *)val;
++		break;
++	default:
++		return false;
++	}
++
++	return _val == p->datamatch;
++}
++
++static int gzvm_deassign_ioeventfd(struct gzvm *gzvm,
++				   struct gzvm_ioeventfd *args)
++{
++	struct gzvm_ioevent *p, *tmp;
++	struct eventfd_ctx *evt_ctx;
++	int ret = -ENOENT;
++	bool wildcard;
++
++	evt_ctx = eventfd_ctx_fdget(args->fd);
++	if (IS_ERR(evt_ctx))
++		return PTR_ERR(evt_ctx);
++
++	wildcard = !(args->flags & GZVM_IOEVENTFD_FLAG_DATAMATCH);
++
++	mutex_lock(&gzvm->lock);
++
++	list_for_each_entry_safe(p, tmp, &gzvm->ioevents, list) {
++		if (p->evt_ctx != evt_ctx  ||
++		    p->addr != args->addr  ||
++		    p->len != args->len ||
++		    p->wildcard != wildcard)
++			continue;
++
++		if (!p->wildcard && p->datamatch != args->datamatch)
++			continue;
++
++		gzvm_ioevent_release(p);
++		ret = 0;
++		break;
++	}
++
++	mutex_unlock(&gzvm->lock);
++
++	/* got in the front of this function */
++	eventfd_ctx_put(evt_ctx);
++
++	return ret;
++}
++
++static int gzvm_assign_ioeventfd(struct gzvm *gzvm, struct gzvm_ioeventfd *args)
++{
++	struct eventfd_ctx *evt_ctx;
++	struct gzvm_ioevent *evt;
++	int ret;
++
++	evt_ctx = eventfd_ctx_fdget(args->fd);
++	if (IS_ERR(evt_ctx))
++		return PTR_ERR(evt_ctx);
++
++	evt = kmalloc(sizeof(*evt), GFP_KERNEL);
++	if (!evt)
++		return -ENOMEM;
++	*evt = (struct gzvm_ioevent) {
++		.addr = args->addr,
++		.len = args->len,
++		.evt_ctx = evt_ctx,
++	};
++	if (args->flags & GZVM_IOEVENTFD_FLAG_DATAMATCH) {
++		evt->datamatch = args->datamatch;
++		evt->wildcard = false;
++	} else {
++		evt->wildcard = true;
++	}
++
++	if (ioeventfd_check_collision(gzvm, evt)) {
++		ret = -EEXIST;
++		goto err_free;
++	}
++
++	mutex_lock(&gzvm->lock);
++	list_add_tail(&evt->list, &gzvm->ioevents);
++	mutex_unlock(&gzvm->lock);
++
++	return 0;
++
++err_free:
++	kfree(evt);
++	eventfd_ctx_put(evt_ctx);
++	return ret;
++}
++
++/**
++ * gzvm_ioeventfd_check_valid() - Check user arguments is valid.
++ * @args: Pointer to gzvm_ioeventfd.
++ *
++ * Return:
++ * * true if user arguments are valid.
++ * * false if user arguments are invalid.
++ */
++static bool gzvm_ioeventfd_check_valid(struct gzvm_ioeventfd *args)
++{
++	/* must be natural-word sized, or 0 to ignore length */
++	switch (args->len) {
++	case 0:
++	case 1:
++	case 2:
++	case 4:
++	case 8:
++		break;
++	default:
++		return false;
++	}
++
++	/* check for range overflow */
++	if (args->addr + args->len < args->addr)
++		return false;
++
++	/* check for extra flags that we don't understand */
++	if (args->flags & ~GZVM_IOEVENTFD_VALID_FLAG_MASK)
++		return false;
++
++	/* ioeventfd with no length can't be combined with DATAMATCH */
++	if (!args->len && (args->flags & GZVM_IOEVENTFD_FLAG_DATAMATCH))
++		return false;
++
++	/* gzvm does not support pio bus ioeventfd */
++	if (args->flags & GZVM_IOEVENTFD_FLAG_PIO)
++		return false;
++
++	return true;
++}
++
++/**
++ * gzvm_ioeventfd() - Register ioevent to ioevent list.
++ * @gzvm: Pointer to gzvm.
++ * @args: Pointer to gzvm_ioeventfd.
++ *
++ * Return:
++ * * 0			- Success.
++ * * Negative		- Failure.
++ */
++int gzvm_ioeventfd(struct gzvm *gzvm, struct gzvm_ioeventfd *args)
++{
++	if (gzvm_ioeventfd_check_valid(args) == false)
++		return -EINVAL;
++
++	if (args->flags & GZVM_IOEVENTFD_FLAG_DEASSIGN)
++		return gzvm_deassign_ioeventfd(gzvm, args);
++	return gzvm_assign_ioeventfd(gzvm, args);
++}
++
++/**
++ * gzvm_ioevent_write() - Travers this vm's registered ioeventfd to see if
++ *			  need notifying it.
++ * @vcpu: Pointer to vcpu.
++ * @addr: mmio address.
++ * @len: mmio size.
++ * @val: Pointer to void.
++ *
++ * Return:
++ * * true if this io is already sent to ioeventfd's listener.
++ * * false if we cannot find any ioeventfd registering this mmio write.
++ */
++bool gzvm_ioevent_write(struct gzvm_vcpu *vcpu, __u64 addr, int len,
++			const void *val)
++{
++	struct gzvm_ioevent *e;
++
++	list_for_each_entry(e, &vcpu->gzvm->ioevents, list) {
++		if (gzvm_ioevent_in_range(e, addr, len, val)) {
++			eventfd_signal(e->evt_ctx);
++			return true;
++		}
++	}
++	return false;
++}
++
++int gzvm_init_ioeventfd(struct gzvm *gzvm)
++{
++	INIT_LIST_HEAD(&gzvm->ioevents);
++
++	return 0;
++}
+diff --git a/drivers/virt/geniezone/gzvm_vcpu.c b/drivers/virt/geniezone/gzvm_vcpu.c
+index 1ac09bf5f2d8..388d25e1183b 100644
+--- a/drivers/virt/geniezone/gzvm_vcpu.c
++++ b/drivers/virt/geniezone/gzvm_vcpu.c
+@@ -51,6 +51,30 @@ static long gzvm_vcpu_update_one_reg(struct gzvm_vcpu *vcpu,
+ 	return 0;
+ }
+ 
++/**
++ * gzvm_vcpu_handle_mmio() - Handle mmio in kernel space.
++ * @vcpu: Pointer to vcpu.
++ *
++ * Return:
++ * * true - This mmio exit has been processed.
++ * * false - This mmio exit has not been processed, require userspace.
++ */
++static bool gzvm_vcpu_handle_mmio(struct gzvm_vcpu *vcpu)
++{
++	__u64 addr;
++	__u32 len;
++	const void *val_ptr;
++
++	/* So far, we don't have in-kernel mmio read handler */
++	if (!vcpu->run->mmio.is_write)
++		return false;
++	addr = vcpu->run->mmio.phys_addr;
++	len = vcpu->run->mmio.size;
++	val_ptr = &vcpu->run->mmio.data;
++
++	return gzvm_ioevent_write(vcpu, addr, len, val_ptr);
++}
++
+ /**
+  * gzvm_vcpu_run() - Handle vcpu run ioctl, entry point to guest and exit
+  *		     point from guest
+@@ -82,7 +106,8 @@ static long gzvm_vcpu_run(struct gzvm_vcpu *vcpu, void __user *argp)
+ 
+ 		switch (exit_reason) {
+ 		case GZVM_EXIT_MMIO:
+-			need_userspace = true;
++			if (!gzvm_vcpu_handle_mmio(vcpu))
++				need_userspace = true;
+ 			break;
+ 		/**
+ 		 * it's geniezone's responsibility to fill corresponding data
+diff --git a/drivers/virt/geniezone/gzvm_vm.c b/drivers/virt/geniezone/gzvm_vm.c
+index 77be1a22d767..dbd83e2358c9 100644
+--- a/drivers/virt/geniezone/gzvm_vm.c
++++ b/drivers/virt/geniezone/gzvm_vm.c
+@@ -227,6 +227,16 @@ static long gzvm_vm_ioctl(struct file *filp, unsigned int ioctl,
+ 		ret = gzvm_irqfd(gzvm, &data);
+ 		break;
+ 	}
++	case GZVM_IOEVENTFD: {
++		struct gzvm_ioeventfd data;
++
++		if (copy_from_user(&data, argp, sizeof(data))) {
++			ret = -EFAULT;
++			goto out;
++		}
++		ret = gzvm_ioeventfd(gzvm, &data);
++		break;
++	}
+ 	case GZVM_ENABLE_CAP: {
+ 		struct gzvm_enable_cap cap;
+ 
+@@ -303,6 +313,13 @@ static struct gzvm *gzvm_create_vm(unsigned long vm_type)
+ 		return ERR_PTR(ret);
+ 	}
+ 
++	ret = gzvm_init_ioeventfd(gzvm);
++	if (ret) {
++		pr_err("Failed to initialize ioeventfd\n");
++		kfree(gzvm);
++		return ERR_PTR(ret);
++	}
++
+ 	mutex_lock(&gzvm_list_lock);
+ 	list_add(&gzvm->vm_list, &gzvm_list);
+ 	mutex_unlock(&gzvm_list_lock);
+diff --git a/include/linux/soc/mediatek/gzvm_drv.h b/include/linux/soc/mediatek/gzvm_drv.h
+index 0b02b5daa817..e459dfa681a4 100644
+--- a/include/linux/soc/mediatek/gzvm_drv.h
++++ b/include/linux/soc/mediatek/gzvm_drv.h
+@@ -6,6 +6,7 @@
+ #ifndef __GZVM_DRV_H__
+ #define __GZVM_DRV_H__
+ 
++#include <linux/eventfd.h>
+ #include <linux/list.h>
+ #include <linux/mm.h>
+ #include <linux/mutex.h>
+@@ -98,6 +99,7 @@ struct gzvm_vcpu {
+  * @memslot: VM's memory slot descriptor
+  * @lock: lock for list_add
+  * @irqfds: the data structure is used to keep irqfds's information
++ * @ioevents: list head for ioevents
+  * @vm_list: list head for vm list
+  * @vm_id: vm id
+  * @irq_ack_notifier_list: list head for irq ack notifier
+@@ -117,6 +119,8 @@ struct gzvm {
+ 		struct mutex      resampler_lock;
+ 	} irqfds;
+ 
++	struct list_head ioevents;
++
+ 	struct list_head vm_list;
+ 	u16 vm_id;
+ 
+@@ -173,4 +177,13 @@ void gzvm_drv_irqfd_exit(void);
+ int gzvm_vm_irqfd_init(struct gzvm *gzvm);
+ void gzvm_vm_irqfd_release(struct gzvm *gzvm);
+ 
++int gzvm_init_ioeventfd(struct gzvm *gzvm);
++int gzvm_ioeventfd(struct gzvm *gzvm, struct gzvm_ioeventfd *args);
++bool gzvm_ioevent_write(struct gzvm_vcpu *vcpu, __u64 addr, int len,
++			const void *val);
++void eventfd_ctx_do_read(struct eventfd_ctx *ctx, __u64 *cnt);
++struct vm_area_struct *vma_lookup(struct mm_struct *mm, unsigned long addr);
++void add_wait_queue_priority(struct wait_queue_head *wq_head,
++			     struct wait_queue_entry *wq_entry);
++
+ #endif /* __GZVM_DRV_H__ */
+diff --git a/include/uapi/linux/gzvm.h b/include/uapi/linux/gzvm.h
+index aa61ece00cac..6e102cbfec98 100644
+--- a/include/uapi/linux/gzvm.h
++++ b/include/uapi/linux/gzvm.h
+@@ -339,4 +339,29 @@ struct gzvm_irqfd {
+ 
+ #define GZVM_IRQFD	_IOW(GZVM_IOC_MAGIC, 0x76, struct gzvm_irqfd)
+ 
++enum {
++	gzvm_ioeventfd_flag_nr_datamatch = 0,
++	gzvm_ioeventfd_flag_nr_pio = 1,
++	gzvm_ioeventfd_flag_nr_deassign = 2,
++	gzvm_ioeventfd_flag_nr_max,
++};
++
++#define GZVM_IOEVENTFD_FLAG_DATAMATCH	(1 << gzvm_ioeventfd_flag_nr_datamatch)
++#define GZVM_IOEVENTFD_FLAG_PIO		(1 << gzvm_ioeventfd_flag_nr_pio)
++#define GZVM_IOEVENTFD_FLAG_DEASSIGN	(1 << gzvm_ioeventfd_flag_nr_deassign)
++#define GZVM_IOEVENTFD_VALID_FLAG_MASK	((1 << gzvm_ioeventfd_flag_nr_max) - 1)
++
++struct gzvm_ioeventfd {
++	__u64 datamatch;
++	/* private: legal pio/mmio address */
++	__u64 addr;
++	/* private: 1, 2, 4, or 8 bytes; or 0 to ignore length */
++	__u32 len;
++	__s32 fd;
++	__u32 flags;
++	__u8  pad[36];
++};
++
++#define GZVM_IOEVENTFD	_IOW(GZVM_IOC_MAGIC, 0x79, struct gzvm_ioeventfd)
++
+ #endif /* __GZVM_H__ */
+-- 
+2.18.0
 
 
