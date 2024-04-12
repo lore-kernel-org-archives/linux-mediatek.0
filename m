@@ -4,99 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B63EC4345F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Apr 2024 09:19:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C395C4345F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Apr 2024 09:28:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CoQ1zDWJfKaUoreHOW2rlIAcB1/bu7SHnfh81khO/Q0=; b=omuriYp9J90ysrj41THHH7D7qO
-	WBADPdI5D/PDppyxoCQAuxlnrEV7ud160pDhCvVQiR9mz6CewHwGr9aV/qRzaPUBRJAp4Zu6LuoTM
-	CeAkEOOOBgdmrenz3W4xdzwJqaMjrBivnMHUSVtBRqg6zGqdqk7oGLTKEcGxNCKoEPx7cUyLCgEql
-	4DsCrtD9/2dw1q3M76mLfln6ZSy/vcrzf2c1f6nZtyJSD85A4zDQWae0n1/dgaf6l9CmOzmiXz8vY
-	z5BhAtFnUA1un8ZM4KUCTFmD0hblcJgmsMLiV+LeZdyk/wGfCermzJ4usomY+mxa9vmAwaFgPCW3M
-	BW2xlnVA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:
+	Subject:Cc:To:From:Message-Id:Date:Content-Type:Content-Transfer-Encoding:
+	Mime-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+OReUEDN2frbNEsMpeetqUaCFfc7dipywbbMjiR36/E=; b=BYLusZqAReB9SIrnYRM5cAFMhi
+	f3JbU0fCwGXLuyH1XXXcxi4BsU1GR5GwclYU05y8lHZ/rlUwY1ddlaH6pAcAXj+CYN7qQhgGlLp3O
+	9NxFeoZ9b9Ce4MU3t3b+6VO/toJj7Vg+TObBzeZbrZFJFxG9cNS1yO4QBa1I6aMkAIm9Zgcc3W/mP
+	hr0nS0X0gAuuAxpbfEuDVbhArGZ0qSpQe+h1nWgy2shjgLgILm5ut5TODoGLi/MUFV5RKL9qHSd2t
+	TqQXkENGBcg9El5OpmRFDwgOL51h0PKMJ6jqSQAILtoeA3bzWlrpw4HBATMv/ov7m1Rh8x/Gr5sJ+
+	rF81Un/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rvD3v-0000000GOch-0rBS;
-	Fri, 12 Apr 2024 09:19:11 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1rvDCT-0000000GRsm-0IMQ;
+	Fri, 12 Apr 2024 09:28:01 +0000
+Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rvAsj-0000000FguY-40ke;
-	Fri, 12 Apr 2024 06:59:41 +0000
-X-UUID: 30ca64c2f89a11ee96d5dfc950b7243d-20240411
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=CoQ1zDWJfKaUoreHOW2rlIAcB1/bu7SHnfh81khO/Q0=;
-	b=m4CdgHAWjRAb0ohZwMIEBy8T3fv3Fx61OrQ4sDhYk/F4DSMz9uFYuTz+Bn9Vp74lmDRKqDeVXOX2gjq9i1lxHEoScTKPJIDz1eWMYrwl+xhDTRVsU3ALc8hUhqw/XVquQaqDbAcDegnD4OQRksAvAaFokbRO2kMQ+s+S/gKQL/A=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.37,REQID:580cb924-0714-4c0c-aea9-e37a42433b16,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:6f543d0,CLOUDID:1b0e1886-8d4f-477b-89d2-1e3bdbef96d1,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 30ca64c2f89a11ee96d5dfc950b7243d-20240411
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
-	(envelope-from <yi-de.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 166185529; Thu, 11 Apr 2024 23:59:22 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 12 Apr 2024 14:57:46 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 12 Apr 2024 14:57:46 +0800
-From: Yi-De Wu <yi-de.wu@mediatek.com>
-To: Yingshiuan Pan <yingshiuan.pan@mediatek.com>, Ze-Yu Wang
-	<ze-yu.wang@mediatek.com>, Yi-De Wu <yi-de.wu@mediatek.com>, Rob Herring
-	<robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
-	<conor+dt@kernel.org>, Jonathan Corbet <corbet@lwn.net>, Catalin Marinas
-	<catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, Richard Cochran
-	<richardcochran@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-doc@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<netdev@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, David Bradil
-	<dbrazdil@google.com>, Trilok Soni <quic_tsoni@quicinc.com>, My Chuang
-	<my.chuang@mediatek.com>, Shawn Hsiao <shawn.hsiao@mediatek.com>, PeiLun Suei
-	<peilun.suei@mediatek.com>, Liju Chen <liju-clr.chen@mediatek.com>, "Willix
- Yeh" <chi-shen.yeh@mediatek.com>, Kevenny Hsieh <kevenny.hsieh@mediatek.com>
-Subject: [PATCH v10 12/21] virt: geniezone: Add ioeventfd support
-Date: Fri, 12 Apr 2024 14:57:09 +0800
-Message-ID: <20240412065718.29105-13-yi-de.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20240412065718.29105-1-yi-de.wu@mediatek.com>
-References: <20240412065718.29105-1-yi-de.wu@mediatek.com>
-MIME-Version: 1.0
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--10.047500-8.000000
-X-TMASE-MatchedRID: RpvSv/4NlMlFXAohF8vNJsnUT+eskUQPsjXBCUyiRiYExRMryOBAgVe/
-	KWmAuveA8AyWk2NFMNZM8qdoCvOVvj13WcdbGR6QpvwZ9GmdwDPDHSNFHFxB8/EJBoK3pfxusLN
-	r5TqhtfjcN0v5cWnqNbwpUHaPzI/rpljg/F9ExYQQNC45RlqcSyGlZBSK0BYbv8D7QPW2jo/ejM
-	lFftvg2a4Uh1vskGhf2dxeEJzYZ0jCn+Yz1AZqrdF8NCC76P7lKVrLOZD1BXTxxaAXDrCnszQIU
-	ZM7wXvCgcVTBKDzbcwvTVpPyCy/8BnsS71Oo/Hwo65WJt1k1O/8DPC67L8SeUMQltJudvfM4VGO
-	Wl7ttKyj0p+InAKZ8YCtxlBGOOJC4opohxsLtfbd+fuf9kcapq4E49lQCn4hFLXUWU5hGiH1LVN
-	7yAVQaElyv9hMt8vR4LqUZgEiKxEfLCnwVCuCFakVfngvx/3FHznaOB9+eYghvFjBsLEZNNzuzy
-	vdSEu2tDhCWeyepvNKg9hhahwVGfm9WstcRwZxVnhTcytb5dINBcDN4RU2pakp8F/qKdS/o8WMk
-	QWv6iXBcIE78YqRWo6HM5rqDwqtsuCQNCWRE0AChFGdDWfyk1FRveUde1Qe7hbf5BJsdsHJ1bLs
-	ZmnLfg==
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--10.047500-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 9850C953E9BE160B16501188DAA7B230564A9856E693848A0097896A1108CCF72000:8
-X-MTK: N
+	id 1rvDCQ-0000000GRqy-17Rw
+	for linux-mediatek@lists.infradead.org;
+	Fri, 12 Apr 2024 09:27:59 +0000
+Received: by mail-lf1-x12d.google.com with SMTP id 2adb3069b0e04-516d4d80d00so944127e87.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 12 Apr 2024 02:27:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1712914075; x=1713518875; darn=lists.infradead.org;
+        h=in-reply-to:references:subject:cc:to:from:message-id:date
+         :content-transfer-encoding:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=+OReUEDN2frbNEsMpeetqUaCFfc7dipywbbMjiR36/E=;
+        b=kYvDDqbgZCbQ05yUdWFKIivVnhd0AQOOr9MxNsJV9L0w9wc7GY9boYI73lZEQFzcaT
+         5lts8OxU2Grhy5yZzFW9/OP1CWeN3MHAYctK5cxWkfye00wJSk7M+KclteJ6DxKanVun
+         0d6F+jjsCHo7qnmjWuETdeMRTeg5aJL5/cFzTkAM6x2xUe4uYSJrJW7dzbu7TjpJYJU/
+         JZt2NJq5RqhORuxDauBhvH28mR0iaJrQ8tuR0Ek6De/pDd+P3ghX18ACwdyfLsA2ftQw
+         hsHTBtBhQuk1rvx1j2mLSeh/zLE/cNEe6V2uiDD+aoGZG8HR2qnoekESwvp96Ow1htN8
+         QafA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1712914075; x=1713518875;
+        h=in-reply-to:references:subject:cc:to:from:message-id:date
+         :content-transfer-encoding:mime-version:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=+OReUEDN2frbNEsMpeetqUaCFfc7dipywbbMjiR36/E=;
+        b=BZASm6VyscyfKcckDW4KUN73rI7rpKctoACgSgVkroTlEX43pSlB+OiZhvxWMqS7Oq
+         bJE1xHjClANlnJW/NeM3uXWr7WzE9PGM7RIvtozBPuoGjtb4XvW/rSyUhVdGE4UqIf0p
+         S8Ahm4DpzX/G2lRimsNQfPCnwxl4Ddl7qRSaZ1Y+dBbcJ27cA2BpDd8f0xxiJe4Fiqh3
+         OoqRV/40u7bEmAjbFPQsTiJLIbYMxSk+qdyUqC6VPvy8ctypBtm5ew2Z4dzJj2hA6QWp
+         SB88e10MF20/WotpXyBaKUKQ+SMgPMx6/mYzovyssGjsUFDjVWbyEI4RaAjkIrWtUaoo
+         zUOw==
+X-Forwarded-Encrypted: i=1; AJvYcCUMXi/iRQ9I0ux904RnmQiXWZ78myuvq8Q+x6jmdF7peGKvmigCm73yswhEsq+UbqLNF+FjsndlOCGFKDxdjcCXRN2zwK9E4GGuj+27h2/aiIQU
+X-Gm-Message-State: AOJu0Yw/tLTvnz86YsMfuftFrFA4JnKsZyHbFoExSZY0FLDtT4D6WXUh
+	9rCQ+J7H5ryDoala93/x81Kai7M928/4XaseF3pnAUNgBvkknxl7
+X-Google-Smtp-Source: AGHT+IEDzAhghf3BkO/RgZqY7va47me9gidgqhOpwVjCxTStASj/0/EN3dB/L+Y1I2Zc2CAZ0pv1BQ==
+X-Received: by 2002:a05:6512:60b:b0:518:6f95:1a37 with SMTP id b11-20020a056512060b00b005186f951a37mr1182850lfe.33.1712914075122;
+        Fri, 12 Apr 2024 02:27:55 -0700 (PDT)
+Received: from localhost (freebox.vlq16.iliad.fr. [213.36.7.13])
+        by smtp.gmail.com with ESMTPSA id u10-20020a5d6aca000000b0033e9d9f891csm3825825wrw.58.2024.04.12.02.27.54
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 12 Apr 2024 02:27:54 -0700 (PDT)
+Mime-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+Date: Fri, 12 Apr 2024 11:27:54 +0200
+Message-Id: <D0I1D2J8EB1L.2DPV9W79YKN2C@gmail.com>
+From: "Nicolas Escande" <nico.escande@gmail.com>
+To: "Mingyen Hsieh" <mingyen.hsieh@mediatek.com>, <nbd@nbd.name>,
+ <lorenzo@kernel.org>
+Cc: <deren.wu@mediatek.com>, <Sean.Wang@mediatek.com>,
+ <Soul.Huang@mediatek.com>, <Leon.Yen@mediatek.com>,
+ <Eric-SY.Chang@mediatek.com>, <km.lin@mediatek.com>,
+ <robin.chiu@mediatek.com>, <ch.yeh@mediatek.com>, <posh.sun@mediatek.com>,
+ <Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
+ <Shayne.Chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, "Leon Yen" <leon.yen@mediatek.com>
+Subject: Re: [PATCH] wifi: mt76: mt7921: avoid undesired changes of the
+ preset regulatory domain
+X-Mailer: aerc 0.17.0
+References: <20240412085357.13756-1-mingyen.hsieh@mediatek.com>
+In-Reply-To: <20240412085357.13756-1-mingyen.hsieh@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240411_235930_310214_AD0F344F 
-X-CRM114-Status: GOOD (  31.79  )
+X-CRM114-CacheID: sfid-20240412_022758_331117_789E2A92 
+X-CRM114-Status: GOOD (  14.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,477 +100,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "Yingshiuan Pan" <yingshiuan.pan@mediatek.com>
+On Fri Apr 12, 2024 at 10:53 AM CEST, Mingyen Hsieh wrote:
+> From: Leon Yen <leon.yen@mediatek.com>
+>
+> Some countries have strict RF restrictions where changing the regulatory
+> domain dynamically based on the connected AP is not acceptable.
+> This patch disables Beacon country IE hinting when a valid country code
+> is set from usersland (e.g., by system using iw or CRDA).
 
-Ioeventfd leverages eventfd to provide asynchronous notification
-mechanism for VMM. VMM can register a mmio address and bind with an
-eventfd. Once a mmio trap occurs on this registered region, its
-corresponding eventfd will be notified.
+I always had trouble fully understanding the regulation but isn't the count=
+ry
+code IE sole purpose to adapt the regulatory of the client ?=20
 
-Signed-off-by: Yingshiuan Pan <yingshiuan.pan@mediatek.com>
-Signed-off-by: Liju Chen <liju-clr.chen@mediatek.com>
-Signed-off-by: Yi-De Wu <yi-de.wu@mediatek.com>
----
- drivers/virt/geniezone/Makefile         |   3 +-
- drivers/virt/geniezone/gzvm_ioeventfd.c | 276 ++++++++++++++++++++++++
- drivers/virt/geniezone/gzvm_vcpu.c      |  27 ++-
- drivers/virt/geniezone/gzvm_vm.c        |  17 ++
- include/linux/soc/mediatek/gzvm_drv.h   |  13 ++
- include/uapi/linux/gzvm.h               |  25 +++
- 6 files changed, 359 insertions(+), 2 deletions(-)
- create mode 100644 drivers/virt/geniezone/gzvm_ioeventfd.c
-
-diff --git a/drivers/virt/geniezone/Makefile b/drivers/virt/geniezone/Makefile
-index cebe5ad53f41..9956f4891df2 100644
---- a/drivers/virt/geniezone/Makefile
-+++ b/drivers/virt/geniezone/Makefile
-@@ -8,4 +8,5 @@ GZVM_DIR ?= ../../../drivers/virt/geniezone
- 
- gzvm-y := $(GZVM_DIR)/gzvm_main.o $(GZVM_DIR)/gzvm_vm.o \
- 	  $(GZVM_DIR)/gzvm_mmu.o $(GZVM_DIR)/gzvm_vcpu.o \
--	  $(GZVM_DIR)/gzvm_irqfd.o
-+	  $(GZVM_DIR)/gzvm_irqfd.o $(GZVM_DIR)/gzvm_ioeventfd.o
-+
-diff --git a/drivers/virt/geniezone/gzvm_ioeventfd.c b/drivers/virt/geniezone/gzvm_ioeventfd.c
-new file mode 100644
-index 000000000000..f751b3fa6171
---- /dev/null
-+++ b/drivers/virt/geniezone/gzvm_ioeventfd.c
-@@ -0,0 +1,276 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Copyright (c) 2023 MediaTek Inc.
-+ */
-+
-+#include <linux/eventfd.h>
-+#include <linux/file.h>
-+#include <linux/syscalls.h>
-+#include <linux/gzvm.h>
-+#include <linux/soc/mediatek/gzvm_drv.h>
-+#include <linux/wait.h>
-+#include <linux/poll.h>
-+#include <linux/module.h>
-+#include <linux/slab.h>
-+
-+struct gzvm_ioevent {
-+	struct list_head list;
-+	__u64 addr;
-+	__u32 len;
-+	struct eventfd_ctx  *evt_ctx;
-+	__u64 datamatch;
-+	bool wildcard;
-+};
-+
-+/**
-+ * ioeventfd_check_collision() - Check collison assumes gzvm->slots_lock held.
-+ * @gzvm: Pointer to gzvm.
-+ * @p: Pointer to gzvm_ioevent.
-+ *
-+ * Return:
-+ * * true			- collison found
-+ * * false			- no collison
-+ */
-+static bool ioeventfd_check_collision(struct gzvm *gzvm, struct gzvm_ioevent *p)
-+{
-+	struct gzvm_ioevent *_p;
-+
-+	list_for_each_entry(_p, &gzvm->ioevents, list) {
-+		if (_p->addr == p->addr &&
-+		    (!_p->len || !p->len ||
-+		     (_p->len == p->len &&
-+		      (_p->wildcard || p->wildcard ||
-+		       _p->datamatch == p->datamatch))))
-+			return true;
-+		if (p->addr >= _p->addr && p->addr < _p->addr + _p->len)
-+			return true;
-+	}
-+
-+	return false;
-+}
-+
-+static void gzvm_ioevent_release(struct gzvm_ioevent *p)
-+{
-+	eventfd_ctx_put(p->evt_ctx);
-+	list_del(&p->list);
-+	kfree(p);
-+}
-+
-+static bool gzvm_ioevent_in_range(struct gzvm_ioevent *p, __u64 addr, int len,
-+				  const void *val)
-+{
-+	u64 _val;
-+
-+	if (addr != p->addr)
-+		/* address must be precise for a hit */
-+		return false;
-+
-+	if (!p->len)
-+		/* length = 0 means only look at the address, so always a hit */
-+		return true;
-+
-+	if (len != p->len)
-+		/* address-range must be precise for a hit */
-+		return false;
-+
-+	if (p->wildcard)
-+		/* all else equal, wildcard is always a hit */
-+		return true;
-+
-+	/* otherwise, we have to actually compare the data */
-+
-+	WARN_ON_ONCE(!IS_ALIGNED((unsigned long)val, len));
-+
-+	switch (len) {
-+	case 1:
-+		_val = *(u8 *)val;
-+		break;
-+	case 2:
-+		_val = *(u16 *)val;
-+		break;
-+	case 4:
-+		_val = *(u32 *)val;
-+		break;
-+	case 8:
-+		_val = *(u64 *)val;
-+		break;
-+	default:
-+		return false;
-+	}
-+
-+	return _val == p->datamatch;
-+}
-+
-+static int gzvm_deassign_ioeventfd(struct gzvm *gzvm,
-+				   struct gzvm_ioeventfd *args)
-+{
-+	struct gzvm_ioevent *p, *tmp;
-+	struct eventfd_ctx *evt_ctx;
-+	int ret = -ENOENT;
-+	bool wildcard;
-+
-+	evt_ctx = eventfd_ctx_fdget(args->fd);
-+	if (IS_ERR(evt_ctx))
-+		return PTR_ERR(evt_ctx);
-+
-+	wildcard = !(args->flags & GZVM_IOEVENTFD_FLAG_DATAMATCH);
-+
-+	mutex_lock(&gzvm->lock);
-+
-+	list_for_each_entry_safe(p, tmp, &gzvm->ioevents, list) {
-+		if (p->evt_ctx != evt_ctx  ||
-+		    p->addr != args->addr  ||
-+		    p->len != args->len ||
-+		    p->wildcard != wildcard)
-+			continue;
-+
-+		if (!p->wildcard && p->datamatch != args->datamatch)
-+			continue;
-+
-+		gzvm_ioevent_release(p);
-+		ret = 0;
-+		break;
-+	}
-+
-+	mutex_unlock(&gzvm->lock);
-+
-+	/* got in the front of this function */
-+	eventfd_ctx_put(evt_ctx);
-+
-+	return ret;
-+}
-+
-+static int gzvm_assign_ioeventfd(struct gzvm *gzvm, struct gzvm_ioeventfd *args)
-+{
-+	struct eventfd_ctx *evt_ctx;
-+	struct gzvm_ioevent *evt;
-+	int ret;
-+
-+	evt_ctx = eventfd_ctx_fdget(args->fd);
-+	if (IS_ERR(evt_ctx))
-+		return PTR_ERR(evt_ctx);
-+
-+	evt = kmalloc(sizeof(*evt), GFP_KERNEL);
-+	if (!evt)
-+		return -ENOMEM;
-+	*evt = (struct gzvm_ioevent) {
-+		.addr = args->addr,
-+		.len = args->len,
-+		.evt_ctx = evt_ctx,
-+	};
-+	if (args->flags & GZVM_IOEVENTFD_FLAG_DATAMATCH) {
-+		evt->datamatch = args->datamatch;
-+		evt->wildcard = false;
-+	} else {
-+		evt->wildcard = true;
-+	}
-+
-+	if (ioeventfd_check_collision(gzvm, evt)) {
-+		ret = -EEXIST;
-+		goto err_free;
-+	}
-+
-+	mutex_lock(&gzvm->lock);
-+	list_add_tail(&evt->list, &gzvm->ioevents);
-+	mutex_unlock(&gzvm->lock);
-+
-+	return 0;
-+
-+err_free:
-+	kfree(evt);
-+	eventfd_ctx_put(evt_ctx);
-+	return ret;
-+}
-+
-+/**
-+ * gzvm_ioeventfd_check_valid() - Check user arguments is valid.
-+ * @args: Pointer to gzvm_ioeventfd.
-+ *
-+ * Return:
-+ * * true if user arguments are valid.
-+ * * false if user arguments are invalid.
-+ */
-+static bool gzvm_ioeventfd_check_valid(struct gzvm_ioeventfd *args)
-+{
-+	/* must be natural-word sized, or 0 to ignore length */
-+	switch (args->len) {
-+	case 0:
-+	case 1:
-+	case 2:
-+	case 4:
-+	case 8:
-+		break;
-+	default:
-+		return false;
-+	}
-+
-+	/* check for range overflow */
-+	if (args->addr + args->len < args->addr)
-+		return false;
-+
-+	/* check for extra flags that we don't understand */
-+	if (args->flags & ~GZVM_IOEVENTFD_VALID_FLAG_MASK)
-+		return false;
-+
-+	/* ioeventfd with no length can't be combined with DATAMATCH */
-+	if (!args->len && (args->flags & GZVM_IOEVENTFD_FLAG_DATAMATCH))
-+		return false;
-+
-+	/* gzvm does not support pio bus ioeventfd */
-+	if (args->flags & GZVM_IOEVENTFD_FLAG_PIO)
-+		return false;
-+
-+	return true;
-+}
-+
-+/**
-+ * gzvm_ioeventfd() - Register ioevent to ioevent list.
-+ * @gzvm: Pointer to gzvm.
-+ * @args: Pointer to gzvm_ioeventfd.
-+ *
-+ * Return:
-+ * * 0			- Success.
-+ * * Negative		- Failure.
-+ */
-+int gzvm_ioeventfd(struct gzvm *gzvm, struct gzvm_ioeventfd *args)
-+{
-+	if (gzvm_ioeventfd_check_valid(args) == false)
-+		return -EINVAL;
-+
-+	if (args->flags & GZVM_IOEVENTFD_FLAG_DEASSIGN)
-+		return gzvm_deassign_ioeventfd(gzvm, args);
-+	return gzvm_assign_ioeventfd(gzvm, args);
-+}
-+
-+/**
-+ * gzvm_ioevent_write() - Travers this vm's registered ioeventfd to see if
-+ *			  need notifying it.
-+ * @vcpu: Pointer to vcpu.
-+ * @addr: mmio address.
-+ * @len: mmio size.
-+ * @val: Pointer to void.
-+ *
-+ * Return:
-+ * * true if this io is already sent to ioeventfd's listener.
-+ * * false if we cannot find any ioeventfd registering this mmio write.
-+ */
-+bool gzvm_ioevent_write(struct gzvm_vcpu *vcpu, __u64 addr, int len,
-+			const void *val)
-+{
-+	struct gzvm_ioevent *e;
-+
-+	list_for_each_entry(e, &vcpu->gzvm->ioevents, list) {
-+		if (gzvm_ioevent_in_range(e, addr, len, val)) {
-+			eventfd_signal(e->evt_ctx);
-+			return true;
-+		}
-+	}
-+	return false;
-+}
-+
-+int gzvm_init_ioeventfd(struct gzvm *gzvm)
-+{
-+	INIT_LIST_HEAD(&gzvm->ioevents);
-+
-+	return 0;
-+}
-diff --git a/drivers/virt/geniezone/gzvm_vcpu.c b/drivers/virt/geniezone/gzvm_vcpu.c
-index 1ac09bf5f2d8..388d25e1183b 100644
---- a/drivers/virt/geniezone/gzvm_vcpu.c
-+++ b/drivers/virt/geniezone/gzvm_vcpu.c
-@@ -51,6 +51,30 @@ static long gzvm_vcpu_update_one_reg(struct gzvm_vcpu *vcpu,
- 	return 0;
- }
- 
-+/**
-+ * gzvm_vcpu_handle_mmio() - Handle mmio in kernel space.
-+ * @vcpu: Pointer to vcpu.
-+ *
-+ * Return:
-+ * * true - This mmio exit has been processed.
-+ * * false - This mmio exit has not been processed, require userspace.
-+ */
-+static bool gzvm_vcpu_handle_mmio(struct gzvm_vcpu *vcpu)
-+{
-+	__u64 addr;
-+	__u32 len;
-+	const void *val_ptr;
-+
-+	/* So far, we don't have in-kernel mmio read handler */
-+	if (!vcpu->run->mmio.is_write)
-+		return false;
-+	addr = vcpu->run->mmio.phys_addr;
-+	len = vcpu->run->mmio.size;
-+	val_ptr = &vcpu->run->mmio.data;
-+
-+	return gzvm_ioevent_write(vcpu, addr, len, val_ptr);
-+}
-+
- /**
-  * gzvm_vcpu_run() - Handle vcpu run ioctl, entry point to guest and exit
-  *		     point from guest
-@@ -82,7 +106,8 @@ static long gzvm_vcpu_run(struct gzvm_vcpu *vcpu, void __user *argp)
- 
- 		switch (exit_reason) {
- 		case GZVM_EXIT_MMIO:
--			need_userspace = true;
-+			if (!gzvm_vcpu_handle_mmio(vcpu))
-+				need_userspace = true;
- 			break;
- 		/**
- 		 * it's geniezone's responsibility to fill corresponding data
-diff --git a/drivers/virt/geniezone/gzvm_vm.c b/drivers/virt/geniezone/gzvm_vm.c
-index 77be1a22d767..dbd83e2358c9 100644
---- a/drivers/virt/geniezone/gzvm_vm.c
-+++ b/drivers/virt/geniezone/gzvm_vm.c
-@@ -227,6 +227,16 @@ static long gzvm_vm_ioctl(struct file *filp, unsigned int ioctl,
- 		ret = gzvm_irqfd(gzvm, &data);
- 		break;
- 	}
-+	case GZVM_IOEVENTFD: {
-+		struct gzvm_ioeventfd data;
-+
-+		if (copy_from_user(&data, argp, sizeof(data))) {
-+			ret = -EFAULT;
-+			goto out;
-+		}
-+		ret = gzvm_ioeventfd(gzvm, &data);
-+		break;
-+	}
- 	case GZVM_ENABLE_CAP: {
- 		struct gzvm_enable_cap cap;
- 
-@@ -303,6 +313,13 @@ static struct gzvm *gzvm_create_vm(unsigned long vm_type)
- 		return ERR_PTR(ret);
- 	}
- 
-+	ret = gzvm_init_ioeventfd(gzvm);
-+	if (ret) {
-+		pr_err("Failed to initialize ioeventfd\n");
-+		kfree(gzvm);
-+		return ERR_PTR(ret);
-+	}
-+
- 	mutex_lock(&gzvm_list_lock);
- 	list_add(&gzvm->vm_list, &gzvm_list);
- 	mutex_unlock(&gzvm_list_lock);
-diff --git a/include/linux/soc/mediatek/gzvm_drv.h b/include/linux/soc/mediatek/gzvm_drv.h
-index 0b02b5daa817..e459dfa681a4 100644
---- a/include/linux/soc/mediatek/gzvm_drv.h
-+++ b/include/linux/soc/mediatek/gzvm_drv.h
-@@ -6,6 +6,7 @@
- #ifndef __GZVM_DRV_H__
- #define __GZVM_DRV_H__
- 
-+#include <linux/eventfd.h>
- #include <linux/list.h>
- #include <linux/mm.h>
- #include <linux/mutex.h>
-@@ -98,6 +99,7 @@ struct gzvm_vcpu {
-  * @memslot: VM's memory slot descriptor
-  * @lock: lock for list_add
-  * @irqfds: the data structure is used to keep irqfds's information
-+ * @ioevents: list head for ioevents
-  * @vm_list: list head for vm list
-  * @vm_id: vm id
-  * @irq_ack_notifier_list: list head for irq ack notifier
-@@ -117,6 +119,8 @@ struct gzvm {
- 		struct mutex      resampler_lock;
- 	} irqfds;
- 
-+	struct list_head ioevents;
-+
- 	struct list_head vm_list;
- 	u16 vm_id;
- 
-@@ -173,4 +177,13 @@ void gzvm_drv_irqfd_exit(void);
- int gzvm_vm_irqfd_init(struct gzvm *gzvm);
- void gzvm_vm_irqfd_release(struct gzvm *gzvm);
- 
-+int gzvm_init_ioeventfd(struct gzvm *gzvm);
-+int gzvm_ioeventfd(struct gzvm *gzvm, struct gzvm_ioeventfd *args);
-+bool gzvm_ioevent_write(struct gzvm_vcpu *vcpu, __u64 addr, int len,
-+			const void *val);
-+void eventfd_ctx_do_read(struct eventfd_ctx *ctx, __u64 *cnt);
-+struct vm_area_struct *vma_lookup(struct mm_struct *mm, unsigned long addr);
-+void add_wait_queue_priority(struct wait_queue_head *wq_head,
-+			     struct wait_queue_entry *wq_entry);
-+
- #endif /* __GZVM_DRV_H__ */
-diff --git a/include/uapi/linux/gzvm.h b/include/uapi/linux/gzvm.h
-index aa61ece00cac..6e102cbfec98 100644
---- a/include/uapi/linux/gzvm.h
-+++ b/include/uapi/linux/gzvm.h
-@@ -339,4 +339,29 @@ struct gzvm_irqfd {
- 
- #define GZVM_IRQFD	_IOW(GZVM_IOC_MAGIC, 0x76, struct gzvm_irqfd)
- 
-+enum {
-+	gzvm_ioeventfd_flag_nr_datamatch = 0,
-+	gzvm_ioeventfd_flag_nr_pio = 1,
-+	gzvm_ioeventfd_flag_nr_deassign = 2,
-+	gzvm_ioeventfd_flag_nr_max,
-+};
-+
-+#define GZVM_IOEVENTFD_FLAG_DATAMATCH	(1 << gzvm_ioeventfd_flag_nr_datamatch)
-+#define GZVM_IOEVENTFD_FLAG_PIO		(1 << gzvm_ioeventfd_flag_nr_pio)
-+#define GZVM_IOEVENTFD_FLAG_DEASSIGN	(1 << gzvm_ioeventfd_flag_nr_deassign)
-+#define GZVM_IOEVENTFD_VALID_FLAG_MASK	((1 << gzvm_ioeventfd_flag_nr_max) - 1)
-+
-+struct gzvm_ioeventfd {
-+	__u64 datamatch;
-+	/* private: legal pio/mmio address */
-+	__u64 addr;
-+	/* private: 1, 2, 4, or 8 bytes; or 0 to ignore length */
-+	__u32 len;
-+	__s32 fd;
-+	__u32 flags;
-+	__u8  pad[36];
-+};
-+
-+#define GZVM_IOEVENTFD	_IOW(GZVM_IOC_MAGIC, 0x79, struct gzvm_ioeventfd)
-+
- #endif /* __GZVM_H__ */
--- 
-2.18.0
+>
+> Signed-off-by: Leon Yen <leon.yen@mediatek.com>
+> Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+> ---
+>  drivers/net/wireless/mediatek/mt76/mt7921/init.c | 7 +++++++
+>  1 file changed, 7 insertions(+)
+>
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers/n=
+et/wireless/mediatek/mt76/mt7921/init.c
+> index ef0c721d26e3..3c9a5fcd6924 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+> @@ -135,6 +135,13 @@ mt7921_regd_notifier(struct wiphy *wiphy,
+>  	dev->mt76.region =3D request->dfs_region;
+>  	dev->country_ie_env =3D request->country_ie_env;
+> =20
+> +	if (request->initiator =3D=3D NL80211_REGDOM_SET_BY_USER) {
+> +		if (dev->mt76.alpha2[0] =3D=3D '0' && dev->mt76.alpha2[1] =3D=3D '0')
+> +			wiphy->regulatory_flags &=3D ~REGULATORY_COUNTRY_IE_IGNORE;
+> +		else
+> +			wiphy->regulatory_flags |=3D REGULATORY_COUNTRY_IE_IGNORE;
+> +	}
+> +
+>  	if (pm->suspended)
+>  		return;
+> =20
 
 
