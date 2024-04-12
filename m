@@ -4,62 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4312AC4345F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Apr 2024 07:55:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C26EC4345F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Apr 2024 07:56:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=AoKTfqB+9Kxj81GfGGjmk4oDRtO/OYcUX57xxWs37P0=; b=TV/Tn+uKztijrX2mpGyS/WbDzp
-	EDq35z0PVu1M5URdO4/FLok+7dRmYouobGlT1ne7bgWLcAPrqpXnpGYcsDT5YSe44BilqgIuKI4x/
-	VL2lOufur1grp/JRCS/2p6+pi2jo6Incx0MnSNAmp8HGRF35anbgR5RIlaZEB1eUjTOASKa3EMDiS
-	/PP5C1g5WYWciMpY4kQDzZqIlXlsynpTkpvD0f2IKdbXSDXrs+Gq7tiSlzsHv2ngfiX1ZLYbVrnnC
-	qkZZoMmTYYHbljq/Szpqh4UvAQ8xEew3mT4FeMjkMKv4lsQKEjy22iFhdb7HfcJR8v/2Dn7ZWnvzW
-	JVBV6nGg==;
+	bh=uxWqscFAwOXHq3LZxwoyO2yB+rY65Bz7waDbYHO6nwc=; b=y135ly+twMP96v+lezayxaZ1mm
+	5NW9AKEDbhh9MY98z4J2WTzr5qhsbw6b5LDHGmUSdGiB9QYx6uHXtNIHxbAeesjV6cAR++ZbHvcta
+	K5X+ncKcnA36HW6QK2SPtrLP+swCiPyJQQHvN5/tSjvFtPHAlBBc0ZwhPwteJKgAFuMcIE0J2d4nN
+	jTe+FOnsKtLuhXVUwLU7X6Q7iyQXGIAKDVzj/x0UN3Y7dL7C+rMoDTtzCYNZmjGVAsGAZIydFQtiD
+	QVflDqj+6iPwyA2WhGVMjG2oTgLAoLw8VkEZtGziy9vSliv/lDmTMtabfb/144pFxZWtzq5R9kpfS
+	z6NSVGtA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rvBkt-0000000FwSE-2jNX;
-	Fri, 12 Apr 2024 07:55:27 +0000
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
+	id 1rvBlp-0000000FwjS-04fk;
+	Fri, 12 Apr 2024 07:56:25 +0000
+Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rvBko-0000000FwQ2-1fkK
+	id 1rvBlj-0000000FwhR-1giv
 	for linux-mediatek@lists.infradead.org;
-	Fri, 12 Apr 2024 07:55:24 +0000
-Received: by mail-pl1-x62b.google.com with SMTP id d9443c01a7336-1e3e84a302eso5078485ad.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 12 Apr 2024 00:55:21 -0700 (PDT)
+	Fri, 12 Apr 2024 07:56:20 +0000
+Received: by mail-pf1-x42c.google.com with SMTP id d2e1a72fcca58-6ecec796323so688323b3a.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 12 Apr 2024 00:56:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1712908521; x=1713513321; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1712908578; x=1713513378; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=AoKTfqB+9Kxj81GfGGjmk4oDRtO/OYcUX57xxWs37P0=;
-        b=fxMjWztd52yenn9DKf681YafvVZvE33SGIGmgW8ZiIRNqTWnIRJ50vG8bx1M0UO9U5
-         udeum2v5+Sad7GfqtGxM1hbgswZgxF629tY75uN6J2mTnpanhAp8DrtSwn3n0vPCiJqw
-         qrDpG+Ey9djEG2uJQeUqJDnUgtFB4UcrFlPjI=
+        bh=uxWqscFAwOXHq3LZxwoyO2yB+rY65Bz7waDbYHO6nwc=;
+        b=QqLR+tjT9l+nNHi9HLqguS8TnjLWnleG6WPAXMGx5KHGOTCoE23Ikox8M5rbLKTh0K
+         Fka7mwa8ZzcoYITds17UQE+MzBCt6RPcDbexGL0xR3VqW7kbGqbrYK4Wp9E/ehTflckF
+         TMlw4rMq8PhwkhdHxdy2+RvSnMCQxa4gOkaII=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1712908521; x=1713513321;
+        d=1e100.net; s=20230601; t=1712908578; x=1713513378;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=AoKTfqB+9Kxj81GfGGjmk4oDRtO/OYcUX57xxWs37P0=;
-        b=FhDbYj87wPZbcI7zvBFDbhq/YM9j0B7p12rGHl9mccivVbojmfuBN/WYwNOzNnVDPg
-         /vvmzfuVylORRvzH3g2sKpaXAhNuUQkzecZ7NXjvTbiFZoKS0Z+SRW/sNSyEvfa58fhm
-         iu3XacFyVYN2I2uQ4m2RapyRsNE3vNhSyQ1JxsB5Bt4Nt2tdrwxdK0Cr3EflLTN5aGif
-         m+Wx+W+QDQmsqHIaTgPJHMH8baozM35iRNRHCRvW0izhMXjHgEk0voSysSOIIb+6Lx1+
-         dBWBr50P67WNACi83iFoa0JWK/YF3NKDFSah6bPjaMXB97Ye3dvTs/L8ncY5SmwO3YFk
-         f6AQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVMJtM9VMIi2UVCqkqdT8Vmqc716gdKhqdxBevIlrp4nAMHgvvKMn/kfL9tCFtaPcLHXR7waFRoonlW+ewuuDzd4rR7usxsg7H6TbW5lPBiwO/d
-X-Gm-Message-State: AOJu0Yx28SfKxD2OzlDkE8qAwTUcfMYwqTELfdyfREbcMMUywqVwTsvM
-	YoRdVtfVtWHpdBQwh7xPpKpj0S89jxf1ClP1FtkDdpKWk1Cbgq3bSyVPHmW1xEHAhIfdF54k9RM
-	=
-X-Google-Smtp-Source: AGHT+IHE2tYRZruKtCquqvFgIZalHtBB+3XJOjw2G+9dr8fCHuWkp9Xv3DSW1Uvn5QjEcWGx8LbRnQ==
-X-Received: by 2002:a17:902:e950:b0:1e4:b1a2:b47a with SMTP id b16-20020a170902e95000b001e4b1a2b47amr2262198pll.0.1712908521272;
-        Fri, 12 Apr 2024 00:55:21 -0700 (PDT)
+        bh=uxWqscFAwOXHq3LZxwoyO2yB+rY65Bz7waDbYHO6nwc=;
+        b=NpVbIKzsY6NwtNuwZinhTVbMKqvzksh4JVhcnRdFOpYv0Gp7cPKnCKpQPqIkWHFDH0
+         OVacXIfjO6lZBfkjx6LmxwrkyYP76Mcotfq6ggW3d7hA4h8HV0hoSi7V4LYd9nzMFh63
+         rjDLjIua7FMR367J6MPB1kqFYGjwVip1zM2hmddqRimQAp3X1NDALBUZnKhhScEwfpKu
+         Vj3oDOkrISPUJzlFq05z9KiztrxsBlXzQk5blAcZcW1nKl/SkYrcDWcoEBE2MTvjXubf
+         HqeVIDhnP1o8gCEQdLtBEQAZPsTH+s6Kt60cdEJYkwGvd2UgKqfVb/0Zi+wMcc5o048+
+         X19w==
+X-Forwarded-Encrypted: i=1; AJvYcCWbHzfRqJkGsy4ZMDpLZfa/1f26WdYTQ73KwqNj5U8/0YT8MiTEH9i3KY1nAXqwIvUrneMg92BXmcu5kvwuPxr3eZ2QSFGy6lGHo+1HyMt29+jW
+X-Gm-Message-State: AOJu0Yyki0FX4/EUQnaz6ppZC2ljKsoos8BPJbscNwQTraGH/1ve35ny
+	PmEAyEucYjet3YCJ0cQsNfAMTTq4IkndEgdIfyZZOz7BlrJQZ+BTAK/cG+Pugw==
+X-Google-Smtp-Source: AGHT+IG0DmvzYgyMD+UbukYpONvIvOQUtcBV4koLz8bJwFW8nLfKTZSqtZ4kjpkCtUaJ4FQxsGFS1Q==
+X-Received: by 2002:a05:6a20:2450:b0:1a7:136c:c940 with SMTP id t16-20020a056a20245000b001a7136cc940mr2635499pzc.17.1712908578374;
+        Fri, 12 Apr 2024 00:56:18 -0700 (PDT)
 Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:e3c8:6e1:dcfa:3e8c])
-        by smtp.gmail.com with ESMTPSA id g3-20020a170902868300b001e2c1e56f3bsm2377710plo.104.2024.04.12.00.55.19
+        by smtp.gmail.com with ESMTPSA id c6-20020a170903234600b001e0c91d448fsm1229006plh.112.2024.04.12.00.56.16
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 12 Apr 2024 00:55:20 -0700 (PDT)
+        Fri, 12 Apr 2024 00:56:17 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
@@ -71,16 +70,15 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH] arm64: dts: mediatek: Drop mediatek,drive-strength-adv usage
-Date: Fri, 12 Apr 2024 15:55:14 +0800
-Message-ID: <20240412075516.1199846-1-wenst@chromium.org>
+Subject: [PATCH] arm64: dts: mediatek: mt8183-kukui: Drop bogus output-enable property
+Date: Fri, 12 Apr 2024 15:56:12 +0800
+Message-ID: <20240412075613.1200048-1-wenst@chromium.org>
 X-Mailer: git-send-email 2.44.0.683.g7961c838ac-goog
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240412_005522_550716_51F75BAA 
-X-CRM114-Status: UNSURE (   9.73  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240412_005619_528313_4DDFE02B 
+X-CRM114-Status: GOOD (  11.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,205 +93,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The "mediatek,drive-strength-adv" pin config property has been
-deprecated in favor of the generic "drive-strength-microamp" property.
+The "output-enable" property is set on uart1's RTS pin. This is bogus
+because the hardware does not actually have a controllable output
+buffer. Secondly, the implementation incorrectly treats this property
+as a request to switch the pin to GPIO output. This does not fit the
+intended semantic of "output-enable" and it does not have any affect
+either because the pin is muxed to the UART function, not the GPIO
+function.
 
-Drop or convert all instances. A value of 0 disables the advanced
-mode, which is the hardware default.
+Drop the property.
 
+Fixes: cd894e274b74 ("arm64: dts: mt8183: Add krane-sku176 board")
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- arch/arm64/boot/dts/mediatek/mt8183-evb.dts     | 6 ------
- arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi  | 6 ------
- arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts | 6 ------
- arch/arm64/boot/dts/mediatek/mt8195-evb.dts     | 4 +---
- 4 files changed, 1 insertion(+), 21 deletions(-)
+ arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
-index 681deddffc2a..f04baea5d6cb 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
-@@ -160,7 +160,6 @@ pins_i2c {
- 			pinmux = <PINMUX_GPIO82__FUNC_SDA0>,
- 				 <PINMUX_GPIO83__FUNC_SCL0>;
- 			mediatek,pull-up-adv = <3>;
--			mediatek,drive-strength-adv = <00>;
- 		};
- 	};
- 
-@@ -169,7 +168,6 @@ pins_i2c {
- 			pinmux = <PINMUX_GPIO81__FUNC_SDA1>,
- 				 <PINMUX_GPIO84__FUNC_SCL1>;
- 			mediatek,pull-up-adv = <3>;
--			mediatek,drive-strength-adv = <00>;
- 		};
- 	};
- 
-@@ -178,7 +176,6 @@ pins_i2c {
- 			pinmux = <PINMUX_GPIO103__FUNC_SCL2>,
- 				 <PINMUX_GPIO104__FUNC_SDA2>;
- 			mediatek,pull-up-adv = <3>;
--			mediatek,drive-strength-adv = <00>;
- 		};
- 	};
- 
-@@ -187,7 +184,6 @@ pins_i2c {
- 			pinmux = <PINMUX_GPIO50__FUNC_SCL3>,
- 				 <PINMUX_GPIO51__FUNC_SDA3>;
- 			mediatek,pull-up-adv = <3>;
--			mediatek,drive-strength-adv = <00>;
- 		};
- 	};
- 
-@@ -196,7 +192,6 @@ pins_i2c {
- 			pinmux = <PINMUX_GPIO105__FUNC_SCL4>,
- 				 <PINMUX_GPIO106__FUNC_SDA4>;
- 			mediatek,pull-up-adv = <3>;
--			mediatek,drive-strength-adv = <00>;
- 		};
- 	};
- 
-@@ -205,7 +200,6 @@ pins_i2c {
- 			pinmux = <PINMUX_GPIO48__FUNC_SCL5>,
- 				 <PINMUX_GPIO49__FUNC_SDA5>;
- 			mediatek,pull-up-adv = <3>;
--			mediatek,drive-strength-adv = <00>;
- 		};
- 	};
- 
 diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-index 75c799a6adb4..989c979c99c1 100644
+index f934b8aad3ed..75c799a6adb4 100644
 --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-@@ -527,7 +527,6 @@ pins-bus {
- 			pinmux = <PINMUX_GPIO82__FUNC_SDA0>,
- 				 <PINMUX_GPIO83__FUNC_SCL0>;
- 			mediatek,pull-up-adv = <3>;
--			mediatek,drive-strength-adv = <00>;
+@@ -797,7 +797,6 @@ pins-tx {
  		};
- 	};
- 
-@@ -536,7 +535,6 @@ pins-bus {
- 			pinmux = <PINMUX_GPIO81__FUNC_SDA1>,
- 				 <PINMUX_GPIO84__FUNC_SCL1>;
- 			mediatek,pull-up-adv = <3>;
--			mediatek,drive-strength-adv = <00>;
+ 		pins-rts {
+ 			pinmux = <PINMUX_GPIO47__FUNC_URTS1>;
+-			output-enable;
  		};
- 	};
- 
-@@ -545,7 +543,6 @@ pins-bus {
- 			pinmux = <PINMUX_GPIO103__FUNC_SCL2>,
- 				 <PINMUX_GPIO104__FUNC_SDA2>;
- 			bias-disable;
--			mediatek,drive-strength-adv = <00>;
+ 		pins-cts {
+ 			pinmux = <PINMUX_GPIO46__FUNC_UCTS1>;
+@@ -816,7 +815,6 @@ pins-tx {
  		};
- 	};
- 
-@@ -554,7 +551,6 @@ pins-bus {
- 			pinmux = <PINMUX_GPIO50__FUNC_SCL3>,
- 				 <PINMUX_GPIO51__FUNC_SDA3>;
- 			mediatek,pull-up-adv = <3>;
--			mediatek,drive-strength-adv = <00>;
+ 		pins-rts {
+ 			pinmux = <PINMUX_GPIO47__FUNC_URTS1>;
+-			output-enable;
  		};
- 	};
- 
-@@ -563,7 +559,6 @@ pins-bus {
- 			pinmux = <PINMUX_GPIO105__FUNC_SCL4>,
- 				 <PINMUX_GPIO106__FUNC_SDA4>;
- 			bias-disable;
--			mediatek,drive-strength-adv = <00>;
- 		};
- 	};
- 
-@@ -572,7 +567,6 @@ pins-bus {
- 			pinmux = <PINMUX_GPIO48__FUNC_SCL5>,
- 				 <PINMUX_GPIO49__FUNC_SDA5>;
- 			mediatek,pull-up-adv = <3>;
--			mediatek,drive-strength-adv = <00>;
- 		};
- 	};
- 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts b/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts
-index 333c516af490..81f6c205fa98 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts
-@@ -197,7 +197,6 @@ pins_i2c {
- 			pinmux = <PINMUX_GPIO82__FUNC_SDA0>,
- 				 <PINMUX_GPIO83__FUNC_SCL0>;
- 			mediatek,pull-up-adv = <3>;
--			mediatek,drive-strength-adv = <00>;
- 		};
- 	};
- 
-@@ -206,7 +205,6 @@ pins_i2c {
- 			pinmux = <PINMUX_GPIO81__FUNC_SDA1>,
- 				 <PINMUX_GPIO84__FUNC_SCL1>;
- 			mediatek,pull-up-adv = <3>;
--			mediatek,drive-strength-adv = <00>;
- 		};
- 	};
- 
-@@ -215,7 +213,6 @@ pins_i2c {
- 			pinmux = <PINMUX_GPIO103__FUNC_SCL2>,
- 				 <PINMUX_GPIO104__FUNC_SDA2>;
- 			mediatek,pull-up-adv = <3>;
--			mediatek,drive-strength-adv = <00>;
- 		};
- 	};
- 
-@@ -224,7 +221,6 @@ pins_i2c {
- 			pinmux = <PINMUX_GPIO50__FUNC_SCL3>,
- 				 <PINMUX_GPIO51__FUNC_SDA3>;
- 			mediatek,pull-up-adv = <3>;
--			mediatek,drive-strength-adv = <00>;
- 		};
- 	};
- 
-@@ -233,7 +229,6 @@ pins_i2c {
- 			pinmux = <PINMUX_GPIO105__FUNC_SCL4>,
- 				 <PINMUX_GPIO106__FUNC_SDA4>;
- 			mediatek,pull-up-adv = <3>;
--			mediatek,drive-strength-adv = <00>;
- 		};
- 	};
- 
-@@ -242,7 +237,6 @@ pins_i2c {
- 			pinmux = <PINMUX_GPIO48__FUNC_SCL5>,
- 				 <PINMUX_GPIO49__FUNC_SDA5>;
- 			mediatek,pull-up-adv = <3>;
--			mediatek,drive-strength-adv = <00>;
- 		};
- 	};
- 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195-evb.dts b/arch/arm64/boot/dts/mediatek/mt8195-evb.dts
-index 341b6e074139..83456d649ff7 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195-evb.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8195-evb.dts
-@@ -74,7 +74,6 @@ pins {
- 			pinmux = <PINMUX_GPIO8__FUNC_SDA0>,
- 				 <PINMUX_GPIO9__FUNC_SCL0>;
- 			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
--			mediatek,drive-strength-adv = <0>;
- 			drive-strength = <6>;
- 		};
- 	};
-@@ -84,7 +83,6 @@ pins {
- 			pinmux = <PINMUX_GPIO10__FUNC_SDA1>,
- 				 <PINMUX_GPIO11__FUNC_SCL1>;
- 			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
--			mediatek,drive-strength-adv = <0>;
- 			drive-strength = <6>;
- 		};
- 	};
-@@ -94,7 +92,7 @@ pins {
- 			pinmux = <PINMUX_GPIO16__FUNC_SDA4>,
- 				 <PINMUX_GPIO17__FUNC_SCL4>;
- 			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
--			mediatek,drive-strength-adv = <7>;
-+			drive-strength-microamp = <1000>;
- 		};
- 	};
- 
+ 		pins-cts {
+ 			pinmux = <PINMUX_GPIO46__FUNC_UCTS1>;
 -- 
 2.44.0.683.g7961c838ac-goog
 
