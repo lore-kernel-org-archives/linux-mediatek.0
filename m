@@ -4,102 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 745C9C00A94
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Apr 2024 09:09:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16177C04FFF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Apr 2024 09:09:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=v/IBSzocl3Yiga2cPy9L+5G1aprSvwxrWeSsTo8+72s=; b=L9g+8dWUtRplKO6nK4m03wku6J
-	9WV4QD2x6NnCf0EJOOrQquIg0fS5wDKaAJw6y32nUkz8qwNWn08wU4+jvTQjKGFBNKcHJgD1bNpwB
-	F3AVvaJn9n3fnyvJ3VaOLb0ShEV0IoFTvvbadsCzp535bOfD8RBqp1MpW1GSzb+T/3MQ0t48KwcyP
-	qky5MCsy7ngkcnAEEDI2bUwF9k8KReRaJVagDBQlyQXbjfgdR+wQa0oDVTpOv9MrpMgGckd4HTC1a
-	fpxp8Ng1tCCcnXmOEqem8exvOnv8VM3KBFEvAxNM7L7rFyJ1GSTn33VPfBN7ZeTRRflaFWodEB8Gi
-	0P9OUd0A==;
+	bh=qTR0+TMwbWMWdCXLj7Cy/2qA43agPRZ1TOyFiJqs0oU=; b=0ImmGfuGMbSEKYVr48luFt0UiL
+	HIcLHFA8rMr0EgqgFmtdrEwEBjSSWx5TKgVAA6jnUEyoXiMeT2DxaEcOMcb3gkaR/NMbJxntvazhB
+	lP9rMgyjLWjFAsLRQridmMyyCi4FP1j78X5HPBGnOEtXqdQkNZzdWTWZBYy6hJa38IR19qBWVwjoo
+	fqdzN4Bj9PmnRPvBCUHe0QzFuo5PNaMGtxAXxRZHaJjnTqsEIeZDP3AZS690OrJSHnKrJNqp4X9Pi
+	6RQeHl0PMC+ECv0zcBBFmudqVTFc8KiPh8TXDMEOEJGXhQlHzMQ9e/bgyasWNBcXeLrpwxPnGO4RT
+	tmd0GCpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rvCuy-0000000GJo3-0q9z;
-	Fri, 12 Apr 2024 09:09:56 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1rvCuz-0000000GJpB-1FZ5;
+	Fri, 12 Apr 2024 09:09:57 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rvCuF-0000000GJD1-2iCO;
-	Fri, 12 Apr 2024 09:09:19 +0000
-X-UUID: 4d2bc32ef8ac11eeac1957ae9f99f617-20240412
+	id 1rvCuY-0000000GJQD-1ikC;
+	Fri, 12 Apr 2024 09:09:32 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
+	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=qTR0+TMwbWMWdCXLj7Cy/2qA43agPRZ1TOyFiJqs0oU=; b=LU1sMG7b9P61Nh+viy2iXNBmcu
+	Y5ZSzYWGHo4bD2UKJfSbq34vCrbScGYy700xXVVAJfU7ltEzL6thG/THuyu8STulyf/tz+gp/ZP4D
+	lC5QlBsJSjENCK2nAuP0lkDeWFZXPot0/gtVivY69X1UdT2LVIeYvxPz7pF373RewbjzqSqqRh103
+	lo0b2rapteznNgPw7zGNUFPkE+GMGuZwEkBRrLR4b7YsWjA+uXjcNUeTvhkJwl+/bM9DLUfv7/AUP
+	/aja9fQ8GoyKe7YesUVOUxoZsu/d4/bmx1m4G+BSGcP/SIKOg3Zbj0v03RgTQ2khMFu7x4fSHQuOL
+	+D16phBg==;
+Received: from mailgw01.mediatek.com ([216.200.240.184])
+	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1rvCuU-000000094I8-0suy;
+	Fri, 12 Apr 2024 09:09:29 +0000
+X-UUID: 581adb94f8ac11eeac1957ae9f99f617-20240412
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=v/IBSzocl3Yiga2cPy9L+5G1aprSvwxrWeSsTo8+72s=;
-	b=QxHFHHBxrrrIhfYAmho66afAurzuI+xQt3rV1T1v54WfeyX7PR7UA1A1Y9Ihm+MgGg3ikkAsPMcJpe6YXz9tXo+N28mW6qIHTOvsGB5KcpoxfKukyci2mxmEayUOy+zxHkBAh1xkLjpv4PaaNVswX3yfhEOO8l4i2qVr3ZdUOs0=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=qTR0+TMwbWMWdCXLj7Cy/2qA43agPRZ1TOyFiJqs0oU=;
+	b=s2ZywnwkbiXzPVrDHARcKuBErYf+8XB2O+DW0iqZGBLjHvlX3MOoBs1wUTOeKBMqTprIpjNswwmcl2GtGDi/E6c1w314eHDQnrfbDUh7a5clUnqZV9z++m45CpR1HuwYAHQS4CIWK0KUXgHG+WfDquEbqS6DS6rI/lNm4V6YZ6w=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.37,REQID:edfec51b-537f-48fb-a449-03ca4b54d141,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:6f543d0,CLOUDID:13408091-e2c0-40b0-a8fe-7c7e47299109,B
+X-CID-O-INFO: VERSION:1.1.37,REQID:f9523f82-c10c-41a0-a917-120fc8a298bc,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:6f543d0,CLOUDID:def09882-4f93-4875-95e7-8c66ea833d57,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
 	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0,NGT
 X-CID-BAS: 0,NGT,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 4d2bc32ef8ac11eeac1957ae9f99f617-20240412
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+X-UUID: 581adb94f8ac11eeac1957ae9f99f617-20240412
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
 	(envelope-from <yunfei.dong@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 92302611; Fri, 12 Apr 2024 02:09:00 -0700
+	with ESMTP id 1111803827; Fri, 12 Apr 2024 02:09:19 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 12 Apr 2024 17:08:57 +0800
+ 15.2.1118.26; Fri, 12 Apr 2024 17:09:11 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 12 Apr 2024 17:08:56 +0800
+ 15.2.1118.26 via Frontend Transport; Fri, 12 Apr 2024 17:09:10 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Jeffrey Kardatzke <jkardatzke@google.com>,
 	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
-	<nfraprado@collabora.com>, Nathan Hebert <nhebert@chromium.org>, "Nicolas
- Dufresne" <nicolas.dufresne@collabora.com>, Hans Verkuil
+	<nfraprado@collabora.com>, Nathan Hebert <nhebert@chromium.org>, Nicolas
+ Dufresne <nicolas.dufresne@collabora.com>, Hans Verkuil
 	<hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
 	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
 	<benjamin.gaignard@collabora.com>, Sebastian Fricke
-	<sebastian.fricke@collabora.com>, Tomasz Figa <tfiga@chromium.org>, "Mauro
- Carvalho Chehab" <mchehab@kernel.org>, Marek Szyprowski
+	<sebastian.fricke@collabora.com>, Tomasz Figa <tfiga@chromium.org>, Mauro
+ Carvalho Chehab <mchehab@kernel.org>, Marek Szyprowski
 	<m.szyprowski@samsung.com>
-CC: Chen-Yu Tsai <wenst@chromium.org>, Yong Wu <yong.wu@mediatek.com>,
-	"Hsin-Yi Wang" <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
-	"Daniel Vetter" <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>, Yunfei
- Dong <yunfei.dong@mediatek.com>, Sumit Semwal <sumit.semwal@linaro.org>,
-	"Brian Starkey" <Brian.Starkey@arm.com>, John Stultz <jstultz@google.com>, "T
- . J . Mercier" <tjmercier@google.com>, =?UTF-8?q?Christian=20K=C3=B6nig?=
+CC: Chen-Yu Tsai <wenst@chromium.org>, Yong Wu <yong.wu@mediatek.com>, Hsin-Yi
+ Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, Daniel
+ Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>, Yunfei Dong
+	<yunfei.dong@mediatek.com>, Sumit Semwal <sumit.semwal@linaro.org>, Brian
+ Starkey <Brian.Starkey@arm.com>, John Stultz <jstultz@google.com>, "T . J .
+ Mercier" <tjmercier@google.com>, =?UTF-8?q?Christian=20K=C3=B6nig?=
 	<christian.koenig@amd.com>, Matthias Brugger <matthias.bgg@gmail.com>,
 	<linux-media@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v5,02/23] v4l2: handle restricted memory flags in queue setup
-Date: Fri, 12 Apr 2024 17:08:30 +0800
-Message-ID: <20240412090851.24999-3-yunfei.dong@mediatek.com>
+Subject: [PATCH v5,11/23] media: mediatek: vcodec: initialize msg and vsi information
+Date: Fri, 12 Apr 2024 17:08:39 +0800
+Message-ID: <20240412090851.24999-12-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20240412090851.24999-1-yunfei.dong@mediatek.com>
 References: <20240412090851.24999-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--7.317900-8.000000
-X-TMASE-MatchedRID: D0Pm2dEMlxOWHmpvkeKJB57tR0mnRAg1TJDl9FKHbrk1LB46LFAAkq/H
-	ZLCMsEf9UVB7I/2CDSABbn1cvMDZHaEAqPOtlpvtjtK7dC6UBnni00wyvVXZxXFH8OB0gvDr95r
-	i4fhj2G9xttE7/wo1AsmkHeNGy+ZUBEKiKihS7U5+7IhLVmN+u0GtrAxy5ENOf9MKmZKnOiVJwa
-	hvtZ99jMfhzwiCcm5egDLqnrRlXrZ8nn9tnqel2LI7zVffJqTzDlqvFt3mQn4SqF8eiSCiqSALY
-	Wkum7ugjM2uhuY/9X+aHrNAFYL8eX7cGd19dSFd
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--7.317900-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: D5C6C5BB917ED96256855338E5447C68C51A2FD9CD7EFC9F872F4CFDBDF51CDA2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240412_020911_905060_8FBCACB5 
-X-CRM114-Status: GOOD (  15.73  )
+X-CRM114-CacheID: sfid-20240412_100926_754624_617025CF 
+X-CRM114-Status: GOOD (  19.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,121 +116,141 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Jeffrey Kardatzke <jkardatzke@google.com>
+Need to initialize msg and vsi information before sending to optee-os, then
+calling optee invoke command to send the information to optee-os.
 
-Validates the restricted memory flags when setting up a queue and
-ensures the queue has the proper capability.
+For the optee communication interface is different with scp, using
+flag to separate them.
 
-Signed-off-by: Jeffrey Kardatzke <jkardatzke@google.com>
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 ---
- .../media/common/videobuf2/videobuf2-core.c   | 21 +++++++++++++++++++
- .../media/common/videobuf2/videobuf2-v4l2.c   |  4 +++-
- 2 files changed, 24 insertions(+), 1 deletion(-)
+ .../vcodec/decoder/mtk_vcodec_dec_drv.h       |  2 +
+ .../mediatek/vcodec/decoder/vdec_vpu_if.c     | 49 ++++++++++++++++---
+ .../mediatek/vcodec/decoder/vdec_vpu_if.h     |  4 ++
+ 3 files changed, 49 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
-index 0b2b48e1b2df..bd951ca5f5b5 100644
---- a/drivers/media/common/videobuf2/videobuf2-core.c
-+++ b/drivers/media/common/videobuf2/videobuf2-core.c
-@@ -831,6 +831,15 @@ static bool verify_coherency_flags(struct vb2_queue *q, bool non_coherent_mem)
- 	return true;
- }
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
+index 76a0323f993c..1540cb8bfe5c 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
++++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
+@@ -175,6 +175,7 @@ struct mtk_vcodec_dec_pdata {
+  * @vpu_inst: vpu instance pointer.
+  *
+  * @is_10bit_bitstream: set to true if it's 10bit bitstream
++ * @is_secure_playback: Secure Video Playback (SVP) mode
+  */
+ struct mtk_vcodec_dec_ctx {
+ 	enum mtk_instance_type type;
+@@ -220,6 +221,7 @@ struct mtk_vcodec_dec_ctx {
+ 	void *vpu_inst;
  
-+static bool verify_restricted_mem_flags(struct vb2_queue *q, bool restricted_mem)
-+{
-+	if (restricted_mem != q->restricted_mem) {
-+		dprintk(q, 1, "restricted memory model mismatch\n");
-+		return false;
-+	}
-+	return true;
-+}
-+
- static int vb2_core_allocated_buffers_storage(struct vb2_queue *q)
+ 	bool is_10bit_bitstream;
++	bool is_secure_playback;
+ };
+ 
+ /**
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
+index 82e57ae983d5..5336769a3fb5 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
+@@ -148,7 +148,10 @@ static void vpu_dec_ipi_handler(void *data, unsigned int len, void *priv)
+ 
+ static int vcodec_vpu_send_msg(struct vdec_vpu_inst *vpu, void *msg, int len)
  {
- 	if (!q->bufs)
-@@ -864,6 +873,7 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
- 	unsigned int q_num_bufs = vb2_get_num_buffers(q);
- 	unsigned plane_sizes[VB2_MAX_PLANES] = { };
- 	bool non_coherent_mem = flags & V4L2_MEMORY_FLAG_NON_COHERENT;
-+	bool restricted_mem = flags & V4L2_MEMORY_FLAG_RESTRICTED;
- 	unsigned int i, first_index;
- 	int ret = 0;
+-	int err, id, msgid;
++	struct mtk_vdec_optee_data_to_shm *optee_data;
++	int data_size, id, hw_id, msgid;
++	void *ack_msg, *data_msg;
++	int err;
  
-@@ -907,6 +917,9 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
- 			return 0;
- 	}
+ 	msgid = *(uint32_t *)msg;
+ 	mtk_vdec_debug(vpu->ctx, "id=%X", msgid);
+@@ -158,16 +161,46 @@ static int vcodec_vpu_send_msg(struct vdec_vpu_inst *vpu, void *msg, int len)
  
-+	if (restricted_mem && (!q->allow_restricted_mem || memory != V4L2_MEMORY_DMABUF))
-+		return -EINVAL;
-+
- 	/*
- 	 * Make sure the requested values and current defaults are sane.
- 	 */
-@@ -924,6 +937,7 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
- 	if (ret)
- 		return ret;
- 	set_queue_coherency(q, non_coherent_mem);
-+	q->restricted_mem = restricted_mem;
- 
- 	/*
- 	 * Ask the driver how many buffers and planes per buffer it requires.
-@@ -1032,6 +1046,7 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
- 	unsigned plane_sizes[VB2_MAX_PLANES] = { };
- 	bool non_coherent_mem = flags & V4L2_MEMORY_FLAG_NON_COHERENT;
- 	unsigned int q_num_bufs = vb2_get_num_buffers(q);
-+	bool restricted_mem = flags & V4L2_MEMORY_FLAG_RESTRICTED;
- 	bool no_previous_buffers = !q_num_bufs;
- 	int ret = 0;
- 
-@@ -1040,6 +1055,9 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
- 		return -ENOBUFS;
- 	}
- 
-+	if (restricted_mem && (!q->allow_restricted_mem || memory != V4L2_MEMORY_DMABUF))
-+		return -EINVAL;
-+
- 	if (no_previous_buffers) {
- 		if (q->waiting_in_dqbuf && *count) {
- 			dprintk(q, 1, "another dup()ped fd is waiting for a buffer\n");
-@@ -1058,6 +1076,7 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
- 			return ret;
- 		q->waiting_for_buffers = !q->is_output;
- 		set_queue_coherency(q, non_coherent_mem);
-+		q->restricted_mem = restricted_mem;
+ 	if (vpu->ctx->dev->vdec_pdata->hw_arch == MTK_VDEC_LAT_SINGLE_CORE) {
+ 		if (msgid == AP_IPIMSG_DEC_CORE ||
+-		    msgid == AP_IPIMSG_DEC_CORE_END)
++		    msgid == AP_IPIMSG_DEC_CORE_END) {
++			optee_data = &vpu->core_optee_info;
+ 			id = vpu->core_id;
+-		else
++		} else {
++			optee_data = &vpu->lat_optee_info;
+ 			id = vpu->id;
++		}
  	} else {
- 		if (q->memory != memory) {
- 			dprintk(q, 1, "memory model mismatch\n");
-@@ -1065,6 +1084,8 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
- 		}
- 		if (!verify_coherency_flags(q, non_coherent_mem))
- 			return -EINVAL;
-+		if (!verify_restricted_mem_flags(q, restricted_mem))
-+			return -EINVAL;
++		optee_data = &vpu->lat_optee_info;
+ 		id = vpu->id;
  	}
  
- 	num_buffers = min(*count, q->max_num_buffers - q_num_bufs);
-diff --git a/drivers/media/common/videobuf2/videobuf2-v4l2.c b/drivers/media/common/videobuf2/videobuf2-v4l2.c
-index 293f3d5f1c4e..9ee24e537e0c 100644
---- a/drivers/media/common/videobuf2/videobuf2-v4l2.c
-+++ b/drivers/media/common/videobuf2/videobuf2-v4l2.c
-@@ -682,7 +682,7 @@ static void vb2_set_flags_and_caps(struct vb2_queue *q, u32 memory,
- 		*flags = 0;
- 	} else {
- 		/* Clear all unknown flags. */
--		*flags &= V4L2_MEMORY_FLAG_NON_COHERENT;
-+		*flags &= V4L2_MEMORY_FLAG_NON_COHERENT | V4L2_MEMORY_FLAG_RESTRICTED;
+-	err = mtk_vcodec_fw_ipi_send(vpu->ctx->dev->fw_handler, id, msg,
+-				     len, 2000);
++	if (!vpu->ctx->is_secure_playback) {
++		err = mtk_vcodec_fw_ipi_send(vpu->ctx->dev->fw_handler, id, msg, len, 2000);
++	} else {
++		hw_id = (id == SCP_IPI_VDEC_LAT) ? MTK_VDEC_LAT0 : MTK_VDEC_CORE;
++
++		mtk_vcodec_dec_optee_set_data(optee_data, msg, len, OPTEE_MSG_INDEX);
++
++		/* There is no need to copy the data (VSI) message to shared memory,
++		 * but we still need to set the buffer size to a non-zero value.
++		 */
++		if (msgid == AP_IPIMSG_DEC_CORE || msgid == AP_IPIMSG_DEC_START) {
++			data_msg = mtk_vcodec_dec_get_shm_buffer_va(vpu->ctx->dev->optee_private,
++								    hw_id, OPTEE_DATA_INDEX);
++			data_size = mtk_vcodec_dec_get_shm_buffer_size(vpu->ctx->dev->optee_private,
++								       hw_id, OPTEE_DATA_INDEX);
++			mtk_vcodec_dec_optee_set_data(optee_data, data_msg, data_size,
++						      OPTEE_DATA_INDEX);
++		}
++
++		err = mtk_vcodec_dec_optee_invokd_cmd(vpu->ctx->dev->optee_private,
++						      hw_id, optee_data);
++		vpu->failure = err;
++
++		ack_msg = mtk_vcodec_dec_get_shm_buffer_va(vpu->ctx->dev->optee_private, hw_id,
++							   OPTEE_MSG_INDEX);
++		vpu_dec_ipi_handler(ack_msg, 0, vpu->ctx->dev);
++	}
++
+ 	if (err) {
+ 		mtk_vdec_err(vpu->ctx, "send fail vpu_id=%d msg_id=%X status=%d",
+ 			     id, msgid, err);
+@@ -213,7 +246,11 @@ int vpu_dec_init(struct vdec_vpu_inst *vpu)
+ 		return err;
  	}
  
- 	*caps |= V4L2_BUF_CAP_SUPPORTS_ORPHANED_BUFS;
-@@ -698,6 +698,8 @@ static void vb2_set_flags_and_caps(struct vb2_queue *q, u32 memory,
- 		*caps |= V4L2_BUF_CAP_SUPPORTS_MMAP_CACHE_HINTS;
- 	if (q->supports_requests)
- 		*caps |= V4L2_BUF_CAP_SUPPORTS_REQUESTS;
-+	if (q->allow_restricted_mem && q->io_modes & VB2_DMABUF)
-+		*caps |= V4L2_BUF_CAP_SUPPORTS_RESTRICTED_MEM;
- 	if (max_num_bufs) {
- 		*max_num_bufs = q->max_num_buffers;
- 		*caps |= V4L2_BUF_CAP_SUPPORTS_MAX_NUM_BUFFERS;
+-	if (vpu->ctx->dev->vdec_pdata->hw_arch == MTK_VDEC_LAT_SINGLE_CORE) {
++	/* Using tee interface to communicate with optee os directly for SVP mode,
++	 * fw ipi interface is used for normal playback.
++	 */
++	if (vpu->ctx->dev->vdec_pdata->hw_arch == MTK_VDEC_LAT_SINGLE_CORE &&
++	    !vpu->ctx->is_secure_playback) {
+ 		err = mtk_vcodec_fw_ipi_register(vpu->ctx->dev->fw_handler,
+ 						 vpu->core_id, vpu->handler,
+ 						 "vdec", vpu->ctx->dev);
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.h b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.h
+index 57ed9b1f5eaa..8e9d4c2cbb88 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.h
++++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.h
+@@ -27,6 +27,8 @@ struct mtk_vcodec_dec_ctx;
+  * @codec_type     : use codec type to separate different codecs
+  * @capture_type:	used capture type to separate different capture format
+  * @fb_sz  : frame buffer size of each plane
++ * @lat_optee_info  : used to send msg to optee shm buffer
++ * @core_optee_info  : used to send msg to optee shm buffer
+  */
+ struct vdec_vpu_inst {
+ 	int id;
+@@ -43,6 +45,8 @@ struct vdec_vpu_inst {
+ 	unsigned int codec_type;
+ 	unsigned int capture_type;
+ 	unsigned int fb_sz[2];
++	struct mtk_vdec_optee_data_to_shm lat_optee_info;
++	struct mtk_vdec_optee_data_to_shm core_optee_info;
+ };
+ 
+ /**
 -- 
 2.18.0
 
