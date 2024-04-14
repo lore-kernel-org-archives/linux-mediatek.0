@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76329C4345F
-	for <linux-mediatek@archiver.kernel.org>; Sun, 14 Apr 2024 18:49:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C517EC4345F
+	for <linux-mediatek@archiver.kernel.org>; Sun, 14 Apr 2024 18:49:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GZiWSmjI1JlLrEIipCtL7Pk/V+lmlTYlK0HbAD35HKI=; b=JX/Zjgs3aycxwQrSZZgzgniiAe
-	9VOVtgTGHe0Gb4VIiJ+1Y3lv9xFkgu538CPj7XXh5HxZynRanVE5VhkmgUAG2ULPovzvdExGeZvjv
-	G3ZhNtbmb+IlJ92zENV/RmSglbbusjDwPxRYg8VBHCKctYZyqXBrmzHkNOOATw5/F0yOUu6f/RnZJ
-	Q5m8t+V6f1+hMdXhi8t1hStR96SVKoI4JwW7e9aiVqpxXSroKkW5WLrcnin95+m+1Z+riI/pURtIn
-	JykGwLQiU7Okmmc2fnUnzJpNZ54hOpRD/nKIPt17bQQLfLHFgu15O8UlVq1nm7EswDc3ejXyURzyG
-	neVbed5A==;
+	bh=P3dvtLW51URBbZWQDxNB17M0FfT+KM2ziuYqVfP/epo=; b=mQGanxnBBh1OY+evN/VfYUCowq
+	0yhva/AL1RBnsaY2qWRcv/TFmMGov9J4shIoZdecsgAXy18N/KuLdrSSdIIKStggyAxBK2lCRVX0s
+	gV/lICKU6QJyJask+E300qzj6XGA8bWWFdN3KhUsEf8CChtj/g29wf435VUstrGfc9N9w+PuMRRu3
+	udz6d/zN41JqBHSgn0LCuaIRGs1AsvF2fmpVZ8ixDMxQWnj2Je+j5CnjqG9k85cbzNb0oxkzcq+Os
+	mO2D9kkAotWlv8Ml9mZshZSwau8QfhoZoOsOrnk0fgnIIs7yi9ilkTxSYXnoOfxv4VaA+CyythSCd
+	ginPU1tg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rw4ud-000000068Um-26lZ;
-	Sun, 14 Apr 2024 18:49:11 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1rw4ul-000000068aL-0zDa;
+	Sun, 14 Apr 2024 18:49:19 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rw4u5-0000000687Y-1oV1;
-	Sun, 14 Apr 2024 18:48:39 +0000
+	id 1rw4uB-000000068B9-2R5T;
+	Sun, 14 Apr 2024 18:48:45 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 7AEFDCE01C8;
+	by dfw.source.kernel.org (Postfix) with ESMTP id E7E3560B90;
+	Sun, 14 Apr 2024 18:48:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 53E70C32781;
 	Sun, 14 Apr 2024 18:48:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8ADCEC3277B;
-	Sun, 14 Apr 2024 18:48:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1713120514;
-	bh=ODYRn2RdENpaKnJgZLjiwAca8icK8fqKMWlq39yx68A=;
+	s=k20201202; t=1713120522;
+	bh=HDagpE0K3tDAxGmedsHe5hM24jccnUYiXri16WPhSmY=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=Tz9d0Fxdi92/WqzdH6POx08Z2+ZuVV0P/a4thX8q0xcpqwmwUy9JSc9OJ1pIU3Wfn
-	 L7VrBEsRlrtK6TogPf0I/svnoS0PWVk+kTTQDgHpYTbeS0VhG8DJbx70DGcgzg8/Ki
-	 CdYIHAne6z11iw6DQfGZxppZj9KUtowPIDLzq/it5ItXpe5lCACO5kgMa15ZNre6YF
-	 Q30Mzi+ewHlEo/18uC+QdZqlvw//8+8thbyeb7x2QYuctLvo3pjZSzRx2d3pVhVD4L
-	 gOzki8UrzMXTytlW9XePTuWP/9gYa0ZWHJU3sS23eRL70Lxg35CG1v9hEOiiOVkOgN
-	 mm/8rlEOvBJUQ==
+	b=QM4J4hJcAilQAenpmHougpgF45SkCpQowwdmEC7mjLwQxn3SErRt2cEfgz9FBjnQ2
+	 lj36HPeWGJapW3+0NrMuHaqo885htr9soZR90k0kPDZVN613ufj29Z+KNRHhAxzobH
+	 NYodIYhcfQ5lMraOKONLWXeUp7Tod1LsDbm6AG9RCKIbSs4Z+FkLjc6a+hcwkb/wH3
+	 Lcf+dEy4K4is9jGTNtLoNV4ULSIsH1dhsQ9cEeYv+P9dPvVqCInQKhyZCAJUxQHh6w
+	 tLzG81Vanl1yrcPjeNU4pxATHi9Kvf30wFt2QqT1QhTMUXrcmA3n4gP4WBPF/DgEb4
+	 Oki/+R1eVZP+w==
 From: Krzysztof Kozlowski <krzk@kernel.org>
-Date: Sun, 14 Apr 2024 20:47:31 +0200
-Subject: [PATCH 06/14] ASoC: SOF: intel: hda: Constify snd_sof_dsp_ops
+Date: Sun, 14 Apr 2024 20:47:32 +0200
+Subject: [PATCH 07/14] ASoC: SOF: amd: acp: Constify snd_sof_dsp_ops
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240414-n-const-ops-var-v1-6-8f53ee5d981c@kernel.org>
+Message-Id: <20240414-n-const-ops-var-v1-7-8f53ee5d981c@kernel.org>
 References: <20240414-n-const-ops-var-v1-0-8f53ee5d981c@kernel.org>
 In-Reply-To: <20240414-n-const-ops-var-v1-0-8f53ee5d981c@kernel.org>
 To: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>, 
@@ -69,25 +69,25 @@ Cc: sound-open-firmware@alsa-project.org, linux-sound@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
  Krzysztof Kozlowski <krzk@kernel.org>
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1327; i=krzk@kernel.org;
- h=from:subject:message-id; bh=ODYRn2RdENpaKnJgZLjiwAca8icK8fqKMWlq39yx68A=;
- b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBmHCTJea+7a6S6/0ABA+BT4aNIYMDEgQLCwYl0y
- NVOjuIpHQ6JAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZhwkyQAKCRDBN2bmhouD
- 1w0/D/4kT2T/U2kjeb533yzTZJrtn1IQZrnfh2AARz5j1/KEXUbKhX3g23zIiE7v2uMAApP0XbG
- oMf4MZfc7/qxfxOTNF5eRJl164ezv/XfeOt+o+oh/CMEUg45jLOvgQZVgCwGEWg69WdPhq1Wllw
- 9mg+myz1Dhdw8SHJdmcuyWktFnliFSaLuoJm/gNoYJQ5ZBLwVDJN6KR5Daph/qb5p9BN071uE0n
- UNU5jfiPip/X9yMcmvbZRI/rxnKWlmvqSDq3GWkqT9eAdXFBZXwkYv73fkfaB63z1iOwIaIXSoI
- OZ/ekB+e9EG09ga9KKimHX/jEhzQk4kR7ypK8F0vLr2YrEaGQ95hpmBzsYSu70Px3ggKj14nFFv
- Dwf54mgvRiChYGnzxVa6WuYnVrvN6s/WmTEjmiMRm78dqD1JtSH3/O644bol12PTP39YNzZwzzR
- RbzWz8sy/n1WTeRCJJBK7K6RXbnbrvLYTg2sRTe+amJEhLjpL798Io6O69aZhO8GI2YF3leuVsl
- P2VTiXGQw4q14WhUuUkHitxtN2PKgC0QA1cYreDg6F/bWC/byVhFjNox1ziPoyoHoF8TqbIrmJe
- 9Fd/PjxONIj5GvJXa6GyeunyqfvJRaUCHlYQq8LnP3kHTrkHIQ+wLuwRCzNQ0J8PMhac1oe4iZ7
- xj4+dUU5YGoX8Ug==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1432; i=krzk@kernel.org;
+ h=from:subject:message-id; bh=HDagpE0K3tDAxGmedsHe5hM24jccnUYiXri16WPhSmY=;
+ b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBmHCTKjG1DimqE5FL7elEaDZsWbw26M3dARt30V
+ vkAJmMPkTKJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZhwkygAKCRDBN2bmhouD
+ 12exD/9/I3LdS3pGpcogHE3mZN74qV9LHLLx8BAjFOWstYyp/MhmwFBpr05YOGXTNUwwzU3wfbt
+ +Ebrbl6hLU+8umJX67uayipYOqDyG8/svaV8m6iVVhRlItAv4Tbh9bRA0fuHmNUKOr0Yy/5Yvzx
+ e47sslCY5FpG98SE65qYwkT8ogKEE3K1PDQSMVs5xZDVuwKA/HEFUKKkaP7/8/up9UPlSM1v5Hc
+ WJiK+CxwwiCx/Ji1iL76ea4qG3CDVvLfu6TAANxv3Ek6kpjO5HxssxZpXIxymw7O39N+pfeJCKx
+ 8rpujOUpFaEZKjVXSPkkAgV9JBtasCMoDt5GosGxzi+FLRzYlsyjFhF6feAdnjc+dqi2G4I0jME
+ ++VZx5hbBtfMPeWyE7x0TRIcunZTk9Gf9wkZGRyf27vxRX/9DoSnmtaFl3E5Xm9ZRnucXe0s+ij
+ g2wHAOkUoPYvxZngSjFFSPnqL561OSmtaTcYW9zUrAEsoVWlmVuqNr19CkWevigZk+da4K1Py43
+ Gpv2FZWyUDYu0B64wCreFStdkBVk8WG0PBvK7CMd+vsSH9hRPHuf8YdBZMvEpY/As5R4Qza7kIZ
+ 3SQbwhmi86SF8Pu2zEPJ7I2QjU4bEBO2HZgc/O59lY0Yp5SkZHZ9F3SJQLPp+qd+wAC5H1xemhJ
+ zcYjEQI0qnGGyUA==
 X-Developer-Key: i=krzk@kernel.org; a=openpgp;
  fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240414_114838_001611_37B33D21 
-X-CRM114-Status: GOOD (  11.61  )
+X-CRM114-CacheID: sfid-20240414_114843_896226_7F6AD21D 
+X-CRM114-Status: GOOD (  11.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,36 +107,36 @@ const for increased code safety.
 
 Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
 ---
- sound/soc/sof/intel/hda-common-ops.c | 2 +-
- sound/soc/sof/intel/hda.h            | 2 +-
+ sound/soc/sof/amd/acp-common.c | 2 +-
+ sound/soc/sof/amd/acp.h        | 2 +-
  2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/sound/soc/sof/intel/hda-common-ops.c b/sound/soc/sof/intel/hda-common-ops.c
-index d71bb66b9991..466769c68da5 100644
---- a/sound/soc/sof/intel/hda-common-ops.c
-+++ b/sound/soc/sof/intel/hda-common-ops.c
-@@ -14,7 +14,7 @@
- #include "hda.h"
- #include "../sof-audio.h"
+diff --git a/sound/soc/sof/amd/acp-common.c b/sound/soc/sof/amd/acp-common.c
+index 0fc4e20ec673..b26fa471b431 100644
+--- a/sound/soc/sof/amd/acp-common.c
++++ b/sound/soc/sof/amd/acp-common.c
+@@ -193,7 +193,7 @@ struct snd_soc_acpi_mach *amd_sof_machine_select(struct snd_sof_dev *sdev)
+ }
  
--struct snd_sof_dsp_ops sof_hda_common_ops = {
-+const struct snd_sof_dsp_ops sof_hda_common_ops = {
- 	/* probe/remove/shutdown */
- 	.probe_early	= hda_dsp_probe_early,
- 	.probe		= hda_dsp_probe,
-diff --git a/sound/soc/sof/intel/hda.h b/sound/soc/sof/intel/hda.h
-index b59d1a572bce..7804c5b50c26 100644
---- a/sound/soc/sof/intel/hda.h
-+++ b/sound/soc/sof/intel/hda.h
-@@ -874,7 +874,7 @@ int hda_dsp_dais_suspend(struct snd_sof_dev *sdev);
- /*
-  * Platform Specific HW abstraction Ops.
-  */
--extern struct snd_sof_dsp_ops sof_hda_common_ops;
-+extern const struct snd_sof_dsp_ops sof_hda_common_ops;
+ /* AMD Common DSP ops */
+-struct snd_sof_dsp_ops sof_acp_common_ops = {
++const struct snd_sof_dsp_ops sof_acp_common_ops = {
+ 	/* probe and remove */
+ 	.probe			= amd_sof_acp_probe,
+ 	.remove			= amd_sof_acp_remove,
+diff --git a/sound/soc/sof/amd/acp.h b/sound/soc/sof/amd/acp.h
+index e229bb6b849d..87e79d500865 100644
+--- a/sound/soc/sof/amd/acp.h
++++ b/sound/soc/sof/amd/acp.h
+@@ -310,7 +310,7 @@ int acp_pcm_hw_params(struct snd_sof_dev *sdev, struct snd_pcm_substream *substr
+ snd_pcm_uframes_t acp_pcm_pointer(struct snd_sof_dev *sdev,
+ 				  struct snd_pcm_substream *substream);
  
- extern struct snd_sof_dsp_ops sof_skl_ops;
- int sof_skl_ops_init(struct snd_sof_dev *sdev);
+-extern struct snd_sof_dsp_ops sof_acp_common_ops;
++extern const struct snd_sof_dsp_ops sof_acp_common_ops;
+ 
+ extern struct snd_sof_dsp_ops sof_renoir_ops;
+ int sof_renoir_ops_init(struct snd_sof_dev *sdev);
 
 -- 
 2.34.1
