@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C517EC4345F
-	for <linux-mediatek@archiver.kernel.org>; Sun, 14 Apr 2024 18:49:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0887C001CC
+	for <linux-mediatek@archiver.kernel.org>; Sun, 14 Apr 2024 18:49:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=P3dvtLW51URBbZWQDxNB17M0FfT+KM2ziuYqVfP/epo=; b=mQGanxnBBh1OY+evN/VfYUCowq
-	0yhva/AL1RBnsaY2qWRcv/TFmMGov9J4shIoZdecsgAXy18N/KuLdrSSdIIKStggyAxBK2lCRVX0s
-	gV/lICKU6QJyJask+E300qzj6XGA8bWWFdN3KhUsEf8CChtj/g29wf435VUstrGfc9N9w+PuMRRu3
-	udz6d/zN41JqBHSgn0LCuaIRGs1AsvF2fmpVZ8ixDMxQWnj2Je+j5CnjqG9k85cbzNb0oxkzcq+Os
-	mO2D9kkAotWlv8Ml9mZshZSwau8QfhoZoOsOrnk0fgnIIs7yi9ilkTxSYXnoOfxv4VaA+CyythSCd
-	ginPU1tg==;
+	bh=6B+VdJoJqm9pW06J62GS2yHMr7XNQrsXHGgn02xRQ0Y=; b=OgrLwkKfqRAYFrPpgN8hzdizB6
+	V1jAqp9+ZSagBho3lU1mIpHOVutK8W62V3TMYW7ZvLkKsoWPxMy0xGrB7MnN/QA/DrWLS73tPU+Vw
+	9WzuIjM3I3v/avywPuPvCyWdf/BugX1AEUTxvbw/V8y8omt5VBbd0RqLubB68FNoyCbIPPFC0+Jt0
+	ZB/MH/2aNAY8YTNSc1R/zKp3vxNhtC7F42XpzWwka+f1H/KVO4HRbwhOUc7qJI5yGVra/yQWCRrq6
+	aaEFvI0UC2uD8jj6+sxY2uzyaR0CE/7ibITjHM7Iq2q73jYbGDgrcJXPKymwGgludVY3F9pb1jazQ
+	wwXNiz7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rw4ul-000000068aL-0zDa;
-	Sun, 14 Apr 2024 18:49:19 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1rw4ut-000000068gp-3IFT;
+	Sun, 14 Apr 2024 18:49:28 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rw4uB-000000068B9-2R5T;
-	Sun, 14 Apr 2024 18:48:45 +0000
+	id 1rw4uI-000000068F7-1pUP;
+	Sun, 14 Apr 2024 18:48:51 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id E7E3560B90;
-	Sun, 14 Apr 2024 18:48:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 53E70C32781;
-	Sun, 14 Apr 2024 18:48:35 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id EAB1260B2C;
+	Sun, 14 Apr 2024 18:48:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4BE0CC32781;
+	Sun, 14 Apr 2024 18:48:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1713120522;
-	bh=HDagpE0K3tDAxGmedsHe5hM24jccnUYiXri16WPhSmY=;
+	s=k20201202; t=1713120529;
+	bh=qgb4PnCVl0dqQSpagyMoidmTAcUFqQ7boy1JaeGL+xw=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=QM4J4hJcAilQAenpmHougpgF45SkCpQowwdmEC7mjLwQxn3SErRt2cEfgz9FBjnQ2
-	 lj36HPeWGJapW3+0NrMuHaqo885htr9soZR90k0kPDZVN613ufj29Z+KNRHhAxzobH
-	 NYodIYhcfQ5lMraOKONLWXeUp7Tod1LsDbm6AG9RCKIbSs4Z+FkLjc6a+hcwkb/wH3
-	 Lcf+dEy4K4is9jGTNtLoNV4ULSIsH1dhsQ9cEeYv+P9dPvVqCInQKhyZCAJUxQHh6w
-	 tLzG81Vanl1yrcPjeNU4pxATHi9Kvf30wFt2QqT1QhTMUXrcmA3n4gP4WBPF/DgEb4
-	 Oki/+R1eVZP+w==
+	b=SHEGDY+xloKWsvdr1QregSOPFE5gZDmG8xvNFgBuIGon3puktflzKUrL9aUk2OXTb
+	 FojfSY5yP54bq24DZv1HJfC7IwwGCfwUmM51x01JKqhIh3O3/4tErqQGQg6nR7pVfG
+	 4o2KfoWO2BOwWpyPu+PbilVoX2DWm55eKMxx5A5YVvkUtl1iY2QxyJ7yKpde+JT7SH
+	 ZBOtub+8OjKoeeUBONcyECzbylOZOWW7v8rIChX+qL3p7VYxq0Yf45dPTmVdIMcyGF
+	 e7qbWEaqg/mTrAllusKO0DYnT1fGjrNwFuaQXvvj83tq0eKHDK3fzDtD0zIvgoZggY
+	 o4U4QL/UTKSxQ==
 From: Krzysztof Kozlowski <krzk@kernel.org>
-Date: Sun, 14 Apr 2024 20:47:32 +0200
-Subject: [PATCH 07/14] ASoC: SOF: amd: acp: Constify snd_sof_dsp_ops
+Date: Sun, 14 Apr 2024 20:47:33 +0200
+Subject: [PATCH 08/14] ASoC: SOF: imx8: Constify snd_sof_dsp_ops
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240414-n-const-ops-var-v1-7-8f53ee5d981c@kernel.org>
+Message-Id: <20240414-n-const-ops-var-v1-8-8f53ee5d981c@kernel.org>
 References: <20240414-n-const-ops-var-v1-0-8f53ee5d981c@kernel.org>
 In-Reply-To: <20240414-n-const-ops-var-v1-0-8f53ee5d981c@kernel.org>
 To: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>, 
@@ -69,25 +69,25 @@ Cc: sound-open-firmware@alsa-project.org, linux-sound@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
  Krzysztof Kozlowski <krzk@kernel.org>
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1432; i=krzk@kernel.org;
- h=from:subject:message-id; bh=HDagpE0K3tDAxGmedsHe5hM24jccnUYiXri16WPhSmY=;
- b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBmHCTKjG1DimqE5FL7elEaDZsWbw26M3dARt30V
- vkAJmMPkTKJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZhwkygAKCRDBN2bmhouD
- 12exD/9/I3LdS3pGpcogHE3mZN74qV9LHLLx8BAjFOWstYyp/MhmwFBpr05YOGXTNUwwzU3wfbt
- +Ebrbl6hLU+8umJX67uayipYOqDyG8/svaV8m6iVVhRlItAv4Tbh9bRA0fuHmNUKOr0Yy/5Yvzx
- e47sslCY5FpG98SE65qYwkT8ogKEE3K1PDQSMVs5xZDVuwKA/HEFUKKkaP7/8/up9UPlSM1v5Hc
- WJiK+CxwwiCx/Ji1iL76ea4qG3CDVvLfu6TAANxv3Ek6kpjO5HxssxZpXIxymw7O39N+pfeJCKx
- 8rpujOUpFaEZKjVXSPkkAgV9JBtasCMoDt5GosGxzi+FLRzYlsyjFhF6feAdnjc+dqi2G4I0jME
- ++VZx5hbBtfMPeWyE7x0TRIcunZTk9Gf9wkZGRyf27vxRX/9DoSnmtaFl3E5Xm9ZRnucXe0s+ij
- g2wHAOkUoPYvxZngSjFFSPnqL561OSmtaTcYW9zUrAEsoVWlmVuqNr19CkWevigZk+da4K1Py43
- Gpv2FZWyUDYu0B64wCreFStdkBVk8WG0PBvK7CMd+vsSH9hRPHuf8YdBZMvEpY/As5R4Qza7kIZ
- 3SQbwhmi86SF8Pu2zEPJ7I2QjU4bEBO2HZgc/O59lY0Yp5SkZHZ9F3SJQLPp+qd+wAC5H1xemhJ
- zcYjEQI0qnGGyUA==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1012; i=krzk@kernel.org;
+ h=from:subject:message-id; bh=qgb4PnCVl0dqQSpagyMoidmTAcUFqQ7boy1JaeGL+xw=;
+ b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBmHCTLxCrRFj2CbxXNcJMF1mYYqYrCPBlpVKzLk
+ ZK0FIwRfi6JAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZhwkywAKCRDBN2bmhouD
+ 18WqD/4t4JUa14a9ctzBg8GUlqATymsKIponwobiAd+pdWdo4nZULjKytV1nfQdgj2wsuviDLfW
+ 6se3BJx7VHjcOfGcJXXXbrPVEDgXRwmP2j3bWYfwsfi+8nG6l338p160sOivSVoZ1vdcALpKe4k
+ SYo/2t2Ugo/MnYOC4d7hI6ABT15UNpNOsmT4i5ELyAU3qswUbxVtffxB1H3KXCi4xl2cpS8NZeZ
+ Z/KOrRuG31ZWmPrdr2wtHpQKMFHh1vBJMvriMVrvKpd+zOntTsYdS/fznqBCyjIVmJcWJwR2zof
+ BKgS/O5gNEcW72mbpeUHeNj53kUg2j9I6KtUewi9asBJdudH5tcmLFHsfWGjo+F6c4f6vJtYd7R
+ wFD941HoSLeuESMiqK4oO3kmf2FC1yDl50jhD2OxeehTbUN5KFV2tY9fJdYwCuy99Ie+hBmiVNr
+ gtd8NV8+IhPNRRkWggI3/4RUmILVdYwqy2+K1Bf9BP7irQd4w9R5oZqP02TclMLArojpr16DKz7
+ d5+S6usRxjE6Sb89p9jwuWCBiGZ2gn9b2ZgWOmk5EZZeW5s2YKu7O+iYlWMwZwP5Xf6lKarIdor
+ uybySSbglauDc4Iv7VBLAOAog5l2faNB5Vq7k2eX3YJLbjeiHyyt/TvfeEQmAWbT/xYlrsXSb4Y
+ 1iemPv7EFYgM9Vg==
 X-Developer-Key: i=krzk@kernel.org; a=openpgp;
  fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240414_114843_896226_7F6AD21D 
-X-CRM114-Status: GOOD (  11.21  )
+X-CRM114-CacheID: sfid-20240414_114850_670141_6BA22D60 
+X-CRM114-Status: GOOD (  11.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,36 +107,31 @@ const for increased code safety.
 
 Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
 ---
- sound/soc/sof/amd/acp-common.c | 2 +-
- sound/soc/sof/amd/acp.h        | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ sound/soc/sof/imx/imx8.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/sound/soc/sof/amd/acp-common.c b/sound/soc/sof/amd/acp-common.c
-index 0fc4e20ec673..b26fa471b431 100644
---- a/sound/soc/sof/amd/acp-common.c
-+++ b/sound/soc/sof/amd/acp-common.c
-@@ -193,7 +193,7 @@ struct snd_soc_acpi_mach *amd_sof_machine_select(struct snd_sof_dev *sdev)
+diff --git a/sound/soc/sof/imx/imx8.c b/sound/soc/sof/imx/imx8.c
+index d65e09a927f6..3021dc87ab5a 100644
+--- a/sound/soc/sof/imx/imx8.c
++++ b/sound/soc/sof/imx/imx8.c
+@@ -478,7 +478,7 @@ static int imx8_dsp_set_power_state(struct snd_sof_dev *sdev,
  }
  
- /* AMD Common DSP ops */
--struct snd_sof_dsp_ops sof_acp_common_ops = {
-+const struct snd_sof_dsp_ops sof_acp_common_ops = {
+ /* i.MX8 ops */
+-static struct snd_sof_dsp_ops sof_imx8_ops = {
++static const struct snd_sof_dsp_ops sof_imx8_ops = {
  	/* probe and remove */
- 	.probe			= amd_sof_acp_probe,
- 	.remove			= amd_sof_acp_remove,
-diff --git a/sound/soc/sof/amd/acp.h b/sound/soc/sof/amd/acp.h
-index e229bb6b849d..87e79d500865 100644
---- a/sound/soc/sof/amd/acp.h
-+++ b/sound/soc/sof/amd/acp.h
-@@ -310,7 +310,7 @@ int acp_pcm_hw_params(struct snd_sof_dev *sdev, struct snd_pcm_substream *substr
- snd_pcm_uframes_t acp_pcm_pointer(struct snd_sof_dev *sdev,
- 				  struct snd_pcm_substream *substream);
+ 	.probe		= imx8_probe,
+ 	.remove		= imx8_remove,
+@@ -539,7 +539,7 @@ static struct snd_sof_dsp_ops sof_imx8_ops = {
+ };
  
--extern struct snd_sof_dsp_ops sof_acp_common_ops;
-+extern const struct snd_sof_dsp_ops sof_acp_common_ops;
- 
- extern struct snd_sof_dsp_ops sof_renoir_ops;
- int sof_renoir_ops_init(struct snd_sof_dev *sdev);
+ /* i.MX8X ops */
+-static struct snd_sof_dsp_ops sof_imx8x_ops = {
++static const struct snd_sof_dsp_ops sof_imx8x_ops = {
+ 	/* probe and remove */
+ 	.probe		= imx8_probe,
+ 	.remove		= imx8_remove,
 
 -- 
 2.34.1
