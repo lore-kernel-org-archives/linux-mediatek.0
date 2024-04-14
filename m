@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47370C4345F
-	for <linux-mediatek@archiver.kernel.org>; Sun, 14 Apr 2024 03:22:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBD93C4345F
+	for <linux-mediatek@archiver.kernel.org>; Sun, 14 Apr 2024 03:41:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oZWCZiRvfPjS0Paq4s6IcZfpqOx6SF2Vd31fC+Cfhqc=; b=aKRGoDZbFt6cFuLwIOjAqxD/K1
-	kIVwn7XX6uy88PFrGIUy2l6vPSsppjeKF9ziJskw0o64E9xcr2NjmNYOC44ZMEkTQu0ge0KtKBU/5
-	xXc5CiLe8/ozM6XqEZc3Ktihug2PCI/NGF/JEZgPAmAQ52sLxJS2m3G4aApNGN+WLeYSAhsYwXnSk
-	xjt4X/xBkUz7HLvQT7sdb6VZdhvY9cGlpyiMTVo63z64/zc6NwSZ1uYuErYsHOrcSn8h/Xh7TfFlw
-	+h8koylB4QvbRemf84FrDSRJZK6bkIWtID0dU8JMdnY/83bWIobN7B1e8ESYpx7SDyMYQPA5/OCQx
-	uabic0rg==;
+	bh=2VlaakD6hC/Yq07AzsgcVk7dQUyYpGcWfseDM5cfpeg=; b=zaloXjAonl+hRO6HRyerQ3p8ZM
+	1W8Wceas4Yu5/UyjD4UEVmLYn8AXqQOPuw6JBRLFk1nF1EV13DcI+DzUmnlcagn2JEmZvRqP34E9A
+	a4OLzQki/CIBFi8nsw7DUZWdLDMtIRnn1LD5B+NaXNFODwB+etL3Idh/BxwDJ+6Lv/UsdE4j81MF9
+	7O9lSaAXpznS47lLuLYqsE5ff2zOEq9aRxKWNbp5YKOwacRtkUEk1yAH1j1KMlrw9pSizvBNEaM4S
+	+vuylF+f1d1rXjooYHbF0g+a3SmkLXP/PKtdVBK1yM+LNwuj0z199Z9F+J3hY+1rhdM21ru3Wd5No
+	SHtT/1iA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rvqS9-00000004U0I-1lkC;
-	Sun, 14 Apr 2024 03:22:49 +0000
+	id 1rvqkM-00000004VS8-12tL;
+	Sun, 14 Apr 2024 03:41:38 +0000
 Received: from pidgin.makrotopia.org ([185.142.180.65])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rvqS5-00000004Tzf-3BBR;
-	Sun, 14 Apr 2024 03:22:47 +0000
+	id 1rvqkI-00000004VRM-1lOf;
+	Sun, 14 Apr 2024 03:41:35 +0000
 Received: from local
 	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
 	 (Exim 4.96.2)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1rvqRu-0001As-32;
-	Sun, 14 Apr 2024 03:22:35 +0000
-Date: Sun, 14 Apr 2024 04:22:31 +0100
+	id 1rvqk3-0001Ep-2T;
+	Sun, 14 Apr 2024 03:41:19 +0000
+Date: Sun, 14 Apr 2024 04:41:16 +0100
 From: Daniel Golle <daniel@makrotopia.org>
 To: arinc.unal@arinc9.com
 Cc: DENG Qingfang <dqfext@gmail.com>, Sean Wang <sean.wang@mediatek.com>,
@@ -44,23 +44,25 @@ Cc: DENG Qingfang <dqfext@gmail.com>, Sean Wang <sean.wang@mediatek.com>,
 	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Holger Stadali <hs@giax.de>,
 	Bartel Eerdekens <bartel.eerdekens@constell8.be>,
 	mithat.guner@xeront.com, erkin.bozoglu@xeront.com,
 	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next 2/2] net: dsa: mt7530: simplify core operations
-Message-ID: <ZhtL9zAO83HJb_Jq@makrotopia.org>
-References: <20240414-b4-for-netnext-mt7530-phy-addr-from-dt-and-simplify-core-ops-v1-0-b08936df2770@arinc9.com>
- <20240414-b4-for-netnext-mt7530-phy-addr-from-dt-and-simplify-core-ops-v1-2-b08936df2770@arinc9.com>
+Subject: Re: [PATCH net 2/2] net: dsa: mt7530: fix port mirroring for MT7988
+ SoC switch
+Message-ID: <ZhtQXFsqS_y6_LHC@makrotopia.org>
+References: <20240413-b4-for-net-mt7530-fix-mirroring-to-local-port-and-mt7988-v1-0-476deff8cc06@arinc9.com>
+ <20240413-b4-for-net-mt7530-fix-mirroring-to-local-port-and-mt7988-v1-2-476deff8cc06@arinc9.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20240414-b4-for-netnext-mt7530-phy-addr-from-dt-and-simplify-core-ops-v1-2-b08936df2770@arinc9.com>
+In-Reply-To: <20240413-b4-for-net-mt7530-fix-mirroring-to-local-port-and-mt7988-v1-2-476deff8cc06@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240413_202245_925388_9E33E735 
-X-CRM114-Status: GOOD (  24.34  )
+X-CRM114-CacheID: sfid-20240413_204134_485968_770D6367 
+X-CRM114-Status: GOOD (  15.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,190 +77,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Apr 14, 2024 at 01:08:20AM +0300, Arınç ÜNAL via B4 Relay wrote:
+On Sat, Apr 13, 2024 at 04:01:40PM +0300, Arınç ÜNAL via B4 Relay wrote:
 > From: Arınç ÜNAL <arinc.unal@arinc9.com>
 > 
-> The core_rmw() function calls core_read_mmd_indirect() to read the
-> requested register, and then calls core_write_mmd_indirect() to write the
-> requested value to the register. Because Clause 22 is used to access Clause
-> 45 registers, some operations on core_write_mmd_indirect() are
-> unnecessarily run. Get rid of core_read_mmd_indirect() and
-> core_write_mmd_indirect(), and run only the necessary operations on
-> core_write() and core_rmw().
+> The "MT7988A Wi-Fi 7 Generation Router Platform: Datasheet (Open Version)
+> v0.1" document shows bits 16 to 18 as the MIRROR_PORT field of the CPU
+> forward control register. Currently, the MT7530 DSA subdriver configures
+> bits 0 to 2 of the CPU forward control register which breaks the port
+> mirroring feature for the MT7988 SoC switch.
 > 
+> Fix this by using the MT7531_MIRROR_PORT_GET() and MT7531_MIRROR_PORT_SET()
+> macros which utilise the correct bits.
+> 
+> Fixes: 110c18bfed41 ("net: dsa: mt7530: introduce driver for MT7988 built-in switch")
 > Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-Reviewed-by: Daniel Golle <daniel@makrotopia.org>
-Tested-by: Daniel Golle <daniel@makrotopia.org>
+Acked-by: Daniel Golle <daniel@makrotopia.org>
 
 > ---
->  drivers/net/dsa/mt7530.c | 108 +++++++++++++++++++----------------------------
->  1 file changed, 43 insertions(+), 65 deletions(-)
+>  drivers/net/dsa/mt7530.c | 10 ++++++----
+>  1 file changed, 6 insertions(+), 4 deletions(-)
 > 
 > diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-> index fefa6dd151fa..2650eacf87a7 100644
+> index b84e1845fa02..8090390edaf9 100644
 > --- a/drivers/net/dsa/mt7530.c
 > +++ b/drivers/net/dsa/mt7530.c
-> @@ -74,116 +74,94 @@ static const struct mt7530_mib_desc mt7530_mib[] = {
->  	MIB_DESC(1, 0xb8, "RxArlDrop"),
->  };
+> @@ -1883,14 +1883,16 @@ mt7530_port_vlan_del(struct dsa_switch *ds, int port,
 >  
-> -/* Since phy_device has not yet been created and
-> - * phy_{read,write}_mmd_indirect is not available, we provide our own
-> - * core_{read,write}_mmd_indirect with core_{clear,write,set} wrappers
-> - * to complete this function.
-> - */
-> -static int
-> -core_read_mmd_indirect(struct mt7530_priv *priv, int prtad, int devad)
-> +static void
-> +mt7530_mutex_lock(struct mt7530_priv *priv)
-> +{
-> +	if (priv->bus)
-> +		mutex_lock_nested(&priv->bus->mdio_lock, MDIO_MUTEX_NESTED);
-> +}
-> +
-> +static void
-> +mt7530_mutex_unlock(struct mt7530_priv *priv)
-> +{
-> +	if (priv->bus)
-> +		mutex_unlock(&priv->bus->mdio_lock);
-> +}
-> +
-> +static void
-> +core_write(struct mt7530_priv *priv, u32 reg, u32 val)
+>  static int mt753x_mirror_port_get(unsigned int id, u32 val)
 >  {
->  	struct mii_bus *bus = priv->bus;
-> -	int value, ret;
-> +	int ret;
-> +
-> +	mt7530_mutex_lock(priv);
->  
->  	/* Write the desired MMD Devad */
->  	ret = bus->write(bus, MT753X_CTRL_PHY_ADDR(priv->phy_addr),
-> -			 MII_MMD_CTRL, devad);
-> +			 MII_MMD_CTRL, MDIO_MMD_VEND2);
->  	if (ret < 0)
->  		goto err;
->  
->  	/* Write the desired MMD register address */
->  	ret = bus->write(bus, MT753X_CTRL_PHY_ADDR(priv->phy_addr),
-> -			 MII_MMD_DATA, prtad);
-> +			 MII_MMD_DATA, reg);
->  	if (ret < 0)
->  		goto err;
->  
->  	/* Select the Function : DATA with no post increment */
->  	ret = bus->write(bus, MT753X_CTRL_PHY_ADDR(priv->phy_addr),
-> -			 MII_MMD_CTRL, devad | MII_MMD_CTRL_NOINCR);
-> +			 MII_MMD_CTRL, MDIO_MMD_VEND2 | MII_MMD_CTRL_NOINCR);
->  	if (ret < 0)
->  		goto err;
->  
-> -	/* Read the content of the MMD's selected register */
-> -	value = bus->read(bus, MT753X_CTRL_PHY_ADDR(priv->phy_addr),
-> -			  MII_MMD_DATA);
-> -
-> -	return value;
-> +	/* Write the data into MMD's selected register */
-> +	ret = bus->write(bus, MT753X_CTRL_PHY_ADDR(priv->phy_addr),
-> +			 MII_MMD_DATA, val);
->  err:
-> -	dev_err(&bus->dev,  "failed to read mmd register\n");
-> +	if (ret < 0)
-> +		dev_err(&bus->dev, "failed to write mmd register\n");
->  
-> -	return ret;
-> +	mt7530_mutex_unlock(priv);
+> -	return (id == ID_MT7531) ? MT7531_MIRROR_PORT_GET(val) :
+> -				   MIRROR_PORT(val);
+> +	return (id == ID_MT7531 || id == ID_MT7988) ?
+> +		       MT7531_MIRROR_PORT_GET(val) :
+> +		       MIRROR_PORT(val);
 >  }
 >  
-> -static int
-> -core_write_mmd_indirect(struct mt7530_priv *priv, int prtad,
-> -			int devad, u32 data)
-> +static void
-> +core_rmw(struct mt7530_priv *priv, u32 reg, u32 mask, u32 set)
+>  static int mt753x_mirror_port_set(unsigned int id, u32 val)
 >  {
->  	struct mii_bus *bus = priv->bus;
-> +	u32 val;
->  	int ret;
->  
-> +	mt7530_mutex_lock(priv);
-> +
->  	/* Write the desired MMD Devad */
->  	ret = bus->write(bus, MT753X_CTRL_PHY_ADDR(priv->phy_addr),
-> -			 MII_MMD_CTRL, devad);
-> +			 MII_MMD_CTRL, MDIO_MMD_VEND2);
->  	if (ret < 0)
->  		goto err;
->  
->  	/* Write the desired MMD register address */
->  	ret = bus->write(bus, MT753X_CTRL_PHY_ADDR(priv->phy_addr),
-> -			 MII_MMD_DATA, prtad);
-> +			 MII_MMD_DATA, reg);
->  	if (ret < 0)
->  		goto err;
->  
->  	/* Select the Function : DATA with no post increment */
->  	ret = bus->write(bus, MT753X_CTRL_PHY_ADDR(priv->phy_addr),
-> -			 MII_MMD_CTRL, devad | MII_MMD_CTRL_NOINCR);
-> +			 MII_MMD_CTRL, MDIO_MMD_VEND2 | MII_MMD_CTRL_NOINCR);
->  	if (ret < 0)
->  		goto err;
->  
-> +	/* Read the content of the MMD's selected register */
-> +	val = bus->read(bus, MT753X_CTRL_PHY_ADDR(priv->phy_addr),
-> +			MII_MMD_DATA);
-> +	val &= ~mask;
-> +	val |= set;
->  	/* Write the data into MMD's selected register */
->  	ret = bus->write(bus, MT753X_CTRL_PHY_ADDR(priv->phy_addr),
-> -			 MII_MMD_DATA, data);
-> +			 MII_MMD_DATA, val);
->  err:
->  	if (ret < 0)
-> -		dev_err(&bus->dev,
-> -			"failed to write mmd register\n");
-> -	return ret;
-> -}
-> -
-> -static void
-> -mt7530_mutex_lock(struct mt7530_priv *priv)
-> -{
-> -	if (priv->bus)
-> -		mutex_lock_nested(&priv->bus->mdio_lock, MDIO_MUTEX_NESTED);
-> -}
-> -
-> -static void
-> -mt7530_mutex_unlock(struct mt7530_priv *priv)
-> -{
-> -	if (priv->bus)
-> -		mutex_unlock(&priv->bus->mdio_lock);
-> -}
-> -
-> -static void
-> -core_write(struct mt7530_priv *priv, u32 reg, u32 val)
-> -{
-> -	mt7530_mutex_lock(priv);
-> -
-> -	core_write_mmd_indirect(priv, reg, MDIO_MMD_VEND2, val);
-> -
-> -	mt7530_mutex_unlock(priv);
-> -}
-> -
-> -static void
-> -core_rmw(struct mt7530_priv *priv, u32 reg, u32 mask, u32 set)
-> -{
-> -	u32 val;
-> -
-> -	mt7530_mutex_lock(priv);
-> -
-> -	val = core_read_mmd_indirect(priv, reg, MDIO_MMD_VEND2);
-> -	val &= ~mask;
-> -	val |= set;
-> -	core_write_mmd_indirect(priv, reg, MDIO_MMD_VEND2, val);
-> +		dev_err(&bus->dev, "failed to write mmd register\n");
->  
->  	mt7530_mutex_unlock(priv);
+> -	return (id == ID_MT7531) ? MT7531_MIRROR_PORT_SET(val) :
+> -				   MIRROR_PORT(val);
+> +	return (id == ID_MT7531 || id == ID_MT7988) ?
+> +		       MT7531_MIRROR_PORT_SET(val) :
+> +		       MIRROR_PORT(val);
 >  }
+>  
+>  static int mt753x_port_mirror_add(struct dsa_switch *ds, int port,
 > 
 > -- 
 > 2.40.1
