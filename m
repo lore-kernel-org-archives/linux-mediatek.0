@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E42F0C4345F
-	for <linux-mediatek@archiver.kernel.org>; Sun, 14 Apr 2024 18:49:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76329C4345F
+	for <linux-mediatek@archiver.kernel.org>; Sun, 14 Apr 2024 18:49:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XFE31UIMDaG6JvwrkhTecWOoMebzfa7/gvpxMHW2H8Y=; b=rfk/Eo7Y/E5bIQcdccAoA9FKji
-	asIMygzhyRG4+DIUz8dNKbtbJC+oDgYa1PU+IepWita58uBbGQFgzB3f5pmm/ugiCObIrssAJwObH
-	qCKrROf5dhcbhg8CY4/4b30rQUwebmPbdwox4bcxrAxyUHPQ8LYhoDS4zkqFL5qq/DdJH9OyuBBpu
-	vMhr8MNLNpClquCro2niE8ZHTTo2ZIvTnnFDglWThbyyzMeQrtSRCdWJ6Zxf50iKIuON1BjuUPEiJ
-	Ym21e0mth5P+wqklxogLEcTzkx1bj7tuTK3ZOOjUYEGIjMbLgS28QWXcNzQVxz4GHSxiOx1Dxt2zP
-	MNRjd+PA==;
+	bh=GZiWSmjI1JlLrEIipCtL7Pk/V+lmlTYlK0HbAD35HKI=; b=JX/Zjgs3aycxwQrSZZgzgniiAe
+	9VOVtgTGHe0Gb4VIiJ+1Y3lv9xFkgu538CPj7XXh5HxZynRanVE5VhkmgUAG2ULPovzvdExGeZvjv
+	G3ZhNtbmb+IlJ92zENV/RmSglbbusjDwPxRYg8VBHCKctYZyqXBrmzHkNOOATw5/F0yOUu6f/RnZJ
+	Q5m8t+V6f1+hMdXhi8t1hStR96SVKoI4JwW7e9aiVqpxXSroKkW5WLrcnin95+m+1Z+riI/pURtIn
+	JykGwLQiU7Okmmc2fnUnzJpNZ54hOpRD/nKIPt17bQQLfLHFgu15O8UlVq1nm7EswDc3ejXyURzyG
+	neVbed5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rw4uS-000000068Ln-0aIe;
-	Sun, 14 Apr 2024 18:49:00 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1rw4ud-000000068Um-26lZ;
+	Sun, 14 Apr 2024 18:49:11 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rw4tw-0000000681p-3mxv;
-	Sun, 14 Apr 2024 18:48:30 +0000
+	id 1rw4u5-0000000687Y-1oV1;
+	Sun, 14 Apr 2024 18:48:39 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 5AF8C60B91;
+	by sin.source.kernel.org (Postfix) with ESMTP id 7AEFDCE01C8;
+	Sun, 14 Apr 2024 18:48:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8ADCEC3277B;
 	Sun, 14 Apr 2024 18:48:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F23B8C072AA;
-	Sun, 14 Apr 2024 18:48:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1713120508;
-	bh=E3Lgb8V8RKpyH5zK9wcRNDE7dtQPH+EB6tyX8qozgKM=;
+	s=k20201202; t=1713120514;
+	bh=ODYRn2RdENpaKnJgZLjiwAca8icK8fqKMWlq39yx68A=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=OjvcFNH3/nQWL33ZQOe+YPPlV/qcDPqGarfUwtM7Yt1eYuGdjnmLwv+CURMh55uFp
-	 Jc2TEdCB9JymQt2mr56Kqxt5wxBpjx1xhcOSr96BnvKbq/g1lc5ehYs2everX6eAS9
-	 7dkk2aFaP494U6uJjOzIt2vwx1xdoED96W0xYXHe7po4uLYFQDG771I1ZVSuCyWFxb
-	 9GVRf5pVyI7CypZgKaoAz+Vc8gHPhNiTdO8HN6b2Qg3Pcxs02QX98vUyZg8W0CZEMS
-	 Dus7lv2fEJxNLu2DUARmkv5tbIqIDyiEhDMbmWyv1J/PiRwMB9xokQfooY+BSKD8ox
-	 5IK3F0oxs0uYg==
+	b=Tz9d0Fxdi92/WqzdH6POx08Z2+ZuVV0P/a4thX8q0xcpqwmwUy9JSc9OJ1pIU3Wfn
+	 L7VrBEsRlrtK6TogPf0I/svnoS0PWVk+kTTQDgHpYTbeS0VhG8DJbx70DGcgzg8/Ki
+	 CdYIHAne6z11iw6DQfGZxppZj9KUtowPIDLzq/it5ItXpe5lCACO5kgMa15ZNre6YF
+	 Q30Mzi+ewHlEo/18uC+QdZqlvw//8+8thbyeb7x2QYuctLvo3pjZSzRx2d3pVhVD4L
+	 gOzki8UrzMXTytlW9XePTuWP/9gYa0ZWHJU3sS23eRL70Lxg35CG1v9hEOiiOVkOgN
+	 mm/8rlEOvBJUQ==
 From: Krzysztof Kozlowski <krzk@kernel.org>
-Date: Sun, 14 Apr 2024 20:47:30 +0200
-Subject: [PATCH 05/14] ASoC: SOF: intel: pci-tng: Constify snd_sof_dsp_ops
+Date: Sun, 14 Apr 2024 20:47:31 +0200
+Subject: [PATCH 06/14] ASoC: SOF: intel: hda: Constify snd_sof_dsp_ops
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240414-n-const-ops-var-v1-5-8f53ee5d981c@kernel.org>
+Message-Id: <20240414-n-const-ops-var-v1-6-8f53ee5d981c@kernel.org>
 References: <20240414-n-const-ops-var-v1-0-8f53ee5d981c@kernel.org>
 In-Reply-To: <20240414-n-const-ops-var-v1-0-8f53ee5d981c@kernel.org>
 To: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>, 
@@ -69,25 +69,25 @@ Cc: sound-open-firmware@alsa-project.org, linux-sound@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
  Krzysztof Kozlowski <krzk@kernel.org>
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1218; i=krzk@kernel.org;
- h=from:subject:message-id; bh=E3Lgb8V8RKpyH5zK9wcRNDE7dtQPH+EB6tyX8qozgKM=;
- b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBmHCTIDy3Da7qtpblMGIwPzl1JuWlzNxlyq+NK4
- zvMVQDu3geJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZhwkyAAKCRDBN2bmhouD
- 170/D/0c3KsuAsTQcXYmaow+UH/9VU+H51CVHZL7moe4HJJNPIEb309ntaOE6QQO2G38wsFzY4s
- IpSWVJFTkIYjPMP5t5u04Xj9C3k4nU+qhY2OZD4o/V2fTyhDFvSbzV4r9uqBxBnlOKmugO2KRBt
- gTMAYU6cObX2/VnooacJ6Ce6N0c6Ggbkh4H5fXKB9FIxVgQBgGs5N0goiA9wSEzlg8+P8LFbKBM
- WPiuiF9sHnDIZdiyMQfvayqN9IFBd0hb/9gOaOC/3tVMweNHCFkoXYUeFgJHuSZ7odpNpqZD90y
- 18/hzaIeeCg/uQKBEFe6aiqVpnCK3JmT2hRCZmDlZvSuyDzQU1liykKWJkzmznaYNhcgwg6pWn4
- ITWzbhb7KzteZt3yrOOqFIpYcZSWcbY55CoUX3hQB5vy2jyGT0uKBffZiFALermHpXMUUuMVp6R
- cr9IKnJaPtaE8N0qAW0+hcxIkmacyLxSydN36onQfgk/bYWuml6gRlog5CcmeIa18g+pd99JOTf
- D1Nh5orj5oE90J6Xv3qIaM5SmTtUkqFkQjqkF0H2VnLqJKBMZwEfJl9jB5dwkI0oAjs7I/wMSby
- Wf2hC1rWk5D13Xz1fpKaYErRNd+cwQ1Tgq17b2jGuz5N/mqj3gjNTHRrm2jiKQNnxUBS1q+QwV9
- IT2N8xI3TbDMUtg==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1327; i=krzk@kernel.org;
+ h=from:subject:message-id; bh=ODYRn2RdENpaKnJgZLjiwAca8icK8fqKMWlq39yx68A=;
+ b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBmHCTJea+7a6S6/0ABA+BT4aNIYMDEgQLCwYl0y
+ NVOjuIpHQ6JAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZhwkyQAKCRDBN2bmhouD
+ 1w0/D/4kT2T/U2kjeb533yzTZJrtn1IQZrnfh2AARz5j1/KEXUbKhX3g23zIiE7v2uMAApP0XbG
+ oMf4MZfc7/qxfxOTNF5eRJl164ezv/XfeOt+o+oh/CMEUg45jLOvgQZVgCwGEWg69WdPhq1Wllw
+ 9mg+myz1Dhdw8SHJdmcuyWktFnliFSaLuoJm/gNoYJQ5ZBLwVDJN6KR5Daph/qb5p9BN071uE0n
+ UNU5jfiPip/X9yMcmvbZRI/rxnKWlmvqSDq3GWkqT9eAdXFBZXwkYv73fkfaB63z1iOwIaIXSoI
+ OZ/ekB+e9EG09ga9KKimHX/jEhzQk4kR7ypK8F0vLr2YrEaGQ95hpmBzsYSu70Px3ggKj14nFFv
+ Dwf54mgvRiChYGnzxVa6WuYnVrvN6s/WmTEjmiMRm78dqD1JtSH3/O644bol12PTP39YNzZwzzR
+ RbzWz8sy/n1WTeRCJJBK7K6RXbnbrvLYTg2sRTe+amJEhLjpL798Io6O69aZhO8GI2YF3leuVsl
+ P2VTiXGQw4q14WhUuUkHitxtN2PKgC0QA1cYreDg6F/bWC/byVhFjNox1ziPoyoHoF8TqbIrmJe
+ 9Fd/PjxONIj5GvJXa6GyeunyqfvJRaUCHlYQq8LnP3kHTrkHIQ+wLuwRCzNQ0J8PMhac1oe4iZ7
+ xj4+dUU5YGoX8Ug==
 X-Developer-Key: i=krzk@kernel.org; a=openpgp;
  fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240414_114829_065231_D9D1EC92 
-X-CRM114-Status: GOOD (  12.03  )
+X-CRM114-CacheID: sfid-20240414_114838_001611_37B33D21 
+X-CRM114-Status: GOOD (  11.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,36 +107,36 @@ const for increased code safety.
 
 Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
 ---
- sound/soc/sof/intel/pci-tng.c | 2 +-
- sound/soc/sof/intel/shim.h    | 2 +-
+ sound/soc/sof/intel/hda-common-ops.c | 2 +-
+ sound/soc/sof/intel/hda.h            | 2 +-
  2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/sound/soc/sof/intel/pci-tng.c b/sound/soc/sof/intel/pci-tng.c
-index c90173003c2b..d8a36d5a29f7 100644
---- a/sound/soc/sof/intel/pci-tng.c
-+++ b/sound/soc/sof/intel/pci-tng.c
-@@ -132,7 +132,7 @@ static int tangier_pci_probe(struct snd_sof_dev *sdev)
- 	return ret;
- }
+diff --git a/sound/soc/sof/intel/hda-common-ops.c b/sound/soc/sof/intel/hda-common-ops.c
+index d71bb66b9991..466769c68da5 100644
+--- a/sound/soc/sof/intel/hda-common-ops.c
++++ b/sound/soc/sof/intel/hda-common-ops.c
+@@ -14,7 +14,7 @@
+ #include "hda.h"
+ #include "../sof-audio.h"
  
--struct snd_sof_dsp_ops sof_tng_ops = {
-+const struct snd_sof_dsp_ops sof_tng_ops = {
- 	/* device init */
- 	.probe		= tangier_pci_probe,
+-struct snd_sof_dsp_ops sof_hda_common_ops = {
++const struct snd_sof_dsp_ops sof_hda_common_ops = {
+ 	/* probe/remove/shutdown */
+ 	.probe_early	= hda_dsp_probe_early,
+ 	.probe		= hda_dsp_probe,
+diff --git a/sound/soc/sof/intel/hda.h b/sound/soc/sof/intel/hda.h
+index b59d1a572bce..7804c5b50c26 100644
+--- a/sound/soc/sof/intel/hda.h
++++ b/sound/soc/sof/intel/hda.h
+@@ -874,7 +874,7 @@ int hda_dsp_dais_suspend(struct snd_sof_dev *sdev);
+ /*
+  * Platform Specific HW abstraction Ops.
+  */
+-extern struct snd_sof_dsp_ops sof_hda_common_ops;
++extern const struct snd_sof_dsp_ops sof_hda_common_ops;
  
-diff --git a/sound/soc/sof/intel/shim.h b/sound/soc/sof/intel/shim.h
-index 9515d753c816..18ce3d33fa80 100644
---- a/sound/soc/sof/intel/shim.h
-+++ b/sound/soc/sof/intel/shim.h
-@@ -196,7 +196,7 @@ struct sof_intel_dsp_desc {
- 	int (*cl_init)(struct snd_sof_dev *sdev, int stream_tag, bool imr_boot);
- };
- 
--extern struct snd_sof_dsp_ops sof_tng_ops;
-+extern const struct snd_sof_dsp_ops sof_tng_ops;
- 
- extern const struct sof_intel_dsp_desc tng_chip_info;
- 
+ extern struct snd_sof_dsp_ops sof_skl_ops;
+ int sof_skl_ops_init(struct snd_sof_dev *sdev);
 
 -- 
 2.34.1
