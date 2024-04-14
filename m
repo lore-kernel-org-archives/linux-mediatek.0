@@ -4,82 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58807C4345F
-	for <linux-mediatek@archiver.kernel.org>; Sun, 14 Apr 2024 07:51:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 398A0C4345F
+	for <linux-mediatek@archiver.kernel.org>; Sun, 14 Apr 2024 08:07:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tie26wNMkAQpPXalKc2uq3hIJOM0M46Cyh9DMIZHWH4=; b=Oq6sgrVAOLk9viv+FA06TD1BPy
-	MqACnTWCK6zTcSTnvRwsbi2dqHviDS8rWwMijicZVkDxp3PKFYGSS69KsoWco/N9jTAir2TV8H0xs
-	6Gb9nkVIN8dZF+9ue5wss7FvdOl8q9weZDnl5PJ0TlAr0zYMfcEVti60IjvoDjbKCldw0CAh9SQkp
-	59n4xMBjHSP/V+4rYAkw/gygj0WF+c/4UjbNVdqW14FfzU97IgHuuFjE9CjZbfnGMR7o71MAz/g2w
-	GpnSLRKi388K0BiZ6cRB1Nh6l0vK+NDPkwCENJSJqEf6IlVe83m4TRjdUIw5lFRCMRLHyubJvlQQl
-	aPG0QX+g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RqNeVXpCo0a2FuxgS0FBsXQeNAgyt63dNpBjp06s8g4=; b=VFN5fvBtcCK+XnGkKvXM42Ucxi
+	wTCSDPbeW48bl4LLg6EG+Krl4LJnWUqs9UhH5PePOfarHg3U5fohy1fc0eZPQ/Le+w+wXa3RrYUss
+	ukT7SHqVRM/AYle9MY7QvhSf11Z/qnUCH176lRsysYQ3dsf7j/5k1WlYvrxwKyi6JcfxCoOrSsYW4
+	5iS54m0rB7RjNDpCzujz9DP3LcIP9b4nBWXMXcy6kg+J+2qRzKeQWL37C2clrlIeZLGeMkWR5V5a8
+	p5VvEdDBK0+SbXsVVC11bbTZEpcxh8GP+22SyNCarxBYKg2A5nKed8dPCbCcM1w1iBR0lwYN0r45u
+	d99I+D+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rvuds-00000004wRy-3QTm;
-	Sun, 14 Apr 2024 07:51:12 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1rvutP-00000004yUO-1mec;
+	Sun, 14 Apr 2024 08:07:15 +0000
+Received: from smtp-84.smtpout.orange.fr ([80.12.242.84] helo=msa.smtpout.orange.fr)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rvudn-00000004wR1-45PC;
-	Sun, 14 Apr 2024 07:51:09 +0000
-Received: from i5e8616c3.versanet.de ([94.134.22.195] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1rvudE-0001KG-L5; Sun, 14 Apr 2024 09:50:32 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: soc@kernel.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>,
- Florian Fainelli <florian.fainelli@broadcom.com>,
- Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
- Dinh Nguyen <dinguyen@kernel.org>,
- Tsahee Zidenberg <tsahee@annapurnalabs.com>,
- Antoine Tenart <atenart@kernel.org>,
- Khuong Dinh <khuong@os.amperecomputing.com>,
- Liviu Dudau <liviu.dudau@arm.com>, Sudeep Holla <sudeep.holla@arm.com>,
- Lorenzo Pieralisi <lpieralisi@kernel.org>, Ray Jui <rjui@broadcom.com>,
- Scott Branden <sbranden@broadcom.com>, Robert Richter <rric@kernel.org>,
- Shawn Guo <shawnguo@kernel.org>, Li Yang <leoyang.li@nxp.com>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>,
- "Paul J. Murphy" <paul.j.murphy@intel.com>,
- Daniele Alessandrelli <daniele.alessandrelli@intel.com>,
- Andrew Lunn <andrew@lunn.ch>, Gregory Clement <gregory.clement@bootlin.com>,
- Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
+	id 1rvutM-00000004yR7-0yCR;
+	Sun, 14 Apr 2024 08:07:14 +0000
+Received: from [192.168.1.18] ([86.243.17.157])
+	by smtp.orange.fr with ESMTPA
+	id vusxraUSs2kxovusxrWrdY; Sun, 14 Apr 2024 10:06:54 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wanadoo.fr;
+	s=t20230301; t=1713082014;
+	bh=RqNeVXpCo0a2FuxgS0FBsXQeNAgyt63dNpBjp06s8g4=;
+	h=Message-ID:Date:MIME-Version:Subject:To:From;
+	b=ecIEWTgvlHyKrM4aCxe4CxwWY4N/umtZUc2i4EtdMOVJe8sJOlyDlXsVyoY3aBLZx
+	 PoBCEAaZvNT2sYVBc18j3+ZjzAwVs+3RZj3WfqdFd8t+/4ftfsdYrqqI4ZgZEh2+mx
+	 Cix0AjGZ3y6dUa1rBZVElJgC8hAIccScNvnKB9EuWh09UHPLH0VXkNbUb6UDa1y35k
+	 5hatGlnKICKCKsl39QglBi84en3X5xRlxRvk7/UgIBpCbmPpbyrguGoHwRF4OpOjWi
+	 6BYmY/NtLMvnTOQ3mN7XiV42zxMnF//qG3agRHXqHk9SKScEd1ZFt8H5I0cv2zCGAK
+	 G1xBC+25UWS+w==
+X-ME-Helo: [192.168.1.18]
+X-ME-Auth: Y2hyaXN0b3BoZS5qYWlsbGV0QHdhbmFkb28uZnI=
+X-ME-Date: Sun, 14 Apr 2024 10:06:54 +0200
+X-ME-IP: 86.243.17.157
+Message-ID: <6faf8008-3a64-4ed9-8d7e-52ff32862df9@wanadoo.fr>
+Date: Sun, 14 Apr 2024 10:06:42 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net-next 1/2] net: dsa: mt7530-mdio: read PHY address of
+ switch from device tree
+To: Daniel Golle <daniel@makrotopia.org>, arinc.unal@arinc9.com
+Cc: DENG Qingfang <dqfext@gmail.com>, Sean Wang <sean.wang@mediatek.com>,
+ Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
+ Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konrad.dybcio@linaro.org>,
- Andreas =?ISO-8859-1?Q?F=E4rber?= <afaerber@suse.de>,
- Orson Zhai <orsonzhai@gmail.com>,
- Baolin Wang <baolin.wang@linux.alibaba.com>,
- Chunyan Zhang <zhang.lyra@gmail.com>, Jisheng Zhang <jszhang@kernel.org>,
- Alim Akhtar <alim.akhtar@samsung.com>, linux-fsd@tesla.com,
- Michal Simek <michal.simek@amd.com>, Rob Herring <robh@kernel.org>
-Cc: devicetree@vger.kernel.org, linux-rpi-kernel@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- imx@lists.linux.dev, linux-mediatek@lists.infradead.org,
- linux-tegra@vger.kernel.org, linux-arm-msm@vger.kernel.org,
- linux-realtek-soc@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-samsung-soc@vger.kernel.org
-Subject: Re: [PATCH] arm/arm64: dts: Drop "arm,armv8-pmuv3" compatible usage
-Date: Sun, 14 Apr 2024 09:50:29 +0200
-Message-ID: <2262532.iZASKD2KPV@diego>
-In-Reply-To: <20240412222857.3873079-1-robh@kernel.org>
-References: <20240412222857.3873079-1-robh@kernel.org>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
+ Bartel Eerdekens <bartel.eerdekens@constell8.be>, mithat.guner@xeront.com,
+ erkin.bozoglu@xeront.com, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20240414-b4-for-netnext-mt7530-phy-addr-from-dt-and-simplify-core-ops-v1-0-b08936df2770@arinc9.com>
+ <20240414-b4-for-netnext-mt7530-phy-addr-from-dt-and-simplify-core-ops-v1-1-b08936df2770@arinc9.com>
+ <ZhtJGEdjeS3LfMWF@makrotopia.org>
+Content-Language: en-MW
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+In-Reply-To: <ZhtJGEdjeS3LfMWF@makrotopia.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240414_005108_049532_6D3EF637 
-X-CRM114-Status: GOOD (  15.50  )
+X-CRM114-CacheID: sfid-20240414_010712_675046_E1C3193E 
+X-CRM114-Status: GOOD (  11.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,37 +86,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am Samstag, 13. April 2024, 00:28:51 CEST schrieb Rob Herring:
-> The "arm,armv8-pmuv3" compatible is intended only for s/w models. Primarily,
-> it doesn't provide any detail on uarch specific events.
+Le 14/04/2024 à 05:10, Daniel Golle a écrit :
+> On Sun, Apr 14, 2024 at 01:08:19AM +0300, Arınç ÜNAL via B4 Relay wrote:
+>> From: Arınç ÜNAL <arinc.unal@arinc9.com>
+>>
+>> Read the PHY address the switch listens on from the reg property of the
+>> switch node on the device tree. This change brings support for MT7530
+>> switches on boards with such bootstrapping configuration where the switch
+>> listens on a different PHY address than the hardcoded PHY address on the
+>> driver, 31.
+>>
+>> As described on the "MT7621 Programming Guide v0.4" document, the MT7530
+>> switch and its PHYs can be configured to listen on the range of 7-12,
+>> 15-20, 23-28, and 31 and 0-4 PHY addresses.
+>>
+>> There are operations where the switch PHY registers are used. For the PHY
+>> address of the control PHY, transform the MT753X_CTRL_PHY_ADDR constant
+>> into a macro and use it. The PHY address for the control PHY is 0 when the
+>> switch listens on 31. In any other case, it is one greater than the PHY
+>> address the switch listens on.
+>>
+>> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 > 
-> There's still remaining cases for CPUs without any corresponding PMU
-> definition and for big.LITTLE systems which only have a single PMU node
-> (there should be one per core type).
+> See minor nit inline below.
 > 
-> Signed-off-by: Rob Herring <robh@kernel.org>
-> ---
-> SoC Maintainers, Can you please apply this directly.
-> ---
 
->  arch/arm64/boot/dts/rockchip/rk3368.dtsi             | 2 +-
+...
 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3368.dtsi b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-> index 62af0cb94839..734f87db4d11 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-> @@ -141,7 +141,7 @@ cpu_b3: cpu@103 {
->  	};
->  
->  	arm-pmu {
-> -		compatible = "arm,armv8-pmuv3";
-> +		compatible = "arm,cortex-a53-pmu";
->  		interrupts = <GIC_SPI 112 IRQ_TYPE_LEVEL_HIGH>,
->  			     <GIC_SPI 113 IRQ_TYPE_LEVEL_HIGH>,
->  			     <GIC_SPI 114 IRQ_TYPE_LEVEL_HIGH>,
+>>   
+>> -#define MT753X_CTRL_PHY_ADDR		0
+>> +#define MT753X_CTRL_PHY_ADDR(phy_addr)	(phy_addr == 0x1f ? 0 : phy_addr + 1)
+> 
+> #define MT753X_CTRL_PHY_ADDR(phy_addr)	(phy_addr + 1 & 0x1f)
 
-For Rockchip:
-Acked-by: Heiko Stuebner <heiko@sntech.de>
+Nit: maybe (even if certainly useless in this case):
+   #define MT753X_CTRL_PHY_ADDR(phy_addr)	((phy_addr) + 1 & 0x1f)
 
+?
+
+> 
+> It's shorter, and works without conditional operator which is expensive.
+> 
+
+Cj
 
 
