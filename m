@@ -4,69 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CC99C4345F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Apr 2024 07:58:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2E88C4345F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Apr 2024 08:00:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5DwW7hIPp6hT4vqvzwHceKtwmCSWHYW840Sw5s7O9Y4=; b=hRKEn6UgogcvtKp2TZZJ5qoC3T
-	gXpRYL24Xo613jNMTm/bu3G9rgkNcTtbc9NrmtCfIJapXCEpoMLIV5pRx7XbHZ7BgY+PeMAxM+P2E
-	yQ/mdVz+F8AfTjes5RU1jldB9/u61jVCbYlPgcxCsbv8VP9/zQESJtdZMsKbztXjH0D8iAa2QBx2m
-	/2AXckuQvuPxTnunbmzqc3C3A+4XQ8ywav9sGk5WK90lz1OTVAv2vaxGvAlraS0+98CHXdB4MJO9w
-	wLD1FuxsvbAEACshx3fUK4Aqn4MmSui6Y6WL8GkbwpHcbjpUioq4kzia3niwb6REh2RFs2GpKTfDp
-	sYvZC7Zg==;
+	bh=NkDszUQBP0ctwqkz3tC8SEpLwCddU14viRbnUMm8i2w=; b=scHWugJuB4tBHDF0DW5uBjG4lu
+	lcANembe5L9KvtUaeGLJXyfH3/lmr6Mv1ynH0p/1X3MWVm6PtNbiP1rxoa2F1pJz79st7CmcCUclk
+	AFAl7sbpzvh6qTsT3zdjGgSny9WKqrQaXkx0d8a24N0NC/1tqbRHxZFnmAdncZtbZTwE+IiNsYLlY
+	a4sZblssNypeXU0hyV3JOfIgtOSUtZqY9ERheT30+AKFY/J/cleAlev9ikrjIIDIKyo/OY7O0b+Ty
+	2O54QHhJLMBfha8RNyCkdkykQvi2NCzSY6bYcX7wKA8vBL60wyf6Qz9cFGsg/gAW9YiMUD/7RfoRB
+	5LIg3eRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwHE4-00000007R58-0aO0;
-	Mon, 15 Apr 2024 07:58:04 +0000
+	id 1rwHGh-00000007RgN-0TES;
+	Mon, 15 Apr 2024 08:00:47 +0000
 Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwHE0-00000007R4F-2ZSP;
-	Mon, 15 Apr 2024 07:58:02 +0000
+	id 1rwHGa-00000007RfW-0G25;
+	Mon, 15 Apr 2024 08:00:44 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1713167879;
-	bh=TEDgWbwQZqOQttEd0OWcFZctvDILGW9k/SYHyU9Cehc=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=hvoI+VRgFbZuXc2T/ZhHDdc70sxIF7YtnlMy1rNr+wai9T8lCFPwYHBmkE7twNcwU
-	 JushNLe7oa9GSwigNnxQOMs6OYGXU08j0ehxCHk09Ss2SRb9LyZ2iL0jSq+/4Oyc+8
-	 B2fbhfJvzCwlxdvQNDYp3pR8ZBHTTPaY8wH1pZSqPoKji72M1nskg5xiWe6XheGHUC
-	 QjvGDvpgbXc/cbKmnIR0D26C4TxUIkqRjaJr0m0ET12aCMjYvl7fKjBcMxN6sPVOdY
-	 Knl7kPR6pxK0S9pNpeZK9ChBFHA9tIuv1YgZM0gtKjT2jyAuab90fYW7EOS5L6HVsp
-	 rM+XFSn7iEglw==
-Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	s=mail; t=1713168038;
+	bh=HSR6PBtfxo7EXtU/d2SXM83lh+wVbddu5sGZ+OvYtDE=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=0LPjgSf19fzsF4BViUPiF21dBSiq7NMYVukcWBXgO2drb9VJRWQeY+7dvpeCoykAi
+	 BFkN6IOUOlb03rW4a84O07xhRfWOi2ZMyTsiHI1oCz/hhGMYoW/9cdwpGl8iZw03Jp
+	 GRTPb3oi/8vBg4Ve2qJQRbNkLFWpMeZgRMZ4fdyBj+65RpGCvPrjZyBlRCCFODXQEa
+	 o+L3YgJfGPFhYmV7XXJdNi78vY14qnLCfLQ2GobzA2naA5CGH4NEVDlv6GF2Qn7B0B
+	 Kt2DKqWRXfS6kp2ka8XEBV0W5dkXPnQ2iuDMccd+IA4K2LpUcJnMBCt/Rg7MkLVpr1
+	 y7ZCjIvekOkyQ==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 35FC83780894;
-	Mon, 15 Apr 2024 07:57:58 +0000 (UTC)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Jason-ch Chen <jason-ch.chen@mediatek.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Project_Global_Chrome_Upstream_Group@mediatek.com,
-	linux-watchdog@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	Jason-ch Chen <Jason-ch.Chen@mediatek.com>
-Subject: Re: [PATCH] soc: mediatek: mtk-socinfo: Correct the marketing name for MT8188GV
-Date: Mon, 15 Apr 2024 09:57:54 +0200
-Message-ID: <171316786262.49812.9619771465130968963.b4-ty@collabora.com>
-X-Mailer: git-send-email 2.44.0
-In-Reply-To: <20240409035355.27659-1-jason-ch.chen@mediatek.com>
-References: <20240409035355.27659-1-jason-ch.chen@mediatek.com>
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 938653780894;
+	Mon, 15 Apr 2024 08:00:37 +0000 (UTC)
+Message-ID: <1e62f1eb-f4cb-450f-9345-0a6f1a65468f@collabora.com>
+Date: Mon, 15 Apr 2024 10:00:36 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 1/2] dt-bindings: net: bluetooth: Add MediaTek MT7921S
+ SDIO Bluetooth
+To: Chen-Yu Tsai <wenst@chromium.org>, Marcel Holtmann <marcel@holtmann.org>,
+ Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Sean Wang <sean.wang@mediatek.com>, linux-bluetooth@vger.kernel.org,
+ netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20240412073046.1192744-1-wenst@chromium.org>
+ <20240412073046.1192744-2-wenst@chromium.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20240412073046.1192744-2-wenst@chromium.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240415_005800_801502_82BCBDD8 
-X-CRM114-Status: UNSURE (   5.31  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240415_010040_271303_F9BC6DBA 
+X-CRM114-Status: GOOD (  10.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,17 +82,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 09 Apr 2024 11:53:55 +0800, Jason-ch Chen wrote:
-> Change 'Kompanio 830' to 'Kompanio 838'.
+Il 12/04/24 09:30, Chen-Yu Tsai ha scritto:
+> The MediaTek MT7921S is a WiFi/Bluetooth combo chip that works over
+> SDIO. WiFi and Bluetooth are separate SDIO functions within the chip.
+> While the Bluetooth SDIO function is fully discoverable, the chip has
+> a pin that can reset just the Bluetooth core, as opposed to the full
+> chip. This should be described in the device tree.
 > 
+> Add a device tree binding for the Bluetooth SDIO function of the MT7921S
+> specifically to document the reset line. This binding is based on the MMC
+> controller binding, which specifies one device node per SDIO function.
 > 
+> Cc: Sean Wang <sean.wang@mediatek.com>
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 
-Applied to v6.9-next/soc, thanks!
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-[1/1] soc: mediatek: mtk-socinfo: Correct the marketing name for MT8188GV
-      commit: 8328a3d126f54ef5998ea3b0e444701a02d62274
-
-Cheers,
-Angelo
 
 
