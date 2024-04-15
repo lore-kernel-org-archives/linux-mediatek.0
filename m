@@ -4,69 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CED58C4345F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Apr 2024 19:39:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BB2FC4345F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Apr 2024 19:39:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=deJ10dD0+0Xsb8NjdDYAyKNbuwQhOs8Vh4XFupDcv7A=; b=LY120oa8GCdHCmscBZzqBpdZnv
-	vauc4VSwFxT9DRdzZrxaOOO+VwDMQYXIEltTS3OriCjugk4atcjbzC2OP7ZBj2E5tVZYarSSrA13a
-	840S0613qsbztFRCCL8EE2HasfTnLHUcrX2gw6HwwMYACHLmU5exlDRTvopUl0QTWyMs+k0WE3r3Z
-	Ki90JUTHrI43fhOWdpAUR1hQR781goGOVwAih9kQ3/qO4b/IPbkFUUF4UJMuQ5hoxn/ZYNXBhlq/d
-	fOnfmqqXKrhNmwfYRvJ0zTt+NAmba1bvWCGYFBCjxKllB8bcKdp2hAVDeHYEHF2B8wQ7Y3Ces43Tx
-	t4/Jig4A==;
+	bh=HU2Q8r5u9tJlP6QMXdfGI/fLu0DCpsTU5mW0ctKluKw=; b=1tMCUBd0pxdqw803NHyWQ+LQZJ
+	RoFeDLtfhobgWO/or/Xc5tzo5Hkaba08w527w7u2uPyfAk8dwdz6cT5ZHtLQS+LQ7j1FoIGXxZzB1
+	mcVeJoIbc9ojF1P+Q3qpsVZliKHXMqOrBEsKrPfYZFDrQA+pwbKiKxF/1x0zxNtVIQqiIkklXcjge
+	R33oaV2XeO0tnK9HV0aGETkIk+XtmfdIusR7i3E4v0DHEzgxkjInTzj9b5mEYutSlk7svkOcvlmv5
+	Sa5JIYtYcwr15qtPmzXXW0GuOvB3VEyGRWXecrMnx1nwdTUzyLyVHVIZE4L9JEZMFZEx0hah2R9nd
+	rNknbO+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwSAW-00000009ekz-068y;
-	Mon, 15 Apr 2024 19:39:08 +0000
-Received: from mail-qk1-x732.google.com ([2607:f8b0:4864:20::732])
+	id 1rwSAs-00000009evq-2w02;
+	Mon, 15 Apr 2024 19:39:30 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwS6d-00000009cMP-2xHr
+	id 1rwS6v-00000009cWp-2mb3
+	for linux-mediatek@bombadil.infradead.org;
+	Mon, 15 Apr 2024 19:35:25 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=HU2Q8r5u9tJlP6QMXdfGI/fLu0DCpsTU5mW0ctKluKw=; b=KkzaUIiiGAe2uwh6tdZtZWFaad
+	TSH086aztdCwBe6qoP+gw0WYrn6xSwMzPoaqop31NfNvvxb1Lo1X7UhW6ky/sv5r1zbF0/K6wSMW2
+	gi5LRqMPP854MCW+06/kb+3NGKUrQoXs+zemC08ExM7eF4EIyLb3ByvlUE5JI807krLmSi6siVijK
+	3+dzgfr/vY0J4dWFwDh6b/6v00qQNADe04l8/SLPCkpzjoLJtwugM2H01nMsDek/KimnoNLgYkg4K
+	HpzEbJHUrukhoDMBPAdSmR4C5Iy8GY0GSBCCdbaxBpInBJgPXhY8LO9b1MfpxVW7UUneyQEbmO4RV
+	UCBfxK2Q==;
+Received: from mail-ot1-x32a.google.com ([2607:f8b0:4864:20::32a])
+	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1rwS6h-0000000AioM-3xRI
 	for linux-mediatek@lists.infradead.org;
-	Mon, 15 Apr 2024 19:35:11 +0000
-Received: by mail-qk1-x732.google.com with SMTP id af79cd13be357-78a2a97c296so232950985a.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 15 Apr 2024 12:35:06 -0700 (PDT)
+	Mon, 15 Apr 2024 19:35:20 +0000
+Received: by mail-ot1-x32a.google.com with SMTP id 46e09a7af769-6ea26393116so2998830a34.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 15 Apr 2024 12:35:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1713209706; x=1713814506; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1713209702; x=1713814502; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=deJ10dD0+0Xsb8NjdDYAyKNbuwQhOs8Vh4XFupDcv7A=;
-        b=h8wFj3jb29+Z8voofQz3QZpMZO4iGn6VnJx+wuD6bFmMops7kgmZA7hLMw8IIRbPNP
-         hfAlPbWD7ES0Jfc27E6j2sipdaXs8F1sx14WFvamqOp/JV/ushwAwgzP1UX//iFg655W
-         JHhAACRZ8dh6ef9dsoaoN7OnKnIk7V+qRkSXM=
+        bh=HU2Q8r5u9tJlP6QMXdfGI/fLu0DCpsTU5mW0ctKluKw=;
+        b=CGm89d9lGE2hd3YcKB+F2MDzgh45Sh9YdO4jlYrRyy2N4/cqLI7zR9K8XyyLnvFlpD
+         x5Qc8PUexAWGDfuW/yH/uzcFIF+Ur7kS1eVCZOJytN4kB4qZaWT3cW6ZyxQuwKcGAUZT
+         u5WOY/d8w2Bp3RgMEc0ADTRAAUMBc/Z7rbbRE=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713209706; x=1713814506;
+        d=1e100.net; s=20230601; t=1713209702; x=1713814502;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=deJ10dD0+0Xsb8NjdDYAyKNbuwQhOs8Vh4XFupDcv7A=;
-        b=wj/lmAN5koqPvQurW03WZEd+DXZ27dpG1A9RfOWaHlHNZI+cZ4VPSCrrt1rXi6+Oby
-         xsgCyy71a2xy2HBJMgA442dgXXAahRa/ewXjEYjH3stfTye4zl347Y5URovLP93bzUNq
-         Sb4zuuo8fgzoITTZdTE0Km1W6AHd8+ZlYiQKBhsjjtcLVLH9As/7VBaM/F+iy4nY+/cy
-         /nKqqtumkhlj60V4DQa2ALVcssNkO4KPLxKhR19fNgsUF0AjS/r4kUFy4PyXBpmNfDoK
-         2nWJSUp3uO50IDvxUIQLBzd3xS93tciDjqQnEKGeSXza+JPGkk1MVtiy5gyY+K7JaQm7
-         f8Ww==
-X-Forwarded-Encrypted: i=1; AJvYcCUZQnOXuAppZvNcTTNpTGX5rL8vY18Ku+Jt8OQ2Lsh9ePJgDGBqmuH4pamBek37NImkqL1MgrdRUYNAD8KULZJI2y7dzn4cKM4yeqdWjwsUWPjC
-X-Gm-Message-State: AOJu0YyH025MuKuHQKXH+h0d49nOUxP3sj4mYAV9OJ9UILrgeX000/PQ
-	PPlvqByy35URqPIComfaZm3BgWjD4C0fPS1MuRnrfwvJCSlZiL+cGiWmjRrcCg==
-X-Google-Smtp-Source: AGHT+IER1oNXbfvuBYkiNGhDuuE0aNBQlaGZ+2a+oyzSSefdjaOmTqtivonyQ4TeCmkM1b+mS1nfvQ==
-X-Received: by 2002:a05:620a:29d1:b0:78e:ef0a:387d with SMTP id s17-20020a05620a29d100b0078eef0a387dmr2507242qkp.56.1713209706006;
-        Mon, 15 Apr 2024 12:35:06 -0700 (PDT)
+        bh=HU2Q8r5u9tJlP6QMXdfGI/fLu0DCpsTU5mW0ctKluKw=;
+        b=tFQreBRAPPcYqC5Il+B2haiPIObocCq0udwVyClv22/ybIc9g6EQ7t2W5Ni+XerK2+
+         ef1AcOxf9J7XF7uiZr7G3i+vNidwhKgGdlyju0bb2eQ+kGbDzrRdWtOzmu4+lXCmQOlW
+         zbt2zqkL6gVRj/GsEX4WnnIzI8WLgfKyPnFJwdOp/eSfRge62DqiK5bqujq0/NS9f1z4
+         3EEiYGrmUFmGHBpyQPKN5QxTpxpXFDHpOEt2f6K54xnilwpokJU85sGpWJvqj3bzQOdv
+         NQkEmr2ftXTREKkU8FFQC/ZwWn7VIwTlQeiKqSduvyLun/r22b09FPZRCOgpVQ/KnCoQ
+         sZXQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXDfQ2kQ2hNodThUmGu4HLLgRIJfrggJruNrMv2zYRceREhpOMr2H6qeYWwnt2mP0DuqxQAW6WVHyJAQcRAJdma2J5EZLhMmtoY5Xhkv80KDycI
+X-Gm-Message-State: AOJu0YwQdxbHKyenN9wM/ScGoh44gywuljYUYZMZFd0+6RavT+QiqXBW
+	q/nm/Z/tZ3cnQjEUft6p4n3Qbf93uo3H6Vojqsx39h/LIKsqALh/aKJNMF4ErA==
+X-Google-Smtp-Source: AGHT+IFpNLbWkYy4T2kNtWWO3Krrkln4WZhxhxOvSx17rkc4ihK9bZ3DdjfUrMbHC9Tqsq3KJ+SA1g==
+X-Received: by 2002:a9d:6a15:0:b0:6eb:7c52:ed04 with SMTP id g21-20020a9d6a15000000b006eb7c52ed04mr5573331otn.5.1713209702690;
+        Mon, 15 Apr 2024 12:35:02 -0700 (PDT)
 Received: from denia.c.googlers.com (114.152.245.35.bc.googleusercontent.com. [35.245.152.114])
-        by smtp.gmail.com with ESMTPSA id s26-20020ae9f71a000000b0078d3b54eb76sm6718055qkg.78.2024.04.15.12.35.05
+        by smtp.gmail.com with ESMTPSA id s26-20020ae9f71a000000b0078d3b54eb76sm6718055qkg.78.2024.04.15.12.35.01
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 15 Apr 2024 12:35:05 -0700 (PDT)
+        Mon, 15 Apr 2024 12:35:02 -0700 (PDT)
 From: Ricardo Ribalda <ribalda@chromium.org>
-Date: Mon, 15 Apr 2024 19:34:51 +0000
-Subject: [PATCH 34/35] media: hdpvr: Refator return path
+Date: Mon, 15 Apr 2024 19:34:48 +0000
+Subject: [PATCH 31/35] media: cx231xx: Refator return path
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240415-fix-cocci-v1-34-477afb23728b@chromium.org>
+Message-Id: <20240415-fix-cocci-v1-31-477afb23728b@chromium.org>
 References: <20240415-fix-cocci-v1-0-477afb23728b@chromium.org>
 In-Reply-To: <20240415-fix-cocci-v1-0-477afb23728b@chromium.org>
 To: Martin Tuma <martin.tuma@digiteqautomotive.com>, 
@@ -112,8 +127,8 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  Ricardo Ribalda <ribalda@chromium.org>
 X-Mailer: b4 0.12.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240415_123508_155389_05E13D5F 
-X-CRM114-Status: GOOD (  12.99  )
+X-CRM114-CacheID: sfid-20240415_203514_767152_D309BFF3 
+X-CRM114-Status: GOOD (  12.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -131,28 +146,64 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 This is a nop, but let cocci now that this is not a good candidate for
 min()
 
-drivers/media/usb/hdpvr/hdpvr-control.c:41:12-13: WARNING opportunity for min()
+drivers/media/usb/cx231xx/cx231xx-i2c.c:353:15-16: WARNING opportunity for min()
+drivers/media/usb/cx231xx/cx231xx-i2c.c:262:15-16: WARNING opportunity for min()
+drivers/media/usb/cx231xx/cx231xx-i2c.c:326:15-16: WARNING opportunity for min()
+drivers/media/usb/cx231xx/cx231xx-i2c.c:176:15-16: WARNING opportunity for min()
 
 Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 ---
- drivers/media/usb/hdpvr/hdpvr-control.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ drivers/media/usb/cx231xx/cx231xx-i2c.c | 16 ++++++++++++----
+ 1 file changed, 12 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/media/usb/hdpvr/hdpvr-control.c b/drivers/media/usb/hdpvr/hdpvr-control.c
-index 37c53ab85b30..a1bb0231540c 100644
---- a/drivers/media/usb/hdpvr/hdpvr-control.c
-+++ b/drivers/media/usb/hdpvr/hdpvr-control.c
-@@ -38,7 +38,9 @@ int hdpvr_config_call(struct hdpvr_device *dev, uint value, u8 valbuf)
- 		 "config call request for value 0x%x returned %d\n", value,
- 		 ret);
+diff --git a/drivers/media/usb/cx231xx/cx231xx-i2c.c b/drivers/media/usb/cx231xx/cx231xx-i2c.c
+index c6659253c6fb..28de72856c90 100644
+--- a/drivers/media/usb/cx231xx/cx231xx-i2c.c
++++ b/drivers/media/usb/cx231xx/cx231xx-i2c.c
+@@ -173,7 +173,9 @@ static int cx231xx_i2c_send_bytes(struct i2c_adapter *i2c_adap,
+ 		status = dev->cx231xx_send_usb_command(bus, &req_data);
+ 	}
  
--	return ret < 0 ? ret : 0;
-+	if (ret < 0)
-+		return ret;
+-	return status < 0 ? status : 0;
++	if (status < 0)
++		return status;
 +	return 0;
  }
  
- int get_video_info(struct hdpvr_device *dev, struct hdpvr_video_info *vidinf)
+ /*
+@@ -259,7 +261,9 @@ static int cx231xx_i2c_recv_bytes(struct i2c_adapter *i2c_adap,
+ 		status = dev->cx231xx_send_usb_command(bus, &req_data);
+ 	}
+ 
+-	return status < 0 ? status : 0;
++	if (status < 0)
++		return status;
++	return 0;
+ }
+ 
+ /*
+@@ -323,7 +327,9 @@ static int cx231xx_i2c_recv_bytes_with_saddr(struct i2c_adapter *i2c_adap,
+ 	/* usb send command */
+ 	status = dev->cx231xx_send_usb_command(bus, &req_data);
+ 
+-	return status < 0 ? status : 0;
++	if (status < 0)
++		return status;
++	return 0;
+ }
+ 
+ /*
+@@ -350,7 +356,9 @@ static int cx231xx_i2c_check_for_device(struct i2c_adapter *i2c_adap,
+ 	/* usb send command */
+ 	status = dev->cx231xx_send_usb_command(bus, &req_data);
+ 
+-	return status < 0 ? status : 0;
++	if (status < 0)
++		return status;
++	return 0;
+ }
+ 
+ /*
 
 -- 
 2.44.0.683.g7961c838ac-goog
