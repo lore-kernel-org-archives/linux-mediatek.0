@@ -4,116 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40F55C05023
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Apr 2024 20:45:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43124C4345F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Apr 2024 21:07:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:Cc:From:
+	Subject:References:In-Reply-To:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Zm8YRFoKsGw65QxzcHtGCuYCsdcn5gIPOa2id9cD3ac=; b=0hiXyWQOpETGB+RTSUUNbjE1Xu
-	v2Ow5VGhTOAIBIt+AIAeoeOrY6dK7Z4LrvGK7Z2U4VUoKyh+Co7/eirV3ZZX1JhkTw8oQ4D4SQeD8
-	r8scIygzKnUNLqINH98PZIPlWMD2iYg2fbJKvpRMAJlfAKSW/3AiheLfAHYo5geQMD7haXFSR0/ow
-	gTkPaMtRkMHz+PBeggC7L6qZZ5/2x0d28u0FJgX8UW2cDhXZNOWiq1Tg9/LylaP54hs4QbeWZdWYZ
-	sfWy6flIEFLsceumoeJfUBdo1JABifn1pry1M+v2rRXZIHPWV/maTg6fcNb5vU0fBLjU0rDRv0Kqc
-	yzIfnvww==;
+	bh=DO3m2iSYrB9egTqY9X7+1nPCAo8K87z629ag4J+iPrM=; b=Z07PT3+nZgsOMhaXWce24xf3I9
+	nKtTp3et62N259G1KXTvSjqo2Fm7iLEQfj/vlwUOjYE6tXePTz+vZEQ4Uh43oZTPefdaW8sloA/Dl
+	JiWDjh8eag4dRNl4KBf7fOSslwZ5liW+zGEVH6Y2r4ReDSFIACpkwNpYv5wsLIG4FD3L4Th6D2tEF
+	/R/go8zN7V+ZzgNchcYXw7Xbp4JdErSvALS7ybt5pEhJHNa3mvi6WkDJdCGEnlDSOImKCr1A09Tsb
+	j05tn+rWYOkGq32gysU2EluLPVFslRbqc7pcbzCJ2h8fdGBUA512UXmXLs7bcPN+t2XLFFXEjSPIx
+	Ofi78+OQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwTD1-00000009s4m-2YmQ;
-	Mon, 15 Apr 2024 20:45:47 +0000
-Received: from mail-qk1-f179.google.com ([209.85.222.179])
+	id 1rwTXY-00000009uga-3iYC;
+	Mon, 15 Apr 2024 21:07:00 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwS68-00000009btF-485r
-	for linux-mediatek@lists.infradead.org;
-	Mon, 15 Apr 2024 19:34:41 +0000
-Received: by mail-qk1-f179.google.com with SMTP id af79cd13be357-78d5e7998a0so283668685a.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 15 Apr 2024 12:34:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1713209674; x=1713814474; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=Zm8YRFoKsGw65QxzcHtGCuYCsdcn5gIPOa2id9cD3ac=;
-        b=D5oA5mCj9RIRR4eNjdBJce96+65iVx+VnAuHyTWLpFf1x9MxJDH+/wez7/DNs4ZBGu
-         bKi5MBCQh4SkBuHhALCWmas9fTQOEM1SYqlQft3yvmbhhG0mYTc8VKFu6Af+0UZwEbjB
-         mapjJ7nCPJpWrALJN9R4XpMtyOZmPtaTt8GoU=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713209674; x=1713814474;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Zm8YRFoKsGw65QxzcHtGCuYCsdcn5gIPOa2id9cD3ac=;
-        b=KnTEOWBRlnSx9ffmYZYutND7mG6fx4MqpLXnhPz0taSbbRcAPCd3bWx7k+PUYE5Jib
-         2SjbTpPE8E+zPzzZbY95Msepr0EOMvr97wfGyidegiwDIXuuoGXcikTSKfemHTG0hZD6
-         D08/SINEkBzRGoQsMa0ugLS4wWaP7v6aRloKIzmy2OGzeA6/6eivPVyvL30U3CuWh+AX
-         jkrSwFsi49msl+GjmPndgney8mM87kDOeHbC4mOLqDMRAajOkys2wiz7po8SJIRpxqBf
-         Qzf6ihqc5z7fqDSgk+DPQzHa0OWuUt5vbEBPhOPdVsM9DQb03pxR32coNfm7kSdvBYND
-         KKMA==
-X-Forwarded-Encrypted: i=1; AJvYcCVSLccx4WzUJTb17NWTu8KA9li9wscOqrOINjJX/6CgAsW8zMTCYia1XigF/zgLgj7dyJSekNL+17kddxNpAgzIz0NywCHjFD6Pp8BjKmuEy/ru
-X-Gm-Message-State: AOJu0Yx2WRIPyJfBC6PN3Q9fqaMp3Fyaw3Xvsoz2Ec2pey1/ksEqae0G
-	yLKkAZ7h88pkURH+au/RCQK5Xufry/9HgGE8LJuTPCU90bgo9P9boE+Z6RrB+g==
-X-Google-Smtp-Source: AGHT+IE9q0KgLtAucdxZbWyn6MqzUt/EZtQ+H412AW7kKWoV5ItTNsK0gfo742OJilnTZ7BcAn728w==
-X-Received: by 2002:a05:620a:2116:b0:78d:61e8:2f12 with SMTP id l22-20020a05620a211600b0078d61e82f12mr12082197qkl.57.1713209674381;
-        Mon, 15 Apr 2024 12:34:34 -0700 (PDT)
-Received: from denia.c.googlers.com (114.152.245.35.bc.googleusercontent.com. [35.245.152.114])
-        by smtp.gmail.com with ESMTPSA id s26-20020ae9f71a000000b0078d3b54eb76sm6718055qkg.78.2024.04.15.12.34.33
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 15 Apr 2024 12:34:34 -0700 (PDT)
-From: Ricardo Ribalda <ribalda@chromium.org>
-Date: Mon, 15 Apr 2024 19:34:24 +0000
-Subject: [PATCH 07/35] media: staging: sun6i-isp: Remove redundant printk
-MIME-Version: 1.0
+	id 1rwTXV-00000009ueo-1F7D;
+	Mon, 15 Apr 2024 21:06:58 +0000
+Received: from pendragon.ideasonboard.com (cpc89244-aztw30-2-0-cust6594.18-1.cable.virginm.net [86.31.185.195])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 1F57F497;
+	Mon, 15 Apr 2024 23:06:07 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1713215167;
+	bh=QK/YnNEsRDQzA+VI9ZfCIug3P5VhevsltSl+SmjeDe0=;
+	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+	b=rdukYCQh9mMFKAPdTqd4jo4lB4a4B7xptpHd357YCY6nsrtHDE8p4O2e61Yb+mMxi
+	 yKJPDLBT5H6E9wcVtgSM3TW7Vas5B4YrUJkgnLXrP6kJ0tc0rBjudUOeDKylS3L9Le
+	 RHF8woqIolcFMRosZ1uhKhaSSd4+78XmA8SkQZdg=
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20240415-fix-cocci-v1-7-477afb23728b@chromium.org>
-References: <20240415-fix-cocci-v1-0-477afb23728b@chromium.org>
-In-Reply-To: <20240415-fix-cocci-v1-0-477afb23728b@chromium.org>
-To: Martin Tuma <martin.tuma@digiteqautomotive.com>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
- Hugues Fruchet <hugues.fruchet@foss.st.com>, 
- Alain Volmat <alain.volmat@foss.st.com>, 
- Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
- Alexandre Torgue <alexandre.torgue@foss.st.com>, 
- Paul Kocialkowski <paul.kocialkowski@bootlin.com>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Samuel Holland <samuel@sholland.org>, 
- Sakari Ailus <sakari.ailus@linux.intel.com>, 
- Thierry Reding <thierry.reding@gmail.com>, 
- Jonathan Hunter <jonathanh@nvidia.com>, 
- Sowjanya Komatineni <skomatineni@nvidia.com>, 
- Luca Ceresoli <luca.ceresoli@bootlin.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Hans Verkuil <hverkuil@xs4all.nl>, Sergey Kozlov <serjk@netup.ru>, 
- Abylay Ospan <aospan@netup.ru>, 
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
- Dmitry Osipenko <digetx@gmail.com>, 
- Stanimir Varbanov <stanimir.k.varbanov@gmail.com>, 
- Vikash Garodia <quic_vgarodia@quicinc.com>, 
- Bryan O'Donoghue <bryan.odonoghue@linaro.org>, 
- Bjorn Andersson <andersson@kernel.org>, 
- Konrad Dybcio <konrad.dybcio@linaro.org>, 
- Benjamin Mugnier <benjamin.mugnier@foss.st.com>, 
- Sylvain Petinot <sylvain.petinot@foss.st.com>, 
- Jacopo Mondi <jacopo+renesas@jmondi.org>, 
- Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, 
- Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, 
- =?utf-8?q?Niklas_S=C3=B6derlund?= <niklas.soderlund+renesas@ragnatech.se>, 
- Pavel Machek <pavel@ucw.cz>
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-stm32@st-md-mailman.stormreply.com, 
- linux-arm-kernel@lists.infradead.org, linux-staging@lists.linux.dev, 
- linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org, 
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
- Ricardo Ribalda <ribalda@chromium.org>
-X-Mailer: b4 0.12.4
+MIME-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20240415-fix-cocci-v1-4-477afb23728b@chromium.org>
+References: <20240415-fix-cocci-v1-0-477afb23728b@chromium.org> <20240415-fix-cocci-v1-4-477afb23728b@chromium.org>
+Subject: Re: [PATCH 04/35] media: uvcvideo: Use max() macro
+From: Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org, linux-staging@lists.linux.dev, linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, Ricardo Ribalda <ribalda@chromium.org>
+To: Abylay Ospan <aospan@netup.ru>, Alain Volmat <alain.volmat@foss.st.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Benjamin Mugnier <benjamin.mugnier@foss.st.com>, Bjorn Andersson <andersson@kernel.org>, Bryan O'Donoghue <bryan.odonoghue@linaro.org>, Chen-Yu Tsai <wens@csie.org>, Dmitry Osipenko <digetx@gmail.com>, Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, Hans Verkuil <hverkuil@xs4all.nl>, Hugues Fruchet <hugues.fruchet@foss.st.com>, Jacopo Mondi <jacopo+renesas@jmondi.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, Konrad Dybcio <konrad.dybcio@linaro.org>, Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Luca Ceresoli <luca.ceresoli@bootlin.com>, Martin Tuma <martin.tuma@digiteqautomotive.com>, Matthi
+ as Brugger <matthias.bgg@gmail.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Niklas =?utf-8?q?S=C3=B6derlund?= <niklas.soderlund+renesas@ragnatech.se>, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, Pavel Machek <pavel@ucw.cz>, Ricardo Ribalda <ribalda@chromium.org>, Sakari Ailus <sakari.ailus@linux.intel.com>, Samuel Holland <samuel@sholland.org>, Sergey Kozlov <serjk@netup.ru>, Sowjanya Komatineni <skomatineni@nvidia.com>, Stanimir Varbanov <stanimir.k.varbanov@gmail.com>, Sylvain Petinot <sylvain.petinot@foss.st.com>, Thierry Reding <thierry.reding@gmail.com>, Vikash Garodia <quic_vgarodia@quicinc.com>
+Date: Mon, 15 Apr 2024 22:06:49 +0100
+Message-ID: <171321520986.2333277.5902882675169324919@ping.linuxembedded.co.uk>
+User-Agent: alot/0.10
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240415_123437_244472_80DC0316 
-X-CRM114-Status: GOOD (  11.15  )
+X-CRM114-CacheID: sfid-20240415_140657_496436_57F9C7AF 
+X-CRM114-Status: GOOD (  12.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -128,30 +66,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-platform_get_irq() already prints an error for us.
+Quoting Ricardo Ribalda (2024-04-15 20:34:21)
+> It makes the code slightly more clear and makes cocci incredibly happy:
+>=20
+> drivers/media/usb/uvc/uvc_ctrl.c:839:22-23: WARNING opportunity for max()
+>=20
+> Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
+> ---
+>  drivers/media/usb/uvc/uvc_ctrl.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>=20
+> diff --git a/drivers/media/usb/uvc/uvc_ctrl.c b/drivers/media/usb/uvc/uvc=
+_ctrl.c
+> index a4a987913430..4b685f883e4d 100644
+> --- a/drivers/media/usb/uvc/uvc_ctrl.c
+> +++ b/drivers/media/usb/uvc/uvc_ctrl.c
+> @@ -836,7 +836,7 @@ static s32 uvc_get_le_value(struct uvc_control_mappin=
+g *mapping,
+>         while (1) {
+>                 u8 byte =3D *data & mask;
+>                 value |=3D offset > 0 ? (byte >> offset) : (byte << (-off=
+set));
+> -               bits -=3D 8 - (offset > 0 ? offset : 0);
+> +               bits -=3D 8 - max(offset, 0);
 
-Found by cocci:
-drivers/staging/media/sunxi/sun6i-isp/sun6i_isp.c:389:2-9: line 389 is redundant because platform_get_irq() already prints an error
+This looks semantically the same to me so:
 
-Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
----
- drivers/staging/media/sunxi/sun6i-isp/sun6i_isp.c | 1 -
- 1 file changed, 1 deletion(-)
 
-diff --git a/drivers/staging/media/sunxi/sun6i-isp/sun6i_isp.c b/drivers/staging/media/sunxi/sun6i-isp/sun6i_isp.c
-index 5c0a45394cba..a6424fe7023b 100644
---- a/drivers/staging/media/sunxi/sun6i-isp/sun6i_isp.c
-+++ b/drivers/staging/media/sunxi/sun6i-isp/sun6i_isp.c
-@@ -386,7 +386,6 @@ static int sun6i_isp_resources_setup(struct sun6i_isp_device *isp_dev,
- 
- 	irq = platform_get_irq(platform_dev, 0);
- 	if (irq < 0) {
--		dev_err(dev, "failed to get interrupt\n");
- 		ret = -ENXIO;
- 		goto error_clock_rate_exclusive;
- 	}
+Reviewed-by: Kieran Bingham <kieran.bingham@ideasonboard.com>
 
--- 
-2.44.0.683.g7961c838ac-goog
-
+>                 if (bits <=3D 0)
+>                         break;
+> =20
+>=20
+> --=20
+> 2.44.0.683.g7961c838ac-goog
+>
 
