@@ -4,70 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF928C4345F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Apr 2024 20:45:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6957AC04FF9
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Apr 2024 20:45:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=w+qS5Z4vkKN1UceEhIkP1myjPLSe7r+1w4SAg1mZwEM=; b=XwdpiGOIPWyaft8ZAeY5sMeUqA
-	CGsoF1T2rO9uUrEua2e4nxK4RFfhpI0h1TLonpAK5IrAZW9TxcEynTYDjxwXRv44dlDfnIGATXCNM
-	JbTn0B1oYZk5AsHbVyuykLXgrmouReMExBpMiqx+Kzxug8AWXy3Dzz0VvgLk1vHfJU7Ne7vkFhsEU
-	gbXC4WFQZAzJxFLuvBkPAHtXfLivhN5r7eieSRN+5DXtaamyKF6Z65e6JN2ujVpCyqGx0OxCBA2jZ
-	qTzOMSrZGTjHziSTZjcYvXfU9se1kE+H6xKpRmIRpgRJQHz3V1sdtzkeLYCM2yz7xCBVgXHJvK1zJ
-	Te0OAVUw==;
+	bh=vq+7mr1szAOvpscJpegvOEKeeaK/lFJAotzxeoFP90w=; b=dVNSpKPUMLrHFhd0d43EF/MCtY
+	QAsiiS3iFQ4cKij7SjHkpP4qB1DgdmhRmi+07DQuVvFITbTXXd+3bTZUjUWgWJOG6WuRTe381dzfm
+	51w4jDECnvKatxmtYmyP4wX6eSMPKnplB3XZptGcg9amn7rzPlSQlfYCHcIqNWcAg1LWN/fLXruh4
+	UuZjuHWZsug5IuFFPmgN26yHq2rKX/14TBm2DHalaAkEYTug+/r0JeGvtZUqlNKLlemxPMWkw1Q8i
+	0bxSTzhlLdi64pRJcZ4NCXgnlBsE+9zr+U++2UoeTZE7qBz+PoEjZedgf/Mk6eRLhPlvbcPeBm6dZ
+	LTr066HQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwTD0-00000009s3e-0xb8;
+	id 1rwTD0-00000009s3w-3KfZ;
 	Mon, 15 Apr 2024 20:45:46 +0000
-Received: from mail-oi1-x22c.google.com ([2607:f8b0:4864:20::22c])
+Received: from mail-oa1-x2b.google.com ([2001:4860:4864:20::2b])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwS66-00000009bov-1bwq
+	id 1rwS66-00000009bqB-3doU
 	for linux-mediatek@lists.infradead.org;
 	Mon, 15 Apr 2024 19:34:39 +0000
-Received: by mail-oi1-x22c.google.com with SMTP id 5614622812f47-3c70ef25e19so576053b6e.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 15 Apr 2024 12:34:28 -0700 (PDT)
+Received: by mail-oa1-x2b.google.com with SMTP id 586e51a60fabf-22efc6b8dc5so2566837fac.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 15 Apr 2024 12:34:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1713209668; x=1713814468; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1713209670; x=1713814470; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=w+qS5Z4vkKN1UceEhIkP1myjPLSe7r+1w4SAg1mZwEM=;
-        b=b+5gw1dHyw/pL+JPlvVWR5ZU9o1o0Fcm5Ea3D/d62XTJBiYSXuhnr7eInRXsPls41U
-         y/5YhVItn4e8vjcK4P6NiLY62vO+4k49MyItvFJ39NMAiY85nSHuU/9ZFimPeXhEE7cb
-         SPfGp20RYlQnLw4uCRRoipFyRSh4P2H9+5tQ8=
+        bh=vq+7mr1szAOvpscJpegvOEKeeaK/lFJAotzxeoFP90w=;
+        b=Dap2LoyWw3Fi1Z/EqT97uA7GS/XVpVRddFrGcjNzH9iBzbSYkJvkK/yQhqGb+aNQaP
+         lXSewnUznfk1F25QudnR5Fg2SOEat7pg6lQ6R0/UClgGriU5TIMb16E8NbS+JFpkmJ/k
+         u9HfERQiwVhZb3OIAsDuhk85JW0P4JATBiwvw=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713209668; x=1713814468;
+        d=1e100.net; s=20230601; t=1713209670; x=1713814470;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=w+qS5Z4vkKN1UceEhIkP1myjPLSe7r+1w4SAg1mZwEM=;
-        b=F7CNf6laO3lQRLYESdV/7/usZfxTimpdq2ELlRcZBrvv4dQVANaaz9N0TydIkvmlqb
-         +fNiAcPWhdMLUo931NgPG0twQWEBUtu38bbQG05Xkt5nDRsZKr4Gw4iwdROVdwilN+90
-         +yBTJtQr579kTE9pIdeHoF7AUPszAiq+b2aawIt4BQMWVi4WLSa2CSuRSSA4qmPxFMCu
-         BYnVI51bcqhZ2jNCChZBCe4VNhohotKQ2LV7XVtwDzp59cQysvNS/GtGp5xqS9XSVm93
-         HtJAJ02UUZfIa2efVJgEY4A2JNg2S+fJ7ybg8XCCdwiocUH/5Snmx/MJ1Xr4zPeExzfo
-         CI4A==
-X-Forwarded-Encrypted: i=1; AJvYcCWivuMrPYtliUUQzp1BHZZGzGmLJ+9mxv0sFqWM0fJjK0BKKAVGoJg80u9nZpegQJA1e0anltaCV9TnnYulYTpwkU24mig6Zd10POKV5Hs77bpU
-X-Gm-Message-State: AOJu0YyTjbZjUa3A/G3U502xQ8pauooBY11sioMwMsciONxKbRgAGh+q
-	WtN2PTT6eJPzQtEb9EvScbVLF3DAGTeKF303M25iYu4PUJK9UbMs5rk7vAS8H0qnoMUKDlFZpFL
-	BkQ==
-X-Google-Smtp-Source: AGHT+IGdtkSiZhnfiSTfKFrIX7aC7mQfEfNuaLQ9aOCusHbpbm/GtxuTWZQaZZkHNYhX7JRsmp7ZXg==
-X-Received: by 2002:a05:6808:4084:b0:3c5:f5a0:3b40 with SMTP id db4-20020a056808408400b003c5f5a03b40mr11232302oib.58.1713209668180;
-        Mon, 15 Apr 2024 12:34:28 -0700 (PDT)
+        bh=vq+7mr1szAOvpscJpegvOEKeeaK/lFJAotzxeoFP90w=;
+        b=mJlqe+Z+Kjr7ylOA4rdrjDFl3g63fxVlrlz+uzO6n1/uJaTB3B1UKUm1gwynJZof0R
+         y2EmKm875HgnvTyMmhztzq2LV0wZnKzZSxcuFE3mUnJQgS/8oHv6gJFk9ASD/Z8eysyc
+         9sRH9JZ4Mk3pKCCivXBBLWMAK/8SJ2RKe/q+3XnT0NnxuGC8yrF+OysnIiVKg1t0ZYO3
+         ODzw6DgH6STGRlG1r1Fr3Fnuq+J6UXxT/WkcNn1jdQcpHYPHdV89xjgCgqyyHOjw4U7N
+         S/gEejUKG71R/a8DAjAr9h2Bujq1XlKjy+Zf3aPkkDIWSbWhmlZzwifUjJVUeaN3phP+
+         IKCA==
+X-Forwarded-Encrypted: i=1; AJvYcCXFC25OE3dVCqJBsIGZTClBLsHONlnS6lu7stXewffKbcRSkerBGxlxlhIUmShvtunKvSAz7bK5DXG50zUjBzRw5NZw2EfcYQRKdxQDPPqIKhQm
+X-Gm-Message-State: AOJu0Yx2k5dVRIeW+M/o2ktua/Aam4gTKLrVXhEGPg8mX2efNkbNrbEt
+	KPLcC32Z67DnXJQ9xFWkP9T3sDjUyo49Z0WRFFBqcHw253HwAaQ5ofccTacI8A==
+X-Google-Smtp-Source: AGHT+IFDs72yHh14dMP/v3LcOXYq1AzGZaPkrHXx/btoSixg8uGduMLiI7a2hIPG7rGea4VcIV3D3Q==
+X-Received: by 2002:a05:6870:9a97:b0:22a:2e6:b82e with SMTP id hp23-20020a0568709a9700b0022a02e6b82emr13491647oab.38.1713209670403;
+        Mon, 15 Apr 2024 12:34:30 -0700 (PDT)
 Received: from denia.c.googlers.com (114.152.245.35.bc.googleusercontent.com. [35.245.152.114])
-        by smtp.gmail.com with ESMTPSA id s26-20020ae9f71a000000b0078d3b54eb76sm6718055qkg.78.2024.04.15.12.34.26
+        by smtp.gmail.com with ESMTPSA id s26-20020ae9f71a000000b0078d3b54eb76sm6718055qkg.78.2024.04.15.12.34.29
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 15 Apr 2024 12:34:27 -0700 (PDT)
+        Mon, 15 Apr 2024 12:34:29 -0700 (PDT)
 From: Ricardo Ribalda <ribalda@chromium.org>
-Date: Mon, 15 Apr 2024 19:34:18 +0000
-Subject: [PATCH 01/35] media: pci: mgb4: Refactor struct resources
+Date: Mon, 15 Apr 2024 19:34:20 +0000
+Subject: [PATCH 03/35] media: uvcvideo: Refactor iterators
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240415-fix-cocci-v1-1-477afb23728b@chromium.org>
+Message-Id: <20240415-fix-cocci-v1-3-477afb23728b@chromium.org>
 References: <20240415-fix-cocci-v1-0-477afb23728b@chromium.org>
 In-Reply-To: <20240415-fix-cocci-v1-0-477afb23728b@chromium.org>
 To: Martin Tuma <martin.tuma@digiteqautomotive.com>, 
@@ -113,8 +112,8 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  Ricardo Ribalda <ribalda@chromium.org>
 X-Mailer: b4 0.12.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240415_123434_682936_FDE20CA0 
-X-CRM114-Status: GOOD (  14.03  )
+X-CRM114-CacheID: sfid-20240415_123435_296861_99270C0C 
+X-CRM114-Status: GOOD (  16.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -129,53 +128,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The struct resource end field is inclusive not exclusive, this is, the
-size is (end - start) +1.
+Avoid using the iterators after the list_for_each() constructs.
+This patch should be a NOP, but makes cocci, happier:
 
-Update the definitions and use the generic resource_size() function.
-
-Fixes cocci check:
-drivers/media/pci/mgb4/mgb4_regs.c:13:22-25: WARNING: Suspicious code. resource_size is maybe missing with res
+drivers/media/usb/uvc/uvc_ctrl.c:1861:44-50: ERROR: invalid reference to the index variable of the iterator on line 1850
+drivers/media/usb/uvc/uvc_ctrl.c:2195:17-23: ERROR: invalid reference to the index variable of the iterator on line 2179
 
 Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 ---
- drivers/media/pci/mgb4/mgb4_core.c | 4 ++--
- drivers/media/pci/mgb4/mgb4_regs.c | 2 +-
- 2 files changed, 3 insertions(+), 3 deletions(-)
+ drivers/media/usb/uvc/uvc_ctrl.c | 24 +++++++++++++-----------
+ 1 file changed, 13 insertions(+), 11 deletions(-)
 
-diff --git a/drivers/media/pci/mgb4/mgb4_core.c b/drivers/media/pci/mgb4/mgb4_core.c
-index 9bcf10a77fd3..60498a5abebf 100644
---- a/drivers/media/pci/mgb4/mgb4_core.c
-+++ b/drivers/media/pci/mgb4/mgb4_core.c
-@@ -493,13 +493,13 @@ static int mgb4_probe(struct pci_dev *pdev, const struct pci_device_id *id)
- 	struct mgb4_dev *mgbdev;
- 	struct resource video = {
- 		.start	= 0x0,
--		.end	= 0x100,
-+		.end	= 0xff,
- 		.flags	= IORESOURCE_MEM,
- 		.name	= "mgb4-video",
- 	};
- 	struct resource cmt = {
- 		.start	= 0x1000,
--		.end	= 0x1800,
-+		.end	= 0x17ff,
- 		.flags	= IORESOURCE_MEM,
- 		.name	= "mgb4-cmt",
- 	};
-diff --git a/drivers/media/pci/mgb4/mgb4_regs.c b/drivers/media/pci/mgb4/mgb4_regs.c
-index 53d4e4503a74..31befd722d72 100644
---- a/drivers/media/pci/mgb4/mgb4_regs.c
-+++ b/drivers/media/pci/mgb4/mgb4_regs.c
-@@ -10,7 +10,7 @@
- int mgb4_regs_map(struct resource *res, struct mgb4_regs *regs)
- {
- 	regs->mapbase = res->start;
--	regs->mapsize = res->end - res->start;
-+	regs->mapsize = resource_size(res);
+diff --git a/drivers/media/usb/uvc/uvc_ctrl.c b/drivers/media/usb/uvc/uvc_ctrl.c
+index e59a463c2761..a4a987913430 100644
+--- a/drivers/media/usb/uvc/uvc_ctrl.c
++++ b/drivers/media/usb/uvc/uvc_ctrl.c
+@@ -1850,16 +1850,18 @@ int __uvc_ctrl_commit(struct uvc_fh *handle, int rollback,
+ 	list_for_each_entry(entity, &chain->entities, chain) {
+ 		ret = uvc_ctrl_commit_entity(chain->dev, entity, rollback,
+ 					     &err_ctrl);
+-		if (ret < 0)
++		if (ret < 0) {
++			if (ctrls)
++				ctrls->error_idx =
++					uvc_ctrl_find_ctrl_idx(entity, ctrls,
++							       err_ctrl);
+ 			goto done;
++		}
+ 	}
  
- 	if (!request_mem_region(regs->mapbase, regs->mapsize, res->name))
- 		return -EINVAL;
+ 	if (!rollback)
+ 		uvc_ctrl_send_events(handle, ctrls->controls, ctrls->count);
+ done:
+-	if (ret < 0 && ctrls)
+-		ctrls->error_idx = uvc_ctrl_find_ctrl_idx(entity, ctrls,
+-							  err_ctrl);
+ 	mutex_unlock(&chain->ctrl_mutex);
+ 	return ret;
+ }
+@@ -2165,7 +2167,7 @@ static int uvc_ctrl_init_xu_ctrl(struct uvc_device *dev,
+ int uvc_xu_ctrl_query(struct uvc_video_chain *chain,
+ 	struct uvc_xu_control_query *xqry)
+ {
+-	struct uvc_entity *entity;
++	struct uvc_entity *entity, *iter;
+ 	struct uvc_control *ctrl;
+ 	unsigned int i;
+ 	bool found;
+@@ -2175,16 +2177,16 @@ int uvc_xu_ctrl_query(struct uvc_video_chain *chain,
+ 	int ret;
+ 
+ 	/* Find the extension unit. */
+-	found = false;
+-	list_for_each_entry(entity, &chain->entities, chain) {
+-		if (UVC_ENTITY_TYPE(entity) == UVC_VC_EXTENSION_UNIT &&
+-		    entity->id == xqry->unit) {
+-			found = true;
++	entity = NULL;
++	list_for_each_entry(iter, &chain->entities, chain) {
++		if (UVC_ENTITY_TYPE(iter) == UVC_VC_EXTENSION_UNIT &&
++		    iter->id == xqry->unit) {
++			entity = iter;
+ 			break;
+ 		}
+ 	}
+ 
+-	if (!found) {
++	if (!entity) {
+ 		uvc_dbg(chain->dev, CONTROL, "Extension unit %u not found\n",
+ 			xqry->unit);
+ 		return -ENOENT;
 
 -- 
 2.44.0.683.g7961c838ac-goog
