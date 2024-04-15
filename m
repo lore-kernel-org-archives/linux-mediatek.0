@@ -4,80 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E67E7C4345F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Apr 2024 17:05:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BD4EC4345F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Apr 2024 17:07:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=I3z4onGCvDJrBUsCm728Gb1WReSu//4vnR4wJyG8CsQ=; b=PFxTQkPM0ax7kRor2ZNg9PgGCe
-	7TxyoRL/qV9NA9oStc0IGQwuwrgZXmavIX8BoqV2QgUMAfa9+EefW1J6Sp5heUMccLvUAUZHI0lTN
-	SW4f11t7K/Fm68ZgqT4u6ahMaQ4yQs9h04FrqmUgX60fEtujCLL1Z4z2eCUmhEtAFOx8yKCMZnlus
-	wMHnz81uW1bqaEJ7qrz3mQgwpqRulNcUUt01fMPy3pr7B4MlE++B+8smMbcJ10Ed1Np+3JZa3S5YI
-	UC+vmL7XBtOlOsfkbRxOLk/GdW6+GR5mr4dZrpoX794faTBxhB7YTwg7CS6wJ7Sg2/oVeZ/Uwo56z
-	2NBKZ83g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=MSafE4cHCA0H4Q4U0ADTgKyeMwM6mFGjUpbY4UH80PQ=; b=cdty82viN6CzHs9APtdjOgA8ZJ
+	/Ye3y9N+wY0GmkwPI4Tw78fIEVxEy3jrOG/P7UiAOqn/ygF+UXIFYmpcQL6OU72CMMZQ1Q3h5StZH
+	V9MZqWGoYkHY+AXiRHofPpwobHrP5BBtCx0RGFpZ5iLbS11o/zrLQbqwbTXxzUWPUvbmuA0btbBbv
+	JQVvRq1JAq2/U+/ybRR++f0/uv576+iOVHyaH0qKBhCNhY9tjzfTvf9RNqHYQZulKhVt0vUEMe50a
+	2+8eP/QnCobmVf5m8KHuuzl8/sBdAJ3HtHRY1sprttdX+vAOCRo/Tt7nm1yAtFKjv+IhlZWxA4xWv
+	Qj++cYjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwPly-00000009EGs-1MmE;
-	Mon, 15 Apr 2024 17:05:38 +0000
+	id 1rwPo0-00000009Fpw-00sO;
+	Mon, 15 Apr 2024 17:07:44 +0000
 Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwPjd-00000009CNJ-2OG6;
-	Mon, 15 Apr 2024 17:03:28 +0000
+	id 1rwPmQ-00000009Eaa-1VRG;
+	Mon, 15 Apr 2024 17:06:08 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 9FD8DCE0E66;
-	Mon, 15 Apr 2024 17:03:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 02D0AC32783;
-	Mon, 15 Apr 2024 17:03:05 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 43BD1CE0E50;
+	Mon, 15 Apr 2024 17:06:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 82539C113CC;
+	Mon, 15 Apr 2024 17:06:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1713200590;
-	bh=qlN+7KOkKA0CC6PwtWEV65NHKwg6/a7Wj/1sIx6SWkE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=NdOzrUHQIQ+xohAPgwt7yFhGS86vNEzoGpUkIeGZQPAm8I5BtxYz0mf3gcUoP2Pzs
-	 M9hBbh1YXWRj8qCr0oraEJhFZyaL/Epobq7yEVmzC8yRzIPeCDxiYogc2sbJcsg5Fb
-	 J8wKUf5NmpyMFsh6ZCTmkkPau4UbM9YaxoLDTPM++s0eNGtdwL/VtIWvlMGPAums6X
-	 GDCKNwni4lg9SzyMTXGRE/PLQhzPDv//j/mAtdbBtwhYGrAlI4ItFqg2ZlXnB2SuH3
-	 CSjEut9+y8YEMEUfx0ntXYfH2Em+pliaxvNLNsWhjCb5zBM/Xo1fcyhco+2aLeLE1o
-	 pkAmshwX5thXA==
-Date: Mon, 15 Apr 2024 18:03:03 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Yi-De Wu <yi-de.wu@mediatek.com>
-Cc: Yingshiuan Pan <yingshiuan.pan@mediatek.com>,
-	Ze-Yu Wang <ze-yu.wang@mediatek.com>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Jonathan Corbet <corbet@lwn.net>,
-	Catalin Marinas <catalin.marinas@arm.com>,
-	Will Deacon <will@kernel.org>,
-	Richard Cochran <richardcochran@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-doc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	David Bradil <dbrazdil@google.com>,
-	Trilok Soni <quic_tsoni@quicinc.com>,
-	My Chuang <my.chuang@mediatek.com>,
-	Shawn Hsiao <shawn.hsiao@mediatek.com>,
-	PeiLun Suei <peilun.suei@mediatek.com>,
-	Liju Chen <liju-clr.chen@mediatek.com>,
-	Willix Yeh <chi-shen.yeh@mediatek.com>,
-	Kevenny Hsieh <kevenny.hsieh@mediatek.com>
-Subject: Re: [PATCH v10 03/21] dt-bindings: hypervisor: Add MediaTek
- GenieZone hypervisor
-Message-ID: <20240415-emerald-chief-5f27532d65bd@spud>
-References: <20240412065718.29105-1-yi-de.wu@mediatek.com>
- <20240412065718.29105-4-yi-de.wu@mediatek.com>
+	s=k20201202; t=1713200763;
+	bh=4a9TlTGikPdPtvIswhMDPVXsOAtTJIQPwslpOZDf9fY=;
+	h=References:In-Reply-To:From:Date:Subject:To:List-Id:Cc:From;
+	b=envm3gPjZkPR25rFILSSoDGtvq58d0n5TS2Ogmxra3RmmqJOLqTClzNaQo60Rcy/8
+	 axCfm2/V7ALzK2j+/+nve1rMfBSKxfrc/66w1h9SakHpGtRH39qBxvnQIWELc/JNt1
+	 70y5d3MUtd06wenDYBRLLmN9O8hgIPdUs+/sO+G2y5beX4FDbqCiauXeAdrQXsfWnB
+	 PckYPDZC66KLbwdVo1CdwHkuaE+chrIGFCZZCCb53eAm56qC0RIamfBj/CR5RSCwYK
+	 oRbMjLRnnDWF2GpgqY32AMqlw6eI3R983vlkCtFSx5kVqwvNCfGp/PfehO9ZBJzbmk
+	 asMALYe/CuGnA==
+Received: by mail-lj1-f169.google.com with SMTP id 38308e7fff4ca-2da08b06e0dso37134861fa.2;
+        Mon, 15 Apr 2024 10:06:03 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCUVpXsvDO30RtIB5j/4Mq4QoLJLavQ/VDHBIzZrCmqbufSyyWE1fHY9tZ3Uy10itpbS39QHyfFRIiiWY5Xcq4VfgwH8tXvhipV39k+WS/9Ys81BS3rkwdWweyyTj7ZVwlhTpAwwZk6OfY6DWRubuPf3VzBHPF8FymQEqqwzsB9zvCtd/wGskFEKqHDYi8rbyoIWbDZvf19hUnWB4td5QI22olcDyjSYQ06Tw9GP3tlf/GajQt6rETZ8u51pr2eGckviUS4OUAD5B3Ga07V7fzJRJFDX2hYrW5s/vgnCDZLV8Qsxh+AKnUoq6w==
+X-Gm-Message-State: AOJu0YyIzXmtXEXsJiHFvIEQSFohB6M3sW7yd2taN4bMLaz1BMJC6xb0
+	++IhVs2xFkjKvQhvSS9hKYoasi7VipotpeiI4qGuflI2HxohTjnKWwbbIAZWExvQo5IZzgl5BPa
+	maMsi95bmIJXGIyM7Db6g5luAGw==
+X-Google-Smtp-Source: AGHT+IGj52gH0/Dg5INd/xZRyWwlGDPcfmpSpbX0KU82iJTE7+TtYLQcTn0dGxCxYIzg49fhJoCRFzAjpf+6SCkqXUk=
+X-Received: by 2002:a2e:b0ef:0:b0:2da:320a:68d9 with SMTP id
+ h15-20020a2eb0ef000000b002da320a68d9mr3627965ljl.13.1713200741392; Mon, 15
+ Apr 2024 10:05:41 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="C6BOR4TK2ik6wg8F"
-Content-Disposition: inline
-In-Reply-To: <20240412065718.29105-4-yi-de.wu@mediatek.com>
+References: <20240412222857.3873079-1-robh@kernel.org> <Zh0vXinxy7woerJQ@hu-bjorande-lv.qualcomm.com>
+ <CAA8EJpqL2T4bJZqtZ9KF=V2NLnFxUjouA6_Hu_H07DofifZaoQ@mail.gmail.com>
+In-Reply-To: <CAA8EJpqL2T4bJZqtZ9KF=V2NLnFxUjouA6_Hu_H07DofifZaoQ@mail.gmail.com>
+From: Rob Herring <robh@kernel.org>
+Date: Mon, 15 Apr 2024 12:05:26 -0500
+X-Gmail-Original-Message-ID: <CAL_Jsq+q3OLEMT=d8=d9o1D9deKGQ5TAtZg_bgptDPQ1cWcctw@mail.gmail.com>
+Message-ID: <CAL_Jsq+q3OLEMT=d8=d9o1D9deKGQ5TAtZg_bgptDPQ1cWcctw@mail.gmail.com>
+Subject: Re: [PATCH] arm/arm64: dts: Drop "arm,armv8-pmuv3" compatible usage
+To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+Cc: Bjorn Andersson <quic_bjorande@quicinc.com>, soc@kernel.org, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Florian Fainelli <florian.fainelli@broadcom.com>, 
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Dinh Nguyen <dinguyen@kernel.org>, 
+	Tsahee Zidenberg <tsahee@annapurnalabs.com>, Antoine Tenart <atenart@kernel.org>, 
+	Khuong Dinh <khuong@os.amperecomputing.com>, Liviu Dudau <liviu.dudau@arm.com>, 
+	Sudeep Holla <sudeep.holla@arm.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, 
+	Robert Richter <rric@kernel.org>, Shawn Guo <shawnguo@kernel.org>, Li Yang <leoyang.li@nxp.com>, 
+	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
+	Fabio Estevam <festevam@gmail.com>, "Paul J. Murphy" <paul.j.murphy@intel.com>, 
+	Daniele Alessandrelli <daniele.alessandrelli@intel.com>, Andrew Lunn <andrew@lunn.ch>, 
+	Gregory Clement <gregory.clement@bootlin.com>, 
+	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
+	Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, 
+	=?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, 
+	Heiko Stuebner <heiko@sntech.de>, Orson Zhai <orsonzhai@gmail.com>, 
+	Baolin Wang <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>, 
+	Jisheng Zhang <jszhang@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, linux-fsd@tesla.com, 
+	Michal Simek <michal.simek@amd.com>, devicetree@vger.kernel.org, 
+	linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, imx@lists.linux.dev, 
+	linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org, 
+	linux-arm-msm@vger.kernel.org, linux-realtek-soc@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240415_100314_823764_2E0236A6 
-X-CRM114-Status: GOOD (  15.17  )
+X-CRM114-CacheID: sfid-20240415_100606_861367_F6018C89 
+X-CRM114-Status: GOOD (  10.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,61 +107,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Mon, Apr 15, 2024 at 11:52=E2=80=AFAM Dmitry Baryshkov
+<dmitry.baryshkov@linaro.org> wrote:
+>
+> On Mon, 15 Apr 2024 at 16:46, Bjorn Andersson <quic_bjorande@quicinc.com>=
+ wrote:
+> >
+> > On Fri, Apr 12, 2024 at 05:28:51PM -0500, Rob Herring wrote:
+> > [..]
+> > >  arch/arm64/boot/dts/qcom/qcm2290.dtsi                | 2 +-
+> > >  arch/arm64/boot/dts/qcom/qdu1000.dtsi                | 2 +-
+> > >  arch/arm64/boot/dts/qcom/sdm630.dtsi                 | 2 +-
+> > >  arch/arm64/boot/dts/qcom/sdx75.dtsi                  | 2 +-
+> >
+> > Acked-by: Bjorn Andersson <andersson@kernel.org>
+>
+> Note, we'd need to override PMU compatibles in sdm636.dtsi and
+> sdm660.dtsi. Ideally it should come as the same patch.
 
---C6BOR4TK2ik6wg8F
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Uh, that's an A for reuse, but an F for readability... It's sdm632 as
+well. Will drop sdm630.
 
-On Fri, Apr 12, 2024 at 02:57:00PM +0800, Yi-De Wu wrote:
-> From: "Yingshiuan Pan" <yingshiuan.pan@mediatek.com>
->=20
-> Add documentation for GenieZone(gzvm) node. This node informs gzvm
-> driver to start probing if geniezone hypervisor is available and
-> able to do virtual machine operations.
->=20
-> [Reason to use dt solution]
-> - The GenieZone hypervisor serves as a vendor model for facilitating
-> platform virtualization, with an implementation that is independent
-> from Linuxism.
-> - In contrast to the dt solution, our previous approach involved probing
-> via hypercall to determine the existence of our hypervisor. However, this
-> method raised concerns about potentially impacting all systems, including
-> those without the GenieZone hypervisor embedded[ref].
->=20
-> Link: https://lore.kernel.org/all/2fe0c7f9-55fc-ae63-3631-8526a0212ccd@li=
-naro.org/
-
-> +properties:
-> +  compatible:
-> +    const: mediatek,geniezone-hyp
-
-Been avoiding this binding every time it shows up because Rob had
-already told you no and hasn't revisited it since, but I feel this
-should be s/-hyp// since that's redundant information.
-
-> +description:
-> +  This interface is designed for integrating GenieZone hypervisor into A=
-ndroid
-> +  Virtualization Framework(AVF) along with Crosvm as a VMM.
-> +  It acts like a wrapper for every hypercall to GenieZone hypervisor in
-> +  order to control guest VM lifecycles and virtual interrupt injections.
-
-The description however doesn't really make sense. The binding claims to
-be for geniezone but the description talks about something else entirely
-that "acts like a wrapper" between the OS and geniezone. What is the
-binding actually for?
-
---C6BOR4TK2ik6wg8F
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZh1dxwAKCRB4tDGHoIJi
-0jVFAQCJXfT7nWUYAhn0e8Ajkn5u7oxR2Cu949hDGp7nK9saPAEA3b+xCJOh8wV2
-Hv0FfTlG1rexad0mg/r96/sxZi/z9Qg=
-=e5RQ
------END PGP SIGNATURE-----
-
---C6BOR4TK2ik6wg8F--
+Rob
 
