@@ -4,74 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4ECFDC4345F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Apr 2024 12:50:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28DCFC4345F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Apr 2024 13:00:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=K99PBdnezqUUF0tBzx6+TqnTAZLBzfaP3KzhICCh4Ao=; b=bcGZFSCwEHARgkPkVSmRslFh3o
-	bLqb3kgeOpGfev6GI91409RgU4Q8vzz1g/j/tnvyGV3XskTiW5Kj2hvptJ1rSjwuWVKPkrmK80sJZ
-	C1AN1mcF5eJYQnBlg/Dd86Ao0xxPJHlNbrfCdMf9ODLbJhrviGiYl0hKaWTwGRepSE7InUK7mZ5dG
-	SLDLYnaWe6ppqgnW7yoj1SK0cHgiKqVC20e3YyhJ6eblps1vkCV6HmyHBc71aUW9VyCvQh6I5Sh6I
-	fHq/vEIz0xXe+vwMTlBSVa5X3J/amj+O9AOkwEmlzYXANzleBk2mHQc0sHH/3p2aUkIjAFZbA5m4w
-	dfWqA9cw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Y4oEd0hYqEGYfRJx86h5m8oZ8YchiYKWRTfBj3jdetY=; b=puuh0+DEoCE88Td2uUKV6VhXuO
+	Ch0WL4aLNISXkPLpJyExUIlDy8lCrgir8wNyxd1V5OydROjLsV5PHHtnhAWV6JW7UPTspgWA5jSh3
+	6NOEHhaAAEux1h3BtRdQerITbH4b9DBjCsI54S+O9D/dHyzT7KF80goQhyCn3BHw0+5I0ZBxoDmXs
+	aQxn0HPBKitMlVH8ACUQW46N8nzxDATsCSdHJu6yaZVtg09ibnwI4X69ys2Iue3mUM7nR3D1DKshX
+	tXZwrn6pu86xqF25BGJwmHKdj4d8aPBroKmSXcYr2EmU8UH1Q55oFl+58HdHi5ErD0oRvmw5PXgJk
+	D+isL6Sw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwLnJ-00000008HZm-3hr4;
-	Mon, 15 Apr 2024 12:50:45 +0000
+	id 1rwLwl-00000008LJ1-2ZQs;
+	Mon, 15 Apr 2024 13:00:31 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwLn5-00000008HQ9-0xGM;
-	Mon, 15 Apr 2024 12:50:36 +0000
+	id 1rwLwc-00000008LGL-3pwz;
+	Mon, 15 Apr 2024 13:00:29 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 7C50D60BF9;
-	Mon, 15 Apr 2024 12:50:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 102D4C32783;
-	Mon, 15 Apr 2024 12:50:27 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 013E860C91;
+	Mon, 15 Apr 2024 13:00:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3A79CC113CC;
+	Mon, 15 Apr 2024 13:00:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1713185430;
-	bh=bICUhdhTI38MAzCw4mVv4RoCssKzD+vHemV7hYPVRqM=;
-	h=From:To:Cc:Subject:Date:From;
-	b=W0SD7SWzocBNOOmI+ckB3Bhw59lSHtrPA+W96l+o1XUFrjIPOJ9K9G9llNOEDJ2Pc
-	 6R0jK8UD4fvXpkyBOHo9QLRPeLjanmixK8BzzdPJeTpA+8qDjJfZbXarQb03DPdLgL
-	 yYmPTQaV1FL/EhdCEUS8mxRWoY+3kjIYucLvX6pb7ENQlq++goxUKptPsoGGXZ/D5k
-	 UMp/rRjjquwhWvQdaBzrYoXiGqTFEsOptf6gfal2TbY2EBnd7zvczBMBO8qiZPMzao
-	 iLctHeBT+Tcrlw/c0ri/3k9BYAJehh3Gyt7ggvzHsIk8XoLeufjQMXAWmgi6eR8VV3
-	 LiTen96vItGCw==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: Peter Wang <peter.wang@mediatek.com>,
-	Bart Van Assche <bvanassche@acm.org>,
-	"Martin K . Petersen" <martin.petersen@oracle.com>,
-	Sasha Levin <sashal@kernel.org>,
-	jejb@linux.ibm.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	stanley.chu@mediatek.com,
-	quic_cang@quicinc.com,
-	avri.altman@wdc.com,
-	quic_nguyenb@quicinc.com,
-	manivannan.sadhasivam@linaro.org,
-	beanhuo@micron.com,
-	linux-scsi@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.1 1/6] scsi: ufs: core: WLUN suspend dev/link state error recovery
-Date: Mon, 15 Apr 2024 06:04:22 -0400
-Message-ID: <20240415100433.3127434-1-sashal@kernel.org>
-X-Mailer: git-send-email 2.43.0
+	s=k20201202; t=1713186021;
+	bh=k1NHarrRf6+0evlATOpqE9bsBp5lnGFC65EI2aXuFVg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=YYV8yr1BxQ8bEDR53ZXi1krWC2JwmtpDUQAKTgtQNR/woH2FPCaPGiWE4HFUzm6hK
+	 VOZQ0pmrS0AYtMm3JUk2TPSGWJGdRqVIaX3SxH6bXN73YqDvmSh7eKn7JJMl5Nh+hQ
+	 n9pWGWgvN4laYTYI8T4+zcKXnx95fjv0ddFenNS9q5qPrisMcZO5pMWMLv0xRqK8FU
+	 NO9MCoZ/hG3rY+5jNOCOYWNH0ebCgiWDd3A+huW9GXIQDUXoFoqackzBPute7ksLFg
+	 r2mIipvDd1VAupk2DicE6mpnxj0kAutIpS8/Zcjb3jZVyBffComsq7/YPkpaCOUEy6
+	 lFTF/cd/Mebxg==
+Date: Mon, 15 Apr 2024 14:00:16 +0100
+From: Conor Dooley <conor@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-scsi@vger.kernel.org, alim.akhtar@samsung.com,
+	avri.altman@wdc.com, bvanassche@acm.org, robh@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+	peter.wang@mediatek.com, jejb@linux.ibm.com,
+	martin.petersen@oracle.com, lgirdwood@gmail.com, broonie@kernel.org,
+	matthias.bgg@gmail.com, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v4 7/8] dt-bindings: ufs: mediatek,ufs: Document
+ additional clocks
+Message-ID: <20240415-happiness-reenact-6598d7b32435@spud>
+References: <20240415110012.148871-1-angelogioacchino.delregno@collabora.com>
+ <20240415110012.148871-8-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.1.86
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="93PiK0lDfTnn6QRe"
+Content-Disposition: inline
+In-Reply-To: <20240415110012.148871-8-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240415_055031_586463_A1E35B75 
-X-CRM114-Status: GOOD (  13.58  )
+X-CRM114-CacheID: sfid-20240415_060023_112703_634399EE 
+X-CRM114-Status: GOOD (  16.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,44 +79,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Peter Wang <peter.wang@mediatek.com>
 
-[ Upstream commit 6bc5e70b1c792b31b497e48b4668a9a2909aca0d ]
+--93PiK0lDfTnn6QRe
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-When wl suspend error occurs, for example BKOP or SSU timeout, the host
-triggers an error handler and returns -EBUSY to break the wl suspend
-process.  However, it is possible for the runtime PM to enter wl suspend
-again before the error handler has finished, and return -EINVAL because the
-device is in an error state. To address this, ensure that the rumtime PM
-waits for the error handler to finish, or trigger the error handler in such
-cases, because returning -EINVAL can cause the I/O to hang.
+On Mon, Apr 15, 2024 at 01:00:11PM +0200, AngeloGioacchino Del Regno wrote:
+> Add additional clocks, used on all MediaTek SoCs' UFSHCI controllers:
+> some of these clocks are optional and used only for scaling purposes
+> to save power, or to improve performance in the case of the crypt
+> clocks.
+>=20
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
 
-Signed-off-by: Peter Wang <peter.wang@mediatek.com>
-Link: https://lore.kernel.org/r/20240329015036.15707-1-peter.wang@mediatek.com
-Reviewed-by: Bart Van Assche <bvanassche@acm.org>
-Signed-off-by: Martin K. Petersen <martin.petersen@oracle.com>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/ufs/core/ufshcd.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
 
-diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index f3c25467e571f..948449a13247c 100644
---- a/drivers/ufs/core/ufshcd.c
-+++ b/drivers/ufs/core/ufshcd.c
-@@ -9044,7 +9044,10 @@ static int __ufshcd_wl_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
- 
- 	/* UFS device & link must be active before we enter in this function */
- 	if (!ufshcd_is_ufs_dev_active(hba) || !ufshcd_is_link_active(hba)) {
--		ret = -EINVAL;
-+		/*  Wait err handler finish or trigger err recovery */
-+		if (!ufshcd_eh_in_progress(hba))
-+			ufshcd_force_error_recovery(hba);
-+		ret = -EBUSY;
- 		goto enable_scaling;
- 	}
- 
--- 
-2.43.0
+> ---
+>  .../devicetree/bindings/ufs/mediatek,ufs.yaml     | 15 ++++++++++++++-
+>  1 file changed, 14 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml b/Do=
+cumentation/devicetree/bindings/ufs/mediatek,ufs.yaml
+> index 5728e750761f..1df8779ee902 100644
+> --- a/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
+> +++ b/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
+> @@ -23,11 +23,24 @@ properties:
+>            - const: mediatek,mt8183-ufshci
+> =20
+>    clocks:
+> -    maxItems: 1
+> +    minItems: 1
+> +    maxItems: 12
+> =20
+>    clock-names:
+> +    minItems: 1
+>      items:
+>        - const: ufs
+> +      - const: ufs-aes
+> +      - const: ufs-tick
+> +      - const: unipro-sys
+> +      - const: unipro-tick
+> +      - const: ufs-sap
+> +      - const: ufs-tx-symbol
+> +      - const: ufs-rx-symbol
+> +      - const: ufs-mem
+> +      - const: crypt-mux
+> +      - const: crypt-lp
+> +      - const: crypt-perf
+> =20
+>    phys:
+>      maxItems: 1
+> --=20
+> 2.44.0
+>=20
 
+--93PiK0lDfTnn6QRe
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZh0k4AAKCRB4tDGHoIJi
+0mEcAQCL6JDQAVAMOHj599dEhcGaBzsjjotAhC16jd/M9usHrgD5AYNnPqgEhjhv
+gRib2qn9ljMx3UT9oOUw9481wleicQQ=
+=urMw
+-----END PGP SIGNATURE-----
+
+--93PiK0lDfTnn6QRe--
 
