@@ -4,80 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8ABE1C4345F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Apr 2024 16:54:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E67E7C4345F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Apr 2024 17:05:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fqEMn3xCw0Dafz2xJ8ucZOhDOyq3Wzm7Fy4SPtMqoJ8=; b=ZAThU274Ss/bwXzJlsC5Ci2Pqe
-	vIDzFHylMLzpvSeYWpkH3yiXnS5WpTvOyDSgKWzHGPw5cXG0sntUFdcEfhMhNRsOKsZr+3G3qpHY/
-	OyzO9DSnu/W+wE6Q9KK0MLwW/STjtdPUA12cgUVO6X4UNIUsT80x94pNXM0JZkcwhxx2ZeRxq/BVM
-	15E4n9YZFZUfAYr7wtj3L1ClcUjJgWbkN+B6pwHmmuK4q7DpklQszo68+a8WWpUo2PWlGsDXVJmEz
-	d/g8NwWxzPkJcA6gAdYkhkeSElyXJQsx/0+ylcOBcYdH17CZcYLIJFDdvGtE5ZwZGxFUvRmEjDj5H
-	iDGoa6tA==;
+	bh=I3z4onGCvDJrBUsCm728Gb1WReSu//4vnR4wJyG8CsQ=; b=PFxTQkPM0ax7kRor2ZNg9PgGCe
+	7TxyoRL/qV9NA9oStc0IGQwuwrgZXmavIX8BoqV2QgUMAfa9+EefW1J6Sp5heUMccLvUAUZHI0lTN
+	SW4f11t7K/Fm68ZgqT4u6ahMaQ4yQs9h04FrqmUgX60fEtujCLL1Z4z2eCUmhEtAFOx8yKCMZnlus
+	wMHnz81uW1bqaEJ7qrz3mQgwpqRulNcUUt01fMPy3pr7B4MlE++B+8smMbcJ10Ed1Np+3JZa3S5YI
+	UC+vmL7XBtOlOsfkbRxOLk/GdW6+GR5mr4dZrpoX794faTBxhB7YTwg7CS6wJ7Sg2/oVeZ/Uwo56z
+	2NBKZ83g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwPal-00000009A5Y-0PfP;
-	Mon, 15 Apr 2024 16:54:03 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1rwPly-00000009EGs-1MmE;
+	Mon, 15 Apr 2024 17:05:38 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwPag-00000009A3k-1LX4;
-	Mon, 15 Apr 2024 16:54:00 +0000
+	id 1rwPjd-00000009CNJ-2OG6;
+	Mon, 15 Apr 2024 17:03:28 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 37A7E60ED4;
-	Mon, 15 Apr 2024 16:53:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 21A1CC113CC;
-	Mon, 15 Apr 2024 16:53:53 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 9FD8DCE0E66;
+	Mon, 15 Apr 2024 17:03:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 02D0AC32783;
+	Mon, 15 Apr 2024 17:03:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1713200036;
-	bh=bjV4DXgKFrW20X0211p/gXf/Oq51kNqeX2mqwtPMTrc=;
+	s=k20201202; t=1713200590;
+	bh=qlN+7KOkKA0CC6PwtWEV65NHKwg6/a7Wj/1sIx6SWkE=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=fRfswVGC27iBvN0WXoeaMs/TNz6tEKcLkXpGh33CopHaODHPESOjiZgxo0AKKVsi1
-	 tVg0dnyvjeSIjnuX05iJHxEWyTsZB/hO71zPo8VG9XCHaGfossagSHsS+3jH+GFuXN
-	 4AEV15tyr8AVWtbbNQFHqVcBZ3Tn3uejIe6MUHP4g3+B8ot87XE22j+PNRJ4wfzOgR
-	 i/JCeAQpuChlaDxbI21NRlNtrW1F2xh7fUFsOpAILO0/VctxDRzrWvg4i+RDYRVYTO
-	 wkZPV77VhVd7OSy1R3GS3/YUaDsgG+puMal2xoo2kfse3BNGkKsWn8CPYP1eBdbyFp
-	 oFMDafUA75QrA==
-Date: Mon, 15 Apr 2024 17:53:52 +0100
+	b=NdOzrUHQIQ+xohAPgwt7yFhGS86vNEzoGpUkIeGZQPAm8I5BtxYz0mf3gcUoP2Pzs
+	 M9hBbh1YXWRj8qCr0oraEJhFZyaL/Epobq7yEVmzC8yRzIPeCDxiYogc2sbJcsg5Fb
+	 J8wKUf5NmpyMFsh6ZCTmkkPau4UbM9YaxoLDTPM++s0eNGtdwL/VtIWvlMGPAums6X
+	 GDCKNwni4lg9SzyMTXGRE/PLQhzPDv//j/mAtdbBtwhYGrAlI4ItFqg2ZlXnB2SuH3
+	 CSjEut9+y8YEMEUfx0ntXYfH2Em+pliaxvNLNsWhjCb5zBM/Xo1fcyhco+2aLeLE1o
+	 pkAmshwX5thXA==
+Date: Mon, 15 Apr 2024 18:03:03 +0100
 From: Conor Dooley <conor@kernel.org>
-To: Jason-JH Lin =?utf-8?B?KOael+edv+elpSk=?= <Jason-JH.Lin@mediatek.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	Houlong Wei =?utf-8?B?KOmtj+WOmum+mSk=?= <houlong.wei@mediatek.com>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	Shawn Sung =?utf-8?B?KOWui+WtneismSk=?= <Shawn.Sung@mediatek.com>,
-	CK Hu =?utf-8?B?KOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
-	"conor+dt@kernel.org" <conor+dt@kernel.org>,
-	"robh@kernel.org" <robh@kernel.org>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"jassisinghbrar@gmail.com" <jassisinghbrar@gmail.com>,
-	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v5 02/10] dt-bindings: mailbox: Add mboxes property for
- CMDQ secure driver
-Message-ID: <20240415-uncooked-gently-22743a504b30@spud>
-References: <20240403102602.32155-1-shawn.sung@mediatek.com>
- <20240403102602.32155-3-shawn.sung@mediatek.com>
- <20240403-conflict-detest-717b4175a00c@spud>
- <9b9707a4a0e285a12741fe4140680ad2578d8d2b.camel@mediatek.com>
- <20240404-lankiness-devouring-d4d012b22cb9@spud>
- <e6a30feb1e4bb41c90df5e0272385d0f47a7dcab.camel@mediatek.com>
- <20240405-remindful-galley-2dee9eec4f34@spud>
- <f2476233528e18f78cdfa4eb7bc4c5ae91f70db8.camel@mediatek.com>
- <20240409-scratch-rift-41f0967c2dc4@spud>
- <f38f46c4d3c81f86bd33d3b78e15dd42bc0797c5.camel@mediatek.com>
+To: Yi-De Wu <yi-de.wu@mediatek.com>
+Cc: Yingshiuan Pan <yingshiuan.pan@mediatek.com>,
+	Ze-Yu Wang <ze-yu.wang@mediatek.com>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Jonathan Corbet <corbet@lwn.net>,
+	Catalin Marinas <catalin.marinas@arm.com>,
+	Will Deacon <will@kernel.org>,
+	Richard Cochran <richardcochran@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-doc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	David Bradil <dbrazdil@google.com>,
+	Trilok Soni <quic_tsoni@quicinc.com>,
+	My Chuang <my.chuang@mediatek.com>,
+	Shawn Hsiao <shawn.hsiao@mediatek.com>,
+	PeiLun Suei <peilun.suei@mediatek.com>,
+	Liju Chen <liju-clr.chen@mediatek.com>,
+	Willix Yeh <chi-shen.yeh@mediatek.com>,
+	Kevenny Hsieh <kevenny.hsieh@mediatek.com>
+Subject: Re: [PATCH v10 03/21] dt-bindings: hypervisor: Add MediaTek
+ GenieZone hypervisor
+Message-ID: <20240415-emerald-chief-5f27532d65bd@spud>
+References: <20240412065718.29105-1-yi-de.wu@mediatek.com>
+ <20240412065718.29105-4-yi-de.wu@mediatek.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="PxLc+TUR+R0iF7Js"
+	protocol="application/pgp-signature"; boundary="C6BOR4TK2ik6wg8F"
 Content-Disposition: inline
-In-Reply-To: <f38f46c4d3c81f86bd33d3b78e15dd42bc0797c5.camel@mediatek.com>
+In-Reply-To: <20240412065718.29105-4-yi-de.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240415_095359_249082_E80352C9 
-X-CRM114-Status: GOOD (  26.86  )
+X-CRM114-CacheID: sfid-20240415_100314_823764_2E0236A6 
+X-CRM114-Status: GOOD (  15.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,79 +93,60 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---PxLc+TUR+R0iF7Js
-Content-Type: text/plain; charset=utf-8
+--C6BOR4TK2ik6wg8F
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Fri, Apr 12, 2024 at 09:00:53AM +0000, Jason-JH Lin (=E6=9E=97=E7=9D=BF=
-=E7=A5=A5) wrote:
-> On Tue, 2024-04-09 at 18:52 +0100, Conor Dooley wrote:
-> > On Sat, Apr 06, 2024 at 04:15:51PM +0000, Jason-JH Lin (=E6=9E=97=E7=9D=
-=BF=E7=A5=A5) wrote:
-> > > On Fri, 2024-04-05 at 17:13 +0100, Conor Dooley wrote:
-> > > > On Fri, Apr 05, 2024 at 02:33:14PM +0000, Jason-JH Lin (=E6=9E=97=
-=E7=9D=BF=E7=A5=A5)
-> > > > wrote:
-> > > > > On Thu, 2024-04-04 at 15:52 +0100, Conor Dooley wrote:
-> > > > > > On Thu, Apr 04, 2024 at 04:31:06AM +0000, Jason-JH Lin (=E6=9E=
-=97=E7=9D=BF=E7=A5=A5)
-> > > > > > wrote:
-> > > > > > > Hi Conor,
-> > > > > > >=20
-> > > > > > > Thanks for the reviews.
-> > > > > > >=20
-> > > > > > > On Wed, 2024-04-03 at 16:46 +0100, Conor Dooley wrote:
-> > > > > > > > On Wed, Apr 03, 2024 at 06:25:54PM +0800, Shawn Sung
-> > > > > > > > wrote:
-> > > > > > > > > From: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>
-
-> > > > > > > > > +  mediatek,gce-events:
-> > > > > > > > > +    description:
-> > > > > > > > > +      The event id which is mapping to the specific
-> > > > > > > > > hardware
-> > > > > > > > > event
-> > > > > > > > > signal
-> > > > > > > > > +      to gce. The event id is defined in the gce
-> > > > > > > > > header
-> > > > > > > > > +      include/dt-bindings/gce/<chip>-gce.h of each
-> > > > > > > > > chips.
-> > > > > > > >=20
-> > > > > > > > Missing any info here about when this should be used,
-> > > > > > > > hint -
-> > > > > > > > you
-> > > > > > > > have
-> > > > > > > > it
-> > > > > > > > in the commit message.
-> > > > > > > >=20
-> > > > > > > > > +    $ref: /schemas/types.yaml#/definitions/uint32-
-> > > > > > > > > arrayi
-> > > > > > > >=20
-> > > > > > > > Why is the ID used by the CMDQ service not fixed for each
-> > > > > > > > SoC?
+On Fri, Apr 12, 2024 at 02:57:00PM +0800, Yi-De Wu wrote:
+> From: "Yingshiuan Pan" <yingshiuan.pan@mediatek.com>
 >=20
-> Did I misunderstand the ID here?
-> I thought we were talking about event IDs, but it looks like we are
-> talking about mbox IDs.
+> Add documentation for GenieZone(gzvm) node. This node informs gzvm
+> driver to start probing if geniezone hypervisor is available and
+> able to do virtual machine operations.
+>=20
+> [Reason to use dt solution]
+> - The GenieZone hypervisor serves as a vendor model for facilitating
+> platform virtualization, with an implementation that is independent
+> from Linuxism.
+> - In contrast to the dt solution, our previous approach involved probing
+> via hypercall to determine the existence of our hypervisor. However, this
+> method raised concerns about potentially impacting all systems, including
+> those without the GenieZone hypervisor embedded[ref].
+>=20
+> Link: https://lore.kernel.org/all/2fe0c7f9-55fc-ae63-3631-8526a0212ccd@li=
+naro.org/
 
-We were talking about the event IDs FWIW.
+> +properties:
+> +  compatible:
+> +    const: mediatek,geniezone-hyp
 
-Just send a new version with some actual explanations added (as we
-discussed earlier on this thread) and we should be good here I think.
+Been avoiding this binding every time it shows up because Rob had
+already told you no and hasn't revisited it since, but I feel this
+should be s/-hyp// since that's redundant information.
 
-Cheers,
-Conor.
+> +description:
+> +  This interface is designed for integrating GenieZone hypervisor into A=
+ndroid
+> +  Virtualization Framework(AVF) along with Crosvm as a VMM.
+> +  It acts like a wrapper for every hypercall to GenieZone hypervisor in
+> +  order to control guest VM lifecycles and virtual interrupt injections.
 
---PxLc+TUR+R0iF7Js
+The description however doesn't really make sense. The binding claims to
+be for geniezone but the description talks about something else entirely
+that "acts like a wrapper" between the OS and geniezone. What is the
+binding actually for?
+
+--C6BOR4TK2ik6wg8F
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZh1bnwAKCRB4tDGHoIJi
-0jnuAQDSK26EjY38cq+JsvVM52aMoEOqDTJK9m7QIORTzNDSrQD/VrDnAVPIghjR
-raveZ2Z17XwKlJiIOqZXOYHPOzhz+w0=
-=GUlt
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZh1dxwAKCRB4tDGHoIJi
+0jVFAQCJXfT7nWUYAhn0e8Ajkn5u7oxR2Cu949hDGp7nK9saPAEA3b+xCJOh8wV2
+Hv0FfTlG1rexad0mg/r96/sxZi/z9Qg=
+=e5RQ
 -----END PGP SIGNATURE-----
 
---PxLc+TUR+R0iF7Js--
+--C6BOR4TK2ik6wg8F--
 
