@@ -4,102 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19122C4345F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Apr 2024 16:52:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8ABE1C4345F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Apr 2024 16:54:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=u5nj7t3vt2EbEPLlkWSc/ywApSrSPp8k4DfqheemWX4=; b=lvXmyB3+hiRP+ziFS49iD2aZMF
-	VSOuWY+LF4DlxbWcyDyJvZaox/RVPwaHhiAtSofmV15J+5t2YHICn87NEvqFGOG2I5sMNOaoSdt/E
-	/KiZjUreeYTMcMNcBGNzGPmbE31nqhJ/1GZrnRwtA6yCpx1abc5Z2WL/437EElcKUCy5Zw5WXjcoi
-	GhDMo4ObPUicVtrywT5o741foF/5DQ4TH72ym4n+2Rvsq2qWj3CbIzyJ1xqoJ6sGzP1rF/GXeYtta
-	qfGr59bx0y0ponek1iEhMR8no6qd4U4iQCa/HsIOT77Qb06jqcfiJJeB3X3pFBQ8naBkIwKjPit6G
-	A2o7ZJog==;
+	bh=fqEMn3xCw0Dafz2xJ8ucZOhDOyq3Wzm7Fy4SPtMqoJ8=; b=ZAThU274Ss/bwXzJlsC5Ci2Pqe
+	vIDzFHylMLzpvSeYWpkH3yiXnS5WpTvOyDSgKWzHGPw5cXG0sntUFdcEfhMhNRsOKsZr+3G3qpHY/
+	OyzO9DSnu/W+wE6Q9KK0MLwW/STjtdPUA12cgUVO6X4UNIUsT80x94pNXM0JZkcwhxx2ZeRxq/BVM
+	15E4n9YZFZUfAYr7wtj3L1ClcUjJgWbkN+B6pwHmmuK4q7DpklQszo68+a8WWpUo2PWlGsDXVJmEz
+	d/g8NwWxzPkJcA6gAdYkhkeSElyXJQsx/0+ylcOBcYdH17CZcYLIJFDdvGtE5ZwZGxFUvRmEjDj5H
+	iDGoa6tA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwPZ3-000000099fc-2CwQ;
-	Mon, 15 Apr 2024 16:52:17 +0000
-Received: from mail-yb1-xb30.google.com ([2607:f8b0:4864:20::b30])
+	id 1rwPal-00000009A5Y-0PfP;
+	Mon, 15 Apr 2024 16:54:03 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwPYu-000000099c3-2uqz
-	for linux-mediatek@lists.infradead.org;
-	Mon, 15 Apr 2024 16:52:11 +0000
-Received: by mail-yb1-xb30.google.com with SMTP id 3f1490d57ef6-dcbef31a9dbso2224778276.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 15 Apr 2024 09:52:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1713199926; x=1713804726; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=u5nj7t3vt2EbEPLlkWSc/ywApSrSPp8k4DfqheemWX4=;
-        b=QnF2mDXNy3cruS+mVEB1FdfDwBaFokAO6+OlLV5FgJT3sK6q8Em3xhR4YI9mo6oMCV
-         RmtxRRQD2qwIuHYf1J2r+73VWh9rrhpHmroVM1DRD5kqh731t1NEauK608oMI5YlmHLM
-         HS5CqMtx4vaccjsRzJKTAtVL4UQBp7As/m1IJhsy59PuHEYaAhiFLzNGspNrUAgLip+n
-         TZLvlN8oj+igwHU+PJ8N/aLWvkmnPqtliFeiZbFYIVg1kpFWomIOt0PUWqKJmZAqTiBf
-         jilpiigYREI6dagy8fwMZx7h27elwalXGTu+mbWPlPfdbA8H2A1aS2hrXu8+6e0HgOxg
-         4YfA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713199926; x=1713804726;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=u5nj7t3vt2EbEPLlkWSc/ywApSrSPp8k4DfqheemWX4=;
-        b=W9xDMPEBTjHPAmsYx7hmuio2rVo0dJgJvUXEhFIJ5jCNoNiG6DMmWu7dj4Dvt1xDQC
-         xS7pW0GS40yn0MWd6UJhXLojljSOzRCv7wPEpLH83thOoTjj6DF4bjSpb2K5YRwrmYJ6
-         dokf7dh/qHnuz+C4kMV7DD/rtV5+AjxIi1WaOqufa7W+6nJd6EK9IKNMSw7aRDCgaP78
-         E3JKuuFVPpCLIhe3WmMTRTJeVP4bcRUEEDhf6dAwFRkjAXaHO9XWc6B777QSTPRyb97s
-         ZVMRybAjanHpCe//CJkcCVfENS5cdCwK5cbTHMPghTaCFsQ9TqVRiDKF7bZlk5xOiNdn
-         YydA==
-X-Forwarded-Encrypted: i=1; AJvYcCWEj39lH3DatqL3b1tUw/Lc/OGLTFWDj1nTfD0TuyP9K5h3YVL6npLlCFlGsrYrRFI0YYHniZfAGKvFZSy40Bfg2tAyPWLsy9229nhkoF0/ztS+
-X-Gm-Message-State: AOJu0YzQnFw6lBfJOXddic/rg59kY3/0sF0q4OwKe3PeJ1EajFBaHz0S
-	sITAIFXNHIm/+wkrTmSVff7G/abr/CDHO16BY5sR9IR9yZC2Hxdq6LSx2AQF5NZtxskorJ2TCtA
-	wMp7g4acvLp3j9bD0///eQH8/WVXGjfKTxZNUaA==
-X-Google-Smtp-Source: AGHT+IFUQH4ONlkcS0+01CEMOIrS9D3xuTmTIKe0INOXof2d+fsMqiJVzA1ER/VV0S5Vp3kzkSBLhneirq6dUQh4r9c=
-X-Received: by 2002:a25:9e0b:0:b0:de0:df15:b372 with SMTP id
- m11-20020a259e0b000000b00de0df15b372mr9733585ybq.63.1713199925395; Mon, 15
- Apr 2024 09:52:05 -0700 (PDT)
+	id 1rwPag-00000009A3k-1LX4;
+	Mon, 15 Apr 2024 16:54:00 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 37A7E60ED4;
+	Mon, 15 Apr 2024 16:53:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 21A1CC113CC;
+	Mon, 15 Apr 2024 16:53:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1713200036;
+	bh=bjV4DXgKFrW20X0211p/gXf/Oq51kNqeX2mqwtPMTrc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=fRfswVGC27iBvN0WXoeaMs/TNz6tEKcLkXpGh33CopHaODHPESOjiZgxo0AKKVsi1
+	 tVg0dnyvjeSIjnuX05iJHxEWyTsZB/hO71zPo8VG9XCHaGfossagSHsS+3jH+GFuXN
+	 4AEV15tyr8AVWtbbNQFHqVcBZ3Tn3uejIe6MUHP4g3+B8ot87XE22j+PNRJ4wfzOgR
+	 i/JCeAQpuChlaDxbI21NRlNtrW1F2xh7fUFsOpAILO0/VctxDRzrWvg4i+RDYRVYTO
+	 wkZPV77VhVd7OSy1R3GS3/YUaDsgG+puMal2xoo2kfse3BNGkKsWn8CPYP1eBdbyFp
+	 oFMDafUA75QrA==
+Date: Mon, 15 Apr 2024 17:53:52 +0100
+From: Conor Dooley <conor@kernel.org>
+To: Jason-JH Lin =?utf-8?B?KOael+edv+elpSk=?= <Jason-JH.Lin@mediatek.com>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	Houlong Wei =?utf-8?B?KOmtj+WOmum+mSk=?= <houlong.wei@mediatek.com>,
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+	Shawn Sung =?utf-8?B?KOWui+WtneismSk=?= <Shawn.Sung@mediatek.com>,
+	CK Hu =?utf-8?B?KOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
+	"conor+dt@kernel.org" <conor+dt@kernel.org>,
+	"robh@kernel.org" <robh@kernel.org>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"jassisinghbrar@gmail.com" <jassisinghbrar@gmail.com>,
+	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v5 02/10] dt-bindings: mailbox: Add mboxes property for
+ CMDQ secure driver
+Message-ID: <20240415-uncooked-gently-22743a504b30@spud>
+References: <20240403102602.32155-1-shawn.sung@mediatek.com>
+ <20240403102602.32155-3-shawn.sung@mediatek.com>
+ <20240403-conflict-detest-717b4175a00c@spud>
+ <9b9707a4a0e285a12741fe4140680ad2578d8d2b.camel@mediatek.com>
+ <20240404-lankiness-devouring-d4d012b22cb9@spud>
+ <e6a30feb1e4bb41c90df5e0272385d0f47a7dcab.camel@mediatek.com>
+ <20240405-remindful-galley-2dee9eec4f34@spud>
+ <f2476233528e18f78cdfa4eb7bc4c5ae91f70db8.camel@mediatek.com>
+ <20240409-scratch-rift-41f0967c2dc4@spud>
+ <f38f46c4d3c81f86bd33d3b78e15dd42bc0797c5.camel@mediatek.com>
 MIME-Version: 1.0
-References: <20240412222857.3873079-1-robh@kernel.org> <Zh0vXinxy7woerJQ@hu-bjorande-lv.qualcomm.com>
-In-Reply-To: <Zh0vXinxy7woerJQ@hu-bjorande-lv.qualcomm.com>
-From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Date: Mon, 15 Apr 2024 19:51:54 +0300
-Message-ID: <CAA8EJpqL2T4bJZqtZ9KF=V2NLnFxUjouA6_Hu_H07DofifZaoQ@mail.gmail.com>
-Subject: Re: [PATCH] arm/arm64: dts: Drop "arm,armv8-pmuv3" compatible usage
-To: Bjorn Andersson <quic_bjorande@quicinc.com>
-Cc: Rob Herring <robh@kernel.org>, soc@kernel.org, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Florian Fainelli <florian.fainelli@broadcom.com>, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Dinh Nguyen <dinguyen@kernel.org>, 
-	Tsahee Zidenberg <tsahee@annapurnalabs.com>, Antoine Tenart <atenart@kernel.org>, 
-	Khuong Dinh <khuong@os.amperecomputing.com>, Liviu Dudau <liviu.dudau@arm.com>, 
-	Sudeep Holla <sudeep.holla@arm.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
-	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, 
-	Robert Richter <rric@kernel.org>, Shawn Guo <shawnguo@kernel.org>, Li Yang <leoyang.li@nxp.com>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
-	Fabio Estevam <festevam@gmail.com>, "Paul J. Murphy" <paul.j.murphy@intel.com>, 
-	Daniele Alessandrelli <daniele.alessandrelli@intel.com>, Andrew Lunn <andrew@lunn.ch>, 
-	Gregory Clement <gregory.clement@bootlin.com>, 
-	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
-	Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, 
-	=?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, 
-	Heiko Stuebner <heiko@sntech.de>, Orson Zhai <orsonzhai@gmail.com>, 
-	Baolin Wang <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>, 
-	Jisheng Zhang <jszhang@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, linux-fsd@tesla.com, 
-	Michal Simek <michal.simek@amd.com>, devicetree@vger.kernel.org, 
-	linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, imx@lists.linux.dev, 
-	linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org, 
-	linux-arm-msm@vger.kernel.org, linux-realtek-soc@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="PxLc+TUR+R0iF7Js"
+Content-Disposition: inline
+In-Reply-To: <f38f46c4d3c81f86bd33d3b78e15dd42bc0797c5.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240415_095208_873073_7664F3AC 
-X-CRM114-Status: UNSURE (   9.91  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240415_095359_249082_E80352C9 
+X-CRM114-Status: GOOD (  26.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,27 +92,80 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 15 Apr 2024 at 16:46, Bjorn Andersson <quic_bjorande@quicinc.com> wrote:
->
-> On Fri, Apr 12, 2024 at 05:28:51PM -0500, Rob Herring wrote:
-> [..]
-> >  arch/arm64/boot/dts/qcom/qcm2290.dtsi                | 2 +-
-> >  arch/arm64/boot/dts/qcom/qdu1000.dtsi                | 2 +-
-> >  arch/arm64/boot/dts/qcom/sdm630.dtsi                 | 2 +-
-> >  arch/arm64/boot/dts/qcom/sdx75.dtsi                  | 2 +-
->
-> Acked-by: Bjorn Andersson <andersson@kernel.org>
 
-Note, we'd need to override PMU compatibles in sdm636.dtsi and
-sdm660.dtsi. Ideally it should come as the same patch.
+--PxLc+TUR+R0iF7Js
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
->
-> Regards,
-> Bjorn
->
+On Fri, Apr 12, 2024 at 09:00:53AM +0000, Jason-JH Lin (=E6=9E=97=E7=9D=BF=
+=E7=A5=A5) wrote:
+> On Tue, 2024-04-09 at 18:52 +0100, Conor Dooley wrote:
+> > On Sat, Apr 06, 2024 at 04:15:51PM +0000, Jason-JH Lin (=E6=9E=97=E7=9D=
+=BF=E7=A5=A5) wrote:
+> > > On Fri, 2024-04-05 at 17:13 +0100, Conor Dooley wrote:
+> > > > On Fri, Apr 05, 2024 at 02:33:14PM +0000, Jason-JH Lin (=E6=9E=97=
+=E7=9D=BF=E7=A5=A5)
+> > > > wrote:
+> > > > > On Thu, 2024-04-04 at 15:52 +0100, Conor Dooley wrote:
+> > > > > > On Thu, Apr 04, 2024 at 04:31:06AM +0000, Jason-JH Lin (=E6=9E=
+=97=E7=9D=BF=E7=A5=A5)
+> > > > > > wrote:
+> > > > > > > Hi Conor,
+> > > > > > >=20
+> > > > > > > Thanks for the reviews.
+> > > > > > >=20
+> > > > > > > On Wed, 2024-04-03 at 16:46 +0100, Conor Dooley wrote:
+> > > > > > > > On Wed, Apr 03, 2024 at 06:25:54PM +0800, Shawn Sung
+> > > > > > > > wrote:
+> > > > > > > > > From: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>
 
+> > > > > > > > > +  mediatek,gce-events:
+> > > > > > > > > +    description:
+> > > > > > > > > +      The event id which is mapping to the specific
+> > > > > > > > > hardware
+> > > > > > > > > event
+> > > > > > > > > signal
+> > > > > > > > > +      to gce. The event id is defined in the gce
+> > > > > > > > > header
+> > > > > > > > > +      include/dt-bindings/gce/<chip>-gce.h of each
+> > > > > > > > > chips.
+> > > > > > > >=20
+> > > > > > > > Missing any info here about when this should be used,
+> > > > > > > > hint -
+> > > > > > > > you
+> > > > > > > > have
+> > > > > > > > it
+> > > > > > > > in the commit message.
+> > > > > > > >=20
+> > > > > > > > > +    $ref: /schemas/types.yaml#/definitions/uint32-
+> > > > > > > > > arrayi
+> > > > > > > >=20
+> > > > > > > > Why is the ID used by the CMDQ service not fixed for each
+> > > > > > > > SoC?
+>=20
+> Did I misunderstand the ID here?
+> I thought we were talking about event IDs, but it looks like we are
+> talking about mbox IDs.
 
--- 
-With best wishes
-Dmitry
+We were talking about the event IDs FWIW.
+
+Just send a new version with some actual explanations added (as we
+discussed earlier on this thread) and we should be good here I think.
+
+Cheers,
+Conor.
+
+--PxLc+TUR+R0iF7Js
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZh1bnwAKCRB4tDGHoIJi
+0jnuAQDSK26EjY38cq+JsvVM52aMoEOqDTJK9m7QIORTzNDSrQD/VrDnAVPIghjR
+raveZ2Z17XwKlJiIOqZXOYHPOzhz+w0=
+=GUlt
+-----END PGP SIGNATURE-----
+
+--PxLc+TUR+R0iF7Js--
 
