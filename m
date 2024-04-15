@@ -4,75 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 495B8C04FFE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Apr 2024 11:01:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28E40C4345F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Apr 2024 11:16:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gmFjrZpTt19ZQ0/n6Zc/Nd64wp2cmN6WIn+pxc+uwG8=; b=lmSemR43QQUqI7yhQlgPyoSdRe
-	jVbsxkWcXJpwN7DPTrdJpbGKjz1OOWEL3eYQO+PLIENZ3aWqMcJz6bMuaZDEFPclHQt8NEWSwIs1x
-	5RI+vKuSEbr3EPnKK5t6AixvWnpUHajIF6JS6sHJYvlGfDQsvvT+oNdMIDsthjNvCjoBYZEMoz1KF
-	yF7Gk1wI5+0NUVpedLfkHbS4FFFxgARxpVLUg6dU5t4xTH0iroLoL8rBagmx5QrWvqDF7oRWYIXG4
-	17A7S/uUVV3YtO4oMIGcCPx4QId1nyGnAhhuP2pLodKo4CFhbvhhbMSSxm2K4WUePbQRxkv0IUQaz
-	AlpVNMBg==;
+	bh=7ozVd3Vsl7Zck+SbEFz7JjcSmYZriHL/U9Yg8AKJ3jk=; b=i2rziFr+A7oVxSE6qhAiOhaJ1N
+	c2wEsSMsXVd74HHhJ1fRdApHmaf9C4gG4nckRDLpZnvYvKd0Ts3pp+gAhsGl5qSWKz2/4Cs34vYX/
+	jTUArI7xASV1W4II/QZ+4JRsOfIAY29nB2mDWilEs1Xo7vZLPMkMefrh9fGQzGbv2Vkmko0uWocKP
+	krUMA45GR6a7mQTwEYeSWHXLliPPHcE5ENzwXE9G9cbSXgthMKoGE9pwPbuOTrUimoxJ0r70w7DE6
+	srDM4Q9EBKa7Hpday3GfFLvtzDrlCo32w7/lOvmli9u0jiHFtKjiw6l3Dnht/2XrHhNRx822U1nst
+	AzYCbPiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwK5i-00000007y26-2qVQ;
-	Mon, 15 Apr 2024 11:01:38 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rwKJj-000000080ed-2Eqo;
+	Mon, 15 Apr 2024 11:16:07 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwK4Z-00000007xLH-2i6d;
-	Mon, 15 Apr 2024 11:00:31 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1713178826;
-	bh=xXwyH40ijwhP2NEXGOtiRRBM5Db26dTrTLrEXJ0hCJY=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=I3WUPgKS9DLbmHYGZdy2APm3FvTkdX7OIAgwaE0YmZ5p8CcTtE5shJBDwp9hcBrjg
-	 XU+I/SDZ4PVbZnhpFbcSoUG+5uZM1OZKGXsNgz85ghPDbW7kvFx9s0u1qlnwHPrMZp
-	 wOV5EetbnRFFyFYUOENiatjmickweG0ivDquo74/s0spHImYVb5ngPXXnpCCBHKWG9
-	 srDEIaKX64aSpKCWX08LOWxh+l34o41JirDu1HdvMBvLcuCRjvwBFnAOt9vmgdztBX
-	 hs44q7k45Dzk3a6AO/CeB5hxjGXXGK9ueHXWwAgtAR68R0P23KhxPd/yN7tWd1U0zG
-	 7mCi8Ee2iX6dg==
-Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id E0E2C3781107;
-	Mon, 15 Apr 2024 11:00:24 +0000 (UTC)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: linux-scsi@vger.kernel.org
-Cc: alim.akhtar@samsung.com,
-	avri.altman@wdc.com,
-	bvanassche@acm.org,
-	robh@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	conor+dt@kernel.org,
-	peter.wang@mediatek.com,
-	jejb@linux.ibm.com,
-	martin.petersen@oracle.com,
-	lgirdwood@gmail.com,
-	broonie@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH v4 7/8] dt-bindings: ufs: mediatek,ufs: Document additional clocks
-Date: Mon, 15 Apr 2024 13:00:11 +0200
-Message-ID: <20240415110012.148871-8-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.44.0
-In-Reply-To: <20240415110012.148871-1-angelogioacchino.delregno@collabora.com>
-References: <20240415110012.148871-1-angelogioacchino.delregno@collabora.com>
+	id 1rwKJd-000000080df-46sR;
+	Mon, 15 Apr 2024 11:16:04 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id E299060B8C;
+	Mon, 15 Apr 2024 11:16:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 487CFC113CC;
+	Mon, 15 Apr 2024 11:15:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1713179760;
+	bh=pS+uyKgsyii1wjRg73vGWLVmn9HUda2om5l4QvZMNPQ=;
+	h=Date:Subject:List-Id:To:Cc:References:From:In-Reply-To:From;
+	b=p9CguGD20UqvL+CtegaZxYrRV0MQfovjj0iJ/rNEUvEnlMliidcw1qwq9sZflSkP5
+	 YntfStOgSo3hm5LodJeJ4kVHFRTMRrmvshZpBnD3LJjSu5E6nCTn3e1i11d+O0bIgt
+	 vkxUFcCPd9q2c96hZASkrYmo49MsvGW+AtUTT4jl2sQtBtCb6tHB7K3IIo+L3AqZYT
+	 av44M6ECMSaXKIjkj7xoWMjjS9UuvBLUS19dexS3R6kjvg2AHQJacwuO4BH9rgDb4w
+	 owKwNX+6oNqVRR7xuV7uGjTSUa5WQTKIBf78w4xvF1PMECZ3pI4APEikTez0i/wcgh
+	 E52+HNhFWP3zA==
+Message-ID: <2fa0223f-7cac-4140-b667-886cbe3fb8f5@kernel.org>
+Date: Mon, 15 Apr 2024 06:14:22 -0500
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] arm/arm64: dts: Drop "arm,armv8-pmuv3" compatible usage
+To: Rob Herring <robh@kernel.org>, soc@kernel.org,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>,
+ Florian Fainelli <florian.fainelli@broadcom.com>,
+ Broadcom internal kernel review list
+ <bcm-kernel-feedback-list@broadcom.com>,
+ Tsahee Zidenberg <tsahee@annapurnalabs.com>,
+ Antoine Tenart <atenart@kernel.org>,
+ Khuong Dinh <khuong@os.amperecomputing.com>,
+ Liviu Dudau <liviu.dudau@arm.com>, Sudeep Holla <sudeep.holla@arm.com>,
+ Lorenzo Pieralisi <lpieralisi@kernel.org>, Ray Jui <rjui@broadcom.com>,
+ Scott Branden <sbranden@broadcom.com>, Robert Richter <rric@kernel.org>,
+ Shawn Guo <shawnguo@kernel.org>, Li Yang <leoyang.li@nxp.com>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, "Paul J. Murphy"
+ <paul.j.murphy@intel.com>,
+ Daniele Alessandrelli <daniele.alessandrelli@intel.com>,
+ Andrew Lunn <andrew@lunn.ch>, Gregory Clement <gregory.clement@bootlin.com>,
+ Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ Bjorn Andersson <andersson@kernel.org>,
+ Konrad Dybcio <konrad.dybcio@linaro.org>, =?UTF-8?Q?Andreas_F=C3=A4rber?=
+ <afaerber@suse.de>, Heiko Stuebner <heiko@sntech.de>,
+ Orson Zhai <orsonzhai@gmail.com>, Baolin Wang
+ <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>,
+ Jisheng Zhang <jszhang@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>,
+ linux-fsd@tesla.com, Michal Simek <michal.simek@amd.com>
+Cc: devicetree@vger.kernel.org, linux-rpi-kernel@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ imx@lists.linux.dev, linux-mediatek@lists.infradead.org,
+ linux-tegra@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+ linux-realtek-soc@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org
+References: <20240412222857.3873079-1-robh@kernel.org>
+Content-Language: en-US
+From: Dinh Nguyen <dinguyen@kernel.org>
+In-Reply-To: <20240412222857.3873079-1-robh@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240415_040027_958679_49423C06 
-X-CRM114-Status: UNSURE (   8.98  )
+X-CRM114-CacheID: sfid-20240415_041602_170091_97D62998 
+X-CRM114-Status: UNSURE (   9.54  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -88,47 +107,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add additional clocks, used on all MediaTek SoCs' UFSHCI controllers:
-some of these clocks are optional and used only for scaling purposes
-to save power, or to improve performance in the case of the crypt
-clocks.
+On 4/12/24 17:28, Rob Herring wrote:
+> The "arm,armv8-pmuv3" compatible is intended only for s/w models. Primarily,
+> it doesn't provide any detail on uarch specific events.
+> 
+> There's still remaining cases for CPUs without any corresponding PMU
+> definition and for big.LITTLE systems which only have a single PMU node
+> (there should be one per core type).
+> 
+> Signed-off-by: Rob Herring <robh@kernel.org>
+> ---
+> SoC Maintainers, Can you please apply this directly.
+> ---
+>   arch/arm/boot/dts/broadcom/bcm2711.dtsi              | 4 ++--
+>   arch/arm64/boot/dts/altera/socfpga_stratix10.dtsi    | 2 +-
+>   arch/arm64/boot/dts/amazon/alpine-v2.dtsi            | 2 +-
+>   arch/arm64/boot/dts/apm/apm-storm.dtsi               | 2 +-
+>   arch/arm64/boot/dts/arm/vexpress-v2f-1xv7-ca53x2.dts | 2 +-
+>   arch/arm64/boot/dts/broadcom/northstar2/ns2.dtsi     | 2 +-
+>   arch/arm64/boot/dts/broadcom/stingray/stingray.dtsi  | 2 +-
+>   arch/arm64/boot/dts/cavium/thunder-88xx.dtsi         | 2 +-
+>   arch/arm64/boot/dts/cavium/thunder2-99xx.dtsi        | 2 +-
+>   arch/arm64/boot/dts/freescale/fsl-ls1012a.dtsi       | 2 +-
+>   arch/arm64/boot/dts/freescale/fsl-ls1043a.dtsi       | 2 +-
+>   arch/arm64/boot/dts/freescale/fsl-ls2080a.dtsi       | 7 +++++++
+>   arch/arm64/boot/dts/freescale/fsl-ls2088a.dtsi       | 7 +++++++
+>   arch/arm64/boot/dts/freescale/fsl-ls208xa.dtsi       | 5 -----
+>   arch/arm64/boot/dts/freescale/imx8dxl.dtsi           | 2 +-
+>   arch/arm64/boot/dts/intel/keembay-soc.dtsi           | 2 +-
+>   arch/arm64/boot/dts/intel/socfpga_agilex.dtsi        | 2 +-
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- .../devicetree/bindings/ufs/mediatek,ufs.yaml     | 15 ++++++++++++++-
- 1 file changed, 14 insertions(+), 1 deletion(-)
+For SoCFPGA,
 
-diff --git a/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml b/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
-index 5728e750761f..1df8779ee902 100644
---- a/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
-+++ b/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
-@@ -23,11 +23,24 @@ properties:
-           - const: mediatek,mt8183-ufshci
- 
-   clocks:
--    maxItems: 1
-+    minItems: 1
-+    maxItems: 12
- 
-   clock-names:
-+    minItems: 1
-     items:
-       - const: ufs
-+      - const: ufs-aes
-+      - const: ufs-tick
-+      - const: unipro-sys
-+      - const: unipro-tick
-+      - const: ufs-sap
-+      - const: ufs-tx-symbol
-+      - const: ufs-rx-symbol
-+      - const: ufs-mem
-+      - const: crypt-mux
-+      - const: crypt-lp
-+      - const: crypt-perf
- 
-   phys:
-     maxItems: 1
--- 
-2.44.0
+Acked-by: Dinh Nguyen <dinguyen@kernel.org>
 
 
