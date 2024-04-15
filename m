@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80F8EC4345F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Apr 2024 14:48:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA55AC4345F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Apr 2024 14:53:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jRChljwfPNewECXbNqnidT0LERkgt5Pz3bQD/mxxzEU=; b=0pdMPIqWeeLqgfOO0MFzZ0PZc+
-	1KAK76qyKalFYvCLKweMDUWi9au2b2IUPpo3CnHBysPZODp0lubixsKwDarD4IHKtedW7JnHePepX
-	oYM/YW+Tsg5I2yPhHldy/VT3wW/k2/mbgnlM2k4HQXE+W8oPkKvEZxYSPq/ZsAqNqVrhfh8t8KW2i
-	qnMBZiRgCcjDVdReuRtQ/1cFimZpP3C5aeFn/hrOKpYw8vUH5cqBv2mhq9SLbEkGkbVX7eboRaUOB
-	36JqC4Fu5nt4BgqYxrIDVQNtyUOFE202wfVHjReb3u7zbNL9B01gDXwfplxKGAVBdz5M0XAuLOXKP
-	5MnijIVQ==;
+	bh=hy+Z8rveBWKSc5kZLhoJ4cV0ufUTpc48xty9IHGizlk=; b=d1zo3hTWeWhHLX97slP0r6yWKn
+	PrRfPKrqKPaqqvyoqni828qLKfyS5++jK/8pfIEMfz2350NquAT7Im7pThmoHjsxwhnp8b5vopCoF
+	g25rMwinhkUiPH/KXmpyrmrDWkqGvvKikIvk0KsUaCO8bEA3/1OtR28T1MgTW1Om+qVTJatjhARvk
+	EQK3jxFDWgYXDN4U3WAbwgjjDkSyqHZrJG+E8GDP1V7cV1BwcoRL1YWSwJP6dFBmUEK9hN2q+eW9O
+	w2awRjB5UokOrB/0pDmdpJStglLxr/30Y+tEzwbzDTtz+ilzNq9iUFPNm6qiCwyn7SxSQ2ORyEIRe
+	5dut2JBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwNdW-00000008kxZ-3pVa;
-	Mon, 15 Apr 2024 14:48:46 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1rwNhg-00000008lfS-1uRd;
+	Mon, 15 Apr 2024 14:53:04 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwNdT-00000008kwp-2l2a;
-	Mon, 15 Apr 2024 14:48:44 +0000
+	id 1rwNhc-00000008leB-0nYS;
+	Mon, 15 Apr 2024 14:53:01 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id D30E460DFD;
-	Mon, 15 Apr 2024 14:48:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 41E2EC113CC;
-	Mon, 15 Apr 2024 14:48:37 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 38ACFCE0E0B;
+	Mon, 15 Apr 2024 14:52:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 267E2C113CC;
+	Mon, 15 Apr 2024 14:52:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1713192522;
-	bh=ogpbZ9xNksQ+p1/2BEXp3imOyyJTQHkyfqcNvWF10aA=;
+	s=k20201202; t=1713192776;
+	bh=NhbAtc6tAGccokWSTjoKOMtgLuAbLGDa8a3OfLwV230=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=NHxNZKKIppeBSC3JQu3ygrnZyXklvG7/pkDk/jSlNlpA7gGaLQQqTyDt4sdwUqqCY
-	 mPjGWgSv6YacD9SisNO+liVkQ+ezivKaoc6zV4gyOlJStEJay7IBWOCbNhi3EQVJl+
-	 nuGFLLfV4d/XM5s7ueWjRbUQeQ7bmPWGwSTuM7StSE6+PCTLCKvQjqpNoIHKAnLdLm
-	 nSmovcOLbnT0UQGRF7RPCuuokxTouVBpC+eBsfMfLwY/NVLfh14BcKjUSqYU30lcTW
-	 hcXSL3qqiGY38y/nmocNRhe+iqmY4a3OdGvldLdIkliGgBMhnvChHx7Oacp9e8UJFM
-	 gsbJZQTzYL8Tw==
-Date: Mon, 15 Apr 2024 15:48:34 +0100
+	b=PWrs5fKIlnzoyDAUHDWP4Y/Pvl09ehPKzlzipssc5llEgsM4XodZX0woW/NTST5B0
+	 B03GQhlkgJcyHjeYjkF3SyUa20g6XEuS8KiTh2nzLYc3Gze0gL4BErAp+FmCxJDLqi
+	 bvUg4CwKXnhE2lYPOVePRzcbQQ8MsTc1venCKXnd1OzvhSY+Hnj1xlWlPSkFUF+Jvi
+	 bUpSa71+FXCgHH2/wOsYHf8ByDStbIrmopHRqOwEf0qZSD6UPlNaOMa+5qLAXv2G6P
+	 0KWdSBJRQ3odCtfC+CFjNz5OBy/p8Co9ZLQ0bETvoKnFjr2C56WASlvyOKZAExb91o
+	 UjHI3ixedmu6Q==
+Date: Mon, 15 Apr 2024 15:52:48 +0100
 From: Simon Horman <horms@kernel.org>
 To: Yi-De Wu <yi-de.wu@mediatek.com>
 Cc: Yingshiuan Pan <yingshiuan.pan@mediatek.com>,
@@ -65,18 +65,17 @@ Cc: Yingshiuan Pan <yingshiuan.pan@mediatek.com>,
 	Liju Chen <liju-clr.chen@mediatek.com>,
 	Willix Yeh <chi-shen.yeh@mediatek.com>,
 	Kevenny Hsieh <kevenny.hsieh@mediatek.com>
-Subject: Re: [PATCH v10 06/21] virt: geniezone: Add set_user_memory_region
- for vm
-Message-ID: <20240415144834.GC2320920@kernel.org>
+Subject: Re: [PATCH v10 15/21] virt: geniezone: Add demand paging support
+Message-ID: <20240415145248.GD2320920@kernel.org>
 References: <20240412065718.29105-1-yi-de.wu@mediatek.com>
- <20240412065718.29105-7-yi-de.wu@mediatek.com>
+ <20240412065718.29105-16-yi-de.wu@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240412065718.29105-7-yi-de.wu@mediatek.com>
+In-Reply-To: <20240412065718.29105-16-yi-de.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240415_074843_803147_0A02E13E 
-X-CRM114-Status: GOOD (  19.30  )
+X-CRM114-CacheID: sfid-20240415_075300_619841_23FC8F60 
+X-CRM114-Status: GOOD (  23.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,64 +90,91 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Apr 12, 2024 at 02:57:03PM +0800, Yi-De Wu wrote:
+On Fri, Apr 12, 2024 at 02:57:12PM +0800, Yi-De Wu wrote:
 > From: "Yingshiuan Pan" <yingshiuan.pan@mediatek.com>
 > 
-> Direct use of physical memory from VMs is forbidden and designed to be
-> dictated to the privilege models managed by GenieZone hypervisor for
-> security reason. With the help of gzvm-ko, the hypervisor would be able
-> to manipulate memory as objects. And the memory management is highly
-> integrated with ARM 2-stage translation tables to convert VA to IPA to
-> PA under proper security measures required by protected VMs.
+> This page fault handler helps GenieZone hypervisor to do demand paging.
+> On a lower level translation fault, GenieZone hypervisor will first
+> check the fault GPA (guest physical address or IPA in ARM) is valid
+> e.g. within the registered memory region, then it will setup the
+> vcpu_run->exit_reason with necessary information for returning to
+> gzvm driver.
+> 
+> With the fault information, the gzvm driver looks up the physical
+> address and call the MT_HVC_GZVM_MAP_GUEST to request the hypervisor
+> maps the found PA to the fault GPA (IPA).
+> 
+> There is one exception, for protected vm, we will populate full VM's
+> memory region in advance in order to improve performance.
 > 
 > Signed-off-by: Yingshiuan Pan <yingshiuan.pan@mediatek.com>
 > Signed-off-by: Jerry Wang <ze-yu.wang@mediatek.com>
+> Signed-off-by: kevenny hsieh <kevenny.hsieh@mediatek.com>
 > Signed-off-by: Liju Chen <liju-clr.chen@mediatek.com>
 > Signed-off-by: Yi-De Wu <yi-de.wu@mediatek.com>
 
 ...
 
-> diff --git a/drivers/virt/geniezone/gzvm_vm.c b/drivers/virt/geniezone/gzvm_vm.c
+> diff --git a/drivers/virt/geniezone/gzvm_exception.c b/drivers/virt/geniezone/gzvm_exception.c
+> new file mode 100644
+> index 000000000000..475bc15b0689
+> --- /dev/null
+> +++ b/drivers/virt/geniezone/gzvm_exception.c
+> @@ -0,0 +1,39 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Copyright (c) 2023 MediaTek Inc.
+> + */
+> +
+> +#include <linux/device.h>
+> +#include <linux/soc/mediatek/gzvm_drv.h>
+> +
+> +/**
+> + * gzvm_handle_guest_exception() - Handle guest exception
+> + * @vcpu: Pointer to struct gzvm_vcpu_run in userspace
+> + * Return:
+> + * * true - This exception has been processed, no need to back to VMM.
+> + * * false - This exception has not been processed, require userspace.
+> + */
+> +bool gzvm_handle_guest_exception(struct gzvm_vcpu *vcpu)
 
-...
+Hi Yi-De Wu,
 
-> +/* gzvm_vm_ioctl() - Ioctl handler of VM FD */
-> +static long gzvm_vm_ioctl(struct file *filp, unsigned int ioctl,
-> +			  unsigned long arg)
+The return type is bool, however the function actually
+returns either a bool or signed int.
+
+I think that either:
+
+1. The return type should be changed to int,
+   and returning true and false should be updated.
+
+2. The function should always return true or false.
+
+Flagged by Smatch.
+
 > +{
-> +	long ret;
-> +	void __user *argp = (void __user *)arg;
-> +	struct gzvm *gzvm = filp->private_data;
+> +	int ret;
 > +
-> +	switch (ioctl) {
-> +	case GZVM_SET_USER_MEMORY_REGION: {
-> +		struct gzvm_userspace_memory_region userspace_mem;
+> +	for (int i = 0; i < ARRAY_SIZE(vcpu->run->exception.reserved); i++) {
+> +		if (vcpu->run->exception.reserved[i])
+> +			return -EINVAL;
+> +	}
 > +
-> +		if (copy_from_user(&userspace_mem, argp, sizeof(userspace_mem)))
-> +			return -EFAULT;
-> +
-> +		ret = gzvm_vm_ioctl_set_memory_region(gzvm, &userspace_mem);
+> +	switch (vcpu->run->exception.exception) {
+> +	case GZVM_EXCEPTION_PAGE_FAULT:
+> +		ret = gzvm_handle_page_fault(vcpu);
 > +		break;
-> +	}
+> +	case GZVM_EXCEPTION_UNKNOWN:
+> +		fallthrough;
 > +	default:
-> +		ret = -ENOTTY;
+> +		ret = -EFAULT;
 > +	}
-> +out:
-
-nit: the out label as added here, but it does not seem to be used
-     (until [PATCH v10 11/21] virt: geniezone: Add irqfd support).
-
-     Although it probably isn't hurting anything - other than automated
-     testing - it would be best to add as part of a patch that uses it.
-
-Flagged by gcc-13 and clang-18 W=1 builds.
-
-> +	return ret;
-> +}
 > +
->  static void gzvm_destroy_vm(struct gzvm *gzvm)
->  {
->  	pr_debug("VM-%u is going to be destroyed\n", gzvm->vm_id);
+> +	if (!ret)
+> +		return true;
+> +	else
+> +		return false;
+> +}
 
 ...
 
