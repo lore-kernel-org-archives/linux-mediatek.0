@@ -4,132 +4,117 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10AB3C4345F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Apr 2024 20:33:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7370C4345F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Apr 2024 20:44:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fIcGKyu3RVbTPH8gf2IgRkAbQpE7HkRtMrZ9SC1NGEA=; b=mvffwbRjKHEud2ZVDgHKSToXaG
-	WYv0yM860KK8hb6Ln5NMINsO5IaElaeGXdAhykM7huLIPcMX6AZsEsRkye88lkkaC9eC2d6CCUbj6
-	hoZFdj3FbzLa1Ic8370t33HCONFz5JbXydBSD/V5pHKRTEQQYj4ev4HKl9pYY1hlbBGo2XpSWvL11
-	vn5B0lUM0G/IjTd/Az+UfySKBTGIFu2rExrui8IZqnXIT3QgF62Z1Kkmn/ED9SA3FyyqssYER0MWo
-	OlTI2x5CpHEakYZ8hVXjS1E9q/4VGLAbXbxE0bb9NgwfG2xatOeYEW590OAmhff1APQXoD0cVX/xZ
-	SfqhUxuw==;
+	bh=Vh4G/AjMszS/t0HRqrjwJOahq/7qZsmwbbcrIjf8WJY=; b=l8rrz5FdGIZWCA6le1Qphf/w/z
+	CFQeE9s/jkPMo3HXO0uUxmM65YazKWGpJe8VGnI0pz8MMAfITwAsJjesGkG0npECDOP0PEopXLj9C
+	GQOFlu/UWPu7Mq5gOOrmC6uYQ68YgwlpNlxXqP3RKJEJUCGZu9zGC+7bErfALsvHvDQj9JRDZ1OLE
+	9gnwAkcjEwRTgij5r4HjRUGHn5X86qzk6QOSfYZNDz05eVWUbOXnXNLL2TJ4NyxqcFL+/n6xIfrL5
+	EQL4u3jElGqImh6ph2YHHVjsgZ5BuUx6l5wh6BEdRXGeSZeQaBt0wHrX20VkJOg98Vt34txnW6zsb
+	LAH7kpFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwT11-00000009q0w-1q8x;
-	Mon, 15 Apr 2024 20:33:23 +0000
-Received: from wflow6-smtp.messagingengine.com ([64.147.123.141])
+	id 1rwTBO-00000009ref-04r7;
+	Mon, 15 Apr 2024 20:44:06 +0000
+Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwT0x-00000009pyl-0J0f;
-	Mon, 15 Apr 2024 20:33:20 +0000
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
-	by mailflow.west.internal (Postfix) with ESMTP id 14D142CC03C4;
-	Mon, 15 Apr 2024 16:33:10 -0400 (EDT)
-Received: from mailfrontend2 ([10.202.2.163])
-  by compute4.internal (MEProxy); Mon, 15 Apr 2024 16:33:13 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ragnatech.se; h=
-	cc:cc:content-transfer-encoding:content-type:content-type:date
-	:date:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:subject:subject:to:to; s=fm1; t=1713213189;
-	 x=1713216789; bh=fIcGKyu3RVbTPH8gf2IgRkAbQpE7HkRtMrZ9SC1NGEA=; b=
-	A2bCFYPL663eOepLVbEnC0VXlQe5Jq0k+hwWR5TJw9zrtT/wIF5ZSvoH9xom2KgQ
-	d3/edVSsZW8bMc+dfWpv+kKms1yZrQN9NfzVaFQJbyxX/p4HyHsoHjTEjMtN9/dS
-	2R6WdYQ0gmRXUAusWOtnPYl7FLJsh0pRcYcnQAHqyvl3n/DfOnH5z6YiBOgcGxLs
-	OHnAylRQKS/hLHsfFTQ7kuHGyTMIsJ16DHeiSUuGvqj4UsT1u+qpAVDgCrS4eCjT
-	gmm30+JCk54OnK//J6b8NbldfsAKiCw2DEK2SLMpMMkdVPboSMJozXKeTr2cz00O
-	UTPhqtfABRr0S9Rtx1qsSw==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:content-type:date:date:feedback-id:feedback-id
-	:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:subject:subject:to:to:x-me-proxy:x-me-proxy
-	:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=1713213189; x=
-	1713216789; bh=fIcGKyu3RVbTPH8gf2IgRkAbQpE7HkRtMrZ9SC1NGEA=; b=x
-	OCDnAHPigtxYg57VGgTClsFyFHHYw6ro/OrmE3IKhNHkVlH12P3cBR42RF/S0VRt
-	Ho1bEUD5+iRHi2I6AiqzRvQS4m5rY1h+0eWNEh7E/nVi+jUR6ZNoUlSgwOawqKEu
-	GQWORIQpX194mslGn39P+KA8sOiTOWh/ML11a2UyzlYdv5bsqD897put9yliqfdl
-	aVFXciAT0aF/Xak/2xdWE9GEqvvGgiT2AKTdwbBihhvEkIxcXAMnRzRuDojJwei4
-	Ob0EUdLOTpMJk6G5k6lV/RZuYMlrxsPNvZDA3w8gbPkCEFfN8V4tV7Cj9oQuHWmD
-	Fk6wqqiuesU4n/IWr+8rg==
-X-ME-Sender: <xms:A48dZinBXjQljppjuYshoqMb956esQaWJY6oA4zR0mjyvytphnvx2g>
-    <xme:A48dZp0wpVXjd3geX5J2e3DY31sBSly8Ra3l6Wt4kCqYkqoef8WIbka7EycoznUdt
-    w-IQQayQv4_u0wkJJo>
-X-ME-Received: <xmr:A48dZgoZH8_-Rgs08YtX4tA9s7O7A8QhuESSnQRW_0s35vXBkisJltlggluoUTxL78wSC7DIC_TxvCuY0pvaw7ClFg7VNhs>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvledrudejvddgudehudcutefuodetggdotefrod
-    ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
-    necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
-    enucfjughrpeffhffvvefukfhfgggtugfgjgesthekredttddtjeenucfhrhhomheppfhi
-    khhlrghsucfunpguvghrlhhunhguuceonhhikhhlrghsrdhsohguvghrlhhunhguodhrvg
-    hnvghsrghssehrrghgnhgrthgvtghhrdhsvgeqnecuggftrfgrthhtvghrnhepfeetleeu
-    jefhueekteeftdeffedvudefjeeffeehlefgvddthfevleduvedvteegnecuffhomhgrih
-    hnpehkvghrnhgvlhdrohhrghdpfhhrvggvuggvshhkthhophdrohhrghenucevlhhushht
-    vghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehnihhklhgrshdrshhoug
-    gvrhhluhhnugdorhgvnhgvshgrshesrhgrghhnrghtvggthhdrshgv
-X-ME-Proxy: <xmx:A48dZmkR2Cb8Nu49QcE5CJq-Ja7hjXExE8ddiaWaPoReY3FBXadTGA>
-    <xmx:A48dZg2EswAJi0VioKY02SnxIwLcN5788cL-4KQ35vZ35ftvuK7qkQ>
-    <xmx:A48dZtuD9RfeJ8kj95gjbnM-4CpungoSLQJkTJQAWes6N8u-rNSWkQ>
-    <xmx:A48dZsV3gbKbvYqK3iI8UGR7nZPPl05nS0QVbOXUnxfyez35GTa-AQ>
-    <xmx:BY8dZh2LQxfcu9mwVB157qbXRe8nmcbODjjN7y9Tc65DItle1JDrPIjg>
-Feedback-ID: i80c9496c:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
- 15 Apr 2024 16:33:06 -0400 (EDT)
-Date: Mon, 15 Apr 2024 22:33:04 +0200
-From: Niklas =?utf-8?Q?S=C3=B6derlund?= <niklas.soderlund+renesas@ragnatech.se>
-To: Ricardo Ribalda <ribalda@chromium.org>
-Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Martin Tuma <martin.tuma@digiteqautomotive.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	Hugues Fruchet <hugues.fruchet@foss.st.com>,
-	Alain Volmat <alain.volmat@foss.st.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Chen-Yu Tsai <wens@csie.org>,	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Sowjanya Komatineni <skomatineni@nvidia.com>,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Hans Verkuil <hverkuil@xs4all.nl>, Sergey Kozlov <serjk@netup.ru>,
-	Abylay Ospan <aospan@netup.ru>,
-	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	Dmitry Osipenko <digetx@gmail.com>,
-	Stanimir Varbanov <stanimir.k.varbanov@gmail.com>,
-	Vikash Garodia <quic_vgarodia@quicinc.com>,
-	Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Benjamin Mugnier <benjamin.mugnier@foss.st.com>,
-	Sylvain Petinot <sylvain.petinot@foss.st.com>,
-	Jacopo Mondi <jacopo+renesas@jmondi.org>,
-	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
-	Pavel Machek <pavel@ucw.cz>, linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org,	linux-stm32@st-md-mailman.stormreply.com,
-	linux-arm-kernel@lists.infradead.org, linux-staging@lists.linux.dev,
-	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org
-Subject: Re: [PATCH 00/35] media: Fix coccinelle warning/errors
-Message-ID: <20240415203304.GA3460978@ragnatech.se>
+	id 1rwTBH-00000009rdO-3HDi;
+	Mon, 15 Apr 2024 20:44:01 +0000
+Received: by mail-lj1-x232.google.com with SMTP id 38308e7fff4ca-2da08b06e0dso39397351fa.2;
+        Mon, 15 Apr 2024 13:43:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1713213837; x=1713818637; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Vh4G/AjMszS/t0HRqrjwJOahq/7qZsmwbbcrIjf8WJY=;
+        b=QAXwa7gAStk0KuRjTPMlRQ5RMAIv2PGXkwEd3IQQ+oZpb5yOjOp6pk70RwQnCtWobY
+         J04NA5GAYDIu0exJg/I7DlxLRWGeM1RX4OQZt1n49s5Mlo3DUXvDudV8Y7KfM2oTItkO
+         H4kQhJIaF40wnTaPU+DCErzNOC1TOuF1n52oX2LiVsMsOUloTnE1T5GkeTR9fbPztcUQ
+         BzFRmABC9OUrrdxkXS3qHyAnk64Ij32Tu+gvlOyd7EjPlJRjfg9OmC1amDIYXOFNf2OK
+         mGm+CMXtkCM4D1rHcLW0nLRXgKiHCPyUcdm+OAw/F1e0qDHs3Vwi1ZBK0yegeNCACVie
+         1tvg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1713213837; x=1713818637;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Vh4G/AjMszS/t0HRqrjwJOahq/7qZsmwbbcrIjf8WJY=;
+        b=r7xyVJLkzm8kDW/UliXi1JwvXjNylQHfEW7axQ6K8/dxfzYv9xk9CI6YE3nrzyfH2V
+         a8x5uE+Oxrk22V9AZCTE++e9jf9JPn01T3vbkaLZImbuS0xMXcQ6rpTLBoqvLPyDbmmB
+         MJUL0j+LZBuuDoSjTNOL641Gua98ji0m8D95xUpCrdDdg2tYzG3ZmfXWbOtdjQf42vht
+         IQI2+DnGfrsvEmrRqjXrP+r6VShL/3les/gk/jGkcNaSnuSyZGWcVnI8gGWW2H4ZTx5k
+         O0X+U/zgie/O10AbxRechPJ3JLPtDBrRTFyxTI7lg2IayIEkQtVi96F4bk/c9CsbbjDW
+         KX3w==
+X-Forwarded-Encrypted: i=1; AJvYcCUOBYHcfCEdKf3ovmX9iEjnwYSfZQ93YWkK61XcXTUA7OueQyBkrQEsfCMkHyun6zyp/3MD0U4wRdNVsZRSTWNnGWlr6I9Hqd5XaiKBfPIOwkDErr7LHMTA3VgG79B/vO6TzEyGe1Di6HwzydejXHJYcgTj37aVr7o=
+X-Gm-Message-State: AOJu0Yzb8OCQnxj+v1uc6LLpzlrdxKoXinPVqiffGCL/oRrh/6I5aC2b
+	UMcfdsDHb3jEFqz110gCTv/WFFATExjm5OfQ+eXdz8eZueyzMAPy
+X-Google-Smtp-Source: AGHT+IHuk+bIjnHF/M32DBBym4XM02bSBQeXa2Xi9niRXZxUmLjNJbCmeAfQcyqxYAWLBytnQmudbw==
+X-Received: by 2002:a2e:bc09:0:b0:2d8:97f:451e with SMTP id b9-20020a2ebc09000000b002d8097f451emr8116687ljf.37.1713213836997;
+        Mon, 15 Apr 2024 13:43:56 -0700 (PDT)
+Received: from jernej-laptop.localnet (86-58-6-171.dynamic.telemach.net. [86.58.6.171])
+        by smtp.gmail.com with ESMTPSA id i11-20020a5d630b000000b0034659d971a6sm12976964wru.26.2024.04.15.13.43.54
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 15 Apr 2024 13:43:56 -0700 (PDT)
+From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@gmail.com>
+To: Martin Tuma <martin.tuma@digiteqautomotive.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Hugues Fruchet <hugues.fruchet@foss.st.com>,
+ Alain Volmat <alain.volmat@foss.st.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Chen-Yu Tsai <wens@csie.org>, Samuel Holland <samuel@sholland.org>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ Sowjanya Komatineni <skomatineni@nvidia.com>,
+ Luca Ceresoli <luca.ceresoli@bootlin.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Hans Verkuil <hverkuil@xs4all.nl>, Sergey Kozlov <serjk@netup.ru>,
+ Abylay Ospan <aospan@netup.ru>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Dmitry Osipenko <digetx@gmail.com>,
+ Stanimir Varbanov <stanimir.k.varbanov@gmail.com>,
+ Vikash Garodia <quic_vgarodia@quicinc.com>,
+ Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
+ Bjorn Andersson <andersson@kernel.org>,
+ Konrad Dybcio <konrad.dybcio@linaro.org>,
+ Benjamin Mugnier <benjamin.mugnier@foss.st.com>,
+ Sylvain Petinot <sylvain.petinot@foss.st.com>,
+ Jacopo Mondi <jacopo+renesas@jmondi.org>,
+ Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
+ Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
+ Niklas =?ISO-8859-1?Q?S=F6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
+ Pavel Machek <pavel@ucw.cz>, Ricardo Ribalda <ribalda@chromium.org>
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com,
+ linux-arm-kernel@lists.infradead.org, linux-staging@lists.linux.dev,
+ linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ Ricardo Ribalda <ribalda@chromium.org>
+Subject: Re: [PATCH 07/35] media: staging: sun6i-isp: Remove redundant printk
+Date: Mon, 15 Apr 2024 22:43:54 +0200
+Message-ID: <4910185.31r3eYUQgx@jernej-laptop>
+In-Reply-To: <20240415-fix-cocci-v1-7-477afb23728b@chromium.org>
 References: <20240415-fix-cocci-v1-0-477afb23728b@chromium.org>
- <20240415195348.GD22954@pendragon.ideasonboard.com>
- <CANiDSCteGngbSS6CCuUxM-PQiBz0W0WfoFr2E2oH2d8qt746_A@mail.gmail.com>
+ <20240415-fix-cocci-v1-7-477afb23728b@chromium.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CANiDSCteGngbSS6CCuUxM-PQiBz0W0WfoFr2E2oH2d8qt746_A@mail.gmail.com>
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="utf-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240415_133319_384703_27D82445 
-X-CRM114-Status: GOOD (  24.19  )
+X-CRM114-CacheID: sfid-20240415_134359_857062_6B59C28C 
+X-CRM114-Status: GOOD (  16.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -144,199 +129,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Ricardo,
+Dne ponedeljek, 15. april 2024 ob 21:34:24 GMT +2 je Ricardo Ribalda napisal(a):
+> platform_get_irq() already prints an error for us.
+> 
+> Found by cocci:
+> drivers/staging/media/sunxi/sun6i-isp/sun6i_isp.c:389:2-9: line 389 is redundant because platform_get_irq() already prints an error
+> 
+> Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 
-Thanks for cleaning up.
+Acked-by: Jernej Skrabec <jernej.skrabec@gmail.com>
 
-On 2024-04-15 21:58:58 +0200, Ricardo Ribalda wrote:
-> Hi Laurent
-> 
-> On Mon, 15 Apr 2024 at 21:54, Laurent Pinchart
-> <laurent.pinchart@ideasonboard.com> wrote:
-> >
-> > Hi Ricardo,
-> >
-> > I'm afraid I won't have time to review any of this for the time being.
-> > Unless you would like me to put uvcvideo reviews on hold ;-)
-> >
-> > Jokes aside, my first reaction was that this feels like a bit of a waste
-> > of maintainer's time :-S
-> 
-> This is part of the media-ci effort.
-> 
-> It is definitely not the most fun patches to do or review, but someone
-> has to do it :)
-> 
-> The whole idea is that we want to get as little warnings as possible
-> from the static analysers, after this patchset we almost achieve that.
+Best regards,
+Jernej
 
-I understand and I think it's a good goal to aim for zero warnings. But 
-some of the fixes here are IMHO not helpful, for example I find this 
-type of change counter productive.
+> ---
+>  drivers/staging/media/sunxi/sun6i-isp/sun6i_isp.c | 1 -
+>  1 file changed, 1 deletion(-)
+> 
+> diff --git a/drivers/staging/media/sunxi/sun6i-isp/sun6i_isp.c b/drivers/staging/media/sunxi/sun6i-isp/sun6i_isp.c
+> index 5c0a45394cba..a6424fe7023b 100644
+> --- a/drivers/staging/media/sunxi/sun6i-isp/sun6i_isp.c
+> +++ b/drivers/staging/media/sunxi/sun6i-isp/sun6i_isp.c
+> @@ -386,7 +386,6 @@ static int sun6i_isp_resources_setup(struct sun6i_isp_device *isp_dev,
+>  
+>  	irq = platform_get_irq(platform_dev, 0);
+>  	if (irq < 0) {
+> -		dev_err(dev, "failed to get interrupt\n");
+>  		ret = -ENXIO;
+>  		goto error_clock_rate_exclusive;
+>  	}
+> 
+> 
 
--       return ret < 0 ? ret : 0;
-+
-+       if (ret < 0)
-+               return ret;
-+       return 0;
 
-Maybe it's better to disable this type of checks in the linter?
 
-> 
-> It is only 2 trivial uvc patches, I can ask someone from my team to
-> review it if you want and trust them ;)
-> 
-> Regards!
-> 
-> >
-> > On Mon, Apr 15, 2024 at 07:34:17PM +0000, Ricardo Ribalda wrote:
-> > > After this set is applied, these are the only warnings left:
-> > > drivers/media/pci/ivtv/ivtv-fileops.c:223:4-10: preceding lock on line 267
-> > > drivers/media/pci/ivtv/ivtv-fileops.c:230:3-9: preceding lock on line 267
-> > > drivers/media/pci/ivtv/ivtv-fileops.c:236:4-10: preceding lock on line 267
-> > > drivers/media/pci/ivtv/ivtv-fileops.c:245:3-9: preceding lock on line 267
-> > > drivers/media/pci/ivtv/ivtv-fileops.c:251:3-9: preceding lock on line 267
-> > > drivers/media/pci/ivtv/ivtv-fileops.c:257:3-9: preceding lock on line 267
-> > > drivers/media/pci/ivtv/ivtv-fileops.c:272:3-9: preceding lock on line 267
-> > > drivers/media/pci/ivtv/ivtv-fileops.c:598:4-10: preceding lock on line 627
-> > > drivers/media/pci/ivtv/ivtv-fileops.c:598:4-10: preceding lock on line 689
-> > > drivers/media/pci/ivtv/ivtv-fileops.c:606:3-9: preceding lock on line 627
-> > > drivers/media/pci/ivtv/ivtv-fileops.c:606:3-9: preceding lock on line 689
-> > > drivers/media/pci/ivtv/ivtv-fileops.c:648:3-9: preceding lock on line 627
-> > > drivers/media/pci/ivtv/ivtv-fileops.c:648:3-9: preceding lock on line 689
-> > > drivers/media/pci/ivtv/ivtv-fileops.c:692:4-10: preceding lock on line 689
-> > > drivers/media/dvb-core/dvb_frontend.c:2897:1-7: preceding lock on line 2776
-> > > drivers/media/dvb-core/dvb_frontend.c:2897:1-7: preceding lock on line 2786
-> > > drivers/media/dvb-core/dvb_frontend.c:2897:1-7: preceding lock on line 2809
-> > > drivers/media/dvb-frontends/stv090x.c:799:1-7: preceding lock on line 768
-> > > drivers/media/usb/go7007/go7007-i2c.c:125:1-7: preceding lock on line 61
-> > > drivers/media/rc/imon.c:1167:1-7: preceding lock on line 1153
-> > > drivers/media/pci/cx18/cx18-scb.h:261:22-29: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > drivers/media/platform/qcom/venus/hfi_cmds.h:77:5-9: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > drivers/media/platform/qcom/venus/hfi_cmds.h:85:5-16: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > drivers/media/platform/qcom/venus/hfi_cmds.h:154:5-9: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > drivers/media/platform/qcom/venus/hfi_cmds.h:171:5-9: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > drivers/media/platform/qcom/venus/hfi_cmds.h:180:5-9: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > drivers/media/platform/qcom/venus/hfi_cmds.h:189:5-9: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > drivers/media/platform/qcom/venus/hfi_cmds.h:201:5-9: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > drivers/media/platform/qcom/venus/hfi_cmds.h:220:5-9: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > drivers/media/platform/qcom/venus/hfi_cmds.h:230:5-16: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > drivers/media/platform/qcom/venus/hfi_helper.h:764:5-15: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > drivers/media/platform/qcom/venus/hfi_helper.h:1008:43-60: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > drivers/media/platform/qcom/venus/hfi_helper.h:1014:36-46: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > drivers/media/platform/qcom/venus/hfi_helper.h:1041:5-15: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > drivers/media/platform/qcom/venus/hfi_helper.h:1088:39-51: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > drivers/media/platform/qcom/venus/hfi_helper.h:1093:5-22: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > drivers/media/platform/qcom/venus/hfi_helper.h:1144:4-8: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > drivers/media/platform/qcom/venus/hfi_helper.h:1239:4-8: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > drivers/media/platform/qcom/venus/hfi_helper.h:1267:5-9: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > drivers/media/platform/qcom/venus/hfi_helper.h:1272:4-13: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > drivers/media/common/siano/smscoreapi.h:619:5-13: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > drivers/media/common/siano/smscoreapi.h:669:6-13: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > drivers/media/common/siano/smscoreapi.h:1049:4-8: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > drivers/media/common/siano/smscoreapi.h:1055:4-8: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > drivers/media/dvb-frontends/mxl5xx_defs.h:171:4-8: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > drivers/media/dvb-frontends/mxl5xx_defs.h:182:4-8: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > drivers/media/platform/allegro-dvt/nal-hevc.h:102:14-22: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > drivers/media/platform/xilinx/xilinx-dma.h:100:19-22: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > drivers/staging/media/atomisp/pci/atomisp_tpg.h:30:18-22: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > >
-> > > CI tested:
-> > > https://gitlab.freedesktop.org/linux-media/media-staging/-/commit/055b5211c68e721c3a7090be5373cf44859da1a7/pipelines?ref=ribalda%2Ftest-cocci
-> > >
-> > > Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
-> > > ---
-> > > Ricardo Ribalda (35):
-> > >       media: pci: mgb4: Refactor struct resources
-> > >       media: stb0899: Remove unreacheable code
-> > >       media: uvcvideo: Refactor iterators
-> > >       media: uvcvideo: Use max() macro
-> > >       media: go7007: Use min and max macros
-> > >       media: stm32-dcmipp: Remove redundant printk
-> > >       media: staging: sun6i-isp: Remove redundant printk
-> > >       media: dvb-frontends: tda18271c2dd: Remove casting during div
-> > >       media: v4l: async: refactor v4l2_async_create_ancillary_links
-> > >       staging: media: tegra-video: Use swap macro
-> > >       media: s2255: Use refcount_t instead of atomic_t for num_channels
-> > >       media: platform: mtk-mdp3: Use refcount_t for job_count
-> > >       media: common: saa7146: Use min macro
-> > >       media: dvb-frontends: drx39xyj: Use min macro
-> > >       media: netup_unidvb: Use min macro
-> > >       media: au0828: Use min macro
-> > >       media: flexcop-usb: Use min macro
-> > >       media: gspca: cpia1: Use min macro
-> > >       media: stk1160: Use min macro
-> > >       media: tegra-vde: Refactor timeout handling
-> > >       media: venus: Use div64_u64
-> > >       media: i2c: st-mipid02: Use the correct div function
-> > >       media: dvb-frontends: tda10048: Use the right div
-> > >       media: tc358746: Use the correct div_ function
-> > >       media: venus: Use the correct div_ function
-> > >       media: venus: Refator return path
-> > >       media: dib0700: Refator return path
-> > >       media: usb: cx231xx: Refator return path
-> > >       media: i2c: rdacm20: Refator return path
-> > >       media: i2c: et8ek8: Refator return path
-> > >       media: cx231xx: Refator return path
-> > >       media: si4713: Refator return path
-> > >       media: ttpci: Refator return path
-> > >       media: hdpvr: Refator return path
-> > >       media: venus: Refator return path
-> > >
-> > >  drivers/media/common/saa7146/saa7146_hlp.c         |  8 +++----
-> > >  drivers/media/dvb-frontends/drx39xyj/drxj.c        |  9 +++-----
-> > >  drivers/media/dvb-frontends/stb0899_drv.c          |  5 -----
-> > >  drivers/media/dvb-frontends/tda10048.c             |  3 +--
-> > >  drivers/media/dvb-frontends/tda18271c2dd.c         |  4 ++--
-> > >  drivers/media/i2c/et8ek8/et8ek8_driver.c           |  4 +++-
-> > >  drivers/media/i2c/rdacm20.c                        |  5 ++++-
-> > >  drivers/media/i2c/st-mipid02.c                     |  2 +-
-> > >  drivers/media/i2c/tc358746.c                       |  3 +--
-> > >  drivers/media/pci/mgb4/mgb4_core.c                 |  4 ++--
-> > >  drivers/media/pci/mgb4/mgb4_regs.c                 |  2 +-
-> > >  drivers/media/pci/netup_unidvb/netup_unidvb_i2c.c  |  2 +-
-> > >  drivers/media/pci/ttpci/budget-core.c              |  5 ++++-
-> > >  .../media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c   | 10 ++++-----
-> > >  .../media/platform/mediatek/mdp3/mtk-mdp3-core.c   |  6 ++---
-> > >  .../media/platform/mediatek/mdp3/mtk-mdp3-core.h   |  2 +-
-> > >  .../media/platform/mediatek/mdp3/mtk-mdp3-m2m.c    |  6 ++---
-> > >  drivers/media/platform/nvidia/tegra-vde/h264.c     |  6 ++---
-> > >  drivers/media/platform/qcom/venus/vdec.c           | 15 +++++++------
-> > >  drivers/media/platform/qcom/venus/venc.c           | 19 +++++++++-------
-> > >  .../platform/st/stm32/stm32-dcmipp/dcmipp-core.c   |  5 +----
-> > >  drivers/media/radio/si4713/radio-usb-si4713.c      |  8 +++++--
-> > >  drivers/media/usb/au0828/au0828-video.c            |  5 +----
-> > >  drivers/media/usb/b2c2/flexcop-usb.c               |  5 +----
-> > >  drivers/media/usb/cx231xx/cx231xx-i2c.c            | 16 +++++++++----
-> > >  drivers/media/usb/cx231xx/cx231xx-video.c          | 10 +++++++--
-> > >  drivers/media/usb/dvb-usb/dib0700_core.c           |  4 +++-
-> > >  drivers/media/usb/go7007/go7007-fw.c               |  4 ++--
-> > >  drivers/media/usb/gspca/cpia1.c                    |  6 ++---
-> > >  drivers/media/usb/hdpvr/hdpvr-control.c            |  4 +++-
-> > >  drivers/media/usb/s2255/s2255drv.c                 | 20 ++++++++---------
-> > >  drivers/media/usb/stk1160/stk1160-video.c          | 10 ++-------
-> > >  drivers/media/usb/uvc/uvc_ctrl.c                   | 26 ++++++++++++----------
-> > >  drivers/media/v4l2-core/v4l2-async.c               |  8 +++----
-> > >  drivers/staging/media/sunxi/sun6i-isp/sun6i_isp.c  |  1 -
-> > >  drivers/staging/media/tegra-video/tegra20.c        |  9 ++------
-> > >  36 files changed, 132 insertions(+), 129 deletions(-)
-> > > ---
-> > > base-commit: 71b3ed53b08d87212fbbe51bdc3bf44eb8c462f8
-> > > change-id: 20240415-fix-cocci-2df3ef22a6f7
-> > >
-> > > Best regards,
-> >
-> > --
-> > Regards,
-> >
-> > Laurent Pinchart
-> 
-> 
-> 
-> -- 
-> Ricardo Ribalda
 
--- 
-Kind Regards,
-Niklas Söderlund
 
