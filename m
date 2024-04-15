@@ -4,163 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA1BBC4345F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Apr 2024 11:49:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F6C6C4345F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Apr 2024 12:31:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:In-Reply-To:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xiCoQ88Z4aGkr+U0s3cjc/8zyNw/xshgaY2fZquL++8=; b=vRjR3oVR0c6s9JTTmxvlmSA8pt
-	5MnyfV5GKt/N3wu9MHjnMQ4PabjwwD2Nul6K9juBHJLXxhwz1FMwHP6P5lk/XCd0ppSwtaSXtOyWz
-	kvF8Mkjh/N/Dz+kVxd1mSZ46AZaQJ4DWaaO4c/PeFLxpzxZXvfLgns4j95K10EFnVb/+vsc3lrC8m
-	BRKovCzdfM6s85dfuzv3X+4pPAsjH6rW0W26ctqYb3TO0bgNsWuCMFK59TZsZ5ZfUK8ELSfBT9T/I
-	SpZwKm1KIi8QblYdsfHQNpShmxIwWFNH3cnFTEN1FTMKtHvNKwIXmyMLpWsBO5silhsJ44YPW7Yex
-	BTEAalvA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=StS4x0S3//04l7wNyiAlQ2KElGTWLVjD4MZApYb4baA=; b=1SZXF3wH2AiZCo
+	EmmxfBfhpSUW3Kep7sv1pZjcekgxpdObkKfGptGp+RonXHoH9Ls4sTqD93/TAMbgFtywPKm+u5FmO
+	BmVrJWiOabfs+z+HLrhN57EpXu6u/uDhXLk03ruxjqDFNKsKAfplHIu8zdSK4dSDnQmIkHgi32YEp
+	6nHA39wxQSlpKAs+c+K8dnq5lUp87OCrBVhjkpCCpfWS6Z6S/Qp1sB4kGDFwAwnk4q9cT+3mUY6lP
+	6rD7BqkbLYZPOSqKl48zvLB76K2BGah1LVzCvPnpdRDbZLGOSRHh8AFMkbwkhr99UZ5SJFqBH1PZ7
+	PrbDS3FtTt9FI6hjSMpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwKps-000000085Fj-0ni9;
-	Mon, 15 Apr 2024 11:49:20 +0000
-Received: from mailout4.samsung.com ([203.254.224.34])
+	id 1rwLUL-00000008CdO-2ONG;
+	Mon, 15 Apr 2024 12:31:09 +0000
+Received: from wp530.webpack.hosteurope.de ([80.237.130.52])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwKpm-000000085B2-0yOf;
-	Mon, 15 Apr 2024 11:49:17 +0000
-Received: from epcas5p2.samsung.com (unknown [182.195.41.40])
-	by mailout4.samsung.com (KnoxPortal) with ESMTP id 20240415114905epoutp047ec76ae33f35546306f3645b8a63e6d3~GcbiXPQqs2027520275epoutp04F;
-	Mon, 15 Apr 2024 11:49:05 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout4.samsung.com 20240415114905epoutp047ec76ae33f35546306f3645b8a63e6d3~GcbiXPQqs2027520275epoutp04F
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
-	s=mail20170921; t=1713181745;
-	bh=xiCoQ88Z4aGkr+U0s3cjc/8zyNw/xshgaY2fZquL++8=;
-	h=From:To:Cc:In-Reply-To:Subject:Date:References:From;
-	b=mVNncCu/4q324nre0zv4OS2gPOdqkPVfQgxQVb0C8k9GPKF30WlBMBu8+LVObanpl
-	 ZtaDf7es8zp8wDqChl6ATSV8N5a0br+8bdEhggjd+z5puL/NAe2NNZ4aReN17AIx6L
-	 3Dnl8gALewtz09KtOzW2dFOTuL5ILBztMYs0doIE=
-Received: from epsnrtp4.localdomain (unknown [182.195.42.165]) by
-	epcas5p4.samsung.com (KnoxPortal) with ESMTP id
-	20240415114905epcas5p4eacaaad84bb05b4fd2bf1ff9eca4400f~Gcbhyt3Pj1794217942epcas5p4M;
-	Mon, 15 Apr 2024 11:49:05 +0000 (GMT)
-Received: from epsmges5p1new.samsung.com (unknown [182.195.38.181]) by
-	epsnrtp4.localdomain (Postfix) with ESMTP id 4VJ56l4Ylwz4x9Pw; Mon, 15 Apr
-	2024 11:49:03 +0000 (GMT)
-Received: from epcas5p3.samsung.com ( [182.195.41.41]) by
-	epsmges5p1new.samsung.com (Symantec Messaging Gateway) with SMTP id
-	A2.EE.09666.F241D166; Mon, 15 Apr 2024 20:49:03 +0900 (KST)
-Received: from epsmtrp1.samsung.com (unknown [182.195.40.13]) by
-	epcas5p4.samsung.com (KnoxPortal) with ESMTPA id
-	20240415114903epcas5p47c4eeb90c7407377878f6a6bd2bc1458~Gcbfxdu7t1794217942epcas5p4K;
-	Mon, 15 Apr 2024 11:49:03 +0000 (GMT)
-Received: from epsmgms1p2new.samsung.com (unknown [182.195.42.42]) by
-	epsmtrp1.samsung.com (KnoxPortal) with ESMTP id
-	20240415114903epsmtrp190d3f7c835c3802c90fd5f7e320072df~GcbfvzlT40122301223epsmtrp1R;
-	Mon, 15 Apr 2024 11:49:03 +0000 (GMT)
-X-AuditID: b6c32a49-cefff700000025c2-6f-661d142f157f
-Received: from epsmtip2.samsung.com ( [182.195.34.31]) by
-	epsmgms1p2new.samsung.com (Symantec Messaging Gateway) with SMTP id
-	65.57.08390.E241D166; Mon, 15 Apr 2024 20:49:02 +0900 (KST)
-Received: from INBRO000447 (unknown [107.122.12.5]) by epsmtip2.samsung.com
-	(KnoxPortal) with ESMTPA id
-	20240415114855epsmtip20375f57d0f3c7972dd46af099f38f3dd~GcbYxrnY92898028980epsmtip2b;
-	Mon, 15 Apr 2024 11:48:55 +0000 (GMT)
-From: "Alim Akhtar" <alim.akhtar@samsung.com>
-To: "'Rob Herring'" <robh@kernel.org>, <soc@kernel.org>, "'Krzysztof
- Kozlowski'" <krzysztof.kozlowski+dt@linaro.org>, "'Conor Dooley'"
-	<conor+dt@kernel.org>, "'Florian Fainelli'" <florian.fainelli@broadcom.com>,
-	"'Broadcom internal kernel review list'"
-	<bcm-kernel-feedback-list@broadcom.com>, "'Dinh Nguyen'"
-	<dinguyen@kernel.org>, "'Tsahee Zidenberg'" <tsahee@annapurnalabs.com>,
-	"'Antoine Tenart'" <atenart@kernel.org>, "'Khuong Dinh'"
-	<khuong@os.amperecomputing.com>, "'Liviu	Dudau'" <liviu.dudau@arm.com>,
-	"'Sudeep Holla'" <sudeep.holla@arm.com>, "'Lorenzo	Pieralisi'"
-	<lpieralisi@kernel.org>, "'Ray Jui'" <rjui@broadcom.com>, "'Scott	Branden'"
-	<sbranden@broadcom.com>, "'Robert Richter'" <rric@kernel.org>, "'Shawn Guo'"
-	<shawnguo@kernel.org>, "'Li Yang'" <leoyang.li@nxp.com>, "'Sascha Hauer'"
-	<s.hauer@pengutronix.de>, "'Pengutronix Kernel Team'"
-	<kernel@pengutronix.de>, "'Fabio Estevam'" <festevam@gmail.com>, "'Paul J.
- Murphy'" <paul.j.murphy@intel.com>, "'Daniele Alessandrelli'"
-	<daniele.alessandrelli@intel.com>, "'Andrew Lunn'" <andrew@lunn.ch>,
-	"'Gregory	Clement'" <gregory.clement@bootlin.com>, "'Sebastian Hesselbarth'"
-	<sebastian.hesselbarth@gmail.com>, "'Matthias Brugger'"
-	<matthias.bgg@gmail.com>, "'AngeloGioacchino Del Regno'"
-	<angelogioacchino.delregno@collabora.com>, "'Thierry Reding'"
-	<thierry.reding@gmail.com>, "'Jonathan Hunter'" <jonathanh@nvidia.com>,
-	"'Bjorn	Andersson'" <andersson@kernel.org>, "'Konrad Dybcio'"
-	<konrad.dybcio@linaro.org>, =?utf-8?Q?'Andreas_F=C3=A4rber'?=
-	<afaerber@suse.de>, "'Heiko Stuebner'" <heiko@sntech.de>, "'Orson Zhai'"
-	<orsonzhai@gmail.com>, "'Baolin Wang'" <baolin.wang@linux.alibaba.com>,
-	"'Chunyan Zhang'" <zhang.lyra@gmail.com>, "'Jisheng Zhang'"
-	<jszhang@kernel.org>, <linux-fsd@tesla.com>, "'Michal Simek'"
-	<michal.simek@amd.com>
-Cc: <devicetree@vger.kernel.org>, <linux-rpi-kernel@lists.infradead.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<imx@lists.linux.dev>, <linux-mediatek@lists.infradead.org>,
-	<linux-tegra@vger.kernel.org>, <linux-arm-msm@vger.kernel.org>,
-	<linux-realtek-soc@lists.infradead.org>,
-	<linux-rockchip@lists.infradead.org>, <linux-samsung-soc@vger.kernel.org>
-In-Reply-To: <20240412222857.3873079-1-robh@kernel.org>
-Subject: RE: [PATCH] arm/arm64: dts: Drop "arm,armv8-pmuv3" compatible usage
-Date: Mon, 15 Apr 2024 17:18:54 +0530
-Message-ID: <0b3b01da8f2a$e9560ca0$bc0225e0$@samsung.com>
+	id 1rwLUG-00000008Cag-1DjD
+	for linux-mediatek@lists.infradead.org;
+	Mon, 15 Apr 2024 12:31:08 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=leemhuis.info; s=he214686; h=Content-Transfer-Encoding:Content-Type:
+	In-Reply-To:From:References:Cc:To:Subject:Reply-To:MIME-Version:Date:
+	Message-ID:From:Sender:Reply-To:Subject:Date:Message-ID:To:Cc:MIME-Version:
+	Content-Type:Content-Transfer-Encoding:Content-ID:Content-Description:
+	In-Reply-To:References; bh=StS4x0S3//04l7wNyiAlQ2KElGTWLVjD4MZApYb4baA=;
+	t=1713184264; x=1713616264; b=uQz4oN1YxH9K4PQ8f7VmDuFqxotKfgrgHOZ+3ACX0H56AAU
+	NyVQ3nj9mbmioeG1JPy6ug4ZdjQYbGvicvMA9qMtxMZAF2wbqa18IOQ+XWIIOjwke0tYmKyokTGDw
+	9+9/KM5qYZMHiwi0S2jKBXxX7Ch7ajWYZEKF00Bc4/HtQNsgXOIAYEh8xqlBlHSxhT735+EI6+Yyr
+	bYyQ0JYaz8fV35NAWiFgNAmZ3nEW/8bPIuaxv5G13Iq2yTJNjAapkM3fZ8SOURrdJbHa/7YG6o0vW
+	b1e3X7auEW3hvlEzGBKLs2k6kzzk9sMXodLpvxO4zz0BoGbZOlfqpv3ev5a4eFvA==;
+Received: from [2a02:8108:8980:2478:8cde:aa2c:f324:937e]; authenticated
+	by wp530.webpack.hosteurope.de running ExIM with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
+	id 1rwLU4-0001A5-KM; Mon, 15 Apr 2024 14:30:52 +0200
+Message-ID: <5c0ce057-992b-4200-bb74-b84826974860@leemhuis.info>
+Date: Mon, 15 Apr 2024 14:30:51 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-Mailer: Microsoft Outlook 16.0
-Thread-Index: AQLY8iYk/Bpt/dsaN0W9BEDsUNhRuQIeG7qZr1t/T6A=
-Content-Language: en-us
-X-Brightmail-Tracker: H4sIAAAAAAAAA01Ta1CUZRT2/a67MujHxXijtHUdLTUuK7eDeUkj/FRUZpp0pqlwg2+BAXbX
-	3cXSsNBdEUSwrUBYAeWSFBKriwMLQuqKGk1KeEFHxEDAARFSbCoEpYVPy3/POed53uec98yR
-	kO4lEm9JvNog6NTKRDkzlao5O3++j5/nTJV/VuqrYLTpoSZ9CbR0OEi4/AOGh4VHEYw3nkfw
-	Y9Y5CiobLxFw6+4ZBIeaLtFwruUkAV3XNkBVzW0SCr7fBuN3BmjIv72bAZOlhALjeSsDFTl1
-	FBR/XUND+je1FGT3dZHgMJ4mwNbdRoP51EUWuu5tgiv1BQxcMbYisOZeZWC4c5wEc/sxFvJa
-	fiIg408LA6e/20OBacxEwS5TADReaKXhwIODCEYdwzT05lczMN5gZ+FMxXECntTaKBg62oPg
-	j5EV0HfCC7qvjzFQ/oudgpH6IgqqSvNZKO+sZ98O4HdffsLwTwetLF9ZVIn4osrPecvvFxne
-	3lGG+DpLB8uXNvQTvK0ig+FvtTUwfF1XKF9d9iXfV53vJNgfEXyWcYjhjw/ZiciXPkhYEico
-	YwSdTFBHa2Li1bFL5Wvfi3onKijYX+GjCIUQuUytTBKWysMiIn3C4xOd65DLtioTk52pSKVe
-	L/dbtkSnSTYIsjiN3rBULmhjErWBWl+9MkmfrI71VQuGxQp//0VBTuLmhLjiMzZa+9jjs/Z9
-	D9lUlD59L5JKMBeIK27lob1oqsSdO4lwRkfrs2AY4YM3TLQY/IXw/cdt9HPJ5dxsViw0Ipzr
-	MJNi0IfwaPd9ZoLFcD7YXpo2iT25hmn4dlHSBInkMkmcZ901WZByIbi5+ubksx5cBC7sy3Zi
-	iYTi5uL92asm0q5cKK5qbEAidsPN+T3UBCa513DtYAEpdiTDI71HaNFrMS4prSJEjhfuP9c0
-	2SnmTC54fMDIiIIwfDTb+GwcD3zvwglWxN64f38aO9ED5nhcMuYtpuPwYLkViXg5Pn21gJqg
-	kNx8bK33E62m4azRHkJUuuL0NHeRPRcbh65RIn4FmzMzn5nyuKf+EfkVmm15YTDLC4NZXhjA
-	8r/ZYURVoJcFrT4pVtAHaRVq4dP/9h2tSbKhyWNdsNqOOjof+DoQIUEOhCWk3NPV5DFT5e4a
-	o9y2XdBponTJiYLegYKcn20mvWdEa5zXrjZEKQJD/QODg4MDQwOCFXIv14HdhTHuXKzSICQI
-	glbQPdcREql3KhFgyFPVDB9zq2sqkW1+PWDGRunH0dJThd0kzTbNaouY58txUZHW1avLFh2S
-	jm3esH6Dm2rtlLwpNR5JZetD3l/Xdac3U4h7mLZmTur1NS3Fs2Yc/luzx7Di7saIdpXL8mvL
-	MsprvVaMyqokWp0uxXhz589FK2fteGo3bwrp8FzYnhO+5UBnqNFkowJUZ0cevKXS0Tc08WMU
-	77OwLTV6zuzh7i0qs094wkDKu6kVndMPTAtbmZAT/m1znefesSPSugs72eaCN1q+aNru6VJU
-	qe4VloX4058UZ6zre7N/lV6m/XD/jhEXWc5gYXFwWPJ2P0dI6zyHmyl5/Ld/AlO2rmk++9Gv
-	uyLklD5OqVhA6vTKfwGghwx2NQUAAA==
-X-Brightmail-Tracker: H4sIAAAAAAAAA02Se0xTdxTH97u9vfeCYdbCyg8IU7sHA6TiVDwom2Oa7C5bxJgZE9wyyygv
-	KZAWx8oeENoiqCDVQG3lDcqoCKMQKNhu0EkXNnmIz03rqFKFIQyZYWOoTChL+O+b8/meT84f
-	h+Hwj1G+TGJKukSWIk4WUu5k24/C1SEiL/+40KKcraA0yqEtLwIG7FYODNVjeFR2DsG8xYbg
-	fEEPCQ2WfgJu3+9GUHGxnws9AxcIcFyLgsa2Oxwo/VYB83fHuaC7o6ZApa8mQWlrosBQ3EFC
-	1Yk2LuSdbCehcNTBAauyiwDjvetc0PzQR4Pjj31wpbOUgivKywiaSq5SMD08zwHNre9oODXw
-	PQH5j/UUdJ05TILqiYqEHNVGsPx0mQvaqdMI5qzTXHDqWiiYN5to6DY0E/C03UjC5LkRBH/O
-	RsJoqzfcu/GEgrqfTSTMdpaT0Fijo6FuuJN+ZyOrHnpKsc8mmmi2obwBseUNX7L63/so1mSv
-	RWyH3k6zNeYxgjUa8in29nUzxXY4wtmW2ix2tEX3vGD6i2ALlJMU2zxpInYLot0jYiXJiZ9L
-	ZOvfPuCeUNVt5Kb96/nFrWOP6GyUt/IIcmMwbxMeKimkjyB3hs+7gLBGOUa7gB++0Vy0lD1x
-	/bMHS6X7COeevoQWAMULwaaaXGoBePGuvohbLEruAuDwijm4cmKnayMP4f65CWoBuPG24N6W
-	3xZLnrwPcdlo4fPMMCTvNXy88L2FsQcvHDdazMiVV+Fe3QjpcgZj56/Opbwat0+UclzXrcGz
-	zrOLSi/eVlxd00i4Ot54rOciXYQ89ctU+mUq/TKVftlKJSINyEeSJpfGS+Ub0t5MkWSI5GKp
-	/FBKvOizVKkRLT5sUJAJmQ1TIisiGGRFmOEIvTxUnv5xfI9YsSJTIkv9VHYoWSK3Ij+GFHp7
-	zIwXxPJ58eJ0yUGJJE0i+58SjJtvNlEXOJ9QOWywz6y69m7YgbW0qlZg6RisEEhTE6tPVO4p
-	2TWnLiZPapPf2h2y+WyIIylAvR32p6tTAmzBigeZr7w6BLHSCCbjkjDpqzUPNzd/sG58TKP9
-	2jlyvnrl66Lsvds7Fdu8oxIc4/z346YeZ4mQ+e+d8tCsaajRBAfm9gZzTYXRD1eE2bZp1QG/
-	vJBxtzeZ2KdsVZxJDA/00UaumOEOygYqBfGN/HrnJy9rhTGWikhvwQ7fw5tiQtfGrEMvdflH
-	55wK6oY02/oOza4o9ug3HyWV7b95VKr4J8LuI2jt24Jse4fsNwdbParyD+pwSBmaKN3hV5Xz
-	cWaBfY8g7A0hKU8QbwjiyOTi/wBJ6xsTHwQAAA==
-X-CMS-MailID: 20240415114903epcas5p47c4eeb90c7407377878f6a6bd2bc1458
-X-Msg-Generator: CA
-Content-Type: text/plain; charset="utf-8"
-CMS-TYPE: 105P
-DLP-Filter: Pass
-X-CFilter-Loop: Reflected
-X-CMS-RootMailID: 20240412222916epcas5p4eaf4b2eeb34e8fad4634d8fca9196e98
-References: <CGME20240412222916epcas5p4eaf4b2eeb34e8fad4634d8fca9196e98@epcas5p4.samsung.com>
-	<20240412222857.3873079-1-robh@kernel.org>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] [PATCH] Bluetooth: btusb: Add support Mediatek MT7920
+To: =?UTF-8?B?RGVyZW4gV3UgKOatpuW+t+S7gSk=?= <Deren.Wu@mediatek.com>,
+ "regressions@lists.linux.dev" <regressions@lists.linux.dev>,
+ =?UTF-8?B?UGV0ZXIgVHNhbyAo5pu554+G5b2wKQ==?= <Peter.Tsao@mediatek.com>,
+ "mike@fireburn.co.uk" <mike@fireburn.co.uk>
+Cc: "marcel@holtmann.org" <marcel@holtmann.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ =?UTF-8?B?Q2hyaXMgTHUgKOmZuOeomuazkyk=?= <Chris.Lu@mediatek.com>,
+ "linux-bluetooth@vger.kernel.org" <linux-bluetooth@vger.kernel.org>,
+ "johan.hedberg@gmail.com" <johan.hedberg@gmail.com>,
+ =?UTF-8?B?U3RldmUgTGVlICjmnY7oppboqqAp?= <steve.lee@mediatek.com>,
+ Sean Wang <Sean.Wang@mediatek.com>, =?UTF-8?B?QWFyb24gSG91ICjkvq/kv4rku7Ap?=
+ <Aaron.Hou@mediatek.com>, "luiz.dentz@gmail.com" <luiz.dentz@gmail.com>
+References: <20240304144844.2042-1-peter.tsao@mediatek.com>
+ <20240401144424.1714-1-mike@fireburn.co.uk>
+ <CAHbf0-FqUqoDty81OH9_Et7MTWFikYYhEvP7SBVGyeXO-R94_A@mail.gmail.com>
+ <2d822b6c-8b55-443d-ad9e-03e97ce7b99b@leemhuis.info>
+ <11f098c7cc3a063fd20c02f1a66372e3444cb272.camel@mediatek.com>
+From: "Linux regression tracking (Thorsten Leemhuis)"
+ <regressions@leemhuis.info>
+Content-Language: en-US, de-DE
+In-Reply-To: <11f098c7cc3a063fd20c02f1a66372e3444cb272.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-bounce-key: webpack.hosteurope.de;regressions@leemhuis.info;1713184264;adc2b050;
+X-HE-SMSGID: 1rwLU4-0001A5-KM
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240415_044915_330411_3176C6E6 
-X-CRM114-Status: GOOD (  12.66  )
+X-CRM114-CacheID: sfid-20240415_053104_506247_18D16F7D 
+X-CRM114-Status: GOOD (  16.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -172,58 +86,95 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: Linux regressions mailing list <regressions@lists.linux.dev>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-> -----Original Message-----
+On 05.04.24 11:15, Deren Wu (武德仁) wrote:
 > 
-> The "arm,armv8-pmuv3" compatible is intended only for s/w models.
-> Primarily, it doesn't provide any detail on uarch specific events.
-> 
-> There's still remaining cases for CPUs without any corresponding PMU
-> definition and for big.LITTLE systems which only have a single PMU node
-> (there should be one per core type).
-> 
-> Signed-off-by: Rob Herring <robh@kernel.org>
-> ---
-> SoC Maintainers, Can you please apply this directly.
-> ---
->  arch/arm/boot/dts/broadcom/bcm2711.dtsi              | 4 ++--
->  arch/arm64/boot/dts/altera/socfpga_stratix10.dtsi    | 2 +-
->  arch/arm64/boot/dts/amazon/alpine-v2.dtsi            | 2 +-
->  arch/arm64/boot/dts/apm/apm-storm.dtsi               | 2 +-
->  arch/arm64/boot/dts/arm/vexpress-v2f-1xv7-ca53x2.dts | 2 +-
->  arch/arm64/boot/dts/broadcom/northstar2/ns2.dtsi     | 2 +-
->  arch/arm64/boot/dts/broadcom/stingray/stingray.dtsi  | 2 +-
->  arch/arm64/boot/dts/cavium/thunder-88xx.dtsi         | 2 +-
->  arch/arm64/boot/dts/cavium/thunder2-99xx.dtsi        | 2 +-
->  arch/arm64/boot/dts/freescale/fsl-ls1012a.dtsi       | 2 +-
->  arch/arm64/boot/dts/freescale/fsl-ls1043a.dtsi       | 2 +-
->  arch/arm64/boot/dts/freescale/fsl-ls2080a.dtsi       | 7 +++++++
->  arch/arm64/boot/dts/freescale/fsl-ls2088a.dtsi       | 7 +++++++
->  arch/arm64/boot/dts/freescale/fsl-ls208xa.dtsi       | 5 -----
->  arch/arm64/boot/dts/freescale/imx8dxl.dtsi           | 2 +-
->  arch/arm64/boot/dts/intel/keembay-soc.dtsi           | 2 +-
->  arch/arm64/boot/dts/intel/socfpga_agilex.dtsi        | 2 +-
->  arch/arm64/boot/dts/marvell/ac5-98dx25xx.dtsi        | 2 +-
->  arch/arm64/boot/dts/marvell/armada-37xx.dtsi         | 2 +-
->  arch/arm64/boot/dts/mediatek/mt8516.dtsi             | 2 +-
->  arch/arm64/boot/dts/nvidia/tegra210.dtsi             | 2 +-
->  arch/arm64/boot/dts/qcom/qcm2290.dtsi                | 2 +-
->  arch/arm64/boot/dts/qcom/qdu1000.dtsi                | 2 +-
->  arch/arm64/boot/dts/qcom/sdm630.dtsi                 | 2 +-
->  arch/arm64/boot/dts/qcom/sdx75.dtsi                  | 2 +-
->  arch/arm64/boot/dts/realtek/rtd16xx.dtsi             | 2 +-
->  arch/arm64/boot/dts/rockchip/rk3368.dtsi             | 2 +-
->  arch/arm64/boot/dts/sprd/sc9860.dtsi                 | 2 +-
->  arch/arm64/boot/dts/sprd/sc9863a.dtsi                | 2 +-
->  arch/arm64/boot/dts/synaptics/berlin4ct.dtsi         | 2 +-
->  arch/arm64/boot/dts/tesla/fsd.dtsi                   | 2 +-
+> Thanks for the note. We are looking for solution for this issue. Peter
+> would post the new patch. :)
 
-For FSD SoC,
+Anyone still working on this, as that afaics did not happen -- or was
+there progress and I just missed it?
 
-Acked-by: Alim Akhtar <alim.akhtar@samsung.com>
+Ciao, Thorsten (wearing his 'the Linux kernel's regression tracker' hat)
+--
+Everything you wanna know about Linux kernel regression tracking:
+https://linux-regtracking.leemhuis.info/about/#tldr
+If I did something stupid, please tell me, as explained on that page.
 
+#regzbot poke
+
+> On Fri, 2024-04-05 at 10:34 +0200, Linux regression tracking (Thorsten
+> Leemhuis) wrote:
+>> [CCing the regression list, as it should be in the loop for
+>> regressions:
+>>
+> https://urldefense.com/v3/__https://docs.kernel.org/admin-guide/reporting-regressions.html__;!!CTRNKA9wMg0ARbw!n9OQDQtfMiQdddzNLvMEOMLnnEHhw12KRY5W5YPscQJTiNQtuIVuJufNc2UYpy-rUlRtMUwZsL5NDERIf1CoGox8J2I$
+>>  ]
+>>
+>> On 01.04.24 17:20, Mike Lothian wrote:
+>>> On Mon, 1 Apr 2024 at 15:44, Mike Lothian <mike@fireburn.co.uk>
+>>> wrote:
+>>>>
+>>>> I think this patch is causing issues with older firmware
+>>>>
+>>>> Bus 003 Device 002: ID 13d3:3563 IMC Networks Wireless_Device
+>>>>
+>>>> [    0.315064] Bluetooth: Core ver 2.22
+>>>> [    0.315064] NET: Registered PF_BLUETOOTH protocol family
+>>>> [    0.315064] Bluetooth: HCI device and connection manager
+>>>> initialized
+>>>> [    0.315064] Bluetooth: HCI socket layer initialized
+>>>> [    0.315064] Bluetooth: L2CAP socket layer initialized
+>>>> [    0.315064] Bluetooth: SCO socket layer initialized
+>>>> [    4.670811] Bluetooth: RFCOMM TTY layer initialized
+>>>> [    4.671029] Bluetooth: RFCOMM socket layer initialized
+>>>> [    4.671790] Bluetooth: RFCOMM ver 1.11
+>>>> [    4.673416] Bluetooth: BNEP (Ethernet Emulation) ver 1.3
+>>>> [    4.673659] Bluetooth: BNEP filters: protocol multicast
+>>>> [    4.673895] Bluetooth: BNEP socket layer initialized
+>>>> [    4.674125] Bluetooth: HIDP (Human Interface Emulation) ver
+>>>> 1.2
+>>>> [    4.674360] Bluetooth: HIDP socket layer initialized
+>>>> [    5.016365] bluetooth hci0: Direct firmware load for
+>>>> mediatek/BT_RAM_CODE_MT7961_1a_2_hdr.bin failed with error -2
+>>>> [    5.017163] Bluetooth: hci0: Failed to load firmware file (-2)
+>>>> [    5.017557] Bluetooth: hci0: Failed to set up firmware (-2)
+>>>> [    5.018129] Bluetooth: hci0: HCI Enhanced Setup Synchronous
+>>>> Connection command is advertised, but not supported.
+>>>>
+>>>> The correct name should be
+>>>> mediatek/BT_RAM_CODE_MT7961_1_2_hdr.bin
+>>>>
+>>>> Reverting this patch fixes things
+>>>
+>>> If it helps, the device ID is 0x7961 and the fw_flavour is 24 or
+>>> 0x18 in hex
+>>
+>> Thanks for the report!
+>>
+>> Peter, did you look into this?
+>>
+>> Anyway: To be sure the issue doesn't fall through the cracks
+>> unnoticed,
+>> I'm adding it to regzbot, the Linux kernel regression tracking bot:
+>>
+>> #regzbot report:
+>>
+> https://lore.kernel.org/all/20240401144424.1714-1-mike@fireburn.co.uk/
+>> #regzbot introduced: 1cb63d80fff6c4
+>> #regzbot title: net: Bluetooth: firmware loading problems with older
+>> firmware
+>> #regzbot ignore-activity
+>>
+>> Ciao, Thorsten (wearing his 'the Linux kernel's regression tracker'
+>> hat)
+>> --
+>> Everything you wanna know about Linux kernel regression tracking:
+>>
+> https://urldefense.com/v3/__https://linux-regtracking.leemhuis.info/about/*tldr__;Iw!!CTRNKA9wMg0ARbw!n9OQDQtfMiQdddzNLvMEOMLnnEHhw12KRY5W5YPscQJTiNQtuIVuJufNc2UYpy-rUlRtMUwZsL5NDERIf1CoQcaol0s$
+>>  
+>> That page also explains what to do if mails like this annoy you.
 
