@@ -4,77 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16035C4345F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Apr 2024 13:04:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A701C04FF8
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Apr 2024 13:22:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=cO+Nz6pWljWFlGjF8bOfXSxVNHA9wkQKw71vbqy+eKA=; b=yVNGdP2U4+g9RDW08g/pqjwJLd
-	yAow0byx4hpBtGCFXv3HfXx7nMW+pFT4smI4CdCVM5PbAIsuIvzffyIgs57Lzj5K57fO8xOEFyvKw
-	pDDl6Xx4CHe/vOTT9AG0NpUhbpxWk7CfMHdEiIgH/YTixxANCjv19D/k7pS4nGbKl7X71iBg3l5SF
-	+IbMWbnMA2PH13+yq9F90EnZdXNx4rwUNHX1R8z+6jYPlkhLwHG0oTmbmuwWx2IMbyXv7KoSEGe2p
-	orK3kPoykAUdau746/Dsh9gdNw0w6s6Er9AGWPUJ+Gn9+ZnalozsgdvAhz8qpJTHiOSsTmrLCspYu
-	CeDfRsVg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=zHYEz7SzmEby4jGmWMNx7AaV2jSW/Ek3c/x75YvZeuY=; b=uESXuE+EPoZLkAA3AjeufZ2R6L
+	+I6mxtqsZQSPmqvjg49ybg6u9DDdrW07bYfAvjoKVNH59tIyIT6Fh2j5w0sZdosLbV/fHtKCYDe8g
+	zRrnRciPZIVtzOLL76YbrChUAtJaH4xENsRzHQr+9p2k9opXlZA5XoE21mg/BHztboSpNoyjH9P+1
+	FQJyVZ3nIad5cmXCb9uzPrIcO75UNYD8MROD0jgTBdcHoabbhGd9uB9Zb9J0KgDQ0a7Z/fk3vSiWf
+	KEAtT92st3IcyBdbWdGDzobhTIx3gskE1MiKWLj3scUo4DL8544R82CqhdJ/pZo40lNxB0zfvP/kC
+	GD0yBLMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwM0E-00000008MVY-1a7y;
-	Mon, 15 Apr 2024 13:04:07 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1rwMHa-00000008RYk-3K5R;
+	Mon, 15 Apr 2024 13:22:02 +0000
+Received: from szxga07-in.huawei.com ([45.249.212.35])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwM03-00000008MPe-1uKI
-	for linux-mediatek@lists.infradead.org;
-	Mon, 15 Apr 2024 13:04:05 +0000
-X-UUID: 983e2a54fb2811eeac1957ae9f99f617-20240415
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=cO+Nz6pWljWFlGjF8bOfXSxVNHA9wkQKw71vbqy+eKA=;
-	b=XmQe0uas4BSjRAZFKJ647ecisdnLWWlSAjHPWxpIHQW6sIrVItmLuJd4Iv3sb3+1+R6EL5pVsgqMljVwZuPd5DeohVs1tcOTnF94iHXi2eG1FF7botXkT655DF4130ohDjit3R6h6GHEdZVVuocGL19oaSQpIBXf8Ibdc6vyLLs=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.38,REQID:712a7415-c9c5-4c5b-85ad-bc3e3b8c15cd,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:82c5f88,CLOUDID:c5f3b182-4f93-4875-95e7-8c66ea833d57,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 983e2a54fb2811eeac1957ae9f99f617-20240415
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <deren.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1415102847; Mon, 15 Apr 2024 06:03:46 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+	id 1rwMHW-00000008RWd-0WgE;
+	Mon, 15 Apr 2024 13:22:00 +0000
+Received: from mail.maildlp.com (unknown [172.19.88.163])
+	by szxga07-in.huawei.com (SkyGuard) with ESMTP id 4VJ76Q0FWGz1fxb9;
+	Mon, 15 Apr 2024 21:18:54 +0800 (CST)
+Received: from dggpemm500005.china.huawei.com (unknown [7.185.36.74])
+	by mail.maildlp.com (Postfix) with ESMTPS id C106C180063;
+	Mon, 15 Apr 2024 21:21:50 +0800 (CST)
+Received: from localhost.localdomain (10.69.192.56) by
+ dggpemm500005.china.huawei.com (7.185.36.74) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 15 Apr 2024 21:03:44 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 15 Apr 2024 21:03:44 +0800
-From: Deren Wu <deren.wu@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>
-CC: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>,
-	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>, Leon Yen
-	<Leon.Yen@mediatek.com>, Allan Wang <allan.wang@mediatek.com>, KM Lin
-	<km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, CH Yeh
-	<ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Quan Zhou
-	<quan.zhou@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen
-	<shayne.chen@mediatek.com>, linux-wireless <linux-wireless@vger.kernel.org>,
-	linux-mediatek <linux-mediatek@lists.infradead.org>, Deren Wu
-	<deren.wu@mediatek.com>
-Subject: [PATCH] wifi: mt76: mt7925: add EHT radiotap support in monitor mode
-Date: Mon, 15 Apr 2024 21:03:42 +0800
-Message-ID: <5553c30b820a299afce84a611562c21fbab6bb32.1713186083.git.deren.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ 15.1.2507.35; Mon, 15 Apr 2024 21:21:50 +0800
+From: Yunsheng Lin <linyunsheng@huawei.com>
+To: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>
+CC: <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Yunsheng Lin
+	<linyunsheng@huawei.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Alexei
+ Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>, Jesper
+ Dangaard Brouer <hawk@kernel.org>, John Fastabend <john.fastabend@gmail.com>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<bpf@vger.kernel.org>
+Subject: [PATCH net-next v2 00/15] First try to replace page_frag with page_frag_cache
+Date: Mon, 15 Apr 2024 21:19:25 +0800
+Message-ID: <20240415131941.51153-1-linyunsheng@huawei.com>
+X-Mailer: git-send-email 2.33.0
 MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-MTK: N
+X-Originating-IP: [10.69.192.56]
+X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
+ dggpemm500005.china.huawei.com (7.185.36.74)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240415_060355_528040_26875FDC 
-X-CRM114-Status: GOOD (  13.47  )
+X-CRM114-CacheID: sfid-20240415_062158_559700_F7A234A7 
+X-CRM114-Status: GOOD (  18.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,198 +72,210 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add IEEE80211_RADIOTAP_EHT and IEEE80211_RADIOTAP_EHT_USIG radiotap
-to fill in EHT information, such as MCS, NSS, GI and bandwidth.
+After [1], there are still two implementations for page frag:
 
-Co-developed-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
-Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
-Signed-off-by: Deren Wu <deren.wu@mediatek.com>
----
- .../net/wireless/mediatek/mt76/mt76_connac.h  |  2 +
- .../wireless/mediatek/mt76/mt76_connac3_mac.c | 85 +++++++++++++++++++
- .../wireless/mediatek/mt76/mt76_connac3_mac.h | 22 +++++
- .../net/wireless/mediatek/mt76/mt7925/mac.c   | 15 +++-
- 4 files changed, 122 insertions(+), 2 deletions(-)
+1. mm/page_alloc.c: net stack seems to be using it in the
+   rx part with 'struct page_frag_cache' and the main API
+   being page_frag_alloc_align().
+2. net/core/sock.c: net stack seems to be using it in the
+   tx part with 'struct page_frag' and the main API being
+   skb_page_frag_refill().
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac.h b/drivers/net/wireless/mediatek/mt76/mt76_connac.h
-index 91987bdf239d..445d0f0ab779 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac.h
-@@ -451,4 +451,6 @@ void mt76_connac2_tx_token_put(struct mt76_dev *dev);
- /* connac3 */
- void mt76_connac3_mac_decode_he_radiotap(struct sk_buff *skb, __le32 *rxv,
- 					 u8 mode);
-+void mt76_connac3_mac_decode_eht_radiotap(struct sk_buff *skb, __le32 *rxv,
-+					  u8 mode);
- #endif /* __MT76_CONNAC_H */
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac3_mac.c b/drivers/net/wireless/mediatek/mt76/mt76_connac3_mac.c
-index 73e9f283d0ae..92ad1ecf6c9d 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac3_mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac3_mac.c
-@@ -6,8 +6,11 @@
- #include "dma.h"
- 
- #define HE_BITS(f)		cpu_to_le16(IEEE80211_RADIOTAP_HE_##f)
-+#define EHT_BITS(f)		cpu_to_le32(IEEE80211_RADIOTAP_EHT_##f)
- #define HE_PREP(f, m, v)	le16_encode_bits(le32_get_bits(v, MT_CRXV_HE_##m),\
- 						 IEEE80211_RADIOTAP_HE_##f)
-+#define EHT_PREP(f, m, v)	le32_encode_bits(le32_get_bits(v, MT_CRXV_EHT_##m),\
-+						 IEEE80211_RADIOTAP_EHT_##f)
- 
- static void
- mt76_connac3_mac_decode_he_radiotap_ru(struct mt76_rx_status *status,
-@@ -180,3 +183,85 @@ void mt76_connac3_mac_decode_he_radiotap(struct sk_buff *skb, __le32 *rxv,
- 	}
- }
- EXPORT_SYMBOL_GPL(mt76_connac3_mac_decode_he_radiotap);
-+
-+static void *
-+mt76_connac3_mac_radiotap_push_tlv(struct sk_buff *skb, u16 type, u16 len)
-+{
-+	struct ieee80211_radiotap_tlv *tlv;
-+
-+	tlv = skb_push(skb, sizeof(*tlv) + len);
-+	tlv->type = cpu_to_le16(type);
-+	tlv->len = cpu_to_le16(len);
-+	memset(tlv->data, 0, len);
-+
-+	return tlv->data;
-+}
-+
-+void mt76_connac3_mac_decode_eht_radiotap(struct sk_buff *skb, __le32 *rxv,
-+					  u8 mode)
-+{
-+	struct mt76_rx_status *status = (struct mt76_rx_status *)skb->cb;
-+	struct ieee80211_radiotap_eht_usig *usig;
-+	struct ieee80211_radiotap_eht *eht;
-+	u32 ltf_size = le32_get_bits(rxv[4], MT_CRXV_HE_LTF_SIZE) + 1;
-+	u8 bw = FIELD_GET(MT_PRXV_FRAME_MODE, le32_to_cpu(rxv[2]));
-+
-+	if (WARN_ONCE(skb_mac_header(skb) != skb->data,
-+		      "Should push tlv at the top of mac hdr"))
-+		return;
-+
-+	eht = mt76_connac3_mac_radiotap_push_tlv(skb, IEEE80211_RADIOTAP_EHT,
-+						 sizeof(*eht) + sizeof(u32));
-+	usig = mt76_connac3_mac_radiotap_push_tlv(skb, IEEE80211_RADIOTAP_EHT_USIG,
-+						  sizeof(*usig));
-+
-+	status->flag |= RX_FLAG_RADIOTAP_TLV_AT_END;
-+
-+	eht->known |= EHT_BITS(KNOWN_SPATIAL_REUSE) |
-+		      EHT_BITS(KNOWN_GI) |
-+		      EHT_BITS(KNOWN_EHT_LTF) |
-+		      EHT_BITS(KNOWN_LDPC_EXTRA_SYM_OM) |
-+		      EHT_BITS(KNOWN_PE_DISAMBIGUITY_OM) |
-+		      EHT_BITS(KNOWN_NSS_S);
-+
-+	eht->data[0] |=
-+		EHT_PREP(DATA0_SPATIAL_REUSE, SR_MASK, rxv[13]) |
-+		cpu_to_le32(FIELD_PREP(IEEE80211_RADIOTAP_EHT_DATA0_GI, status->eht.gi) |
-+			    FIELD_PREP(IEEE80211_RADIOTAP_EHT_DATA0_LTF, ltf_size)) |
-+		EHT_PREP(DATA0_PE_DISAMBIGUITY_OM, PE_DISAMBIG, rxv[5]) |
-+		EHT_PREP(DATA0_LDPC_EXTRA_SYM_OM, LDPC_EXT_SYM, rxv[4]);
-+
-+	eht->data[7] |= le32_encode_bits(status->nss, IEEE80211_RADIOTAP_EHT_DATA7_NSS_S);
-+
-+	eht->user_info[0] |=
-+		EHT_BITS(USER_INFO_MCS_KNOWN) |
-+		EHT_BITS(USER_INFO_CODING_KNOWN) |
-+		EHT_BITS(USER_INFO_NSS_KNOWN_O) |
-+		EHT_BITS(USER_INFO_BEAMFORMING_KNOWN_O) |
-+		EHT_BITS(USER_INFO_DATA_FOR_USER) |
-+		le32_encode_bits(status->rate_idx, IEEE80211_RADIOTAP_EHT_USER_INFO_MCS) |
-+		le32_encode_bits(status->nss, IEEE80211_RADIOTAP_EHT_USER_INFO_NSS_O);
-+
-+	if (le32_to_cpu(rxv[0]) & MT_PRXV_TXBF)
-+		eht->user_info[0] |= EHT_BITS(USER_INFO_BEAMFORMING_O);
-+
-+	if (le32_to_cpu(rxv[0]) & MT_PRXV_HT_AD_CODE)
-+		eht->user_info[0] |= EHT_BITS(USER_INFO_CODING);
-+
-+	if (mode == MT_PHY_TYPE_EHT_MU)
-+		eht->user_info[0] |= EHT_BITS(USER_INFO_STA_ID_KNOWN) |
-+				     EHT_PREP(USER_INFO_STA_ID, MU_AID, rxv[8]);
-+
-+	usig->common |=
-+		EHT_BITS(USIG_COMMON_PHY_VER_KNOWN) |
-+		EHT_BITS(USIG_COMMON_BW_KNOWN) |
-+		EHT_BITS(USIG_COMMON_UL_DL_KNOWN) |
-+		EHT_BITS(USIG_COMMON_BSS_COLOR_KNOWN) |
-+		EHT_BITS(USIG_COMMON_TXOP_KNOWN) |
-+		le32_encode_bits(0, IEEE80211_RADIOTAP_EHT_USIG_COMMON_PHY_VER) |
-+		le32_encode_bits(bw, IEEE80211_RADIOTAP_EHT_USIG_COMMON_BW) |
-+		EHT_PREP(USIG_COMMON_UL_DL, UPLINK, rxv[5]) |
-+		EHT_PREP(USIG_COMMON_BSS_COLOR, BSS_COLOR, rxv[9]) |
-+		EHT_PREP(USIG_COMMON_TXOP, TXOP_DUR, rxv[9]);
-+}
-+EXPORT_SYMBOL_GPL(mt76_connac3_mac_decode_eht_radiotap);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac3_mac.h b/drivers/net/wireless/mediatek/mt76/mt76_connac3_mac.h
-index 83dcd964bfd0..353e66069840 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac3_mac.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac3_mac.h
-@@ -142,6 +142,28 @@ enum {
- #define MT_CRXV_HE_RU3_L		GENMASK(31, 27)
- #define MT_CRXV_HE_RU3_H		GENMASK(3, 0)
- 
-+#define MT_CRXV_EHT_NUM_USER		GENMASK(26, 20)
-+#define MT_CRXV_EHT_LTF_SIZE		GENMASK(28, 27)
-+#define MT_CRXV_EHT_LDPC_EXT_SYM	BIT(30)
-+#define MT_CRXV_EHT_PE_DISAMBIG		BIT(1)
-+#define MT_CRXV_EHT_UPLINK		BIT(2)
-+#define MT_CRXV_EHT_MU_AID		GENMASK(27, 17)
-+#define MT_CRXV_EHT_BEAM_CHNG		BIT(29)
-+#define MT_CRXV_EHT_DOPPLER		BIT(0)
-+#define MT_CRXV_EHT_BSS_COLOR		GENMASK(15, 10)
-+#define MT_CRXV_EHT_TXOP_DUR		GENMASK(23, 17)
-+#define MT_CRXV_EHT_SR_MASK		GENMASK(11, 8)
-+#define MT_CRXV_EHT_SR1_MASK		GENMASK(15, 12)
-+#define MT_CRXV_EHT_SR2_MASK		GENMASK(19, 16)
-+#define MT_CRXV_EHT_SR3_MASK		GENMASK(23, 20)
-+#define MT_CRXV_EHT_RU0			GENMASK(8, 0)
-+#define MT_CRXV_EHT_RU1			GENMASK(17, 9)
-+#define MT_CRXV_EHT_RU2			GENMASK(26, 18)
-+#define MT_CRXV_EHT_RU3_L		GENMASK(31, 27)
-+#define MT_CRXV_EHT_RU3_H		GENMASK(3, 0)
-+#define MT_CRXV_EHT_SIG_MCS		GENMASK(19, 18)
-+#define MT_CRXV_EHT_LTF_SYM		GENMASK(22, 20)
-+
- enum tx_header_format {
- 	MT_HDR_FORMAT_802_3,
- 	MT_HDR_FORMAT_CMD,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mac.c b/drivers/net/wireless/mediatek/mt76/mt7925/mac.c
-index 1b9fbd9a140d..c2460ef4993d 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mac.c
-@@ -590,14 +590,25 @@ mt7925_mac_fill_rx(struct mt792x_dev *dev, struct sk_buff *skb)
- 			seq_ctrl = le16_to_cpu(hdr->seq_ctrl);
- 			qos_ctl = *ieee80211_get_qos_ctl(hdr);
- 		}
-+		skb_set_mac_header(skb, (unsigned char *)hdr - skb->data);
- 	} else {
- 		status->flag |= RX_FLAG_8023;
- 	}
- 
- 	mt792x_mac_assoc_rssi(dev, skb);
- 
--	if (rxv && mode >= MT_PHY_TYPE_HE_SU && !(status->flag & RX_FLAG_8023))
--		mt76_connac3_mac_decode_he_radiotap(skb, rxv, mode);
-+	if (rxv && !(status->flag & RX_FLAG_8023)) {
-+		switch (status->encoding) {
-+		case RX_ENC_EHT:
-+			mt76_connac3_mac_decode_eht_radiotap(skb, rxv, mode);
-+			break;
-+		case RX_ENC_HE:
-+			mt76_connac3_mac_decode_he_radiotap(skb, rxv, mode);
-+			break;
-+		default:
-+			break;
-+		}
-+	}
- 
- 	if (!status->wcid || !ieee80211_is_data_qos(fc))
- 		return 0;
+This patchset tries to unfiy the page frag implementation
+by replacing page_frag with page_frag_cache for sk_page_frag()
+first. net_high_order_alloc_disable_key for the implementation
+in net/core/sock.c doesn't seems matter that much now have
+have pcp support for high-order pages in commit 44042b449872
+("mm/page_alloc: allow high-order pages to be stored on the
+per-cpu lists").
+
+As the related change is mostly related to networking, so
+targeting the net-next. And will try to replace the rest
+of page_frag in the follow patchset.
+
+After this patchset:
+1. Unify the page frag implementation by taking the best out of
+   two the existing implementations: we are able to save some space
+   for the 'page_frag_cache' API user, and avoid 'get_page()' for
+   the old 'page_frag' API user.
+2. Future bugfix and performance can be done in one place, hence
+   improving maintainability of page_frag's implementation.
+
+Performance validation:
+1. Using micro-benchmark ko added in patch 1, we have about 3.2%
+   performance boot for the 'page_frag_cache' after this patchset.
+
+2. Use the below netcat test case, we have about 1.9% performance
+   boot for repalcing 'page_frag' with 'page_frag_cache' after this
+   patchset.
+   server: nc -l -k 1234 > /dev/null
+   client: perf stat -r 30 -- head -c 51200000000 /dev/zero | nc -N 127.0.0.1 1234
+
+
+In order to avoid performance noise as much as possible, the testing
+is done in system without any other laod and have enough iterations to
+prove the data is stable enogh, complete log for testing is below:
+
+*After* this patchset:
+ insmod ./page_frag_test.ko nr_test=99999999
+ Performance counter stats for 'insmod ./page_frag_test.ko nr_test=99999999' (30 runs):
+
+             40.09 msec task-clock                       #    0.001 CPUs utilized               ( +-  4.60% )
+                 5      context-switches                 #  124.722 /sec                        ( +-  3.45% )
+                 1      cpu-migrations                   #   24.944 /sec                        ( +- 12.62% )
+               197      page-faults                      #    4.914 K/sec                       ( +-  0.11% )
+          10221721      cycles                           #    0.255 GHz                         ( +-  9.05% )  (27.73%)
+           2459009      stalled-cycles-frontend          #   24.06% frontend cycles idle        ( +- 10.80% )  (29.05%)
+           5148423      stalled-cycles-backend           #   50.37% backend cycles idle         ( +-  7.30% )  (82.47%)
+           5889929      instructions                     #    0.58  insn per cycle
+                                                  #    0.87  stalled cycles per insn     ( +- 11.85% )  (87.75%)
+           1276667      branches                         #   31.846 M/sec                       ( +- 11.48% )  (89.80%)
+             50631      branch-misses                    #    3.97% of all branches             ( +-  8.72% )  (83.20%)
+
+            29.341 +- 0.300 seconds time elapsed  ( +-  1.02% )
+
+ perf stat -r 30 -- head -c 51200000000 /dev/zero | nc -N 127.0.0.1 1234
+ Performance counter stats for 'head -c 51200000000 /dev/zero' (30 runs):
+
+         107793.53 msec task-clock                       #    0.881 CPUs utilized               ( +-  0.36% )
+            380421      context-switches                 #    3.529 K/sec                       ( +-  0.32% )
+               374      cpu-migrations                   #    3.470 /sec                        ( +-  1.31% )
+                74      page-faults                      #    0.686 /sec                        ( +-  0.28% )
+       92758718093      cycles                           #    0.861 GHz                         ( +-  0.48% )  (69.47%)
+        7035559641      stalled-cycles-frontend          #    7.58% frontend cycles idle        ( +-  1.19% )  (69.65%)
+       33668082825      stalled-cycles-backend           #   36.30% backend cycles idle         ( +-  0.84% )  (70.18%)
+       52424770535      instructions                     #    0.57  insn per cycle
+                                                  #    0.64  stalled cycles per insn     ( +-  0.26% )  (61.93%)
+       13240874953      branches                         #  122.836 M/sec                       ( +-  0.40% )  (60.36%)
+         208178019      branch-misses                    #    1.57% of all branches             ( +-  0.65% )  (68.42%)
+
+           122.294 +- 0.402 seconds time elapsed  ( +-  0.33% )
+
+
+*Before* this patchset:
+ insmod ./page_frag_test.ko nr_test=99999999
+ Performance counter stats for 'insmod ./page_frag_test.ko nr_test=99999999' (30 runs):
+
+             39.12 msec task-clock                       #    0.001 CPUs utilized               ( +-  4.51% )
+                 5      context-switches                 #  127.805 /sec                        ( +-  3.76% )
+                 1      cpu-migrations                   #   25.561 /sec                        ( +- 15.52% )
+               197      page-faults                      #    5.035 K/sec                       ( +-  0.10% )
+          10689913      cycles                           #    0.273 GHz                         ( +-  9.46% )  (72.72%)
+           2821237      stalled-cycles-frontend          #   26.39% frontend cycles idle        ( +- 12.04% )  (76.23%)
+           5035549      stalled-cycles-backend           #   47.11% backend cycles idle         ( +-  9.69% )  (49.40%)
+           5439395      instructions                     #    0.51  insn per cycle
+                                                  #    0.93  stalled cycles per insn     ( +- 11.58% )  (51.45%)
+           1274419      branches                         #   32.575 M/sec                       ( +- 12.69% )  (77.88%)
+             49562      branch-misses                    #    3.89% of all branches             ( +-  9.91% )  (72.32%)
+
+            30.309 +- 0.305 seconds time elapsed  ( +-  1.01% )
+
+ perf stat -r 30 -- head -c 51200000000 /dev/zero | nc -N 127.0.0.1 1234
+ Performance counter stats for 'head -c 51200000000 /dev/zero' (30 runs):
+
+         110198.93 msec task-clock                       #    0.884 CPUs utilized               ( +-  0.83% )
+            387680      context-switches                 #    3.518 K/sec                       ( +-  0.85% )
+               366      cpu-migrations                   #    3.321 /sec                        ( +- 11.38% )
+                74      page-faults                      #    0.672 /sec                        ( +-  0.27% )
+       92978008685      cycles                           #    0.844 GHz                         ( +-  0.49% )  (64.93%)
+        7339938950      stalled-cycles-frontend          #    7.89% frontend cycles idle        ( +-  1.48% )  (67.15%)
+       34783792329      stalled-cycles-backend           #   37.41% backend cycles idle         ( +-  1.52% )  (68.96%)
+       51704527141      instructions                     #    0.56  insn per cycle
+                                                  #    0.67  stalled cycles per insn     ( +-  0.37% )  (68.28%)
+       12865503633      branches                         #  116.748 M/sec                       ( +-  0.88% )  (66.11%)
+         212414695      branch-misses                    #    1.65% of all branches             ( +-  0.45% )  (64.57%)
+
+           124.664 +- 0.990 seconds time elapsed  ( +-  0.79% )
+
+
+Note, ipv4-udp, ipv6-tcp and ipv6-udp is also tested with the below script:
+nc -u -l -k 1234 > /dev/null
+perf stat -r 4 -- head -c 51200000000 /dev/zero | nc -N -u 127.0.0.1 1234
+
+nc -l6 -k 1234 > /dev/null
+perf stat -r 4 -- head -c 51200000000 /dev/zero | nc -N ::1 1234
+
+nc -l6 -k -u 1234 > /dev/null
+perf stat -r 4 -- head -c 51200000000 /dev/zero | nc -u -N ::1 1234
+
+
+Change log:
+V2:
+   1. reorder test module to patch 1.
+   2. split doc and maintainer updating to two patches.
+   3. refactor the page_frag before moving.
+   4. fix a type and 'static' warning in test module.
+   5. add a patch for xtensa arch to enable using get_order() in
+      BUILD_BUG_ON().
+   6. Add test case and performance data for the socket code.
+
+Yunsheng Lin (15):
+  mm: page_frag: add a test module for page_frag
+  xtensa: remove the get_order() implementation
+  mm: page_frag: use free_unref_page() to free page fragment
+  mm: move the page fragment allocator from page_alloc into its own file
+  mm: page_frag: use initial zero offset for page_frag_alloc_align()
+  mm: page_frag: change page_frag_alloc_* API to accept align param
+  mm: page_frag: add '_va' suffix to page_frag API
+  mm: page_frag: add two inline helper for page_frag API
+  mm: page_frag: reuse MSB of 'size' field for pfmemalloc
+  mm: page_frag: reuse existing bit field of 'va' for pagecnt_bias
+  net: introduce the skb_copy_to_va_nocache() helper
+  mm: page_frag: introduce prepare/commit API for page_frag
+  net: replace page_frag with page_frag_cache
+  mm: page_frag: update documentation for page_frag
+  mm: page_frag: add a entry in MAINTAINERS for page_frag
+
+ Documentation/mm/page_frags.rst               | 148 ++++++-
+ MAINTAINERS                                   |  11 +
+ arch/xtensa/include/asm/page.h                |  18 -
+ .../chelsio/inline_crypto/chtls/chtls.h       |   3 -
+ .../chelsio/inline_crypto/chtls/chtls_io.c    | 101 ++---
+ .../chelsio/inline_crypto/chtls/chtls_main.c  |   3 -
+ drivers/net/ethernet/google/gve/gve_rx.c      |   4 +-
+ drivers/net/ethernet/intel/ice/ice_txrx.c     |   2 +-
+ drivers/net/ethernet/intel/ice/ice_txrx.h     |   2 +-
+ drivers/net/ethernet/intel/ice/ice_txrx_lib.c |   2 +-
+ .../net/ethernet/intel/ixgbevf/ixgbevf_main.c |   4 +-
+ .../marvell/octeontx2/nic/otx2_common.c       |   2 +-
+ drivers/net/ethernet/mediatek/mtk_wed_wo.c    |   4 +-
+ drivers/net/tun.c                             |  34 +-
+ drivers/nvme/host/tcp.c                       |   8 +-
+ drivers/nvme/target/tcp.c                     |  22 +-
+ drivers/vhost/net.c                           |   6 +-
+ include/linux/gfp.h                           |  22 --
+ include/linux/mm_types.h                      |  18 -
+ include/linux/page_frag_cache.h               | 344 +++++++++++++++++
+ include/linux/sched.h                         |   4 +-
+ include/linux/skbuff.h                        |  15 +-
+ include/net/sock.h                            |  29 +-
+ kernel/bpf/cpumap.c                           |   2 +-
+ kernel/exit.c                                 |   3 +-
+ kernel/fork.c                                 |   2 +-
+ mm/Kconfig.debug                              |   8 +
+ mm/Makefile                                   |   2 +
+ mm/page_alloc.c                               | 136 -------
+ mm/page_frag_cache.c                          | 154 ++++++++
+ mm/page_frag_test.c                           | 365 ++++++++++++++++++
+ net/core/skbuff.c                             |  57 +--
+ net/core/skmsg.c                              |  22 +-
+ net/core/sock.c                               |  46 ++-
+ net/core/xdp.c                                |   2 +-
+ net/ipv4/ip_output.c                          |  35 +-
+ net/ipv4/tcp.c                                |  35 +-
+ net/ipv4/tcp_output.c                         |  28 +-
+ net/ipv6/ip6_output.c                         |  35 +-
+ net/kcm/kcmsock.c                             |  30 +-
+ net/mptcp/protocol.c                          |  74 ++--
+ net/rxrpc/txbuf.c                             |  16 +-
+ net/sunrpc/svcsock.c                          |   6 +-
+ net/tls/tls_device.c                          | 139 ++++---
+ 44 files changed, 1450 insertions(+), 553 deletions(-)
+ create mode 100644 include/linux/page_frag_cache.h
+ create mode 100644 mm/page_frag_cache.c
+ create mode 100644 mm/page_frag_test.c
+
 -- 
-2.18.0
+2.33.0
 
 
