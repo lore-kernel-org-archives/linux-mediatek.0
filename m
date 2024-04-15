@@ -4,68 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3115EC04FFF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Apr 2024 09:37:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D175C4345F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Apr 2024 09:47:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
+	References:In-Reply-To:Cc:To:From:MIME-Version:Content-Transfer-Encoding:
+	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0lUhP0vswAWTieszOWImMLubCkaH2/SGNSiA0KIapCE=; b=cpo1fGDoMixjcjkK/QyVKv0Q3z
-	NUhMv33vpVQqDhMX0xMnn7A5GKHBeVYcdkIZILif7NlRxHCYzb+bOG4khp7Go1SrzgKA51/BppY6B
-	xasOXupmNka151Jr8VxoF0PTjWUrXUIZSablrXO7dvVqwWXVYTlKPI1CvfPaP4HHiFI9kIXE1j+U/
-	NuWyZmCCzqLBnQXza1L7cfs4Qv+SS4E8/68b7mgtdRaPpLstZnt+lTxua3Hz0SvNaa+OIOr6QxVG8
-	7IYJbIpfcyVq6S+z7vnt35JFbUIUAfwr/H0SpmtYk+Y+c2h5//6apQxY5VB6KrwGzlj9cBMIc67/M
-	1Lu0Tv1w==;
+	bh=hcYon+bsi2rv75RZmXupzw7A7IxgZpAqc9+iMJGdTsY=; b=kB1AnecQdmXAdL0d8sjJo57BFH
+	Dx3e/8wPhHVJmEHeISaCJYl88joqU9aAwfEGmmWHhq3dJ/xaN2KV3Zt7pLWaAumVXnId9XIez0y+b
+	8WlETJDudxdz6oNcP7efIMpPtmZkbQViNQF0BrSuDjLfyCGNErlkv4XOBhZ+J7PJ0yr6IEPX756rZ
+	/+piHQsnwp0ak5K6mtyKgtYHOfqXACfALcq1GVHonclIxCQqJg+/Zgb9NOlrvHyLOn4IAa0s9mVf5
+	RX8W9h8o32a50piiVs7M82FbLc+5xY6i0IO+HzKX/ydCMpzxfBVcnc35jPfGpI+MiJRq70qLjpqEd
+	4/ZT05dw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwIm7-00000007jLu-3aF2;
-	Mon, 15 Apr 2024 09:37:19 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1rwIvw-00000007kxy-0zBo;
+	Mon, 15 Apr 2024 09:47:28 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwIm1-00000007jI5-3QP9;
-	Mon, 15 Apr 2024 09:37:15 +0000
+	id 1rwIvs-00000007kwM-02pg;
+	Mon, 15 Apr 2024 09:47:25 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 33B1960B4F;
-	Mon, 15 Apr 2024 09:37:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 592E0C32781;
-	Mon, 15 Apr 2024 09:37:12 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id BA1CCCE0AF9;
+	Mon, 15 Apr 2024 09:47:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B8B9EC113CC;
+	Mon, 15 Apr 2024 09:47:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1713173832;
-	bh=zC/gGj3VI8C9hFSEvF7iLDAhNJrC3T7auxiRiw+ez84=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=IoGVNHr+owcpQDH3Q0FUhRdHbCJQHT7K7NEeF6di/KE1weI8pEM+fN5y5jj9sA8or
-	 ljsLhk4YUoKfhIHLjzjcAvRXnK0GaZtYHNrEB7O67U2AZSy1WAunnJHDChOIxGNa3q
-	 Rg9nsRR39fcQKCx0PHUDHEXmYk3RC6ZNURBnxO0eR3ySB1JKDgxrxZz5XESTxx0Lqx
-	 sPg6YID2mU4FP82L0hJroJKK/27uHpLbS8ZBnvWFA1Gb/u6ct1/v/3h4aTFJZPp5HG
-	 KmoWLqt8nhMYrbJYWQnFjS2R0E8BrV2wk39J+Z/YDRDQFMbKiYbefCzVgnchCAxq+K
-	 5pOY3mThgGGpw==
-Date: Mon, 15 Apr 2024 11:37:10 +0200
-From: Maxime Ripard <mripard@kernel.org>
-To: Shawn Sung <shawn.sung@mediatek.com>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, 
-	Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, Sumit Semwal <sumit.semwal@linaro.org>, 
-	Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org, 
-	"Jason-JH.Lin" <jason-jh.lin@mediatek.com>
-Subject: Re: [PATCH v5 2/9] drm/mediatek: Add secure buffer control flow to
- mtk_drm_gem
-Message-ID: <20240415-guppy-of-perpetual-current-3a7974@houat>
-References: <20240403102701.369-1-shawn.sung@mediatek.com>
- <20240403102701.369-3-shawn.sung@mediatek.com>
+	s=k20201202; t=1713174440;
+	bh=1/IM4SD6RQjMA7f0keRrx2D+uJepsW1+KqOkX5Hx4qM=;
+	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
+	b=Syr37wLU2whncM8An2JhKAUTx3aGf/KU3btiPMYO3UcFq6l1XJm+Uk39ezKCvLhwh
+	 xKn9BN/BrJ5+o9DbpMnOm0xsKz9F6mRJEqf3hL6kkYp2fFfKVblDQCbyNcxD9RjebT
+	 +PORt+an85D9ovE0k0axBBF4M/B+u1e8B7bnMCcDhwfmhVjFBQsXWNbMbmW8LPaUIl
+	 dQYAzphX91g2OHw/LSvgWsXdCM5e6lmW1LzOATB9iFd/AcYnpgfNzn3XG+kIYUNk6V
+	 audGB83kKKy+MNtFvIHmVx+EohA2o/P4CepycjnxDJku6RKmo2937w8HAWP3O7FOmH
+	 pK1wF1lUnt+Fw==
+Date: Mon, 15 Apr 2024 04:47:18 -0500
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="j4ten6lzqjc6nid4"
-Content-Disposition: inline
-In-Reply-To: <20240403102701.369-3-shawn.sung@mediatek.com>
+From: Rob Herring <robh@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: broonie@kernel.org, alim.akhtar@samsung.com, 
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ peter.wang@mediatek.com, conor+dt@kernel.org, avri.altman@wdc.com, 
+ matthias.bgg@gmail.com, stanley.chu@mediatek.com, 
+ linux-arm-kernel@lists.infradead.org, linux-scsi@vger.kernel.org, 
+ bvanassche@acm.org, martin.petersen@oracle.com, lgirdwood@gmail.com, 
+ chu.stanley@gmail.com, devicetree@vger.kernel.org, jejb@linux.ibm.com, 
+ krzysztof.kozlowski+dt@linaro.org
+In-Reply-To: <20240415075406.47543-6-angelogioacchino.delregno@collabora.com>
+References: <20240415075406.47543-1-angelogioacchino.delregno@collabora.com>
+ <20240415075406.47543-6-angelogioacchino.delregno@collabora.com>
+Message-Id: <171317443702.1944933.10779110163028215758.robh@kernel.org>
+Subject: Re: [PATCH v3 5/8] dt-bindings: ufs: mediatek,ufs: Document MT8192
+ compatible with MT8183
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240415_023714_131638_2700B7C1 
-X-CRM114-Status: GOOD (  25.82  )
+X-CRM114-CacheID: sfid-20240415_024724_435109_272EFD9F 
+X-CRM114-Status: GOOD (  12.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,169 +79,50 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---j4ten6lzqjc6nid4
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Wed, Apr 03, 2024 at 06:26:54PM +0800, Shawn Sung wrote:
-> From: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>
->=20
-> Add secure buffer control flow to mtk_drm_gem.
->=20
-> When user space takes DRM_MTK_GEM_CREATE_ENCRYPTED flag and size
-> to create a mtk_drm_gem object, mtk_drm_gem will find a matched size
-> dma buffer from secure dma-heap and bind it to mtk_drm_gem object.
->=20
-> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-> Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
+On Mon, 15 Apr 2024 09:54:03 +0200, AngeloGioacchino Del Regno wrote:
+> The MT8192 UFS controller is compatible with the MT8183 one:
+> document this by allowing to assign both compatible strings
+> "mediatek,mt8192-ufshci", "mediatek,mt8183-ufshci" to the UFSHCI node.
+> 
+> Moreover, since no MT8192 devicetree ever declared any UFSHCI node,
+> disallow specifying only the MT8192 compatible.
+> 
+> In preparation for adding MT8195 to the mix, the MT8192 compatible
+> was added as enum instead of const.
+> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
->  drivers/gpu/drm/mediatek/mtk_gem.c | 85 +++++++++++++++++++++++++++++-
->  drivers/gpu/drm/mediatek/mtk_gem.h |  4 ++
->  2 files changed, 88 insertions(+), 1 deletion(-)
->=20
-> diff --git a/drivers/gpu/drm/mediatek/mtk_gem.c b/drivers/gpu/drm/mediate=
-k/mtk_gem.c
-> index e59e0727717b7..ec34d02c14377 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_gem.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_gem.c
-> @@ -4,6 +4,8 @@
->   */
-> =20
->  #include <linux/dma-buf.h>
-> +#include <linux/dma-heap.h>
-> +#include <uapi/linux/dma-heap.h>
->  #include <drm/mediatek_drm.h>
-> =20
->  #include <drm/drm.h>
-> @@ -102,6 +104,81 @@ struct mtk_gem_obj *mtk_gem_create(struct drm_device=
- *dev,
->  	return ERR_PTR(ret);
->  }
-> =20
-> +struct mtk_gem_obj *mtk_gem_create_from_heap(struct drm_device *dev,
-> +					     const char *heap, size_t size)
-> +{
-> +	struct mtk_drm_private *priv =3D dev->dev_private;
-> +	struct mtk_gem_obj *mtk_gem;
-> +	struct drm_gem_object *obj;
-> +	struct dma_heap *dma_heap;
-> +	struct dma_buf *dma_buf;
-> +	struct dma_buf_attachment *attach;
-> +	struct sg_table *sgt;
-> +	struct iosys_map map =3D {};
-> +	int ret;
-> +
-> +	mtk_gem =3D mtk_gem_init(dev, size);
-> +	if (IS_ERR(mtk_gem))
-> +		return ERR_CAST(mtk_gem);
-> +
-> +	obj =3D &mtk_gem->base;
-> +
-> +	dma_heap =3D dma_heap_find(heap);
-> +	if (!dma_heap) {
-> +		DRM_ERROR("heap find fail\n");
-> +		goto err_gem_free;
-> +	}
-> +	dma_buf =3D dma_heap_buffer_alloc(dma_heap, size,
-> +					O_RDWR | O_CLOEXEC, DMA_HEAP_VALID_HEAP_FLAGS);
-> +	if (IS_ERR(dma_buf)) {
-> +		DRM_ERROR("buffer alloc fail\n");
-> +		dma_heap_put(dma_heap);
-> +		goto err_gem_free;
-> +	}
-> +	dma_heap_put(dma_heap);
-> +
-> +	attach =3D dma_buf_attach(dma_buf, priv->dma_dev);
-> +	if (IS_ERR(attach)) {
-> +		DRM_ERROR("attach fail, return\n");
-> +		dma_buf_put(dma_buf);
-> +		goto err_gem_free;
-> +	}
-> +
-> +	sgt =3D dma_buf_map_attachment(attach, DMA_BIDIRECTIONAL);
-> +	if (IS_ERR(sgt)) {
-> +		DRM_ERROR("map failed, detach and return\n");
-> +		dma_buf_detach(dma_buf, attach);
-> +		dma_buf_put(dma_buf);
-> +		goto err_gem_free;
-> +	}
-> +	obj->import_attach =3D attach;
-> +	mtk_gem->dma_addr =3D sg_dma_address(sgt->sgl);
-> +	mtk_gem->sg =3D sgt;
-> +	mtk_gem->size =3D dma_buf->size;
-> +
-> +	if (!strcmp(heap, "mtk_svp") || !strcmp(heap, "mtk_svp_cma")) {
-> +		/* secure buffer can not be mapped */
-> +		mtk_gem->secure =3D true;
-> +	} else {
-> +		ret =3D dma_buf_vmap(dma_buf, &map);
-> +		mtk_gem->kvaddr =3D map.vaddr;
-> +		if (ret) {
-> +			DRM_ERROR("map failed, ret=3D%d\n", ret);
-> +			dma_buf_unmap_attachment(attach, sgt, DMA_BIDIRECTIONAL);
-> +			dma_buf_detach(dma_buf, attach);
-> +			dma_buf_put(dma_buf);
-> +			mtk_gem->kvaddr =3D NULL;
-> +		}
-> +	}
-> +
-> +	return mtk_gem;
-> +
-> +err_gem_free:
-> +	drm_gem_object_release(obj);
-> +	kfree(mtk_gem);
-> +	return ERR_PTR(-ENOMEM);
-> +}
-> +
->  void mtk_gem_free_object(struct drm_gem_object *obj)
->  {
->  	struct mtk_gem_obj *mtk_gem =3D to_mtk_gem_obj(obj);
-> @@ -229,7 +306,9 @@ struct drm_gem_object *mtk_gem_prime_import_sg_table(=
-struct drm_device *dev,
->  	if (IS_ERR(mtk_gem))
->  		return ERR_CAST(mtk_gem);
-> =20
-> +	mtk_gem->secure =3D !sg_page(sg->sgl);
->  	mtk_gem->dma_addr =3D sg_dma_address(sg->sgl);
-> +	mtk_gem->size =3D attach->dmabuf->size;
->  	mtk_gem->sg =3D sg;
-> =20
->  	return &mtk_gem->base;
-> @@ -304,7 +383,11 @@ int mtk_gem_create_ioctl(struct drm_device *dev, voi=
-d *data,
->  	struct drm_mtk_gem_create *args =3D data;
->  	int ret;
-> =20
-> -	mtk_gem =3D mtk_gem_create(dev, args->size, false);
-> +	if (args->flags & DRM_MTK_GEM_CREATE_ENCRYPTED)
-> +		mtk_gem =3D mtk_gem_create_from_heap(dev, "mtk_svp_cma", args->size);
+>  Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml | 7 ++++---
+>  1 file changed, 4 insertions(+), 3 deletions(-)
+> 
 
-That heap doesn't exist upstream either. Also, I'm wondering if it's the
-right solution there.
+My bot found errors running 'make dt_binding_check' on your patch:
 
-=46rom what I can tell, you want to allow to create encrypted buffers from
-the TEE. Why do we need this as a DRM ioctl at all? A heap seems like
-the perfect solution to do so, and then you just have to import it into
-DRM.
+yamllint warnings/errors:
 
-I'm also not entirely sure that not having a SG list is enough to
-consider the buffer secure. Wouldn't a buffer allocated without a kernel
-mapping also be in that situation?
+dtschema/dtc warnings/errors:
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/ufs/mediatek,ufs.example.dtb: ufs@ff3c0000: compatible:0: 'mediatek,mt8183-ufshci' is not one of ['mediatek,mt8192-ufshci']
+	from schema $id: http://devicetree.org/schemas/ufs/mediatek,ufs.yaml#
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/ufs/mediatek,ufs.example.dtb: ufs@ff3c0000: compatible: ['mediatek,mt8183-ufshci'] is too short
+	from schema $id: http://devicetree.org/schemas/ufs/mediatek,ufs.yaml#
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/ufs/mediatek,ufs.example.dtb: ufs@ff3c0000: Unevaluated properties are not allowed ('compatible' was unexpected)
+	from schema $id: http://devicetree.org/schemas/ufs/mediatek,ufs.yaml#
 
-Maxime
+doc reference errors (make refcheckdocs):
 
---j4ten6lzqjc6nid4
-Content-Type: application/pgp-signature; name="signature.asc"
+See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20240415075406.47543-6-angelogioacchino.delregno@collabora.com
 
------BEGIN PGP SIGNATURE-----
+The base for the series is generally the latest rc1. A different dependency
+should be noted in *this* patch.
 
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZhz1RQAKCRAnX84Zoj2+
-dlI4AYDxql2+g9gUiJu1Qw1gZ6WJRkNn2Ht6tGhwLrXg9Be1L85EyFAghYVXZuKJ
-/NWOwAUBgIyk2hnBIXawQB3gcc6CR27FFeBUTC0hXbNZeCOUedEgB3w2Qp5X8HG6
-XSL76qoBBA==
-=Wv76
------END PGP SIGNATURE-----
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
 
---j4ten6lzqjc6nid4--
+pip3 install dtschema --upgrade
+
+Please check and re-submit after running the above command yourself. Note
+that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+your schema. However, it must be unset to test all examples with your schema.
+
 
