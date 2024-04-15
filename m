@@ -4,135 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A51EC04FF9
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Apr 2024 21:39:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2464C4345F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Apr 2024 23:05:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VEqgJ/h+V7v3psTPqF1gMgoMeOBIzIVe/6Q3RDMypvg=; b=D8pNDAzOE6yx0aO22XPlRfv9rD
-	tErLhoVEJSmhd2wCjXT4ItzJDinm++jHIEMT6mp0UG0euwHf1DN5A7KvIqJm7bIyPEijxWQy8cIbI
-	y7rtDOlDhPlgaCyqZ2GKSbKHUBm6TZ8YIztv8h9gO80/Z5iH4hGU75NuggohEdip1AIW5C9VdLu9U
-	agDFXmyKsaNUiVMCwJooEkM81gE+WnDEuLXA0WcpKUHJth132YObLMxJfp8f5PZFZJ6ltOPZFBXJG
-	FGYc2lG5IuGy9xvgqlaJJbpMUV9thC81Y2a2fldPB30ZxevGf8rXEbOH4mNeoKrqVwO3S5MMU6Vq9
-	LkpvqKeg==;
+	bh=R6qNAnRQfWqCJIvUbkBu3BnOJ17o/EqxMEF9ruY9YHo=; b=Fy80X00mcHRBVV1A+3e7glA/pR
+	nTWfEYTmpO6qTD5mpZGkFfnOVMgC5pGysdBmNaoxDo7um3emEe1qLnssouD4KAIQHRniAj4rhb/9r
+	rbBQqYgYlzBt8YMAClL52p+wGWmHgPVsM0Rq+97ALDjt8rNzdGfU2dKaUKr+jk1y3Zzd42bIVCxu3
+	nh4NLWcbMzqqinnFc3mIFpQ4+T5NFCFfooxITbrOtAcWMyuuON2Lof5n5AUL8E50q5fLnrwaSffZ7
+	apewOdYAJpi92D9tHX/TM+RLU2b3iuepHEKOzpQ+f2WDVc9lFvOMwucw55eQ52qoucXMzAofZwDS8
+	sJWU8vdA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwU2r-00000009zP1-221S;
-	Mon, 15 Apr 2024 21:39:21 +0000
-Received: from wflow7-smtp.messagingengine.com ([64.147.123.142])
+	id 1rwVOM-0000000A8Cq-1Bhm;
+	Mon, 15 Apr 2024 23:05:38 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwU2V-00000009z72-4Bcc;
-	Mon, 15 Apr 2024 21:39:02 +0000
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
-	by mailflow.west.internal (Postfix) with ESMTP id 971642CC0538;
-	Mon, 15 Apr 2024 17:38:51 -0400 (EDT)
-Received: from mailfrontend2 ([10.202.2.163])
-  by compute4.internal (MEProxy); Mon, 15 Apr 2024 17:38:54 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ragnatech.se; h=
-	cc:cc:content-transfer-encoding:content-type:content-type:date
-	:date:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:subject:subject:to:to; s=fm1; t=1713217131;
-	 x=1713220731; bh=VEqgJ/h+V7v3psTPqF1gMgoMeOBIzIVe/6Q3RDMypvg=; b=
-	rYfFLbV8IA66mlyPr4mgJw9eboPgZrLyc7uTbyNiDXOebVwnFoplsMgqBJxNPxlR
-	XB3IngAS+HlLVvhdxXgMtuBc8scaN4bbEzBL9n8jeMTkSNGjZ4kzMmRHFFMyl8IX
-	x0OqSqYWcACEhm/rtjBHXFlj+7x7HLxbUhPQRrEif28hdQIEHARBuJxZYmtJpUs4
-	Lum2FW22u6TwYOCeYTCEi+pT0YR+UEZ054oSp8QkVfalXViffQRDfBXgB1k3Lvuq
-	EnT9ERnuQy9SgfzB6lkvUmSKVnkQYy7ZZMOI5asalXNvBIe5GzMwfHCHdoH2ySAZ
-	5Jvu19U3djr3op/JO7NCKQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:content-type:date:date:feedback-id:feedback-id
-	:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:subject:subject:to:to:x-me-proxy:x-me-proxy
-	:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=1713217131; x=
-	1713220731; bh=VEqgJ/h+V7v3psTPqF1gMgoMeOBIzIVe/6Q3RDMypvg=; b=r
-	0Ip3XZ4C5SE+G4oDsyKNTbcLej/OGCO7FAvtkFLD2s2wAdMJPCjYi7Py5QigJbxF
-	JRjERZLSc+yB20J8/IDOV+/2Zggi6TduwpooKP8lkr19If1GGuKnOiX80vvrxP1t
-	URQp4B1Z6mZjeRIy9E7EDzUyqI1xpwNS+eqDth9lrMnJwVNU086oLa+gCNPn4XKU
-	7j4/NWrPyW4Vq0pyp7ozRMkAA87uXvNGewUIBndXBZnlJ6eZkA5OkHXqxSK1T7p3
-	syAdAR3wsuAiM6dO3tDkAnKvj/pgzl+tgiitJ1DmLCp2PM033uK7b9mcpkd9OkVE
-	Zb3NGns1ARzhr6omcek7w==
-X-ME-Sender: <xms:aZ4dZofuGNUKHG7JXBAUxpT-OyBPlEoGsbCHiOISb0TAmMUDHrJXfA>
-    <xme:aZ4dZqP1VGDQwMQSRNlyZhiRnwwNCTxEMedcgMiwskiC01MeKz8-cXnSz2btEs2HQ
-    9-iqoomUSuLHUCCmYE>
-X-ME-Received: <xmr:aZ4dZphggRzj_iEsoPcSb6UK0tE1wAjTZgf2RZ4fMfdy4UZgRqejVHZmq43HCRaivjtL7QsUnLDfQhnzWOZqnLHuzxoH9OM>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvledrudejfecutefuodetggdotefrodftvfcurf
-    hrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecuuegr
-    ihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjug
-    hrpeffhffvvefukfhfgggtugfgjgesthekredttddtjeenucfhrhhomheppfhikhhlrghs
-    ucfunpguvghrlhhunhguuceonhhikhhlrghsrdhsohguvghrlhhunhguodhrvghnvghsrg
-    hssehrrghgnhgrthgvtghhrdhsvgeqnecuggftrfgrthhtvghrnhepfeetleeujefhueek
-    teeftdeffedvudefjeeffeehlefgvddthfevleduvedvteegnecuffhomhgrihhnpehkvg
-    hrnhgvlhdrohhrghdpfhhrvggvuggvshhkthhophdrohhrghenucevlhhushhtvghrufhi
-    iigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehnihhklhgrshdrshhouggvrhhluh
-    hnugdorhgvnhgvshgrshesrhgrghhnrghtvggthhdrshgv
-X-ME-Proxy: <xmx:aZ4dZt8c4oAktIegemZPnEWtWH6j9uNtC2d9t-6o628fWHsDDEPDOA>
-    <xmx:aZ4dZktpDkKjPSPnebNm36J2cgcl4csyXW_Lnu3sHmkjHbGQGa6CBg>
-    <xmx:aZ4dZkHTxq6XUhmnSdupOCjLVhaU9AuXzRE3LM8hM4KkSxM2IuwWYg>
-    <xmx:aZ4dZjPq_ZwhDD1ELnZLfZ3DLUCAcP6y4-GEApY0ihJX1uSAL9kNlw>
-    <xmx:ap4dZro3vy3i6DRcytb64BEdiLeaHQT0RtAsGOO4iceoWK-1bJ4TPAAp>
-Feedback-ID: i80c9496c:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
- 15 Apr 2024 17:38:48 -0400 (EDT)
-Date: Mon, 15 Apr 2024 23:38:46 +0200
-From: Niklas =?utf-8?Q?S=C3=B6derlund?= <niklas.soderlund+renesas@ragnatech.se>
-To: Ricardo Ribalda <ribalda@chromium.org>
-Cc: Julia Lawall <Julia.Lawall@inria.fr>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Martin Tuma <martin.tuma@digiteqautomotive.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	Hugues Fruchet <hugues.fruchet@foss.st.com>,
-	Alain Volmat <alain.volmat@foss.st.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Chen-Yu Tsai <wens@csie.org>,	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Sowjanya Komatineni <skomatineni@nvidia.com>,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
+	id 1rwVOJ-0000000A8B5-0Rvh;
+	Mon, 15 Apr 2024 23:05:36 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id CD1E360EB8;
+	Mon, 15 Apr 2024 23:05:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 39EA4C113CC;
+	Mon, 15 Apr 2024 23:05:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1713222333;
+	bh=ujka/03jMUb0XAncsAq1DSp6vUMODs+NmGkGQhLYg68=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Gx6d951XUcnisiPltyGh2R86ooQuEYTrxs3fuuz33iLrsJZKIr4Yh7kIEhpgZYT0u
+	 +cscArqD1yK5tD3G0VQc+Ap7mBDtsJdrKBNrU1S3p32nkeZGHxgvSM3TImP1L3AnT+
+	 F1Nn6ThGM/Nxfr+vuJQoaLTePGQ8EfFhYr8JHlpahucJC6/h2JaGVs/KfAy6oNyMOG
+	 N+dAJk9Pas+V8JpKU1LFAZJsJJQ8Z4hWi+pQzAMfGyvrh+MkM1rVX2dbNMvB1H0UsB
+	 9dOhkk3jUFJLdhWOMw6dCldHzd9gEp8IhUOIXELJODAGnL83vI0TUDlFCajFJHVR0y
+	 /+aHDeMK9aFHg==
+Date: Mon, 15 Apr 2024 18:05:30 -0500
+From: Rob Herring <robh@kernel.org>
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	devicetree@vger.kernel.org,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Hans Verkuil <hverkuil@xs4all.nl>, Sergey Kozlov <serjk@netup.ru>,
-	Abylay Ospan <aospan@netup.ru>,
-	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	Dmitry Osipenko <digetx@gmail.com>,
-	Stanimir Varbanov <stanimir.k.varbanov@gmail.com>,
-	Vikash Garodia <quic_vgarodia@quicinc.com>,
-	Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Benjamin Mugnier <benjamin.mugnier@foss.st.com>,
-	Sylvain Petinot <sylvain.petinot@foss.st.com>,
-	Jacopo Mondi <jacopo+renesas@jmondi.org>,
-	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
-	Pavel Machek <pavel@ucw.cz>, linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org,	linux-stm32@st-md-mailman.stormreply.com,
-	linux-arm-kernel@lists.infradead.org, linux-staging@lists.linux.dev,
-	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org
-Subject: Re: [PATCH 00/35] media: Fix coccinelle warning/errors
-Message-ID: <20240415213846.GB3460978@ragnatech.se>
-References: <20240415-fix-cocci-v1-0-477afb23728b@chromium.org>
- <20240415195348.GD22954@pendragon.ideasonboard.com>
- <CANiDSCteGngbSS6CCuUxM-PQiBz0W0WfoFr2E2oH2d8qt746_A@mail.gmail.com>
- <20240415203304.GA3460978@ragnatech.se>
- <CANiDSCuR6EeR2MoSH6xtJ0G07QfJsxCb116uL8ocJnwZJSh4Dg@mail.gmail.com>
+	linux-bluetooth@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+	netdev@vger.kernel.org, Marcel Holtmann <marcel@holtmann.org>,
+	linux-arm-kernel@lists.infradead.org,
+	Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	Conor Dooley <conor+dt@kernel.org>
+Subject: Re: [PATCH v3 1/2] dt-bindings: net: bluetooth: Add MediaTek MT7921S
+ SDIO Bluetooth
+Message-ID: <171322232789.252337.16326980700188367647.robh@kernel.org>
+References: <20240412073046.1192744-1-wenst@chromium.org>
+ <20240412073046.1192744-2-wenst@chromium.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CANiDSCuR6EeR2MoSH6xtJ0G07QfJsxCb116uL8ocJnwZJSh4Dg@mail.gmail.com>
+In-Reply-To: <20240412073046.1192744-2-wenst@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240415_143900_458954_050F800B 
-X-CRM114-Status: GOOD (  31.58  )
+X-CRM114-CacheID: sfid-20240415_160535_239322_E333F40E 
+X-CRM114-Status: GOOD (  17.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -147,231 +81,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Ricardo,
 
-On 2024-04-15 23:16:55 +0200, Ricardo Ribalda wrote:
-> Hi Niklas
+On Fri, 12 Apr 2024 15:30:42 +0800, Chen-Yu Tsai wrote:
+> The MediaTek MT7921S is a WiFi/Bluetooth combo chip that works over
+> SDIO. WiFi and Bluetooth are separate SDIO functions within the chip.
+> While the Bluetooth SDIO function is fully discoverable, the chip has
+> a pin that can reset just the Bluetooth core, as opposed to the full
+> chip. This should be described in the device tree.
 > 
-> On Mon, 15 Apr 2024 at 22:33, Niklas Söderlund
-> <niklas.soderlund+renesas@ragnatech.se> wrote:
-> >
-> > Hi Ricardo,
-> >
-> > Thanks for cleaning up.
-> >
-> > On 2024-04-15 21:58:58 +0200, Ricardo Ribalda wrote:
-> > > Hi Laurent
-> > >
-> > > On Mon, 15 Apr 2024 at 21:54, Laurent Pinchart
-> > > <laurent.pinchart@ideasonboard.com> wrote:
-> > > >
-> > > > Hi Ricardo,
-> > > >
-> > > > I'm afraid I won't have time to review any of this for the time being.
-> > > > Unless you would like me to put uvcvideo reviews on hold ;-)
-> > > >
-> > > > Jokes aside, my first reaction was that this feels like a bit of a waste
-> > > > of maintainer's time :-S
-> > >
-> > > This is part of the media-ci effort.
-> > >
-> > > It is definitely not the most fun patches to do or review, but someone
-> > > has to do it :)
-> > >
-> > > The whole idea is that we want to get as little warnings as possible
-> > > from the static analysers, after this patchset we almost achieve that.
-> >
-> > I understand and I think it's a good goal to aim for zero warnings. But
-> > some of the fixes here are IMHO not helpful, for example I find this
-> > type of change counter productive.
-> >
-> > -       return ret < 0 ? ret : 0;
-> > +
-> > +       if (ret < 0)
-> > +               return ret;
-> > +       return 0;
+> Add a device tree binding for the Bluetooth SDIO function of the MT7921S
+> specifically to document the reset line. This binding is based on the MMC
+> controller binding, which specifies one device node per SDIO function.
 > 
-> I was on the edge on those ones as well...
+> Cc: Sean Wang <sean.wang@mediatek.com>
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> ---
+> Changes since v2:
+> - Expand description and commit message to clearly state that WiFi and
+>   Bluetooth are separate SDIO functions, and that each function should
+>   be a separate device node, as specified by the MMC binding.
+> - Change 'additionalProperties' to 'unevaluatedProperties'
+> - Add missing separating new line
+> - s/ot/to/
 > 
-> Maybe we can try to fix the .cocci file to ignore that pattern?
-> https://lore.kernel.org/lkml/20240415-minimax-v1-1-5feb20d66a79@chromium.org/T/#u
+> Angelo's reviewed-by was not picked up due to the above changes.
+> 
+> Changes since v1:
+> - Reworded descriptions
+> - Moved binding maintainer section before description
+> - Added missing reference to bluetooth-controller.yaml
+> - Added missing GPIO header to example
+> ---
+>  .../bluetooth/mediatek,mt7921s-bluetooth.yaml | 55 +++++++++++++++++++
+>  MAINTAINERS                                   |  1 +
+>  2 files changed, 56 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/net/bluetooth/mediatek,mt7921s-bluetooth.yaml
+> 
 
-Thanks for looking into it! I think this is a good idea.
+Reviewed-by: Rob Herring <robh@kernel.org>
 
-> 
-> Regards!
-> 
-> 
-> 
-> 
-> 
-> >
-> > Maybe it's better to disable this type of checks in the linter?
-> >
-> > >
-> > > It is only 2 trivial uvc patches, I can ask someone from my team to
-> > > review it if you want and trust them ;)
-> > >
-> > > Regards!
-> > >
-> > > >
-> > > > On Mon, Apr 15, 2024 at 07:34:17PM +0000, Ricardo Ribalda wrote:
-> > > > > After this set is applied, these are the only warnings left:
-> > > > > drivers/media/pci/ivtv/ivtv-fileops.c:223:4-10: preceding lock on line 267
-> > > > > drivers/media/pci/ivtv/ivtv-fileops.c:230:3-9: preceding lock on line 267
-> > > > > drivers/media/pci/ivtv/ivtv-fileops.c:236:4-10: preceding lock on line 267
-> > > > > drivers/media/pci/ivtv/ivtv-fileops.c:245:3-9: preceding lock on line 267
-> > > > > drivers/media/pci/ivtv/ivtv-fileops.c:251:3-9: preceding lock on line 267
-> > > > > drivers/media/pci/ivtv/ivtv-fileops.c:257:3-9: preceding lock on line 267
-> > > > > drivers/media/pci/ivtv/ivtv-fileops.c:272:3-9: preceding lock on line 267
-> > > > > drivers/media/pci/ivtv/ivtv-fileops.c:598:4-10: preceding lock on line 627
-> > > > > drivers/media/pci/ivtv/ivtv-fileops.c:598:4-10: preceding lock on line 689
-> > > > > drivers/media/pci/ivtv/ivtv-fileops.c:606:3-9: preceding lock on line 627
-> > > > > drivers/media/pci/ivtv/ivtv-fileops.c:606:3-9: preceding lock on line 689
-> > > > > drivers/media/pci/ivtv/ivtv-fileops.c:648:3-9: preceding lock on line 627
-> > > > > drivers/media/pci/ivtv/ivtv-fileops.c:648:3-9: preceding lock on line 689
-> > > > > drivers/media/pci/ivtv/ivtv-fileops.c:692:4-10: preceding lock on line 689
-> > > > > drivers/media/dvb-core/dvb_frontend.c:2897:1-7: preceding lock on line 2776
-> > > > > drivers/media/dvb-core/dvb_frontend.c:2897:1-7: preceding lock on line 2786
-> > > > > drivers/media/dvb-core/dvb_frontend.c:2897:1-7: preceding lock on line 2809
-> > > > > drivers/media/dvb-frontends/stv090x.c:799:1-7: preceding lock on line 768
-> > > > > drivers/media/usb/go7007/go7007-i2c.c:125:1-7: preceding lock on line 61
-> > > > > drivers/media/rc/imon.c:1167:1-7: preceding lock on line 1153
-> > > > > drivers/media/pci/cx18/cx18-scb.h:261:22-29: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > drivers/media/platform/qcom/venus/hfi_cmds.h:77:5-9: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > drivers/media/platform/qcom/venus/hfi_cmds.h:85:5-16: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > drivers/media/platform/qcom/venus/hfi_cmds.h:154:5-9: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > drivers/media/platform/qcom/venus/hfi_cmds.h:171:5-9: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > drivers/media/platform/qcom/venus/hfi_cmds.h:180:5-9: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > drivers/media/platform/qcom/venus/hfi_cmds.h:189:5-9: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > drivers/media/platform/qcom/venus/hfi_cmds.h:201:5-9: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > drivers/media/platform/qcom/venus/hfi_cmds.h:220:5-9: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > drivers/media/platform/qcom/venus/hfi_cmds.h:230:5-16: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > drivers/media/platform/qcom/venus/hfi_helper.h:764:5-15: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > drivers/media/platform/qcom/venus/hfi_helper.h:1008:43-60: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > drivers/media/platform/qcom/venus/hfi_helper.h:1014:36-46: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > drivers/media/platform/qcom/venus/hfi_helper.h:1041:5-15: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > drivers/media/platform/qcom/venus/hfi_helper.h:1088:39-51: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > drivers/media/platform/qcom/venus/hfi_helper.h:1093:5-22: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > drivers/media/platform/qcom/venus/hfi_helper.h:1144:4-8: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > drivers/media/platform/qcom/venus/hfi_helper.h:1239:4-8: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > drivers/media/platform/qcom/venus/hfi_helper.h:1267:5-9: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > drivers/media/platform/qcom/venus/hfi_helper.h:1272:4-13: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > drivers/media/common/siano/smscoreapi.h:619:5-13: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > drivers/media/common/siano/smscoreapi.h:669:6-13: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > drivers/media/common/siano/smscoreapi.h:1049:4-8: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > drivers/media/common/siano/smscoreapi.h:1055:4-8: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > drivers/media/dvb-frontends/mxl5xx_defs.h:171:4-8: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > drivers/media/dvb-frontends/mxl5xx_defs.h:182:4-8: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > drivers/media/platform/allegro-dvt/nal-hevc.h:102:14-22: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > drivers/media/platform/xilinx/xilinx-dma.h:100:19-22: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > drivers/staging/media/atomisp/pci/atomisp_tpg.h:30:18-22: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > >
-> > > > > CI tested:
-> > > > > https://gitlab.freedesktop.org/linux-media/media-staging/-/commit/055b5211c68e721c3a7090be5373cf44859da1a7/pipelines?ref=ribalda%2Ftest-cocci
-> > > > >
-> > > > > Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
-> > > > > ---
-> > > > > Ricardo Ribalda (35):
-> > > > >       media: pci: mgb4: Refactor struct resources
-> > > > >       media: stb0899: Remove unreacheable code
-> > > > >       media: uvcvideo: Refactor iterators
-> > > > >       media: uvcvideo: Use max() macro
-> > > > >       media: go7007: Use min and max macros
-> > > > >       media: stm32-dcmipp: Remove redundant printk
-> > > > >       media: staging: sun6i-isp: Remove redundant printk
-> > > > >       media: dvb-frontends: tda18271c2dd: Remove casting during div
-> > > > >       media: v4l: async: refactor v4l2_async_create_ancillary_links
-> > > > >       staging: media: tegra-video: Use swap macro
-> > > > >       media: s2255: Use refcount_t instead of atomic_t for num_channels
-> > > > >       media: platform: mtk-mdp3: Use refcount_t for job_count
-> > > > >       media: common: saa7146: Use min macro
-> > > > >       media: dvb-frontends: drx39xyj: Use min macro
-> > > > >       media: netup_unidvb: Use min macro
-> > > > >       media: au0828: Use min macro
-> > > > >       media: flexcop-usb: Use min macro
-> > > > >       media: gspca: cpia1: Use min macro
-> > > > >       media: stk1160: Use min macro
-> > > > >       media: tegra-vde: Refactor timeout handling
-> > > > >       media: venus: Use div64_u64
-> > > > >       media: i2c: st-mipid02: Use the correct div function
-> > > > >       media: dvb-frontends: tda10048: Use the right div
-> > > > >       media: tc358746: Use the correct div_ function
-> > > > >       media: venus: Use the correct div_ function
-> > > > >       media: venus: Refator return path
-> > > > >       media: dib0700: Refator return path
-> > > > >       media: usb: cx231xx: Refator return path
-> > > > >       media: i2c: rdacm20: Refator return path
-> > > > >       media: i2c: et8ek8: Refator return path
-> > > > >       media: cx231xx: Refator return path
-> > > > >       media: si4713: Refator return path
-> > > > >       media: ttpci: Refator return path
-> > > > >       media: hdpvr: Refator return path
-> > > > >       media: venus: Refator return path
-> > > > >
-> > > > >  drivers/media/common/saa7146/saa7146_hlp.c         |  8 +++----
-> > > > >  drivers/media/dvb-frontends/drx39xyj/drxj.c        |  9 +++-----
-> > > > >  drivers/media/dvb-frontends/stb0899_drv.c          |  5 -----
-> > > > >  drivers/media/dvb-frontends/tda10048.c             |  3 +--
-> > > > >  drivers/media/dvb-frontends/tda18271c2dd.c         |  4 ++--
-> > > > >  drivers/media/i2c/et8ek8/et8ek8_driver.c           |  4 +++-
-> > > > >  drivers/media/i2c/rdacm20.c                        |  5 ++++-
-> > > > >  drivers/media/i2c/st-mipid02.c                     |  2 +-
-> > > > >  drivers/media/i2c/tc358746.c                       |  3 +--
-> > > > >  drivers/media/pci/mgb4/mgb4_core.c                 |  4 ++--
-> > > > >  drivers/media/pci/mgb4/mgb4_regs.c                 |  2 +-
-> > > > >  drivers/media/pci/netup_unidvb/netup_unidvb_i2c.c  |  2 +-
-> > > > >  drivers/media/pci/ttpci/budget-core.c              |  5 ++++-
-> > > > >  .../media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c   | 10 ++++-----
-> > > > >  .../media/platform/mediatek/mdp3/mtk-mdp3-core.c   |  6 ++---
-> > > > >  .../media/platform/mediatek/mdp3/mtk-mdp3-core.h   |  2 +-
-> > > > >  .../media/platform/mediatek/mdp3/mtk-mdp3-m2m.c    |  6 ++---
-> > > > >  drivers/media/platform/nvidia/tegra-vde/h264.c     |  6 ++---
-> > > > >  drivers/media/platform/qcom/venus/vdec.c           | 15 +++++++------
-> > > > >  drivers/media/platform/qcom/venus/venc.c           | 19 +++++++++-------
-> > > > >  .../platform/st/stm32/stm32-dcmipp/dcmipp-core.c   |  5 +----
-> > > > >  drivers/media/radio/si4713/radio-usb-si4713.c      |  8 +++++--
-> > > > >  drivers/media/usb/au0828/au0828-video.c            |  5 +----
-> > > > >  drivers/media/usb/b2c2/flexcop-usb.c               |  5 +----
-> > > > >  drivers/media/usb/cx231xx/cx231xx-i2c.c            | 16 +++++++++----
-> > > > >  drivers/media/usb/cx231xx/cx231xx-video.c          | 10 +++++++--
-> > > > >  drivers/media/usb/dvb-usb/dib0700_core.c           |  4 +++-
-> > > > >  drivers/media/usb/go7007/go7007-fw.c               |  4 ++--
-> > > > >  drivers/media/usb/gspca/cpia1.c                    |  6 ++---
-> > > > >  drivers/media/usb/hdpvr/hdpvr-control.c            |  4 +++-
-> > > > >  drivers/media/usb/s2255/s2255drv.c                 | 20 ++++++++---------
-> > > > >  drivers/media/usb/stk1160/stk1160-video.c          | 10 ++-------
-> > > > >  drivers/media/usb/uvc/uvc_ctrl.c                   | 26 ++++++++++++----------
-> > > > >  drivers/media/v4l2-core/v4l2-async.c               |  8 +++----
-> > > > >  drivers/staging/media/sunxi/sun6i-isp/sun6i_isp.c  |  1 -
-> > > > >  drivers/staging/media/tegra-video/tegra20.c        |  9 ++------
-> > > > >  36 files changed, 132 insertions(+), 129 deletions(-)
-> > > > > ---
-> > > > > base-commit: 71b3ed53b08d87212fbbe51bdc3bf44eb8c462f8
-> > > > > change-id: 20240415-fix-cocci-2df3ef22a6f7
-> > > > >
-> > > > > Best regards,
-> > > >
-> > > > --
-> > > > Regards,
-> > > >
-> > > > Laurent Pinchart
-> > >
-> > >
-> > >
-> > > --
-> > > Ricardo Ribalda
-> >
-> > --
-> > Kind Regards,
-> > Niklas Söderlund
-> 
-> 
-> 
-> --
-> Ricardo Ribalda
-
--- 
-Kind Regards,
-Niklas Söderlund
 
