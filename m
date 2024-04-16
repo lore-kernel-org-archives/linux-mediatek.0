@@ -4,67 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD9D2C4345F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Apr 2024 15:10:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF833C04FF6
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Apr 2024 15:38:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=R8mIG+wlFBGpCQ9y2C8oUFWaNlcxAs+o+qIbY0ursuQ=; b=c5QHn0DDYLNgHeHNAPYUWkL96I
-	mTnpT4WifhrtIH+zroHaNGDlFCjtoCnM3Wa8Rihs5xMrHQGpBpzFg5ocigqA7pzfFKwnjLLYDJm7A
-	AzlZvLMUEDmGqLOEuoMNVbrR8w5LMoesAdig6UHgKH2Tu0shJ5FLQhRIfCbvOFJzuCxpH1+vvMHFr
-	LAtK0f3/aGhLIjA8qkaCgC63fO7zIqC7YTi1o9sM6SqjQHUPdS9Y1BbhnlJeOnUm1s7UmnBBCLmd1
-	vvYe9oz39Xy5SmGeMYeE5IhQIbtA0tig94vYKCgV3YJwC7Em3I3MZKcl1iopZXHjTojysuJzAuSJo
-	PKuGnV7w==;
+	bh=oAnBjazaqw3e2sgQr8VQqqfvNJ6tvmCPe4pgXOv6OvM=; b=gnAuj4Zl5L8M2+ixY319+UdtAY
+	ukelzp+pGHvrqawA99Cof/q99LugwV1WtB063bymt7qboB6+kG4eUjfsKl5BeF/teoWSq+o7a+yL8
+	aD8KagmxsGEMLHaVA5PUnS07pBh1As2amqhjzvLYTAs1UViSUsfrKLEom03SU0yD4cwLiommUf+p2
+	XoHM3SyoIiDaQ0ccjzaLUZoILoZCnIDJN501vqojgt1Q1KmLZpunhkItPQMjBEeU4qLMdiNdBb3aG
+	CCWtL2OngLBtc5NmjJGpR7YMuhfNmE6ilkPkZSCn4TdShsx3q0yArxb5KhzGyaWRwC+NzRmbkab/M
+	aqcImucg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwkSL-0000000CglT-0vwv;
-	Tue, 16 Apr 2024 15:10:45 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1rwksx-0000000CmnA-1Wwb;
+	Tue, 16 Apr 2024 15:38:15 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwkSH-0000000Cgku-3Xwz
-	for linux-mediatek@lists.infradead.org;
-	Tue, 16 Apr 2024 15:10:43 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 67883CE109C;
-	Tue, 16 Apr 2024 15:10:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 3678DC32783;
-	Tue, 16 Apr 2024 15:10:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1713280234;
-	bh=nxyADXIj7ToWnQ3DESNbTFi4qaMN9HcWjTWckTpOI+8=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=B5XETTx+jZEk3gkreJ7pC22WS1SK698FAtRVMvhgxTEZyuXJjbbwv3CQ3jGTeblWC
-	 2EX364Mqt8xlzTw9Nt4QAj0Y8U1uA8HGVGmXYYk65xTZS7pDfSSIq5b69y528blmGw
-	 LKXyA0SL0QsjJrgWBTbaSPs9HlyRcwED63rwxmtNgxASVJBQHp2VegDJECUKJfmS3S
-	 7GGXBsBfGqyjJod3s3mklhQbyGjEV3ZolqBGsOY2D6Y4tl+LZNxxc37pH8E2ktyLSK
-	 dzV/KtQjFtbba3PlwOka1t41W0UEmQwZa7uNZE8nrnDJip8sOJeGuTc5tiqhePo8MA
-	 BIk62PIjJ5T+g==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 22ED5D4F15D;
-	Tue, 16 Apr 2024 15:10:34 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1rwkst-0000000Cmkb-12iU;
+	Tue, 16 Apr 2024 15:38:12 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1713281889;
+	bh=NtlYHJ2Zc6slwfHdKI3lwZXF9IsJrotDWW+2OK00kz8=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=OVbxoN87FhZ85XmxhVfJfCoLfkIXONQYRmFa/HmTrSpFc51q9W2VYhrDoOy8C7yHk
+	 WZ/Ga3OUc+gnwMIkRs8Od1ce5m0P+spc8hqffpn92QIwdXXqoONQQxOr98P1+nkJHW
+	 Gc43nJQS16ReYVA8lr+ZUA5eMaSDnYLV8owqwWt9ZHjV9t1daioWYOEQhGQmqFOD1x
+	 1+RxGtLHvN9BhkcDWVNcmYtXYFuyTL7ceZyg3VLDJNF2eX1JmVwueClfC7wwg5qtW7
+	 Nsxq36clhSfhXEIYuwmfPeStq3sWMXrWGC3Yqh1hEybbKp6fBIdbDebKxfsaYzi8VS
+	 SB+5uZiP0iVMQ==
+Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id AA2D4378213F;
+	Tue, 16 Apr 2024 15:38:08 +0000 (UTC)
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: djakov@kernel.org
+Cc: robh@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	conor+dt@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	lgirdwood@gmail.com,
+	broonie@kernel.org,
+	keescook@chromium.org,
+	gustavoars@kernel.org,
+	henryc.chen@mediatek.com,
+	linux-pm@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	kernel@collabora.com,
+	wenst@chromium.org,
+	amergnat@baylibre.com
+Subject: [PATCH v1 1/6] dt-bindings: soc: mediatek: Add DVFSRC bindings for MT8183 and MT8195
+Date: Tue, 16 Apr 2024 17:38:00 +0200
+Message-ID: <20240416153805.431118-2-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.44.0
+In-Reply-To: <20240416153805.431118-1-angelogioacchino.delregno@collabora.com>
+References: <20240416153805.431118-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH] Bluetooth: btusb: Fix the patch for MT7920 the affected to
- MT7921
-From: patchwork-bot+bluetooth@kernel.org
-Message-Id: <171328023414.16225.12939333659144302573.git-patchwork-notify@kernel.org>
-Date: Tue, 16 Apr 2024 15:10:34 +0000
-References: <20240415141922.25055-1-peter.tsao@mediatek.com>
-In-Reply-To: <20240415141922.25055-1-peter.tsao@mediatek.com>
-To: Peter Tsao <peter.tsao@mediatek.com>
-Cc: marcel@holtmann.org, johan.hedberg@gmail.com, luiz.dentz@gmail.com,
- sean.wang@mediatek.com, deren.Wu@mediatek.com, chris.lu@mediatek.com,
- aaron.hou@mediatek.com, steve.lee@mediatek.com,
- linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240416_081042_190213_3E8691D7 
-X-CRM114-Status: UNSURE (   9.59  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240416_083811_454415_287D46DB 
+X-CRM114-Status: GOOD (  13.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,31 +88,86 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+Add bindings for the MediaTek Dynamic Voltage and Frequency Scaling
+Resource Collector (DVFSRC), a hardware module used to collect all the
+requests from both software and the various remote processors embedded
+into the SoC and decide about a minimum operating voltage and a minimum
+DRAM frequency to fulfill those requests in an effort to provide the
+best achievable performance per watt.
 
-This patch was applied to bluetooth/bluetooth-next.git (master)
-by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
+This hardware IP is capable of transparently performing direct register
+R/W on all of the DVFSRC-controlled regulators and SoC bandwidth knobs.
 
-On Mon, 15 Apr 2024 22:19:22 +0800 you wrote:
-> Because both MT7920 and MT7921 use the same chip ID.
-> We use the 8th bit of fw_flavor to distingush MT7920.
-> The original patch made a mistake to check whole fw_flavor,
-> that makes the condition both true (dev_id == 0x7961 && fw_flavor),
-> and makes MT7921 flow wrong.
-> 
-> In this patch, we correct the flow to get the 8th bit value for MT7920.
-> And the patch is verified pass with both MT7920 and MT7921.
-> 
-> [...]
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ .../soc/mediatek/mediatek,mt8183-dvfsrc.yaml  | 57 +++++++++++++++++++
+ 1 file changed, 57 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mediatek,mt8183-dvfsrc.yaml
 
-Here is the summary with links:
-  - Bluetooth: btusb: Fix the patch for MT7920 the affected to MT7921
-    https://git.kernel.org/bluetooth/bluetooth-next/c/263296438807
-
-You are awesome, thank you!
+diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mt8183-dvfsrc.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mt8183-dvfsrc.yaml
+new file mode 100644
+index 000000000000..12bcc3fdfd07
+--- /dev/null
++++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mt8183-dvfsrc.yaml
+@@ -0,0 +1,57 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/soc/mediatek/mediatek,mt8183-dvfsrc.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek Dynamic Voltage and Frequency Scaling Resource Collector (DVFSRC)
++
++description:
++  The Dynamic Voltage and Frequency Scaling Resource Collector (DVFSRC) is a
++  Hardware module used to collect all the requests from both software and the
++  various remote processors embedded into the SoC and decide about a minimum
++  operating voltage and a minimum DRAM frequency to fulfill those requests in
++  an effort to provide the best achievable performance per watt.
++  This hardware IP is capable of transparently performing direct register R/W
++  on all of the DVFSRC-controlled regulators and SoC bandwidth knobs.
++
++maintainers:
++  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
++  - Henry Chen <henryc.chen@mediatek.com>
++
++properties:
++  compatible:
++    oneOf:
++      - items:
++          - enum:
++              - mediatek,mt8183-dvfsrc
++              - mediatek,mt8195-dvfsrc
++      - items:
++          - const: mediatek,mt8192-dvfsrc
++          - const: mediatek,mt8195-dvfsrc
++
++  reg:
++    maxItems: 1
++    description: DVFSRC common register address and length.
++
++patternProperties:
++  "@[0-9a-f]+$":
++    type: object
++
++required:
++  - compatible
++  - reg
++
++additionalProperties: false
++
++examples:
++  - |
++    soc {
++        #address-cells = <2>;
++        #size-cells = <2>;
++
++        dvfsrc@10012000 {
++            compatible = "mediatek,mt8195-dvfsrc";
++            reg = <0 0x10012000 0 0x1000>;
++        };
++    };
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+2.44.0
 
 
