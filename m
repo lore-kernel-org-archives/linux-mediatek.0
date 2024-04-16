@@ -4,89 +4,119 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9E8CC4345F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Apr 2024 07:35:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CB92C4345F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Apr 2024 07:37:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=x3Y56dDS984KsDzs2nzTKgy6adBy9joM/agCd66RARo=; b=SFnTFXL3aT0x5aB0992Hno8/Hm
-	E8Y+4a/PCWfYCYjywaEZ7LB92ITFkCiBMshTqO2hByF8FH4N3tskstZ99UuawHhHgC4H71XBMJcFV
-	2sUyGHTkgoK1ncEY0QsMBI/2g5lbDFcfJPuVOocxG7l8tB8+NK0AqLIDUoS+Yo5DQzCL8ccUPOynv
-	4uih44l2+09djQOohDgqbMIge++32sJchoPFKnz96ZQVLkrj6iIPptJ0I7/v7Ps1BYbMPy2G6iuGi
-	UrQgh1hsSbIX3QlXBZ3OM3XT8q/Iub/N66iULmIrUxbBKq8wTgBynjgOU7HDhVmuDEQ+8AlOEEwJF
-	ZVWB5AhQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Vz5EFUG61C/PsBsUPlDK2q+AUqaXZYNi38q3WlwiS3E=; b=r2sWx9lqRan6wd6Nkd7Z12rwk0
+	SeAJy+hsGibpLKjNRYl3B6FcXa+x3Newsyr1T8dFrZXo6zwIprd9uWFm2uLX2kVAImbjt3niau9Bi
+	2sZna5MigjQ2XU/N8IugO7NqCVy4veJuNuX5NbMOixZUWzevvHeIN83jvjXvWCVQUPSzTNOOM1xkG
+	trHDqujvdXspWeLFU1zmkWXlNNlEf5luHVgqIG0P348VjfD/Rv6G4RB4eyPT1IBNY2iu5DKN1DRZU
+	pMr3gIytTUbqAUnQKoEqi0lGYnCfSRJ3Dc80/rz33YDPvJmBkaW2xTT6wCow6ykpzFNtURFRVN4rl
+	K5ETRgRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwdMC-0000000BIQn-0vGB;
-	Tue, 16 Apr 2024 07:35:56 +0000
-Received: from mail-oa1-x34.google.com ([2001:4860:4864:20::34])
+	id 1rwdNc-0000000BIfg-1YO0;
+	Tue, 16 Apr 2024 07:37:24 +0000
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwdM9-0000000BIQA-2z05
+	id 1rwdNZ-0000000BIdi-32DH
 	for linux-mediatek@lists.infradead.org;
-	Tue, 16 Apr 2024 07:35:55 +0000
-Received: by mail-oa1-x34.google.com with SMTP id 586e51a60fabf-23319017c4cso2759960fac.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 16 Apr 2024 00:35:53 -0700 (PDT)
+	Tue, 16 Apr 2024 07:37:23 +0000
+Received: by mail-ej1-x631.google.com with SMTP id a640c23a62f3a-a51a1c8d931so516666166b.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 16 Apr 2024 00:37:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1713252952; x=1713857752; darn=lists.infradead.org;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=x3Y56dDS984KsDzs2nzTKgy6adBy9joM/agCd66RARo=;
-        b=BUlVdH89gO+/X+Sc4jrwWSGiZouYxHMxiK20D+SBbgxAIvLViBBkGUjBT8hqyZXRfJ
-         dnnxpCndNaFA6gJXUWAMeU6W/aaCzAHJzAovXf6bVvHZ5UMVSyW1DnUDiaw0GGck03KV
-         q5Cawk0agxFJu7gpD4j64Rpp9FWVjuoxTeuOI=
+        d=linaro.org; s=google; t=1713253039; x=1713857839; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=Vz5EFUG61C/PsBsUPlDK2q+AUqaXZYNi38q3WlwiS3E=;
+        b=HNjYR1FV3gfPIDfWcB833OA/ukIrhM9HORpSsv+tQNRgMLg1Iv/sMGj8bnE3UtPoPL
+         26QD3/3i2gkSzTumN2sQUxuxam6CvCwLvc43ppux48XMrqCMircLVdppGp6v/ayLxjBf
+         2CXRNIiOVn06nCuCJ8oBwDWqlU1+KCHpgvig5YLjADa/+DvDY6Kl++888m8xcT/UzyYD
+         xQ9yhq/wWivzvV30gM/ZPVZz405zD5hc7lLOPIXPsmkcZpsodLOi+Mhuv0qCSTBLCpf1
+         7ErCHfXnFKtqdmik5vQ2G3P0L9XPxJpkmkm7U0tRBY2sVfD5ip5dUuOmObDnw84tjBJ1
+         P7nQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713252952; x=1713857752;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=x3Y56dDS984KsDzs2nzTKgy6adBy9joM/agCd66RARo=;
-        b=M/dVcektgiOWWYsXGP4iP24KjRjZYx6ob8CN2lXxTRKLIXh8gBOLuhqbJR6rVratzB
-         8ZdlY12m4DZduOQUzQt7Kdo08skC2aCW6ykOehE7ewv/8BE/H842uoBysStZRuzSHayA
-         V8JcUEncE2r1VdFoThh0s+FecFzE2Op701skaNmnX5N/q+T8oAVn2jJaNmxOh5AS1KTB
-         nSxBtbqSIWD8XZsWkWiNo9CCh7I8ljoBcgxF9zOL1DmHMk1i++Xg5gI5aUl1eDHorRQf
-         0bgWjNg8Znvdh/guyboLWDjU8V4Eg9LMakjTSeoR90Aux9CJFEYG8//9Xo7UcI89S+UW
-         Bd+Q==
-X-Forwarded-Encrypted: i=1; AJvYcCVcO9X2AMNhaTlyDMLXFP3chM9N0UciCPIb7utVPo0mAd6tR6rmFu+f/oymnzgRtXJD8+CIy8vsBJqI/BMI3YJ1MwGAGgE5Da8S/T9R3xa92q0F
-X-Gm-Message-State: AOJu0Yz3H/iJMPaMIBvDfkPYLGkpMz6XYzAuk/jJDKczJBn0jLJWvfkW
-	YpXNYW7TyhvHYVLApslxTqowjfWnMOPw5oA8V402a2LtFHuyZAUGpwP47aEizA==
-X-Google-Smtp-Source: AGHT+IHNjgaqMYg1Csze8sajKRyaaqmq9zLpH84gQd3fhwrzyArn1i3A0GueOZmBPZ6aUxRl85D33Q==
-X-Received: by 2002:a05:6870:568c:b0:232:fba4:4594 with SMTP id p12-20020a056870568c00b00232fba44594mr15920699oao.49.1713252952526;
-        Tue, 16 Apr 2024 00:35:52 -0700 (PDT)
-Received: from yuanhsinte1.c.googlers.com (88.216.124.34.bc.googleusercontent.com. [34.124.216.88])
-        by smtp.gmail.com with ESMTPSA id j24-20020a62b618000000b006ea9108ec12sm8307092pff.115.2024.04.16.00.35.49
+        d=1e100.net; s=20230601; t=1713253039; x=1713857839;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Vz5EFUG61C/PsBsUPlDK2q+AUqaXZYNi38q3WlwiS3E=;
+        b=u3+0+YPGLfs6OZDVQ0lBXaUGgJ3XsAucBLxz4LB/bkGYZYyIhGnc1G+2LNdeuyWN2G
+         /7EsuMQ8EnrmOVfCiJrAGki+xEi1pZMFRlEMe0QjonKbjKvpiT4alW2FpW1hcUat89qe
+         Ue896vmxxQeJNp0BlSV5oP3g9C/NG3EJn1Tkp3C/3n/2FDsxLOoNZTFA3PmvYnxSmovL
+         hd3MXMfZ9a6r8NPCJp/SUMJAgCthcXzOBUt5oKPDJDs8nZK6k1hoypigYzEQzSu3QVTC
+         hswG2FsQzImwXbeyhTPZg5lYViDxwM0WHvBl7v0Lgcgw3Mps0clecVE/A6cu+v4TNmJN
+         TTmg==
+X-Forwarded-Encrypted: i=1; AJvYcCVlK3Bv6Iafgb9hH7P9asGhR/kvhWYQWRMR9Y9PmDtU40EpuwogS1ng4HenOAXM1wiXaAnmb8V9kaNMLbo4in6KyIrmHDC0EeNOKvOi6UXZC8gl
+X-Gm-Message-State: AOJu0YyjM63drnuncMUBou//Z9L/TUqIRjTeaDFm86I+PBdpS2T6WkI0
+	CW0pyXmsgRF88KM0+/Bxwohh95upy27hVexrO0Hk7lAhUgD77NJFMajPZNbas+g=
+X-Google-Smtp-Source: AGHT+IF7djK9Gp7QvHWuOZzhp3iyt4a4kh6gE+5Chee7fTPBiXusYHzH5iP8LrBy89Sq7/Zoad7L6g==
+X-Received: by 2002:a17:906:3488:b0:a52:e86:ae62 with SMTP id g8-20020a170906348800b00a520e86ae62mr7767532ejb.54.1713253038496;
+        Tue, 16 Apr 2024 00:37:18 -0700 (PDT)
+Received: from localhost ([102.222.70.76])
+        by smtp.gmail.com with ESMTPSA id gt43-20020a1709072dab00b00a5242ec4573sm4507206ejc.29.2024.04.16.00.37.17
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 16 Apr 2024 00:35:52 -0700 (PDT)
-From: Hsin-Te Yuan <yuanhsinte@chromium.org>
-Date: Tue, 16 Apr 2024 07:35:47 +0000
-Subject: [PATCH RESEND v2] thermal/drivers/mediatek/lvts_thermal: Add coeff
- for mt8192
+        Tue, 16 Apr 2024 00:37:18 -0700 (PDT)
+Date: Tue, 16 Apr 2024 10:37:14 +0300
+From: Dan Carpenter <dan.carpenter@linaro.org>
+To: Ricardo Ribalda <ribalda@chromium.org>
+Cc: Martin Tuma <martin.tuma@digiteqautomotive.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	Hugues Fruchet <hugues.fruchet@foss.st.com>,
+	Alain Volmat <alain.volmat@foss.st.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Sowjanya Komatineni <skomatineni@nvidia.com>,
+	Luca Ceresoli <luca.ceresoli@bootlin.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Hans Verkuil <hverkuil@xs4all.nl>, Sergey Kozlov <serjk@netup.ru>,
+	Abylay Ospan <aospan@netup.ru>,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Dmitry Osipenko <digetx@gmail.com>,
+	Stanimir Varbanov <stanimir.k.varbanov@gmail.com>,
+	Vikash Garodia <quic_vgarodia@quicinc.com>,
+	Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Benjamin Mugnier <benjamin.mugnier@foss.st.com>,
+	Sylvain Petinot <sylvain.petinot@foss.st.com>,
+	Jacopo Mondi <jacopo+renesas@jmondi.org>,
+	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
+	Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
+	Niklas =?iso-8859-1?Q?S=F6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
+	Pavel Machek <pavel@ucw.cz>, linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-arm-kernel@lists.infradead.org, linux-staging@lists.linux.dev,
+	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org
+Subject: Re: [PATCH 07/35] media: staging: sun6i-isp: Remove redundant printk
+Message-ID: <b8a5cc23-240f-4fe9-9b25-b534f618506e@moroto.mountain>
+References: <20240415-fix-cocci-v1-0-477afb23728b@chromium.org>
+ <20240415-fix-cocci-v1-7-477afb23728b@chromium.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20240416-lvts_thermal-v2-1-f8a36882cc53@chromium.org>
-X-B4-Tracking: v=1; b=H4sIAFIqHmYC/32NPQ/CIBRF/4phFgOvH6iTg10ddDTGUPpaSNpio
- BJN0/8uYTTG8d6bc+5MPDqDnuxXM3EYjDd2jAHWK6K0HDukpomZAIOc5ZzRPkz+Pml0g+xp1mR
- lsc2FVG1LIvJw2JpX0l3JubpUpyO5xV4bP1n3Ti+Bp/W3MHDKKWLBatgpLoryoLSzg3kOG+u65
- Arwj4fIl8BVLRQTMoMvflmWDyKXp07zAAAA
-To: "Rafael J. Wysocki" <rafael@kernel.org>, 
- Daniel Lezcano <daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>, 
- Lukasz Luba <lukasz.luba@arm.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>, 
- =?utf-8?q?Bernhard_Rosenkr=C3=A4nzer?= <bero@baylibre.com>, 
- Balsam CHIHI <bchihi@baylibre.com>
-Cc: Alexandre Mergnat <amergnat@baylibre.com>, linux-pm@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, Hsin-Te Yuan <yuanhsinte@chromium.org>
-X-Mailer: b4 0.12.4
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240415-fix-cocci-v1-7-477afb23728b@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240416_003553_827138_34E1AB33 
-X-CRM114-Status: UNSURE (   9.15  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240416_003721_775094_300E953D 
+X-CRM114-Status: GOOD (  17.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,46 +131,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In order for lvts_raw_to_temp to function properly on mt8192,
-temperature coefficients for mt8192 need to be added.
+On Mon, Apr 15, 2024 at 07:34:24PM +0000, Ricardo Ribalda wrote:
+> platform_get_irq() already prints an error for us.
+> 
+> Found by cocci:
+> drivers/staging/media/sunxi/sun6i-isp/sun6i_isp.c:389:2-9: line 389 is redundant because platform_get_irq() already prints an error
+> 
+> Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
+> ---
+>  drivers/staging/media/sunxi/sun6i-isp/sun6i_isp.c | 1 -
+>  1 file changed, 1 deletion(-)
+> 
+> diff --git a/drivers/staging/media/sunxi/sun6i-isp/sun6i_isp.c b/drivers/staging/media/sunxi/sun6i-isp/sun6i_isp.c
+> index 5c0a45394cba..a6424fe7023b 100644
+> --- a/drivers/staging/media/sunxi/sun6i-isp/sun6i_isp.c
+> +++ b/drivers/staging/media/sunxi/sun6i-isp/sun6i_isp.c
+> @@ -386,7 +386,6 @@ static int sun6i_isp_resources_setup(struct sun6i_isp_device *isp_dev,
+>  
+>  	irq = platform_get_irq(platform_dev, 0);
+>  	if (irq < 0) {
+> -		dev_err(dev, "failed to get interrupt\n");
+>  		ret = -ENXIO;
 
-Fixes: 288732242db4 ("thermal/drivers/mediatek/lvts_thermal: Add mt8192 support")
-Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
----
-Changes in v2:
-- Reusing mt8195 coeff instead of creating duplicate definitions
-- Link to v1: https://lore.kernel.org/r/20240410-lvts_thermal-v1-1-ee50b29c1756@chromium.org
----
- drivers/thermal/mediatek/lvts_thermal.c | 4 ++++
- 1 file changed, 4 insertions(+)
+This is more fall out from when irq functions used to return zero (16
+years ago).  Instead of ret = -ENXIO, set ret = irq.
 
-diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
-index fd4bd650c77a6..4e5c213a89225 100644
---- a/drivers/thermal/mediatek/lvts_thermal.c
-+++ b/drivers/thermal/mediatek/lvts_thermal.c
-@@ -1530,11 +1530,15 @@ static const struct lvts_data mt7988_lvts_ap_data = {
- static const struct lvts_data mt8192_lvts_mcu_data = {
- 	.lvts_ctrl	= mt8192_lvts_mcu_data_ctrl,
- 	.num_lvts_ctrl	= ARRAY_SIZE(mt8192_lvts_mcu_data_ctrl),
-+	.temp_factor	= LVTS_COEFF_A_MT8195,
-+	.temp_offset	= LVTS_COEFF_B_MT8195,
- };
- 
- static const struct lvts_data mt8192_lvts_ap_data = {
- 	.lvts_ctrl	= mt8192_lvts_ap_data_ctrl,
- 	.num_lvts_ctrl	= ARRAY_SIZE(mt8192_lvts_ap_data_ctrl),
-+	.temp_factor	= LVTS_COEFF_A_MT8195,
-+	.temp_offset	= LVTS_COEFF_B_MT8195,
- };
- 
- static const struct lvts_data mt8195_lvts_mcu_data = {
-
----
-base-commit: 20cb38a7af88dc40095da7c2c9094da3873fea23
-change-id: 20240410-lvts_thermal-3d365847acff
-
-Best regards,
--- 
-Hsin-Te Yuan <yuanhsinte@chromium.org>
-
+regards,
+dan carpenter
 
