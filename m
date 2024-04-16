@@ -4,120 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD36FC4345F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Apr 2024 10:27:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E29FC4345F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Apr 2024 10:38:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zm6MGDUL0CYtN0eVBnWYXSq+qBMUlxWdujWqgjIPSpk=; b=xKPQjuTPD7roqqZfW8LGreoFDQ
-	XNAhpr3TwJtXr2lxTuDkv26ufbJMLmS20n7gAJKk1maG4agqCm3iMuLln3tld05cxTnPFaDyeWCD7
-	AwYWWC1j9jv/QN6wiMXF4dgjeQ4vhMr2WzZmI8zZAR9R2QzcR3eajUTluX0/xVLXIKsQzN+FRTKf3
-	+9v+sZT1DKnATeE5QqZQitHwD+/dxTvlR+Herdyn75A8I0S571IPoi0dVFjdDcBz7IV16/7aMRIPi
-	JtLhJk5xVHfnSM9Rf3pAzqUoCKML8nkJl3XMsubEK00JhiTmJ36zAns9FKCJ8ccz4QYK0ANDl6fVY
-	i4dDZ4mQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ZRv305zb1u+L8+UiHIiyOFHFfgCV1xdDeLgB4ZGRoy4=; b=Us3Cmx6xjpeLzNEjYMo3RwJ2d9
+	GuMXPGIZGXoahZSmkjhGcKj9FQHmmAqOzxAhJy+DMzUF4w6uC0tRLRZSmRcrIXhe76rxOhH6VAIl+
+	rYhUPpuPTZdhDrQik3Dipjr6R1njzuQa/hWNcqfBpMpQxd3qdeucqJC8xMPqwrb5lXu6PLKZFvpVL
+	NJ0eZPNRNpkIgHrlzAUzprn4gnmBe6tRZj9wR2XN+m9rxbZDJHBXc0xSTShWVb4YyzNoI6ZmUpENr
+	7xuW18R3bnPUrc0pA9I1duHKt0OD0gLplLSbBbONfFwPgo5B4mRNnyR12GtXLfn1KCnkMuCpBcNL9
+	xLVa+YqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwg2c-0000000BmJ5-073Z;
-	Tue, 16 Apr 2024 10:27:54 +0000
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+	id 1rwgCy-0000000BpwC-39yV;
+	Tue, 16 Apr 2024 10:38:36 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwg2W-0000000BmEz-0dwb
-	for linux-mediatek@lists.infradead.org;
-	Tue, 16 Apr 2024 10:27:51 +0000
-Received: by mail-ej1-x629.google.com with SMTP id a640c23a62f3a-a5544fd07easo60547266b.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 16 Apr 2024 03:27:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1713263265; x=1713868065; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=zm6MGDUL0CYtN0eVBnWYXSq+qBMUlxWdujWqgjIPSpk=;
-        b=XhwcI8Phzqrkal07nF6otoXWyNzw6rihVoScxfxfIs0j2Nk+bnmqJIaBt6HkuKOZWj
-         l5G2XuuaVwzXupRp4X4jNtdBxhKnAikrfR/kQ/wC6qDuq6mDNjViDzlVJUtS24Pm8p1p
-         U9ilF3XGiGT+26wl1r0MnNbuJJTijOGFQXY4866Odkzle8QZmc5YfCzyiOO9DEILptO8
-         L3uDEsrEu/d6UF61IMW4nQACZw01hAoN7i3magTBiT6N2JYIIY05Fg+6ppEBp2RgdZr3
-         +UNoJZKv3j7QQ+FUxC9IdtRZoZkUnCwCUx2w3capHbPU5D2A7R/oA8X/CMjQ2T5Zr+pM
-         WTjg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713263265; x=1713868065;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=zm6MGDUL0CYtN0eVBnWYXSq+qBMUlxWdujWqgjIPSpk=;
-        b=HrZi/hEuJBQFwOpT59z9dMowHLiE6mfVn4FV2DyPj/muUMJQw9UKiXNOJihhGMQscI
-         sP3XicKnRzEaJ1q0qsh+PC0KWvUHxYl/f9/VXJ/RXtEHys3zcSdZcQTwm6PBZltEwqG8
-         cM2Bww7OSvtHvDxmu6wxvuPnKFZlCdYJS+KyWh1nVX0meNrGe9ssZuYwTIkg77Eqw8KL
-         QzlJddPrgN/ggl9vmCHuVkUrVlny7rdTNz4/Lncxiu4egmWbkB2Dgaf7yZzV/pHCWCEg
-         Jnmf5ulbVtMYw5GSTabYhH9RZsEqW4uqur6hmoSc//3czBBlmn70JQ+J5WyV0otL0z4h
-         4Gog==
-X-Forwarded-Encrypted: i=1; AJvYcCXJATbJ1lTi55zgYMWEwTxt7geLtVw2j6KZ6GUxuX0Csq1Jz8svVKEMEWkU/5nH0OKvGtk3DPUK+Z9Pke+7n1q/tec4BqrmBmKTq5tJzV5JfKYv
-X-Gm-Message-State: AOJu0YwYR8R9cpJu6Y4v62PfvVGYc/W4JL5Ys1yjq9lIcEZEMR6uJjft
-	limvmyOOWCzWeUQL/V4ssdlNv/pzfrE72dbrUGo/+vUkK/5bq6dFVe+mkSMHWGc=
-X-Google-Smtp-Source: AGHT+IHeCLt5rGanImY7XpLmlFa8tjPTvv3rQXuFC3a0/nphBsid89J0+cxErThPuG+j2psO/RLVdA==
-X-Received: by 2002:a17:907:7d91:b0:a54:1c55:7123 with SMTP id oz17-20020a1709077d9100b00a541c557123mr3390435ejc.73.1713263265187;
-        Tue, 16 Apr 2024 03:27:45 -0700 (PDT)
-Received: from localhost ([102.222.70.76])
-        by smtp.gmail.com with ESMTPSA id bz2-20020a1709070aa200b00a51a9eccf2asm6665593ejc.125.2024.04.16.03.27.44
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 16 Apr 2024 03:27:44 -0700 (PDT)
-Date: Tue, 16 Apr 2024 13:27:41 +0300
-From: Dan Carpenter <dan.carpenter@linaro.org>
-To: Ricardo Ribalda <ribalda@chromium.org>
-Cc: Martin Tuma <martin.tuma@digiteqautomotive.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	Hugues Fruchet <hugues.fruchet@foss.st.com>,
-	Alain Volmat <alain.volmat@foss.st.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Chen-Yu Tsai <wens@csie.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Sowjanya Komatineni <skomatineni@nvidia.com>,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Hans Verkuil <hverkuil@xs4all.nl>, Sergey Kozlov <serjk@netup.ru>,
-	Abylay Ospan <aospan@netup.ru>,
-	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	Dmitry Osipenko <digetx@gmail.com>,
-	Stanimir Varbanov <stanimir.k.varbanov@gmail.com>,
-	Vikash Garodia <quic_vgarodia@quicinc.com>,
-	Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Benjamin Mugnier <benjamin.mugnier@foss.st.com>,
-	Sylvain Petinot <sylvain.petinot@foss.st.com>,
-	Jacopo Mondi <jacopo+renesas@jmondi.org>,
-	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
-	Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
-	Niklas =?iso-8859-1?Q?S=F6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
-	Pavel Machek <pavel@ucw.cz>, linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-arm-kernel@lists.infradead.org, linux-staging@lists.linux.dev,
-	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org
-Subject: Re: [PATCH 23/35] media: dvb-frontends: tda10048: Use the right div
-Message-ID: <7a8d403b-8baf-4eff-8f9c-69cdcb8b2180@moroto.mountain>
-References: <20240415-fix-cocci-v1-0-477afb23728b@chromium.org>
- <20240415-fix-cocci-v1-23-477afb23728b@chromium.org>
- <97f51ae8-6672-4bd4-b55b-f02114e3d8d0@moroto.mountain>
+	id 1rwgCv-0000000Bpux-2HDS;
+	Tue, 16 Apr 2024 10:38:35 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1713263910;
+	bh=pK3vpmXoyhjgc5/+MqiOTT24oZivIAniiVbO1jnVuqM=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=J4d6KzkwOJH5ozVybjyzmBm0u1oJN7TflqhG7AA63jTqV03T0tqGS1eyRsKFHcuu3
+	 jPKyvtENm5I6a6o3xxJzwv0UWuUICe0IkDxEGQBLbExOZ1oTVpDhfbEG4LtfZofWK6
+	 7ZHhOG5DgZO4fgZebNh2Q0ECiF42Q7x0xugerrAVdbVoaUM/MWZmEZBbRH1qsvqLt1
+	 66hYXIDQU4uhh3mSWE7WuJ6p8A3SaH/qXQ42vb5NoUes/HdWOsOc2O7jPLBXAVPxrp
+	 ee2SRQVw0WQMGc/wkVKuQEPk+cZkTZr6hiZOTl5BX0x5puowD22lYKzIhcwbtlefwu
+	 H5HxRum/pijhw==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 5F51F378210B;
+	Tue, 16 Apr 2024 10:38:29 +0000 (UTC)
+Message-ID: <f3920433-b0fa-4a64-9653-e385bf1eb5c7@collabora.com>
+Date: Tue, 16 Apr 2024 12:38:28 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <97f51ae8-6672-4bd4-b55b-f02114e3d8d0@moroto.mountain>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 3/8] scsi: ufs: ufs-mediatek: Remove useless
+ mediatek,ufs-boost-crypt property
+To: =?UTF-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>,
+ "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "avri.altman@wdc.com" <avri.altman@wdc.com>,
+ "martin.petersen@oracle.com" <martin.petersen@oracle.com>,
+ "bvanassche@acm.org" <bvanassche@acm.org>,
+ "broonie@kernel.org" <broonie@kernel.org>,
+ "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ "robh@kernel.org" <robh@kernel.org>,
+ "lgirdwood@gmail.com" <lgirdwood@gmail.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>
+References: <20240415110012.148871-1-angelogioacchino.delregno@collabora.com>
+ <20240415110012.148871-4-angelogioacchino.delregno@collabora.com>
+ <c9634a286fbdb4c98a7fe6703a4eb10d66dfcb9e.camel@mediatek.com>
+ <4d60e9e4-9eae-4b0a-abb2-b1ad3d278fc9@collabora.com>
+ <93db93aa7eb24a255f97a1a1e8e8d936dc908258.camel@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <93db93aa7eb24a255f97a1a1e8e8d936dc908258.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240416_032748_461036_435D8BE5 
-X-CRM114-Status: GOOD (  11.97  )
+X-CRM114-CacheID: sfid-20240416_033833_759176_411F8E7F 
+X-CRM114-Status: GOOD (  16.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -132,54 +94,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-I have created a Smatch check to warn about code like this:
+Il 16/04/24 12:31, Peter Wang (王信友) ha scritto:
+> 
+>> Yes this causes -> less than half of a millisecond <- of additional
+>> boot time
+>> if the dvfsrc-supply is present but boost-microvolt is not.
+>>
+>> I really don't see the problem with that :-)
+>>
+> 
+> Adding a little bit of boot time to one smartphone might not be a
+> problem, but when you consider a billion smartphones each adding a
+> little bit, the cumulative effect becomes significant. The power
+> consumption of these accumulated times will continue to increase,
+> contributing to the Earth's carbon emissions. Moreover, removing the
+> master switch for this feature doesn't seem to have any benefits other
+> than not having to set it in the DTS. Similarly, the master switch for
+> VA09 seems to have more disadvantage.
+> 
 
-drivers/media/dvb-frontends/tda10048.c:345 tda10048_set_wref() warn: unnecessary div64_u64(): divisor = '0-u32max'
+Sorry, but I still don't see how a few *microseconds* more of boot time can
+be significant, even related to power consumption during boot.
 
-regards,
-dan carpenter
+If that was a few milliseconds, then I'd agree with you, but that's not the case.
 
-/*
- * Copyright 2024 Linaro Ltd.
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License
- * as published by the Free Software Foundation; either version 2
- * of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, see http://www.gnu.org/copyleft/gpl.txt
- */
+Removing the master switch has a benefit: you *lose* a few microseconds of boot
+time (so, boots in *few microseconds LESS*) on platforms that would have this set
+in devicetree, as this property is redundant with the other activation checks
+for those features.
 
-#include "smatch.h"
-#include "smatch_extra.h"
+So, there you go: if the majority of MediaTek platforms are already using this
+crypt boost feature, then this commit reduces carbon emissions, as those would
+boot in a few less microseconds.
 
-static int my_id;
+Regards,
+Angelo
 
-static const sval_t uint_max  = { .type = &uint_ctype, .value = UINT_MAX };
+> 
+>> Regards,
+>> Angelo
+>>
+>>> Thanks.
+>>> Peter
+>>>
+>>>
+>>>
+>>>>    	ret = ufs_mtk_init_va09_pwr_ctrl(hba);
+>>>>    	if (ret)
+>>
+>>
 
-static void match_div64_u64(struct expression *expr)
-{
-	struct range_list *rl;
 
-	get_real_absolute_rl(expr, &rl);
-	if (sval_cmp(rl_max(rl), uint_max) > 0)
-		return;
-	sm_warning("unnecessary div64_u64(): divisor = '%s'", show_rl(rl));
-}
-
-void check_unnecessary_div64_u64(int id)
-{
-	my_id = id;
-
-	if (option_project != PROJ_KERNEL)
-		return;
-
-	add_param_key_expr_hook("div64_u64", match_div64_u64, 1, "$", NULL);
-}
 
