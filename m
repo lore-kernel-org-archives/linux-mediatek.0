@@ -4,97 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D2BFC4345F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Apr 2024 14:53:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD072C4345F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Apr 2024 14:54:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:Subject:From:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jl7BVtQwBTSlw5Q7jIravMMMPvXbs3wbcyyUN/ZkIBg=; b=U5J5HF7sMEpiS8CkyrKMmJkK93
-	NTvTzSSwpRi8gbrpYwGqsyrgvb2SpK2SQqpkgmwu8RFVP6SDQzHAnIH34iWO+W65K6xQ5muz7DKit
-	5PLJt7IMcCmeEhS3NuLUwE9QChs1dQg3LzYrZR3g86WvxHCSEI4o48S+4QeET/Cs16q5tWAhaeXWv
-	rtaJMuy4MsJolMeQBdoUxo37+vIlevSm44WPFjDpeBREUyZzkxBk+DMOMgv3miRRCGCqXzoaFcNpb
-	PQX53vqTb0s/+k+IWigdoUVOkE2qngoUZ+EMZzMlivE4uNyW/+GuLMaphteTs7/FZg4QYOXIGvIXy
-	j911rCpw==;
+	bh=0cukYnh7YzrvpsQcy8CflblHBgUiu2QOawbA8hrGiwU=; b=Qn+5gbhLO4zRXenR/6mT32+9iz
+	G4krFte96+hFmHoV6vKXCyweeWPRoU1WCCDGaSoTqZkdDYYcwCwiuR1Rba4A7t50tG7ktqlUdnAad
+	hqmM0sCLlwhLVh2n3ksYok1Ipcbuk8G+Y+jlQsIpK6e/xbBZ8NToaeMdP4fEZBLw0Mg1+CJ8h8l+2
+	1RBua22Tj93SV29rEE+fRHVoCYRA3CRa8GEU2/C+h+PD6zYy2APaz+V9AA0wPzPS3XGVFiQPhvFje
+	bCeJS02+4xV6tlGHJ7P/4mHUb/YurbXcWw+Wp8ows9+IvuZa11bA2mPFXK+mze6i/Wn8uVTooHEJp
+	DpufNPGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwkBT-0000000CdU3-0H7o;
-	Tue, 16 Apr 2024 14:53:19 +0000
-Received: from mail-lj1-x22d.google.com ([2a00:1450:4864:20::22d])
+	id 1rwkCA-0000000Cdcr-2FlL;
+	Tue, 16 Apr 2024 14:54:02 +0000
+Received: from mail-lj1-x235.google.com ([2a00:1450:4864:20::235])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwkBP-0000000CdSh-2OUH
+	id 1rwkC7-0000000CdcE-40Bo
 	for linux-mediatek@lists.infradead.org;
-	Tue, 16 Apr 2024 14:53:17 +0000
-Received: by mail-lj1-x22d.google.com with SMTP id 38308e7fff4ca-2d82713f473so84277021fa.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 16 Apr 2024 07:53:13 -0700 (PDT)
+	Tue, 16 Apr 2024 14:54:01 +0000
+Received: by mail-lj1-x235.google.com with SMTP id 38308e7fff4ca-2d8a2cbe1baso54684231fa.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 16 Apr 2024 07:53:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1713279192; x=1713883992; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:subject:from:user-agent:mime-version:date:message-id:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=jl7BVtQwBTSlw5Q7jIravMMMPvXbs3wbcyyUN/ZkIBg=;
-        b=soY7IXdxjNPDgCdYiA8Ag5gcRSjMgJb6rwpm5HIzCaZa038m6HVBxo8pr0Ox1nHK2O
-         CbDBR/cNt8gBkM3UWZozud/0sCFTf6a/HFxft0i8L1ZhS/uuZyr+HwC12CV+Zn/Zi+Zo
-         YDqSg7mgIXVSe41lqjObauFTIWQ5GCtN6Ozus6UkSt54MR+EEbRhsZ09Mjb/AbqbybDl
-         wC85ZsMD4Wrr+K5Hpk2TQ9ZMHSldVncW/OxNqBrPg/YBBVh/iEmbY9Ad1CrWRcxG993B
-         YuHT/5SWjFhPt4vEspbzoRCuzi0R5tncDwm6fmgUpswnu7+3iPU2+hR+F+ffEjMOJQSf
-         2kMQ==
+        d=gmail.com; s=20230601; t=1713279236; x=1713884036; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=0cukYnh7YzrvpsQcy8CflblHBgUiu2QOawbA8hrGiwU=;
+        b=hiK4JsxwZFudELAgMCyQu+5QEkFTxeke2+lPI95xYBra17spRU0faTALBU25xx0OKb
+         CEw1iBV4f1wAhuE0M8qZLshhzPVZRzZ4VxTl5mdm0Pyv/D4vrwBDrW5U7qdTkzbR1Aan
+         WOQISI/kQ4+bLtz/25XAwvn8ecAKKPe/uf3IRy0PE+IltGxLoKkRzOJbMgp1QAPG2vGg
+         1nDIncvteJx515H7NoU3ScbozDVxMYaSZUS7s3Zp83Eb0AUmkqJQ9f40ex8rxHEAZfaO
+         KQin6wkUPJtJ+v7tDxAZM1iOic9wD6ITt9hbz/Qsf00RkEG2kzngSYa1TinXnJzn50ur
+         0u2Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713279192; x=1713883992;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:subject:from:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=jl7BVtQwBTSlw5Q7jIravMMMPvXbs3wbcyyUN/ZkIBg=;
-        b=J0xjWBwTsXvJVAhzvJa4rKc2zgdVnfI80iIV/IIjQEXDQaWyes4FseL9CLug1V5ThT
-         VQOkH/p5yzA3JsUxRPdyUPkHLjCMcQ1J69SeyDtwh2AafOahCBdRvOStcE6mH/BL9baq
-         L80KSpTagHEFthKAVi26a8/pqkr+TT0tE+xRr7/4++/Ir0Yy7+NQZ0YZdLqNVYNytf7O
-         9mgzSBm/DUOoyiBd6XoATJNRmOUV4TR7OAYz973aUvR9SjDx556YQtTslQbPAhonP10X
-         9ea/2ct5znzWwGpB/lmwg7k7d2v4XadzuMUaDGRd45+9ZuQXYWN5VJht37P54NqYB3kI
-         DJWQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXfdLnM7rQuWqsuNIwLvcFhg/C0eicBSLVJFHO9qW9ehA0ROOl2/DZ669eqkjNK0eEv8G66ov7sCGWOCGE1fOd8vHOfnPlJ7lNnTp5piVbOXs8m
-X-Gm-Message-State: AOJu0YyaeU0VtEiSBPisR0Vzv/aa/XeDai6JeONrq7Oe6LgkCFc729aK
-	bYEadSSzi7KCoqNAJMPM/0tFwG+WiKrzNpxgrxrs//UhTPmmwapu10KKUCRP9U0=
-X-Google-Smtp-Source: AGHT+IEBkb7ExU6KDoUwKQB+1TjGigkCAfuqOmSxkIfxlJN0jQEFEyh9q8oXdurLDbr/zM7/PUjBBw==
-X-Received: by 2002:a2e:9517:0:b0:2d8:19fe:4863 with SMTP id f23-20020a2e9517000000b002d819fe4863mr10223169ljh.41.1713279189026;
-        Tue, 16 Apr 2024 07:53:09 -0700 (PDT)
-Received: from [192.168.1.172] ([93.5.22.158])
-        by smtp.gmail.com with ESMTPSA id c19-20020a170906529300b00a4da28f42f1sm6995974ejm.177.2024.04.16.07.53.07
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 16 Apr 2024 07:53:08 -0700 (PDT)
-Message-ID: <96d90ddd-2910-4419-ba90-64a09a3dbf1e@baylibre.com>
-Date: Tue, 16 Apr 2024 16:53:06 +0200
+        d=1e100.net; s=20230601; t=1713279236; x=1713884036;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=0cukYnh7YzrvpsQcy8CflblHBgUiu2QOawbA8hrGiwU=;
+        b=eNAspb91t62iyvy9TCKiB9cFqMKI4gNHCFZZwYO/Wfen/nlKHwQv2OQr3ly1/nAp4Z
+         EDEA/YmJydupQMFq1WkbbtTnwtKiHnINHEzDgOdDGUJ0xfuNFt3KUZgkxVqR04QyOGhZ
+         prlHnYwzxK9QvTpRnc7iYgJoFT5QbYfKG8M9fq6n+xTNkAI84QzJDARwoUJWK5s4TUWl
+         91kuShWPk/H3G3Cs5tKceL2MLrfSrcRpTzbhuC+sd76ZTZyUbEtOqb97C09cOoDhsccq
+         s2RXFi8yg92ZScwnnLH1hAOuyqEbwmyhRIT5AU/JlC/+1KFN36dC+3xX9BGBWqym/y9T
+         vA1A==
+X-Forwarded-Encrypted: i=1; AJvYcCUKocSdIR8EWLNYIfVI0aYu+mIJYMjPmgAqThp9NiNiWKwYeNHCvX82DgKqQo00P9PHnP7uwuXgWW6uFTVks0IPDpExR9Fgtz7FZKjpSFZuiW3l
+X-Gm-Message-State: AOJu0YwKRgLBGE7+JlfPy9T2z56syrRmWEfMFD/A8UAaqi6zGnxOCOsu
+	WAse+ASsn4dWaMRMLJEQQ5wnm/EG5W4EvdXQoYYduFX2iVbRZ+1uquIv8WPwCiEG5VzX2Kc0van
+	9QVzr2N0nAMSjVPobMjHxSlwmoOE=
+X-Google-Smtp-Source: AGHT+IG5vvSLyFxVVk4DVxlcD5kc+Ye3Ncgbh0mG8jzgwD3uq3A+QxoqnzDmUrKBBFElmhmuw0XcQmFWvPGap+QBNzk=
+X-Received: by 2002:a2e:3209:0:b0:2d9:fa96:1620 with SMTP id
+ y9-20020a2e3209000000b002d9fa961620mr11726167ljy.29.1713279235879; Tue, 16
+ Apr 2024 07:53:55 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-From: Alexandre Mergnat <amergnat@baylibre.com>
-Subject: Re: [PATCH 14/18] drm/mediatek: dpi: add support for dpi clock
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: dri-devel@lists.freedesktop.org,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-mediatek@lists.infradead.org, Will Deacon <will@kernel.org>,
- Catalin Marinas <catalin.marinas@arm.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, CK Hu <ck.hu@mediatek.com>,
- Rob Herring <robh+dt@kernel.org>, Daniel Vetter <daniel@ffwll.ch>,
- David Airlie <airlied@gmail.com>, Xinlei Lee <xinlei.lee@mediatek.com>,
- Jitao Shi <jitao.shi@mediatek.com>, linux-arm-kernel@lists.infradead.org,
- linux-pwm@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>,
- Thierry Reding <thierry.reding@gmail.com>,
- Fabien Parent <fparent@baylibre.com>,
- =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>
-References: <20231023-display-support-v1-0-5c860ed5c33b@baylibre.com>
- <20231023-display-support-v1-14-5c860ed5c33b@baylibre.com>
- <cf25a3cc-6411-45f5-bc7a-6b69cf28c860@collabora.com>
-Content-Language: en-US
-In-Reply-To: <cf25a3cc-6411-45f5-bc7a-6b69cf28c860@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+References: <20240412084128.24452-1-hao.qin@mediatek.com>
+In-Reply-To: <20240412084128.24452-1-hao.qin@mediatek.com>
+From: Luiz Augusto von Dentz <luiz.dentz@gmail.com>
+Date: Tue, 16 Apr 2024 10:53:43 -0400
+Message-ID: <CABBYNZLGocaksAKCTso3zL-bAuSKaBurTtOFZx_rw=HiKMmqtA@mail.gmail.com>
+Subject: Re: [PATCH] Bluetooth: btusb: mediatek: Add usb reset for firmware
+ setup failure
+To: Hao Qin <hao.qin@mediatek.com>
+Cc: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg <johan.hedberg@gmail.com>, 
+	Sean Wang <sean.wang@mediatek.com>, Deren Wu <deren.Wu@mediatek.com>, 
+	Aaron Hou <aaron.hou@mediatek.com>, Chris Lu <chris.lu@mediatek.com>, 
+	Steve Lee <steve.lee@mediatek.com>, linux-bluetooth <linux-bluetooth@vger.kernel.org>, 
+	linux-kernel <linux-kernel@vger.kernel.org>, 
+	linux-mediatek <linux-mediatek@lists.infradead.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240416_075315_758566_8ADB6925 
-X-CRM114-Status: GOOD (  17.58  )
+X-CRM114-CacheID: sfid-20240416_075400_020523_C0A6ABD9 
+X-CRM114-Status: GOOD (  15.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,110 +95,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi,
+
+On Fri, Apr 12, 2024 at 4:43=E2=80=AFAM Hao Qin <hao.qin@mediatek.com> wrot=
+e:
+>
+> Add usb reset to recover BT device from a firmware setup failure,
+> it will restore the device to its original state and attempt setup
+> firmware again.
+>
+> Signed-off-by: Hao Qin <hao.qin@mediatek.com>
+> ---
+>  drivers/bluetooth/btusb.c | 3 +++
+>  1 file changed, 3 insertions(+)
+>
+> diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+> index 4c0cc13adb47..c5aab361795e 100644
+> --- a/drivers/bluetooth/btusb.c
+> +++ b/drivers/bluetooth/btusb.c
+> @@ -3160,6 +3160,9 @@ static int btusb_mtk_setup(struct hci_dev *hdev)
+>                                                 btusb_mtk_hci_wmt_sync);
+>                 if (err < 0) {
+>                         bt_dev_err(hdev, "Failed to set up firmware (%d)"=
+, err);
+> +                       btusb_stop_traffic(data);
+> +                       usb_kill_anchored_urbs(&data->tx_anchor);
+> +                       usb_queue_reset_device(data->intf);
+
+What if this was already caused by a reset? Wouldn't that create a
+loop resetting the device over and over again?
+
+>                         return err;
+>                 }
+>
+> --
+> 2.18.0
+>
 
 
-On 24/10/2023 11:12, AngeloGioacchino Del Regno wrote:
-> Il 23/10/23 16:40, amergnat@baylibre.com ha scritto:
->> From: Fabien Parent <fparent@baylibre.com>
->>
->> MT8365 requires an additional clock for DPI. Add support for that
->> additional clock.
->>
->> Signed-off-by: Fabien Parent <fparent@baylibre.com>
->> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
-> 
-> I'm not convinced that this is right... at all.
-> 
->  From a fast check of the MT8365 DPI clocks, I can see that the DPI0 
-> clock declares
-> parent VPLL_DPIX (a fixed clock), but nothing ever has VPLL_DPIX_EN 
-> (which is the
-> GATE clock, enabling output of DPIx VPLL?).
-> 
-> But then, there's even more: no clock ever references the 
-> CLK_TOP_DPI0_SEL nor the
-> CLK_TOP_DPI1_SEL gate, which is a PLL parent selector... in other 
-> platforms, that
-> is muxing through the TVDPLL, but on MT8365 that is LVDSPLL?!
-
-AFAI see into mt8365 documentation, there is no TVDPLL, only LVDSPLL
-
-> 
-> I have many questions now:
-> * Two PLLs are apparently brought up, but which one is the right one?!
->    * Is the LVDS PLL really used for DisplayPort? (dpi0_sel)
-
-Seems to be LVDS
-
-                                  enable  prepare  protect                                duty  hardware
-    clock                          count    count    count        rate   accuracy phase  cycle    enable
--------------------------------------------------------------------------------------------------------
-  clk26m                              18       19        1    26000000          0     0         Y
-     vpll_dpix                         1        1        0    75000000          0     0  50000         Y
-        mm_flvdstx_pxl                 0        0        0    75000000          0     0  50000         N
-        mm_dpi0_dpi0                   1        1        0    75000000          0     0  50000         Y
-        vpll_dpix_en                   0        0        0    75000000          0     0  50000         N
-     lvdspll                           1        1        0   283999497          0     0  50000         Y
-        lvdspll_d16                    0        0        0    17749968          0     0  50000         Y
-        lvdspll_d8                     0        0        0    35499937          0     0  50000         Y
-        lvdspll_d4                     0        0        0    70999874          0     0  50000         Y
-        lvdspll_d2                     1        1        0   141999748          0     0  50000         Y
-           dpi0_sel                    1        1        0   141999748          0     0  50000         Y
-           dpi1_sel                    0        0        0   141999748          0     0  50000         N
-     mmpll                             1        1        0   456999909          0     0  50000         Y
-        mmpll_ck                       1        1        0   456999909          0     0  50000         Y
-           mm_sel                     15       15        0   456999909          0     0  50000         Y
-              mm_dpi0                  1        1        0   456999909          0     0  50000         Y
-
-
-
-> * Are you sure that CLK_MM_DPI0_DPI0's parent shouldn't be dpi0_sel 
-> instead?
-
-I'm agree with you. After few change, it works.
-
--       GATE_MM0(CLK_MM_DPI0_DPI0, "mm_dpi0_dpi0", "vpll_dpix", 20),
-+       GATE_MM0(CLK_MM_DPI0_DPI0, "mm_dpi0_dpi0", "dpi0_sel", 20),
-
--                       clocks = <&topckgen CLK_TOP_DPI0_SEL>,
-+                       clocks = <&mmsys CLK_MM_DPI0_DPI0>,
-
-
-                                  enable  prepare  protect                                duty  hardware
-    clock                          count    count    count        rate   accuracy phase  cycle    enable
--------------------------------------------------------------------------------------------------------
-     vpll_dpix                        0       0        0        75000000    0          0     50000      Y
-        mm_flvdstx_pxl                0       0        0        75000000    0          0     50000      N
-        vpll_dpix_en                  0       0        0        75000000    0          0     50000      N
-
-     lvdspll                          1       1        0        283999497   0          0     50000      Y
-        lvdspll_d16                   0       0        0        17749968    0          0     50000      Y
-        lvdspll_d8                    0       0        0        35499937    0          0     50000      Y
-        lvdspll_d4                    0       0        0        70999874    0          0     50000      Y
-        lvdspll_d2                    1       1        0        141999748   0          0     50000      Y
-           dpi0_sel                   1       1        0        141999748   0          0     50000      Y
-              mm_dpi0_dpi0            1       1        0        141999748   0          0     50000      Y
-           dpi1_sel                   0       0        0        141999748   0          0     50000      N
-
-     mmpll                            1       1        0        456999909   0          0     50000      Y
-        mmpll_d2                      0       0        0        228499954   0          0     50000      Y
-        mmpll_ck                      1       1        0        456999909   0          0     50000      Y
-           mm_sel                     15      15       0        456999909   0          0     50000      Y
-              mm_dpi0                 1       1        0        456999909   0          0     50000      Y
-
-
-> * Where is DPI1 in this SoC? Why is there a dpi1_sel clock, but no MM clock
->    for the DPI1 controller? Is there any DPI1 controller, even?!
-
-DPI1 isn't documented.
-
->    * Why is there a DPI1 MUX, if there's no DPI1 controller?!
-
-Good question, I don't know. Legacy of the downstream code.
-
-That will be fixed for the next version.
-
--- 
-Regards,
-Alexandre
+--=20
+Luiz Augusto von Dentz
 
