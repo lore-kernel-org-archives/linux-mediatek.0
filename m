@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3B94C4345F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Apr 2024 07:30:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AC53C4345F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Apr 2024 07:32:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cQoXqxQGz5UdNS/uHt9iOu3c65OCBEQl1AjepevvRYw=; b=XG9fXzCYN0Aij4yMKI/+2ncyQ0
-	242ppELWuGhIVP9aiYyhqCwNoRtZPsA8rlG452LrduEyA6PU4i9UCiMYFodQBb0lvKr3RkfvORlf/
-	+9qb1k9aqbLVoAxPFxYCx55lX2ySM1QaFy7bfnE9Oi8lvcQDw4d9Zu+5Ajb4Ge7oEnvG0rUcN9Wan
-	NGaLjo6LmJvKnzgEXzjvBgKyRoAVaxDT7qPluV3QW/GuIo4jsXm0wPDgWAtwYpW7AjnH7OmhES/Rh
-	t0CwZa0ggKmpFlnXAOeBlZ3CoJBTthTP61gRkbk24ISxr+ypdxEY04KSoTVs1GNdz5SNF6UC5gOwq
-	rW7IcX5w==;
+	bh=8R9bVOGo16amHaHdQgn3vohiOg/80cUEYV+3t7qlHzM=; b=osqsBeaqoewHROhwqbU2WLDYSR
+	vzUCijn3WfnCP7cX7tNXywfjxHV7Ndof+ewDXnphj7YZP4MwcVV4wHOHcbsjyCqYM0XvW/tVko4JA
+	vktkcg1WSZ1qec453tTTur1GusT3jOD50Gz2iGZaH0noZVsnmx9l/cqftZtberxahnaE6IVB9lIXt
+	nxIVKOPbBzZxG6dJsXUGJ4w8XN2xmAwfLucjIX96dKZ4G8Ev4lntvAEFuP9XIE4bkzjw4oKu3TaHm
+	n75Y6+xVHRAWKI5kEJ19J9ei3OhlF/EVkqQ4fK+EIxSaGiwTu4toTkn8DhIL4G2JXAcW8iFLE1COe
+	yAlctK2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwdGt-0000000BHCY-0rZo;
-	Tue, 16 Apr 2024 07:30:27 +0000
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+	id 1rwdIp-0000000BHnp-0U4u;
+	Tue, 16 Apr 2024 07:32:27 +0000
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwdGk-0000000BH9e-0g1w
+	id 1rwdIk-0000000BHln-2xWP
 	for linux-mediatek@lists.infradead.org;
-	Tue, 16 Apr 2024 07:30:22 +0000
-Received: by mail-ej1-x62e.google.com with SMTP id a640c23a62f3a-a4715991c32so515466566b.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 16 Apr 2024 00:30:17 -0700 (PDT)
+	Tue, 16 Apr 2024 07:32:24 +0000
+Received: by mail-ed1-x529.google.com with SMTP id 4fb4d7f45d1cf-56e477db7fbso6416098a12.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 16 Apr 2024 00:32:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1713252616; x=1713857416; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1713252739; x=1713857539; darn=lists.infradead.org;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=cQoXqxQGz5UdNS/uHt9iOu3c65OCBEQl1AjepevvRYw=;
-        b=fTWXbKyWTlB5T+dd5qcb2eiWVgtufJgPC6FBOq39jON889TJDaiWBidwmGUz3Hgiph
-         XQCj6ewGxnNFSXcROzHEASQw0SDKeRo/EZMd6OXpuOOJ65kZJJz3T8LmOHjtc3dJZXVa
-         bNdsvMjwU1Gv3THqbK/NssS+l+XaUZ5U9cunr97uzAf7/gfjPmkceQpPxnhejcOyoO69
-         GfegkiQWaaivwEztEr8bqZ+FmU11c+GdiSfVKAX0s2Tr8O+9XMtbwrxI6VZISjzAe0K1
-         AczH3WWwQQVCoywtsigd/BtyHJkAyfHTgNdeJ+l+Eq34IJ0Zunx2tRUj18/4+41OG4CJ
-         vnSQ==
+        bh=8R9bVOGo16amHaHdQgn3vohiOg/80cUEYV+3t7qlHzM=;
+        b=o72rVJl23Tqd+AD/gesWyDmOnOfS3KCioxwrq1W+2FkmL0nJlAykH1Q10hdf8zxenw
+         ah4FKJJ+fXr8EkojOvw9Ke1XCvArqPcw1nZU4Y1MkvuKBNKLvpZloARkg91YWo55vkOF
+         oRMZFGlEIaiEYMu+rXTCkLhaDXDossJ9/4mGAjpjCfNPD+TWM8dLzQ5SOtvXkMO7dkv5
+         BKCWIhgCjBxK1nLz1EovaKrfb/zNfmcV3Ub7cRGuixsvNU9cdP2azSAnsUrYWbFLoRn1
+         PFrga0Ix0s5D3b55PMacxgnTm0ZlXjkrszIKtOsVFTKZzmIdjAWLmfnpJuDQ602SkPag
+         LLOQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713252616; x=1713857416;
+        d=1e100.net; s=20230601; t=1713252739; x=1713857539;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=cQoXqxQGz5UdNS/uHt9iOu3c65OCBEQl1AjepevvRYw=;
-        b=NIyOd9itcOLLLIYR13SI47bwR51T5JzFgtpNbzSS0H/bA8QfTKIjeEquoBPwJghSvo
-         4jz0QVVLApW9jS8SkmfvIbSuGE/LcMbkYpK5GqoUPOSWozsiDdwO4C05aLRNeZOjSBWy
-         /w/sJQwPx81dJsU1w9EAzTikiN907QCb2cPwqyqyHPmOa+25FPmlUeYQtX2g7JkSXmtC
-         CrXBgVOMTTyxCdcX4m0L+IEtyIzdb2bT3n3qJX/cw4xiiIL3Lv9Y73Y/weG/MStGT/Nd
-         vcr2WnoCHARCm4tfLzVxT2syeCjWVQOwIuyHeC21AFVRfgASl9fmuVnuqinlY8io6C2w
-         GNXw==
-X-Forwarded-Encrypted: i=1; AJvYcCUaC89Cj0YxyatUsM57+1vVHzCaJ/EeLfHCzotJLzlYh846Fu7J8rhkIVvkXBSKAsjWFPUhg5SklSUhpibZLahBOBtx5BpgtsLZWBkrAZaVCf9R
-X-Gm-Message-State: AOJu0YxmV5F/BKZzUdvjfYh2cfB7fYscnNfwCjj1cPHJWiYqCce7YXlx
-	BfiitSHPKY0jOCvl9xKjYqVvbUXvAaGbuYieFW2iAQhcRHnLvsYrZMt9INqYC3o=
-X-Google-Smtp-Source: AGHT+IES0flyaPsDqcItqmrdcMlT/9HhmNC59nIBd1+qe6iKBoJLQjAdExVi7n8xHc0r8DPQuGmsnQ==
-X-Received: by 2002:a17:906:fd89:b0:a52:24b7:b4fc with SMTP id xa9-20020a170906fd8900b00a5224b7b4fcmr9643955ejb.72.1713252616011;
-        Tue, 16 Apr 2024 00:30:16 -0700 (PDT)
+        bh=8R9bVOGo16amHaHdQgn3vohiOg/80cUEYV+3t7qlHzM=;
+        b=F/CgfjLTzPRUhQB+8ypzRubCf04ZUs9yE366/HvkyPZEj+907wCCS3W4UEBp5c4A4P
+         /fgyc4cvefPAIbrzbiAKRXDrTBTek4dymmNJdqbwuOolcHZjTh1xzw5p6mzBC4kQ+CDo
+         mXKtQyfQf8q9nhWxKxmI9p2kpkvFwF9KUbsjtkBCWaxOv94JkZT91CZTFBzube9M7IQq
+         jb20eWS0m+0cLDZXJUgi2ZSBpTZQKVUJGxVaYgcFMaAsOpsOixD7TRHYitK9orSAGVI1
+         Pi3KyPZ7YRQEwrby40ccJ1/5gM5eusnNZSqkgMaQHrADOEiQ/VXwRE+XaQjCVCxSRrqG
+         q+tQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUOBWBrHCzJt4a8xaYJ6f5FunnCL0syG/pyDNpjC53FItuPrlL6iidu6h1gpmQCvhg/2sf0KGX9EnyvDPjDD2z8ae2PINCviz8VdOXv2Pde6wag
+X-Gm-Message-State: AOJu0YwNUaW3TH/mi0i/XPohJPYuh7jHG1R4TNm5NnZRCfeIArrBKW1Z
+	RGCfSLx4rFvrPVahyASTvix2e1qZ210+aNC3bHYJp/aQ05iq4iYeiL1RZ57ASIU=
+X-Google-Smtp-Source: AGHT+IEiSwmXJXJlRrwBTxtu6/XHomvPQRR0BAqxebaWeb0WkKlHDct2PHGh5ytZktKV5zyNXHYwQg==
+X-Received: by 2002:a17:906:57d6:b0:a52:6c4e:25ae with SMTP id u22-20020a17090657d600b00a526c4e25aemr2620587ejr.44.1713252739010;
+        Tue, 16 Apr 2024 00:32:19 -0700 (PDT)
 Received: from localhost ([102.222.70.76])
-        by smtp.gmail.com with ESMTPSA id h14-20020a1709070b0e00b00a518c69c4e3sm6421654ejl.23.2024.04.16.00.30.14
+        by smtp.gmail.com with ESMTPSA id qb11-20020a1709077e8b00b00a51ab065bf0sm6421883ejc.202.2024.04.16.00.32.18
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 16 Apr 2024 00:30:15 -0700 (PDT)
-Date: Tue, 16 Apr 2024 10:30:11 +0300
+        Tue, 16 Apr 2024 00:32:18 -0700 (PDT)
+Date: Tue, 16 Apr 2024 10:32:14 +0300
 From: Dan Carpenter <dan.carpenter@linaro.org>
 To: Ricardo Ribalda <ribalda@chromium.org>
 Cc: Martin Tuma <martin.tuma@digiteqautomotive.com>,
@@ -106,17 +106,17 @@ Cc: Martin Tuma <martin.tuma@digiteqautomotive.com>,
 	linux-arm-kernel@lists.infradead.org, linux-staging@lists.linux.dev,
 	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
 	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org
-Subject: Re: [PATCH 06/35] media: stm32-dcmipp: Remove redundant printk
-Message-ID: <cd4aac19-c4cf-4db0-a18c-42f1bf1441a8@moroto.mountain>
+Subject: Re: [PATCH 02/35] media: stb0899: Remove unreacheable code
+Message-ID: <e5824d5b-9aa4-4b92-91a4-7e26de8b293d@moroto.mountain>
 References: <20240415-fix-cocci-v1-0-477afb23728b@chromium.org>
- <20240415-fix-cocci-v1-6-477afb23728b@chromium.org>
+ <20240415-fix-cocci-v1-2-477afb23728b@chromium.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240415-fix-cocci-v1-6-477afb23728b@chromium.org>
+In-Reply-To: <20240415-fix-cocci-v1-2-477afb23728b@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240416_003018_308534_57328AE2 
-X-CRM114-Status: GOOD (  17.97  )
+X-CRM114-CacheID: sfid-20240416_003222_829308_3AF42782 
+X-CRM114-Status: GOOD (  15.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -131,40 +131,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 15, 2024 at 07:34:23PM +0000, Ricardo Ribalda wrote:
-> platform_get_irq() already prints an error message.
+On Mon, Apr 15, 2024 at 07:34:19PM +0000, Ricardo Ribalda wrote:
+> chip_id is an unsigned number, it can never be < 0
 > 
-> Found by cocci:
-> drivers/media/platform/st/stm32/stm32-dcmipp/dcmipp-core.c:444:3-10: line 444 is redundant because platform_get_irq() already prints an error
+> Fixes cocci check:
+> drivers/media/dvb-frontends/stb0899_drv.c:1280:8-15: WARNING: Unsigned expression compared with zero: chip_id > 0
 > 
 > Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 > ---
->  drivers/media/platform/st/stm32/stm32-dcmipp/dcmipp-core.c | 5 +----
->  1 file changed, 1 insertion(+), 4 deletions(-)
+>  drivers/media/dvb-frontends/stb0899_drv.c | 5 -----
+>  1 file changed, 5 deletions(-)
 > 
-> diff --git a/drivers/media/platform/st/stm32/stm32-dcmipp/dcmipp-core.c b/drivers/media/platform/st/stm32/stm32-dcmipp/dcmipp-core.c
-> index bce821eb71ce..c25027b0ca32 100644
-> --- a/drivers/media/platform/st/stm32/stm32-dcmipp/dcmipp-core.c
-> +++ b/drivers/media/platform/st/stm32/stm32-dcmipp/dcmipp-core.c
-> @@ -439,11 +439,8 @@ static int dcmipp_probe(struct platform_device *pdev)
->  				     "Could not get reset control\n");
->  
->  	irq = platform_get_irq(pdev, 0);
-> -	if (irq <= 0) {
-> -		if (irq != -EPROBE_DEFER)
-> -			dev_err(&pdev->dev, "Could not get irq\n");
-> +	if (irq <= 0)
->  		return irq ? irq : -ENXIO;
+> diff --git a/drivers/media/dvb-frontends/stb0899_drv.c b/drivers/media/dvb-frontends/stb0899_drv.c
+> index 2f4d8fb400cd..222b5476ebfd 100644
+> --- a/drivers/media/dvb-frontends/stb0899_drv.c
+> +++ b/drivers/media/dvb-frontends/stb0899_drv.c
+> @@ -1277,11 +1277,6 @@ static int stb0899_get_dev_id(struct stb0899_state *state)
+>  	dprintk(state->verbose, FE_ERROR, 1, "Demodulator Core ID=[%s], Version=[%d]", (char *) &demod_str, demod_ver);
+>  	CONVERT32(STB0899_READ_S2REG(STB0899_S2FEC, FEC_CORE_ID_REG), (char *)&fec_str);
+>  	fec_ver = STB0899_READ_S2REG(STB0899_S2FEC, FEC_VER_ID_REG);
+> -	if (! (chip_id > 0)) {
 
-platform_get_irq() can never return zero so this should be written as:
-
-	irq = platform_get_irq(pdev, 0);
-	if (irq < 0)
-		return irq;
-
-There is a comment next to platform_get_irq() which documents this.
+This is not dead code.  It's possible for chip_id to be equal to 0.
 
 regards,
 dan carpenter
+
+> -		dprintk(state->verbose, FE_ERROR, 1, "couldn't find a STB 0899");
+> -
+> -		return -ENODEV;
+> -	}
+>  	dprintk(state->verbose, FE_ERROR, 1, "FEC Core ID=[%s], Version=[%d]", (char*) &fec_str, fec_ver);
 
 
