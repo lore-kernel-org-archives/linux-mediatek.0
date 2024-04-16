@@ -4,66 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9AC8DC4345F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Apr 2024 16:33:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38303C4345F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Apr 2024 16:33:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
 	References:In-Reply-To:Cc:To:From:MIME-Version:Content-Transfer-Encoding:
 	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/mA1YEbRtC/CRaf940SL9ULAYtBGFjq9Y6wFyIptv4c=; b=ZHXrmFkeO0kLEGbmfT1RYKP1i4
-	mpvEGTZ5YavGfQ/uJaJ7d3fD94kbz/PfZuYcAeDiLdOp6hMOSWoQyus0WGczk1OUCWLD7TPHGOSLc
-	Q0FCdmLaN2Z1ON9UuGF6d9FNyLfTjqCxZQPCjW1aJ2oaEbxXhvB08ikL5WWIAyfsob1lDffjZi/0y
-	osClMoke91KDF4IWtijQM74l8bbFREQkRqKR4TgWcirqA/JsSf5NFY8QAJ7JEcSJSnxzLYHVGvl2n
-	VBKcUbJ5/5HVtsj4kFk7C6hF31rjaOwvVRnVDZpNuX7WUnoAdV4FPzGjNaSHxqZ1mEY24yrNGAszh
-	eX1Z16VA==;
+	bh=ZRDVyPPXF1WI10i9RJCHPuWc/F3jFHZVmbY8FquwWRI=; b=rUvx5LKtuAQ3P/IG2cOdgxw+7g
+	FCWtwl3ZTASarSrDwqB3Ozsoz0zUMoUT4n1k9ArUBhMKxeFK8THHi0i4vU+N/9fiMAwDHkqu6W/x7
+	H6UydI1M2V39HAbX/hdZjIgN618yMz/8K3cm8duoVPDilkS3pGRHs4cV1d4yGW2iuGbkb9FL3L71U
+	tqzc0yCwrePYnPv9VKFd7J0nn+LCoqtrLQbmaFXe0ruhe8/WY8fWa57l0x8MfCPR6zxXE6KKiGNHK
+	dtAEx6RuJLPtMC/vvdB+Gr4q5biedEboGEKLJjJnp5Ooiy4ytKRu9dl/C4JVJkMXmrhyuCqefGWtF
+	HJaMVOhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwlkA-0000000D24Y-01dt;
-	Tue, 16 Apr 2024 16:33:14 +0000
+	id 1rwlkK-0000000D2BI-3HrY;
+	Tue, 16 Apr 2024 16:33:24 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwlk4-0000000D21r-1ev6;
-	Tue, 16 Apr 2024 16:33:10 +0000
+	id 1rwlk7-0000000D23M-413x;
+	Tue, 16 Apr 2024 16:33:13 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id A2F2361259;
-	Tue, 16 Apr 2024 16:33:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2D243C2BD10;
-	Tue, 16 Apr 2024 16:33:07 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 0DC7561262;
+	Tue, 16 Apr 2024 16:33:10 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9CCFFC4AF07;
+	Tue, 16 Apr 2024 16:33:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1713285187;
-	bh=10WnQNId+Y5d5f+aR4s4gUOkQlkagdBYHfATkPI0LyI=;
+	s=k20201202; t=1713285189;
+	bh=csn7plls86qJ8MjwV9+WAk2lo/ZQ8CZ8NeCgBsin5as=;
 	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
-	b=pGvdWpIVXlbCicg6uf72xABxgaKkoNZ8cfAv19WxMB6ZBawWZrDCSUfksff3Saqmm
-	 ix9GTX9QME7c1kK+FHpxlQu+BJgcqhvtelEvJt5T12oiMOKDf/vyNyrsjN/sPqLCQP
-	 Jt6D3yRuj3j8niO44bBrOQF/LWRlgcSGwFLdhZCqbuzthaMS7/a6uD3h4eXN17ujcg
-	 WgGI1TBAwHLRT6avrhmyfgEBcUU3Bgx+mvRPn6aOVqq2+B2ns7QIVxMO/XC6g/YJQd
-	 Nq8qNXdyW7+PziEFFBewiAhG9W848P2r0ejDxQXpu8RO8ouNTm1oq7EH+G2/BFPEiy
-	 X8EnERjZABDfg==
-Date: Tue, 16 Apr 2024 11:33:06 -0500
+	b=rQyW1gQ2aTwQ7NA6zNzj3giMhcljJKR2udqs3R+6U1Y9gwNOi/Q+0MpydxT1cAKlf
+	 nCsXhvblkJWA1eyEG2mi71RSPas1rDhw/uxo3djlYSPy/PMp24Yc2o+iFXM5UhtO4C
+	 6O7bNVJF8pNPBeHWz1qTI/Q0W8gVUj9lldcz+7YpBCL93cC3s88HjS9EU2KqUXXml4
+	 AWT9nFQ2G389P91LjRAEwEicsExFOwrxLDVP5C6WA1ildYRX/FxkBEepWt1rpXZQmZ
+	 D2Dhs0aa8uR2qfqzWrNYYm8joFv5+omdUh3NnLk3elEeVl7BdutrzkFZAgoG+ks2gg
+	 JahbvMbvfN9eg==
+Date: Tue, 16 Apr 2024 11:33:08 -0500
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 MIME-Version: 1.0
 From: Rob Herring <robh@kernel.org>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: keescook@chromium.org, gustavoars@kernel.org, 
- devicetree@vger.kernel.org, djakov@kernel.org, henryc.chen@mediatek.com, 
- linux-pm@vger.kernel.org, wenst@chromium.org, 
- linux-arm-kernel@lists.infradead.org, amergnat@baylibre.com, 
- matthias.bgg@gmail.com, lgirdwood@gmail.com, 
- krzysztof.kozlowski+dt@linaro.org, linux-mediatek@lists.infradead.org, 
- kernel@collabora.com, linux-kernel@vger.kernel.org, conor+dt@kernel.org, 
- broonie@kernel.org
-In-Reply-To: <20240416153805.431118-3-angelogioacchino.delregno@collabora.com>
+Cc: amergnat@baylibre.com, keescook@chromium.org, broonie@kernel.org, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ krzysztof.kozlowski+dt@linaro.org, linux-arm-kernel@lists.infradead.org, 
+ lgirdwood@gmail.com, conor+dt@kernel.org, linux-pm@vger.kernel.org, 
+ linux-mediatek@lists.infradead.org, kernel@collabora.com, 
+ henryc.chen@mediatek.com, gustavoars@kernel.org, wenst@chromium.org, 
+ djakov@kernel.org, matthias.bgg@gmail.com
+In-Reply-To: <20240416153805.431118-4-angelogioacchino.delregno@collabora.com>
 References: <20240416153805.431118-1-angelogioacchino.delregno@collabora.com>
- <20240416153805.431118-3-angelogioacchino.delregno@collabora.com>
-Message-Id: <171328518448.2610972.14839354170690825161.robh@kernel.org>
-Subject: Re: [PATCH v1 2/6] dt-bindings: interconnect: Add MediaTek EMI
- Interconnect bindings
+ <20240416153805.431118-4-angelogioacchino.delregno@collabora.com>
+Message-Id: <171328518502.2611010.15541241533158451489.robh@kernel.org>
+Subject: Re: [PATCH v1 3/6] dt-bindings: regulator: Add bindings for
+ MediaTek DVFSRC Regulators
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240416_093308_512136_206D8A41 
-X-CRM114-Status: GOOD (  10.81  )
+X-CRM114-CacheID: sfid-20240416_093312_273295_D337BF13 
+X-CRM114-Status: GOOD (  12.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,35 +78,39 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-On Tue, 16 Apr 2024 17:38:01 +0200, AngeloGioacchino Del Regno wrote:
-> Add bindings for the MediaTek External Memory Interface Interconnect,
-> which providers support system bandwidth requirements through Dynamic
-> Voltage Frequency Scaling Resource Collector (DVFSRC) hardware.
+On Tue, 16 Apr 2024 17:38:02 +0200, AngeloGioacchino Del Regno wrote:
+> The Dynamic Voltage and Frequency Scaling Resource Collector Regulators
+> are controlled with votes to the DVFSRC hardware.
 > 
-> This adds bindings for MediaTek MT8183 and MT8195 SoCs.
+> This adds support for the regulators found in MT6873, MT8183, MT8192
+> and MT8195 SoCs.
 > 
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
->  .../interconnect/mediatek,mt8183-emi.yaml     | 76 +++++++++++++++++++
->  .../interconnect/mediatek,mt8183.h            | 23 ++++++
->  .../interconnect/mediatek,mt8195.h            | 44 +++++++++++
->  3 files changed, 143 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/interconnect/mediatek,mt8183-emi.yaml
->  create mode 100644 include/dt-bindings/interconnect/mediatek,mt8183.h
->  create mode 100644 include/dt-bindings/interconnect/mediatek,mt8195.h
+>  .../mediatek,mt6873-dvfsrc-regulator.yaml     | 71 +++++++++++++++++++
+>  1 file changed, 71 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6873-dvfsrc-regulator.yaml
 > 
 
 My bot found errors running 'make dt_binding_check' on your patch:
 
 yamllint warnings/errors:
+./Documentation/devicetree/bindings/regulator/mediatek,mt6873-dvfsrc-regulator.yaml:5:10: [error] string value is redundantly quoted with any quotes (quoted-strings)
 
 dtschema/dtc warnings/errors:
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/interconnect/mediatek,mt8183-emi.example.dtb: dvfsrc@10012000: '#address-cells', '#size-cells' do not match any of the regexes: '@[0-9a-f]+$', 'pinctrl-[0-9]+'
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/regulator/mediatek,mt6873-dvfsrc-regulator.yaml: $id: Cannot determine base path from $id, relative path/filename doesn't match actual path or filename
+ 	 $id: http://devicetree.org/schemas/soc/mediatek/mediatek,mt6873-dvfsrc-regulator.yaml
+ 	file: /builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/regulator/mediatek,mt6873-dvfsrc-regulator.yaml
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/regulator/mediatek,mt6873-dvfsrc-regulator.example.dtb: dvfsrc@10012000: '#address-cells', '#size-cells' do not match any of the regexes: '@[0-9a-f]+$', 'pinctrl-[0-9]+'
 	from schema $id: http://devicetree.org/schemas/soc/mediatek/mediatek,mt8183-dvfsrc.yaml#
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/regulator/mediatek,mt6873-dvfsrc-regulator.example.dtb: regulators@0: dvfsrc-vcore: False schema does not allow {'regulator-name': ['dvfsrc-vcore'], 'regulator-min-microvolt': [[550000]], 'regulator-max-microvolt': [[750000]], 'regulator-always-on': True}
+	from schema $id: http://devicetree.org/schemas/soc/mediatek/mediatek,mt6873-dvfsrc-regulator.yaml#
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/regulator/mediatek,mt6873-dvfsrc-regulator.example.dtb: regulators@0: dvfsrc-vscp: False schema does not allow {'regulator-name': ['dvfsrc-vscp'], 'regulator-min-microvolt': [[550000]], 'regulator-max-microvolt': [[750000]], 'regulator-always-on': True}
+	from schema $id: http://devicetree.org/schemas/soc/mediatek/mediatek,mt6873-dvfsrc-regulator.yaml#
 
 doc reference errors (make refcheckdocs):
 
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20240416153805.431118-3-angelogioacchino.delregno@collabora.com
+See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20240416153805.431118-4-angelogioacchino.delregno@collabora.com
 
 The base for the series is generally the latest rc1. A different dependency
 should be noted in *this* patch.
