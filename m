@@ -4,80 +4,120 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E899C4345F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Apr 2024 07:55:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3860AC4345F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Apr 2024 07:57:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=J6/Ij2BI4KgUf4HBpyoT6OK7u+XCMXcU8fmDxwL4t8E=; b=nWWZe+8G4gFApo1dAniVc1o7Pl
-	wYvP57pRAD5jI8bSshojTNyZ/sB1GWP3DZv/aSZCVvLfCj7+Z48jQ0tCYrAMWsWoZ6bOFxxo+k/bf
-	m6QbZwa5BVZSz1xl/keU4puN9ixpGyD5xwWnYRw0wzTAbHF3MZanb7qk5pKhobT4MRESz6IKW/rSb
-	29l2HH21fPbz1rcyVmEQRFtE/PWAc6d3TjkqcDKiV+jv6o4HDEELDJvnL0GB13ctgQ+fMXCWeNJl+
-	V7G0rK1CiX+ZwCmGRPWX4Wc+vJLZPQ/dQyTPV/ompLsZ8jRg5RqPPvMYr1R9yk/gTqzbpuuKbxAbs
-	up4CF+PQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=4HIZb2nKPjLTTz62XK4VK6Iwqa3YIDFbrj0IrJZaoNI=; b=rJ+nk2h24jesKScStg7hjoKuyH
+	adi6Zh53UhK0vHZ8SRmr1EoN3T4dG8gTnM3SXoHcMJx6K5PIITaT2Qi6kJvWovEZvH7J8cZeoYY48
+	sB9yRU0aSipGVP3BydV07BgIZMyuQN6d3y/GSy4mDknFe68CWayIjds+9gJ2qLNo8aG7xAoyy1uQP
+	HBa9ZN2ioFGTDpZP2vRJhgdDfrFdtmpvSwZ8IMScBYnDZa/tYeiGowJ/+5W5nczP88rV3/OQSrq6B
+	aeOiUp7/JdJcVjxDlRnKDaNp7W6/a2F6zYyx+oC7lIGUHnBs95Zvr8w9WjI6bHPzYrDjekcmOI5kO
+	tisYjHnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwdf3-0000000BLV4-46kt;
-	Tue, 16 Apr 2024 07:55:25 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rwdgu-0000000BLyD-3gvr;
+	Tue, 16 Apr 2024 07:57:20 +0000
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwdf0-0000000BLUO-0Kxc;
-	Tue, 16 Apr 2024 07:55:23 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1713254119;
-	bh=/N51T8HnLQj9KU4DpUIGD0F8mipJ+bMfeUuzlyssn4Q=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=ndXtNV3hcFpkcNYJo8JuG7v+O3l6lDGNurA3lFy6h2pDZZGy9mMH3RXI7tSDsSIoj
-	 tf1QBfxFe2Mn0z9lpqVd8FGPlQRwoosatdNvPrBeSuv00uqnC5Gh6FZrn2Gtm/GakO
-	 idCukbxDYZrkjXV6mPP68/W6HO5+IwyITWJop/zr8XtkX82mWjBIWazunwNrfln70x
-	 o/UV/Qb6phNaxfZVtlYpsh21k0glAS8aO1MjzFDKMcxpRgnwfPmFykO8GgQ2YJvvTt
-	 4KJS4xnwBWGnKM37nTdEFYVoGo1F6cxlixLcN7vhV9FGQE25OjAVAD4luS1nHCFjkd
-	 /u/9FsyQeCQzw==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 225CB37804B2;
-	Tue, 16 Apr 2024 07:55:18 +0000 (UTC)
-Message-ID: <4d60e9e4-9eae-4b0a-abb2-b1ad3d278fc9@collabora.com>
-Date: Tue, 16 Apr 2024 09:55:17 +0200
+	id 1rwdgr-0000000BLwv-2Jzl
+	for linux-mediatek@lists.infradead.org;
+	Tue, 16 Apr 2024 07:57:19 +0000
+Received: by mail-ej1-x62c.google.com with SMTP id a640c23a62f3a-a5544fd07easo35315766b.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 16 Apr 2024 00:57:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1713254235; x=1713859035; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=4HIZb2nKPjLTTz62XK4VK6Iwqa3YIDFbrj0IrJZaoNI=;
+        b=dKQ1spO/kiVpCbYN4S7btIA3Wr4uxBAxWrwRCopHyopooUqmPFkA184+2AUdeuhZ27
+         hmm2nANV4i8G1MjvkD42nefVI/1G9jJjqGfr3MqMqhErrim0L/wdSKgdcEccnHA9bbxG
+         RnYJZ+d0JOPDzwuWsBQ7QfIJv/zR5RdLttWlYuaSdfL8JtiKMYeX89tR7yAZE6Ci9p0I
+         88sxQOFQDsxQbSsZIgwEIfTh4vs0r8caJDgNRzYvCZK6SvgdkPNrUdVlpetNbaiDngH/
+         JYK49tdFgsKudO+A3uT509LSaiI3ZTvr7CezIz0hmFskdarmEr8AflkKCep3kq9M+YIE
+         1W8w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1713254235; x=1713859035;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=4HIZb2nKPjLTTz62XK4VK6Iwqa3YIDFbrj0IrJZaoNI=;
+        b=HsUivPc0UZYul+5hhHKMRQM+9VmBH+7oVGKiK1l5WbDuf++5PnXroa+eKZaQ5iUmMD
+         kfWG+mhRJb6X3VMslQIgk18DAw6VCBdO0FeYbq6QRCcshOvC9XjXEMhmV/XqMUB5dM+P
+         5dLYbpWCOGv8l4Odj5sk8NfBgEOY/hqTqg+sXbEzeXHQomaxvboMLEfat/Nv/Gfm8nQb
+         1lhZbdDcRsOFiTp1hEkNWlYr3OoWbZ80klBgWbIUKoCBHPwI3aBft58Te7WOJ6veXYWS
+         4QEpL4s8PNSsWlvPtOkf3jjS63mgA7Gpzx0xBfycqfjU62RoA9WZr5X6WQJb1Jglgo50
+         ZBIw==
+X-Forwarded-Encrypted: i=1; AJvYcCUYlQQXYr4Ve0pIVXqrIybOiKitK3Apzzuep9NDKxEVlHmEv/WMhjkPHBmqnzY6hZlqWaWFoewBLlAmG9dPYykxiiiq0IgbfIU7ciZZiAWc2ndC
+X-Gm-Message-State: AOJu0YzIPsO2xlPLYiZAgtZPHH9X4T32x6Qz/SmUDQOPxSs3xdHSPqVe
+	wKnjcl+tHtfgfrcrytJKSU+F2bN0CZaZJptx4GFRlO14bmEqAa2GEnQN64SHDCg=
+X-Google-Smtp-Source: AGHT+IFmYom8ca5REWXBouKNnF3JyRoh/X3BZipPWdBTLAjIHlxGuqZNeTPobNF+ISHRPd4L/JQwdg==
+X-Received: by 2002:a17:907:764c:b0:a52:57ad:63d0 with SMTP id kj12-20020a170907764c00b00a5257ad63d0mr4228551ejc.20.1713254234712;
+        Tue, 16 Apr 2024 00:57:14 -0700 (PDT)
+Received: from localhost ([102.222.70.76])
+        by smtp.gmail.com with ESMTPSA id kf20-20020a17090776d400b00a51e9b299b9sm6444928ejc.55.2024.04.16.00.57.13
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 16 Apr 2024 00:57:14 -0700 (PDT)
+Date: Tue, 16 Apr 2024 10:57:10 +0300
+From: Dan Carpenter <dan.carpenter@linaro.org>
+To: Ricardo Ribalda <ribalda@chromium.org>
+Cc: Martin Tuma <martin.tuma@digiteqautomotive.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	Hugues Fruchet <hugues.fruchet@foss.st.com>,
+	Alain Volmat <alain.volmat@foss.st.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Sowjanya Komatineni <skomatineni@nvidia.com>,
+	Luca Ceresoli <luca.ceresoli@bootlin.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Hans Verkuil <hverkuil@xs4all.nl>, Sergey Kozlov <serjk@netup.ru>,
+	Abylay Ospan <aospan@netup.ru>,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Dmitry Osipenko <digetx@gmail.com>,
+	Stanimir Varbanov <stanimir.k.varbanov@gmail.com>,
+	Vikash Garodia <quic_vgarodia@quicinc.com>,
+	Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Benjamin Mugnier <benjamin.mugnier@foss.st.com>,
+	Sylvain Petinot <sylvain.petinot@foss.st.com>,
+	Jacopo Mondi <jacopo+renesas@jmondi.org>,
+	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
+	Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
+	Niklas =?iso-8859-1?Q?S=F6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
+	Pavel Machek <pavel@ucw.cz>, linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-arm-kernel@lists.infradead.org, linux-staging@lists.linux.dev,
+	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org
+Subject: Re: [PATCH 21/35] media: venus: Use div64_u64
+Message-ID: <99b220ad-79e4-4920-9e90-6cd6a3349bb3@moroto.mountain>
+References: <20240415-fix-cocci-v1-0-477afb23728b@chromium.org>
+ <20240415-fix-cocci-v1-21-477afb23728b@chromium.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 3/8] scsi: ufs: ufs-mediatek: Remove useless
- mediatek,ufs-boost-crypt property
-To: =?UTF-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>,
- "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "avri.altman@wdc.com" <avri.altman@wdc.com>,
- "bvanassche@acm.org" <bvanassche@acm.org>,
- "martin.petersen@oracle.com" <martin.petersen@oracle.com>,
- "broonie@kernel.org" <broonie@kernel.org>,
- "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
- "conor+dt@kernel.org" <conor+dt@kernel.org>,
- "robh@kernel.org" <robh@kernel.org>,
- "lgirdwood@gmail.com" <lgirdwood@gmail.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>
-References: <20240415110012.148871-1-angelogioacchino.delregno@collabora.com>
- <20240415110012.148871-4-angelogioacchino.delregno@collabora.com>
- <c9634a286fbdb4c98a7fe6703a4eb10d66dfcb9e.camel@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <c9634a286fbdb4c98a7fe6703a4eb10d66dfcb9e.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240415-fix-cocci-v1-21-477afb23728b@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240416_005522_303280_5406F56C 
-X-CRM114-Status: GOOD (  26.91  )
+X-CRM114-CacheID: sfid-20240416_005717_747855_ED07D5C2 
+X-CRM114-Status: UNSURE (   7.81  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,179 +132,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 16/04/24 09:03, Peter Wang (王信友) ha scritto:
-> On Mon, 2024-04-15 at 13:00 +0200, AngeloGioacchino Del Regno wrote:
->> There is no need to have a property that activates the inline crypto
->> boost feature, as this needs many things: a regulator, three clocks,
->> and the mediatek,boost-crypt-microvolt property to be set.
->>
->> If any one of these is missing, the feature won't be activated,
->> hence, it is useless to have yet one more property to enable that.
->>
->> While at it, also address another two issues:
->> 1. Give back the return value to the caller and make sure to fail
->>     probing if we get an -EPROBE_DEFER or -ENOMEM; and
->> 2. Free the ufs_mtk_crypt_cfg structure allocated in the crypto
->>     boost function if said functionality could not be enabled because
->>     it's not supported, as that'd be only wasted memory.
->>
->> Last but not least, move the devm_kzalloc() call for
->> ufs_mtk_crypt_cfg
->> to after getting the dvfsrc-vcore regulator and the boost microvolt
->> property, as if those fail there's no reason to even allocate that.
->>
->> Fixes: ac8c2459091c ("scsi: ufs-mediatek: Decouple features from
->> platform bindings")
->> Signed-off-by: AngeloGioacchino Del Regno <
->> angelogioacchino.delregno@collabora.com>
->> ---
->>   drivers/ufs/host/ufs-mediatek.c | 55 ++++++++++++++++++-------------
->> --
->>   1 file changed, 30 insertions(+), 25 deletions(-)
->>
->> diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-
->> mediatek.c
->> index 688d85909ad6..47f16e6720f4 100644
->> --- a/drivers/ufs/host/ufs-mediatek.c
->> +++ b/drivers/ufs/host/ufs-mediatek.c
->> @@ -575,51 +575,55 @@ static int ufs_mtk_init_host_clk(struct ufs_hba
->> *hba, const char *name,
->>   	return ret;
->>   }
->>   
->> -static void ufs_mtk_init_boost_crypt(struct ufs_hba *hba)
->> +static int ufs_mtk_init_boost_crypt(struct ufs_hba *hba)
->>   {
->>   	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
->>   	struct ufs_mtk_crypt_cfg *cfg;
->>   	struct device *dev = hba->dev;
->>   	struct regulator *reg;
->>   	u32 volt;
->> -
->> -	host->crypt = devm_kzalloc(dev, sizeof(*(host->crypt)),
->> -				   GFP_KERNEL);
->> -	if (!host->crypt)
->> -		goto disable_caps;
->> +	int ret;
->>   
->>   	reg = devm_regulator_get_optional(dev, "dvfsrc-vcore");
->>   	if (IS_ERR(reg)) {
->> -		dev_info(dev, "failed to get dvfsrc-vcore: %ld",
->> -			 PTR_ERR(reg));
->> -		goto disable_caps;
->> +		ret = PTR_ERR(reg);
->> +		if (ret == -EPROBE_DEFER)
->> +			return ret;
->> +
->> +		return 0;
->>   	}
->>   
->> -	if (of_property_read_u32(dev->of_node, "mediatek,boost-crypt-
->> microvolt",
->> -				 &volt)) {
->> +	ret = of_property_read_u32(dev->of_node, "mediatek,boost-crypt-
->> microvolt", &volt);
->> +	if (ret) {
->>   		dev_info(dev, "failed to get mediatek,boost-crypt-
->> microvolt");
->> -		goto disable_caps;
->> +		return 0;
->>   	}
->>   
->> +	host->crypt = devm_kzalloc(dev, sizeof(*host->crypt),
->> GFP_KERNEL);
->> +	if (!host->crypt)
->> +		return -ENOMEM;
->> +
->>
-> 
-> Hi Angelo,
-> 
-> If retrun -ENOMEN, host will init fail.
-> But previous is skip boost crypt feature only.
-> It change the driver behavior.
+On Mon, Apr 15, 2024 at 07:34:38PM +0000, Ricardo Ribalda wrote:
+> us_per_frame does not fit in 32 bits. Use the appropriate div function.
 > 
 
-This is fully intentional: if a platform supports boost-crypt, this means that the
-feature *MUST* be enabled, and must *not* be disabled if a memory allocation fails,
-as that is relative to available pages at boot, and not to SoC feature support.
+Really?  It's less than one frame per second?
 
-Keep in mind that the allocation was moved to *after* checking if such platform
-does indeed support the boost-crypt feature, and it is critical to FAIL probing
-if there was no memory to allocate the host->crypt structure.
+regards,
+dan carpenter
 
-> 
-> 
-> 
->>   	cfg = host->crypt;
->> -	if (ufs_mtk_init_host_clk(hba, "crypt_mux",
->> -				  &cfg->clk_crypt_mux))
->> -		goto disable_caps;
->> +	ret = ufs_mtk_init_host_clk(hba, "crypt_mux", &cfg-
->>> clk_crypt_mux);
->> +	if (ret)
->> +		goto out;
->>   
->> -	if (ufs_mtk_init_host_clk(hba, "crypt_lp",
->> -				  &cfg->clk_crypt_lp))
->> -		goto disable_caps;
->> +	ret = ufs_mtk_init_host_clk(hba, "crypt_lp", &cfg-
->>> clk_crypt_lp);
->> +	if (ret)
->> +		goto out;
->>   
->> -	if (ufs_mtk_init_host_clk(hba, "crypt_perf",
->> -				  &cfg->clk_crypt_perf))
->> -		goto disable_caps;
->> +	ret = ufs_mtk_init_host_clk(hba, "crypt_perf", &cfg-
->>> clk_crypt_perf);
->> +	if (ret)
->> +		goto out;
->>   
->>   	cfg->reg_vcore = reg;
->>   	cfg->vcore_volt = volt;
->>   	host->caps |= UFS_MTK_CAP_BOOST_CRYPT_ENGINE;
->>   
->> -disable_caps:
->> -	return;
->> +out:
->> +	if (ret)
->> +		devm_kfree(dev, host->crypt);
->> +	return 0;
->>   }
->>   
->>   static int ufs_mtk_init_va09_pwr_ctrl(struct ufs_hba *hba)
->> @@ -648,8 +652,9 @@ static int ufs_mtk_init_host_caps(struct ufs_hba
->> *hba)
->>   	struct device_node *np = hba->dev->of_node;
->>   	int ret;
->>   
->> -	if (of_property_read_bool(np, "mediatek,ufs-boost-crypt"))
->> -		ufs_mtk_init_boost_crypt(hba);
->> +	ret = ufs_mtk_init_boost_crypt(hba);
->> +	if (ret)
->> +		return ret;
->>   
-> 
-> Most ufs-mediatek platform dosen't need "mediatek,ufs-boost-crypt"
-> Remove this property will casue most platform try error and add init
-> latency.
-> 
-
-Yes this causes -> less than half of a millisecond <- of additional boot time
-if the dvfsrc-supply is present but boost-microvolt is not.
-
-I really don't see the problem with that :-)
-
-Regards,
-Angelo
-
-> Thanks.
-> Peter
-> 
-> 
-> 
->>   	ret = ufs_mtk_init_va09_pwr_ctrl(hba);
->>   	if (ret)
 
 
