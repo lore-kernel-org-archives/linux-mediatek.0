@@ -4,112 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B7B9C4345F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Apr 2024 16:12:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9AC8DC4345F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Apr 2024 16:33:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
+	References:In-Reply-To:Cc:To:From:MIME-Version:Content-Transfer-Encoding:
+	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EKrDgIJgNXo/R8quzpUy0yW7erzp8PxvHvcTe/50ujU=; b=LJNmNdKDeKqEhLYID1f6+j8d9t
-	PiMBkuDaLOFpzmYr5wvFi5Hoee/vs7tYvNwas5rhE5c6GDyq6nyxeYTavp3pVARcE6k396ZblAT2i
-	sHAaYyDBq8zxEFY+D42z5k5Pv/rpNRjSIpnDbisXFkRlEnIsudzZIFXdUn3oliiNRPf9PEt+ZyGgP
-	5oUPtd4L/AF2v61ZBNaAKyPZJDNPN5Nl2JEbpfrARl4ULGhdhN7VML8C2WVmf3mLRtjDPDZK180Ag
-	fbL8HsrYpSua9oc8cAksT1lNSK8s7V6vq8m5GgmduTuVFfGE78++gyVRnF/lBw1FHX45eMDIS6Ksf
-	OV55mTAg==;
+	bh=/mA1YEbRtC/CRaf940SL9ULAYtBGFjq9Y6wFyIptv4c=; b=ZHXrmFkeO0kLEGbmfT1RYKP1i4
+	mpvEGTZ5YavGfQ/uJaJ7d3fD94kbz/PfZuYcAeDiLdOp6hMOSWoQyus0WGczk1OUCWLD7TPHGOSLc
+	Q0FCdmLaN2Z1ON9UuGF6d9FNyLfTjqCxZQPCjW1aJ2oaEbxXhvB08ikL5WWIAyfsob1lDffjZi/0y
+	osClMoke91KDF4IWtijQM74l8bbFREQkRqKR4TgWcirqA/JsSf5NFY8QAJ7JEcSJSnxzLYHVGvl2n
+	VBKcUbJ5/5HVtsj4kFk7C6hF31rjaOwvVRnVDZpNuX7WUnoAdV4FPzGjNaSHxqZ1mEY24yrNGAszh
+	eX1Z16VA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwlQ0-0000000CwQs-3ZM2;
-	Tue, 16 Apr 2024 16:12:24 +0000
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
+	id 1rwlkA-0000000D24Y-01dt;
+	Tue, 16 Apr 2024 16:33:14 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwlPs-0000000CwOc-0zJw;
-	Tue, 16 Apr 2024 16:12:21 +0000
-Received: by mail-pl1-x62b.google.com with SMTP id d9443c01a7336-1e36b7e7dd2so37020825ad.1;
-        Tue, 16 Apr 2024 09:12:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1713283935; x=1713888735; darn=lists.infradead.org;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=EKrDgIJgNXo/R8quzpUy0yW7erzp8PxvHvcTe/50ujU=;
-        b=AwJwbEtmneJaKPI3k/8TnJNKaBEAyUNYolsIdu8xL4fdDaqcu2DX85WLSebAGqDhxb
-         DlcleJF9r6yTatxYeYFFmZGe+9oplsWMSPlCuTHiBE+L+I9bDRbX+dfu8ufyH+8pw7G/
-         lx0SJvHjQaol56gkzCKOdNTt4rc9AzoEDlhERdoU8+0iGH1MfMVz4AeVikoDymhEfR0X
-         5MQ5DlWAPPJsekBXSJMqsQROw1UtmHyDnxh/aMoGEuB+sg6txS1P3iKLmZtC5H2Ae3aS
-         Wx/rtP5aTMtdkq4RH3+4tK27J1stPRnD2uP5a0YPlf2YzpyLnYWRtJy7j6svTaNhiTSy
-         KfRg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713283935; x=1713888735;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=EKrDgIJgNXo/R8quzpUy0yW7erzp8PxvHvcTe/50ujU=;
-        b=ueJjZCDKjykEESP5vx/Qj4oUS2sMUQhdkje8SIHfq4mzUrXz4KaufjdJgywkuj2tU2
-         ZEmyf5iq5Q9lVBVqgGiatFjmQKE/sFgtyEE8ASI6pu8ErkttNnRqZu+IryitsH0FX8el
-         vU1O53FYPvDXKkWx4dOZqbZH5d4FP3sO3HC75R6z1eLBKqrlBfzdeN1e7F/MA2Da+YgB
-         /o09lEaK8FEWbCZ1oiGhNyEbH+QJd1gCiM2JIqsqBugMyP7AdsyKZIGjk7lNh/gUc9n4
-         aFQi6HyB4iSX9oe1FulUW6Bra8AwCARMv+1oz2FJE4ILjGcdlskcbjcDFBR+ukiGG1mq
-         UNwg==
-X-Forwarded-Encrypted: i=1; AJvYcCVS81KfZnb4kpebTzTvqv/YuLodMUU+DVo+177KteY6vcWn6Vly18YTn5h9csV61d0o6iIeceomZReIqa5VgKtXRG7ar6BJ4vwsoRoSiWQ1mcFA8XZhcyNOBbTM01hrcO6nja/1F8r5c+CzSvPGyygvA8cjzAx1AsfAR6nLAboowMPYNviMo6WwCYg4aNQArnvh7bA7pNqIPAb4+kSij/rTZkVD45pbvgVWH3JWkuBuUFenG7jrsng=
-X-Gm-Message-State: AOJu0YzZ/VZhQSw7MI7kZfhPEC85aCMDlrsuPMCv1LJtX+ae8x1uzP3X
-	jXIT5XNAnS9Xj3bJHwsIUsjRqE8zND4E3D57QI+A6EEic45OiGSb
-X-Google-Smtp-Source: AGHT+IEaBhKQrtE4y17EN+JRfoZ0nAtlgq9TOIgtvD46kDZyqFoPetYC3y2iMwccARAF9quBrezxcQ==
-X-Received: by 2002:a17:903:595:b0:1e3:e4ff:7054 with SMTP id jv21-20020a170903059500b001e3e4ff7054mr10328895plb.38.1713283934861;
-        Tue, 16 Apr 2024 09:12:14 -0700 (PDT)
-Received: from ?IPv6:2605:59c8:43f:400:82ee:73ff:fe41:9a02? ([2605:59c8:43f:400:82ee:73ff:fe41:9a02])
-        by smtp.googlemail.com with ESMTPSA id lf16-20020a170902fb5000b001e5119c1923sm10005822plb.71.2024.04.16.09.12.05
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 16 Apr 2024 09:12:14 -0700 (PDT)
-Message-ID: <18ca19fa64267b84bee10473a81cbc63f53104a0.camel@gmail.com>
-Subject: Re: [PATCH net-next v2 07/15] mm: page_frag: add '_va' suffix to
- page_frag API
-From: Alexander H Duyck <alexander.duyck@gmail.com>
-To: Yunsheng Lin <linyunsheng@huawei.com>, davem@davemloft.net,
- kuba@kernel.org,  pabeni@redhat.com
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Jeroen de Borst
- <jeroendb@google.com>, Praveen Kaligineedi <pkaligineedi@google.com>, 
- Shailend Chand <shailend@google.com>, Eric Dumazet <edumazet@google.com>,
- Jesse Brandeburg <jesse.brandeburg@intel.com>, Tony Nguyen
- <anthony.l.nguyen@intel.com>,  Sunil Goutham <sgoutham@marvell.com>, Geetha
- sowjanya <gakula@marvell.com>, Subbaraya Sundeep <sbhatta@marvell.com>,
- hariprasad <hkelam@marvell.com>, Felix Fietkau <nbd@nbd.name>, Sean Wang
- <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, Lorenzo
- Bianconi <lorenzo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Keith
- Busch <kbusch@kernel.org>,  Jens Axboe <axboe@kernel.dk>, Christoph Hellwig
- <hch@lst.de>, Sagi Grimberg <sagi@grimberg.me>,  Chaitanya Kulkarni
- <kch@nvidia.com>, "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang
- <jasowang@redhat.com>, Andrew Morton <akpm@linux-foundation.org>, Alexei
- Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>,
- Jesper Dangaard Brouer <hawk@kernel.org>, John Fastabend
- <john.fastabend@gmail.com>, Andrii Nakryiko <andrii@kernel.org>, Martin
- KaFai Lau <martin.lau@linux.dev>, Eduard Zingerman <eddyz87@gmail.com>,
- Song Liu <song@kernel.org>, Yonghong Song <yonghong.song@linux.dev>, KP
- Singh <kpsingh@kernel.org>, Stanislav Fomichev <sdf@google.com>, Hao Luo
- <haoluo@google.com>, Jiri Olsa <jolsa@kernel.org>,  David Howells
- <dhowells@redhat.com>, Marc Dionne <marc.dionne@auristor.com>, Chuck Lever
- <chuck.lever@oracle.com>, Jeff Layton <jlayton@kernel.org>, Neil Brown
- <neilb@suse.de>, Olga Kornievskaia <kolga@netapp.com>, Dai Ngo
- <Dai.Ngo@oracle.com>, Tom Talpey <tom@talpey.com>, Trond Myklebust
- <trond.myklebust@hammerspace.com>, Anna Schumaker <anna@kernel.org>, 
- intel-wired-lan@lists.osuosl.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-nvme@lists.infradead.org, 
- kvm@vger.kernel.org, virtualization@lists.linux.dev, linux-mm@kvack.org, 
- bpf@vger.kernel.org, linux-afs@lists.infradead.org,
- linux-nfs@vger.kernel.org
-Date: Tue, 16 Apr 2024 09:12:01 -0700
-In-Reply-To: <20240415131941.51153-8-linyunsheng@huawei.com>
-References: <20240415131941.51153-1-linyunsheng@huawei.com>
-	 <20240415131941.51153-8-linyunsheng@huawei.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.48.4 (3.48.4-1.fc38) 
+	id 1rwlk4-0000000D21r-1ev6;
+	Tue, 16 Apr 2024 16:33:10 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id A2F2361259;
+	Tue, 16 Apr 2024 16:33:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2D243C2BD10;
+	Tue, 16 Apr 2024 16:33:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1713285187;
+	bh=10WnQNId+Y5d5f+aR4s4gUOkQlkagdBYHfATkPI0LyI=;
+	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
+	b=pGvdWpIVXlbCicg6uf72xABxgaKkoNZ8cfAv19WxMB6ZBawWZrDCSUfksff3Saqmm
+	 ix9GTX9QME7c1kK+FHpxlQu+BJgcqhvtelEvJt5T12oiMOKDf/vyNyrsjN/sPqLCQP
+	 Jt6D3yRuj3j8niO44bBrOQF/LWRlgcSGwFLdhZCqbuzthaMS7/a6uD3h4eXN17ujcg
+	 WgGI1TBAwHLRT6avrhmyfgEBcUU3Bgx+mvRPn6aOVqq2+B2ns7QIVxMO/XC6g/YJQd
+	 Nq8qNXdyW7+PziEFFBewiAhG9W848P2r0ejDxQXpu8RO8ouNTm1oq7EH+G2/BFPEiy
+	 X8EnERjZABDfg==
+Date: Tue, 16 Apr 2024 11:33:06 -0500
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 MIME-Version: 1.0
+From: Rob Herring <robh@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: keescook@chromium.org, gustavoars@kernel.org, 
+ devicetree@vger.kernel.org, djakov@kernel.org, henryc.chen@mediatek.com, 
+ linux-pm@vger.kernel.org, wenst@chromium.org, 
+ linux-arm-kernel@lists.infradead.org, amergnat@baylibre.com, 
+ matthias.bgg@gmail.com, lgirdwood@gmail.com, 
+ krzysztof.kozlowski+dt@linaro.org, linux-mediatek@lists.infradead.org, 
+ kernel@collabora.com, linux-kernel@vger.kernel.org, conor+dt@kernel.org, 
+ broonie@kernel.org
+In-Reply-To: <20240416153805.431118-3-angelogioacchino.delregno@collabora.com>
+References: <20240416153805.431118-1-angelogioacchino.delregno@collabora.com>
+ <20240416153805.431118-3-angelogioacchino.delregno@collabora.com>
+Message-Id: <171328518448.2610972.14839354170690825161.robh@kernel.org>
+Subject: Re: [PATCH v1 2/6] dt-bindings: interconnect: Add MediaTek EMI
+ Interconnect bindings
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240416_091216_850577_EFC0B5A6 
-X-CRM114-Status: GOOD (  11.93  )
+X-CRM114-CacheID: sfid-20240416_093308_512136_206D8A41 
+X-CRM114-Status: GOOD (  10.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,21 +78,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2024-04-15 at 21:19 +0800, Yunsheng Lin wrote:
-> Currently most of the API for page_frag API is returning
-> 'virtual address' as output or expecting 'virtual address'
-> as input, in order to differentiate the API handling between
-> 'virtual address' and 'struct page', add '_va' suffix to the
-> corresponding API mirroring the page_pool_alloc_va() API of
-> the page_pool.
->=20
-> Signed-off-by: Yunsheng Lin <linyunsheng@huawei.com>
 
-This patch is a total waste of time. By that logic we should be
-renaming __get_free_pages since it essentially does the same thing.
+On Tue, 16 Apr 2024 17:38:01 +0200, AngeloGioacchino Del Regno wrote:
+> Add bindings for the MediaTek External Memory Interface Interconnect,
+> which providers support system bandwidth requirements through Dynamic
+> Voltage Frequency Scaling Resource Collector (DVFSRC) hardware.
+> 
+> This adds bindings for MediaTek MT8183 and MT8195 SoCs.
+> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>  .../interconnect/mediatek,mt8183-emi.yaml     | 76 +++++++++++++++++++
+>  .../interconnect/mediatek,mt8183.h            | 23 ++++++
+>  .../interconnect/mediatek,mt8195.h            | 44 +++++++++++
+>  3 files changed, 143 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/interconnect/mediatek,mt8183-emi.yaml
+>  create mode 100644 include/dt-bindings/interconnect/mediatek,mt8183.h
+>  create mode 100644 include/dt-bindings/interconnect/mediatek,mt8195.h
+> 
 
-This just seems like more code changes for the sake of adding code
-changes rather than fixing anything. In my opinion it should be dropped
-from the set.
+My bot found errors running 'make dt_binding_check' on your patch:
+
+yamllint warnings/errors:
+
+dtschema/dtc warnings/errors:
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/interconnect/mediatek,mt8183-emi.example.dtb: dvfsrc@10012000: '#address-cells', '#size-cells' do not match any of the regexes: '@[0-9a-f]+$', 'pinctrl-[0-9]+'
+	from schema $id: http://devicetree.org/schemas/soc/mediatek/mediatek,mt8183-dvfsrc.yaml#
+
+doc reference errors (make refcheckdocs):
+
+See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20240416153805.431118-3-angelogioacchino.delregno@collabora.com
+
+The base for the series is generally the latest rc1. A different dependency
+should be noted in *this* patch.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit after running the above command yourself. Note
+that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+your schema. However, it must be unset to test all examples with your schema.
 
 
