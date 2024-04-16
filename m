@@ -4,67 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62E48C4345F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Apr 2024 08:24:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8A43C4345F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Apr 2024 08:33:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=/VyoMxOp0tW/NwNVczKS098fiaFyK3/sT1s9b3x3XYI=; b=upRFmmIKWpY+5DihIB0YeSJaor
-	9TmbV611d2UsGjxWHEECoio5e2/gd3jhEuR5mYkSxXpZBz/nLd8vPQm0MijKgQS2nGupUoy48LuI+
-	PP5Hn/NK58N8CorIen1UWlhvy0k+w6LINfuhC/r9vbOaiEWs0l/NlI/sjb1hH0d6eSHIkU+MiDlue
-	3g919bdcpH/CtpwhGCEFg+47xcdzbvny1hUUupxpRlSEsgL0l4jO7SchrG/bgkEg6ns8YzjTxAWj2
-	pafmDSCCmDmB6+vgBf5hrCWy+svUhdc2PBhBoCn30jC372jjrLA4jsZ1REiGOnkj9oTMLW5ceiqI3
-	+V75HJKA==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=m566RVi6Hjc4VyINZc6IMhS42+xhOl1ARnyrIuF1SbM=; b=jKmJDgTuyCaKsG7T49S0WAnojp
+	Askl0IrOKKyJwuTL8kZs+L+fvbh0+NZbyTq08dtwGympHnzOLBwiP0hRlCgVckG1go2DY1OVH2Umo
+	CN8UtiIl+w5MTXT58dn477xpa+aKbdGFL/Y4iV9B4Dbo6/UHHcjs+J8nq2/76yng0H+XXJJoVXtq2
+	XUtaegv0i2s0i08a2j2H1sO6BGhBl6CM1RljeTwDHi0fVZlOWe3jBAFDb2O3wPhUSVwu2omdAq73h
+	bi5OpD0UQNDCVafVarJNSDvDjuPXDZyUhY49uUfYoCESZdTSulvmn12hspv4vDzT2ENQeaLbnd783
+	DNM2fb7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwe6m-0000000BR8O-00c5;
-	Tue, 16 Apr 2024 08:24:04 +0000
-Received: from nbd.name ([46.4.11.11])
+	id 1rweFc-0000000BSxY-1WuX;
+	Tue, 16 Apr 2024 08:33:12 +0000
+Received: from relay5-d.mail.gandi.net ([2001:4b98:dc4:8::225])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwe6j-0000000BR4w-3sWB;
-	Tue, 16 Apr 2024 08:24:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
-	s=20160729; h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:
-	Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
-	List-Post:List-Owner:List-Archive;
-	bh=/VyoMxOp0tW/NwNVczKS098fiaFyK3/sT1s9b3x3XYI=; b=r4letyF+3ZYFtek1hQzgsvF+Q1
-	TZPJwWvDX4IWFreyQeiWVVfAAuLqXHAEKxzdzbXzDSwN/vys6h/EiWXZY3ICQpv+Z6Y4UYMvzxm/5
-	byKiVtR9YhXAgPR5YO4HKIvW6HqX45HlL8pvsMY1pS3RD3wuiEu8Y8kf3/4D878UnBak=;
-Received: from p54ae9c93.dip0.t-ipconnect.de ([84.174.156.147] helo=localhost.localdomain)
-	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256
-	(Exim 4.96)
-	(envelope-from <nbd@nbd.name>)
-	id 1rwe6F-001ifE-0A;
-	Tue, 16 Apr 2024 10:23:31 +0200
-From: Felix Fietkau <nbd@nbd.name>
-To: netdev@vger.kernel.org,
-	Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Sujuan Chen <sujuan.chen@mediatek.com>
-Cc: linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH net] net: ethernet: mtk_eth_soc: fix WED + wifi reset
-Date: Tue, 16 Apr 2024 10:23:29 +0200
-Message-ID: <20240416082330.82564-1-nbd@nbd.name>
-X-Mailer: git-send-email 2.44.0
+	id 1rweFX-0000000BSvT-1w9S;
+	Tue, 16 Apr 2024 08:33:10 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id EE1FD1C0009;
+	Tue, 16 Apr 2024 08:32:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
+	t=1713256375;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=m566RVi6Hjc4VyINZc6IMhS42+xhOl1ARnyrIuF1SbM=;
+	b=SXiPD9tA3i+YVZj1nSoulZISksMVUPC9CQbgwO1PiVLiguE+LcuIS0qBfzixGRc6j1xhi8
+	uHlSIWDTTgF9NgPoZmZVWz3UbBplGE0SEwWD8uV/dz1mJu2vgjF/uiboHYWpd7dkgcNdRf
+	WtN3t/O3N9yp+lfpAQUvgCmhXpe9ofeAPmn8o9JGkoOiyR82NwHPluSG1W/ARFWQ/IUAZU
+	RyxVW7rNmzpEU1pZvtOnNXCSpcisSn0AnWaZDO3/CwnLH7Qcyo7NgQJQ7l3O/9WtY3MX2r
+	T/8TcK3bBxBkX140iMJJHuBG3qUoOZERTbl3FFLHznSEszmBgZZjXcFWdMI7HQ==
+Message-ID: <7d0ded52-14f0-4f6a-b639-72f537603be8@arinc9.com>
+Date: Tue, 16 Apr 2024 11:32:49 +0300
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net-next v2 1/2] net: dsa: mt7530-mdio: read PHY address
+ of switch from device tree
+Content-Language: en-US
+To: Florian Fainelli <f.fainelli@gmail.com>,
+ Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
+ Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Bartel Eerdekens <bartel.eerdekens@constell8.be>,
+ mithat.guner@xeront.com, erkin.bozoglu@xeront.com, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20240414-b4-for-netnext-mt7530-phy-addr-from-dt-and-simplify-core-ops-v2-0-1a7649c4d3b6@arinc9.com>
+ <20240414-b4-for-netnext-mt7530-phy-addr-from-dt-and-simplify-core-ops-v2-1-1a7649c4d3b6@arinc9.com>
+ <459b31bd-64b3-4804-bc5a-c8ffd145e055@gmail.com>
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <459b31bd-64b3-4804-bc5a-c8ffd145e055@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
+X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240416_012402_023170_A4E76F0D 
-X-CRM114-Status: GOOD (  10.14  )
+X-CRM114-CacheID: sfid-20240416_013307_822492_47C5AC1D 
+X-CRM114-Status: GOOD (  15.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,56 +84,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The WLAN + WED reset sequence relies on being able to receive interrupts from
-the card, in order to synchronize individual steps with the firmware.
-When WED is stopped, leave interrupts running and rely on the driver turning
-off unwanted ones.
-WED DMA also needs to be disabled before resetting.
+On 15/04/2024 18:30, Florian Fainelli wrote:
+> 
+> 
+> On 4/13/2024 11:07 PM, Arınç ÜNAL via B4 Relay wrote:
+>> From: Arınç ÜNAL <arinc.unal@arinc9.com>
+>>
+>> Read the PHY address the switch listens on from the reg property of the
+>> switch node on the device tree. This change brings support for MT7530
+>> switches on boards with such bootstrapping configuration where the switch
+>> listens on a different PHY address than the hardcoded PHY address on the
+>> driver, 31.
+>>
+>> As described on the "MT7621 Programming Guide v0.4" document, the MT7530
+>> switch and its PHYs can be configured to listen on the range of 7-12,
+>> 15-20, 23-28, and 31 and 0-4 PHY addresses.
+>>
+>> There are operations where the switch PHY registers are used. For the PHY
+>> address of the control PHY, transform the MT753X_CTRL_PHY_ADDR constant
+>> into a macro and use it. The PHY address for the control PHY is 0 when the
+>> switch listens on 31. In any other case, it is one greater than the PHY
+>> address the switch listens on.
+>>
+>> Reviewed-by: Daniel Golle <daniel@makrotopia.org>
+>> Tested-by: Daniel Golle <daniel@makrotopia.org>
+>> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+> 
+> Reviewed-by: Florian Fainelli <florian.fainelli@broadcom.com>
+> 
+> I would go a step further and name phy_addr switch_mdio_addr, or something along those lines to clearly denote this is not a per-port PHY address neither a proper PHY device, but we've already had a similar discussion before about spelling this out clearly as a "pseudo PHY"....
 
-Fixes: f78cd9c783e0 ("net: ethernet: mtk_wed: update mtk_wed_stop")
-Signed-off-by: Felix Fietkau <nbd@nbd.name>
----
- drivers/net/ethernet/mediatek/mtk_wed.c | 6 +-----
- 1 file changed, 1 insertion(+), 5 deletions(-)
+I am fine with calling the switch operating on an MDIO bus a psuedo-PHY.
+But I don't believe this grants making up names on our own instead of using
+the name described in IEEE Std 802.3-2022. The switch listens on a PHY
+address on the MDIO bus. The description for the phy_addr member of the
+mt753x_info structure clearly explains that so I don't see a reason to
+change the variable name.
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_wed.c b/drivers/net/ethernet/mediatek/mtk_wed.c
-index c895e265ae0e..61334a71058c 100644
---- a/drivers/net/ethernet/mediatek/mtk_wed.c
-+++ b/drivers/net/ethernet/mediatek/mtk_wed.c
-@@ -1074,13 +1074,13 @@ mtk_wed_dma_disable(struct mtk_wed_device *dev)
- static void
- mtk_wed_stop(struct mtk_wed_device *dev)
- {
-+	mtk_wed_dma_disable(dev);
- 	mtk_wed_set_ext_int(dev, false);
- 
- 	wed_w32(dev, MTK_WED_WPDMA_INT_TRIGGER, 0);
- 	wed_w32(dev, MTK_WED_WDMA_INT_TRIGGER, 0);
- 	wdma_w32(dev, MTK_WDMA_INT_MASK, 0);
- 	wdma_w32(dev, MTK_WDMA_INT_GRP2, 0);
--	wed_w32(dev, MTK_WED_WPDMA_INT_MASK, 0);
- 
- 	if (!mtk_wed_get_rx_capa(dev))
- 		return;
-@@ -1093,7 +1093,6 @@ static void
- mtk_wed_deinit(struct mtk_wed_device *dev)
- {
- 	mtk_wed_stop(dev);
--	mtk_wed_dma_disable(dev);
- 
- 	wed_clr(dev, MTK_WED_CTRL,
- 		MTK_WED_CTRL_WDMA_INT_AGENT_EN |
-@@ -2605,9 +2604,6 @@ mtk_wed_irq_get(struct mtk_wed_device *dev, u32 mask)
- static void
- mtk_wed_irq_set_mask(struct mtk_wed_device *dev, u32 mask)
- {
--	if (!dev->running)
--		return;
--
- 	mtk_wed_set_ext_int(dev, !!mask);
- 	wed_w32(dev, MTK_WED_INT_MASK, mask);
- }
--- 
-2.44.0
-
+Arınç
 
