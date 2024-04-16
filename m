@@ -4,96 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6835C04FF6
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Apr 2024 14:09:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D2BFC4345F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Apr 2024 14:53:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NyD7CJia6dqQdPW0B5XtV/th76QRRg/WSyHypuuA1Ic=; b=GFchMn3WkPvpWZDSzp/sqdYgFb
-	TFvQso1R4U5U0hseJk4ephVut/UIFrFL8OTzfwfSI5ZTCic8gM5nW34nJ35gB7Autiy66K5P2PLWj
-	/Qy03nfo0+NjeoFa9wtZQjkf8PEQxbLcbTtWZjIjr+74SBIlSgvgwY2B1n95yY91PEkZFLzMAR0fR
-	iAXIncQc+q+zAT43WNju4xeViEhIUnMxNc7RSJe9MD3wO2Z1ZgEIdGf98PSHkV3PQzmzUP1SMt1aR
-	13IxFannJ2x4ppkO9/KTnxPFYNJHeYvgEPl8B9ckLn901Ne87HLsiIFpvn/vE8MaIhU1tBPxuwoPE
-	oYurfxvw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:References:Cc:To:Subject:From:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=jl7BVtQwBTSlw5Q7jIravMMMPvXbs3wbcyyUN/ZkIBg=; b=U5J5HF7sMEpiS8CkyrKMmJkK93
+	NTvTzSSwpRi8gbrpYwGqsyrgvb2SpK2SQqpkgmwu8RFVP6SDQzHAnIH34iWO+W65K6xQ5muz7DKit
+	5PLJt7IMcCmeEhS3NuLUwE9QChs1dQg3LzYrZR3g86WvxHCSEI4o48S+4QeET/Cs16q5tWAhaeXWv
+	rtaJMuy4MsJolMeQBdoUxo37+vIlevSm44WPFjDpeBREUyZzkxBk+DMOMgv3miRRCGCqXzoaFcNpb
+	PQX53vqTb0s/+k+IWigdoUVOkE2qngoUZ+EMZzMlivE4uNyW/+GuLMaphteTs7/FZg4QYOXIGvIXy
+	j911rCpw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwjV8-0000000CS2z-1R95;
-	Tue, 16 Apr 2024 14:09:34 +0000
-Received: from mail-qk1-x736.google.com ([2607:f8b0:4864:20::736])
+	id 1rwkBT-0000000CdU3-0H7o;
+	Tue, 16 Apr 2024 14:53:19 +0000
+Received: from mail-lj1-x22d.google.com ([2a00:1450:4864:20::22d])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwjV0-0000000CRwQ-0jVX
+	id 1rwkBP-0000000CdSh-2OUH
 	for linux-mediatek@lists.infradead.org;
-	Tue, 16 Apr 2024 14:09:32 +0000
-Received: by mail-qk1-x736.google.com with SMTP id af79cd13be357-78edc3e7cd9so178485385a.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 16 Apr 2024 07:09:21 -0700 (PDT)
+	Tue, 16 Apr 2024 14:53:17 +0000
+Received: by mail-lj1-x22d.google.com with SMTP id 38308e7fff4ca-2d82713f473so84277021fa.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 16 Apr 2024 07:53:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1713276560; x=1713881360; darn=lists.infradead.org;
-        h=mime-version:user-agent:content-transfer-encoding:autocrypt
-         :references:in-reply-to:date:cc:to:from:subject:message-id:from:to
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1713279192; x=1713883992; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :cc:to:subject:from:user-agent:mime-version:date:message-id:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=NyD7CJia6dqQdPW0B5XtV/th76QRRg/WSyHypuuA1Ic=;
-        b=Kp1b3ykbwdrj2XdqpNDwfsH/TvVoRwAXiPmAJNxsU53pzNwWZyeHRSJH1SpmybImgL
-         GKPgLY07CMEfzXP3SuqGqRQL+Xl7img+ZOGizqBjHtD/IMkQxM6XQPc4nMuWMZp7J6KB
-         IvTSzw/hrJ0hNjsOYGpLfdVJD/brPVHVvlIl9x4PCjLTsk4vM/SVQeEtHwjVunts6X0m
-         x2ZN5HQAKybtOUb7mzo/R582fbD/cnPQLGGeLXWEquRRWgQp5Lufe/bRK0nEiFK0FswV
-         z6/efF5ONWDzZFahoTxI96PGMuifOfvY4YtjK3tm8h8N7CSnupIsCmaaQhFQG9OmyBHJ
-         4HSQ==
+        bh=jl7BVtQwBTSlw5Q7jIravMMMPvXbs3wbcyyUN/ZkIBg=;
+        b=soY7IXdxjNPDgCdYiA8Ag5gcRSjMgJb6rwpm5HIzCaZa038m6HVBxo8pr0Ox1nHK2O
+         CbDBR/cNt8gBkM3UWZozud/0sCFTf6a/HFxft0i8L1ZhS/uuZyr+HwC12CV+Zn/Zi+Zo
+         YDqSg7mgIXVSe41lqjObauFTIWQ5GCtN6Ozus6UkSt54MR+EEbRhsZ09Mjb/AbqbybDl
+         wC85ZsMD4Wrr+K5Hpk2TQ9ZMHSldVncW/OxNqBrPg/YBBVh/iEmbY9Ad1CrWRcxG993B
+         YuHT/5SWjFhPt4vEspbzoRCuzi0R5tncDwm6fmgUpswnu7+3iPU2+hR+F+ffEjMOJQSf
+         2kMQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713276560; x=1713881360;
-        h=mime-version:user-agent:content-transfer-encoding:autocrypt
-         :references:in-reply-to:date:cc:to:from:subject:message-id
+        d=1e100.net; s=20230601; t=1713279192; x=1713883992;
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :cc:to:subject:from:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=NyD7CJia6dqQdPW0B5XtV/th76QRRg/WSyHypuuA1Ic=;
-        b=f4vjhb/ykVPEwDIS+i09/hyPX+TwwFgDjWbz7h1j61w8EP3b8VlYvvas6P/N4B+m1f
-         s4lgYVAmPSK9h9iHF8NcsU0D92Hhkm3YcIQ4/3Cu0cJ62hiogwiRGVR6Vu5hKLubmmsT
-         0vUbz681oyHbbWH2fDSfMBS3TedDepG5qGhJFTjjrRWmgBFWiH4vlhr7kNtnqUo+LFPr
-         6r5Evub19ik9cGm/OVHUtAkwoZgYetC8LA9270ms4AaRN9iM+ndUD9y2poDKz3xNvwIj
-         PowKSsH47poeLadIYQVcgbh5fdZuNburtdNQPIxn2cImFqP820IqKXE+9H3inLVI/ma7
-         l0kQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWqLA89IqeDAR8OaVGnJ1eC0D+MydylJmZ8hnw+Eq2Q5zEBguw+03BPbQ8GIt4X5hrwJ4ZngUPjHZjG2tUQtZcozjzrWkcCANaPgOdEpLpQ/1hS
-X-Gm-Message-State: AOJu0Yw/YSGYUpKr0RYPkn2QxFtsIjlBoC74azcRG8CkrKc8Uxlg6ag9
-	RyHpm6MsXIiIkb3Ene+5tPgpPWe8mnXJFC6R3UAtRHx9xcA/18EF3AvdPNjO3W8=
-X-Google-Smtp-Source: AGHT+IHTZXOlhLzrZJKOCo7oGobPLBHBqfpA1Y9jlLfjJ81O6tnjovWTxBF2SvorngJtfMN3Z4Hm+g==
-X-Received: by 2002:ad4:44a7:0:b0:69f:f2ae:cad6 with SMTP id n7-20020ad444a7000000b0069ff2aecad6mr1244518qvt.11.1713276560547;
-        Tue, 16 Apr 2024 07:09:20 -0700 (PDT)
-Received: from nicolas-tpx395.localdomain ([2606:6d00:17:6448::7a9])
-        by smtp.gmail.com with ESMTPSA id dd10-20020ad4580a000000b0069b563d5d8fsm6128137qvb.20.2024.04.16.07.09.19
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 16 Apr 2024 07:09:20 -0700 (PDT)
-Message-ID: <70733fe5c919527796bd3d9735ced522bcdd7a25.camel@ndufresne.ca>
-Subject: Re: [PATCH v5 1/9] drm/mediatek/uapi: Add
- DRM_MTK_GEM_CREATE_ENCRYPTED flag
-From: Nicolas Dufresne <nicolas@ndufresne.ca>
-To: Shawn Sung <shawn.sung@mediatek.com>, Chun-Kuang Hu
-	 <chunkuang.hu@kernel.org>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie
- <airlied@gmail.com>,  Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Maarten Lankhorst
- <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
- Thomas Zimmermann <tzimmermann@suse.de>, Sumit Semwal
- <sumit.semwal@linaro.org>, Christian =?ISO-8859-1?Q?K=F6nig?=
- <christian.koenig@amd.com>, dri-devel@lists.freedesktop.org, 
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org, 
- linaro-mm-sig@lists.linaro.org, "Jason-JH.Lin" <jason-jh.lin@mediatek.com>
-Date: Tue, 16 Apr 2024 10:09:19 -0400
-In-Reply-To: <20240403102701.369-2-shawn.sung@mediatek.com>
-References: <20240403102701.369-1-shawn.sung@mediatek.com>
-	 <20240403102701.369-2-shawn.sung@mediatek.com>
-Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual; keydata=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
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.50.4 (3.50.4-1.fc39) 
+        bh=jl7BVtQwBTSlw5Q7jIravMMMPvXbs3wbcyyUN/ZkIBg=;
+        b=J0xjWBwTsXvJVAhzvJa4rKc2zgdVnfI80iIV/IIjQEXDQaWyes4FseL9CLug1V5ThT
+         VQOkH/p5yzA3JsUxRPdyUPkHLjCMcQ1J69SeyDtwh2AafOahCBdRvOStcE6mH/BL9baq
+         L80KSpTagHEFthKAVi26a8/pqkr+TT0tE+xRr7/4++/Ir0Yy7+NQZ0YZdLqNVYNytf7O
+         9mgzSBm/DUOoyiBd6XoATJNRmOUV4TR7OAYz973aUvR9SjDx556YQtTslQbPAhonP10X
+         9ea/2ct5znzWwGpB/lmwg7k7d2v4XadzuMUaDGRd45+9ZuQXYWN5VJht37P54NqYB3kI
+         DJWQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXfdLnM7rQuWqsuNIwLvcFhg/C0eicBSLVJFHO9qW9ehA0ROOl2/DZ669eqkjNK0eEv8G66ov7sCGWOCGE1fOd8vHOfnPlJ7lNnTp5piVbOXs8m
+X-Gm-Message-State: AOJu0YyaeU0VtEiSBPisR0Vzv/aa/XeDai6JeONrq7Oe6LgkCFc729aK
+	bYEadSSzi7KCoqNAJMPM/0tFwG+WiKrzNpxgrxrs//UhTPmmwapu10KKUCRP9U0=
+X-Google-Smtp-Source: AGHT+IEBkb7ExU6KDoUwKQB+1TjGigkCAfuqOmSxkIfxlJN0jQEFEyh9q8oXdurLDbr/zM7/PUjBBw==
+X-Received: by 2002:a2e:9517:0:b0:2d8:19fe:4863 with SMTP id f23-20020a2e9517000000b002d819fe4863mr10223169ljh.41.1713279189026;
+        Tue, 16 Apr 2024 07:53:09 -0700 (PDT)
+Received: from [192.168.1.172] ([93.5.22.158])
+        by smtp.gmail.com with ESMTPSA id c19-20020a170906529300b00a4da28f42f1sm6995974ejm.177.2024.04.16.07.53.07
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 16 Apr 2024 07:53:08 -0700 (PDT)
+Message-ID: <96d90ddd-2910-4419-ba90-64a09a3dbf1e@baylibre.com>
+Date: Tue, 16 Apr 2024 16:53:06 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+From: Alexandre Mergnat <amergnat@baylibre.com>
+Subject: Re: [PATCH 14/18] drm/mediatek: dpi: add support for dpi clock
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: dri-devel@lists.freedesktop.org,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-mediatek@lists.infradead.org, Will Deacon <will@kernel.org>,
+ Catalin Marinas <catalin.marinas@arm.com>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, CK Hu <ck.hu@mediatek.com>,
+ Rob Herring <robh+dt@kernel.org>, Daniel Vetter <daniel@ffwll.ch>,
+ David Airlie <airlied@gmail.com>, Xinlei Lee <xinlei.lee@mediatek.com>,
+ Jitao Shi <jitao.shi@mediatek.com>, linux-arm-kernel@lists.infradead.org,
+ linux-pwm@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Fabien Parent <fparent@baylibre.com>,
+ =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>
+References: <20231023-display-support-v1-0-5c860ed5c33b@baylibre.com>
+ <20231023-display-support-v1-14-5c860ed5c33b@baylibre.com>
+ <cf25a3cc-6411-45f5-bc7a-6b69cf28c860@collabora.com>
+Content-Language: en-US
+In-Reply-To: <cf25a3cc-6411-45f5-bc7a-6b69cf28c860@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240416_070926_544551_BBC1019A 
-X-CRM114-Status: GOOD (  12.77  )
+X-CRM114-CacheID: sfid-20240416_075315_758566_8ADB6925 
+X-CRM114-Status: GOOD (  17.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,41 +109,110 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
 
-Le mercredi 03 avril 2024 =C3=A0 18:26 +0800, Shawn Sung a =C3=A9crit=C2=A0=
-:
-> From: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>
->=20
-> Add DRM_MTK_GEM_CREATE_ENCRYPTED flag to allow user to allocate
 
-Is "ENCRYPTED" a proper naming ? My expectation is that this would hold dat=
-a in
-a PROTECTED memory region but that no cryptographic algorithm will be invol=
-ved.
+On 24/10/2023 11:12, AngeloGioacchino Del Regno wrote:
+> Il 23/10/23 16:40, amergnat@baylibre.com ha scritto:
+>> From: Fabien Parent <fparent@baylibre.com>
+>>
+>> MT8365 requires an additional clock for DPI. Add support for that
+>> additional clock.
+>>
+>> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+>> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+> 
+> I'm not convinced that this is right... at all.
+> 
+>  From a fast check of the MT8365 DPI clocks, I can see that the DPI0 
+> clock declares
+> parent VPLL_DPIX (a fixed clock), but nothing ever has VPLL_DPIX_EN 
+> (which is the
+> GATE clock, enabling output of DPIx VPLL?).
+> 
+> But then, there's even more: no clock ever references the 
+> CLK_TOP_DPI0_SEL nor the
+> CLK_TOP_DPI1_SEL gate, which is a PLL parent selector... in other 
+> platforms, that
+> is muxing through the TVDPLL, but on MT8365 that is LVDSPLL?!
 
-Nicolas
+AFAI see into mt8365 documentation, there is no TVDPLL, only LVDSPLL
 
-> a secure buffer to support secure video path feature.
->=20
-> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-> Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
-> ---
->  include/uapi/drm/mediatek_drm.h | 1 +
->  1 file changed, 1 insertion(+)
->=20
-> diff --git a/include/uapi/drm/mediatek_drm.h b/include/uapi/drm/mediatek_=
-drm.h
-> index b0dea00bacbc4..e9125de3a24ad 100644
-> --- a/include/uapi/drm/mediatek_drm.h
-> +++ b/include/uapi/drm/mediatek_drm.h
-> @@ -54,6 +54,7 @@ struct drm_mtk_gem_map_off {
-> =20
->  #define DRM_MTK_GEM_CREATE		0x00
->  #define DRM_MTK_GEM_MAP_OFFSET		0x01
-> +#define DRM_MTK_GEM_CREATE_ENCRYPTED	0x02
-> =20
->  #define DRM_IOCTL_MTK_GEM_CREATE	DRM_IOWR(DRM_COMMAND_BASE + \
->  		DRM_MTK_GEM_CREATE, struct drm_mtk_gem_create)
+> 
+> I have many questions now:
+> * Two PLLs are apparently brought up, but which one is the right one?!
+>    * Is the LVDS PLL really used for DisplayPort? (dpi0_sel)
 
+Seems to be LVDS
+
+                                  enable  prepare  protect                                duty  hardware
+    clock                          count    count    count        rate   accuracy phase  cycle    enable
+-------------------------------------------------------------------------------------------------------
+  clk26m                              18       19        1    26000000          0     0         Y
+     vpll_dpix                         1        1        0    75000000          0     0  50000         Y
+        mm_flvdstx_pxl                 0        0        0    75000000          0     0  50000         N
+        mm_dpi0_dpi0                   1        1        0    75000000          0     0  50000         Y
+        vpll_dpix_en                   0        0        0    75000000          0     0  50000         N
+     lvdspll                           1        1        0   283999497          0     0  50000         Y
+        lvdspll_d16                    0        0        0    17749968          0     0  50000         Y
+        lvdspll_d8                     0        0        0    35499937          0     0  50000         Y
+        lvdspll_d4                     0        0        0    70999874          0     0  50000         Y
+        lvdspll_d2                     1        1        0   141999748          0     0  50000         Y
+           dpi0_sel                    1        1        0   141999748          0     0  50000         Y
+           dpi1_sel                    0        0        0   141999748          0     0  50000         N
+     mmpll                             1        1        0   456999909          0     0  50000         Y
+        mmpll_ck                       1        1        0   456999909          0     0  50000         Y
+           mm_sel                     15       15        0   456999909          0     0  50000         Y
+              mm_dpi0                  1        1        0   456999909          0     0  50000         Y
+
+
+
+> * Are you sure that CLK_MM_DPI0_DPI0's parent shouldn't be dpi0_sel 
+> instead?
+
+I'm agree with you. After few change, it works.
+
+-       GATE_MM0(CLK_MM_DPI0_DPI0, "mm_dpi0_dpi0", "vpll_dpix", 20),
++       GATE_MM0(CLK_MM_DPI0_DPI0, "mm_dpi0_dpi0", "dpi0_sel", 20),
+
+-                       clocks = <&topckgen CLK_TOP_DPI0_SEL>,
++                       clocks = <&mmsys CLK_MM_DPI0_DPI0>,
+
+
+                                  enable  prepare  protect                                duty  hardware
+    clock                          count    count    count        rate   accuracy phase  cycle    enable
+-------------------------------------------------------------------------------------------------------
+     vpll_dpix                        0       0        0        75000000    0          0     50000      Y
+        mm_flvdstx_pxl                0       0        0        75000000    0          0     50000      N
+        vpll_dpix_en                  0       0        0        75000000    0          0     50000      N
+
+     lvdspll                          1       1        0        283999497   0          0     50000      Y
+        lvdspll_d16                   0       0        0        17749968    0          0     50000      Y
+        lvdspll_d8                    0       0        0        35499937    0          0     50000      Y
+        lvdspll_d4                    0       0        0        70999874    0          0     50000      Y
+        lvdspll_d2                    1       1        0        141999748   0          0     50000      Y
+           dpi0_sel                   1       1        0        141999748   0          0     50000      Y
+              mm_dpi0_dpi0            1       1        0        141999748   0          0     50000      Y
+           dpi1_sel                   0       0        0        141999748   0          0     50000      N
+
+     mmpll                            1       1        0        456999909   0          0     50000      Y
+        mmpll_d2                      0       0        0        228499954   0          0     50000      Y
+        mmpll_ck                      1       1        0        456999909   0          0     50000      Y
+           mm_sel                     15      15       0        456999909   0          0     50000      Y
+              mm_dpi0                 1       1        0        456999909   0          0     50000      Y
+
+
+> * Where is DPI1 in this SoC? Why is there a dpi1_sel clock, but no MM clock
+>    for the DPI1 controller? Is there any DPI1 controller, even?!
+
+DPI1 isn't documented.
+
+>    * Why is there a DPI1 MUX, if there's no DPI1 controller?!
+
+Good question, I don't know. Legacy of the downstream code.
+
+That will be fixed for the next version.
+
+-- 
+Regards,
+Alexandre
 
