@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B66CBC4345F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Apr 2024 04:39:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B278C4345F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Apr 2024 04:41:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VSyiMdTHrk1JwFRWNfMWMCAnJIqFPtjB/dNBg4kU2zU=; b=Q5u/HEsYRsOtYVoxZQG8IFVX1l
-	wMD/vUFr6d4pAxeFUsxXsJMtVdJkUalpss2xSilYBN8CNQLi07GzQYtOwB7bpid3Ot0Fh4w+7uC/i
-	d3sjzP/US+x2WddPUN4SfLTA5p9dkhiCcpPzHIb16w+KbrzBKRopa8anGhdhKpFlVM9m57a8cU9th
-	z+6odRD/kdwGhMk22xTRYau4RR50u0nYP+unQTH7KBmlVmeC3uuZvwTxiiQ2EOR8YxZONqkeGz8Yt
-	4wXcYlFnPm4EaJvfxcX3rdCEcGg6hyBX/rEIoTZfCuavaqTCBARJPBNER/PFY9SkYuRWpoYkhO9AF
-	SytWKxSA==;
+	bh=zlvfKPvFfqMVTjgmkdQ2dgHupdBvuhJAjVeekD23sMY=; b=B4NeaK5ZJgFsEDK+cb/aJshZnY
+	O+Wpt+w7oA9EgYnqNRPEijXovlYK97gHlfhnSuBuPKHj0Xh5PXCSyyKUvFiJLZU8/kgJpYDKxdKeY
+	DKQHgeZob5IuUoGglId3XYkzDG08Vc69PA89PV0AOLaNvbGHDKlUApHdR0nCiATEmCXbeDUBVO94p
+	QXWpWD6fgWtKhBY9bHdU8jYPTS6PuC/Hca5kPreYSUl2nkQLFcRV9sfX+wcWNgHU7L+9I0YpIxp3g
+	20yL5ruaGv2vGBtitOTDe7NmQaz6s9ivqDM4ieiFET9EICRpkVDCmWPi08I/Iu7aF2NQx96patzhM
+	VvWxLBVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwabd-0000000AqPP-39NL;
-	Tue, 16 Apr 2024 04:39:41 +0000
-Received: from mail-ot1-x32e.google.com ([2607:f8b0:4864:20::32e])
+	id 1rwadS-0000000AqfK-2JU8;
+	Tue, 16 Apr 2024 04:41:34 +0000
+Received: from mail-oa1-x2f.google.com ([2001:4860:4864:20::2f])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwaba-0000000AqJ5-2nbO
+	id 1rwadP-0000000AqeG-2q91
 	for linux-mediatek@lists.infradead.org;
-	Tue, 16 Apr 2024 04:39:40 +0000
-Received: by mail-ot1-x32e.google.com with SMTP id 46e09a7af769-6eb86aeeb2cso699910a34.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 15 Apr 2024 21:39:27 -0700 (PDT)
+	Tue, 16 Apr 2024 04:41:33 +0000
+Received: by mail-oa1-x2f.google.com with SMTP id 586e51a60fabf-2348116ceb0so1155319fac.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 15 Apr 2024 21:41:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1713242367; x=1713847167; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1713242490; x=1713847290; darn=lists.infradead.org;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=VSyiMdTHrk1JwFRWNfMWMCAnJIqFPtjB/dNBg4kU2zU=;
-        b=bwfQWdps9Aer49ZICT9ILU9mu9cc8yu7EMU94Tn1g3QO9CI5BXmtst1EfgO6eGOKqI
-         ac5ilvcVTPT22kcren1CfYrQOAgIUQwmS6mEmYP+r2cuJcJlntZ8QgI5WW9hOf+EyG75
-         x/aAFGyKj/AYZVwcuLBqexc33LW1yt2nPZZiE=
+        bh=zlvfKPvFfqMVTjgmkdQ2dgHupdBvuhJAjVeekD23sMY=;
+        b=JhJY7w2oL4mBNW5VxtE6nozJsAmd/0VMPASmNkZSqGd9MRQQAEyXHQxI3tG7kUFErR
+         9V4bDIKF+rlVP3Kw2fT+m39fhetfMmhJ/9W0Js9J8i4PLEDSFrN/05bmBuFLBb7vo4QI
+         3ss81EyrKx906ephBdq6f9inAJmEr/0ZCJV3E=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713242367; x=1713847167;
+        d=1e100.net; s=20230601; t=1713242490; x=1713847290;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=VSyiMdTHrk1JwFRWNfMWMCAnJIqFPtjB/dNBg4kU2zU=;
-        b=FuWN/2JSa1EXmvUhwigK6OoaNvgm11HQg3zsb5WpSj6n+Mz76fieg6uPur2L8WzWkx
-         wamXXdleU58XPUol3IElsviLFn3kUE/au34Agr4OHavZUTZfXVV3U5CAgXNt6ty20PQ+
-         FEj1GVPjnOIRu77k8athUXrr7o+x6GYD/kflMn7bQmgeCaV2ON2xH/oR4aLLv4s/2QyO
-         oioj4kd5NG2wS4rclHKMWrsgR6gVcK3fhSe5i8xWTjjt2DUe0zGdp4aInJ2bPyYKSxje
-         5Z8Yx9KV0Fl1HxmrPjiGHJ3iJfcnROmfonH0DkVPrAil8KGrCNovt03tqMiBHKNJyAfP
-         oavQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUYLD3Fw8dczVNVAjq8pmSBSkBOG+sXYAA6DtRStjEQP4nNjBW60916ZODX0o+XxGkkdD+wPaGz9YTDbvkEY5Wr8Hx8ssIjJiS3us9fotAErq57
-X-Gm-Message-State: AOJu0YyGHcpJOlRKw2A2bzh2hv+xPE7G8zbkR03qoot9bBfy5glI9d4V
-	TOOSOQ/JLy8SiZCKkKksRTcrs9lQfTmSYAwFeeXBdcMOu4/Anj3+uJnNhexVqg==
-X-Google-Smtp-Source: AGHT+IG0ppjZwpHlNVZUS9DrO9z9Zt+G6PVBJT/QRsW763QY2rUFepRZ7LeeiLPVtOHJ43Afq2vK7g==
-X-Received: by 2002:a9d:7f8a:0:b0:6ea:23af:2bcb with SMTP id t10-20020a9d7f8a000000b006ea23af2bcbmr12688528otp.32.1713242366850;
-        Mon, 15 Apr 2024 21:39:26 -0700 (PDT)
+        bh=zlvfKPvFfqMVTjgmkdQ2dgHupdBvuhJAjVeekD23sMY=;
+        b=LoPhQgtXoJ0BCPlqW3V0CUt5X9i2iuAtkUiNjVP0gu+wUnsBVaeRpizjYXYkiAbpR5
+         uL84ORmVKCzMcfLLDvYbiTKQdWeI9W03jphuD3VKwrlxIKLGgzZFu9M3Qt9Ek9WaNNVw
+         RwKMiDpL+xkuBuYmVnqXcMPYTNQjn1hD8Om5GD/rbVVx+0XBpLeOySyeLsKXLjcKRMyT
+         HtsLQvdidnuzJpuBGRYDJpcOi7uZbGL9aRaWM6AGdexdzhI5MT35pX8ttl8wsE1ewDzQ
+         vlHW+QJjmGf3dwRm5RabuCU3EdQwIKEzolU6W+MUw/jhccqteosEwN9Pda5GHvG5nsS9
+         e5Ww==
+X-Forwarded-Encrypted: i=1; AJvYcCULTnZtCSLXek2axU+kpCO/m02gLI175jt90WTO0A5s664VGGM8iNzhxDRi1T9VY2F2LcZzFin4w2HHvhiKlif61//8tCpqvaBLWEh58VoL565V
+X-Gm-Message-State: AOJu0YxJCutZXig+otdlZR0EAZW6RQrK7iW5+i59pC/lQkVl3o/c2Yna
+	OF9cJnNJCUPTHq8KIj15uOiT1HFVmoOrDaQxUzbcPMwcpTTg7dQ7U7TeokW2zQ==
+X-Google-Smtp-Source: AGHT+IFGNPBipDIE0AiNQc/Cqlxd5431Vef5ObfevA6hF44fnzurKBxD1B4lS2oVTJREu9b1YFAdCg==
+X-Received: by 2002:a05:6870:89a4:b0:22d:fcf9:bd97 with SMTP id f36-20020a05687089a400b0022dfcf9bd97mr15408827oaq.26.1713242490147;
+        Mon, 15 Apr 2024 21:41:30 -0700 (PDT)
 Received: from google.com ([2401:fa00:8f:203:1137:d3d7:a09d:5379])
-        by smtp.gmail.com with ESMTPSA id b65-20020a633444000000b005dccf48e2a5sm7898637pga.54.2024.04.15.21.39.18
+        by smtp.gmail.com with ESMTPSA id r4-20020a056a00216400b006edd05e3751sm8284703pff.176.2024.04.15.21.41.22
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 15 Apr 2024 21:39:26 -0700 (PDT)
-Date: Tue, 16 Apr 2024 13:39:16 +0900
+        Mon, 15 Apr 2024 21:41:29 -0700 (PDT)
+Date: Tue, 16 Apr 2024 13:41:19 +0900
 From: Sergey Senozhatsky <senozhatsky@chromium.org>
 To: Ricardo Ribalda <ribalda@chromium.org>
 Cc: Martin Tuma <martin.tuma@digiteqautomotive.com>,
@@ -103,17 +103,18 @@ Cc: Martin Tuma <martin.tuma@digiteqautomotive.com>,
 	linux-arm-kernel@lists.infradead.org, linux-staging@lists.linux.dev,
 	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
 	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org
-Subject: Re: [PATCH 03/35] media: uvcvideo: Refactor iterators
-Message-ID: <20240416043916.GA14947@google.com>
+Subject: Re: [PATCH 04/35] media: uvcvideo: Use max() macro
+Message-ID: <20240416044119.GB14947@google.com>
 References: <20240415-fix-cocci-v1-0-477afb23728b@chromium.org>
- <20240415-fix-cocci-v1-3-477afb23728b@chromium.org>
+ <20240415-fix-cocci-v1-4-477afb23728b@chromium.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240415-fix-cocci-v1-3-477afb23728b@chromium.org>
+In-Reply-To: <20240415-fix-cocci-v1-4-477afb23728b@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240415_213938_758975_B8C73E82 
-X-CRM114-Status: GOOD (  11.39  )
+X-CRM114-CacheID: sfid-20240415_214131_790505_0CA17AB9 
+X-CRM114-Status: UNSURE (   7.94  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -129,40 +130,11 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On (24/04/15 19:34), Ricardo Ribalda wrote:
-[..]
-> @@ -2165,7 +2167,7 @@ static int uvc_ctrl_init_xu_ctrl(struct uvc_device *dev,
->  int uvc_xu_ctrl_query(struct uvc_video_chain *chain,
->  	struct uvc_xu_control_query *xqry)
->  {
-> -	struct uvc_entity *entity;
-> +	struct uvc_entity *entity, *iter;
->  	struct uvc_control *ctrl;
->  	unsigned int i;
->  	bool found;
+> It makes the code slightly more clear and makes cocci incredibly happy:
+> 
+> drivers/media/usb/uvc/uvc_ctrl.c:839:22-23: WARNING opportunity for max()
+> 
+> Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 
-Is `found` still used?
-
-> @@ -2175,16 +2177,16 @@ int uvc_xu_ctrl_query(struct uvc_video_chain *chain,
->  	int ret;
->  
->  	/* Find the extension unit. */
-> -	found = false;
-> -	list_for_each_entry(entity, &chain->entities, chain) {
-> -		if (UVC_ENTITY_TYPE(entity) == UVC_VC_EXTENSION_UNIT &&
-> -		    entity->id == xqry->unit) {
-> -			found = true;
-> +	entity = NULL;
-> +	list_for_each_entry(iter, &chain->entities, chain) {
-> +		if (UVC_ENTITY_TYPE(iter) == UVC_VC_EXTENSION_UNIT &&
-> +		    iter->id == xqry->unit) {
-> +			entity = iter;
->  			break;
->  		}
->  	}
->  
-> -	if (!found) {
-> +	if (!entity) {
->  		uvc_dbg(chain->dev, CONTROL, "Extension unit %u not found\n",
->  			xqry->unit);
->  		return -ENOENT;
+Reviewed-by: Sergey Senozhatsky <senozhatsky@chromium.org>
 
