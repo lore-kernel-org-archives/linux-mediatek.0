@@ -4,128 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97C6FC4345F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Apr 2024 15:56:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B7B9C4345F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Apr 2024 16:12:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Kk43UIDm9M9R8V3T1CIiMiMRKcLoO2R/eVKjmVeC/UE=; b=ATivdMkC9o99oq3m9qYeBvDuZC
-	+TNRDxrdrnhVew0tvRLv2ei9oav1eXepuvWb4vapykbsCdLPNVpsshq64ajf4kgC1qMm+lZhWlmcU
-	DlFNN+rUIJSEX7m0rkb4jFbF5APJ85t/KM3rGfRzWU1AMuAmxj3L4/W/vyye2wC3XQ41GBpWpfpGK
-	EXQsRzOO8AIimz3jXaFEaemvVQaGDOD/rHJ44K4/k7YBKcs868Oc2CgJzwImsU1lvor+11CHCo9Bz
-	+yw4gnNzun7B7HSxZS5sbAjduKTEche8lhDMkXrXc35z/IKepP88X2VJaFp4rFYjTgSdCzQ5RdBOp
-	tHlCbN5w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=EKrDgIJgNXo/R8quzpUy0yW7erzp8PxvHvcTe/50ujU=; b=LJNmNdKDeKqEhLYID1f6+j8d9t
+	PiMBkuDaLOFpzmYr5wvFi5Hoee/vs7tYvNwas5rhE5c6GDyq6nyxeYTavp3pVARcE6k396ZblAT2i
+	sHAaYyDBq8zxEFY+D42z5k5Pv/rpNRjSIpnDbisXFkRlEnIsudzZIFXdUn3oliiNRPf9PEt+ZyGgP
+	5oUPtd4L/AF2v61ZBNaAKyPZJDNPN5Nl2JEbpfrARl4ULGhdhN7VML8C2WVmf3mLRtjDPDZK180Ag
+	fbL8HsrYpSua9oc8cAksT1lNSK8s7V6vq8m5GgmduTuVFfGE78++gyVRnF/lBw1FHX45eMDIS6Ksf
+	OV55mTAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwlAD-0000000CsMn-3ypa;
-	Tue, 16 Apr 2024 15:56:06 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1rwlQ0-0000000CwQs-3ZM2;
+	Tue, 16 Apr 2024 16:12:24 +0000
+Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwl86-0000000CqzC-2Ldm
-	for linux-mediatek@bombadil.infradead.org;
-	Tue, 16 Apr 2024 15:53:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=Kk43UIDm9M9R8V3T1CIiMiMRKcLoO2R/eVKjmVeC/UE=; b=gNSxKPKZNdiH5BRam6o+1tGBzy
-	RbPCSqjHwFxqRC4YSDTwtQSjRXF6k0OV0XIF3gDA0TJbHfF0K8cxHoF6oWNtrf7tAiWQakBLWM5MU
-	iWJYLKi40Hv/9gGaS/xJozPdlG92onxLq88BZu9X3534I2ZwHomAceGJmenddDyswtugv5IXBMy7k
-	NbU02JVfhCc43ENG6xVV+PdKm87qZ4tvM37ELS+91azb1CUq0Sd2icbrkVtuFDLs+/owUlUMdg49u
-	WfvhXMsoGd3S3sQMnd2BdWie6OOx5Kyi8Q3EGZ3iDZtteSH/P5VmeSBpxh7l6rAgYmpXN+dvi01Xw
-	y18d9qNQ==;
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
-	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwl83-0000000B8gG-1PFF
-	for linux-mediatek@lists.infradead.org;
-	Tue, 16 Apr 2024 15:53:53 +0000
-Received: by mail-ej1-x629.google.com with SMTP id a640c23a62f3a-a52223e004dso519893666b.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 16 Apr 2024 08:53:50 -0700 (PDT)
+	id 1rwlPs-0000000CwOc-0zJw;
+	Tue, 16 Apr 2024 16:12:21 +0000
+Received: by mail-pl1-x62b.google.com with SMTP id d9443c01a7336-1e36b7e7dd2so37020825ad.1;
+        Tue, 16 Apr 2024 09:12:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1713282828; x=1713887628; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=Kk43UIDm9M9R8V3T1CIiMiMRKcLoO2R/eVKjmVeC/UE=;
-        b=wkiCvXohnGkS03WJEMVnEyHdPISzEk0xzJCZXdzr7Kiarsi/glUMnHl7wNg9BqADIL
-         8vVesKeAelUiVwaeb+y5v+pOkOLmZKCvwAgH94FEmQiM8eFc+t819M6NYsg6vg3DsCHR
-         XpsnDaV4q0ROzBjJECAWtur14JABoE/BxOPI1CE4FLaVbRjMRGOUtcR7aTujyUrLjPDZ
-         go5+vNWTZfKbG8uJKDlmXPLaU7x07aQpxuJxrUIno3DbiAT741Y6DpZwx0L/Znw6A6j/
-         70LOXJTQl/MlbIivXgCAd4jvS0A3Eg4ORLx09Z9JVHwUr+aoIVFPT5yNsPZhYv+XL5m3
-         Ju9Q==
+        d=gmail.com; s=20230601; t=1713283935; x=1713888735; darn=lists.infradead.org;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=EKrDgIJgNXo/R8quzpUy0yW7erzp8PxvHvcTe/50ujU=;
+        b=AwJwbEtmneJaKPI3k/8TnJNKaBEAyUNYolsIdu8xL4fdDaqcu2DX85WLSebAGqDhxb
+         DlcleJF9r6yTatxYeYFFmZGe+9oplsWMSPlCuTHiBE+L+I9bDRbX+dfu8ufyH+8pw7G/
+         lx0SJvHjQaol56gkzCKOdNTt4rc9AzoEDlhERdoU8+0iGH1MfMVz4AeVikoDymhEfR0X
+         5MQ5DlWAPPJsekBXSJMqsQROw1UtmHyDnxh/aMoGEuB+sg6txS1P3iKLmZtC5H2Ae3aS
+         Wx/rtP5aTMtdkq4RH3+4tK27J1stPRnD2uP5a0YPlf2YzpyLnYWRtJy7j6svTaNhiTSy
+         KfRg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713282828; x=1713887628;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Kk43UIDm9M9R8V3T1CIiMiMRKcLoO2R/eVKjmVeC/UE=;
-        b=EeAAJThw1Ksaxi+U6N0zYmn0WcxOR65VJM8qSvBvxt+nomZtxV5TgVcBXvprLYyZAC
-         90MKM7PtyeutzESO/NWjO3wWqYet7/NY+T60F0691BhK/w/0sdf3zv7b0DbBKxTq1hSS
-         X+iJIGDfmeh4FQNvOaNx/qKWh60Rkgu3KJyoIcJAmY5fO6yZG8o78FmI28h8HBibXBT+
-         5EIw9QcR/clt20f2ORULUrBXz17VjUv1gpGFzV/9wCrmLR3LVYyLkQKo4pSa0yN1xNSN
-         P/OGr6MkSZsoIGOkafgEPOxCTG0GJiErpqWim1l9VH43kD3Jl301iJoO3CJk+yt8k7SF
-         xLVQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUxmLHmGUhFkFif13Tfl8NJDc/+ClIdxd0S1sZUrbTIOqj7mHSQz9Gca4GYzemsTvWvIfeyTeFDXHpRTtXcuYSu/tTpMtcvEWPhxmPZ8HqdTIu5
-X-Gm-Message-State: AOJu0YxaQFKlGuRDu1CZAoCXHE44pjzDjjwah9ZbUOeuI1NWY5SulaYj
-	01w57MRKI10C7hNfgSR62VEE+gPKgNbAGVJwJBGjTZuu0TQnklecXbRngOxtJ0s=
-X-Google-Smtp-Source: AGHT+IFO9RIMh6kvWocz6pLKLsYWpWuuznyn5mp7qBiekbbqjWT0jnC8LdvlQLxbJKuw5b6fDOrdsg==
-X-Received: by 2002:a17:907:1b29:b0:a52:617d:d77f with SMTP id mp41-20020a1709071b2900b00a52617dd77fmr6077497ejc.56.1713282828539;
-        Tue, 16 Apr 2024 08:53:48 -0700 (PDT)
-Received: from [127.0.1.1] ([93.5.22.158])
-        by smtp.googlemail.com with ESMTPSA id d12-20020a170906174c00b00a52567ca1b6sm4156691eje.94.2024.04.16.08.53.46
+        d=1e100.net; s=20230601; t=1713283935; x=1713888735;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=EKrDgIJgNXo/R8quzpUy0yW7erzp8PxvHvcTe/50ujU=;
+        b=ueJjZCDKjykEESP5vx/Qj4oUS2sMUQhdkje8SIHfq4mzUrXz4KaufjdJgywkuj2tU2
+         ZEmyf5iq5Q9lVBVqgGiatFjmQKE/sFgtyEE8ASI6pu8ErkttNnRqZu+IryitsH0FX8el
+         vU1O53FYPvDXKkWx4dOZqbZH5d4FP3sO3HC75R6z1eLBKqrlBfzdeN1e7F/MA2Da+YgB
+         /o09lEaK8FEWbCZ1oiGhNyEbH+QJd1gCiM2JIqsqBugMyP7AdsyKZIGjk7lNh/gUc9n4
+         aFQi6HyB4iSX9oe1FulUW6Bra8AwCARMv+1oz2FJE4ILjGcdlskcbjcDFBR+ukiGG1mq
+         UNwg==
+X-Forwarded-Encrypted: i=1; AJvYcCVS81KfZnb4kpebTzTvqv/YuLodMUU+DVo+177KteY6vcWn6Vly18YTn5h9csV61d0o6iIeceomZReIqa5VgKtXRG7ar6BJ4vwsoRoSiWQ1mcFA8XZhcyNOBbTM01hrcO6nja/1F8r5c+CzSvPGyygvA8cjzAx1AsfAR6nLAboowMPYNviMo6WwCYg4aNQArnvh7bA7pNqIPAb4+kSij/rTZkVD45pbvgVWH3JWkuBuUFenG7jrsng=
+X-Gm-Message-State: AOJu0YzZ/VZhQSw7MI7kZfhPEC85aCMDlrsuPMCv1LJtX+ae8x1uzP3X
+	jXIT5XNAnS9Xj3bJHwsIUsjRqE8zND4E3D57QI+A6EEic45OiGSb
+X-Google-Smtp-Source: AGHT+IEaBhKQrtE4y17EN+JRfoZ0nAtlgq9TOIgtvD46kDZyqFoPetYC3y2iMwccARAF9quBrezxcQ==
+X-Received: by 2002:a17:903:595:b0:1e3:e4ff:7054 with SMTP id jv21-20020a170903059500b001e3e4ff7054mr10328895plb.38.1713283934861;
+        Tue, 16 Apr 2024 09:12:14 -0700 (PDT)
+Received: from ?IPv6:2605:59c8:43f:400:82ee:73ff:fe41:9a02? ([2605:59c8:43f:400:82ee:73ff:fe41:9a02])
+        by smtp.googlemail.com with ESMTPSA id lf16-20020a170902fb5000b001e5119c1923sm10005822plb.71.2024.04.16.09.12.05
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 16 Apr 2024 08:53:48 -0700 (PDT)
-From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Tue, 16 Apr 2024 17:53:19 +0200
-Subject: [PATCH v2 18/18] arm64: dts: mediatek: add display support for
- mt8365-evk
+        Tue, 16 Apr 2024 09:12:14 -0700 (PDT)
+Message-ID: <18ca19fa64267b84bee10473a81cbc63f53104a0.camel@gmail.com>
+Subject: Re: [PATCH net-next v2 07/15] mm: page_frag: add '_va' suffix to
+ page_frag API
+From: Alexander H Duyck <alexander.duyck@gmail.com>
+To: Yunsheng Lin <linyunsheng@huawei.com>, davem@davemloft.net,
+ kuba@kernel.org,  pabeni@redhat.com
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Jeroen de Borst
+ <jeroendb@google.com>, Praveen Kaligineedi <pkaligineedi@google.com>, 
+ Shailend Chand <shailend@google.com>, Eric Dumazet <edumazet@google.com>,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>, Tony Nguyen
+ <anthony.l.nguyen@intel.com>,  Sunil Goutham <sgoutham@marvell.com>, Geetha
+ sowjanya <gakula@marvell.com>, Subbaraya Sundeep <sbhatta@marvell.com>,
+ hariprasad <hkelam@marvell.com>, Felix Fietkau <nbd@nbd.name>, Sean Wang
+ <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, Lorenzo
+ Bianconi <lorenzo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Keith
+ Busch <kbusch@kernel.org>,  Jens Axboe <axboe@kernel.dk>, Christoph Hellwig
+ <hch@lst.de>, Sagi Grimberg <sagi@grimberg.me>,  Chaitanya Kulkarni
+ <kch@nvidia.com>, "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang
+ <jasowang@redhat.com>, Andrew Morton <akpm@linux-foundation.org>, Alexei
+ Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>,
+ Jesper Dangaard Brouer <hawk@kernel.org>, John Fastabend
+ <john.fastabend@gmail.com>, Andrii Nakryiko <andrii@kernel.org>, Martin
+ KaFai Lau <martin.lau@linux.dev>, Eduard Zingerman <eddyz87@gmail.com>,
+ Song Liu <song@kernel.org>, Yonghong Song <yonghong.song@linux.dev>, KP
+ Singh <kpsingh@kernel.org>, Stanislav Fomichev <sdf@google.com>, Hao Luo
+ <haoluo@google.com>, Jiri Olsa <jolsa@kernel.org>,  David Howells
+ <dhowells@redhat.com>, Marc Dionne <marc.dionne@auristor.com>, Chuck Lever
+ <chuck.lever@oracle.com>, Jeff Layton <jlayton@kernel.org>, Neil Brown
+ <neilb@suse.de>, Olga Kornievskaia <kolga@netapp.com>, Dai Ngo
+ <Dai.Ngo@oracle.com>, Tom Talpey <tom@talpey.com>, Trond Myklebust
+ <trond.myklebust@hammerspace.com>, Anna Schumaker <anna@kernel.org>, 
+ intel-wired-lan@lists.osuosl.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-nvme@lists.infradead.org, 
+ kvm@vger.kernel.org, virtualization@lists.linux.dev, linux-mm@kvack.org, 
+ bpf@vger.kernel.org, linux-afs@lists.infradead.org,
+ linux-nfs@vger.kernel.org
+Date: Tue, 16 Apr 2024 09:12:01 -0700
+In-Reply-To: <20240415131941.51153-8-linyunsheng@huawei.com>
+References: <20240415131941.51153-1-linyunsheng@huawei.com>
+	 <20240415131941.51153-8-linyunsheng@huawei.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.48.4 (3.48.4-1.fc38) 
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20231023-display-support-v2-18-33ce8864b227@baylibre.com>
-References: <20231023-display-support-v2-0-33ce8864b227@baylibre.com>
-In-Reply-To: <20231023-display-support-v2-0-33ce8864b227@baylibre.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, 
- Daniel Vetter <daniel@ffwll.ch>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Jitao Shi <jitao.shi@mediatek.com>, CK Hu <ck.hu@mediatek.com>, 
- =?utf-8?q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, 
- Michael Turquette <mturquette@baylibre.com>, 
- Stephen Boyd <sboyd@kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, 
- Will Deacon <will@kernel.org>
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-pwm@vger.kernel.org, 
- linux-clk@vger.kernel.org, Alexandre Mergnat <amergnat@baylibre.com>
-X-Mailer: b4 0.12.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=6020; i=amergnat@baylibre.com;
- h=from:subject:message-id; bh=M4i1c6AYDA2tEdZrTCUtzyXixpIxmwigGiG2fPItjfs=;
- b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBmHp7qUFBca7E08f1ngHlmp33iL1Pv9Lit7GgjOUw5
- xOYM3ZKJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZh6e6gAKCRArRkmdfjHURaHuD/
- oCDVBZHaWA9Ah4glfGxpEvI/qAqr19rDwqndy7g+YFxItm1BLLAQsDWf3PWwXWINhgk1qp8AKEfHag
- H+AgyR6sJ+RSScJKKnJpxbAnFBw+VTYtw9YxMX6UcBQXdAIuyPREY7V/IxD3NgiMT6YQ60IClUChxT
- g+mZFSBsW83vT6Os/DHuIPf7G4qrYf5kfjjqM1P4PAU0YTT3vxIYB4xZQP8Cp2l1MhcFd7eZ9XZ9Nf
- INmIdRUKKzna7mDY12ofaylFrWAJg5oiNKou9p+gAHHNFtXJ88IILb/zhm+QwKa2E7DchvaenxuLME
- iAfx6sPPAy/YM/AoFIGL8APqIDo/0aFnx010D6scRIxnTKaH04WJXRcJXb744L2Hgti8Jjr9WtrPwS
- dnEy3ADN6SsQDNKHZblKrG+ptfXXklXcYlGeXFJLm5958HRxXXtH9HX+4tHPMOZW3KZ1baxi4UW12Z
- r2ZNaFEFEXXfMoWK8srpDlMujcNCcEGCUWpUoiQ8iOk+mbbl8b0XZkDLsO3dfmDAzYDFHnFFeGdCoK
- BE2whclWEqaxtuwJcuUoduLTywfv+CIlhjgIjLnexvgj2aRnIZYWutHGxZVLArR2HiwGUWXWI3vVnz
- oViDNci7PccfDEQKUvr+wE988NJEI+SgKvgrbd1s+zW9Tz/4onA2Wzl07Smg==
-X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
- fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240416_165351_676954_C7F984BA 
-X-CRM114-Status: GOOD (  11.77  )
+X-CRM114-CacheID: sfid-20240416_091216_850577_EFC0B5A6 
+X-CRM114-Status: GOOD (  11.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -140,246 +124,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MIPI DSI:
-- Add "vsys_lcm_reg" regulator support and setup the "mt6357_vsim1_reg",
-to power the pannel plugged to the DSI connector.
-- Setup the Display Parallel Interface.
-  - Add the startek kd070fhfid015 pannel support.
+On Mon, 2024-04-15 at 21:19 +0800, Yunsheng Lin wrote:
+> Currently most of the API for page_frag API is returning
+> 'virtual address' as output or expecting 'virtual address'
+> as input, in order to differentiate the API handling between
+> 'virtual address' and 'struct page', add '_va' suffix to the
+> corresponding API mirroring the page_pool_alloc_va() API of
+> the page_pool.
+>=20
+> Signed-off-by: Yunsheng Lin <linyunsheng@huawei.com>
 
-HDMI:
-- Add HDMI connector support.
-- Add the "ite,it66121" HDMI bridge support, driven by I2C1.
-- Setup the Display Parallel Interface.
+This patch is a total waste of time. By that logic we should be
+renaming __get_free_pages since it essentially does the same thing.
 
-Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
----
- arch/arm64/boot/dts/mediatek/mt8365-evk.dts | 182 ++++++++++++++++++++++++++++
- 1 file changed, 182 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts b/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
-index 50cbaefa1a99..4afdcbefc481 100644
---- a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
-@@ -26,6 +26,18 @@ chosen {
- 		stdout-path = "serial0:921600n8";
- 	};
- 
-+	connector {
-+		compatible = "hdmi-connector";
-+		label = "hdmi";
-+		type = "d";
-+
-+		port {
-+			hdmi_connector_in: endpoint {
-+				remote-endpoint = <&hdmi_connector_out>;
-+			};
-+		};
-+	};
-+
- 	firmware {
- 		optee {
- 			compatible = "linaro,optee-tz";
-@@ -86,6 +98,56 @@ optee_reserved: optee@43200000 {
- 			reg = <0 0x43200000 0 0x00c00000>;
- 		};
- 	};
-+
-+	vsys_lcm_reg: regulator-vsys-lcm {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpio = <&pio 129 GPIO_ACTIVE_HIGH>;
-+		regulator-max-microvolt = <5000000>;
-+		regulator-min-microvolt = <5000000>;
-+		regulator-name = "vsys_lcm";
-+	};
-+};
-+
-+&dpi0 {
-+	pinctrl-0 = <&dpi_default_pins>;
-+	pinctrl-1 = <&dpi_idle_pins>;
-+	pinctrl-names = "default", "sleep";
-+	status = "okay";
-+
-+	port {
-+		dpi_out: endpoint {
-+			remote-endpoint = <&it66121_in>;
-+		};
-+	};
-+};
-+
-+&dsi0 {
-+	#address-cells = <1>;
-+	#size-cells = <0>;
-+	status = "okay";
-+
-+	panel@0 {
-+		compatible = "startek,kd070fhfid015";
-+		status = "okay";
-+		reg = <0>;
-+		enable-gpios = <&pio 67 GPIO_ACTIVE_HIGH>;
-+		reset-gpios = <&pio 20 GPIO_ACTIVE_HIGH>;
-+		iovcc-supply = <&mt6357_vsim1_reg>;
-+		power-supply = <&vsys_lcm_reg>;
-+
-+		port {
-+			panel_in: endpoint {
-+				remote-endpoint = <&dsi_out>;
-+			};
-+		};
-+	};
-+
-+	port {
-+		dsi_out: endpoint {
-+			remote-endpoint = <&panel_in>;
-+		};
-+	};
- };
- 
- &cpu0 {
-@@ -138,6 +200,50 @@ &i2c0 {
- 	status = "okay";
- };
- 
-+&i2c1 {
-+	#address-cells = <1>;
-+	#size-cells = <0>;
-+	clock-div = <2>;
-+	clock-frequency = <100000>;
-+	pinctrl-0 = <&i2c1_pins>;
-+	pinctrl-names = "default";
-+	status = "okay";
-+
-+	it66121hdmitx: it66121hdmitx@4c {
-+		#sound-dai-cells = <0>;
-+		compatible = "ite,it66121";
-+		interrupt-parent = <&pio>;
-+		interrupts = <68 IRQ_TYPE_LEVEL_LOW>;
-+		pinctrl-0 = <&ite_pins>;
-+		pinctrl-names = "default";
-+		reg = <0x4c>;
-+		reset-gpios = <&pio 69 GPIO_ACTIVE_LOW>;
-+		vcn18-supply = <&mt6357_vsim2_reg>;
-+		vcn33-supply = <&mt6357_vibr_reg>;
-+		vrf12-supply = <&mt6357_vrf12_reg>;
-+
-+		ports {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			port@0 {
-+				reg = <0>;
-+				it66121_in: endpoint {
-+					bus-width = <12>;
-+					remote-endpoint = <&dpi_out>;
-+				};
-+			};
-+
-+			port@1 {
-+				reg = <1>;
-+				hdmi_connector_out: endpoint {
-+					remote-endpoint = <&hdmi_connector_in>;
-+				};
-+			};
-+		};
-+	};
-+};
-+
- &mmc0 {
- 	assigned-clock-parents = <&topckgen CLK_TOP_MSDCPLL>;
- 	assigned-clocks = <&topckgen CLK_TOP_MSDC50_0_SEL>;
-@@ -180,7 +286,55 @@ &mt6357_pmic {
- 	#interrupt-cells = <2>;
- };
- 
-+&mt6357_vsim1_reg {
-+	regulator-min-microvolt = <1800000>;
-+	regulator-max-microvolt = <1800000>;
-+};
-+
- &pio {
-+	dpi_default_pins: dpi-default-pins {
-+		pins {
-+			pinmux = <MT8365_PIN_0_GPIO0__FUNC_DPI_D0>,
-+				 <MT8365_PIN_1_GPIO1__FUNC_DPI_D1>,
-+				 <MT8365_PIN_2_GPIO2__FUNC_DPI_D2>,
-+				 <MT8365_PIN_3_GPIO3__FUNC_DPI_D3>,
-+				 <MT8365_PIN_4_GPIO4__FUNC_DPI_D4>,
-+				 <MT8365_PIN_5_GPIO5__FUNC_DPI_D5>,
-+				 <MT8365_PIN_6_GPIO6__FUNC_DPI_D6>,
-+				 <MT8365_PIN_7_GPIO7__FUNC_DPI_D7>,
-+				 <MT8365_PIN_8_GPIO8__FUNC_DPI_D8>,
-+				 <MT8365_PIN_9_GPIO9__FUNC_DPI_D9>,
-+				 <MT8365_PIN_10_GPIO10__FUNC_DPI_D10>,
-+				 <MT8365_PIN_11_GPIO11__FUNC_DPI_D11>,
-+				 <MT8365_PIN_12_GPIO12__FUNC_DPI_DE>,
-+				 <MT8365_PIN_13_GPIO13__FUNC_DPI_VSYNC>,
-+				 <MT8365_PIN_14_GPIO14__FUNC_DPI_CK>,
-+				 <MT8365_PIN_15_GPIO15__FUNC_DPI_HSYNC>;
-+			drive-strength = <MTK_DRIVE_4mA>;
-+		};
-+	};
-+
-+	dpi_idle_pins: dpi-idle-pins {
-+		pins {
-+			pinmux = <MT8365_PIN_0_GPIO0__FUNC_GPIO0>,
-+				 <MT8365_PIN_1_GPIO1__FUNC_GPIO1>,
-+				 <MT8365_PIN_2_GPIO2__FUNC_GPIO2>,
-+				 <MT8365_PIN_3_GPIO3__FUNC_GPIO3>,
-+				 <MT8365_PIN_4_GPIO4__FUNC_GPIO4>,
-+				 <MT8365_PIN_5_GPIO5__FUNC_GPIO5>,
-+				 <MT8365_PIN_6_GPIO6__FUNC_GPIO6>,
-+				 <MT8365_PIN_7_GPIO7__FUNC_GPIO7>,
-+				 <MT8365_PIN_8_GPIO8__FUNC_GPIO8>,
-+				 <MT8365_PIN_9_GPIO9__FUNC_GPIO9>,
-+				 <MT8365_PIN_10_GPIO10__FUNC_GPIO10>,
-+				 <MT8365_PIN_11_GPIO11__FUNC_GPIO11>,
-+				 <MT8365_PIN_12_GPIO12__FUNC_GPIO12>,
-+				 <MT8365_PIN_13_GPIO13__FUNC_GPIO13>,
-+				 <MT8365_PIN_14_GPIO14__FUNC_GPIO14>,
-+				 <MT8365_PIN_15_GPIO15__FUNC_GPIO15>;
-+		};
-+	};
-+
- 	ethernet_pins: ethernet-pins {
- 		phy_reset_pins {
- 			pinmux = <MT8365_PIN_133_TDM_TX_DATA1__FUNC_GPIO133>;
-@@ -222,6 +376,34 @@ pins {
- 		};
- 	};
- 
-+	i2c1_pins: i2c1-pins {
-+		pins {
-+			pinmux = <MT8365_PIN_59_SDA1__FUNC_SDA1_0>,
-+				 <MT8365_PIN_60_SCL1__FUNC_SCL1_0>;
-+			bias-pull-up;
-+		};
-+	};
-+
-+	ite_pins: ite-pins {
-+
-+		irq_ite_pins {
-+			pinmux = <MT8365_PIN_68_CMDAT0__FUNC_GPIO68>;
-+			input-enable;
-+			bias-pull-up;
-+		};
-+
-+		pwr_pins {
-+			pinmux = <MT8365_PIN_70_CMDAT2__FUNC_GPIO70>,
-+				 <MT8365_PIN_71_CMDAT3__FUNC_GPIO71>;
-+			output-high;
-+		};
-+
-+		rst_ite_pins {
-+			pinmux = <MT8365_PIN_69_CMDAT1__FUNC_GPIO69>;
-+			output-high;
-+		};
-+	};
-+
- 	mmc0_default_pins: mmc0-default-pins {
- 		clk-pins {
- 			pinmux = <MT8365_PIN_99_MSDC0_CLK__FUNC_MSDC0_CLK>;
-
--- 
-2.25.1
+This just seems like more code changes for the sake of adding code
+changes rather than fixing anything. In my opinion it should be dropped
+from the set.
 
 
