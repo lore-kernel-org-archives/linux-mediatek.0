@@ -4,45 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F795C04FF6
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Apr 2024 07:16:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E279C04FF6
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Apr 2024 07:16:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mI+i6McCV3OEY7vtDqjfGuLN0GAZ6jzn5XZAbrOWm/g=; b=rlRAUkj9+BLqNFsueil3MaA05N
-	Vb1H2ncLeTiPY7VGGFj8gu063sNkhnN4ipxwApGMDl9RJ9nPSCJ8YKTMyPvci18/6FTodbLGnDIS/
-	+EWmzlTnBNtMEDAc7TGzZzy7npLx7IaLT1Tcod0hV7qIUUfv7HIU5bUBjt5xzGBmeuyLqKZNGD0xi
-	E/QER9LdxytYDWoNKH0H449voygXHbqsYR82HLEHq2tem59aP0tbYYNoqMzYRjTWbw+KQv6FG46gn
-	3l57827Yu5ohmc7necVP54GppDTGLT4fwaatiBDWlBtt09WanXp86Gwdy4O9z/6+FZhMLC5QmYdEE
-	l433SqdQ==;
+	bh=MAUeDBYWiAGr3fxwpjBURgyi9fc/tOHj3KX2lyNM1QE=; b=WYDZ3FTyu8JX6fju/ljnfa/4jQ
+	k/EJN/aBj6vUbDg+wD+FrmJP7z0jrcEhhcfqDY2JlcRaNn/l2KxcZ4RAi5d5l+wfMA9UxLj+JFMg2
+	5/YKFyM9C2//ShumObOQ8wSeYcokBUBb/8fcMDYI63osl9QbaUJhuyKzeDhZ+1uZ8+zZ672nFZaH5
+	2eLs2BtwWD+/ULmLuZJjYJTgQ/J2mesPe1Y3l4Tgdv3rLIW2dDID/1AS0GcSEtZc2zsb1q6CB4mIP
+	MF2gh+pTymOWOQ6yGQTtKW/i77LaGp8hLvfcCIZXhDGpCXkWwIPG6XMPctKyluiFcu9fGC3wtOKkk
+	uoou7ueg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwd3a-0000000BDIi-1Z2l;
-	Tue, 16 Apr 2024 07:16:44 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rwd3i-0000000BDP7-0fDC;
+	Tue, 16 Apr 2024 07:16:50 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwd1k-0000000BCDS-1DFT;
+	id 1rwd1o-0000000BCGm-2PmG;
+	Tue, 16 Apr 2024 07:14:52 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=MAUeDBYWiAGr3fxwpjBURgyi9fc/tOHj3KX2lyNM1QE=; b=Ti1PVSn7oK3N0Hdut4pQEEn+7T
+	KzgN9+M8sSGZFdZaEjUSaLSRey8XykFJArNrf/rqridzX9CJ+LQfy7oa3wYsFJb0B2thpnA6NKND2
+	RHaf34m8K13M6Cd+kHjFuwTnq0pA61N0KslTjJnNDkRK9e0Dgun0Oay7FG7xcaU3fyW8pj68D3WM9
+	k/Z4CeXaUC1rMZ/oo1GZd75W3MHfG7lsSoyRpo3Oh7LdDoOm050cFX6M7yT4Bv1vLoo1zT+COTFwc
+	WaKlrf00u/3+NJGJN7OtyCRJj6pV6LY1/PoK2f0tNY392TI67ZwyUFjID4i0gCcKinqsrukUTdoiJ
+	ikSFVK6w==;
+Received: from madrid.collaboradmins.com ([46.235.227.194])
+	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1rwd1j-0000000AxNB-2wv4;
 	Tue, 16 Apr 2024 07:14:50 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1713251687;
-	bh=u3zwsWj3FznMZF6fne2Y0gfUvSivJy3RgPglHp05FEw=;
+	s=mail; t=1713251672;
+	bh=DH7vyulFVg1rDpurL/O6/TDCItfssmukTVTvmN6uB6s=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Y2leWYBuNEq1AY1jsG3KjLCQUg4E/U6JNyFppUa/HaUwqjFQMU0XfdJIqjIplybOb
-	 wlhJtRy2kje2ZaylqpEFo7DaBiEYV4toREZZLHBvvUDuAVdJc9RydIJXUcok7QrajB
-	 HlWTU1hPifhcfB71Hz196Vr7Mf75fn7ARD6PLlJdMilbl2QklEBQt4Nfg+7V9lOi1k
-	 0lgEcR3DcX2khoDL0UtDgYOWNqS9Pn+ItbqIaziLSZej24uKyh0H4cVIB3swfNw9oA
-	 W/EKoAd2uPuBfp5rDx6aPxouURmkFlwM8pAUO5U5lzPGWOw873dUhVb+iNSki9lVL0
-	 RbU0V8cp2H09w==
+	b=BiwxkDLd7SURPReDm3xszdp6BBoJ4XEeemkIpH9HE2FxIBaqZJwcc2VpWR1/FIitx
+	 2O03Ocyw8KtMcfVpjvFFijoxcjGlzt3oH6ukA3DZEHhTQaDbke3PfcTwWBSQAoNaUa
+	 qpDMDIS4p0l3o+9zGUZ5xLkLMNwHmQkX2Gy7x+UMFla0pIJDAaL2N/YwPqmLKeqFWn
+	 3yJ2D4fPHjH0t3LF2tZB/tJxsY6zEDqAG1jKCyVJVBPefhtEaa+5Mj9e/Nn+f5jo04
+	 bU0UEFh+uT08SUoaLSkyX5iaa/DLz1KVHylwJlZwsrdXXhv9WIxXoAv1hfQl3yP8eH
+	 hhHxxl39s9ekg==
 Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id EE6F2378213F;
-	Tue, 16 Apr 2024 07:14:44 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 912F4378210B;
+	Tue, 16 Apr 2024 07:14:30 +0000 (UTC)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: broonie@kernel.org
 Cc: wenst@chromium.org,
@@ -82,17 +96,17 @@ Cc: wenst@chromium.org,
 	linux-mediatek@lists.infradead.org,
 	kernel@collabora.com,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v5 12/18] ASoC: mediatek: Use common mtk_afe_pcm_platform with common probe cb
-Date: Tue, 16 Apr 2024 09:14:04 +0200
-Message-ID: <20240416071410.75620-13-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v5 06/18] ASoC: mediatek: mt8186: Migrate to mtk_soundcard_common_probe
+Date: Tue, 16 Apr 2024 09:13:58 +0200
+Message-ID: <20240416071410.75620-7-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.44.0
 In-Reply-To: <20240416071410.75620-1-angelogioacchino.delregno@collabora.com>
 References: <20240416071410.75620-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240416_001448_615075_EBD78C79 
-X-CRM114-Status: GOOD (  13.27  )
+X-CRM114-CacheID: sfid-20240416_081448_640586_C45BBD8F 
+X-CRM114-Status: GOOD (  21.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,246 +121,349 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Since the mtk-afe-platform-driver generic mtk_afe_pcm_platform now has
-a common .probe() callback, there is no reason to keep duplicating this
-function over and over in the SoC specific AFE-PCM drivers: switch over
-to register with the common bits instead.
+Add mtk_soundcard_pdata platform data for the MediaTek common sound card
+probe mechanism, including a driver/soc-specific probe extension (used
+for bits that cannot be commonized  hence specific to this driver), and
+change the probe function to mtk_soundcard_common_probe.
 
-Note that MT8186 was left out of this because it is registering some
-extra sinegen controls in the AFE-PCM probe callback and needs extra
-cleanups to be able to use the common bits.
+This is also adding the possibility of specifying the links and routing
+with the audio-routing property and (x)-dai-link nodes in device trees
+to stop hardcoding machine specific links in the card driver assupported
+by the common probe function, but support for legacy device trees is
+retained with a legacy_probe function, which is used only in case the
+new properties are not found.
 
 Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- sound/soc/mediatek/mt6797/mt6797-afe-pcm.c | 14 +-----------
- sound/soc/mediatek/mt7986/mt7986-afe-pcm.c | 14 +-----------
- sound/soc/mediatek/mt8183/mt8183-afe-pcm.c | 14 +-----------
- sound/soc/mediatek/mt8188/mt8188-afe-pcm.c | 21 +-----------------
- sound/soc/mediatek/mt8192/mt8192-afe-pcm.c | 25 ++--------------------
- sound/soc/mediatek/mt8195/mt8195-afe-pcm.c | 21 +-----------------
- 6 files changed, 7 insertions(+), 102 deletions(-)
+ .../mt8186/mt8186-mt6366-rt1019-rt5682s.c     | 220 ++++++++----------
+ 1 file changed, 96 insertions(+), 124 deletions(-)
 
-diff --git a/sound/soc/mediatek/mt6797/mt6797-afe-pcm.c b/sound/soc/mediatek/mt6797/mt6797-afe-pcm.c
-index da7267c684b1..c1dee119e93a 100644
---- a/sound/soc/mediatek/mt6797/mt6797-afe-pcm.c
-+++ b/sound/soc/mediatek/mt6797/mt6797-afe-pcm.c
-@@ -704,18 +704,6 @@ static int mt6797_afe_runtime_resume(struct device *dev)
- 	return 0;
- }
+diff --git a/sound/soc/mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.c b/sound/soc/mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.c
+index f78197c8e582..f8856a100b27 100644
+--- a/sound/soc/mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.c
++++ b/sound/soc/mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.c
+@@ -21,6 +21,7 @@
+ #include "../common/mtk-afe-platform-driver.h"
+ #include "../common/mtk-dsp-sof-common.h"
+ #include "../common/mtk-soc-card.h"
++#include "../common/mtk-soundcard-driver.h"
+ #include "mt8186-afe-common.h"
+ #include "mt8186-afe-clk.h"
+ #include "mt8186-afe-gpio.h"
+@@ -38,11 +39,16 @@
+ #define SOF_DMA_UL2 "SOF_DMA_UL2"
  
--static int mt6797_afe_component_probe(struct snd_soc_component *component)
--{
--	return mtk_afe_add_sub_dai_control(component);
--}
--
--static const struct snd_soc_component_driver mt6797_afe_component = {
--	.name		= AFE_PCM_NAME,
--	.probe		= mt6797_afe_component_probe,
--	.pointer	= mtk_afe_pcm_pointer,
--	.pcm_construct	= mtk_afe_pcm_new,
--};
--
- static int mt6797_dai_memif_register(struct mtk_base_afe *afe)
- {
- 	struct mtk_base_afe_dai *dai;
-@@ -852,7 +840,7 @@ static int mt6797_afe_pcm_dev_probe(struct platform_device *pdev)
- 	pm_runtime_get_sync(&pdev->dev);
+ struct mt8186_mt6366_rt1019_rt5682s_priv {
+-	struct snd_soc_jack headset_jack, hdmi_jack;
+ 	struct gpio_desc *dmic_sel;
+ 	int dmic_switch;
+ };
  
- 	/* register component */
--	ret = devm_snd_soc_register_component(dev, &mt6797_afe_component,
-+	ret = devm_snd_soc_register_component(dev, &mtk_afe_pcm_platform,
- 					      NULL, 0);
- 	if (ret) {
- 		dev_warn(dev, "err_platform\n");
-diff --git a/sound/soc/mediatek/mt7986/mt7986-afe-pcm.c b/sound/soc/mediatek/mt7986/mt7986-afe-pcm.c
-index d497e1129889..c1c486e275b9 100644
---- a/sound/soc/mediatek/mt7986/mt7986-afe-pcm.c
-+++ b/sound/soc/mediatek/mt7986/mt7986-afe-pcm.c
-@@ -429,18 +429,6 @@ static int mt7986_afe_runtime_resume(struct device *dev)
- 	return 0;
- }
++enum mt8186_jacks {
++	MT8186_JACK_HEADSET,
++	MT8186_JACK_HDMI,
++	MT8186_JACK_MAX,
++};
++
+ /* Headset jack detection DAPM pins */
+ static struct snd_soc_jack_pin mt8186_jack_pins[] = {
+ 	{
+@@ -165,8 +171,7 @@ static int mt8186_rt5682s_init(struct snd_soc_pcm_runtime *rtd)
+ 	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(cmpnt_afe);
+ 	struct mtk_soc_card_data *soc_card_data =
+ 		snd_soc_card_get_drvdata(rtd->card);
+-	struct mt8186_mt6366_rt1019_rt5682s_priv *priv = soc_card_data->mach_priv;
+-	struct snd_soc_jack *jack = &priv->headset_jack;
++	struct snd_soc_jack *jack = &soc_card_data->card_data->jacks[MT8186_JACK_HEADSET];
+ 	struct snd_soc_component *cmpnt_codec =
+ 		snd_soc_rtd_to_codec(rtd, 0)->component;
+ 	int ret;
+@@ -257,7 +262,7 @@ static int mt8186_mt6366_rt1019_rt5682s_hdmi_init(struct snd_soc_pcm_runtime *rt
+ 		snd_soc_rtd_to_codec(rtd, 0)->component;
+ 	struct mtk_soc_card_data *soc_card_data =
+ 		snd_soc_card_get_drvdata(rtd->card);
+-	struct mt8186_mt6366_rt1019_rt5682s_priv *priv = soc_card_data->mach_priv;
++	struct snd_soc_jack *jack = &soc_card_data->card_data->jacks[MT8186_JACK_HDMI];
+ 	int ret;
  
--static int mt7986_afe_component_probe(struct snd_soc_component *component)
--{
--	return mtk_afe_add_sub_dai_control(component);
--}
--
--static const struct snd_soc_component_driver mt7986_afe_component = {
--	.name = AFE_PCM_NAME,
--	.probe = mt7986_afe_component_probe,
--	.pointer	= mtk_afe_pcm_pointer,
--	.pcm_construct	= mtk_afe_pcm_new,
--};
--
- static int mt7986_dai_memif_register(struct mtk_base_afe *afe)
- {
- 	struct mtk_base_afe_dai *dai;
-@@ -573,7 +561,7 @@ static int mt7986_afe_pcm_dev_probe(struct platform_device *pdev)
- 
- 	/* register component */
- 	ret = devm_snd_soc_register_component(&pdev->dev,
--					      &mt7986_afe_component,
-+					      &mtk_afe_pcm_platform,
- 					      NULL, 0);
- 	if (ret)
- 		return dev_err_probe(dev, ret, "Cannot register AFE component\n");
-diff --git a/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c b/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
-index 9e432ed9124b..25348fdf75fa 100644
---- a/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
-+++ b/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
-@@ -1042,18 +1042,6 @@ static int mt8183_afe_runtime_resume(struct device *dev)
- 	return 0;
- }
- 
--static int mt8183_afe_component_probe(struct snd_soc_component *component)
--{
--	return mtk_afe_add_sub_dai_control(component);
--}
--
--static const struct snd_soc_component_driver mt8183_afe_component = {
--	.name		= AFE_PCM_NAME,
--	.probe		= mt8183_afe_component_probe,
--	.pointer	= mtk_afe_pcm_pointer,
--	.pcm_construct	= mtk_afe_pcm_new,
--};
--
- static int mt8183_dai_memif_register(struct mtk_base_afe *afe)
- {
- 	struct mtk_base_afe_dai *dai;
-@@ -1232,7 +1220,7 @@ static int mt8183_afe_pcm_dev_probe(struct platform_device *pdev)
- 
- 	/* register component */
- 	ret = devm_snd_soc_register_component(&pdev->dev,
--					      &mt8183_afe_component,
-+					      &mtk_afe_pcm_platform,
- 					      NULL, 0);
- 	if (ret) {
- 		dev_warn(dev, "err_platform\n");
-diff --git a/sound/soc/mediatek/mt8188/mt8188-afe-pcm.c b/sound/soc/mediatek/mt8188/mt8188-afe-pcm.c
-index 46d6a5540403..9647fe133dc8 100644
---- a/sound/soc/mediatek/mt8188/mt8188-afe-pcm.c
-+++ b/sound/soc/mediatek/mt8188/mt8188-afe-pcm.c
-@@ -3030,25 +3030,6 @@ static int mt8188_afe_runtime_resume(struct device *dev)
- 	return 0;
- }
- 
--static int mt8188_afe_component_probe(struct snd_soc_component *component)
--{
--	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(component);
--	int ret;
--
--	snd_soc_component_init_regmap(component, afe->regmap);
--
--	ret = mtk_afe_add_sub_dai_control(component);
--
--	return ret;
--}
--
--static const struct snd_soc_component_driver mt8188_afe_component = {
--	.name = AFE_PCM_NAME,
--	.pointer       = mtk_afe_pcm_pointer,
--	.pcm_construct = mtk_afe_pcm_new,
--	.probe         = mt8188_afe_component_probe,
--};
--
- static int init_memif_priv_data(struct mtk_base_afe *afe)
- {
- 	struct mt8188_afe_private *afe_priv = afe->platform_priv;
-@@ -3350,7 +3331,7 @@ static int mt8188_afe_pcm_dev_probe(struct platform_device *pdev)
+ 	ret = mt8186_dai_i2s_set_share(afe, "I2S2", "I2S3");
+@@ -266,13 +271,13 @@ static int mt8186_mt6366_rt1019_rt5682s_hdmi_init(struct snd_soc_pcm_runtime *rt
+ 		return ret;
  	}
  
- 	/* register component */
--	ret = devm_snd_soc_register_component(dev, &mt8188_afe_component,
-+	ret = devm_snd_soc_register_component(dev, &mtk_afe_pcm_platform,
- 					      afe->dai_drivers, afe->num_dai_drivers);
+-	ret = snd_soc_card_jack_new(rtd->card, "HDMI Jack", SND_JACK_LINEOUT, &priv->hdmi_jack);
++	ret = snd_soc_card_jack_new(rtd->card, "HDMI Jack", SND_JACK_LINEOUT, jack);
  	if (ret) {
- 		dev_warn(dev, "err_platform\n");
-diff --git a/sound/soc/mediatek/mt8192/mt8192-afe-pcm.c b/sound/soc/mediatek/mt8192/mt8192-afe-pcm.c
-index aed22baef9fb..424c5c68f78a 100644
---- a/sound/soc/mediatek/mt8192/mt8192-afe-pcm.c
-+++ b/sound/soc/mediatek/mt8192/mt8192-afe-pcm.c
-@@ -2125,22 +2125,6 @@ static int mt8192_afe_runtime_resume(struct device *dev)
- 	return 0;
- }
- 
--static int mt8192_afe_component_probe(struct snd_soc_component *component)
--{
--	return mtk_afe_add_sub_dai_control(component);
--}
--
--static const struct snd_soc_component_driver mt8192_afe_component = {
--	.name = AFE_PCM_NAME,
--	.probe = mt8192_afe_component_probe,
--	.pointer = mtk_afe_pcm_pointer,
--	.pcm_construct = mtk_afe_pcm_new,
--};
--
--static const struct snd_soc_component_driver mt8192_afe_pcm_component = {
--	.name = "mt8192-afe-pcm-dai",
--};
--
- static int mt8192_dai_memif_register(struct mtk_base_afe *afe)
- {
- 	struct mtk_base_afe_dai *dai;
-@@ -2302,16 +2286,11 @@ static int mt8192_afe_pcm_dev_probe(struct platform_device *pdev)
- 
- 	/* register platform */
- 	ret = devm_snd_soc_register_component(&pdev->dev,
--					      &mt8192_afe_component, NULL, 0);
--	if (ret)
--		return dev_err_probe(dev, ret, "Couldn't register AFE component\n");
--
--	ret = devm_snd_soc_register_component(&pdev->dev,
--					      &mt8192_afe_pcm_component,
-+					      &mtk_afe_pcm_platform,
- 					      afe->dai_drivers,
- 					      afe->num_dai_drivers);
- 	if (ret)
--		return dev_err_probe(dev, ret, "Couldn't register AFE-PCM component\n");
-+		return dev_err_probe(dev, ret, "Couldn't register AFE component\n");
- 
- 	return 0;
- }
-diff --git a/sound/soc/mediatek/mt8195/mt8195-afe-pcm.c b/sound/soc/mediatek/mt8195/mt8195-afe-pcm.c
-index 620d7ade1992..64af9bf363fd 100644
---- a/sound/soc/mediatek/mt8195/mt8195-afe-pcm.c
-+++ b/sound/soc/mediatek/mt8195/mt8195-afe-pcm.c
-@@ -2944,25 +2944,6 @@ static int mt8195_afe_runtime_resume(struct device *dev)
- 	return 0;
- }
- 
--static int mt8195_afe_component_probe(struct snd_soc_component *component)
--{
--	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(component);
--	int ret = 0;
--
--	snd_soc_component_init_regmap(component, afe->regmap);
--
--	ret = mtk_afe_add_sub_dai_control(component);
--
--	return ret;
--}
--
--static const struct snd_soc_component_driver mt8195_afe_component = {
--	.name = AFE_PCM_NAME,
--	.pointer = mtk_afe_pcm_pointer,
--	.pcm_construct = mtk_afe_pcm_new,
--	.probe = mt8195_afe_component_probe,
--};
--
- static int init_memif_priv_data(struct mtk_base_afe *afe)
- {
- 	struct mt8195_afe_private *afe_priv = afe->platform_priv;
-@@ -3164,7 +3145,7 @@ static int mt8195_afe_pcm_dev_probe(struct platform_device *pdev)
+ 		dev_err(rtd->dev, "HDMI Jack creation failed: %d\n", ret);
+ 		return ret;
  	}
  
- 	/* register component */
--	ret = devm_snd_soc_register_component(dev, &mt8195_afe_component,
-+	ret = devm_snd_soc_register_component(dev, &mtk_afe_pcm_platform,
- 					      afe->dai_drivers, afe->num_dai_drivers);
- 	if (ret) {
- 		dev_warn(dev, "err_platform\n");
+-	return snd_soc_component_set_jack(cmpnt_codec, &priv->hdmi_jack, NULL);
++	return snd_soc_component_set_jack(cmpnt_codec, jack, NULL);
+ }
+ 
+ static int mt8186_hw_params_fixup(struct snd_soc_pcm_runtime *rtd,
+@@ -1134,166 +1139,133 @@ static struct snd_soc_card mt8186_mt6366_rt5650_soc_card = {
+ 	.num_configs = ARRAY_SIZE(mt8186_mt6366_rt1019_rt5682s_codec_conf),
+ };
+ 
+-static int mt8186_mt6366_rt1019_rt5682s_dev_probe(struct platform_device *pdev)
++static int mt8186_mt6366_legacy_probe(struct mtk_soc_card_data *soc_card_data)
+ {
+-	struct snd_soc_card *card;
++	struct mtk_platform_card_data *card_data = soc_card_data->card_data;
++	struct snd_soc_card *card = card_data->card;
++	struct device *dev = card->dev;
+ 	struct snd_soc_dai_link *dai_link;
+-	struct mtk_soc_card_data *soc_card_data;
+-	struct mt8186_mt6366_rt1019_rt5682s_priv *mach_priv;
+-	struct device_node *platform_node, *headset_codec, *playback_codec, *adsp_node;
+-	int sof_on = 0;
++	struct device_node *headset_codec, *playback_codec;
+ 	int ret, i;
+ 
+-	card = (struct snd_soc_card *)device_get_match_data(&pdev->dev);
+-	if (!card)
+-		return -EINVAL;
+-	card->dev = &pdev->dev;
+-
+-	soc_card_data = devm_kzalloc(&pdev->dev, sizeof(*soc_card_data), GFP_KERNEL);
+-	if (!soc_card_data)
+-		return -ENOMEM;
+-	mach_priv = devm_kzalloc(&pdev->dev, sizeof(*mach_priv), GFP_KERNEL);
+-	if (!mach_priv)
+-		return -ENOMEM;
+-
+-	soc_card_data->mach_priv = mach_priv;
+-
+-	mach_priv->dmic_sel = devm_gpiod_get_optional(&pdev->dev,
+-						      "dmic", GPIOD_OUT_LOW);
+-	if (IS_ERR(mach_priv->dmic_sel)) {
+-		dev_err(&pdev->dev, "DMIC gpio failed err=%ld\n",
+-			PTR_ERR(mach_priv->dmic_sel));
+-		return PTR_ERR(mach_priv->dmic_sel);
+-	}
+-
+-	adsp_node = of_parse_phandle(pdev->dev.of_node, "mediatek,adsp", 0);
+-	if (adsp_node) {
+-		struct mtk_sof_priv *sof_priv;
++	playback_codec = of_get_child_by_name(dev->of_node, "playback-codecs");
++	if (!playback_codec)
++		return dev_err_probe(dev, -EINVAL,
++				     "Property 'playback-codecs' missing or invalid\n");
+ 
+-		sof_priv = devm_kzalloc(&pdev->dev, sizeof(*sof_priv), GFP_KERNEL);
+-		if (!sof_priv) {
+-			ret = -ENOMEM;
+-			goto err_adsp_node;
+-		}
+-		sof_priv->conn_streams = g_sof_conn_streams;
+-		sof_priv->num_streams = ARRAY_SIZE(g_sof_conn_streams);
+-		sof_priv->sof_dai_link_fixup = mt8186_sof_dai_link_fixup;
+-		soc_card_data->sof_priv = sof_priv;
+-		card->probe = mtk_sof_card_probe;
+-		card->late_probe = mtk_sof_card_late_probe;
+-		if (!card->topology_shortname_created) {
+-			snprintf(card->topology_shortname, 32, "sof-%s", card->name);
+-			card->topology_shortname_created = true;
+-		}
+-		card->name = card->topology_shortname;
+-		sof_on = 1;
+-	} else {
+-		dev_dbg(&pdev->dev, "Probe without adsp\n");
+-	}
+-
+-	if (of_property_read_bool(pdev->dev.of_node, "mediatek,dai-link")) {
+-		ret = mtk_sof_dailink_parse_of(card, pdev->dev.of_node,
+-					       "mediatek,dai-link",
+-					       mt8186_mt6366_rt1019_rt5682s_dai_links,
+-					       ARRAY_SIZE(mt8186_mt6366_rt1019_rt5682s_dai_links));
+-		if (ret) {
+-			dev_dbg(&pdev->dev, "Parse dai-link fail\n");
+-			goto err_adsp_node;
+-		}
+-	} else {
+-		if (!sof_on)
+-			card->num_links = ARRAY_SIZE(mt8186_mt6366_rt1019_rt5682s_dai_links)
+-					- ARRAY_SIZE(g_sof_conn_streams);
+-	}
+-
+-	platform_node = of_parse_phandle(pdev->dev.of_node, "mediatek,platform", 0);
+-	if (!platform_node) {
+-		ret = -EINVAL;
+-		dev_err_probe(&pdev->dev, ret, "Property 'platform' missing or invalid\n");
+-		goto err_platform_node;
+-	}
+-
+-	playback_codec = of_get_child_by_name(pdev->dev.of_node, "playback-codecs");
+-	if (!playback_codec) {
+-		ret = -EINVAL;
+-		dev_err_probe(&pdev->dev, ret, "Property 'playback-codecs' missing or invalid\n");
+-		goto err_playback_codec;
+-	}
+-
+-	headset_codec = of_get_child_by_name(pdev->dev.of_node, "headset-codec");
++	headset_codec = of_get_child_by_name(dev->of_node, "headset-codec");
+ 	if (!headset_codec) {
+-		ret = -EINVAL;
+-		dev_err_probe(&pdev->dev, ret, "Property 'headset-codec' missing or invalid\n");
+-		goto err_headset_codec;
++		of_node_put(playback_codec);
++		return dev_err_probe(dev, -EINVAL,
++				     "Property 'headset-codec' missing or invalid\n");
+ 	}
+ 
+ 	for_each_card_prelinks(card, i, dai_link) {
+ 		ret = mt8186_mt6366_card_set_be_link(card, dai_link, playback_codec, "I2S3");
+ 		if (ret) {
+-			dev_err_probe(&pdev->dev, ret, "%s set playback_codec fail\n",
++			dev_err_probe(dev, ret, "%s set playback_codec fail\n",
+ 				      dai_link->name);
+-			goto err_probe;
++			break;
+ 		}
+ 
+ 		ret = mt8186_mt6366_card_set_be_link(card, dai_link, headset_codec, "I2S0");
+ 		if (ret) {
+-			dev_err_probe(&pdev->dev, ret, "%s set headset_codec fail\n",
++			dev_err_probe(dev, ret, "%s set headset_codec fail\n",
+ 				      dai_link->name);
+-			goto err_probe;
++			break;
+ 		}
+ 
+ 		ret = mt8186_mt6366_card_set_be_link(card, dai_link, headset_codec, "I2S1");
+ 		if (ret) {
+-			dev_err_probe(&pdev->dev, ret, "%s set headset_codec fail\n",
++			dev_err_probe(dev, ret, "%s set headset_codec fail\n",
+ 				      dai_link->name);
+-			goto err_probe;
++			break;
+ 		}
++	}
++	of_node_put(headset_codec);
++	of_node_put(playback_codec);
+ 
+-		if (!strncmp(dai_link->name, "AFE_SOF", strlen("AFE_SOF")) && sof_on)
+-			dai_link->platforms->of_node = adsp_node;
++	return ret;
++}
+ 
+-		if (!dai_link->platforms->name && !dai_link->platforms->of_node)
+-			dai_link->platforms->of_node = platform_node;
+-	}
++static int mt8186_mt6366_soc_card_probe(struct mtk_soc_card_data *soc_card_data, bool legacy)
++{
++	struct mtk_platform_card_data *card_data = soc_card_data->card_data;
++	struct snd_soc_card *card = card_data->card;
++	struct mt8186_mt6366_rt1019_rt5682s_priv *mach_priv;
++	int ret;
+ 
+-	snd_soc_card_set_drvdata(card, soc_card_data);
++	mach_priv = devm_kzalloc(card->dev, sizeof(*mach_priv), GFP_KERNEL);
++	if (!mach_priv)
++		return -ENOMEM;
+ 
+-	ret = mt8186_afe_gpio_init(&pdev->dev);
+-	if (ret) {
+-		dev_err_probe(&pdev->dev, ret, "%s init gpio error\n", __func__);
+-		goto err_probe;
++	soc_card_data->mach_priv = mach_priv;
++
++	mach_priv->dmic_sel = devm_gpiod_get_optional(card->dev,
++						      "dmic", GPIOD_OUT_LOW);
++	if (IS_ERR(mach_priv->dmic_sel))
++		return dev_err_probe(card->dev, PTR_ERR(mach_priv->dmic_sel),
++				     "DMIC gpio failed\n");
++
++	if (legacy) {
++		ret = mt8186_mt6366_legacy_probe(soc_card_data);
++		if (ret)
++			return ret;
+ 	}
+ 
+-	ret = devm_snd_soc_register_card(&pdev->dev, card);
++	ret = mt8186_afe_gpio_init(card->dev);
+ 	if (ret)
+-		dev_err_probe(&pdev->dev, ret, "%s snd_soc_register_card fail\n", __func__);
++		return dev_err_probe(card->dev, ret, "init AFE gpio error\n");
+ 
+-err_probe:
+-	of_node_put(headset_codec);
+-err_headset_codec:
+-	of_node_put(playback_codec);
+-err_playback_codec:
+-	of_node_put(platform_node);
+-err_platform_node:
+-err_adsp_node:
+-	of_node_put(adsp_node);
+-
+-	return ret;
++	return 0;
+ }
+ 
++static const struct mtk_sof_priv mt8186_sof_priv = {
++	.conn_streams = g_sof_conn_streams,
++	.num_streams = ARRAY_SIZE(g_sof_conn_streams),
++	.sof_dai_link_fixup = mt8186_sof_dai_link_fixup
++};
++
++static const struct mtk_soundcard_pdata mt8186_mt6366_rt1019_rt5682s_pdata = {
++	.card_data = &(struct mtk_platform_card_data) {
++		.card = &mt8186_mt6366_rt1019_rt5682s_soc_card,
++		.num_jacks = MT8186_JACK_MAX,
++	},
++	.sof_priv = &mt8186_sof_priv,
++	.soc_probe = mt8186_mt6366_soc_card_probe
++};
++
++static const struct mtk_soundcard_pdata mt8186_mt6366_rt5682s_max98360_pdata = {
++	.card_data = &(struct mtk_platform_card_data) {
++		.card = &mt8186_mt6366_rt5682s_max98360_soc_card,
++		.num_jacks = MT8186_JACK_MAX,
++	},
++	.sof_priv = &mt8186_sof_priv,
++	.soc_probe = mt8186_mt6366_soc_card_probe
++};
++
++static const struct mtk_soundcard_pdata mt8186_mt6366_rt5650_pdata = {
++	.card_data = &(struct mtk_platform_card_data) {
++		.card = &mt8186_mt6366_rt5650_soc_card,
++		.num_jacks = MT8186_JACK_MAX,
++	},
++	.sof_priv = &mt8186_sof_priv,
++	.soc_probe = mt8186_mt6366_soc_card_probe
++};
++
+ #if IS_ENABLED(CONFIG_OF)
+ static const struct of_device_id mt8186_mt6366_rt1019_rt5682s_dt_match[] = {
+ 	{
+ 		.compatible = "mediatek,mt8186-mt6366-rt1019-rt5682s-sound",
+-		.data = &mt8186_mt6366_rt1019_rt5682s_soc_card,
++		.data = &mt8186_mt6366_rt1019_rt5682s_pdata,
+ 	},
+ 	{
+ 		.compatible = "mediatek,mt8186-mt6366-rt5682s-max98360-sound",
+-		.data = &mt8186_mt6366_rt5682s_max98360_soc_card,
++		.data = &mt8186_mt6366_rt5682s_max98360_pdata,
+ 	},
+ 	{
+ 		.compatible = "mediatek,mt8186-mt6366-rt5650-sound",
+-		.data = &mt8186_mt6366_rt5650_soc_card,
++		.data = &mt8186_mt6366_rt5650_pdata,
+ 	},
+ 	{}
+ };
+@@ -1308,7 +1280,7 @@ static struct platform_driver mt8186_mt6366_rt1019_rt5682s_driver = {
+ #endif
+ 		.pm = &snd_soc_pm_ops,
+ 	},
+-	.probe = mt8186_mt6366_rt1019_rt5682s_dev_probe,
++	.probe = mtk_soundcard_common_probe,
+ };
+ 
+ module_platform_driver(mt8186_mt6366_rt1019_rt5682s_driver);
 -- 
 2.44.0
 
