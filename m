@@ -4,94 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C55B4C4345F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Apr 2024 07:59:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1AD2BC4345F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Apr 2024 08:15:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:Message-ID:In-Reply-To:Subject:cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HkEo4MtVcirZNUv8fDTMpgVQxCw+2pVcB+btO9EbU9A=; b=4Ck48T4dNGQMpW0l4s+0LZ2ppW
-	R2gGYljENaJiFltV63lFqTOI+31MasT+NN0WKD775eXZdFzE29eSrPD0QiLEoRF+K6JUSD/Nvqul5
-	p2n5MWS77eFlKqJXAeWgdKlhxMB6a9VB8jo9+WKmUmS81ykPwXNUvLJVVJQLHpLh+mEjaj0R7sYQa
-	YYg0c7lCXzV87yDYUvv+gMaNEYQfJUv6vAz7rOJoE1/GDXiSqxAXbpxarXxExkQjEEKEM/kTO2/q+
-	sJ2+VtNEJfUNYJE0L96nbn26XVfWprdTKzWlk0Wp1wFHMvc9OaKnyGj0Kondfv36y7lVxoKWy6qNW
-	kE6m4IvQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OMhm8KOJ48rpXxBsTtfqnImgNokpEe7YpT51kBL+7ro=; b=CEQWpuMogCBlK1PhRk7/pJPYrf
+	XJ9pVvoczaEejc9609+uD0ewRBhoZLUd1tfKsBVzImtFNtNzsPfQT7jHt6QnvGzzrBcpz6Q4lQfqv
+	mflBGo/O/B1jLFV5Vk+5nYVk/eRMuzXyKKIg0rbntkmfrVgd0OegnglHdirCKGmF0RN6s1K1+Sio/
+	bh3pZy6CzWTUQoGQyetx09N3FHWJI4f1evCekyeO3EtNMoeNc+RIIC8T1PHUGh4e8iwLVThaU+F2H
+	zc7GOZ68JjiqOqDkKVixHu+iEEoJgXHf7yLCdudTiT/mBmwagwwPnImcahtzwwOQp31oc2RB4ehTH
+	W76V747g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwdiy-0000000BMDA-1KWL;
-	Tue, 16 Apr 2024 07:59:28 +0000
-Received: from mail3-relais-sop.national.inria.fr ([192.134.164.104])
+	id 1rwdyh-0000000BPlr-2XlL;
+	Tue, 16 Apr 2024 08:15:43 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwdis-0000000BMBA-17j2;
-	Tue, 16 Apr 2024 07:59:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=HkEo4MtVcirZNUv8fDTMpgVQxCw+2pVcB+btO9EbU9A=;
-  b=HX44HljYDCMdoNExUzlzltWtvSxZSxuHCSo5siE0NaIx2YcmZm5SE0it
-   YznRJfyeUNER2AGpxSf0OUbVOanpOAAwZrit30QQEdkGlH1MXAPRJV7PN
-   lJ0gLInzSOlZBckUxyGdVS9cIHfF6KtSF4dpIiDzzo0/wm6Kcw5NwBMqr
-   U=;
-Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="6.07,205,1708383600"; 
-   d="scan'208";a="84918570"
-Received: from dt-lawall.paris.inria.fr ([128.93.67.65])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Apr 2024 09:59:10 +0200
-Date: Tue, 16 Apr 2024 09:59:10 +0200 (CEST)
-From: Julia Lawall <julia.lawall@inria.fr>
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-cc: =?ISO-8859-15?Q?Niklas_S=F6derlund?= <niklas.soderlund+renesas@ragnatech.se>, 
-    Ricardo Ribalda <ribalda@chromium.org>, 
-    Julia Lawall <Julia.Lawall@inria.fr>, 
-    Martin Tuma <martin.tuma@digiteqautomotive.com>, 
-    Mauro Carvalho Chehab <mchehab@kernel.org>, 
-    Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
-    Hugues Fruchet <hugues.fruchet@foss.st.com>, 
-    Alain Volmat <alain.volmat@foss.st.com>, 
-    Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
-    Alexandre Torgue <alexandre.torgue@foss.st.com>, 
-    Paul Kocialkowski <paul.kocialkowski@bootlin.com>, 
-    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-    Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-    Samuel Holland <samuel@sholland.org>, 
-    Sakari Ailus <sakari.ailus@linux.intel.com>, 
-    Thierry Reding <thierry.reding@gmail.com>, 
-    Jonathan Hunter <jonathanh@nvidia.com>, 
-    Sowjanya Komatineni <skomatineni@nvidia.com>, 
-    Luca Ceresoli <luca.ceresoli@bootlin.com>, 
-    Matthias Brugger <matthias.bgg@gmail.com>, 
-    AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-    Hans Verkuil <hverkuil@xs4all.nl>, Sergey Kozlov <serjk@netup.ru>, 
-    Abylay Ospan <aospan@netup.ru>, 
-    Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
-    Dmitry Osipenko <digetx@gmail.com>, 
-    Stanimir Varbanov <stanimir.k.varbanov@gmail.com>, 
-    Vikash Garodia <quic_vgarodia@quicinc.com>, 
-    Bryan O'Donoghue <bryan.odonoghue@linaro.org>, 
-    Bjorn Andersson <andersson@kernel.org>, 
-    Konrad Dybcio <konrad.dybcio@linaro.org>, 
-    Benjamin Mugnier <benjamin.mugnier@foss.st.com>, 
-    Sylvain Petinot <sylvain.petinot@foss.st.com>, 
-    Jacopo Mondi <jacopo+renesas@jmondi.org>, 
-    Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, 
-    Pavel Machek <pavel@ucw.cz>, linux-media@vger.kernel.org, 
-    linux-kernel@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, 
-    linux-arm-kernel@lists.infradead.org, linux-staging@lists.linux.dev, 
-    linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org, 
-    linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org
-Subject: Re: [PATCH 00/35] media: Fix coccinelle warning/errors
-In-Reply-To: <20240416070843.GA31419@pendragon.ideasonboard.com>
-Message-ID: <4d8ea4c-ed5b-903d-a041-69c3cdd82d64@inria.fr>
-References: <20240415-fix-cocci-v1-0-477afb23728b@chromium.org> <20240415195348.GD22954@pendragon.ideasonboard.com> <CANiDSCteGngbSS6CCuUxM-PQiBz0W0WfoFr2E2oH2d8qt746_A@mail.gmail.com> <20240415203304.GA3460978@ragnatech.se>
- <CANiDSCuR6EeR2MoSH6xtJ0G07QfJsxCb116uL8ocJnwZJSh4Dg@mail.gmail.com> <20240415213846.GB3460978@ragnatech.se> <20240416070843.GA31419@pendragon.ideasonboard.com>
+	id 1rwd1R-0000000BC1a-1lU8;
+	Tue, 16 Apr 2024 07:14:32 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1713251668;
+	bh=TIZvwWDeJ4aqoDbvqKNZ4ihhFX6tlxaL4ndXBGXYyoQ=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=4xNmzsSwqWQ0F/wFEwob9m1m907HkL8xmrZrECqjGKgiklAzcJGuq+2QMl403h9fu
+	 1GsQCaLnZc536kxoEi6xWH8VA0ed108OtvI3bOMj9LOeZryycPw9RtklsUn/pjtg9Y
+	 f8cSa8nb2ABCzN7/S75RyXFT668669eCb+AIk+fd1Dw4yMzkrS+cbfdO7qsJUjwvlv
+	 5LJXY+TmqJ1w1ghvQOxEtTcoM8QCGNNQSG3LokluBLxdryExOD1jjBfDq8tZLrGBtA
+	 WYaC/5cqtO63bAso1j1u7+tCVRAqwQlxG0JSn8ZzYc5/Y7hY783fV3EqCnd2bFt013
+	 UZ4XYY3ju81hw==
+Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id CB1673782139;
+	Tue, 16 Apr 2024 07:14:25 +0000 (UTC)
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: broonie@kernel.org
+Cc: wenst@chromium.org,
+	lgirdwood@gmail.com,
+	robh@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	conor+dt@kernel.org,
+	matthias.bgg@gmail.com,
+	perex@perex.cz,
+	tiwai@suse.com,
+	trevor.wu@mediatek.com,
+	maso.huang@mediatek.com,
+	xiazhengqiao@huaqin.corp-partner.google.com,
+	arnd@arndb.de,
+	kuninori.morimoto.gx@renesas.com,
+	shraash@google.com,
+	amergnat@baylibre.com,
+	nicolas.ferre@microchip.com,
+	u.kleine-koenig@pengutronix.de,
+	dianders@chromium.org,
+	frank.li@vivo.com,
+	allen-kh.cheng@mediatek.com,
+	eugen.hristev@collabora.com,
+	claudiu.beznea@tuxon.dev,
+	jarkko.nikula@bitmer.com,
+	jiaxin.yu@mediatek.com,
+	alpernebiyasak@gmail.com,
+	ckeepax@opensource.cirrus.com,
+	zhourui@huaqin.corp-partner.google.com,
+	nfraprado@collabora.com,
+	alsa-devel@alsa-project.org,
+	shane.chien@mediatek.com,
+	linux-sound@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	kernel@collabora.com,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v5 04/18] ASoC: mediatek: mt8195: Migrate to mtk_soundcard_common_probe
+Date: Tue, 16 Apr 2024 09:13:56 +0200
+Message-ID: <20240416071410.75620-5-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.44.0
+In-Reply-To: <20240416071410.75620-1-angelogioacchino.delregno@collabora.com>
+References: <20240416071410.75620-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="8323329-408150081-1713254351=:3643"
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240416_005922_984913_BEC982E1 
-X-CRM114-Status: GOOD (  40.79  )
+X-CRM114-CacheID: sfid-20240416_001429_830640_A7373B73 
+X-CRM114-Status: GOOD (  23.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,222 +107,463 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+Add mtk_soundcard_pdata platform data for the MediaTek common sound card
+probe mechanism, including a driver/soc-specific probe extension (used
+for bits that cannot be commonized  hence specific to this driver), and
+change the probe function to mtk_soundcard_common_probe.
 
---8323329-408150081-1713254351=:3643
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8BIT
+This is also adding the possibility of specifying the links and routing
+with the audio-routing property and (x)-dai-link nodes in device trees
+to stop hardcoding machine specific links in the card driver assupported
+by the common probe function, but support for legacy device trees is
+retained with a legacy_probe function, which is used only in case the
+new properties are not found.
 
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ sound/soc/mediatek/mt8195/mt8195-mt6359.c | 292 ++++++++++++----------
+ 1 file changed, 159 insertions(+), 133 deletions(-)
 
+diff --git a/sound/soc/mediatek/mt8195/mt8195-mt6359.c b/sound/soc/mediatek/mt8195/mt8195-mt6359.c
+index 53fd8a897b9d..f694618e7635 100644
+--- a/sound/soc/mediatek/mt8195/mt8195-mt6359.c
++++ b/sound/soc/mediatek/mt8195/mt8195-mt6359.c
+@@ -22,6 +22,7 @@
+ #include "../common/mtk-afe-platform-driver.h"
+ #include "../common/mtk-dsp-sof-common.h"
+ #include "../common/mtk-soc-card.h"
++#include "../common/mtk-soundcard-driver.h"
+ #include "mt8195-afe-clk.h"
+ #include "mt8195-afe-common.h"
+ 
+@@ -29,6 +30,13 @@
+ #define RT1019_SPEAKER_AMP_PRESENT		BIT(1)
+ #define MAX98390_SPEAKER_AMP_PRESENT		BIT(2)
+ 
++#define DUMB_CODEC_INIT				BIT(0)
++#define MT6359_CODEC_INIT			BIT(1)
++#define RT1011_CODEC_INIT			BIT(2)
++#define RT1019_CODEC_INIT			BIT(3)
++#define MAX98390_CODEC_INIT			BIT(4)
++#define RT5682_CODEC_INIT			BIT(5)
++
+ #define RT1011_CODEC_DAI	"rt1011-aif"
+ #define RT1011_DEV0_NAME	"rt1011.2-0038"
+ #define RT1011_DEV1_NAME	"rt1011.2-0039"
+@@ -51,18 +59,17 @@
+ #define SOF_DMA_UL4 "SOF_DMA_UL4"
+ #define SOF_DMA_UL5 "SOF_DMA_UL5"
+ 
+-struct mt8195_card_data {
+-	const char *name;
+-	unsigned long quirk;
+-};
+-
+ struct mt8195_mt6359_priv {
+-	struct snd_soc_jack headset_jack;
+-	struct snd_soc_jack dp_jack;
+-	struct snd_soc_jack hdmi_jack;
+ 	struct clk *i2so1_mclk;
+ };
+ 
++enum mt8195_jacks {
++	MT8195_JACK_HEADSET,
++	MT8195_JACK_DP,
++	MT8195_JACK_HDMI,
++	MT8195_JACK_MAX,
++};
++
+ /* Headset jack detection DAPM pins */
+ static struct snd_soc_jack_pin mt8195_jack_pins[] = {
+ 	{
+@@ -382,33 +389,31 @@ static const struct snd_soc_ops mt8195_dptx_ops = {
+ static int mt8195_dptx_codec_init(struct snd_soc_pcm_runtime *rtd)
+ {
+ 	struct mtk_soc_card_data *soc_card_data = snd_soc_card_get_drvdata(rtd->card);
+-	struct mt8195_mt6359_priv *priv = soc_card_data->mach_priv;
++	struct snd_soc_jack *jack = &soc_card_data->card_data->jacks[MT8195_JACK_DP];
+ 	struct snd_soc_component *cmpnt_codec =
+ 		snd_soc_rtd_to_codec(rtd, 0)->component;
+ 	int ret;
+ 
+-	ret = snd_soc_card_jack_new(rtd->card, "DP Jack", SND_JACK_LINEOUT,
+-				    &priv->dp_jack);
++	ret = snd_soc_card_jack_new(rtd->card, "DP Jack", SND_JACK_LINEOUT, jack);
+ 	if (ret)
+ 		return ret;
+ 
+-	return snd_soc_component_set_jack(cmpnt_codec, &priv->dp_jack, NULL);
++	return snd_soc_component_set_jack(cmpnt_codec, jack, NULL);
+ }
+ 
+ static int mt8195_hdmi_codec_init(struct snd_soc_pcm_runtime *rtd)
+ {
+ 	struct mtk_soc_card_data *soc_card_data = snd_soc_card_get_drvdata(rtd->card);
+-	struct mt8195_mt6359_priv *priv = soc_card_data->mach_priv;
++	struct snd_soc_jack *jack = &soc_card_data->card_data->jacks[MT8195_JACK_HDMI];
+ 	struct snd_soc_component *cmpnt_codec =
+ 		snd_soc_rtd_to_codec(rtd, 0)->component;
+ 	int ret;
+ 
+-	ret = snd_soc_card_jack_new(rtd->card, "HDMI Jack", SND_JACK_LINEOUT,
+-				    &priv->hdmi_jack);
++	ret = snd_soc_card_jack_new(rtd->card, "HDMI Jack", SND_JACK_LINEOUT, jack);
+ 	if (ret)
+ 		return ret;
+ 
+-	return snd_soc_component_set_jack(cmpnt_codec, &priv->hdmi_jack, NULL);
++	return snd_soc_component_set_jack(cmpnt_codec, jack, NULL);
+ }
+ 
+ static int mt8195_dptx_hw_params_fixup(struct snd_soc_pcm_runtime *rtd,
+@@ -566,7 +571,7 @@ static int mt8195_rt5682_init(struct snd_soc_pcm_runtime *rtd)
+ 		snd_soc_rtd_to_codec(rtd, 0)->component;
+ 	struct mtk_soc_card_data *soc_card_data = snd_soc_card_get_drvdata(rtd->card);
+ 	struct mt8195_mt6359_priv *priv = soc_card_data->mach_priv;
+-	struct snd_soc_jack *jack = &priv->headset_jack;
++	struct snd_soc_jack *jack = &soc_card_data->card_data->jacks[MT8195_JACK_HEADSET];
+ 	struct snd_soc_component *cmpnt_afe =
+ 		snd_soc_rtdcom_lookup(rtd, AFE_PCM_NAME);
+ 	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(cmpnt_afe);
+@@ -687,7 +692,7 @@ static int mt8195_rt1011_init(struct snd_soc_pcm_runtime *rtd)
+ 	return ret;
+ }
+ 
+-static int mt8195_rt1019_init(struct snd_soc_pcm_runtime *rtd)
++static int mt8195_dumb_amp_init(struct snd_soc_pcm_runtime *rtd)
+ {
+ 	struct snd_soc_card *card = rtd->card;
+ 	int ret;
+@@ -707,6 +712,18 @@ static int mt8195_rt1019_init(struct snd_soc_pcm_runtime *rtd)
+ 		return ret;
+ 	}
+ 
++	return 0;
++}
++
++static int mt8195_rt1019_init(struct snd_soc_pcm_runtime *rtd)
++{
++	struct snd_soc_card *card = rtd->card;
++	int ret;
++
++	ret = mt8195_dumb_amp_init(rtd);
++	if (ret)
++		return ret;
++
+ 	ret = snd_soc_dapm_add_routes(&card->dapm, mt8195_rt1019_routes,
+ 				      ARRAY_SIZE(mt8195_rt1019_routes));
+ 	if (ret)
+@@ -1371,108 +1388,31 @@ static int mt8195_dai_link_fixup(struct snd_soc_pcm_runtime *rtd,
+ 	return ret;
+ }
+ 
+-static int mt8195_mt6359_dev_probe(struct platform_device *pdev)
++static int mt8195_mt6359_legacy_probe(struct mtk_soc_card_data *soc_card_data)
+ {
+-	struct snd_soc_card *card = &mt8195_mt6359_soc_card;
++	struct mtk_platform_card_data *card_data = soc_card_data->card_data;
++	struct snd_soc_card *card = card_data->card;
++	struct device_node *codec_node, *dp_node, *hdmi_node;
+ 	struct snd_soc_dai_link *dai_link;
+-	struct mtk_soc_card_data *soc_card_data;
+-	struct mt8195_mt6359_priv *mach_priv;
+-	struct device_node *platform_node, *adsp_node, *codec_node, *dp_node, *hdmi_node;
+-	struct mt8195_card_data *card_data;
+-	int is5682s = 0;
+-	int init6359 = 0;
+-	int sof_on = 0;
+-	int ret, i;
+-
+-	card_data = (struct mt8195_card_data *)of_device_get_match_data(&pdev->dev);
+-	card->dev = &pdev->dev;
+-
+-	ret = snd_soc_of_parse_card_name(card, "model");
+-	if (ret) {
+-		dev_err(&pdev->dev, "%s new card name parsing error %d\n",
+-			__func__, ret);
+-		return ret;
+-	}
+-
+-	if (!card->name)
+-		card->name = card_data->name;
++	struct device *dev = card->dev;
++	bool is5682s, init6359 = false;
++	int i;
+ 
+ 	if (strstr(card->name, "_5682s")) {
+ 		codec_node = of_find_compatible_node(NULL, NULL, "realtek,rt5682s");
+-		is5682s = 1;
+-	} else
+-		codec_node = of_find_compatible_node(NULL, NULL, "realtek,rt5682i");
+-
+-	soc_card_data = devm_kzalloc(&pdev->dev, sizeof(*card_data), GFP_KERNEL);
+-	if (!soc_card_data)
+-		return -ENOMEM;
+-
+-	mach_priv = devm_kzalloc(&pdev->dev, sizeof(*mach_priv), GFP_KERNEL);
+-	if (!mach_priv)
+-		return -ENOMEM;
+-
+-	soc_card_data->mach_priv = mach_priv;
+-
+-	adsp_node = of_parse_phandle(pdev->dev.of_node, "mediatek,adsp", 0);
+-	if (adsp_node) {
+-		struct mtk_sof_priv *sof_priv;
+-
+-		sof_priv = devm_kzalloc(&pdev->dev, sizeof(*sof_priv), GFP_KERNEL);
+-		if (!sof_priv) {
+-			ret = -ENOMEM;
+-			goto err_kzalloc;
+-		}
+-		sof_priv->conn_streams = g_sof_conn_streams;
+-		sof_priv->num_streams = ARRAY_SIZE(g_sof_conn_streams);
+-		sof_priv->sof_dai_link_fixup = mt8195_dai_link_fixup;
+-		soc_card_data->sof_priv = sof_priv;
+-		card->probe = mtk_sof_card_probe;
+-		card->late_probe = mtk_sof_card_late_probe;
+-		if (!card->topology_shortname_created) {
+-			snprintf(card->topology_shortname, 32, "sof-%s", card->name);
+-			card->topology_shortname_created = true;
+-		}
+-		card->name = card->topology_shortname;
+-		sof_on = 1;
+-	}
+-
+-	if (of_property_read_bool(pdev->dev.of_node, "mediatek,dai-link")) {
+-		ret = mtk_sof_dailink_parse_of(card, pdev->dev.of_node,
+-					       "mediatek,dai-link",
+-					       mt8195_mt6359_dai_links,
+-					       ARRAY_SIZE(mt8195_mt6359_dai_links));
+-		if (ret) {
+-			dev_dbg(&pdev->dev, "Parse dai-link fail\n");
+-			goto err_parse_of;
+-		}
++		is5682s = true;
+ 	} else {
+-		if (!sof_on)
+-			card->num_links = DAI_LINK_REGULAR_NUM;
+-	}
+-
+-	platform_node = of_parse_phandle(pdev->dev.of_node,
+-					 "mediatek,platform", 0);
+-	if (!platform_node) {
+-		dev_dbg(&pdev->dev, "Property 'platform' missing or invalid\n");
+-		ret = -EINVAL;
+-		goto err_platform_node;
++		codec_node = of_find_compatible_node(NULL, NULL, "realtek,rt5682i");
++		is5682s = false;
+ 	}
+ 
+-	dp_node = of_parse_phandle(pdev->dev.of_node, "mediatek,dptx-codec", 0);
+-	hdmi_node = of_parse_phandle(pdev->dev.of_node,
+-				     "mediatek,hdmi-codec", 0);
++	dp_node = of_parse_phandle(dev->of_node, "mediatek,dptx-codec", 0);
++	hdmi_node = of_parse_phandle(dev->of_node, "mediatek,hdmi-codec", 0);
+ 
+ 	for_each_card_prelinks(card, i, dai_link) {
+-		if (!dai_link->platforms->name) {
+-			if (!strncmp(dai_link->name, "AFE_SOF", strlen("AFE_SOF")) && sof_on)
+-				dai_link->platforms->of_node = adsp_node;
+-			else
+-				dai_link->platforms->of_node = platform_node;
+-		}
+-
+ 		if (strcmp(dai_link->name, "DPTX_BE") == 0) {
+ 			if (!dp_node) {
+-				dev_dbg(&pdev->dev, "No property 'dptx-codec'\n");
++				dev_dbg(dev, "No property 'dptx-codec'\n");
+ 			} else {
+ 				dai_link->codecs->of_node = dp_node;
+ 				dai_link->codecs->name = NULL;
+@@ -1481,7 +1421,7 @@ static int mt8195_mt6359_dev_probe(struct platform_device *pdev)
+ 			}
+ 		} else if (strcmp(dai_link->name, "ETDM3_OUT_BE") == 0) {
+ 			if (!hdmi_node) {
+-				dev_dbg(&pdev->dev, "No property 'hdmi-codec'\n");
++				dev_dbg(dev, "No property 'hdmi-codec'\n");
+ 			} else {
+ 				dai_link->codecs->of_node = hdmi_node;
+ 				dai_link->codecs->name = NULL;
+@@ -1490,7 +1430,7 @@ static int mt8195_mt6359_dev_probe(struct platform_device *pdev)
+ 			}
+ 		} else if (strcmp(dai_link->name, "ETDM1_OUT_BE") == 0) {
+ 			if (!codec_node) {
+-				dev_err(&pdev->dev, "Codec not found!\n");
++				dev_err(dev, "Codec not found!\n");
+ 			} else {
+ 				dai_link->codecs->of_node = codec_node;
+ 				dai_link->codecs->name = NULL;
+@@ -1501,7 +1441,7 @@ static int mt8195_mt6359_dev_probe(struct platform_device *pdev)
+ 			}
+ 		} else if (strcmp(dai_link->name, "ETDM2_IN_BE") == 0) {
+ 			if (!codec_node) {
+-				dev_err(&pdev->dev, "Codec not found!\n");
++				dev_err(dev, "Codec not found!\n");
+ 			} else {
+ 				dai_link->codecs->of_node = codec_node;
+ 				dai_link->codecs->name = NULL;
+@@ -1514,10 +1454,10 @@ static int mt8195_mt6359_dev_probe(struct platform_device *pdev)
+ 			   strcmp(dai_link->name, "UL_SRC2_BE") == 0) {
+ 			if (!init6359) {
+ 				dai_link->init = mt8195_mt6359_init;
+-				init6359 = 1;
++				init6359 = true;
+ 			}
+ 		} else if (strcmp(dai_link->name, "ETDM2_OUT_BE") == 0) {
+-			switch (card_data->quirk) {
++			switch (card_data->flags) {
+ 			case RT1011_SPEAKER_AMP_PRESENT:
+ 				dai_link->codecs = rt1011_comps;
+ 				dai_link->num_codecs = ARRAY_SIZE(rt1011_comps);
+@@ -1545,33 +1485,119 @@ static int mt8195_mt6359_dev_probe(struct platform_device *pdev)
+ 		}
+ 	}
+ 
+-	snd_soc_card_set_drvdata(card, soc_card_data);
++	return 0;
++}
+ 
+-	ret = devm_snd_soc_register_card(&pdev->dev, card);
++static int mt8195_mt6359_soc_card_probe(struct mtk_soc_card_data *soc_card_data, bool legacy)
++{
++	struct mtk_platform_card_data *card_data = soc_card_data->card_data;
++	struct snd_soc_card *card = card_data->card;
++	struct mt8195_mt6359_priv *mach_priv;
++	struct snd_soc_dai_link *dai_link;
++	u8 codec_init = 0;
++	int i;
+ 
+-	of_node_put(platform_node);
+-	of_node_put(dp_node);
+-	of_node_put(hdmi_node);
+-err_kzalloc:
+-err_parse_of:
+-err_platform_node:
+-	of_node_put(adsp_node);
+-	return ret;
++	mach_priv = devm_kzalloc(card->dev, sizeof(*mach_priv), GFP_KERNEL);
++	if (!mach_priv)
++		return -ENOMEM;
++
++	soc_card_data->mach_priv = mach_priv;
++
++	if (legacy)
++		return mt8195_mt6359_legacy_probe(soc_card_data);
++
++	for_each_card_prelinks(card, i, dai_link) {
++		if (strcmp(dai_link->name, "DPTX_BE") == 0) {
++			if (strcmp(dai_link->codecs->dai_name, "snd-soc-dummy-dai"))
++				dai_link->init = mt8195_dptx_codec_init;
++		} else if (strcmp(dai_link->name, "ETDM3_OUT_BE") == 0) {
++			if (strcmp(dai_link->codecs->dai_name, "snd-soc-dummy-dai"))
++				dai_link->init = mt8195_hdmi_codec_init;
++		} else if (strcmp(dai_link->name, "DL_SRC_BE") == 0 ||
++			   strcmp(dai_link->name, "UL_SRC1_BE") == 0 ||
++			   strcmp(dai_link->name, "UL_SRC2_BE") == 0) {
++			if (!(codec_init & MT6359_CODEC_INIT)) {
++				dai_link->init = mt8195_mt6359_init;
++				codec_init |= MT6359_CODEC_INIT;
++			}
++		} else if (strcmp(dai_link->name, "ETDM1_OUT_BE") == 0 ||
++			   strcmp(dai_link->name, "ETDM2_OUT_BE") == 0 ||
++			   strcmp(dai_link->name, "ETDM1_IN_BE") == 0 ||
++			   strcmp(dai_link->name, "ETDM2_IN_BE") == 0) {
++			if (!strcmp(dai_link->codecs->dai_name, MAX98390_CODEC_DAI)) {
++				if (!(codec_init & MAX98390_CODEC_INIT)) {
++					dai_link->init = mt8195_max98390_init;
++					codec_init |= MAX98390_CODEC_INIT;
++				}
++			} else if (!strcmp(dai_link->codecs->dai_name, RT1011_CODEC_DAI)) {
++				dai_link->ops = &mt8195_rt1011_etdm_ops;
++				if (!(codec_init & RT1011_CODEC_INIT)) {
++					dai_link->init = mt8195_rt1011_init;
++					codec_init |= RT1011_CODEC_INIT;
++				}
++			} else if (!strcmp(dai_link->codecs->dai_name, RT1019_CODEC_DAI)) {
++				if (!(codec_init & RT1019_CODEC_INIT)) {
++					dai_link->init = mt8195_rt1019_init;
++					codec_init |= RT1019_CODEC_INIT;
++				}
++			} else if (!strcmp(dai_link->codecs->dai_name, RT5682_CODEC_DAI) ||
++				   !strcmp(dai_link->codecs->dai_name, RT5682S_CODEC_DAI)) {
++				dai_link->ops = &mt8195_rt5682_etdm_ops;
++				if (!(codec_init & RT5682_CODEC_INIT)) {
++					dai_link->init = mt8195_rt5682_init;
++					codec_init |= RT5682_CODEC_INIT;
++				}
++			} else {
++				if (strcmp(dai_link->codecs->dai_name, "snd-soc-dummy-dai")) {
++					if (!(codec_init & DUMB_CODEC_INIT)) {
++						dai_link->init = mt8195_dumb_amp_init;
++						codec_init |= DUMB_CODEC_INIT;
++					}
++				}
++			}
++		}
++	}
++
++	return 0;
+ }
+ 
+-static struct mt8195_card_data mt8195_mt6359_rt1019_rt5682_card = {
+-	.name = "mt8195_r1019_5682",
+-	.quirk = RT1019_SPEAKER_AMP_PRESENT,
++static const struct mtk_sof_priv mt8195_sof_priv = {
++	.conn_streams = g_sof_conn_streams,
++	.num_streams = ARRAY_SIZE(g_sof_conn_streams),
++	.sof_dai_link_fixup = mt8195_dai_link_fixup
+ };
+ 
+-static struct mt8195_card_data mt8195_mt6359_rt1011_rt5682_card = {
+-	.name = "mt8195_r1011_5682",
+-	.quirk = RT1011_SPEAKER_AMP_PRESENT,
++static const struct mtk_soundcard_pdata mt8195_mt6359_rt1019_rt5682_card = {
++	.card_name = "mt8195_r1019_5682",
++	.card_data = &(struct mtk_platform_card_data) {
++		.card = &mt8195_mt6359_soc_card,
++		.num_jacks = MT8195_JACK_MAX,
++		.flags = RT1019_SPEAKER_AMP_PRESENT
++	},
++	.sof_priv = &mt8195_sof_priv,
++	.soc_probe = mt8195_mt6359_soc_card_probe
+ };
+ 
+-static struct mt8195_card_data mt8195_mt6359_max98390_rt5682_card = {
+-	.name = "mt8195_m98390_r5682",
+-	.quirk = MAX98390_SPEAKER_AMP_PRESENT,
++static const struct mtk_soundcard_pdata mt8195_mt6359_rt1011_rt5682_card = {
++	.card_name = "mt8195_r1011_5682",
++	.card_data = &(struct mtk_platform_card_data) {
++		.card = &mt8195_mt6359_soc_card,
++		.num_jacks = MT8195_JACK_MAX,
++		.flags = RT1011_SPEAKER_AMP_PRESENT
++	},
++	.sof_priv = &mt8195_sof_priv,
++	.soc_probe = mt8195_mt6359_soc_card_probe
++};
++
++static const struct mtk_soundcard_pdata mt8195_mt6359_max98390_rt5682_card = {
++	.card_name = "mt8195_m98390_r5682",
++	.card_data = &(struct mtk_platform_card_data) {
++		.card = &mt8195_mt6359_soc_card,
++		.num_jacks = MT8195_JACK_MAX,
++		.flags = MAX98390_SPEAKER_AMP_PRESENT
++	},
++	.sof_priv = &mt8195_sof_priv,
++	.soc_probe = mt8195_mt6359_soc_card_probe
+ };
+ 
+ static const struct of_device_id mt8195_mt6359_dt_match[] = {
+@@ -1597,7 +1623,7 @@ static struct platform_driver mt8195_mt6359_driver = {
+ 		.of_match_table = mt8195_mt6359_dt_match,
+ 		.pm = &snd_soc_pm_ops,
+ 	},
+-	.probe = mt8195_mt6359_dev_probe,
++	.probe = mtk_soundcard_common_probe,
+ };
+ 
+ module_platform_driver(mt8195_mt6359_driver);
+-- 
+2.44.0
 
-On Tue, 16 Apr 2024, Laurent Pinchart wrote:
-
-> On Mon, Apr 15, 2024 at 11:38:46PM +0200, Niklas Söderlund wrote:
-> > On 2024-04-15 23:16:55 +0200, Ricardo Ribalda wrote:
-> > > On Mon, 15 Apr 2024 at 22:33, Niklas Söderlund wrote:
-> > > > On 2024-04-15 21:58:58 +0200, Ricardo Ribalda wrote:
-> > > > > On Mon, 15 Apr 2024 at 21:54, Laurent Pinchart wrote:
-> > > > > >
-> > > > > > Hi Ricardo,
-> > > > > >
-> > > > > > I'm afraid I won't have time to review any of this for the time being.
-> > > > > > Unless you would like me to put uvcvideo reviews on hold ;-)
-> > > > > >
-> > > > > > Jokes aside, my first reaction was that this feels like a bit of a waste
-> > > > > > of maintainer's time :-S
-> > > > >
-> > > > > This is part of the media-ci effort.
->
-> Ah. Mentioning that in the cover letter would have helped.
->
-> > > > > It is definitely not the most fun patches to do or review, but someone
-> > > > > has to do it :)
-> > > > >
-> > > > > The whole idea is that we want to get as little warnings as possible
-> > > > > from the static analysers, after this patchset we almost achieve that.
-> > > >
-> > > > I understand and I think it's a good goal to aim for zero warnings. But
-> > > > some of the fixes here are IMHO not helpful, for example I find this
-> > > > type of change counter productive.
-> > > >
-> > > > -       return ret < 0 ? ret : 0;
-> > > > +
-> > > > +       if (ret < 0)
-> > > > +               return ret;
-> > > > +       return 0;
-> > >
-> > > I was on the edge on those ones as well...
-> > >
-> > > Maybe we can try to fix the .cocci file to ignore that pattern?
-> > > https://lore.kernel.org/lkml/20240415-minimax-v1-1-5feb20d66a79@chromium.org/T/#u
-> >
-> > Thanks for looking into it! I think this is a good idea.
->
-> I agree, this is the first type of change I saw in the series, and it
-> made me dispair for a moment :-)
->
-> > > > Maybe it's better to disable this type of checks in the linter?
-
-I would be happy to get rid of it.  The person who made the semantic patch
-originally expressed the opinion that maybe it could be useful sometimes,
-but I always discard these patches when 0-day forwards them to me for
-approval.
-
-When it's not a 0 value, using min and max can often improve readability,
-so I think it would be unfortunate to remove the semantic patch
-completely.
-
-julia
-
-
-> > > >
-> > > > > It is only 2 trivial uvc patches, I can ask someone from my team to
-> > > > > review it if you want and trust them ;)
-> > > > >
-> > > > > Regards!
-> > > > >
-> > > > > > On Mon, Apr 15, 2024 at 07:34:17PM +0000, Ricardo Ribalda wrote:
-> > > > > > > After this set is applied, these are the only warnings left:
-> > > > > > > drivers/media/pci/ivtv/ivtv-fileops.c:223:4-10: preceding lock on line 267
-> > > > > > > drivers/media/pci/ivtv/ivtv-fileops.c:230:3-9: preceding lock on line 267
-> > > > > > > drivers/media/pci/ivtv/ivtv-fileops.c:236:4-10: preceding lock on line 267
-> > > > > > > drivers/media/pci/ivtv/ivtv-fileops.c:245:3-9: preceding lock on line 267
-> > > > > > > drivers/media/pci/ivtv/ivtv-fileops.c:251:3-9: preceding lock on line 267
-> > > > > > > drivers/media/pci/ivtv/ivtv-fileops.c:257:3-9: preceding lock on line 267
-> > > > > > > drivers/media/pci/ivtv/ivtv-fileops.c:272:3-9: preceding lock on line 267
-> > > > > > > drivers/media/pci/ivtv/ivtv-fileops.c:598:4-10: preceding lock on line 627
-> > > > > > > drivers/media/pci/ivtv/ivtv-fileops.c:598:4-10: preceding lock on line 689
-> > > > > > > drivers/media/pci/ivtv/ivtv-fileops.c:606:3-9: preceding lock on line 627
-> > > > > > > drivers/media/pci/ivtv/ivtv-fileops.c:606:3-9: preceding lock on line 689
-> > > > > > > drivers/media/pci/ivtv/ivtv-fileops.c:648:3-9: preceding lock on line 627
-> > > > > > > drivers/media/pci/ivtv/ivtv-fileops.c:648:3-9: preceding lock on line 689
-> > > > > > > drivers/media/pci/ivtv/ivtv-fileops.c:692:4-10: preceding lock on line 689
-> > > > > > > drivers/media/dvb-core/dvb_frontend.c:2897:1-7: preceding lock on line 2776
-> > > > > > > drivers/media/dvb-core/dvb_frontend.c:2897:1-7: preceding lock on line 2786
-> > > > > > > drivers/media/dvb-core/dvb_frontend.c:2897:1-7: preceding lock on line 2809
-> > > > > > > drivers/media/dvb-frontends/stv090x.c:799:1-7: preceding lock on line 768
-> > > > > > > drivers/media/usb/go7007/go7007-i2c.c:125:1-7: preceding lock on line 61
-> > > > > > > drivers/media/rc/imon.c:1167:1-7: preceding lock on line 1153
-> > > > > > > drivers/media/pci/cx18/cx18-scb.h:261:22-29: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > > > drivers/media/platform/qcom/venus/hfi_cmds.h:77:5-9: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > > > drivers/media/platform/qcom/venus/hfi_cmds.h:85:5-16: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > > > drivers/media/platform/qcom/venus/hfi_cmds.h:154:5-9: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > > > drivers/media/platform/qcom/venus/hfi_cmds.h:171:5-9: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > > > drivers/media/platform/qcom/venus/hfi_cmds.h:180:5-9: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > > > drivers/media/platform/qcom/venus/hfi_cmds.h:189:5-9: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > > > drivers/media/platform/qcom/venus/hfi_cmds.h:201:5-9: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > > > drivers/media/platform/qcom/venus/hfi_cmds.h:220:5-9: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > > > drivers/media/platform/qcom/venus/hfi_cmds.h:230:5-16: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > > > drivers/media/platform/qcom/venus/hfi_helper.h:764:5-15: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > > > drivers/media/platform/qcom/venus/hfi_helper.h:1008:43-60: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > > > drivers/media/platform/qcom/venus/hfi_helper.h:1014:36-46: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > > > drivers/media/platform/qcom/venus/hfi_helper.h:1041:5-15: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > > > drivers/media/platform/qcom/venus/hfi_helper.h:1088:39-51: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > > > drivers/media/platform/qcom/venus/hfi_helper.h:1093:5-22: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > > > drivers/media/platform/qcom/venus/hfi_helper.h:1144:4-8: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > > > drivers/media/platform/qcom/venus/hfi_helper.h:1239:4-8: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > > > drivers/media/platform/qcom/venus/hfi_helper.h:1267:5-9: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > > > drivers/media/platform/qcom/venus/hfi_helper.h:1272:4-13: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > > > drivers/media/common/siano/smscoreapi.h:619:5-13: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > > > drivers/media/common/siano/smscoreapi.h:669:6-13: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > > > drivers/media/common/siano/smscoreapi.h:1049:4-8: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > > > drivers/media/common/siano/smscoreapi.h:1055:4-8: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > > > drivers/media/dvb-frontends/mxl5xx_defs.h:171:4-8: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > > > drivers/media/dvb-frontends/mxl5xx_defs.h:182:4-8: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > > > drivers/media/platform/allegro-dvt/nal-hevc.h:102:14-22: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > > > drivers/media/platform/xilinx/xilinx-dma.h:100:19-22: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > > > drivers/staging/media/atomisp/pci/atomisp_tpg.h:30:18-22: WARNING use flexible-array member instead (https://www.kernel.org/doc/html/latest/process/deprecated.html#zero-length-and-one-element-arrays)
-> > > > > > >
-> > > > > > > CI tested:
-> > > > > > > https://gitlab.freedesktop.org/linux-media/media-staging/-/commit/055b5211c68e721c3a7090be5373cf44859da1a7/pipelines?ref=ribalda%2Ftest-cocci
-> > > > > > >
-> > > > > > > Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
-> > > > > > > ---
-> > > > > > > Ricardo Ribalda (35):
-> > > > > > >       media: pci: mgb4: Refactor struct resources
-> > > > > > >       media: stb0899: Remove unreacheable code
-> > > > > > >       media: uvcvideo: Refactor iterators
-> > > > > > >       media: uvcvideo: Use max() macro
-> > > > > > >       media: go7007: Use min and max macros
-> > > > > > >       media: stm32-dcmipp: Remove redundant printk
-> > > > > > >       media: staging: sun6i-isp: Remove redundant printk
-> > > > > > >       media: dvb-frontends: tda18271c2dd: Remove casting during div
-> > > > > > >       media: v4l: async: refactor v4l2_async_create_ancillary_links
-> > > > > > >       staging: media: tegra-video: Use swap macro
-> > > > > > >       media: s2255: Use refcount_t instead of atomic_t for num_channels
-> > > > > > >       media: platform: mtk-mdp3: Use refcount_t for job_count
-> > > > > > >       media: common: saa7146: Use min macro
-> > > > > > >       media: dvb-frontends: drx39xyj: Use min macro
-> > > > > > >       media: netup_unidvb: Use min macro
-> > > > > > >       media: au0828: Use min macro
-> > > > > > >       media: flexcop-usb: Use min macro
-> > > > > > >       media: gspca: cpia1: Use min macro
-> > > > > > >       media: stk1160: Use min macro
-> > > > > > >       media: tegra-vde: Refactor timeout handling
-> > > > > > >       media: venus: Use div64_u64
-> > > > > > >       media: i2c: st-mipid02: Use the correct div function
-> > > > > > >       media: dvb-frontends: tda10048: Use the right div
-> > > > > > >       media: tc358746: Use the correct div_ function
-> > > > > > >       media: venus: Use the correct div_ function
-> > > > > > >       media: venus: Refator return path
-> > > > > > >       media: dib0700: Refator return path
-> > > > > > >       media: usb: cx231xx: Refator return path
-> > > > > > >       media: i2c: rdacm20: Refator return path
-> > > > > > >       media: i2c: et8ek8: Refator return path
-> > > > > > >       media: cx231xx: Refator return path
-> > > > > > >       media: si4713: Refator return path
-> > > > > > >       media: ttpci: Refator return path
-> > > > > > >       media: hdpvr: Refator return path
-> > > > > > >       media: venus: Refator return path
-> > > > > > >
-> > > > > > >  drivers/media/common/saa7146/saa7146_hlp.c         |  8 +++----
-> > > > > > >  drivers/media/dvb-frontends/drx39xyj/drxj.c        |  9 +++-----
-> > > > > > >  drivers/media/dvb-frontends/stb0899_drv.c          |  5 -----
-> > > > > > >  drivers/media/dvb-frontends/tda10048.c             |  3 +--
-> > > > > > >  drivers/media/dvb-frontends/tda18271c2dd.c         |  4 ++--
-> > > > > > >  drivers/media/i2c/et8ek8/et8ek8_driver.c           |  4 +++-
-> > > > > > >  drivers/media/i2c/rdacm20.c                        |  5 ++++-
-> > > > > > >  drivers/media/i2c/st-mipid02.c                     |  2 +-
-> > > > > > >  drivers/media/i2c/tc358746.c                       |  3 +--
-> > > > > > >  drivers/media/pci/mgb4/mgb4_core.c                 |  4 ++--
-> > > > > > >  drivers/media/pci/mgb4/mgb4_regs.c                 |  2 +-
-> > > > > > >  drivers/media/pci/netup_unidvb/netup_unidvb_i2c.c  |  2 +-
-> > > > > > >  drivers/media/pci/ttpci/budget-core.c              |  5 ++++-
-> > > > > > >  .../media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c   | 10 ++++-----
-> > > > > > >  .../media/platform/mediatek/mdp3/mtk-mdp3-core.c   |  6 ++---
-> > > > > > >  .../media/platform/mediatek/mdp3/mtk-mdp3-core.h   |  2 +-
-> > > > > > >  .../media/platform/mediatek/mdp3/mtk-mdp3-m2m.c    |  6 ++---
-> > > > > > >  drivers/media/platform/nvidia/tegra-vde/h264.c     |  6 ++---
-> > > > > > >  drivers/media/platform/qcom/venus/vdec.c           | 15 +++++++------
-> > > > > > >  drivers/media/platform/qcom/venus/venc.c           | 19 +++++++++-------
-> > > > > > >  .../platform/st/stm32/stm32-dcmipp/dcmipp-core.c   |  5 +----
-> > > > > > >  drivers/media/radio/si4713/radio-usb-si4713.c      |  8 +++++--
-> > > > > > >  drivers/media/usb/au0828/au0828-video.c            |  5 +----
-> > > > > > >  drivers/media/usb/b2c2/flexcop-usb.c               |  5 +----
-> > > > > > >  drivers/media/usb/cx231xx/cx231xx-i2c.c            | 16 +++++++++----
-> > > > > > >  drivers/media/usb/cx231xx/cx231xx-video.c          | 10 +++++++--
-> > > > > > >  drivers/media/usb/dvb-usb/dib0700_core.c           |  4 +++-
-> > > > > > >  drivers/media/usb/go7007/go7007-fw.c               |  4 ++--
-> > > > > > >  drivers/media/usb/gspca/cpia1.c                    |  6 ++---
-> > > > > > >  drivers/media/usb/hdpvr/hdpvr-control.c            |  4 +++-
-> > > > > > >  drivers/media/usb/s2255/s2255drv.c                 | 20 ++++++++---------
-> > > > > > >  drivers/media/usb/stk1160/stk1160-video.c          | 10 ++-------
-> > > > > > >  drivers/media/usb/uvc/uvc_ctrl.c                   | 26 ++++++++++++----------
-> > > > > > >  drivers/media/v4l2-core/v4l2-async.c               |  8 +++----
-> > > > > > >  drivers/staging/media/sunxi/sun6i-isp/sun6i_isp.c  |  1 -
-> > > > > > >  drivers/staging/media/tegra-video/tegra20.c        |  9 ++------
-> > > > > > >  36 files changed, 132 insertions(+), 129 deletions(-)
-> > > > > > > ---
-> > > > > > > base-commit: 71b3ed53b08d87212fbbe51bdc3bf44eb8c462f8
-> > > > > > > change-id: 20240415-fix-cocci-2df3ef22a6f7
-> > > > > > >
-> > > > > > > Best regards,
->
-> --
-> Regards,
->
-> Laurent Pinchart
->
---8323329-408150081-1713254351=:3643--
 
