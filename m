@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB9D2C4345F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Apr 2024 14:54:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A87CC4345F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Apr 2024 15:26:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ae3YD9extRLUaDTpgwINVaFTTzELZxvXwsm9g/3pe6c=; b=l7X+ABlg2sTvcWjCu7cgH+PxMB
-	mQxTp/mbKUvy1ZyV0Hq3QntPXEkpEJoe17yn3EbhppDSVniZq3ybGkflO2r9JHoK9GX6gWwpLl6n8
-	+3k+yQLDPl6L80VBoxeDIeeZnw8mYO4Fz9d6liorRuJpCJYXgXrNhYiXu104U3lv6JS0ALqxPWg0V
-	nJTm1y6n2L1ifWXs4/RDiX1M4DxbLJ5v/7OfoyCOPMk90uZy6Rpox6WvNslPjZAarwxq2A3/f9om7
-	aTGheVKaiPgn43sSS1wtYovqU4vtJHB9BtIOcFgzXgIINN5/YUxmZhqUzrRhE7sA+MRUuK+GvMSdr
-	Pvr6WQ8w==;
+	bh=ZJpR2HghEWOEmn+9eAFJLsZnR3JXY0rMUt9Tf6y+o70=; b=qUasZELawkTFJe6+BXZGo98hBP
+	E8/ZPZaS2OUf5RZ8KOi3ggQsJp6FjyS/U3Py1yGPHHACHtCi9RlJKJXo/nkVfgt9w9QLoEYCH8hPY
+	/ipGq1H5dVO1DvXXAo7BO1h3VVYvl0+HXNeUMQRsZv2YuhFIoIiFULIm2hTu2+Dri8aXZ4CewOE4i
+	n/8MKMT31Jr7YDI6TI9Tu9QoqYUP07mx/iriidWpfyUMWiPtTYt90YE8sJyv3JQRAUGHSlqgABWkW
+	yF/V9yDmGBktiP6bjDxxDI7yOmmqfOErnyVmE4Ar9cKtQruKYPQQoPMh3MKNf3z8a4FjH+1NyoiVy
+	mz8j3h3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rx6fq-0000000GSTJ-26WU;
-	Wed, 17 Apr 2024 14:54:10 +0000
+	id 1rx7Ae-0000000GZwU-3tk1;
+	Wed, 17 Apr 2024 15:26:00 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rx6fm-0000000GSRK-0Dde;
-	Wed, 17 Apr 2024 14:54:08 +0000
+	id 1rx7Ab-0000000GZvH-1UWU;
+	Wed, 17 Apr 2024 15:25:58 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 77B92614FC;
-	Wed, 17 Apr 2024 14:54:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F11EFC32781;
-	Wed, 17 Apr 2024 14:54:04 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 4DF25614F1;
+	Wed, 17 Apr 2024 15:25:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 59CC0C072AA;
+	Wed, 17 Apr 2024 15:25:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1713365645;
-	bh=7RPukjZeREzRQeYifxWz1+LP+GxBg1xWTJAJdsC2t/k=;
+	s=k20201202; t=1713367556;
+	bh=ExXTOF7E2XdRHFoRRHZlQyZt3AaGPH9qv/wKJ86w0aE=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=WIwLMovJAc/KjZB0q7r91gFvQ9By8zffzDPKt2zIopXCNOgRS+z5UWF/60XkNHHGM
-	 H2nXO4a4yZ1lVYPUhCFDyPsAUvNzLh1UB4gskJZweclhTriS6lf3PzDWgTuXezJRRH
-	 5t2zTgpRu9ERroCtgr4/k2KrvkpOHRrG3sUsCKBXlnc7Vk7ZNJsCos+m+ArrUcRwVV
-	 /z2WtMRpV8FZlk0Letk8YWc7WyzFhQTqZOVKCnVewE+PdOHE4BwKMxBDiHKToYtyhO
-	 BnnTJH/4uxJtMcoeytc07olK4uqP3kzpHw22fFrPv4eo29IS9uKOSb4sX7nQwAGnA8
-	 u7YNzxq6MEd9A==
-Date: Wed, 17 Apr 2024 09:54:02 -0500
-From: Rob Herring <robh@kernel.org>
+	b=kNpCaVGIeW6zkJSGxSCih9gQp5PXISQazsi9Clc9Jd3NQ/N7OQGwS5G5BTJ+zKT4a
+	 SY/jEobOaSwYc6BWACjYEw/4PkI1y/942ZEt4W4YPveRlJeuyJZ4w4ZXduuh0oDMg+
+	 ACG9FQ8PVJN+KoKh76tUmSpnD94ZhkqydM//fnoB5Z0ZJqt90YxUvTP+tvPkGQz/ha
+	 N/6hNXHNtjHGwiWtyTpuGGeKyyr7KR7Ni7YNcjLqWfIWrGIW7BayDO/XumA6XHCB4S
+	 /zOIq4m4LxdMfbKoM3KQzj15vxRe5r1HYS3kPOyv3oR+nfXFhySvPa3W6d41zO9jPU
+	 GFARGCzD0twLQ==
+Date: Wed, 17 Apr 2024 16:25:50 +0100
+From: Conor Dooley <conor@kernel.org>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: djakov@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+Cc: djakov@kernel.org, robh@kernel.org, krzysztof.kozlowski+dt@linaro.org,
 	conor+dt@kernel.org, matthias.bgg@gmail.com, lgirdwood@gmail.com,
 	broonie@kernel.org, keescook@chromium.org, gustavoars@kernel.org,
 	henryc.chen@mediatek.com, linux-pm@vger.kernel.org,
@@ -52,18 +52,22 @@ Cc: djakov@kernel.org, krzysztof.kozlowski+dt@linaro.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, kernel@collabora.com,
 	wenst@chromium.org, amergnat@baylibre.com
-Subject: Re: [PATCH v2 2/7] dt-bindings: interconnect: Add MediaTek EMI
- Interconnect bindings
-Message-ID: <20240417145402.GA2355631-robh@kernel.org>
-References: <20240417091442.170505-1-angelogioacchino.delregno@collabora.com>
- <20240417091442.170505-3-angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v1 1/6] dt-bindings: soc: mediatek: Add DVFSRC bindings
+ for MT8183 and MT8195
+Message-ID: <20240417-fame-cotton-c5c6d40c003d@spud>
+References: <20240416153805.431118-1-angelogioacchino.delregno@collabora.com>
+ <20240416153805.431118-2-angelogioacchino.delregno@collabora.com>
+ <20240416-grope-blissful-a914854b3732@spud>
+ <20240416-onion-prone-44b45d5a003e@spud>
+ <ef29f74b-af21-4807-8d72-0e627586a288@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="tUWCs0nZ7Ll4Hx8L"
 Content-Disposition: inline
-In-Reply-To: <20240417091442.170505-3-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <ef29f74b-af21-4807-8d72-0e627586a288@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240417_075406_214260_002987BE 
-X-CRM114-Status: GOOD (  16.79  )
+X-CRM114-CacheID: sfid-20240417_082557_518942_382EB452 
+X-CRM114-Status: GOOD (  40.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,106 +82,180 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Apr 17, 2024 at 11:14:37AM +0200, AngeloGioacchino Del Regno wrote:
-> Add bindings for the MediaTek External Memory Interface Interconnect,
-> which providers support system bandwidth requirements through Dynamic
-> Voltage Frequency Scaling Resource Collector (DVFSRC) hardware.
-> 
-> This adds bindings for MediaTek MT8183 and MT8195 SoCs.
-> 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  .../interconnect/mediatek,mt8183-emi.yaml     | 76 +++++++++++++++++++
->  .../interconnect/mediatek,mt8183.h            | 23 ++++++
->  .../interconnect/mediatek,mt8195.h            | 44 +++++++++++
->  3 files changed, 143 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/interconnect/mediatek,mt8183-emi.yaml
->  create mode 100644 include/dt-bindings/interconnect/mediatek,mt8183.h
->  create mode 100644 include/dt-bindings/interconnect/mediatek,mt8195.h
-> 
-> diff --git a/Documentation/devicetree/bindings/interconnect/mediatek,mt8183-emi.yaml b/Documentation/devicetree/bindings/interconnect/mediatek,mt8183-emi.yaml
-> new file mode 100644
-> index 000000000000..3ad60fd21f83
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/interconnect/mediatek,mt8183-emi.yaml
-> @@ -0,0 +1,76 @@
-> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/interconnect/mediatek,mt8183-emi.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek External Memory Interface (EMI) Interconnect
-> +
-> +maintainers:
-> +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> +
-> +description: |
-> +  EMI interconnect providers support system bandwidth requirements through
-> +  Dynamic Voltage Frequency Scaling Resource Collector (DVFSRC) hardware.
-> +  The provider is able to communicate with the DVFSRC through Secure Monitor
-> +  Call (SMC).
-> +
-> +             ICC provider         ICC Nodes
-> +                              ----          ----
-> +             _________       |CPU |   |--- |VPU |
-> +    _____   |         |-----  ----    |     ----
-> +   |     |->|  DRAM   |       ----    |     ----
-> +   |DRAM |->|scheduler|----- |GPU |   |--- |DISP|
-> +   |     |->|  (EMI)  |       ----    |     ----
-> +   |_____|->|_________|---.   -----   |     ----
-> +               /|\         `-|MMSYS|--|--- |VDEC|
-> +                |             -----   |     ----
-> +                |                     |     ----
-> +                | change DRAM freq    |--- |VENC|
-> +             --------                 |     ----
-> +    SMC --> | DVFSRC |                |     ----
-> +             --------                 |--- |IMG |
-> +                                      |     ----
-> +                                      |     ----
-> +                                      |--- |CAM |
-> +                                            ----
-> +
-> +properties:
-> +  compatible:
-> +    enum:
-> +      - mediatek,mt8183-emi
-> +      - mediatek,mt8195-emi
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  '#interconnect-cells':
-> +    const: 1
-> +
-> +required:
-> +  - compatible
-> +  - '#interconnect-cells'
-> +
-> +unevaluatedProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/interconnect/mediatek,mt8195.h>
-> +
-> +    soc {
-> +        #address-cells = <2>;
-> +        #size-cells = <2>;
-> +
-> +        system-controller@10012000 {
-> +            compatible = "mediatek,mt8195-dvfsrc";
-> +            reg = <0 0x10012000 0 0x1000>;
-> +            #address-cells = <1>;
-> +            #size-cells = <0>;
-> +
-> +            emi_icc: interconnect@1 {
-> +                compatible = "mediatek,mt8195-emi";
-> +                reg = <1>;
-> +                #interconnect-cells = <1>;
 
+--tUWCs0nZ7Ll4Hx8L
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-There's not really any need for this node. Just put #interconnect-cells 
-in the parent.
+On Wed, Apr 17, 2024 at 10:26:06AM +0200, AngeloGioacchino Del Regno wrote:
+> Il 16/04/24 19:30, Conor Dooley ha scritto:
+> > On Tue, Apr 16, 2024 at 06:28:58PM +0100, Conor Dooley wrote:
+> > > On Tue, Apr 16, 2024 at 05:38:00PM +0200, AngeloGioacchino Del Regno =
+wrote:
+> > > > Add bindings for the MediaTek Dynamic Voltage and Frequency Scaling
+> > > > Resource Collector (DVFSRC), a hardware module used to collect all =
+the
+> > > > requests from both software and the various remote processors embed=
+ded
+> > > > into the SoC and decide about a minimum operating voltage and a min=
+imum
+> > > > DRAM frequency to fulfill those requests in an effort to provide the
+> > > > best achievable performance per watt.
+> > > >=20
+> > > > This hardware IP is capable of transparently performing direct regi=
+ster
+> > > > R/W on all of the DVFSRC-controlled regulators and SoC bandwidth kn=
+obs.
+> > > >=20
+> > > > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregn=
+o@collabora.com>
+> > > > ---
+> > > >   .../soc/mediatek/mediatek,mt8183-dvfsrc.yaml  | 57 ++++++++++++++=
++++++
+> > > >   1 file changed, 57 insertions(+)
+> > > >   create mode 100644 Documentation/devicetree/bindings/soc/mediatek=
+/mediatek,mt8183-dvfsrc.yaml
+> > > >=20
+> > > > diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediate=
+k,mt8183-dvfsrc.yaml b/Documentation/devicetree/bindings/soc/mediatek/media=
+tek,mt8183-dvfsrc.yaml
+> > > > new file mode 100644
+> > > > index 000000000000..12bcc3fdfd07
+> > > > --- /dev/null
+> > > > +++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mt818=
+3-dvfsrc.yaml
+> > > > @@ -0,0 +1,57 @@
+> > > > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> > > > +%YAML 1.2
+> > > > +---
+> > > > +$id: http://devicetree.org/schemas/soc/mediatek/mediatek,mt8183-dv=
+fsrc.yaml#
+> > > > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > > > +
+> > > > +title: MediaTek Dynamic Voltage and Frequency Scaling Resource Col=
+lector (DVFSRC)
+> > > > +
+> > > > +description:
+> > > > +  The Dynamic Voltage and Frequency Scaling Resource Collector (DV=
+FSRC) is a
+> > > > +  Hardware module used to collect all the requests from both softw=
+are and the
+> > > > +  various remote processors embedded into the SoC and decide about=
+ a minimum
+> > > > +  operating voltage and a minimum DRAM frequency to fulfill those =
+requests in
+> > > > +  an effort to provide the best achievable performance per watt.
+> > > > +  This hardware IP is capable of transparently performing direct r=
+egister R/W
+> > > > +  on all of the DVFSRC-controlled regulators and SoC bandwidth kno=
+bs.
+> > > > +
+> > > > +maintainers:
+> > > > +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabor=
+a.com>
+> > > > +  - Henry Chen <henryc.chen@mediatek.com>
+> > > > +
+> > > > +properties:
+> > > > +  compatible:
+> > > > +    oneOf:
+> > > > +      - items:
+> > >=20
+> > > This items should not be needed with the enum, right?
+> > >=20
+>=20
+> Whoops. Yep items is not needed.
+>=20
+> > > > +          - enum:
+> > > > +              - mediatek,mt8183-dvfsrc
+> > > > +              - mediatek,mt8195-dvfsrc
+> > > > +      - items:
+> > > > +          - const: mediatek,mt8192-dvfsrc
+> > > > +          - const: mediatek,mt8195-dvfsrc
+> > > > +
+> > > > +  reg:
+> > > > +    maxItems: 1
+> > > > +    description: DVFSRC common register address and length.
+> > > > +
+> > > > +patternProperties:
+> > > > +  "@[0-9a-f]+$":
+> > > > +    type: object
+> > >=20
+> > > Why is there no enforcement of what a child could be here?
+> >=20
+> > Seems like you know exactly what the children are: regulators and an
+> > interconnect? What am I missing?
+> >=20
+>=20
+> I wasn't sure whether that would've been a good idea, given that there wi=
+ll
+> be more possible children in the future - as in - more drivers that need =
+the
+> DVFSRC communication.
 
-Rob
+If there's no additional hardware, just additional drivers wanting to
+use this, there's no need to modify the dt, you just call
+platform_device_register() to spin up the new drivers.
+
+> But anyway yes, for now, it's just the regulator and interconnect drivers.
+
+We can always free it up whenever new requirements appear.
+
+> > > > +required:
+> > > > +  - compatible
+> > > > +  - reg
+> > > > +
+> > > > +additionalProperties: false
+> > > > +
+> > > > +examples:
+> > > > +  - |
+> > > > +    soc {
+> > > > +        #address-cells =3D <2>;
+> > > > +        #size-cells =3D <2>;
+> > > > +
+> > > > +        dvfsrc@10012000 {
+> > >=20
+> > > "dvfsrc" looks like something my (imaginary given allergies) cat would
+>=20
+> (allergies: ugh, same here - feel you)
+>=20
+> > > produce from sitting on my keyboard. Could you use full words for the
+> > > node name and make it something that attempts to be generic please?
+> > >=20
+>=20
+> I'm not entirely sure that I can find a generic name for this... I wonder=
+ if
+> "remoteproc" could work - as this is a remote processor (a MCU, actually).
+>=20
+> To give you context, this doesn't need firmware to be loaded, and does no=
+t have
+> any remoteproc driver.
+
+I dunno, I don't think having to load firmware to something or interact
+with a remoteproc driver in linux changes what the hardware actually is.
+>=20
+> Because then, I don't think that "performance-controller" would be correc=
+t,
+> even though I have this N.2 choice... ideas?
+
+My lot call this type of thing a "system controller" in our specs. Any of
+firmware, remote-processor, performance-controller all seem valid to me.
+
+> Cheers,
+
+Cheers,
+Conor.
+
+--tUWCs0nZ7Ll4Hx8L
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZh/p/gAKCRB4tDGHoIJi
+0lEeAP9ODgsxAxqY6EugFK0v+xBoTRrFSYYNmBEiyjKsBl58iwEApvmNdrMatUuk
+K3JRuZZ5UsqYCh5o+lFttCQJm55Rugk=
+=bY+B
+-----END PGP SIGNATURE-----
+
+--tUWCs0nZ7Ll4Hx8L--
 
