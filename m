@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F394C04FF9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Apr 2024 09:15:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 711A5C41513
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Apr 2024 09:15:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wa1QD1SgAGAaEYWahTilgHkzWolAwHFEyyij2yf+aPk=; b=LFLm4V48S/8M1Ir5m9Ibm6lCjA
-	Ol4pAjfcZZ5sstnnppdYjeZWzUojhSH9JLASi/rvflP1afVasEBsayhUP4tuQsMAAdgEARCHfEwIh
-	VMFx3wE6AfHKzLuWate3G/S3OzJyAN+Cze4alEGM0PkKkggRaCWRzK48eg/GApAhsnDx13822NQNK
-	T1Sy9HodM5Y4py3BRuf7+9Pg+sh7Yvzma4Q3tIppHIl0AWzIMMTc/tK8UpQMgQ0JgbSEN1OeeXqCy
-	/Y8MMth1+xKWxOULiZzdIQcKKuF8bUX5AW8r226BVIIEXXY2wX+kYayfO004iWCEWSv+X3cp80oLJ
-	hMFtMDrA==;
+	bh=L3uWMkOw/695WHFdbXmUlmOeZUwL7/41ncAoavjGnp4=; b=q/2SFR/fgbEZpOoer4h7j63oyi
+	L7jcLCF/J1/FhSMO8h6wt/u8TSOolYZGaI1yz3uPrErtNvTPpnkPqjkWWTwlPWcZxwkZFVsmeby+t
+	Dy/W2KBR2PUVVZEFKIfMVwLQ4yl5btZL0+hxM+wwYuUIllfkGB8wFOgSP+dEWezHkd2tzwcwGpnsK
+	uj0a2wxISw/8SwHfTLM376Q1uzz+VQfeMNThhpaVDapAYNkplMNmSEDFpnlguK/suCqWDBlCci026
+	vO+tYPsW9UJxolOMrPAF3tyPVSveMvWTIVa0vK9NAIOa5lHOwFKHFgoqh3QSelwmaGtuZne3mf3Si
+	uCtRB4SQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rx1Ne-0000000FMgV-2ngG;
-	Wed, 17 Apr 2024 09:15:02 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rx1Nm-0000000FMmB-3LK1;
+	Wed, 17 Apr 2024 09:15:10 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rx1NS-0000000FMYO-1amj;
-	Wed, 17 Apr 2024 09:14:52 +0000
+	id 1rx1NT-0000000FMZS-3SIO;
+	Wed, 17 Apr 2024 09:14:53 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1713345287;
-	bh=pqobeqHfUVbkypqHwHSiTkFR/HCjK7XkjC8AjPfYgX4=;
+	s=mail; t=1713345290;
+	bh=xJ47AhVCJnPzfAzCCyTdF9TGxPyIWa3chHq1ZLjt15I=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=noC8WT9nMOVHMivvk5E86wS0K0xe7U7pcqTdYF6o82RCaJUy7Bb4pnU1rmn4NtoIW
-	 0KpDMmIYs1M0IBTBnjhtEw1U0oDUp5myi2V1WvylkYOwL74Bf7ggl1t9etkG0Pjwa/
-	 A+Pf9FYps396ki1qrpOe8d10btmQkGLkqoUvNmcBeVbwk+jO7MEvQikDkCGUjui3XF
-	 D7jV09wM7BK+BnfqcGvIonfV0ZUDNyZmfklFQongeQikMtdzIxTOKSuKhY9zt3dSjk
-	 tQqiq85aPurX3+G9nljn5uaL65rfHJF2cv8k4sB7ICnteqOSpPHsmWax6f51GcIyeg
-	 fpP5dAwVcO1VA==
+	b=JC27ypqxKniqvPsUjwKo4L0k6DdkgC53msUFdxkR88vCIzAYWlAh3TwfhyuoJyN3c
+	 CoFAE7owUWu6Rxi4d3YPEu9tEwCkd/Y0aGAVL5sw3L6mlJzJuDoLLYTTremf7Lv4sH
+	 U5DC/1m5ZrREcj+ODMKJ/WjIWvK23PzQFBncS3eKVpBwhyDnIN+IMcje7PMW0GRwVW
+	 Lz0pnwLDnZzAocuKWBsGcMz5WZgWGR9Opz3KaTmuxcynbXz9nsCBxIhgCYuQnyViux
+	 JXmv/wX6s8BLUCbXYpSp+HU9CAicKsqsL26kYOuiPyt4XAq8HRX0qLGdaKNLxESpuL
+	 Jmg7AIZh0qing==
 Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 988E637820F9;
-	Wed, 17 Apr 2024 09:14:46 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 29C363782145;
+	Wed, 17 Apr 2024 09:14:49 +0000 (UTC)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: djakov@kernel.org
 Cc: robh@kernel.org,
@@ -63,17 +63,17 @@ Cc: robh@kernel.org,
 	kernel@collabora.com,
 	wenst@chromium.org,
 	amergnat@baylibre.com
-Subject: [PATCH v2 1/7] dt-bindings: regulator: Add bindings for MediaTek DVFSRC Regulators
-Date: Wed, 17 Apr 2024 11:14:36 +0200
-Message-ID: <20240417091442.170505-2-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2 3/7] dt-bindings: soc: mediatek: Add DVFSRC bindings for MT8183 and MT8195
+Date: Wed, 17 Apr 2024 11:14:38 +0200
+Message-ID: <20240417091442.170505-4-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.44.0
 In-Reply-To: <20240417091442.170505-1-angelogioacchino.delregno@collabora.com>
 References: <20240417091442.170505-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240417_021450_709643_40033A0D 
-X-CRM114-Status: GOOD (  12.32  )
+X-CRM114-CacheID: sfid-20240417_021452_017561_71F1C9ED 
+X-CRM114-Status: GOOD (  13.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,60 +88,81 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The Dynamic Voltage and Frequency Scaling Resource Collector Regulators
-are controlled with votes to the DVFSRC hardware.
+Add bindings for the MediaTek Dynamic Voltage and Frequency Scaling
+Resource Collector (DVFSRC), a hardware module used to collect all the
+requests from both software and the various remote processors embedded
+into the SoC and decide about a minimum operating voltage and a minimum
+DRAM frequency to fulfill those requests in an effort to provide the
+best achievable performance per watt.
 
-This adds support for the regulators found in MT6873, MT8183, MT8192
-and MT8195 SoCs.
+This hardware IP is capable of transparently performing direct register
+R/W on all of the DVFSRC-controlled regulators and SoC bandwidth knobs.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../mediatek,mt6873-dvfsrc-regulator.yaml     | 71 +++++++++++++++++++
- 1 file changed, 71 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6873-dvfsrc-regulator.yaml
+ .../soc/mediatek/mediatek,mt8183-dvfsrc.yaml  | 94 +++++++++++++++++++
+ 1 file changed, 94 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mediatek,mt8183-dvfsrc.yaml
 
-diff --git a/Documentation/devicetree/bindings/regulator/mediatek,mt6873-dvfsrc-regulator.yaml b/Documentation/devicetree/bindings/regulator/mediatek,mt6873-dvfsrc-regulator.yaml
+diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mt8183-dvfsrc.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mt8183-dvfsrc.yaml
 new file mode 100644
-index 000000000000..446f1dab4d2e
+index 000000000000..da948098eebe
 --- /dev/null
-+++ b/Documentation/devicetree/bindings/regulator/mediatek,mt6873-dvfsrc-regulator.yaml
-@@ -0,0 +1,71 @@
++++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mt8183-dvfsrc.yaml
+@@ -0,0 +1,94 @@
 +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
 +%YAML 1.2
 +---
-+$id: http://devicetree.org/schemas/regulator/mediatek,mt6873-dvfsrc-regulator.yaml#
++$id: http://devicetree.org/schemas/soc/mediatek/mediatek,mt8183-dvfsrc.yaml#
 +$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+title: MediaTek DVFSRC-controlled Regulators
++title: MediaTek Dynamic Voltage and Frequency Scaling Resource Collector (DVFSRC)
 +
 +description:
-+  The Dynamic Voltage and Frequency Scaling Resource Collector Regulators
-+  are controlled with votes to the DVFSRC hardware.
++  The Dynamic Voltage and Frequency Scaling Resource Collector (DVFSRC) is a
++  Hardware module used to collect all the requests from both software and the
++  various remote processors embedded into the SoC and decide about a minimum
++  operating voltage and a minimum DRAM frequency to fulfill those requests in
++  an effort to provide the best achievable performance per watt.
++  This hardware IP is capable of transparently performing direct register R/W
++  on all of the DVFSRC-controlled regulators and SoC bandwidth knobs.
 +
 +maintainers:
 +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
++  - Henry Chen <henryc.chen@mediatek.com>
 +
 +properties:
 +  compatible:
-+    enum:
-+      - mediatek,mt6873-dvfsrc-regulator
-+      - mediatek,mt8183-dvfsrc-regulator
-+      - mediatek,mt8192-dvfsrc-regulator
-+      - mediatek,mt8195-dvfsrc-regulator
++    oneOf:
++      - enum:
++          - mediatek,mt8183-dvfsrc
++          - mediatek,mt8195-dvfsrc
++      - items:
++          - const: mediatek,mt8192-dvfsrc
++          - const: mediatek,mt8195-dvfsrc
 +
 +  reg:
 +    maxItems: 1
++    description: DVFSRC common register address and length.
 +
-+  dvfsrc-vcore:
-+    description: DVFSRC-controlled SoC Vcore regulator
-+    $ref: regulator.yaml#
++  '#address-cells':
++    const: 1
 +
-+  dvfsrc-vscp:
-+    description: DVFSRC-controlled System Control Processor regulator
-+    $ref: regulator.yaml#
++  '#size-cells':
++    enum: [ 0, 1 ]
++
++patternProperties:
++  "regulators@[0-9a-f]+$":
++    type: object
++    $ref: /schemas/regulator/mediatek,mt6873-dvfsrc-regulator.yaml#
++
++  "interconnect@[0-9a-f]+$":
++    type: object
++    $ref: /schemas/interconnect/mediatek,mt8183-emi.yaml#
 +
 +required:
 +  - compatible
++  - reg
 +
 +additionalProperties: false
 +
@@ -174,6 +195,12 @@ index 000000000000..446f1dab4d2e
 +                        regulator-max-microvolt = <750000>;
 +                        regulator-always-on;
 +                };
++            };
++
++            emi_icc: interconnect@1 {
++                compatible = "mediatek,mt8195-emi";
++                reg = <1>;
++                #interconnect-cells = <1>;
 +            };
 +        };
 +    };
