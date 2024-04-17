@@ -4,76 +4,229 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A229C4345F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Apr 2024 09:16:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D9A2C4345F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Apr 2024 09:29:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=I9RiRkzvl6JHRrCFV1HXUUirmnOMZXW3NKG8QkJSsKQ=; b=XOUsNn2o3tARoIzsF7JuGMDH+R
-	KjBLh3+vq9vk/WfuqsGiCKmqUmcTnsS23nonl/iBVn0hluLpykjc9oBop+QEjaoEBLJuJlaaP33hA
-	HYC2wFO8RqxTbTUBXgX9KYQuh88+FEnaZH/REwEQSlKDUNvc4B+GVWTe6ZEmk3JHD/6wOQ6EVh4rb
-	utCH7feirthofworJnPEsCOWnI6K9JKLSdwb38BdncAii/P+c4VH5O3Ra1CY7EfUc4HUNIqgf/rL3
-	rHVHID/rFltJKLxGIMD1f439i4XjKYSrZnwWLdIb6TLhnyoelfsSqUOac5j51CT3u4guZJ5Y9oH/j
-	7xgfBBaw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=SUaNmR/36xcsdOH+JKSarELz/dXgVFtoxK24HEoc/LM=; b=hJIr29lCi32wLTzLOvkafgk9wH
+	YpsrwuDeCRsdRE+EZ7TCZkNFMUvD9h0b7tkeesa9JkyClXeJr9EHzNU70mkBben5+TSiGwltvl0Bs
+	jKLcXw/LmgWzF6SCrepQXkb1DDVG/d1SEgHvZNTKcVY0AjSYVOC3pjkIlsF8iaAVycAEAP8zXaVHY
+	yE02EM4Hct0zKChnt1QpEzq2AZrbSUpBCo81i3m1brHr430rgdEjujimkKBfX5F3Wx4AjfuuXQ4sa
+	Tn3aZ7tWPn4u0kAcgBfAGkMLh61/G54ILEgg1pAdBQBDcj8LciZDLQ72+G3hbvMC9JbdUWQGqotV0
+	PsBoUArQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rx1OY-0000000FNEL-47mr;
-	Wed, 17 Apr 2024 09:15:59 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rx1bw-0000000FPps-0Ahh;
+	Wed, 17 Apr 2024 09:29:48 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rx1NY-0000000FMbu-385c;
-	Wed, 17 Apr 2024 09:14:59 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1713345295;
-	bh=kHK683RtoyRF7nZWSIYwGwjmNGONAkN+rHwluYAbqCU=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=TowMP2WxDn7r7w1dMF4X+SIx4lmgowa+vbBWog9EHEfphp8T4pCoAr2mzdfhi3kBW
-	 ctm6cAHVqhwuDUhlz9W8NLsyamdHHrxEqIY/vLNRKbU4OIeYDnt/V/L3s8GzgIqYn2
-	 Yl5ZJu/yPhTWJ3NwkdR3BpFpdvk6XXiKJDXmXF4PCqTItQCr4v1tGA5qdhRso68vDv
-	 RMmc1XyZ64/6u9dltOglB3NFoMKIdZzc4W5r/x3W8imKp6DJbIibA+VahB9So6877s
-	 5yL2/E6DC7KcJWx3KCZ0JfISyW0oVyeRr1cwHBV7VaQI7TcJqMGE+8vVMlpjLcVM3K
-	 6WQuTXNmLQ2XQ==
-Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 5DE8A3782145;
-	Wed, 17 Apr 2024 09:14:54 +0000 (UTC)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: djakov@kernel.org
-Cc: robh@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	conor+dt@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	lgirdwood@gmail.com,
-	broonie@kernel.org,
-	keescook@chromium.org,
-	gustavoars@kernel.org,
-	henryc.chen@mediatek.com,
-	linux-pm@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	kernel@collabora.com,
-	wenst@chromium.org,
-	amergnat@baylibre.com
-Subject: [PATCH v2 7/7] interconnect: mediatek: Add MediaTek MT8183/8195 EMI Interconnect driver
-Date: Wed, 17 Apr 2024 11:14:42 +0200
-Message-ID: <20240417091442.170505-8-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.44.0
-In-Reply-To: <20240417091442.170505-1-angelogioacchino.delregno@collabora.com>
-References: <20240417091442.170505-1-angelogioacchino.delregno@collabora.com>
+	id 1rx1bs-0000000FPoQ-30ef;
+	Wed, 17 Apr 2024 09:29:46 +0000
+X-UUID: 03d976e0fc9d11ee96d5dfc950b7243d-20240417
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=SUaNmR/36xcsdOH+JKSarELz/dXgVFtoxK24HEoc/LM=;
+	b=CQ7lwIeKsZAldBBkj3JyZk4MCWF7Zos6zUAoIDVOXi+gLQalov6jnMEXzLLTBEqUAApNcMcaq/PNdkPYF0+OF2Oi+r+Jf9ACef1EY3oyC4anuhjer71Sdd0sMLuhYArjt4xc9kOz/GONH4D2ebG8O7pYk0spViIY4TF1zqtwCIU=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.38,REQID:5b25171d-982d-4528-8bfe-1ba22a0d0529,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:82c5f88,CLOUDID:0b0705fb-ed05-4274-9204-014369d201e8,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 03d976e0fc9d11ee96d5dfc950b7243d-20240417
+Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw02.mediatek.com
+	(envelope-from <peter.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 253578660; Wed, 17 Apr 2024 02:29:39 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 17 Apr 2024 17:29:35 +0800
+Received: from SG2PR03CU006.outbound.protection.outlook.com (172.21.101.237)
+ by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 17 Apr 2024 17:29:35 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=C7sxSRVQtJHpwz/mFb2oSKN0TD2ox+RqP/BUmPNqytn2Tnt5gxhDXyhfLXINVd4wHG8BStmp+bq2EvL1ppiRLwlMui4IdLOpano//lAihzmCKjUithsbtuLm0fDIfeO86YxpNXYiiA8p5mz4/IF9o16WbBO3VxiOEntE/Ze2E7Sg3HZcU4e0VAi/ikyOgaU3NeGMSVaPXoBoPi9DpqrAueHEQFOFY3CoVCgpceB+G1bMj1yW3/dqtRLVVRG7lelyItq0/uSGXne6uidTSxOjJlOktLNm+5iYq6nTYCCTN7O4MYIZcCXCM3rDUbjEATAsDXuD44A6vy0NZd3fOivQsg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=SUaNmR/36xcsdOH+JKSarELz/dXgVFtoxK24HEoc/LM=;
+ b=mwMsHnv8vDFr11u9PEFfQGRGjAMDwQBAbQl4JxF+1akYWpEuz77qhAkQNBOoHtepY6RY4RTwTVd1RT1neFxQaBl2wuv4SxEnpHf74ZgiryEpylLG4EiW0WB9T2WxZeGp5cJ2YYecLrEwE5h5LwYP2XvqwMwEIMqYe5kDVdL2AETXx25fOUSnix+qGrb/Z6RF2KKDXobLJWzaf9vRrXNyKVS65Yi/3IfV9YXY+WaCau3Do+ihKDQVBCJNUfmOn5KHRIJ8fZh0+U1Erz8c22dSOQ31u1q2856swl2MathS3y6gWGsb+rGKILAHlAC52KdV9OuDR9l7vTkKGs6RGxvNdA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=SUaNmR/36xcsdOH+JKSarELz/dXgVFtoxK24HEoc/LM=;
+ b=o773y3dCjxU8/WIu/srnhwYnNSQBafCbSLPcoJTVjgwniW69isoZPiGOjA+BkPR3ogBc9rWr9SmiqIv+nDz68UOKa4VuaMrOrc86BSk9lySlYpw5Zgl66d3Nd4Q7ewYWTMCKnpz+FSMe95mQ+U0FZgfYj4TlwkAihgL9mQEhrpA=
+Received: from PSAPR03MB5605.apcprd03.prod.outlook.com (2603:1096:301:66::6)
+ by KL1PR03MB8142.apcprd03.prod.outlook.com (2603:1096:820:102::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7452.50; Wed, 17 Apr
+ 2024 09:29:34 +0000
+Received: from PSAPR03MB5605.apcprd03.prod.outlook.com
+ ([fe80::3945:7dbc:62bd:c31c]) by PSAPR03MB5605.apcprd03.prod.outlook.com
+ ([fe80::3945:7dbc:62bd:c31c%7]) with mapi id 15.20.7452.049; Wed, 17 Apr 2024
+ 09:29:33 +0000
+From: =?utf-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>
+To: "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
+	"jejb@linux.ibm.com" <jejb@linux.ibm.com>,
+	"angelogioacchino.delregno@collabora.com"
+	<angelogioacchino.delregno@collabora.com>
+CC: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"wenst@chromium.org" <wenst@chromium.org>, "devicetree@vger.kernel.org"
+	<devicetree@vger.kernel.org>, "avri.altman@wdc.com" <avri.altman@wdc.com>,
+	"martin.petersen@oracle.com" <martin.petersen@oracle.com>,
+	"bvanassche@acm.org" <bvanassche@acm.org>, "broonie@kernel.org"
+	<broonie@kernel.org>, "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
+	"conor+dt@kernel.org" <conor+dt@kernel.org>, "robh@kernel.org"
+	<robh@kernel.org>, "lgirdwood@gmail.com" <lgirdwood@gmail.com>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "krzysztof.kozlowski+dt@linaro.org"
+	<krzysztof.kozlowski+dt@linaro.org>, "matthias.bgg@gmail.com"
+	<matthias.bgg@gmail.com>, "amergnat@baylibre.com" <amergnat@baylibre.com>
+Subject: Re: [PATCH v4 3/8] scsi: ufs: ufs-mediatek: Remove useless
+ mediatek,ufs-boost-crypt property
+Thread-Topic: [PATCH v4 3/8] scsi: ufs: ufs-mediatek: Remove useless
+ mediatek,ufs-boost-crypt property
+Thread-Index: AQHajyQsFRoxXt1vlE2SkQwxcZAltLFqegCAgAAOj4CAACueAIAAAfoAgAApLgCAAUDrAIAAFPkA
+Date: Wed, 17 Apr 2024 09:29:33 +0000
+Message-ID: <12cc437d2213720190a2fcf132411cfe4485f5d0.camel@mediatek.com>
+References: <20240415110012.148871-1-angelogioacchino.delregno@collabora.com>
+	 <20240415110012.148871-4-angelogioacchino.delregno@collabora.com>
+	 <c9634a286fbdb4c98a7fe6703a4eb10d66dfcb9e.camel@mediatek.com>
+	 <4d60e9e4-9eae-4b0a-abb2-b1ad3d278fc9@collabora.com>
+	 <93db93aa7eb24a255f97a1a1e8e8d936dc908258.camel@mediatek.com>
+	 <f3920433-b0fa-4a64-9653-e385bf1eb5c7@collabora.com>
+	 <d11e174d85c7f5a9b4ffe5fb2bb15dfd5823f83e.camel@mediatek.com>
+	 <ecd7c691-db47-42aa-ab19-f554c20774af@collabora.com>
+In-Reply-To: <ecd7c691-db47-42aa-ab19-f554c20774af@collabora.com>
+Accept-Language: zh-TW, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: PSAPR03MB5605:EE_|KL1PR03MB8142:EE_
+x-ms-office365-filtering-correlation-id: 8018b38f-ce9c-4709-0bf3-08dc5ec0e467
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: =?utf-8?B?dUM0NHM3NWttNGdZQ0VFRlFRR2FzRzI3T1FONHRsaVRDTjZrc3ZFU1dCQk9q?=
+ =?utf-8?B?Z3p4Unl5cGNFWlpUdEhoTTJ3dnRVZFVHdGE3R1c0OVRVTzA5QkpXUHFzR05h?=
+ =?utf-8?B?K2FLVEp5Ujg0UmltenhnWmJLWCtVaCtEbnBJOEUwMHg2d3poWlYxNkJvbjhq?=
+ =?utf-8?B?N0tOZ01ZYlR0ZmRNaFMwK2JicjRWYmF4MEhLQW10dFNWRndXdERzczhhS1ZR?=
+ =?utf-8?B?QTZsWTErMGlXSVZQdTQrQ290cEd0c1ZjVE9qUDI4dFdBMHUzMVlEVUFEa2My?=
+ =?utf-8?B?WVZ0R1dqQ2ZidThGVFFJNkNmYVo0ZU1HUk8rZnA5QkczcnQrZmk4OUxkTFA0?=
+ =?utf-8?B?dTBMMVRYT2NxMWRGY2l1dy9KZzFyZkxiVmhYeTBDU3k4MlQrZHd0d3pJSVBu?=
+ =?utf-8?B?bWF5dVdOcnROcTR5ei8xckx2TWl1Y041T1NLRlpNOE1wdkVCc0diZlhlZVQ5?=
+ =?utf-8?B?YVF0TC9JQUhMa01sRUVLMTRyUlJaSUo4OFpoeHJGM3hDYW1vbkpVZStZRWRn?=
+ =?utf-8?B?aVZERmtCMlN6NVF2ZWxqMkhlY0c1YngyYzJQOXJMelFGQi9iTHJVbmZCdzdx?=
+ =?utf-8?B?WkhIQzBUN0xieTc1OXdIZmdMb3k4WW9mZFZCWmJOZThYK0ZuOStjNU9tQ1Zj?=
+ =?utf-8?B?eHptWE1jZGNGaWM1cjhLUGh0YTZZNlNSMUpiNDI4OUJaQWtMeWFxTUQzQnVl?=
+ =?utf-8?B?QTBteG5sVnpnVkhPM0ZvUGF4dTgwOE9uWTVBcVRmemhwM3dZdkJjNVNUQXlD?=
+ =?utf-8?B?WElBRUtWV2RQbTFNRnB2dkh5OFNzb1hTUjdPTDh2amxzaVhITkFJUFdpS3RY?=
+ =?utf-8?B?WE44U25vK0o3aDNCUHZ3aEl4SG50cTFpR0tWODNlYXlpK2p2WFhkOTVBQm5M?=
+ =?utf-8?B?VVRUR1NYKzdRNUsvQ2FLWjJwKzRxeW94QlcrLzlSOTNFOHdmMm50ak9tK1cw?=
+ =?utf-8?B?elZPVzJGa3Q1Z0ZrcmpqN0hueHRNZGFmeXJTa1ZUYm8rTEJIR0NmME8xVFRO?=
+ =?utf-8?B?bFkwWnFoaGFwb0QwY090dHR4a3RWRjVINWtsMlk2bGVOVU9sYU5jOXhCSTJI?=
+ =?utf-8?B?MlEvenk1aGhwa1FCUDk0YnJPN1NReU5udlRkcC95dVRSaGd2cHRRSFZDM0Vi?=
+ =?utf-8?B?Q3B0ODhML0hjQ2NLSVpBZlRIR1ZVWDA5Sm00U1hMMHVsbVRSK2pJSjF4RFBm?=
+ =?utf-8?B?UWdrdURFaDFYOEhWN0l4RzVxa1pKTEJmRVROUmNJMUs1N3l2U2RscEVBdi9z?=
+ =?utf-8?B?cG9QUklYNGtTQUFQL0MzQTZSdDZwVk83ZFhkTTVXTCsrQi9JdkxFZ1hObm5r?=
+ =?utf-8?B?Rm9ndEhNVitrdmJkRWliTGU3ZDIzY0EyNjF0Rlc2Vk9YcFBYdHc1RDhTd1pM?=
+ =?utf-8?B?SDRHT0cvTjd0UGNUWlVXeXNPVU85dkxBb01xSGVCTnB3SU54b05WV1B1NXNH?=
+ =?utf-8?B?dmgxS09DMlhmSCsyR0FXRW5weVQ3VG5qTkdPaGhZTkJDQXhOQlgvYjdkR096?=
+ =?utf-8?B?c3NjQUo1eGdSQURnVmlTZ3ZQMHlCczJZcWtkdmtnbFhoRytsWnVrTFpsQmVK?=
+ =?utf-8?B?VWpMY2pSUVErKzNQQWNkUWZGN1FrV25mQ0tBQjhEZENLUlA5Wk9aOG5saGxm?=
+ =?utf-8?B?WXhydzNwSnI3SjNCYmNZMEV4THhwWllMZW9aRHJVampuaU9DMlY1b2h3QzNh?=
+ =?utf-8?B?d0Y3cnVaUXNpMDN0UkYzWUY0Z01VL1lUTG9vUmMySVJMNWdNeXdLdnRCbFVF?=
+ =?utf-8?B?Nmx1OXFjUzFub1dpRVh3ekRwZXZBcktXVWpEbytUc1dVOHMrdjlxbXlVZGFF?=
+ =?utf-8?B?b0ZXVGxtOWJhdEtKODFvdz09?=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PSAPR03MB5605.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(7416005)(1800799015)(366007)(376005)(38070700009);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?UG83ZzRoTTB0dzBRUnNUSkdOSUlySjEwNGpsRGtJOFNWa001YTlrUHJ4RHN1?=
+ =?utf-8?B?c2lwZDl2MnFaWFp6NW9pQzkzT09JT3RBK2hHZG9pWU9MVEpGRUxtVXVjRFMw?=
+ =?utf-8?B?UWYwb3F1ZFQ2Nk1mQTJBMVAzUzViOVdRc0owUUtGdE1qRWFBNmdZN2kzRE5i?=
+ =?utf-8?B?V250bXNWUmtrSkJibGRheGUzSDZvbTMzQ08rUnNjSnE2TDg2QUgxWHFBL1dv?=
+ =?utf-8?B?ajlGOFduU3YvMy9kdVptQzBiZWtuWXdpc2ZZOFdRb3N2NnZIVzBGaTI2VzRr?=
+ =?utf-8?B?c21oZXBxVllCRVpDbHZCdTFCR01ReWVaNHFIS09mOVpNa2p5U1Q0dUxueWNL?=
+ =?utf-8?B?WnRLMkxVOHdHODBwQ0NUdzk1Vm0xdU9WdUNiTXV0bDM3V2Zya0RTMk1TOTBz?=
+ =?utf-8?B?d1hYNEJ5cnVuc0w3cmQrSXBQTjlyTmFyeTQ5bW5hdUgvRDYrc3NUOEQrUnJW?=
+ =?utf-8?B?TG1vRlJPOGxScmRCekp4MS9PNHFtSUt4V0JpOHhmL2M1YnFNSGQzV29jTERC?=
+ =?utf-8?B?MGc4c1dyMHhwZlp5WlRQMEFxcm82a21YdVdlRlB6cG94aE56bGhEeVNZbDNt?=
+ =?utf-8?B?Q0FhNzh4c1J3U01DQmp5TytRbmZqMmFTZmtHMGs4eFBza1dFOXg4MElHNFdr?=
+ =?utf-8?B?TWhqU2dManRIaVdDU0xPSkI2elFCYzM1Y1cvelVBS1dLOEpUQzNrZDBkYkJy?=
+ =?utf-8?B?YzIxTGJpWGRqdGowUzhVSTNPWHluUktLbEpDQ1YrWDNId0hCL205cG9nSnR3?=
+ =?utf-8?B?SHJkUEtQRUUwWFNFQnlYL0k5cWhuZVdFc3J3M2N3aHNQd0JRT01jMkFBRndB?=
+ =?utf-8?B?bEJCQ0t1Z05ZQlhHR2tZOHMwc3EzQ0Q2bStHVUNJTlkzLzBzbmhnMGN3aGx5?=
+ =?utf-8?B?dFJJaWYyWHVuU3JJZEtic0dOZ2QvcDJ0cWhBU0RWOStualRvMzJYY2lPSTFu?=
+ =?utf-8?B?c0NQa3A5MHJXT1ZHNlptblE5eEdNclVhYmFUaElOYjM5ZENCSU1sdVJFUDgw?=
+ =?utf-8?B?MG5uT1d2T3dod2s0cjZWTzJ6VTR0VmVva3U3emFuVFFkOTAvRys5QVZMTnQ1?=
+ =?utf-8?B?bTZVdEl3NGtUZThhakp1MU5VUHlxRDFZcUk0cUUwdUJydlplUGF6R2RvNW01?=
+ =?utf-8?B?QjNWT1c2WDUvNlNNV2NBNnF5T0NvcUwwZTZLdmdjQmFwVFdldU0rcnpkdHRC?=
+ =?utf-8?B?SzVCdENrRDlCV0YwWTZRc0MrMlRXZ25wazNVemNkYjRxV3RkOXh1aDFaL3BQ?=
+ =?utf-8?B?eXFDK2l5dy9lWFo0WmRxUlE0aWRjeFJxcDV2emhrQi81QUVhS3ZyOG9GWk4x?=
+ =?utf-8?B?MitvWEFDM0tRaUpZa1Q5Vm80UURlaWpXNGwyYTJOMlpkUmxpejNEeW1xSDVx?=
+ =?utf-8?B?SDlRanc2S0ZUR1BHc3lBcnE1TnR1bFFDRTFqZHdUc0ZQd2lyYkp0UnlhbEVB?=
+ =?utf-8?B?Q2lyU0lqeXJ5RmJvZmJPWHpjU3RqaGpSdEZrOHhXV3VueU5ORkpNM1RhMTls?=
+ =?utf-8?B?WGljbVlJYVREencxeHlpL3YxTmxXZndLRDhIZkY3N2lDbzMrY2dGS1VUTkJp?=
+ =?utf-8?B?angxSXpWbkpSTENEcUFYWjFBdkM0cDBTT05zWHcyNUVmWXEvSTlqNDFaVVBE?=
+ =?utf-8?B?NEE5Zk1WUVVYOHJUdEVpQ1FoVld4T283MkEzd0JCdTVWbThkUlg4dWxwZExo?=
+ =?utf-8?B?NFdWM3lqRk9XWlAxcGltT1hMRkdVSnFQTnlCT3lQQ1RlMGVHc2xuOFk1NHF5?=
+ =?utf-8?B?bXhMZ3NjUmg1ay9RRXhSLzZ1SityOW8xb2t1cHBIWkw1MXdXLyt5bW1UUXlw?=
+ =?utf-8?B?a3pudzB4YjNOU3VNUVQ2cnQ2ZXZZY1dzZXhkeFRjVTFzd3RIeXlPZTRFWjVL?=
+ =?utf-8?B?UGVIcThRZUE0OWtQZDBtaGtXdXIxOW5wekJaMktidEwwRk9nZ3NMWnk5UUJM?=
+ =?utf-8?B?SG9TcmtXUU1Ma29LY3pSUTlZcE5iVVdtU01INEp6RmwySERQVzhEMSs1a0NG?=
+ =?utf-8?B?Rk54YkwxQkpiRjJHT0VLRlJrZ1p5WTltekF3b0hiYmk2WkZ4eWFKeDF0UXU4?=
+ =?utf-8?B?UWtRNUtGQWZQSzFXR0l0VlBRRzE1ZTRDdW5rekxJYWJJV3lzT1lzRmkxaDlX?=
+ =?utf-8?B?ZklGOEFDb21iemprMjFydFZHcldyN2xFNUYxUlVRaGExc0VMOWpGK2lCQ1Qw?=
+ =?utf-8?B?TUE9PQ==?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <4DB1D58EB9228140849A479756510A90@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: PSAPR03MB5605.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 8018b38f-ce9c-4709-0bf3-08dc5ec0e467
+X-MS-Exchange-CrossTenant-originalarrivaltime: 17 Apr 2024 09:29:33.8385
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: /1LZHtE2CADjfBIyFeZgLdVLQ5osxtsbDSJXxza82eKhNfVphmf4ofi6xRgFFPdk+JnsDnWVeL4FeSIGFJ5B+A==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: KL1PR03MB8142
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--8.484400-8.000000
+X-TMASE-MatchedRID: Q8pJWSpPf0PUL3YCMmnG4kD6z8N1m1ALjLOy13Cgb4+qvcIF1TcLYOVL
+	sil/9Kd121nyRSrQ1fYzbI1E6WnGTuDg0sdjQJGs/O70vD0Lt8BAq6/y5AEOOi8zQZ2rR/Op/MT
+	l/DYL0t92aOfb3vXhU0NY3JzSooWUqFBo1DmTbAhor4yxPAz7WTGZtPrBBPZr/Z2SSD7R8hTTuv
+	V4z5H9l3jvcteFyVUc3SIrho7PKQaAaBshbPhdTLiMC5wdwKqdTEFC0zV7bKRiZCTkFQiKcNYQA
+	opXl6nxdqg1nRv0Su2Hc4lwrx5hREkjllSXrjtQ0gVVXNgaM0qcIZLVZAQa0I7xHquoAJGGq7rF
+	UcuGp/FYF3qW3Je6+74ZxuRkpY3ZAhSREXNLA4Zl+Y5RBnugI3qlPBiV1xXVDnTiJ2V40wQhsJN
+	j8H4N3sFd1SIWTL2zGPUcji4QswLU9JZoo5hnafwNgAzF8116xNxlEFDc5GXHtMBP/jXy2fh0UM
+	xNN2q2VGMhh6J/ibp+3BndfXUhXQ==
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--8.484400-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: A06647960273ABCB026AA166A88AA4661BA8E9E34DBFCCD9F83421996E3EA6892000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240417_021457_122511_6D976D8E 
-X-CRM114-Status: GOOD (  23.71  )
+X-CRM114-CacheID: sfid-20240417_022944_997192_984C2F5A 
+X-CRM114-Status: GOOD (  20.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,822 +241,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add an interconnect driver for the External Memory Interface (EMI),
-voting for bus bandwidth over the Dynamic Voltage and Frequency Scaling
-Resource Collector (DVFSRC).
-
-             ICC provider         ICC Nodes
-                              ----          ----
-             ---------       |CPU |   |--- |VPU |
-    -----   |         |-----  ----    |     ----
-   |DRAM |--|DRAM     |       ----    |     ----
-   |     |--|scheduler|----- |GPU |   |--- |DISP|
-   |     |--|(EMI)    |       ----    |     ----
-   |     |--|         |       -----   |     ----
-    -----   |         |----- |MMSYS|--|--- |VDEC|
-             ---------        -----   |     ----
-               /|\                    |     ----
-                |change DRAM freq     |--- |VENC|
-             ----------               |     ----
-            |  DVFSR   |              |
-            |          |              |     ----
-             ----------               |--- |IMG |
-                                      |     ----
-                                      |     ----
-                                      |--- |CAM |
-                                            ----
-
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/interconnect/Kconfig            |   1 +
- drivers/interconnect/Makefile           |   1 +
- drivers/interconnect/mediatek/Kconfig   |  32 +++
- drivers/interconnect/mediatek/Makefile  |   5 +
- drivers/interconnect/mediatek/icc-emi.c | 153 +++++++++++
- drivers/interconnect/mediatek/icc-emi.h |  40 +++
- drivers/interconnect/mediatek/mt8183.c  | 143 ++++++++++
- drivers/interconnect/mediatek/mt8195.c  | 339 ++++++++++++++++++++++++
- 8 files changed, 714 insertions(+)
- create mode 100644 drivers/interconnect/mediatek/Kconfig
- create mode 100644 drivers/interconnect/mediatek/Makefile
- create mode 100644 drivers/interconnect/mediatek/icc-emi.c
- create mode 100644 drivers/interconnect/mediatek/icc-emi.h
- create mode 100644 drivers/interconnect/mediatek/mt8183.c
- create mode 100644 drivers/interconnect/mediatek/mt8195.c
-
-diff --git a/drivers/interconnect/Kconfig b/drivers/interconnect/Kconfig
-index 5faa8d2aecff..f2e49bd97d31 100644
---- a/drivers/interconnect/Kconfig
-+++ b/drivers/interconnect/Kconfig
-@@ -12,6 +12,7 @@ menuconfig INTERCONNECT
- if INTERCONNECT
- 
- source "drivers/interconnect/imx/Kconfig"
-+source "drivers/interconnect/mediatek/Kconfig"
- source "drivers/interconnect/qcom/Kconfig"
- source "drivers/interconnect/samsung/Kconfig"
- 
-diff --git a/drivers/interconnect/Makefile b/drivers/interconnect/Makefile
-index d0888babb9a1..b0a9a6753b9d 100644
---- a/drivers/interconnect/Makefile
-+++ b/drivers/interconnect/Makefile
-@@ -5,6 +5,7 @@ icc-core-objs				:= core.o bulk.o debugfs-client.o
- 
- obj-$(CONFIG_INTERCONNECT)		+= icc-core.o
- obj-$(CONFIG_INTERCONNECT_IMX)		+= imx/
-+obj-$(CONFIG_INTERCONNECT_MTK)		+= mediatek/
- obj-$(CONFIG_INTERCONNECT_QCOM)		+= qcom/
- obj-$(CONFIG_INTERCONNECT_SAMSUNG)	+= samsung/
- 
-diff --git a/drivers/interconnect/mediatek/Kconfig b/drivers/interconnect/mediatek/Kconfig
-new file mode 100644
-index 000000000000..6da70d904b8c
---- /dev/null
-+++ b/drivers/interconnect/mediatek/Kconfig
-@@ -0,0 +1,32 @@
-+# SPDX-License-Identifier: GPL-2.0-only
-+
-+config INTERCONNECT_MTK
-+	bool "MediaTek interconnect drivers"
-+	depends on ARCH_MEDIATEK || COMPILE_TEST
-+	help
-+	  Support for MediaTek's bus interconnect hardware.
-+
-+config INTERCONNECT_MTK_DVFSRC_EMI
-+	tristate "MediaTek DVFSRC EMI interconnect driver"
-+	depends on INTERCONNECT_MTK
-+	depends on MTK_DVFSRC || COMPILE_TEST
-+	help
-+	  This is a driver for the MediaTek External Memory Interface
-+	  interconnect on SoCs equipped with the integrated Dynamic
-+	  Voltage Frequency Scaling Resource Collector (DVFSRC) MCU
-+
-+config INTERCONNECT_MTK_MT8183
-+	tristate "MediaTek MT8183 interconnect driver"
-+	depends on INTERCONNECT_MTK
-+	select INTERCONNECT_MTK_DVFSRC_EMI
-+	help
-+	  This is a driver for the MediaTek bus interconnect on MT8183-based
-+	  platforms.
-+
-+config INTERCONNECT_MTK_MT8195
-+	tristate "MediaTek MT8195 interconnect driver"
-+	depends on INTERCONNECT_MTK
-+	select INTERCONNECT_MTK_DVFSRC_EMI
-+	help
-+	  This is a driver for the MediaTek bus interconnect on MT8195-based
-+	  platforms.
-diff --git a/drivers/interconnect/mediatek/Makefile b/drivers/interconnect/mediatek/Makefile
-new file mode 100644
-index 000000000000..8e2283a9a5b5
---- /dev/null
-+++ b/drivers/interconnect/mediatek/Makefile
-@@ -0,0 +1,5 @@
-+# SPDX-License-Identifier: GPL-2.0
-+
-+obj-$(CONFIG_INTERCONNECT_MTK_DVFSRC_EMI) += icc-emi.o
-+obj-$(CONFIG_INTERCONNECT_MTK_MT8183) += mt8183.o
-+obj-$(CONFIG_INTERCONNECT_MTK_MT8195) += mt8195.o
-diff --git a/drivers/interconnect/mediatek/icc-emi.c b/drivers/interconnect/mediatek/icc-emi.c
-new file mode 100644
-index 000000000000..d420c55682d0
---- /dev/null
-+++ b/drivers/interconnect/mediatek/icc-emi.c
-@@ -0,0 +1,153 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * MediaTek External Memory Interface (EMI) Interconnect driver
-+ *
-+ * Copyright (c) 2021 MediaTek Inc.
-+ * Copyright (c) 2024 Collabora Ltd.
-+ *                    AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-+ */
-+
-+#include <linux/interconnect.h>
-+#include <linux/interconnect-provider.h>
-+#include <linux/module.h>
-+#include <linux/of.h>
-+#include <linux/of_platform.h>
-+#include <linux/platform_device.h>
-+#include <linux/soc/mediatek/dvfsrc.h>
-+
-+#include "icc-emi.h"
-+
-+static int mtk_emi_icc_aggregate(struct icc_node *node, u32 tag, u32 avg_bw,
-+				 u32 peak_bw, u32 *agg_avg, u32 *agg_peak)
-+{
-+	struct mtk_icc_node *in = node->data;
-+
-+	*agg_avg += avg_bw;
-+	*agg_peak = max_t(u32, *agg_peak, peak_bw);
-+
-+	in->sum_avg = *agg_avg;
-+	in->max_peak = *agg_peak;
-+
-+	return 0;
-+}
-+
-+static int mtk_emi_icc_set(struct icc_node *src, struct icc_node *dst)
-+{
-+	struct mtk_icc_node *node = dst->data;
-+	struct device *dev;
-+	int ret;
-+
-+	if (unlikely(!src->provider))
-+		return -EINVAL;
-+
-+	dev = src->provider->dev;
-+
-+	switch (node->ep) {
-+	case 0:
-+		break;
-+	case 1:
-+		ret = mtk_dvfsrc_send_request(dev, MTK_DVFSRC_CMD_PEAK_BW, node->max_peak);
-+		if (ret) {
-+			dev_err(dev, "Cannot send peak bw request: %d\n", ret);
-+			return ret;
-+		}
-+
-+		ret = mtk_dvfsrc_send_request(dev, MTK_DVFSRC_CMD_BW, node->sum_avg);
-+		if (ret) {
-+			dev_err(dev, "Cannot send bw request: %d\n", ret);
-+			return ret;
-+		}
-+		break;
-+	case 2:
-+		ret = mtk_dvfsrc_send_request(dev, MTK_DVFSRC_CMD_HRT_BW, node->sum_avg);
-+		if (ret) {
-+			dev_err(dev, "Cannot send HRT bw request: %d\n", ret);
-+			return ret;
-+		}
-+		break;
-+	default:
-+		dev_err(src->provider->dev, "Unknown endpoint %u\n", node->ep);
-+		return -EINVAL;
-+	};
-+
-+	return 0;
-+}
-+
-+int mtk_emi_icc_probe(struct platform_device *pdev)
-+{
-+	const struct mtk_icc_desc *desc;
-+	struct device *dev = &pdev->dev;
-+	struct icc_node *node;
-+	struct icc_onecell_data *data;
-+	struct icc_provider *provider;
-+	struct mtk_icc_node **mnodes;
-+	int i, j, ret;
-+
-+	desc = of_device_get_match_data(dev);
-+	if (!desc)
-+		return -EINVAL;
-+
-+	mnodes = desc->nodes;
-+
-+	provider = devm_kzalloc(dev, sizeof(*provider), GFP_KERNEL);
-+	if (!provider)
-+		return -ENOMEM;
-+
-+	data = devm_kzalloc(dev, struct_size(data, nodes, desc->num_nodes), GFP_KERNEL);
-+	if (!data)
-+		return -ENOMEM;
-+
-+	provider->dev = pdev->dev.parent;
-+	provider->set = mtk_emi_icc_set;
-+	provider->aggregate = mtk_emi_icc_aggregate;
-+	provider->xlate = of_icc_xlate_onecell;
-+	INIT_LIST_HEAD(&provider->nodes);
-+	provider->data = data;
-+
-+	for (i = 0; i < desc->num_nodes; i++) {
-+		if (!mnodes[i])
-+			continue;
-+
-+		node = icc_node_create(mnodes[i]->id);
-+		if (IS_ERR(node)) {
-+			ret = PTR_ERR(node);
-+			goto err;
-+		}
-+
-+		node->name = mnodes[i]->name;
-+		node->data = mnodes[i];
-+		icc_node_add(node, provider);
-+
-+		for (j = 0; j < mnodes[i]->num_links; j++)
-+			icc_link_create(node, mnodes[i]->links[j]);
-+
-+		data->nodes[i] = node;
-+	}
-+	data->num_nodes = desc->num_nodes;
-+
-+	ret = icc_provider_register(provider);
-+	if (ret)
-+		goto err;
-+
-+	platform_set_drvdata(pdev, provider);
-+
-+	return 0;
-+err:
-+	icc_nodes_remove(provider);
-+	return ret;
-+}
-+EXPORT_SYMBOL_GPL(mtk_emi_icc_probe);
-+
-+void mtk_emi_icc_remove(struct platform_device *pdev)
-+{
-+	struct icc_provider *provider = platform_get_drvdata(pdev);
-+
-+	icc_provider_deregister(provider);
-+	icc_nodes_remove(provider);
-+}
-+EXPORT_SYMBOL_GPL(mtk_emi_icc_remove);
-+
-+MODULE_AUTHOR("AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>");
-+MODULE_AUTHOR("Henry Chen <henryc.chen@mediatek.com>");
-+MODULE_DESCRIPTION("MediaTek External Memory Interface interconnect driver");
-+MODULE_LICENSE("GPL");
-diff --git a/drivers/interconnect/mediatek/icc-emi.h b/drivers/interconnect/mediatek/icc-emi.h
-new file mode 100644
-index 000000000000..9512a50db6fa
---- /dev/null
-+++ b/drivers/interconnect/mediatek/icc-emi.h
-@@ -0,0 +1,40 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+/*
-+ * Copyright (c) 2021 MediaTek Inc.
-+ * Copyright (c) 2024 Collabora Ltd.
-+ *                    AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-+ */
-+
-+#ifndef __DRIVERS_INTERCONNECT_MEDIATEK_ICC_EMI_H
-+#define __DRIVERS_INTERCONNECT_MEDIATEK_ICC_EMI_H
-+
-+/**
-+ * struct mtk_icc_node - Mediatek EMI Interconnect Node
-+ * @name:      The interconnect node name which is shown in debugfs
-+ * @ep:        Type of this endpoint
-+ * @id:        Unique node identifier
-+ * @sum_avg:   Current sum aggregate value of all average bw requests in kBps
-+ * @max_peak:  Current max aggregate value of all peak bw requests in kBps
-+ * @num_links: The total number of @links
-+ * @links:     Array of @id linked to this node
-+ */
-+struct mtk_icc_node {
-+	unsigned char *name;
-+	int ep;
-+	u16 id;
-+	u64 sum_avg;
-+	u64 max_peak;
-+
-+	u16 num_links;
-+	u16 links[] __counted_by(num_links);
-+};
-+
-+struct mtk_icc_desc {
-+	struct mtk_icc_node **nodes;
-+	size_t num_nodes;
-+};
-+
-+int mtk_emi_icc_probe(struct platform_device *pdev);
-+void mtk_emi_icc_remove(struct platform_device *pdev);
-+
-+#endif /* __DRIVERS_INTERCONNECT_MEDIATEK_ICC_EMI_H */
-diff --git a/drivers/interconnect/mediatek/mt8183.c b/drivers/interconnect/mediatek/mt8183.c
-new file mode 100644
-index 000000000000..eb98b7f821a1
---- /dev/null
-+++ b/drivers/interconnect/mediatek/mt8183.c
-@@ -0,0 +1,143 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Copyright (c) 2021 MediaTek Inc.
-+ * Copyright (c) 2024 Collabora Ltd.
-+ *                    AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-+ */
-+
-+#include <linux/device.h>
-+#include <linux/interconnect.h>
-+#include <linux/interconnect-provider.h>
-+#include <linux/mod_devicetable.h>
-+#include <linux/module.h>
-+#include <linux/platform_device.h>
-+#include <dt-bindings/interconnect/mediatek,mt8183.h>
-+
-+#include "icc-emi.h"
-+
-+static struct mtk_icc_node ddr_emi = {
-+	.name = "ddr-emi",
-+	.id = SLAVE_DDR_EMI,
-+	.ep = 1,
-+};
-+
-+static struct mtk_icc_node mcusys = {
-+	.name = "mcusys",
-+	.id = MASTER_MCUSYS,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { SLAVE_DDR_EMI }
-+};
-+
-+static struct mtk_icc_node gpu = {
-+	.name = "gpu",
-+	.id = MASTER_MFG,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { SLAVE_DDR_EMI }
-+};
-+
-+static struct mtk_icc_node mmsys = {
-+	.name = "mmsys",
-+	.id = MASTER_MMSYS,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { SLAVE_DDR_EMI }
-+};
-+
-+static struct mtk_icc_node mm_vpu = {
-+	.name = "mm-vpu",
-+	.id = MASTER_MM_VPU,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { MASTER_MMSYS }
-+};
-+
-+static struct mtk_icc_node mm_disp = {
-+	.name = "mm-disp",
-+	.id = MASTER_MM_DISP,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { MASTER_MMSYS }
-+};
-+
-+static struct mtk_icc_node mm_vdec = {
-+	.name = "mm-vdec",
-+	.id = MASTER_MM_VDEC,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { MASTER_MMSYS }
-+};
-+
-+static struct mtk_icc_node mm_venc = {
-+	.name = "mm-venc",
-+	.id = MASTER_MM_VENC,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { MASTER_MMSYS }
-+};
-+
-+static struct mtk_icc_node mm_cam = {
-+	.name = "mm-cam",
-+	.id = MASTER_MM_CAM,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { MASTER_MMSYS }
-+};
-+
-+static struct mtk_icc_node mm_img = {
-+	.name = "mm-img",
-+	.id = MASTER_MM_IMG,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { MASTER_MMSYS }
-+};
-+
-+static struct mtk_icc_node mm_mdp = {
-+	.name = "mm-mdp",
-+	.id = MASTER_MM_MDP,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { MASTER_MMSYS }
-+};
-+
-+static struct mtk_icc_node *mt8183_emi_icc_nodes[] = {
-+	[SLAVE_DDR_EMI] = &ddr_emi,
-+	[MASTER_MCUSYS] = &mcusys,
-+	[MASTER_MFG] = &gpu,
-+	[MASTER_MMSYS] = &mmsys,
-+	[MASTER_MM_VPU] = &mm_vpu,
-+	[MASTER_MM_DISP] = &mm_disp,
-+	[MASTER_MM_VDEC] = &mm_vdec,
-+	[MASTER_MM_VENC] = &mm_venc,
-+	[MASTER_MM_CAM] = &mm_cam,
-+	[MASTER_MM_IMG] = &mm_img,
-+	[MASTER_MM_MDP] = &mm_mdp
-+};
-+
-+static const struct mtk_icc_desc mt8183_emi_icc = {
-+	.nodes = mt8183_emi_icc_nodes,
-+	.num_nodes = ARRAY_SIZE(mt8183_emi_icc_nodes),
-+};
-+
-+static const struct of_device_id mtk_mt8183_emi_icc_of_match[] = {
-+	{ .compatible = "mediatek,mt8183-emi", .data = &mt8183_emi_icc },
-+	{ /* sentinel */ },
-+};
-+MODULE_DEVICE_TABLE(of, mtk_emi_icc_of_match);
-+
-+static struct platform_driver mtk_emi_icc_mt8183_driver = {
-+	.driver = {
-+		.name = "emi-icc-mt8183",
-+		.of_match_table = mtk_mt8183_emi_icc_of_match,
-+		.sync_state = icc_sync_state,
-+	},
-+	.probe = mtk_emi_icc_probe,
-+	.remove_new = mtk_emi_icc_remove,
-+
-+};
-+module_platform_driver(mtk_emi_icc_mt8183_driver);
-+
-+MODULE_AUTHOR("AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>");
-+MODULE_DESCRIPTION("MediaTek MT8183 EMI ICC driver");
-+MODULE_LICENSE("GPL");
-diff --git a/drivers/interconnect/mediatek/mt8195.c b/drivers/interconnect/mediatek/mt8195.c
-new file mode 100644
-index 000000000000..e782c5974e50
---- /dev/null
-+++ b/drivers/interconnect/mediatek/mt8195.c
-@@ -0,0 +1,339 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Copyright (c) 2021 MediaTek Inc.
-+ * Copyright (c) 2024 Collabora Ltd.
-+ *                    AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-+ */
-+
-+#include <linux/device.h>
-+#include <linux/interconnect.h>
-+#include <linux/interconnect-provider.h>
-+#include <linux/mod_devicetable.h>
-+#include <linux/module.h>
-+#include <linux/platform_device.h>
-+#include <dt-bindings/interconnect/mediatek,mt8195.h>
-+
-+#include "icc-emi.h"
-+
-+static struct mtk_icc_node ddr_emi = {
-+	.name = "ddr-emi",
-+	.id = SLAVE_DDR_EMI,
-+	.ep = 1,
-+};
-+
-+static struct mtk_icc_node mcusys = {
-+	.name = "mcusys",
-+	.id = MASTER_MCUSYS,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { SLAVE_DDR_EMI }
-+};
-+
-+static struct mtk_icc_node gpu = {
-+	.name = "gpu",
-+	.id = MASTER_GPUSYS,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { SLAVE_DDR_EMI }
-+};
-+
-+static struct mtk_icc_node mmsys = {
-+	.name = "mmsys",
-+	.id = MASTER_MMSYS,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { SLAVE_DDR_EMI }
-+};
-+
-+static struct mtk_icc_node mm_vpu = {
-+	.name = "mm-vpu",
-+	.id = MASTER_MM_VPU,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { MASTER_MMSYS }
-+};
-+
-+static struct mtk_icc_node mm_disp = {
-+	.name = "mm-disp",
-+	.id = MASTER_MM_DISP,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { MASTER_MMSYS }
-+};
-+
-+static struct mtk_icc_node mm_vdec = {
-+	.name = "mm-vdec",
-+	.id = MASTER_MM_VDEC,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { MASTER_MMSYS }
-+};
-+
-+static struct mtk_icc_node mm_venc = {
-+	.name = "mm-venc",
-+	.id = MASTER_MM_VENC,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { MASTER_MMSYS }
-+};
-+
-+static struct mtk_icc_node mm_cam = {
-+	.name = "mm-cam",
-+	.id = MASTER_MM_CAM,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { MASTER_MMSYS }
-+};
-+
-+static struct mtk_icc_node mm_img = {
-+	.name = "mm-img",
-+	.id = MASTER_MM_IMG,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { MASTER_MMSYS }
-+};
-+
-+static struct mtk_icc_node mm_mdp = {
-+	.name = "mm-mdp",
-+	.id = MASTER_MM_MDP,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { MASTER_MMSYS }
-+};
-+
-+static struct mtk_icc_node vpusys = {
-+	.name = "vpusys",
-+	.id = MASTER_VPUSYS,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { SLAVE_DDR_EMI }
-+};
-+
-+static struct mtk_icc_node vpu_port0 = {
-+	.name = "vpu-port0",
-+	.id = MASTER_VPU_0,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { MASTER_VPUSYS }
-+};
-+
-+static struct mtk_icc_node vpu_port1 = {
-+	.name = "vpu-port1",
-+	.id = MASTER_VPU_1,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { MASTER_VPUSYS }
-+};
-+
-+static struct mtk_icc_node mdlasys = {
-+	.name = "mdlasys",
-+	.id = MASTER_MDLASYS,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { SLAVE_DDR_EMI }
-+};
-+
-+static struct mtk_icc_node mdla_port0 = {
-+	.name = "mdla-port0",
-+	.id = MASTER_MDLA_0,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { MASTER_MDLASYS }
-+};
-+
-+static struct mtk_icc_node ufs = {
-+	.name = "ufs",
-+	.id = MASTER_UFS,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { SLAVE_DDR_EMI }
-+};
-+
-+static struct mtk_icc_node pcie0 = {
-+	.name = "pcie0",
-+	.id = MASTER_PCIE_0,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { SLAVE_DDR_EMI }
-+};
-+
-+static struct mtk_icc_node pcie1 = {
-+	.name = "pcie1",
-+	.id = MASTER_PCIE_1,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { SLAVE_DDR_EMI }
-+};
-+
-+static struct mtk_icc_node usb = {
-+	.name = "usb",
-+	.id = MASTER_USB,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { SLAVE_DDR_EMI }
-+};
-+
-+static struct mtk_icc_node wifi = {
-+	.name = "wifi",
-+	.id = MASTER_WIFI,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { SLAVE_DDR_EMI }
-+};
-+
-+static struct mtk_icc_node bt = {
-+	.name = "bt",
-+	.id = MASTER_BT,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { SLAVE_DDR_EMI }
-+};
-+
-+static struct mtk_icc_node netsys = {
-+	.name = "netsys",
-+	.id = MASTER_NETSYS,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { SLAVE_DDR_EMI }
-+};
-+
-+static struct mtk_icc_node dbgif = {
-+	.name = "dbgif",
-+	.id = MASTER_DBGIF,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { SLAVE_DDR_EMI }
-+};
-+
-+static struct mtk_icc_node hrt_ddr_emi = {
-+	.name = "hrt-ddr-emi",
-+	.id = SLAVE_HRT_DDR_EMI,
-+	.ep = 2,
-+};
-+
-+static struct mtk_icc_node hrt_mmsys = {
-+	.name = "hrt-mmsys",
-+	.id = MASTER_HRT_MMSYS,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { SLAVE_HRT_DDR_EMI }
-+};
-+
-+static struct mtk_icc_node hrt_mm_disp = {
-+	.name = "hrt-mm-disp",
-+	.id = MASTER_HRT_MM_DISP,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { MASTER_HRT_MMSYS }
-+};
-+
-+static struct mtk_icc_node hrt_mm_vdec = {
-+	.name = "hrt-mm-vdec",
-+	.id = MASTER_HRT_MM_VDEC,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { MASTER_HRT_MMSYS }
-+};
-+
-+static struct mtk_icc_node hrt_mm_venc = {
-+	.name = "hrt-mm-venc",
-+	.id = MASTER_HRT_MM_VENC,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { MASTER_HRT_MMSYS }
-+};
-+
-+static struct mtk_icc_node hrt_mm_cam = {
-+	.name = "hrt-mm-cam",
-+	.id = MASTER_HRT_MM_CAM,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { MASTER_HRT_MMSYS }
-+};
-+
-+static struct mtk_icc_node hrt_mm_img = {
-+	.name = "hrt-mm-img",
-+	.id = MASTER_HRT_MM_IMG,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { MASTER_HRT_MMSYS }
-+};
-+
-+static struct mtk_icc_node hrt_mm_mdp = {
-+	.name = "hrt-mm-mdp",
-+	.id = MASTER_HRT_MM_MDP,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { MASTER_HRT_MMSYS }
-+};
-+
-+static struct mtk_icc_node hrt_dbgif = {
-+	.name = "hrt-dbgif",
-+	.id = MASTER_HRT_DBGIF,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { SLAVE_HRT_DDR_EMI }
-+};
-+
-+static struct mtk_icc_node *mt8195_emi_icc_nodes[] = {
-+	[SLAVE_DDR_EMI] = &ddr_emi,
-+	[MASTER_MCUSYS] = &mcusys,
-+	[MASTER_GPUSYS] = &gpu,
-+	[MASTER_MMSYS] = &mmsys,
-+	[MASTER_MM_VPU] = &mm_vpu,
-+	[MASTER_MM_DISP] = &mm_disp,
-+	[MASTER_MM_VDEC] = &mm_vdec,
-+	[MASTER_MM_VENC] = &mm_venc,
-+	[MASTER_MM_CAM] = &mm_cam,
-+	[MASTER_MM_IMG] = &mm_img,
-+	[MASTER_MM_MDP] = &mm_mdp,
-+	[MASTER_VPUSYS] = &vpusys,
-+	[MASTER_VPU_0] = &vpu_port0,
-+	[MASTER_VPU_1] = &vpu_port1,
-+	[MASTER_MDLASYS] = &mdlasys,
-+	[MASTER_MDLA_0] = &mdla_port0,
-+	[MASTER_UFS] = &ufs,
-+	[MASTER_PCIE_0] = &pcie0,
-+	[MASTER_PCIE_1] = &pcie1,
-+	[MASTER_USB] = &usb,
-+	[MASTER_WIFI] = &wifi,
-+	[MASTER_BT] = &bt,
-+	[MASTER_NETSYS] = &netsys,
-+	[MASTER_DBGIF] = &dbgif,
-+	[SLAVE_HRT_DDR_EMI] = &hrt_ddr_emi,
-+	[MASTER_HRT_MMSYS] = &hrt_mmsys,
-+	[MASTER_HRT_MM_DISP] = &hrt_mm_disp,
-+	[MASTER_HRT_MM_VDEC] = &hrt_mm_vdec,
-+	[MASTER_HRT_MM_VENC] = &hrt_mm_venc,
-+	[MASTER_HRT_MM_CAM] = &hrt_mm_cam,
-+	[MASTER_HRT_MM_IMG] = &hrt_mm_img,
-+	[MASTER_HRT_MM_MDP] = &hrt_mm_mdp,
-+	[MASTER_HRT_DBGIF] = &hrt_dbgif
-+};
-+
-+static struct mtk_icc_desc mt8195_emi_icc = {
-+	.nodes = mt8195_emi_icc_nodes,
-+	.num_nodes = ARRAY_SIZE(mt8195_emi_icc_nodes),
-+};
-+
-+static const struct of_device_id mtk_mt8195_emi_icc_of_match[] = {
-+	{ .compatible = "mediatek,mt8195-emi", .data = &mt8195_emi_icc },
-+	{ /* sentinel */ },
-+};
-+MODULE_DEVICE_TABLE(of, mtk_emi_icc_of_match);
-+
-+static struct platform_driver mtk_emi_icc_mt8195_driver = {
-+	.driver = {
-+		.name = "emi-icc-mt8195",
-+		.of_match_table = mtk_mt8195_emi_icc_of_match,
-+		.sync_state = icc_sync_state,
-+	},
-+	.probe = mtk_emi_icc_probe,
-+	.remove_new = mtk_emi_icc_remove,
-+
-+};
-+module_platform_driver(mtk_emi_icc_mt8195_driver);
-+
-+MODULE_AUTHOR("AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>");
-+MODULE_DESCRIPTION("MediaTek MT8195 EMI ICC driver");
-+MODULE_LICENSE("GPL");
--- 
-2.44.0
-
+T24gV2VkLCAyMDI0LTA0LTE3IGF0IDEwOjE0ICswMjAwLCBBbmdlbG9HaW9hY2NoaW5vIERlbCBS
+ZWdubyB3cm90ZToNCj4gDQo+IA0KPiBVcHN0cmVhbSBzdXBwb3J0cyBwbGF0Zm9ybXMgdGhhdCBk
+byBhbmQgZG9uJ3QgbmVlZCB0aGlzIGZlYXR1cmUsIGFuZA0KPiBoYXZpbmcNCj4gcmVkdW5kYW50
+IGRldmljZSB0cmVlIHByb3BlcnRpZXMgcGVyZm9ybWluZyB0aGUgc2FtZSBjaGVja3MgaXMgbm90
+DQo+IGp1c3QNCj4gc3Vib3B0aW1hbCBidXQgcGxhaW4gd3JvbmcuDQo+IA0KPiBBZGRpbmcgdG8g
+dGhpcywgZGV2aWNldHJlZSBkZXNjcmliZXMgdGhlIGhhcmR3YXJlIC0gYW5kIHRoZXJlIGlzIG5v
+DQo+IHBoeXNpY2FsDQo+IGhhcmR3YXJlIHN3aXRjaCB0aGF0IG5lZWRzIHRoaXMgcmVkdW5kYW50
+IHByb3BlcnR5LCB0aGlzIG1lYW5zIHRoYXQNCj4gdGhlDQo+IHByb3BlcnR5IHRoYXQgaXMgZ2V0
+dGluZyByZW1vdmVkIGluIHRoaXMgY29tbWl0IChhbmQgdGhlIHZhMDkgb25lIGluDQo+IGFub3Ro
+ZXINCj4gY29tbWl0IG9mIHRoaXMgc2VyaWVzKSBpcyBhICpzb2Z0d2FyZSBzd2l0Y2gqLCBub3Qg
+SFcuDQo+IA0KPiBLZWVwIGluIG1pbmQsIGFsc28sIHRoYXQgdGhpcyBmZWF0dXJlIChhbmQgYWdh
+aW4sIHRoZSB2YTA5IG9uZSBhcw0KPiB3ZWxsKSBoYXMNCj4gYSBzcGVjaWZpYyByZXF1aXJlbWVu
+dCB0byBiZSBzdXBwb3J0ZWQgLSBhbmQgdGhpcyBpcyB3aGF0IHRoZSBjb2RlDQo+IGRvZXMgZXZl
+bg0KPiB3aXRob3V0IHRoZSBzb2Z0d2FyZSBzd2l0Y2ggdG8gYWRkIGl0Lg0KPiANCj4gSW4gY2Fz
+ZSB0aGVyZSdzIGFueSBuZWVkIHRvIGRpc2FsbG93IHN1Y2ggZmVhdHVyZSBmcm9tIGEgc3BlY2lm
+aWMNCj4gU29DLCB0aGUgRFQNCj4gYmluZGluZ3MgY2FuIGJlIG1vZGlmaWVkIHN1Y2ggdGhhdCBh
+IHNwZWNpZmljIGNvbXBhdGlibGUgc3RyaW5nIHdvdWxkDQo+IGRpc2FsbG93DQo+IGFkZGluZyB0
+aGUgcmVxdWlyZWQgcmVndWxhdG9yIGFuZC9vciBib29zdC1taWNyb3ZvbHQgcHJvcGVydGllcy4N
+Cj4gDQo+IEJlc2lkZXMsIEkgd2FudCB0byByZW1pbmQgeW91IHRoYXQgdGhlcmUgaXMgbm8gcmVh
+c29uIHRvIGRyb3ANCj4gc3VwcG9ydCwgb3IgaGF2ZQ0KPiB0aGVtIHVucmVsaWFibHkgd29ya2lu
+Zywgb3IgdXNlIGhhY2tzLCBmb3IgU29DcyB0aGF0IGFyZSAib2xkIiAtDQo+IGVzcGVjaWFsbHkN
+Cj4gd2hlbiB0aGlzIGlzIGEgZHJpdmVyIHRoYXQgd29ya3Mgb24gYm90aCBvbGQgYW5kIG5ldyBv
+bmVzLg0KPiANCj4gUmVnYXJkcywNCj4gQW5nZWxvDQoNCkhpIEFuZ2VsbywNCg0KVGhlc2UgdHdv
+IHByb3BlcnR5KGJvb3N0IGFuZCB2YTA5KSBpcyBub3Qgc29mdHdhcmUgc3dpdGNoLCB0aGV5DQph
+cmUgaGFyZHdhcmUgc3dpdGNoLiBCZWNhdXNlIGlmIHBsYXRmb3JtIHN1cHBvcnQgY3J5cHRvIGJv
+b3N0LCB3ZSBzZXQNCmJvb3N0IHByb3BlcnR5IGluIGRldmljZSB0cmVlLiBBbmQgaWYgcGxhdGZv
+cm0gc3VwcG9ydCB1ZnMgdmEwOSwgd2Ugc2V0DQp2YTA5IHByb2JlcnR5IGluIGRldmljZSB0cmVl
+LiBUaGVzZSBwcm9wZXJ0eSBhcmUgbWFpbiBoYXJkd2FyZSBzd2l0Y2guDQoNCldlIGRvbid0IHVz
+ZSBzdWIgc3dpdGNoIGxpa2Ugdm9sdGFnZSBvciBjbG9jayBzZXR0aW5nIGJlY2FzdWUgaXQgaXMN
+Cm5vdCBpbnRpdXRpdmUuIEVzcGVjaWFsbHkgd2hlbiB2YTA5IGlzIG5vdCB1c2VkIGJ5IHVmcyAo
+Tm8gdmEwOQ0KcHJvcGVydHkgYnV0IGhhdmUgdmEwOSB2b2x0YWdlKSwgVGhlIGJlaGF2aW9yIHNo
+b3VsZCBiZSB3cm9uZyBpZiB1ZnMNCmNvbnRyb2wgdmEwOSB3aGljaCB1c2VkIGJ5IG90aGVyIG1v
+ZHVsZS4NCg0KVGhhbmtzLg0KUGV0ZXINCg0KDQoNCg==
 
