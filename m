@@ -4,85 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AF69C4345F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Apr 2024 08:14:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59972C4345F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Apr 2024 08:26:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xrmESxH3RnhxlI3N1GmDb33VMABbntjU3MAxxrH6D+Y=; b=iZlC3YDb99U4a534UJW+i8X5gO
-	ScJLa7Mv68bwGqIb8qMzIycTGCR/YeKrTsJ60NzhVxpaSVzMTnWAMJhyg8aJwJGc2x3OPa+IpcoVg
-	cAbZ1G4FrpBOrxqb0XTe/X9rPwk9QFpyeevXPw6IDQxlP9R9xCWdOvXbnA4UQ2L+A5FrgluE+Ai/T
-	v2LJAw1UF2HTw0+bPhhU/01NI3mofX6WsyiJgnof4kgvIGfQjas74d2zTneohUIUHg3W/+2lb8H3M
-	6gj+Qy6BES6cYSSUy+aR8pzHqHo4levxtJhuImZ5tFqFKEzX70eM2qKT1PinLaqFUjCdPPWQ/IXeP
-	SLWAG2vg==;
+	bh=PMQ6Btf9vSGEcfa3IbGsBMc1XqsNYidUvb2ccCCywKs=; b=LM2vdnHYvRKpcb8E/To/yAnvwI
+	ycHbd0dpJwFLyEgXuEmrl3e/9disUgSriIQTxDtNQ4AYiFwYY/lLczJZwGdEAdhVnKun/Y0Pxmm74
+	7/ZyPuzAK5KdxiSZM06NHTR6lBp4OaU0RL5irwpMOSKrSlULU6NKVDKhYbBlkHHgaiICRWSgaTZ2J
+	sDCm52y+P7AwW2j0+r0o5zPLd9FBMSC0dVVnIa0XXhwJ92KREhLwqzRa2dzfZzm77Vkc9EY9I7h7Z
+	jCoGBmjDA9SS32hvDgi1mt1S8t2lPQxgqi/YGAX8QB6+TfxwP+SDa0iIfkJ+2692YGs82CYqn0trG
+	B+nNDDNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rx0RD-0000000FAPd-2KEc;
-	Wed, 17 Apr 2024 08:14:39 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rx0cR-0000000FCad-3ICV;
+	Wed, 17 Apr 2024 08:26:15 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rx0R9-0000000FANJ-0l84;
-	Wed, 17 Apr 2024 08:14:36 +0000
+	id 1rx0cN-0000000FCZe-1cm5;
+	Wed, 17 Apr 2024 08:26:13 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1713341669;
-	bh=nxKyq4H0ET8o57EUkk9BeFnAgDxkoDenfHs8BMo7Gwc=;
+	s=mail; t=1713342368;
+	bh=kmHlwLbZHjHC2EJS+ABo1wg0PZ40MFvgtD9PeNxxQPM=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=RkLV/o1PU9ese6veoTStGg4K/NZagOdBE6LolLHaXNkrnLu/YEag41lL2b3bdSr37
-	 Wh86fihPy7t3RocZmjM4JxFj080dJXzwuKOKMQohdyQAhfxnNx7wDlHFOT90mlCgqW
-	 /hXnYC462KYH89DE2Tx+Oavowvd7RNcp0LXlcYJ9UyAQeL56BZK4WLW/JI2dkCrdJg
-	 pciBYIEo/3AHBXF17BXKSmnhzALaMatAJ7lNRuXY8NdpevP1Z5dbWGCec4JlO73+L8
-	 sZ1JCNimKuKWPqqGI4H+5aggw8DGG7JRzbtCSuFbTgbiVDeIKbr/vKs3ikzyEXFdf+
-	 3Y0aQxTbbaA8Q==
+	b=oTd9SgVZIiAqJCmnodpLckCDcAWx4PKtjv/xCqwa194AAZDqTERfnWrM/Kw4MP6ME
+	 hjEkfD5SOR1oXf0SAORnl0QjTdorQfj+oqytmMekXR70JTNK4caD3pBc+XOiGO5O6S
+	 bz0TvhGyiF8R4tluA8SfN0nZQKYDOSWc+vLLGMw4U2RVyq/T2e4MovmHoctxXRIhSR
+	 SpYa8UK4l3q+/bCJyNr67oOUpRam7VqD9/t+oRu4yc8rhMzPyM8s/OP9wYLZWbauyv
+	 IS+dIdXAgJtO2K6QqSiPxkkmoGatISludLOarjDsfvRltLlE8lmaFQXzDlQj1nbWz2
+	 jv7y4yMn3s/XA==
 Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id B6E033780629;
-	Wed, 17 Apr 2024 08:14:28 +0000 (UTC)
-Message-ID: <ecd7c691-db47-42aa-ab19-f554c20774af@collabora.com>
-Date: Wed, 17 Apr 2024 10:14:28 +0200
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 9136637820F9;
+	Wed, 17 Apr 2024 08:26:07 +0000 (UTC)
+Message-ID: <ef29f74b-af21-4807-8d72-0e627586a288@collabora.com>
+Date: Wed, 17 Apr 2024 10:26:06 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 3/8] scsi: ufs: ufs-mediatek: Remove useless
- mediatek,ufs-boost-crypt property
-To: =?UTF-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>,
- "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
- "jejb@linux.ibm.com" <jejb@linux.ibm.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "avri.altman@wdc.com" <avri.altman@wdc.com>,
- "martin.petersen@oracle.com" <martin.petersen@oracle.com>,
- "bvanassche@acm.org" <bvanassche@acm.org>,
- "broonie@kernel.org" <broonie@kernel.org>,
- "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
- "conor+dt@kernel.org" <conor+dt@kernel.org>,
- "robh@kernel.org" <robh@kernel.org>,
- "lgirdwood@gmail.com" <lgirdwood@gmail.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- Chen-Yu Tsai <wenst@chromium.org>, Alexandre Mergnat <amergnat@baylibre.com>
-References: <20240415110012.148871-1-angelogioacchino.delregno@collabora.com>
- <20240415110012.148871-4-angelogioacchino.delregno@collabora.com>
- <c9634a286fbdb4c98a7fe6703a4eb10d66dfcb9e.camel@mediatek.com>
- <4d60e9e4-9eae-4b0a-abb2-b1ad3d278fc9@collabora.com>
- <93db93aa7eb24a255f97a1a1e8e8d936dc908258.camel@mediatek.com>
- <f3920433-b0fa-4a64-9653-e385bf1eb5c7@collabora.com>
- <d11e174d85c7f5a9b4ffe5fb2bb15dfd5823f83e.camel@mediatek.com>
+Subject: Re: [PATCH v1 1/6] dt-bindings: soc: mediatek: Add DVFSRC bindings
+ for MT8183 and MT8195
+To: Conor Dooley <conor@kernel.org>
+Cc: djakov@kernel.org, robh@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ conor+dt@kernel.org, matthias.bgg@gmail.com, lgirdwood@gmail.com,
+ broonie@kernel.org, keescook@chromium.org, gustavoars@kernel.org,
+ henryc.chen@mediatek.com, linux-pm@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ kernel@collabora.com, wenst@chromium.org, amergnat@baylibre.com
+References: <20240416153805.431118-1-angelogioacchino.delregno@collabora.com>
+ <20240416153805.431118-2-angelogioacchino.delregno@collabora.com>
+ <20240416-grope-blissful-a914854b3732@spud>
+ <20240416-onion-prone-44b45d5a003e@spud>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <d11e174d85c7f5a9b4ffe5fb2bb15dfd5823f83e.camel@mediatek.com>
+In-Reply-To: <20240416-onion-prone-44b45d5a003e@spud>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240417_011435_393725_C6E27924 
-X-CRM114-Status: GOOD (  22.07  )
+X-CRM114-CacheID: sfid-20240417_012611_809910_0A6DEADA 
+X-CRM114-Status: GOOD (  23.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,78 +83,132 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 16/04/24 15:05, Peter Wang (王信友) ha scritto:
-> On Tue, 2024-04-16 at 12:38 +0200, AngeloGioacchino Del Regno wrote:
->> Il 16/04/24 12:31, Peter Wang (王信友) ha scritto:
+Il 16/04/24 19:30, Conor Dooley ha scritto:
+> On Tue, Apr 16, 2024 at 06:28:58PM +0100, Conor Dooley wrote:
+>> On Tue, Apr 16, 2024 at 05:38:00PM +0200, AngeloGioacchino Del Regno wrote:
+>>> Add bindings for the MediaTek Dynamic Voltage and Frequency Scaling
+>>> Resource Collector (DVFSRC), a hardware module used to collect all the
+>>> requests from both software and the various remote processors embedded
+>>> into the SoC and decide about a minimum operating voltage and a minimum
+>>> DRAM frequency to fulfill those requests in an effort to provide the
+>>> best achievable performance per watt.
 >>>
->>>> Yes this causes -> less than half of a millisecond <- of
->>>> additional
->>>> boot time
->>>> if the dvfsrc-supply is present but boost-microvolt is not.
->>>>
->>>> I really don't see the problem with that :-)
->>>>
+>>> This hardware IP is capable of transparently performing direct register
+>>> R/W on all of the DVFSRC-controlled regulators and SoC bandwidth knobs.
 >>>
->>> Adding a little bit of boot time to one smartphone might not be a
->>> problem, but when you consider a billion smartphones each adding a
->>> little bit, the cumulative effect becomes significant. The power
->>> consumption of these accumulated times will continue to increase,
->>> contributing to the Earth's carbon emissions. Moreover, removing
->>> the
->>> master switch for this feature doesn't seem to have any benefits
->>> other
->>> than not having to set it in the DTS. Similarly, the master switch
->>> for
->>> VA09 seems to have more disadvantage.
+>>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>>> ---
+>>>   .../soc/mediatek/mediatek,mt8183-dvfsrc.yaml  | 57 +++++++++++++++++++
+>>>   1 file changed, 57 insertions(+)
+>>>   create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mediatek,mt8183-dvfsrc.yaml
 >>>
+>>> diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mt8183-dvfsrc.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mt8183-dvfsrc.yaml
+>>> new file mode 100644
+>>> index 000000000000..12bcc3fdfd07
+>>> --- /dev/null
+>>> +++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mt8183-dvfsrc.yaml
+>>> @@ -0,0 +1,57 @@
+>>> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+>>> +%YAML 1.2
+>>> +---
+>>> +$id: http://devicetree.org/schemas/soc/mediatek/mediatek,mt8183-dvfsrc.yaml#
+>>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+>>> +
+>>> +title: MediaTek Dynamic Voltage and Frequency Scaling Resource Collector (DVFSRC)
+>>> +
+>>> +description:
+>>> +  The Dynamic Voltage and Frequency Scaling Resource Collector (DVFSRC) is a
+>>> +  Hardware module used to collect all the requests from both software and the
+>>> +  various remote processors embedded into the SoC and decide about a minimum
+>>> +  operating voltage and a minimum DRAM frequency to fulfill those requests in
+>>> +  an effort to provide the best achievable performance per watt.
+>>> +  This hardware IP is capable of transparently performing direct register R/W
+>>> +  on all of the DVFSRC-controlled regulators and SoC bandwidth knobs.
+>>> +
+>>> +maintainers:
+>>> +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>>> +  - Henry Chen <henryc.chen@mediatek.com>
+>>> +
+>>> +properties:
+>>> +  compatible:
+>>> +    oneOf:
+>>> +      - items:
 >>
->> Sorry, but I still don't see how a few *microseconds* more of boot
->> time can
->> be significant, even related to power consumption during boot.
+>> This items should not be needed with the enum, right?
 >>
->> If that was a few milliseconds, then I'd agree with you, but that's
->> not the case.
+
+Whoops. Yep items is not needed.
+
+>>> +          - enum:
+>>> +              - mediatek,mt8183-dvfsrc
+>>> +              - mediatek,mt8195-dvfsrc
+>>> +      - items:
+>>> +          - const: mediatek,mt8192-dvfsrc
+>>> +          - const: mediatek,mt8195-dvfsrc
+>>> +
+>>> +  reg:
+>>> +    maxItems: 1
+>>> +    description: DVFSRC common register address and length.
+>>> +
+>>> +patternProperties:
+>>> +  "@[0-9a-f]+$":
+>>> +    type: object
 >>
->> Removing the master switch has a benefit: you *lose* a few
->> microseconds of boot
->> time (so, boots in *few microseconds LESS*) on platforms that would
->> have this set
->> in devicetree, as this property is redundant with the other
->> activation checks
->> for those features.
->>
->> So, there you go: if the majority of MediaTek platforms are already
->> using this
->> crypt boost feature, then this commit reduces carbon emissions, as
->> those would
->> boot in a few less microseconds.
->>
+>> Why is there no enforcement of what a child could be here?
 > 
-> But the majority platfomrs dosen't need this feature.
-> This feature is only for legacy chip which at least 4 years ago.
+> Seems like you know exactly what the children are: regulators and an
+> interconnect? What am I missing?
 > 
 
-Upstream supports platforms that do and don't need this feature, and having
-redundant device tree properties performing the same checks is not just
-suboptimal but plain wrong.
+I wasn't sure whether that would've been a good idea, given that there will
+be more possible children in the future - as in - more drivers that need the
+DVFSRC communication.
 
-Adding to this, devicetree describes the hardware - and there is no physical
-hardware switch that needs this redundant property, this means that the
-property that is getting removed in this commit (and the va09 one in another
-commit of this series) is a *software switch*, not HW.
+But anyway yes, for now, it's just the regulator and interconnect drivers.
 
-Keep in mind, also, that this feature (and again, the va09 one as well) has
-a specific requirement to be supported - and this is what the code does even
-without the software switch to add it.
+>>
+>>> +required:
+>>> +  - compatible
+>>> +  - reg
+>>> +
+>>> +additionalProperties: false
+>>> +
+>>> +examples:
+>>> +  - |
+>>> +    soc {
+>>> +        #address-cells = <2>;
+>>> +        #size-cells = <2>;
+>>> +
+>>> +        dvfsrc@10012000 {
+>>
+>> "dvfsrc" looks like something my (imaginary given allergies) cat would
 
-In case there's any need to disallow such feature from a specific SoC, the DT
-bindings can be modified such that a specific compatible string would disallow
-adding the required regulator and/or boost-microvolt properties.
+(allergies: ugh, same here - feel you)
 
-Besides, I want to remind you that there is no reason to drop support, or have
-them unreliably working, or use hacks, for SoCs that are "old" - especially
-when this is a driver that works on both old and new ones.
+>> produce from sitting on my keyboard. Could you use full words for the
+>> node name and make it something that attempts to be generic please?
+>>
 
-Regards,
+I'm not entirely sure that I can find a generic name for this... I wonder if
+"remoteproc" could work - as this is a remote processor (a MCU, actually).
+
+To give you context, this doesn't need firmware to be loaded, and does not have
+any remoteproc driver.
+
+Because then, I don't think that "performance-controller" would be correct,
+even though I have this N.2 choice... ideas?
+
+Cheers,
 Angelo
+
+>>> +            compatible = "mediatek,mt8195-dvfsrc";
+>>> +            reg = <0 0x10012000 0 0x1000>;
+>>> +        };
+>>> +    };
+>>> -- 
+>>> 2.44.0
+>>>
+> 
+> 
+
 
