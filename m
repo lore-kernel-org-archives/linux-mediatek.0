@@ -4,67 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC71CC4345F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Apr 2024 13:52:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67C93C4345F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Apr 2024 14:46:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3cy+aLOQBEMjVG/9jY6YpbDq0/VFwsk91NU4FfipASw=; b=JhFBasNC8n0n+fZJtZQUEctphW
-	UkPHSOYk466TlFF7+naDO/mDA++vscbnVzSblOuBedeN+H8Qp9zfcD7qC133M5cpmM+I7OyWV1PEd
-	zXJA1f0BcncopaaGOK+UOwzUsQsbiZxrmDk/uFlv+ru6Mfw6LWslFEXACQHc28IMjQdbtRnbJ61UB
-	4Uf6ihSsEd+8Myp9utx4tYCY35zRLW85EtVjQjZkXaRfU8LFI+NVLHnk5tuBLhPmizv3rCKKJwo5g
-	w+tAEZ6s47f7X71g1UpRioYqOLsNhBWfdgQDXVU/KcEebGgUJJJGrjW9RhdRqvDB4YkmbobO5JPwF
-	MbxfDMrQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
+	References:In-Reply-To:Cc:To:From:MIME-Version:Content-Transfer-Encoding:
+	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=dHh2ZU+aq7qA3HLrHL+4Y12Uhvm6rwQrq8TLu+FI42s=; b=lE7vZU/IZF2iixJD+ORgdb/am7
+	/QmM5AmbU/kXDQTQt1hVFdFPCYp6VH+RQJmG/tN7S3K4adNqyhdvioG2d3MC0KUDM6SfFqrMxUFg7
+	CivvuHrRvnKTGl5/Fwekh2ocrGGwZS3ZvFFc4P4o0fmgDH+tCx2nh0ewdQH2RAy+ERPuNzjRkqtEI
+	MBn1ZrDzJvYG/4LL9VDZLmzooSO0qj6yr5BSE8NB1naR5/c8BOHGHvK2IF+yLWaxVz+WOfULxLmIS
+	wEmMEZEe0GuqUe/c7sCPZ0FXRcxI7PX9sM/3ST0UfeFEWiqGfKMDyJwTjsaIvdDy3hbujzpwJK9LN
+	8DzWWDxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rx5i8-0000000GEwX-1imj;
-	Wed, 17 Apr 2024 13:52:28 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rx6Y5-0000000GPtK-3Jv1;
+	Wed, 17 Apr 2024 14:46:10 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rx5i4-0000000GEvW-3Jbv;
-	Wed, 17 Apr 2024 13:52:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1713361942;
-	bh=VxunfktQMOjppOCQpES9K8zlG6woQD+gav0HVLUYdWw=;
-	h=Date:Subject:To:References:From:In-Reply-To:From;
-	b=Mykj5nAq4uZmDGUy8aeGxuqe1I9F/q86kU0nNQ1xVNXcg8XVae31Bm2y0lTzMLRxz
-	 sCbBts3Q1SnTtyf+WFufvN7v6WNYpJwBUoN1k7kZTBFXzQr3V5p5NWX3Od/aVo/z13
-	 dcyJZqtU2prWJkdPjLYZkRNp7EoJzGjc7SHTX5MKlH0rQh2+K9hh1JGB/+PJkfi8iK
-	 58QYY/y1ZXU2KXl29NUD5sHJrhTDD3on7edMTS7rVk+37dU6erHEzcqvjviarUFc6h
-	 M0BkSzY5TVdDI0g1canrfGMTmTSWsLkVVnnRDYmVwIiYpaCBC2x2gaSqy9+8cL/6e8
-	 jsIu2PVVQMrHQ==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 7EB49378001E;
-	Wed, 17 Apr 2024 13:52:21 +0000 (UTC)
-Message-ID: <275e760d-e4e2-4a6b-88f7-9a8590b0773b@collabora.com>
-Date: Wed, 17 Apr 2024 15:52:20 +0200
+	id 1rx6Y1-0000000GPr1-2XOn;
+	Wed, 17 Apr 2024 14:46:07 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 26105614F5;
+	Wed, 17 Apr 2024 14:46:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9F455C072AA;
+	Wed, 17 Apr 2024 14:46:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1713365163;
+	bh=prPpqIgiR4oXSxGZdm2JqXUifFqx02INBPy2HFhAkmQ=;
+	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
+	b=eNiKY2lnozJF11dncEK2YbaJceSMgiwx58CzqwYYQEB5wKVOJZmLgtgTQqOqm8j8j
+	 F9tQ9uB9D8bFmgcCHTKgp6fkrJdhNhBrdNkmkYe8bV5NPzotpwPvjDeVhDeURVWgIc
+	 DgNqBDo1j+7HH4+/KXpdKBrvCm0b0DkpomHDCvsKe382SCerBfbUKy1KiuLqC8SE5v
+	 06YBGe8EikMoM5t2caquC6eV1rT/XaeQmYaRtmmERF5+w4JlKLmQDYsgbx5DXXbPdF
+	 CnM7JPxLhD0RaBu4JbIsGzFrZ38N7KViL0Mtba9puEh8hxaM0p62uki5t94C1lEOL8
+	 nBZBFIh8FIYkw==
+Date: Wed, 17 Apr 2024 09:46:02 -0500
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] drm/mediatek/dp: fix mtk_dp_aux_transfer return value
-To: Wojciech Macek <wmacek@chromium.org>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
- Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- chrome-platform@lists.linux.dev
-References: <20240417103819.990512-1-wmacek@chromium.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20240417103819.990512-1-wmacek@chromium.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+From: Rob Herring <robh@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: broonie@kernel.org, henryc.chen@mediatek.com, 
+ linux-kernel@vger.kernel.org, keescook@chromium.org, djakov@kernel.org, 
+ amergnat@baylibre.com, krzysztof.kozlowski+dt@linaro.org, 
+ matthias.bgg@gmail.com, linux-pm@vger.kernel.org, lgirdwood@gmail.com, 
+ devicetree@vger.kernel.org, gustavoars@kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ kernel@collabora.com, conor+dt@kernel.org, wenst@chromium.org
+In-Reply-To: <20240417091442.170505-3-angelogioacchino.delregno@collabora.com>
+References: <20240417091442.170505-1-angelogioacchino.delregno@collabora.com>
+ <20240417091442.170505-3-angelogioacchino.delregno@collabora.com>
+Message-Id: <171336511841.2347811.4883072068871368220.robh@kernel.org>
+Subject: Re: [PATCH v2 2/7] dt-bindings: interconnect: Add MediaTek EMI
+ Interconnect bindings
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240417_065225_051153_F9F44D73 
-X-CRM114-Status: UNSURE (   6.98  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240417_074605_731465_C313ECE5 
+X-CRM114-Status: GOOD (  11.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,18 +77,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 17/04/24 12:38, Wojciech Macek ha scritto:
-> In case there is no DP device attached to the port the
-> transfer function should return IO error, similar to what
-> other drivers do.
-> In case EAGAIN is returned then any read from /dev/drm_dp_aux
-> device ends up in an infinite loop as the upper layers
-> constantly repeats the transfer request.
+
+On Wed, 17 Apr 2024 11:14:37 +0200, AngeloGioacchino Del Regno wrote:
+> Add bindings for the MediaTek External Memory Interface Interconnect,
+> which providers support system bandwidth requirements through Dynamic
+> Voltage Frequency Scaling Resource Collector (DVFSRC) hardware.
 > 
-> Fixes: f70ac097a2cf ("drm/mediatek: Add MT8195 Embedded DisplayPort driver")
-> Signed-off-by: Wojciech Macek <wmacek@chromium.org>
+> This adds bindings for MediaTek MT8183 and MT8195 SoCs.
+> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>  .../interconnect/mediatek,mt8183-emi.yaml     | 76 +++++++++++++++++++
+>  .../interconnect/mediatek,mt8183.h            | 23 ++++++
+>  .../interconnect/mediatek,mt8195.h            | 44 +++++++++++
+>  3 files changed, 143 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/interconnect/mediatek,mt8183-emi.yaml
+>  create mode 100644 include/dt-bindings/interconnect/mediatek,mt8183.h
+>  create mode 100644 include/dt-bindings/interconnect/mediatek,mt8195.h
+> 
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+My bot found errors running 'make dt_binding_check' on your patch:
 
+yamllint warnings/errors:
+
+dtschema/dtc warnings/errors:
+Documentation/devicetree/bindings/interconnect/mediatek,mt8183-emi.example.dtb: /example-0/soc/system-controller@10012000: failed to match any schema with compatible: ['mediatek,mt8195-dvfsrc']
+
+doc reference errors (make refcheckdocs):
+
+See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20240417091442.170505-3-angelogioacchino.delregno@collabora.com
+
+The base for the series is generally the latest rc1. A different dependency
+should be noted in *this* patch.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit after running the above command yourself. Note
+that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+your schema. However, it must be unset to test all examples with your schema.
 
 
