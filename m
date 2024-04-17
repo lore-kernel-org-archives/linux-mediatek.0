@@ -4,71 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DBF6C4345F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Apr 2024 08:07:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E449C001CC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Apr 2024 08:12:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BuvMTKrS538OQBDa2jdh/t6qnPEHbqMc8PN+mILzuvs=; b=yO0uebfVW89kEU7L9BxYP2rtub
-	ed8RdmXdQ24rnZ+gqXiSXT3WQIGyVXECeXMdiWf0J8LljAHGKi2Rk4qSmWlaeUxHli10waZIENXKI
-	pzkVlSeHVY/8Ra9851zupFp1ogIqacDq5hKEex6SyjBHOpK/ffc1WIFvaM9735ogrH4m1uquh7ikR
-	IxxSKLy3MZtxgu+TYgHD041yHmZsl9xGRhnwuX3xL4zT+ZTeNZTaGAzaIk/oYNH6/c0NmQafMI2XK
-	qMf8x9OxSiWIUzHGJM42XowYapaFOr/P6H5w3ToDHO/IrR0aMbYuYmki0CMZ3PIQYYZW03gw2drfv
-	QAHKEiUQ==;
+	bh=TzkbbRIO2QimJ8RWbkwCZ+K7gIC0TeXOrUoZh+Yj+po=; b=2DBrEqWS4MoHouOpBuC2ljSMrR
+	Voe/JCk+2drYiGSBbvrGvH6Pfvj2u2/M+2fM6Uq3wedvjQGZNGa0rL8O2P/L3p59JTI6F0BYR9+ki
+	8MHTxy9F91YULINtqmeXjTqUGVe1ExKgAJC8Lr/ypQgMHlf5MAsE48Yq7SHqdAp6PYbrOcr/Mok6T
+	mQkgRztw3LbOhgge8QLvcg7ZTk6cA1MXOWrfCh3fOSlQzNPuF6d3jgLwg71+q7yCX5138rD/L7H28
+	GayV8WhRd/fHNCjmlAGAjAX7jgKlHvzEDwLX+3uQKZKrY+pr7HYrFTzw5Jg/MBRkdkO9ZWqiMy3OW
+	7dzbFgsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rx0K8-0000000F90g-129X;
-	Wed, 17 Apr 2024 08:07:20 +0000
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
+	id 1rx0P1-0000000F9rv-3Fi3;
+	Wed, 17 Apr 2024 08:12:23 +0000
+Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rx0K1-0000000F8nd-2EEm
+	id 1rx0Oz-0000000F9r7-1P0J
 	for linux-mediatek@lists.infradead.org;
-	Wed, 17 Apr 2024 08:07:18 +0000
-Received: by mail-ej1-x62a.google.com with SMTP id a640c23a62f3a-a526d0b2349so382337766b.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 17 Apr 2024 01:06:56 -0700 (PDT)
+	Wed, 17 Apr 2024 08:12:22 +0000
+Received: by mail-lf1-x133.google.com with SMTP id 2adb3069b0e04-516d6e23253so5890041e87.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 17 Apr 2024 01:12:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1713341215; x=1713946015; darn=lists.infradead.org;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1713341539; x=1713946339; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=BuvMTKrS538OQBDa2jdh/t6qnPEHbqMc8PN+mILzuvs=;
-        b=R+hG/TO8wm5EJ++C7rV+Xok9hT76RpDP1MI/u0PtP4RNsxi3oeNeZOtt3atxchFXYz
-         gvp2ihjJxuUkEF3Tf3dG1H3LI6MIIBHgj5Ha4g6OMAGEsc56FDb8C3cOlNFm9wdkk/OC
-         28e9TCD5ZOUh/UJA3EG9Mpg6IRz9CgOg5kSxsgGDR+TGNedorhcH/ThGT15xxtiZgLka
-         2tOtKwHP5YItxWjsx2+G4S0d2eywcHsqzTvJvrmWD54CoqR6MAq6KpHpIP1mdn7tLldS
-         s5Ergh97GaOHjpvP8YYfLD2ezcC2Nm4hy/ny7ww75YQy41QIXAx43N64kZOw2jKzQ8KI
-         OdNw==
+        bh=TzkbbRIO2QimJ8RWbkwCZ+K7gIC0TeXOrUoZh+Yj+po=;
+        b=tX4Zz3Xgp6/dtB7/RuqLV5A1mjY6Xa/XNckWwc+Swkmr9Q9czXDqVgp8AyanXVJ8Nm
+         X/v7vDsO5yjlgPOskdGNFkfmwK2kqC+KX3+bSkFI7icaja9McCsawtUPibQsZIaBaUKF
+         T7nYtzYZKQ6XkRPwhdwcH2vG46Vf3kC/zzz5CLCOZQoZG1GUVlwpI94y/NhwnNmkTmjD
+         U/QQ6stDtkkEl+Wy44MQdA0Oet90bEABgu0HPR0b7K1TofiGAjRnlbhrw7erKQRO+WEr
+         3icSHtDbgbO82Mwe+QIoEZBUCbDVemu+Zfa3RcjJhZ3YYJlK5cbBFsRfu4RzbhOgV0de
+         Bx9g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713341215; x=1713946015;
+        d=1e100.net; s=20230601; t=1713341539; x=1713946339;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=BuvMTKrS538OQBDa2jdh/t6qnPEHbqMc8PN+mILzuvs=;
-        b=wbIyLFyaZajv6e3kAGT2Jtvhz26KpedOfWc4gdu60jcWTY73uaYXyUcuxpnQE88VJx
-         V1x4xE4YNAcN39oU+FaL68w01U9ba5Ay5q76M3/H1mbG0DTB7IqhgjFeyKKIaVukE/nd
-         hVEHxLTJF5Bfnow/0jtHJFRGIKGmGRYNpeGcbfZUJafJfkXmUFETDJ/4jl+T6F/tJuUC
-         Bj+sAUT21aF+QA8pN8WKd13ZCo2GfH6INiUXzof/v8f+jtlf483jA09PqGTUAi8C6AqU
-         EPGO/ynvmYNagzgEl9Y9WK5aaXqK5AxsCsp2pZ7IwWEktPrm4k3r9lT7tH/r7yYCjiyg
-         9a0Q==
-X-Forwarded-Encrypted: i=1; AJvYcCX6rBJMIRT242r1MH4fYVJX4eWzt38E5iGtnIWOAcO81lqng+CqhazzBpESYxdBmQIwrWzghcF14A71zuUc997UjZxgjwTCtwiUIGzldRGVspi+
-X-Gm-Message-State: AOJu0YwO9qtHu91D9XY3ZnOG3WgBGxhXJXfv9bazAQDUdOhCSCTeM8KY
-	yssYG7VF1MQyYZ25vtptV2uwn/6+HGofkALk8+RrA2wOt1gwGVecyAfBvCNPAZ4=
-X-Google-Smtp-Source: AGHT+IF9QNj2+LEOTDvCsMmUjHTc38pjE+FDvplPR3KiswRdx9pL2ELeUrxLu0thmtQsPq4SfA0PEQ==
-X-Received: by 2002:a17:906:a016:b0:a52:4d96:85e with SMTP id p22-20020a170906a01600b00a524d96085emr6795036ejy.53.1713341214788;
-        Wed, 17 Apr 2024 01:06:54 -0700 (PDT)
+        bh=TzkbbRIO2QimJ8RWbkwCZ+K7gIC0TeXOrUoZh+Yj+po=;
+        b=w8Diz8MFn5LsiyIl7z0rT4L1arBsibVEoXvMhyB0j+Q5KVkoRtLvMU+R1WxteVeagP
+         34hSeQx8qDQuRjNkhfJWBq1lSM8qxk3AjxGvY87Ehgjkg5X4XLNxuop8tbz6YtlUxZ6S
+         +uROpNT4YnXoDuByPg7VlIqTW0/CpXZzp7JuJZE855ONklbM6oozO8HP9s7rJSo4AgeI
+         YaTAsSCAg5IGRVMnpOto7aHTIesf5rfQ0YaBiT5l4Ymcp/2jzvjGLGdmtq9kwHp/pVM6
+         PaHwJqto+RPYvf4unLKUOhjFJHDlb5BN1U/6XI9gB3+TGS9f4WPbIOL9QMxALfG8cZqB
+         L23w==
+X-Forwarded-Encrypted: i=1; AJvYcCWjqaUKCuWQYHJM23kUoGLYdt+l4p0GOP/uanjD+HvGOQQJiBssT+FQDmRTip2quMIPJquAgz3Ki9iqf+/9JgDpROtwFGw6pj0ZQZ/hUbfDj4mC
+X-Gm-Message-State: AOJu0Yz+qJiThQPqPsCfVO5AJhmZTK3SH/vxac0IDg5eVHdJ2y4avqg1
+	eVm8DR2bQKxelDN3aFY4UsIFBc8E7qJ73xuERSRHK1lFLVhKnXDMY57wy6wYvJg=
+X-Google-Smtp-Source: AGHT+IH4Ux+OgM8GODN1EjrwY/h8hAJyaOMv9iN+0tmp9IOucYOjlUfi/JOumwmy4S2/VC/nm5QgBQ==
+X-Received: by 2002:a05:6512:1106:b0:518:9183:864f with SMTP id l6-20020a056512110600b005189183864fmr15160417lfg.34.1713341538799;
+        Wed, 17 Apr 2024 01:12:18 -0700 (PDT)
 Received: from [192.168.1.172] ([93.5.22.158])
-        by smtp.gmail.com with ESMTPSA id cx10-20020a170906c80a00b00a51b5282837sm7852622ejb.15.2024.04.17.01.06.52
+        by smtp.gmail.com with ESMTPSA id u10-20020aa7db8a000000b005700ef75274sm4950049edt.33.2024.04.17.01.12.16
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 17 Apr 2024 01:06:54 -0700 (PDT)
-Message-ID: <cd5dcc90-bd34-40d5-af79-4943883411ad@baylibre.com>
-Date: Wed, 17 Apr 2024 10:06:51 +0200
+        Wed, 17 Apr 2024 01:12:18 -0700 (PDT)
+Message-ID: <5c2a1b27-5602-461f-abe2-1b65f8245d8f@baylibre.com>
+Date: Wed, 17 Apr 2024 10:12:16 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 11/18] dt-bindings: pwm: mediatek,pwm-disp: add
- power-domains property
+Subject: Re: [PATCH v2 00/18] Add display support for the MT8365-EVK board
 To: =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
 Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
  Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
@@ -86,18 +85,18 @@ Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
  Will Deacon <will@kernel.org>, dri-devel@lists.freedesktop.org,
  linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-pwm@vger.kernel.org, linux-clk@vger.kernel.org
+ linux-pwm@vger.kernel.org, linux-clk@vger.kernel.org,
+ Fabien Parent <fparent@baylibre.com>
 References: <20231023-display-support-v2-0-33ce8864b227@baylibre.com>
- <20231023-display-support-v2-11-33ce8864b227@baylibre.com>
- <22yeoik77sdhmg43odjftzjn2douq74zhxwy6qx3hsrvr53r5e@7w3f3zbgxult>
+ <afetelidcystq4avtmfcvf6h4l5zdthwozwbhjica6jjybkiln@oxx2fqk65psx>
 Content-Language: en-US
 From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <22yeoik77sdhmg43odjftzjn2douq74zhxwy6qx3hsrvr53r5e@7w3f3zbgxult>
+In-Reply-To: <afetelidcystq4avtmfcvf6h4l5zdthwozwbhjica6jjybkiln@oxx2fqk65psx>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240417_010713_595730_B62836BB 
-X-CRM114-Status: GOOD (  12.65  )
+X-CRM114-CacheID: sfid-20240417_011221_380115_A11EF2C9 
+X-CRM114-Status: GOOD (  11.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,27 +113,28 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 17/04/2024 10:01, Uwe Kleine-König wrote:
+On 17/04/2024 09:58, Uwe Kleine-König wrote:
 > Hello,
 > 
-> On Tue, Apr 16, 2024 at 05:53:12PM +0200, Alexandre Mergnat wrote:
->> According to the Mediatek MT8365 datasheet, the display PWM block has
->> a power domain.
->>
->> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+> On Tue, Apr 16, 2024 at 05:53:01PM +0200, Alexandre Mergnat wrote:
+>> Alexandre Mergnat (16):
+>>        [...]
+>>        dt-bindings: pwm: mediatek,pwm-disp: add power-domains property
+>>        dt-bindings: pwm: mediatek,pwm-disp: add compatible for mt8365 SoC
+>> [...]
+>> base-commit: 890c94ce8a456aa4d7ead5f5fd2603b98dfe7b7e
+>> change-id: 20231023-display-support-c6418b30e419
 > 
-> I already pointed that out in reply to the cover letter, so just to make
-> it more easily to spot for people considering to apply this patch:
+> I cannot find 890c94ce8a456aa4d7ead5f5fd2603b98dfe7b7e, neither in next
+> nor in stable nor in drm-misc nor in Linus' repository.
 > 
-> This is already fixed in next.
+> For sure it's not based on next, because otherwise you'd have noticed
+> that the power-domains property is already documented there. (Currently
+> as fb7c3d8ba039df877886fd457538d8b24ca9c84b.)
+
+You're right, this V2 is based on v6.9-rc3
+
 > 
-
-Hello,
-Sorry I've misunderstood the previous message.
-I will remove this patch for the next revision and notify it in the cover letter.
-
-Thanks
-
 > Best regards
 > Uwe
 > 
