@@ -4,66 +4,140 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C633AC4345F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Apr 2024 12:03:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE410C4345F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Apr 2024 12:58:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JqUxpmUqpZwb93aWIdk8nK8jsHAciW5UzOnZrGBCZHY=; b=IBY3zhAZHogiWEE8B6X9d9DX0s
-	krDyGU2LfMTgItAYewhBouw1SnmWOb8NIFAicDYKBdB6jp7nbHyfF81At/32Li9tzvW2MCB+2yBQO
-	KtwF1EwWmLR15U4Axp9O5wJQUPfsnm8hM6/ZJIJxzykbHRh79VGm7+G1+LrZyh8mFQViezRjqAJU7
-	o0eOEwDFHaERReDzEk8gT4GJ5NCw5Ws2K6V+sHBAlYhnSIlXy04h4Ouf/D9ivyAkav20l/VGYAYel
-	VbpIBtAUbP+kwDLA2aspwfK1si0Swgu0svbuhpsL4TTEdO8oJUxsla7lhfaiTPgYPOCiGNFy5V/7r
-	vH2JrUpQ==;
+	bh=Oy6ydHY6pQ8DYm8xK8PeLsM+pd6WltoQh0mGRUSj86E=; b=aEu107bpnQ+xyefUxk5y4ZM6WG
+	/AFGcqtMazWTJg6+1xRmrDPxH6r4ISjFho+nm/R4Rmht9CJdoivkuJI/x7+e7RfInw6WEe5i+/X59
+	DRjqpJPlASIUxkF7GcJ9eN5TcCS9fqWXg4TyBXza+FgPDrU8M9LpDLT3wJc3FgvOn76LF8J/76/QQ
+	C2+qORiVOTKnpel8g52MK7z962+p21DsbvUu8wGyBIZtc1bZPS6CHd1UZX36mxFxbUIH2oYo4UL2T
+	WeYAB5Z2YCcjK9L5uf4xbVOhUaEUIniQIPQum2ALwDEgtiK+99HRYe8cbWjr0SB70EogJxinfww/U
+	z6tlsBgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rx40i-0000000Frzz-1U1u;
-	Wed, 17 Apr 2024 12:03:32 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1rx4rs-0000000G0ZF-3i1X;
+	Wed, 17 Apr 2024 12:58:28 +0000
+Received: from mx08-00178001.pphosted.com ([91.207.212.93] helo=mx07-00178001.pphosted.com)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rx40a-0000000Frxt-2DLz;
-	Wed, 17 Apr 2024 12:03:30 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 8D457614B8;
-	Wed, 17 Apr 2024 12:03:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 43E73C072AA;
-	Wed, 17 Apr 2024 12:03:21 +0000 (UTC)
-Authentication-Results: smtp.kernel.org;
-	dkim=pass (1024-bit key) header.d=zx2c4.com header.i=@zx2c4.com header.b="OHlXNPsx"
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=zx2c4.com; s=20210105;
-	t=1713355399;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=JqUxpmUqpZwb93aWIdk8nK8jsHAciW5UzOnZrGBCZHY=;
-	b=OHlXNPsxgNeFaA7jrH1Br0FTvd5MlBsolxUqxkTmXnoRRp4LoCKRSh9Wpaa1uSsBNth0bj
-	NruZAmbZY/cwQCmnCYruRcp03ibKhQDImJPVkfT8APA8oexA++D+sa6nAU9aQHKv1vzp5C
-	7tlfLqobpdk11Z41U8yny4pUzFmyWTg=
-Received: by mail.zx2c4.com (ZX2C4 Mail Server) with ESMTPSA id c1243d44 (TLSv1.3:TLS_AES_256_GCM_SHA384:256:NO);
-	Wed, 17 Apr 2024 12:03:17 +0000 (UTC)
-From: "Jason A. Donenfeld" <Jason@zx2c4.com>
-To: guoyong.wang@mediatek.com,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	wsd_upstream@mediatek.com,
-	Theodore Ts'o <tytso@mit.edu>
-Cc: "Jason A. Donenfeld" <Jason@zx2c4.com>,
-	stable@vger.kernel.org
-Subject: [PATCH] random: handle creditable entropy from atomic process context
-Date: Wed, 17 Apr 2024 14:01:11 +0200
-Message-ID: <20240417120217.3814215-2-Jason@zx2c4.com>
-In-Reply-To: <20240402081214.2723-1-guoyong.wang@mediatek.com>
-References: <20240402081214.2723-1-guoyong.wang@mediatek.com>
+	id 1rx4rq-0000000G0Wb-1XnK;
+	Wed, 17 Apr 2024 12:58:28 +0000
+Received: from pps.filterd (m0046661.ppops.net [127.0.0.1])
+	by mx07-00178001.pphosted.com (8.17.1.24/8.17.1.24) with ESMTP id 43HClsCK003624;
+	Wed, 17 Apr 2024 14:57:28 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=foss.st.com; h=
+	message-id:date:mime-version:subject:to:cc:references:from
+	:in-reply-to:content-type:content-transfer-encoding; s=
+	selector1; bh=Oy6ydHY6pQ8DYm8xK8PeLsM+pd6WltoQh0mGRUSj86E=; b=or
+	tz7J2eIpRjwTS6nxsow94Im5O+PJ8pyQKEzgQC9x+TEQyuiVxirXsxSqUmOFi5z6
+	j9JuaMCVAueB7+ptBoHkZGcb+q5wgjo9DutZh3e/xcZNv9ir2WSLw5Tx3J4ORSCe
+	EA73ib1bb2NSzUytaI+3EJVy3k1Q1gI0fSP3IQEsjwu2YJe3ZCZaDZ9kzaEBLiHp
+	IczYev9vu0LgIHwFgY0toURY1M4EinAS1+idFQEUfhYnNuSSXU5+tp4rEI3eP1EF
+	QiCs84WlUXA+URlFhvVZDuDiVG8dZypP1QlE91pV8tkChGQWA45K8voZ9I1+fYd5
+	RRPfPDBlEjqpZ5kxlIMg==
+Received: from beta.dmz-ap.st.com (beta.dmz-ap.st.com [138.198.100.35])
+	by mx07-00178001.pphosted.com (PPS) with ESMTPS id 3xgecyea3g-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 17 Apr 2024 14:57:28 +0200 (MEST)
+Received: from euls16034.sgp.st.com (euls16034.sgp.st.com [10.75.44.20])
+	by beta.dmz-ap.st.com (STMicroelectronics) with ESMTP id E01244002D;
+	Wed, 17 Apr 2024 14:57:10 +0200 (CEST)
+Received: from Webmail-eu.st.com (shfdag1node1.st.com [10.75.129.69])
+	by euls16034.sgp.st.com (STMicroelectronics) with ESMTP id E51CB214D29;
+	Wed, 17 Apr 2024 14:55:47 +0200 (CEST)
+Received: from [10.130.72.241] (10.130.72.241) by SHFDAG1NODE1.st.com
+ (10.75.129.69) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.27; Wed, 17 Apr
+ 2024 14:55:46 +0200
+Message-ID: <ea60a9e8-6240-4a0a-a224-e132b67160b1@foss.st.com>
+Date: Wed, 17 Apr 2024 14:55:45 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 22/35] media: i2c: st-mipid02: Use the correct div
+ function
+To: Ricardo Ribalda <ribalda@chromium.org>,
+        Martin Tuma
+	<martin.tuma@digiteqautomotive.com>,
+        Mauro Carvalho Chehab
+	<mchehab@kernel.org>,
+        Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+        Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+        Hugues Fruchet
+	<hugues.fruchet@foss.st.com>,
+        Alain Volmat <alain.volmat@foss.st.com>,
+        Maxime
+ Coquelin <mcoquelin.stm32@gmail.com>,
+        Alexandre Torgue
+	<alexandre.torgue@foss.st.com>,
+        Paul Kocialkowski
+	<paul.kocialkowski@bootlin.com>,
+        Greg Kroah-Hartman
+	<gregkh@linuxfoundation.org>,
+        Chen-Yu Tsai <wens@csie.org>,
+        Jernej Skrabec
+	<jernej.skrabec@gmail.com>,
+        Samuel Holland <samuel@sholland.org>,
+        Sakari
+ Ailus <sakari.ailus@linux.intel.com>,
+        Thierry Reding
+	<thierry.reding@gmail.com>,
+        Jonathan Hunter <jonathanh@nvidia.com>,
+        Sowjanya
+ Komatineni <skomatineni@nvidia.com>,
+        Luca Ceresoli
+	<luca.ceresoli@bootlin.com>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        Hans
+ Verkuil <hverkuil@xs4all.nl>, Sergey Kozlov <serjk@netup.ru>,
+        Abylay Ospan
+	<aospan@netup.ru>,
+        Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+        Dmitry
+ Osipenko <digetx@gmail.com>,
+        Stanimir Varbanov
+	<stanimir.k.varbanov@gmail.com>,
+        Vikash Garodia <quic_vgarodia@quicinc.com>,
+        Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
+        Bjorn Andersson
+	<andersson@kernel.org>,
+        Konrad Dybcio <konrad.dybcio@linaro.org>,
+        Sylvain
+ Petinot <sylvain.petinot@foss.st.com>,
+        Jacopo Mondi
+	<jacopo+renesas@jmondi.org>,
+        Kieran Bingham
+	<kieran.bingham+renesas@ideasonboard.com>,
+        Laurent Pinchart
+	<laurent.pinchart+renesas@ideasonboard.com>,
+        =?UTF-8?Q?Niklas_S=C3=B6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
+        Pavel Machek <pavel@ucw.cz>
+CC: <linux-media@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+        <linux-stm32@st-md-mailman.stormreply.com>,
+        <linux-arm-kernel@lists.infradead.org>,
+        <linux-staging@lists.linux.dev>, <linux-sunxi@lists.linux.dev>,
+        <linux-tegra@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+        <linux-arm-msm@vger.kernel.org>
+References: <20240415-fix-cocci-v1-0-477afb23728b@chromium.org>
+ <20240415-fix-cocci-v1-22-477afb23728b@chromium.org>
+Content-Language: en-US
+From: Benjamin Mugnier <benjamin.mugnier@foss.st.com>
+In-Reply-To: <20240415-fix-cocci-v1-22-477afb23728b@chromium.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.130.72.241]
+X-ClientProxiedBy: SHFCAS1NODE1.st.com (10.75.129.72) To SHFDAG1NODE1.st.com
+ (10.75.129.69)
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.1011,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2024-04-17_10,2024-04-16_01,2023-05-22_02
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240417_050324_781980_BD6C738F 
-X-CRM114-Status: GOOD (  22.06  )
+X-CRM114-CacheID: sfid-20240417_055826_812663_88602265 
+X-CRM114-Status: GOOD (  14.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,96 +152,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The entropy accounting changes a static key when the RNG has
-initialized, since it only ever initializes once. Static key changes,
-however, cannot be made from atomic context, so depending on where the
-last creditable entropy comes from, the static key change might need to
-be deferred to a worker.
+Hi Ricardo,
 
-Previously the code used the execute_in_process_context() helper
-function, which accounts for whether or not the caller is
-in_interrupt(). However, that doesn't account for the case where the
-caller is actually in process context but is holding a spinlock.
+Thanks a lot.
+Reviewed-by: Benjamin Mugnier <benjamin.mugnier@foss.st.com>
 
-This turned out to be the case with input_handle_event() in
-drivers/input/input.c contributing entropy:
+On 4/15/24 21:34, Ricardo Ribalda wrote:
+> link_freq does not fit in 32 bits.
+> 
+> Found by cocci:
+> drivers/media/i2c/st-mipid02.c:329:1-7: WARNING: do_div() does a 64-by-32 division, please consider using div64_s64 instead.
+> 
+> Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
+> ---
+>  drivers/media/i2c/st-mipid02.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/media/i2c/st-mipid02.c b/drivers/media/i2c/st-mipid02.c
+> index f250640729ca..93a40bfda1af 100644
+> --- a/drivers/media/i2c/st-mipid02.c
+> +++ b/drivers/media/i2c/st-mipid02.c
+> @@ -326,7 +326,7 @@ static int mipid02_configure_from_rx_speed(struct mipid02_dev *bridge,
+>  	}
+>  
+>  	dev_dbg(&client->dev, "detect link_freq = %lld Hz", link_freq);
+> -	do_div(ui_4, link_freq);
+> +	ui_4 = div64_s64(ui_4, link_freq);
+>  	bridge->r.clk_lane_reg1 |= ui_4 << 2;
+>  
+>  	return 0;
+> 
 
-  [<ffffffd613025ba0>] die+0xa8/0x2fc
-  [<ffffffd613027428>] bug_handler+0x44/0xec
-  [<ffffffd613016964>] brk_handler+0x90/0x144
-  [<ffffffd613041e58>] do_debug_exception+0xa0/0x148
-  [<ffffffd61400c208>] el1_dbg+0x60/0x7c
-  [<ffffffd61400c000>] el1h_64_sync_handler+0x38/0x90
-  [<ffffffd613011294>] el1h_64_sync+0x64/0x6c
-  [<ffffffd613102d88>] __might_resched+0x1fc/0x2e8
-  [<ffffffd613102b54>] __might_sleep+0x44/0x7c
-  [<ffffffd6130b6eac>] cpus_read_lock+0x1c/0xec
-  [<ffffffd6132c2820>] static_key_enable+0x14/0x38
-  [<ffffffd61400ac08>] crng_set_ready+0x14/0x28
-  [<ffffffd6130df4dc>] execute_in_process_context+0xb8/0xf8
-  [<ffffffd61400ab30>] _credit_init_bits+0x118/0x1dc
-  [<ffffffd6138580c8>] add_timer_randomness+0x264/0x270
-  [<ffffffd613857e54>] add_input_randomness+0x38/0x48
-  [<ffffffd613a80f94>] input_handle_event+0x2b8/0x490
-  [<ffffffd613a81310>] input_event+0x6c/0x98
-
-According to Guoyong, it's not really possible to refactor the various
-drivers to never hold a spinlock there. And in_atomic() isn't reliable.
-
-So, rather than trying to be too fancy, just punt the change in the
-static key to a workqueue always. There's basically no drawback of doing
-this, as the code already needed to account for the static key not
-changing immediately, and given that it's just an optimization, there's
-not exactly a hurry to change the static key right away, so deferal is
-fine.
-
-Reported-by: Guoyong Wang <guoyong.wang@mediatek.com>
-Cc: stable@vger.kernel.org
-Fixes: f5bda35fba61 ("random: use static branch for crng_ready()")
-Signed-off-by: Jason A. Donenfeld <Jason@zx2c4.com>
----
-Guoyong- can you test this and tell me whether it fixes the problem you
-were seeing? If so, I'll try to get this sent up for 6.9. -Jason
-
- drivers/char/random.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/char/random.c b/drivers/char/random.c
-index 456be28ba67c..2597cb43f438 100644
---- a/drivers/char/random.c
-+++ b/drivers/char/random.c
-@@ -702,7 +702,7 @@ static void extract_entropy(void *buf, size_t len)
- 
- static void __cold _credit_init_bits(size_t bits)
- {
--	static struct execute_work set_ready;
-+	static DECLARE_WORK(set_ready, crng_set_ready);
- 	unsigned int new, orig, add;
- 	unsigned long flags;
- 
-@@ -718,8 +718,8 @@ static void __cold _credit_init_bits(size_t bits)
- 
- 	if (orig < POOL_READY_BITS && new >= POOL_READY_BITS) {
- 		crng_reseed(NULL); /* Sets crng_init to CRNG_READY under base_crng.lock. */
--		if (static_key_initialized)
--			execute_in_process_context(crng_set_ready, &set_ready);
-+		if (static_key_initialized && system_unbound_wq)
-+			queue_work(system_unbound_wq, &set_ready);
- 		atomic_notifier_call_chain(&random_ready_notifier, 0, NULL);
- 		wake_up_interruptible(&crng_init_wait);
- 		kill_fasync(&fasync, SIGIO, POLL_IN);
-@@ -890,8 +890,8 @@ void __init random_init(void)
- 
- 	/*
- 	 * If we were initialized by the cpu or bootloader before jump labels
--	 * are initialized, then we should enable the static branch here, where
--	 * it's guaranteed that jump labels have been initialized.
-+	 * or workqueues are initialized, then we should enable the static
-+	 * branch here, where it's guaranteed that these have been initialized.
- 	 */
- 	if (!static_branch_likely(&crng_is_ready) && crng_init >= CRNG_READY)
- 		crng_set_ready(NULL);
 -- 
-2.44.0
+Regards,
 
+Benjamin
 
