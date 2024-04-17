@@ -4,82 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7ECD5C4345F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Apr 2024 21:18:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1338AC4345F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Apr 2024 22:06:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MBkaCbNjydmVkpZXUhiI4uQ6IPkbRea+BjBhJXBTlwg=; b=iE0rRIskE12lTE6ykk8x/LpIQw
-	T00yqFWu9Ar9l/sjyKIF0XObnn6ApQf8UOy35U+6n5Tm1nNwlgzgreuP6lGFU9deq3VUw/CmO19Xb
-	VpRa+X+kgydQuEnxgji+cy3h6eXkn18+5BfeZ/58ehii1Ogvf9GAsPJVfAr2dVZImFEOgog6/V/px
-	HKDaKsL6NugGCnNKYqPEpC8RBX96bNrHZsJuHyzaQ04uHhCuUdMw3FkVr9/PKRKCXN44NPvd+tikB
-	hDH55dj3qlFX6mxtUx15J/OvzglQpCtBu8av9ZjOVjf2oJa68Z8wQpCfsbVds7cSdfELy05zRuu2A
-	lcyvIJCg==;
+	bh=Q7ldUx+OiEE/BKyVWGLxdXdTiaa9Hhv5rAdPf3GyNeo=; b=bshrLUlWUC8HG0Pk5nBXG94sZt
+	M4eip9SbXj0kKshK5Sfd+bs/u6bBVztS6KxZq808sDFNU5hNc1gcwqcKo9fWlLOiViSKUFYU+UUFB
+	ZMEt8U7MQq2O1ndJoPXpj8fiNT/8UBwkpeKIw+mMQ5id+nn+0TP3DGXmibSw0aWw8+bGqfwRl/Vm9
+	VnfUqhf8OoxHlWObqSAmnTsAmrmhNgrrAFotuMK1s0xd7HhrJr6RtA3rrGyl948mk5OMi8Cq9k126
+	v7LSArUOW9OGzkLXcjIngQafI/nVboYbqvSXBsnN2WsZ6iJ+yhLujZykvINo+3PWv6r93D0IaG/uW
+	DStYzceg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxCfT-000000003Jb-0BNT;
-	Wed, 17 Apr 2024 21:18:11 +0000
-Received: from mail-lj1-x231.google.com ([2a00:1450:4864:20::231])
+	id 1rxDQd-00000000AKx-3vKj;
+	Wed, 17 Apr 2024 22:06:55 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxCfQ-000000003IS-08I7
+	id 1rxDQZ-00000000AKB-45Dv
 	for linux-mediatek@lists.infradead.org;
-	Wed, 17 Apr 2024 21:18:09 +0000
-Received: by mail-lj1-x231.google.com with SMTP id 38308e7fff4ca-2db2f6cb312so3810261fa.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 17 Apr 2024 14:18:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1713388684; x=1713993484; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=MBkaCbNjydmVkpZXUhiI4uQ6IPkbRea+BjBhJXBTlwg=;
-        b=ULwl/U8psn3nIUpdHBrRwdPlGunZ5jOOAP0p5bbLG9tiBftu6ZTecbGm6xz4prjWYZ
-         bXG+4T4LTOjj8TR3ADSdpn3n1647pcDWuqshsQeSIVrfuElyRAKmqN3tZVcvgFSc4/Ec
-         vvpnhxVTZusRbChPaiYEM53H5tcwYfcOI3Tf5JrOnlfaa192wTeeh1UYQfTM1roa4aeV
-         7dq9B/Q/bhCGtWGJOtW7lhSPcRfw7P2PBX2PRlVyZmZ4hgKxpa9oWaowSA0WT0qK5R5C
-         JEIVgMw/MBoIx6tE7LTZErMGlQhjGWCOLb5va1xYx+DCeFVrItTurXnIgyadncF77Z8+
-         Rhmw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713388684; x=1713993484;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=MBkaCbNjydmVkpZXUhiI4uQ6IPkbRea+BjBhJXBTlwg=;
-        b=djWO/ZUYRArC2J8y+wl9XWG/UYqox8IC3Gre2yckm8zfWQopKejGjiHgfGhXQvXwAI
-         WI2jSkd4Tm+3hE8xPq+H/nE56XucBQZbKStLxS1MrWjlUGfwiH9e7RT5jFO1QCswT1Py
-         MYnWTA6vYvEdv05VMqVawgur6ggvH0bO0WwWBGfDKyiRADcGDQSpjgfd+2i2OOFHGWHZ
-         G0e/LJbmHVibr0lBl8BuU2g7aByQRWsAGyQyZdqu4LVgVzDjDo2mKzMy+K1SrZ6ikObz
-         MaDkk6fRqhHJ647oqtWNevHU1pxYyCHXdwTktR675AxsHD2k4rrpuCjCswBM/2Sfad05
-         98bA==
-X-Forwarded-Encrypted: i=1; AJvYcCVvlYMG+lRRXgveKzcz0PKdnwLcyGmMPW92QaNOBeGeIDfPUoqk2BuRKxmib1OsHZgXCI/A+5XrF5Ckh9o2FWTN/YjbFIDWIdgwfTrQaw0gk75f
-X-Gm-Message-State: AOJu0YyTVeyitN7oAU2zjX4+rLMsz/am9oRh0ZmUYu7OkG1hL5kRMnmV
-	T0iMaFZ9UBI/nqctYxgUPr1z6j1cj2Tsiapk1NnhV5kOiJdegXGg7gI3QpXyDq7QRywGEf3NZ0c
-	k6pdzJ8U7ofyIsxy3kOY7GHKUkt4=
-X-Google-Smtp-Source: AGHT+IFtlAXpGYCpv+bg5gy1IxslsA0lmrPId3jvSe88OrBfqoz0X5D3GoSobh3u3Kz2TE2SrAf/xB9p3nkmG0nVIiw=
-X-Received: by 2002:a2e:92d7:0:b0:2d8:6a04:3bcd with SMTP id
- k23-20020a2e92d7000000b002d86a043bcdmr312813ljh.3.1713388683280; Wed, 17 Apr
- 2024 14:18:03 -0700 (PDT)
+	Wed, 17 Apr 2024 22:06:53 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 9D18BCE13AA
+	for <linux-mediatek@lists.infradead.org>; Wed, 17 Apr 2024 22:06:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D9C84C072AA
+	for <linux-mediatek@lists.infradead.org>; Wed, 17 Apr 2024 22:06:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1713391606;
+	bh=5XaeWxA4Jl5FBChMeTzKurhmldZUlFGw1XdsqOV+zX4=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=fKfqMEhjWoDwvLSpUD1cWB7YIf+LJEKHxvASNjKDRDiPiR0TZOqxmH/6CYMSVUv1T
+	 /acJMtTHNb2IM8JgHnha20vlY21DudZPi4jIKNx8cSMpU2sp3FpyQXSdrs4mYjhwd9
+	 03GnfYJTumNkAEeQzHbOSHq5NX9CWhbiuQRVSTLDw/O5DnLYaSmbUP4r1z8ejhk9I9
+	 85WfNqZJwZjYnenvNCRC4YdMi1HgyHhc0UUNDRBCD1E0NH/+H5uzN4Q4c26Qw/9kQc
+	 gSeUUV2JwvvnVicDGz+ngFfBSimQQq+Ppd2NLOnPQqyPkDMo7AYrZCENAtN9k+cNpT
+	 uevTC2vznGkFA==
+Received: by mail-ed1-f50.google.com with SMTP id 4fb4d7f45d1cf-56e6583942dso45968a12.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 17 Apr 2024 15:06:46 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCV6sD6N+VFTdzfDOY3ZdMhcqjVo/L1x15kr+OAcXTnX5CsyL2pds4GyEeeGVPZTjs3AvxTRAW8PkmSLbZVSAAaRCAswKjniTLglTLT1R2oEW8kk
+X-Gm-Message-State: AOJu0YybDih6HNyT5t52dDZ8aMqGVfc3nfUF/qRe5VgIt2JhVZDv+UOX
+	N6AJW9ld0HDlM1XeauicmSpve2e6Vt5evU93PIk43Ap51pLLAQ14AO6PWEfcaDXjD31YWyUD8Z7
+	VB6eAkGSqDDZr7Lo5g8KQqBPsI5s=
+X-Google-Smtp-Source: AGHT+IGYUftK0j7Vm9dBPhmoznJc4AxgNaVX+GcamySNv0VrWTPeTbrdM9zdn+sAZn9mOxITNiG5I09RbKHOvqeLqbg=
+X-Received: by 2002:a17:906:4916:b0:a51:cc51:7931 with SMTP id
+ b22-20020a170906491600b00a51cc517931mr416508ejq.5.1713391605272; Wed, 17 Apr
+ 2024 15:06:45 -0700 (PDT)
 MIME-Version: 1.0
-References: <20240412095713.25641-1-hao.qin@mediatek.com>
-In-Reply-To: <20240412095713.25641-1-hao.qin@mediatek.com>
-From: Luiz Augusto von Dentz <luiz.dentz@gmail.com>
-Date: Wed, 17 Apr 2024 17:17:50 -0400
-Message-ID: <CABBYNZJ-rvMuqHjFmQuxhmWv_K5fGFktAk-CeZfx8rw36L-Etg@mail.gmail.com>
-Subject: Re: [PATCH] Bluetooth: btusb: mediatek: Support auto revert for MT7922
-To: Hao Qin <hao.qin@mediatek.com>
-Cc: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg <johan.hedberg@gmail.com>, 
-	Sean Wang <sean.wang@mediatek.com>, Deren Wu <deren.Wu@mediatek.com>, 
-	Aaron Hou <aaron.hou@mediatek.com>, Chris Lu <chris.lu@mediatek.com>, 
-	Steve Lee <steve.lee@mediatek.com>, linux-bluetooth <linux-bluetooth@vger.kernel.org>, 
-	linux-kernel <linux-kernel@vger.kernel.org>, 
-	linux-mediatek <linux-mediatek@lists.infradead.org>
+References: <608cc2bb1c10c2f53a6bf26711bf49fe2c491e59.1712806947.git.quan.zhou@mediatek.com>
+In-Reply-To: <608cc2bb1c10c2f53a6bf26711bf49fe2c491e59.1712806947.git.quan.zhou@mediatek.com>
+From: Sean Wang <sean.wang@kernel.org>
+Date: Wed, 17 Apr 2024 15:06:32 -0700
+X-Gmail-Original-Message-ID: <CAGp9LzqVGHGriqpC-NTnOtvNNz5o-hXD=HcTCptHfXBD9bnfPQ@mail.gmail.com>
+Message-ID: <CAGp9LzqVGHGriqpC-NTnOtvNNz5o-hXD=HcTCptHfXBD9bnfPQ@mail.gmail.com>
+Subject: Re: [PATCH v2] wifi: mt76: mt7921e: add LED control support
+To: Quan Zhou <quan.zhou@mediatek.com>
+Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, Sean Wang <sean.wang@mediatek.com>, 
+	Deren Wu <Deren.Wu@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, 
+	Shayne Chen <shayne.chen@mediatek.com>, linux-wireless <linux-wireless@vger.kernel.org>, 
+	linux-mediatek <linux-mediatek@lists.infradead.org>, Shengxi Xu <shengxi.xu@mediatek.com>, 
+	Hao Zhang <hao.zhang@mediatek.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240417_141808_097758_421A58BE 
-X-CRM114-Status: GOOD (  14.37  )
+X-CRM114-CacheID: sfid-20240417_150652_408847_03F5B1EF 
+X-CRM114-Status: GOOD (  23.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,66 +85,191 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+HI Quan,
 
-On Fri, Apr 12, 2024 at 5:57=E2=80=AFAM Hao Qin <hao.qin@mediatek.com> wrot=
-e:
+On Wed, Apr 10, 2024 at 11:00=E2=80=AFPM Quan Zhou <quan.zhou@mediatek.com>=
+ wrote:
 >
-> Add support for auto reverting MT7922 during reset process.
-
-Need some more information of what auto reverting means in this
-context and what problem does it solves?
-
+> From: Hao Zhang <hao.zhang@mediatek.com>
 >
-> Signed-off-by: Hao Qin <hao.qin@mediatek.com>
+> Introduce wifi LED switch control, add flow to Control a wifi
+> gpio pin based on the status of WIFI radio, if the pin is connected
+> to an LED, the LED will indicate the status of the WiFi radio.
+>
+> Signed-off-by: Hao Zhang <hao.zhang@mediatek.com>
+> Co-developed-by: Quan Zhou <quan.zhou@mediatek.com>
+> Signed-off-by: Quan Zhou <quan.zhou@mediatek.com>
 > ---
->  drivers/bluetooth/btusb.c | 14 +++++++++++++-
->  1 file changed, 13 insertions(+), 1 deletion(-)
+> v2:
+>  fix to avoid wake device when Hardware interface not pcie
+> ---
+>  .../wireless/mediatek/mt76/mt76_connac_mcu.h  |  1 +
+>  .../net/wireless/mediatek/mt76/mt7921/main.c  | 27 ++++++++++++++++++-
+>  .../net/wireless/mediatek/mt76/mt7921/mcu.c   | 14 ++++++++++
+>  .../wireless/mediatek/mt76/mt7921/mt7921.h    |  5 ++++
+>  .../net/wireless/mediatek/mt76/mt7921/pci.c   |  8 +++++-
+>  5 files changed, 53 insertions(+), 2 deletions(-)
 >
-> diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-> index 4c0cc13adb47..0ad96ec8d31d 100644
-> --- a/drivers/bluetooth/btusb.c
-> +++ b/drivers/bluetooth/btusb.c
-> @@ -3032,7 +3032,16 @@ static int btusb_mtk_reset(struct hci_dev *hdev, v=
-oid *rst_data)
->         usb_kill_anchored_urbs(&data->tx_anchor);
->         mediatek =3D hci_get_priv(hdev);
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drive=
+rs/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+> index 836cc4d5b1d2..4c2de556dee1 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+> +++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+> @@ -1189,6 +1189,7 @@ enum {
+>         MCU_EXT_CMD_EFUSE_ACCESS =3D 0x01,
+>         MCU_EXT_CMD_RF_REG_ACCESS =3D 0x02,
+>         MCU_EXT_CMD_RF_TEST =3D 0x04,
+> +       MCU_EXT_CMD_ID_RADIO_ON_OFF_CTRL =3D 0x05,
+>         MCU_EXT_CMD_PM_STATE_CTRL =3D 0x07,
+>         MCU_EXT_CMD_CHANNEL_SWITCH =3D 0x08,
+>         MCU_EXT_CMD_SET_TX_POWER_CTRL =3D 0x11,
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/n=
+et/wireless/mediatek/mt76/mt7921/main.c
+> index ca36de34171b..ea6a113b7b36 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+> @@ -242,6 +242,15 @@ int __mt7921_start(struct mt792x_phy *phy)
 >
-> -       if (mediatek->dev_id =3D=3D 0x7925) {
-> +       if (mediatek->dev_id =3D=3D 0x7922) {
-> +               btusb_mtk_uhw_reg_read(data, MTK_BT_SUBSYS_RST, &val);
-> +               val |=3D 0x00002020;
-> +               btusb_mtk_uhw_reg_write(data, MTK_BT_SUBSYS_RST, val);
-> +               btusb_mtk_uhw_reg_write(data, MTK_EP_RST_OPT, 0x00010001)=
-;
-> +               btusb_mtk_uhw_reg_read(data, MTK_BT_SUBSYS_RST, &val);
-> +               val |=3D BIT(0);
-> +               btusb_mtk_uhw_reg_write(data, MTK_BT_SUBSYS_RST, val);
-> +               msleep(100);
-> +       } else if (mediatek->dev_id =3D=3D 0x7925) {
->                 btusb_mtk_uhw_reg_read(data, MTK_BT_RESET_REG_CONNV3, &va=
-l);
->                 val |=3D (1 << 5);
->                 btusb_mtk_uhw_reg_write(data, MTK_BT_RESET_REG_CONNV3, va=
-l);
-> @@ -3072,6 +3081,9 @@ static int btusb_mtk_reset(struct hci_dev *hdev, vo=
-id *rst_data)
->         if (err < 0)
->                 bt_dev_err(hdev, "Reset timeout");
->
-> +       if (mediatek->dev_id =3D=3D 0x7922)
-> +               btusb_mtk_uhw_reg_write(data, MTK_UDMA_INT_STA_BT, 0x0000=
-00FF);
+>         ieee80211_queue_delayed_work(mphy->hw, &mphy->mac_work,
+>                                      MT792x_WATCHDOG_TIME);
+> +       if (mt76_is_mmio(mphy->dev)) {
+
+I guess the led control MCU command is not limited to PCIe devices,
+they should be able to be extended even on MT7921 USB and SDIO
+devices, right ? if so, I think we can drop the MMIO limitation
+condition to support more scenarios and to make it easier to
+understand.
+
+> +               err =3D mt7921_mcu_radio_led_ctrl(phy->dev, EXT_CMD_RADIO=
+_LED_CTRL_ENABLE);
+> +               if (err)
+> +                       return err;
 > +
->         btusb_mtk_id_get(data, 0x70010200, &val);
->         if (!val)
->                 bt_dev_err(hdev, "Can't get device id, subsys reset fail.=
-");
+> +               err =3D mt7921_mcu_radio_led_ctrl(phy->dev, EXT_CMD_RADIO=
+_ON_LED);
+> +               if (err)
+> +                       return err;
+> +       }
+>
+>         return 0;
+>  }
+> @@ -259,6 +268,22 @@ static int mt7921_start(struct ieee80211_hw *hw)
+>         return err;
+>  }
+>
+> +static void mt7921_stop(struct ieee80211_hw *hw)
+> +{
+> +       struct mt792x_dev *dev =3D mt792x_hw_dev(hw);
+> +       int err =3D 0;
+> +
+> +       if (mt76_is_mmio(&dev->mt76)) {
+> +               mt792x_mutex_acquire(dev);
+> +               err =3D mt7921_mcu_radio_led_ctrl(dev, EXT_CMD_RADIO_OFF_=
+LED);
+> +               mt792x_mutex_release(dev);
+> +               if (err)
+> +                       return;
+> +       }
+> +
+> +       mt792x_stop(hw);
+> +}
+> +
+>  static int
+>  mt7921_add_interface(struct ieee80211_hw *hw, struct ieee80211_vif *vif)
+>  {
+> @@ -1372,7 +1397,7 @@ static void mt7921_mgd_complete_tx(struct ieee80211=
+_hw *hw,
+>  const struct ieee80211_ops mt7921_ops =3D {
+>         .tx =3D mt792x_tx,
+>         .start =3D mt7921_start,
+> -       .stop =3D mt792x_stop,
+> +       .stop =3D mt7921_stop,
+>         .add_interface =3D mt7921_add_interface,
+>         .remove_interface =3D mt792x_remove_interface,
+>         .config =3D mt7921_config,
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c b/drivers/ne=
+t/wireless/mediatek/mt76/mt7921/mcu.c
+> index 8b4ce32a2cd1..2ebf0ffe78d5 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+> @@ -606,6 +606,20 @@ int mt7921_run_firmware(struct mt792x_dev *dev)
+>  }
+>  EXPORT_SYMBOL_GPL(mt7921_run_firmware);
+>
+> +int mt7921_mcu_radio_led_ctrl(struct mt792x_dev *dev, u8 value)
+> +{
+> +       struct {
+> +               u8 ctrlid;
+> +               u8 rsv[3];
+> +       } __packed req =3D {
+> +               .ctrlid =3D value,
+> +       };
+> +
+> +       return mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD(ID_RADIO_ON_OFF_=
+CTRL),
+> +                               &req, sizeof(req), false);
+> +}
+> +EXPORT_SYMBOL_GPL(mt7921_mcu_radio_led_ctrl);
+> +
+>  int mt7921_mcu_set_tx(struct mt792x_dev *dev, struct ieee80211_vif *vif)
+>  {
+>         struct mt792x_vif *mvif =3D (struct mt792x_vif *)vif->drv_priv;
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h b/drivers=
+/net/wireless/mediatek/mt76/mt7921/mt7921.h
+> index 3016636d18c6..07023eb9e5b5 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
+> @@ -27,6 +27,10 @@
+>  #define MCU_UNI_EVENT_ROC  0x27
+>  #define MCU_UNI_EVENT_CLC  0x80
+>
+> +#define EXT_CMD_RADIO_LED_CTRL_ENABLE   0x1
+> +#define EXT_CMD_RADIO_ON_LED            0x2
+> +#define EXT_CMD_RADIO_OFF_LED           0x3
+> +
+>  enum {
+>         UNI_ROC_ACQUIRE,
+>         UNI_ROC_ABORT,
+> @@ -196,6 +200,7 @@ int mt7921_mcu_fw_log_2_host(struct mt792x_dev *dev, =
+u8 ctrl);
+>  void mt7921_mcu_rx_event(struct mt792x_dev *dev, struct sk_buff *skb);
+>  int mt7921_mcu_set_rxfilter(struct mt792x_dev *dev, u32 fif,
+>                             u8 bit_op, u32 bit_map);
+> +int mt7921_mcu_radio_led_ctrl(struct mt792x_dev *dev, u8 value);
+>
+>  static inline u32
+>  mt7921_reg_map_l1(struct mt792x_dev *dev, u32 addr)
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/ne=
+t/wireless/mediatek/mt76/mt7921/pci.c
+> index 0b69b225bc16..f768e9389ac6 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+> @@ -427,6 +427,10 @@ static int mt7921_pci_suspend(struct device *device)
+>         wait_event_timeout(dev->wait,
+>                            !dev->regd_in_progress, 5 * HZ);
+>
+> +       err =3D mt7921_mcu_radio_led_ctrl(dev, EXT_CMD_RADIO_OFF_LED);
+> +       if (err < 0)
+> +               goto restore_suspend;
+> +
+>         err =3D mt76_connac_mcu_set_hif_suspend(mdev, true);
+>         if (err)
+>                 goto restore_suspend;
+> @@ -525,9 +529,11 @@ static int mt7921_pci_resume(struct device *device)
+>                 mt76_connac_mcu_set_deep_sleep(&dev->mt76, false);
+>
+>         err =3D mt76_connac_mcu_set_hif_suspend(mdev, false);
+> +       if (err < 0)
+> +               goto failed;
+>
+>         mt7921_regd_update(dev);
+> -
+> +       err =3D mt7921_mcu_radio_led_ctrl(dev, EXT_CMD_RADIO_ON_LED);
+>  failed:
+>         pm->suspended =3D false;
+>
 > --
 > 2.18.0
 >
-
-
---=20
-Luiz Augusto von Dentz
+>
 
