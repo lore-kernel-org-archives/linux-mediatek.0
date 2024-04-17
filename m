@@ -4,72 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EA0CC4345F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Apr 2024 20:01:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5871CC04FFE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Apr 2024 20:01:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8lYudh1XGipLZp45Ed9irT2kjTBzp7nX6WUMRhG9/PM=; b=YTG+MnQ3X+t0amBt13Jx9d3OJb
-	aOofh3U2olhnE5BDYX8Pj1DrhroG58uxGMtNnvtAXmD/93v8ezn/NNJ0NMzIB/pfg+8JZVzAUMNHC
-	eAMzIc2VPpr26KlR7mPYlgsSTDP8pireqrT9NjdwZDN/kIWrsnA7O/+V1QbsLALL5DB1idrMvKEvZ
-	+E9W0qTNvGBvj2KV2e7wuJQcxl20OCDnQLhWqbOmJNKLWJjOnIjP7Qn6s4DylJHNmEiPOh0RxFCfq
-	CvJ/PiL8G0xrVsr9h5TqA0PLRfX5WhCZDqkznul/CQPkTm4IZXUUmNTS7vZoAzMml/GfEs+A9q/of
-	4duxxQLw==;
+	bh=vkJszbQYs1o414BkCnfzaobHDnZKDVd8xFkMWbtLTqM=; b=H9iqk1FolbsSJLtwWXE7FTUYus
+	FpNQ5qkxf3k9LwrmVp3tsB2x3jInkZMN60mRUOZhbup7P4gf0F/FH5RhrwYyTbwNwlJNgdeExRezY
+	eDT6QJop8v/iXHIlIYHFYWjN5Q94LNmOqrZnrMAuIUfxf+Vnr5w910hiKJ0iHcRvrFOJU0QjjAUTX
+	hI73vtPzWlVj+ZwzOmMaEMFHiX2sstWL6IJrZ6yg5qrZciDNHfGIwudSp0zUVOLMW0cWEtw+9/T9P
+	sT2vafxT7hkI5cJlwGxd/XZbm6n3dCe7iPGP9CjdMHDxrWxzwy/Be0DSlcH5RRwhJM6UcVVW9QUaC
+	XRp5SAbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxBTO-0000000HQkB-0kPY;
+	id 1rxBTO-0000000HQkY-2lFn;
 	Wed, 17 Apr 2024 20:01:38 +0000
-Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxBTF-0000000HQdn-3JXU
+	id 1rxBTG-0000000HQdy-2Xw4
 	for linux-mediatek@lists.infradead.org;
 	Wed, 17 Apr 2024 20:01:33 +0000
-Received: by mail-lf1-x12c.google.com with SMTP id 2adb3069b0e04-516d0161e13so61811e87.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 17 Apr 2024 13:01:25 -0700 (PDT)
+Received: by mail-ed1-x532.google.com with SMTP id 4fb4d7f45d1cf-56e477db7fbso111528a12.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 17 Apr 2024 13:01:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1713384084; x=1713988884; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1713384086; x=1713988886; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=8lYudh1XGipLZp45Ed9irT2kjTBzp7nX6WUMRhG9/PM=;
-        b=Zen7GkB4CRdlhJGZjXIZzxfouj1fKv5r/l2dcTGtDa4ckU6+0QdHos5yfcMVVoirln
-         oFG9ZaOTwBfiYSmgf41MO8W/lmvNjtCRV4cjMMmMTc/u4zYd4XBhR/Nvs52gsuXAtELa
-         ohPov3jEvAs1DiJuznpG3hU+gWeLVp87eD5OjTBMfHAxHJ7VJarrsTeNHkQXynnAY8Ra
-         WApLC7Ej0QlECK+kC45E5kaQCywiXn2L689ISGhbRC9cDmoeLX5FvW0YNgaEbtjviDJT
-         /926bAOVv6osXVebcvnyiSFvyr+mn9Qi83bPbBpceSFJt0VgFdnc1kkZe3luTAcB/a71
-         3tEA==
+        bh=vkJszbQYs1o414BkCnfzaobHDnZKDVd8xFkMWbtLTqM=;
+        b=NfGVgQIH5kbpaf30NUULgyqLLTfCRD0YARG4TuwZg15JqINXEHwuxk5FBxPTnUCLdv
+         y95teDt4/tbK6+HXa28GMvXXXygYy6CafOIa4kNvkniFFH/MJGVC/7pYATH9Y7yInVQT
+         /mVIQ/cpJM4aIUc2JOqKONiFjHzKyyOYOzZa0+vb1aBgyxcLpdx39t2eYLck2bNwL6GF
+         4xEGbTKlJpp0f7aLP6QOQByiTD4nXJ1vjHklT/wmeLYBOHAoWbA2M4Tvm5ouJ0OmsXbP
+         Roblc+SIp+gWgCw+T2Nv/g5A1j/e40W1nu+MS8Ga9qV3DbV0FVnrOf0SjB9lu/MSHeY0
+         0wUA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713384084; x=1713988884;
+        d=1e100.net; s=20230601; t=1713384086; x=1713988886;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=8lYudh1XGipLZp45Ed9irT2kjTBzp7nX6WUMRhG9/PM=;
-        b=jSD/mu0yG+AjmE9+Djrf3N/pUY6jUWkpimsadOIJaIH+G9c+5BxasVwCxhbus23TfL
-         NVwfqDtDkT+brWgD69hvaY2dr5gtn+63T2qAU0HExTaQ5NdIMxIhYOi4ndFfFt/mcV7i
-         X7NcI7BtxTOLvxB/ksHQY2bz1vP8u2D6t1od+5vWkPH1GWUCXB5Dl/2+F2FeysarRNK0
-         KLb5sRhgvp06GkefQ1YNS3osfrt9KEfZSlg4xGiEWBabxNQlN/GiqBZ3pHmFqpkkwCld
-         jAwgSUlyhBJml3+jS8X6gdH0eXvBzP7NP4jbsym6leTdkgUMOT+wYRk0UXoWvlw3YyWl
-         CxsQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXpOGVxNDXgpE2rqezuEUTQ+WsRIGy/HBur64SAlC7Y5QU+8dEoGcghnhx4ZgvMjL8e8eJXNdpGnZ4wsx/a+D8xjm2g8XaZQj32Xh1jnOvLJpHA
-X-Gm-Message-State: AOJu0Yw0hyIbzq5ewCNUrL+asc8isin63uMx9emHhhZ0/HNtmDEGLx2D
-	U6k8qwpp7r2BeuqEcJZUssQAt7V1RWA9k9YL4EZZwEQI5CuTS3la1PZuz7rUK3E=
-X-Google-Smtp-Source: AGHT+IGxbKfuE7tOKYWJaJSpGP1x/nWe/jbsF0dBAScwJnX0ukMTu47VDz749HA5eUzZvJ0MfqluBg==
-X-Received: by 2002:a19:7506:0:b0:516:d0d5:6f60 with SMTP id y6-20020a197506000000b00516d0d56f60mr166215lfe.38.1713384083867;
-        Wed, 17 Apr 2024 13:01:23 -0700 (PDT)
+        bh=vkJszbQYs1o414BkCnfzaobHDnZKDVd8xFkMWbtLTqM=;
+        b=Z1qz8E0jeUt13tn5eC4HHZ7IwK2csnPaCg9mrikPYfH/MJGG6BD+wdGb9QTrB8gjZV
+         cEM0jEjE6lM7UxK8CaJDmw0LYYbSxt14HaFa4cL4fkNkIHxikWgzyYfCROgACZDDwIdz
+         p2jh0AP7ZvlEfScqhGVELG9AJ/59SD4T0uOwDhBmrfcSsRpS6yOhA57RgvH+IoNqm9E7
+         24w1E0s/X0HGFjRXcu5+hkrD0JRmk7gJJxF5HHpEtc/cuKO1vvtYO+sAvelTYZp5QOe2
+         L17o/5swBUESKDmkqAxRyprEkFxZRhuAvE3v4485To7LagkI2qj6OiAnZA/GnuOVnEHx
+         3OKw==
+X-Forwarded-Encrypted: i=1; AJvYcCVgeuCxS+ptFPON6SW3rDFJU10NjCtvjoYLSJ6N1LQ4IF5vuV64sQAdxQjpSFKdaewlMDYhW/FW6TLhbUbF+Br3PzvbGUHhiwEZI5qyUBQedY7y
+X-Gm-Message-State: AOJu0YzYo8TuFa83LFE88OXLT09n51eMCjdL4UDYkO1Ten6oU2lc7vIh
+	e+RxTPbZkV7eOyGRlddUrcVPqTG1l7/K7gbs8tx+z4cCAf84Sga1nwPXodaktS8=
+X-Google-Smtp-Source: AGHT+IFpQveQN0WrZ+igZQXQ/yZHaNlkS0Wb8UjbefxIeVkiBGAZDA+tfI2DaDqdb7B/J0ieeXhS+A==
+X-Received: by 2002:a17:906:3108:b0:a52:408f:8575 with SMTP id 8-20020a170906310800b00a52408f8575mr323610ejx.12.1713384085598;
+        Wed, 17 Apr 2024 13:01:25 -0700 (PDT)
 Received: from [127.0.1.1] ([79.114.172.194])
-        by smtp.gmail.com with ESMTPSA id gs6-20020a170906f18600b00a555ef55ab5sm939981ejb.218.2024.04.17.13.01.22
+        by smtp.gmail.com with ESMTPSA id gs6-20020a170906f18600b00a555ef55ab5sm939981ejb.218.2024.04.17.13.01.24
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 17 Apr 2024 13:01:23 -0700 (PDT)
+        Wed, 17 Apr 2024 13:01:25 -0700 (PDT)
 From: Abel Vesa <abel.vesa@linaro.org>
-Date: Wed, 17 Apr 2024 23:00:54 +0300
-Subject: [PATCH v10 2/7] dt-bindings: spmi: Deprecate qcom,bus-id
+Date: Wed, 17 Apr 2024 23:00:55 +0300
+Subject: [PATCH v10 3/7] spmi: pmic-arb: Fix some compile warnings about
+ members not being described
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240417-spmi-multi-master-support-v10-2-5bc6d322e266@linaro.org>
+Message-Id: <20240417-spmi-multi-master-support-v10-3-5bc6d322e266@linaro.org>
 References: <20240417-spmi-multi-master-support-v10-0-5bc6d322e266@linaro.org>
 In-Reply-To: <20240417-spmi-multi-master-support-v10-0-5bc6d322e266@linaro.org>
 To: Stephen Boyd <sboyd@kernel.org>, 
@@ -86,28 +87,27 @@ Cc: Srini Kandagatla <srinivas.kandagatla@linaro.org>,
  Johan Hovold <johan@kernel.org>, David Collins <quic_collinsd@quicinc.com>, 
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org, 
- devicetree@vger.kernel.org, Abel Vesa <abel.vesa@linaro.org>, 
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+ devicetree@vger.kernel.org, Abel Vesa <abel.vesa@linaro.org>
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1023; i=abel.vesa@linaro.org;
- h=from:subject:message-id; bh=f1k2/XtnKKT0QabjDTtzy+0Tu+D0+1BkiYHMuQzuNWI=;
- b=owEBbQKS/ZANAwAKARtfRMkAlRVWAcsmYgBmICp/E095iDTa8F+bI7nMeF6DLZpKpnbK1WlsZ
- vC11586iXyJAjMEAAEKAB0WIQRO8+4RTnqPKsqn0bgbX0TJAJUVVgUCZiAqfwAKCRAbX0TJAJUV
- VmOID/4/QtTIUnPQg72FBvwzNTf7Qn8PSseRsPOVcd59hjYGzXVIKJUjALH2WyOJwQ5+j/l2lkY
- 9Asqjwh8s2qg4m/ftcu9O4VpjDhopW7Pmx8s0d/qvFAPVDaKFGH/7YQpOSY9kFBWHRuHnbT7DXu
- 788a89Yyuydvhf3atnI/JCVVfYoxC6IfPeq5jwpyihUKXGHDCZqM9cAiQrW5beQNOVcIAjQX6BK
- 0uzpDRsttZ9Iuj95MkOx+0OYD3aQUInhuOKVml/vkbTZ3ZLSZMA6QcaSCd3hZVHut8JPOAOt1rb
- zyHRO3OS9B0jPQkhc+RI8d2n3wBH1WuXAQWMD3egHcqvD2al1RpRoceNJwrfyx7zW7SR03OfE6x
- NMkAzMLgiDJ1RyMPir15bsw7DszLyybjM2+kYahi/2LpBLyc4M3qxZd4lu3c7iD2Y4iQphaHzFj
- LHeOfa/ii2BXa5UKaU8qD4/7dWMSCuTXwOlez+OnFH7i/nb+Q+a8N8Y9wKOEPzlcKKsoJo9jo8/
- W+O3lLIXxKVa/QQhWpDqKxdSzSZ7IzBvejeZhyxC5muWlS1dkiU7y3do5WGW79SXV4raWtnLgl6
- H9BaXkJyOK2YyEJWd0z/dhxxDPXxC5o35zjyUgbgAaz+0pLdTvYVIOmr6YTukdWGO4ohoaeeNhv
- ie9OSctpsnQjJEQ==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2479; i=abel.vesa@linaro.org;
+ h=from:subject:message-id; bh=YI6kFnUdqCb3smm8drA7puqPY4IMwS3WgmIgWIqmjO4=;
+ b=owEBbQKS/ZANAwAKARtfRMkAlRVWAcsmYgBmICqCsJCp5gvQLMFFQqhO6XcTbU8fTs4T/CIWa
+ AXutDY5l12JAjMEAAEKAB0WIQRO8+4RTnqPKsqn0bgbX0TJAJUVVgUCZiAqggAKCRAbX0TJAJUV
+ VuoPEADFvtdR0eoFq683MWj9bQyN6Ev9lNZORhL83dK7WvbVw5uafRLMCnA8CU4fP3w0Kf9IL9L
+ n2+Ur2s+mFLl3pmu4dirqFKWJ1LLsB6bMwwxQ6RiBOlZuzE4UPaRLlJmwHLqngTW/XYdYecjBuM
+ FO+inXrw4Wdasn0e0h7YPAAgolDlPESnihqZbwn5ej+XRKWIEy38Wg4wMG0dm1dGs6tqAJkWa0B
+ Z5mdv9QnJIkakiwkXsAEthf4EBpuT69ko6SfBIQXsvKVNGS5fYpYluyzj4kDbTxmldyCXiOWpwU
+ 4UTt6nDZ0e0703FBlPHnIFVxUEsyNP6XawDt/7b7XNRhhEXIrgOUzqT7WWPTPoP0xLD30VGatWp
+ ScUxn6pqpbFo+eL7ARai0GUsGKnyLCESqSG3x7NOmpgJ7vHZ3TJuU893QVmpOnjIIBoENLLDJ/O
+ yW0AQW+LokEnUW31ICYLlRdt4i8iJ5Hsr9eHd2CZ6Xr8p77O6bDVkp1vLmxElC5fdoR0aISE7pl
+ 5jMF3HaDzquGQRvE/yG7JHeCoSAeyIR4j/ZtlKR6Gvecd0HLQnIhYLq2crXtSIDWbrZdrbijulw
+ 2SpE9/SpxhZ8D9rkwLvWp46T0nGpFJrFgljjVD4M39zH9X+yKnjpyvWkaXV0FoCrFn/bKR1gXDS
+ h3TrYgCKNQ5rzeQ==
 X-Developer-Key: i=abel.vesa@linaro.org; a=openpgp;
  fpr=6AFF162D57F4223A8770EF5AF7BF214136F41FAE
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240417_130130_076262_45D6273C 
-X-CRM114-Status: UNSURE (   7.81  )
+X-CRM114-CacheID: sfid-20240417_130130_701461_AE399CA3 
+X-CRM114-Status: UNSURE (   9.30  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -123,28 +123,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-As it is optional and no platform is actually using the secondary bus,
-deprecate the qcom,bus-id property. For newer platforms that implement
-SPMI PMIC ARB v7 in HW, the X1E80100 approach should be used.
+Fix the following compile warnings:
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+ warning: Function parameter or struct member 'core' not described in 'spmi_pmic_arb'
+ warning: Function parameter or struct member 'core_size' not described in 'spmi_pmic_arb'
+ warning: Function parameter or struct member 'mapping_table_valid' not described in 'spmi_pmic_arb'
+ warning: Function parameter or struct member 'pmic_arb' not described in 'pmic_arb_read_data'
+ warning: Function parameter or struct member 'pmic_arb' not described in 'pmic_arb_write_data'
+
+Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
 Signed-off-by: Abel Vesa <abel.vesa@linaro.org>
 ---
- Documentation/devicetree/bindings/spmi/qcom,spmi-pmic-arb.yaml | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/spmi/spmi-pmic-arb.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/spmi/qcom,spmi-pmic-arb.yaml b/Documentation/devicetree/bindings/spmi/qcom,spmi-pmic-arb.yaml
-index f983b4af6db9..51daf1b847a9 100644
---- a/Documentation/devicetree/bindings/spmi/qcom,spmi-pmic-arb.yaml
-+++ b/Documentation/devicetree/bindings/spmi/qcom,spmi-pmic-arb.yaml
-@@ -92,6 +92,7 @@ properties:
-     description: >
-       SPMI bus instance. only applicable to PMIC arbiter version 7 and beyond.
-       Supported values, 0 = primary bus, 1 = secondary bus
-+    deprecated: true
+diff --git a/drivers/spmi/spmi-pmic-arb.c b/drivers/spmi/spmi-pmic-arb.c
+index 937c15324513..12c0efd744c2 100644
+--- a/drivers/spmi/spmi-pmic-arb.c
++++ b/drivers/spmi/spmi-pmic-arb.c
+@@ -132,6 +132,8 @@ struct apid_data {
+  * @wr_base:		on v1 "core", on v2 "chnls"    register base off DT.
+  * @intr:		address of the SPMI interrupt control registers.
+  * @cnfg:		address of the PMIC Arbiter configuration registers.
++ * @core:		core register base for v2 and above only (see above)
++ * @core_size:		core register base size
+  * @lock:		lock to synchronize accesses.
+  * @channel:		execution environment channel to use for accesses.
+  * @irq:		PMIC ARB interrupt.
+@@ -144,6 +146,7 @@ struct apid_data {
+  * @apid_count:		on v5 and v7: number of APIDs associated with the
+  *			particular SPMI bus instance
+  * @mapping_table:	in-memory copy of PPID -> APID mapping table.
++ * @mapping_table_valid:bitmap containing valid-only periphs
+  * @domain:		irq domain object for PMIC IRQ domain
+  * @spmic:		SPMI controller object
+  * @ver_ops:		version dependent operations.
+@@ -232,6 +235,7 @@ static inline void pmic_arb_set_rd_cmd(struct spmi_pmic_arb *pmic_arb,
  
- required:
-   - compatible
+ /**
+  * pmic_arb_read_data: reads pmic-arb's register and copy 1..4 bytes to buf
++ * @pmic_arb:	the SPMI PMIC arbiter
+  * @bc:		byte count -1. range: 0..3
+  * @reg:	register's address
+  * @buf:	output parameter, length must be bc + 1
+@@ -246,6 +250,7 @@ pmic_arb_read_data(struct spmi_pmic_arb *pmic_arb, u8 *buf, u32 reg, u8 bc)
+ 
+ /**
+  * pmic_arb_write_data: write 1..4 bytes from buf to pmic-arb's register
++ * @pmic_arb:	the SPMI PMIC arbiter
+  * @bc:		byte-count -1. range: 0..3.
+  * @reg:	register's address.
+  * @buf:	buffer to write. length must be bc + 1.
 
 -- 
 2.34.1
