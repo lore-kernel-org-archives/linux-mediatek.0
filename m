@@ -4,68 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81DAAC4345F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Apr 2024 19:14:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EA0CC4345F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Apr 2024 20:01:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=A7onPiT2Ige5cnZEAwGtJ1JLpZgpxPQg3QBjw0VZMco=; b=gQK92zNEV9Zc6ZeEDMbYTyzn1z
-	eZ3S5iEk7nm+0edoJ4TBS/mJQseTSiTIPU75PJuKSktTtJntZg0QUYNhG+eTaBOq5YRCwS4rYg//J
-	v69rlxiTDorrTTjPHCQWXqYjqWqvZTAMa/FwjbRSF/Y8Py2Qagz71cTpRsguWTrrs6j0umj25zHP8
-	8Z5WG8XaU0Zc6rguhkkqB6tZLB9Wb4l/XEd95ejsh4Zq7yCH2MHfJSC1q2q9OAAABV0ndbPybzVBa
-	IWpCwiu/H3WEcy8hwsoY54kH7+AQAeATnA1/fNb7jViAOmGOitHl49DSSvJJiEFcSmfqPSqwf7Iu/
-	7siE/wxw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8lYudh1XGipLZp45Ed9irT2kjTBzp7nX6WUMRhG9/PM=; b=YTG+MnQ3X+t0amBt13Jx9d3OJb
+	aOofh3U2olhnE5BDYX8Pj1DrhroG58uxGMtNnvtAXmD/93v8ezn/NNJ0NMzIB/pfg+8JZVzAUMNHC
+	eAMzIc2VPpr26KlR7mPYlgsSTDP8pireqrT9NjdwZDN/kIWrsnA7O/+V1QbsLALL5DB1idrMvKEvZ
+	+E9W0qTNvGBvj2KV2e7wuJQcxl20OCDnQLhWqbOmJNKLWJjOnIjP7Qn6s4DylJHNmEiPOh0RxFCfq
+	CvJ/PiL8G0xrVsr9h5TqA0PLRfX5WhCZDqkznul/CQPkTm4IZXUUmNTS7vZoAzMml/GfEs+A9q/of
+	4duxxQLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxAk9-0000000HKPg-1Sro;
-	Wed, 17 Apr 2024 19:14:53 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1rxBTO-0000000HQkB-0kPY;
+	Wed, 17 Apr 2024 20:01:38 +0000
+Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxAk5-0000000HKNt-2tyE;
-	Wed, 17 Apr 2024 19:14:51 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id ACA2BCE1673;
-	Wed, 17 Apr 2024 19:14:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 14948C072AA;
-	Wed, 17 Apr 2024 19:14:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1713381287;
-	bh=a/flBp7hYPf0Kun3Ragy74rejtcqB40x2SVCVKa4trY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=N2CJEN5G5R5VAfeGdC+EDkUa4TYHpR24KnWWRGW+FFjvGYB9MU/zKdhXpQ+vbBRdl
-	 nrGYFWA6qWS0wxkzGyxcLDi7BG86Qf4yhrYpVzobvGKrL6CChXUr62i+nKEZ7itVJr
-	 xC3eSlZF47jp6VgvaGGpk5TIJrS5ps2M+31qb83XZmCSv+ozdUCMKAxBJJNFu+VYXU
-	 Pic75JU77c/EnWnxYp246/xeWh/Heqc7dpcW+DG8pNT2bbQiifPJu1PET4Q1+FHcZi
-	 yOOrKfxsINGG+tiAQ7KyJvHIHCIC3IUYobsslx1DY2WNVVILO7Sm+XF++37BWarfl4
-	 sgEZilsJx+bQQ==
-Date: Wed, 17 Apr 2024 14:14:45 -0500
-From: Rob Herring <robh@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: djakov@kernel.org, krzysztof.kozlowski+dt@linaro.org,
-	conor+dt@kernel.org, matthias.bgg@gmail.com, lgirdwood@gmail.com,
-	broonie@kernel.org, keescook@chromium.org, gustavoars@kernel.org,
-	henryc.chen@mediatek.com, linux-pm@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, kernel@collabora.com,
-	wenst@chromium.org, amergnat@baylibre.com
-Subject: Re: [PATCH v2 2/7] dt-bindings: interconnect: Add MediaTek EMI
- Interconnect bindings
-Message-ID: <20240417191445.GB3101736-robh@kernel.org>
-References: <20240417091442.170505-1-angelogioacchino.delregno@collabora.com>
- <20240417091442.170505-3-angelogioacchino.delregno@collabora.com>
- <20240417145402.GA2355631-robh@kernel.org>
- <207eb8d7-1a40-4114-a84b-26616dc39fcc@collabora.com>
+	id 1rxBTF-0000000HQdn-3JXU
+	for linux-mediatek@lists.infradead.org;
+	Wed, 17 Apr 2024 20:01:33 +0000
+Received: by mail-lf1-x12c.google.com with SMTP id 2adb3069b0e04-516d0161e13so61811e87.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 17 Apr 2024 13:01:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1713384084; x=1713988884; darn=lists.infradead.org;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=8lYudh1XGipLZp45Ed9irT2kjTBzp7nX6WUMRhG9/PM=;
+        b=Zen7GkB4CRdlhJGZjXIZzxfouj1fKv5r/l2dcTGtDa4ckU6+0QdHos5yfcMVVoirln
+         oFG9ZaOTwBfiYSmgf41MO8W/lmvNjtCRV4cjMMmMTc/u4zYd4XBhR/Nvs52gsuXAtELa
+         ohPov3jEvAs1DiJuznpG3hU+gWeLVp87eD5OjTBMfHAxHJ7VJarrsTeNHkQXynnAY8Ra
+         WApLC7Ej0QlECK+kC45E5kaQCywiXn2L689ISGhbRC9cDmoeLX5FvW0YNgaEbtjviDJT
+         /926bAOVv6osXVebcvnyiSFvyr+mn9Qi83bPbBpceSFJt0VgFdnc1kkZe3luTAcB/a71
+         3tEA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1713384084; x=1713988884;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=8lYudh1XGipLZp45Ed9irT2kjTBzp7nX6WUMRhG9/PM=;
+        b=jSD/mu0yG+AjmE9+Djrf3N/pUY6jUWkpimsadOIJaIH+G9c+5BxasVwCxhbus23TfL
+         NVwfqDtDkT+brWgD69hvaY2dr5gtn+63T2qAU0HExTaQ5NdIMxIhYOi4ndFfFt/mcV7i
+         X7NcI7BtxTOLvxB/ksHQY2bz1vP8u2D6t1od+5vWkPH1GWUCXB5Dl/2+F2FeysarRNK0
+         KLb5sRhgvp06GkefQ1YNS3osfrt9KEfZSlg4xGiEWBabxNQlN/GiqBZ3pHmFqpkkwCld
+         jAwgSUlyhBJml3+jS8X6gdH0eXvBzP7NP4jbsym6leTdkgUMOT+wYRk0UXoWvlw3YyWl
+         CxsQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXpOGVxNDXgpE2rqezuEUTQ+WsRIGy/HBur64SAlC7Y5QU+8dEoGcghnhx4ZgvMjL8e8eJXNdpGnZ4wsx/a+D8xjm2g8XaZQj32Xh1jnOvLJpHA
+X-Gm-Message-State: AOJu0Yw0hyIbzq5ewCNUrL+asc8isin63uMx9emHhhZ0/HNtmDEGLx2D
+	U6k8qwpp7r2BeuqEcJZUssQAt7V1RWA9k9YL4EZZwEQI5CuTS3la1PZuz7rUK3E=
+X-Google-Smtp-Source: AGHT+IGxbKfuE7tOKYWJaJSpGP1x/nWe/jbsF0dBAScwJnX0ukMTu47VDz749HA5eUzZvJ0MfqluBg==
+X-Received: by 2002:a19:7506:0:b0:516:d0d5:6f60 with SMTP id y6-20020a197506000000b00516d0d56f60mr166215lfe.38.1713384083867;
+        Wed, 17 Apr 2024 13:01:23 -0700 (PDT)
+Received: from [127.0.1.1] ([79.114.172.194])
+        by smtp.gmail.com with ESMTPSA id gs6-20020a170906f18600b00a555ef55ab5sm939981ejb.218.2024.04.17.13.01.22
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 17 Apr 2024 13:01:23 -0700 (PDT)
+From: Abel Vesa <abel.vesa@linaro.org>
+Date: Wed, 17 Apr 2024 23:00:54 +0300
+Subject: [PATCH v10 2/7] dt-bindings: spmi: Deprecate qcom,bus-id
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <207eb8d7-1a40-4114-a84b-26616dc39fcc@collabora.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20240417-spmi-multi-master-support-v10-2-5bc6d322e266@linaro.org>
+References: <20240417-spmi-multi-master-support-v10-0-5bc6d322e266@linaro.org>
+In-Reply-To: <20240417-spmi-multi-master-support-v10-0-5bc6d322e266@linaro.org>
+To: Stephen Boyd <sboyd@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ Bjorn Andersson <andersson@kernel.org>, 
+ Konrad Dybcio <konrad.dybcio@linaro.org>, 
+ Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+ Conor Dooley <conor+dt@kernel.org>
+Cc: Srini Kandagatla <srinivas.kandagatla@linaro.org>, 
+ Johan Hovold <johan@kernel.org>, David Collins <quic_collinsd@quicinc.com>, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+ devicetree@vger.kernel.org, Abel Vesa <abel.vesa@linaro.org>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+X-Mailer: b4 0.13.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1023; i=abel.vesa@linaro.org;
+ h=from:subject:message-id; bh=f1k2/XtnKKT0QabjDTtzy+0Tu+D0+1BkiYHMuQzuNWI=;
+ b=owEBbQKS/ZANAwAKARtfRMkAlRVWAcsmYgBmICp/E095iDTa8F+bI7nMeF6DLZpKpnbK1WlsZ
+ vC11586iXyJAjMEAAEKAB0WIQRO8+4RTnqPKsqn0bgbX0TJAJUVVgUCZiAqfwAKCRAbX0TJAJUV
+ VmOID/4/QtTIUnPQg72FBvwzNTf7Qn8PSseRsPOVcd59hjYGzXVIKJUjALH2WyOJwQ5+j/l2lkY
+ 9Asqjwh8s2qg4m/ftcu9O4VpjDhopW7Pmx8s0d/qvFAPVDaKFGH/7YQpOSY9kFBWHRuHnbT7DXu
+ 788a89Yyuydvhf3atnI/JCVVfYoxC6IfPeq5jwpyihUKXGHDCZqM9cAiQrW5beQNOVcIAjQX6BK
+ 0uzpDRsttZ9Iuj95MkOx+0OYD3aQUInhuOKVml/vkbTZ3ZLSZMA6QcaSCd3hZVHut8JPOAOt1rb
+ zyHRO3OS9B0jPQkhc+RI8d2n3wBH1WuXAQWMD3egHcqvD2al1RpRoceNJwrfyx7zW7SR03OfE6x
+ NMkAzMLgiDJ1RyMPir15bsw7DszLyybjM2+kYahi/2LpBLyc4M3qxZd4lu3c7iD2Y4iQphaHzFj
+ LHeOfa/ii2BXa5UKaU8qD4/7dWMSCuTXwOlez+OnFH7i/nb+Q+a8N8Y9wKOEPzlcKKsoJo9jo8/
+ W+O3lLIXxKVa/QQhWpDqKxdSzSZ7IzBvejeZhyxC5muWlS1dkiU7y3do5WGW79SXV4raWtnLgl6
+ H9BaXkJyOK2YyEJWd0z/dhxxDPXxC5o35zjyUgbgAaz+0pLdTvYVIOmr6YTukdWGO4ohoaeeNhv
+ ie9OSctpsnQjJEQ==
+X-Developer-Key: i=abel.vesa@linaro.org; a=openpgp;
+ fpr=6AFF162D57F4223A8770EF5AF7BF214136F41FAE
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240417_121450_126625_E1680FB0 
-X-CRM114-Status: GOOD (  26.23  )
+X-CRM114-CacheID: sfid-20240417_130130_076262_45D6273C 
+X-CRM114-Status: UNSURE (   7.81  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,131 +123,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Apr 17, 2024 at 05:32:54PM +0200, AngeloGioacchino Del Regno wrote:
-> Il 17/04/24 16:54, Rob Herring ha scritto:
-> > On Wed, Apr 17, 2024 at 11:14:37AM +0200, AngeloGioacchino Del Regno wrote:
-> > > Add bindings for the MediaTek External Memory Interface Interconnect,
-> > > which providers support system bandwidth requirements through Dynamic
-> > > Voltage Frequency Scaling Resource Collector (DVFSRC) hardware.
-> > > 
-> > > This adds bindings for MediaTek MT8183 and MT8195 SoCs.
-> > > 
-> > > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> > > ---
-> > >   .../interconnect/mediatek,mt8183-emi.yaml     | 76 +++++++++++++++++++
-> > >   .../interconnect/mediatek,mt8183.h            | 23 ++++++
-> > >   .../interconnect/mediatek,mt8195.h            | 44 +++++++++++
-> > >   3 files changed, 143 insertions(+)
-> > >   create mode 100644 Documentation/devicetree/bindings/interconnect/mediatek,mt8183-emi.yaml
-> > >   create mode 100644 include/dt-bindings/interconnect/mediatek,mt8183.h
-> > >   create mode 100644 include/dt-bindings/interconnect/mediatek,mt8195.h
-> > > 
-> > > diff --git a/Documentation/devicetree/bindings/interconnect/mediatek,mt8183-emi.yaml b/Documentation/devicetree/bindings/interconnect/mediatek,mt8183-emi.yaml
-> > > new file mode 100644
-> > > index 000000000000..3ad60fd21f83
-> > > --- /dev/null
-> > > +++ b/Documentation/devicetree/bindings/interconnect/mediatek,mt8183-emi.yaml
-> > > @@ -0,0 +1,76 @@
-> > > +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-> > > +%YAML 1.2
-> > > +---
-> > > +$id: http://devicetree.org/schemas/interconnect/mediatek,mt8183-emi.yaml#
-> > > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > > +
-> > > +title: MediaTek External Memory Interface (EMI) Interconnect
-> > > +
-> > > +maintainers:
-> > > +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> > > +
-> > > +description: |
-> > > +  EMI interconnect providers support system bandwidth requirements through
-> > > +  Dynamic Voltage Frequency Scaling Resource Collector (DVFSRC) hardware.
-> > > +  The provider is able to communicate with the DVFSRC through Secure Monitor
-> > > +  Call (SMC).
-> > > +
-> > > +             ICC provider         ICC Nodes
-> > > +                              ----          ----
-> > > +             _________       |CPU |   |--- |VPU |
-> > > +    _____   |         |-----  ----    |     ----
-> > > +   |     |->|  DRAM   |       ----    |     ----
-> > > +   |DRAM |->|scheduler|----- |GPU |   |--- |DISP|
-> > > +   |     |->|  (EMI)  |       ----    |     ----
-> > > +   |_____|->|_________|---.   -----   |     ----
-> > > +               /|\         `-|MMSYS|--|--- |VDEC|
-> > > +                |             -----   |     ----
-> > > +                |                     |     ----
-> > > +                | change DRAM freq    |--- |VENC|
-> > > +             --------                 |     ----
-> > > +    SMC --> | DVFSRC |                |     ----
-> > > +             --------                 |--- |IMG |
-> > > +                                      |     ----
-> > > +                                      |     ----
-> > > +                                      |--- |CAM |
-> > > +                                            ----
-> > > +
-> > > +properties:
-> > > +  compatible:
-> > > +    enum:
-> > > +      - mediatek,mt8183-emi
-> > > +      - mediatek,mt8195-emi
-> > > +
-> > > +  reg:
-> > > +    maxItems: 1
-> > > +
-> > > +  '#interconnect-cells':
-> > > +    const: 1
-> > > +
-> > > +required:
-> > > +  - compatible
-> > > +  - '#interconnect-cells'
-> > > +
-> > > +unevaluatedProperties: false
-> > > +
-> > > +examples:
-> > > +  - |
-> > > +    #include <dt-bindings/interconnect/mediatek,mt8195.h>
-> > > +
-> > > +    soc {
-> > > +        #address-cells = <2>;
-> > > +        #size-cells = <2>;
-> > > +
-> > > +        system-controller@10012000 {
-> > > +            compatible = "mediatek,mt8195-dvfsrc";
-> > > +            reg = <0 0x10012000 0 0x1000>;
-> > > +            #address-cells = <1>;
-> > > +            #size-cells = <0>;
-> > > +
-> > > +            emi_icc: interconnect@1 {
-> > > +                compatible = "mediatek,mt8195-emi";
-> > > +                reg = <1>;
-> > > +                #interconnect-cells = <1>;
-> > 
-> > 
-> > There's not really any need for this node. Just put #interconnect-cells
-> > in the parent.
-> > 
-> 
-> Actually, I modeled it to be a subnode of the DVFSRC for multiple reasons:
-> 
-> 1. Some SoCs have more than one interconnect on the DVFSRC (two different kinds
->    of EMI interconnect, and then also a SMI interconnect); and
-> 
-> 2. Some boards will want to not enable the interconnect driver because some of
->    those are not battery powered (so they just keep the knobs at full thrust
->    from the bootloader and never care scaling busses); and
-> 
-> 3. Some DVFSRC interconnect features may depend on firmware (but I'm not
->    sure which ones and which SoCs, as there are lots of SMI/EMI ICC things that
->    are not implemented yet with this series).
-> 
-> The alternative would've been to add a property to enable, or disable, the SMI ICC
-> (not present in this series), and/or one, or the other kind of EMI ICC (this series
-> implements only the simpler EMI ICC, and I keep saying "the other" because I
-> currently don't remember the name).... which is really ugly.
-> 
-> Ideas? :-)
+As it is optional and no platform is actually using the secondary bus,
+deprecate the qcom,bus-id property. For newer platforms that implement
+SPMI PMIC ARB v7 in HW, the X1E80100 approach should be used.
 
-Just provide that reasoning in the commit msg.
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Signed-off-by: Abel Vesa <abel.vesa@linaro.org>
+---
+ Documentation/devicetree/bindings/spmi/qcom,spmi-pmic-arb.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-Rob
+diff --git a/Documentation/devicetree/bindings/spmi/qcom,spmi-pmic-arb.yaml b/Documentation/devicetree/bindings/spmi/qcom,spmi-pmic-arb.yaml
+index f983b4af6db9..51daf1b847a9 100644
+--- a/Documentation/devicetree/bindings/spmi/qcom,spmi-pmic-arb.yaml
++++ b/Documentation/devicetree/bindings/spmi/qcom,spmi-pmic-arb.yaml
+@@ -92,6 +92,7 @@ properties:
+     description: >
+       SPMI bus instance. only applicable to PMIC arbiter version 7 and beyond.
+       Supported values, 0 = primary bus, 1 = secondary bus
++    deprecated: true
+ 
+ required:
+   - compatible
+
+-- 
+2.34.1
+
 
