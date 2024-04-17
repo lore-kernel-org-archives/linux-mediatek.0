@@ -4,92 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AADDEC4345F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Apr 2024 13:18:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 049A2C001CC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Apr 2024 13:26:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:CC:To:
-	Subject:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FDzWnSlq74AzsNs+2Gtmdpu32oqvbvNVWifQvd45vz8=; b=qurtXqCGBog+Vd2xKNOKFcZENF
-	CxGERsaHAKvYP434cwNfc2e5jD3kSa2aTWyeDWDEvBl3aLBPsxXwVCNjoRxwk0cdWgcs6L7/LXOxb
-	qSsfGAUltv92W1OjtdZkvsOtxwIR2X+zY/MQ54PWv01QeFgOzuA1HsASC4MOsKIB/WHxtBQHgXq3T
-	sMyN/T72KBVwUK7Ftw63ypGDMr5LYq9fv18QfQANbkXB6AUAKVdUd4GDv2C8dAwCuldogAavsErAp
-	iiW7NGylIEGDmKyzwe7VAMIci2UDRGBSibrQrJgzsztY5NbZ9x0vgKWWWcwORvS+FrCm2gtxyLXRR
-	3vDpfW1A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=U+t8Uh+wclM2LIEEyffDGj4POwyHC7I1wDJtREadFIA=; b=CrqHU6IC7/e4rk/B4Cm/HDilmz
+	jLe3VYthj9NTlvIPGIKZS9O0elIDDQ0xZO49Y4HuQMFis3dLjjJum+eMada2X5cA7ZaCIdeyqQyNO
+	kFGNvP+PqAQayNo1Hyf6h9H1CvYx+Mdlh2zljl0t4CFiMBIgOakQddWQLKG1fzZRcgyqVvWO2oA40
+	GrVrN+goFpo0AKWdYYJsmIJL/I/oscQyKH5nimzWr62Gse8PQiHVmJLhZWy7urIaE5i5KddWgNNmr
+	dK+BaY/62hWNCvkbnAgUE0VEUnVRo04KbRdwhXHQ46Pnc8LKWxsdopxTa74I6wHtIhhpByVuFVCyd
+	zx1aMUVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rx5Bh-0000000G5Li-0sW4;
-	Wed, 17 Apr 2024 13:18:57 +0000
-Received: from szxga02-in.huawei.com ([45.249.212.188])
+	id 1rx5Iw-0000000G8bK-1ihk;
+	Wed, 17 Apr 2024 13:26:26 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rx5Bd-0000000G5Hp-0emy;
-	Wed, 17 Apr 2024 13:18:54 +0000
-Received: from mail.maildlp.com (unknown [172.19.163.174])
-	by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4VKLxQ3gh3zXlNZ;
-	Wed, 17 Apr 2024 21:15:22 +0800 (CST)
-Received: from dggpemm500005.china.huawei.com (unknown [7.185.36.74])
-	by mail.maildlp.com (Postfix) with ESMTPS id 812AD140485;
-	Wed, 17 Apr 2024 21:18:41 +0800 (CST)
-Received: from [10.69.30.204] (10.69.30.204) by dggpemm500005.china.huawei.com
- (7.185.36.74) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.35; Wed, 17 Apr
- 2024 21:18:41 +0800
-Subject: Re: [PATCH net-next v2 07/15] mm: page_frag: add '_va' suffix to
- page_frag API
-To: Alexander H Duyck <alexander.duyck@gmail.com>, <davem@davemloft.net>,
-	<kuba@kernel.org>, <pabeni@redhat.com>
-CC: <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Jeroen de Borst
-	<jeroendb@google.com>, Praveen Kaligineedi <pkaligineedi@google.com>,
-	Shailend Chand <shailend@google.com>, Eric Dumazet <edumazet@google.com>,
-	Jesse Brandeburg <jesse.brandeburg@intel.com>, Tony Nguyen
-	<anthony.l.nguyen@intel.com>, Sunil Goutham <sgoutham@marvell.com>, Geetha
- sowjanya <gakula@marvell.com>, Subbaraya Sundeep <sbhatta@marvell.com>,
-	hariprasad <hkelam@marvell.com>, Felix Fietkau <nbd@nbd.name>, Sean Wang
-	<sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, Lorenzo
- Bianconi <lorenzo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Keith
- Busch <kbusch@kernel.org>, Jens Axboe <axboe@kernel.dk>, Christoph Hellwig
-	<hch@lst.de>, Sagi Grimberg <sagi@grimberg.me>, Chaitanya Kulkarni
-	<kch@nvidia.com>, "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang
-	<jasowang@redhat.com>, Andrew Morton <akpm@linux-foundation.org>, Alexei
- Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>, Jesper
- Dangaard Brouer <hawk@kernel.org>, John Fastabend <john.fastabend@gmail.com>,
-	Andrii Nakryiko <andrii@kernel.org>, Martin KaFai Lau <martin.lau@linux.dev>,
-	Eduard Zingerman <eddyz87@gmail.com>, Song Liu <song@kernel.org>, Yonghong
- Song <yonghong.song@linux.dev>, KP Singh <kpsingh@kernel.org>, Stanislav
- Fomichev <sdf@google.com>, Hao Luo <haoluo@google.com>, Jiri Olsa
-	<jolsa@kernel.org>, David Howells <dhowells@redhat.com>, Marc Dionne
-	<marc.dionne@auristor.com>, Chuck Lever <chuck.lever@oracle.com>, Jeff Layton
-	<jlayton@kernel.org>, Neil Brown <neilb@suse.de>, Olga Kornievskaia
-	<kolga@netapp.com>, Dai Ngo <Dai.Ngo@oracle.com>, Tom Talpey
-	<tom@talpey.com>, Trond Myklebust <trond.myklebust@hammerspace.com>, Anna
- Schumaker <anna@kernel.org>, <intel-wired-lan@lists.osuosl.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-nvme@lists.infradead.org>, <kvm@vger.kernel.org>,
-	<virtualization@lists.linux.dev>, <linux-mm@kvack.org>,
-	<bpf@vger.kernel.org>, <linux-afs@lists.infradead.org>,
-	<linux-nfs@vger.kernel.org>
-References: <20240415131941.51153-1-linyunsheng@huawei.com>
- <20240415131941.51153-8-linyunsheng@huawei.com>
- <18ca19fa64267b84bee10473a81cbc63f53104a0.camel@gmail.com>
-From: Yunsheng Lin <linyunsheng@huawei.com>
-Message-ID: <74e7259a-c462-e3c1-73ac-8e3f49fb80b8@huawei.com>
-Date: Wed, 17 Apr 2024 21:18:40 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101
- Thunderbird/52.2.0
+	id 1rx5It-0000000G8Z5-0uM1
+	for linux-mediatek@lists.infradead.org;
+	Wed, 17 Apr 2024 13:26:24 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1rx5IP-0007GI-7I; Wed, 17 Apr 2024 15:25:53 +0200
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1rx5IM-00CnkN-Su; Wed, 17 Apr 2024 15:25:50 +0200
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.96)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1rx5IM-002rHj-2Y;
+	Wed, 17 Apr 2024 15:25:50 +0200
+Date: Wed, 17 Apr 2024 15:25:50 +0200
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Alexandre Mergnat <amergnat@baylibre.com>, 
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Jitao Shi <jitao.shi@mediatek.com>, CK Hu <ck.hu@mediatek.com>, 
+	Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, 
+	Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, dri-devel@lists.freedesktop.org, 
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-pwm@vger.kernel.org, linux-clk@vger.kernel.org
+Subject: Re: [PATCH v2 11/18] dt-bindings: pwm: mediatek,pwm-disp: add
+ power-domains property
+Message-ID: <5vqnkgp77tir5j5cumo62pm2cw4xjabexu7nk3kze4gk4ri5dn@g3pee2beuuco>
+References: <20231023-display-support-v2-0-33ce8864b227@baylibre.com>
+ <20231023-display-support-v2-11-33ce8864b227@baylibre.com>
+ <1db01bd8-0936-40e5-9f1b-7ea34746bef1@collabora.com>
 MIME-Version: 1.0
-In-Reply-To: <18ca19fa64267b84bee10473a81cbc63f53104a0.camel@gmail.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.69.30.204]
-X-ClientProxiedBy: dggems705-chm.china.huawei.com (10.3.19.182) To
- dggpemm500005.china.huawei.com (7.185.36.74)
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="2mhwzpvshnycjgzu"
+Content-Disposition: inline
+In-Reply-To: <1db01bd8-0936-40e5-9f1b-7ea34746bef1@collabora.com>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240417_061853_553392_0809DA98 
-X-CRM114-Status: GOOD (  16.21  )
+X-CRM114-CacheID: sfid-20240417_062623_276168_EFDAE36B 
+X-CRM114-Status: GOOD (  15.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,33 +87,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2024/4/17 0:12, Alexander H Duyck wrote:
-> On Mon, 2024-04-15 at 21:19 +0800, Yunsheng Lin wrote:
->> Currently most of the API for page_frag API is returning
->> 'virtual address' as output or expecting 'virtual address'
->> as input, in order to differentiate the API handling between
->> 'virtual address' and 'struct page', add '_va' suffix to the
->> corresponding API mirroring the page_pool_alloc_va() API of
->> the page_pool.
->>
->> Signed-off-by: Yunsheng Lin <linyunsheng@huawei.com>
-> 
-> This patch is a total waste of time. By that logic we should be
-> renaming __get_free_pages since it essentially does the same thing.
-> 
-> This just seems like more code changes for the sake of adding code
-> changes rather than fixing anything. In my opinion it should be dropped
-> from the set.
 
-The rename is to support different use case as mentioned below in patch
-14:
-"Depending on different use cases, callers expecting to deal with va, page or
-both va and page for them may call page_frag_alloc_va*, page_frag_alloc_pg*,
-or page_frag_alloc* API accordingly."
+--2mhwzpvshnycjgzu
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Naming is hard anyway, I am open to better API naming for the above use cases.
+Hello,
 
-> 
-> .
-> 
+On Wed, Apr 17, 2024 at 12:19:19PM +0200, AngeloGioacchino Del Regno wrote:
+> Il 16/04/24 17:53, Alexandre Mergnat ha scritto:
+> > According to the Mediatek MT8365 datasheet, the display PWM block has
+> > a power domain.
+> >=20
+> > Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+>=20
+> It's the same for at least MT8195, MT8183 and I think MT8192 as well... so
+> not having that from the beginning is actually a mistake.
+>=20
+> Please add a Fixes tag and resend, after which:
+>=20
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
+ora.com>
+
+You mean similar to:
+
+	https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/commit=
+/?id=3Dfb7c3d8ba039df877886fd457538d8b24ca9c84b
+
+? It seems someone you know well was quicker :-)
+
+Best regards
+Uwe
+
+--=20
+Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
+Industrial Linux Solutions                 | https://www.pengutronix.de/ |
+
+--2mhwzpvshnycjgzu
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmYfzd0ACgkQj4D7WH0S
+/k644QgApZcXCwxXpE1GPvpexO/Vc5AFPTJkm7FRBnwJJkvRZ1ycT6cFchMCCuDk
+54zNsJAXca62uylo+g0umyShBTdJtfK1/jrxOFPvuA+8sdm6j2zXdQGxrq2QozhU
+52gFI/sNHpKkYT/ky/xaUHOpbw/BK8bc/6mkaCoKcZg3aB3U/lJsgIX1x9d/Uqo6
+70f0ssIQn1KRrZj66GjL2o9m9A8aZ5shpR3TTBtnjw1/K6I2aAU7VUX4R5Uda7ol
+bdrw0/GGO0IuYZ+q+F2LLbRTFE2oHy3ZzNQlJ8HBj2e160g1Mo+AQqfqcEwZe8C6
+4qWjBjl/FQQtdEludY7c04KB7u+YSg==
+=3M09
+-----END PGP SIGNATURE-----
+
+--2mhwzpvshnycjgzu--
 
