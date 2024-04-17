@@ -4,74 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC2ADC001CC
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Apr 2024 08:06:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DBF6C4345F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Apr 2024 08:07:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rga3QErLlSdlAMUMEnKwrBd50K30i/jt20vMNzx9mBo=; b=5AzW5/WQ4YE0Et+NKGRZAplaJD
-	YOR4hQvfkhk0vf0mEOIcza58wqDnKEcXn1/es6yovG4xaQIKRntmK+k9YWxt2XQiKpFrwmQWcuCWX
-	yFdNlo4e81dNepK0BlWekpOPIylOe/i7QbX8fA3y8g776PVa0gJTT+XST+2+Ei8xUDXW2IkbVqfoX
-	py8B91Eg5pszCNX096QeMUy6UWB2ILgyc+jgWutpJQvWK6vCANFXCs3gMmcREDWBYDiDlNm6XLDfL
-	TUSX5wFmIu21FA58YdxQSJKLZs7JcKSZxxN6quDCEr6KvedktIEEghnKVBKI/A2LU397qxwCb1WRx
-	FSZjo4Vw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BuvMTKrS538OQBDa2jdh/t6qnPEHbqMc8PN+mILzuvs=; b=yO0uebfVW89kEU7L9BxYP2rtub
+	ed8RdmXdQ24rnZ+gqXiSXT3WQIGyVXECeXMdiWf0J8LljAHGKi2Rk4qSmWlaeUxHli10waZIENXKI
+	pzkVlSeHVY/8Ra9851zupFp1ogIqacDq5hKEex6SyjBHOpK/ffc1WIFvaM9735ogrH4m1uquh7ikR
+	IxxSKLy3MZtxgu+TYgHD041yHmZsl9xGRhnwuX3xL4zT+ZTeNZTaGAzaIk/oYNH6/c0NmQafMI2XK
+	qMf8x9OxSiWIUzHGJM42XowYapaFOr/P6H5w3ToDHO/IrR0aMbYuYmki0CMZ3PIQYYZW03gw2drfv
+	QAHKEiUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rx0Je-0000000F8lj-2mZM;
-	Wed, 17 Apr 2024 08:06:50 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1rx0K8-0000000F90g-129X;
+	Wed, 17 Apr 2024 08:07:20 +0000
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rx0JY-0000000F8jp-230T
+	id 1rx0K1-0000000F8nd-2EEm
 	for linux-mediatek@lists.infradead.org;
-	Wed, 17 Apr 2024 08:06:49 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1rx0J8-0007Ur-OT; Wed, 17 Apr 2024 10:06:18 +0200
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1rx0J4-00CkpM-Fr; Wed, 17 Apr 2024 10:06:14 +0200
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.96)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1rx0J4-002eR5-1F;
-	Wed, 17 Apr 2024 10:06:14 +0200
-Date: Wed, 17 Apr 2024 10:06:14 +0200
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Alexandre Mergnat <amergnat@baylibre.com>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, 
-	Daniel Vetter <daniel@ffwll.ch>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Jitao Shi <jitao.shi@mediatek.com>, CK Hu <ck.hu@mediatek.com>, 
-	Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, 
-	Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-pwm@vger.kernel.org, linux-clk@vger.kernel.org
-Subject: Re: [PATCH v2 12/18] dt-bindings: pwm: mediatek,pwm-disp: add
- compatible for mt8365 SoC
-Message-ID: <vasuzy7cf5x6p5rnrmdrk5z54oncu2yuutupf25h5fgd5y6fpl@mnkf67agw64g>
-References: <20231023-display-support-v2-0-33ce8864b227@baylibre.com>
- <20231023-display-support-v2-12-33ce8864b227@baylibre.com>
+	Wed, 17 Apr 2024 08:07:18 +0000
+Received: by mail-ej1-x62a.google.com with SMTP id a640c23a62f3a-a526d0b2349so382337766b.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 17 Apr 2024 01:06:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1713341215; x=1713946015; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=BuvMTKrS538OQBDa2jdh/t6qnPEHbqMc8PN+mILzuvs=;
+        b=R+hG/TO8wm5EJ++C7rV+Xok9hT76RpDP1MI/u0PtP4RNsxi3oeNeZOtt3atxchFXYz
+         gvp2ihjJxuUkEF3Tf3dG1H3LI6MIIBHgj5Ha4g6OMAGEsc56FDb8C3cOlNFm9wdkk/OC
+         28e9TCD5ZOUh/UJA3EG9Mpg6IRz9CgOg5kSxsgGDR+TGNedorhcH/ThGT15xxtiZgLka
+         2tOtKwHP5YItxWjsx2+G4S0d2eywcHsqzTvJvrmWD54CoqR6MAq6KpHpIP1mdn7tLldS
+         s5Ergh97GaOHjpvP8YYfLD2ezcC2Nm4hy/ny7ww75YQy41QIXAx43N64kZOw2jKzQ8KI
+         OdNw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1713341215; x=1713946015;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=BuvMTKrS538OQBDa2jdh/t6qnPEHbqMc8PN+mILzuvs=;
+        b=wbIyLFyaZajv6e3kAGT2Jtvhz26KpedOfWc4gdu60jcWTY73uaYXyUcuxpnQE88VJx
+         V1x4xE4YNAcN39oU+FaL68w01U9ba5Ay5q76M3/H1mbG0DTB7IqhgjFeyKKIaVukE/nd
+         hVEHxLTJF5Bfnow/0jtHJFRGIKGmGRYNpeGcbfZUJafJfkXmUFETDJ/4jl+T6F/tJuUC
+         Bj+sAUT21aF+QA8pN8WKd13ZCo2GfH6INiUXzof/v8f+jtlf483jA09PqGTUAi8C6AqU
+         EPGO/ynvmYNagzgEl9Y9WK5aaXqK5AxsCsp2pZ7IwWEktPrm4k3r9lT7tH/r7yYCjiyg
+         9a0Q==
+X-Forwarded-Encrypted: i=1; AJvYcCX6rBJMIRT242r1MH4fYVJX4eWzt38E5iGtnIWOAcO81lqng+CqhazzBpESYxdBmQIwrWzghcF14A71zuUc997UjZxgjwTCtwiUIGzldRGVspi+
+X-Gm-Message-State: AOJu0YwO9qtHu91D9XY3ZnOG3WgBGxhXJXfv9bazAQDUdOhCSCTeM8KY
+	yssYG7VF1MQyYZ25vtptV2uwn/6+HGofkALk8+RrA2wOt1gwGVecyAfBvCNPAZ4=
+X-Google-Smtp-Source: AGHT+IF9QNj2+LEOTDvCsMmUjHTc38pjE+FDvplPR3KiswRdx9pL2ELeUrxLu0thmtQsPq4SfA0PEQ==
+X-Received: by 2002:a17:906:a016:b0:a52:4d96:85e with SMTP id p22-20020a170906a01600b00a524d96085emr6795036ejy.53.1713341214788;
+        Wed, 17 Apr 2024 01:06:54 -0700 (PDT)
+Received: from [192.168.1.172] ([93.5.22.158])
+        by smtp.gmail.com with ESMTPSA id cx10-20020a170906c80a00b00a51b5282837sm7852622ejb.15.2024.04.17.01.06.52
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 17 Apr 2024 01:06:54 -0700 (PDT)
+Message-ID: <cd5dcc90-bd34-40d5-af79-4943883411ad@baylibre.com>
+Date: Wed, 17 Apr 2024 10:06:51 +0200
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="io3h7fqcywjsjxa4"
-Content-Disposition: inline
-In-Reply-To: <20231023-display-support-v2-12-33ce8864b227@baylibre.com>
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 11/18] dt-bindings: pwm: mediatek,pwm-disp: add
+ power-domains property
+To: =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
+ Daniel Vetter <daniel@ffwll.ch>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Jitao Shi <jitao.shi@mediatek.com>, CK Hu <ck.hu@mediatek.com>,
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+ <sboyd@kernel.org>, Catalin Marinas <catalin.marinas@arm.com>,
+ Will Deacon <will@kernel.org>, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-pwm@vger.kernel.org, linux-clk@vger.kernel.org
+References: <20231023-display-support-v2-0-33ce8864b227@baylibre.com>
+ <20231023-display-support-v2-11-33ce8864b227@baylibre.com>
+ <22yeoik77sdhmg43odjftzjn2douq74zhxwy6qx3hsrvr53r5e@7w3f3zbgxult>
+Content-Language: en-US
+From: Alexandre Mergnat <amergnat@baylibre.com>
+In-Reply-To: <22yeoik77sdhmg43odjftzjn2douq74zhxwy6qx3hsrvr53r5e@7w3f3zbgxult>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240417_010644_545018_4CEAE7F5 
-X-CRM114-Status: GOOD (  13.27  )
+X-CRM114-CacheID: sfid-20240417_010713_595730_B62836BB 
+X-CRM114-Status: GOOD (  12.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,48 +113,33 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---io3h7fqcywjsjxa4
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+
+On 17/04/2024 10:01, Uwe Kleine-König wrote:
+> Hello,
+> 
+> On Tue, Apr 16, 2024 at 05:53:12PM +0200, Alexandre Mergnat wrote:
+>> According to the Mediatek MT8365 datasheet, the display PWM block has
+>> a power domain.
+>>
+>> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+> 
+> I already pointed that out in reply to the cover letter, so just to make
+> it more easily to spot for people considering to apply this patch:
+> 
+> This is already fixed in next.
+> 
 
 Hello,
+Sorry I've misunderstood the previous message.
+I will remove this patch for the next revision and notify it in the cover letter.
 
-On Tue, Apr 16, 2024 at 05:53:13PM +0200, Alexandre Mergnat wrote:
-> Add a compatible string for MediaTek Genio 350 MT8365's display PWM
-> block: this is the same as MT8183.
->=20
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
-ora.com>
-> Acked-by: Uwe Kleine-K=F6nig <u.kleine-koenig@pengutronix.de>
-> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+Thanks
 
-I already asked in reply to v1 what the merge plan is here. There are
-changes in my pwm tree to the mediatek,pwm-disp binding already. I don't
-think they conflict with this patch, but maybe it's still easier to take
-this via pwm?!
+> Best regards
+> Uwe
+> 
 
-Best regards
-Uwe
-
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
-
---io3h7fqcywjsjxa4
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmYfgvUACgkQj4D7WH0S
-/k78IAgAhF2CBY2gx+0pIvPzhA01LKYoH1PW7O9/VqjB74kUiFSUlcSeRrutEtNX
-ZEg4pND9OmmBG82ECTvIccPKIL/n/aJOrZmng5N69kS14q4JUBYSVXbDDAF1dCbX
-0PieK7SFo9D87VIaJATg+qpjGibELEWpKVbPeTeO5J2wzUJSltGSG5oNzJ8dX3XO
-uqQoTu0bGayvkTeIy6I1XXkNDC8OGER+18nco1/s6w0zkBdm26UUbc3DCy/o5eeA
-R0WD+DHqWiTxA80vpSEGFJ2RBPB96z3bbFBz4U0n5Q9vU34oqBr3oyvOd9qPXTMt
-ok+B9O4U4Q0Cag8pOsGc7GXkD41LXA==
-=hlSO
------END PGP SIGNATURE-----
-
---io3h7fqcywjsjxa4--
+-- 
+Regards,
+Alexandre
 
