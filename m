@@ -4,182 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A8D2C04FF9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Apr 2024 11:20:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C633AC4345F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Apr 2024 12:03:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=12qw92P+ehRKXuD7DKx5NDPUrqqCZSP9T48NEs2j/4g=; b=eo0oSnmdNPzBJMtcqPbX2IgNLo
-	qGGva4ZT2Zse4EhNHbw7mKVn9ykNIN7kkwRDjj8gPdErgZQPPBA4NQPSGPELLyIOfN0xYmUDkGYhU
-	js4bvYwdH3mTUWZaETw2OUTJWISFsts9swEOAN1IRaKHodfio0zYKuosHzLGw12TzdMFLucYHPwsl
-	vgMJ+/KJPf5bHyO4W1GvMZXd/+6LDVuJf4B5CPnHwbplQGUcwNzU3G5PXJMV/5r4DnVsTNTil+J+0
-	2aTPevLZjl5Q3ImYa+uiud+h/os3q2miDiAsQt2Pf4fM2tlRnBArPZ6dOBhJ1d7h0WSF26O04JHyF
-	EN6U1phQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=JqUxpmUqpZwb93aWIdk8nK8jsHAciW5UzOnZrGBCZHY=; b=IBY3zhAZHogiWEE8B6X9d9DX0s
+	krDyGU2LfMTgItAYewhBouw1SnmWOb8NIFAicDYKBdB6jp7nbHyfF81At/32Li9tzvW2MCB+2yBQO
+	KtwF1EwWmLR15U4Axp9O5wJQUPfsnm8hM6/ZJIJxzykbHRh79VGm7+G1+LrZyh8mFQViezRjqAJU7
+	o0eOEwDFHaERReDzEk8gT4GJ5NCw5Ws2K6V+sHBAlYhnSIlXy04h4Ouf/D9ivyAkav20l/VGYAYel
+	VbpIBtAUbP+kwDLA2aspwfK1si0Swgu0svbuhpsL4TTEdO8oJUxsla7lhfaiTPgYPOCiGNFy5V/7r
+	vH2JrUpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rx3Kf-0000000FlLa-0mmu;
-	Wed, 17 Apr 2024 11:20:05 +0000
-Received: from mgamail.intel.com ([198.175.65.15])
+	id 1rx40i-0000000Frzz-1U1u;
+	Wed, 17 Apr 2024 12:03:32 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rx3Kb-0000000FlJw-3gQo;
-	Wed, 17 Apr 2024 11:20:03 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1713352802; x=1744888802;
-  h=message-id:date:subject:to:cc:references:from:
-   in-reply-to:content-transfer-encoding:mime-version;
-  bh=mbE7t7Vdct0OK9ENrs75LkNaLW80Fgs3+9C8FQ1U9DI=;
-  b=lFHIfxqNAPv4KnAkGT7Q7LqXv6AiU0mn98Y1vOXNYg0Nv4AvCvTl7vOD
-   bfEzsJqAnQEJVTHv7Mcmqqy5JCNY0CvHMhAuhQVzeESTElfbwtQ+yIpyJ
-   cthXWLKCqu279aTGD0Y0mQrOf6CKLfM1LOEzRHx1PDNsDlmCGN5T5yRDZ
-   LFfcHMWfkKEWo+6NC7Dm4X7JIr+M4k4aCsE5MW0hXIYyB798/JGzJdNEP
-   vz5xvd7/vjTNNbp1z7+HKGaTwbfEuQAo4DuBa7s7jcZCpTPPDPsRP/5XY
-   Rsa5ZqeFUeiqUy7vu/m5Oiig8tc0M/qh71tabjZiouqeAvGPjLpaWsnt1
-   w==;
-X-CSE-ConnectionGUID: qYZiaORdSneu7nluswJ/sA==
-X-CSE-MsgGUID: zH9zCwhnTtOSYhyS8HrhPQ==
-X-IronPort-AV: E=McAfee;i="6600,9927,11046"; a="12622236"
-X-IronPort-AV: E=Sophos;i="6.07,209,1708416000"; 
-   d="scan'208";a="12622236"
-Received: from orviesa002.jf.intel.com ([10.64.159.142])
-  by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 17 Apr 2024 04:19:17 -0700
-X-CSE-ConnectionGUID: vGXt9ejqTnmjOOsBTk4QDg==
-X-CSE-MsgGUID: 0KAmsj/+Qe2dgtTm2y+vyw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,209,1708416000"; 
-   d="scan'208";a="53544596"
-Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
-  by orviesa002.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384; 17 Apr 2024 04:19:17 -0700
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35; Wed, 17 Apr 2024 04:19:16 -0700
-Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
- orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35 via Frontend Transport; Wed, 17 Apr 2024 04:19:16 -0700
-Received: from NAM10-MW2-obe.outbound.protection.outlook.com (104.47.55.101)
- by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.35; Wed, 17 Apr 2024 04:19:16 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=nt8FW8PLh/jka9mcK3/kbBnm+VEmRG/G9gCC8Rdcyb0IKAwDtjZ4Ll1Ve9xPGmIeQKa5z5tpnm4li9Y856pVsQDtBn9Zvsg9oumt2juHwGM6PDUpm1sI70q9O6TBW7ADRBAXNgjaL6k9fvpUt1VE5o5qJHKZjSYNUgejwbI4WPLJP5QwKaY0y2W1fJTrlFBj9srtBj3B/m283HYDj0zyLo5OMhwk9sYDuUQij/AdBRPZ9PZTWAti/s/b9vC216swy5PzblrLJNR+A9GdR2s0YRE8dyZNWDHmwOCWi4k8dKPjFFJu+kaUNl8WLJ+SxiHTZvqncN5VRm6u0UcgO6RTFA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=12qw92P+ehRKXuD7DKx5NDPUrqqCZSP9T48NEs2j/4g=;
- b=fRD52oXXK/7mSZr8QuhZwgGBTlDYOAQ7SkQaM5dFloiB4FWVHdlsPJxfZve7MUcH8/vCS3syMymtdYVabp2lgOenVoAwhEMEPLzmZLh5wWlp7c4viqaVY69g4S+za9fdgHj02eFq7MquhDv5O1GG9CwWcq/J3NCVzJNnFfbJLtK521JxsYN2CJUpQMHT1h6o8LNdDST9GqFUaJQYB0f7PDTim25HqBSXy9/xSs2GgTDgzUgTiXa66UjWp2JoOGY/BWQu3NCtz9xGDP9YKVEBnuDbPg6w3AF6o4Mkj/OgcK6Tfmd3RDA8ZeIlJJ+ahGyos38z/5uw9ZQuejhmYcf3xQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Received: from DS0PR11MB8718.namprd11.prod.outlook.com (2603:10b6:8:1b9::20)
- by PH7PR11MB5796.namprd11.prod.outlook.com (2603:10b6:510:13b::13) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7472.37; Wed, 17 Apr
- 2024 11:19:15 +0000
-Received: from DS0PR11MB8718.namprd11.prod.outlook.com
- ([fe80::654c:d66a:ec8e:45e9]) by DS0PR11MB8718.namprd11.prod.outlook.com
- ([fe80::654c:d66a:ec8e:45e9%6]) with mapi id 15.20.7472.027; Wed, 17 Apr 2024
- 11:19:15 +0000
-Message-ID: <d4991f11-a527-429d-b71f-d4ca3a18f501@intel.com>
-Date: Wed, 17 Apr 2024 13:19:06 +0200
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next v6 03/10] net: create a dummy net_device
- allocator
-To: Johannes Berg <johannes@sipsolutions.net>, Jakub Kicinski
-	<kuba@kernel.org>, Breno Leitao <leitao@debian.org>
-CC: <davem@davemloft.net>, <pabeni@redhat.com>, <edumazet@google.com>,
-	<elder@kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <nbd@nbd.name>,
-	<sean.wang@mediatek.com>, <Mark-MC.Lee@mediatek.com>, <lorenzo@kernel.org>,
-	<taras.chornyi@plvision.eu>, <ath11k@lists.infradead.org>,
-	<ath10k@lists.infradead.org>, <linux-wireless@vger.kernel.org>,
-	<geomatsi@gmail.com>, <kvalo@kernel.org>, <quic_jjohnson@quicinc.com>,
-	<leon@kernel.org>, <dennis.dalessandro@cornelisnetworks.com>,
-	<linux-kernel@vger.kernel.org>, <netdev@vger.kernel.org>,
-	<bpf@vger.kernel.org>, <idosch@idosch.org>, Ido Schimmel <idosch@nvidia.com>,
-	Jiri Pirko <jiri@resnulli.us>, Simon Horman <horms@kernel.org>, "Daniel
- Borkmann" <daniel@iogearbox.net>, Sebastian Andrzej Siewior
-	<bigeasy@linutronix.de>
-References: <20240411135952.1096696-1-leitao@debian.org>
- <20240411135952.1096696-4-leitao@debian.org>
- <20240412191626.2e9bfb4a@kernel.org>
- <ebe80c29-4884-488d-ab83-c020f9c3bc81@intel.com>
- <e0d5741ee053c11fe078fc8afe6cf4a92e274095.camel@sipsolutions.net>
-From: Alexander Lobakin <aleksander.lobakin@intel.com>
-Content-Language: en-US
-In-Reply-To: <e0d5741ee053c11fe078fc8afe6cf4a92e274095.camel@sipsolutions.net>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: MI1P293CA0001.ITAP293.PROD.OUTLOOK.COM (2603:10a6:290:2::8)
- To DS0PR11MB8718.namprd11.prod.outlook.com (2603:10b6:8:1b9::20)
+	id 1rx40a-0000000Frxt-2DLz;
+	Wed, 17 Apr 2024 12:03:30 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 8D457614B8;
+	Wed, 17 Apr 2024 12:03:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 43E73C072AA;
+	Wed, 17 Apr 2024 12:03:21 +0000 (UTC)
+Authentication-Results: smtp.kernel.org;
+	dkim=pass (1024-bit key) header.d=zx2c4.com header.i=@zx2c4.com header.b="OHlXNPsx"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=zx2c4.com; s=20210105;
+	t=1713355399;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=JqUxpmUqpZwb93aWIdk8nK8jsHAciW5UzOnZrGBCZHY=;
+	b=OHlXNPsxgNeFaA7jrH1Br0FTvd5MlBsolxUqxkTmXnoRRp4LoCKRSh9Wpaa1uSsBNth0bj
+	NruZAmbZY/cwQCmnCYruRcp03ibKhQDImJPVkfT8APA8oexA++D+sa6nAU9aQHKv1vzp5C
+	7tlfLqobpdk11Z41U8yny4pUzFmyWTg=
+Received: by mail.zx2c4.com (ZX2C4 Mail Server) with ESMTPSA id c1243d44 (TLSv1.3:TLS_AES_256_GCM_SHA384:256:NO);
+	Wed, 17 Apr 2024 12:03:17 +0000 (UTC)
+From: "Jason A. Donenfeld" <Jason@zx2c4.com>
+To: guoyong.wang@mediatek.com,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	wsd_upstream@mediatek.com,
+	Theodore Ts'o <tytso@mit.edu>
+Cc: "Jason A. Donenfeld" <Jason@zx2c4.com>,
+	stable@vger.kernel.org
+Subject: [PATCH] random: handle creditable entropy from atomic process context
+Date: Wed, 17 Apr 2024 14:01:11 +0200
+Message-ID: <20240417120217.3814215-2-Jason@zx2c4.com>
+In-Reply-To: <20240402081214.2723-1-guoyong.wang@mediatek.com>
+References: <20240402081214.2723-1-guoyong.wang@mediatek.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DS0PR11MB8718:EE_|PH7PR11MB5796:EE_
-X-MS-Office365-Filtering-Correlation-Id: 609aa0a5-3855-47e5-1709-08dc5ed036c2
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: Awf46Ez1vT7UOAHRKgIzivW8Hk1Fd+bjpS3a6FGZv1cFjlGne/PQNfiTyhs0X8Rgr0sgtU1fAXlrtbpkRclS5DfaKOaoS98BZUpIMe9+qEDfm2+J7W84MxoHSywhZXMYi+4vMW+XA8XUOP4WTDtkxlGUj9nvzu26QHXpuNEGzCPaoGRHM87GdV5PwYO9wo78/0ncqRBWt2/QaQOSW5Oy4Nk9kfw3J9T0x5VLfoJhdvQ1vtcKZaE5/FcmpGZ/Ye/KdgeQjsv4hlWDbfpqvzm3sz+gGLRPtqgNy6hCVx+GO6RUHotxPT5ih3UJcoDaXXoNvvSQVxXUHIWRdCOuhnV+XS6T/WH0OI6dq1343JgZRJQPpuc/BOOD+Ta0EZnVtzTjbTRMkwVu3QDlyM1KoBmPGSIAYUTPYYejLReI67sFAbu38E3FYXp+rbHL8+oY+oGkG6bDNN0onwbfCKIXt9ecX0yEJgnDsrmT7345ano5WLZBdW8Hz5cIIw6QYmWseOomY77P+MioaUMAPzpyvAWSm7ogjR8hzA+dr+qq90VVHXhHaac929b/x/R4/JGhtztrv2kyyoGgK3UwTQ2rvUpGmxf+PUecqdQkQADdLnfXloUAhGO6KwW3phC7OVMWnGapT53GlkvB/HUf5vLAXo7QPS7+wZtrOdz1NzcUSMBYEA8=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DS0PR11MB8718.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(376005)(7416005)(1800799015)(366007);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?akIvZmNDRElYc1VuL1RqZk55UlVRL2NZS2M1aFF1enh6WVZvMk13ZWNnLzZl?=
- =?utf-8?B?eDd4bU5IbU1YbnlCTTl4dE5xLytLUmZvZ0JhQkY0c2tNTmlEVW9yNW9zYnBM?=
- =?utf-8?B?NDZ5ZllmdlVwRDB1TEIxK2JRd1EycVU3Q0FXMEhwMEl3OTkrVnh5Tm91d3do?=
- =?utf-8?B?SnZUQ0ptcWFybmhyOWpvZFdqYWhQRkR1NU5VZ3N0bzRoMTFIWDlsWktBRDhz?=
- =?utf-8?B?REZTYXNiZlMrOUM5bElXTjNmQ2ZoWkkvaHQ5M0FOcS9BdldTeVl6VXFCVGg4?=
- =?utf-8?B?VGZCWWNRdGNkVEZsNWt5TTErRzd1SjVVVTR1STlUbFlvQ2htQWhsRVlwYVpv?=
- =?utf-8?B?NlNqRXpYc29aaWVraFJxRXhsUThHWndPKysvQ1JNSkFLWGdxd2VWdktsZGRi?=
- =?utf-8?B?WFlIamZRb09VVy9tanJaV3BsZWZGSTFocVlKanNKWkc5SFg1R2RXUW1EWDMr?=
- =?utf-8?B?M2dVUWJHdERocVJnRVNtbEQwNTlwZTlGQkFZOEVYZXJRMjRFK0c1N2xKdTN4?=
- =?utf-8?B?amlnV2thMjVueHZPbWxpREdzZFQyeDdzZUx6cCtGR3orb1hIa3h5dWNBeGRs?=
- =?utf-8?B?V2MrRExFbDREU3pEZWxPdTh3UEJNcC82YUhIYkN2UHNwSXF4NGZ0TDJ3SUNk?=
- =?utf-8?B?WGdXelU1azVmbk1pbk9zTUMzeHZLd08wUVhTVFBjNjA4bGkrNzYxMDZseWZw?=
- =?utf-8?B?LzFEYlNuTDlvdzZCRXVEcUhYejhuRE5kQWJGblc3cThxMS9WVVE3RHdvd0tx?=
- =?utf-8?B?SWhUQWsyOUdYQ2dxbGxXVG1ETXcra2NpNW4xcEtXdnFocXZuV3U2cVYvZmdX?=
- =?utf-8?B?eWVKRzhGZ1Q3bERaMEE4QmFNd2Y2b1NYSHVmclF3TnJLVXV1Y3UwcStnRE05?=
- =?utf-8?B?bkhQWDR5UUZUaHd6Mi9RTnAySG9pWm83dmpzbUpkN1NpV3lTV1lCWjlSOGdi?=
- =?utf-8?B?TFcxVGZzUHd5OXFDMVJyRmJKSkthNWsxT3FERmJXakthalRrWnJtNjN1cC82?=
- =?utf-8?B?cFdYMmVOWHhUK1c5dXdvdjJvMy8ybktoaEdQYjlCd2p0OUNNR2hXcCthWExv?=
- =?utf-8?B?emRvZGtldnhzZFRzd21rcjg5KzYvM3p1SFRoTHVqaHpMZ1E4NExzV1U5dURN?=
- =?utf-8?B?cURzT2dneUZmL09qWlF3R2FXNnVDTUpoUEZpcDlhODNid1hsWllOR2p1Rzkv?=
- =?utf-8?B?N1U4cERQbkgrVCtvU09nV0pFZU5vRDNqTlpwWDlmbXVXZGprakRVK2ZCNy9v?=
- =?utf-8?B?V1BVR1pzWTdhTk5RMjhhUWQwM2h1UnhCVXFacm5OSWlUeFRPbEdXamNraHJh?=
- =?utf-8?B?YnJnZUpUbHZCemlrS0IwczVZcmhVUm9aYXRwdjJOeXY2VzZqUGpOb3RwYkUr?=
- =?utf-8?B?TkdXcEkrN3owSjZjZXJQNjNOWFZRTnFFTm8yMk5nTlFhcmlVT1gweVRLZC9v?=
- =?utf-8?B?d0VVSkZITVI0SDJzb0RkVjd6c2k1M0lGRGR0NEladkxqOW1jTVlaY29rRGE2?=
- =?utf-8?B?T3BhTmR0TlEwSklBbXBjdkM1WW16UXVBRmFTUkl4OTg5RGtrV2JrSTk4MlE5?=
- =?utf-8?B?RUdGY3M2aFBEdmlWbnFtazNDdWNvaW5MOXBKcmZTYlhOR29uRG9MMjhpSlVa?=
- =?utf-8?B?K0NCOHhxREw4VDNWOWQwYk1Ic1p3a1h4ZDR3RmRVc0RCeExVSmtkcjRiZVQ1?=
- =?utf-8?B?WThlOVo2Z2V5Zi9JRW9RZjBWU2ZDZlhnRHgxR3dNc1dzWFROdTNqTlM1WURk?=
- =?utf-8?B?Y3pycFhFS3BCLzgyWTBhVFVueEpFb2hSbi8yWkI0NTNlVmhMUHBRTHRPV1ll?=
- =?utf-8?B?Q0RnaExvWVlGbDRLZDNzSkFTV2Z5V3ZDc2Y1MlUrSGFlamthb0ZkWEU2UUZU?=
- =?utf-8?B?L1gwbU5UMmdQU0x2RkQ3Vml4eHp6cks1dFFOMmRxUzZYNm1qMCthYWF0TUpH?=
- =?utf-8?B?YlU0YUFqM2dUYmxIVnlUUHZybmdxZXBMejhUNVJhQUtQTStWSUJGNUY2cytP?=
- =?utf-8?B?QW5JbUxZdjhKcnhGMC9CcmRYNDhLa2tPSlZwSy85em9sb0pNZ1ZTOXFOQVhk?=
- =?utf-8?B?U1hMMXd6eStGVlp3RDJvMmpycHAwdHlrWnVINGpEdTdsUFR2aGNEdkw1eUtu?=
- =?utf-8?B?d3I4ejNBWkJwN011SUJPZUZidUMwRkI5d1MrcEMyRUI0Q3lpd2RqNlBsUTVo?=
- =?utf-8?B?Q1E9PQ==?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 609aa0a5-3855-47e5-1709-08dc5ed036c2
-X-MS-Exchange-CrossTenant-AuthSource: DS0PR11MB8718.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Apr 2024 11:19:14.9519
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: Ho/rNch7z9JcYur1XY9KZUlS2nSeZLLJTSNjn5CJfPmukc1x5tm1EKHd7i3LUcgH4OioA6FwRc1AzvkxfA72padJMSqzNeX5hs9OI58hS7k=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR11MB5796
-X-OriginatorOrg: intel.com
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240417_042002_032791_581AADE7 
-X-CRM114-Status: UNSURE (   8.42  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240417_050324_781980_BD6C738F 
+X-CRM114-Status: GOOD (  22.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -194,29 +78,96 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Johannes Berg <johannes@sipsolutions.net>
-Date: Wed, 17 Apr 2024 13:11:38 +0200
+The entropy accounting changes a static key when the RNG has
+initialized, since it only ever initializes once. Static key changes,
+however, cannot be made from atomic context, so depending on where the
+last creditable entropy comes from, the static key change might need to
+be deferred to a worker.
 
-> On Wed, 2024-04-17 at 12:51 +0200, Alexander Lobakin wrote:
->> Just FYI: kdoc accepts only this pattern:
->>
->>  * @last_param: blah
->>  *
->>  * Return: blah
->>
->> NOT
->>
->>  * Returns: blah
-> 
-> Actually, it does accept that, the regex is "returns?". It's just
+Previously the code used the execute_in_process_context() helper
+function, which accounts for whether or not the caller is
+in_interrupt(). However, that doesn't account for the case where the
+caller is actually in process context but is holding a spinlock.
 
-Hmm, I was sure I had warnings on "Returns:"... Not sure now.
+This turned out to be the case with input_handle_event() in
+drivers/input/input.c contributing entropy:
 
-> documented only as "Return" . IMHO it sometimes reads nicer as "Returns"
-> depending on how you phrase it, but ...
-> 
-> johannes
+  [<ffffffd613025ba0>] die+0xa8/0x2fc
+  [<ffffffd613027428>] bug_handler+0x44/0xec
+  [<ffffffd613016964>] brk_handler+0x90/0x144
+  [<ffffffd613041e58>] do_debug_exception+0xa0/0x148
+  [<ffffffd61400c208>] el1_dbg+0x60/0x7c
+  [<ffffffd61400c000>] el1h_64_sync_handler+0x38/0x90
+  [<ffffffd613011294>] el1h_64_sync+0x64/0x6c
+  [<ffffffd613102d88>] __might_resched+0x1fc/0x2e8
+  [<ffffffd613102b54>] __might_sleep+0x44/0x7c
+  [<ffffffd6130b6eac>] cpus_read_lock+0x1c/0xec
+  [<ffffffd6132c2820>] static_key_enable+0x14/0x38
+  [<ffffffd61400ac08>] crng_set_ready+0x14/0x28
+  [<ffffffd6130df4dc>] execute_in_process_context+0xb8/0xf8
+  [<ffffffd61400ab30>] _credit_init_bits+0x118/0x1dc
+  [<ffffffd6138580c8>] add_timer_randomness+0x264/0x270
+  [<ffffffd613857e54>] add_input_randomness+0x38/0x48
+  [<ffffffd613a80f94>] input_handle_event+0x2b8/0x490
+  [<ffffffd613a81310>] input_event+0x6c/0x98
 
-Thanks,
-Olek
+According to Guoyong, it's not really possible to refactor the various
+drivers to never hold a spinlock there. And in_atomic() isn't reliable.
+
+So, rather than trying to be too fancy, just punt the change in the
+static key to a workqueue always. There's basically no drawback of doing
+this, as the code already needed to account for the static key not
+changing immediately, and given that it's just an optimization, there's
+not exactly a hurry to change the static key right away, so deferal is
+fine.
+
+Reported-by: Guoyong Wang <guoyong.wang@mediatek.com>
+Cc: stable@vger.kernel.org
+Fixes: f5bda35fba61 ("random: use static branch for crng_ready()")
+Signed-off-by: Jason A. Donenfeld <Jason@zx2c4.com>
+---
+Guoyong- can you test this and tell me whether it fixes the problem you
+were seeing? If so, I'll try to get this sent up for 6.9. -Jason
+
+ drivers/char/random.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/char/random.c b/drivers/char/random.c
+index 456be28ba67c..2597cb43f438 100644
+--- a/drivers/char/random.c
++++ b/drivers/char/random.c
+@@ -702,7 +702,7 @@ static void extract_entropy(void *buf, size_t len)
+ 
+ static void __cold _credit_init_bits(size_t bits)
+ {
+-	static struct execute_work set_ready;
++	static DECLARE_WORK(set_ready, crng_set_ready);
+ 	unsigned int new, orig, add;
+ 	unsigned long flags;
+ 
+@@ -718,8 +718,8 @@ static void __cold _credit_init_bits(size_t bits)
+ 
+ 	if (orig < POOL_READY_BITS && new >= POOL_READY_BITS) {
+ 		crng_reseed(NULL); /* Sets crng_init to CRNG_READY under base_crng.lock. */
+-		if (static_key_initialized)
+-			execute_in_process_context(crng_set_ready, &set_ready);
++		if (static_key_initialized && system_unbound_wq)
++			queue_work(system_unbound_wq, &set_ready);
+ 		atomic_notifier_call_chain(&random_ready_notifier, 0, NULL);
+ 		wake_up_interruptible(&crng_init_wait);
+ 		kill_fasync(&fasync, SIGIO, POLL_IN);
+@@ -890,8 +890,8 @@ void __init random_init(void)
+ 
+ 	/*
+ 	 * If we were initialized by the cpu or bootloader before jump labels
+-	 * are initialized, then we should enable the static branch here, where
+-	 * it's guaranteed that jump labels have been initialized.
++	 * or workqueues are initialized, then we should enable the static
++	 * branch here, where it's guaranteed that these have been initialized.
+ 	 */
+ 	if (!static_branch_likely(&crng_is_ready) && crng_init >= CRNG_READY)
+ 		crng_set_ready(NULL);
+-- 
+2.44.0
+
 
