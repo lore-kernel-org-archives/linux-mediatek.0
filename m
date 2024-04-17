@@ -4,99 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E449C001CC
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Apr 2024 08:12:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AF69C4345F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Apr 2024 08:14:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TzkbbRIO2QimJ8RWbkwCZ+K7gIC0TeXOrUoZh+Yj+po=; b=2DBrEqWS4MoHouOpBuC2ljSMrR
-	Voe/JCk+2drYiGSBbvrGvH6Pfvj2u2/M+2fM6Uq3wedvjQGZNGa0rL8O2P/L3p59JTI6F0BYR9+ki
-	8MHTxy9F91YULINtqmeXjTqUGVe1ExKgAJC8Lr/ypQgMHlf5MAsE48Yq7SHqdAp6PYbrOcr/Mok6T
-	mQkgRztw3LbOhgge8QLvcg7ZTk6cA1MXOWrfCh3fOSlQzNPuF6d3jgLwg71+q7yCX5138rD/L7H28
-	GayV8WhRd/fHNCjmlAGAjAX7jgKlHvzEDwLX+3uQKZKrY+pr7HYrFTzw5Jg/MBRkdkO9ZWqiMy3OW
-	7dzbFgsg==;
+	bh=xrmESxH3RnhxlI3N1GmDb33VMABbntjU3MAxxrH6D+Y=; b=iZlC3YDb99U4a534UJW+i8X5gO
+	ScJLa7Mv68bwGqIb8qMzIycTGCR/YeKrTsJ60NzhVxpaSVzMTnWAMJhyg8aJwJGc2x3OPa+IpcoVg
+	cAbZ1G4FrpBOrxqb0XTe/X9rPwk9QFpyeevXPw6IDQxlP9R9xCWdOvXbnA4UQ2L+A5FrgluE+Ai/T
+	v2LJAw1UF2HTw0+bPhhU/01NI3mofX6WsyiJgnof4kgvIGfQjas74d2zTneohUIUHg3W/+2lb8H3M
+	6gj+Qy6BES6cYSSUy+aR8pzHqHo4levxtJhuImZ5tFqFKEzX70eM2qKT1PinLaqFUjCdPPWQ/IXeP
+	SLWAG2vg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rx0P1-0000000F9rv-3Fi3;
-	Wed, 17 Apr 2024 08:12:23 +0000
-Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
+	id 1rx0RD-0000000FAPd-2KEc;
+	Wed, 17 Apr 2024 08:14:39 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rx0Oz-0000000F9r7-1P0J
-	for linux-mediatek@lists.infradead.org;
-	Wed, 17 Apr 2024 08:12:22 +0000
-Received: by mail-lf1-x133.google.com with SMTP id 2adb3069b0e04-516d6e23253so5890041e87.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 17 Apr 2024 01:12:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1713341539; x=1713946339; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=TzkbbRIO2QimJ8RWbkwCZ+K7gIC0TeXOrUoZh+Yj+po=;
-        b=tX4Zz3Xgp6/dtB7/RuqLV5A1mjY6Xa/XNckWwc+Swkmr9Q9czXDqVgp8AyanXVJ8Nm
-         X/v7vDsO5yjlgPOskdGNFkfmwK2kqC+KX3+bSkFI7icaja9McCsawtUPibQsZIaBaUKF
-         T7nYtzYZKQ6XkRPwhdwcH2vG46Vf3kC/zzz5CLCOZQoZG1GUVlwpI94y/NhwnNmkTmjD
-         U/QQ6stDtkkEl+Wy44MQdA0Oet90bEABgu0HPR0b7K1TofiGAjRnlbhrw7erKQRO+WEr
-         3icSHtDbgbO82Mwe+QIoEZBUCbDVemu+Zfa3RcjJhZ3YYJlK5cbBFsRfu4RzbhOgV0de
-         Bx9g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713341539; x=1713946339;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=TzkbbRIO2QimJ8RWbkwCZ+K7gIC0TeXOrUoZh+Yj+po=;
-        b=w8Diz8MFn5LsiyIl7z0rT4L1arBsibVEoXvMhyB0j+Q5KVkoRtLvMU+R1WxteVeagP
-         34hSeQx8qDQuRjNkhfJWBq1lSM8qxk3AjxGvY87Ehgjkg5X4XLNxuop8tbz6YtlUxZ6S
-         +uROpNT4YnXoDuByPg7VlIqTW0/CpXZzp7JuJZE855ONklbM6oozO8HP9s7rJSo4AgeI
-         YaTAsSCAg5IGRVMnpOto7aHTIesf5rfQ0YaBiT5l4Ymcp/2jzvjGLGdmtq9kwHp/pVM6
-         PaHwJqto+RPYvf4unLKUOhjFJHDlb5BN1U/6XI9gB3+TGS9f4WPbIOL9QMxALfG8cZqB
-         L23w==
-X-Forwarded-Encrypted: i=1; AJvYcCWjqaUKCuWQYHJM23kUoGLYdt+l4p0GOP/uanjD+HvGOQQJiBssT+FQDmRTip2quMIPJquAgz3Ki9iqf+/9JgDpROtwFGw6pj0ZQZ/hUbfDj4mC
-X-Gm-Message-State: AOJu0Yz+qJiThQPqPsCfVO5AJhmZTK3SH/vxac0IDg5eVHdJ2y4avqg1
-	eVm8DR2bQKxelDN3aFY4UsIFBc8E7qJ73xuERSRHK1lFLVhKnXDMY57wy6wYvJg=
-X-Google-Smtp-Source: AGHT+IH4Ux+OgM8GODN1EjrwY/h8hAJyaOMv9iN+0tmp9IOucYOjlUfi/JOumwmy4S2/VC/nm5QgBQ==
-X-Received: by 2002:a05:6512:1106:b0:518:9183:864f with SMTP id l6-20020a056512110600b005189183864fmr15160417lfg.34.1713341538799;
-        Wed, 17 Apr 2024 01:12:18 -0700 (PDT)
-Received: from [192.168.1.172] ([93.5.22.158])
-        by smtp.gmail.com with ESMTPSA id u10-20020aa7db8a000000b005700ef75274sm4950049edt.33.2024.04.17.01.12.16
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 17 Apr 2024 01:12:18 -0700 (PDT)
-Message-ID: <5c2a1b27-5602-461f-abe2-1b65f8245d8f@baylibre.com>
-Date: Wed, 17 Apr 2024 10:12:16 +0200
+	id 1rx0R9-0000000FANJ-0l84;
+	Wed, 17 Apr 2024 08:14:36 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1713341669;
+	bh=nxKyq4H0ET8o57EUkk9BeFnAgDxkoDenfHs8BMo7Gwc=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=RkLV/o1PU9ese6veoTStGg4K/NZagOdBE6LolLHaXNkrnLu/YEag41lL2b3bdSr37
+	 Wh86fihPy7t3RocZmjM4JxFj080dJXzwuKOKMQohdyQAhfxnNx7wDlHFOT90mlCgqW
+	 /hXnYC462KYH89DE2Tx+Oavowvd7RNcp0LXlcYJ9UyAQeL56BZK4WLW/JI2dkCrdJg
+	 pciBYIEo/3AHBXF17BXKSmnhzALaMatAJ7lNRuXY8NdpevP1Z5dbWGCec4JlO73+L8
+	 sZ1JCNimKuKWPqqGI4H+5aggw8DGG7JRzbtCSuFbTgbiVDeIKbr/vKs3ikzyEXFdf+
+	 3Y0aQxTbbaA8Q==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id B6E033780629;
+	Wed, 17 Apr 2024 08:14:28 +0000 (UTC)
+Message-ID: <ecd7c691-db47-42aa-ab19-f554c20774af@collabora.com>
+Date: Wed, 17 Apr 2024 10:14:28 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 00/18] Add display support for the MT8365-EVK board
-To: =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
- Daniel Vetter <daniel@ffwll.ch>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Jitao Shi <jitao.shi@mediatek.com>, CK Hu <ck.hu@mediatek.com>,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
- <sboyd@kernel.org>, Catalin Marinas <catalin.marinas@arm.com>,
- Will Deacon <will@kernel.org>, dri-devel@lists.freedesktop.org,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-pwm@vger.kernel.org, linux-clk@vger.kernel.org,
- Fabien Parent <fparent@baylibre.com>
-References: <20231023-display-support-v2-0-33ce8864b227@baylibre.com>
- <afetelidcystq4avtmfcvf6h4l5zdthwozwbhjica6jjybkiln@oxx2fqk65psx>
+Subject: Re: [PATCH v4 3/8] scsi: ufs: ufs-mediatek: Remove useless
+ mediatek,ufs-boost-crypt property
+To: =?UTF-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>,
+ "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
+ "jejb@linux.ibm.com" <jejb@linux.ibm.com>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "avri.altman@wdc.com" <avri.altman@wdc.com>,
+ "martin.petersen@oracle.com" <martin.petersen@oracle.com>,
+ "bvanassche@acm.org" <bvanassche@acm.org>,
+ "broonie@kernel.org" <broonie@kernel.org>,
+ "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ "robh@kernel.org" <robh@kernel.org>,
+ "lgirdwood@gmail.com" <lgirdwood@gmail.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ Chen-Yu Tsai <wenst@chromium.org>, Alexandre Mergnat <amergnat@baylibre.com>
+References: <20240415110012.148871-1-angelogioacchino.delregno@collabora.com>
+ <20240415110012.148871-4-angelogioacchino.delregno@collabora.com>
+ <c9634a286fbdb4c98a7fe6703a4eb10d66dfcb9e.camel@mediatek.com>
+ <4d60e9e4-9eae-4b0a-abb2-b1ad3d278fc9@collabora.com>
+ <93db93aa7eb24a255f97a1a1e8e8d936dc908258.camel@mediatek.com>
+ <f3920433-b0fa-4a64-9653-e385bf1eb5c7@collabora.com>
+ <d11e174d85c7f5a9b4ffe5fb2bb15dfd5823f83e.camel@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <afetelidcystq4avtmfcvf6h4l5zdthwozwbhjica6jjybkiln@oxx2fqk65psx>
+In-Reply-To: <d11e174d85c7f5a9b4ffe5fb2bb15dfd5823f83e.camel@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240417_011221_380115_A11EF2C9 
-X-CRM114-Status: GOOD (  11.89  )
+X-CRM114-CacheID: sfid-20240417_011435_393725_C6E27924 
+X-CRM114-Status: GOOD (  22.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,35 +97,78 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 17/04/2024 09:58, Uwe Kleine-König wrote:
-> Hello,
+Il 16/04/24 15:05, Peter Wang (王信友) ha scritto:
+> On Tue, 2024-04-16 at 12:38 +0200, AngeloGioacchino Del Regno wrote:
+>> Il 16/04/24 12:31, Peter Wang (王信友) ha scritto:
+>>>
+>>>> Yes this causes -> less than half of a millisecond <- of
+>>>> additional
+>>>> boot time
+>>>> if the dvfsrc-supply is present but boost-microvolt is not.
+>>>>
+>>>> I really don't see the problem with that :-)
+>>>>
+>>>
+>>> Adding a little bit of boot time to one smartphone might not be a
+>>> problem, but when you consider a billion smartphones each adding a
+>>> little bit, the cumulative effect becomes significant. The power
+>>> consumption of these accumulated times will continue to increase,
+>>> contributing to the Earth's carbon emissions. Moreover, removing
+>>> the
+>>> master switch for this feature doesn't seem to have any benefits
+>>> other
+>>> than not having to set it in the DTS. Similarly, the master switch
+>>> for
+>>> VA09 seems to have more disadvantage.
+>>>
+>>
+>> Sorry, but I still don't see how a few *microseconds* more of boot
+>> time can
+>> be significant, even related to power consumption during boot.
+>>
+>> If that was a few milliseconds, then I'd agree with you, but that's
+>> not the case.
+>>
+>> Removing the master switch has a benefit: you *lose* a few
+>> microseconds of boot
+>> time (so, boots in *few microseconds LESS*) on platforms that would
+>> have this set
+>> in devicetree, as this property is redundant with the other
+>> activation checks
+>> for those features.
+>>
+>> So, there you go: if the majority of MediaTek platforms are already
+>> using this
+>> crypt boost feature, then this commit reduces carbon emissions, as
+>> those would
+>> boot in a few less microseconds.
+>>
 > 
-> On Tue, Apr 16, 2024 at 05:53:01PM +0200, Alexandre Mergnat wrote:
->> Alexandre Mergnat (16):
->>        [...]
->>        dt-bindings: pwm: mediatek,pwm-disp: add power-domains property
->>        dt-bindings: pwm: mediatek,pwm-disp: add compatible for mt8365 SoC
->> [...]
->> base-commit: 890c94ce8a456aa4d7ead5f5fd2603b98dfe7b7e
->> change-id: 20231023-display-support-c6418b30e419
-> 
-> I cannot find 890c94ce8a456aa4d7ead5f5fd2603b98dfe7b7e, neither in next
-> nor in stable nor in drm-misc nor in Linus' repository.
-> 
-> For sure it's not based on next, because otherwise you'd have noticed
-> that the power-domains property is already documented there. (Currently
-> as fb7c3d8ba039df877886fd457538d8b24ca9c84b.)
-
-You're right, this V2 is based on v6.9-rc3
-
-> 
-> Best regards
-> Uwe
+> But the majority platfomrs dosen't need this feature.
+> This feature is only for legacy chip which at least 4 years ago.
 > 
 
--- 
+Upstream supports platforms that do and don't need this feature, and having
+redundant device tree properties performing the same checks is not just
+suboptimal but plain wrong.
+
+Adding to this, devicetree describes the hardware - and there is no physical
+hardware switch that needs this redundant property, this means that the
+property that is getting removed in this commit (and the va09 one in another
+commit of this series) is a *software switch*, not HW.
+
+Keep in mind, also, that this feature (and again, the va09 one as well) has
+a specific requirement to be supported - and this is what the code does even
+without the software switch to add it.
+
+In case there's any need to disallow such feature from a specific SoC, the DT
+bindings can be modified such that a specific compatible string would disallow
+adding the required regulator and/or boost-microvolt properties.
+
+Besides, I want to remind you that there is no reason to drop support, or have
+them unreliably working, or use hacks, for SoCs that are "old" - especially
+when this is a driver that works on both old and new ones.
+
 Regards,
-Alexandre
+Angelo
 
