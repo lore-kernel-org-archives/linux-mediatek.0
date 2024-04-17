@@ -4,140 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE410C4345F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Apr 2024 12:58:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AADDEC4345F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Apr 2024 13:18:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:CC:To:
+	Subject:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Oy6ydHY6pQ8DYm8xK8PeLsM+pd6WltoQh0mGRUSj86E=; b=aEu107bpnQ+xyefUxk5y4ZM6WG
-	/AFGcqtMazWTJg6+1xRmrDPxH6r4ISjFho+nm/R4Rmht9CJdoivkuJI/x7+e7RfInw6WEe5i+/X59
-	DRjqpJPlASIUxkF7GcJ9eN5TcCS9fqWXg4TyBXza+FgPDrU8M9LpDLT3wJc3FgvOn76LF8J/76/QQ
-	C2+qORiVOTKnpel8g52MK7z962+p21DsbvUu8wGyBIZtc1bZPS6CHd1UZX36mxFxbUIH2oYo4UL2T
-	WeYAB5Z2YCcjK9L5uf4xbVOhUaEUIniQIPQum2ALwDEgtiK+99HRYe8cbWjr0SB70EogJxinfww/U
-	z6tlsBgw==;
+	bh=FDzWnSlq74AzsNs+2Gtmdpu32oqvbvNVWifQvd45vz8=; b=qurtXqCGBog+Vd2xKNOKFcZENF
+	CxGERsaHAKvYP434cwNfc2e5jD3kSa2aTWyeDWDEvBl3aLBPsxXwVCNjoRxwk0cdWgcs6L7/LXOxb
+	qSsfGAUltv92W1OjtdZkvsOtxwIR2X+zY/MQ54PWv01QeFgOzuA1HsASC4MOsKIB/WHxtBQHgXq3T
+	sMyN/T72KBVwUK7Ftw63ypGDMr5LYq9fv18QfQANbkXB6AUAKVdUd4GDv2C8dAwCuldogAavsErAp
+	iiW7NGylIEGDmKyzwe7VAMIci2UDRGBSibrQrJgzsztY5NbZ9x0vgKWWWcwORvS+FrCm2gtxyLXRR
+	3vDpfW1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rx4rs-0000000G0ZF-3i1X;
-	Wed, 17 Apr 2024 12:58:28 +0000
-Received: from mx08-00178001.pphosted.com ([91.207.212.93] helo=mx07-00178001.pphosted.com)
+	id 1rx5Bh-0000000G5Li-0sW4;
+	Wed, 17 Apr 2024 13:18:57 +0000
+Received: from szxga02-in.huawei.com ([45.249.212.188])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rx4rq-0000000G0Wb-1XnK;
-	Wed, 17 Apr 2024 12:58:28 +0000
-Received: from pps.filterd (m0046661.ppops.net [127.0.0.1])
-	by mx07-00178001.pphosted.com (8.17.1.24/8.17.1.24) with ESMTP id 43HClsCK003624;
-	Wed, 17 Apr 2024 14:57:28 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=foss.st.com; h=
-	message-id:date:mime-version:subject:to:cc:references:from
-	:in-reply-to:content-type:content-transfer-encoding; s=
-	selector1; bh=Oy6ydHY6pQ8DYm8xK8PeLsM+pd6WltoQh0mGRUSj86E=; b=or
-	tz7J2eIpRjwTS6nxsow94Im5O+PJ8pyQKEzgQC9x+TEQyuiVxirXsxSqUmOFi5z6
-	j9JuaMCVAueB7+ptBoHkZGcb+q5wgjo9DutZh3e/xcZNv9ir2WSLw5Tx3J4ORSCe
-	EA73ib1bb2NSzUytaI+3EJVy3k1Q1gI0fSP3IQEsjwu2YJe3ZCZaDZ9kzaEBLiHp
-	IczYev9vu0LgIHwFgY0toURY1M4EinAS1+idFQEUfhYnNuSSXU5+tp4rEI3eP1EF
-	QiCs84WlUXA+URlFhvVZDuDiVG8dZypP1QlE91pV8tkChGQWA45K8voZ9I1+fYd5
-	RRPfPDBlEjqpZ5kxlIMg==
-Received: from beta.dmz-ap.st.com (beta.dmz-ap.st.com [138.198.100.35])
-	by mx07-00178001.pphosted.com (PPS) with ESMTPS id 3xgecyea3g-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 17 Apr 2024 14:57:28 +0200 (MEST)
-Received: from euls16034.sgp.st.com (euls16034.sgp.st.com [10.75.44.20])
-	by beta.dmz-ap.st.com (STMicroelectronics) with ESMTP id E01244002D;
-	Wed, 17 Apr 2024 14:57:10 +0200 (CEST)
-Received: from Webmail-eu.st.com (shfdag1node1.st.com [10.75.129.69])
-	by euls16034.sgp.st.com (STMicroelectronics) with ESMTP id E51CB214D29;
-	Wed, 17 Apr 2024 14:55:47 +0200 (CEST)
-Received: from [10.130.72.241] (10.130.72.241) by SHFDAG1NODE1.st.com
- (10.75.129.69) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.27; Wed, 17 Apr
- 2024 14:55:46 +0200
-Message-ID: <ea60a9e8-6240-4a0a-a224-e132b67160b1@foss.st.com>
-Date: Wed, 17 Apr 2024 14:55:45 +0200
+	id 1rx5Bd-0000000G5Hp-0emy;
+	Wed, 17 Apr 2024 13:18:54 +0000
+Received: from mail.maildlp.com (unknown [172.19.163.174])
+	by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4VKLxQ3gh3zXlNZ;
+	Wed, 17 Apr 2024 21:15:22 +0800 (CST)
+Received: from dggpemm500005.china.huawei.com (unknown [7.185.36.74])
+	by mail.maildlp.com (Postfix) with ESMTPS id 812AD140485;
+	Wed, 17 Apr 2024 21:18:41 +0800 (CST)
+Received: from [10.69.30.204] (10.69.30.204) by dggpemm500005.china.huawei.com
+ (7.185.36.74) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.35; Wed, 17 Apr
+ 2024 21:18:41 +0800
+Subject: Re: [PATCH net-next v2 07/15] mm: page_frag: add '_va' suffix to
+ page_frag API
+To: Alexander H Duyck <alexander.duyck@gmail.com>, <davem@davemloft.net>,
+	<kuba@kernel.org>, <pabeni@redhat.com>
+CC: <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Jeroen de Borst
+	<jeroendb@google.com>, Praveen Kaligineedi <pkaligineedi@google.com>,
+	Shailend Chand <shailend@google.com>, Eric Dumazet <edumazet@google.com>,
+	Jesse Brandeburg <jesse.brandeburg@intel.com>, Tony Nguyen
+	<anthony.l.nguyen@intel.com>, Sunil Goutham <sgoutham@marvell.com>, Geetha
+ sowjanya <gakula@marvell.com>, Subbaraya Sundeep <sbhatta@marvell.com>,
+	hariprasad <hkelam@marvell.com>, Felix Fietkau <nbd@nbd.name>, Sean Wang
+	<sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, Lorenzo
+ Bianconi <lorenzo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Keith
+ Busch <kbusch@kernel.org>, Jens Axboe <axboe@kernel.dk>, Christoph Hellwig
+	<hch@lst.de>, Sagi Grimberg <sagi@grimberg.me>, Chaitanya Kulkarni
+	<kch@nvidia.com>, "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang
+	<jasowang@redhat.com>, Andrew Morton <akpm@linux-foundation.org>, Alexei
+ Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>, Jesper
+ Dangaard Brouer <hawk@kernel.org>, John Fastabend <john.fastabend@gmail.com>,
+	Andrii Nakryiko <andrii@kernel.org>, Martin KaFai Lau <martin.lau@linux.dev>,
+	Eduard Zingerman <eddyz87@gmail.com>, Song Liu <song@kernel.org>, Yonghong
+ Song <yonghong.song@linux.dev>, KP Singh <kpsingh@kernel.org>, Stanislav
+ Fomichev <sdf@google.com>, Hao Luo <haoluo@google.com>, Jiri Olsa
+	<jolsa@kernel.org>, David Howells <dhowells@redhat.com>, Marc Dionne
+	<marc.dionne@auristor.com>, Chuck Lever <chuck.lever@oracle.com>, Jeff Layton
+	<jlayton@kernel.org>, Neil Brown <neilb@suse.de>, Olga Kornievskaia
+	<kolga@netapp.com>, Dai Ngo <Dai.Ngo@oracle.com>, Tom Talpey
+	<tom@talpey.com>, Trond Myklebust <trond.myklebust@hammerspace.com>, Anna
+ Schumaker <anna@kernel.org>, <intel-wired-lan@lists.osuosl.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-nvme@lists.infradead.org>, <kvm@vger.kernel.org>,
+	<virtualization@lists.linux.dev>, <linux-mm@kvack.org>,
+	<bpf@vger.kernel.org>, <linux-afs@lists.infradead.org>,
+	<linux-nfs@vger.kernel.org>
+References: <20240415131941.51153-1-linyunsheng@huawei.com>
+ <20240415131941.51153-8-linyunsheng@huawei.com>
+ <18ca19fa64267b84bee10473a81cbc63f53104a0.camel@gmail.com>
+From: Yunsheng Lin <linyunsheng@huawei.com>
+Message-ID: <74e7259a-c462-e3c1-73ac-8e3f49fb80b8@huawei.com>
+Date: Wed, 17 Apr 2024 21:18:40 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101
+ Thunderbird/52.2.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 22/35] media: i2c: st-mipid02: Use the correct div
- function
-To: Ricardo Ribalda <ribalda@chromium.org>,
-        Martin Tuma
-	<martin.tuma@digiteqautomotive.com>,
-        Mauro Carvalho Chehab
-	<mchehab@kernel.org>,
-        Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-        Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-        Hugues Fruchet
-	<hugues.fruchet@foss.st.com>,
-        Alain Volmat <alain.volmat@foss.st.com>,
-        Maxime
- Coquelin <mcoquelin.stm32@gmail.com>,
-        Alexandre Torgue
-	<alexandre.torgue@foss.st.com>,
-        Paul Kocialkowski
-	<paul.kocialkowski@bootlin.com>,
-        Greg Kroah-Hartman
-	<gregkh@linuxfoundation.org>,
-        Chen-Yu Tsai <wens@csie.org>,
-        Jernej Skrabec
-	<jernej.skrabec@gmail.com>,
-        Samuel Holland <samuel@sholland.org>,
-        Sakari
- Ailus <sakari.ailus@linux.intel.com>,
-        Thierry Reding
-	<thierry.reding@gmail.com>,
-        Jonathan Hunter <jonathanh@nvidia.com>,
-        Sowjanya
- Komatineni <skomatineni@nvidia.com>,
-        Luca Ceresoli
-	<luca.ceresoli@bootlin.com>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        Hans
- Verkuil <hverkuil@xs4all.nl>, Sergey Kozlov <serjk@netup.ru>,
-        Abylay Ospan
-	<aospan@netup.ru>,
-        Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-        Dmitry
- Osipenko <digetx@gmail.com>,
-        Stanimir Varbanov
-	<stanimir.k.varbanov@gmail.com>,
-        Vikash Garodia <quic_vgarodia@quicinc.com>,
-        Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
-        Bjorn Andersson
-	<andersson@kernel.org>,
-        Konrad Dybcio <konrad.dybcio@linaro.org>,
-        Sylvain
- Petinot <sylvain.petinot@foss.st.com>,
-        Jacopo Mondi
-	<jacopo+renesas@jmondi.org>,
-        Kieran Bingham
-	<kieran.bingham+renesas@ideasonboard.com>,
-        Laurent Pinchart
-	<laurent.pinchart+renesas@ideasonboard.com>,
-        =?UTF-8?Q?Niklas_S=C3=B6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
-        Pavel Machek <pavel@ucw.cz>
-CC: <linux-media@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-        <linux-stm32@st-md-mailman.stormreply.com>,
-        <linux-arm-kernel@lists.infradead.org>,
-        <linux-staging@lists.linux.dev>, <linux-sunxi@lists.linux.dev>,
-        <linux-tegra@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-        <linux-arm-msm@vger.kernel.org>
-References: <20240415-fix-cocci-v1-0-477afb23728b@chromium.org>
- <20240415-fix-cocci-v1-22-477afb23728b@chromium.org>
+In-Reply-To: <18ca19fa64267b84bee10473a81cbc63f53104a0.camel@gmail.com>
+Content-Type: text/plain; charset="utf-8"
 Content-Language: en-US
-From: Benjamin Mugnier <benjamin.mugnier@foss.st.com>
-In-Reply-To: <20240415-fix-cocci-v1-22-477afb23728b@chromium.org>
-Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.130.72.241]
-X-ClientProxiedBy: SHFCAS1NODE1.st.com (10.75.129.72) To SHFDAG1NODE1.st.com
- (10.75.129.69)
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.1011,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2024-04-17_10,2024-04-16_01,2023-05-22_02
+X-Originating-IP: [10.69.30.204]
+X-ClientProxiedBy: dggems705-chm.china.huawei.com (10.3.19.182) To
+ dggpemm500005.china.huawei.com (7.185.36.74)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240417_055826_812663_88602265 
-X-CRM114-Status: GOOD (  14.90  )
+X-CRM114-CacheID: sfid-20240417_061853_553392_0809DA98 
+X-CRM114-Status: GOOD (  16.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -152,39 +104,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Ricardo,
-
-Thanks a lot.
-Reviewed-by: Benjamin Mugnier <benjamin.mugnier@foss.st.com>
-
-On 4/15/24 21:34, Ricardo Ribalda wrote:
-> link_freq does not fit in 32 bits.
+On 2024/4/17 0:12, Alexander H Duyck wrote:
+> On Mon, 2024-04-15 at 21:19 +0800, Yunsheng Lin wrote:
+>> Currently most of the API for page_frag API is returning
+>> 'virtual address' as output or expecting 'virtual address'
+>> as input, in order to differentiate the API handling between
+>> 'virtual address' and 'struct page', add '_va' suffix to the
+>> corresponding API mirroring the page_pool_alloc_va() API of
+>> the page_pool.
+>>
+>> Signed-off-by: Yunsheng Lin <linyunsheng@huawei.com>
 > 
-> Found by cocci:
-> drivers/media/i2c/st-mipid02.c:329:1-7: WARNING: do_div() does a 64-by-32 division, please consider using div64_s64 instead.
+> This patch is a total waste of time. By that logic we should be
+> renaming __get_free_pages since it essentially does the same thing.
 > 
-> Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
-> ---
->  drivers/media/i2c/st-mipid02.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/media/i2c/st-mipid02.c b/drivers/media/i2c/st-mipid02.c
-> index f250640729ca..93a40bfda1af 100644
-> --- a/drivers/media/i2c/st-mipid02.c
-> +++ b/drivers/media/i2c/st-mipid02.c
-> @@ -326,7 +326,7 @@ static int mipid02_configure_from_rx_speed(struct mipid02_dev *bridge,
->  	}
->  
->  	dev_dbg(&client->dev, "detect link_freq = %lld Hz", link_freq);
-> -	do_div(ui_4, link_freq);
-> +	ui_4 = div64_s64(ui_4, link_freq);
->  	bridge->r.clk_lane_reg1 |= ui_4 << 2;
->  
->  	return 0;
-> 
+> This just seems like more code changes for the sake of adding code
+> changes rather than fixing anything. In my opinion it should be dropped
+> from the set.
 
--- 
-Regards,
+The rename is to support different use case as mentioned below in patch
+14:
+"Depending on different use cases, callers expecting to deal with va, page or
+both va and page for them may call page_frag_alloc_va*, page_frag_alloc_pg*,
+or page_frag_alloc* API accordingly."
 
-Benjamin
+Naming is hard anyway, I am open to better API naming for the above use cases.
+
+> 
+> .
+> 
 
