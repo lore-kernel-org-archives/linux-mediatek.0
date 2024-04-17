@@ -4,65 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C029BC4345F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Apr 2024 14:46:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E4F6C4345F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Apr 2024 14:52:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
-	References:In-Reply-To:Cc:To:From:MIME-Version:Content-Transfer-Encoding:
-	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=623f2Sw1Qt5a+Wt6hFJN2yCPqyp7RBDIMXWmUmycYWk=; b=4eichPqZM8cPmlkohnS5G+kyeD
-	L0pvhomFiVTXp5KWjF4CbRckuxxlJYgnlg/uMONZlNPIHPPknvZ8rn5QJQGzJ2VLL+Uhv0/GECny7
-	vB9Y13qHeebTcyXSX5IDXivDG+DHRQf3uZTU87Dbvr818Q3vDEJTTFDmKuwPme/3L1YgzfDqU6bpn
-	pPU3qsFzG8dFe6HugjbE7ksuxA5cb0WPq0MdX7uQnssUdMGtqjyxg6IuO9lgGnX5by7r3x1z0OIWr
-	z4hWtcVpAMdsSU/c1vAkzTsLiV/cdF0az1QVe2IFnmeiluJ/kuB6jgiEaIftWIVZi9xmNzKz9P1rr
-	hDQ7iGGw==;
+	bh=cibZGXTOJWydSrp5g9OPR9vx3KfXG1TNCAJkgEkHfo8=; b=XnTvTBuXIinTe2QiLSNnJ5s85g
+	xUQ9vbr3ZQ2lP8YYXRtvZZAimrx8YJdcSMV1Mic9gZzYbW3wnkyuuPtdtGQmKCECjbjyoCZW0f5t+
+	8dtDfv0zEfHUJgzgU2lSLbyhy7mM+9JC/owGCbasz3Jsu75aRhSAA7g1Svb6tZE3MnsVMNN97MUuK
+	CPBRNNERuxD5Y7zQTPjyW1PznFIQUbGnVKoAezJ3o77NDGc4DX6GJozM9qaC/fpB6mmI60+HF2L+/
+	1SMXZ5ayUavTvbrHoopS8wTZAJDQwNiTvheL+2OzUfBfqlkC3hFwiozqRfsU5b43LGWtOqToijgLC
+	RdLxlpjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rx6YI-0000000GPzc-18rP;
-	Wed, 17 Apr 2024 14:46:22 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1rx6eW-0000000GS0i-0NGr;
+	Wed, 17 Apr 2024 14:52:48 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rx6Y1-0000000GPqz-3nfm;
-	Wed, 17 Apr 2024 14:46:08 +0000
+	id 1rx6eS-0000000GRzF-2cpi;
+	Wed, 17 Apr 2024 14:52:46 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 4373FCE12B8;
-	Wed, 17 Apr 2024 14:46:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2AA90C2BD11;
-	Wed, 17 Apr 2024 14:46:01 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 84715CE13B3;
+	Wed, 17 Apr 2024 14:52:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 263C9C072AA;
+	Wed, 17 Apr 2024 14:52:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1713365161;
-	bh=ZQvye4lH9STIxQEy+fEJCBvieMZben0M75cWxAuq1j4=;
-	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
-	b=SbUSBk6QbYGJuhVO8IOS8J++ios5qIsqlUVbf/3SCArnZ0ChScc3bpnDB6mtXgFxy
-	 UMuKBrwMRnP9yI57eQKCftRjolZEEaTzUBB9+WLyJ6joVX5tYyLJLNpdvwcuAanh5+
-	 yPt4/H6JceEFkIjBeiKQGtw+1h7gk7ntSCgGIed87Sku3OGCceRVK13JENAS7VbAiv
-	 rjEKiqzbfZZ8z8gJMsVuhj777DCWeMlw1nkuy1lxNkfJt1ewky7Bj4GgsxpKpR+qxd
-	 ilAEQTDfa864m4M/ViKaeG9msS6+8vPBgu8cePwDm/nhyqvijYIPsrW+Y5rB7SCqGf
-	 QkPwF3n0tLPIA==
-Date: Wed, 17 Apr 2024 09:46:00 -0500
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-MIME-Version: 1.0
+	s=k20201202; t=1713365560;
+	bh=N/Kc5Ck+n/MV7oq1Wn9zhitTGVylQb+Utd6qvo1Q1h8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=g49HwvnDCP5I3WlHXrUM9ilJmC/qjtLqO8tAWQY/bZuYUZ94xZPW9ZfDZpfbeWuMc
+	 v5jixX2SwPc4JgOXF43vI8bkftCCt+Rjr5GuKq4hzSasSgfY2RLx/y+7yWD4xR6arl
+	 ELlsthg5adF+JAciW1xRuF2DThehy6OYCIPkWuoJvkAZZlzFOByp7/PoISevfQBpWi
+	 9ikMpLYwWiyaNPVFBjCvuDMMqWhOJW1WnF7xjcVg06G+s4ZLlxzp6on607hp9j6RAo
+	 IpRweKiynWVjHsJ75Cye0CVyC/VJaZOwXO5jwi77a76C4WU7aK1OT1gEwmtG0qwZim
+	 5kcb95YqrbUhw==
+Date: Wed, 17 Apr 2024 09:52:38 -0500
 From: Rob Herring <robh@kernel.org>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: henryc.chen@mediatek.com, wenst@chromium.org, keescook@chromium.org, 
- gustavoars@kernel.org, linux-mediatek@lists.infradead.org, 
- amergnat@baylibre.com, broonie@kernel.org, devicetree@vger.kernel.org, 
- krzysztof.kozlowski+dt@linaro.org, linux-arm-kernel@lists.infradead.org, 
- conor+dt@kernel.org, matthias.bgg@gmail.com, djakov@kernel.org, 
- linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, lgirdwood@gmail.com, 
- kernel@collabora.com
-In-Reply-To: <20240417091442.170505-2-angelogioacchino.delregno@collabora.com>
+Cc: djakov@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+	conor+dt@kernel.org, matthias.bgg@gmail.com, lgirdwood@gmail.com,
+	broonie@kernel.org, keescook@chromium.org, gustavoars@kernel.org,
+	henryc.chen@mediatek.com, linux-pm@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, kernel@collabora.com,
+	wenst@chromium.org, amergnat@baylibre.com
+Subject: Re: [PATCH v2 1/7] dt-bindings: regulator: Add bindings for MediaTek
+ DVFSRC Regulators
+Message-ID: <20240417145238.GA2348962-robh@kernel.org>
 References: <20240417091442.170505-1-angelogioacchino.delregno@collabora.com>
  <20240417091442.170505-2-angelogioacchino.delregno@collabora.com>
-Message-Id: <171336511790.2347768.12360106374334104584.robh@kernel.org>
-Subject: Re: [PATCH v2 1/7] dt-bindings: regulator: Add bindings for
- MediaTek DVFSRC Regulators
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240417091442.170505-2-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240417_074606_157775_2B49CD5D 
-X-CRM114-Status: GOOD (  12.05  )
+X-CRM114-CacheID: sfid-20240417_075245_059396_0D81F83C 
+X-CRM114-Status: GOOD (  18.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,8 +78,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-On Wed, 17 Apr 2024 11:14:36 +0200, AngeloGioacchino Del Regno wrote:
+On Wed, Apr 17, 2024 at 11:14:36AM +0200, AngeloGioacchino Del Regno wrote:
 > The Dynamic Voltage and Frequency Scaling Resource Collector Regulators
 > are controlled with votes to the DVFSRC hardware.
 > 
@@ -91,29 +91,99 @@ On Wed, 17 Apr 2024 11:14:36 +0200, AngeloGioacchino Del Regno wrote:
 >  1 file changed, 71 insertions(+)
 >  create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6873-dvfsrc-regulator.yaml
 > 
+> diff --git a/Documentation/devicetree/bindings/regulator/mediatek,mt6873-dvfsrc-regulator.yaml b/Documentation/devicetree/bindings/regulator/mediatek,mt6873-dvfsrc-regulator.yaml
+> new file mode 100644
+> index 000000000000..446f1dab4d2e
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/regulator/mediatek,mt6873-dvfsrc-regulator.yaml
+> @@ -0,0 +1,71 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/regulator/mediatek,mt6873-dvfsrc-regulator.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek DVFSRC-controlled Regulators
+> +
+> +description:
+> +  The Dynamic Voltage and Frequency Scaling Resource Collector Regulators
+> +  are controlled with votes to the DVFSRC hardware.
+> +
+> +maintainers:
+> +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - mediatek,mt6873-dvfsrc-regulator
+> +      - mediatek,mt8183-dvfsrc-regulator
+> +      - mediatek,mt8192-dvfsrc-regulator
+> +      - mediatek,mt8195-dvfsrc-regulator
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  dvfsrc-vcore:
+> +    description: DVFSRC-controlled SoC Vcore regulator
+> +    $ref: regulator.yaml#
 
-My bot found errors running 'make dt_binding_check' on your patch:
+       unevaluatedProperties: false
 
-yamllint warnings/errors:
+> +
+> +  dvfsrc-vscp:
+> +    description: DVFSRC-controlled System Control Processor regulator
+> +    $ref: regulator.yaml#
 
-dtschema/dtc warnings/errors:
-Documentation/devicetree/bindings/regulator/mediatek,mt6873-dvfsrc-regulator.example.dtb: /example-0/soc/system-controller@10012000: failed to match any schema with compatible: ['mediatek,mt8195-dvfsrc']
+ditto
 
-doc reference errors (make refcheckdocs):
+> +
+> +required:
+> +  - compatible
 
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20240417091442.170505-2-angelogioacchino.delregno@collabora.com
+'reg' is never optional. And how is no regulators at all valid?
 
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
 
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
+Drop the example here. Just one complete example in the MFD doc.
 
-pip3 install dtschema --upgrade
+> +    soc {
+> +        #address-cells = <2>;
+> +        #size-cells = <2>;
+> +
+> +        system-controller@10012000 {
+> +            compatible = "mediatek,mt8195-dvfsrc";
+> +            reg = <0 0x10012000 0 0x1000>;
+> +            #address-cells = <1>;
+> +            #size-cells = <0>;
+> +
+> +            regulators@0 {
+> +                compatible = "mediatek,mt8195-dvfsrc-regulator";
+> +                reg = <0>;
 
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
+What does 'reg' value represent here? 0 and 1 seem pretty much made up.
 
+> +
+> +                dvfsrc_vcore: dvfsrc-vcore {
+> +                        regulator-name = "dvfsrc-vcore";
+> +                        regulator-min-microvolt = <550000>;
+> +                        regulator-max-microvolt = <750000>;
+> +                        regulator-always-on;
+> +                };
+> +
+> +                dvfsrc_vscp: dvfsrc-vscp {
+> +                        regulator-name = "dvfsrc-vscp";
+> +                        regulator-min-microvolt = <550000>;
+> +                        regulator-max-microvolt = <750000>;
+> +                        regulator-always-on;
+> +                };
+> +            };
+> +        };
+> +    };
+> -- 
+> 2.44.0
+> 
 
