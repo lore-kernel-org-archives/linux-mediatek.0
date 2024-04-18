@@ -4,87 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BEC39C4345F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Apr 2024 18:53:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1DF9C10F15
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Apr 2024 19:01:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fyTf+77ruK7BvGSvOrX1IkMmnxlAoNb9r3mQW4KSoSQ=; b=tcMNQXqmLlOYCOXns45bdKtjhi
-	Ii2ec85BhBsmXSeUf7t054vMkey41NPocU7HBVYFb0iYGsXx/IDNG4bnyeSyj4aOYLfLYIXiruSzP
-	JzrEFwmxGnEUPBez8vR2wV+wN/eBiU5evOkbMOA0p2fkd1pl6I20sFfPBAC4go20MjA5G25RKZJgk
-	8J0eSTnsBWFYmFEyHSd7REdnT3fMaNTxx02VqPlElmrZAS58d2ffrXWlxYbLJy2hr3Eg196tr6jyl
-	npaq+zKpare9b17ZGWcsf4bb377oqNA9nDQeeiA9YroAxs5S/pW70mwy7hlbdYQWyBinxJV5646TL
-	DFRIphIA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Cc:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=wcAwBrkJKREB7jA/SJzkIQLIhy8b58rnTKTXQcQuxnU=; b=siInAECslIS+uXGUWGU5w822cM
+	h1h5VwOMeonOkzjHkJY6TS+i6Rf6xOLtSErz6446RkxTDdTbGRV0cRGUHda5npAHbzagjPuhqtyMj
+	Ra5lNworw+O5xYutS6GLoHaxd7tn82YQW1+AbD2pp4TH7eQJ8fM33HskQ5N2zBvAX6/9XRwiXUmbi
+	6xGuMyeUi235aNWgGshjwovWj34LTM/QTVgUl0Xv6vW1wzYi/pMqhbmHxU2CxObZXmVv0w3HlV1ah
+	Br7vKlD98VSd77Y+VTpAT4huVUD030AOvrD84ltBfXPAWOpVNEdSHgQCbpahqWnpy9Gbd0d/xUurT
+	GbMDVbKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ryynW-0000000EhRz-12op;
-	Mon, 22 Apr 2024 18:53:50 +0000
-Received: from mgamail.intel.com ([192.198.163.11])
+	id 1ryyv9-0000000EjRc-1LY0;
+	Mon, 22 Apr 2024 19:01:43 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ryynT-0000000EhQs-1OA0;
-	Mon, 22 Apr 2024 18:53:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1713812027; x=1745348027;
-  h=message-id:date:mime-version:subject:to:cc:references:
-   from:in-reply-to:content-transfer-encoding;
-  bh=KdeYjdGtcF1JNqWj59Djb+4HReLocTqors5w6qaChgk=;
-  b=mpqmbbhR3lFDyyDS2qIq1jyfaAZbvwecEJxE0TzvA3Yf/9Jminaxor5S
-   Hy6lZfwO7GHkUZ4ctApwPVHg8+D1p7w3fzdT/ifEwiP6unBai5GmK9VKX
-   +KZadNo5x15sk5SOrte3IKkt4UfUPQnKS979Itn96oQb8d9kyk7SdqtYD
-   g+IEXwQZtuZjt0niiApwIjHCq0lByezri+oA9QK3vW++Xr81ryFrsdhv3
-   EzROG4fsk+eL/1+9G6Mm2IbM/71wgBYtojqc/Kghz/gsCVYraCKtLPy0+
-   FKsO2VgPd83yBJlcLRVYy9OTwTeQP8PXLQaFolsUHXnaPLPclPlW4S6gv
-   Q==;
-X-CSE-ConnectionGUID: SbObFI70Szqira6shuh4mA==
-X-CSE-MsgGUID: 6JifqlY0Q2en3KTkACRUYw==
-X-IronPort-AV: E=McAfee;i="6600,9927,11052"; a="19977730"
-X-IronPort-AV: E=Sophos;i="6.07,221,1708416000"; 
-   d="scan'208";a="19977730"
-Received: from orviesa007.jf.intel.com ([10.64.159.147])
-  by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Apr 2024 11:53:45 -0700
-X-CSE-ConnectionGUID: tFsgZtNdQGydqYsVjb23aA==
-X-CSE-MsgGUID: /jA5vIZxQ96OJPcbpGXLLQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,221,1708416000"; 
-   d="scan'208";a="24621373"
-Received: from leozhang-mobl.amr.corp.intel.com (HELO [10.212.37.174]) ([10.212.37.174])
-  by orviesa007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Apr 2024 11:53:44 -0700
-Message-ID: <d046d195-6fa3-4c52-bc5f-3e5e763bc692@linux.intel.com>
-Date: Mon, 22 Apr 2024 10:52:17 -0500
+	id 1ryyv6-0000000EjQa-2Uql;
+	Mon, 22 Apr 2024 19:01:40 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=MIME-Version:Date:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Cc:To:From:
+	Subject:Message-ID:Sender:Reply-To:Content-ID:Content-Description;
+	bh=wcAwBrkJKREB7jA/SJzkIQLIhy8b58rnTKTXQcQuxnU=; b=YBTNQ3CoJo6deg1edkxCJ+0Tj4
+	PKTnxSAgCNE1q7cpGKkCo4PTgSm9Vaod5YCJEFRb7Oml6NEJpBNKvXBC9NAz27S5vXbBvQm7KqsSj
+	z1pvAx5rrFQPZElvhDvEyou1ofjOr5n7uvHZJdo1eGx/xl42J8eeSJHxEQz/0Op5TvWC3Uw73WF6h
+	euU9ftoA9JwraSFnQhRuoObCcencd5iG/90fxeJRHMM+Jc7ETIWne28+T/St03U89cAqr1WYRYucG
+	cfJxioQeeVKAhu+atBOxp1SU7gtwaMWaqdIod/lfOsLEX+2sZO4e5dh3yGht4nsdmgpZ5SFZekUnL
+	Xl+JDgsA==;
+Received: from madrid.collaboradmins.com ([46.235.227.194])
+	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1ryyQE-0000000Dkko-0gF4;
+	Mon, 22 Apr 2024 18:29:48 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1713810583;
+	bh=2ixnCGqL0IkSleO59d/pziF1WHGkr6y/66rgnEeHDHI=;
+	h=Subject:From:To:Cc:In-Reply-To:References:Date:From;
+	b=CEnsjZA0NDjyeiH4rcjsdcjWCEn2qLVKgaDJ8QsECsjfUcnslNyc5csmTKUb4IDmJ
+	 +oT6k0mPzRY5EXYivhlPGaS922BnMw/ePdjzJsnJhzQOy06HqqSVILEc9hQBagdyzQ
+	 DshkQFQ3TEe0Cq1h98P8l0MN3K5GsG5qVDIk2S5tRMdCTT22avAuksgp/Yo4Sqmq/G
+	 q/awOt8OOgfnAOmB+K4iU4OIEPCtM8HMilm8AoVtDOLvyFtnTJyWiYLi94gf8E0f70
+	 3jM5aHm5nTZRatXoOhtLeuQ1X7tjU3/NRGBmElkL7Y21Y+X2ZGVq0QJg5JOQeSnoUn
+	 oF0AXTP2M6d+A==
+Received: from nicolas-tpx395.localdomain (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id B3CAE3782134;
+	Mon, 22 Apr 2024 18:29:41 +0000 (UTC)
+Message-ID: <de7cc23f9d8b3f28dd69c1e0a029587d563a16b3.camel@collabora.com>
+Subject: Re: [PATCH v2,5/5] media: mediatek: vcodec: fix incorrect
+ sizeimage for 10bit bitstream
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Yunfei Dong <yunfei.dong@mediatek.com>, =?ISO-8859-1?Q?N=EDcolas?= "F .
+ R . A . Prado" <nfraprado@collabora.com>, Hans Verkuil
+ <hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
+ <benjamin.gaignard@collabora.com>, Nathan Hebert <nhebert@chromium.org>, 
+ Sebastian Fricke <sebastian.fricke@collabora.com>
+Cc: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig
+ <frkoenig@chromium.org>,  Daniel Vetter <daniel@ffwll.ch>, Steve Cho
+ <stevecho@chromium.org>, linux-media@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+In-Reply-To: <20240409064431.16909-6-yunfei.dong@mediatek.com>
+References: <20240409064431.16909-1-yunfei.dong@mediatek.com>
+	 <20240409064431.16909-6-yunfei.dong@mediatek.com>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=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
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Date: Thu, 18 Apr 2024 16:33:36 -0400
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 00/14] ASoC: Constify local snd_sof_dsp_ops
-To: Krzysztof Kozlowski <krzk@kernel.org>, Liam Girdwood
- <lgirdwood@gmail.com>, Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
- Bard Liao <yung-chuan.liao@linux.intel.com>,
- Ranjani Sridharan <ranjani.sridharan@linux.intel.com>,
- Daniel Baluta <daniel.baluta@nxp.com>,
- Kai Vehmanen <kai.vehmanen@linux.intel.com>, Mark Brown
- <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>,
- Takashi Iwai <tiwai@suse.com>, Shawn Guo <shawnguo@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: sound-open-firmware@alsa-project.org, linux-sound@vger.kernel.org,
- linux-kernel@vger.kernel.org, imx@lists.linux.dev,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20240414-n-const-ops-var-v1-0-8f53ee5d981c@kernel.org>
- <89f8f0be-2534-46c8-9058-cabea4f68568@linux.intel.com>
- <9d1eda85-32a0-4e53-86ca-ce3137439bd7@kernel.org>
-Content-Language: en-US
-From: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
-In-Reply-To: <9d1eda85-32a0-4e53-86ca-ce3137439bd7@kernel.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+User-Agent: Evolution 3.50.4 (3.50.4-1.fc39) 
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240422_115347_448828_783AB391 
-X-CRM114-Status: GOOD (  25.79  )
+X-CRM114-CacheID: sfid-20240422_192946_342751_8E687BE9 
+X-CRM114-Status: GOOD (  14.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,55 +104,87 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Le mardi 09 avril 2024 =C3=A0 14:44 +0800, Yunfei Dong a =C3=A9crit=C2=A0:
+> The sizeimage of each plane is calculated the same way for 8bit and
+> 10bit bitstream. Using v4l2 common interface v4l2_fill_pixfmt_mp to
+> separate.
+>=20
+> Fixes: 9d86be9bda6c ("media: mediatek: vcodec: Add driver to support 10bi=
+t")
+> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+> ---
+>  .../mediatek/vcodec/decoder/mtk_vcodec_dec.c  | 28 ++++++-------------
+>  1 file changed, 8 insertions(+), 20 deletions(-)
+>=20
+> diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_de=
+c.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
+> index 9107707de6c4..fbfba69682ea 100644
+> --- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
+> +++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
+> @@ -262,40 +262,28 @@ static int vidioc_try_fmt(struct mtk_vcodec_dec_ctx=
+ *ctx, struct v4l2_format *f,
+>  		int tmp_w, tmp_h;
+> =20
+>  		/*
+> -		 * Find next closer width align 64, height align 64, size align
+> -		 * 64 rectangle
+> +		 * Find next closer width align 64, heign align 64, size align 64 rect=
+angle
+>  		 * Note: This only get default value, the real HW needed value
+>  		 *       only available when ctx in MTK_STATE_HEADER state
+>  		 */
+>  		tmp_w =3D pix_fmt_mp->width;
+>  		tmp_h =3D pix_fmt_mp->height;
+> +
+>  		v4l_bound_align_image(&pix_fmt_mp->width, MTK_VDEC_MIN_W, frmsize->max=
+_width, 6,
+>  				      &pix_fmt_mp->height, MTK_VDEC_MIN_H, frmsize->max_height, 6,
+>  				      9);
+> =20
+> -		if (pix_fmt_mp->width < tmp_w &&
+> -		    (pix_fmt_mp->width + 64) <=3D frmsize->max_width)
+> +		if (pix_fmt_mp->width < tmp_w && (pix_fmt_mp->width + 64) <=3D frmsize=
+->max_width)
+>  			pix_fmt_mp->width +=3D 64;
+> -		if (pix_fmt_mp->height < tmp_h &&
+> -		    (pix_fmt_mp->height + 64) <=3D frmsize->max_height)
+> +		if (pix_fmt_mp->height < tmp_h && (pix_fmt_mp->height + 64) <=3D frmsi=
+ze->max_height)
+>  			pix_fmt_mp->height +=3D 64;
 
+This seems overlay complicated, make sure your frmsize is valid (with
+step_width/height set to 64 from your Mali requirement) and then simply cal=
+l:
 
-On 4/22/24 00:43, Krzysztof Kozlowski wrote:
-> On 15/04/2024 16:19, Pierre-Louis Bossart wrote:
->>
->>> The core code does not modify the 'struct snd_sof_dsp_ops' passed via
->>> pointer in various places, so this can be made pointer to const.
->>
->> The structure itself is NOT always const - the initialization itself
->> does have platform-specific changes, so what do we really gain from all
->> this?
-> 
-> In the context of these patches, the structure is *always* const. In
-> other drivers, it is not, but they are not really relevant here.
-> 
->>
->> some commit messages say the code is "a bit safer", but I personally
->> find the 'const' more confusing since the information that the structure
->> can be modified during initialization is lost.
-> 
-> Functions which take some data and do not modify it are easier to read
-> if the pointed data is marked as const. Then it is obvious that
-> functions for example is re-entrant. Or that it does not affect the
-> state of other devices/core structures.
-> 
-> Additionally, the static data is safer when is const, because it cannot
-> be used in some attacks.
+	v4l2_apply_frmsize_constraints(...)
 
-agree, but here you are marking as 'const' non-static data.
+All this hand written clamping code with hardcoded values should go away.
 
-> I really do not understand which information you lost here? Core does
-> not change the ops, so the data should be passed as const as often as
-> possible. If anyone wants to write a driver which does not use static
-> ops, but somehow dynamically allocated and changed, nothing stops him.
-> This patch did not make it less readable/doable.
-> 
-> The point is that these ops do not differ from other ops or some other
-> driver-passed structures, which we have around 100 already in checkpatch.
+> =20
+> +		v4l2_fill_pixfmt_mp(pix_fmt_mp, fmt->fourcc, pix_fmt_mp->width, pix_fm=
+t_mp->height);
+>  		mtk_v4l2_vdec_dbg(0, ctx,
+> -				  "before resize wxh=3D%dx%d, after resize wxh=3D%dx%d, sizeimage=3D=
+%d",
+> +				  "before resize:%dx%d, after resize:%dx%d, sizeimage=3D0x%x_0x%x",
+>  				  tmp_w, tmp_h, pix_fmt_mp->width, pix_fmt_mp->height,
+> -				  pix_fmt_mp->width * pix_fmt_mp->height);
+> -
+> -		pix_fmt_mp->num_planes =3D fmt->num_planes;
+> -		pix_fmt_mp->plane_fmt[0].sizeimage =3D
+> -				pix_fmt_mp->width * pix_fmt_mp->height;
+> -		pix_fmt_mp->plane_fmt[0].bytesperline =3D pix_fmt_mp->width;
+> -
+> -		if (pix_fmt_mp->num_planes =3D=3D 2) {
+> -			pix_fmt_mp->plane_fmt[1].sizeimage =3D
+> -				(pix_fmt_mp->width * pix_fmt_mp->height) / 2;
+> -			pix_fmt_mp->plane_fmt[1].bytesperline =3D
+> -				pix_fmt_mp->width;
+> -		}
+> +				  pix_fmt_mp->plane_fmt[0].sizeimage,
+> +				  pix_fmt_mp->plane_fmt[1].sizeimage);
+>  	}
+> =20
+>  	pix_fmt_mp->flags =3D 0;
 
-I am so old that I remember times where we had to put things in ROM.
-That's what 'const' means to me: a dedicated memory space for immutable
-values.
-
-that's a different interpretation to the 'software' view you're
-describing. "this structure will not modified by this function" is not
-the same thing as "this structure CANNOT be modified".
-
-I am not going to lay on the tracks, if Mark wants to apply the patches
-that's fine. I just wanted to highlight that the reason we did not use
-'const' was that the data is dynamically allocated/modified and not
-constant at all.
 
