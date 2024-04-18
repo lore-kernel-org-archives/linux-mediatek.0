@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53269C10F15
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5032FC4345F
 	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Apr 2024 19:30:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,54 +12,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Cc:To:From:
 	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IRd5d/6ItoWaQFashnY5yCc8o0lGG6zGkujr2DrEiIk=; b=VgMd95DVCDJSxJkxpAp5x+JtQX
-	hKGLzkrN7u0hcIUvBYzSf4hWJKHxMNTGlKjXlNbLQ/yaUazQI2Qw6zcuQQJUFPy3eQPyIeFKRhGj9
-	SPRAF/5ojAiefA/po9nmQddYUnYF5pJoBiGTjuPuKgIRZQt59HN1okgqhBMBNHCVS5YWran2sELQM
-	dlc/TSWDMT8Q3gTo0P100846xrKiMwr1lCpVMRbt7sq+eaGlJh8oWV97DNeC3QJOQFEYNm0vZLSsk
-	RmJFhy03VHYVlsP5TU73qo0nQbE0FfPkSLBw0Kn68GwaUnnyvZMmNYy/rmvC2gdYwRKWo9vtXTHOj
-	PBFdmawQ==;
+	bh=kARQBO17IvcUcDCVQLstXhPfftOF5yq4T5YYnzHDA5s=; b=AIw1INMKeZIuhYt41E5Kurf9GO
+	ofLSNehy1dt/ZI6wt4ov4RAepZfmgM6e0KmRZve1VqtWfKwC0rCryInJsmDmI6LlAlWymAncQyi3T
+	+SYTbod+UqQj51X5dJPr5yjshQEbxKcE+E8VoQWHerEE8JfF3eLPhLa36lJ5hynD82kVTlAMThxuK
+	tcwE8pfbC7IHAfiZXYXYRptXOvMDe8DYdvZJDPpBZhap/BmLeOTwsz1SWe0fT7dx69X2750ZWTce/
+	uiUcYfGK+0CrUgqZ4XSkNO1wuR21q2/P1aySHbirua40xnqmzoxW8QSRXhbxGohsyzuCNv3zcnyxZ
+	HIuurOyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ryzMx-0000000Eo1m-3wMb;
-	Mon, 22 Apr 2024 19:30:27 +0000
+	id 1ryzMv-0000000Eo07-0lAu;
+	Mon, 22 Apr 2024 19:30:25 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ryyQ3-0000000EbAG-12u2;
-	Mon, 22 Apr 2024 18:29:35 +0000
+	id 1ryyPt-0000000Eb7B-48F3;
+	Mon, 22 Apr 2024 18:29:26 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=MIME-Version:Date:
 	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Cc:To:From:
 	Subject:Message-ID:Sender:Reply-To:Content-ID:Content-Description;
-	bh=IRd5d/6ItoWaQFashnY5yCc8o0lGG6zGkujr2DrEiIk=; b=PF/zUvj/dy5aVVbigjC3RApZuK
-	5XfoK/GXR94RtW4MocXnef/rZC/xFfrRXxoOLhIvrIC0GwxCbGLXDR97+iL8MJ0NQju8KVLUEq3NE
-	Al8834Rl2PyfHMcK+qn+NdVUKq0ctmOvdcPSERpgUaVNjHBUR123GjqggrvbDNV4+WO0gcmZmv2Fu
-	eoYV7QolgHza9Berojj7WfEcGhERRaNttOvrvFb8E1C/+OI9JPu/mX0UVMOe9h/BORhejz8+CgXt9
-	i9H7GHJI5StlBcnE4xeqg7FGeZZrRKisapp0j2+UtvG22NkFmcIK7pbvs6pXdORTxX65P0Jm6fLkm
-	2zDnVf4g==;
+	bh=kARQBO17IvcUcDCVQLstXhPfftOF5yq4T5YYnzHDA5s=; b=UXie6bAdAulSu/VBdRA/QEscEI
+	qfWSL310BfLDiGWhSdEYwMdvGokELUgU2k4l6d57dkqTvNg93bB4b/7guZZLqdZayDAtxWsMb3yhN
+	fq3kXzl+pkBCaLPQDohl62pvD8rW+a6SmDW6mXSPUryRosAAJ1TLj3tE43/lLHQvbcBEQbwmf8Nou
+	fqhQdBK0rtLig6mh+fnktFInu+ptS0pKlDTnqXd7CC2hdOAMjSEGxFGslb90NceaJP8bKCkBMz/LJ
+	JLdSMpwf6hKnuQpoDjilIYzIgYf0gkDDOxsF314n+JU1fLZHprSxLWjihp00rhavT56+wyv0vovAT
+	tkqVuBig==;
 Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ryyPy-0000000Dkh6-3sZ0;
-	Mon, 22 Apr 2024 18:29:33 +0000
+	id 1ryyPq-0000000Dkg4-2w1c;
+	Mon, 22 Apr 2024 18:29:24 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1713810570;
-	bh=lFyqqsTbvpBevoPN6/NMC90GOUXMW6KIKKFAoQiAmFs=;
+	s=mail; t=1713810557;
+	bh=GOD4rINfoqg2gvTo5pEYQRO1/3RgnuMo9BxRSsHRKEg=;
 	h=Subject:From:To:Cc:In-Reply-To:References:Date:From;
-	b=KyLetmpfhfD1CxoIRlN05i1koDUuorqGDIwBeQ6ZOKcqCiovB94RRm45TZ9YUy2SD
-	 Bs8DpHi+gVhLVVGm66EZXc49DACSnsYF//3WRj2sSehAdCOP9sZrXjbLTW5C/fQ+ZI
-	 l/+3dgVEJp1YzHGak+pZ1nx6/0WsmiFC2h3vrb3kbkqfRib35sRAiBnRXZ4PgmBMPu
-	 hWrTYCPiDnFfGs8EveixzyGMTRAicRjDbFuI4FAj2jS6x+tMPpRLcxxA/VJLJXCfad
-	 Dr4dXAuSPgo0tihp+8cGPWJu4Svu7pp9Jdnsnl7h536iIPeZQ/8Xlql54Si6J9LXgU
-	 AkDzdSyTckINw==
+	b=lH7nP4+99jLiRTeQioXDtZyk2EW0RgKnC9T+pRjW5tJUnLbshwL9Ga3KW8XluNRxv
+	 35a+WMQDNYbgVoF0yVr4rHQ6tjcUku9w3taJ6zHqIRGjIvsdgVHliDtjmE0uWAMCum
+	 x9Vu3w+Tsmu9v7mjza5fKUnQR2c3KZfUulYylA0DkSibfa3EzIE0zcqgd2WA+xi4/2
+	 nu6kddFUw1w+PTx/C5hAOImzJx9kAsDMkVvTTzve75bLaPDitpIb/mfiNLEVCeMrqb
+	 Y91qRMosf7pufHEHRorQZXulxlc1HTNgVyi7gx5kyWg2OjztCw9X8U1NDKtqfb0+qP
+	 HQb/BSI6y0cUg==
 Received: from nicolas-tpx395.localdomain (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: nicolas)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id EF1D13782139;
-	Mon, 22 Apr 2024 18:29:27 +0000 (UTC)
-Message-ID: <345e7b0ce96b900725e086f550aafd6ecf0dbc7f.camel@collabora.com>
-Subject: Re: [PATCH v2,1/5] media: mediatek: vcodec: fix incorrect MT2T
- format information
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id E9E373782134;
+	Mon, 22 Apr 2024 18:29:14 +0000 (UTC)
+Message-ID: <99df0dfe28ae5a4d664abf21f9c023e3f49c5469.camel@collabora.com>
+Subject: Re: [PATCH v2,3/5] media: mediatek: vcodec: add MM21 format
+ definition
 From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 To: Yunfei Dong <yunfei.dong@mediatek.com>, =?ISO-8859-1?Q?N=EDcolas?= "F .
  R . A . Prado" <nfraprado@collabora.com>, Hans Verkuil
@@ -73,9 +73,9 @@ Cc: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
  Project_Global_Chrome_Upstream_Group@mediatek.com
-In-Reply-To: <20240409064431.16909-2-yunfei.dong@mediatek.com>
+In-Reply-To: <20240409064431.16909-4-yunfei.dong@mediatek.com>
 References: <20240409064431.16909-1-yunfei.dong@mediatek.com>
-	 <20240409064431.16909-2-yunfei.dong@mediatek.com>
+	 <20240409064431.16909-4-yunfei.dong@mediatek.com>
 Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
  keydata=mQGiBEUQN0MRBACQYceNSezSdMjx7sx6gwKkMghrrODgl3B0eXBTgNp6c431IfOOEsdvkoOh1kwoYcQgbg4MXw6beOltysX4e8fFWsiRkc2nvvRW9ir9kHDm49MkBLqaDjTqOkYKNMiurFW+gozpr/lUW15QqT6v68RYe0zRdtwGZqeLzX2LVuukGwCg4AISzswrrYHNV7vQLcbaUhPgIl0D+gILYT9TJgAEK4YHW+bFRcY+cgUFoLQqQayECMlctKoLOE69nIYOc/hDr9uih1wxrQ/yL0NJvQCohSPyoyLF9b2EuIGhQVp05XP7FzlTxhYvGO/DtO08ec85+bTfVBMV6eeY4MS3ZU+1z7ObD7Pf29YjyTehN2Dan6w1g2rBk5MoA/9nDocSlk4pbFpsYSFmVHsDiAOFje3+iY4ftVDKunKYWMhwRVBjAREOByBagmRau0cLEcElpf4hX5f978GoxSGIsiKoDAlXX+ICDOWC1/EXhEEmBR1gL0QJgiVviNyLfGJlZWnPjw6xhhmtHYWTDxBOP5peztyc2PqeKsLsLWzAr7RDTmljb2xhcyBEdWZyZXNuZSAoQi4gU2MuIEluZm9ybWF0aXF1ZSkgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPohgBBMRAgAgBQJFlCyOAhsDBgsJCAcDAgQVAggDBBYCAwECHgECF4AACgkQcVMCLawGqBwhLQCgzYlrLBj6KIAZ4gmsfjXD6ZtddT8AoIeGDicVq5WvMHNWign6ApQcZUihtElOaWNvbGFzIER1ZnJlc25lIChCLiBTYy4gSW5mb3JtYXRpcXVlKSA8bmljb2xhcy5kdWZyZXNuZUBjb2xsYWJvcmEuY28udWs+iGIEExECACIFAkuzca8CGwMGCwkIBwMCBhUIAgkKCwQWAgMBAh4BAheAAAoJEHFTAi2sBqgcQX8An2By6LDEeMxi4B9hUbpvRnzaaeNqA
 	
@@ -84,12 +84,12 @@ Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
  XL04RebrFT7xjDfocDaSLFvgxMVs/Jr2/ckKPId1oKvgYgt/o+MzUabKyFB8wIvq4GMtj3LoBKLCie2nCaSt7uVUt6q2t5bNWrd3lO6/mWn7YMc5Hsn33H9pS0+9szw6m3dG08eMKNueDlt72QxiYl2rhjzkT4ltKEkFgYBdyrtIj1UO6eX+YXb4E1rCMJrdjBSgqDPK1sWHC7gliy+izr+XTHuFwlfy8gBpsAAwUIAJJNus64gri4HAL632eqVpza83EphX1IuHzLi1LlMnQ9Tm7XKag46NhmJbOByMG33LwBsBdLjjHQSVkYZFWUifq+NWSFC/kqlb72vW8rBAv64+i3QdfxK9FWbweiRsPpvuHjJQuecbPDJpubLaxKbu2aqLCN5LuHXvdQr6KiXwabT+OJ9AJAqHG7q4IEzg4RNUVn9AS6L8bxqMSocjqpWNBCY2efCVd/c6k4Acv6jXu+wDAZEbWXK+71uaUHExhigBYBpiHGrobe32YlTVE/XEIzKKywhm/Hkn5YKWzumLte6xiD9JhKabmD7uqIvLt2twUpz4BdPzj0dvGlSmvFcaaISQQYEQIACQUCRRA3UgIbDAAKCRBxUwItrAaoHJLyAKDeS3AFowM3f1Y3OFU6XRCTKK2ZhwCfT/7P9WDjkkmiq5AfeOiwVlpuHtM=
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Date: Thu, 18 Apr 2024 16:17:46 -0400
+Date: Thu, 18 Apr 2024 16:20:44 -0400
 MIME-Version: 1.0
 User-Agent: Evolution 3.50.4 (3.50.4-1.fc39) 
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240422_192931_151187_A51C024D 
-X-CRM114-Status: GOOD (  16.71  )
+X-CRM114-CacheID: sfid-20240422_192922_958807_C71AA645 
+X-CRM114-Status: GOOD (  12.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,76 +105,41 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Le mardi 09 avril 2024 =C3=A0 14:44 +0800, Yunfei Dong a =C3=A9crit=C2=A0:
-> Changing the bpp and hdiv values to make sure the bytesperline
-> of plane[0] and plane[1] are the same. The width and height are
-> 64 align.
+> Adding the definition of MM21 format to calculate bytesperline
+> and sizeimage of plane[0] and plane[1].
 >=20
-> Fixes: 6afcc2b0aebf ("media: mediatek: vcodec: Add capture format to supp=
-ort 10bit tile mode")
 > Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 > ---
->  drivers/media/v4l2-core/v4l2-common.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+>  drivers/media/v4l2-core/v4l2-common.c | 2 ++
+>  1 file changed, 2 insertions(+)
 >=20
 > diff --git a/drivers/media/v4l2-core/v4l2-common.c b/drivers/media/v4l2-c=
 ore/v4l2-common.c
-> index d34d210908d9..8587cd14741c 100644
+> index cef1492dba22..0d5de132e07f 100644
 > --- a/drivers/media/v4l2-core/v4l2-common.c
 > +++ b/drivers/media/v4l2-core/v4l2-common.c
-> @@ -265,8 +265,8 @@ const struct v4l2_format_info *v4l2_format_info(u32 f=
+> @@ -269,6 +269,8 @@ const struct v4l2_format_info *v4l2_format_info(u32 f=
 ormat)
->  		{ .format =3D V4L2_PIX_FMT_VYUY,    .pixel_enc =3D V4L2_PIXEL_ENC_YUV,=
- .mem_planes =3D 1, .comp_planes =3D 1, .bpp =3D { 2, 0, 0, 0 }, .bpp_div =
-=3D { 1, 1, 1, 1 }, .hdiv =3D 2, .vdiv =3D 1 },
->  		{ .format =3D V4L2_PIX_FMT_Y212,    .pixel_enc =3D V4L2_PIXEL_ENC_YUV,=
- .mem_planes =3D 1, .comp_planes =3D 1, .bpp =3D { 4, 0, 0, 0 }, .bpp_div =
-=3D { 1, 1, 1, 1 }, .hdiv =3D 2, .vdiv =3D 1 },
->  		{ .format =3D V4L2_PIX_FMT_YUV48_12, .pixel_enc =3D V4L2_PIXEL_ENC_YUV=
-, .mem_planes =3D 1, .comp_planes =3D 1, .bpp =3D { 6, 0, 0, 0 }, .bpp_div =
-=3D { 1, 1, 1, 1 }, .hdiv =3D 1, .vdiv =3D 1 },
-> -		{ .format =3D V4L2_PIX_FMT_MT2110T, .pixel_enc =3D V4L2_PIXEL_ENC_YUV,=
- .mem_planes =3D 2, .comp_planes =3D 2, .bpp =3D { 5, 10, 0, 0 }, .bpp_div =
-=3D { 4, 4, 1, 1 }, .hdiv =3D 2, .vdiv =3D 2,
-> -		  .block_w =3D { 16, 8, 0, 0 }, .block_h =3D { 32, 16, 0, 0 }},
-> +		{ .format =3D V4L2_PIX_FMT_MT2110T, .pixel_enc =3D V4L2_PIXEL_ENC_YUV,=
+>  		  .block_w =3D { 64, 64, 0, 0 }, .block_h =3D { 64, 64, 0, 0 }},
+>  		{ .format =3D V4L2_PIX_FMT_MT2110R, .pixel_enc =3D V4L2_PIXEL_ENC_YUV,=
  .mem_planes =3D 2, .comp_planes =3D 2, .bpp =3D { 5, 5, 0, 0 }, .bpp_div =
 =3D { 4, 4, 1, 1 }, .hdiv =3D 1, .vdiv =3D 2,
+>  		  .block_w =3D { 64, 64, 0, 0 }, .block_h =3D { 64, 64, 0, 0 }},
+> +		{ .format =3D V4L2_PIX_FMT_MM21, .pixel_enc =3D V4L2_PIXEL_ENC_YUV, .m=
+em_planes =3D 2, .comp_planes =3D 2, .bpp =3D { 1, 1, 0, 0 }, .bpp_div =3D =
+{ 1, 1, 1, 1 }, .hdiv =3D 1, .vdiv =3D 2,
 > +		  .block_w =3D { 64, 64, 0, 0 }, .block_h =3D { 64, 64, 0, 0 }},
 
-The code that calculate the info you are fixing:
+MM21 has the same subsampling as NV12M, so hdiv should be 2 for correctness=
+. The
+64x64 block is incorrect. The only difference between this and NV12M should=
+ be
+with block.
 
-plane->bytesperline =3D
-	info->bpp[i] * DIV_ROUND_UP(aligned_width, hdiv) / info->bpp_div[i];
-plane->sizeimage =3D plane->bytesperline * DIV_ROUND_UP(aligned_height, vdi=
-v);
-
-hdiv is 1 for the first plane, and 2 for second plane. Let say we have 1920=
-x1080
-video, bytesperline for that first planes would be 5 * (1920 / 1) / 4 =3D 2=
-400.
-But for the second plane with your change we have 5 * (1920 / 2) / 4 =3D 12=
-00. For
-me, you failed to achieve your goal, or there is a bug elsewhere.
-
-The second change should have its own commit, but I think it should be drop=
-ped.
-The driver is hacked to be compatible with the Mali GPUs (64x64 textures), =
-but
-does not need this alignment. And in any case, the block should represent t=
-he
-pixel format required alignment, so I'd suggest to leave it like this, and
-simply align width/height before calling the function to calculate
-stride/sizeimage. The 64x64 alignment can be applied using
-v4l2_apply_frmsize_constraints() during try fmt (or v4l_bound_align_image()=
-, but
-first is preferred).
-
-Same comments apply to the following patch, which should be squashed.
-
->  		{ .format =3D V4L2_PIX_FMT_MT2110R, .pixel_enc =3D V4L2_PIXEL_ENC_YUV,=
- .mem_planes =3D 2, .comp_planes =3D 2, .bpp =3D { 5, 10, 0, 0 }, .bpp_div =
-=3D { 4, 4, 1, 1 }, .hdiv =3D 2, .vdiv =3D 2,
->  		  .block_w =3D { 16, 8, 0, 0 }, .block_h =3D { 32, 16, 0, 0 }},
 > =20
+>  		/* YUV planar formats */
+>  		{ .format =3D V4L2_PIX_FMT_NV12,    .pixel_enc =3D V4L2_PIXEL_ENC_YUV,=
+ .mem_planes =3D 1, .comp_planes =3D 2, .bpp =3D { 1, 2, 0, 0 }, .bpp_div =
+=3D { 1, 1, 1, 1 }, .hdiv =3D 2, .vdiv =3D 2 },
 
 
