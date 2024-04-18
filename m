@@ -4,91 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11D95C4345F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Apr 2024 11:04:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92FE8C4345F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Apr 2024 13:02:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vES/vBSBusXR/H9HpKruMAeImGjC6h+pxbYmC0pkTqU=; b=fpe9wClOwCZHlxOFbMbYujFYzE
-	YZ5Lf6hQNeucjFyIbfLk6MS6ghpBOW0whnortvntMI99DCjSReDH4zXgxblrzDIrCOI7fjjsyylIx
-	r16veM4ltnVfEn94Qvl4CsZcsl2NHPtPTLxutp7op7UTPHF58eoP+QoNQeWsgpBFarfX41HO2F7EI
-	d2eX7ctZIf2A2SCyHGqTp6dtrTR1SM0TJtzxZAVxYOZV40STj3OFrHY3qGrIUeLKwNxX3C9Z5duzF
-	1EBM0W0XTvdXetAau819z4mo3pLQnzc/M0w24BA3up+7/puMsfFOBAqnuLpQVsVtzJ9I+w+dCtEvF
-	NaZwkpWw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=bVyPUZzpnAkaHf5uIez6yP0jHFtLyERSTeCCJwCmVdY=; b=Mi+CDNDaGDyp6CyUhQ2ZrswWaB
+	4YlpzQtlVpy6eHMrzc1Te+CKYgA5g7O4lYoI7bzrl2opl72hhWswMMjV2G5pF62gTL0ehEj0m9v62
+	Gavqc89zvVdTObjIaLVH+4znQNOTBaufDT3I0PcxiBZVHCv5AwvuW0nqnjk7VWJj7TrIJ6VPhXs8r
+	I0NCFuHuc83jyHzhbDMO0PXAs3JzwxnSmfnK17h2DhM6qTQUGe3/5mFmJyVFLcU69GYjH6s4jsyg5
+	Adab/0Y6AqBm3d763J0alz0hbwRZ4Hf+LcRuhsF+NHydR0kkj3vRYDv9ns5Wc45ulbYKa7Fj8caT+
+	/mk7jTMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxPZW-00000001vg1-1vXo;
-	Thu, 18 Apr 2024 11:04:54 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1rxRPc-00000002ISZ-2BOy;
+	Thu, 18 Apr 2024 13:02:48 +0000
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxPZO-00000001vdK-3JQp;
-	Thu, 18 Apr 2024 11:04:51 +0000
-Received: from pendragon.ideasonboard.com (117.145-247-81.adsl-dyn.isp.belgacom.be [81.247.145.117])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 8ACEBC8E;
-	Thu, 18 Apr 2024 13:03:57 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1713438237;
-	bh=nVrJ30MzRcVeLHpwfXp7hOiRaAkKYzwTLRPhrFm0ixw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ZGildrEZ8PscbwJPkrVEQ9AVQQ5ZqsFtIzLjmF9plRRPHNE6nYXij+2WJ4wHeQ/Vt
-	 tbErl0bgSpuTcVcaqqltDwf7r27d4aQqy4R23+6SvyevGzwbJqe+dJwie8wJOCDzuq
-	 WkVX5b8VtifCgZq58ru+v0enMsxJOUVui5DkYPqU=
-Date: Thu, 18 Apr 2024 14:04:38 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Ricardo Ribalda <ribalda@chromium.org>
-Cc: Martin Tuma <martin.tuma@digiteqautomotive.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	Hugues Fruchet <hugues.fruchet@foss.st.com>,
-	Alain Volmat <alain.volmat@foss.st.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Chen-Yu Tsai <wens@csie.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Sowjanya Komatineni <skomatineni@nvidia.com>,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Hans Verkuil <hverkuil@xs4all.nl>, Sergey Kozlov <serjk@netup.ru>,
-	Abylay Ospan <aospan@netup.ru>,
-	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	Dmitry Osipenko <digetx@gmail.com>,
-	Stanimir Varbanov <stanimir.k.varbanov@gmail.com>,
-	Vikash Garodia <quic_vgarodia@quicinc.com>,
-	Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Benjamin Mugnier <benjamin.mugnier@foss.st.com>,
-	Sylvain Petinot <sylvain.petinot@foss.st.com>,
-	Jacopo Mondi <jacopo+renesas@jmondi.org>,
-	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
-	Niklas =?utf-8?Q?S=C3=B6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
-	Pavel Machek <pavel@ucw.cz>, linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-arm-kernel@lists.infradead.org, linux-staging@lists.linux.dev,
-	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org
-Subject: Re: [PATCH 03/35] media: uvcvideo: Refactor iterators
-Message-ID: <20240418110438.GX12561@pendragon.ideasonboard.com>
-References: <20240415-fix-cocci-v1-0-477afb23728b@chromium.org>
- <20240415-fix-cocci-v1-3-477afb23728b@chromium.org>
+	id 1rxRPV-00000002IOt-0BZ6
+	for linux-mediatek@lists.infradead.org;
+	Thu, 18 Apr 2024 13:02:46 +0000
+Received: by mail-ej1-x62d.google.com with SMTP id a640c23a62f3a-a5557e3ebcaso148679066b.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 18 Apr 2024 06:02:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1713445359; x=1714050159; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=bVyPUZzpnAkaHf5uIez6yP0jHFtLyERSTeCCJwCmVdY=;
+        b=uOW5p0DEMi5ucTkmTiQk5oU0AXpVjh4dpXCekFd2Cq+q2gkygfAwfeQq1NFvmECXFO
+         nhaAr2zpDBJplZccKPJJyXyDE63joyszgO/BkSZQOOXlV0dgFbNOPP5bXSuCONhShaWe
+         Ge38fLydcscQMDIvd2upYTFnuTtgfC9qGSERZ4azUJBPWW127Gt3OFB1uQzyfTeb6B6C
+         S21lK7Ddg9EMnrVppDpI/FGvNCsIbIlfMxR90GKGtkUEatW4tPFycvrSKD5okZHXlTO2
+         PMdsX0Ewgk6zHFuKBl20sNZPEYt/jHyPcicN7yxjtRvdofaJkBjxyvJnx3BcQH1+OshT
+         vAfQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1713445359; x=1714050159;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=bVyPUZzpnAkaHf5uIez6yP0jHFtLyERSTeCCJwCmVdY=;
+        b=CF7o4FErDvydxJ+X7d/DMaqVEdjW0GXRYNbjZOGYULuvz2WS/rWfAZ44zFhjJbxWV8
+         dxVb5UUJJDwAJYiQH7bw7ZYilLBzaOa5BiDWI3BGz2fnGTiruqcoSTWoJKLY8MuuhDk/
+         1BCkCezdFmlBGNiJWF7Pcnqenc8IT45WiVZtYur56dcz9dbZDTmJKHOItkiZaGATQUuU
+         zqkFxWR9wvuYP9JBVs2BLssEGdG5JQcVbpq/I1uR4Aw2Y5ebkO6VmQ9MZm0ek4qRUBAW
+         jUppv8s8yLsQWL9+exMSoYXyRT1shWuO4SW5dF1VklzglAuS8XIu9+iELE/TnPaJlTwv
+         4akQ==
+X-Forwarded-Encrypted: i=1; AJvYcCX+FgF/rsYqSROctcQugXIHdESQgnrysWz2QSC/fYfU09Cxna7Ulq2w4SQj6s+RL9MAWDsdF8Gjjn67KVxOt29Xus/VQlTzUvDl1v3T3YjbyOzm
+X-Gm-Message-State: AOJu0Yxvbbq/bwxz/TLfxkgNU9vM/CMd0Vo171QTOx0QQJPMSPX2/+nZ
+	TczBfkeMerz9bu0UtLnglvOANMFNQUAaZWnvZBdGjkNbQAdCwemOtW+6V30SCU8=
+X-Google-Smtp-Source: AGHT+IH0N89eEQyHSFCXfRykybkZDOZuDp2tJqO99tXBPvhuSPwv2IlxEhe/EsNO/07OXybXEnBOWw==
+X-Received: by 2002:a17:907:36c1:b0:a55:6135:7ab7 with SMTP id bj1-20020a17090736c100b00a5561357ab7mr2297200ejc.6.1713445359195;
+        Thu, 18 Apr 2024 06:02:39 -0700 (PDT)
+Received: from [192.168.1.172] ([93.5.22.158])
+        by smtp.gmail.com with ESMTPSA id w23-20020a170907271700b00a556f2f18d6sm794633ejk.57.2024.04.18.06.02.37
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 18 Apr 2024 06:02:38 -0700 (PDT)
+Message-ID: <57d55af9-33d1-45de-b8e2-ff9ab2e74e4f@baylibre.com>
+Date: Thu, 18 Apr 2024 15:02:36 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20240415-fix-cocci-v1-3-477afb23728b@chromium.org>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 18/18] arm64: dts: mediatek: add display support for
+ mt8365-evk
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
+ Daniel Vetter <daniel@ffwll.ch>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Jitao Shi <jitao.shi@mediatek.com>,
+ CK Hu <ck.hu@mediatek.com>, =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?=
+ <u.kleine-koenig@pengutronix.de>, Michael Turquette
+ <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>,
+ Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-pwm@vger.kernel.org,
+ linux-clk@vger.kernel.org
+References: <20231023-display-support-v2-0-33ce8864b227@baylibre.com>
+ <20231023-display-support-v2-18-33ce8864b227@baylibre.com>
+ <ee8d0a32-b4fb-4fc4-83b2-300f7453d95f@collabora.com>
+Content-Language: en-US
+From: Alexandre Mergnat <amergnat@baylibre.com>
+In-Reply-To: <ee8d0a32-b4fb-4fc4-83b2-300f7453d95f@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240418_040447_004623_A186ABCB 
-X-CRM114-Status: GOOD (  22.57  )
+X-CRM114-CacheID: sfid-20240418_060241_510438_56F5CD70 
+X-CRM114-Status: UNSURE (   7.89  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,93 +113,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Ricardo,
 
-Thank you for the patch.
 
-On Mon, Apr 15, 2024 at 07:34:20PM +0000, Ricardo Ribalda wrote:
-> Avoid using the iterators after the list_for_each() constructs.
-> This patch should be a NOP, but makes cocci, happier:
+On 17/04/2024 12:27, AngeloGioacchino Del Regno wrote:
 > 
-> drivers/media/usb/uvc/uvc_ctrl.c:1861:44-50: ERROR: invalid reference to the index variable of the iterator on line 1850
-> drivers/media/usb/uvc/uvc_ctrl.c:2195:17-23: ERROR: invalid reference to the index variable of the iterator on line 2179
+>> +        irq_ite_pins {
 > 
-> Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
-> ---
->  drivers/media/usb/uvc/uvc_ctrl.c | 24 +++++++++++++-----------
->  1 file changed, 13 insertions(+), 11 deletions(-)
-> 
-> diff --git a/drivers/media/usb/uvc/uvc_ctrl.c b/drivers/media/usb/uvc/uvc_ctrl.c
-> index e59a463c2761..a4a987913430 100644
-> --- a/drivers/media/usb/uvc/uvc_ctrl.c
-> +++ b/drivers/media/usb/uvc/uvc_ctrl.c
-> @@ -1850,16 +1850,18 @@ int __uvc_ctrl_commit(struct uvc_fh *handle, int rollback,
->  	list_for_each_entry(entity, &chain->entities, chain) {
+> Did you run dtbs_check?!? :-)
 
-If we really want to ensure the iterator won't be used after the loop,
-it could be declared in the loop statement itself, now that the kernel
-has switched to a newer C version.
+Yes without error, here my command:
+dt-validate -s Documentation/devicetree/bindings arch/arm64/boot/dts/mediatek/mt8365-evk.dtb
 
->  		ret = uvc_ctrl_commit_entity(chain->dev, entity, rollback,
->  					     &err_ctrl);
-> -		if (ret < 0)
-> +		if (ret < 0) {
-> +			if (ctrls)
-> +				ctrls->error_idx =
-> +					uvc_ctrl_find_ctrl_idx(entity, ctrls,
-> +							       err_ctrl);
->  			goto done;
-> +		}
->  	}
->  
->  	if (!rollback)
->  		uvc_ctrl_send_events(handle, ctrls->controls, ctrls->count);
->  done:
-> -	if (ret < 0 && ctrls)
-> -		ctrls->error_idx = uvc_ctrl_find_ctrl_idx(entity, ctrls,
-> -							  err_ctrl);
->  	mutex_unlock(&chain->ctrl_mutex);
->  	return ret;
->  }
-> @@ -2165,7 +2167,7 @@ static int uvc_ctrl_init_xu_ctrl(struct uvc_device *dev,
->  int uvc_xu_ctrl_query(struct uvc_video_chain *chain,
->  	struct uvc_xu_control_query *xqry)
->  {
-> -	struct uvc_entity *entity;
-> +	struct uvc_entity *entity, *iter;
->  	struct uvc_control *ctrl;
->  	unsigned int i;
->  	bool found;
-> @@ -2175,16 +2177,16 @@ int uvc_xu_ctrl_query(struct uvc_video_chain *chain,
->  	int ret;
->  
->  	/* Find the extension unit. */
-> -	found = false;
-> -	list_for_each_entry(entity, &chain->entities, chain) {
-> -		if (UVC_ENTITY_TYPE(entity) == UVC_VC_EXTENSION_UNIT &&
-> -		    entity->id == xqry->unit) {
-> -			found = true;
-> +	entity = NULL;
-> +	list_for_each_entry(iter, &chain->entities, chain) {
+Also I've done a "make dtbs_check" just to be sure, nothing wrong on mt8365-evk.dtb.
 
-Same here, iter could be declared in the loop.
-
-> +		if (UVC_ENTITY_TYPE(iter) == UVC_VC_EXTENSION_UNIT &&
-> +		    iter->id == xqry->unit) {
-> +			entity = iter;
->  			break;
->  		}
->  	}
->  
-> -	if (!found) {
-> +	if (!entity) {
->  		uvc_dbg(chain->dev, CONTROL, "Extension unit %u not found\n",
->  			xqry->unit);
->  		return -ENOENT;
-> 
+For you, what is the issue please ?
 
 -- 
 Regards,
-
-Laurent Pinchart
+Alexandre
 
