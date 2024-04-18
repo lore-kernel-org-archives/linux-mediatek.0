@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD5ABC04FFE
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B4A8C4345F
 	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Apr 2024 15:31:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,65 +12,65 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qSFnuWZU02Pj+jNQxOwjPB7Yh5V2Ct2ICa/Ty3dFlQI=; b=UqB0xn+kDE8LUIKVf5b1P9hggx
-	4OtVVHruDecPzAtg/hj4AkViv+CBwWiaKpMa6gVqL5UEq820k86SiPtTBiLx+sDAxzr7+j1pijlAp
-	FDU+B85dskAZSjLXEoI75xYv9t6DU+9eZ4YNI7wp3iKX2rKNXPw+tnA54ybeZDlnLL+wdG4+EVvMN
-	4X0qVwv6s/XVyD+XMs6K3c6/DpSLh7o4CkuYrB8dvxm0xMvDz0wVgR8+E1NkFqM03Cz6ae/YemC+8
-	MPnwK1U6St+RC5tJ3h+ondh0OMtImaht8n2Dag1eFKmGnaqcRxbkANfbWQ7sxL6QiU3t2ZIYX3h9K
-	/rvB9LaQ==;
+	bh=49BUJCpffUTma/23KKg2oGJXJqjsBZNRYKTB4uG1eb4=; b=TnbycujjuNk+P2r2Bi2aRIXg1E
+	c8reIlhh8QLMv8gLn9JJi0aJPTEi5IZ4uIdTc1RVCAx1dWrFGwjXqIGrbLZKhbrWFK7N95PHPv3v/
+	GqENkofRa3B4S2nxFyH+FS3f2p11CSVhvRLZSgJdf/3RiPwi7kSRGNQy9jsGUin9sVQ9/YTaf13e+
+	JWi39gPT9xuQSdEb7e11ha/wUqipodu3ib1N+dqbCdfbuuGsAzZ5lEbFSWXbnG9qW/gLxTyHv7ZIF
+	4bNDxObl+S8eMueSUWINDarA+YFvcP1jS9lI2JeUtgAQ3q9d0ealbfmODq0Af1/fOcD4jLnSGlg/i
+	qqx6n0Ng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxTjM-00000002nZO-1o1b;
-	Thu, 18 Apr 2024 15:31:20 +0000
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+	id 1rxTjN-00000002naQ-2uQf;
+	Thu, 18 Apr 2024 15:31:21 +0000
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxSZg-00000002YWX-1tcV
+	id 1rxSZg-00000002YWs-1uSY
 	for linux-mediatek@lists.infradead.org;
-	Thu, 18 Apr 2024 14:17:24 +0000
-Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-418e06c0ef4so8026265e9.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 18 Apr 2024 07:17:12 -0700 (PDT)
+	Thu, 18 Apr 2024 14:17:25 +0000
+Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-418c979ddd2so6560245e9.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 18 Apr 2024 07:17:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1713449830; x=1714054630; darn=lists.infradead.org;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1713449832; x=1714054632; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=qSFnuWZU02Pj+jNQxOwjPB7Yh5V2Ct2ICa/Ty3dFlQI=;
-        b=D2hQMiUtv1eOwBVICHZMo0qNIED+f+24bHAXVnkScyOCnEYAIhF9IyMf2A5qlOcuWn
-         7C6Ux8SXthnvR7BCgs4nNQBZ3mKY5+cCpEJbGS6ut5IP6vCOVuplPRHvSw8ez288sR6W
-         6ibPRQXpM+kZqbASwJp5/u11LP5Dbhrjt7hzuu2pyMyUWKUUPAYDdQzznTne1sdR33SH
-         kOdUoSPejNu0V1BczMpRdYqasOibQEN0l18orwJw0Zs7dwE//KM+/iDIAdJ4qPW0dcXW
-         ZlwahVcN/zkC5JT2JWq4jDxp4J/YAk7kt5pXTZGhJYj/Rgs/0Cmk39OJqeizWuwo1w3o
-         03lw==
+        bh=49BUJCpffUTma/23KKg2oGJXJqjsBZNRYKTB4uG1eb4=;
+        b=oDcLqkg3r6nrF09khcsqnZpyF0CfmdFxJXS/bGjdk51/HarrrIDdpXixXSijFM+kYa
+         5GmbhVSr4dSOqOYlQRo3ySF21onpmpIJB1vk14rOlSofsI1hkt23LB3q6kYLBPyMSuMu
+         IkDmKvb6EMC8EXzPa5mMi25gNmYnrjcIvz6OPOp6EfhioqqWg9wPtG2w3Dw5qpxS4wDy
+         Y7oWXSYiMO5XhQLdv1BqEeIcEPoOZf1kbW/PftHnqxiHaWxU80LOzympYgowdFSZ6vFg
+         4TG19lKdd15k86l6z3cyyzf9kjADKPDEe9vap1h5+TNXbl7x6SsOIeiFXlDlQhNFkWcd
+         cEFA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713449830; x=1714054630;
+        d=1e100.net; s=20230601; t=1713449832; x=1714054632;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=qSFnuWZU02Pj+jNQxOwjPB7Yh5V2Ct2ICa/Ty3dFlQI=;
-        b=YxSGlPG7KjyxwSCd+B3XNVCyVAcH/nGT4W4AC5OUAdai9HJ5tCHPh7iws9Ra+J/2WW
-         F+rFVhWJV9DT9ygDGQvHH40p4c4My3Yj5LmkLBTcBg5ZE1E9Pfy9Hg7yCRgvgooKcsxS
-         T7RiQGyjoapWVJccQHvQ/UFdCq+zBtsWYs34hq3ayzwBmZ59kqAfL3xzQErlKBz2UInM
-         ymxoXhhzHF6b5gQ0bvZjzW09oKlA9psshF3oSMj5LTNKGG8Mfq1JQCds+udkXjkMwTFz
-         vdiM7BM397TVqzskwo8CP0JAkW2XR1fP34492WE4uV6QRaVlDb+M3YLkxsQbrYecQaDP
-         KAXw==
-X-Forwarded-Encrypted: i=1; AJvYcCV9IXp2QvHM2gHWwHcKNIDbbex8+Jh61+yY7vczzdPgts1Ql1DziFp2B9DiiDz0GcxWufD0m2302lS4JNGdwuModsgDr1b1DCUEcTV1yOoPOTCG
-X-Gm-Message-State: AOJu0YxvdzUAnjqs3/E6in+VVnHEio/Fs5OFLslTmo11ODdTizZHKznp
-	BWb3G85fPt7QgNJeFrRDhY72sJYHD4k71F1fjQ2/iZfF8i5syCsRD6cvysvBg8g=
-X-Google-Smtp-Source: AGHT+IFH5zwg0DYunY8MHTPUkoUZW6jYQiwpcrjw84bDm8QBlcdfSqPva29r1m6tFBZKlPW0GU48tg==
-X-Received: by 2002:a05:600c:3ba4:b0:418:f6b7:429a with SMTP id n36-20020a05600c3ba400b00418f6b7429amr730099wms.27.1713449830604;
-        Thu, 18 Apr 2024 07:17:10 -0700 (PDT)
+        bh=49BUJCpffUTma/23KKg2oGJXJqjsBZNRYKTB4uG1eb4=;
+        b=cl3guHb1wIe7/xvIhboueMUNVVAz9Gr2Z29mnO5TETT2CyCgN7mU9Ku37xdWYYIFk+
+         g1KW5OMqBpnBiZR9am3MQ7ISZuq/lfjNYcpUsd4wPq0qikWMv5A3deFX2x5TzH1tzXqr
+         Z7BglanoqhLiLayJnCAleogRwlZOvd4XalFZTaW8TZWWts5B8825cEbJ/rcaObIvVBZE
+         yvEt3gumy7TPQwd3GHuCsxznUY2KoSrNKLfxaJ6ukZHLyq4HTJMB1s41B1VLNJSTlz+u
+         sH3FE97nbAcD8WCeNo4Z73KGH7YSKHmwetfhLAVwBpNhTM5PYnvmEBqzFKbD/GszU6yG
+         sIWg==
+X-Forwarded-Encrypted: i=1; AJvYcCV49CK/31sYXxJMkFlHoV0u8s8i1oB32iuOpfNmxQnTW2JdEmLqCLZ7sexC2vI503IGEmzMTMyWaHiMTaaAeVV6wmuMYtYGuSv3FdxzYJuqr4hs
+X-Gm-Message-State: AOJu0Yz620lnffxzTOZfS3AvWSyNG71Bjpd5Bid+qLb3QMWgg5udWmtV
+	rtVC73qkz0RzFuPjVIC2WqvPl2knk2xCNN2ln1tUCwc3Yl8gojlsHeAnhEoyp18=
+X-Google-Smtp-Source: AGHT+IFTjzRpWK6iDi01DywjVdh8/v4t3z3199bOhoMDOHvDHlFawM4QhxRAJOfj2/Qsjae2GFxPbg==
+X-Received: by 2002:a05:600c:4710:b0:418:829e:efa5 with SMTP id v16-20020a05600c471000b00418829eefa5mr2601682wmo.20.1713449832214;
+        Thu, 18 Apr 2024 07:17:12 -0700 (PDT)
 Received: from [127.0.1.1] ([93.5.22.158])
-        by smtp.googlemail.com with ESMTPSA id i9-20020a05600c354900b004180c6a26b4sm6267510wmq.1.2024.04.18.07.17.08
+        by smtp.googlemail.com with ESMTPSA id i9-20020a05600c354900b004180c6a26b4sm6267510wmq.1.2024.04.18.07.17.10
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 18 Apr 2024 07:17:09 -0700 (PDT)
+        Thu, 18 Apr 2024 07:17:11 -0700 (PDT)
 From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Thu, 18 Apr 2024 16:16:49 +0200
-Subject: [PATCH v3 01/17] dt-bindings: display: mediatek: aal: add
+Date: Thu, 18 Apr 2024 16:16:50 +0200
+Subject: [PATCH v3 02/17] dt-bindings: display: mediatek: ccorr: add
  compatible for MT8365 SoC
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20231023-display-support-v3-1-53388f3ed34b@baylibre.com>
+Message-Id: <20231023-display-support-v3-2-53388f3ed34b@baylibre.com>
 References: <20231023-display-support-v3-0-53388f3ed34b@baylibre.com>
 In-Reply-To: <20231023-display-support-v3-0-53388f3ed34b@baylibre.com>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
@@ -94,24 +94,24 @@ Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org, linux-pwm@vger.kernel.org, 
  linux-clk@vger.kernel.org, Alexandre Mergnat <amergnat@baylibre.com>
 X-Mailer: b4 0.12.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1032; i=amergnat@baylibre.com;
- h=from:subject:message-id; bh=k+btns924mgO0ndeMmYcNT303bVziMBQNLMXrYRxVa0=;
- b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBmIStiwjjQsGMtkIBC4BIIe8mmC5l4Gh+lOg1h4Dhy
- Wl9VXL+JAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZiErYgAKCRArRkmdfjHURUjxD/
- 4g49trsbsJN/Y0FHB0Xht+mvp/FZBOgNuCfI+SZcbNnEti9L32hez80bpcp3eUQFn+6zjwkUYkOhUt
- xnKm8fkxFakHCTmmKVpP5PzjrJEi35Vs183xIQGs21+HCLShJuyamUu2PwMx2eEPKjuzeOdYch1pDV
- KWmwe79GtpBowp9iLGCh8tfwd6TzXFSnJw/LvGPNl4WaQ+v9kbzF8d6lAkp9QvLG92ZePSrWlNaqFs
- 6HsyhyFT/nIFIUiJyxp7buN5jj/XEYQdo5IcXE4fsYvsTXyI2UPvgf2DSCawfMAhy9W0HGB1cpxOfg
- Sde0gOULET2QSf3qIHvyis2FYE8sLn9Qy6n6eDWqusXKelWS2S+mj7q1zbjLiibDDYuNzdw2L7I3de
- /akgPlmPvmQxMqkSmxj2CvCF/NkzfBLxva0rXJPwtGbk0vJ8scPqofhiA53B7qSO1I5xDD8BEQsHoT
- TM8XStsqw6o2O542hSJ5wXolsYXc7O7LT1XVr8dqgSMVel2XaYiLi3MDSUkx8QxWJfRbQukUNHWimz
- i16o0brEt4WAu9rjERbWeT0Vd+cDN4mz34E6XqY5IxqJd3GMin99psmzCT+x7jGOFy45XxpVKX9IZi
- oh9FtNak9KhKad/TRYV+tzdn5WpciFi53tMAlBmJE1k7idYTGlXzuscWMagg==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1102; i=amergnat@baylibre.com;
+ h=from:subject:message-id; bh=DLryLa8O7iEQrZUEVAGOL74G0qHULUzTiJ6209ggFjg=;
+ b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBmISti5dQRvICs+TNWn9PcvcaXjHRymsUXz5cyKmOy
+ gTr2alGJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZiErYgAKCRArRkmdfjHURTCbD/
+ 0RoSlJPIusbA/ANyTOZy03WTuf6qpmm/7E76EPyETfQy89dcQx89oVWZG7tbWvZYTCLLYQdqDSIbXJ
+ EW0M94hkg3BbwPvN8d1Y35T+9XjOZj2cX8RkgQt1HJ6mN+j43iIUqY73ZQUMVY5t2xXNqYdA6vy5tG
+ RwvuL8F81Qu0WbD9S4pKCHDdN+yvIvMmA5og2KAw9RKnQZWZvE0DXVkHurMOHgZFGXFwqOppvCLF+6
+ c7DKgP5D5yLPrGTdHYTjfZf6AI8PacTvv1KcaGGeCW1zq6cSpv6AKfjiGETGhJxyIURzmQ8acFhHYk
+ fMNj+AxQczDMNk4KL3Neuyu38RLeDKmi2pnevus7THXSeOuKWUxHFO9Ns8+gwjAb62vOhiNiDcxR30
+ u22RhSdXqMhNRnPNX59D1r36QGMrOHsemN7CzpMXxtf0lmdYXIvhwD14NTSkIVDQWdV+Ko2ZcObJyd
+ PjAcqW7cirsORw8QcQAb74RODyEjKrZnDN3DSaNitv++UgqdT+Ph8Jw/K+yYrCnmvS4fXIY5+aEmSZ
+ AQqnjibLgU7WtuTuGSkjjThwWhmlprsOrYQvqGb+bpOna0y9QxbaXpPWgWw2JLgiRyC3Y25ayG40fL
+ gUuyPpivBHlfmrEQ8mvpA6d1e1NypftXdVe5aqr5gJGUXm89nrXYGVNU4v9w==
 X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
  fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240418_071716_606647_5AC662EB 
-X-CRM114-Status: UNSURE (   9.35  )
+X-CRM114-CacheID: sfid-20240418_071716_614089_9320CEB0 
+X-CRM114-Status: UNSURE (   9.50  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -127,28 +127,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Document the display Adaptive Ambient Light on MT8365, which is compatible
+Document the display Color Correction on MT8365, which is compatible
 with that of the MT8183.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Acked-by: Rob Herring (Arm) <robh@kernel.org>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 ---
- Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml | 1 +
- 1 file changed, 1 insertion(+)
+ Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
-index b4c28e96dd55..cf24434854ff 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
-@@ -36,6 +36,7 @@ properties:
-               - mediatek,mt8188-disp-aal
-               - mediatek,mt8192-disp-aal
-               - mediatek,mt8195-disp-aal
-+              - mediatek,mt8365-disp-aal
-           - const: mediatek,mt8183-disp-aal
- 
-   reg:
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
+index 8c2a737237f2..9f8366763831 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
+@@ -24,6 +24,9 @@ properties:
+       - enum:
+           - mediatek,mt8183-disp-ccorr
+           - mediatek,mt8192-disp-ccorr
++      - items:
++          - const: mediatek,mt8365-disp-ccorr
++          - const: mediatek,mt8183-disp-ccorr
+       - items:
+           - enum:
+               - mediatek,mt8186-disp-ccorr
 
 -- 
 2.25.1
