@@ -4,97 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39557C4345F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Apr 2024 15:46:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78325C4345F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Apr 2024 15:57:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OfCwZ2AwhrE2Zd1Kkt7i9hQF6qrDNPRufzN+RHay758=; b=BfoYZnj1ohv2iAGfhtuZ1dSZFX
-	2Dbf7+BHkZYwQB0B3oneCXnhRGopZPK28TJcyaW9OboEpdm04JStZJ+riycpfFPn3kpZOngADrIgj
-	YlJDqIJnaD8IME1MlMnmpXHkJZBQdGPlE/byqykuYs/rWAw99NH6R0SjA239m714AX+BFltuuh4+v
-	pFG7qpbvzCF0qLdgkia6N0MJbFmXw3P4js7sKtOLg1sJVi0ryAMca1f9FafZHc0HBmKcL/AMXD13h
-	v5DEN9smHXVPb1gt/WD6ZqgRzqrPPb3iJb5mHaVPYXJ8eh064yGbHB1g89navD9eRa/6PVaVlx+mR
-	s7uGdZqA==;
+	bh=oWXX2EgR5OMeWYZwjb9fOYF2i4vz4IgxlTSTFyfNR4E=; b=4Tg4zv9nrDLsWXlswJPhBnW9lb
+	7s9iIuJqQs8K49yEMw4jmmOs/gaJdImMaMEfwcVMpj5ZPMDXF0d4WFxjDHcqL2fcQYuVxHP4slTCg
+	dISQbsQ9ErumYofvxUT9CcAE86dB/pEuBS7VI4JCYqtAzHWL62uIyhIGSvmfzYDbxJpsEqBF4dx7b
+	269zJnR/HcjXOl0MZLgDgzs7ep47bhnchBy9/OZbr0bxakMupr/lwGWp6N569y7Ws6JfYcEiuJ8jb
+	+BGn+skSBn9FD4RVlVT2SRS2oNigQn6Rxhs9R8tvwmTl5Q7HDba8cn6thCGFkbM3/v46/p0A4aiVE
+	JG91YIHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxTyN-00000002sDp-23My;
-	Thu, 18 Apr 2024 15:46:51 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1rxU8q-00000002ueZ-0ILx;
+	Thu, 18 Apr 2024 15:57:40 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxTyG-00000002s7A-3S5o;
-	Thu, 18 Apr 2024 15:46:48 +0000
-Received: from pendragon.ideasonboard.com (117.145-247-81.adsl-dyn.isp.belgacom.be [81.247.145.117])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 2A03C802;
-	Thu, 18 Apr 2024 17:45:53 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1713455153;
-	bh=K6H40zZOBruNXEKy+mLBxL40J3Voj2XWEqqGuvJ9w94=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=mNiKJAJDsTkJYMYK4ZtsZ9zlV7xPYE85xk9V7yAnZZ4lXnvj+UhwJ4fKqYaFra0Xc
-	 2eBi44CBZWoMWyMkwDoCJV3GUcE9zfI7hzMI60oHIg/o5NGSS92iXbFgMGqv+gOkZe
-	 2N/SspWfXOLe5x5IbsUKTfY8A/Ga1vjvyZkxLsrw=
-Date: Thu, 18 Apr 2024 18:46:33 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Ricardo Ribalda <ribalda@chromium.org>
-Cc: Dan Carpenter <dan.carpenter@linaro.org>,
-	Martin Tuma <martin.tuma@digiteqautomotive.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	Hugues Fruchet <hugues.fruchet@foss.st.com>,
-	Alain Volmat <alain.volmat@foss.st.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Chen-Yu Tsai <wens@csie.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Sowjanya Komatineni <skomatineni@nvidia.com>,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Hans Verkuil <hverkuil@xs4all.nl>, Sergey Kozlov <serjk@netup.ru>,
-	Abylay Ospan <aospan@netup.ru>,
-	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	Dmitry Osipenko <digetx@gmail.com>,
-	Stanimir Varbanov <stanimir.k.varbanov@gmail.com>,
-	Vikash Garodia <quic_vgarodia@quicinc.com>,
-	Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Benjamin Mugnier <benjamin.mugnier@foss.st.com>,
-	Sylvain Petinot <sylvain.petinot@foss.st.com>,
-	Jacopo Mondi <jacopo+renesas@jmondi.org>,
-	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
-	Niklas =?utf-8?Q?S=C3=B6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
-	Pavel Machek <pavel@ucw.cz>, linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-arm-kernel@lists.infradead.org, linux-staging@lists.linux.dev,
-	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	Oleg Drokin <green@linuxhacker.ru>
-Subject: Re: [PATCH 00/35] media: Fix coccinelle warning/errors
-Message-ID: <20240418154633.GD31776@pendragon.ideasonboard.com>
-References: <20240415-fix-cocci-v1-0-477afb23728b@chromium.org>
- <a003494c-a1a9-4fcd-83d8-766a75d6bbb2@moroto.mountain>
- <20240417155112.GQ12561@pendragon.ideasonboard.com>
- <CANiDSCs_qOXkhzuL+cFhpw0hvFMwU0TYyN2B5ZdAStb96TTKFA@mail.gmail.com>
- <20240418105310.GV12561@pendragon.ideasonboard.com>
- <CANiDSCuS3KQK9H37sDZJ+mcqheNSh7NBwchS3dPccVXcPTSNRA@mail.gmail.com>
+	id 1rxU8m-00000002uaS-1f4O
+	for linux-mediatek@lists.infradead.org;
+	Thu, 18 Apr 2024 15:57:38 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1rxU8H-0006Yg-SF; Thu, 18 Apr 2024 17:57:05 +0200
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1rxU8D-00D07n-UP; Thu, 18 Apr 2024 17:57:01 +0200
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.96)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1rxU8D-003YUR-2e;
+	Thu, 18 Apr 2024 17:57:01 +0200
+Date: Thu, 18 Apr 2024 17:57:01 +0200
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: Alexandre Mergnat <amergnat@baylibre.com>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+	Philipp Zabel <p.zabel@pengutronix.de>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Jitao Shi <jitao.shi@mediatek.com>, CK Hu <ck.hu@mediatek.com>, 
+	Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, 
+	Fabien Parent <fparent@baylibre.com>, Markus Schneider-Pargmann <msp@baylibre.com>, 
+	Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, dri-devel@lists.freedesktop.org, 
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-pwm@vger.kernel.org, linux-clk@vger.kernel.org
+Subject: Re: [PATCH v3 11/17] dt-bindings: pwm: mediatek,pwm-disp: add
+ compatible for mt8365 SoC
+Message-ID: <ddqgzbhmkp57wupumrm7ht3bivohukfzebn5vez2ft2ksij4yc@irllweyitwoy>
+References: <20231023-display-support-v3-0-53388f3ed34b@baylibre.com>
+ <20231023-display-support-v3-11-53388f3ed34b@baylibre.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="mfe5lzcqzhilqxcv"
 Content-Disposition: inline
-In-Reply-To: <CANiDSCuS3KQK9H37sDZJ+mcqheNSh7NBwchS3dPccVXcPTSNRA@mail.gmail.com>
+In-Reply-To: <20231023-display-support-v3-11-53388f3ed34b@baylibre.com>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240418_084645_705461_CE00595C 
-X-CRM114-Status: GOOD (  40.26  )
+X-CRM114-CacheID: sfid-20240418_085736_456851_3114D141 
+X-CRM114-Status: GOOD (  18.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,86 +87,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Ricardo,
 
-On Thu, Apr 18, 2024 at 04:51:06PM +0200, Ricardo Ribalda wrote:
-> On Thu, 18 Apr 2024 at 12:53, Laurent Pinchart wrote:
-> > On Wed, Apr 17, 2024 at 06:19:14PM +0200, Ricardo Ribalda wrote:
-> > > On Wed, 17 Apr 2024 at 17:51, Laurent Pinchart wrote:
-> > > > On Tue, Apr 16, 2024 at 11:47:17AM +0300, Dan Carpenter wrote:
-> > > > > In my opinion, it's better to just ignore old warnings.
-> > > >
-> > > > I agree. Whatever checkers we enable, whatever code we test, there will
-> > > > always be false positives. A CI system needs to be able to ignore those
-> > > > false positives and only warn about new issues.
-> > >
-> > > We already have support for that:
-> > > https://gitlab.freedesktop.org/linux-media/media-ci/-/tree/main/testdata/static?ref_type=heads
-> >
-> > Those are manually written filters. Would it be possible to reduce the
-> > manual step to flagging something as a false positive, and have a
-> > machine build the filters ?
-> 
-> Do you expect that the list of exceptions will grow?
-> 
-> I hope that once the CI is in place we will fix the warnings before
-> they land in the tree.
+--mfe5lzcqzhilqxcv
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Any static checker is bound to produce false positives. Some of them can
-be addressed by improving the checker, others by modifying the source
-code, but in some cases the first option would be too difficult and the
-second would reduce readability of the code. I thus thing the list of
-accepted false positives will grow over time.
+Hello,
 
-> > > But it would be great if those lists were as small as possible:
-> > >
-> > > - If we have a lot of warnings, two error messages can be combined and
-> > > will scape the filters
-> > > eg:
-> > > print(AAAA);
-> > > print(BBBB);
-> > > > AABBBAAB
-> > >
-> > > - The filters might hide new errors if they are too broad
-> > >
-> > >
-> > > Most of the patches in this series are simple and make a nicer code:
-> > > Eg the non return minmax() ,
-> > > Other patches show real integer overflows.
-> > >
-> > > Now that the patches are ready, let's bite the bullet and try to
-> > > reduce our technical debt.
-> > >
-> > > > > When code is new the warnings are going to be mostly correct.  The
-> > > > > original author is there and knows what the code does.  Someone has
-> > > > > the hardware ready to test any changes.  High value, low burden.
-> > > > >
-> > > > > When the code is old only the false positives are left.  No one is
-> > > > > testing the code.  It's low value, high burden.
-> > > > >
-> > > > > Plus it puts static checker authors in a difficult place because now
-> > > > > people have to work around our mistakes.  It creates animosity.
-> > > > >
-> > > > > Now we have to hold ourselves to a much higher standard for false
-> > > > > positives.  It sounds like I'm complaining and lazy, right?  But Oleg
-> > > > > Drokin has told me previously that I spend too much time trying to
-> > > > > silence false positives instead of working on new code.  He's has a
-> > > > > point which is that actually we have limited amount of time and we have
-> > > > > to make choices about what's the most useful thing we can do.
-> > > > >
-> > > > > So what I do and what the zero day bot does is we look at warnings one
-> > > > > time and we re-review old warnings whenever a file is changed.
-> > > > >
-> > > > > Kernel developers are very good at addressing static checker warnings
-> > > > > and fixing the real issues...  People sometimes ask me to create a
-> > > > > database of warnings which I have reviewed but the answer is that
-> > > > > anything old can be ignored.  As I write this, I've had a thought that
-> > > > > instead of a database of false positives maybe we should record a
-> > > > > database of real bugs to ensure that the fixes for anything real is
-> > > > > applied.
+On Thu, Apr 18, 2024 at 04:16:59PM +0200, Alexandre Mergnat wrote:
+> Add a compatible string for MediaTek Genio 350 MT8365's display PWM
+> block: this is the same as MT8183.
+>=20
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
+ora.com>
+> Acked-by: Uwe Kleine-K=F6nig <u.kleine-koenig@pengutronix.de>
+> Acked-by: Rob Herring (Arm) <robh@kernel.org>
+> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+> ---
+>  Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml | 1 +
+>  1 file changed, 1 insertion(+)
+>=20
+> diff --git a/Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml=
+ b/Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml
+> index f8988af05287..180dd8366935 100644
+> --- a/Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml
+> +++ b/Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml
+> @@ -31,6 +31,7 @@ properties:
+>                - mediatek,mt8188-disp-pwm
+>                - mediatek,mt8192-disp-pwm
+>                - mediatek,mt8195-disp-pwm
+> +              - mediatek,mt8365-disp-pwm
+>            - const: mediatek,mt8183-disp-pwm
+> =20
+>    reg:
 
--- 
-Regards,
+As there is still no feedback about how this should be merged, I went on
+and applied this patch to
+https://git.kernel.org/pub/scm/linux/kernel/git/ukleinek/linux.git pwm/for-=
+next
+=2E
 
-Laurent Pinchart
+Uwe
+
+--=20
+Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
+Industrial Linux Solutions                 | https://www.pengutronix.de/ |
+
+--mfe5lzcqzhilqxcv
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmYhQswACgkQj4D7WH0S
+/k7XLwf9E9OpRFmUhJZZk3JE9n1r/ktNvu8zeUbfAQag5XpWlYUY2beEvVqVuxZC
+YtZvITxe3UZ0UpMk7znYoeI1PMZlUTyZwOEOvltlWl6macba9jX+VQ+xjK82f63C
+A3rcI9ENcwhZWaHCstFPn/bjUp6Axjay+g/s7ROlANv+DzfuuB6qvGB9XWnegBap
+dNX5ml9DULwd+nNqH5wWO1BEaVqLtsxd9tV+yitrdLW3AQnpfS95u9XH1MKDq/aS
+f+X9nY+zJ3mb4nGhHCvq4Hw3jZkqobclHUVI9D7yD05LBe5HnVJji2dSOGssblDB
+SjQo2XmiwuL8WgQ3MXKJZ2QiytiyPA==
+=cDLN
+-----END PGP SIGNATURE-----
+
+--mfe5lzcqzhilqxcv--
 
