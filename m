@@ -4,88 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59228C4345F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Apr 2024 14:18:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B8DCC4345F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Apr 2024 14:18:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Xyh9I+7RDjmoXx6ibmqfU5YmUk8cuDqOZ30bQAqDPzU=; b=qqtH5NYbt5m4eFo0RzPP2tAcAa
-	bfSL5mM083WoJasz+CbJbrT7WI96+6hDEUS0gtdbtxFCM6KJOxUfHOciK76hMI/zirXgP7olPI9UC
-	0dvM09oY53ygO7FKAVuK1NwlUKXIV0r5iXWyXr5c/wDqTLHu/1UtzcR1DUueO/UjOiuTWwSfD4Mrw
-	ynEMc2fGJ7u9ir6INm22WFHV2NUeM4Bntqo97luKHTMoPC50srTPOsOFSsdH9unU80+vhpp4dzB5H
-	5JCF8eDINuF/nKaiIY9QCTpsZ11CQoEeaFukPcfVLpfNRrUX9zP5OIVGyoEBq8wHwsaGBZCMreeP2
-	eEqNmoWw==;
+	bh=hFmw2QUwgoo6nZ5hxL4W4XLY0gvCpX+AxZ6V2ssaQtQ=; b=0rjZFlzHICI7TUjcKZo614mGSb
+	9ORfA/JMjUNMv5UnTYhUjNNO6vym17mn+uTloqT1DhWsnn8e9AZ/brJUc7vp99vq8WQDA5fQVpeqp
+	XuJ3pGwf7mCkbIsVXizD2h0P7G9hb1v4/x96I76TpjRlZKKpeZ6oGKmOflivnp+EBZeKyoKTbRdRx
+	nTkcAa/TxnKuFCV6kJFTGIBXB5IK/sxPAJvJoafZosgFENHvSr36KU2GYFzjlEGQAbLlTshpiaMjv
+	TyZe4mljLNyQCtemCOv5RBKZHMkraw8bK4/xjIdoUaFlpyfFeCje2hZGodGfJGrM2ziFiTtmyVUiq
+	9Qge/d1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxSah-00000002ZAz-1qnT;
-	Thu, 18 Apr 2024 14:18:19 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1rxSas-00000002ZG8-1RuE;
+	Thu, 18 Apr 2024 14:18:30 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxSa2-00000002YmO-465e
+	id 1rxSa3-00000002YmX-1O2n
 	for linux-mediatek@bombadil.infradead.org;
 	Thu, 18 Apr 2024 14:17:39 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=Xyh9I+7RDjmoXx6ibmqfU5YmUk8cuDqOZ30bQAqDPzU=; b=fAWUXlbFMSaUFdeEdLCtpCjBih
-	FfIBLuNm8tPJXinpZg0znryGzk236x6KHyk48UX1PXHCKQ8DAfQ2Bhl0nDL/FnE2frrS9V+Wo85ML
-	QBEzLpiaNBJEobQ4d0BuWyGJ3LYb2IwZRwlioAiSiVgN+k+rU6pTXKd1Sn6idyWmfcnrnJyP9gsAE
-	chldhR3YJduQp5kfPnXCZFqJVFpHEsxZTSxBozpSgCF/fuYZNwc57fnngCCpCsSPLcx3u5q/VLu5o
-	eq2J9811tswP+m7B1VHBTW0oDuYzhGW2D36P1s4ZaX4dXYaDTaFewQyyS2jJG7yXMnT/xwOelXQFa
-	2YPz/TNQ==;
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
-	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxSZr-0000000C27j-2DQE
+	d=infradead.org; s=casper.20170209; h=Cc:To:In-Reply-To:References:Message-Id
+	:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:Sender
+	:Reply-To:Content-ID:Content-Description;
+	bh=hFmw2QUwgoo6nZ5hxL4W4XLY0gvCpX+AxZ6V2ssaQtQ=; b=hpv0QyeHZqODHZzisd8+/nl7e9
+	KiQXCTj4HJ1t0cL9LT+MOtT7zG68B+G2NKmLd6vDacSGL/d8YqFBEy7zlWNCcGTzOztD6n6s6cB1F
+	5CsbgX2592b8EHZnVM5Q3scR6AixLQ/rfSscxU/B6aaun8gmobjF7sT2YdTRlIBj/tSdkSFj2A5mn
+	cDP+lob5nlCsB9Hkwhjcibaz8s74Cn48ctUUKPx4PuufP+odvYl4AIsD6MPaNTJKGLzE22/eSjifh
+	S0brCgpCksX09W/AJh4ssYC5jkZ/4TCq5wIKF8wXAgIAfPr9LISHsrBaWjl/iYuEtqiTP70l5aWZW
+	YjvRycmQ==;
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+	by casper.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1rxSZw-00000005Uue-3B99
 	for linux-mediatek@lists.infradead.org;
-	Thu, 18 Apr 2024 14:17:37 +0000
-Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-418ee2fcd6dso3682105e9.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 18 Apr 2024 07:17:27 -0700 (PDT)
+	Thu, 18 Apr 2024 14:17:38 +0000
+Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-418effbc5d4so3220075e9.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 18 Apr 2024 07:17:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1713449846; x=1714054646; darn=lists.infradead.org;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1713449851; x=1714054651; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=Xyh9I+7RDjmoXx6ibmqfU5YmUk8cuDqOZ30bQAqDPzU=;
-        b=oa3UZ4Gw8l6Y5aBznw8fUMjPDbrsibvSx8zyzf9eq+jWMD758TqVL34rcThPwq2gJl
-         3wK7c+KGSXcfE1uW+eCcHOQS6d2SDojjK7E5F0wdHctdrq/9gQVMu5TudRDLzc2qylLW
-         wZjJ5nrPdrdjQEeAK70YC2Z77Gqx4adOwvqcp2ZRghdJDyiXqe/j5fJLGqxQ2IvqBv1O
-         hFOiJ36w1B7PaBTXw3ekzIt8V+SE2mNmgbAlOIbEUo0tVh4U4SxqKrW/1ZZE6hen+xY5
-         gHX4XOUgMn86DJ1aLkRIiLaLOOTjgdjr6jrHAto6xgdozxXqIUx7vbyG2QwczWcdo3ep
-         BcUQ==
+        bh=hFmw2QUwgoo6nZ5hxL4W4XLY0gvCpX+AxZ6V2ssaQtQ=;
+        b=lERMhsPkGzEAmDymkxW3lIyo5QPYrXyYoB6hNtxs1wsIOFiI8UToS0qrQW08TZ2ztu
+         dDJgSQxvNcdZqeVABUd9hZkXDJaMzhz2W+ZCDwDzuRYWChKjYesB05lKWi7bm0xrdNd3
+         vR/NdomPTNanzVdQWAEMdeDkeqn38DV95FIOx6aTVwSHFP4icFrGAi5hqn50eyv5avGA
+         4+ZXY9vSLigNC052agoiocwvYUmfaHLWVs6U3ZZzTbSMwnsLa6T+ZUm6Zn/1LL+RtOxe
+         CN8itw/TTK5n9LMynHBCTmUuX+AtIxOwFQYtvRz15c7zpok3/dvyOEBQN/Nb+zuP+cWm
+         rHdQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713449846; x=1714054646;
+        d=1e100.net; s=20230601; t=1713449851; x=1714054651;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=Xyh9I+7RDjmoXx6ibmqfU5YmUk8cuDqOZ30bQAqDPzU=;
-        b=m9SD9GZg5UAP2RIvKSVtP+A+jY0rl8cL0Lh5Zxb3zbHYVFzriP3m5thNbMDBRxTUAg
-         EVtk+/GVy/Q00Xp0fN7SogtzSWK288HReYD4WAURmuYXnJY2gxCX/vLk5gCrUfBhHgmA
-         oOhA5IAfXN1P34Y0qUNl8G/w/crHakPr1J0y7e8nL3mAs533lFOwk5J/ymLa0tvZpuLt
-         84pjZKtnEvP8rpT2429utDawjq6qghigrtcx4p7VJRoW1+np1yBdfuH/iFfxVtk5mqfx
-         8OZagO6+ssOx2s0+A6x7WBEi9yrDlSaThJGPYrS9mEqt9egZxc0y+oVIlCTZIVRJo0rM
-         zg4A==
-X-Forwarded-Encrypted: i=1; AJvYcCVr2TyqPIN/DvA4Qxrp8gU9jZISsicEzujUlIVhM2WQCId9/y2QUot4r2egB5f+rkfRLk4eM8t+i3WGKg5mTXLWv/rHMFLmv4/MN6SYO/u87r17
-X-Gm-Message-State: AOJu0Yw4XXn2BpFNHJ12Jokse7RRL9AIv9ONDiOGFFPojxBDys4p2Ntv
-	Dsg2W7KoN0okpHCtZnR6qmvug+FMwhvPzl3ZVzrfupinq2DPB57EJYfYhRhIAA0=
-X-Google-Smtp-Source: AGHT+IEToY2RaHfp8/SGhr+SzxRU5xE6X46yItp1fzn/NmRrntSYP3f0mFM/gMKeI8XS0GnztZrbrg==
-X-Received: by 2002:a05:600c:3d92:b0:418:bdee:d58 with SMTP id bi18-20020a05600c3d9200b00418bdee0d58mr2125448wmb.12.1713449846274;
-        Thu, 18 Apr 2024 07:17:26 -0700 (PDT)
+        bh=hFmw2QUwgoo6nZ5hxL4W4XLY0gvCpX+AxZ6V2ssaQtQ=;
+        b=ZTt0tP/pKz0Q06DeMJX5bCleMDlKUEqsuYgK8wuPZvDlqACeJINoSeMYW25WNMAx4l
+         53vl06Xtl4KmnzylBdlFazr0eGLCJE+sItpxAzdu6DJGrFT+CNXs/1qvthg7Hb8vlu1i
+         WSBEcdbwlERvoWFTYYgfrpDJKb3zKCMz/UBwo95g1xtoubDNUYZAb2CgxvqOdJHFVW7j
+         6oAVys7OcR4GJEW6+IcelYtlswi0HFm6+VZZ8INtTem3/oeBLUGw4mCqV/W3C1nlxM6V
+         vKmyS6UkSeeVtYQ2yRVXBM2qysX0yGGS7mnJ/QoWJd8quY2CMYRY4/utKc+A43PvWXy+
+         Ju+Q==
+X-Forwarded-Encrypted: i=1; AJvYcCVxIMHkJHZET1xL0vN4BAHAcDTB54GJApEcW+iPS/nwsgl8D86k4wW0ZMhW5tvd/WfKKsvXBKcMDKDvIRsnyvfm5BBPorKL6EwsccbJze3iW8W8
+X-Gm-Message-State: AOJu0YyS9mJHOd7s7D0PAdEqP8ESAwHXtt49MBLmmBfzDw/EPaCZ9j/1
+	kTucLjbHFofHoAHntn9UvWrxi60xgik75AXpbGvGwNSOU3Vq7xXI5wdFPCBMVyc=
+X-Google-Smtp-Source: AGHT+IHtNCO0sT/PuF83nF5pCjl0HM21KlAZ3i4WM1ZCheFdqhUBy0/ydJhAL6oh54QPdztAbJgG4Q==
+X-Received: by 2002:a05:600c:45d0:b0:416:902e:51ac with SMTP id s16-20020a05600c45d000b00416902e51acmr2889189wmo.39.1713449851402;
+        Thu, 18 Apr 2024 07:17:31 -0700 (PDT)
 Received: from [127.0.1.1] ([93.5.22.158])
-        by smtp.googlemail.com with ESMTPSA id i9-20020a05600c354900b004180c6a26b4sm6267510wmq.1.2024.04.18.07.17.24
+        by smtp.googlemail.com with ESMTPSA id i9-20020a05600c354900b004180c6a26b4sm6267510wmq.1.2024.04.18.07.17.29
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 18 Apr 2024 07:17:25 -0700 (PDT)
+        Thu, 18 Apr 2024 07:17:30 -0700 (PDT)
 From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Thu, 18 Apr 2024 16:16:58 +0200
-Subject: [PATCH v3 10/17] dt-bindings: display: mediatek: rdma: add
- compatible for MT8365 SoC
+Date: Thu, 18 Apr 2024 16:17:01 +0200
+Subject: [PATCH v3 13/17] drm/mediatek: dsi: Improves the DSI lane setup
+ robustness
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20231023-display-support-v3-10-53388f3ed34b@baylibre.com>
+Message-Id: <20231023-display-support-v3-13-53388f3ed34b@baylibre.com>
 References: <20231023-display-support-v3-0-53388f3ed34b@baylibre.com>
 In-Reply-To: <20231023-display-support-v3-0-53388f3ed34b@baylibre.com>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
@@ -109,25 +109,24 @@ Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org, linux-pwm@vger.kernel.org, 
  linux-clk@vger.kernel.org, Alexandre Mergnat <amergnat@baylibre.com>
 X-Mailer: b4 0.12.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1014; i=amergnat@baylibre.com;
- h=from:subject:message-id; bh=FZE4p38am23Wbba4sdDEsuVyWoBZbiLCeYBCcNU5TdA=;
- b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBmIStjb/g6WWWPTVLJUfpwBGujfY5yXZ146n2j/DZr
- MvPY23uJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZiErYwAKCRArRkmdfjHUReRND/
- 9YQd5KWvjqnnV42cCyJN+vg12K+UwcFK9Rqo+3q0ESv9jvSgt8Dsv4UtzVW1uX+WisefO/wnHatJF7
- zmq/rIHOBgG0QUE3W48x/w7n7grwQbevcTrp3Ob+WdR6huTGfLIZNJtaYPzRfQrwJ29iPZS4+vFjyS
- EehxV87xYf4zKrcZzqIv/MiJL4YE4DgHyb50p9iRHfHqk3ckmNP5DYih9BCPMg0M9F0aEFmnHvIHV/
- J0VHAwMNctlR15SuKaxx603N5YhNwSGake9NtRGU9yR+EhVwZd3ekYKWH3hpQKcNoWCOw3zDz9xLd3
- uxggMjXj3E98lG6sfnVMGyQBqd+FWL6oGD1+Q5A47BQmaDQ+UCmZzKhTr8PPAyIUoyizJgXlreYXfU
- BAzAHe8Oiri/BtY4WAiGk6E++oY5VRR9Q1itentGNWiFJcrRqwjE52EVRbQ50WglmkFQ6If24plmxX
- 5ndkqBsorM0ZOh6Qwado9dAe8FPWQtCux2D23eajIOzbqWp9EqP1k9/JNVUKkwOAtNX9jf8HMyBWBj
- VqAhCrYJfqblrISh0Q+iWgRKeKXGTFpBpneWVrfGqwMO4k1M0vWqi+Zu7aRoiAr60qf5cLKBPDH09+
- SBTNBjmjJBIRW8CV4F9gOKqoPW0hgoaz8D/jPji/HoRoudHa1889JQqqCOmw==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1234; i=amergnat@baylibre.com;
+ h=from:subject:message-id; bh=2MnuLxaHZbaJPVARTKFt1rzwpEZuIuXZwcM1ZfvOkrE=;
+ b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBmIStjyt1Phgb317q5nDWLxlAExPeDpj0mMTjN61F/
+ BDu61hiJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZiErYwAKCRArRkmdfjHURaLPEA
+ DD28UlYK6wanAEBb+/8HdIb9cDlvSkVu3mDiWADx1o/swuPpU9jbjySikAfXKlWCxzTgzT6lutDaj4
+ vIwXpt9XbpZrbPOG+Tget6ptvQdD56G/OEcCbmm1YcvFVbkzXPdJ3vVQFPqVXskpbigxF5lnTntCAa
+ FJQBnbFS30JMcTpBUpIq4SqW3JtxAioMKYcOfbpuv0JJjDgMImsgZ2NqsTPUUgXkgHU9pqUicDNziB
+ tACcMWlHs8PPuZS6x2RqA7e0/EfBHs34gTsyTqkpHBRT73N831a+A5oE9kND+dcMxjwlmefeXMOww6
+ 4gQ1U2T7DSkeS9yTVYR8AsbEM2cBnbhFXUw2c8v3kCwjdrNxllliUSuR1dZnhNMUbd3rmtslBJPuIn
+ PEUcsmJemYKuYCBtvx1P/a46vhGIOLSpJnjVsfnpC7jR7i/JQnirmYHsrdfDs2mG/tXihgWSq+4pMq
+ 7dyFGV0egvh21DBo2c4YFPzgoOhrGzEqsqStXbC4VLcRpewhHVww3ZPEqrx+WEby4Cyxl/W/VCSRnU
+ rYMfrRhVr8zR2tUwjXad+n2EMdD7qeI/xHaJHhfjOEkhi2VDhj0pA9qUpXhWYd4XxabIlQYtF0gP2+
+ 44HrHaDC6UD1n4NL298nlac7LHpz0tj5kGjXtmURjGBcutBuiak9qpaBctZw==
 X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
  fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240418_151727_739442_590C9EE1 
-X-CRM114-Status: UNSURE (   9.39  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240418_151732_837602_8B546AFC 
+X-CRM114-Status: GOOD (  12.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -142,28 +141,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Document the display Data Path Read DMA on MT8365, which is compatible
-with that of the MT8183.
+Currently, mtk_dsi_lane_ready (which setup the DSI lane) is triggered
+before mtk_dsi_poweron. lanes_ready flag toggle to true during
+mtk_dsi_lane_ready function, and the DSI module is set up during
+mtk_dsi_poweron.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Acked-by: Rob Herring (Arm) <robh@kernel.org>
+Later, during panel driver init, mtk_dsi_lane_ready is triggered but does
+nothing because lanes are considered ready. Unfortunately, when the panel
+driver try to communicate, the DSI returns a timeout.
+
+The solution found here is to put lanes_ready flag to false after the DSI
+module setup into mtk_dsi_poweron to init the DSI lanes after the power /
+setup of the DSI module.
+
 Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 ---
- Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/gpu/drm/mediatek/mtk_dsi.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml
-index 39dbb5c8bcf8..4cadb245d028 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml
-@@ -45,6 +45,7 @@ properties:
-           - enum:
-               - mediatek,mt8186-disp-rdma
-               - mediatek,mt8192-disp-rdma
-+              - mediatek,mt8365-disp-rdma
-           - const: mediatek,mt8183-disp-rdma
+diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+index 9501f4019199..b3f33d4d3d5c 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dsi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+@@ -642,6 +642,8 @@ static int mtk_dsi_poweron(struct mtk_dsi *dsi)
+ 	mtk_dsi_config_vdo_timing(dsi);
+ 	mtk_dsi_set_interrupt_enable(dsi);
  
-   reg:
++	dsi->lanes_ready = false;
++
+ 	return 0;
+ err_disable_engine_clk:
+ 	clk_disable_unprepare(dsi->engine_clk);
 
 -- 
 2.25.1
