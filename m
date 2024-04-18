@@ -4,82 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C149C4345F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Apr 2024 03:45:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 372CCC4345F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Apr 2024 05:36:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2WZOZxeDxzclDmOroLLjFYiWM5YkLbMKvy/WySlZYsk=; b=d1v+D7210qAYn7J6aGcN5MN64u
-	/wQLqNIpYbhEGvylL+3Gq/sDW+wsGD7044tjPyOijVu5Xpuy6dZw/AJ3bbBSQNFaBlFi/uwITJQRq
-	WaMSHBwmNXlXiwZTTjxPUVW3BvucoMleT0PM7zdxvnMI4otrj9wm8V/8XeXvV5xp+UL79eBhWRJAM
-	p5EyjIZ9as7qNYG0As31XAcBJ3y4eZiEoogsF84euU7g8Uxii01n7YA7KmUUdfjZ2c2J26rEWIWMB
-	aEUpJ1sTn337/nwWFfqT4qp94jguQQceiEg3K5wQ2t5CI5Jy2kL0svvUVkELvcurM8aKqQWpKa8IV
-	Drzx4FbA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=gEvZTTTctgvFnsZIK2TgCQqVE9mVgwGfAwdtDHpdJLs=; b=QuYXCmmB6HclHryyjINaAFyueL
+	jSV+BiKWdgXUAKYRVawjpFIg/PK7ZB7KLEqETF/nwJZB/NBtizn6BUjRK1OfjswN4bbS8wTdI0+xh
+	0PvmfSBnI4uOoR0cIGU1BtwFnowm1tJIZDYg2nf8TLT6ejAFphEj+/sjhvZWW5I0+a62Wey0BcMAQ
+	hJzUwtuK9mffX316n/P/4QtFQG9esuOziKylWEUfKg2a+FtWy9Kewmy+kK7dsgRuQEiNUc65hBEk9
+	aQL+MsUNCsT3mYVsp+aELSE4PlDI6L7SuHHkyLj1jDqjCQvBCCB7gVaRSHAdYNpqGATo4yIgiJznM
+	Ok9uSWvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxIhy-00000000p7X-3H8g;
-	Thu, 18 Apr 2024 03:45:10 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1rxKRJ-0000000101B-1e2q;
+	Thu, 18 Apr 2024 05:36:05 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxIhv-00000000p5R-0mxR;
-	Thu, 18 Apr 2024 03:45:08 +0000
-X-UUID: 085073d8fd3611ee96d5dfc950b7243d-20240417
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:Message-ID; bh=2WZOZxeDxzclDmOroLLjFYiWM5YkLbMKvy/WySlZYsk=;
-	b=Lhc9wMVhaxyGUSTN/TCoW9WtFk5f3/de7p46OKwpWVzZsIrcfq+o2ELf3Dc+/Fxx8l1ywf1oG8yx8zuvSEoM/mdZx3b5SDk5JKxdFnewhN1rasyzXzZhfCX0rmhmIisfYA9dvYIuHZg6wZ+f/jM9HDK3wmoQA85OfSh2XF9iDGM=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.38,REQID:4365ee6d-cba5-46ba-b09f-831116654aef,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:82c5f88,CLOUDID:2448b791-e2c0-40b0-a8fe-7c7e47299109,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_ULS,TF_CID_SPAM_SNR
-X-UUID: 085073d8fd3611ee96d5dfc950b7243d-20240417
-Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw02.mediatek.com
-	(envelope-from <macpaul.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1688146869; Wed, 17 Apr 2024 20:45:00 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 17 Apr 2024 20:44:22 -0700
-Received: from [172.21.84.99] (172.21.84.99) by mtkmbs13n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.1118.26 via Frontend
- Transport; Thu, 18 Apr 2024 11:44:22 +0800
-Message-ID: <cdcadfdc-1861-b3b3-eafa-22071516197b@mediatek.com>
-Date: Thu, 18 Apr 2024 11:44:20 +0800
+	id 1rxKRE-00000000zzV-3IQF;
+	Thu, 18 Apr 2024 05:36:02 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 409C26175E;
+	Thu, 18 Apr 2024 05:35:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id CF003C113CC;
+	Thu, 18 Apr 2024 05:35:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1713418558;
+	bh=SzDN9toTqBr0GiH5AKRvQI5qpmgWxF0RN8hrv7mhvnE=;
+	h=From:Subject:Date:To:Cc:Reply-To:From;
+	b=aWMO8GEpSYEvFWa6UnkaL+dUHq692Z4FzRMZ3rPt4em1I6dZKYie6DhoidCUlpCAU
+	 6jz46yOLcc9GH+oN6eHdOTo7j7FBO4AAF5dlEu099jnOdLmm8g1ikSdPmpXRNBPVdj
+	 xU9zXOgBo7hEV4CDEv8W35YNJyi0WLKxK8gK/sdL02mYHC3jRCZ+t3TltvNtrNei+2
+	 xr89mZc6/slLU1g0Dq4hMIuxmfxd4CR1atw/t6RAPjAtkrcTY7OFGHeFoZ2aRKshoI
+	 i/M40wtE/kwbjCA3hnEIXU0EnEzoYNwnu9f/KitX6OIWeCD268FqDszVXjX3ph9KRT
+	 vqS5nDKHEf5pw==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BA33BC4345F;
+	Thu, 18 Apr 2024 05:35:58 +0000 (UTC)
+From: =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL_via_B4_Relay?= <devnull+arinc.unal.arinc9.com@kernel.org>
+Subject: [PATCH net-next v3 0/2] Read PHY address of switch from device
+ tree on MT7530 DSA subdriver
+Date: Thu, 18 Apr 2024 08:35:29 +0300
+Message-Id: <20240418-b4-for-netnext-mt7530-phy-addr-from-dt-and-simplify-core-ops-v3-0-3b5fb249b004@arinc9.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH] arm64: dts: mediatek: mt8395-genio-1200-evk: add u3port1
- for xhci1
-Content-Language: en-US
-To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>
-CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
-	Macpaul Lin <macpaul@gmail.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	MediaTek Chromebook Upstream
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Chen-Yu Tsai
-	<wenst@chromium.org>, <stable@vger.kernel.org>
-References: <20240216095751.4937-1-macpaul.lin@mediatek.com>
-From: Macpaul Lin <macpaul.lin@mediatek.com>
-In-Reply-To: <20240216095751.4937-1-macpaul.lin@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-B4-Tracking: v=1; b=H4sIACGxIGYC/63OwW7DIBAE0F+JOHcrDATsnPofVQ4YlhqpBmtBV
+ qzI/x7Kref2OBpp3jxZQYpY2O3yZIR7LDGnFuTbhbnFpi+E6FtmggvFpVAwKwiZIGFN+KiwVnO
+ VHLblAOs9QaC8gq9gk4cS1+07hgNcJoS8FdBKGX0dR5zRskZshCE+Ov/J2iT8bLJ7a5ZYaqaj/
+ 9qH3vcLavjjhX0ADjMfJ6l9EMbwD0sxuend5bXLu/hPTTRtsEarySkvZ/1LO8/zBZ9kUQ+BAQA
+ A
+To: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, 
+ Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>, 
+ Florian Fainelli <f.fainelli@gmail.com>, 
+ Vladimir Oltean <olteanv@gmail.com>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Bartel Eerdekens <bartel.eerdekens@constell8.be>, 
+ mithat.guner@xeront.com, erkin.bozoglu@xeront.com, netdev@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, 
+ =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>, 
+ Florian Fainelli <florian.fainelli@broadcom.com>
+X-Mailer: b4 0.13.0
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1713418557; l=1603;
+ i=arinc.unal@arinc9.com; s=arinc9-Xeront; h=from:subject:message-id;
+ bh=SzDN9toTqBr0GiH5AKRvQI5qpmgWxF0RN8hrv7mhvnE=;
+ b=oYU7F2zcwRLKpqjIwaaYIv+FBg9Jih3CavG5flzWyPS1k6apLTqz0Y1UOsntLB/8cVvMOAasm
+ iE3qA9yTmSxAtZ+Nw8KeF+4mwHYGT/qJAS+1Ao0ErK4w62bFF3IXT6t
+X-Developer-Key: i=arinc.unal@arinc9.com; a=ed25519;
+ pk=z49tLn29CyiL4uwBTrqH9HO1Wu3sZIuRp4DaLZvtP9M=
+X-Endpoint-Received: by B4 Relay for arinc.unal@arinc9.com/arinc9-Xeront
+ with auth_id=137
+X-Original-From: =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240417_204507_269311_7C11FB65 
-X-CRM114-Status: GOOD (  28.83  )
+X-CRM114-CacheID: sfid-20240417_223600_937979_0154DB2F 
+X-CRM114-Status: UNSURE (   9.42  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,84 +97,47 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: arinc.unal@arinc9.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2/16/24 17:57, Macpaul Lin wrote:
-> This patch fixes an issue where xhci1 was not functioning properly because
-> the state and PHY settings were incorrect.
-> 
-> The introduction of the 'force-mode' property in the phy-mtk-tphy driver
-> allows for the correct initialization of xhci1 by updating the Device Tree
-> settings accordingly.
-> 
-> The necessary fixup which added support for the 'force-mode' switch in the
-> phy-mtk-tphy driver.
-> commit 9b27303003f5 ("phy: mediatek: tphy: add support force phy mode switch")
-> Link: https://lore.kernel.org/r/20231211025624.28991-2-chunfeng.yun@mediatek.com
+This patch series makes the driver read the PHY address the switch listens
+on from the device tree which, in result, brings support for MT7530
+switches listening on a different PHY address than 31. And the patch series
+simplifies the core operations.
 
-Dear AngeloGioacchino,
+Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+---
+Changes in v3:
+- Patch 1
+  - Whilst compiling, GCC suggests parentheses around '+' in operand of
+    '&'. Address that on the MT753X_CTRL_PHY_ADDR macro.
+  - Instead of storing the PHY address in the mt7530_priv structure, store
+    the MDIO device pointer as suggested by Florian.
+- Link to v2: https://lore.kernel.org/r/20240414-b4-for-netnext-mt7530-phy-addr-from-dt-and-simplify-core-ops-v2-0-1a7649c4d3b6@arinc9.com
 
-Just a soft reminding about the patch has been sent a while back for the 
-shared U3PHY and PCIe PHY setup for genio-1200 boards. I'm not sure if 
-you've missed this patch in mail box. :)
+Changes in v2:
+- Patch 1
+  - Use a more efficient definition for the MT753X_CTRL_PHY_ADDR macro
+    provided by Daniel.
+- Link to v1: https://lore.kernel.org/r/20240414-b4-for-netnext-mt7530-phy-addr-from-dt-and-simplify-core-ops-v1-0-b08936df2770@arinc9.com
 
-The patch is pretty important as it lets the device tree (dts) decide 
-whether to enable U3PHY or PCIe PHY. Because this is a shared hardware 
-phy and could only be configured in dts to decide which function to be 
-initialized, so it's something that should be included in the 
-board-specific dts files.
+---
+Arınç ÜNAL (2):
+      net: dsa: mt7530-mdio: read PHY address of switch from device tree
+      net: dsa: mt7530: simplify core operations
 
-Do you think it needs to be resubmitted, or is it still in the queue for 
-review? It's meant to be ready for action from kernel version 6.8 onwards.
+ drivers/net/dsa/mt7530-mdio.c |  28 +++++-----
+ drivers/net/dsa/mt7530.c      | 127 +++++++++++++++++++-----------------------
+ drivers/net/dsa/mt7530.h      |   4 +-
+ 3 files changed, 75 insertions(+), 84 deletions(-)
+---
+base-commit: 2bd99aef1b19e6da09eff692bc0a09d61d785782
+change-id: 20240324-b4-for-netnext-mt7530-phy-addr-from-dt-and-simplify-core-ops-64476588ebea
 
-Looking forward to your thoughts on this. Let me know if there's 
-anything else you need from my side.
+Best regards,
+-- 
+Arınç ÜNAL <arinc.unal@arinc9.com>
 
-> Prior to this fix, the system would exhibit the following probe failure messages
-> for xhci1:
->    xhci-mtk 11290000.usb: supply vbus not found, using dummy regulator
->    xhci-mtk 11290000.usb: uwk - reg:0x400, version:104
->    xhci-mtk 11290000.usb: xHCI Host Controller
->    xhci-mtk 11290000.usb: new USB bus registered, assigned bus number 5
->    xhci-mtk 11290000.usb: clocks are not stable (0x1003d0f)
->    xhci-mtk 11290000.usb: can't setup: -110
->    xhci-mtk 11290000.usb: USB bus 5 deregistered
->    xhci-mtk: probe of 11290000.usb failed with error -110
-> 
-> With the application of this dts fixup, the aforementioned initialization errors
-> are resolved and xhci1 is working.
-> 
-> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
-> ---
->   arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts | 6 ++++++
->   1 file changed, 6 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
-> index 7fc515a07c65..e0b9f2615c11 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
-> @@ -854,6 +854,10 @@
->   
->   &u3phy1 {
->   	status = "okay";
-> +
-> +	u3port1: usb-phy@700 {
-> +		mediatek,force-mode;
-> +	};
->   };
->   
->   &u3phy2 {
-> @@ -885,6 +889,8 @@
->   };
->   
->   &xhci1 {
-> +	phys = <&u2port1 PHY_TYPE_USB2>,
-> +	       <&u3port1 PHY_TYPE_USB3>;
->   	vusb33-supply = <&mt6359_vusb_ldo_reg>;
->   	status = "okay";
->   };
 
-Thanks
-Macpaul Lin
 
