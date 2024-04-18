@@ -4,114 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEFF8C4345F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Apr 2024 15:31:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39557C4345F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Apr 2024 15:46:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0DG0b/DfAuQ0lpoAh7wbcZZOZxcaD5fpXedR92n3Ro8=; b=ynGk85O+BZjuGg0NY+Ty7jIf+7
-	EQV9M1AEC+asO3z5AU4nBQxEoOHDF/ihesRftd55W5Kwq2ei1tcAKnQwUhGZx9d3/SG4ZfrOafhro
-	x167P5btACaIYKyY1rVuz6oaNjRnEYMKLyzGj2tQgL0k9xswXBjeTDaA7ShIDqXyZCe+T21yhrmEA
-	HU3ScCJBMnHwuQKz1BpT5jJFDFMZxHo5N4yT/lUSrHDQOHy8Xjrktfb2lKIcwCGXLunbTTYm8qB9w
-	YnmOWZC8YF5+7D80yXUUatPgXGMSyomYVPc5DJHzV4OXIMbZW1BG/Uf55aQQhDn0H2oD8Vn5/FFiX
-	ctydBkuA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OfCwZ2AwhrE2Zd1Kkt7i9hQF6qrDNPRufzN+RHay758=; b=BfoYZnj1ohv2iAGfhtuZ1dSZFX
+	2Dbf7+BHkZYwQB0B3oneCXnhRGopZPK28TJcyaW9OboEpdm04JStZJ+riycpfFPn3kpZOngADrIgj
+	YlJDqIJnaD8IME1MlMnmpXHkJZBQdGPlE/byqykuYs/rWAw99NH6R0SjA239m714AX+BFltuuh4+v
+	pFG7qpbvzCF0qLdgkia6N0MJbFmXw3P4js7sKtOLg1sJVi0ryAMca1f9FafZHc0HBmKcL/AMXD13h
+	v5DEN9smHXVPb1gt/WD6ZqgRzqrPPb3iJb5mHaVPYXJ8eh064yGbHB1g89navD9eRa/6PVaVlx+mR
+	s7uGdZqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxTjX-00000002njZ-37qv;
-	Thu, 18 Apr 2024 15:31:31 +0000
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+	id 1rxTyN-00000002sDp-23My;
+	Thu, 18 Apr 2024 15:46:51 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxSZl-00000002Yal-1JXo
-	for linux-mediatek@lists.infradead.org;
-	Thu, 18 Apr 2024 14:17:34 +0000
-Received: by mail-wm1-x333.google.com with SMTP id 5b1f17b1804b1-418effbc70cso3843405e9.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 18 Apr 2024 07:17:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1713449839; x=1714054639; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=0DG0b/DfAuQ0lpoAh7wbcZZOZxcaD5fpXedR92n3Ro8=;
-        b=cihFDl69z3wsuIacyjRfLI/wVPShGJl0X+gE7lv4TcWeJoXbHODpWOLlu6RbPh9hSa
-         IjhqhoUvGo4/a7h7Pv0MEoq/351Yyq4qw39BPGWHio7cQkWwAzFViI6rSNdZWD7BDdSu
-         7Ha5pXe7QSJjHd/UfS4DrIsAA+bjt7pn73RUnNr73ETSf+KzzpN5MJwm876UZYtJhtzR
-         MMjcS9STGT2A6GE3xLumZkvgjVS0p2rz4x2szSnkdEXMaweXP2Q+uUNSREEmdy1WCjd7
-         9JumjkK9YTiZ4kjs0LOyy4E4rtIzmtWosY42O5FJWt4uwPU5jDYc3Z+iuJQI1FqW9RTj
-         spgg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713449839; x=1714054639;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=0DG0b/DfAuQ0lpoAh7wbcZZOZxcaD5fpXedR92n3Ro8=;
-        b=ESsdb2LnQIF+M1kGnvflQc+oTuCCE2gyh7AaBJ/b0SLrha4pqYYR5y8vvd7PAJrVk1
-         atd/p1YcLxpox9V8O5olupenIqME2dzZX2nj/Tj1dthc7flRZHfJHSO5JsogJF+Z8M2o
-         UV1hT+tWZ1wfk7R857KiGNokKbGmkL9hDbcr7AFlgu/LisuXXqvNLsVNT5g8qVmEnJ9T
-         l+UMmEm3WPJrNk09YFRIUrewBf1Rvx4TJf9PxLQlmt6nM2KFbZZa9b8WqVgC0CZjbjky
-         N52JXX20pwHHjHkwC/RbzZTiLeIQ6pYW2xp5sUqOY7C+lK/qvopNkIz+u1tqM1k7TYRA
-         gwug==
-X-Forwarded-Encrypted: i=1; AJvYcCUuKN0tL+sf728XzouHgTEhPnsFWe/S1lwOnEf//88jidpW2rccT9pV89hTXe9GJ/YDSdZ5X+Xx+EAJUy8GCt/KoxRJAXSMG5672v2KtFEh/CC1
-X-Gm-Message-State: AOJu0Yxw+pvampGKjx5GRV21rPvwDc98tLdZMmY8hBhoUcQgcVvNo2cg
-	IKrGE/rv2D0P8TEKzsGyh7VBwBRB26uGjOv0Dog3PeICWn0pmIDmi7Z2kDTmC9k=
-X-Google-Smtp-Source: AGHT+IGc8UkY5hUU0SOlQ+WIGwXJnRwFCQFFnKe6zffCNG3YDmpTofKmmzPBVeBk6KtCqcf7OWNn7Q==
-X-Received: by 2002:a05:600c:3ac9:b0:418:d3b3:3188 with SMTP id d9-20020a05600c3ac900b00418d3b33188mr2065709wms.27.1713449839274;
-        Thu, 18 Apr 2024 07:17:19 -0700 (PDT)
-Received: from [127.0.1.1] ([93.5.22.158])
-        by smtp.googlemail.com with ESMTPSA id i9-20020a05600c354900b004180c6a26b4sm6267510wmq.1.2024.04.18.07.17.17
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 18 Apr 2024 07:17:18 -0700 (PDT)
-From: amergnat@baylibre.com
-Date: Thu, 18 Apr 2024 16:16:54 +0200
-Subject: [PATCH v3 06/17] dt-bindings: display: mediatek: dpi: add
- power-domains property
+	id 1rxTyG-00000002s7A-3S5o;
+	Thu, 18 Apr 2024 15:46:48 +0000
+Received: from pendragon.ideasonboard.com (117.145-247-81.adsl-dyn.isp.belgacom.be [81.247.145.117])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 2A03C802;
+	Thu, 18 Apr 2024 17:45:53 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1713455153;
+	bh=K6H40zZOBruNXEKy+mLBxL40J3Voj2XWEqqGuvJ9w94=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=mNiKJAJDsTkJYMYK4ZtsZ9zlV7xPYE85xk9V7yAnZZ4lXnvj+UhwJ4fKqYaFra0Xc
+	 2eBi44CBZWoMWyMkwDoCJV3GUcE9zfI7hzMI60oHIg/o5NGSS92iXbFgMGqv+gOkZe
+	 2N/SspWfXOLe5x5IbsUKTfY8A/Ga1vjvyZkxLsrw=
+Date: Thu, 18 Apr 2024 18:46:33 +0300
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Ricardo Ribalda <ribalda@chromium.org>
+Cc: Dan Carpenter <dan.carpenter@linaro.org>,
+	Martin Tuma <martin.tuma@digiteqautomotive.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	Hugues Fruchet <hugues.fruchet@foss.st.com>,
+	Alain Volmat <alain.volmat@foss.st.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Sowjanya Komatineni <skomatineni@nvidia.com>,
+	Luca Ceresoli <luca.ceresoli@bootlin.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Hans Verkuil <hverkuil@xs4all.nl>, Sergey Kozlov <serjk@netup.ru>,
+	Abylay Ospan <aospan@netup.ru>,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Dmitry Osipenko <digetx@gmail.com>,
+	Stanimir Varbanov <stanimir.k.varbanov@gmail.com>,
+	Vikash Garodia <quic_vgarodia@quicinc.com>,
+	Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Benjamin Mugnier <benjamin.mugnier@foss.st.com>,
+	Sylvain Petinot <sylvain.petinot@foss.st.com>,
+	Jacopo Mondi <jacopo+renesas@jmondi.org>,
+	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
+	Niklas =?utf-8?Q?S=C3=B6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
+	Pavel Machek <pavel@ucw.cz>, linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-arm-kernel@lists.infradead.org, linux-staging@lists.linux.dev,
+	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	Oleg Drokin <green@linuxhacker.ru>
+Subject: Re: [PATCH 00/35] media: Fix coccinelle warning/errors
+Message-ID: <20240418154633.GD31776@pendragon.ideasonboard.com>
+References: <20240415-fix-cocci-v1-0-477afb23728b@chromium.org>
+ <a003494c-a1a9-4fcd-83d8-766a75d6bbb2@moroto.mountain>
+ <20240417155112.GQ12561@pendragon.ideasonboard.com>
+ <CANiDSCs_qOXkhzuL+cFhpw0hvFMwU0TYyN2B5ZdAStb96TTKFA@mail.gmail.com>
+ <20240418105310.GV12561@pendragon.ideasonboard.com>
+ <CANiDSCuS3KQK9H37sDZJ+mcqheNSh7NBwchS3dPccVXcPTSNRA@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20231023-display-support-v3-6-53388f3ed34b@baylibre.com>
-References: <20231023-display-support-v3-0-53388f3ed34b@baylibre.com>
-In-Reply-To: <20231023-display-support-v3-0-53388f3ed34b@baylibre.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, 
- Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Jitao Shi <jitao.shi@mediatek.com>, CK Hu <ck.hu@mediatek.com>, 
- =?utf-8?q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, 
- Michael Turquette <mturquette@baylibre.com>, 
- Stephen Boyd <sboyd@kernel.org>, Fabien Parent <fparent@baylibre.com>, 
- Markus Schneider-Pargmann <msp@baylibre.com>, 
- Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-pwm@vger.kernel.org, 
- linux-clk@vger.kernel.org, Alexandre Mergnat <amergnat@baylibre.com>
-X-Mailer: b4 0.12.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1829; i=amergnat@baylibre.com;
- h=from:subject:message-id; bh=l0R/nimPplfZesZQ5psmzigcqOrK2Svu7sgk1YEc9To=;
- b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBmIStidrUSXn2C+2OPoqTCEjrSs1uAvZ65nuZ80U5B
- +oCvAVKJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZiErYgAKCRArRkmdfjHURXPdD/
- 9udyeGAimjp0d/Gvu/tp2AHHzp9p4lotNsBdYQo+coQVnqgTR+wMNASNy7Pxt7p9VYRl+Yk8W/H8cl
- NulRyeef2F1tZPU6nE3gazrF3fGfYmQSe67RTNOp+2mPp7ajGRXJ3MDqabyRxd/qIK/+1W1IsFIYk1
- lQuwS4SYghHk4zjZbnVCchG41jsC+O1QzZubAQBmK5HhYWlC/taQ4kWm9oOS/BxDNeuR2yy+jWG7fV
- gw80gssGmUjFytjwnUERWo9oOnHcAVkCUGxy1uXeyAZ+URnebbF0kz6as9XU0jIBrVnTIP7fRv5byf
- yWsTpdf9AzdPBQRTXIxIpbWatMvwpPqx2PFWrYmCrRDQc3UY9jA1xDiI6sG1Q5KZ1x4ioqobcPCesy
- LGzYk59OaS8jSz2CV3saEWvQY8fBrmXhVDUmIL0FkHjSiJzRGOyTU5UaZ/jHVp9tGjWIXu+GxDwb+T
- RsDgKIzWTpT7Zo/TG0zX1Nbz2CClnooX7PGI5+Vm2CpzQ3ZDPhE/JDdsbnitH/1CLTM3BVKXHJnpWQ
- iQzNRo2m/H6vOSjrtYOcTXhQWUkDX/l8mTEOlyxfNH+DOyBiMf0w2CrXWp8Q6l07whJnb11QdvciWm
- pxZCrSkDVuLRY1uvTSbKhR43wBa9+fVtMKoPU9V3C3DhvaC+AcICx3aEC6bA==
-X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
- fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <CANiDSCuS3KQK9H37sDZJ+mcqheNSh7NBwchS3dPccVXcPTSNRA@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240418_071721_549685_AAFD7A5C 
-X-CRM114-Status: GOOD (  10.40  )
+X-CRM114-CacheID: sfid-20240418_084645_705461_CE00595C 
+X-CRM114-Status: GOOD (  40.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,51 +109,86 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Fabien Parent <fparent@baylibre.com>
+Hi Ricardo,
 
-DPI is part of the display / multimedia block in MediaTek SoCs, and
-always have a power-domain (at least in the upstream device-trees).
-Add the power-domains property to the binding documentation.
+On Thu, Apr 18, 2024 at 04:51:06PM +0200, Ricardo Ribalda wrote:
+> On Thu, 18 Apr 2024 at 12:53, Laurent Pinchart wrote:
+> > On Wed, Apr 17, 2024 at 06:19:14PM +0200, Ricardo Ribalda wrote:
+> > > On Wed, 17 Apr 2024 at 17:51, Laurent Pinchart wrote:
+> > > > On Tue, Apr 16, 2024 at 11:47:17AM +0300, Dan Carpenter wrote:
+> > > > > In my opinion, it's better to just ignore old warnings.
+> > > >
+> > > > I agree. Whatever checkers we enable, whatever code we test, there will
+> > > > always be false positives. A CI system needs to be able to ignore those
+> > > > false positives and only warn about new issues.
+> > >
+> > > We already have support for that:
+> > > https://gitlab.freedesktop.org/linux-media/media-ci/-/tree/main/testdata/static?ref_type=heads
+> >
+> > Those are manually written filters. Would it be possible to reduce the
+> > manual step to flagging something as a false positive, and have a
+> > machine build the filters ?
+> 
+> Do you expect that the list of exceptions will grow?
+> 
+> I hope that once the CI is in place we will fix the warnings before
+> they land in the tree.
 
-Fixes: 9273cf7d3942 ("dt-bindings: display: mediatek: convert the dpi bindings to yaml")
-Signed-off-by: Fabien Parent <fparent@baylibre.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Acked-by: Rob Herring (Arm) <robh@kernel.org>
-Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
----
- Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml | 5 +++++
- 1 file changed, 5 insertions(+)
+Any static checker is bound to produce false positives. Some of them can
+be addressed by improving the checker, others by modifying the source
+code, but in some cases the first option would be too difficult and the
+second would reduce readability of the code. I thus thing the list of
+accepted false positives will grow over time.
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
-index 803c00f26206..e126486e8eac 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
-@@ -64,6 +64,9 @@ properties:
-       Output port node. This port should be connected to the input port of an
-       attached HDMI, LVDS or DisplayPort encoder chip.
- 
-+  power-domains:
-+    maxItems: 1
-+
- required:
-   - compatible
-   - reg
-@@ -78,11 +81,13 @@ examples:
-   - |
-     #include <dt-bindings/interrupt-controller/arm-gic.h>
-     #include <dt-bindings/clock/mt8173-clk.h>
-+    #include <dt-bindings/power/mt8173-power.h>
- 
-     dpi0: dpi@1401d000 {
-         compatible = "mediatek,mt8173-dpi";
-         reg = <0x1401d000 0x1000>;
-         interrupts = <GIC_SPI 194 IRQ_TYPE_LEVEL_LOW>;
-+        power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
-         clocks = <&mmsys CLK_MM_DPI_PIXEL>,
-              <&mmsys CLK_MM_DPI_ENGINE>,
-              <&apmixedsys CLK_APMIXED_TVDPLL>;
+> > > But it would be great if those lists were as small as possible:
+> > >
+> > > - If we have a lot of warnings, two error messages can be combined and
+> > > will scape the filters
+> > > eg:
+> > > print(AAAA);
+> > > print(BBBB);
+> > > > AABBBAAB
+> > >
+> > > - The filters might hide new errors if they are too broad
+> > >
+> > >
+> > > Most of the patches in this series are simple and make a nicer code:
+> > > Eg the non return minmax() ,
+> > > Other patches show real integer overflows.
+> > >
+> > > Now that the patches are ready, let's bite the bullet and try to
+> > > reduce our technical debt.
+> > >
+> > > > > When code is new the warnings are going to be mostly correct.  The
+> > > > > original author is there and knows what the code does.  Someone has
+> > > > > the hardware ready to test any changes.  High value, low burden.
+> > > > >
+> > > > > When the code is old only the false positives are left.  No one is
+> > > > > testing the code.  It's low value, high burden.
+> > > > >
+> > > > > Plus it puts static checker authors in a difficult place because now
+> > > > > people have to work around our mistakes.  It creates animosity.
+> > > > >
+> > > > > Now we have to hold ourselves to a much higher standard for false
+> > > > > positives.  It sounds like I'm complaining and lazy, right?  But Oleg
+> > > > > Drokin has told me previously that I spend too much time trying to
+> > > > > silence false positives instead of working on new code.  He's has a
+> > > > > point which is that actually we have limited amount of time and we have
+> > > > > to make choices about what's the most useful thing we can do.
+> > > > >
+> > > > > So what I do and what the zero day bot does is we look at warnings one
+> > > > > time and we re-review old warnings whenever a file is changed.
+> > > > >
+> > > > > Kernel developers are very good at addressing static checker warnings
+> > > > > and fixing the real issues...  People sometimes ask me to create a
+> > > > > database of warnings which I have reviewed but the answer is that
+> > > > > anything old can be ignored.  As I write this, I've had a thought that
+> > > > > instead of a database of false positives maybe we should record a
+> > > > > database of real bugs to ensure that the fixes for anything real is
+> > > > > applied.
 
 -- 
-2.25.1
+Regards,
 
+Laurent Pinchart
 
