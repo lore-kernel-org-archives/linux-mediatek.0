@@ -4,69 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 174D0C4345F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Apr 2024 09:52:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12B56C4345F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Apr 2024 09:52:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hYOJzUnpv9q2D47VjlP9TkFSb49icqGz0TC7JGSn6z0=; b=eh8YOI0P6FVXKnvPGjD9CQRv/i
-	s70R0ffMMLAB4r49AEcLuHjTTuxF43QhaSVRXZS23pMszRlA/wmf38P4pAri19iELD8S6oq+U6fIp
-	htctdnXXB9998k5A1RPZZPscrSSWpjIGnu215Xqi0SFR/Lqxk7tTIr5n71jsmlaLhk3gl82nohfm/
-	PaIVFy5URCId3rkCq2+XmV8HhletVbavJM3KcHLTX8pzQ3kTxwEO+V8rgfm5zzY8tJpDnsoNIqbJO
-	P+UFlF2ePVWdNLP5UxP6VGjuPlgd9o3RIHOI3pZb5QbTa+p+woX9MJtE1U7xkpQx8A+6BUa0MDiU5
-	op2N43uw==;
+	bh=G+OLGyPz2NtLOZH/YOdUHJtasX7vVXp+smN0A8Fakk8=; b=HR/JoQfDAQUf5QDgQVyj0Y+F+w
+	4PtfrSH19l5hVpxkAtrZCRDepXHFye9c49vbre1nPTJEbWoDU8/+cV/UkYpwTtOe7tzGSbxSfHnGY
+	vrVugQk75Ig6RWllamqT/vuEWB9pwrrTOyzYENYRtJ0d7QSaLN0PDyZNVGgBfKpn87qLURuGOUEkx
+	llZOn01X8x2WuXtWjCYv+7YZ6+sHD/aKsH4Wogi4f6YWYyefb7lICe532kI60Xl9HCA/a9WcMZYpN
+	llUbhxhUyYAZ5D511qqScSGhDP6OjOhgy6c6BymdH7ZqucEpg7vl2IYH0iBum5G2BUd0ExPiJZLXb
+	DSUQDO9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxkvA-00000005Aq5-0X4h;
-	Fri, 19 Apr 2024 09:52:40 +0000
-Received: from mail-oi1-x22c.google.com ([2607:f8b0:4864:20::22c])
+	id 1rxkvL-00000005AwO-0GZy;
+	Fri, 19 Apr 2024 09:52:51 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxksJ-00000005951-2iuJ
-	for linux-mediatek@lists.infradead.org;
+	id 1rxksR-000000059Et-38cb
+	for linux-mediatek@bombadil.infradead.org;
 	Fri, 19 Apr 2024 09:49:51 +0000
-Received: by mail-oi1-x22c.google.com with SMTP id 5614622812f47-3bbbc6b4ed1so1185488b6e.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 19 Apr 2024 02:49:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=casper.20170209; h=Cc:To:In-Reply-To:References:Message-Id
+	:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:Sender
+	:Reply-To:Content-ID:Content-Description;
+	bh=G+OLGyPz2NtLOZH/YOdUHJtasX7vVXp+smN0A8Fakk8=; b=snTHB105Jv7zrzbwqF+jyelGtr
+	PafQtey54BmmBMqFMMRxUmgq0ixmyvXtuTm0xklSKDEDwcGrJxFH1PtS5vB9dqiV6x1jRZxj6uFvJ
+	9SBq/WOqt792AGbw/2MQMereFx7K1M1H9AMkmsBqIrDxDFvnLZTQdR4i6XwturF0IYQeOHoJBDLph
+	CCgxH6pcNjymLm/VuYQSpnhunhtvn3f01J0vemshqnL52L0Jo1KjTriHWVt8ZSyFi2oU5TVF9HZ33
+	vUPcLSD1F/JSVxSRAjZ0724pDkJM72y5uRUfLvKhXeIqocdZMvAoEPtJBmuC532qX/rqlihytR5AO
+	Fcec5Ltw==;
+Received: from mail-qk1-x731.google.com ([2607:f8b0:4864:20::731])
+	by casper.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1rxksO-00000007NiT-0UfU
+	for linux-mediatek@lists.infradead.org;
+	Fri, 19 Apr 2024 09:49:50 +0000
+Received: by mail-qk1-x731.google.com with SMTP id af79cd13be357-78f0e3b6feeso68873485a.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 19 Apr 2024 02:49:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1713520181; x=1714124981; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1713520186; x=1714124986; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=hYOJzUnpv9q2D47VjlP9TkFSb49icqGz0TC7JGSn6z0=;
-        b=oNVml3L57tHzFiiK6Nq1VCyJRtCaxfPCeuTTMCeYDkvCHAWUC7X8z+Gj7U55bXrXls
-         arimyZwzWXTkMq/0hPGuE0ndRC94glPWfMz87z917ArRGb4dHGQL+sTSnvaTsvGayZlt
-         m/3VNgdNQzwNO+75HFCigUZNGpRr7lQa0MjSE=
+        bh=G+OLGyPz2NtLOZH/YOdUHJtasX7vVXp+smN0A8Fakk8=;
+        b=Rke3O+G5FbTzDOFTu7HWY/vgiHtp/cy9sIj6/MEbtkGHNx9tVIAykreAy8GJqQK/21
+         Pw5dZ0hlpQQvWijgpBc2SBJvWiXyYk/C2Qn+XPvE9keIjDccppVvNSTog3L3gseZYqI3
+         Iek7qNiFvTLWrKZcBcMlOVjiL56WEKOoVyeUo=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713520181; x=1714124981;
+        d=1e100.net; s=20230601; t=1713520186; x=1714124986;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=hYOJzUnpv9q2D47VjlP9TkFSb49icqGz0TC7JGSn6z0=;
-        b=C13jy5dIGRJJymA1IuCzz0GRtfeX6NK0bL5coY9RL4uMSA5AmvyxBbeFmxptoOBN/t
-         u/HSHlwa3U1Td/UNt5FwkPM+WRb/+ncFcTUZuebNp29mykRZJgkoOE8CEzLxhTF71tJU
-         34UZ0L8XpGSuheKWGhQU0HONs8SuGeGuvfr19T/qO+XehWmO36IQfaYGGYXuK+xdht9i
-         THKAFp7FCfludSfuN1QD1Sis5LH6M2ZARdeEspVF3krlTmftbjo3MpAG7jSJ0o8+8LAC
-         OOuRcRZGBuJhJzz8Gn2IbcEQo4QBketqIw5d+ewXOqW5Q/Ip2/fn+84AIwX5IeKwebGL
-         v6EQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXgddNdwIxBCMUyq6tWuzn85MHNdpsKGzu4VhOswIMb4herIK5ncA0Ns+Hb/8L0nOsEO4K1uU7VbB6AuIabJFIqTh1TbRLMr95Hmd/8UFrQqNto
-X-Gm-Message-State: AOJu0YwH2y24A80PJw47ufqN4wx6hDS+enE/3q8z1MNEcTp7vFpt4l5/
-	K9qjgoIEhZ3e12S8iwkDSnEGA1KMWkg+gQzvfrgs8pUUk4EsMhZc09jREnAa0g==
-X-Google-Smtp-Source: AGHT+IEqg8WI1huh374uXjkgiCfNW5dvf3VCHAQb3EvwSLWOaLDMHldgLr7J0rc8UDIeS/oMY5gCXQ==
-X-Received: by 2002:a05:6808:2029:b0:3c7:2eff:7dec with SMTP id q41-20020a056808202900b003c72eff7decmr2132218oiw.2.1713520181341;
-        Fri, 19 Apr 2024 02:49:41 -0700 (PDT)
+        bh=G+OLGyPz2NtLOZH/YOdUHJtasX7vVXp+smN0A8Fakk8=;
+        b=q0dtRaHfGWcBFUDhk9b+8JwmiB/w31EVL8e6GKfnkcQQLMdX26T1qs4+cm16YTiivU
+         YP3pg2WrwkpVnh0Ngqv6lvX2FO+xsOG27WfaP/pl9wod992JdnPNDhnRYvndSWsUvdtV
+         ETDDjPEM2NvBbbsQea8Trzqo5+QiLjQwvDIg0HPpfv5C7+UeAMRtv2Dg0low+Sjjxbmm
+         s3FBuA6ZV4YuHQbDoY6fhBHX3sX+mu3tHX1F+874ySBYOz1pknZ0tACfuzZv5CIh0dbk
+         8OKUU7JZwoEienZuZ5wxa3Y5E1W0ZtI7mFehwHhtm9Nb4wwQMw+lq0++X8V6mvURUL+N
+         8Hkg==
+X-Forwarded-Encrypted: i=1; AJvYcCWYE1pnsQGyFtHoNPmIJVROV/izIbFooOOWZEDuJiI8f/1ltjmWfEFpjRH+Qq5P4WNZEyCyv0hLInlyvIta6rjTv/T+HE1tCcIJFujiKlKv7izq
+X-Gm-Message-State: AOJu0Yxqu93wMlBlWCoiDQOHm51q+BJIYObZLli9q/l9dQgAYBlwhOcQ
+	24kwdI/0ZGqn1Yt6XIVIjWlGWx6x0HHuUFkt80N4+NbouOCOPz29XDYqrsQevA==
+X-Google-Smtp-Source: AGHT+IGmrMUnhFDPACSHoV4O9y/blrNx/1c6IZqAeqIu8A58TfBv2t0AZdePdmIMfSq3rhn78LSShA==
+X-Received: by 2002:a05:620a:8116:b0:78d:7036:fbda with SMTP id os22-20020a05620a811600b0078d7036fbdamr1727540qkn.75.1713520185768;
+        Fri, 19 Apr 2024 02:49:45 -0700 (PDT)
 Received: from denia.c.googlers.com (114.152.245.35.bc.googleusercontent.com. [35.245.152.114])
-        by smtp.gmail.com with ESMTPSA id dt14-20020a05620a478e00b0078d735ca917sm1434532qkb.123.2024.04.19.02.49.40
+        by smtp.gmail.com with ESMTPSA id dt14-20020a05620a478e00b0078d735ca917sm1434532qkb.123.2024.04.19.02.49.45
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 19 Apr 2024 02:49:40 -0700 (PDT)
+        Fri, 19 Apr 2024 02:49:45 -0700 (PDT)
 From: Ricardo Ribalda <ribalda@chromium.org>
-Date: Fri, 19 Apr 2024 09:48:05 +0000
-Subject: [PATCH v2 19/26] media: stk1160: Use min macro
+Date: Fri, 19 Apr 2024 09:48:09 +0000
+Subject: [PATCH v2 23/26] media: venus: vdec: Make explicit the range of
+ us_per_frame
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240419-fix-cocci-v2-19-2119e692309c@chromium.org>
+Message-Id: <20240419-fix-cocci-v2-23-2119e692309c@chromium.org>
 References: <20240419-fix-cocci-v2-0-2119e692309c@chromium.org>
 In-Reply-To: <20240419-fix-cocci-v2-0-2119e692309c@chromium.org>
 To: Martin Tuma <martin.tuma@digiteqautomotive.com>, 
@@ -106,8 +122,8 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  Ricardo Ribalda <ribalda@chromium.org>
 X-Mailer: b4 0.12.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240419_024944_388868_81F77087 
-X-CRM114-Status: GOOD (  13.15  )
+X-CRM114-CacheID: sfid-20240419_104948_280557_BC59E66F 
+X-CRM114-Status: GOOD (  10.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,45 +138,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Simplifies the code.
+Unless the fps is smaller than 0.000232829 fps, this fits in a 32 bit
+number. Make that explicit.
 
 Found by cocci:
-drivers/media/usb/stk1160/stk1160-video.c:133:12-13: WARNING opportunity for min()
-drivers/media/usb/stk1160/stk1160-video.c:176:13-14: WARNING opportunity for min()
+drivers/media/platform/qcom/venus/vdec.c:488:1-7: WARNING: do_div() does a 64-by-32 division, please consider using div64_u64 instead.
 
 Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 ---
- drivers/media/usb/stk1160/stk1160-video.c | 10 ++--------
- 1 file changed, 2 insertions(+), 8 deletions(-)
+ drivers/media/platform/qcom/venus/vdec.c | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/media/usb/stk1160/stk1160-video.c b/drivers/media/usb/stk1160/stk1160-video.c
-index 366f0e4a5dc0..0ba0f41fe3f4 100644
---- a/drivers/media/usb/stk1160/stk1160-video.c
-+++ b/drivers/media/usb/stk1160/stk1160-video.c
-@@ -130,10 +130,7 @@ void stk1160_copy_video(struct stk1160 *dev, u8 *src, int len)
- 	dst += linesdone * bytesperline * 2 + lineoff;
+diff --git a/drivers/media/platform/qcom/venus/vdec.c b/drivers/media/platform/qcom/venus/vdec.c
+index 29130a9441e7..2b2874aedb2d 100644
+--- a/drivers/media/platform/qcom/venus/vdec.c
++++ b/drivers/media/platform/qcom/venus/vdec.c
+@@ -464,7 +464,7 @@ static int vdec_s_parm(struct file *file, void *fh, struct v4l2_streamparm *a)
+ 	struct venus_inst *inst = to_inst(file);
+ 	struct v4l2_captureparm *cap = &a->parm.capture;
+ 	struct v4l2_fract *timeperframe = &cap->timeperframe;
+-	u64 us_per_frame, fps;
++	u64 us_per_frame;
  
- 	/* Copy the remaining of current line */
--	if (remain < (bytesperline - lineoff))
--		lencopy = remain;
--	else
--		lencopy = bytesperline - lineoff;
-+	lencopy = min(remain, bytesperline - lineoff);
+ 	if (a->type != V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE &&
+ 	    a->type != V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE)
+@@ -484,10 +484,7 @@ static int vdec_s_parm(struct file *file, void *fh, struct v4l2_streamparm *a)
+ 	if (!us_per_frame)
+ 		return -EINVAL;
  
- 	/*
- 	 * Check if we have enough space left in the buffer.
-@@ -173,10 +170,7 @@ void stk1160_copy_video(struct stk1160 *dev, u8 *src, int len)
- 		src += lencopy;
+-	fps = (u64)USEC_PER_SEC;
+-	do_div(fps, us_per_frame);
+-
+-	inst->fps = fps;
++	inst->fps = USEC_PER_SEC / (u32)us_per_frame;
+ 	inst->timeperframe = *timeperframe;
  
- 		/* Copy one line at a time */
--		if (remain < bytesperline)
--			lencopy = remain;
--		else
--			lencopy = bytesperline;
-+		lencopy = min(remain, bytesperline);
- 
- 		/*
- 		 * Check if we have enough space left in the buffer.
+ 	return 0;
 
 -- 
 2.44.0.769.g3c40516874-goog
