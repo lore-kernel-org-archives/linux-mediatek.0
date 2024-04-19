@@ -4,85 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47481C4345F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Apr 2024 09:52:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0324C4345F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Apr 2024 09:52:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PtHT2dnCrKtU2tz1OyJJw1d0hzBN/YL8p+52UQFaJZo=; b=ifxzp8QCGK3VPdT3IcEYot5dct
-	62UUAfVL/7GTDfQiKcUIWAPr3zVAToujQG7XSIfAhzWKyqaAeWGmlonVLUErgSAW9A5inpk/CLpmX
-	oRSYUZ5zZiDN7r/D+0zha7ipAksk8nwpijlX1mLCD6Qb32+sn93PzhLoujmazL9NPrBhqwiAkH/84
-	4EhSfc6R+amD7+xFuXusr1A35ADQ7Oxp7M2InhFOPUI4ZHGtWqPw4Q/KEivP7DbYMez76UmIS7N6K
-	miGsu/v2BGJdWx5k8T0dQtCYYHcEsNIt67R7P+PzBCtJ86yUAuZgfQ3QR2okhXL4NMcV3p/2tuzpR
-	B4pP6wPA==;
+	bh=OI4AOi/6PtgU5zRnLUWjMVWmm8Y+CckVMvMt6qKhGc0=; b=UHEPuTUidUJ27kdFMEIE3noAXJ
+	QDtNY+CrH+7r0DxDCNpn7VdrUfva4zRBgtI1BYoAggx1fC+dfj4diYa1Q6qRWIsiaz2XrMU8LYTGz
+	DBA4MHa2PouYpIRY+OBTwP0DFX8VvXkJV5z/4grVwrXgVDvv3l5ftHHV+hj8R1bmn/KKZ4ET15Y8b
+	lrrS/MNwpVs09Uz/v6R4Z9Tpd63+wZyeB/lNsKGnO8DB2PZwPasH/V8GDYkkFHYubn1SMO+iO5LdF
+	uto8HPZ8b9SO95d/lgNQGUFvH8QSHIuj2ImaW9APbU5OgUxqfrrR0aC6+xt2aBWSM21ns1cnFJY+V
+	fSGaH4KA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxkuU-00000005AP1-38tu;
-	Fri, 19 Apr 2024 09:51:58 +0000
+	id 1rxkui-00000005AXl-2ORE;
+	Fri, 19 Apr 2024 09:52:12 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxksO-000000059BW-24Jy
+	id 1rxksO-000000059Bc-2UmQ
 	for linux-mediatek@bombadil.infradead.org;
 	Fri, 19 Apr 2024 09:49:49 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
 	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=PtHT2dnCrKtU2tz1OyJJw1d0hzBN/YL8p+52UQFaJZo=; b=K/0Z411fFqd9vta+TuoCgvH+dl
-	8fN8xny92oQ+Q0PCqyZ89ktVeja/JY/hvRuuZJdLh64IjPSkAFFsmPdf6uaAlg3HC0X+/CX5OVVhG
-	BSWzKGcuAmHWA77pi4Q6eqQpstOF2ZaMCw74QT48Vw4Amryx3TbH71QyCeuHLn8Cqpup/NyTD9WJa
-	BBEXh9YEQAX4xq8KI6tDppIYohJ3cB1mpKfMGtkEbppcaMaMfctiRPSmHZKdUwGvtSwDANylu+XYD
-	dtmiEtJXMUcFjWDioBXxlEj0BiHgX8Jl09bVtnc7uzahAz9PkRtiBMqkaYtWihFKAoW8IUjH2DgM8
-	QYBOXNGg==;
-Received: from mail-qt1-x832.google.com ([2607:f8b0:4864:20::832])
+	bh=OI4AOi/6PtgU5zRnLUWjMVWmm8Y+CckVMvMt6qKhGc0=; b=MJn4pbKb0dYQcAJkCQT152EYde
+	szq9WX75/hsjyCmy/RoCepEBXEeP64xq3Hm2VMMi+Tacwn1ewN/d0A5ZPJcFUr6XHZGH2sFWg3UqB
+	QLypwW7N3sEoZD2+e2ELH7C62zwAjGYhNBBwdsan2QzFWgwEMv2DNoO+UdLqCtcZzdw0+9KFTGBZd
+	y2z+zpe5MEuC4U7FOhEcOM/TsOzObgyrCZBnplw/FfQ8qMHOTpH5MQzLh1P8fbaJj3hhDfyT4hpiJ
+	OpWb3GN2s/gRCxY2xViPPBzLDob529BWegkzkHh+cHfPEdJUuL1091UITJ2Cc5j5Tr3qfIJJckQpc
+	M2FE4Dlw==;
+Received: from mail-ot1-x334.google.com ([2607:f8b0:4864:20::334])
 	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxksG-0000000COPK-2m0A
+	id 1rxksG-0000000COP8-2b2j
 	for linux-mediatek@lists.infradead.org;
 	Fri, 19 Apr 2024 09:49:46 +0000
-Received: by mail-qt1-x832.google.com with SMTP id d75a77b69052e-439073cd4c9so525411cf.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 19 Apr 2024 02:49:32 -0700 (PDT)
+Received: by mail-ot1-x334.google.com with SMTP id 46e09a7af769-6eb7a0b3fe7so1118007a34.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 19 Apr 2024 02:49:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1713520170; x=1714124970; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1713520169; x=1714124969; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=PtHT2dnCrKtU2tz1OyJJw1d0hzBN/YL8p+52UQFaJZo=;
-        b=QbubsKQ0dQ+5noqXTAxNFKR2sq+wOmJTvgqGm5VsF9dBBl9zbx/JAMYpddQJs0K4OW
-         dBospUaOEvX+obVsUlv4RQTenjsed7gSccfGy1Nu8V+VSmzOcDH9SkJQlwfMZ4ruR1/S
-         42Bxkcxvls/wElR57Iox4ZtJJGdmImkdzAdrs=
+        bh=OI4AOi/6PtgU5zRnLUWjMVWmm8Y+CckVMvMt6qKhGc0=;
+        b=K2NrA282RPrQYhc2MWT6QS1716yrp9wybzQ6wF/RWEPqE5z0J8RutkMJIaDm1VM9Xa
+         qXfTT4cIVYKUxpiPFkbJlpvp2LdOTyuorRWNQdanDmlg3IBN1lVVVDEjMr8svPT1kGwQ
+         pnfOb4lXgVVxO7JC61uJeEGqeb49tzI6PLYwU=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713520170; x=1714124970;
+        d=1e100.net; s=20230601; t=1713520169; x=1714124969;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=PtHT2dnCrKtU2tz1OyJJw1d0hzBN/YL8p+52UQFaJZo=;
-        b=ETjZLXYmbLlKZCenCFKhI8plVocOQb1veJZriN3Fs/hy1Hts2SWeeqsqqpxOIXQasI
-         8RJWWiSs1hIEmZMuFkAiG8L0W18s0m+eqW+isAmzkj3p2ZB4JxCCsVrhKxUMP94eom55
-         b26QYCSZw60DYhZ14AI2m6l4hl3rnlmwOTee/tXMrQnKsxpGALRBun3MB/PorYJ7ehY4
-         fct+GvHcFd4Ny1p4C6gF1FLhWaGgQDlwoHcekeFCZWGBAk64fzLtYa0GC6efT4ORhN3w
-         AkUq88nmJ/UKjawQofcZtpTK+rNNFyYZ+3VTJgtEZpfsQwP+dQUquHNLIomO/nmQGrD/
-         qtFQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVUWLLJrxf4xOGwx/sJpVEHKsLOKTUrfwdlfGcC3ZH3PVX6YUwJcbw9WnC6CGBpvTh3SXeFkhV5WX/U3aghj+D1BvWsjWGwnwLI3qiAo9UuPza/
-X-Gm-Message-State: AOJu0YxDSu+8dhPCxG9Lu3pZdqQvh44qQ6AbYB2vs6NI/G1RdaA24uOz
-	eLdMcEuEWKIdLEOPSXH87WhcSdUOmqVyhe1DkoUSDepF4O8nD/u9Sym/NVc+tw==
-X-Google-Smtp-Source: AGHT+IEq5/HFwcn26nQnIIJ8VXOEY35h4vBPeSOiEtFFD1Z7vC7s7kPOFrGUrC/lVDARzsxRqq1juw==
-X-Received: by 2002:a05:622a:1386:b0:437:b995:98b5 with SMTP id o6-20020a05622a138600b00437b99598b5mr1747672qtk.57.1713520170255;
-        Fri, 19 Apr 2024 02:49:30 -0700 (PDT)
-Received: from denia.c.googlers.com (114.152.245.35.bc.googleusercontent.com. [35.245.152.114])
-        by smtp.gmail.com with ESMTPSA id dt14-20020a05620a478e00b0078d735ca917sm1434532qkb.123.2024.04.19.02.49.29
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        bh=OI4AOi/6PtgU5zRnLUWjMVWmm8Y+CckVMvMt6qKhGc0=;
+        b=qlfL+p6a3hq0Hk+hBqPFvooj3N+0oXeS4P1jyKUfu1HuxGtCVkARNDq/sWucdg+S1t
+         8rnK5e5fdzzog2ty1c0sTkJYo0RvBqgjUvxZmUm6uvUi3kzHU/jNu5+0O9y544hT8sP3
+         kYEBp52Mdd/4dS+cE6DOfwvJRoVK6ciOJZ7IGWohlPlS/XpcFs7gNXViygkaSDovarCC
+         vyLxfIhaN90KxKOzTmZjU4GkTWdPhOVvI7CR4ameAD2jeaJhzljmhecXssAfsnD/PXc2
+         tsjM17VUDqqHabsrboxaqqnVhpn3F+rAfriyLdyNoHdSn/TMxLgYZZEzknM8hp46S/D5
+         PKyg==
+X-Forwarded-Encrypted: i=1; AJvYcCUCsgtWE9FZMl55RNCdYg74bHIwH815mJO5U+Gjazt6XJG7T0U5IdVbnR+IcJMhtOdMuZmjxDmllSGx2NJhXT6CW8PBJcajlyeXx1XBrTc7n6oM
+X-Gm-Message-State: AOJu0YxlWJn9veKVxFD05bIbrLnlNNF4R5NDX26Ag4Mvu881O+JoBNgf
+	FvkCRGhm+l/7RGLDTNeuqP+5e0x6/Ve1ioYrsSsMXltLDeUDq04IvH6V5IUANw==
+X-Google-Smtp-Source: AGHT+IEoa3EBjJC9669xc6mPVpvtJwhrzrmUgput3DoBfmRttNa6KJF0gCcMfSkwX6iyc+U8a8TeQg==
+X-Received: by 2002:a05:6830:1d48:b0:6eb:7a07:8746 with SMTP id p8-20020a0568301d4800b006eb7a078746mr1521944oth.31.1713520169041;
         Fri, 19 Apr 2024 02:49:29 -0700 (PDT)
+Received: from denia.c.googlers.com (114.152.245.35.bc.googleusercontent.com. [35.245.152.114])
+        by smtp.gmail.com with ESMTPSA id dt14-20020a05620a478e00b0078d735ca917sm1434532qkb.123.2024.04.19.02.49.28
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 19 Apr 2024 02:49:28 -0700 (PDT)
 From: Ricardo Ribalda <ribalda@chromium.org>
-Date: Fri, 19 Apr 2024 09:47:55 +0000
-Subject: [PATCH v2 09/26] media: v4l: async: refactor
- v4l2_async_create_ancillary_links
+Date: Fri, 19 Apr 2024 09:47:54 +0000
+Subject: [PATCH v2 08/26] media: dvb-frontends: tda18271c2dd: Remove
+ casting during div
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240419-fix-cocci-v2-9-2119e692309c@chromium.org>
+Message-Id: <20240419-fix-cocci-v2-8-2119e692309c@chromium.org>
 References: <20240419-fix-cocci-v2-0-2119e692309c@chromium.org>
 In-Reply-To: <20240419-fix-cocci-v2-0-2119e692309c@chromium.org>
 To: Martin Tuma <martin.tuma@digiteqautomotive.com>, 
@@ -122,8 +122,8 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  Ricardo Ribalda <ribalda@chromium.org>
 X-Mailer: b4 0.12.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240419_104942_241697_C8A17839 
-X-CRM114-Status: GOOD (  11.94  )
+X-CRM114-CacheID: sfid-20240419_104942_363116_7F9267EC 
+X-CRM114-Status: GOOD (  11.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -138,44 +138,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Return 0 without checking IS_ERR or PTR_ERR if CONFIG_MEDIA_CONTROLLER
-is not enabled.
+do_div() divides 64 bits by 32. We were adding a casting to the divider
+to 64 bits, for a number that fits perfectly in 32 bits. Remove it.
 
-This makes cocci happier:
-
-drivers/media/v4l2-core/v4l2-async.c:331:23-30: ERROR: PTR_ERR applied after initialization to constant on line 319
+Found by cocci:
+drivers/media/dvb-frontends/tda18271c2dd.c:355:1-7: WARNING: do_div() does a 64-by-32 division, please consider using div64_u64 instead.
+drivers/media/dvb-frontends/tda18271c2dd.c:331:1-7: WARNING: do_div() does a 64-by-32 division, please consider using div64_u64 instead.
 
 Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 ---
- drivers/media/v4l2-core/v4l2-async.c | 7 +++----
- 1 file changed, 3 insertions(+), 4 deletions(-)
+ drivers/media/dvb-frontends/tda18271c2dd.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/media/v4l2-core/v4l2-async.c b/drivers/media/v4l2-core/v4l2-async.c
-index 4bb073587817..915a9f3ea93c 100644
---- a/drivers/media/v4l2-core/v4l2-async.c
-+++ b/drivers/media/v4l2-core/v4l2-async.c
-@@ -316,9 +316,10 @@ v4l2_async_nf_try_all_subdevs(struct v4l2_async_notifier *notifier);
- static int v4l2_async_create_ancillary_links(struct v4l2_async_notifier *n,
- 					     struct v4l2_subdev *sd)
- {
--	struct media_link *link = NULL;
-+	struct media_link *link;
+diff --git a/drivers/media/dvb-frontends/tda18271c2dd.c b/drivers/media/dvb-frontends/tda18271c2dd.c
+index a34834487943..fd928787207e 100644
+--- a/drivers/media/dvb-frontends/tda18271c2dd.c
++++ b/drivers/media/dvb-frontends/tda18271c2dd.c
+@@ -328,7 +328,7 @@ static int CalcMainPLL(struct tda_state *state, u32 freq)
  
--#if IS_ENABLED(CONFIG_MEDIA_CONTROLLER)
-+	if (!IS_ENABLED(CONFIG_MEDIA_CONTROLLER))
-+		return 0;
+ 	OscFreq = (u64) freq * (u64) Div;
+ 	OscFreq *= (u64) 16384;
+-	do_div(OscFreq, (u64)16000000);
++	do_div(OscFreq, 16000000);
+ 	MainDiv = OscFreq;
  
- 	if (sd->entity.function != MEDIA_ENT_F_LENS &&
- 	    sd->entity.function != MEDIA_ENT_F_FLASH)
-@@ -326,8 +327,6 @@ static int v4l2_async_create_ancillary_links(struct v4l2_async_notifier *n,
+ 	state->m_Regs[MPD] = PostDiv & 0x77;
+@@ -352,7 +352,7 @@ static int CalcCalPLL(struct tda_state *state, u32 freq)
+ 	OscFreq = (u64)freq * (u64)Div;
+ 	/* CalDiv = u32( OscFreq * 16384 / 16000000 ); */
+ 	OscFreq *= (u64)16384;
+-	do_div(OscFreq, (u64)16000000);
++	do_div(OscFreq, 16000000);
+ 	CalDiv = OscFreq;
  
- 	link = media_create_ancillary_link(&n->sd->entity, &sd->entity);
- 
--#endif
--
- 	return IS_ERR(link) ? PTR_ERR(link) : 0;
- }
- 
+ 	state->m_Regs[CPD] = PostDiv;
 
 -- 
 2.44.0.769.g3c40516874-goog
