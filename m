@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8944BC4345F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Apr 2024 10:10:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86B0DC4345F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Apr 2024 10:11:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
-	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
-	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cqWxjOhi1gf5WuN9WVHe3fRU9vKlEx/bc34DByj9O40=; b=mNX0dF5S45M/Fi0d62zQBAXdVH
-	ogxTOUnbFtPqTdyuwYXrVFjQHElkmoH6VTRUIiLpbxc137pKqsOJaU90+ICoDw+qj3XPRANu/ThAO
-	3wKF4l1cxFOADceeAM4EtbHc9Lat2lcPrq8EZcJVoBs+rM1JOhd8zT/hBM63/gq4wph5eNjnWJRQp
-	uqf5YWo8oedxSQF8Qk7axPVOTzVXO/askK/aBKDr1bShb0tqAC4SymUNfBuE+7eC/Ak1xZJnXLEcx
-	kMjX6lAlSYMhPLUb459EJXmQp3PTiZmfivjprUCL9yibQFT2KrWLRSNIp4lO2mKQZEE1wi9RN+eNE
-	7A3PYe4A==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=lPT162fR3Q/ZAcMJji9Gy3iDnxNOHApa5BhewHPya0w=; b=GQ0zNt9hfnjDa+y+bk6r9NUDen
+	uuRCA6fxEqBLG8wiaQF/+TeggJ2BAqF/Rob0iZURDxTfgecGpwy/vEhh1UZ2qqAi/KtulLf5JPQMc
+	0Qltsm+6qhsLf6iuebzrPWNhq0fVeADC94NtnGcIo9OCNJqFdFYrAfyblUMcAupurJU7RdB8UYMSK
+	23vv2aOh6DUMpvQubuneP8S3twEFyvY6FVYxTED5bv9bCATDwCUoCuYxlOiJYiVjH5mZ9Q0diQxjk
+	pA8TLpt7MpASjDuvfPEL5NjUg/Mp0po+gRD2yGP4DIt3AB8PH4X1y/thEhz83AfRysRm0iWo5ukU2
+	J/yhyaEA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxlCn-00000005ExE-3th4;
-	Fri, 19 Apr 2024 10:10:53 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1rxlD8-00000005FBH-0Vg8;
+	Fri, 19 Apr 2024 10:11:14 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxlBb-00000005ECd-3j3L;
-	Fri, 19 Apr 2024 10:09:44 +0000
+	id 1rxlBd-00000005ED4-0Tz1;
+	Fri, 19 Apr 2024 10:09:45 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id B12146195E;
+	by sin.source.kernel.org (Postfix) with ESMTP id 2EBBDCE1A48;
 	Fri, 19 Apr 2024 10:09:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id C32CAC4AF0C;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 56899C072AA;
 	Fri, 19 Apr 2024 10:09:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1713521377;
-	bh=JpDxd3crHAkNzCfUszuShdFULlH95GB99lMPCw4DDgU=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=jo7XJ5an8aOX8NagmuX4qELvGd62v2I1gDbNdRfp0g/qozQ2Y7IxEKQCM1DrU/TIY
-	 Pdbzu6SyTBCLFgoh3N9rDoCPt0PUkGxDis4K33GAGNB1XAblwh16tEk3uRo30SqI9P
-	 KOoqkbEey6p7lJrIV2+gQrJUMY27j6Ev+6g0OkUtJjtAwaQSiYHFj3dLsbyIY1EZWl
-	 NDxjomXG9XsIjtoWQELZjK0f+72NoNkC4PPeke6FOFCxTYOvrHTAVvwxzCy6UCWxvP
-	 XSbL2+sEbH/f3RBRcLHjLyjExMMbuJxJpiTF0srD48eQW2EumhW85GexROsa3INaBK
-	 pc+aEd867fH0A==
+	bh=hIqlbjO65jZjxYKpeWau84wCqd4vKuYsewjegaEPtAw=;
+	h=From:Subject:Date:To:Cc:Reply-To:From;
+	b=HIOa2uVW3uIspoEQuRXVy2cZHWLeq1qvOOOQ2kfIa0fnUnSrkOe1tgVZDNGpFRfgy
+	 5eO1xkGuG1eGzAVeXizFsVCDv3Ti3ASsNNlniq/GfsyRluxJQJNm5S0C4X6M7jSyYg
+	 zXuOxUwt7V7IDgsFQcj4p0KCHPheacQTGFVgBA6zOWPI8EXIdR4aS79G8uqVIEh81A
+	 iAwxtJRnd383YK68tfm1s/pI9dhyoZSXJZR54vDkEXlXQC9g1MOyHdXWSqoAfE+j+P
+	 1svKDTfn/LPa6hDZYNnlSfEL+gjHGEaBH7hQ9QthB5+wIxCfY5lJxrRXTQmpnm4KBn
+	 7tQ1jOyY5gWDA==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B5E11C4345F;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4B112C04FF6;
 	Fri, 19 Apr 2024 10:09:37 +0000 (UTC)
 From: =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL_via_B4_Relay?= <devnull+arinc.unal.arinc9.com@kernel.org>
-Date: Fri, 19 Apr 2024 13:09:29 +0300
-Subject: [PATCH net-next 06/13] net: dsa: mt7530: refactor MT7530_HWTRAP
- and MT7530_MHWTRAP
+Subject: [PATCH net-next 00/13] MT7530 DSA Subdriver Improvements Act IV
+Date: Fri, 19 Apr 2024 13:09:23 +0300
+Message-Id: <20240419-for-netnext-mt7530-improvements-4-v1-0-6d852ca79b1d@arinc9.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Message-Id: <20240419-for-netnext-mt7530-improvements-4-v1-6-6d852ca79b1d@arinc9.com>
-References: <20240419-for-netnext-mt7530-improvements-4-v1-0-6d852ca79b1d@arinc9.com>
-In-Reply-To: <20240419-for-netnext-mt7530-improvements-4-v1-0-6d852ca79b1d@arinc9.com>
+X-B4-Tracking: v=1; b=H4sIANNCImYC/x2NywqDQAwAf0VyNhD3QWl/pXgoGjWHzUp2EUH89
+ 257nMPMXFDYhAu8uguMDymStcHQdzBtH10ZZW4Mjlwg7wiXbKhclc+KqT6iJ5S0Wz44sdaCAZ8
+ xeJqHSBNFaJ3deJHz/3hDU/HnwnjfX14TZvh9AAAA
 To: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, 
  Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>, 
  Florian Fainelli <f.fainelli@gmail.com>, 
@@ -69,19 +69,20 @@ Cc: Bartel Eerdekens <bartel.eerdekens@constell8.be>,
  linux-mediatek@lists.infradead.org, 
  =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1713521374; l=8925;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1713521374; l=2654;
  i=arinc.unal@arinc9.com; s=arinc9-Xeront; h=from:subject:message-id;
- bh=FPSpZup53zPjkFOg+U7o3cVfgrTHkOJAlg6L4h+GBKE=;
- b=/qvEUgd/Az5aE10sYrs2r1Hv8RGgz5XYfqKmVhmwDGAFxr4yZWlixSggX5oigm0IrPpxjx/Jb
- 5qYAqhutwgKAwH8/I9HcpQWGQG4BBFP6zEOk9PIBBBbC6AR1J5RzQh/
+ bh=hIqlbjO65jZjxYKpeWau84wCqd4vKuYsewjegaEPtAw=;
+ b=iGbg2Xv6D/RpNIc/k3j1XoPdRClUOkq02kgugFhytAdQDrC0bmxdXD7gR+Ink69lISXC1XYSC
+ O1swa4N6PULD3Y43CMD7t5opgf7OEhELDS4iH9UGGRxzf/SVMm+9UKF
 X-Developer-Key: i=arinc.unal@arinc9.com; a=ed25519;
  pk=z49tLn29CyiL4uwBTrqH9HO1Wu3sZIuRp4DaLZvtP9M=
 X-Endpoint-Received: by B4 Relay for arinc.unal@arinc9.com/arinc9-Xeront
  with auth_id=137
 X-Original-From: =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240419_030940_298654_4F917081 
-X-CRM114-Status: GOOD (  15.51  )
+X-CRM114-CacheID: sfid-20240419_030941_724556_30B5AB98 
+X-CRM114-Status: UNSURE (   7.66  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,265 +98,67 @@ Reply-To: arinc.unal@arinc9.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Arınç ÜNAL <arinc.unal@arinc9.com>
+Hello!
 
-The MT7530_HWTRAP and MT7530_MHWTRAP registers are on MT7530 and MT7531.
-It's called hardware trap on MT7530, software trap on MT7531. That's
-because some bits of the trap on MT7530 cannot be modified by software
-whilst all bits of the trap on MT7531 can. Rename the definitions for them
-to MT753X_TRAP and MT753X_MTRAP. Add MT7530 and MT7531 prefixes to the
-definitions specific to the switch model.
+This is the forth patch series with the goal of simplifying the MT7530 DSA
+subdriver and improving support for MT7530, MT7531, and the switch on the
+MT7988 SoC.
 
-Remove the extra parentheses from MT7530_XTAL_40MHZ and MT7530_XTAL_20MHZ.
+I have done a simple ping test to confirm basic communication on all switch
+ports on MCM and standalone MT7530, and MT7531 switch with this patch
+series applied.
 
-Rename MHWTRAP_PHY0_SEL, MHWTRAP_MANUAL, and MHWTRAP_PHY_ACCESS to be on
-par with the "MT7621 Giga Switch Programming Guide v0.3" document.
+MT7621 Unielec, MCM MT7530:
 
-Make an enumaration for the XTAL frequency. Set the data type of the xtal
-variable on mt7531_pll_setup() to it.
+rgmii-only-gmac0-mt7621-unielec-u7621-06-16m.dtb
+gmac0-and-gmac1-mt7621-unielec-u7621-06-16m.dtb
+
+tftpboot 0x80008000 mips-uzImage.bin; tftpboot 0x83000000 mips-rootfs.cpio.uboot; tftpboot 0x83f00000 $dtb; bootm 0x80008000 0x83000000 0x83f00000
+
+MT7622 Bananapi, MT7531:
+
+gmac0-and-gmac1-mt7622-bananapi-bpi-r64.dtb
+
+tftpboot 0x40000000 arm64-Image; tftpboot 0x45000000 arm64-rootfs.cpio.uboot; tftpboot 0x4a000000 $dtb; booti 0x40000000 0x45000000 0x4a000000
+
+MT7623 Bananapi, standalone MT7530:
+
+rgmii-only-gmac0-mt7623n-bananapi-bpi-r2.dtb
+gmac0-and-gmac1-mt7623n-bananapi-bpi-r2.dtb
+
+tftpboot 0x80008000 arm-zImage; tftpboot 0x83000000 arm-rootfs.cpio.uboot; tftpboot 0x83f00000 $dtb; bootz 0x80008000 0x83000000 0x83f00000
+
+This patch series finalises the patch series linked below.
+
+https://lore.kernel.org/r/20230522121532.86610-1-arinc.unal@arinc9.com
 
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 ---
- drivers/net/dsa/mt7530.c | 59 ++++++++++++++++++++++++------------------------
- drivers/net/dsa/mt7530.h | 50 ++++++++++++++++++++--------------------
- 2 files changed, 54 insertions(+), 55 deletions(-)
+Arınç ÜNAL (13):
+      net: dsa: mt7530: disable EEE abilities on failure on MT7531 and MT7988
+      net: dsa: mt7530: refactor MT7530_PMCR_P()
+      net: dsa: mt7530: rename p5_intf_sel and use only for MT7530 switch
+      net: dsa: mt7530: rename mt753x_bpdu_port_fw enum to mt753x_to_cpu_fw
+      net: dsa: mt7530: refactor MT7530_MFC and MT7531_CFC, add MT7531_QRY_FFP
+      net: dsa: mt7530: refactor MT7530_HWTRAP and MT7530_MHWTRAP
+      net: dsa: mt7530: move MT753X_MTRAP operations for MT7530
+      net: dsa: mt7530: return mt7530_setup_mdio & mt7531_setup_common on error
+      net: dsa: mt7530: define MAC speed capabilities per switch model
+      net: dsa: mt7530: get rid of function sanity check
+      net: dsa: mt7530: refactor MT7530_PMEEECR_P()
+      net: dsa: mt7530: get rid of mac_port_validate member of mt753x_info
+      net: dsa: mt7530: use priv->ds->num_ports instead of MT7530_NUM_PORTS
 
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 39c47499036b..606516206fb9 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -417,23 +417,23 @@ mt7530_setup_port6(struct dsa_switch *ds, phy_interface_t interface)
- 
- 	mt7530_rmw(priv, MT7530_P6ECR, P6_INTF_MODE_MASK, P6_INTF_MODE(1));
- 
--	xtal = mt7530_read(priv, MT7530_MHWTRAP) & HWTRAP_XTAL_MASK;
-+	xtal = mt7530_read(priv, MT753X_MTRAP) & MT7530_XTAL_MASK;
- 
--	if (xtal == HWTRAP_XTAL_25MHZ)
-+	if (xtal == MT7530_XTAL_25MHZ)
- 		ssc_delta = 0x57;
- 	else
- 		ssc_delta = 0x87;
- 
- 	if (priv->id == ID_MT7621) {
- 		/* PLL frequency: 125MHz: 1.0GBit */
--		if (xtal == HWTRAP_XTAL_40MHZ)
-+		if (xtal == MT7530_XTAL_40MHZ)
- 			ncpo1 = 0x0640;
--		if (xtal == HWTRAP_XTAL_25MHZ)
-+		if (xtal == MT7530_XTAL_25MHZ)
- 			ncpo1 = 0x0a00;
- 	} else { /* PLL frequency: 250MHz: 2.0Gbit */
--		if (xtal == HWTRAP_XTAL_40MHZ)
-+		if (xtal == MT7530_XTAL_40MHZ)
- 			ncpo1 = 0x0c80;
--		if (xtal == HWTRAP_XTAL_25MHZ)
-+		if (xtal == MT7530_XTAL_25MHZ)
- 			ncpo1 = 0x1400;
- 	}
- 
-@@ -456,19 +456,20 @@ mt7530_setup_port6(struct dsa_switch *ds, phy_interface_t interface)
- static void
- mt7531_pll_setup(struct mt7530_priv *priv)
- {
-+	enum mt7531_xtal_fsel xtal;
- 	u32 top_sig;
- 	u32 hwstrap;
--	u32 xtal;
- 	u32 val;
- 
- 	val = mt7530_read(priv, MT7531_CREV);
- 	top_sig = mt7530_read(priv, MT7531_TOP_SIG_SR);
--	hwstrap = mt7530_read(priv, MT7531_HWTRAP);
-+	hwstrap = mt7530_read(priv, MT753X_TRAP);
- 	if ((val & CHIP_REV_M) > 0)
--		xtal = (top_sig & PAD_MCM_SMI_EN) ? HWTRAP_XTAL_FSEL_40MHZ :
--						    HWTRAP_XTAL_FSEL_25MHZ;
-+		xtal = (top_sig & PAD_MCM_SMI_EN) ? MT7531_XTAL_FSEL_40MHZ :
-+						    MT7531_XTAL_FSEL_25MHZ;
- 	else
--		xtal = hwstrap & HWTRAP_XTAL_FSEL_MASK;
-+		xtal = (hwstrap & MT7531_XTAL25) ? MT7531_XTAL_FSEL_25MHZ :
-+						   MT7531_XTAL_FSEL_40MHZ;
- 
- 	/* Step 1 : Disable MT7531 COREPLL */
- 	val = mt7530_read(priv, MT7531_PLLGP_EN);
-@@ -497,13 +498,13 @@ mt7531_pll_setup(struct mt7530_priv *priv)
- 	usleep_range(25, 35);
- 
- 	switch (xtal) {
--	case HWTRAP_XTAL_FSEL_25MHZ:
-+	case MT7531_XTAL_FSEL_25MHZ:
- 		val = mt7530_read(priv, MT7531_PLLGP_CR0);
- 		val &= ~RG_COREPLL_SDM_PCW_M;
- 		val |= 0x140000 << RG_COREPLL_SDM_PCW_S;
- 		mt7530_write(priv, MT7531_PLLGP_CR0, val);
- 		break;
--	case HWTRAP_XTAL_FSEL_40MHZ:
-+	case MT7531_XTAL_FSEL_40MHZ:
- 		val = mt7530_read(priv, MT7531_PLLGP_CR0);
- 		val &= ~RG_COREPLL_SDM_PCW_M;
- 		val |= 0x190000 << RG_COREPLL_SDM_PCW_S;
-@@ -877,20 +878,20 @@ static void mt7530_setup_port5(struct dsa_switch *ds, phy_interface_t interface)
- 
- 	mutex_lock(&priv->reg_mutex);
- 
--	val = mt7530_read(priv, MT7530_MHWTRAP);
-+	val = mt7530_read(priv, MT753X_MTRAP);
- 
--	val |= MHWTRAP_MANUAL | MHWTRAP_P5_MAC_SEL | MHWTRAP_P5_DIS;
--	val &= ~MHWTRAP_P5_RGMII_MODE & ~MHWTRAP_PHY0_SEL;
-+	val |= MT7530_CHG_TRAP | MT7530_P5_MAC_SEL | MT7530_P5_DIS;
-+	val &= ~MT7530_P5_RGMII_MODE & ~MT7530_P5_PHY0_SEL;
- 
- 	switch (priv->p5_mode) {
- 	/* MUX_PHY_P0: P0 -> P5 -> SoC MAC */
- 	case MUX_PHY_P0:
--		val |= MHWTRAP_PHY0_SEL;
-+		val |= MT7530_P5_PHY0_SEL;
- 		fallthrough;
- 
- 	/* MUX_PHY_P4: P4 -> P5 -> SoC MAC */
- 	case MUX_PHY_P4:
--		val &= ~MHWTRAP_P5_MAC_SEL & ~MHWTRAP_P5_DIS;
-+		val &= ~MT7530_P5_MAC_SEL & ~MT7530_P5_DIS;
- 
- 		/* Setup the MAC by default for the cpu port */
- 		mt7530_write(priv, MT753X_PMCR_P(5), 0x56300);
-@@ -898,13 +899,13 @@ static void mt7530_setup_port5(struct dsa_switch *ds, phy_interface_t interface)
- 
- 	/* GMAC5: P5 -> SoC MAC or external PHY */
- 	default:
--		val &= ~MHWTRAP_P5_DIS;
-+		val &= ~MT7530_P5_DIS;
- 		break;
- 	}
- 
- 	/* Setup RGMII settings */
- 	if (phy_interface_mode_is_rgmii(interface)) {
--		val |= MHWTRAP_P5_RGMII_MODE;
-+		val |= MT7530_P5_RGMII_MODE;
- 
- 		/* P5 RGMII RX Clock Control: delay setting for 1000M */
- 		mt7530_write(priv, MT7530_P5RGMIIRXCR, CSR_RGMII_EDGE_ALIGN);
-@@ -924,7 +925,7 @@ static void mt7530_setup_port5(struct dsa_switch *ds, phy_interface_t interface)
- 			     P5_IO_CLK_DRV(1) | P5_IO_DATA_DRV(1));
- 	}
- 
--	mt7530_write(priv, MT7530_MHWTRAP, val);
-+	mt7530_write(priv, MT753X_MTRAP, val);
- 
- 	dev_dbg(ds->dev, "Setup P5, HWTRAP=0x%x, mode=%s, phy-mode=%s\n", val,
- 		mt7530_p5_mode_str(priv->p5_mode), phy_modes(interface));
-@@ -2365,7 +2366,7 @@ mt7530_setup(struct dsa_switch *ds)
- 	}
- 
- 	/* Waiting for MT7530 got to stable */
--	INIT_MT7530_DUMMY_POLL(&p, priv, MT7530_HWTRAP);
-+	INIT_MT7530_DUMMY_POLL(&p, priv, MT753X_TRAP);
- 	ret = readx_poll_timeout(_mt7530_read, &p, val, val != 0,
- 				 20, 1000000);
- 	if (ret < 0) {
-@@ -2380,7 +2381,7 @@ mt7530_setup(struct dsa_switch *ds)
- 		return -ENODEV;
- 	}
- 
--	if ((val & HWTRAP_XTAL_MASK) == HWTRAP_XTAL_20MHZ) {
-+	if ((val & MT7530_XTAL_MASK) == MT7530_XTAL_20MHZ) {
- 		dev_err(priv->dev,
- 			"MT7530 with a 20MHz XTAL is not supported!\n");
- 		return -EINVAL;
-@@ -2401,12 +2402,12 @@ mt7530_setup(struct dsa_switch *ds)
- 			   RD_TAP_MASK, RD_TAP(16));
- 
- 	/* Enable port 6 */
--	val = mt7530_read(priv, MT7530_MHWTRAP);
--	val &= ~MHWTRAP_P6_DIS & ~MHWTRAP_PHY_ACCESS;
--	val |= MHWTRAP_MANUAL;
--	mt7530_write(priv, MT7530_MHWTRAP, val);
-+	val = mt7530_read(priv, MT753X_MTRAP);
-+	val &= ~MT7530_P6_DIS & ~MT7530_PHY_INDIRECT_ACCESS;
-+	val |= MT7530_CHG_TRAP;
-+	mt7530_write(priv, MT753X_MTRAP, val);
- 
--	if ((val & HWTRAP_XTAL_MASK) == HWTRAP_XTAL_40MHZ)
-+	if ((val & MT7530_XTAL_MASK) == MT7530_XTAL_40MHZ)
- 		mt7530_pll_setup(priv);
- 
- 	mt753x_trap_frames(priv);
-@@ -2586,7 +2587,7 @@ mt7531_setup(struct dsa_switch *ds)
- 	}
- 
- 	/* Waiting for MT7530 got to stable */
--	INIT_MT7530_DUMMY_POLL(&p, priv, MT7530_HWTRAP);
-+	INIT_MT7530_DUMMY_POLL(&p, priv, MT753X_TRAP);
- 	ret = readx_poll_timeout(_mt7530_read, &p, val, val != 0,
- 				 20, 1000000);
- 	if (ret < 0) {
-diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
-index c6ef20b7bbdd..1f3aeccc77be 100644
---- a/drivers/net/dsa/mt7530.h
-+++ b/drivers/net/dsa/mt7530.h
-@@ -495,32 +495,30 @@ enum mt7531_clk_skew {
- 	MT7531_CLK_SKEW_REVERSE = 3,
- };
- 
--/* Register for hw trap status */
--#define MT7530_HWTRAP			0x7800
--#define  HWTRAP_XTAL_MASK		(BIT(10) | BIT(9))
--#define  HWTRAP_XTAL_25MHZ		(BIT(10) | BIT(9))
--#define  HWTRAP_XTAL_40MHZ		(BIT(10))
--#define  HWTRAP_XTAL_20MHZ		(BIT(9))
--
--#define MT7531_HWTRAP			0x7800
--#define  HWTRAP_XTAL_FSEL_MASK		BIT(7)
--#define  HWTRAP_XTAL_FSEL_25MHZ		BIT(7)
--#define  HWTRAP_XTAL_FSEL_40MHZ		0
--/* Unique fields of (M)HWSTRAP for MT7531 */
--#define  XTAL_FSEL_S			7
--#define  XTAL_FSEL_M			BIT(7)
--#define  PHY_EN				BIT(6)
--#define  CHG_STRAP			BIT(8)
--
--/* Register for hw trap modification */
--#define MT7530_MHWTRAP			0x7804
--#define  MHWTRAP_PHY0_SEL		BIT(20)
--#define  MHWTRAP_MANUAL			BIT(16)
--#define  MHWTRAP_P5_MAC_SEL		BIT(13)
--#define  MHWTRAP_P6_DIS			BIT(8)
--#define  MHWTRAP_P5_RGMII_MODE		BIT(7)
--#define  MHWTRAP_P5_DIS			BIT(6)
--#define  MHWTRAP_PHY_ACCESS		BIT(5)
-+/* Register for trap status */
-+#define MT753X_TRAP			0x7800
-+#define  MT7530_XTAL_MASK		(BIT(10) | BIT(9))
-+#define  MT7530_XTAL_25MHZ		(BIT(10) | BIT(9))
-+#define  MT7530_XTAL_40MHZ		BIT(10)
-+#define  MT7530_XTAL_20MHZ		BIT(9)
-+#define  MT7531_XTAL25			BIT(7)
-+
-+/* Register for trap modification */
-+#define MT753X_MTRAP			0x7804
-+#define  MT7530_P5_PHY0_SEL		BIT(20)
-+#define  MT7530_CHG_TRAP		BIT(16)
-+#define  MT7530_P5_MAC_SEL		BIT(13)
-+#define  MT7530_P6_DIS			BIT(8)
-+#define  MT7530_P5_RGMII_MODE		BIT(7)
-+#define  MT7530_P5_DIS			BIT(6)
-+#define  MT7530_PHY_INDIRECT_ACCESS	BIT(5)
-+#define  MT7531_CHG_STRAP		BIT(8)
-+#define  MT7531_PHY_EN			BIT(6)
-+
-+enum mt7531_xtal_fsel {
-+	MT7531_XTAL_FSEL_25MHZ,
-+	MT7531_XTAL_FSEL_40MHZ,
-+};
- 
- /* Register for TOP signal control */
- #define MT7530_TOP_SIG_CTRL		0x7808
+ drivers/net/dsa/mt7530.c | 285 ++++++++++++++++++++++------------------------
+ drivers/net/dsa/mt7530.h | 289 +++++++++++++++++++++++++----------------------
+ 2 files changed, 291 insertions(+), 283 deletions(-)
+---
+base-commit: e1bc03d8372ac081810c2956cd244ed9899f9a02
+change-id: 20240320-for-netnext-mt7530-improvements-4-95430d150c05
 
+Best regards,
 -- 
-2.40.1
+Arınç ÜNAL <arinc.unal@arinc9.com>
 
 
 
