@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 414B4C4345F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Apr 2024 09:49:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CE50C4345F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Apr 2024 09:49:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xe5eM9+2rh+qYMrEZDkgx2/xN2LnDn/yiZVZC6+s6fs=; b=ksJZ3xSu6OJpeoLnPQ03+76/r8
-	H3cQQOE1C/Lr/rDFyHzIlLZMkXhRpeRba0k6BAUWKese7GFNVUIet4R6er6NjbAptzmfvxRZs0sT4
-	BkStXMJ10m+RcPfC/+TssRZf8VOV/GNjiDNB2nXOCAEhvmTQ6pE7XxlcHjzxapP288D4w63ecULts
-	DwOD8CAZAyNbohCfk2ySu4kzVD+poi6AdlaQ4GKJ94BDRLL9KWbpuUVWyZwOnoVcSPxqKyL+3YzeY
-	1u1xWlAqE/1GUhHcPDVV2AOIRLfjC1Fi+kQbVtYs/C7cCmLlUrXXHUA0NVLzIcQfk4S0CAR6weWCn
-	suBaUMKA==;
+	bh=TtlViaUk+ppF2YvB3wdQyftKniyUzK8Ej92YBlwMILc=; b=mmxZyKb9GibwQiYoKYCkM8lZee
+	+BqGjiY448C11wQnaHphhrgEcxn4ZUT31WgpT2UF/7Dx9qlOma5vijyNr/eSxMH4XBjopxzCMu9+G
+	rsw6JRvBZUjScMY+pI2EoTXvaBDkAMBpTYfyisLVRmgwoI9LpLqo8xqZv0aIS51VIQvFvn37KPKyu
+	N0ZzAOdSBZdXB8UtPcwWCVh/QmRAqv869tRb+I8Obpb142X9nZRwJbbIBqZx68LkGu4jPg23sGmep
+	d7QYAecU9fdK4iKsJQTmnyfmJxd4N9B/75l7rMSBZX5iP5wvq3yViS7aySvheqTmjXzHsb7pU9N/J
+	T5VKAvlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxksD-000000058zW-0mjQ;
-	Fri, 19 Apr 2024 09:49:37 +0000
-Received: from mail-qk1-x72a.google.com ([2607:f8b0:4864:20::72a])
+	id 1rxksH-00000005953-3YmU;
+	Fri, 19 Apr 2024 09:49:41 +0000
+Received: from mail-qk1-x72d.google.com ([2607:f8b0:4864:20::72d])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxks9-000000058qJ-14o2
+	id 1rxks9-000000058qN-155f
 	for linux-mediatek@lists.infradead.org;
-	Fri, 19 Apr 2024 09:49:35 +0000
-Received: by mail-qk1-x72a.google.com with SMTP id af79cd13be357-78efd533a00so105605785a.0
+	Fri, 19 Apr 2024 09:49:36 +0000
+Received: by mail-qk1-x72d.google.com with SMTP id af79cd13be357-78f02c96c52so109304185a.1
         for <linux-mediatek@lists.infradead.org>; Fri, 19 Apr 2024 02:49:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=chromium.org; s=google; t=1713520160; x=1714124960; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=xe5eM9+2rh+qYMrEZDkgx2/xN2LnDn/yiZVZC6+s6fs=;
-        b=L9wgI1EGmQucC8S/gJ4dhAw3YRw+mu1YsHSx/d2rLcqGzoVkXrQ2wRJVt6in34o/Sm
-         r2hzbbEA2ox+ylKyMdbUz+kDOHkFz9vCUa31YXWvRR0/mmo/3FW4F6v2HW72jygtG2pf
-         d2Z/n9H1X6TNy7mmhiuAMB61Muh3oxZe8EF20=
+        bh=TtlViaUk+ppF2YvB3wdQyftKniyUzK8Ej92YBlwMILc=;
+        b=Wk0NTS9TlqBJOjnEII/PeGUvRBZO25ZAWK29Fp2BJeZQIc9bN4mtDRYXvmLcrBlqML
+         fANhTAABTRaFXZ9iv9nPYgJE6GupMbC5SYdpbRTCo59RLUMbAdWpgJmJ9J9+N2onV/9C
+         1O9Nf11eWtyC1nOzM7mLdMPIfC4xwJdbFkbCU=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20230601; t=1713520160; x=1714124960;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=xe5eM9+2rh+qYMrEZDkgx2/xN2LnDn/yiZVZC6+s6fs=;
-        b=SDCTTXCJ04SPMYhiYvu+nWswYXahdKP3dogIpW6sKxMDGSPnJUEqcpojg9PgssWWvM
-         lDTGOGlg8FDaCB2pFKZ9I7BOsdn6it+QB8BMf0E1xrMVq2IZmXbYH/iHXRCbMbVup9Io
-         mCuD0BDOR0c3KPlSk3pAYmHQBMj5WX8TH89I3hN/OZktvaYoZl8SQ4JucvyoLOsIywbz
-         icGXskTQR3HgQpSuLe/pOs9wvE0OzY8u7gmgQYCHhZT982X8T8LkO8DTJgXp0kGleynM
-         gnjaIBgvE91OBdajzacQqZDr+ERP73OqcAcXC+NG4EA1FDiGYxcIwz+uFLYgS3zOKB+n
-         MkHA==
-X-Forwarded-Encrypted: i=1; AJvYcCW2JLnODCrN1QWTWJtUDDrJykyM5Ry8zMlcFreYSccJzzQ8mtzxHwfvK+i3RPPYWhjHrEF3GSAB8IDp+2VM9mxf+Draupn2g/OMhAHH2RxKF4Tp
-X-Gm-Message-State: AOJu0YxwxTPB5gzeZnvIDhKPfXIUiC+lfz/wCZP14ZLBO2x99OrerxIh
-	91uDmGxqyPckMkf52h7fVfnJzBf7jbFFHr1exDFQ1Rh1/Of0h3cqHdRdlp1WLg==
-X-Google-Smtp-Source: AGHT+IHKE5I6bNN/ygxYDQdIMuWr0dmGCsznmTcTgLl7Ioa5cL0u9qYtPjL85KqnZCORUNl4F1qURw==
-X-Received: by 2002:ae9:c119:0:b0:78e:ca95:81c5 with SMTP id z25-20020ae9c119000000b0078eca9581c5mr1646405qki.77.1713520160591;
-        Fri, 19 Apr 2024 02:49:20 -0700 (PDT)
-Received: from denia.c.googlers.com (114.152.245.35.bc.googleusercontent.com. [35.245.152.114])
-        by smtp.gmail.com with ESMTPSA id dt14-20020a05620a478e00b0078d735ca917sm1434532qkb.123.2024.04.19.02.49.19
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        bh=TtlViaUk+ppF2YvB3wdQyftKniyUzK8Ej92YBlwMILc=;
+        b=tBv1ITOe4G2UlgdTo2DrTrNG2rqxPUkx8Lbpbnl/ZtDEGK2wTN317zn1CoqdpjGDOu
+         oNzlrTVlNdBwT4qhYHmiHP0kTwsnaMaGcwMfY7ss54XdH9D0S0zg2pLrnP2XlXHgAFwc
+         1wjnlhjhnhN2/Lw71pqJyZrY4RS44MMGKA+yjGR290ST1gNcaSj88VL8wPjPRqpWKowc
+         ZLqLhhIKhmFF9we8sf2wrFO5esQBZenG7+pUfQ4y1JZr7UwVztOHEmV38Ce6hx+ij8w8
+         Ga9hoC2U2Fy9STmYDqolj44Z8NvXqBInPPrUveb/jq0aQ/iNtWIuKoA6PWVx3BafyQXL
+         lRyQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXLH3wkqEnXA/4lczeCNcJLoskYwMBTq/UgunwhFR8b96y3riFBaibKBqamy4i6RX02xVPehVNo3tlbVmPDeh/WkqDSOS5zdwPYxEIJ1SSNAx8U
+X-Gm-Message-State: AOJu0YyKL9gHm1NvhdbdWy/K5ZjFODk3ZZ+YsJTaqpJVsXTxl3IT1zDQ
+	Ez/acuR68MJTtorhm1zG5OVlAs3egHevgRwA7v5eWlOpt+TOReEN8XS8BkN6hA==
+X-Google-Smtp-Source: AGHT+IHcSLXPGR/K0waZNqFgMaXNzaf95X9YYFUFUCHgvEpSUHJvLAV/8QVHrr+4o4OmwTvG9tzrkg==
+X-Received: by 2002:a05:620a:1da6:b0:78d:5065:c5df with SMTP id pj38-20020a05620a1da600b0078d5065c5dfmr1595944qkn.18.1713520159351;
         Fri, 19 Apr 2024 02:49:19 -0700 (PDT)
+Received: from denia.c.googlers.com (114.152.245.35.bc.googleusercontent.com. [35.245.152.114])
+        by smtp.gmail.com with ESMTPSA id dt14-20020a05620a478e00b0078d735ca917sm1434532qkb.123.2024.04.19.02.49.18
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 19 Apr 2024 02:49:18 -0700 (PDT)
 From: Ricardo Ribalda <ribalda@chromium.org>
-Date: Fri, 19 Apr 2024 09:47:48 +0000
-Subject: [PATCH v2 02/26] media: stb0899: Simplify check
+Date: Fri, 19 Apr 2024 09:47:47 +0000
+Subject: [PATCH v2 01/26] media: pci: mgb4: Refactor struct resources
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20240419-fix-cocci-v2-2-2119e692309c@chromium.org>
+Content-Transfer-Encoding: 8bit
+Message-Id: <20240419-fix-cocci-v2-1-2119e692309c@chromium.org>
 References: <20240419-fix-cocci-v2-0-2119e692309c@chromium.org>
 In-Reply-To: <20240419-fix-cocci-v2-0-2119e692309c@chromium.org>
 To: Martin Tuma <martin.tuma@digiteqautomotive.com>, 
@@ -106,8 +106,8 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  Ricardo Ribalda <ribalda@chromium.org>
 X-Mailer: b4 0.12.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240419_024933_869804_19AA3153 
-X-CRM114-Status: GOOD (  12.48  )
+X-CRM114-CacheID: sfid-20240419_024933_905842_BD12C026 
+X-CRM114-Status: GOOD (  13.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,29 +122,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-chip_id is an unsigned number, it can never be < 0
+The struct resource end field is inclusive not exclusive, this is, the
+size is (end - start) +1.
+
+Update the definitions and use the generic resource_size() function.
 
 Fixes cocci check:
-drivers/media/dvb-frontends/stb0899_drv.c:1280:8-15: WARNING: Unsigned expression compared with zero: chip_id > 0
+drivers/media/pci/mgb4/mgb4_regs.c:13:22-25: WARNING: Suspicious code. resource_size is maybe missing with res
 
+Reviewed-by: Martin Tůma <martin.tuma@digiteqautomotive.com>
 Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 ---
- drivers/media/dvb-frontends/stb0899_drv.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/media/pci/mgb4/mgb4_core.c | 4 ++--
+ drivers/media/pci/mgb4/mgb4_regs.c | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/media/dvb-frontends/stb0899_drv.c b/drivers/media/dvb-frontends/stb0899_drv.c
-index 2f4d8fb400cd..35634f9a8ab5 100644
---- a/drivers/media/dvb-frontends/stb0899_drv.c
-+++ b/drivers/media/dvb-frontends/stb0899_drv.c
-@@ -1277,7 +1277,7 @@ static int stb0899_get_dev_id(struct stb0899_state *state)
- 	dprintk(state->verbose, FE_ERROR, 1, "Demodulator Core ID=[%s], Version=[%d]", (char *) &demod_str, demod_ver);
- 	CONVERT32(STB0899_READ_S2REG(STB0899_S2FEC, FEC_CORE_ID_REG), (char *)&fec_str);
- 	fec_ver = STB0899_READ_S2REG(STB0899_S2FEC, FEC_VER_ID_REG);
--	if (! (chip_id > 0)) {
-+	if (!chip_id) {
- 		dprintk(state->verbose, FE_ERROR, 1, "couldn't find a STB 0899");
+diff --git a/drivers/media/pci/mgb4/mgb4_core.c b/drivers/media/pci/mgb4/mgb4_core.c
+index 9bcf10a77fd3..60498a5abebf 100644
+--- a/drivers/media/pci/mgb4/mgb4_core.c
++++ b/drivers/media/pci/mgb4/mgb4_core.c
+@@ -493,13 +493,13 @@ static int mgb4_probe(struct pci_dev *pdev, const struct pci_device_id *id)
+ 	struct mgb4_dev *mgbdev;
+ 	struct resource video = {
+ 		.start	= 0x0,
+-		.end	= 0x100,
++		.end	= 0xff,
+ 		.flags	= IORESOURCE_MEM,
+ 		.name	= "mgb4-video",
+ 	};
+ 	struct resource cmt = {
+ 		.start	= 0x1000,
+-		.end	= 0x1800,
++		.end	= 0x17ff,
+ 		.flags	= IORESOURCE_MEM,
+ 		.name	= "mgb4-cmt",
+ 	};
+diff --git a/drivers/media/pci/mgb4/mgb4_regs.c b/drivers/media/pci/mgb4/mgb4_regs.c
+index 53d4e4503a74..31befd722d72 100644
+--- a/drivers/media/pci/mgb4/mgb4_regs.c
++++ b/drivers/media/pci/mgb4/mgb4_regs.c
+@@ -10,7 +10,7 @@
+ int mgb4_regs_map(struct resource *res, struct mgb4_regs *regs)
+ {
+ 	regs->mapbase = res->start;
+-	regs->mapsize = res->end - res->start;
++	regs->mapsize = resource_size(res);
  
- 		return -ENODEV;
+ 	if (!request_mem_region(regs->mapbase, regs->mapsize, res->name))
+ 		return -EINVAL;
 
 -- 
 2.44.0.769.g3c40516874-goog
