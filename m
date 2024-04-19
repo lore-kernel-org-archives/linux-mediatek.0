@@ -4,80 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38B70C4345F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Apr 2024 07:34:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32201C4345F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Apr 2024 07:40:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+Lci1CEq9GkI0dzlpkcin0yHRX6RDXD/ps07Wz6E6U4=; b=iPiJKSFzjUF52w4YyRfOIlIVj8
-	za8ZFClI2tCRcpW02+d10EV/FB5GOdOfx6SS5CxPG8wNoOd5XFSP6uOPpPg4lXjSQ6X1LLsXeP5os
-	3Ggh8cdAcN+R9S909MTmoJT9JW3CKT/NvafHddE7NoVumbeakMJQ37UAFJ0Sj97BvVeoBkhrDk4x3
-	jFdrwi37fhavgbstdT4gqJ0hNevJJUcZ8Xfu4gDWOuFVPE1JBXJ2kpumFfYvZnFmINVeVR+5G5rkD
-	GoKs6Cm6k1W0pJ67ZYF8C0/Egi8RR8wyvI9lf+fTr22U0MH29zLCKpNrLRJya6/na3kOvYTNglk72
-	k3vxi7/g==;
+	bh=5aG90mJwE0wV8OqgC3ItLk7pCDFbUraKa4kViefq2sk=; b=H38qV/hbGVDcIZaJiXbti7YOYi
+	6x14qhqCeljxgXe28GcnC207Uw7P62HnwntFkdJ9rmv1VKveYTCXX2HNfPoOfsMrDB4m0knfagj/m
+	50z2Q4cXPLtbwMS/VKAdouN8JNW9PYYIA9qEmtrOn42rkj/R05zq6W6SjW7DIGJ2PTXPe7U5U/Gom
+	cuZHaLDmuES+BZFz0gJImoBUo9LzyIO3tSCy4KgNKF1Q6k80Sdxv9M8+hzbiZuQ8N/5aFyRFPlTc2
+	qHpnuUoHJuGce8nJFH6vYicD+/wZqLIpIAAEablyghk4WZxB8YEKWtdVtf/k54Brbl5BdG8FjByyc
+	cmus2txQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxilt-00000004nWe-3CX5;
-	Fri, 19 Apr 2024 07:34:57 +0000
+	id 1rxirG-00000004oR3-32JM;
+	Fri, 19 Apr 2024 07:40:30 +0000
 Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxilp-00000004nVO-3BZJ;
-	Fri, 19 Apr 2024 07:34:55 +0000
+	id 1rxirC-00000004oQE-3Bnw;
+	Fri, 19 Apr 2024 07:40:28 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1713512092;
-	bh=DyISyQg7WS1Y2u3RPJgVFUSFFcKg59nL1uyitoy15Lc=;
+	s=mail; t=1713512424;
+	bh=W/wi9e5UBK+Wu+Dsx1s02GeUnADp2GIoRZR8c6T4osA=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=HMBWiD7oXdDRH9iC8ExLKlQq5mc7XNH3+hVD1yFkSG3rGi92pQAxlxV0ccasgXLnp
-	 SrBwxTUPSiRQNmJAfGlnnJuxOK3kcnZTIm+NuKq8cJa4NQq/6NZjBBpns1SEKdc8uj
-	 2OYNu64SxBUgcE6Hd8FNDHyZcAR4vKVghsHONTo7AS9C/3vkMxJ8gbWS8s15x+Go2a
-	 HLdSyhWI7bcxmUeqq+OeCTSuQo/hvWZP0r5dN+fJ2gKB6sLkIJ8n7N+OLM54UQkih1
-	 OOM1iqEEfSv3pQeCDQuV0ospWe4XU8Bkkp1XR7VuHlmNwtPKv93G8x72S9dpq3XqCx
-	 RIJlidE3jCP7A==
+	b=gOCiSZp74yYzUrOFKOX2tlJw04+WM/R4MfrvttLuUnU7i+tzNH5NAA0E142iiSwAS
+	 pFmOu0dGZdFfKJuubuHztaVs98IxsKPfLwfKNJPP/LmW7RpaEqhqQ3HhGRZFPU9BAS
+	 cYDtio0y+GRc/Oi5z0V6+df5sVLitmBMAjoDNe1Fsv/1SfYfJGIq0wYlhYTaWzqSSi
+	 cfu9ew/ROizc1XomMH7DR7aNbG0o8/X+s3r0vuh/hf4LyGdbNzG+BQMuforbTQr8zJ
+	 t02M4jwW6blvnRXg0VCBMiHkrzE/+oc4ArbG5CFPl0qMB4MsY6pbFpj41SXoxUoT/X
+	 fJPHvQpuvaf+Q==
 Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 867053781104;
-	Fri, 19 Apr 2024 07:34:50 +0000 (UTC)
-Message-ID: <46549dca-95c0-48f0-acd7-e4a7725437bc@collabora.com>
-Date: Fri, 19 Apr 2024 09:34:49 +0200
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 86D0A3782149;
+	Fri, 19 Apr 2024 07:40:23 +0000 (UTC)
+Message-ID: <28b0eeff-55ed-4e30-ac0b-a7bcac276fe9@collabora.com>
+Date: Fri, 19 Apr 2024 09:40:22 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 12/17] clk: mediatek: mt8365-mm: fix DPI0 parent
-To: Alexandre Mergnat <amergnat@baylibre.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
- Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Jitao Shi <jitao.shi@mediatek.com>,
- CK Hu <ck.hu@mediatek.com>, =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?=
- <u.kleine-koenig@pengutronix.de>, Michael Turquette
- <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>,
- Fabien Parent <fparent@baylibre.com>,
- Markus Schneider-Pargmann <msp@baylibre.com>,
- Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-pwm@vger.kernel.org,
- linux-clk@vger.kernel.org
-References: <20231023-display-support-v3-0-53388f3ed34b@baylibre.com>
- <20231023-display-support-v3-12-53388f3ed34b@baylibre.com>
+Subject: Re: [PATCH v2 1/3] dt-bindings: display: mediatek: Add OF graph
+ support for board path
+To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+Cc: chunkuang.hu@kernel.org, robh@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+ p.zabel@pengutronix.de, airlied@gmail.com, daniel@ffwll.ch,
+ maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de,
+ matthias.bgg@gmail.com, shawn.sung@mediatek.com, yu-chang.lee@mediatek.com,
+ ck.hu@mediatek.com, jitao.shi@mediatek.com, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ wenst@chromium.org, kernel@collabora.com
+References: <20240409120211.321153-1-angelogioacchino.delregno@collabora.com>
+ <20240409120211.321153-2-angelogioacchino.delregno@collabora.com>
+ <oe75tx35rd27r2a24ofdxfaqwr53tylfp5fwz3nrwc2uz6nmrs@vwc2krbpy3fh>
+ <8600acf8-7b51-456b-8a81-4233cfd6f121@collabora.com>
+ <CAA8EJpo68f=9ZyNnVY=+q+drHu9xJMSGk1kNCBa=HM442Jth8g@mail.gmail.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20231023-display-support-v3-12-53388f3ed34b@baylibre.com>
+In-Reply-To: <CAA8EJpo68f=9ZyNnVY=+q+drHu9xJMSGk1kNCBa=HM442Jth8g@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240419_003453_982317_2D917415 
-X-CRM114-Status: GOOD (  12.10  )
+X-CRM114-CacheID: sfid-20240419_004026_969369_C3036A08 
+X-CRM114-Status: GOOD (  19.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,40 +86,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 18/04/24 16:17, Alexandre Mergnat ha scritto:
-> To have a working display through DPI, a workaround has been
-> implemented downstream to add "mm_dpi0_dpi0" and "dpi0_sel" to
-> the DPI node. Shortly, that add an extra clock.
+Il 09/04/24 17:45, Dmitry Baryshkov ha scritto:
+> On Tue, 9 Apr 2024 at 18:41, AngeloGioacchino Del Regno
+> <angelogioacchino.delregno@collabora.com> wrote:
+>>
+>> Il 09/04/24 17:20, Dmitry Baryshkov ha scritto:
+>>> On Tue, Apr 09, 2024 at 02:02:09PM +0200, AngeloGioacchino Del Regno wrote:
+>>>> The display IPs in MediaTek SoCs support being interconnected with
+>>>> different instances of DDP IPs (for example, merge0 or merge1) and/or
+>>>> with different DDP IPs (for example, rdma can be connected with either
+>>>> color, dpi, dsi, merge, etc), forming a full Display Data Path that
+>>>> ends with an actual display.
+>>>>
+>>>> The final display pipeline is effectively board specific, as it does
+>>>> depend on the display that is attached to it, and eventually on the
+>>>> sensors supported by the board (for example, Adaptive Ambient Light
+>>>> would need an Ambient Light Sensor, otherwise it's pointless!), other
+>>>> than the output type.
+>>>
+>>> With the color and gamma being in play, should the configuration be
+>>> board-driver or rather use-case driven with the driver being able to
+>>> reroute some of the blocks at runtime?
+>>>
+>>
+>> The driver can already set some blocks to "BYPASS MODE" at runtime, meaning
+>> that those will work as simple pass-through, performing *no* processing at
+>> all, so that's addressed from the very beginning.
+>>
+>> This doesn't mean that a specific pipeline must always support the "DISP_GAMMA"
+>> or the "DISP_CCOLOR" block(s) alone, or together, or in combination with another
+>> specific block.
 > 
-> It seems consistent to have the "dpi0_sel" as parent.
-> Additionnaly, "vpll_dpix" isn't used/managed.
+> I was thinking about slightly different case: do you have enough
+> colour blocks to drive all outputs or do you have to select them for
+> the particular output only?
+
+Sorry for the very very very very .. very late reply, your email slipped through
+the cracks and I just noticed it.
+
+That depends on the SoC, but generally... no, you have to select them for the
+particular output.
+
+There is a restricted set of outputs that support this block, but between this
+set, there are still not enough blocks for all of them.
+
 > 
-> Then, set the "mm_dpi0_dpi0" parent clock to "dpi0_sel".
+> (excuse me, I didn't check the platform details).
+
+You (and me, and everyone else) can't really invest hours of time to check on
+how each and every SoC on the planet works - that's normal.
+
+No worries ;-)
+
+Cheers,
+Angelo
+
 > 
-> The new clock tree is:
+>> For any other question, clarification, etc, I'm here :-)
+>>
+>> Cheers!
+>>
+>>>>
+>>>> Add support for OF graphs to most of the MediaTek DDP (display) bindings
+>>>> to add flexibility to build custom hardware paths, hence enabling board
+>>>> specific configuration of the display pipeline and allowing to finally
+>>>> migrate away from using hardcoded paths.
+>>>>
+>>>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>>>
+>>
 > 
-> clk26m
->    lvdspll
->      lvdspll_X (2, 4, 8, 16)
->        dpi0_sel
->          mm_dpi0_dpi0
 > 
-> Fixes: d46adccb7966 ("clk: mediatek: add driver for MT8365 SoC")
-> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 
-I wonder what CLK_TOP_VPLL_DPIX_EN is for, but since you've ruled it out
-by removing the dependency, this clock is 100% being disabled because unused
-and the DPI interface clearly still works.
 
-I also wonder if that clock is getting en/disabled by HW control mechanism...
-...because that'd make sense, as this is .. well, a DPI clock.
-
-That's just out of curiosity though, as I'd really like to understand whenwhatwhy
-for stuff....
-
-In any case, whether you have an answer or not, this commit is:
-
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-Cheers!
 
