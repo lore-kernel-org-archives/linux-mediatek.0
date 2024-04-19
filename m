@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86B0DC4345F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Apr 2024 10:11:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21B4CC04FFE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Apr 2024 10:11:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
-	From:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=lPT162fR3Q/ZAcMJji9Gy3iDnxNOHApa5BhewHPya0w=; b=GQ0zNt9hfnjDa+y+bk6r9NUDen
-	uuRCA6fxEqBLG8wiaQF/+TeggJ2BAqF/Rob0iZURDxTfgecGpwy/vEhh1UZ2qqAi/KtulLf5JPQMc
-	0Qltsm+6qhsLf6iuebzrPWNhq0fVeADC94NtnGcIo9OCNJqFdFYrAfyblUMcAupurJU7RdB8UYMSK
-	23vv2aOh6DUMpvQubuneP8S3twEFyvY6FVYxTED5bv9bCATDwCUoCuYxlOiJYiVjH5mZ9Q0diQxjk
-	pA8TLpt7MpASjDuvfPEL5NjUg/Mp0po+gRD2yGP4DIt3AB8PH4X1y/thEhz83AfRysRm0iWo5ukU2
-	J/yhyaEA==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
+	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
+	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6ECxhjNxssRVrN/FznYm7bOcnYxpq8YGFEl2QcEXOGM=; b=fMyNe571TcDk5rGJhShF/oHhbw
+	7YLw4h2AFNQT48q1jP4clAVCVf5rNH8F398I65KCxHQsMBE8S3CrPrRZo4mJuR6EHsvC6MOQDYUHT
+	AI5mN+Gzu1vhoTKOlhEXujaOkKT1W0ZkB7crox++mQaE6Bq6aEmnH3BUuAYSrU/mRORHBMg2U/8Yt
+	48D/bRcQDSF/8nM2oZlseZbzd3RDc3fUl2pgT+lbjdjXUmWDvCTAutXT/2VvPw/ePqO5M/NwHwJoO
+	TxWNHLSyHv6+8FlHrq54Hs5aeOHq0jJKaCIBn4B+BM3kN/mHLsdUG86Fn263ANHkPQMA80EHsBRb5
+	jKQjcvUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxlD8-00000005FBH-0Vg8;
+	id 1rxlD8-00000005FBq-2sOf;
 	Fri, 19 Apr 2024 10:11:14 +0000
 Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxlBd-00000005ED4-0Tz1;
+	id 1rxlBd-00000005ED5-0ZCP;
 	Fri, 19 Apr 2024 10:09:45 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 2EBBDCE1A48;
+	by sin.source.kernel.org (Postfix) with ESMTP id A16B8CE1A4B;
 	Fri, 19 Apr 2024 10:09:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 56899C072AA;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 9331FC32786;
 	Fri, 19 Apr 2024 10:09:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1713521377;
-	bh=hIqlbjO65jZjxYKpeWau84wCqd4vKuYsewjegaEPtAw=;
-	h=From:Subject:Date:To:Cc:Reply-To:From;
-	b=HIOa2uVW3uIspoEQuRXVy2cZHWLeq1qvOOOQ2kfIa0fnUnSrkOe1tgVZDNGpFRfgy
-	 5eO1xkGuG1eGzAVeXizFsVCDv3Ti3ASsNNlniq/GfsyRluxJQJNm5S0C4X6M7jSyYg
-	 zXuOxUwt7V7IDgsFQcj4p0KCHPheacQTGFVgBA6zOWPI8EXIdR4aS79G8uqVIEh81A
-	 iAwxtJRnd383YK68tfm1s/pI9dhyoZSXJZR54vDkEXlXQC9g1MOyHdXWSqoAfE+j+P
-	 1svKDTfn/LPa6hDZYNnlSfEL+gjHGEaBH7hQ9QthB5+wIxCfY5lJxrRXTQmpnm4KBn
-	 7tQ1jOyY5gWDA==
+	bh=MPWVynoTUNwac/iJ0MENGWWoamLgfYANVhzyB554b7I=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
+	b=MIuzGDPy86qKbCskNzq1ibCFxwniHYjuqSWgE7U1iMEhjiFjbeASY4Ub5AqdmICaC
+	 LapBmr5PsbHZK6+sNHAh11n8Fo7ihB2Y43N38qdZhApQrwYFQRrWaxptRcXuwASsU3
+	 pvyd14JsPZdg1VCib7bfBsZbIFP+VObb0o93pofraY950KQ7cRxX4+qRNsEEnbpTxo
+	 NZ9W1c0kJih9rVvTGrytVfcyHw47Cok9Qpe2LkomedQPrjrEn5cgl74/piZSEGxoKc
+	 exrA+hm8hXh8uBWtPj6AtobGS4eeljjxbCDm6pvyKy8yzeEKdkZ892x94mwKoAu/Hs
+	 x66zmFokoMSwQ==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4B112C04FF6;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8AC0DC071DB;
 	Fri, 19 Apr 2024 10:09:37 +0000 (UTC)
 From: =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL_via_B4_Relay?= <devnull+arinc.unal.arinc9.com@kernel.org>
-Subject: [PATCH net-next 00/13] MT7530 DSA Subdriver Improvements Act IV
-Date: Fri, 19 Apr 2024 13:09:23 +0300
-Message-Id: <20240419-for-netnext-mt7530-improvements-4-v1-0-6d852ca79b1d@arinc9.com>
+Date: Fri, 19 Apr 2024 13:09:27 +0300
+Subject: [PATCH net-next 04/13] net: dsa: mt7530: rename
+ mt753x_bpdu_port_fw enum to mt753x_to_cpu_fw
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-B4-Tracking: v=1; b=H4sIANNCImYC/x2NywqDQAwAf0VyNhD3QWl/pXgoGjWHzUp2EUH89
- 257nMPMXFDYhAu8uguMDymStcHQdzBtH10ZZW4Mjlwg7wiXbKhclc+KqT6iJ5S0Wz44sdaCAZ8
- xeJqHSBNFaJ3deJHz/3hDU/HnwnjfX14TZvh9AAAA
+Message-Id: <20240419-for-netnext-mt7530-improvements-4-v1-4-6d852ca79b1d@arinc9.com>
+References: <20240419-for-netnext-mt7530-improvements-4-v1-0-6d852ca79b1d@arinc9.com>
+In-Reply-To: <20240419-for-netnext-mt7530-improvements-4-v1-0-6d852ca79b1d@arinc9.com>
 To: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, 
  Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>, 
  Florian Fainelli <f.fainelli@gmail.com>, 
@@ -69,20 +69,19 @@ Cc: Bartel Eerdekens <bartel.eerdekens@constell8.be>,
  linux-mediatek@lists.infradead.org, 
  =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1713521374; l=2654;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1713521374; l=7082;
  i=arinc.unal@arinc9.com; s=arinc9-Xeront; h=from:subject:message-id;
- bh=hIqlbjO65jZjxYKpeWau84wCqd4vKuYsewjegaEPtAw=;
- b=iGbg2Xv6D/RpNIc/k3j1XoPdRClUOkq02kgugFhytAdQDrC0bmxdXD7gR+Ink69lISXC1XYSC
- O1swa4N6PULD3Y43CMD7t5opgf7OEhELDS4iH9UGGRxzf/SVMm+9UKF
+ bh=3dLKGHYrPqSDgKpGTLFqk6tJoqAjkX99HRjW+A6/q5g=;
+ b=ZFB7jy4qzTi9Ud7UxWL7JO2DBS2GHjATaqWxPfrYx0KZy3zGaNxXZXfTkgCjRI/9Z7iB6Stk8
+ AVXL2dVqcbOD7Sx2CxBdEw2ESbig9qkpzMF4K7cpY//g2t4h+4bL9VM
 X-Developer-Key: i=arinc.unal@arinc9.com; a=ed25519;
  pk=z49tLn29CyiL4uwBTrqH9HO1Wu3sZIuRp4DaLZvtP9M=
 X-Endpoint-Received: by B4 Relay for arinc.unal@arinc9.com/arinc9-Xeront
  with auth_id=137
 X-Original-From: =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240419_030941_724556_30B5AB98 
-X-CRM114-Status: UNSURE (   7.66  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240419_030941_770785_233720B8 
+X-CRM114-Status: GOOD (  10.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,67 +97,178 @@ Reply-To: arinc.unal@arinc9.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello!
+From: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-This is the forth patch series with the goal of simplifying the MT7530 DSA
-subdriver and improving support for MT7530, MT7531, and the switch on the
-MT7988 SoC.
+The mt753x_bpdu_port_fw enum is globally used for manipulating the process
+of deciding the forwardable ports, specifically concerning the CPU port(s).
+Therefore, rename it and the values in it to mt753x_to_cpu_fw.
 
-I have done a simple ping test to confirm basic communication on all switch
-ports on MCM and standalone MT7530, and MT7531 switch with this patch
-series applied.
-
-MT7621 Unielec, MCM MT7530:
-
-rgmii-only-gmac0-mt7621-unielec-u7621-06-16m.dtb
-gmac0-and-gmac1-mt7621-unielec-u7621-06-16m.dtb
-
-tftpboot 0x80008000 mips-uzImage.bin; tftpboot 0x83000000 mips-rootfs.cpio.uboot; tftpboot 0x83f00000 $dtb; bootm 0x80008000 0x83000000 0x83f00000
-
-MT7622 Bananapi, MT7531:
-
-gmac0-and-gmac1-mt7622-bananapi-bpi-r64.dtb
-
-tftpboot 0x40000000 arm64-Image; tftpboot 0x45000000 arm64-rootfs.cpio.uboot; tftpboot 0x4a000000 $dtb; booti 0x40000000 0x45000000 0x4a000000
-
-MT7623 Bananapi, standalone MT7530:
-
-rgmii-only-gmac0-mt7623n-bananapi-bpi-r2.dtb
-gmac0-and-gmac1-mt7623n-bananapi-bpi-r2.dtb
-
-tftpboot 0x80008000 arm-zImage; tftpboot 0x83000000 arm-rootfs.cpio.uboot; tftpboot 0x83f00000 $dtb; bootz 0x80008000 0x83000000 0x83f00000
-
-This patch series finalises the patch series linked below.
-
-https://lore.kernel.org/r/20230522121532.86610-1-arinc.unal@arinc9.com
+Change FOLLOW_MFC to SYSTEM_DEFAULT to be on par with the switch documents.
 
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 ---
-Arınç ÜNAL (13):
-      net: dsa: mt7530: disable EEE abilities on failure on MT7531 and MT7988
-      net: dsa: mt7530: refactor MT7530_PMCR_P()
-      net: dsa: mt7530: rename p5_intf_sel and use only for MT7530 switch
-      net: dsa: mt7530: rename mt753x_bpdu_port_fw enum to mt753x_to_cpu_fw
-      net: dsa: mt7530: refactor MT7530_MFC and MT7531_CFC, add MT7531_QRY_FFP
-      net: dsa: mt7530: refactor MT7530_HWTRAP and MT7530_MHWTRAP
-      net: dsa: mt7530: move MT753X_MTRAP operations for MT7530
-      net: dsa: mt7530: return mt7530_setup_mdio & mt7531_setup_common on error
-      net: dsa: mt7530: define MAC speed capabilities per switch model
-      net: dsa: mt7530: get rid of function sanity check
-      net: dsa: mt7530: refactor MT7530_PMEEECR_P()
-      net: dsa: mt7530: get rid of mac_port_validate member of mt753x_info
-      net: dsa: mt7530: use priv->ds->num_ports instead of MT7530_NUM_PORTS
+ drivers/net/dsa/mt7530.c | 44 ++++++++++++----------------
+ drivers/net/dsa/mt7530.h | 76 ++++++++++++++++++++++++------------------------
+ 2 files changed, 56 insertions(+), 64 deletions(-)
 
- drivers/net/dsa/mt7530.c | 285 ++++++++++++++++++++++------------------------
- drivers/net/dsa/mt7530.h | 289 +++++++++++++++++++++++++----------------------
- 2 files changed, 291 insertions(+), 283 deletions(-)
----
-base-commit: e1bc03d8372ac081810c2956cd244ed9899f9a02
-change-id: 20240320-for-netnext-mt7530-improvements-4-95430d150c05
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index 5b6aeeddb5d9..7f864f895ba0 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -1107,42 +1107,34 @@ mt753x_trap_frames(struct mt7530_priv *priv)
+ 	 * VLAN-untagged.
+ 	 */
+ 	mt7530_rmw(priv, MT753X_BPC,
+-		   MT753X_PAE_BPDU_FR | MT753X_PAE_EG_TAG_MASK |
+-			   MT753X_PAE_PORT_FW_MASK | MT753X_BPDU_EG_TAG_MASK |
+-			   MT753X_BPDU_PORT_FW_MASK,
+-		   MT753X_PAE_BPDU_FR |
+-			   MT753X_PAE_EG_TAG(MT7530_VLAN_EG_UNTAGGED) |
+-			   MT753X_PAE_PORT_FW(MT753X_BPDU_CPU_ONLY) |
+-			   MT753X_BPDU_EG_TAG(MT7530_VLAN_EG_UNTAGGED) |
+-			   MT753X_BPDU_CPU_ONLY);
++		   PAE_BPDU_FR | PAE_EG_TAG_MASK | PAE_PORT_FW_MASK |
++			   BPDU_EG_TAG_MASK | BPDU_PORT_FW_MASK,
++		   PAE_BPDU_FR | PAE_EG_TAG(MT7530_VLAN_EG_UNTAGGED) |
++			   PAE_PORT_FW(TO_CPU_FW_CPU_ONLY) |
++			   BPDU_EG_TAG(MT7530_VLAN_EG_UNTAGGED) |
++			   TO_CPU_FW_CPU_ONLY);
+ 
+ 	/* Trap frames with :01 and :02 MAC DAs to the CPU port(s) and egress
+ 	 * them VLAN-untagged.
+ 	 */
+ 	mt7530_rmw(priv, MT753X_RGAC1,
+-		   MT753X_R02_BPDU_FR | MT753X_R02_EG_TAG_MASK |
+-			   MT753X_R02_PORT_FW_MASK | MT753X_R01_BPDU_FR |
+-			   MT753X_R01_EG_TAG_MASK | MT753X_R01_PORT_FW_MASK,
+-		   MT753X_R02_BPDU_FR |
+-			   MT753X_R02_EG_TAG(MT7530_VLAN_EG_UNTAGGED) |
+-			   MT753X_R02_PORT_FW(MT753X_BPDU_CPU_ONLY) |
+-			   MT753X_R01_BPDU_FR |
+-			   MT753X_R01_EG_TAG(MT7530_VLAN_EG_UNTAGGED) |
+-			   MT753X_BPDU_CPU_ONLY);
++		   R02_BPDU_FR | R02_EG_TAG_MASK | R02_PORT_FW_MASK |
++			   R01_BPDU_FR | R01_EG_TAG_MASK | R01_PORT_FW_MASK,
++		   R02_BPDU_FR | R02_EG_TAG(MT7530_VLAN_EG_UNTAGGED) |
++			   R02_PORT_FW(TO_CPU_FW_CPU_ONLY) | R01_BPDU_FR |
++			   R01_EG_TAG(MT7530_VLAN_EG_UNTAGGED) |
++			   TO_CPU_FW_CPU_ONLY);
+ 
+ 	/* Trap frames with :03 and :0E MAC DAs to the CPU port(s) and egress
+ 	 * them VLAN-untagged.
+ 	 */
+ 	mt7530_rmw(priv, MT753X_RGAC2,
+-		   MT753X_R0E_BPDU_FR | MT753X_R0E_EG_TAG_MASK |
+-			   MT753X_R0E_PORT_FW_MASK | MT753X_R03_BPDU_FR |
+-			   MT753X_R03_EG_TAG_MASK | MT753X_R03_PORT_FW_MASK,
+-		   MT753X_R0E_BPDU_FR |
+-			   MT753X_R0E_EG_TAG(MT7530_VLAN_EG_UNTAGGED) |
+-			   MT753X_R0E_PORT_FW(MT753X_BPDU_CPU_ONLY) |
+-			   MT753X_R03_BPDU_FR |
+-			   MT753X_R03_EG_TAG(MT7530_VLAN_EG_UNTAGGED) |
+-			   MT753X_BPDU_CPU_ONLY);
++		   R0E_BPDU_FR | R0E_EG_TAG_MASK | R0E_PORT_FW_MASK |
++			   R03_BPDU_FR | R03_EG_TAG_MASK | R03_PORT_FW_MASK,
++		   R0E_BPDU_FR | R0E_EG_TAG(MT7530_VLAN_EG_UNTAGGED) |
++			   R0E_PORT_FW(TO_CPU_FW_CPU_ONLY) | R03_BPDU_FR |
++			   R03_EG_TAG(MT7530_VLAN_EG_UNTAGGED) |
++			   TO_CPU_FW_CPU_ONLY);
+ }
+ 
+ static void
+diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
+index c8155e32edbe..0d5167f5ba6b 100644
+--- a/drivers/net/dsa/mt7530.h
++++ b/drivers/net/dsa/mt7530.h
+@@ -67,47 +67,47 @@ enum mt753x_id {
+ #define MT753X_MIRROR_MASK(id)		((((id) == ID_MT7531) || ((id) == ID_MT7988)) ?	\
+ 					 MT7531_MIRROR_MASK : MIRROR_MASK)
+ 
+-/* Registers for BPDU and PAE frame control*/
++/* Register for BPDU and PAE frame control */
+ #define MT753X_BPC			0x24
+-#define  MT753X_PAE_BPDU_FR		BIT(25)
+-#define  MT753X_PAE_EG_TAG_MASK		GENMASK(24, 22)
+-#define  MT753X_PAE_EG_TAG(x)		FIELD_PREP(MT753X_PAE_EG_TAG_MASK, x)
+-#define  MT753X_PAE_PORT_FW_MASK	GENMASK(18, 16)
+-#define  MT753X_PAE_PORT_FW(x)		FIELD_PREP(MT753X_PAE_PORT_FW_MASK, x)
+-#define  MT753X_BPDU_EG_TAG_MASK	GENMASK(8, 6)
+-#define  MT753X_BPDU_EG_TAG(x)		FIELD_PREP(MT753X_BPDU_EG_TAG_MASK, x)
+-#define  MT753X_BPDU_PORT_FW_MASK	GENMASK(2, 0)
+-
+-/* Register for :01 and :02 MAC DA frame control */
++#define  PAE_BPDU_FR			BIT(25)
++#define  PAE_EG_TAG_MASK		GENMASK(24, 22)
++#define  PAE_EG_TAG(x)			FIELD_PREP(PAE_EG_TAG_MASK, x)
++#define  PAE_PORT_FW_MASK		GENMASK(18, 16)
++#define  PAE_PORT_FW(x)			FIELD_PREP(PAE_PORT_FW_MASK, x)
++#define  BPDU_EG_TAG_MASK		GENMASK(8, 6)
++#define  BPDU_EG_TAG(x)			FIELD_PREP(BPDU_EG_TAG_MASK, x)
++#define  BPDU_PORT_FW_MASK		GENMASK(2, 0)
++
++/* Register for 01-80-C2-00-00-[01,02] MAC DA frame control */
+ #define MT753X_RGAC1			0x28
+-#define  MT753X_R02_BPDU_FR		BIT(25)
+-#define  MT753X_R02_EG_TAG_MASK		GENMASK(24, 22)
+-#define  MT753X_R02_EG_TAG(x)		FIELD_PREP(MT753X_R02_EG_TAG_MASK, x)
+-#define  MT753X_R02_PORT_FW_MASK	GENMASK(18, 16)
+-#define  MT753X_R02_PORT_FW(x)		FIELD_PREP(MT753X_R02_PORT_FW_MASK, x)
+-#define  MT753X_R01_BPDU_FR		BIT(9)
+-#define  MT753X_R01_EG_TAG_MASK		GENMASK(8, 6)
+-#define  MT753X_R01_EG_TAG(x)		FIELD_PREP(MT753X_R01_EG_TAG_MASK, x)
+-#define  MT753X_R01_PORT_FW_MASK	GENMASK(2, 0)
+-
+-/* Register for :03 and :0E MAC DA frame control */
++#define  R02_BPDU_FR			BIT(25)
++#define  R02_EG_TAG_MASK		GENMASK(24, 22)
++#define  R02_EG_TAG(x)			FIELD_PREP(R02_EG_TAG_MASK, x)
++#define  R02_PORT_FW_MASK		GENMASK(18, 16)
++#define  R02_PORT_FW(x)			FIELD_PREP(R02_PORT_FW_MASK, x)
++#define  R01_BPDU_FR			BIT(9)
++#define  R01_EG_TAG_MASK		GENMASK(8, 6)
++#define  R01_EG_TAG(x)			FIELD_PREP(R01_EG_TAG_MASK, x)
++#define  R01_PORT_FW_MASK		GENMASK(2, 0)
++
++/* Register for 01-80-C2-00-00-[03,0E] MAC DA frame control */
+ #define MT753X_RGAC2			0x2c
+-#define  MT753X_R0E_BPDU_FR		BIT(25)
+-#define  MT753X_R0E_EG_TAG_MASK		GENMASK(24, 22)
+-#define  MT753X_R0E_EG_TAG(x)		FIELD_PREP(MT753X_R0E_EG_TAG_MASK, x)
+-#define  MT753X_R0E_PORT_FW_MASK	GENMASK(18, 16)
+-#define  MT753X_R0E_PORT_FW(x)		FIELD_PREP(MT753X_R0E_PORT_FW_MASK, x)
+-#define  MT753X_R03_BPDU_FR		BIT(9)
+-#define  MT753X_R03_EG_TAG_MASK		GENMASK(8, 6)
+-#define  MT753X_R03_EG_TAG(x)		FIELD_PREP(MT753X_R03_EG_TAG_MASK, x)
+-#define  MT753X_R03_PORT_FW_MASK	GENMASK(2, 0)
+-
+-enum mt753x_bpdu_port_fw {
+-	MT753X_BPDU_FOLLOW_MFC,
+-	MT753X_BPDU_CPU_EXCLUDE = 4,
+-	MT753X_BPDU_CPU_INCLUDE = 5,
+-	MT753X_BPDU_CPU_ONLY = 6,
+-	MT753X_BPDU_DROP = 7,
++#define  R0E_BPDU_FR			BIT(25)
++#define  R0E_EG_TAG_MASK		GENMASK(24, 22)
++#define  R0E_EG_TAG(x)			FIELD_PREP(R0E_EG_TAG_MASK, x)
++#define  R0E_PORT_FW_MASK		GENMASK(18, 16)
++#define  R0E_PORT_FW(x)			FIELD_PREP(R0E_PORT_FW_MASK, x)
++#define  R03_BPDU_FR			BIT(9)
++#define  R03_EG_TAG_MASK		GENMASK(8, 6)
++#define  R03_EG_TAG(x)			FIELD_PREP(R03_EG_TAG_MASK, x)
++#define  R03_PORT_FW_MASK		GENMASK(2, 0)
++
++enum mt753x_to_cpu_fw {
++	TO_CPU_FW_SYSTEM_DEFAULT,
++	TO_CPU_FW_CPU_EXCLUDE = 4,
++	TO_CPU_FW_CPU_INCLUDE = 5,
++	TO_CPU_FW_CPU_ONLY = 6,
++	TO_CPU_FW_DROP = 7,
+ };
+ 
+ /* Registers for address table access */
 
-Best regards,
 -- 
-Arınç ÜNAL <arinc.unal@arinc9.com>
+2.40.1
 
 
 
