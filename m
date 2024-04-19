@@ -4,79 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0285C4345F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Apr 2024 08:01:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 392D9C4345F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Apr 2024 08:42:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Oj/cIL9wN8HgB3px3XkG2m4KmLP04cwNnMao0gicrCo=; b=MhnJ9QEOoUdtccPGSV6BBNhi3b
-	4jlNiilBt4cTKErlVYsHWYF1G4q44bhzTpgzicx4IDBekH5FiF4eBZhQ/WBwJ8VTrhSTzdqnkR2Xx
-	JApb3AxtuIw0bGVtIibRzjoSgtaUFLIRt6DKXhITryYZh6J7RiZHm7paV4FGlvNfAY4zgE6/fAN6E
-	VO+t+iwZ42Q68wCUY0bRPDpc7a0fUjHQHU9An32mlvIyP58F4d6grMYB6x9CdzVS/nmeCCDiO1HF2
-	998rQYIkbmLLKj/PwIpTCIbCuFxkWeypYmO4lgK/PiDmGrbgXMw8rGJEnKvZsUfs6blKp8IjBIHY4
-	Oj3MWCFQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=k8xgKHGOLk22YTxlkQUseLp0TL4Lfi+IptzX72z60f8=; b=YtmY0ZVjJGvdmtbKLMZ2kJ9yET
+	e8Hc5MlvkfdoQ0IdFUIY2Uwy8cICMuYDZcNsQCgp9+onZVDEm/cA4gWj32AAlLZArNIsbybLPuHKq
+	7rMbbpreTqmuIDqgO4fHPHdxDu4hZz5kNlZsal0w+v8RCfuL0Qr5rMNYzWQMMxli/aC7WMVihFNEy
+	4Zg+R50IZOUy1q/bAvoE2pfRISWfnqWGkeMVWNXCJzbgYghYVWsdh2yrlb5WEe9SKYABlpj2KBrXf
+	W9zm1EzR5hcDxdANhgsujmo592SCyE80C55Symoh8T6kzt9ZBN1x9YG9iWk7JtFVyxN/mNs/EysL7
+	REjyRBXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxjBJ-00000004rqw-1Rpt;
-	Fri, 19 Apr 2024 08:01:13 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rxjpM-00000004xz0-3qG9;
+	Fri, 19 Apr 2024 08:42:36 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxjBC-00000004rnJ-2sDt;
-	Fri, 19 Apr 2024 08:01:11 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1713513663;
-	bh=bmmrpG9twzfl+7I9bjJ8i79tB8/NSeisn+ds2RBa2jc=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=M/JB5bjQ9tMmBy/2sL9FqxKtsvP0vRNp1Dip2qCJGzQp1mXq/TtcKSmfrt8NCxqX9
-	 1C95N632nY+EA35Ny0jSzfyOcnkdKsn6O4LcSiNmYUbMmQTvVviP/DYSRDIYMEK4oK
-	 CBAJ4tyuZHbTx59JXDEgqnsA/h5lTqr3xEXThitNy4iguMgnwFH8YGZ83nAxnuz0uX
-	 tzw5ZGWf0gcg+nHzPehvGmhqG42uH7nX/4WtFfnAniRLzparrTnMGV4uKQoCkceKyu
-	 nCWrJc1fVwgk9sFLVgRud+YA7lXx2yKulGRcXi4gj2iEf8liLZIc5RgTji8UfW65rc
-	 g39BSWODH7vXw==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 7449E3781116;
-	Fri, 19 Apr 2024 08:01:01 +0000 (UTC)
-Message-ID: <9ef43fff-ee2a-4b2c-a595-30f5bf7588c2@collabora.com>
-Date: Fri, 19 Apr 2024 10:01:00 +0200
+	id 1rxjpH-00000004xxs-46QG;
+	Fri, 19 Apr 2024 08:42:34 +0000
+X-UUID: c078b234fe2811eeac1957ae9f99f617-20240419
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=k8xgKHGOLk22YTxlkQUseLp0TL4Lfi+IptzX72z60f8=;
+	b=q62PXFxppyKkS6FZTIeMXnZwsU/mn6tl9kU09cOQCARSagviOzFs6YsuoOq57ef0corxqV1h1J3OV9DNqcbzC0QLliMdAHhZWgvzeraRK28ogAnhpy2IJdu/gnhEjwbaMDtoubbr8fiOmZQwnWZwSAXTkYTnHEtnG0P2jhP80uE=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.38,REQID:a7dd191a-9445-4c86-9670-2e63957c6fe5,IP:0,U
+	RL:0,TC:0,Content:0,EDM:-30,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-30
+X-CID-META: VersionHash:82c5f88,CLOUDID:a4f71bfb-ed05-4274-9204-014369d201e8,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:2,IP:nil,UR
+	L:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,S
+	PR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: c078b234fe2811eeac1957ae9f99f617-20240419
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+	(envelope-from <olivia.wen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1747948168; Fri, 19 Apr 2024 01:42:27 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS14N2.mediatek.inc (172.21.101.76) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Fri, 19 Apr 2024 16:42:23 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 19 Apr 2024 16:42:23 +0800
+From: Olivia Wen <olivia.wen@mediatek.com>
+To: Bjorn Andersson <andersson@kernel.org>, Mathieu Poirier
+	<mathieu.poirier@linaro.org>, Rob Herring <robh@kernel.org>
+CC: Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+	<conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"Tinghan Shen" <tinghan.shen@mediatek.com>,
+	<linux-remoteproc@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<jason-ch.chen@mediatek.com>, <yaya.chang@mediatek.com>,
+	<teddy.chen@mediatek.com>, <olivia.wen@mediatek.com>
+Subject: [PATCH v2 0/2] Support MT8188 SCP core 1
+Date: Fri, 19 Apr 2024 16:42:09 +0800
+Message-ID: <20240419084211.31901-1-olivia.wen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 14/17] drm/mediatek: add MT8365 SoC support
-To: amergnat@baylibre.com, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
- Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Jitao Shi <jitao.shi@mediatek.com>,
- CK Hu <ck.hu@mediatek.com>, =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?=
- <u.kleine-koenig@pengutronix.de>, Michael Turquette
- <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>,
- Fabien Parent <fparent@baylibre.com>,
- Markus Schneider-Pargmann <msp@baylibre.com>,
- Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-pwm@vger.kernel.org,
- linux-clk@vger.kernel.org
-References: <20231023-display-support-v3-0-53388f3ed34b@baylibre.com>
- <20231023-display-support-v3-14-53388f3ed34b@baylibre.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20231023-display-support-v3-14-53388f3ed34b@baylibre.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--2.099800-8.000000
+X-TMASE-MatchedRID: 5QkmdD6LvPJ+YhdyenZTz4sKNaNh88CQsEf8CpnIYtnfUZT83lbkEBFx
+	R5JQAS6O4wnhOb+JR+SAMuqetGVetiVvu9chHp+mavP8b9lJtWr6C0ePs7A07Q2y0JeZ/zscoZw
+	wICyeoD3MM3a3XeTtKmFz8X6dP8PZtV04mbdKF8YOwU2/CT+xV0ZNgzs5p1AvtSF30+HwrkKm6E
+	3e35F4TGLSbfA3MPr6dmtRsRmKkASJZPT2ZDPuzPD2QfzMDLjho65UufHcDvg=
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--2.099800-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 07CE3AA0174AD91AB9808404EAB492C91087E1EB2468EADC569D868CE0F9A4722000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240419_010106_901267_1917C584 
-X-CRM114-Status: GOOD (  17.36  )
+X-CRM114-CacheID: sfid-20240419_014232_050663_DA45B74D 
+X-CRM114-Status: UNSURE (   8.31  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,58 +102,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 18/04/24 16:17, amergnat@baylibre.com ha scritto:
-> From: Fabien Parent <fparent@baylibre.com>
-> 
-> Add DRM support for MT8365 SoC.
-> 
-> Signed-off-by: Fabien Parent <fparent@baylibre.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+From: "olivia.wen" <olivia.wen@mediatek.com>
 
-There are two things that I want to point out. Please check below.
+Change in v2:
+- change the order of mt8188-scp-dual
+- modify the struct mtk_scp_of_data on MT8188
+- add MT8188-specific functions
+- add structure mtk_scp_sizes_data to manage sizes
+- change tmp_data allocation to share_buf
 
-The series that I've sent for adding OF Graphs [1] support to MediaTek DRM is
-not going to be picked in time for v6.10, but I think neither your MT8365 support
-series is, and that's why I'm telling you this.
+olivia.wen (2):
+  dt-bindings: remoteproc: mediatek: Support MT8188 dual-core SCP
+  remoteproc: mediatek: Support MT8188 SCP core 1
 
-If your work was based off my series, you would not need to add the MT8365 ddp
-MAIN and EXT paths to mtk_drm_drv: you'd just add it to the bindings and then
-you would declare the paths in devicetree.
+ .../devicetree/bindings/remoteproc/mtk,scp.yaml    |   2 +
+ drivers/remoteproc/mtk_common.h                    |  11 +-
+ drivers/remoteproc/mtk_scp.c                       | 230 +++++++++++++++++++--
+ drivers/remoteproc/mtk_scp_ipi.c                   |   7 +-
+ include/linux/remoteproc/mtk_scp.h                 |   1 +
+ 5 files changed, 225 insertions(+), 26 deletions(-)
 
-
-[1]: 
-https://lore.kernel.org/r/20240409120211.321153-1-angelogioacchino.delregno@collabora.com
-
-There's also one more comment....
-
-> ---
->   drivers/gpu/drm/mediatek/mtk_drm_drv.c | 30 ++++++++++++++++++++++++++++++
->   1 file changed, 30 insertions(+)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> index 74832c213092..427b601309c4 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-
-..snip..
-
-> @@ -793,6 +821,8 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
->   	  .data = (void *)MTK_DSI },
->   	{ .compatible = "mediatek,mt8188-dsi",
->   	  .data = (void *)MTK_DSI },
-> +	{ .compatible = "mediatek,mt8365-dpi",
-
-You removed the mt8365 specific compatible from the DPI driver - why did you keep
-it here?! that's not needed! :-)
-
-Cheers,
-Angelo
-
-> +	  .data = (void *)MTK_DPI },
->   	{ }
->   };
->   
-> 
+-- 
+2.6.4
 
 
