@@ -4,66 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E5EFC04FF6
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Apr 2024 12:05:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17ECCC4345F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Apr 2024 12:30:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sgvA+pX3m076VODfdVT5T36t6N6KpW3H7jte1/zPwIo=; b=vnpIOXHY26UbONAkFTS7szPbw3
-	Rn40U5NX09dVe3TrHyX9RKnMKGtpujUqtixYmRJDE0vV/9zaYYTxtNKAtzkzbVCj7+UD+jgdsDGSZ
-	4x/DacLW+p6ZphqLdq1ijE3J4x6qSGyOWYGru2gIRTM/FyRJjxWz0pitS8dTYmghLk8lO0S6iKDrf
-	W/Ai18gXFQVolyFrJCnO6otSJKpP/X7aEWPJcKiMfEul4XzaLEHx+QiKuVRmZypswOUCBT5Y1EAyI
-	M0ILlePopCiQ+IbFA2s8PXcws8GqgOWpx+gBtbdCu28rV9Jmad5OmgL0zNMY/6x7VS9FExkA/4XnC
-	+2zEpROg==;
+	bh=zn+/jwMkPbBkBTt1T8N8iF29HZcpnK0/VvfWgT2y6mE=; b=E00aIXK9wRWaDhCAjXMw1WUQs3
+	h0wznP82l+wyKaXWQDfBAVZmoHlGyV0SyhB4idM6O39PV1RXNfUhwx0NKFuN/9qix11p+2jDqO6/D
+	UxgxmWfg5ffGoZFC+XNuNcr2qHH8lXDJ/zaAL5EAc2CDSepC2a+YV2Y0fAOGGNqaZcMa0TzF7hnHB
+	dT/iPIYvW84qnnetz7SqDMpMcKdcGnpTNx7vvpC7vsWZIe1BK7FjpvDSeUpVBDv119QNH/kw2lVmw
+	+Da2BMJVHNRmgkW/bhs0pkmLcuWnSwMnl4VMAksfaEWd7VFcFNc8kI7VWx7PpXFBwhsBwsAIBK2h2
+	dSqYPHkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxmzt-00000005XdO-0Uyq;
-	Fri, 19 Apr 2024 12:05:41 +0000
+	id 1rxnNj-00000005bNx-2092;
+	Fri, 19 Apr 2024 12:30:19 +0000
 Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxmzo-00000005Xbf-1VGt;
-	Fri, 19 Apr 2024 12:05:38 +0000
+	id 1rxnNf-00000005bNB-3LZj;
+	Fri, 19 Apr 2024 12:30:17 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 7DA0ACE1A9C;
-	Fri, 19 Apr 2024 12:05:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8F06DC2BD10;
-	Fri, 19 Apr 2024 12:05:32 +0000 (UTC)
-Authentication-Results: smtp.kernel.org;
-	dkim=pass (1024-bit key) header.d=zx2c4.com header.i=@zx2c4.com header.b="UlyzfiaU"
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=zx2c4.com; s=20210105;
-	t=1713528329;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=sgvA+pX3m076VODfdVT5T36t6N6KpW3H7jte1/zPwIo=;
-	b=UlyzfiaUf6CZ0D9OZ0DeUkyUqT80dx11ttf/Yb8RUie94AXuNtvwKEe6G2hGrh+8QT79dG
-	QjiYRvF/B0sBcrvPUmofvfHKeKZFnnMSUhMYwxJHhuhRl4NFIi3PQWK7iAMTn5v3aWGOVv
-	NQ+8z0gBddlE3ed43SExJbVJGnasKKM=
-Received: by mail.zx2c4.com (ZX2C4 Mail Server) with ESMTPSA id 0db50ce3 (TLSv1.3:TLS_AES_256_GCM_SHA384:256:NO);
-	Fri, 19 Apr 2024 12:05:29 +0000 (UTC)
-Date: Fri, 19 Apr 2024 14:05:28 +0200
-From: "Jason A. Donenfeld" <Jason@zx2c4.com>
-To: Guoyong Wang <guoyong.wang@mediatek.com>
-Cc: Theodore Ts'o <tytso@mit.edu>, Tejun Heo <tj@kernel.org>,
-	Lai Jiangshan <jiangshanlai@gmail.com>,
+	by sin.source.kernel.org (Postfix) with ESMTP id 46598CE1AD1;
+	Fri, 19 Apr 2024 12:30:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 559A1C3277B;
+	Fri, 19 Apr 2024 12:30:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1713529812;
+	bh=VeN/kN2AbD4PeQX7ZuRMsohc9478jy4azX325WAmLTo=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Vig2AR6jsAssAqTEKgUhXAXyzbWAjmRcSglKCpSEvnJ6B9jbXRSWLX62NIBLrqM4l
+	 jFAbSz/9TIkO7oVNlq3kIiOXrTDq9ANvAuu8ok3F9hPw0Eya8w//68RJiWdfFt+yhL
+	 /T0bpCr3kHHYmKOV5/ZXVl/mFzLMKzZM+bFdUzthCTO/QzAMfi+sjZZ8Tr51frKFIP
+	 1JJI3ofGhn/fdXPL+NECCUgP0z1U1MqCmxHCqdXeJGdukjdMybZ6d8DnRImDFtY9mA
+	 YRp3uoLM6W/lVrjY380MJvT4mf80XKDf1VBAHCjNe7f/Z7Tz0NKQd0unE+x7VEdJyK
+	 UGHq3c6x3QbGg==
+Date: Fri, 19 Apr 2024 13:30:07 +0100
+From: Simon Horman <horms@kernel.org>
+To: =?utf-8?Q?Asbj=C3=B8rn_Sloth_T=C3=B8nnesen?= <ast@fiberby.net>
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com
-Subject: Re: [PATCH v2] random: Fix the issue of '_might_sleep' function
- running in an atomic contex
-Message-ID: <ZiJeCPkcnEEmYqc-@zx2c4.com>
-References: <20240419105453.5440-1-guoyong.wang@mediatek.com>
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net-next] net: ethernet: mtk_eth_soc: flower: validate
+ control flags
+Message-ID: <20240419123007.GA3975545@kernel.org>
+References: <20240418161821.189263-1-ast@fiberby.net>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20240419105453.5440-1-guoyong.wang@mediatek.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20240418161821.189263-1-ast@fiberby.net>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240419_050536_681643_92DAA28A 
-X-CRM114-Status: GOOD (  14.92  )
+X-CRM114-CacheID: sfid-20240419_053016_044670_2686CDB3 
+X-CRM114-Status: UNSURE (   9.96  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,34 +82,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Apr 19, 2024 at 06:54:53PM +0800, Guoyong Wang wrote:
-> In the case that a delay is acceptable for 'crng_set_ready', it can be
-> deferred to a workqueue in order to accommodate different contexts.
+On Thu, Apr 18, 2024 at 04:18:15PM +0000, Asbjørn Sloth Tønnesen wrote:
+> This driver currently doesn't support any control flags.
 > 
-> Signed-off-by: Guoyong Wang <guoyong.wang@mediatek.com>
-> ---
-> v2: Compared to version 1, version 2 has removed the definition of
-> 'execute_in_non_atomic_context' and always uses a workqueue to execute 
-> 'crng_set_ready'.
+> Use flow_rule_has_control_flags() to check for control flags,
+> such as can be set through `tc flower ... ip_flags frag`.
 > 
->   Send out the patch again for further discussion.
+> In case any control flags are masked, flow_rule_has_control_flags()
+> sets a NL extended error message, and we return -EOPNOTSUPP.
 > 
-> [1]: https://patchwork.kernel.org/patch/13595066
+> Only compile-tested.
+> 
+> Signed-off-by: Asbjørn Sloth Tønnesen <ast@fiberby.net>
 
-Sorry, but this doesn't make sense in terms of how kernel development is
-typically done:
+Reviewed-by: Simon Horman <horms@kernel.org>
 
-1) Before you sent this, I told you there was no need for a v2.
-2) The removal snippet at the bottom applies to your previous v1, not to
-   upstream code.
-3) The other snippet is taken verbatim from a patch that I posted.
-4) That snippet is already upstream:
-   https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=e871abcda3b67d0820b4182ebe93435624e9c6a4
-
-There is no further work to do on this. Thank you for reporting the bug
-- very appreciated - and for discussing the fix. But now we have a fix.
-So everything is all set and there's nothing else to do and everyone can
-be happy.
-
-Jason
 
