@@ -4,71 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82136C4345F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Apr 2024 07:21:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABDA4C05023
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Apr 2024 07:28:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XLn6sA+tFXRFN9fw1dmPkOhK+4eMKOdYMNRVOnpDOYk=; b=J4eVzy+NatBeMumz/RzdOjmOIe
-	ADaX8OdxU1Yf9J/jQ/T6cbtDXEqL1LgLQcIZgsbkSl+fM/oa5Y6VI0S8JgFKPg7gu3KZK0iE1zjgf
-	jdiqc6vNKUkPlg6MZQVcX/Rqrl8kWd/MaUzLDYsbbiYSJ5MLxnVAU6hKH6dJV7sDWrnCoObP/31mZ
-	88TVM/bGcSl9WY1+F2LPnUwI/By0bKOtXUwgowd7CwtfCNlZL+RFT7uNYdin3Avl03FEJ1GzkXFCj
-	vgx6yPS+yQin+yQYltnPgU+0GwBP/azTkuJFXYrJRjGpbtHrjpHzLcg9Aqjg0/91mMmFlWr2/qoi6
-	EpQ54uPw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=S2VPdUWG5Lus7CUBcd8XNvPeagopSHn9WkTx872oXsI=; b=m8+NTC29hYjKhIaPtMqTH5J5+J
+	N2mAvQRSW1bJwgkD3dMi87oso0D1n82p87cWvnz6hGOK1/YDM61Gte6Td+JgGMq6/F1MiYRDzQthG
+	b3+ezIC4zQc6cBb2GEiYIkA1snElVDZNCa33wBKeBrfEeu+JbZ8y1HVFsmpO9jinSR16MYnQQLwel
+	EI6xhC3PEB6mGdWZ1GEDRuiwa7+tRtpMsN0na2a3moJ68Q+MSP35oHu0ytQWKZ52Y/AVhlfxYwn47
+	sqzzKUrRjNqXpngyL9T0IXr0cH/G4cwUdVRhil0rVDVLKHtHHBrwqjKtu2MySBMyIDmmkwM2weKvR
+	bxOm4+5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxiYU-00000004kxm-0uCY;
-	Fri, 19 Apr 2024 07:21:06 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1rxifJ-00000004mSD-0Qe8;
+	Fri, 19 Apr 2024 07:28:09 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxiYR-00000004kvX-00td
-	for linux-mediatek@lists.infradead.org;
-	Fri, 19 Apr 2024 07:21:04 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1rxiYB-0005ps-9Y; Fri, 19 Apr 2024 09:20:47 +0200
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1rxiY9-00D7BW-2B; Fri, 19 Apr 2024 09:20:45 +0200
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.96)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1rxiY8-003uPa-36;
-	Fri, 19 Apr 2024 09:20:44 +0200
-Date: Fri, 19 Apr 2024 09:20:44 +0200
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>
-Cc: Frank Binns <frank.binns@imgtec.com>, 
-	Matt Coster <matt.coster@imgtec.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-mediatek@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, Thierry Reding <thierry.reding@gmail.com>, 
-	Mikko Perttunen <mperttunen@nvidia.com>, linux-tegra@vger.kernel.org
-Subject: Re: [PATCH 0/4] gpu: Convert to platform remove callback returning
- void
-Message-ID: <xqwcrxfrg3ogplh35c5etl6nbzw6zueilm4h6euh7bnpszyir4@6dtn5qdvijv3>
-References: <cover.1712681770.git.u.kleine-koenig@pengutronix.de>
+	id 1rxifF-00000004mP5-0A7c;
+	Fri, 19 Apr 2024 07:28:06 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1713511680;
+	bh=zw7eqyLTCYpzLSY9EaMU3gS3464AZcknyXMq4TOLyec=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=UjQ/y3acphHaIV9MFM51DsH35E4dA1gORYFEcz4Qnyf/dk/UoB2DoB0FpEp5wfqEo
+	 tVQ5/EoySNnmwXsb/XsERTyqU9vQkDZ1XY2VuMK69r52P/tP4nBmVoRfdPMRT/SCBl
+	 hxyv+E5Lt/zNe56ubf6Yia265rxvNCyledkMfHhlMwWgx4EQwj4tkapmC9biiO3oVh
+	 hwZhmhZ8+RtHkaeMOc8k4s1N6Kn+t8UGVH0lFT6ey+Pr2B0+lRuOIhQ/u3LSt4ZU3P
+	 UKdIj6jc9ec/RSlrXve14FNY5jw3H0P0so9o5kvctHy9Rv7PAt2pGGpBLu5XoZiYd2
+	 HPa3xeGW8lJMA==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 7C3E23781104;
+	Fri, 19 Apr 2024 07:27:58 +0000 (UTC)
+Message-ID: <49399153-bf70-4709-b020-f40e2654a53e@collabora.com>
+Date: Fri, 19 Apr 2024 09:27:57 +0200
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="zqtl7cbpfineoepn"
-Content-Disposition: inline
-In-Reply-To: <cover.1712681770.git.u.kleine-koenig@pengutronix.de>
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 07/17] dt-bindings: display: mediatek: dpi: add
+ compatible for MT8365
+To: Alexandre Mergnat <amergnat@baylibre.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+ Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Jitao Shi <jitao.shi@mediatek.com>,
+ CK Hu <ck.hu@mediatek.com>, =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?=
+ <u.kleine-koenig@pengutronix.de>, Michael Turquette
+ <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>,
+ Fabien Parent <fparent@baylibre.com>,
+ Markus Schneider-Pargmann <msp@baylibre.com>,
+ Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-pwm@vger.kernel.org,
+ linux-clk@vger.kernel.org
+References: <20231023-display-support-v3-0-53388f3ed34b@baylibre.com>
+ <20231023-display-support-v3-7-53388f3ed34b@baylibre.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20231023-display-support-v3-7-53388f3ed34b@baylibre.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240419_002103_166963_7E3492BC 
-X-CRM114-Status: GOOD (  19.71  )
+X-CRM114-CacheID: sfid-20240419_002805_224705_962E24FC 
+X-CRM114-Status: UNSURE (   5.29  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,70 +94,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Il 18/04/24 16:16, Alexandre Mergnat ha scritto:
+> Add dt-binding documentation of dpi for MediaTek MT8365 SoC.
+> 
+> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 
---zqtl7cbpfineoepn
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Hello,
 
-On Tue, Apr 09, 2024 at 07:02:47PM +0200, Uwe Kleine-K=F6nig wrote:
-> with some patches sent earlier[1], this series converts all platform
-> drivers below drivers/gpu to not use struct platform_device::remove()
-> any more.
->=20
-> See commit 5c5a7680e67b ("platform: Provide a remove callback that
-> returns no value") for an extended explanation and the eventual goal.
->=20
-> All conversations are trivial, because the driver's .remove() callbacks
-> returned zero unconditionally.
->=20
-> There are no interdependencies between these patches. This is merge
-> window material.
-
-I wonder how this series will make it in. While I would prefer these
-patches to go in together (that I can consider this thread completed in
-one go), I think with how drm maintenace works, it's best if the patches
-are picked up by their individual maintainers. I guess that's:
-
- - Frank Binns + Matt Coster for imagination
-
- - Chun-Kuang Hu + Philipp Zabel for mediatek
-
- - Thierry Reding + Mikko Perttunen for the host1x driver
-   (Note there is another patch for this driver set at
-    20240409165043.105137-2-u.kleine-koenig@pengutronix.de that is
-    relevant for the same quest.)
-
- - Philipp Zabel for ipu-v3
-
-I plan to send a patch changing struct platform_driver::remove after the
-end of the merge window leading to 6.10-rc1 for inclusion in next via
-Greg's driver core. So please either care the patches land in 6.10-rc1
-or ack that I include them in the submission to Greg.
-
-Thanks for your cooperation,
-Uwe
-
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
-
---zqtl7cbpfineoepn
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmYiG0sACgkQj4D7WH0S
-/k5uYwf/bmP6h2EDhf4HeD6t6iH04mtOMqGj0P+x7unUIW9fwa+06Vtnjj0TW/DR
-WgWu8rFS3I02j3D51b14SGZRNrIEXwSkNNVQLPZbe8pu9akVVYtymL7xxNM4ksLk
-83PrwKdtdx2khdWfc7kOWM+zu2IkKTkHvRQqrx/jCrz9OpAA+2DJpqtt0CnYOMgu
-eF4ev9d7wG7VdP8jks1/anWuqbDAIVStCnA1MaCISsXl2e2ZGZfSE99Mg1h94eLd
-AX2IRPASplCkOA1L2Klfkye65Pqyfi1gnxnawcUbhkcZ4ffdg7jFAEaCXPqfHEKP
-w+LYkIVZlBBGdz0EuoGrVlGwPo7Ixg==
-=stkl
------END PGP SIGNATURE-----
-
---zqtl7cbpfineoepn--
 
