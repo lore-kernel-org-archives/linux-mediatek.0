@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66225C4345F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Apr 2024 10:10:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05343C04FF6
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Apr 2024 10:10:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
 	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
 	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QHLTjJ6wxs+iLodcQhn4MKi93ZsYt3lcEAMuJYmbUgU=; b=ddbmFCFZvgQCwpDNtdFrIDthuH
-	SX1Tg6Xdn3gTuJihan1nCe5jjrQHiqKwhZyXZCfWrYu1peKKZfv/kLS0UyqygD72FzLXLnhUnqvt7
-	SpNIDQ6RRNuQq+yj5N5kM/JWnlXIzXGNPo4POHf9TT0CXuxQSOzEfjrTg2zD4bSOAbc0LjdccpkRL
-	CzSvtwkiAAOMxbEi9yuG3UXv1kgLKrOc9H+Y+4ApXv6+6B75sN87YzCJ6idoX+ktkdOV/c6kMfU0A
-	WVomgl1bA7tNsX9uah+OA4WjPNeZmSeRy1c7tQw/8OveV6fghnw8kg8VO3MvTzAycCNWZtgLnd041
-	DIUBvB0Q==;
+	bh=DUMBzcGBEpchcJvvWVkliLA2E/rXgiuXkSp+lcXHBHE=; b=UbNMRfSxBL73x1MZShW1BbXz+c
+	PiYTCzqEUZKL/RNOlektvKpDKDk+8RpW4JTEOaJnXQ4AmJu69gJZTcuuBihviSDJTE2WNW8kXPSEk
+	+dRoEsyH9Wbz0Po9jYItM3WA/a9ObkGlSCW85DngpqbOkg/kk9jm1FaiBhV8NStpudB1DM6yQgs0N
+	QEqedW0klQiL8GNdwb4kKEBOwlUv1g+ZAdXPoU8Htwu96/mi+doauY8GNhE+TH7Hr4p9zFTC+7ll2
+	6a6K+swKq/XEiLpAImxeB4PAEvcb1ZavMnQTHoybrQHq5NrhWImp1fp6J0r3a1C+TFeTTtxBDTbob
+	p0zodhJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxlCa-00000005EoR-3wBp;
-	Fri, 19 Apr 2024 10:10:40 +0000
+	id 1rxlCn-00000005EwZ-1PcS;
+	Fri, 19 Apr 2024 10:10:53 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxlBd-00000005EEo-1MwQ;
+	id 1rxlBd-00000005EEp-1H81;
 	Fri, 19 Apr 2024 10:09:43 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 2E3B06196F;
+	by dfw.source.kernel.org (Postfix) with ESMTP id 5321B61978;
 	Fri, 19 Apr 2024 10:09:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 2B80EC4AF16;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 4E92EC4AF07;
 	Fri, 19 Apr 2024 10:09:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1713521378;
-	bh=Oh54loCHRJVtFGJB4q2HCwiYLcs9oRYxgNGQDVhsNV0=;
+	bh=ZNmSMiuq5wJcBo+EGlGmT/XTyYTDOnZPeAOljaVsq+M=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=e2Aayrm2VdczGpLjFUKoPvnhNKjRSorQazsy17gI21caKdIX51UX5MCdYNJj8qhqW
-	 6SkIkXB09U8/xUqQFbmddZwvpEmUnvHDHVYEhqOK7h0wX6DSRmccucpZy/uxtzunwT
-	 iqyWC4F4Xnkyzypz7g+wJO2/XyEIvtmSG588kHs4UnjnrxnXoqlcwV9vChM2xxTp8i
-	 IS54lavsPQNbz7Pun1mXmVr2gXvf0VLChUdzDiZ2sguQyALnc15R4oAOn5LS8QdRbj
-	 9zBPPx5PQpzo9KJ6B/uo6ZV7u8mGAMZVN2bETjal67HwTOIUzdFMeMWXb+99ufhO3Q
-	 P5xezx5ncMcFw==
+	b=ahWAMSh/qjA1VIw8T6MFh+en9clMxEU4B3qAfiuR2mUjkKQfoMNKAeS4jvftgLEb5
+	 qSSqgstFp5gDWye9zhwtttDwbRBbFFCZTuMKcUN0XT1BcODl1O4Ms//4qlxOoknNkC
+	 YvF7aBqO6o8is/XYHxfDrrPn/rxFytIAZqoC34XtCwUFMjG4lIxdeGIEIDa15E9xY8
+	 c8RF8sN9XDL6XPF6GKvqK84TD4Mz5LR7X2k+rXSFlW3nrvv2WB/VsnABFnK5MMKv/q
+	 5p9fXZ2OPAziuJkCdUez0XshHVOOmb/8S+YTB+hlNC/CfQ6Pab8fXzMa3R3/Oathp9
+	 LQQ+RssYPl26Q==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2362AC04FF6;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4644AC04FF6;
 	Fri, 19 Apr 2024 10:09:38 +0000 (UTC)
 From: =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL_via_B4_Relay?= <devnull+arinc.unal.arinc9.com@kernel.org>
-Date: Fri, 19 Apr 2024 13:09:34 +0300
-Subject: [PATCH net-next 11/13] net: dsa: mt7530: refactor
- MT7530_PMEEECR_P()
+Date: Fri, 19 Apr 2024 13:09:36 +0300
+Subject: [PATCH net-next 13/13] net: dsa: mt7530: use priv->ds->num_ports
+ instead of MT7530_NUM_PORTS
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Message-Id: <20240419-for-netnext-mt7530-improvements-4-v1-11-6d852ca79b1d@arinc9.com>
+Message-Id: <20240419-for-netnext-mt7530-improvements-4-v1-13-6d852ca79b1d@arinc9.com>
 References: <20240419-for-netnext-mt7530-improvements-4-v1-0-6d852ca79b1d@arinc9.com>
 In-Reply-To: <20240419-for-netnext-mt7530-improvements-4-v1-0-6d852ca79b1d@arinc9.com>
 To: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, 
@@ -69,19 +69,19 @@ Cc: Bartel Eerdekens <bartel.eerdekens@constell8.be>,
  linux-mediatek@lists.infradead.org, 
  =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1713521374; l=2734;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1713521374; l=1820;
  i=arinc.unal@arinc9.com; s=arinc9-Xeront; h=from:subject:message-id;
- bh=5wCatVwUOJ5yoMFPAyKVGUVnt4uS95CCabQrn8tU2fM=;
- b=0maqjVEcj9wlVirz6+trEGtEtGukLTt1jDOulxmYgtc5awUa2FB0JBcInEGiTz/1ZtI7g0Nkx
- nrBY7jShcPgD+dXTV3+bj4vkREykqXSfz+yJ1z1WqjGU0jWdA7aeM5x
+ bh=zwYuUUVIbXmvRXAn0iA1vobSjJIppJvvXAmZxGXeCM8=;
+ b=fe6mJg0I8EYeeDH1SRaOoku+kWHl7bJSQMptDTwIIsKsJjM2Ye2E/BZe2PgrQWFS3Q+DLWrY6
+ M/7B5bZqr4yBBq/kg9oZ6WE/NN10dRp5OB3IueAP5ByiUJ0dMCiYOS+
 X-Developer-Key: i=arinc.unal@arinc9.com; a=ed25519;
  pk=z49tLn29CyiL4uwBTrqH9HO1Wu3sZIuRp4DaLZvtP9M=
 X-Endpoint-Received: by B4 Relay for arinc.unal@arinc9.com/arinc9-Xeront
  with auth_id=137
 X-Original-From: =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240419_030941_660816_6F949495 
-X-CRM114-Status: GOOD (  11.85  )
+X-CRM114-CacheID: sfid-20240419_030941_638634_AC1137BB 
+X-CRM114-Status: GOOD (  10.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,73 +99,51 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-The MT7530_PMEEECR_P() register is on MT7530, MT7531, and the switch on the
-MT7988 SoC. Rename the definition for them to MT753X_PMEEECR_P(). Use the
-FIELD_PREP and FIELD_GET macros. Rename GET_LPI_THRESH() and
-SET_LPI_THRESH() to LPI_THRESH_GET() and LPI_THRESH_SET().
-
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 ---
- drivers/net/dsa/mt7530.c |  8 ++++----
- drivers/net/dsa/mt7530.h | 13 +++++++------
- 2 files changed, 11 insertions(+), 10 deletions(-)
+ drivers/net/dsa/mt7530.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 842c2573dfe4..5e69ff0a4b24 100644
+index 5e69ff0a4b24..55954a165a15 100644
 --- a/drivers/net/dsa/mt7530.c
 +++ b/drivers/net/dsa/mt7530.c
-@@ -3051,10 +3051,10 @@ static int mt753x_get_mac_eee(struct dsa_switch *ds, int port,
- 			      struct ethtool_keee *e)
- {
- 	struct mt7530_priv *priv = ds->priv;
--	u32 eeecr = mt7530_read(priv, MT7530_PMEEECR_P(port));
-+	u32 eeecr = mt7530_read(priv, MT753X_PMEEECR_P(port));
+@@ -1411,7 +1411,7 @@ mt7530_port_set_vlan_unaware(struct dsa_switch *ds, int port)
+ 	mt7530_rmw(priv, MT7530_PPBV1_P(port), G0_PORT_VID_MASK,
+ 		   G0_PORT_VID_DEF);
  
- 	e->tx_lpi_enabled = !(eeecr & LPI_MODE_EN);
--	e->tx_lpi_timer = GET_LPI_THRESH(eeecr);
-+	e->tx_lpi_timer = LPI_THRESH_GET(eeecr);
+-	for (i = 0; i < MT7530_NUM_PORTS; i++) {
++	for (i = 0; i < priv->ds->num_ports; i++) {
+ 		if (dsa_is_user_port(ds, i) &&
+ 		    dsa_port_is_vlan_filtering(dsa_to_port(ds, i))) {
+ 			all_user_ports_removed = false;
+@@ -2428,7 +2428,7 @@ mt7530_setup(struct dsa_switch *ds)
+ 	/* Enable and reset MIB counters */
+ 	mt7530_mib_reset(ds);
  
- 	return 0;
- }
-@@ -3068,11 +3068,11 @@ static int mt753x_set_mac_eee(struct dsa_switch *ds, int port,
- 	if (e->tx_lpi_timer > 0xFFF)
- 		return -EINVAL;
+-	for (i = 0; i < MT7530_NUM_PORTS; i++) {
++	for (i = 0; i < priv->ds->num_ports; i++) {
+ 		/* Clear link settings and enable force mode to force link down
+ 		 * on all ports until they're enabled later.
+ 		 */
+@@ -2539,7 +2539,7 @@ mt7531_setup_common(struct dsa_switch *ds)
+ 	mt7530_clear(priv, MT753X_MFC, BC_FFP_MASK | UNM_FFP_MASK |
+ 		     UNU_FFP_MASK);
  
--	set = SET_LPI_THRESH(e->tx_lpi_timer);
-+	set = LPI_THRESH_SET(e->tx_lpi_timer);
- 	if (!e->tx_lpi_enabled)
- 		/* Force LPI Mode without a delay */
- 		set |= LPI_MODE_EN;
--	mt7530_rmw(priv, MT7530_PMEEECR_P(port), mask, set);
-+	mt7530_rmw(priv, MT753X_PMEEECR_P(port), mask, set);
+-	for (i = 0; i < MT7530_NUM_PORTS; i++) {
++	for (i = 0; i < priv->ds->num_ports; i++) {
+ 		/* Clear link settings and enable force mode to force link down
+ 		 * on all ports until they're enabled later.
+ 		 */
+@@ -2626,7 +2626,7 @@ mt7531_setup(struct dsa_switch *ds)
+ 	priv->p5_sgmii = !!(val & PAD_DUAL_SGMII_EN);
  
- 	return 0;
- }
-diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
-index 1f3aeccc77be..6a6ef34b48c4 100644
---- a/drivers/net/dsa/mt7530.h
-+++ b/drivers/net/dsa/mt7530.h
-@@ -364,13 +364,14 @@ enum mt7530_vlan_port_acc_frm {
- 					 PMCR_FORCE_SPEED_100 | \
- 					 PMCR_FORCE_FDX | PMCR_FORCE_LNK)
+ 	/* Force link down on all ports before internal reset */
+-	for (i = 0; i < MT7530_NUM_PORTS; i++)
++	for (i = 0; i < priv->ds->num_ports; i++)
+ 		mt7530_write(priv, MT753X_PMCR_P(i), MT7531_FORCE_MODE_LNK);
  
--#define MT7530_PMEEECR_P(x)		(0x3004 + (x) * 0x100)
--#define  WAKEUP_TIME_1000(x)		(((x) & 0xFF) << 24)
--#define  WAKEUP_TIME_100(x)		(((x) & 0xFF) << 16)
-+#define MT753X_PMEEECR_P(x)		(0x3004 + (x) * 0x100)
-+#define  WAKEUP_TIME_1000_MASK		GENMASK(31, 24)
-+#define  WAKEUP_TIME_1000(x)		FIELD_PREP(WAKEUP_TIME_1000_MASK, x)
-+#define  WAKEUP_TIME_100_MASK		GENMASK(23, 16)
-+#define  WAKEUP_TIME_100(x)		FIELD_PREP(WAKEUP_TIME_100_MASK, x)
- #define  LPI_THRESH_MASK		GENMASK(15, 4)
--#define  LPI_THRESH_SHT			4
--#define  SET_LPI_THRESH(x)		(((x) << LPI_THRESH_SHT) & LPI_THRESH_MASK)
--#define  GET_LPI_THRESH(x)		(((x) & LPI_THRESH_MASK) >> LPI_THRESH_SHT)
-+#define  LPI_THRESH_GET(x)		FIELD_GET(LPI_THRESH_MASK, x)
-+#define  LPI_THRESH_SET(x)		FIELD_PREP(LPI_THRESH_MASK, x)
- #define  LPI_MODE_EN			BIT(0)
- 
- #define MT7530_PMSR_P(x)		(0x3008 + (x) * 0x100)
+ 	/* Reset the switch through internal reset */
 
 -- 
 2.40.1
