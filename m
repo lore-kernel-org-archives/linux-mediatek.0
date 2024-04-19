@@ -4,70 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEBFDC4345F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Apr 2024 16:19:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82136C4345F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Apr 2024 07:21:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=/50KHaIs29lLGccUeuSbjtU9Qx2XGf+W4BZDJ2OT3ro=; b=zWJteccBaiYCPTDFc0XmTp/AcX
-	+eUXd2WTj0349IfhbNNydCADixhiX/+j2TgbVqsNHb7qpyg7SokSTWmKoMY4NOsaCjuQqIEk86w6t
-	qp/xUa0I5db4Fcu4xxs/OVtaVWPQ9/MfFgDVOl3r7jrtbuxKiSDcoyoUQRLnQzmwsYhRET3GXp1wx
-	2Hx11S6Tcs8G171drUXGOss/tHjS4zmBH4BXIjwJ0rZ2WMoCnkRUCebL4oGY+lhYn9kfPdm61Gx8y
-	g7qDxifOJZ3I1pkkFbSLxCRnVX0S9yNIfEdtdzCjbVRcJQiVOfp1aIh2Ro07g7q9IdkLS8iBRqlKM
-	o0yLHnVQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XLn6sA+tFXRFN9fw1dmPkOhK+4eMKOdYMNRVOnpDOYk=; b=J4eVzy+NatBeMumz/RzdOjmOIe
+	ADaX8OdxU1Yf9J/jQ/T6cbtDXEqL1LgLQcIZgsbkSl+fM/oa5Y6VI0S8JgFKPg7gu3KZK0iE1zjgf
+	jdiqc6vNKUkPlg6MZQVcX/Rqrl8kWd/MaUzLDYsbbiYSJ5MLxnVAU6hKH6dJV7sDWrnCoObP/31mZ
+	88TVM/bGcSl9WY1+F2LPnUwI/By0bKOtXUwgowd7CwtfCNlZL+RFT7uNYdin3Avl03FEJ1GzkXFCj
+	vgx6yPS+yQin+yQYltnPgU+0GwBP/azTkuJFXYrJRjGpbtHrjpHzLcg9Aqjg0/91mMmFlWr2/qoi6
+	EpQ54uPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxUTt-00000002zSq-0b5G;
-	Thu, 18 Apr 2024 16:19:25 +0000
-Received: from mail1.fiberby.net ([193.104.135.124])
+	id 1rxiYU-00000004kxm-0uCY;
+	Fri, 19 Apr 2024 07:21:06 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxUTo-00000002zQZ-2aOK;
-	Thu, 18 Apr 2024 16:19:22 +0000
-Received: from x201s (193-104-135-243.ip4.fiberby.net [193.104.135.243])
-	by mail1.fiberby.net (Postfix) with ESMTPSA id 73B53600A5;
-	Thu, 18 Apr 2024 16:18:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=fiberby.net;
-	s=202008; t=1713457156;
-	bh=dI6Cqzw1iKtIkYphmVcf4PPF7ZmfJQ37K3PfXaknTEw=;
-	h=From:To:Cc:Subject:Date:From;
-	b=g3GKpEMcJ4JZdrNGGO8E+o2xBduPlDkBTG904wvBPPgua1rSNNW+scR/mHXOoTSKe
-	 a59sXLHLUjHNKv5h9iF5O7acFSKbe+iiSB2k1kCCbvxl4OfsXSV6Hq2iHForPY0N5o
-	 q9nBSms94UZM4kIeQNhim9kae7zQ/nKPa0KvRY2nNQU6dDcl8etcPb/adR5m1/ANU7
-	 1+TGbjWZIdHnvp9Vchn8X1L3VZQP/N211ko43qrccFhcZEaQSarLLBVcgxbJ8ulOVu
-	 cGeCcFOOL3zk00L30yLBhapKZzR8BXgGdJ+xBmi8tgnUfXRgrzi9bKVeN3fLl4E8CU
-	 1VlMdY6mljtDw==
-Received: by x201s (Postfix, from userid 1000)
-	id 85E9720EF3E; Thu, 18 Apr 2024 16:18:22 +0000 (UTC)
-From: =?UTF-8?q?Asbj=C3=B8rn=20Sloth=20T=C3=B8nnesen?= <ast@fiberby.net>
-To: netdev@vger.kernel.org
-Cc: =?UTF-8?q?Asbj=C3=B8rn=20Sloth=20T=C3=B8nnesen?= <ast@fiberby.net>,
-	linux-kernel@vger.kernel.org,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Felix Fietkau <nbd@nbd.name>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH net-next] net: ethernet: mtk_eth_soc: flower: validate control flags
-Date: Thu, 18 Apr 2024 16:18:15 +0000
-Message-ID: <20240418161821.189263-1-ast@fiberby.net>
-X-Mailer: git-send-email 2.43.0
+	id 1rxiYR-00000004kvX-00td
+	for linux-mediatek@lists.infradead.org;
+	Fri, 19 Apr 2024 07:21:04 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1rxiYB-0005ps-9Y; Fri, 19 Apr 2024 09:20:47 +0200
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1rxiY9-00D7BW-2B; Fri, 19 Apr 2024 09:20:45 +0200
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.96)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1rxiY8-003uPa-36;
+	Fri, 19 Apr 2024 09:20:44 +0200
+Date: Fri, 19 Apr 2024 09:20:44 +0200
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>
+Cc: Frank Binns <frank.binns@imgtec.com>, 
+	Matt Coster <matt.coster@imgtec.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-mediatek@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, Thierry Reding <thierry.reding@gmail.com>, 
+	Mikko Perttunen <mperttunen@nvidia.com>, linux-tegra@vger.kernel.org
+Subject: Re: [PATCH 0/4] gpu: Convert to platform remove callback returning
+ void
+Message-ID: <xqwcrxfrg3ogplh35c5etl6nbzw6zueilm4h6euh7bnpszyir4@6dtn5qdvijv3>
+References: <cover.1712681770.git.u.kleine-koenig@pengutronix.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="zqtl7cbpfineoepn"
+Content-Disposition: inline
+In-Reply-To: <cover.1712681770.git.u.kleine-koenig@pengutronix.de>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240418_091920_818493_9A866819 
-X-CRM114-Status: UNSURE (   9.48  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240419_002103_166963_7E3492BC 
+X-CRM114-Status: GOOD (  19.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,37 +83,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This driver currently doesn't support any control flags.
 
-Use flow_rule_has_control_flags() to check for control flags,
-such as can be set through `tc flower ... ip_flags frag`.
+--zqtl7cbpfineoepn
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-In case any control flags are masked, flow_rule_has_control_flags()
-sets a NL extended error message, and we return -EOPNOTSUPP.
+Hello,
 
-Only compile-tested.
+On Tue, Apr 09, 2024 at 07:02:47PM +0200, Uwe Kleine-K=F6nig wrote:
+> with some patches sent earlier[1], this series converts all platform
+> drivers below drivers/gpu to not use struct platform_device::remove()
+> any more.
+>=20
+> See commit 5c5a7680e67b ("platform: Provide a remove callback that
+> returns no value") for an extended explanation and the eventual goal.
+>=20
+> All conversations are trivial, because the driver's .remove() callbacks
+> returned zero unconditionally.
+>=20
+> There are no interdependencies between these patches. This is merge
+> window material.
 
-Signed-off-by: Asbjørn Sloth Tønnesen <ast@fiberby.net>
----
- drivers/net/ethernet/mediatek/mtk_ppe_offload.c | 4 ++++
- 1 file changed, 4 insertions(+)
+I wonder how this series will make it in. While I would prefer these
+patches to go in together (that I can consider this thread completed in
+one go), I think with how drm maintenace works, it's best if the patches
+are picked up by their individual maintainers. I guess that's:
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-index fbb5e9d5af13..aa262e6f4b85 100644
---- a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-+++ b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-@@ -273,6 +273,10 @@ mtk_flow_offload_replace(struct mtk_eth *eth, struct flow_cls_offload *f,
- 
- 		flow_rule_match_control(rule, &match);
- 		addr_type = match.key->addr_type;
-+
-+		if (flow_rule_has_control_flags(match.mask->flags,
-+						f->common.extack))
-+			return -EOPNOTSUPP;
- 	} else {
- 		return -EOPNOTSUPP;
- 	}
--- 
-2.43.0
+ - Frank Binns + Matt Coster for imagination
 
+ - Chun-Kuang Hu + Philipp Zabel for mediatek
+
+ - Thierry Reding + Mikko Perttunen for the host1x driver
+   (Note there is another patch for this driver set at
+    20240409165043.105137-2-u.kleine-koenig@pengutronix.de that is
+    relevant for the same quest.)
+
+ - Philipp Zabel for ipu-v3
+
+I plan to send a patch changing struct platform_driver::remove after the
+end of the merge window leading to 6.10-rc1 for inclusion in next via
+Greg's driver core. So please either care the patches land in 6.10-rc1
+or ack that I include them in the submission to Greg.
+
+Thanks for your cooperation,
+Uwe
+
+--=20
+Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
+Industrial Linux Solutions                 | https://www.pengutronix.de/ |
+
+--zqtl7cbpfineoepn
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmYiG0sACgkQj4D7WH0S
+/k5uYwf/bmP6h2EDhf4HeD6t6iH04mtOMqGj0P+x7unUIW9fwa+06Vtnjj0TW/DR
+WgWu8rFS3I02j3D51b14SGZRNrIEXwSkNNVQLPZbe8pu9akVVYtymL7xxNM4ksLk
+83PrwKdtdx2khdWfc7kOWM+zu2IkKTkHvRQqrx/jCrz9OpAA+2DJpqtt0CnYOMgu
+eF4ev9d7wG7VdP8jks1/anWuqbDAIVStCnA1MaCISsXl2e2ZGZfSE99Mg1h94eLd
+AX2IRPASplCkOA1L2Klfkye65Pqyfi1gnxnawcUbhkcZ4ffdg7jFAEaCXPqfHEKP
+w+LYkIVZlBBGdz0EuoGrVlGwPo7Ixg==
+=stkl
+-----END PGP SIGNATURE-----
+
+--zqtl7cbpfineoepn--
 
