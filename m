@@ -4,67 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37264C4345F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Apr 2024 08:55:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04324C4345F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Apr 2024 09:23:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=E5KzsI1r985YbuWl9u53Q0Y08ML3MWhBVBwKzEgP884=; b=CuQey0S3Nv7qkvmuoUmhYY0QY3
-	rfb0WFrWIgdKm/h8TqHN2iNyYjKGaeqqFytamgXgls78Be8zbs5D29E317Vk6vc2FpleeYPzONDsY
-	CKfN3A5g9pcTz2zd+WQ4DJVeDVCda56MlF7hlvCk44o3wMwX6IuIv7NPlt/rjS0BYSSB3KBGU45df
-	P+6PCuYZF2ck8G8PMSzB6e2e4O/2+1K+awQ1015KtungeIqRKpbaUA88m662rbtVCgSfodJed8NP8
-	kqCgSevpa9dlmY8/crWiGMUk9KNHceE7Y2NyXXpgNX5qL541/nStibtZe87hsk8TLVFiXcfugiy0O
-	lpOurUjw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=y576gXoPcjc3Y2FVL6fqBu3Gc7Q1+NXvtH+iYdNf3yU=; b=v4H/LNJNcq+ylCAE4jTmSqdXgk
+	Ek4pm+DXdh7m3MoHJLxrPjlhzKRPF+3ng4chbev4EJL2g59wSQHN8vQ6XSHZK+qzNIgu12OMwfzIU
+	PhB3y6U9D1M+gfjDQMWmnGSxM+o03/vRb4pCxbkNIgVJp+/QSVqC8sbHjDDTQjvSTDj3I3uyTeWWX
+	Si9rqk829H/cFU9GR5C7j2Mg1x8A0NSfST/73ZQ3bRe6IevOo0TTAlP7+exS096Hwerqphvegg611
+	dXfK5CuF0lyplKbBVWeimm6MiaVfgEL03phT7VhMPllRoZ8GFNeX3bpauZ0Ao4cAKeOisJmrCFs8d
+	GzTEj0pA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxk2I-000000050Jj-3X7h;
-	Fri, 19 Apr 2024 08:55:58 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1rxkSW-000000054kM-2mrP;
+	Fri, 19 Apr 2024 09:23:04 +0000
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxk2E-000000050I2-1neE;
-	Fri, 19 Apr 2024 08:55:56 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 2795E61910;
-	Fri, 19 Apr 2024 08:55:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6A996C2BD10;
-	Fri, 19 Apr 2024 08:55:51 +0000 (UTC)
-Authentication-Results: smtp.kernel.org;
-	dkim=pass (1024-bit key) header.d=zx2c4.com header.i=@zx2c4.com header.b="FLQ8+lk2"
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=zx2c4.com; s=20210105;
-	t=1713516948;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=E5KzsI1r985YbuWl9u53Q0Y08ML3MWhBVBwKzEgP884=;
-	b=FLQ8+lk2CyNtCqkfxzqO0MlHs9VO/H9k6VbdjGcBtDyvPIXLHKJpbpQdABsVbiH4ohrxAG
-	kPV3/ljiaWF8eUgMjcSRwkvNh+QjUI/NbnkOmvgla1Y8NwECBsi7bB7vfhpzV9+0HFJHEt
-	7qxiUXyYbi/VxZVfaBnNRNOpJJbWiJA=
-Received: by mail.zx2c4.com (ZX2C4 Mail Server) with ESMTPSA id c9162869 (TLSv1.3:TLS_AES_256_GCM_SHA384:256:NO);
-	Fri, 19 Apr 2024 08:55:46 +0000 (UTC)
-Date: Fri, 19 Apr 2024 10:55:44 +0200
-From: "Jason A. Donenfeld" <Jason@zx2c4.com>
-To: Guoyong Wang <guoyong.wang@mediatek.com>
-Cc: Theodore Ts'o <tytso@mit.edu>, Tejun Heo <tj@kernel.org>,
-	Lai Jiangshan <jiangshanlai@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com
-Subject: Re: [PATCH] random: Fix the issue of '_might_sleep' function running
- in an atomic contex
-Message-ID: <ZiIxkN3uMvHhujW2@zx2c4.com>
-References: <20240417120217.3814215-2-Jason@zx2c4.com>
- <20240419084112.4089-1-guoyong.wang@mediatek.com>
+	id 1rxkSS-000000054hv-0Yl5
+	for linux-mediatek@lists.infradead.org;
+	Fri, 19 Apr 2024 09:23:03 +0000
+Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-418c0d83d18so13238235e9.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 19 Apr 2024 02:22:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1713518574; x=1714123374; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=y576gXoPcjc3Y2FVL6fqBu3Gc7Q1+NXvtH+iYdNf3yU=;
+        b=DGEP9bm2iRdQrIBHnxiPh1XiJ0++epzxksBLDKddPwJrv3ed1dVVgNuBlmKPUIxmL/
+         DPkMnVH85o952oW1NZR6e38e6QcdyqTVXwvIcoxxzZ61fyZ1FeKOYlq0DTiILb4y2vTB
+         yaFL9KiBWxW6r0rhIENljUv5qYkPg5vFF/CFb+/IL7K+treBpURohFEYhzSoPDU43loM
+         DDHxk72H+LQRFXlbmTeTDfLY7qTp3c+R81xvDV6UHWJ2gCF8AcxkDvO8lG0AoI9zflnp
+         VzXSGYQXpQubvba59XjtXUUFBdXFTulgX/P+by+E43b1zImXnya74MZRZ7USJVyen2+r
+         LCJA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1713518574; x=1714123374;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=y576gXoPcjc3Y2FVL6fqBu3Gc7Q1+NXvtH+iYdNf3yU=;
+        b=aAlryHidC4TRpuey6nv/Sl7LnwGajefIG5XwVbGfyzYEUI4Fy2ZDFQhtWcf7doEvHs
+         dJ0sD0iOZqPFQdDAI5lbjfe4cABYMXlyHmRwS2B4PSCLP23WnX+yksyY3iOtETro7KEo
+         YfODEUhQp4xemt2gK5Goflmsu+XeDVPRAabFdfPRhvKYKx4t07F1yCH6/pMxLcuQt+id
+         LFJtXjWThxUIGtsWF7a5aL7cR6uI09lSl743ypBNutE0LZp9KI2wv1NUNz/BcBrV7kIq
+         efXYaI4yX0fElqpI5Gs8REut6k0p1w625wIzpfwEqP2UZ/7vNUovh+K51tEB2cuD85Q2
+         6+8w==
+X-Forwarded-Encrypted: i=1; AJvYcCUpc3hR+QJKh0a4BYWCfo7JaecfgkH15Ca+Ka6w3Ln21QhI9dn+YPQqthh+ykGiUeO/HtL+i5M7cNIZEzgl9mrxuK/DVw98vUNrx9Fd3r4+tCle
+X-Gm-Message-State: AOJu0YwN613H/BHLf+9hhToenKFpZVhuFx4C1qMaHGy2XpdNtei2Nipy
+	09AuMtsvnvsxvlmhF0ZIkH5Aw47pcWtJpyY63SLhPPMvSW7iZzvWDoONuHrCwD8=
+X-Google-Smtp-Source: AGHT+IGEMMwvqsWa1wBPlb1YxcuxGJHgk4ZlrLlGwj3TJU4+1nuQXEqo0CbuUtJgEODgebOizRMxsg==
+X-Received: by 2002:a05:600c:1d0f:b0:418:f6b7:a383 with SMTP id l15-20020a05600c1d0f00b00418f6b7a383mr990122wms.2.1713518574007;
+        Fri, 19 Apr 2024 02:22:54 -0700 (PDT)
+Received: from [192.168.1.172] ([93.5.22.158])
+        by smtp.gmail.com with ESMTPSA id b10-20020a05600c4e0a00b00418f30874b4sm4015450wmq.17.2024.04.19.02.22.52
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 19 Apr 2024 02:22:53 -0700 (PDT)
+Message-ID: <57705980-e776-4178-878d-15c2007f7ef3@baylibre.com>
+Date: Fri, 19 Apr 2024 11:22:52 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20240419084112.4089-1-guoyong.wang@mediatek.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 14/17] drm/mediatek: add MT8365 SoC support
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+ Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Jitao Shi <jitao.shi@mediatek.com>,
+ CK Hu <ck.hu@mediatek.com>, =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?=
+ <u.kleine-koenig@pengutronix.de>, Michael Turquette
+ <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>,
+ Fabien Parent <fparent@baylibre.com>,
+ Markus Schneider-Pargmann <msp@baylibre.com>,
+ Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-pwm@vger.kernel.org,
+ linux-clk@vger.kernel.org
+References: <20231023-display-support-v3-0-53388f3ed34b@baylibre.com>
+ <20231023-display-support-v3-14-53388f3ed34b@baylibre.com>
+ <9ef43fff-ee2a-4b2c-a595-30f5bf7588c2@collabora.com>
+Content-Language: en-US
+From: Alexandre Mergnat <amergnat@baylibre.com>
+In-Reply-To: <9ef43fff-ee2a-4b2c-a595-30f5bf7588c2@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240419_015554_739458_8AF19EBF 
-X-CRM114-Status: GOOD (  41.94  )
+X-CRM114-CacheID: sfid-20240419_022300_181364_6E5E0E06 
+X-CRM114-Status: GOOD (  23.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,107 +113,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Apr 19, 2024 at 04:41:12PM +0800, Guoyong Wang wrote:
-> On Wed, 17 Apr 2024 14:01:11 +0200, Jason A. Donenfeld wrote:
-> > The entropy accounting changes a static key when the RNG has
-> > initialized, since it only ever initializes once. Static key changes,
-> > however, cannot be made from atomic context, so depending on where the
-> > last creditable entropy comes from, the static key change might need to
-> > be deferred to a worker.
-> > 
-> > Previously the code used the execute_in_process_context() helper
-> > function, which accounts for whether or not the caller is
-> > in_interrupt(). However, that doesn't account for the case where the
-> > caller is actually in process context but is holding a spinlock.
-> > 
-> > This turned out to be the case with input_handle_event() in
-> > drivers/input/input.c contributing entropy:
-> > 
-> >   [<ffffffd613025ba0>] die+0xa8/0x2fc
-> >   [<ffffffd613027428>] bug_handler+0x44/0xec
-> >   [<ffffffd613016964>] brk_handler+0x90/0x144
-> >   [<ffffffd613041e58>] do_debug_exception+0xa0/0x148
-> >   [<ffffffd61400c208>] el1_dbg+0x60/0x7c
-> >   [<ffffffd61400c000>] el1h_64_sync_handler+0x38/0x90
-> >   [<ffffffd613011294>] el1h_64_sync+0x64/0x6c
-> >   [<ffffffd613102d88>] __might_resched+0x1fc/0x2e8
-> >   [<ffffffd613102b54>] __might_sleep+0x44/0x7c
-> >   [<ffffffd6130b6eac>] cpus_read_lock+0x1c/0xec
-> >   [<ffffffd6132c2820>] static_key_enable+0x14/0x38
-> >   [<ffffffd61400ac08>] crng_set_ready+0x14/0x28
-> >   [<ffffffd6130df4dc>] execute_in_process_context+0xb8/0xf8
-> >   [<ffffffd61400ab30>] _credit_init_bits+0x118/0x1dc
-> >   [<ffffffd6138580c8>] add_timer_randomness+0x264/0x270
-> >   [<ffffffd613857e54>] add_input_randomness+0x38/0x48
-> >   [<ffffffd613a80f94>] input_handle_event+0x2b8/0x490
-> >   [<ffffffd613a81310>] input_event+0x6c/0x98
-> > 
-> > According to Guoyong, it's not really possible to refactor the various
-> > drivers to never hold a spinlock there. And in_atomic() isn't reliable.
-> > 
-> > So, rather than trying to be too fancy, just punt the change in the
-> > static key to a workqueue always. There's basically no drawback of doing
-> > this, as the code already needed to account for the static key not
-> > changing immediately, and given that it's just an optimization, there's
-> > not exactly a hurry to change the static key right away, so deferal is
-> > fine.
-> > 
-> > Reported-by: Guoyong Wang <guoyong.wang@mediatek.com>
-> > Cc: stable@vger.kernel.org
-> > Fixes: f5bda35fba61 ("random: use static branch for crng_ready()")
-> > Signed-off-by: Jason A. Donenfeld <Jason@zx2c4.com>
-> > ---
-> > Guoyong- can you test this and tell me whether it fixes the problem you
-> > were seeing? If so, I'll try to get this sent up for 6.9. -Jason
-> > 
-> >  drivers/char/random.c | 10 +++++-----
-> >  1 file changed, 5 insertions(+), 5 deletions(-)
-> > 
-> > diff --git a/drivers/char/random.c b/drivers/char/random.c
-> > index 456be28ba67c..2597cb43f438 100644
-> > --- a/drivers/char/random.c
-> > +++ b/drivers/char/random.c
-> > @@ -702,7 +702,7 @@ static void extract_entropy(void *buf, size_t len)
-> >  
-> >  static void __cold _credit_init_bits(size_t bits)
-> >  {
-> > -       static struct execute_work set_ready;
-> > +       static DECLARE_WORK(set_ready, crng_set_ready);
-> >         unsigned int new, orig, add;
-> >         unsigned long flags;
-> >  
-> > @@ -718,8 +718,8 @@ static void __cold _credit_init_bits(size_t bits)
-> >  
-> >         if (orig < POOL_READY_BITS && new >= POOL_READY_BITS) {
-> >                 crng_reseed(NULL); /* Sets crng_init to CRNG_READY under base_crng.lock. */
-> > -               if (static_key_initialized)
-> > -                       execute_in_process_context(crng_set_ready, &set_ready);
-> > +               if (static_key_initialized && system_unbound_wq)
-> > +                       queue_work(system_unbound_wq, &set_ready);
-> >                 atomic_notifier_call_chain(&random_ready_notifier, 0, NULL);
-> >                 wake_up_interruptible(&crng_init_wait);
-> >                 kill_fasync(&fasync, SIGIO, POLL_IN);
-> > @@ -890,8 +890,8 @@ void __init random_init(void)
-> >  
-> >         /*
-> >          * If we were initialized by the cpu or bootloader before jump labels
-> > -        * are initialized, then we should enable the static branch here, where
-> > -        * it's guaranteed that jump labels have been initialized.
-> > +        * or workqueues are initialized, then we should enable the static
-> > +        * branch here, where it's guaranteed that these have been initialized.
-> >          */
-> >         if (!static_branch_likely(&crng_is_ready) && crng_init >= CRNG_READY)
-> >                 crng_set_ready(NULL);
-> > -- 
-> > 2.44.0
-> 
-> Hi Jason,
-> 
-> Thanks for your feedback. We concur with the proposed change and have verified that it works well 
-> in our tests. Next, I will provide a patch v2 for the changes discussed.
 
-No need. This is already upstream and has your Reported-by. It'll get
-backported to stable too.
 
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=e871abcda3b67d0820b4182ebe93435624e9c6a4
+On 19/04/2024 10:01, AngeloGioacchino Del Regno wrote:
+> Il 18/04/24 16:17, amergnat@baylibre.com ha scritto:
+>> From: Fabien Parent <fparent@baylibre.com>
+>>
+>> Add DRM support for MT8365 SoC.
+>>
+>> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+>> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+> 
+> There are two things that I want to point out. Please check below.
+> 
+> The series that I've sent for adding OF Graphs [1] support to MediaTek DRM is
+> not going to be picked in time for v6.10, but I think neither your MT8365 support
+> series is, and that's why I'm telling you this.
+> 
+> If your work was based off my series, you would not need to add the MT8365 ddp
+> MAIN and EXT paths to mtk_drm_drv: you'd just add it to the bindings and then
+> you would declare the paths in devicetree.
+
+Ok then I will rebase my v4 on top of your serie
+
+> 
+> 
+> [1]: https://lore.kernel.org/r/20240409120211.321153-1-angelogioacchino.delregno@collabora.com
+> 
+> There's also one more comment....
+> 
+>> ---
+>>   drivers/gpu/drm/mediatek/mtk_drm_drv.c | 30 ++++++++++++++++++++++++++++++
+>>   1 file changed, 30 insertions(+)
+>>
+>> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+>> index 74832c213092..427b601309c4 100644
+>> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+>> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> 
+> ..snip..
+> 
+>> @@ -793,6 +821,8 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
+>>         .data = (void *)MTK_DSI },
+>>       { .compatible = "mediatek,mt8188-dsi",
+>>         .data = (void *)MTK_DSI },
+>> +    { .compatible = "mediatek,mt8365-dpi",
+> 
+> You removed the mt8365 specific compatible from the DPI driver - why did you keep
+> it here?! that's not needed! :-)
+
+Sorry for that, I forgot to remove it in this driver too. Thanks to catched it.
+
+> 
+> Cheers,
+> Angelo
+> 
+>> +      .data = (void *)MTK_DPI },
+>>       { }
+>>   };
+>>
+> 
+
+-- 
+Regards,
+Alexandre
 
