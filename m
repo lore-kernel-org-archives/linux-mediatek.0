@@ -4,53 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB134C04FFE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Apr 2024 10:11:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F5E9C071FD
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Apr 2024 10:11:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
 	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
 	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MSApW4iYXP3Av8G7sVoL9iyf66vz/84DcyNS78Mksfw=; b=NH07Csc7SKhV7eQisq4oK764HC
-	iWuXx3lU3lyNzUeVmL+FUiQbcDXrkq7MvknHFRnnkCbN1San4s+Au9CISHzcAXx3l9Xb9At0w029q
-	S8Vp5pYH/hbRPbMVYQ0TdsKR9xsWZVJoC6BGSrU4v8a0Fl//I7Ee68IrXl/UKRLVMc2kXZp4n78O6
-	WPFycJpiI2Z1xKnm7g1ctIgLUaW30m/yo/IW2Nk4E3QJbV3kpWJuKI3eP8wUclgp7slNxBOPKD7iW
-	Ro4/n0GJfdGdBU20XKDzrLJpZZCIKBs/2UcZJ93JUnBd9rhTUEbvoLqHGGmU0/WwuX7czoL/0WqvL
-	ZQckz0lw==;
+	bh=Gct20XLIuYHSt+9lbrp775EiPGhqYMH/bCsk7JRn7F8=; b=D3Ed7+aIWDq0T0dFy7ZLRWoNvr
+	WiaSSOFTCcjCywq7R1fcw5H7TxHVNPwDT6YLyMCJIYS3zjPAjnhXyGS8r8cqpZ/m0U2LPTtHe3B3Q
+	5zIfwM8bP+jKoFY69KzP8OuUM+Y7FWUrY6jpCnqn5liEs4tx9jDFVLlYgFFCSUe+E+aMTsxxHPySy
+	t2OOIaikwSeI5Kp594xPIIuU8/rT1AwfEjIbWJNVNdCfm02U7/BgOtAf0AQiZ7MApYYf0IndzNONQ
+	HSfTtGIXyNjuV5vwqSQaZp6lwpJ47rhOSeH7KGuW32SJpRopHULt+x3EFCE6CchEjeEG+WM2tgHHx
+	zc0Hcv4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxlDU-00000005FQq-0S6w;
-	Fri, 19 Apr 2024 10:11:36 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1rxlDV-00000005FT2-3g6u;
+	Fri, 19 Apr 2024 10:11:37 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxlBd-00000005ED3-2eqy;
-	Fri, 19 Apr 2024 10:09:46 +0000
+	id 1rxlBe-00000005EGB-1xfE;
+	Fri, 19 Apr 2024 10:09:47 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 5A38DCE1A4D;
+	by dfw.source.kernel.org (Postfix) with ESMTP id 6600B61958;
+	Fri, 19 Apr 2024 10:09:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 3C2CCC4AF18;
 	Fri, 19 Apr 2024 10:09:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 80005C2BD10;
-	Fri, 19 Apr 2024 10:09:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1713521377;
-	bh=iyZfRIz2oGdpKJ1+nD/8wWwJ5jum0Zo+YFlASEG8cYY=;
+	s=k20201202; t=1713521378;
+	bh=zupCYmW/khoZsM2dTyo44r06AeRMOCSbdh6WzpcdHaQ=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=b4D9NXVpfFWVhk4rhfbjuVp71ru11dpBnxWjvGrMWd4tIDQ8G5Kdr6lKF1QZgKAoj
-	 Ti3w7QFsYvHS0zY6fmk5OSqMOiF0Htj/Vk87IMsHaODANwolhZ/1Ovc832C+0lBZ73
-	 LI0vgF1EpKTWke6GcxHy1ws8b41DeaOa6TwNuWRRdt6O/t4qnt2/XskkJwDL8+Uow3
-	 UwTIfZAbopj2esOoI/RXln4by2IJJGJMx+fU9dAHFP1Ilx+foo/cVVHLeTCs50GiRH
-	 nAXcBmcapGtUpo7Ci1fu+uUjO7NTWBTYCmq4RLgX7DwRcFbYdnTsfyURSpzNouW9lx
-	 Il07RG86k0aZg==
+	b=b5sAkAz+MYlWVHjGyJhb7cjjMrIzPLWwdRocg9MBNvjMifN5c/oWFNcZ3YFa0pOHw
+	 rhg0FS8695lhRsCbTyEFgBfwtyd83UnH5VkXlVethdkYK/JzqPqylBJaJVr4gHIcoU
+	 VKDdVXLMJRji+B0iMICIO3yzKEoUyqm3YeitpHcUGrGd4NsWJMIaFefo+62vu1wkj4
+	 WIpyRnxpzp+FrSBckUZSmpiFmQPIqKFBxsUcA//iM0tb3qJsq6UUHYwXxOR7kyL+5K
+	 5gX4NiKRZ5yFHmUrATbcxtwXvq9ZaR+QZDmm5lNMv+/KvTEhBwptZTKSxeydAxj6z3
+	 70CwM/JLB/jLg==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6DCCEC4345F;
-	Fri, 19 Apr 2024 10:09:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 34513C4345F;
+	Fri, 19 Apr 2024 10:09:38 +0000 (UTC)
 From: =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL_via_B4_Relay?= <devnull+arinc.unal.arinc9.com@kernel.org>
-Date: Fri, 19 Apr 2024 13:09:25 +0300
-Subject: [PATCH net-next 02/13] net: dsa: mt7530: refactor MT7530_PMCR_P()
+Date: Fri, 19 Apr 2024 13:09:35 +0300
+Subject: [PATCH net-next 12/13] net: dsa: mt7530: get rid of
+ mac_port_validate member of mt753x_info
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Message-Id: <20240419-for-netnext-mt7530-improvements-4-v1-2-6d852ca79b1d@arinc9.com>
+Message-Id: <20240419-for-netnext-mt7530-improvements-4-v1-12-6d852ca79b1d@arinc9.com>
 References: <20240419-for-netnext-mt7530-improvements-4-v1-0-6d852ca79b1d@arinc9.com>
 In-Reply-To: <20240419-for-netnext-mt7530-improvements-4-v1-0-6d852ca79b1d@arinc9.com>
 To: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, 
@@ -68,19 +69,19 @@ Cc: Bartel Eerdekens <bartel.eerdekens@constell8.be>,
  linux-mediatek@lists.infradead.org, 
  =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1713521374; l=8131;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1713521374; l=1895;
  i=arinc.unal@arinc9.com; s=arinc9-Xeront; h=from:subject:message-id;
- bh=/1XZ9JHfm5La3LRYYeIf/gk5qAEW+OcTIz4EqNWbcpk=;
- b=6zR7prcnazcWJ5JLfTpDwc0hCN/YqygefYI2vVaYoiWThnCUhPoh4wHjiJ4Ljyykai1c1kiM1
- /WRxy9tTlq9BLlBOm1w2ipis6R5z9AvUOdKsC1oHjQfGB/f0bOJFzCG
+ bh=eQVxi9XpKVjFwy7G/fq5LbkX2JyuVqKa+YvcokozwTs=;
+ b=lxKhAM4lxFCiiqoqRrJSVABwHhzwSUDPFhr7NyBQKSYKAJ/uj+TkzxfnF1NgqOky4nNKWj8lp
+ OBrKUp3G5FsDnkupYnsKRep6NDcDGaDggv/efjBlf2CKrFDM975BVzK
 X-Developer-Key: i=arinc.unal@arinc9.com; a=ed25519;
  pk=z49tLn29CyiL4uwBTrqH9HO1Wu3sZIuRp4DaLZvtP9M=
 X-Endpoint-Received: by B4 Relay for arinc.unal@arinc9.com/arinc9-Xeront
  with auth_id=137
 X-Original-From: =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240419_030942_352368_C1067299 
-X-CRM114-Status: GOOD (  17.03  )
+X-CRM114-CacheID: sfid-20240419_030942_880770_9CF868CD 
+X-CRM114-Status: GOOD (  13.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,202 +99,47 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-The MT7530_PMCR_P() registers are on MT7530, MT7531, and the switch on the
-MT7988 SoC. Rename the definition for them to MT753X_PMCR_P(). Bit 15 is
-for MT7530 only. Add MT7530 prefix to the definition for bit 15.
-
-Use GENMASK and FIELD_PREP for PMCR_IFG_XMIT().
-
-Rename PMCR_TX_EN and PMCR_RX_EN to PMCR_MAC_TX_EN and PMCR_MAC_TX_EN to
-follow the naming on the "MT7621 Giga Switch Programming Guide v0.3",
-"MT7531 Reference Manual for Development Board v1.0", and "MT7988A Wi-Fi 7
-Generation Router Platform: Datasheet (Open Version) v0.1" documents.
-
-These documents show that PMCR_RX_FC_EN is at bit 5. Correct this along
-with renaming it to PMCR_FORCE_RX_FC_EN, and the same for PMCR_TX_FC_EN.
-
-Remove PMCR_SPEED_MASK which doesn't have a use.
-
-Rename the force mode definitions for MT7531 to FORCE_MODE. Add MASK at the
-end for the mask that includes all force mode definitions.
+The mac_port_validate member of the mt753x_info structure is not being
+used, remove it. Improve the member description section in the process.
 
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 ---
- drivers/net/dsa/mt7530.c | 24 ++++++++++----------
- drivers/net/dsa/mt7530.h | 58 +++++++++++++++++++++++++-----------------------
- 2 files changed, 42 insertions(+), 40 deletions(-)
+ drivers/net/dsa/mt7530.h | 10 +++-------
+ 1 file changed, 3 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 04795ef8ebd7..8dee9cee1104 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -896,7 +896,7 @@ static void mt7530_setup_port5(struct dsa_switch *ds, phy_interface_t interface)
- 		val &= ~MHWTRAP_P5_MAC_SEL & ~MHWTRAP_P5_DIS;
- 
- 		/* Setup the MAC by default for the cpu port */
--		mt7530_write(priv, MT7530_PMCR_P(5), 0x56300);
-+		mt7530_write(priv, MT753X_PMCR_P(5), 0x56300);
- 		break;
- 	case P5_INTF_SEL_GMAC5:
- 		/* MT7530_P5_MODE_GMAC: P5 -> External phy or 2nd GMAC */
-@@ -2444,8 +2444,8 @@ mt7530_setup(struct dsa_switch *ds)
- 		/* Clear link settings and enable force mode to force link down
- 		 * on all ports until they're enabled later.
- 		 */
--		mt7530_rmw(priv, MT7530_PMCR_P(i), PMCR_LINK_SETTINGS_MASK |
--			   PMCR_FORCE_MODE, PMCR_FORCE_MODE);
-+		mt7530_rmw(priv, MT753X_PMCR_P(i), PMCR_LINK_SETTINGS_MASK |
-+			   MT7530_FORCE_MODE, MT7530_FORCE_MODE);
- 
- 		/* Disable forwarding by default on all ports */
- 		mt7530_rmw(priv, MT7530_PCR_P(i), PCR_MATRIX_MASK,
-@@ -2555,8 +2555,8 @@ mt7531_setup_common(struct dsa_switch *ds)
- 		/* Clear link settings and enable force mode to force link down
- 		 * on all ports until they're enabled later.
- 		 */
--		mt7530_rmw(priv, MT7530_PMCR_P(i), PMCR_LINK_SETTINGS_MASK |
--			   MT7531_FORCE_MODE, MT7531_FORCE_MODE);
-+		mt7530_rmw(priv, MT753X_PMCR_P(i), PMCR_LINK_SETTINGS_MASK |
-+			   MT7531_FORCE_MODE_MASK, MT7531_FORCE_MODE_MASK);
- 
- 		/* Disable forwarding by default on all ports */
- 		mt7530_rmw(priv, MT7530_PCR_P(i), PCR_MATRIX_MASK,
-@@ -2639,7 +2639,7 @@ mt7531_setup(struct dsa_switch *ds)
- 
- 	/* Force link down on all ports before internal reset */
- 	for (i = 0; i < MT7530_NUM_PORTS; i++)
--		mt7530_write(priv, MT7530_PMCR_P(i), MT7531_FORCE_LNK);
-+		mt7530_write(priv, MT753X_PMCR_P(i), MT7531_FORCE_MODE_LNK);
- 
- 	/* Reset the switch through internal reset */
- 	mt7530_write(priv, MT7530_SYS_CTRL, SYS_CTRL_SW_RST | SYS_CTRL_REG_RST);
-@@ -2881,7 +2881,7 @@ mt753x_phylink_mac_config(struct phylink_config *config, unsigned int mode,
- 
- 	/* Are we connected to external phy */
- 	if (port == 5 && dsa_is_user_port(ds, 5))
--		mt7530_set(priv, MT7530_PMCR_P(port), PMCR_EXT_PHY);
-+		mt7530_set(priv, MT753X_PMCR_P(port), PMCR_EXT_PHY);
- }
- 
- static void mt753x_phylink_mac_link_down(struct phylink_config *config,
-@@ -2891,7 +2891,7 @@ static void mt753x_phylink_mac_link_down(struct phylink_config *config,
- 	struct dsa_port *dp = dsa_phylink_to_port(config);
- 	struct mt7530_priv *priv = dp->ds->priv;
- 
--	mt7530_clear(priv, MT7530_PMCR_P(dp->index), PMCR_LINK_SETTINGS_MASK);
-+	mt7530_clear(priv, MT753X_PMCR_P(dp->index), PMCR_LINK_SETTINGS_MASK);
- }
- 
- static void mt753x_phylink_mac_link_up(struct phylink_config *config,
-@@ -2905,7 +2905,7 @@ static void mt753x_phylink_mac_link_up(struct phylink_config *config,
- 	struct mt7530_priv *priv = dp->ds->priv;
- 	u32 mcr;
- 
--	mcr = PMCR_RX_EN | PMCR_TX_EN | PMCR_FORCE_LNK;
-+	mcr = PMCR_MAC_RX_EN | PMCR_MAC_TX_EN | PMCR_FORCE_LNK;
- 
- 	switch (speed) {
- 	case SPEED_1000:
-@@ -2920,9 +2920,9 @@ static void mt753x_phylink_mac_link_up(struct phylink_config *config,
- 	if (duplex == DUPLEX_FULL) {
- 		mcr |= PMCR_FORCE_FDX;
- 		if (tx_pause)
--			mcr |= PMCR_TX_FC_EN;
-+			mcr |= PMCR_FORCE_TX_FC_EN;
- 		if (rx_pause)
--			mcr |= PMCR_RX_FC_EN;
-+			mcr |= PMCR_FORCE_RX_FC_EN;
- 	}
- 
- 	if (mode == MLO_AN_PHY && phydev && phy_init_eee(phydev, false) >= 0) {
-@@ -2937,7 +2937,7 @@ static void mt753x_phylink_mac_link_up(struct phylink_config *config,
- 		}
- 	}
- 
--	mt7530_set(priv, MT7530_PMCR_P(dp->index), mcr);
-+	mt7530_set(priv, MT753X_PMCR_P(dp->index), mcr);
- }
- 
- static void mt753x_phylink_get_caps(struct dsa_switch *ds, int port,
 diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
-index f7c5355c1642..7d7abb67202f 100644
+index 6a6ef34b48c4..2ea4e24628c6 100644
 --- a/drivers/net/dsa/mt7530.h
 +++ b/drivers/net/dsa/mt7530.h
-@@ -304,44 +304,46 @@ enum mt7530_vlan_port_acc_frm {
- #define  G0_PORT_VID_DEF		G0_PORT_VID(0)
+@@ -743,15 +743,14 @@ struct mt753x_pcs {
  
- /* Register for port MAC control register */
--#define MT7530_PMCR_P(x)		(0x3000 + ((x) * 0x100))
--#define  PMCR_IFG_XMIT(x)		(((x) & 0x3) << 18)
-+#define MT753X_PMCR_P(x)		(0x3000 + ((x) * 0x100))
-+#define  PMCR_IFG_XMIT_MASK		GENMASK(19, 18)
-+#define  PMCR_IFG_XMIT(x)		FIELD_PREP(PMCR_IFG_XMIT_MASK, x)
- #define  PMCR_EXT_PHY			BIT(17)
- #define  PMCR_MAC_MODE			BIT(16)
--#define  PMCR_FORCE_MODE		BIT(15)
--#define  PMCR_TX_EN			BIT(14)
--#define  PMCR_RX_EN			BIT(13)
-+#define  MT7530_FORCE_MODE		BIT(15)
-+#define  PMCR_MAC_TX_EN			BIT(14)
-+#define  PMCR_MAC_RX_EN			BIT(13)
- #define  PMCR_BACKOFF_EN		BIT(9)
- #define  PMCR_BACKPR_EN			BIT(8)
- #define  PMCR_FORCE_EEE1G		BIT(7)
- #define  PMCR_FORCE_EEE100		BIT(6)
--#define  PMCR_TX_FC_EN			BIT(5)
--#define  PMCR_RX_FC_EN			BIT(4)
-+#define  PMCR_FORCE_RX_FC_EN		BIT(5)
-+#define  PMCR_FORCE_TX_FC_EN		BIT(4)
- #define  PMCR_FORCE_SPEED_1000		BIT(3)
- #define  PMCR_FORCE_SPEED_100		BIT(2)
- #define  PMCR_FORCE_FDX			BIT(1)
- #define  PMCR_FORCE_LNK			BIT(0)
--#define  PMCR_SPEED_MASK		(PMCR_FORCE_SPEED_100 | \
--					 PMCR_FORCE_SPEED_1000)
--#define  MT7531_FORCE_LNK		BIT(31)
--#define  MT7531_FORCE_SPD		BIT(30)
--#define  MT7531_FORCE_DPX		BIT(29)
--#define  MT7531_FORCE_RX_FC		BIT(28)
--#define  MT7531_FORCE_TX_FC		BIT(27)
--#define  MT7531_FORCE_EEE100		BIT(26)
--#define  MT7531_FORCE_EEE1G		BIT(25)
--#define  MT7531_FORCE_MODE		(MT7531_FORCE_LNK | \
--					 MT7531_FORCE_SPD | \
--					 MT7531_FORCE_DPX | \
--					 MT7531_FORCE_RX_FC | \
--					 MT7531_FORCE_TX_FC | \
--					 MT7531_FORCE_EEE100 | \
--					 MT7531_FORCE_EEE1G)
--#define  PMCR_LINK_SETTINGS_MASK	(PMCR_TX_EN | PMCR_FORCE_SPEED_1000 | \
--					 PMCR_RX_EN | PMCR_FORCE_SPEED_100 | \
--					 PMCR_TX_FC_EN | PMCR_RX_FC_EN | \
--					 PMCR_FORCE_FDX | PMCR_FORCE_LNK | \
--					 PMCR_FORCE_EEE1G | PMCR_FORCE_EEE100)
-+#define  MT7531_FORCE_MODE_LNK		BIT(31)
-+#define  MT7531_FORCE_MODE_SPD		BIT(30)
-+#define  MT7531_FORCE_MODE_DPX		BIT(29)
-+#define  MT7531_FORCE_MODE_RX_FC	BIT(28)
-+#define  MT7531_FORCE_MODE_TX_FC	BIT(27)
-+#define  MT7531_FORCE_MODE_EEE100	BIT(26)
-+#define  MT7531_FORCE_MODE_EEE1G	BIT(25)
-+#define  MT7531_FORCE_MODE_MASK		(MT7531_FORCE_MODE_LNK | \
-+					 MT7531_FORCE_MODE_SPD | \
-+					 MT7531_FORCE_MODE_DPX | \
-+					 MT7531_FORCE_MODE_RX_FC | \
-+					 MT7531_FORCE_MODE_TX_FC | \
-+					 MT7531_FORCE_MODE_EEE100 | \
-+					 MT7531_FORCE_MODE_EEE1G)
-+#define  PMCR_LINK_SETTINGS_MASK	(PMCR_MAC_TX_EN | PMCR_MAC_RX_EN | \
-+					 PMCR_FORCE_EEE1G | \
-+					 PMCR_FORCE_EEE100 | \
-+					 PMCR_FORCE_RX_FC_EN | \
-+					 PMCR_FORCE_TX_FC_EN | \
-+					 PMCR_FORCE_SPEED_1000 | \
-+					 PMCR_FORCE_SPEED_100 | \
-+					 PMCR_FORCE_FDX | PMCR_FORCE_LNK)
- 
- #define MT7530_PMEEECR_P(x)		(0x3004 + (x) * 0x100)
- #define  WAKEUP_TIME_1000(x)		(((x) & 0xFF) << 24)
+ /* struct mt753x_info -	This is the main data structure for holding the specific
+  *			part for each supported device
++ * @id:			Holding the identifier to a switch model
++ * @pcs_ops:		Holding the pointer to the MAC PCS operations structure
+  * @sw_setup:		Holding the handler to a device initialization
+  * @phy_read_c22:	Holding the way reading PHY port using C22
+  * @phy_write_c22:	Holding the way writing PHY port using C22
+  * @phy_read_c45:	Holding the way reading PHY port using C45
+  * @phy_write_c45:	Holding the way writing PHY port using C45
+- * @phy_mode_supported:	Check if the PHY type is being supported on a certain
+- *			port
+- * @mac_port_validate:	Holding the way to set addition validate type for a
+- *			certan MAC port
++ * @mac_port_get_caps:	Holding the handler that provides MAC capabilities
+  * @mac_port_config:	Holding the way setting up the PHY attribute to a
+  *			certain MAC port
+  */
+@@ -770,9 +769,6 @@ struct mt753x_info {
+ 			     int regnum, u16 val);
+ 	void (*mac_port_get_caps)(struct dsa_switch *ds, int port,
+ 				  struct phylink_config *config);
+-	void (*mac_port_validate)(struct dsa_switch *ds, int port,
+-				  phy_interface_t interface,
+-				  unsigned long *supported);
+ 	void (*mac_port_config)(struct dsa_switch *ds, int port,
+ 				unsigned int mode,
+ 				phy_interface_t interface);
 
 -- 
 2.40.1
