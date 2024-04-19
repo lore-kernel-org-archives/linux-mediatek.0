@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12B56C4345F
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAD0EC04FF6
 	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Apr 2024 09:52:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,77 +12,77 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=G+OLGyPz2NtLOZH/YOdUHJtasX7vVXp+smN0A8Fakk8=; b=HR/JoQfDAQUf5QDgQVyj0Y+F+w
-	4PtfrSH19l5hVpxkAtrZCRDepXHFye9c49vbre1nPTJEbWoDU8/+cV/UkYpwTtOe7tzGSbxSfHnGY
-	vrVugQk75Ig6RWllamqT/vuEWB9pwrrTOyzYENYRtJ0d7QSaLN0PDyZNVGgBfKpn87qLURuGOUEkx
-	llZOn01X8x2WuXtWjCYv+7YZ6+sHD/aKsH4Wogi4f6YWYyefb7lICe532kI60Xl9HCA/a9WcMZYpN
-	llUbhxhUyYAZ5D511qqScSGhDP6OjOhgy6c6BymdH7ZqucEpg7vl2IYH0iBum5G2BUd0ExPiJZLXb
-	DSUQDO9A==;
+	bh=mekpuuLwriZD6IkthqRlN7odC9zWZqgKPV8UcJZ7R9M=; b=QnbtHzWrmFWcxt9mToz6kKdq0H
+	N2rtAYLqtqOh1m9HjgTn/YA+VV5j7uEj5viDWl+z/TPC1gVtjwyE+vRphXNEVIPKqGvZGAKCbnG91
+	Yti0nQd/azTiK9/JoDr7kOiEseB/+YiGLQWIKPY49R1eGUOAgvgXvdQHHbp7kENqSOiwmCMPuvRIu
+	XrRDd+fipfj7vswSSikVWZ289v3syA7120lYAjvw0yuHjswfHoPjLbqPr47PI0xt6AmQ8j9kVrYPz
+	be9JWaLvSTwdmx1RE55lNuHfiXJHYP6YH1ECjpzneP8XWdcHovZKKLsHqGRX051XjTMlAIiWXQ1BG
+	ZPAs/8/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxkvL-00000005AwO-0GZy;
-	Fri, 19 Apr 2024 09:52:51 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1rxkvM-00000005AxD-1LKr;
+	Fri, 19 Apr 2024 09:52:52 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxksR-000000059Et-38cb
+	id 1rxksS-000000059FE-1D7E
 	for linux-mediatek@bombadil.infradead.org;
-	Fri, 19 Apr 2024 09:49:51 +0000
+	Fri, 19 Apr 2024 09:49:52 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Cc:To:In-Reply-To:References:Message-Id
-	:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:Sender
-	:Reply-To:Content-ID:Content-Description;
-	bh=G+OLGyPz2NtLOZH/YOdUHJtasX7vVXp+smN0A8Fakk8=; b=snTHB105Jv7zrzbwqF+jyelGtr
-	PafQtey54BmmBMqFMMRxUmgq0ixmyvXtuTm0xklSKDEDwcGrJxFH1PtS5vB9dqiV6x1jRZxj6uFvJ
-	9SBq/WOqt792AGbw/2MQMereFx7K1M1H9AMkmsBqIrDxDFvnLZTQdR4i6XwturF0IYQeOHoJBDLph
-	CCgxH6pcNjymLm/VuYQSpnhunhtvn3f01J0vemshqnL52L0Jo1KjTriHWVt8ZSyFi2oU5TVF9HZ33
-	vUPcLSD1F/JSVxSRAjZ0724pDkJM72y5uRUfLvKhXeIqocdZMvAoEPtJBmuC532qX/rqlihytR5AO
-	Fcec5Ltw==;
-Received: from mail-qk1-x731.google.com ([2607:f8b0:4864:20::731])
-	by casper.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxksO-00000007NiT-0UfU
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=mekpuuLwriZD6IkthqRlN7odC9zWZqgKPV8UcJZ7R9M=; b=b421Ft/YuyMytGAkKnWe+G4wPf
+	/fgyT4kgPVAZapEc8pJv4n/Elu8CchSMfgIJVaWcgsRRQW34W4dzc/GDrYSm6P6DWZXJ37zNjYrIR
+	RmrQETSzaMGNtkpzH5zJCjITh4EYCDuo6+OajbEUT4KwIRue7dojmxSjo+siW4Kt2BUr8Ng3eJRnT
+	OM+nYTqgPHELWkAkhXl4bS9r71kKzY8ijQUPvHewf4OaA9Jvivh+lkZICrM86JXlygd6EY59U/Fx2
+	vACZDjHHPWqMZ8BEJfVNq9cTzfyOWsImOzEGGkAGLYsmAOv622W3yoNRZfGiPp3odnoK+1JIA+4yW
+	EurIa4NA==;
+Received: from mail-ot1-f46.google.com ([209.85.210.46])
+	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1rxksM-0000000COSE-1qBK
 	for linux-mediatek@lists.infradead.org;
 	Fri, 19 Apr 2024 09:49:50 +0000
-Received: by mail-qk1-x731.google.com with SMTP id af79cd13be357-78f0e3b6feeso68873485a.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 19 Apr 2024 02:49:47 -0700 (PDT)
+Received: by mail-ot1-f46.google.com with SMTP id 46e09a7af769-6eb82af305dso991229a34.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 19 Apr 2024 02:49:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1713520186; x=1714124986; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1713520184; x=1714124984; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=G+OLGyPz2NtLOZH/YOdUHJtasX7vVXp+smN0A8Fakk8=;
-        b=Rke3O+G5FbTzDOFTu7HWY/vgiHtp/cy9sIj6/MEbtkGHNx9tVIAykreAy8GJqQK/21
-         Pw5dZ0hlpQQvWijgpBc2SBJvWiXyYk/C2Qn+XPvE9keIjDccppVvNSTog3L3gseZYqI3
-         Iek7qNiFvTLWrKZcBcMlOVjiL56WEKOoVyeUo=
+        bh=mekpuuLwriZD6IkthqRlN7odC9zWZqgKPV8UcJZ7R9M=;
+        b=TdlJUqVdsxsctOWn7kZrmFKVhePSJK8VGYsXuNscLx4dd3PNNblcNQLUZqnGi5+p6Y
+         ob1PmG/NCSwyZ6xzCZUbKpMt8IQAmBrPwcrZhoFnUpSvGnynvBngZ6/MHLsL+Ha9U/cs
+         4ETSBN1nUDOe3IwIroc7AIWQEbqDmaZ58xjwA=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713520186; x=1714124986;
+        d=1e100.net; s=20230601; t=1713520184; x=1714124984;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=G+OLGyPz2NtLOZH/YOdUHJtasX7vVXp+smN0A8Fakk8=;
-        b=q0dtRaHfGWcBFUDhk9b+8JwmiB/w31EVL8e6GKfnkcQQLMdX26T1qs4+cm16YTiivU
-         YP3pg2WrwkpVnh0Ngqv6lvX2FO+xsOG27WfaP/pl9wod992JdnPNDhnRYvndSWsUvdtV
-         ETDDjPEM2NvBbbsQea8Trzqo5+QiLjQwvDIg0HPpfv5C7+UeAMRtv2Dg0low+Sjjxbmm
-         s3FBuA6ZV4YuHQbDoY6fhBHX3sX+mu3tHX1F+874ySBYOz1pknZ0tACfuzZv5CIh0dbk
-         8OKUU7JZwoEienZuZ5wxa3Y5E1W0ZtI7mFehwHhtm9Nb4wwQMw+lq0++X8V6mvURUL+N
-         8Hkg==
-X-Forwarded-Encrypted: i=1; AJvYcCWYE1pnsQGyFtHoNPmIJVROV/izIbFooOOWZEDuJiI8f/1ltjmWfEFpjRH+Qq5P4WNZEyCyv0hLInlyvIta6rjTv/T+HE1tCcIJFujiKlKv7izq
-X-Gm-Message-State: AOJu0Yxqu93wMlBlWCoiDQOHm51q+BJIYObZLli9q/l9dQgAYBlwhOcQ
-	24kwdI/0ZGqn1Yt6XIVIjWlGWx6x0HHuUFkt80N4+NbouOCOPz29XDYqrsQevA==
-X-Google-Smtp-Source: AGHT+IGmrMUnhFDPACSHoV4O9y/blrNx/1c6IZqAeqIu8A58TfBv2t0AZdePdmIMfSq3rhn78LSShA==
-X-Received: by 2002:a05:620a:8116:b0:78d:7036:fbda with SMTP id os22-20020a05620a811600b0078d7036fbdamr1727540qkn.75.1713520185768;
-        Fri, 19 Apr 2024 02:49:45 -0700 (PDT)
+        bh=mekpuuLwriZD6IkthqRlN7odC9zWZqgKPV8UcJZ7R9M=;
+        b=R2+hrKASLm0IAxzjScwUHftuf2xRLXfG3e3WTD5IMOYfCnOrlX766Fkk+52OtOnuwM
+         r1RGyT0nTZnhkkUYbd4qngJWpEX6yDUt4y57mEkoL8HCF4og2abAxLtIvUl1OAY7UYgu
+         z8GSSiVEuIZLXxtS11ziIZ0Qg9RDKPUArnHFAMnC9zNR5Hj7IZhgq+VbMCABajtAEn+V
+         ZYkDsWPM5j58Bv53arWIw0aWnsiUNyFYW2cEelxbZ5TGTlcemFqjRkQeT84vbW5VvNHO
+         agQhj50RKs4gKp05hqGt4xAehaCT8+GWk6D4yeJd5o//hUegZFgjn1diLDXclxNsvAhj
+         DEmA==
+X-Forwarded-Encrypted: i=1; AJvYcCXstZHHksFGEM1nWWx0ygySR3U0u3LPqCx0SvJHU8/Az/2VYVRlXyagFa+dCQNg3ZF3WLXiLUDr6AocoQewLDFDyDO4SeBnLMXJBBg5IyVdIz0D
+X-Gm-Message-State: AOJu0Yz+2BtxohK5/aHFY3uO5SZmvBr6et+7lHy1VZz1vNsfT52KK3Q2
+	KMiLM4qQrHxeV21NXHvnf6IqDXvGpCwFv73ixfwHEisT/Caf3gNd9/zdbBOgLQ==
+X-Google-Smtp-Source: AGHT+IEYwOxlb1WugYE4t9h28+AXEwcDjQAa28XJBDFMEfi87sd7BKKPg6Joa8eH6oaaPvD2ajlMkw==
+X-Received: by 2002:a9d:7f03:0:b0:6ea:1dc5:514c with SMTP id j3-20020a9d7f03000000b006ea1dc5514cmr1695945otq.11.1713520183703;
+        Fri, 19 Apr 2024 02:49:43 -0700 (PDT)
 Received: from denia.c.googlers.com (114.152.245.35.bc.googleusercontent.com. [35.245.152.114])
-        by smtp.gmail.com with ESMTPSA id dt14-20020a05620a478e00b0078d735ca917sm1434532qkb.123.2024.04.19.02.49.45
+        by smtp.gmail.com with ESMTPSA id dt14-20020a05620a478e00b0078d735ca917sm1434532qkb.123.2024.04.19.02.49.42
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 19 Apr 2024 02:49:45 -0700 (PDT)
+        Fri, 19 Apr 2024 02:49:42 -0700 (PDT)
 From: Ricardo Ribalda <ribalda@chromium.org>
-Date: Fri, 19 Apr 2024 09:48:09 +0000
-Subject: [PATCH v2 23/26] media: venus: vdec: Make explicit the range of
- us_per_frame
+Date: Fri, 19 Apr 2024 09:48:07 +0000
+Subject: [PATCH v2 21/26] media: i2c: st-mipid02: Use the correct div
+ function
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240419-fix-cocci-v2-23-2119e692309c@chromium.org>
+Message-Id: <20240419-fix-cocci-v2-21-2119e692309c@chromium.org>
 References: <20240419-fix-cocci-v2-0-2119e692309c@chromium.org>
 In-Reply-To: <20240419-fix-cocci-v2-0-2119e692309c@chromium.org>
 To: Martin Tuma <martin.tuma@digiteqautomotive.com>, 
@@ -122,8 +122,8 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  Ricardo Ribalda <ribalda@chromium.org>
 X-Mailer: b4 0.12.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240419_104948_280557_BC59E66F 
-X-CRM114-Status: GOOD (  10.07  )
+X-CRM114-CacheID: sfid-20240419_104947_623754_F9E12EF2 
+X-CRM114-Status: GOOD (  11.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -138,40 +138,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Unless the fps is smaller than 0.000232829 fps, this fits in a 32 bit
-number. Make that explicit.
+link_freq does not fit in 32 bits.
 
 Found by cocci:
-drivers/media/platform/qcom/venus/vdec.c:488:1-7: WARNING: do_div() does a 64-by-32 division, please consider using div64_u64 instead.
+drivers/media/i2c/st-mipid02.c:329:1-7: WARNING: do_div() does a 64-by-32 division, please consider using div64_s64 instead.
 
+Reviewed-by: Benjamin Mugnier <benjamin.mugnier@foss.st.com>
 Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 ---
- drivers/media/platform/qcom/venus/vdec.c | 7 ++-----
- 1 file changed, 2 insertions(+), 5 deletions(-)
+ drivers/media/i2c/st-mipid02.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/media/platform/qcom/venus/vdec.c b/drivers/media/platform/qcom/venus/vdec.c
-index 29130a9441e7..2b2874aedb2d 100644
---- a/drivers/media/platform/qcom/venus/vdec.c
-+++ b/drivers/media/platform/qcom/venus/vdec.c
-@@ -464,7 +464,7 @@ static int vdec_s_parm(struct file *file, void *fh, struct v4l2_streamparm *a)
- 	struct venus_inst *inst = to_inst(file);
- 	struct v4l2_captureparm *cap = &a->parm.capture;
- 	struct v4l2_fract *timeperframe = &cap->timeperframe;
--	u64 us_per_frame, fps;
-+	u64 us_per_frame;
+diff --git a/drivers/media/i2c/st-mipid02.c b/drivers/media/i2c/st-mipid02.c
+index f250640729ca..93a40bfda1af 100644
+--- a/drivers/media/i2c/st-mipid02.c
++++ b/drivers/media/i2c/st-mipid02.c
+@@ -326,7 +326,7 @@ static int mipid02_configure_from_rx_speed(struct mipid02_dev *bridge,
+ 	}
  
- 	if (a->type != V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE &&
- 	    a->type != V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE)
-@@ -484,10 +484,7 @@ static int vdec_s_parm(struct file *file, void *fh, struct v4l2_streamparm *a)
- 	if (!us_per_frame)
- 		return -EINVAL;
- 
--	fps = (u64)USEC_PER_SEC;
--	do_div(fps, us_per_frame);
--
--	inst->fps = fps;
-+	inst->fps = USEC_PER_SEC / (u32)us_per_frame;
- 	inst->timeperframe = *timeperframe;
+ 	dev_dbg(&client->dev, "detect link_freq = %lld Hz", link_freq);
+-	do_div(ui_4, link_freq);
++	ui_4 = div64_s64(ui_4, link_freq);
+ 	bridge->r.clk_lane_reg1 |= ui_4 << 2;
  
  	return 0;
 
