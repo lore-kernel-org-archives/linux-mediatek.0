@@ -4,101 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04324C4345F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Apr 2024 09:23:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 414B4C4345F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Apr 2024 09:49:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=y576gXoPcjc3Y2FVL6fqBu3Gc7Q1+NXvtH+iYdNf3yU=; b=v4H/LNJNcq+ylCAE4jTmSqdXgk
-	Ek4pm+DXdh7m3MoHJLxrPjlhzKRPF+3ng4chbev4EJL2g59wSQHN8vQ6XSHZK+qzNIgu12OMwfzIU
-	PhB3y6U9D1M+gfjDQMWmnGSxM+o03/vRb4pCxbkNIgVJp+/QSVqC8sbHjDDTQjvSTDj3I3uyTeWWX
-	Si9rqk829H/cFU9GR5C7j2Mg1x8A0NSfST/73ZQ3bRe6IevOo0TTAlP7+exS096Hwerqphvegg611
-	dXfK5CuF0lyplKbBVWeimm6MiaVfgEL03phT7VhMPllRoZ8GFNeX3bpauZ0Ao4cAKeOisJmrCFs8d
-	GzTEj0pA==;
+	bh=xe5eM9+2rh+qYMrEZDkgx2/xN2LnDn/yiZVZC6+s6fs=; b=ksJZ3xSu6OJpeoLnPQ03+76/r8
+	H3cQQOE1C/Lr/rDFyHzIlLZMkXhRpeRba0k6BAUWKese7GFNVUIet4R6er6NjbAptzmfvxRZs0sT4
+	BkStXMJ10m+RcPfC/+TssRZf8VOV/GNjiDNB2nXOCAEhvmTQ6pE7XxlcHjzxapP288D4w63ecULts
+	DwOD8CAZAyNbohCfk2ySu4kzVD+poi6AdlaQ4GKJ94BDRLL9KWbpuUVWyZwOnoVcSPxqKyL+3YzeY
+	1u1xWlAqE/1GUhHcPDVV2AOIRLfjC1Fi+kQbVtYs/C7cCmLlUrXXHUA0NVLzIcQfk4S0CAR6weWCn
+	suBaUMKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxkSW-000000054kM-2mrP;
-	Fri, 19 Apr 2024 09:23:04 +0000
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+	id 1rxksD-000000058zW-0mjQ;
+	Fri, 19 Apr 2024 09:49:37 +0000
+Received: from mail-qk1-x72a.google.com ([2607:f8b0:4864:20::72a])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxkSS-000000054hv-0Yl5
+	id 1rxks9-000000058qJ-14o2
 	for linux-mediatek@lists.infradead.org;
-	Fri, 19 Apr 2024 09:23:03 +0000
-Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-418c0d83d18so13238235e9.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 19 Apr 2024 02:22:55 -0700 (PDT)
+	Fri, 19 Apr 2024 09:49:35 +0000
+Received: by mail-qk1-x72a.google.com with SMTP id af79cd13be357-78efd533a00so105605785a.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 19 Apr 2024 02:49:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1713518574; x=1714123374; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=y576gXoPcjc3Y2FVL6fqBu3Gc7Q1+NXvtH+iYdNf3yU=;
-        b=DGEP9bm2iRdQrIBHnxiPh1XiJ0++epzxksBLDKddPwJrv3ed1dVVgNuBlmKPUIxmL/
-         DPkMnVH85o952oW1NZR6e38e6QcdyqTVXwvIcoxxzZ61fyZ1FeKOYlq0DTiILb4y2vTB
-         yaFL9KiBWxW6r0rhIENljUv5qYkPg5vFF/CFb+/IL7K+treBpURohFEYhzSoPDU43loM
-         DDHxk72H+LQRFXlbmTeTDfLY7qTp3c+R81xvDV6UHWJ2gCF8AcxkDvO8lG0AoI9zflnp
-         VzXSGYQXpQubvba59XjtXUUFBdXFTulgX/P+by+E43b1zImXnya74MZRZ7USJVyen2+r
-         LCJA==
+        d=chromium.org; s=google; t=1713520160; x=1714124960; darn=lists.infradead.org;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=xe5eM9+2rh+qYMrEZDkgx2/xN2LnDn/yiZVZC6+s6fs=;
+        b=L9wgI1EGmQucC8S/gJ4dhAw3YRw+mu1YsHSx/d2rLcqGzoVkXrQ2wRJVt6in34o/Sm
+         r2hzbbEA2ox+ylKyMdbUz+kDOHkFz9vCUa31YXWvRR0/mmo/3FW4F6v2HW72jygtG2pf
+         d2Z/n9H1X6TNy7mmhiuAMB61Muh3oxZe8EF20=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713518574; x=1714123374;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=y576gXoPcjc3Y2FVL6fqBu3Gc7Q1+NXvtH+iYdNf3yU=;
-        b=aAlryHidC4TRpuey6nv/Sl7LnwGajefIG5XwVbGfyzYEUI4Fy2ZDFQhtWcf7doEvHs
-         dJ0sD0iOZqPFQdDAI5lbjfe4cABYMXlyHmRwS2B4PSCLP23WnX+yksyY3iOtETro7KEo
-         YfODEUhQp4xemt2gK5Goflmsu+XeDVPRAabFdfPRhvKYKx4t07F1yCH6/pMxLcuQt+id
-         LFJtXjWThxUIGtsWF7a5aL7cR6uI09lSl743ypBNutE0LZp9KI2wv1NUNz/BcBrV7kIq
-         efXYaI4yX0fElqpI5Gs8REut6k0p1w625wIzpfwEqP2UZ/7vNUovh+K51tEB2cuD85Q2
-         6+8w==
-X-Forwarded-Encrypted: i=1; AJvYcCUpc3hR+QJKh0a4BYWCfo7JaecfgkH15Ca+Ka6w3Ln21QhI9dn+YPQqthh+ykGiUeO/HtL+i5M7cNIZEzgl9mrxuK/DVw98vUNrx9Fd3r4+tCle
-X-Gm-Message-State: AOJu0YwN613H/BHLf+9hhToenKFpZVhuFx4C1qMaHGy2XpdNtei2Nipy
-	09AuMtsvnvsxvlmhF0ZIkH5Aw47pcWtJpyY63SLhPPMvSW7iZzvWDoONuHrCwD8=
-X-Google-Smtp-Source: AGHT+IGEMMwvqsWa1wBPlb1YxcuxGJHgk4ZlrLlGwj3TJU4+1nuQXEqo0CbuUtJgEODgebOizRMxsg==
-X-Received: by 2002:a05:600c:1d0f:b0:418:f6b7:a383 with SMTP id l15-20020a05600c1d0f00b00418f6b7a383mr990122wms.2.1713518574007;
-        Fri, 19 Apr 2024 02:22:54 -0700 (PDT)
-Received: from [192.168.1.172] ([93.5.22.158])
-        by smtp.gmail.com with ESMTPSA id b10-20020a05600c4e0a00b00418f30874b4sm4015450wmq.17.2024.04.19.02.22.52
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 19 Apr 2024 02:22:53 -0700 (PDT)
-Message-ID: <57705980-e776-4178-878d-15c2007f7ef3@baylibre.com>
-Date: Fri, 19 Apr 2024 11:22:52 +0200
+        d=1e100.net; s=20230601; t=1713520160; x=1714124960;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=xe5eM9+2rh+qYMrEZDkgx2/xN2LnDn/yiZVZC6+s6fs=;
+        b=SDCTTXCJ04SPMYhiYvu+nWswYXahdKP3dogIpW6sKxMDGSPnJUEqcpojg9PgssWWvM
+         lDTGOGlg8FDaCB2pFKZ9I7BOsdn6it+QB8BMf0E1xrMVq2IZmXbYH/iHXRCbMbVup9Io
+         mCuD0BDOR0c3KPlSk3pAYmHQBMj5WX8TH89I3hN/OZktvaYoZl8SQ4JucvyoLOsIywbz
+         icGXskTQR3HgQpSuLe/pOs9wvE0OzY8u7gmgQYCHhZT982X8T8LkO8DTJgXp0kGleynM
+         gnjaIBgvE91OBdajzacQqZDr+ERP73OqcAcXC+NG4EA1FDiGYxcIwz+uFLYgS3zOKB+n
+         MkHA==
+X-Forwarded-Encrypted: i=1; AJvYcCW2JLnODCrN1QWTWJtUDDrJykyM5Ry8zMlcFreYSccJzzQ8mtzxHwfvK+i3RPPYWhjHrEF3GSAB8IDp+2VM9mxf+Draupn2g/OMhAHH2RxKF4Tp
+X-Gm-Message-State: AOJu0YxwxTPB5gzeZnvIDhKPfXIUiC+lfz/wCZP14ZLBO2x99OrerxIh
+	91uDmGxqyPckMkf52h7fVfnJzBf7jbFFHr1exDFQ1Rh1/Of0h3cqHdRdlp1WLg==
+X-Google-Smtp-Source: AGHT+IHKE5I6bNN/ygxYDQdIMuWr0dmGCsznmTcTgLl7Ioa5cL0u9qYtPjL85KqnZCORUNl4F1qURw==
+X-Received: by 2002:ae9:c119:0:b0:78e:ca95:81c5 with SMTP id z25-20020ae9c119000000b0078eca9581c5mr1646405qki.77.1713520160591;
+        Fri, 19 Apr 2024 02:49:20 -0700 (PDT)
+Received: from denia.c.googlers.com (114.152.245.35.bc.googleusercontent.com. [35.245.152.114])
+        by smtp.gmail.com with ESMTPSA id dt14-20020a05620a478e00b0078d735ca917sm1434532qkb.123.2024.04.19.02.49.19
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 19 Apr 2024 02:49:19 -0700 (PDT)
+From: Ricardo Ribalda <ribalda@chromium.org>
+Date: Fri, 19 Apr 2024 09:47:48 +0000
+Subject: [PATCH v2 02/26] media: stb0899: Simplify check
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 14/17] drm/mediatek: add MT8365 SoC support
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
- Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Jitao Shi <jitao.shi@mediatek.com>,
- CK Hu <ck.hu@mediatek.com>, =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?=
- <u.kleine-koenig@pengutronix.de>, Michael Turquette
- <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>,
- Fabien Parent <fparent@baylibre.com>,
- Markus Schneider-Pargmann <msp@baylibre.com>,
- Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-pwm@vger.kernel.org,
- linux-clk@vger.kernel.org
-References: <20231023-display-support-v3-0-53388f3ed34b@baylibre.com>
- <20231023-display-support-v3-14-53388f3ed34b@baylibre.com>
- <9ef43fff-ee2a-4b2c-a595-30f5bf7588c2@collabora.com>
-Content-Language: en-US
-From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <9ef43fff-ee2a-4b2c-a595-30f5bf7588c2@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20240419-fix-cocci-v2-2-2119e692309c@chromium.org>
+References: <20240419-fix-cocci-v2-0-2119e692309c@chromium.org>
+In-Reply-To: <20240419-fix-cocci-v2-0-2119e692309c@chromium.org>
+To: Martin Tuma <martin.tuma@digiteqautomotive.com>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+ Hugues Fruchet <hugues.fruchet@foss.st.com>, 
+ Alain Volmat <alain.volmat@foss.st.com>, 
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+ Paul Kocialkowski <paul.kocialkowski@bootlin.com>, 
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+ Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Samuel Holland <samuel@sholland.org>, 
+ Sakari Ailus <sakari.ailus@linux.intel.com>, 
+ Thierry Reding <thierry.reding@gmail.com>, 
+ Jonathan Hunter <jonathanh@nvidia.com>, 
+ Sowjanya Komatineni <skomatineni@nvidia.com>, 
+ Luca Ceresoli <luca.ceresoli@bootlin.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Hans Verkuil <hverkuil@xs4all.nl>, Sergey Kozlov <serjk@netup.ru>, 
+ Abylay Ospan <aospan@netup.ru>, 
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
+ Dmitry Osipenko <digetx@gmail.com>, 
+ Benjamin Mugnier <benjamin.mugnier@foss.st.com>, 
+ Sylvain Petinot <sylvain.petinot@foss.st.com>, 
+ Stanimir Varbanov <stanimir.k.varbanov@gmail.com>, 
+ Vikash Garodia <quic_vgarodia@quicinc.com>, 
+ Bryan O'Donoghue <bryan.odonoghue@linaro.org>, 
+ Bjorn Andersson <andersson@kernel.org>, 
+ Konrad Dybcio <konrad.dybcio@linaro.org>
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-stm32@st-md-mailman.stormreply.com, 
+ linux-arm-kernel@lists.infradead.org, linux-staging@lists.linux.dev, 
+ linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org, 
+ linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
+ Ricardo Ribalda <ribalda@chromium.org>
+X-Mailer: b4 0.12.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240419_022300_181364_6E5E0E06 
-X-CRM114-Status: GOOD (  23.37  )
+X-CRM114-CacheID: sfid-20240419_024933_869804_19AA3153 
+X-CRM114-Status: GOOD (  12.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,69 +122,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+chip_id is an unsigned number, it can never be < 0
 
+Fixes cocci check:
+drivers/media/dvb-frontends/stb0899_drv.c:1280:8-15: WARNING: Unsigned expression compared with zero: chip_id > 0
 
-On 19/04/2024 10:01, AngeloGioacchino Del Regno wrote:
-> Il 18/04/24 16:17, amergnat@baylibre.com ha scritto:
->> From: Fabien Parent <fparent@baylibre.com>
->>
->> Add DRM support for MT8365 SoC.
->>
->> Signed-off-by: Fabien Parent <fparent@baylibre.com>
->> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
-> 
-> There are two things that I want to point out. Please check below.
-> 
-> The series that I've sent for adding OF Graphs [1] support to MediaTek DRM is
-> not going to be picked in time for v6.10, but I think neither your MT8365 support
-> series is, and that's why I'm telling you this.
-> 
-> If your work was based off my series, you would not need to add the MT8365 ddp
-> MAIN and EXT paths to mtk_drm_drv: you'd just add it to the bindings and then
-> you would declare the paths in devicetree.
+Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
+---
+ drivers/media/dvb-frontends/stb0899_drv.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Ok then I will rebase my v4 on top of your serie
-
-> 
-> 
-> [1]: https://lore.kernel.org/r/20240409120211.321153-1-angelogioacchino.delregno@collabora.com
-> 
-> There's also one more comment....
-> 
->> ---
->>   drivers/gpu/drm/mediatek/mtk_drm_drv.c | 30 ++++++++++++++++++++++++++++++
->>   1 file changed, 30 insertions(+)
->>
->> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
->> index 74832c213092..427b601309c4 100644
->> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
->> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> 
-> ..snip..
-> 
->> @@ -793,6 +821,8 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
->>         .data = (void *)MTK_DSI },
->>       { .compatible = "mediatek,mt8188-dsi",
->>         .data = (void *)MTK_DSI },
->> +    { .compatible = "mediatek,mt8365-dpi",
-> 
-> You removed the mt8365 specific compatible from the DPI driver - why did you keep
-> it here?! that's not needed! :-)
-
-Sorry for that, I forgot to remove it in this driver too. Thanks to catched it.
-
-> 
-> Cheers,
-> Angelo
-> 
->> +      .data = (void *)MTK_DPI },
->>       { }
->>   };
->>
-> 
+diff --git a/drivers/media/dvb-frontends/stb0899_drv.c b/drivers/media/dvb-frontends/stb0899_drv.c
+index 2f4d8fb400cd..35634f9a8ab5 100644
+--- a/drivers/media/dvb-frontends/stb0899_drv.c
++++ b/drivers/media/dvb-frontends/stb0899_drv.c
+@@ -1277,7 +1277,7 @@ static int stb0899_get_dev_id(struct stb0899_state *state)
+ 	dprintk(state->verbose, FE_ERROR, 1, "Demodulator Core ID=[%s], Version=[%d]", (char *) &demod_str, demod_ver);
+ 	CONVERT32(STB0899_READ_S2REG(STB0899_S2FEC, FEC_CORE_ID_REG), (char *)&fec_str);
+ 	fec_ver = STB0899_READ_S2REG(STB0899_S2FEC, FEC_VER_ID_REG);
+-	if (! (chip_id > 0)) {
++	if (!chip_id) {
+ 		dprintk(state->verbose, FE_ERROR, 1, "couldn't find a STB 0899");
+ 
+ 		return -ENODEV;
 
 -- 
-Regards,
-Alexandre
+2.44.0.769.g3c40516874-goog
+
 
