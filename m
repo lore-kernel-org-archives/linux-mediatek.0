@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E71BC4345F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Apr 2024 09:52:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 174D0C4345F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Apr 2024 09:52:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gMpzOFCFY/OFyCB78Iqov2ITRER3c7lueX7XaC40UJk=; b=2raDJysLRbbi74XaV0J4U6nKRL
-	wiuC991iYLQUlX5kCwpUp7Vz61nj9IhuB0X/TwgSIsrrwR2YqtD0AbknfSD/dF4HpXD1W2fvSsiFJ
-	2W/QLcGwO+yM1exrYI2sTbWs/5+SPXyKebAGauyrXbboVaXMeeZSadLDBk8gUWGt5hJTUfZ8Fmojn
-	ZidIYkpDrqIDjl5oM91Ri5Zc3CbGkujaxaPqHF0WSGYk+qbMO4QJk7SLiSWw/eBFjIfyt5IjldTGo
-	SzFE7Jbv9Cx6wyhkXPBFzzlW4y4iuZ1yQd0ziXKeFNw6bVtqQgkZ97mx9DeFIOeIdL5SD/QnMOMXa
-	nmCJtbHQ==;
+	bh=hYOJzUnpv9q2D47VjlP9TkFSb49icqGz0TC7JGSn6z0=; b=eh8YOI0P6FVXKnvPGjD9CQRv/i
+	s70R0ffMMLAB4r49AEcLuHjTTuxF43QhaSVRXZS23pMszRlA/wmf38P4pAri19iELD8S6oq+U6fIp
+	htctdnXXB9998k5A1RPZZPscrSSWpjIGnu215Xqi0SFR/Lqxk7tTIr5n71jsmlaLhk3gl82nohfm/
+	PaIVFy5URCId3rkCq2+XmV8HhletVbavJM3KcHLTX8pzQ3kTxwEO+V8rgfm5zzY8tJpDnsoNIqbJO
+	P+UFlF2ePVWdNLP5UxP6VGjuPlgd9o3RIHOI3pZb5QbTa+p+woX9MJtE1U7xkpQx8A+6BUa0MDiU5
+	op2N43uw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxkur-00000005AdC-440a;
-	Fri, 19 Apr 2024 09:52:21 +0000
-Received: from mail-qk1-x729.google.com ([2607:f8b0:4864:20::729])
+	id 1rxkvA-00000005Aq5-0X4h;
+	Fri, 19 Apr 2024 09:52:40 +0000
+Received: from mail-oi1-x22c.google.com ([2607:f8b0:4864:20::22c])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxksJ-0000000595s-1ls3
+	id 1rxksJ-00000005951-2iuJ
 	for linux-mediatek@lists.infradead.org;
 	Fri, 19 Apr 2024 09:49:51 +0000
-Received: by mail-qk1-x729.google.com with SMTP id af79cd13be357-78f103d9f64so86945385a.0
+Received: by mail-oi1-x22c.google.com with SMTP id 5614622812f47-3bbbc6b4ed1so1185488b6e.2
         for <linux-mediatek@lists.infradead.org>; Fri, 19 Apr 2024 02:49:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1713520182; x=1714124982; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1713520181; x=1714124981; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=gMpzOFCFY/OFyCB78Iqov2ITRER3c7lueX7XaC40UJk=;
-        b=QKkjF/3ZrmyMjLI6PZxoR71eYFuXqsl1p6Fuz8KRX9DkFrcMN2d6dwujihI52umbvI
-         lUhB4xQAyDW/dE76sa+lWCYRyjthZD88GDfvdsWZ0aW/9++SSDWiKe2oVNLBkjaRDRaX
-         x7m+9nv8oPgF+4j9uy/gzICZcD2E0fIFj3ZKA=
+        bh=hYOJzUnpv9q2D47VjlP9TkFSb49icqGz0TC7JGSn6z0=;
+        b=oNVml3L57tHzFiiK6Nq1VCyJRtCaxfPCeuTTMCeYDkvCHAWUC7X8z+Gj7U55bXrXls
+         arimyZwzWXTkMq/0hPGuE0ndRC94glPWfMz87z917ArRGb4dHGQL+sTSnvaTsvGayZlt
+         m/3VNgdNQzwNO+75HFCigUZNGpRr7lQa0MjSE=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713520182; x=1714124982;
+        d=1e100.net; s=20230601; t=1713520181; x=1714124981;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=gMpzOFCFY/OFyCB78Iqov2ITRER3c7lueX7XaC40UJk=;
-        b=qzfu8xuQV9RzA2IfjrEsdd1rQ+sC7YQF0S2vIlPaL8nKN2A/kaHWv8MO3CQXEYUJJh
-         uG/ofp+LFTsUL5Fc7MPYFo3AD7QYG/4B1SpBag/6+HA3yeMSup4OMsqDasYbOBTMh4z0
-         RxLkPY4RElH1hDSpcp+K4e/dbQHmexSwZT/Os0QggA7rlXfwWIkQjybsp8biQ8FDMPRS
-         WA8Qp5aswr2hZgcc4m2zqoLuIEQKJPW5uEv2VTJlT4XrZDzpJ2FpguqsU5/TEOjozwwJ
-         Hhu5WY0dh5PL0ClI6d8pppfwZJJ4QHeta3SQiOy96v1z9q6a2mwWnOLSsZJX1X+cGsf8
-         DMiQ==
-X-Forwarded-Encrypted: i=1; AJvYcCX4FOpJwb6cky6a9v8fr7BDP4+aB/5pAQXL6rFRsBZOXWc5zihCDaDrpuU7umiXRY/yrQ/FeQACZJEsAQiUSyeqqdnS4GSOI+49oW0nrY5prDj8
-X-Gm-Message-State: AOJu0YxABxCZC5wc0AXO+ZKV0mtHvT2eqK3ZMF7X13zDHvkqvaQfsWV8
-	DgCcnVfjAyuQDvjTuQFFWftY87hfFGUvK+tE3wwMahYgd5I9IEzxMvKI7WW9Uw==
-X-Google-Smtp-Source: AGHT+IEXhcUKUor0dxuV3thvzJo2y+QPxtJebfEt+tWOQcWOyhTJf9Fve6oWEuZlRhBFIInhoP8+Wg==
-X-Received: by 2002:a05:620a:956:b0:78e:bd2f:1088 with SMTP id w22-20020a05620a095600b0078ebd2f1088mr2994401qkw.4.1713520182200;
-        Fri, 19 Apr 2024 02:49:42 -0700 (PDT)
-Received: from denia.c.googlers.com (114.152.245.35.bc.googleusercontent.com. [35.245.152.114])
-        by smtp.gmail.com with ESMTPSA id dt14-20020a05620a478e00b0078d735ca917sm1434532qkb.123.2024.04.19.02.49.41
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        bh=hYOJzUnpv9q2D47VjlP9TkFSb49icqGz0TC7JGSn6z0=;
+        b=C13jy5dIGRJJymA1IuCzz0GRtfeX6NK0bL5coY9RL4uMSA5AmvyxBbeFmxptoOBN/t
+         u/HSHlwa3U1Td/UNt5FwkPM+WRb/+ncFcTUZuebNp29mykRZJgkoOE8CEzLxhTF71tJU
+         34UZ0L8XpGSuheKWGhQU0HONs8SuGeGuvfr19T/qO+XehWmO36IQfaYGGYXuK+xdht9i
+         THKAFp7FCfludSfuN1QD1Sis5LH6M2ZARdeEspVF3krlTmftbjo3MpAG7jSJ0o8+8LAC
+         OOuRcRZGBuJhJzz8Gn2IbcEQo4QBketqIw5d+ewXOqW5Q/Ip2/fn+84AIwX5IeKwebGL
+         v6EQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXgddNdwIxBCMUyq6tWuzn85MHNdpsKGzu4VhOswIMb4herIK5ncA0Ns+Hb/8L0nOsEO4K1uU7VbB6AuIabJFIqTh1TbRLMr95Hmd/8UFrQqNto
+X-Gm-Message-State: AOJu0YwH2y24A80PJw47ufqN4wx6hDS+enE/3q8z1MNEcTp7vFpt4l5/
+	K9qjgoIEhZ3e12S8iwkDSnEGA1KMWkg+gQzvfrgs8pUUk4EsMhZc09jREnAa0g==
+X-Google-Smtp-Source: AGHT+IEqg8WI1huh374uXjkgiCfNW5dvf3VCHAQb3EvwSLWOaLDMHldgLr7J0rc8UDIeS/oMY5gCXQ==
+X-Received: by 2002:a05:6808:2029:b0:3c7:2eff:7dec with SMTP id q41-20020a056808202900b003c72eff7decmr2132218oiw.2.1713520181341;
         Fri, 19 Apr 2024 02:49:41 -0700 (PDT)
+Received: from denia.c.googlers.com (114.152.245.35.bc.googleusercontent.com. [35.245.152.114])
+        by smtp.gmail.com with ESMTPSA id dt14-20020a05620a478e00b0078d735ca917sm1434532qkb.123.2024.04.19.02.49.40
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 19 Apr 2024 02:49:40 -0700 (PDT)
 From: Ricardo Ribalda <ribalda@chromium.org>
-Date: Fri, 19 Apr 2024 09:48:06 +0000
-Subject: [PATCH v2 20/26] media: tegra-vde: Refactor timeout handling
+Date: Fri, 19 Apr 2024 09:48:05 +0000
+Subject: [PATCH v2 19/26] media: stk1160: Use min macro
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240419-fix-cocci-v2-20-2119e692309c@chromium.org>
+Message-Id: <20240419-fix-cocci-v2-19-2119e692309c@chromium.org>
 References: <20240419-fix-cocci-v2-0-2119e692309c@chromium.org>
 In-Reply-To: <20240419-fix-cocci-v2-0-2119e692309c@chromium.org>
 To: Martin Tuma <martin.tuma@digiteqautomotive.com>, 
@@ -106,8 +106,8 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  Ricardo Ribalda <ribalda@chromium.org>
 X-Mailer: b4 0.12.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240419_024944_128515_6152F1FE 
-X-CRM114-Status: GOOD (  13.28  )
+X-CRM114-CacheID: sfid-20240419_024944_388868_81F77087 
+X-CRM114-Status: GOOD (  13.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,39 +122,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Reorder the branches a bit, so cocci stops complaining about the code.
+Simplifies the code.
 
-drivers/media/platform/nvidia/tegra-vde/h264.c:645:20-21: WARNING opportunity for min()
+Found by cocci:
+drivers/media/usb/stk1160/stk1160-video.c:133:12-13: WARNING opportunity for min()
+drivers/media/usb/stk1160/stk1160-video.c:176:13-14: WARNING opportunity for min()
 
 Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 ---
- drivers/media/platform/nvidia/tegra-vde/h264.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/media/usb/stk1160/stk1160-video.c | 10 ++--------
+ 1 file changed, 2 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/media/platform/nvidia/tegra-vde/h264.c b/drivers/media/platform/nvidia/tegra-vde/h264.c
-index 204e474d57f7..cfea5572a1b8 100644
---- a/drivers/media/platform/nvidia/tegra-vde/h264.c
-+++ b/drivers/media/platform/nvidia/tegra-vde/h264.c
-@@ -633,7 +633,9 @@ static int tegra_vde_decode_end(struct tegra_vde *vde)
+diff --git a/drivers/media/usb/stk1160/stk1160-video.c b/drivers/media/usb/stk1160/stk1160-video.c
+index 366f0e4a5dc0..0ba0f41fe3f4 100644
+--- a/drivers/media/usb/stk1160/stk1160-video.c
++++ b/drivers/media/usb/stk1160/stk1160-video.c
+@@ -130,10 +130,7 @@ void stk1160_copy_video(struct stk1160 *dev, u8 *src, int len)
+ 	dst += linesdone * bytesperline * 2 + lineoff;
  
- 	timeout = wait_for_completion_interruptible_timeout(
- 			&vde->decode_completion, msecs_to_jiffies(1000));
--	if (timeout == 0) {
-+	if (timeout < 0) {
-+		ret = timeout;
-+	} else if (timeout == 0) {
- 		bsev_ptr = tegra_vde_readl(vde, vde->bsev, 0x10);
- 		macroblocks_nb = tegra_vde_readl(vde, vde->sxe, 0xC8) & 0x1FFF;
- 		read_bytes = bsev_ptr ? bsev_ptr - vde->bitstream_data_addr : 0;
-@@ -642,8 +644,6 @@ static int tegra_vde_decode_end(struct tegra_vde *vde)
- 			read_bytes, macroblocks_nb);
+ 	/* Copy the remaining of current line */
+-	if (remain < (bytesperline - lineoff))
+-		lencopy = remain;
+-	else
+-		lencopy = bytesperline - lineoff;
++	lencopy = min(remain, bytesperline - lineoff);
  
- 		ret = -EIO;
--	} else if (timeout < 0) {
--		ret = timeout;
- 	} else {
- 		ret = 0;
- 	}
+ 	/*
+ 	 * Check if we have enough space left in the buffer.
+@@ -173,10 +170,7 @@ void stk1160_copy_video(struct stk1160 *dev, u8 *src, int len)
+ 		src += lencopy;
+ 
+ 		/* Copy one line at a time */
+-		if (remain < bytesperline)
+-			lencopy = remain;
+-		else
+-			lencopy = bytesperline;
++		lencopy = min(remain, bytesperline);
+ 
+ 		/*
+ 		 * Check if we have enough space left in the buffer.
 
 -- 
 2.44.0.769.g3c40516874-goog
