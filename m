@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7A31C04FF6
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Apr 2024 10:11:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25934C4345F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Apr 2024 10:11:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
 	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
 	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0aaBEdZCBTO5M5A5E8sRbVuViVdUn208hXGIgHnFdzQ=; b=y8bJt5K2pZtRHkFtT9CSwleQj+
-	S11nM+eNtZ3koFVE90PxXhZYC1YscjfN2zE+DIgekw/i1rxAZhVDWsY0TK/+pZUqB8KE8QNHsqMX3
-	R0Py2ZCSffLf1cc8bGVHhIExJeYVvBFycxWOhIBllb19CCRaB8iMaKVrv0gLIxKw4KrPEPCGqUZWr
-	0FtbHgOqi9liPLdEdyFuH+N0wnQAZVAY3R/239NVezuSVXH4MncM8fmAtA0mICykUcVWAFpl7eqYQ
-	d7uvoh9j2gZwmqa3JMArXBYJJfOyrYSw2lv0jXltT8mI/nZFiau+2Mqt+aBXc4TEnfcdOKjMREcxi
-	bqKRWd3w==;
+	bh=IHTewTyCDRmTJmANguJPLyc2R6SnvqULgTht4Lt9W+g=; b=dFNVc4qB3yw8D3K1YM2F1wacyr
+	Nvaqr43XCA8H9UANKN7Fp6fxnCvwEgCtK5t6IqlpCBl7paOCWF6A/yGxnxjro/snrlZyDku/3O53N
+	Tusv43jODWPBrIPxikI7M5p+sEOIO6v8g3HrFFCAbpssTmWe2lGOhn0hniaB2Z8tENXrP+MHt/0FH
+	m4f+8lTafQ94YryKF6qLqoSMZg2YnJJq+lDlf81G+un6Gci8ABeYhRpfYZgTYsFzszLL/kn4IWr3a
+	OX9zAQHYTz5R1nS/F9IF0X45Cir+5wXoJIheDHCf3KWjcfU88V7SjO+4tq7fIFgKmmhpN7hXCij8b
+	9MDVOxXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxlDV-00000005FRz-08ss;
-	Fri, 19 Apr 2024 10:11:37 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1rxlDe-00000005FaP-18Kv;
+	Fri, 19 Apr 2024 10:11:46 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxlBd-00000005EDB-2are;
-	Fri, 19 Apr 2024 10:09:47 +0000
+	id 1rxlBj-00000005EJT-2QzX;
+	Fri, 19 Apr 2024 10:09:49 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 05219CE13A3;
+	by sin.source.kernel.org (Postfix) with ESMTP id A40D9CE1A55;
 	Fri, 19 Apr 2024 10:09:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id ADDE2C4AF0B;
-	Fri, 19 Apr 2024 10:09:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 191B4C4AF13;
+	Fri, 19 Apr 2024 10:09:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1713521377;
-	bh=HiS/Y7rfUE8Bpz+kjfxnTmy612XHinTi54T94xG6gRM=;
+	s=k20201202; t=1713521378;
+	bh=Opp1CZsglNYhlA4uuP5oQQWhKy/UVwr883h+FPxyU0s=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=Xw1SNuhnthrhZB9mCF4Gu3LulsCpUl8yNGUyKJtqPWx/AGBxWcFeTVWITEqqnpYDf
-	 RFL0wnVUHqag3wdyNbN0qEUYodb8oxputriFevW6LHHMoUnnhyU/lvgoGpTJUUfmtr
-	 x6iH3lwkrboP491YY+rD9qDW1Xy1zkrRUN/6obuQfRI53mD/G+t08P78mOpRpvn7wv
-	 7aFMpX0sJS4BA8lCoNQDkd6qWFK3riUPoT+fJUb28/jwqmLcxg67KhMs5c13WgVXbS
-	 gHwYyrs3h3Wvp3uCaokjagoBDJMzjJYt+TkgTDNcameG+ETTwfZbYc9twI2lJCFUyR
-	 4r1eu0AO3qUfg==
+	b=CHown39mLVAYE8GFHYlJ0cUkUvs8qd06BFw7NaSRSCVJhl+tKLueIXlyIt8X+bozV
+	 9ps4ooVKnqZZ3leu3TWoTiyrQveOozY2H8RFSkkcHn9lhdSy5A1fvETCTnOetsFPKG
+	 7dDsqXmNDww10VX++vkFF89ZM23AKkr7q44Ct6oe/+P9fNHbQC34Isg71+ntck/nht
+	 6W9/ifPfgZSqyQOXy6hE5yXZfxGRyVNN4GHeanrnwY9gLZZtb4l1/jFPMrL/kMic8f
+	 F+aYupzlV9G8xWK2DLVb4AhkBP0OWvY9DtwboEf+cKmdd8IasGL/ZZQh5axgPHJmLB
+	 7diwgOzeFVBOA==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A044FC04FFE;
-	Fri, 19 Apr 2024 10:09:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0EDB1C4345F;
+	Fri, 19 Apr 2024 10:09:38 +0000 (UTC)
 From: =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL_via_B4_Relay?= <devnull+arinc.unal.arinc9.com@kernel.org>
-Date: Fri, 19 Apr 2024 13:09:28 +0300
-Subject: [PATCH net-next 05/13] net: dsa: mt7530: refactor MT7530_MFC and
- MT7531_CFC, add MT7531_QRY_FFP
+Date: Fri, 19 Apr 2024 13:09:33 +0300
+Subject: [PATCH net-next 10/13] net: dsa: mt7530: get rid of function
+ sanity check
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Message-Id: <20240419-for-netnext-mt7530-improvements-4-v1-5-6d852ca79b1d@arinc9.com>
+Message-Id: <20240419-for-netnext-mt7530-improvements-4-v1-10-6d852ca79b1d@arinc9.com>
 References: <20240419-for-netnext-mt7530-improvements-4-v1-0-6d852ca79b1d@arinc9.com>
 In-Reply-To: <20240419-for-netnext-mt7530-improvements-4-v1-0-6d852ca79b1d@arinc9.com>
 To: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, 
@@ -69,19 +69,20 @@ Cc: Bartel Eerdekens <bartel.eerdekens@constell8.be>,
  linux-mediatek@lists.infradead.org, 
  =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1713521374; l=7840;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1713521374; l=960;
  i=arinc.unal@arinc9.com; s=arinc9-Xeront; h=from:subject:message-id;
- bh=sGSHaq4RxnxW2EpnmYPnfHMUSXd9a7KtPXo7IfxtfVg=;
- b=OOQSztQcKnFh3dbVDjmQJ6A0YGaPuK+8RZzm0fVzlaP8paiq12MkDOM+liF6zhA7Q4PWcr02I
- UOGfj9GtOtOCfWrbJc/EtQ3En5sgOkDMujHOD+Akb74sKNHus8fJhiR
+ bh=HUYFdupAh6c43NX7egvGTzUNU8mBqV4dnjn+5D+OLfw=;
+ b=MRcbQMKN8mdudDJJ1IvD98gm/l+nrwqQ5IH6uGhsuhwSTcrtnXunHkxCXRLKAZaHc+RGjVxXT
+ Mt4GsJ13BrpB+JSqZQa7kY0Rpkm9zRSr7H6vubTCo4gbRVs/2gsdkUt
 X-Developer-Key: i=arinc.unal@arinc9.com; a=ed25519;
  pk=z49tLn29CyiL4uwBTrqH9HO1Wu3sZIuRp4DaLZvtP9M=
 X-Endpoint-Received: by B4 Relay for arinc.unal@arinc9.com/arinc9-Xeront
  with auth_id=137
 X-Original-From: =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240419_030942_358447_F79A632E 
-X-CRM114-Status: GOOD (  14.52  )
+X-CRM114-CacheID: sfid-20240419_030948_213773_8438505B 
+X-CRM114-Status: UNSURE (   8.43  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,203 +100,33 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-The MT7530_MFC register is on MT7530, MT7531, and the switch on the MT7988
-SoC. Rename it to MT753X_MFC. Bit 7 to 0 differs between MT7530 and
-MT7531/MT7988. Add MT7530 prefix to these definitions, and define the
-IGMP/MLD Query Frame Flooding Ports mask for MT7531.
-
-Rename the cases of MIRROR_MASK to MIRROR_PORT_MASK.
-
-Move mt753x_mirror_port_get() and mt753x_port_mirror_set() to mt7530.h as
-macros.
+Get rid of checking whether functions are filled properly. priv->info which
+is an mt753x_info structure is filled and checked for before this check.
+It's unnecessary checking whether it's filled properly.
 
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 ---
- drivers/net/dsa/mt7530.c | 38 +++++++++-----------------
- drivers/net/dsa/mt7530.h | 69 ++++++++++++++++++++++++++++++------------------
- 2 files changed, 57 insertions(+), 50 deletions(-)
+ drivers/net/dsa/mt7530.c | 7 -------
+ 1 file changed, 7 deletions(-)
 
 diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 7f864f895ba0..39c47499036b 100644
+index 8a141f849673..842c2573dfe4 100644
 --- a/drivers/net/dsa/mt7530.c
 +++ b/drivers/net/dsa/mt7530.c
-@@ -1147,7 +1147,7 @@ mt753x_cpu_port_enable(struct dsa_switch *ds, int port)
- 		     PORT_SPEC_TAG);
+@@ -3232,13 +3232,6 @@ mt7530_probe_common(struct mt7530_priv *priv)
+ 	if (!priv->info)
+ 		return -EINVAL;
  
- 	/* Enable flooding on the CPU port */
--	mt7530_set(priv, MT7530_MFC, BC_FFP(BIT(port)) | UNM_FFP(BIT(port)) |
-+	mt7530_set(priv, MT753X_MFC, BC_FFP(BIT(port)) | UNM_FFP(BIT(port)) |
- 		   UNU_FFP(BIT(port)));
- 
- 	/* Add the CPU port to the CPU port bitmap for MT7531 and the switch on
-@@ -1311,15 +1311,15 @@ mt7530_port_bridge_flags(struct dsa_switch *ds, int port,
- 			   flags.val & BR_LEARNING ? 0 : SA_DIS);
- 
- 	if (flags.mask & BR_FLOOD)
--		mt7530_rmw(priv, MT7530_MFC, UNU_FFP(BIT(port)),
-+		mt7530_rmw(priv, MT753X_MFC, UNU_FFP(BIT(port)),
- 			   flags.val & BR_FLOOD ? UNU_FFP(BIT(port)) : 0);
- 
- 	if (flags.mask & BR_MCAST_FLOOD)
--		mt7530_rmw(priv, MT7530_MFC, UNM_FFP(BIT(port)),
-+		mt7530_rmw(priv, MT753X_MFC, UNM_FFP(BIT(port)),
- 			   flags.val & BR_MCAST_FLOOD ? UNM_FFP(BIT(port)) : 0);
- 
- 	if (flags.mask & BR_BCAST_FLOOD)
--		mt7530_rmw(priv, MT7530_MFC, BC_FFP(BIT(port)),
-+		mt7530_rmw(priv, MT753X_MFC, BC_FFP(BIT(port)),
- 			   flags.val & BR_BCAST_FLOOD ? BC_FFP(BIT(port)) : 0);
- 
- 	return 0;
-@@ -1855,20 +1855,6 @@ mt7530_port_vlan_del(struct dsa_switch *ds, int port,
- 	return 0;
- }
- 
--static int mt753x_mirror_port_get(unsigned int id, u32 val)
--{
--	return (id == ID_MT7531 || id == ID_MT7988) ?
--		       MT7531_MIRROR_PORT_GET(val) :
--		       MIRROR_PORT(val);
--}
+-	/* Sanity check if these required device operations are filled
+-	 * properly.
+-	 */
+-	if (!priv->info->sw_setup || !priv->info->phy_read_c22 ||
+-	    !priv->info->phy_write_c22 || !priv->info->mac_port_get_caps)
+-		return -EINVAL;
 -
--static int mt753x_mirror_port_set(unsigned int id, u32 val)
--{
--	return (id == ID_MT7531 || id == ID_MT7988) ?
--		       MT7531_MIRROR_PORT_SET(val) :
--		       MIRROR_PORT(val);
--}
--
- static int mt753x_port_mirror_add(struct dsa_switch *ds, int port,
- 				  struct dsa_mall_mirror_tc_entry *mirror,
- 				  bool ingress, struct netlink_ext_ack *extack)
-@@ -1884,14 +1870,14 @@ static int mt753x_port_mirror_add(struct dsa_switch *ds, int port,
- 	val = mt7530_read(priv, MT753X_MIRROR_REG(priv->id));
- 
- 	/* MT7530 only supports one monitor port */
--	monitor_port = mt753x_mirror_port_get(priv->id, val);
-+	monitor_port = MT753X_MIRROR_PORT_GET(priv->id, val);
- 	if (val & MT753X_MIRROR_EN(priv->id) &&
- 	    monitor_port != mirror->to_local_port)
- 		return -EEXIST;
- 
- 	val |= MT753X_MIRROR_EN(priv->id);
--	val &= ~MT753X_MIRROR_MASK(priv->id);
--	val |= mt753x_mirror_port_set(priv->id, mirror->to_local_port);
-+	val &= ~MT753X_MIRROR_PORT_MASK(priv->id);
-+	val |= MT753X_MIRROR_PORT_SET(priv->id, mirror->to_local_port);
- 	mt7530_write(priv, MT753X_MIRROR_REG(priv->id), val);
- 
- 	val = mt7530_read(priv, MT7530_PCR_P(port));
-@@ -2533,7 +2519,7 @@ mt7531_setup_common(struct dsa_switch *ds)
- 	mt7530_mib_reset(ds);
- 
- 	/* Disable flooding on all ports */
--	mt7530_clear(priv, MT7530_MFC, BC_FFP_MASK | UNM_FFP_MASK |
-+	mt7530_clear(priv, MT753X_MFC, BC_FFP_MASK | UNM_FFP_MASK |
- 		     UNU_FFP_MASK);
- 
- 	for (i = 0; i < MT7530_NUM_PORTS; i++) {
-@@ -3089,10 +3075,12 @@ mt753x_conduit_state_change(struct dsa_switch *ds,
- 	else
- 		priv->active_cpu_ports &= ~mask;
- 
--	if (priv->active_cpu_ports)
--		val = CPU_EN | CPU_PORT(__ffs(priv->active_cpu_ports));
-+	if (priv->active_cpu_ports) {
-+		val = MT7530_CPU_EN |
-+		      MT7530_CPU_PORT(__ffs(priv->active_cpu_ports));
-+	}
- 
--	mt7530_rmw(priv, MT7530_MFC, CPU_EN | CPU_PORT_MASK, val);
-+	mt7530_rmw(priv, MT753X_MFC, MT7530_CPU_EN | MT7530_CPU_PORT_MASK, val);
- }
- 
- static int mt7988_setup(struct dsa_switch *ds)
-diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
-index 0d5167f5ba6b..c6ef20b7bbdd 100644
---- a/drivers/net/dsa/mt7530.h
-+++ b/drivers/net/dsa/mt7530.h
-@@ -36,36 +36,55 @@ enum mt753x_id {
- #define MT753X_AGC			0xc
- #define  LOCAL_EN			BIT(7)
- 
--/* Registers to mac forward control for unknown frames */
--#define MT7530_MFC			0x10
--#define  BC_FFP(x)			(((x) & 0xff) << 24)
--#define  BC_FFP_MASK			BC_FFP(~0)
--#define  UNM_FFP(x)			(((x) & 0xff) << 16)
--#define  UNM_FFP_MASK			UNM_FFP(~0)
--#define  UNU_FFP(x)			(((x) & 0xff) << 8)
--#define  UNU_FFP_MASK			UNU_FFP(~0)
--#define  CPU_EN				BIT(7)
--#define  CPU_PORT_MASK			GENMASK(6, 4)
--#define  CPU_PORT(x)			FIELD_PREP(CPU_PORT_MASK, x)
--#define  MIRROR_EN			BIT(3)
--#define  MIRROR_PORT(x)			((x) & 0x7)
--#define  MIRROR_MASK			0x7
--
--/* Registers for CPU forward control */
-+/* Register for MAC forward control */
-+#define MT753X_MFC			0x10
-+#define  BC_FFP_MASK			GENMASK(31, 24)
-+#define  BC_FFP(x)			FIELD_PREP(BC_FFP_MASK, x)
-+#define  UNM_FFP_MASK			GENMASK(23, 16)
-+#define  UNM_FFP(x)			FIELD_PREP(UNM_FFP_MASK, x)
-+#define  UNU_FFP_MASK			GENMASK(15, 8)
-+#define  UNU_FFP(x)			FIELD_PREP(UNU_FFP_MASK, x)
-+#define  MT7530_CPU_EN			BIT(7)
-+#define  MT7530_CPU_PORT_MASK		GENMASK(6, 4)
-+#define  MT7530_CPU_PORT(x)		FIELD_PREP(MT7530_CPU_PORT_MASK, x)
-+#define  MT7530_MIRROR_EN		BIT(3)
-+#define  MT7530_MIRROR_PORT_MASK	GENMASK(2, 0)
-+#define  MT7530_MIRROR_PORT_GET(x)	FIELD_GET(MT7530_MIRROR_PORT_MASK, x)
-+#define  MT7530_MIRROR_PORT_SET(x)	FIELD_PREP(MT7530_MIRROR_PORT_MASK, x)
-+#define  MT7531_QRY_FFP_MASK		GENMASK(7, 0)
-+#define  MT7531_QRY_FFP(x)		FIELD_PREP(MT7531_QRY_FFP_MASK, x)
-+
-+/* Register for CPU forward control */
- #define MT7531_CFC			0x4
- #define  MT7531_MIRROR_EN		BIT(19)
--#define  MT7531_MIRROR_MASK		(MIRROR_MASK << 16)
--#define  MT7531_MIRROR_PORT_GET(x)	(((x) >> 16) & MIRROR_MASK)
--#define  MT7531_MIRROR_PORT_SET(x)	(((x) & MIRROR_MASK) << 16)
-+#define  MT7531_MIRROR_PORT_MASK	GENMASK(18, 16)
-+#define  MT7531_MIRROR_PORT_GET(x)	FIELD_GET(MT7531_MIRROR_PORT_MASK, x)
-+#define  MT7531_MIRROR_PORT_SET(x)	FIELD_PREP(MT7531_MIRROR_PORT_MASK, x)
- #define  MT7531_CPU_PMAP_MASK		GENMASK(7, 0)
- #define  MT7531_CPU_PMAP(x)		FIELD_PREP(MT7531_CPU_PMAP_MASK, x)
- 
--#define MT753X_MIRROR_REG(id)		((((id) == ID_MT7531) || ((id) == ID_MT7988)) ?	\
--					 MT7531_CFC : MT7530_MFC)
--#define MT753X_MIRROR_EN(id)		((((id) == ID_MT7531) || ((id) == ID_MT7988)) ?	\
--					 MT7531_MIRROR_EN : MIRROR_EN)
--#define MT753X_MIRROR_MASK(id)		((((id) == ID_MT7531) || ((id) == ID_MT7988)) ?	\
--					 MT7531_MIRROR_MASK : MIRROR_MASK)
-+#define MT753X_MIRROR_REG(id)		((id == ID_MT7531 || \
-+					  id == ID_MT7988) ? \
-+					 MT7531_CFC : MT753X_MFC)
-+
-+#define MT753X_MIRROR_EN(id)		((id == ID_MT7531 || \
-+					  id == ID_MT7988) ? \
-+					 MT7531_MIRROR_EN : MT7530_MIRROR_EN)
-+
-+#define MT753X_MIRROR_PORT_MASK(id)	((id == ID_MT7531 || \
-+					  id == ID_MT7988) ? \
-+					 MT7531_MIRROR_PORT_MASK : \
-+					 MT7530_MIRROR_PORT_MASK)
-+
-+#define MT753X_MIRROR_PORT_GET(id, val)	((id == ID_MT7531 || \
-+					  id == ID_MT7988) ? \
-+					 MT7531_MIRROR_PORT_GET(val) : \
-+					 MT7530_MIRROR_PORT_GET(val))
-+
-+#define MT753X_MIRROR_PORT_SET(id, val)	((id == ID_MT7531 || \
-+					  id == ID_MT7988) ? \
-+					 MT7531_MIRROR_PORT_SET(val) : \
-+					 MT7530_MIRROR_PORT_SET(val))
- 
- /* Register for BPDU and PAE frame control */
- #define MT753X_BPC			0x24
+ 	priv->id = priv->info->id;
+ 	priv->dev = dev;
+ 	priv->ds->priv = priv;
 
 -- 
 2.40.1
