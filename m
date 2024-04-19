@@ -4,71 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62852C4345F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Apr 2024 11:01:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECA6FC4345F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Apr 2024 11:01:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=M/K5Byxt1ig+CQr/X/PeYwmg4ty1EjIby+WFZ625f+g=; b=4VWHitwdiqhyLPOrFOWzmlSf0w
-	uRIFKKVWhfmF66tuDLq+YM5ve2t9iNG9OusmNGxDjR0JiNhbhr2RoYJlbe7iyghBJJvbtDi/RCZVq
-	4B69W5BRYBYfrOy+ED6TCQ3LJgXDKbt2XDTs0XMJUDpOBH+k4TGr8WX3DjJKYmtyM866XFV92PNuf
-	mWFnOQkuawJpK+SwtRNhMoKgfRl7o33NfrbSlkhRaALiE7g77heUlpnUvXXSs5qpep980I9Uys/D0
-	LFVuyef38uAkZ/LS4a/Sd/sxR7AEOfPEUFSn2sKnqVTLV78Q9J5vsEh4Ya2eqGBvHLCaGjFjeGENI
-	XEZQz8LA==;
+	bh=2ozatrqAUW665TsgI+DgE6yWy8Evw1+ngHGTHDukygk=; b=RVkXbJ9YmWiAS9RWfSJS5RJ2EW
+	QFH8LBsjngbuUemqkEqwJm/yOrR9CY1tsnuRarLYf0mtZpKo2vE2L3Ds02s+q3SxX023eQ4HolO81
+	HGnI3DUuxhp0hCpPz+Yj2Xv+YQiafcV1OkidDC/r9VHrlOFszYqks+cxmRG4/Ou0qM2FKL7dLbL1j
+	j8tNjycG0/rr0D4xk1OWaiaIo07RW8nzFnr3hCxDlTOqiwDVxnEFR7/bz9IaAhgsw6FNQGGh6jpAT
+	47HhdboZSFiotkeOH+XQ5YpganHay3xjsQ2dtLl78ArgzGGXCSK6Ska6/W2fLxqxWsADTfpVH/81P
+	vA2WceSg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxlzl-00000005Nlw-3QXn;
-	Fri, 19 Apr 2024 11:01:29 +0000
-Received: from mail-qk1-x729.google.com ([2607:f8b0:4864:20::729])
+	id 1rxlzo-00000005No7-2cJF;
+	Fri, 19 Apr 2024 11:01:32 +0000
+Received: from mail-qk1-x72e.google.com ([2607:f8b0:4864:20::72e])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxks9-000000058uo-1i3O
+	id 1rxksB-000000058qs-0YFZ
 	for linux-mediatek@lists.infradead.org;
-	Fri, 19 Apr 2024 09:49:35 +0000
-Received: by mail-qk1-x729.google.com with SMTP id af79cd13be357-78f056f928eso115328685a.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 19 Apr 2024 02:49:33 -0700 (PDT)
+	Fri, 19 Apr 2024 09:49:38 +0000
+Received: by mail-qk1-x72e.google.com with SMTP id af79cd13be357-78edc3ad5fdso150396385a.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 19 Apr 2024 02:49:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1713520172; x=1714124972; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1713520163; x=1714124963; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=M/K5Byxt1ig+CQr/X/PeYwmg4ty1EjIby+WFZ625f+g=;
-        b=azZKoSQOEKkDD3CZW/9GEcnVPo6dcgjqo0J7+FVdQJUgHRBWH66u44GJZwmecI+QWj
-         4RQExj5zZmCCPOKZED3jWQC89nCLw7qYw3HPBkHHFVuD/xXaGzP3yghWVqm+ghlQ2mRG
-         /YzEOYOk/i1YxfiAgu8ue1Rz1HaAZ//7pP17E=
+        bh=2ozatrqAUW665TsgI+DgE6yWy8Evw1+ngHGTHDukygk=;
+        b=cYzd7AR+I0kDzZxmUOUBO7rkmvOlZ1IERsxkRG+PSGAMSSB+vRpVW6xk5g+TwPdPx4
+         BmowT1Hx9KJM15grRacDI0iOc9JEcbAt3A414bdTWILrUAbSH0c3JJKFWBr6N/gKM41R
+         S8LLeV3md4IpDJA26CfMHGh5XWhqi1R8eyXYI=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713520172; x=1714124972;
+        d=1e100.net; s=20230601; t=1713520163; x=1714124963;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=M/K5Byxt1ig+CQr/X/PeYwmg4ty1EjIby+WFZ625f+g=;
-        b=H8+aOYFw67W1XM2t3LcYYfHP/abkfftQEBl0ixb9WEaLEvMVhU3PlmeKh0bw5A4phv
-         zprFYB//oWONPJcb6/rQjUqK2jPgZYQxcfOutdrIPxPXUMRDJXtnbrx85G4WI67h5yhB
-         aZIgEphihto7aWSNlFc9YFfa9nIvvHM6Nu05TZKrhftws4OCKcQXhSV3Ov8nrhmXh4tz
-         eo4BPWyTdE18h9HUSsIvqH/NKplX789IUG+ZM5qTpxsdwBXDh5FnobDoN9x/zGP1PxqI
-         WCG2dZunauRANSGBq+c9jPTRivbK9C21xFsb0isZyXRs8mK/t9FSW3M0FhacwwbCO/+I
-         Le2A==
-X-Forwarded-Encrypted: i=1; AJvYcCU5JUxRbUcIcqgS13EMUdny6YJBLVtRXP8sT5C91Du5VuhX9C/LKVFZOS9WCrPQmXNrPwmfQAZT90nEAdW2q/zwnbmRc3DzWh7rZmy6B/fQPRF+
-X-Gm-Message-State: AOJu0YwrEa3CpCR4Ax9sRGUYkPPJcNzIvokPt0dTLory5z8gEmQcq2FY
-	E86DtWlwTPd9fMmYRAVEUw9N5yg2kU0s7gpaJEd8iFqB4owoWuIekVrNmGtMLYPWWbbulpc0zF3
-	3YQ==
-X-Google-Smtp-Source: AGHT+IFgAxI3cudbjf7QENem+4os/v4599VNo77B9jF2HzcU/N2a5nFApf/3c3scTYsGro99atnYNQ==
-X-Received: by 2002:a05:620a:8da:b0:78a:68c3:dceb with SMTP id z26-20020a05620a08da00b0078a68c3dcebmr1504339qkz.32.1713520172428;
-        Fri, 19 Apr 2024 02:49:32 -0700 (PDT)
+        bh=2ozatrqAUW665TsgI+DgE6yWy8Evw1+ngHGTHDukygk=;
+        b=X1+nIYWALYJDmz75sMOGNR+TQTMNrDei4RpwdG/JEO8d6dJw/MDiOsUYIIgdLZ5ZZI
+         jjuXfgYVRoA2Kykjt7dR01zIYeDGk/+tkwOvah0PW4QCUGjnJLyZqwVbXP+QoGxtlm6T
+         n+9rNT+tWmM7qEJGADkKg8e2WjteVcTlWLO+sQr+ctxZMnbS4SFEnVHZTT30tX5O5raH
+         dFvWTIMXZtqiwzv/gEtcqdGU+VRqYPtWvV6bMfKDI96cESiakJPXSlwxQfebxPFTMyN8
+         2JXPwyzr/aZRu5v/2Xpct3ZI9MN5yPkJWpSIj6xkr/wtxh5APxvsJsQinOaNv2lnIOzw
+         BSqQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWXp55OqZoLUGFcNhYVi7TgbjQSzHva8Z8cSL9nAhjgjLKdJv3t/8vHSQ2Ak29JdNemLs1LUrOR+Zqwnlp0DWnp19BMhomtBNVx41uj07U3+2iX
+X-Gm-Message-State: AOJu0YzOs6kqdzOyxVWmi9ynJfAqXba15N9oD+sDapl6UUzCXiw5dXNJ
+	IOvcw84eLuj9BVMq1W+go31FBe+zlPrICKJH7MJfmFj+T1okWRjABxDxG0hang==
+X-Google-Smtp-Source: AGHT+IGs3CfAvghko2vWhqg08VmqqoJ6LlEsRGr+WfzIJbh8ON10G5msy3tcDSad7YCzEwumD2LtKA==
+X-Received: by 2002:a05:620a:44c3:b0:78e:e679:23cf with SMTP id y3-20020a05620a44c300b0078ee67923cfmr7789538qkp.1.1713520161754;
+        Fri, 19 Apr 2024 02:49:21 -0700 (PDT)
 Received: from denia.c.googlers.com (114.152.245.35.bc.googleusercontent.com. [35.245.152.114])
-        by smtp.gmail.com with ESMTPSA id dt14-20020a05620a478e00b0078d735ca917sm1434532qkb.123.2024.04.19.02.49.31
+        by smtp.gmail.com with ESMTPSA id dt14-20020a05620a478e00b0078d735ca917sm1434532qkb.123.2024.04.19.02.49.20
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 19 Apr 2024 02:49:32 -0700 (PDT)
+        Fri, 19 Apr 2024 02:49:21 -0700 (PDT)
 From: Ricardo Ribalda <ribalda@chromium.org>
-Date: Fri, 19 Apr 2024 09:47:57 +0000
-Subject: [PATCH v2 11/26] media: s2255: Use refcount_t instead of atomic_t
- for num_channels
+Date: Fri, 19 Apr 2024 09:47:49 +0000
+Subject: [PATCH v2 03/26] media: uvcvideo: Refactor iterators
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240419-fix-cocci-v2-11-2119e692309c@chromium.org>
+Message-Id: <20240419-fix-cocci-v2-3-2119e692309c@chromium.org>
 References: <20240419-fix-cocci-v2-0-2119e692309c@chromium.org>
 In-Reply-To: <20240419-fix-cocci-v2-0-2119e692309c@chromium.org>
 To: Martin Tuma <martin.tuma@digiteqautomotive.com>, 
@@ -105,11 +103,12 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-staging@lists.linux.dev, 
  linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org, 
  linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
- Ricardo Ribalda <ribalda@chromium.org>
+ Ricardo Ribalda <ribalda@chromium.org>, 
+ Sergey Senozhatsky <senozhatsky@chromium.org>
 X-Mailer: b4 0.12.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240419_024933_881226_84FC16AF 
-X-CRM114-Status: GOOD (  15.30  )
+X-CRM114-CacheID: sfid-20240419_024935_331930_D366324A 
+X-CRM114-Status: GOOD (  15.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,100 +123,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use an API that resembles more the actual use of num_channels.
+Avoid using the iterators after the list_for_each() constructs.
+This patch should be a NOP, but makes cocci, happier:
 
-Found by cocci:
-drivers/media/usb/s2255/s2255drv.c:2362:5-24: WARNING: atomic_dec_and_test variation before object free at line 2363.
-drivers/media/usb/s2255/s2255drv.c:1557:5-24: WARNING: atomic_dec_and_test variation before object free at line 1558.
+drivers/media/usb/uvc/uvc_ctrl.c:1861:44-50: ERROR: invalid reference to the index variable of the iterator on line 1850
+drivers/media/usb/uvc/uvc_ctrl.c:2195:17-23: ERROR: invalid reference to the index variable of the iterator on line 2179
 
+Reviewed-by: Sergey Senozhatsky <senozhatsky@chromium.org>
 Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 ---
- drivers/media/usb/s2255/s2255drv.c | 20 ++++++++++----------
- 1 file changed, 10 insertions(+), 10 deletions(-)
+ drivers/media/usb/uvc/uvc_ctrl.c | 24 +++++++++++++-----------
+ 1 file changed, 13 insertions(+), 11 deletions(-)
 
-diff --git a/drivers/media/usb/s2255/s2255drv.c b/drivers/media/usb/s2255/s2255drv.c
-index 8e1de1e8bd12..a6e450181fd0 100644
---- a/drivers/media/usb/s2255/s2255drv.c
-+++ b/drivers/media/usb/s2255/s2255drv.c
-@@ -247,7 +247,7 @@ struct s2255_vc {
- struct s2255_dev {
- 	struct s2255_vc         vc[MAX_CHANNELS];
- 	struct v4l2_device      v4l2_dev;
--	atomic_t                num_channels;
-+	refcount_t		num_channels;
- 	int			frames;
- 	struct mutex		lock;	/* channels[].vdev.lock */
- 	struct mutex		cmdlock; /* protects cmdbuf */
-@@ -1550,11 +1550,11 @@ static void s2255_video_device_release(struct video_device *vdev)
- 		container_of(vdev, struct s2255_vc, vdev);
+diff --git a/drivers/media/usb/uvc/uvc_ctrl.c b/drivers/media/usb/uvc/uvc_ctrl.c
+index e59a463c2761..a4a987913430 100644
+--- a/drivers/media/usb/uvc/uvc_ctrl.c
++++ b/drivers/media/usb/uvc/uvc_ctrl.c
+@@ -1850,16 +1850,18 @@ int __uvc_ctrl_commit(struct uvc_fh *handle, int rollback,
+ 	list_for_each_entry(entity, &chain->entities, chain) {
+ 		ret = uvc_ctrl_commit_entity(chain->dev, entity, rollback,
+ 					     &err_ctrl);
+-		if (ret < 0)
++		if (ret < 0) {
++			if (ctrls)
++				ctrls->error_idx =
++					uvc_ctrl_find_ctrl_idx(entity, ctrls,
++							       err_ctrl);
+ 			goto done;
++		}
+ 	}
  
- 	dprintk(dev, 4, "%s, chnls: %d\n", __func__,
--		atomic_read(&dev->num_channels));
-+		refcount_read(&dev->num_channels));
- 
- 	v4l2_ctrl_handler_free(&vc->hdl);
- 
--	if (atomic_dec_and_test(&dev->num_channels))
-+	if (refcount_dec_and_test(&dev->num_channels))
- 		s2255_destroy(dev);
- 	return;
+ 	if (!rollback)
+ 		uvc_ctrl_send_events(handle, ctrls->controls, ctrls->count);
+ done:
+-	if (ret < 0 && ctrls)
+-		ctrls->error_idx = uvc_ctrl_find_ctrl_idx(entity, ctrls,
+-							  err_ctrl);
+ 	mutex_unlock(&chain->ctrl_mutex);
+ 	return ret;
  }
-@@ -1659,7 +1659,7 @@ static int s2255_probe_v4l(struct s2255_dev *dev)
- 				"failed to register video device!\n");
+@@ -2165,7 +2167,7 @@ static int uvc_ctrl_init_xu_ctrl(struct uvc_device *dev,
+ int uvc_xu_ctrl_query(struct uvc_video_chain *chain,
+ 	struct uvc_xu_control_query *xqry)
+ {
+-	struct uvc_entity *entity;
++	struct uvc_entity *entity, *iter;
+ 	struct uvc_control *ctrl;
+ 	unsigned int i;
+ 	bool found;
+@@ -2175,16 +2177,16 @@ int uvc_xu_ctrl_query(struct uvc_video_chain *chain,
+ 	int ret;
+ 
+ 	/* Find the extension unit. */
+-	found = false;
+-	list_for_each_entry(entity, &chain->entities, chain) {
+-		if (UVC_ENTITY_TYPE(entity) == UVC_VC_EXTENSION_UNIT &&
+-		    entity->id == xqry->unit) {
+-			found = true;
++	entity = NULL;
++	list_for_each_entry(iter, &chain->entities, chain) {
++		if (UVC_ENTITY_TYPE(iter) == UVC_VC_EXTENSION_UNIT &&
++		    iter->id == xqry->unit) {
++			entity = iter;
  			break;
  		}
--		atomic_inc(&dev->num_channels);
-+		refcount_inc(&dev->num_channels);
- 		v4l2_info(&dev->v4l2_dev, "V4L2 device registered as %s\n",
- 			  video_device_node_name(&vc->vdev));
- 
-@@ -1667,11 +1667,11 @@ static int s2255_probe_v4l(struct s2255_dev *dev)
- 	pr_info("Sensoray 2255 V4L driver Revision: %s\n",
- 		S2255_VERSION);
- 	/* if no channels registered, return error and probe will fail*/
--	if (atomic_read(&dev->num_channels) == 0) {
-+	if (refcount_read(&dev->num_channels) == 0) {
- 		v4l2_device_unregister(&dev->v4l2_dev);
- 		return ret;
- 	}
--	if (atomic_read(&dev->num_channels) != MAX_CHANNELS)
-+	if (refcount_read(&dev->num_channels) != MAX_CHANNELS)
- 		pr_warn("s2255: Not all channels available.\n");
- 	return 0;
- }
-@@ -2221,7 +2221,7 @@ static int s2255_probe(struct usb_interface *interface,
- 		goto errorFWDATA1;
  	}
  
--	atomic_set(&dev->num_channels, 0);
-+	refcount_set(&dev->num_channels, 0);
- 	dev->pid = id->idProduct;
- 	dev->fw_data = kzalloc(sizeof(struct s2255_fw), GFP_KERNEL);
- 	if (!dev->fw_data)
-@@ -2341,12 +2341,12 @@ static void s2255_disconnect(struct usb_interface *interface)
- {
- 	struct s2255_dev *dev = to_s2255_dev(usb_get_intfdata(interface));
- 	int i;
--	int channels = atomic_read(&dev->num_channels);
-+	int channels = refcount_read(&dev->num_channels);
- 	mutex_lock(&dev->lock);
- 	v4l2_device_disconnect(&dev->v4l2_dev);
- 	mutex_unlock(&dev->lock);
- 	/*see comments in the uvc_driver.c usb disconnect function */
--	atomic_inc(&dev->num_channels);
-+	refcount_inc(&dev->num_channels);
- 	/* unregister each video device. */
- 	for (i = 0; i < channels; i++)
- 		video_unregister_device(&dev->vc[i].vdev);
-@@ -2359,7 +2359,7 @@ static void s2255_disconnect(struct usb_interface *interface)
- 		dev->vc[i].vidstatus_ready = 1;
- 		wake_up(&dev->vc[i].wait_vidstatus);
- 	}
--	if (atomic_dec_and_test(&dev->num_channels))
-+	if (refcount_dec_and_test(&dev->num_channels))
- 		s2255_destroy(dev);
- 	dev_info(&interface->dev, "%s\n", __func__);
- }
+-	if (!found) {
++	if (!entity) {
+ 		uvc_dbg(chain->dev, CONTROL, "Extension unit %u not found\n",
+ 			xqry->unit);
+ 		return -ENOENT;
 
 -- 
 2.44.0.769.g3c40516874-goog
