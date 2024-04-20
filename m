@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 739A9C4345F
-	for <linux-mediatek@archiver.kernel.org>; Sat, 20 Apr 2024 23:00:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB865C4345F
+	for <linux-mediatek@archiver.kernel.org>; Sat, 20 Apr 2024 23:08:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gS/avcdT3uZE+/g4l+u7eNrKfkVrRBnHoxOYygE+RDE=; b=38kLqog0xDhZiOMyGg9yyLem66
-	S72/FdkmvPQw671qeIgXTV1q+GAjj0TK9BtJP1NxQ/bxTD3X3P1hcIJeK4h9UjEVm5idMEUZQlRPp
-	sV1r6ghLZvnPuA42tzLrb0fEr2bQA7OofkEfP6UVTMxOzNg4dlR3fZF7Ny0IyiolYomwQCD5aMQsj
-	v8pZYRtiBuF6a8GSCr12bwuYnq9e82ee+y9Bhki1TtTc+SJ5+9zk3gmRoOiFapMEgXKW1sQAIIaPn
-	/MSzmG6ykxDu/Vf4WaZKvBWQxC/zhYNV4WYzKR77J/4DUIu3ULqv7NaqrR8XHfePPInrz+rnrj//f
-	03JZ3tsg==;
+	bh=x9hTDE+OmzSnorVJyzQcFNYmLnBIvZgvXWNavzd4DaM=; b=VJfEU6TTNWRoTEzJWgRYjobpcQ
+	9XrBlGlAlPlSAndQWJOriSerY1KbccZVm5fiNOGeJWeLigypBZmEFM64SwGRR4JomPZa5IeMuabjp
+	BUzUCXVDG799cQNkyCovprELA7F6vW8SRPcu0tDL9lGLxcDvu+LR2jisQS333pp0JMTc8qY2Ghg3q
+	2KBxLsDNsmuL0p9MQcj4XD9V4n4kBxd+kye32KIzn5q3ZLL80qHb9Tv/8oiHN3INPsREWmAo1jmoT
+	kG1pHHZwAxWmSJoF0+x/ziruQ9E3XFvIa0obXXaroTnVzFoXJUusCKPTrc22On726l9djz7GHW6ki
+	KCvd9yZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ryJhE-00000009Kh5-3LWT;
-	Sat, 20 Apr 2024 23:00:36 +0000
-Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
+	id 1ryJoT-00000009MIZ-0QjV;
+	Sat, 20 Apr 2024 23:08:05 +0000
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ryJhB-00000009Kf5-2aWm
+	id 1ryJoO-00000009MFy-2e9G
 	for linux-mediatek@lists.infradead.org;
-	Sat, 20 Apr 2024 23:00:34 +0000
-Received: by mail-ed1-x52b.google.com with SMTP id 4fb4d7f45d1cf-56e56ee8d5cso4292749a12.2
-        for <linux-mediatek@lists.infradead.org>; Sat, 20 Apr 2024 16:00:31 -0700 (PDT)
+	Sat, 20 Apr 2024 23:08:02 +0000
+Received: by mail-wr1-x42e.google.com with SMTP id ffacd0b85a97d-349545c3eb8so2347945f8f.2
+        for <linux-mediatek@lists.infradead.org>; Sat, 20 Apr 2024 16:07:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1713654030; x=1714258830; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1713654477; x=1714259277; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=gS/avcdT3uZE+/g4l+u7eNrKfkVrRBnHoxOYygE+RDE=;
-        b=SeuslA4yRe1kR/KgjhhMUuFY66ecaWU0sKUYRsx5FMKTGO+fgGC9pL5ArkMjpSD4zY
-         eVM+fH3zo7wUp+0OfWFB0NUwkBYbwXx/NJl8dHRWGVdTb4KoQUh/+XM5YZ2S3SrpW8OH
-         AZSRuYQB9QkYD+JZq0hhqCr+6b2m+3pirL5E/0vGtlESnvQRpZjz8MbHqBHxHtsMQ9vD
-         a9kf19MU11v7BfI27LgzSpfDg1L06bPiEWE7wWb/7GnynhUZzicafF79fAwsIpWDCdjf
-         7WN89MzzX+Od4Izo6f0RbppaxshUCxbQvOWACNGGKT7t8/y1nDSfvtGH63eot347oDmt
-         1Ltw==
+        bh=x9hTDE+OmzSnorVJyzQcFNYmLnBIvZgvXWNavzd4DaM=;
+        b=zpBBoixudSHELWA3D8CQLw4ulWI7jpnSGXTLLwdvRkN15vEm6/VX3hzvch7eH89ZZv
+         1kdCZd0tnCHW+oiPYBm/avaFjgcF11yL2SIzCLhuYOi2tUUu8JWSrbHWZ1ErxzH8P/c8
+         aTL5P4ghnbSf+i87GDXWHiuNJN/E0XRyPqqevNVxcDsiYrtprCd5c//jXpquDxDmhd1x
+         eyQAVtEvjLCLRot8aOQC09PX+hRrMzckDiqnYq7n8TTvE9g0qed5ysj3D8G7evyqE7WF
+         OLzLoIXMnaVbDE1FsPzdWXVduQ6sRlfF6kO3uvydWJhIgQWoxTIFcf5lSVvoArbi5EsP
+         amdA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713654030; x=1714258830;
+        d=1e100.net; s=20230601; t=1713654477; x=1714259277;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=gS/avcdT3uZE+/g4l+u7eNrKfkVrRBnHoxOYygE+RDE=;
-        b=uDvIjRr/RdtY2Vz0MxmDd3erFa+8fd7OklliX9RzH31AqxnxnL1zmLM6lnk1vlbtjP
-         pwx4OhjUU4Z+6TcJp/qc72De5Bg/9ZoUvLJ2uArASmPCIuLOq9V68rSlKvPQXTrLD5u7
-         200iURqPu5PDKjGe2aMr+JfPJpgpQkJU2p3iDsIkYwZhChnLge+hTu670f1fgBBV3EaY
-         aV8+0P9ObvoGAGRJv+YuSHsiAGnutwP7KmSXGps9O2mIwBGz49cJTAKd2d3diuwHvXw7
-         bV+bzsjFLbuTHgjYrV/fSyrfkdjw2OApDnwrSqbn+DPknBLhXnqNDSk3fRFwmi8huc6z
-         9ESg==
-X-Forwarded-Encrypted: i=1; AJvYcCVFEQx5wk9ReIToAw4+wOTOyWdNQrzIp8j3OS42sp/2TVoJJYWYQ8OPfhJOyOxvmjF0qB8MZeDWItuJiEZ8GXC7dx4w/IykzkylMNqmfi6qB34l
-X-Gm-Message-State: AOJu0YzuV0TnHHVHFYVilpdX51mCMD+EogBzMAaJguVqZm8zzg0TRsuj
-	MccGrA3/7wQ4HgOZ2NXyqmAVEGPREkwZ+SaMG6pvIV2nWhOsHYjWZExvkiV67V8=
-X-Google-Smtp-Source: AGHT+IH4lwqPioLpoIzW6dLhOLlXPP3zMShUOxH0TJXNnW3DIij9PpcqOmEnmKfQrSavTUI2UaMo9Q==
-X-Received: by 2002:a50:9ece:0:b0:570:cd6:8ef with SMTP id a72-20020a509ece000000b005700cd608efmr4297896edf.29.1713654029517;
-        Sat, 20 Apr 2024 16:00:29 -0700 (PDT)
+        bh=x9hTDE+OmzSnorVJyzQcFNYmLnBIvZgvXWNavzd4DaM=;
+        b=ZtVqepfmjmxogHW0on8IJ0BMUGkw8hzOM8+yARPriDuX4GSzC/YvmWwVCLFlnLRb2r
+         6Nk+bsETSuWwPvTcf6hnVHhqPkQOJgoAOYNOqtSvjPMmKeDInRQc4LlPnkfPg3s0nPoI
+         gxEm5J7yYeyjM6+qJKPCbWJFbxE7qBqRTPy/900oHszi3IHuTVtEWKb+/kePcYEr32h+
+         ARQhEymY9SRzq6uwjVeB26low4hhAEJWKbaDjV4MAxPu5QKN+UQuxgY8L3zgTbFWAFYM
+         RwRM7L1kLGXTKCDeZ6l2rR9dq5AztG9aoIyISnmwdl855Y6VZVT/0w74j35HzEsK9pWn
+         STAA==
+X-Forwarded-Encrypted: i=1; AJvYcCWnj72YZ7qBtdmZ19yUZUZ6wI8jyLVACPLqOzZzCnjuGTh1ilJqn+vuWBBG2/w1Z4uNfsteY1BreMPpeuhnxOOhLCSeAkvFKVV+Eg+2g4V/QBGm
+X-Gm-Message-State: AOJu0YygScR3/+us28OpKB5hBtmty+hJt1PSk48YVjvQDnXMmReAw0+0
+	21DGvEWYgmM3Y8zEyYHJc0chC1gjifF1hgEquDT3iMuOcisyUTdPqlSff4FZemI=
+X-Google-Smtp-Source: AGHT+IFGdOa11zFVqyC3KCcGi9RrrofVzZm8cOluppaZLRYUDrIPrVm3Gfdre6MIxYSUZ9KallR7Bw==
+X-Received: by 2002:adf:cd84:0:b0:33e:7f51:c2f8 with SMTP id q4-20020adfcd84000000b0033e7f51c2f8mr3599510wrj.36.1713654477259;
+        Sat, 20 Apr 2024 16:07:57 -0700 (PDT)
 Received: from [192.168.0.102] ([176.61.106.68])
-        by smtp.gmail.com with ESMTPSA id eo9-20020a056402530900b00571ef2c1308sm913940edb.12.2024.04.20.16.00.27
+        by smtp.gmail.com with ESMTPSA id p3-20020a5d6383000000b00341b451a31asm7862874wru.36.2024.04.20.16.07.55
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 20 Apr 2024 16:00:29 -0700 (PDT)
-Message-ID: <9f44c386-4be9-4904-bf67-f0e664773baa@linaro.org>
-Date: Sun, 21 Apr 2024 00:00:27 +0100
+        Sat, 20 Apr 2024 16:07:56 -0700 (PDT)
+Message-ID: <ae9b190c-3961-4704-bc93-cb1c4182672b@linaro.org>
+Date: Sun, 21 Apr 2024 00:07:55 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 01/26] media: pci: mgb4: Refactor struct resources
+Subject: Re: [PATCH v2 02/26] media: stb0899: Simplify check
 To: Ricardo Ribalda <ribalda@chromium.org>,
  Martin Tuma <martin.tuma@digiteqautomotive.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
@@ -103,15 +103,15 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
  linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org
 References: <20240419-fix-cocci-v2-0-2119e692309c@chromium.org>
- <20240419-fix-cocci-v2-1-2119e692309c@chromium.org>
+ <20240419-fix-cocci-v2-2-2119e692309c@chromium.org>
 Content-Language: en-US
 From: Bryan O'Donoghue <bryan.odonoghue@linaro.org>
-In-Reply-To: <20240419-fix-cocci-v2-1-2119e692309c@chromium.org>
+In-Reply-To: <20240419-fix-cocci-v2-2-2119e692309c@chromium.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240420_160033_710326_B6ADF282 
-X-CRM114-Status: GOOD (  10.14  )
+X-CRM114-CacheID: sfid-20240420_160800_717141_D1D049BE 
+X-CRM114-Status: GOOD (  14.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,31 +127,30 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 19/04/2024 10:47, Ricardo Ribalda wrote:
-> The struct resource end field is inclusive not exclusive, this is, the
-> size is (end - start) +1.
-
-", this is," doesn't parse on my end
-
-"i.e" => that is, would be more appropriate I think.
-
-"The struct resource end field is inclusive not exclusive of the size" 
-which I still think is a confusing statement.
-
-Perhaps something much easier to understand is called for
-
-"The struct resource end field signifies the end address not the 
-relative offset from the start field i.e size == (end - start) + 1.
-
-Amend the .end field to specify the end address not the relative size 
-from the offset as is currently given."
-
-Other than that, I think its reasonable to assume the mapping != 0 - 
-0x100 inclusive.
-
-Please consider updating your commit log and if you do add my
+> chip_id is an unsigned number, it can never be < 0
+> 
+> Fixes cocci check:
+> drivers/media/dvb-frontends/stb0899_drv.c:1280:8-15: WARNING: Unsigned expression compared with zero: chip_id > 0
+> 
+> Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
+> ---
+>   drivers/media/dvb-frontends/stb0899_drv.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/media/dvb-frontends/stb0899_drv.c b/drivers/media/dvb-frontends/stb0899_drv.c
+> index 2f4d8fb400cd..35634f9a8ab5 100644
+> --- a/drivers/media/dvb-frontends/stb0899_drv.c
+> +++ b/drivers/media/dvb-frontends/stb0899_drv.c
+> @@ -1277,7 +1277,7 @@ static int stb0899_get_dev_id(struct stb0899_state *state)
+>   	dprintk(state->verbose, FE_ERROR, 1, "Demodulator Core ID=[%s], Version=[%d]", (char *) &demod_str, demod_ver);
+>   	CONVERT32(STB0899_READ_S2REG(STB0899_S2FEC, FEC_CORE_ID_REG), (char *)&fec_str);
+>   	fec_ver = STB0899_READ_S2REG(STB0899_S2FEC, FEC_VER_ID_REG);
+> -	if (! (chip_id > 0)) {
+> +	if (!chip_id) {
+>   		dprintk(state->verbose, FE_ERROR, 1, "couldn't find a STB 0899");
+>   
+>   		return -ENODEV;
+> 
 
 Reviewed-by: Bryan O'Donoghue <bryan.odonoghue@linaro.org>
-
----
-bod
 
