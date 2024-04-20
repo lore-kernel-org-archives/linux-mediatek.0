@@ -4,58 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 674C7C4345F
-	for <linux-mediatek@archiver.kernel.org>; Sat, 20 Apr 2024 01:47:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CAF8C4345F
+	for <linux-mediatek@archiver.kernel.org>; Sat, 20 Apr 2024 01:47:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:To:Cc:From:Subject:
 	References:In-Reply-To:Content-Transfer-Encoding:MIME-Version:Content-Type:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fi1gfxDGU9DyDoYCAwmnKrsw+kK2oGoPULKWkCn/ByY=; b=p+/2Ehv2o/dQzZxVPiBRhMwrwu
-	mL0QA2zRkbw4V9R5CqOQUQudlMERuv0qwc/wJEfGq1dbyO1XerU4LK2j6PRMIRnWPx8SaDeznGGlS
-	f0dnWaxwnwI6vq3VRG5Gntgvc4JakiwxxP+1ZlF78fRaVexAcL4fi53ETj+hDBnwtS1j4PylCQKXX
-	Wql140OpoBB5XiUucKJ74SicHPGPcdLdwxBzUf/LV/+C2/IF/zvsM5BThNWhFYJ+X30Jg+/U1x5p/
-	n3LrrmqcoBAULKSkqNpjHQQeLPaqI3m7lFxQ4kgjbvjLEtG0MFh/o1ciQBE2oP1QrPi8NAOuRsn7x
-	YU8QWxYA==;
+	bh=FqCqxKjM3qLROE2N3brERnq9h6gXK+FVJVzNjPZ2BbQ=; b=A7/T0dm93hPiKlnOveNy+HBtHU
+	pf0R6wRNzsiNd737dmSgQkzfk8F5/YByBbWKxTM8fnno9zkF2tV9v1NVNu3f8CbwTneMsu7H5z603
+	tKAwLhz3oMNv3i6ODQT3FXpR/oR8lFH0d9YDx3VM+CS6lz1NXIgWR+IwhZWg5p6efigneymA5Vbs7
+	Mv27VSxXSM1+YCdt3RyuZlAV7MnPu3x/NXKw3iXT/YiVia5gTwEZZ7NgWimAhvAhHB66M0ISNXNuW
+	1mHP0esW2x0fVCgg3/mL2vTvDLpKP0ddWdmCbtd8AB5iBvXe4frdTQ3m4P/14i4A5t6R0gckv0USG
+	70+7Ym2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxzp3-00000007X2P-0JSA;
-	Sat, 20 Apr 2024 01:47:21 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1rxzpG-00000007X8R-2nDb;
+	Sat, 20 Apr 2024 01:47:34 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxzoy-00000007X0Q-3y1R;
-	Sat, 20 Apr 2024 01:47:18 +0000
+	id 1rxzpC-00000007X5M-3QHj;
+	Sat, 20 Apr 2024 01:47:32 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 129A461A8B;
-	Sat, 20 Apr 2024 01:47:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 94D85C072AA;
-	Sat, 20 Apr 2024 01:47:15 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 3B0E3CE1B96;
+	Sat, 20 Apr 2024 01:47:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4B8D0C2BD11;
+	Sat, 20 Apr 2024 01:47:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1713577635;
-	bh=fi1gfxDGU9DyDoYCAwmnKrsw+kK2oGoPULKWkCn/ByY=;
+	s=k20201202; t=1713577647;
+	bh=Wkq9R/fdbk//Bx9s705zg1J5qQkoukUR/Zgkx33AMOA=;
 	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
-	b=Twj8UPeZIGO8BeDUMG89gTomLhjnAhfSpvSO9YNlQMkvsbHwfvAF6EuhZKcl1lJb+
-	 3DXM5qjlZ5jLIGCyEf21qwfbxRAKHqDtNAl1zGcq6qno8+AFdQlY1YuNhMua+3U4G2
-	 dshDA59ztPHseB6v0VqK4NT94RzKipL/OwzxcaYJK4lN1bS6RZXfWJB/9V7w1O3XuH
-	 bmhCjsEdUALj4rh0xfExqE/AEvu5AMTBHnWmLIx0qjUg3Z+TPLYYFDn0VOXOiV/yxZ
-	 I1BzaYElbqQcUTSXqRLw/qZchERmjBN4ZFwVEPaUDYjVR2cl/p8B3RXMjpqUIf59Z9
-	 8LrYtcUdmRYaw==
-Message-ID: <094dde0105acb1fb1644ae14930065e8.sboyd@kernel.org>
+	b=R9qEJZHaUguTYgNNIQJiSoa5EVzoriJOd+Pv/Nk46WJj1JJd0mcuwpJZTvUqi/SyW
+	 hZej278gvBLV5Cf7Amwfn0KsbSAW4Hb6Bzib0A5OJqxRDNihNxrHCNdtFU2iAZfXtU
+	 lELwxiCYg05XFFYQdo1pVHIuHapEyxHpBJluLgrkaMGmTbs9zEp5y+Iv1dpnPyvHZ5
+	 LdVSIfvB4hVn4dZPkCOg4upsM7ybWqYjTTMYv1jFGBSniXTyTPy/vcJ9aVt2ivR+Sq
+	 /9RCuSe4HGbSCzBHv7ZQxUMPo3gZCmLMnvnA9PBp1tFMSN2wQxcUYtcxoq/flw6zTQ
+	 iNy1EUA7TqGvw==
+Message-ID: <97594c7ca4b53b5c94097b72c412c3ac.sboyd@kernel.org>
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <20240417-spmi-multi-master-support-v10-2-5bc6d322e266@linaro.org>
-References: <20240417-spmi-multi-master-support-v10-0-5bc6d322e266@linaro.org> <20240417-spmi-multi-master-support-v10-2-5bc6d322e266@linaro.org>
-Subject: Re: [PATCH v10 2/7] dt-bindings: spmi: Deprecate qcom,bus-id
+In-Reply-To: <20240417-spmi-multi-master-support-v10-3-5bc6d322e266@linaro.org>
+References: <20240417-spmi-multi-master-support-v10-0-5bc6d322e266@linaro.org> <20240417-spmi-multi-master-support-v10-3-5bc6d322e266@linaro.org>
+Subject: Re: [PATCH v10 3/7] spmi: pmic-arb: Fix some compile warnings about members not being described
 From: Stephen Boyd <sboyd@kernel.org>
-Cc: Srini Kandagatla <srinivas.kandagatla@linaro.org>, Johan Hovold <johan@kernel.org>, David Collins <quic_collinsd@quicinc.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, Abel Vesa <abel.vesa@linaro.org>, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Srini Kandagatla <srinivas.kandagatla@linaro.org>, Johan Hovold <johan@kernel.org>, David Collins <quic_collinsd@quicinc.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, Abel Vesa <abel.vesa@linaro.org>
 To: Abel Vesa <abel.vesa@linaro.org>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Bjorn Andersson <andersson@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Neil Armstrong <neil.armstrong@linaro.org>, Rob Herring <robh@kernel.org>
-Date: Fri, 19 Apr 2024 18:47:13 -0700
+Date: Fri, 19 Apr 2024 18:47:25 -0700
 User-Agent: alot/0.10
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240419_184717_079122_6F44A167 
-X-CRM114-Status: UNSURE (   6.39  )
+X-CRM114-CacheID: sfid-20240419_184731_207202_25BA52F7 
+X-CRM114-Status: UNSURE (   5.61  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -71,12 +71,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting Abel Vesa (2024-04-17 13:00:54)
-> As it is optional and no platform is actually using the secondary bus,
-> deprecate the qcom,bus-id property. For newer platforms that implement
-> SPMI PMIC ARB v7 in HW, the X1E80100 approach should be used.
+Quoting Abel Vesa (2024-04-17 13:00:55)
+> Fix the following compile warnings:
 >=20
-> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+>  warning: Function parameter or struct member 'core' not described in 'sp=
+mi_pmic_arb'
+>  warning: Function parameter or struct member 'core_size' not described i=
+n 'spmi_pmic_arb'
+>  warning: Function parameter or struct member 'mapping_table_valid' not d=
+escribed in 'spmi_pmic_arb'
+>  warning: Function parameter or struct member 'pmic_arb' not described in=
+ 'pmic_arb_read_data'
+>  warning: Function parameter or struct member 'pmic_arb' not described in=
+ 'pmic_arb_write_data'
+>=20
+> Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
 > Signed-off-by: Abel Vesa <abel.vesa@linaro.org>
 > ---
 
