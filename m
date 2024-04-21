@@ -4,115 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE49EC4345F
-	for <linux-mediatek@archiver.kernel.org>; Sat, 20 Apr 2024 23:23:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8100EC4345F
+	for <linux-mediatek@archiver.kernel.org>; Sun, 21 Apr 2024 00:09:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=G7j9WmKVfIxCtxmA5+g+ivZQajcRB8Ss1Yyb3DxCAfA=; b=yxGvvY8uSGHoDL+tiaGlmmJ82Y
-	teF444OHqtGeTAYsN+bGwmARJcTWRPzmkbLg4TQJhBRhHy4swA+pH/a2eJV3ZrwGwWUFJcyJoio6b
-	5H4EKyy833iHFXGr3YEjfRE/rEZDoB0S80D7NiERQ4ZcF7U/KnIOSeYkFR3yOsAYBZ0a/Wq7VARpR
-	+WKKl/tKSo7ms4AlvP9NY3boZHJVE0lMo0mBVDV7dW0pSONpm6cgI2FZlzmNFaIejG3MZzLRm5h8T
-	nPi0bS4woW3if6p8g4b/spozKek1dMqZv/1xmgyZLs+UGzVW6R9FPPwCVrZwEj+axKn3PkRvLsSm8
-	DGmNDCug==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=+3DZb3ywACNyNhOHs2fIbalH64ca3xWE5isDL8CtTsg=; b=TBB52d7JDH5t1ctoIiipBTbdIA
+	xapqjztsbOaWd5xdA4ohqV3fM29MmhDIXmJvb8K65JACHxahrOAx5sVz3h3F8dOtlhd5vwYIB8aym
+	E7K51TdDg2i8A1zP5wtjkmWhbcI5neXSU24OI0K3VhOhfN8f+7m+CYu6xqolzCQvgvLgJePNtARoh
+	QITj4X87tBJBhFapeCTIP/rZLSm0yA/UJg9ePcMAjp06qXwygx/U3DXIINOcy4onetypCKGSseB00
+	TTL/JMnRfUaJaitVSopCuBzBQQVotYUV8PHVhkviTlfl1QvlBW3xbK2NX2kCjg/94ynYHfOK5RFqB
+	O59PJkwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ryK3B-00000009OLG-0fO5;
-	Sat, 20 Apr 2024 23:23:17 +0000
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
+	id 1ryKlR-00000009Rio-1bZQ;
+	Sun, 21 Apr 2024 00:09:01 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ryK38-00000009OKG-1o6r
-	for linux-mediatek@lists.infradead.org;
-	Sat, 20 Apr 2024 23:23:16 +0000
-Received: by mail-ej1-x62a.google.com with SMTP id a640c23a62f3a-a519e1b0e2dso356011866b.2
-        for <linux-mediatek@lists.infradead.org>; Sat, 20 Apr 2024 16:23:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1713655391; x=1714260191; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=G7j9WmKVfIxCtxmA5+g+ivZQajcRB8Ss1Yyb3DxCAfA=;
-        b=tfHuD5hNb0YPAVqNTXLz+2NY7+VHBzvYpqOBk0t/4dhvN2Oa727tMGUAPijqngiecb
-         Xbkc/T7whifWQyii0JnAt+S/melcam3+0n9g7RyAYPW/puuta7cDURN21FHQqh7KoCX9
-         Zaqwes2sxzgcWcFDcB053grd6Se02EmyBLrt/7fcQie5SG1ED1Ygdza+YSNBAtlnoIwY
-         v0iZD3vTSA/V5mQn/E2tNCRxNSkln5oInJegiYaAkuwZLBBfQhsqPJDJZiuc9xSZqUeM
-         VWvIf4qpZn2hj9p75dZ5MYDtuPLTukGRIWauCIelVFKo2o1EZnxnl5zuBp9OfWUIJfeB
-         tbeg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713655391; x=1714260191;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=G7j9WmKVfIxCtxmA5+g+ivZQajcRB8Ss1Yyb3DxCAfA=;
-        b=N3jup2/+ZLGCCdmu+HD9Ppe5Th+/VcE51+ykuhp7i5WuTScuV7LYUfI6G4NRU4gDuN
-         hRb+iAfqcN5D77R1DhOCC8efN0e/en22KSZnpwaiYqMy3VcpnSkrpgaKi+ks/gtQcqT1
-         IoGOhoqO/sQqkW4N8mV/g8+guhahzDq1MPiSinS9VQiRjFHCZCgv/ztVdBGDjoa0RCxs
-         DLlCX58EF5KJSsyyIvPglN05+a+NFoOjJaya+ZiaDY33rCFpSaa500jvMsmwDW5YZqXt
-         hyg2//w7Dl2NmUheAMmlmiVbSUT16Feqd1+7jW1+nmRB9jOJ1OaDULpyqxXWAvhUsg0P
-         mJyA==
-X-Forwarded-Encrypted: i=1; AJvYcCW+96Lh2fub8lpSNdvI+ckOxo4viZKaNP1bbnUdfZZgLqdJIutrVMQ9Q75MuhJk/Spaj4VOfIBKyR9owik4k5Prd2f52xyaUuRE5lfLnfwsjOUn
-X-Gm-Message-State: AOJu0Yz11aCtcLOWsMLusfdH4knVAFO7QvCUYoUktykOvt62TPXd3st0
-	Q9su3+mFAaBNkHK0l0FLV5ktSHUYdroaI9hLn7/1PVZc6N6RkNOdmt8wkTXuE84=
-X-Google-Smtp-Source: AGHT+IHIgAHqaBHAo2tv0s9P7hAH/P161Q1ck8771gq2FLpa0nizkFWxKtOsbHWkZLUsCdT//bfy9g==
-X-Received: by 2002:a17:906:c24d:b0:a4e:5137:9969 with SMTP id bl13-20020a170906c24d00b00a4e51379969mr4156927ejb.32.1713655391076;
-        Sat, 20 Apr 2024 16:23:11 -0700 (PDT)
-Received: from [192.168.0.102] ([176.61.106.68])
-        by smtp.gmail.com with ESMTPSA id v24-20020a170906339800b00a521904b548sm3889268eja.166.2024.04.20.16.23.09
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 20 Apr 2024 16:23:10 -0700 (PDT)
-Message-ID: <27513574-3131-4704-9c3d-f699cc9edb9b@linaro.org>
-Date: Sun, 21 Apr 2024 00:23:08 +0100
+	id 1ryKlM-00000009Rhq-3OFH;
+	Sun, 21 Apr 2024 00:08:59 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.97.1)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1ryKl5-0000000045H-02wC;
+	Sun, 21 Apr 2024 00:08:39 +0000
+Date: Sun, 21 Apr 2024 01:08:31 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: Qingfang Deng <dqfext@gmail.com>,
+	SkyLake Huang <SkyLake.Huang@mediatek.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH net] net: phy: mediatek-ge-soc: follow netdev LED trigger
+ semantics
+Message-ID: <4983a6b197ed999808c5690d01ec1ffb4f6407b7.1713656093.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 09/26] media: v4l: async: refactor
- v4l2_async_create_ancillary_links
-To: Ricardo Ribalda <ribalda@chromium.org>,
- Martin Tuma <martin.tuma@digiteqautomotive.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Hugues Fruchet <hugues.fruchet@foss.st.com>,
- Alain Volmat <alain.volmat@foss.st.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Chen-Yu Tsai
- <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Samuel Holland <samuel@sholland.org>,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Sowjanya Komatineni <skomatineni@nvidia.com>,
- Luca Ceresoli <luca.ceresoli@bootlin.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Hans Verkuil <hverkuil@xs4all.nl>, Sergey Kozlov <serjk@netup.ru>,
- Abylay Ospan <aospan@netup.ru>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Dmitry Osipenko <digetx@gmail.com>,
- Benjamin Mugnier <benjamin.mugnier@foss.st.com>,
- Sylvain Petinot <sylvain.petinot@foss.st.com>,
- Stanimir Varbanov <stanimir.k.varbanov@gmail.com>,
- Vikash Garodia <quic_vgarodia@quicinc.com>,
- Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konrad.dybcio@linaro.org>
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-stm32@st-md-mailman.stormreply.com,
- linux-arm-kernel@lists.infradead.org, linux-staging@lists.linux.dev,
- linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org
-References: <20240419-fix-cocci-v2-0-2119e692309c@chromium.org>
- <20240419-fix-cocci-v2-9-2119e692309c@chromium.org>
-Content-Language: en-US
-From: Bryan O'Donoghue <bryan.odonoghue@linaro.org>
-In-Reply-To: <20240419-fix-cocci-v2-9-2119e692309c@chromium.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240420_162314_555966_F0B4412D 
-X-CRM114-Status: GOOD (  16.24  )
+X-CRM114-CacheID: sfid-20240420_170857_071987_1E9F2592 
+X-CRM114-Status: GOOD (  12.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,49 +70,126 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 19/04/2024 10:47, Ricardo Ribalda wrote:
-> Return 0 without checking IS_ERR or PTR_ERR if CONFIG_MEDIA_CONTROLLER
-> is not enabled.
-> 
-> This makes cocci happier:
-> 
-> drivers/media/v4l2-core/v4l2-async.c:331:23-30: ERROR: PTR_ERR applied after initialization to constant on line 319
-> 
-> Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
-> ---
->   drivers/media/v4l2-core/v4l2-async.c | 7 +++----
->   1 file changed, 3 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/media/v4l2-core/v4l2-async.c b/drivers/media/v4l2-core/v4l2-async.c
-> index 4bb073587817..915a9f3ea93c 100644
-> --- a/drivers/media/v4l2-core/v4l2-async.c
-> +++ b/drivers/media/v4l2-core/v4l2-async.c
-> @@ -316,9 +316,10 @@ v4l2_async_nf_try_all_subdevs(struct v4l2_async_notifier *notifier);
->   static int v4l2_async_create_ancillary_links(struct v4l2_async_notifier *n,
->   					     struct v4l2_subdev *sd)
->   {
-> -	struct media_link *link = NULL;
-> +	struct media_link *link;
->   
-> -#if IS_ENABLED(CONFIG_MEDIA_CONTROLLER)
-> +	if (!IS_ENABLED(CONFIG_MEDIA_CONTROLLER))
-> +		return 0;
->   
->   	if (sd->entity.function != MEDIA_ENT_F_LENS &&
->   	    sd->entity.function != MEDIA_ENT_F_FLASH)
-> @@ -326,8 +327,6 @@ static int v4l2_async_create_ancillary_links(struct v4l2_async_notifier *n,
->   
->   	link = media_create_ancillary_link(&n->sd->entity, &sd->entity);
->   
-> -#endif
-> -
->   	return IS_ERR(link) ? PTR_ERR(link) : 0;
->   }
->   
-> 
+Only blink if the link is up on a LED which is programmed to also
+indicate link-status.
 
-Reviewed-by: Bryan O'Donoghue <bryan.odonoghue@linaro.org>
+Otherwise, if both LEDs are in use to indicate different speeds, the
+resulting blinking being inverted on LEDs which aren't switched on at
+a specific speed is quite counter-intuitive.
 
+Also make sure that state left behind by reset or the bootloader is
+recognized correctly including the half-duplex and full-duplex bits as
+well as the (unsupported by Linux netdev trigger semantics) link-down
+bit.
+
+Fixes: c66937b0f8db ("net: phy: mediatek-ge-soc: support PHY LEDs")
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 ---
-bod
+ drivers/net/phy/mediatek-ge-soc.c | 43 +++++++++++++++++++------------
+ 1 file changed, 26 insertions(+), 17 deletions(-)
+
+diff --git a/drivers/net/phy/mediatek-ge-soc.c b/drivers/net/phy/mediatek-ge-soc.c
+index 0f3a1538a8b8..f4f9412d0cd7 100644
+--- a/drivers/net/phy/mediatek-ge-soc.c
++++ b/drivers/net/phy/mediatek-ge-soc.c
+@@ -216,6 +216,9 @@
+ #define   MTK_PHY_LED_ON_LINK1000		BIT(0)
+ #define   MTK_PHY_LED_ON_LINK100		BIT(1)
+ #define   MTK_PHY_LED_ON_LINK10			BIT(2)
++#define   MTK_PHY_LED_ON_LINK			(MTK_PHY_LED_ON_LINK10 |\
++						 MTK_PHY_LED_ON_LINK100 |\
++						 MTK_PHY_LED_ON_LINK1000)
+ #define   MTK_PHY_LED_ON_LINKDOWN		BIT(3)
+ #define   MTK_PHY_LED_ON_FDX			BIT(4) /* Full duplex */
+ #define   MTK_PHY_LED_ON_HDX			BIT(5) /* Half duplex */
+@@ -231,6 +234,12 @@
+ #define   MTK_PHY_LED_BLINK_100RX		BIT(3)
+ #define   MTK_PHY_LED_BLINK_10TX		BIT(4)
+ #define   MTK_PHY_LED_BLINK_10RX		BIT(5)
++#define   MTK_PHY_LED_BLINK_RX			(MTK_PHY_LED_BLINK_10RX |\
++						 MTK_PHY_LED_BLINK_100RX |\
++						 MTK_PHY_LED_BLINK_1000RX)
++#define   MTK_PHY_LED_BLINK_TX			(MTK_PHY_LED_BLINK_10TX |\
++						 MTK_PHY_LED_BLINK_100TX |\
++						 MTK_PHY_LED_BLINK_1000TX)
+ #define   MTK_PHY_LED_BLINK_COLLISION		BIT(6)
+ #define   MTK_PHY_LED_BLINK_RX_CRC_ERR		BIT(7)
+ #define   MTK_PHY_LED_BLINK_RX_IDLE_ERR		BIT(8)
+@@ -1247,11 +1256,9 @@ static int mt798x_phy_led_hw_control_get(struct phy_device *phydev, u8 index,
+ 	if (blink < 0)
+ 		return -EIO;
+ 
+-	if ((on & (MTK_PHY_LED_ON_LINK1000 | MTK_PHY_LED_ON_LINK100 |
+-		   MTK_PHY_LED_ON_LINK10)) ||
+-	    (blink & (MTK_PHY_LED_BLINK_1000RX | MTK_PHY_LED_BLINK_100RX |
+-		      MTK_PHY_LED_BLINK_10RX | MTK_PHY_LED_BLINK_1000TX |
+-		      MTK_PHY_LED_BLINK_100TX | MTK_PHY_LED_BLINK_10TX)))
++	if ((on & (MTK_PHY_LED_ON_LINK | MTK_PHY_LED_ON_FDX | MTK_PHY_LED_ON_HDX |
++		   MTK_PHY_LED_ON_LINKDOWN)) ||
++	    (blink & (MTK_PHY_LED_BLINK_RX | MTK_PHY_LED_BLINK_TX)))
+ 		set_bit(bit_netdev, &priv->led_state);
+ 	else
+ 		clear_bit(bit_netdev, &priv->led_state);
+@@ -1269,7 +1276,7 @@ static int mt798x_phy_led_hw_control_get(struct phy_device *phydev, u8 index,
+ 	if (!rules)
+ 		return 0;
+ 
+-	if (on & (MTK_PHY_LED_ON_LINK1000 | MTK_PHY_LED_ON_LINK100 | MTK_PHY_LED_ON_LINK10))
++	if (on & MTK_PHY_LED_ON_LINK)
+ 		*rules |= BIT(TRIGGER_NETDEV_LINK);
+ 
+ 	if (on & MTK_PHY_LED_ON_LINK10)
+@@ -1287,10 +1294,10 @@ static int mt798x_phy_led_hw_control_get(struct phy_device *phydev, u8 index,
+ 	if (on & MTK_PHY_LED_ON_HDX)
+ 		*rules |= BIT(TRIGGER_NETDEV_HALF_DUPLEX);
+ 
+-	if (blink & (MTK_PHY_LED_BLINK_1000RX | MTK_PHY_LED_BLINK_100RX | MTK_PHY_LED_BLINK_10RX))
++	if (blink & MTK_PHY_LED_BLINK_RX)
+ 		*rules |= BIT(TRIGGER_NETDEV_RX);
+ 
+-	if (blink & (MTK_PHY_LED_BLINK_1000TX | MTK_PHY_LED_BLINK_100TX | MTK_PHY_LED_BLINK_10TX))
++	if (blink & MTK_PHY_LED_BLINK_TX)
+ 		*rules |= BIT(TRIGGER_NETDEV_TX);
+ 
+ 	return 0;
+@@ -1323,15 +1330,19 @@ static int mt798x_phy_led_hw_control_set(struct phy_device *phydev, u8 index,
+ 		on |= MTK_PHY_LED_ON_LINK1000;
+ 
+ 	if (rules & BIT(TRIGGER_NETDEV_RX)) {
+-		blink |= MTK_PHY_LED_BLINK_10RX  |
+-			 MTK_PHY_LED_BLINK_100RX |
+-			 MTK_PHY_LED_BLINK_1000RX;
++		blink |= (on & MTK_PHY_LED_ON_LINK) ?
++			  (((on & MTK_PHY_LED_ON_LINK10) ? MTK_PHY_LED_BLINK_10RX : 0) |
++			   ((on & MTK_PHY_LED_ON_LINK100) ? MTK_PHY_LED_BLINK_100RX : 0) |
++			   ((on & MTK_PHY_LED_ON_LINK1000) ? MTK_PHY_LED_BLINK_1000RX : 0)) :
++			  MTK_PHY_LED_BLINK_RX;
+ 	}
+ 
+ 	if (rules & BIT(TRIGGER_NETDEV_TX)) {
+-		blink |= MTK_PHY_LED_BLINK_10TX  |
+-			 MTK_PHY_LED_BLINK_100TX |
+-			 MTK_PHY_LED_BLINK_1000TX;
++		blink |= (on & MTK_PHY_LED_ON_LINK) ?
++			  (((on & MTK_PHY_LED_ON_LINK10) ? MTK_PHY_LED_BLINK_10TX : 0) |
++			   ((on & MTK_PHY_LED_ON_LINK100) ? MTK_PHY_LED_BLINK_100TX : 0) |
++			   ((on & MTK_PHY_LED_ON_LINK1000) ? MTK_PHY_LED_BLINK_1000TX : 0)) :
++			  MTK_PHY_LED_BLINK_TX;
+ 	}
+ 
+ 	if (blink || on)
+@@ -1344,9 +1355,7 @@ static int mt798x_phy_led_hw_control_set(struct phy_device *phydev, u8 index,
+ 				MTK_PHY_LED0_ON_CTRL,
+ 			     MTK_PHY_LED_ON_FDX     |
+ 			     MTK_PHY_LED_ON_HDX     |
+-			     MTK_PHY_LED_ON_LINK10  |
+-			     MTK_PHY_LED_ON_LINK100 |
+-			     MTK_PHY_LED_ON_LINK1000,
++			     MTK_PHY_LED_ON_LINK,
+ 			     on);
+ 
+ 	if (ret)
+-- 
+2.44.0
+
 
