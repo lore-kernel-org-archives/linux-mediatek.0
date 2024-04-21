@@ -4,58 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8100EC4345F
-	for <linux-mediatek@archiver.kernel.org>; Sun, 21 Apr 2024 00:09:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35A5FC4345F
+	for <linux-mediatek@archiver.kernel.org>; Sun, 21 Apr 2024 03:35:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=+3DZb3ywACNyNhOHs2fIbalH64ca3xWE5isDL8CtTsg=; b=TBB52d7JDH5t1ctoIiipBTbdIA
-	xapqjztsbOaWd5xdA4ohqV3fM29MmhDIXmJvb8K65JACHxahrOAx5sVz3h3F8dOtlhd5vwYIB8aym
-	E7K51TdDg2i8A1zP5wtjkmWhbcI5neXSU24OI0K3VhOhfN8f+7m+CYu6xqolzCQvgvLgJePNtARoh
-	QITj4X87tBJBhFapeCTIP/rZLSm0yA/UJg9ePcMAjp06qXwygx/U3DXIINOcy4onetypCKGSseB00
-	TTL/JMnRfUaJaitVSopCuBzBQQVotYUV8PHVhkviTlfl1QvlBW3xbK2NX2kCjg/94ynYHfOK5RFqB
-	O59PJkwA==;
+	bh=DqTFUStUgUgHwhHTzA1wLZlhW+xV4wEDyDdTFLtabz0=; b=CYMsJxQJwM/+ctlePT6iFUmqGZ
+	3S8Iii6dG6mgl31xnzTM+KMQJBTDZffzxtxzim+dC5DSDCnXH5nnJ6QJ/uRvUXy8YQxFbNyr6dZaB
+	toYf0E4R03NGZm9jwbZGgBsyPr3lZh9yUph/8Ss2sUMyjK0N52086JD6uzR4QtQXIu5VlO6XDPoeq
+	49zePJF0GTbR+nQc+78r9RwNwpaDWFQaqgKe9ws9OLEFbY2n80AqK5N/wanPuuHGXDUHICapE8PiT
+	rJ+RtvH4FUMcGwWSgTfTlNilo4RAPF2ljP7v0ZG8cN3Xtl9QqSw5eMp0OYeczajEGwx18KgcEsdF4
+	G3Uzpcqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ryKlR-00000009Rio-1bZQ;
-	Sun, 21 Apr 2024 00:09:01 +0000
-Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
+	id 1ryNz2-00000009kfH-25Pi;
+	Sun, 21 Apr 2024 03:35:16 +0000
+Received: from mail-oi1-x236.google.com ([2607:f8b0:4864:20::236])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ryKlM-00000009Rhq-3OFH;
-	Sun, 21 Apr 2024 00:08:59 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.97.1)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1ryKl5-0000000045H-02wC;
-	Sun, 21 Apr 2024 00:08:39 +0000
-Date: Sun, 21 Apr 2024 01:08:31 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: Qingfang Deng <dqfext@gmail.com>,
-	SkyLake Huang <SkyLake.Huang@mediatek.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	id 1ryNz0-00000009keS-0M9H
+	for linux-mediatek@lists.infradead.org;
+	Sun, 21 Apr 2024 03:35:15 +0000
+Received: by mail-oi1-x236.google.com with SMTP id 5614622812f47-3c74c76b142so963216b6e.3
+        for <linux-mediatek@lists.infradead.org>; Sat, 20 Apr 2024 20:35:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1713670512; x=1714275312; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=DqTFUStUgUgHwhHTzA1wLZlhW+xV4wEDyDdTFLtabz0=;
+        b=ECJLitISZWAbnPBvApepEfYIJAW26SHfNmEWtCmffXu6Tip0ZiZ5yL69litn7eR08G
+         slOx4jS/fym1AeZ06fATetduiLKdTgOeIWeTOZL0w23yYkruojDgDQ6yhcO8yQOtx0EA
+         Bb6gOTDYn7FxB8AqM6iDLbFeydd1TF653U9r9HNyGE7JjEKiCionWwY4XN4gKhhRK/1J
+         7jq8itT4v4j4AyS1pP5dR+3QCRAX79ukTDvUY4Gb4Glz+fctIkePVfHxcHsDRAPjhzS7
+         07ShBj/iE744kM373wtQ+zEhEFxtuuKc3a70mrzqJYn8tbF63CYuDCN26h0qQdXkHU9c
+         FAww==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1713670512; x=1714275312;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=DqTFUStUgUgHwhHTzA1wLZlhW+xV4wEDyDdTFLtabz0=;
+        b=PK/h1w1Ftej/VIuTyFUkdY5Cdcdu0ymH2OZLcBI2m8RAVGMMnkiuKaQgn+ZKHsrJBD
+         ylU1e6SKYX3S62HZ40LUjiBEM+P7nf54c+jvpiTlxZObK2uMjhKTGBVNL7H0Ck0VuBtY
+         0s2ucchblpKcHyn1vT8O2kC4xJlOZ/H/9l78qHdq8fCm3Aqw01+z6MlnF1KHtztOLZKZ
+         5owpnzkVR/ZqNNvrljv9bxaAchEXnGSc+ofQhy1ap+TEWUsz+hEg1DQ7WLTUy5D94UFw
+         9V8gtVeuhb84NKXpd/wlWwbu4x7jGbjoqZGeiVGDOuPtv7hqj7JqVUJEAwO//UdERkJJ
+         6oDA==
+X-Forwarded-Encrypted: i=1; AJvYcCWLLfYoJTnS1bjipZOTJiyp8jhQ/pmxY65QdDT2VhYrTJBtbiwAHm7oJ5cdYqnlL/SuakNuRImepMyEQgmpQIk37+5MwmhXgkAMOxKnfkzDEcD8
+X-Gm-Message-State: AOJu0YylKBEHuKa9o/ea7aVutaJ77YS0Qg0TEOW4RJA2qAS958lsFWLI
+	oHHHCPBvs1g+5hoiU+inkuUoqjmYQjBYBP5Shl6UXfkNAv9M7wQk
+X-Google-Smtp-Source: AGHT+IEhIi5dpao0M7bfoPbGYTuQ9jJSf6VyRPSAaGoV0oTkl8Eb5w20BzCqE9x96m8tcu3YW0MIkQ==
+X-Received: by 2002:a05:6808:6c1:b0:3c6:4d7:abf9 with SMTP id m1-20020a05680806c100b003c604d7abf9mr7562694oih.55.1713670511864;
+        Sat, 20 Apr 2024 20:35:11 -0700 (PDT)
+Received: from localhost ([117.239.226.201])
+        by smtp.gmail.com with UTF8SMTPSA id b9-20020a056a00114900b006eaaaf5e0a8sm5517386pfm.71.2024.04.20.20.35.05
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 20 Apr 2024 20:35:11 -0700 (PDT)
+From: Kartik Agarwala <agarwala.kartik@gmail.com>
+To: lgirdwood@gmail.com,
+	broonie@kernel.org,
+	robh@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	conor+dt@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com
+Cc: Kartik Agarwala <agarwala.kartik@gmail.com>,
+	linux-sound@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH net] net: phy: mediatek-ge-soc: follow netdev LED trigger
- semantics
-Message-ID: <4983a6b197ed999808c5690d01ec1ffb4f6407b7.1713656093.git.daniel@makrotopia.org>
+Subject: [PATCH v2] ASoC: dt-bindings: mt2701-wm8960: Convert to dtschema
+Date: Sun, 21 Apr 2024 09:01:31 +0530
+Message-Id: <20240421033129.13076-1-agarwala.kartik@gmail.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240420_170857_071987_1E9F2592 
-X-CRM114-Status: GOOD (  12.39  )
+X-CRM114-CacheID: sfid-20240420_203514_220812_E6FCA0A9 
+X-CRM114-Status: GOOD (  14.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,126 +98,114 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Only blink if the link is up on a LED which is programmed to also
-indicate link-status.
+Convert mt2701-wm890 bindings from text to dtschema. This is used by
+MediaTek mt7623a/n SoC.
 
-Otherwise, if both LEDs are in use to indicate different speeds, the
-resulting blinking being inverted on LEDs which aren't switched on at
-a specific speed is quite counter-intuitive.
-
-Also make sure that state left behind by reset or the bootloader is
-recognized correctly including the half-duplex and full-duplex bits as
-well as the (unsupported by Linux netdev trigger semantics) link-down
-bit.
-
-Fixes: c66937b0f8db ("net: phy: mediatek-ge-soc: support PHY LEDs")
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+Signed-off-by: Kartik Agarwala <agarwala.kartik@gmail.com>
 ---
- drivers/net/phy/mediatek-ge-soc.c | 43 +++++++++++++++++++------------
- 1 file changed, 26 insertions(+), 17 deletions(-)
+Changes for v2:
+- Do not define pinctrl properties as they are implicitly supported.
 
-diff --git a/drivers/net/phy/mediatek-ge-soc.c b/drivers/net/phy/mediatek-ge-soc.c
-index 0f3a1538a8b8..f4f9412d0cd7 100644
---- a/drivers/net/phy/mediatek-ge-soc.c
-+++ b/drivers/net/phy/mediatek-ge-soc.c
-@@ -216,6 +216,9 @@
- #define   MTK_PHY_LED_ON_LINK1000		BIT(0)
- #define   MTK_PHY_LED_ON_LINK100		BIT(1)
- #define   MTK_PHY_LED_ON_LINK10			BIT(2)
-+#define   MTK_PHY_LED_ON_LINK			(MTK_PHY_LED_ON_LINK10 |\
-+						 MTK_PHY_LED_ON_LINK100 |\
-+						 MTK_PHY_LED_ON_LINK1000)
- #define   MTK_PHY_LED_ON_LINKDOWN		BIT(3)
- #define   MTK_PHY_LED_ON_FDX			BIT(4) /* Full duplex */
- #define   MTK_PHY_LED_ON_HDX			BIT(5) /* Half duplex */
-@@ -231,6 +234,12 @@
- #define   MTK_PHY_LED_BLINK_100RX		BIT(3)
- #define   MTK_PHY_LED_BLINK_10TX		BIT(4)
- #define   MTK_PHY_LED_BLINK_10RX		BIT(5)
-+#define   MTK_PHY_LED_BLINK_RX			(MTK_PHY_LED_BLINK_10RX |\
-+						 MTK_PHY_LED_BLINK_100RX |\
-+						 MTK_PHY_LED_BLINK_1000RX)
-+#define   MTK_PHY_LED_BLINK_TX			(MTK_PHY_LED_BLINK_10TX |\
-+						 MTK_PHY_LED_BLINK_100TX |\
-+						 MTK_PHY_LED_BLINK_1000TX)
- #define   MTK_PHY_LED_BLINK_COLLISION		BIT(6)
- #define   MTK_PHY_LED_BLINK_RX_CRC_ERR		BIT(7)
- #define   MTK_PHY_LED_BLINK_RX_IDLE_ERR		BIT(8)
-@@ -1247,11 +1256,9 @@ static int mt798x_phy_led_hw_control_get(struct phy_device *phydev, u8 index,
- 	if (blink < 0)
- 		return -EIO;
- 
--	if ((on & (MTK_PHY_LED_ON_LINK1000 | MTK_PHY_LED_ON_LINK100 |
--		   MTK_PHY_LED_ON_LINK10)) ||
--	    (blink & (MTK_PHY_LED_BLINK_1000RX | MTK_PHY_LED_BLINK_100RX |
--		      MTK_PHY_LED_BLINK_10RX | MTK_PHY_LED_BLINK_1000TX |
--		      MTK_PHY_LED_BLINK_100TX | MTK_PHY_LED_BLINK_10TX)))
-+	if ((on & (MTK_PHY_LED_ON_LINK | MTK_PHY_LED_ON_FDX | MTK_PHY_LED_ON_HDX |
-+		   MTK_PHY_LED_ON_LINKDOWN)) ||
-+	    (blink & (MTK_PHY_LED_BLINK_RX | MTK_PHY_LED_BLINK_TX)))
- 		set_bit(bit_netdev, &priv->led_state);
- 	else
- 		clear_bit(bit_netdev, &priv->led_state);
-@@ -1269,7 +1276,7 @@ static int mt798x_phy_led_hw_control_get(struct phy_device *phydev, u8 index,
- 	if (!rules)
- 		return 0;
- 
--	if (on & (MTK_PHY_LED_ON_LINK1000 | MTK_PHY_LED_ON_LINK100 | MTK_PHY_LED_ON_LINK10))
-+	if (on & MTK_PHY_LED_ON_LINK)
- 		*rules |= BIT(TRIGGER_NETDEV_LINK);
- 
- 	if (on & MTK_PHY_LED_ON_LINK10)
-@@ -1287,10 +1294,10 @@ static int mt798x_phy_led_hw_control_get(struct phy_device *phydev, u8 index,
- 	if (on & MTK_PHY_LED_ON_HDX)
- 		*rules |= BIT(TRIGGER_NETDEV_HALF_DUPLEX);
- 
--	if (blink & (MTK_PHY_LED_BLINK_1000RX | MTK_PHY_LED_BLINK_100RX | MTK_PHY_LED_BLINK_10RX))
-+	if (blink & MTK_PHY_LED_BLINK_RX)
- 		*rules |= BIT(TRIGGER_NETDEV_RX);
- 
--	if (blink & (MTK_PHY_LED_BLINK_1000TX | MTK_PHY_LED_BLINK_100TX | MTK_PHY_LED_BLINK_10TX))
-+	if (blink & MTK_PHY_LED_BLINK_TX)
- 		*rules |= BIT(TRIGGER_NETDEV_TX);
- 
- 	return 0;
-@@ -1323,15 +1330,19 @@ static int mt798x_phy_led_hw_control_set(struct phy_device *phydev, u8 index,
- 		on |= MTK_PHY_LED_ON_LINK1000;
- 
- 	if (rules & BIT(TRIGGER_NETDEV_RX)) {
--		blink |= MTK_PHY_LED_BLINK_10RX  |
--			 MTK_PHY_LED_BLINK_100RX |
--			 MTK_PHY_LED_BLINK_1000RX;
-+		blink |= (on & MTK_PHY_LED_ON_LINK) ?
-+			  (((on & MTK_PHY_LED_ON_LINK10) ? MTK_PHY_LED_BLINK_10RX : 0) |
-+			   ((on & MTK_PHY_LED_ON_LINK100) ? MTK_PHY_LED_BLINK_100RX : 0) |
-+			   ((on & MTK_PHY_LED_ON_LINK1000) ? MTK_PHY_LED_BLINK_1000RX : 0)) :
-+			  MTK_PHY_LED_BLINK_RX;
- 	}
- 
- 	if (rules & BIT(TRIGGER_NETDEV_TX)) {
--		blink |= MTK_PHY_LED_BLINK_10TX  |
--			 MTK_PHY_LED_BLINK_100TX |
--			 MTK_PHY_LED_BLINK_1000TX;
-+		blink |= (on & MTK_PHY_LED_ON_LINK) ?
-+			  (((on & MTK_PHY_LED_ON_LINK10) ? MTK_PHY_LED_BLINK_10TX : 0) |
-+			   ((on & MTK_PHY_LED_ON_LINK100) ? MTK_PHY_LED_BLINK_100TX : 0) |
-+			   ((on & MTK_PHY_LED_ON_LINK1000) ? MTK_PHY_LED_BLINK_1000TX : 0)) :
-+			  MTK_PHY_LED_BLINK_TX;
- 	}
- 
- 	if (blink || on)
-@@ -1344,9 +1355,7 @@ static int mt798x_phy_led_hw_control_set(struct phy_device *phydev, u8 index,
- 				MTK_PHY_LED0_ON_CTRL,
- 			     MTK_PHY_LED_ON_FDX     |
- 			     MTK_PHY_LED_ON_HDX     |
--			     MTK_PHY_LED_ON_LINK10  |
--			     MTK_PHY_LED_ON_LINK100 |
--			     MTK_PHY_LED_ON_LINK1000,
-+			     MTK_PHY_LED_ON_LINK,
- 			     on);
- 
- 	if (ret)
+Previous versions:
+v1: https://lore.kernel.org/all/20240401043505.40972-1-agarwala.kartik@gmail.com/
+---
+ .../sound/mediatek,mt2701-wm8960.yaml         | 54 +++++++++++++++++++
+ .../bindings/sound/mt2701-wm8960.txt          | 24 ---------
+ 2 files changed, 54 insertions(+), 24 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/sound/mediatek,mt2701-wm8960.yaml
+ delete mode 100644 Documentation/devicetree/bindings/sound/mt2701-wm8960.txt
+
+diff --git a/Documentation/devicetree/bindings/sound/mediatek,mt2701-wm8960.yaml b/Documentation/devicetree/bindings/sound/mediatek,mt2701-wm8960.yaml
+new file mode 100644
+index 000000000..cf985461a
+--- /dev/null
++++ b/Documentation/devicetree/bindings/sound/mediatek,mt2701-wm8960.yaml
+@@ -0,0 +1,54 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/sound/mediatek,mt2701-wm8960.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek MT2701 with WM8960 CODEC
++
++maintainers:
++  - Kartik Agarwala <agarwala.kartik@gmail.com>
++
++properties:
++  compatible:
++    const: mediatek,mt2701-wm8960-machine
++
++  mediatek,platform:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description: The phandle of MT2701 ASoC platform.
++
++  audio-routing:
++    $ref: /schemas/types.yaml#/definitions/non-unique-string-array
++    description:
++      A list of the connections between audio components. Each entry is a
++      pair of strings, the first being the connection's sink, the second
++      being the connection's source.
++
++  mediatek,audio-codec:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description: The phandle of the WM8960 audio codec.
++
++unevaluatedProperties: false
++
++required:
++  - compatible
++  - mediatek,platform
++  - audio-routing
++  - mediatek,audio-codec
++  - pinctrl-names
++  - pinctrl-0
++
++examples:
++  - |
++    sound {
++        compatible = "mediatek,mt2701-wm8960-machine";
++        mediatek,platform = <&afe>;
++        audio-routing =
++            "Headphone", "HP_L",
++            "Headphone", "HP_R",
++            "LINPUT1", "AMIC",
++            "RINPUT1", "AMIC";
++        mediatek,audio-codec = <&wm8960>;
++        pinctrl-names = "default";
++        pinctrl-0 = <&aud_pins_default>;
++    };
+diff --git a/Documentation/devicetree/bindings/sound/mt2701-wm8960.txt b/Documentation/devicetree/bindings/sound/mt2701-wm8960.txt
+deleted file mode 100644
+index 809b609ea..000000000
+--- a/Documentation/devicetree/bindings/sound/mt2701-wm8960.txt
++++ /dev/null
+@@ -1,24 +0,0 @@
+-MT2701 with WM8960 CODEC
+-
+-Required properties:
+-- compatible: "mediatek,mt2701-wm8960-machine"
+-- mediatek,platform: the phandle of MT2701 ASoC platform
+-- audio-routing: a list of the connections between audio
+-- mediatek,audio-codec: the phandles of wm8960 codec
+-- pinctrl-names: Should contain only one value - "default"
+-- pinctrl-0: Should specify pin control groups used for this controller.
+-
+-Example:
+-
+-	sound:sound {
+-		compatible = "mediatek,mt2701-wm8960-machine";
+-		mediatek,platform = <&afe>;
+-		audio-routing =
+-			"Headphone", "HP_L",
+-			"Headphone", "HP_R",
+-			"LINPUT1", "AMIC",
+-			"RINPUT1", "AMIC";
+-		mediatek,audio-codec = <&wm8960>;
+-		pinctrl-names = "default";
+-		pinctrl-0 = <&aud_pins_default>;
+-	};
 -- 
-2.44.0
+2.34.1
 
 
