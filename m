@@ -4,111 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04D1AC04FF8
-	for <linux-mediatek@archiver.kernel.org>; Sun, 21 Apr 2024 14:07:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF311C4345F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Apr 2024 02:04:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:Subject:References:Cc:To:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rGFEHaSAYJNx3UiIUNYR80pXYXBmvUUDb2g2ErCYGyU=; b=ocdsmrNyukjnTi4Vbtue4C/eR4
-	NfmwzXb0KrDjX6vnw7J2YKGX6IXX8wi75nyoXsSrpll8nnQZeAhIP0Y/aZMC+RyHd2RFH1Us1vwZW
-	K/zeqboz2oiHsqSfyR2OKXnPf2i7vgLksrmo69OnRqx60Rh9O7FVRAWeQcVOfTUMiTW80zYGVOxon
-	058P3elWFLti4aBL1DjXDuF+KaqK2iUhdT91FPPL64wGX8M1zUSRodIW/LwvhpP+0wBwHan/Bavkd
-	Ly0gRrJM2306qN/TNc3xlFDAYMMUit2TqvG3Vw6xNoPpB8rF88rxhdrJFjiUgb3yj/hgvgR8oXkVz
-	8wITdMHA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XcK1exHDhSlHoAdUUFjKkrAP94hyw0NtS9+rJ4yzmbM=; b=a+QtrG5LLlodXd71HBgmgUGY38
+	o0DFjHkaWghuulJ2Nwd0ArGe3BhzGCYd5IW1AjoWdA4aSyopW7V4EHM54LEneK4wnTEQeoqQgg964
+	o/+GHZYdYC7ml4Yk2l/aVI4DlKRpGc5ln9GeJYodGSVN68d4j9MXVm5v4eRHGH8M/w4QCkGgk6XTS
+	uJZhHfD/TJtu9bpPmZL2QuLJq4cqf9McXByDQt05+xQ/Dyei6t0AC1XkfqUxP5x7Z5QzlVwT9yz0c
+	cszCgI22FbC6tzfYkvcwpK/iYyh2ugcf93llJ05EkGSwymBGbA3zLw7ObQfiosUG41n+MaRl7Eduy
+	MZlrrPlg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ryXrK-0000000AdAv-2AJ2;
-	Sun, 21 Apr 2024 14:07:58 +0000
-Received: from mout.web.de ([212.227.17.11])
+	id 1ryj36-0000000BiiN-2MTN;
+	Mon, 22 Apr 2024 02:04:52 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ryXrG-0000000AdA6-2PP3;
-	Sun, 21 Apr 2024 14:07:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
-	s=s29768273; t=1713708433; x=1714313233; i=markus.elfring@web.de;
-	bh=rGFEHaSAYJNx3UiIUNYR80pXYXBmvUUDb2g2ErCYGyU=;
-	h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:To:Cc:References:
-	 Subject:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:
-	 cc:content-transfer-encoding:content-type:date:from:message-id:
-	 mime-version:reply-to:subject:to;
-	b=tQYCgFiDBtzuJtaPSJ86VUUlnx3bXoxnIn1J0YHGl7VF+oYJVzcRSwD+G2zZBzgc
-	 uTB8dvnwWkDivQsAUzxLsiwv5flkheBVFHvsQiOfznxtj7fLZB3M8RFbR5o6aFner
-	 Sj1t1PzkywvlBvwKXs4Lr6JhavodozKnL0Svdq+lChYVhVirwNbPz6tS+gVYWlXqa
-	 95mVIMsrQSmRFKT9TUNwZGTilthpjTn79LrHyCd7LFaP6wfUdMG/3T6vJ4rOdi4dH
-	 iwGmCcl6aPaM0eI/pxYxleUmRrN9tSkK8x+A6S2Z4uZFiufNUmPWXhufwg8tihQys
-	 I2EGKqoXEcArn2eUPQ==
-X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
-Received: from [192.168.178.21] ([94.31.85.95]) by smtp.web.de (mrweb105
- [213.165.67.124]) with ESMTPSA (Nemesis) id 1MIL0Q-1rt3fo3mEe-00EaEg; Sun, 21
- Apr 2024 16:07:13 +0200
-Message-ID: <8da94316-239a-4870-a29d-02a685ac9ae5@web.de>
-Date: Sun, 21 Apr 2024 16:07:06 +0200
+	id 1ryj32-0000000Bihj-3eAL;
+	Mon, 22 Apr 2024 02:04:50 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 85CF4CE0939;
+	Mon, 22 Apr 2024 02:04:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 243D5C113CE;
+	Mon, 22 Apr 2024 02:04:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1713751485;
+	bh=XcK1exHDhSlHoAdUUFjKkrAP94hyw0NtS9+rJ4yzmbM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=R554hteM0cdmVrLrliiRIZHN2kP2nYb45KXkzOeWnOoiUd/W3bD6SHzQgsxPToOig
+	 0H/7n99flJ+uRz98U3Y/pToOrp/HhsQigKGwuU7NLJ6bYYmvQ7FAGyTHolRNq7VXIJ
+	 DUhcianteItoDZ9TjTbE71oJAaM04Nio/6+yoENIg7fA9uO8aoq7KVztNCPH5fOTVs
+	 cG3t+W2LLOtV1R/crYyseu97p1MywjX2ywzGPtIB7m+uPvz7MO3G/oC0ZPeu7D7gsW
+	 LUsic5YAarf94BWohduddVCdgm1n1LWPt6O9m5CcORNTgYrdQj41+MUJBnFAly68LB
+	 E0AwY434ZYxAA==
+Date: Mon, 22 Apr 2024 11:04:43 +0900
+From: Mark Brown <broonie@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: djakov@kernel.org, robh@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+	conor+dt@kernel.org, matthias.bgg@gmail.com, lgirdwood@gmail.com,
+	keescook@chromium.org, gustavoars@kernel.org,
+	henryc.chen@mediatek.com, linux-pm@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, kernel@collabora.com,
+	wenst@chromium.org, amergnat@baylibre.com
+Subject: Re: [PATCH v4 6/7] regulator: Add refactored mtk-dvfsrc-regulator
+ driver
+Message-ID: <ZiXFu10_NBROj-jA@finisterre.sirena.org.uk>
+References: <20240418094134.203330-1-angelogioacchino.delregno@collabora.com>
+ <20240418094134.203330-7-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Ricardo Ribalda <ribalda@chromium.org>, linux-media@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-staging@lists.linux.dev,
- linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
- linux-tegra@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, kernel-janitors@vger.kernel.org,
- Abylay Ospan <aospan@netup.ru>, Alain Volmat <alain.volmat@foss.st.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Angelo Gioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Benjamin Mugnier <benjamin.mugnier@foss.st.com>,
- Bjorn Andersson <andersson@kernel.org>,
- Bryan O'Donoghue <bryan.odonoghue@linaro.org>, Chen-Yu Tsai <wens@csie.org>,
- Dmitry Osipenko <digetx@gmail.com>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Hans Verkuil <hverkuil@xs4all.nl>,
- Hugues Fruchet <hugues.fruchet@foss.st.com>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Konrad Dybcio <konrad.dybcio@linaro.org>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Luca Ceresoli <luca.ceresoli@bootlin.com>,
- Martin Tuma <martin.tuma@digiteqautomotive.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
- Samuel Holland <samuel@sholland.org>, Sergey Kozlov <serjk@netup.ru>,
- Sowjanya Komatineni <skomatineni@nvidia.com>,
- Stanimir Varbanov <stanimir.k.varbanov@gmail.com>,
- Sylvain Petinot <sylvain.petinot@foss.st.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Vikash Garodia <quic_vgarodia@quicinc.com>
-Cc: LKML <linux-kernel@vger.kernel.org>
-References: <20240419-fix-cocci-v2-26-2119e692309c@chromium.org>
-Subject: Re: [PATCH v2 26/26] media: dvb-frontends: tda10048: Make explicit
- the range of z.
-Content-Language: en-GB
-From: Markus Elfring <Markus.Elfring@web.de>
-In-Reply-To: <20240419-fix-cocci-v2-26-2119e692309c@chromium.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:ITKldMmeWvicPfSwk1lGM7Lql2Cm3DyJ9It4EIHpN6gg859l9MR
- aVD74QMk+LR7UI7fCic1Ij6uvX8fwvnr7wmvQM8i2QbG3+d/JBqLNeRM3I4bZa4E34XPC0i
- SYsbUCsj7/cRMEyPRu6MKnSrI42n3gk8CvyH//Tym6kHgNuHGbXy4egSum6bjeRch61q+dN
- e/VFoFn+HOp3S2jycBj4g==
-UI-OutboundReport: notjunk:1;M01:P0:aX93InMPE+A=;h+M1UNdgZoIAePk/gLkMPUcnWFE
- 5gaoXXP6v2pwlnxGO6K7et1oLiL8TIAKeJnHv51y9QwquJqybP572QDhkhzEsuPTkoIRzUN/7
- mShPYDLUIN00VsLwJwEmnundkTslk9hH7wxBTGzqOXKZ5TY5ODDTJuvlXRSs6Qt0j6Z/P7XXu
- 15PpEI3BzQ9oSDuGd4BeLDWBmnFddw2ZuXCPSrm3HnBRmIp4rcHTseicBP7mUCsPTUTDT+3Y+
- vWHqY5jFyqwmk7ss25eqM/46T0rHpKxI0nKyahCwXvP7DUiZ1GPEITM3E7kQt4ALfzBy8uKQ3
- /QbGwtOhCqs5WJIPQAZqJR6XUwVGf7oZKojimwo3AaT5UA3U1JOPBrIBsYOKM154eq6cLRhb7
- iq3PcpnWcp3XY2aFQX8MCVRIVXgd8lxxQdtn8YCerRLUuZvtUlbR4R5j/YvI2UKy7FgzUXB1x
- 3Bhlx0CwbqmbGIefOVLAyR4cfc+nIFs51pRtQ8+ewYveJRDBdeXtJMHFEz0n4phTP8RtZsl/0
- gBuiCYpYSSRcLDJIy3sB4G28Z9bjW/ocQDIUzqRvU2jwtnKM/PbNp1oZAjsy9Ua/wqTwFL3Yy
- D08zYttD1lPwxETSj/WDnXQ3ihq22+OycigTle4pH0Fu9sjflBCpMtE0wevQzd9/RPzz87VXO
- 1UKjbmrDXvCF8Uxa9dvN/3c2y+mOW1EZ9w+T50Rgk7lXX021VRrmvb28kFBahImqiPOj/VuzQ
- kgKYpxl/BMOIFE87FcD1inozha/zbBUBsau+PpHyJL+sc7SUX97HhHV18g4SNex2a01C1nw4y
- muG/WBbFF6tZ2iO9s0OozwYOGKNkAjvz3gnxDEJWMz9DY=
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="sWXCwk7xYCT2BASP"
+Content-Disposition: inline
+In-Reply-To: <20240418094134.203330-7-angelogioacchino.delregno@collabora.com>
+X-Cookie: TANSTAAFL
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240421_070754_925428_BC2695C4 
-X-CRM114-Status: UNSURE (   4.50  )
+X-CRM114-CacheID: sfid-20240421_190449_449330_1BF8878C 
+X-CRM114-Status: UNSURE (   9.17  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -124,11 +81,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> We do not expect the sample_freq to be over 613MHz.
 
-Would the summary phrase =E2=80=9CMake the range of z explicit=E2=80=9D be=
- more appropriate?
+--sWXCwk7xYCT2BASP
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Regards,
-Markus
+On Thu, Apr 18, 2024 at 11:41:33AM +0200, AngeloGioacchino Del Regno wrote:
+> The previous driver never worked, and never got even compiled because
+> it was missing the DVFSRC driver entirely, including needed neaders.
+
+Reviewed-by: Mark Brown <broonie@kernel.org>
+
+--sWXCwk7xYCT2BASP
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmYlxbcACgkQJNaLcl1U
+h9BPiQf+MHWLDD6c7mn4Lo9anxSg6sfBCPhJMRQgjilSVkWbO9u9qqRpZUcj6VfJ
+cUaIU8rJOyel4ZYjFieZcFbw6+OQZvkAXb2mtrDYGod5PkB2iwYvZNHjmvuVIqzM
+9WCbbMjphVoQtz3S8RJ44C00SIZdGLjjqyNH+OiG4BPjMHYM37lT70oTV/wv/4Nh
+NblCIhPZfxgtUVVuRdyBB5NgpjsdHe+leEQp0UYBZ1+w6ES+z/bS41mCDgmSuOGh
+0S7CP7CY5xy2A9e0G+LiZaBj7Y7AS8Xsn4rT0kSV9HeAwcWxEf/A6genOX8gDj0V
+P4nqi3Cks0HOsm1EQABSBeVEPaOOEg==
+=69No
+-----END PGP SIGNATURE-----
+
+--sWXCwk7xYCT2BASP--
 
