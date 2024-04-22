@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EC7DC07C79
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Apr 2024 13:08:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67E8DC4345F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Apr 2024 13:09:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	Message-ID:In-Reply-To:Date:References:Subject:Cc:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ph0J1xRIjshjZvYoRwpUUVgK0fclROdsccWPhjoItKM=; b=26RNdicS+dDFTTz5ffPs2wvUlX
-	3RsWLPc4P+E+yW2kJHnqkKFIrm00+aosJdUgv0NsNpnv6roJM3gXsqxGkbvJZgHH+7KdB2Mrzbxj3
-	4lJlJ+y9PRBUDxh2lLE0fdamBjdw0QRebC39tjF43+L0T3zTKcSMf5GBUetf74iQ/x000hpn5BnlS
-	1Nyaw9gH9NSucrZqXL4GB2J6rlfV6pZ7+jBcir8SEH0xdn6SYLGSwg2zlky7YAZAaMOGCQUaRD6TC
-	8B1P/1oymo9P3dnTqdf8R9NFPWg/6C9pSB69pizKpq8iR0JOn+j6/KB/ZdGdeV8JRU9uMg3AkWaf1
-	9XXemywg==;
+	bh=2WIzLwkc4L4PpzEjdws2t5Tlw8sexrblA2Ahm8MDdgY=; b=GeC2AwCwVt7grSVF9nGLNwIB+1
+	QIDdRFaoQjhJaIvkP7PcqCBDDwHgaOP9A6yI0TsCzvfql3OZGRccN91izPZova3Bkyq7KHESNnDQA
+	BXIkG8HVlEMYtju0xKOdX0F0B217hfUqoOhsrJpzKATf75sbjPjufWwgD78tjORPUIT6dbkHFyX0b
+	UDFSey45+d8eCLUntZfymvvOsJoSyc/JIM7Nqq1je3AuQAjQF2g+2nJT3I8F32Y6wq5CmEKXy34Ta
+	+348VMvOW7WD6F0ob+VV/am6jJbVgshnd3nRkZDIZ7do/hcMa7V6QIectLMqpiUph1NZg23wSmo4g
+	1agvYHTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rytPT-0000000DfrV-06ob;
-	Mon, 22 Apr 2024 13:08:39 +0000
+	id 1rytPp-0000000Dg7G-09Zz;
+	Mon, 22 Apr 2024 13:09:01 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rytPG-0000000Dfkk-3UMR;
-	Mon, 22 Apr 2024 13:08:31 +0000
+	id 1rytPh-0000000Dg12-0mmR;
+	Mon, 22 Apr 2024 13:08:56 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id C730460C7B;
-	Mon, 22 Apr 2024 13:08:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C1CC6C113CC;
-	Mon, 22 Apr 2024 13:08:19 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 3BB9360EAD;
+	Mon, 22 Apr 2024 13:08:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 19101C2BD11;
+	Mon, 22 Apr 2024 13:08:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1713791305;
-	bh=nznyQx8/p+3KHBmfBdZ9fWAd5pFk+wk0RpKca9y7nEY=;
+	s=k20201202; t=1713791331;
+	bh=J+i9N1KjmFk35PLTmY7h40rPANVS4NetGv5XWCcgOzg=;
 	h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
-	b=BWWeePq7vCnYC1rDnhl46rbfsAP83k7q/x3Q3lUzGSjnUMUQIhUqsdwSj7B+QHsUT
-	 TJxNZwu/It8/kfuDOxr+7fR/Gxuuekf9dThdZF6BE1JItRKXMPkSrq3frGiVH1r0xW
-	 L8fuputkj427+VfwNLdg4HGOQwxsr2FkSzbe/D7jbA7UK2aL7WgyRhtPTRyS1GEDSF
-	 U/R13zM6yHGfF4Ar2391FPP3Oe3dxjEg9FmMrVpke8K22WL35HrwSnsJUUE5HDiQ93
-	 e9/YdctW7fGJnrZV7fkKjq+C4Ril6Qjq7t2VMHBijsJBRnEGzXkukWwVx+zT+XCVU/
-	 HDX6k5rLN9hLw==
+	b=tKj1Ev0sDkQi5+KEiB5LhY1YrapyhqPWj1xhNyldEFOrjYMdLC2NQNywPIpM2oCn9
+	 KKR+ldrGnJ0vgDJG4XgwKBgLI5FgxOu432nBCICrmXQSH+gCWW0UTDdlAhAQBILxdo
+	 xqF/R3vnu4jpugzmTn/hkZBf7SpnConYhE6huJdhyTx4EfL7nhXiFev8vfEpfZp+Lw
+	 L0pJcnsCn5VjnI/vxE0yT7hls74KwUcZ1ud9MZJyYKzX2kxFcFbVphu8ZJaYeFhTzP
+	 hCEBR8kB/Bdhv+iVxYObXPLD8tw+6rMlMYtLli9sAXUXAWh2sYW2PburZIAgpw4TBX
+	 ODeXWH+Ch2/IQ==
 From: Kalle Valo <kvalo@kernel.org>
 To: Breno Leitao <leitao@debian.org>
 Cc: aleksander.lobakin@intel.com,  kuba@kernel.org,  davem@davemloft.net,
@@ -55,20 +55,20 @@ Cc: aleksander.lobakin@intel.com,  kuba@kernel.org,  davem@davemloft.net,
   dennis.dalessandro@cornelisnetworks.com,  linux-kernel@vger.kernel.org,
   netdev@vger.kernel.org,  bpf@vger.kernel.org,  idosch@idosch.org,
   angelogioacchino.delregno@collabora.com,  matthias.bgg@gmail.com
-Subject: Re: [PATCH net-next v7 09/10] wifi: ath10k: allocate dummy
+Subject: Re: [PATCH net-next v7 10/10] wifi: ath11k: allocate dummy
  net_device dynamically
 References: <20240422123921.854943-1-leitao@debian.org>
-	<20240422123921.854943-10-leitao@debian.org>
-Date: Mon, 22 Apr 2024 16:08:18 +0300
-In-Reply-To: <20240422123921.854943-10-leitao@debian.org> (Breno Leitao's
-	message of "Mon, 22 Apr 2024 05:39:02 -0700")
-Message-ID: <87pluhv931.fsf@kernel.org>
+	<20240422123921.854943-11-leitao@debian.org>
+Date: Mon, 22 Apr 2024 16:08:44 +0300
+In-Reply-To: <20240422123921.854943-11-leitao@debian.org> (Breno Leitao's
+	message of "Mon, 22 Apr 2024 05:39:03 -0700")
+Message-ID: <87le55v92b.fsf@kernel.org>
 User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
 MIME-Version: 1.0
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240422_060826_942681_1C01B1C7 
-X-CRM114-Status: UNSURE (   8.20  )
+X-CRM114-CacheID: sfid-20240422_060853_313185_B07D48DF 
+X-CRM114-Status: UNSURE (   9.44  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -90,14 +90,18 @@ Breno Leitao <leitao@debian.org> writes:
 > arrays in the net_device structure. For more details, see the discussion
 > at [1].
 >
-> Un-embed the net_device from struct ath10k by converting it
+> Un-embed the net_device from struct ath11k_ext_irq_grp by converting it
 > into a pointer. Then use the leverage alloc_netdev() to allocate the
-> net_device object at ath10k_core_create(). The free of the device occurs
-> at ath10k_core_destroy().
+> net_device object at ath11k_ahb_config_ext_irq() for ahb, and
+> ath11k_pcic_ext_irq_config() for pcic.
+>
+> The free of the device occurs at ath11k_ahb_free_ext_irq() for the ahb
+> case, and ath11k_pcic_free_ext_irq() for the pcic case.
 >
 > [1] https://lore.kernel.org/all/20240229225910.79e224cf@kernel.org/
 >
 > Signed-off-by: Breno Leitao <leitao@debian.org>
+> Tested-by: Kalle Valo <kvalo@kernel.org>
 
 I assume this goes via net-next:
 
