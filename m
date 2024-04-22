@@ -4,56 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C69B5C4345F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Apr 2024 07:15:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7DE7C10F15
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Apr 2024 07:15:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
-	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
-	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ev1J7ozQmJu42Zn8WSKO645AoAV4UECNJRI9dHXArFE=; b=k7yhvjuudqtbcJqsb2weBRj+nu
-	kVQymDWTsBjwZF7HWhc9xNYYwkHssIU1MOdmOGqt1nYOvkDV89cEK5M0uevK+ZTd6YyH58oJsz3oh
-	trHwD1OlPPBA/Ud5ubNmfTOFmU6ukrwlbRc7wLWWFKs9hZcQE72ZsBtpyLenXauWNHN28dleiJwg1
-	p6NjlHdietb0hzN1PCZdOtMh9OhGtnRD0tO2jIZYqpSQ4dU5A7YII5fbC8BCF1GdBb50cQVkfNYl7
-	tCrT42vtQg4XXXFxbkXosfQK1Ze30Q3jKCybFWdWwzJVdrfQr56B0S2+m0osTJR3O9Glo7wTHB8f4
-	fn0dt65Q==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=xPDn9ftaTd7O1R4nxEKdgZMwuall1RokmgRU4aOGF4E=; b=luxAplOqyZRstuPLmXIY8TsiAv
+	oU29FrjlDfGvncsiPckvZd67PZkr+KQLPbOoV8xwWzbs6JSikN6hVUADy7fREbobn+icbcmLp0F0E
+	oACcx5mEl09t9R5iG4HOJWlHEczcyXg3lKjBnp/9ETb1qnabqjBsArub6oF8KypwmvlM9aE16pGEL
+	2JOJR9FoLGhOFj22sYXvI0sG7zc+I73AX/SZCUlT/nNQkYePXct2porGIn4fW0oV4Y7DAnamukc+Q
+	ApXhWyDl4J5fmnUnCLlFWiyZIthtNibdnY/Ql7anJCY1jdrogNedL3amALLzAps9NkDcLmxDyzb5t
+	EeokHfqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ryntt-0000000CNTc-0kjq;
-	Mon, 22 Apr 2024 07:15:41 +0000
+	id 1ryntu-0000000CNU8-0D7K;
+	Mon, 22 Apr 2024 07:15:42 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ryntk-0000000CNLY-2vdN;
+	id 1ryntk-0000000CNLV-2ux2;
 	Mon, 22 Apr 2024 07:15:34 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 3AD3E60C74;
-	Mon, 22 Apr 2024 07:15:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id A04A7C3277B;
+	by dfw.source.kernel.org (Postfix) with ESMTP id D28A060BBE;
+	Mon, 22 Apr 2024 07:15:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 6F740C113CC;
 	Mon, 22 Apr 2024 07:15:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1713770130;
-	bh=DrChZcFmzE0/BqrbPpCtlwi4iActHT7vq+cQDwv9Mng=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=t2hshxjivJvD8DSALox6DicKQbXHKas58jfzDkmtxYAWo2XoIUI4XauysCU9XdD97
-	 CQG0WbrgaJ+NLXFFYzylhYtzBxppYdgeFeQYMrQOd1av/bKrQnslismZ1z9cnivaI3
-	 iKZTbzRI/1Z0vQRnghRtuJc/d3RcgogBR33hPeADC4zZyfoe06mWnoNVaJoPbkhf0f
-	 UZKRBbqof7taI9VxkzCa96DwEzZcu9Fp0fiGtdvOIFVN/lxGYr8QRzppitW3KWwNTs
-	 nytfwMyGrEW82GZjy4vipR4NnP0xgjEZ11Dq42SHoRh9EpoLNKVuVXj5IsuZdArXtT
-	 eAjb8oZP2SxeQ==
+	bh=OkQem37UFkm+naBU6dOLCvGqJr0v/6B1zyDYyO/59Io=;
+	h=From:Subject:Date:To:Cc:Reply-To:From;
+	b=pLgRP28WrmA+DxPhinTN2Nw1fdqCD38wMNC3jKLCtUjibW9gmRb6hTvr5yGFLyRg/
+	 mVY+sBRWaOvNR3XOqyyUTMCbn0PGbFTVj5tTiJNsJqu1cy3WSHILEAkQqHNKvKjT0t
+	 hq1ZNW3vIaNGPpfnC+EZxea9PDDDd28qRhod5bsjubffucXq2zKEKgDTm1lQb365I0
+	 MEzQETzux6Y1I8M3GFYQnA4GbWGTiG2rNMvcRXyUmMGX2S2v+VvurOi7a/Zgr2l6Pw
+	 YrKJqsI/EFqqvPtrOTyeU6kLYFRVGUzzoogyPamdx8C3zNWK3wAMVDImPaV9Iy6vqV
+	 FpV/AxGrteeRw==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 93002C10F15;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 56205C04FF6;
 	Mon, 22 Apr 2024 07:15:30 +0000 (UTC)
 From: =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL_via_B4_Relay?= <devnull+arinc.unal.arinc9.com@kernel.org>
-Date: Mon, 22 Apr 2024 10:15:10 +0300
-Subject: [PATCH net-next v2 03/15] net: dsa: mt7530: rename p5_intf_sel and
- use only for MT7530 switch
+Subject: [PATCH net-next v2 00/15] MT7530 DSA Subdriver Improvements Act IV
+Date: Mon, 22 Apr 2024 10:15:07 +0300
+Message-Id: <20240422-for-netnext-mt7530-improvements-4-v2-0-a75157ba76ad@arinc9.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Message-Id: <20240422-for-netnext-mt7530-improvements-4-v2-3-a75157ba76ad@arinc9.com>
-References: <20240422-for-netnext-mt7530-improvements-4-v2-0-a75157ba76ad@arinc9.com>
-In-Reply-To: <20240422-for-netnext-mt7530-improvements-4-v2-0-a75157ba76ad@arinc9.com>
+X-B4-Tracking: v=1; b=H4sIAHwOJmYC/42NQQ7CIBBFr2Jm7RigYK0r72G6qDC1LIAGCKlpe
+ neRE7h8efn/7ZAoWkpwP+0Qqdhkg68gzifQy+TfhNZUBsGEZJ1gOIeInrKnLaPLveoYWrfGUMi
+ RzwklDkp2zHDFNFNQf9ZIs91a4wl1ir8tjNUsNuUQPy1eePOtI/nwR6dwZHg1NyX01A8vbh5Tt
+ F4PFx0cjMdxfAFOhyVM3QAAAA==
 To: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, 
  Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>, 
  Florian Fainelli <f.fainelli@gmail.com>, 
@@ -69,19 +70,20 @@ Cc: Bartel Eerdekens <bartel.eerdekens@constell8.be>,
  linux-mediatek@lists.infradead.org, 
  =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1713770127; l=5777;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1713770127; l=3014;
  i=arinc.unal@arinc9.com; s=arinc9-Xeront; h=from:subject:message-id;
- bh=uZA3tC7GsV/vAXhUQJDQl3EKCDn/sB64E6udt6p1H0w=;
- b=xbMLfS0ZQre2ccG2N0HkT6GV7m/5XpOfZ08fulP53BqLEVRidjNQKpsoVhBXGu5sYFqEqd7ZZ
- NVuyWj+x8l4A4thpjHPew/94itgPvInDXUtz5U4ZWp6K0DZRK3s4dCq
+ bh=OkQem37UFkm+naBU6dOLCvGqJr0v/6B1zyDYyO/59Io=;
+ b=9MmaS+fFq5bOkJ1WUPtdfyBhuq3bf+4Xwjsx33H3ewedjTSL+QdFU//91gtd2cT7lZPMlAJly
+ XbC+Z2uDbVYB0KFu3N2a+U5tvrSrQ+zw4Mg4Ysqp4F+fKyfABIHQa5X
 X-Developer-Key: i=arinc.unal@arinc9.com; a=ed25519;
  pk=z49tLn29CyiL4uwBTrqH9HO1Wu3sZIuRp4DaLZvtP9M=
 X-Endpoint-Received: by B4 Relay for arinc.unal@arinc9.com/arinc9-Xeront
  with auth_id=137
 X-Original-From: =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240422_001532_841020_A189EA9C 
-X-CRM114-Status: GOOD (  18.87  )
+X-CRM114-CacheID: sfid-20240422_001532_853219_533B203D 
+X-CRM114-Status: UNSURE (   9.61  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,192 +99,76 @@ Reply-To: arinc.unal@arinc9.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Arınç ÜNAL <arinc.unal@arinc9.com>
+Hello!
 
-The p5_intf_sel pointer is used to store the information of whether PHY
-muxing is used or not. PHY muxing is a feature specific to port 5 of the
-MT7530 switch. Do not use it for other switch models.
+This is the forth patch series with the goal of simplifying the MT7530 DSA
+subdriver and improving support for MT7530, MT7531, and the switch on the
+MT7988 SoC.
 
-Rename the pointer to p5_mode to store the mode the port is being used in.
-Rename the p5_interface_select enum to mt7530_p5_mode, the string
-representation to mt7530_p5_mode_str, and the enum elements.
+I have done a simple ping test to confirm basic communication on all switch
+ports on MCM and standalone MT7530, and MT7531 switch with this patch
+series applied.
 
-If PHY muxing is not detected, the default mode, GMAC5, will be used.
+MT7621 Unielec, MCM MT7530:
+
+rgmii-only-gmac0-mt7621-unielec-u7621-06-16m.dtb
+gmac0-and-gmac1-mt7621-unielec-u7621-06-16m.dtb
+
+tftpboot 0x80008000 mips-uzImage.bin; tftpboot 0x83000000 mips-rootfs.cpio.uboot; tftpboot 0x83f00000 $dtb; bootm 0x80008000 0x83000000 0x83f00000
+
+MT7622 Bananapi, MT7531:
+
+gmac0-and-gmac1-mt7622-bananapi-bpi-r64.dtb
+
+tftpboot 0x40000000 arm64-Image; tftpboot 0x45000000 arm64-rootfs.cpio.uboot; tftpboot 0x4a000000 $dtb; booti 0x40000000 0x45000000 0x4a000000
+
+MT7623 Bananapi, standalone MT7530:
+
+rgmii-only-gmac0-mt7623n-bananapi-bpi-r2.dtb
+gmac0-and-gmac1-mt7623n-bananapi-bpi-r2.dtb
+
+tftpboot 0x80008000 arm-zImage; tftpboot 0x83000000 arm-rootfs.cpio.uboot; tftpboot 0x83f00000 $dtb; bootz 0x80008000 0x83000000 0x83f00000
+
+This patch series finalises the patch series linked below.
+
+https://lore.kernel.org/r/20230522121532.86610-1-arinc.unal@arinc9.com
 
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 ---
- drivers/net/dsa/mt7530.c | 62 ++++++++++++++++++++----------------------------
- drivers/net/dsa/mt7530.h | 15 ++++++------
- 2 files changed, 33 insertions(+), 44 deletions(-)
+Changes in v2:
+- Add two new patches to the end.
+- Patch 13
+  - Add the missing patch log.
+- Link to v1: https://lore.kernel.org/r/20240419-for-netnext-mt7530-improvements-4-v1-0-6d852ca79b1d@arinc9.com
 
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 8dee9cee1104..5b6aeeddb5d9 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -857,19 +857,15 @@ mt7530_set_ageing_time(struct dsa_switch *ds, unsigned int msecs)
- 	return 0;
- }
- 
--static const char *p5_intf_modes(unsigned int p5_interface)
--{
--	switch (p5_interface) {
--	case P5_DISABLED:
--		return "DISABLED";
--	case P5_INTF_SEL_PHY_P0:
--		return "PHY P0";
--	case P5_INTF_SEL_PHY_P4:
--		return "PHY P4";
--	case P5_INTF_SEL_GMAC5:
--		return "GMAC5";
-+static const char *mt7530_p5_mode_str(unsigned int mode)
-+{
-+	switch (mode) {
-+	case MUX_PHY_P0:
-+		return "MUX PHY P0";
-+	case MUX_PHY_P4:
-+		return "MUX PHY P4";
- 	default:
--		return "unknown";
-+		return "GMAC5";
- 	}
- }
- 
-@@ -886,23 +882,23 @@ static void mt7530_setup_port5(struct dsa_switch *ds, phy_interface_t interface)
- 	val |= MHWTRAP_MANUAL | MHWTRAP_P5_MAC_SEL | MHWTRAP_P5_DIS;
- 	val &= ~MHWTRAP_P5_RGMII_MODE & ~MHWTRAP_PHY0_SEL;
- 
--	switch (priv->p5_intf_sel) {
--	case P5_INTF_SEL_PHY_P0:
--		/* MT7530_P5_MODE_GPHY_P0: 2nd GMAC -> P5 -> P0 */
-+	switch (priv->p5_mode) {
-+	/* MUX_PHY_P0: P0 -> P5 -> SoC MAC */
-+	case MUX_PHY_P0:
- 		val |= MHWTRAP_PHY0_SEL;
- 		fallthrough;
--	case P5_INTF_SEL_PHY_P4:
--		/* MT7530_P5_MODE_GPHY_P4: 2nd GMAC -> P5 -> P4 */
-+
-+	/* MUX_PHY_P4: P4 -> P5 -> SoC MAC */
-+	case MUX_PHY_P4:
- 		val &= ~MHWTRAP_P5_MAC_SEL & ~MHWTRAP_P5_DIS;
- 
- 		/* Setup the MAC by default for the cpu port */
- 		mt7530_write(priv, MT753X_PMCR_P(5), 0x56300);
- 		break;
--	case P5_INTF_SEL_GMAC5:
--		/* MT7530_P5_MODE_GMAC: P5 -> External phy or 2nd GMAC */
--		val &= ~MHWTRAP_P5_DIS;
--		break;
-+
-+	/* GMAC5: P5 -> SoC MAC or external PHY */
- 	default:
-+		val &= ~MHWTRAP_P5_DIS;
- 		break;
- 	}
- 
-@@ -930,8 +926,8 @@ static void mt7530_setup_port5(struct dsa_switch *ds, phy_interface_t interface)
- 
- 	mt7530_write(priv, MT7530_MHWTRAP, val);
- 
--	dev_dbg(ds->dev, "Setup P5, HWTRAP=0x%x, intf_sel=%s, phy-mode=%s\n",
--		val, p5_intf_modes(priv->p5_intf_sel), phy_modes(interface));
-+	dev_dbg(ds->dev, "Setup P5, HWTRAP=0x%x, mode=%s, phy-mode=%s\n", val,
-+		mt7530_p5_mode_str(priv->p5_mode), phy_modes(interface));
- 
- 	mutex_unlock(&priv->reg_mutex);
- }
-@@ -2476,13 +2472,11 @@ mt7530_setup(struct dsa_switch *ds)
- 	if (ret)
- 		return ret;
- 
--	/* Setup port 5 */
--	if (!dsa_is_unused_port(ds, 5)) {
--		priv->p5_intf_sel = P5_INTF_SEL_GMAC5;
--	} else {
-+	/* Check for PHY muxing on port 5 */
-+	if (dsa_is_unused_port(ds, 5)) {
- 		/* Scan the ethernet nodes. Look for GMAC1, lookup the used PHY.
--		 * Set priv->p5_intf_sel to the appropriate value if PHY muxing
--		 * is detected.
-+		 * Set priv->p5_mode to the appropriate value if PHY muxing is
-+		 * detected.
- 		 */
- 		for_each_child_of_node(dn, mac_np) {
- 			if (!of_device_is_compatible(mac_np,
-@@ -2506,17 +2500,16 @@ mt7530_setup(struct dsa_switch *ds)
- 				}
- 				id = of_mdio_parse_addr(ds->dev, phy_node);
- 				if (id == 0)
--					priv->p5_intf_sel = P5_INTF_SEL_PHY_P0;
-+					priv->p5_mode = MUX_PHY_P0;
- 				if (id == 4)
--					priv->p5_intf_sel = P5_INTF_SEL_PHY_P4;
-+					priv->p5_mode = MUX_PHY_P4;
- 			}
- 			of_node_put(mac_np);
- 			of_node_put(phy_node);
- 			break;
- 		}
- 
--		if (priv->p5_intf_sel == P5_INTF_SEL_PHY_P0 ||
--		    priv->p5_intf_sel == P5_INTF_SEL_PHY_P4)
-+		if (priv->p5_mode == MUX_PHY_P0 || priv->p5_mode == MUX_PHY_P4)
- 			mt7530_setup_port5(ds, interface);
- 	}
- 
-@@ -2654,9 +2647,6 @@ mt7531_setup(struct dsa_switch *ds)
- 			   MT7531_EXT_P_MDIO_12);
- 	}
- 
--	if (!dsa_is_unused_port(ds, 5))
--		priv->p5_intf_sel = P5_INTF_SEL_GMAC5;
--
- 	mt7530_rmw(priv, MT7531_GPIO_MODE0, MT7531_GPIO0_MASK,
- 		   MT7531_GPIO0_INTERRUPT);
- 
-diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
-index 7d7abb67202f..c8155e32edbe 100644
---- a/drivers/net/dsa/mt7530.h
-+++ b/drivers/net/dsa/mt7530.h
-@@ -708,12 +708,11 @@ struct mt7530_port {
- 	struct phylink_pcs *sgmii_pcs;
- };
- 
--/* Port 5 interface select definitions */
--enum p5_interface_select {
--	P5_DISABLED,
--	P5_INTF_SEL_PHY_P0,
--	P5_INTF_SEL_PHY_P4,
--	P5_INTF_SEL_GMAC5,
-+/* Port 5 mode definitions of the MT7530 switch */
-+enum mt7530_p5_mode {
-+	GMAC5,
-+	MUX_PHY_P0,
-+	MUX_PHY_P4,
- };
- 
- struct mt7530_priv;
-@@ -776,7 +775,7 @@ struct mt753x_info {
-  * @ports:		Holding the state among ports
-  * @reg_mutex:		The lock for protecting among process accessing
-  *			registers
-- * @p5_intf_sel:	Holding the current port 5 interface select
-+ * @p5_mode:		Holding the current mode of port 5 of the MT7530 switch
-  * @p5_sgmii:		Flag for distinguishing if port 5 of the MT7531 switch
-  *			has got SGMII
-  * @irq:		IRQ number of the switch
-@@ -798,7 +797,7 @@ struct mt7530_priv {
- 	const struct mt753x_info *info;
- 	unsigned int		id;
- 	bool			mcm;
--	enum p5_interface_select p5_intf_sel;
-+	enum mt7530_p5_mode	p5_mode;
- 	bool			p5_sgmii;
- 	u8			mirror_rx;
- 	u8			mirror_tx;
+---
+Arınç ÜNAL (15):
+      net: dsa: mt7530: disable EEE abilities on failure on MT7531 and MT7988
+      net: dsa: mt7530: refactor MT7530_PMCR_P()
+      net: dsa: mt7530: rename p5_intf_sel and use only for MT7530 switch
+      net: dsa: mt7530: rename mt753x_bpdu_port_fw enum to mt753x_to_cpu_fw
+      net: dsa: mt7530: refactor MT7530_MFC and MT7531_CFC, add MT7531_QRY_FFP
+      net: dsa: mt7530: refactor MT7530_HWTRAP and MT7530_MHWTRAP
+      net: dsa: mt7530: move MT753X_MTRAP operations for MT7530
+      net: dsa: mt7530: return mt7530_setup_mdio & mt7531_setup_common on error
+      net: dsa: mt7530: define MAC speed capabilities per switch model
+      net: dsa: mt7530: get rid of function sanity check
+      net: dsa: mt7530: refactor MT7530_PMEEECR_P()
+      net: dsa: mt7530: get rid of mac_port_validate member of mt753x_info
+      net: dsa: mt7530: use priv->ds->num_ports instead of MT7530_NUM_PORTS
+      net: dsa: mt7530: do not pass port variable to mt7531_rgmii_setup()
+      net: dsa: mt7530: explain exposing MDIO bus of MT7531AE better
 
+ drivers/net/dsa/mt7530.c | 294 +++++++++++++++++++++++------------------------
+ drivers/net/dsa/mt7530.h | 289 ++++++++++++++++++++++++----------------------
+ 2 files changed, 297 insertions(+), 286 deletions(-)
+---
+base-commit: e1bc03d8372ac081810c2956cd244ed9899f9a02
+change-id: 20240320-for-netnext-mt7530-improvements-4-95430d150c05
+
+Best regards,
 -- 
-2.40.1
+Arınç ÜNAL <arinc.unal@arinc9.com>
 
 
 
