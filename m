@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C07F3C4345F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Apr 2024 07:16:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0273BC4345F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Apr 2024 07:16:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
 	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
 	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MSApW4iYXP3Av8G7sVoL9iyf66vz/84DcyNS78Mksfw=; b=CCz/MgpcjWAHv8mI9SYfePCp3K
-	v/MpdsHXd0hueGvFOlRo0c/Q4pTZ7mwz4f5Mfsp3HCftshmkZiULvBqdZY8VCVZoaS0fwR8IanHvx
-	GfeqL3XKsDy2h3688R4mc5HTE690N7VIBTJaENHp8X52YmeVeNpsNvyWaw4HtpROmAslZsrhp5ZvD
-	yBDx4mGXj2LzOIQitw/NmeegID96zDW/d0JBzTd+F+gzOcpYst3lJj2xKa0+0e55WF0A4w/BHCTR5
-	paV/nyXVp5OHnI++hx83ReEjOZf6g1dJ9JCo+MjQb1LQZJHgvfZTJOjb6v8w1RsMgI0nIsp+FsHFh
-	i9L6ylRg==;
+	bh=Jh8i1jQ6oRMzUsdIGNA11LJ9bOW90YntKsK0UBjTk/A=; b=VSze0Db4QKK36ReHhOxev24+Ta
+	urhArPFDKTu6W5Z5VfWKOfagLI5P6c2bBJIXsC/2mCb2PRlkqsxRvCpGNvlb0uKJeNN0PGyK/tCI8
+	R9iI02HwEvld/hqmdQ4mX7WKWHP96r4J3f65GBhosn4EP0KhoXC//U/uNjEq1OcaOYwaRimgo7b7K
+	jPyY4o60IU+0/BwHlw4rMDhX06W5+JzD546MTUf65PFkv/7aX8vOC4RP/xtuAtny+wfTgaU8szjY8
+	HheoeGDRt+PJlWVs7rQjcTKiZzv717hdwHWMmRo8DcS7ByJo/mU3RyMX3Mya1AL8akqH7f2kqbMqo
+	HAQRSiDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rynuO-0000000CNka-1NDM;
-	Mon, 22 Apr 2024 07:16:12 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1rynuX-0000000CNq8-1SDM;
+	Mon, 22 Apr 2024 07:16:21 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ryntl-0000000CNLf-3xKq;
-	Mon, 22 Apr 2024 07:15:36 +0000
+	id 1ryntm-0000000CNLd-20UD;
+	Mon, 22 Apr 2024 07:15:37 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 7C56CCE0A13;
+	by dfw.source.kernel.org (Postfix) with ESMTP id AB82F60C7A;
 	Mon, 22 Apr 2024 07:15:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 95C66C116B1;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id DE97DC4AF0E;
 	Mon, 22 Apr 2024 07:15:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1713770130;
-	bh=iyZfRIz2oGdpKJ1+nD/8wWwJ5jum0Zo+YFlASEG8cYY=;
+	bh=9aC2izf7pDmtSSitRHIY3XfQzKDzjBkTKbfmsq/v0JU=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=uZxlmH25aRWjSJVpRMCQ5huptqOk1HYCI4iJSwDgZuAYoFrc2qpflLpX/rfzbX2og
-	 Cu8LtrvkGes/Xl/TQEI1lwo4DDHThhW4DzX6mDIAOAW5o9cnrJu7BhFmRkU5gZpH4w
-	 i7xm3G1jfvsXbk/d8nS6HCpfDwts4wwMwm4kdwnC2YLv9nlAq8g9z5NEzTgJ47wC7Z
-	 xu005DAauflA/8n3o+YL0naUI7j1u2d7haH3UX2fJ06FQO0/Wxnp0caTJuOzy74C4k
-	 N5dO//EKZRUtJ9UdP24e8+vlGMkrZU+3cQOAxdnaR6/KNmpGggylWJpgx9KrSdhE8m
-	 bOZGRQM3VDB1A==
+	b=H9WxVARkcobG5qCjw/w5KDIzb/Xd3HCkjFwNnc2HH0Du3MKbIB1r6DCmmKH8T1YF/
+	 vmeFkc50JMD/fE11V+fhgLK7kb7QeJaCLwYGFInasYjoFTTtC+xBsqX/Pwq8IIToxu
+	 komBQq8NSKfD2N4+QAxDAWirFznp3k7u+7/owW7A3mttXbsdYat3GO9lc2+VLgvyFu
+	 CwJimmKOT/8CS7vs0qPFKh4LIjbGEmij5b8JVfICmzTd7etdX5slhctakzccLCuyam
+	 D+ouXvuXayZf0gIMje9G/yKyAjiWmR4U6VkVewSCqwUrlQx1fAx8acPx35Y+sFDkky
+	 leAylbsyPriKw==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 83578C4345F;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D1815C10F15;
 	Mon, 22 Apr 2024 07:15:30 +0000 (UTC)
 From: =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL_via_B4_Relay?= <devnull+arinc.unal.arinc9.com@kernel.org>
-Date: Mon, 22 Apr 2024 10:15:09 +0300
-Subject: [PATCH net-next v2 02/15] net: dsa: mt7530: refactor
- MT7530_PMCR_P()
+Date: Mon, 22 Apr 2024 10:15:14 +0300
+Subject: [PATCH net-next v2 07/15] net: dsa: mt7530: move MT753X_MTRAP
+ operations for MT7530
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Message-Id: <20240422-for-netnext-mt7530-improvements-4-v2-2-a75157ba76ad@arinc9.com>
+Message-Id: <20240422-for-netnext-mt7530-improvements-4-v2-7-a75157ba76ad@arinc9.com>
 References: <20240422-for-netnext-mt7530-improvements-4-v2-0-a75157ba76ad@arinc9.com>
 In-Reply-To: <20240422-for-netnext-mt7530-improvements-4-v2-0-a75157ba76ad@arinc9.com>
 To: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, 
@@ -69,19 +69,19 @@ Cc: Bartel Eerdekens <bartel.eerdekens@constell8.be>,
  linux-mediatek@lists.infradead.org, 
  =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1713770127; l=8131;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1713770127; l=3575;
  i=arinc.unal@arinc9.com; s=arinc9-Xeront; h=from:subject:message-id;
- bh=/1XZ9JHfm5La3LRYYeIf/gk5qAEW+OcTIz4EqNWbcpk=;
- b=3cTDiw7wFTU9MyINjZ7KczWsN7WxLCHVtYcBFglC1N+OY9sLXzUF2M6gaEq/hhNlexPMcBF+o
- PxzvH1ndBZbCecYrqmsuySJqt3teR8Uy1Oitzal+MNh0Jnn7J6FkF/X
+ bh=00K+c7w7ciHtR3cg/Vn4V9kvHhcXqDMvGRmHgFwDD6g=;
+ b=iAFOJTEc2IUg4VptNYrkdDzK0KVfHzl0nrENTzHB8iCUFHLNebhthKeg5Z+6OC0LCdPu7JSCk
+ rk2or1CHHFGBgISZslZ4GGPnV+O1AEghI6aKNwLMmme+il+Vl1C0c2L
 X-Developer-Key: i=arinc.unal@arinc9.com; a=ed25519;
  pk=z49tLn29CyiL4uwBTrqH9HO1Wu3sZIuRp4DaLZvtP9M=
 X-Endpoint-Received: by B4 Relay for arinc.unal@arinc9.com/arinc9-Xeront
  with auth_id=137
 X-Original-From: =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240422_001534_452521_8AAB2A95 
-X-CRM114-Status: GOOD (  17.21  )
+X-CRM114-CacheID: sfid-20240422_001534_704889_9145E6CC 
+X-CRM114-Status: GOOD (  15.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,202 +99,116 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-The MT7530_PMCR_P() registers are on MT7530, MT7531, and the switch on the
-MT7988 SoC. Rename the definition for them to MT753X_PMCR_P(). Bit 15 is
-for MT7530 only. Add MT7530 prefix to the definition for bit 15.
+On MT7530, the media-independent interfaces of port 5 and 6 are controlled
+by the MT7530_P5_DIS and MT7530_P6_DIS bits of the hardware trap. Deal with
+these bits only when the relevant port is being enabled or disabled. This
+ensures that these ports will be disabled when they are not in use.
 
-Use GENMASK and FIELD_PREP for PMCR_IFG_XMIT().
+Do not set MT7530_CHG_TRAP on mt7530_setup_port5() as that's already being
+done on mt7530_setup().
 
-Rename PMCR_TX_EN and PMCR_RX_EN to PMCR_MAC_TX_EN and PMCR_MAC_TX_EN to
-follow the naming on the "MT7621 Giga Switch Programming Guide v0.3",
-"MT7531 Reference Manual for Development Board v1.0", and "MT7988A Wi-Fi 7
-Generation Router Platform: Datasheet (Open Version) v0.1" documents.
+Instead of globally setting MT7530_P5_MAC_SEL, clear it, then set it only
+on the appropriate case.
 
-These documents show that PMCR_RX_FC_EN is at bit 5. Correct this along
-with renaming it to PMCR_FORCE_RX_FC_EN, and the same for PMCR_TX_FC_EN.
-
-Remove PMCR_SPEED_MASK which doesn't have a use.
-
-Rename the force mode definitions for MT7531 to FORCE_MODE. Add MASK at the
-end for the mask that includes all force mode definitions.
+If PHY muxing is detected, clear MT7530_P5_DIS before calling
+mt7530_setup_port5().
 
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 ---
- drivers/net/dsa/mt7530.c | 24 ++++++++++----------
- drivers/net/dsa/mt7530.h | 58 +++++++++++++++++++++++++-----------------------
- 2 files changed, 42 insertions(+), 40 deletions(-)
+ drivers/net/dsa/mt7530.c | 38 +++++++++++++++++++++++++++-----------
+ 1 file changed, 27 insertions(+), 11 deletions(-)
 
 diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 04795ef8ebd7..8dee9cee1104 100644
+index 606516206fb9..83436723cb16 100644
 --- a/drivers/net/dsa/mt7530.c
 +++ b/drivers/net/dsa/mt7530.c
-@@ -896,7 +896,7 @@ static void mt7530_setup_port5(struct dsa_switch *ds, phy_interface_t interface)
- 		val &= ~MHWTRAP_P5_MAC_SEL & ~MHWTRAP_P5_DIS;
+@@ -880,8 +880,7 @@ static void mt7530_setup_port5(struct dsa_switch *ds, phy_interface_t interface)
  
+ 	val = mt7530_read(priv, MT753X_MTRAP);
+ 
+-	val |= MT7530_CHG_TRAP | MT7530_P5_MAC_SEL | MT7530_P5_DIS;
+-	val &= ~MT7530_P5_RGMII_MODE & ~MT7530_P5_PHY0_SEL;
++	val &= ~MT7530_P5_PHY0_SEL & ~MT7530_P5_MAC_SEL & ~MT7530_P5_RGMII_MODE;
+ 
+ 	switch (priv->p5_mode) {
+ 	/* MUX_PHY_P0: P0 -> P5 -> SoC MAC */
+@@ -891,15 +890,13 @@ static void mt7530_setup_port5(struct dsa_switch *ds, phy_interface_t interface)
+ 
+ 	/* MUX_PHY_P4: P4 -> P5 -> SoC MAC */
+ 	case MUX_PHY_P4:
+-		val &= ~MT7530_P5_MAC_SEL & ~MT7530_P5_DIS;
+-
  		/* Setup the MAC by default for the cpu port */
--		mt7530_write(priv, MT7530_PMCR_P(5), 0x56300);
-+		mt7530_write(priv, MT753X_PMCR_P(5), 0x56300);
+ 		mt7530_write(priv, MT753X_PMCR_P(5), 0x56300);
  		break;
- 	case P5_INTF_SEL_GMAC5:
- 		/* MT7530_P5_MODE_GMAC: P5 -> External phy or 2nd GMAC */
-@@ -2444,8 +2444,8 @@ mt7530_setup(struct dsa_switch *ds)
- 		/* Clear link settings and enable force mode to force link down
- 		 * on all ports until they're enabled later.
- 		 */
--		mt7530_rmw(priv, MT7530_PMCR_P(i), PMCR_LINK_SETTINGS_MASK |
--			   PMCR_FORCE_MODE, PMCR_FORCE_MODE);
-+		mt7530_rmw(priv, MT753X_PMCR_P(i), PMCR_LINK_SETTINGS_MASK |
-+			   MT7530_FORCE_MODE, MT7530_FORCE_MODE);
  
- 		/* Disable forwarding by default on all ports */
- 		mt7530_rmw(priv, MT7530_PCR_P(i), PCR_MATRIX_MASK,
-@@ -2555,8 +2555,8 @@ mt7531_setup_common(struct dsa_switch *ds)
- 		/* Clear link settings and enable force mode to force link down
- 		 * on all ports until they're enabled later.
- 		 */
--		mt7530_rmw(priv, MT7530_PMCR_P(i), PMCR_LINK_SETTINGS_MASK |
--			   MT7531_FORCE_MODE, MT7531_FORCE_MODE);
-+		mt7530_rmw(priv, MT753X_PMCR_P(i), PMCR_LINK_SETTINGS_MASK |
-+			   MT7531_FORCE_MODE_MASK, MT7531_FORCE_MODE_MASK);
- 
- 		/* Disable forwarding by default on all ports */
- 		mt7530_rmw(priv, MT7530_PCR_P(i), PCR_MATRIX_MASK,
-@@ -2639,7 +2639,7 @@ mt7531_setup(struct dsa_switch *ds)
- 
- 	/* Force link down on all ports before internal reset */
- 	for (i = 0; i < MT7530_NUM_PORTS; i++)
--		mt7530_write(priv, MT7530_PMCR_P(i), MT7531_FORCE_LNK);
-+		mt7530_write(priv, MT753X_PMCR_P(i), MT7531_FORCE_MODE_LNK);
- 
- 	/* Reset the switch through internal reset */
- 	mt7530_write(priv, MT7530_SYS_CTRL, SYS_CTRL_SW_RST | SYS_CTRL_REG_RST);
-@@ -2881,7 +2881,7 @@ mt753x_phylink_mac_config(struct phylink_config *config, unsigned int mode,
- 
- 	/* Are we connected to external phy */
- 	if (port == 5 && dsa_is_user_port(ds, 5))
--		mt7530_set(priv, MT7530_PMCR_P(port), PMCR_EXT_PHY);
-+		mt7530_set(priv, MT753X_PMCR_P(port), PMCR_EXT_PHY);
- }
- 
- static void mt753x_phylink_mac_link_down(struct phylink_config *config,
-@@ -2891,7 +2891,7 @@ static void mt753x_phylink_mac_link_down(struct phylink_config *config,
- 	struct dsa_port *dp = dsa_phylink_to_port(config);
- 	struct mt7530_priv *priv = dp->ds->priv;
- 
--	mt7530_clear(priv, MT7530_PMCR_P(dp->index), PMCR_LINK_SETTINGS_MASK);
-+	mt7530_clear(priv, MT753X_PMCR_P(dp->index), PMCR_LINK_SETTINGS_MASK);
- }
- 
- static void mt753x_phylink_mac_link_up(struct phylink_config *config,
-@@ -2905,7 +2905,7 @@ static void mt753x_phylink_mac_link_up(struct phylink_config *config,
- 	struct mt7530_priv *priv = dp->ds->priv;
- 	u32 mcr;
- 
--	mcr = PMCR_RX_EN | PMCR_TX_EN | PMCR_FORCE_LNK;
-+	mcr = PMCR_MAC_RX_EN | PMCR_MAC_TX_EN | PMCR_FORCE_LNK;
- 
- 	switch (speed) {
- 	case SPEED_1000:
-@@ -2920,9 +2920,9 @@ static void mt753x_phylink_mac_link_up(struct phylink_config *config,
- 	if (duplex == DUPLEX_FULL) {
- 		mcr |= PMCR_FORCE_FDX;
- 		if (tx_pause)
--			mcr |= PMCR_TX_FC_EN;
-+			mcr |= PMCR_FORCE_TX_FC_EN;
- 		if (rx_pause)
--			mcr |= PMCR_RX_FC_EN;
-+			mcr |= PMCR_FORCE_RX_FC_EN;
+ 	/* GMAC5: P5 -> SoC MAC or external PHY */
+ 	default:
+-		val &= ~MT7530_P5_DIS;
++		val |= MT7530_P5_MAC_SEL;
+ 		break;
  	}
  
- 	if (mode == MLO_AN_PHY && phydev && phy_init_eee(phydev, false) >= 0) {
-@@ -2937,7 +2937,7 @@ static void mt753x_phylink_mac_link_up(struct phylink_config *config,
+@@ -1193,6 +1190,14 @@ mt7530_port_enable(struct dsa_switch *ds, int port,
+ 
+ 	mutex_unlock(&priv->reg_mutex);
+ 
++	if (priv->id != ID_MT7530 && priv->id != ID_MT7621)
++		return 0;
++
++	if (port == 5)
++		mt7530_clear(priv, MT753X_MTRAP, MT7530_P5_DIS);
++	else if (port == 6)
++		mt7530_clear(priv, MT753X_MTRAP, MT7530_P6_DIS);
++
+ 	return 0;
+ }
+ 
+@@ -1211,6 +1216,14 @@ mt7530_port_disable(struct dsa_switch *ds, int port)
+ 		   PCR_MATRIX_CLR);
+ 
+ 	mutex_unlock(&priv->reg_mutex);
++
++	if (priv->id != ID_MT7530 && priv->id != ID_MT7621)
++		return;
++
++	if (port == 5)
++		mt7530_set(priv, MT753X_MTRAP, MT7530_P5_DIS);
++	else if (port == 6)
++		mt7530_set(priv, MT753X_MTRAP, MT7530_P6_DIS);
+ }
+ 
+ static int
+@@ -2401,11 +2414,11 @@ mt7530_setup(struct dsa_switch *ds)
+ 		mt7530_rmw(priv, MT7530_TRGMII_RD(i),
+ 			   RD_TAP_MASK, RD_TAP(16));
+ 
+-	/* Enable port 6 */
+-	val = mt7530_read(priv, MT753X_MTRAP);
+-	val &= ~MT7530_P6_DIS & ~MT7530_PHY_INDIRECT_ACCESS;
+-	val |= MT7530_CHG_TRAP;
+-	mt7530_write(priv, MT753X_MTRAP, val);
++	/* Allow modifying the trap and directly access PHY registers via the
++	 * MDIO bus the switch is on.
++	 */
++	mt7530_rmw(priv, MT753X_MTRAP, MT7530_CHG_TRAP |
++		   MT7530_PHY_INDIRECT_ACCESS, MT7530_CHG_TRAP);
+ 
+ 	if ((val & MT7530_XTAL_MASK) == MT7530_XTAL_40MHZ)
+ 		mt7530_pll_setup(priv);
+@@ -2488,8 +2501,11 @@ mt7530_setup(struct dsa_switch *ds)
+ 			break;
  		}
+ 
+-		if (priv->p5_mode == MUX_PHY_P0 || priv->p5_mode == MUX_PHY_P4)
++		if (priv->p5_mode == MUX_PHY_P0 ||
++		    priv->p5_mode == MUX_PHY_P4) {
++			mt7530_clear(priv, MT753X_MTRAP, MT7530_P5_DIS);
+ 			mt7530_setup_port5(ds, interface);
++		}
  	}
  
--	mt7530_set(priv, MT7530_PMCR_P(dp->index), mcr);
-+	mt7530_set(priv, MT753X_PMCR_P(dp->index), mcr);
- }
- 
- static void mt753x_phylink_get_caps(struct dsa_switch *ds, int port,
-diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
-index f7c5355c1642..7d7abb67202f 100644
---- a/drivers/net/dsa/mt7530.h
-+++ b/drivers/net/dsa/mt7530.h
-@@ -304,44 +304,46 @@ enum mt7530_vlan_port_acc_frm {
- #define  G0_PORT_VID_DEF		G0_PORT_VID(0)
- 
- /* Register for port MAC control register */
--#define MT7530_PMCR_P(x)		(0x3000 + ((x) * 0x100))
--#define  PMCR_IFG_XMIT(x)		(((x) & 0x3) << 18)
-+#define MT753X_PMCR_P(x)		(0x3000 + ((x) * 0x100))
-+#define  PMCR_IFG_XMIT_MASK		GENMASK(19, 18)
-+#define  PMCR_IFG_XMIT(x)		FIELD_PREP(PMCR_IFG_XMIT_MASK, x)
- #define  PMCR_EXT_PHY			BIT(17)
- #define  PMCR_MAC_MODE			BIT(16)
--#define  PMCR_FORCE_MODE		BIT(15)
--#define  PMCR_TX_EN			BIT(14)
--#define  PMCR_RX_EN			BIT(13)
-+#define  MT7530_FORCE_MODE		BIT(15)
-+#define  PMCR_MAC_TX_EN			BIT(14)
-+#define  PMCR_MAC_RX_EN			BIT(13)
- #define  PMCR_BACKOFF_EN		BIT(9)
- #define  PMCR_BACKPR_EN			BIT(8)
- #define  PMCR_FORCE_EEE1G		BIT(7)
- #define  PMCR_FORCE_EEE100		BIT(6)
--#define  PMCR_TX_FC_EN			BIT(5)
--#define  PMCR_RX_FC_EN			BIT(4)
-+#define  PMCR_FORCE_RX_FC_EN		BIT(5)
-+#define  PMCR_FORCE_TX_FC_EN		BIT(4)
- #define  PMCR_FORCE_SPEED_1000		BIT(3)
- #define  PMCR_FORCE_SPEED_100		BIT(2)
- #define  PMCR_FORCE_FDX			BIT(1)
- #define  PMCR_FORCE_LNK			BIT(0)
--#define  PMCR_SPEED_MASK		(PMCR_FORCE_SPEED_100 | \
--					 PMCR_FORCE_SPEED_1000)
--#define  MT7531_FORCE_LNK		BIT(31)
--#define  MT7531_FORCE_SPD		BIT(30)
--#define  MT7531_FORCE_DPX		BIT(29)
--#define  MT7531_FORCE_RX_FC		BIT(28)
--#define  MT7531_FORCE_TX_FC		BIT(27)
--#define  MT7531_FORCE_EEE100		BIT(26)
--#define  MT7531_FORCE_EEE1G		BIT(25)
--#define  MT7531_FORCE_MODE		(MT7531_FORCE_LNK | \
--					 MT7531_FORCE_SPD | \
--					 MT7531_FORCE_DPX | \
--					 MT7531_FORCE_RX_FC | \
--					 MT7531_FORCE_TX_FC | \
--					 MT7531_FORCE_EEE100 | \
--					 MT7531_FORCE_EEE1G)
--#define  PMCR_LINK_SETTINGS_MASK	(PMCR_TX_EN | PMCR_FORCE_SPEED_1000 | \
--					 PMCR_RX_EN | PMCR_FORCE_SPEED_100 | \
--					 PMCR_TX_FC_EN | PMCR_RX_FC_EN | \
--					 PMCR_FORCE_FDX | PMCR_FORCE_LNK | \
--					 PMCR_FORCE_EEE1G | PMCR_FORCE_EEE100)
-+#define  MT7531_FORCE_MODE_LNK		BIT(31)
-+#define  MT7531_FORCE_MODE_SPD		BIT(30)
-+#define  MT7531_FORCE_MODE_DPX		BIT(29)
-+#define  MT7531_FORCE_MODE_RX_FC	BIT(28)
-+#define  MT7531_FORCE_MODE_TX_FC	BIT(27)
-+#define  MT7531_FORCE_MODE_EEE100	BIT(26)
-+#define  MT7531_FORCE_MODE_EEE1G	BIT(25)
-+#define  MT7531_FORCE_MODE_MASK		(MT7531_FORCE_MODE_LNK | \
-+					 MT7531_FORCE_MODE_SPD | \
-+					 MT7531_FORCE_MODE_DPX | \
-+					 MT7531_FORCE_MODE_RX_FC | \
-+					 MT7531_FORCE_MODE_TX_FC | \
-+					 MT7531_FORCE_MODE_EEE100 | \
-+					 MT7531_FORCE_MODE_EEE1G)
-+#define  PMCR_LINK_SETTINGS_MASK	(PMCR_MAC_TX_EN | PMCR_MAC_RX_EN | \
-+					 PMCR_FORCE_EEE1G | \
-+					 PMCR_FORCE_EEE100 | \
-+					 PMCR_FORCE_RX_FC_EN | \
-+					 PMCR_FORCE_TX_FC_EN | \
-+					 PMCR_FORCE_SPEED_1000 | \
-+					 PMCR_FORCE_SPEED_100 | \
-+					 PMCR_FORCE_FDX | PMCR_FORCE_LNK)
- 
- #define MT7530_PMEEECR_P(x)		(0x3004 + (x) * 0x100)
- #define  WAKEUP_TIME_1000(x)		(((x) & 0xFF) << 24)
+ #ifdef CONFIG_GPIOLIB
 
 -- 
 2.40.1
