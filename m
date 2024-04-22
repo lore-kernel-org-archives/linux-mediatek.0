@@ -4,72 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67E8DC4345F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Apr 2024 13:09:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 163FFC4345F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Apr 2024 13:27:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:In-Reply-To:Date:References:Subject:Cc:To:From:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2WIzLwkc4L4PpzEjdws2t5Tlw8sexrblA2Ahm8MDdgY=; b=GeC2AwCwVt7grSVF9nGLNwIB+1
-	QIDdRFaoQjhJaIvkP7PcqCBDDwHgaOP9A6yI0TsCzvfql3OZGRccN91izPZova3Bkyq7KHESNnDQA
-	BXIkG8HVlEMYtju0xKOdX0F0B217hfUqoOhsrJpzKATf75sbjPjufWwgD78tjORPUIT6dbkHFyX0b
-	UDFSey45+d8eCLUntZfymvvOsJoSyc/JIM7Nqq1je3AuQAjQF2g+2nJT3I8F32Y6wq5CmEKXy34Ta
-	+348VMvOW7WD6F0ob+VV/am6jJbVgshnd3nRkZDIZ7do/hcMa7V6QIectLMqpiUph1NZg23wSmo4g
-	1agvYHTg==;
+	bh=QWuDihguXT1hc3tMjgA7eXp7w/K2vRAhjohTE/ito1Q=; b=wkZoU6HX+ebG+OpKGJvxn3FNuH
+	AdaNwo/F4D3F9r8Q095SmLsOREzlXD+BITIMcV3ie1b5VZwj76BQ8kwLjN/1tGz4YuVjaG14GQWKM
+	kPt7+/CPbOkkEFHtuiW7hdPixltjjofj9XvXjDeSkq1Rt/UHpnqfKCvazrnqvMK0FoE8DDOVosn9Z
+	hQuGwNRL0L0EG4QIWxMc4NKjFiAoGC+9WYquQS735Vs1bfgyHZRPodi87EyUIilf3kZLi4/q6N8ja
+	5Jkc5yIG4JZtbGJMGQVALyLra87pfiwsCxmLd56e2eIg8DHf8hAO1BoD1VKe/ZzPdqZNFcmQVAP0E
+	Qm+rYd0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rytPp-0000000Dg7G-09Zz;
-	Mon, 22 Apr 2024 13:09:01 +0000
+	id 1rythe-0000000Djcx-2Hla;
+	Mon, 22 Apr 2024 13:27:26 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rytPh-0000000Dg12-0mmR;
-	Mon, 22 Apr 2024 13:08:56 +0000
+	id 1rytha-0000000Djbn-1im7;
+	Mon, 22 Apr 2024 13:27:23 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 3BB9360EAD;
-	Mon, 22 Apr 2024 13:08:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 19101C2BD11;
-	Mon, 22 Apr 2024 13:08:45 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id A4E2860C76;
+	Mon, 22 Apr 2024 13:27:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 193F3C113CC;
+	Mon, 22 Apr 2024 13:27:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1713791331;
-	bh=J+i9N1KjmFk35PLTmY7h40rPANVS4NetGv5XWCcgOzg=;
-	h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
-	b=tKj1Ev0sDkQi5+KEiB5LhY1YrapyhqPWj1xhNyldEFOrjYMdLC2NQNywPIpM2oCn9
-	 KKR+ldrGnJ0vgDJG4XgwKBgLI5FgxOu432nBCICrmXQSH+gCWW0UTDdlAhAQBILxdo
-	 xqF/R3vnu4jpugzmTn/hkZBf7SpnConYhE6huJdhyTx4EfL7nhXiFev8vfEpfZp+Lw
-	 L0pJcnsCn5VjnI/vxE0yT7hls74KwUcZ1ud9MZJyYKzX2kxFcFbVphu8ZJaYeFhTzP
-	 hCEBR8kB/Bdhv+iVxYObXPLD8tw+6rMlMYtLli9sAXUXAWh2sYW2PburZIAgpw4TBX
-	 ODeXWH+Ch2/IQ==
-From: Kalle Valo <kvalo@kernel.org>
-To: Breno Leitao <leitao@debian.org>
-Cc: aleksander.lobakin@intel.com,  kuba@kernel.org,  davem@davemloft.net,
-  pabeni@redhat.com,  edumazet@google.com,  elder@kernel.org,
-  linux-arm-kernel@lists.infradead.org,
-  linux-mediatek@lists.infradead.org,  nbd@nbd.name,
-  sean.wang@mediatek.com,  Mark-MC.Lee@mediatek.com,  lorenzo@kernel.org,
-  taras.chornyi@plvision.eu,  ath11k@lists.infradead.org,
-  ath10k@lists.infradead.org,  linux-wireless@vger.kernel.org,
-  geomatsi@gmail.com,  Jeff Johnson <jjohnson@kernel.org>,
-  quic_jjohnson@quicinc.com,  leon@kernel.org,
-  dennis.dalessandro@cornelisnetworks.com,  linux-kernel@vger.kernel.org,
-  netdev@vger.kernel.org,  bpf@vger.kernel.org,  idosch@idosch.org,
-  angelogioacchino.delregno@collabora.com,  matthias.bgg@gmail.com
-Subject: Re: [PATCH net-next v7 10/10] wifi: ath11k: allocate dummy
- net_device dynamically
-References: <20240422123921.854943-1-leitao@debian.org>
-	<20240422123921.854943-11-leitao@debian.org>
-Date: Mon, 22 Apr 2024 16:08:44 +0300
-In-Reply-To: <20240422123921.854943-11-leitao@debian.org> (Breno Leitao's
-	message of "Mon, 22 Apr 2024 05:39:03 -0700")
-Message-ID: <87le55v92b.fsf@kernel.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
+	s=k20201202; t=1713792441;
+	bh=H1irkZGAWDGw5VgXFMcSc9/h4VYnX/SA9x7f6oCAJHk=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=XD3T44zqo7lkJUIG5AKmE/ZColS0jrrrLLSrn57pDMg/VjWid2KoOsWDf402WBEO7
+	 UglCDO0cKpc+fv4PiHxs8gJzUTZ0re6hCCpVbYt8Iv8RvnMnkJqIyZR1z0N6Bpnmov
+	 RbU6F+Olqgykq2KwJZAftLAm4dk5Dn4RpMM1wsGzOWsrNHZ5okSwxmyAPa6xT+UHH+
+	 uT/ZJGVw0AghZ6aLkdiQmWEa4pzW1rqF6ye6Kp+PzLxH/nu10Zt5CJvv4VrzfJfnLR
+	 vvs1Ja56OUscELNYHziALrk/bU4z9yuIx/Sq0jd98WaRYxTY1S8yKvQmsqj9yJYdZt
+	 v7tk6625G0HGw==
+Date: Mon, 22 Apr 2024 08:27:19 -0500
+From: Rob Herring <robh@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+	broonie@kernel.org, linux-mediatek@lists.infradead.org,
+	lgirdwood@gmail.com, devicetree@vger.kernel.org,
+	linux-pm@vger.kernel.org, amergnat@baylibre.com,
+	linux-kernel@vger.kernel.org, gustavoars@kernel.org,
+	keescook@chromium.org, henryc.chen@mediatek.com, wenst@chromium.org,
+	matthias.bgg@gmail.com, djakov@kernel.org,
+	linux-arm-kernel@lists.infradead.org, kernel@collabora.com
+Subject: Re: [PATCH v4 1/7] dt-bindings: regulator: Add bindings for MediaTek
+ DVFSRC Regulators
+Message-ID: <171379234629.1115290.1388746342600815292.robh@kernel.org>
+References: <20240418094134.203330-1-angelogioacchino.delregno@collabora.com>
+ <20240418094134.203330-2-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240418094134.203330-2-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240422_060853_313185_B07D48DF 
-X-CRM114-Status: UNSURE (   9.44  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240422_062722_522837_829C96A7 
+X-CRM114-Status: GOOD (  10.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,31 +78,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Breno Leitao <leitao@debian.org> writes:
 
-> Embedding net_device into structures prohibits the usage of flexible
-> arrays in the net_device structure. For more details, see the discussion
-> at [1].
->
-> Un-embed the net_device from struct ath11k_ext_irq_grp by converting it
-> into a pointer. Then use the leverage alloc_netdev() to allocate the
-> net_device object at ath11k_ahb_config_ext_irq() for ahb, and
-> ath11k_pcic_ext_irq_config() for pcic.
->
-> The free of the device occurs at ath11k_ahb_free_ext_irq() for the ahb
-> case, and ath11k_pcic_free_ext_irq() for the pcic case.
->
-> [1] https://lore.kernel.org/all/20240229225910.79e224cf@kernel.org/
->
-> Signed-off-by: Breno Leitao <leitao@debian.org>
-> Tested-by: Kalle Valo <kvalo@kernel.org>
+On Thu, 18 Apr 2024 11:41:28 +0200, AngeloGioacchino Del Regno wrote:
+> The Dynamic Voltage and Frequency Scaling Resource Collector Regulators
+> are controlled with votes to the DVFSRC hardware.
+> 
+> This adds support for the regulators found in MT6873, MT8183, MT8192
+> and MT8195 SoCs.
+> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>  .../mediatek,mt6873-dvfsrc-regulator.yaml     | 43 +++++++++++++++++++
+>  1 file changed, 43 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6873-dvfsrc-regulator.yaml
+> 
 
-I assume this goes via net-next:
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 
-Acked-by: Kalle Valo <kvalo@kernel.org>
-
--- 
-https://patchwork.kernel.org/project/linux-wireless/list/
-
-https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
 
