@@ -4,105 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63C86C4345F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Apr 2024 06:53:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C69B5C4345F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Apr 2024 07:15:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dg+W9++cTuSKiuuJU3BmFvsGHmcNsDKvQ8sCokwEeZM=; b=Tj43Tz/cb19jzNiaMmkJE+nKIL
-	kzFrARiXj357WQSQKFmNrJjj8Tvgzq7nCz1dELNbR15WOaCXwvFSj5v6BXdK8r59nH9XrMeCVWkv/
-	dzXUTO0+e5q0+zrkz+OXzxv7YFqKf1LzH4AlYUKPsWbvj95mO5BKB45VCgeH5np6r9xEvrSCMQC05
-	TLKho93IHyc/X6gdXQhxpyeolUo8rwekM0vJbyMv4dkaOQbl/LSsmWZY7r3mNECboShz/XfKeaxiV
-	ftWggvHf+uRnHpgl4UcxNVSqD9g/EY5FpEE8CfDUmm5W0XwxfijkHi6UiRSpea/ZCA+yjeMFi6u/F
-	ERt7kAmA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
+	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
+	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Ev1J7ozQmJu42Zn8WSKO645AoAV4UECNJRI9dHXArFE=; b=k7yhvjuudqtbcJqsb2weBRj+nu
+	kVQymDWTsBjwZF7HWhc9xNYYwkHssIU1MOdmOGqt1nYOvkDV89cEK5M0uevK+ZTd6YyH58oJsz3oh
+	trHwD1OlPPBA/Ud5ubNmfTOFmU6ukrwlbRc7wLWWFKs9hZcQE72ZsBtpyLenXauWNHN28dleiJwg1
+	p6NjlHdietb0hzN1PCZdOtMh9OhGtnRD0tO2jIZYqpSQ4dU5A7YII5fbC8BCF1GdBb50cQVkfNYl7
+	tCrT42vtQg4XXXFxbkXosfQK1Ze30Q3jKCybFWdWwzJVdrfQr56B0S2+m0osTJR3O9Glo7wTHB8f4
+	fn0dt65Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rynYN-0000000CItz-0Xaz;
-	Mon, 22 Apr 2024 06:53:27 +0000
-Received: from mail-io1-xd36.google.com ([2607:f8b0:4864:20::d36])
+	id 1ryntt-0000000CNTc-0kjq;
+	Mon, 22 Apr 2024 07:15:41 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rynYJ-0000000CItE-37zZ
-	for linux-mediatek@lists.infradead.org;
-	Mon, 22 Apr 2024 06:53:25 +0000
-Received: by mail-io1-xd36.google.com with SMTP id ca18e2360f4ac-7da37436e36so156918739f.0
-        for <linux-mediatek@lists.infradead.org>; Sun, 21 Apr 2024 23:53:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1713768801; x=1714373601; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=dg+W9++cTuSKiuuJU3BmFvsGHmcNsDKvQ8sCokwEeZM=;
-        b=LPO6S7A86biZX9Fe8/L9p8BvSSQf/PNVOvZJIPczHfUcd0P6GBEYG0gPYr1vODo1pR
-         gbeOI9dmsCRaB5xe25X1FAEG1o8l86m3se3EcPVvMuJK5Vvib1ZpV6wfmDVuLaPTRWfC
-         UHsb7uTZAESlpLSRY6J+6VQeZba9J9qBPvMwg=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713768801; x=1714373601;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=dg+W9++cTuSKiuuJU3BmFvsGHmcNsDKvQ8sCokwEeZM=;
-        b=AslwLyr2OdUI0Om//Xenav9I8DpHLFtYyKTA/ShSo10YJVHEnXz3uEV9HrOuX4g12I
-         CIia+J4A64s8KZxP11MAvLJRREcTM7Ezzl6wWGGRcg84itS26o8n+b4hDOe6mZqIELKN
-         WfTJJhBwU6MTw1plod/TrB2MPhFmXSzQH5B2v4Zlao0yUmq6lNbGU0nsQ2tUOuC2y6cL
-         SQQyifAJ8VrWV2HSe7s9ofFxLgKR34CHGfy66NVlN70KFY3+sIP5/ZdcMHLQM1HUMTBe
-         ma/2S1EHcPk0lMw2LKGToDi3X569EZhkPUx//yPXblSl93X26KgbT3DF+oSKyELgxTpd
-         n5ew==
-X-Forwarded-Encrypted: i=1; AJvYcCWFVwibIi4+xC9bVEgVv3FJH3qvImagYm8tDqzOmHVSc+KYgnVn7GRV8WH6wKpgzFxWMKMLD15oMKWwp/0f0H+w4PlRlP5k6N9up6/xuFZUJrDe
-X-Gm-Message-State: AOJu0YwLGDs95lrWoS/PrI/liuZLmHuldQ7mo3oWKbvEQQCx9/mk+e5R
-	/jkzSmHjbXK8JbVWy+K+SpxbG8FyrUYFfdVL5mPG+MqR2HXGvH8lXTx8jYRbUhcmGnARXHvlNcb
-	rew==
-X-Google-Smtp-Source: AGHT+IFVPzQoCMY+57X6ERkH76pmioMg6MzbH9xPe2g2KthouoFJaHmJAXfQp3D1TGXORs42RrQuqQ==
-X-Received: by 2002:a5d:8548:0:b0:7d6:9da9:1a69 with SMTP id b8-20020a5d8548000000b007d69da91a69mr9670667ios.0.1713768800859;
-        Sun, 21 Apr 2024 23:53:20 -0700 (PDT)
-Received: from mail-il1-f173.google.com (mail-il1-f173.google.com. [209.85.166.173])
-        by smtp.gmail.com with ESMTPSA id ja14-20020a056638888e00b004829a88a0basm2642564jab.31.2024.04.21.23.53.20
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 21 Apr 2024 23:53:20 -0700 (PDT)
-Received: by mail-il1-f173.google.com with SMTP id e9e14a558f8ab-36c0ef5f7ebso1405165ab.0
-        for <linux-mediatek@lists.infradead.org>; Sun, 21 Apr 2024 23:53:20 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCXf7cmnRK22Uzzxmj4xi3gvPvo2Gxw4vH+NZqgNnhEiv54OsdDFMi2+aHL0Ly7Gr4ziti7NAx4lcecuvvmoJgz84MPY82vJzYD7e4tkTAZZrl/Q
-X-Received: by 2002:a0c:ec88:0:b0:69b:1aec:88fb with SMTP id
- u8-20020a0cec88000000b0069b1aec88fbmr9872064qvo.23.1713768779447; Sun, 21 Apr
- 2024 23:52:59 -0700 (PDT)
+	id 1ryntk-0000000CNLY-2vdN;
+	Mon, 22 Apr 2024 07:15:34 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 3AD3E60C74;
+	Mon, 22 Apr 2024 07:15:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id A04A7C3277B;
+	Mon, 22 Apr 2024 07:15:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1713770130;
+	bh=DrChZcFmzE0/BqrbPpCtlwi4iActHT7vq+cQDwv9Mng=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
+	b=t2hshxjivJvD8DSALox6DicKQbXHKas58jfzDkmtxYAWo2XoIUI4XauysCU9XdD97
+	 CQG0WbrgaJ+NLXFFYzylhYtzBxppYdgeFeQYMrQOd1av/bKrQnslismZ1z9cnivaI3
+	 iKZTbzRI/1Z0vQRnghRtuJc/d3RcgogBR33hPeADC4zZyfoe06mWnoNVaJoPbkhf0f
+	 UZKRBbqof7taI9VxkzCa96DwEzZcu9Fp0fiGtdvOIFVN/lxGYr8QRzppitW3KWwNTs
+	 nytfwMyGrEW82GZjy4vipR4NnP0xgjEZ11Dq42SHoRh9EpoLNKVuVXj5IsuZdArXtT
+	 eAjb8oZP2SxeQ==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 93002C10F15;
+	Mon, 22 Apr 2024 07:15:30 +0000 (UTC)
+From: =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL_via_B4_Relay?= <devnull+arinc.unal.arinc9.com@kernel.org>
+Date: Mon, 22 Apr 2024 10:15:10 +0300
+Subject: [PATCH net-next v2 03/15] net: dsa: mt7530: rename p5_intf_sel and
+ use only for MT7530 switch
 MIME-Version: 1.0
-References: <20240419-fix-cocci-v2-0-2119e692309c@chromium.org>
- <20240419-fix-cocci-v2-6-2119e692309c@chromium.org> <124e35b3-5b0d-4bd7-848a-5c848b339157@linaro.org>
-In-Reply-To: <124e35b3-5b0d-4bd7-848a-5c848b339157@linaro.org>
-From: Ricardo Ribalda <ribalda@chromium.org>
-Date: Mon, 22 Apr 2024 14:52:43 +0800
-X-Gmail-Original-Message-ID: <CANiDSCt34D8-Ys+DbEQM0SyFdBF4WoV5_+xuuCjVbf22kT0xfw@mail.gmail.com>
-Message-ID: <CANiDSCt34D8-Ys+DbEQM0SyFdBF4WoV5_+xuuCjVbf22kT0xfw@mail.gmail.com>
-Subject: Re: [PATCH v2 06/26] media: stm32-dcmipp: Remove redundant printk
-To: "Bryan O'Donoghue" <bryan.odonoghue@linaro.org>
-Cc: Martin Tuma <martin.tuma@digiteqautomotive.com>, 
-	Mauro Carvalho Chehab <mchehab@kernel.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
-	Hugues Fruchet <hugues.fruchet@foss.st.com>, Alain Volmat <alain.volmat@foss.st.com>, 
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
-	Paul Kocialkowski <paul.kocialkowski@bootlin.com>, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Chen-Yu Tsai <wens@csie.org>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
-	Sakari Ailus <sakari.ailus@linux.intel.com>, Thierry Reding <thierry.reding@gmail.com>, 
-	Jonathan Hunter <jonathanh@nvidia.com>, Sowjanya Komatineni <skomatineni@nvidia.com>, 
-	Luca Ceresoli <luca.ceresoli@bootlin.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Hans Verkuil <hverkuil@xs4all.nl>, 
-	Sergey Kozlov <serjk@netup.ru>, Abylay Ospan <aospan@netup.ru>, 
-	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Dmitry Osipenko <digetx@gmail.com>, 
-	Benjamin Mugnier <benjamin.mugnier@foss.st.com>, 
-	Sylvain Petinot <sylvain.petinot@foss.st.com>, 
-	Stanimir Varbanov <stanimir.k.varbanov@gmail.com>, Vikash Garodia <quic_vgarodia@quicinc.com>, 
-	Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, 
-	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-stm32@st-md-mailman.stormreply.com, 
-	linux-arm-kernel@lists.infradead.org, linux-staging@lists.linux.dev, 
-	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Message-Id: <20240422-for-netnext-mt7530-improvements-4-v2-3-a75157ba76ad@arinc9.com>
+References: <20240422-for-netnext-mt7530-improvements-4-v2-0-a75157ba76ad@arinc9.com>
+In-Reply-To: <20240422-for-netnext-mt7530-improvements-4-v2-0-a75157ba76ad@arinc9.com>
+To: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, 
+ Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>, 
+ Florian Fainelli <f.fainelli@gmail.com>, 
+ Vladimir Oltean <olteanv@gmail.com>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Russell King <linux@armlinux.org.uk>
+Cc: Bartel Eerdekens <bartel.eerdekens@constell8.be>, 
+ mithat.guner@xeront.com, erkin.bozoglu@xeront.com, netdev@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, 
+ =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
+X-Mailer: b4 0.13.0
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1713770127; l=5777;
+ i=arinc.unal@arinc9.com; s=arinc9-Xeront; h=from:subject:message-id;
+ bh=uZA3tC7GsV/vAXhUQJDQl3EKCDn/sB64E6udt6p1H0w=;
+ b=xbMLfS0ZQre2ccG2N0HkT6GV7m/5XpOfZ08fulP53BqLEVRidjNQKpsoVhBXGu5sYFqEqd7ZZ
+ NVuyWj+x8l4A4thpjHPew/94itgPvInDXUtz5U4ZWp6K0DZRK3s4dCq
+X-Developer-Key: i=arinc.unal@arinc9.com; a=ed25519;
+ pk=z49tLn29CyiL4uwBTrqH9HO1Wu3sZIuRp4DaLZvtP9M=
+X-Endpoint-Received: by B4 Relay for arinc.unal@arinc9.com/arinc9-Xeront
+ with auth_id=137
+X-Original-From: =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240421_235323_796118_6906ED8D 
-X-CRM114-Status: GOOD (  10.79  )
+X-CRM114-CacheID: sfid-20240422_001532_841020_A189EA9C 
+X-CRM114-Status: GOOD (  18.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,38 +93,196 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: arinc.unal@arinc9.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Bryan
+From: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-Thanks for your review
+The p5_intf_sel pointer is used to store the information of whether PHY
+muxing is used or not. PHY muxing is a feature specific to port 5 of the
+MT7530 switch. Do not use it for other switch models.
 
-On Sun, 21 Apr 2024 at 07:15, Bryan O'Donoghue
-<bryan.odonoghue@linaro.org> wrote:
->
-> On 19/04/2024 10:47, Ricardo Ribalda wrote:
-> > -     if (irq <= 0) {
-> <snip>
-> > -             return irq ? irq : -ENXIO;
-> > -     }
->
-> You're dropping the original intent of the driver author there no ? when
-> irq == 0 they want to return -ENXIO.
+Rename the pointer to p5_mode to store the mode the port is being used in.
+Rename the p5_interface_select enum to mt7530_p5_mode, the string
+representation to mt7530_p5_mode_str, and the enum elements.
 
-platform_get_irq() can never return 0.
-https://lore.kernel.org/linux-media/cd4aac19-c4cf-4db0-a18c-42f1bf1441a8@moroto.mountain/
+If PHY muxing is not detected, the default mode, GMAC5, will be used.
 
-Let me add that to the commit message.
+Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+---
+ drivers/net/dsa/mt7530.c | 62 ++++++++++++++++++++----------------------------
+ drivers/net/dsa/mt7530.h | 15 ++++++------
+ 2 files changed, 33 insertions(+), 44 deletions(-)
 
-Thanks!
-
->
-> ---
-> bod
-
-
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index 8dee9cee1104..5b6aeeddb5d9 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -857,19 +857,15 @@ mt7530_set_ageing_time(struct dsa_switch *ds, unsigned int msecs)
+ 	return 0;
+ }
+ 
+-static const char *p5_intf_modes(unsigned int p5_interface)
+-{
+-	switch (p5_interface) {
+-	case P5_DISABLED:
+-		return "DISABLED";
+-	case P5_INTF_SEL_PHY_P0:
+-		return "PHY P0";
+-	case P5_INTF_SEL_PHY_P4:
+-		return "PHY P4";
+-	case P5_INTF_SEL_GMAC5:
+-		return "GMAC5";
++static const char *mt7530_p5_mode_str(unsigned int mode)
++{
++	switch (mode) {
++	case MUX_PHY_P0:
++		return "MUX PHY P0";
++	case MUX_PHY_P4:
++		return "MUX PHY P4";
+ 	default:
+-		return "unknown";
++		return "GMAC5";
+ 	}
+ }
+ 
+@@ -886,23 +882,23 @@ static void mt7530_setup_port5(struct dsa_switch *ds, phy_interface_t interface)
+ 	val |= MHWTRAP_MANUAL | MHWTRAP_P5_MAC_SEL | MHWTRAP_P5_DIS;
+ 	val &= ~MHWTRAP_P5_RGMII_MODE & ~MHWTRAP_PHY0_SEL;
+ 
+-	switch (priv->p5_intf_sel) {
+-	case P5_INTF_SEL_PHY_P0:
+-		/* MT7530_P5_MODE_GPHY_P0: 2nd GMAC -> P5 -> P0 */
++	switch (priv->p5_mode) {
++	/* MUX_PHY_P0: P0 -> P5 -> SoC MAC */
++	case MUX_PHY_P0:
+ 		val |= MHWTRAP_PHY0_SEL;
+ 		fallthrough;
+-	case P5_INTF_SEL_PHY_P4:
+-		/* MT7530_P5_MODE_GPHY_P4: 2nd GMAC -> P5 -> P4 */
++
++	/* MUX_PHY_P4: P4 -> P5 -> SoC MAC */
++	case MUX_PHY_P4:
+ 		val &= ~MHWTRAP_P5_MAC_SEL & ~MHWTRAP_P5_DIS;
+ 
+ 		/* Setup the MAC by default for the cpu port */
+ 		mt7530_write(priv, MT753X_PMCR_P(5), 0x56300);
+ 		break;
+-	case P5_INTF_SEL_GMAC5:
+-		/* MT7530_P5_MODE_GMAC: P5 -> External phy or 2nd GMAC */
+-		val &= ~MHWTRAP_P5_DIS;
+-		break;
++
++	/* GMAC5: P5 -> SoC MAC or external PHY */
+ 	default:
++		val &= ~MHWTRAP_P5_DIS;
+ 		break;
+ 	}
+ 
+@@ -930,8 +926,8 @@ static void mt7530_setup_port5(struct dsa_switch *ds, phy_interface_t interface)
+ 
+ 	mt7530_write(priv, MT7530_MHWTRAP, val);
+ 
+-	dev_dbg(ds->dev, "Setup P5, HWTRAP=0x%x, intf_sel=%s, phy-mode=%s\n",
+-		val, p5_intf_modes(priv->p5_intf_sel), phy_modes(interface));
++	dev_dbg(ds->dev, "Setup P5, HWTRAP=0x%x, mode=%s, phy-mode=%s\n", val,
++		mt7530_p5_mode_str(priv->p5_mode), phy_modes(interface));
+ 
+ 	mutex_unlock(&priv->reg_mutex);
+ }
+@@ -2476,13 +2472,11 @@ mt7530_setup(struct dsa_switch *ds)
+ 	if (ret)
+ 		return ret;
+ 
+-	/* Setup port 5 */
+-	if (!dsa_is_unused_port(ds, 5)) {
+-		priv->p5_intf_sel = P5_INTF_SEL_GMAC5;
+-	} else {
++	/* Check for PHY muxing on port 5 */
++	if (dsa_is_unused_port(ds, 5)) {
+ 		/* Scan the ethernet nodes. Look for GMAC1, lookup the used PHY.
+-		 * Set priv->p5_intf_sel to the appropriate value if PHY muxing
+-		 * is detected.
++		 * Set priv->p5_mode to the appropriate value if PHY muxing is
++		 * detected.
+ 		 */
+ 		for_each_child_of_node(dn, mac_np) {
+ 			if (!of_device_is_compatible(mac_np,
+@@ -2506,17 +2500,16 @@ mt7530_setup(struct dsa_switch *ds)
+ 				}
+ 				id = of_mdio_parse_addr(ds->dev, phy_node);
+ 				if (id == 0)
+-					priv->p5_intf_sel = P5_INTF_SEL_PHY_P0;
++					priv->p5_mode = MUX_PHY_P0;
+ 				if (id == 4)
+-					priv->p5_intf_sel = P5_INTF_SEL_PHY_P4;
++					priv->p5_mode = MUX_PHY_P4;
+ 			}
+ 			of_node_put(mac_np);
+ 			of_node_put(phy_node);
+ 			break;
+ 		}
+ 
+-		if (priv->p5_intf_sel == P5_INTF_SEL_PHY_P0 ||
+-		    priv->p5_intf_sel == P5_INTF_SEL_PHY_P4)
++		if (priv->p5_mode == MUX_PHY_P0 || priv->p5_mode == MUX_PHY_P4)
+ 			mt7530_setup_port5(ds, interface);
+ 	}
+ 
+@@ -2654,9 +2647,6 @@ mt7531_setup(struct dsa_switch *ds)
+ 			   MT7531_EXT_P_MDIO_12);
+ 	}
+ 
+-	if (!dsa_is_unused_port(ds, 5))
+-		priv->p5_intf_sel = P5_INTF_SEL_GMAC5;
+-
+ 	mt7530_rmw(priv, MT7531_GPIO_MODE0, MT7531_GPIO0_MASK,
+ 		   MT7531_GPIO0_INTERRUPT);
+ 
+diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
+index 7d7abb67202f..c8155e32edbe 100644
+--- a/drivers/net/dsa/mt7530.h
++++ b/drivers/net/dsa/mt7530.h
+@@ -708,12 +708,11 @@ struct mt7530_port {
+ 	struct phylink_pcs *sgmii_pcs;
+ };
+ 
+-/* Port 5 interface select definitions */
+-enum p5_interface_select {
+-	P5_DISABLED,
+-	P5_INTF_SEL_PHY_P0,
+-	P5_INTF_SEL_PHY_P4,
+-	P5_INTF_SEL_GMAC5,
++/* Port 5 mode definitions of the MT7530 switch */
++enum mt7530_p5_mode {
++	GMAC5,
++	MUX_PHY_P0,
++	MUX_PHY_P4,
+ };
+ 
+ struct mt7530_priv;
+@@ -776,7 +775,7 @@ struct mt753x_info {
+  * @ports:		Holding the state among ports
+  * @reg_mutex:		The lock for protecting among process accessing
+  *			registers
+- * @p5_intf_sel:	Holding the current port 5 interface select
++ * @p5_mode:		Holding the current mode of port 5 of the MT7530 switch
+  * @p5_sgmii:		Flag for distinguishing if port 5 of the MT7531 switch
+  *			has got SGMII
+  * @irq:		IRQ number of the switch
+@@ -798,7 +797,7 @@ struct mt7530_priv {
+ 	const struct mt753x_info *info;
+ 	unsigned int		id;
+ 	bool			mcm;
+-	enum p5_interface_select p5_intf_sel;
++	enum mt7530_p5_mode	p5_mode;
+ 	bool			p5_sgmii;
+ 	u8			mirror_rx;
+ 	u8			mirror_tx;
 
 -- 
-Ricardo Ribalda
+2.40.1
+
+
 
