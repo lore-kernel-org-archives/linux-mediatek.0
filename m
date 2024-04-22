@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B3E6C4345F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Apr 2024 07:17:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F070C10F15
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Apr 2024 07:17:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
 	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
 	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IHTewTyCDRmTJmANguJPLyc2R6SnvqULgTht4Lt9W+g=; b=WuhrJZWev1cfaxzz0MLgjer3YI
-	nBcCdBeitB+03ogffo7/oQsehcPNCkfJvXemwsxMcs+GNSuNnCQXQJkFNSOZ92ItGCMtRRnlj4+f8
-	WWJDMAiMfBoRNV8kpToByGsIZ9Cb3loXVpWUrhlryBeAr4mk3CmDCZYy6c7bfzz/OD1cgSXbENvBj
-	EibArYLc0pqNCGdxdySy9nx14EIWTmT39Vv7C+2ga3YBdTr5mYiKJL4tRuJOy5kXveEWFWAUhNBdM
-	iOxGRtR2IPdfLf4wIT58gRdDuD4MrJ7ispdQkeQJm1c1/5ZUwXTjVT06Lw2lZ2l7rxF3J/oU2OTb2
-	0twIcX7Q==;
+	bh=JJ2J40jA1KN0cspCubPzHwkddc78J0xLaRi01c02sNs=; b=PfKmCtbZALac2LdWrWIwBIWrEI
+	O2T/ys2pbHYrghP2CIbYDRSdFi5vkqzyEOjTL4hyRSm6ep+H5JHu+5U9KwPWFBhtHnl+QPypxCCNu
+	BFxX+I3RQRdGzC33/3cqZ4ExAUULWzgaU9DvviTl6rWggO/gUY3wOFLPZGuuTcmuI1j640YwPW6IE
+	P6SJ23oN/00U488mRZUDerEtgBkh7i4fz4yVRwpEfrlHc8+oh09RNfkBa8+KCM5fuQtp3/AUEdV+A
+	3La79zedZK6oHqIW/09JArGL6mRWIQqE1pxlEunBe29IcL6b1lIbFQTdoSS/APGGmHg79YPpFoYUI
+	URYzxVFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rynvv-0000000COdG-0jSq;
+	id 1rynvv-0000000COde-2zEV;
 	Mon, 22 Apr 2024 07:17:47 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ryntn-0000000CNMi-1wvh;
+	id 1rynto-0000000CNPx-1ZUM;
 	Mon, 22 Apr 2024 07:15:41 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 1F7CFCE0A4E;
-	Mon, 22 Apr 2024 07:15:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 1D25CC4AF15;
+	by dfw.source.kernel.org (Postfix) with ESMTP id E78CA60D2B;
+	Mon, 22 Apr 2024 07:15:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 6B10DC3277B;
 	Mon, 22 Apr 2024 07:15:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1713770131;
-	bh=Opp1CZsglNYhlA4uuP5oQQWhKy/UVwr883h+FPxyU0s=;
+	bh=cg3WzltntgM9sJaif7yixpNGnhWKABN+vYsiEpkpVJs=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=hMlUQ7NVm2JPTLZxxqwY7a4yuEAnFs9SAvZX4Qfu1szOLwcs5UhI1Fald//FVnbUA
-	 1v85vuFpHCIEOn8jIgCfHwwW5XeQWemcjvDFW6SEXOgPmS7oU3KF4PiT5km098RyNN
-	 hHlmD8bDC8NF2rxRP8m+mTYYqiht5Jy3ryPnFhP6YlXW0D9TLUyXK8oOulC3MgL1Ms
-	 TFyeX+ZzsVK3fI0UgOJXpsMFm8V1nzmgbBJeexEamtSmoYhvuS0kJbWc/wbqDFSJNX
-	 pwzUZqjOXROPqkEuwzg5e7nTsDOnaXxqy342KwEi3CHXoYlbAf+J24hyqyDjFBBHhJ
-	 I1yizjUar55FQ==
+	b=gp5i4WjbIb/VLanMYMuvzox2mfHc+rqg2JLUGYzBW3vM8FOOZSjpaEPCRZj54LfrN
+	 NeOqrI8oDN2FR8AbX9uNdTv9jygAqNYOcy8tdni3vhwQXP7AkmacEwxBhspFC7W3jL
+	 8ijXWOmfBtcpiEEqBMj4/6Sik7rNnSku6YumbSFxjTMnE+1EQ2wDojf2Es4v6FJBqw
+	 Y8NdbOpEcE6kPJO6Ep7fc/rxM1fBDWkv2xIJ3GAvlmR6ZhPBjJ5oa7ge/IcyN7POPN
+	 lDPuwRI0eQG2aiUx4iBY2xhp8uTPuNwbJOplNUlDHld+TGx554eA7A8Dq3l4bXCo6L
+	 kYAjJdInQhL3w==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0E064C07E8F;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 608C2C4345F;
 	Mon, 22 Apr 2024 07:15:31 +0000 (UTC)
 From: =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL_via_B4_Relay?= <devnull+arinc.unal.arinc9.com@kernel.org>
-Date: Mon, 22 Apr 2024 10:15:17 +0300
-Subject: [PATCH net-next v2 10/15] net: dsa: mt7530: get rid of function
- sanity check
+Date: Mon, 22 Apr 2024 10:15:22 +0300
+Subject: [PATCH net-next v2 15/15] net: dsa: mt7530: explain exposing MDIO
+ bus of MT7531AE better
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Message-Id: <20240422-for-netnext-mt7530-improvements-4-v2-10-a75157ba76ad@arinc9.com>
+Message-Id: <20240422-for-netnext-mt7530-improvements-4-v2-15-a75157ba76ad@arinc9.com>
 References: <20240422-for-netnext-mt7530-improvements-4-v2-0-a75157ba76ad@arinc9.com>
 In-Reply-To: <20240422-for-netnext-mt7530-improvements-4-v2-0-a75157ba76ad@arinc9.com>
 To: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, 
@@ -69,20 +69,19 @@ Cc: Bartel Eerdekens <bartel.eerdekens@constell8.be>,
  linux-mediatek@lists.infradead.org, 
  =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1713770127; l=960;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1713770127; l=1109;
  i=arinc.unal@arinc9.com; s=arinc9-Xeront; h=from:subject:message-id;
- bh=HUYFdupAh6c43NX7egvGTzUNU8mBqV4dnjn+5D+OLfw=;
- b=jChabMEZw2/XRVWzIE7N3hjTPvLZVl7ixRyVJJEQ6O2gjUnkGwTFgbr5jtZOwuIIpHRoxMGNt
- fNVpm/KdCTvCzOTtWcLuoNBNPHhn//ZQyRRieQ9Y3HCqtK8wjqVKOnM
+ bh=vLvtlbHMBxKy/N+5hO2kjs9XkvkZFD7LvDK5jmVwOt0=;
+ b=rrMcStwgZhwRYkv1smaK4/6fyCCBXYnzMSeDeY5COCE0JpnpNyuwBmAa+EH2zLbVYygTr8jEZ
+ xmxYYbP6SFjBC2xJ1TKMAKURIjla8Ln7p8UXbk0E9eIB0v4YTX21ANp
 X-Developer-Key: i=arinc.unal@arinc9.com; a=ed25519;
  pk=z49tLn29CyiL4uwBTrqH9HO1Wu3sZIuRp4DaLZvtP9M=
 X-Endpoint-Received: by B4 Relay for arinc.unal@arinc9.com/arinc9-Xeront
  with auth_id=137
 X-Original-From: =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240422_001535_937864_E4471CD6 
-X-CRM114-Status: UNSURE (   8.62  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240422_001536_747271_89F7B4B7 
+X-CRM114-Status: GOOD (  12.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,33 +99,32 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-Get rid of checking whether functions are filled properly. priv->info which
-is an mt753x_info structure is filled and checked for before this check.
-It's unnecessary checking whether it's filled properly.
+Unlike MT7531BE, the GPIO 6-12 pins are not used for RGMII on MT7531AE.
+Therefore, the GPIO 11-12 pins are set to function as MDC and MDIO to
+expose the MDIO bus of the switch. Replace the comment with a better
+explanation.
 
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 ---
- drivers/net/dsa/mt7530.c | 7 -------
- 1 file changed, 7 deletions(-)
+ drivers/net/dsa/mt7530.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 8a141f849673..842c2573dfe4 100644
+index 1f6cd24de4b7..2b9f904a98f0 100644
 --- a/drivers/net/dsa/mt7530.c
 +++ b/drivers/net/dsa/mt7530.c
-@@ -3232,13 +3232,6 @@ mt7530_probe_common(struct mt7530_priv *priv)
- 	if (!priv->info)
- 		return -EINVAL;
- 
--	/* Sanity check if these required device operations are filled
--	 * properly.
--	 */
--	if (!priv->info->sw_setup || !priv->info->phy_read_c22 ||
--	    !priv->info->phy_write_c22 || !priv->info->mac_port_get_caps)
--		return -EINVAL;
--
- 	priv->id = priv->info->id;
- 	priv->dev = dev;
- 	priv->ds->priv = priv;
+@@ -2635,7 +2635,10 @@ mt7531_setup(struct dsa_switch *ds)
+ 	if (!priv->p5_sgmii) {
+ 		mt7531_pll_setup(priv);
+ 	} else {
+-		/* Let ds->user_mii_bus be able to access external phy. */
++		/* Unlike MT7531BE, the GPIO 6-12 pins are not used for RGMII on
++		 * MT7531AE. Set the GPIO 11-12 pins to function as MDC and MDIO
++		 * to expose the MDIO bus of the switch.
++		 */
+ 		mt7530_rmw(priv, MT7531_GPIO_MODE1, MT7531_GPIO11_RG_RXD2_MASK,
+ 			   MT7531_EXT_P_MDC_11);
+ 		mt7530_rmw(priv, MT7531_GPIO_MODE1, MT7531_GPIO12_RG_RXD3_MASK,
 
 -- 
 2.40.1
