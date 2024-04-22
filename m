@@ -4,75 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4482AC07C79
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Apr 2024 16:24:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94D5BC4345F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Apr 2024 17:05:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PxjBNxbocBF3o+KlUMl7I0+96HMGANjV01UWPTsm8O4=; b=ocWF0MVc6R/ABeYgcotRC7pLbj
-	DVGunaHIwUIKp7IVTe3eTq8HEoUlw0VKbRWSid7QR3LjC/WwjinnDpHPgTN63ln3vy1AmlaLOdNkT
-	qj6tetkcNLdmR+VJNXtVnNB03Wk5xkJPv1Psoc9kPaOz0GosRAhZ+SptB/L2l6BfxZ5jMenrZdmUy
-	NwSU0uuaqAahAAI/C8cq5pAuwMM+kmzw78sZgiVmgl0B2BDWRQbZwbQFJfC0Hogz92PYb4EzeN2hC
-	Y8FxSFFrvlxX+fVurudZC5JsHh10vo5nxrrJOx3VNohc/vWnufb2gIlx9dsbesBj8ejAMylqJbYPX
-	T9htdTDw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=tSkyOzxUcdbMqzp03KnrhjrfOdlW3TL2PUxe3CYy+uU=; b=tdbZzWdvl4Ia2gHWVIf1cQc4/W
+	6scMiicXipXC+XZY4ug1gf8UHutpkaNQ27RODYhv/QO/a1HDaojJY2DD0pIA57Ed/Pkib5bXp1AeF
+	m7ekE7AiQDfQAB0VgzHTtImMACAlVzhKwGC5oSj4Cqi6Xd6sw/76HVSUyhELB20q/2J3kfEPloRrG
+	P/MbKBQQ0vcWaAFEzteNc2aPAE8MvGvNdCrT6GVgGLIqtYK1TiWQw4fdC2ieXO1Xmul0rHq5D4ry3
+	kiu8Ph7ZH2RA6BW3dwdltywBNrlPMpSjOFrU1RalduDxxsf1ozstF79CI0TZj8f63T+qZBnVPCJHm
+	BfK++UzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rywT8-0000000EHTD-3L17;
-	Mon, 22 Apr 2024 16:24:38 +0000
-Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
+	id 1ryx6W-0000000EQVQ-1LCr;
+	Mon, 22 Apr 2024 17:05:20 +0000
+Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rywT5-0000000EHQb-0tDj;
-	Mon, 22 Apr 2024 16:24:36 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.97.1)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1rywSZ-000000003hF-3pRt;
-	Mon, 22 Apr 2024 16:24:04 +0000
-Date: Mon, 22 Apr 2024 17:23:57 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>
-Cc: "David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
+	id 1ryx6S-0000000EQUb-4BoB
+	for linux-mediatek@lists.infradead.org;
+	Mon, 22 Apr 2024 17:05:18 +0000
+Received: by mail-pf1-x42a.google.com with SMTP id d2e1a72fcca58-6eff2be3b33so4493105b3a.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 22 Apr 2024 10:05:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1713805514; x=1714410314; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=tSkyOzxUcdbMqzp03KnrhjrfOdlW3TL2PUxe3CYy+uU=;
+        b=DzGdwx4W+4Dhv23mFXs7/raq4mB8ER5n/onImRa+BMxptR03wyQE5kDC8+GoXOamIe
+         t2uGn1DVm0MlpfAqqG1pIW4Ne+vPmTKj87m+XFiq7ZFdK4pqoCtdBXaXf3oujL87mnRE
+         lPITJhZJfevJZqpchHPdvwZkEX0Aq0uCBp/Zg=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1713805514; x=1714410314;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=tSkyOzxUcdbMqzp03KnrhjrfOdlW3TL2PUxe3CYy+uU=;
+        b=QSS0FJscHizMDayNhysND5nl/3n/VTCXnAveITCe56yot9MqSJzf8Wq1LIE8rOxx93
+         fqv5T5SdUWRP6b8fqG+pgJ2lAwSeptSUNLIxjgpEO/TnS5axr5inMoRaO+HcmGpakdkm
+         1d/iyaPPrrUxZPeDiOVWG7jw6UqKLBpHIvZUOxjaNm05hHwAbPVR3h05AsyXxNFkm8em
+         BnRu99jZANbZFE0hlZo2st71cR5rzHqq26bcMqpRos9FHwiW1KTvEN0+3UIjLkPUKsTQ
+         Tucu1HoM2BFHMXFmA2QCFp3vi+cbWhMgydqD92X/o3bKNW3gn9sC3XVFWHBjRxfrVcv6
+         rsVw==
+X-Forwarded-Encrypted: i=1; AJvYcCUZuuYX2tvES3FJO1numuJLn6RX83B5kRmhUFgV1pX5AaN3Ru3jQOgiqoJnf8nTa9xUrxRkNH8aJfmXPz00j659uCaqtzPq96oKAm4zuv7BRUBm
+X-Gm-Message-State: AOJu0YxnSIV4++4lr2gIbMUl60msW1S7ggXGMKZm8op44azLXP/JSLuE
+	ZQNIbVnx9ZhlP4pugqHipGB0KlOS6Eh+/FVmehaYAwixDIactR9bUD7ny2TBNA==
+X-Google-Smtp-Source: AGHT+IFxJFeMPcL8ytCxc2u5zPDcX0TiDfN/BOFVsXaXujFuR9MAhpYnZXK32l63JffeuOssUsOYXw==
+X-Received: by 2002:a05:6a00:1407:b0:6ed:2f2:a8e with SMTP id l7-20020a056a00140700b006ed02f20a8emr11839710pfu.30.1713805514163;
+        Mon, 22 Apr 2024 10:05:14 -0700 (PDT)
+Received: from dianders.sjc.corp.google.com ([2620:15c:9d:2:843d:b423:30f9:2b2])
+        by smtp.gmail.com with ESMTPSA id fa34-20020a056a002d2200b006e5571be110sm7997617pfb.214.2024.04.22.10.05.12
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 22 Apr 2024 10:05:13 -0700 (PDT)
+From: Douglas Anderson <dianders@chromium.org>
+To: Tiffany Lin <tiffany.lin@mediatek.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Yunfei Dong <yunfei.dong@mediatek.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Alexander Couzens <lynxis@fe80.eu>,
-	Qingfang Deng <dqfext@gmail.com>,
-	SkyLake Huang <SkyLake.Huang@mediatek.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Wei-Shun Chang <weishunc@google.com>,
+	Douglas Anderson <dianders@chromium.org>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>,
+	Rob Herring <robh@kernel.org>,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org
-Subject: Re: [RFC PATCH net-next v3 3/8] net: pcs: pcs-mtk-lynxi: add
- platform driver for MT7988
-Message-ID: <ZiaPHWXU-82QMrMt@makrotopia.org>
-References: <cover.1702352117.git.daniel@makrotopia.org>
- <8aa905080bdb6760875d62cb3b2b41258837f80e.1702352117.git.daniel@makrotopia.org>
- <ZXnV/Pk1PYxAm/jS@shell.armlinux.org.uk>
- <ZcLc7vJ4fPmRyuxn@makrotopia.org>
+	linux-kernel@vger.kernel.org,
+	linux-media@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] media: mediatek: vcodec: Alloc DMA memory with DMA_ATTR_ALLOC_SINGLE_PAGES
+Date: Mon, 22 Apr 2024 10:03:59 -0700
+Message-ID: <20240422100354.1.I58b4456c014a4d678455a4ec09b908b1c71c3017@changeid>
+X-Mailer: git-send-email 2.44.0.769.g3c40516874-goog
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ZcLc7vJ4fPmRyuxn@makrotopia.org>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240422_092435_435689_C989FFD7 
-X-CRM114-Status: GOOD (  72.49  )
+X-CRM114-CacheID: sfid-20240422_100517_044708_DC1334EF 
+X-CRM114-Status: GOOD (  12.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,237 +99,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Russell,
-Hi netdev crew,
+As talked about in commit 14d3ae2efeed ("ARM: 8507/1: dma-mapping: Use
+DMA_ATTR_ALLOC_SINGLE_PAGES hint to optimize alloc"), it doesn't
+really make sense to try to allocate contiguous chunks of memory for
+video encoding/decoding. Let's switch the Mediatek vcodec driver to
+pass DMA_ATTR_ALLOC_SINGLE_PAGES and take some of the stress off the
+memory subsystem.
 
-I haven't received any reply for this email and am still waiting for
-clarification regarding how inter-driver dependencies should be modelled
-in that case of mtk_eth_soc. My search for good examples for that in the
-kernel code was quite frustrating and all I've found are supposedly bugs
-of that exact cathegory.
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
+---
+NOTE: I haven't personally done massive amounts of testing with this
+change, but I originally added the DMA_ATTR_ALLOC_SINGLE_PAGES flag
+specifically for the video encoding / decoding cases and I know it
+helped avoid memory problems in the past on other systems. Colleagues
+of mine have told me that with this change memory problems are harder
+to reproduce, so it seems like we should consider doing it.
 
-Please see my questions mentioned in the previous email I've sent and
-also a summary of suggested solutions inline below:
+ .../media/platform/mediatek/vcodec/common/mtk_vcodec_util.c    | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-On Wed, Feb 07, 2024 at 01:29:18AM +0000, Daniel Golle wrote:
-> Hi Russell,
-> 
-> sorry for the extended time it took me to get back to this patch and
-> the comments you made for it. Understanding the complete scope of the
-> problem took a while (plus there were holidays and other fun things),
-> and also brought up further questions which I hope you can help me
-> find good answers for, see below:
-> 
-> On Wed, Dec 13, 2023 at 04:04:12PM +0000, Russell King (Oracle) wrote:
-> > On Tue, Dec 12, 2023 at 03:47:18AM +0000, Daniel Golle wrote:
-> > > Introduce a proper platform MFD driver for the LynxI (H)SGMII PCS which
-> > > is going to initially be used for the MT7988 SoC.
-> > > 
-> > > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> > 
-> > I made some specific suggestions about what I wanted to see for
-> > "getting" PCS in the previous review, and I'm disappointed that this
-> > patch set is still inventing its own solution.
-> > 
-> > > +struct phylink_pcs *mtk_pcs_lynxi_get(struct device *dev, struct device_node *np)
-> > > +{
-> > > +	struct platform_device *pdev;
-> > > +	struct mtk_pcs_lynxi *mpcs;
-> > > +
-> > > +	if (!np)
-> > > +		return NULL;
-> > > +
-> > > +	if (!of_device_is_available(np))
-> > > +		return ERR_PTR(-ENODEV);
-> > > +
-> > > +	if (!of_match_node(mtk_pcs_lynxi_of_match, np))
-> > > +		return ERR_PTR(-EINVAL);
-> > > +
-> > > +	pdev = of_find_device_by_node(np);
-> > > +	if (!pdev || !platform_get_drvdata(pdev)) {
-> > 
-> > This is racy - as I thought I described before, userspace can unbind
-> > the device in one thread, while another thread is calling this
-> > function. With just the right timing, this check succeeds, but...
-> > 
-> > > +		if (pdev)
-> > > +			put_device(&pdev->dev);
-> > > +		return ERR_PTR(-EPROBE_DEFER);
-> > > +	}
-> > > +
-> > > +	mpcs = platform_get_drvdata(pdev);
-> > 
-> > mpcs ends up being read as NULL here. Even if you did manage to get a
-> > valid pointer, "mpcs" being devm-alloced could be freed from under
-> > you at this point...
-> > 
-> > > +	device_link_add(dev, mpcs->dev, DL_FLAG_AUTOREMOVE_CONSUMER);
-> > 
-> > resulting in this accessing memory which has been freed.
-> > 
-> > The solution would be either to suppress the bind/unbind attributes
-> > (provided the underlying struct device can't go away, which probably
-> > also means ensuring the same of the MDIO bus. Aternatively, adding
-> > a lock around the remove path and around the checking of
-> > platform_get_drvdata() down to adding the device link would probably
-> > solve it.
-> > 
-> > However, I come back to my general point - this kind of stuff is
-> > hairy. Do we want N different implementations of it in various drivers
-> > with subtle bugs, or do we want _one_ implemenatation.
-> > 
-> > If we go with the one implemenation approach, then we need to think
-> > about whether we should be using device links or not. The problem
-> > could be for network interfaces where one struct device is
-> > associated with multiple network interfaces. Using device links has
-> > the unfortunate side effect that if the PCS for one of those network
-> > interfaces is removed, _all_ network interfaces disappear.
-> 
-> I agree, esp. on this MT7988 removal of a PCS which may then not
-> even be in use also impairs connectivity on the built-in gigE DSA
-> switch. It would be nice to try to avoid this.
-> 
-> > 
-> > My original suggestion was to hook into phylink to cause that to
-> > take the link down when an in-use PCS gets removed.
-> 
-> I took a deep dive into how this could be done correctly and how
-> similar things are done for other drivers. Apart from the PCS there
-> often also is a muxing-PHY involved, eg. MediaTek's XFI T-PHY in this
-> case (previously often called "pextp" for no apparent reason) or
-> Marvell's comphy (mvebu-comphy).
-> 
-> So let's try something simple on an already well-supported platform,
-> I thought and grabbed Marvell Armada CN9131-DB running vanilla Linux,
-> and it didn't even take some something racy, but plain:
-> 
-> ip link set eth6 up
-> cd /sys/bus/platform/drivers/mvebu-comphy
-> echo f2120000.phy > unbind
-> echo f4120000.phy > unbind
-> echo f6120000.phy > unbind
-> ip link set eth6 down
-> 
-> 
-> That was enough. The result is a kernel crash, and the same should
-> apply on popular platforms like the SolidRun MACCHIATOBin and other
-> similar boards.
-> 
-> So this gets me to think that there is a wider problem around
-> non-phylink-managed resources which may disappear while in use by
-> network drivers, and I guess that the same applies in many other
-> places. I don't have a SATA drive connected to that Marvell board, but
-> I can imagine what happens when suddenly removing the comphy instance
-> in charge of the SATA link and then a subsequent SATA hotplug event
-> happens or stuff like that...
-> 
-> Anyway, back to network subsystem and phylink:
-> 
-> Do you agree that we need a way to register (and unregister) PCS
-> providers with phylink, so we don't need *_get_by_of_node implementations
-> in each driver? If so, can you sketch out what the basic requirements
-> for an acceptable solution would be?
-> 
-> Also, do you agree that lack of handling of disappearing resources,
-> such as PHYs (*not* network PHYs, but PHYs as in drivers/phy/*) or
-> syscons, is already a problem right now which should be addressed?
-> 
-> If you imagine phylink to take care of the life-cycle of all link-
-> resources, what is vision about those things other than classic MDIO-
-> connected PHYs?
-> 
-> And well, of course, the easy fix for the example above would be:
-> diff --git a/drivers/phy/marvell/phy-mvebu-cp110-comphy.c b/drivers/phy/marvell/phy-mvebu-cp110-comphy.c
-> index b0dd133665986..9517c96319595 100644
-> --- a/drivers/phy/marvell/phy-mvebu-cp110-comphy.c
-> +++ b/drivers/phy/marvell/phy-mvebu-cp110-comphy.c
-> @@ -1099,6 +1099,7 @@ static const struct of_device_id mvebu_comphy_of_match_table[] = {
->  MODULE_DEVICE_TABLE(of, mvebu_comphy_of_match_table);
->  
->  static struct platform_driver mvebu_comphy_driver = {
-> +	.suppress_bind_attrs = true,
->  	.probe	= mvebu_comphy_probe,
->  	.driver	= {
->  		.name = "mvebu-comphy",
-> 
-> But that should then apply to every single driver in drivers/phy/...
-> 
+diff --git a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_util.c b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_util.c
+index 9ce34a3b5ee6..3fb1d48c3e15 100644
+--- a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_util.c
++++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_util.c
+@@ -64,7 +64,8 @@ int mtk_vcodec_mem_alloc(void *priv, struct mtk_vcodec_mem *mem)
+ 		id = dec_ctx->id;
+ 	}
+ 
+-	mem->va = dma_alloc_coherent(&plat_dev->dev, size, &mem->dma_addr, GFP_KERNEL);
++	mem->va = dma_alloc_attrs(&plat_dev->dev, size, &mem->dma_addr,
++				  GFP_KERNEL, DMA_ATTR_ALLOC_SINGLE_PAGES);
+ 	if (!mem->va) {
+ 		mtk_v4l2_err(plat_dev, "%s dma_alloc size=%ld failed!",
+ 			     dev_name(&plat_dev->dev), size);
+-- 
+2.44.0.769.g3c40516874-goog
 
-My remaining questions are:
- - Is it ok to just use .suppress_bind_attrs = true for PCS and PHY
-   drivers to avoid having to care out hot-removal?
-   Those components are anyway built-into the SoC so removing them
-   is physically not possible.
-
- - In case of driver removal (rmmod -f) imho using a device-link would
-   be sufficient to prevent the worst. However, we would have to live
-   with the all-or-nothing nature of that approach, ie. once e.g. the
-   USXGMII driver is being removed, *all* Ethernet interfaces would
-   disappear with it (even those not actually using USXGMII).
-
-If the solutions mentioned above do not sound agreeable, please suggest
-how a good solution would look like, ideally also share an example of
-any driver in the kernel where this is done in the way you would like
-to have things done.
-
-> 
-> > 
-> > > +
-> > > +	return &mpcs->pcs;
-> > > +}
-> > > +EXPORT_SYMBOL(mtk_pcs_lynxi_get);
-> > > +
-> > > +void mtk_pcs_lynxi_put(struct phylink_pcs *pcs)
-> > > +{
-> > > +	struct mtk_pcs_lynxi *cur, *mpcs = NULL;
-> > > +
-> > > +	if (!pcs)
-> > > +		return;
-> > > +
-> > > +	mutex_lock(&instance_mutex);
-> > > +	list_for_each_entry(cur, &mtk_pcs_lynxi_instances, node)
-> > > +		if (pcs == &cur->pcs) {
-> > > +			mpcs = cur;
-> > > +			break;
-> > > +		}
-> > > +	mutex_unlock(&instance_mutex);
-> > 
-> > I don't see what this loop gains us, other than checking that the "pcs"
-> > is still on the list and hasn't already been removed. If that is all
-> > that this is about, then I would suggest:
-> > 
-> > 	bool found = false;
-> > 
-> > 	if (!pcs)
-> > 		return;
-> > 
-> > 	mpcs = pcs_to_mtk_pcs_lynxi(pcs);
-> > 	mutex_lock(&instance_mutex);
-> > 	list_for_each_entry(cur, &mtk_pcs_lynxi_instances, node)
-> > 		if (cur == mpcs) {
-> > 			found = true;
-> > 			break;
-> > 		}
-> > 	mutex_unlock(&instance_mutex);
-> > 
-> > 	if (WARN_ON(!found))
-> > 		return;
-> > 
-> > which makes it more obvious why this exists.
-> 
-> The idea was not only to make sure it hasn't been removed, but also
-> to be sure that what ever the private data pointer points to has
-> actually been created by that very driver.
-> 
-> But yes, doing it in the way you suggest will work in the same way,
-> just when having my idea in mind it looks more fishy to use
-> pcs_to_mtk_pcs_lynxi() before we are 100% sure that what we dealing
-> with has previously been created by this driver.
-> 
-> 
-> Cheers
-> 
-> 
-> Daniel
-> 
 
