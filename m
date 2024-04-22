@@ -4,70 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E4B0C07C79
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Apr 2024 11:50:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DEB9C07E8E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Apr 2024 12:39:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
-	References:In-Reply-To:Cc:To:From:MIME-Version:Content-Transfer-Encoding:
-	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZQLCeustB0lpL86vzEtbkLF0vHzTCOaScD9Cs+hxFFk=; b=M21CUWrT5DguklkL9LqkT+MHK+
-	ua3jNQM+kldtQqfvg6tpiYvL0A4/+z3lJTIZB3Zo5xu4tjasHR6hTP4PoL/Wx860j1N9/tVg0hKX1
-	izBd506XA9cJu0vIGspWCJcthuLutyrA1aY0rGhBGRF6mCxCVRGeGOfFWriLGGQbURHU7edi02J6r
-	IBvVNRu6kfhglr93lC7J8gUGk9y6ilx5zt9FEwdiO7dx6vmVDE2W7Fqd4Z3oQn//6V5UD0GH2WQE9
-	cHlPNGbSUfuYEQDj6kXk6bEP3wfqif0P6uisg4zpWqeGU+jLqGLAqFEqyss3NvG/lIwiykVIWq+GM
-	CFE9QYIg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=iz0ikdoTMPeoGlY7AzEyABEuqkNB0Gjgw6bWzoieFE4=; b=AX2P2h9DdfeU5YGSYKoWpHfBM+
+	tGND/SeOLoGJDZDdb5BJ2gZ0QlZ2ZPY+BdUvTG/rYyJMdKHhbvowMkMEXjl20JgsymWa0MrShxPNN
+	CjB94X4bqEhTiqV96FUzMLW885VoDTbcWKpErebruuFthB9AdsZDD4KpGeN5dxyHRo+SKiwXeDRkQ
+	dGg5920di1syjTLy55o8MEt0D3YBkSbCu8mK5PFwQKntuyvEMWim0nDPepzjU2UEFXYkhMBXbVDdl
+	mqwGIOvnnJ1quFFier/A0gbb4qxw7jgIgk6oVWnB/JHwlgaL0zIllsCfA/h4st+oJkmWiLayNbZub
+	Za+a3vRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rysBn-0000000DQGu-41vb;
-	Mon, 22 Apr 2024 11:50:27 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1rysxT-0000000DWeY-3QZN;
+	Mon, 22 Apr 2024 12:39:43 +0000
+Received: from mail-lf1-f41.google.com ([209.85.167.41])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rysBk-0000000DQFR-1bll;
-	Mon, 22 Apr 2024 11:50:25 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 2E28D60E92;
-	Mon, 22 Apr 2024 11:50:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9F134C113CC;
-	Mon, 22 Apr 2024 11:50:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1713786622;
-	bh=YS917ueHwtBqt9TiFEnAUZ8trcpY/y+Y3C0bGNm08oc=;
-	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
-	b=rURjD30tresfVvBDhALNF39w6T3y5FlfiOPc3mKx02RqAYXlbTp1KRdDiNUxo6yp9
-	 GGkF+Y1BBEPDWYBsVdXE0ZWLZQg+Gss9tn3jgS+T9DmQelpy7+Wnuhg5HQ25jJfMlA
-	 3x6ZvYlZebkargiU6qV/sK+BUhLffQXyyDM6R4GzTX30XCnMpKol4OPS7X4knwoJL8
-	 PkCvCJLFw4AF7K54E7xN0cIRSALmWSZ9RG/v9TqmIK3G4h2RHe+KeqcPnly+R3trK/
-	 4H10kbeOv5vu3MIgwrwDRviQrav7Oghq/XzSrLsoLdWHm/pv32kZJ5EXnTM5qQqx4o
-	 gqGNCeA5KqUEg==
-Date: Mon, 22 Apr 2024 06:50:21 -0500
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	id 1rysxP-0000000DWdD-26NA;
+	Mon, 22 Apr 2024 12:39:41 +0000
+Received: by mail-lf1-f41.google.com with SMTP id 2adb3069b0e04-51ae2e37a87so2591602e87.2;
+        Mon, 22 Apr 2024 05:39:37 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1713789576; x=1714394376;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=iz0ikdoTMPeoGlY7AzEyABEuqkNB0Gjgw6bWzoieFE4=;
+        b=sOJUdZoO8NTqx+CWOJKxGncqzWDX3/lbbr44eLtfVXapv56PbPSAWbE1DaMYDyzsPj
+         pf0kkUYDEZsHrOeWgf1Ci2+OUvqAqLfUz/z5qeVNI4hmU8F9yG/uaRaKSOT1Ne4FyVqa
+         IZMwTFhYEXxMd0LBpsSPhkqkEfYUVoktUtVVoAJaYVNB65NAJeW0wUI1gJO61dqfKoVF
+         nfLf1ytqVnkEbrQ4xJgmKWC5NmcofFOFIv4YcqTy4b4AiE5+Sz+Jfy4OlEWljKEC4KPX
+         5W3lWDiAflW67S2dRwcmSAQ0PQtfM5bO/VNx1TLVh67U7DD0LsRzq4Id82S5W2zEE2Pg
+         iEEw==
+X-Forwarded-Encrypted: i=1; AJvYcCVeWUaqcfNyPhGe3x/jaQ6cxpl+GZXEE8M7fUj+VsP64ZsBYQHfqqD+IGOnFnE1hsWkoaj81hMfn3aUOTt4/tssEb9WAC43m1TAQHxww/69yXLOtulwofEiElO7eqm1VhAIyMs2LqEJ1h8Q2Zj64yxPokohDeYALt5EPqHIkxhOycMcwyaXjkWY+ZNBbAspW6Smtx5VciLVfHNyrBzclrxqajovXgNUD0FFR2QSJsHI0A==
+X-Gm-Message-State: AOJu0YyAXEVu2VUMsWXp2NjrLk6yGy/bt3Q9Wk0I4rFt1/wWmzEm3C0E
+	Vx+0AEbytSFsJyZ3PZHKqSP6sZKVukMBAL5Rvu1Mz092Pc81T+n+
+X-Google-Smtp-Source: AGHT+IF5YTCCg6KEsN0PmqluDOTi/5NrwJEUq5lvraAub+lxIQJqUtef+oDOn/RubcUZafX5KbdePw==
+X-Received: by 2002:a19:ca4f:0:b0:515:c195:d6b8 with SMTP id h15-20020a19ca4f000000b00515c195d6b8mr5518092lfj.60.1713789575968;
+        Mon, 22 Apr 2024 05:39:35 -0700 (PDT)
+Received: from localhost (fwdproxy-lla-117.fbsv.net. [2a03:2880:30ff:75::face:b00c])
+        by smtp.gmail.com with ESMTPSA id og14-20020a1709071dce00b00a55ac4c4550sm1906884ejc.211.2024.04.22.05.39.35
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 22 Apr 2024 05:39:35 -0700 (PDT)
+From: Breno Leitao <leitao@debian.org>
+To: aleksander.lobakin@intel.com,
+	kuba@kernel.org,
+	davem@davemloft.net,
+	pabeni@redhat.com,
+	edumazet@google.com,
+	elder@kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	nbd@nbd.name,
+	sean.wang@mediatek.com,
+	Mark-MC.Lee@mediatek.com,
+	lorenzo@kernel.org,
+	taras.chornyi@plvision.eu,
+	ath11k@lists.infradead.org,
+	ath10k@lists.infradead.org,
+	linux-wireless@vger.kernel.org,
+	geomatsi@gmail.com,
+	kvalo@kernel.org,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: quic_jjohnson@quicinc.com,
+	leon@kernel.org,
+	dennis.dalessandro@cornelisnetworks.com,
+	linux-kernel@vger.kernel.org,
+	netdev@vger.kernel.org,
+	bpf@vger.kernel.org,
+	idosch@idosch.org,
+	leitao@debian.org
+Subject: [PATCH net-next v7 00/10] allocate dummy device dynamically
+Date: Mon, 22 Apr 2024 05:38:53 -0700
+Message-ID: <20240422123921.854943-1-leitao@debian.org>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-From: Rob Herring <robh@kernel.org>
-To: Macpaul Lin <macpaul.lin@mediatek.com>
-Cc: Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org, 
- Pablo Sun <pablo.sun@mediatek.com>, Macpaul Lin <macpaul@gmail.com>, 
- MediaTek Chromebook Upstream <Project_Global_Chrome_Upstream_Group@mediatek.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- Yow-shin Liou <yow-shin.liou@mediatek.com>, 
- Jason-ch Chen <Jason-ch.Chen@mediatek.com>, 
- Chen-Yu Tsai <wenst@chromium.org>, 
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
- Chunfeng Yun <chunfeng.yun@mediatek.com>, 
- Chris-qj chen <chris-qj.chen@mediatek.com>, 
- Bear Wang <bear.wang@mediatek.com>, linux-mediatek@lists.infradead.org, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org
-In-Reply-To: <20240422093926.15392-1-macpaul.lin@mediatek.com>
-References: <20240422093926.15392-1-macpaul.lin@mediatek.com>
-Message-Id: <171378646243.749127.4216494442345691988.robh@kernel.org>
-Subject: Re: [PATCH 1/3] arm64: dts: mediatek: mt8390-genio-700-evk: update
- regulator names
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240422_045024_523857_0B0E6996 
-X-CRM114-Status: GOOD (  13.28  )
+X-CRM114-CacheID: sfid-20240422_053939_561235_990BA787 
+X-CRM114-Status: GOOD (  12.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,67 +102,85 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+struct net_device shouldn't be embedded into any structure, instead,
+the owner should use the private space to embed their state into
+net_device.
 
-On Mon, 22 Apr 2024 17:39:24 +0800, Macpaul Lin wrote:
-> Update regulator names to match schematics, replacing generic terms.
-> 1. Add system wide 'reg_vsys' node for 4.2V power rail.
-> 2. Add 'reg_vsys' node as 'vin-supply' for the following nodes
->  - common_fixed_5v, edp_panel_fixed_3v3, gpio_fixed_3v3, sdio_fixed_3v3,
->    touch0_fixed_3v3, usb_hub_fixed_3v3, usb_p0_vbus, and usb_p1_vbus.
-> 3. Update regulator names according to the stable output name on
->    schematics.
->  - vdd_5v, vedp_3v3, ext_3v3, vio18_conn, wifi_3v3, vio33_tp1, vhub_3v3,
->    vbus_p0, vbus_p1.
->  - vcn18_pmu, vcn33_2_pmu, dvdd_proc_l, dvdd_core, vpa_pmu, dvdd_adsp,
->    va12_abb2_pmu, vsim1_pmu, vufs18_pmu.
-> 4. Remove usb_hub_reset_1v8. Use 'hub' node to probe USB HUB
->    in subsequent patches.
-> 
-> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
-> ---
->  .../dts/mediatek/mt8390-genio-700-evk.dts     | 65 ++++++++++++-------
->  1 file changed, 42 insertions(+), 23 deletions(-)
-> 
+But, in some cases the net_device is embedded inside the private
+structure, which blocks the usage of zero-length arrays inside
+net_device.
 
+Create a helper to allocate a dummy device at dynamically runtime, and
+move the Ethernet devices to use it, instead of embedding the dummy
+device inside the private structure.
 
-My bot found new DTB warnings on the .dts files added or changed in this
-series.
+This fixes all the network cases plus some wireless drivers.
 
-Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
-are fixed by another series. Ultimately, it is up to the platform
-maintainer whether these warnings are acceptable or not. No need to reply
-unless the platform maintainer has comments.
+PS: Due to lack of hardware, unfortunately most these patches are
+compiled tested only, except ath11k that was kindly tested by Kalle Valo.
 
-If you already ran DT checks and didn't see these error(s), then
-make sure dt-schema is up to date:
+---
+Changelog:
 
-  pip3 install dtschema --upgrade
+v7:
+	* Document the return value of alloc_netdev_dummy()
+v6:
+	* No code change. Just added Reviewed-by: and fix a commit message
+v5:
+	* Added a new patch to fix some typos in the previous code
+	* Rebased to net-net/main
+v4:
+	* Added a new patch to add dummy device at free_netdev(), as suggested
+	  by Jakub.
+	* Added support for some wireless driver.
+	* Added some Acked-by and Reviewed-by.
+v3:
+	* Use free_netdev() instead of kfree() as suggested by Jakub.
+	* Change the free_netdev() place in ipa driver, as suggested by
+	  Alex Elder.
+	* Set err in the error path in the Marvell driver, as suggested
+	  by Simon Horman.
+v2:
+	* Patch 1: Use a pre-defined name ("dummy#") for the dummy
+	  net_devices.
+	* Patch 2-5: Added users for the new helper.
+v1:
+	* https://lore.kernel.org/all/20240327200809.512867-1-leitao@debian.org/
 
+Breno Leitao (10):
+  net: core: Fix documentation
+  net: free_netdev: exit earlier if dummy
+  net: create a dummy net_device allocator
+  net: marvell: prestera: allocate dummy net_device dynamically
+  net: mediatek: mtk_eth_sock: allocate dummy net_device dynamically
+  net: ipa: allocate dummy net_device dynamically
+  net: ibm/emac: allocate dummy net_device dynamically
+  wifi: qtnfmac: Use netdev dummy allocator helper
+  wifi: ath10k: allocate dummy net_device dynamically
+  wifi: ath11k: allocate dummy net_device dynamically
 
-New warnings running 'make CHECK_DTBS=y mediatek/mt8390-genio-700-evk.dtb' for 20240422093926.15392-1-macpaul.lin@mediatek.com:
+ drivers/net/ethernet/ibm/emac/mal.c           | 14 ++++-
+ drivers/net/ethernet/ibm/emac/mal.h           |  2 +-
+ .../ethernet/marvell/prestera/prestera_rxtx.c | 15 ++++-
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c   | 17 ++++--
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h   |  2 +-
+ drivers/net/ipa/gsi.c                         | 12 ++--
+ drivers/net/ipa/gsi.h                         |  2 +-
+ drivers/net/wireless/ath/ath10k/core.c        |  9 ++-
+ drivers/net/wireless/ath/ath10k/core.h        |  2 +-
+ drivers/net/wireless/ath/ath10k/pci.c         |  2 +-
+ drivers/net/wireless/ath/ath10k/sdio.c        |  2 +-
+ drivers/net/wireless/ath/ath10k/snoc.c        |  4 +-
+ drivers/net/wireless/ath/ath10k/usb.c         |  2 +-
+ drivers/net/wireless/ath/ath11k/ahb.c         |  9 ++-
+ drivers/net/wireless/ath/ath11k/core.h        |  2 +-
+ drivers/net/wireless/ath/ath11k/pcic.c        | 21 +++++--
+ .../wireless/quantenna/qtnfmac/pcie/pcie.c    |  3 +-
+ include/linux/netdevice.h                     |  3 +
+ net/core/dev.c                                | 59 +++++++++++++------
+ 19 files changed, 129 insertions(+), 53 deletions(-)
 
-arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts:925.3-13: Warning (reg_format): /soc/usb@11200000/hub@1:reg: property has invalid length (4 bytes) (#address-cells == 2, #size-cells == 1)
-arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts:933.3-13: Warning (reg_format): /soc/usb@11200000/hub@2:reg: property has invalid length (4 bytes) (#address-cells == 2, #size-cells == 1)
-arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dtb: Warning (pci_device_reg): Failed prerequisite 'reg_format'
-arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dtb: Warning (pci_device_bus_num): Failed prerequisite 'reg_format'
-arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dtb: Warning (i2c_bus_reg): Failed prerequisite 'reg_format'
-arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dtb: Warning (spi_bus_reg): Failed prerequisite 'reg_format'
-arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts:923.17-929.4: Warning (avoid_default_addr_size): /soc/usb@11200000/hub@1: Relying on default #address-cells value
-arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts:923.17-929.4: Warning (avoid_default_addr_size): /soc/usb@11200000/hub@1: Relying on default #size-cells value
-arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts:931.17-937.4: Warning (avoid_default_addr_size): /soc/usb@11200000/hub@2: Relying on default #address-cells value
-arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts:931.17-937.4: Warning (avoid_default_addr_size): /soc/usb@11200000/hub@2: Relying on default #size-cells value
-arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dtb: /soc/pwrap@10024000/pmic/keys: failed to match any schema with compatible: ['mediatek,mt6359-keys']
-arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dtb: typec-mux@48: 'port' is a required property
-	from schema $id: http://devicetree.org/schemas/usb/ite,it5205.yaml#
-arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dtb: i2c@11e01000: pinctrl-names: ['default', 'default'] has non-unique elements
-	from schema $id: http://devicetree.org/schemas/pinctrl/pinctrl-consumer.yaml#
-arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dtb: rt1715@4e: 'vbus-supply' does not match any of the regexes: 'pinctrl-[0-9]+'
-	from schema $id: http://devicetree.org/schemas/usb/richtek,rt1711h.yaml#
-arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dtb: rt1715@4e: 'connector' is a required property
-	from schema $id: http://devicetree.org/schemas/usb/richtek,rt1711h.yaml#
-
-
-
-
+-- 
+2.43.0
 
 
