@@ -4,91 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00425C4345F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Apr 2024 21:24:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 806E2C4345F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Apr 2024 23:55:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1NX2ejD6gwXnqgiSg0Tlos+riWTvWQV81zFunbmPbNM=; b=XBs1WzGBb95nUsIM4Aj7bp9rYO
-	qbceio8DKJam3xak1dML4vypfpdREnhFu3qmm+LS2DRgH5+BlZgY0fmWizFtVI9yJhn/E+345gDGh
-	gjtJvnMgBXkO8Q2jl8UL8+ELW4vh+YX1eVrBidfirXB4q5M3ZsU3jfGQpklTIz4oBMXeKn4Dn0COb
-	g6SN4Gdbngw5xaRrs2ENvMjq1IuOnqRqFAMbmuM91gtcce2pSH/o+TUYzY+/ktrty8SPgDH8Eh9Pr
-	RthUJh70zf+yyjeoezh+ztFnuAymPR8wZwUzsD+9oPn0Oi6Ajz1uR/bT/dCyVr3nVeCtEuRr6Oq3R
-	Yy9evxWg==;
+	bh=6w+dl7mTC8dWM2gXq2EkUqYIdZpjnqFC8f9EoA6jdU0=; b=duDMsQS4lk/OVRxxhlOc45HTVe
+	KgWJLQAc0f+Is8eERZwaEp4Bsqj4/phAVHn6Hq1BETTJHG8g3DbpYpNWi0Nnd7CYH4rSQpcbSCSnK
+	t7U6gcmKH2iJ+XAZCCtgwHI6x7/brYFMaQmaz6AlMxD5a5vJ1JDdd/Es3mHEe2iCaCGLZnYIT2OB4
+	eC+44dLm0P4GypFXLf5Y5fva65QNv1MwileWoxiRPVXWwidMj7WvDlEGn+cOx8Xjf2wjRaeXoQnHl
+	KJH4xrtB5RMx0JF9LjKpmnsPdZ/n67AOxRVPLisZ0+WFKLsKqr8QfSAXrr4tOjHVFq8DVjL0+yhNb
+	2RtX+HpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rz19a-0000000F5v2-1hUG;
-	Mon, 22 Apr 2024 21:24:46 +0000
-Received: from mgamail.intel.com ([198.175.65.17])
+	id 1rz3Vt-0000000FRkK-2ZBI;
+	Mon, 22 Apr 2024 23:55:57 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rz19W-0000000F5uM-2SPV;
-	Mon, 22 Apr 2024 21:24:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1713821082; x=1745357082;
-  h=message-id:date:mime-version:subject:to:cc:references:
-   from:in-reply-to:content-transfer-encoding;
-  bh=KeQhQEZ8pRcakTBQ9PKDBftDt52xxSsucNhl6xG9XeA=;
-  b=C3nEjsGyah/59r5xnUSGtYhRhJQI7GdZwS+yYB7S/gBaF18f0xULRymF
-   ay4CVqDAeJhj0bi76KZFYN99OGnWfob9zN8TNKxpwHI3TdRt4gu1ojvbX
-   tzBdBqkfSTSydDAB80uUjiYlIv3zYlYfSaalEtjs1jLHErbAbA1HnhsR5
-   IMTy4kIlskLLH0MFhn3qasvl6FVx+ZbG5I+VNX/83QlPOtBWpMomc92nT
-   iIHX1fckN2hWN2vO+knOI9cyuoru7h+5iUjRkTWJthmhM6gmFmSLmYgm6
-   q94+JRgmBhNMGmmJhji0QpIIUW5d2cSzDUBqnMH9vzjSBVERpUro7xOyj
-   A==;
-X-CSE-ConnectionGUID: 0F9KPmlMS72LSQJy4ucIUg==
-X-CSE-MsgGUID: 5e/FkopoQymf/LnkNSc50A==
-X-IronPort-AV: E=McAfee;i="6600,9927,11052"; a="9491470"
-X-IronPort-AV: E=Sophos;i="6.07,221,1708416000"; 
-   d="scan'208";a="9491470"
-Received: from orviesa008.jf.intel.com ([10.64.159.148])
-  by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Apr 2024 14:24:39 -0700
-X-CSE-ConnectionGUID: wTTDihldRN6BR80zwReOvg==
-X-CSE-MsgGUID: fSmU2ufDRNW71eOumkykEw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,221,1708416000"; 
-   d="scan'208";a="24764444"
-Received: from leozhang-mobl.amr.corp.intel.com (HELO [10.212.37.174]) ([10.212.37.174])
-  by orviesa008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Apr 2024 14:24:37 -0700
-Message-ID: <eaa0c99a-3b41-4444-906c-d2f005d326b9@linux.intel.com>
-Date: Mon, 22 Apr 2024 16:24:36 -0500
+	id 1rz3Vp-0000000FRgm-0sVt;
+	Mon, 22 Apr 2024 23:55:54 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 90E5FCE0EB3;
+	Mon, 22 Apr 2024 23:55:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 53202C2BD11;
+	Mon, 22 Apr 2024 23:55:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1713830149;
+	bh=2FqeOWFJ5RPwBVKKuybfSkJp8Q6nO5EybaaGdKCY5uA=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=UJP5k6EAjEKcTbL0hiszQgyiJZH7hC2+XbOQijSLIHMbP0QZUFtfzHM9lzrxJs6Ue
+	 hmRV8nDzw8ihO6eVaTgZfGZ7MKsZd7t/QhqAE1iN0PUiq8sobbkZRZvmuyvZljuypX
+	 MK5f5uCdwzE9Jw1RshIvjdu78pxA/xXAlcD2miQ4K5YunRdPTIZg5BP2DxCrRlMsTX
+	 RIFoeMe8QziJ63p750cvTP9qsa5ZScpqW5o7tfnwvIHxkRXrkaYuvkDPv3Zhybl9x6
+	 GMY4jGZyM+W9Pt4divDiDtUeEUhJcB7saNMcW58Tdyx3m4gdGKoZiBXZfwrBQ06fHz
+	 H9l3/7V4pJZgw==
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Cc: Krzysztof Kozlowski <krzk@kernel.org>,
+	Joerg Roedel <jroedel@suse.de>,
+	Sasha Levin <sashal@kernel.org>,
+	yong.wu@mediatek.com,
+	joro@8bytes.org,
+	will@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	iommu@lists.linux.dev,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: [PATCH AUTOSEL 6.8 43/43] iommu: mtk: fix module autoloading
+Date: Mon, 22 Apr 2024 19:14:29 -0400
+Message-ID: <20240422231521.1592991-43-sashal@kernel.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20240422231521.1592991-1-sashal@kernel.org>
+References: <20240422231521.1592991-1-sashal@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 00/14] ASoC: Constify local snd_sof_dsp_ops
-To: Krzysztof Kozlowski <krzk@kernel.org>, Liam Girdwood
- <lgirdwood@gmail.com>, Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
- Bard Liao <yung-chuan.liao@linux.intel.com>,
- Ranjani Sridharan <ranjani.sridharan@linux.intel.com>,
- Daniel Baluta <daniel.baluta@nxp.com>,
- Kai Vehmanen <kai.vehmanen@linux.intel.com>, Mark Brown
- <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>,
- Takashi Iwai <tiwai@suse.com>, Shawn Guo <shawnguo@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: sound-open-firmware@alsa-project.org, linux-sound@vger.kernel.org,
- linux-kernel@vger.kernel.org, imx@lists.linux.dev,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20240414-n-const-ops-var-v1-0-8f53ee5d981c@kernel.org>
- <89f8f0be-2534-46c8-9058-cabea4f68568@linux.intel.com>
- <9d1eda85-32a0-4e53-86ca-ce3137439bd7@kernel.org>
- <d046d195-6fa3-4c52-bc5f-3e5e763bc692@linux.intel.com>
- <138ac465-1576-4e86-a05d-63f8acc6fb70@kernel.org>
- <3acfbe3c-8b83-4c40-83c2-437f963fd25a@linux.intel.com>
- <7490bce3-3bd6-4beb-b8be-d47a6b0a30f0@kernel.org>
-Content-Language: en-US
-From: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
-In-Reply-To: <7490bce3-3bd6-4beb-b8be-d47a6b0a30f0@kernel.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+X-stable: review
+X-Patchwork-Hint: Ignore
+X-stable-base: Linux 6.8.7
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240422_142442_706101_04C55C5D 
-X-CRM114-Status: GOOD (  19.54  )
+X-CRM114-CacheID: sfid-20240422_165553_689776_E9C99FD6 
+X-CRM114-Status: GOOD (  10.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,69 +83,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: Krzysztof Kozlowski <krzk@kernel.org>
 
+[ Upstream commit 7537e31df80cb58c27f3b6fef702534ea87a5957 ]
 
->>> There are multiple reasons and benefits for const, like compiler
->>> optimization, code readability (meaning) up to security improvements,
->>> e.g. by some GCC plugins or marking rodata as really non-writeable, so
->>> closing some ways of exploits. There are many opportunities here, even
->>> if they are not yet enabled.
->>
->> Possibly, but the SOF core does not know if the structure it uses is
->> rodata or not. Using the 'const' identifier would be misleading.
-> 
-> How so? If core does not modify structure, it should take it via ops,
-> just like 100 other widely known structures (see checkpatch). Why is
-> this different?
+Add MODULE_DEVICE_TABLE(), so modules could be properly autoloaded
+based on the alias from of_device_id table.
 
-I don't understand "it should take it via ops"
+Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
+Link: https://lore.kernel.org/r/20240410164109.233308-1-krzk@kernel.org
+Signed-off-by: Joerg Roedel <jroedel@suse.de>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/iommu/mtk_iommu.c    | 1 +
+ drivers/iommu/mtk_iommu_v1.c | 1 +
+ 2 files changed, 2 insertions(+)
 
-We are already fetching the structure with private_data.
-
->>>> that's a different interpretation to the 'software' view you're
->>>> describing. "this structure will not modified by this function" is not
->>>> the same thing as "this structure CANNOT be modified".
->>>
->>> Yes, but can we please discuss specific patchset then? Patches which
->>> change pointers to const have one "interpretation". Patches which modify
->>> static or global data have another.
->>
->> Just look at sound/soc/sof/intel/mtl.c... The core will sometimes use a
-> 
-> That's a driver (or specific implementation), not core.
-
-You are making an assumption on what the SOF core is. The core is used
-by ACPI or PCI drivers as a library. The structures are all allocated in
-ACPI/PCI drivers and passed to the core library.
-
->> constant structure and sometimes not, depending on the PCI ID reported
->> by hardware. This was intentional to override common defaults and make
->> the differences limited in scope between hardware generations.
-> 
-> 
->>
->> int sof_mtl_ops_init(struct snd_sof_dev *sdev)
->> {
->> 	struct sof_ipc4_fw_data *ipc4_data;
->>
->> 	/* common defaults */
->> 	memcpy(&sof_mtl_ops, &sof_hda_common_ops, sizeof(struct
->> snd_sof_dsp_ops)); <<<< THE BASELINE IS CONSTANT
-> 
-> Yes, I saw it and such users are not changed. They won't receive any
-> safety. But all others are getting safer.
-
-
-Maybe there's a misunderstanding on what the 'SOF core' is. This is just
-a helper library that are used by the PCI drivers. The core has zero
-knowledge on anything really.
-
-> I really do not understand what is the problem here. In entire Linux all
-> of such changes are welcomed with open arms. So what is different here?
-Adding 'const' at the SOF core level does not mean that we can treat
-structures as rodata. It only means that the structure is not modified
-by the core library. Not the same thing.
-
-
+diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+index 7abe9e85a5706..51d0eba8cbdf3 100644
+--- a/drivers/iommu/mtk_iommu.c
++++ b/drivers/iommu/mtk_iommu.c
+@@ -1789,6 +1789,7 @@ static const struct of_device_id mtk_iommu_of_ids[] = {
+ 	{ .compatible = "mediatek,mt8365-m4u", .data = &mt8365_data},
+ 	{}
+ };
++MODULE_DEVICE_TABLE(of, mtk_iommu_of_ids);
+ 
+ static struct platform_driver mtk_iommu_driver = {
+ 	.probe	= mtk_iommu_probe,
+diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
+index 25b41222abaec..32cc8341d3726 100644
+--- a/drivers/iommu/mtk_iommu_v1.c
++++ b/drivers/iommu/mtk_iommu_v1.c
+@@ -599,6 +599,7 @@ static const struct of_device_id mtk_iommu_v1_of_ids[] = {
+ 	{ .compatible = "mediatek,mt2701-m4u", },
+ 	{}
+ };
++MODULE_DEVICE_TABLE(of, mtk_iommu_v1_of_ids);
+ 
+ static const struct component_master_ops mtk_iommu_v1_com_ops = {
+ 	.bind		= mtk_iommu_v1_bind,
+-- 
+2.43.0
 
 
