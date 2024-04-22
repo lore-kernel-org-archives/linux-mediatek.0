@@ -4,64 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78DA8C4345F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Apr 2024 19:58:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2DBFC4345F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Apr 2024 20:43:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rNWxjuVePoXX8k0s2kNFhsCNiPWcIE5b9p+0qWxfDjc=; b=Tfso+jQP5dQ7BLVx2XgefmoUkm
-	p3Cwk1f17yWL98+Zx4HpY3M3LIQqrxPw/qeldyLYE+VVijZgqJEKXh/QZOrIdfpGVQK+GoLLbGTcj
-	vXxU9ikQNxWjW3aCQ0NrWTJKVY9Px827/dJW8kVWTxoYN3RzzbWbT/kbh2S8o5Rd7Vc0nxpUYDVgX
-	urehLXWwBN+Wav4GgdwT0UjdtsTWid4jad1mW0GurAN6OGwhryYbjln2WC9KgZFs5qLHPMXZs1MN4
-	056XwJKjSXNL/1PlPAjdtTNfOTxOy6eJdAcNZEMbNKnyEOxTmX/2uTwghoUanj0OVl37NLKJu8wRL
-	tO8W+JNw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=kONDACbP9ddQmqNGkSauCApIyrtLAQsCHGqi6AuKVkA=; b=r0reiiGfO3CRfZvUK56vTp2oFH
+	XGiKxZyup07dd6eX0qL/A12HYVpZq/M74rADr2W3rHhqPy+yJS96jNHb49kL3JxVKMdx6fe/uAjtc
+	KJP6sWooy3nErji0GfS68thD7bQS3620e1ALdm67xxD3Cwpf6owUGliOAjTCfRjIBH6qd25O+qyRH
+	fuKzDZsdfrSaxdKOWP16p4l/fH/VLNU19hw0V3OYtkYRutI/LmxBbyjSN5fxC7c0PtI8cyw3eP13n
+	7t6phyXlapgQzN1MUk0NblXPKXDa9szeCOx63fbAJdxpmi18q5NCsj1mMHXTSxuPAClhD5O9Zr9oA
+	WDK1ZxaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ryznb-0000000EtH4-3k5K;
-	Mon, 22 Apr 2024 19:57:59 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1rz0VD-0000000F0gy-07rT;
+	Mon, 22 Apr 2024 20:43:03 +0000
+Received: from mgamail.intel.com ([192.198.163.18])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ryznZ-0000000EtGf-37r8
-	for linux-mediatek@lists.infradead.org;
-	Mon, 22 Apr 2024 19:57:59 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 8EBC7610A0;
-	Mon, 22 Apr 2024 19:57:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AAEFFC113CC;
-	Mon, 22 Apr 2024 19:57:55 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1713815876;
-	bh=BqexFMnj6FKBjoiD6ebLJAr7HwI2T8jGP8Fq/J0QtZs=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Ce1AW8pypiK3pIaFn7SUT8wJ6RCXQwE6G+XTSKxu/aTq5K16IOSSm2bomH/rmE3jQ
-	 QMOpLRIv52oQn1vZu3IDM+PVjX7kkPBxjuWrzakOoXSmzj9vOEkWs7qJ2VrTKnWvGY
-	 LqccbCzSd6rB1ccTp/ifLSYMJibLh8sJcPoyIc2tnQmvGIPSwF/0vUMIq1vvnOiSnu
-	 j+wnBhLtT3HBw7ZLN2uvXR03OVg8e18k57m76LH1K6Q6aMEoBHAwynm9EUSbIHdp0M
-	 0DvXRuoxARuYtHXLQfXlNVDEH0IN+M+YtUhfUnRC1HLgG08N3fwP8T+7lbaW0rB5fn
-	 IRtwThwzUJ6uQ==
-Date: Mon, 22 Apr 2024 14:57:53 -0500
-From: Rob Herring <robh@kernel.org>
-To: Kartik Agarwala <agarwala.kartik@gmail.com>
-Cc: linux-kernel@vger.kernel.org, angelogioacchino.delregno@collabora.com,
-	devicetree@vger.kernel.org, matthias.bgg@gmail.com,
-	krzysztof.kozlowski+dt@linaro.org,
-	linux-mediatek@lists.infradead.org, broonie@kernel.org,
-	linux-sound@vger.kernel.org, conor+dt@kernel.org,
-	lgirdwood@gmail.com
-Subject: Re: [PATCH v2] ASoC: dt-bindings: mt2701-wm8960: Convert to dtschema
-Message-ID: <171379813505.1260837.7563285425147959657.robh@kernel.org>
-References: <20240421033129.13076-1-agarwala.kartik@gmail.com>
+	id 1rz0V8-0000000F0gO-3TSu;
+	Mon, 22 Apr 2024 20:43:00 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1713818579; x=1745354579;
+  h=message-id:date:mime-version:subject:to:cc:references:
+   from:in-reply-to:content-transfer-encoding;
+  bh=21plNlwF84LiSmR/a7cPmVx+DowVztKcBCbH9tBCfs0=;
+  b=DM0upeJM4ArYqXnu0lL1vAr6rl8Y9yzmRdBlX49SjsZR+oV5bCQ8EUE5
+   pTP512HYMWLofQirASdR9fzgZv1CPs2op5sks1Z/4kFI/ZOg6rAJlTzBK
+   LBZ6fl6xPMsHde5oVmEQXTKyS8j91JXzsQmrgUj3P+SukTvsCUGPNT3aF
+   I3yDcxpf+TdpxQLmH6aAHofmAEqU9wXazCp54GnJvk7kRj3pF/vX4omG+
+   0q/jaVqnmZx+tqBjdJ0L+zzYAu0RNLjFWjzHiJYi/JCFAXAEhl4MaBJ0e
+   yJdGlUH3D7C5cr3m+Ne/YZuR5WzOIeoVt7VzEUFv6wr9DPaWr4kwBvzs5
+   A==;
+X-CSE-ConnectionGUID: aHTxIuTEQAu1pQEMj8/hHg==
+X-CSE-MsgGUID: Zh7OWh5MRICSQPyLupS4Ow==
+X-IronPort-AV: E=McAfee;i="6600,9927,11052"; a="9234761"
+X-IronPort-AV: E=Sophos;i="6.07,221,1708416000"; 
+   d="scan'208";a="9234761"
+Received: from orviesa008.jf.intel.com ([10.64.159.148])
+  by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Apr 2024 13:42:04 -0700
+X-CSE-ConnectionGUID: nHk9q7c0QZK4QyNVPsdbgQ==
+X-CSE-MsgGUID: g0m2gNKLQIu8zJeDlFQ+BQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.07,221,1708416000"; 
+   d="scan'208";a="24747792"
+Received: from leozhang-mobl.amr.corp.intel.com (HELO [10.212.37.174]) ([10.212.37.174])
+  by orviesa008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Apr 2024 13:42:00 -0700
+Message-ID: <3acfbe3c-8b83-4c40-83c2-437f963fd25a@linux.intel.com>
+Date: Mon, 22 Apr 2024 15:42:00 -0500
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240421033129.13076-1-agarwala.kartik@gmail.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 00/14] ASoC: Constify local snd_sof_dsp_ops
+To: Krzysztof Kozlowski <krzk@kernel.org>, Liam Girdwood
+ <lgirdwood@gmail.com>, Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
+ Bard Liao <yung-chuan.liao@linux.intel.com>,
+ Ranjani Sridharan <ranjani.sridharan@linux.intel.com>,
+ Daniel Baluta <daniel.baluta@nxp.com>,
+ Kai Vehmanen <kai.vehmanen@linux.intel.com>, Mark Brown
+ <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>,
+ Takashi Iwai <tiwai@suse.com>, Shawn Guo <shawnguo@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: sound-open-firmware@alsa-project.org, linux-sound@vger.kernel.org,
+ linux-kernel@vger.kernel.org, imx@lists.linux.dev,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20240414-n-const-ops-var-v1-0-8f53ee5d981c@kernel.org>
+ <89f8f0be-2534-46c8-9058-cabea4f68568@linux.intel.com>
+ <9d1eda85-32a0-4e53-86ca-ce3137439bd7@kernel.org>
+ <d046d195-6fa3-4c52-bc5f-3e5e763bc692@linux.intel.com>
+ <138ac465-1576-4e86-a05d-63f8acc6fb70@kernel.org>
+Content-Language: en-US
+From: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
+In-Reply-To: <138ac465-1576-4e86-a05d-63f8acc6fb70@kernel.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240422_125757_860508_320E2C39 
-X-CRM114-Status: UNSURE (   9.50  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240422_134259_209731_F1DB8239 
+X-CRM114-Status: GOOD (  12.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,25 +102,52 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-On Sun, 21 Apr 2024 09:01:31 +0530, Kartik Agarwala wrote:
-> Convert mt2701-wm890 bindings from text to dtschema. This is used by
-> MediaTek mt7623a/n SoC.
-> 
-> Signed-off-by: Kartik Agarwala <agarwala.kartik@gmail.com>
-> ---
-> Changes for v2:
-> - Do not define pinctrl properties as they are implicitly supported.
-> 
-> Previous versions:
-> v1: https://lore.kernel.org/all/20240401043505.40972-1-agarwala.kartik@gmail.com/
-> ---
->  .../sound/mediatek,mt2701-wm8960.yaml         | 54 +++++++++++++++++++
->  .../bindings/sound/mt2701-wm8960.txt          | 24 ---------
->  2 files changed, 54 insertions(+), 24 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/sound/mediatek,mt2701-wm8960.yaml
->  delete mode 100644 Documentation/devicetree/bindings/sound/mt2701-wm8960.txt
-> 
+> There are multiple reasons and benefits for const, like compiler
+> optimization, code readability (meaning) up to security improvements,
+> e.g. by some GCC plugins or marking rodata as really non-writeable, so
+> closing some ways of exploits. There are many opportunities here, even
+> if they are not yet enabled.
 
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+Possibly, but the SOF core does not know if the structure it uses is
+rodata or not. Using the 'const' identifier would be misleading.
 
+>> that's a different interpretation to the 'software' view you're
+>> describing. "this structure will not modified by this function" is not
+>> the same thing as "this structure CANNOT be modified".
+> 
+> Yes, but can we please discuss specific patchset then? Patches which
+> change pointers to const have one "interpretation". Patches which modify
+> static or global data have another.
+
+Just look at sound/soc/sof/intel/mtl.c... The core will sometimes use a
+constant structure and sometimes not, depending on the PCI ID reported
+by hardware. This was intentional to override common defaults and make
+the differences limited in scope between hardware generations.
+
+int sof_mtl_ops_init(struct snd_sof_dev *sdev)
+{
+	struct sof_ipc4_fw_data *ipc4_data;
+
+	/* common defaults */
+	memcpy(&sof_mtl_ops, &sof_hda_common_ops, sizeof(struct
+snd_sof_dsp_ops)); <<<< THE BASELINE IS CONSTANT
+
+        <<< THE REST ISN'T.
+
+	/* shutdown */
+	sof_mtl_ops.shutdown = hda_dsp_shutdown;
+
+	/* doorbell */
+	sof_mtl_ops.irq_thread = mtl_ipc_irq_thread;
+
+	/* ipc */
+	sof_mtl_ops.send_msg = mtl_ipc_send_msg;
+	sof_mtl_ops.get_mailbox_offset = mtl_dsp_ipc_get_mailbox_offset;
+	sof_mtl_ops.get_window_offset = mtl_dsp_ipc_get_window_offset;
+
+	/* debug */
+	sof_mtl_ops.debug_map = mtl_dsp_debugfs;
+	sof_mtl_ops.debug_map_count = ARRAY_SIZE(mtl_dsp_debugfs);
+	sof_mtl_ops.dbg_dump = mtl_dsp_dump;
+	sof_mtl_ops.ipc_dump = mtl_ipc_dump;
 
