@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 806E2C4345F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Apr 2024 23:55:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C14CBC4345F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Apr 2024 23:57:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6w+dl7mTC8dWM2gXq2EkUqYIdZpjnqFC8f9EoA6jdU0=; b=duDMsQS4lk/OVRxxhlOc45HTVe
-	KgWJLQAc0f+Is8eERZwaEp4Bsqj4/phAVHn6Hq1BETTJHG8g3DbpYpNWi0Nnd7CYH4rSQpcbSCSnK
-	t7U6gcmKH2iJ+XAZCCtgwHI6x7/brYFMaQmaz6AlMxD5a5vJ1JDdd/Es3mHEe2iCaCGLZnYIT2OB4
-	eC+44dLm0P4GypFXLf5Y5fva65QNv1MwileWoxiRPVXWwidMj7WvDlEGn+cOx8Xjf2wjRaeXoQnHl
-	KJH4xrtB5RMx0JF9LjKpmnsPdZ/n67AOxRVPLisZ0+WFKLsKqr8QfSAXrr4tOjHVFq8DVjL0+yhNb
-	2RtX+HpQ==;
+	bh=3TyxNHgfgTvHggndMBCZDMTOEqFaH/idaLOitxFDxH0=; b=SB9omnCtIG+ybu3Xic62lVjnw5
+	6uGNVyyQFfg/M3Ey5khfDMEOVc+B352QLV9Y0C1SvBTi5BywJQTPiIyTT3tk9rYajT3qLUhY0d0ke
+	C1idv2+rX97t/k9/FIWSbGIePx2U6L5Gls7ZVFUkm5pdd0FzajTNLbYgeI4qH3L3trcpGBNsJSJbI
+	2uMd2fF2qGopQlAZmXGGWeJ/rgwMWVP5u5ont3YhwHVHjfvBFD5+lFRse4RCxaL4DA2WKSiZId+cJ
+	FKlQKS6CfVNClYSgp+yaSad7dkGBd8HfEVLtmMihHATYjevll9CM0SPSaOA1wLannAX9zkLzo8vbZ
+	jSCSRXEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rz3Vt-0000000FRkK-2ZBI;
-	Mon, 22 Apr 2024 23:55:57 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1rz3XC-0000000FSCy-1vEx;
+	Mon, 22 Apr 2024 23:57:18 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rz3Vp-0000000FRgm-0sVt;
-	Mon, 22 Apr 2024 23:55:54 +0000
+	id 1rz3X8-0000000FSAp-23qD;
+	Mon, 22 Apr 2024 23:57:16 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 90E5FCE0EB3;
-	Mon, 22 Apr 2024 23:55:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 53202C2BD11;
-	Mon, 22 Apr 2024 23:55:48 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id B05C3611FA;
+	Mon, 22 Apr 2024 23:57:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 02E5FC113CC;
+	Mon, 22 Apr 2024 23:57:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1713830149;
-	bh=2FqeOWFJ5RPwBVKKuybfSkJp8Q6nO5EybaaGdKCY5uA=;
+	s=k20201202; t=1713830233;
+	bh=65ektcJxj9Rrw0TFcZac08x3l77hf5zTMlc2nDRY7HI=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=UJP5k6EAjEKcTbL0hiszQgyiJZH7hC2+XbOQijSLIHMbP0QZUFtfzHM9lzrxJs6Ue
-	 hmRV8nDzw8ihO6eVaTgZfGZ7MKsZd7t/QhqAE1iN0PUiq8sobbkZRZvmuyvZljuypX
-	 MK5f5uCdwzE9Jw1RshIvjdu78pxA/xXAlcD2miQ4K5YunRdPTIZg5BP2DxCrRlMsTX
-	 RIFoeMe8QziJ63p750cvTP9qsa5ZScpqW5o7tfnwvIHxkRXrkaYuvkDPv3Zhybl9x6
-	 GMY4jGZyM+W9Pt4divDiDtUeEUhJcB7saNMcW58Tdyx3m4gdGKoZiBXZfwrBQ06fHz
-	 H9l3/7V4pJZgw==
+	b=b8pyL2i11eKGlMtYagYvO8PDiHRcWMm40gXxz7HhjR7jCtfutzeB5WqQN3/nxftPw
+	 jd076UXm0ONL7GjcaFbVeVhmSw9UuaMcAjftIltKWOjSSJIFlAAJeM5hPdoNiK9Qvh
+	 LKYN9eNdHVDFGx7i2OAaweKj48wMVhgcP43G1qliiKAXyz0Kt9x9/6IqXuFk/TLaJM
+	 ioHg9hCQIebOW6k20U6qfa/G5OnALbTmCV7lGwnTArHtnyZNb9IptQJBCrd+w9quOV
+	 /mSBi5nfX4iMTfpE1LyHKdIlcnhOUKiDN+5vhnwSueLHLxgz8Eu/UFyBukjQ/Qj22u
+	 EK0/Uk7lRhUdg==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -55,19 +55,19 @@ Cc: Krzysztof Kozlowski <krzk@kernel.org>,
 	iommu@lists.linux.dev,
 	linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.8 43/43] iommu: mtk: fix module autoloading
-Date: Mon, 22 Apr 2024 19:14:29 -0400
-Message-ID: <20240422231521.1592991-43-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.6 29/29] iommu: mtk: fix module autoloading
+Date: Mon, 22 Apr 2024 19:17:10 -0400
+Message-ID: <20240422231730.1601976-29-sashal@kernel.org>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240422231521.1592991-1-sashal@kernel.org>
-References: <20240422231521.1592991-1-sashal@kernel.org>
+In-Reply-To: <20240422231730.1601976-1-sashal@kernel.org>
+References: <20240422231730.1601976-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.8.7
+X-stable-base: Linux 6.6.28
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240422_165553_689776_E9C99FD6 
+X-CRM114-CacheID: sfid-20240422_165715_084538_ADDA212A 
 X-CRM114-Status: GOOD (  10.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -100,10 +100,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  2 files changed, 2 insertions(+)
 
 diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 7abe9e85a5706..51d0eba8cbdf3 100644
+index fab6c347ce578..de698463e94ad 100644
 --- a/drivers/iommu/mtk_iommu.c
 +++ b/drivers/iommu/mtk_iommu.c
-@@ -1789,6 +1789,7 @@ static const struct of_device_id mtk_iommu_of_ids[] = {
+@@ -1773,6 +1773,7 @@ static const struct of_device_id mtk_iommu_of_ids[] = {
  	{ .compatible = "mediatek,mt8365-m4u", .data = &mt8365_data},
  	{}
  };
@@ -112,10 +112,10 @@ index 7abe9e85a5706..51d0eba8cbdf3 100644
  static struct platform_driver mtk_iommu_driver = {
  	.probe	= mtk_iommu_probe,
 diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
-index 25b41222abaec..32cc8341d3726 100644
+index 8a0a5e5d049f4..f1754efcfe74e 100644
 --- a/drivers/iommu/mtk_iommu_v1.c
 +++ b/drivers/iommu/mtk_iommu_v1.c
-@@ -599,6 +599,7 @@ static const struct of_device_id mtk_iommu_v1_of_ids[] = {
+@@ -600,6 +600,7 @@ static const struct of_device_id mtk_iommu_v1_of_ids[] = {
  	{ .compatible = "mediatek,mt2701-m4u", },
  	{}
  };
