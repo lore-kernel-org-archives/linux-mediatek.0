@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E037C4345F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Apr 2024 09:39:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD356C4345F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Apr 2024 09:40:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4Z5S1HyoPAb0nRj1QIQIBsLxch8Qa7RkP6piyjlbpd8=; b=tnn/CMC1SzbpehMMJFzAe336SJ
-	vJ0pv0mJutJ1JboUfkvsVxiFiC/9wbdtc+DkAbbkeeGwWh/WpYqAVhZ0GxiTYRhxaizZo3yD6EG7B
-	9xei7lKkHX/rIXUmvDZ8gbBOny9UBJzo5FTjc3jaCcp4dwHUwPBm1cQe1G4rLjM0l5UhDqRilkXT+
-	qtgsxrNEUcTiCVWqlaKsJQ7qy/c2wo8Ji4mok5d1gnA+h3qf1P3WCnmH7ddBjbl37jEXwgQp7ivjB
-	2S7cIMAv3gZPHrgL6Mc7ddDsPZZ4Pxhm6DfWrAI+UhyLQ0Wvx0xeo9YFraNEFs76ELMjvkHBMGgJ9
-	Nn+R0Cvw==;
+	bh=2dUEnhw5xFiIc+XADgHYaBr/SM4VF5RqnflFunzIbLA=; b=unPMEbisZCXCwztMncXFWsViU1
+	KsO0ig3Gc8T5D/IJo2smIioI5pYubVBXQ+QWlgX0M+W8LWZD6GAX6BnCEd6UDaMrw23rfQXrw/N4Z
+	Spx4x4wKQEcEQxmHErX9+zcdmigjfpbTMtRDnLsN0e+oOrxvCYBsXfSc/1SImRSfaAh7pex2Yej+L
+	y802c6AUvtckXvMdjf29fRzL3pLnQwKzyMB9dCduYOG8Oupod71XO4zxGsOR6klixDQUukMnW5QKE
+	XbVqDofL4Y7Ezo9AH+A1A6jBj3KE/L0Wdoy1U2wmHfLicIInrgwraGjxKbWcLfIMTc6mKBpPg2ALB
+	YfULjUxg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ryq9N-0000000Cwfb-145M;
-	Mon, 22 Apr 2024 09:39:49 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1ryqA3-0000000Cx0C-1Mq8;
+	Mon, 22 Apr 2024 09:40:31 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ryq9J-0000000Cwdh-2GLp;
-	Mon, 22 Apr 2024 09:39:47 +0000
-X-UUID: 3dfbcc4a008c11ef96d5dfc950b7243d-20240422
+	id 1ryqA0-0000000Cww7-2nQl;
+	Mon, 22 Apr 2024 09:40:30 +0000
+X-UUID: 542648ce008c11efac1957ae9f99f617-20240422
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=4Z5S1HyoPAb0nRj1QIQIBsLxch8Qa7RkP6piyjlbpd8=;
-	b=aYqwec889C98fY0YBx462iFqTmKIBspoW70QAEO6ENOXcm8LBGPOZx2q/eOBTaA4OwWsyMndD+CiruFrO3vPWn3SSYOn6XR70Q+LBjc6A3z/yk+cgekNv3ViHFgfTx/1ZhhLZc25m1nxX7G5mu1TgQnyMsQDR1l4uRhBgF6u+qI=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=2dUEnhw5xFiIc+XADgHYaBr/SM4VF5RqnflFunzIbLA=;
+	b=K9ea48KWisxv7Tj3w51OarNJrbzwi6brHyqUqQxfgjM6EQD/lwHOHkUJgECBdi4vtigERHF5iOPPnFkUg4m2K23xj28LaujySgHy9rwrL9n9Eb5Ckq6kzg4xk6XwY2n0Ls0xBZ+mhHlWLAvxNZjqz+9hC6jNKO33/ykK7W/SCKs=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.38,REQID:814d343c-9533-4cd4-b4b1-f757737a2866,IP:0,U
+X-CID-O-INFO: VERSION:1.1.38,REQID:c6d8d7d6-88e3-40eb-be45-49eaa9f53752,IP:0,U
 	RL:0,TC:0,Content:0,EDM:-30,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
 	N:release,TS:-30
-X-CID-META: VersionHash:82c5f88,CLOUDID:f2ddf682-4f93-4875-95e7-8c66ea833d57,B
+X-CID-META: VersionHash:82c5f88,CLOUDID:e6dff682-4f93-4875-95e7-8c66ea833d57,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:2,IP:nil,UR
 	L:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,S
 	PR:NO,DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 3dfbcc4a008c11ef96d5dfc950b7243d-20240422
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+X-UUID: 542648ce008c11efac1957ae9f99f617-20240422
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
 	(envelope-from <macpaul.lin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 24357527; Mon, 22 Apr 2024 02:39:40 -0700
+	with ESMTP id 899244449; Mon, 22 Apr 2024 02:40:17 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.1118.26; Mon, 22 Apr 2024 17:39:37 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
@@ -67,20 +67,31 @@ CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
 	Chris-qj chen <chris-qj.chen@mediatek.com>, MediaTek Chromebook Upstream
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Chen-Yu Tsai
 	<wenst@chromium.org>
-Subject: [PATCH 3/3] arm64: dts: mediatek: mt8390-genio-700-evk: remove spi2
-Date: Mon, 22 Apr 2024 17:39:26 +0800
-Message-ID: <20240422093926.15392-3-macpaul.lin@mediatek.com>
+Subject: [PATCH 2/3] arm64: dts: mediatek: mt8390-genio-700-evk: add IT5205, RT1715, and USB HUB
+Date: Mon, 22 Apr 2024 17:39:25 +0800
+Message-ID: <20240422093926.15392-2-macpaul.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20240422093926.15392-1-macpaul.lin@mediatek.com>
 References: <20240422093926.15392-1-macpaul.lin@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10-0.669200-8.000000
+X-TMASE-MatchedRID: yvDAzrttxFUohE7hoJbtOAPZZctd3P4Bw8djaG0FrZuY5NBG7YIbV0d0
+	Rzx07LDVXS+cZR9Lon+vfGA7KBLaSKENdydioT4ACz1WR8KHe4Cy4iyjvVWTog2Y8xyy93kWwl9
+	GLHytwjokpovHHUzQSoAy6p60ZV62fJ5/bZ6npdiujVRFkkVsmz3yFinLOvkeMs51Y/gNb4oJoc
+	1HDJTj2iNq14IwfLTSS4I2Vx3pKOAXu6myHc7R+Xdy7yJkALcTcTYnJ0lBa6CTL3doWSD6VG1Rj
+	oup2VCcWve+eVz4Pp5Vk5utmQ1VlGVF3+d9rnox6EMj9/eK3+Y=
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10-0.669200-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 8898A593C8B07133EB9E530053824434C66F07DBC80D11360B5EFBD2DD36794F2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240422_023945_613495_FE967030 
-X-CRM114-Status: UNSURE (   9.23  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240422_024028_727052_F41916DF 
+X-CRM114-Status: GOOD (  10.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,34 +106,116 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Remove spi2 node since this is usually be overridden by
-dtbo overlay.
+1. Add i2c to aliases.
+2. Add MUX IT5205 support to i2c1.
+3. Add TYPEC RT1715 support to i2c4.
+4. Add PMIC_KEY setting.
+5. Add USB HUB TUSB8020 to xhci1.
 
 Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts | 9 ---------
- 1 file changed, 9 deletions(-)
+ .../dts/mediatek/mt8390-genio-700-evk.dts     | 56 ++++++++++++++++++-
+ 1 file changed, 55 insertions(+), 1 deletion(-)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts b/arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts
-index 17f22b1836bf..42753cf46965 100644
+index 9b7ad046f193..17f22b1836bf 100644
 --- a/arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts
 +++ b/arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts
-@@ -899,15 +899,6 @@
+@@ -23,6 +23,15 @@
+ 		     "mediatek,mt8188";
+ 
+ 	aliases {
++		i2c0 = &i2c0;
++		i2c1 = &i2c1;
++		i2c2 = &i2c2;
++		i2c3 = &i2c3;
++		i2c4 = &i2c4;
++		i2c5 = &i2c5;
++		i2c6 = &i2c6;
++		mmc0 = &mmc0;
++		mmc1 = &mmc1;
+ 		serial0 = &uart0;
+ 	};
+ 
+@@ -225,6 +234,16 @@
+ 	pinctrl-0 = <&i2c1_pins>;
+ 	clock-frequency = <400000>;
  	status = "okay";
++
++	typec-mux@48 {
++		compatible = "ite,it5205";
++		reg = <0x48>;
++
++		mode-switch;
++		orientation-switch;
++
++		vcc-supply = <&mt6359_vcn33_1_bt_ldo_reg>;
++	};
  };
  
--&spi2 {
--	pinctrl-0 = <&spi2_pins>;
--	pinctrl-names = "default";
--	mediatek,pad-select = <0>;
--	#address-cells = <1>;
--	#size-cells = <0>;
--	status = "okay";
--};
--
- &u3phy0 {
- 	status = "okay";
+ &i2c2 {
+@@ -242,11 +261,19 @@
  };
+ 
+ &i2c4 {
+-	pinctrl-names = "default";
++	pinctrl-names = "default", "default";
+ 	pinctrl-0 = <&i2c4_pins>;
+ 	pinctrl-1 = <&rt1715_int_pins>;
+ 	clock-frequency = <1000000>;
+ 	status = "okay";
++
++	rt1715@4e {
++		compatible = "richtek,rt1715";
++		reg = <0x4e>;
++		interrupts-extended = <&pio 12 IRQ_TYPE_LEVEL_LOW>;
++		vbus-supply = <&usb_p1_vbus>;
++		status = "okay";
++	};
+ };
+ 
+ &i2c5 {
+@@ -836,6 +863,17 @@
+ &pmic {
+ 	interrupt-parent = <&pio>;
+ 	interrupts = <222 IRQ_TYPE_LEVEL_HIGH>;
++
++	mt6359keys: keys {
++		compatible = "mediatek,mt6359-keys";
++		mediatek,long-press-mode = <1>;
++		power-off-time-sec = <0>;
++
++		power-key {
++			linux,keycodes = <KEY_POWER>;
++			wakeup-source;
++		};
++	};
+ };
+ 
+ &scp {
+@@ -890,6 +928,22 @@
+ &xhci1 {
+ 	status = "okay";
+ 	vusb33-supply = <&mt6359_vusb_ldo_reg>;
++
++	hub_2_0: hub@1 {
++		compatible = "usb451,8025";
++		reg = <1>;
++		peer-hub = <&hub_3_0>;
++		reset-gpios = <&pio 7 GPIO_ACTIVE_HIGH>;
++		vdd-supply = <&usb_hub_fixed_3v3>;
++	};
++
++	hub_3_0: hub@2 {
++		compatible = "usb451,8027";
++		reg = <2>;
++		peer-hub = <&hub_2_0>;
++		reset-gpios = <&pio 7 GPIO_ACTIVE_HIGH>;
++		vdd-supply = <&usb_hub_fixed_3v3>;
++	};
+ };
+ 
+ &xhci2 {
 -- 
 2.18.0
 
