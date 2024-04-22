@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F070C10F15
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Apr 2024 07:17:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D311CC4345F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Apr 2024 07:18:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
 	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
 	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JJ2J40jA1KN0cspCubPzHwkddc78J0xLaRi01c02sNs=; b=PfKmCtbZALac2LdWrWIwBIWrEI
-	O2T/ys2pbHYrghP2CIbYDRSdFi5vkqzyEOjTL4hyRSm6ep+H5JHu+5U9KwPWFBhtHnl+QPypxCCNu
-	BFxX+I3RQRdGzC33/3cqZ4ExAUULWzgaU9DvviTl6rWggO/gUY3wOFLPZGuuTcmuI1j640YwPW6IE
-	P6SJ23oN/00U488mRZUDerEtgBkh7i4fz4yVRwpEfrlHc8+oh09RNfkBa8+KCM5fuQtp3/AUEdV+A
-	3La79zedZK6oHqIW/09JArGL6mRWIQqE1pxlEunBe29IcL6b1lIbFQTdoSS/APGGmHg79YPpFoYUI
-	URYzxVFg==;
+	bh=S721Xf5Ffl7Y32EairNUlPHN31lj2FzQiD72uJLPSN4=; b=tfnWk7AFPGaMcEul/6YmHOvD7v
+	mN4z06pHzmwZG6V/umyZAqQkvJHj5j6BuYnWiJH/iPm/AoJx6meH7dPIhAA/Lcx/Log0pZc8sXPPk
+	3fohuz9VjGGVvjvoFRc5vu+TP8oLu2rFEB+XbbcV97PzzeRWTXDF6ahJuFVttL0uLe9QUD7mW2Q+N
+	tG0EVdA8MDFAhGyk2cmvTaBGoKQP2jMBmXxo3uQWP7+yF3ApLniZerwdYsWBUjFJxa+wsp7oFx9my
+	64r9AztUY4WeE3k+Sbjq2ofEan9QnicVrGLmG6ASCET/fbPo64RM2k/1p0vwY0r3wCRvORhyzBRx+
+	7Fp/fCdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rynvv-0000000COde-2zEV;
-	Mon, 22 Apr 2024 07:17:47 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1rynwB-0000000COlw-1TGx;
+	Mon, 22 Apr 2024 07:18:03 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rynto-0000000CNPx-1ZUM;
-	Mon, 22 Apr 2024 07:15:41 +0000
+	id 1ryntq-0000000CNQc-1syM;
+	Mon, 22 Apr 2024 07:15:42 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id E78CA60D2B;
-	Mon, 22 Apr 2024 07:15:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 6B10DC3277B;
+	by sin.source.kernel.org (Postfix) with ESMTP id A4E19CE0A5F;
+	Mon, 22 Apr 2024 07:15:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 5B6DCC4AF5F;
 	Mon, 22 Apr 2024 07:15:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1713770131;
-	bh=cg3WzltntgM9sJaif7yixpNGnhWKABN+vYsiEpkpVJs=;
+	bh=PmeAMYPZ9FxzUW5GiKbK62DPOkBKTTIRFefQeWGqI48=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=gp5i4WjbIb/VLanMYMuvzox2mfHc+rqg2JLUGYzBW3vM8FOOZSjpaEPCRZj54LfrN
-	 NeOqrI8oDN2FR8AbX9uNdTv9jygAqNYOcy8tdni3vhwQXP7AkmacEwxBhspFC7W3jL
-	 8ijXWOmfBtcpiEEqBMj4/6Sik7rNnSku6YumbSFxjTMnE+1EQ2wDojf2Es4v6FJBqw
-	 Y8NdbOpEcE6kPJO6Ep7fc/rxM1fBDWkv2xIJ3GAvlmR6ZhPBjJ5oa7ge/IcyN7POPN
-	 lDPuwRI0eQG2aiUx4iBY2xhp8uTPuNwbJOplNUlDHld+TGx554eA7A8Dq3l4bXCo6L
-	 kYAjJdInQhL3w==
+	b=WSsmTj7/BFmSBKk+MIr5vBMqLM1UJs9iG9nfg5KdPgaAa2IqPWSAnux4rmop2SUQx
+	 mbI6gkOkb/OarXGqoMtYjvepAHj4k3N+a/thjJHgRK8FbJIlNf+9VBELFgZsrmmE0a
+	 SAB4bOi/zk4h1LwjeVxKbU9SJSOznmvLT2u4CsGB025g9zQjohrp8M3oEZSvbpiu91
+	 cPQ68d5B4ASkZvm7xIzxPQYBptkBX+7j3SZRP41KvJOIRSCIx6nhDDN65/mEm+iPuL
+	 8Gn6y8T/03O3QXuNxxej15krNFX7lE2WmIn7wHonmQhLkjSFKSk51lYJo98p0Jwkya
+	 TPbfDH1oERMCA==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 608C2C4345F;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 501AFC07E8F;
 	Mon, 22 Apr 2024 07:15:31 +0000 (UTC)
 From: =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL_via_B4_Relay?= <devnull+arinc.unal.arinc9.com@kernel.org>
-Date: Mon, 22 Apr 2024 10:15:22 +0300
-Subject: [PATCH net-next v2 15/15] net: dsa: mt7530: explain exposing MDIO
- bus of MT7531AE better
+Date: Mon, 22 Apr 2024 10:15:21 +0300
+Subject: [PATCH net-next v2 14/15] net: dsa: mt7530: do not pass port
+ variable to mt7531_rgmii_setup()
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Message-Id: <20240422-for-netnext-mt7530-improvements-4-v2-15-a75157ba76ad@arinc9.com>
+Message-Id: <20240422-for-netnext-mt7530-improvements-4-v2-14-a75157ba76ad@arinc9.com>
 References: <20240422-for-netnext-mt7530-improvements-4-v2-0-a75157ba76ad@arinc9.com>
 In-Reply-To: <20240422-for-netnext-mt7530-improvements-4-v2-0-a75157ba76ad@arinc9.com>
 To: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, 
@@ -69,19 +69,19 @@ Cc: Bartel Eerdekens <bartel.eerdekens@constell8.be>,
  linux-mediatek@lists.infradead.org, 
  =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1713770127; l=1109;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1713770127; l=1111;
  i=arinc.unal@arinc9.com; s=arinc9-Xeront; h=from:subject:message-id;
- bh=vLvtlbHMBxKy/N+5hO2kjs9XkvkZFD7LvDK5jmVwOt0=;
- b=rrMcStwgZhwRYkv1smaK4/6fyCCBXYnzMSeDeY5COCE0JpnpNyuwBmAa+EH2zLbVYygTr8jEZ
- xmxYYbP6SFjBC2xJ1TKMAKURIjla8Ln7p8UXbk0E9eIB0v4YTX21ANp
+ bh=Q1j4jaCBiZXdXWGCY6tFpliJwSXL75dq4VnMljuW2Zw=;
+ b=4edWHZvzNJRTxMTUE0wiBeIEW7Iu4gYhfzaEG4rSVBrQN4GpNEFRAkN0qFdg0HmYp8vS7lSnt
+ a/JDc1cAa1ODoctBTyvB6iFiv1Ld2Sv5i5/ytpRPb3P/IaNP9ia9DRL
 X-Developer-Key: i=arinc.unal@arinc9.com; a=ed25519;
  pk=z49tLn29CyiL4uwBTrqH9HO1Wu3sZIuRp4DaLZvtP9M=
 X-Endpoint-Received: by B4 Relay for arinc.unal@arinc9.com/arinc9-Xeront
  with auth_id=137
 X-Original-From: =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240422_001536_747271_89F7B4B7 
-X-CRM114-Status: GOOD (  12.00  )
+X-CRM114-CacheID: sfid-20240422_001539_065485_8563E389 
+X-CRM114-Status: GOOD (  11.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,32 +99,36 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-Unlike MT7531BE, the GPIO 6-12 pins are not used for RGMII on MT7531AE.
-Therefore, the GPIO 11-12 pins are set to function as MDC and MDIO to
-expose the MDIO bus of the switch. Replace the comment with a better
-explanation.
+The mt7531_rgmii_setup() function does not use the port variable, do not
+pass the variable to it.
 
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 ---
- drivers/net/dsa/mt7530.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+ drivers/net/dsa/mt7530.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 1f6cd24de4b7..2b9f904a98f0 100644
+index 55954a165a15..1f6cd24de4b7 100644
 --- a/drivers/net/dsa/mt7530.c
 +++ b/drivers/net/dsa/mt7530.c
-@@ -2635,7 +2635,10 @@ mt7531_setup(struct dsa_switch *ds)
- 	if (!priv->p5_sgmii) {
- 		mt7531_pll_setup(priv);
- 	} else {
--		/* Let ds->user_mii_bus be able to access external phy. */
-+		/* Unlike MT7531BE, the GPIO 6-12 pins are not used for RGMII on
-+		 * MT7531AE. Set the GPIO 11-12 pins to function as MDC and MDIO
-+		 * to expose the MDIO bus of the switch.
-+		 */
- 		mt7530_rmw(priv, MT7531_GPIO_MODE1, MT7531_GPIO11_RG_RXD2_MASK,
- 			   MT7531_EXT_P_MDC_11);
- 		mt7530_rmw(priv, MT7531_GPIO_MODE1, MT7531_GPIO12_RG_RXD3_MASK,
+@@ -2785,7 +2785,7 @@ mt7530_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
+ 		mt7530_setup_port6(priv->ds, interface);
+ }
+ 
+-static void mt7531_rgmii_setup(struct mt7530_priv *priv, u32 port,
++static void mt7531_rgmii_setup(struct mt7530_priv *priv,
+ 			       phy_interface_t interface,
+ 			       struct phy_device *phydev)
+ {
+@@ -2836,7 +2836,7 @@ mt7531_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
+ 	if (phy_interface_mode_is_rgmii(interface)) {
+ 		dp = dsa_to_port(ds, port);
+ 		phydev = dp->user->phydev;
+-		mt7531_rgmii_setup(priv, port, interface, phydev);
++		mt7531_rgmii_setup(priv, interface, phydev);
+ 	}
+ }
+ 
 
 -- 
 2.40.1
