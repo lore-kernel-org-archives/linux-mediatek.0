@@ -4,91 +4,120 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9B2BC10F16
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Apr 2024 19:30:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEF89C10F15
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Apr 2024 19:45:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Cc:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/6JnKzawadTQfaaiivXdgSYYyanCvFFOHetdXBBM8Pc=; b=H711xIrRyMtqcvuObttqFbLOho
-	LVBqhSJogmEbWE/YJq+brLAx+Xd7o2ADICvDd4ESJvcrs1kSnzIG/VRAfHr2YY+Hwa/Vt8nCiZmbs
-	72B623MAH1v+bFF06oSZDsJxjBL3rcofil4BR4F58JOsyShPxUIVadtdI9nOEQNqsbVY47RkuHZ4K
-	9Dlw9dhkFPgCuOhlvE1LG7Oong3icET+xsKLNoYYiZmhYnjZ3byQ1Rjm/sGf+gibNTcbGRk9gxZXu
-	WYKxxikatiJhkLStTcN5cVac+UQAezpvw2PM5EJcdxawIXlsAAp+iXHsh0Yh02ELdnbABxXgxmMfG
-	LS1r1pkw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3cAj/hNGYhv+2z4jYPmTSzvNSZGBGYnvaTOAo/z2GUw=; b=iMlVXCNeR1rFUJuzuxUF4XicQn
+	8je1McBQRTNVUhsvIhws4n8A+CF3xbyxpQ0PoPW1e3Xq/2TDkwM+gljK5Rd2iVTUprbHlOwGU+nf3
+	vUTvHNz2VOi2dLoTrTHSUAPJUDWV8qjVKMkQ3sRCAv5OzQy6QeYZSfooSs4Tx6NZq4war40CnKEPE
+	3leoQq4K4JsXuH/ZlUzMdgZTzc7hjmwqWFeeF8meQNFu6mZV//6eqX6pgYFWUhPmwYnzVErmoY/O8
+	wW7tZRAjpmERLb8/ana8Bn7FNECzK5piMUmrfnmOwgLxN9DjbrXihoAKFVhtWOL5qcHC3WhgJh4Ik
+	YaXnn+zA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ryzN0-0000000Eo3d-0fz0;
-	Mon, 22 Apr 2024 19:30:30 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1ryzbe-0000000EqH4-1PkR;
+	Mon, 22 Apr 2024 19:45:38 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ryyQ9-0000000EbCk-3XFR;
-	Mon, 22 Apr 2024 18:29:41 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=MIME-Version:Date:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Cc:To:From:
-	Subject:Message-ID:Sender:Reply-To:Content-ID:Content-Description;
-	bh=/6JnKzawadTQfaaiivXdgSYYyanCvFFOHetdXBBM8Pc=; b=OJQldevCPSdwV4grV5WOwVnXnT
-	hnjZN0EmCgV83cO7BM5D9veG9gTaX0vi38GxWymg+eLG4rfcY2bxAplYRm60H1ZvEHuNCN8O2JtM8
-	hfdTZt/FJ8r2CxeS+4JBCeouAqYXXuHY6yy8DbR9BGL/hrs18PG11WVdif583ocHmzLxCYJY+y7r3
-	8McfkWohYjVZrbZgADgWZob8UmM9qiXQNwiO+y7OY6d5T4c5mAeo4kgEW5L5yara2tnOOlfasz1ck
-	XkhfYBrHvttBf1teYSh5gIpGvlfzLNRMXUqOBu1fMEtGql5nbUt7XC/DT+2FaWpMX0QiwOV0wgfWp
-	rAtQloag==;
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
-	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ryyQ6-0000000DkjL-2JCV;
-	Mon, 22 Apr 2024 18:29:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1713810577;
-	bh=iCcqBX7y44Xnzjt368+apKXyWLXQ8/7+lL4SAqqNZbE=;
-	h=Subject:From:To:Cc:In-Reply-To:References:Date:From;
-	b=Kv5qtAlWI5coUdHrvkWHuSobLN0hL7vr+voS8szFuZgMEQLtHz5Pvh7PmHMbaxyvt
-	 Xt6MDvLYv7vcbuJaKd7reOxk0WT6X+oK1y8CRK3G/Gg7NTxIU+AhgiSg4BFzCb5D2I
-	 XPb2nmsOhbKVX7n0tfRIjC1YyLQpybiFzbyAC7E6+ckEktv86BtJenTEVXdC+/HyUs
-	 yYK328Ekk8B6KBG3ag1YC7eb75fFTea6e/3SCsJQXgBpR7wVJM35/GbA4LwlaF9rV5
-	 0tf+uu04JCMC2GiOPg/VU8vekfBD1moq2RP3Zg0pkraf9a/MSQR7SjG9mJw6n54D6H
-	 78U3xJnKMDeuQ==
-Received: from nicolas-tpx395.localdomain (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 882803782134;
-	Mon, 22 Apr 2024 18:29:35 +0000 (UTC)
-Message-ID: <afd123ecc8b009895d39a44c248fdd684730c2cc.camel@collabora.com>
-Subject: Re: [PATCH v2,0/5] media: change the calculation method of
- sizeimage
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Yunfei Dong <yunfei.dong@mediatek.com>, =?ISO-8859-1?Q?N=EDcolas?= "F .
- R . A . Prado" <nfraprado@collabora.com>, Hans Verkuil
- <hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
- <benjamin.gaignard@collabora.com>, Nathan Hebert <nhebert@chromium.org>, 
- Sebastian Fricke <sebastian.fricke@collabora.com>
-Cc: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig
- <frkoenig@chromium.org>,  Daniel Vetter <daniel@ffwll.ch>, Steve Cho
- <stevecho@chromium.org>, linux-media@vger.kernel.org, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Project_Global_Chrome_Upstream_Group@mediatek.com
-In-Reply-To: <20240409064431.16909-1-yunfei.dong@mediatek.com>
-References: <20240409064431.16909-1-yunfei.dong@mediatek.com>
-Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
- keydata=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
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Date: Thu, 18 Apr 2024 16:17:49 -0400
+	id 1ryzbY-0000000EqFx-3NL2;
+	Mon, 22 Apr 2024 19:45:34 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 7578C6106C;
+	Mon, 22 Apr 2024 19:45:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 06B54C113CC;
+	Mon, 22 Apr 2024 19:45:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1713815131;
+	bh=jA8EbIxkn0jYEYRo1b3nNwvkaBXoHQ5RVS21ZJPQkQQ=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=GKVM+2Ih8rza3HC0WzMydQA0HRN+CpwKn21eo7HS1YMjUv7GUp85v0aPQgY60oLKx
+	 1WrQiuRPMEh/JPcosJkQW/n6T9scAfCit7Zfkgf2qb4KgqrOUcRXf4xkdjJsvq6Ihx
+	 T9Gi/0mDC8Yg3yixV2IiZENuuSZDZIGmFXJr/qCqSSX7TXVh+PW3fnUbVh9H2W+k0j
+	 znaLq/LFfBTVFtABAC/gCYQH/Wcz06Qr7XFO+tPe94tgywViC47isvdicdPG8JoWL/
+	 cdzEtd+xUDq6aYvklAwzz7XgVMw/be6uJxMOOjEhT6GP50kk51eknFrQM9AbI1ynNX
+	 zbwG5ehCPI3LA==
+Message-ID: <138ac465-1576-4e86-a05d-63f8acc6fb70@kernel.org>
+Date: Mon, 22 Apr 2024 21:45:22 +0200
 MIME-Version: 1.0
-User-Agent: Evolution 3.50.4 (3.50.4-1.fc39) 
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 00/14] ASoC: Constify local snd_sof_dsp_ops
+To: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>,
+ Liam Girdwood <lgirdwood@gmail.com>,
+ Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
+ Bard Liao <yung-chuan.liao@linux.intel.com>,
+ Ranjani Sridharan <ranjani.sridharan@linux.intel.com>,
+ Daniel Baluta <daniel.baluta@nxp.com>,
+ Kai Vehmanen <kai.vehmanen@linux.intel.com>, Mark Brown
+ <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>,
+ Takashi Iwai <tiwai@suse.com>, Shawn Guo <shawnguo@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: sound-open-firmware@alsa-project.org, linux-sound@vger.kernel.org,
+ linux-kernel@vger.kernel.org, imx@lists.linux.dev,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20240414-n-const-ops-var-v1-0-8f53ee5d981c@kernel.org>
+ <89f8f0be-2534-46c8-9058-cabea4f68568@linux.intel.com>
+ <9d1eda85-32a0-4e53-86ca-ce3137439bd7@kernel.org>
+ <d046d195-6fa3-4c52-bc5f-3e5e763bc692@linux.intel.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <d046d195-6fa3-4c52-bc5f-3e5e763bc692@linux.intel.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240422_192938_737962_165E4747 
-X-CRM114-Status: GOOD (  11.57  )
+X-CRM114-CacheID: sfid-20240422_124533_078048_52F66094 
+X-CRM114-Status: GOOD (  27.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,44 +132,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On 22/04/2024 17:52, Pierre-Louis Bossart wrote:
+> 
+> 
+> On 4/22/24 00:43, Krzysztof Kozlowski wrote:
+>> On 15/04/2024 16:19, Pierre-Louis Bossart wrote:
+>>>
+>>>> The core code does not modify the 'struct snd_sof_dsp_ops' passed via
+>>>> pointer in various places, so this can be made pointer to const.
+>>>
+>>> The structure itself is NOT always const - the initialization itself
+>>> does have platform-specific changes, so what do we really gain from all
+>>> this?
+>>
+>> In the context of these patches, the structure is *always* const. In
+>> other drivers, it is not, but they are not really relevant here.
+>>
+>>>
+>>> some commit messages say the code is "a bit safer", but I personally
+>>> find the 'const' more confusing since the information that the structure
+>>> can be modified during initialization is lost.
+>>
+>> Functions which take some data and do not modify it are easier to read
+>> if the pointed data is marked as const. Then it is obvious that
+>> functions for example is re-entrant. Or that it does not affect the
+>> state of other devices/core structures.
+>>
+>> Additionally, the static data is safer when is const, because it cannot
+>> be used in some attacks.
+> 
+> agree, but here you are marking as 'const' non-static data.
 
-sorry for the long delay.
+What do you mean? Entire point of this patchset is for static and global
+data. Which patches are you reviewing?
 
-Le mardi 09 avril 2024 =C3=A0 14:44 +0800, Yunfei Dong a =C3=A9crit=C2=A0:
-> The bytesperline and sizeimage of each plan are different for 8bit
-> and 10bit bitstreams. Using v4l2 common interface to calculate them
-> independently.
->=20
-> ---
-> compare with v1:
-> - add patch 1/2/3/4
-> - change the calculation method for sizeimage for patch 5
-> ---
-> Yunfei Dong (5):
->   media: mediatek: vcodec: fix incorrect MT2T format information
->   media: mediatek: vcodec: fix incorrect MT2R format information
+> 
+>> I really do not understand which information you lost here? Core does
+>> not change the ops, so the data should be passed as const as often as
+>> possible. If anyone wants to write a driver which does not use static
+>> ops, but somehow dynamically allocated and changed, nothing stops him.
+>> This patch did not make it less readable/doable.
+>>
+>> The point is that these ops do not differ from other ops or some other
+>> driver-passed structures, which we have around 100 already in checkpatch.
+> 
+> I am so old that I remember times where we had to put things in ROM.
+> That's what 'const' means to me: a dedicated memory space for immutable
+> values.
 
-As per recommandation of the "Submitting Patches":
-> On the other hand, if you make a single change to numerous files, group t=
-hose
-> changes into a single patch. Thus a single logical change is contained wi=
-thin
-> a single patch.
+There are multiple reasons and benefits for const, like compiler
+optimization, code readability (meaning) up to security improvements,
+e.g. by some GCC plugins or marking rodata as really non-writeable, so
+closing some ways of exploits. There are many opportunities here, even
+if they are not yet enabled.
 
-In general, when two patches have an identical description its a sign they
-should be one patch. Would be nice to squash these two.
 
->   media: mediatek: vcodec: add MM21 format definition
->   media: mediatek: vcodec: add MT21 format definition
+> 
+> that's a different interpretation to the 'software' view you're
+> describing. "this structure will not modified by this function" is not
+> the same thing as "this structure CANNOT be modified".
 
-Same.
+Yes, but can we please discuss specific patchset then? Patches which
+change pointers to const have one "interpretation". Patches which modify
+static or global data have another.
 
->   media: mediatek: vcodec: fix incorrect sizeimage for 10bit bitstream
->=20
->  .../mediatek/vcodec/decoder/mtk_vcodec_dec.c  | 28 ++++++-------------
->  drivers/media/v4l2-core/v4l2-common.c         | 12 +++++---
->  2 files changed, 16 insertions(+), 24 deletions(-)
->=20
+> 
+> I am not going to lay on the tracks, if Mark wants to apply the patches
+> that's fine. I just wanted to highlight that the reason we did not use
+> 'const' was that the data is dynamically allocated/modified and not
+> constant at all.
+
+Best regards,
+Krzysztof
 
 
