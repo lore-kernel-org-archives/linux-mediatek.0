@@ -4,89 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDEEFC4345F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Apr 2024 04:22:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD900C4345F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Apr 2024 04:55:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mUs2RUZvYrbt0djestVEkcsXv+XeS/wmMn/FMr80SwM=; b=cHtej46n2JyaLMm7xoLxDtzhtt
-	lSLgdFktADGStDHL0ClBdhwjsPEdCdzSm0qj3qE7ElE5W9X8ZQcERT9Q/DtnoIenJI/atJm96KFyO
-	wetsHzu5T7hsp+zuqARbpet8g9t6M4XigvH/fiLzoAwfBt0EDz3ihMvu4ZFpDJELTeYvU/Eex+UYC
-	T+2CRvi+3HFXbfLeKooJ/apQPjF12sfVdrzff4Ynb84450f3QVaHxtYR80Fkn2l9Oy8FdtmvRPxfp
-	Wls9E8Y/M2OSn8Y4ckMm/sVoFFsNzBtAlhpBt6cBZlzXj4kV2EVCmhMBaKaz8UUjEjyKaXrhBbpV2
-	b1jOl4dw==;
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=cWJeY9aVHJ3vD2kAH4qZ/jJ2xGIa4SXbG0F8x3vcA2U=; b=4Qeb+5/WaPgOyhKJrLMb1nmYJ2
+	inoMuqqdz2f8bTOMuMHrf6LWrSudovM6Kx5JeGNLND08zAAgFk7yH83KUYLTnkGSgxCTQVNVz7fdA
+	z+TxcwJF+yGBOQiLO3paYhyWenRptaGOTGDha5wQB2wJvZJcsNMmPtaCgqlwT+JTGTDOck5meR2Gw
+	T1R5/DI4Pb+0LJR2tu8ir7KJHnLkS7wsGBINEFFJg9dd/KLfcXsWven+2+sA7E8Tyc1t7taSau+p/
+	tlPXHanwUBvSGLZcagonqJyWWIJ3pGhq+ZxQn0SfXlUPHZSY/cI7gRutOD+rKorgB9aSHZoLw2IfP
+	2aYJ/+3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rz7g4-0000000FwC9-1JgU;
-	Tue, 23 Apr 2024 04:22:44 +0000
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
+	id 1rz8Bu-0000000Fz1D-2ciR;
+	Tue, 23 Apr 2024 04:55:38 +0000
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rz7g0-0000000FwBP-2qvs;
-	Tue, 23 Apr 2024 04:22:42 +0000
-Received: by mail-ed1-x529.google.com with SMTP id 4fb4d7f45d1cf-571e3f40e31so2498344a12.2;
-        Mon, 22 Apr 2024 21:22:39 -0700 (PDT)
+	id 1rz8Bq-0000000FyzP-1bgq;
+	Tue, 23 Apr 2024 04:55:36 +0000
+Received: by mail-ej1-x635.google.com with SMTP id a640c23a62f3a-a587fac79e5so17933166b.3;
+        Mon, 22 Apr 2024 21:55:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1713846158; x=1714450958; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=mUs2RUZvYrbt0djestVEkcsXv+XeS/wmMn/FMr80SwM=;
-        b=SKv8NCi1U0E87NqW/Qv/DCQSLS/NJMX9Q8grBBEdAa/EJwSwwcdajoQqC1NYYsqYvY
-         eimSLY+Pdts08KcDbo2g2DssBZZE00rgZUTw/g27KtQrVNSaqlcF4QpI/D3I/nyZejgM
-         NQDcihFnZJZcMYGCOsQmtUs6GGmTgUkAwJ8Rvq81tB70FPwn7SAcRe5hkB9ia8quU/FO
-         pM3+tmFDHGFLTKdwd0Sf25l40o6joU+UHGF16QS1I4t617TO0JlfPsrJZLvmHcZiDmCj
-         Pmli+yaJ4UlBkyWUeCe6ocMDZwwstHrPIhtr9UgEg0YHdFI9edAxQ+0Ye1/xvhJU6k8u
-         rtRw==
+        d=gmail.com; s=20230601; t=1713848120; x=1714452920; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=cWJeY9aVHJ3vD2kAH4qZ/jJ2xGIa4SXbG0F8x3vcA2U=;
+        b=MSc25RhNDd5CmQr6yu1er65tIUDFibi83ZDvNS0nnolqgxEtcFJdUdSk6H01gbQNq8
+         0m2arLoviBF+e4bxpen1UR+QEZqaR1gpsCb/JU6VnZpwWMTytdmLyF70OS6Th5p7XiSP
+         NJAkcICLsWkorXJKV8JpuOZ7uk31dMKwcFCpDTdpCY8U0N4zlDPMlOHbm75y6d7myETF
+         4qX4bROpm8hSrzkA6z4BlmB9DAtQU+WmseJ9Ex3J2FH/RRBOS+U2owqHYbF/3AaN2cfv
+         4O+uGtNWKdoH7kzUNVgoWK1P2u+FacKydVhgZM/iOs3IMApixggUBPc4OxwD2wq8Vcmm
+         uJMA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713846158; x=1714450958;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=mUs2RUZvYrbt0djestVEkcsXv+XeS/wmMn/FMr80SwM=;
-        b=IlLpZVh8WHlBoWVrpZRKUWQSWs8sAJw7zgjJIxJc1bH2xuVkp3sdWi8YqshUvpzsIg
-         qPvMT29SmbU2oQitmBNACVJMtOK//OXuGzOiHAged5FAUmAHOW4Y0/uIq7hKOiZh/Hx7
-         sJsn4D562XsZpUHjmXYRPmsDF1NC8P0FbBYpCakVp+NY/YdI9G0Vv4b0paraIxgfueFC
-         Mm546+4RfsFiMxQxWvgs5DrjF/bXPzTfn9JCEQJ73OoWRYzB1sObOICm4yfcYMaHEcdK
-         nym+6G4y6sM7AeF14A2/NHLefgIWw2xoE1JRPGUeag0ZV+iW24NELxbaAl1s7HYBSjbw
-         YZJA==
-X-Forwarded-Encrypted: i=1; AJvYcCURQ2v4EZULrFCmngcCpGuOH7KpxZ4w5ZQAu27Yh50VqH+pHXqWOkLGdB7sKSqDRNtjLJdZc8v8mD9OaWsQ0P1nAXF5bcWFZ0UCa8mUpkiPa0U3CMeIIeR4hF66IY6zshGHdeWO8gP/asDf544QBumYUtVWunHqaSQ=
-X-Gm-Message-State: AOJu0YwghFsorKXe3lMJjO/5udbqPONsygKP+ag9hBK0CC+9aMJuE3Q9
-	AIuwCqlb0wm5s/V1QnuBvUv3MAC/B3sP+miAVdJ/unFcWQFcvwIR
-X-Google-Smtp-Source: AGHT+IHNB26jxIYXuLgkHDTr7cigbRb6NRaEhxNW9klXv6JV7oErenfbZDVtvg93kbkJoHjeXqljJQ==
-X-Received: by 2002:a17:906:3502:b0:a52:277d:c1c9 with SMTP id r2-20020a170906350200b00a52277dc1c9mr8047023eja.50.1713846157921;
-        Mon, 22 Apr 2024 21:22:37 -0700 (PDT)
-Received: from [192.168.26.149] (031011218106.poznan.vectranet.pl. [31.11.218.106])
-        by smtp.googlemail.com with ESMTPSA id 17-20020a170906311100b00a5599f3a057sm3847028ejx.107.2024.04.22.21.22.36
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 22 Apr 2024 21:22:37 -0700 (PDT)
-Message-ID: <c6a8fdc1-0230-4438-8b80-c07daf80f1ce@gmail.com>
-Date: Tue, 23 Apr 2024 06:22:35 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH V2] dt-bindings: media: convert Mediatek consumer IR to
- the json-schema
-To: Mauro Carvalho Chehab <mchehab@kernel.org>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>
+        d=1e100.net; s=20230601; t=1713848120; x=1714452920;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=cWJeY9aVHJ3vD2kAH4qZ/jJ2xGIa4SXbG0F8x3vcA2U=;
+        b=qh4v4zGMl8auppxdhaUsIWddNiOXRefn4dlebYZg+20EGod4A7IvR72W5aPeA7Wr+H
+         OxtspfP1Bs9lu+215cwhiT3nH7HhAAa6RzGCOXvZQnWl7PS4oqx69V6vlemMRZgwuzAn
+         SgjXubbnW6u8NkIJXyYz1BwCtPAGlxxbetBJ+HtHQ2e3DnuVk6N+4V2djWKp3UWBbjdu
+         2vXIRxWb3DV5yNq0L22yCSbg3xLKfbhqMqzQe7g50J3RIUUFa0QodPlFkaKvv8dZVOB3
+         aIoSHxeONntdrnDU2INIxclQB74IVYlGKL/R2AWgAGTrBt7o+6FYDNZLgj5A/c0xKogO
+         BZyg==
+X-Forwarded-Encrypted: i=1; AJvYcCXk4VVy3bIiE5crpuoXlNizTXbJpz6ANnTQngpLrCYJF52VMst5L++Ohnl/835g6xaK5X+JYxv7N11EL8DxJhCDbDrugdWYkgXo8yE/ADJ4Tkd84vhGuXJeP3XCoY/pq2AXCN0Jip+SSI+0s1cMwnAfjeCUjNHivf4=
+X-Gm-Message-State: AOJu0YwPwstM/lyohTfR2kvEvMZlnxuvGRQcukMvZaE7I93SxniCifnY
+	IXCfWe4pkYdEOAlCeR2gQvLiSv21DoKklUtrgUE2QdBAaj+Bc0wV
+X-Google-Smtp-Source: AGHT+IFFKMIRTGZSvCpOZZfgWGNGraXSzwnMFBJMXLzj83wn8qF0ijQJiEduYX8ya/MSfTn9ppr10w==
+X-Received: by 2002:a17:906:2a14:b0:a55:8f25:14f with SMTP id j20-20020a1709062a1400b00a558f25014fmr5732170eje.40.1713848119806;
+        Mon, 22 Apr 2024 21:55:19 -0700 (PDT)
+Received: from localhost.lan (031011218106.poznan.vectranet.pl. [31.11.218.106])
+        by smtp.gmail.com with ESMTPSA id rn2-20020a170906d92200b00a55a67a81c8sm3019557ejb.126.2024.04.22.21.55.18
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 22 Apr 2024 21:55:19 -0700 (PDT)
+From: =?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <zajec5@gmail.com>
+To: Sean Wang <sean.wang@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>
 Cc: Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Sean Wang <sean.wang@mediatek.com>, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
-References: <20240209085616.1062-1-zajec5@gmail.com>
-Content-Language: en-US
-From: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
-In-Reply-To: <20240209085616.1062-1-zajec5@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Hsin-Yi Wang <hsinyi@chromium.org>,
+	linux-mediatek@lists.infradead.org,
+	linux-gpio@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>
+Subject: [PATCH RESEND 1/2] dt-bindings: pinctrl: mediatek: mt7622: fix array properties
+Date: Tue, 23 Apr 2024 06:55:01 +0200
+Message-Id: <20240423045502.7778-1-zajec5@gmail.com>
+X-Mailer: git-send-email 2.35.3
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240422_212240_948618_C9B4CC22 
-X-CRM114-Status: GOOD (  21.85  )
+X-CRM114-CacheID: sfid-20240422_215534_433125_36FE8489 
+X-CRM114-Status: UNSURE (   9.77  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,128 +100,161 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Mauro,
+From: Rafał Miłecki <rafal@milecki.pl>
 
-On 9.02.2024 09:56, Rafał Miłecki wrote:
-> From: Rafał Miłecki <rafal@milecki.pl>
-> 
-> This helps validating DTS files. Introduced changes:
-> 1. Reworded title
-> 2. Made "bus" clock required on MT7623 as well
-> 3. Added required #include-s and adjusted "reg" & clocks in example
-> 
-> Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
+Some properties (function groups & pins) are meant to be arrays and
+should allow multiple entries out of enum sets. Use "items" for those.
 
-could you take my patch throught your tree?
+Mistake was noticed during validation of in-kernel DTS files.
 
+Fixes: b9ffc18c6388 ("dt-bindings: mediatek: convert pinctrl to yaml")
+Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
+Acked-by: Rob Herring <robh@kernel.org>
+---
+RESEND without 3/3 that needs more work
 
-> ---
-> V2: Extended "IR" in title
->      Made "bus" required at MT7623 needs it as well
->      Updated example
-> 
-> Thanks AngeloGioacchino!
-> 
->   .../bindings/media/mediatek,mt7622-cir.yaml   | 55 +++++++++++++++++++
->   .../devicetree/bindings/media/mtk-cir.txt     | 28 ----------
->   2 files changed, 55 insertions(+), 28 deletions(-)
->   create mode 100644 Documentation/devicetree/bindings/media/mediatek,mt7622-cir.yaml
->   delete mode 100644 Documentation/devicetree/bindings/media/mtk-cir.txt
-> 
-> diff --git a/Documentation/devicetree/bindings/media/mediatek,mt7622-cir.yaml b/Documentation/devicetree/bindings/media/mediatek,mt7622-cir.yaml
-> new file mode 100644
-> index 000000000000..c01210e053f9
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/media/mediatek,mt7622-cir.yaml
-> @@ -0,0 +1,55 @@
-> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/media/mediatek,mt7622-cir.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek Consumer Infrared Receiver on-SoC Controller
-> +
-> +maintainers:
-> +  - Sean Wang <sean.wang@mediatek.com>
-> +
-> +allOf:
-> +  - $ref: rc.yaml#
-> +
-> +properties:
-> +  compatible:
-> +    enum:
-> +      - mediatek,mt7622-cir
-> +      - mediatek,mt7623-cir
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  interrupts:
-> +    maxItems: 1
-> +
-> +  clocks:
-> +    maxItems: 2
-> +
-> +  clock-names:
-> +    items:
-> +      - const: clk
-> +      - const: bus
-> +
-> +required:
-> +  - reg
-> +  - interrupts
-> +  - clocks
-> +  - clock-names
-> +
-> +unevaluatedProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/clock/mt2701-clk.h>
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +
-> +    ir@10013000 {
-> +        compatible = "mediatek,mt7623-cir";
-> +        reg = <0x10013000 0x1000>;
-> +        interrupts = <GIC_SPI 87 IRQ_TYPE_LEVEL_LOW>;
-> +        clocks = <&infracfg CLK_INFRA_IRRX>, <&topckgen CLK_TOP_AXI_SEL>;
-> +        clock-names = "clk", "bus";
-> +        linux,rc-map-name = "rc-rc6-mce";
-> +    };
-> diff --git a/Documentation/devicetree/bindings/media/mtk-cir.txt b/Documentation/devicetree/bindings/media/mtk-cir.txt
-> deleted file mode 100644
-> index 5e18087ce11f..000000000000
-> --- a/Documentation/devicetree/bindings/media/mtk-cir.txt
-> +++ /dev/null
-> @@ -1,28 +0,0 @@
-> -Device-Tree bindings for Mediatek consumer IR controller
-> -found in Mediatek SoC family
-> -
-> -Required properties:
-> -- compatible	    : Should be
-> -			"mediatek,mt7623-cir": for MT7623 SoC
-> -			"mediatek,mt7622-cir": for MT7622 SoC
-> -- clocks	    : list of clock specifiers, corresponding to
-> -		      entries in clock-names property;
-> -- clock-names	    : should contain
-> -			- "clk" entries: for MT7623 SoC
-> -			- "clk", "bus" entries: for MT7622 SoC
-> -- interrupts	    : should contain IR IRQ number;
-> -- reg		    : should contain IO map address for IR.
-> -
-> -Optional properties:
-> -- linux,rc-map-name : see rc.txt file in the same directory.
-> -
-> -Example:
-> -
-> -cir: cir@10013000 {
-> -	compatible = "mediatek,mt7623-cir";
-> -	reg = <0 0x10013000 0 0x1000>;
-> -	interrupts = <GIC_SPI 87 IRQ_TYPE_LEVEL_LOW>;
-> -	clocks = <&infracfg CLK_INFRA_IRRX>;
-> -	clock-names = "clk";
-> -	linux,rc-map-name = "rc-rc6-mce";
-> -};
+ .../pinctrl/mediatek,mt7622-pinctrl.yaml      | 92 ++++++++++---------
+ 1 file changed, 49 insertions(+), 43 deletions(-)
+
+diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7622-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7622-pinctrl.yaml
+index bd72a326e6e0..60f30a59f385 100644
+--- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7622-pinctrl.yaml
++++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7622-pinctrl.yaml
+@@ -97,7 +97,8 @@ patternProperties:
+             then:
+               properties:
+                 groups:
+-                  enum: [emmc, emmc_rst]
++                  items:
++                    enum: [emmc, emmc_rst]
+           - if:
+               properties:
+                 function:
+@@ -105,8 +106,9 @@ patternProperties:
+             then:
+               properties:
+                 groups:
+-                  enum: [esw, esw_p0_p1, esw_p2_p3_p4, rgmii_via_esw,
+-                         rgmii_via_gmac1, rgmii_via_gmac2, mdc_mdio]
++                  items:
++                    enum: [esw, esw_p0_p1, esw_p2_p3_p4, rgmii_via_esw,
++                           rgmii_via_gmac1, rgmii_via_gmac2, mdc_mdio]
+           - if:
+               properties:
+                 function:
+@@ -123,10 +125,11 @@ patternProperties:
+             then:
+               properties:
+                 groups:
+-                  enum: [i2s_in_mclk_bclk_ws, i2s1_in_data, i2s2_in_data,
+-                         i2s3_in_data, i2s4_in_data, i2s_out_mclk_bclk_ws,
+-                         i2s1_out_data, i2s2_out_data, i2s3_out_data,
+-                         i2s4_out_data]
++                  items:
++                    enum: [i2s_in_mclk_bclk_ws, i2s1_in_data, i2s2_in_data,
++                           i2s3_in_data, i2s4_in_data, i2s_out_mclk_bclk_ws,
++                           i2s1_out_data, i2s2_out_data, i2s3_out_data,
++                           i2s4_out_data]
+           - if:
+               properties:
+                 function:
+@@ -159,10 +162,11 @@ patternProperties:
+             then:
+               properties:
+                 groups:
+-                  enum: [pcie0_0_waken, pcie0_1_waken, pcie1_0_waken,
+-                         pcie0_0_clkreq, pcie0_1_clkreq, pcie1_0_clkreq,
+-                         pcie0_pad_perst, pcie1_pad_perst, pcie_pereset,
+-                         pcie_wake, pcie_clkreq]
++                  items:
++                    enum: [pcie0_0_waken, pcie0_1_waken, pcie1_0_waken,
++                           pcie0_0_clkreq, pcie0_1_clkreq, pcie1_0_clkreq,
++                           pcie0_pad_perst, pcie1_pad_perst, pcie_pereset,
++                           pcie_wake, pcie_clkreq]
+           - if:
+               properties:
+                 function:
+@@ -178,11 +182,12 @@ patternProperties:
+             then:
+               properties:
+                 groups:
+-                  enum: [pwm_ch1_0, pwm_ch1_1, pwm_ch1_2, pwm_ch2_0, pwm_ch2_1,
+-                         pwm_ch2_2, pwm_ch3_0, pwm_ch3_1, pwm_ch3_2, pwm_ch4_0,
+-                         pwm_ch4_1, pwm_ch4_2, pwm_ch4_3, pwm_ch5_0, pwm_ch5_1,
+-                         pwm_ch5_2, pwm_ch6_0, pwm_ch6_1, pwm_ch6_2, pwm_ch6_3,
+-                         pwm_ch7_0, pwm_0, pwm_1]
++                  items:
++                    enum: [pwm_ch1_0, pwm_ch1_1, pwm_ch1_2, pwm_ch2_0, pwm_ch2_1,
++                           pwm_ch2_2, pwm_ch3_0, pwm_ch3_1, pwm_ch3_2, pwm_ch4_0,
++                           pwm_ch4_1, pwm_ch4_2, pwm_ch4_3, pwm_ch5_0, pwm_ch5_1,
++                           pwm_ch5_2, pwm_ch6_0, pwm_ch6_1, pwm_ch6_2, pwm_ch6_3,
++                           pwm_ch7_0, pwm_0, pwm_1]
+           - if:
+               properties:
+                 function:
+@@ -260,33 +265,34 @@ patternProperties:
+           pins:
+             description:
+               An array of strings. Each string contains the name of a pin.
+-            enum: [GPIO_A, I2S1_IN, I2S1_OUT, I2S_BCLK, I2S_WS, I2S_MCLK, TXD0,
+-                   RXD0, SPI_WP, SPI_HOLD, SPI_CLK, SPI_MOSI, SPI_MISO, SPI_CS,
+-                   I2C_SDA, I2C_SCL, I2S2_IN, I2S3_IN, I2S4_IN, I2S2_OUT,
+-                   I2S3_OUT, I2S4_OUT, GPIO_B, MDC, MDIO, G2_TXD0, G2_TXD1,
+-                   G2_TXD2, G2_TXD3, G2_TXEN, G2_TXC, G2_RXD0, G2_RXD1, G2_RXD2,
+-                   G2_RXD3, G2_RXDV, G2_RXC, NCEB, NWEB, NREB, NDL4, NDL5, NDL6,
+-                   NDL7, NRB, NCLE, NALE, NDL0, NDL1, NDL2, NDL3, MDI_TP_P0,
+-                   MDI_TN_P0, MDI_RP_P0, MDI_RN_P0, MDI_TP_P1, MDI_TN_P1,
+-                   MDI_RP_P1, MDI_RN_P1, MDI_RP_P2, MDI_RN_P2, MDI_TP_P2,
+-                   MDI_TN_P2, MDI_TP_P3, MDI_TN_P3, MDI_RP_P3, MDI_RN_P3,
+-                   MDI_RP_P4, MDI_RN_P4, MDI_TP_P4, MDI_TN_P4, PMIC_SCL,
+-                   PMIC_SDA, SPIC1_CLK, SPIC1_MOSI, SPIC1_MISO, SPIC1_CS,
+-                   GPIO_D, WATCHDOG, RTS3_N, CTS3_N, TXD3, RXD3, PERST0_N,
+-                   PERST1_N, WLED_N, EPHY_LED0_N, AUXIN0, AUXIN1, AUXIN2,
+-                   AUXIN3, TXD4, RXD4, RTS4_N, CST4_N, PWM1, PWM2, PWM3, PWM4,
+-                   PWM5, PWM6, PWM7, GPIO_E, TOP_5G_CLK, TOP_5G_DATA,
+-                   WF0_5G_HB0, WF0_5G_HB1, WF0_5G_HB2, WF0_5G_HB3, WF0_5G_HB4,
+-                   WF0_5G_HB5, WF0_5G_HB6, XO_REQ, TOP_RST_N, SYS_WATCHDOG,
+-                   EPHY_LED0_N_JTDO, EPHY_LED1_N_JTDI, EPHY_LED2_N_JTMS,
+-                   EPHY_LED3_N_JTCLK, EPHY_LED4_N_JTRST_N, WF2G_LED_N,
+-                   WF5G_LED_N, GPIO_9, GPIO_10, GPIO_11, GPIO_12, UART1_TXD,
+-                   UART1_RXD, UART1_CTS, UART1_RTS, UART2_TXD, UART2_RXD,
+-                   UART2_CTS, UART2_RTS, SMI_MDC, SMI_MDIO, PCIE_PERESET_N,
+-                   PWM_0, GPIO_0, GPIO_1, GPIO_2, GPIO_3, GPIO_4, GPIO_5,
+-                   GPIO_6, GPIO_7, GPIO_8, UART0_TXD, UART0_RXD, TOP_2G_CLK,
+-                   TOP_2G_DATA, WF0_2G_HB0, WF0_2G_HB1, WF0_2G_HB2, WF0_2G_HB3,
+-                   WF0_2G_HB4, WF0_2G_HB5, WF0_2G_HB6]
++            items:
++              enum: [GPIO_A, I2S1_IN, I2S1_OUT, I2S_BCLK, I2S_WS, I2S_MCLK, TXD0,
++                     RXD0, SPI_WP, SPI_HOLD, SPI_CLK, SPI_MOSI, SPI_MISO, SPI_CS,
++                     I2C_SDA, I2C_SCL, I2S2_IN, I2S3_IN, I2S4_IN, I2S2_OUT,
++                     I2S3_OUT, I2S4_OUT, GPIO_B, MDC, MDIO, G2_TXD0, G2_TXD1,
++                     G2_TXD2, G2_TXD3, G2_TXEN, G2_TXC, G2_RXD0, G2_RXD1, G2_RXD2,
++                     G2_RXD3, G2_RXDV, G2_RXC, NCEB, NWEB, NREB, NDL4, NDL5, NDL6,
++                     NDL7, NRB, NCLE, NALE, NDL0, NDL1, NDL2, NDL3, MDI_TP_P0,
++                     MDI_TN_P0, MDI_RP_P0, MDI_RN_P0, MDI_TP_P1, MDI_TN_P1,
++                     MDI_RP_P1, MDI_RN_P1, MDI_RP_P2, MDI_RN_P2, MDI_TP_P2,
++                     MDI_TN_P2, MDI_TP_P3, MDI_TN_P3, MDI_RP_P3, MDI_RN_P3,
++                     MDI_RP_P4, MDI_RN_P4, MDI_TP_P4, MDI_TN_P4, PMIC_SCL,
++                     PMIC_SDA, SPIC1_CLK, SPIC1_MOSI, SPIC1_MISO, SPIC1_CS,
++                     GPIO_D, WATCHDOG, RTS3_N, CTS3_N, TXD3, RXD3, PERST0_N,
++                     PERST1_N, WLED_N, EPHY_LED0_N, AUXIN0, AUXIN1, AUXIN2,
++                     AUXIN3, TXD4, RXD4, RTS4_N, CST4_N, PWM1, PWM2, PWM3, PWM4,
++                     PWM5, PWM6, PWM7, GPIO_E, TOP_5G_CLK, TOP_5G_DATA,
++                     WF0_5G_HB0, WF0_5G_HB1, WF0_5G_HB2, WF0_5G_HB3, WF0_5G_HB4,
++                     WF0_5G_HB5, WF0_5G_HB6, XO_REQ, TOP_RST_N, SYS_WATCHDOG,
++                     EPHY_LED0_N_JTDO, EPHY_LED1_N_JTDI, EPHY_LED2_N_JTMS,
++                     EPHY_LED3_N_JTCLK, EPHY_LED4_N_JTRST_N, WF2G_LED_N,
++                     WF5G_LED_N, GPIO_9, GPIO_10, GPIO_11, GPIO_12, UART1_TXD,
++                     UART1_RXD, UART1_CTS, UART1_RTS, UART2_TXD, UART2_RXD,
++                     UART2_CTS, UART2_RTS, SMI_MDC, SMI_MDIO, PCIE_PERESET_N,
++                     PWM_0, GPIO_0, GPIO_1, GPIO_2, GPIO_3, GPIO_4, GPIO_5,
++                     GPIO_6, GPIO_7, GPIO_8, UART0_TXD, UART0_RXD, TOP_2G_CLK,
++                     TOP_2G_DATA, WF0_2G_HB0, WF0_2G_HB1, WF0_2G_HB2, WF0_2G_HB3,
++                     WF0_2G_HB4, WF0_2G_HB5, WF0_2G_HB6]
+ 
+           bias-disable: true
+ 
+-- 
+2.35.3
 
 
