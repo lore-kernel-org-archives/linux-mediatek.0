@@ -4,68 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D532C4345F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Apr 2024 09:16:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E95BBC4345F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Apr 2024 09:22:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=46+IHxai2w3bldZvmMzKkHuWZictfMvaorkaAyKmx7Y=; b=VI5YXY0DojtAYKKRO9M/Bpua+7
-	Xa49qP9T0eWwnEDPbfRCzJr+HzIblMtyXaQ2CVwWpWXn9JogYjhqo9a4kIPZelDogOgPr8Wlt3q0s
-	NTH4irFTsF+qkg0hSgYzUBT9NrGfRiDza5iitNzMNyCv+mWOglAy2pUDkWQ5xxRcOocOuwrHD+fOc
-	NbK+N2S/VsLrPKy6/tClmBHePX17XMdzkqm/KqNOKG332ENLi18+iM0r1uoh39KhPeX3VVzG+i2F5
-	bp1Lt8fQzvhqNHwJQct72etYIuR4/WB7RnHVq+0bqPRQN0nUdC7jKW00j5nuMXIkNDvBwrgu0sQuD
-	kR6WlFFA==;
+	bh=H4Q4xR2Nv4jh/+S02neuNKp8cPAK0NcTf6tUOMBiMpY=; b=hC08yQSlESflIoAAdl9rpkot4X
+	0dU1Od0/9G8SvAJ2PpAnFkL+KHV6sgq+pkCfypJ2M23mnTnTaHiB1FRD1NTIQo5m0+c8oFslyGdxW
+	TTBhbnqX4wh3r2oJg5EIJT4uWSnyAdTgRryELmZLFndjcXtwWvWw3t1m5tbB5WCvdjjIlZdaPSfX2
+	PIBZGxh3dOInq46fuqJGmEmL6edBKmlTto1GcGilLqgTfXmezA2t0YAbZLeRpJDk377kqJsN5etyW
+	qFGgZ9wrvNIBshpJbqj7MIOypRI7jRCeO53fkDvG0bUq+YBUR9GW6FYT/N6oXppRTWRFGdbNSuTSs
+	Yw8kz3tA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rzCG5-0000000GdZf-3z8V;
-	Tue, 23 Apr 2024 09:16:13 +0000
-Received: from relay9-d.mail.gandi.net ([2001:4b98:dc4:8::229])
+	id 1rzCLu-0000000GeY0-1mwD;
+	Tue, 23 Apr 2024 09:22:14 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rzCG2-0000000GdY6-0UVQ;
-	Tue, 23 Apr 2024 09:16:12 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id A2FC3FF80D;
-	Tue, 23 Apr 2024 09:16:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1713863766;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=46+IHxai2w3bldZvmMzKkHuWZictfMvaorkaAyKmx7Y=;
-	b=Noqz7nUU+wByDEgUUaUBJqb1Ue1br1avd+ELDCq7zip4RUr2JLl2RNYqMy4Q2q/6N861Pf
-	1gvzDziUKUw2KbfagAYRF3swtyMahHqFVE4zIEYIdQljbTtoA/OkECdlLhgMr+YefZCaWm
-	t9kYUcKAuta9PAFUHhb/mAO2vkoKNQybdzaTNi+2x99lKPiDp11A4GiLHU57IODB10+sJM
-	6WleyMoDJQrBLg/xULjzaEck/JnkQRUYF2POX9ry691NnIMHpSBKp75fjrHv6hZB110New
-	/Li99wTGVLBtQmuJRu7cRcMrVKwDbO4+p5zX9Is6DLAQTg9CiG3TLqiKnWBW/A==
-Message-ID: <facb8204-c2b3-4084-a2e3-4fbf3a3fdc9d@arinc9.com>
-Date: Tue, 23 Apr 2024 12:16:03 +0300
+	id 1rzCLr-0000000GeWS-19bO
+	for linux-mediatek@lists.infradead.org;
+	Tue, 23 Apr 2024 09:22:13 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1713864129;
+	bh=FjKigUCfND/yp/nDDgcfrG3dAnCXLuVl43TcITs3ywA=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=cmeFpD26AokQActMeUtYI378J8vQtgdQ/44EN20pPRIvLBef2hKpchW5av5QRs7/4
+	 dMqfUD6PbzcIFpFuHLUjgSQrsIdPUCMnzXAs7/KLGybd2xWI3GGpTT3FI1Egc4OcLS
+	 MW6V8IcTOhte8770C4qxsTYRxUjB4YvVNz/aai5vtiiUtVe5ikpxNU9d9/nR4bMsiT
+	 BwWBUHiydI13yCNfsIAYjSAH7c5THIL5OrDNFPSBKHUr5friWlRUfyrhpvYG58i0an
+	 +yAvKNKcMZxqgvWDU+d09nDdmvihR9BiHnJFGmcjD2oTYAG8RMXovPPDsiJqCXPafr
+	 eXUvdbZNBTZIQ==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 4B0633781453;
+	Tue, 23 Apr 2024 09:22:09 +0000 (UTC)
+Message-ID: <981a8748-16d0-4744-b097-aa9dd14c63a8@collabora.com>
+Date: Tue, 23 Apr 2024 11:22:08 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/2] Set PHY address of MT7531 switch to 0x1f on MediaTek
- arm64 boards
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-To: Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: mithat.guner@xeront.com, erkin.bozoglu@xeront.com,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20240314-for-mediatek-mt7531-phy-address-v1-0-52f58db01acd@arinc9.com>
- <ff196055-ecd8-4563-bc01-ff2533a07109@arinc9.com>
- <a60fc16d-4236-427c-b4a8-ec6fdf62d9f0@arinc9.com>
+Subject: Re: [PATCH v3 00/15] Mediatek thermal sensor driver support for
+ MT8186 and MT8188
+To: Nicolas Pitre <nico@fluxnic.net>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>, linux-pm@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
+Cc: Nicolas Pitre <npitre@baylibre.com>
+References: <20240402032729.2736685-1-nico@fluxnic.net>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <a60fc16d-4236-427c-b4a8-ec6fdf62d9f0@arinc9.com>
+In-Reply-To: <20240402032729.2736685-1-nico@fluxnic.net>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-GND-Sasl: arinc.unal@arinc9.com
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240423_021610_387363_B91446FF 
-X-CRM114-Status: GOOD (  10.02  )
+X-CRM114-CacheID: sfid-20240423_022211_546626_EED669A9 
+X-CRM114-Status: GOOD (  15.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,39 +77,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 08/04/2024 10:22, Arınç ÜNAL wrote:
-> On 31.03.2024 12:28, arinc.unal@arinc9.com wrote:
->> On 14.03.2024 15:20, Arınç ÜNAL via B4 Relay wrote:
->>> Hello.
->>>
->>> This is a small patch series setting the PHY address of MT7531 to 0x1f on
->>> all boards that have the switch.
->>>
->>> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
->>> ---
->>> Arınç ÜNAL (2):
->>>        arm64: dts: mediatek: mt7622: set PHY address of MT7531 switch to 0x1f
->>>        arm64: dts: mediatek: mt7986: set PHY address of MT7531 switch to 0x1f
->>>
->>>   arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts | 4 ++--
->>>   arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts             | 4 ++--
->>>   arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts | 4 ++--
->>>   arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts             | 4 ++--
->>>   arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts             | 4 ++--
->>>   5 files changed, 10 insertions(+), 10 deletions(-)
->>> ---
->>> base-commit: ba90af39ba57b3fe3ecfdba0c87a80d20c7b788d
->>> change-id: 20240314-for-mediatek-mt7531-phy-address-9d0b4cfeca21
->>>
->>> Best regards,
->>
->> Reminder that this patch series is waiting.
+Il 02/04/24 05:25, Nicolas Pitre ha scritto:
+> This is a bunch of patches to support the MT8186 and MT8188 thermal
+> sensor configurations. Several changes are needed to cope with oddities
+> these SOCs implement.
 > 
-> Another reminder that this patch series is waiting to be applied.
+> All values (calibration data offsets, etc.) were lifted and adapted from
+> the vendor driver source code.
+> 
 
-Here's the third reminder for someone to apply this. From now on, I am
-going to reply to this thread once every day until this patch series is
-applied.
+I picked patches 7 and 12 (and also fixed them) introducing the nodes for the
+LVTS controllers, but will not pick 9 and 15, as they're either missing thermal
+zones and/or using the wrong names; let's wait for the next cycle for those, as
+I will also be able to add the SVS on top (needs a bit of time for testing),
+getting both SoCs complete on the LVTS side, without rushing.
 
-Arınç
+Cheers,
+Angelo
+
+> Changes from v2:
+> 
+>   - use meaningful name for binding index definitions
+>   - reuse LVTS_COEFF_*_MT7988 on MT8186 per reviewer request
+>   - do similarly for MT8188 that now reuses LVTS_COEFF_*_MT8195
+>   - use thermal zone names the svs driver wants
+>   - adjust some DT node names and iospace length
+>   - remove variable .hw_tshut_temp as it is constant across all SOCs
+> 
+> Version 2 can be found here:
+> 
+>   https://lore.kernel.org/all/20240318212428.3843952-1-nico@fluxnic.net/
+> 
+> Changes from v1:
+> 
+>   - renamed CPU cluster thermal zones in DT
+>   - fixed logic to cope with empty controller slots at the beginning
+>   - isolated bindings to their own patches
+>   - added MT8188 default thermal zones
+> 
+> Version 1 can be found here:
+> 
+>   https://lore.kernel.org/all/20240111223020.3593558-1-nico@fluxnic.net/T/
+> 
+> diffstat:
+> 
+>   .../thermal/mediatek,lvts-thermal.yaml        |   6 +
+>   arch/arm64/boot/dts/mediatek/mt8186.dtsi      | 256 +++++++++++
+>   arch/arm64/boot/dts/mediatek/mt8188.dtsi      | 383 ++++++++++++++++
+>   drivers/thermal/mediatek/lvts_thermal.c       | 434 +++++++++++++-----
+>   .../thermal/mediatek,lvts-thermal.h           |  26 ++
+>   5 files changed, 987 insertions(+), 118 deletions(-)
+
 
