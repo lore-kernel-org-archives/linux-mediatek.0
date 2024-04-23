@@ -4,86 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40FFCC4345F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Apr 2024 12:45:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 286ADC4345F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Apr 2024 12:46:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+qnKAwgvBHM35XCDpuBit4GUKItb+LTK0jOfybUvb7k=; b=cRkg2M8xYCx3AnnqZxDh2PmZG5
-	0EXYJ2Mz+A8QQWEXIahaVy4QHXJqOIQopVA4+WXmVpbAGzfRdlSJHLL78hUuHYE7ao5p2x6+jUXlA
-	uDa6gsxOTnc+UJorqUX2kS9aXOdIyUF/cJP82AYH8mvIZuBYQkd5H7WyW0z01ezb7igUNu9M1OZrQ
-	Z41cCjTa/GhbT5zKZrNkjVXYu9Va9Que7hJqSZnHwF1/lyQoDfd3U6zyL7YvbPJIHL63SRbERoOUn
-	VMRrdX0K1+5j7j2LkdUllnSNubUcpI7XTWtX0cRBL3Vxp5HylFLdUeijNtH5DPbh2AtUxxbDkHZbz
-	ZI8iunBA==;
+	bh=SnPvo8X71/HjmVfrFSADYDRaBhD7wOKAzatHqFXk968=; b=0GVOIau3Y8XKuLxydr0UrO4rqh
+	Xeuy6RM486MXfexKAShlenEp1H145XSB/zNvXynBWgT/fehwqTwtQMhJpbqTUMsQbndc2XqNBFbcX
+	pBGMbbW846X8B7pSLCPGw9KLkFlVo5o7B6u36fbODZz+kLuEs/nY99/FN4R2N7fB1Ns0khCRTfwec
+	y8usXVpIEuXX9gHCT5+gIKHwHZzcD6IX64gVQlyoK0cxPVR5Y2HFP+a7wYV7twJaBNIsL72z6cLo2
+	G4LILT81x210qTYyT+Do8ccmqjbgdnfaSSVLkoc14AzP88tG9WKa5PpgbxsgcOH4uNzKY9zrNSBB6
+	ceeP5SWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rzFWA-0000000HTRR-0vB2;
-	Tue, 23 Apr 2024 12:45:02 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1rzFXl-0000000HUeA-2S2J;
+	Tue, 23 Apr 2024 12:46:41 +0000
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rzFVE-0000000HSci-1Fis
-	for linux-mediatek@bombadil.infradead.org;
-	Tue, 23 Apr 2024 12:44:04 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=+qnKAwgvBHM35XCDpuBit4GUKItb+LTK0jOfybUvb7k=; b=His4cW3FcNP82ArD7RU+Qj1Fi8
-	Atx2dXhhmeFQ5v5GbZkvPIL8ssGbZ2yO8Qly9vxChaInjFN7v6zzw+bbfiEcjqzccOz9nOKe0DVLe
-	hkuq3/8sOEp4dFehwmbs679n1sjwCFB5YTWHVb2JKU54hn5jcSG67JoIpgBDOWT793oZYmm67sB44
-	jBriHsPddaoXDuQD7feUbXI0iAyA3oln7l9htlcMaCd3h1fNBJEEnkNFvqWsS/7sLyHjeipkUg8Gm
-	MHlgDomWHxGGG11To8+ZFdLy/5OFJVe5C10G/3MU+1lQRSFmLrVcvIvuVuTn89wRU6oUVVy51IIxP
-	J4Q2/7mw==;
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
-	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rzFV9-0000000E1zw-3C0F
+	id 1rzFXi-0000000HUaY-1GT0
 	for linux-mediatek@lists.infradead.org;
-	Tue, 23 Apr 2024 12:44:03 +0000
-Received: by mail-wr1-x42c.google.com with SMTP id ffacd0b85a97d-3476dcd9c46so4226802f8f.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 23 Apr 2024 05:43:56 -0700 (PDT)
+	Tue, 23 Apr 2024 12:46:40 +0000
+Received: by mail-wr1-x433.google.com with SMTP id ffacd0b85a97d-34b3374ae22so1810237f8f.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 23 Apr 2024 05:46:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1713876232; x=1714481032; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1713876396; x=1714481196; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=+qnKAwgvBHM35XCDpuBit4GUKItb+LTK0jOfybUvb7k=;
-        b=f+RJEq9sMNPjy8lw04VZ4rSrk41opytRN+5MrQJ/Z0hCtym5PoH/YEzwoMRYKX2/Nk
-         PqQnVt4ezYcLa4FYfQTRfifBlCHqMa4B0dh63JTfqCw9KmbLlqBnjO0wVzJKAix0hhj0
-         aVz2EEvIJzF2ASn81+PIFgbd2NIlFo8NapSJLOtpNc/rG3wWX5xzyjflns3rzBwDKs5O
-         8dLrSRXi0MeyRGUJccG0AkiO5V8O6YJAKCT+8EH2g8iseEx3V30/Azpr3DyEu2P3d7V4
-         OYe1m4wYNiU1IMr9RmVW1y+z6IpPrwmjReZ0cBzXdgGTomB49yVHvP7CKnWHsJWqyn8U
-         EW1Q==
+        bh=SnPvo8X71/HjmVfrFSADYDRaBhD7wOKAzatHqFXk968=;
+        b=bW50M0aHeVQXGcb9kn5B+xG2oisAilmU+fnFzMXlhDu+ammYAlxzTyKnjbfu8xB8oD
+         Jpn9d896KffMkN37bxuWTParMBEPOttN25jEKMUHLBaKVnO0aOGLG1OcSoCDEV9lRIMG
+         KD9kEy7j44HAtgdLYNntkkGqhp7NbLVIX00u0VtaKdFRkL7pAIvVgUxSQzPHHqpK9lxt
+         ifH4bRTArbQcFrf+NWinD4gILCKQEsKETgZWaOUDvEZfNyUWgX9zCwwuxPqsrlzytfP4
+         ZKMT4gw/8WtcNhl/ldVuVjm98lsLRBGXI1dIOg0+dCpY6nQbZH39600ofFd6ZB9XAlu9
+         63tw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713876232; x=1714481032;
+        d=1e100.net; s=20230601; t=1713876396; x=1714481196;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=+qnKAwgvBHM35XCDpuBit4GUKItb+LTK0jOfybUvb7k=;
-        b=sDYXXiwYUGug8mhNwwRBcuvABc5/RJwfOenJ4FaS3ofP/jxtPtkxWNa/N0QcVgnj3i
-         IIb2JHrjWddZjoZvP4fYkdHCbe+SRJvKorUutuX28S7jtm1uIDSZTes9uTIelPVQ9V+4
-         SY8xfCB6UhrgbfUkgX4BzH3FQREa8V9Qvpubx4ID34YUx5vSZbbacBz1HvCghZVHV2/S
-         0mHOpuXalw6QbTR6p+rH7b8Kl767vykiASJsw7VUTr3n4foTAoDvaZeV8VV+3fUpfMr6
-         IvesfFJgb3W0Any34VB9K6nk1r79uTI02KP0Alo8wusfYDu9yxnZtgAHRxu7m0LS+19w
-         9zQQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVkTJGjkk12Z7eE32JTi8xX9IjpMi/qp9A4vgJEGZqbuqjSllkc05j6Tkrc0FZwAz6V2+wvICjCq6VqL6d4QqI9MG67Jd6geHXMx6zCEUiv64Kj
-X-Gm-Message-State: AOJu0Yy7HHN5YsYOG3QPpEqSWxeKdn+/8IGefqkCzcUeK9h/rG44GGzf
-	N86XPTqGGwP7n7AhyRMK5KgOxt0gaAhVNEGLtB0JTrj9h7JzdR0Pd/Vc3mmLL3w=
-X-Google-Smtp-Source: AGHT+IHx5NN+z23VludiFeHTrKmrJCe4gLG+r1lTx6C4j7QEMysWQLMdtEpvLnQqAlOL1NQMbBj3Zg==
-X-Received: by 2002:a5d:6a8d:0:b0:34b:5caf:6342 with SMTP id s13-20020a5d6a8d000000b0034b5caf6342mr2073298wru.67.1713876232556;
-        Tue, 23 Apr 2024 05:43:52 -0700 (PDT)
+        bh=SnPvo8X71/HjmVfrFSADYDRaBhD7wOKAzatHqFXk968=;
+        b=JEHwIbcr5WiaDGDAfq8Q6d4WUU03aPBeLfT9jVBh+ZnFdLHv9fspy18CE2GXzBOpZ9
+         tPMo9nJ0awch/q/TLt2aEAMSL1IHipnSbdKSAdUboPq48n9PQwRd1Nsv2P51lEIicW9R
+         emwV0j1/CIzLcRnX3ueGuV1XUdIxkSBFjJZEbl4lHYdIwHbb5ng37TfPBXq6aj1WTWk2
+         m5bNUeSl+I8gjrFxDm/mTbuWbfa9vqcMhBK8i9dALKx/JoI8weLa67CJKhsPLbfeBzfK
+         y+TP03LqKbxQCJaB6elIhj/xuKkrV2Pi64Zm9mCFAtRZLUF6MN9PD5PFAmYJW114QbjG
+         SiXQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWgRiWULHqSB3WyAjtWS5pWE8aDOxAy8cFZ/iB0lL6Szlwgp5BAFnUQdxXRgMRxtI+Imd3xYg9QeQ35Eur9GNshxoLlqbnIeIYVMkHor3Ysmsvt
+X-Gm-Message-State: AOJu0YxYADYfXU6dIFulM5F8C5nHv/0cjLZ3CO+luQvhBbhsQgYECNYE
+	/CKEKQRpjhJPsMf1Wdot8NEWgjO0/PFJd3Z9Z7X2S76HoWNpLdfUXfNXW0tjjpI=
+X-Google-Smtp-Source: AGHT+IG+1vx5mJkN+16nkw6DrmjKX/bCAbSI7iHWCeWcx9NCAuHfmO/i6PUYzl4PV0Sl6Y/Ow1sbhA==
+X-Received: by 2002:adf:b197:0:b0:349:f83f:9ebf with SMTP id q23-20020adfb197000000b00349f83f9ebfmr11081490wra.5.1713876396189;
+        Tue, 23 Apr 2024 05:46:36 -0700 (PDT)
 Received: from [192.168.0.102] ([176.61.106.227])
-        by smtp.gmail.com with ESMTPSA id r16-20020a5d6950000000b003477d26736dsm14506412wrw.94.2024.04.23.05.43.50
+        by smtp.gmail.com with ESMTPSA id y7-20020a5d6207000000b00346f9071405sm14531796wru.21.2024.04.23.05.46.34
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 23 Apr 2024 05:43:52 -0700 (PDT)
-Message-ID: <d13fd47e-1ecd-4aa8-844b-cd260e9fa437@linaro.org>
-Date: Tue, 23 Apr 2024 13:43:49 +0100
+        Tue, 23 Apr 2024 05:46:35 -0700 (PDT)
+Message-ID: <44d6ab8c-3810-46ac-8e54-c125b5c29199@linaro.org>
+Date: Tue, 23 Apr 2024 13:46:33 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 11/35] media: s2255: Use refcount_t instead of atomic_t
- for num_channels
+Subject: Re: [PATCH 12/35] media: platform: mtk-mdp3: Use refcount_t for
+ job_count
 To: Ricardo Ribalda <ribalda@chromium.org>,
  Martin Tuma <martin.tuma@digiteqautomotive.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
@@ -126,15 +111,15 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
  linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org
 References: <20240415-fix-cocci-v1-0-477afb23728b@chromium.org>
- <20240415-fix-cocci-v1-11-477afb23728b@chromium.org>
+ <20240415-fix-cocci-v1-12-477afb23728b@chromium.org>
 Content-Language: en-US
 From: Bryan O'Donoghue <bryan.odonoghue@linaro.org>
-In-Reply-To: <20240415-fix-cocci-v1-11-477afb23728b@chromium.org>
+In-Reply-To: <20240415-fix-cocci-v1-12-477afb23728b@chromium.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240423_134400_638329_CB5CDB82 
-X-CRM114-Status: UNSURE (   9.84  )
+X-CRM114-CacheID: sfid-20240423_054638_501168_C118B0A8 
+X-CRM114-Status: UNSURE (   8.52  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -151,25 +136,19 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 15/04/2024 20:34, Ricardo Ribalda wrote:
-> Use an API that resembles more the actual use of num_channels.
+> Use an API that resembles more the actual use of job_count.
 > 
 > Found by cocci:
-> drivers/media/usb/s2255/s2255drv.c:2362:5-24: WARNING: atomic_dec_and_test variation before object free at line 2363.
-> drivers/media/usb/s2255/s2255drv.c:1557:5-24: WARNING: atomic_dec_and_test variation before object free at line 1558.
+> drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c:527:5-24: WARNING: atomic_dec_and_test variation before object free at line 541.
+> drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c:578:6-25: WARNING: atomic_dec_and_test variation before object free at line 581.
 
-Hmm, that commit log needs more detail.
+Same comment here as per the previous patch.
 
-"Convert from atomic_t to refcount_t because refcount_t has memory 
-ordering guarantees which atomic does not, hence the WARNING for the 
-free after the atomic dec."
-
-Something like that.
-
-I'll leave it up to yourself to decide if this warrants a Fixes:
-
-I don't think so myself because the previous code doesn't seem to matter 
-to the decrement and free.
+You should explain in terms of the memory ordering that refcount_t gives 
+so that the intention of the WARNING and the API change is well 
+communicated.
 
 ---
 bod
+
 
