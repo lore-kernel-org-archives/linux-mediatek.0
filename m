@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9B73C4345F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Apr 2024 16:40:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41530C4345F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Apr 2024 16:43:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PnokyArXxcyIbQ437WBi+fXlNam0sB9x6yTE3BbNzdE=; b=wh/h/ONve53jS6JB5Oxu0gNrt9
-	JN8mF35TaTQgtBbNXtYBWi4Qch+irRgIB9DRhv/csJo6l1iWnNuRqxzkgvGqiLpPRLzVud6RaInQJ
-	QGvtQcI7u0AMhx4d1JI6kgbbhqyC97eDWRcoIYcgxpi2kKG1bkjIg14v5w/uh9QTqBospcC2PWhlv
-	qZbLmgTAixky2Izy/gQgMZSVCU208eL0Ulvf9b1gebt6H39qesL1b/4Fr2yDKxbQg64fDsq2YVyfV
-	vFd1lXGEW3FodBdaNlp3qVQLV7GXWndArm/2v+K9PP/QRV30vgNFJv5Vdg+FChW49NTJdVxQ6ITbC
-	UytAEy8A==;
+	bh=AAjd9LkEDNuVK7j7GhyFYBnO65hiE7cXAXMhivu0jgk=; b=FMopgtwB/7yUpUNL4cRwD4ownI
+	T172cRStSXBCUBLZZ0p7DES0aPLnHC8jSEtHFsCLEUZpIRrppukswmDns2jnSAm0J+Il3YY/J6dcl
+	RE+7y2rwuG2VeLeXBU6hUBd+4qvqtBkN5yhME2ydmZl0yqVZPif+VTmbxtLvPmA+1H/CZdLG5AhpW
+	INprEl3J6oLXk7nLoIx+5pf4p8rgsjJlsGhcVOgNIxoyzlveCkiUOcW8soXOWyTRHjRJXyZy4TU1K
+	4WaAq6BDs+T44oHkL7Rd+Up/pTlPepXfBlmHpeo5UiVaLG5Y2EL0OcbkAuXhONfYwhupinw7KbD+Z
+	MYDYA03w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rzJBy-00000000mpP-1h46;
-	Tue, 23 Apr 2024 16:40:26 +0000
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+	id 1rzJEh-00000000ndh-1nbK;
+	Tue, 23 Apr 2024 16:43:15 +0000
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rzJBj-00000000me8-128e
+	id 1rzJEP-00000000naH-138g
 	for linux-mediatek@lists.infradead.org;
-	Tue, 23 Apr 2024 16:40:14 +0000
-Received: by mail-wr1-x433.google.com with SMTP id ffacd0b85a97d-34782453ffdso5974016f8f.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 23 Apr 2024 09:40:10 -0700 (PDT)
+	Tue, 23 Apr 2024 16:42:58 +0000
+Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-41a5b68eceeso17865965e9.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 23 Apr 2024 09:42:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1713890409; x=1714495209; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1713890575; x=1714495375; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=PnokyArXxcyIbQ437WBi+fXlNam0sB9x6yTE3BbNzdE=;
-        b=lDRgJxifCzBzotzzO/NsLYUKUP5PVTpoL7oZI2rWJOrD9z4n2shBNVDHp/Iz+nYJYh
-         XWtnq/v+8Z+Npt+ektQdgyFYOQp/j/sNpl4pvBDHrIlDZb4xe8Moiy3YetKJJhY4PvsN
-         nXN+lJ/8pNU4dQsSjG2zqtaLgQS/zp6bwn/RnNj3xWZnOPp9cJugY74UG5a11MHkQGCK
-         Uu3sDIpupmntS/keBrSj/qIp8+36r7tw0J/36tbnVp9ZnunApBscOIgDR5fzKL91H5gh
-         J6sUhvMhsFSu7OPwes5Iipiz9oKbx6XN6RluHaJAs61bayU8atf1M3pi1/hcqj3VzuMx
-         b+FA==
+        bh=AAjd9LkEDNuVK7j7GhyFYBnO65hiE7cXAXMhivu0jgk=;
+        b=tToiVWbI2I5dazoGCYUGT8ZwGFsUhF0fV1/ZQ6dAtkzzxgYM5+3OjArxoxn7VPlI1J
+         VQ6vzXbvSI1Tw8111RxvLiIMdHeejCes2Y9q/RtBQNvNJ9fLmq1nKKhuKCYfbVedVCnt
+         biKGKu4SMaXL05csbdKdpH8m+KCeShfVxCdNJ9GXo6MFpJPiwvuYaLf/VhrDaMkGTxcj
+         IySo2BF+UIlZPU8dz03glD6Hp/HbEyB2i63ZU4ZT8jgZGb0eSBVCmnCf3KOzQPohKwot
+         mGKcvaAAhqazbpuyToY8nl5eRLOH6nDe4TvlJkmy1YVWg9t1mbd6oiT7Pges/6TUyL10
+         w8Vw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713890409; x=1714495209;
+        d=1e100.net; s=20230601; t=1713890575; x=1714495375;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=PnokyArXxcyIbQ437WBi+fXlNam0sB9x6yTE3BbNzdE=;
-        b=qTjdMVhkoQjLaAKrHu4sxf7YLnFzoC/+5Q5aS0vH9iMyUIaSe5/z+oIkQ6e2UHA8N8
-         CWIP1uwLUcsGZccJ0ZyN0E3a++Iw0dA/+xR9Tbh5APLuLjn1Ci5uPk9aHHubyvIryqt+
-         z3noaPA1X5b2k12Pm9dfEMwHvm94AUpYvcLphrJM9+DgmFU9D/0yjbDXywU7Q6xIhBkZ
-         LJclBnqOqdqu145JaWYjX+iTWRnAogfHbGE2Jn7JWUTU87dXUjdT65/yL1olom8L0OXF
-         6oXtQFLD5JV39P/XqcL3HpiSwjZo0UO2WD+oNiFQPl3wmPsOoacNHQI9K5HnDMnMBODj
-         pIBQ==
-X-Forwarded-Encrypted: i=1; AJvYcCX5t6xeLe8XtFKiYYu+ZFG7L5yEO6lDrsI7cbaU9mK2cnqvwAKJBp7OtqNlZUMc1kZ6X5D4WAuDjh9naMOH8+O7rm07IxctITeog1glDomLqi+j
-X-Gm-Message-State: AOJu0Yx/axM8tMIUWSFaLkx0BglE2F45NREE3S11xg/PcgRASTLVvQh0
-	LYK2d9ts6vszrJjnJSCKZix2iTx8yhG+J0BBcVf3e6oSWwZqJKZ/ifVEDknigtU=
-X-Google-Smtp-Source: AGHT+IEt0kyNa/ubkeo1mtCZlcqjs3AUlplSYGY2vYsnPCR+hlV65yLYcKKdjfNDUj8XC7Fvmk6LWw==
-X-Received: by 2002:adf:fa88:0:b0:34a:d130:611b with SMTP id h8-20020adffa88000000b0034ad130611bmr7073198wrr.17.1713890408973;
-        Tue, 23 Apr 2024 09:40:08 -0700 (PDT)
+        bh=AAjd9LkEDNuVK7j7GhyFYBnO65hiE7cXAXMhivu0jgk=;
+        b=gElUpy03PeZx4s5a6kEU4v39mwj/4BfmQtW80MNuuNw3XNfEAShAdKm6NteBUp73W0
+         QZHMPXhAaVpjndP9myg5ksAKJbOTlNRbw+HDZVxeLx94IX+DoX/R8iTayzka0FSvD7jR
+         8hVGpag2RUSz2PTF5sNplXVfYOlJHDXgIxKSmGiYrJug/mvER3WMGVSYM5QWiiBZ4TKn
+         QTBK3pdaz8/3RP3uSG1wUiVc1bF3Rk8mSC/o/nAuwEAs75HzlGrLUaCBXZs0BZ7dZGVV
+         FChJEa7v/r7m+p8cFNGiw6TZiliSC39PD0PVYu/eXpqATLAcrcAlFWqIm+JCExi66DzM
+         etfA==
+X-Forwarded-Encrypted: i=1; AJvYcCURNgcBzHTq/1Yngnz5KzdZKQbRs+CxyscUb9C7HKPQBc+fsyxpz7dPQKknvD7bOS7Kb8krvSitiHWeROp9T1GuE9lwh0UxKp/VJFx72qZfs9fR
+X-Gm-Message-State: AOJu0Yy4Ft3s4nXLsGFrSv+P1bQ7IxH56F/Rsj/OSWFgxpoFFJZ9YqUY
+	EPNkvoRvxDIm2GLTBDYhYZqm4a/lSQ40Bl/QAaPFuKY2HsewQB2bV1n8DmQwUYg=
+X-Google-Smtp-Source: AGHT+IFrxYPbNd0JIn8yeAWouLUX4KO2HR4fWg0b0VJjkA0zy4qA+fxtUoj+497CZ/NN5m4uB+meNA==
+X-Received: by 2002:a05:600c:1c9e:b0:418:a5fc:5a5b with SMTP id k30-20020a05600c1c9e00b00418a5fc5a5bmr10146720wms.36.1713890575406;
+        Tue, 23 Apr 2024 09:42:55 -0700 (PDT)
 Received: from [192.168.0.102] ([176.61.106.227])
-        by smtp.gmail.com with ESMTPSA id bb6-20020a1709070a0600b00a55b020a821sm3270479ejc.13.2024.04.23.09.40.05
+        by smtp.gmail.com with ESMTPSA id jg1-20020a05600ca00100b004183e983d97sm20619705wmb.39.2024.04.23.09.42.53
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 23 Apr 2024 09:40:08 -0700 (PDT)
-Message-ID: <90569329-62e1-472d-88ab-c93b44abb60c@linaro.org>
-Date: Tue, 23 Apr 2024 17:40:04 +0100
+        Tue, 23 Apr 2024 09:42:54 -0700 (PDT)
+Message-ID: <3f5c46bc-6fe8-45a4-8929-7b93b276478f@linaro.org>
+Date: Tue, 23 Apr 2024 17:42:53 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 14/35] media: dvb-frontends: drx39xyj: Use min macro
+Subject: Re: [PATCH 19/35] media: stk1160: Use min macro
 To: Ricardo Ribalda <ribalda@chromium.org>,
  Martin Tuma <martin.tuma@digiteqautomotive.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
@@ -109,15 +109,15 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
  linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org
 References: <20240415-fix-cocci-v1-0-477afb23728b@chromium.org>
- <20240415-fix-cocci-v1-14-477afb23728b@chromium.org>
+ <20240415-fix-cocci-v1-19-477afb23728b@chromium.org>
 Content-Language: en-US
 From: Bryan O'Donoghue <bryan.odonoghue@linaro.org>
-In-Reply-To: <20240415-fix-cocci-v1-14-477afb23728b@chromium.org>
+In-Reply-To: <20240415-fix-cocci-v1-19-477afb23728b@chromium.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240423_094011_459752_EE66726C 
-X-CRM114-Status: UNSURE (   8.17  )
+X-CRM114-CacheID: sfid-20240423_094257_365712_77106AA2 
+X-CRM114-Status: UNSURE (   7.95  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -137,20 +137,18 @@ On 15/04/2024 20:34, Ricardo Ribalda wrote:
 > Simplifies the code.
 > 
 > Found by cocci:
-> 
-> drivers/media/dvb-frontends/drx39xyj/drxj.c:1447:23-24: WARNING opportunity for min()
-> drivers/media/dvb-frontends/drx39xyj/drxj.c:1662:21-22: WARNING opportunity for min()
-> drivers/media/dvb-frontends/drx39xyj/drxj.c:1685:24-25: WARNING opportunity for min()
+> drivers/media/usb/stk1160/stk1160-video.c:133:12-13: WARNING opportunity for min()
+> drivers/media/usb/stk1160/stk1160-video.c:176:13-14: WARNING opportunity for min()
 > 
 > Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 
-Code is fine but, I think your commit log could use some love.
-
-"Replace ternary assignments with min() to simplify and make the code 
-more readable."
-
-Not super-important.
+Show the commit log some love, then add
 
 Reviewed-by: Bryan O'Donoghue <bryan.odonoghue@linaro.org>
+
+For patches 16 through 19.
+
+---
+bod
 
 
