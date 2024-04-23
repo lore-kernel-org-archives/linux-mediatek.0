@@ -4,121 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 037E8C4345F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Apr 2024 16:49:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7315C4345F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Apr 2024 17:07:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ldVzTwv3fwEiTXBi6dYuRPKuiRpDDdt1y7A0qo9Q2QA=; b=j3BJmQeicHvUCBaP2ZgbKA6JuO
-	5q+t50ylfVGMuEiCalyTnglypBzbGamFqAdtxKDJW6hDhL3Nny8QyB3T19M5+FijeJEulCXEV4cZt
-	Bq+QT/Zex7don2GAqwELhSthcHt65MOpoojlCxDjsboCuW/kn1bazYQsJkqCbz2wPgvXRIE11PqFh
-	cp2PUjnmXXNUvLcuXt1+wUKxOqfqonGV1UtSzIW25rAGfVmZmOlpk1UjramNw0m861WOjiLEgHI6n
-	9s722q9YpOpvgqKUdPX+X0mUB534j2rHnDCWm3ZSWZIdsoem6wzUWo7eGdIYnZX9s2UM6s/r+vw9x
-	/x3HXnrw==;
+	bh=4HfFEhDy7wrc1JJ4JwN66dtF2lU/7GHQL5ceh8i2rCk=; b=ui3Jqb/P7VQ05WS7hoP3vFBQdR
+	uVSBy4GilQAvLtH/+y2q8TrlX4HWnl9zox+UfHO/s0u98/Oqe+UdhOnvaH751xJU0A40VBUefNDgQ
+	vaSAkKQy5Jbx6js4dTSR0Y6a7/h2zD3L9OsQQn/QAyPyJ+uCgBquey05X7ELPeMxHp/63+EQ+OTEJ
+	pTLJuV480htd4NfgiNrnXfk5dS13hCK3xwMdTd6AztIQd7uv7q9iyjybBJg3Wc4Ul63J/kihUUNBR
+	bTm+p10+7GdTWaZiTlaQ0ImjaEN9bBBenU4EFhpM1OWxxYi8PMPdlYUgcV+nb9Sycwa2KtlTFLBB2
+	Pp/Afx7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rzJKZ-00000000oo6-1nWo;
-	Tue, 23 Apr 2024 16:49:19 +0000
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+	id 1rzJcW-00000000t7g-2WsM;
+	Tue, 23 Apr 2024 17:07:52 +0000
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rzJKV-00000000omh-3asc
+	id 1rzJcP-00000000t1x-2asT
 	for linux-mediatek@lists.infradead.org;
-	Tue, 23 Apr 2024 16:49:17 +0000
-Received: by mail-wr1-x436.google.com with SMTP id ffacd0b85a97d-34b029296f5so2614916f8f.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 23 Apr 2024 09:49:14 -0700 (PDT)
+	Tue, 23 Apr 2024 17:07:50 +0000
+Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-4187c47405aso40241005e9.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 23 Apr 2024 10:07:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1713890953; x=1714495753; darn=lists.infradead.org;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1713892063; x=1714496863; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=ldVzTwv3fwEiTXBi6dYuRPKuiRpDDdt1y7A0qo9Q2QA=;
-        b=Gfw6OjQt1zB/2JQyTbmiArvcIGPx6ZdKpc2vcJ3wv1yu0EyVfWrdNH1ul9J4nbMuwp
-         GOJqHtTEXWuvW5FxOh3WEtZQzk9DQrOZoTb/vpjF/GjH67xY800JlvBegOyXh4bQdcBE
-         exGu5nW5OAwIS9PGNpw65Lrv6L3Gw9BIp8SyP0XxWNyLXRqqP3leWkwpB7k2DTIwzS7v
-         Tc2uXHfCiVC1U+hmclVEYmLBjsFukoC/22oYKPeNfrQMqNNdxfqPkjWMZqxjpH6S79yc
-         Kof/aN49r3b7MZBRD+qUqGiNKuSjRZlYg4InrxT6Sc8YgNCcX8tG8/PNvhc8sGvfSimS
-         aYVw==
+        bh=4HfFEhDy7wrc1JJ4JwN66dtF2lU/7GHQL5ceh8i2rCk=;
+        b=MkGXJXBw62VH5hjkByIGmcp5pP0RGSTDlQJ5EtySIACDtcdv1AmtnhM6S9hRZOfGOF
+         A+r8OPsMTJeEiadhxJA7NKDbhxze7xgSlsk1mAqDt37Qn3CZSvqGmXH+UkMLfOPqCnHo
+         nd1DtuLO6LiLQ07zmsnfUiUSmUqwNg4Z0yL/r+efXeCxBkP7p18tV+OGK0BP/jXOWd0n
+         MDZFMGKmhY7ibxAkInUizlXtvOHY+OXUR1UHRa9mv4554MwBVN1dpbR7Qm7ez/QnkTvG
+         5gDxWU1NDMKGYLDWf0mkcYxzDYV2RaxQ4g8pHIZzHHk5YcH8US3OnRUKXbfs1NJm48Jw
+         RmEw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713890953; x=1714495753;
+        d=1e100.net; s=20230601; t=1713892063; x=1714496863;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=ldVzTwv3fwEiTXBi6dYuRPKuiRpDDdt1y7A0qo9Q2QA=;
-        b=nJxB+H+m2kyR4FgcMcaqRGh2IDofJLL7ZssmseYJUtMT91boJpv28Cmn1iQH4PqhYw
-         j7Y/S0bFSV+uY+8Gf3ynqLcRyPBmNg1q1qvSPxSnNqHx6+k07ZOgKoPcyu+Xh2DSlOTE
-         T3JIVYDiCjj9CfNVW4RxJGPLkjk024P6NzBscRBZ24f2yZ7KeGkVcOzhNvDWLuyq/vEB
-         LBTav5Hoa4r4eFJN85saiRhEc4DUXTeIrPe/TPuRtNr0cHhvgeD/hFA9JmMXSZZMfTq5
-         9dKe7cpkkpPrk64vxAR8HmmsHeVozg47JbMSapdKSkgJpVy6p/6fc2qnibTIhubsEgdq
-         5TaA==
-X-Forwarded-Encrypted: i=1; AJvYcCWeamCCqz+fI9EtMpr+FnvWIXTi7fuDCoKbx7WwZI/MGaeqFu27ANaeHWxVPIIwX5G4tdXLCJCBvX6goVPJuJA1DMfTeUt9KzIK0MRqO9oUWers
-X-Gm-Message-State: AOJu0YxOml0EJGYfxgWaGCSqImPnIM27pttpLsFgt9Xpdr3zALjhHzhH
-	yp0us2NF5q1lMigv6itC9Jdo3DqKVmi6/yvxzhg+l4fQZPuJUdB+sJAc3SiXsEY=
-X-Google-Smtp-Source: AGHT+IFFjiX0lGTvRX6PkqniQZmmmeygPyoAEul4datqZN6BwlChbzsJP3H/9AAw03G7QKIB4ZDERg==
-X-Received: by 2002:adf:fa88:0:b0:34a:d130:611b with SMTP id h8-20020adffa88000000b0034ad130611bmr7093753wrr.17.1713890953167;
-        Tue, 23 Apr 2024 09:49:13 -0700 (PDT)
-Received: from [192.168.0.102] ([176.61.106.227])
-        by smtp.gmail.com with ESMTPSA id n12-20020a5d67cc000000b0034a51283404sm12576954wrw.72.2024.04.23.09.49.11
+        bh=4HfFEhDy7wrc1JJ4JwN66dtF2lU/7GHQL5ceh8i2rCk=;
+        b=foU76qAu/vHLxU6UnLDGHAPRzJkder4KhCdTP8vqjvWhuqQAnR/RgNAs24V8hRULHJ
+         Z/OsDZZWtAyY/JIcr046Aq/40Eelz/J1zC3K9lpgHAzS6HsSetPih6do6DGVzCLZOd9T
+         VAfUr97qMWG/pDhcc4UhEZpghCe+VIMp4s2XCkOcPlfxIeLKihkgs5ru0DyiDeTt8rCX
+         WywR7pOXG2RSVByXtaUXsnFFh/HOlv1o3vOrDT6zRHIKpTHCtlxSvTFAaQLXfol8Bu7E
+         +p/kzuGCiV9CEl2d96D0kP1njXns8IUpoGnm2HhNuaZ99pcKwm+6IJNzBSmu+8ihP2SU
+         tfWA==
+X-Forwarded-Encrypted: i=1; AJvYcCXQtoj7lo66mYrWF2LHWTG5wgTQpTT1Kyx9wok4iRS9UsZRGBOM7HqnQFbGT6SbhLVYA5LNh6aMr6Qex2k1dDgNstcqOzDh9RCgwBKCC7t76IQZ
+X-Gm-Message-State: AOJu0Yxrcm8EqiL16Zxr1xYY4PyxNHOynHB8hMggyKTTerhsNQhAzXD6
+	qzkyzqNE1kN38R2hOoz2nSub6eQm8Y1Y2qr+uQuHwo871T3PqXM/yHfjTP12su4=
+X-Google-Smtp-Source: AGHT+IEeml7xlDPvKVEJlBPjkyqYO1K/a3UWyW6pbqsDEH7Dp3zHkT8MMXjVjKAP5avnRrImiMosWg==
+X-Received: by 2002:a05:600c:a001:b0:418:a7a7:9bd7 with SMTP id jg1-20020a05600ca00100b00418a7a79bd7mr8084322wmb.24.1713892063377;
+        Tue, 23 Apr 2024 10:07:43 -0700 (PDT)
+Received: from [192.168.1.172] ([93.5.22.158])
+        by smtp.gmail.com with ESMTPSA id h19-20020a05600c351300b00414659ba8c2sm20996935wmq.37.2024.04.23.10.07.42
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 23 Apr 2024 09:49:12 -0700 (PDT)
-Message-ID: <81770681-7ddb-41b4-8202-8dd44014c5e8@linaro.org>
-Date: Tue, 23 Apr 2024 17:49:10 +0100
+        Tue, 23 Apr 2024 10:07:42 -0700 (PDT)
+Message-ID: <a8730bb5-4f51-4c75-b049-6f00e3de5855@baylibre.com>
+Date: Tue, 23 Apr 2024 19:07:41 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 26/35] media: venus: Refator return path
-To: Ricardo Ribalda <ribalda@chromium.org>,
- Martin Tuma <martin.tuma@digiteqautomotive.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Hugues Fruchet <hugues.fruchet@foss.st.com>,
- Alain Volmat <alain.volmat@foss.st.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Chen-Yu Tsai
- <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Samuel Holland <samuel@sholland.org>,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Sowjanya Komatineni <skomatineni@nvidia.com>,
- Luca Ceresoli <luca.ceresoli@bootlin.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
+Subject: Re: [PATCH v3 03/18] ASoC: dt-bindings: mt6357: Add audio codec
+ document
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Hans Verkuil <hverkuil@xs4all.nl>, Sergey Kozlov <serjk@netup.ru>,
- Abylay Ospan <aospan@netup.ru>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Dmitry Osipenko <digetx@gmail.com>,
- Stanimir Varbanov <stanimir.k.varbanov@gmail.com>,
- Vikash Garodia <quic_vgarodia@quicinc.com>,
- Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konrad.dybcio@linaro.org>,
- Benjamin Mugnier <benjamin.mugnier@foss.st.com>,
- Sylvain Petinot <sylvain.petinot@foss.st.com>,
- Jacopo Mondi <jacopo+renesas@jmondi.org>,
- Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
- Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
- =?UTF-8?Q?Niklas_S=C3=B6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
- Pavel Machek <pavel@ucw.cz>
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-stm32@st-md-mailman.stormreply.com,
- linux-arm-kernel@lists.infradead.org, linux-staging@lists.linux.dev,
- linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org
-References: <20240415-fix-cocci-v1-0-477afb23728b@chromium.org>
- <20240415-fix-cocci-v1-26-477afb23728b@chromium.org>
+ Lee Jones <lee@kernel.org>, Flora Fu <flora.fu@mediatek.com>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+ Sumit Semwal <sumit.semwal@linaro.org>,
+ =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>,
+ Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
+ Rob Herring <robh@kernel.org>
+Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org
+References: <20240226-audio-i350-v3-0-16bb2c974c55@baylibre.com>
+ <20240226-audio-i350-v3-3-16bb2c974c55@baylibre.com>
+ <481abafd-33af-44a6-8460-068b4a85d764@linaro.org>
 Content-Language: en-US
-From: Bryan O'Donoghue <bryan.odonoghue@linaro.org>
-In-Reply-To: <20240415-fix-cocci-v1-26-477afb23728b@chromium.org>
+From: Alexandre Mergnat <amergnat@baylibre.com>
+In-Reply-To: <481abafd-33af-44a6-8460-068b4a85d764@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240423_094915_957552_C5E7DA0A 
-X-CRM114-Status: UNSURE (   9.14  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240423_100745_840788_91875416 
+X-CRM114-Status: GOOD (  14.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -133,24 +111,89 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 15/04/2024 20:34, Ricardo Ribalda wrote:
-> This is a nop, but let cocci now that this is not a good candidate for
 
-*know
 
-> min()
+On 09/04/2024 17:55, Krzysztof Kozlowski wrote:
+>> +
+>> +additionalProperties: false
+>> +
+>> +examples:
+>> +  - |
+>> +    codec {
+>> +        mediatek,micbias0-microvolt = <1900000>;
+>> +        mediatek,micbias1-microvolt = <1700000>;
+>> +        mediatek,vaud28-supply = <&mt6357_vaud28_reg>;
+> Sorry, this does not work. Change voltage to 1111111 and check the results.
 
-But I think you should change the commit log ->
+Actually it's worst ! I've removed the required property (vaud28-supply) but the dt check pass.
+Same behavior for some other docs like mt6359.yaml
 
-"Rewrite ternary return assignment to mitigate the following cocci WARNING."
+The at24.yaml doc works as expected, then I tried compare an find the issue, without success...
 
-> drivers/media/platform/qcom/venus/vdec.c:672:12-13: WARNING opportunity for min()
-> drivers/media/platform/qcom/venus/vdec.c:650:12-13: WARNING opportunity for min()
+I've replaced "codec" by "audio-codec", according to [1].
+I've tried multiple manner to implement the example code, without success. I'm wondering if what I 
+try to do is the correct way or parse-able by the dt_check.
 
-then
+If I drop this file and implement all these new properties into the MFD PMIC documentation directly, 
+I've the expected dt_check result (function to good or wrong parameters)
 
-Reviewed-by: Bryan O'Donoghue <bryan.odonoghue@linaro.org>
 
----
-bod
++++ b/Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml
+@@ -37,9 +37,32 @@ properties:
+    "#interrupt-cells":
+      const: 2
+
+-  codec:
++  audio-codec:
+      type: object
+-    $ref: /schemas/sound/mt6357.yaml
++    properties:
++      vaud28-supply:
++        description: 2.8 volt supply phandle for the audio codec
++
++      mediatek,hp-pull-down:
++        description:
++          Earphone driver positive output stage short to
++          the audio reference ground.
++        type: boolean
++
++      mediatek,micbias0-microvolt:
++        description: Selects MIC Bias 0 output voltage.
++        enum: [1700000, 1800000, 1900000, 2000000,
++               2100000, 2500000, 2600000, 2700000]
++        default: 1700000
++
++      mediatek,micbias1-microvolt:
++        description: Selects MIC Bias 1 output voltage.
++        enum: [1700000, 1800000, 1900000, 2000000,
++               2100000, 2500000, 2600000, 2700000]
++        default: 1700000
++
++    required:
++      - vaud28-supply
+      unevaluatedProperties: false
+
+    regulators:
+@@ -88,6 +111,12 @@ examples:
+              interrupt-controller;
+              #interrupt-cells = <2>;
+
++            audio-codec {
++                mediatek,micbias0-microvolt = <1700000>;
++                mediatek,micbias1-microvolt = <1700000>;
++                vaud28-supply = <&mt6357_vaud28_reg>;
++            };
++
+              regulators {
+
+
+Is the implementation above looks good for you ?
+
+
+[1] 
+https://devicetree-specification.readthedocs.io/en/latest/chapter2-devicetree-basics.html#generic-names-recommendation
+
+-- 
+Regards,
+Alexandre
 
