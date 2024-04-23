@@ -4,62 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A922AC4345F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Apr 2024 11:39:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA173C4345F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Apr 2024 12:23:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xYT6jJUSJy5wHOowMTeCZ3pp3Tmnao3IC/VvUAo2Hv0=; b=4dspltfxn4IIt34Fi0KwxWuyqN
-	CO7GDSHf5tDEuyfNwBhTKhdhjRS6d4Mb2Q1AXzf4pccTAOUsAERF8yMWMS8fzkwRbNepTI0L4e+9q
-	OxFnEVcoEF1CRZoO2AVogh7jJTWCHarjtpsdgZ9cV+kQQfJFPehybFWrdkOPl8g+ONKONkglSbWSF
-	jtmPcmZLutPIuvUXOTmghQSPm2OgMAnjeUMyOqHjTXxrb/KXodL1bWX3jHK1WGHBBgh6A34Tby+oT
-	LYFSAEDQ+OHj3+e9bB3exoQx0ZpTd2G2CZi6OJ3YQh7gLqY3u1dxKuymzN6bOGxQi88IM4WQeMtJA
-	TyTGC9Gw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zdEuS8XRlyMWs8i+nahfC/xh1vWX2u7uUNV94NmtyxI=; b=NqLtEC71KIIkf2AUSGcQGTtgcc
+	ysTSD6m6EBMtNBb7imS7qaH9nNEaiBcyHKIJfZGjl8WyyRYsaaC8uoVHME8H+N6MfGRnrk7TFL6KK
+	re5ik4KQTdyKonXlxhhsJI4iHd+AA5oWQ0OVZNcALYhMvhrA1DY+P2UCimqnblyUAMMPUv9GVo6F9
+	5o0iK4lhlNbVMCNRr9dGGG88E79H+r9IkWl+sW4OxTr9Ph4n3kTF9RtWJy7gxvEBQAAP3l35jOayd
+	q72T1KUbSWtyLRO0mug55dY8XB1hhx429rgtes+QtRZXwXrJsBSEN8Rmdl2zv+ULoDSAw0+vJUWyg
+	mtPU2p9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rzEUd-0000000H8xz-0aYk;
-	Tue, 23 Apr 2024 11:39:23 +0000
-Received: from jabberwock.ucw.cz ([46.255.230.98])
+	id 1rzFBH-0000000HMZF-2OE4;
+	Tue, 23 Apr 2024 12:23:27 +0000
+Received: from mail-yb1-xb2c.google.com ([2607:f8b0:4864:20::b2c])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rzEUT-0000000H8wQ-0P7B;
-	Tue, 23 Apr 2024 11:39:14 +0000
-Received: by jabberwock.ucw.cz (Postfix, from userid 1017)
-	id ED98A1C0080; Tue, 23 Apr 2024 13:39:03 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ucw.cz; s=gen1;
-	t=1713872343;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=xYT6jJUSJy5wHOowMTeCZ3pp3Tmnao3IC/VvUAo2Hv0=;
-	b=OYBl3rA4LQLGaPvpDvGoyAou52frnZRv8qUTpt62HjtQitHp9LXNvWcUvP32zyzj39R6yv
-	2nStxD7L9S+yKLQSfmLFfojU+wgpycekvcJgvVeSGPYffHv6Ukoh2hu44tXp9QzyO8Pt9o
-	BVa+vkNKuBif4ftpoGlXsqPlR8ZYFgs=
-Date: Tue, 23 Apr 2024 13:39:03 +0200
-From: Pavel Machek <pavel@ucw.cz>
-To: Sasha Levin <sashal@kernel.org>
-Cc: linux-kernel@vger.kernel.org, stable@vger.kernel.org,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Joerg Roedel <jroedel@suse.de>, yong.wu@mediatek.com,
-	joro@8bytes.org, will@kernel.org, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com, iommu@lists.linux.dev,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH AUTOSEL 4.19 7/7] iommu: mtk: fix module autoloading
-Message-ID: <Zied1/2cELhaQupG@duo.ucw.cz>
-References: <20240422232040.1616527-1-sashal@kernel.org>
- <20240422232040.1616527-7-sashal@kernel.org>
+	id 1rzFBE-0000000HMWF-1H9M
+	for linux-mediatek@lists.infradead.org;
+	Tue, 23 Apr 2024 12:23:26 +0000
+Received: by mail-yb1-xb2c.google.com with SMTP id 3f1490d57ef6-de45385a1b4so5240885276.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 23 Apr 2024 05:23:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1713874997; x=1714479797; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=zdEuS8XRlyMWs8i+nahfC/xh1vWX2u7uUNV94NmtyxI=;
+        b=qB8vE3qUIxbf6A5nQ7ruJlmHhpmh5BrPY7iQ3Bez7lUxx96IuGzC+yYD/ELFEuMc35
+         hf3HbvIVOPFuW1u4fVqUbo8RzlmOS4iPpkkN3bOd04MZzsxRBoWmh1uPCguDEekUWr7M
+         4U5bIXfFSrI2FhIClMdTkyAF9c+I3WxkMQbdLLFmq0uq3l7y2hn2mJIPYRNb3Mbph0/D
+         qsTfk63BEbuE6JR7yMfOb1f9RI82f416iL+tUvJw3wDnRHWrGI/5V/hsKdkd/GkbnEkQ
+         vXRlTdGziy92UIJeH14hiQ+hqNfIdrccI0m0x7IpmYyvSJFLf8epXDIxH7jPdVpMsaS6
+         Yfcg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1713874997; x=1714479797;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=zdEuS8XRlyMWs8i+nahfC/xh1vWX2u7uUNV94NmtyxI=;
+        b=Bw6o0vJih9ogNbqWulsNOcjN5+miduUcx1N/tlu+vR0U1EE/7NJg+AAZN5UYkDFOHN
+         ifDiMkchnXfuVmRoZt+5X2M+cRfXjKaUBDcbeXBAISk3odvrY9NFti2JUvfFxQrTyHUr
+         hRCAJDV8bD32NIt4YSdc9NIbzbrPJncSVkYwnuPhNTx4phg7l1xkzrJ96Dq2PTA5Rjz3
+         Y7YwjB/GLeK+MS/3ujHjGYZml7Fi+F9gww0OuhVos4I+ElJjcfPvPLgt7IzsmjRpRnPE
+         3dBH4fR7xRKo5VJMX+ETxn9mVgToJZimmbcHU/iO5Q+tWZUR1hZ9dm2YD8TczXbifw0L
+         QvUw==
+X-Forwarded-Encrypted: i=1; AJvYcCXW2ol7lTj6P19pyALfvND2rGeWwCHHA6RKrtH37U99MjQZWRzRycAvMZb0imRtztB9hj3SNod68kEol9O+M3vbKVRcL4lZNJah8AisFMuJxBIt
+X-Gm-Message-State: AOJu0YzTVi2WpW7PdA79I9MPjIdJ8gkgSf7FRcGZXjRZpf3wPk9ZS+Sm
+	8qsyVSuP9BYiaNgakWCq1rp0b8CPogBUyfYW4k7D2zY0yaU/deVf7cUkx7c9MMgTOTLVaP5WPSR
+	I+Xqq4rf42I/+UBhlnXlTv63jSH4b3vx4Kj6zFg==
+X-Google-Smtp-Source: AGHT+IFGEmHXL5CwAkBYa70XCoYWKwe8UnjgAcbc2h7iJmpsycDinZVPrwrOVKWCKX5O935DZ/QH6hClp73iSys2pzI=
+X-Received: by 2002:a25:8251:0:b0:dc7:4067:9f85 with SMTP id
+ d17-20020a258251000000b00dc740679f85mr12766959ybn.58.1713874997608; Tue, 23
+ Apr 2024 05:23:17 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="+UxX/KApw3y0ssBB"
-Content-Disposition: inline
-In-Reply-To: <20240422232040.1616527-7-sashal@kernel.org>
+References: <20240423040243.448091-1-vignesh.raman@collabora.com>
+ <20240423040243.448091-4-vignesh.raman@collabora.com> <e3a0ea8f-d306-488c-a69c-aa18078e5e03@igalia.com>
+In-Reply-To: <e3a0ea8f-d306-488c-a69c-aa18078e5e03@igalia.com>
+From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+Date: Tue, 23 Apr 2024 15:23:06 +0300
+Message-ID: <CAA8EJppaaitcXkXSFTB4-S2CbBcrAVHouB0wWiU5Nw2FvpagqA@mail.gmail.com>
+Subject: Re: [PATCH v1 3/4] drm/ci: uprev IGT and generate testlist from build
+To: =?UTF-8?B?TWHDrXJhIENhbmFs?= <mcanal@igalia.com>
+Cc: Vignesh Raman <vignesh.raman@collabora.com>, dri-devel@lists.freedesktop.org, 
+	daniels@collabora.com, helen.koike@collabora.com, airlied@gmail.com, 
+	daniel@ffwll.ch, robdclark@gmail.com, david.heidelberg@collabora.com, 
+	guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com, 
+	linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, amd-gfx@lists.freedesktop.org, 
+	linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org, 
+	virtualization@lists.linux-foundation.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240423_043913_606597_989EA3D6 
-X-CRM114-Status: UNSURE (   7.78  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240423_052324_540511_B9D3747A 
+X-CRM114-Status: GOOD (  15.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,36 +97,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Tue, 23 Apr 2024 at 13:24, Ma=C3=ADra Canal <mcanal@igalia.com> wrote:
+>
+> On 4/23/24 01:02, Vignesh Raman wrote:
+> > Uprev IGT to the latest version and stop vendoring the
+> > testlist into the kernel. Instead, use the testlist from
+> > the IGT build to ensure we do not miss renamed or newly
+> > added tests.
+>
+> Nitpick: wouldn't it be better to (1) stop vendoring the
+> testlist into the kernel in one patch and then (2) uprev
+> IGT to the latest version? I feel that this patch is changing
+> a lot of different stuff.
 
---+UxX/KApw3y0ssBB
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Definitely. Otherwise it's hard to understand whether a change to
+fails/flakes is caused by the uprev or by the testlist change. E.g. in
+several cases the list of failing subtests seems to be replaced with
+the test itself.
 
-Hi!
+>
+> Best Regards,
+> - Ma=C3=ADra
+>
+> >
+> > Skip kms tests for panfrost driver since it is not a kms
+> > driver and skip driver-specific tests. Update xfails with
+> > the latest testlist.
+> >
+> > Increase the timoout of i915 jobs to 2h30m since some jobs
+> > takes more than 2 hours to complete.
+> >
+> > Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
+> > ---
 
-> [ Upstream commit 7537e31df80cb58c27f3b6fef702534ea87a5957 ]
->=20
-> Add MODULE_DEVICE_TABLE(), so modules could be properly autoloaded
-> based on the alias from of_device_id table.
 
-This patch is queued for 4.19 and 5.15, but not 5.10. I believe that's
-wrong.
-
-Best regards,
-								Pavel
 --=20
-People of Russia, stop Putin before his war on Ukraine escalates.
-
---+UxX/KApw3y0ssBB
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EABECAB0WIQRPfPO7r0eAhk010v0w5/Bqldv68gUCZied1wAKCRAw5/Bqldv6
-8t3gAKCGrYHwFMHP8GJXLn7d7BZRrWiYFACgnWZYqAPYYddh29p9HUpGKDbADuM=
-=gPbY
------END PGP SIGNATURE-----
-
---+UxX/KApw3y0ssBB--
+With best wishes
+Dmitry
 
