@@ -4,126 +4,121 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BABE8C4345F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Apr 2024 16:06:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9B73C4345F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Apr 2024 16:40:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CN+Xdo+qqrVmatzZx3DunJ362mT1n357af35BQgYGvU=; b=G/dmxvJnCw/jSjs2NYeLRLGb3Z
-	F10Tud+5aCXVO+G8ebyq5JcO5TFG5gnCDkcCFqcTpDnwOLODe4ufnDNNwk9FqYXWc4HAmSHnTa/rI
-	hTBpKbDdhI3kEphYoS75NG5lDTPPhp0MggQ+5bdFaDFGSfYMD2wWNxoOJbt84BRhCo/Iu0ilLTh3b
-	8VSkynDvaXQc18J1DKuc0o+iMW6XBZHJGqZ3MaVimnPjJ6FQRA51KAZbQyeWCNeqiBPAyWJHCj+MO
-	oUmhBrJUXSesbZcG2B5MQtad55moMdMc9vrwRoG0ajhN3ewVWsPFaTtCb68VsX7IORfq0Ur4KvOHb
-	KtnvnxcA==;
+	bh=PnokyArXxcyIbQ437WBi+fXlNam0sB9x6yTE3BbNzdE=; b=wh/h/ONve53jS6JB5Oxu0gNrt9
+	JN8mF35TaTQgtBbNXtYBWi4Qch+irRgIB9DRhv/csJo6l1iWnNuRqxzkgvGqiLpPRLzVud6RaInQJ
+	QGvtQcI7u0AMhx4d1JI6kgbbhqyC97eDWRcoIYcgxpi2kKG1bkjIg14v5w/uh9QTqBospcC2PWhlv
+	qZbLmgTAixky2Izy/gQgMZSVCU208eL0Ulvf9b1gebt6H39qesL1b/4Fr2yDKxbQg64fDsq2YVyfV
+	vFd1lXGEW3FodBdaNlp3qVQLV7GXWndArm/2v+K9PP/QRV30vgNFJv5Vdg+FChW49NTJdVxQ6ITbC
+	UytAEy8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rzIfA-00000000e7O-0rgx;
-	Tue, 23 Apr 2024 16:06:32 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1rzJBy-00000000mpP-1h46;
+	Tue, 23 Apr 2024 16:40:26 +0000
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rzIf3-00000000e5s-0gHP;
-	Tue, 23 Apr 2024 16:06:29 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 219B861551;
-	Tue, 23 Apr 2024 16:06:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 69A23C116B1;
-	Tue, 23 Apr 2024 16:06:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1713888379;
-	bh=FILwAsaRHkKwgnboUD/MLg9UllwBZKLDBYUVOBIO2yo=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=CYCCJUWehvGRdDBW6aSv1u1pkOGUGXUETugEA5BpBk3AwUtHxXYpMGry4HKyCMI2b
-	 fMQ3Ba5KKzUZnSGntJBdmQsU5YCUr05t1lvH0SZDKv3SmYOHJ/UMRCf+V2eA+bAugm
-	 V/Cs0cNG9FHQm3l4+x0Rnhbq/nrBfcItn8mGJsXT5i6+LY3FKow7GmI5DJtEQTf1o6
-	 b8h5n25r+Tsk1oCZEJRyH2kVLIYFS2tGS8r5CJXN3cpXC5PTeLMViML+K+0KBFb4Y4
-	 Z3emvA9y+ia3s84M5DvlCACUI1gx44PFa99VvwvFd+ynSt1ws1o3c+azFX7R6M057H
-	 qgtXdF1gGQv+Q==
-Message-ID: <65a5837d-36b3-41bd-b03f-d4f93b30d5c8@kernel.org>
-Date: Tue, 23 Apr 2024 18:06:13 +0200
+	id 1rzJBj-00000000me8-128e
+	for linux-mediatek@lists.infradead.org;
+	Tue, 23 Apr 2024 16:40:14 +0000
+Received: by mail-wr1-x433.google.com with SMTP id ffacd0b85a97d-34782453ffdso5974016f8f.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 23 Apr 2024 09:40:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1713890409; x=1714495209; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=PnokyArXxcyIbQ437WBi+fXlNam0sB9x6yTE3BbNzdE=;
+        b=lDRgJxifCzBzotzzO/NsLYUKUP5PVTpoL7oZI2rWJOrD9z4n2shBNVDHp/Iz+nYJYh
+         XWtnq/v+8Z+Npt+ektQdgyFYOQp/j/sNpl4pvBDHrIlDZb4xe8Moiy3YetKJJhY4PvsN
+         nXN+lJ/8pNU4dQsSjG2zqtaLgQS/zp6bwn/RnNj3xWZnOPp9cJugY74UG5a11MHkQGCK
+         Uu3sDIpupmntS/keBrSj/qIp8+36r7tw0J/36tbnVp9ZnunApBscOIgDR5fzKL91H5gh
+         J6sUhvMhsFSu7OPwes5Iipiz9oKbx6XN6RluHaJAs61bayU8atf1M3pi1/hcqj3VzuMx
+         b+FA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1713890409; x=1714495209;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=PnokyArXxcyIbQ437WBi+fXlNam0sB9x6yTE3BbNzdE=;
+        b=qTjdMVhkoQjLaAKrHu4sxf7YLnFzoC/+5Q5aS0vH9iMyUIaSe5/z+oIkQ6e2UHA8N8
+         CWIP1uwLUcsGZccJ0ZyN0E3a++Iw0dA/+xR9Tbh5APLuLjn1Ci5uPk9aHHubyvIryqt+
+         z3noaPA1X5b2k12Pm9dfEMwHvm94AUpYvcLphrJM9+DgmFU9D/0yjbDXywU7Q6xIhBkZ
+         LJclBnqOqdqu145JaWYjX+iTWRnAogfHbGE2Jn7JWUTU87dXUjdT65/yL1olom8L0OXF
+         6oXtQFLD5JV39P/XqcL3HpiSwjZo0UO2WD+oNiFQPl3wmPsOoacNHQI9K5HnDMnMBODj
+         pIBQ==
+X-Forwarded-Encrypted: i=1; AJvYcCX5t6xeLe8XtFKiYYu+ZFG7L5yEO6lDrsI7cbaU9mK2cnqvwAKJBp7OtqNlZUMc1kZ6X5D4WAuDjh9naMOH8+O7rm07IxctITeog1glDomLqi+j
+X-Gm-Message-State: AOJu0Yx/axM8tMIUWSFaLkx0BglE2F45NREE3S11xg/PcgRASTLVvQh0
+	LYK2d9ts6vszrJjnJSCKZix2iTx8yhG+J0BBcVf3e6oSWwZqJKZ/ifVEDknigtU=
+X-Google-Smtp-Source: AGHT+IEt0kyNa/ubkeo1mtCZlcqjs3AUlplSYGY2vYsnPCR+hlV65yLYcKKdjfNDUj8XC7Fvmk6LWw==
+X-Received: by 2002:adf:fa88:0:b0:34a:d130:611b with SMTP id h8-20020adffa88000000b0034ad130611bmr7073198wrr.17.1713890408973;
+        Tue, 23 Apr 2024 09:40:08 -0700 (PDT)
+Received: from [192.168.0.102] ([176.61.106.227])
+        by smtp.gmail.com with ESMTPSA id bb6-20020a1709070a0600b00a55b020a821sm3270479ejc.13.2024.04.23.09.40.05
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 23 Apr 2024 09:40:08 -0700 (PDT)
+Message-ID: <90569329-62e1-472d-88ab-c93b44abb60c@linaro.org>
+Date: Tue, 23 Apr 2024 17:40:04 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 00/14] ASoC: Constify local snd_sof_dsp_ops
-To: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>,
- Liam Girdwood <lgirdwood@gmail.com>,
- Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
- Bard Liao <yung-chuan.liao@linux.intel.com>,
- Ranjani Sridharan <ranjani.sridharan@linux.intel.com>,
- Daniel Baluta <daniel.baluta@nxp.com>,
- Kai Vehmanen <kai.vehmanen@linux.intel.com>, Mark Brown
- <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>,
- Takashi Iwai <tiwai@suse.com>, Shawn Guo <shawnguo@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: sound-open-firmware@alsa-project.org, linux-sound@vger.kernel.org,
- linux-kernel@vger.kernel.org, imx@lists.linux.dev,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20240414-n-const-ops-var-v1-0-8f53ee5d981c@kernel.org>
- <89f8f0be-2534-46c8-9058-cabea4f68568@linux.intel.com>
- <9d1eda85-32a0-4e53-86ca-ce3137439bd7@kernel.org>
- <d046d195-6fa3-4c52-bc5f-3e5e763bc692@linux.intel.com>
- <138ac465-1576-4e86-a05d-63f8acc6fb70@kernel.org>
- <3acfbe3c-8b83-4c40-83c2-437f963fd25a@linux.intel.com>
- <7490bce3-3bd6-4beb-b8be-d47a6b0a30f0@kernel.org>
- <eaa0c99a-3b41-4444-906c-d2f005d326b9@linux.intel.com>
- <aef907ab-1087-4f49-bea4-d43ee6cebb73@kernel.org>
- <735d6dbc-86e4-4747-9bd9-2574ead7d039@linux.intel.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
+Subject: Re: [PATCH 14/35] media: dvb-frontends: drx39xyj: Use min macro
+To: Ricardo Ribalda <ribalda@chromium.org>,
+ Martin Tuma <martin.tuma@digiteqautomotive.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Hugues Fruchet <hugues.fruchet@foss.st.com>,
+ Alain Volmat <alain.volmat@foss.st.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Chen-Yu Tsai
+ <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Samuel Holland <samuel@sholland.org>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ Sowjanya Komatineni <skomatineni@nvidia.com>,
+ Luca Ceresoli <luca.ceresoli@bootlin.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Hans Verkuil <hverkuil@xs4all.nl>, Sergey Kozlov <serjk@netup.ru>,
+ Abylay Ospan <aospan@netup.ru>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Dmitry Osipenko <digetx@gmail.com>,
+ Stanimir Varbanov <stanimir.k.varbanov@gmail.com>,
+ Vikash Garodia <quic_vgarodia@quicinc.com>,
+ Bjorn Andersson <andersson@kernel.org>,
+ Konrad Dybcio <konrad.dybcio@linaro.org>,
+ Benjamin Mugnier <benjamin.mugnier@foss.st.com>,
+ Sylvain Petinot <sylvain.petinot@foss.st.com>,
+ Jacopo Mondi <jacopo+renesas@jmondi.org>,
+ Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
+ Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
+ =?UTF-8?Q?Niklas_S=C3=B6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
+ Pavel Machek <pavel@ucw.cz>
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com,
+ linux-arm-kernel@lists.infradead.org, linux-staging@lists.linux.dev,
+ linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org
+References: <20240415-fix-cocci-v1-0-477afb23728b@chromium.org>
+ <20240415-fix-cocci-v1-14-477afb23728b@chromium.org>
 Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <735d6dbc-86e4-4747-9bd9-2574ead7d039@linux.intel.com>
-Content-Type: text/plain; charset=UTF-8
+From: Bryan O'Donoghue <bryan.odonoghue@linaro.org>
+In-Reply-To: <20240415-fix-cocci-v1-14-477afb23728b@chromium.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240423_090627_202667_1EF2F18C 
-X-CRM114-Status: GOOD (  11.18  )
+X-CRM114-CacheID: sfid-20240423_094011_459752_EE66726C 
+X-CRM114-Status: UNSURE (   8.17  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -138,24 +133,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 23/04/2024 17:57, Pierre-Louis Bossart wrote:
+On 15/04/2024 20:34, Ricardo Ribalda wrote:
+> Simplifies the code.
 > 
->> Are we talking about basic C now? Of course it does not mean that and I
->> already explained what is the goal of this - the static or global memory
->> in the driver can be moved to rodata.
+> Found by cocci:
 > 
-> the dsp_ops used by the Intel drivers cannot be moved to rodata in all
-> cases. the baseline is constant, all extensions for TGL+ are dynamically
-> allocated and modified.
+> drivers/media/dvb-frontends/drx39xyj/drxj.c:1447:23-24: WARNING opportunity for min()
+> drivers/media/dvb-frontends/drx39xyj/drxj.c:1662:21-22: WARNING opportunity for min()
+> drivers/media/dvb-frontends/drx39xyj/drxj.c:1685:24-25: WARNING opportunity for min()
+> 
+> Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 
-Yes and these drivers will not benefit. Did I changed them here? I think
-I didn't, because then it would not compile.
+Code is fine but, I think your commit log could use some love.
 
-Can we discuss specific patches in this patchset? Which constifying of
-static or global data is not correct, is misleading or is not beneficial
-at all?
+"Replace ternary assignments with min() to simplify and make the code 
+more readable."
 
-Best regards,
-Krzysztof
+Not super-important.
+
+Reviewed-by: Bryan O'Donoghue <bryan.odonoghue@linaro.org>
 
 
