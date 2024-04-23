@@ -4,72 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A28E6C4345F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Apr 2024 11:28:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A922AC4345F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Apr 2024 11:39:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OftHQlL3/SZHidctDx5bqDbcjKcl0GkA0Xb9cAKf5Sc=; b=Ka4VDwRsf642vSEKSNbcmZOij8
-	qzso2942KvqxyBXQ0h4+YDxO0B1f4c8TXbyodcMz2R28aESgGL+tzrQYgp2F9CUuqExRiRTvSG2EL
-	rAP7rzvztzUKcbz/Wzlf3Dk4oiQz14fndhR6dnAccBrelUX+zc1lS75IDD7bcA+AGCkG88eYt7i6m
-	0xI1M3CFDvjf4XYuJF82O9yzE3vy91v+/zotGGtl84V95IjA21dinWXcmTcy8jvyUIsSjMgodL07G
-	xIYNs7xWKQyrUbfb9FsNcmFWku2IUL+NBEjxedrud7QbY4GK9LrxARYlhOTKDWAoCAj2hH5lhwd9Z
-	4UrfKyfQ==;
+	bh=xYT6jJUSJy5wHOowMTeCZ3pp3Tmnao3IC/VvUAo2Hv0=; b=4dspltfxn4IIt34Fi0KwxWuyqN
+	CO7GDSHf5tDEuyfNwBhTKhdhjRS6d4Mb2Q1AXzf4pccTAOUsAERF8yMWMS8fzkwRbNepTI0L4e+9q
+	OxFnEVcoEF1CRZoO2AVogh7jJTWCHarjtpsdgZ9cV+kQQfJFPehybFWrdkOPl8g+ONKONkglSbWSF
+	jtmPcmZLutPIuvUXOTmghQSPm2OgMAnjeUMyOqHjTXxrb/KXodL1bWX3jHK1WGHBBgh6A34Tby+oT
+	LYFSAEDQ+OHj3+e9bB3exoQx0ZpTd2G2CZi6OJ3YQh7gLqY3u1dxKuymzN6bOGxQi88IM4WQeMtJA
+	TyTGC9Gw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rzEK6-0000000H6CH-0laX;
-	Tue, 23 Apr 2024 11:28:30 +0000
-Received: from s3.sipsolutions.net ([2a01:4f8:242:246e::2] helo=sipsolutions.net)
+	id 1rzEUd-0000000H8xz-0aYk;
+	Tue, 23 Apr 2024 11:39:23 +0000
+Received: from jabberwock.ucw.cz ([46.255.230.98])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rzEK3-0000000H6Be-1QaA
-	for linux-mediatek@lists.infradead.org;
-	Tue, 23 Apr 2024 11:28:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=sipsolutions.net; s=mail; h=MIME-Version:Content-Transfer-Encoding:
-	Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender
-	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-To:
-	Resent-Cc:Resent-Message-ID; bh=OftHQlL3/SZHidctDx5bqDbcjKcl0GkA0Xb9cAKf5Sc=;
-	t=1713871707; x=1715081307; b=neYCoIKP8mdxTMmbNZGD9V2t7xzaJfQNwZ6dkjiS1BgBgJT
-	ygeDQ8FAxll1O8puVgHoG/N7FqjaIjJm//NPYzlxAuPTNdGufpiuaerY5fcIr/q6UWTFR2Ayjey+q
-	Xs/i+5zZO3jmH4vj+eapbRJquF6FmnpSyUOTs0ux+tHShBo6mADVP3W24b+5Qm1032O1SWkGl1VLd
-	+n56pd5gdkWN+CbhDxMTHmZZqVNtN/7YHu6TJKo11ghd6Zqvl7xf+7xWFwy+kGlOS46MBdhytReVD
-	ii/2T9Otdw9ogmsZcKDKUXoI/iFgeBHJXdBnapf68t//52EkRblFHgTLnUrAritA==;
-Received: by sipsolutions.net with esmtpsa (TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
-	(Exim 4.97)
-	(envelope-from <johannes@sipsolutions.net>)
-	id 1rzEJx-000000025tM-3X8U;
-	Tue, 23 Apr 2024 13:28:22 +0200
-Message-ID: <e9c1c8fb20c39ed158f11a6152dc594de6073726.camel@sipsolutions.net>
-Subject: Re: [PATCH v2] wifi: mac80211: Update bssid indicator with real BSS
- numbers
-From: Johannes Berg <johannes@sipsolutions.net>
-To: Allen Ye =?UTF-8?Q?=28=E8=91=89=E8=8A=B7=E5=8B=B3=29?=
- <Allen.Ye@mediatek.com>, "linux-wireless@vger.kernel.org"
- <linux-wireless@vger.kernel.org>, "lorenzo@kernel.org" <lorenzo@kernel.org>
-Cc: "lorenzo.bianconi@redhat.com" <lorenzo.bianconi@redhat.com>, 
-	"nbd@nbd.name"
-	 <nbd@nbd.name>, Evelyn Tsai =?UTF-8?Q?=28=E8=94=A1=E7=8F=8A=E9=88=BA=29?=
-	 <Evelyn.Tsai@mediatek.com>, Money Wang
-	=?UTF-8?Q?=28=E7=8E=8B=E4=BF=A1=E5=AE=89=29?=
-	 <Money.Wang@mediatek.com>, "linux-mediatek@lists.infradead.org"
-	 <linux-mediatek@lists.infradead.org>
-Date: Tue, 23 Apr 2024 13:28:20 +0200
-In-Reply-To: <757f417d63a750e84ab883b500becc2773e9ff17.camel@sipsolutions.net>
-References: <20231208063820.25983-1-allen.ye@mediatek.com>
-	 <65d21336e8f7e180352403a3e894aeaf27a22cab.camel@sipsolutions.net>
-	 <c23373d71eff81ea043783edff0345502bb2e299.camel@mediatek.com>
-	 <757f417d63a750e84ab883b500becc2773e9ff17.camel@sipsolutions.net>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.50.4 (3.50.4-1.fc39) 
+	id 1rzEUT-0000000H8wQ-0P7B;
+	Tue, 23 Apr 2024 11:39:14 +0000
+Received: by jabberwock.ucw.cz (Postfix, from userid 1017)
+	id ED98A1C0080; Tue, 23 Apr 2024 13:39:03 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ucw.cz; s=gen1;
+	t=1713872343;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=xYT6jJUSJy5wHOowMTeCZ3pp3Tmnao3IC/VvUAo2Hv0=;
+	b=OYBl3rA4LQLGaPvpDvGoyAou52frnZRv8qUTpt62HjtQitHp9LXNvWcUvP32zyzj39R6yv
+	2nStxD7L9S+yKLQSfmLFfojU+wgpycekvcJgvVeSGPYffHv6Ukoh2hu44tXp9QzyO8Pt9o
+	BVa+vkNKuBif4ftpoGlXsqPlR8ZYFgs=
+Date: Tue, 23 Apr 2024 13:39:03 +0200
+From: Pavel Machek <pavel@ucw.cz>
+To: Sasha Levin <sashal@kernel.org>
+Cc: linux-kernel@vger.kernel.org, stable@vger.kernel.org,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Joerg Roedel <jroedel@suse.de>, yong.wu@mediatek.com,
+	joro@8bytes.org, will@kernel.org, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com, iommu@lists.linux.dev,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH AUTOSEL 4.19 7/7] iommu: mtk: fix module autoloading
+Message-ID: <Zied1/2cELhaQupG@duo.ucw.cz>
+References: <20240422232040.1616527-1-sashal@kernel.org>
+ <20240422232040.1616527-7-sashal@kernel.org>
 MIME-Version: 1.0
-X-malware-bazaar: not-scanned
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="+UxX/KApw3y0ssBB"
+Content-Disposition: inline
+In-Reply-To: <20240422232040.1616527-7-sashal@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240423_042827_411517_790612F0 
-X-CRM114-Status: UNSURE (   7.58  )
+X-CRM114-CacheID: sfid-20240423_043913_606597_989EA3D6 
+X-CRM114-Status: UNSURE (   7.78  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -85,21 +74,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2024-04-23 at 13:21 +0200, Johannes Berg wrote:
+
+--+UxX/KApw3y0ssBB
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+Hi!
+
+> [ Upstream commit 7537e31df80cb58c27f3b6fef702534ea87a5957 ]
 >=20
-> Anyway, I think I agree, but can you please add some validation of this
-> to cfg80211 as a first patch
+> Add MODULE_DEVICE_TABLE(), so modules could be properly autoloaded
+> based on the alias from of_device_id table.
 
-I guess I should say what kind of validation? I think it'd make sense to
-ensure that the elements even exist/are long enough (currently there's
-no validation in nl80211_parse_mbssid_elems at all!!), perhaps call
-validate_ie_attr() there as well.
+This patch is queued for 4.19 and 5.15, but not 5.10. I believe that's
+wrong.
 
-Feels like something should also ensure that not only is
+Best regards,
+								Pavel
+--=20
+People of Russia, stop Putin before his war on Ukraine escalates.
 
-	config->index < wiphy->mbssid_max_interfaces
+--+UxX/KApw3y0ssBB
+Content-Type: application/pgp-signature; name="signature.asc"
 
-but also actually < 2^max_bssid_indicator?
+-----BEGIN PGP SIGNATURE-----
 
-johannes
+iF0EABECAB0WIQRPfPO7r0eAhk010v0w5/Bqldv68gUCZied1wAKCRAw5/Bqldv6
+8t3gAKCGrYHwFMHP8GJXLn7d7BZRrWiYFACgnWZYqAPYYddh29p9HUpGKDbADuM=
+=gPbY
+-----END PGP SIGNATURE-----
+
+--+UxX/KApw3y0ssBB--
 
