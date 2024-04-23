@@ -4,71 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 286ADC4345F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Apr 2024 12:46:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF5ECC4345F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Apr 2024 12:49:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SnPvo8X71/HjmVfrFSADYDRaBhD7wOKAzatHqFXk968=; b=0GVOIau3Y8XKuLxydr0UrO4rqh
-	Xeuy6RM486MXfexKAShlenEp1H145XSB/zNvXynBWgT/fehwqTwtQMhJpbqTUMsQbndc2XqNBFbcX
-	pBGMbbW846X8B7pSLCPGw9KLkFlVo5o7B6u36fbODZz+kLuEs/nY99/FN4R2N7fB1Ns0khCRTfwec
-	y8usXVpIEuXX9gHCT5+gIKHwHZzcD6IX64gVQlyoK0cxPVR5Y2HFP+a7wYV7twJaBNIsL72z6cLo2
-	G4LILT81x210qTYyT+Do8ccmqjbgdnfaSSVLkoc14AzP88tG9WKa5PpgbxsgcOH4uNzKY9zrNSBB6
-	ceeP5SWA==;
+	bh=GtCF0d5TRfvf1gJjlek+SkbwLI/L240GdEgYBnOFyEs=; b=jUZb81N4l6UfGf/hrD/RJ04Wko
+	JCzdY2lQCZws9oZ9gU8m+yPHQC/aNGvF0W+AD5JZYmfQba0wKsZZk+Tad4zp86PRIwIfqb5Vey1u7
+	biCNCMmPJHjsrCPF73KYQUeecNQ0ygH0vCVKPeDxEbAzRoFMXmrnZ0r1TUhNd6+Lf8hu2UtcjHL8p
+	0WWYRwMPxMOpmDAMizPbjoolVdLm87jEO1yO0mgMNfXxY37EMtz8Z+ulkmfMruke/VDRrJbVz9DSl
+	uCpI93sTIID6qeVh++3jrCR6N77ZHlXIU7ZwQNr2EmjVgGLTzw0qVbaKoIpb8UNsicWOWAQT6wH7M
+	F9JNpk+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rzFXl-0000000HUeA-2S2J;
-	Tue, 23 Apr 2024 12:46:41 +0000
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+	id 1rzFaJ-0000000HVcX-1m14;
+	Tue, 23 Apr 2024 12:49:19 +0000
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rzFXi-0000000HUaY-1GT0
+	id 1rzFaF-0000000HVZg-2KD8
 	for linux-mediatek@lists.infradead.org;
-	Tue, 23 Apr 2024 12:46:40 +0000
-Received: by mail-wr1-x433.google.com with SMTP id ffacd0b85a97d-34b3374ae22so1810237f8f.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 23 Apr 2024 05:46:37 -0700 (PDT)
+	Tue, 23 Apr 2024 12:49:17 +0000
+Received: by mail-wr1-x429.google.com with SMTP id ffacd0b85a97d-349545c3eb8so4075645f8f.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 23 Apr 2024 05:49:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1713876396; x=1714481196; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1713876553; x=1714481353; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=SnPvo8X71/HjmVfrFSADYDRaBhD7wOKAzatHqFXk968=;
-        b=bW50M0aHeVQXGcb9kn5B+xG2oisAilmU+fnFzMXlhDu+ammYAlxzTyKnjbfu8xB8oD
-         Jpn9d896KffMkN37bxuWTParMBEPOttN25jEKMUHLBaKVnO0aOGLG1OcSoCDEV9lRIMG
-         KD9kEy7j44HAtgdLYNntkkGqhp7NbLVIX00u0VtaKdFRkL7pAIvVgUxSQzPHHqpK9lxt
-         ifH4bRTArbQcFrf+NWinD4gILCKQEsKETgZWaOUDvEZfNyUWgX9zCwwuxPqsrlzytfP4
-         ZKMT4gw/8WtcNhl/ldVuVjm98lsLRBGXI1dIOg0+dCpY6nQbZH39600ofFd6ZB9XAlu9
-         63tw==
+        bh=GtCF0d5TRfvf1gJjlek+SkbwLI/L240GdEgYBnOFyEs=;
+        b=UuY0e7SI031wsPKrA6QskYAVxiHwZJmkKBKS0bkaqXfIWumCyCKVsdKyqCwSq0EMZk
+         3NuIoctxUPXFDVW8u+qgMk6AVSexxiFeSVn1mAwwEq/I2hmkbCSp4cmO/ydXP4JEiqdu
+         bJh4WbPG96N7Ez9Rm0/ukEk/kVniAwow6f4MVMU0EWfawtXahyob7hpGWPnddCJlcZPZ
+         pkJC7Nog5H61qE+veGZbO00/zV0NPobrxytw3lick3uBqIeZZI4OESdufz8hxCMbG5kh
+         lys4ki0nn7h0YnrETf7+f7DDNXAFo0/3N7Zz7W5yZKaGzZk6r6qCukrox2nRp2dP8lt+
+         eYTw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713876396; x=1714481196;
+        d=1e100.net; s=20230601; t=1713876553; x=1714481353;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=SnPvo8X71/HjmVfrFSADYDRaBhD7wOKAzatHqFXk968=;
-        b=JEHwIbcr5WiaDGDAfq8Q6d4WUU03aPBeLfT9jVBh+ZnFdLHv9fspy18CE2GXzBOpZ9
-         tPMo9nJ0awch/q/TLt2aEAMSL1IHipnSbdKSAdUboPq48n9PQwRd1Nsv2P51lEIicW9R
-         emwV0j1/CIzLcRnX3ueGuV1XUdIxkSBFjJZEbl4lHYdIwHbb5ng37TfPBXq6aj1WTWk2
-         m5bNUeSl+I8gjrFxDm/mTbuWbfa9vqcMhBK8i9dALKx/JoI8weLa67CJKhsPLbfeBzfK
-         y+TP03LqKbxQCJaB6elIhj/xuKkrV2Pi64Zm9mCFAtRZLUF6MN9PD5PFAmYJW114QbjG
-         SiXQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWgRiWULHqSB3WyAjtWS5pWE8aDOxAy8cFZ/iB0lL6Szlwgp5BAFnUQdxXRgMRxtI+Imd3xYg9QeQ35Eur9GNshxoLlqbnIeIYVMkHor3Ysmsvt
-X-Gm-Message-State: AOJu0YxYADYfXU6dIFulM5F8C5nHv/0cjLZ3CO+luQvhBbhsQgYECNYE
-	/CKEKQRpjhJPsMf1Wdot8NEWgjO0/PFJd3Z9Z7X2S76HoWNpLdfUXfNXW0tjjpI=
-X-Google-Smtp-Source: AGHT+IG+1vx5mJkN+16nkw6DrmjKX/bCAbSI7iHWCeWcx9NCAuHfmO/i6PUYzl4PV0Sl6Y/Ow1sbhA==
-X-Received: by 2002:adf:b197:0:b0:349:f83f:9ebf with SMTP id q23-20020adfb197000000b00349f83f9ebfmr11081490wra.5.1713876396189;
-        Tue, 23 Apr 2024 05:46:36 -0700 (PDT)
+        bh=GtCF0d5TRfvf1gJjlek+SkbwLI/L240GdEgYBnOFyEs=;
+        b=FlBOTxDwXp9zZyDXuLV1YXxxM/9vJV0YcH5cBdmlE0CA49VQE3VKPNcCBx4lr4v4uo
+         Zmzr5bfH41YgJ3g8g2JPGKhkE84QcWRygCwKSQVKkOPNF+5cA+obDzl0hUm5WZhdRT5h
+         o/p4mXs9vwD5kR23VCFvg24aFu/tZ7ZbEiZffWZMKcj89gF4EFF7MspoPWFL7XGY+7N2
+         IU3+FCaPc508LW1HmaxxWoA503ybfr9rwgI+hXAb3ifFhESwDdrUIuLTNCiSyka34vW6
+         cCYM+hy5Wmbm49GqaSyeneFwVDP3BnqsqNHFRyXfLq+O3y/M18p8BlcEeCwtOUhKcdxa
+         lskA==
+X-Forwarded-Encrypted: i=1; AJvYcCVAxUpVUG/mfEEZJBbV3IRTl6tOuJWG4GRTrwoxySpubBZbCXLiM4HeFhyTTmtNoNyE7WD/x8QVp5ryJXCcj6XDVk/6JaRylCJ5Wder4uN3QIvs
+X-Gm-Message-State: AOJu0Yxhvz6s4d1RvCqqkRAixTxsqiQYMF7+dVD45tXKeXRWE96iU6w6
+	m0ycyssf/5k4Zo6I6+fe0/+Q70xzjfEBGZ5nflooNEO2TWnilXlLvbCbFN+t+Zo=
+X-Google-Smtp-Source: AGHT+IFQ/wvfOsFaUdKh98XxWAyZjDTRY072QmJCxCCxJbX9yzwrMnJqlpUXpbY2Dl+AdrwFqOGXDg==
+X-Received: by 2002:a05:6000:1e89:b0:34a:9afe:76f with SMTP id dd9-20020a0560001e8900b0034a9afe076fmr5609928wrb.30.1713876553387;
+        Tue, 23 Apr 2024 05:49:13 -0700 (PDT)
 Received: from [192.168.0.102] ([176.61.106.227])
-        by smtp.gmail.com with ESMTPSA id y7-20020a5d6207000000b00346f9071405sm14531796wru.21.2024.04.23.05.46.34
+        by smtp.gmail.com with ESMTPSA id y18-20020a056000109200b00343300a4eb8sm13594089wrw.49.2024.04.23.05.49.11
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 23 Apr 2024 05:46:35 -0700 (PDT)
-Message-ID: <44d6ab8c-3810-46ac-8e54-c125b5c29199@linaro.org>
-Date: Tue, 23 Apr 2024 13:46:33 +0100
+        Tue, 23 Apr 2024 05:49:12 -0700 (PDT)
+Message-ID: <515e2718-7e1b-42c0-9d61-a10d00f12a31@linaro.org>
+Date: Tue, 23 Apr 2024 13:49:11 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 12/35] media: platform: mtk-mdp3: Use refcount_t for
- job_count
+Subject: Re: [PATCH 13/35] media: common: saa7146: Use min macro
 To: Ricardo Ribalda <ribalda@chromium.org>,
  Martin Tuma <martin.tuma@digiteqautomotive.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
@@ -111,15 +110,15 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
  linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org
 References: <20240415-fix-cocci-v1-0-477afb23728b@chromium.org>
- <20240415-fix-cocci-v1-12-477afb23728b@chromium.org>
+ <20240415-fix-cocci-v1-13-477afb23728b@chromium.org>
 Content-Language: en-US
 From: Bryan O'Donoghue <bryan.odonoghue@linaro.org>
-In-Reply-To: <20240415-fix-cocci-v1-12-477afb23728b@chromium.org>
+In-Reply-To: <20240415-fix-cocci-v1-13-477afb23728b@chromium.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240423_054638_501168_C118B0A8 
-X-CRM114-Status: UNSURE (   8.52  )
+X-CRM114-CacheID: sfid-20240423_054915_603801_3E4C0C5A 
+X-CRM114-Status: UNSURE (   6.85  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -136,19 +135,14 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 15/04/2024 20:34, Ricardo Ribalda wrote:
-> Use an API that resembles more the actual use of job_count.
+> Simplifies the code. Found by cocci:
 > 
-> Found by cocci:
-> drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c:527:5-24: WARNING: atomic_dec_and_test variation before object free at line 541.
-> drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c:578:6-25: WARNING: atomic_dec_and_test variation before object free at line 581.
+> drivers/media/common/saa7146/saa7146_hlp.c:125:36-37: WARNING opportunity for min()
+> drivers/media/common/saa7146/saa7146_hlp.c:154:41-42: WARNING opportunity for min()
+> drivers/media/common/saa7146/saa7146_hlp.c:286:35-36: WARNING opportunity for min()
+> drivers/media/common/saa7146/saa7146_hlp.c:289:35-36: WARNING opportunity for min()
+> 
+> Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 
-Same comment here as per the previous patch.
-
-You should explain in terms of the memory ordering that refcount_t gives 
-so that the intention of the WARNING and the API change is well 
-communicated.
-
----
-bod
-
+Reviewed-by: Bryan O'Donoghue <bryan.odonoghue@linaro.org>
 
