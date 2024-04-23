@@ -4,65 +4,124 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E95BBC4345F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Apr 2024 09:22:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F37EC10F15
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Apr 2024 09:42:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=H4Q4xR2Nv4jh/+S02neuNKp8cPAK0NcTf6tUOMBiMpY=; b=hC08yQSlESflIoAAdl9rpkot4X
-	0dU1Od0/9G8SvAJ2PpAnFkL+KHV6sgq+pkCfypJ2M23mnTnTaHiB1FRD1NTIQo5m0+c8oFslyGdxW
-	TTBhbnqX4wh3r2oJg5EIJT4uWSnyAdTgRryELmZLFndjcXtwWvWw3t1m5tbB5WCvdjjIlZdaPSfX2
-	PIBZGxh3dOInq46fuqJGmEmL6edBKmlTto1GcGilLqgTfXmezA2t0YAbZLeRpJDk377kqJsN5etyW
-	qFGgZ9wrvNIBshpJbqj7MIOypRI7jRCeO53fkDvG0bUq+YBUR9GW6FYT/N6oXppRTWRFGdbNSuTSs
-	Yw8kz3tA==;
+	bh=wu3rM+NWF29G0mKPrRprfP3JFYvx5eY1+SSAupebpFo=; b=AO74reSvFnHpnSmaom3x+/pGIq
+	aL9BBxKXk9LcLXioArWrncEDYs0ygfn5aTUPQjSA2WsAZh0xYaMmHSLWBiPOcvKbkbUZmVjbjErCY
+	OACtw2R+0khy97GkLZ3QoNENugQtsfgUslKn21VRapG9jPiE62LFtA5L9ZYh6xgH/lGdfGzdvHAyF
+	xvdolDdRMosK+xYxy9FS2O4X1EUTD9Zts6dfYZoHzMusvTrnV3wBsfKkEnzKiVvuW9Bg2kGjnVGw8
+	UgtmcIB8qA9iNmf1wbd3mMtY7nWDhxT9s4QEcqVenDvFBXEl52+m/WBbjhBnWz21yIt9u1DeDE6ZL
+	EZCWwYlA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rzCLu-0000000GeY0-1mwD;
-	Tue, 23 Apr 2024 09:22:14 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rzCfq-0000000GhwR-3sMJ;
+	Tue, 23 Apr 2024 09:42:50 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rzCLr-0000000GeWS-19bO
-	for linux-mediatek@lists.infradead.org;
-	Tue, 23 Apr 2024 09:22:13 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1713864129;
-	bh=FjKigUCfND/yp/nDDgcfrG3dAnCXLuVl43TcITs3ywA=;
+	id 1rzCfj-0000000Ghre-2WVl;
+	Tue, 23 Apr 2024 09:42:45 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 45E8C612BF;
+	Tue, 23 Apr 2024 09:42:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 235C1C116B1;
+	Tue, 23 Apr 2024 09:42:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1713865361;
+	bh=Ls/UifY5Dz1wJAlodWBpmzK5RW2Ga9GWujeLPVUWApE=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=cmeFpD26AokQActMeUtYI378J8vQtgdQ/44EN20pPRIvLBef2hKpchW5av5QRs7/4
-	 dMqfUD6PbzcIFpFuHLUjgSQrsIdPUCMnzXAs7/KLGybd2xWI3GGpTT3FI1Egc4OcLS
-	 MW6V8IcTOhte8770C4qxsTYRxUjB4YvVNz/aai5vtiiUtVe5ikpxNU9d9/nR4bMsiT
-	 BwWBUHiydI13yCNfsIAYjSAH7c5THIL5OrDNFPSBKHUr5friWlRUfyrhpvYG58i0an
-	 +yAvKNKcMZxqgvWDU+d09nDdmvihR9BiHnJFGmcjD2oTYAG8RMXovPPDsiJqCXPafr
-	 eXUvdbZNBTZIQ==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 4B0633781453;
-	Tue, 23 Apr 2024 09:22:09 +0000 (UTC)
-Message-ID: <981a8748-16d0-4744-b097-aa9dd14c63a8@collabora.com>
-Date: Tue, 23 Apr 2024 11:22:08 +0200
+	b=t3sUCms4mYpMabtasGNhGocxGbl4sFKtiI5xMv3GUseqBt8syt6ltOpJw5h+mhkm9
+	 aFw/mfjIIPxTOgX3aSOEh8CQ9MDDltzwMmO7D/WChVF9JWgnNlfVL892FNWud09dKb
+	 FSA60+icHOuitAqK+1F/rbKWBFDweKEPHeGK3ckswBDSwzaQs+WEOy7vQNwL9Y8luP
+	 xYndgb4wDz00KwaLl7Uhr0PI6sa3C6nq5pot9Z3qY6+LMLbM+8e/iSegNeK7NbIhHP
+	 +qqwJies09VxEMlzq045chEuTCG3ApsAakzZW3oCkuQ9Zt7KVPauqvMQOtnyBHP4I0
+	 PSMBeRefA9q6g==
+Message-ID: <aef907ab-1087-4f49-bea4-d43ee6cebb73@kernel.org>
+Date: Tue, 23 Apr 2024 11:42:33 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 00/15] Mediatek thermal sensor driver support for
- MT8186 and MT8188
-To: Nicolas Pitre <nico@fluxnic.net>,
- Daniel Lezcano <daniel.lezcano@linaro.org>, linux-pm@vger.kernel.org,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
-Cc: Nicolas Pitre <npitre@baylibre.com>
-References: <20240402032729.2736685-1-nico@fluxnic.net>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH 00/14] ASoC: Constify local snd_sof_dsp_ops
+To: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>,
+ Liam Girdwood <lgirdwood@gmail.com>,
+ Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
+ Bard Liao <yung-chuan.liao@linux.intel.com>,
+ Ranjani Sridharan <ranjani.sridharan@linux.intel.com>,
+ Daniel Baluta <daniel.baluta@nxp.com>,
+ Kai Vehmanen <kai.vehmanen@linux.intel.com>, Mark Brown
+ <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>,
+ Takashi Iwai <tiwai@suse.com>, Shawn Guo <shawnguo@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: sound-open-firmware@alsa-project.org, linux-sound@vger.kernel.org,
+ linux-kernel@vger.kernel.org, imx@lists.linux.dev,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20240414-n-const-ops-var-v1-0-8f53ee5d981c@kernel.org>
+ <89f8f0be-2534-46c8-9058-cabea4f68568@linux.intel.com>
+ <9d1eda85-32a0-4e53-86ca-ce3137439bd7@kernel.org>
+ <d046d195-6fa3-4c52-bc5f-3e5e763bc692@linux.intel.com>
+ <138ac465-1576-4e86-a05d-63f8acc6fb70@kernel.org>
+ <3acfbe3c-8b83-4c40-83c2-437f963fd25a@linux.intel.com>
+ <7490bce3-3bd6-4beb-b8be-d47a6b0a30f0@kernel.org>
+ <eaa0c99a-3b41-4444-906c-d2f005d326b9@linux.intel.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
-In-Reply-To: <20240402032729.2736685-1-nico@fluxnic.net>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <eaa0c99a-3b41-4444-906c-d2f005d326b9@linux.intel.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240423_022211_546626_EED669A9 
-X-CRM114-Status: GOOD (  15.32  )
+X-CRM114-CacheID: sfid-20240423_024243_941791_21D5E47F 
+X-CRM114-Status: GOOD (  30.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,55 +136,109 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 02/04/24 05:25, Nicolas Pitre ha scritto:
-> This is a bunch of patches to support the MT8186 and MT8188 thermal
-> sensor configurations. Several changes are needed to cope with oddities
-> these SOCs implement.
+On 22/04/2024 23:24, Pierre-Louis Bossart wrote:
 > 
-> All values (calibration data offsets, etc.) were lifted and adapted from
-> the vendor driver source code.
 > 
+>>>> There are multiple reasons and benefits for const, like compiler
+>>>> optimization, code readability (meaning) up to security improvements,
+>>>> e.g. by some GCC plugins or marking rodata as really non-writeable, so
+>>>> closing some ways of exploits. There are many opportunities here, even
+>>>> if they are not yet enabled.
+>>>
+>>> Possibly, but the SOF core does not know if the structure it uses is
+>>> rodata or not. Using the 'const' identifier would be misleading.
+>>
+>> How so? If core does not modify structure, it should take it via ops,
+>> just like 100 other widely known structures (see checkpatch). Why is
+>> this different?
+> 
+> I don't understand "it should take it via ops"
+> 
+> We are already fetching the structure with private_data.
 
-I picked patches 7 and 12 (and also fixed them) introducing the nodes for the
-LVTS controllers, but will not pick 9 and 15, as they're either missing thermal
-zones and/or using the wrong names; let's wait for the next cycle for those, as
-I will also be able to add the SVS on top (needs a bit of time for testing),
-getting both SoCs complete on the LVTS side, without rushing.
+I meant, drivers using such core library functions or directly calling
+to the core, pass some private data structure with "struct foo_ops".
+Sometimes pass directly "struct foo_ops". This is happening everywhere
+and is common pattern.
 
-Cheers,
-Angelo
+And everywhere we try to make it const, where following conditions are met:
+1. the driver allocates "struct foo_ops" statically,
+2. the driver does not change it,
+3. the core (or library) does not change it.
 
-> Changes from v2:
+
 > 
->   - use meaningful name for binding index definitions
->   - reuse LVTS_COEFF_*_MT7988 on MT8186 per reviewer request
->   - do similarly for MT8188 that now reuses LVTS_COEFF_*_MT8195
->   - use thermal zone names the svs driver wants
->   - adjust some DT node names and iospace length
->   - remove variable .hw_tshut_temp as it is constant across all SOCs
+>>>>> that's a different interpretation to the 'software' view you're
+>>>>> describing. "this structure will not modified by this function" is not
+>>>>> the same thing as "this structure CANNOT be modified".
+>>>>
+>>>> Yes, but can we please discuss specific patchset then? Patches which
+>>>> change pointers to const have one "interpretation". Patches which modify
+>>>> static or global data have another.
+>>>
+>>> Just look at sound/soc/sof/intel/mtl.c... The core will sometimes use a
+>>
+>> That's a driver (or specific implementation), not core.
 > 
-> Version 2 can be found here:
+> You are making an assumption on what the SOF core is. The core is used
+> by ACPI or PCI drivers as a library. The structures are all allocated in
+> ACPI/PCI drivers and passed to the core library.
+
+The same as everywhere else. The distinction, that this is "library" and
+in other cases often is "core framework" or "subsystem", does not
+matter. Behaves the same.
+
 > 
->   https://lore.kernel.org/all/20240318212428.3843952-1-nico@fluxnic.net/
+>>> constant structure and sometimes not, depending on the PCI ID reported
+>>> by hardware. This was intentional to override common defaults and make
+>>> the differences limited in scope between hardware generations.
+>>
+>>
+>>>
+>>> int sof_mtl_ops_init(struct snd_sof_dev *sdev)
+>>> {
+>>> 	struct sof_ipc4_fw_data *ipc4_data;
+>>>
+>>> 	/* common defaults */
+>>> 	memcpy(&sof_mtl_ops, &sof_hda_common_ops, sizeof(struct
+>>> snd_sof_dsp_ops)); <<<< THE BASELINE IS CONSTANT
+>>
+>> Yes, I saw it and such users are not changed. They won't receive any
+>> safety. But all others are getting safer.
 > 
-> Changes from v1:
 > 
->   - renamed CPU cluster thermal zones in DT
->   - fixed logic to cope with empty controller slots at the beginning
->   - isolated bindings to their own patches
->   - added MT8188 default thermal zones
+> Maybe there's a misunderstanding on what the 'SOF core' is. This is just
+> a helper library that are used by the PCI drivers. The core has zero
+> knowledge on anything really.
+
+The "core" or the "library" either modifies the structure or not. That
+is only that matters from the core point of view.
+
+
 > 
-> Version 1 can be found here:
-> 
->   https://lore.kernel.org/all/20240111223020.3593558-1-nico@fluxnic.net/T/
-> 
-> diffstat:
-> 
->   .../thermal/mediatek,lvts-thermal.yaml        |   6 +
->   arch/arm64/boot/dts/mediatek/mt8186.dtsi      | 256 +++++++++++
->   arch/arm64/boot/dts/mediatek/mt8188.dtsi      | 383 ++++++++++++++++
->   drivers/thermal/mediatek/lvts_thermal.c       | 434 +++++++++++++-----
->   .../thermal/mediatek,lvts-thermal.h           |  26 ++
->   5 files changed, 987 insertions(+), 118 deletions(-)
+>> I really do not understand what is the problem here. In entire Linux all
+>> of such changes are welcomed with open arms. So what is different here?
+> Adding 'const' at the SOF core level does not mean that we can treat
+> structures as rodata. It only means that the structure is not modified
+> by the core library. Not the same thing.
+
+Are we talking about basic C now? Of course it does not mean that and I
+already explained what is the goal of this - the static or global memory
+in the driver can be moved to rodata.
+
+Just like everywhere else.
+
+I keep repeating the same arguments and keep repeating the same: please
+bring me any argument why this should be different than all other 100
+structs (or more, I count based on checkpatch). So far you did not bring
+any argument for this, so I don't know how to provide any other
+technical feedback.
+
+According to my knowledge and easily visible here, this is exactly the
+same as in all other cases. Drivers have some static or global struct
+which can be moved to rodata, because nothing modifies it.
+
+Best regards,
+Krzysztof
 
 
