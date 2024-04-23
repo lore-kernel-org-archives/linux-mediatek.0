@@ -4,62 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F1CCC4345F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Apr 2024 10:29:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9515FC4345F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Apr 2024 11:21:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JAFxdVj+QJSc3D0b0AStu1rB1dgQkpNFaKNtBQEfYug=; b=slV5i26l6ok8AzD1WWpr33wLDh
-	X57kVhBRZF2n1fRhRuwIUMiSvUBny5dgOeHx95Cyt6EZDO5ehU4z12whUZ6XkYm8en1AAP79trHBl
-	o5Ft1EtAFz1cj6Kq9rWRfjbU36fEes9+p3cORIiNtfuHyxcDkfeevAqz49BEBRUdQkGJdm3w4CehM
-	vXF6lXOSLs1xaI6BxLW+0Iz45/23ZwMcK69FnDWgZuDJa1pDpuv6UtsVWKAkZPn7NxApw8f4bPPUr
-	B8yv8eaU3rLL5TZK1pe4MsLoXR6f8vJiG37OtSfNYMHooWWZTfyKbSJu4tWCoCmcrtt1qTPdLp0SC
-	bFZ7IJfg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=TSj5LeYjkpK9XNI4Yvas4e5knCrKA+ZPbN7x3+5ThhY=; b=Rm+J9An5viSTHnag2uOoDhYY7c
+	YECoqehIlxnsujJ0w7nF8HyqopU5UJl15CifERG3bZHZrI9coI4cs6422za63Y//x9z408fk7/P7u
+	IUDq73gPgezb8sVYotO3K3UX5J8VP0Bl5kxO5lRzlBKYey5oxo/CTbLo7ZPYBYe9ePZ5zCwS1ID7Y
+	J6IZtpST8W1gCm69OsznTsrXsqJdlkqRvwoaEoZ7eURlJ3pdcZNrnshEBJ07/AqRaSwUt/ynQ5Zm8
+	t00WMGeGoCbmCXEDCBZXL8chrp6sSoDPz+EDtD3WDD5sjOo2qOvaZ/lcitUZzZVXdKv+YFWjvMhgt
+	HEo52n2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rzDPN-0000000GqRX-2BeM;
-	Tue, 23 Apr 2024 10:29:53 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rzED8-0000000H4XT-2Rxm;
+	Tue, 23 Apr 2024 11:21:18 +0000
+Received: from s3.sipsolutions.net ([2a01:4f8:242:246e::2] helo=sipsolutions.net)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rzDOv-0000000GqGM-0TFO;
-	Tue, 23 Apr 2024 10:29:27 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1713868161;
-	bh=IiWauZeXanDlluFAPprUQdbikX6q3CijGw67XDNnEEA=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Fgd/8/yI1y/TS24LWNczszOryq0wp0cUMFjKb5/OFfyEpj2WvZASiVat4/pQfmO8/
-	 4fMUX6WutX/6MKG95WrDBBw8yxpmbwb8Yf/o9GpzBftLL3I1vUuSdMME95U4xXBGJt
-	 hZJm/y9sCtDPhd4EeqdeY+Y2qCAFGETW4Ejb4GkhIuTUJnbTLeNbOloRLpVMsYxkog
-	 L+5Dptk1xEPbSPMdsxtCrcmksogLhSow3n8h2XJVCPz3ix76K1o0ofqTg6iEoKYwy4
-	 3tGBDj28EyRuS2R34BMcTxp5D1c2VJWt6kXjDgJ5aFxgZ76SQywKKNqKSBkEIro84t
-	 nVcPg0Zpp7Xxw==
-Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 14CF8378208C;
-	Tue, 23 Apr 2024 10:29:21 +0000 (UTC)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: arm-soc <arm@kernel.org>,
-	soc <soc@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [GIT,PULL,2/2] MediaTek driver fixes for v6.9
-Date: Tue, 23 Apr 2024 12:28:58 +0200
-Message-ID: <20240423102915.371782-2-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.44.0
-In-Reply-To: <20240423102915.371782-1-angelogioacchino.delregno@collabora.com>
-References: <20240423102915.371782-1-angelogioacchino.delregno@collabora.com>
+	id 1rzED4-0000000H4WX-3pcu
+	for linux-mediatek@lists.infradead.org;
+	Tue, 23 Apr 2024 11:21:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=sipsolutions.net; s=mail; h=MIME-Version:Content-Transfer-Encoding:
+	Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender
+	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-To:
+	Resent-Cc:Resent-Message-ID; bh=TSj5LeYjkpK9XNI4Yvas4e5knCrKA+ZPbN7x3+5ThhY=;
+	t=1713871271; x=1715080871; b=PxvO91rQesngU6BQuWRn5mQ3jYQFRobQq2bhPjNlVfOKvtf
+	+UtsjVv9Z1wOgK6pGfYjzPNfcJrOR5W/n458mXzjju6LzQh5CbXyGK9rp1lAz/NtrfqMNyIKBTnBs
+	+weGvY6Q3XPorePYDiG0IzIpOuJRC6Vlt0PCQaEkN8HrDawiZsYbpuvdJa1zIfLfo5idR2zzqMRBf
+	SBXhRgcAphE5GyyBJQY/hewWBVgriDKlEIK6cvrfGlpTdtEmoQ2al8nPkwIqzgr70ZoO68mw5JTRR
+	RuNci8KGR2Z64Kja4fIe0DBiiNeOMslRUc5y9Jk7mzXj/A2YgPwXwUWU/AP7pf5g==;
+Received: by sipsolutions.net with esmtpsa (TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
+	(Exim 4.97)
+	(envelope-from <johannes@sipsolutions.net>)
+	id 1rzECt-000000025Sw-2Tpu;
+	Tue, 23 Apr 2024 13:21:03 +0200
+Message-ID: <757f417d63a750e84ab883b500becc2773e9ff17.camel@sipsolutions.net>
+Subject: Re: [PATCH v2] wifi: mac80211: Update bssid indicator with real BSS
+ numbers
+From: Johannes Berg <johannes@sipsolutions.net>
+To: Allen Ye =?UTF-8?Q?=28=E8=91=89=E8=8A=B7=E5=8B=B3=29?=
+ <Allen.Ye@mediatek.com>, "linux-wireless@vger.kernel.org"
+ <linux-wireless@vger.kernel.org>, "lorenzo@kernel.org" <lorenzo@kernel.org>
+Cc: "lorenzo.bianconi@redhat.com" <lorenzo.bianconi@redhat.com>, 
+	"nbd@nbd.name"
+	 <nbd@nbd.name>, Evelyn Tsai =?UTF-8?Q?=28=E8=94=A1=E7=8F=8A=E9=88=BA=29?=
+	 <Evelyn.Tsai@mediatek.com>, Money Wang
+	=?UTF-8?Q?=28=E7=8E=8B=E4=BF=A1=E5=AE=89=29?=
+	 <Money.Wang@mediatek.com>, "linux-mediatek@lists.infradead.org"
+	 <linux-mediatek@lists.infradead.org>
+Date: Tue, 23 Apr 2024 13:21:02 +0200
+In-Reply-To: <c23373d71eff81ea043783edff0345502bb2e299.camel@mediatek.com>
+References: <20231208063820.25983-1-allen.ye@mediatek.com>
+	 <65d21336e8f7e180352403a3e894aeaf27a22cab.camel@sipsolutions.net>
+	 <c23373d71eff81ea043783edff0345502bb2e299.camel@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.50.4 (3.50.4-1.fc39) 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-malware-bazaar: not-scanned
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240423_032925_361065_AD5EE782 
-X-CRM114-Status: UNSURE (   7.87  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240423_042114_979719_E00FD5E0 
+X-CRM114-Status: GOOD (  21.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,33 +83,81 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The following changes since commit 4cece764965020c22cff7665b18a012006359095:
+On Wed, 2023-12-27 at 09:38 +0000, Allen Ye (=E8=91=89=E8=8A=B7=E5=8B=B3) w=
+rote:
+> >=20
+> > We should have Lorenzo here, he wrote the original code.
 
-  Linux 6.9-rc1 (2024-03-24 14:10:05 -0700)
+Actually John/Aloka at least also did ... so whatever.
 
-are available in the Git repository at:
 
-  ssh://git@gitolite.kernel.org/pub/scm/linux/kernel/git/mediatek/linux.git/ tags/mtk-soc-fixes-for-v6.9
+All this only _really_ matters I think when you have EMA, right?
 
-for you to fetch changes up to ab6cd6bb33cc0bbb8dbf8cc264a1013b2019561e:
 
-  soc: mediatek: mtk-socinfo: depends on CONFIG_SOC_BUS (2024-04-23 12:09:12 +0200)
+> The number of BSS is not equal to MBSSID element count plus 1 because
+> there might be multiple nontransmitted BSSID profile subelements in one
+> MBSSID element.
 
-----------------------------------------------------------------
-MediaTek driver fixes for v6.9
+Yes.
 
-This fixes the MediaTek SVS driver to look for the right thermal zone
-names, and adds a missing Kconfig dependency for mtk-socinfo.
+Actually it's even more confusing:
 
-----------------------------------------------------------------
-AngeloGioacchino Del Regno (1):
-      soc: mediatek: mtk-svs: Append "-thermal" to thermal zone names
+> Also, one nontransmitted BSSID profile subelement might
+> be fragmented across two MBSSID elements if the length of the
+> subelement exceeds 255 octets.
 
-Daniel Golle (1):
-      soc: mediatek: mtk-socinfo: depends on CONFIG_SOC_BUS
+True; however, in this case, a single entry in the
+NL80211_ATTR_MBSSID_ELEMS array (and thus in mbssid_ies) must contain
+both MBSSID elements together, so it's only counted once still. More
+importantly, otherwise we would split them across two frames with EMA,
+which is wrong.
 
- drivers/soc/mediatek/Kconfig   | 1 +
- drivers/soc/mediatek/mtk-svs.c | 7 +++++--
- 2 files changed, 6 insertions(+), 2 deletions(-)
+So really mbssid_ies / NL80211_ATTR_MBSSID_ELEMS is *not* the list of
+MBSSID elements as they should appear in the frame, individually, but an
+array of *sets* of MBSSID elements.
 
+For example:
+
+mbssid_ies[0] =3D mbssid_elem(profile1, profile2), mbssid_elem(profile3)
+mbssid_ies[1] =3D mbssid_elem(profile4_part1), mbssid_elem(profile4_part2)
+
+when you have EMA with periodicity 2, and 4 non-transmitted BSSes where
+the first two are small and fit into one element, number 3 is bigger and
+needs its own, and number 4 needs to be split ...
+
+
+> > But this seems fishy to me, if you look into the element itself,
+> > you're going to have to do some validation on it?
+
+I stand by this though.
+
+> > And what about fragmentation?
+
+But not this :)
+
+> Whether the subelement is aggregated or fragmented, the MaxBSSID
+> Indicator field would be the same for the multiple BSSID set.
+
+Right.
+
+> Therefore, we directly retrieve this field from the element.
+
+Yeah, makes sense.
+
+> For example, there are five BSSes in one multiple BSSID set, one
+> transmitted and four non-transmitted BSSes. We might use just two
+> MBSSID elements to store all the non-transmitted BSS information. Here
+> the MaxBSSID Indicator is 3 in both MBSSID elements. However, the
+> element cnt is 2 and if we use the original method to calculate the
+> BSSID Indicator we will get 2 which is wrong.
+
+Right.
+
+Anyway, I think I agree, but can you please add some validation of this
+to cfg80211 as a first patch, and also document all this better in the
+commit message? Optional, but some additional nl80211 documention would
+be very nice.
+
+Thanks,
+johannes
 
