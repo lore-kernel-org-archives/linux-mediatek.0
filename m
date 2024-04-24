@@ -4,71 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6A43C4345F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Apr 2024 12:54:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50DA9C4345F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Apr 2024 13:06:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MT+vTamhgNNxCWbIx+JUdYr0dVrCYA99sltJXbg92vE=; b=SbFJXDcDuUwJnONqEMpJLF3ACU
-	qPj+n2hkCBdvLkhQ4H1LasBiEVioYkEAqFXehiFVi4evfcMhLezVLqTB2QQDPOybG9szuJe4MSYDm
-	Wn2ALQS2VMGXYclnhp4pYJnuZZ37mXUdtdj1Ir3CQcJSF2keMhvqUCeNhHs3JmI5prbsx3hGBve4w
-	NEZDgV1HXqr+jMuW16LJcUgTgpmh9+uHHk4aGQozUxH0Nlb35gryTALeSUdjF8X49RsMSa9MhQYVl
-	DlEB5b/rMppeLS3VBNChuRYXYi2Mc0b3hsNku9EUmGb818dNAZB6z7CU/IZunmGT/2vzPtdiJGV1g
-	8GPvevkQ==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ZWmvHblwyLfpV+rEC2PSqDTFbQMnE4MDRNUxWTIYKmE=; b=1bXMUv3vCzb5nOAdmaawtjRjP8
+	8qhgEUvpeqWW6MjGHplV6Klh+XyQqiGeBw6FpagvdWjU6Tb3C682aibx0JgsKSnu8RMNcwjmNpGEa
+	rPxbgvU3BpKsi8EyI4JfEJG98eCRPQL+m6+moPeZjAwf604n2R6wk7lPhYLe4oWeCS3Qlnr3920rZ
+	E06HigSo8dG4oCspOtry3MGzXzioM4afV3BVC3jr01Mk5cX3n9JeU7kY9ecCAW8HSgQ7UlELH3XTK
+	/0L4o4u8e+xavYppS8/8B7kAZ0Ntm4Xd0LjNFI9hsrLyabJ1i+JkSHF4OkqEqyPyFhExnShRQl1Jg
+	H7bePyjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rzc99-000000049QQ-3D1Z;
-	Wed, 24 Apr 2024 12:54:47 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rzcKc-00000004Bh1-2cy3;
+	Wed, 24 Apr 2024 13:06:38 +0000
+Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rzc94-000000049Ns-1dGI;
-	Wed, 24 Apr 2024 12:54:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1713963278;
-	bh=qdaeX/Pk+DcIM6hJBtx1rCYaCblxZTumnXXazIdcr6U=;
-	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
-	b=PnVmdGqf8HNZ4N3lv0SMsNW1uefy2c6NmZlfQ7Wm6sH3LQNrgaaguQIS32x6d/nhp
-	 VgNCTOK74JdtJAjlTXIuBd0Cof6DWqGYlrX+Mmp/NSJS1ZwpWDk1uSbqslD25SgPvF
-	 IiMxF/r/J1FmZLMzuen/YRC2q/NXwlJ221c6K74XaEV+osftenhVgQQFabtLOyDL8D
-	 SHBZmQNRyYB/PVZ6Xj0s9ct8lOBm03imz0shNsqvueqQnRglZzfKpwTiOD/1xvcMfz
-	 NveFP1QsUsZi4/DoCu8xoLUXml9M9iFPdWGx7t9cMx0dhd6EiQWcC57kYTqjdQyJNu
-	 biLom3dB4HaHA==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id DAEA437813E3;
-	Wed, 24 Apr 2024 12:54:37 +0000 (UTC)
-Message-ID: <44257461-b9df-4107-8684-2d9c1b7ad6ba@collabora.com>
-Date: Wed, 24 Apr 2024 14:54:37 +0200
+	id 1rzcKW-00000004Bef-0Zz7
+	for linux-mediatek@lists.infradead.org;
+	Wed, 24 Apr 2024 13:06:37 +0000
+Received: by mail-pf1-x42b.google.com with SMTP id d2e1a72fcca58-6ed32341906so6568276b3a.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 24 Apr 2024 06:06:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1713963990; x=1714568790; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=ZWmvHblwyLfpV+rEC2PSqDTFbQMnE4MDRNUxWTIYKmE=;
+        b=LfF++AtZOO3D66tSQnuXx3w5J8R1M3S5rNCg0Cc7KpEKHcocdoGdO7xCH6youP3NJ4
+         2nGDRY3aKd1dBNDKmOKj4jQTgKvfxip7owUtPpuMTHnjss12k1J8USoIj2TZi5lpq6F+
+         +Thv7wlcSAt+kbhffM2U8sFgHG9cEIYdc7dTY=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1713963990; x=1714568790;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=ZWmvHblwyLfpV+rEC2PSqDTFbQMnE4MDRNUxWTIYKmE=;
+        b=K+iKt+Fpbzrv4ubq11hIoKFVPVJ0Dk6qld0yyNQFI81mR62+eYwGSZzV7Z5xEglinB
+         5LbTm6v6WgbAUBD+nrzUhE79Co5I2JAkcFcDiCtS9s1UCRB8WKBdsL7S6/EoUwVjz9+y
+         vgmy2yntlqz3uSU9ZzrZlfhj7JBF8LUIDVmOrLvEI3T9AUL1Od4U5K0gSfcPe2LOLPG/
+         sgSITWsMzneOTzmKn6Ay3EF9dWGP8NwbhkAS+afHmDz7rokQ+3Rm1IdjNfXLdXjwa/xc
+         g97jGq2ZsH8RliLz3ZWV1JAq9MXieEJBxLPZ8BdCIUDX14ml3Zj3lDN4fkC2tVx5Wrp4
+         K/IA==
+X-Forwarded-Encrypted: i=1; AJvYcCUWHHKvKMq4m28T5L8U/Nzk6MSlDlySVekaqBz66qWSQMqtVvYcBj0Wd7b/Unj3czD9nbBblq5B3YRG8BwqcHuiwT2hDrldNioNLiGU5GHN3/lQ
+X-Gm-Message-State: AOJu0YziDGNArBi5wEtDjlpSWVM3rGiV8+v2dldSro5kJohIV6lGzikp
+	yveRlVL9nq6wcVtuJO6vj60iXZxx1zuSZ3eAoKN9OxR4rXQipSpzP0uk6m28vg==
+X-Google-Smtp-Source: AGHT+IGxaNdfLyHIQirpTurMn+c1hdzjWlDQY5IRavD5VXu6cW703ROJBZd0shDax7VyQ2G08e/VqQ==
+X-Received: by 2002:a05:6a20:c6cd:b0:1ad:7fd1:ee2e with SMTP id gw13-20020a056a20c6cd00b001ad7fd1ee2emr2131046pzb.13.1713963989985;
+        Wed, 24 Apr 2024 06:06:29 -0700 (PDT)
+Received: from treapking.tpe.corp.google.com ([2401:fa00:1:10:836:835b:e0f2:a3a0])
+        by smtp.gmail.com with ESMTPSA id y5-20020a637d05000000b005f3d2a9a91bsm9981158pgc.89.2024.04.24.06.06.27
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 24 Apr 2024 06:06:29 -0700 (PDT)
+From: Pin-yen Lin <treapking@chromium.org>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Jiri Slaby <jirislaby@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-kernel@vger.kernel.org,
+	Hilda Wu <hildawu@realtek.com>,
+	Pin-yen Lin <treapking@chromium.org>,
+	KidmanLee <kidman@realtek.com>,
+	linux-mediatek@lists.infradead.org,
+	Archie Pusaka <apusaka@chromium.org>,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	linux-serial@vger.kernel.org,
+	Al Cooper <alcooperx@comcast.net>,
+	linux-arm-kernel@lists.infradead.org,
+	Hsin-Te Yuan <yuanhsinte@chromium.org>
+Subject: [PATCH v2] serial: 8520_mtk: Set RTS on shutdown for Rx in-band wakeup
+Date: Wed, 24 Apr 2024 20:58:08 +0800
+Message-ID: <20240424130619.2924456-1-treapking@chromium.org>
+X-Mailer: git-send-email 2.44.0.769.g3c40516874-goog
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 6/7] regulator: Add refactored mtk-dvfsrc-regulator
- driver
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-Cc: amergnat@baylibre.com, broonie@kernel.org, conor+dt@kernel.org,
- devicetree@vger.kernel.org, djakov@kernel.org, gustavoars@kernel.org,
- henryc.chen@mediatek.com, keescook@chromium.org, kernel@collabora.com,
- krzysztof.kozlowski+dt@linaro.org, lgirdwood@gmail.com,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org,
- matthias.bgg@gmail.com, robh@kernel.org, wenst@chromium.org
-References: <20240424095416.1105639-1-angelogioacchino.delregno@collabora.com>
- <20240424095416.1105639-7-angelogioacchino.delregno@collabora.com>
- <93c12354-2e4d-4b21-bc96-eeb55442e365@wanadoo.fr>
- <6bd66ba2-7fcc-4981-a2cd-d4500540da76@collabora.com>
-Content-Language: en-US
-In-Reply-To: <6bd66ba2-7fcc-4981-a2cd-d4500540da76@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240424_055442_576441_CA45A8BD 
-X-CRM114-Status: GOOD (  19.11  )
+X-CRM114-CacheID: sfid-20240424_060632_542504_4FF1BD23 
+X-CRM114-Status: GOOD (  11.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,89 +98,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 24/04/24 14:53, AngeloGioacchino Del Regno ha scritto:
-> Il 24/04/24 12:35, Christophe JAILLET ha scritto:
->> Le 24/04/2024 à 11:54, AngeloGioacchino Del Regno a écrit :
->>> The previous driver never worked, and never got even compiled because
->>> it was missing the DVFSRC driver entirely, including needed neaders.
->>>
->>> This is a full (or nearly full) refactoring of the MediaTek DVFSRC
->>> controlled Regulators driver, retaining support for the MT6873, MT8183
->>> and MT8192 SoC, and adding MT8195.
->>>
->>> As part of the refactoring, this driver is now probed using its own
->>> devicetree compatible, as this is a child of the main DVFSRC driver
->>> and gets probed as a subnode of that.
->>>
->>> Reviewed-by: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
->>> Signed-off-by: AngeloGioacchino Del Regno 
->>> <angelogioacchino.delregno-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
->>> ---
->>>   drivers/regulator/mtk-dvfsrc-regulator.c | 196 +++++++++++++++++++++++
->>>   1 file changed, 196 insertions(+)
->>>   create mode 100644 drivers/regulator/mtk-dvfsrc-regulator.c
->>>
->>
->> ...
->>
->>> +static int dvfsrc_vcore_regulator_probe(struct platform_device *pdev)
->>> +{
->>> +    struct regulator_config config = { .dev = &pdev->dev };
->>> +    const struct dvfsrc_regulator_pdata *pdata;
->>> +    int i;
->>> +
->>> +    pdata = device_get_match_data(&pdev->dev);
->>> +    if (!pdata)
->>> +        return -EINVAL;
->>> +
->>> +    for (i = 0; i < pdata->size; i++) {
->>> +        struct regulator_desc *vrdesc = &pdata->descs[i];
->>> +        struct regulator_dev *rdev;
->>> +
->>> +        rdev = devm_regulator_register(&pdev->dev, vrdesc, &config);
->>> +        if (IS_ERR(rdev)) {
->>> +            dev_err(&pdev->dev, "failed to register %s\n", vrdesc->name);
->>> +            return PTR_ERR(rdev);
->>
->> Hi,
->>
->> Nit: (in case of v6)
->>
->>      dev_err_probe()?
->>
-> 
-> I don't think there's going to be any v6, as there's nothing else to do on
-> this series.
-> 
-> Mark, if you want to fix this up before applying, that should then be, exactly
-> 
->          rdev = devm_regulator_register(&pdev->dev, vrdesc, &config);
->          if (IS_ERR(rdev))
->              dev_err_probe(&pdev->dev, PTR_ERR(rdev),
->                        "failed to register %s\n", vrdesc->name);
-> 
+When Rx in-band wakeup is enabled, set RTS to true in mtk8250_shutdown()
+so the connected device can still send message and trigger IRQ when the
+system is suspended.
 
+Fixes: 18c9d4a3c249 ("serial: When UART is suspended, set RTS to false")
+Signed-off-by: Pin-yen Lin <treapking@chromium.org>
 
-Uff! Forgot the return!
+---
 
-         rdev = devm_regulator_register(&pdev->dev, vrdesc, &config);
-         if (IS_ERR(rdev))
-             return dev_err_probe(&pdev->dev, PTR_ERR(rdev),
-                          "failed to register %s\n", vrdesc->name);
+Changes in v2:
+- Replase serial8250_set_mctrl() with serial8250_do_set_mctrl()
 
-:)))
+ drivers/tty/serial/8250/8250_mtk.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
 
-> Otherwise, nevermind I guess..?
-> 
-> Cheers,
-> Angelo
-> 
-> 
-> _______________________________________________
-> Kernel mailing list -- kernel@mailman.collabora.com
-> To unsubscribe send an email to kernel-leave@mailman.collabora.com
-> This list is managed by https://mailman.collabora.com
-
-
+diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
+index c365a349421a..b9cca210e171 100644
+--- a/drivers/tty/serial/8250/8250_mtk.c
++++ b/drivers/tty/serial/8250/8250_mtk.c
+@@ -209,15 +209,19 @@ static int mtk8250_startup(struct uart_port *port)
+ 
+ static void mtk8250_shutdown(struct uart_port *port)
+ {
+-#ifdef CONFIG_SERIAL_8250_DMA
+ 	struct uart_8250_port *up = up_to_u8250p(port);
+ 	struct mtk8250_data *data = port->private_data;
++	int irq = data->rx_wakeup_irq;
+ 
++#ifdef CONFIG_SERIAL_8250_DMA
+ 	if (up->dma)
+ 		data->rx_status = DMA_RX_SHUTDOWN;
+ #endif
+ 
+-	return serial8250_do_shutdown(port);
++	serial8250_do_shutdown(port);
++
++	if (irq >= 0)
++		serial8250_do_set_mctrl(&up->port, TIOCM_RTS);
+ }
+ 
+ static void mtk8250_disable_intrs(struct uart_8250_port *up, int mask)
+-- 
+2.44.0.769.g3c40516874-goog
 
 
