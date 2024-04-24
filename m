@@ -4,67 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF02AC4345F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Apr 2024 19:04:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1C28C4345F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Apr 2024 19:31:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=laQLXPxaXY0Fuw9VQ1f+p8Q1ts8OW8v8cl0aB0gDyqc=; b=17YMRoWp881Jkl/FAQCPOQUQBR
-	CCtzMBcx1wOK6UhJR5bfnmvdCqaXTpE+vgXqRo1Oplz+z/pcytu5bG9Qdn5xzg6pX4y14VKAggcPR
-	0ljL6JY8ilSbsHWlLhnf/p+N/eaMubIKoKz7PffSNBSrNpX8QAcz3xQM7KZnLO0c+azBEFG0RRc/D
-	MstZF9leXVx+z3UTh4p2wHotdbKdhlQFFgj64PT4C8pWNQhcACRx9DRWbP42goy6aP9rNLUoZJW9M
-	5PEuVHj2TMWrZoz2mavB/lGap/7xNJexGDydCp58f70AEOqHLOTH99AjW0sBb8Ot0VuESayBEYUeH
-	5KxVPEcA==;
+	bh=oq1E8m4ICdPSa+D4M25IDwcAX2/xIXs4KuTiYe/1oHw=; b=rnHF11lc8FDbu6cLMeeI/oJFuS
+	1gQqJWYJBggZul/K98zdUimvKhomY6v30Lup59pGjUquu2zqzsGdm4CZRDc/gUZ+itli3UfnXw9xC
+	FofFVi4HxXEJ/e+DNgu/5LM/fh8bYn08iiImogPfiZezP2tJlGBbGTBERFnRhqaqGzo6Jm9/6opKi
+	qfQjX61t3xIitgRSebKSqx4deGrx34ymQ408vCQtn5kS6n+ED1hoHjwzE7lIUcCUK2We2QbQGJ7jo
+	Jp+isCxan7agG4puQdYXXnxD+142DYhvkrlvH7W48lB0hoOR5hLtcEKCIIWourWFU7JoY2ktHOYRx
+	bVSW5Xpw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rzhug-00000005YFE-22Sd;
-	Wed, 24 Apr 2024 19:04:14 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1rziKo-00000005fjc-2zDZ;
+	Wed, 24 Apr 2024 19:31:14 +0000
+Received: from mgamail.intel.com ([198.175.65.16])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rzhud-00000005YE3-1GmK;
-	Wed, 24 Apr 2024 19:04:12 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 7D2C4CE1813;
-	Wed, 24 Apr 2024 19:04:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 88102C113CD;
-	Wed, 24 Apr 2024 19:04:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1713985448;
-	bh=lf3gUKAZg+5HWPL/HBuxTOwojliXLX/XwXpqq85sjDU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=AOqJHgg7/rdvu8eCspTWBEqD70ZnfT8SNhnp/IZYYQTTarBB4oqAw/KnEO338S/4f
-	 OzZ3G/GoLvNy55uIm6S3UrKwdJEPyvOlC70Cm0tHmxoTvCNpPYMYuodz4HCgYtYzZd
-	 yPXWHDKaLmyuhUeADnLTMucGYePF9piKD2Y47rfj7e2tcDPuLP5gjWMwuawWDcQHoM
-	 FnVZSdIZEX+3DdyJoySR3+EIBTKiAGXFVoEWpdbESZuuiqkJSXSvB8pQOhtWTbxxtK
-	 aUij5Wxps3qvVBIUB+MHizJDaj2O0r/9m1RWN2Vv52tDJX0QkP77TVo+jFk2fUYwC3
-	 FukUwxLvHsYFw==
-Date: Wed, 24 Apr 2024 12:04:05 -0700
-From: Nathan Chancellor <nathan@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: djakov@kernel.org, robh@kernel.org, krzysztof.kozlowski+dt@linaro.org,
-	conor+dt@kernel.org, matthias.bgg@gmail.com, lgirdwood@gmail.com,
-	broonie@kernel.org, keescook@chromium.org, gustavoars@kernel.org,
-	henryc.chen@mediatek.com, linux-pm@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, kernel@collabora.com,
-	wenst@chromium.org, amergnat@baylibre.com,
-	Dawei Chien <dawei.chien@mediatek.com>
-Subject: Re: [PATCH v5 4/7] soc: mediatek: Add MediaTek DVFS Resource
- Collector (DVFSRC) driver
-Message-ID: <20240424190405.GA2803128@dev-arch.thelio-3990X>
-References: <20240424095416.1105639-1-angelogioacchino.delregno@collabora.com>
- <20240424095416.1105639-5-angelogioacchino.delregno@collabora.com>
+	id 1rzhGC-00000005Kke-3yG7;
+	Wed, 24 Apr 2024 18:22:26 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1713982945; x=1745518945;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=9dqTFNekjq83nuq4A5WxGVHQROMd+6+bp42VQddKZ4k=;
+  b=fo3++ylSefi/dy2kpifjOlO5XrbHsGCKJHdWBES9BcVHq1mNwgCy8ajL
+   2mIX5jm0OyI/VVunl5LsqQ0hUKO0EfIzvlx5iir4ArjiLcA3hg7djk2T8
+   jvm36yGEB/XqK++KKzrL/fSeWYqll2kiruNpYD5uw8ZWVkZUmJ3Rh52dB
+   YhCDFwm1BRs/WTLOims2Da1CrzLymko0RGxXLMXAt0y4EQkUy/lJAx7dN
+   8fP6vbBfxTa6CDtxueNVG1NaybGWyuvj60jeBMCIkg+n9/W4smAjWl4h+
+   Ocz0xAruRSUY9oUXegrUYngeWl8dR2bg82Lk8B7TI1j4mdAcbFyVxcZ7c
+   g==;
+X-CSE-ConnectionGUID: oU2xAKt4RvCA2k+g/EPzqg==
+X-CSE-MsgGUID: hXM0tELUTIKyvl58o3Fz8Q==
+X-IronPort-AV: E=McAfee;i="6600,9927,11054"; a="9756863"
+X-IronPort-AV: E=Sophos;i="6.07,226,1708416000"; 
+   d="scan'208";a="9756863"
+Received: from orviesa009.jf.intel.com ([10.64.159.149])
+  by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Apr 2024 11:22:24 -0700
+X-CSE-ConnectionGUID: nPsWMScFSZuFDn8N5RVk9Q==
+X-CSE-MsgGUID: xyDd/+6JTdurYNniUF5Glg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.07,226,1708416000"; 
+   d="scan'208";a="24751858"
+Received: from turnipsi.fi.intel.com (HELO kekkonen.fi.intel.com) ([10.237.72.44])
+  by orviesa009-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Apr 2024 11:22:16 -0700
+Received: from kekkonen.localdomain (localhost [127.0.0.1])
+	by kekkonen.fi.intel.com (Postfix) with SMTP id 2C82E11F855;
+	Wed, 24 Apr 2024 21:22:13 +0300 (EEST)
+Date: Wed, 24 Apr 2024 18:22:13 +0000
+From: Sakari Ailus <sakari.ailus@linux.intel.com>
+To: Ricardo Ribalda <ribalda@chromium.org>
+Cc: Martin Tuma <martin.tuma@digiteqautomotive.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Hugues Fruchet <hugues.fruchet@foss.st.com>,
+	Alain Volmat <alain.volmat@foss.st.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Sowjanya Komatineni <skomatineni@nvidia.com>,
+	Luca Ceresoli <luca.ceresoli@bootlin.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Hans Verkuil <hverkuil@xs4all.nl>, Sergey Kozlov <serjk@netup.ru>,
+	Abylay Ospan <aospan@netup.ru>,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Dmitry Osipenko <digetx@gmail.com>,
+	Benjamin Mugnier <benjamin.mugnier@foss.st.com>,
+	Sylvain Petinot <sylvain.petinot@foss.st.com>,
+	Stanimir Varbanov <stanimir.k.varbanov@gmail.com>,
+	Vikash Garodia <quic_vgarodia@quicinc.com>,
+	Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-arm-kernel@lists.infradead.org, linux-staging@lists.linux.dev,
+	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org
+Subject: Re: [PATCH v2 21/26] media: i2c: st-mipid02: Use the correct div
+ function
+Message-ID: <ZilN1VBduFcqNBbr@kekkonen.localdomain>
+References: <20240419-fix-cocci-v2-0-2119e692309c@chromium.org>
+ <20240419-fix-cocci-v2-21-2119e692309c@chromium.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240424095416.1105639-5-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20240419-fix-cocci-v2-21-2119e692309c@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240424_120411_720023_DB7E3761 
-X-CRM114-Status: GOOD (  17.94  )
+X-CRM114-CacheID: sfid-20240424_112225_070938_2CF74ABB 
+X-CRM114-Status: GOOD (  16.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,58 +119,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Angelo,
+Hi Ricardo,
 
-On Wed, Apr 24, 2024 at 11:54:13AM +0200, AngeloGioacchino Del Regno wrote:
-> The Dynamic Voltage and Frequency Scaling Resource Collector (DVFSRC) is a
-> Hardware module used to collect all the requests from both software and the
-> various remote processors embedded into the SoC and decide about a minimum
-> operating voltage and a minimum DRAM frequency to fulfill those requests in
-> an effort to provide the best achievable performance per watt.
+On Fri, Apr 19, 2024 at 09:48:07AM +0000, Ricardo Ribalda wrote:
+> link_freq does not fit in 32 bits.
 > 
-> This hardware IP is capable of transparently performing direct register R/W
-> on all of the DVFSRC-controlled regulators and SoC bandwidth knobs.
+> Found by cocci:
+> drivers/media/i2c/st-mipid02.c:329:1-7: WARNING: do_div() does a 64-by-32 division, please consider using div64_s64 instead.
 > 
-> This driver includes support for MT8183, MT8192 and MT8195.
+> Reviewed-by: Benjamin Mugnier <benjamin.mugnier@foss.st.com>
+> Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
+> ---
+>  drivers/media/i2c/st-mipid02.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> Co-Developed-by: Dawei Chien <dawei.chien@mediatek.com>
-> [Angelo: Partial refactoring and cleanups]
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-...
->  drivers/soc/mediatek/mtk-dvfsrc.c        | 551 +++++++++++++++++++++++
-...
-> +#define KBPS_TO_MBPS(x)			((x) / 1000)
-...
-> +static void __dvfsrc_set_dram_bw_v1(struct mtk_dvfsrc *dvfsrc, u32 reg,
-> +				    u16 max_bw, u16 min_bw, u64 bw)
-> +{
-> +	u32 new_bw = (u32)div_u64(KBPS_TO_MBPS(bw), 100);
-> +
-> +	/* If bw constraints (in mbps) are defined make sure to respect them */
-> +	if (max_bw)
-> +		new_bw = min(new_bw, max_bw);
-> +	if (min_bw && new_bw > 0)
-> +		new_bw = max(new_bw, min_bw);
-> +
-> +	dvfsrc_writel(dvfsrc, reg, new_bw);
-> +}
+> diff --git a/drivers/media/i2c/st-mipid02.c b/drivers/media/i2c/st-mipid02.c
+> index f250640729ca..93a40bfda1af 100644
+> --- a/drivers/media/i2c/st-mipid02.c
+> +++ b/drivers/media/i2c/st-mipid02.c
+> @@ -326,7 +326,7 @@ static int mipid02_configure_from_rx_speed(struct mipid02_dev *bridge,
+>  	}
+>  
+>  	dev_dbg(&client->dev, "detect link_freq = %lld Hz", link_freq);
+> -	do_div(ui_4, link_freq);
+> +	ui_4 = div64_s64(ui_4, link_freq);
 
-Using KBPS_TO_MBPS here results in
+These are positive numbers and ui_4 is unsigned. I'd use div64_u64()
+instead. With that,
 
-  ERROR: modpost: "__aeabi_uldivmod" [drivers/soc/mediatek/mtk-dvfsrc.ko] undefined!
+Reviewed-by: Sakari Ailus <sakari.ailus@linux.intel.com>
 
-when building ARCH=arm allmodconfig with clang. I did not check to see
-if this is visible with GCC but if it is not, it is only because GCC
-implements certain transformations for constant division that clang may
-or may not have implemented (there was some work on getting all
-transformations that GCC has supported in clang as well but I do not
-think was ever completed). Perhaps KBPS_TO_MBPS() should be dropped and
-the new_bw assignement turned into
+>  	bridge->r.clk_lane_reg1 |= ui_4 << 2;
+>  
+>  	return 0;
+> 
 
-  u32 new_bw = (u32)div_u64(bw, 100 * 1000); /* Multiply divisor by 1000 to convert bw from Kbps to Mbps */
+-- 
+Regards,
 
-or something like that.
-
-Cheers,
-Nathan
+Sakari Ailus
 
