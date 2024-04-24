@@ -4,51 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86558C4345F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Apr 2024 10:00:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01AD7C4345F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Apr 2024 10:02:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vv/xThjr+Xo5/Ng60TOhLSxSaz4c1XZ+sBRoUpuhl/4=; b=zLtPURe1GI744AUB6khymUhdaB
-	8mYI4FhQhg642xPtmN7+Z0yZ2DozxujvbBROrJuzsPFJsXD0vg4+VnHtibdDiMyfbdpzCLs5XmdSR
-	MJuTs1q/KkpN9r2ZOYHchGfDSNYEqnO3KGbiH51wVj4JpR6VWqmSEH050cA09nckO2k/bjjQCOAGU
-	BzKs4OkjHaCrjymbiXG4tRcJM9Pu8Tk/QbIIztzpLcX8C3bnbuScpLMF1l07yhGcq41ige0rMkAZh
-	1zmxxC6pHEehauZb5bqxv74yUvFIJIMWKtQS3KHmvjACjT/aP2y+8M3GR9x6gmZClj/SGNB8VK0IV
-	I96OZgMA==;
+	bh=b587ZfRWDFgGbJ2dkHn7GtcVmp/UFD1ys2cZnMwRIjs=; b=mNPuq1g+5C+N+mcMEOIc4wgIG1
+	fy6iN7DobOwjHUHarU6PjagKN2J0+QrM9O1QO1F8n83jQjUBx1sdO9a0N/7I3oRv9L5345rn2pRmp
+	NN6NgFkUhlqBOwOkeEl9zM3VRFzSqLFntXO+M6zahL8d3ZwEclQgrp/N/hPIJ3GH2kSWKc/Yti8Uf
+	WK7PWeWS5ybLWODrEKQjsJNxnPivdT3aFFeLdIivViFZa4ZVJM+Xj1J6pjU1q8PHNraZkxEo7aubQ
+	55VFZP+pGo5MHPKQReKTDzWbj6gvHl5vgnkYL8oIZz86cphAWuziqhEMDc8OL5ya8aV5aAVcEsUFW
+	p5CKFL0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rzZQo-00000003baN-0yDP;
-	Wed, 24 Apr 2024 10:00:50 +0000
+	id 1rzZSc-00000003c5r-2q5F;
+	Wed, 24 Apr 2024 10:02:42 +0000
 Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rzZQZ-00000003bTX-1tQV;
-	Wed, 24 Apr 2024 10:00:36 +0000
+	id 1rzZSS-00000003c2W-1eig;
+	Wed, 24 Apr 2024 10:02:39 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1713952834;
-	bh=R5WVkYvVKBubh/Xkg9FSD0bHakUX4sVUce8nhIJGf38=;
+	s=mail; t=1713952951;
+	bh=nZK5irVR2uIXCl1fxQYGDrvG2jZj3KlZwFclmsGUUjc=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Q4Zf0lrKCA7W8EN2N7sw+LSgsWV+fEjN5FjnUoUlr5Bm2oZK5zbA1dyLrS28gOzhH
-	 03d29FMJF3sJj88C82lOEb/Tg87p5CWzza8UfVArg0QwtxMDoeqayLgfpYaYFXqoUv
-	 G44oIoNTbAfmBWQ/zp9wKTncSHbmAH7GQT+6D9aO+cAvluJ7mTXc9Ni9ZdGoV7zb26
-	 oHKtFijfTPBZvypdJbX09+QjDBZ5pJENZzV86G0UjdaR+yFTDBczB8xMu+IDVDmqGM
-	 qPFu2/qirSDIfZYgDpW9b9GudYTcSzDdjr89RE7xhHNPtCHu/lH6yHFDyOVis9Xf/v
-	 SEK/ldElGYuzg==
+	b=gVnxQX4WvAFaZyHnI8bBEmo2M9V/VUoMmCAW3Cc5O4TwdKHj9MWP7NYjYUZ5lz+fP
+	 kKatbrN/7bWiU4Q9PKnbF3Et76Ap8sNkU3tvEC3MOoaVpo5OJeWJu1NcNnzAndvncF
+	 ftAgwckMUrv0CGW6fX6umdmHqhRYFmgZ4Y0tS+OvZ8Spfo3u5PfOdDtKDIOP5ZBvsC
+	 r/9ckIvPj0LXx3mxB5alDGGt57uvbwn4ocNFpIrFfFpWk380kv/Lb0CWiA1tPbZZMW
+	 +zQH4+Ng++PXuA4jNOH7gvT4rsmjQee/MQRxSGnpwUv/SMj42hKroHiR8ZhORmwo+u
+	 Ch33dWBiH77Kg==
 Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 1B4E937820F9;
-	Wed, 24 Apr 2024 10:00:33 +0000 (UTC)
-Message-ID: <186a2208-c2b0-4a57-9a2d-53a651ccd408@collabora.com>
-Date: Wed, 24 Apr 2024 12:00:32 +0200
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 263D2378107C;
+	Wed, 24 Apr 2024 10:02:30 +0000 (UTC)
+Message-ID: <ba25cb7b-ff93-4fcb-b943-154e960d45a0@collabora.com>
+Date: Wed, 24 Apr 2024 12:02:29 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 3/4] remoteproc: mediatek: Support setting DRAM and IPI
- shared buffer sizes
+Subject: Re: [PATCH v3 4/4] media: mediatek: imgsys: Support image processing
 To: Olivia Wen <olivia.wen@mediatek.com>,
  Bjorn Andersson <andersson@kernel.org>,
  Mathieu Poirier <mathieu.poirier@linaro.org>, Rob Herring <robh@kernel.org>
@@ -61,16 +60,15 @@ Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>,
  Project_Global_Chrome_Upstream_Group@mediatek.com,
  jason-ch.chen@mediatek.com, yaya.chang@mediatek.com, teddy.chen@mediatek.com
 References: <20240424030351.5294-1-olivia.wen@mediatek.com>
- <20240424030351.5294-4-olivia.wen@mediatek.com>
+ <20240424030351.5294-5-olivia.wen@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20240424030351.5294-4-olivia.wen@mediatek.com>
+In-Reply-To: <20240424030351.5294-5-olivia.wen@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240424_030035_652068_90A0874C 
-X-CRM114-Status: UNSURE (   5.37  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240424_030232_595770_E0C2A3B1 
+X-CRM114-Status: GOOD (  11.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,13 +84,33 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 24/04/24 05:03, Olivia Wen ha scritto:
-> The SCP on different chips will require different DRAM sizes and IPI
-> shared buffer sizes based on varying requirements.
+> Integrate the imgsys core architecture driver for image processing on
+> the MT8188 platform.
 > 
 > Signed-off-by: Olivia Wen <olivia.wen@mediatek.com>
 
+This should be reordered before introducing the 8188 scp core 1 support commit,
+but let's check with Mathieu before sending a v4.
+
+With that reordered,
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
+> ---
+>   include/linux/remoteproc/mtk_scp.h | 1 +
+>   1 file changed, 1 insertion(+)
+> 
+> diff --git a/include/linux/remoteproc/mtk_scp.h b/include/linux/remoteproc/mtk_scp.h
+> index 7c2b7cc9..344ff41 100644
+> --- a/include/linux/remoteproc/mtk_scp.h
+> +++ b/include/linux/remoteproc/mtk_scp.h
+> @@ -43,6 +43,7 @@ enum scp_ipi_id {
+>   	SCP_IPI_CROS_HOST_CMD,
+>   	SCP_IPI_VDEC_LAT,
+>   	SCP_IPI_VDEC_CORE,
+> +	SCP_IPI_IMGSYS_CMD,
+>   	SCP_IPI_NS_SERVICE = 0xFF,
+>   	SCP_IPI_MAX = 0x100,
+>   };
 
 
