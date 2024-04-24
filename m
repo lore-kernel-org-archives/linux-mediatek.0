@@ -4,71 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01AD7C4345F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Apr 2024 10:02:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C7ECC4345F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Apr 2024 10:19:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=b587ZfRWDFgGbJ2dkHn7GtcVmp/UFD1ys2cZnMwRIjs=; b=mNPuq1g+5C+N+mcMEOIc4wgIG1
-	fy6iN7DobOwjHUHarU6PjagKN2J0+QrM9O1QO1F8n83jQjUBx1sdO9a0N/7I3oRv9L5345rn2pRmp
-	NN6NgFkUhlqBOwOkeEl9zM3VRFzSqLFntXO+M6zahL8d3ZwEclQgrp/N/hPIJ3GH2kSWKc/Yti8Uf
-	WK7PWeWS5ybLWODrEKQjsJNxnPivdT3aFFeLdIivViFZa4ZVJM+Xj1J6pjU1q8PHNraZkxEo7aubQ
-	55VFZP+pGo5MHPKQReKTDzWbj6gvHl5vgnkYL8oIZz86cphAWuziqhEMDc8OL5ya8aV5aAVcEsUFW
-	p5CKFL0A==;
+	bh=mFdw4V9U4NST4C8w1cj4IEkGhdH2VTb3cZ2ewOJFDY8=; b=khrFJQr9w1Hu1xzbjscmdXLPS2
+	iAwpXkdQAXE9Z/K7hNgeBE1Zlqmr6GLnUAFrlWWXIOmUrKojSTJDcdNlflkxgJuLCWzqXjETIBbOq
+	MoFNDFVX9cCPpJjCZ7dNYtkoSGDYXh/7RzYjKl+EtJywyiJ3lDNSiLsoWtbMLd9ZV8W2LYLUnvdnz
+	7jykwQobC9xWu2r4DM0hmyDF9ka9Xpe+SpHhIbVuaFO48rD6OdvcK3P3mssvghNo3JITracieLddb
+	lc1a9jlfZHtBcCa1A+zUycyPE6/AQXU6xoKnikAE8swBco9lNdRRVLJCxnpyuOo1GS2fKXchGKlvW
+	Pik8SxgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rzZSc-00000003c5r-2q5F;
-	Wed, 24 Apr 2024 10:02:42 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rzZiQ-00000003ezQ-0xXd;
+	Wed, 24 Apr 2024 10:19:02 +0000
+Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rzZSS-00000003c2W-1eig;
-	Wed, 24 Apr 2024 10:02:39 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1713952951;
-	bh=nZK5irVR2uIXCl1fxQYGDrvG2jZj3KlZwFclmsGUUjc=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=gVnxQX4WvAFaZyHnI8bBEmo2M9V/VUoMmCAW3Cc5O4TwdKHj9MWP7NYjYUZ5lz+fP
-	 kKatbrN/7bWiU4Q9PKnbF3Et76Ap8sNkU3tvEC3MOoaVpo5OJeWJu1NcNnzAndvncF
-	 ftAgwckMUrv0CGW6fX6umdmHqhRYFmgZ4Y0tS+OvZ8Spfo3u5PfOdDtKDIOP5ZBvsC
-	 r/9ckIvPj0LXx3mxB5alDGGt57uvbwn4ocNFpIrFfFpWk380kv/Lb0CWiA1tPbZZMW
-	 +zQH4+Ng++PXuA4jNOH7gvT4rsmjQee/MQRxSGnpwUv/SMj42hKroHiR8ZhORmwo+u
-	 Ch33dWBiH77Kg==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 263D2378107C;
-	Wed, 24 Apr 2024 10:02:30 +0000 (UTC)
-Message-ID: <ba25cb7b-ff93-4fcb-b943-154e960d45a0@collabora.com>
-Date: Wed, 24 Apr 2024 12:02:29 +0200
+	id 1rzZiM-00000003exK-0LzQ
+	for linux-mediatek@lists.infradead.org;
+	Wed, 24 Apr 2024 10:18:59 +0000
+Received: by mail-lf1-x135.google.com with SMTP id 2adb3069b0e04-516ef30b16eso8189858e87.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 24 Apr 2024 03:18:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20230601; t=1713953927; x=1714558727; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=mFdw4V9U4NST4C8w1cj4IEkGhdH2VTb3cZ2ewOJFDY8=;
+        b=dxnWm+NDqXAGA+uZOzzwHqU4dyZomkvIzlf/H2HhAgCh7xe9/JKkhz/aEWKpOlgU37
+         X3wu5LFVkNuNHHBHb56SvaQWELMe0eRTlDAeK3s+O0Wz395RJlT1rTZltIzAZ24B0l+K
+         6+MjZCUYe3UW3hRVNipE0tea0jWUtcI22m/SaSM33H/n/DIzEAmW3p4+iNVnzeSlxJQE
+         dPFPX2quXUNBdoLA1Mw8O4FQuj+ncr2Aa/WXAlvNOTv/EVLgs9hFnS/vkk8ufNUqFcOg
+         LZ7n3CXzFEecBGCfk+NGGGY0yGW2VVzVxb5Z8vdveL7TRnJhUh7/fzEl50qzuEWNjaUZ
+         8MOg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1713953927; x=1714558727;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=mFdw4V9U4NST4C8w1cj4IEkGhdH2VTb3cZ2ewOJFDY8=;
+        b=rpgm0GcsS/M84O4okiMHfWvGZD7xr1nkmQ44+NcrTZ9knKLgdk2xt7rypklbxS+Mko
+         0Op1/sLuu4j4Jvjhj1/OmTWJ5dMZQZ0caADTyl7nLj2AyEioYoTdVNL64AJ11Q0wBMNZ
+         DbDj2JgQkUkxhwuJnILQHs7mi03teuWxKZx06DP2s531+c8FARQ7Sm5SW/vxwCX19ny8
+         CTZE5OFWDwkDEs+B+SM4igs5AEYD6a8I9xEZeqFBcCC2AMgifab6CrO0xYCyIoGHUqeR
+         d5i4lgfdz2xH0U1To+569EMsKjIvuarGtJo7Hqj9JX0uSZzeKUTSlzmA/1ZWQrP9Jcq2
+         Uctw==
+X-Forwarded-Encrypted: i=1; AJvYcCU4TkJZs7ll3nV7LbJZ9WiHVP/XPIE9JPXlW+FwUZaLVRrrzEk4Qo51WUqNvKwsuebqYLV4+/s7sHrzbbWcPoHN7UiK6Lx/fvcwv9ZxoDb3YRFq
+X-Gm-Message-State: AOJu0Yw/REK4HNaaZsmAWu0nROPHoH8LeBAbZ619wjlB92w0IGntLQaq
+	hsQ5z6HUv2dRwpCRcm2XQEOgjpiS00mea/dIzrT6suWd1SQNtQoeIbqDIdxzbsNrQlVNMgNWhA2
+	8a+3ZyhOsP4oaF/59hdf287kBO6i4pa5LsXq7
+X-Google-Smtp-Source: AGHT+IG8wWkRon3EGwbXNZDXFJeXYV2g79QRt563aKJF+Zlpi8UbIP8U7SqapviVgrO6cjhFlvXRk8rG8EBwrRTYgAE=
+X-Received: by 2002:a19:690a:0:b0:51a:bdd6:e718 with SMTP id
+ e10-20020a19690a000000b0051abdd6e718mr1226965lfc.31.1713953926472; Wed, 24
+ Apr 2024 03:18:46 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 4/4] media: mediatek: imgsys: Support image processing
-To: Olivia Wen <olivia.wen@mediatek.com>,
- Bjorn Andersson <andersson@kernel.org>,
- Mathieu Poirier <mathieu.poirier@linaro.org>, Rob Herring <robh@kernel.org>
-Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Tinghan Shen <tinghan.shen@mediatek.com>,
- linux-remoteproc@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- jason-ch.chen@mediatek.com, yaya.chang@mediatek.com, teddy.chen@mediatek.com
-References: <20240424030351.5294-1-olivia.wen@mediatek.com>
- <20240424030351.5294-5-olivia.wen@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20240424030351.5294-5-olivia.wen@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20240424074242.519895-1-joychakr@google.com> <20240424074242.519895-2-joychakr@google.com>
+ <20240424104048.1b02b07e@donnerap.manchester.arm.com>
+In-Reply-To: <20240424104048.1b02b07e@donnerap.manchester.arm.com>
+From: Joy Chakraborty <joychakr@google.com>
+Date: Wed, 24 Apr 2024 15:48:32 +0530
+Message-ID: <CAOSNQF1cVFTgZN4uzmxLEUG9cEq6bCNMQ9Mar9Y8AHaYKh6OEg@mail.gmail.com>
+Subject: Re: [PATCH v2 1/1] nvmem: Change return type of reg read/write to ssize_t
+To: Andre Przywara <andre.przywara@arm.com>
+Cc: Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>, 
+	Alyssa Rosenzweig <alyssa@rosenzweig.io>, Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, 
+	Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
+	NXP Linux Team <linux-imx@nxp.com>, Vladimir Zapolskiy <vz@mleia.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, 
+	Jerome Brunet <jbrunet@baylibre.com>, 
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
+	Claudiu Beznea <claudiu.beznea@tuxon.dev>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Orson Zhai <orsonzhai@gmail.com>, 
+	Baolin Wang <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>, 
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+	Vincent Shih <vincent.sunplus@gmail.com>, Chen-Yu Tsai <wens@csie.org>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
+	Rafal Milecki <rafal@milecki.pl>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, 
+	Masami Hiramatsu <mhiramat@kernel.org>, Michal Simek <michal.simek@amd.com>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, asahi@lists.linux.dev, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev, 
+	manugautam@google.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240424_030232_595770_E0C2A3B1 
-X-CRM114-Status: GOOD (  11.81  )
+X-CRM114-CacheID: sfid-20240424_031858_247719_0044FF98 
+X-CRM114-Status: GOOD (  34.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,34 +113,320 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 24/04/24 05:03, Olivia Wen ha scritto:
-> Integrate the imgsys core architecture driver for image processing on
-> the MT8188 platform.
-> 
-> Signed-off-by: Olivia Wen <olivia.wen@mediatek.com>
+On Wed, Apr 24, 2024 at 3:11=E2=80=AFPM Andre Przywara <andre.przywara@arm.=
+com> wrote:
+>
+> On Wed, 24 Apr 2024 07:42:42 +0000
+> Joy Chakraborty <joychakr@google.com> wrote:
+>
+> > Change return type of reg_read() and reg_write() callback to ssize_t fo=
+r
+> > nvmem suppliers to return number of bytes read/written to the nvmem cor=
+e.
+> >
+> > Currently nvmem core assumes the amount of data read/written is equal
+> > to what it has requested from the supplier, this return code facilitate=
+s
+> > better error handling in the nvmem core.
+> >
+> > Signed-off-by: Joy Chakraborty <joychakr@google.com>
+>
+> There are two problems in the sunxi driver:
+>
+> > ---
+> >  drivers/nvmem/apple-efuses.c        |  7 +--
+> >  drivers/nvmem/bcm-ocotp.c           | 12 ++---
+> >  drivers/nvmem/brcm_nvram.c          | 10 ++--
+> >  drivers/nvmem/core.c                | 83 +++++++++++++----------------
+> >  drivers/nvmem/imx-iim.c             |  6 +--
+> >  drivers/nvmem/imx-ocotp-ele.c       |  4 +-
+> >  drivers/nvmem/imx-ocotp-scu.c       | 12 ++---
+> >  drivers/nvmem/imx-ocotp.c           | 10 ++--
+> >  drivers/nvmem/jz4780-efuse.c        |  7 +--
+> >  drivers/nvmem/lan9662-otpc.c        | 12 ++---
+> >  drivers/nvmem/layerscape-sfp.c      | 11 ++--
+> >  drivers/nvmem/lpc18xx_eeprom.c      | 14 ++---
+> >  drivers/nvmem/lpc18xx_otp.c         |  6 +--
+> >  drivers/nvmem/meson-efuse.c         | 22 +++++---
+> >  drivers/nvmem/meson-mx-efuse.c      |  6 +--
+> >  drivers/nvmem/microchip-otpc.c      |  6 +--
+> >  drivers/nvmem/mtk-efuse.c           |  6 +--
+> >  drivers/nvmem/mxs-ocotp.c           |  7 +--
+> >  drivers/nvmem/nintendo-otp.c        |  6 +--
+> >  drivers/nvmem/qcom-spmi-sdam.c      | 12 ++---
+> >  drivers/nvmem/qfprom.c              | 14 ++---
+> >  drivers/nvmem/qoriq-efuse.c         |  6 +--
+> >  drivers/nvmem/rave-sp-eeprom.c      | 18 +++----
+> >  drivers/nvmem/rmem.c                |  4 +-
+> >  drivers/nvmem/rockchip-efuse.c      | 19 +++----
+> >  drivers/nvmem/rockchip-otp.c        | 19 +++----
+> >  drivers/nvmem/sc27xx-efuse.c        |  3 +-
+> >  drivers/nvmem/sec-qfprom.c          |  4 +-
+> >  drivers/nvmem/snvs_lpgpr.c          | 17 +++---
+> >  drivers/nvmem/sprd-efuse.c          |  8 +--
+> >  drivers/nvmem/stm32-bsec-optee-ta.c | 12 ++---
+> >  drivers/nvmem/stm32-bsec-optee-ta.h | 20 +++----
+> >  drivers/nvmem/stm32-romem.c         | 26 ++++-----
+> >  drivers/nvmem/sunplus-ocotp.c       |  4 +-
+> >  drivers/nvmem/sunxi_sid.c           | 15 +++---
+> >  drivers/nvmem/u-boot-env.c          |  6 +--
+> >  drivers/nvmem/uniphier-efuse.c      |  6 +--
+> >  drivers/nvmem/vf610-ocotp.c         |  7 +--
+> >  drivers/nvmem/zynqmp_nvmem.c        | 13 ++---
+> >  include/linux/nvmem-provider.h      |  4 +-
+> >  40 files changed, 253 insertions(+), 231 deletions(-)
+>
+> [ ... ]
+>
+> >
+> > diff --git a/drivers/nvmem/sunxi_sid.c b/drivers/nvmem/sunxi_sid.c
+> > index ba14a76208ab..0133263d2adb 100644
+> > --- a/drivers/nvmem/sunxi_sid.c
+> > +++ b/drivers/nvmem/sunxi_sid.c
+> > @@ -36,8 +36,8 @@ struct sunxi_sid {
+> >       u32                     value_offset;
+> >  };
+> >
+> > -static int sunxi_sid_read(void *context, unsigned int offset,
+> > -                       void *val, size_t bytes)
+> > +static ssize_t sunxi_sid_read(void *context, unsigned int offset,
+> > +                           void *val, size_t bytes)
+> >  {
+> >       struct sunxi_sid *sid =3D context;
+> >       u32 word;
+> > @@ -56,7 +56,7 @@ static int sunxi_sid_read(void *context, unsigned int=
+ offset,
+>
+>         (adding more context here)
+>
+> >
+> >       val +=3D round_down(bytes, 4);
+> >       offset +=3D round_down(bytes, 4);
+> >       bytes =3D bytes % 4;
+> >
+> >       if (!bytes)
+> >               return 0;
+> >
+> >       /* Handle any trailing bytes */
+> >       word =3D readl_relaxed(sid->base + sid->value_offset + offset);
+> >       memcpy(val, &word, bytes);
+> >
+> > -     return 0;
+> > +     return bytes;
+>
+> So this is only the code path in case the read request was not 4 byte
+> aligned, so the "return 0;" above must also be changed. But please note
+> that the bytes parameter is changed, so we either need to save that, or
+> derive the amount read from something else.
+>
+> Cheers,
+> Andre
 
-This should be reordered before introducing the 8188 scp core 1 support commit,
-but let's check with Mathieu before sending a v4.
+Ack, Missed the return logic above.
+Will fix this next version by saving bytes read in another variable.
+Thanks for reviewing.
 
-With that reordered,
+Thanks
+Joy
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-> ---
->   include/linux/remoteproc/mtk_scp.h | 1 +
->   1 file changed, 1 insertion(+)
-> 
-> diff --git a/include/linux/remoteproc/mtk_scp.h b/include/linux/remoteproc/mtk_scp.h
-> index 7c2b7cc9..344ff41 100644
-> --- a/include/linux/remoteproc/mtk_scp.h
-> +++ b/include/linux/remoteproc/mtk_scp.h
-> @@ -43,6 +43,7 @@ enum scp_ipi_id {
->   	SCP_IPI_CROS_HOST_CMD,
->   	SCP_IPI_VDEC_LAT,
->   	SCP_IPI_VDEC_CORE,
-> +	SCP_IPI_IMGSYS_CMD,
->   	SCP_IPI_NS_SERVICE = 0xFF,
->   	SCP_IPI_MAX = 0x100,
->   };
-
+>
+> >  }
+> >
+> >  static int sun8i_sid_register_readout(const struct sunxi_sid *sid,
+> > @@ -90,10 +90,11 @@ static int sun8i_sid_register_readout(const struct =
+sunxi_sid *sid,
+> >   * to be not reliable at all.
+> >   * Read by the registers instead.
+> >   */
+> > -static int sun8i_sid_read_by_reg(void *context, unsigned int offset,
+> > -                              void *val, size_t bytes)
+> > +static ssize_t sun8i_sid_read_by_reg(void *context, unsigned int offse=
+t,
+> > +                                  void *val, size_t bytes)
+> >  {
+> >       struct sunxi_sid *sid =3D context;
+> > +     size_t bytes_read =3D bytes;
+> >       u32 word;
+> >       int ret;
+> >
+> > @@ -109,7 +110,7 @@ static int sun8i_sid_read_by_reg(void *context, uns=
+igned int offset,
+> >       }
+> >
+> >       if (!bytes)
+> > -             return 0;
+> > +             return bytes_read;
+> >
+> >       /* Handle any trailing bytes */
+> >       ret =3D sun8i_sid_register_readout(sid, offset, &word);
+> > @@ -118,7 +119,7 @@ static int sun8i_sid_read_by_reg(void *context, uns=
+igned int offset,
+> >
+> >       memcpy(val, &word, bytes);
+> >
+> > -     return 0;
+> > +     return bytes_read;
+> >  }
+> >
+> >  static int sunxi_sid_probe(struct platform_device *pdev)
+> > diff --git a/drivers/nvmem/u-boot-env.c b/drivers/nvmem/u-boot-env.c
+> > index befbab156cda..2288a2891bb2 100644
+> > --- a/drivers/nvmem/u-boot-env.c
+> > +++ b/drivers/nvmem/u-boot-env.c
+> > @@ -47,8 +47,8 @@ struct u_boot_env_image_broadcom {
+> >       DECLARE_FLEX_ARRAY(uint8_t, data);
+> >  } __packed;
+> >
+> > -static int u_boot_env_read(void *context, unsigned int offset, void *v=
+al,
+> > -                        size_t bytes)
+> > +static ssize_t u_boot_env_read(void *context, unsigned int offset, voi=
+d *val,
+> > +                            size_t bytes)
+> >  {
+> >       struct u_boot_env *priv =3D context;
+> >       struct device *dev =3D priv->dev;
+> > @@ -66,7 +66,7 @@ static int u_boot_env_read(void *context, unsigned in=
+t offset, void *val,
+> >               return -EIO;
+> >       }
+> >
+> > -     return 0;
+> > +     return bytes_read;
+> >  }
+> >
+> >  static int u_boot_env_read_post_process_ethaddr(void *context, const c=
+har *id, int index,
+> > diff --git a/drivers/nvmem/uniphier-efuse.c b/drivers/nvmem/uniphier-ef=
+use.c
+> > index 6ad3295d3195..a6c28e03adc2 100644
+> > --- a/drivers/nvmem/uniphier-efuse.c
+> > +++ b/drivers/nvmem/uniphier-efuse.c
+> > @@ -16,8 +16,8 @@ struct uniphier_efuse_priv {
+> >       void __iomem *base;
+> >  };
+> >
+> > -static int uniphier_reg_read(void *context,
+> > -                          unsigned int reg, void *_val, size_t bytes)
+> > +static ssize_t uniphier_reg_read(void *context,
+> > +                              unsigned int reg, void *_val, size_t byt=
+es)
+> >  {
+> >       struct uniphier_efuse_priv *priv =3D context;
+> >       u8 *val =3D _val;
+> > @@ -26,7 +26,7 @@ static int uniphier_reg_read(void *context,
+> >       for (offs =3D 0; offs < bytes; offs +=3D sizeof(u8))
+> >               *val++ =3D readb(priv->base + reg + offs);
+> >
+> > -     return 0;
+> > +     return bytes;
+> >  }
+> >
+> >  static int uniphier_efuse_probe(struct platform_device *pdev)
+> > diff --git a/drivers/nvmem/vf610-ocotp.c b/drivers/nvmem/vf610-ocotp.c
+> > index ee9c61ae727d..4e2bdb38305d 100644
+> > --- a/drivers/nvmem/vf610-ocotp.c
+> > +++ b/drivers/nvmem/vf610-ocotp.c
+> > @@ -143,11 +143,12 @@ static int vf610_get_fuse_address(int base_addr_o=
+ffset)
+> >       return -EINVAL;
+> >  }
+> >
+> > -static int vf610_ocotp_read(void *context, unsigned int offset,
+> > -                     void *val, size_t bytes)
+> > +static ssize_t vf610_ocotp_read(void *context, unsigned int offset,
+> > +                             void *val, size_t bytes)
+> >  {
+> >       struct vf610_ocotp *ocotp =3D context;
+> >       void __iomem *base =3D ocotp->base;
+> > +     size_t bytes_read =3D bytes;
+> >       u32 reg, *buf =3D val;
+> >       int fuse_addr;
+> >       int ret;
+> > @@ -193,7 +194,7 @@ static int vf610_ocotp_read(void *context, unsigned=
+ int offset,
+> >               offset +=3D 4;
+> >       }
+> >
+> > -     return 0;
+> > +     return bytes_read;
+> >  }
+> >
+> >  static struct nvmem_config ocotp_config =3D {
+> > diff --git a/drivers/nvmem/zynqmp_nvmem.c b/drivers/nvmem/zynqmp_nvmem.=
+c
+> > index 8682adaacd69..1502d4998159 100644
+> > --- a/drivers/nvmem/zynqmp_nvmem.c
+> > +++ b/drivers/nvmem/zynqmp_nvmem.c
+> > @@ -56,8 +56,8 @@ struct xilinx_efuse {
+> >       u32 pufuserfuse;
+> >  };
+> >
+> > -static int zynqmp_efuse_access(void *context, unsigned int offset,
+> > -                            void *val, size_t bytes, enum efuse_access=
+ flag,
+> > +static ssize_t zynqmp_efuse_access(void *context, unsigned int offset,
+> > +                                void *val, size_t bytes, enum efuse_ac=
+cess flag,
+> >                              unsigned int pufflag)
+> >  {
+> >       struct device *dev =3D context;
+> > @@ -140,10 +140,10 @@ static int zynqmp_efuse_access(void *context, uns=
+igned int offset,
+> >       dma_free_coherent(dev, sizeof(struct xilinx_efuse),
+> >                         efuse, dma_addr);
+> >
+> > -     return ret;
+> > +     return ret < 0 ? ret : bytes;
+> >  }
+> >
+> > -static int zynqmp_nvmem_read(void *context, unsigned int offset, void =
+*val, size_t bytes)
+> > +static ssize_t zynqmp_nvmem_read(void *context, unsigned int offset, v=
+oid *val, size_t bytes)
+> >  {
+> >       struct device *dev =3D context;
+> >       int ret;
+> > @@ -166,6 +166,7 @@ static int zynqmp_nvmem_read(void *context, unsigne=
+d int offset, void *val, size
+> >
+> >               dev_dbg(dev, "Read chipid val %x %x\n", idcode, version);
+> >               *(int *)val =3D version & SILICON_REVISION_MASK;
+> > +             ret =3D SOC_VER_SIZE;
+> >               break;
+> >       /* Efuse offset starts from 0xc */
+> >       case EFUSE_START_OFFSET ... EFUSE_END_OFFSET:
+> > @@ -182,8 +183,8 @@ static int zynqmp_nvmem_read(void *context, unsigne=
+d int offset, void *val, size
+> >       return ret;
+> >  }
+> >
+> > -static int zynqmp_nvmem_write(void *context,
+> > -                           unsigned int offset, void *val, size_t byte=
+s)
+> > +static ssize_t zynqmp_nvmem_write(void *context,
+> > +                               unsigned int offset, void *val, size_t =
+bytes)
+> >  {
+> >       int pufflag =3D 0;
+> >
+> > diff --git a/include/linux/nvmem-provider.h b/include/linux/nvmem-provi=
+der.h
+> > index 3ebeaa0ded00..f7e83a59aa2f 100644
+> > --- a/include/linux/nvmem-provider.h
+> > +++ b/include/linux/nvmem-provider.h
+> > @@ -16,9 +16,9 @@
+> >  #include <linux/gpio/consumer.h>
+> >
+> >  struct nvmem_device;
+> > -typedef int (*nvmem_reg_read_t)(void *priv, unsigned int offset,
+> > +typedef ssize_t (*nvmem_reg_read_t)(void *priv, unsigned int offset,
+> >                               void *val, size_t bytes);
+> > -typedef int (*nvmem_reg_write_t)(void *priv, unsigned int offset,
+> > +typedef ssize_t (*nvmem_reg_write_t)(void *priv, unsigned int offset,
+> >                                void *val, size_t bytes);
+> >  /* used for vendor specific post processing of cell data */
+> >  typedef int (*nvmem_cell_post_process_t)(void *priv, const char *id, i=
+nt index,
+>
 
