@@ -4,39 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9BEFC07E8E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Apr 2024 10:55:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FFEDC4345F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Apr 2024 11:03:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GT7TJaVQQontWxYWGBylc8lFb0L7XGXXi7iE2XjaLgc=; b=ZLEG4VJr5+9P7SKJcCusjrgsLc
-	5erwkP/vqf6pyo1QsYXvoFIdnZpSkoeVfKNPD2aW64slLUcVK0A2VR3Mi32gUkNC3zkAGE+LyC0Zc
-	gKi6GoVuFET6Z9KoJIfNWIleukoNIrm3T2J4Iln/xcrd+Xud75f4tGYSdNFxnnR+4ykhSUo0ddsLQ
-	AKw5eabi7F/cZD/LxV0Ezirx7cj4NMDy3tEnPcc82TS0HtkEKwH9bqgy5oTlNueTCOOc8NhwOcJ5S
-	VQZo/srZ+gK43i6l34riqYJEPFWm6gEMnfvu/qp2yiVYfQKhUXvwxKuu8rVXYvQPxMYNu4SPl9+93
-	zcKPh58w==;
+	bh=3NEeLl3YejgCxDEdfVd3GRFz3M8V6FuccnNjPfbKsGw=; b=ItFkPSKlwVFxaYAO9mOTysJpt2
+	M5F9ViKuzgKklX6cQ3x/d2zOPxKAF71+XrMP74rltUz5ncTXaK6P4B449BGujCeGQfwjNjznWEzf0
+	j1Na2GPswLt5gw5SQHFjd6y9Npf2ruQGm5zZVlb5ltN2yqQ12uX1EhbTNKK15HG72MOQv11Rm02NU
+	AffOSuhRF2TUZxLNcCwXE+1HUR4ijmNrGVeJuIZIlFPVyOkQQd6xFYmYMUuK6u8q3WYZLElq6p6mc
+	L0/Cw1kb1ifQUywTPiHT1HaGdpmtLMZFbRWdMoWO02gm51Ow2caxn4m/faac4IualrTSl+CL+Xuis
+	JiUrFycw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rzaHq-00000003mq9-05Eg;
-	Wed, 24 Apr 2024 10:55:38 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1rzaPs-00000003pPg-2muT;
+	Wed, 24 Apr 2024 11:03:56 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rzaHl-00000003mou-0tr6;
-	Wed, 24 Apr 2024 10:55:34 +0000
+	id 1rzaPn-00000003pOW-0Vh7;
+	Wed, 24 Apr 2024 11:03:54 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 214A1CE14E4;
-	Wed, 24 Apr 2024 10:55:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6F6C1C113CE;
-	Wed, 24 Apr 2024 10:55:22 +0000 (UTC)
-Message-ID: <40b9c015-8ccf-4313-800a-ecae9aa8cc27@xs4all.nl>
-Date: Wed, 24 Apr 2024 12:55:20 +0200
+	by dfw.source.kernel.org (Postfix) with ESMTP id 7056260B98;
+	Wed, 24 Apr 2024 11:03:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9CA36C113CE;
+	Wed, 24 Apr 2024 11:03:41 +0000 (UTC)
+Message-ID: <8ce6b014-331a-4e22-be45-763f9a12fc33@xs4all.nl>
+Date: Wed, 24 Apr 2024 13:03:39 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 09/26] media: v4l: async: refactor
- v4l2_async_create_ancillary_links
+Subject: Re: [PATCH v2 16/26] media: au0828: Use min macro
 Content-Language: en-US, nl
 To: Ricardo Ribalda <ribalda@chromium.org>,
  Martin Tuma <martin.tuma@digiteqautomotive.com>,
@@ -73,7 +72,7 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
  linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org
 References: <20240419-fix-cocci-v2-0-2119e692309c@chromium.org>
- <20240419-fix-cocci-v2-9-2119e692309c@chromium.org>
+ <20240419-fix-cocci-v2-16-2119e692309c@chromium.org>
 From: Hans Verkuil <hverkuil@xs4all.nl>
 Autocrypt: addr=hverkuil@xs4all.nl; keydata=
  xsFNBFQ84W0BEAC7EF1iL4s3tY8cRTVkJT/297h0Hz0ypA+ByVM4CdU9sN6ua/YoFlr9k0K4
@@ -118,12 +117,12 @@ Autocrypt: addr=hverkuil@xs4all.nl; keydata=
  gYmkrmv0duG1FStpY+IIQn1TOkuXrciTVfZY1cZD0aVxwlxXBnUNZZNslldvXFtndxR0SFat
  sflovhDxKyhFwXOP0Rv8H378/+14TaykknRBIKEc0+lcr+EMOSUR5eg4aURb8Gc3Uc7fgQ6q
  UssTXzHPyj1hAyDpfu8DzAwlh4kKFTodxSsKAjI45SLjadSc94/5Gy8645Y1KgBzBPTH7Q==
-In-Reply-To: <20240419-fix-cocci-v2-9-2119e692309c@chromium.org>
+In-Reply-To: <20240419-fix-cocci-v2-16-2119e692309c@chromium.org>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240424_035533_628951_445C4B45 
-X-CRM114-Status: GOOD (  17.12  )
+X-CRM114-CacheID: sfid-20240424_040351_337454_4049F7BF 
+X-CRM114-Status: GOOD (  13.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -138,62 +137,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 19/04/2024 11:47, Ricardo Ribalda wrote:
-> Return 0 without checking IS_ERR or PTR_ERR if CONFIG_MEDIA_CONTROLLER
-> is not enabled.
+nitpick: subject should say "Use umin macro".
+
+	Hans
+
+On 19/04/2024 11:48, Ricardo Ribalda wrote:
+> Simplifies the code.
 > 
-> This makes cocci happier:
-> 
-> drivers/media/v4l2-core/v4l2-async.c:331:23-30: ERROR: PTR_ERR applied after initialization to constant on line 319
+> Found by cocci:
+> drivers/media/usb/au0828/au0828-video.c:605:11-12: WARNING opportunity for min()
 > 
 > Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 > ---
->  drivers/media/v4l2-core/v4l2-async.c | 7 +++----
->  1 file changed, 3 insertions(+), 4 deletions(-)
+>  drivers/media/usb/au0828/au0828-video.c | 5 +----
+>  1 file changed, 1 insertion(+), 4 deletions(-)
 > 
-> diff --git a/drivers/media/v4l2-core/v4l2-async.c b/drivers/media/v4l2-core/v4l2-async.c
-> index 4bb073587817..915a9f3ea93c 100644
-> --- a/drivers/media/v4l2-core/v4l2-async.c
-> +++ b/drivers/media/v4l2-core/v4l2-async.c
-> @@ -316,9 +316,10 @@ v4l2_async_nf_try_all_subdevs(struct v4l2_async_notifier *notifier);
->  static int v4l2_async_create_ancillary_links(struct v4l2_async_notifier *n,
->  					     struct v4l2_subdev *sd)
->  {
-> -	struct media_link *link = NULL;
-> +	struct media_link *link;
+> diff --git a/drivers/media/usb/au0828/au0828-video.c b/drivers/media/usb/au0828/au0828-video.c
+> index fd9fc43d47e0..2ec49ea479d5 100644
+> --- a/drivers/media/usb/au0828/au0828-video.c
+> +++ b/drivers/media/usb/au0828/au0828-video.c
+> @@ -602,10 +602,7 @@ static inline int au0828_isoc_copy(struct au0828_dev *dev, struct urb *urb)
+>  		vbi_field_size = dev->vbi_width * dev->vbi_height * 2;
+>  		if (dev->vbi_read < vbi_field_size) {
+>  			remain  = vbi_field_size - dev->vbi_read;
+> -			if (len < remain)
+> -				lencopy = len;
+> -			else
+> -				lencopy = remain;
+> +			lencopy = umin(len, remain);
 >  
-> -#if IS_ENABLED(CONFIG_MEDIA_CONTROLLER)
-> +	if (!IS_ENABLED(CONFIG_MEDIA_CONTROLLER))
-> +		return 0;
->  
->  	if (sd->entity.function != MEDIA_ENT_F_LENS &&
->  	    sd->entity.function != MEDIA_ENT_F_FLASH)
-> @@ -326,8 +327,6 @@ static int v4l2_async_create_ancillary_links(struct v4l2_async_notifier *n,
->  
->  	link = media_create_ancillary_link(&n->sd->entity, &sd->entity);
->  
-> -#endif
-> -
->  	return IS_ERR(link) ? PTR_ERR(link) : 0;
->  }
+>  			if (vbi_buf != NULL)
+>  				au0828_copy_vbi(dev, vbi_dma_q, vbi_buf, p,
+> 
 
-I think I would prefer:
-
-static int v4l2_async_create_ancillary_links(struct v4l2_async_notifier *n,
-					     struct v4l2_subdev *sd)
-{
-#if IS_ENABLED(CONFIG_MEDIA_CONTROLLER)
-	struct media_link *link;
-
-	...
-
-	return IS_ERR(link) ? PTR_ERR(link) : 0;
-#else
-	return 0;
-#endif
-}
-
-Regards,
-
-	Hans
 
