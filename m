@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5C93C10F15
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Apr 2024 09:54:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B7A8C4345F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Apr 2024 09:54:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Dn6zD34HAHAc18aWbQDv0OGHeiZn6lM5aZPHIzsTCVU=; b=xQNdUtszczv4NW3IF4mbJgzmAI
-	IhOjK2mN0gOBs034woy3M5Fi/zKnT9q3+Cvbjg1fqGs821Kc8uccbmmRI8lelBnhjmcAQ+R9zU1qK
-	MkVztcg11c/SVM7ymL9DcVQCG89cEg4Fd+ZxT4zcKewcyEAvS6kMdAjIX9vWvmH15MUK0G/kuakiE
-	pp/4epSWW8QIXjj+ohTB2Bb9dBOFnH7nxYON3njs8w1JfKOZV7cIJXnBxMVFve0NYuiIsHyzQS4yP
-	2Hsfud3Sa1//p4HZdd30vZ3sJ4JAYH7Im0Ijueg+xxO5FLqwecWrXyPB60b/0WQCtSgEq4U0TDnh+
-	c0Xrcz9w==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3YSKTmdlVaM+NZ8x47BPZfDbvPASUIUDicoasCTLYY0=; b=2anCR5v7GR5vomLTzaX+5EqS19
+	n9zHN57mTTf9ZyNg6dpsPaHD0QfwiNIccCrz7mRafiJFWxwQ8msBbvsmXqSnhLhP4wOC0U5JJx/BL
+	ix4QonLvUPJM3hxcaqOqqVS+miRFT+h9KddRUIs6WIGwJnXZqmQf/+EAIuzRZJemdj7y9bvvzdvOe
+	5lkFpII1Geg0Tx/bxD94WedlpKzcTBUVLQj47lzn+2JXtMT3eken+QjUsTMUj/RLyF//knEjckuFf
+	cEqJ3TZYtj0kHsJlEElqppp9rTR1VAOt/1Oj7S2uAJzgaUEozlQ8ZnCZV3M+1iLOmjkYL4sL/r8W5
+	kAS4tjMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rzZKn-00000003ZTy-1H4d;
-	Wed, 24 Apr 2024 09:54:37 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rzZL5-00000003Zfk-0IYE;
+	Wed, 24 Apr 2024 09:54:55 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rzZKd-00000003ZLj-1EnM;
-	Wed, 24 Apr 2024 09:54:30 +0000
+	id 1rzZKe-00000003ZNW-1GIB;
+	Wed, 24 Apr 2024 09:54:32 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1713952463;
-	bh=GJQT/3O6iiaaVo32e8EBgerLbeFHb7WTjEivwkwCAog=;
-	h=From:To:Cc:Subject:Date:From;
-	b=l6OvnA1F94qHKJTKV5+pWP4gDH8lTrJgjVcp083dttDTu3r1tDQvprSEoExOwCKvH
-	 OqrfMyI9FRJe7ZzBZmvw2+dVjGYRf7buCaH5FpdH2yUT7lDC/W5vdi8PbB9PzYy40+
-	 4FMV8QbMH8lPxuBK+F6qk01Zvc9yJKcN3TZY5XCDKiQLX8x6uQzyy961BwGmDRw8/y
-	 aO4fnowW7xu6eE9bjwrAsdAOxG+od8TqX0DzUSvbsGClWt6Lqg5bcps+ccOScrIhVG
-	 stW1XmoKHaRT4Ebo8EeqzCJcFKzkZxQj1oDzHc+w3l1PhN60fqbQmnKNDVhS1AkWql
-	 QhqbY8Oh/b2nw==
+	s=mail; t=1713952467;
+	bh=Jh5vpJjmKeRNGvYOlTEiY00JGA1l2grGTbUO6N8If1s=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=uZaNCGaYqFDCFQkZ/hDQQavJJC7CwCsNbW7K/WWgUIZMAXmROKbdBJjXi29kRM2Nq
+	 xj0199VqkaoUM60GZ/zvkJSinV0FUjDwSfZkdhvJOnw6h4iAuB3Xynl+vUdWyv4Tlz
+	 17OZoyM+dJSmMe4m3cqANgnv6bPjxRmKhZ40dtIe4SY2VYPGRkLbcVpBGad1Qv2Yyk
+	 uPOus3tbRLJnWoN1d1iDqRigtwS7NWo+pBuIZPW/MXKrmmVEq5LI13a1fVN2cosuU0
+	 VL+ouKLFf0OVyrqctYNcVKTJgDjOma51LvRMrWajea7PGndjXB1VzdcwnY+OYpys7/
+	 QCoKuRwoQTdWA==
 Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 37FD0378107C;
-	Wed, 24 Apr 2024 09:54:22 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 151C63782150;
+	Wed, 24 Apr 2024 09:54:26 +0000 (UTC)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: djakov@kernel.org
 Cc: robh@kernel.org,
@@ -63,15 +63,17 @@ Cc: robh@kernel.org,
 	kernel@collabora.com,
 	wenst@chromium.org,
 	amergnat@baylibre.com
-Subject: [PATCH v5 0/7] MediaTek DVFSRC Bus Bandwidth and Regulator knobs
-Date: Wed, 24 Apr 2024 11:54:09 +0200
-Message-ID: <20240424095416.1105639-1-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v5 3/7] dt-bindings: soc: mediatek: Add DVFSRC bindings for MT8183 and MT8195
+Date: Wed, 24 Apr 2024 11:54:12 +0200
+Message-ID: <20240424095416.1105639-4-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.44.0
+In-Reply-To: <20240424095416.1105639-1-angelogioacchino.delregno@collabora.com>
+References: <20240424095416.1105639-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240424_025427_540193_3070E33A 
-X-CRM114-Status: GOOD (  20.00  )
+X-CRM114-CacheID: sfid-20240424_025428_494588_AEC8BB69 
+X-CRM114-Status: GOOD (  13.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,133 +88,112 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Changes in v5:
- - Fixed Kconfig dependencies in interconnect
- - Fixed module build for dvfsrc and interconnect
+Add bindings for the MediaTek Dynamic Voltage and Frequency Scaling
+Resource Collector (DVFSRC), a hardware module used to collect all the
+requests from both software and the various remote processors embedded
+into the SoC and decide about a minimum operating voltage and a minimum
+DRAM frequency to fulfill those requests in an effort to provide the
+best achievable performance per watt.
 
-Changes in v4:
- - Updated patch [3/7] to actually remove address/size cells
-   as the old version got unexpectedly pushed in v3.
-
-Changes in v3:
- - Removed examples from interconnect and regulator bindings
-   and kept example node with interconnect and regulator in
-   the main DVFSRC binding as suggested
- - Removed 'reg' from interconnect and regulator, removed both
-   address and size cells from the main DVFSRC binding as that
-   was not really needed
- - Added anyOf-required entries in the regulator binding as it
-   doesn't make sense to probe it without any regulator subnode
-
-Changes in v2:
- - Fixed issues with regulator binding about useless quotes and
-   wrong binding path (oops)
- - Removed useless 'items' from DVFSRC main binding
- - Allowed address/size cells to DVFSRC main binding to resolve
-   validation issues on the regulator and interconnect bindings
- - Changed dvfsrc node name to `system-controller`, as the DVFSRC
-   is actually able to control multiple system components.
- - Added a commit to remove mtk-dvfs-regulator.c before adding the
-   new, refactored regulator driver
-
-
-This series adds support for the MediaTek Dynamic Voltage and Frequency
-Scaling Resource Controller (DVFSRC), found on many MediaTek SoCs.
-
-This hardware collects requests from both software and the various remote
-processors embededd into the SoC, and decides about a minimum operating
-voltage and a minimum DRAM frequency to fulfill those requests, in an
-effort to provide the best achievable performance per watt.
-
-Such hardware IP is capable of transparently performing direct register
+This hardware IP is capable of transparently performing direct register
 R/W on all of the DVFSRC-controlled regulators and SoC bandwidth knobs.
 
-Summarizing how the DVFSRC works for Interconnect:
-
-             ICC provider         ICC Nodes
-                              ----          ----
-             _________       |CPU |   |--- |VPU |
-    _____   |         |-----  ----    |     ----
-   |     |->|  DRAM   |       ----    |     ----
-   |DRAM |->|scheduler|----- |GPU |   |--- |DISP|
-   |     |->|  (EMI)  |       ----    |     ----
-   |_____|->|_________|---.   -----   |     ----
-               /|\         `-|MMSYS|--|--- |VDEC|
-                |             -----   |     ----
-                |                     |     ----
-                | change DRAM freq    |--- |VENC|
-             --------                 |     ----
-    SMC --> | DVFSRC |                |     ----
-             --------                 |--- |IMG |
-                                      |     ----
-                                      |     ----
-                                      |--- |CAM |
-                                            ----
-
-...and for regulators, it's simply...
-   SMC -> DVFSRC -> Regulator voltage decider -> (vreg) Registers R/W
-
-Please note that this series is based on an old (abandoned) series from
-MediaTek [1], and reuses some parts of the code found in that.
-
-Besides, included in this series, there's also a refactoring of the
-mtk-dvfsrc-regulator driver, which never got compiled at all, and would
-not build anyway because of missing headers and typos: that commit did
-not get any Fixes tag because, well, backporting makes no sense at all
-as the DVFSRC support - which is critical for that driver to work - is
-introduced with *this series*! :-)
-
-P.S.: The DVFSRC regulator is a requirement for the MediaTek UFSHCI
-      controller's crypto boost feature, which is already upstream but
-      lacking the actual regulator to work....... :-)
-
-[1]: https://lore.kernel.org/all/20210812085846.2628-1-dawei.chien@mediatek.com/
-
-
-AngeloGioacchino Del Regno (7):
-  dt-bindings: regulator: Add bindings for MediaTek DVFSRC Regulators
-  dt-bindings: interconnect: Add MediaTek EMI Interconnect bindings
-  dt-bindings: soc: mediatek: Add DVFSRC bindings for MT8183 and MT8195
-  soc: mediatek: Add MediaTek DVFS Resource Collector (DVFSRC) driver
-  regulator: Remove mtk-dvfsrc-regulator.c
-  regulator: Add refactored mtk-dvfsrc-regulator driver
-  interconnect: mediatek: Add MediaTek MT8183/8195 EMI Interconnect
-    driver
-
- .../interconnect/mediatek,mt8183-emi.yaml     |  51 ++
- .../mediatek,mt6873-dvfsrc-regulator.yaml     |  43 ++
- .../soc/mediatek/mediatek,mt8183-dvfsrc.yaml  |  83 +++
- drivers/interconnect/Kconfig                  |   1 +
- drivers/interconnect/Makefile                 |   1 +
- drivers/interconnect/mediatek/Kconfig         |  29 +
- drivers/interconnect/mediatek/Makefile        |   5 +
- drivers/interconnect/mediatek/icc-emi.c       | 153 +++++
- drivers/interconnect/mediatek/icc-emi.h       |  40 ++
- drivers/interconnect/mediatek/mt8183.c        | 143 +++++
- drivers/interconnect/mediatek/mt8195.c        | 339 +++++++++++
- drivers/regulator/mtk-dvfsrc-regulator.c      | 242 ++++----
- drivers/soc/mediatek/Kconfig                  |  11 +
- drivers/soc/mediatek/Makefile                 |   1 +
- drivers/soc/mediatek/mtk-dvfsrc.c             | 551 ++++++++++++++++++
- .../interconnect/mediatek,mt8183.h            |  23 +
- .../interconnect/mediatek,mt8195.h            |  44 ++
- include/linux/soc/mediatek/dvfsrc.h           |  36 ++
- include/linux/soc/mediatek/mtk_sip_svc.h      |   3 +
- 19 files changed, 1669 insertions(+), 130 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/interconnect/mediatek,mt8183-emi.yaml
- create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6873-dvfsrc-regulator.yaml
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ .../soc/mediatek/mediatek,mt8183-dvfsrc.yaml  | 83 +++++++++++++++++++
+ 1 file changed, 83 insertions(+)
  create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mediatek,mt8183-dvfsrc.yaml
- create mode 100644 drivers/interconnect/mediatek/Kconfig
- create mode 100644 drivers/interconnect/mediatek/Makefile
- create mode 100644 drivers/interconnect/mediatek/icc-emi.c
- create mode 100644 drivers/interconnect/mediatek/icc-emi.h
- create mode 100644 drivers/interconnect/mediatek/mt8183.c
- create mode 100644 drivers/interconnect/mediatek/mt8195.c
- create mode 100644 drivers/soc/mediatek/mtk-dvfsrc.c
- create mode 100644 include/dt-bindings/interconnect/mediatek,mt8183.h
- create mode 100644 include/dt-bindings/interconnect/mediatek,mt8195.h
- create mode 100644 include/linux/soc/mediatek/dvfsrc.h
 
+diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mt8183-dvfsrc.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mt8183-dvfsrc.yaml
+new file mode 100644
+index 000000000000..1ad5b61b249f
+--- /dev/null
++++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mt8183-dvfsrc.yaml
+@@ -0,0 +1,83 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/soc/mediatek/mediatek,mt8183-dvfsrc.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek Dynamic Voltage and Frequency Scaling Resource Collector (DVFSRC)
++
++description:
++  The Dynamic Voltage and Frequency Scaling Resource Collector (DVFSRC) is a
++  Hardware module used to collect all the requests from both software and the
++  various remote processors embedded into the SoC and decide about a minimum
++  operating voltage and a minimum DRAM frequency to fulfill those requests in
++  an effort to provide the best achievable performance per watt.
++  This hardware IP is capable of transparently performing direct register R/W
++  on all of the DVFSRC-controlled regulators and SoC bandwidth knobs.
++
++maintainers:
++  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
++  - Henry Chen <henryc.chen@mediatek.com>
++
++properties:
++  compatible:
++    oneOf:
++      - enum:
++          - mediatek,mt8183-dvfsrc
++          - mediatek,mt8195-dvfsrc
++      - items:
++          - const: mediatek,mt8192-dvfsrc
++          - const: mediatek,mt8195-dvfsrc
++
++  reg:
++    maxItems: 1
++    description: DVFSRC common register address and length.
++
++  regulators:
++    type: object
++    $ref: /schemas/regulator/mediatek,mt6873-dvfsrc-regulator.yaml#
++
++  interconnect:
++    type: object
++    $ref: /schemas/interconnect/mediatek,mt8183-emi.yaml#
++
++required:
++  - compatible
++  - reg
++
++additionalProperties: false
++
++examples:
++  - |
++    soc {
++        #address-cells = <2>;
++        #size-cells = <2>;
++
++        system-controller@10012000 {
++            compatible = "mediatek,mt8195-dvfsrc";
++            reg = <0 0x10012000 0 0x1000>;
++
++            regulators {
++                compatible = "mediatek,mt8195-dvfsrc-regulator";
++
++                dvfsrc_vcore: dvfsrc-vcore {
++                        regulator-name = "dvfsrc-vcore";
++                        regulator-min-microvolt = <550000>;
++                        regulator-max-microvolt = <750000>;
++                        regulator-always-on;
++                };
++
++                dvfsrc_vscp: dvfsrc-vscp {
++                        regulator-name = "dvfsrc-vscp";
++                        regulator-min-microvolt = <550000>;
++                        regulator-max-microvolt = <750000>;
++                        regulator-always-on;
++                };
++            };
++
++            emi_icc: interconnect {
++                compatible = "mediatek,mt8195-emi";
++                #interconnect-cells = <1>;
++            };
++        };
++    };
 -- 
 2.44.0
 
