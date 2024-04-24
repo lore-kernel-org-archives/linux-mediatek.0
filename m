@@ -4,50 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 475F3C4345F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Apr 2024 10:00:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86558C4345F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Apr 2024 10:00:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XSygxqlwMZxrFJvxJJL0orilhrDRkBvznuPEPBya19w=; b=cqRCX/uH0KxNGlZ85t5LYiLmiS
-	MXTjyo0yp2VVZ9dfZnNZj6SezBiLN02r2aQSbuqw144gxKV+edfUr+rcy2aF4gclaXEkRixaaDuxV
-	iZ2xlrsGMlzV5WqYQP/7EDlIYKxqynMoH7FdJ2UIXfXsxprksF/p730DRIR+64TBgW+g9YlxYfkzt
-	N2cnrwKkoa8AHByfrOROxLhB9QmGAWthfVzcN2mrUNPBMGtWPmKnvho4x8BWtmAvHCVfmkF7u0IDi
-	ZPRhk7NLpxICyDVV6v1Yu4BNRzkV/2/rBVTzmq7FjiEmCLtAO/56a9SofEus/Evc6q+an7gJThG1I
-	6Sj72FFA==;
+	bh=vv/xThjr+Xo5/Ng60TOhLSxSaz4c1XZ+sBRoUpuhl/4=; b=zLtPURe1GI744AUB6khymUhdaB
+	8mYI4FhQhg642xPtmN7+Z0yZ2DozxujvbBROrJuzsPFJsXD0vg4+VnHtibdDiMyfbdpzCLs5XmdSR
+	MJuTs1q/KkpN9r2ZOYHchGfDSNYEqnO3KGbiH51wVj4JpR6VWqmSEH050cA09nckO2k/bjjQCOAGU
+	BzKs4OkjHaCrjymbiXG4tRcJM9Pu8Tk/QbIIztzpLcX8C3bnbuScpLMF1l07yhGcq41ige0rMkAZh
+	1zmxxC6pHEehauZb5bqxv74yUvFIJIMWKtQS3KHmvjACjT/aP2y+8M3GR9x6gmZClj/SGNB8VK0IV
+	I96OZgMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rzZQc-00000003bVI-3UP7;
-	Wed, 24 Apr 2024 10:00:38 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rzZQo-00000003baN-0yDP;
+	Wed, 24 Apr 2024 10:00:50 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rzZQY-00000003bT9-1JjQ;
+	id 1rzZQZ-00000003bTX-1tQV;
 	Wed, 24 Apr 2024 10:00:36 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1713952832;
-	bh=uQASEV2BynAx1WUK7KoYyrhPrcyeJFPB5nX/BTtJdV0=;
+	s=mail; t=1713952834;
+	bh=R5WVkYvVKBubh/Xkg9FSD0bHakUX4sVUce8nhIJGf38=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=LrpEhTZjFLvzi7YmQ253CkCVdNbi5T+p1cA9t6bNrSa2r9+YLJ7y14iIqqQ6Gg1LM
-	 PFBGEmg4TJq33Z/hKeSwPeAuIb3BCmZ2xPXDzJEl0zo/dsYcq+PIUDnB4iLxmyVFmO
-	 cmkwwdt4Ee/S9a7/uXT7UUnIYWT4diLSzCGin+HykszfQBL8E4d40AHbr/qvEhc7gR
-	 Ys7DdyLC3rUe3j162sA33f8j2tf8CLtezZcKKTEAJh4FPJfAlwnxsbeDwkBDz7zM9J
-	 V6tBS49DfMDLquCUmdAb1zcaAX0E6lZWyOrx1FVobJz2iNZFD2TL5pT9pjDxNqIdd9
-	 SP2RKSQBx2LWw==
+	b=Q4Zf0lrKCA7W8EN2N7sw+LSgsWV+fEjN5FjnUoUlr5Bm2oZK5zbA1dyLrS28gOzhH
+	 03d29FMJF3sJj88C82lOEb/Tg87p5CWzza8UfVArg0QwtxMDoeqayLgfpYaYFXqoUv
+	 G44oIoNTbAfmBWQ/zp9wKTncSHbmAH7GQT+6D9aO+cAvluJ7mTXc9Ni9ZdGoV7zb26
+	 oHKtFijfTPBZvypdJbX09+QjDBZ5pJENZzV86G0UjdaR+yFTDBczB8xMu+IDVDmqGM
+	 qPFu2/qirSDIfZYgDpW9b9GudYTcSzDdjr89RE7xhHNPtCHu/lH6yHFDyOVis9Xf/v
+	 SEK/ldElGYuzg==
 Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id DDAC8378107C;
-	Wed, 24 Apr 2024 10:00:31 +0000 (UTC)
-Message-ID: <84acccf1-b356-4e7d-8335-d782adaa6bfa@collabora.com>
-Date: Wed, 24 Apr 2024 12:00:31 +0200
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 1B4E937820F9;
+	Wed, 24 Apr 2024 10:00:33 +0000 (UTC)
+Message-ID: <186a2208-c2b0-4a57-9a2d-53a651ccd408@collabora.com>
+Date: Wed, 24 Apr 2024 12:00:32 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 2/4] remoteproc: mediatek: Support MT8188 SCP core 1
+Subject: Re: [PATCH v3 3/4] remoteproc: mediatek: Support setting DRAM and IPI
+ shared buffer sizes
 To: Olivia Wen <olivia.wen@mediatek.com>,
  Bjorn Andersson <andersson@kernel.org>,
  Mathieu Poirier <mathieu.poirier@linaro.org>, Rob Herring <robh@kernel.org>
@@ -60,15 +61,15 @@ Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>,
  Project_Global_Chrome_Upstream_Group@mediatek.com,
  jason-ch.chen@mediatek.com, yaya.chang@mediatek.com, teddy.chen@mediatek.com
 References: <20240424030351.5294-1-olivia.wen@mediatek.com>
- <20240424030351.5294-3-olivia.wen@mediatek.com>
+ <20240424030351.5294-4-olivia.wen@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20240424030351.5294-3-olivia.wen@mediatek.com>
+In-Reply-To: <20240424030351.5294-4-olivia.wen@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240424_030034_560740_24FAD4AA 
-X-CRM114-Status: UNSURE (   5.77  )
+X-CRM114-CacheID: sfid-20240424_030035_652068_90A0874C 
+X-CRM114-Status: UNSURE (   5.37  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -85,11 +86,11 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 24/04/24 05:03, Olivia Wen ha scritto:
-> MT8188 SCP has two RISC-V cores which is similar to MT8195 but without
-> L1TCM. We've added MT8188-specific functions to configure L1TCM in
-> multicore setups.
+> The SCP on different chips will require different DRAM sizes and IPI
+> shared buffer sizes based on varying requirements.
 > 
 > Signed-off-by: Olivia Wen <olivia.wen@mediatek.com>
+
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
