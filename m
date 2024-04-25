@@ -4,88 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE7DEC4345F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Apr 2024 01:57:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 492AEC4345F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Apr 2024 02:34:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kjT+SpPJzKl8w7kSFiIcNkWzRwIJPDHUfy/FQiYyYaQ=; b=HCNFonc6P6Sjcp9oLF+DUIndGj
-	VPzxLzmFSGMT7gbGt4xJ5DMtx7xkF+ULNB18SHLDAR9e4l6EzTA6jCEOHrTzHgJcyWbX7ohNijiSI
-	Daxnk5YMi4hodWC9QnzMuFLzeOHN+J106x/Udsea6rC0vgRbmHzlNS9NoGYO97f/1Xmu7u3I5CnAA
-	VKiuRrviaT20QkYMa0jMvCwiQz4YTOAnALAf/PY+Nm8CC28TG8ammYJTJTCdRDNrU2KVLe7HO/wTV
-	xmaEf53a5i/jZkZJ9Pc2XmB1VWCm2j/O5LfTDmIcQ14a6MIALOcS9Jv0aaT1qo1g/lbFdONS6a9co
-	SQtw3Huw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=sVluxtdFfxvzOV3SS9bUZugPrDEZjGZyriZnqollBEc=; b=uiTlbEyWKu753qJtbKrg13ztw7
+	kM3rmhQeEEWBjT7dym+uHL8V8dr/uRHZzshBuNiTYSRW3rrZjiSMsJlOU0t3UEYbUN3+/ppiLguqi
+	m8/LmaZzNC8g06widsgZyUoZXKikc58oJqyHgHICwpe3OmTgJj7N6BouxbDGWWxoFe8z4NLC0DTOz
+	/RTXEwOVXhcaYUgvrfkEI9z/NlHe+jM1roI4n1nX/F+FZFY5klLAEqWEVdBLE/+1PohCHOyfXz1as
+	RDqzrldyBZR/SKheyeG0m/jzX9qb/FrVMyI//IN2qKfiFW3FJmnwBjnJvASTdMlBIZDj2HdI4p51A
+	Fggtx/6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rzoMi-00000006eJ0-3ZpV;
-	Thu, 25 Apr 2024 01:57:36 +0000
-Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
+	id 1rzovv-00000006iCg-2XkN;
+	Thu, 25 Apr 2024 02:33:59 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rzoMU-00000006eFv-43ba;
-	Thu, 25 Apr 2024 01:57:24 +0000
-Received: from pps.filterd (m0246630.ppops.net [127.0.0.1])
-	by mx0b-00069f02.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 43P0i6q4015238;
-	Thu, 25 Apr 2024 01:57:15 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=from : to : cc :
- subject : date : message-id : in-reply-to : references : mime-version :
- content-type : content-transfer-encoding; s=corp-2023-11-20;
- bh=kjT+SpPJzKl8w7kSFiIcNkWzRwIJPDHUfy/FQiYyYaQ=;
- b=lWCMwpouBaIo7qm9kBHRsIC4inRFNQ4OaetEyno5mf6OLNMFuZSCJVXsDnKJVRYanU93
- 41FjF46goEV0Qyjb0UcomDfGfhTYfaGIhKXWF8spEnIfdWWITu9gD7HzWwC0Ahngx254
- rWsABi0TD6MHyyXUEXhKAlGLI7JjvV8LINIxSnF9jg7aEY/1QHxABu9dxyTYhPYBa6os
- pJ2XY6sS9xf+O+uq97PLy0bs1ldCC4YK+YwTx1+PeyfuYGmfDdGdF7LfaDPz16nZygr/
- Mw8ZdO+MSz9SO0IPSliSVPeg9hBK83Fso4fdHBKqetsSxFlfze6dUVMizG9nahRPfUZt IQ== 
-Received: from iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta02.appoci.oracle.com [147.154.18.20])
-	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3xm44f1d6d-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Thu, 25 Apr 2024 01:57:15 +0000
-Received: from pps.filterd (iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
-	by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (8.17.1.19/8.17.1.19) with ESMTP id 43P0McEA025366;
-	Thu, 25 Apr 2024 01:57:14 GMT
-Received: from pps.reinject (localhost [127.0.0.1])
-	by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id 3xm45fyh2c-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Thu, 25 Apr 2024 01:57:14 +0000
-Received: from iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 43P1vCuR009586;
-	Thu, 25 Apr 2024 01:57:14 GMT
-Received: from ca-mkp2.ca.oracle.com.com (mpeterse-ol9.allregionaliads.osdevelopmeniad.oraclevcn.com [100.100.251.135])
-	by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTP id 3xm45fyh1b-4;
-	Thu, 25 Apr 2024 01:57:14 +0000
-From: "Martin K. Petersen" <martin.petersen@oracle.com>
-To: Peter Wang <peter.wang@mediatek.com>, Stanley Jhu <chu.stanley@gmail.com>,
-        "James E.J. Bottomley" <jejb@linux.ibm.com>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        linux-scsi@vger.kernel.org, linux-mediatek@lists.infradead.org,
-        linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-        Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: "Martin K . Petersen" <martin.petersen@oracle.com>,
-        Will McVicker <willmcvicker@google.com>
-Subject: Re: [PATCH] scsi: ufs: mediatek: fix module autoloading
-Date: Wed, 24 Apr 2024 21:57:03 -0400
-Message-ID: <171362345486.571343.15378016948257284142.b4-ty@oracle.com>
-X-Mailer: git-send-email 2.44.0
-In-Reply-To: <20240409203954.80484-1-krzysztof.kozlowski@linaro.org>
-References: <20240409203954.80484-1-krzysztof.kozlowski@linaro.org>
+	id 1rzovs-00000006iBj-2t9o;
+	Thu, 25 Apr 2024 02:33:58 +0000
+X-UUID: 3ef6f12a02ac11ef96d5dfc950b7243d-20240424
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=sVluxtdFfxvzOV3SS9bUZugPrDEZjGZyriZnqollBEc=;
+	b=S0NhkdMdngEvDDEDoI+1ij5N3DWOEskSEjPdVJHOsBuE8gR95b8YrICapBtX6LmuXi9k663+G6n//lUxySUlokFzSDTYhsQaIrtRdaVHIKwJEO5qmbPmyz5yYsYtnLOpThhxTDVubtSuKJ3Bwnvfx8IyeHSSamxy4HwAOezuAsQ=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.38,REQID:1ed01b6c-cdda-48dc-bd90-a13984637a6b,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:82c5f88,CLOUDID:cf2552fb-ed05-4274-9204-014369d201e8,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 3ef6f12a02ac11ef96d5dfc950b7243d-20240424
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw02.mediatek.com
+	(envelope-from <skylake.huang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 472720773; Wed, 24 Apr 2024 19:33:48 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 24 Apr 2024 19:33:45 -0700
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Thu, 25 Apr 2024 10:33:45 +0800
+From: Sky Huang <SkyLake.Huang@mediatek.com>
+To: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>, "David S. Miller"
+	<davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub Kicinski
+	<kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Daniel Golle
+	<daniel@makrotopia.org>, Qingfang Deng <dqfext@gmail.com>, SkyLake Huang
+	<SkyLake.Huang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	<linux-kernel@vger.kernel.org>, <netdev@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+CC: Steven Liu <Steven.Liu@mediatek.com>, SkyLake.Huang
+	<skylake.huang@mediatek.com>
+Subject: [PATCH 0/3] net: phy: mediatek: Integrate mtk-phy-lib and add 2.5Gphy support
+Date: Thu, 25 Apr 2024 10:33:22 +0800
+Message-ID: <20240425023325.15586-1-SkyLake.Huang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1011,Hydra:6.0.650,FMLib:17.11.176.26
- definitions=2024-04-25_01,2024-04-24_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0 mlxlogscore=999
- mlxscore=0 phishscore=0 spamscore=0 malwarescore=0 adultscore=0
- bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2404010000 definitions=main-2404250012
-X-Proofpoint-ORIG-GUID: 5kL1fAXRt9q0alSsinLmOfxzmG3P03OT
-X-Proofpoint-GUID: 5kL1fAXRt9q0alSsinLmOfxzmG3P03OT
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240424_185723_161925_E7C18323 
-X-CRM114-Status: GOOD (  13.30  )
+X-CRM114-CacheID: sfid-20240424_193356_766544_28C15515 
+X-CRM114-Status: GOOD (  10.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,18 +89,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 09 Apr 2024 22:39:54 +0200, Krzysztof Kozlowski wrote:
+From: "SkyLake.Huang" <skylake.huang@mediatek.com>
 
-> Add MODULE_DEVICE_TABLE(), so the module could be properly autoloaded
-> based on the alias from of_device_id table.
-> 
-> 
+Re-organize MTK ethernet phy drivers and integrate common manipulations
+into mtk-phy-lib. Also, add support for build-in 2.5Gphy on MT7988.
 
-Applied to 6.10/scsi-queue, thanks!
+SkyLake.Huang (3):
+  net: phy: mediatek: Re-organize MediaTek ethernet phy drivers
+  net: phy: mediatek: Add mtk phy lib for token ring access & LED/other
+    manipulations
+  net: phy: mediatek: add support for built-in 2.5G ethernet PHY on
+    MT7988
 
-[1/1] scsi: ufs: mediatek: fix module autoloading
-      https://git.kernel.org/mkp/scsi/c/a6584df2fd51
+ MAINTAINERS                                   |   7 +-
+ drivers/net/phy/Kconfig                       |  17 +-
+ drivers/net/phy/Makefile                      |   3 +-
+ drivers/net/phy/mediatek-ge.c                 | 111 ----
+ drivers/net/phy/mediatek/Kconfig              |  33 ++
+ drivers/net/phy/mediatek/Makefile             |   5 +
+ drivers/net/phy/mediatek/mtk-2p5ge.c          | 399 +++++++++++++
+ .../mtk-ge-soc.c}                             | 522 ++++++++----------
+ drivers/net/phy/mediatek/mtk-ge.c             | 191 +++++++
+ drivers/net/phy/mediatek/mtk-phy-lib.c        | 330 +++++++++++
+ drivers/net/phy/mediatek/mtk.h                |  97 ++++
+ 11 files changed, 1277 insertions(+), 438 deletions(-)
+ delete mode 100644 drivers/net/phy/mediatek-ge.c
+ create mode 100644 drivers/net/phy/mediatek/Kconfig
+ create mode 100644 drivers/net/phy/mediatek/Makefile
+ create mode 100644 drivers/net/phy/mediatek/mtk-2p5ge.c
+ rename drivers/net/phy/{mediatek-ge-soc.c => mediatek/mtk-ge-soc.c} (79%)
+ create mode 100644 drivers/net/phy/mediatek/mtk-ge.c
+ create mode 100644 drivers/net/phy/mediatek/mtk-phy-lib.c
+ create mode 100644 drivers/net/phy/mediatek/mtk.h
 
 -- 
-Martin K. Petersen	Oracle Linux Engineering
+2.18.0
+
 
