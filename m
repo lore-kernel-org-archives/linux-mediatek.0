@@ -4,71 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09C22C4345F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Apr 2024 09:44:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD39FC10F15
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Apr 2024 09:50:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=dLDkQf2vaEkGIxazc+FMQzXIVTV0+ydf8M//rJxA6KM=; b=mgqu4Uqu5fTMDoCe98Cx8zJrFr
-	Ela3PYAYoZJBPj49+WBCRCLDYiTC/YUv4/Ec4d7m4DWSLLUoFo5+Nk3cIzJiPo75lMGlfc7olChJz
-	XMT2I1ZfWI4Qw0UlpxORhyqUVIxWWSeQFl1/1VP9EjLH4/pv/9AuJSEUOvwToyYAvYrEio3+STdzh
-	z38WZE0ezXp8tiSwdPTuD8NVwYRdNMhAJfXmDSbCHAu7NeY6AWByaIWZxHyUawBkp+d62CPBervrh
-	LT+v0Tcv5C/0SglWsgKxCuwYwKMrBQhrgvUT94m0cf7msuEB2vj3DdblpXIKOIaWpj5zv0nRbxs13
-	eC6v3IKA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=dGU3DaKNSTtJ72BC/IE3k9ofyCHohc65XekJ83HHlQ0=; b=u0XXYiPvqcGewUHZ7bwEw624J6
+	mRMkCzEWFIYW9hg26WxhqPPpyUWaKsBqc6Cuy82j8j+cscCMomzC4PpgDKiZ8D1pIpQUW30ceTWsO
+	pf5mQVw/upjtRC4IkrvrdKafO2Ax5zQYyqQY+oxEDqQRh8IKW+b94eU0v8ldbKQg1uiHK6CoFGym5
+	9M62199WNnJtW4Cytgms2+GAwtpPvIR+LL4OzRW4YoSMaOpNNfm4M4Q4/GCteGTiEQlyq+7q1eHxl
+	89kL2D9yPQu4WOQN3ls/4WJ8S7mMIyVp0c/Mjbfdc2wxPSvpX4tZbqIbUSfptHkO98a71r68C0Pl9
+	irHcNs7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rzveE-00000007fmL-33J8;
-	Thu, 25 Apr 2024 09:44:10 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1rzvkR-00000007hDJ-0vKb;
+	Thu, 25 Apr 2024 09:50:35 +0000
+Received: from mail-yb1-xb36.google.com ([2607:f8b0:4864:20::b36])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rzveC-00000007flG-1Pnd;
-	Thu, 25 Apr 2024 09:44:09 +0000
-X-UUID: 586239b202e811ef8ada5f53ce9ad2d9-20240425
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=dLDkQf2vaEkGIxazc+FMQzXIVTV0+ydf8M//rJxA6KM=;
-	b=fg7stGuBmNdhbEVzjpurSIYfflff5n62P/OdVApj8dNGy+VnDRkhnlQ3G15meq5a4+FGr+gPXFas30AsWZb+XlJNAU5DzmTWx3QUqziRh6C9iwpj2xmgKIgGVggH4g+ZHGKicORRdJUDq7rPxMPmCOaFynq6sb2J+Z48R957Fxs=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.38,REQID:f23a84a7-535c-4f44-a3f6-5c4f14693d70,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:82c5f88,CLOUDID:49f59a86-8d4f-477b-89d2-1e3bdbef96d1,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_ULN,TF_CID_SPAM_SNR
-X-UUID: 586239b202e811ef8ada5f53ce9ad2d9-20240425
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
-	(envelope-from <deren.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 474022666; Thu, 25 Apr 2024 02:44:01 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 25 Apr 2024 17:43:58 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 25 Apr 2024 17:43:58 +0800
-From: Deren Wu <deren.wu@mediatek.com>
-To: Chen-Yu Tsai <wens@kernel.org>
-CC: <wireless-regdb@lists.infradead.org>, linux-wireless
-	<linux-wireless@vger.kernel.org>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>
-Subject: [PATCH] wireless-regdb: Update regulatory rules for Taiwan (TW) on 6GHz
-Date: Thu, 25 Apr 2024 17:43:13 +0800
-Message-ID: <8f7c6ecd8e2cd15d277435719bf993217d40f12d.1714038069.git.deren.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1rzvkO-00000007h6I-2qQx
+	for linux-mediatek@lists.infradead.org;
+	Thu, 25 Apr 2024 09:50:34 +0000
+Received: by mail-yb1-xb36.google.com with SMTP id 3f1490d57ef6-dc6cbe1ac75so655473276.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 25 Apr 2024 02:50:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1714038618; x=1714643418; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=dGU3DaKNSTtJ72BC/IE3k9ofyCHohc65XekJ83HHlQ0=;
+        b=uiT/6hlW+cDdfSlXNUQgkDu5qa9ld77Yj1USu/OP3jwsvkPidTtyk64210J8rc46q9
+         8/UtiH8gkyw5PA3fyw92826TC0AYeiKq+alryTYwsm62gSTmh5+xqW5LA66UAzOVTFE8
+         +vegE2p3QM2+2OD6y8PdV/vHhdyCnSHg9yDlkgNf/Xs+GSeWOrSA7iNaLLkkWpCACgxy
+         ba/wH+SVo18OFzAHiJXyu+4sQB3eW4HrFf3P/St7KZuWJicIVmfqJ8S0lioPqO77pHao
+         Nh6fHCYUig9IeNDhPyY/d5UujQwZKp8k5S+KYoFVCsmkkBgr/fZCsn/yf3pECsIF73Kr
+         7eIg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1714038618; x=1714643418;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=dGU3DaKNSTtJ72BC/IE3k9ofyCHohc65XekJ83HHlQ0=;
+        b=V9FmMcrgIVH1M0j/0vzHQJdQLVVnPbg21ImNKvhReUCCeEYYy3yymdvMK0CFBCvcDc
+         yr5R3x8G5QZ2C3v4OecX0JJtQNait5IuFd14vQkqZzyKbR+2NVxrsPMQud1RN8rlXgUs
+         P2e37dP1XVj0GEOT85xo+0ZZXuFwURDCni6HMS1jiyDhN+YZ1CuhTpe7BCUwTfQ/WdLt
+         FRL/eaVa3ZNwrHTtcByWembbOGleJtJINFQd8D4GNITfihFWmhYTxho9T+pUmHTbasuC
+         pyQOelprAm+xQ+ypeERuIM/BAowRon+zGyYBoxTtYNyjmCRqjNjsndN7NKCTh2iehtVA
+         Qz3Q==
+X-Forwarded-Encrypted: i=1; AJvYcCWR1S6J5LaVuJ8GG5ON5bo/f0dWaDxYmuJy2WB8DiOuFXgCitHOP5uXkqfSlsRndIDMV/hhyB2XJ+yAfSCyTagotoP0C+yQnaHletxYKmnFA8Z3
+X-Gm-Message-State: AOJu0Ywix6q+T5LVjdlsg24B2Es5yZ2rOu7+Yt+/j0iSZqiXWazWAcmR
+	viU7YRdeR166TaBFKRM1JQaEGvgYjOQV0WaOCpOQ4O+iQPzTbASjXwAqA5x4GuTjcCXPRJFmK3T
+	702t2UjnloaYI2q/ghe2uC6p3kwwZPaHe0XFFDQ==
+X-Google-Smtp-Source: AGHT+IEh1aNOcE1EWqa5SB+pPSQDM8zBDGimINTWTmIb3MThQkUvYyafMsUCxx/cLuE/UDnbuzzQ2SFF3eYiECqiOkI=
+X-Received: by 2002:a05:6902:983:b0:dc6:d258:c694 with SMTP id
+ bv3-20020a056902098300b00dc6d258c694mr1702289ybb.19.1714038618515; Thu, 25
+ Apr 2024 02:50:18 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+References: <20240408103824.11476-1-Joe.Zhou@mediatek.com>
+In-Reply-To: <20240408103824.11476-1-Joe.Zhou@mediatek.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Thu, 25 Apr 2024 11:49:42 +0200
+Message-ID: <CAPDyKFoB+r7KMdbV-svz9d=WdPm1Zvd6oZppzbsPDWqX7YN_Kw@mail.gmail.com>
+Subject: Re: [PATCH] mmc: race condition between "sdcard hot plug out" and
+ "system reboot"
+To: "Joe.Zhou" <Joe.Zhou@mediatek.com>
+Cc: linux-mmc@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	wsd_upstream@mediatek.com, "Peng . Zhou" <Peng.Zhou@mediatek.com>, 
+	"Sophie . Wang" <Sophie.Wang@mediatek.com>, "Wey . Zhang" <Wey.Zhang@mediatek.com>, 
+	"Yijian . Jia" <yijian.jia@mediatek.com>, "Sharp . Xia" <Sharp.Xia@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240425_024408_404126_7D4905A0 
-X-CRM114-Status: UNSURE (   9.38  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240425_025032_750765_B91663C3 
+X-CRM114-Status: GOOD (  19.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,58 +91,102 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The Ministry of Transportation and Communications in Taiwan has updated
-its frequency allocation rules [1], now including the 5945 ~ 6425 MHz
-range for Low Power Indoor (LPI) and Very Low Power (VLP) devices. As
-only one power rule can be applied to a specific frequency range, we
-choose the LPI devices with a power limit of 23 dBm. There is no Dynamic
-Frequency Selection (DFS) requirement.
+On Mon, 8 Apr 2024 at 12:38, Joe.Zhou <Joe.Zhou@mediatek.com> wrote:
+>
+> In mmc driver, a race condition may occur between "sdcard hot plug out" and "system reboot".
+> How it happen?
+>
+> sdcard hot pulg out:                SyS_reboot:
+> CPU0                               CPU1
+> mmc_sd_detect()                    _mmc_sd_suspend
+> {                                  {
+>
+> ......
+> #Step1: detect SD card removed
+> if (err) {                          ......
+>     #Step2: host->card is NULL
+>     mmc_sd_remove(host);
+>                                     #Step3:_mmc_sd_suspend claimed host
+>                                     mmc_claim_host(host);
+>                                     #Step4: use host->card(NULL pointer)
+>                                     if (mmc_card_suspended(host->card))
+>                                     ......
+>                                     }
+>     mmc_claim_host(host);
+>     mmc_detach_bus(host);
+>  }
+>  ......
+>  }
+> we can prevent it occuring by add claim for "host->card = NULL" and add "host->card" validity check in mmc_sd_suspend.
+>
+> Signed-off-by: Joe.Zhou <Joe.Zhou@mediatek.com>
 
-Also update the section information for the 2.4/5/60 GHz bands
-with reference [1].
+Thanks for your patch!
 
-[1] LP0002 Low-power Radio-frequency Devices Technical Regulations
-    2024/Feb/06
-    https://www.ncc.gov.tw/chinese/files/24020/538_49880_240206_3.pdf
+Doesn't commit 66c915d09b94 ("mmc: core: Disable card detect during
+shutdown") take care of this problem?
 
-Signed-off-by: Deren Wu <deren.wu@mediatek.com>
----
- db.txt | 12 +++++++-----
- 1 file changed, 7 insertions(+), 5 deletions(-)
+Kind regards
+Uffe
 
-diff --git a/db.txt b/db.txt
-index fdc2c13..6981930 100644
---- a/db.txt
-+++ b/db.txt
-@@ -1724,12 +1724,12 @@ country TT: DFS-FCC
- # Table of Frequency Allocations of Republic of China (Taiwan) / Feb 2017:
- #   https://www.motc.gov.tw/websitedowndoc?file=post/201702221012200.doc& \
- #	filedisplay=Table%2Bof%2Bradio%2Bfrequency%2Ballocation.doc
--# LP0002 Low-power Radio-frequency Devices Technical Regulations / 23 Aug 2016:
--#   http://www.ncc.gov.tw/english/show_file.aspx?table_name=news&file_sn=681
-+# LP0002 Low-power Radio-frequency Devices Technical Regulations / 6 Feb 2024:
-+#   https://www.ncc.gov.tw/chinese/files/24020/538_49880_240206_3.pdf
- country TW: DFS-FCC
--	# 2.4g band, LP0002 section 3.10.1
-+	# 2.4g band, LP0002 section 4.10.1
- 	(2400 - 2483.5 @ 40), (30)
--	# 5g U-NII band, LP0002 section 4.7
-+	# 5g U-NII band, LP0002 section 5.7
- 	# 5.15 ~ 5.25 GHz: 30 dBm for master mode, 23 dBm for clients
- 	(5150 - 5250 @ 80), (23), AUTO-BW
- 	(5250 - 5350 @ 80), (23), DFS, AUTO-BW
-@@ -1739,7 +1739,9 @@ country TW: DFS-FCC
- 	# happy and be able to use channel 144.
- 	(5470 - 5730 @ 160), (23), DFS
- 	(5725 - 5850 @ 80), (30)
--	# 60g band, LP0002 section 3.13.1.1 (3)(C), EIRP=40dBm(43dBm peak)
-+	# 6g band, LP0002 section 5.13.1.1, EIRP=23dBm
-+	(5945 - 6425 @ 320), (23), NO-OUTDOOR
-+	# 60g band, LP0002 section 4.13.1.1 (1)(A), EIRP=40dBm(43dBm peak)
- 	(57000 - 66000 @ 2160), (40)
-  
- country TZ:
--- 
-2.18.0
-
+> ---
+>  drivers/mmc/core/sd.c | 25 ++++++++++++++-----------
+>  1 file changed, 14 insertions(+), 11 deletions(-)
+>
+> diff --git a/drivers/mmc/core/sd.c b/drivers/mmc/core/sd.c
+> index 1c8148cdda50..38c0b271283a 100644
+> --- a/drivers/mmc/core/sd.c
+> +++ b/drivers/mmc/core/sd.c
+> @@ -1593,7 +1593,9 @@ static int mmc_sd_init_card(struct mmc_host *host, u32 ocr,
+>  static void mmc_sd_remove(struct mmc_host *host)
+>  {
+>         mmc_remove_card(host->card);
+> +       mmc_claim_host(host);
+>         host->card = NULL;
+> +       mmc_release_host(host);
+>  }
+>
+>  /*
+> @@ -1702,18 +1704,19 @@ static int _mmc_sd_suspend(struct mmc_host *host)
+>         int err = 0;
+>
+>         mmc_claim_host(host);
+> +       if (host->card) {
+> +               if (mmc_card_suspended(card))
+> +                       goto out;
+>
+> -       if (mmc_card_suspended(card))
+> -               goto out;
+> -
+> -       if (sd_can_poweroff_notify(card))
+> -               err = sd_poweroff_notify(card);
+> -       else if (!mmc_host_is_spi(host))
+> -               err = mmc_deselect_cards(host);
+> +               if (sd_can_poweroff_notify(card))
+> +                       err = sd_poweroff_notify(card);
+> +               else if (!mmc_host_is_spi(host))
+> +                       err = mmc_deselect_cards(host);
+>
+> -       if (!err) {
+> -               mmc_power_off(host);
+> -               mmc_card_set_suspended(card);
+> +               if (!err) {
+> +                       mmc_power_off(host);
+> +                       mmc_card_set_suspended(card);
+> +               }
+>         }
+>
+>  out:
+> @@ -1729,7 +1732,7 @@ static int mmc_sd_suspend(struct mmc_host *host)
+>         int err;
+>
+>         err = _mmc_sd_suspend(host);
+> -       if (!err) {
+> +       if (!err && host->card) {
+>                 pm_runtime_disable(&host->card->dev);
+>                 pm_runtime_set_suspended(&host->card->dev);
+>         }
+> --
+> 2.18.0
+>
 
