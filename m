@@ -4,107 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1C28C4345F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Apr 2024 19:31:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE7DEC4345F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Apr 2024 01:57:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oq1E8m4ICdPSa+D4M25IDwcAX2/xIXs4KuTiYe/1oHw=; b=rnHF11lc8FDbu6cLMeeI/oJFuS
-	1gQqJWYJBggZul/K98zdUimvKhomY6v30Lup59pGjUquu2zqzsGdm4CZRDc/gUZ+itli3UfnXw9xC
-	FofFVi4HxXEJ/e+DNgu/5LM/fh8bYn08iiImogPfiZezP2tJlGBbGTBERFnRhqaqGzo6Jm9/6opKi
-	qfQjX61t3xIitgRSebKSqx4deGrx34ymQ408vCQtn5kS6n+ED1hoHjwzE7lIUcCUK2We2QbQGJ7jo
-	Jp+isCxan7agG4puQdYXXnxD+142DYhvkrlvH7W48lB0hoOR5hLtcEKCIIWourWFU7JoY2ktHOYRx
-	bVSW5Xpw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=kjT+SpPJzKl8w7kSFiIcNkWzRwIJPDHUfy/FQiYyYaQ=; b=HCNFonc6P6Sjcp9oLF+DUIndGj
+	VPzxLzmFSGMT7gbGt4xJ5DMtx7xkF+ULNB18SHLDAR9e4l6EzTA6jCEOHrTzHgJcyWbX7ohNijiSI
+	Daxnk5YMi4hodWC9QnzMuFLzeOHN+J106x/Udsea6rC0vgRbmHzlNS9NoGYO97f/1Xmu7u3I5CnAA
+	VKiuRrviaT20QkYMa0jMvCwiQz4YTOAnALAf/PY+Nm8CC28TG8ammYJTJTCdRDNrU2KVLe7HO/wTV
+	xmaEf53a5i/jZkZJ9Pc2XmB1VWCm2j/O5LfTDmIcQ14a6MIALOcS9Jv0aaT1qo1g/lbFdONS6a9co
+	SQtw3Huw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rziKo-00000005fjc-2zDZ;
-	Wed, 24 Apr 2024 19:31:14 +0000
-Received: from mgamail.intel.com ([198.175.65.16])
+	id 1rzoMi-00000006eJ0-3ZpV;
+	Thu, 25 Apr 2024 01:57:36 +0000
+Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rzhGC-00000005Kke-3yG7;
-	Wed, 24 Apr 2024 18:22:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1713982945; x=1745518945;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=9dqTFNekjq83nuq4A5WxGVHQROMd+6+bp42VQddKZ4k=;
-  b=fo3++ylSefi/dy2kpifjOlO5XrbHsGCKJHdWBES9BcVHq1mNwgCy8ajL
-   2mIX5jm0OyI/VVunl5LsqQ0hUKO0EfIzvlx5iir4ArjiLcA3hg7djk2T8
-   jvm36yGEB/XqK++KKzrL/fSeWYqll2kiruNpYD5uw8ZWVkZUmJ3Rh52dB
-   YhCDFwm1BRs/WTLOims2Da1CrzLymko0RGxXLMXAt0y4EQkUy/lJAx7dN
-   8fP6vbBfxTa6CDtxueNVG1NaybGWyuvj60jeBMCIkg+n9/W4smAjWl4h+
-   Ocz0xAruRSUY9oUXegrUYngeWl8dR2bg82Lk8B7TI1j4mdAcbFyVxcZ7c
-   g==;
-X-CSE-ConnectionGUID: oU2xAKt4RvCA2k+g/EPzqg==
-X-CSE-MsgGUID: hXM0tELUTIKyvl58o3Fz8Q==
-X-IronPort-AV: E=McAfee;i="6600,9927,11054"; a="9756863"
-X-IronPort-AV: E=Sophos;i="6.07,226,1708416000"; 
-   d="scan'208";a="9756863"
-Received: from orviesa009.jf.intel.com ([10.64.159.149])
-  by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Apr 2024 11:22:24 -0700
-X-CSE-ConnectionGUID: nPsWMScFSZuFDn8N5RVk9Q==
-X-CSE-MsgGUID: xyDd/+6JTdurYNniUF5Glg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,226,1708416000"; 
-   d="scan'208";a="24751858"
-Received: from turnipsi.fi.intel.com (HELO kekkonen.fi.intel.com) ([10.237.72.44])
-  by orviesa009-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Apr 2024 11:22:16 -0700
-Received: from kekkonen.localdomain (localhost [127.0.0.1])
-	by kekkonen.fi.intel.com (Postfix) with SMTP id 2C82E11F855;
-	Wed, 24 Apr 2024 21:22:13 +0300 (EEST)
-Date: Wed, 24 Apr 2024 18:22:13 +0000
-From: Sakari Ailus <sakari.ailus@linux.intel.com>
-To: Ricardo Ribalda <ribalda@chromium.org>
-Cc: Martin Tuma <martin.tuma@digiteqautomotive.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Hugues Fruchet <hugues.fruchet@foss.st.com>,
-	Alain Volmat <alain.volmat@foss.st.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Chen-Yu Tsai <wens@csie.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Sowjanya Komatineni <skomatineni@nvidia.com>,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Hans Verkuil <hverkuil@xs4all.nl>, Sergey Kozlov <serjk@netup.ru>,
-	Abylay Ospan <aospan@netup.ru>,
-	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	Dmitry Osipenko <digetx@gmail.com>,
-	Benjamin Mugnier <benjamin.mugnier@foss.st.com>,
-	Sylvain Petinot <sylvain.petinot@foss.st.com>,
-	Stanimir Varbanov <stanimir.k.varbanov@gmail.com>,
-	Vikash Garodia <quic_vgarodia@quicinc.com>,
-	Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-arm-kernel@lists.infradead.org, linux-staging@lists.linux.dev,
-	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org
-Subject: Re: [PATCH v2 21/26] media: i2c: st-mipid02: Use the correct div
- function
-Message-ID: <ZilN1VBduFcqNBbr@kekkonen.localdomain>
-References: <20240419-fix-cocci-v2-0-2119e692309c@chromium.org>
- <20240419-fix-cocci-v2-21-2119e692309c@chromium.org>
+	id 1rzoMU-00000006eFv-43ba;
+	Thu, 25 Apr 2024 01:57:24 +0000
+Received: from pps.filterd (m0246630.ppops.net [127.0.0.1])
+	by mx0b-00069f02.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 43P0i6q4015238;
+	Thu, 25 Apr 2024 01:57:15 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=from : to : cc :
+ subject : date : message-id : in-reply-to : references : mime-version :
+ content-type : content-transfer-encoding; s=corp-2023-11-20;
+ bh=kjT+SpPJzKl8w7kSFiIcNkWzRwIJPDHUfy/FQiYyYaQ=;
+ b=lWCMwpouBaIo7qm9kBHRsIC4inRFNQ4OaetEyno5mf6OLNMFuZSCJVXsDnKJVRYanU93
+ 41FjF46goEV0Qyjb0UcomDfGfhTYfaGIhKXWF8spEnIfdWWITu9gD7HzWwC0Ahngx254
+ rWsABi0TD6MHyyXUEXhKAlGLI7JjvV8LINIxSnF9jg7aEY/1QHxABu9dxyTYhPYBa6os
+ pJ2XY6sS9xf+O+uq97PLy0bs1ldCC4YK+YwTx1+PeyfuYGmfDdGdF7LfaDPz16nZygr/
+ Mw8ZdO+MSz9SO0IPSliSVPeg9hBK83Fso4fdHBKqetsSxFlfze6dUVMizG9nahRPfUZt IQ== 
+Received: from iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta02.appoci.oracle.com [147.154.18.20])
+	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3xm44f1d6d-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Thu, 25 Apr 2024 01:57:15 +0000
+Received: from pps.filterd (iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+	by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (8.17.1.19/8.17.1.19) with ESMTP id 43P0McEA025366;
+	Thu, 25 Apr 2024 01:57:14 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+	by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id 3xm45fyh2c-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Thu, 25 Apr 2024 01:57:14 +0000
+Received: from iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 43P1vCuR009586;
+	Thu, 25 Apr 2024 01:57:14 GMT
+Received: from ca-mkp2.ca.oracle.com.com (mpeterse-ol9.allregionaliads.osdevelopmeniad.oraclevcn.com [100.100.251.135])
+	by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTP id 3xm45fyh1b-4;
+	Thu, 25 Apr 2024 01:57:14 +0000
+From: "Martin K. Petersen" <martin.petersen@oracle.com>
+To: Peter Wang <peter.wang@mediatek.com>, Stanley Jhu <chu.stanley@gmail.com>,
+        "James E.J. Bottomley" <jejb@linux.ibm.com>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        linux-scsi@vger.kernel.org, linux-mediatek@lists.infradead.org,
+        linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+        Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: "Martin K . Petersen" <martin.petersen@oracle.com>,
+        Will McVicker <willmcvicker@google.com>
+Subject: Re: [PATCH] scsi: ufs: mediatek: fix module autoloading
+Date: Wed, 24 Apr 2024 21:57:03 -0400
+Message-ID: <171362345486.571343.15378016948257284142.b4-ty@oracle.com>
+X-Mailer: git-send-email 2.44.0
+In-Reply-To: <20240409203954.80484-1-krzysztof.kozlowski@linaro.org>
+References: <20240409203954.80484-1-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240419-fix-cocci-v2-21-2119e692309c@chromium.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1011,Hydra:6.0.650,FMLib:17.11.176.26
+ definitions=2024-04-25_01,2024-04-24_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0 mlxlogscore=999
+ mlxscore=0 phishscore=0 spamscore=0 malwarescore=0 adultscore=0
+ bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2404010000 definitions=main-2404250012
+X-Proofpoint-ORIG-GUID: 5kL1fAXRt9q0alSsinLmOfxzmG3P03OT
+X-Proofpoint-GUID: 5kL1fAXRt9q0alSsinLmOfxzmG3P03OT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240424_112225_070938_2CF74ABB 
-X-CRM114-Status: GOOD (  16.54  )
+X-CRM114-CacheID: sfid-20240424_185723_161925_E7C18323 
+X-CRM114-Status: GOOD (  13.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,43 +100,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Ricardo,
+On Tue, 09 Apr 2024 22:39:54 +0200, Krzysztof Kozlowski wrote:
 
-On Fri, Apr 19, 2024 at 09:48:07AM +0000, Ricardo Ribalda wrote:
-> link_freq does not fit in 32 bits.
+> Add MODULE_DEVICE_TABLE(), so the module could be properly autoloaded
+> based on the alias from of_device_id table.
 > 
-> Found by cocci:
-> drivers/media/i2c/st-mipid02.c:329:1-7: WARNING: do_div() does a 64-by-32 division, please consider using div64_s64 instead.
 > 
-> Reviewed-by: Benjamin Mugnier <benjamin.mugnier@foss.st.com>
-> Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
-> ---
->  drivers/media/i2c/st-mipid02.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/media/i2c/st-mipid02.c b/drivers/media/i2c/st-mipid02.c
-> index f250640729ca..93a40bfda1af 100644
-> --- a/drivers/media/i2c/st-mipid02.c
-> +++ b/drivers/media/i2c/st-mipid02.c
-> @@ -326,7 +326,7 @@ static int mipid02_configure_from_rx_speed(struct mipid02_dev *bridge,
->  	}
->  
->  	dev_dbg(&client->dev, "detect link_freq = %lld Hz", link_freq);
-> -	do_div(ui_4, link_freq);
-> +	ui_4 = div64_s64(ui_4, link_freq);
 
-These are positive numbers and ui_4 is unsigned. I'd use div64_u64()
-instead. With that,
+Applied to 6.10/scsi-queue, thanks!
 
-Reviewed-by: Sakari Ailus <sakari.ailus@linux.intel.com>
-
->  	bridge->r.clk_lane_reg1 |= ui_4 << 2;
->  
->  	return 0;
-> 
+[1/1] scsi: ufs: mediatek: fix module autoloading
+      https://git.kernel.org/mkp/scsi/c/a6584df2fd51
 
 -- 
-Regards,
-
-Sakari Ailus
+Martin K. Petersen	Oracle Linux Engineering
 
