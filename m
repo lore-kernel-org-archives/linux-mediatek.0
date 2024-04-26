@@ -4,84 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF5B3C04FFE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Apr 2024 10:21:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D957C4345F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Apr 2024 10:30:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IjXJYA5Q88JBRncKCAE8ZYdsQF4jhAftI0NHQOw9IJE=; b=thHLQHRFt6br1BChJXV0zUXP30
-	RHniuCK7DMfIYxUTk+zgW4Lk1nEeNO4vAX34mw0ef91MWQNha6LIBlEcBjvcuk3ggEYXgDMd2NK+O
-	QX4RwU7JFTvFoSY16mRJp4zfQYfCLVEvCserPxHUluel+ceW1CN/EQWfFWhjmTCh5m1mbCQTO1VeQ
-	sajxI31i8fNSqCS+VOthp858nE57yEqtcPLHPkgKnQtSp8Sz00+GBhllotyV/Sk5K23m1tvqthA5E
-	YSFo/+kzjWRH6+tRci1KfP1offN1rAtlGRd4rCq3W1TaTOETFM+DwgQSPlBx304ZKywzjXtxqXSnV
-	PcDWNZaA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=dSGdt/YP0pn5OYZbXUps2DQLIzyfXIN6TaOwb/bKnjo=; b=3EEJUTBuMS3MvaoRAHbD6lUx3g
+	umUa5qZfqAj5orxNHEKcum0S5GQMiUjU4HTnLBoehQqqsD/RAEldh9a34xUWG0Wp5Ed39Ppb6A6mQ
+	ZsIxvq6INkCVxAqvYN78AQpTR19NOj+qzSOKFM8o/YP+n3fcCTe4nCr2AVNlglcmc3mcs53MWNRba
+	Lv9O+xDQvq3gXgCAsS+2QiUWVoaJ1Oelz2LSka0PL+ENzoq0u/NjVlnvK7vs99AoiqCHuTHWyTBgE
+	u1MlgDvFUVtN1Gcq7ulEk3X+IM4n0WS9b7w1oBLDc0R4mOoOeT7yhAmidKBJv2iEHhiahzklkQvZK
+	JOiR94ZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s0IhR-0000000C7rw-3nEJ;
-	Fri, 26 Apr 2024 10:21:01 +0000
-Received: from mail-yb1-xb35.google.com ([2607:f8b0:4864:20::b35])
+	id 1s0Iqv-0000000C9Hq-0Wtg;
+	Fri, 26 Apr 2024 10:30:49 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s0IhO-0000000C7pT-0EVl
-	for linux-mediatek@lists.infradead.org;
-	Fri, 26 Apr 2024 10:20:59 +0000
-Received: by mail-yb1-xb35.google.com with SMTP id 3f1490d57ef6-dbed0710c74so1951483276.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 26 Apr 2024 03:20:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1714126856; x=1714731656; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=IjXJYA5Q88JBRncKCAE8ZYdsQF4jhAftI0NHQOw9IJE=;
-        b=IQdsfHMhN1IkPa9ZuQnIY01eqz5yAs7ZdkGIXdUYxfUQgeLg7NoEHzNnWTURJ4HTdb
-         Qb1q5ZU+GY/TvyPkp72SjOkg9tllOtcVYsw+mfAWKOQq/SsF8LUZ94ax8ToZt5p0229y
-         mHda61HdvDCUA5AmSwTnC3u5B4mjHY9J/hWIg=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1714126856; x=1714731656;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=IjXJYA5Q88JBRncKCAE8ZYdsQF4jhAftI0NHQOw9IJE=;
-        b=Fmwo10+Q71kVFURs7VYJt7UD6HB6g/oIOCaGWNBcfybtQXgoRCPDcMsdh1VC30zdl1
-         jJ8DJYWNVDGkxvQa1seuvrJ1FjiMdeIBVmR5eVjxoowLS14xUHXMfk4qfWJZ8YwyxFlv
-         vUXoNGfe1SAVMaGdIIFVa/mq6xWISlfTNC41Ny2TIYZzQsqM+xXlyz5W8cMXE/N5DoaR
-         yEcQ3zUcx1Dwfz1fXDg4KGwCCoxU/K0AIip98ZsDE8CBF0A88igN2zwHNm7/jrLcYoJW
-         /JV5AeElIomJp0aQPg3eNNAUdywz6DQBNEJBzL8lk7UvBMG2BqBuUIV14hyTvCaHXMqy
-         c8fg==
-X-Forwarded-Encrypted: i=1; AJvYcCUW6Qqlu9VNfV9DgIUylUjKR9DsPTnPUvX7ndL6ByXsmuZRpL7MybKI4BuzzpI9eVBsJOLYPk0gyu+qIj8exMuhqf6GTz/VZsSS4pLYGenbQU5h
-X-Gm-Message-State: AOJu0Yw2Mf7pnc9uzYYCBoB9FP37k4ctFXEWbQNN6wOLFNyUq5JDuw15
-	3tbpztHP0Iz54kq4RO+plVbxn6UF8aQloHmiQkb8aEF1BGx0+UgP4AhsQEM4UuTZEAEtqZJjeer
-	bWzUIu0gzd1WHNJId5vjer0pPcKpuLoRcozo8
-X-Google-Smtp-Source: AGHT+IHWnmyJ6qY0q7iyDyA3XOCFfbMc89g4bmjlOa0MiZ8jfng1uljxIs6yB4rlgqQh0CKOxXSCfqT44NRv/pXIOtM=
-X-Received: by 2002:a25:800f:0:b0:dcb:e0dc:67ee with SMTP id
- m15-20020a25800f000000b00dcbe0dc67eemr2211823ybk.45.1714126856342; Fri, 26
- Apr 2024 03:20:56 -0700 (PDT)
+	id 1s0Iqr-0000000C9Ed-2rp6;
+	Fri, 26 Apr 2024 10:30:47 +0000
+X-UUID: 02befa7e03b811ef9a78ddf43a9225dc-20240426
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=dSGdt/YP0pn5OYZbXUps2DQLIzyfXIN6TaOwb/bKnjo=;
+	b=JfZE6SOCo060us+za4J16bkEJ/BTONjcOm0BdxV25F+hG2anqgm4GMl/SiLYOz6yf0g0AwfpJmglB7aWFiaSOnYmKo6iih0spaxXRNDtNqwel+TY4A72ht0tURHJM27E7zXsUb6OtvM7EAX5SUKPKABgnrB1WNiQcEWd58AmMFc=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.38,REQID:92bedc4d-03f8-4fb9-b362-d741bcf6cedf,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:82c5f88,CLOUDID:bd6b2683-4f93-4875-95e7-8c66ea833d57,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 02befa7e03b811ef9a78ddf43a9225dc-20240426
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <zoie.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1310616328; Fri, 26 Apr 2024 03:30:32 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Fri, 26 Apr 2024 18:30:27 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 26 Apr 2024 18:30:27 +0800
+From: zoie.lin <zoie.lin@mediatek.com>
+To: Bartosz Golaszewski <brgl@bgdev.pl>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+	Arnd Bergmann <arnd@arndb.de>, Greg Kroah-Hartman
+	<gregkh@linuxfoundation.org>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown
+	<broonie@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+CC: <linux-i2c@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Zoie Lin
+	<zoie.lin@mediatek.com>
+Subject: [PATCH 0/3] misc: eeprom: at24: add optional dovdd-supply
+Date: Fri, 26 Apr 2024 18:29:46 +0800
+Message-ID: <20240426102949.23057-1-zoie.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-References: <20240422100354.1.I58b4456c014a4d678455a4ec09b908b1c71c3017@changeid>
- <022936a6704d08fbed22e7f241810d857eecaeda.camel@collabora.com> <CAD=FV=XSyLJiTCHYF7UaLersix0zP-q-MybW+nOR3A2WfccQcg@mail.gmail.com>
-In-Reply-To: <CAD=FV=XSyLJiTCHYF7UaLersix0zP-q-MybW+nOR3A2WfccQcg@mail.gmail.com>
-From: Fei Shao <fshao@chromium.org>
-Date: Fri, 26 Apr 2024 18:20:20 +0800
-Message-ID: <CAJ66y9FrpyzEwa1J=5L1OwRkrSBm308g8OZKnasYQcJYJpRbRA@mail.gmail.com>
-Subject: Re: [PATCH] media: mediatek: vcodec: Alloc DMA memory with DMA_ATTR_ALLOC_SINGLE_PAGES
-To: Doug Anderson <dianders@chromium.org>, 
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Cc: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, 
-	Yunfei Dong <yunfei.dong@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Wei-Shun Chang <weishunc@google.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
-	=?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>, 
-	Rob Herring <robh@kernel.org>, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--0.653500-8.000000
+X-TMASE-MatchedRID: zPbgMRNMPUIPRVepDWIjxxD3+0w1DhqKesw8RnBRGwqnu6NUK/CwU2b6
+	PphVtfZg4wnhOb+JR+SAMuqetGVetoNN9wL55jx9avP8b9lJtWr6C0ePs7A07ba607moR85Rkgq
+	5jgyZRjszmwK46+sH2/UDtowQUy5ThuiMkvhUpQKnnGGwTleFAYHxPhxAE7+423fkiP1eoF7QTV
+	WQjdvkmFQhow/v76bfSZrfNhP3sgUBh9AgBSEFrJm+YJspVvj2xkvrHlT8euI+kK598Yf3Mg==
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--0.653500-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 2D068EC681F9A6DED320B7EA3985D1198E0A78F979A7F01D222C99C83C5170892000:8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240426_032058_209072_AA5A131F 
-X-CRM114-Status: GOOD (  38.65  )
+X-CRM114-CacheID: sfid-20240426_033045_778948_C668DCCA 
+X-CRM114-Status: UNSURE (   7.21  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,104 +100,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Nicolas,
+From: Zoie Lin <zoie.lin@mediatek.com>
 
-On Tue, Apr 23, 2024 at 2:52=E2=80=AFPM Doug Anderson <dianders@chromium.or=
-g> wrote:
->
-> Hi,
->
-> On Mon, Apr 22, 2024 at 11:27=E2=80=AFAM Nicolas Dufresne
-> <nicolas.dufresne@collabora.com> wrote:
-> >
-> > Hi,
-> >
-> > Le lundi 22 avril 2024 =C3=A0 10:03 -0700, Douglas Anderson a =C3=A9cri=
-t :
-> > > As talked about in commit 14d3ae2efeed ("ARM: 8507/1: dma-mapping: Us=
-e
-> > > DMA_ATTR_ALLOC_SINGLE_PAGES hint to optimize alloc"), it doesn't
-> > > really make sense to try to allocate contiguous chunks of memory for
-> > > video encoding/decoding. Let's switch the Mediatek vcodec driver to
-> > > pass DMA_ATTR_ALLOC_SINGLE_PAGES and take some of the stress off the
-> > > memory subsystem.
-> > >
-> > > Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> > > ---
-> > > NOTE: I haven't personally done massive amounts of testing with this
-> > > change, but I originally added the DMA_ATTR_ALLOC_SINGLE_PAGES flag
-> > > specifically for the video encoding / decoding cases and I know it
-> > > helped avoid memory problems in the past on other systems. Colleagues
-> > > of mine have told me that with this change memory problems are harder
-> > > to reproduce, so it seems like we should consider doing it.
-> >
-> > One thing to improve in your patch submission is to avoid abstracting t=
-he
-> > problems. Patch review and pulling is based on a technical rational and=
- very
-> > rarely on the trust that it helps someone somewhere in some unknown con=
-text.
-> > What kind of memory issues are you facing ? What is the technical advan=
-tage of
-> > using DMA_ATTR_ALLOC_SINGLE_PAGES over the current approach that helps =
-fixing
-> > the issue? I do expect this to be documented in the commit message itse=
-lf=C3=A9.
->
-> Right. The problem here is that I'm not _directly_ facing any problems
-> here and I also haven't done massive amounts of analysis of the
-> Mediatek video codec. I know that some of my colleagues have run into
-> issues on Mediatek devices where the system starts getting
-> unresponsive when lots of videos are decoded in parallel. That
-> reminded me of the old problem I debugged in 2015 on Rockchip
-> platforms and is talked about a bunch in the referenced commit
-> 14d3ae2efeed ("ARM: 8507/1: dma-mapping: Use
-> DMA_ATTR_ALLOC_SINGLE_PAGES hint to optimize alloc") so I wrote up
-> this patch. The referenced commit contains quite a bit of details
-> about the problems faced back in 2015.
->
-> When I asked, my colleagues said that my patch seemed to help, though
-> it was more of a qualitative statement than a quantitative one.
+Based on tag: next-20240426, linux-next/master
 
-The story behind this is that I'm looking into an issue on the MediaTek
-MT8188 Chromebook, where in some scenarios the system may emit 30+
-video decoders concurrently (e.g. generating thumbnails for excess
-amount of video files etc.), and such behavior can easily hang the
-system if it has a smaller amount of memory (<4GB).
+v1:
+Add support for the dovdd regulator, which supplies an
+additional power source to the EEPROM.
 
-In addition to seeking mitigation in the user space software side,
-we're also looking for ways to optimize how the video decoders use
-memory, so Doug suggested this improvement.
-My preliminary experiment showed that it has some positive impact -
-the system doesn't freeze up completely with it and is still
-responsive in the UART serial console. However, just like mentioned, I
-didn=E2=80=99t have any rigorous numbers to support it.
+Zoie Lin (3):
+  misc: eeprom: at24: add optional dovdd-supply
+  dt-bindings: eeprom: at24: Add support for at24c64
+  dt-bindings: eeprom: at24: Add property dovdd-supply
 
-To test the patch better, today I set up a local WebRTC demo to
-simulate a video conference with 49 people where the mocked input
-stream is captured from the device's own front camera.
-With that, the original system easily hung in less than one minute
-with less than 40MB available memory at the time; but with the change,
-the system ran for several minutes and had an average of over 100MB
-memory. It's not a huge improvement, but it's something.
+ .../devicetree/bindings/eeprom/at24.yaml      |  6 +++
+ drivers/misc/eeprom/at24.c                    | 37 ++++++++++++++++++-
+ 2 files changed, 41 insertions(+), 2 deletions(-)
 
-I know this isn't the most scientific experiment, but I hope it=E2=80=99s a
-good enough representation of one of the multi video decoder use
-cases, and gives you some confidence that the patch is worth merging.
+-- 
+2.18.0
 
-With the test above I think I can give this:
-Tested-by: Fei Shao <fshao@chromium.org>
-
-And, since this patch LGTM and I support it, here's my humble
-Reviewed-by: Fei Shao <fshao@chromium.org>
-
-Regards,
-Fei
-
->
-> I wasn't 100% sure if it was worth sending the patch up at this point,
-> but logically, I think it makes sense. There aren't great reasons to
-> hog all the large chunks of memory for video decoding.
->
-> -Doug
 
