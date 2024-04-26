@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A1CAC4345F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Apr 2024 09:07:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 569E1C4345F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Apr 2024 09:07:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kXVgaOquyUNKxyG8BCH4P2Fek4LPf9BbUfk72cErACI=; b=d9aSvuk3NiaSF9KNEQxSsmQ+7f
-	kfXTuZg9axjzIICMB/h1Xd5DQMafWWi7sWbOJ737jfvRmfLkLvkaDolDatD1WKc1BxHzxQhJg4GeW
-	D3Sr44sgnIeqB9NTCSXGxSwBMIV80XjozejdqOKuF81neToXUJCHAcb9VHKyfQmAfB3aolyOEmPg+
-	K28K6SgP1O8OWo8XFZWM2L5dqYPXY3l9Sq4Wg0RRl3xnYdPZC8kLwaFDe11SNZPI8OG7OKTAGtyIe
-	UxySVVeAU+mdVMqDoOrF9NiP+oU+Xn7wIzfz9b+O8HeojVw1yKd8c6askZxJq3E7z8RYlf0Asj54o
-	bTn7DFpg==;
+	bh=zJfvt2wqhYIL9b/Yrexqg9WHNS0MNGaW7+8TbDBw6A4=; b=4o+7u/HiWkq0CkZQkyRtiGT/Ol
+	gwAlUImqkI9H09sHcg5he11gazW7sKsP1bLrDz8hc9VX5EyBrEeN4tm+QzVkDgnUdYZL9rSv340Mx
+	ONH0p8KPD8HYBwrBVMcmTIQdAlGIP3nVstMMPpgJrE5Lad/461yEOBq22IjFwXB2map5ZpsPKU2wK
+	DQ0dEm4zXK85BewsaC5haoK7LV/Ku4KghVb0t7KiQlIt+NamVEYbJe0XyTHRFQRx4Ih9YptVKieQB
+	f+mwQbhOc+blrLtFRBYW4WFKCK0a5d04sJSyvQzwiRPcIpP7r4IHqD0PaE8+9weMLc97EpHOcf0l0
+	asw9d76Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s0HYL-0000000BpvZ-33U2;
-	Fri, 26 Apr 2024 09:07:33 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1s0HYV-0000000Bq3f-2Xbt;
+	Fri, 26 Apr 2024 09:07:43 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s0HXM-0000000BpFy-0FKC;
-	Fri, 26 Apr 2024 09:06:33 +0000
+	id 1s0HXQ-0000000BpJL-2POe;
+	Fri, 26 Apr 2024 09:06:37 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 2CC44CE1BFB;
-	Fri, 26 Apr 2024 09:06:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 68D6DC2BD11;
-	Fri, 26 Apr 2024 09:06:23 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id E808F6200B;
+	Fri, 26 Apr 2024 09:06:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F039AC2BD10;
+	Fri, 26 Apr 2024 09:06:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1714122389;
-	bh=CxPAgNjTAhKSrnJ9nXn8uxxa5Gyc46BCpw5S/shz4vw=;
+	s=k20201202; t=1714122395;
+	bh=1j45APt84Z2XIlLb4CgSXht8+Dv+bV1Rc+4llmd3nOU=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=mGG9w0EiFE359M4Z0kyegLPJAuOetfwlvp9QRl5QeoRqVdYpZtPj0vI8av/F9Alcx
-	 vIbZ/OIlL0O48oW10NYCdK7FQwLHW2ttIsD9A76ippIY4cTI228dJpHnrFJFSR82dh
-	 ajrbjJFT7UEh9YfSjpIY8H8CHX7+n19qSm8m7vqnXfSLM4Ja8vATtyGXf3l1c3YAwz
-	 UcMW2ocWMcp8W1ZaRd7TnQLgdGtewx/25xd+rIyVhFBGaYZydgg5/mqzUNSO6JQ4cq
-	 sDdm3SVjmlwRUkCdg4HWzL5ZYJlrgipbJqE7FPetpZQmuvGC7oq4HyUmXKBnIzpM9G
-	 pIuwptjfd+0Sw==
+	b=YQehXKrr/O/mDKcnEZ/VzzQIguHqfHe3LKofGVlscwcbsgubsTX5zxKFuh6luz/uZ
+	 x5QOEM64z9voC8y7xCFEfsScljgkOzCOORs5FaB2kBMLjXa328uZOUQ4Cc0vf/ftt7
+	 pCQRpP0M4CoeX20h+PraWWEdYcWtwHB9uLP+cRvTwa1LcT2sZm28NmT2tCRdSbpk+o
+	 Kt2ixUBwlffHVhUkMnuvdCaPu+4qcjJ4xbPnPzOqVSvNJcB+u6/KRm0gXnT43X6Mfs
+	 ET1okh6qQUwzrUjqbwwmQeMKpR5+FXRSp5va0PlCO42WRDjS7e1eoTIODOXevTJI0s
+	 uyl0UUt2rOfYw==
 From: Krzysztof Kozlowski <krzk@kernel.org>
-Date: Fri, 26 Apr 2024 11:04:00 +0200
-Subject: [PATCH v2 13/14] ASoC: SOF: mediatek: mt8186: Constify
+Date: Fri, 26 Apr 2024 11:04:01 +0200
+Subject: [PATCH v2 14/14] ASoC: SOF: mediatek: mt8195: Constify
  snd_sof_dsp_ops
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240426-n-const-ops-var-v2-13-e553fe67ae82@kernel.org>
+Message-Id: <20240426-n-const-ops-var-v2-14-e553fe67ae82@kernel.org>
 References: <20240426-n-const-ops-var-v2-0-e553fe67ae82@kernel.org>
 In-Reply-To: <20240426-n-const-ops-var-v2-0-e553fe67ae82@kernel.org>
 To: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>, 
@@ -71,24 +71,24 @@ Cc: sound-open-firmware@alsa-project.org, linux-sound@vger.kernel.org,
  Krzysztof Kozlowski <krzk@kernel.org>
 X-Mailer: b4 0.13.0
 X-Developer-Signature: v=1; a=openpgp-sha256; l=960; i=krzk@kernel.org;
- h=from:subject:message-id; bh=CxPAgNjTAhKSrnJ9nXn8uxxa5Gyc46BCpw5S/shz4vw=;
- b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBmK24qWF6cO+604OtziJ/NJKVjNH2vRdMlOvKW2
- ZVeAFYdmmOJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZituKgAKCRDBN2bmhouD
- 19rmD/wJu4RJJ1iOkGW6XNvX7fpPFzE4tZjBrpuoS3aDYr+2SZnWCK8uN7kvowcs3ZzHaa07zym
- wIXdJ7M08Y+Za281aWLjxHXI6wPqXkaHGSj6kn5rW8ni5iRo/tHYZjoso8PINUSg3ShVlrbCp7M
- mswEjchbBIYjGArF8MBdepFCzThLrd6LrQGhysK8P7F/VlrkcQMip820lmk8TuxBVMEg1CalacB
- PqnIHGc2WFlhcSW9okNqYX3ZKby0a6o6iBNukbx4KoeXbQJiNyZ0UG2bdT2l/Z7Dwai+a8YJnT9
- zp6NGMVAa7ak5V6RcD+OUc8RjoVn+/Dd+gW7HDucLBAmFiALB1G+q+hDp5WOSpVgQPPnTo53D6g
- ze6s697K+wgmY7eeEp3jxrByXLzJelThlzthE9aParvGZXOcKtGyi4j+a96wRWBMuYBEzQCDQvp
- NCZBXC+VxYZ+v+jNuIByVwSjH3BZV57alL6v0k6SksyarACcCnWLBN7jNcULL4L+JzZ5OFpfeUC
- yzn75lDUrGRVU0l/YsQC/CsXz8mrzEfy1uzc5SQKU2hBWHtGp/uJbF2cW/x4vh2OyUvE2VB6icz
- aLvdXQvbaawFW2zCL4hBre7yFlBs9r1C3TmjQ0G/cLcum2nuKj3qWy1pt5tTLiVG8YSNheWyq9q
- XLK9ow2hSolnP8w==
+ h=from:subject:message-id; bh=1j45APt84Z2XIlLb4CgSXht8+Dv+bV1Rc+4llmd3nOU=;
+ b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBmK24ri5hbvvP8DkjdiR3gDZ/o/lD3rZTZSVmyL
+ 9OhKlqW3dWJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZituKwAKCRDBN2bmhouD
+ 1wyvD/979AcclNlfz3AHCAc7yWzJwuKG99G5B/V3GZmbbF/Q10mefin+IcW+1AAGJx2Ay8WQH06
+ /gJnJMTc3D4r/w/4atnDj/NHGDbxk3muVAtK2hnvsR0839UYh5KzKhXGo1/6mOyClf6pbRaFPb1
+ 8jViXGzLcqMaBMKNWSCn7JwanyBjPd6O/O1J1Y5+cQvx5G94upsOAULNXWUOewj0xXSuTWXx4th
+ gSgRLwfnoz+P1gVvurneJUtyWMOFYLINjNVclWPllOnNff328w3UN9Oi5rlxpJttkKV3EvOevXA
+ D6M2gp7LsDUCyBHBVDe8ENUm9reCFKuFACkUnU6Gb3vF4AdUbVglglpD9+UHNr/MQMGNgc4n2g3
+ ARGqfKiz9ibJC5AzsUnsErKtnJvNl9riPrMHpTxo9kyk5HDPSIg10LMOmzGp6ONl+8KBfGIuqgF
+ 6byJO3lHB14IYBAL77WuIUDDjUT9gIW5NzklFSiTcJys/0UWJ/zg1CnxJlTbq/1mzugQw+bOTeZ
+ rpDZWvYtaNvQVTNIvr5WcZUUR2Pv4bPIf4D15CgtHKvTtbhBoFQqdkyqdvk/GIKXdjLqM2ShDRh
+ OINLugwKjkJTmgFR6c+03NS9CXETbG+wymA6nbTIrHLhl9JrwVOoAxysfBELBVJLlzdCuokBjqv
+ +kpjVSBdxdC1Z4Q==
 X-Developer-Key: i=krzk@kernel.org; a=openpgp;
  fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240426_020632_511740_230D3E74 
-X-CRM114-Status: GOOD (  11.82  )
+X-CRM114-CacheID: sfid-20240426_020636_729181_41005454 
+X-CRM114-Status: GOOD (  11.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,22 +110,22 @@ Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com
 Tested-by: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
 Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
 ---
- sound/soc/sof/mediatek/mt8186/mt8186.c | 2 +-
+ sound/soc/sof/mediatek/mt8195/mt8195.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/sound/soc/sof/mediatek/mt8186/mt8186.c b/sound/soc/sof/mediatek/mt8186/mt8186.c
-index 0d2d7d697de0..c63e0d2f4b96 100644
---- a/sound/soc/sof/mediatek/mt8186/mt8186.c
-+++ b/sound/soc/sof/mediatek/mt8186/mt8186.c
-@@ -481,7 +481,7 @@ static struct snd_soc_dai_driver mt8186_dai[] = {
+diff --git a/sound/soc/sof/mediatek/mt8195/mt8195.c b/sound/soc/sof/mediatek/mt8195/mt8195.c
+index 8ee7ee246344..fc1c016104ae 100644
+--- a/sound/soc/sof/mediatek/mt8195/mt8195.c
++++ b/sound/soc/sof/mediatek/mt8195/mt8195.c
+@@ -505,7 +505,7 @@ static struct snd_soc_dai_driver mt8195_dai[] = {
  };
  
- /* mt8186 ops */
--static struct snd_sof_dsp_ops sof_mt8186_ops = {
-+static const struct snd_sof_dsp_ops sof_mt8186_ops = {
+ /* mt8195 ops */
+-static struct snd_sof_dsp_ops sof_mt8195_ops = {
++static const struct snd_sof_dsp_ops sof_mt8195_ops = {
  	/* probe and remove */
- 	.probe		= mt8186_dsp_probe,
- 	.remove		= mt8186_dsp_remove,
+ 	.probe		= mt8195_dsp_probe,
+ 	.remove		= mt8195_dsp_remove,
 
 -- 
 2.43.0
