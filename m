@@ -4,89 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DC8DC4345F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Apr 2024 02:29:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23F06C4345F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Apr 2024 05:33:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oLlQJUd+h/8YBvzmBBPlNG7KT72qJaz6fU64U57uZ8s=; b=UcH8zB5Tw/2HtsPaX/Cu0SpYYC
-	dWnRnd4CcoVYqWVz4IPnVRuruBh5gT42hYO3f6QzsfhOzsAztycqSNIzLih6N/eSHhTtc5uS3zY7w
-	lmHkeF5t6UtgN2cMSKbI9ncEAaGql6Q6Ra4IMXocKzLRrKpDOi09hic9cwe2vZud+hPPonlbuYPWZ
-	IQx1oBaf2ikE/rI4HDUe09Qg8xzcmIt/CUP0XhEwKeQ4km2HVXLH97OZdh6eaKOrpSaV+4AHnylKz
-	qRo3km9m1XjRrEIiLafb2U3ZVl7aLUxfR8x4kEM6632WSvdAGsNmkdgqcQGkweY7w97LfJ5W/YeXe
-	HlUK0b4w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=4LCrjhDaL8ypFniNCchNygF9gHvRZ2+FyqZFGJS8hII=; b=HDGDFFMLgig0JMPlS9WqJsPVZK
+	C0IS+IazrhXwX0p0k2p89xxbktlufHRBi6UV/Ilh0eFVmYw1O3xVardDaDdEhGsyCjQynY0LI2XCz
+	+QU8buTuSGhTrEFk1A6cynqb5yggSnZ6dDGH3xJMJ3Mt+hfNURsqwf+yz08HsMLmBj/YrBmA4iQ/k
+	jJx4L+oF5dBtFn4dFrJC0iUmMR6z32I5CvdRpaj/JyW8mfJJUZKbUKOCeDJlihO+sRXN1hQLRIKT9
+	NKdM/wGkctI8X3NwLDm5CBZb/9iI0akz0VR51MLx+1lYI+TkcvG7+R/FeudIO+Zw3upNR6pJ+OGU8
+	HU0LYPXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s0BKh-0000000Asjd-08gq;
-	Fri, 26 Apr 2024 02:29:03 +0000
-Received: from mgamail.intel.com ([198.175.65.20])
+	id 1s0ECm-0000000BBKQ-0nUJ;
+	Fri, 26 Apr 2024 05:33:04 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s0BKb-0000000AsiW-3scd;
-	Fri, 26 Apr 2024 02:29:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1714098538; x=1745634538;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=a7GCnBwqMy29DV7yfejurYzqI+BjrI2g+dPqUPElVxY=;
-  b=Kw/cpDiLx/t2TBgKj2EeOEq5Zd7TZtnqpmk43w1NbPYU2TFBXeCLpdKH
-   ISUKRzxgNTyShM5LO8gNDnD+mgfBDDOH2L7v/+qwGWasI5b1SegNvYH00
-   QD9n80mh/zb8YVdbNBxn/4J38Rb55v0RrD4ncA5fTty1J+BnEuoD0/vtP
-   CFiDPVqpKHUNn/kKHVNhsihT4yKTaQidoP81FBKslt3/l51oaX7Da3hx2
-   nIKAoJSlPS2anTR4DNS7A2UPyKsVu4RXz0VG2P6ZYXacsMo4q9oPx2ssh
-   o3qDANUIGBTrGH64gSwkQLY2wNzHORnj2hpO3PVv2WJcu414x49z0p/8T
-   w==;
-X-CSE-ConnectionGUID: rHeiNHdbRM602e+N0DlHLw==
-X-CSE-MsgGUID: C1VcuA1IQ7+HN4rsgIWNXA==
-X-IronPort-AV: E=McAfee;i="6600,9927,11055"; a="9658993"
-X-IronPort-AV: E=Sophos;i="6.07,231,1708416000"; 
-   d="scan'208";a="9658993"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
-  by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Apr 2024 19:28:31 -0700
-X-CSE-ConnectionGUID: Muomi0QGS/GUkiANgz9eDA==
-X-CSE-MsgGUID: i31M9VSMRcKlVW3m4otSoQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,231,1708416000"; 
-   d="scan'208";a="25276471"
-Received: from lkp-server01.sh.intel.com (HELO e434dd42e5a1) ([10.239.97.150])
-  by fmviesa009.fm.intel.com with ESMTP; 25 Apr 2024 19:28:27 -0700
-Received: from kbuild by e434dd42e5a1 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1s0BK4-0003Ai-29;
-	Fri, 26 Apr 2024 02:28:24 +0000
-Date: Fri, 26 Apr 2024 10:27:38 +0800
-From: kernel test robot <lkp@intel.com>
-To: Sky Huang <SkyLake.Huang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Qingfang Deng <dqfext@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: Paul Gazzillo <paul@pgazz.com>,
-	Necip Fazil Yildiran <fazilyildiran@gmail.com>,
-	oe-kbuild-all@lists.linux.dev, netdev@vger.kernel.org,
-	Steven Liu <Steven.Liu@mediatek.com>,
-	"SkyLake.Huang" <skylake.huang@mediatek.com>
-Subject: Re: [PATCH 1/3] net: phy: mediatek: Re-organize MediaTek ethernet
- phy drivers
-Message-ID: <202404261047.Dx118RCc-lkp@intel.com>
-References: <20240425023325.15586-2-SkyLake.Huang@mediatek.com>
+	id 1s0ECj-0000000BBJr-34UP
+	for linux-mediatek@lists.infradead.org;
+	Fri, 26 Apr 2024 05:33:03 +0000
+X-UUID: 6f37e852038e11efa8f1cd58ee6c2400-20240425
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=4LCrjhDaL8ypFniNCchNygF9gHvRZ2+FyqZFGJS8hII=;
+	b=N+OcpvxNTgr4xPnEBv2WNf/k+PR2HgQjBSOWovv/pKpmQIPsO9ly6HM0cidZoEsQwLKP/CG53AqO6b3zETm2Em1CeMjcPgrgTMcyQZBJAiuoogeektSgX0SAdiW9hSJYf/5t5eLq80aolrDd6vz9FxrqdoCSgOVKKT4X1kGnktg=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.38,REQID:1e7ca2e2-85ab-439b-a607-ead43101420c,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:82c5f88,CLOUDID:24c55ffb-ed05-4274-9204-014369d201e8,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-UUID: 6f37e852038e11efa8f1cd58ee6c2400-20240425
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	(envelope-from <mingyen.hsieh@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 931783608; Thu, 25 Apr 2024 22:32:55 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Thu, 25 Apr 2024 22:32:53 -0700
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 26 Apr 2024 13:32:53 +0800
+From: Mingyen Hsieh <mingyen.hsieh@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo@kernel.org>
+CC: <deren.wu@mediatek.com>, <Sean.Wang@mediatek.com>,
+	<Soul.Huang@mediatek.com>, <Leon.Yen@mediatek.com>,
+	<Eric-SY.Chang@mediatek.com>, <km.lin@mediatek.com>,
+	<robin.chiu@mediatek.com>, <ch.yeh@mediatek.com>, <posh.sun@mediatek.com>,
+	<Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
+	<Shayne.Chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, Ming Yen Hsieh
+	<mingyen.hsieh@mediatek.com>
+Subject: [PATCH] wifi: mt76: mt7921: fix sparse warning for incorrect data type definition
+Date: Fri, 26 Apr 2024 13:32:49 +0800
+Message-ID: <20240426053249.7034-1-mingyen.hsieh@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240425023325.15586-2-SkyLake.Huang@mediatek.com>
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240425_192858_037112_803BCB6B 
-X-CRM114-Status: GOOD (  11.16  )
+X-CRM114-CacheID: sfid-20240425_223301_809163_56267D13 
+X-CRM114-Status: UNSURE (   9.33  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,36 +88,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Sky,
+From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
 
-kernel test robot noticed the following build warnings:
+Sparse warn:
+drivers/net/wireless/mediatek/mt76/mt7921/mcu.c:263:20: warning: cast to restricted __le32
 
-[auto build test WARNING on next-20240424]
-[cannot apply to net-next/main net/main linus/master v6.9-rc5 v6.9-rc4 v6.9-rc3 v6.9-rc5]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+For the member of 'struct mt76_connac_rssi_notify_event',
+replace data type of rssi from 's32' to '__le32'
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Sky-Huang/net-phy-mediatek-Re-organize-MediaTek-ethernet-phy-drivers/20240425-103608
-base:   next-20240424
-patch link:    https://lore.kernel.org/r/20240425023325.15586-2-SkyLake.Huang%40mediatek.com
-patch subject: [PATCH 1/3] net: phy: mediatek: Re-organize MediaTek ethernet phy drivers
-config: i386-kismet-CONFIG_NVMEM_MTK_EFUSE-CONFIG_MEDIATEK_GE_SOC_PHY-0-0 (https://download.01.org/0day-ci/archive/20240426/202404261047.Dx118RCc-lkp@intel.com/config)
-reproduce: (https://download.01.org/0day-ci/archive/20240426/202404261047.Dx118RCc-lkp@intel.com/reproduce)
+Fixes: f01224e61c74 ("wifi: mt76: mt7921: cqm rssi low/high event notify")
+Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+Reported-by: kernel test robot <lkp@intel.com>
+Closes: https://lore.kernel.org/oe-kbuild-all/202404251728.k3Q4OQ2V-lkp@intel.com/
+---
+ drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202404261047.Dx118RCc-lkp@intel.com/
-
-kismet warnings: (new ones prefixed by >>)
->> kismet: WARNING: unmet direct dependencies detected for NVMEM_MTK_EFUSE when selected by MEDIATEK_GE_SOC_PHY
-   WARNING: unmet direct dependencies detected for NVMEM_MTK_EFUSE
-     Depends on [n]: NVMEM [=n] && (ARCH_MEDIATEK || COMPILE_TEST [=y]) && HAS_IOMEM [=y]
-     Selected by [y]:
-     - MEDIATEK_GE_SOC_PHY [=y] && NETDEVICES [=y] && PHYLIB [=y] && (ARM64 && ARCH_MEDIATEK || COMPILE_TEST [=y])
-
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+index 340942fd6785..6873ce14d299 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+@@ -1460,7 +1460,7 @@ struct mt76_connac_beacon_loss_event {
+ } __packed;
+ 
+ struct mt76_connac_rssi_notify_event {
+-	s32 rssi[4];
++	__le32 rssi[4];
+ } __packed;
+ 
+ struct mt76_connac_mcu_bss_event {
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.18.0
+
 
