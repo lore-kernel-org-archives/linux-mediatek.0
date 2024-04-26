@@ -4,78 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24010C4345F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Apr 2024 02:09:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 850D3C10F15
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Apr 2024 02:12:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RaA10gzFMijmnLpX8g9P+ahaM9BYGZVleDM/58q/EhM=; b=rJjzx/ndsGmrFhJ7DrZNisW61Y
-	h9Zw7ddh5JTkRIcM8G3SNxdQ5esKe2BRCVmHY7ID0XpuGtzR3NJPn6Tl3k1zfvwmygmI7Lg/pgFYp
-	AZdR3lH+WtLiPSuzJ6UsfhZqE34BIw5Mmj/f1CrvveD5EUNhUUgcU4vDnq1TPdxfPXiDL1Rwi5Pmi
-	vrmhxHAY4RiQaskwbxSXkSf1APe2CCoJmIxqkpW/1+bOCu71nY2q/QgKwAKCBB5BMaY8IcPz0J5Hh
-	W3l4YIQUfCv9gJet82GsNnOcQxEw3oXCxKqqY8mJPyD6fBBT5wPgCEePvTmJtoGeuyL1rI2ByjYTX
-	GiE0kuIQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=j0QYK3u1tNscMJGC++pFg34wNNSwspyGoedC9JhFCgE=; b=zomWQDI3uGmQsdwTLtj24KfRTh
+	A1zknewbpqpgZGc/AL5jAZLayMjIgp9/+c/KzqtRkPG7CRXY2WKT9ZI/HDrrTzvs8LA630eEHfMd0
+	dKTnX0t2HDEeK4mYqHIFVyO5oE3f2pkrIAQrxSIrUU3AjR59ec4Z9XlAVEDGvC3XAglN/VXABD2HF
+	wD6DTQ3K0O1ETC086z9ADY3wAuFUbKtxlor322rQnE1LteI9B+4M0xYT+Te13hnlQJhh2CTHEemPk
+	9fASeM+29/K0XkcVZs5YygTz6sh0p1sLGBITvY7thl3kwg9qvkG8lx+jyzCqBcCswJ2MsHQqaLwH6
+	zzs4ONWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s0B1S-0000000Aqv1-0SQf;
-	Fri, 26 Apr 2024 02:09:10 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1s0B4k-0000000ArMH-0Fhb;
+	Fri, 26 Apr 2024 02:12:34 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s0B1O-0000000AquN-2JVd;
-	Fri, 26 Apr 2024 02:09:07 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 74D6761EA8;
-	Fri, 26 Apr 2024 02:09:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 45104C113CC;
-	Fri, 26 Apr 2024 02:09:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1714097344;
-	bh=RaA10gzFMijmnLpX8g9P+ahaM9BYGZVleDM/58q/EhM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=JVsdb2nPMfDxyvIzHLmteDnKiEF01zLtPHG60bPyJi14lcfrekjJIdv4rviopgziq
-	 f0iwIqmT5LqyNbJr7wXsXe5Pbckki88bxtivP5UeNfxcq8UaNfO2nSlcw02lKvzHP9
-	 0mNY2TW92W6SoVCwt6s3HFHJbiZkO/UUaXWr/CvMrIcqUGMGJ0OAxs2BJbMzXZObws
-	 hPZPhtk7e+prjotitLx4w5GLRlPwFEkq3kbF5AE2sYfbeWK8ajRIPg+IEdt2HSGuZK
-	 2v4dR1FonitOrteypMZxZAhOb1GqKkko5cWiN5dERTcZtUWz4eWA0obCk4rR1xm+ch
-	 As3H90/Ve/qrg==
-Date: Fri, 26 Apr 2024 11:09:00 +0900
-From: Mark Brown <broonie@kernel.org>
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
-	Bard Liao <yung-chuan.liao@linux.intel.com>,
-	Ranjani Sridharan <ranjani.sridharan@linux.intel.com>,
-	Daniel Baluta <daniel.baluta@nxp.com>,
-	Kai Vehmanen <kai.vehmanen@linux.intel.com>,
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	sound-open-firmware@alsa-project.org, linux-sound@vger.kernel.org,
-	linux-kernel@vger.kernel.org, imx@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 01/14] ASoC: SOF: debug: Constify local snd_sof_dsp_ops
-Message-ID: <ZisMvJORIdqttoeF@finisterre.sirena.org.uk>
-References: <20240414-n-const-ops-var-v1-0-8f53ee5d981c@kernel.org>
- <20240414-n-const-ops-var-v1-1-8f53ee5d981c@kernel.org>
+	id 1s0B4g-0000000ArLg-3MKW;
+	Fri, 26 Apr 2024 02:12:32 +0000
+X-UUID: 6c4b0d66037211ef8ada5f53ce9ad2d9-20240425
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=j0QYK3u1tNscMJGC++pFg34wNNSwspyGoedC9JhFCgE=;
+	b=pdcMubtsdvdgiL72wYu8ojGJJXagL8txoELFhlwmzYPNwhg82c4BmkHDhKmlpFCvr+0C5x0jzxbXDiFz6ZDD+78Y1LYOdC2SQOwfB62/Zj/42UJKuFBUqJJh06GxfJr8C66XP+rIMPreBmhCSCb3XvsqVGLZb4R/+a0O5eSOJCA=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.38,REQID:6aa63569-1181-4798-8722-4772f80ea1aa,IP:0,U
+	RL:0,TC:0,Content:100,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:100
+X-CID-META: VersionHash:82c5f88,CLOUDID:49c02083-4f93-4875-95e7-8c66ea833d57,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:801|102,TC:nil,Content:3,EDM:-3,IP:n
+	il,URL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+	,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 6c4b0d66037211ef8ada5f53ce9ad2d9-20240425
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <jason-jh.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1508995801; Thu, 25 Apr 2024 19:12:24 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Fri, 26 Apr 2024 10:12:22 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 26 Apr 2024 10:12:22 +0800
+From: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+To: Jassi Brar <jassisinghbrar@gmail.com>, Chun-Kuang Hu
+	<chunkuang.hu@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+CC: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Jason-ch Chen <jason-ch.chen@mediatek.com>, "Jason-JH . Lin"
+	<jason-jh.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, Nancy
+ Lin <nancy.lin@mediatek.com>, Shawn Sung <shawn.sung@mediatek.com>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH] mailbox: mtk-cmdq: Fix pm_runtime_get_sync() warning in mbox shutdown
+Date: Fri, 26 Apr 2024 10:01:21 +0800
+Message-ID: <20240426020121.5273-1-jason-jh.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="QadR/dyrQjBKyfJ0"
-Content-Disposition: inline
-In-Reply-To: <20240414-n-const-ops-var-v1-1-8f53ee5d981c@kernel.org>
-X-Cookie: Shut off engine before fueling.
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240425_190906_657731_BA18DBE5 
-X-CRM114-Status: UNSURE (   9.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240425_191230_870991_A3FBE0C5 
+X-CRM114-Status: GOOD (  11.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,31 +87,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+The return value of pm_runtime_get_sync() in cmdq_mbox_shutdown()
+will return 1 when pm runtime state is active, and we don't want to
+get the warning message in this case.
 
---QadR/dyrQjBKyfJ0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+So we change the return value < 0 for WARN_ON().
 
-On Sun, Apr 14, 2024 at 08:47:26PM +0200, Krzysztof Kozlowski wrote:
-> Constify the pointer to 'struct snd_sof_dsp_ops' to annotate that
-> functioon does not modify pointed data.
+Fixes: 8afe816b0c99 ("mailbox: mtk-cmdq-mailbox: Implement Runtime PM with autosuspend")
+Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+---
+ drivers/mailbox/mtk-cmdq-mailbox.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-This doesn't apply against current code, please check and resend.
+diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
+index ead2200f39ba..033aff11f87c 100644
+--- a/drivers/mailbox/mtk-cmdq-mailbox.c
++++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+@@ -465,7 +465,7 @@ static void cmdq_mbox_shutdown(struct mbox_chan *chan)
+ 	struct cmdq_task *task, *tmp;
+ 	unsigned long flags;
+ 
+-	WARN_ON(pm_runtime_get_sync(cmdq->mbox.dev));
++	WARN_ON(pm_runtime_get_sync(cmdq->mbox.dev) < 0);
+ 
+ 	spin_lock_irqsave(&thread->chan->lock, flags);
+ 	if (list_empty(&thread->task_busy_list))
+-- 
+2.18.0
 
---QadR/dyrQjBKyfJ0
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmYrDLwACgkQJNaLcl1U
-h9DmCgf/Y5wt+LDn+WCUAubCYsG6igwZ0t9A9OH+G1bZL3YYMTw23O8FNhzXs+gU
-/ZERo2f/xG6D33AKJpYZqvLJ1ZYyQWBpf3SG2nPN3d3skuItL/M7/A9+yltV2j0Q
-bAZcHvx5LaPgSjS7vR8wmPmdymeDM+Yoixm4DNuHSItaKuFQtC/bIRuFmRQQoCIn
-AXYvoVLdQqkiHrTPsk6jrl/E4A3xmzCBWeUJ4CIW34jFPswHN5GWczALQocSW3g1
-vbAQQ+uMxtXhXs9AUXN9oRU+ftl6/3tsYvjSjIt9lD79cgfO6G4dB0U5vDbwyfK0
-ZsyFufHPFrLV62IvV+3WKWvRtjOi3w==
-=c2S5
------END PGP SIGNATURE-----
-
---QadR/dyrQjBKyfJ0--
 
