@@ -4,53 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97EC9C4345F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Apr 2024 09:05:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A49ADC04FFE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Apr 2024 09:05:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=HeTxQKITb1izd2YuB1rEZ4rwo0cCNVFPuLTe7wus1UM=; b=ewz18QI20vw4AB
-	vlbzxyToZLsUzJArUhW78wml1+CwCTojBfcwsCbMt22gmf/tlpB1kc0B4obdiF54YmvQReCe/Om+W
-	QkfvJnSXplJmQz+B7THEqHQO3wbymOIUwUhVZzujdX12Hyk3iQmKxXNevagUezjoBEf8p04GsfPWv
-	8GxTmG5jbce4jfKKHKRMJX/0NTF4fRE70ftHpS+7iR/VzqPxVSFvqIWEdkF3kLexDRYCl0vH0UAUK
-	Ea0B/LO7sYkeHgqPOwtzc9V8G8H5Jh9heUqsgjpDdoqpUycbW8+HwT/mZpNBm2T14SnrqW1oXO0ao
-	Lg3By318uxNXyNOS70nw==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=w6+qDSE14v107edLDpvXgc0/yYnP6FWMTs4snMNQdhY=; b=Bn0QdNT+A1YYIVJ62odvpFpULg
+	B3WWSN8ODosLfTNn3W4Evu+6BQKiGylUl7A9iaoJQAj/JvY6LtKzfSt9KRTLbPck+4VGz/fEADEW2
+	WNJovrrQFwpHbpPcGhh8L4/W9Ga8lqcNRm7GXr7M0KGpZPLGRMYvjjrcKI0hPO5YNV6/noZyTOVJ6
+	ZmwYte159mwccquVf2yQYC8Mo85nTbhAESUn+2RmzrDraI/gOUsdpdG9X3iTqN5VdRcx6LIRVqHpM
+	brkpZNsawer4jjpjts3VGmJh3Lnu/m97uDnMlYN7TV7eMVOig5JfmKpCSUhPCIakkW/d0+C58HXx5
+	Dtdbn2Gw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s0HVp-0000000BoN4-3DgZ;
-	Fri, 26 Apr 2024 09:04:57 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1s0HW2-0000000BoUN-0j6u;
+	Fri, 26 Apr 2024 09:05:10 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s0HVl-0000000BoLj-3lKj;
-	Fri, 26 Apr 2024 09:04:55 +0000
+	id 1s0HVw-0000000BoPR-0vrx;
+	Fri, 26 Apr 2024 09:05:06 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 4F4BA61FED;
+	by sin.source.kernel.org (Postfix) with ESMTP id 6C2D3CE1BE2;
+	Fri, 26 Apr 2024 09:05:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B6406C113CD;
 	Fri, 26 Apr 2024 09:04:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 131A1C113CE;
-	Fri, 26 Apr 2024 09:04:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1714122293;
-	bh=pm2j1dM2p+8pNOKXWZzVY9FMSNrPURtydALmuvx+siw=;
-	h=From:Subject:Date:To:Cc:From;
-	b=E7nCAB0DtLEbFbdOGaX777N0X0XV4k2CNMRL9+fnvIsvomps1P64c/ooLwmWfY+X3
-	 m4okEsxFdK473An+EhcsCqQAFa6HntfG69GzO2Y+yieZYm2DDILswmkgoVloKspdtP
-	 VvsfdKJZQOW0EMHg3mrm5kEAx5VQsQiSbvYkQfT6KClxI1nur6Bn602Kmvhbdg80HO
-	 ulbvVAeDYoUibKbFj7C93WkmLF8czZ4wrBp2DGQljnOy3nS0+JLHVuHrx42omnDqaO
-	 v5gh+OR+aeq+vhAzPL9PdcGUEsLKGaYo+ix57EVrPYF2e8h1i9xO3+f01vnE3kdFcL
-	 aEnMW4yULsazQ==
+	s=k20201202; t=1714122301;
+	bh=Fv58eJJ9g0/7T+qs81YevZa2aGi0MuehR4NJTOflK2I=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=Ete9qowVjLixlXuoXYCBwwgIs1Pydbar8cLML12g4KwYYDW8/erLjq1brHFfBH+Mq
+	 Hdm/Cvqsd/Z7RD44RtDFjbgtn4cgkB3mqBR160aXwVXGcQmARQvoQoWs62ViU6uK+7
+	 EBgFZTMYdzkw/bS+HNlSL7TcIOAbfKjo0WEvx5SM6ZbmGSy+nfTwC60R37mjIPyWUC
+	 a5lz7q5Y9DTrYhpVChTVoL6FZ0nZ3Ep7mff3Invs53CrjFpLtFLdAqpxtgEWp22/Tj
+	 G5ywq6gomNAQ342vglnAh6AQuPkq9ibbuO0WaKMgVDYaySWGhR9Jxx/JI2DYexT4Yb
+	 UDOTHi02QYBag==
 From: Krzysztof Kozlowski <krzk@kernel.org>
-Subject: [PATCH v2 00/14] ASoC: Constify local snd_sof_dsp_ops
-Date: Fri, 26 Apr 2024 11:03:47 +0200
-Message-Id: <20240426-n-const-ops-var-v2-0-e553fe67ae82@kernel.org>
+Date: Fri, 26 Apr 2024 11:03:48 +0200
+Subject: [PATCH v2 01/14] ASoC: SOF: debug: Constify local snd_sof_dsp_ops
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAPRtK2YC/3WNyw6CMBBFf4XM2jH0gYIr/8Ow4DHARNOSKWk0p
- P9uZe/ynOSeu0MgYQpwK3YQihzYuwz6VMCwdG4m5DEz6FLb0iqLDgfvwoZ+DRg7QWUuk2mq3lx
- tD3m1Ck38PoqPNvPCYfPyOQ6i+tn/raiwxHqqDFE1NrUa7k8SR6+zlxnalNIX5tzHxa8AAAA=
+Message-Id: <20240426-n-const-ops-var-v2-1-e553fe67ae82@kernel.org>
+References: <20240426-n-const-ops-var-v2-0-e553fe67ae82@kernel.org>
+In-Reply-To: <20240426-n-const-ops-var-v2-0-e553fe67ae82@kernel.org>
 To: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>, 
  Liam Girdwood <lgirdwood@gmail.com>, 
  Peter Ujfalusi <peter.ujfalusi@linux.intel.com>, 
@@ -70,25 +69,25 @@ Cc: sound-open-firmware@alsa-project.org, linux-sound@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
  Krzysztof Kozlowski <krzk@kernel.org>
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2676; i=krzk@kernel.org;
- h=from:subject:message-id; bh=pm2j1dM2p+8pNOKXWZzVY9FMSNrPURtydALmuvx+siw=;
- b=kA0DAAoBwTdm5oaLg9cByyZiAGYrbhyhrRkynmvFIgcWvJC4JAsf1b71Ti8wIkX9f1Kfu/klC
- 4kCMwQAAQoAHRYhBN3SYig9ERsjO264qME3ZuaGi4PXBQJmK24cAAoJEME3ZuaGi4PXuo0QAIbH
- d7a92vy0rqiQwWXMMVzg532JOBlhopM0Y5zBK9mU7tQoLdIeMgru6dkEdTZaaWFF97v6z6No6Il
- FFf1Rb6Q0XfLaD0ZuqMOYPYJ8fFvHxnRxifpZ5xoV5wNFvCz8kiCRKpVOEIm9dN8pGcT1tsFbXK
- Aw18iCCpB4B8xnH5f8iUfFYLy5JDsRMXlk23fSDyA6s6zNsh3mwz9dzCUpRREJvB/izLBbtTRs/
- VRr7CJUS0vECgwnjfSC51P0fVt38YKmFIn4U3g+z8fSLu0OzkFwp62t9K7t0jBw9uEqKuWlPEzK
- /sweW2NQCOVyQ8J1WhP26MIDP7Sv4RlGd0cMIg8QVvOpgcKDF3LlR2HbDaqB/s/918jtWdTiNTo
- sfC9R7VtDBuHe7e4NppSo/mxHFOb1pwJga5ZAOCe8bc0aT0pAKEpqi5Ng80tYckqkUeG/Oc2C1+
- JkaJ6E7np1NlsjfbZ/RKDNpoXKox6DqDFrzun0hpeihWUOnB9o3KSla6L+4cjywErQYkaRiaQOu
- VlFFjkcgNa9nz6SismodUx5myDutbGPKUNTtBXa68P9U+KvwNp/zSIN78Ez+NEUlw6CPT0E3WCL
- F/23amcVe9o6pDR9ERhoW/A+wg83tnFlGnEJN8gfzCDngQIowdzdEQdYyT4kRsUj5X7Ohu3Uvrn
- 6O74m
+X-Developer-Signature: v=1; a=openpgp-sha256; l=856; i=krzk@kernel.org;
+ h=from:subject:message-id; bh=Fv58eJJ9g0/7T+qs81YevZa2aGi0MuehR4NJTOflK2I=;
+ b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBmK24g8FMqyk5CcreafnICwJURXx3G/Vt1uYxPX
+ DIZzjLVAGKJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZituIAAKCRDBN2bmhouD
+ 11YxD/0SAUyEFYV4mPU67fioBUbLoun6ybnfuwvrL1B88/tA0168kO8waj4x7soSQfkNXdBG9Tk
+ Rz1HZ73v8oIXaJOwtxrDslVyaxBLU5HopSjZkDE7J0f+pk/sNor6WxfB6yD3ouvvSCWxxh3bhzP
+ SJ4pEN192s6aSYT4cBsHRm8TnLYHCrMKa01css81vWFKvMEuKwaDic92/Ju6tbJZXY0QkNlrQM8
+ Ol9oQzV7QDwSfcqNuwUx5F6ckgqyJSFMrmqQSODaoeIlwA+QPi+gYHm++/OnSBlWgQc9OuzoVOy
+ xYPmVLu4Fze0JSZzF/T/2MlJfTZNrCzdk3K0yQjFBPfC3cppqrwWWsRiOzPhFawFvJg9nopMe9Y
+ 4euxMToOe9ngBL28cGIKWjTlGyE9z9s2GEaIJ76kEe4wW9/+KNUYDjdz+tozLb5dzM8rF49E8p9
+ cH5vX9XCIe0TnAc0MUaknLm66tpqoObLiKVMWWM9uI8+Epx9UKI9lY5NPi/4xZzHbLZ7SFnHzn4
+ ZSn4fXwQj0KRqP0UHtB3bitfOV5kAXbrBD4nxiycT3lddegIk5lWD4Hkh4l2bD6m3LxEZVs9DGi
+ DtEeec6BbFC4q8Md9j1x+8xSrnvIx4AyT/FlkZ+vzseJWLkR1oNvCoU+ddPrJJHmUmbH+UybwpW
+ HnrTY6/kxdzSxbQ==
 X-Developer-Key: i=krzk@kernel.org; a=openpgp;
  fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240426_020454_062458_8B1A3DA5 
-X-CRM114-Status: GOOD (  10.40  )
+X-CRM114-CacheID: sfid-20240426_020504_805972_759C49D0 
+X-CRM114-Status: GOOD (  10.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,72 +102,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Constify the pointer to 'struct snd_sof_dsp_ops' to annotate that
+functioon does not modify pointed data.
 
-Changes in v2
-=============
-- Only rebase on for-next of broonie/sound.git
-- Add tags.
-- Link to v1: https://lore.kernel.org/r/20240414-n-const-ops-var-v1-0-8f53ee5d981c@kernel.org
-
-Description
-===========
-The core code does not modify the 'struct snd_sof_dsp_ops' passed via
-pointer in various places, so this can be made pointer to const in few
-places.  This in turn allows few drivers to have the local (usually
-static) 'struct snd_sof_dsp_ops' as const which increased code safety,
-as it is now part of rodata.
-
-Not all drivers can be made safer that way. Intel and AMD rely on
-customizing that 'struct snd_sof_dsp_ops' before passing to SOF, so they
-won't benefit.  They don't lose anything., either.
-
-All further patches depend on the first four patches.
-
-Best regards,
-Krzysztof
-
+Tested-by: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
+Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
 ---
-Krzysztof Kozlowski (14):
-      ASoC: SOF: debug: Constify local snd_sof_dsp_ops
-      ASoC: SOF: ipc3: Constify local snd_sof_dsp_ops
-      ASoC: SOF: pcm: Constify local snd_sof_dsp_ops
-      ASoC: SOF: Constify stored pointer to snd_sof_dsp_ops
-      ASoC: SOF: intel: pci-tng: Constify snd_sof_dsp_ops
-      ASoC: SOF: intel: hda: Constify snd_sof_dsp_ops
-      ASoC: SOF: amd: acp: Constify snd_sof_dsp_ops
-      ASoC: SOF: imx8: Constify snd_sof_dsp_ops
-      ASoC: SOF: imx8m: Constify snd_sof_dsp_ops
-      ASoC: SOF: imx8ulp: Constify snd_sof_dsp_ops
-      ASoC: SOF: intel: bdw: Constify snd_sof_dsp_ops
-      ASoC: SOF: intel: byt: Constify snd_sof_dsp_ops
-      ASoC: SOF: mediatek: mt8186: Constify snd_sof_dsp_ops
-      ASoC: SOF: mediatek: mt8195: Constify snd_sof_dsp_ops
+ sound/soc/sof/debug.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
- include/sound/sof.h                    | 2 +-
- sound/soc/sof/amd/acp-common.c         | 2 +-
- sound/soc/sof/amd/acp.h                | 2 +-
- sound/soc/sof/debug.c                  | 2 +-
- sound/soc/sof/imx/imx8.c               | 4 ++--
- sound/soc/sof/imx/imx8m.c              | 2 +-
- sound/soc/sof/imx/imx8ulp.c            | 2 +-
- sound/soc/sof/intel/bdw.c              | 2 +-
- sound/soc/sof/intel/byt.c              | 4 ++--
- sound/soc/sof/intel/hda-common-ops.c   | 2 +-
- sound/soc/sof/intel/hda.h              | 2 +-
- sound/soc/sof/intel/pci-tng.c          | 2 +-
- sound/soc/sof/intel/shim.h             | 2 +-
- sound/soc/sof/ipc3-priv.h              | 6 +++---
- sound/soc/sof/mediatek/mt8186/mt8186.c | 2 +-
- sound/soc/sof/mediatek/mt8195/mt8195.c | 2 +-
- sound/soc/sof/pcm.c                    | 2 +-
- 17 files changed, 21 insertions(+), 21 deletions(-)
----
-base-commit: efdfbbc4dcc8f98754056971f88af0f7ff906144
-change-id: 20240414-n-const-ops-var-136f395b374b
+diff --git a/sound/soc/sof/debug.c b/sound/soc/sof/debug.c
+index cf282c8b18af..884d85770426 100644
+--- a/sound/soc/sof/debug.c
++++ b/sound/soc/sof/debug.c
+@@ -311,8 +311,8 @@ EXPORT_SYMBOL_GPL(snd_sof_dbg_memory_info_init);
+ 
+ int snd_sof_dbg_init(struct snd_sof_dev *sdev)
+ {
++	const struct snd_sof_dsp_ops *ops = sof_ops(sdev);
+ 	struct snd_sof_pdata *plat_data = sdev->pdata;
+-	struct snd_sof_dsp_ops *ops = sof_ops(sdev);
+ 	const struct snd_sof_debugfs_map *map;
+ 	struct dentry *fw_profile;
+ 	int i;
 
-Best regards,
 -- 
-Krzysztof Kozlowski <krzk@kernel.org>
+2.43.0
 
 
