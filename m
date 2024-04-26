@@ -4,48 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55360C4345F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Apr 2024 07:59:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8946C4345F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Apr 2024 08:00:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=B4gL+EoX2bsYdYywqGeyBdh3W6ng9+HUU/K7lc/WKZU=; b=1XLh5GtddM4Mz+6eZIwjPzrQQj
-	6dtNJJc8BJaIQgRWo7JpjHrL3T0qCJ5ztmUu8zn1d9Bo0eU53Fb++eUmEjgKsqfEetdZx/yrOQ9gG
-	jnpdKNXAUx3Ne4EYMzXGtg3A742rHSMDV4UFqhgbWig/ZkeeYzFdBQ38QdzKNze/W1fYWj2dlVPvc
-	EhtHoElfk7ocjeW9vFIcuMdXEBz28rX4xQIkGy76IL5daKWjr/68wqkXd/mn6IBIk/8rKWyNNWuiU
-	Cs//XSU+ELQSdd1um5ZgMntDtt5qaWnTKT6n77L4Ld2ay9CK8auCcWsRxz0FM8J6pPPLYZyjLEChl
-	bBbdln1g==;
+	bh=RY1UjRNf3E8RelXczunzuuQBXDxEgBYAzWUhUFsgvKw=; b=OTi2W4hLYnMuBh9gHYS9cfFcFh
+	90TSGCFuBqsDiTC0xpzFAN3FyBs5plPRY411+bZHx3exVy2JR2r3JX4YnIt7NbHMRIEjwt8mjnVGz
+	DaUnR9HfgMCVQh2bv7p4FD+rYGRrWucz33SZpUqaAkzQiGFFT1EVRQTWs9InjBnrfD63luX0mVNp6
+	vgZCnEAKrGHBBoeMjL3z9H/OwO4Tg4pCSkbDGIquAq3Ngnm/HwSKvG1oYsvtu91008gDtlf7sRgBg
+	JUSuU5I6WIoXOw8hWaLI4ddO3ZTWL367TDXSm6TrQVYmA0AuoPNc89QBNonRwpcFqO+xCqXVC72N1
+	gtswOJHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s0GU3-0000000BYyB-48De;
-	Fri, 26 Apr 2024 07:59:03 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1s0GVS-0000000BZHV-2hRN;
+	Fri, 26 Apr 2024 08:00:30 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s0GU0-0000000BYx8-0wm7;
-	Fri, 26 Apr 2024 07:59:02 +0000
+	id 1s0GVO-0000000BZGX-2SXF;
+	Fri, 26 Apr 2024 08:00:28 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id AFF1061FE5;
-	Fri, 26 Apr 2024 07:58:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 98BADC113CE;
-	Fri, 26 Apr 2024 07:58:52 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 6252DCE1B9A;
+	Fri, 26 Apr 2024 08:00:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3F7F6C113CE;
+	Fri, 26 Apr 2024 08:00:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1714118338;
-	bh=PjXM/VHLqOfGEcVAlmekIEtEwKN06QA23qVCed5GPBI=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=HmS4ThGGV/w38F/ZOrmODyE6mohgRfsxfBjoWkzG6ha2wTtw+nlSKd7r+EOL0tRJY
-	 0jbjARam1eLs5LoBOvGxr7lUzx/mr2jEfQvQKN94VMU9+0BfktL4W97qFKZssEkTSn
-	 kG6HZYEm17F49h1ShNYUr5ojHKh1tTzELvEEEydk2cfF3bPY82P+tT/1PH/WbfNhhq
-	 0JxZ8AvFbccxP6OJMvmwoN5tWOPvmia9fxzRdsggQMlopMy0xCp67HRW5cWj++iRjo
-	 OmnVdrcITDxphQ9H+jEvyKXXsECQl2eklID4JQbTYxfcEYMR1UHjlSuyRginsT5Tvf
-	 8dN4WACld+jWQ==
-Message-ID: <e24367e8-3c40-4422-8b7e-810e1ba376e7@kernel.org>
-Date: Fri, 26 Apr 2024 09:58:50 +0200
+	s=k20201202; t=1714118423;
+	bh=X/svuiWiPTm376QCilcIl2dHIT0k4skPoe3RY6fuMC4=;
+	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
+	b=P0gJc07Ara3ifkBH5peeRefhZtITuoyT1VesWHjNBe2xqRztDMHGN8R4CB1RgCxNW
+	 W+wKwf1ozs0sTL+mJrOtQUTZdKpUHdc4HMvReDCe5xT5T33keRiWxXWEFTZjMxvGXu
+	 AGn/EUUAvrmMWy3HhMYxLVaiec93bqaqwdyqm0r5EknI604sCnHyBIL+yNYmsGKA0o
+	 iaqvk0FjV1yZzJW3Mgzx6MLTytMDX3cum7a3UQTQlUgcetclbUP/0sfqZzkbphV2Qw
+	 ZjjkUwTB4aG4ivKh+pvilUP+XIVSm7VdH+V9/EOT11EeRJdwjrvLifPDk7hSYt/8+5
+	 B3dta5fkgGUhA==
+Message-ID: <cabf0c46-6c7a-4ac6-a20a-8b72bb18aecc@kernel.org>
+Date: Fri, 26 Apr 2024 10:00:14 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH 01/14] ASoC: SOF: debug: Constify local snd_sof_dsp_ops
+From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Mark Brown <broonie@kernel.org>
 Cc: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>,
  Liam Girdwood <lgirdwood@gmail.com>,
@@ -66,7 +67,7 @@ Cc: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>,
 References: <20240414-n-const-ops-var-v1-0-8f53ee5d981c@kernel.org>
  <20240414-n-const-ops-var-v1-1-8f53ee5d981c@kernel.org>
  <ZisMvJORIdqttoeF@finisterre.sirena.org.uk>
-From: Krzysztof Kozlowski <krzk@kernel.org>
+ <e24367e8-3c40-4422-8b7e-810e1ba376e7@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -111,13 +112,12 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <ZisMvJORIdqttoeF@finisterre.sirena.org.uk>
+In-Reply-To: <e24367e8-3c40-4422-8b7e-810e1ba376e7@kernel.org>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240426_005900_664970_F7D5A900 
-X-CRM114-Status: UNSURE (   9.23  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240426_010027_373430_E4F4AE00 
+X-CRM114-Status: GOOD (  11.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -132,20 +132,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 26/04/2024 04:09, Mark Brown wrote:
-> On Sun, Apr 14, 2024 at 08:47:26PM +0200, Krzysztof Kozlowski wrote:
->> Constify the pointer to 'struct snd_sof_dsp_ops' to annotate that
->> functioon does not modify pointed data.
+On 26/04/2024 09:58, Krzysztof Kozlowski wrote:
+> On 26/04/2024 04:09, Mark Brown wrote:
+>> On Sun, Apr 14, 2024 at 08:47:26PM +0200, Krzysztof Kozlowski wrote:
+>>> Constify the pointer to 'struct snd_sof_dsp_ops' to annotate that
+>>> functioon does not modify pointed data.
+>>
+>> This doesn't apply against current code, please check and resend.
 > 
-> This doesn't apply against current code, please check and resend.
+> Maybe I am basing on wrong tree. I applied now on for-next of your
+> https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git/ and
+> b4 did not complain - no hunk rejects.
+> 
+> I will resend based on that tree, but I expect same result. Let me know
+> if I should use different tree.
 
-Maybe I am basing on wrong tree. I applied now on for-next of your
-https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git/ and
-b4 did not complain - no hunk rejects.
-
-I will resend based on that tree, but I expect same result. Let me know
-if I should use different tree.
-
+Never mind, my bad, the base commit was not public, but a commit from my
+development tree, so b4 properly figured out any conflicts transparently
+in my case.
 
 Best regards,
 Krzysztof
