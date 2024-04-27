@@ -4,59 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0F57C4345F
-	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Apr 2024 01:29:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD637C4345F
+	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Apr 2024 02:24:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QAxitb0ls1ooux+j7WSh6362qnzmsRmp9ZuJHwXqCvg=; b=ywC1FcZNIpge/oMs0PyGnnydlX
-	7tFDJ6wcptqeeEhmfmKuU072OLapPE+3U24qNGcm2umOXuQfX855VZtsmGsdRLlabIZauZDlUcnGp
-	3N/enlDLy4lLGJgfd7twQqcJAx5Mw98hb7QQ9Hc1LVryDrztwF+RrL0M0phV06B7OP+wYebGppK4/
-	9EbyXCkyycaFNwsuMcaqJ1uS/xVyiSoEf7aN9988eEIfsXA6pH84T0yz926KdoGzg//UK9576waRd
-	mwtZr+sJYSPMlwc5uZk5fnUSv0DnbvDGWr/OXYGSAZjBXXMSDeWfvaBO8Ed6h77agFj850I6EfHKZ
-	odQLBmDA==;
+	bh=LR/N8sOjphbjY7ylgbYn/+iB6DYtb+qs9Q0b8OwvBnQ=; b=BnxHHLVaTddwNQ5CXE1GDCI9ML
+	RRwpm3bMlevYz7b5HuLA0ZGvJ+BTX97akPpQhCUwpn4wQOmjSIITBFSSdBUCb+8nk41mWChG3MgMc
+	cAvsqW90oSNdp38rcKTm8jYFuDXt98HDte2w3ES73PSRT+fkgxGM8j67EcF1hBQlgAO3xqlUOdq3s
+	MA/idKE9xLP5tCaDuMul5sDPSDVRDh9d9oVgjFoj1Ug/2HRNBq2rMBjGK9bwrrFdRuRHa9vs/7DvA
+	e/7nT4QcZdqT/9RHsgLVbnF/D5rUwwgNM0UFolMA3+28R8vex4CqqaRsFKzTBhtChe96f5T7KKeHg
+	XNnOQflQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s0WsM-0000000EZpO-2r79;
-	Sat, 27 Apr 2024 01:29:14 +0000
+	id 1s0Xk1-0000000EeQU-39MJ;
+	Sat, 27 Apr 2024 02:24:41 +0000
 Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s0WsJ-0000000EZoY-10LD;
-	Sat, 27 Apr 2024 01:29:12 +0000
+	id 1s0Xjy-0000000EePk-38Lf;
+	Sat, 27 Apr 2024 02:24:40 +0000
 Received: from local
 	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
 	 (Exim 4.97.1)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1s0WsA-0000000060D-3rUx;
-	Sat, 27 Apr 2024 01:29:03 +0000
-Date: Sat, 27 Apr 2024 02:28:59 +0100
+	id 1s0Xjl-000000006AF-2noj;
+	Sat, 27 Apr 2024 02:24:25 +0000
+Date: Sat, 27 Apr 2024 03:24:18 +0100
 From: Daniel Golle <daniel@makrotopia.org>
 To: arinc.unal@arinc9.com
-Cc: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
+Cc: DENG Qingfang <dqfext@gmail.com>, Sean Wang <sean.wang@mediatek.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Bartel Eerdekens <bartel.eerdekens@constell8.be>,
 	mithat.guner@xeront.com, erkin.bozoglu@xeront.com,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 2/2] arm64: dts: mediatek: mt7986: set PHY address of
- MT7531 switch to 0x1f
-Message-ID: <ZixU287DdhvRyZBe@makrotopia.org>
-References: <20240314-for-mediatek-mt7531-phy-address-v1-0-52f58db01acd@arinc9.com>
- <20240314-for-mediatek-mt7531-phy-address-v1-2-52f58db01acd@arinc9.com>
+Subject: Re: [PATCH net-next v2 07/15] net: dsa: mt7530: move MT753X_MTRAP
+ operations for MT7530
+Message-ID: <Zixh0qsQat3ypqFp@makrotopia.org>
+References: <20240422-for-netnext-mt7530-improvements-4-v2-0-a75157ba76ad@arinc9.com>
+ <20240422-for-netnext-mt7530-improvements-4-v2-7-a75157ba76ad@arinc9.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20240314-for-mediatek-mt7531-phy-address-v1-2-52f58db01acd@arinc9.com>
+In-Reply-To: <20240422-for-netnext-mt7530-improvements-4-v2-7-a75157ba76ad@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240426_182911_305099_7177CC57 
-X-CRM114-Status: GOOD (  28.42  )
+X-CRM114-CacheID: sfid-20240426_192438_851283_6655B8E2 
+X-CRM114-Status: GOOD (  32.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,66 +79,32 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Hi Arınç,
 
-On Thu, Mar 14, 2024 at 03:20:05PM +0300, Arınç ÜNAL via B4 Relay wrote:
+On Mon, Apr 22, 2024 at 10:15:14AM +0300, Arınç ÜNAL via B4 Relay wrote:
 > From: Arınç ÜNAL <arinc.unal@arinc9.com>
 > 
-> The MT7531 switch listens on PHY address 0x1f on an MDIO bus. I've got two
-> findings that support this. There's no bootstrapping option to change the
-> PHY address of the switch. The Linux driver hardcodes 0x1f as the PHY
-> address of the switch. So the reg property on the device tree is currently
-> ignored by the Linux driver.
+> On MT7530, the media-independent interfaces of port 5 and 6 are controlled
+> by the MT7530_P5_DIS and MT7530_P6_DIS bits of the hardware trap. Deal with
+> these bits only when the relevant port is being enabled or disabled. This
+> ensures that these ports will be disabled when they are not in use.
 > 
-> Therefore, describe the correct PHY address on boards that have this
-> switch. This is already the case on all MT7986 boards here, so use
-> hexadecimal numbering and align the switch node name with the reg value.
+> Do not set MT7530_CHG_TRAP on mt7530_setup_port5() as that's already being
+> done on mt7530_setup().
 
-Sorry for the late reply to this series which I had not noticed earlier.
-My comment below applies for the whole series.
+Multiple users reported ([1], [2]) that after I've imported the series
+to OpenWrt they noticed that WAN connection on MT7621 boards using
+PHY-muxing to hook up either port 0 or port 4 to GMAC1 no longer works.
 
-While this is generally correct, you are mixing cosmetic with functional
-changes here.
+The link still seems to come up, but no data flows. I went ahead and
+confirmed the bug, then started bisecting the patches of this series,
+and ended up identifying this very patch being the culprit.
 
-Replacing
-reg = <31>;
-with
-reg = <0x1f>;
-is a purely cosmetic change (and it's up to maintainers taste to like
-one or the other notation more).
-
-On the other hand replacing
-switch@0 or switch@31
-with
-switch@1f
-is fixing a bug. Yet even that doesn't have any functional impact on the
-affected boards as there aren't any other DT nodes which would collide
-with that incorrect address, nor does the driver actually care about the
-node name (not before and not after your patch
-"net: dsa: mt7530-mdio: read PHY address of switch from device tree").
-Anyway, there *is* something wrong and everybody should agree it's a
-good thing to fix it.
-
-So imho you should start with a patch only replacing all instances of
-mt7530/mt7531 switch nodes named 'switch@0' or 'switch@31' with
-'switch@1f' as that's fixing an actual (minor) bug.
-
-The other thing, using hexadecimal notation for the 'reg' property is
-a mere matter of (statistically unusual) taste. I fully get the point
-that using hexdecimal for both, the address in the node name as well
-as the 'reg' property avoids the exact divergence of the two you are
-fixing now.
-
-Byt statistically unusual I mean:
-$ find -name \*.dts\* | while read line; do grep 'reg.*=.*<[0-9]*>' $line ; done | wc -l
-37284
-$ find -name \*.dts\* | while read line; do grep 'reg.*=.*<0x[0-9a-fA-F]*>' $line ; done | wc -l
-10339
-
-(I know the above regexp could be done more accurately, but it's good
-enough to demonstrate my point)
-
-So please make this four patches. Two fixing the wrong node names.
-And another two opening the (purely cosmetic) debate to use hexademical
-notation for the 'reg' property.
+I can't exclude that what ever the issue may be is caused by other
+downstream patches we have, but can confirm that removing this patch of
+your series [3] in OpenWrt fixes the issue. Please take a look and as
+the cover letter states you have tested this on some MT7621 board,
+please make sure traffic actually flows on the PHY-muxed port on that
+board after this patch is applied, and if not, please figure out why and
+repost a fixed version of this patch.
 
 
 Cheers
@@ -140,64 +112,113 @@ Cheers
 
 Daniel
 
+[1]: https://github.com/openwrt/openwrt/issues/15273
+[2]: https://github.com/openwrt/openwrt/issues/15279
+[3]: https://git.openwrt.org/?p=openwrt/openwrt.git;a=commit;h=a8dde7e5bd6d289db6485cf57d3512ea62eaa827
 
-
+> 
+> Instead of globally setting MT7530_P5_MAC_SEL, clear it, then set it only
+> on the appropriate case.
+> 
+> If PHY muxing is detected, clear MT7530_P5_DIS before calling
+> mt7530_setup_port5().
 > 
 > Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 > ---
->  arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts | 4 ++--
->  arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts             | 4 ++--
->  arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts             | 4 ++--
->  3 files changed, 6 insertions(+), 6 deletions(-)
+>  drivers/net/dsa/mt7530.c | 38 +++++++++++++++++++++++++++-----------
+>  1 file changed, 27 insertions(+), 11 deletions(-)
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
-> index e04b1c0c0ebb..2f92f8cfd8a3 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
-> @@ -200,9 +200,9 @@ mdio: mdio-bus {
->  };
+> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+> index 606516206fb9..83436723cb16 100644
+> --- a/drivers/net/dsa/mt7530.c
+> +++ b/drivers/net/dsa/mt7530.c
+> @@ -880,8 +880,7 @@ static void mt7530_setup_port5(struct dsa_switch *ds, phy_interface_t interface)
 >  
->  &mdio {
-> -	switch: switch@31 {
-> +	switch: switch@1f {
->  		compatible = "mediatek,mt7531";
-> -		reg = <31>;
-> +		reg = <0x1f>;
->  		interrupt-controller;
->  		#interrupt-cells = <1>;
->  		interrupts-extended = <&pio 66 IRQ_TYPE_LEVEL_HIGH>;
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
-> index 5d8e3d3f6c20..47f75ece1872 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
-> @@ -84,9 +84,9 @@ mdio: mdio-bus {
->  };
+>  	val = mt7530_read(priv, MT753X_MTRAP);
 >  
->  &mdio {
-> -	switch: switch@0 {
-> +	switch: switch@1f {
->  		compatible = "mediatek,mt7531";
-> -		reg = <31>;
-> +		reg = <0x1f>;
->  		reset-gpios = <&pio 5 0>;
->  	};
->  };
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts b/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
-> index 58f77d932429..5148a69f4729 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
-> @@ -61,9 +61,9 @@ mdio: mdio-bus {
->  		#address-cells = <1>;
->  		#size-cells = <0>;
+> -	val |= MT7530_CHG_TRAP | MT7530_P5_MAC_SEL | MT7530_P5_DIS;
+> -	val &= ~MT7530_P5_RGMII_MODE & ~MT7530_P5_PHY0_SEL;
+> +	val &= ~MT7530_P5_PHY0_SEL & ~MT7530_P5_MAC_SEL & ~MT7530_P5_RGMII_MODE;
 >  
-> -		switch@0 {
-> +		switch@1f {
->  			compatible = "mediatek,mt7531";
-> -			reg = <31>;
-> +			reg = <0x1f>;
->  			reset-gpios = <&pio 5 0>;
+>  	switch (priv->p5_mode) {
+>  	/* MUX_PHY_P0: P0 -> P5 -> SoC MAC */
+> @@ -891,15 +890,13 @@ static void mt7530_setup_port5(struct dsa_switch *ds, phy_interface_t interface)
 >  
->  			ports {
+>  	/* MUX_PHY_P4: P4 -> P5 -> SoC MAC */
+>  	case MUX_PHY_P4:
+> -		val &= ~MT7530_P5_MAC_SEL & ~MT7530_P5_DIS;
+> -
+>  		/* Setup the MAC by default for the cpu port */
+>  		mt7530_write(priv, MT753X_PMCR_P(5), 0x56300);
+>  		break;
+>  
+>  	/* GMAC5: P5 -> SoC MAC or external PHY */
+>  	default:
+> -		val &= ~MT7530_P5_DIS;
+> +		val |= MT7530_P5_MAC_SEL;
+>  		break;
+>  	}
+>  
+> @@ -1193,6 +1190,14 @@ mt7530_port_enable(struct dsa_switch *ds, int port,
+>  
+>  	mutex_unlock(&priv->reg_mutex);
+>  
+> +	if (priv->id != ID_MT7530 && priv->id != ID_MT7621)
+> +		return 0;
+> +
+> +	if (port == 5)
+> +		mt7530_clear(priv, MT753X_MTRAP, MT7530_P5_DIS);
+> +	else if (port == 6)
+> +		mt7530_clear(priv, MT753X_MTRAP, MT7530_P6_DIS);
+> +
+>  	return 0;
+>  }
+>  
+> @@ -1211,6 +1216,14 @@ mt7530_port_disable(struct dsa_switch *ds, int port)
+>  		   PCR_MATRIX_CLR);
+>  
+>  	mutex_unlock(&priv->reg_mutex);
+> +
+> +	if (priv->id != ID_MT7530 && priv->id != ID_MT7621)
+> +		return;
+> +
+> +	if (port == 5)
+> +		mt7530_set(priv, MT753X_MTRAP, MT7530_P5_DIS);
+> +	else if (port == 6)
+> +		mt7530_set(priv, MT753X_MTRAP, MT7530_P6_DIS);
+>  }
+>  
+>  static int
+> @@ -2401,11 +2414,11 @@ mt7530_setup(struct dsa_switch *ds)
+>  		mt7530_rmw(priv, MT7530_TRGMII_RD(i),
+>  			   RD_TAP_MASK, RD_TAP(16));
+>  
+> -	/* Enable port 6 */
+> -	val = mt7530_read(priv, MT753X_MTRAP);
+> -	val &= ~MT7530_P6_DIS & ~MT7530_PHY_INDIRECT_ACCESS;
+> -	val |= MT7530_CHG_TRAP;
+> -	mt7530_write(priv, MT753X_MTRAP, val);
+> +	/* Allow modifying the trap and directly access PHY registers via the
+> +	 * MDIO bus the switch is on.
+> +	 */
+> +	mt7530_rmw(priv, MT753X_MTRAP, MT7530_CHG_TRAP |
+> +		   MT7530_PHY_INDIRECT_ACCESS, MT7530_CHG_TRAP);
+>  
+>  	if ((val & MT7530_XTAL_MASK) == MT7530_XTAL_40MHZ)
+>  		mt7530_pll_setup(priv);
+> @@ -2488,8 +2501,11 @@ mt7530_setup(struct dsa_switch *ds)
+>  			break;
+>  		}
+>  
+> -		if (priv->p5_mode == MUX_PHY_P0 || priv->p5_mode == MUX_PHY_P4)
+> +		if (priv->p5_mode == MUX_PHY_P0 ||
+> +		    priv->p5_mode == MUX_PHY_P4) {
+> +			mt7530_clear(priv, MT753X_MTRAP, MT7530_P5_DIS);
+>  			mt7530_setup_port5(ds, interface);
+> +		}
+>  	}
+>  
+>  #ifdef CONFIG_GPIOLIB
 > 
 > -- 
 > 2.40.1
