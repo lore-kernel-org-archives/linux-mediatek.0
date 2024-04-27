@@ -4,65 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD637C4345F
-	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Apr 2024 02:24:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 497EDC4345F
+	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Apr 2024 05:22:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LR/N8sOjphbjY7ylgbYn/+iB6DYtb+qs9Q0b8OwvBnQ=; b=BnxHHLVaTddwNQ5CXE1GDCI9ML
-	RRwpm3bMlevYz7b5HuLA0ZGvJ+BTX97akPpQhCUwpn4wQOmjSIITBFSSdBUCb+8nk41mWChG3MgMc
-	cAvsqW90oSNdp38rcKTm8jYFuDXt98HDte2w3ES73PSRT+fkgxGM8j67EcF1hBQlgAO3xqlUOdq3s
-	MA/idKE9xLP5tCaDuMul5sDPSDVRDh9d9oVgjFoj1Ug/2HRNBq2rMBjGK9bwrrFdRuRHa9vs/7DvA
-	e/7nT4QcZdqT/9RHsgLVbnF/D5rUwwgNM0UFolMA3+28R8vex4CqqaRsFKzTBhtChe96f5T7KKeHg
-	XNnOQflQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=CELhWbt4NjsEULqlYxJQ70BLiveuDAWolKCman6uuzY=; b=kdpMJA0q4qhRAekH32u0PuvoMI
+	yGth3pZ6/eM46W551kwonPxlKpwPoMehZbmycPGQEruEIgzTcHg6QJjfjX/SA8P144sHQnVDKt+UK
+	XDyDqdZA4ZWDdPvcTCr9TA9x1vpOiGbFhDt6EHf6UsWp8z+xx7AkVvlOopK0xSyTDHNe4GRg4SCcy
+	oLs98mJJQoS+nLhvTqe+J2FrYXypdhwXmxrMxYbnBbioGOUz8ewTqyBKvfJ0bBZIjNJNVSQz1zboi
+	e0mwJCvycXosIpbNapDyPWfbd09VKC8YnAq/RpiPKmUFiVLiZ6oaObVrd+T8qvnIx1Iwa8TxxOIi3
+	iZmMOcpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s0Xk1-0000000EeQU-39MJ;
-	Sat, 27 Apr 2024 02:24:41 +0000
-Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
+	id 1s0aWR-0000000EsUb-1mwr;
+	Sat, 27 Apr 2024 05:22:51 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s0Xjy-0000000EePk-38Lf;
-	Sat, 27 Apr 2024 02:24:40 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.97.1)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1s0Xjl-000000006AF-2noj;
-	Sat, 27 Apr 2024 02:24:25 +0000
-Date: Sat, 27 Apr 2024 03:24:18 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: arinc.unal@arinc9.com
-Cc: DENG Qingfang <dqfext@gmail.com>, Sean Wang <sean.wang@mediatek.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Bartel Eerdekens <bartel.eerdekens@constell8.be>,
-	mithat.guner@xeront.com, erkin.bozoglu@xeront.com,
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next v2 07/15] net: dsa: mt7530: move MT753X_MTRAP
- operations for MT7530
-Message-ID: <Zixh0qsQat3ypqFp@makrotopia.org>
-References: <20240422-for-netnext-mt7530-improvements-4-v2-0-a75157ba76ad@arinc9.com>
- <20240422-for-netnext-mt7530-improvements-4-v2-7-a75157ba76ad@arinc9.com>
+	id 1s0aWO-0000000EsTm-1iLK;
+	Sat, 27 Apr 2024 05:22:49 +0000
+X-UUID: 2b4a3f46045611ef9a78ddf43a9225dc-20240426
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=CELhWbt4NjsEULqlYxJQ70BLiveuDAWolKCman6uuzY=;
+	b=UiFVYRYagVHuTOmD6RlSVzcFx3urS9xav9iSKgJdPn+RojZhO8NbSUMMtSlzoqYngr0XUjka864/kiJ0O7vRUwa1yXprqx0K5W9xHQaQplwQya0ln+sHLV4CH8zE0ECRusA2qMQy5BkcjDjBHfd2gfiPgU3PT0klpWK4DqsuQ+w=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.38,REQID:6a93307e-f406-41f8-93ef-aff2873b0f47,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:82c5f88,CLOUDID:1c6eac86-8d4f-477b-89d2-1e3bdbef96d1,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-UUID: 2b4a3f46045611ef9a78ddf43a9225dc-20240426
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
+	(envelope-from <zhi.mao@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 958926975; Fri, 26 Apr 2024 22:22:41 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Sat, 27 Apr 2024 13:22:37 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Sat, 27 Apr 2024 13:22:36 +0800
+From: Zhi Mao <zhi.mao@mediatek.com>
+To: <mchehab@kernel.org>, <robh+dt@kernel.org>,
+	<krzysztof.kozlowski+dt@linaro.org>, <sakari.ailus@linux.intel.com>
+CC: <laurent.pinchart@ideasonboard.com>, <shengnan.wang@mediatek.com>,
+	<yaya.chang@mediatek.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, <yunkec@chromium.org>,
+	<conor+dt@kernel.org>, <matthias.bgg@gmail.com>,
+	<angelogioacchino.delregno@collabora.com>, <jacopo.mondi@ideasonboard.com>,
+	<zhi.mao@mediatek.com>, <10572168@qq.com>, <hverkuil-cisco@xs4all.nl>,
+	<heiko@sntech.de>, <jernej.skrabec@gmail.com>, <macromorgan@hotmail.com>,
+	<linus.walleij@linaro.org>, <hdegoede@redhat.com>,
+	<tomi.valkeinen@ideasonboard.com>, <gerald.loacker@wolfvision.net>,
+	<andy.shevchenko@gmail.com>, <bingbu.cao@intel.com>,
+	<dan.scally@ideasonboard.com>, <linux-media@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+Subject: [PATCH v4 0/2] media: i2c: Add support for GC05A2 sensor
+Date: Sat, 27 Apr 2024 13:22:30 +0800
+Message-ID: <20240427052233.8915-1-zhi.mao@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20240422-for-netnext-mt7530-improvements-4-v2-7-a75157ba76ad@arinc9.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240426_192438_851283_6655B8E2 
-X-CRM114-Status: GOOD (  32.08  )
+X-CRM114-CacheID: sfid-20240426_222248_481750_A90A7191 
+X-CRM114-Status: GOOD (  10.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,151 +94,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Arınç,
+This series adds YAML DT binding and V4L2 sub-device driver for Galaxycore's
+GC05A2 5-megapixel 10-bit RAW CMOS 1/5" sensor, with an MIPI CSI-2 image data
+interface and the I2C control bus.
 
-On Mon, Apr 22, 2024 at 10:15:14AM +0300, Arınç ÜNAL via B4 Relay wrote:
-> From: Arınç ÜNAL <arinc.unal@arinc9.com>
-> 
-> On MT7530, the media-independent interfaces of port 5 and 6 are controlled
-> by the MT7530_P5_DIS and MT7530_P6_DIS bits of the hardware trap. Deal with
-> these bits only when the relevant port is being enabled or disabled. This
-> ensures that these ports will be disabled when they are not in use.
-> 
-> Do not set MT7530_CHG_TRAP on mt7530_setup_port5() as that's already being
-> done on mt7530_setup().
+The driver is implemented with V4L2 framework.
+ - Async registered as a V4L2 sub-device.
+ - As the first component of camera system including Seninf, ISP pipeline.
+ - A media entity that provides one source pad in common.
+ - Used in camera features on ChromeOS application.
 
-Multiple users reported ([1], [2]) that after I've imported the series
-to OpenWrt they noticed that WAN connection on MT7621 boards using
-PHY-muxing to hook up either port 0 or port 4 to GMAC1 no longer works.
+Also this driver supports following features:
+ - manual exposure and analog gain control support
+ - vertical blanking control support
+ - test pattern support
+ - media controller support
+ - runtime PM support
+ - support resolution: 2592x1944@30fps, 1280x720@60fps
 
-The link still seems to come up, but no data flows. I went ahead and
-confirmed the bug, then started bisecting the patches of this series,
-and ended up identifying this very patch being the culprit.
+Previous versions of this patch-set can be found here:
+v3:https://lore.kernel.org/linux-media/20240403033825.9072-1-zhi.mao@mediatek.com/
+v2:https://lore.kernel.org/linux-media/20240323014751.4989-1-zhi.mao@mediatek.com/
+v1:https://lore.kernel.org/linux-media/20240316025253.2300-1-zhi.mao@mediatek.com/
+v0:https://lore.kernel.org/linux-media/20240313054409.8073-1-zhi.mao@mediatek.com/
 
-I can't exclude that what ever the issue may be is caused by other
-downstream patches we have, but can confirm that removing this patch of
-your series [3] in OpenWrt fixes the issue. Please take a look and as
-the cover letter states you have tested this on some MT7621 board,
-please make sure traffic actually flows on the PHY-muxed port on that
-board after this patch is applied, and if not, please figure out why and
-repost a fixed version of this patch.
+This series is based on linux-next, tag: next-20240426
+Changes in v4:
+- gc05a2 sensor driver：
+-- remove pm_runtime_set_active() in function:probe(), as there is no sensor power on operation in probe process
+-- add comments for default case pattern index
+-- remove some obscure register comments
+-- use decimal unit for width register setting
+
+Thanks
+
+Zhi Mao (2):
+  media: dt-bindings: i2c: add GalaxyCore GC05A2 image sensor
+  media: i2c: Add GC05A2 image sensor driver
+
+ .../bindings/media/i2c/galaxycore,gc05a2.yaml |  112 ++
+ drivers/media/i2c/Kconfig                     |   10 +
+ drivers/media/i2c/Makefile                    |    1 +
+ drivers/media/i2c/gc05a2.c                    | 1361 +++++++++++++++++
+ 4 files changed, 1484 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/media/i2c/galaxycore,gc05a2.yaml
+ create mode 100644 drivers/media/i2c/gc05a2.c
+
+-- 
+2.25.1
 
 
-Cheers
 
-
-Daniel
-
-[1]: https://github.com/openwrt/openwrt/issues/15273
-[2]: https://github.com/openwrt/openwrt/issues/15279
-[3]: https://git.openwrt.org/?p=openwrt/openwrt.git;a=commit;h=a8dde7e5bd6d289db6485cf57d3512ea62eaa827
-
-> 
-> Instead of globally setting MT7530_P5_MAC_SEL, clear it, then set it only
-> on the appropriate case.
-> 
-> If PHY muxing is detected, clear MT7530_P5_DIS before calling
-> mt7530_setup_port5().
-> 
-> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-> ---
->  drivers/net/dsa/mt7530.c | 38 +++++++++++++++++++++++++++-----------
->  1 file changed, 27 insertions(+), 11 deletions(-)
-> 
-> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-> index 606516206fb9..83436723cb16 100644
-> --- a/drivers/net/dsa/mt7530.c
-> +++ b/drivers/net/dsa/mt7530.c
-> @@ -880,8 +880,7 @@ static void mt7530_setup_port5(struct dsa_switch *ds, phy_interface_t interface)
->  
->  	val = mt7530_read(priv, MT753X_MTRAP);
->  
-> -	val |= MT7530_CHG_TRAP | MT7530_P5_MAC_SEL | MT7530_P5_DIS;
-> -	val &= ~MT7530_P5_RGMII_MODE & ~MT7530_P5_PHY0_SEL;
-> +	val &= ~MT7530_P5_PHY0_SEL & ~MT7530_P5_MAC_SEL & ~MT7530_P5_RGMII_MODE;
->  
->  	switch (priv->p5_mode) {
->  	/* MUX_PHY_P0: P0 -> P5 -> SoC MAC */
-> @@ -891,15 +890,13 @@ static void mt7530_setup_port5(struct dsa_switch *ds, phy_interface_t interface)
->  
->  	/* MUX_PHY_P4: P4 -> P5 -> SoC MAC */
->  	case MUX_PHY_P4:
-> -		val &= ~MT7530_P5_MAC_SEL & ~MT7530_P5_DIS;
-> -
->  		/* Setup the MAC by default for the cpu port */
->  		mt7530_write(priv, MT753X_PMCR_P(5), 0x56300);
->  		break;
->  
->  	/* GMAC5: P5 -> SoC MAC or external PHY */
->  	default:
-> -		val &= ~MT7530_P5_DIS;
-> +		val |= MT7530_P5_MAC_SEL;
->  		break;
->  	}
->  
-> @@ -1193,6 +1190,14 @@ mt7530_port_enable(struct dsa_switch *ds, int port,
->  
->  	mutex_unlock(&priv->reg_mutex);
->  
-> +	if (priv->id != ID_MT7530 && priv->id != ID_MT7621)
-> +		return 0;
-> +
-> +	if (port == 5)
-> +		mt7530_clear(priv, MT753X_MTRAP, MT7530_P5_DIS);
-> +	else if (port == 6)
-> +		mt7530_clear(priv, MT753X_MTRAP, MT7530_P6_DIS);
-> +
->  	return 0;
->  }
->  
-> @@ -1211,6 +1216,14 @@ mt7530_port_disable(struct dsa_switch *ds, int port)
->  		   PCR_MATRIX_CLR);
->  
->  	mutex_unlock(&priv->reg_mutex);
-> +
-> +	if (priv->id != ID_MT7530 && priv->id != ID_MT7621)
-> +		return;
-> +
-> +	if (port == 5)
-> +		mt7530_set(priv, MT753X_MTRAP, MT7530_P5_DIS);
-> +	else if (port == 6)
-> +		mt7530_set(priv, MT753X_MTRAP, MT7530_P6_DIS);
->  }
->  
->  static int
-> @@ -2401,11 +2414,11 @@ mt7530_setup(struct dsa_switch *ds)
->  		mt7530_rmw(priv, MT7530_TRGMII_RD(i),
->  			   RD_TAP_MASK, RD_TAP(16));
->  
-> -	/* Enable port 6 */
-> -	val = mt7530_read(priv, MT753X_MTRAP);
-> -	val &= ~MT7530_P6_DIS & ~MT7530_PHY_INDIRECT_ACCESS;
-> -	val |= MT7530_CHG_TRAP;
-> -	mt7530_write(priv, MT753X_MTRAP, val);
-> +	/* Allow modifying the trap and directly access PHY registers via the
-> +	 * MDIO bus the switch is on.
-> +	 */
-> +	mt7530_rmw(priv, MT753X_MTRAP, MT7530_CHG_TRAP |
-> +		   MT7530_PHY_INDIRECT_ACCESS, MT7530_CHG_TRAP);
->  
->  	if ((val & MT7530_XTAL_MASK) == MT7530_XTAL_40MHZ)
->  		mt7530_pll_setup(priv);
-> @@ -2488,8 +2501,11 @@ mt7530_setup(struct dsa_switch *ds)
->  			break;
->  		}
->  
-> -		if (priv->p5_mode == MUX_PHY_P0 || priv->p5_mode == MUX_PHY_P4)
-> +		if (priv->p5_mode == MUX_PHY_P0 ||
-> +		    priv->p5_mode == MUX_PHY_P4) {
-> +			mt7530_clear(priv, MT753X_MTRAP, MT7530_P5_DIS);
->  			mt7530_setup_port5(ds, interface);
-> +		}
->  	}
->  
->  #ifdef CONFIG_GPIOLIB
-> 
-> -- 
-> 2.40.1
-> 
-> 
 
