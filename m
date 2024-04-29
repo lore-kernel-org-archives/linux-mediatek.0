@@ -4,53 +4,120 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14342C4345F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Apr 2024 00:28:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3AC7C4345F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Apr 2024 05:59:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=87TPzps5EimM9I/+VsZAI+agu3632dB0wlr0sCIZKgE=; b=KRQ/nTDqIIBr5MDrDGSKLEaGhJ
-	DBt7ct5faCLXzempz/5OfGP3bQbqQvbzlz0bjtpp46OeYo0afbsECOyJOs6VZBmUpbpvThH5Faz/t
-	a2a0t4T7EtXt29QRQbLxsxJt333tLRGV+ahjmMXntoKEIXrLLk8Q/pU2yu1+m0nPEUj48/LGZFXWe
-	MOlqrrEnE0KxN3mQytgLmiDAnvUI0mM7SVM3TDugIWNaVwCiztDrngpupcJqmpb79Yy1IKxoYr/HA
-	Ybcey7hF9HNvnv0Q0x7bj/vDZcmdJm13Y4qQp9RF6AJaZ78uzm9v+XSgU+zZoO/olsxwF7VpJ9Ndh
-	SNmgdVbw==;
+	bh=BxI9UQCnvOFzqeTy5wisdqbesQmAOGrlwZYPwN1GuOU=; b=gfj3PyNTImLxMXgGSUu6WkIajL
+	gzYNtQ2WlUeKU4f04lrtBZK+5XWaZhljaOxP9YS+HOFRFX59/Ka5JpYnIEDdqaiT+SRmAzbm1f2E6
+	diLjXD9lotRoOJ4Si/zpMUZCd72ITkg3T1/c8yLaHMtfEPm2y6aU+HfRYhTsdEVZxca7R9VR7h3LE
+	5HtBxVJEhQKlW2M9fZE5mbnhh+Zlh/NgUkjyDojeX/7rR4yQmJYP1a8Pyac8O21uFyVW7OJJ1KXL6
+	pCJJkbJJ8lU1hrx01oongL7mifZSpVCn4TSt+7A+UnvOcyfGSlNjAkgma3Qf4myqKFCjW0FBTVq4V
+	e0oZ+Ymw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1Esw-000000013mz-1qfQ;
-	Mon, 29 Apr 2024 00:28:46 +0000
+	id 1s1K2W-00000001ZXj-3Gje;
+	Mon, 29 Apr 2024 05:59:00 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1Esr-000000013kE-3hTn;
-	Mon, 29 Apr 2024 00:28:43 +0000
+	id 1s1K2T-00000001ZVh-0z6i;
+	Mon, 29 Apr 2024 05:58:58 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id A67CE60915;
-	Mon, 29 Apr 2024 00:28:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 75705C113CC;
-	Mon, 29 Apr 2024 00:28:39 +0000 (UTC)
-Date: Sun, 28 Apr 2024 20:28:37 -0400
-From: Steven Rostedt <rostedt@goodmis.org>
-To: Tze-nan wu <Tze-nan.Wu@mediatek.com>
-Cc: <mhiramat@kernel.org>, <bobule.chang@mediatek.com>,
- <wsd_upstream@mediatek.com>, Cheng-Jui Wang <cheng-jui.wang@mediatek.com>,
- Mathieu Desnoyers <mathieu.desnoyers@efficios.com>,
- <linux-kernel@vger.kernel.org>, <linux-trace-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH] tracing: Fix uaf issue in tracing_open_file_tr
-Message-ID: <20240428202837.0cabca17@rorschach.local.home>
-In-Reply-To: <20240426073410.17154-1-Tze-nan.Wu@mediatek.com>
-References: <20240426073410.17154-1-Tze-nan.Wu@mediatek.com>
-X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 935DF60C00;
+	Mon, 29 Apr 2024 05:58:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5238AC113CD;
+	Mon, 29 Apr 2024 05:58:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1714370334;
+	bh=VqF+KZoGkXM7Zgfjh924AdCno4ywq0HAuQkwF009/5I=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=bz0QCIQew8CRF9V7mEsqp73oZZMwzUIExEspSmR3xUrKcEZ8jfbJGhIpLN1/Ha0go
+	 +UpQ7O1gwHzgjP6j8nSLYhzyOeTI4INjGcpwghqiiiEc7iAQ6yEolpa2QuuunQiXt8
+	 JPG3crg6OkU5d4nYMKh3qJP8Dd7rOclmH0ACe0nuvcoqpZ3VQJC65iWdQOY5C0S0tX
+	 v6yZRBP65zIuja445dktZE34z53WMnhPyf5BeS2ARHUleUX1lNE3Ggpvmuboso72j1
+	 TX5mphkIgzcU17vz+HrshdJxgENrL8kxHuCOHyDSmwOaU5na9uXj65VvHzd3jXfuqE
+	 HHn271sTUwsYA==
+Message-ID: <98e32bf9-dae1-4f75-b4dd-066756515cb3@kernel.org>
+Date: Mon, 29 Apr 2024 07:58:44 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 01/16] ASoC: dt-bindings: mediatek,mt8365-afe: Add
+ audio afe document
+To: Alexandre Mergnat <amergnat@baylibre.com>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Lee Jones <lee@kernel.org>, Flora Fu <flora.fu@mediatek.com>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+ Sumit Semwal <sumit.semwal@linaro.org>,
+ =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>,
+ Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>
+Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org
+References: <20240226-audio-i350-v4-0-082b22186d4c@baylibre.com>
+ <20240226-audio-i350-v4-1-082b22186d4c@baylibre.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <20240226-audio-i350-v4-1-082b22186d4c@baylibre.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240428_172842_111539_479B3441 
-X-CRM114-Status: GOOD (  26.03  )
+X-CRM114-CacheID: sfid-20240428_225857_394268_ACE9E838 
+X-CRM114-Status: UNSURE (   6.19  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,114 +132,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 26 Apr 2024 15:34:08 +0800
-Tze-nan wu <Tze-nan.Wu@mediatek.com> wrote:
-
-> "tracing_event_file" is at the risk of use-after-free due to the race of
-> two functions "tracing_open_file_tr" and "synth_event_release".
-> Specifically, it could be freed by synth_event_release before
-> tracing_open_file_tr has the opportunity to access its members.
+On 26/04/2024 19:22, Alexandre Mergnat wrote:
+> Add MT8365 audio front-end bindings
 > 
-> It's easy to reproduced by first executing script 'A' and then script 'B'
-> in my environment.
-> 
->   Script 'A':
->     echo "hello int aaa" > /sys/kernel/tracing/synthetic_events
->     while :
->     do
->       echo 0 > /sys/kernel/tracing/events/synthetic/hello/enable
->     done
-> 
->   Script 'B':
->     echo > /sys/kernel/tracing/synthetic/events
-
-I think you meant:
-
-      echo > /sys/kernel/tracing/synthetic_events
-
-> 
->   My environment:
->     arm64 + generic and swtag based KASAN both enabled + kernel-6.6.18
-> 
-> KASAN report
-> ==================================================================
-> BUG: KASAN: slab-use-after-free in tracing_open_file_tr
-> Read of size 8 at addr 9*ffff********** by task sh/3485
-> Pointer tag: [9*], memory tag: [fe]
-> 
-> CPU: * PID: 3485 Comm: sh Tainted: ****************
-> Call trace:
->  __hwasan_tag_mismatch
->  tracing_open_file_tr
->  do_dentry_open
->  vfs_open
->  path_openat
-> 
-> Freed by task 3490:
->  slab_free_freelist_hook
->  kmem_cache_free
->  event_file_put
->  remove_event_file_dir
->  __trace_remove_event_call
->  trace_remove_event_call
->  synth_event_release
->  dyn_events_release_all
->  synth_events_open
-> 
-> page last allocated via order 0, migratetype Unmovable:
->  __slab_alloc
->  kmem_cache_alloc
->  trace_create_new_event
->  trace_add_event_call
->  register_synth_event
->  __create_synth_event
->  create_or_delete_synth_event
->  trace_parse_run_command
->  synth_events_write
->  vfs_write
-
-Thanks for reporting this.
-
-> 
-> Based on the assumption that eventfs_inode will persist throughout the
-> execution of the tracing_open_file_tr function,
-> we can fix this issue by incrementing the reference count of
-> trace_event_file once it is assigned to eventfs_inode->data.
-> The reference count will then be decremented during the release phase of
-> eventfs_inode.
-> 
-> This ensures that trace_event_file is not prematurely freed while the
-> tracing_open_file_tr function is being called.
-> 
-> Fixes: bb32500fb9b7 ("tracing: Have trace_event_file have ref counters")
-> Co-developed-by: Cheng-Jui Wang <cheng-jui.wang@mediatek.com>
-> Signed-off-by: Cheng-Jui Wang <cheng-jui.wang@mediatek.com>
-> Signed-off-by: Tze-nan wu <Tze-nan.Wu@mediatek.com>
+> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 > ---
-> BTW, I've also attempted to reproduce the same issue in another
-> environment (described below).
-> It's also reproducible but in a lower rate.
-> 
-> another environment:
->   x86 + ubuntu + generic kasan enabled + kernel-6.9-rc4
-> 
-> After applying the patch, KASAN no longer reports any issues when
-> following the same reproduction steps in my arm64 environment. 
-> However, I am concerned about potential side effects that the patch might introduce.
-> Additionally, the newly added function "is_entry_event_callback" may not
-> be reliable in my opinion,
-> as the callback function used in the comparison could change in future. 
-> Nonetheless, this is the best solution I can come up with now.
-> 
-> Looking for any suggestion or solution, appreciate.
 
-Yeah, I do not think eventfs should be involved in this. It needs to be
-protected at a higher level (in the synthetic/dynamic event code).
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-I'm just coming back from Japan, and I'll need to take a deeper look at
-this after I recover from my jetlag.
+Best regards,
+Krzysztof
 
-Thanks,
-
--- Steve
 
