@@ -4,66 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F4B9C19F4F
-	for <linux-mediatek@archiver.kernel.org>; Sun, 28 Apr 2024 18:27:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14342C4345F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Apr 2024 00:28:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=HfgwZeVvsF2i06wNeH1wK9xQEXXX0R93e8MR9OP26AA=; b=VQ1sJVMbCOo5cWRfaQAYw8zDP2
-	gSzzrGHVMoZZG4T/fOuVj/W3GrA0ixxR7kHfGem/B3ezaS/dCWbiJdb4iBVOPqmzX6xU1iGfO3YLb
-	mlCEvV8ETnACuCihnz56ac+sujQAJjW09YO0CN2gByWI6C3QgFZUtlRBFRl/sO98EeI4tdmJtrfkP
-	ZQrgCBg8MB7uYrAj9FUx8ul8hXxaXouIylEvaE+XsUJ3qj4O0NnAJlk4ELHjNbIOmdCE/ogy1Be3d
-	LYkC2jXv+ZlxmOEqGUs8eze8MqeRIlxib0PijVxHFINNgeKAf+GvdJxnDWfGdYVjRsMJ4VZFn8Lv9
-	dAVC7XYQ==;
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=87TPzps5EimM9I/+VsZAI+agu3632dB0wlr0sCIZKgE=; b=KRQ/nTDqIIBr5MDrDGSKLEaGhJ
+	DBt7ct5faCLXzempz/5OfGP3bQbqQvbzlz0bjtpp46OeYo0afbsECOyJOs6VZBmUpbpvThH5Faz/t
+	a2a0t4T7EtXt29QRQbLxsxJt333tLRGV+ahjmMXntoKEIXrLLk8Q/pU2yu1+m0nPEUj48/LGZFXWe
+	MOlqrrEnE0KxN3mQytgLmiDAnvUI0mM7SVM3TDugIWNaVwCiztDrngpupcJqmpb79Yy1IKxoYr/HA
+	Ybcey7hF9HNvnv0Q0x7bj/vDZcmdJm13Y4qQp9RF6AJaZ78uzm9v+XSgU+zZoO/olsxwF7VpJ9Ndh
+	SNmgdVbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s19Fk-00000000U9t-0Q3h;
-	Sun, 28 Apr 2024 18:27:56 +0000
-Received: from smtp-76.smtpout.orange.fr ([80.12.242.76] helo=msa.smtpout.orange.fr)
+	id 1s1Esw-000000013mz-1qfQ;
+	Mon, 29 Apr 2024 00:28:46 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s19Fg-00000000U5M-1RRQ;
-	Sun, 28 Apr 2024 18:27:54 +0000
-Received: from localhost.localdomain ([86.243.17.157])
-	by smtp.orange.fr with ESMTPA
-	id 19FXsdAPqjQGD19FXsx1n6; Sun, 28 Apr 2024 20:27:44 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wanadoo.fr;
-	s=t20230301; t=1714328864;
-	bh=HfgwZeVvsF2i06wNeH1wK9xQEXXX0R93e8MR9OP26AA=;
-	h=From:To:Subject:Date:Message-ID:MIME-Version;
-	b=ts6pYZW6eyTY9+PYyPZtO8/V1mVA5dSfT5RaTPQassuvTFAbgixwqR64lA8/9C+gW
-	 mPqbE/pMf3nkUBkQCedwHTTUhG1BRKvOsxxcOPl1Z5FR9UrxaPKigF9UQj+brNaTt0
-	 +htzQy8HiFLkGgm93WfMJsRiSQn9v2AjwiPAkbn2wv+7APMff584QDFmxloNUeu3fH
-	 Ppb+3OD4uMK3X5xk8LMFu3X6JOxsgE2jbqypbJK4jgiOaIs5MJePNP+WdB86xMx7Nf
-	 5+1WUXDfc6bZ38gk9zna2+5jPkPSISpIyM2hCuVA9PYsMUsoW3MzUZ7ipMQObdmUxd
-	 Gi9L8nXV+m1ag==
-X-ME-Helo: localhost.localdomain
-X-ME-Auth: Y2hyaXN0b3BoZS5qYWlsbGV0QHdhbmFkb28uZnI=
-X-ME-Date: Sun, 28 Apr 2024 20:27:44 +0200
-X-ME-IP: 86.243.17.157
-From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-To: Pavel Machek <pavel@ucw.cz>,
-	Lee Jones <lee@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-kernel@vger.kernel.org,
-	kernel-janitors@vger.kernel.org,
-	Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
-	linux-leds@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH] leds: mt6370: Remove an unused field in struct mt6370_priv
-Date: Sun, 28 Apr 2024 20:27:31 +0200
-Message-ID: <e389be5e1012dc05fc2641123883ca3b0747525a.1714328839.git.christophe.jaillet@wanadoo.fr>
-X-Mailer: git-send-email 2.44.0
+	id 1s1Esr-000000013kE-3hTn;
+	Mon, 29 Apr 2024 00:28:43 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id A67CE60915;
+	Mon, 29 Apr 2024 00:28:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 75705C113CC;
+	Mon, 29 Apr 2024 00:28:39 +0000 (UTC)
+Date: Sun, 28 Apr 2024 20:28:37 -0400
+From: Steven Rostedt <rostedt@goodmis.org>
+To: Tze-nan wu <Tze-nan.Wu@mediatek.com>
+Cc: <mhiramat@kernel.org>, <bobule.chang@mediatek.com>,
+ <wsd_upstream@mediatek.com>, Cheng-Jui Wang <cheng-jui.wang@mediatek.com>,
+ Mathieu Desnoyers <mathieu.desnoyers@efficios.com>,
+ <linux-kernel@vger.kernel.org>, <linux-trace-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH] tracing: Fix uaf issue in tracing_open_file_tr
+Message-ID: <20240428202837.0cabca17@rorschach.local.home>
+In-Reply-To: <20240426073410.17154-1-Tze-nan.Wu@mediatek.com>
+References: <20240426073410.17154-1-Tze-nan.Wu@mediatek.com>
+X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240428_112752_888165_CB1D787C 
-X-CRM114-Status: UNSURE (   8.85  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240428_172842_111539_479B3441 
+X-CRM114-Status: GOOD (  26.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,37 +65,114 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In "struct mt6370_priv", the 'reg_cfgs' field is unused.
+On Fri, 26 Apr 2024 15:34:08 +0800
+Tze-nan wu <Tze-nan.Wu@mediatek.com> wrote:
 
-Moreover the "struct reg_cfg" is defined nowhere. Neither in this file, nor
-in a global .h file, so it is completely pointless.
+> "tracing_event_file" is at the risk of use-after-free due to the race of
+> two functions "tracing_open_file_tr" and "synth_event_release".
+> Specifically, it could be freed by synth_event_release before
+> tracing_open_file_tr has the opportunity to access its members.
+> 
+> It's easy to reproduced by first executing script 'A' and then script 'B'
+> in my environment.
+> 
+>   Script 'A':
+>     echo "hello int aaa" > /sys/kernel/tracing/synthetic_events
+>     while :
+>     do
+>       echo 0 > /sys/kernel/tracing/events/synthetic/hello/enable
+>     done
+> 
+>   Script 'B':
+>     echo > /sys/kernel/tracing/synthetic/events
 
-Remove it.
+I think you meant:
 
-Found with cppcheck, unusedStructMember.
+      echo > /sys/kernel/tracing/synthetic_events
 
-So, remove it.
+> 
+>   My environment:
+>     arm64 + generic and swtag based KASAN both enabled + kernel-6.6.18
+> 
+> KASAN report
+> ==================================================================
+> BUG: KASAN: slab-use-after-free in tracing_open_file_tr
+> Read of size 8 at addr 9*ffff********** by task sh/3485
+> Pointer tag: [9*], memory tag: [fe]
+> 
+> CPU: * PID: 3485 Comm: sh Tainted: ****************
+> Call trace:
+>  __hwasan_tag_mismatch
+>  tracing_open_file_tr
+>  do_dentry_open
+>  vfs_open
+>  path_openat
+> 
+> Freed by task 3490:
+>  slab_free_freelist_hook
+>  kmem_cache_free
+>  event_file_put
+>  remove_event_file_dir
+>  __trace_remove_event_call
+>  trace_remove_event_call
+>  synth_event_release
+>  dyn_events_release_all
+>  synth_events_open
+> 
+> page last allocated via order 0, migratetype Unmovable:
+>  __slab_alloc
+>  kmem_cache_alloc
+>  trace_create_new_event
+>  trace_add_event_call
+>  register_synth_event
+>  __create_synth_event
+>  create_or_delete_synth_event
+>  trace_parse_run_command
+>  synth_events_write
+>  vfs_write
 
-Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
----
-Compile tested only.
----
- drivers/leds/rgb/leds-mt6370-rgb.c | 1 -
- 1 file changed, 1 deletion(-)
+Thanks for reporting this.
 
-diff --git a/drivers/leds/rgb/leds-mt6370-rgb.c b/drivers/leds/rgb/leds-mt6370-rgb.c
-index 448d0da11848..359ef00498b4 100644
---- a/drivers/leds/rgb/leds-mt6370-rgb.c
-+++ b/drivers/leds/rgb/leds-mt6370-rgb.c
-@@ -149,7 +149,6 @@ struct mt6370_priv {
- 	struct regmap_field *fields[F_MAX_FIELDS];
- 	const struct reg_field *reg_fields;
- 	const struct linear_range *ranges;
--	struct reg_cfg *reg_cfgs;
- 	const struct mt6370_pdata *pdata;
- 	unsigned int leds_count;
- 	unsigned int leds_active;
--- 
-2.44.0
+> 
+> Based on the assumption that eventfs_inode will persist throughout the
+> execution of the tracing_open_file_tr function,
+> we can fix this issue by incrementing the reference count of
+> trace_event_file once it is assigned to eventfs_inode->data.
+> The reference count will then be decremented during the release phase of
+> eventfs_inode.
+> 
+> This ensures that trace_event_file is not prematurely freed while the
+> tracing_open_file_tr function is being called.
+> 
+> Fixes: bb32500fb9b7 ("tracing: Have trace_event_file have ref counters")
+> Co-developed-by: Cheng-Jui Wang <cheng-jui.wang@mediatek.com>
+> Signed-off-by: Cheng-Jui Wang <cheng-jui.wang@mediatek.com>
+> Signed-off-by: Tze-nan wu <Tze-nan.Wu@mediatek.com>
+> ---
+> BTW, I've also attempted to reproduce the same issue in another
+> environment (described below).
+> It's also reproducible but in a lower rate.
+> 
+> another environment:
+>   x86 + ubuntu + generic kasan enabled + kernel-6.9-rc4
+> 
+> After applying the patch, KASAN no longer reports any issues when
+> following the same reproduction steps in my arm64 environment. 
+> However, I am concerned about potential side effects that the patch might introduce.
+> Additionally, the newly added function "is_entry_event_callback" may not
+> be reliable in my opinion,
+> as the callback function used in the comparison could change in future. 
+> Nonetheless, this is the best solution I can come up with now.
+> 
+> Looking for any suggestion or solution, appreciate.
 
+Yeah, I do not think eventfs should be involved in this. It needs to be
+protected at a higher level (in the synthetic/dynamic event code).
+
+I'm just coming back from Japan, and I'll need to take a deeper look at
+this after I recover from my jetlag.
+
+Thanks,
+
+-- Steve
 
