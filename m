@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EEFDC04FFE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Apr 2024 15:07:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79DBBC19F53
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Apr 2024 15:07:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=M868xcge+vjTb4vcqz3d1wlm8C5wkLs//kWdILTOdIY=; b=Ifr2+2DrkNsgXC1E+R9Kv7tK8N
-	/9P/M+nqDQ0XY2LcVm6wqrWPMfkxO3YvpPwxBGGvermSYnJTSro7RjWAWIyPfLP1WYMjgEpXc0T+/
-	YRlnYLLYq4hp7W6NEqB5l0rXERvCMOYzmzLbCy0T/ktSEBwXeySyOvaTdnMo+gJpaZSz5pBeoxZNg
-	GLRxr/oEiDVrAagq0ALjD91GcK8sQAIjeAyoiKP9jkEI5GL/n7LAV4x8o7NmiEetm9BwxZVR6Azcb
-	a1dg6xL8KOE/aQMBX6VF53ea5mcWEY64M4GHAtTIzW0J2K1jZbbsx/UDLchzn2j2P3aGgGy3BdJOe
-	sgHNa9UQ==;
+	bh=oXXgUMwvGuh/bAZ05Vu9f2lIZUwmSZiJ1Ue2E9QmyGE=; b=LkemA5O+wRUYhe6ilM4mHXFiV1
+	wAzWD+fsNYzaXc0dTTp8kuCBEt2O52BXfzyz4ndHTB2kt05Nza3qF6NIp8Zq9kjIIk1aliJlNQs23
+	lmgokGo7ko+zx5aDtKBAJkLm9XIYKZr+u1zUJbQ9bdt/LCDzkiAAj2UN+8JzhVzZN1P84+qbq7/EN
+	CHWudW+E6qe9/WLdTNJpESENR8UFZjIFozOONSKVmz0liaTfRGyVxDpQCvxkhx++/SMvKH8CdDrza
+	blfOaVWrNte8CGEvf7aN+LBDUbhpcNUw8+l0+ueQos7+40ZC60yb4uglk+fGJx44vwVfZvsJHoH8b
+	Yzft4umA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1SbN-00000003H72-3Ig5;
-	Mon, 29 Apr 2024 15:07:33 +0000
-Received: from mail-qk1-x734.google.com ([2607:f8b0:4864:20::734])
+	id 1s1SbO-00000003H7p-2jQu;
+	Mon, 29 Apr 2024 15:07:34 +0000
+Received: from mail-qk1-x732.google.com ([2607:f8b0:4864:20::732])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1SYu-00000003FTX-1jKo
+	id 1s1SYu-00000003FTF-2dCW
 	for linux-mediatek@lists.infradead.org;
-	Mon, 29 Apr 2024 15:05:03 +0000
-Received: by mail-qk1-x734.google.com with SMTP id af79cd13be357-78f02298dc6so392259485a.1
+	Mon, 29 Apr 2024 15:05:04 +0000
+Received: by mail-qk1-x732.google.com with SMTP id af79cd13be357-78f04924a96so385483485a.0
         for <linux-mediatek@lists.infradead.org>; Mon, 29 Apr 2024 08:05:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=chromium.org; s=google; t=1714403099; x=1715007899; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=M868xcge+vjTb4vcqz3d1wlm8C5wkLs//kWdILTOdIY=;
-        b=IJsiq6J1roo2XxqMgRN1AY8GZeUz2soaWXI43NNX95g4CUp+QOtsOtUQwPRA3hNSPm
-         Md+cXUABorq1V/VtPgYbf+RUBRp4fqtDViIR1KDesqSjRA4jisUcx6aYNONkuOIogXtC
-         H9TEBjHbkaYwb5ZMoTBmVgSyn8Ul6VWzQXEmI=
+        bh=oXXgUMwvGuh/bAZ05Vu9f2lIZUwmSZiJ1Ue2E9QmyGE=;
+        b=k9LwUVj6prOT49RldE2hVcm5Y4X9EQ1ZxywGcdaTvM684fWyTFFZpLpxrAruuqBRFW
+         F6OKMILCFjYv8dmiD5NNMmuFKHkPTAj1QLXI3hXDWJgeQtuYaTuWb47HjPBOa9ONty88
+         EOLmDHtnnCoFj5oQyMKlq8s95yDtxFob23Ivg=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20230601; t=1714403099; x=1715007899;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=M868xcge+vjTb4vcqz3d1wlm8C5wkLs//kWdILTOdIY=;
-        b=t/gsydOUWahZdXAz8UJGaN22BnuqaMIzoeS/s2pf/mcGCNdlCZ4nTqXGgfg6KvaUCJ
-         ziCmWqVmAGx+zctO0hDrivT+XPnfuv4dRjpBJjQv+Lp8hbB5Gs+dpDOmOL8D/+Nfm7s2
-         TrtDyCjTt3gLt686lJo3K4cgZv5lY1Yx0tPPzizzA8JOawaTChitQRy2yondkuWXa2or
-         4K7Simo++MJMKzah9RwxRolnbxNRc1rzMbWFypEpKwGi+ClumrJpdQSTtxMDOtdW5J+D
-         8FKgBl9lgmpWcfYmByZh2OMwF4xyQRU6xoc1vL9GbVQXka51+O83DJEjcKrli598yyiq
-         004w==
-X-Forwarded-Encrypted: i=1; AJvYcCUGh7G2jgcEf8cychJJKHFOItZ+UxPsbGdGN5/WcmrMRuoBH+u56BJULaEEunJhwL5n7Mu4RjK+5tJsfC9cnATnD9mMhgXf1noQ0YQeR5lN/R08
-X-Gm-Message-State: AOJu0YxjQl4jtCY/Jw0G3nbUC7JWWYk0X/cihiipXoJfFwMJhkEMep9l
-	oH7kb2dmrXx72gBGiMrnROJXad3kAJOWakciR0qay45pgP6U4hwosRwhHw7ISg==
-X-Google-Smtp-Source: AGHT+IFpnQ4ab2gf5wQortCnYRGRkza79tueM0GmMJw+OfK9t9OORYfudlojtT2eZzgU8317EfmzQw==
-X-Received: by 2002:a05:620a:2005:b0:790:a961:373a with SMTP id c5-20020a05620a200500b00790a961373amr16658835qka.31.1714403099487;
-        Mon, 29 Apr 2024 08:04:59 -0700 (PDT)
+        bh=oXXgUMwvGuh/bAZ05Vu9f2lIZUwmSZiJ1Ue2E9QmyGE=;
+        b=r1CQr+Y3eb79e+FfAlVL2f6lzQss9Cok3axt4h7YjjY9HhuF3YortODTwXTrkdnugO
+         GSj5s7KRJYsO047VQZ+op4FlOKqp5KbkkVbb3G33KooT6I/9Q30rVMvpCjzwt1l8YrhI
+         5ZPhzaTDGO3VVdM8bFF1F4LaxN3MjZCOMeIEvqgKL6GI5Wxwsb6ryc96QG2TWaylK4oF
+         EhRj3hYNTmCYFeIG7/izenl2w+2Gox7d2uDJtfRGMQkeAJxWeYcm4td4DiUN/EIVuv0m
+         MSdqzuRHO2NZi61YDXQDeZf9onsviA0wRJ7kNsMZS9ejYzVZfev/rNlUgq4f/VtFnvHR
+         Z2cA==
+X-Forwarded-Encrypted: i=1; AJvYcCWhRuM3NjhpHs8kWYMuzIxctmtW51S3eOzEbMPLN2z/NTzhxjvIOFaQAedTXZkf5BOGOvaX4cKUZvMED7QqcDbLhd0EoF7M/2urUDnnDrwDABaa
+X-Gm-Message-State: AOJu0YzRfodIKs/Dm2EjXaWAGXxXWJ5poDyNtN4Q+YvYdU/nm6MmeRoe
+	m0Do9IORVDyATrMWE0PgyLT0cfTFQhi+H1mma6BaQn1T1E0n9uXL8ah6f7jG+g==
+X-Google-Smtp-Source: AGHT+IFJT4Q2Syc1PBrJKVClvA35sFEGet4fgiHKy6TprlGgcTs6U4UnMxlpWR+ax38rGRoBMytLog==
+X-Received: by 2002:a05:620a:410c:b0:790:ef3e:24fc with SMTP id j12-20020a05620a410c00b00790ef3e24fcmr5535437qko.16.1714403098672;
+        Mon, 29 Apr 2024 08:04:58 -0700 (PDT)
 Received: from denia.c.googlers.com (114.152.245.35.bc.googleusercontent.com. [35.245.152.114])
-        by smtp.gmail.com with ESMTPSA id p7-20020a05620a056700b0078d3b9139edsm10568591qkp.97.2024.04.29.08.04.58
+        by smtp.gmail.com with ESMTPSA id p7-20020a05620a056700b0078d3b9139edsm10568591qkp.97.2024.04.29.08.04.57
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 29 Apr 2024 08:04:59 -0700 (PDT)
+        Mon, 29 Apr 2024 08:04:58 -0700 (PDT)
 From: Ricardo Ribalda <ribalda@chromium.org>
-Date: Mon, 29 Apr 2024 15:04:55 +0000
-Subject: [PATCH v3 16/26] media: au0828: Use umin macro
+Date: Mon, 29 Apr 2024 15:04:54 +0000
+Subject: [PATCH v3 15/26] media: netup_unidvb: Use min macro
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240429-fix-cocci-v3-16-3c4865f5a4b0@chromium.org>
+Message-Id: <20240429-fix-cocci-v3-15-3c4865f5a4b0@chromium.org>
 References: <20240429-fix-cocci-v3-0-3c4865f5a4b0@chromium.org>
 In-Reply-To: <20240429-fix-cocci-v3-0-3c4865f5a4b0@chromium.org>
 To: Martin Tuma <martin.tuma@digiteqautomotive.com>, 
@@ -106,8 +106,8 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  Ricardo Ribalda <ribalda@chromium.org>
 X-Mailer: b4 0.12.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240429_080500_679923_AD0ED265 
-X-CRM114-Status: GOOD (  10.64  )
+X-CRM114-CacheID: sfid-20240429_080500_786595_8CE7AF3C 
+X-CRM114-Status: GOOD (  11.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,32 +122,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Simplifies the code.
+Simplify the code.
 
 Found by cocci:
-drivers/media/usb/au0828/au0828-video.c:605:11-12: WARNING opportunity for min()
+drivers/media/pci/netup_unidvb/netup_unidvb_i2c.c:138:26-27: WARNING opportunity for min()
 
 Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 ---
- drivers/media/usb/au0828/au0828-video.c | 5 +----
- 1 file changed, 1 insertion(+), 4 deletions(-)
+ drivers/media/pci/netup_unidvb/netup_unidvb_i2c.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/media/usb/au0828/au0828-video.c b/drivers/media/usb/au0828/au0828-video.c
-index fd9fc43d47e0..2ec49ea479d5 100644
---- a/drivers/media/usb/au0828/au0828-video.c
-+++ b/drivers/media/usb/au0828/au0828-video.c
-@@ -602,10 +602,7 @@ static inline int au0828_isoc_copy(struct au0828_dev *dev, struct urb *urb)
- 		vbi_field_size = dev->vbi_width * dev->vbi_height * 2;
- 		if (dev->vbi_read < vbi_field_size) {
- 			remain  = vbi_field_size - dev->vbi_read;
--			if (len < remain)
--				lencopy = len;
--			else
--				lencopy = remain;
-+			lencopy = umin(len, remain);
+diff --git a/drivers/media/pci/netup_unidvb/netup_unidvb_i2c.c b/drivers/media/pci/netup_unidvb/netup_unidvb_i2c.c
+index 46676f2c89c7..1c885d620b75 100644
+--- a/drivers/media/pci/netup_unidvb/netup_unidvb_i2c.c
++++ b/drivers/media/pci/netup_unidvb/netup_unidvb_i2c.c
+@@ -135,7 +135,7 @@ static void netup_i2c_fifo_tx(struct netup_i2c *i2c)
+ 		(readw(&i2c->regs->tx_fifo.stat_ctrl) & 0x3f);
+ 	u32 msg_length = i2c->msg->len - i2c->xmit_size;
  
- 			if (vbi_buf != NULL)
- 				au0828_copy_vbi(dev, vbi_dma_q, vbi_buf, p,
+-	msg_length = (msg_length < fifo_space ? msg_length : fifo_space);
++	msg_length = min(msg_length, fifo_space);
+ 	while (msg_length--) {
+ 		data = i2c->msg->buf[i2c->xmit_size++];
+ 		writeb(data, &i2c->regs->tx_fifo.data8);
 
 -- 
 2.44.0.769.g3c40516874-goog
