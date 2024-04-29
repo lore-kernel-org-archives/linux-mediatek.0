@@ -4,91 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FAF4C4345F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Apr 2024 20:06:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55643C4345F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Apr 2024 23:46:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Subject:Cc:To:
-	From:Date:References:In-Reply-To:Message-Id:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3bIwKnsy9ifetBfNY+3G/QZkKlWgtgdGBGngqxa9+ik=; b=Nw1Ob7Svo+Pehe/Yv3OkQhfWSa
-	a0nznpZ6YQCbhyM1dssy/zPhHQW8Eh3dTTn5J9DboLEfeSHYbEqC/XIdfnefCwQvYXiwYrRNXQpPH
-	WaEmDEPbkJKXiyW3U0+115HFRCTtLh2sFl97RnRX3m3VZkCECYCftdI4ZuWS7JCq0bUw8csj3RK8E
-	I/5mEComeWn50/LPUvk2co/DqTTitKa1GgMcJ9viJopJ5J01d6K4x3pLDZ02uMTtOcENF+/D4Rebs
-	bWxVwOv00FhKCU1ii6HdMf2a5rtLTU/PaWGfIspcI8qZMCskOG48+WEsIlhzHgnUZ9aEYvmRgXvzT
-	BSrAPCAA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Zo8D3lsFdEeXxAxf62RcXBt5LC5gx4r/O8NQQwJG9EY=; b=gBH2BVZlDog9zzzuLj0M+nMThy
+	K+3sDnW5XQ8K0As84k6fzw3f8UP00XdJa94+68wC2i7YYZue1t0QLE5/H2ikUO33Q+3LJIrcIHHgg
+	xjHuddSDrmiQo8WLbrmnKc9NA9E+iShWQHU10gwwMbB+v9jyx+ENfH7PbTkGnpUr1DPbdFnWhI4oi
+	n+xNPDheA4d90J1SQF5W2fJiBr9G2W+5aVYWlJuqcYlWtk7MmFABEJJmUrtNsZwKX8YJYZnBv044A
+	4VTc2sdAxZMe2bgESVWXPmwlYwEcGPjyxqZkySdxf27E/pgtwIX8kuqUSF7mj2r/jxoe7cdT9+ZqB
+	BcVm1dQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1XGR-0000000481E-2JQg;
-	Mon, 29 Apr 2024 20:06:15 +0000
-Received: from fout8-smtp.messagingengine.com ([103.168.172.151])
+	id 1s1ahM-00000004VVj-1CA9;
+	Mon, 29 Apr 2024 23:46:16 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1XGN-000000047yk-0x8F;
-	Mon, 29 Apr 2024 20:06:13 +0000
-Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
-	by mailfout.nyi.internal (Postfix) with ESMTP id BB4B81380368;
-	Mon, 29 Apr 2024 16:06:08 -0400 (EDT)
-Received: from imap51 ([10.202.2.101])
-  by compute5.internal (MEProxy); Mon, 29 Apr 2024 16:06:08 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arndb.de; h=cc
-	:cc:content-type:content-type:date:date:from:from:in-reply-to
-	:in-reply-to:message-id:mime-version:references:reply-to:subject
-	:subject:to:to; s=fm2; t=1714421168; x=1714507568; bh=3bIwKnsy9i
-	fetBfNY+3G/QZkKlWgtgdGBGngqxa9+ik=; b=HbgG3qj53eKRmhBscBhH1xlRmn
-	nDm1RH9c12EwGP98UP9Dd5b4MFxjJb8KLi2ng0+aakho2SZNziHbM5g7VZJC2Q2Q
-	2MDIBDz63ydAXDudYk+0GOi8Bcv4C+UH1ctYR8e04PbMF3jVCIKz/+S11lreX3E8
-	9lf6HOCseuOUOUS/McJKDHy3vHKyb9Zzap07BxVnRqJja16J3nLmYnOitHN58jiO
-	nAZVOqNl0A+vwtMj5qguJFboE/j8Qjbteom9myV3jI50wBw3cgAP/ad6dr53lB10
-	hgd0vNiq+QnQoIGsr88wbQSl1dVH/g2uiy2J8chwDOzwCrsgm3scC/xhyibg==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-type:content-type:date:date
-	:feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
-	:message-id:mime-version:references:reply-to:subject:subject:to
-	:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
-	fm3; t=1714421168; x=1714507568; bh=3bIwKnsy9ifetBfNY+3G/QZkKlWg
-	tgdGBGngqxa9+ik=; b=fSDBHS9wSxfB5RWx+g2dy6rwGvjR9rbbqx+5P6UcAhmR
-	1ozFK2kjugdPmjxCqPcQx3ZvFGsGd4iTGOzytCfp175R0N7hW86eqPXYN4qXFT1W
-	+m24+5LxTJFuXZNHIIwHPMtrPjZVqDubP9fhX3GzBx/nmgJs/I8vLA5MUQaSib1r
-	Caonbc2kwHjy281NfbgEXkSlLgB9+Ybj9yasNvcNFUeVIfAQR1W1UrvIZJZWG9BN
-	cZTeSPe6SUfVAU1atticcTacOFlAXsYhNkk8D+sqpKSZWDGtKAqBauFsaGDXKqcJ
-	OcHf5OUlI8h3CuWbzmDhXnWSuaapTVTTwpr9A8yKxw==
-X-ME-Sender: <xms:sP0vZtjxn-7_N5zXNwSraCLu-FBqrtL32VClpOu7vBRPaAEDjCrFPg>
-    <xme:sP0vZiAleNg2jMMSc-J2iRxoGJ57iDuaw_3JaZhHUyKCA4E2lgTgC51P0XgGvJ_F4
-    HW7F3W8HxS-3ewOEAs>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvledrvdduuddgudeggecutefuodetggdotefrod
-    ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
-    necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
-    enucfjughrpefofgggkfgjfhffhffvvefutgesthdtredtreertdenucfhrhhomhepfdet
-    rhhnugcuuegvrhhgmhgrnhhnfdcuoegrrhhnugesrghrnhgusgdruggvqeenucggtffrrg
-    htthgvrhhnpeffheeugeetiefhgeethfejgfdtuefggeejleehjeeutefhfeeggefhkedt
-    keetffenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpe
-    grrhhnugesrghrnhgusgdruggv
-X-ME-Proxy: <xmx:sP0vZtHmYg0d8ITut70uysTKybASUJ1ARZMd1oTW5Uhg7aXNKp56Ig>
-    <xmx:sP0vZiR5C9rggca3QB8yaPVT_D2Gp_K3xmgTWloaHX9Y5hdB4NYhVA>
-    <xmx:sP0vZqywLEcgZhZRoTvN31wjnSjZsQznZZxjw_vzTWipvz5RAHitYA>
-    <xmx:sP0vZo5dOPwUBFsS0zFgTpkOSLCQfAyWYBEXmIqKAK0YXZ4ncvSptg>
-    <xmx:sP0vZkttMvmIiFhfqqzcBbgI3TttK5YCyTsFdr-Ptur63gMrEYlNOc7W>
-Feedback-ID: i56a14606:Fastmail
-Received: by mailuser.nyi.internal (Postfix, from userid 501)
-	id 4AFC7B6008F; Mon, 29 Apr 2024 16:06:08 -0400 (EDT)
-X-Mailer: MessagingEngine.com Webmail Interface
-User-Agent: Cyrus-JMAP/3.11.0-alpha0-386-g4cb8e397f9-fm-20240415.001-g4cb8e397
+	id 1s1ahI-00000004VUv-3YBA;
+	Mon, 29 Apr 2024 23:46:14 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.97.1)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1s1ah2-000000003Ss-0jtq;
+	Mon, 29 Apr 2024 23:45:56 +0000
+Date: Tue, 30 Apr 2024 00:45:46 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
+	Felix Fietkau <nbd@nbd.name>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Landen Chao <Landen.Chao@mediatek.com>, devicetree@vger.kernel.org,
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH net] net: dsa: mt7530: fix impossible MDIO address and issue
+ warning
+Message-ID: <e615351aefba25e990215845e4812e6cb8153b28.1714433716.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-Message-Id: <7eab1a4b-4cb0-4142-b3ba-fe9e73f41eff@app.fastmail.com>
-In-Reply-To: <20240429140245.238210-1-angelogioacchino.delregno@collabora.com>
-References: <20240429140245.238210-1-angelogioacchino.delregno@collabora.com>
-Date: Mon, 29 Apr 2024 22:05:48 +0200
-From: "Arnd Bergmann" <arnd@arndb.de>
-To: "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>,
- arm <arm@kernel.org>, soc <soc@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [GIT,PULL,1/2] MediaTek ARM64 DTS updates for v6.10
-Content-Type: text/plain
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240429_130611_540528_E9427B44 
-X-CRM114-Status: UNSURE (   7.60  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240429_164612_914340_B999C7B1 
+X-CRM114-Status: GOOD (  15.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,18 +74,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 29, 2024, at 16:02, AngeloGioacchino Del Regno wrote:
-> This introduces the new Airoha (MediaTek) EN7581 home networking
-> platform (routers) in early stages, but with support for its
-> Evaluation Board, a few more MediaTek based machines, and
-> improvements for existing ones.
+The MDIO address of the MT7530 and MT7531 switch ICs can be configured
+using bootstrap pins. However, there are only 4 possible options for the
+switch itself: 7, 15, 23 and 31 (ie. only 3 and 4 can be configured, bit
+0~2 are always 111). Practically all boards known as of today use the
+default setting which is to have the switch respond to address 31, while
+the built-in switch PHYs respond to address 0~4 in this case.
 
-Could you respin the pull request without the defconfig
-and Kconfig.platform changes and send those as separate
-patches? I always try to keep these in distinct branches
-on my end so I can send my own pull requests separately.
+However, even in MediaTek's SDK the address of the switch is wrongly
+stated in the device trees as 0 (while in reality it is 31), so warn the
+user about such broken device tree and make a good guess what was
+actually intended.
 
-The actual changes in your tree all look good to me.
+This is imporant to not break compatibility with older Device Trees as
+with commit 868ff5f4944a ("net: dsa: mt7530-mdio: read PHY address of
+switch from device tree") the address in device tree will be taken into
+account. Doing so instead of assuming the switch is always at
+address 31 which was previously hard-coded will obviously break things
+for many existing downstream device trees as they contain the wrong
+address (0) which previously didn't matter.
 
-     Arnd
+Fixes: b8f126a8d543 ("net-next: dsa: add dsa support for Mediatek MT7530 switch")
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+---
+ drivers/net/dsa/mt7530-mdio.c | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/drivers/net/dsa/mt7530-mdio.c b/drivers/net/dsa/mt7530-mdio.c
+index fa3ee85a99c1..119630fd9060 100644
+--- a/drivers/net/dsa/mt7530-mdio.c
++++ b/drivers/net/dsa/mt7530-mdio.c
+@@ -193,6 +193,19 @@ mt7530_probe(struct mdio_device *mdiodev)
+ 			return PTR_ERR(priv->io_pwr);
+ 	}
+ 
++	/* Only MDIO bus address 7, 15, 23 and 31 are valid options */
++	if (~(priv->mdiodev->addr & 0x7) & 0x7) {
++		/* If the address in DT must be wrong, make a good guess about
++		 * the most likely intention, and issue a warning.
++		 */
++		int correct_addr = ((((priv->mdiodev->addr - 7) & ~0x7) % 0x20) + 7) & 0x1f;
++
++		dev_warn(&mdiodev->dev,
++			 "impossible switch MDIO address in device tree: %d, assuming %d\n",
++			 priv->mdiodev->addr, correct_addr);
++		priv->mdiodev->addr = correct_addr;
++	}
++
+ 	regmap_config = devm_kzalloc(&mdiodev->dev, sizeof(*regmap_config),
+ 				     GFP_KERNEL);
+ 	if (!regmap_config)
+-- 
+2.44.0
+
 
