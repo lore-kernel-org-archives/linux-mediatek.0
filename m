@@ -4,72 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB81FC4345F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Apr 2024 10:23:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FEEEC4345F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Apr 2024 10:47:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:cc:To:Date:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Qca9Cx0dLXV3WOQpiDsu1gOhJEwD+qsHOWl+MP2hUmo=; b=xKsh+ORqDP/yVpyQ0hLURsLTqj
-	fPetVJx78ra3C7LYArzHkl3h9HtMCfAXWO8CHt6h94odn+FR/8jIx1H7KuJAT6yHhzFlaPd7YXm90
-	i+rbZkkewtVXxOrfh8VjgET64zWt0GT4y32SOcO5YpTZZZS9CmFDwEagBtbq8ziu02oDg5KC4/3bj
-	HiQKtCpV/iUZH0F2wWNv3jmZYsE4ozRUmDS5K/K9BNI47dMkRBdidH1KfdtPWztQ8XXrP/g/PeXoN
-	navZTqMb0AMZL8Y+KKu20TJqZ8YY80GzFDpV6wLNdiUMPRj1dZDpCwr0SUn33KSXj1mCTv7s5p+Qg
-	69tYMOmQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WKOK8lviGgf2vrpFBhrGZiQNPnf2LYdvdKrwJ9TotZo=; b=YU5rOs8ilVO7SqxDHSyJWgk9n3
+	lo019XeLmH3MUs1PCjdrnLihACEOYOEFCdJSj+j3z8PwT4vW9xdIwa4dEfTpPKH5dgz5M0CFv7MTc
+	WTxVvMCxceiiQzwIK4LQ4mmoYSfdOV4T5FcKRWJ/YUztZgFyabnYgcjJLp3kBfUc+jPd6LLBU5eQT
+	VUQJytP4pRviQRyUxLiLRtQGVyfxrLMCBWYoMKdJkeicCtI4ifoKjnVvgOU46kxLV8XgyoD7HN5k1
+	a3+JWyMPTdGarPFj0V9iOSc37sNDyiyIhUa84Ac84zun6SHe7A8Sem0erSvNHGGXdWck7ALgnKmtB
+	SFLUxU8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1OA1-00000002FQF-0EAq;
-	Mon, 29 Apr 2024 10:23:01 +0000
-Received: from mgamail.intel.com ([192.198.163.12])
+	id 1s1OY6-00000002LGZ-0nef;
+	Mon, 29 Apr 2024 10:47:54 +0000
+Received: from mgamail.intel.com ([192.198.163.15])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1O9y-00000002FPh-197s
-	for linux-mediatek@lists.infradead.org;
-	Mon, 29 Apr 2024 10:22:59 +0000
+	id 1s1OY2-00000002LDo-0fFf;
+	Mon, 29 Apr 2024 10:47:51 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1714386178; x=1745922178;
-  h=from:date:to:cc:subject:message-id:mime-version;
-  bh=gq2L+qagD+ctbJ1g03h2JM87K7EUppTIEWwY830mVMo=;
-  b=JwORV+FM8nckhGKRrp9F0wmfiZsYoZVO+MG85KEN4wWvg2OSwkmGda3I
-   3Pt6358NSovhgMvwXjMuzvZ86HRNiJgy+jukRSSqpsUSzyQuwJgZTpYVi
-   zoN7x43Irqpwp/qLxzPLmpR/V97q3Yzl2lLD/WYeUpOn4cV8W7kz1Z7nb
-   bDUPyXLAMaoS6cK8aZTIgpcjjCfbSEob3HqU6jrRkalY7cnnsaw/YN+p4
-   CUe8dUKo9Uv3c52CI+Ux/Nfyxl/ScNv61VGdF8KOEHVinpzb10rwwRZn0
-   NKuI0GvCL9ARLTKPIL5K5+SbRDBQgbZAJeQQwlcmCqn9Ub7hnyhQ95rAn
-   A==;
-X-CSE-ConnectionGUID: axZCxBKeS8eYGX3FcobXXA==
-X-CSE-MsgGUID: nF29HHFWTK+n5hTpIoIu4g==
-X-IronPort-AV: E=McAfee;i="6600,9927,11057"; a="13827732"
+  t=1714387670; x=1745923670;
+  h=from:to:cc:subject:date:message-id:in-reply-to:
+   references:mime-version:content-transfer-encoding;
+  bh=6Mc4DmXEXO6Kz1kJ/fVcR7ZcfLPUG4RYhvrVnAwaq+0=;
+  b=nGn8u6PFD9V+x8+C+PTitC8kIEN5+owjLW5/bpEidY9ooB/TrgYAaMI/
+   xYPLAsGiaHPjcBXrltJ4YwxwpV2HzMlzHRSUa3dUXfqyH1BVvIYNFVDKP
+   hspiLdiynFC68rmOld2Gvp6GtAc3WGQj9YzKc418+R3Ma/Nw8ZE57p/RR
+   J7VSKpZtyhvqx0M3JE1nZgtUsecCjkFE5PdfpbicesvbLwJVfhVgiFEJ1
+   cCSsTY08sGC6Z8E8jvrylWAcP7UXjarVtEK6f3yURSoPpDGQF+J1sagkl
+   G0cd/FiVfcK3j/s+HEZ2uPUz+K4mXyjKnu+SMSId/66vy2bEuFRb0RSQO
+   w==;
+X-CSE-ConnectionGUID: ZBYkX2ZARLamslVfHFUqvQ==
+X-CSE-MsgGUID: x8iyq+xUQkSv1d2HR4UCDw==
+X-IronPort-AV: E=McAfee;i="6600,9927,11057"; a="10201846"
 X-IronPort-AV: E=Sophos;i="6.07,239,1708416000"; 
-   d="scan'208";a="13827732"
-Received: from orviesa006.jf.intel.com ([10.64.159.146])
-  by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Apr 2024 03:22:57 -0700
-X-CSE-ConnectionGUID: lnQIrUnfT9GJEjU2pXHkRw==
-X-CSE-MsgGUID: IrMbYg+TRdeC7MOd8b+6RQ==
+   d="scan'208";a="10201846"
+Received: from orviesa007.jf.intel.com ([10.64.159.147])
+  by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Apr 2024 03:47:49 -0700
+X-CSE-ConnectionGUID: /nnKB6kaSHeZOlfWFHxV8w==
+X-CSE-MsgGUID: k64qq1ZHTVWYmwqvHsqZzA==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.07,239,1708416000"; 
-   d="scan'208";a="26474871"
+   d="scan'208";a="26589567"
 Received: from ijarvine-desk1.ger.corp.intel.com (HELO localhost) ([10.245.247.45])
-  by orviesa006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Apr 2024 03:22:53 -0700
+  by orviesa007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Apr 2024 03:47:44 -0700
 From: =?UTF-8?q?Ilpo=20J=C3=A4rvinen?= <ilpo.jarvinen@linux.intel.com>
-Date: Mon, 29 Apr 2024 13:22:50 +0300 (EEST)
-To: Ryder Lee <ryder.lee@mediatek.com>, 
-    Jianjun Wang <jianjun.wang@mediatek.com>, 
-    Lorenzo Pieralisi <lpieralisi@kernel.org>, 
-    =?ISO-8859-2?Q?Krzysztof_Wilczy=F1ski?= <kw@linux.com>, 
-    Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
-    linux-pci@vger.kernel.org
-cc: LKML <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org
-Subject: pcie-mediatek slot calculation correct?
-Message-ID: <9ea20705-8536-738b-4f1f-60feb2c092fa@linux.intel.com>
+To: linux-pci@vger.kernel.org,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+	Rob Herring <robh@kernel.org>,
+	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Cc: =?UTF-8?q?Ilpo=20J=C3=A4rvinen?= <ilpo.jarvinen@linux.intel.com>
+Subject: [PATCH 07/10] PCI: Replace PCI_CONF1{,_EXT}_ADDRESS() with the new helpers
+Date: Mon, 29 Apr 2024 13:46:30 +0300
+Message-Id: <20240429104633.11060-8-ilpo.jarvinen@linux.intel.com>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20240429104633.11060-1-ilpo.jarvinen@linux.intel.com>
+References: <20240429104633.11060-1-ilpo.jarvinen@linux.intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240429_032258_421741_1AE9388F 
-X-CRM114-Status: UNSURE (   4.13  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240429_034750_243586_EBE06F3E 
+X-CRM114-Status: GOOD (  14.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,22 +94,109 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi all,
+Replace the old PCI_CONF1{,_EXT}_ADDRESS() helpers used to calculate
+PCI Configuration Space Type 1 addresses with the new
+pci_conf1{,_ext}_offset() helpers that are more generic and more widely
+available.
 
-I was doing Conf Type 0/1 helper generalization when I ran into this code 
-in drivers/pci/controller/pcie-mediatek.c:
+Signed-off-by: Ilpo Järvinen <ilpo.jarvinen@linux.intel.com>
+---
+ drivers/pci/controller/pci-ftpci100.c | 6 ++----
+ drivers/pci/controller/pci-ixp4xx.c   | 5 ++---
+ drivers/pci/controller/pcie-mt7621.c  | 7 +++----
+ drivers/pci/pci.h                     | 8 --------
+ 4 files changed, 7 insertions(+), 19 deletions(-)
 
-	u32 func = PCI_FUNC(port->slot);
-	u32 slot = PCI_SLOT(port->slot << 3);
-
-With that code, function is effectively duplicated into slot, is this 
-correct behavior?
-
-...Adjustments made in the history of this code fragment didn't exactly 
-inspire confidence on the correctness of this code. :-/
-
-
+diff --git a/drivers/pci/controller/pci-ftpci100.c b/drivers/pci/controller/pci-ftpci100.c
+index ffdeed25e961..a8d0217a0b94 100644
+--- a/drivers/pci/controller/pci-ftpci100.c
++++ b/drivers/pci/controller/pci-ftpci100.c
+@@ -182,8 +182,7 @@ static int faraday_raw_pci_read_config(struct faraday_pci *p, int bus_number,
+ 				       unsigned int fn, int config, int size,
+ 				       u32 *value)
+ {
+-	writel(PCI_CONF1_ADDRESS(bus_number, PCI_SLOT(fn),
+-				 PCI_FUNC(fn), config),
++	writel(pci_conf1_addr(bus_number, fn, config, true),
+ 			p->base + FTPCI_CONFIG);
+ 
+ 	*value = readl(p->base + FTPCI_DATA);
+@@ -214,8 +213,7 @@ static int faraday_raw_pci_write_config(struct faraday_pci *p, int bus_number,
+ {
+ 	int ret = PCIBIOS_SUCCESSFUL;
+ 
+-	writel(PCI_CONF1_ADDRESS(bus_number, PCI_SLOT(fn),
+-				 PCI_FUNC(fn), config),
++	writel(pci_conf1_addr(bus_number, fn, config, true),
+ 			p->base + FTPCI_CONFIG);
+ 
+ 	switch (size) {
+diff --git a/drivers/pci/controller/pci-ixp4xx.c b/drivers/pci/controller/pci-ixp4xx.c
+index ec0125344ca1..fd52f4a3ef31 100644
+--- a/drivers/pci/controller/pci-ixp4xx.c
++++ b/drivers/pci/controller/pci-ixp4xx.c
+@@ -192,9 +192,8 @@ static u32 ixp4xx_config_addr(u8 bus_num, u16 devfn, int where)
+ 		       BIT(32 - PCI_SLOT(devfn));
+ 	} else {
+ 		/* type 1 */
+-		return (PCI_CONF1_ADDRESS(bus_num, PCI_SLOT(devfn),
+-					  PCI_FUNC(devfn), where) &
+-			~PCI_CONF1_ENABLE) | PCI_CONF1_TRANSACTION;
++		return pci_conf1_addr(bus_num, devfn, where, false) |
++		       PCI_CONF1_TRANSACTION;
+ 	}
+ }
+ 
+diff --git a/drivers/pci/controller/pcie-mt7621.c b/drivers/pci/controller/pcie-mt7621.c
+index 79e225edb42a..2b2d9828a910 100644
+--- a/drivers/pci/controller/pcie-mt7621.c
++++ b/drivers/pci/controller/pcie-mt7621.c
+@@ -127,8 +127,7 @@ static void __iomem *mt7621_pcie_map_bus(struct pci_bus *bus,
+ 					 unsigned int devfn, int where)
+ {
+ 	struct mt7621_pcie *pcie = bus->sysdata;
+-	u32 address = PCI_CONF1_EXT_ADDRESS(bus->number, PCI_SLOT(devfn),
+-					    PCI_FUNC(devfn), where);
++	u32 address = pci_conf1_ext_addr(bus->number, devfn, where, true);
+ 
+ 	writel_relaxed(address, pcie->base + RALINK_PCI_CONFIG_ADDR);
+ 
+@@ -143,7 +142,7 @@ static struct pci_ops mt7621_pcie_ops = {
+ 
+ static u32 read_config(struct mt7621_pcie *pcie, unsigned int dev, u32 reg)
+ {
+-	u32 address = PCI_CONF1_EXT_ADDRESS(0, dev, 0, reg);
++	u32 address = pci_conf1_ext_addr(0, PCI_DEVFN(dev, 0), reg, true);
+ 
+ 	pcie_write(pcie, address, RALINK_PCI_CONFIG_ADDR);
+ 	return pcie_read(pcie, RALINK_PCI_CONFIG_DATA);
+@@ -152,7 +151,7 @@ static u32 read_config(struct mt7621_pcie *pcie, unsigned int dev, u32 reg)
+ static void write_config(struct mt7621_pcie *pcie, unsigned int dev,
+ 			 u32 reg, u32 val)
+ {
+-	u32 address = PCI_CONF1_EXT_ADDRESS(0, dev, 0, reg);
++	u32 address = pci_conf1_ext_addr(0, PCI_DEVFN(dev, 0), reg, true);
+ 
+ 	pcie_write(pcie, address, RALINK_PCI_CONFIG_ADDR);
+ 	pcie_write(pcie, val, RALINK_PCI_CONFIG_DATA);
+diff --git a/drivers/pci/pci.h b/drivers/pci/pci.h
+index cf0530a60105..fdf9624b0b12 100644
+--- a/drivers/pci/pci.h
++++ b/drivers/pci/pci.h
+@@ -833,12 +833,4 @@ struct pci_devres {
+ 
+ struct pci_devres *find_pci_dr(struct pci_dev *pdev);
+ 
+-#define PCI_CONF1_ADDRESS(bus, dev, func, reg) \
+-	(PCI_CONF1_ENABLE | \
+-	 pci_conf1_addr(bus, PCI_DEVFN(dev, func), reg & ~0x3U))
+-
+-#define PCI_CONF1_EXT_ADDRESS(bus, dev, func, reg) \
+-	(PCI_CONF1_ENABLE | \
+-	 pci_conf1_ext_addr(bus, PCI_DEVFN(dev, func), reg & ~0x3U))
+-
+ #endif /* DRIVERS_PCI_H */
 -- 
- i.
+2.39.2
 
 
