@@ -4,68 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8EA8C4345F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Apr 2024 18:31:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA5B3C4345F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Apr 2024 18:45:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2kpOLjd1RsRGoMgjZcS9EsszKwG0ZQhgAo+c26was84=; b=1Xtc7zMcUknsn6QaVw7odV96Pi
-	94VTx4ar0QA2p5oF84NOtDL2DZZdCTkvMwTnDmXGCcvS7+wkjGyleLfjqLU7iqD9OrB932DRcYnOM
-	q2InjpoHg6+oI7v/jdgHh/s1AswKGsiMa7lwN2sWn/73KOesfKPHSMnildQ0nsiHlA3M2Atv9s/TK
-	rZi0P1EUy367U5p7PKI3p7N5ekt73Xh7B7YRYL5oUaC/HtE1LBBglNYB0QAlJcQukGyS2GikQ25ri
-	quOo2GNTPejF5moAdld5Cph+U9TtxfHtpOn99qLo0a0vYy23Ufol8Gx/7yc7XZnTPbbeQlJuqz9F0
-	pRWvT+2w==;
+	bh=bmjpVcBqOrF9YJQJFFl10tyjDmuKjh6f/Fzr45EJAEQ=; b=rsF44wKZVptYc3DxprsZxnVJ/V
+	3MHsdzWwLfWlNNLVzDK2j787VBbhyvgxv97GLiirxog+vxYAToyjei/X8J4R+G9t1zMOD0y9Nk5+5
+	prFwgA/nZpJnUJIvbIzyglMaNOEhI4ceKOFYJ1Y45OYdxjg/Rkjh27OthN1+dDPD2VENPTHSiTHTf
+	VtqpvPucs2aVGdD2Q1YHiP8yEtV6C3FSbuLgV1lFzRt1qer9l/Qk/xNWlKBkY+Nbhww1X9Ss/KX06
+	K8ZozC55cINXGqTcmzsNavNjitkosL28jLjasoomIemLOsNwLRVfLjdR7zIwPxWqsgjFa1y5iSaPA
+	xvfRC7Kg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1Vmx-00000003sOo-4AR7;
-	Mon, 29 Apr 2024 18:31:43 +0000
-Received: from msa-209.smtpout.orange.fr ([193.252.23.209] helo=msa.smtpout.orange.fr)
+	id 1s1W0f-00000003uIT-1NDy;
+	Mon, 29 Apr 2024 18:45:53 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1Vmu-00000003sNx-1TEi;
-	Mon, 29 Apr 2024 18:31:42 +0000
-Received: from [192.168.1.37] ([86.243.17.157])
-	by smtp.orange.fr with ESMTPA
-	id 1VmksUnBSiGtU1VmlsQI2r; Mon, 29 Apr 2024 20:31:32 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wanadoo.fr;
-	s=t20230301; t=1714415492;
-	bh=2kpOLjd1RsRGoMgjZcS9EsszKwG0ZQhgAo+c26was84=;
-	h=Message-ID:Date:MIME-Version:Subject:To:From;
-	b=amzwYIlzPbcKaAQJXOdD545sUIppqdGaR/8v1JITt97n7KazHFyAzCgHaFyuN7LWe
-	 iOxrYE7qhUuW20IWvMWtioSxORH+y48F7Q3yy2cc5F8Ql6FpEHY36vMboQ7ufkO/3L
-	 y5wn2hGZUXQFKtjaxzi9v+1LQWJ0BJMiS4rtAlQV0lV+PtY2Y2gC2albLo0NqR9qTL
-	 a7xYq7aH5nQyi17j1wkrFAaJM6Ji3qPAjctofHLJqOOn5Nv78NuwmeoEpzOTULElV4
-	 lWsBbCy/xzDvcn0ZjBZdOpSXbi3nLsrYiyD4aSiW9unMNxET/z90DHbWfn96WEgGvk
-	 IZJdstbFJyloQ==
-X-ME-Helo: [192.168.1.37]
-X-ME-Auth: Y2hyaXN0b3BoZS5qYWlsbGV0QHdhbmFkb28uZnI=
-X-ME-Date: Mon, 29 Apr 2024 20:31:32 +0200
-X-ME-IP: 86.243.17.157
-Message-ID: <d526b169-0385-4f23-8806-17bc73c2507b@wanadoo.fr>
-Date: Mon, 29 Apr 2024 20:31:30 +0200
+	id 1s1W0b-00000003uHW-3Kh7;
+	Mon, 29 Apr 2024 18:45:51 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id E371B61009;
+	Mon, 29 Apr 2024 18:45:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 64A1FC113CD;
+	Mon, 29 Apr 2024 18:45:47 +0000 (UTC)
+Date: Mon, 29 Apr 2024 14:46:26 -0400
+From: Steven Rostedt <rostedt@goodmis.org>
+To: Tze-nan wu <Tze-nan.Wu@mediatek.com>
+Cc: <mhiramat@kernel.org>, <bobule.chang@mediatek.com>,
+ <wsd_upstream@mediatek.com>, Cheng-Jui Wang <cheng-jui.wang@mediatek.com>,
+ Mathieu Desnoyers <mathieu.desnoyers@efficios.com>,
+ <linux-kernel@vger.kernel.org>, <linux-trace-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH] tracing: Fix uaf issue in tracing_open_file_tr
+Message-ID: <20240429144626.7d868ad3@gandalf.local.home>
+In-Reply-To: <20240428202837.0cabca17@rorschach.local.home>
+References: <20240426073410.17154-1-Tze-nan.Wu@mediatek.com>
+	<20240428202837.0cabca17@rorschach.local.home>
+X-Mailer: Claws Mail 3.19.1 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] leds: mt6370: Remove an unused field in struct
- mt6370_priv
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Pavel Machek <pavel@ucw.cz>, Lee Jones <lee@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org,
- linux-leds@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <e389be5e1012dc05fc2641123883ca3b0747525a.1714328839.git.christophe.jaillet@wanadoo.fr>
- <16df315e-8a05-49a4-ac07-d1ed150c9317@collabora.com>
-Content-Language: en-MW
-From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-In-Reply-To: <16df315e-8a05-49a4-ac07-d1ed150c9317@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240429_113140_823966_114AFDDA 
-X-CRM114-Status: UNSURE (   9.04  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240429_114549_978909_E721E0C3 
+X-CRM114-Status: GOOD (  23.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,42 +66,107 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Le 29/04/2024 à 10:13, AngeloGioacchino Del Regno a écrit :
-> Il 28/04/24 20:27, Christophe JAILLET ha scritto:
->> In "struct mt6370_priv", the 'reg_cfgs' field is unused.
->>
->> Moreover the "struct reg_cfg" is defined nowhere. Neither in this 
->> file, nor
->> in a global .h file, so it is completely pointless.
->>
->> Remove it.
-> 
-> Sure
-> 
->>
->> Found with cppcheck, unusedStructMember.
->>
->> So, remove it.
-> 
-> Again?! :-P
+On Sun, 28 Apr 2024 20:28:37 -0400
+Steven Rostedt <rostedt@goodmis.org> wrote:
 
-Yes. This way we safe twice the memory space :).
-
+> > Looking for any suggestion or solution, appreciate.  
 > 
->>
->> Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+> Yeah, I do not think eventfs should be involved in this. It needs to be
+> protected at a higher level (in the synthetic/dynamic event code).
 > 
-> 
-> Anyway, this commit misses a Fixes tag; please add the relevant one, 
-> after which,
+> I'm just coming back from Japan, and I'll need to take a deeper look at
+> this after I recover from my jetlag.
 
-Will do, but this patch does not fix anything.
-It is just a clean-up.
+OK, so I guess the eventfs nodes need an optional release callback. Here's
+the right way to do that. I added a "release" function to the passed in
+entry array that allows for calling a release function when the
+eventfs_inode is freed. Then in code for creating events, I call
+event_file_get() on the file being assigned and have the freeing of the
+"enable" file have the release function that will call event_file_put() on
+that file structure.
 
-CJ
+Does this fix it for you?
 
-> 
-> Reviewed-by: AngeloGioacchino Del Regno 
-> <angelogioacchino.delregno@collabora.com>
+-- Steve
 
+diff --git a/fs/tracefs/event_inode.c b/fs/tracefs/event_inode.c
+index 894c6ca1e500..dc97c19f9e0a 100644
+--- a/fs/tracefs/event_inode.c
++++ b/fs/tracefs/event_inode.c
+@@ -84,10 +84,17 @@ enum {
+ static void release_ei(struct kref *ref)
+ {
+ 	struct eventfs_inode *ei = container_of(ref, struct eventfs_inode, kref);
++	const struct eventfs_entry *entry;
+ 	struct eventfs_root_inode *rei;
+ 
+ 	WARN_ON_ONCE(!ei->is_freed);
+ 
++	for (int i = 0; i < ei->nr_entries; i++) {
++		entry = &ei->entries[i];
++		if (entry->release)
++			entry->release(entry->name, ei->data);
++	}
++
+ 	kfree(ei->entry_attrs);
+ 	kfree_const(ei->name);
+ 	if (ei->is_events) {
+diff --git a/include/linux/tracefs.h b/include/linux/tracefs.h
+index 7a5fe17b6bf9..d03f74658716 100644
+--- a/include/linux/tracefs.h
++++ b/include/linux/tracefs.h
+@@ -62,6 +62,8 @@ struct eventfs_file;
+ typedef int (*eventfs_callback)(const char *name, umode_t *mode, void **data,
+ 				const struct file_operations **fops);
+ 
++typedef void (*eventfs_release)(const char *name, void *data);
++
+ /**
+  * struct eventfs_entry - dynamically created eventfs file call back handler
+  * @name:	Then name of the dynamic file in an eventfs directory
+@@ -72,6 +74,7 @@ typedef int (*eventfs_callback)(const char *name, umode_t *mode, void **data,
+ struct eventfs_entry {
+ 	const char			*name;
+ 	eventfs_callback		callback;
++	eventfs_release			release;
+ };
+ 
+ struct eventfs_inode;
+diff --git a/kernel/trace/trace_events.c b/kernel/trace/trace_events.c
+index 52f75c36bbca..d14c84281f2b 100644
+--- a/kernel/trace/trace_events.c
++++ b/kernel/trace/trace_events.c
+@@ -2552,6 +2552,14 @@ static int event_callback(const char *name, umode_t *mode, void **data,
+ 	return 0;
+ }
+ 
++/* The file is incremented on creation and freeing the enable file decrements it */
++static void event_release(const char *name, void *data)
++{
++	struct trace_event_file *file = data;
++
++	event_file_put(file);
++}
++
+ static int
+ event_create_dir(struct eventfs_inode *parent, struct trace_event_file *file)
+ {
+@@ -2566,6 +2574,7 @@ event_create_dir(struct eventfs_inode *parent, struct trace_event_file *file)
+ 		{
+ 			.name		= "enable",
+ 			.callback	= event_callback,
++			.release	= event_release,
+ 		},
+ 		{
+ 			.name		= "filter",
+@@ -2634,6 +2643,9 @@ event_create_dir(struct eventfs_inode *parent, struct trace_event_file *file)
+ 		return ret;
+ 	}
+ 
++	/* Gets decremented on freeing of the "enable" file */
++	event_file_get(file);
++
+ 	return 0;
+ }
+ 
 
