@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBCACC4345F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Apr 2024 15:06:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D44CC4345F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Apr 2024 15:07:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=I5MK517M661jXeUTMXVPJlov9z4l8/dISyr2IlNuzMY=; b=yypwCIe5qpculhw91go3kYchO1
-	GO8Z0pNxVXDK6qLf3vVN0AO6C+RjqvAZ6O7BLTLKWT3C+V0OiwdZqz+j9NzfDWcp9CH4aTSbV1qyv
-	suM7pVA9iE/fN9UVprTgw2Uwr/LzH8OqKJyRCp9+q22m5TGekWFs04OJJnVT+8irYVA7YHd22rde3
-	gDB74fFy9fI4tHI7ll0wAfX/43QRLwGNPDSYyRmEfhEZ/JmFy8BjjKkx/cXhAdCjTv3VdLN1xfrF3
-	iQD1EZkhY+IpRF2d0CnZQvBMkLPzwy3UlgOYGSaI61fCpX08+Ywj171PKlX5Kp7IhJ3ptoKvnVDK4
-	rJp1FhuQ==;
+	bh=ouc75z4uJmyNonUkF5EXar7vMPGdSwUxTwWXSBMXCBo=; b=xvDGqc+QtR3kXO8dl+VOTpDR3U
+	geaiEY28DSiO+hd5WcXmDVORJPAVKlbHgNK+QHmBPMTDJ51I4jKSENvC9zG528xRJ7WJOJRTFVAX1
+	Svx2scTRtgEixJKeGZs1QQySuoDYzDKEdf44VFU6buaDFaOZ/bJxncIsD0uheHdcipludMPpm5aE5
+	SDW8wKJdTFC8WVgJI9lp6yyt3KKKWUjXjlvayBdPVaE1uoWVe5U9MJnMt+uT4ln4Gr/2BlaIUt4I5
+	YDWBMlcohwhNYeeJpASgeN+/BFZUzvXfSWGq/HF2KaGQg7XygH7MIavzDeKHXaUzMzKK+44U1kppW
+	9oIvct9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1SaP-00000003GLS-1LD7;
-	Mon, 29 Apr 2024 15:06:33 +0000
-Received: from mail-qk1-x731.google.com ([2607:f8b0:4864:20::731])
+	id 1s1Sap-00000003Gd6-2x8T;
+	Mon, 29 Apr 2024 15:06:59 +0000
+Received: from mail-qk1-x72c.google.com ([2607:f8b0:4864:20::72c])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1SYp-00000003FOW-02qg
+	id 1s1SYs-00000003FRK-1E1h
 	for linux-mediatek@lists.infradead.org;
-	Mon, 29 Apr 2024 15:04:56 +0000
-Received: by mail-qk1-x731.google.com with SMTP id af79cd13be357-78f049ddd7dso369256185a.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 29 Apr 2024 08:04:54 -0700 (PDT)
+	Mon, 29 Apr 2024 15:05:00 +0000
+Received: by mail-qk1-x72c.google.com with SMTP id af79cd13be357-79100a90868so29700085a.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 29 Apr 2024 08:04:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1714403094; x=1715007894; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1714403097; x=1715007897; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=I5MK517M661jXeUTMXVPJlov9z4l8/dISyr2IlNuzMY=;
-        b=UwbYySCupR21ZFXjOXxaAIXCA/xOh1PfFAtxmC/YL39+YOlt7qH5HZt2RSYUvT8hS8
-         XDgK1M6qdXnfSbu98rBoJOyrvcB6YHLn+64dRiJeffi2LWJUIcdlMCrPj49sFcv08PZz
-         qhg/ZOHkF7usrV6RPyffhy8U93fzETFqJzUlM=
+        bh=ouc75z4uJmyNonUkF5EXar7vMPGdSwUxTwWXSBMXCBo=;
+        b=brkT1KUg3Vu+80irgnN0D+JNtMBmA6XO9dHzlG0lz/RyHZwcBRPu5XmLB+ade66L7k
+         a1e+Jovda4qfkpcygSXo6R5CbgOwJF8ZXPgVu8D4dIid4LUkuDfFTq9rAt+tRVUmunwz
+         R8pRk2E12UarII6x4wE0PdmXPXywaeh+CQR0k=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1714403094; x=1715007894;
+        d=1e100.net; s=20230601; t=1714403097; x=1715007897;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=I5MK517M661jXeUTMXVPJlov9z4l8/dISyr2IlNuzMY=;
-        b=gXU4Y7bJFg3YOWF0F5ARoReheQwvcRHdgdhELqelHCJE0dsq2WyzQ2pn6wVvbE8krZ
-         QKZxiwJIPXm20jOMBlzah3odiIuuVi502Bhbe/Ta/fKtBHx9FfPxHp8enHjq+0KPWMB/
-         Zb4jAAdBZtwvrq1MCCOG2v9pBhW0fXQ1sLYiiU34n0hJ0U8K7PiQSRzw0mtsCABJieLw
-         1yzPoQe4SaV+QS/lCJf6y8pRFbj0zGH1/DStUeIfStpVheqs25yXkZeyxyfO23jXXbme
-         314URxiY+h74ZnoDgcOaE16xyOP0NBgIPgu87hWtg3HCdoiFR/B+x3BmK+jZg91Q+ySt
-         Wemw==
-X-Forwarded-Encrypted: i=1; AJvYcCWZ1PLCNJt3A3Ks0Vx5gNQ33+k3oWT1ds2TO1buiGhTXsCfUbFuT1L1XWeDWuxABzeB4b6C0Fa5VBHEKluXTYUe4XGKlwdjYWOeHOHPSZLDhIBU
-X-Gm-Message-State: AOJu0YwLA0I/5+rnM4LBr8myDofvInNXSZ198dPvnY5Q9UtckaP5gyDb
-	XLFTk0MF3D6srP8r5EsNmzsB3x/aoByAQFGt/e7aA9vPlApUtiozp05o3+g2AA==
-X-Google-Smtp-Source: AGHT+IHd6ddxHUwcI+GO63TKnOLl3i4M+Xxc5o4/p3XMVcglh0UUR3rtSUQc8AjhdVbPbvMA6ElG+g==
-X-Received: by 2002:a37:de19:0:b0:790:9eb8:b6ec with SMTP id h25-20020a37de19000000b007909eb8b6ecmr9509923qkj.30.1714403093917;
-        Mon, 29 Apr 2024 08:04:53 -0700 (PDT)
+        bh=ouc75z4uJmyNonUkF5EXar7vMPGdSwUxTwWXSBMXCBo=;
+        b=h7AtxZ7nvd7s/ZJkWiYWQ0uYSkwSceLXdH9gpSgQkbNWz2ZBnv30CvNh3Gm3hpOfZB
+         zSQH7YISBN9uhBkTvLaPo1yGIPvw0CLkjwseTsinx3+mC5lkESjRZUY0MsynxPW5LVI8
+         zHaBk1Nfb85onrROeXf5nKf2gxmB9UlG8Jl9SJw3Sabl2ahZVcjaILbi2HpBrjuTnxam
+         RCA8w/2CBt03xNusCTZiSbJU+Hn5Txgyw1GV3nocIhjr9rxjgWBQr6wDY7z55KvoSvkV
+         AVEE8gCzN7QEhEzr6NtZWfWNp1Jc6SrOontFQc6IQBdhfwl7eAT69duwACOYjeHvu+9m
+         G6KA==
+X-Forwarded-Encrypted: i=1; AJvYcCXI8UDYaaJoVvJvpuiiN36rKOJYeMPYnA/XUh6y1aeLwtVHMLLwJXF9vs7RolAXtCbAQJJLVI9goc8dQ7P2DyOx84ghUEEEbWZTsVF6lUiPjgpe
+X-Gm-Message-State: AOJu0Yxa8fkuUM9OIQXVqcqyEwAHboMkfwL1CrF63OLv7ZuuUe/nlptR
+	cPtz4urPYnlgLdqErCUeWBxreL6zZi6qfBd5A/SVFChWHEvg4YnTcjqKEVxGwQ==
+X-Google-Smtp-Source: AGHT+IEBZ4dmfr/e0QaIDLPes2AA5z7Utc0Aqd4uHb97QSLpEnTeDt3Yt9PtJFu+W2rGkPiTmePlKA==
+X-Received: by 2002:a05:620a:640a:b0:790:f573:2ec5 with SMTP id pz10-20020a05620a640a00b00790f5732ec5mr3631789qkn.8.1714403096616;
+        Mon, 29 Apr 2024 08:04:56 -0700 (PDT)
 Received: from denia.c.googlers.com (114.152.245.35.bc.googleusercontent.com. [35.245.152.114])
-        by smtp.gmail.com with ESMTPSA id p7-20020a05620a056700b0078d3b9139edsm10568591qkp.97.2024.04.29.08.04.52
+        by smtp.gmail.com with ESMTPSA id p7-20020a05620a056700b0078d3b9139edsm10568591qkp.97.2024.04.29.08.04.55
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 29 Apr 2024 08:04:53 -0700 (PDT)
+        Mon, 29 Apr 2024 08:04:56 -0700 (PDT)
 From: Ricardo Ribalda <ribalda@chromium.org>
-Date: Mon, 29 Apr 2024 15:04:49 +0000
-Subject: [PATCH v3 10/26] staging: media: tegra-video: Use swap macro
+Date: Mon, 29 Apr 2024 15:04:52 +0000
+Subject: [PATCH v3 13/26] media: common: saa7146: Use min macro
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240429-fix-cocci-v3-10-3c4865f5a4b0@chromium.org>
+Message-Id: <20240429-fix-cocci-v3-13-3c4865f5a4b0@chromium.org>
 References: <20240429-fix-cocci-v3-0-3c4865f5a4b0@chromium.org>
 In-Reply-To: <20240429-fix-cocci-v3-0-3c4865f5a4b0@chromium.org>
 To: Martin Tuma <martin.tuma@digiteqautomotive.com>, 
@@ -106,8 +106,8 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  Ricardo Ribalda <ribalda@chromium.org>
 X-Mailer: b4 0.12.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240429_080455_258958_180A2E24 
-X-CRM114-Status: GOOD (  11.44  )
+X-CRM114-CacheID: sfid-20240429_080458_506945_B280F80E 
+X-CRM114-Status: GOOD (  12.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,36 +122,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Makes the code simpler and cocci happier:
+Simplifies the code. Found by cocci:
 
-drivers/staging/media/tegra-video/tegra20.c:324:44-45: WARNING opportunity for swap()
+drivers/media/common/saa7146/saa7146_hlp.c:125:36-37: WARNING opportunity for min()
+drivers/media/common/saa7146/saa7146_hlp.c:154:41-42: WARNING opportunity for min()
+drivers/media/common/saa7146/saa7146_hlp.c:286:35-36: WARNING opportunity for min()
+drivers/media/common/saa7146/saa7146_hlp.c:289:35-36: WARNING opportunity for min()
 
-Reviewed-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
+Reviewed-by: Bryan O'Donoghue <bryan.odonoghue@linaro.org>
 Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 ---
- drivers/staging/media/tegra-video/tegra20.c | 9 ++-------
- 1 file changed, 2 insertions(+), 7 deletions(-)
+ drivers/media/common/saa7146/saa7146_hlp.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/staging/media/tegra-video/tegra20.c b/drivers/staging/media/tegra-video/tegra20.c
-index 630e2ff987a3..7b8f8f810b35 100644
---- a/drivers/staging/media/tegra-video/tegra20.c
-+++ b/drivers/staging/media/tegra-video/tegra20.c
-@@ -317,13 +317,8 @@ static void tegra20_channel_queue_setup(struct tegra_vi_channel *chan)
- 		chan->addr_offset_v = chan->addr_offset_u + stride * height / 4;
+diff --git a/drivers/media/common/saa7146/saa7146_hlp.c b/drivers/media/common/saa7146/saa7146_hlp.c
+index 7569d8cdd4d8..fe3348af543e 100644
+--- a/drivers/media/common/saa7146/saa7146_hlp.c
++++ b/drivers/media/common/saa7146/saa7146_hlp.c
+@@ -122,7 +122,7 @@ static int calculate_h_scale_registers(struct saa7146_dev *dev,
+ 	xacm = 0;
  
- 		/* For YVU420, we swap the locations of the U and V planes. */
--		if (chan->format.pixelformat == V4L2_PIX_FMT_YVU420) {
--			unsigned long temp;
--
--			temp = chan->addr_offset_u;
--			chan->addr_offset_u = chan->addr_offset_v;
--			chan->addr_offset_v = temp;
--		}
-+		if (chan->format.pixelformat == V4L2_PIX_FMT_YVU420)
-+			swap(chan->addr_offset_u, chan->addr_offset_v);
+ 	/* set horizontal filter parameters (CXY = CXUV) */
+-	cxy = hps_h_coeff_tab[( (xpsc - 1) < 63 ? (xpsc - 1) : 63 )].hps_coeff;
++	cxy = hps_h_coeff_tab[min(xpsc - 1, 63)].hps_coeff;
+ 	cxuv = cxy;
  
- 		chan->start_offset_u = chan->addr_offset_u;
- 		chan->start_offset_v = chan->addr_offset_v;
+ 	/* calculate and set horizontal fine scale (xsci) */
+@@ -151,7 +151,7 @@ static int calculate_h_scale_registers(struct saa7146_dev *dev,
+ 		xacm = 0;
+ 		/* get best match in the table of attenuations
+ 		   for horizontal scaling */
+-		h_atten = hps_h_coeff_tab[( (xpsc - 1) < 63 ? (xpsc - 1) : 63 )].weight_sum;
++		h_atten = hps_h_coeff_tab[min(xpsc - 1, 63)].weight_sum;
+ 
+ 		for (i = 0; h_attenuation[i] != 0; i++) {
+ 			if (h_attenuation[i] >= h_atten)
+@@ -283,10 +283,10 @@ static int calculate_v_scale_registers(struct saa7146_dev *dev, enum v4l2_field
+ 		}
+ 
+ 		/* get filter coefficients for cya, cyb from table hps_v_coeff_tab */
+-		cya_cyb = hps_v_coeff_tab[ (yacl < 63 ? yacl : 63 ) ].hps_coeff;
++		cya_cyb = hps_v_coeff_tab[min(yacl, 63)].hps_coeff;
+ 
+ 		/* get best match in the table of attenuations for vertical scaling */
+-		v_atten = hps_v_coeff_tab[ (yacl < 63 ? yacl : 63 ) ].weight_sum;
++		v_atten = hps_v_coeff_tab[min(yacl, 63)].weight_sum;
+ 
+ 		for (i = 0; v_attenuation[i] != 0; i++) {
+ 			if (v_attenuation[i] >= v_atten)
 
 -- 
 2.44.0.769.g3c40516874-goog
