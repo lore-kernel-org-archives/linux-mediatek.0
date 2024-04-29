@@ -4,60 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A63BCC4345F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Apr 2024 14:03:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5707C4345F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Apr 2024 14:13:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ocFabipTBG4oXHbfxXvrfJfVuUJ+Grr9xgYqutnvFxw=; b=gOzeEzIlHuU971EK+xZi4ovwzz
-	zfZccJl76aP/hh6v5Oi8RehsE3sq62+c+rDjDRAcbj2a0akGZFlpZMdQ21PfClpgtXAeZF+wymJnW
-	fN/KP41JTCqfBWNTW/K6fdXh2qvLV8pWvI9hRhsWS0Iy+CpgHyN9OB1x/7h8Y6HzVwZuGs8kvtVaB
-	0JHNNMJFNhRxqC9a0tGJIHIUgtYg7ksjHcX5DW0R7CO5ANBMoUB/11U8sBqgE0RqO3/7Ptg3jbvCU
-	UyMZmrCi6ZHTBfpYtm7+UxnLEWXUOtcvpuJPchHkKNrvpAcYoMzYJthXWFhBdJd1lhM4r9ngfhiO8
-	2XoMSV2A==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XevMSrZR+TjMj+uR8dIvgjdDgfbe8hL2bW7iiMXmAKs=; b=EGXLROdCrTUYiJFyWtMCqmgyOb
+	3EZ2zz7r6rC5H5xpsqN3u/XDI62eoKp5FPrI0Wad3KZBJRqHKKD6aP+PuY9NHlekrZyOMEp123GUk
+	rfUBX5WUQ/6jFsCVIbD6GjDEt6Xn1+77YdNl/50DC23BflgtpVylAy5SgWASwaBDstQzaBWJDOA4/
+	SsZ5ekoOC+3q8zYYODJNVx0VXH4eZIMlkPBaelbW8W+4abdkwr6hWWpCJF65Z9qKA2QMqI2lvR2pa
+	9yZ9kjoawGTwdJcbf9x7UVKjXrZpm4N4AwgbRKO5+12CwUem4e174JbsLAJXvKxQKLg5llPRrpWal
+	trb2UU2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1RbC-000000032sM-27ML;
-	Mon, 29 Apr 2024 14:03:18 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1s1Rl2-000000035bC-1CU6;
+	Mon, 29 Apr 2024 14:13:28 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1Rak-000000032df-3Dw5;
-	Mon, 29 Apr 2024 14:02:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1714399367;
-	bh=HgtKVM/TierHAv//0s/r7QfRlk07MtY0ehnomTV6vxU=;
-	h=From:To:Cc:Subject:Date:From;
-	b=kEw1H8oWk3+bJvmYPLqoKHvHjsRrJbB350iGiuQw9UcZBwB8u26yAVxLKc+Rkyv8/
-	 qBKV/UirKWZrv6vOoPyVFk+eDezfL8T5OEhM5DeyFlE4H0HY2I+1wJl5O8uUV+XWZM
-	 4G54KeqygPR+hStuqyYlcG169EcR7Y4982BYGl+XThpkCMXlFN8EN7rZLnMDvklKC3
-	 0MqcVSfoHoDoZXR9PRO8gWMiPGCZB8Xbb5/vxVwOQ5GI1nrCtGEf35zTuC4/S1KbZj
-	 f90jPswUbEva8t6JAHcViXT+Sgxa86qHZQMpvRTlFWviodV5YTpCTlyK9AiWjX2yXw
-	 0+vJR7vn7JXAQ==
-Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 863B33780BFE;
-	Mon, 29 Apr 2024 14:02:47 +0000 (UTC)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: arm-soc <arm@kernel.org>,
-	soc <soc@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [GIT,PULL,1/2] MediaTek ARM64 DTS updates for v6.10
-Date: Mon, 29 Apr 2024 16:02:42 +0200
-Message-ID: <20240429140245.238210-1-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.44.0
+	id 1s1Rky-000000035aX-2hYB;
+	Mon, 29 Apr 2024 14:13:26 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 38B0FCE0BB1;
+	Mon, 29 Apr 2024 14:13:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A06CDC113CD;
+	Mon, 29 Apr 2024 14:13:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1714400001;
+	bh=618JHK33NfWpe17uC+zkMyziNzW0BIM5OKg4SY19Z4o=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=pRi/v7m69mn8YjGwqv5JxC0uIfVArly6v1eFC5p2vwvEERWe47HOeeZv9VFHvg8oy
+	 ceOoJLDgAWB8NlyggIdoUfXpf1IdFvvdtvX1xqGlhs1ymXqGrJuILz5ZgDqb/Tb3uY
+	 cZZTFB3BZ5736Z9/wwc0OD55Qg+f7JhJakp3ufd5XubEM8sNCYpUvY+OdBrmc1F0T2
+	 STml+I0UGIK4YMkQHmzKPdt4RdL/3i3OfBUfYRSkK0yPNlS4aKkoq9NQ9oR09J5mbx
+	 mrMxE6GeYQQOG68nIxBIaH1GiHVidZGwFgN8xHiWQcfe93DuacfCx8pjkSOFPVG1Co
+	 8ieLALYIWNNMQ==
+Message-ID: <c3531f5f-7aaa-4363-8bfe-ac90521d7a0e@kernel.org>
+Date: Mon, 29 Apr 2024 17:13:13 +0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 4/7] soc: mediatek: Add MediaTek DVFS Resource
+ Collector (DVFSRC) driver
+Content-Language: en-US
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: robh@kernel.org, krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+ matthias.bgg@gmail.com, lgirdwood@gmail.com, broonie@kernel.org,
+ keescook@chromium.org, gustavoars@kernel.org, henryc.chen@mediatek.com,
+ linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, kernel@collabora.com,
+ wenst@chromium.org, amergnat@baylibre.com,
+ Dawei Chien <dawei.chien@mediatek.com>
+References: <20240424095416.1105639-1-angelogioacchino.delregno@collabora.com>
+ <20240424095416.1105639-5-angelogioacchino.delregno@collabora.com>
+From: Georgi Djakov <djakov@kernel.org>
+In-Reply-To: <20240424095416.1105639-5-angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240429_070251_083881_94846CB8 
-X-CRM114-Status: GOOD (  17.58  )
+X-CRM114-CacheID: sfid-20240429_071325_263096_957A8072 
+X-CRM114-Status: GOOD (  17.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,166 +80,152 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The following changes since commit 4cece764965020c22cff7665b18a012006359095:
+On 24.04.24 12:54, AngeloGioacchino Del Regno wrote:
+> The Dynamic Voltage and Frequency Scaling Resource Collector (DVFSRC) is a
+> Hardware module used to collect all the requests from both software and the
+> various remote processors embedded into the SoC and decide about a minimum
+> operating voltage and a minimum DRAM frequency to fulfill those requests in
+> an effort to provide the best achievable performance per watt.
+> 
+> This hardware IP is capable of transparently performing direct register R/W
+> on all of the DVFSRC-controlled regulators and SoC bandwidth knobs.
+> 
+> This driver includes support for MT8183, MT8192 and MT8195.
+> 
+> Co-Developed-by: Dawei Chien <dawei.chien@mediatek.com>
+> [Angelo: Partial refactoring and cleanups]
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-  Linux 6.9-rc1 (2024-03-24 14:10:05 -0700)
+Thanks for reviving this patchset!
 
-are available in the Git repository at:
+> ---
+>   drivers/soc/mediatek/Kconfig             |  11 +
+>   drivers/soc/mediatek/Makefile            |   1 +
+>   drivers/soc/mediatek/mtk-dvfsrc.c        | 551 +++++++++++++++++++++++
+>   include/linux/soc/mediatek/dvfsrc.h      |  36 ++
+>   include/linux/soc/mediatek/mtk_sip_svc.h |   3 +
+>   5 files changed, 602 insertions(+)
+>   create mode 100644 drivers/soc/mediatek/mtk-dvfsrc.c
+>   create mode 100644 include/linux/soc/mediatek/dvfsrc.h
+> 
+[..]
+> +++ b/drivers/soc/mediatek/mtk-dvfsrc.c
+> @@ -0,0 +1,551 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Copyright (C) 2021 MediaTek Inc.
+> + * Copyright (c) 2024 Collabora Ltd.
+> + *                    AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> + */
+> +
+> +#include <linux/arm-smccc.h>
+> +#include <linux/bitfield.h>
+> +#include <linux/iopoll.h>
+> +#include <linux/module.h>
+> +#include <linux/of.h>
+> +#include <linux/of_platform.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/soc/mediatek/dvfsrc.h>
+> +#include <linux/soc/mediatek/mtk_sip_svc.h>
+> +
+> +/* DVFSRC_LEVEL */
+> +#define DVFSRC_V1_LEVEL_TARGET_LEVEL	GENMASK(15, 0)
+> +#define DVFSRC_TGT_LEVEL_IDLE		0x00
+> +#define DVFSRC_V1_LEVEL_CURRENT_LEVEL	GENMASK(31, 16)
+> +
+> +/* DVFSRC_SW_REQ, DVFSRC_SW_REQ2 */
+> +#define DVFSRC_V1_SW_REQ2_DRAM_LEVEL	GENMASK(1, 0)
+> +#define DVFSRC_V1_SW_REQ2_VCORE_LEVEL	GENMASK(3, 2)
+> +
+> +#define DVFSRC_V2_SW_REQ_DRAM_LEVEL	GENMASK(3, 0)
+> +#define DVFSRC_V2_SW_REQ_VCORE_LEVEL	GENMASK(6, 4)
+> +
+> +/* DVFSRC_VCORE */
+> +#define DVFSRC_V2_VCORE_REQ_VSCP_LEVEL	GENMASK(14, 12)
+> +
+> +#define KBPS_TO_MBPS(x)			((x) / 1000)
+> +
+> +#define DVFSRC_POLL_TIMEOUT_US		1000
+> +#define STARTUP_TIME_US			1
+> +
+> +#define MTK_SIP_DVFSRC_INIT		0x0
+> +#define MTK_SIP_DVFSRC_START		0x1
+> +
+> +struct dvfsrc_bw_constraints {
+> +	u16 max_dram_nom_bw;
+> +	u16 max_dram_peak_bw;
+> +	u16 max_dram_hrt_bw;
+> +};
+> +
+> +struct dvfsrc_opp {
+> +	u32 vcore_opp;
+> +	u32 dram_opp;
+> +};
+> +
+> +struct dvfsrc_opp_desc {
+> +	const struct dvfsrc_opp *opps;
+> +	u32 num_opp;
+> +};
+> +
+> +struct dvfsrc_soc_data;
+> +struct mtk_dvfsrc {
+> +	struct device *dev;
+> +	struct platform_device *icc;
+> +	struct platform_device *regulator;
+> +	const struct dvfsrc_soc_data *dvd;
+> +	const struct dvfsrc_opp_desc *curr_opps;
+> +	void __iomem *regs;
+> +	int dram_type;
+> +};
+> +
+> +struct dvfsrc_soc_data {
+> +	const int *regs;
+> +	const struct dvfsrc_opp_desc *opps_desc;
+> +	u32 (*get_target_level)(struct mtk_dvfsrc *dvfsrc);
+> +	u32 (*get_current_level)(struct mtk_dvfsrc *dvfsrc);
+> +	u32 (*get_vcore_level)(struct mtk_dvfsrc *dvfsrc);
+> +	u32 (*get_vscp_level)(struct mtk_dvfsrc *dvfsrc);
+> +	void (*set_dram_bw)(struct mtk_dvfsrc *dvfsrc, u64 bw);
+> +	void (*set_dram_peak_bw)(struct mtk_dvfsrc *dvfsrc, u64 bw);
+> +	void (*set_dram_hrt_bw)(struct mtk_dvfsrc *dvfsrc, u64 bw);
+> +	void (*set_opp_level)(struct mtk_dvfsrc *dvfsrc, u32 level);
+> +	void (*set_vcore_level)(struct mtk_dvfsrc *dvfsrc, u32 level);
+> +	void (*set_vscp_level)(struct mtk_dvfsrc *dvfsrc, u32 level);
+> +	int (*wait_for_opp_level)(struct mtk_dvfsrc *dvfsrc, u32 level);
+> +	int (*wait_for_vcore_level)(struct mtk_dvfsrc *dvfsrc, u32 level);
+> +	const struct dvfsrc_bw_constraints *bw_constraints;
+> +};
+> +
+> +static u32 dvfsrc_readl(struct mtk_dvfsrc *dvfs, u32 offset)
+> +{
+> +	return readl(dvfs->regs + dvfs->dvd->regs[offset]);
+> +}
+> +
+> +static void dvfsrc_writel(struct mtk_dvfsrc *dvfs, u32 offset, u32 val)
+> +{
+> +	writel(val, dvfs->regs + dvfs->dvd->regs[offset]);
+> +}
+> +
+> +#define dvfsrc_rmw(dvfs, offset, val, mask, shift) \
+> +	dvfsrc_writel(dvfs, offset, \
+> +		(dvfsrc_readl(dvfs, offset) & ~(mask << shift)) | (val << shift))
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/mediatek/linux.git/ tags/mtk-dts64-for-v6.10
+Nit: The above macro seems unused?
 
-for you to fetch changes up to d3dbc472ac662a1ebba5064b44bc3a24e91b412a:
+BR,
+Georgi
 
-  arm64: dts: mediatek: mt8188: add lvts definitions (2024-04-23 11:16:44 +0200)
-
-----------------------------------------------------------------
-MediaTek ARM64 DTS updates for v6.10
-
-This introduces the new Airoha (MediaTek) EN7581 home networking
-platform (routers) in early stages, but with support for its
-Evaluation Board, a few more MediaTek based machines, and
-improvements for existing ones.
-
-For the MT7981 router SoC we get pinctrl support, along with the
-enablement of its watchdog and integrated WiFi controller, other
-than the introduction of a new machine based on this chip: the
-Cudy WR3000 V1 router.
-
-Some advancements have been done also on the MT7988 SoC, which
-gains support for its USB XHCI controllers.
-
-MediaTek Genio SoCs also get attention, with the introduction of a
-basic device tree for the MT8390 Genio 700-EVK board, and for the
-MT8395 Genio 1200 powered Kontron 3.5"-SBC-i1200.
-
-Additionally, the Genio 1200 Radxa NIO12L board gets support for
-USB Role Switching and proper PCI-Express controller PM suspend
-and resume, other than finally enabling CPU and GPU frequency
-and voltage scaling for improved efficiency.
-
-Speaking of MediaTek Kompanio SoCs (Chromebooks) instead, thanks
-to community interest and help in testing, there comes support for
-the MT8195-powered HP Chromebook X360 13b-ca0002sa;
-
-Besides that, this also adds a few other cleanups and improvements
-for all machines using the MT8183, MT8192, MT8195/MT8395 SoCs.
-
-In particular:
- - The MediaTek Smart Voltage Scaling (SVS) is now fully working
-   those SoCs, bringing further power efficiency improvements;
- - Thermal zones were refactored on MT8183 for consistency with
-   the other MediaTek SoCs and for readability
- - MT8186 and MT8188 get an initial node for the LVTS Thermal
-   Controller (SoC-internal temperatures)
- - Sound DAI links are now consistently specified in device tree
-   on MT8195 and MT8186 machines
- - Some cleanups for unused/legacy devicetree properties
-
-----------------------------------------------------------------
-AngeloGioacchino Del Regno (14):
-      arm64: dts: mediatek: Complete chassis-type for MT8183 Chromebooks
-      arm64: dts: mediatek: Add missing chassis-type to MT8192 Chromebooks
-      dt-bindings: soc: mediatek: Add support for MT8188 VPPSYS
-      arm64: dts: mediatek: mt8195: Fix GPU thermal zone name for SVS
-      arm64: dts: mediatek: mt8192: Fix GPU thermal zone name for SVS
-      arm64: dts: mediatek: mt8183: Refactor thermal zones
-      arm64: dts: medaitek: mt8395-nio-12l: Set i2c6 pins to bias-disable
-      arm64: dts: mediatek: mt8395-nio-12l: Define RSEL in microamperes
-      arm64: dts: mediatek: mt8395-nio-12l: Enable PHYs and USB role switch
-      arm64: dts: mediatek: mt8395-nio-12l: Add power supplies for CPU/GPU scaling
-      arm64: dts: mediatek: mt8195-cherry: Specify sound DAI links and routing
-      arm64: dts: mediatek: mt8186-corsola: Specify sound DAI links and routing
-      dt-bindings: arm: mediatek: Add MT8195 HP Chromebook x360 13b-ca0002sa
-      arm64: mediatek: mt8195-cherry: Introduce the MT8195 Dojo Chromebook
-
-Chen-Yu Tsai (3):
-      arm64: dts: mediatek: mt8183-kukui: Drop bogus output-enable property
-      arm64: dts: mediatek: Drop mediatek,drive-strength-adv usage
-      arm64: dts: mediatek: mt8183-pico6: Fix bluetooth node
-
-Daniel Danzberger (3):
-      arm64: dts: Add Airoha EN7581 SoC and EN7581 Evaluation Board
-      arm64: add Airoha EN7581 platform
-      arm64: defconfig: enable Airoha platform
-
-Lorenzo Bianconi (2):
-      dt-bindings: arm64: dts: airoha: Add en7581 entry
-      arm64: dts: airoha: Add EN7581 clock node
-
-Macpaul Lin (3):
-      dt-bindings: arm64: mediatek: add mt8390-evk board
-      arm64: dts: mediatek: add device-tree for Genio 700 EVK board
-      arm64: dts: mediatek: mt8395-genio-1200-evk: add u3port1 for xhci1
-
-Michael Walle (2):
-      dt-bindings: arm64: mediatek: add Kontron 3.5"-SBC-i1200
-      arm64: dts: mediatek: add Kontron 3.5"-SBC-i1200
-
-Nicolas Pitre (2):
-      arm64: dts: mediatek: mt8186: add lvts definitions
-      arm64: dts: mediatek: mt8188: add lvts definitions
-
-Rafał Miłecki (6):
-      dt-bindings: vendor-prefixes: add Cudy
-      dt-bindings: arm64: dts: mediatek: Add Cudy WR3000 V1 router
-      arm64: dts: mediatek: mt7981: add pinctrl
-      arm64: dts: mediatek: Add Cudy WR3000 V1
-      arm64: dts: mediatek: mt7988: add XHCI controllers
-      arm64: dts: mediatek: mt7981: add watchdog & WiFi controllers
-
- Documentation/devicetree/bindings/arm/airoha.yaml                   |    4 +
- Documentation/devicetree/bindings/arm/mediatek.yaml                 |   15 +
- Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml  |    1 +
- Documentation/devicetree/bindings/vendor-prefixes.yaml              |    2 +
- arch/arm64/Kconfig.platforms                                        |    7 +
- arch/arm64/boot/dts/Makefile                                        |    1 +
- arch/arm64/boot/dts/airoha/Makefile                                 |    2 +
- arch/arm64/boot/dts/airoha/en7581-evb.dts                           |   26 ++
- arch/arm64/boot/dts/airoha/en7581.dtsi                              |  163 ++++++++
- arch/arm64/boot/dts/mediatek/Makefile                               |    4 +
- arch/arm64/boot/dts/mediatek/mt7981b-cudy-wr3000-v1.dts             |   74 ++++
- arch/arm64/boot/dts/mediatek/mt7981b.dtsi                           |   48 ++-
- arch/arm64/boot/dts/mediatek/mt7988a.dtsi                           |   32 +-
- arch/arm64/boot/dts/mediatek/mt8183-evb.dts                         |    6 -
- arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cozmo.dts         |    1 +
- arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku1.dts   |    1 +
- arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku6.dts   |    1 +
- arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku7.dts   |    1 +
- arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel14-sku2.dts |    1 +
- arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel14.dts      |    1 +
- arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-kappa.dts         |    1 +
- arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-kenzo.dts         |    1 +
- arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-pico6.dts         |    3 +-
- arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-willow-sku0.dts   |    1 +
- arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-willow-sku1.dts   |    1 +
- arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku32.dts          |    1 +
- arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi                      |    8 -
- arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts                     |    6 -
- arch/arm64/boot/dts/mediatek/mt8183.dtsi                            |  136 +++++--
- arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi                    |   42 ++-
- arch/arm64/boot/dts/mediatek/mt8186.dtsi                            |   19 +
- arch/arm64/boot/dts/mediatek/mt8188.dtsi                            |   35 ++
- arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1.dts           |    1 +
- arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r5-sku2.dts      |    1 +
- arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r0.dts         |    1 +
- arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r4.dts         |    1 +
- arch/arm64/boot/dts/mediatek/mt8192.dtsi                            |    2 +-
- arch/arm64/boot/dts/mediatek/mt8195-cherry-dojo-r1.dts              |  114 ++++++
- arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi                     |   50 +++
- arch/arm64/boot/dts/mediatek/mt8195-evb.dts                         |    4 +-
- arch/arm64/boot/dts/mediatek/mt8195.dtsi                            |    2 +-
- arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts               |  880 +++++++++++++++++++++++++++++++++++++++++++
- arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts              |    6 +
- arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dts       | 1127 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
- arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts               |   88 ++++-
- arch/arm64/configs/defconfig                                        |    1 +
- 46 files changed, 2853 insertions(+), 70 deletions(-)
- create mode 100644 arch/arm64/boot/dts/airoha/Makefile
- create mode 100644 arch/arm64/boot/dts/airoha/en7581-evb.dts
- create mode 100644 arch/arm64/boot/dts/airoha/en7581.dtsi
- create mode 100644 arch/arm64/boot/dts/mediatek/mt7981b-cudy-wr3000-v1.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8195-cherry-dojo-r1.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dts
+> +enum dvfsrc_regs {
+> +	DVFSRC_SW_REQ,
+> +	DVFSRC_SW_REQ2,
+> +	DVFSRC_LEVEL,
+> +	DVFSRC_TARGET_LEVEL,
+> +	DVFSRC_SW_BW,
+> +	DVFSRC_SW_PEAK_BW,
+> +	DVFSRC_SW_HRT_BW,
+> +	DVFSRC_VCORE,
+> +	DVFSRC_REGS_MAX,
+> +};
+> +
 
 
