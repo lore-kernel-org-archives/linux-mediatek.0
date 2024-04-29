@@ -4,78 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53197C4345F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Apr 2024 09:59:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB81FC4345F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Apr 2024 10:23:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QE951D5l0qilZ1o07jWbnkqCMRoquuXb8OIu85XME+o=; b=FANnT+wLL8HIYMP03uMOaG1O4G
-	6AfQEwn/kOFAI+tRX3Do2ngqPQ1eoDl+/wSJermPmcVKRILyqlztdlKVbT50A92cZPbQP8LQKWe4o
-	dcr0gYNd3IVDO0nLqWOFgSzathw/11DvPPMaPXbLWTuimTGxxe9kM3hkMOaRVzBpV78o2D6o6uFY+
-	+2VCGaBRJgXj/syppLGVTXAy2HrloV/z7fFNYmQHDSODH1aAp+AiU7KcSwAWbqP0J+HHYFjLH78V0
-	Og+GHXOCx14PyZ29ovhOknCkdMRXnIQyZV5p+mgxjkc9nrWIk/V8qdtF8hUhF4I86M7y2irXTgso8
-	1GlNWzUw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:cc:To:Date:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Qca9Cx0dLXV3WOQpiDsu1gOhJEwD+qsHOWl+MP2hUmo=; b=xKsh+ORqDP/yVpyQ0hLURsLTqj
+	fPetVJx78ra3C7LYArzHkl3h9HtMCfAXWO8CHt6h94odn+FR/8jIx1H7KuJAT6yHhzFlaPd7YXm90
+	i+rbZkkewtVXxOrfh8VjgET64zWt0GT4y32SOcO5YpTZZZS9CmFDwEagBtbq8ziu02oDg5KC4/3bj
+	HiQKtCpV/iUZH0F2wWNv3jmZYsE4ozRUmDS5K/K9BNI47dMkRBdidH1KfdtPWztQ8XXrP/g/PeXoN
+	navZTqMb0AMZL8Y+KKu20TJqZ8YY80GzFDpV6wLNdiUMPRj1dZDpCwr0SUn33KSXj1mCTv7s5p+Qg
+	69tYMOmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1NnG-00000002BM4-1mcf;
-	Mon, 29 Apr 2024 09:59:30 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1s1OA1-00000002FQF-0EAq;
+	Mon, 29 Apr 2024 10:23:01 +0000
+Received: from mgamail.intel.com ([192.198.163.12])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1NnC-00000002BL5-3JHe;
-	Mon, 29 Apr 2024 09:59:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=QE951D5l0qilZ1o07jWbnkqCMRoquuXb8OIu85XME+o=; b=p5EYPf74YgHv7kaeBx9L4VBEF+
-	U2XaPUgsI9DOvLi94YdpzE0PrgDBkECABKoxA5Me/SCplKBpJ6C9B5vznmACi4V5DbWG14ny4IoCa
-	nrZs9qPBV004sFNc4N5TjhtGghTiIlrOLevPRWVpKxdg3bpmmtKMxxb30ba/Yxngda0V9OEQh+CoT
-	i6mKk8in0zO/IrMBo9sFkRwpyg+2QPcPwXt+q8ZHd41ee8eFR7lyDSFFGRUz68m7OVJDnfLXmv6VY
-	/x6m257IwvUwIgdKIcuaf77m07ujtdz3F2UUhvn73lRL5tvS6eXJKDxihnAYJcutNA05ctShVOnie
-	e6ZMjGOA==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:38050)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1s1Nmn-0002wf-2K;
-	Mon, 29 Apr 2024 10:59:01 +0100
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1s1Nmi-0000kp-VR; Mon, 29 Apr 2024 10:58:57 +0100
-Date: Mon, 29 Apr 2024 10:58:56 +0100
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: arinc.unal@arinc9.com
-Cc: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Bartel Eerdekens <bartel.eerdekens@constell8.be>,
-	mithat.guner@xeront.com, erkin.bozoglu@xeront.com,
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next] net: dsa: mt7530: detect PHY muxing when PHY is
- defined on switch MDIO bus
-Message-ID: <Zi9vYLwgekd0Pmzn@shell.armlinux.org.uk>
-References: <20240429-b4-for-netnext-mt7530-use-switch-mdio-bus-for-phy-muxing-v1-1-1f775983e155@arinc9.com>
+	id 1s1O9y-00000002FPh-197s
+	for linux-mediatek@lists.infradead.org;
+	Mon, 29 Apr 2024 10:22:59 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1714386178; x=1745922178;
+  h=from:date:to:cc:subject:message-id:mime-version;
+  bh=gq2L+qagD+ctbJ1g03h2JM87K7EUppTIEWwY830mVMo=;
+  b=JwORV+FM8nckhGKRrp9F0wmfiZsYoZVO+MG85KEN4wWvg2OSwkmGda3I
+   3Pt6358NSovhgMvwXjMuzvZ86HRNiJgy+jukRSSqpsUSzyQuwJgZTpYVi
+   zoN7x43Irqpwp/qLxzPLmpR/V97q3Yzl2lLD/WYeUpOn4cV8W7kz1Z7nb
+   bDUPyXLAMaoS6cK8aZTIgpcjjCfbSEob3HqU6jrRkalY7cnnsaw/YN+p4
+   CUe8dUKo9Uv3c52CI+Ux/Nfyxl/ScNv61VGdF8KOEHVinpzb10rwwRZn0
+   NKuI0GvCL9ARLTKPIL5K5+SbRDBQgbZAJeQQwlcmCqn9Ub7hnyhQ95rAn
+   A==;
+X-CSE-ConnectionGUID: axZCxBKeS8eYGX3FcobXXA==
+X-CSE-MsgGUID: nF29HHFWTK+n5hTpIoIu4g==
+X-IronPort-AV: E=McAfee;i="6600,9927,11057"; a="13827732"
+X-IronPort-AV: E=Sophos;i="6.07,239,1708416000"; 
+   d="scan'208";a="13827732"
+Received: from orviesa006.jf.intel.com ([10.64.159.146])
+  by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Apr 2024 03:22:57 -0700
+X-CSE-ConnectionGUID: lnQIrUnfT9GJEjU2pXHkRw==
+X-CSE-MsgGUID: IrMbYg+TRdeC7MOd8b+6RQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.07,239,1708416000"; 
+   d="scan'208";a="26474871"
+Received: from ijarvine-desk1.ger.corp.intel.com (HELO localhost) ([10.245.247.45])
+  by orviesa006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Apr 2024 03:22:53 -0700
+From: =?UTF-8?q?Ilpo=20J=C3=A4rvinen?= <ilpo.jarvinen@linux.intel.com>
+Date: Mon, 29 Apr 2024 13:22:50 +0300 (EEST)
+To: Ryder Lee <ryder.lee@mediatek.com>, 
+    Jianjun Wang <jianjun.wang@mediatek.com>, 
+    Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+    =?ISO-8859-2?Q?Krzysztof_Wilczy=F1ski?= <kw@linux.com>, 
+    Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
+    linux-pci@vger.kernel.org
+cc: LKML <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org
+Subject: pcie-mediatek slot calculation correct?
+Message-ID: <9ea20705-8536-738b-4f1f-60feb2c092fa@linux.intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20240429-b4-for-netnext-mt7530-use-switch-mdio-bus-for-phy-muxing-v1-1-1f775983e155@arinc9.com>
+Content-Type: text/plain; charset=US-ASCII
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240429_025926_856146_EDBD93AF 
-X-CRM114-Status: GOOD (  23.60  )
+X-CRM114-CacheID: sfid-20240429_032258_421741_1AE9388F 
+X-CRM114-Status: UNSURE (   4.13  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,46 +84,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 29, 2024 at 12:46:43PM +0300, Arınç ÜNAL via B4 Relay wrote:
-> From: Arınç ÜNAL <arinc.unal@arinc9.com>
-> 
-> Currently, the MT7530 DSA subdriver configures the MT7530 switch to provide
-> direct access to switch PHYs, meaning, the switch PHYs listen on the MDIO
-> bus the switch listens on. The PHY muxing feature makes use of this.
-> 
-> This is problematic as the PHY may be probed before the switch is
-> initialised, in which case attaching the PHY will fail.
-> 
-> Since commit 91374ba537bd ("net: dsa: mt7530: support OF-based registration
-> of switch MDIO bus"), we can describe the switch PHYs on the MDIO bus of
-> the switch on the device tree. Extend the check to detect PHY muxing when
-> the PHY is defined on the MDIO bus of the switch on the device tree.
-> 
-> When the PHY is described this way, the switch will be initialised first,
-> then the switch MDIO bus will be registered. Only after these steps, the
-> PHY will be probed.
+Hi all,
 
-Looking at the commit description and the patch, I'm not sure whether
-you really mean "probed" or whether you mean "attached".
+I was doing Conf Type 0/1 helper generalization when I ran into this code 
+in drivers/pci/controller/pcie-mediatek.c:
 
-PHY drivers will bind to PHY devices when they are detected on the MDIO
-bus (either by scanning or instantiating firmware description) and the
-devices are registered. As each device is registered, the drivers for
-the bus type are scanned and any matches will have their probe function
-called. This happens outside of any control of the DSA driver if the
-DSA device is on the same MDIO bus.
+	u32 func = PCI_FUNC(port->slot);
+	u32 slot = PCI_SLOT(port->slot << 3);
 
-This is separate from the process of looking up a PHY and attaching the
-PHY.
+With that code, function is effectively duplicated into slot, is this 
+correct behavior?
 
-So, I think there is probably a terminology issue with the patch
-description. I suspect you don't mean "probing" as in phy_probe() being
-called. Looking at the code, it looks like the driver is making
-decisions based on how PHYs are connected to the ethernet MACs in the
-device tree, and you're making decisions based on that. I wouldn't call
-that "probing" a PHY.
+...Adjustments made in the history of this code fragment didn't exactly 
+inspire confidence on the correctness of this code. :-/
+
 
 -- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+ i.
+
 
