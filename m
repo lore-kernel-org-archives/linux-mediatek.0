@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFB99C4345F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Apr 2024 15:07:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4566C4345F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Apr 2024 15:08:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gMpzOFCFY/OFyCB78Iqov2ITRER3c7lueX7XaC40UJk=; b=ngmlzOUbw6RdbR9WR2CYVTOuSn
-	3YuadSCE1l+yGxmyaWbB9egpqnakLKqoFStRaLANgApwWApNmO6AWrbQ+b788sR/ltfrTDS+4mqX+
-	IpPxX+Xx9A0l1HhBuhkSd2wDE3cgcXXlGK4S2KpFwpfTCsTs5MsGgCs5nO+TjTUhB7XQT11wKJxwr
-	pqz9NxgWVDTKHGBSRzlOJmfJ+PHvSLW7YUuK725zSav9s+UN10c4L1loYhfTthQJHlv+vg108UpLC
-	Dl4YxyYPiiPJA5Kid1V/3+qWhQ5YiKYILJGzSsk/y4pG4QpBh359o2nR/YWchTVB04JvaJDFhtzqF
-	O/qnpPHg==;
+	bh=H+ICFE9T0WtFgFxAAIzneJg+RkmVbFrs0mrpkqFICS0=; b=Q8Kr876B6JPSvexCv2ekDVxRfL
+	dPjTvktVnADuCshqTUebs+zQq5KxBEqDbDiu48LMeyE0Ot/9ZzVpcglUOHmLJfW3ztKccZjv3nNoC
+	0+UgkyuZHnLKal6ynJ1tLT/tec4SrSgmDFPjdWUxIb8k4J6R4quD12Sq0XM4FSvcjV8hBW07Q0Gke
+	7jIbYISJavZkFP7OdgxUafYP96gugPCH9s57r8NCnaDZ/g+xtktyTl5zcJpM9YOcmPjxRLuZUPMlw
+	3lz5EFprIkhdmdOwDY2+9f3CMgG1GdzxjJyziqkSO0hF6isIW7DGwbAaoqlX7ei3nFjPvV5CnksEf
+	0Wg+Omug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1Sbi-00000003HLy-2qo8;
-	Mon, 29 Apr 2024 15:07:54 +0000
-Received: from mail-oa1-x2a.google.com ([2001:4860:4864:20::2a])
+	id 1s1Sbt-00000003HSR-0mrF;
+	Mon, 29 Apr 2024 15:08:05 +0000
+Received: from mail-qk1-x730.google.com ([2607:f8b0:4864:20::730])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1SZ0-00000003FXa-2Dye
+	id 1s1SZ1-00000003FZv-19HJ
 	for linux-mediatek@lists.infradead.org;
-	Mon, 29 Apr 2024 15:05:08 +0000
-Received: by mail-oa1-x2a.google.com with SMTP id 586e51a60fabf-22fa7e4b0beso1700978fac.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 29 Apr 2024 08:05:04 -0700 (PDT)
+	Mon, 29 Apr 2024 15:05:09 +0000
+Received: by mail-qk1-x730.google.com with SMTP id af79cd13be357-790ff1fa7b3so45309485a.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 29 Apr 2024 08:05:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1714403103; x=1715007903; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1714403106; x=1715007906; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=gMpzOFCFY/OFyCB78Iqov2ITRER3c7lueX7XaC40UJk=;
-        b=gbYWN6wX00nv9deXtkedm9x6f9LU8EKRI240GEkVTtR/jcNy4NFbAkbvD9rLklLpMr
-         N/DAbo1z95fLo2of4ZeIIcY3t1IMToDzW6M/0Xrk19csEHO1GRrn+WnusFLWiQM388zX
-         vjKuRmQ5L5oQhA45mphjsMJ9CMIaqr8yx09u0=
+        bh=H+ICFE9T0WtFgFxAAIzneJg+RkmVbFrs0mrpkqFICS0=;
+        b=aY5za4Y3PCSTAM0/L3YfYpIrBxQk2ax8Eo9zCKgpF13I2GgVpA4skpx17VIZLtC1Am
+         KjwRIGBGcwVQoqjVeH6m7F90DKmB0k4e+jBV/CqI517h2ju/EjAAoXf4mhW6G/1Wlo9f
+         kGUhJRn2xEuYLwxctaCzhyfDaoA9mp+s6TaIY=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1714403103; x=1715007903;
+        d=1e100.net; s=20230601; t=1714403106; x=1715007906;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=gMpzOFCFY/OFyCB78Iqov2ITRER3c7lueX7XaC40UJk=;
-        b=lt1thu1ZXiLZ/1ZJBlM2iZy/QaomTODmMdsqCFI5/Ja+GD4r2Db1ApJsZcj7IpDMma
-         H6UxY2VHGtev6KSPTnRSQVMIU7abVfIu+h9cvyaGOP7BnHXmWwo/qzowScMvMSBOd4fK
-         Yj6jsYjpCXFOLtadls8koOtGvhydNmmNzs26SlE6dvvbdB2omXKw31Z2Z7FGayXjpAcJ
-         rBlpBDHvDfg3VRAol92G3634PMZjmAISc0yMGdkFEh6eSxQGu+PKxGl2GYlHXRdhNe7b
-         +hmlj20LiyiWjl3y76c1XPPdg8dEVAQb2WU0tQuPJ5gFraex0bIerehCK1Hps8ayJE4+
-         W+nQ==
-X-Forwarded-Encrypted: i=1; AJvYcCULeokVLtSlx/NY5rWKI2OyEBzGUkNtS9KzQQKGHpFCq2Sra/aKT95sQsZ4ZzMP4e/Djpd+NlXPYkgLIjXbfAtwCM7SASoZDec0EjvnGEWOQg0o
-X-Gm-Message-State: AOJu0YyLOW25M8SObXBai+ZhKbzJ4sV9F3SUqFx8bTKEmIsqB/wLaLXJ
-	TcbfcLgCJAl/2t9xbYFWDwMppmhjgOjlNuuXsi5by+/bNff4RCUyiGqSoW4dZA==
-X-Google-Smtp-Source: AGHT+IFhJl+kGtaYhV7Q9Gv3xiaVng6RdI8g6vF7vUpIJM3CzWksrp2O5EtILgQd8YzMcEQUTtUSrA==
-X-Received: by 2002:a05:6870:701f:b0:22e:d258:bc43 with SMTP id u31-20020a056870701f00b0022ed258bc43mr12416234oae.42.1714403103424;
-        Mon, 29 Apr 2024 08:05:03 -0700 (PDT)
+        bh=H+ICFE9T0WtFgFxAAIzneJg+RkmVbFrs0mrpkqFICS0=;
+        b=VnIgR/9d5be2fOBRS9vuYiviZGsqd5hEYb3Kn5fUiGGc6YFnbE+mwb9Q3+gImY9FuL
+         XOY7jEZLTqqbMbO0c5/vVlJiELy0SVuGoeoiIfQlrR+tmAZSs1PYDXzLvBb26vxABspH
+         lIzz6ujMfM6bX6VKRI1fFeKr2YXp6GmXod5GFc+IuDg4PmIfh690zT84wbJqkkzyckF6
+         coF9skVD/yn60bWRaBGyWlyd6i5l8fLcCNEPy30n2H32Xy1zQuwiToMkzvMo8x3lkEk0
+         wsSarPEP0BvNOLN1SRiyIDc5zBbDTkjdxgIwzed1GFE4CEqQtl294twjaApXDmLiUTnl
+         2H5w==
+X-Forwarded-Encrypted: i=1; AJvYcCXKNqk7HWWMmXPLrJ80d0+FtzCE1evYZ8p7pkawY/zExu5re+lu/PCN7j5V83f+EzKLilMqBvgiadOvwS4psudbAwgnbJKTvTyqMCeuCn4Ut/Cz
+X-Gm-Message-State: AOJu0YzLcU0M5Xvz4E/nWUB0xR54kx+j4PqIjX77vJo6wBet99tC0iEt
+	SWYX/RkxSKOZJyTStrbPWMRQroBK7dr6ftp7pO3w4Hl6W5bMX4xJyius1NqWbQ==
+X-Google-Smtp-Source: AGHT+IE1jrRBd5HK/tPuhHP5Hku+rmhJzqzd24VfyQoPlWIHBef+7Xc9RHcUZ/XfTRZVrVfoGNJ+0A==
+X-Received: by 2002:a05:620a:57d6:b0:790:b2a3:f86c with SMTP id wl22-20020a05620a57d600b00790b2a3f86cmr8844059qkn.34.1714403106175;
+        Mon, 29 Apr 2024 08:05:06 -0700 (PDT)
 Received: from denia.c.googlers.com (114.152.245.35.bc.googleusercontent.com. [35.245.152.114])
-        by smtp.gmail.com with ESMTPSA id p7-20020a05620a056700b0078d3b9139edsm10568591qkp.97.2024.04.29.08.05.02
+        by smtp.gmail.com with ESMTPSA id p7-20020a05620a056700b0078d3b9139edsm10568591qkp.97.2024.04.29.08.05.04
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 29 Apr 2024 08:05:02 -0700 (PDT)
+        Mon, 29 Apr 2024 08:05:05 -0700 (PDT)
 From: Ricardo Ribalda <ribalda@chromium.org>
-Date: Mon, 29 Apr 2024 15:04:59 +0000
-Subject: [PATCH v3 20/26] media: tegra-vde: Refactor timeout handling
+Date: Mon, 29 Apr 2024 15:05:01 +0000
+Subject: [PATCH v3 22/26] media: tc358746: Use the correct div_ function
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240429-fix-cocci-v3-20-3c4865f5a4b0@chromium.org>
+Message-Id: <20240429-fix-cocci-v3-22-3c4865f5a4b0@chromium.org>
 References: <20240429-fix-cocci-v3-0-3c4865f5a4b0@chromium.org>
 In-Reply-To: <20240429-fix-cocci-v3-0-3c4865f5a4b0@chromium.org>
 To: Martin Tuma <martin.tuma@digiteqautomotive.com>, 
@@ -106,8 +106,8 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  Ricardo Ribalda <ribalda@chromium.org>
 X-Mailer: b4 0.12.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240429_080506_678288_5B24D8BD 
-X-CRM114-Status: GOOD (  13.36  )
+X-CRM114-CacheID: sfid-20240429_080507_572276_8FCD0F88 
+X-CRM114-Status: GOOD (  11.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,39 +122,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Reorder the branches a bit, so cocci stops complaining about the code.
+fin does not fit in 32 bits in some arches.
 
-drivers/media/platform/nvidia/tegra-vde/h264.c:645:20-21: WARNING opportunity for min()
+Found by cocci:
+drivers/media/i2c/tc358746.c:847:2-8: WARNING: do_div() does a 64-by-32 division, please consider using div64_ul instead.
 
 Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 ---
- drivers/media/platform/nvidia/tegra-vde/h264.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/media/i2c/tc358746.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/drivers/media/platform/nvidia/tegra-vde/h264.c b/drivers/media/platform/nvidia/tegra-vde/h264.c
-index 204e474d57f7..cfea5572a1b8 100644
---- a/drivers/media/platform/nvidia/tegra-vde/h264.c
-+++ b/drivers/media/platform/nvidia/tegra-vde/h264.c
-@@ -633,7 +633,9 @@ static int tegra_vde_decode_end(struct tegra_vde *vde)
+diff --git a/drivers/media/i2c/tc358746.c b/drivers/media/i2c/tc358746.c
+index d676adc4401b..edf79107adc5 100644
+--- a/drivers/media/i2c/tc358746.c
++++ b/drivers/media/i2c/tc358746.c
+@@ -844,8 +844,7 @@ static unsigned long tc358746_find_pll_settings(struct tc358746 *tc358746,
+ 			continue;
  
- 	timeout = wait_for_completion_interruptible_timeout(
- 			&vde->decode_completion, msecs_to_jiffies(1000));
--	if (timeout == 0) {
-+	if (timeout < 0) {
-+		ret = timeout;
-+	} else if (timeout == 0) {
- 		bsev_ptr = tegra_vde_readl(vde, vde->bsev, 0x10);
- 		macroblocks_nb = tegra_vde_readl(vde, vde->sxe, 0xC8) & 0x1FFF;
- 		read_bytes = bsev_ptr ? bsev_ptr - vde->bitstream_data_addr : 0;
-@@ -642,8 +644,6 @@ static int tegra_vde_decode_end(struct tegra_vde *vde)
- 			read_bytes, macroblocks_nb);
+ 		tmp = fout * postdiv;
+-		do_div(tmp, fin);
+-		mul = tmp;
++		mul = div64_ul(tmp, fin);
+ 		if (mul > 511)
+ 			continue;
  
- 		ret = -EIO;
--	} else if (timeout < 0) {
--		ret = timeout;
- 	} else {
- 		ret = 0;
- 	}
 
 -- 
 2.44.0.769.g3c40516874-goog
