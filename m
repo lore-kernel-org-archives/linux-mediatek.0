@@ -4,70 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6F75C4345F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Apr 2024 15:06:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBCACC4345F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Apr 2024 15:06:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OI4AOi/6PtgU5zRnLUWjMVWmm8Y+CckVMvMt6qKhGc0=; b=R6JgJhT6RY9bUh5fGxYI+WtIOo
-	lHbdrwdo6iPpjVOwxEzZ4oMz+Upqj0J1d7EwiSP6OfPyq/Iz+IuF6roY1Y9IX7Uqiq6xBTYfGraWP
-	6IgVBNYftIStKS+f3nzh9JUUG2VGPjzGx04U1hllg3BSaP2QgbkhnMOsSKLZnuG2ju/RfcMNr4Xrp
-	jV3sQ+1BqW8F4jMSuv9Mp42+wl9NRxyv+8psdgmhp90BGtUFFUIe9BBcOVLqjgdV9DgJBkQiow4aM
-	xJCY6rnOxHi8C7+TFLZndcy454dCGgsdlS1GVjkU+gGZY3Klr/jebW23tJWv307dlJxsGz0JQpIjK
-	1YfQ/vaQ==;
+	bh=I5MK517M661jXeUTMXVPJlov9z4l8/dISyr2IlNuzMY=; b=yypwCIe5qpculhw91go3kYchO1
+	GO8Z0pNxVXDK6qLf3vVN0AO6C+RjqvAZ6O7BLTLKWT3C+V0OiwdZqz+j9NzfDWcp9CH4aTSbV1qyv
+	suM7pVA9iE/fN9UVprTgw2Uwr/LzH8OqKJyRCp9+q22m5TGekWFs04OJJnVT+8irYVA7YHd22rde3
+	gDB74fFy9fI4tHI7ll0wAfX/43QRLwGNPDSYyRmEfhEZ/JmFy8BjjKkx/cXhAdCjTv3VdLN1xfrF3
+	iQD1EZkhY+IpRF2d0CnZQvBMkLPzwy3UlgOYGSaI61fCpX08+Ywj171PKlX5Kp7IhJ3ptoKvnVDK4
+	rJp1FhuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1SaB-00000003GDF-0lXR;
-	Mon, 29 Apr 2024 15:06:19 +0000
-Received: from mail-qk1-x733.google.com ([2607:f8b0:4864:20::733])
+	id 1s1SaP-00000003GLS-1LD7;
+	Mon, 29 Apr 2024 15:06:33 +0000
+Received: from mail-qk1-x731.google.com ([2607:f8b0:4864:20::731])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1SYm-00000003FLr-3mZc
+	id 1s1SYp-00000003FOW-02qg
 	for linux-mediatek@lists.infradead.org;
-	Mon, 29 Apr 2024 15:04:55 +0000
-Received: by mail-qk1-x733.google.com with SMTP id af79cd13be357-790ff1fa7b3so45285385a.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 29 Apr 2024 08:04:52 -0700 (PDT)
+	Mon, 29 Apr 2024 15:04:56 +0000
+Received: by mail-qk1-x731.google.com with SMTP id af79cd13be357-78f049ddd7dso369256185a.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 29 Apr 2024 08:04:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1714403091; x=1715007891; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1714403094; x=1715007894; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=OI4AOi/6PtgU5zRnLUWjMVWmm8Y+CckVMvMt6qKhGc0=;
-        b=fwXHxeHSPoBFy9UNO28adWy5GHJMLw15mfVGzA1ekdw4bPZn9GOoMZ5vg8ZZbRTye3
-         WjDW4YKTMuv6hnw9QEGFgZGiIpkQgU7UR0BkzT31dWH01fWgk4T36ASKlGwe0bq8A58T
-         yVwUtK08axH42aTopV9YKWZLeSyVT8SBg0clg=
+        bh=I5MK517M661jXeUTMXVPJlov9z4l8/dISyr2IlNuzMY=;
+        b=UwbYySCupR21ZFXjOXxaAIXCA/xOh1PfFAtxmC/YL39+YOlt7qH5HZt2RSYUvT8hS8
+         XDgK1M6qdXnfSbu98rBoJOyrvcB6YHLn+64dRiJeffi2LWJUIcdlMCrPj49sFcv08PZz
+         qhg/ZOHkF7usrV6RPyffhy8U93fzETFqJzUlM=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1714403091; x=1715007891;
+        d=1e100.net; s=20230601; t=1714403094; x=1715007894;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=OI4AOi/6PtgU5zRnLUWjMVWmm8Y+CckVMvMt6qKhGc0=;
-        b=NZW4spCrsW13zTwQgr4sL0tl7mTKKdn960g0lhKsy2vsq/t97hzkHHVpf25bwcCiVt
-         8cb/xqW9uX2Y0AzI6Y9s/NJ8fJJxfjQ6ghKYmArH3sZS9W0D8OjuNWGfdO24GOCRMr+p
-         aOcuaRRjfMMFykLlhZA0QkGvGCS3zhnbkSDUoKnjMO7ZnKEzLzttbY9lKJKmzrbOvqAb
-         /WQTyTKeODuFKSSY2m+hGlSHwx1gmgvv3UnsVez9UUFs6G6HiQlynPErvVP5U+zXrbiF
-         a9JtwACtxN+gthZZy2nbuHdAL9+Z5qrCMDh78MnK2e+01r4RhP8+QeBbq4M/3gaGbGWI
-         qxtQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWh3gVdX/vqBI7tU8W1yD46MhkOcIjZalcjljPjN0sltkNpZtbU++UrYeBqm6X5GNew4bbJJPfZ4VpxlIsP4jg97AR+gSE7EJJqh9ZtQz/C4ZlP
-X-Gm-Message-State: AOJu0YxXeyd2wxxqyWgn9xkN5h1F/qLg/hat7B5aCdSK27upquK9GVS5
-	9FsJTYEBdo9C0E9Jhdn8fjF5GLashmELd2o8Hv2eoCeTNY//YYYUcRWMVBTxig==
-X-Google-Smtp-Source: AGHT+IG3TSxma0YdxDVyjt+TwA8E2r3YjCQOsUMIKvXlCmNNngt83Fx59gwPuYEOR/mAqhiKqgMwqA==
-X-Received: by 2002:a05:620a:2445:b0:790:f04b:328c with SMTP id h5-20020a05620a244500b00790f04b328cmr4582245qkn.29.1714403091343;
-        Mon, 29 Apr 2024 08:04:51 -0700 (PDT)
+        bh=I5MK517M661jXeUTMXVPJlov9z4l8/dISyr2IlNuzMY=;
+        b=gXU4Y7bJFg3YOWF0F5ARoReheQwvcRHdgdhELqelHCJE0dsq2WyzQ2pn6wVvbE8krZ
+         QKZxiwJIPXm20jOMBlzah3odiIuuVi502Bhbe/Ta/fKtBHx9FfPxHp8enHjq+0KPWMB/
+         Zb4jAAdBZtwvrq1MCCOG2v9pBhW0fXQ1sLYiiU34n0hJ0U8K7PiQSRzw0mtsCABJieLw
+         1yzPoQe4SaV+QS/lCJf6y8pRFbj0zGH1/DStUeIfStpVheqs25yXkZeyxyfO23jXXbme
+         314URxiY+h74ZnoDgcOaE16xyOP0NBgIPgu87hWtg3HCdoiFR/B+x3BmK+jZg91Q+ySt
+         Wemw==
+X-Forwarded-Encrypted: i=1; AJvYcCWZ1PLCNJt3A3Ks0Vx5gNQ33+k3oWT1ds2TO1buiGhTXsCfUbFuT1L1XWeDWuxABzeB4b6C0Fa5VBHEKluXTYUe4XGKlwdjYWOeHOHPSZLDhIBU
+X-Gm-Message-State: AOJu0YwLA0I/5+rnM4LBr8myDofvInNXSZ198dPvnY5Q9UtckaP5gyDb
+	XLFTk0MF3D6srP8r5EsNmzsB3x/aoByAQFGt/e7aA9vPlApUtiozp05o3+g2AA==
+X-Google-Smtp-Source: AGHT+IHd6ddxHUwcI+GO63TKnOLl3i4M+Xxc5o4/p3XMVcglh0UUR3rtSUQc8AjhdVbPbvMA6ElG+g==
+X-Received: by 2002:a37:de19:0:b0:790:9eb8:b6ec with SMTP id h25-20020a37de19000000b007909eb8b6ecmr9509923qkj.30.1714403093917;
+        Mon, 29 Apr 2024 08:04:53 -0700 (PDT)
 Received: from denia.c.googlers.com (114.152.245.35.bc.googleusercontent.com. [35.245.152.114])
-        by smtp.gmail.com with ESMTPSA id p7-20020a05620a056700b0078d3b9139edsm10568591qkp.97.2024.04.29.08.04.50
+        by smtp.gmail.com with ESMTPSA id p7-20020a05620a056700b0078d3b9139edsm10568591qkp.97.2024.04.29.08.04.52
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 29 Apr 2024 08:04:51 -0700 (PDT)
+        Mon, 29 Apr 2024 08:04:53 -0700 (PDT)
 From: Ricardo Ribalda <ribalda@chromium.org>
-Date: Mon, 29 Apr 2024 15:04:47 +0000
-Subject: [PATCH v3 08/26] media: dvb-frontends: tda18271c2dd: Remove
- casting during div
+Date: Mon, 29 Apr 2024 15:04:49 +0000
+Subject: [PATCH v3 10/26] staging: media: tegra-video: Use swap macro
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240429-fix-cocci-v3-8-3c4865f5a4b0@chromium.org>
+Message-Id: <20240429-fix-cocci-v3-10-3c4865f5a4b0@chromium.org>
 References: <20240429-fix-cocci-v3-0-3c4865f5a4b0@chromium.org>
 In-Reply-To: <20240429-fix-cocci-v3-0-3c4865f5a4b0@chromium.org>
 To: Martin Tuma <martin.tuma@digiteqautomotive.com>, 
@@ -107,8 +106,8 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  Ricardo Ribalda <ribalda@chromium.org>
 X-Mailer: b4 0.12.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240429_080453_268690_50D880BD 
-X-CRM114-Status: GOOD (  11.99  )
+X-CRM114-CacheID: sfid-20240429_080455_258958_180A2E24 
+X-CRM114-Status: GOOD (  11.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,40 +122,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-do_div() divides 64 bits by 32. We were adding a casting to the divider
-to 64 bits, for a number that fits perfectly in 32 bits. Remove it.
+Makes the code simpler and cocci happier:
 
-Found by cocci:
-drivers/media/dvb-frontends/tda18271c2dd.c:355:1-7: WARNING: do_div() does a 64-by-32 division, please consider using div64_u64 instead.
-drivers/media/dvb-frontends/tda18271c2dd.c:331:1-7: WARNING: do_div() does a 64-by-32 division, please consider using div64_u64 instead.
+drivers/staging/media/tegra-video/tegra20.c:324:44-45: WARNING opportunity for swap()
 
+Reviewed-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
 Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 ---
- drivers/media/dvb-frontends/tda18271c2dd.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/media/tegra-video/tegra20.c | 9 ++-------
+ 1 file changed, 2 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/media/dvb-frontends/tda18271c2dd.c b/drivers/media/dvb-frontends/tda18271c2dd.c
-index a34834487943..fd928787207e 100644
---- a/drivers/media/dvb-frontends/tda18271c2dd.c
-+++ b/drivers/media/dvb-frontends/tda18271c2dd.c
-@@ -328,7 +328,7 @@ static int CalcMainPLL(struct tda_state *state, u32 freq)
+diff --git a/drivers/staging/media/tegra-video/tegra20.c b/drivers/staging/media/tegra-video/tegra20.c
+index 630e2ff987a3..7b8f8f810b35 100644
+--- a/drivers/staging/media/tegra-video/tegra20.c
++++ b/drivers/staging/media/tegra-video/tegra20.c
+@@ -317,13 +317,8 @@ static void tegra20_channel_queue_setup(struct tegra_vi_channel *chan)
+ 		chan->addr_offset_v = chan->addr_offset_u + stride * height / 4;
  
- 	OscFreq = (u64) freq * (u64) Div;
- 	OscFreq *= (u64) 16384;
--	do_div(OscFreq, (u64)16000000);
-+	do_div(OscFreq, 16000000);
- 	MainDiv = OscFreq;
+ 		/* For YVU420, we swap the locations of the U and V planes. */
+-		if (chan->format.pixelformat == V4L2_PIX_FMT_YVU420) {
+-			unsigned long temp;
+-
+-			temp = chan->addr_offset_u;
+-			chan->addr_offset_u = chan->addr_offset_v;
+-			chan->addr_offset_v = temp;
+-		}
++		if (chan->format.pixelformat == V4L2_PIX_FMT_YVU420)
++			swap(chan->addr_offset_u, chan->addr_offset_v);
  
- 	state->m_Regs[MPD] = PostDiv & 0x77;
-@@ -352,7 +352,7 @@ static int CalcCalPLL(struct tda_state *state, u32 freq)
- 	OscFreq = (u64)freq * (u64)Div;
- 	/* CalDiv = u32( OscFreq * 16384 / 16000000 ); */
- 	OscFreq *= (u64)16384;
--	do_div(OscFreq, (u64)16000000);
-+	do_div(OscFreq, 16000000);
- 	CalDiv = OscFreq;
- 
- 	state->m_Regs[CPD] = PostDiv;
+ 		chan->start_offset_u = chan->addr_offset_u;
+ 		chan->start_offset_v = chan->addr_offset_v;
 
 -- 
 2.44.0.769.g3c40516874-goog
