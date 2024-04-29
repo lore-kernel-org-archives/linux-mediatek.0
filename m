@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D42BBC4345F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Apr 2024 15:05:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E29E1C04FFE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Apr 2024 15:05:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=S/QHDINTXxaHfJymmPQd1ntNOyaEtGJ2b8ypDUwyIXI=; b=o9X4XU67P3qw/0e163PqomfsNK
-	pIll7WObtVXu0xRurdGXGbr7Tuszi3Sk36DOxRCq3nOnWL4HpRJnuPloeOGuFkG7jepejdpxOPdW9
-	kxMe6rJf1wH5qXkfKu3kdVT036fPwI8aiF7NUtYZN83jsVGurVj8TnD9rSq0/eZ6ou+tY9keovjBu
-	hHCyqFZRfxqpoWij/2U6ONS75XJ4mhGePsz/JHpzJ1r30iln9BfKXCMFB2dIBmpBtIpySh7BeSFPR
-	LjtydJ3GC/u3PVjXw8TULr7m3/5nm0YO5ceA//kaRjaGbHlDBCaZ/Q6Qgwx7DVJq7+uOA0J3ezxIo
-	BiMFaJ+g==;
+	bh=AThUs0uZjFFwmlw5yFatMODeeCPF6NJNDOtB7Vvi1Co=; b=n6JZc74bKw3u21jsPKaxgXwfD7
+	ifg3YixGwKxglDoUODcxcypIUuPMoNNWithTpjRYiJ/I5H0MJOr/XB62AgK+JBcSl79jKMf0hgHq7
+	pJE7Z7UAHIQzdZKzybjubAd1fzCZ4yhQXzRWusF6PzBtwbSGLSiqDWNyi5Uf6kDyccPeIhhBD7Eoy
+	tvB9oRFZgoe3RhHa7b7bLV4qadMYESfN8bE6TWOgu2OKPbSTQNxVWsZjAqvQ6RrRx1B0C5F/nq2vo
+	LudKA93DnzOKzpSvBCS6iCcGa4k7S8H2jliEZAznCEK2+BK1gcPimI3dsQj05jb2QSoA1NZkTof3c
+	HSvSAxHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1SZe-00000003FwQ-1P9b;
-	Mon, 29 Apr 2024 15:05:46 +0000
-Received: from mail-qk1-f177.google.com ([209.85.222.177])
+	id 1s1SZp-00000003G1V-2OVe;
+	Mon, 29 Apr 2024 15:05:57 +0000
+Received: from mail-qk1-x72e.google.com ([2607:f8b0:4864:20::72e])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1SYk-00000003FIs-0iy6
+	id 1s1SYk-00000003FJJ-2xiC
 	for linux-mediatek@lists.infradead.org;
-	Mon, 29 Apr 2024 15:04:51 +0000
-Received: by mail-qk1-f177.google.com with SMTP id af79cd13be357-7906776e17aso334251985a.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 29 Apr 2024 08:04:49 -0700 (PDT)
+	Mon, 29 Apr 2024 15:04:53 +0000
+Received: by mail-qk1-x72e.google.com with SMTP id af79cd13be357-78edc49861aso344049685a.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 29 Apr 2024 08:04:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1714403088; x=1715007888; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1714403089; x=1715007889; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=S/QHDINTXxaHfJymmPQd1ntNOyaEtGJ2b8ypDUwyIXI=;
-        b=YAb06H5zh4iyWP9ItzNUWSzBjekxbhUVPnZ+MLCbM26ADVSRF12v1vsA7fM3FLeakZ
-         SsrKZys1Tp06zaoVe1KxVtYj7o09iZweod309GNRJ1ravlzFbtRzZEoFwAu/his3DY3a
-         xdWICO8ZuI2teAtYlnGKzljFTfTWYc7y9NaYA=
+        bh=AThUs0uZjFFwmlw5yFatMODeeCPF6NJNDOtB7Vvi1Co=;
+        b=gJxGuY5wirGJZPlkNNAgLVYbscbkk2DtPubr4NUmrvaUuDViLMuwS3m+SNEKPKVoOY
+         5KIb2Ber3/hb2bqYAs7s31or6hW9V+gAqOONXkuUJ5De3ljSioPaaOqOYMK0u9Bnray8
+         KEaY4AH5+0d1nt0rZfwUQ5cf14LUSXQOlVQzQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1714403088; x=1715007888;
+        d=1e100.net; s=20230601; t=1714403089; x=1715007889;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=S/QHDINTXxaHfJymmPQd1ntNOyaEtGJ2b8ypDUwyIXI=;
-        b=n+jpZnsUFIaxomeOYWqDds5aakAgKA4e5ypkqDbmjmeTKSbi+BXbuZvSHShmIeVQKk
-         k0WYDvr1hGxBwB2IoOk6I5e8vDgekCyG0Xe/iJddZ57U1SJ4U5ffee2Ue2l0yKN+zuji
-         NHU4uQWdWEdIjaSC2JJLXNjfsdyciWJ72GL2ohgzb9EQlpOPIIuVwtM0vltWIh9VD+Q/
-         Db7lEjsKYTCpjkbRwC/jZO1EHe/72Z/vb3i/y+9Uag35QGpo0om6pWrWJJ2d45g2KpSV
-         7Kf3ymJDtqOvwVS/9sQATbTWi+jcGGPXVWhgFX3FpimfpKMpYjQocQYJFeU6NwOASWRo
-         CUTw==
-X-Forwarded-Encrypted: i=1; AJvYcCXwTo0A3lFFl8pi9PH4tqPbznWs1AtLm9jSAFP6e6jMoN2f1v/oRUuzdzCtrFN5tKIpjnIkz0ciollblgvuIqZbnjldAieeN2VC6KsDIJB3DGEy
-X-Gm-Message-State: AOJu0YwrdYVNX9PjqiFZdqsnt/XESPaDP1rwD2eCdW5dsxa+mLVM66U5
-	ucwnW1WPMJuZmmGG4bmp1pymYKySqVfrbzTISpwvTm/2o6uNp8/HIr/kgP0s+g==
-X-Google-Smtp-Source: AGHT+IEZLuGKR7d7W/XG/sq8LQdtDnaq4FWL5zvJstwztGqQFStkjBLrDGAeQqjGLBaD6vVb0xh5nw==
-X-Received: by 2002:a05:620a:21d8:b0:790:81e5:5f30 with SMTP id h24-20020a05620a21d800b0079081e55f30mr12924542qka.70.1714403088208;
-        Mon, 29 Apr 2024 08:04:48 -0700 (PDT)
+        bh=AThUs0uZjFFwmlw5yFatMODeeCPF6NJNDOtB7Vvi1Co=;
+        b=rQrZGbu/jeGdfSzIFKq8MR2yvBBPKVQh7SfmEgmWxKTvanTTaDTos8UvL0LYdhqpcM
+         SxF5++vCvIxpGj1Cd8Ujvz773TvPTmmEO+6pWRwPm/tUmXtdm/kUhse/PeA5BINYjzdt
+         35eGYMaUi0waUBXeuqVhUOLm2ddJhhru9y0Sfj6ZR52IsgeSNmnRLS1w4Uv+G+YoOn2v
+         tVR4lafXCSrKC4nqDGgzc71Xlv5gCAY28YNA30ckjVEeAZfFLQGDFgxvUj6uShwW5/cW
+         ggC3btgEXAQE0Bo4ZIx4/xm1WHXVtSRvtEUwEiXx5zz8l66SNEyAXmlIsni2v1yeJkpr
+         O3oA==
+X-Forwarded-Encrypted: i=1; AJvYcCUR+POYdVb5Y1Wy4O2MApNi4RKAGlXuc1Cn8S3clSBLmL0GyCvvb62RcnYdHZ3UMjA2+9pnNRR9pr7eIjmkn2THmX/xCcybDa9Abq8N8hnUrBQZ
+X-Gm-Message-State: AOJu0Yyhp1PACncCwnrtZYJ0FPH2UIFbp4+Df4zkrBHkhdCpxlpziBrj
+	CGDMGQrixviZIHWsyXBbIXpJaM5qTs9Cso/az6/aJW4hQ/p8JrYIqzY88HBPUQ==
+X-Google-Smtp-Source: AGHT+IGBuMWlT8BGDJs/bsSnyVE6ctAfT7ka0JR0PlzLBPx7ju98o6D15U4PhJiULbsFLxQvf+DlVA==
+X-Received: by 2002:a05:620a:4094:b0:790:f4dc:ba36 with SMTP id f20-20020a05620a409400b00790f4dcba36mr4480887qko.33.1714403089247;
+        Mon, 29 Apr 2024 08:04:49 -0700 (PDT)
 Received: from denia.c.googlers.com (114.152.245.35.bc.googleusercontent.com. [35.245.152.114])
-        by smtp.gmail.com with ESMTPSA id p7-20020a05620a056700b0078d3b9139edsm10568591qkp.97.2024.04.29.08.04.47
+        by smtp.gmail.com with ESMTPSA id p7-20020a05620a056700b0078d3b9139edsm10568591qkp.97.2024.04.29.08.04.48
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 29 Apr 2024 08:04:47 -0700 (PDT)
+        Mon, 29 Apr 2024 08:04:48 -0700 (PDT)
 From: Ricardo Ribalda <ribalda@chromium.org>
-Date: Mon, 29 Apr 2024 15:04:44 +0000
-Subject: [PATCH v3 05/26] media: go7007: Use min and max macros
+Date: Mon, 29 Apr 2024 15:04:45 +0000
+Subject: [PATCH v3 06/26] media: stm32-dcmipp: Remove redundant printk
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240429-fix-cocci-v3-5-3c4865f5a4b0@chromium.org>
+Message-Id: <20240429-fix-cocci-v3-6-3c4865f5a4b0@chromium.org>
 References: <20240429-fix-cocci-v3-0-3c4865f5a4b0@chromium.org>
 In-Reply-To: <20240429-fix-cocci-v3-0-3c4865f5a4b0@chromium.org>
 To: Martin Tuma <martin.tuma@digiteqautomotive.com>, 
@@ -106,8 +106,8 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  Ricardo Ribalda <ribalda@chromium.org>
 X-Mailer: b4 0.12.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240429_080450_286800_5095D093 
-X-CRM114-Status: GOOD (  11.23  )
+X-CRM114-CacheID: sfid-20240429_080450_984274_82555719 
+X-CRM114-Status: GOOD (  13.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,34 +122,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Replace ternary inline selection of f1 and f2 min max values with min()
-and max() helper functions for the sake of readability and to make
-coccinelle happier
+platform_get_irq() already prints an error message.
 
-drivers/media/usb/go7007/go7007-fw.c:1292:14-15: WARNING opportunity for max()
-drivers/media/usb/go7007/go7007-fw.c:1293:14-15: WARNING opportunity for min()
+Also platform_get_irq() can never return 0, so lets fix the condition
+now that we are at it.
 
-Reviewed-by: Bryan O'Donoghue <bryan.odonoghue@linaro.org>
+Found by cocci:
+drivers/media/platform/st/stm32/stm32-dcmipp/dcmipp-core.c:444:3-10: line 444 is redundant because platform_get_irq() already prints an error
+
 Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 ---
- drivers/media/usb/go7007/go7007-fw.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/media/platform/st/stm32/stm32-dcmipp/dcmipp-core.c | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/media/usb/go7007/go7007-fw.c b/drivers/media/usb/go7007/go7007-fw.c
-index 018019ba47d4..86ce593e0c54 100644
---- a/drivers/media/usb/go7007/go7007-fw.c
-+++ b/drivers/media/usb/go7007/go7007-fw.c
-@@ -1289,8 +1289,8 @@ static int avsync_to_package(struct go7007 *go, __le16 *code, int space)
- 		0xbf99,		(u16)((-adjratio) >> 16),
- 		0xbf92,		0,
- 		0xbf93,		0,
--		0xbff4,		f1 > f2 ? f1 : f2,
--		0xbff5,		f1 < f2 ? f1 : f2,
-+		0xbff4,		max(f1, f2),
-+		0xbff5,		min(f1, f2),
- 		0xbff6,		f1 < f2 ? ratio : ratio + 1,
- 		0xbff7,		f1 > f2 ? ratio : ratio + 1,
- 		0xbff8,		0,
+diff --git a/drivers/media/platform/st/stm32/stm32-dcmipp/dcmipp-core.c b/drivers/media/platform/st/stm32/stm32-dcmipp/dcmipp-core.c
+index bce821eb71ce..4acc3b90d03a 100644
+--- a/drivers/media/platform/st/stm32/stm32-dcmipp/dcmipp-core.c
++++ b/drivers/media/platform/st/stm32/stm32-dcmipp/dcmipp-core.c
+@@ -439,11 +439,8 @@ static int dcmipp_probe(struct platform_device *pdev)
+ 				     "Could not get reset control\n");
+ 
+ 	irq = platform_get_irq(pdev, 0);
+-	if (irq <= 0) {
+-		if (irq != -EPROBE_DEFER)
+-			dev_err(&pdev->dev, "Could not get irq\n");
+-		return irq ? irq : -ENXIO;
+-	}
++	if (irq < 0)
++		return irq;
+ 
+ 	dcmipp->regs = devm_platform_get_and_ioremap_resource(pdev, 0, NULL);
+ 	if (IS_ERR(dcmipp->regs)) {
 
 -- 
 2.44.0.769.g3c40516874-goog
