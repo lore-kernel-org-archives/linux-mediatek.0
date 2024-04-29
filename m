@@ -4,71 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B09CAC4345F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Apr 2024 13:18:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A63BCC4345F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Apr 2024 14:03:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6WIxTn0pRjbZXHgFG8AwaR4joGVxkdi8wOuc1SO7gIs=; b=X85A0JXBlER711flogky+b+bv1
-	/WFbzXS8Rk96W/Dj+q+RYSF+S6MHUXzF05niCQwj5FVm5oK9glYd8HTnjv8LHVG4MKEriD7eXVgQr
-	xSUd+Y7ECCPEGuE2eityo2Npww5aGuLa6DVwiNraTkCzDk064CKFrt8BC6tqSj3HTjnb4KSDPQu8D
-	hcHTDlv0u+R+xjSR0CwB/Yb2PhpKkNSfzFhC/7Fm1Dp1A59132XHz7Rya22PhSkjGxFXlUryB0N2p
-	7HxUjuyst34ZYAAb0kX7lQ63tUZx9Pmh9AyamLyR1s4CiLi1njj1ey7aTMmyGklIcsBTtHnKX8eDU
-	1Y7iN5HA==;
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ocFabipTBG4oXHbfxXvrfJfVuUJ+Grr9xgYqutnvFxw=; b=gOzeEzIlHuU971EK+xZi4ovwzz
+	zfZccJl76aP/hh6v5Oi8RehsE3sq62+c+rDjDRAcbj2a0akGZFlpZMdQ21PfClpgtXAeZF+wymJnW
+	fN/KP41JTCqfBWNTW/K6fdXh2qvLV8pWvI9hRhsWS0Iy+CpgHyN9OB1x/7h8Y6HzVwZuGs8kvtVaB
+	0JHNNMJFNhRxqC9a0tGJIHIUgtYg7ksjHcX5DW0R7CO5ANBMoUB/11U8sBqgE0RqO3/7Ptg3jbvCU
+	UyMZmrCi6ZHTBfpYtm7+UxnLEWXUOtcvpuJPchHkKNrvpAcYoMzYJthXWFhBdJd1lhM4r9ngfhiO8
+	2XoMSV2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1Qtq-00000002tus-0vxB;
-	Mon, 29 Apr 2024 13:18:30 +0000
-Received: from relay6-d.mail.gandi.net ([217.70.183.198])
+	id 1s1RbC-000000032sM-27ML;
+	Mon, 29 Apr 2024 14:03:18 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1Qtk-00000002tm2-1ysi;
-	Mon, 29 Apr 2024 13:18:26 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id D4C1DC0005;
-	Mon, 29 Apr 2024 13:18:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1714396691;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=6WIxTn0pRjbZXHgFG8AwaR4joGVxkdi8wOuc1SO7gIs=;
-	b=FGEd0IUVUimnHqEMC3oAwvto00HNVnMflL0L7Ph/Ryrk7N/JOd8t1z4bbBPy5b58KRO9k5
-	I3szYcCy8KVwRYHA1I6NfbF0HWGffDxy9+baoG19copWjA/jxRvbpIWFAaMDBDjyaWLWXk
-	IKPn/HbPA4OqlW2+y/DGE85RCCMAklQrxnr+rWemcMa7T4IlOjaPDGsuV3y00M+UGoipOp
-	Lsv/aCYhblt5FsBnUNpFA/1mLETUrUj0KaEnJ+E/2UYRMLXP3yc6HN0o0gYxq4oRf5EWh1
-	txO81TyFcNZxEJVl4hf3JCF+BaPQlmyEXsv00J6rxXu9sd40YeFXkPafTdvXzg==
-Message-ID: <f5eb359a-fdbf-4b0a-8df5-be034da1aca3@arinc9.com>
-Date: Mon, 29 Apr 2024 16:17:40 +0300
+	id 1s1Rak-000000032df-3Dw5;
+	Mon, 29 Apr 2024 14:02:52 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1714399367;
+	bh=HgtKVM/TierHAv//0s/r7QfRlk07MtY0ehnomTV6vxU=;
+	h=From:To:Cc:Subject:Date:From;
+	b=kEw1H8oWk3+bJvmYPLqoKHvHjsRrJbB350iGiuQw9UcZBwB8u26yAVxLKc+Rkyv8/
+	 qBKV/UirKWZrv6vOoPyVFk+eDezfL8T5OEhM5DeyFlE4H0HY2I+1wJl5O8uUV+XWZM
+	 4G54KeqygPR+hStuqyYlcG169EcR7Y4982BYGl+XThpkCMXlFN8EN7rZLnMDvklKC3
+	 0MqcVSfoHoDoZXR9PRO8gWMiPGCZB8Xbb5/vxVwOQ5GI1nrCtGEf35zTuC4/S1KbZj
+	 f90jPswUbEva8t6JAHcViXT+Sgxa86qHZQMpvRTlFWviodV5YTpCTlyK9AiWjX2yXw
+	 0+vJR7vn7JXAQ==
+Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 863B33780BFE;
+	Mon, 29 Apr 2024 14:02:47 +0000 (UTC)
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: arm-soc <arm@kernel.org>,
+	soc <soc@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [GIT,PULL,1/2] MediaTek ARM64 DTS updates for v6.10
+Date: Mon, 29 Apr 2024 16:02:42 +0200
+Message-ID: <20240429140245.238210-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.44.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next] net: dsa: mt7530: detect PHY muxing when PHY is
- defined on switch MDIO bus
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>
-Cc: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
- Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
- <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Bartel Eerdekens <bartel.eerdekens@constell8.be>, mithat.guner@xeront.com,
- erkin.bozoglu@xeront.com, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20240429-b4-for-netnext-mt7530-use-switch-mdio-bus-for-phy-muxing-v1-1-1f775983e155@arinc9.com>
- <Zi9vYLwgekd0Pmzn@shell.armlinux.org.uk>
-Content-Language: en-US
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <Zi9vYLwgekd0Pmzn@shell.armlinux.org.uk>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240429_061824_819030_357AB2C4 
-X-CRM114-Status: GOOD (  25.04  )
+X-CRM114-CacheID: sfid-20240429_070251_083881_94846CB8 
+X-CRM114-Status: GOOD (  17.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,64 +72,166 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 29.04.2024 12:58, Russell King (Oracle) wrote:
-> On Mon, Apr 29, 2024 at 12:46:43PM +0300, Arınç ÜNAL via B4 Relay wrote:
->> From: Arınç ÜNAL <arinc.unal@arinc9.com>
->>
->> Currently, the MT7530 DSA subdriver configures the MT7530 switch to provide
->> direct access to switch PHYs, meaning, the switch PHYs listen on the MDIO
->> bus the switch listens on. The PHY muxing feature makes use of this.
->>
->> This is problematic as the PHY may be probed before the switch is
->> initialised, in which case attaching the PHY will fail.
->>
->> Since commit 91374ba537bd ("net: dsa: mt7530: support OF-based registration
->> of switch MDIO bus"), we can describe the switch PHYs on the MDIO bus of
->> the switch on the device tree. Extend the check to detect PHY muxing when
->> the PHY is defined on the MDIO bus of the switch on the device tree.
->>
->> When the PHY is described this way, the switch will be initialised first,
->> then the switch MDIO bus will be registered. Only after these steps, the
->> PHY will be probed.
-> 
-> Looking at the commit description and the patch, I'm not sure whether
-> you really mean "probed" or whether you mean "attached".
-> 
-> PHY drivers will bind to PHY devices when they are detected on the MDIO
-> bus (either by scanning or instantiating firmware description) and the
-> devices are registered. As each device is registered, the drivers for
-> the bus type are scanned and any matches will have their probe function
-> called. This happens outside of any control of the DSA driver if the
-> DSA device is on the same MDIO bus.
-> 
-> This is separate from the process of looking up a PHY and attaching the
-> PHY.
-> 
-> So, I think there is probably a terminology issue with the patch
-> description. I suspect you don't mean "probing" as in phy_probe() being
-> called. Looking at the code, it looks like the driver is making
-> decisions based on how PHYs are connected to the ethernet MACs in the
-> device tree, and you're making decisions based on that. I wouldn't call
-> that "probing" a PHY.
+The following changes since commit 4cece764965020c22cff7665b18a012006359095:
 
-Yes, I meant to say "looking up a PHY and attaching the PHY" by probing a
-PHY. I'll adjust the patch log to below, thanks.
+  Linux 6.9-rc1 (2024-03-24 14:10:05 -0700)
 
-Currently, the MT7530 DSA subdriver configures the MT7530 switch to provide
-direct access to switch PHYs, meaning, the switch PHYs listen on the MDIO
-bus the switch listens on. The PHY muxing feature makes use of this.
+are available in the Git repository at:
 
-This is problematic as the PHY may be attached before the switch is
-initialised, in which case, the PHY will fail to be attached.
+  git://git.kernel.org/pub/scm/linux/kernel/git/mediatek/linux.git/ tags/mtk-dts64-for-v6.10
 
-Since commit 91374ba537bd ("net: dsa: mt7530: support OF-based registration
-of switch MDIO bus"), we can describe the switch PHYs on the MDIO bus of
-the switch on the device tree. Extend the check to detect PHY muxing when
-the PHY is defined on the MDIO bus of the switch on the device tree.
+for you to fetch changes up to d3dbc472ac662a1ebba5064b44bc3a24e91b412a:
 
-When the PHY is described this way, the switch will be initialised first,
-then the switch MDIO bus will be registered. Only after these steps, the
-PHY will be attached.
+  arm64: dts: mediatek: mt8188: add lvts definitions (2024-04-23 11:16:44 +0200)
 
-Arınç
+----------------------------------------------------------------
+MediaTek ARM64 DTS updates for v6.10
+
+This introduces the new Airoha (MediaTek) EN7581 home networking
+platform (routers) in early stages, but with support for its
+Evaluation Board, a few more MediaTek based machines, and
+improvements for existing ones.
+
+For the MT7981 router SoC we get pinctrl support, along with the
+enablement of its watchdog and integrated WiFi controller, other
+than the introduction of a new machine based on this chip: the
+Cudy WR3000 V1 router.
+
+Some advancements have been done also on the MT7988 SoC, which
+gains support for its USB XHCI controllers.
+
+MediaTek Genio SoCs also get attention, with the introduction of a
+basic device tree for the MT8390 Genio 700-EVK board, and for the
+MT8395 Genio 1200 powered Kontron 3.5"-SBC-i1200.
+
+Additionally, the Genio 1200 Radxa NIO12L board gets support for
+USB Role Switching and proper PCI-Express controller PM suspend
+and resume, other than finally enabling CPU and GPU frequency
+and voltage scaling for improved efficiency.
+
+Speaking of MediaTek Kompanio SoCs (Chromebooks) instead, thanks
+to community interest and help in testing, there comes support for
+the MT8195-powered HP Chromebook X360 13b-ca0002sa;
+
+Besides that, this also adds a few other cleanups and improvements
+for all machines using the MT8183, MT8192, MT8195/MT8395 SoCs.
+
+In particular:
+ - The MediaTek Smart Voltage Scaling (SVS) is now fully working
+   those SoCs, bringing further power efficiency improvements;
+ - Thermal zones were refactored on MT8183 for consistency with
+   the other MediaTek SoCs and for readability
+ - MT8186 and MT8188 get an initial node for the LVTS Thermal
+   Controller (SoC-internal temperatures)
+ - Sound DAI links are now consistently specified in device tree
+   on MT8195 and MT8186 machines
+ - Some cleanups for unused/legacy devicetree properties
+
+----------------------------------------------------------------
+AngeloGioacchino Del Regno (14):
+      arm64: dts: mediatek: Complete chassis-type for MT8183 Chromebooks
+      arm64: dts: mediatek: Add missing chassis-type to MT8192 Chromebooks
+      dt-bindings: soc: mediatek: Add support for MT8188 VPPSYS
+      arm64: dts: mediatek: mt8195: Fix GPU thermal zone name for SVS
+      arm64: dts: mediatek: mt8192: Fix GPU thermal zone name for SVS
+      arm64: dts: mediatek: mt8183: Refactor thermal zones
+      arm64: dts: medaitek: mt8395-nio-12l: Set i2c6 pins to bias-disable
+      arm64: dts: mediatek: mt8395-nio-12l: Define RSEL in microamperes
+      arm64: dts: mediatek: mt8395-nio-12l: Enable PHYs and USB role switch
+      arm64: dts: mediatek: mt8395-nio-12l: Add power supplies for CPU/GPU scaling
+      arm64: dts: mediatek: mt8195-cherry: Specify sound DAI links and routing
+      arm64: dts: mediatek: mt8186-corsola: Specify sound DAI links and routing
+      dt-bindings: arm: mediatek: Add MT8195 HP Chromebook x360 13b-ca0002sa
+      arm64: mediatek: mt8195-cherry: Introduce the MT8195 Dojo Chromebook
+
+Chen-Yu Tsai (3):
+      arm64: dts: mediatek: mt8183-kukui: Drop bogus output-enable property
+      arm64: dts: mediatek: Drop mediatek,drive-strength-adv usage
+      arm64: dts: mediatek: mt8183-pico6: Fix bluetooth node
+
+Daniel Danzberger (3):
+      arm64: dts: Add Airoha EN7581 SoC and EN7581 Evaluation Board
+      arm64: add Airoha EN7581 platform
+      arm64: defconfig: enable Airoha platform
+
+Lorenzo Bianconi (2):
+      dt-bindings: arm64: dts: airoha: Add en7581 entry
+      arm64: dts: airoha: Add EN7581 clock node
+
+Macpaul Lin (3):
+      dt-bindings: arm64: mediatek: add mt8390-evk board
+      arm64: dts: mediatek: add device-tree for Genio 700 EVK board
+      arm64: dts: mediatek: mt8395-genio-1200-evk: add u3port1 for xhci1
+
+Michael Walle (2):
+      dt-bindings: arm64: mediatek: add Kontron 3.5"-SBC-i1200
+      arm64: dts: mediatek: add Kontron 3.5"-SBC-i1200
+
+Nicolas Pitre (2):
+      arm64: dts: mediatek: mt8186: add lvts definitions
+      arm64: dts: mediatek: mt8188: add lvts definitions
+
+Rafał Miłecki (6):
+      dt-bindings: vendor-prefixes: add Cudy
+      dt-bindings: arm64: dts: mediatek: Add Cudy WR3000 V1 router
+      arm64: dts: mediatek: mt7981: add pinctrl
+      arm64: dts: mediatek: Add Cudy WR3000 V1
+      arm64: dts: mediatek: mt7988: add XHCI controllers
+      arm64: dts: mediatek: mt7981: add watchdog & WiFi controllers
+
+ Documentation/devicetree/bindings/arm/airoha.yaml                   |    4 +
+ Documentation/devicetree/bindings/arm/mediatek.yaml                 |   15 +
+ Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml  |    1 +
+ Documentation/devicetree/bindings/vendor-prefixes.yaml              |    2 +
+ arch/arm64/Kconfig.platforms                                        |    7 +
+ arch/arm64/boot/dts/Makefile                                        |    1 +
+ arch/arm64/boot/dts/airoha/Makefile                                 |    2 +
+ arch/arm64/boot/dts/airoha/en7581-evb.dts                           |   26 ++
+ arch/arm64/boot/dts/airoha/en7581.dtsi                              |  163 ++++++++
+ arch/arm64/boot/dts/mediatek/Makefile                               |    4 +
+ arch/arm64/boot/dts/mediatek/mt7981b-cudy-wr3000-v1.dts             |   74 ++++
+ arch/arm64/boot/dts/mediatek/mt7981b.dtsi                           |   48 ++-
+ arch/arm64/boot/dts/mediatek/mt7988a.dtsi                           |   32 +-
+ arch/arm64/boot/dts/mediatek/mt8183-evb.dts                         |    6 -
+ arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cozmo.dts         |    1 +
+ arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku1.dts   |    1 +
+ arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku6.dts   |    1 +
+ arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku7.dts   |    1 +
+ arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel14-sku2.dts |    1 +
+ arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel14.dts      |    1 +
+ arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-kappa.dts         |    1 +
+ arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-kenzo.dts         |    1 +
+ arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-pico6.dts         |    3 +-
+ arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-willow-sku0.dts   |    1 +
+ arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-willow-sku1.dts   |    1 +
+ arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku32.dts          |    1 +
+ arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi                      |    8 -
+ arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts                     |    6 -
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi                            |  136 +++++--
+ arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi                    |   42 ++-
+ arch/arm64/boot/dts/mediatek/mt8186.dtsi                            |   19 +
+ arch/arm64/boot/dts/mediatek/mt8188.dtsi                            |   35 ++
+ arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1.dts           |    1 +
+ arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r5-sku2.dts      |    1 +
+ arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r0.dts         |    1 +
+ arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r4.dts         |    1 +
+ arch/arm64/boot/dts/mediatek/mt8192.dtsi                            |    2 +-
+ arch/arm64/boot/dts/mediatek/mt8195-cherry-dojo-r1.dts              |  114 ++++++
+ arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi                     |   50 +++
+ arch/arm64/boot/dts/mediatek/mt8195-evb.dts                         |    4 +-
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi                            |    2 +-
+ arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts               |  880 +++++++++++++++++++++++++++++++++++++++++++
+ arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts              |    6 +
+ arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dts       | 1127 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts               |   88 ++++-
+ arch/arm64/configs/defconfig                                        |    1 +
+ 46 files changed, 2853 insertions(+), 70 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/airoha/Makefile
+ create mode 100644 arch/arm64/boot/dts/airoha/en7581-evb.dts
+ create mode 100644 arch/arm64/boot/dts/airoha/en7581.dtsi
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt7981b-cudy-wr3000-v1.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8195-cherry-dojo-r1.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dts
+
 
