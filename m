@@ -4,84 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B80E3C4345F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Apr 2024 09:47:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3856CC4345F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Apr 2024 09:54:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=dXRzeI0KumYpKWNBz7NVqNp+vAitEezOAoZaHVqs3cA=; b=0PZdMzdGnkuf/KQ48kMluy7l9H
-	YBPUZMmh3lT83jAU9xm2UNCRn6fngD0cg+OAX1V7Pmbg3FAUdw3jG0hgAlIkR/0bgPVlnVjRGt/pz
-	kS3zBsOuAHihbRV4QcUSBjO8TPESYA0OHYTXtmxeDuMz9dKDz2DVHg+bn+nz523/YJZ7RvSo7AfXl
-	W8gCmrVt3kRr+eaQ0zRO886pk1+NaRHxHg6xT9XycdINhBRagK+z/u21Rq7oI3guxdz3Dx+iZwZAJ
-	WiVxgUnS7EHj4llfsNh+B2+sF4TL6GTxRdHCNfBYooPj+O/Dhvv8EStoy8tS7eUevWiCspw07zTLO
-	MgAwlPXw==;
+	bh=K9Tuxkuv5GP03on1LEPNW9dEztUbP1PxdWw89MgNsZg=; b=zgJ8Ba1bDLGuge89tYMBk6XvsV
+	Q2tAVPQCRUnhMBwcXt09SnlB/DNKXoyZh4T35N7cqtPzsqKfbqa8R8UgQakuGsxHydda2RxJ1p0Hr
+	+eBOeFnwxRxneZReiJVc9zkoreHUsxXenUTHyvJcGYrwyYg4S/8yCduKa8uV3uSu5iWYYG3t6CkJu
+	r/pSyL13xGe+ZCCMVj3m4WPks1pZgd665L/ZWghkbTsFzZ0n3+14wxeF0Roug4lXEBr7mP2GpjWA5
+	zeSDMXCHSro/r8/IBvhzdNHe6+UQCpHb15ieSG892/MvMdZd/G1G6Bi8X2zk7ASwtgucFM6afkafU
+	aKGOBIRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1Nbb-000000029mf-2VfO;
-	Mon, 29 Apr 2024 09:47:27 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1s1NiB-00000002Asx-2ZdG;
+	Mon, 29 Apr 2024 09:54:15 +0000
+Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1NbY-000000029lk-1CSh;
-	Mon, 29 Apr 2024 09:47:25 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 4435060C11;
-	Mon, 29 Apr 2024 09:47:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id D5BC3C113CD;
-	Mon, 29 Apr 2024 09:47:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1714384042;
-	bh=NM6evQjYLnroF7Q2T+xgCdVK89+I3dLZ0fOu5qXvXuU=;
-	h=From:Date:Subject:To:Cc:Reply-To:From;
-	b=HQO5NSRtsNRAd5p8HtrxVIvFV7XzARyZBhe/9abXPitkqGgLwjgaGobgZzj2fr3Jy
-	 RNn4H9TdrU4r/kk0QoKFDGhYwSmj0TgUmsFo9C9qRWGC2bw9qEIUG+aCl6vrQBwn1P
-	 XtLiU54iDeVX4hRj/xByeoStQ79orF44wjz6Q/vQ1UV/5x374iDJEzDKCx40f13WVT
-	 TT0eyFag8yE14sQCNZG0aev1ppupFq1bIQE75Zft/x5c5Y+q4x0SSLc2IxrYRrDIBj
-	 573WNaIabG42dmqeAxKNxQgTNLUu04shvXv8ccuvOsN6lG1eyGAZ1bMyEpSff7b0l0
-	 uOfO8kJDq1wmQ==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C5010C4345F;
-	Mon, 29 Apr 2024 09:47:22 +0000 (UTC)
-From: =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL_via_B4_Relay?= <devnull+arinc.unal.arinc9.com@kernel.org>
-Date: Mon, 29 Apr 2024 12:46:43 +0300
-Subject: [PATCH net-next] net: dsa: mt7530: detect PHY muxing when PHY is
- defined on switch MDIO bus
+	id 1s1Ni8-00000002As9-2Sf1
+	for linux-mediatek@lists.infradead.org;
+	Mon, 29 Apr 2024 09:54:13 +0000
+Received: by mail-pf1-x432.google.com with SMTP id d2e1a72fcca58-6eff9dc1821so3958947b3a.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 29 Apr 2024 02:54:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1714384450; x=1714989250; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=K9Tuxkuv5GP03on1LEPNW9dEztUbP1PxdWw89MgNsZg=;
+        b=hZaN/oQCN5Sy4SV1WdnczDBoewVzGYNvVNT0IG9MVmWSaKeYQ/7EyMjw6oKdGfIsOq
+         6cUCPvBijaMK0x84p9m1uTC12eZZkSdmpEL6n8QZmlxoi33FQqECl60ivdxqHV2JE9Nk
+         dLTQ5qFWpK7RDdSWKY6PpIrp2QazMWGPVCjYM=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1714384450; x=1714989250;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=K9Tuxkuv5GP03on1LEPNW9dEztUbP1PxdWw89MgNsZg=;
+        b=c9QLHtilOWeU2USDpiRDGLl1auhqPf3lv7OllOC6jSnXikwMazAUMH6LNTebmBaIhV
+         51NoG6BqjBg+7ynyQRpVq/1trnHzU+67+CngJ/3rAfjDwhGbHzZoOjghFAhDzT/z3f42
+         XVsEV9eT6FLUFdSFGY1gJghjp1yHYOLLhMWQv6uXj5UgfzcwlSS+Q3JQOB1t42myxLCJ
+         WfO7fcd/rPK+RSiRrhR5BxkXD+HJApTUEow05yRoK+hwoVbwywLmr+uopVJCUM98571Q
+         1bx8twbLjS0fpUHUt0YhX+hAqSt0NejoQyDOt3fpRCAKvgMq7rgJkdtukI7J7pL41Yah
+         wEAg==
+X-Forwarded-Encrypted: i=1; AJvYcCUYWdKV3TtGGtL3MzoXfFBBL16s31Wx53EeTaG9RMsZ5gM0zRyWC8bNd8hmrTXf/bEgcw+nAgQxX0ljRWsblCjJlO1fq+h0cseHgT2gSm0CVHiB
+X-Gm-Message-State: AOJu0Ywja7C7V2sUTH+52VZtdQJ/t40KL1XVfPjLI5p3D6kM6k3ZGPVD
+	EBOkSgs/C8mjMyfExGmDiTaZ845MRF+8cZLrRQdG+9uTrtDbZXtK4wNgbQN5+Q==
+X-Google-Smtp-Source: AGHT+IE8IGwWKDE8w65mqrsUHZCWFhQYSBQsWdqW2ncfFU1qhQ9LU47X0Hj6sRPRPpb9Jccy3pViug==
+X-Received: by 2002:a05:6a20:d80f:b0:1af:3d3f:83f1 with SMTP id iv15-20020a056a20d80f00b001af3d3f83f1mr5737629pzb.44.1714384450196;
+        Mon, 29 Apr 2024 02:54:10 -0700 (PDT)
+Received: from treapking.tpe.corp.google.com ([2401:fa00:1:10:38e5:4a2b:ec4a:2ec9])
+        by smtp.gmail.com with ESMTPSA id c7-20020a056a000ac700b006eb0027f2b8sm18932083pfl.9.2024.04.29.02.54.08
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 29 Apr 2024 02:54:10 -0700 (PDT)
+From: Pin-yen Lin <treapking@chromium.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: devicetree@vger.kernel.org (open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS),
+	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
+	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
+	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?= <nfraprado@collabora.com>,
+	linux-kernel@vger.kernel.org (open list:ARM/Mediatek SoC support),
+	Hsin-Te Yuan <yuanhsinte@chromium.org>,
+	Pin-yen Lin <treapking@chromium.org>
+Subject: [PATCH] arm64: dts: mediatek: mt8192-asurada: Add off-on-delay-us for pp3300_mipibrdg
+Date: Mon, 29 Apr 2024 17:53:31 +0800
+Message-ID: <20240429095333.3585438-1-treapking@chromium.org>
+X-Mailer: git-send-email 2.44.0.769.g3c40516874-goog
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Message-Id: <20240429-b4-for-netnext-mt7530-use-switch-mdio-bus-for-phy-muxing-v1-1-1f775983e155@arinc9.com>
-X-B4-Tracking: v=1; b=H4sIAIJsL2YC/x3NQQ6DIBCF4auYWXcSRNDaq5guqo4yC8AAtjTGu
- 5e6/JOX7x0QKTBFeFQHBHpzZO9K1LcKJvNyKyHPpUEKqYSSPY4KFx/QUXKUE9rU6UbgHgnjh9N
- k0M7scdzjNdvMF+2e2a2o761s+6arJ62h8FughfN1PUDh8O/B8zx/gMKG6ZQAAAA=
-To: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, 
- Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>, 
- Florian Fainelli <f.fainelli@gmail.com>, 
- Vladimir Oltean <olteanv@gmail.com>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Bartel Eerdekens <bartel.eerdekens@constell8.be>, 
- mithat.guner@xeront.com, erkin.bozoglu@xeront.com, netdev@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, 
- =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
-X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1714384017; l=1737;
- i=arinc.unal@arinc9.com; s=arinc9-patatt; h=from:subject:message-id;
- bh=aV0b87E50oYhQ0oa+qVZ0uBYjOG8eoZT/UzGqSKMX+s=;
- b=Nq09mU0p4YPp/xi2o2FjpG+iFQnXvtEU3rSX2+/m1lN0qfURodE/M/xzNPYmVb0YMAjA29jt+
- mrN3+nAmij2A4jISevUV4uDaSgAoMYbC1kaiDm0ucx49S8SbqUYx8X2
-X-Developer-Key: i=arinc.unal@arinc9.com; a=ed25519;
- pk=VmvgMWwm73yVIrlyJYvGtnXkQJy9CvbaeEqPQO9Z4kA=
-X-Endpoint-Received: by B4 Relay for arinc.unal@arinc9.com/arinc9-patatt
- with auth_id=115
-X-Original-From: =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240429_024724_456751_26115347 
-X-CRM114-Status: GOOD (  12.38  )
+X-CRM114-CacheID: sfid-20240429_025412_637588_C76BE8A1 
+X-CRM114-Status: UNSURE (   9.44  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,55 +91,36 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: arinc.unal@arinc9.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Arınç ÜNAL <arinc.unal@arinc9.com>
+Set off-on-delay-us to 500000 us for pp3300_mipibrdg to make sure it
+complies with the panel sequence. Explicit configuration on the
+regulator node is required because mt8192-asurada uses the same power
+supply for the panel and the anx7625 DP bridge. So powering on/off the
+DP bridge could break the power sequence requirement for the panel.
 
-Currently, the MT7530 DSA subdriver configures the MT7530 switch to provide
-direct access to switch PHYs, meaning, the switch PHYs listen on the MDIO
-bus the switch listens on. The PHY muxing feature makes use of this.
+Fixes: f9f00b1f6b9b ("arm64: dts: mediatek: asurada: Add display regulators")
+Signed-off-by: Pin-yen Lin <treapking@chromium.org>
 
-This is problematic as the PHY may be probed before the switch is
-initialised, in which case attaching the PHY will fail.
-
-Since commit 91374ba537bd ("net: dsa: mt7530: support OF-based registration
-of switch MDIO bus"), we can describe the switch PHYs on the MDIO bus of
-the switch on the device tree. Extend the check to detect PHY muxing when
-the PHY is defined on the MDIO bus of the switch on the device tree.
-
-When the PHY is described this way, the switch will be initialised first,
-then the switch MDIO bus will be registered. Only after these steps, the
-PHY will be probed.
-
-Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 ---
- drivers/net/dsa/mt7530.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 2b9f904a98f0..6cf21c9d523b 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -2483,7 +2483,8 @@ mt7530_setup(struct dsa_switch *ds)
- 			if (!phy_node)
- 				continue;
+ arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
+index 7a704246678f..08d71ddf3668 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
+@@ -147,6 +147,7 @@ pp3300_mipibrdg: regulator-3v3-mipibrdg {
+ 		regulator-boot-on;
+ 		gpio = <&pio 127 GPIO_ACTIVE_HIGH>;
+ 		vin-supply = <&pp3300_g>;
++		off-on-delay-us = <500000>;
+ 	};
  
--			if (phy_node->parent == priv->dev->of_node->parent) {
-+			if (phy_node->parent == priv->dev->of_node->parent ||
-+			    phy_node->parent->parent == priv->dev->of_node) {
- 				ret = of_get_phy_mode(mac_np, &interface);
- 				if (ret && ret != -ENODEV) {
- 					of_node_put(mac_np);
-
----
-base-commit: 5c4c0edca68a5841a8d53ccd49596fe199c8334c
-change-id: 20240429-b4-for-netnext-mt7530-use-switch-mdio-bus-for-phy-muxing-586269371c55
-
-Best regards,
+ 	/* separately switched 3.3V power rail */
 -- 
-Arınç ÜNAL <arinc.unal@arinc9.com>
-
+2.44.0.769.g3c40516874-goog
 
 
