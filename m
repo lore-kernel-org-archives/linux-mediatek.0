@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CC69C4345F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Apr 2024 06:00:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E38BC19F4F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Apr 2024 06:03:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YPs+0DUPOmy/9sxUZ3EjpZaOBHRSgEyPLoW/Lz2dbPg=; b=BZ+fc+PEDi6HMWFMfkbp1qo/0y
-	C7bHnFtt0HxJ7A8U36+hY+GPcGDjCE7ZJypVpk66fvBEPhl3Rt5wBVb/biS8J9OuJhlFXwyJKCNaj
-	LIuLNJY/5MJ/eucHxT/WMAxbl2a92TFJVVwcQZTDmy5hgRB9aYpug5sjyrnU7OPomIAqWgYIeDmVO
-	pXxftAIayf5slIoSqFUN0j41Ert8yg04wZhLCi1mqFtSI00Ov3gjFQspVTfoVuxKBd28cE82V6LFe
-	YQPgYgfButwHo4tgA10OBL/v0r0MOmQPkTP8MbVDtNDl3k9CP009BgKqRptbu5ZVOucmO+uBrkaXc
-	oQ5qOJkA==;
+	bh=dbxTWqJz86jpN+WVZVMJpLx/xG3BI3iOjYo7H7lPf5Y=; b=lrt5kCxi/18l5mGOO5LKQYvZXy
+	EweWYArcIlB06TY/GBXwlHfGHmer4W49Eg8Cdt2ys5W9gWXYpFNCD4zj/igpKnDAq2U1iWnRYXAMn
+	hPq1hH8z35q0enriJdEkczDT4juI/9B4kuPhTG2RS0KhpmaVaw+zkIseLBauumYnAzr+fsnGBSi4j
+	vH7Xb1dzQqmBKkMFeoWSGDtmNdXD1zvImVMZc+agYOu69nQxPO9RscOSLEIfqlO15mApsroXAj1Wz
+	nYVgamXMobSyRPayA570o5ApYb6MOUda5uEw+XWuh51OFJM/0wBnYTcKD/GT5oOa8UDAmzedCK5HN
+	rA7MKJVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1K3d-00000001Zso-0E0a;
-	Mon, 29 Apr 2024 06:00:09 +0000
+	id 1s1K70-00000001aSt-0VHJ;
+	Mon, 29 Apr 2024 06:03:38 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1K3Z-00000001ZrJ-06uF;
-	Mon, 29 Apr 2024 06:00:06 +0000
+	id 1s1K6w-00000001aS2-3zc6;
+	Mon, 29 Apr 2024 06:03:36 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 2FBBB60BDB;
-	Mon, 29 Apr 2024 06:00:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5F18DC113CD;
-	Mon, 29 Apr 2024 05:59:56 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 4701660B9A;
+	Mon, 29 Apr 2024 06:03:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 997D1C113CD;
+	Mon, 29 Apr 2024 06:03:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1714370403;
-	bh=ugJQOPZ1kMTBi0aTLYRs6bL+WgoMwb9S2BmIZzdBd3U=;
+	s=k20201202; t=1714370613;
+	bh=CCQ14BOX8lYmY87/Bd32IyYzzmdAz5MRlMjIkZTvFTo=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=THpp7M7K8ImMQ2I9BGn7B4zp2wz/mnx7nV3T/CdrrQqxANpdGLK+gv7nPwf7H67QO
-	 lbzuJIOSFYmvERFTZo+5g48O+qg12IYtFAAabXqSM1yv4vG4RWtaTCVWPQlpF2g/0d
-	 kEsU0pkSdfRx4YKWFE/kmqWMXS072qxuU7x2+9fyFiWIJDiMv0bQ9SdHWMU082PBQX
-	 hJ8zq4cn6yoU+7qwl+WPNDPu+fjNUIJV/hIzbqGhoBcvtI3IYmLfpAqXMG8ztjBtd0
-	 ODj9S7KH/c5TCb1eFb78EuBRDPq4LnJ49z5QBjRpxfoSMGzbvoXCIEqLAfssEUdQRi
-	 2UgKpWhDer6nA==
-Message-ID: <dc18a843-c83b-4d83-a9b9-236fcd57abb2@kernel.org>
-Date: Mon, 29 Apr 2024 07:59:54 +0200
+	b=dJbPcGfaHhewkFjJoQ5Ul9JRgfxN9LXdJ1NiOvUSJzPnKCC1or24GesGYhyr05UlF
+	 u1z7Xwg4bJb21HgoUZLn0ta9tBDdBD/mhmioyGyUe7rvratwNqsRn+23VT6Ru0+FIf
+	 io9OF2vvuNEurSPjJeSyBHMPGyaLDpmU2he7hjMapejxHCKftk4kM6zOzXdSwsv6s/
+	 iqR1kfdA1sCIGHN2JAyxhQMNatrvx3Zk2iRalgNHNOD7VlU1XeIIo+VFeB7JGcum4U
+	 zoQVzurzSz3D9S3JfiJ4aALm32nR+N9CajQevnmvmPqQN3P+Z6FX/n3Ct2SU6BvfRo
+	 Cyyrr6ut4zT5g==
+Message-ID: <6d21da37-8be7-467c-8878-d57af0b0201b@kernel.org>
+Date: Mon, 29 Apr 2024 08:03:24 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 02/16] ASoC: dt-bindings: mediatek,mt8365-mt6357: Add
- audio sound card document
+Subject: Re: [PATCH v4 03/16] dt-bindings: mfd: mediatek: Add codec property
+ for MT6357 PMIC
 To: Alexandre Mergnat <amergnat@baylibre.com>,
  Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
  Rob Herring <robh+dt@kernel.org>,
@@ -65,7 +65,7 @@ Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
  linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
  dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org
 References: <20240226-audio-i350-v4-0-082b22186d4c@baylibre.com>
- <20240226-audio-i350-v4-2-082b22186d4c@baylibre.com>
+ <20240226-audio-i350-v4-3-082b22186d4c@baylibre.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -111,12 +111,12 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20240226-audio-i350-v4-2-082b22186d4c@baylibre.com>
+In-Reply-To: <20240226-audio-i350-v4-3-082b22186d4c@baylibre.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240428_230005_184726_2515AA63 
-X-CRM114-Status: UNSURE (   6.40  )
+X-CRM114-CacheID: sfid-20240428_230335_110073_EFBEFDA7 
+X-CRM114-Status: UNSURE (   8.85  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -133,24 +133,22 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 26/04/2024 19:22, Alexandre Mergnat wrote:
-> +      link-name:
-> +        description: Indicates dai-link name and PCM stream name
-> +        enum:
-> +          - I2S_IN_BE
-> +          - I2S_OUT_BE
-> +          - PCM1_BE
-> +          - PDM1_BE
-> +          - PDM2_BE
-> +          - PDM3_BE
-> +          - PDM4_BE
-> +          - SPDIF_IN_BE
-> +          - SPDIF_OUT_BE
-> +          - TDM_IN_BE
-> +          - TDM_OUT_BE
+>    regulators:
+>      type: object
+>      $ref: /schemas/regulator/mediatek,mt6357-regulator.yaml
+> @@ -83,6 +111,12 @@ examples:
+>              interrupt-controller;
+>              #interrupt-cells = <2>;
+>  
+> +            audio-codec {
+> +                mediatek,micbias0-microvolt = <1700000>;
+> +                mediatek,micbias1-microvolt = <1700000>;
+> +                vaud28-supply = <&mt6357_vaud28_reg>;
 
-Feels like BE is redundant.
+And now you should see how odd it looks. Supplies are part of entire
+chip, not subblock, even if they supply dedicated domain within that chip.
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+That's why I asked to put it in the parent node.
 
 Best regards,
 Krzysztof
