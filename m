@@ -4,110 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 335CFC4345F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Apr 2024 11:39:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 772ABC04FFE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Apr 2024 12:42:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=05L08pI3kBTDsTqcTJqQ2PruWVHcpez2K/eYqwLWDm0=; b=XiJ3Vfd/Pn7iwHZZ8qd2r5QVjB
-	pViaYOMuYx8Etj20WeIayKzNTBHpS9DSofYK8Evj8smbwKDc5D8IoYOmIsxlIxdFdu3RKTupVS81r
-	8YP4+NGUUnMWpJoghCiXWIOQ8nOjQlAOu6AQRbfL8Xw06sNLk7J+A4yPraQCx93ndcFp1yZIMSLPg
-	TfIN52hpbpY+AAJsC0kA+V2liJnv6UM2twU3O13lW2x+uAvITKNyFbcNRv2mzViK1X8arHB6k5s3h
-	wR7s2lYAC7nHZEHnsFeaGijTMrK6kKRQHnOS14ih2SfucZA4cUDGCPbxGkNOPIZQv9HILf5bzK2pv
-	r4PUVqFg==;
+	bh=359x1PKhAyHtMkK/vfg2dPAMOncA3H2TWjtf6Bw1En4=; b=QV2DahfN0g6bb+wcn/I6sDp6Q3
+	bgSqN7WgIZd6atCD4TJ3X3BwsrQLDmHO5x5lCIiQAQiXuH4fa0wSLuJjZ9eHgXYaDuGIJC8H+jfrP
+	w+FnqOwVKd1Bw5XbXnuOuEACfCy3zbyQXOCw0rdLYmkpO9O3Ov9igca+1ruJ5PR6oeq+qW3dUlGkD
+	m/ZJxXEesBEW/B3RiToHg5I4w4elSH/Le9tptmxxDhylShOZHqlLtibaVLfTIC1vDL4zUAmQQyvE1
+	wZo5ai8Vhe1TX/r5xkExYt4oP6mcEO6nPoDLIuYVRTuv9MuciZFsHqtd6Mv9wWhCie4MVKpf6DKnS
+	7SG1RcZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1PMI-00000002UPm-39xx;
-	Mon, 29 Apr 2024 11:39:46 +0000
-Received: from mail-ua1-x92e.google.com ([2607:f8b0:4864:20::92e])
+	id 1s1QLK-00000002lX2-33tE;
+	Mon, 29 Apr 2024 12:42:50 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1PMG-00000002UOy-3g4g
-	for linux-mediatek@lists.infradead.org;
-	Mon, 29 Apr 2024 11:39:46 +0000
-Received: by mail-ua1-x92e.google.com with SMTP id a1e0cc1a2514c-7f04901d456so698587241.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 29 Apr 2024 04:39:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1714390782; x=1714995582; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=05L08pI3kBTDsTqcTJqQ2PruWVHcpez2K/eYqwLWDm0=;
-        b=PTqy2MBjmScTiUeqR0ROSJYEioXXzNjZye++C5Vv7pELdejHLvJYcZDuwXdVU/IJDz
-         MveMKC9oxwMRIEO27VGYP5l5LhJPlJlYZyMe9Je06NzcVeSz6aHGBIpco802Tfr55lNm
-         y5DD78mndpEvhzHmtxCtTpYei6DV5icenchrg=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1714390782; x=1714995582;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=05L08pI3kBTDsTqcTJqQ2PruWVHcpez2K/eYqwLWDm0=;
-        b=XvGWEukIvQJAL2kfD7PdmA7RbBCLXdzRPLaz1f269DirjFh4nqNS71rvAqyyXDJAlR
-         4oDprI+p84ul31zESHiBATvKE0NeH2wUo0rACckGhct7rsHEhFgDPZHG56uQnJhIVCGV
-         ZoXUQgGxa8JAmm3hv/eZm4+WVFnkaIClyGsY49WrKzUDLRSGDJhfOwqDoQpFqDzIRj50
-         B4TpSNYiWgyas11QxUrjxy6NmSA1oWZxlWOvNUz802TPyOX1hdPS+aKzBuXO3O8MeUEa
-         K4nLKAaS4boerwxQr/VUAmZM+lf1id7eMaiDNzo94VeqnPVHPi2vuB4M/O5xJBp9u8uW
-         j/Jw==
-X-Forwarded-Encrypted: i=1; AJvYcCUZ2iYvfI3sNvo4v5XAzpAwwIsxMNLs6/40aZ17HT3dR1MCJjhwyJgWNQkAIF/jt5xr7AXUm4Vh+mV05+w/ff3R/w+ewq/6+5fVJ83l4icKNbU1
-X-Gm-Message-State: AOJu0YwYaDxO6bKdAZavagAv1auSs+JKdjQfmuOF1lVKXIVKLcrjhpS/
-	tnkwzw7E4yy71fPEDywQB7iIVQYfsoe9ZD6NdOpwJ5ag3aiyNbTtnS3aSg/jz/xFtS09bSW1Saw
-	=
-X-Google-Smtp-Source: AGHT+IEmh75uIRGVud5QU/PmfpnJSVjeQFBzDNOAq3vU0mPNwXxf1chjQxXjVTWq6nSUJzblZglWzA==
-X-Received: by 2002:a05:6102:2a54:b0:47c:2599:9d99 with SMTP id gt20-20020a0561022a5400b0047c25999d99mr7345463vsb.31.1714390781946;
-        Mon, 29 Apr 2024 04:39:41 -0700 (PDT)
-Received: from mail-vk1-f175.google.com (mail-vk1-f175.google.com. [209.85.221.175])
-        by smtp.gmail.com with ESMTPSA id w6-20020ab06146000000b007ec61539376sm3577919uan.29.2024.04.29.04.39.40
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 29 Apr 2024 04:39:40 -0700 (PDT)
-Received: by mail-vk1-f175.google.com with SMTP id 71dfb90a1353d-4dacb2ad01dso1049957e0c.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 29 Apr 2024 04:39:40 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCVV7VCK0YRqK/dF/BZ0CDx/LKfiSRbXbKxhDfm9lnlgeEmPC1TYLbel0ORIblxdZQPHKhesgL9CRf1mQ+5WXsZZlwSUPO16x2C75nbATNtMevdP
-X-Received: by 2002:aca:f1a:0:b0:3c8:39b2:bd8b with SMTP id
- 26-20020aca0f1a000000b003c839b2bd8bmr7165395oip.55.1714390759097; Mon, 29 Apr
- 2024 04:39:19 -0700 (PDT)
+	id 1s1QLH-00000002lWY-1yD4;
+	Mon, 29 Apr 2024 12:42:49 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=359x1PKhAyHtMkK/vfg2dPAMOncA3H2TWjtf6Bw1En4=; b=vYbycYWT4MBRluDs5xVIosCe64
+	PoAiVqtvB/HQB7xzaPjqvvXwoJk7GZsxbrkQg4SeLfaY9e6Q/9QwK674915+AG/aqy5rAIy/fZdGI
+	sr23cYjAxdQ2jSvbWcuxLmxJK4TFe2UqbsnOdSYc1lyJFum1Poq8h+zValqB+Op9LtF7B/0JNAj6f
+	1367WEZ0biSe8kNKt/WHyA7wStFD2iZ/J3Wcuas4Qr6FefpCj6t6qMZ4Stcf/KqTgZmFi8R++jHBL
+	6Ixq+5mv1xgFNPHDV239kY/XTgDiXBc0ymvAH4MoaBnXHuG7pLs8UiNqa8IAMiRyvBhUCalMSlGrk
+	4UkxbCXw==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:38466)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1s1QL7-0003AY-2P;
+	Mon, 29 Apr 2024 13:42:37 +0100
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1s1QL6-0000rC-48; Mon, 29 Apr 2024 13:42:36 +0100
+Date: Mon, 29 Apr 2024 13:42:35 +0100
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Boy Wu =?utf-8?B?KOWQs+WLg+iqvCk=?= <Boy.Wu@mediatek.com>
+Cc: "linus.walleij@linaro.org" <linus.walleij@linaro.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"andreyknvl@gmail.com" <andreyknvl@gmail.com>,
+	"dvyukov@google.com" <dvyukov@google.com>,
+	"kasan-dev@googlegroups.com" <kasan-dev@googlegroups.com>,
+	Iverlin Wang =?utf-8?B?KOeOi+iLs+mclik=?= <Iverlin.Wang@mediatek.com>,
+	"mark.rutland@arm.com" <mark.rutland@arm.com>,
+	Light Chen =?utf-8?B?KOmZs+aYseWFiSk=?= <Light.Chen@mediatek.com>,
+	"ryabinin.a.a@gmail.com" <ryabinin.a.a@gmail.com>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"glider@google.com" <glider@google.com>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"vincenzo.frascino@arm.com" <vincenzo.frascino@arm.com>,
+	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v2] arm: kasan: clear stale stack poison
+Message-ID: <Zi+Vu29rmNZ0MIFG@shell.armlinux.org.uk>
+References: <20240410073044.23294-1-boy.wu@mediatek.com>
+ <CACRpkdZ5iK+LnQ0GJjZpxROCDT9GKVbe9m8hDSSh2eMXp3do0Q@mail.gmail.com>
+ <Zi5hDV6e0oMTyFfr@shell.armlinux.org.uk>
+ <292f9fe4bab26028aa80f63bf160e0f2b874a17c.camel@mediatek.com>
 MIME-Version: 1.0
-References: <20240415-fix-cocci-v1-0-477afb23728b@chromium.org>
- <20240415-fix-cocci-v1-23-477afb23728b@chromium.org> <97f51ae8-6672-4bd4-b55b-f02114e3d8d0@moroto.mountain>
- <7a8d403b-8baf-4eff-8f9c-69cdcb8b2180@moroto.mountain> <9ba7f4e6-2b8b-44a3-9cac-9ed6e50f1700@moroto.mountain>
-In-Reply-To: <9ba7f4e6-2b8b-44a3-9cac-9ed6e50f1700@moroto.mountain>
-From: Ricardo Ribalda <ribalda@chromium.org>
-Date: Mon, 29 Apr 2024 13:39:03 +0200
-X-Gmail-Original-Message-ID: <CANiDSCsCpE55_huYq1BchDCR88O3FWRYBGYwA00o01ZdZeL3NA@mail.gmail.com>
-Message-ID: <CANiDSCsCpE55_huYq1BchDCR88O3FWRYBGYwA00o01ZdZeL3NA@mail.gmail.com>
-Subject: Re: [PATCH 23/35] media: dvb-frontends: tda10048: Use the right div
-To: Dan Carpenter <dan.carpenter@linaro.org>
-Cc: Martin Tuma <martin.tuma@digiteqautomotive.com>, 
-	Mauro Carvalho Chehab <mchehab@kernel.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>, Hugues Fruchet <hugues.fruchet@foss.st.com>, 
-	Alain Volmat <alain.volmat@foss.st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
-	Alexandre Torgue <alexandre.torgue@foss.st.com>, 
-	Paul Kocialkowski <paul.kocialkowski@bootlin.com>, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Chen-Yu Tsai <wens@csie.org>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
-	Sakari Ailus <sakari.ailus@linux.intel.com>, Thierry Reding <thierry.reding@gmail.com>, 
-	Jonathan Hunter <jonathanh@nvidia.com>, Sowjanya Komatineni <skomatineni@nvidia.com>, 
-	Luca Ceresoli <luca.ceresoli@bootlin.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Hans Verkuil <hverkuil@xs4all.nl>, 
-	Sergey Kozlov <serjk@netup.ru>, Abylay Ospan <aospan@netup.ru>, 
-	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Dmitry Osipenko <digetx@gmail.com>, 
-	Stanimir Varbanov <stanimir.k.varbanov@gmail.com>, Vikash Garodia <quic_vgarodia@quicinc.com>, 
-	"Bryan O'Donoghue" <bryan.odonoghue@linaro.org>, Bjorn Andersson <andersson@kernel.org>, 
-	Konrad Dybcio <konrad.dybcio@linaro.org>, Benjamin Mugnier <benjamin.mugnier@foss.st.com>, 
-	Sylvain Petinot <sylvain.petinot@foss.st.com>, Jacopo Mondi <jacopo+renesas@jmondi.org>, 
-	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, 
-	Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, 
-	=?UTF-8?Q?Niklas_S=C3=B6derlund?= <niklas.soderlund+renesas@ragnatech.se>, 
-	Pavel Machek <pavel@ucw.cz>, linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-stm32@st-md-mailman.stormreply.com, 
-	linux-arm-kernel@lists.infradead.org, linux-staging@lists.linux.dev, 
-	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <292f9fe4bab26028aa80f63bf160e0f2b874a17c.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240429_043944_925193_DF868679 
-X-CRM114-Status: GOOD (  10.06  )
+X-CRM114-CacheID: sfid-20240429_054247_538316_62C19C84 
+X-CRM114-Status: GOOD (  22.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,17 +93,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Dan
+On Mon, Apr 29, 2024 at 07:51:49AM +0000, Boy Wu (吳勃誼) wrote:
+> On Sun, 2024-04-28 at 15:45 +0100, Russell King (Oracle) wrote:
+> >  On Fri, Apr 12, 2024 at 10:37:06AM +0200, Linus Walleij wrote:
+> > > On Wed, Apr 10, 2024 at 9:31 AM boy.wu <boy.wu@mediatek.com> wrote:
+> > > 
+> > > > From: Boy Wu <boy.wu@mediatek.com>
+> > > >
+> > > > We found below OOB crash:
+> > > 
+> > > Thanks for digging in!
+> > > 
+> > > Pleas put this patch into Russell's patch tracker so he can apply
+> > it:
+> > > https://www.armlinux.org.uk/developer/patches/
+> > 
+> > Is this a bug fix? If so, having a Fixes: tag would be nice...
+> > 
+> 
+> This is a patch for cpuidle flow when KASAN enable, that is in ARM64
+> but not in ARM, so add to ARM.
+> 
+> The reference commits did not mention fix any commits.
+> [1] commit 0d97e6d8024c ("arm64: kasan: clear stale stack poison")
+> [2] commit d56a9ef84bd0 ("kasan, arm64: unpoison stack only with
+> CONFIG_KASAN_STACK")
 
-On Tue, 23 Apr 2024 at 11:55, Dan Carpenter <dan.carpenter@linaro.org> wrote:
->
-> Btw, here is the output from my check (based on linux next from a few
-> days ago).  There are some false positives because Smatch parses
-> __pow10() incorrectly etc but it's mostly correct.
+These are not suitable for use as a Fixes: tag because these commits
+refer to code in another part of the tree that has nothing to do with
+the BUG() dump that is contained within your commit message.
 
-This looks pretty cool :)
+I ask again... Is this a bug fix?
 
-Are you planning to add this to smatch soon?
+Is it a regression?
 
-Thanks!
+Is it something that used to work that no longer works?
+
+When did it break?
+
+Has it always been broken?
+
+Has it been broken since KASAN was introduced on 32-bit ARM?
+
+I'm not applying this commit until I get *proper* answers to these
+questions so that I can work out whether this needs to go in -rc
+or whether it waits until the next merge window... and whether it
+needs a Fixes: tag or not.
+
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
 
