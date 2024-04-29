@@ -4,71 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97DE9C4345F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Apr 2024 15:19:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46246C4345F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Apr 2024 16:15:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sSE1LZ8RJP6sIAmkq+8umDfF5CuS0FK0HNlyLUmOHag=; b=yJnVxoj61hUhGJsEzt/DN/BT2W
-	TZgqXVki/uKYosxISH6gciXLPw8xyBTSpsV3GW/Ok2pEm3wQNHXO926JOUsBxsmRd0y1ixxYOpK3k
-	6EqzfA+OXll86oqJ+vTo9XaSHRgDyQ/5pnmErM9Nx7LUxJjhb60qmspKGMM1PpbxScIhaFxKDBXG+
-	tiNNGXUtj3o6Zu3uEKji0em+a3dzNYud2hhEHnpyPfQGkkCe5wfX4Oq2JhuFfz1qkV/FY69DgtEGN
-	54aF9V8/81isYZzqHwYDhaejvc0UPaRt6G65I2fa4TH31YZHUOHnLe2eCL6qR9faY7hYH7r6Xg+9q
-	yNGFO5Tw==;
+	bh=TBoYdFZFpJunUvgv52P8o/805oLnG0rRdaJVdgyqfIE=; b=H0+YC8dh5VnzMf1TLUSlpBw0er
+	l543vxagaUa2CU0cjutcSR7hj/xMBCIrfqR4r6XzJAODr2kRPZrmZ+M0a4Gcq7OWK045TN61uF2ld
+	M8CjcJmXUrVcwjWwMrrwCyXrDlfWN+j0OWHzOyb2SzVDhW/IpcNikjUpwfZ+HeL8gmA+l3vHO9hH9
+	KX7w4YoLybtISAeB9G9NqHvqEdaMiB7UtZHZYUkAkFnheCcuW71nZbrZSo8U7ZAtUZ35Rs1e7+bdp
+	P4/19yxzpEnddeToKH9/lj9BdCXF5sUcjJ9lSlt6BuGzl5fFW5oFYTUbsVt0Oa8OJbw1f3XR4z/SJ
+	jIDt/KYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1Smo-00000003Mpc-0ieE;
-	Mon, 29 Apr 2024 15:19:22 +0000
-Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
+	id 1s1Tf3-00000003YAd-1B3y;
+	Mon, 29 Apr 2024 16:15:25 +0000
+Received: from mail-qk1-x72d.google.com ([2607:f8b0:4864:20::72d])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1Sml-00000003Mp9-3SNN
+	id 1s1SYf-00000003FGL-2oRt
 	for linux-mediatek@lists.infradead.org;
-	Mon, 29 Apr 2024 15:19:21 +0000
-Received: by mail-pl1-x62d.google.com with SMTP id d9443c01a7336-1e4266673bbso40797215ad.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 29 Apr 2024 08:19:19 -0700 (PDT)
+	Mon, 29 Apr 2024 15:04:47 +0000
+Received: by mail-qk1-x72d.google.com with SMTP id af79cd13be357-78f03917484so307887085a.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 29 Apr 2024 08:04:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1714403958; x=1715008758; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1714403085; x=1715007885; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=sSE1LZ8RJP6sIAmkq+8umDfF5CuS0FK0HNlyLUmOHag=;
-        b=Nn8/+zn9N54iwWFf92kurrDbW+5K3wxn9kgHSDkHuJeJj1p08PXn+0YGdpTS5XY+vR
-         ypHrCuCG00lCU5iVob+gmQIL1JV3Q2r8eg1P588s0TTz0oFD1TDykObCL03eIju8SCoU
-         7T4JA8XdKe8k/cCTVmFdfqaL7dpk5vJV62lWo=
+        bh=TBoYdFZFpJunUvgv52P8o/805oLnG0rRdaJVdgyqfIE=;
+        b=apj6f4HkyXAe/Luid6AcPeHWc0tcedOq0qVH6fEg1uGZBeOL+Zdv4CSBtm7rbyZYS2
+         A4hta82IL3vvS99Uq1d3EYzVcPCqt40CA13Ix1syJowdiXBRC48gJMcNrBKL9cINtOD/
+         vEA00d8nz04oFAhK40zG/5m6pzKM5YYQk/EPs=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1714403958; x=1715008758;
+        d=1e100.net; s=20230601; t=1714403085; x=1715007885;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=sSE1LZ8RJP6sIAmkq+8umDfF5CuS0FK0HNlyLUmOHag=;
-        b=YeK6TqvZCrNpr42v3GxMdv2bpKiwyKkfycLySAmB2DvzeI2CBLJxn2/xXs2ymXGDID
-         PiADGsd/S8MN5kqHkZfFawnHYx9IEBZokfOKsQnQNnAqoBicebf4fWjlZUdgVS+UTPjq
-         aAzcXPAAGqo/kXdS/TaKtkfkcqBiM7ZbjIevVdvnraLp3DZ8sD8Qga0piT2sxfM9j3qv
-         LQ6RpcAKpFMx3y8u/wNrklHpe+mnh4rdLv8EvU2BZPRozwvynaBMD6hAM3nSHlRXYoXF
-         Bgs8VDvltF84biimef4Cyw6t/nmH85k+vECrkM5abeUKd/xHOlkI+fArgA7ReQzjQeFC
-         nSYQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWcZ340iyGwUOapcRLzt9u8cPtFg3FBzZO6/nI9fktgqyqpKDEBSGUSipolYmc6Y0rYxZnoCCHgYaEuWJpeOFOh4y6WKlQ+GEj6hgk0F7StBaID
-X-Gm-Message-State: AOJu0YwQLAYnpS2udA+kVbyoFbMoaDFAehkC8A5eY4LZZsffnPkKct6v
-	JMu34fi1dXP/Qp2ZXqpWB1Rpsh6UTg7sOgSg0+rVoBouDFeObmjof5SYepvcA9iRl6iHOufwTMA
-	=
-X-Google-Smtp-Source: AGHT+IH4U39JmXtitBebyQXf3RiEBhrVCarSNwVpuxhIdD3y/YgatSZWK47F6u8fGZIDpkmTeNgcdg==
-X-Received: by 2002:a05:6870:a70e:b0:22a:9c40:3782 with SMTP id g14-20020a056870a70e00b0022a9c403782mr12043126oam.11.1714403107649;
-        Mon, 29 Apr 2024 08:05:07 -0700 (PDT)
+        bh=TBoYdFZFpJunUvgv52P8o/805oLnG0rRdaJVdgyqfIE=;
+        b=W5ibOOt3NBBcyBy8pC+VflwY2TaQUPjsf32efxERhxzdvgRlcCOHJcjbi1+DEPiBjW
+         KaiMCnq+yOAemPD9myYuWkwuvlFaXB2Pms/Y3tCRhrkMwHnNnESKZ6jpLccGVYk+gWbP
+         qrn2nHHUT86kThdzRM97vPT6fMTNHLcER/JlfDkuKqE90oeSVf4evu6YmfQEaR0HLwBi
+         rzVIyQtql66ENldkp4QVc2je5zP4VwCVLUdyVxb5DE2LowK/I59zL3+7og3DYprc72hi
+         dPr1LnDR51e6f5K3SHrqzccED1EqW8/q9VSOo50MZPqsHOwE3G2bcq6Bbm7nJY43HEWa
+         ljqQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXA826Trp55ftdcdX+JiB+yyUBPg7pPOpOv61aoTLQb9HLFBMrXA7lK8zTwQ/lPYZ/HdiVq42NT3ehnpvsxyF/xVGmFkJfeFppKCuMCIndRxmKr
+X-Gm-Message-State: AOJu0YyGWbYqEhyhsx4NcEqS4cBTqOvj8it2AT9Q+Fn2bCN6gtURR5pN
+	Ts0Lj/r5Iwl7U2E4o5VUsMH8jV9kD+Ep8JLeG30JgM8U8jidqwp/v8Ko4iT+4g==
+X-Google-Smtp-Source: AGHT+IF+chYPShGmmjcrkgz/giMi8LlMh1kKDt+AWNRJgL6Fjthaoaa54O+J4vw4mx2W4IdeglySVQ==
+X-Received: by 2002:a05:620a:39d:b0:790:944d:65b3 with SMTP id q29-20020a05620a039d00b00790944d65b3mr8124237qkm.62.1714403084821;
+        Mon, 29 Apr 2024 08:04:44 -0700 (PDT)
 Received: from denia.c.googlers.com (114.152.245.35.bc.googleusercontent.com. [35.245.152.114])
-        by smtp.gmail.com with ESMTPSA id p7-20020a05620a056700b0078d3b9139edsm10568591qkp.97.2024.04.29.08.05.06
+        by smtp.gmail.com with ESMTPSA id p7-20020a05620a056700b0078d3b9139edsm10568591qkp.97.2024.04.29.08.04.43
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 29 Apr 2024 08:05:06 -0700 (PDT)
+        Mon, 29 Apr 2024 08:04:44 -0700 (PDT)
 From: Ricardo Ribalda <ribalda@chromium.org>
-Date: Mon, 29 Apr 2024 15:05:02 +0000
-Subject: [PATCH v3 23/26] media: venus: vdec: Make the range of
- us_per_frame explicit
+Date: Mon, 29 Apr 2024 15:04:41 +0000
+Subject: [PATCH v3 02/26] media: stb0899: Simplify check
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240429-fix-cocci-v3-23-3c4865f5a4b0@chromium.org>
+Message-Id: <20240429-fix-cocci-v3-2-3c4865f5a4b0@chromium.org>
 References: <20240429-fix-cocci-v3-0-3c4865f5a4b0@chromium.org>
 In-Reply-To: <20240429-fix-cocci-v3-0-3c4865f5a4b0@chromium.org>
 To: Martin Tuma <martin.tuma@digiteqautomotive.com>, 
@@ -108,8 +106,8 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  Ricardo Ribalda <ribalda@chromium.org>
 X-Mailer: b4 0.12.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240429_081919_870589_029B1381 
-X-CRM114-Status: GOOD (  12.31  )
+X-CRM114-CacheID: sfid-20240429_080445_746282_2322CC14 
+X-CRM114-Status: GOOD (  12.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,43 +122,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Unless the fps is smaller than 0.000232829 fps, this fits in a 32 bit
-number. Make that explicit.
+chip_id is an unsigned number, it can never be < 0
 
-Found by cocci:
-drivers/media/platform/qcom/venus/vdec.c:488:1-7: WARNING: do_div() does a 64-by-32 division, please consider using div64_u64 instead.
+Fixes cocci check:
+drivers/media/dvb-frontends/stb0899_drv.c:1280:8-15: WARNING: Unsigned expression compared with zero: chip_id > 0
 
 Reviewed-by: Bryan O'Donoghue <bryan.odonoghue@linaro.org>
 Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 ---
- drivers/media/platform/qcom/venus/vdec.c | 7 ++-----
- 1 file changed, 2 insertions(+), 5 deletions(-)
+ drivers/media/dvb-frontends/stb0899_drv.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/media/platform/qcom/venus/vdec.c b/drivers/media/platform/qcom/venus/vdec.c
-index 29130a9441e7..2b2874aedb2d 100644
---- a/drivers/media/platform/qcom/venus/vdec.c
-+++ b/drivers/media/platform/qcom/venus/vdec.c
-@@ -464,7 +464,7 @@ static int vdec_s_parm(struct file *file, void *fh, struct v4l2_streamparm *a)
- 	struct venus_inst *inst = to_inst(file);
- 	struct v4l2_captureparm *cap = &a->parm.capture;
- 	struct v4l2_fract *timeperframe = &cap->timeperframe;
--	u64 us_per_frame, fps;
-+	u64 us_per_frame;
+diff --git a/drivers/media/dvb-frontends/stb0899_drv.c b/drivers/media/dvb-frontends/stb0899_drv.c
+index 2f4d8fb400cd..35634f9a8ab5 100644
+--- a/drivers/media/dvb-frontends/stb0899_drv.c
++++ b/drivers/media/dvb-frontends/stb0899_drv.c
+@@ -1277,7 +1277,7 @@ static int stb0899_get_dev_id(struct stb0899_state *state)
+ 	dprintk(state->verbose, FE_ERROR, 1, "Demodulator Core ID=[%s], Version=[%d]", (char *) &demod_str, demod_ver);
+ 	CONVERT32(STB0899_READ_S2REG(STB0899_S2FEC, FEC_CORE_ID_REG), (char *)&fec_str);
+ 	fec_ver = STB0899_READ_S2REG(STB0899_S2FEC, FEC_VER_ID_REG);
+-	if (! (chip_id > 0)) {
++	if (!chip_id) {
+ 		dprintk(state->verbose, FE_ERROR, 1, "couldn't find a STB 0899");
  
- 	if (a->type != V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE &&
- 	    a->type != V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE)
-@@ -484,10 +484,7 @@ static int vdec_s_parm(struct file *file, void *fh, struct v4l2_streamparm *a)
- 	if (!us_per_frame)
- 		return -EINVAL;
- 
--	fps = (u64)USEC_PER_SEC;
--	do_div(fps, us_per_frame);
--
--	inst->fps = fps;
-+	inst->fps = USEC_PER_SEC / (u32)us_per_frame;
- 	inst->timeperframe = *timeperframe;
- 
- 	return 0;
+ 		return -ENODEV;
 
 -- 
 2.44.0.769.g3c40516874-goog
