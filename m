@@ -4,76 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65110C19F4F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Apr 2024 08:40:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41F9FC10F16
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Apr 2024 09:12:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=LwZIKlQJP95UHeQU2CW1tpdwHn1XGE1fySMMHl57I3A=; b=k6qf1Aa/sVRKrUntSIbEtj5nrU
-	pHhhCDLD/VqVMpn242d3sWBVw3eTo8u+z0H/Rd/f5jtrA1AxnDXma2ujDbQ0ugMfZVDWAxWyf4ge8
-	/pa9wCQHVgacvtGlbVkmcjaXsAZpIYxb+Ev2T51kZHEFr/whwP8GAk6S2nDbPjvZESgZ/FmWEkcES
-	SCxL4sT9QW1MBRch8cHfT+Fmi6OQ9CJc5B8B3ws5bdbb0ARaWpl5uZSsPxjp2LFiMTDrhGYfAyiPQ
-	LY3yOWhXNAB9uu695ItxfVKSoX4YmNPnQAxSJiZ3nhnYX92R9EsKE4Si5SDczHuVvmW8wQAedJrxN
-	1Ki+1eiA==;
+	bh=FkVJ6N3DW95VolFpSZFwXerPQZP92EWrdIRwkAjZARQ=; b=CIlRSnQPlNLWWo8a33k0V469CI
+	7GZjIElAh8tY6sotSaqjiL+TyeNyLBkkyhAG6CuedkxLpZdPjHuGGAgGItSL/d2+HLTOPMkPcGeTd
+	RP7I4CYTrNOYtO5Y8l1RDe4A3O26B88JYxs3ZkuMcaT//dkuaEJSA3EYI6prKKHja7QVyBQbvghcN
+	HC71/MwNJvNYG6v5E8dACRs1r2xbT+gc125TF3kUMmEq39walqgL5XDfkY1SRgi4pk1jOHfcAeGMs
+	DL9Q+370bpBl7jIEG5ioCCdcVOZQsBlx/QEPzcov2G7iGA3XCICgGTzYVYhRZ+OOMgns474C1q5M8
+	9tfdgfHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1j2I-00000005eAe-0rBA;
-	Tue, 30 Apr 2024 08:40:26 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1s1jXG-00000005lSP-0RJJ;
+	Tue, 30 Apr 2024 09:12:26 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1j2D-00000005e2Y-01c0;
-	Tue, 30 Apr 2024 08:40:23 +0000
-X-UUID: 41c083ba06cd11ef9a78ddf43a9225dc-20240430
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=LwZIKlQJP95UHeQU2CW1tpdwHn1XGE1fySMMHl57I3A=;
-	b=sxfTy8XJ6m1N2aPEeXn/4HG8LP6QH265ngj+9Tz/nc9Anvjf/l3Y3Pfl4+YNIzHQrpQwkZjE0PfGt5ewJzbeIh6Pb0DoGdjGEO0b3oF6yqyRaLel9ZVFzc9ROXpk67MlBkbIlqCAa8rR4TqnCogautjY6J5J8ast7fjx7dqZEIg=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.38,REQID:05a6007b-0c99-4ac0-ac43-85757b234338,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:82c5f88,CLOUDID:d15a85fb-ed05-4274-9204-014369d201e8,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 41c083ba06cd11ef9a78ddf43a9225dc-20240430
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <jason-jh.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1083181211; Tue, 30 Apr 2024 01:40:11 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 30 Apr 2024 16:39:35 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 30 Apr 2024 16:39:35 +0800
-From: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-To: Jassi Brar <jassisinghbrar@gmail.com>, Chun-Kuang Hu
-	<chunkuang.hu@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-CC: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Jason-ch Chen <jason-ch.chen@mediatek.com>, "Jason-JH . Lin"
-	<jason-jh.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, Nancy
- Lin <nancy.lin@mediatek.com>, Shawn Sung <shawn.sung@mediatek.com>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH] mailbox: mtk-cmdq: Fix sleeping function called from invalid context
-Date: Tue, 30 Apr 2024 16:39:34 +0800
-Message-ID: <20240430083934.26980-1-jason-jh.lin@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1s1jXB-00000005lOH-4C6x;
+	Tue, 30 Apr 2024 09:12:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1714468335;
+	bh=Q6up+U23E5APYIMETLmfiB1ibki5YAl7MpYr3vD7xLE=;
+	h=From:To:Cc:Subject:Date:From;
+	b=KE5WpSPbzhjMWvlaKe8+wAl5amqx/bo+kGu0nR8qV0BnT+EpHef2nFuLTNyuV/FUG
+	 OXpRrnwMw0UusKK2qo2ccvla2/MnwHsXXViKbFIU4DVI9bgWcvF7BrypK/E88QMIps
+	 rdZcASyjzRKYXiKVE3dp/I6f7PDihykSPDSyfLLC57JF9XN8KO9V2BLtL/YW7vESVq
+	 td7cUTrvNX/lZgp9E0jndbl9NKdAxHOlJevkfK4U3P6PVYbMCbY3+oGnDCmfxGf9Lq
+	 SCZG8TAY0vrh76a6z+gUYV/jdriHAZQwzAlVfLDGy3e3skmZF3EvWxop+G6+DSlx+v
+	 C6OVGbLdQR+Gg==
+Received: from localhost.localdomain (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: vignesh)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 53E3D3782165;
+	Tue, 30 Apr 2024 09:12:11 +0000 (UTC)
+From: Vignesh Raman <vignesh.raman@collabora.com>
+To: dri-devel@lists.freedesktop.org
+Cc: daniels@collabora.com,
+	helen.koike@collabora.com,
+	airlied@gmail.com,
+	daniel@ffwll.ch,
+	robdclark@gmail.com,
+	david.heidelberg@collabora.com,
+	guilherme.gallo@collabora.com,
+	sergi.blanch.torne@collabora.com,
+	dmitry.baryshkov@linaro.org,
+	mcanal@igalia.com,
+	linux-mediatek@lists.infradead.org,
+	linux-amlogic@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	amd-gfx@lists.freedesktop.org,
+	linux-arm-msm@vger.kernel.org,
+	intel-gfx@lists.freedesktop.org,
+	virtualization@lists.linux-foundation.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v1 0/5] drm/ci: uprev mesa and generate testlist
+Date: Tue, 30 Apr 2024 14:41:16 +0530
+Message-Id: <20240430091121.508099-1-vignesh.raman@collabora.com>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240430_014021_312765_F69CF9F2 
-X-CRM114-Status: UNSURE (   9.93  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240430_021222_251988_C580C462 
+X-CRM114-Status: GOOD (  11.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,65 +86,104 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When we run kernel with lockdebug option, we will get the BUG below:
-[  106.692124] BUG: sleeping function called from invalid context at drivers/base/power/runtime.c:1164
-[  106.692190] in_atomic(): 1, irqs_disabled(): 128, non_block: 0, pid: 3616, name: kworker/u17:3
-[  106.692226] preempt_count: 1, expected: 0
-[  106.692254] RCU nest depth: 0, expected: 0
-[  106.692282] INFO: lockdep is turned off.
-[  106.692306] irq event stamp: 0
-[  106.692331] hardirqs last  enabled at (0): [<0000000000000000>] 0x0
-[  106.692376] hardirqs last disabled at (0): [<ffffffee15d37fa0>] copy_process+0xc90/0x2ac0
-[  106.692429] softirqs last  enabled at (0): [<ffffffee15d37fc4>] copy_process+0xcb4/0x2ac0
-[  106.692473] softirqs last disabled at (0): [<0000000000000000>] 0x0
-[  106.692513] CPU: 1 PID: 3616 Comm: kworker/u17:3 Not tainted 6.1.87-lockdep-14133-g26e933aca785 #1 6839942e1cf34914b0a366137843dd2366f52aa9
-[  106.692556] Hardware name: Google Ciri sku0/unprovisioned board (DT)
-[  106.692586] Workqueue: imgsys_runner imgsys_runner_func
-[  106.692638] Call trace:
-[  106.692662]  dump_backtrace+0x100/0x120
-[  106.692702]  show_stack+0x20/0x2c
-[  106.692737]  dump_stack_lvl+0x84/0xb4
-[  106.692775]  dump_stack+0x18/0x48
-[  106.692809]  __might_resched+0x354/0x4c0
-[  106.692847]  __might_sleep+0x98/0xe4
-[  106.692883]  __pm_runtime_resume+0x70/0x124
-[  106.692921]  cmdq_mbox_send_data+0xe4/0xb1c
-[  106.692964]  msg_submit+0x194/0x2dc
-[  106.693003]  mbox_send_message+0x190/0x330
-[  106.693043]  imgsys_cmdq_sendtask+0x1618/0x2224
-[  106.693082]  imgsys_runner_func+0xac/0x11c
-[  106.693118]  process_one_work+0x638/0xf84
-[  106.693158]  worker_thread+0x808/0xcd0
-[  106.693196]  kthread+0x24c/0x324
-[  106.693231]  ret_from_fork+0x10/0x20
+Uprev mesa to the latest version and stop vendoring the
+testlist into the kernel. Instead, use the testlist from the
+IGT build to ensure we do not miss renamed or newly added tests.
+Update the xfails with the latest testlist run.
 
-We found that there is a spin_lock_irqsave protection in msg_submit()
-of mailbox.c.
-So when cmdq driver calls pm_runtime_get_sync() in cmdq_mbox_send_data(),
-it will get this BUG report.
+Also build virtual GPU driver for virtio as module.
 
-Add pm_runtime_irq_safe() to let pm_runtime callbacks is safe in atomic
-context with interrupts disabled.
+The flakes list needs to be reported upsteam. Will send it
+after this series is reviewed.
 
-Fixes: 8afe816b0c99 ("mailbox: mtk-cmdq-mailbox: Implement Runtime PM with autosuspend")
-Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
----
- drivers/mailbox/mtk-cmdq-mailbox.c | 1 +
- 1 file changed, 1 insertion(+)
+https://gitlab.freedesktop.org/vigneshraman/linux/-/pipelines/1166575
 
-diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
-index ead2200f39ba..3b4f19633c83 100644
---- a/drivers/mailbox/mtk-cmdq-mailbox.c
-+++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-@@ -694,6 +694,7 @@ static int cmdq_probe(struct platform_device *pdev)
- 
- 	pm_runtime_set_autosuspend_delay(dev, CMDQ_MBOX_AUTOSUSPEND_DELAY_MS);
- 	pm_runtime_use_autosuspend(dev);
-+	pm_runtime_irq_safe(dev);
- 
- 	return 0;
- }
+Vignesh Raman (5):
+  drm/ci: uprev mesa version
+  drm/ci: generate testlist from build
+  drm/ci: build virtual GPU driver as module
+  drm/ci: skip driver specific tests
+  drm/ci: update xfails for the new testlist
+
+ drivers/gpu/drm/ci/build-igt.sh               |   23 +
+ drivers/gpu/drm/ci/build.sh                   |    2 +-
+ drivers/gpu/drm/ci/container.yml              |   12 +-
+ drivers/gpu/drm/ci/gitlab-ci.yml              |   11 +-
+ drivers/gpu/drm/ci/igt_runner.sh              |   15 +-
+ drivers/gpu/drm/ci/image-tags.yml             |    7 +-
+ drivers/gpu/drm/ci/test.yml                   |    3 +
+ drivers/gpu/drm/ci/testlist.txt               | 2761 -----------------
+ drivers/gpu/drm/ci/x86_64.config              |    2 +-
+ .../gpu/drm/ci/xfails/amdgpu-stoney-fails.txt |   47 +-
+ .../drm/ci/xfails/amdgpu-stoney-flakes.txt    |    8 +-
+ .../gpu/drm/ci/xfails/amdgpu-stoney-skips.txt |   29 +-
+ drivers/gpu/drm/ci/xfails/i915-amly-fails.txt |   22 +-
+ .../gpu/drm/ci/xfails/i915-amly-flakes.txt    |    8 +
+ drivers/gpu/drm/ci/xfails/i915-amly-skips.txt |   22 +-
+ drivers/gpu/drm/ci/xfails/i915-apl-fails.txt  |   45 +-
+ drivers/gpu/drm/ci/xfails/i915-apl-flakes.txt |    5 +
+ drivers/gpu/drm/ci/xfails/i915-apl-skips.txt  |   26 +-
+ drivers/gpu/drm/ci/xfails/i915-cml-fails.txt  |   26 +-
+ drivers/gpu/drm/ci/xfails/i915-cml-flakes.txt |    6 +
+ drivers/gpu/drm/ci/xfails/i915-cml-skips.txt  |   20 +
+ drivers/gpu/drm/ci/xfails/i915-glk-fails.txt  |   28 +-
+ drivers/gpu/drm/ci/xfails/i915-glk-skips.txt  |   26 +-
+ drivers/gpu/drm/ci/xfails/i915-kbl-fails.txt  |   39 +-
+ drivers/gpu/drm/ci/xfails/i915-kbl-flakes.txt |   10 +-
+ drivers/gpu/drm/ci/xfails/i915-kbl-skips.txt  |   35 +-
+ drivers/gpu/drm/ci/xfails/i915-tgl-fails.txt  |   75 +-
+ drivers/gpu/drm/ci/xfails/i915-tgl-skips.txt  |   27 +-
+ drivers/gpu/drm/ci/xfails/i915-whl-fails.txt  |   46 +-
+ drivers/gpu/drm/ci/xfails/i915-whl-skips.txt  |   22 +-
+ .../drm/ci/xfails/mediatek-mt8173-fails.txt   |   47 +-
+ .../drm/ci/xfails/mediatek-mt8173-skips.txt   |   12 +
+ .../drm/ci/xfails/mediatek-mt8183-fails.txt   |   17 +-
+ .../drm/ci/xfails/mediatek-mt8183-flakes.txt  |    5 +
+ .../drm/ci/xfails/mediatek-mt8183-skips.txt   |   14 +
+ .../gpu/drm/ci/xfails/meson-g12b-fails.txt    |   20 +-
+ .../gpu/drm/ci/xfails/meson-g12b-flakes.txt   |    5 +
+ .../gpu/drm/ci/xfails/meson-g12b-skips.txt    |   14 +
+ .../gpu/drm/ci/xfails/msm-apq8016-fails.txt   |   26 +-
+ .../gpu/drm/ci/xfails/msm-apq8016-flakes.txt  |    5 +
+ .../gpu/drm/ci/xfails/msm-apq8016-skips.txt   |   14 +
+ .../gpu/drm/ci/xfails/msm-apq8096-fails.txt   |    5 +-
+ .../gpu/drm/ci/xfails/msm-apq8096-flakes.txt  |    5 +
+ .../gpu/drm/ci/xfails/msm-apq8096-skips.txt   |   81 +-
+ .../msm-sc7180-trogdor-kingoftown-fails.txt   |   34 +-
+ .../msm-sc7180-trogdor-kingoftown-flakes.txt  |    5 +
+ .../msm-sc7180-trogdor-kingoftown-skips.txt   |   15 +
+ ...sm-sc7180-trogdor-lazor-limozeen-fails.txt |   34 +-
+ ...m-sc7180-trogdor-lazor-limozeen-flakes.txt |    5 +
+ ...sm-sc7180-trogdor-lazor-limozeen-skips.txt |   15 +
+ .../gpu/drm/ci/xfails/msm-sdm845-fails.txt    |   75 +-
+ .../gpu/drm/ci/xfails/msm-sdm845-flakes.txt   |   26 +-
+ .../gpu/drm/ci/xfails/msm-sdm845-skips.txt    |   15 +
+ .../drm/ci/xfails/rockchip-rk3288-fails.txt   |   54 -
+ .../drm/ci/xfails/rockchip-rk3288-skips.txt   |   17 +-
+ .../drm/ci/xfails/rockchip-rk3399-fails.txt   |   80 +-
+ .../drm/ci/xfails/rockchip-rk3399-flakes.txt  |    7 -
+ .../drm/ci/xfails/rockchip-rk3399-skips.txt   |   15 +
+ .../drm/ci/xfails/virtio_gpu-none-fails.txt   |   82 +-
+ .../drm/ci/xfails/virtio_gpu-none-skips.txt   |   18 +-
+ 60 files changed, 886 insertions(+), 3289 deletions(-)
+ delete mode 100644 drivers/gpu/drm/ci/testlist.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/i915-amly-flakes.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/i915-apl-flakes.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/i915-cml-flakes.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8173-skips.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8183-flakes.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8183-skips.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/meson-g12b-flakes.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/meson-g12b-skips.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/msm-apq8016-flakes.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/msm-apq8016-skips.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/msm-apq8096-flakes.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-flakes.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-lazor-limozeen-flakes.txt
+ delete mode 100644 drivers/gpu/drm/ci/xfails/rockchip-rk3288-fails.txt
+ delete mode 100644 drivers/gpu/drm/ci/xfails/rockchip-rk3399-flakes.txt
+
 -- 
-2.18.0
+2.40.1
 
 
