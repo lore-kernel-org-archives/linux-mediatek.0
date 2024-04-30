@@ -4,108 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 905CAC10F16
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Apr 2024 19:54:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1684EC4345F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Apr 2024 20:10:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HQq1oWqrCF0TfrogSNrGXKQjYOwjvsMuDYhQTiGCeqo=; b=xYs02FRFHenPd3B5z5x/yOSqKY
-	xfMzsCmIjpR51bAM8er34Ep/D999vXS8G0fFBHG9czmDdsf0+osbd9by4htasCoeaFN7v9ZrOFaH3
-	sGGboZI+yiUgem/tL3G2jj0XtZggLI29+EVoxeGygaPkAo3phe+kr16o2za0w9y5IHeroSgBjkBD8
-	8SrC7iykQIYVv7M99f98K83/wpmP8Z5xPrfWF44rm/llMLCrK0hfHcYbHkKMx0dO/rwBj7TTZZanc
-	53loDfDRBDzxteOIC0UsWtAwuVVLx3uzhrk0deWIRxp9JPCxcuyHqSSB8X24q3gk1zHf1CIvpJ4Mt
-	DAkeCKiA==;
+	bh=ZBOmTqBpNMaalH4AUgByChrqGj1SS6inw+H7gW/YWKM=; b=A/+dld7BslWz3D4+2RppL7pPOE
+	ABQUmrAzLCZvMaEjPmRrPM81pfW96w7mQBgmqREFiOWhoO54xvCOsXfGwGHdwcqYxyllZixMCYyQA
+	GUuXzRQGWcrqkQNuFfxsvQqb63WbG51o4SH7onhdHeuyLxe/D61Q3SYypJqrI5njU1G2pCFajSU9g
+	3h2GpRptgkTFmXVi6k981F50XjO1XpfEDdcca0G65EKHNJh0P3PwvKAjqD2dvxXePtbms9BbwRbIk
+	xQATZWbMassJr6I9+GPOk8Mzr1yuV1ZA1s6Hm/sTpvSTgONnObD/z0M4To83fy61V14USQstPlCZD
+	Zk2IbKJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1tYI-00000007lmK-2FBR;
-	Tue, 30 Apr 2024 19:54:11 +0000
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+	id 1s1toA-00000007pTF-17UL;
+	Tue, 30 Apr 2024 20:10:34 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1tY4-00000007lhs-2Aod;
-	Tue, 30 Apr 2024 19:53:58 +0000
-Received: by mail-ej1-x629.google.com with SMTP id a640c23a62f3a-a51a7d4466bso676636366b.2;
-        Tue, 30 Apr 2024 12:53:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1714506833; x=1715111633; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=HQq1oWqrCF0TfrogSNrGXKQjYOwjvsMuDYhQTiGCeqo=;
-        b=Axzx2sTiLta5kb6UocddvHHGBeVNVFloztVg6t/BM/dZMAMlN+nqstUiRT7YPcBpua
-         hkuEpknIixQSzXE/815bub2RToOTJS++/ntSb8WrlLFOxuQZBoRqwLu4RoyBcIYbajTg
-         /LbQl1aCd2iph2nddhVEyW67LB2ogwTXF9k3hVdNsM7pdK2uXcJJz43P48QGZkUMaAJd
-         hmC81zMR/08mBkgF6YkoUqdDeaibOLrwenEVm0AeC9p5+71TpDyj9MQVU2BUFED0PWrF
-         dzgCiO3Do6BNRZOrQsOOo/7012KM0ONlbVIrwlKeqJS2MZ7wOS+ZTtXTcbhboJDX/d1x
-         7TGw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1714506833; x=1715111633;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=HQq1oWqrCF0TfrogSNrGXKQjYOwjvsMuDYhQTiGCeqo=;
-        b=V0NLafOQx4YqnQpfg/YSD1nAp+YIetV6s/Ip+nu0GWBHPuUoPTqqby3ekEFEpcFeQi
-         MKu9omo9Vy6JHwUy29W84JJ4sSp7R6rEv0OKb/Y7pTRL+UvVwO2Rz5Ww0WwVuce/PJ1u
-         aMk/MoafWuIBl8jLOSKnk3hLYsUEUYy3W5/SgWicepYFAPm6YXKhUJJNMk9U7K4QCU1+
-         foyPFNI5njfE2xgqoWyYkWjr70oS1Q4o0aUD+IDlUk4f5Hgz3XVeD0uJ0Mm25/IWSVwk
-         F8LBSqN2Wyv1qYeCfKuBEeMo/7HliF8U1EVfTAPeRLFUC8tSXpiphZxi5CjSySJVGwOc
-         rCkA==
-X-Forwarded-Encrypted: i=1; AJvYcCV3wYK0CtCq3wxu8XIYXYvoC6UiVl6WV8j2hgeYMtrtiOGYefPyn286ZsKhMQ9J50bsBAkusqXELyzPfez4+ZX/o6lp6Fxqzmvx7sW2c9U5p7AAg2RlGFzNBYfTj63IoS6sfZla1asgxAic9ltOqDwlMy7DAXl5OI3qtmdGKGdQkx01QpQzwh8I7Xluwrm/gqHksdeETHwrGt6cRw==
-X-Gm-Message-State: AOJu0YwaEcakA1yXjFCjjulFD63HeELORaneaeF9FgO5eubiuinmjIgU
-	J3lB2rXNO+1HwgKtClPObuEllqsKiQhpvuQg3xC3eHb5cMRH+AiR
-X-Google-Smtp-Source: AGHT+IHcHyFMebv11hNczXbfOSBPzOfPEK56ZS5IQDWu8DzPrwNQuSSocR8UcDfVrVvZhY8lrKqE1g==
-X-Received: by 2002:a17:906:a084:b0:a55:387b:eef9 with SMTP id q4-20020a170906a08400b00a55387beef9mr455005ejy.10.1714506832645;
-        Tue, 30 Apr 2024 12:53:52 -0700 (PDT)
-Received: from jernej-laptop.localnet ([188.159.248.16])
-        by smtp.gmail.com with ESMTPSA id 13-20020a170906058d00b00a522d34fee8sm15418045ejn.114.2024.04.30.12.53.50
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 30 Apr 2024 12:53:52 -0700 (PDT)
-From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@gmail.com>
-To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
- Banajit Goswami <bgoswami@quicinc.com>, Liam Girdwood <lgirdwood@gmail.com>,
- Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>,
- Takashi Iwai <tiwai@suse.com>, Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Peter Ujfalusi <peter.ujfalusi@gmail.com>,
- Jarkko Nikula <jarkko.nikula@bitmer.com>, Daniel Mack <daniel@zonque.org>,
- Haojian Zhuang <haojian.zhuang@gmail.com>,
- Robert Jarzmik <robert.jarzmik@free.fr>,
- Shengjiu Wang <shengjiu.wang@gmail.com>, Xiubo Li <Xiubo.Lee@gmail.com>,
- Fabio Estevam <festevam@gmail.com>, Nicolin Chen <nicoleotsuka@gmail.com>,
- Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Jerome Brunet <jbrunet@baylibre.com>,
- Neil Armstrong <neil.armstrong@linaro.org>,
- Kevin Hilman <khilman@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- Sylwester Nawrocki <s.nawrocki@samsung.com>,
- Ban Tao <fengzheng923@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
- Samuel Holland <samuel@sholland.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: alsa-devel@alsa-project.org, linux-sound@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-tegra@vger.kernel.org,
- linux-omap@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linuxppc-dev@lists.ozlabs.org, imx@lists.linux.dev,
- linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org,
- linux-sunxi@lists.linux.dev,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: Re: [PATCH 13/13] ASoC: sunxi: Use snd_soc_substream_to_rtd() for accessing
- private_data
-Date: Tue, 30 Apr 2024 21:53:49 +0200
-Message-ID: <3292058.44csPzL39Z@jernej-laptop>
-In-Reply-To: <20240430-asoc-snd-substream-clean-v1-13-6f8a8902b479@linaro.org>
-References: <20240430-asoc-snd-substream-clean-v1-0-6f8a8902b479@linaro.org>
- <20240430-asoc-snd-substream-clean-v1-13-6f8a8902b479@linaro.org>
+	id 1s1to2-00000007pQQ-3MEa;
+	Tue, 30 Apr 2024 20:10:29 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 33BEBCE0EDB;
+	Tue, 30 Apr 2024 20:10:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A0C0CC2BBFC;
+	Tue, 30 Apr 2024 20:10:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1714507821;
+	bh=58CBaYeu4exH4ljqyrgLewfHjjrJsr+lwEV4eBnRRBY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=WImPU34vi9oog0mmRTYwMKyo1ISHKsDV6YPWI+6u3+xUXQD8qpYdkh3C/41+D6CJw
+	 k6UKJmZXrLyk5BK2449OfE1cJpyzZgF9BxLmxWHNjFuDNGZudLuAXQSJKMr8FdYCQV
+	 cIEig5Y9rFDOqmC2AJQLvqY3T39W804ABIfyx3tLU0gZeu1lre7MEyjzk+57HmK9OT
+	 mYlEXGZh2NVuCp9T1OIwqLDSqmZV580TjPigcNNiN6CtS4oF6eVQHiZ3WNf0YPsEbu
+	 W4pzjqjzlUQ7Y9m+2ZqyTh7DDtM1ly32OG7YCKWgtLAsuBKB4WT4rvc+6gb628z1ZP
+	 H8aC6Gjk+siug==
+Date: Tue, 30 Apr 2024 21:08:44 +0100
+From: Simon Horman <horms@kernel.org>
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
+	Felix Fietkau <nbd@nbd.name>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Landen Chao <Landen.Chao@mediatek.com>, devicetree@vger.kernel.org,
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net] net: dsa: mt7530: fix impossible MDIO address and
+ issue warning
+Message-ID: <20240430200844.GE2575892@kernel.org>
+References: <e615351aefba25e990215845e4812e6cb8153b28.1714433716.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <e615351aefba25e990215845e4812e6cb8153b28.1714433716.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240430_125356_705620_7BAC9355 
-X-CRM114-Status: GOOD (  16.10  )
+X-CRM114-CacheID: sfid-20240430_131027_250172_A9EAED0D 
+X-CRM114-Status: GOOD (  20.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,37 +86,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dne torek, 30. april 2024 ob 16:02:22 GMT +2 je Krzysztof Kozlowski napisal(a):
-> Do not open-code snd_soc_substream_to_rtd().
+On Tue, Apr 30, 2024 at 12:45:46AM +0100, Daniel Golle wrote:
+> The MDIO address of the MT7530 and MT7531 switch ICs can be configured
+> using bootstrap pins. However, there are only 4 possible options for the
+> switch itself: 7, 15, 23 and 31 (ie. only 3 and 4 can be configured, bit
+> 0~2 are always 111). Practically all boards known as of today use the
+> default setting which is to have the switch respond to address 31, while
+> the built-in switch PHYs respond to address 0~4 in this case.
 > 
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-
-Reviewed-by: Jernej Skrabec <jernej.skrabec@gmail.com>
-
-Best regards,
-Jernej
-
-> ---
->  sound/soc/sunxi/sun50i-dmic.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+> However, even in MediaTek's SDK the address of the switch is wrongly
+> stated in the device trees as 0 (while in reality it is 31), so warn the
+> user about such broken device tree and make a good guess what was
+> actually intended.
 > 
-> diff --git a/sound/soc/sunxi/sun50i-dmic.c b/sound/soc/sunxi/sun50i-dmic.c
-> index c76628bc86c6..fedfa4fc95fb 100644
-> --- a/sound/soc/sunxi/sun50i-dmic.c
-> +++ b/sound/soc/sunxi/sun50i-dmic.c
-> @@ -74,7 +74,7 @@ static const struct dmic_rate dmic_rate_s[] = {
->  static int sun50i_dmic_startup(struct snd_pcm_substream *substream,
->  			       struct snd_soc_dai *cpu_dai)
->  {
-> -	struct snd_soc_pcm_runtime *rtd = substream->private_data;
-> +	struct snd_soc_pcm_runtime *rtd = snd_soc_substream_to_rtd(substream);
->  	struct sun50i_dmic_dev *host = snd_soc_dai_get_drvdata(snd_soc_rtd_to_cpu(rtd, 0));
->  
->  	/* only support capture */
+> This is imporant to not break compatibility with older Device Trees as
+> with commit 868ff5f4944a ("net: dsa: mt7530-mdio: read PHY address of
+> switch from device tree") the address in device tree will be taken into
+> account. Doing so instead of assuming the switch is always at
+> address 31 which was previously hard-coded will obviously break things
+> for many existing downstream device trees as they contain the wrong
+> address (0) which previously didn't matter.
 > 
-> 
+> Fixes: b8f126a8d543 ("net-next: dsa: add dsa support for Mediatek MT7530 switch")
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 
+The cited commit is present in net-next but not net.
+So I think this patch should target net-next.
 
-
-
+...
 
