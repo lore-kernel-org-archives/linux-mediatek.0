@@ -4,80 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BAC24C4345F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Apr 2024 09:33:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F760C4345F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Apr 2024 09:39:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rZ1f3Q6BEnZTJT1SiGVBJeWSactvAosCQCCnwWRZCiM=; b=t8gik90uA4xvGJjhcIO7Bsm9Kz
-	aVjHJrmwlvVZZgDl+CkOy2lkSVxsKVY6eE9CymgtF3Xju5AKwevb2BDz6OvkdhjHg//uM9/TNTi8+
-	kpIO/YSM2WVr8qPYTvwhQVqWJinStEDeR2+vnwvshEEyEi1dMEeCFmELqbPtx2Q5HEpxNDUhafa0F
-	AhPlRHfRjqXm7qn/bojp76hOFguoXhV9FkvzYe+5AdHlWVMKkuRsJRWlSXmAQCFOZguf9AaG13eB9
-	ZSvOqG3D+M540c9ERzJaBXX+F6xv3TJPdbncJwrXtXlPfe+AxNJBZpsY/85GZq+DGzOTjpRll67g0
-	HvZmVGvQ==;
+	bh=3M31EWPUmzUM47VgOI+5A3RvUj0lLs1qFVMvUyvhKHM=; b=ykW04EWYFP4ZcoyqE4S2mcedM3
+	SCILfIYa+sitw/U+XF1ht4ECHx/IVP+DmnvNPjAo6P9+43VYcwa/BdcDE++hEjFEsDycaTSmCdwTJ
+	zODGkwKwZT3NceQBy5FfQchlKpTSwqqHFJOoE/cfZuZmAtgE2TZyp3wm23LijTKfcV+rLbxuolwQv
+	pzSYqnJLDEWg3BjQHAwLWI4A2J4Nw4q/dx9R75cH0P8/zBVRbl0aFRiRcoVKPPWrWOJJR2tN9ONy5
+	zXOdWF+813cRkvOBDfhYwCluKlnEFn3f19985MSIFIOnbq7zr+Fx9DBc4kKZATVv8KV81L+usdOQP
+	GC1hpD0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1jrE-00000005qdC-1iyO;
-	Tue, 30 Apr 2024 09:33:04 +0000
-Received: from mail-pg1-x530.google.com ([2607:f8b0:4864:20::530])
+	id 1s1jx7-00000005s0M-37Lr;
+	Tue, 30 Apr 2024 09:39:09 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1jrA-00000005qZw-1iHR
-	for linux-mediatek@lists.infradead.org;
-	Tue, 30 Apr 2024 09:33:01 +0000
-Received: by mail-pg1-x530.google.com with SMTP id 41be03b00d2f7-6001399f22bso3729341a12.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 30 Apr 2024 02:32:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1714469575; x=1715074375; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=rZ1f3Q6BEnZTJT1SiGVBJeWSactvAosCQCCnwWRZCiM=;
-        b=Gc1+YC5QMnaB0Zvx7tnUF/PdQH5kbp70oqG228wFLsuX0iyNl5d4dpvL3O372aZPe7
-         HGmSaF5c6MFXSKJMsn04j6Fi2nM67QIio1QJKepoXdW5P4apKrkrrEUSEFFNi5WbtGOb
-         RcPriSpfG5Mw/qrMXK2Lj971Xq99j6+JOS+BY=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1714469575; x=1715074375;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=rZ1f3Q6BEnZTJT1SiGVBJeWSactvAosCQCCnwWRZCiM=;
-        b=jt+ddd6Myc3Vpnb7rkW+LjLfZrQ/+3UAd5NToW4zUcmfS+p9VYZmjnZ8Akw+0XfhBt
-         8+BzUyQ2l8eCApYKo2m30keqKEqKSbHBZdSFZ2N+itTD3kdGvSqtNae7lEeWvUTs0ITp
-         VlDnAb9EOfBLK792YJEnGP8ZmLybggGGzOSWGZ7ZwvNVEmk06ATupHhtRrtP1WtVxtJf
-         0eZxNkRMMBa/WeYFjFQMLmruSDIk1hQAIVQbxXn7u5oZ6VrnqfgT+XV5VHNH4EyWQG87
-         SNPTao3TuJesvt+M0ukeOTEovMwIoBpxDMdNcdspLaMg0rCN8II2PJgM4Y3uTZjYTCqH
-         AMOA==
-X-Forwarded-Encrypted: i=1; AJvYcCVBDRqCJV4xyCvOsqqTH+8l+TLq246Mgp2olJG6uWXOx8d7kZwbhd+uq1tbgXCLrpdGPC4ZgDfMprWYjLgS69Wr5ZmoIZkEJqv0M9LBPtDF6lIY
-X-Gm-Message-State: AOJu0YxqjghjEhOW/4y053I3ioM4m45T+LUyIh+jzcSthDpnSPNQlrwl
-	Rke9xzNprcOrrlVjrEK0B1zPRAeAOo5Jzhksm1ZPo4/umKKmgc28f1dCprWSY2CMbmBaNIhbP1L
-	599ITDBZKVlyEiKOCgN7RY0GIG9qoW31OzuNa
-X-Google-Smtp-Source: AGHT+IHe4n3YPDXbWHUn5ncUC54LJGZHAP4fN5Liyf2K72GnMccBlNkfMj6dDGsch6IeTojaMR/TVjx0GT+KLwkPyEM=
-X-Received: by 2002:a05:6a20:9c8f:b0:1ae:84b3:bb5c with SMTP id
- mj15-20020a056a209c8f00b001ae84b3bb5cmr12622020pzb.1.1714469574691; Tue, 30
- Apr 2024 02:32:54 -0700 (PDT)
+	id 1s1jx3-00000005ryD-1je0;
+	Tue, 30 Apr 2024 09:39:06 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1714469944;
+	bh=MCa5KWw0+OQ7gCxKdfi5S+q/EA68/H4Hfou7pC7eiwg=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=0rfc9VNmT2Y4LfZiO6mXxHVQyE5U5EZGea1auI8yDl1oi/FxBU5aO6Cs2ZpFiKp5e
+	 RsANRBRyLlfpYYrv1pc70yjuqIC2D5RrRZ5rtrQ9BVDVzco0U5BKqzkgYoaghr47QG
+	 wLITZRen8Q+LA107fqUb3qhAe/kCUA7xJF/nRl1L2rJ3rI2v7zxJlDaPOqzrj0bEGt
+	 yi3RLaYznZ5RkdrhHpfAjeetOIYUQSr+iKN56ZZpRF7vgAjHFavp3dFVPx/6aTfjPy
+	 NgyqViqfpIgzAaHJ6dfySRm0L+OtOejANmGFoPp8ZOg7A90dIKxaDMZZqfzXfZOd5/
+	 bsIU6RUMx25sQ==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 37B34378143B;
+	Tue, 30 Apr 2024 09:39:03 +0000 (UTC)
+Message-ID: <2b46b3c0-f4ad-48e1-964b-128d29bafa9c@collabora.com>
+Date: Tue, 30 Apr 2024 11:39:02 +0200
 MIME-Version: 1.0
-References: <20240429095333.3585438-1-treapking@chromium.org> <b3c69a78-78c9-4a15-829b-e4b36e16566a@collabora.com>
-In-Reply-To: <b3c69a78-78c9-4a15-829b-e4b36e16566a@collabora.com>
-From: Pin-yen Lin <treapking@chromium.org>
-Date: Tue, 30 Apr 2024 17:32:43 +0800
-Message-ID: <CAEXTbpf2HOQj_AxHGbsgOXVF_HyKttL=z7Mi8QStcmuOS+yN7g@mail.gmail.com>
-Subject: Re: [PATCH] arm64: dts: mediatek: mt8192-asurada: Add off-on-delay-us
- for pp3300_mipibrdg
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
-	"open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
-	=?UTF-8?B?TsOtY29sYXMgRiAuIFIgLiBBIC4gUHJhZG8=?= <nfraprado@collabora.com>, 
-	"open list:ARM/Mediatek SoC support" <linux-kernel@vger.kernel.org>, Hsin-Te Yuan <yuanhsinte@chromium.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] mailbox: mtk-cmdq: Fix sleeping function called from
+ invalid context
+To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
+ Jassi Brar <jassisinghbrar@gmail.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Jason-ch Chen <jason-ch.chen@mediatek.com>,
+ Singo Chang <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>,
+ Shawn Sung <shawn.sung@mediatek.com>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20240430083934.26980-1-jason-jh.lin@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20240430083934.26980-1-jason-jh.lin@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240430_023300_524828_11D4F8FC 
-X-CRM114-Status: GOOD (  26.06  )
+X-CRM114-CacheID: sfid-20240430_023905_630199_3976CBC1 
+X-CRM114-Status: GOOD (  20.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,81 +81,83 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Angelo,
+Il 30/04/24 10:39, Jason-JH.Lin ha scritto:
+> When we run kernel with lockdebug option, we will get the BUG below:
+> [  106.692124] BUG: sleeping function called from invalid context at drivers/base/power/runtime.c:1164
+> [  106.692190] in_atomic(): 1, irqs_disabled(): 128, non_block: 0, pid: 3616, name: kworker/u17:3
+> [  106.692226] preempt_count: 1, expected: 0
+> [  106.692254] RCU nest depth: 0, expected: 0
+> [  106.692282] INFO: lockdep is turned off.
+> [  106.692306] irq event stamp: 0
+> [  106.692331] hardirqs last  enabled at (0): [<0000000000000000>] 0x0
+> [  106.692376] hardirqs last disabled at (0): [<ffffffee15d37fa0>] copy_process+0xc90/0x2ac0
+> [  106.692429] softirqs last  enabled at (0): [<ffffffee15d37fc4>] copy_process+0xcb4/0x2ac0
+> [  106.692473] softirqs last disabled at (0): [<0000000000000000>] 0x0
+> [  106.692513] CPU: 1 PID: 3616 Comm: kworker/u17:3 Not tainted 6.1.87-lockdep-14133-g26e933aca785 #1 6839942e1cf34914b0a366137843dd2366f52aa9
+> [  106.692556] Hardware name: Google Ciri sku0/unprovisioned board (DT)
+> [  106.692586] Workqueue: imgsys_runner imgsys_runner_func
+> [  106.692638] Call trace:
+> [  106.692662]  dump_backtrace+0x100/0x120
+> [  106.692702]  show_stack+0x20/0x2c
+> [  106.692737]  dump_stack_lvl+0x84/0xb4
+> [  106.692775]  dump_stack+0x18/0x48
+> [  106.692809]  __might_resched+0x354/0x4c0
+> [  106.692847]  __might_sleep+0x98/0xe4
+> [  106.692883]  __pm_runtime_resume+0x70/0x124
+> [  106.692921]  cmdq_mbox_send_data+0xe4/0xb1c
+> [  106.692964]  msg_submit+0x194/0x2dc
+> [  106.693003]  mbox_send_message+0x190/0x330
+> [  106.693043]  imgsys_cmdq_sendtask+0x1618/0x2224
+> [  106.693082]  imgsys_runner_func+0xac/0x11c
+> [  106.693118]  process_one_work+0x638/0xf84
+> [  106.693158]  worker_thread+0x808/0xcd0
+> [  106.693196]  kthread+0x24c/0x324
+> [  106.693231]  ret_from_fork+0x10/0x20
+> 
+> We found that there is a spin_lock_irqsave protection in msg_submit()
+> of mailbox.c.
+> So when cmdq driver calls pm_runtime_get_sync() in cmdq_mbox_send_data(),
+> it will get this BUG report.
+> 
+> Add pm_runtime_irq_safe() to let pm_runtime callbacks is safe in atomic
+> context with interrupts disabled.
+> 
 
-On Tue, Apr 30, 2024 at 4:17=E2=80=AFPM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> Il 29/04/24 11:53, Pin-yen Lin ha scritto:
-> > Set off-on-delay-us to 500000 us for pp3300_mipibrdg to make sure it
-> > complies with the panel sequence. Explicit configuration on the
-> > regulator node is required because mt8192-asurada uses the same power
-> > supply for the panel and the anx7625 DP bridge. So powering on/off the
-> > DP bridge could break the power sequence requirement for the panel.
-> >
-> > Fixes: f9f00b1f6b9b ("arm64: dts: mediatek: asurada: Add display regula=
-tors")
-> > Signed-off-by: Pin-yen Lin <treapking@chromium.org>
-> >
->
-> Uhm, there might be more to it - I don't think that this should ever happ=
-en.
->
-> The regulator is refcounted, so...
->   * Bridge on: panel goes off, but regulator doesn't turn off (refcount=
-=3D1)
->     * Panel resume -> sequence respected (refcount=3D2 -> wait -> more vr=
-egs, etc)
->   * Bridge off: panel is already off (refcount=3D0)
->     * Bridge resume -> refcount=3D1, no panel commands yet
+I see. The problem with this is that pm_runtime_irq_safe() will raise the refcount
+of the parent device "forever", which isn't the best and partially defeats what we
+are trying to do here (keeping stuff off unless really needed).
 
-The off-on-delay could be violated because the bridge driver does not
-check the delay.
+At this point I wonder if it'd be just better to really fix this instead of working
+around the problem.
 
->     * Panel resume -> refcount=3D2, wait -> more vregs, etc
->
-> Can you please describe the issue that you're getting?
+I'd say that one of the options would be to perform a change to msg_submit() so
+that it will take into account that a .send_data() callback might be using RPM
+functions.
 
-The symptom we observed is that the device has a small chance to
-reboot to a black panel, and we think the panel's unprepare delay (the
-time to power down completely) might not be satisfied because the
-bridge doesn't check that when it enables the regulator. Even if the
-regulator is enabled by the panel driver, the delay can also be
-violated in the following sequence:
+Ideas? :-)
 
-* t=3D0ms, bridge on: panel goes off, but regulator doesn't turn off
-(refcount=3D1). The .unprepared_time in panel_edp is updated
-* t=3D300ms, bridge off, regulator goes off (refcount=3D0)
-* t=3D600ms, panel on, the panel driver thinks the unprepare delay
-(500ms) is satisfied, but the regulator was disabled 300ms ago.
+Cheers,
+Angelo
 
-Did I miss anything here? Or should I add more detail to the commit message=
-?
+> Fixes: 8afe816b0c99 ("mailbox: mtk-cmdq-mailbox: Implement Runtime PM with autosuspend")
+> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+> ---
+>   drivers/mailbox/mtk-cmdq-mailbox.c | 1 +
+>   1 file changed, 1 insertion(+)
+> 
+> diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
+> index ead2200f39ba..3b4f19633c83 100644
+> --- a/drivers/mailbox/mtk-cmdq-mailbox.c
+> +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+> @@ -694,6 +694,7 @@ static int cmdq_probe(struct platform_device *pdev)
+>   
+>   	pm_runtime_set_autosuspend_delay(dev, CMDQ_MBOX_AUTOSUSPEND_DELAY_MS);
+>   	pm_runtime_use_autosuspend(dev);
+> +	pm_runtime_irq_safe(dev);
+>   
+>   	return 0;
+>   }
 
->
-> Cheers,
-> Angelo
->
-Regards,
-Pin-yen
 
-> > ---
-> >
-> >   arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi | 1 +
-> >   1 file changed, 1 insertion(+)
-> >
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi b/arch/ar=
-m64/boot/dts/mediatek/mt8192-asurada.dtsi
-> > index 7a704246678f..08d71ddf3668 100644
-> > --- a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-> > @@ -147,6 +147,7 @@ pp3300_mipibrdg: regulator-3v3-mipibrdg {
-> >               regulator-boot-on;
-> >               gpio =3D <&pio 127 GPIO_ACTIVE_HIGH>;
-> >               vin-supply =3D <&pp3300_g>;
-> > +             off-on-delay-us =3D <500000>;
-> >       };
-> >
-> >       /* separately switched 3.3V power rail */
->
+
 
