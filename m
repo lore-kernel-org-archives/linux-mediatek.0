@@ -4,93 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA46FC4345F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Apr 2024 01:16:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 330EEC4345F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Apr 2024 01:16:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5mLisfXXgL/VSvUU2SUsL5fRTTbTWAxuxt+JrE74xnM=; b=lvLpWiQg4pXbQhfkV+gxO08cOt
-	A9UdaNMLC0oiOXp7MddBqLMUbRBI5iWqBbG5LUnzK22/rAuyAr7xbsdSVxAAkEtMM2o9bK4zy4WJh
-	DEphzt2MR5BOOcrDOpDlem2j4OM0t/2UBWqLbFfjnUiyJcB620fnN60qIIxNabsecxrKMw/ywzgbs
-	K+HWNOVofs3I8X14YBADYLPO6AUoFUmfQT19be9+bglhBI8TW87STqkUJpBDNKKNkqHXNpPb0LKsQ
-	ycXBsDECAetg2pXPxI/mE4ytxdOxyG21Jyl8w3T7U8/a/EFFo6RRm+T/mEArny53YJRIZoqmeyX1F
-	WBR1qYPQ==;
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=E7qOPXMN3EtN709VL/sVHkpUIxB3GzdKBCh9pB/IiYI=; b=W2LYdzODaG0Am/ZPjMT7Fm5nd6
+	fWo+0xQE05SMtvIhnwFHXEzkaYB+zuIXrwmtMZjQe9rxZxrFMHK0GMU61PKmT7DiLNbEKk0fW9pgt
+	TLgE+RPyE2z0aa36EaEPCViKYtlz7J2NwWERkpOKCaTRRQFJ8I+dZA5GjeIdzHKH95Z/42gk4Oo+S
+	z1z6WJFYouC78ZGr3bfFj0W4NX0KAC8V3SbX2kTMElOGIuesPoc47ZRic8FFjUcwGl2m3LUXCKLWs
+	nRbrtdKeIM3qnViTRzZYv+krVDmE1U5Qs/HVWAR0TI6piNr9vlgzVX2arV0r58g7/095jzWkcs/6f
+	gXwL6OFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1c6T-00000004eKU-1RXW;
-	Tue, 30 Apr 2024 01:16:17 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1s1c6k-00000004eVK-1QLv;
+	Tue, 30 Apr 2024 01:16:35 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1c6E-00000004eF1-1zKt;
-	Tue, 30 Apr 2024 01:16:03 +0000
-X-UUID: 30b062c2068f11ef9a78ddf43a9225dc-20240429
+	id 1s1c6g-00000004eR0-2cCI;
+	Tue, 30 Apr 2024 01:16:32 +0000
+X-UUID: 41b288c0068f11efa8f1cd58ee6c2400-20240429
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=5mLisfXXgL/VSvUU2SUsL5fRTTbTWAxuxt+JrE74xnM=;
-	b=N/6MLfgx153J/d53+hE2sioO7o5dEKiadv5mk5S/W1dKSKyP5ut1HE+XU5ecvLfxzu15Sru+d37aP3JQVWzOnZAQ349aV6t5b26/oxAANfGra+87ckvzqazN46jbhBN0DQEpKxULvQkeZ1SSBqeopPPyEzgg7obzCF5dNBpTCtQ=;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=E7qOPXMN3EtN709VL/sVHkpUIxB3GzdKBCh9pB/IiYI=;
+	b=WIMtMFirpKj9IulHiTt0u8xMJKx6YyRc494w108Pd7UwmfZxWfy0+0zd1WbS1Y+S4ZREuq3rxlInQZNUdR30IFJIV+HdeynWUWquadjJvKpXTP7x85etCgQS7OppPLC0mWfQdXZodTdg8vjs7l153TlvNlIkrEFgFjljJZErdJs=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.38,REQID:d80840b0-647f-434a-8eab-d6e54ce55c07,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:82c5f88,CLOUDID:722c2a92-e2c0-40b0-a8fe-7c7e47299109,B
+X-CID-O-INFO: VERSION:1.1.38,REQID:2b207815-5a9a-4cfc-a454-6ed4ec4b67cf,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:82c5f88,CLOUDID:cf2d2a92-e2c0-40b0-a8fe-7c7e47299109,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
 	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 30b062c2068f11ef9a78ddf43a9225dc-20240429
-Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw01.mediatek.com
+X-UUID: 41b288c0068f11efa8f1cd58ee6c2400-20240429
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
 	(envelope-from <olivia.wen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 465662962; Mon, 29 Apr 2024 18:15:53 -0700
+	with ESMTP id 1595439313; Mon, 29 Apr 2024 18:16:22 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS14N2.mediatek.inc (172.21.101.76) with Microsoft SMTP Server
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 30 Apr 2024 09:15:50 +0800
+ 15.2.1118.26; Tue, 30 Apr 2024 09:15:49 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 30 Apr 2024 09:15:50 +0800
+ 15.2.1118.26 via Frontend Transport; Tue, 30 Apr 2024 09:15:49 +0800
 From: Olivia Wen <olivia.wen@mediatek.com>
 To: Bjorn Andersson <andersson@kernel.org>, Mathieu Poirier
 	<mathieu.poirier@linaro.org>, Rob Herring <robh@kernel.org>
 CC: Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
 	<conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"Tinghan Shen" <tinghan.shen@mediatek.com>,
-	<linux-remoteproc@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Tinghan
+ Shen <tinghan.shen@mediatek.com>, <linux-remoteproc@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
 	<jason-ch.chen@mediatek.com>, <yaya.chang@mediatek.com>,
 	<teddy.chen@mediatek.com>, <olivia.wen@mediatek.com>
-Subject: [PATCH v4 3/4] remoteproc: mediatek: Support setting DRAM and IPI shared buffer sizes
-Date: Tue, 30 Apr 2024 09:15:33 +0800
-Message-ID: <20240430011534.9587-4-olivia.wen@mediatek.com>
+Subject: [PATCH v4 0/4] Support MT8188 SCP core 1
+Date: Tue, 30 Apr 2024 09:15:30 +0800
+Message-ID: <20240430011534.9587-1-olivia.wen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20240430011534.9587-1-olivia.wen@mediatek.com>
-References: <20240430011534.9587-1-olivia.wen@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--9.911700-8.000000
-X-TMASE-MatchedRID: d/mUWMuHsom0PK/eA06et2NW0DAjL5p+YefZ7F9kLgss/uUAk6xP7N4z
-	BXBaIg4K3NDQwWqGEoVR6PqD1/sDxge3cFgbc4mUaK+MsTwM+1n0O7M3lSnTWzFidTBRWb28CWR
-	nKv1knVY/ByLtx2Xthw3K/RXmY1xYw4mZjhdFeRXnx2TmxvCbKFV+08YFNHSuwDR44lliPu2Cjh
-	4HUudaCG2IWWk4CSvny3HscmUQ3XxlZ48frA+isnV7tdtvoibaU+A7YkpDJ1iiXe5nNnUYt5ffm
-	caR0qCL4vM1YF6AJbbCCfuIMF6xLXnN0DN7HnFmWQHrLGVYdcfiO0e00aV05m5u2x0Zh2nTR/2O
-	ZSL1NkYFlLoBMuZT/JRMZUCEHkRt
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--9.911700-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 7335C20C3B1F0223D0F73DA4A0AF0395956A4426D61E955AD1C657F29AF48A892000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240429_181602_552920_666F4B52 
-X-CRM114-Status: GOOD (  20.99  )
+X-CRM114-CacheID: sfid-20240429_181630_739051_9B6D3C7B 
+X-CRM114-Status: UNSURE (   8.20  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,364 +90,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The SCP on different chips will require different DRAM sizes and IPI
-shared buffer sizes based on varying requirements.
+Change in v4:
+Updating the description of PATCH v4 4/4.
 
-Signed-off-by: Olivia Wen <olivia.wen@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/remoteproc/mtk_common.h  | 11 ++++--
- drivers/remoteproc/mtk_scp.c     | 84 +++++++++++++++++++++++++++++++---------
- drivers/remoteproc/mtk_scp_ipi.c |  7 +++-
- 3 files changed, 79 insertions(+), 23 deletions(-)
+Olivia Wen (4):
+  dt-bindings: remoteproc: mediatek: Support MT8188 dual-core SCP
+  remoteproc: mediatek: Support MT8188 SCP core 1
+  remoteproc: mediatek: Support setting DRAM and IPI shared buffer sizes
+  remoteproc: mediatek: Add IMGSYS IPI command
 
-diff --git a/drivers/remoteproc/mtk_common.h b/drivers/remoteproc/mtk_common.h
-index 6d7736a..fd5c539 100644
---- a/drivers/remoteproc/mtk_common.h
-+++ b/drivers/remoteproc/mtk_common.h
-@@ -78,7 +78,6 @@
- #define MT8195_L2TCM_OFFSET			0x850d0
- 
- #define SCP_FW_VER_LEN			32
--#define SCP_SHARE_BUFFER_SIZE		288
- 
- struct scp_run {
- 	u32 signaled;
-@@ -97,6 +96,11 @@ struct scp_ipi_desc {
- 
- struct mtk_scp;
- 
-+struct mtk_scp_sizes_data {
-+	size_t max_dram_size;
-+	size_t ipi_share_buffer_size;
-+};
-+
- struct mtk_scp_of_data {
- 	int (*scp_clk_get)(struct mtk_scp *scp);
- 	int (*scp_before_load)(struct mtk_scp *scp);
-@@ -110,6 +114,7 @@ struct mtk_scp_of_data {
- 	u32 host_to_scp_int_bit;
- 
- 	size_t ipi_buf_offset;
-+	const struct mtk_scp_sizes_data *scp_sizes;
- };
- 
- struct mtk_scp_of_cluster {
-@@ -141,10 +146,10 @@ struct mtk_scp {
- 	struct scp_ipi_desc ipi_desc[SCP_IPI_MAX];
- 	bool ipi_id_ack[SCP_IPI_MAX];
- 	wait_queue_head_t ack_wq;
-+	u8 *share_buf;
- 
- 	void *cpu_addr;
- 	dma_addr_t dma_addr;
--	size_t dram_size;
- 
- 	struct rproc_subdev *rpmsg_subdev;
- 
-@@ -162,7 +167,7 @@ struct mtk_scp {
- struct mtk_share_obj {
- 	u32 id;
- 	u32 len;
--	u8 share_buf[SCP_SHARE_BUFFER_SIZE];
-+	u8 *share_buf;
- };
- 
- void scp_memcpy_aligned(void __iomem *dst, const void *src, unsigned int len);
-diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-index 6295148..e281d28 100644
---- a/drivers/remoteproc/mtk_scp.c
-+++ b/drivers/remoteproc/mtk_scp.c
-@@ -20,7 +20,6 @@
- #include "mtk_common.h"
- #include "remoteproc_internal.h"
- 
--#define MAX_CODE_SIZE 0x500000
- #define SECTION_NAME_IPI_BUFFER ".ipi_buffer"
- 
- /**
-@@ -94,14 +93,15 @@ static void scp_ipi_handler(struct mtk_scp *scp)
- {
- 	struct mtk_share_obj __iomem *rcv_obj = scp->recv_buf;
- 	struct scp_ipi_desc *ipi_desc = scp->ipi_desc;
--	u8 tmp_data[SCP_SHARE_BUFFER_SIZE];
- 	scp_ipi_handler_t handler;
- 	u32 id = readl(&rcv_obj->id);
- 	u32 len = readl(&rcv_obj->len);
-+	const struct mtk_scp_sizes_data *scp_sizes;
- 
--	if (len > SCP_SHARE_BUFFER_SIZE) {
--		dev_err(scp->dev, "ipi message too long (len %d, max %d)", len,
--			SCP_SHARE_BUFFER_SIZE);
-+	scp_sizes = scp->data->scp_sizes;
-+	if (len > scp_sizes->ipi_share_buffer_size) {
-+		dev_err(scp->dev, "ipi message too long (len %d, max %zd)", len,
-+			scp_sizes->ipi_share_buffer_size);
- 		return;
- 	}
- 	if (id >= SCP_IPI_MAX) {
-@@ -117,8 +117,9 @@ static void scp_ipi_handler(struct mtk_scp *scp)
- 		return;
- 	}
- 
--	memcpy_fromio(tmp_data, &rcv_obj->share_buf, len);
--	handler(tmp_data, len, ipi_desc[id].priv);
-+	memset(scp->share_buf, 0, scp_sizes->ipi_share_buffer_size);
-+	memcpy_fromio(scp->share_buf, &rcv_obj->share_buf, len);
-+	handler(scp->share_buf, len, ipi_desc[id].priv);
- 	scp_ipi_unlock(scp, id);
- 
- 	scp->ipi_id_ack[id] = true;
-@@ -133,6 +134,8 @@ static int scp_ipi_init(struct mtk_scp *scp, const struct firmware *fw)
- {
- 	int ret;
- 	size_t buf_sz, offset;
-+	size_t share_buf_offset;
-+	const struct mtk_scp_sizes_data *scp_sizes;
- 
- 	/* read the ipi buf addr from FW itself first */
- 	ret = scp_elf_read_ipi_buf_addr(scp, fw, &offset);
-@@ -152,12 +155,15 @@ static int scp_ipi_init(struct mtk_scp *scp, const struct firmware *fw)
- 		return -EOVERFLOW;
- 	}
- 
-+	scp_sizes = scp->data->scp_sizes;
- 	scp->recv_buf = (struct mtk_share_obj __iomem *)
- 			(scp->sram_base + offset);
-+	share_buf_offset = sizeof(scp->recv_buf->id)
-+		+ sizeof(scp->recv_buf->len) + scp_sizes->ipi_share_buffer_size;
- 	scp->send_buf = (struct mtk_share_obj __iomem *)
--			(scp->sram_base + offset + sizeof(*scp->recv_buf));
--	memset_io(scp->recv_buf, 0, sizeof(*scp->recv_buf));
--	memset_io(scp->send_buf, 0, sizeof(*scp->send_buf));
-+			(scp->sram_base + offset + share_buf_offset);
-+	memset_io(scp->recv_buf, 0, share_buf_offset);
-+	memset_io(scp->send_buf, 0, share_buf_offset);
- 
- 	return 0;
- }
-@@ -741,14 +747,16 @@ static int scp_start(struct rproc *rproc)
- static void *mt8183_scp_da_to_va(struct mtk_scp *scp, u64 da, size_t len)
- {
- 	int offset;
-+	const struct mtk_scp_sizes_data *scp_sizes;
- 
-+	scp_sizes = scp->data->scp_sizes;
- 	if (da < scp->sram_size) {
- 		offset = da;
- 		if (offset >= 0 && (offset + len) <= scp->sram_size)
- 			return (void __force *)scp->sram_base + offset;
--	} else if (scp->dram_size) {
-+	} else if (scp_sizes->max_dram_size) {
- 		offset = da - scp->dma_addr;
--		if (offset >= 0 && (offset + len) <= scp->dram_size)
-+		if (offset >= 0 && (offset + len) <= scp_sizes->max_dram_size)
- 			return scp->cpu_addr + offset;
- 	}
- 
-@@ -758,7 +766,9 @@ static void *mt8183_scp_da_to_va(struct mtk_scp *scp, u64 da, size_t len)
- static void *mt8192_scp_da_to_va(struct mtk_scp *scp, u64 da, size_t len)
- {
- 	int offset;
-+	const struct mtk_scp_sizes_data *scp_sizes;
- 
-+	scp_sizes = scp->data->scp_sizes;
- 	if (da >= scp->sram_phys &&
- 	    (da + len) <= scp->sram_phys + scp->sram_size) {
- 		offset = da - scp->sram_phys;
-@@ -774,9 +784,9 @@ static void *mt8192_scp_da_to_va(struct mtk_scp *scp, u64 da, size_t len)
- 	}
- 
- 	/* optional memory region */
--	if (scp->dram_size &&
-+	if (scp_sizes->max_dram_size &&
- 	    da >= scp->dma_addr &&
--	    (da + len) <= scp->dma_addr + scp->dram_size) {
-+	    (da + len) <= scp->dma_addr + scp_sizes->max_dram_size) {
- 		offset = da - scp->dma_addr;
- 		return scp->cpu_addr + offset;
- 	}
-@@ -997,6 +1007,7 @@ EXPORT_SYMBOL_GPL(scp_mapping_dm_addr);
- static int scp_map_memory_region(struct mtk_scp *scp)
- {
- 	int ret;
-+	const struct mtk_scp_sizes_data *scp_sizes;
- 
- 	ret = of_reserved_mem_device_init(scp->dev);
- 
-@@ -1012,8 +1023,8 @@ static int scp_map_memory_region(struct mtk_scp *scp)
- 	}
- 
- 	/* Reserved SCP code size */
--	scp->dram_size = MAX_CODE_SIZE;
--	scp->cpu_addr = dma_alloc_coherent(scp->dev, scp->dram_size,
-+	scp_sizes = scp->data->scp_sizes;
-+	scp->cpu_addr = dma_alloc_coherent(scp->dev, scp_sizes->max_dram_size,
- 					   &scp->dma_addr, GFP_KERNEL);
- 	if (!scp->cpu_addr)
- 		return -ENOMEM;
-@@ -1023,10 +1034,13 @@ static int scp_map_memory_region(struct mtk_scp *scp)
- 
- static void scp_unmap_memory_region(struct mtk_scp *scp)
- {
--	if (scp->dram_size == 0)
-+	const struct mtk_scp_sizes_data *scp_sizes;
-+
-+	scp_sizes = scp->data->scp_sizes;
-+	if (scp_sizes->max_dram_size == 0)
- 		return;
- 
--	dma_free_coherent(scp->dev, scp->dram_size, scp->cpu_addr,
-+	dma_free_coherent(scp->dev, scp_sizes->max_dram_size, scp->cpu_addr,
- 			  scp->dma_addr);
- 	of_reserved_mem_device_release(scp->dev);
- }
-@@ -1090,6 +1104,7 @@ static struct mtk_scp *scp_rproc_init(struct platform_device *pdev,
- 	struct resource *res;
- 	const char *fw_name = "scp.img";
- 	int ret, i;
-+	const struct mtk_scp_sizes_data *scp_sizes;
- 
- 	ret = rproc_of_parse_firmware(dev, 0, &fw_name);
- 	if (ret < 0 && ret != -EINVAL)
-@@ -1137,6 +1152,13 @@ static struct mtk_scp *scp_rproc_init(struct platform_device *pdev,
- 		goto release_dev_mem;
- 	}
- 
-+	scp_sizes = scp->data->scp_sizes;
-+	scp->share_buf = kzalloc(scp_sizes->ipi_share_buffer_size, GFP_KERNEL);
-+	if (!scp->share_buf) {
-+		dev_err(dev, "Failed to allocate IPI share buffer\n");
-+		goto release_dev_mem;
-+	}
-+
- 	init_waitqueue_head(&scp->run.wq);
- 	init_waitqueue_head(&scp->ack_wq);
- 
-@@ -1156,6 +1178,8 @@ static struct mtk_scp *scp_rproc_init(struct platform_device *pdev,
- remove_subdev:
- 	scp_remove_rpmsg_subdev(scp);
- 	scp_ipi_unregister(scp, SCP_IPI_INIT);
-+	kfree(scp->share_buf);
-+	scp->share_buf = NULL;
- release_dev_mem:
- 	scp_unmap_memory_region(scp);
- 	for (i = 0; i < SCP_IPI_MAX; i++)
-@@ -1171,6 +1195,8 @@ static void scp_free(struct mtk_scp *scp)
- 
- 	scp_remove_rpmsg_subdev(scp);
- 	scp_ipi_unregister(scp, SCP_IPI_INIT);
-+	kfree(scp->share_buf);
-+	scp->share_buf = NULL;
- 	scp_unmap_memory_region(scp);
- 	for (i = 0; i < SCP_IPI_MAX; i++)
- 		mutex_destroy(&scp->ipi_desc[i].lock);
-@@ -1357,6 +1383,21 @@ static void scp_remove(struct platform_device *pdev)
- 	mutex_destroy(&scp_cluster->cluster_lock);
- }
- 
-+static const struct mtk_scp_sizes_data default_scp_sizes = {
-+	.max_dram_size = 0x500000,
-+	.ipi_share_buffer_size = 288,
-+};
-+
-+static const struct mtk_scp_sizes_data mt8188_scp_sizes = {
-+	.max_dram_size = 0x500000,
-+	.ipi_share_buffer_size = 600,
-+};
-+
-+static const struct mtk_scp_sizes_data mt8188_scp_c1_sizes = {
-+	.max_dram_size = 0xA00000,
-+	.ipi_share_buffer_size = 600,
-+};
-+
- static const struct mtk_scp_of_data mt8183_of_data = {
- 	.scp_clk_get = mt8183_scp_clk_get,
- 	.scp_before_load = mt8183_scp_before_load,
-@@ -1368,6 +1409,7 @@ static const struct mtk_scp_of_data mt8183_of_data = {
- 	.host_to_scp_reg = MT8183_HOST_TO_SCP,
- 	.host_to_scp_int_bit = MT8183_HOST_IPC_INT_BIT,
- 	.ipi_buf_offset = 0x7bdb0,
-+	.scp_sizes = &default_scp_sizes,
- };
- 
- static const struct mtk_scp_of_data mt8186_of_data = {
-@@ -1381,6 +1423,7 @@ static const struct mtk_scp_of_data mt8186_of_data = {
- 	.host_to_scp_reg = MT8183_HOST_TO_SCP,
- 	.host_to_scp_int_bit = MT8183_HOST_IPC_INT_BIT,
- 	.ipi_buf_offset = 0x3bdb0,
-+	.scp_sizes = &default_scp_sizes,
- };
- 
- static const struct mtk_scp_of_data mt8188_of_data = {
-@@ -1393,6 +1436,7 @@ static const struct mtk_scp_of_data mt8188_of_data = {
- 	.scp_da_to_va = mt8192_scp_da_to_va,
- 	.host_to_scp_reg = MT8192_GIPC_IN_SET,
- 	.host_to_scp_int_bit = MT8192_HOST_IPC_INT_BIT,
-+	.scp_sizes = &mt8188_scp_sizes,
- };
- 
- static const struct mtk_scp_of_data mt8188_of_data_c1 = {
-@@ -1405,6 +1449,7 @@ static const struct mtk_scp_of_data mt8188_of_data_c1 = {
- 	.scp_da_to_va = mt8192_scp_da_to_va,
- 	.host_to_scp_reg = MT8192_GIPC_IN_SET,
- 	.host_to_scp_int_bit = MT8195_CORE1_HOST_IPC_INT_BIT,
-+	.scp_sizes = &mt8188_scp_c1_sizes,
- };
- 
- static const struct mtk_scp_of_data mt8192_of_data = {
-@@ -1417,6 +1462,7 @@ static const struct mtk_scp_of_data mt8192_of_data = {
- 	.scp_da_to_va = mt8192_scp_da_to_va,
- 	.host_to_scp_reg = MT8192_GIPC_IN_SET,
- 	.host_to_scp_int_bit = MT8192_HOST_IPC_INT_BIT,
-+	.scp_sizes = &default_scp_sizes,
- };
- 
- static const struct mtk_scp_of_data mt8195_of_data = {
-@@ -1429,6 +1475,7 @@ static const struct mtk_scp_of_data mt8195_of_data = {
- 	.scp_da_to_va = mt8192_scp_da_to_va,
- 	.host_to_scp_reg = MT8192_GIPC_IN_SET,
- 	.host_to_scp_int_bit = MT8192_HOST_IPC_INT_BIT,
-+	.scp_sizes = &default_scp_sizes,
- };
- 
- static const struct mtk_scp_of_data mt8195_of_data_c1 = {
-@@ -1441,6 +1488,7 @@ static const struct mtk_scp_of_data mt8195_of_data_c1 = {
- 	.scp_da_to_va = mt8192_scp_da_to_va,
- 	.host_to_scp_reg = MT8192_GIPC_IN_SET,
- 	.host_to_scp_int_bit = MT8195_CORE1_HOST_IPC_INT_BIT,
-+	.scp_sizes = &default_scp_sizes,
- };
- 
- static const struct mtk_scp_of_data *mt8188_of_data_cores[] = {
-diff --git a/drivers/remoteproc/mtk_scp_ipi.c b/drivers/remoteproc/mtk_scp_ipi.c
-index cd0b601..c068227 100644
---- a/drivers/remoteproc/mtk_scp_ipi.c
-+++ b/drivers/remoteproc/mtk_scp_ipi.c
-@@ -162,10 +162,13 @@ int scp_ipi_send(struct mtk_scp *scp, u32 id, void *buf, unsigned int len,
- 	struct mtk_share_obj __iomem *send_obj = scp->send_buf;
- 	u32 val;
- 	int ret;
-+	const struct mtk_scp_sizes_data *scp_sizes;
-+
-+	scp_sizes = scp->data->scp_sizes;
- 
- 	if (WARN_ON(id <= SCP_IPI_INIT) || WARN_ON(id >= SCP_IPI_MAX) ||
- 	    WARN_ON(id == SCP_IPI_NS_SERVICE) ||
--	    WARN_ON(len > sizeof(send_obj->share_buf)) || WARN_ON(!buf))
-+	    WARN_ON(len > scp_sizes->ipi_share_buffer_size) || WARN_ON(!buf))
- 		return -EINVAL;
- 
- 	ret = clk_prepare_enable(scp->clk);
-@@ -184,7 +187,7 @@ int scp_ipi_send(struct mtk_scp *scp, u32 id, void *buf, unsigned int len,
- 		goto unlock_mutex;
- 	}
- 
--	scp_memcpy_aligned(send_obj->share_buf, buf, len);
-+	scp_memcpy_aligned(&send_obj->share_buf, buf, len);
- 
- 	writel(len, &send_obj->len);
- 	writel(id, &send_obj->id);
+ .../devicetree/bindings/remoteproc/mtk,scp.yaml    |   2 +
+ drivers/remoteproc/mtk_common.h                    |  11 +-
+ drivers/remoteproc/mtk_scp.c                       | 230 +++++++++++++++++++--
+ drivers/remoteproc/mtk_scp_ipi.c                   |   7 +-
+ include/linux/remoteproc/mtk_scp.h                 |   1 +
+ 5 files changed, 225 insertions(+), 26 deletions(-)
+
 -- 
 2.6.4
 
