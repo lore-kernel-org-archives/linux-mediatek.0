@@ -4,140 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59129C4345F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 May 2024 16:35:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C13DC4345F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 May 2024 17:07:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=phUiUfW9d31X5sn0OROpCDTxf0nA6VMVW2FwYbdctaU=; b=AdvKhx0tyHiLCF9g1aywXxL/bd
-	G8Tm/KyYMHYZI8M1IPhAbE758GIWP9GnpNY8+dSNPkNyXd2Llndo8hlIsHyeGUMA4pMv10R+j0xK8
-	EILpCWrXQmcGjGX5QO4kEIelOQ+vG5fCBt4NpfACigjfku64MfW25Wq3sLgtwpsRAqP1O43M7advr
-	PzH5Ld580qUKVn0zHHFfBQRP0obkrwOlpCcuTLnEDlPaU7f/JTOMUe8MGw3KE7oKWoF/kf06qvgWy
-	CvXbu5A5CM0ykb+c7wJmLf7CxwGiyY6HoZzSI0/4beBDg2lyYZUy+KswKWb/3uu/WiPuW9myOLR01
-	tEtOZxdg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=5UtxZqXH0BeyQTwJfcWgL8YkMU5EaeZPIDlc8+WEKqw=; b=XKKar4O3Sz+Ge2LNQu1+gbLW7f
+	/RlB0LkWVgsJLx1CgaQagwSYV62IhEuKBiF4p5MEhMwQGAc6HDQz4bwHIf+OKc7zmi6Ro1PAtUcjr
+	kqGhl8rNM7LNPhz/CZxIEFbIz0ocKsK/eM6GyRgg4Dhg6I1k52K38/Ne5biLq/A/cVI1fZREQal7J
+	kO6ZeLFVEBiU3UUQTxkdgBCQgn/F+2aS4kPU4YgNRxlxAT9QB323C39wxpYJCcsfWlubtuYA+2z4/
+	WU0W9Pbh0tJCmw7vdfZIYcd7czjD2MWJX96974Q3fSxV0xKH3mVP7CkT8q4DaV04gA/CAvePPzcVj
+	MysNTmIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2CvJ-0000000AAkD-2jFJ;
-	Wed, 01 May 2024 16:35:13 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1s2DR0-0000000AGdD-2mg3;
+	Wed, 01 May 2024 17:07:58 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2CvE-0000000AAhj-1WGP;
-	Wed, 01 May 2024 16:35:09 +0000
+	id 1s2DQx-0000000AGbK-04wt;
+	Wed, 01 May 2024 17:07:56 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 8E2D9619B6;
-	Wed,  1 May 2024 16:35:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A123FC072AA;
-	Wed,  1 May 2024 16:34:50 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 5A672CE1375;
+	Wed,  1 May 2024 17:07:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3E807C072AA;
+	Wed,  1 May 2024 17:07:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1714581307;
-	bh=bjFD0rHxLsC2c7Uw5VnvdgzaWdEjNPdDAmFkEgyLG4E=;
-	h=Date:Subject:List-Id:To:Cc:References:From:In-Reply-To:From;
-	b=G1BQgOiwmAz/rQreDqB3fQkhY3McXS3qtH7HRtubCWgIsbrhT5mqOR3TtopXNkf84
-	 wIocaw9hrFPybHdnYvEtfb+NBydjQrly76XIDBUfqEL1f5WwKSKdzANMm0/e/KfjAn
-	 QjgU4inFW6xPGpQ2+OhYi83rXZ6E4Lc7nJ54qRhJf3f/wwAiVNonz5MoVNbgJvHLtD
-	 ZgpRsGO/xLiDXgoBVuCZMhmobuIWTegqFGBRRNpiyj/HH8EySqGNgqwA1sDPDomArH
-	 cKCYjQdpoPXBjN3SEXFH2z1WLDZKFxXgrcAW72mzrbTfuXjZDaxMnR0qnpb+8hDsFl
-	 /oWKk4wwInhgQ==
-Message-ID: <34193501-5b7b-4ffd-8549-a04c6930d02d@kernel.org>
-Date: Wed, 1 May 2024 18:34:47 +0200
+	s=k20201202; t=1714583269;
+	bh=8/png6sxsqEGBRMcXp6Bjwq65G0P803V71/0WDXSe9Y=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=U5EPMXKHlB4SDJriFUqz44y53RD4A4LCX3HHMjR9aPglBpE3/T1/QFAGTBfxIriFc
+	 HT57GzvsDFFNwRYNYrnW+qhDr4Lz+BfijWMLpYbTNW8uWKmh1znJO6KrQ95ZpNt+nU
+	 fQDZ0mybKZitIuvm8e+6qPLfF/04nfjKc3DSNokViAZ2ZVkBQcoyeeESvdQNqF8qTO
+	 ONaG2w9eamgRMad9Yfq8gKpcqDHexNAD7vpi29kk0fL2/B5mJxnweXjJUjBBSbRUyr
+	 KwYrB7CX1coBz497nT2Wf6OA1ScS/hbd2upZXmN2yCjj4VIg3VVM9dlrC0+KPPSh7h
+	 RRKngkClwAnWA==
+Date: Wed, 1 May 2024 18:07:44 +0100
+From: Conor Dooley <conor@kernel.org>
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: "David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>,
+	netdev@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] dt-bindings: net: mediatek: remove wrongly added clocks
+ and SerDes
+Message-ID: <20240501-prorate-hanky-5fbb9ff28bc5@spud>
+References: <ea2e786eda4561cb5d11b62a4edd7e75c0975f1f.1714513773.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 08/21] pinctrl: samsung: Use scope based of_node_put()
- cleanups
-To: "Peng Fan (OSS)" <peng.fan@oss.nxp.com>,
- Linus Walleij <linus.walleij@linaro.org>,
- Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>, Dvorkin Dmitry <dvorkin@tibbo.com>,
- Wells Lu <wellslutw@gmail.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Emil Renner Berthing <kernel@esmil.dk>,
- Jianlong Huang <jianlong.huang@starfivetech.com>,
- Hal Feng <hal.feng@starfivetech.com>, Orson Zhai <orsonzhai@gmail.com>,
- Baolin Wang <baolin.wang@linux.alibaba.com>,
- Chunyan Zhang <zhang.lyra@gmail.com>, Viresh Kumar <vireshk@kernel.org>,
- Shiraz Hashim <shiraz.linux.kernel@gmail.com>, soc@kernel.org,
- Sylwester Nawrocki <s.nawrocki@samsung.com>,
- Alim Akhtar <alim.akhtar@samsung.com>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- Patrice Chotard <patrice.chotard@foss.st.com>,
- Heiko Stuebner <heiko@sntech.de>, Damien Le Moal <dlemoal@kernel.org>,
- Ludovic Desroches <ludovic.desroches@microchip.com>,
- Nicolas Ferre <nicolas.ferre@microchip.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Claudiu Beznea <claudiu.beznea@tuxon.dev>,
- Dong Aisheng <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>,
- Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Chester Lin <chester62515@gmail.com>, Matthias Brugger <mbrugger@suse.com>,
- Ghennadi Procopciuc <ghennadi.procopciuc@oss.nxp.com>,
- Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- Dan Carpenter <dan.carpenter@linaro.org>
-Cc: linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-tegra@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-samsung-soc@vger.kernel.org,
- linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-riscv@lists.infradead.org, linux-mediatek@lists.infradead.org,
- imx@lists.linux.dev, linux-aspeed@lists.ozlabs.org,
- openbmc@lists.ozlabs.org, Peng Fan <peng.fan@nxp.com>
-References: <20240501-pinctrl-cleanup-v1-0-797ceca46e5c@nxp.com>
- <20240501-pinctrl-cleanup-v1-8-797ceca46e5c@nxp.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <20240501-pinctrl-cleanup-v1-8-797ceca46e5c@nxp.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="iA7tPiIVLweNoVjq"
+Content-Disposition: inline
+In-Reply-To: <ea2e786eda4561cb5d11b62a4edd7e75c0975f1f.1714513773.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240501_093508_529320_DC4257DD 
-X-CRM114-Status: GOOD (  14.27  )
+X-CRM114-CacheID: sfid-20240501_100755_507351_B9EEE99A 
+X-CRM114-Status: GOOD (  21.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -152,46 +82,112 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 01/05/2024 14:56, Peng Fan (OSS) wrote:
-> From: Peng Fan <peng.fan@nxp.com>
-> 
-> Use scope based of_node_put() cleanup to simplify code.
-> 
-> Signed-off-by: Peng Fan <peng.fan@nxp.com>
+
+--iA7tPiIVLweNoVjq
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Tue, Apr 30, 2024 at 10:53:55PM +0100, Daniel Golle wrote:
+> Several clocks as well as both sgmiisys phandles were added by mistake
+> to the Ethernet bindings for MT7988.
+>=20
+> This happened because the vendor driver which served as a reference uses
+> a high number of syscon phandles to access various parts of the SoC
+> which wasn't acceptable upstream. Hence several parts which have never
+> previously been supported (such SerDes PHY and USXGMII PCS) are going to
+> be implemented by separate drivers. As a result the device tree will
+> look much more sane.
+>=20
+> Quickly align the bindings with the upcoming reality of the drivers
+> actually adding support for the remaining Ethernet-related features of
+> the MT7988 SoC.
+>=20
+> Fixes: c94a9aabec36 ("dt-bindings: net: mediatek,net: add mt7988-eth bind=
+ing")
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 > ---
->  drivers/pinctrl/samsung/pinctrl-exynos-arm.c |  3 +--
->  drivers/pinctrl/samsung/pinctrl-exynos.c     | 16 ++++------------
->  drivers/pinctrl/samsung/pinctrl-s3c64xx.c    |  8 ++------
->  drivers/pinctrl/samsung/pinctrl-samsung.c    | 26 +++++++-------------------
->  4 files changed, 14 insertions(+), 39 deletions(-)
-> 
-> diff --git a/drivers/pinctrl/samsung/pinctrl-exynos-arm.c b/drivers/pinctrl/samsung/pinctrl-exynos-arm.c
-> index 85ddf49a5188..9a57b3ceb536 100644
-> --- a/drivers/pinctrl/samsung/pinctrl-exynos-arm.c
-> +++ b/drivers/pinctrl/samsung/pinctrl-exynos-arm.c
-> @@ -56,7 +56,7 @@ s5pv210_retention_init(struct samsung_pinctrl_drv_data *drvdata,
->  		       const struct samsung_retention_data *data)
->  {
->  	struct samsung_retention_ctrl *ctrl;
-> -	struct device_node *np;
-> +	struct device_node *np __free(device_node) = NULL;
->  	void __iomem *clk_base;
->  
->  	ctrl = devm_kzalloc(drvdata->dev, sizeof(*ctrl), GFP_KERNEL);
-> @@ -71,7 +71,6 @@ s5pv210_retention_init(struct samsung_pinctrl_drv_data *drvdata,
->  	}
->  
->  	clk_base = of_iomap(np, 0);
-> -	of_node_put(np);
+>  .../devicetree/bindings/net/mediatek,net.yaml | 32 ++++---------------
+>  1 file changed, 7 insertions(+), 25 deletions(-)
+>=20
+> diff --git a/Documentation/devicetree/bindings/net/mediatek,net.yaml b/Do=
+cumentation/devicetree/bindings/net/mediatek,net.yaml
+> index e74502a0afe8..030d106bc7d3 100644
+> --- a/Documentation/devicetree/bindings/net/mediatek,net.yaml
+> +++ b/Documentation/devicetree/bindings/net/mediatek,net.yaml
+> @@ -337,32 +337,23 @@ allOf:
+>            minItems: 4
+> =20
+>          clocks:
+> -          minItems: 34
+> -          maxItems: 34
+> +          minItems: 24
+> +          maxItems: 24
+> =20
+>          clock-names:
+>            items:
+> -            - const: crypto
+> +            - const: xgp1
+> +            - const: xgp2
+> +            - const: xgp3
 
-I don't think the code as simpler. Previous was very easy to read,
-obvious, no error paths.
+Why is the ordering changing too?
 
-To me any conversion of such of_node_get immediately followed by
-of_node_put is unwelcomed. Easy code is being  converted to complicated one.
+>              - const: fe
+>              - const: gp2
+>              - const: gp1
+>              - const: gp3
+> +            - const: esw
+> +            - const: crypto
+>              - const: ethwarp_wocpu2
+>              - const: ethwarp_wocpu1
+>              - const: ethwarp_wocpu0
+> -            - const: esw
+> -            - const: netsys0
+> -            - const: netsys1
+> -            - const: sgmii_tx250m
+> -            - const: sgmii_rx250m
+> -            - const: sgmii2_tx250m
+> -            - const: sgmii2_rx250m
+> -            - const: top_usxgmii0_sel
+> -            - const: top_usxgmii1_sel
+> -            - const: top_sgm0_sel
+> -            - const: top_sgm1_sel
+> -            - const: top_xfi_phy0_xtal_sel
+> -            - const: top_xfi_phy1_xtal_sel
+>              - const: top_eth_gmii_sel
+>              - const: top_eth_refck_50m_sel
+>              - const: top_eth_sys_200m_sel
+> @@ -375,15 +366,6 @@ allOf:
+>              - const: top_netsys_sync_250m_sel
+>              - const: top_netsys_ppefb_250m_sel
+>              - const: top_netsys_warp_sel
+> -            - const: wocpu1
+> -            - const: wocpu0
+> -            - const: xgp1
+> -            - const: xgp2
+> -            - const: xgp3
+> -
+> -        mediatek,sgmiisys:
+> -          minItems: 2
+> -          maxItems: 2
+> =20
+>  patternProperties:
+>    "^mac@[0-1]$":
+> --=20
+> 2.44.0
+>=20
 
+--iA7tPiIVLweNoVjq
+Content-Type: application/pgp-signature; name="signature.asc"
 
-Best regards,
-Krzysztof
+-----BEGIN PGP SIGNATURE-----
 
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZjJ23wAKCRB4tDGHoIJi
+0jQoAQCrI827zGT9l/GNCLHhBDxuB2DyQ+FKu0l+4FvZTur7ZwEA3BOvbyZ4jXdL
+DGa1XxfE8CunnKNn9b20At6jUlGZwwk=
+=dQTZ
+-----END PGP SIGNATURE-----
+
+--iA7tPiIVLweNoVjq--
 
