@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4553DC25B10
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 May 2024 12:54:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97700C4345F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 May 2024 13:05:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Cc:To:
 	In-Reply-To:References:Message-Id:Content-Transfer-Encoding:Content-Type:
 	Subject:Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OzFmWqqgAaHNbNJ4y5r21eHdO5OywXD/utfmPqrXP8Q=; b=iMb1aN/LO8FNjhyZhyyIbEWFE5
-	i0Cb6yv9zt92ic2GiV7hDmfYslXzO3hDwXgBWA8Etzgm0wl8gGqDWGLrXaS08AIpz3uG3yeEe3kMv
-	mLtEUvNvIKkoiHgwVpgzd4+mHuUzhlp8PXfpwEpmCRtIUSnrMXoYV9jh9lqD7EaGVUjxETeHbSaJU
-	kkFUc+t7Jb/61tV7VEOTDEcFq4Z7UFKoDgk/uV9NqhejunCEZL2aPzMUPk2CXctc8HL08Rrrtm87H
-	qMWbhLpGwZ6tR4GJEiwTw6XYOq7detZbUQMwTP++OVkN8Y4jn8cjYoq8sX1n8j1/WrgkiIGY+6uZ1
-	+MnNw7bA==;
+	bh=UwLf//ulDgKGYdIslgc2mcconcEqLiM/aJbLmOr9R5c=; b=hPNoXWPLRfGp5GsOGl+t6Pkhw7
+	xU+Mie8gzLRWUYC7HE+VOR2PJ8nXjxuHEtPpqB9Fx+KCsYn2oqAet/5S/KUWjPkgnW3Y/jZz/UZ1z
+	U710/H3kfnTTCtBJdcuWGwKYxo88mvTkiLXF8fcdOEFCqWMM+T/XHoPXX9xHQ1zLrnH88JRcanfUP
+	6fxFCAl6PYDnhTTD2yoZ0lM31+eQx4YBqDxjjzaQqJscKeGm8EJ76h6dj/ZFgdLH4A6GMowIhgbyR
+	RFGs+7HFXFyakuWAtj2gq5LlLmSNXk+8L/8D8T462d2ZloX7PU696vTdsNUUFckL9BTDRSVlKcE7h
+	/ztvfGng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s29TV-00000009bV0-2qqF;
-	Wed, 01 May 2024 12:54:17 +0000
-Received: from mail-am6eur05on20600.outbound.protection.outlook.com ([2a01:111:f403:2612::600] helo=EUR05-AM6-obe.outbound.protection.outlook.com)
+	id 1s29eY-00000009dFI-094Y;
+	Wed, 01 May 2024 13:05:42 +0000
+Received: from mail-db8eur05on2062a.outbound.protection.outlook.com ([2a01:111:f400:7e1a::62a] helo=EUR05-DB8-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s29TJ-00000009bLN-0IWl;
-	Wed, 01 May 2024 12:54:07 +0000
+	id 1s29eT-00000009dDQ-2JRH;
+	Wed, 01 May 2024 13:05:39 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=aalf/pOql47GT5ltrEi1+Eny9g+kb6hmT4tgQ3lLG1eBdZTBkY2/+o+z5AmkllwxQZkAkAM4QzrIfg4oWz1ZvJWbdJMUNb5x0EkWXaIof5GJv1y1f+TYeshPXd6qE1rvSj/wY9BxqL+Korsvn1eQTMSC3LAdpIUtt/RRZzD5IfoYhTuK+T3VX7u7onYrp8OtLGHgQefcxQf2i/nzDu2ifabuTssTAGBBOT8jkOwaDW9ZiPQvsz+eJeu7PeS8pgXlyzMP/dXNQsNMCUtPxfq4n2f/AZIG5Yi7U10T7izh1ufjQb2Nc9/IxpsfVNKd4Jnl1yUST9hdvi9y2iSf4VSHOA==
+ b=kTfCKx4cSQWZztbmuoS3CDkZmsJd6pJkp9KUN42/IRrqekpRuEXUNjnuQNtUp2A5TtNrvsAEBC7F9wLwEnlo4V1c+iATn53OlCqDXyac6NiL0+OZo+2OCpH4QG6KuGEJF/tW3GO4hw6ZbBiQQ7YALdztrJRXxlPkzKtzObPrfvFVe9cBTrXtOREZPYYvT+Y/iZQqKpD7cmWWbXmP4hmDX6p1MEjj7QfOuNylW65FZlIPW8LqaSf/4NBOoLjEqXF6BpxRBpKci3N5nAkFJQ6v99pHPyDAWs+gXAHaP0FpbJQ5K2HE+wvPNDPdw1/4KwykdX7FMgaUmd2PCSzVJfJoWQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=OzFmWqqgAaHNbNJ4y5r21eHdO5OywXD/utfmPqrXP8Q=;
- b=oTYVIYaIEia1c6xCx3wSRZ/wvLbfzd1nWwUxdeqcuLBx+Si17fPfRyuLz+t64RXW8czpyAhdDHXACBie25R+cnJwBaCj/sf4f1gETDuNOg1sE9ppmTtTXAeqpIDsPIjOlQZjkM5o/ehbNJCUjhhMx/EgpOby5mNi7bk5l+kzaHxIF6RoC2vRZ6xWzDglw07z4JL1or/NK8ZbWOHuge2Zefg+jMsYQYyCH6sPSaWNKx/SSInjhUx+anoEFomB/nRGcYvm1FmmhG5c9Ks85NOmCfBlPPKjdu3eJVMd4HLPDh6BTAOqd9I+kHp/Pubc3hONpw/85JM4Yd8Be9VK0LObrw==
+ bh=UwLf//ulDgKGYdIslgc2mcconcEqLiM/aJbLmOr9R5c=;
+ b=Wp35yQ9T0zgqXbj+1O2zlHGwK4gljsITTMatgAA2xUBsbtz+mrnjjEYSNNss2Xg5zqhNGwgNSzvO98hqNBS2fsBinW7iwij0QJSTasQLhUQ8rfdyE9bXDQYHrXbIve5Gk/CVJjIn8asNGXDK44/ZALhOdvH58x/k4HDlIU27/DiPMS/z1jx9+I2wQg1ukMRDhxKQTKrElgeXSKC00oa4QT5iB8YBI4Kye3m7ndqcp5tk0muDdcQzK1kyPs/rti+zsDy+OF6I5iIYLvjLH2+gydkgeoGaVkVz7L7iXyAFzc3n/7Z2lSei8L6UQvs4xXji/IbxWrVNFEEat9a9qU+V4Q==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=oss.nxp.com; dmarc=pass action=none header.from=oss.nxp.com;
  dkim=pass header.d=oss.nxp.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=NXP1.onmicrosoft.com;
  s=selector2-NXP1-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=OzFmWqqgAaHNbNJ4y5r21eHdO5OywXD/utfmPqrXP8Q=;
- b=JDJ3tJKSv7ITKll9IdzYp8RkMp2A4rMq5J2SRZQVUMx5todwNBrKZOGjRm34HacIKopamUcIppjn9B8DkzdS6OQ4K7mRk8xaS3kLlEdvNlfawGVRviSIqa6hgzA6AnmLFPpTqWJElR1EQWnSv2HJ+MbR9Qh0O6cWbaEWFnX689k=
+ bh=UwLf//ulDgKGYdIslgc2mcconcEqLiM/aJbLmOr9R5c=;
+ b=T4AuxXJzaFZv9OPj5JPUvQkK1dBLoFzSWv5wa78VfgVX7bUbOvxHJbvKWG0QKFPl7cF/h8jw4R282M03y8T+kVe4YKc1kJHwYJwpzwTd/yVkyQabrBfZrSYCrJmpMMk6m7u8RxXsDTibdxM8wus818FvydAO0l1G57bIb8YA4iQ=
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=oss.nxp.com;
 Received: from DU0PR04MB9417.eurprd04.prod.outlook.com (2603:10a6:10:358::11)
- by DBAPR04MB7432.eurprd04.prod.outlook.com (2603:10a6:10:1a9::21) with
+ by DBAPR04MB7448.eurprd04.prod.outlook.com (2603:10a6:10:1a6::6) with
  Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7544.28; Wed, 1 May
- 2024 12:54:01 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7519.38; Wed, 1 May
+ 2024 12:50:47 +0000
 Received: from DU0PR04MB9417.eurprd04.prod.outlook.com
  ([fe80::d30b:44e7:e78e:662d]) by DU0PR04MB9417.eurprd04.prod.outlook.com
  ([fe80::d30b:44e7:e78e:662d%4]) with mapi id 15.20.7519.031; Wed, 1 May 2024
- 12:54:01 +0000
+ 12:50:47 +0000
 From: "Peng Fan (OSS)" <peng.fan@oss.nxp.com>
-Date: Wed, 01 May 2024 20:56:19 +0800
-Subject: [PATCH 21/21] pinctrl: pinconf-generic: Use scope based
- of_node_put() cleanups
+Date: Wed, 01 May 2024 20:56:07 +0800
+Subject: [PATCH 09/21] pinctrl: renesas: Use scope based of_node_put()
+ cleanups
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240501-pinctrl-cleanup-v1-21-797ceca46e5c@nxp.com>
+Message-Id: <20240501-pinctrl-cleanup-v1-9-797ceca46e5c@nxp.com>
 References: <20240501-pinctrl-cleanup-v1-0-797ceca46e5c@nxp.com>
 In-Reply-To: <20240501-pinctrl-cleanup-v1-0-797ceca46e5c@nxp.com>
 To: Linus Walleij <linus.walleij@linaro.org>, 
@@ -100,11 +100,11 @@ Cc: linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org,
  imx@lists.linux.dev, linux-aspeed@lists.ozlabs.org, 
  openbmc@lists.ozlabs.org, Peng Fan <peng.fan@nxp.com>
 X-Mailer: b4 0.12.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1714568179; l=1107;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1714568179; l=7968;
  i=peng.fan@nxp.com; s=20230812; h=from:subject:message-id;
- bh=2wM6S75hkeICu8KMVBGWw7nINzfNCEUbOtGveeJZglQ=;
- b=Fst3hl45iGHgFaoTiJF+h16Ucdgm/tZpALLXVlVt5L+nhkjqsyRRvNK9ZdG7OKgMxyr0zBvOm
- dFZohN5Zm5QAMChdlPzaw9SqDpw6GAaAdpZSobM0eKkl3aXOvSnJAOJ
+ bh=K64zqrCbOC3rYAPmpNXeqloBPZKzMWC8Ln5phskDCDI=;
+ b=SVSZB2OptEjixUVsBxQFlBLMyaX5ozL4HG2RhrVwKgQLHU+s64uygotTA6azDA6z8npJ4Ulj2
+ IlTLsI741+qBoolYUGSxm6k4Tb0gI94BPqScicGbaZ2GKveAWUAEHGf
 X-Developer-Key: i=peng.fan@nxp.com; a=ed25519;
  pk=I4sJg7atIT1g63H7bb5lDRGR2gJW14RKDD0wFL8TT1g=
 X-ClientProxiedBy: SG2PR02CA0064.apcprd02.prod.outlook.com
@@ -113,95 +113,95 @@ X-ClientProxiedBy: SG2PR02CA0064.apcprd02.prod.outlook.com
 MIME-Version: 1.0
 X-MS-Exchange-MessageSentRepresentingType: 1
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DU0PR04MB9417:EE_|DBAPR04MB7432:EE_
-X-MS-Office365-Filtering-Correlation-Id: aa011eb6-b045-4e93-0830-08dc69ddc61b
+X-MS-TrafficTypeDiagnostic: DU0PR04MB9417:EE_|DBAPR04MB7448:EE_
+X-MS-Office365-Filtering-Correlation-Id: 7332603a-25bf-4c13-196f-08dc69dd52b7
 X-MS-Exchange-SharedMailbox-RoutingAgent-Processed: True
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230031|52116005|7416005|376005|366007|1800799015|921011|38350700005;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?VFpqNGRmTWRtU3lGeEppNk1EOWwzSW1MckY5NCtQcDRMaEJhVTM5NSsvL2Qx?=
- =?utf-8?B?emE5TEdKbDl5Q2JrZDVFZUtsYjZ3NU1kVFhhdUVUUEJxaG1rSXM5L0xWUFpO?=
- =?utf-8?B?eE1OUWFRMjNpdXgwbkMwZjhENXBPV0ZieCttWldCbWlvUkN0bUVKeDVWMFNq?=
- =?utf-8?B?aXBrRGgwQ1RWTzBJZlEyZW9ZeWJydmxhSURpczBhakJyMHkweUJKK1hQcjds?=
- =?utf-8?B?ZFF5Unh2QmlWK3hMT2Njd29YSTExQThVdGppUGtFWDZtRE1kZ3hrR0xJRlNz?=
- =?utf-8?B?ejNkL01tUlo5MDNkRGQ2ZTFtQlllaVFHc2VIejVWdDU4R0srdFJCWGFXSkpy?=
- =?utf-8?B?b2M4RjhXS0xuVTNoSEk2T3NZVTRsZnhiQzBrQXlDNU1veVpKQ2hsNHZQRkZt?=
- =?utf-8?B?R0gzbE9UMUhlQzJVTlprcDdrY1dOMEk1bDVFa2wwbjcvRDhBY00wYUNpNjBC?=
- =?utf-8?B?bWswNUFrNUMxRWtjNkg5REVwZWZ1UVFkQ1BEUXA1NlZFYUUwdXRjNWJxNkxJ?=
- =?utf-8?B?ZFo3QkZkNmF2d2hrb3NNK1Z4N3R3MFNXN3FqMUdHNE91SEFLN2M3aTY0RVdV?=
- =?utf-8?B?Y2gwOXk3M01rZ3lpb2I1NS9kWU9Cam1GZWVPSW1xQ3FpdHZQcEoxNkk3dHhF?=
- =?utf-8?B?aDczY1l1dHJHQmJYWkdTQkxObGl0dEkwTUp6RjVkQUcrcHZzem9IUFhWa0pG?=
- =?utf-8?B?KzhLa1NKZ1BDTmsxTmNVZ3lHWGhUdDZTWHIya0s0U2dPclB4ZUdUbTV0V3lZ?=
- =?utf-8?B?R1VqS3BxenRBWldVREgxOVFXSVkzSjRmWmg2NEc3QldkMGJCbG5RNUhyczJD?=
- =?utf-8?B?amxMaXlLTjIwaG9BeVZCS2hCaGlzTTlPSFRGd3M1R1NpM0lPeW5tUmttNVJU?=
- =?utf-8?B?Q0tuUGZRV3BFOWI0N3BvRzNjaWZObEhCMlJSZWtiZllyTXR1UVlkTnhZd2ZT?=
- =?utf-8?B?ajBSSVV5ZjgwK1FiOVpyeStrcFhxTnZSeCtlNnRpMUxwZ0JVSVJ4OFRJaWQw?=
- =?utf-8?B?b2VrdjhDMDRaeFNOVmRYVDFIMExyMHhxSzJDSDVsclRySDdUdGVNLzdrVUtP?=
- =?utf-8?B?aGtGTFVzMlVQQWcyWHdTc1hIL2VUaGw1YzFOU1oySlR6QlBOaktMU3MxSWFr?=
- =?utf-8?B?M1NDZ2Zma2FScGZTMGY0QmtQc053QXVwQXdpRmFwK3Q0bFU5bjh5dUlFNkk5?=
- =?utf-8?B?cENHaTYrVXlUMWlybFZpUTMxeFk1Zm1FWERyNE1rVHVPOXdacWZuUHQ5ZVRh?=
- =?utf-8?B?a3laamdZa3NnMGY5Vlp5TzU3elBFMDROTmlvaVI3VTFFUk12cFNLb3BoSVM2?=
- =?utf-8?B?Y3ZDNGFzUHdyMzgzYSthZ2hJckRKcUxRakJIUmp2K1d1RC83cTRXYnZrOEUw?=
- =?utf-8?B?R1dEcWRjWktMaUlTeGVmRTd1TEtLZDVnd2FaS2xVSFh1U1k2QW9vTzBINmt0?=
- =?utf-8?B?ZFNYZ296TVJ2c0RzNVFTSm5NeFE2MHZOOEdRVEY0UFhiVUkrNGlUMXZ0WGFj?=
- =?utf-8?B?MmtBVVVVNHluRy9vdC9JcG1lb0YxckpMT3c4eWUzcnRQK3ZMUGw0ckp0Q3No?=
- =?utf-8?B?T2ZXWnhUdkY0SmRzbXJBMTZIUytUZEVBS1VGMjhzZmN6UE5GaVQrTjNpQVA5?=
- =?utf-8?B?UkpacklSU2RVbWRrTEs5NysyRGhSV1djUnQvM28zMDB3Q2pTcnhJYXhEWVBQ?=
- =?utf-8?B?QUZMOHpZSjZJR29taXMyZkowR3N0aHJKNGhjdURrQWJiYUJTSjRwcU0wTzZV?=
- =?utf-8?B?cU1veTA3ejg0Z01jSlEwUTk1SWJGZTcvVWYvUjVwRUZ6TmRpT2VHK1ByeTZ3?=
- =?utf-8?Q?DFh7R+aqHLm34ueiBA+hALoXYKGBdcR2huZDU=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU0PR04MB9417.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(52116005)(7416005)(376005)(366007)(1800799015)(921011)(38350700005);DIR:OUT;SFP:1101;
+X-Microsoft-Antispam: BCL:0;ARA:13230031|1800799015|376005|7416005|52116005|366007|921011|38350700005;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?a2JML2pHTVE1ZW1LVmVpNDlmcnVKS1l0OVBLcS85Y1IraEUvVHhBd2wvU2hD?=
+ =?utf-8?B?NXIvNW9pYXNyOXB0cU1Mci9hZFNJeEE3blVwQWtUY1ZpU3EyVjBGeWlpQVpm?=
+ =?utf-8?B?WVFObmRFV2FWRk9SVTYvT3JLck1DZUpqc0xFZ3h1eThNeTNOQ3g3bFpwcTFO?=
+ =?utf-8?B?Tytwd0lxeXZrNWxyd01XbFBpTDdOYTRaeXBaSXJDUzhOYXp6eG56MHBWOUQz?=
+ =?utf-8?B?MGYzVFhiTmk1bmsvL3BEMHcrV1ZZbDNDU0pDNC9zaGZvREZuOW50KzRha1g2?=
+ =?utf-8?B?UXNtUU1HOGZCWnpMOGJxYzUwSHZ5SVkrdSsxTWR3S2hxY0NmVTdNanQyTmZY?=
+ =?utf-8?B?NGliWStFSnhYVUhtbmVmcm4yWWFFYVlvc2ttZmlSZFBqZE1PeFNKditFeHlu?=
+ =?utf-8?B?MmdmRGNDL09CQXV0WDlRNTRVZEpqUHdjblp3Nk9sbkR4dFR2UjRZYXVxbGxT?=
+ =?utf-8?B?RDUxc0d1eWZoS2xMWHZsM0lvVFNkeWtjS0V5V2tHZlp6YlpUVDhDNURlOVlJ?=
+ =?utf-8?B?ZjV4UFJ2TGVlSk96d3MwM2hMKzVoOWlNZWpJd3MxdjlGRy9abUVWcmNiNHBa?=
+ =?utf-8?B?d00rTE1VVWl2N0hOeVVhdWp6UWVqYlp6SFgxcGRORlR3NXhzc01GaUZwVFlw?=
+ =?utf-8?B?VTl3WUFZZFFhYytlbXZpVlhaL2hGdCtoZ1pOR0JNbVJubkd3SE9GS0JPOGk2?=
+ =?utf-8?B?Zm02bHE2T1M4MGxCVnN1aFJzNXJuVE9ZS1FCQW9BVWJ3YW5GaXBKVDFTWWFJ?=
+ =?utf-8?B?dXVGVVM0KzlhNVVzd0M2VjI4OUZYVEdYclZvbUVwMjNoZG44dy85MG1TaUhu?=
+ =?utf-8?B?NUxnTUMzelZCV2k1Rno2YkFxK2NpZ1pwRVRhdWZ0cHhOL3pFdmRMZnRFT3Ew?=
+ =?utf-8?B?Z0tsTG1KWjlGZWdsWUxvK2VnUGF5VjBZZmpyRHlFSFIvS08vTDhtU09mdTF5?=
+ =?utf-8?B?N0dCMzhLQ254Ymh5cS8wTHozaWxHN3hOS21ZWVFXRjFINzVlbU9pNGg3NVQz?=
+ =?utf-8?B?YkVFblRic01nTzVGLzIvd2FVM3NkdzRNWURuTFN3Qnh4b3cwb1hjWGVhbit1?=
+ =?utf-8?B?MGYrcDMwQ05MYjNqWXd0U0JnM09peWw0YWVkMWVXUmNDV2ZqVkRZT2J0aURk?=
+ =?utf-8?B?L01zL2tmc2w2aHZZaHhSelR0bndDYitKazZIVm4vYWx0eHpKeEtQZElIUVFw?=
+ =?utf-8?B?a1JNdE5oOEd6b3hOVjlkYzZQQzEwK3M5WHhIWlpsTTI5RVFXR0tBZS82cTJz?=
+ =?utf-8?B?dWRhTlo2YXB3aHJvR3I3ZVgzbUd3RjEyY1Q4aEYrRTYzd2loUWFZN3lSUUU4?=
+ =?utf-8?B?NUFRK2ovWFc2VDRBZzhqZE5MTDJiLy9TUnBPbzlKQjJ5dmRFRjF4M1BVcHBE?=
+ =?utf-8?B?enlyVGdmY21RcERmWEJYMjBYQ0lKcWplVlhaczNCR2IzZEllODV5L3loTGtz?=
+ =?utf-8?B?cm1YZ2czV1F0M21MYjI1WnFxTFlXY0hhbzFLQ1gyRFRVRDZOc2FRY0tJSU9w?=
+ =?utf-8?B?MXloTDFtOFlJWFpIbG9IRkRjMEMwVWpFNXNsLzU0NUk4OVBYbjZGV3Jpa1VO?=
+ =?utf-8?B?cUVpUW1BdkRiaXQ2a3pOZHF2YXY1ZmlMSm5VM1lLUlJXWFhUVGpVRE10UmVY?=
+ =?utf-8?B?T05HUWNESmFmeXZ5THgxSkhOVkhCaXV5VGhmZHdqRkw2Z1Fta3k5MTlKNndh?=
+ =?utf-8?B?enUwbFBRY3pRT3d2dFM5ckt3NzdVS05BdTVjdk96akgzRWNsS21waTZPbFI5?=
+ =?utf-8?B?M2V3cnBSMnh4TXpBSThIcTRGaFJEYUNtTmFsYkJvNXhmaXhmYXpxVFBCNDdM?=
+ =?utf-8?Q?4WQx7qq/stSGHV448X+2zE3JH3vvEEfPrz2YA=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU0PR04MB9417.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(1800799015)(376005)(7416005)(52116005)(366007)(921011)(38350700005);DIR:OUT;SFP:1101;
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?S3lCMmtxNllJQ3l3VHZkcExKRElZUGdEd0k3cTFEWHk3eFNRUmlnSGwzNFk1?=
- =?utf-8?B?b0FWWld3aUY0c25ucjdaMGh5RGhJOWV4dFBIZ0JoUVdiaitGemRjQzh3NE9z?=
- =?utf-8?B?LzBXRXZKL1psbnRpMUFkNzJNWXZWcktXVmNRNEtaNUhDZ3J6Wm8yalVrUVVU?=
- =?utf-8?B?WVkyekpMeU5DQ3J4M1dYM0hoQ05BWkZ6Z05zeFdSVFVQUkR2WUZ0V0xoSVZX?=
- =?utf-8?B?ZTJndGhDV2dvVnN6Ym9QSE9lWEFoUmFUdkhvYVlmbzI5LzdoWnIwQnhZY2cw?=
- =?utf-8?B?dGRRQjZLZjFGYU91VWxVbGVTTk5RSllGKzhNRUVkYmNpK3JESzdzNVNpSy9O?=
- =?utf-8?B?TXRXcGxUeXoySk1uVlNKQ2pPQTZnaTVNR01ZbFUvSEFVdkdiMmFZeGNRUktQ?=
- =?utf-8?B?VjdxTDlvMXE5c0VCSUJwb3h3MDJlVlg4anJ1Ym9zQjVxT0VHNXFSaFZaS0gz?=
- =?utf-8?B?WG9zVS9kWUJ3NjRYaG1Hek1DcDJBYkhoMUI5eVFSZmpUN3pYSkJHWit4YlVO?=
- =?utf-8?B?dkxQUWZiRHNxeUJHYTN6ZG5QcjlZRmJNelBJbmtkcDZuUVRqVFZDVEdkQ2N5?=
- =?utf-8?B?NEIzcjRobFk3aUxvanYrZ2lmSGk5ZjBWSExwK0E0TlkwK1YrTTVPNFJ1WDY4?=
- =?utf-8?B?bTd1VzVSejBOSUxnYk5XVFJXQ3FlZ001MEVZVU5TMVhNZFh3akxnOHlZYTFn?=
- =?utf-8?B?RllnVUtRMjNLL1lkc2MvVmg3Y2x1akF6S1JGeFNpcFdYV3lkMHZBaHN6bmx5?=
- =?utf-8?B?VGswTmtNOHRSYUJHZDZTQkxJTmVTbU1PZHlpeitiNGVTOUpoVGJtRVdFa1Zy?=
- =?utf-8?B?S2VIUnc4NnZ6Y2E1WnM5UTEwcWR4VlVFbFgxekxOZTZRVk1MOUdHd0o1L1oz?=
- =?utf-8?B?WW1ibW5yWnZPOTJnWGNVdUZSTW1XYU4xQkc3TzBoeFNhalFXZjZOWHJPaHlR?=
- =?utf-8?B?VlpWVTlxSjJSTFVEOFJiU2prZE5UN2tCQ2FRd1ZMK1JMU0JoTmZwRUJWMDcy?=
- =?utf-8?B?NU8zZm1wT05IT2dPU2xqZytpOHA2ak5IV1FrQ1paYTJWMnVVdEgwTlZ5TDhk?=
- =?utf-8?B?TGx6VW4vdEhrQVdaMmVsK3JBLzFCaG96b0Rxcmx6c2dVdXgyU093S1F4RXl5?=
- =?utf-8?B?WTRHNTlXeXYyVUVmK0RMV3FMNHp6M3JYall3RUpOOStVNnFJTHlHUi9NMm9p?=
- =?utf-8?B?cHZMVFRCR2ZBOVlXeEZHN0VWNUNlT1ZYRmttSHN6M3NRWmdLcUZaUWhMYU1y?=
- =?utf-8?B?a3VrNkFPbEZYUk1vZHhZMnBLY2hJS3BrNTdqY3k1VzRFNGtMQXN3MGN6b2w1?=
- =?utf-8?B?ci9pS082UDJ2VFNKZG5aZUd0TGVleTVQTlhiSTdBQVh1RTRzcC9ZUFlGMUpW?=
- =?utf-8?B?eDQrMzZuY1d4YndrbFR2TlVpTlB2eHZ6MlZ5M2dObWg0Zmhrc3dtQ25hS2g5?=
- =?utf-8?B?YVBkaXN3RXJOYzd4U0QzNHEyaDVDM201OFJSdmdGdWhNelVSeS96UTFKcGN4?=
- =?utf-8?B?QS9Kd3JWU1FjMENpWmlXZlRlRnNWc0tIbWtBS0tjcGs4U2NJR0E4NWpORDA2?=
- =?utf-8?B?ajlENXgrTG5yNzg0NTZYb3RMQzVqcnZSYzhsTlNoSVFRMklvbjRhem5LQ3FN?=
- =?utf-8?B?aitHQUg3L3U5ZEVtaE1ONkNONGx4V296NHdtWkllK1M2d3ZJTDBnZDBmVSta?=
- =?utf-8?B?YVVJRE45M3lRVExhVWxEWVNmU0s2YWFiWEJOcHZGUVcvRExYdHZKQmFqSjlE?=
- =?utf-8?B?d0lTTVlJbXdKVFR4TlZ3Zm9jK3lXU0VFK2c2S0ltRkZrbnpaOVJVNFdzOWxP?=
- =?utf-8?B?bzdkTnp5MmV6bkJYRmxkalNkd240N09LdEo2UTh0TUgyVU00YWZlL2puTUp3?=
- =?utf-8?B?YlFRZS9UaS9ldTZPTmJyUFloQ3BvN3RoakhlZVBlK3VWSTBidWtvS2F1YTh2?=
- =?utf-8?B?ZDh0SzhWemMrbHU2U2JwUjRFUlI2N2hobm5ZbnBwb2hSdlVYNzhZNWdRcDNl?=
- =?utf-8?B?b1RodUF4OHBpMzJaME5kaDR2UDhxQkVuc2o3NUdXLzZNWk9DZVo1Z09yYnJ5?=
- =?utf-8?B?cEo4QmxUOTBFZCsrS0tuVTJSMW1CQXlWMG1zMFF5Vlp2MlhNZUgrV0R5blNZ?=
- =?utf-8?Q?ROEgMVxQL9XNCr4Ol96pd4sJ2?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?OTVqdFk0YUhsV3dGK1dBVUU5U0ZZRnQrT3BMMFJXMTJxa1BJeXhOZHcrbVdm?=
+ =?utf-8?B?WTdSUHVCOThPeFc2SWtjMVNkc0tmd0V2dG1Cek0rSm9HVkNWY3RmcEx3aGc4?=
+ =?utf-8?B?cGE3Vk9GamNYbGVvcm9tRVhSWTBleTYxUXk4MGdxVnlobGJ4QVZwZ2VvV3Fv?=
+ =?utf-8?B?S1hPMEttVEtOZElsUjVMa2NPbkRUOFIrU0oxU00rOTM0Z05PamZTN29vSGh3?=
+ =?utf-8?B?LzR3OTlLMmwxTnhTS09sL1ROSnF0MWdieEl1czhSQWdTUGUwd0Rha0VoL2tv?=
+ =?utf-8?B?V0JTdmZ1NHFlQ3FyM0RhWktvNWdENFhoSGxxWDlmeGJDZmpycW8vc0EzbUU0?=
+ =?utf-8?B?bmdhejgwWERMSTgzZTUxc3kyK05BTW01a3BxMnJ1MERDc29RZWcveFJ6T0p5?=
+ =?utf-8?B?aU9JSE4waEhabHpUNEJqT0hhTWlJWjlHN1NrVk5hV3VOQ3ZtOUI4SnNhVTd0?=
+ =?utf-8?B?bTR5c3lSOVlJa3NBYm9mbDhqM3ZjSEtBNXBmUDZBVmdmUVQxWktQYjFTaWpX?=
+ =?utf-8?B?MnRIeXFSQk5RUjRyb2VtYUk5N1FWTXBrcEhPMXJJSUtNeDFRWFRYRzBWUXVR?=
+ =?utf-8?B?MFRvRnV2T0wzaEpvNHI0MThqM0QrcVVkZ2Y3eEtxd1JYQXppN1g4S1pmKzVr?=
+ =?utf-8?B?MDNyNEROWG84dFVMVDNmT2RTc0IvR3FxQnVaUDgyWkxZN3BkaVVVVXI3eW9i?=
+ =?utf-8?B?SnY4UWoxcGNWTGlyMkdKYms0bkFjZk1iU1kyNHlyejcxa0FZcTFabVRic0k0?=
+ =?utf-8?B?eXpvYUVTNUZucWROaDRCZEpJc2JjWDVscWNZZUhRSXRTNXkzQk52MTdwaHM0?=
+ =?utf-8?B?TlI4NWh0N1NNSGJuaVU5ZVVHZ0xSbkRaUXpKOHRvdVZ4MFdpQlBXamRFVWZv?=
+ =?utf-8?B?aStXOENUQ2FkUGlWNWFEd1JLemwwS2NDQVlyeEx3R0RCNGhiNWIwbzkyazhU?=
+ =?utf-8?B?ZlFQVkNXZXZ1TmMvMGtBTXZMODFrWjVTeFkrWVVWczdQQm93NDZHZnFXMERT?=
+ =?utf-8?B?T1ZGekh2bnYvL1FCZU5aNDZkOXAzVE0rSHhJbjJCaUovY0FDN2sxUXhqT0hN?=
+ =?utf-8?B?K2lpZG8zYzNKR01BbVhvYjBiQ0thcXhoVkNmK1h1TWZybG9TQ3ordnpxY3JL?=
+ =?utf-8?B?SCs0dmNxWTBjTFE3TFkyTEUxVUV6bnJNb3o0ZmJvajRLK09NYjFhdFhFWElu?=
+ =?utf-8?B?N0FzWUM3Y09JS1ovZ0dxOTJmWjVuYXZCbzBMOWxIb3gxMzVjcnhBbVlkT3hm?=
+ =?utf-8?B?OUVTcjVLRkVWdUpnQWx3T1daVXBIejYrUUM1UDU3eDg4OEtNSWxmZEU3QUM0?=
+ =?utf-8?B?TzhNMmVxb1Q3NDJMc0dCdC9Td0xYNmVuM2Z2WEV1NEFyMzdOMGloTEZWSGll?=
+ =?utf-8?B?Z2dUNW9VMlJpM2JNL20yZXdETDBqZktkc2cvNFlkTVpYL3ZETVlORFY4ajNF?=
+ =?utf-8?B?VDRhV0cwYWozc1YvdEJhbFo3MGZQUDRjT29CZFdGOTdsaHFmKzBXZnk3d0JB?=
+ =?utf-8?B?RTJValpPK0NlWXVWSTFNN1Q4RFhJSnduSGpVdFR5bW9ndHhmWkE1R0dwYjcr?=
+ =?utf-8?B?NXBISXpYRmRBOEJSMXVpN2FnWTA2U0V5Y2gyaWRhcTlBNERFMVcvNkxOdzRV?=
+ =?utf-8?B?ZHlEWFlMaVIyU2FDNFNhY3VIcG56blJ0OEJOUjNEd2VFVVZJRGg3UEdudjR2?=
+ =?utf-8?B?WmpoZ3pKcDhrMkhMSmtDMlM0RWxTd0V1SEw5NmRTMHdVZUZTSUhUOFVhM0sz?=
+ =?utf-8?B?Q25RZUVHODlISExtQitLQTRhSW4yUWdsMGZwT1RCcWViNkdZamh1d3lBMEtj?=
+ =?utf-8?B?d0pIQUdyNWVILzQvRUIvN2tnU2pUcURyVFJKTGk4Y29VajllL1RZU3J1VlFE?=
+ =?utf-8?B?K1N3MGlTUDl5eGVJdUdUckZFZm8xYU5rSDk3V1djTldnUXE3cnNxRnBZMFFh?=
+ =?utf-8?B?WkV6VjhIa20zb0FEbHlvQ2RraU5EY2JkQjBoWDl4MmpldSs0THJpY2wxaU1Q?=
+ =?utf-8?B?UGYrZ0lXSWVzRk1iQ1kvRDhLREFiV05UdzRhSXlEdCtVTjVpMHBnQithbnNa?=
+ =?utf-8?B?TjRpSVRGSU1OMzIvTmhtK29vMnA5WFAzNU5UUGxyTEl2VERsUjBOSkFZejZx?=
+ =?utf-8?Q?0wt6dzZkR4JSqp7z9lZUvCznw?=
 X-OriginatorOrg: oss.nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: aa011eb6-b045-4e93-0830-08dc69ddc61b
+X-MS-Exchange-CrossTenant-Network-Message-Id: 7332603a-25bf-4c13-196f-08dc69dd52b7
 X-MS-Exchange-CrossTenant-AuthSource: DU0PR04MB9417.eurprd04.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 01 May 2024 12:54:01.3195
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 01 May 2024 12:50:47.7704
  (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: IIlETgYicOXhlsUoUZ/2k7SDvKOTmE/R5jtZBOI7DzknFcGm9/UrdoPMVjPu0KuJaiNr1Qn21skLWVl6yPQcCg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DBAPR04MB7432
+X-MS-Exchange-CrossTenant-UserPrincipalName: jgoF+yszrnD5AaOJsghO43g3qH8yKF0h0gMRpzeHEQQMg+zIOBVBqRnq7ye3+fpjloNfUHkXq1ug+XUNsY376w==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DBAPR04MB7448
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240501_055405_432678_98833B0D 
-X-CRM114-Status: GOOD (  10.85  )
+X-CRM114-CacheID: sfid-20240501_060537_767787_3908C615 
+X-CRM114-Status: GOOD (  13.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -222,37 +222,250 @@ Use scope based of_node_put() cleanup to simplify code.
 
 Signed-off-by: Peng Fan <peng.fan@nxp.com>
 ---
- drivers/pinctrl/pinconf-generic.c | 7 ++-----
- 1 file changed, 2 insertions(+), 5 deletions(-)
+ drivers/pinctrl/renesas/pinctrl-rza1.c  | 14 ++++----------
+ drivers/pinctrl/renesas/pinctrl-rzg2l.c | 10 +++-------
+ drivers/pinctrl/renesas/pinctrl-rzn1.c  | 23 +++++++----------------
+ drivers/pinctrl/renesas/pinctrl-rzv2m.c |  7 ++-----
+ drivers/pinctrl/renesas/pinctrl.c       |  7 ++-----
+ 5 files changed, 18 insertions(+), 43 deletions(-)
 
-diff --git a/drivers/pinctrl/pinconf-generic.c b/drivers/pinctrl/pinconf-generic.c
-index 80de389199bd..a499b8af5c1f 100644
---- a/drivers/pinctrl/pinconf-generic.c
-+++ b/drivers/pinctrl/pinconf-generic.c
-@@ -382,7 +382,6 @@ int pinconf_generic_dt_node_to_map(struct pinctrl_dev *pctldev,
- 		unsigned int *num_maps, enum pinctrl_map_type type)
+diff --git a/drivers/pinctrl/renesas/pinctrl-rza1.c b/drivers/pinctrl/renesas/pinctrl-rza1.c
+index edcbe7c9ad56..6527872813dc 100644
+--- a/drivers/pinctrl/renesas/pinctrl-rza1.c
++++ b/drivers/pinctrl/renesas/pinctrl-rza1.c
+@@ -852,7 +852,6 @@ static const struct gpio_chip rza1_gpiochip_template = {
+  */
+ static int rza1_dt_node_pin_count(struct device_node *np)
  {
- 	unsigned int reserved_maps;
--	struct device_node *np;
+-	struct device_node *child;
+ 	struct property *of_pins;
+ 	unsigned int npins;
+ 
+@@ -861,12 +860,10 @@ static int rza1_dt_node_pin_count(struct device_node *np)
+ 		return of_pins->length / sizeof(u32);
+ 
+ 	npins = 0;
+-	for_each_child_of_node(np, child) {
++	for_each_child_of_node_scoped(np, child) {
+ 		of_pins = of_find_property(child, "pinmux", NULL);
+-		if (!of_pins) {
+-			of_node_put(child);
++		if (!of_pins)
+ 			return -EINVAL;
+-		}
+ 
+ 		npins += of_pins->length / sizeof(u32);
+ 	}
+@@ -986,7 +983,6 @@ static int rza1_dt_node_to_map(struct pinctrl_dev *pctldev,
+ 	struct rza1_pinctrl *rza1_pctl = pinctrl_dev_get_drvdata(pctldev);
+ 	struct rza1_mux_conf *mux_confs, *mux_conf;
+ 	unsigned int *grpins, *grpin;
+-	struct device_node *child;
+ 	const char *grpname;
+ 	const char **fngrps;
+ 	int ret, npins;
+@@ -1023,13 +1019,11 @@ static int rza1_dt_node_to_map(struct pinctrl_dev *pctldev,
+ 
+ 	ret = rza1_parse_pinmux_node(rza1_pctl, np, mux_conf, grpin);
+ 	if (ret == -ENOENT)
+-		for_each_child_of_node(np, child) {
++		for_each_child_of_node_scoped(np, child) {
+ 			ret = rza1_parse_pinmux_node(rza1_pctl, child, mux_conf,
+ 						     grpin);
+-			if (ret < 0) {
+-				of_node_put(child);
++			if (ret < 0)
+ 				return ret;
+-			}
+ 
+ 			grpin += ret;
+ 			mux_conf += ret;
+diff --git a/drivers/pinctrl/renesas/pinctrl-rzg2l.c b/drivers/pinctrl/renesas/pinctrl-rzg2l.c
+index c3256bfde502..85a4f3c7d73c 100644
+--- a/drivers/pinctrl/renesas/pinctrl-rzg2l.c
++++ b/drivers/pinctrl/renesas/pinctrl-rzg2l.c
+@@ -745,7 +745,6 @@ static int rzg2l_dt_node_to_map(struct pinctrl_dev *pctldev,
+ 				unsigned int *num_maps)
+ {
+ 	struct rzg2l_pinctrl *pctrl = pinctrl_dev_get_drvdata(pctldev);
+-	struct device_node *child;
+ 	unsigned int index;
  	int ret;
  
- 	reserved_maps = 0;
-@@ -394,13 +393,11 @@ int pinconf_generic_dt_node_to_map(struct pinctrl_dev *pctldev,
- 	if (ret < 0)
- 		goto exit;
+@@ -753,13 +752,11 @@ static int rzg2l_dt_node_to_map(struct pinctrl_dev *pctldev,
+ 	*num_maps = 0;
+ 	index = 0;
  
--	for_each_available_child_of_node(np_config, np) {
-+	for_each_available_child_of_node_scoped(np_config, np) {
- 		ret = pinconf_generic_dt_subnode_to_map(pctldev, np, map,
- 					&reserved_maps, num_maps, type);
+-	for_each_child_of_node(np, child) {
++	for_each_child_of_node_scoped(np, child) {
+ 		ret = rzg2l_dt_subnode_to_map(pctldev, child, np, map,
+ 					      num_maps, &index);
 -		if (ret < 0) {
--			of_node_put(np);
+-			of_node_put(child);
 +		if (ret < 0)
- 			goto exit;
+ 			goto done;
 -		}
  	}
- 	return 0;
  
+ 	if (*num_maps == 0) {
+@@ -2201,7 +2198,7 @@ static int rzg2l_gpio_register(struct rzg2l_pinctrl *pctrl)
+ 	const char *name = dev_name(pctrl->dev);
+ 	struct irq_domain *parent_domain;
+ 	struct of_phandle_args of_args;
+-	struct device_node *parent_np;
++	struct device_node *parent_np __free(device_node) = of_irq_find_parent(np);
+ 	struct gpio_irq_chip *girq;
+ 	int ret;
+ 
+@@ -2210,7 +2207,6 @@ static int rzg2l_gpio_register(struct rzg2l_pinctrl *pctrl)
+ 		return -ENXIO;
+ 
+ 	parent_domain = irq_find_host(parent_np);
+-	of_node_put(parent_np);
+ 	if (!parent_domain)
+ 		return -EPROBE_DEFER;
+ 
+diff --git a/drivers/pinctrl/renesas/pinctrl-rzn1.c b/drivers/pinctrl/renesas/pinctrl-rzn1.c
+index 4b2f107824fe..e1b4203c66c6 100644
+--- a/drivers/pinctrl/renesas/pinctrl-rzn1.c
++++ b/drivers/pinctrl/renesas/pinctrl-rzn1.c
+@@ -404,7 +404,6 @@ static int rzn1_dt_node_to_map(struct pinctrl_dev *pctldev,
+ 			       struct pinctrl_map **map,
+ 			       unsigned int *num_maps)
+ {
+-	struct device_node *child;
+ 	int ret;
+ 
+ 	*map = NULL;
+@@ -414,12 +413,10 @@ static int rzn1_dt_node_to_map(struct pinctrl_dev *pctldev,
+ 	if (ret < 0)
+ 		return ret;
+ 
+-	for_each_child_of_node(np, child) {
++	for_each_child_of_node_scoped(np, child) {
+ 		ret = rzn1_dt_node_to_map_one(pctldev, child, map, num_maps);
+-		if (ret < 0) {
+-			of_node_put(child);
++		if (ret < 0)
+ 			return ret;
+-		}
+ 	}
+ 
+ 	return 0;
+@@ -760,7 +757,6 @@ static int rzn1_pinctrl_parse_functions(struct device_node *np,
+ {
+ 	struct rzn1_pmx_func *func;
+ 	struct rzn1_pin_group *grp;
+-	struct device_node *child;
+ 	unsigned int i = 0;
+ 	int ret;
+ 
+@@ -793,15 +789,13 @@ static int rzn1_pinctrl_parse_functions(struct device_node *np,
+ 		ipctl->ngroups++;
+ 	}
+ 
+-	for_each_child_of_node(np, child) {
++	for_each_child_of_node_scoped(np, child) {
+ 		func->groups[i] = child->name;
+ 		grp = &ipctl->groups[ipctl->ngroups];
+ 		grp->func = func->name;
+ 		ret = rzn1_pinctrl_parse_groups(child, grp, ipctl);
+-		if (ret < 0) {
+-			of_node_put(child);
++		if (ret < 0)
+ 			return ret;
+-		}
+ 		i++;
+ 		ipctl->ngroups++;
+ 	}
+@@ -816,7 +810,6 @@ static int rzn1_pinctrl_probe_dt(struct platform_device *pdev,
+ 				 struct rzn1_pinctrl *ipctl)
+ {
+ 	struct device_node *np = pdev->dev.of_node;
+-	struct device_node *child;
+ 	unsigned int maxgroups = 0;
+ 	unsigned int i = 0;
+ 	int nfuncs = 0;
+@@ -834,7 +827,7 @@ static int rzn1_pinctrl_probe_dt(struct platform_device *pdev,
+ 		return -ENOMEM;
+ 
+ 	ipctl->ngroups = 0;
+-	for_each_child_of_node(np, child)
++	for_each_child_of_node_scoped(np, child)
+ 		maxgroups += rzn1_pinctrl_count_function_groups(child);
+ 
+ 	ipctl->groups = devm_kmalloc_array(&pdev->dev,
+@@ -844,12 +837,10 @@ static int rzn1_pinctrl_probe_dt(struct platform_device *pdev,
+ 	if (!ipctl->groups)
+ 		return -ENOMEM;
+ 
+-	for_each_child_of_node(np, child) {
++	for_each_child_of_node_scoped(np, child) {
+ 		ret = rzn1_pinctrl_parse_functions(child, ipctl, i++);
+-		if (ret < 0) {
+-			of_node_put(child);
++		if (ret < 0)
+ 			return ret;
+-		}
+ 	}
+ 
+ 	return 0;
+diff --git a/drivers/pinctrl/renesas/pinctrl-rzv2m.c b/drivers/pinctrl/renesas/pinctrl-rzv2m.c
+index 0767a5ac23e0..0cae5472ac67 100644
+--- a/drivers/pinctrl/renesas/pinctrl-rzv2m.c
++++ b/drivers/pinctrl/renesas/pinctrl-rzv2m.c
+@@ -388,7 +388,6 @@ static int rzv2m_dt_node_to_map(struct pinctrl_dev *pctldev,
+ 				unsigned int *num_maps)
+ {
+ 	struct rzv2m_pinctrl *pctrl = pinctrl_dev_get_drvdata(pctldev);
+-	struct device_node *child;
+ 	unsigned int index;
+ 	int ret;
+ 
+@@ -396,13 +395,11 @@ static int rzv2m_dt_node_to_map(struct pinctrl_dev *pctldev,
+ 	*num_maps = 0;
+ 	index = 0;
+ 
+-	for_each_child_of_node(np, child) {
++	for_each_child_of_node_scoped(np, child) {
+ 		ret = rzv2m_dt_subnode_to_map(pctldev, child, np, map,
+ 					      num_maps, &index);
+-		if (ret < 0) {
+-			of_node_put(child);
++		if (ret < 0)
+ 			goto done;
+-		}
+ 	}
+ 
+ 	if (*num_maps == 0) {
+diff --git a/drivers/pinctrl/renesas/pinctrl.c b/drivers/pinctrl/renesas/pinctrl.c
+index 4d9d58fc1356..03e9bdbc82b9 100644
+--- a/drivers/pinctrl/renesas/pinctrl.c
++++ b/drivers/pinctrl/renesas/pinctrl.c
+@@ -241,7 +241,6 @@ static int sh_pfc_dt_node_to_map(struct pinctrl_dev *pctldev,
+ {
+ 	struct sh_pfc_pinctrl *pmx = pinctrl_dev_get_drvdata(pctldev);
+ 	struct device *dev = pmx->pfc->dev;
+-	struct device_node *child;
+ 	unsigned int index;
+ 	int ret;
+ 
+@@ -249,13 +248,11 @@ static int sh_pfc_dt_node_to_map(struct pinctrl_dev *pctldev,
+ 	*num_maps = 0;
+ 	index = 0;
+ 
+-	for_each_child_of_node(np, child) {
++	for_each_child_of_node_scoped(np, child) {
+ 		ret = sh_pfc_dt_subnode_to_map(pctldev, child, map, num_maps,
+ 					       &index);
+-		if (ret < 0) {
+-			of_node_put(child);
++		if (ret < 0)
+ 			goto done;
+-		}
+ 	}
+ 
+ 	/* If no mapping has been found in child nodes try the config node. */
 
 -- 
 2.37.1
