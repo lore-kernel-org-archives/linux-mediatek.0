@@ -4,125 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 462ECC4345F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 May 2024 17:17:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1F9FC4345F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 May 2024 18:32:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MOHqyTk2nsRZy88pDJJ/quBzrqb3UUPa7Yn14ZhLib4=; b=5Fet7jrhrHwnHCM+c+UpyrK6ag
-	75StkX+SthDb/6bqATcEd+0VSS9Hmb9DbcXJgS+HHu2Az7BLtb4EJkSzhuI072B+eO/Q3wFJlxjy3
-	uwDI7jVgl4MxdXodm8Zczl1xW92hNyau3AyjTijuegblJsa84Sc1xTrc51NBXGBVOQES69paLAh4Y
-	wmxM85p7mEQgz1ofbBTARUkuM33QDfGPKxU0xiACKSQ1PYzIURghgzqsZxbKZ+kurwL27CdXXVhv6
-	T0C8VpXRrKWkcXSsdO0CaCedvTwF+L4N6nHaRG9A2XgNu8SG/RnB+beNx6kv6geBEbhmp0vf3lDqJ
-	+vf69mNA==;
+	bh=uSZJZlVEjnv5VVZKI60BYw+Pc0dZMrsdmpS1r51v58E=; b=ch+nB4wwyaxE36TcSE7wZq85GP
+	H3IGhgqri1nSwygxOs6f450R8PhwsEjO/GfoxDwjJNfmlVx3SneilnmkkXpNCpWbLDelupInlFxFL
+	/bnqnpwQZB7fz4506xzT9eW9YMa/8jfRIPk8RIHgO8A5XD1wcIMJnJHi0XOXZ5ACrZmrkqV65n3rC
+	qKa+9QA9d9e/nD4cCqr3n/zxve4xFjnlSeqycTd0zna8re7+fWhSTbM1hsTPo8hRieZaN6iEmPjLI
+	OJrTWatjDZHYsni2l1k6QRzIFK92BI5jmIzvY8S6QD1hH9DlSOwtBYLZfxAmNfpnn/oV7cfi+D+mq
+	5r241ZdQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2DZk-0000000AI3y-3K1G;
-	Wed, 01 May 2024 17:17:00 +0000
-Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
+	id 1s2EkT-0000000AQey-2agR;
+	Wed, 01 May 2024 18:32:09 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2DZh-0000000AI2a-3OK0
-	for linux-mediatek@lists.infradead.org;
-	Wed, 01 May 2024 17:16:59 +0000
-Received: by mail-lf1-x134.google.com with SMTP id 2adb3069b0e04-51bae805c56so8139174e87.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 01 May 2024 10:16:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1714583815; x=1715188615; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=MOHqyTk2nsRZy88pDJJ/quBzrqb3UUPa7Yn14ZhLib4=;
-        b=TW/OW0iwtuFnQesi+BVgZorYtOJ+7/DZNAhNxG2BIjl55pdfhbxb8HPBru8kBbCTey
-         Hjbvoi4nWM+cvePYNNCLm3cBgL8t4dd4e7FZdk/sS6jMEsymk007KfcLqy8scsiHFeFz
-         NgYWWExgs6xvB6f7sHRIi5amiVNkDE5t4VrJq9ZM+4bgUxAGxx3LDgoeIWm0YY5WKRnq
-         4FjMItZUC3x0rF10QbM64tzxbyndBmBCvD1XeemF+S3fniRmxvj1+HptbFagVlh4hAKk
-         rOvXFiQ8VLbwl9XkydfYiGnyORN6yk1lQwCYtrlPwLcMeQcyFsV2aUwxrEvqAm7v3vrn
-         2bjQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1714583815; x=1715188615;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=MOHqyTk2nsRZy88pDJJ/quBzrqb3UUPa7Yn14ZhLib4=;
-        b=aqvGva+bNvxihCbi68aUKaJs1XPAKulUihI59R4bhIl0omjmh5iK2mOBZrrWZm4TeS
-         X5WhYRSKmmliO89WFHJ2rvF20tORXanFZNeohrLnKyzSFoR5YJ9aCxPGYvQd+tjCWqH8
-         zt+n6jTNjMvIydcNFY6tIrxGRbkx5zpxDQ9tn88uDwx2E2SUVRny5YHYzJQ+KFrmkK0t
-         hh9BMIhqXpV/a8E7Atjm1ZGomjKrQkA9NzcuippAQOT201NjJBJ4Li+dZrydsW6HcAH9
-         D+9AU+F9txHl9QGdC40eaLxOnCj/DO24A/Ykh+C1Yj87dn0YLnUXP000Ipr9JaTWItOf
-         W1uQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVT1IBitB24Rk+nER16QYYcK4rejYeJpPDZgNflgUex3EAq3N0Rf66BpoqFOviVw+swhmAM6qKf7A4cUD7fw/uUQSM8oIdwXhESzyXeAugIN5ND
-X-Gm-Message-State: AOJu0YysW7cU1nHDub+qPm/xXf5qe+NOuK38+I4sfGmgqBhPdwUR0Sb1
-	trs0z9kO18HtAFCoOjyzeMpIC4SUHWbeFoGIPvkRAOCe1+3Qsq/Ok1r4bYSv7hU=
-X-Google-Smtp-Source: AGHT+IGQV4KLhJUah5uwpDXzYUszrhPNSItjqkYS07RJilfCu8tUsg9Dz64nf2enkLVMqtqy/1k75Q==
-X-Received: by 2002:a05:6512:12c7:b0:51f:196:d217 with SMTP id p7-20020a05651212c700b0051f0196d217mr197144lfg.63.1714583815158;
-        Wed, 01 May 2024 10:16:55 -0700 (PDT)
-Received: from localhost ([102.222.70.76])
-        by smtp.gmail.com with ESMTPSA id t10-20020a192d4a000000b0051d5616c3e1sm1524897lft.231.2024.05.01.10.16.53
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 01 May 2024 10:16:54 -0700 (PDT)
-Date: Wed, 1 May 2024 20:16:49 +0300
-From: Dan Carpenter <dan.carpenter@linaro.org>
-To: "Peng Fan (OSS)" <peng.fan@oss.nxp.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Dvorkin Dmitry <dvorkin@tibbo.com>, Wells Lu <wellslutw@gmail.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Emil Renner Berthing <kernel@esmil.dk>,
-	Jianlong Huang <jianlong.huang@starfivetech.com>,
-	Hal Feng <hal.feng@starfivetech.com>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Viresh Kumar <vireshk@kernel.org>,
-	Shiraz Hashim <shiraz.linux.kernel@gmail.com>, soc@kernel.org,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Sylwester Nawrocki <s.nawrocki@samsung.com>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Patrice Chotard <patrice.chotard@foss.st.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Damien Le Moal <dlemoal@kernel.org>,
-	Ludovic Desroches <ludovic.desroches@microchip.com>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-	Dong Aisheng <aisheng.dong@nxp.com>,
-	Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>,
-	Jacky Bai <ping.bai@nxp.com>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Chester Lin <chester62515@gmail.com>,
-	Matthias Brugger <mbrugger@suse.com>,
-	Ghennadi Procopciuc <ghennadi.procopciuc@oss.nxp.com>,
-	Sean Wang <sean.wang@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Andrew Jeffery <andrew@codeconstruct.com.au>,
-	Joel Stanley <joel@jms.id.au>, linux-gpio@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-tegra@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-samsung-soc@vger.kernel.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, imx@lists.linux.dev,
-	linux-aspeed@lists.ozlabs.org, openbmc@lists.ozlabs.org,
-	Peng Fan <peng.fan@nxp.com>
-Subject: Re: [PATCH 10/21] pinctrl: st: Use scope based of_node_put() cleanups
-Message-ID: <f6aa3a17-90d2-42e3-8c55-639dfcdbf8ca@moroto.mountain>
-References: <20240501-pinctrl-cleanup-v1-0-797ceca46e5c@nxp.com>
- <20240501-pinctrl-cleanup-v1-10-797ceca46e5c@nxp.com>
+	id 1s2EkP-0000000AQbK-2JMw;
+	Wed, 01 May 2024 18:32:06 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1714588309;
+	bh=uSZJZlVEjnv5VVZKI60BYw+Pc0dZMrsdmpS1r51v58E=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=dwp9upVUf8uqjfy0K5alr3USuis2rsxquerVShprotY1c3DyZ9pnNikSrA/dSHLDN
+	 PIubU7wjjYsNDCxL2+OWUkngL8e+0qx0jsRqpw+UyhYV7V+9t9a10JmC0VY3l/fuo6
+	 HQj9Kg1cLRanQHF1Jwwt7x5PivXepUFgmuDT3l8DdQU3GtT3387uWnhtl1B3dJ1bF3
+	 PF3TmYh6ZH0fl9oN3eQtb1GJOTx+zR5WeXQ1kRCCMoqWESb14k57a3kyILv7OMXGD0
+	 ie8/fD/WotD5gU77wZZgd044WGdQ3/NREbr7/7EAWvTCNTnFkoOTyT6iqM8lAXBsHm
+	 0dlXiU26yUmIQ==
+Received: from nicolas-tpx395.localdomain (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id D498B3781F9A;
+	Wed,  1 May 2024 18:31:47 +0000 (UTC)
+Message-ID: <d73d7ade60de2bf4c4e9048756dc59062af64bc4.camel@collabora.com>
+Subject: Re: [PATCH] media: mediatek: vcodec: Alloc DMA memory with
+ DMA_ATTR_ALLOC_SINGLE_PAGES
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Fei Shao <fshao@chromium.org>, Doug Anderson <dianders@chromium.org>
+Cc: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen
+ <andrew-ct.chen@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Wei-Shun Chang
+ <weishunc@google.com>,  Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ =?ISO-8859-1?Q?N=EDcolas?= "F. R. A. Prado" <nfraprado@collabora.com>, Rob
+ Herring <robh@kernel.org>,  linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org,  linux-media@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+Date: Wed, 01 May 2024 14:31:43 -0400
+In-Reply-To: <CAJ66y9FrpyzEwa1J=5L1OwRkrSBm308g8OZKnasYQcJYJpRbRA@mail.gmail.com>
+References: <20240422100354.1.I58b4456c014a4d678455a4ec09b908b1c71c3017@changeid>
+	 <022936a6704d08fbed22e7f241810d857eecaeda.camel@collabora.com>
+	 <CAD=FV=XSyLJiTCHYF7UaLersix0zP-q-MybW+nOR3A2WfccQcg@mail.gmail.com>
+	 <CAJ66y9FrpyzEwa1J=5L1OwRkrSBm308g8OZKnasYQcJYJpRbRA@mail.gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.52.1 (3.52.1-1.fc40) 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240501-pinctrl-cleanup-v1-10-797ceca46e5c@nxp.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240501_101658_220564_327C1BFF 
-X-CRM114-Status: GOOD (  10.78  )
+X-CRM114-CacheID: sfid-20240501_113205_728861_6AA35BD4 
+X-CRM114-Status: GOOD (  43.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -137,20 +85,122 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, May 01, 2024 at 08:56:08PM +0800, Peng Fan (OSS) wrote:
-> @@ -1224,8 +1221,7 @@ static int st_pctl_dt_parse_groups(struct device_node *np,
->  	grp->pin_conf = devm_kcalloc(dev, npins, sizeof(*grp->pin_conf), GFP_KERNEL);
->  
->  	if (!grp->pins || !grp->pin_conf) {
-> -		ret = -ENOMEM;
-> -		goto out_put_node;
-> +		return -ENOMEM;
->  	}
+Le vendredi 26 avril 2024 =C3=A0 18:20 +0800, Fei Shao a =C3=A9crit=C2=A0:
+> Hi Nicolas,
+>=20
+> On Tue, Apr 23, 2024 at 2:52=E2=80=AFPM Doug Anderson <dianders@chromium.=
+org> wrote:
+> >=20
+> > Hi,
+> >=20
+> > On Mon, Apr 22, 2024 at 11:27=E2=80=AFAM Nicolas Dufresne
+> > <nicolas.dufresne@collabora.com> wrote:
+> > >=20
+> > > Hi,
+> > >=20
+> > > Le lundi 22 avril 2024 =C3=A0 10:03 -0700, Douglas Anderson a =C3=A9c=
+rit :
+> > > > As talked about in commit 14d3ae2efeed ("ARM: 8507/1: dma-mapping: =
+Use
+> > > > DMA_ATTR_ALLOC_SINGLE_PAGES hint to optimize alloc"), it doesn't
+> > > > really make sense to try to allocate contiguous chunks of memory fo=
+r
+> > > > video encoding/decoding. Let's switch the Mediatek vcodec driver to
+> > > > pass DMA_ATTR_ALLOC_SINGLE_PAGES and take some of the stress off th=
+e
+> > > > memory subsystem.
+> > > >=20
+> > > > Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> > > > ---
+> > > > NOTE: I haven't personally done massive amounts of testing with thi=
+s
+> > > > change, but I originally added the DMA_ATTR_ALLOC_SINGLE_PAGES flag
+> > > > specifically for the video encoding / decoding cases and I know it
+> > > > helped avoid memory problems in the past on other systems. Colleagu=
+es
+> > > > of mine have told me that with this change memory problems are hard=
+er
+> > > > to reproduce, so it seems like we should consider doing it.
+> > >=20
+> > > One thing to improve in your patch submission is to avoid abstracting=
+ the
+> > > problems. Patch review and pulling is based on a technical rational a=
+nd very
+> > > rarely on the trust that it helps someone somewhere in some unknown c=
+ontext.
+> > > What kind of memory issues are you facing ? What is the technical adv=
+antage of
+> > > using DMA_ATTR_ALLOC_SINGLE_PAGES over the current approach that help=
+s fixing
+> > > the issue? I do expect this to be documented in the commit message it=
+self=C3=A9.
+> >=20
+> > Right. The problem here is that I'm not _directly_ facing any problems
+> > here and I also haven't done massive amounts of analysis of the
+> > Mediatek video codec. I know that some of my colleagues have run into
+> > issues on Mediatek devices where the system starts getting
+> > unresponsive when lots of videos are decoded in parallel. That
+> > reminded me of the old problem I debugged in 2015 on Rockchip
+> > platforms and is talked about a bunch in the referenced commit
+> > 14d3ae2efeed ("ARM: 8507/1: dma-mapping: Use
+> > DMA_ATTR_ALLOC_SINGLE_PAGES hint to optimize alloc") so I wrote up
+> > this patch. The referenced commit contains quite a bit of details
+> > about the problems faced back in 2015.
+> >=20
+> > When I asked, my colleagues said that my patch seemed to help, though
+> > it was more of a qualitative statement than a quantitative one.
+>=20
+> The story behind this is that I'm looking into an issue on the MediaTek
+> MT8188 Chromebook, where in some scenarios the system may emit 30+
+> video decoders concurrently (e.g. generating thumbnails for excess
+> amount of video files etc.), and such behavior can easily hang the
+> system if it has a smaller amount of memory (<4GB).
+>=20
+> In addition to seeking mitigation in the user space software side,
+> we're also looking for ways to optimize how the video decoders use
+> memory, so Doug suggested this improvement.
+> My preliminary experiment showed that it has some positive impact -
+> the system doesn't freeze up completely with it and is still
+> responsive in the UART serial console. However, just like mentioned, I
+> didn=E2=80=99t have any rigorous numbers to support it.
+>=20
+> To test the patch better, today I set up a local WebRTC demo to
+> simulate a video conference with 49 people where the mocked input
+> stream is captured from the device's own front camera.
+> With that, the original system easily hung in less than one minute
+> with less than 40MB available memory at the time; but with the change,
+> the system ran for several minutes and had an average of over 100MB
+> memory. It's not a huge improvement, but it's something.
+>=20
+> I know this isn't the most scientific experiment, but I hope it=E2=80=99s=
+ a
+> good enough representation of one of the multi video decoder use
+> cases, and gives you some confidence that the patch is worth merging.
+>=20
+> With the test above I think I can give this:
+> Tested-by: Fei Shao <fshao@chromium.org>
+>=20
+> And, since this patch LGTM and I support it, here's my humble
+> Reviewed-by: Fei Shao <fshao@chromium.org>
 
-You could delete the curly braces as well.
+The arguments hew and my own research has finish convincing me we want to d=
+o
+this (unless we had limited TLB space at the device level, or performance m=
+etric
+that show that bigger contiguous chunk helps).
 
-regards,
-dan carpenter
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 
+>=20
+> Regards,
+> Fei
+>=20
+> >=20
+> > I wasn't 100% sure if it was worth sending the patch up at this point,
+> > but logically, I think it makes sense. There aren't great reasons to
+> > hog all the large chunks of memory for video decoding.
+> >=20
+> > -Doug
+>=20
 
 
