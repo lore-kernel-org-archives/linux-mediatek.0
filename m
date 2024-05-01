@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F072C4345F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 May 2024 13:43:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13D34C10F1A
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 May 2024 13:43:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kZHwSl1MjKcXQzWZVoI3WstTR5TEOd4aywKVmM6WLKU=; b=CZyCWGrdFEg1mj3EWH1tTLurb0
-	ClcUjjvFXvvZhgPPS41JA+a3wYTQ5++bQlfciacPVBjxTKwbLjcjm1pP1djBhH0xXMwZKcNXOkNUl
-	b61BYTRlsWBDdUtd4kw8aKfu3npLyMU9GWGU3oM6zYZKrsR4BtNIx+EXK65VP0ItgNcEYflgAPINq
-	eyu3Tl5hdaoGUXv9jDj4IN0hdze3aojuD9Glz9RvOLXeKmjfkFqjGO+EFYUknCM+zo2zrqHNr+Ix4
-	GGR7cnmFBzcORL2U+Y2e3i/RP7uB3aHYSGnfjCgEpEZ+EdDKWm70yJ9t3jEJkMxce1LnRkVLyCCxV
-	wGTTuZXg==;
+	bh=HfBO+Guv+LxS1pk6WKlC+QqIWA3JF9JXXbCRbF4OtpY=; b=rRyySQqx/V7cSyu8evyhOpxTrr
+	cMsnJH+Pt7osesP38RriPGdKeZwomBDe1DHAK5Z6+CM4LzvC/Ul8zsOfk33qujkTzmwyPX1hKtpBo
+	pI7UlGaOMPfTmBPuxzwUN2Ncj42MEDhg8aGbRg2SuiNijTyQ1NqRSJsneium4xj60/yW4/lwapC7f
+	zDtbCj+AfI/hWoklQibA8MKlJqkhKNUewCfY2kd/W+YG0+fUK36uFgQhSx072Wodiqo8Nch3lXRgJ
+	QggYdAN7on5sLQxD47o+vm9MYoHyRpQqcXaNg/YNPIyruqaeQuZiATsIBzRl/YkrtrUDBoTmfVVJY
+	V8na9u8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2AEz-00000009hya-3j2E;
-	Wed, 01 May 2024 13:43:21 +0000
+	id 1s2AF1-00000009hzq-2UFi;
+	Wed, 01 May 2024 13:43:23 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2AEu-00000009hwm-3FyU;
-	Wed, 01 May 2024 13:43:18 +0000
+	id 1s2AEw-00000009hxM-1Fux;
+	Wed, 01 May 2024 13:43:19 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 8AB22610A0;
+	by dfw.source.kernel.org (Postfix) with ESMTP id ADC5361122;
+	Wed,  1 May 2024 13:43:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8DD58C4AF19;
 	Wed,  1 May 2024 13:43:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DE152C113CC;
-	Wed,  1 May 2024 13:43:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1714570993;
-	bh=9cGe0fO91KEJ6yS3wODvzOfUdBBRbhupeiudrh94mnc=;
+	s=k20201202; t=1714570997;
+	bh=8s5kRpq9v7omz4cTI6onHJBvW1QqzHh21ZT4YSBdF7k=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=ITWn/E1nz33/c5D9HMjtgTlHCOKh8uHiSsWlcU7X2vEshClmoQlbx/PgYa84ZDIkS
-	 yq3B4KxtOb898TC/lqnTjDbhiUQ6YgHe9Po5zF8NrCZpjdKlRhjL5rg7gF2At2efQ+
-	 sx/nqhp6glcPOdmuPhlnvqBbuoxqeV0kUcvf92TBFOaMZUfkcP+jcApQ+JB0NIqPsB
-	 vmB/fijPtAZi3Vv06ppSDS7q2v+C3pYe5fwPHiemVQTTUXvP9LmWWbLFzP2UYPqKmK
-	 kaZJtMAlbG846ICqAnbP3RfNjRZpt+U2Ik09fpcxjKJwkQlicDe08Knh3cczjvK1rw
-	 qG3X7TESfD11A==
+	b=kjyr9K85Re6Zf3n9S/Id7kQZR5Yr29JID3fNO4fHNxVk5U08ylMmNTPsEZRIEN0zB
+	 SxbL3nPSGCY272Yx7p2+Nwqx/y/1bJTSuzixrQjfSj+hpzykP+n1SjZ9F5y4iftmZ4
+	 ltLsKFZeF63cRrNzaRiwdNjKz2IU/K9NUNnJJTHIZqOIzbsNnIrDqGVyicTC36n7n+
+	 /0nR5HcPpt3vA1s38/WKQSrMkCUgS9I/XeH1Bu/d77r427FiVlvbpkmePxuIQKgo3w
+	 YNl2GWRMX+kMjg+FRe0vPunEq+eHFK8VH9EZJ7fljw1SxEjKHaogC03pMTHMpAu3ob
+	 RxoZuI1LiqjSA==
 From: Mark Brown <broonie@kernel.org>
 To: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>, 
  Liam Girdwood <lgirdwood@gmail.com>, 
@@ -59,18 +59,18 @@ To: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>,
 Cc: sound-open-firmware@alsa-project.org, linux-sound@vger.kernel.org, 
  linux-kernel@vger.kernel.org, imx@lists.linux.dev, 
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-In-Reply-To: <20240414-n-const-ops-var-v1-0-8f53ee5d981c@kernel.org>
-References: <20240414-n-const-ops-var-v1-0-8f53ee5d981c@kernel.org>
-Subject: Re: [PATCH 00/14] ASoC: Constify local snd_sof_dsp_ops
-Message-Id: <171457098826.1888704.13609756563875437820.b4-ty@kernel.org>
-Date: Wed, 01 May 2024 22:43:08 +0900
+In-Reply-To: <20240426-n-const-ops-var-v2-0-e553fe67ae82@kernel.org>
+References: <20240426-n-const-ops-var-v2-0-e553fe67ae82@kernel.org>
+Subject: Re: [PATCH v2 00/14] ASoC: Constify local snd_sof_dsp_ops
+Message-Id: <171457099304.1888704.3710450015978525893.b4-ty@kernel.org>
+Date: Wed, 01 May 2024 22:43:13 +0900
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
 X-Mailer: b4 0.14-dev
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240501_064316_957145_0E110296 
-X-CRM114-Status: GOOD (  13.70  )
+X-CRM114-CacheID: sfid-20240501_064318_523684_5228EECD 
+X-CRM114-Status: GOOD (  14.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,14 +85,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, 14 Apr 2024 20:47:25 +0200, Krzysztof Kozlowski wrote:
+On Fri, 26 Apr 2024 11:03:47 +0200, Krzysztof Kozlowski wrote:
+> Changes in v2
+> =============
+> - Only rebase on for-next of broonie/sound.git
+> - Add tags.
+> - Link to v1: https://lore.kernel.org/r/20240414-n-const-ops-var-v1-0-8f53ee5d981c@kernel.org
+> 
+> Description
+> ===========
 > The core code does not modify the 'struct snd_sof_dsp_ops' passed via
-> pointer in various places, so this can be made pointer to const.
-> 
-> All further patches depend on the first four patches.
-> 
-> Best regards,
-> Krzysztof
+> pointer in various places, so this can be made pointer to const in few
+> places.  This in turn allows few drivers to have the local (usually
+> static) 'struct snd_sof_dsp_ops' as const which increased code safety,
+> as it is now part of rodata.
 > 
 > [...]
 
