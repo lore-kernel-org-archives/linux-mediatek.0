@@ -4,70 +4,125 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C13DC4345F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 May 2024 17:07:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 462ECC4345F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 May 2024 17:17:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5UtxZqXH0BeyQTwJfcWgL8YkMU5EaeZPIDlc8+WEKqw=; b=XKKar4O3Sz+Ge2LNQu1+gbLW7f
-	/RlB0LkWVgsJLx1CgaQagwSYV62IhEuKBiF4p5MEhMwQGAc6HDQz4bwHIf+OKc7zmi6Ro1PAtUcjr
-	kqGhl8rNM7LNPhz/CZxIEFbIz0ocKsK/eM6GyRgg4Dhg6I1k52K38/Ne5biLq/A/cVI1fZREQal7J
-	kO6ZeLFVEBiU3UUQTxkdgBCQgn/F+2aS4kPU4YgNRxlxAT9QB323C39wxpYJCcsfWlubtuYA+2z4/
-	WU0W9Pbh0tJCmw7vdfZIYcd7czjD2MWJX96974Q3fSxV0xKH3mVP7CkT8q4DaV04gA/CAvePPzcVj
-	MysNTmIQ==;
+	bh=MOHqyTk2nsRZy88pDJJ/quBzrqb3UUPa7Yn14ZhLib4=; b=5Fet7jrhrHwnHCM+c+UpyrK6ag
+	75StkX+SthDb/6bqATcEd+0VSS9Hmb9DbcXJgS+HHu2Az7BLtb4EJkSzhuI072B+eO/Q3wFJlxjy3
+	uwDI7jVgl4MxdXodm8Zczl1xW92hNyau3AyjTijuegblJsa84Sc1xTrc51NBXGBVOQES69paLAh4Y
+	wmxM85p7mEQgz1ofbBTARUkuM33QDfGPKxU0xiACKSQ1PYzIURghgzqsZxbKZ+kurwL27CdXXVhv6
+	T0C8VpXRrKWkcXSsdO0CaCedvTwF+L4N6nHaRG9A2XgNu8SG/RnB+beNx6kv6geBEbhmp0vf3lDqJ
+	+vf69mNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2DR0-0000000AGdD-2mg3;
-	Wed, 01 May 2024 17:07:58 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1s2DZk-0000000AI3y-3K1G;
+	Wed, 01 May 2024 17:17:00 +0000
+Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2DQx-0000000AGbK-04wt;
-	Wed, 01 May 2024 17:07:56 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 5A672CE1375;
-	Wed,  1 May 2024 17:07:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3E807C072AA;
-	Wed,  1 May 2024 17:07:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1714583269;
-	bh=8/png6sxsqEGBRMcXp6Bjwq65G0P803V71/0WDXSe9Y=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=U5EPMXKHlB4SDJriFUqz44y53RD4A4LCX3HHMjR9aPglBpE3/T1/QFAGTBfxIriFc
-	 HT57GzvsDFFNwRYNYrnW+qhDr4Lz+BfijWMLpYbTNW8uWKmh1znJO6KrQ95ZpNt+nU
-	 fQDZ0mybKZitIuvm8e+6qPLfF/04nfjKc3DSNokViAZ2ZVkBQcoyeeESvdQNqF8qTO
-	 ONaG2w9eamgRMad9Yfq8gKpcqDHexNAD7vpi29kk0fL2/B5mJxnweXjJUjBBSbRUyr
-	 KwYrB7CX1coBz497nT2Wf6OA1ScS/hbd2upZXmN2yCjj4VIg3VVM9dlrC0+KPPSh7h
-	 RRKngkClwAnWA==
-Date: Wed, 1 May 2024 18:07:44 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: "David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
+	id 1s2DZh-0000000AI2a-3OK0
+	for linux-mediatek@lists.infradead.org;
+	Wed, 01 May 2024 17:16:59 +0000
+Received: by mail-lf1-x134.google.com with SMTP id 2adb3069b0e04-51bae805c56so8139174e87.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 01 May 2024 10:16:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1714583815; x=1715188615; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=MOHqyTk2nsRZy88pDJJ/quBzrqb3UUPa7Yn14ZhLib4=;
+        b=TW/OW0iwtuFnQesi+BVgZorYtOJ+7/DZNAhNxG2BIjl55pdfhbxb8HPBru8kBbCTey
+         Hjbvoi4nWM+cvePYNNCLm3cBgL8t4dd4e7FZdk/sS6jMEsymk007KfcLqy8scsiHFeFz
+         NgYWWExgs6xvB6f7sHRIi5amiVNkDE5t4VrJq9ZM+4bgUxAGxx3LDgoeIWm0YY5WKRnq
+         4FjMItZUC3x0rF10QbM64tzxbyndBmBCvD1XeemF+S3fniRmxvj1+HptbFagVlh4hAKk
+         rOvXFiQ8VLbwl9XkydfYiGnyORN6yk1lQwCYtrlPwLcMeQcyFsV2aUwxrEvqAm7v3vrn
+         2bjQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1714583815; x=1715188615;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=MOHqyTk2nsRZy88pDJJ/quBzrqb3UUPa7Yn14ZhLib4=;
+        b=aqvGva+bNvxihCbi68aUKaJs1XPAKulUihI59R4bhIl0omjmh5iK2mOBZrrWZm4TeS
+         X5WhYRSKmmliO89WFHJ2rvF20tORXanFZNeohrLnKyzSFoR5YJ9aCxPGYvQd+tjCWqH8
+         zt+n6jTNjMvIydcNFY6tIrxGRbkx5zpxDQ9tn88uDwx2E2SUVRny5YHYzJQ+KFrmkK0t
+         hh9BMIhqXpV/a8E7Atjm1ZGomjKrQkA9NzcuippAQOT201NjJBJ4Li+dZrydsW6HcAH9
+         D+9AU+F9txHl9QGdC40eaLxOnCj/DO24A/Ykh+C1Yj87dn0YLnUXP000Ipr9JaTWItOf
+         W1uQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVT1IBitB24Rk+nER16QYYcK4rejYeJpPDZgNflgUex3EAq3N0Rf66BpoqFOviVw+swhmAM6qKf7A4cUD7fw/uUQSM8oIdwXhESzyXeAugIN5ND
+X-Gm-Message-State: AOJu0YysW7cU1nHDub+qPm/xXf5qe+NOuK38+I4sfGmgqBhPdwUR0Sb1
+	trs0z9kO18HtAFCoOjyzeMpIC4SUHWbeFoGIPvkRAOCe1+3Qsq/Ok1r4bYSv7hU=
+X-Google-Smtp-Source: AGHT+IGQV4KLhJUah5uwpDXzYUszrhPNSItjqkYS07RJilfCu8tUsg9Dz64nf2enkLVMqtqy/1k75Q==
+X-Received: by 2002:a05:6512:12c7:b0:51f:196:d217 with SMTP id p7-20020a05651212c700b0051f0196d217mr197144lfg.63.1714583815158;
+        Wed, 01 May 2024 10:16:55 -0700 (PDT)
+Received: from localhost ([102.222.70.76])
+        by smtp.gmail.com with ESMTPSA id t10-20020a192d4a000000b0051d5616c3e1sm1524897lft.231.2024.05.01.10.16.53
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 01 May 2024 10:16:54 -0700 (PDT)
+Date: Wed, 1 May 2024 20:16:49 +0300
+From: Dan Carpenter <dan.carpenter@linaro.org>
+To: "Peng Fan (OSS)" <peng.fan@oss.nxp.com>
+Cc: Linus Walleij <linus.walleij@linaro.org>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Dvorkin Dmitry <dvorkin@tibbo.com>, Wells Lu <wellslutw@gmail.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Emil Renner Berthing <kernel@esmil.dk>,
+	Jianlong Huang <jianlong.huang@starfivetech.com>,
+	Hal Feng <hal.feng@starfivetech.com>,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Viresh Kumar <vireshk@kernel.org>,
+	Shiraz Hashim <shiraz.linux.kernel@gmail.com>, soc@kernel.org,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Sylwester Nawrocki <s.nawrocki@samsung.com>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Patrice Chotard <patrice.chotard@foss.st.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Damien Le Moal <dlemoal@kernel.org>,
+	Ludovic Desroches <ludovic.desroches@microchip.com>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+	Dong Aisheng <aisheng.dong@nxp.com>,
+	Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>,
+	Jacky Bai <ping.bai@nxp.com>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Chester Lin <chester62515@gmail.com>,
+	Matthias Brugger <mbrugger@suse.com>,
+	Ghennadi Procopciuc <ghennadi.procopciuc@oss.nxp.com>,
+	Sean Wang <sean.wang@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>,
-	netdev@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] dt-bindings: net: mediatek: remove wrongly added clocks
- and SerDes
-Message-ID: <20240501-prorate-hanky-5fbb9ff28bc5@spud>
-References: <ea2e786eda4561cb5d11b62a4edd7e75c0975f1f.1714513773.git.daniel@makrotopia.org>
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Andrew Jeffery <andrew@codeconstruct.com.au>,
+	Joel Stanley <joel@jms.id.au>, linux-gpio@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-tegra@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-samsung-soc@vger.kernel.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, imx@lists.linux.dev,
+	linux-aspeed@lists.ozlabs.org, openbmc@lists.ozlabs.org,
+	Peng Fan <peng.fan@nxp.com>
+Subject: Re: [PATCH 10/21] pinctrl: st: Use scope based of_node_put() cleanups
+Message-ID: <f6aa3a17-90d2-42e3-8c55-639dfcdbf8ca@moroto.mountain>
+References: <20240501-pinctrl-cleanup-v1-0-797ceca46e5c@nxp.com>
+ <20240501-pinctrl-cleanup-v1-10-797ceca46e5c@nxp.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="iA7tPiIVLweNoVjq"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <ea2e786eda4561cb5d11b62a4edd7e75c0975f1f.1714513773.git.daniel@makrotopia.org>
+In-Reply-To: <20240501-pinctrl-cleanup-v1-10-797ceca46e5c@nxp.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240501_100755_507351_B9EEE99A 
-X-CRM114-Status: GOOD (  21.46  )
+X-CRM114-CacheID: sfid-20240501_101658_220564_327C1BFF 
+X-CRM114-Status: GOOD (  10.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,112 +137,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Wed, May 01, 2024 at 08:56:08PM +0800, Peng Fan (OSS) wrote:
+> @@ -1224,8 +1221,7 @@ static int st_pctl_dt_parse_groups(struct device_node *np,
+>  	grp->pin_conf = devm_kcalloc(dev, npins, sizeof(*grp->pin_conf), GFP_KERNEL);
+>  
+>  	if (!grp->pins || !grp->pin_conf) {
+> -		ret = -ENOMEM;
+> -		goto out_put_node;
+> +		return -ENOMEM;
+>  	}
 
---iA7tPiIVLweNoVjq
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+You could delete the curly braces as well.
 
-On Tue, Apr 30, 2024 at 10:53:55PM +0100, Daniel Golle wrote:
-> Several clocks as well as both sgmiisys phandles were added by mistake
-> to the Ethernet bindings for MT7988.
->=20
-> This happened because the vendor driver which served as a reference uses
-> a high number of syscon phandles to access various parts of the SoC
-> which wasn't acceptable upstream. Hence several parts which have never
-> previously been supported (such SerDes PHY and USXGMII PCS) are going to
-> be implemented by separate drivers. As a result the device tree will
-> look much more sane.
->=20
-> Quickly align the bindings with the upcoming reality of the drivers
-> actually adding support for the remaining Ethernet-related features of
-> the MT7988 SoC.
->=20
-> Fixes: c94a9aabec36 ("dt-bindings: net: mediatek,net: add mt7988-eth bind=
-ing")
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> ---
->  .../devicetree/bindings/net/mediatek,net.yaml | 32 ++++---------------
->  1 file changed, 7 insertions(+), 25 deletions(-)
->=20
-> diff --git a/Documentation/devicetree/bindings/net/mediatek,net.yaml b/Do=
-cumentation/devicetree/bindings/net/mediatek,net.yaml
-> index e74502a0afe8..030d106bc7d3 100644
-> --- a/Documentation/devicetree/bindings/net/mediatek,net.yaml
-> +++ b/Documentation/devicetree/bindings/net/mediatek,net.yaml
-> @@ -337,32 +337,23 @@ allOf:
->            minItems: 4
-> =20
->          clocks:
-> -          minItems: 34
-> -          maxItems: 34
-> +          minItems: 24
-> +          maxItems: 24
-> =20
->          clock-names:
->            items:
-> -            - const: crypto
-> +            - const: xgp1
-> +            - const: xgp2
-> +            - const: xgp3
+regards,
+dan carpenter
 
-Why is the ordering changing too?
 
->              - const: fe
->              - const: gp2
->              - const: gp1
->              - const: gp3
-> +            - const: esw
-> +            - const: crypto
->              - const: ethwarp_wocpu2
->              - const: ethwarp_wocpu1
->              - const: ethwarp_wocpu0
-> -            - const: esw
-> -            - const: netsys0
-> -            - const: netsys1
-> -            - const: sgmii_tx250m
-> -            - const: sgmii_rx250m
-> -            - const: sgmii2_tx250m
-> -            - const: sgmii2_rx250m
-> -            - const: top_usxgmii0_sel
-> -            - const: top_usxgmii1_sel
-> -            - const: top_sgm0_sel
-> -            - const: top_sgm1_sel
-> -            - const: top_xfi_phy0_xtal_sel
-> -            - const: top_xfi_phy1_xtal_sel
->              - const: top_eth_gmii_sel
->              - const: top_eth_refck_50m_sel
->              - const: top_eth_sys_200m_sel
-> @@ -375,15 +366,6 @@ allOf:
->              - const: top_netsys_sync_250m_sel
->              - const: top_netsys_ppefb_250m_sel
->              - const: top_netsys_warp_sel
-> -            - const: wocpu1
-> -            - const: wocpu0
-> -            - const: xgp1
-> -            - const: xgp2
-> -            - const: xgp3
-> -
-> -        mediatek,sgmiisys:
-> -          minItems: 2
-> -          maxItems: 2
-> =20
->  patternProperties:
->    "^mac@[0-1]$":
-> --=20
-> 2.44.0
->=20
-
---iA7tPiIVLweNoVjq
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZjJ23wAKCRB4tDGHoIJi
-0jQoAQCrI827zGT9l/GNCLHhBDxuB2DyQ+FKu0l+4FvZTur7ZwEA3BOvbyZ4jXdL
-DGa1XxfE8CunnKNn9b20At6jUlGZwwk=
-=dQTZ
------END PGP SIGNATURE-----
-
---iA7tPiIVLweNoVjq--
 
