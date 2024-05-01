@@ -4,126 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8331AC4345F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 May 2024 13:32:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F072C4345F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 May 2024 13:43:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ior2gPFVlEOyeV8FJQcXfdx4VXM0R/609sKh6Of53VM=; b=AVfRQuVzQTBIDxy4SrUK8YEMNw
-	wJVONoZma/T/4ImofzZV0HbpHBO+urVKtBZllJVMRe+/DSCEahuCKCgX8SguAFmw28GPov5tnAmvr
-	JJ90Q65Xr7hM/b7NBtCJzJtbD5xY+kmhX1hENNyrNiL51RhUpeIBAQ5W7OSyoCf5qw8iS729+6zvY
-	hBSy9f8N3T6xz7VAip5069GdvkOVHp1blu9lZFiXTp2uzyHUKRHN0pKIvG5D4rL/WT5Lg3Wzzr2Nk
-	AeLhUx5pkGzpEg5zbrbM0C+DaFH0r/PlUJyyqQ5AWxRdHQSo9CZe5ul0pq8MZKWUYKE+gaLfVoYCU
-	edhioIog==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=kZHwSl1MjKcXQzWZVoI3WstTR5TEOd4aywKVmM6WLKU=; b=CZyCWGrdFEg1mj3EWH1tTLurb0
+	ClcUjjvFXvvZhgPPS41JA+a3wYTQ5++bQlfciacPVBjxTKwbLjcjm1pP1djBhH0xXMwZKcNXOkNUl
+	b61BYTRlsWBDdUtd4kw8aKfu3npLyMU9GWGU3oM6zYZKrsR4BtNIx+EXK65VP0ItgNcEYflgAPINq
+	eyu3Tl5hdaoGUXv9jDj4IN0hdze3aojuD9Glz9RvOLXeKmjfkFqjGO+EFYUknCM+zo2zrqHNr+Ix4
+	GGR7cnmFBzcORL2U+Y2e3i/RP7uB3aHYSGnfjCgEpEZ+EdDKWm70yJ9t3jEJkMxce1LnRkVLyCCxV
+	wGTTuZXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2A4u-00000009gfp-2cCr;
-	Wed, 01 May 2024 13:32:56 +0000
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+	id 1s2AEz-00000009hya-3j2E;
+	Wed, 01 May 2024 13:43:21 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2A4r-00000009ge1-3Li2
-	for linux-mediatek@lists.infradead.org;
-	Wed, 01 May 2024 13:32:55 +0000
-Received: by mail-wr1-x42d.google.com with SMTP id ffacd0b85a97d-34d7b0dac54so459771f8f.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 01 May 2024 06:32:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1714570370; x=1715175170; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=ior2gPFVlEOyeV8FJQcXfdx4VXM0R/609sKh6Of53VM=;
-        b=QXQFgiX0B6dtjeORXjynNw8zGdnw+BcZoDFX4HOiEJx0LE64vx895r5x4x9l93u/lK
-         YoRV+ACJXi4kuIDSzwRvCeKjNTYl7Q7MrulVTqkH9jUyeJ/pAUH9VEJ+3QNjdhxGnsZW
-         DbNZwYhFHlFD0ywgpt1iYqqed9xHjmvoIfYhTOtZwVkbRUDdkFNUhrU4KIFzZEWDOUye
-         jEliuPyiQQLLHi8Z7O+7WDjrdawbrNniSzKeelX5Tm+wETUJb1wa4qfkNwbFD2GcTZk6
-         +07cFodpf5k536oofHZbVY6YwmyOLpKtumr9/f/VGWb+OPqScY9KyicVu2g/xc2vEPR0
-         /cSw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1714570370; x=1715175170;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ior2gPFVlEOyeV8FJQcXfdx4VXM0R/609sKh6Of53VM=;
-        b=WXArY+qTa9JjWWWiUbHiFGlqcizx+721+aUy0FNZsTjrBzaJvcljsE/h5dYWrZ7eDu
-         4KifMiC52q2kxDMtDKaIdCD4ymYTN6SMNwqSbx64NY7JGip/D5uBqMf2ZmlQeHSwyrqO
-         EezDShfYD62gsgFd2ET9DiNwb0SiWsaFA9erTzoc83NXXbJnk+kF528YHbhh0VO85sGu
-         MrC9461ZlIFiqUQvNMCbLZyvGcxR/WRxxY3usLN5XwLBza2blnXmAJLk+2T/XnJ29AEA
-         n1F/xsz6GNkYSETVZU8Y/ZlFeI1/wfJIu+DDTxpqN5GIhDHteJXluIqkexIw+g8YAlGI
-         KwgQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWCsJzlZnbbsQQmxsiobZP0Ffyy3FoLzrcdji3M0ZyHr1V1a6Fv+KuCpCT/9XHDVZqA+24EcCPYO3tzWlowulxQsqYvVbRO9camxIBXI5fbywbz
-X-Gm-Message-State: AOJu0Ywf57xVFd08jCok++BlFci/l3dabRY+0i3FAuKq1XlHMSSMf7tK
-	I2CrJPW4e9NqARInBjsyNRP3v0x2kXe4uI/sjeo+80Ukf2aJ4OaS4oNy7xTuecI=
-X-Google-Smtp-Source: AGHT+IHuNu3c35RsAkvpJAfWqKVWQhv6Z4Ac0yjTjDmpBKt12bv5Zna3drXEkGYfHrENBoZl/SwOjw==
-X-Received: by 2002:a05:6000:24f:b0:34c:bf22:73f9 with SMTP id m15-20020a056000024f00b0034cbf2273f9mr2265612wrz.28.1714570369370;
-        Wed, 01 May 2024 06:32:49 -0700 (PDT)
-Received: from localhost ([102.222.70.76])
-        by smtp.gmail.com with ESMTPSA id d4-20020adfe2c4000000b0034a3a0a753asm32876234wrj.100.2024.05.01.06.32.48
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 01 May 2024 06:32:49 -0700 (PDT)
-Date: Wed, 1 May 2024 16:32:40 +0300
-From: Dan Carpenter <dan.carpenter@linaro.org>
-To: "Peng Fan (OSS)" <peng.fan@oss.nxp.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Dvorkin Dmitry <dvorkin@tibbo.com>, Wells Lu <wellslutw@gmail.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Emil Renner Berthing <kernel@esmil.dk>,
-	Jianlong Huang <jianlong.huang@starfivetech.com>,
-	Hal Feng <hal.feng@starfivetech.com>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Viresh Kumar <vireshk@kernel.org>,
-	Shiraz Hashim <shiraz.linux.kernel@gmail.com>, soc@kernel.org,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Sylwester Nawrocki <s.nawrocki@samsung.com>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Patrice Chotard <patrice.chotard@foss.st.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Damien Le Moal <dlemoal@kernel.org>,
-	Ludovic Desroches <ludovic.desroches@microchip.com>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-	Dong Aisheng <aisheng.dong@nxp.com>,
-	Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>,
-	Jacky Bai <ping.bai@nxp.com>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Chester Lin <chester62515@gmail.com>,
-	Matthias Brugger <mbrugger@suse.com>,
-	Ghennadi Procopciuc <ghennadi.procopciuc@oss.nxp.com>,
-	Sean Wang <sean.wang@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Andrew Jeffery <andrew@codeconstruct.com.au>,
-	Joel Stanley <joel@jms.id.au>, linux-gpio@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-tegra@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-samsung-soc@vger.kernel.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, imx@lists.linux.dev,
-	linux-aspeed@lists.ozlabs.org, openbmc@lists.ozlabs.org,
-	Peng Fan <peng.fan@nxp.com>
-Subject: Re: [PATCH 01/21] pinctrl: ti: iodelay: Use scope based
- of_node_put() cleanups
-Message-ID: <ee5c8637-b8b2-491b-b011-e399942691dc@moroto.mountain>
-References: <20240501-pinctrl-cleanup-v1-0-797ceca46e5c@nxp.com>
- <20240501-pinctrl-cleanup-v1-1-797ceca46e5c@nxp.com>
+	id 1s2AEu-00000009hwm-3FyU;
+	Wed, 01 May 2024 13:43:18 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 8AB22610A0;
+	Wed,  1 May 2024 13:43:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DE152C113CC;
+	Wed,  1 May 2024 13:43:08 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1714570993;
+	bh=9cGe0fO91KEJ6yS3wODvzOfUdBBRbhupeiudrh94mnc=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=ITWn/E1nz33/c5D9HMjtgTlHCOKh8uHiSsWlcU7X2vEshClmoQlbx/PgYa84ZDIkS
+	 yq3B4KxtOb898TC/lqnTjDbhiUQ6YgHe9Po5zF8NrCZpjdKlRhjL5rg7gF2At2efQ+
+	 sx/nqhp6glcPOdmuPhlnvqBbuoxqeV0kUcvf92TBFOaMZUfkcP+jcApQ+JB0NIqPsB
+	 vmB/fijPtAZi3Vv06ppSDS7q2v+C3pYe5fwPHiemVQTTUXvP9LmWWbLFzP2UYPqKmK
+	 kaZJtMAlbG846ICqAnbP3RfNjRZpt+U2Ik09fpcxjKJwkQlicDe08Knh3cczjvK1rw
+	 qG3X7TESfD11A==
+From: Mark Brown <broonie@kernel.org>
+To: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>, 
+ Liam Girdwood <lgirdwood@gmail.com>, 
+ Peter Ujfalusi <peter.ujfalusi@linux.intel.com>, 
+ Bard Liao <yung-chuan.liao@linux.intel.com>, 
+ Ranjani Sridharan <ranjani.sridharan@linux.intel.com>, 
+ Daniel Baluta <daniel.baluta@nxp.com>, 
+ Kai Vehmanen <kai.vehmanen@linux.intel.com>, 
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+ Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Fabio Estevam <festevam@gmail.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Krzysztof Kozlowski <krzk@kernel.org>
+Cc: sound-open-firmware@alsa-project.org, linux-sound@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, imx@lists.linux.dev, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+In-Reply-To: <20240414-n-const-ops-var-v1-0-8f53ee5d981c@kernel.org>
+References: <20240414-n-const-ops-var-v1-0-8f53ee5d981c@kernel.org>
+Subject: Re: [PATCH 00/14] ASoC: Constify local snd_sof_dsp_ops
+Message-Id: <171457098826.1888704.13609756563875437820.b4-ty@kernel.org>
+Date: Wed, 01 May 2024 22:43:08 +0900
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240501-pinctrl-cleanup-v1-1-797ceca46e5c@nxp.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.14-dev
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240501_063253_867914_75A713CA 
-X-CRM114-Status: GOOD (  19.49  )
+X-CRM114-CacheID: sfid-20240501_064316_957145_0E110296 
+X-CRM114-Status: GOOD (  13.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -138,73 +85,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, May 01, 2024 at 08:55:59PM +0800, Peng Fan (OSS) wrote:
-> @@ -879,16 +874,12 @@ static int ti_iodelay_probe(struct platform_device *pdev)
->  	ret = pinctrl_register_and_init(&iod->desc, dev, iod, &iod->pctl);
->  	if (ret) {
->  		dev_err(dev, "Failed to register pinctrl\n");
-> -		goto exit_out;
-> +		return ret;
->  	}
->  
->  	platform_set_drvdata(pdev, iod);
->  
->  	return pinctrl_enable(iod->pctl);
-> -
-> -exit_out:
-> -	of_node_put(np);
-> -	return ret;
->  }
+On Sun, 14 Apr 2024 20:47:25 +0200, Krzysztof Kozlowski wrote:
+> The core code does not modify the 'struct snd_sof_dsp_ops' passed via
+> pointer in various places, so this can be made pointer to const.
+> 
+> All further patches depend on the first four patches.
+> 
+> Best regards,
+> Krzysztof
+> 
+> [...]
 
-This will call of_node_put() on the success path so it's a behavior
-change.  The original code is buggy, it's supposed to call of_node_put()
-on the success path here or in ti_iodelay_remove().
+Applied to
 
-If it's supposed to call of_node_put() here, then fine, this is bugfix
-but if it's supposed to call it in ti_iodelay_remove() then we need to
-save the pointer somewhere using no_free_ptr().  Probably saving ->np
-is the safest choice?
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
-The original code is already a little bit buggy because it doesn't
-check for pinctrl_enable() errors and cleanup.
+Thanks!
 
+[01/14] ASoC: SOF: debug: Constify local snd_sof_dsp_ops
+        commit: ffca099bbff1978bc9c97b076f0d35b4fe6ddf27
+[02/14] ASoC: SOF: ipc3: Constify local snd_sof_dsp_ops
+        commit: ee5acc1e035ec5ed5d9f0f63fda9d627220090c2
+[03/14] ASoC: SOF: pcm: Constify local snd_sof_dsp_ops
+        commit: a0db037df9630edad76153c7937c6f5ca04ed44f
+[04/14] ASoC: SOF: Constify stored pointer to snd_sof_dsp_ops
+        commit: 8bbc692d1abce5bc949dea9acba85fc686601c04
+[05/14] ASoC: SOF: intel: pci-tng: Constify snd_sof_dsp_ops
+        commit: 8f2b0d55abc44676b076128903a5dc730aab23c6
+[06/14] ASoC: SOF: intel: hda: Constify snd_sof_dsp_ops
+        commit: 6032eefc2c478243a511352dda04495c9a9fec6a
+[07/14] ASoC: SOF: amd: acp: Constify snd_sof_dsp_ops
+        commit: 04f2f516be09d5493d764e0020a771c46b5470d8
+[08/14] ASoC: SOF: imx8: Constify snd_sof_dsp_ops
+        commit: ab85c44973298b69eb32795de11ce4d426705532
+[09/14] ASoC: SOF: imx8m: Constify snd_sof_dsp_ops
+        commit: 66d49ab5fb51bb8d1b4c2c9c8fa0fbe8e4c8ca1c
+[10/14] ASoC: SOF: imx8ulp: Constify snd_sof_dsp_ops
+        commit: 232e0da9fa778233358586617bd22173bcac6bcc
+[11/14] ASoC: SOF: intel: bdw: Constify snd_sof_dsp_ops
+        commit: 936cc56044a87ae7fbd0e4098a7daefa0f2f4e8e
+[12/14] ASoC: SOF: intel: byt: Constify snd_sof_dsp_ops
+        commit: 48d5f1800d0cbda0212c5a58177918c419a24f8a
+[13/14] ASoC: SOF: mediatek: mt8186: Constify snd_sof_dsp_ops
+        commit: fe80673f59da01776a1402e4b508a66fca43a24d
+[14/14] ASoC: SOF: mediatek: mt8195: Constify snd_sof_dsp_ops
+        commit: 8b6d678fede700db6466d73f11fcbad496fa515e
 
-diff --git a/drivers/pinctrl/ti/pinctrl-ti-iodelay.c b/drivers/pinctrl/ti/pinctrl-ti-iodelay.c
-index 040f2c46a868..f40a1476e4ff 100644
---- a/drivers/pinctrl/ti/pinctrl-ti-iodelay.c
-+++ b/drivers/pinctrl/ti/pinctrl-ti-iodelay.c
-@@ -156,6 +156,7 @@ struct ti_iodelay_device {
- 
- 	const struct ti_iodelay_reg_data *reg_data;
- 	struct ti_iodelay_reg_values reg_init_conf_values;
-+	struct device_node *np;
- };
- 
- /**
-@@ -884,7 +885,12 @@ static int ti_iodelay_probe(struct platform_device *pdev)
- 
- 	platform_set_drvdata(pdev, iod);
- 
--	return pinctrl_enable(iod->pctl);
-+	ret = pinctrl_enable(iod->pctl);
-+	if (ret)
-+		goto exit_out;
-+
-+	iod->np = no_free_ptr(np);
-+	return 0;
- 
- exit_out:
- 	of_node_put(np);
-@@ -903,6 +909,7 @@ static void ti_iodelay_remove(struct platform_device *pdev)
- 		pinctrl_unregister(iod->pctl);
- 
- 	ti_iodelay_pinconf_deinit_dev(iod);
-+	of_node_put(iod->np);
- 
- 	/* Expect other allocations to be freed by devm */
- }
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
 
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
 
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 
