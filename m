@@ -4,79 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F3AEC4345F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 May 2024 07:51:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21C01C4345F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 May 2024 08:51:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=juAuSH1JPhY7PWUJ70Ld08vmAUyCp8zbapAQIba/lj4=; b=qVPlecBnUXxpSZC4+hAxDS+qKl
-	/uh5QhD/oqxLi9Q+0h2Qu19lznOumX1xCI2yay6s/0nswEU3mVQ0UPvYgGA2ZfAF+gGtWY+6A+NUv
-	gJP/U/MDY2gWHR8FAxizEo8YJK4q+26lhR6RJFCJoTUIXaqIAIPWtAPgUK3mpBcdHkwfa+7ksQcZD
-	ykT8CnayDa+oVcHRRa4pcfUnBk9ttBYphRWS84ggEw03EZm9psW7wHTA1dMPai8BuSXs7QjEY/dM1
-	rBqPsDAdejrevouiaY0R7l8gVqdqhWe/I9gsn4aY93k93TgLkdqZ6BiybYx2CsIRJBWcmvbMPwqT8
-	UMpic9RA==;
+	bh=wMZMmY1+Tv3zBPQDQQFoQoQ08vkwmoKwzbq+ptsHPFM=; b=t6L3FOsFsCwQFBVGxe+swFBjUe
+	zKVa447a7DbY/GzLzzK7Xu3L8U/IShx8z3SGvdOWuKVm5+cijKuGbOyy0qXb99BmF5OMJubkxgVD4
+	YbChQeyfb675Y9vBjR/oSdOkGpnrqXRxd60r4kJIZf+pm8ZFSXlb1AEKqOK9N23Y1iPOzbYgPdejZ
+	ngWe7pyYqtjzD5eJxZUkuLwZ6++RtCYLLfDCXtMnO31ietid6vsLLJoEG7tkGTdhjElucZvqkgbse
+	rl7uBOUHJI3RsOZ+PYHQ8CKwoS/7CGuUfgwAiTKfrHIO+HJkPK+p+fkKibiG3kUEFjlNBFm/xbaJm
+	HvTrzC6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2REE-0000000BsK8-1hpX;
-	Thu, 02 May 2024 07:51:42 +0000
-Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
+	id 1s2S9d-0000000C2kR-2s68;
+	Thu, 02 May 2024 08:51:01 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2REB-0000000BsJO-11Mq
-	for linux-mediatek@lists.infradead.org;
-	Thu, 02 May 2024 07:51:40 +0000
-Received: by mail-lf1-x132.google.com with SMTP id 2adb3069b0e04-516d3a470d5so9516864e87.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 02 May 2024 00:51:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1714636296; x=1715241096; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=juAuSH1JPhY7PWUJ70Ld08vmAUyCp8zbapAQIba/lj4=;
-        b=kxdTUX8uohaf6VlpKLKlno+CXCzDdPgrTNYl6UBbA9VyvNakG8M5FTTHPpNzAPhySY
-         Sm78DmS3EwUKaU7p46vamA50sz7cJdUtOhr0AOiMvGVJzyyANcv9tT7us7nlWvQVrNTU
-         oYfudHUWt6j8z/CUZVOvCcPrWTSC1qPtTGwsM=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1714636296; x=1715241096;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=juAuSH1JPhY7PWUJ70Ld08vmAUyCp8zbapAQIba/lj4=;
-        b=i70G2OOMaozQBalOz4yIaeXP9c37maebU0N1dsPE/XkAUiidDkslq1YHp07M0Kx1b2
-         Oe0xyffwgyReX6dwRRImoX+/biYh6Lzu94zUR417JdhtYKFomagNR5VZCXixmOK9dEUY
-         p/29duilH6Aik6tvlHsHTvK6vJnOPlVhYaPZ9sj9wnzHISOW+ruHSBL3VDuREKCMoPcQ
-         RmL1ghLxjGoX6plKqHcj8yTBkTxh1ShehMj0t0/BlCG8fOJIW0dq4Avi51eIacebvlD1
-         fofw0dEWLMPqSKYD7XKbSj0u1xlfmXo6Shi4c+0tEVeo6wRrll6W/duKgJ87lMmMLm86
-         ZwvA==
-X-Forwarded-Encrypted: i=1; AJvYcCVxaNX0zB4y92A5y1YcPERpgzVwHbLnvo6lN3vvjFj9D4+H2O6L1TKR7TMqCtonSMPk8WB/7p9I8XKFNZwU+rlA1tzPB4A0UycOxtiaGci3B2Zq
-X-Gm-Message-State: AOJu0YxBOtFfrP0ATy4KefAiilvfBl7PGU6eGrzKgXatU9Vr4NTnLqMY
-	Tk9m6X2PTFwvvjgZNFXG8SV52p1+j4lJATdUEt19bq0maMC8fL6PtB+9r8SFyloCSbMpcQeXjyV
-	xT5UhMmfydsxbysO2Nb+DQrHu38+YehwvGihCArQIlMv7kmY=
-X-Google-Smtp-Source: AGHT+IEAVYn1Zg5pB/+HWCfbuXWxOWUqPfY3srDAkAXrE3zW+4aKcPJ8YB092/ynCkhEGaNCe+bioePdFycOCNiVjR0=
-X-Received: by 2002:a05:6512:3108:b0:51e:12e2:2a1b with SMTP id
- n8-20020a056512310800b0051e12e22a1bmr714499lfb.41.1714636295807; Thu, 02 May
- 2024 00:51:35 -0700 (PDT)
+	id 1s2S9Z-0000000C2hL-209x;
+	Thu, 02 May 2024 08:50:59 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1714639854;
+	bh=+Lb7J1gmlvIpsXKmJHjaAl2BUALuNXoInVJs8yhviak=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=ASzglJyCUneV4xe5N8g29/uZljb8ODoTyebr/uFYbBkUljBsgxkIely3MH0C4GHsH
+	 TLWRcvz1bWUXgO9S108/DbZB51kkrUC9IFBjvgGmytwCMUuWYNwOCUafbgJUliqKtK
+	 po54belYQIctldmUvYi6C0To9PoVwgJjYX5srxPVazkiAWpf3jCLHVfJzGNVqEpBLm
+	 5U/sVQj3HN9tXekw0Lrhl/h8kLoDt5Kz9Ru2US+pBKLLVUXm1FUQhMMQ+JZgdG7wPU
+	 TdV6j4REC+tJwtXHyx/LbBt8hsaHWU/m7WycT0eif8ZSzSPxy6nxFvu8/PV/ucemGQ
+	 6mlcsx7MCpyLA==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id A3E953781013;
+	Thu,  2 May 2024 08:50:52 +0000 (UTC)
+Message-ID: <becdc2e5-4a1d-4280-b6f8-78d4903be283@collabora.com>
+Date: Thu, 2 May 2024 10:50:51 +0200
 MIME-Version: 1.0
-References: <20240412073046.1192744-1-wenst@chromium.org> <20240412073046.1192744-2-wenst@chromium.org>
- <171322232789.252337.16326980700188367647.robh@kernel.org>
-In-Reply-To: <171322232789.252337.16326980700188367647.robh@kernel.org>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Thu, 2 May 2024 15:51:24 +0800
-Message-ID: <CAGXv+5GroxzyUSQZNW-r9xt6Sgy+EGv3+08Htbb_ZcSRvaBR0Q@mail.gmail.com>
-Subject: Re: [PATCH v3 1/2] dt-bindings: net: bluetooth: Add MediaTek MT7921S
- SDIO Bluetooth
-To: Luiz Augusto von Dentz <luiz.dentz@gmail.com>
-Cc: devicetree@vger.kernel.org, linux-bluetooth@vger.kernel.org, 
-	netdev@vger.kernel.org, Marcel Holtmann <marcel@holtmann.org>, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, Conor Dooley <conor+dt@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 2/3] dt-bindings: arm: mediatek: mmsys: Add OF graph
+ support for board path
+To: =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
+ "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "wenst@chromium.org" <wenst@chromium.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "tzimmermann@suse.de" <tzimmermann@suse.de>,
+ =?UTF-8?B?U2hhd24gU3VuZyAo5a6L5a2d6KyZKQ==?= <Shawn.Sung@mediatek.com>,
+ "mripard@kernel.org" <mripard@kernel.org>,
+ =?UTF-8?B?Sml0YW8gU2hpICjnn7PorrDmtpsp?= <jitao.shi@mediatek.com>,
+ "daniel@ffwll.ch" <daniel@ffwll.ch>,
+ "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ "maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
+ "robh@kernel.org" <robh@kernel.org>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "airlied@gmail.com" <airlied@gmail.com>,
+ "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
+ "kernel@collabora.com" <kernel@collabora.com>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ =?UTF-8?B?WXUtY2hhbmcgTGVlICjmnY7nprnnkosp?= <Yu-chang.Lee@mediatek.com>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+References: <20240409120211.321153-1-angelogioacchino.delregno@collabora.com>
+ <20240409120211.321153-3-angelogioacchino.delregno@collabora.com>
+ <aa7e3bcf70383e563a65919f924ec2e5e4cd778c.camel@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <aa7e3bcf70383e563a65919f924ec2e5e4cd778c.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240502_005139_328669_36A9F684 
-X-CRM114-Status: GOOD (  20.83  )
+X-CRM114-CacheID: sfid-20240502_015057_741101_27098B24 
+X-CRM114-Status: GOOD (  24.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,54 +96,107 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Apr 16, 2024 at 7:05=E2=80=AFAM Rob Herring <robh@kernel.org> wrote=
-:
-> On Fri, 12 Apr 2024 15:30:42 +0800, Chen-Yu Tsai wrote:
-> > The MediaTek MT7921S is a WiFi/Bluetooth combo chip that works over
-> > SDIO. WiFi and Bluetooth are separate SDIO functions within the chip.
-> > While the Bluetooth SDIO function is fully discoverable, the chip has
-> > a pin that can reset just the Bluetooth core, as opposed to the full
-> > chip. This should be described in the device tree.
-> >
-> > Add a device tree binding for the Bluetooth SDIO function of the MT7921=
-S
-> > specifically to document the reset line. This binding is based on the M=
-MC
-> > controller binding, which specifies one device node per SDIO function.
-> >
-> > Cc: Sean Wang <sean.wang@mediatek.com>
-> > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> > ---
-> > Changes since v2:
-> > - Expand description and commit message to clearly state that WiFi and
-> >   Bluetooth are separate SDIO functions, and that each function should
-> >   be a separate device node, as specified by the MMC binding.
-> > - Change 'additionalProperties' to 'unevaluatedProperties'
-> > - Add missing separating new line
-> > - s/ot/to/
-> >
-> > Angelo's reviewed-by was not picked up due to the above changes.
-> >
-> > Changes since v1:
-> > - Reworded descriptions
-> > - Moved binding maintainer section before description
-> > - Added missing reference to bluetooth-controller.yaml
-> > - Added missing GPIO header to example
-> > ---
-> >  .../bluetooth/mediatek,mt7921s-bluetooth.yaml | 55 +++++++++++++++++++
-> >  MAINTAINERS                                   |  1 +
-> >  2 files changed, 56 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/net/bluetooth/med=
-iatek,mt7921s-bluetooth.yaml
-> >
->
-> Reviewed-by: Rob Herring <robh@kernel.org>
+Il 25/04/24 04:23, CK Hu (胡俊光) ha scritto:
+> Hi, Angelo:
+> 
+> On Tue, 2024-04-09 at 14:02 +0200, AngeloGioacchino Del Regno wrote:
+>> Document OF graph on MMSYS/VDOSYS: this supports up to three DDP
+>> paths
+>> per HW instance (so potentially up to six displays for multi-vdo
+>> SoCs).
+>>
+>> The MMSYS or VDOSYS is always the first component in the DDP
+>> pipeline,
+>> so it only supports an output port with multiple endpoints - where
+>> each
+>> endpoint defines the starting point for one of the (currently three)
+>> possible hardware paths.
+>>
+>> Signed-off-by: AngeloGioacchino Del Regno <
+>> angelogioacchino.delregno@collabora.com>
+>> ---
+>>   .../bindings/arm/mediatek/mediatek,mmsys.yaml | 23
+>> +++++++++++++++++++
+>>   1 file changed, 23 insertions(+)
+>>
+>> diff --git
+>> a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+>> b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+>> index b3c6888c1457..4e9acd966aa5 100644
+>> ---
+>> a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+>> +++
+>> b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+>> @@ -93,6 +93,29 @@ properties:
+>>     '#reset-cells':
+>>       const: 1
+>>   
+>> +  port:
+>> +    $ref: /schemas/graph.yaml#/properties/port
+>> +    description:
+>> +      Output port node. This port connects the MMSYS/VDOSYS output
+>> to
+>> +      the first component of one display pipeline, for example one
+>> of
+>> +      the available OVL or RDMA blocks.
+>> +      Some MediaTek SoCs support up to three display outputs per
+>> MMSYS.
+>> +    properties:
+>> +      endpoint@0:
+>> +        $ref: /schemas/graph.yaml#/properties/endpoint
+>> +        description: Output to the primary display pipeline
+>> +
+>> +      endpoint@1:
+>> +        $ref: /schemas/graph.yaml#/properties/endpoint
+>> +        description: Output to the secondary display pipeline
+>> +
+>> +      endpoint@2:
+>> +        $ref: /schemas/graph.yaml#/properties/endpoint
+>> +        description: Output to the tertiary display pipeline
+>> +
+>> +    required:
+>> +      - endpoint@0
+>> +
+> 
+> mmsys/vdosys does not output data to the first component of display
+> pipeline, so this connection looks 'virtual'. Shall we add something
+> virtual in device tree? You add this in order to decide which pipeline
+> is 1st, 2nd, 3rd, but for device it don't care which one is first. In
+> computer, software could change which display is the primary display.
+> I'm not sure it's good to decide display order in device tree?
+> 
 
-Luiz, could you pick up this patch?
+Devicetree describes hardware, so nothing virtual can be present - and in any case,
+the primary/secondary/tertiary pipeline is in relation to MM/VDO SYS, not referred
+to software.
 
-The other one is already merged in the MediaTek tree.
+Better explaining, the primary pipeline is not necessarily the primary display in
+DRM terms: that's a concept that is completely detached from the scope of this
+series and this graph - and it's something that shall be managed solely by the
+driver (mediatek-drm in this case).
+
+Coming back to the connection looking, but *not* being virtual: the sense here is
+that the MM/VDOSYS blocks are used in the display pipeline to "stitch" together
+the various display pipeline hardware blocks, or, said differently, setting up the
+routing between all of those (P.S.: mmsys_mtxxxx_routing_table!) through the VDO
+Input Selection (VDOx_SEL_IN) or Output Selection (VDOx_SEL_OUT) and with the
+assistance of the VDO Multiple Output Mask (VDOx_MOUT) for the multiple outputs
+usecase, both of which, are described by this graph.
+
+This means that the VDOSYS is really the "master" of the display pipeline since
+everything gets enabled, mixed and matched from there - and that's in the sense
+of hardware operation, so we are *really* (and not virtually!) flipping switches.
 
 
-Thanks!
-ChenYu
+Cheers,
+Angelo
+
+> Regards,
+> CK
+> 
+> 
+>>   required:
+>>     - compatible
+>>     - reg
+
 
