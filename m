@@ -4,71 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF83BC4345F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 May 2024 09:07:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8B85C4345F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 May 2024 09:45:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Wa9ZFYyQyLg9Zk5bCCWMW/hFYEEEDVpBvBp/sui5nAM=; b=X0p6T57HD6J0jDIDlF0BzL+6jY
-	AM9gpN8UNxxwvMJAlVeLo4ICvvv0Qf83CnK20RWe793S60Bj+04nTqxl4K90PQTyn0unb8wBw+v0Y
-	6xakSL6xPte7iDbdrGwzoPwSqLqwOZqUL0W2zRZMo0zvDi3WS2POxVqy6vDVT09nGfFQhjjQntG+v
-	7pwHM1Q086iAB8aDGRcouPuAOHIGdPQJuRT0LjKBDbwY+BMW3w38XSZd8SJx34C67uwunrSah40/c
-	0vL1qMTg81uiR8YY+BHTL5K7GOVg3Hh43r/Z6PTvTz1gg747Dc+01DoqhtpkcmAay34BR3agFekRj
-	tnPfBOCA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BggNaQJ5GQ+jmFR5m3Y/yrh3MsWyNNVQDV3jNQjfMgc=; b=bk1Tp6t3XVlDJSaxjgEplUONKK
+	Jxy6OAPTDYWLq+cN2CLlHj8QPF27UGSAvdJb/keDOla80fBZHVkISr6H+dKrIIuOLDR518q3Ilx99
+	96l3smh/7MTI7kuxzi71ut3pptwaNxAyKGIEezeZTI8UPunEwHGfQ/K/b2R8Ko9FmsrD0ousIITLp
+	to5EZW6wvUKPkk7ApjQLLfrQ9+ep4npr7d2JWYPjQrniXOGbnYiUZjHQW2gYM6iaNGAu4Ao3DPjdh
+	jLeR/vvTGQFk9HFvZeHU4kZBYqCfDk3ZwNQEqD5FqE6L19jkZP6+v8fC/2t8/OXNoqLd904qL4VZS
+	8I8gYtmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2SPU-0000000C5HN-3TcH;
-	Thu, 02 May 2024 09:07:24 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1s2T0H-0000000CCp7-0ZcZ;
+	Thu, 02 May 2024 09:45:25 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2SPR-0000000C5Ga-0g3d;
-	Thu, 02 May 2024 09:07:22 +0000
-X-UUID: 5cb37762086311efa8f1cd58ee6c2400-20240502
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=Wa9ZFYyQyLg9Zk5bCCWMW/hFYEEEDVpBvBp/sui5nAM=;
-	b=u+FsOxmFXXBL1NszHOPoyAYR0eCxncqHkwH+xgA9cN1rSHJtSoMtrrBAcQiAy5R6El3OcWZrgbM/doPMcV+Hrfi8aB/Z72D33iX/BrwXQpT22zq+I1B9+YLuh2tymn4cEb5hxjXDHx7t7y2ljCyGchrJE/Bd1MDrQAQ7lhktvgU=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.38,REQID:ab6414c3-4eb3-4125-93d4-a79d21d2abb8,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:82c5f88,CLOUDID:7e485d83-4f93-4875-95e7-8c66ea833d57,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 5cb37762086311efa8f1cd58ee6c2400-20240502
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <gavin.liu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 895214005; Thu, 02 May 2024 02:07:12 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 2 May 2024 16:56:37 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 2 May 2024 16:56:37 +0800
-From: gavin.liu <gavin.liu@mediatek.com>
-To: Jens Wiklander <jens.wiklander@linaro.org>, Sumit Garg
-	<sumit.garg@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>
-CC: <op-tee@lists.trustedfirmware.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	Gavin Liu <gavin.liu@mediatek.com>
-Subject: [PATCH v2] optee: add timeout value to optee_notif_wait() to support timeout
-Date: Thu, 2 May 2024 16:56:36 +0800
-Message-ID: <20240502085636.4049-1-gavin.liu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1s2T0D-0000000CCoU-2Np7;
+	Thu, 02 May 2024 09:45:23 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 063AE61283;
+	Thu,  2 May 2024 09:45:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CC6A9C113CC;
+	Thu,  2 May 2024 09:45:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1714643119;
+	bh=KMKmbjNxDjaQW/0y4bty5ahkkoXZGQdtL8KqJYUhwyE=;
+	h=Date:Subject:List-Id:To:Cc:References:From:In-Reply-To:From;
+	b=oAfQwcFEFQ4YSvMqY1Xbh/lsc5LPNSzumgD/oGqD14ngGgVPaEs7MibpgzzKx9oki
+	 Zagn8sEO8gj46WZhp4lLi4tBXFTB+pnYiA73nYZaFmp60rxFnqFwc6JU+DjWzL67dG
+	 /MZ0o36PB32nJVFZyZuANe63Rb2438n1oBk0vqlifHQrplthsktdyd/SJ9MqUjTqSh
+	 S4MhcJVVnSWRNuZQtI579Q7AgypadRVel2Bn/9DPwLpuM9kooXWaDgrnlLnFOcgFi9
+	 WcmGesxwuIsoxe8I2o27QKIei0xaWcNAItuJ4mp51iYpDI3BxfZTFiHOR9LfE7YUv9
+	 8qqWoV1TVGUXg==
+Message-ID: <dfde41a3-9d7d-4253-8297-c7684372f6f0@kernel.org>
+Date: Thu, 2 May 2024 18:45:09 +0900
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 12/21] pinctrl: k210: Use scope based of_node_put()
+ cleanups
+To: "Peng Fan (OSS)" <peng.fan@oss.nxp.com>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>, Dvorkin Dmitry <dvorkin@tibbo.com>,
+ Wells Lu <wellslutw@gmail.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Emil Renner Berthing <kernel@esmil.dk>,
+ Jianlong Huang <jianlong.huang@starfivetech.com>,
+ Hal Feng <hal.feng@starfivetech.com>, Orson Zhai <orsonzhai@gmail.com>,
+ Baolin Wang <baolin.wang@linux.alibaba.com>,
+ Chunyan Zhang <zhang.lyra@gmail.com>, Viresh Kumar <vireshk@kernel.org>,
+ Shiraz Hashim <shiraz.linux.kernel@gmail.com>, soc@kernel.org,
+ Krzysztof Kozlowski <krzk@kernel.org>,
+ Sylwester Nawrocki <s.nawrocki@samsung.com>,
+ Alim Akhtar <alim.akhtar@samsung.com>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Patrice Chotard <patrice.chotard@foss.st.com>,
+ Heiko Stuebner <heiko@sntech.de>,
+ Ludovic Desroches <ludovic.desroches@microchip.com>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+ Dong Aisheng <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>,
+ Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Chester Lin <chester62515@gmail.com>, Matthias Brugger <mbrugger@suse.com>,
+ Ghennadi Procopciuc <ghennadi.procopciuc@oss.nxp.com>,
+ Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ Dan Carpenter <dan.carpenter@linaro.org>
+Cc: linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-tegra@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-samsung-soc@vger.kernel.org,
+ linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-riscv@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ imx@lists.linux.dev, linux-aspeed@lists.ozlabs.org,
+ openbmc@lists.ozlabs.org, Peng Fan <peng.fan@nxp.com>
+References: <20240501-pinctrl-cleanup-v1-0-797ceca46e5c@nxp.com>
+ <20240501-pinctrl-cleanup-v1-12-797ceca46e5c@nxp.com>
+From: Damien Le Moal <dlemoal@kernel.org>
+Content-Language: en-US
+Organization: Western Digital Research
+In-Reply-To: <20240501-pinctrl-cleanup-v1-12-797ceca46e5c@nxp.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240502_020721_224347_3074E699 
-X-CRM114-Status: GOOD (  16.43  )
+X-CRM114-CacheID: sfid-20240502_024521_735555_E6DB0A94 
+X-CRM114-Status: GOOD (  18.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,112 +111,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Gavin Liu <gavin.liu@mediatek.com>
+On 5/1/24 21:56, Peng Fan (OSS) wrote:
+> From: Peng Fan <peng.fan@nxp.com>
+> 
+> Use scope based of_node_put() cleanup to simplify code.
+> 
+> Signed-off-by: Peng Fan <peng.fan@nxp.com>
+> ---
+>  drivers/pinctrl/pinctrl-k210.c | 7 ++-----
+>  1 file changed, 2 insertions(+), 5 deletions(-)
+> 
+> diff --git a/drivers/pinctrl/pinctrl-k210.c b/drivers/pinctrl/pinctrl-k210.c
+> index b6d1ed9ec9a3..2753e14c3e38 100644
+> --- a/drivers/pinctrl/pinctrl-k210.c
+> +++ b/drivers/pinctrl/pinctrl-k210.c
+> @@ -849,7 +849,6 @@ static int k210_pinctrl_dt_node_to_map(struct pinctrl_dev *pctldev,
+>  				       unsigned int *num_maps)
+>  {
+>  	unsigned int reserved_maps;
+> -	struct device_node *np;
+>  	int ret;
+>  
+>  	reserved_maps = 0;
+> @@ -861,13 +860,11 @@ static int k210_pinctrl_dt_node_to_map(struct pinctrl_dev *pctldev,
+>  	if (ret < 0)
+>  		goto err;
+>  
+> -	for_each_available_child_of_node(np_config, np) {
+> +	for_each_available_child_of_node_scoped(np_config, np) {
+>  		ret = k210_pinctrl_dt_subnode_to_map(pctldev, np, map,
+>  						     &reserved_maps, num_maps);
+> -		if (ret < 0) {
+> -			of_node_put(np);
 
-Add timeout value to support self waking when timeout to avoid waiting
-indefinitely.
+Personally, I am really not a fan of things that hide code like that scoped
+thing... If I want a language that hides code, I would be doing C++ :)
+That said, I am not opposed to this so I will let Linus (Walleij) decide.
 
-Signed-off-by: Gavin Liu <gavin.liu@mediatek.com>
----
-Change in v2:
-Change commit message.
-Add description for value[0].c in optee_rpc_cmd.h.
----
----
- drivers/tee/optee/notif.c         |  9 +++++++--
- drivers/tee/optee/optee_private.h |  2 +-
- drivers/tee/optee/optee_rpc_cmd.h |  1 +
- drivers/tee/optee/rpc.c           | 10 ++++++++--
- 4 files changed, 17 insertions(+), 5 deletions(-)
+Also, I think that "for_each_available_child_of_node" is a bad name... It really
+should be something like for_each_available_child_of_node_get() to make it clear
+that a of_node_put() is needed.
 
-diff --git a/drivers/tee/optee/notif.c b/drivers/tee/optee/notif.c
-index 05212842b0a5..d5e5c0645609 100644
---- a/drivers/tee/optee/notif.c
-+++ b/drivers/tee/optee/notif.c
-@@ -29,7 +29,7 @@ static bool have_key(struct optee *optee, u_int key)
- 	return false;
- }
- 
--int optee_notif_wait(struct optee *optee, u_int key)
-+int optee_notif_wait(struct optee *optee, u_int key, u32 timeout)
- {
- 	unsigned long flags;
- 	struct notif_entry *entry;
-@@ -70,7 +70,12 @@ int optee_notif_wait(struct optee *optee, u_int key)
- 	 * Unlock temporarily and wait for completion.
- 	 */
- 	spin_unlock_irqrestore(&optee->notif.lock, flags);
--	wait_for_completion(&entry->c);
-+	if (timeout != 0) {
-+		if (!wait_for_completion_timeout(&entry->c, timeout))
-+			rc = -ETIMEDOUT;
-+	} else {
-+		wait_for_completion(&entry->c);
-+	}
- 	spin_lock_irqsave(&optee->notif.lock, flags);
- 
- 	list_del(&entry->link);
-diff --git a/drivers/tee/optee/optee_private.h b/drivers/tee/optee/optee_private.h
-index 7a5243c78b55..da990c4016ec 100644
---- a/drivers/tee/optee/optee_private.h
-+++ b/drivers/tee/optee/optee_private.h
-@@ -252,7 +252,7 @@ struct optee_call_ctx {
- 
- int optee_notif_init(struct optee *optee, u_int max_key);
- void optee_notif_uninit(struct optee *optee);
--int optee_notif_wait(struct optee *optee, u_int key);
-+int optee_notif_wait(struct optee *optee, u_int key, u32 timeout);
- int optee_notif_send(struct optee *optee, u_int key);
- 
- u32 optee_supp_thrd_req(struct tee_context *ctx, u32 func, size_t num_params,
-diff --git a/drivers/tee/optee/optee_rpc_cmd.h b/drivers/tee/optee/optee_rpc_cmd.h
-index f3f06e0994a7..99342aa66263 100644
---- a/drivers/tee/optee/optee_rpc_cmd.h
-+++ b/drivers/tee/optee/optee_rpc_cmd.h
-@@ -41,6 +41,7 @@
-  * Waiting on notification
-  * [in]    value[0].a	    OPTEE_RPC_NOTIFICATION_WAIT
-  * [in]    value[0].b	    notification value
-+ * [in]    value[0].c	    timeout in millisecond or 0 if no timeout
-  *
-  * Sending a synchronous notification
-  * [in]    value[0].a	    OPTEE_RPC_NOTIFICATION_SEND
-diff --git a/drivers/tee/optee/rpc.c b/drivers/tee/optee/rpc.c
-index e69bc6380683..14e6246aaf05 100644
---- a/drivers/tee/optee/rpc.c
-+++ b/drivers/tee/optee/rpc.c
-@@ -130,6 +130,8 @@ static void handle_rpc_func_cmd_i2c_transfer(struct tee_context *ctx,
- static void handle_rpc_func_cmd_wq(struct optee *optee,
- 				   struct optee_msg_arg *arg)
- {
-+	int rc = 0;
-+
- 	if (arg->num_params != 1)
- 		goto bad;
- 
-@@ -139,7 +141,8 @@ static void handle_rpc_func_cmd_wq(struct optee *optee,
- 
- 	switch (arg->params[0].u.value.a) {
- 	case OPTEE_RPC_NOTIFICATION_WAIT:
--		if (optee_notif_wait(optee, arg->params[0].u.value.b))
-+		rc = optee_notif_wait(optee, arg->params[0].u.value.b, arg->params[0].u.value.c);
-+		if (rc)
- 			goto bad;
- 		break;
- 	case OPTEE_RPC_NOTIFICATION_SEND:
-@@ -153,7 +156,10 @@ static void handle_rpc_func_cmd_wq(struct optee *optee,
- 	arg->ret = TEEC_SUCCESS;
- 	return;
- bad:
--	arg->ret = TEEC_ERROR_BAD_PARAMETERS;
-+	if (rc == -ETIMEDOUT)
-+		arg->ret = TEEC_ERROR_BUSY;
-+	else
-+		arg->ret = TEEC_ERROR_BAD_PARAMETERS;
- }
- 
- static void handle_rpc_func_cmd_wait(struct optee_msg_arg *arg)
+> +		if (ret < 0)
+>  			goto err;
+> -		}
+>  	}
+>  	return 0;
+>  
+> 
+
 -- 
-2.18.0
+Damien Le Moal
+Western Digital Research
 
 
