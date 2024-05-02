@@ -4,63 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74426C4345F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 May 2024 14:08:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FEECC4345F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 May 2024 14:50:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qfOPtHMC8enWGIxXfWoDYzKhbZQ6bX4zXIQNZyD9910=; b=HZlC0s3PabWRA8Xac5bmTCf+OO
-	Oy7h6nGAAcTFdJSiUtNHPNbOpg1nLoki14Oot3D6TP5bCAD7t/c73FQJovzWwX1jvDQKyyaW/DM0E
-	jDiPYTfdCKSHHZ54s9hDFgzEuzZ0y+n3QPZ8d+d3IWuboul/ycnK6JOUCOEZfOq/hL6+/FNUOcOcC
-	BHqWtt8N1Lfd2qWeIyA8deXzAWdsixGwy6iQGcYt4smgp5NC7iIWXK27dCy5NRHOmiSdtolvf2aD6
-	ULseANl3p0GiOPRHWo54lF+ddzsz+vIfzq1xNwFTw9Fr/K77hrKHo4YB+NUMQc2pNxc84HrI/8YWM
-	eqoOrA0A==;
+	bh=mMiy+5sKeS+5h/5rn07Wr6ekTEUDqPQI5yyE1jNCBnc=; b=dCujt39D7V70PgMhm0rGm3hGcC
+	YijJsBmvejAXrmdsD8t0f/Fa/bUhIRZV5vEvoDsPQgu+cR/wIGmHTEkImR/rob5HKvsx7OsG6P5UQ
+	odQdGmbNJYe8hLFCAZ6jUPjecCKPL6jVqkl6KfD5UJTbVXWppGooZ1+h+yZ9wrsX9ACOpPXof0/aY
+	gawIOmBZeUxvjUmaD5WyOOu6e4w/xjaDkzjl9PiC8dBp2TS70ncc8gQKaZibRxTP72A73/CFaNgoF
+	j4G7eSHAiqAFCHqO2QA5rMOSqt/d5QPREkEYuJTD768Vbo7L5/TCNv8sQmkrBIYT/SRK9BferavWr
+	A32X6o/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2X72-0000000CsiM-0bHB;
-	Thu, 02 May 2024 14:08:40 +0000
+	id 1s2Xlh-0000000Czi2-1UGI;
+	Thu, 02 May 2024 14:50:41 +0000
 Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2X6x-0000000Csh5-07XS;
-	Thu, 02 May 2024 14:08:37 +0000
+	id 1s2Xlc-0000000CzgJ-3mmY;
+	Thu, 02 May 2024 14:50:38 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 1E008CE1151;
-	Thu,  2 May 2024 14:08:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E7EBCC113CC;
-	Thu,  2 May 2024 14:08:28 +0000 (UTC)
-Date: Thu, 2 May 2024 10:09:14 -0400
-From: Steven Rostedt <rostedt@goodmis.org>
-To: "Tze-nan Wu (=?UTF-8?B?5ZCz5r6k5Y2X?=)" <Tze-nan.Wu@mediatek.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-trace-kernel@vger.kernel.org" <linux-trace-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "Cheng-Jui Wang (=?UTF-8?B?546L5q2j552/?=)" <Cheng-Jui.Wang@mediatek.com>,
- wsd_upstream <wsd_upstream@mediatek.com>, "Bobule Chang (=?UTF-8?B?5by1?=
- =?UTF-8?B?5byY576p?=)" <bobule.chang@mediatek.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>, "mhiramat@kernel.org"
- <mhiramat@kernel.org>, "mathieu.desnoyers@efficios.com"
- <mathieu.desnoyers@efficios.com>
-Subject: Re: [PATCH] tracing: Fix uaf issue in tracing_open_file_tr
-Message-ID: <20240502100914.33d6aa83@gandalf.local.home>
-In-Reply-To: <aac0a4cc0a12fc9593ab7de6c34836757e6814f3.camel@mediatek.com>
-References: <20240426073410.17154-1-Tze-nan.Wu@mediatek.com>
-	<20240428202837.0cabca17@rorschach.local.home>
-	<20240429144626.7d868ad3@gandalf.local.home>
-	<661f101456506db945ccbd94700a0f47b95f91e5.camel@mediatek.com>
-	<20240501235044.12fa3297@gandalf.local.home>
-	<aac0a4cc0a12fc9593ab7de6c34836757e6814f3.camel@mediatek.com>
-X-Mailer: Claws Mail 3.19.1 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
+	by sin.source.kernel.org (Postfix) with ESMTP id 827CACE1730;
+	Thu,  2 May 2024 14:50:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 21E65C4AF14;
+	Thu,  2 May 2024 14:50:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1714661433;
+	bh=VLCdT8S8RHn0J5m1d4S8joxMLvrBRQKRrINYgfmKubA=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=VwDde+BRMnQvir5Tx8KN74Mo3z9lrZG+Q1cUDRAAdnxbR9bpwHEHWfP9YKhwnVE7e
+	 qKgp1hAwOKtleGVsUjiLAhIXRg6xSdXINvfnc7IVqYKEmhnLOVY5Ky8IG2buan2y7A
+	 chBN/rm527LAuKkPsNMJCP/lHEm0ZnMbvQI1Zn4ChPPv+86gmeDL7OWPvfzUR8g7Lm
+	 3Ja4oyTe6k4qndhm6ys0a8sQekapqPS+l/Wz5q9XqRFWa470pUrcotMN1xMidcG3SE
+	 KHpYlVuRcyI1AtjxZOErGrofdGv5HnbJfgM5JaC7AL4+uoiLKuXhG6khUBr7VNpsHX
+	 TC2k7QWM2yvNw==
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 0916CC4333B;
+	Thu,  2 May 2024 14:50:33 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH v3 0/2] bluetooth: mt7921s: Add binding and fixup existing dts
+From: patchwork-bot+bluetooth@kernel.org
+Message-Id: <171466143303.15417.16267391359658685037.git-patchwork-notify@kernel.org>
+Date: Thu, 02 May 2024 14:50:33 +0000
+References: <20240412073046.1192744-1-wenst@chromium.org>
+In-Reply-To: <20240412073046.1192744-1-wenst@chromium.org>
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: marcel@holtmann.org, luiz.dentz@gmail.com, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ sean.wang@mediatek.com, linux-bluetooth@vger.kernel.org,
+ netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240502_070835_281992_44B5FCB0 
-X-CRM114-Status: UNSURE (   9.26  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240502_075037_144811_74B42F6E 
+X-CRM114-Status: GOOD (  10.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,26 +78,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2 May 2024 06:49:18 +0000
-Tze-nan Wu (=E5=90=B3=E6=BE=A4=E5=8D=97) <Tze-nan.Wu@mediatek.com> wrote:
+Hello:
 
-> Good news, this patch works, the test has passed, no more Kasan report
-> in my environment.
+This series was applied to bluetooth/bluetooth-next.git (master)
+by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
 
-Great to hear!
+On Fri, 12 Apr 2024 15:30:41 +0800 you wrote:
+> Hi everyone,
+> 
+> This is v3 of my MT7921S Bluetooth binding series.
+> 
+> Changes since v2:
+> - Expand description and commit message to clearly state that WiFi and
+>   Bluetooth are separate SDIO functions, and that each function should
+>   be a separate device node, as specified by the MMC binding.
+> - Change 'additionalProperties' to 'unevaluatedProperties'
+> - Add missing separating new line
+> - s/ot/to/
+> 
+> [...]
 
->=20
-> my environment:
->  arm64 + kasan + swtag based kasan + kernel-6.6.18
->=20
-> Really appreciate, and learn a lot from the patch.
+Here is the summary with links:
+  - [v3,1/2] dt-bindings: net: bluetooth: Add MediaTek MT7921S SDIO Bluetooth
+    https://git.kernel.org/bluetooth/bluetooth-next/c/556511c33388
+  - [v3,2/2] arm64: dts: mediatek: mt8183-pico6: Fix bluetooth node
+    https://git.kernel.org/bluetooth/bluetooth-next/c/f90ac18d01cd
 
-Can I add:
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
-Tested-by: Tze-nan Wu (=E5=90=B3=E6=BE=A4=E5=8D=97) <Tze-nan.Wu@mediatek.co=
-m>
 
-?
-
--- Steve
 
