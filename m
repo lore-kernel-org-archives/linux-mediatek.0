@@ -4,200 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 661FFC4345F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 May 2024 03:10:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DCD5C4345F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 May 2024 03:50:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RkURepAiTBbswo2FKVZ7oH17CJKZrj5R3627Ow8abLI=; b=RnJDjdPF1gzcSIokVClLrY3Iky
-	vuqa79H0CcBNkY58DusPRqXl+DtINIR/Abkzky57bpmuy3P4ONFvV6GcdKy/genI6gtjhfxyFOIOQ
-	PSx3mhZv7JoEjsldxZTC9Q+/OBuIPCiuTXTMQQVFEReScXMMiv6PnBgHg9mBI8BQmmmYo8/sU2R8H
-	qpTs+Aphs0VtO4bBcImejkZA6otv4zrBiI8c8y+7afZeVggAY/QYxH9rufk41xd8KQ4IcbY5x1jEJ
-	qK4uY92YFiFfkuFiMC1HEwhMA0vpLWW1xGWW9I5DJg5Hv8CDxss3mwwV5y7xBMzgvaok6cpOWbHE7
-	dv0K8R1g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7Ugj/NETJNRbOxZrdSjQLTYLzePKnL6scHDuyLXG1qY=; b=pIwF++P4fotP33lQ8z9qqSd8aY
+	PQNUuVE4o70S3Og2rUPKuALEN3fdytrCHpbO3LuiPAYnQxW3Cs2yvIqjooxjco4VVcLmDXtsOSAE2
+	au4RNkAVtRRHPKOT+N0EDf0V95l2RJGv/N8wEfyJpSv3Fgl+4C7glgIOJLUVTB9PP2Yo3gAN06DEl
+	XFaWrJXULHeK5fqSwAE3+Ckl43evaopmz454hhDT6j0GqYh8YFLfDGY+Wu4ppXk/heTqym0puBPv3
+	nPYRyn5MscoQpulMU2zp4fJB8n0fXrWYQ8lujJlXJvKaAkVtP7/Uuok9xUmg9mvkjsbcr5PpWn8HL
+	wVxiA98Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2MqF-0000000BHE3-3zcl;
-	Thu, 02 May 2024 03:10:40 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1s2NST-0000000BKTa-1zYf;
+	Thu, 02 May 2024 03:50:09 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2MqC-0000000BHBv-2vg8;
-	Thu, 02 May 2024 03:10:38 +0000
-X-UUID: 8794d16a083111efa8f1cd58ee6c2400-20240501
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=RkURepAiTBbswo2FKVZ7oH17CJKZrj5R3627Ow8abLI=;
-	b=Ve5t+D2wu8xX4a/tiUyWZLPaKHDV/4lhUszCk2S5SR2TdTqyncdLbjEkM2E/2i0wbvGBI3LXjybjQ0tCEy5YsLDtkZqoHZDVevKHfANk+hXWPvtWEDcJASoICFfB6cLVYMOyscrBvJm0PEpMjOXrzd/lALs4cIzLLSRg/tWVkxg=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.38,REQID:58b89b77-485f-4e68-b75f-b1c4b460b3a8,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:82c5f88,CLOUDID:455f4092-e2c0-40b0-a8fe-7c7e47299109,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 8794d16a083111efa8f1cd58ee6c2400-20240501
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
-	(envelope-from <tze-nan.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1252268438; Wed, 01 May 2024 20:10:29 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 2 May 2024 11:10:26 +0800
-Received: from APC01-PSA-obe.outbound.protection.outlook.com (172.21.101.237)
- by mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 2 May 2024 11:10:26 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=kgx2i8UzydeLSU8ToP986ZSfDEpVW5IAKhKdCJLmUPFEmi/JjXVy2UWvaf5+hKT3ZddJQtlF+99U6zoXcCqeOt1O1FOTapFklglFXH345vNidmwCgC+pntujYnMvYTOTAsVSXoBRVTUCjUzXtFNC4RjV317ojwIACro2uy5spHICjx5zWblTU76UVJE+uk7HewEWmfV0rD70qljfZ6EsRhOowqLvXTJ09fgcOwjxA/kYy5DVBRHFDwrYa7S9bASJgLc5kFKv2HPC4XmkLFr3BSNarQ5GIQ4NxpqkkaWPF8U/ARtLjQULiWtLvJ+6JD2JNWXkzl7eUAOUXN2xPAVu5w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=RkURepAiTBbswo2FKVZ7oH17CJKZrj5R3627Ow8abLI=;
- b=OX2Ddujfnb2E9PHeQLDaB1Bt7f2/QVPZd0BokAvh9JaToArEI6wsOv9JsRMS+uDZeF147MZsaUwP2DtQRvzqL1NYd7cuZm2parkd+Cjytvw22GQV+52iAWKxK6PFzWm7bZFLK+p+2GadwjdFhdjE5B0mEEVse+iS2Y7fYATGVG7lurBCAIhX1hkwtSUbgPSHh4SLcrOg6DfH9UuyswmbpggOFjj6GEU2SG9vYkP3n9L9NhQJM0+j4G+pnSd+Oeg7YdUzG5C3pMrVPFJYVl+TVdJDwjk4OQmW4TJPTwugFCb9KnIs+OxFZTndV6TNJMAxL04+HWNzYEPMfqnwzIKDKw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=RkURepAiTBbswo2FKVZ7oH17CJKZrj5R3627Ow8abLI=;
- b=RV1WGeZ0MGdN/IcvRVBzVFWR8DqmjeG71jonMrg207gf0+/Ec9Bno32IxdGDz8djdBrrcwHq6nq5XklVA39VA2rBUL2Pyfa2bT/yaS5mZOFGfoL3etYkfUskipt03eWxCe/7Q+zbX6BzeQieXqs+CwIcFheNlj0MiiD3L+yrPIM=
-Received: from TYZPR03MB7183.apcprd03.prod.outlook.com (2603:1096:400:33a::11)
- by JH0PR03MB7716.apcprd03.prod.outlook.com (2603:1096:990:16::5) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7544.26; Thu, 2 May
- 2024 03:10:24 +0000
-Received: from TYZPR03MB7183.apcprd03.prod.outlook.com
- ([fe80::343a:d17a:5383:4b1a]) by TYZPR03MB7183.apcprd03.prod.outlook.com
- ([fe80::343a:d17a:5383:4b1a%7]) with mapi id 15.20.7544.023; Thu, 2 May 2024
- 03:10:24 +0000
-From: =?utf-8?B?VHplLW5hbiBXdSAo5ZCz5r6k5Y2XKQ==?= <Tze-nan.Wu@mediatek.com>
-To: "rostedt@goodmis.org" <rostedt@goodmis.org>
-CC: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-trace-kernel@vger.kernel.org" <linux-trace-kernel@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	=?utf-8?B?Q2hlbmctSnVpIFdhbmcgKOeOi+ato+edvyk=?=
-	<Cheng-Jui.Wang@mediatek.com>, wsd_upstream <wsd_upstream@mediatek.com>,
-	=?utf-8?B?Qm9idWxlIENoYW5nICjlvLXlvJjnvqkp?= <bobule.chang@mediatek.com>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "mhiramat@kernel.org"
-	<mhiramat@kernel.org>, "mathieu.desnoyers@efficios.com"
-	<mathieu.desnoyers@efficios.com>
+	id 1s2NSP-0000000BKSK-2cLv;
+	Thu, 02 May 2024 03:50:07 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 02BB1619E1;
+	Thu,  2 May 2024 03:50:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 87CB8C116B1;
+	Thu,  2 May 2024 03:49:59 +0000 (UTC)
+Date: Wed, 1 May 2024 23:50:44 -0400
+From: Steven Rostedt <rostedt@goodmis.org>
+To: "Tze-nan Wu (=?UTF-8?B?5ZCz5r6k5Y2X?=)" <Tze-nan.Wu@mediatek.com>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-trace-kernel@vger.kernel.org" <linux-trace-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "Cheng-Jui Wang (=?UTF-8?B?546L5q2j552/?=)" <Cheng-Jui.Wang@mediatek.com>,
+ wsd_upstream <wsd_upstream@mediatek.com>, "Bobule Chang (=?UTF-8?B?5by1?=
+ =?UTF-8?B?5byY576p?=)" <bobule.chang@mediatek.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>, "mhiramat@kernel.org"
+ <mhiramat@kernel.org>, "mathieu.desnoyers@efficios.com"
+ <mathieu.desnoyers@efficios.com>
 Subject: Re: [PATCH] tracing: Fix uaf issue in tracing_open_file_tr
-Thread-Topic: [PATCH] tracing: Fix uaf issue in tracing_open_file_tr
-Thread-Index: AQHal6xCZTDOyK83d0m4QJA7T219GbF+aQGAgAEyugCAA7F4AA==
-Date: Thu, 2 May 2024 03:10:24 +0000
-Message-ID: <661f101456506db945ccbd94700a0f47b95f91e5.camel@mediatek.com>
+Message-ID: <20240501235044.12fa3297@gandalf.local.home>
+In-Reply-To: <661f101456506db945ccbd94700a0f47b95f91e5.camel@mediatek.com>
 References: <20240426073410.17154-1-Tze-nan.Wu@mediatek.com>
-	 <20240428202837.0cabca17@rorschach.local.home>
-	 <20240429144626.7d868ad3@gandalf.local.home>
-In-Reply-To: <20240429144626.7d868ad3@gandalf.local.home>
-Accept-Language: zh-TW, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYZPR03MB7183:EE_|JH0PR03MB7716:EE_
-x-ms-office365-filtering-correlation-id: ebf94aab-b6a4-4b0f-a610-08dc6a55691d
-x-ld-processed: a7687ede-7a6b-4ef6-bace-642f677fbe31,ExtAddr
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;ARA:13230031|366007|376005|1800799015|38070700009;
-x-microsoft-antispam-message-info: =?utf-8?B?NkhwcHNpM0FsUHVaekZtY1lZZjc0YjdGZ1FSMUhETjJrNE1qanhMVUJRUUlX?=
- =?utf-8?B?SmFPeXpxMUErYldCK2JKeTFXOHo5WTVPakdvcW9STy9Sa1pzYm9JYXRXdW1x?=
- =?utf-8?B?ZXhETFJSeE5BZ3ZvbC80QWpta0lKa1RSbFN5ejBPeGZndHMvZ1hJbllPZ3BX?=
- =?utf-8?B?S0UwUnFlcjRyU0pWZVVwTktQQ2cvNXE4M0ZRcmw4SHJ5MTQzcDBDY1JQenJM?=
- =?utf-8?B?dlBrMk5CcWRTVFdDbjVPVXB2eTF1MUJWU0VYUHR6aklackorTU5LWlN6MWdD?=
- =?utf-8?B?T0tvY1Q3b2tLcUNRQmpJYlg0b3lCRFZsL2VpM2dudDcyMzJJMUJMUmVpNlJw?=
- =?utf-8?B?aVVxM1dIU2Y1UWlFZW5pa2lKb0tiUTJ2L0FSTUQ5WVREakJTU1hVOGtwQlhQ?=
- =?utf-8?B?NWxXcjd3c1ZobUF1UnZkRFVScGhwcXpoc0VKMHcybXVzL0lsU2VqZ0VLWEVa?=
- =?utf-8?B?a3RNYjR2eVQvYWFZK1Q3VTFXWjFNTFdjblZLYnRsUlV2T2hwSEJtaUtLbHNO?=
- =?utf-8?B?ZElkRGswbjZmc3lVOWJId0tFRmNiS3c4OUJTeTFpVTZlRmc0dUV6dzl0b3F1?=
- =?utf-8?B?QXNEcDd3MkJkUjhUZ2dIL0x3bXYyVCtPV0psRnhBdTF4UjlRTzlWWnFTYitZ?=
- =?utf-8?B?bjBGRTNxOENHNGROMkw4eWtmVmgrL0dCNlZncnZzYndxNlkzbzUrVFNnQlVL?=
- =?utf-8?B?OFhadEtJVE1OZkc3bHppNVNORGhvbit1ZXViY1BEYjhkaFFQMUkveFFTcVRz?=
- =?utf-8?B?akR1VnUycnRQYW5zanNxNy92Y05VR1U4NzhTV3ZvakU4Umw5TEVUNnIraGFL?=
- =?utf-8?B?V1hScnJvY0phblpJYm9TMDI3MTFJdGdYNzZDb1NRNDk4SG9Mc0psdmNtYU0r?=
- =?utf-8?B?cnJFNG12U3JHOWNxMERJVmVQUHN1TWRSS2FYTkVjU1BDQnZCS0VpNVpSR3FI?=
- =?utf-8?B?eU9lYVgrVUFPd3BJSXJaeVJYUVNncDlvNmJ6dmo4RFZtNXlPTFRxM2JhZGZk?=
- =?utf-8?B?UiswWE0vRjVDSGxNMGtrcm9zMCs0QnlhdmdjRFB3ak44alVFeTVzSEZUbThB?=
- =?utf-8?B?QnBMdTR6SkFNMWltT2I3RDdjajVEeS9kaUdBNnBOSXViUjhrRU83cGlnOWpn?=
- =?utf-8?B?dzFCM1RhSWZ2WTVCNjNZYjRlK3dXRFNVdWxmaXAwR1lJRHlOMlpRMHpsYnJM?=
- =?utf-8?B?U285QTBlMEk5dHhGSmQ0b0I2QnBMUko4VHFWajRHR3dad01USmVYaDRqVVVi?=
- =?utf-8?B?ekZmalpGNzlFTkRQTGlHcG5hYzBvZlJGUkdpUVZWU0JlbllkaVZ1LzlGTHZn?=
- =?utf-8?B?WGo4Vkdhakx3aEc1b2tGSkI1c1IzLzNJcXYxdTU3UXAxL0Z4Qk4rb0lEb3k5?=
- =?utf-8?B?WEk1ZmRaMlAxWkdYTE1MOXFQdXZvNUJnbmJNUk1UZVYyTTc3T1g1ZWs1MlRF?=
- =?utf-8?B?TmhZZGU3WjhhYWxzTzlZQmYweHZSZHVqZDBQcUdNZVNvc1RVb1B1Q2ZhRUtD?=
- =?utf-8?B?QlU0eERIWXg4RnI2aXF1OGVKcjhXQitLaWxpU3RaeEVvVEN3VGJOQmpCNU80?=
- =?utf-8?B?alFOY2ZyOGZwWjlGK1dYTVpxdkxLaUtRcW8yL21jTVJGWkgrdFlKNENweU1U?=
- =?utf-8?B?WlEzZWpVVURtTm50SlZhS0JIV21taUhtQUovYW45SGMvWVdvcE5rYWo2M2NW?=
- =?utf-8?B?WTlBQXJ0SlJmWUdoRlpOeFo1UzI0VWJ0U0pqNEcyNWhZUkg1MHRLbFYyeGR0?=
- =?utf-8?B?QnNtenNtMU9MZGZQNmpoVThzRExJWk9aZ1ljQ2F3TVZOMHd3c1UwWENjKzBM?=
- =?utf-8?B?ZHJ1cDgydHl1RHZOcWtodz09?=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB7183.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(366007)(376005)(1800799015)(38070700009);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?L3BrdUJBY3M0amVTQlZCN3h6Z290bE52amFXTUZYQnFRYUxlbE02cEZGeGFQ?=
- =?utf-8?B?OGM5YkNsY3kwL1J1VW4wQXM2R3hDRHdodCtzZkdObSsvSmR2UEsrcGcxK0NW?=
- =?utf-8?B?SGNHRmxCNmErNTJOR3Jub0d6eXpXSzRtUDYzZnlkenE1MGZ2cjQ4cWlydEtp?=
- =?utf-8?B?bnM4STBmRXQ2ZzM0QnRTdVNPbWREQVRjU3VSRjdKMnFQUHJhQTZ4OGZJUWxI?=
- =?utf-8?B?YzBZZ0IrZDJlREpqT0dQazNqbm9uUXFud05TUTl6TTVyVVpvN2lGd29hWlRj?=
- =?utf-8?B?UTlxYjFVdFBTQlRLRG52c3ViZ095MkhYRnliYVJzTlZyN3RtdlJjT1YyMGhK?=
- =?utf-8?B?UExvRGdsby9ENW9CQTdNTy90Y3Bva0NCQ0U3K1RHaHZWQ3NMUkVESFRLcUd3?=
- =?utf-8?B?alZ1Mkh6TmNGMUd2WTZ1L1FVVzE2ZFJ3N1VHYlR3bjlJT2M2WFhuVFp1eUdv?=
- =?utf-8?B?ZUxjSHJSanVEeXQ5eVFOcURPL3lMSVRlWW5uaG5IS2ZFZFlDNG1zVHBvdXY2?=
- =?utf-8?B?M3BXVVF1YXhaYXBjMUdXSHozNzZyb0lyd05JUVVmcENENWJrblRRQVpnNzd1?=
- =?utf-8?B?c3U4RXIyR2JNcnFvcCtsbkdmR1VlblBndUE4bXVpcGN5MEh3dFVURzZ1UElO?=
- =?utf-8?B?dFlzcGc5VzBpbTJINTlGejExMkIzcmh1VjRYUkp0QWVpbE0zY2lVbFE2UnA0?=
- =?utf-8?B?WDhnK1MyRDlQT1dJSDZaS1JwaUhHbW9WR2c2VHowY1NQRFRRQXpiUFlLWWlq?=
- =?utf-8?B?bzloOWlqQzZIRlkvVnd3TmJJaXl1a083VEFEMGxNSlN3cC94bDVoR2cyUHhm?=
- =?utf-8?B?elFjZ3EyejNQWWF6TnpScXpYcHhHYlNtWGhRcTBWdFc3QXpOa3JGdGo2UEY4?=
- =?utf-8?B?UjFLNlBWaXV2SWFMQ0I5ajJHL3RKejczeENSL3I0YSswckFUS1pZcUI4b2E1?=
- =?utf-8?B?NDFNeTQ3M2xXdExhNTIrYzhMcUViMC82L2phblBVT1JyNHU3bXBtK0kwUmRq?=
- =?utf-8?B?dmZjMG5yU0NlQlhDWDA4OWRhNWxlZ2dKSXlMeUp6citnYmVKRExMTzkrL3RF?=
- =?utf-8?B?U3QzcXF4SWw3d2xRcEtYWGM3bGNUZG94MWZwME1EZWZQYlRsZllNWUlsYW9q?=
- =?utf-8?B?MUU1bExseXVwbjdsb25nR2VVanpmNEFxb1ZnZlY4N3dVTGlRcVpqcHdSQjRp?=
- =?utf-8?B?aEEzbUlscm5SMUsvK2dWM2JKM1VMNitxcHAxK3M0VCtBZzlMclhlMklxMlJi?=
- =?utf-8?B?a2V4bkJjSm0xbWRFU0QrTDVydm1aUUdpWWhCWTFYb2FXRStxT3I4NUZtWW9T?=
- =?utf-8?B?TnVBVGpjUXl0WXdUTkFtSmp6MVUvekRFdGJGNEpGS3pCRkIzT2djZm9SUmxo?=
- =?utf-8?B?d3hMV1NxSUpiVkdob3Y1MGdCamliVVljOHlncjlsSjZ2M0ZMRUgvUmRJNm1j?=
- =?utf-8?B?My9aYnZEblZ6NE45cklwZFZ3VGZCdG4zWlZZZnErMGJCSkg1TWxWQnRScms3?=
- =?utf-8?B?ekovbWhJZ0xmTFUwZCtSYnVkVHBoYnlaWkF3WnFvZmp6QVBlODBmTkY4S245?=
- =?utf-8?B?N2JuY24vSi95Y1h4N244d25GY2lSUGhRcXYvWEppM0x0UHRGYVdPRHBWWUJ5?=
- =?utf-8?B?MHFxTXc4QlREUElZK1lXeGpNQW56Rzkrckpud05GOWVRSk45b1J6YW5haU92?=
- =?utf-8?B?T05kQjJ0YjBaL3dYNDZzMVRwWDhYdW0yeWlpLzJlU1l4d3Uyc0Q4RVRUYy9t?=
- =?utf-8?B?Zkk4OEVWS3JVK0U2YUt5WTk4bTF0VFNBc05SOEJnOC9vQjg4TG9iRFAyakJJ?=
- =?utf-8?B?R1QxZ2VEQzZ6b1V6cU1xbDE3cVFtNmlrQm85YWlndllncWlQWDU4R0hGM3Vq?=
- =?utf-8?B?U2l4dVVPYXA2V1VqWU51RGZVbnV0dzZFdFp3WXk3UERMeTBkd3VLYTBCaFAz?=
- =?utf-8?B?S1Nia3FHWkVUak5xaGg5ZFBJa1dCWEo3azZtc2dyci9Rdm5RakxQMjlxalZv?=
- =?utf-8?B?M0trUm5nQkxjYStMU1dTZk14Sjl5T203M3h0dlBmdE0wNkVuZzZsdFR4TEpz?=
- =?utf-8?B?RHhGUzE3eVp4SytvaU9HL056NTQ2WmcxQndyOE1HWFBEaG1BaXJwa2ltM3Q3?=
- =?utf-8?B?R3ZTbUpBS2FTV3Z3VXpPK0xJZnBDUVF1MVNrNlZJY1pzOHpCeWlnT29ObVc3?=
- =?utf-8?B?THc9PQ==?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <86E044F6CE2D4846AA9569B600C9E333@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+	<20240428202837.0cabca17@rorschach.local.home>
+	<20240429144626.7d868ad3@gandalf.local.home>
+	<661f101456506db945ccbd94700a0f47b95f91e5.camel@mediatek.com>
+X-Mailer: Claws Mail 3.19.1 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB7183.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: ebf94aab-b6a4-4b0f-a610-08dc6a55691d
-X-MS-Exchange-CrossTenant-originalarrivaltime: 02 May 2024 03:10:24.7524
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Lb/Qdh4xwodGuP0ekn96BFqoroGbg6KumcZ0PV+HzSSFrjvJP16vMQ/I7FQ55Yx1kDhaCSapE8jvqqRfYLbENQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: JH0PR03MB7716
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240501_201036_794817_B59BF4BD 
-X-CRM114-Status: GOOD (  26.36  )
+X-CRM114-CacheID: sfid-20240501_205005_797095_CB0734F9 
+X-CRM114-Status: GOOD (  30.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -212,106 +72,203 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCAyMDI0LTA0LTI5IGF0IDE0OjQ2IC0wNDAwLCBTdGV2ZW4gUm9zdGVkdCB3cm90ZToN
-Cj4gIAkgDQo+IEV4dGVybmFsIGVtYWlsIDogUGxlYXNlIGRvIG5vdCBjbGljayBsaW5rcyBvciBv
-cGVuIGF0dGFjaG1lbnRzIHVudGlsDQo+IHlvdSBoYXZlIHZlcmlmaWVkIHRoZSBzZW5kZXIgb3Ig
-dGhlIGNvbnRlbnQuDQo+ICBPbiBTdW4sIDI4IEFwciAyMDI0IDIwOjI4OjM3IC0wNDAwDQo+IFN0
-ZXZlbiBSb3N0ZWR0IDxyb3N0ZWR0QGdvb2RtaXMub3JnPiB3cm90ZToNCj4gDQo+ID4gPiBMb29r
-aW5nIGZvciBhbnkgc3VnZ2VzdGlvbiBvciBzb2x1dGlvbiwgYXBwcmVjaWF0ZS4gIA0KPiA+IA0K
-PiA+IFllYWgsIEkgZG8gbm90IHRoaW5rIGV2ZW50ZnMgc2hvdWxkIGJlIGludm9sdmVkIGluIHRo
-aXMuIEl0IG5lZWRzDQo+IHRvIGJlDQo+ID4gcHJvdGVjdGVkIGF0IGEgaGlnaGVyIGxldmVsIChp
-biB0aGUgc3ludGhldGljL2R5bmFtaWMgZXZlbnQgY29kZSkuDQo+ID4gDQo+ID4gSSdtIGp1c3Qg
-Y29taW5nIGJhY2sgZnJvbSBKYXBhbiwgYW5kIEknbGwgbmVlZCB0byB0YWtlIGEgZGVlcGVyDQo+
-IGxvb2sgYXQNCj4gPiB0aGlzIGFmdGVyIEkgcmVjb3ZlciBmcm9tIG15IGpldGxhZy4NCj4gDQo+
-IE9LLCBzbyBJIGd1ZXNzIHRoZSBldmVudGZzIG5vZGVzIG5lZWQgYW4gb3B0aW9uYWwgcmVsZWFz
-ZSBjYWxsYmFjay4NCj4gSGVyZSdzDQo+IHRoZSByaWdodCB3YXkgdG8gZG8gdGhhdC4gSSBhZGRl
-ZCBhICJyZWxlYXNlIiBmdW5jdGlvbiB0byB0aGUgcGFzc2VkDQo+IGluDQo+IGVudHJ5IGFycmF5
-IHRoYXQgYWxsb3dzIGZvciBjYWxsaW5nIGEgcmVsZWFzZSBmdW5jdGlvbiB3aGVuIHRoZQ0KPiBl
-dmVudGZzX2lub2RlIGlzIGZyZWVkLiBUaGVuIGluIGNvZGUgZm9yIGNyZWF0aW5nIGV2ZW50cywg
-SSBjYWxsDQo+IGV2ZW50X2ZpbGVfZ2V0KCkgb24gdGhlIGZpbGUgYmVpbmcgYXNzaWduZWQgYW5k
-IGhhdmUgdGhlIGZyZWVpbmcgb2YNCj4gdGhlDQo+ICJlbmFibGUiIGZpbGUgaGF2ZSB0aGUgcmVs
-ZWFzZSBmdW5jdGlvbiB0aGF0IHdpbGwgY2FsbA0KPiBldmVudF9maWxlX3B1dCgpIG9uDQo+IHRo
-YXQgZmlsZSBzdHJ1Y3R1cmUuDQo+IA0KPiBEb2VzIHRoaXMgZml4IGl0IGZvciB5b3U/DQo+IA0K
-U29ycnkgZm9yIG15IGxhdGUgcmVwbHksIEknbSB0ZXN0aW5nIHRoZSBwYXRjaCBvbiBteSBtYWNo
-aW5lIG5vdy4gDQpUZXN0IHdpbGwgYmUgZG9uZSBpbiBmb3VyIGhvdXJzLg0KDQpUaGVyZSdzIHNv
-bWV0aGluZyBJJ20gd29ycnlpbmcgYWJvdXQgaW4gdGhlIHBhdGNoLA0Kd2hhdCBJJ20gd29ycnlp
-bmcgYWJvdXQgaXMgY29tbWVudGVkIGluIHRoZSBjb2RlIGJlbG93Lg0KDQova2VybmVsL3RyYWNl
-L3RyYWNlX2V2ZW50cy5jOg0KICBzdGF0aWMgaW50DQogIGV2ZW50X2NyZWF0ZV9kaXIoc3RydWN0
-IGV2ZW50ZnNfaW5vZGUgKnBhcmVudCwgDQogIHN0cnVjdCB0cmFjZV9ldmVudF9maWxlICpmaWxl
-KSANCiAgew0KICAgICAgICAuLi4NCiAgICAgICAgLi4uDQogICAgICAgIC4uLg0KICAgICAgICBu
-cl9lbnRyaWVzID0gQVJSQVlfU0laRShldmVudF9lbnRyaWVzKTsNCg0KICAgICAgICBuYW1lID0g
-dHJhY2VfZXZlbnRfbmFtZShjYWxsKTsNCg0KICAgICAgICArZXZlbnRfZmlsZV9nZXQoZmlsZSk7
-ICAgICAgICAvLyBMaW5lIEENCiAgICAgICAgICAgIF5eXl5eXl5eXl5eXl4NCiAgICAgICAgLy8g
-U2hvdWxkIHdlIG1vdmUgdGhlICJldmVudF9maWxlX2dldCIgdG8gaGVyZSwgaW5zdGVhZCAgDQog
-ICAgICAgIC8vIG9mIGNhbGxpbmcgaXQgYXQgbGluZSBDPw0KICAgICAgICAvLyBEdWUgdG8gTGlu
-ZSBCIGNvdWxkIGV2ZW50dWFsbHkgaW52b2tlICJldmVudF9maWxlX3B1dCIuDQogICAgICAgIC8v
-ICAgZXZlbnRmc19jcmVhdGVfZGlyIC0+IGZyZWVfZWkgLT5wdXRfZWkgLT4ga3JlZl9wdXQgDQog
-ICAgICAgIC8vICAtPiByZWxlYXNlX2VpIC0+IGV2ZW50X3JlbGVhc2UgLT4gZXZlbnRfZmlsZV9w
-dXQNCiAgICAgICAgLy8gTm90IHN1cmUgaWYgdGhpcyBpcyBhIHBvdGVudGlhbCByaXNrPyBJZiBM
-aW5lIEIgZG8gY2FsbCAgIA0KICAgICAgICAvLyBldmVudF9maWxlX3B1dCwiZXZlbnRfZmlsZV9w
-dXQiIHdpbGwgYmUgY2FsbGVkIHByaW9yIHRvDQogICAgICAgIC8vICJldmVudF9maWxlX2dldCIs
-IGNvdWxkIGNvcnJ1cHQgdGhlIHJlZmVyZW5jZSBvZiB0aGUgZmlsZS4NCg0KICAgICAgICBlaSA9
-IGV2ZW50ZnNfY3JlYXRlX2RpcihuYW1lLCBlX2V2ZW50cywgICAgLy8gTGluZSBCIA0KICAgICAg
-ICAgICAgIGV2ZW50X2VudHJpZXMsIG5yX2VudHJpZXMsIGZpbGUpOw0KICAgICAgICBpZiAoSVNf
-RVJSKGVpKSkgew0KICAgICAgICAgICAgICAgIHByX3dhcm4oIkNvdWxkIG5vdCBjcmVhdGUgdHJh
-Y2VmcyAnJXMnIGRpcmVjdG9yeVxuIiwgDQogICAgICAgICAgICAgICAgbmFtZSk7DQogICAgICAg
-ICAgICAgICAgcmV0dXJuIC0xOw0KICAgICAgICB9DQogICAgICAgIGZpbGUtPmVpID0gZWk7DQoN
-CiAgICAgICAgcmV0ID0gZXZlbnRfZGVmaW5lX2ZpZWxkcyhjYWxsKTsNCiAgICAgICAgaWYgKHJl
-dCA8IDApIHsNCiAgICAgICAgICAgICAgICBwcl93YXJuKCJDb3VsZCBub3QgaW5pdGlhbGl6ZSB0
-cmFjZSBwb2ludCBldmVudHMvJXNcbiIsDQpuYW1lKTsNCiAgICAgICAgICAgICAgICByZXR1cm4g
-cmV0Ow0KICAgICAgICAgICAgICAgICAgIF5eXl5eXl5eXiAgICAgICAgICANCiAgICAgICAvLyBN
-YXliZSB3ZSBjaG91bGQgaGF2ZSBzaW1pbGFyIGNvbmNlcm4gaWYgd2UgcmV0dXJuIGhlcmUuDQog
-ICAgICAgLy8gRHVlIHRvIHRoZSBldmVudF9pbm9kZSBoYWQgYmVlbiBjcmVhdGVkLCBidXQgd2Ug
-ZGlkIG5vdCBjYWxsIA0KICAgICAgIC8vIGV2ZW50X2ZpbGVfZ2V0LiANCiAgICAgICAvLyBDb3Vs
-ZCBpdCBsZWFkIHRvIHNvbWUgaXNzdWVzIGluIHRoZSBmdXR1cmUgd2hpbGUgZnJlZWluZyANCiAg
-ICAgICAvLyBldmVudF9pbmRvZT8NCiAgICAgICAgfQ0KDQoNCiAgICAgICAgLWV2ZW50X2ZpbGVf
-Z2V0KGZpbGUpOyAgICAgICAvL0xpbmUgQw0KICAgICAgICByZXR1cm4gMDsNCiAgfQ0KDQpUaGFu
-a3MsDQpUemUtbmFuDQoNCj4gLS0gU3RldmUNCj4gDQo+IGRpZmYgLS1naXQgYS9mcy90cmFjZWZz
-L2V2ZW50X2lub2RlLmMgYi9mcy90cmFjZWZzL2V2ZW50X2lub2RlLmMNCj4gaW5kZXggODk0YzZj
-YTFlNTAwLi5kYzk3YzE5ZjllMGEgMTAwNjQ0DQo+IC0tLSBhL2ZzL3RyYWNlZnMvZXZlbnRfaW5v
-ZGUuYw0KPiArKysgYi9mcy90cmFjZWZzL2V2ZW50X2lub2RlLmMNCj4gQEAgLTg0LDEwICs4NCwx
-NyBAQCBlbnVtIHsNCj4gIHN0YXRpYyB2b2lkIHJlbGVhc2VfZWkoc3RydWN0IGtyZWYgKnJlZikN
-Cj4gIHsNCj4gIHN0cnVjdCBldmVudGZzX2lub2RlICplaSA9IGNvbnRhaW5lcl9vZihyZWYsIHN0
-cnVjdCBldmVudGZzX2lub2RlLA0KPiBrcmVmKTsNCj4gK2NvbnN0IHN0cnVjdCBldmVudGZzX2Vu
-dHJ5ICplbnRyeTsNCj4gIHN0cnVjdCBldmVudGZzX3Jvb3RfaW5vZGUgKnJlaTsNCj4gIA0KPiAg
-V0FSTl9PTl9PTkNFKCFlaS0+aXNfZnJlZWQpOw0KPiAgDQo+ICtmb3IgKGludCBpID0gMDsgaSA8
-IGVpLT5ucl9lbnRyaWVzOyBpKyspIHsNCj4gK2VudHJ5ID0gJmVpLT5lbnRyaWVzW2ldOw0KPiAr
-aWYgKGVudHJ5LT5yZWxlYXNlKQ0KPiArZW50cnktPnJlbGVhc2UoZW50cnktPm5hbWUsIGVpLT5k
-YXRhKTsNCj4gK30NCj4gKw0KPiAga2ZyZWUoZWktPmVudHJ5X2F0dHJzKTsNCj4gIGtmcmVlX2Nv
-bnN0KGVpLT5uYW1lKTsNCj4gIGlmIChlaS0+aXNfZXZlbnRzKSB7DQo+IGRpZmYgLS1naXQgYS9p
-bmNsdWRlL2xpbnV4L3RyYWNlZnMuaCBiL2luY2x1ZGUvbGludXgvdHJhY2Vmcy5oDQo+IGluZGV4
-IDdhNWZlMTdiNmJmOS4uZDAzZjc0NjU4NzE2IDEwMDY0NA0KPiAtLS0gYS9pbmNsdWRlL2xpbnV4
-L3RyYWNlZnMuaA0KPiArKysgYi9pbmNsdWRlL2xpbnV4L3RyYWNlZnMuaA0KPiBAQCAtNjIsNiAr
-NjIsOCBAQCBzdHJ1Y3QgZXZlbnRmc19maWxlOw0KPiAgdHlwZWRlZiBpbnQgKCpldmVudGZzX2Nh
-bGxiYWNrKShjb25zdCBjaGFyICpuYW1lLCB1bW9kZV90ICptb2RlLA0KPiB2b2lkICoqZGF0YSwN
-Cj4gIGNvbnN0IHN0cnVjdCBmaWxlX29wZXJhdGlvbnMgKipmb3BzKTsNCj4gIA0KPiArdHlwZWRl
-ZiB2b2lkICgqZXZlbnRmc19yZWxlYXNlKShjb25zdCBjaGFyICpuYW1lLCB2b2lkICpkYXRhKTsN
-Cj4gKw0KPiAgLyoqDQo+ICAgKiBzdHJ1Y3QgZXZlbnRmc19lbnRyeSAtIGR5bmFtaWNhbGx5IGNy
-ZWF0ZWQgZXZlbnRmcyBmaWxlIGNhbGwgYmFjaw0KPiBoYW5kbGVyDQo+ICAgKiBAbmFtZTpUaGVu
-IG5hbWUgb2YgdGhlIGR5bmFtaWMgZmlsZSBpbiBhbiBldmVudGZzIGRpcmVjdG9yeQ0KPiBAQCAt
-NzIsNiArNzQsNyBAQCB0eXBlZGVmIGludCAoKmV2ZW50ZnNfY2FsbGJhY2spKGNvbnN0IGNoYXIg
-Km5hbWUsDQo+IHVtb2RlX3QgKm1vZGUsIHZvaWQgKipkYXRhLA0KPiAgc3RydWN0IGV2ZW50ZnNf
-ZW50cnkgew0KPiAgY29uc3QgY2hhcipuYW1lOw0KPiAgZXZlbnRmc19jYWxsYmFja2NhbGxiYWNr
-Ow0KPiArZXZlbnRmc19yZWxlYXNlcmVsZWFzZTsNCj4gIH07DQo+ICANCj4gIHN0cnVjdCBldmVu
-dGZzX2lub2RlOw0KPiBkaWZmIC0tZ2l0IGEva2VybmVsL3RyYWNlL3RyYWNlX2V2ZW50cy5jDQo+
-IGIva2VybmVsL3RyYWNlL3RyYWNlX2V2ZW50cy5jDQo+IGluZGV4IDUyZjc1YzM2YmJjYS4uZDE0
-Yzg0MjgxZjJiIDEwMDY0NA0KPiAtLS0gYS9rZXJuZWwvdHJhY2UvdHJhY2VfZXZlbnRzLmMNCj4g
-KysrIGIva2VybmVsL3RyYWNlL3RyYWNlX2V2ZW50cy5jDQo+IEBAIC0yNTUyLDYgKzI1NTIsMTQg
-QEAgc3RhdGljIGludCBldmVudF9jYWxsYmFjayhjb25zdCBjaGFyICpuYW1lLA0KPiB1bW9kZV90
-ICptb2RlLCB2b2lkICoqZGF0YSwNCj4gIHJldHVybiAwOw0KPiAgfQ0KPiAgDQo+ICsvKiBUaGUg
-ZmlsZSBpcyBpbmNyZW1lbnRlZCBvbiBjcmVhdGlvbiBhbmQgZnJlZWluZyB0aGUgZW5hYmxlIGZp
-bGUNCj4gZGVjcmVtZW50cyBpdCAqLw0KPiArc3RhdGljIHZvaWQgZXZlbnRfcmVsZWFzZShjb25z
-dCBjaGFyICpuYW1lLCB2b2lkICpkYXRhKQ0KPiArew0KPiArc3RydWN0IHRyYWNlX2V2ZW50X2Zp
-bGUgKmZpbGUgPSBkYXRhOw0KPiArDQo+ICtldmVudF9maWxlX3B1dChmaWxlKTsNCj4gK30NCj4g
-Kw0KPiAgc3RhdGljIGludA0KPiAgZXZlbnRfY3JlYXRlX2RpcihzdHJ1Y3QgZXZlbnRmc19pbm9k
-ZSAqcGFyZW50LCBzdHJ1Y3QNCj4gdHJhY2VfZXZlbnRfZmlsZSAqZmlsZSkNCj4gIHsNCj4gQEAg
-LTI1NjYsNiArMjU3NCw3IEBAIGV2ZW50X2NyZWF0ZV9kaXIoc3RydWN0IGV2ZW50ZnNfaW5vZGUg
-KnBhcmVudCwNCj4gc3RydWN0IHRyYWNlX2V2ZW50X2ZpbGUgKmZpbGUpDQo+ICB7DQo+ICAubmFt
-ZT0gImVuYWJsZSIsDQo+ICAuY2FsbGJhY2s9IGV2ZW50X2NhbGxiYWNrLA0KPiArLnJlbGVhc2U9
-IGV2ZW50X3JlbGVhc2UsDQo+ICB9LA0KPiAgew0KPiAgLm5hbWU9ICJmaWx0ZXIiLA0KPiBAQCAt
-MjYzNCw2ICsyNjQzLDkgQEAgZXZlbnRfY3JlYXRlX2RpcihzdHJ1Y3QgZXZlbnRmc19pbm9kZSAq
-cGFyZW50LA0KPiBzdHJ1Y3QgdHJhY2VfZXZlbnRfZmlsZSAqZmlsZSkNCj4gIHJldHVybiByZXQ7
-DQo+ICB9DQo+ICANCj4gKy8qIEdldHMgZGVjcmVtZW50ZWQgb24gZnJlZWluZyBvZiB0aGUgImVu
-YWJsZSIgZmlsZSAqLw0KPiArZXZlbnRfZmlsZV9nZXQoZmlsZSk7DQo+ICsNCj4gIHJldHVybiAw
-Ow0KPiAgfQ0KPiAgDQo=
+On Thu, 2 May 2024 03:10:24 +0000
+Tze-nan Wu (=E5=90=B3=E6=BE=A4=E5=8D=97) <Tze-nan.Wu@mediatek.com> wrote:
+
+> >  =20
+> Sorry for my late reply, I'm testing the patch on my machine now.=20
+> Test will be done in four hours.
+>=20
+> There's something I'm worrying about in the patch,
+> what I'm worrying about is commented in the code below.
+>=20
+> /kernel/trace/trace_events.c:
+>   static int
+>   event_create_dir(struct eventfs_inode *parent,=20
+>   struct trace_event_file *file)=20
+>   {
+>         ...
+>         ...
+>         ...
+>         nr_entries =3D ARRAY_SIZE(event_entries);
+>=20
+>         name =3D trace_event_name(call);
+>=20
+>         +event_file_get(file);        // Line A
+>             ^^^^^^^^^^^^^
+>         // Should we move the "event_file_get" to here, instead =20
+>         // of calling it at line C?
+>         // Due to Line B could eventually invoke "event_file_put".
+>         //   eventfs_create_dir -> free_ei ->put_ei -> kref_put=20
+>         //  -> release_ei -> event_release -> event_file_put
+>         // Not sure if this is a potential risk? If Line B do call  =20
+>         // event_file_put,"event_file_put" will be called prior to
+>         // "event_file_get", could corrupt the reference of the file.
+
+No, but you do bring up a good point. The release should not be called on
+error, but it looks like it possibly can be.
+
+>=20
+>         ei =3D eventfs_create_dir(name, e_events,    // Line B=20
+>              event_entries, nr_entries, file);
+>         if (IS_ERR(ei)) {
+>                 pr_warn("Could not create tracefs '%s' directory\n",=20
+>                 name);
+>                 return -1;
+>         }
+>         file->ei =3D ei;
+>=20
+>         ret =3D event_define_fields(call);
+>         if (ret < 0) {
+>                 pr_warn("Could not initialize trace point events/%s\n",
+> name);
+>                 return ret;
+>                    ^^^^^^^^^         =20
+>        // Maybe we chould have similar concern if we return here.
+>        // Due to the event_inode had been created, but we did not call=20
+>        // event_file_get.=20
+>        // Could it lead to some issues in the future while freeing=20
+>        // event_indoe?
+>         }
+>=20
+>=20
+>         -event_file_get(file);       //Line C
+>         return 0;
+>   }
+
+This prevents the release() function from being called on failure of
+creating the ei.
+
+Can you try this patch instead?
+
+-- Steve
+
+diff --git a/fs/tracefs/event_inode.c b/fs/tracefs/event_inode.c
+index 894c6ca1e500..f5510e26f0f6 100644
+--- a/fs/tracefs/event_inode.c
++++ b/fs/tracefs/event_inode.c
+@@ -84,10 +84,17 @@ enum {
+ static void release_ei(struct kref *ref)
+ {
+ 	struct eventfs_inode *ei =3D container_of(ref, struct eventfs_inode, kref=
+);
++	const struct eventfs_entry *entry;
+ 	struct eventfs_root_inode *rei;
+=20
+ 	WARN_ON_ONCE(!ei->is_freed);
+=20
++	for (int i =3D 0; i < ei->nr_entries; i++) {
++		entry =3D &ei->entries[i];
++		if (entry->release)
++			entry->release(entry->name, ei->data);
++	}
++
+ 	kfree(ei->entry_attrs);
+ 	kfree_const(ei->name);
+ 	if (ei->is_events) {
+@@ -112,6 +119,18 @@ static inline void free_ei(struct eventfs_inode *ei)
+ 	}
+ }
+=20
++/*
++ * Called when creation of an ei fails, do not call release() functions.
++ */
++static inline void cleanup_ei(struct eventfs_inode *ei)
++{
++	if (ei) {
++		/* Set nr_entries to 0 to prevent release() function being called */
++		ei->nr_entries =3D 0;
++		free_ei(ei);
++	}
++}
++
+ static inline struct eventfs_inode *get_ei(struct eventfs_inode *ei)
+ {
+ 	if (ei)
+@@ -734,7 +753,7 @@ struct eventfs_inode *eventfs_create_dir(const char *na=
+me, struct eventfs_inode
+=20
+ 	/* Was the parent freed? */
+ 	if (list_empty(&ei->list)) {
+-		free_ei(ei);
++		cleanup_ei(ei);
+ 		ei =3D NULL;
+ 	}
+ 	return ei;
+@@ -835,7 +854,7 @@ struct eventfs_inode *eventfs_create_events_dir(const c=
+har *name, struct dentry
+ 	return ei;
+=20
+  fail:
+-	free_ei(ei);
++	cleanup_ei(ei);
+ 	tracefs_failed_creating(dentry);
+ 	return ERR_PTR(-ENOMEM);
+ }
+diff --git a/include/linux/tracefs.h b/include/linux/tracefs.h
+index 7a5fe17b6bf9..d03f74658716 100644
+--- a/include/linux/tracefs.h
++++ b/include/linux/tracefs.h
+@@ -62,6 +62,8 @@ struct eventfs_file;
+ typedef int (*eventfs_callback)(const char *name, umode_t *mode, void **da=
+ta,
+ 				const struct file_operations **fops);
+=20
++typedef void (*eventfs_release)(const char *name, void *data);
++
+ /**
+  * struct eventfs_entry - dynamically created eventfs file call back handl=
+er
+  * @name:	Then name of the dynamic file in an eventfs directory
+@@ -72,6 +74,7 @@ typedef int (*eventfs_callback)(const char *name, umode_t=
+ *mode, void **data,
+ struct eventfs_entry {
+ 	const char			*name;
+ 	eventfs_callback		callback;
++	eventfs_release			release;
+ };
+=20
+ struct eventfs_inode;
+diff --git a/kernel/trace/trace_events.c b/kernel/trace/trace_events.c
+index 52f75c36bbca..6ef29eba90ce 100644
+--- a/kernel/trace/trace_events.c
++++ b/kernel/trace/trace_events.c
+@@ -2552,6 +2552,14 @@ static int event_callback(const char *name, umode_t =
+*mode, void **data,
+ 	return 0;
+ }
+=20
++/* The file is incremented on creation and freeing the enable file decreme=
+nts it */
++static void event_release(const char *name, void *data)
++{
++	struct trace_event_file *file =3D data;
++
++	event_file_put(file);
++}
++
+ static int
+ event_create_dir(struct eventfs_inode *parent, struct trace_event_file *fi=
+le)
+ {
+@@ -2566,6 +2574,7 @@ event_create_dir(struct eventfs_inode *parent, struct=
+ trace_event_file *file)
+ 		{
+ 			.name		=3D "enable",
+ 			.callback	=3D event_callback,
++			.release	=3D event_release,
+ 		},
+ 		{
+ 			.name		=3D "filter",
+@@ -2634,6 +2643,9 @@ event_create_dir(struct eventfs_inode *parent, struct=
+ trace_event_file *file)
+ 		return ret;
+ 	}
+=20
++	/* Gets decremented on freeing of the "enable" file */
++	event_file_get(file);
++
+ 	return 0;
+ }
+=20
 
