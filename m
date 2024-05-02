@@ -4,134 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7AFEC4345F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 May 2024 07:05:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F3AEC4345F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 May 2024 07:51:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=V3T3S0/ACanJIeY4czsTT+RTZ1YRol9ljsewIaXQads=; b=INvfRh+sKOXtgRG+/P35Pe4/9+
-	DQBplqqlFCxW6u4Kx0xzSfVjNAsErDXVFbFxxxZ+WxMH5bYtXjKFXb96sYDFBQT46o40yFhkR0TPb
-	aJMtNMnpZmD50fzwPm5/B49sSR3sGSmqiLyl0Er8QR8Ny8d+DfuMIBJJTMzKWBDFgsSm76hkDBMyC
-	U2tUYgc7VqUhIdlBO+n4kbxRng2rLk9ju75YXXAUG17ZrVCM8RCuFBuaZDuROOc7cgSFwVz/NiuSo
-	vJbB0L4O95SdDqm6KBVPVGzNeD9Bj53lVHxXeWfX1IHXiMEZ+t9YGh5jfygDzXJmoH661Qz8OZ5Di
-	iYAS2x9Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=juAuSH1JPhY7PWUJ70Ld08vmAUyCp8zbapAQIba/lj4=; b=qVPlecBnUXxpSZC4+hAxDS+qKl
+	/uh5QhD/oqxLi9Q+0h2Qu19lznOumX1xCI2yay6s/0nswEU3mVQ0UPvYgGA2ZfAF+gGtWY+6A+NUv
+	gJP/U/MDY2gWHR8FAxizEo8YJK4q+26lhR6RJFCJoTUIXaqIAIPWtAPgUK3mpBcdHkwfa+7ksQcZD
+	ykT8CnayDa+oVcHRRa4pcfUnBk9ttBYphRWS84ggEw03EZm9psW7wHTA1dMPai8BuSXs7QjEY/dM1
+	rBqPsDAdejrevouiaY0R7l8gVqdqhWe/I9gsn4aY93k93TgLkdqZ6BiybYx2CsIRJBWcmvbMPwqT8
+	UMpic9RA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2QVp-0000000BkBb-1Irm;
-	Thu, 02 May 2024 07:05:49 +0000
-Received: from mail-lj1-x231.google.com ([2a00:1450:4864:20::231])
+	id 1s2REE-0000000BsK8-1hpX;
+	Thu, 02 May 2024 07:51:42 +0000
+Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2QVi-0000000Bk7Q-3Zlc
+	id 1s2REB-0000000BsJO-11Mq
 	for linux-mediatek@lists.infradead.org;
-	Thu, 02 May 2024 07:05:44 +0000
-Received: by mail-lj1-x231.google.com with SMTP id 38308e7fff4ca-2d8a2cbe1baso99259801fa.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 02 May 2024 00:05:42 -0700 (PDT)
+	Thu, 02 May 2024 07:51:40 +0000
+Received: by mail-lf1-x132.google.com with SMTP id 2adb3069b0e04-516d3a470d5so9516864e87.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 02 May 2024 00:51:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1714633541; x=1715238341; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=V3T3S0/ACanJIeY4czsTT+RTZ1YRol9ljsewIaXQads=;
-        b=aXKJvxtz8iOdXrXIdNl4BHJIEoCVpNnV6wVONhV7ku0EoOMFfFsH8yfueEYU+mjsyN
-         aKnyxq3Y6Zb1tAHZg/Chv5Mb1NhhU4QLuL8VHcMy+ZFuGjELXhtvDRRnuleQ1Cx5BEum
-         D+jMbQF6EEqPsHnC00ibVxQW44nhMUeAJKcIqCKyZyp73V8Ho6h/M8tiynmPdxhZDykq
-         NeTn08E1ltjwkpOTELMqP329uyv/oVnu5iPUHjzJqO1VzeseaarFtNKgjqu7R4aD6TUk
-         2zuNB2qLINW6SdM1EWPjQUx+aKo2b7cEODBQKQcZUuRtNc+MkExjFSbqvE6tKifyHEzD
-         fpTg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1714633541; x=1715238341;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+        d=chromium.org; s=google; t=1714636296; x=1715241096; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=V3T3S0/ACanJIeY4czsTT+RTZ1YRol9ljsewIaXQads=;
-        b=tYBODEMXIsVDnNQ56gyPQQn3HywFa5INUUKzc3Hiezp3ST8bZoncCPtmd4/mYAtGQk
-         8ZKF0j8keoCA4a43wCDWt0Ywt8r42rZ6y78uHQFZXfeiaxvkSFh7v364MExuSLlevKn5
-         I+pyCqrLsTjJtqqdlLncaIXMKic5Uq7H9VRkC3V6ChFpKfXSYK+Xp8n2mcsVtSOQQZxD
-         kmEzyASiwmI8N0dSlAEJxaZUatqepuNW7LVG82HGvXAaMx12Iyu8YpEj1YH9MyEv9dPX
-         0mkXTmnhgZBHIohMFyCaFCekF3Mz8AV3mTzgs8bKbGQupYVmFSLYOgYCl4O4d5tr+xbM
-         0b+g==
-X-Forwarded-Encrypted: i=1; AJvYcCWFXEOd5AGvj0DzZfYhCpq7tNeyVGklc13674cHc6wzZKRfDB0sQ1GJ8aPxLauqjoMdK1K4V7ybmbxW7rbZZ7aq1KhTghfrGj0/X+vmtlLYv2I5
-X-Gm-Message-State: AOJu0YzYEuDkRO5LqslB+Hews9dz1cE6b19JJOKMkUPKFIwX1v+VPepm
-	eT1klixP3wBGC5174fHTW8v52a/ZFiPvzSgsqEj5V1k7V2IhHj0WNWBikrb9/Dw=
-X-Google-Smtp-Source: AGHT+IGHVWuyebZDGCsij4vuuCGXUnlNacdJhnGzP0jhAixWhDpzQ1nmi4t3DPfRBlZrMwTir+WhcA==
-X-Received: by 2002:a2e:a58e:0:b0:2d9:fb60:9afa with SMTP id m14-20020a2ea58e000000b002d9fb609afamr1096872ljp.40.1714633540084;
-        Thu, 02 May 2024 00:05:40 -0700 (PDT)
-Received: from localhost ([102.222.70.76])
-        by smtp.gmail.com with ESMTPSA id q26-20020a2e969a000000b002d860a40f9dsm69420lji.136.2024.05.02.00.05.39
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 02 May 2024 00:05:39 -0700 (PDT)
-Date: Thu, 2 May 2024 10:05:35 +0300
-From: Dan Carpenter <dan.carpenter@linaro.org>
-To: Peng Fan <peng.fan@nxp.com>
-Cc: "Peng Fan (OSS)" <peng.fan@oss.nxp.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Dvorkin Dmitry <dvorkin@tibbo.com>, Wells Lu <wellslutw@gmail.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Emil Renner Berthing <kernel@esmil.dk>,
-	Jianlong Huang <jianlong.huang@starfivetech.com>,
-	Hal Feng <hal.feng@starfivetech.com>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Viresh Kumar <vireshk@kernel.org>,
-	Shiraz Hashim <shiraz.linux.kernel@gmail.com>,
-	"soc@kernel.org" <soc@kernel.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Sylwester Nawrocki <s.nawrocki@samsung.com>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Patrice Chotard <patrice.chotard@foss.st.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Damien Le Moal <dlemoal@kernel.org>,
-	Ludovic Desroches <ludovic.desroches@microchip.com>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-	Aisheng Dong <aisheng.dong@nxp.com>,
-	Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>,
-	Jacky Bai <ping.bai@nxp.com>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Chester Lin <chester62515@gmail.com>,
-	Matthias Brugger <mbrugger@suse.com>,
-	"Ghennadi Procopciuc (OSS)" <ghennadi.procopciuc@oss.nxp.com>,
-	Sean Wang <sean.wang@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Andrew Jeffery <andrew@codeconstruct.com.au>,
-	Joel Stanley <joel@jms.id.au>,
-	"linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-tegra@vger.kernel.org" <linux-tegra@vger.kernel.org>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"linux-stm32@st-md-mailman.stormreply.com" <linux-stm32@st-md-mailman.stormreply.com>,
-	"linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>,
-	"linux-renesas-soc@vger.kernel.org" <linux-renesas-soc@vger.kernel.org>,
-	"linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
-	"linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"imx@lists.linux.dev" <imx@lists.linux.dev>,
-	"linux-aspeed@lists.ozlabs.org" <linux-aspeed@lists.ozlabs.org>,
-	"openbmc@lists.ozlabs.org" <openbmc@lists.ozlabs.org>
-Subject: Re: [PATCH 01/21] pinctrl: ti: iodelay: Use scope based
- of_node_put() cleanups
-Message-ID: <26aab31b-8085-49e0-862d-24c26ff4d02c@moroto.mountain>
-References: <20240501-pinctrl-cleanup-v1-0-797ceca46e5c@nxp.com>
- <20240501-pinctrl-cleanup-v1-1-797ceca46e5c@nxp.com>
- <ee5c8637-b8b2-491b-b011-e399942691dc@moroto.mountain>
- <DU0PR04MB9417AD5892A1A45E6AE18D8688182@DU0PR04MB9417.eurprd04.prod.outlook.com>
+        bh=juAuSH1JPhY7PWUJ70Ld08vmAUyCp8zbapAQIba/lj4=;
+        b=kxdTUX8uohaf6VlpKLKlno+CXCzDdPgrTNYl6UBbA9VyvNakG8M5FTTHPpNzAPhySY
+         Sm78DmS3EwUKaU7p46vamA50sz7cJdUtOhr0AOiMvGVJzyyANcv9tT7us7nlWvQVrNTU
+         oYfudHUWt6j8z/CUZVOvCcPrWTSC1qPtTGwsM=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1714636296; x=1715241096;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=juAuSH1JPhY7PWUJ70Ld08vmAUyCp8zbapAQIba/lj4=;
+        b=i70G2OOMaozQBalOz4yIaeXP9c37maebU0N1dsPE/XkAUiidDkslq1YHp07M0Kx1b2
+         Oe0xyffwgyReX6dwRRImoX+/biYh6Lzu94zUR417JdhtYKFomagNR5VZCXixmOK9dEUY
+         p/29duilH6Aik6tvlHsHTvK6vJnOPlVhYaPZ9sj9wnzHISOW+ruHSBL3VDuREKCMoPcQ
+         RmL1ghLxjGoX6plKqHcj8yTBkTxh1ShehMj0t0/BlCG8fOJIW0dq4Avi51eIacebvlD1
+         fofw0dEWLMPqSKYD7XKbSj0u1xlfmXo6Shi4c+0tEVeo6wRrll6W/duKgJ87lMmMLm86
+         ZwvA==
+X-Forwarded-Encrypted: i=1; AJvYcCVxaNX0zB4y92A5y1YcPERpgzVwHbLnvo6lN3vvjFj9D4+H2O6L1TKR7TMqCtonSMPk8WB/7p9I8XKFNZwU+rlA1tzPB4A0UycOxtiaGci3B2Zq
+X-Gm-Message-State: AOJu0YxBOtFfrP0ATy4KefAiilvfBl7PGU6eGrzKgXatU9Vr4NTnLqMY
+	Tk9m6X2PTFwvvjgZNFXG8SV52p1+j4lJATdUEt19bq0maMC8fL6PtB+9r8SFyloCSbMpcQeXjyV
+	xT5UhMmfydsxbysO2Nb+DQrHu38+YehwvGihCArQIlMv7kmY=
+X-Google-Smtp-Source: AGHT+IEAVYn1Zg5pB/+HWCfbuXWxOWUqPfY3srDAkAXrE3zW+4aKcPJ8YB092/ynCkhEGaNCe+bioePdFycOCNiVjR0=
+X-Received: by 2002:a05:6512:3108:b0:51e:12e2:2a1b with SMTP id
+ n8-20020a056512310800b0051e12e22a1bmr714499lfb.41.1714636295807; Thu, 02 May
+ 2024 00:51:35 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <DU0PR04MB9417AD5892A1A45E6AE18D8688182@DU0PR04MB9417.eurprd04.prod.outlook.com>
+References: <20240412073046.1192744-1-wenst@chromium.org> <20240412073046.1192744-2-wenst@chromium.org>
+ <171322232789.252337.16326980700188367647.robh@kernel.org>
+In-Reply-To: <171322232789.252337.16326980700188367647.robh@kernel.org>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Thu, 2 May 2024 15:51:24 +0800
+Message-ID: <CAGXv+5GroxzyUSQZNW-r9xt6Sgy+EGv3+08Htbb_ZcSRvaBR0Q@mail.gmail.com>
+Subject: Re: [PATCH v3 1/2] dt-bindings: net: bluetooth: Add MediaTek MT7921S
+ SDIO Bluetooth
+To: Luiz Augusto von Dentz <luiz.dentz@gmail.com>
+Cc: devicetree@vger.kernel.org, linux-bluetooth@vger.kernel.org, 
+	netdev@vger.kernel.org, Marcel Holtmann <marcel@holtmann.org>, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, Conor Dooley <conor+dt@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240502_000542_927554_186D0EB2 
-X-CRM114-Status: GOOD (  24.91  )
+X-CRM114-CacheID: sfid-20240502_005139_328669_36A9F684 
+X-CRM114-Status: GOOD (  20.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -146,53 +91,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, May 02, 2024 at 12:28:42AM +0000, Peng Fan wrote:
-> > Subject: Re: [PATCH 01/21] pinctrl: ti: iodelay: Use scope based of_node_put()
-> > cleanups
-> > 
-> > On Wed, May 01, 2024 at 08:55:59PM +0800, Peng Fan (OSS) wrote:
-> > > @@ -879,16 +874,12 @@ static int ti_iodelay_probe(struct
-> > platform_device *pdev)
-> > >  	ret = pinctrl_register_and_init(&iod->desc, dev, iod, &iod->pctl);
-> > >  	if (ret) {
-> > >  		dev_err(dev, "Failed to register pinctrl\n");
-> > > -		goto exit_out;
-> > > +		return ret;
-> > >  	}
-> > >
-> > >  	platform_set_drvdata(pdev, iod);
-> > >
-> > >  	return pinctrl_enable(iod->pctl);
-> > > -
-> > > -exit_out:
-> > > -	of_node_put(np);
-> > > -	return ret;
-> > >  }
-> > 
-> > This will call of_node_put() on the success path so it's a behavior change.  The
-> > original code is buggy, it's supposed to call of_node_put() on the success path
-> > here or in ti_iodelay_remove().
-> > 
-> > If it's supposed to call of_node_put() here, then fine, this is bugfix but if it's
-> > supposed to call it in ti_iodelay_remove() then we need to save the pointer
-> > somewhere using no_free_ptr().  Probably saving ->np is the safest choice?
-> > 
-> > The original code is already a little bit buggy because it doesn't check for
-> > pinctrl_enable() errors and cleanup.
-> 
-> It was introduced by 
-> commit 6118714275f0a313ecc296a87ed1af32d9691bed (tag: pinctrl-v4.11-4)
-> Author: Tony Lindgren <tony@atomide.com>
-> Date:   Thu Mar 30 09:16:39 2017 -0700
-> 
->     pinctrl: core: Fix pinctrl_register_and_init() with pinctrl_enable()
-> 
-> of_node_put is expected in probe, not in remove.
-> 
+On Tue, Apr 16, 2024 at 7:05=E2=80=AFAM Rob Herring <robh@kernel.org> wrote=
+:
+> On Fri, 12 Apr 2024 15:30:42 +0800, Chen-Yu Tsai wrote:
+> > The MediaTek MT7921S is a WiFi/Bluetooth combo chip that works over
+> > SDIO. WiFi and Bluetooth are separate SDIO functions within the chip.
+> > While the Bluetooth SDIO function is fully discoverable, the chip has
+> > a pin that can reset just the Bluetooth core, as opposed to the full
+> > chip. This should be described in the device tree.
+> >
+> > Add a device tree binding for the Bluetooth SDIO function of the MT7921=
+S
+> > specifically to document the reset line. This binding is based on the M=
+MC
+> > controller binding, which specifies one device node per SDIO function.
+> >
+> > Cc: Sean Wang <sean.wang@mediatek.com>
+> > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> > ---
+> > Changes since v2:
+> > - Expand description and commit message to clearly state that WiFi and
+> >   Bluetooth are separate SDIO functions, and that each function should
+> >   be a separate device node, as specified by the MMC binding.
+> > - Change 'additionalProperties' to 'unevaluatedProperties'
+> > - Add missing separating new line
+> > - s/ot/to/
+> >
+> > Angelo's reviewed-by was not picked up due to the above changes.
+> >
+> > Changes since v1:
+> > - Reworded descriptions
+> > - Moved binding maintainer section before description
+> > - Added missing reference to bluetooth-controller.yaml
+> > - Added missing GPIO header to example
+> > ---
+> >  .../bluetooth/mediatek,mt7921s-bluetooth.yaml | 55 +++++++++++++++++++
+> >  MAINTAINERS                                   |  1 +
+> >  2 files changed, 56 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/net/bluetooth/med=
+iatek,mt7921s-bluetooth.yaml
+> >
+>
+> Reviewed-by: Rob Herring <robh@kernel.org>
 
-Ah, right.  You'll add that for the Fixes tag obviously...
+Luiz, could you pick up this patch?
 
-regards,
-dan carpenter
+The other one is already merged in the MediaTek tree.
 
+
+Thanks!
+ChenYu
 
