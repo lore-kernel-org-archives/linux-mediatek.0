@@ -4,70 +4,186 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 515ADC4345F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 May 2024 11:46:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6F20C4345F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 May 2024 11:52:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dSpJSOC9OoMfwaxFo9XXw230ZGEEADTBxXaORyFZ0gU=; b=qfoIT4DDmRmmoBtrYSYUR5/6QW
-	GtODLTlBQCdJNcaRWBytiGW5dvILft7jTbgeTketLsgUXuZYiDzgVHeQ2sXqkvduPda4+ala4y3Fk
-	MGpmzdPBLglvmO7ZAMZ03JBekFiwUTD+Au92uBk19Tnd1Dm2bRUiZb6Z2fvC9ogiQ2u+4t8pGS4PR
-	ND7lGnOIFVFHX/TA1t+1c0L12aRpAbYI61esDh84JQc+7auFjfsou8Hf6KW5XdClpq7bhku25fQ77
-	8RAMq2eQWcDx3znme0+oLf8B7bXweXO/oDtLdn1yaCrNIqFDOvCRNSOOsw/ZVCbNGTqcdjrKbx0fK
-	0eS9bH+w==;
+	bh=B3PHUy5vECVwJTbA3EeCiSpXPl8wW/Q54i9MRc1d76M=; b=marzgiiDN2+5iNRHL2sNr+WIqP
+	bS414WzOoX71ull4gj3zcnu3s/lfNvlyHIEp/lKCYuZ4EzS1JkTBTxeBxB4lnXJ869IHwY3XHO/7M
+	8MRsmowIPOozVQbsYnBpt1gqGSrcTjjNl+QdwXXN0u+um5KXwgCGjbtRrsSsuCAoyvnEoyvYZcGx5
+	yh742HDGjmszUNJjdt0X0edzEgIhoMu7cQoHi1cY1+CWXCrebkxomNg+YCWUGX4gM3a/vyJBmUqtY
+	s71FzTsJ/rvxEcRQmuk3+9WLoSGv+xgNTGbOtLaVCb6C0qXygyopTycGf0i5vz9H8A/y5TL0yoxHr
+	OKoe0tOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2Usz-0000000CYM8-1yIA;
-	Thu, 02 May 2024 11:46:01 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1s2Uza-0000000CZ1Q-0sGs;
+	Thu, 02 May 2024 11:52:50 +0000
+Received: from mail-he1eur04on20601.outbound.protection.outlook.com ([2a01:111:f403:260f::601] helo=EUR04-HE1-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2Tqh-0000000CMLA-14Tj;
-	Thu, 02 May 2024 10:39:47 +0000
-X-UUID: 42ccd11a087011ef9a78ddf43a9225dc-20240502
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=dSpJSOC9OoMfwaxFo9XXw230ZGEEADTBxXaORyFZ0gU=;
-	b=JdCp+rZEkkMLPcObeww1i9mqGQ6mzfuZQiP9/2nhn5qJ1xYAxb4rDjZg7PbCqM56H9t1h0ElRaddTTSbc8BuCZo6KDzOTBN3bkggxauz6PKKrMV/hqOMA2/Fo8Gr5SH/9PObTtyW3UTKZnVLsiUKDLpOqeNzsRY8QC26OOjP2ds=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.38,REQID:2e40afd3-fd20-4cb7-a386-36c13cc64642,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:82c5f88,CLOUDID:f5325e83-4f93-4875-95e7-8c66ea833d57,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 42ccd11a087011ef9a78ddf43a9225dc-20240502
-Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
-	(envelope-from <shawn.sung@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 906994148; Thu, 02 May 2024 03:39:32 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 2 May 2024 18:38:58 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 2 May 2024 18:38:58 +0800
-From: Shawn Sung <shawn.sung@mediatek.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v7 18/18] drm/mediatek: Support CRC in OVL adaptor
-Date: Thu, 2 May 2024 18:38:48 +0800
-Message-ID: <20240502103848.5845-19-shawn.sung@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20240502103848.5845-1-shawn.sung@mediatek.com>
-References: <20240502103848.5845-1-shawn.sung@mediatek.com>
+	id 1s2UzT-0000000CYzs-2FKt;
+	Thu, 02 May 2024 11:52:45 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=amkq2WvQu1QnHu0iqYK8uFbi9ZQL4oRc9+xfb4teV1gVSCP9xohbP+SJ/EOMff+wnRK/WS3FDcMKThMhzsQD+enz8o4yaharEp6dJmnW5s7I1XRgXQsol/FQ5ebk9YzlMiGeTGtETLnqlS4dnj3HheXTu7ykLQJ79X9cid8DogphcfeWe4SAV5aHB6JJt05tkfw8QCfRLFyxtSNmZnGsj6GhWxUcg2IatrkQNal8jG/Cd8hYSoyIhCF2xRwY3/itmHGrxZ/HXQe6/hbtTzp3lfl7dv8N0eFgbf2EnDWKbjFbnFuyjo6JTwWucprxvwHryHpYTqv7HRQ8VEPN2nS0Nw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=B3PHUy5vECVwJTbA3EeCiSpXPl8wW/Q54i9MRc1d76M=;
+ b=bt/2X80w96VGiwheYWd+8dVrjTjXptr1VymkvoqbKu1vAw8SUiAe1KenigSowq/zBJlPG/hH9bm16OjbMXwAkZ9dWmu7bBIQaAmK+djg5MDH4zVykVeHVnQLjz/oAbwmUDCIrzxRwQh/1zpypVu472/7gKXPtF64Mlz0JUiY+dNIaRUACpKyOtiwXF5gvCNtAyaj/g6E5BywuypSp1LFq8+znJc7rmKsDCvvWTQ/qnDvAlbaa/Bnvdz6q/rwi36D4MMp5g5DwSU4vVhYWJ6r0nl+aNGTEKWKlBj/YEItAhfhkaVoBFfruUPS6jwE7GYro0t0FocZmanR7f4balj+RQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=B3PHUy5vECVwJTbA3EeCiSpXPl8wW/Q54i9MRc1d76M=;
+ b=SszB80WYZhK+UgxTwpiL4kAN9Zpiw/xbhvlF/o8isdnDhYz0TVvj2R5FOewd4ZKs1beZtLDkIc3gQlbkK+v6j2/+iYpFmZ/4A9+KMACTIFe83rKgz0kYS4IXFtg/YPm0Kc4Ensfjn1BOFEALUHb/0q8gwFwspNTD5nk4NwXclho=
+Received: from DU0PR04MB9417.eurprd04.prod.outlook.com (2603:10a6:10:358::11)
+ by DB9PR04MB8431.eurprd04.prod.outlook.com (2603:10a6:10:24e::7) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7519.39; Thu, 2 May
+ 2024 11:52:35 +0000
+Received: from DU0PR04MB9417.eurprd04.prod.outlook.com
+ ([fe80::d30b:44e7:e78e:662d]) by DU0PR04MB9417.eurprd04.prod.outlook.com
+ ([fe80::d30b:44e7:e78e:662d%4]) with mapi id 15.20.7544.029; Thu, 2 May 2024
+ 11:52:35 +0000
+From: Peng Fan <peng.fan@nxp.com>
+To: Andrew Jeffery <andrew@codeconstruct.com.au>, "Peng Fan (OSS)"
+	<peng.fan@oss.nxp.com>, Linus Walleij <linus.walleij@linaro.org>, Thierry
+ Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>,
+	Dvorkin Dmitry <dvorkin@tibbo.com>, Wells Lu <wellslutw@gmail.com>, Maxime
+ Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue
+	<alexandre.torgue@foss.st.com>, Emil Renner Berthing <kernel@esmil.dk>,
+	Jianlong Huang <jianlong.huang@starfivetech.com>, Hal Feng
+	<hal.feng@starfivetech.com>, Orson Zhai <orsonzhai@gmail.com>, Baolin Wang
+	<baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>, Viresh
+ Kumar <vireshk@kernel.org>, Shiraz Hashim <shiraz.linux.kernel@gmail.com>,
+	"soc@kernel.org" <soc@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>,
+	Sylwester Nawrocki <s.nawrocki@samsung.com>, Alim Akhtar
+	<alim.akhtar@samsung.com>, Geert Uytterhoeven <geert+renesas@glider.be>,
+	Patrice Chotard <patrice.chotard@foss.st.com>, Heiko Stuebner
+	<heiko@sntech.de>, Damien Le Moal <dlemoal@kernel.org>, Ludovic Desroches
+	<ludovic.desroches@microchip.com>, Nicolas Ferre
+	<nicolas.ferre@microchip.com>, Alexandre Belloni
+	<alexandre.belloni@bootlin.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+	Aisheng Dong <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>,
+	Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, Pengutronix
+ Kernel Team <kernel@pengutronix.de>, Chester Lin <chester62515@gmail.com>,
+	Matthias Brugger <mbrugger@suse.com>, "Ghennadi Procopciuc (OSS)"
+	<ghennadi.procopciuc@oss.nxp.com>, Sean Wang <sean.wang@kernel.org>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Sascha Hauer
+	<s.hauer@pengutronix.de>, Joel Stanley <joel@jms.id.au>, Dan Carpenter
+	<dan.carpenter@linaro.org>
+CC: "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-tegra@vger.kernel.org" <linux-tegra@vger.kernel.org>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>,
+	"linux-stm32@st-md-mailman.stormreply.com"
+	<linux-stm32@st-md-mailman.stormreply.com>,
+	"linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>,
+	"linux-renesas-soc@vger.kernel.org" <linux-renesas-soc@vger.kernel.org>,
+	"linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
+	"linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"imx@lists.linux.dev" <imx@lists.linux.dev>, "linux-aspeed@lists.ozlabs.org"
+	<linux-aspeed@lists.ozlabs.org>, "openbmc@lists.ozlabs.org"
+	<openbmc@lists.ozlabs.org>
+Subject: RE: [PATCH 20/21] pinctrl: aspeed: g5: Use scope based of_node_put()
+ cleanups
+Thread-Topic: [PATCH 20/21] pinctrl: aspeed: g5: Use scope based of_node_put()
+ cleanups
+Thread-Index: AQHam8aaaSsA7ukUMEKRJbR3/u/LvLGDHuAAgAC3pIA=
+Date: Thu, 2 May 2024 11:52:35 +0000
+Message-ID: <DU0PR04MB9417870C10E47E1AF8557ECD88182@DU0PR04MB9417.eurprd04.prod.outlook.com>
+References: <20240501-pinctrl-cleanup-v1-0-797ceca46e5c@nxp.com>
+	 <20240501-pinctrl-cleanup-v1-20-797ceca46e5c@nxp.com>
+ <eda5b1da03d4adfa5761c49527a9232ec7facae3.camel@codeconstruct.com.au>
+In-Reply-To: <eda5b1da03d4adfa5761c49527a9232ec7facae3.camel@codeconstruct.com.au>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nxp.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: DU0PR04MB9417:EE_|DB9PR04MB8431:EE_
+x-ms-office365-filtering-correlation-id: 2f5bda49-263b-41d0-4907-08dc6a9e5b87
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;ARA:13230031|376005|1800799015|7416005|366007|38070700009|921011;
+x-microsoft-antispam-message-info: =?us-ascii?Q?En67lJh5OpmXGA0+qkvw/pUmZyYDav18gPEdojMdTFCCRoPg7jJbAGXsqE1d?=
+ =?us-ascii?Q?lUJdr15c3v1kma7D72rfUWfwJ/4mQIwe5HDrGKZ4dAOgC9meXQkXAtSepcZg?=
+ =?us-ascii?Q?xlyn2onvraEcOEsQ825+OiQ7KtvCvKzK6+g5hfcNZHFdEXZRGzxew3kCYwnR?=
+ =?us-ascii?Q?s0nXZ30kFsouLoE75VFkZX5W/qZHVM2ngn22qSUJhZrmDeVR5AipeUS7lro1?=
+ =?us-ascii?Q?g6F9y6qSf0Srm+aZ50bZbwZ+Gg6RpgBGDMwzQnEbIQWnWL8xlWn439W/CEK5?=
+ =?us-ascii?Q?Xs5IrLXdEDrHX3UwDsDGWP/ezDdsMlQtA4ZRS2eEnRji9H2LBqTBSaRG0Z1k?=
+ =?us-ascii?Q?/w3AVZG4+brm2Ix5sAXrgl+e1suwMEBnfxOcYlg0Bb0Eig2gVtL0tB7cfJld?=
+ =?us-ascii?Q?mzzQSUlTN7h5CblRlGS+BhZZ9bzUtJbXlZDvnVtGbt49JWIKEdF2HIn+dm0R?=
+ =?us-ascii?Q?Kcbhos3Ho20Opac25GHkywDqcbzLKq/BqXKCCheCx2MRGyIEKr4frEg23jpn?=
+ =?us-ascii?Q?ZbHTkzOEJvVcCpED5rSJjUOPZcg54KEFqK2OO3zgZ4J4arq0HEO/ZIxwdUyX?=
+ =?us-ascii?Q?z3gjGC5EWmIe4M3FZyyYgxzkNxBnsSYhGumqpqpHLcDPAX5nOWKogQ7tyYeM?=
+ =?us-ascii?Q?yzDPrLpjOqb8Fl5XANXoLa1hUQVmuFAGp4DWZk8U7SgWCioKGQDkKMAqD89Q?=
+ =?us-ascii?Q?E3U3EBuKEQT1jWHc9a0u2K1OkbY/OgcehxN2Gyu7dcEC9nMwxzGaO9r3eQQJ?=
+ =?us-ascii?Q?vko3tTZ98gcvSiv1Ilej61ptc25/vPPLyJ9EeKwCV9CCPwtrpbYi4hokD9p8?=
+ =?us-ascii?Q?qUYcxL4UQJG9HZoGm6LqghOk8cfhlPORzUwQNdZUllZ2xifHmh/O0QxHwzz6?=
+ =?us-ascii?Q?2tBJxJOedVGOFa6pfHcJ4bA0V4tGcOyPM96Zq7Ubx/fMhMiwhkPxXhV9cbCU?=
+ =?us-ascii?Q?ym8n0jat5deQQk2RS8BGYF0WBhFacMIz8IBsnWMn4GECzTjcH0OiquZMxksp?=
+ =?us-ascii?Q?EYGmoJW5Lf76fZMmRopM/nPUYb8gDFG3+1oS2uuV4ZJZt/ymzce9rFIHAQGu?=
+ =?us-ascii?Q?nyoNEiHdcprjMk8c2Er4a2Uz9O+4a49rY4TzGocjPaGFyjF2WBGADAiAuGlw?=
+ =?us-ascii?Q?TPUUjcXrmJ7IiwAh7H4U2nG6mFXEy1REXCKxpV+KXG8/PvLpDdGolxxLdeLv?=
+ =?us-ascii?Q?TqJbmNsfTwSdSzoPUidPWbguH6TkMO0l+xI3n5QB0t2haIDkgusbg10aTnZv?=
+ =?us-ascii?Q?M2+jg3ZZ50duP8JUg1ia+BcNdAU43cEO8oYdgoTWY+dGOJGtBUhxgdmJf7vg?=
+ =?us-ascii?Q?ikY=3D?=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU0PR04MB9417.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(376005)(1800799015)(7416005)(366007)(38070700009)(921011);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?Bc5jUGsgYHqzOvX+49kv1vg8rkGxOqmxB19PbkLxadanRzcC4hyxC81OQzJA?=
+ =?us-ascii?Q?uImQSJvjYauT9dWSJ49e7zG76oDLPhHGbfo3cPzY08RtQ7aBYh8vHzMLbImd?=
+ =?us-ascii?Q?X476mh3XTky/N8WZMW8MGVx2Hbs2hoovM7DkVrvA4z+u1LYMxShcYlMVg4Au?=
+ =?us-ascii?Q?FG7JtKVJyU2ZxMPoTwZHhxeOM7s/FWyqzxXNyBxWNNe8NsTIbanSpYEwuQyD?=
+ =?us-ascii?Q?OLAfgYqz5N1PMs9+x4D8+OYSQpb6+5n+OaReIufJl2SLT7XrrFP6trYxe6Fb?=
+ =?us-ascii?Q?aA1FASzHDXowbzrMaJf10vFepK2Gas6YK4lAgYzjrRGWRk3r2hBsHvVdMcMF?=
+ =?us-ascii?Q?fG038CoxkgxU8eTqZwNMaasd9FVqH6wb9o28ZL3iIjE8tftRPTyndGMguFDv?=
+ =?us-ascii?Q?bLSV3n3SU5IuSGAvRMvBRzMlEpK4NGCjRtSm235hrwHHSSpHHieZJvwUIPYj?=
+ =?us-ascii?Q?Aae/2TA1PaipQgCEKCujF75CFEdmrf/tQbYXEGHaVeCjlfd8i4A/++VLzZBp?=
+ =?us-ascii?Q?sP69CX9E+B/EA33+33l1RynEAjQPzwxmOAuQP1u7pEh9UDoqkrA6EUPNCFB6?=
+ =?us-ascii?Q?ZfunHuJdBH8D7UNGWwtvb60cPAEGYC835qiHpoDKo9lWgkns08ewycKtxvNS?=
+ =?us-ascii?Q?lII6aFfmqjSHTjc4uvGPPXOk7tFpTKHZyr2R5tvvG0O0miBcZgOy9GEHYpAp?=
+ =?us-ascii?Q?MSE/ry1PDN3lcCvifLRjye7cEOkPjypYq+MJH9Nrbb5fFyGfQHRPDhuOaMQM?=
+ =?us-ascii?Q?iDCbeBKztne7LVXW4HAuiiNWVC54QLJVsk71xIl5U3/8q92OziQJdvOHplwB?=
+ =?us-ascii?Q?ZBArbj2C/yh/nuTwSixJUN/kPEZmHnIBZLOUM3vH8GcOn7b3wbUCje8zSKx0?=
+ =?us-ascii?Q?0HYhWd1eoDQwpkZmlJ8pLdZBRayrP3FDIkTEmTZVrDDgPawYgLHqfcJ4ANpr?=
+ =?us-ascii?Q?w+ty81gFHx5DkLwi15SAVmVJ7d+oLD/b3apTpVsUD9nYdfM7Zt49KOOhVJ/O?=
+ =?us-ascii?Q?s+cMEr8pGxzMOEvAqzxtU7LE87I7kvo9Xg1zmbNGrbckcoAO7bTyhH8f8BRX?=
+ =?us-ascii?Q?rOGKf8Kl2VbBpJrc5vBZyjUu6aTlPuTjvbUNA74LRMPnTcIB1cBs9LlZzYQK?=
+ =?us-ascii?Q?7mBmSalX0XW8G9AzZFQDj8+UyxQn5Jt32vlgbv88yL7QsiGaA8gD1fRpaaxK?=
+ =?us-ascii?Q?L7wepYAzDaxnqHFj5jVWmUfGHAFuD1mwm8YrGm68OXz/r3rQ2pTSEteB2MYI?=
+ =?us-ascii?Q?vwkAfTNV7GWDMMaQ6W7eH3m477jmVxe+kotSwQuVtBD867UbehPZC9MUTqDz?=
+ =?us-ascii?Q?PzKWN+HdX54Hc674QVdEaBYOaYZ48TvydoD8cA9flM8d5E5B4p63/ChMLLp2?=
+ =?us-ascii?Q?DCfZ2ZIptoD8TLXWRIaKtNeR+nnCsKtPOEr9afosVgCAFxC0PVroBcUJu9wo?=
+ =?us-ascii?Q?zUxTG4lBb16Qz4Lb6cw6DxoQe7CEY6jMvCRRd4dt4LNIujGXNuNRxPAKpYGu?=
+ =?us-ascii?Q?xo713XexTSR/P5c33sNiL9rp5a++XYj8jgKNb2LFn99HqSvE9ojYTNZSPpcq?=
+ =?us-ascii?Q?RHZ6yXiNJrAM+Gupl8c=3D?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: DU0PR04MB9417.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 2f5bda49-263b-41d0-4907-08dc6a9e5b87
+X-MS-Exchange-CrossTenant-originalarrivaltime: 02 May 2024 11:52:35.2518
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: C2ftlX9BDVLp0UwX6Z6D0XfhGfpFPf+aQRsjHzlhDpcxVKPCMIZpR6rEx5g577LBG62VsxhF59Y+gj+QBvuicA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB9PR04MB8431
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240502_033935_632303_0C98DDAD 
-X-CRM114-Status: GOOD (  17.86  )
+X-CRM114-CacheID: sfid-20240502_045243_715037_BAAA2C80 
+X-CRM114-Status: GOOD (  23.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,233 +195,94 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Daniel Vetter <daniel@ffwll.ch>, Sean Paul <sean@poorly.run>, Jason Chen <jason-ch.chen@mediatek.corp-partner.google.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, CK Hu <ck.hu@mediatek.com>, "Nancy .
- Lin" <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, Bibby Hsieh <bibby.hsieh@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, Hsiao Chien Sung <shawn.sung@mediatek.com>, David Airlie <airlied@gmail.com>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Hsiao Chien Sung <shawn.sung@mediatek.com>
+> Subject: Re: [PATCH 20/21] pinctrl: aspeed: g5: Use scope based
+> of_node_put() cleanups
+>
+> On Wed, 2024-05-01 at 20:56 +0800, Peng Fan (OSS) wrote:
+> > From: Peng Fan <peng.fan@nxp.com>
+> >
+> > Use scope based of_node_put() cleanup to simplify code.
+> >
+> > Signed-off-by: Peng Fan <peng.fan@nxp.com>
+> > ---
+> >  drivers/pinctrl/aspeed/pinctrl-aspeed-g5.c | 6 ++----
+> >  1 file changed, 2 insertions(+), 4 deletions(-)
+> >
+> > diff --git a/drivers/pinctrl/aspeed/pinctrl-aspeed-g5.c
+> > b/drivers/pinctrl/aspeed/pinctrl-aspeed-g5.c
+> > index 5bb8fd0d1e41..61fbfddb5938 100644
+> > --- a/drivers/pinctrl/aspeed/pinctrl-aspeed-g5.c
+> > +++ b/drivers/pinctrl/aspeed/pinctrl-aspeed-g5.c
+> > @@ -2629,14 +2629,13 @@ static struct regmap
+> *aspeed_g5_acquire_regmap(struct aspeed_pinmux_data *ctx,
+> >             return ctx->maps[ip];
+> >
+> >     if (ip =3D=3D ASPEED_IP_GFX) {
+> > -           struct device_node *node;
+> > +           struct device_node *node __free(device_node) =3D NULL;
+> >             struct regmap *map;
+> >
+> >             node =3D of_parse_phandle(ctx->dev->of_node,
+> >                                     "aspeed,external-nodes", 0);
+> >             if (node) {
+> >                     map =3D syscon_node_to_regmap(node);
+> > -                   of_node_put(node);
+> >                     if (IS_ERR(map))
+> >                             return map;
+> >             } else
+> > @@ -2648,7 +2647,7 @@ static struct regmap
+> *aspeed_g5_acquire_regmap(struct aspeed_pinmux_data *ctx,
+> >     }
+> >
+> >     if (ip =3D=3D ASPEED_IP_LPC) {
+> > -           struct device_node *np;
+> > +           struct device_node *np __free(device_node) =3D NULL;
+> >             struct regmap *map;
+> >
+> >             np =3D of_parse_phandle(ctx->dev->of_node,
+> > @@ -2660,7 +2659,6 @@ static struct regmap
+> *aspeed_g5_acquire_regmap(struct aspeed_pinmux_data *ctx,
+> >                             return ERR_PTR(-ENODEV);
+> >
+> >                     map =3D syscon_node_to_regmap(np->parent);
+> > -                   of_node_put(np);
+> >                     if (IS_ERR(map))
+> >                             return map;
+>
+> I think I agree with Krzysztof's feedback on the Samsung patch[1], and th=
+at I
+> prefer the existing approach for the Aspeed driver. My reasoning suggests=
+ the
+> existing implementation does the right thing. That said, the code could b=
+e
+> adjusted to use early returns and consistent variable names, which might
+> make it easier to reason about.
 
-We choose Mixer as CRC generator in OVL adaptor since
-its frame done event will trigger vblanks, we can know
-when is safe to retrieve CRC of the frame.
+No problem, let's keep the code as it is.
 
-In OVL adaptor, there's no image procession after Mixer,
-unlike the OVL in VDOSYS0, Mixer's CRC will include all
-the effects that are applied to the frame.
+Thanks,
+Peng
 
-Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_ddp_comp.c       |  3 +
- drivers/gpu/drm/mediatek/mtk_disp_drv.h       |  3 +
- .../gpu/drm/mediatek/mtk_disp_ovl_adaptor.c   | 21 +++++++
- drivers/gpu/drm/mediatek/mtk_ethdr.c          | 61 +++++++++++++++++++
- drivers/gpu/drm/mediatek/mtk_ethdr.h          |  5 ++
- 5 files changed, 93 insertions(+)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
-index cb71effda9c2a..8aab373ce67c9 100644
---- a/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
-@@ -406,6 +406,9 @@ static const struct mtk_ddp_comp_funcs ddp_ovl_adaptor = {
- 	.clk_enable = mtk_ovl_adaptor_clk_enable,
- 	.clk_disable = mtk_ovl_adaptor_clk_disable,
- 	.config = mtk_ovl_adaptor_config,
-+	.crc_cnt = mtk_ovl_adaptor_crc_cnt,
-+	.crc_entry = mtk_ovl_adaptor_crc_entry,
-+	.crc_read = mtk_ovl_adaptor_crc_read,
- 	.start = mtk_ovl_adaptor_start,
- 	.stop = mtk_ovl_adaptor_stop,
- 	.layer_nr = mtk_ovl_adaptor_layer_nr,
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-index c476056a5cbb5..24af08b1c86d6 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-@@ -138,6 +138,9 @@ const u32 *mtk_ovl_adaptor_get_formats(struct device *dev);
- size_t mtk_ovl_adaptor_get_num_formats(struct device *dev);
- enum drm_mode_status mtk_ovl_adaptor_mode_valid(struct device *dev,
- 						const struct drm_display_mode *mode);
-+size_t mtk_ovl_adaptor_crc_cnt(struct device *dev);
-+u32 *mtk_ovl_adaptor_crc_entry(struct device *dev);
-+void mtk_ovl_adaptor_crc_read(struct device *dev);
- 
- void mtk_rdma_bypass_shadow(struct device *dev);
- int mtk_rdma_clk_enable(struct device *dev);
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
-index 2b62d64759181..4995a359e6406 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
-@@ -207,6 +207,27 @@ void mtk_ovl_adaptor_layer_config(struct device *dev, unsigned int idx,
- 	mtk_ethdr_layer_config(ethdr, idx, state, cmdq_pkt);
- }
- 
-+size_t mtk_ovl_adaptor_crc_cnt(struct device *dev)
-+{
-+	struct mtk_disp_ovl_adaptor *ovl_adaptor = dev_get_drvdata(dev);
-+
-+	return mtk_ethdr_crc_cnt(ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_ETHDR0]);
-+}
-+
-+u32 *mtk_ovl_adaptor_crc_entry(struct device *dev)
-+{
-+	struct mtk_disp_ovl_adaptor *ovl_adaptor = dev_get_drvdata(dev);
-+
-+	return mtk_ethdr_crc_entry(ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_ETHDR0]);
-+}
-+
-+void mtk_ovl_adaptor_crc_read(struct device *dev)
-+{
-+	struct mtk_disp_ovl_adaptor *ovl_adaptor = dev_get_drvdata(dev);
-+
-+	mtk_ethdr_crc_read(ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_ETHDR0]);
-+}
-+
- void mtk_ovl_adaptor_config(struct device *dev, unsigned int w,
- 			    unsigned int h, unsigned int vrefresh,
- 			    unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
-diff --git a/drivers/gpu/drm/mediatek/mtk_ethdr.c b/drivers/gpu/drm/mediatek/mtk_ethdr.c
-index 91ebeee6c8b1d..512c08ce2bbe7 100644
---- a/drivers/gpu/drm/mediatek/mtk_ethdr.c
-+++ b/drivers/gpu/drm/mediatek/mtk_ethdr.c
-@@ -24,6 +24,9 @@
- #define MIX_FME_CPL_INTEN			BIT(1)
- #define MIX_INTSTA			0x8
- #define MIX_EN				0xc
-+#define MIX_TRIG			0x10
-+#define MIX_TRIG_CRC_EN				BIT(8)
-+#define MIX_TRIG_CRC_RST			BIT(9)
- #define MIX_RST				0x14
- #define MIX_ROI_SIZE			0x18
- #define MIX_DATAPATH_CON		0x1c
-@@ -39,6 +42,11 @@
- #define PREMULTI_SOURCE				(3 << 12)
- #define MIX_L_SRC_SIZE(n)		(0x30 + 0x18 * (n))
- #define MIX_L_SRC_OFFSET(n)		(0x34 + 0x18 * (n))
-+
-+/* CRC register offsets for odd and even lines */
-+#define MIX_CRC_ODD			0x110
-+#define MIX_CRC_EVEN			0x114
-+
- #define MIX_FUNC_DCM0			0x120
- #define MIX_FUNC_DCM1			0x124
- #define MIX_FUNC_DCM_ENABLE			0xffffffff
-@@ -82,6 +90,7 @@ struct mtk_ethdr {
- 	void			*vblank_cb_data;
- 	int			irq;
- 	struct reset_control	*reset_ctl;
-+	struct mtk_crtc_crc	crc;
- };
- 
- static const char * const ethdr_clk_str[] = {
-@@ -100,6 +109,32 @@ static const char * const ethdr_clk_str[] = {
- 	"vdo_be_async",
- };
- 
-+static const u32 ethdr_crc_ofs[] = {
-+	MIX_CRC_ODD,
-+	MIX_CRC_EVEN,
-+};
-+
-+size_t mtk_ethdr_crc_cnt(struct device *dev)
-+{
-+	struct mtk_ethdr *priv = dev_get_drvdata(dev);
-+
-+	return priv->crc.cnt;
-+}
-+
-+u32 *mtk_ethdr_crc_entry(struct device *dev)
-+{
-+	struct mtk_ethdr *priv = dev_get_drvdata(dev);
-+
-+	return priv->crc.va;
-+}
-+
-+void mtk_ethdr_crc_read(struct device *dev)
-+{
-+	struct mtk_ethdr *priv = dev_get_drvdata(dev);
-+
-+	mtk_crtc_read_crc(&priv->crc, priv->ethdr_comp[ETHDR_MIXER].regs);
-+}
-+
- void mtk_ethdr_register_vblank_cb(struct device *dev,
- 				  void (*vblank_cb)(void *),
- 				  void *vblank_cb_data)
-@@ -258,6 +293,13 @@ void mtk_ethdr_start(struct device *dev)
- 	struct mtk_ethdr_comp *mixer = &priv->ethdr_comp[ETHDR_MIXER];
- 
- 	writel(1, mixer->regs + MIX_EN);
-+
-+	if (priv->crc.cnt) {
-+		writel(MIX_TRIG_CRC_EN, mixer->regs + MIX_TRIG);
-+#if IS_REACHABLE(CONFIG_MTK_CMDQ)
-+		mtk_crtc_start_crc_cmdq(&priv->crc);
-+#endif
-+	}
- }
- 
- void mtk_ethdr_stop(struct device *dev)
-@@ -265,6 +307,9 @@ void mtk_ethdr_stop(struct device *dev)
- 	struct mtk_ethdr *priv = dev_get_drvdata(dev);
- 	struct mtk_ethdr_comp *mixer = &priv->ethdr_comp[ETHDR_MIXER];
- 
-+#if IS_REACHABLE(CONFIG_MTK_CMDQ)
-+	mtk_crtc_stop_crc_cmdq(&priv->crc);
-+#endif
- 	writel(0, mixer->regs + MIX_EN);
- 	writel(1, mixer->regs + MIX_RST);
- 	reset_control_reset(priv->reset_ctl);
-@@ -319,6 +364,9 @@ static int mtk_ethdr_probe(struct platform_device *pdev)
- 	if (!priv)
- 		return -ENOMEM;
- 
-+	mtk_crtc_init_crc(&priv->crc, ethdr_crc_ofs, ARRAY_SIZE(ethdr_crc_ofs),
-+			  MIX_TRIG, MIX_TRIG_CRC_RST);
-+
- 	for (i = 0; i < ETHDR_ID_MAX; i++) {
- 		priv->ethdr_comp[i].dev = dev;
- 		priv->ethdr_comp[i].regs = of_iomap(dev->of_node, i);
-@@ -327,6 +375,16 @@ static int mtk_ethdr_probe(struct platform_device *pdev)
- 					      &priv->ethdr_comp[i].cmdq_base, i);
- 		if (ret)
- 			dev_dbg(dev, "get mediatek,gce-client-reg fail!\n");
-+
-+		if (i == ETHDR_MIXER) {
-+			if (of_property_read_u32_index(dev->of_node,
-+						       "mediatek,gce-events", i,
-+						       &priv->crc.cmdq_event)) {
-+				dev_warn(dev, "failed to get gce-events for crc\n");
-+			}
-+			priv->crc.cmdq_reg = &priv->ethdr_comp[i].cmdq_base;
-+			mtk_crtc_create_crc_cmdq(dev, &priv->crc);
-+		}
- #endif
- 		dev_dbg(dev, "[DRM]regs:0x%p, node:%d\n", priv->ethdr_comp[i].regs, i);
- 	}
-@@ -367,6 +425,9 @@ static int mtk_ethdr_probe(struct platform_device *pdev)
- 
- static void mtk_ethdr_remove(struct platform_device *pdev)
- {
-+	struct mtk_ethdr *priv = dev_get_drvdata(&pdev->dev);
-+
-+	mtk_crtc_destroy_crc(&priv->crc);
- 	component_del(&pdev->dev, &mtk_ethdr_component_ops);
- }
- 
-diff --git a/drivers/gpu/drm/mediatek/mtk_ethdr.h b/drivers/gpu/drm/mediatek/mtk_ethdr.h
-index 81af9edea3f74..d17d7256bd120 100644
---- a/drivers/gpu/drm/mediatek/mtk_ethdr.h
-+++ b/drivers/gpu/drm/mediatek/mtk_ethdr.h
-@@ -22,4 +22,9 @@ void mtk_ethdr_register_vblank_cb(struct device *dev,
- void mtk_ethdr_unregister_vblank_cb(struct device *dev);
- void mtk_ethdr_enable_vblank(struct device *dev);
- void mtk_ethdr_disable_vblank(struct device *dev);
-+
-+size_t mtk_ethdr_crc_cnt(struct device *dev);
-+u32 *mtk_ethdr_crc_entry(struct device *dev);
-+void mtk_ethdr_crc_read(struct device *dev);
-+
- #endif
--- 
-2.18.0
+I'll consider a follow-up patch to address that.
+>
+> Regardless, thanks for taking the time to explore the cleanup.
+>
+> Andrew
+>
+> [1]:
+> https://lore.ke/
+> rnel.org%2Flkml%2F34193501-5b7b-4ffd-8549-
+> a04c6930d02d%40kernel.org%2F&data=3D05%7C02%7Cpeng.fan%40nxp.com
+> %7C44ef77e479264eccd73f08dc6a4263c6%7C686ea1d3bc2b4c6fa92cd99c5
+> c301635%7C0%7C0%7C638502080600849943%7CUnknown%7CTWFpbGZs
+> b3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn
+> 0%3D%7C0%7C%7C%7C&sdata=3DtuUu1IeqM5sQjqiN1fwzPAbSoZw%2FUNEd2
+> u%2BzpaBhJ4M%3D&reserved=3D0
+>
+> >             } else
+> >
 
 
