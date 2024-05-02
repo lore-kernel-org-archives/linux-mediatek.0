@@ -4,81 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15C06C4345F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 May 2024 15:45:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D384FC4345F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 May 2024 16:45:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=MOqLq0lZ0i7PXhp3YLh0UdxAncxBGq3YXZCOMwkygc4=; b=Vdu7+tC1ZybozL81ViXoHy+BoN
-	qVRebj7naOcgGTy8hMppB5GkIDz41r6x7ewrpUlxhO2HSLh47XMg9otuzFnwfvl+E4oFlsWTaLf65
-	GWLJXPO87x4CY7NafntZfnDpRtvSy1RVAWEX7c3n0xkCTBaoFlxWXcpX+RsqRy7OUlzF5uAoLAkvU
-	Pg42PXDhNiR3vC5bxrRXCUw7+xqoJT/RIHXQzwW7EotSBoPnwh1NK1KSN44yY5GmmxGlno3XXdm04
-	ZUA+bhWww3uw/9tPe8UB4jdAtn9p1bYwm/n7ai6KeZVFgcPX0hlZ2hCb4cVlUt6EfjIvtfMqiAzUL
-	LbFIklQA==;
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=pJXJQMuOdiarbyL2e/unM5fhQaATDSOvWOg7yDBrtzY=; b=BMlqNlO2XRfkPKqeJT/ikD9tYe
+	A6Dj1Y0LHA4L4VntN64KI2GLgPGOZE/e/K6lJzSRZIrOpSs3uqrsKEUdz4+TX/xJ8DaUTmaKtMNls
+	7WAIv60/JQ0x3OqbNNTu+XrL6FTAuCYmquHjQMCmPf5yUzaBu0EFUGB7h7q79qrDeTCHMinJwrO+Q
+	sWtqV3Wz/FkpSLf0CsghWT4dbgL39m5q+LqeFsTUikM91VdbyAMESH9sZ3WvHwAEtwPsAB5zS3HBp
+	g/Mat6dnA7X+YPQtPJ3k2TkA56A0b1R9sD9hyUxFjRO35CFknHgaG/j5JrJtK7Mkm7s6LYtt7SDBd
+	JxZzPCfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2YcO-0000000DAQm-2GV6;
-	Thu, 02 May 2024 15:45:08 +0000
-Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
+	id 1s2ZYd-0000000DKfv-3lde;
+	Thu, 02 May 2024 16:45:19 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2YcM-0000000DAPT-0kjj
+	id 1s2ZYa-0000000DKf8-0hVq
 	for linux-mediatek@lists.infradead.org;
-	Thu, 02 May 2024 15:45:07 +0000
-Received: by mail-pf1-x432.google.com with SMTP id d2e1a72fcca58-6ed627829e6so9464208b3a.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 02 May 2024 08:45:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1714664704; x=1715269504; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=MOqLq0lZ0i7PXhp3YLh0UdxAncxBGq3YXZCOMwkygc4=;
-        b=UBcMWVcNdP9trpfr19V+9K2meUZCFof4OXSURTtkRLsfLnRQKhZBHF4i4ebtg+momA
-         gj2o4EvnMMMIf3sPAEOQ5qZ6LP+MEiKP0k77ofCf/JOUFoKCaS7k+ZvLcJpezb+mXEcD
-         00UUYa5Ct9dpG9yeGo1kNKmqeHv9EMgnX91JI=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1714664704; x=1715269504;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=MOqLq0lZ0i7PXhp3YLh0UdxAncxBGq3YXZCOMwkygc4=;
-        b=hIDvtlH8WQ7mV2uIYZ+kV9JZwUcQ3BMW6xr06PaOdnRrGRJw6un58QAvZGD49NAOr7
-         /VEvni3r9Gm6jIghQEmow663uflpOGBCbF6/+KWtK0fc72Pd9PhL7QBzTJ0+l7W4STML
-         v0ZwJFBtNnAEIkmECFUgkYBzRP7dxWfUbK/QnjokIVI+LtzsfKKqnDYoRH8cd/7aE8Uu
-         jwmDgeefddwkU3yeQgJAdvDC0yrMOUwNlkLKjNiwLTWDmQb91/xlKqZup3Zb4CHIbepa
-         hdqLN4uCv2n4mI8sFcI4uQF4bHiGvQzBs67uUNgOWu+Wqx6d7S3Vh7GKZqGmqjjFB/ju
-         GKzA==
-X-Forwarded-Encrypted: i=1; AJvYcCVTzUSUm0gb+h9HX32xUe7k7rM5dIal3qMggQR0K/EARGNjWpy82keJd6fdT3hL5Q2NqBvm83PhdHatnUNqqUhUQtt6LVOsfeR0uL0brWfsT9v4
-X-Gm-Message-State: AOJu0YyEDhBcdVXbx94htklTlgHybJkMOYpIT1xlYUtJgLmwZbDZ7LbS
-	5vJe5zPl/GS5HIFxE/w2xYfjzwELagQoSTrRrI9v5c+f0E+dscPCvuu69zhe1A==
-X-Google-Smtp-Source: AGHT+IH+DKW/P1R56uRTZhYtqEUAHiBxc+2IZYShyGS2YIDsx+eMU2ct2kjiiYu7bnTgUSejCrtSrw==
-X-Received: by 2002:a05:6a00:2ea6:b0:6ed:1c7:8c65 with SMTP id fd38-20020a056a002ea600b006ed01c78c65mr7064701pfb.10.1714664704045;
-        Thu, 02 May 2024 08:45:04 -0700 (PDT)
-Received: from treapking.tpe.corp.google.com ([2401:fa00:1:10:8191:2b1f:c04b:51ab])
-        by smtp.gmail.com with ESMTPSA id h4-20020a056a00218400b006f3e3d928fesm1387660pfi.220.2024.05.02.08.45.02
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 02 May 2024 08:45:03 -0700 (PDT)
-From: Pin-yen Lin <treapking@chromium.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?= <nfraprado@collabora.com>,
-	linux-mediatek@lists.infradead.org,
-	Hsin-Te Yuan <yuanhsinte@chromium.org>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Pin-yen Lin <treapking@chromium.org>
-Subject: [PATCH v2] arm64: dts: mediatek: mt8192-asurada: Add off-on-delay-us for pp3300_mipibrdg
-Date: Thu,  2 May 2024 23:39:51 +0800
-Message-ID: <20240502154455.3427793-1-treapking@chromium.org>
-X-Mailer: git-send-email 2.45.0.rc0.197.gbae5840b3b-goog
+	Thu, 02 May 2024 16:45:17 +0000
+Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 442Fsr57022735;
+	Thu, 2 May 2024 16:45:10 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
+	message-id:date:mime-version:subject:to:cc:references:from
+	:in-reply-to:content-type:content-transfer-encoding; s=
+	qcppdkim1; bh=pJXJQMuOdiarbyL2e/unM5fhQaATDSOvWOg7yDBrtzY=; b=cn
+	UMJNR6uQUXcDg+5WCS16TQn0WMmz2/j/+lTP/mIM/LhODuMOb2JOo5zegoDxfkzy
+	V4GNB4KRRlOaIo3RFZo85WEpdUdGhQwqjdyxt2OY61AEihodACvCyDjlCZbSAakX
+	hUG15oY78yvIshCooqIPwItEdsHqCJB8sr6bPMGPHNIVlbrMCtzIK6805WcLUAJQ
+	RfjhcV7SmsMjS7KFrr5JV8FSXHXQxKsh9BJ0SA0+VHnrzQHlqTcn2j09NsmZ1fRX
+	k59peE9eMozgIoFvYnC+VgSCAUbC8C7Cuu1UxUle7knMT8vvbhVQhTBIoGRBFraM
+	2Z7h1z1mGbd+3yAYUZgw==
+Received: from nalasppmta03.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3xv7pxh0kj-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 02 May 2024 16:45:10 +0000 (GMT)
+Received: from nalasex01b.na.qualcomm.com (nalasex01b.na.qualcomm.com [10.47.209.197])
+	by NALASPPMTA03.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 442Gj6Wv025134
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 2 May 2024 16:45:06 GMT
+Received: from [10.227.89.240] (10.80.80.8) by nalasex01b.na.qualcomm.com
+ (10.47.209.197) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.9; Thu, 2 May 2024
+ 09:45:05 -0700
+Message-ID: <a840697a-3f58-1c0f-2ca3-66b04686c529@quicinc.com>
+Date: Thu, 2 May 2024 09:45:05 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] wifi: mac80211: Update bssid indicator with real BSS
+ numbers
+To: Johannes Berg <johannes@sipsolutions.net>,
+        =?UTF-8?B?QWxsZW4gWWUgKOiRieiKt+WLsyk=?= <Allen.Ye@mediatek.com>,
+        "linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>,
+        "lorenzo@kernel.org" <lorenzo@kernel.org>
+CC: "lorenzo.bianconi@redhat.com" <lorenzo.bianconi@redhat.com>,
+        "nbd@nbd.name" <nbd@nbd.name>,
+        =?UTF-8?B?RXZlbHluIFRzYWkgKOiUoeePiumIuik=?=
+	<Evelyn.Tsai@mediatek.com>,
+        =?UTF-8?B?TW9uZXkgV2FuZyAo546L5L+h5a6JKQ==?=
+	<Money.Wang@mediatek.com>,
+        "linux-mediatek@lists.infradead.org"
+	<linux-mediatek@lists.infradead.org>
+References: <20231208063820.25983-1-allen.ye@mediatek.com>
+ <65d21336e8f7e180352403a3e894aeaf27a22cab.camel@sipsolutions.net>
+ <c23373d71eff81ea043783edff0345502bb2e299.camel@mediatek.com>
+ <757f417d63a750e84ab883b500becc2773e9ff17.camel@sipsolutions.net>
+ <e9c1c8fb20c39ed158f11a6152dc594de6073726.camel@sipsolutions.net>
+Content-Language: en-US
+From: Aloka Dixit <quic_alokad@quicinc.com>
+In-Reply-To: <e9c1c8fb20c39ed158f11a6152dc594de6073726.camel@sipsolutions.net>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
+ nalasex01b.na.qualcomm.com (10.47.209.197)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-GUID: Cc96HrOslscHqjv_rey_h5jYv-z9wX2c
+X-Proofpoint-ORIG-GUID: Cc96HrOslscHqjv_rey_h5jYv-z9wX2c
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1011,Hydra:6.0.650,FMLib:17.11.176.26
+ definitions=2024-05-02_08,2024-05-02_03,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 clxscore=1011 adultscore=0
+ suspectscore=0 mlxlogscore=715 phishscore=0 lowpriorityscore=0 mlxscore=0
+ bulkscore=0 spamscore=0 malwarescore=0 impostorscore=0 priorityscore=1501
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.19.0-2404010003
+ definitions=main-2405020110
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240502_084506_409223_3ECDB697 
-X-CRM114-Status: GOOD (  12.92  )
+X-CRM114-CacheID: sfid-20240502_094516_319254_9D12F34F 
+X-CRM114-Status: GOOD (  15.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,51 +112,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Set off-on-delay-us to 500000 us for pp3300_mipibrdg to make sure it
-complies with the panel's unprepare delay (the time to power down
-completely) of the power sequence. Explicit configuration on the
-regulator node is required because mt8192-asurada uses the same power
-supply for the panel and the anx7625 DP bridge.
+On 4/23/2024 4:28 AM, Johannes Berg wrote:
+> On Tue, 2024-04-23 at 13:21 +0200, Johannes Berg wrote:
+>>
+>> Anyway, I think I agree, but can you please add some validation of this
+>> to cfg80211 as a first patch
+> 
+> I guess I should say what kind of validation? I think it'd make sense to
+> ensure that the elements even exist/are long enough (currently there's
+> no validation in nl80211_parse_mbssid_elems at all!!), perhaps call
+> validate_ie_attr() there as well.
+> 
+> Feels like something should also ensure that not only is
+> 
+> 	config->index < wiphy->mbssid_max_interfaces
+> 
+> but also actually < 2^max_bssid_indicator?
+> 
+> johannes
+> 
 
-For example, the power sequence could be violated in this sequence:
-1. Bridge on: panel goes off, but regulator doesn't turn off (refcount=1).
-2. Bridge off: regulator turns off (refcount=0).
-3. Bridge resume -> regulator turns on but the bridge driver doesn't
-   check the delay.
-
-Or in this sequence:
-1. Bridge on: panel goes off. The regulator doesn't turn off (refcount=1),
-   but the .unprepared_time in panel_edp is still updated.
-2. Bridge off, regulator goes off (refcount=0).
-3. Panel on, but the panel driver uses the wrong .unprepared_time to check
-   the unprepare delay.
-
-Fixes: f9f00b1f6b9b ("arm64: dts: mediatek: asurada: Add display regulators")
-Signed-off-by: Pin-yen Lin <treapking@chromium.org>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
----
-
-Changes in v2:
-- Update the commit message
-- Collect review tag
-
- arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-index 7a704246678f..08d71ddf3668 100644
---- a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-@@ -147,6 +147,7 @@ pp3300_mipibrdg: regulator-3v3-mipibrdg {
- 		regulator-boot-on;
- 		gpio = <&pio 127 GPIO_ACTIVE_HIGH>;
- 		vin-supply = <&pp3300_g>;
-+		off-on-delay-us = <500000>;
- 	};
- 
- 	/* separately switched 3.3V power rail */
--- 
-2.45.0.rc0.197.gbae5840b3b-goog
-
+I agree with the validation concerns.
+But the actual logic in this patch is valid, although considering we 
+have had this code for so many years now, feels like no driver/target 
+actually needs this field yet even though it is used :-)
 
