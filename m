@@ -4,81 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 814CAC04FFE
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 May 2024 10:59:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 515ADC4345F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 May 2024 11:46:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ISiu5oCrTHSMBWOGo4l0BGgl5eIo2Dd/Biyc/Dg5eSY=; b=pBCAHxC2Z5gy1l8AzmV/HZC3lI
-	3VEIKshcU59KXJYK5dBjaALhvAghvouOqGNZREBnM8FILeNVCZmmDgge/n9yH5lhCqpo/y3zlvgZn
-	9qcWHzicwNHdt7QL6Q6aAPhJ6tL4WjTNsPGImMFQ52V1/GA/CpidU97t4ZxD1o4KYXrLTYmrSzBJX
-	werUop/uIdYYs3dfFMiJW+lEgq9pXFD5tA7MZ927Gyxb9kBGVyEFvYNDoO5vvKNqkWWdncvmQQlLJ
-	2UQtZb0M6D9H/aIhxqvM0hsUhwJRvVWNjYyZ2ieR1WTscPFRCfurVDPugODeqRH9BxuUiYku0edqY
-	VNU9cvYg==;
+	bh=dSpJSOC9OoMfwaxFo9XXw230ZGEEADTBxXaORyFZ0gU=; b=qfoIT4DDmRmmoBtrYSYUR5/6QW
+	GtODLTlBQCdJNcaRWBytiGW5dvILft7jTbgeTketLsgUXuZYiDzgVHeQ2sXqkvduPda4+ala4y3Fk
+	MGpmzdPBLglvmO7ZAMZ03JBekFiwUTD+Au92uBk19Tnd1Dm2bRUiZb6Z2fvC9ogiQ2u+4t8pGS4PR
+	ND7lGnOIFVFHX/TA1t+1c0L12aRpAbYI61esDh84JQc+7auFjfsou8Hf6KW5XdClpq7bhku25fQ77
+	8RAMq2eQWcDx3znme0+oLf8B7bXweXO/oDtLdn1yaCrNIqFDOvCRNSOOsw/ZVCbNGTqcdjrKbx0fK
+	0eS9bH+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2U9a-0000000CQpD-0KtW;
-	Thu, 02 May 2024 10:59:06 +0000
+	id 1s2Usz-0000000CYM8-1yIA;
+	Thu, 02 May 2024 11:46:01 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2U9W-0000000CQnv-0ud0;
-	Thu, 02 May 2024 10:59:03 +0000
-X-UUID: fac8a710087211ef9a78ddf43a9225dc-20240502
+	id 1s2Tqh-0000000CMLA-14Tj;
+	Thu, 02 May 2024 10:39:47 +0000
+X-UUID: 42ccd11a087011ef9a78ddf43a9225dc-20240502
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=ISiu5oCrTHSMBWOGo4l0BGgl5eIo2Dd/Biyc/Dg5eSY=;
-	b=fXymFVKvEJ+iXLHwO/Tqne+QD8xLtChrUc6F/s7IKHQqkCHcx2tS7HXGS9o6LLuJTKRn2P9s1apfJaRUh6Ef7+IWXKy0y2ow/i1UuKCt1RuAZqZrVSdk2+ZnI43UbXq2ZPwf2YgrbeeHR99CDitUc5Z3rYueOctDpGUuFHHEypk=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=dSpJSOC9OoMfwaxFo9XXw230ZGEEADTBxXaORyFZ0gU=;
+	b=JdCp+rZEkkMLPcObeww1i9mqGQ6mzfuZQiP9/2nhn5qJ1xYAxb4rDjZg7PbCqM56H9t1h0ElRaddTTSbc8BuCZo6KDzOTBN3bkggxauz6PKKrMV/hqOMA2/Fo8Gr5SH/9PObTtyW3UTKZnVLsiUKDLpOqeNzsRY8QC26OOjP2ds=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.38,REQID:d3284e36-b534-46b9-9efc-fd8ecba81624,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:82c5f88,CLOUDID:bb149bfb-ed05-4274-9204-014369d201e8,B
+X-CID-O-INFO: VERSION:1.1.38,REQID:2e40afd3-fd20-4cb7-a386-36c13cc64642,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:82c5f88,CLOUDID:f5325e83-4f93-4875-95e7-8c66ea833d57,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
 	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: fac8a710087211ef9a78ddf43a9225dc-20240502
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+X-UUID: 42ccd11a087011ef9a78ddf43a9225dc-20240502
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
 	(envelope-from <shawn.sung@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 577374669; Thu, 02 May 2024 03:58:59 -0700
+	with ESMTP id 906994148; Thu, 02 May 2024 03:39:32 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 2 May 2024 18:38:56 +0800
+ 15.2.1118.26; Thu, 2 May 2024 18:38:58 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 2 May 2024 18:38:56 +0800
+ 15.2.1118.26 via Frontend Transport; Thu, 2 May 2024 18:38:58 +0800
 From: Shawn Sung <shawn.sung@mediatek.com>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
 	<angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v7 04/18] drm/mediatek: Add DRM_MODE_ROTATE_0 to rotation property
-Date: Thu, 2 May 2024 18:38:34 +0800
-Message-ID: <20240502103848.5845-5-shawn.sung@mediatek.com>
+Subject: [PATCH v7 18/18] drm/mediatek: Support CRC in OVL adaptor
+Date: Thu, 2 May 2024 18:38:48 +0800
+Message-ID: <20240502103848.5845-19-shawn.sung@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20240502103848.5845-1-shawn.sung@mediatek.com>
 References: <20240502103848.5845-1-shawn.sung@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--5.554900-8.000000
-X-TMASE-MatchedRID: tzdmYTDShTlYXTxImR5ZvO7KTDtx8Cgg71JtSKHw1r+OUV82NDH4Akfp
-	kQx2u0KsA8+wLcXiwMrijpjet3oGSEbHh97RjZjI6/xAZojbl7crHkgIan9a0dM2my+Pv+HLK33
-	GICKuN/+mPSxSNVOyW1EnfB+90ISXB85Y5vI5GEWeAiCmPx4NwBnUJ0Ek6yhjxEHRux+uk8geb2
-	CAVWgJwO/o3b7wwpl/Fee9v418yf4MMtkcfge+lO/zYOg+8kcVHNEiOlfoDuV+3BndfXUhXQ==
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--5.554900-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: C7466655D8AC9960445E68106F3A417EDF7C911E5D92E9153A1224245383398B2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240502_035902_265431_2340A4CD 
-X-CRM114-Status: GOOD (  15.37  )
+X-CRM114-CacheID: sfid-20240502_033935_632303_0C98DDAD 
+X-CRM114-Status: GOOD (  17.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,85 +86,225 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Hsiao Chien Sung <shawn.sung@mediatek.com>
 
-Always add DRM_MODE_ROTATE_0 to rotation property to meet
-IGT's (Intel GPU Tools) requirement.
+We choose Mixer as CRC generator in OVL adaptor since
+its frame done event will trigger vblanks, we can know
+when is safe to retrieve CRC of the frame.
 
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In OVL adaptor, there's no image procession after Mixer,
+unlike the OVL in VDOSYS0, Mixer's CRC will include all
+the effects that are applied to the frame.
+
 Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_ddp_comp.h |  6 +++++-
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 17 +++++------------
- drivers/gpu/drm/mediatek/mtk_plane.c    |  2 +-
- 3 files changed, 11 insertions(+), 14 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_ddp_comp.c       |  3 +
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h       |  3 +
+ .../gpu/drm/mediatek/mtk_disp_ovl_adaptor.c   | 21 +++++++
+ drivers/gpu/drm/mediatek/mtk_ethdr.c          | 61 +++++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_ethdr.h          |  5 ++
+ 5 files changed, 93 insertions(+)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_ddp_comp.h
-index 26236691ce4c2..f7fe2e08dc8e2 100644
---- a/drivers/gpu/drm/mediatek/mtk_ddp_comp.h
-+++ b/drivers/gpu/drm/mediatek/mtk_ddp_comp.h
-@@ -192,7 +192,11 @@ unsigned int mtk_ddp_comp_supported_rotations(struct mtk_ddp_comp *comp)
- 	if (comp->funcs && comp->funcs->supported_rotations)
- 		return comp->funcs->supported_rotations(comp->dev);
+diff --git a/drivers/gpu/drm/mediatek/mtk_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
+index cb71effda9c2a..8aab373ce67c9 100644
+--- a/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
++++ b/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
+@@ -406,6 +406,9 @@ static const struct mtk_ddp_comp_funcs ddp_ovl_adaptor = {
+ 	.clk_enable = mtk_ovl_adaptor_clk_enable,
+ 	.clk_disable = mtk_ovl_adaptor_clk_disable,
+ 	.config = mtk_ovl_adaptor_config,
++	.crc_cnt = mtk_ovl_adaptor_crc_cnt,
++	.crc_entry = mtk_ovl_adaptor_crc_entry,
++	.crc_read = mtk_ovl_adaptor_crc_read,
+ 	.start = mtk_ovl_adaptor_start,
+ 	.stop = mtk_ovl_adaptor_stop,
+ 	.layer_nr = mtk_ovl_adaptor_layer_nr,
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+index c476056a5cbb5..24af08b1c86d6 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
++++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+@@ -138,6 +138,9 @@ const u32 *mtk_ovl_adaptor_get_formats(struct device *dev);
+ size_t mtk_ovl_adaptor_get_num_formats(struct device *dev);
+ enum drm_mode_status mtk_ovl_adaptor_mode_valid(struct device *dev,
+ 						const struct drm_display_mode *mode);
++size_t mtk_ovl_adaptor_crc_cnt(struct device *dev);
++u32 *mtk_ovl_adaptor_crc_entry(struct device *dev);
++void mtk_ovl_adaptor_crc_read(struct device *dev);
  
--	return 0;
-+	/*
-+	 * In order to pass IGT tests, DRM_MODE_ROTATE_0 is required when
-+	 * rotation is not supported.
-+	 */
-+	return DRM_MODE_ROTATE_0;
+ void mtk_rdma_bypass_shadow(struct device *dev);
+ int mtk_rdma_clk_enable(struct device *dev);
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
+index 2b62d64759181..4995a359e6406 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
+@@ -207,6 +207,27 @@ void mtk_ovl_adaptor_layer_config(struct device *dev, unsigned int idx,
+ 	mtk_ethdr_layer_config(ethdr, idx, state, cmdq_pkt);
  }
  
- static inline unsigned int mtk_ddp_comp_layer_nr(struct mtk_ddp_comp *comp)
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-index b552a02d7eae7..862ab683ed1b4 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-@@ -296,27 +296,20 @@ int mtk_ovl_layer_check(struct device *dev, unsigned int idx,
- 			struct mtk_plane_state *mtk_state)
- {
- 	struct drm_plane_state *state = &mtk_state->base;
--	unsigned int rotation = 0;
++size_t mtk_ovl_adaptor_crc_cnt(struct device *dev)
++{
++	struct mtk_disp_ovl_adaptor *ovl_adaptor = dev_get_drvdata(dev);
++
++	return mtk_ethdr_crc_cnt(ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_ETHDR0]);
++}
++
++u32 *mtk_ovl_adaptor_crc_entry(struct device *dev)
++{
++	struct mtk_disp_ovl_adaptor *ovl_adaptor = dev_get_drvdata(dev);
++
++	return mtk_ethdr_crc_entry(ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_ETHDR0]);
++}
++
++void mtk_ovl_adaptor_crc_read(struct device *dev)
++{
++	struct mtk_disp_ovl_adaptor *ovl_adaptor = dev_get_drvdata(dev);
++
++	mtk_ethdr_crc_read(ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_ETHDR0]);
++}
++
+ void mtk_ovl_adaptor_config(struct device *dev, unsigned int w,
+ 			    unsigned int h, unsigned int vrefresh,
+ 			    unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
+diff --git a/drivers/gpu/drm/mediatek/mtk_ethdr.c b/drivers/gpu/drm/mediatek/mtk_ethdr.c
+index 91ebeee6c8b1d..512c08ce2bbe7 100644
+--- a/drivers/gpu/drm/mediatek/mtk_ethdr.c
++++ b/drivers/gpu/drm/mediatek/mtk_ethdr.c
+@@ -24,6 +24,9 @@
+ #define MIX_FME_CPL_INTEN			BIT(1)
+ #define MIX_INTSTA			0x8
+ #define MIX_EN				0xc
++#define MIX_TRIG			0x10
++#define MIX_TRIG_CRC_EN				BIT(8)
++#define MIX_TRIG_CRC_RST			BIT(9)
+ #define MIX_RST				0x14
+ #define MIX_ROI_SIZE			0x18
+ #define MIX_DATAPATH_CON		0x1c
+@@ -39,6 +42,11 @@
+ #define PREMULTI_SOURCE				(3 << 12)
+ #define MIX_L_SRC_SIZE(n)		(0x30 + 0x18 * (n))
+ #define MIX_L_SRC_OFFSET(n)		(0x34 + 0x18 * (n))
++
++/* CRC register offsets for odd and even lines */
++#define MIX_CRC_ODD			0x110
++#define MIX_CRC_EVEN			0x114
++
+ #define MIX_FUNC_DCM0			0x120
+ #define MIX_FUNC_DCM1			0x124
+ #define MIX_FUNC_DCM_ENABLE			0xffffffff
+@@ -82,6 +90,7 @@ struct mtk_ethdr {
+ 	void			*vblank_cb_data;
+ 	int			irq;
+ 	struct reset_control	*reset_ctl;
++	struct mtk_crtc_crc	crc;
+ };
  
--	rotation = drm_rotation_simplify(state->rotation,
--					 DRM_MODE_ROTATE_0 |
--					 DRM_MODE_REFLECT_X |
--					 DRM_MODE_REFLECT_Y);
--	rotation &= ~DRM_MODE_ROTATE_0;
--
--	/* We can only do reflection, not rotation */
--	if ((rotation & DRM_MODE_ROTATE_MASK) != 0)
-+	/* check if any unsupported rotation is set */
-+	if (state->rotation & ~mtk_ovl_supported_rotations(dev))
- 		return -EINVAL;
+ static const char * const ethdr_clk_str[] = {
+@@ -100,6 +109,32 @@ static const char * const ethdr_clk_str[] = {
+ 	"vdo_be_async",
+ };
  
- 	/*
- 	 * TODO: Rotating/reflecting YUV buffers is not supported at this time.
- 	 *	 Only RGB[AX] variants are supported.
-+	 *	 Since DRM_MODE_ROTATE_0 means "no rotation", we should not
-+	 *	 reject layers with this property.
- 	 */
--	if (state->fb->format->is_yuv && rotation != 0)
-+	if (state->fb->format->is_yuv && (state->rotation & ~DRM_MODE_ROTATE_0))
- 		return -EINVAL;
++static const u32 ethdr_crc_ofs[] = {
++	MIX_CRC_ODD,
++	MIX_CRC_EVEN,
++};
++
++size_t mtk_ethdr_crc_cnt(struct device *dev)
++{
++	struct mtk_ethdr *priv = dev_get_drvdata(dev);
++
++	return priv->crc.cnt;
++}
++
++u32 *mtk_ethdr_crc_entry(struct device *dev)
++{
++	struct mtk_ethdr *priv = dev_get_drvdata(dev);
++
++	return priv->crc.va;
++}
++
++void mtk_ethdr_crc_read(struct device *dev)
++{
++	struct mtk_ethdr *priv = dev_get_drvdata(dev);
++
++	mtk_crtc_read_crc(&priv->crc, priv->ethdr_comp[ETHDR_MIXER].regs);
++}
++
+ void mtk_ethdr_register_vblank_cb(struct device *dev,
+ 				  void (*vblank_cb)(void *),
+ 				  void *vblank_cb_data)
+@@ -258,6 +293,13 @@ void mtk_ethdr_start(struct device *dev)
+ 	struct mtk_ethdr_comp *mixer = &priv->ethdr_comp[ETHDR_MIXER];
  
--	state->rotation = rotation;
--
- 	return 0;
+ 	writel(1, mixer->regs + MIX_EN);
++
++	if (priv->crc.cnt) {
++		writel(MIX_TRIG_CRC_EN, mixer->regs + MIX_TRIG);
++#if IS_REACHABLE(CONFIG_MTK_CMDQ)
++		mtk_crtc_start_crc_cmdq(&priv->crc);
++#endif
++	}
  }
  
-diff --git a/drivers/gpu/drm/mediatek/mtk_plane.c b/drivers/gpu/drm/mediatek/mtk_plane.c
-index a74b26d359857..1723d4333f371 100644
---- a/drivers/gpu/drm/mediatek/mtk_plane.c
-+++ b/drivers/gpu/drm/mediatek/mtk_plane.c
-@@ -338,7 +338,7 @@ int mtk_plane_init(struct drm_device *dev, struct drm_plane *plane,
- 		return err;
+ void mtk_ethdr_stop(struct device *dev)
+@@ -265,6 +307,9 @@ void mtk_ethdr_stop(struct device *dev)
+ 	struct mtk_ethdr *priv = dev_get_drvdata(dev);
+ 	struct mtk_ethdr_comp *mixer = &priv->ethdr_comp[ETHDR_MIXER];
+ 
++#if IS_REACHABLE(CONFIG_MTK_CMDQ)
++	mtk_crtc_stop_crc_cmdq(&priv->crc);
++#endif
+ 	writel(0, mixer->regs + MIX_EN);
+ 	writel(1, mixer->regs + MIX_RST);
+ 	reset_control_reset(priv->reset_ctl);
+@@ -319,6 +364,9 @@ static int mtk_ethdr_probe(struct platform_device *pdev)
+ 	if (!priv)
+ 		return -ENOMEM;
+ 
++	mtk_crtc_init_crc(&priv->crc, ethdr_crc_ofs, ARRAY_SIZE(ethdr_crc_ofs),
++			  MIX_TRIG, MIX_TRIG_CRC_RST);
++
+ 	for (i = 0; i < ETHDR_ID_MAX; i++) {
+ 		priv->ethdr_comp[i].dev = dev;
+ 		priv->ethdr_comp[i].regs = of_iomap(dev->of_node, i);
+@@ -327,6 +375,16 @@ static int mtk_ethdr_probe(struct platform_device *pdev)
+ 					      &priv->ethdr_comp[i].cmdq_base, i);
+ 		if (ret)
+ 			dev_dbg(dev, "get mediatek,gce-client-reg fail!\n");
++
++		if (i == ETHDR_MIXER) {
++			if (of_property_read_u32_index(dev->of_node,
++						       "mediatek,gce-events", i,
++						       &priv->crc.cmdq_event)) {
++				dev_warn(dev, "failed to get gce-events for crc\n");
++			}
++			priv->crc.cmdq_reg = &priv->ethdr_comp[i].cmdq_base;
++			mtk_crtc_create_crc_cmdq(dev, &priv->crc);
++		}
+ #endif
+ 		dev_dbg(dev, "[DRM]regs:0x%p, node:%d\n", priv->ethdr_comp[i].regs, i);
  	}
+@@ -367,6 +425,9 @@ static int mtk_ethdr_probe(struct platform_device *pdev)
  
--	if (supported_rotations & ~DRM_MODE_ROTATE_0) {
-+	if (supported_rotations) {
- 		err = drm_plane_create_rotation_property(plane,
- 							 DRM_MODE_ROTATE_0,
- 							 supported_rotations);
+ static void mtk_ethdr_remove(struct platform_device *pdev)
+ {
++	struct mtk_ethdr *priv = dev_get_drvdata(&pdev->dev);
++
++	mtk_crtc_destroy_crc(&priv->crc);
+ 	component_del(&pdev->dev, &mtk_ethdr_component_ops);
+ }
+ 
+diff --git a/drivers/gpu/drm/mediatek/mtk_ethdr.h b/drivers/gpu/drm/mediatek/mtk_ethdr.h
+index 81af9edea3f74..d17d7256bd120 100644
+--- a/drivers/gpu/drm/mediatek/mtk_ethdr.h
++++ b/drivers/gpu/drm/mediatek/mtk_ethdr.h
+@@ -22,4 +22,9 @@ void mtk_ethdr_register_vblank_cb(struct device *dev,
+ void mtk_ethdr_unregister_vblank_cb(struct device *dev);
+ void mtk_ethdr_enable_vblank(struct device *dev);
+ void mtk_ethdr_disable_vblank(struct device *dev);
++
++size_t mtk_ethdr_crc_cnt(struct device *dev);
++u32 *mtk_ethdr_crc_entry(struct device *dev);
++void mtk_ethdr_crc_read(struct device *dev);
++
+ #endif
 -- 
 2.18.0
 
