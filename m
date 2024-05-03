@@ -4,83 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64DCBC4345F
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 May 2024 09:42:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3FA8C4345F
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 May 2024 10:28:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GNvNnv7fLkPCXzKFOmKReFLq3t6eZIeRklyaC85DyKA=; b=VsK94xCAvpbr/mktPouI/z7Pim
-	Gw/l8cWap6DfCJpiPQmcKSRm4h1t+tzWMMhkle+hKrDAo+oXMALV7blcIIg0I6ehpYL/OmqzGPWmE
-	aEr/zKFSFDgD3XN8tGNFQeMj/Qqh2w8yIkNp6Bj/oY4kuGPUGzOhtCfl6woEnv0NTZOqQbyf45yhP
-	85elPhTSsOsiumKQPMnQj3sqt09En67/psW89BkaRKBKaEOCQpbG4anNkOTwLdpO1PQrxrqLn0XU/
-	h9m2QBCqbyGoX2LQJJgneda4FwEALhK7RODWU5558w08bMTZ/wSDdURtdgCFdNAdGZ5mXxEaTiNnH
-	R308d8iA==;
+	bh=l//WfaOHzkVwuTsY4klY1yumIrJkkUaIyUTI7phJHxM=; b=tEYsuSEP+QfHtzMzlJKYLUzfbl
+	qxKoiJQehrKssik/oz8kDSiZsNeHyd60unXF1X1HCblRqEF9FdSCQjxE7Uha9EJgBqZ+Ltxfcn9nr
+	n9mVyKtPIZQ2AB0DNki3nXcstHXCbNM3AYn+/TkuhFxKPVFZRnOg7ozuFeqXhdM1TSXzyjzbZE2jH
+	8jF+C9Iz01nrM45KFp99eAmJ4jvBqFS2c23LXqm656zBg83hIG2PQdV62ZBpqG6zHhLYuaOiW7WZ/
+	CI5DMyBRAIEyWHjZFghf6GLbK3hv/NO42u+//YS2cjxsLp40Jb/Mlm/x2zbAYOXu4zrjVlmDGkBB6
+	tLxZTHDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2pRP-0000000Fu9c-0Osy;
-	Fri, 03 May 2024 09:42:55 +0000
-Received: from mail-oa1-x33.google.com ([2001:4860:4864:20::33])
+	id 1s2q9N-0000000G2ot-3q9d;
+	Fri, 03 May 2024 10:28:21 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2pRL-0000000Fu8M-3j7B;
-	Fri, 03 May 2024 09:42:53 +0000
-Received: by mail-oa1-x33.google.com with SMTP id 586e51a60fabf-23d1c4c14ceso2094159fac.0;
-        Fri, 03 May 2024 02:42:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1714729370; x=1715334170; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=GNvNnv7fLkPCXzKFOmKReFLq3t6eZIeRklyaC85DyKA=;
-        b=m/Ag23feuwgdFUECcSylQ2Xkc0QrP8EjfoadgjCkoLpLCvOyE4t1Vcx0Q9y9s8dIrc
-         kn8Ubof/WYa7FlLoqu0cgeTuW0V8Yqnzm0zhcP8wv4druOR+WbMmjQlpnUa1chd71AMG
-         xN2tA/COBwwPSM+mH+hu8n0117GKiI7vEA9i48sV5AXZU01eReG5YhT4zvxRDWzGiZJW
-         RJFZTQ4U+PDMJ781oOUztV3ZNU4/BG4yJeb8OpzF0uknWZrpy14vPLXcAIyrP1+AYWmy
-         Q3B2fNVpAGl+PtaF2b3I/1nJsu73rgUyQUvBsNI8ep/4NhcsTdA0ilu8UJXmJ/7h1gDk
-         ipWg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1714729370; x=1715334170;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=GNvNnv7fLkPCXzKFOmKReFLq3t6eZIeRklyaC85DyKA=;
-        b=O/KqEzrrH/rsSfzcfpzjRWGi7yhJzwvjRq17y/sE1A+57iQhPLalZQNbsQBkCfR20U
-         tvK7Js08aYEl7ed+fO9uXbv/ERYteimy6dwm+wOvKunhvmJi1RbDphxyxic/WKmS94sN
-         iMcSohqxZKUGLxWDLA1tf3kmrtXZQaaxcZGaj4qvWiZh6OEOLc9u44k5upfCn8Xh8qx9
-         l0bOjhSp0BzJy/MIkQdfjcgdqZ+4iSPBIlTD7yTTlcbTpN6Kfl51WKB+wH8dAVq9PcgI
-         Qp0jcAdLtSro8kikueAY0vKr9WVTNvfpG3+mDX/lObsWmOya3aQKgZL/aOOzsofLSpF5
-         0d2A==
-X-Forwarded-Encrypted: i=1; AJvYcCXVcC29sQzNn0PPypZxGij3cmDtiKHvyYJ25+z7Vv6A0Yls0xpYpHZf8vtI8RPCA4Y3TJoQJtqCVp7NK+asuzV1EOoYw+vJo31tm5/DyxWYz2GiRIkHUEzdmj2ScPyBDw4x4AjDxscadsrkXr5SH7aGftHMhQxrjrs=
-X-Gm-Message-State: AOJu0Yza2cJYgiWk2jhVrEf3KTopiM/v/BVSe4fNJcf6vzfZUp5bpP+9
-	VJAgM9clyfcYyGXliIxaC4h+T8DpuXD2BZfgbP7WWjmC72yCe7t0HAQP2BhVS8X0D8uC69Tf/EZ
-	t2E6g+LPuslDeYFY5ucYCaLUvbpo=
-X-Google-Smtp-Source: AGHT+IGQcWXxd+BM5x+nAd/5x4yuwDSrpPyFyTdrKfaxLe3etJovQ+UiyQUFC9RN9OY08oq5WERdzlNMzq8Vdb6sLIo=
-X-Received: by 2002:a05:6870:fba1:b0:23c:ca10:cc23 with SMTP id
- kv33-20020a056870fba100b0023cca10cc23mr2524346oab.51.1714729369911; Fri, 03
- May 2024 02:42:49 -0700 (PDT)
+	id 1s2q9K-0000000G2nW-20x9;
+	Fri, 03 May 2024 10:28:19 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 542A760A69;
+	Fri,  3 May 2024 10:28:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 86C52C116B1;
+	Fri,  3 May 2024 10:28:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1714732094;
+	bh=OntdBaerXi3AJ/zLXyZcNtMvP/PzL6ZafwOb4BeMmI8=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=CVexwY3lU9pEyrjVDtImt5My3VLqjq0O6pu4tXHAYXra+R/yyivA0NvhfTLZ09e0A
+	 cxbBIdKBwsREn30DGoNQVdBGNnjfuk75/VpipXdN/6ZvWZCfIKVtqVsOxiXD66T88L
+	 3sCcvCfpeYvNOoP9K2/otFr5CSejsUV24l3x7xiLmlJ2OYwtrX4t6Z6ZRbVrQ+yG7x
+	 8TpvvQD0STMgj41jXX4MiXNiccAK0MNa6GSxqKlDQTZ05zw2Bzltst6RLpU6SK1jGx
+	 3MalcpgYNan36bYB7hjf438rPRn0mK7fZRYgacV4KlzCbym7pY6M6KQ7QdGTsVih8M
+	 SjyAg0MIerKAg==
+Date: Fri, 3 May 2024 11:27:58 +0100
+From: Mauro Carvalho Chehab <mchehab@kernel.org>
+To: Ricardo Ribalda <ribalda@chromium.org>
+Cc: Martin Tuma <martin.tuma@digiteqautomotive.com>, Laurent Pinchart
+ <laurent.pinchart@ideasonboard.com>, Hugues Fruchet
+ <hugues.fruchet@foss.st.com>, Alain Volmat <alain.volmat@foss.st.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue
+ <alexandre.torgue@foss.st.com>, Paul Kocialkowski
+ <paul.kocialkowski@bootlin.com>, Greg Kroah-Hartman
+ <gregkh@linuxfoundation.org>, Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec
+ <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, Sakari
+ Ailus <sakari.ailus@linux.intel.com>, Thierry Reding
+ <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>,
+ Sowjanya Komatineni <skomatineni@nvidia.com>, Luca Ceresoli
+ <luca.ceresoli@bootlin.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Hans
+ Verkuil <hverkuil@xs4all.nl>, Sergey Kozlov <serjk@netup.ru>, Abylay Ospan
+ <aospan@netup.ru>, Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Dmitry
+ Osipenko <digetx@gmail.com>, Benjamin Mugnier
+ <benjamin.mugnier@foss.st.com>, Sylvain Petinot
+ <sylvain.petinot@foss.st.com>, Stanimir Varbanov
+ <stanimir.k.varbanov@gmail.com>, Vikash Garodia
+ <quic_vgarodia@quicinc.com>, Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
+ Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio
+ <konrad.dybcio@linaro.org>, linux-media@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+ linux-arm-kernel@lists.infradead.org, linux-staging@lists.linux.dev,
+ linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org
+Subject: Re: [PATCH v3 26/26] media: dvb-frontends: tda10048: Make the range
+ of z explicit.
+Message-ID: <20240503112758.763d8d31@sal.lan>
+In-Reply-To: <20240429-fix-cocci-v3-26-3c4865f5a4b0@chromium.org>
+References: <20240429-fix-cocci-v3-0-3c4865f5a4b0@chromium.org>
+	<20240429-fix-cocci-v3-26-3c4865f5a4b0@chromium.org>
+X-Mailer: Claws Mail 4.2.0 (GTK 3.24.41; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-References: <20240429104633.11060-1-ilpo.jarvinen@linux.intel.com> <20240429104633.11060-8-ilpo.jarvinen@linux.intel.com>
-In-Reply-To: <20240429104633.11060-8-ilpo.jarvinen@linux.intel.com>
-From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-Date: Fri, 3 May 2024 11:42:37 +0200
-Message-ID: <CAMhs-H_x85BXw0z+gRpS84UT3OCcaewtP7cDq4SVD4YWyeUcRw@mail.gmail.com>
-Subject: Re: [PATCH 07/10] PCI: Replace PCI_CONF1{,_EXT}_ADDRESS() with the
- new helpers
-To: =?UTF-8?Q?Ilpo_J=C3=A4rvinen?= <ilpo.jarvinen@linux.intel.com>
-Cc: linux-pci@vger.kernel.org, Bjorn Helgaas <bhelgaas@google.com>, 
-	Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Rob Herring <robh@kernel.org>, 
-	=?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
-	Lorenzo Pieralisi <lpieralisi@kernel.org>, Linus Walleij <linus.walleij@linaro.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240503_024251_959407_790CF544 
-X-CRM114-Status: GOOD (  22.57  )
+X-CRM114-CacheID: sfid-20240503_032818_635856_D1BA5FF3 
+X-CRM114-Status: GOOD (  18.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,137 +97,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Em Mon, 29 Apr 2024 15:05:05 +0000
+Ricardo Ribalda <ribalda@chromium.org> escreveu:
 
-On Mon, Apr 29, 2024 at 12:47=E2=80=AFPM Ilpo J=C3=A4rvinen
-<ilpo.jarvinen@linux.intel.com> wrote:
->
-> Replace the old PCI_CONF1{,_EXT}_ADDRESS() helpers used to calculate
-> PCI Configuration Space Type 1 addresses with the new
-> pci_conf1{,_ext}_offset() helpers that are more generic and more widely
-> available.
->
-> Signed-off-by: Ilpo J=C3=A4rvinen <ilpo.jarvinen@linux.intel.com>
+> We do not expect the sample_freq to be over 613MHz.
+> 
+> Found by cocci:
+> drivers/media/dvb-frontends/tda10048.c:345:1-7: WARNING: do_div() does a 64-by-32 division, please consider using div64_u64 instead.
+> 
+> Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 > ---
->  drivers/pci/controller/pci-ftpci100.c | 6 ++----
->  drivers/pci/controller/pci-ixp4xx.c   | 5 ++---
->  drivers/pci/controller/pcie-mt7621.c  | 7 +++----
->  drivers/pci/pci.h                     | 8 --------
->  4 files changed, 7 insertions(+), 19 deletions(-)
->
-> diff --git a/drivers/pci/controller/pci-ftpci100.c b/drivers/pci/controll=
-er/pci-ftpci100.c
-> index ffdeed25e961..a8d0217a0b94 100644
-> --- a/drivers/pci/controller/pci-ftpci100.c
-> +++ b/drivers/pci/controller/pci-ftpci100.c
-> @@ -182,8 +182,7 @@ static int faraday_raw_pci_read_config(struct faraday=
-_pci *p, int bus_number,
->                                        unsigned int fn, int config, int s=
-ize,
->                                        u32 *value)
+>  drivers/media/dvb-frontends/tda10048.c | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/media/dvb-frontends/tda10048.c b/drivers/media/dvb-frontends/tda10048.c
+> index 3e725cdcc66b..1886f733dbbf 100644
+> --- a/drivers/media/dvb-frontends/tda10048.c
+> +++ b/drivers/media/dvb-frontends/tda10048.c
+> @@ -328,7 +328,8 @@ static int tda10048_set_wref(struct dvb_frontend *fe, u32 sample_freq_hz,
+>  			     u32 bw)
 >  {
-> -       writel(PCI_CONF1_ADDRESS(bus_number, PCI_SLOT(fn),
-> -                                PCI_FUNC(fn), config),
-> +       writel(pci_conf1_addr(bus_number, fn, config, true),
->                         p->base + FTPCI_CONFIG);
->
->         *value =3D readl(p->base + FTPCI_DATA);
-> @@ -214,8 +213,7 @@ static int faraday_raw_pci_write_config(struct farada=
-y_pci *p, int bus_number,
->  {
->         int ret =3D PCIBIOS_SUCCESSFUL;
->
-> -       writel(PCI_CONF1_ADDRESS(bus_number, PCI_SLOT(fn),
-> -                                PCI_FUNC(fn), config),
-> +       writel(pci_conf1_addr(bus_number, fn, config, true),
->                         p->base + FTPCI_CONFIG);
->
->         switch (size) {
-> diff --git a/drivers/pci/controller/pci-ixp4xx.c b/drivers/pci/controller=
-/pci-ixp4xx.c
-> index ec0125344ca1..fd52f4a3ef31 100644
-> --- a/drivers/pci/controller/pci-ixp4xx.c
-> +++ b/drivers/pci/controller/pci-ixp4xx.c
-> @@ -192,9 +192,8 @@ static u32 ixp4xx_config_addr(u8 bus_num, u16 devfn, =
-int where)
->                        BIT(32 - PCI_SLOT(devfn));
->         } else {
->                 /* type 1 */
-> -               return (PCI_CONF1_ADDRESS(bus_num, PCI_SLOT(devfn),
-> -                                         PCI_FUNC(devfn), where) &
-> -                       ~PCI_CONF1_ENABLE) | PCI_CONF1_TRANSACTION;
-> +               return pci_conf1_addr(bus_num, devfn, where, false) |
-> +                      PCI_CONF1_TRANSACTION;
->         }
->  }
->
-> diff --git a/drivers/pci/controller/pcie-mt7621.c b/drivers/pci/controlle=
-r/pcie-mt7621.c
-> index 79e225edb42a..2b2d9828a910 100644
-> --- a/drivers/pci/controller/pcie-mt7621.c
-> +++ b/drivers/pci/controller/pcie-mt7621.c
-> @@ -127,8 +127,7 @@ static void __iomem *mt7621_pcie_map_bus(struct pci_b=
-us *bus,
->                                          unsigned int devfn, int where)
->  {
->         struct mt7621_pcie *pcie =3D bus->sysdata;
-> -       u32 address =3D PCI_CONF1_EXT_ADDRESS(bus->number, PCI_SLOT(devfn=
-),
-> -                                           PCI_FUNC(devfn), where);
-> +       u32 address =3D pci_conf1_ext_addr(bus->number, devfn, where, tru=
-e);
->
->         writel_relaxed(address, pcie->base + RALINK_PCI_CONFIG_ADDR);
->
-> @@ -143,7 +142,7 @@ static struct pci_ops mt7621_pcie_ops =3D {
->
->  static u32 read_config(struct mt7621_pcie *pcie, unsigned int dev, u32 r=
-eg)
->  {
-> -       u32 address =3D PCI_CONF1_EXT_ADDRESS(0, dev, 0, reg);
-> +       u32 address =3D pci_conf1_ext_addr(0, PCI_DEVFN(dev, 0), reg, tru=
-e);
->
->         pcie_write(pcie, address, RALINK_PCI_CONFIG_ADDR);
->         return pcie_read(pcie, RALINK_PCI_CONFIG_DATA);
-> @@ -152,7 +151,7 @@ static u32 read_config(struct mt7621_pcie *pcie, unsi=
-gned int dev, u32 reg)
->  static void write_config(struct mt7621_pcie *pcie, unsigned int dev,
->                          u32 reg, u32 val)
->  {
-> -       u32 address =3D PCI_CONF1_EXT_ADDRESS(0, dev, 0, reg);
-> +       u32 address =3D pci_conf1_ext_addr(0, PCI_DEVFN(dev, 0), reg, tru=
-e);
->
->         pcie_write(pcie, address, RALINK_PCI_CONFIG_ADDR);
->         pcie_write(pcie, val, RALINK_PCI_CONFIG_DATA);
-> diff --git a/drivers/pci/pci.h b/drivers/pci/pci.h
-> index cf0530a60105..fdf9624b0b12 100644
-> --- a/drivers/pci/pci.h
-> +++ b/drivers/pci/pci.h
-> @@ -833,12 +833,4 @@ struct pci_devres {
->
->  struct pci_devres *find_pci_dr(struct pci_dev *pdev);
->
-> -#define PCI_CONF1_ADDRESS(bus, dev, func, reg) \
-> -       (PCI_CONF1_ENABLE | \
-> -        pci_conf1_addr(bus, PCI_DEVFN(dev, func), reg & ~0x3U))
-> -
-> -#define PCI_CONF1_EXT_ADDRESS(bus, dev, func, reg) \
-> -       (PCI_CONF1_ENABLE | \
-> -        pci_conf1_ext_addr(bus, PCI_DEVFN(dev, func), reg & ~0x3U))
-> -
->  #endif /* DRIVERS_PCI_H */
-> --
-> 2.39.2
->
+>  	struct tda10048_state *state = fe->demodulator_priv;
+> -	u64 t, z;
+> +	u32 z;
+> +	u64 t;
+>  
+>  	dprintk(1, "%s()\n", __func__);
+>  
+> @@ -341,6 +342,7 @@ static int tda10048_set_wref(struct dvb_frontend *fe, u32 sample_freq_hz,
+>  	/* t *= 2147483648 on 32bit platforms */
+>  	t *= (2048 * 1024);
+>  	t *= 1024;
+> +	/* Sample frequency is under 613MHz */
 
-I have tested in a GnuBee v1 board based on mt7621 and all PCI
-enumeration and so on is working properly. Hence, for MT7621:
+Are you sure about that? Some DVB devices have very high frequency 
+clocks, specially if they're also used for satellite, so I can't
+be sure by just looking at the driver's code.
 
-Acked-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-Tested-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+Also, we had already a bunch of regressions with "fixes" like this
+that actually broke frontend drivers.
 
-Thanks,
-    Sergio Paracuellos
+If you're sure, please add a note at the description mentioning 
+on what part of the datasheet you got it.
+
+Otherwise, let's stick with the current code and address cocci
+warning on a different way.
+
+Regards,
+Mauro
+
+PS.: I partially applied this patch series. I left a few
+patches out of the merge to let other people review/comment
+(and/or for me to take a deeper look later on).
+
+Regards,
+Mauro
 
