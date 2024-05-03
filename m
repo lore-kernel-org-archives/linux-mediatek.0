@@ -4,68 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A654CC4345F
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 May 2024 05:59:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E433CC4345F
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 May 2024 07:20:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Cc:To:From:
-	Subject:MIME-Version:Date:Message-ID:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7zeNTz9dZI8LnTBatn2bq2v7BK5j7Weg7XVPNxsiLDY=; b=NnHCpi298/ExeU
-	8VYVojJCHxg+2rd2thXOGvJMoCagXr9pAPH58P/azqmMkmVxY+6XWz1UqWw8nqGm83f6P6UpKKY55
-	lWv1dDkNVSYs4UX/I1Qdgab22gOCqth6R527jrwz02Jup+A+98IJ9Tg0JK9A06Y7NC74P+Tabdeyf
-	x5i5MsGSCBFricQhGABODTgxGUyXfmFqK2xh/mQ0ShzqedNiJe38RA63rdYXnVlih+hGgqLRW1LZE
-	Vl9ZebvTTU7XvcVE3ZRhK714/da9VOk1FNko6SQ0qMpjrlnJqVNfhj0JS3l2X6+o3mpLnN2NI/YMK
-	Iax6WTIRvaM9MUwVmdmg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9wIaPeFAaUloh+tV0Kf/Zmc8dIfcbAIB89NynZIAYBA=; b=TJuoLkwlG78DOD/tODxXQ2dQHE
+	a1B9jmfTQxeKRqPyhysL5cCSqWYQzcagRo+0E25K0UaoGejIoMa/ZFNweiouFrg/TPADZ2S6+GyD2
+	c0YDA/yda+uremytNYAFmk5WxJ489LsXi3sOjBXYqBAfOOKbjH2q9aOkY1twVf8y2EIKGvz/Rpj3L
+	UlBKXcW58OxwvBiP5IFkw/hJ9ZGd3nI2DBYcqNIYUSf/c+eZOyiOirsz2iQBskfGMr/qekPQzvFbp
+	DyRkfIIIessK3Ddc2yuuAJOk+z4CZ/7uoP68ZvGvou2OD4qSbR6wcfO4Eb9ItZypvMbJUMHfMfYt9
+	h/ngn3bw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2lwp-0000000FE2C-0146;
-	Fri, 03 May 2024 05:59:07 +0000
-Received: from wp530.webpack.hosteurope.de ([80.237.130.52])
+	id 1s2nDM-0000000FRIT-23YZ;
+	Fri, 03 May 2024 07:20:16 +0000
+Received: from mail-yb1-xb2b.google.com ([2607:f8b0:4864:20::b2b])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2lwl-0000000FDzp-1fJa
+	id 1s2nDI-0000000FREz-0gEn
 	for linux-mediatek@lists.infradead.org;
-	Fri, 03 May 2024 05:59:05 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=leemhuis.info; s=he214686; h=Content-Transfer-Encoding:Content-Type:
-	In-Reply-To:References:Reply-To:Cc:To:From:Subject:MIME-Version:Date:
-	Message-ID:From:Sender:Reply-To:Subject:Date:Message-ID:To:Cc:MIME-Version:
-	Content-Type:Content-Transfer-Encoding:Content-ID:Content-Description:
-	In-Reply-To:References; bh=7zeNTz9dZI8LnTBatn2bq2v7BK5j7Weg7XVPNxsiLDY=;
-	t=1714715943; x=1715147943; b=M0cnn2eT2YnmcNA6JrTjERz8r6UN9sim8EqkzqSHw6O7yap
-	q4AvDcXGwFmnMAy5ThDz7je5Nna5YC9wSmW7tJBj7ljyzFtoHl9cC7GH8i8xwHeFLLPFYKj7+r/RG
-	zxCnQl7Geqp5CWyCBcZLnUeIkc4C/TiVDDR7fOpYPdGvS527MDhxnKk061p+Z6rapf9lwLsuhcO9t
-	0pCyvokQ2wTq3MvRSDMHuFQI5ToeYhOVcmaJ2ShUDxzHQU78aazPY3UHdCAvGYbZYc4z1cj70z8Lz
-	AQCUi8/yXhwIIebtKbpmwr/f8A4wVIY05h7+UwP+islq6ExYa4FtB9OZYtapd88A==;
-Received: from [2a02:8108:8980:2478:8cde:aa2c:f324:937e]; authenticated
-	by wp530.webpack.hosteurope.de running ExIM with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
-	id 1s2lwZ-0004pK-RV; Fri, 03 May 2024 07:58:51 +0200
-Message-ID: <82fde49f-5dc8-47de-b220-83f9d7555485@leemhuis.info>
-Date: Fri, 3 May 2024 07:58:51 +0200
+	Fri, 03 May 2024 07:20:14 +0000
+Received: by mail-yb1-xb2b.google.com with SMTP id 3f1490d57ef6-de45dba157cso8187916276.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 03 May 2024 00:20:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1714720810; x=1715325610; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=9wIaPeFAaUloh+tV0Kf/Zmc8dIfcbAIB89NynZIAYBA=;
+        b=Bd4DWwcpMjbYZ2PjOXGK34TZlZJRuysXnvzGteBuhZPOwZshICPCQKg1DQphhEZvko
+         2g6DkouojqWT1/J8Hs032XwHuOnl5SRws/kpnpiyPURPUfdsnPVZmp09dIrgcB3mJiQP
+         vHHF4N4P0+Yq+ckDxfoVfg+7aLeu3vpG25MAt3RzLhsuoh9uCqKhbDhytFjuuVembrGx
+         MthO8wVpTjobvZnSO+GbgX4zE2UvTUGKW28XI+J4aNrVgYshyBRqJ/2oAWvqnAXpQdCr
+         4XtxvtfCsahMCdVrAGzZaVJesjF9BElb4kIt5xlqEIOFxp3/cBor7zOI38ciYpTZuJzW
+         MOyw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1714720810; x=1715325610;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=9wIaPeFAaUloh+tV0Kf/Zmc8dIfcbAIB89NynZIAYBA=;
+        b=sbB/IEX202hgnqguAknc0fAkfftGkt0SWQKc8zGrd7QS4dyor8lfJcCdK/gBx7nKL3
+         HiOig1GOzcvOQq7ic9irrxGesuRXG+UHF8/EOnNuUI7Qol0t76pX6tEZIlw2nhZI8C2I
+         8DM01pEtgcJWPzCA78p/TtunwB+UlWVmlvpBzyudbFbk+jtI+kjSHUL9VENgh7jtSkkK
+         OEEtMZHL2Qsfe7nlRs2L+CbmSyMcshmjJnIMe2V9BmzjhFt6aldPfl/uAL4BmMF3zddb
+         h2fYm4dn2pBWo7tJqPrYQMh4fTi7gzvqx4h78XmITjd20b6St30CI5xga4Bexakrda7I
+         Ab6A==
+X-Forwarded-Encrypted: i=1; AJvYcCWOH3C/TMDmX6F94aa4PLv6jCsH43C70H69ibkDk8Pi4GrykrQgVlxXicWj1XtUFkeLY4S76+StKdFshjoAlIWOgKhlfCI6lDqsmq+IGICFRGjH
+X-Gm-Message-State: AOJu0Yzem6iQJrBI0B/xoOf3ZwV72eBDaPirP/HtYts1CQ4XrtxReVoL
+	fDeZ1//Sl1qXPZWqTBWwqkZ2taIG8qw34YxcMCN2JuLiFV0gAuj3aakAsj5dht7eI3A/9usZxS2
+	hNGnKll7xAT8DyE3bORwJl1TkO3tHO9s9FvItrQ==
+X-Google-Smtp-Source: AGHT+IG2e9YB/XnLTQbvqj0kK4ATPxoJ7R6aIP282PPsbZXF297lXvACY/w/LCEjCFtAwBrhBmRU/mc6jno/5QoxHeQ=
+X-Received: by 2002:a05:6902:2203:b0:dc2:2b0d:613e with SMTP id
+ dm3-20020a056902220300b00dc22b0d613emr2388159ybb.10.1714720809843; Fri, 03
+ May 2024 00:20:09 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [regression] Tri-band AMD RZ608 (MediaTek MT7921K) has 6GHz band
- disabled in kernel 6.8 despite working in <=6.6
-From: "Linux regression tracking (Thorsten Leemhuis)"
- <regressions@leemhuis.info>
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
- Ryder Lee <ryder.lee@mediatek.com>
-Cc: Kalle Valo <kvalo@kernel.org>,
- "linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>,
- LKML <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- Linux kernel regressions list <regressions@lists.linux.dev>
-References: <e17e5bf2-657a-4a22-a925-94db95fe8ca1@leemhuis.info>
-Content-Language: en-US, de-DE
-In-Reply-To: <e17e5bf2-657a-4a22-a925-94db95fe8ca1@leemhuis.info>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-bounce-key: webpack.hosteurope.de;regressions@leemhuis.info;1714715943;2c5fd770;
-X-HE-SMSGID: 1s2lwZ-0004pK-RV
+References: <20240501-pinctrl-cleanup-v1-0-797ceca46e5c@nxp.com>
+In-Reply-To: <20240501-pinctrl-cleanup-v1-0-797ceca46e5c@nxp.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Fri, 3 May 2024 09:19:58 +0200
+Message-ID: <CACRpkdaRpJw=kHtya2iww7vvm+Bt6-oPMmz-6VzfhZniSoMP3w@mail.gmail.com>
+Subject: Re: [PATCH 00/21] pinctrl: Use scope based of_node_put() cleanups
+To: "Peng Fan (OSS)" <peng.fan@oss.nxp.com>
+Cc: Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
+	Dvorkin Dmitry <dvorkin@tibbo.com>, Wells Lu <wellslutw@gmail.com>, 
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+	Emil Renner Berthing <kernel@esmil.dk>, Jianlong Huang <jianlong.huang@starfivetech.com>, 
+	Hal Feng <hal.feng@starfivetech.com>, Orson Zhai <orsonzhai@gmail.com>, 
+	Baolin Wang <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>, 
+	Viresh Kumar <vireshk@kernel.org>, Shiraz Hashim <shiraz.linux.kernel@gmail.com>, soc@kernel.org, 
+	Krzysztof Kozlowski <krzk@kernel.org>, Sylwester Nawrocki <s.nawrocki@samsung.com>, 
+	Alim Akhtar <alim.akhtar@samsung.com>, Geert Uytterhoeven <geert+renesas@glider.be>, 
+	Patrice Chotard <patrice.chotard@foss.st.com>, Heiko Stuebner <heiko@sntech.de>, 
+	Damien Le Moal <dlemoal@kernel.org>, Ludovic Desroches <ludovic.desroches@microchip.com>, 
+	Nicolas Ferre <nicolas.ferre@microchip.com>, 
+	Alexandre Belloni <alexandre.belloni@bootlin.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
+	Dong Aisheng <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>, 
+	Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Chester Lin <chester62515@gmail.com>, 
+	Matthias Brugger <mbrugger@suse.com>, Ghennadi Procopciuc <ghennadi.procopciuc@oss.nxp.com>, 
+	Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Sascha Hauer <s.hauer@pengutronix.de>, Andrew Jeffery <andrew@codeconstruct.com.au>, 
+	Joel Stanley <joel@jms.id.au>, Dan Carpenter <dan.carpenter@linaro.org>, linux-gpio@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-tegra@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, 
+	linux-stm32@st-md-mailman.stormreply.com, linux-samsung-soc@vger.kernel.org, 
+	linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-riscv@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	imx@lists.linux.dev, linux-aspeed@lists.ozlabs.org, openbmc@lists.ozlabs.org, 
+	Peng Fan <peng.fan@nxp.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240502_225903_642706_5C130FEF 
-X-CRM114-Status: GOOD (  16.58  )
+X-CRM114-CacheID: sfid-20240503_002012_322586_F08B0BB0 
+X-CRM114-Status: GOOD (  10.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,66 +111,26 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: Linux regressions mailing list <regressions@lists.linux.dev>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 18.04.24 10:48, Linux regression tracking (Thorsten Leemhuis) wrote:
->
-> mt7921 maintainers, I noticed a report about a regression in
-> bugzilla.kernel.org related to your driver. As many (most?) kernel
-> developers don't keep an eye on bugzilla, I decided to write this mail.
-> To quote from https://bugzilla.kernel.org/show_bug.cgi?id=218731 :
+Hi Peng,
 
-FWIW, the reporter meanwhile confirmed that this happens with 6.9-rc6.
-No bisection so far
+thanks for doing this! I am very much in favor of using
+scoped management of resources where it makes it easier to
+do the right thing.
 
-Mt7921 maintainers, so you have any idea what might be wrong? Or is this
-a situation along the lines of "uhhps, we screwed up somewhere (hardware
-detection, regulatory stuff, ...) and had to fix this, which leads to this".
+I agree with Krzysztof's comment that we should avoid scoping
+in cases where there is a clear path grab/use/release so the
+code is easy to read already as it is. Let's drop those.
 
-Ciao, Thorsten (wearing his 'the Linux kernel's regression tracker' hat)
---
-Everything you wanna know about Linux kernel regression tracking:
-https://linux-regtracking.leemhuis.info/about/#tldr
-If I did something stupid, please tell me, as explained on that page.
+I saw there was some patch that was even a fix, perhaps I
+should pick that one separately for fixes, but probably it is
+non-urgent.
 
-#regzbot poke
+I suppose we will just apply v2 after people had some time to
+look at it!
 
->> On kernel 6.6.27-1-lts, running `iw list` shows that 6GHz channels are supported:>
->> [...]
->> Similarly, discovering and connecting to 6GHz APs works fine.
->>
->> However, in recent kernel 6.8.5, running `iw list` shows that 6GHz channels are disabled:
->>
->> [...]
->>
->> And scanning or connecting to 6GHz APs does not work. 
->>
->> There's nothing in `dmesg` that differs between boots of the two kernels. On 6.8.5, 6GHz band doesn't work like it did on previous kernels. 
->>
->> I can provide more logs or help debug the issue if needed.
-> 
-> See the ticket for more details. Note, you have to use bugzilla to reach
-> the reporter, as I sadly[1] can not CCed them in mails like this.
-> 
-> Ciao, Thorsten (wearing his 'the Linux kernel's regression tracker' hat)
-> --
-> Everything you wanna know about Linux kernel regression tracking:
-> https://linux-regtracking.leemhuis.info/about/#tldr
-> If I did something stupid, please tell me, as explained on that page.
-> 
-> [1] because bugzilla.kernel.org tells users upon registration their
-> "email address will never be displayed to logged out users"
-> 
-> P.S.: let me use this mail to also add the report to the list of tracked
-> regressions to ensure it's doesn't fall through the cracks:
-> 
-> #regzbot introduced: v6.6..v6.8.5
-> #regzbot title: wifi drivers: mt7921: 6GHz band stopped working
-> #regzbot from: AlexDeLorenzo.dev
-> #regzbot duplicate: https://bugzilla.kernel.org/show_bug.cgi?id=218731
-> #regzbot ignore-activity
-> 
-> 
+Yours,
+Linus Walleij
 
