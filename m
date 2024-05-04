@@ -4,205 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA697C4345F
-	for <linux-mediatek@archiver.kernel.org>; Sat,  4 May 2024 13:18:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47D00C10F1A
+	for <linux-mediatek@archiver.kernel.org>; Sat,  4 May 2024 14:22:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Cc:To:
-	In-Reply-To:References:Message-Id:Content-Transfer-Encoding:Content-Type:
-	Subject:Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ppg9aWlK4+huIGMqna4KeQPNUar5cHCrgX7Io5VTsjo=; b=LNvv9ZJuCdF+X2lrM1pP8HlOaW
-	sCSCn0j9r+0L4VqoVo/cAVtkX3O+DRCAMpQ26n46huS3K1JOmxR8eSyBFVzSiiD8csIVtrKwQSURu
-	J285Acqrr3piXmLopgpquuKxpGZ1j+RRyy97Ugicj84U5nAglWV0T7bo9S4xcnYj6HstixaAutgWb
-	E7MYWBN3+EGIuTvXqmToE4tF1w43WkpLUKHkbzJRCCcWRX78n+FIeYQ5Z5Ch3fScqT0deQsmRTtpy
-	nimdaOIhzCCoBlHheUW6iBfLY48ZIoNB122R43DlY5S3/qT8Jlluk5EzxfbrBSCrxO/Fg0ni6Pywz
-	co/2pGFw==;
+	bh=v42hm8KNiiccDXXclIhaZayT4m+FC7Bzb6fHDrLf7WM=; b=ckHCzTGBMBfvauIhXhDt9dJ2ns
+	f5Wt1dB4bfFKLlAgMkIGB3rGw88Ve95OvHG3gkbT842puwQcoV6EERv7Brs6/LmBi37tAj8JRAgUE
+	zkSTzOWdUc7bdJh7JcwOF5R5XqM55+FGhzrxWtsUmQseZI9N9jBam9b4vyVX8GFMgjlIPo2x0HcAc
+	Pk/xxn6rj1entuifBUGwyS60/3rBJTdTsWNA5WGX9eEhJwJfWplF6/WylsU2UgFpVwLrNLas9RDPG
+	qBgd+0Ix8uCqGAxJh0/j9Xnf+/QlHUUGAK2xagE4BG/O33PrM9GCcnP8H0yvgOZ2xB4kmJUjzLNst
+	OHO39bQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s3FHA-000000028dk-24rR;
-	Sat, 04 May 2024 13:18:04 +0000
-Received: from mail-db5eur02on20600.outbound.protection.outlook.com ([2a01:111:f403:2608::600] helo=EUR02-DB5-obe.outbound.protection.outlook.com)
+	id 1s3GHl-00000002EhH-0R9i;
+	Sat, 04 May 2024 14:22:45 +0000
+Received: from mgamail.intel.com ([198.175.65.10])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s3FH4-000000028ZC-16x3;
-	Sat, 04 May 2024 13:18:00 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=MeqS3lzaTiTvvMpQkhxAqx5LXu9Qz5Eun3vOl5nnj8mwXBiR+kPagCszrMCqC/HX7ErnmtqmkeHTlsQl7mCDF5OUcE2weGzTeSDHfeYnp627g+vC66DWr5E2/g0ozE3Oxe3HpjuwAK8453pa3XLNlyrFkMhz1aWOVQXdfoJJSarYTNDNhZXlFk1zo7DHTyvhVq7GQc0xx6AOWV8BG2Z343zDEYH9BJMW4vx6fWZakzmjimLoG0RmF6npsV0ooZRo3KVzUHfYatmil55/XwTirR6IhZ6eddWT/jwf3pcth51hCFg9Nw4lxdARDPsLR4HOLxLpr9s9edGjfYIKroB11A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Ppg9aWlK4+huIGMqna4KeQPNUar5cHCrgX7Io5VTsjo=;
- b=eSqoOAsUP7zY+Kz27f04NZE8iZsc0ibTh/UKOCUYR1zdYHH2E8lajoRSyA8sDy3HvYin2IPk9R9VINGcz+xnoU97GgyO8xrHjmxu2PIo0KvE6tC7T/CwSOswA7haahV0t3JTAFusYl7ZfoYYlEyg3x/jM8xnEE8NlM9isHl5oWn1cm/Ts8fvWezutcVuUjLsPXSXVuNq8PsDytUlaICnsw+GZuSTWAzjFVSBxhATNrlGrb6xEVrIa8kevPTzME95TFC+O5OgK9hFHWIPZQ0VjhfolUDqh/LI067mWsjVDswRfZ9stebFk4P+850KwVhkLF2pWkabx1CYbNVTUU8lSg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oss.nxp.com; dmarc=pass action=none header.from=oss.nxp.com;
- dkim=pass header.d=oss.nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=NXP1.onmicrosoft.com;
- s=selector2-NXP1-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Ppg9aWlK4+huIGMqna4KeQPNUar5cHCrgX7Io5VTsjo=;
- b=BiuzAJRqpHcg55cTD7Unx+2M7N8+VFhoSv+0CWmFBcYl7Z/WnOM/7NK2dREH09pZnPG9i0D+o39Dt0+CWJE4qgWqLizCKQMOXCFo2BGb5flRUGdzlr/E+bM7i1JWwUDG2zPwHzjuq5+8P3TF0T71rpYbqr3BGQgJwdLA/S60Cm8=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=oss.nxp.com;
-Received: from DU0PR04MB9417.eurprd04.prod.outlook.com (2603:10a6:10:358::11)
- by AM9PR04MB8633.eurprd04.prod.outlook.com (2603:10a6:20b:43c::24) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7519.34; Sat, 4 May
- 2024 13:17:54 +0000
-Received: from DU0PR04MB9417.eurprd04.prod.outlook.com
- ([fe80::d30b:44e7:e78e:662d]) by DU0PR04MB9417.eurprd04.prod.outlook.com
- ([fe80::d30b:44e7:e78e:662d%4]) with mapi id 15.20.7544.036; Sat, 4 May 2024
- 13:17:54 +0000
-From: "Peng Fan (OSS)" <peng.fan@oss.nxp.com>
-Date: Sat, 04 May 2024 21:20:18 +0800
-Subject: [PATCH v2 20/20] pinctrl: samsung: Use scope based of_node_put()
- cleanups
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20240504-pinctrl-cleanup-v2-20-26c5f2dc1181@nxp.com>
-References: <20240504-pinctrl-cleanup-v2-0-26c5f2dc1181@nxp.com>
-In-Reply-To: <20240504-pinctrl-cleanup-v2-0-26c5f2dc1181@nxp.com>
-To: Linus Walleij <linus.walleij@linaro.org>, 
- Thierry Reding <thierry.reding@gmail.com>, 
- Jonathan Hunter <jonathanh@nvidia.com>, Dvorkin Dmitry <dvorkin@tibbo.com>, 
- Wells Lu <wellslutw@gmail.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
- Alexandre Torgue <alexandre.torgue@foss.st.com>, 
- Emil Renner Berthing <kernel@esmil.dk>, 
- Jianlong Huang <jianlong.huang@starfivetech.com>, 
- Hal Feng <hal.feng@starfivetech.com>, Orson Zhai <orsonzhai@gmail.com>, 
- Baolin Wang <baolin.wang@linux.alibaba.com>, 
- Chunyan Zhang <zhang.lyra@gmail.com>, Viresh Kumar <vireshk@kernel.org>, 
- Shiraz Hashim <shiraz.linux.kernel@gmail.com>, soc@kernel.org, 
- Krzysztof Kozlowski <krzk@kernel.org>, 
- Sylwester Nawrocki <s.nawrocki@samsung.com>, 
- Alim Akhtar <alim.akhtar@samsung.com>, 
- Geert Uytterhoeven <geert+renesas@glider.be>, 
- Patrice Chotard <patrice.chotard@foss.st.com>, 
- Heiko Stuebner <heiko@sntech.de>, Damien Le Moal <dlemoal@kernel.org>, 
- Ludovic Desroches <ludovic.desroches@microchip.com>, 
- Nicolas Ferre <nicolas.ferre@microchip.com>, 
- Alexandre Belloni <alexandre.belloni@bootlin.com>, 
- Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
- Dong Aisheng <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>, 
- Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, 
- Pengutronix Kernel Team <kernel@pengutronix.de>, 
- Chester Lin <chester62515@gmail.com>, Matthias Brugger <mbrugger@suse.com>, 
- Ghennadi Procopciuc <ghennadi.procopciuc@oss.nxp.com>, 
- Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Sascha Hauer <s.hauer@pengutronix.de>, 
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, 
- Dan Carpenter <dan.carpenter@linaro.org>, Tony Lindgren <tony@atomide.com>, 
- Stephen Warren <swarren@wwwdotorg.org>
-Cc: linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-tegra@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-stm32@st-md-mailman.stormreply.com, linux-samsung-soc@vger.kernel.org, 
- linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- linux-riscv@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- imx@lists.linux.dev, linux-aspeed@lists.ozlabs.org, 
- openbmc@lists.ozlabs.org, Peng Fan <peng.fan@nxp.com>
-X-Mailer: b4 0.12.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1714828815; l=4267;
- i=peng.fan@nxp.com; s=20230812; h=from:subject:message-id;
- bh=Eha3FnaEY3bzUrakRMW1Ov8R+kXDm5JzTBhq10KxbQk=;
- b=j1GGjC8jOMD9Vols6kLJMsB1llGpiQjkJR5IlNAnfWDcAKwLbiKZUAALPTehYonJf7lE4q/wH
- yzEqddp4EMID2GMdMRfAxpHQh4H/pYIY+KCEK/dlCVBsLbU5lsfKaOD
-X-Developer-Key: i=peng.fan@nxp.com; a=ed25519;
- pk=I4sJg7atIT1g63H7bb5lDRGR2gJW14RKDD0wFL8TT1g=
-X-ClientProxiedBy: SG2PR06CA0230.apcprd06.prod.outlook.com
- (2603:1096:4:ac::14) To DU0PR04MB9417.eurprd04.prod.outlook.com
- (2603:10a6:10:358::11)
+	id 1s3GHg-00000002Efb-1Lqq;
+	Sat, 04 May 2024 14:22:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1714832561; x=1746368561;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=CILwjP0ONUZbyTTcX+CyOZLykJ1vSQsMj2UBjnbECmc=;
+  b=oDLwk0ZjcVX+CcJypXyQn3Tds3XHbAnT3/k36GnPAAD2JyzGC6aWpedO
+   2ByB/mnDXlcBVZsrJS48KN14N56d3eqv27r38tpQjRGLUuaazZdcOOxk8
+   11xUu9cpn8k34UMQuzHoDQALkTDWDULhMZI0v4APTtz30UH80/No2nZJG
+   oguChQagD6E8tlZuJjvXalipNnkX+axUoZv9p6iDi5kr9QCJcIS7cEcZ2
+   fsO0/tmvOlbv4mtm/oSpQf/zXNJkQryG4NmONjxVy0bM2t3+Wr+fTdBTN
+   f0LhK6Qhd6G/PF74fNHiK/nXbuGmSgYhzVNnT3hfAWSXlplWtQj/XEY4x
+   w==;
+X-CSE-ConnectionGUID: Pro2nUhgTK6Bj9rT0Mw/2A==
+X-CSE-MsgGUID: ihv95fJnSAyRcpiB17zBRw==
+X-IronPort-AV: E=McAfee;i="6600,9927,11063"; a="28104593"
+X-IronPort-AV: E=Sophos;i="6.07,254,1708416000"; 
+   d="scan'208";a="28104593"
+Received: from orviesa007.jf.intel.com ([10.64.159.147])
+  by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 May 2024 07:22:38 -0700
+X-CSE-ConnectionGUID: D6ZZSsqiRy6oOitYNRRBtg==
+X-CSE-MsgGUID: FthiDTOOQc+pp/Ddru3WnA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.07,254,1708416000"; 
+   d="scan'208";a="28218343"
+Received: from lkp-server01.sh.intel.com (HELO e434dd42e5a1) ([10.239.97.150])
+  by orviesa007.jf.intel.com with ESMTP; 04 May 2024 07:22:33 -0700
+Received: from kbuild by e434dd42e5a1 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1s3GHW-000Cr2-2z;
+	Sat, 04 May 2024 14:22:30 +0000
+Date: Sat, 4 May 2024 22:22:19 +0800
+From: kernel test robot <lkp@intel.com>
+To: Shawn Sung <shawn.sung@mediatek.com>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v7 16/18] drm/mediatek: Support CRC in display driver
+Message-ID: <202405042214.VhrmelKu-lkp@intel.com>
+References: <20240502103848.5845-17-shawn.sung@mediatek.com>
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DU0PR04MB9417:EE_|AM9PR04MB8633:EE_
-X-MS-Office365-Filtering-Correlation-Id: 88a760b2-963a-44f4-0ccf-08dc6c3c9b5e
-X-MS-Exchange-SharedMailbox-RoutingAgent-Processed: True
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230031|52116005|7416005|376005|1800799015|366007|38350700005|921011;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?QXR3dkpDNi96VXJwU3NaNnpLcDNSY3dCYkZrUXRvNUw2QUU2bjdmTEhYaFds?=
- =?utf-8?B?VFZ2QlhscVF1NmV5OTJranhqRE0yeDZ6YVdkcmZMcjhXS2theWVUc09nVm9x?=
- =?utf-8?B?aDJiclNJbHVxRkFFMmJ6YkVKdmthZWlxYW1KZjBCS0c3dVZJbHFBMWlLdk1q?=
- =?utf-8?B?aUxuNXVsVTZLc1F2d3FiYjlIZVRReklhWVJ0UnIyTVQ2NDN2KzQwTEUyUWZr?=
- =?utf-8?B?VGF1Y0kvVjZ0ZnpHOW9JVk1JSFdnL09zUHpya2tPYmlqVDdwR0p0VUx0M0Ez?=
- =?utf-8?B?YW5HbkQvdFRlU1pXWjR0ZEtVYzYvRnN2YTdJQnA2MmZYekJlVXpNQzVwQ0Jo?=
- =?utf-8?B?MWJKZXl1T1ZTdkk4UmdpS24rY0MydkVkSTFZc05IOW9YcmpwK3NvYUxhOGdZ?=
- =?utf-8?B?VmFLRGRISTN3MXdPWG0wTDB3WlhLbjJhODdKOEF4OHQ0anlSV0V4d0dnTmlP?=
- =?utf-8?B?cDEzZzZpWVRFQUlBbi9wZko3T0MvdlNtMUlLWGlIcFJ6cEllVTVkSjRJNC9n?=
- =?utf-8?B?N3lnVTE5ZTZmT2x5S21IVUhaT3F5cUZVSmlIVmtEbi92aUoxbENlNC91dTJy?=
- =?utf-8?B?MGNDbDhCRkUzbCt2ckwwbHRhd2FBbk95dnJ1WG1vQ1lXNWJ2MDRNaGV3Mnds?=
- =?utf-8?B?QVhraHFzTHZZeXZiOXFYN0VjTUFlQjNvVnNGUG9VL2VNOVorMDJtZjhIdm5j?=
- =?utf-8?B?THBqaU5QSlBjcUozdXNTL3NsdU1LVFFFeVZId3FqMGl6dUZaSnBjSEs1eklr?=
- =?utf-8?B?bEVwUEczSUpodEJVcjVsVExTZWZqM1NJcWdxYXlZYzR3TTRlS2FzejdCQkNX?=
- =?utf-8?B?cHc1cXVQZjNNS21PTmE4dm1WNzN5WWh6UTd2RE1DN3hybXpsU0NPU2NrN0ZG?=
- =?utf-8?B?dk9NbUVDTXhJNEhuWWZpSkZ4S05GT0FhK2R2ak5PamVla1dyS3FGWXpYSm5N?=
- =?utf-8?B?TTd4L2dUZDRMYWlWbmF5RmlFbW5zUFA0ZFNpTW9XbVpUN3lSWHIxcEtTUjA1?=
- =?utf-8?B?eW52Q25HZmVUMlZRUFRyYUdJc0IxN0xDZng0VENHQXdsSWJieG1YeXNzTHZE?=
- =?utf-8?B?Z0lyNTFmZXAvdWlQdTlqbHlIU3pLc0hUUW93WVVzRjVPb0UxeStOeWdDR0xi?=
- =?utf-8?B?d1pBZGZFL0lxakZmeHZjVWhiUmU4M3JPNTd1cWtjU1FsU0pncFVQc1h1aGlQ?=
- =?utf-8?B?NFlwUEFnWVJsVGwwNkVzNTRPV0lDUzhNOXJXaENaV25YRXRwdFNkTE5UeFVm?=
- =?utf-8?B?QzRWd3J6UHptaitxR0c3cnVGRjliVE43Y0tRV3FKTFZmTWtUNWgxalNka1E2?=
- =?utf-8?B?bzJGeDNuU09RekpNeFVzV09zTSsydlpFa0ttNU9UU2FwYkxYUTV6UFNuVVVk?=
- =?utf-8?B?WXBBVE9yMVhFTVZCS2hQRW5YOEswZnJ5QlVxb1RCSkpCd2ZLR1M3Z0hDMUsz?=
- =?utf-8?B?Wmtaa0tvTGVHeGVoM0I3dW5ZdUsxcWNKL0l1Z3dEZWVDUktSaml5Nk8zT09z?=
- =?utf-8?B?RDQ5SmpJRDF4WmVRSzdzd21ERnh5R0RzUmdzWktGeFBQMWF1eDdhVGdEYzEr?=
- =?utf-8?B?U1NQN2F0c2dVR1RLMi9wcUdMcE02b1JlaUppaWdWOERUQzZxdzF0V3psVUZo?=
- =?utf-8?B?ZUw4QVhxOHJ6SW5NRWM0OXhTQTBiSzExZHcvVlVxdGlzQ2x4L3lzdVpzSita?=
- =?utf-8?B?YXRtTkNTRmp3Z0tnWmwzMWN3aDdxd1drVXlRK255SXZUdHozSkdzZGE3VUFW?=
- =?utf-8?B?M3Rabm5ISHpoOFBMOVNEaEpIL2dnR1pQczVHQyt3L0YzRzlEbWk5M0k4S2pl?=
- =?utf-8?Q?o5nj42PJt+NXtAKdRgjYHq9jkqvSUlEv3EhhQ=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU0PR04MB9417.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(52116005)(7416005)(376005)(1800799015)(366007)(38350700005)(921011);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?bDdkVkM1bWpaUFpJMFRRcnJBY2xKQjJTRGRGZktacDFyNFVsZnBiR3E3dk9j?=
- =?utf-8?B?NkdoTWFINVBZaDNTSmpBUjI5RThEb1VpWXdXblRGVXR6cmYrNmRDSHFTQkZy?=
- =?utf-8?B?dWRza3pOaEF2UHRsRGcvR0x2SlQxNUJVSWFhVW5RWlFnZVhKQUpLOGtjcFd0?=
- =?utf-8?B?ak1xS1N6c3lmeWhDaHJ3c3hiaDBjNjJ0MVU2dkRyazNmWFg5RFJibXlXZGFE?=
- =?utf-8?B?SG15WnpVQXkyUjEzYVdVYjRMZEJ1b05hWkJMMnpxZXhXMzE1UzRDb01mZTZX?=
- =?utf-8?B?bXpBQ3R0UWV3b2ZLVSs1dU1uWGJOSWdpUmxHR1IralpCZlZ1NGhSaXlSenJr?=
- =?utf-8?B?ZXFtckREeVBGWHhaVkdXQlNlb0E4aWhva0RocldOQzhPV0ZnUjJFeG1OUm9i?=
- =?utf-8?B?U3dTTTJldlo2anEwd2JXNlNRNjh5VElOZEtYTmVNd1NhckhyM0NHQ2Q5eUc3?=
- =?utf-8?B?VmYzRXhESWdqR0tzaVdkMEdmd0RJaGpuVGhZcEhHMkoxN0VGNDQ3bVYvWk1q?=
- =?utf-8?B?Zy8xNUt6YWZ0R3pMUFpyT2d6RGQ4eHFXQ0hZVytaejJ1Mjl4dFlHRFdPaE9G?=
- =?utf-8?B?THdHMExGOXBaTFpVYTlseTAvU2lsOHVCRHdXN04zbmpBUFZkMWF3YnF4VWM2?=
- =?utf-8?B?ZmY2RXhoYkxqeWYzZ0pseHpKTm1UdGZJVm90UTZtOEhwWDZUTm1mM01yK1pG?=
- =?utf-8?B?YzlxLzYwcDVUU3JRQ0o0ZFd5MjQ1U1MvVnBhbjF5YitTemY5bktYYjdJUTNQ?=
- =?utf-8?B?SGFXTjF6dVR0MkxudkxvbXAvY0pzbzRCWENxK1BjQWRSOTh2LzFEUDE3V1l2?=
- =?utf-8?B?T1Fpbk5OYzcyZjZzODE0b0RhU3czV2VqL1NSeklXbytDK3d3bmJqeFdLa2ZQ?=
- =?utf-8?B?elRuZjBHdXRXdUNZUzFLOFJFRkZqZnF5WlJLUEk1R3RtY0E3ZUVKZE5JYnBt?=
- =?utf-8?B?SEtxd2w0MXZQNG1jdWVCN3FPQUp2cjFOWmpDMEdEWU96azNnMWxYU0lqWSt2?=
- =?utf-8?B?UEhrTXA3OElTM3EzMkx5MEk0N0pvWVRHU1BKMXVBT0RVN25JVmpLR0tnbjRM?=
- =?utf-8?B?SnlXcmVXOEdiWUN1ZTUvUTkyR0hRWmJ0TEUvdWZYWXBMdGlaOEN1amNtaExL?=
- =?utf-8?B?dWwvSFJwTjhlVDgzZnc4T3BrRnMySjJpWUp3aUV3bDBoVENRN0M4VlZEZE0r?=
- =?utf-8?B?ZmdTbWZhRWJRTFI1TVBDdERuclZENmpaS3poSlExc0FreFUzR0h6cElIekZN?=
- =?utf-8?B?d3h4WmhHY28rakxBNVRDdkVPWDlkMDZVMWNSZGZpMUxSbktGLzYrdVhOQ2xH?=
- =?utf-8?B?TzNDZkpJTHR2LzNjei9KMXBxTHJyVnpIWksxT21FTk9zc25PbkJycTVWbTM2?=
- =?utf-8?B?aUh6Q2xLQ21JU2VZOXVGTjZEUUt3dWhnTTQ1OExkNEF5cTN3c2FYQnZjbDhT?=
- =?utf-8?B?aFE0bVFsZzBUTHhRWTl6YnRGV1hYUjVsbFEyN2dkUjRXMUF1VzE5OUhCMkNi?=
- =?utf-8?B?SGJXOXhERmVKNzZCdXA0Ykw1L1Y4YUl1bVBVM2lIKzdQZ3M1ZkpBbzVVOTk2?=
- =?utf-8?B?VzkxbTlNMWJ2MTVlcFJ2NDQ3UkQ5OVZGczRMZmYyZTVFN1NRUkhmb0xmUVdL?=
- =?utf-8?B?d2Q4T1FkOFpmbUNhakhuVC9KaFRETXlUWUdneTJIbWhhenRGTnJMNVJMbzlT?=
- =?utf-8?B?Z1dUZTdSN05HdldOckM0Ujgya2NsYlNuK28wb1VnaGNPZ0sxTXRiQWhocWZR?=
- =?utf-8?B?NjZYQ1lOWS9GQWxRU2hJRmhEMG1aWUVzVmJVakdaSlBybnVLUzZ1L3VoeTRx?=
- =?utf-8?B?cnI1VHZLaHJSc0tSS2FMTWt3cExUdjZ2elhIRy9vT2xJd1UzZlBaTlJ1enZn?=
- =?utf-8?B?V2RodWtmOC9CM3VDZFRvTG9IUG9JM0Z5V203SlQrdGFyR2xqcDhITTlQVjlx?=
- =?utf-8?B?aHR2RkVFKzFiK013K1FRREpvSUw3SWlkd3FQOFhGSnlRUStSeW9aczlYeC93?=
- =?utf-8?B?bm9ndFlpZlBCMWdiTVBWUitBMFhiRng4dzN5YzN2VDZkU3pnVlM2MDVveHZL?=
- =?utf-8?B?K0k5N0Z3RmpvdmYraFcyRnpkeUZUcUZaZWtPT3FKTDhLeUlzY2RjM0NuTFpT?=
- =?utf-8?Q?j0sc2s3iOIgmVIm42Bh4c/Evd?=
-X-OriginatorOrg: oss.nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 88a760b2-963a-44f4-0ccf-08dc6c3c9b5e
-X-MS-Exchange-CrossTenant-AuthSource: DU0PR04MB9417.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 May 2024 13:17:54.1216
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: Myzq3/6MY/HfklO204D+tBTrg7YaOAS/vgCDdDbFCJdHIDCD0ERvNPhbgg//sC5GpTgalc5VpfcOuOy0J9z9lw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM9PR04MB8633
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240502103848.5845-17-shawn.sung@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240504_061758_567532_9D9475A6 
-X-CRM114-Status: GOOD (  13.96  )
+X-CRM114-CacheID: sfid-20240504_072240_431183_4AD646F5 
+X-CRM114-Status: GOOD (  19.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -214,142 +83,151 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Daniel Vetter <daniel@ffwll.ch>, Sean Paul <sean@poorly.run>, Jason Chen <jason-ch.chen@mediatek.corp-partner.google.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, CK Hu <ck.hu@mediatek.com>, "Nancy . Lin" <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, Bibby Hsieh <bibby.hsieh@mediatek.com>, oe-kbuild-all@lists.linux.dev, Matthias Brugger <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, Hsiao Chien Sung <shawn.sung@mediatek.com>, David Airlie <airlied@gmail.com>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Peng Fan <peng.fan@nxp.com>
+Hi Shawn,
 
-Use scope based of_node_put() cleanup to simplify code.
+kernel test robot noticed the following build errors:
 
-Signed-off-by: Peng Fan <peng.fan@nxp.com>
----
- drivers/pinctrl/samsung/pinctrl-exynos.c  | 16 ++++------------
- drivers/pinctrl/samsung/pinctrl-samsung.c | 19 +++++--------------
- 2 files changed, 9 insertions(+), 26 deletions(-)
+[auto build test ERROR on next-20240501]
+[cannot apply to v6.9-rc6 v6.9-rc5 v6.9-rc4 linus/master v6.9-rc6]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-diff --git a/drivers/pinctrl/samsung/pinctrl-exynos.c b/drivers/pinctrl/samsung/pinctrl-exynos.c
-index 871c1eb46ddf..3775999536e2 100644
---- a/drivers/pinctrl/samsung/pinctrl-exynos.c
-+++ b/drivers/pinctrl/samsung/pinctrl-exynos.c
-@@ -582,7 +582,7 @@ static void exynos_irq_demux_eint16_31(struct irq_desc *desc)
- __init int exynos_eint_wkup_init(struct samsung_pinctrl_drv_data *d)
- {
- 	struct device *dev = d->dev;
--	struct device_node *wkup_np = NULL;
-+	struct device_node *wkup_np __free(device_node) = NULL;
- 	struct device_node *np;
- 	struct samsung_pin_bank *bank;
- 	struct exynos_weint_data *weint_data;
-@@ -612,17 +612,14 @@ __init int exynos_eint_wkup_init(struct samsung_pinctrl_drv_data *d)
- 
- 		bank->irq_chip = devm_kmemdup(dev, irq_chip, sizeof(*irq_chip),
- 					      GFP_KERNEL);
--		if (!bank->irq_chip) {
--			of_node_put(wkup_np);
-+		if (!bank->irq_chip)
- 			return -ENOMEM;
--		}
- 		bank->irq_chip->chip.name = bank->name;
- 
- 		bank->irq_domain = irq_domain_create_linear(bank->fwnode,
- 				bank->nr_pins, &exynos_eint_irqd_ops, bank);
- 		if (!bank->irq_domain) {
- 			dev_err(dev, "wkup irq domain add failed\n");
--			of_node_put(wkup_np);
- 			return -ENXIO;
- 		}
- 
-@@ -635,10 +632,8 @@ __init int exynos_eint_wkup_init(struct samsung_pinctrl_drv_data *d)
- 		weint_data = devm_kcalloc(dev,
- 					  bank->nr_pins, sizeof(*weint_data),
- 					  GFP_KERNEL);
--		if (!weint_data) {
--			of_node_put(wkup_np);
-+		if (!weint_data)
- 			return -ENOMEM;
--		}
- 
- 		for (idx = 0; idx < bank->nr_pins; ++idx) {
- 			irq = irq_of_parse_and_map(to_of_node(bank->fwnode), idx);
-@@ -655,13 +650,10 @@ __init int exynos_eint_wkup_init(struct samsung_pinctrl_drv_data *d)
- 		}
- 	}
- 
--	if (!muxed_banks) {
--		of_node_put(wkup_np);
-+	if (!muxed_banks)
- 		return 0;
--	}
- 
- 	irq = irq_of_parse_and_map(wkup_np, 0);
--	of_node_put(wkup_np);
- 	if (!irq) {
- 		dev_err(dev, "irq number for muxed EINTs not found\n");
- 		return 0;
-diff --git a/drivers/pinctrl/samsung/pinctrl-samsung.c b/drivers/pinctrl/samsung/pinctrl-samsung.c
-index ed07e23e0912..0d4d7ebf7145 100644
---- a/drivers/pinctrl/samsung/pinctrl-samsung.c
-+++ b/drivers/pinctrl/samsung/pinctrl-samsung.c
-@@ -250,7 +250,6 @@ static int samsung_dt_node_to_map(struct pinctrl_dev *pctldev,
- {
- 	struct samsung_pinctrl_drv_data *drvdata;
- 	unsigned reserved_maps;
--	struct device_node *np;
- 	int ret;
- 
- 	drvdata = pinctrl_dev_get_drvdata(pctldev);
-@@ -265,12 +264,11 @@ static int samsung_dt_node_to_map(struct pinctrl_dev *pctldev,
- 							&reserved_maps,
- 							num_maps);
- 
--	for_each_child_of_node(np_config, np) {
-+	for_each_child_of_node_scoped(np_config, np) {
- 		ret = samsung_dt_subnode_to_map(drvdata, pctldev->dev, np, map,
- 						&reserved_maps, num_maps);
- 		if (ret < 0) {
- 			samsung_dt_free_map(pctldev, *map, *num_maps);
--			of_node_put(np);
- 			return ret;
- 		}
- 	}
-@@ -791,16 +789,12 @@ static struct samsung_pmx_func *samsung_pinctrl_create_functions(
- 	 * and create pin groups and pin function lists.
- 	 */
- 	func_cnt = 0;
--	for_each_child_of_node(dev_np, cfg_np) {
--		struct device_node *func_np;
--
-+	for_each_child_of_node_scoped(dev_np, cfg_np) {
- 		if (!of_get_child_count(cfg_np)) {
- 			ret = samsung_pinctrl_create_function(dev, drvdata,
- 							cfg_np, func);
--			if (ret < 0) {
--				of_node_put(cfg_np);
-+			if (ret < 0)
- 				return ERR_PTR(ret);
--			}
- 			if (ret > 0) {
- 				++func;
- 				++func_cnt;
-@@ -808,14 +802,11 @@ static struct samsung_pmx_func *samsung_pinctrl_create_functions(
- 			continue;
- 		}
- 
--		for_each_child_of_node(cfg_np, func_np) {
-+		for_each_child_of_node_scoped(cfg_np, func_np) {
- 			ret = samsung_pinctrl_create_function(dev, drvdata,
- 						func_np, func);
--			if (ret < 0) {
--				of_node_put(func_np);
--				of_node_put(cfg_np);
-+			if (ret < 0)
- 				return ERR_PTR(ret);
--			}
- 			if (ret > 0) {
- 				++func;
- 				++func_cnt;
+url:    https://github.com/intel-lab-lkp/linux/commits/Shawn-Sung/soc-mediatek-Disable-9-bit-alpha-in-ETHDR/20240502-184103
+base:   next-20240501
+patch link:    https://lore.kernel.org/r/20240502103848.5845-17-shawn.sung%40mediatek.com
+patch subject: [PATCH v7 16/18] drm/mediatek: Support CRC in display driver
+config: arm64-defconfig (https://download.01.org/0day-ci/archive/20240504/202405042214.VhrmelKu-lkp@intel.com/config)
+compiler: aarch64-linux-gcc (GCC) 13.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240504/202405042214.VhrmelKu-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202405042214.VhrmelKu-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+   drivers/gpu/drm/mediatek/mtk_crtc.c: In function 'mtk_crtc_create_crc_cmdq':
+>> drivers/gpu/drm/mediatek/mtk_crtc.c:1362:9: error: too few arguments to function 'cmdq_pkt_jump'
+    1362 |         cmdq_pkt_jump(&crc->cmdq_handle, crc->cmdq_handle.pa_base);
+         |         ^~~~~~~~~~~~~
+   In file included from drivers/gpu/drm/mediatek/mtk_crtc.c:11:
+   include/linux/soc/mediatek/mtk-cmdq.h:319:19: note: declared here
+     319 | static inline int cmdq_pkt_jump(struct cmdq_pkt *pkt, dma_addr_t addr, u8 shift_pa)
+         |                   ^~~~~~~~~~~~~
+
+
+vim +/cmdq_pkt_jump +1362 drivers/gpu/drm/mediatek/mtk_crtc.c
+
+  1267	
+  1268	#if IS_REACHABLE(CONFIG_MTK_CMDQ)
+  1269	/**
+  1270	 * mtk_crtc_create_crc_cmdq - Create a CMDQ thread for syncing the CRCs
+  1271	 * @dev: Kernel device node of the CRC provider
+  1272	 * @crc: Pointer of the CRC to init
+  1273	 *
+  1274	 * This function will create a looping thread on GCE (Global Command Engine) to
+  1275	 * keep the CRC up to date by monitoring the assigned event (usually the frame
+  1276	 * done event) of the CRC provider, and read the CRCs from the registers to a
+  1277	 * shared memory for the workqueue to read. To start/stop the looping thread,
+  1278	 * please call `mtk_crtc_start_crc_cmdq()` and `mtk_crtc_stop_crc_cmdq()`
+  1279	 * defined blow.
+  1280	 *
+  1281	 * The reason why we don't update the CRCs with CPU is that the front porch of
+  1282	 * 4K60 timing in CEA-861 is less than 60us, and register read/write speed is
+  1283	 * relatively unreliable comparing to GCE due to the bus design.
+  1284	 *
+  1285	 * We must create a new thread instead of using the original one for plane
+  1286	 * update is because:
+  1287	 * 1. We cannot add another wait-for-event command at the end of cmdq packet, or
+  1288	 *    the cmdq callback will delay for too long
+  1289	 * 2. Will get the CRC of the previous frame if using the existed wait-for-event
+  1290	 *    command which is at the beginning of the packet
+  1291	 */
+  1292	void mtk_crtc_create_crc_cmdq(struct device *dev, struct mtk_crtc_crc *crc)
+  1293	{
+  1294		int i;
+  1295	
+  1296		if (!crc->cnt) {
+  1297			dev_warn(dev, "%s: not support\n", __func__);
+  1298			goto cleanup;
+  1299		}
+  1300	
+  1301		if (!crc->ofs) {
+  1302			dev_warn(dev, "%s: not defined\n", __func__);
+  1303			goto cleanup;
+  1304		}
+  1305	
+  1306		crc->cmdq_client.client.dev = dev;
+  1307		crc->cmdq_client.client.tx_block = false;
+  1308		crc->cmdq_client.client.knows_txdone = true;
+  1309		crc->cmdq_client.client.rx_callback = NULL;
+  1310		crc->cmdq_client.chan = mbox_request_channel(&crc->cmdq_client.client, 0);
+  1311		if (IS_ERR(crc->cmdq_client.chan)) {
+  1312			dev_warn(dev, "%s: failed to create mailbox client\n", __func__);
+  1313			crc->cmdq_client.chan = NULL;
+  1314			goto cleanup;
+  1315		}
+  1316	
+  1317		if (mtk_drm_cmdq_pkt_create(&crc->cmdq_client, &crc->cmdq_handle, PAGE_SIZE)) {
+  1318			dev_warn(dev, "%s: failed to create cmdq packet\n", __func__);
+  1319			goto cleanup;
+  1320		}
+  1321	
+  1322		if (!crc->va) {
+  1323			dev_warn(dev, "%s: no memory\n", __func__);
+  1324			goto cleanup;
+  1325		}
+  1326	
+  1327		/* map the entry to get a dma address for cmdq to store the crc */
+  1328		crc->pa = dma_map_single(crc->cmdq_client.chan->mbox->dev,
+  1329					 crc->va, crc->cnt * sizeof(*crc->va),
+  1330					 DMA_FROM_DEVICE);
+  1331	
+  1332		if (dma_mapping_error(crc->cmdq_client.chan->mbox->dev, crc->pa)) {
+  1333			dev_err(dev, "%s: failed to map dma\n", __func__);
+  1334			goto cleanup;
+  1335		}
+  1336	
+  1337		if (crc->cmdq_event)
+  1338			cmdq_pkt_wfe(&crc->cmdq_handle, crc->cmdq_event, true);
+  1339	
+  1340		for (i = 0; i < crc->cnt; i++) {
+  1341			/* put crc to spr1 register */
+  1342			cmdq_pkt_read_s(&crc->cmdq_handle, crc->cmdq_reg->subsys,
+  1343					crc->cmdq_reg->offset + crc->ofs[i],
+  1344					CMDQ_THR_SPR_IDX1);
+  1345	
+  1346			/* copy spr1 register to physical address of the crc */
+  1347			cmdq_pkt_assign(&crc->cmdq_handle, CMDQ_THR_SPR_IDX0,
+  1348					CMDQ_ADDR_HIGH(crc->pa + i * sizeof(*crc->va)));
+  1349			cmdq_pkt_write_s(&crc->cmdq_handle, CMDQ_THR_SPR_IDX0,
+  1350					 CMDQ_ADDR_LOW(crc->pa + i * sizeof(*crc->va)),
+  1351					 CMDQ_THR_SPR_IDX1);
+  1352		}
+  1353		/* reset crc */
+  1354		mtk_ddp_write_mask(&crc->cmdq_handle, ~0, crc->cmdq_reg, 0,
+  1355				   crc->rst_ofs, crc->rst_msk);
+  1356	
+  1357		/* clear reset bit */
+  1358		mtk_ddp_write_mask(&crc->cmdq_handle, 0, crc->cmdq_reg, 0,
+  1359				   crc->rst_ofs, crc->rst_msk);
+  1360	
+  1361		/* jump to head of the cmdq packet */
+> 1362		cmdq_pkt_jump(&crc->cmdq_handle, crc->cmdq_handle.pa_base);
+  1363	
+  1364		return;
+  1365	cleanup:
+  1366		mtk_crtc_destroy_crc(crc);
+  1367	}
+  1368	
 
 -- 
-2.37.1
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
