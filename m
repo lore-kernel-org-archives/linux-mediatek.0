@@ -4,51 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57895C10F16
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 May 2024 13:37:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BD6EC25B4F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 May 2024 13:37:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gMzoqzlOovfJDV81cUoogI1yKSPjhvs7YYHFOLJ6Kr0=; b=v+A3Kn9V7DhWKDgRR2yZXZlBno
-	Qy8LcOcOI8fj+Rh4YeOVFJjQA+6MbmT3iHVeA1GlpLJSHVeCaNDJ0HYe0yD6yMPMwTKyBatfa773J
-	xIBtZW/7NUzEIiXMJvi05sNk89Rs1We0I5T+Wl0k9mX2yxSGMEjoRQ4B+nFqgu8sKm8pOxBixLUwa
-	mZRr6PalpswTISlnc/kuloLmoIbToa6u0qcuRR/N59lOlF6sLYYm4jBTwSWvvZ9bY1jFzYFs+r1zZ
-	d034TIH5QQc5rtbwAf2ZYZELkwEE+KDVftC63UjIGZW90HBBYN/iZdQMXFAqT8xmxRwCOmHU0EwxJ
-	FWdWPjTw==;
+	bh=KxBggYn36aUANZ5T1t5p/Wr+AXY12fYlFg1jkVkyc3A=; b=wfP0FAG7i2QKtf8tlBfdmD281B
+	0V9G9jkbFfli9V/lUFMbh9HRSP8MSqD66liHa0D0dfePg9eB1zWL1kpRTE3c7F2vZBr49CHgHiGJr
+	cuBE+TsRHxNN/cJG7E595vC8huDbaTick3KCEiwgRFdsjq9HcpYSxSOtMh31yL7nMaN2hXkQkY9hK
+	2wGinESAMiE1ay+Zbdil6xdBMZqDSZnNhBF0ww/dwYor8eF4Zva/0HtZYSUgyLFzN3kcWXtlUhwCT
+	/Y8Cbgj0gchCDTZTOCB7+2dgyAS5DwDpukMabkhxVu9wY7LLEguJrYEpluwNjpENdbT1ZZsCZKQAb
+	JorzNN0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s3yWm-00000007UPe-1bVu;
-	Mon, 06 May 2024 13:37:12 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1s3yX1-00000007Ucz-3amI;
+	Mon, 06 May 2024 13:37:27 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s3yVy-00000007Tlw-3fJi;
-	Mon, 06 May 2024 13:36:35 +0000
+	id 1s3yWH-00000007U0T-1BnU;
+	Mon, 06 May 2024 13:36:41 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=KxBggYn36aUANZ5T1t5p/Wr+AXY12fYlFg1jkVkyc3A=; b=Q3oVOOvrROPeDy1dedkzviKc3B
+	KJDautcePzVxNswFo9bf/ZLPGPfKOVPZIpeVPBUfgMWOgRPCaRpRSGezUH278GtlhuvAtAO4NEDky
+	uPtKh0Qx28m5dbvJGUTO/LgZH0tROLOIcOQNOzyyri0SndxATVgnTRfl908EGDqAiennEwbD8tLpk
+	LYeguBGVjMXCUS08DOShhp2mBZb87jpw5VJskkIVPCPtmAWn6GSvCoD4TM78n4Hp8Sjl3fNbQ1lVp
+	yxPMKP87rI8KqwmQ2IMeN4/vVmrvrjVa9+xKg3XuT+m4DLRqvLc4mEk/Le0CchUkNp1WPBYm0zD73
+	TQWbPeEg==;
+Received: from sin.source.kernel.org ([145.40.73.55])
+	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1s3yWC-00000001jES-43jy;
+	Mon, 06 May 2024 13:36:39 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 07CD7612CF;
-	Mon,  6 May 2024 13:36:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 466E6C3277B;
-	Mon,  6 May 2024 13:36:17 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 2CD60CE0E74;
+	Mon,  6 May 2024 13:36:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 062EAC116B1;
+	Mon,  6 May 2024 13:36:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1715002581;
-	bh=MJDOXWqTjpbjsQTnGrv4MfUIC0eogdPWXfz9qOdcOCA=;
+	s=k20201202; t=1715002591;
+	bh=CdCWrZhe83V0sESOJK7U77pyux4Xw5LMdp8ycoT3WUE=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=K1lVik91lKB3BsVDt1TF6+YiO2iiiAcRRDupmDnuWDqXPQ8Od8Umgmb4EtrUlopDN
-	 TsljnH30VDHb9P+oXMK37QRBqO5oRv6/iX8acZo2y6Yj1ilVudcgi2/5dhVKB6zuU1
-	 8p28dpI+vQ1zLpqoQlNQvyptH0Di2CH2ZoyZcDbhk2ZnQ0bdp3AgZBWM+CE927F1+E
-	 g3Pz48GTKs6FSdKTWpCdxE9cHzcI4mKi7htABfoi1FWHs4RFYma2htWtzGeGhx/ztz
-	 y+g8VuQy5lKed4jXxjd1GUueDfwtuHIn8ERKlXRwtJfHgN27jbkcAqzRaKGXO13TAr
-	 05eXigYD3g/ng==
+	b=MQlzbcin9J88aETS0zLDb0nvobS3wtLI2Y4BBLQYro4df7gUI0X62eehQlcKCMs9K
+	 WzNcODU+CgRa7rRgSlZR2PuZy/juDvvKr2lyV7KBnids0vcCKxinOR55C1pha6uQZy
+	 pqhtmhvqQ3aNOvtmJLcr7CO0vbwcd9m5eT1d1rccugbqf89CHBIJmAdTtGhnqwrCSC
+	 gxtn3C9GumjieD7KwgVLmf/H/GEYj6kGebzI6Dt52QbdqE8wyjHv8AwnQ4QdFdcdhg
+	 Gai+zjxlTch4LRJBulxLPBOxb6dED1DZOygysJFpsJ5sS4d0sWRi8dBJl54Mw7abqd
+	 pUu86gTg+hSrg==
 From: Michael Walle <mwalle@kernel.org>
-Date: Mon, 06 May 2024 15:34:45 +0200
-Subject: [PATCH 16/20] drm/bridge: tc358775: use proper defines to
- configure LVDS timings
+Date: Mon, 06 May 2024 15:34:47 +0200
+Subject: [PATCH 18/20] drm/bridge: tc358775: fix the power-up/down delays
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240506-tc358775-fix-powerup-v1-16-545dcf00b8dd@kernel.org>
+Message-Id: <20240506-tc358775-fix-powerup-v1-18-545dcf00b8dd@kernel.org>
 References: <20240506-tc358775-fix-powerup-v1-0-545dcf00b8dd@kernel.org>
 In-Reply-To: <20240506-tc358775-fix-powerup-v1-0-545dcf00b8dd@kernel.org>
 To: Andrzej Hajda <andrzej.hajda@intel.com>, 
@@ -69,8 +82,8 @@ Cc: Daniel Semkowicz <dse@thaumatec.com>, dri-devel@lists.freedesktop.org,
  linux-arm-kernel@lists.infradead.org, Michael Walle <mwalle@kernel.org>
 X-Mailer: b4 0.12.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240506_063623_560327_0A7CFE31 
-X-CRM114-Status: GOOD (  11.92  )
+X-CRM114-CacheID: sfid-20240506_143638_065498_AB689EA2 
+X-CRM114-Status: GOOD (  10.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,109 +98,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Provide bitfield macros for the individual fields in the LVDS timing
-registers and get rid of the magic values.
+Implement the delays according to Figure 8-10 and 8-11 of the datasheet.
+In particular, the datasheet states that the *maximum* time between
+enabling the VDDIO and VDD is 10ms. Currently, as implemented this is
+always violated. Of course, this is only a best effort because we cannot
+be sure enabling of the two regulators will be that fast.
+The time between releasing the stby GPIO and releasing the reset GPIO
+must be at least 10us and not 10ms as it was before this patch. After
+reset is released, there must be at least a delay of 200us until the
+first HS clock is received.
 
 Signed-off-by: Michael Walle <mwalle@kernel.org>
 ---
- drivers/gpu/drm/bridge/tc358775.c | 52 +++++++++++++++++++++++++--------------
- 1 file changed, 33 insertions(+), 19 deletions(-)
+ drivers/gpu/drm/bridge/tc358775.c | 9 ++-------
+ 1 file changed, 2 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/gpu/drm/bridge/tc358775.c b/drivers/gpu/drm/bridge/tc358775.c
-index 33a97ddba7b5..c50554ec4b28 100644
+index d5b3d691d2c1..99dbbb1fee78 100644
 --- a/drivers/gpu/drm/bridge/tc358775.c
 +++ b/drivers/gpu/drm/bridge/tc358775.c
-@@ -111,11 +111,19 @@
- #define VPCTRL_OPXLFMT	BIT(8)
- #define VPCTRL_EVTMODE	BIT(5)  /* Video event mode enable, tc35876x only */
- #define HTIM1           0x0454  /* Horizontal Timing Control 1 */
-+#define HTIM1_HPW	GENMASK(8, 0)
-+#define HTIM1_HBPR	GENMASK(24, 16)
- #define HTIM2           0x0458  /* Horizontal Timing Control 2 */
-+#define HTIM2_HACT	GENMASK(10, 0)
-+#define HTIM2_HFPR	GENMASK(24, 16)
- #define VTIM1           0x045C  /* Vertical Timing Control 1 */
-+#define VTIM1_VPW	GENMASK(7, 0)
-+#define VTIM1_VBPR	GENMASK(23, 16)
- #define VTIM2           0x0460  /* Vertical Timing Control 2 */
-+#define VTIM2_VACT	GENMASK(10, 0)
-+#define VTIM2_VFPR	GENMASK(23, 16)
- #define VFUEN           0x0464  /* Video Frame Timing Update Enable */
--#define VFUEN_EN	BIT(0)  /* Upload Enable */
-+#define VFUEN_VFUEN	BIT(0)  /* Upload Enable */
+@@ -242,18 +242,16 @@ static void tc358775_power_up(struct tc_data *tc)
+ 	ret = regulator_enable(tc->vddio);
+ 	if (ret < 0)
+ 		dev_err(dev, "regulator vddio enable failed, %d\n", ret);
+-	usleep_range(10000, 11000);
  
- /* Mux Input Select for LVDS LINK Input */
- #define LV_MX0003        0x0480  /* Bit 0 to 3 */
-@@ -346,24 +354,19 @@ static void tc358775_configure_dsi(struct tc_data *tc, unsigned int pixelclk)
- static void tc358775_configure_lvds_timings(struct tc_data *tc,
- 					    struct drm_display_mode *mode)
- {
--	u32 hback_porch, hsync_len, hfront_porch, hactive, htime1, htime2;
--	u32 vback_porch, vsync_len, vfront_porch, vactive, vtime1, vtime2;
-+	u32 hback_porch, hsync_len, hfront_porch, hactive;
-+	u32 vback_porch, vsync_len, vfront_porch, vactive;
-+	unsigned int val;
+ 	ret = regulator_enable(tc->vdd);
+ 	if (ret < 0)
+ 		dev_err(dev, "regulator vdd enable failed, %d\n", ret);
+-	usleep_range(10000, 11000);
  
- 	hback_porch = mode->htotal - mode->hsync_end;
- 	hsync_len  = mode->hsync_end - mode->hsync_start;
-+	hactive = mode->hdisplay;
-+	hfront_porch = mode->hsync_start - mode->hdisplay;
-+
- 	vback_porch = mode->vtotal - mode->vsync_end;
- 	vsync_len  = mode->vsync_end - mode->vsync_start;
--
--	htime1 = (hback_porch << 16) + hsync_len;
--	vtime1 = (vback_porch << 16) + vsync_len;
--
--	hfront_porch = mode->hsync_start - mode->hdisplay;
--	hactive = mode->hdisplay;
--	vfront_porch = mode->vsync_start - mode->vdisplay;
- 	vactive = mode->vdisplay;
--
--	htime2 = (hfront_porch << 16) + hactive;
--	vtime2 = (vfront_porch << 16) + vactive;
-+	vfront_porch = mode->vsync_start - mode->vdisplay;
+ 	gpiod_set_value(tc->stby_gpio, 0);
+-	usleep_range(10000, 11000);
++	usleep_range(10, 20);
  
- 	/* Video event mode vs pulse mode bit, does not exist for tc358775 */
- 	if (tc->type == TC358765)
-@@ -379,12 +382,23 @@ static void tc358775_configure_lvds_timings(struct tc_data *tc,
- 	regmap_update_bits(tc->regmap, VPCTRL, val,
- 			   VPCTRL_OPXLFMT | VPCTRL_MSF | VPCTRL_EVTMODE);
- 
--	regmap_write(tc->regmap, HTIM1, htime1);
--	regmap_write(tc->regmap, VTIM1, vtime1);
--	regmap_write(tc->regmap, HTIM2, htime2);
--	regmap_write(tc->regmap, VTIM2, vtime2);
-+	val = u32_encode_bits(hsync_len, HTIM1_HPW);
-+	val |= u32_encode_bits(hback_porch, HTIM1_HBPR);
-+	regmap_write(tc->regmap, HTIM1, val);
-+
-+	val = u32_encode_bits(hactive, HTIM2_HACT);
-+	val |= u32_encode_bits(hfront_porch, HTIM2_HFPR);
-+	regmap_write(tc->regmap, HTIM2, val);
-+
-+	val = u32_encode_bits(vsync_len, VTIM1_VPW);
-+	val |= u32_encode_bits(vback_porch, VTIM1_VBPR);
-+	regmap_write(tc->regmap, VTIM1, val);
-+
-+	val = u32_encode_bits(vactive, VTIM2_VACT);
-+	val |= u32_encode_bits(vfront_porch, VTIM2_VFPR);
-+	regmap_write(tc->regmap, VTIM2, val);
- 
--	regmap_write(tc->regmap, VFUEN, VFUEN_EN);
-+	regmap_write(tc->regmap, VFUEN, VFUEN_VFUEN);
+ 	gpiod_set_value(tc->reset_gpio, 0);
+-	usleep_range(10, 20);
++	usleep_range(200, 250);
  }
  
- static const struct tc358775_pll_settings tc358775_pll_settings[] = {
-@@ -475,7 +489,7 @@ static void tc358775_bridge_enable(struct drm_bridge *bridge)
- 	tc358775_configure_lvds_timings(tc, mode);
- 	tc358775_configure_pll(tc, mode->crtc_clock);
- 	tc358775_configure_color_mapping(tc, connector->display_info.bus_formats[0]);
--	regmap_write(tc->regmap, VFUEN, VFUEN_EN);
-+	regmap_write(tc->regmap, VFUEN, VFUEN_VFUEN);
- 	tc358775_configure_lvds_clock(tc);
+ static void tc358775_power_down(struct tc_data *tc)
+@@ -265,17 +263,14 @@ static void tc358775_power_down(struct tc_data *tc)
+ 	usleep_range(10, 20);
  
- 	/* Finally, enable the LVDS transmitter */
+ 	gpiod_set_value(tc->stby_gpio, 1);
+-	usleep_range(10000, 11000);
+ 
+ 	ret = regulator_disable(tc->vdd);
+ 	if (ret < 0)
+ 		dev_err(dev, "regulator vdd disable failed, %d\n", ret);
+-	usleep_range(10000, 11000);
+ 
+ 	ret = regulator_disable(tc->vddio);
+ 	if (ret < 0)
+ 		dev_err(dev, "regulator vddio disable failed, %d\n", ret);
+-	usleep_range(10000, 11000);
+ }
+ 
+ static void tc_bridge_pre_enable(struct drm_bridge *bridge)
 
 -- 
 2.39.2
