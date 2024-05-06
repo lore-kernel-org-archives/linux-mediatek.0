@@ -4,65 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E61E9C10F16
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 May 2024 14:45:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97907C25B4F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 May 2024 14:45:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6uSEoJxM0jY3VWn26w0b5bhMKuawUEb0raWeIkvXCVU=; b=glO9KyhsgwSiqZbnsY1+SyySsM
-	xDO4BgXTrKEthLjO5rZhnWLXG2LUbibgg1S0GHG/4cURgoYS4t/Kqrc8ddozS3nz1vXZwllKQc/22
-	tVAEWbrAYxE0JIsIGNlFcaptvIa5rb2SvjD/SATf+QiPP2dj+3LicBdUioDHo9WV3dVxbvYYdfrnT
-	wkPOS3yQnO0zCQ7ZPHjxKJ9waAUfvkJjqhhSJ5ZvjvsMorhsZFBpLqWQV2D8RZeV1aT3hIUyqTJAL
-	wvvbVtdwHpBYu/AdCL/VRyHjc66yySIMtCaxhP2VH50qoaLnXAbRsBLn3pCIGADjiSTPVxT9PneoC
-	sj+krYww==;
+	bh=2tSx7Ic2SVtcK6pZ/xXOJj7K7utlsI2X9s7StX5o1K8=; b=Gr4P9/+Rj7jE4aVMRPF+6/iQxW
+	bnNGo841HPoLRQZIV4wfZ8VIfe7aMjLafAvDDOBA19GMuVAKppEI+oFzNpi1SGND9ii3pu7XNAt2m
+	DlAW2YsJjMlP3LgtJBF48D4JUyEuLm3ZilqkpPEGBm0lzEGehWE/S7HRwXGBwqKp51Stdp2WJXidl
+	feYbuztzOgRN1iZzbelaCjnfGJ7Qo4isYalEXQe2sN/uVNewapb1V2fpEaLzL81pBZYbPxB6oLMYo
+	/iMaen4fpGax4SAxtHxGxXdI/bjZpe56JwYu8uwKTLtzTi+xUuKhVY6AB+Rct5fJp7d9C6bUTmji+
+	5XwU+ahg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s3zay-00000007imp-1myv;
-	Mon, 06 May 2024 14:45:36 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1s3zb0-00000007ioK-0NMz;
+	Mon, 06 May 2024 14:45:38 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s3yVS-00000007TO9-2bY2;
-	Mon, 06 May 2024 13:35:50 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=6uSEoJxM0jY3VWn26w0b5bhMKuawUEb0raWeIkvXCVU=; b=a0pBtZ15GIZAlfpnuK4OKPWdji
-	sqGdT5YMX8ydvdAS/xAcPIMCqvZd2k4140+lN9k36JjfSmvi08Apmwb07IhTHDLtJbmsnVsjsIUXF
-	2TeblWX0cDo/HgDEhWjmBtNgFUHGPRi87EJDZh2svJlHIcCgjR7mT9GkXtNzusNJydjpe9WYTSZd1
-	MmyGYwd1/RA2zPZn8c6KSF5t/wfHfjtgjp/oHa9Ru2hR3W3Dtvr2V1sJvWIJfdG5MQNm5IJhiDm0z
-	lCKGDlEgdX2pOqbiX9d0uzckAqsN6I8XdzUGXpoTJ7437Zucx6JoOBm7AP5HbWKC9Sy9q/maTSg9H
-	NfeF7ElA==;
-Received: from dfw.source.kernel.org ([139.178.84.217])
-	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s3yVO-00000001j6R-0RwS;
-	Mon, 06 May 2024 13:35:49 +0000
+	id 1s3yW3-00000007Tpi-2OBk;
+	Mon, 06 May 2024 13:36:40 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id E1ED4612E3;
-	Mon,  6 May 2024 13:35:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 164F2C4AF67;
-	Mon,  6 May 2024 13:35:32 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id B9A8E612B8;
+	Mon,  6 May 2024 13:36:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 26C2BC4AF68;
+	Mon,  6 May 2024 13:36:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1715002537;
-	bh=U6Bf7YERTTp7pbKyaw/KQvlawb1lIEL8sDO7oaHQpZQ=;
+	s=k20201202; t=1715002586;
+	bh=Hm8IbzH7o86qGsPyzm5DKDFy+pWLYyONwjVqfO4C4rg=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=m2dHoQmP7x5wG3IIBLtnmmQDyx9SqxLrTj4xJculLfFkPUhYanD4Mec7MaiTXFuie
-	 OZemQmAHTYr3wRlOphe8AYM8dPZ6xcCYnEltEfXZF4dW8pKm84mCH1CpZzxRPLNwtE
-	 riLmbUg8L0uRlJ35mL0raZ8fw2GOjNn8ev/fASj7JI4cLVx7A4RQ4dpji3RoyOyJdv
-	 dse37L+DdeXYMvDGg2PcU/rb6/jd+0nJPAxEiUPanNU23f4KjCXzBtfJ18hiULHKFL
-	 owwn2bbc2SohpQnQ2lTuscKXRRvhlktUMJPdTjqKPxZctEih5joTgkZfrOkRHaEo+4
-	 s+rz/aGcPin5g==
+	b=c9s/WUkzLe0/Gv60ykQuMYisA+qfLshxmw/LYojmokJi/IFRzXPXz3p7WTjXqTUcu
+	 9cO9wxDiJJ7V/gNHD316aargzM6HJ5kQz5tLFxy4b09QtHmY9CGScsnCBH9raaqgg1
+	 ovFY1Lzdq3L8wtWXvB9u6txLzMzgSj7OAApgNpQ7MjR4Q+gv5VBsFB0jo/myaNQ5ep
+	 yyg8txlfAv6PT6aHaUh56acPXe/OiSPLwqS6+rv6rmUM7jbdnhK1aCssHYK1R/wfF7
+	 AhMejO6EnmKXCMlB3MpkvgKwRNXoZhDi9d52bnu5PEsjffWVTT3Bf5rKI+RhyPmL8P
+	 iWTPegQ6Oqw3g==
 From: Michael Walle <mwalle@kernel.org>
-Date: Mon, 06 May 2024 15:34:36 +0200
-Subject: [PATCH 07/20] drm/bridge: tc358775: use regmap instead of open
- coded access functions
+Date: Mon, 06 May 2024 15:34:46 +0200
+Subject: [PATCH 17/20] drm/bridge: tc358775: move bridge power up/down into
+ functions
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240506-tc358775-fix-powerup-v1-7-545dcf00b8dd@kernel.org>
+Message-Id: <20240506-tc358775-fix-powerup-v1-17-545dcf00b8dd@kernel.org>
 References: <20240506-tc358775-fix-powerup-v1-0-545dcf00b8dd@kernel.org>
 In-Reply-To: <20240506-tc358775-fix-powerup-v1-0-545dcf00b8dd@kernel.org>
 To: Andrzej Hajda <andrzej.hajda@intel.com>, 
@@ -83,8 +69,8 @@ Cc: Daniel Semkowicz <dse@thaumatec.com>, dri-devel@lists.freedesktop.org,
  linux-arm-kernel@lists.infradead.org, Michael Walle <mwalle@kernel.org>
 X-Mailer: b4 0.12.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240506_143547_057868_EF23EAA5 
-X-CRM114-Status: GOOD (  19.22  )
+X-CRM114-CacheID: sfid-20240506_063628_199220_5F028503 
+X-CRM114-Status: GOOD (  12.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,262 +85,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The DSI bridge also supports access via DSI in-band reads and writes.
-Prepare the driver for that by converting all the access functions to
-regmap. This also have the advantage that it will make tracing and
-debugging easier and we can use all the bit manipulation helpers from
-regmap.
+Move the bridge power-up and power-down handling into own functions.
+This is a preparation patch to fix the power-up sequencing of the
+bridge. No functional change.
 
 Signed-off-by: Michael Walle <mwalle@kernel.org>
 ---
- drivers/gpu/drm/bridge/tc358775.c | 150 +++++++++++++++++---------------------
- 1 file changed, 68 insertions(+), 82 deletions(-)
+ drivers/gpu/drm/bridge/tc358775.c | 21 +++++++++++++++++----
+ 1 file changed, 17 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/gpu/drm/bridge/tc358775.c b/drivers/gpu/drm/bridge/tc358775.c
-index 7ae86e8d4c72..b7f15164e655 100644
+index c50554ec4b28..d5b3d691d2c1 100644
 --- a/drivers/gpu/drm/bridge/tc358775.c
 +++ b/drivers/gpu/drm/bridge/tc358775.c
-@@ -16,6 +16,7 @@
- #include <linux/media-bus-format.h>
- #include <linux/module.h>
- #include <linux/of_device.h>
-+#include <linux/regmap.h>
- #include <linux/regulator/consumer.h>
- #include <linux/slab.h>
+@@ -215,6 +215,7 @@ struct tc_data {
+ 	struct gpio_desc	*reset_gpio;
+ 	struct gpio_desc	*stby_gpio;
+ 	bool			lvds_dual_link;
++	bool			powered;
+ 	u8			bpc;
  
-@@ -238,7 +239,7 @@ enum tc3587x5_type {
- };
+ 	enum tc3587x5_type	type;
+@@ -233,9 +234,8 @@ static inline struct tc_data *bridge_to_tc(struct drm_bridge *b)
+ 	return container_of(b, struct tc_data, bridge);
+ }
  
- struct tc_data {
--	struct i2c_client	*i2c;
-+	struct regmap		*regmap;
- 	struct device		*dev;
+-static void tc_bridge_pre_enable(struct drm_bridge *bridge)
++static void tc358775_power_up(struct tc_data *tc)
+ {
+-	struct tc_data *tc = bridge_to_tc(bridge);
+ 	struct device *dev = &tc->dsi->dev;
+ 	int ret;
  
- 	struct drm_bridge	bridge;
-@@ -309,42 +310,6 @@ static void tc_bridge_post_disable(struct drm_bridge *bridge)
+@@ -256,9 +256,8 @@ static void tc_bridge_pre_enable(struct drm_bridge *bridge)
+ 	usleep_range(10, 20);
+ }
+ 
+-static void tc_bridge_post_disable(struct drm_bridge *bridge)
++static void tc358775_power_down(struct tc_data *tc)
+ {
+-	struct tc_data *tc = bridge_to_tc(bridge);
+ 	struct device *dev = &tc->dsi->dev;
+ 	int ret;
+ 
+@@ -279,6 +278,20 @@ static void tc_bridge_post_disable(struct drm_bridge *bridge)
  	usleep_range(10000, 11000);
  }
  
--static void d2l_read(struct i2c_client *i2c, u16 addr, u32 *val)
--{
--	int ret;
--	u8 buf_addr[2];
--
--	put_unaligned_be16(addr, buf_addr);
--	ret = i2c_master_send(i2c, buf_addr, sizeof(buf_addr));
--	if (ret < 0)
--		goto fail;
--
--	ret = i2c_master_recv(i2c, (u8 *)val, sizeof(*val));
--	if (ret < 0)
--		goto fail;
--
--	pr_debug("d2l: I2C : addr:%04x value:%08x\n", addr, *val);
--	return;
--
--fail:
--	dev_err(&i2c->dev, "Error %d reading from subaddress 0x%x\n",
--		ret, addr);
--}
--
--static void d2l_write(struct i2c_client *i2c, u16 addr, u32 val)
--{
--	u8 data[6];
--	int ret;
--
--	put_unaligned_be16(addr, data);
--	put_unaligned_le32(val, data + 2);
--
--	ret = i2c_master_send(i2c, data, ARRAY_SIZE(data));
--	if (ret < 0)
--		dev_err(&i2c->dev, "Error %d writing to subaddress 0x%x\n",
--			ret, addr);
--}
--
++static void tc_bridge_pre_enable(struct drm_bridge *bridge)
++{
++	struct tc_data *tc = bridge_to_tc(bridge);
++
++	tc358775_power_up(tc);
++}
++
++static void tc_bridge_post_disable(struct drm_bridge *bridge)
++{
++	struct tc_data *tc = bridge_to_tc(bridge);
++
++	tc358775_power_down(tc);
++}
++
  /* helper function to access bus_formats */
  static struct drm_connector *get_connector(struct drm_encoder *encoder)
  {
-@@ -358,12 +323,33 @@ static struct drm_connector *get_connector(struct drm_encoder *encoder)
- 	return NULL;
- }
- 
-+static const struct reg_sequence tc_lvmux_vesa24[] = {
-+	{ LV_MX0003, LV_MX(LVI_R0, LVI_R1, LVI_R2, LVI_R3) },
-+	{ LV_MX0407, LV_MX(LVI_R4, LVI_R7, LVI_R5, LVI_G0) },
-+	{ LV_MX0811, LV_MX(LVI_G1, LVI_G2, LVI_G6, LVI_G7) },
-+	{ LV_MX1215, LV_MX(LVI_G3, LVI_G4, LVI_G5, LVI_B0) },
-+	{ LV_MX1619, LV_MX(LVI_B6, LVI_B7, LVI_B1, LVI_B2) },
-+	{ LV_MX2023, LV_MX(LVI_B3, LVI_B4, LVI_B5, LVI_L0) },
-+	{ LV_MX2427, LV_MX(LVI_HS, LVI_VS, LVI_DE, LVI_R6) },
-+};
-+
-+/* JEIDA-24/JEIDA-18 have the same mapping */
-+static const struct reg_sequence tc_lvmux_jeida18_24[] = {
-+	{ LV_MX0003, LV_MX(LVI_R2, LVI_R3, LVI_R4, LVI_R5) },
-+	{ LV_MX0407, LV_MX(LVI_R6, LVI_R1, LVI_R7, LVI_G2) },
-+	{ LV_MX0811, LV_MX(LVI_G3, LVI_G4, LVI_G0, LVI_G1) },
-+	{ LV_MX1215, LV_MX(LVI_G5, LVI_G6, LVI_G7, LVI_B2) },
-+	{ LV_MX1619, LV_MX(LVI_B0, LVI_B1, LVI_B3, LVI_B4) },
-+	{ LV_MX2023, LV_MX(LVI_B5, LVI_B6, LVI_B7, LVI_L0) },
-+	{ LV_MX2427, LV_MX(LVI_HS, LVI_VS, LVI_DE, LVI_R0) },
-+};
-+
- static void tc_bridge_enable(struct drm_bridge *bridge)
- {
- 	struct tc_data *tc = bridge_to_tc(bridge);
- 	u32 hback_porch, hsync_len, hfront_porch, hactive, htime1, htime2;
- 	u32 vback_porch, vsync_len, vfront_porch, vactive, vtime1, vtime2;
--	u32 val = 0;
-+	unsigned int val = 0;
- 	u16 dsiclk, clkdiv, byteclk, t1, t2, t3, vsdelay;
- 	struct drm_display_mode *mode;
- 	struct drm_connector *connector = get_connector(bridge->encoder);
-@@ -386,28 +372,29 @@ static void tc_bridge_enable(struct drm_bridge *bridge)
- 	htime2 = (hfront_porch << 16) + hactive;
- 	vtime2 = (vfront_porch << 16) + vactive;
- 
--	d2l_read(tc->i2c, IDREG, &val);
-+	regmap_read(tc->regmap, IDREG, &val);
- 
- 	dev_info(tc->dev, "DSI2LVDS Chip ID.%02x Revision ID. %02x **\n",
- 		 (val >> 8) & 0xFF, val & 0xFF);
- 
--	d2l_write(tc->i2c, SYSRST, SYS_RST_REG | SYS_RST_DSIRX | SYS_RST_BM |
--		  SYS_RST_LCD | SYS_RST_I2CM);
-+	regmap_write(tc->regmap, SYSRST,
-+		     SYS_RST_REG | SYS_RST_DSIRX | SYS_RST_BM | SYS_RST_LCD |
-+		     SYS_RST_I2CM);
- 	usleep_range(30000, 40000);
- 
--	d2l_write(tc->i2c, PPI_TX_RX_TA, TTA_GET | TTA_SURE);
--	d2l_write(tc->i2c, PPI_LPTXTIMECNT, LPX_PERIOD);
--	d2l_write(tc->i2c, PPI_D0S_CLRSIPOCOUNT, 3);
--	d2l_write(tc->i2c, PPI_D1S_CLRSIPOCOUNT, 3);
--	d2l_write(tc->i2c, PPI_D2S_CLRSIPOCOUNT, 3);
--	d2l_write(tc->i2c, PPI_D3S_CLRSIPOCOUNT, 3);
-+	regmap_write(tc->regmap, PPI_TX_RX_TA, TTA_GET | TTA_SURE);
-+	regmap_write(tc->regmap, PPI_LPTXTIMECNT, LPX_PERIOD);
-+	regmap_write(tc->regmap, PPI_D0S_CLRSIPOCOUNT, 3);
-+	regmap_write(tc->regmap, PPI_D1S_CLRSIPOCOUNT, 3);
-+	regmap_write(tc->regmap, PPI_D2S_CLRSIPOCOUNT, 3);
-+	regmap_write(tc->regmap, PPI_D3S_CLRSIPOCOUNT, 3);
- 
- 	val = ((L0EN << tc->num_dsi_lanes) - L0EN) | DSI_CLEN_BIT;
--	d2l_write(tc->i2c, PPI_LANEENABLE, val);
--	d2l_write(tc->i2c, DSI_LANEENABLE, val);
-+	regmap_write(tc->regmap, PPI_LANEENABLE, val);
-+	regmap_write(tc->regmap, DSI_LANEENABLE, val);
- 
--	d2l_write(tc->i2c, PPI_STARTPPI, PPI_START_FUNCTION);
--	d2l_write(tc->i2c, DSI_STARTDSI, DSI_RX_START);
-+	regmap_write(tc->regmap, PPI_STARTPPI, PPI_START_FUNCTION);
-+	regmap_write(tc->regmap, DSI_STARTDSI, DSI_RX_START);
- 
- 	/* Video event mode vs pulse mode bit, does not exist for tc358775 */
- 	if (tc->type == TC358765)
-@@ -431,42 +418,28 @@ static void tc_bridge_enable(struct drm_bridge *bridge)
- 	vsdelay = (clkdiv * (t1 + t3) / byteclk) - hback_porch - hsync_len - hactive;
- 
- 	val |= TC358775_VPCTRL_VSDELAY(vsdelay);
--	d2l_write(tc->i2c, VPCTRL, val);
-+	regmap_write(tc->regmap, VPCTRL, val);
- 
--	d2l_write(tc->i2c, HTIM1, htime1);
--	d2l_write(tc->i2c, VTIM1, vtime1);
--	d2l_write(tc->i2c, HTIM2, htime2);
--	d2l_write(tc->i2c, VTIM2, vtime2);
-+	regmap_write(tc->regmap, HTIM1, htime1);
-+	regmap_write(tc->regmap, VTIM1, vtime1);
-+	regmap_write(tc->regmap, HTIM2, htime2);
-+	regmap_write(tc->regmap, VTIM2, vtime2);
- 
--	d2l_write(tc->i2c, VFUEN, VFUEN_EN);
--	d2l_write(tc->i2c, SYSRST, SYS_RST_LCD);
--	d2l_write(tc->i2c, LVPHY0, LV_PHY0_PRBS_ON(4) | LV_PHY0_ND(6));
-+	regmap_write(tc->regmap, VFUEN, VFUEN_EN);
-+	regmap_write(tc->regmap, SYSRST, SYS_RST_LCD);
-+	regmap_write(tc->regmap, LVPHY0, LV_PHY0_PRBS_ON(4) | LV_PHY0_ND(6));
- 
- 	dev_dbg(tc->dev, "bus_formats %04x bpc %d\n",
- 		connector->display_info.bus_formats[0],
- 		tc->bpc);
--	if (connector->display_info.bus_formats[0] ==
--		MEDIA_BUS_FMT_RGB888_1X7X4_SPWG) {
--		/* VESA-24 */
--		d2l_write(tc->i2c, LV_MX0003, LV_MX(LVI_R0, LVI_R1, LVI_R2, LVI_R3));
--		d2l_write(tc->i2c, LV_MX0407, LV_MX(LVI_R4, LVI_R7, LVI_R5, LVI_G0));
--		d2l_write(tc->i2c, LV_MX0811, LV_MX(LVI_G1, LVI_G2, LVI_G6, LVI_G7));
--		d2l_write(tc->i2c, LV_MX1215, LV_MX(LVI_G3, LVI_G4, LVI_G5, LVI_B0));
--		d2l_write(tc->i2c, LV_MX1619, LV_MX(LVI_B6, LVI_B7, LVI_B1, LVI_B2));
--		d2l_write(tc->i2c, LV_MX2023, LV_MX(LVI_B3, LVI_B4, LVI_B5, LVI_L0));
--		d2l_write(tc->i2c, LV_MX2427, LV_MX(LVI_HS, LVI_VS, LVI_DE, LVI_R6));
--	} else {
--		/* JEIDA-18 and JEIDA-24 */
--		d2l_write(tc->i2c, LV_MX0003, LV_MX(LVI_R2, LVI_R3, LVI_R4, LVI_R5));
--		d2l_write(tc->i2c, LV_MX0407, LV_MX(LVI_R6, LVI_R1, LVI_R7, LVI_G2));
--		d2l_write(tc->i2c, LV_MX0811, LV_MX(LVI_G3, LVI_G4, LVI_G0, LVI_G1));
--		d2l_write(tc->i2c, LV_MX1215, LV_MX(LVI_G5, LVI_G6, LVI_G7, LVI_B2));
--		d2l_write(tc->i2c, LV_MX1619, LV_MX(LVI_B0, LVI_B1, LVI_B3, LVI_B4));
--		d2l_write(tc->i2c, LV_MX2023, LV_MX(LVI_B5, LVI_B6, LVI_B7, LVI_L0));
--		d2l_write(tc->i2c, LV_MX2427, LV_MX(LVI_HS, LVI_VS, LVI_DE, LVI_R0));
--	}
-+	if (connector->display_info.bus_formats[0] == MEDIA_BUS_FMT_RGB888_1X7X4_SPWG)
-+		regmap_multi_reg_write(tc->regmap, tc_lvmux_vesa24,
-+				       ARRAY_SIZE(tc_lvmux_vesa24));
-+	else
-+		regmap_multi_reg_write(tc->regmap, tc_lvmux_jeida18_24,
-+				       ARRAY_SIZE(tc_lvmux_jeida18_24));
- 
--	d2l_write(tc->i2c, VFUEN, VFUEN_EN);
-+	regmap_write(tc->regmap, VFUEN, VFUEN_EN);
- 
- 	val = LVCFG_LVEN_BIT;
- 	if (tc->lvds_link == DUAL_LINK) {
-@@ -475,7 +448,7 @@ static void tc_bridge_enable(struct drm_bridge *bridge)
- 	} else {
- 		val |= TC358775_LVCFG_PCLKDIV(DIVIDE_BY_3);
- 	}
--	d2l_write(tc->i2c, LVCFG, val);
-+	regmap_write(tc->regmap, LVCFG, val);
- }
- 
- /*
-@@ -617,7 +590,7 @@ static const struct drm_bridge_funcs tc_bridge_funcs = {
- 
- static int tc_attach_host(struct tc_data *tc)
- {
--	struct device *dev = &tc->i2c->dev;
-+	struct device *dev = tc->dev;
- 	struct mipi_dsi_host *host;
- 	struct mipi_dsi_device *dsi;
- 	int ret;
-@@ -665,6 +638,14 @@ static int tc_attach_host(struct tc_data *tc)
- 	return 0;
- }
- 
-+static const struct regmap_config tc358775_regmap_config = {
-+	.reg_bits = 16,
-+	.val_bits = 32,
-+	.max_register = 0xffff,
-+	.reg_format_endian = REGMAP_ENDIAN_BIG,
-+	.val_format_endian = REGMAP_ENDIAN_LITTLE,
-+};
-+
- static int tc_probe(struct i2c_client *client)
- {
- 	struct device *dev = &client->dev;
-@@ -679,6 +660,11 @@ static int tc_probe(struct i2c_client *client)
- 	tc->i2c = client;
- 	tc->type = (enum tc3587x5_type)(unsigned long)of_device_get_match_data(dev);
- 
-+	tc->regmap = devm_regmap_init_i2c(client, &tc358775_regmap_config);
-+	if (IS_ERR(tc->regmap))
-+		return dev_err_probe(dev, PTR_ERR(tc->regmap),
-+				     "regmap i2c init failed\n");
-+
- 	tc->panel_bridge = devm_drm_of_get_bridge(dev, dev->of_node,
- 						  TC358775_LVDS_OUT0, 0);
- 	if (IS_ERR(tc->panel_bridge))
 
 -- 
 2.39.2
