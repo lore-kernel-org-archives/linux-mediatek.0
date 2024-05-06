@@ -4,95 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87EDBC25B74
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 May 2024 16:40:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BA9CC25B5F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 May 2024 16:52:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=N/q68vb1HhT4JSLgDcC9dSoHLwhoZYQX/ai2pcy/liw=; b=CWAyYBNM8xulCn5BFFgFMp8V+/
-	WgbSoWkpEU4FGF4GvrzEJRlUts2gZSLCKp2U/XbHKP11V+e0jGZF6png63S5jPjV5TLbGVlA3ZvDI
-	cyxSVEgsZUoRyjAPa7mCFg3w86B8fMRDqaXVE/YjuaOYbQWRuwEb9kFr0ZdP7Z4EbMrftOkGZkWYH
-	Q2E3sXzDD4DUwz6WQVMaYyDpCBD29TA1YbI3pJcK8eGuGEpHml9D0SEBhprF7T1dgNNKhk5U5s2NN
-	MxSF3RvPWrvwQPaxFi6sdYpO0PFf1OOZRpEnHzedgLsCopn61sGv9P6F5tWJnaYtIHRiLPCMIqoaW
-	wHvDAkLA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:References:In-Reply-To:Date:Content-Type:Subject:To
+	:From:Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=IwqP/7Y2UdbLwDktzhmSvQ1RXPsSrkmi1XtKQnEU5/s=; b=3c2ZoRj7L4N9Fi
+	W6KQGaUV0OWcKYRSNNDwsCz32dkPxECvEaLsLEDlM9QxHKq6bT/jgpSQrBh28hDYfvpIco0HpMQV6
+	q57d2czvAQgFmOmJ8SkDYNPwqk8z0GsPyWz1I5YsANGcNV4iOAbTGCC4vxK6R3B40Lt78vI2Tdgxq
+	InCulW3Eyc7cz3WgnR0kjM4X/ix7olCvFtD6Rhali4ypXZyLSVpc9y7irPwXQjBRbvsRuzDzqHa9x
+	zUFP3cl2Qy/2zwxkW8AH3y5nxkYVDmaB37A81P/emWguU1eHLNG3m+JRAJpCBQPe+p9tTJBbdOtkJ
+	pArmMOpDD9toBxFNwmdA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s41OC-000000086xp-1HUF;
-	Mon, 06 May 2024 16:40:32 +0000
-Received: from mout.gmx.net ([212.227.17.20])
+	id 1s41ZL-000000088t0-4B3W;
+	Mon, 06 May 2024 16:52:04 +0000
+Received: from mout.gmx.net ([212.227.17.22])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s41O7-000000086wP-40ij;
-	Mon, 06 May 2024 16:40:30 +0000
+	id 1s41ZI-000000088qz-1qdw;
+	Mon, 06 May 2024 16:52:02 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
-	s=s31663417; t=1715013613; x=1715618413; i=frank-w@public-files.de;
-	bh=N/q68vb1HhT4JSLgDcC9dSoHLwhoZYQX/ai2pcy/liw=;
+	s=s31663417; t=1715014303; x=1715619103; i=frank-w@public-files.de;
+	bh=IwqP/7Y2UdbLwDktzhmSvQ1RXPsSrkmi1XtKQnEU5/s=;
 	h=X-UI-Sender-Class:MIME-Version:Message-ID:From:To:Cc:Subject:
 	 Content-Type:Date:In-Reply-To:References:
 	 Content-Transfer-Encoding:cc:content-transfer-encoding:
 	 content-type:date:from:message-id:mime-version:reply-to:subject:
 	 to;
-	b=t6hJqNY+EegHoajk9Pc+0pWAlS4Yd+wbC9xc5foY7mtoj5E+fzQVfHHijIB3uE04
-	 5VyK4YgptBC7x7st6WEqdeX2qPsC+J86rnyWLBBN77iVXPT2s1X1TV3YKTbtq9ZFu
-	 epowDLQMSQo4r72jPe/EbZxBWKTISd4SseBQQsNjoMXYY+XdadrzOqJEBK9qL3amQ
-	 TU98n6PEsJ3AjGOpG4tvnJiS2lGqC0p6VbbSZIU7cWb70rENueYpkQsYmvgDu/Kd/
-	 TM4lhtWwmgO9Afx87wRcFU/49sjq60Xe5rvbG9pQBe2GX920Hbpu5+eyjQnCDPFp/
-	 IOX6KGGVXeLBpBluiQ==
+	b=ZJMOhgOaKoq2Ph9aUz+zN3cUTdYprV6pz+9vp0TklV/mxEjT5dcBOZdN8n/MHgsj
+	 uZJOVLgY5rbwdC6lf5YKQf7zCp/lnoFb0fXuiwxzhkSbV5uJW/po6L8lpbPz8PM7S
+	 5EWCAPpwo875gXwsUm98FWYpQI0m/kq9LDTbU31ay4bbFdq4uaj665h+JNIJZngN6
+	 cMtdDOUnJO+tgLNJpLEJm6JqLUQaXhMgLOIQBfRIA0Zxf4qG4bZ2woDhXT5GEX00v
+	 vd5ngkpvKgyV3abAUmeVPkHsrGPEHkX0Si8mcJQfE7YzD7HReqEdcba33+Iuy2x/I
+	 ZvCtSViQrY/dE7UFjw==
 X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
 Received: from [80.245.77.247] ([80.245.77.247]) by web-mail.gmx.net
  (3c-app-gmx-bap23.server.lan [172.19.172.93]) (via HTTP); Mon, 6 May 2024
- 18:40:13 +0200
+ 18:51:43 +0200
 MIME-Version: 1.0
-Message-ID: <trinity-0d9eb74a-bce9-48cb-b119-e75a41404ed5-1715013613002@3c-app-gmx-bap23>
+Message-ID: <trinity-9ceb52ff-9a3b-4fe2-93f8-2e95b8ffb1ee-1715014303393@3c-app-gmx-bap23>
 From: Frank Wunderlich <frank-w@public-files.de>
 To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Frank Wunderlich <linux@fw-web.de>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley
- <conor+dt@kernel.org>, Michael Turquette <mturquette@baylibre.com>, Stephen
- Boyd <sboyd@kernel.org>, Pavel Machek <pavel@ucw.cz>, Lee Jones
- <lee@kernel.org>, "David S. Miller" <davem@davemloft.net>, Eric Dumazet
- <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
- <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Eric
- Woudstra <ericwouds@gmail.com>, Tianling Shen <cnsztl@immortalwrt.org>,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-clk@vger.kernel.org, linux-leds@vger.kernel.org,
- netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Tianling Shen <cnsztl@gmail.com>
-Subject: Aw: Re: [RFC v1 5/5] arm64: dts: mediatek: Add mt7986 based
- Bananapi R3 Mini
+Subject: Aw: Re: [RFC v1 2/5] dt-bindings: clock: mediatek: add
+ address-cells and size-cells to ethsys
 Content-Type: text/plain; charset=UTF-8
-Date: Mon, 6 May 2024 18:40:13 +0200
+Date: Mon, 6 May 2024 18:51:43 +0200
 Importance: normal
 Sensitivity: Normal
-In-Reply-To: <174a8bfe-7a9e-4816-9bde-de48f04b07f6@linaro.org>
+In-Reply-To: <9f8237c4-f603-459a-9d34-9cda556874b8@linaro.org>
 References: <20240505164549.65644-1-linux@fw-web.de>
- <20240505164549.65644-6-linux@fw-web.de>
- <174a8bfe-7a9e-4816-9bde-de48f04b07f6@linaro.org>
+ <20240505164549.65644-3-linux@fw-web.de>
+ <9f8237c4-f603-459a-9d34-9cda556874b8@linaro.org>
 X-UI-Message-Type: mail
 X-Priority: 3
-X-Provags-ID: V03:K1:2Nu5/Rcmkcng/UFjyKhDHjpn72TCN/RAt4hU+RXwahNi4GUC7U3bepBAbLf1/WtG/b/mc
- t6MPfrxxMJsTe4yPWQxfhski+CBd2KW4LQeby40cGG+V+QIV8lqQ0xS7yYsAEz+CMmQa13jGQFhi
- 2944XqxVKJOLH0oXg0nwGY63i78FubKggNYWioQX+V3voIYs9DzcS5cILQkCHW8bYHOX7/JDsvmP
- LhJHTfMbERqZQ6bTLsKnRFQ4gq4iUsl3GG50s3H5NWtVDPooARWP/BGSP0wWwvNz45q74h5vUIDn
- 70=
-UI-OutboundReport: notjunk:1;M01:P0:NAsoPtlBBgM=;BO2DCb+S9ohdLnwa8Hpcq1GUEPe
- ilz3XZSkDGWrCrCKCACKqkcaiUa3wfr8CjuUbPiYkzg97H6S4+RqA8LaV2FcKRZ3uds0NXycD
- D9EnmfoBshiYg8IK1Q5RFLrBgSIZA6WSsVjxYvJ6VGYgMyL7RRTWG/Ewjbn4PayddcyzPNSWi
- Mp/XSio46j41O9XFKrWnLoRlH2rpubf/IwWyVxktBG6cVo5c2i+Vkfi5ZmoxqF9+ofnUulvps
- bTfOfofFnd5C/BG12if5dmY0t9s2oeXXLrVa+y5Z3p9uI7dlsEiDdQUJ0I8dRjrUDi0VvqnX5
- VNaplCpHWOUSndjDdf/QeGXpy33ZrxpCFttFsoLR82hwhA96N13p3PYm1VX2clM+8tXNVqFE0
- M/+I6QlD2ryJDVK5jJW/0CP7TcaRZoPEeF25ogGpKe2QDBBhAQ5lz3K05MiirheaJ3fHeDMYZ
- 7yMvt14o54Ba+QMSyyEhYt+bFEwWcMfGQYBRjpyGMdhJftxyN2wDl5b2saxrRPyG25RGYJFWm
- Ht02j5lFtl1vnaKMw3ZwPhxlctR8D8ozfzOy7+eNlJUGIiwvfH5f71qXh06eFUizFtOH7iupA
- S4wk1ufIzGfDUUeNnwe0Oc88WqigKDg1NWm/qZfQElsHx9DcnpRQ646moiYPapqjEch033K7r
- 1Bn6ZkKsiHXPRHA26QIGBBqFUf2YeD/iHIN4lrmoZakXmhLGIFeEi4VSr3EweFY=
+X-Provags-ID: V03:K1:3Tx8ITtU9FZAbAHnVZrQv0sGnxOJ7y55w3K4FyNlXKBO0OOrZTMZ7iPXAy0QoSb6Y7OrR
+ OHP1cqr8ebHy9MA3C8iyt8voE5P7UohIVetGk1ZZ+JEnmShVktL642Q/CllLjuW1Zeeabdigrueo
+ MEP2qg5Uq7eHLcBnES1UCzrOM74CPlfQxPD6Nd3agGY3Dmih954CFjcgqGqFqHFiFi54/d2P2668
+ v8+QwlWfn7ELKzP3vVtD6YciGd4OmkyJd2Ya+99yXxs014VxFbL+kVmhh4AEZIWKiGBfBoMpEP53
+ kY=
+UI-OutboundReport: notjunk:1;M01:P0:HqZgEzNzP30=;1Z/bVNz2Hg6od3fp1iQE8Dn5VyS
+ EMECAIq92weuhOb8c8mleVtH7XDWJU47XhJV7CSFmtutIbyEKDwdL41WD5GYXOOqwUMf2XXAU
+ 0NOPFdiGzFDxcetA4IyMDIHE9gd/oUT5MflrTXniYf4hqofn1Z1xeV4UhApgq8JWMiy82IVAo
+ VcMsngEWSVtjR5FBOm9mqK10zHiV7Z3/gdZBbYijlzN5+/WdYHL1QJYefIbnctzGs/H82hweC
+ sSAg+e4G38eCfn5sDMBk48oas9UkM/eoZUpP7+3dhWOdyvvOcZ6KzQ6cuaq1xWUhqzO1svqbQ
+ 9H0n5FCYY+UEtvAx1dJOHQui14G0w69SG6tyKkuH9RVlEbFMBUXhN9ejUXKMBEwwIzqH9nUv9
+ JJON+I5GCmgbsa3KaRcxsjxmdobOhDBoJicv/FrWTBqOFYRgvmnwqh+CLio2Wvd2joe9ZfBlm
+ Pm7exN4QymBMZUZRMmUaE5DrF+H702+7i/mhCAlKxh89TbOpvgMhZHmzGk1MxsSxcQnEU19/7
+ iohn9RievoaAAR3BsEtdfWPZkKuFDC9yLx7vpNiHFm+ISVfJFrDysgJFKhlN6ddvI5Y7n12d7
+ SB6A1MnomcyH1qpn3uYNPaLtnr5z4b0KR4sJFFWF3YTUn1/ig0HmBFr/2jC9Bjcd/ytLJ1G3U
+ vMZJGgxPW3Mxk3q/x4a3fSUL22PvZ7DqxSALrDogsl+WOny5eNVViwT0POtGKQ8=
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240506_094028_306753_EE7AC477 
-X-CRM114-Status: GOOD (  10.99  )
+X-CRM114-CacheID: sfid-20240506_095200_801676_EAF2B20E 
+X-CRM114-Status: GOOD (  11.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,69 +91,52 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Michael Turquette <mturquette@baylibre.com>, Eric Dumazet <edumazet@google.com>, Pavel Machek <pavel@ucw.cz>, Frank Wunderlich <linux@fw-web.de>, linux-clk@vger.kernel.org, linux-leds@vger.kernel.org, Rob Herring <robh@kernel.org>, Tianling Shen <cnsztl@immortalwrt.org>, Lee Jones <lee@kernel.org>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Stephen Boyd <sboyd@kernel.org>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Eric Woudstra <ericwouds@gmail.com>, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi
-
-Thanks for review
-
-
-
-> Gesendet: Montag, 06. Mai 2024 um 10:20 Uhr
+> Gesendet: Montag, 06. Mai 2024 um 10:18 Uhr
 > Von: "Krzysztof Kozlowski" <krzysztof.kozlowski@linaro.org>
-> An: "Frank Wunderlich" <linux@fw-web.de>, "Rob Herring" <robh@kernel.org=
->, "Krzysztof Kozlowski"
-> > +	dcin: regulator-12vd {
+> On 05/05/2024 18:45, Frank Wunderlich wrote:
+> > From: Frank Wunderlich <frank-w@public-files.de>
+> >
+> > Add missing properties already used in mt7986a.dtsi.
 >
-> Please use name for all fixed regulators which matches current format
-> recommendation: 'regulator-[0-9]+v[0-9]+'
->
-> https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git/co=
-mmit/?id=3Db6d4b3500d57370f5b3abf0701c9166b384db976
->
-> > +		compatible =3D "regulator-fixed";
-> > +		regulator-name =3D "12vd";
-> > +		regulator-min-microvolt =3D <12000000>;
-> > +		regulator-max-microvolt =3D <12000000>;
-> > +		regulator-boot-on;
-> > +		regulator-always-on;
-> > +	};
-> > +
-> > +	fan: pwm-fan {
-> > +		compatible =3D "pwm-fan";
-> > +		#cooling-cells =3D <2>;
-> > +		/* cooling level (0, 1, 2) - pwm inverted */
-> > +		cooling-levels =3D <255 96 0>;
-> > +		pwms =3D <&pwm 0 10000>;
-> > +		status =3D "okay";
->
-> Why? Where is it disabled?
+> Missing for what? Or why? Provide context, IOW, explain why they are
+> missing.
 
-you're right, i'll drop it
+ethernet-node in mt7986a.dtsi hast reset-cells-property
 
-> > +	};
-> > +
-> > +	reg_1p8v: regulator-1p8v {
->
-> Please use name for all fixed regulators which matches current format
-> recommendation: 'regulator-[0-9]+v[0-9]+'
->
-> https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git/co=
-mmit/?id=3Db6d4b3500d57370f5b3abf0701c9166b384db976
->
-> In other places as well.
+https://elixir.bootlin.com/linux/v6.9-rc1/source/arch/arm64/boot/dts/media=
+tek/mt7986a.dtsi#L559
 
-ok i change it like this (label doesn't matter, right?):
+and
 
-dcin: regulator-12v {
-reg_1p8v: regulator-1v8 {
-reg_3p3v: regulator-3v3 {
-usb_vbus: regulator-5v {
+address-cells and size-cells are used here:
 
+https://elixir.bootlin.com/linux/v6.9-rc1/source/arch/arm64/boot/dts/media=
+tek/mt7986a.dtsi#L495
+
+i saw the warnings while checking my r3mini dts...
+
+arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-mini.dtb: syscon@1500=
+0000: '#address-cells', '#size-cells' do not match any of the regexes: 'pi=
+nctrl-[0-9]+'
+	from schema $id: http://devicetree.org/schemas/clock/mediatek,ethsys.yaml=
+#
+arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-mini.dtb: ethernet@15=
+100000: Unevaluated properties are not allowed ('#reset-cells' was unexpec=
+ted)
+	from schema $id: http://devicetree.org/schemas/net/mediatek,net.yaml#
+
+so i thought it is a good idea to fix this now ;)
+
+but basicly not related to my dts as these are inherited, so i can drop bi=
+nding-changes...
+
+regards Frank
 
 > Best regards,
 > Krzysztof
 
-regards Frank
 
