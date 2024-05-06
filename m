@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AB11C25B4F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 May 2024 13:37:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D97ACC25B74
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 May 2024 13:37:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=o6uvWMsS+JFAVzwcgCoupBNPHHzu+TQP46mjz5AWC1A=; b=eF2fay/g81mTu4nmOm7lOGPRs2
-	AxIQA5i/hlH55hXHiqrxsXaG+LCSRPaiD63c9DjZPxtBsDK+oODhcf7JJasGMU+BYp5MKA7uinbHi
-	aTMZp/5Ss9vFisvtvUb5HC6YWIjxnujikLpwD4LGJEYKDtruI1pM8S/UaRrRxL5dinZ01UCQIEYZL
-	21o05+hfjGszgh5cxTV0hxQfSvPgMXpmUUHq+3ERVKxdy0HXyBxYEfPmJy+HLhkvcEK1umL4bq4LC
-	S5y3E+fGy02KVb5/nwlApx0QNCHwzhMpihG8EutGNXedUlMg1UQKa1clA/1eLqZczSq7vyF8IymLD
-	0XjMITuQ==;
+	bh=I0geEq5c7gvyYagmCbcCTTh1a/H1oWe94O7tPT1MiEQ=; b=WpddJDchJsaRIG555UHLo3askh
+	D3x1t5Fy2TuJU+Qh1DcJQr6cQXCqP6wXcFIasShSeTAeqh1ea8UcgzFWPKxWgMsZVp13Za6/E0LoX
+	OdOi3ZH9bGQSRq6/6UGz5an0H1WzKvU1D+WNZ8nocPBNq4P5Ti/EEncpb/m0CWiDech8Q/n0EgJ4d
+	BYk0amWWMShgqxj5byURFnSG0J2dAznyHZO511muzW0/bpCvbtG3fgYeyg02HnmHTcTD9azoXtcrD
+	vUPovT5W5sj2j2oLk7I5LbjJx6E3lLi5Y461WbYGON6cjkiUolWktuty1M1/7NycmwMid48P8odH5
+	cTwiftFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s3yWb-00000007UHN-3Frs;
-	Mon, 06 May 2024 13:37:01 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1s3yWg-00000007UL4-0SNf;
+	Mon, 06 May 2024 13:37:06 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s3yVp-00000007Tec-0OZ0;
-	Mon, 06 May 2024 13:36:23 +0000
+	id 1s3yVt-00000007TYV-41Ys;
+	Mon, 06 May 2024 13:36:32 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 48A8561180;
+	by sin.source.kernel.org (Postfix) with ESMTP id 32F85CE0E70;
+	Mon,  6 May 2024 13:36:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6620FC4AF67;
 	Mon,  6 May 2024 13:36:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 85C6DC4AF63;
-	Mon,  6 May 2024 13:36:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1715002572;
-	bh=2qrwEGgpJfR6a/ANS2qyau3152FW/n1Efs/NSwqyfq0=;
+	s=k20201202; t=1715002576;
+	bh=t32YVBoUFvxxQC9832AhjslFW+xryk5tC8Zkli2Jjbk=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=fKoAURvJwU7PQ7A60+LC3D9rbSoxh2IprTicgx6iHdgw3xbzOSx2GCVLTVCbZ8djJ
-	 H9QxnH6/50KnMgSdXODGrFTgXNaVh9GCX11xdLqtPLL0iGtFXOL3dSlsLoulF5vDF3
-	 ZEmnFSoveKIZMx4szbIqoGWCBIDh9KHXRTpqaisLILlO3XoCb7AEfM/nw7QQlD8Uhe
-	 ZWqLFtr4EhSi+HBShK4RKdoEAeZNdCSECkUVRdry/lyn7nV0AlWtNJT0sxJ98/W8dc
-	 4BbBk9pO1I5pGtzn3vjfJ4DYAAjyDVGkAhO5dZCJ2xPkjdUB3dniX81Xw5BffzQXjX
-	 n7Yyvgt4OaJPw==
+	b=fXCiQTLNBW1QCbwM7CA/NjrZt96tU22qx432VWneCzxNbb+h6R9ts6xbg+AZULVjd
+	 QvxeG3U8al57+bnJxGuLJwXx2M9ALysruModd3d6cigU04CYQYiJ2ubYIpasrIwAx6
+	 5SYK0uVcJBVY20IB/vG3nwXoHtMpWNZdqOIjT4xCn/DdoI7pmUoadUM596UpFDnX9r
+	 oqlyFj/rA3QFjb0m0EhTHVcunpddivBJDmJsJsORD8iCvhfFUuEywBKucFme8QNKfP
+	 jLEiW7p0Ynizwy9ux3agCH8KktVkN4Wn9UQuYegwOXLO3pZXuBaxaPY8dMTr9qpcQT
+	 cheJ0Vaq/mw0A==
 From: Michael Walle <mwalle@kernel.org>
-Date: Mon, 06 May 2024 15:34:43 +0200
-Subject: [PATCH 14/20] drm/bridge: tc358775: configure PLL depending on the
- LVDS clock
+Date: Mon, 06 May 2024 15:34:44 +0200
+Subject: [PATCH 15/20] drm/bridge: tc358775: dynamically configure DSI link
+ settings
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240506-tc358775-fix-powerup-v1-14-545dcf00b8dd@kernel.org>
+Message-Id: <20240506-tc358775-fix-powerup-v1-15-545dcf00b8dd@kernel.org>
 References: <20240506-tc358775-fix-powerup-v1-0-545dcf00b8dd@kernel.org>
 In-Reply-To: <20240506-tc358775-fix-powerup-v1-0-545dcf00b8dd@kernel.org>
 To: Andrzej Hajda <andrzej.hajda@intel.com>, 
@@ -69,8 +69,8 @@ Cc: Daniel Semkowicz <dse@thaumatec.com>, dri-devel@lists.freedesktop.org,
  linux-arm-kernel@lists.infradead.org, Michael Walle <mwalle@kernel.org>
 X-Mailer: b4 0.12.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240506_063613_627853_C31800ED 
-X-CRM114-Status: GOOD (  14.58  )
+X-CRM114-CacheID: sfid-20240506_063618_711028_578D4D0B 
+X-CRM114-Status: GOOD (  16.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,99 +85,155 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The PLL setting was hardcoded to a LVDS clock between 60MHz and 135MHz.
-This adds support for slower frequencies. Also, rework the reset
-sequence to match the initialization sequence provided by the vendor.
+Instead of hardcoding the settings for just one (unknown) particular
+frequency and lane setting, compute the DSI link parameters using the
+handy phy_mipi_dphy_get_default_config() helper function.
+
+The DSI_START and DSI_BUSY registers were removed in version 0.6 of the
+datasheet. It seems that it applies to a different bridge and was just a
+leftover. Remove the DSI_START handling and the (unused) DSI_BUSY macro.
 
 Signed-off-by: Michael Walle <mwalle@kernel.org>
 ---
- drivers/gpu/drm/bridge/tc358775.c | 50 ++++++++++++++++++++++++++++++++-------
- 1 file changed, 42 insertions(+), 8 deletions(-)
+ drivers/gpu/drm/bridge/Kconfig    |  1 +
+ drivers/gpu/drm/bridge/tc358775.c | 58 +++++++++++++++++++++++----------------
+ 2 files changed, 35 insertions(+), 24 deletions(-)
 
+diff --git a/drivers/gpu/drm/bridge/Kconfig b/drivers/gpu/drm/bridge/Kconfig
+index c621be1a99a8..ed018d6f1da3 100644
+--- a/drivers/gpu/drm/bridge/Kconfig
++++ b/drivers/gpu/drm/bridge/Kconfig
+@@ -349,6 +349,7 @@ config DRM_TOSHIBA_TC358775
+ 	select REGMAP_I2C
+ 	select DRM_PANEL
+ 	select DRM_MIPI_DSI
++	select GENERIC_PHY_MIPI_DPHY
+ 	help
+ 	  Toshiba TC358775 DSI/LVDS bridge chip driver.
+ 
 diff --git a/drivers/gpu/drm/bridge/tc358775.c b/drivers/gpu/drm/bridge/tc358775.c
-index 4ec059531c5f..e3fba7ac71ec 100644
+index e3fba7ac71ec..33a97ddba7b5 100644
 --- a/drivers/gpu/drm/bridge/tc358775.c
 +++ b/drivers/gpu/drm/bridge/tc358775.c
-@@ -30,8 +30,6 @@
- #include <drm/drm_panel.h>
- #include <drm/drm_probe_helper.h>
+@@ -19,6 +19,7 @@
+ #include <linux/regmap.h>
+ #include <linux/regulator/consumer.h>
+ #include <linux/slab.h>
++#include <linux/phy/phy-mipi-dphy.h>
  
--#define FLD_VAL(val, start, end) FIELD_PREP(GENMASK(start, end), val)
+ #include <asm/unaligned.h>
+ 
+@@ -49,12 +50,14 @@
+ 
+ /* DSI PPI Layer Registers */
+ #define PPI_STARTPPI    0x0104  /* START control bit of PPI-TX function. */
+-#define PPI_START_FUNCTION      1
++#define PPI_STARTPPI_STARTPPI	BIT(0)
+ 
+ #define PPI_BUSYPPI     0x0108
+ #define PPI_LINEINITCNT 0x0110  /* Line Initialization Wait Counter  */
+ #define PPI_LPTXTIMECNT 0x0114
+ #define PPI_LANEENABLE  0x0134  /* Enables each lane at the PPI layer. */
++#define LANEENABLE_CLEN	BIT(0)
++#define LANEENABLE_L0EN	BIT(1)
+ #define PPI_TX_RX_TA    0x013C  /* DSI Bus Turn Around timing parameters */
+ 
+ /* Analog timer function enable */
+@@ -89,10 +92,7 @@
+ #define PPI_CLRSIPO     0x01E4  /* Clear SIPO values, Slave mode use only. */
+ #define HSTIMEOUT       0x01F0  /* HS Rx Time Out Counter */
+ #define HSTIMEOUTENABLE 0x01F4  /* Enable HS Rx Time Out Counter */
+-#define DSI_STARTDSI    0x0204  /* START control bit of DSI-TX function */
+-#define DSI_RX_START	1
+ 
+-#define DSI_BUSYDSI     0x0208
+ #define DSI_LANEENABLE  0x0210  /* Enables each lane at the Protocol layer. */
+ #define DSI_LANESTATUS0 0x0214  /* Displays lane is in HS RX mode. */
+ #define DSI_LANESTATUS1 0x0218  /* Displays lane is in ULPS or STOP state */
+@@ -174,21 +174,12 @@ enum {
+ /* Chip ID and Revision ID Register */
+ #define IDREG           0x0580
+ 
+-#define LPX_PERIOD		4
+-#define TTA_GET			0x40000
+-#define TTA_SURE		6
+-#define SINGLE_LINK		1
+-#define DUAL_LINK		2
 -
- /* Registers */
+ #define TC358775XBG_ID  0x00007500
  
- /* DSI D-PHY Layer Registers */
-@@ -146,10 +144,10 @@ enum {
- #define PCLKSEL_HSRCK	0	/* DSI clock */
+ /* Debug Registers */
+ #define DEBUG00         0x05A0  /* Debug */
+ #define DEBUG01         0x05A4  /* LVDS Data */
  
- #define LVPHY0          0x04A0  /* LVDS PHY 0 */
--#define LV_PHY0_RST(v)          FLD_VAL(v, 22, 22) /* PHY reset */
--#define LV_PHY0_IS(v)           FLD_VAL(v, 15, 14)
--#define LV_PHY0_ND(v)           FLD_VAL(v, 4, 0) /* Frequency range select */
--#define LV_PHY0_PRBS_ON(v)      FLD_VAL(v, 20, 16) /* Clock/Data Flag pins */
-+#define LVPHY0_LV_ND	GENMASK(4, 0)
-+#define LVPHY0_LV_FS	GENMASK(6, 5)
-+#define LVPHY0_LV_IS	GENMASK(15, 14) /* charge pump current */
-+#define LVPHY0_LV_RST	BIT(22)
- 
- #define LVPHY1          0x04A4  /* LVDS PHY 1 */
- #define SYSSTAT         0x0500  /* System Status  */
-@@ -223,6 +221,14 @@ struct tc_data {
- 	enum tc3587x5_type	type;
+-#define DSI_CLEN_BIT		BIT(0)
+-#define L0EN BIT(1)
+-
+ enum tc358775_ports {
+ 	TC358775_DSI_IN,
+ 	TC358775_LVDS_OUT0,
+@@ -314,23 +305,42 @@ static const struct reg_sequence tc_lvmux_jeida18_24[] = {
+ 	{ LV_MX2427, LV_MX(LVI_HS, LVI_VS, LVI_DE, LVI_R0) },
  };
  
-+struct tc358775_pll_settings {
-+	unsigned int min_khz;
-+	unsigned int max_khz;
-+	u8 fs;
-+	u8 nd;
-+	u8 is;
-+};
-+
- static inline struct tc_data *bridge_to_tc(struct drm_bridge *b)
+-static void tc358775_configure_dsi(struct tc_data *tc)
++/* All the DSI timing is counted by the HS byte clock internally */
++static uint32_t tc358775_ps_to_cnt(unsigned long long ps,
++				   struct phy_configure_opts_mipi_dphy *cfg)
  {
- 	return container_of(b, struct tc_data, bridge);
-@@ -371,10 +377,38 @@ static void tc358775_configure_lvds_timings(struct tc_data *tc,
- 	regmap_write(tc->regmap, VFUEN, VFUEN_EN);
++	unsigned long hs_byte_clk = cfg->hs_clk_rate / 8;
++
++	return DIV_ROUND_UP(ps * hs_byte_clk, PSEC_PER_SEC);
++}
++
++static void tc358775_configure_dsi(struct tc_data *tc, unsigned int pixelclk)
++{
++	int bpp = mipi_dsi_pixel_format_to_bpp(tc->dsi->format);
++	struct phy_configure_opts_mipi_dphy cfg;
+ 	unsigned int val;
+ 
+-	regmap_write(tc->regmap, PPI_TX_RX_TA, TTA_GET | TTA_SURE);
+-	regmap_write(tc->regmap, PPI_LPTXTIMECNT, LPX_PERIOD);
+-	regmap_write(tc->regmap, PPI_D0S_CLRSIPOCOUNT, 3);
+-	regmap_write(tc->regmap, PPI_D1S_CLRSIPOCOUNT, 3);
+-	regmap_write(tc->regmap, PPI_D2S_CLRSIPOCOUNT, 3);
+-	regmap_write(tc->regmap, PPI_D3S_CLRSIPOCOUNT, 3);
++	phy_mipi_dphy_get_default_config(pixelclk * 1000, bpp,
++					 tc->num_dsi_lanes, &cfg);
++
++	regmap_write(tc->regmap, PPI_TX_RX_TA,
++		     (tc358775_ps_to_cnt(cfg.ta_get, &cfg) << 16) |
++		     tc358775_ps_to_cnt(cfg.ta_sure, &cfg));
++	regmap_write(tc->regmap, PPI_LPTXTIMECNT,
++		     tc358775_ps_to_cnt(cfg.lpx, &cfg));
++
++	val = tc358775_ps_to_cnt(cfg.hs_settle, &cfg);
++	regmap_write(tc->regmap, PPI_D0S_CLRSIPOCOUNT, val);
++	regmap_write(tc->regmap, PPI_D1S_CLRSIPOCOUNT, val);
++	regmap_write(tc->regmap, PPI_D2S_CLRSIPOCOUNT, val);
++	regmap_write(tc->regmap, PPI_D3S_CLRSIPOCOUNT, val);
+ 
+-	val = ((L0EN << tc->num_dsi_lanes) - L0EN) | DSI_CLEN_BIT;
++	val = LANEENABLE_CLEN;
++	val |= (LANEENABLE_L0EN << tc->num_dsi_lanes) - LANEENABLE_L0EN;
+ 	regmap_write(tc->regmap, PPI_LANEENABLE, val);
+ 	regmap_write(tc->regmap, DSI_LANEENABLE, val);
+ 
+-	regmap_write(tc->regmap, PPI_STARTPPI, PPI_START_FUNCTION);
+-	regmap_write(tc->regmap, DSI_STARTDSI, DSI_RX_START);
++	regmap_write(tc->regmap, PPI_STARTPPI, PPI_STARTPPI_STARTPPI);
  }
  
--static void tc358775_configure_pll(struct tc_data *tc, int pixelclk)
-+static const struct tc358775_pll_settings tc358775_pll_settings[] = {
-+	{ 25000, 30000, 2, 27, 1 },
-+	{ 30000, 60000, 1, 13, 1 },
-+	{ 60000, 135000, 0, 6, 1 },
-+	{}
-+};
-+
-+static void tc358775_configure_pll(struct tc_data *tc, unsigned int pixelclk)
- {
-+	const struct tc358775_pll_settings *settings;
-+	unsigned int val;
-+
-+	if (tc->lvds_dual_link)
-+		pixelclk /= 2;
-+
-+	for (settings = tc358775_pll_settings; settings->min_khz; settings++)
-+		if (pixelclk > settings->min_khz &&
-+		    pixelclk < settings->max_khz)
-+			break;
-+
-+	if (!settings->min_khz)
-+		return;
-+
-+	val = u32_encode_bits(settings->fs, LVPHY0_LV_FS);
-+	val |= u32_encode_bits(settings->nd, LVPHY0_LV_ND);
-+	val |= u32_encode_bits(settings->is, LVPHY0_LV_IS);
-+
-+	regmap_write(tc->regmap, LVPHY0, val | LVPHY0_LV_RST);
-+	usleep_range(100, 150);
-+	regmap_write(tc->regmap, LVPHY0, val);
-+
- 	regmap_write(tc->regmap, SYSRST, SYS_RST_LCD);
--	regmap_write(tc->regmap, LVPHY0, LV_PHY0_PRBS_ON(4) | LV_PHY0_ND(6));
- }
+ static void tc358775_configure_lvds_timings(struct tc_data *tc,
+@@ -461,7 +471,7 @@ static void tc358775_bridge_enable(struct drm_bridge *bridge)
+ 		     SYS_RST_I2CM);
+ 	usleep_range(30000, 40000);
  
- static void tc358775_configure_color_mapping(struct tc_data *tc, u32 fmt)
+-	tc358775_configure_dsi(tc);
++	tc358775_configure_dsi(tc, mode->crtc_clock);
+ 	tc358775_configure_lvds_timings(tc, mode);
+ 	tc358775_configure_pll(tc, mode->crtc_clock);
+ 	tc358775_configure_color_mapping(tc, connector->display_info.bus_formats[0]);
 
 -- 
 2.39.2
