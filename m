@@ -4,54 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 941F5C25B4F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 May 2024 13:35:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5FB8C25B5F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 May 2024 13:36:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=fkXvm8K73uRGt43Fh5pP2CjGxAWo/753DWe98SqauEI=; b=39cUPoJuoiO7ZL
-	XPbW6tm1cm1h9Xn+EfRbBQntvQ8ODQIzoVqY0VHlS1b7Jay1CiqOW1o2IxFQhJWUden3q+TWhU4wD
-	/e5FJqhWwndUVSrAqt6RVNxT0x9OGzbxYnCtUtAz7wO4cuDhX07la9YBfQO+Xn280IH0OmqduDF0q
-	f2pDkCj2Pv2vWOcx5OZEbR5JNoeifVw81/83jK7uW7+e54s5n5nJYZNc2O4uoUU5Gm7HN6yWYoMQb
-	BNj+DsEHebjAWDph4AQEjxoupdMIt1MTYgSd/esxEaJc9FBVzgUvKMeb1mzRhyaiExEcvR/3Tt+1P
-	05kv/MBZR4i2fWqhZmsg==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8vey2TT4ipuvIHSxIzwBx4wg9dcbnHV1wsJHFKSciqU=; b=jhX16+NvaucfjKN34KU8Wcq9CA
+	/DdPa6XX+cOKh7VwNzRI/TI1ykelBHNb1QHrNcmpHC6y9zmiGXJ6tC8Wc6mWr8CwYhj3aLh5vboKp
+	0h105/2fzZlTpOlsoIfhGMkgyeGaepeX12196QaDvihOr0k5VIoNxpO2NesStRNkYo1Dv5NGT+X2G
+	lfLozJyYZJmcG6lglPOfnzVKM0EH7BlmwbMW4roQMVBmPIaE6WkVw/jJsf0FSPd0B/f24B7oNixYv
+	nxiX3WHKpUGI+NiXOY/T+RZgf2hLOEml/1KVsRVmeEptNLAFdxaj5gWeDmonISdW7jcVBs4vcDggn
+	i3q1Be1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s3yUw-00000007Szz-2Umm;
-	Mon, 06 May 2024 13:35:18 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1s3yVf-00000007TXi-0nPg;
+	Mon, 06 May 2024 13:36:03 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s3yUk-00000007SnA-2HS2;
-	Mon, 06 May 2024 13:35:08 +0000
+	id 1s3yV8-00000007T84-3MtG;
+	Mon, 06 May 2024 13:35:43 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 2B2BECE0E76;
-	Mon,  6 May 2024 13:35:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8C0E4C116B1;
-	Mon,  6 May 2024 13:34:58 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 8067ACE0E76;
+	Mon,  6 May 2024 13:35:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 56D7EC3277B;
+	Mon,  6 May 2024 13:35:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1715002503;
-	bh=7KQKdwRJtBFZkLdfMhs2OLN3qUwlGvTF8MBUDqOjd3s=;
-	h=From:Subject:Date:To:Cc:From;
-	b=XtKnAA/XWOfsPqfFPNMzDVsGyICjYHcSlf8yN7QfZtjlSZqSiy5hAzHxSY8rsgFJw
-	 3/hyujLhOEw1+5r+M6JvWl7pIFUa759fB+oMeFWlMjrnpyy/jbd6Wcgfw5Y7L8e4ew
-	 FOZG46X4xaoX09TdyFSn6ZQf1dSKkjYei64HiVGsq42hEqOtxuBnw7BwPEPZRpVhhy
-	 KTQDbLBkXcbirv4Ug2rw8AvhFbgFpQcT2myKjRx2vLHBf83Szm0wich1/Jp9Zq51Ge
-	 s0S261RfU+xxKJ0DjL64p/1LO0WzWkNKtRwEyPkWRG/lQJshAOVx0XKzGhpo1TToeS
-	 9xAidLnwcpCgg==
+	s=k20201202; t=1715002527;
+	bh=VjxeNKYDFVNa7bVWlPBb3FkbK1nSMTj0nhXJcYaVwIc=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=nHNFPtEnN3DVovJIBZ8EXSpxncOzcTVLRw3OInR2qD9SW4Pm67duBMCPv7Q3Q6QWH
+	 juRnQIPbSSpg8gldlPDW4Odb4mDx/13lvV8Ysvk0EOk2HZl4JGJH9w5GKTfgmSXPWU
+	 LvpWVIGdEYLk+OcBURS1Vk9s+E5wLWsNogrkMppg9wsqrARmRiRISdmUFWb3AyWRYj
+	 2A5nZTil8CCd/WMzeVVgBMLd21jL64TBKx0F1K6mewxMxjSS0TPtuSocvJobJR+ifn
+	 Qwr9NYW28ddIPfCNlIHS02bMPknXUFNqc+e8YaNLqdtHx9fOrZ8snWCEkl9Gd43rEG
+	 PTABT1wdl9rvQ==
 From: Michael Walle <mwalle@kernel.org>
-Subject: [PATCH 00/20] drm/bridge: tc358775: proper bridge bringup and code
- cleanup
-Date: Mon, 06 May 2024 15:34:29 +0200
-Message-Id: <20240506-tc358775-fix-powerup-v1-0-545dcf00b8dd@kernel.org>
+Date: Mon, 06 May 2024 15:34:34 +0200
+Subject: [PATCH 05/20] drm/bridge: tc358775: add crtc modes fixup
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAGXcOGYC/x2Myw5AMBAAf0X2bJOlreJXxEFY7IWm9Uoa/65xn
- ExmIgT2wgHaLILnS4LsW4Iiz2Bch21hlCkxlFRqMlThMSpTW2twlgfdfrM/HRo164ZIq8I2kFL
- nOel/2/Xv+wEve/DHZgAAAA==
+Message-Id: <20240506-tc358775-fix-powerup-v1-5-545dcf00b8dd@kernel.org>
+References: <20240506-tc358775-fix-powerup-v1-0-545dcf00b8dd@kernel.org>
+In-Reply-To: <20240506-tc358775-fix-powerup-v1-0-545dcf00b8dd@kernel.org>
 To: Andrzej Hajda <andrzej.hajda@intel.com>, 
  Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
  Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
@@ -70,8 +68,8 @@ Cc: Daniel Semkowicz <dse@thaumatec.com>, dri-devel@lists.freedesktop.org,
  linux-arm-kernel@lists.infradead.org, Michael Walle <mwalle@kernel.org>
 X-Mailer: b4 0.12.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240506_063507_127262_88C76064 
-X-CRM114-Status: GOOD (  13.77  )
+X-CRM114-CacheID: sfid-20240506_063531_920122_9E3CB79E 
+X-CRM114-Status: GOOD (  15.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,71 +84,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patchset fixes the bridge initialization according to the
-datasheet. Not sure how that even worked before. Maybe because the
-initialization was done prior to linux (?).
+The bridge has some limitations regarding the horizontal display
+timings. In particular, the pulse width has to be at least 8 pixels
+and all horizontal timings have to be a multiple of two pixels, except
+for the front porch which is ignored by the bridge anyway.
 
-The bridge has some peculiarities:
- (1) The reset has to be deasserted in LP-11 mode
- (2) For I2C access the bridge needs the DSI clock
- (3) The bridge has to be configured while the video stream is
-     disabled.
- (4) The bridge has limitations on the display timings. In particular,
-     the horizontal pulse width has to be at least 8 pixels wide and
-     both the horizontal pulse width as well as the back porch has to
-     be even. According to the datasheet the horizontal front porch as
-     well but in line sync mode, this is ignored. Also line sync is the
-     only supported mode for this bridge, therefore, the front porch
-     is always ignored.
+To accommodate that, add pixels to the pulse width and the back porch
+until these requirements are satisfied. The added pixels are then
+substracted from the front porch so we don't actually change the pixel
+clock (or framerate).
 
-The most controversial patch is probably "drm/bridge: add
-dsi_lp11_notify mechanism" which is needed for (1) above. Some time ago
-there was a series [1] to add a manual power-up, which was abandoned and
-which didn't suite the needs for this bridge anyway.
-
-Also, this will gradually change the tc_ prefix to tc358775_ while the
-functions are refactored.
-
-The bridge was successfully tested on a Mediatek MT8195 SoC with the
-following panels:
- - Innolux G101ICE
- - AUO G121EAN01.0
- - Innolux G156HCE (dual-link LVDS)
-
-[1] https://lore.kernel.org/r/20231016165355.1327217-1-dmitry.baryshkov@linaro.org/
-
+Fixes: b26975593b17 ("display/drm/bridge: TC358775 DSI/LVDS driver")
 Signed-off-by: Michael Walle <mwalle@kernel.org>
 ---
-Michael Walle (20):
-      drm/bridge: add dsi_lp11_notify mechanism
-      drm/mediatek: dsi: provide LP-11 mode during .pre_enable
-      drm/mediatek: dsi: add support for .dsi_lp11_notity()
-      drm/bridge: tc358775: fix regulator supply id
-      drm/bridge: tc358775: add crtc modes fixup
-      drm/bridge: tc358775: redefine LV_MX()
-      drm/bridge: tc358775: use regmap instead of open coded access functions
-      drm/bridge: tc358775: remove error message if regulator is missing
-      drm/bridge: tc358775: remove complex vsdelay calculation
-      drm/bridge: tc358775: simplify lvds_link property
-      drm/bridge: tc358775: reformat weird indentation
-      drm/bridge: tc358775: correctly configure LVDS clock
-      drm/bridge: tc358775: split the init code
-      drm/bridge: tc358775: configure PLL depending on the LVDS clock
-      drm/bridge: tc358775: dynamically configure DSI link settings
-      drm/bridge: tc358775: use proper defines to configure LVDS timings
-      drm/bridge: tc358775: move bridge power up/down into functions
-      drm/bridge: tc358775: fix the power-up/down delays
-      drm/bridge: tc358775: fix power-up sequencing
-      drm/bridge: tc358775: use devm_drm_bridge_add()
+ drivers/gpu/drm/bridge/tc358775.c | 32 ++++++++++++++++++++++++++++++++
+ 1 file changed, 32 insertions(+)
 
- drivers/gpu/drm/bridge/Kconfig     |   1 +
- drivers/gpu/drm/bridge/tc358775.c  | 601 ++++++++++++++++++++-----------------
- drivers/gpu/drm/drm_bridge.c       |  16 +
- drivers/gpu/drm/mediatek/mtk_dsi.c |   8 +-
- include/drm/drm_bridge.h           |  12 +
- 5 files changed, 355 insertions(+), 283 deletions(-)
----
-base-commit: 9221b2819b8a4196eecf5476d66201be60fbcf29
-change-id: 20240506-tc358775-fix-powerup-53f490043179
+diff --git a/drivers/gpu/drm/bridge/tc358775.c b/drivers/gpu/drm/bridge/tc358775.c
+index 980f71ea5a6a..720c0d63fd6a 100644
+--- a/drivers/gpu/drm/bridge/tc358775.c
++++ b/drivers/gpu/drm/bridge/tc358775.c
+@@ -502,6 +502,37 @@ static void tc_bridge_enable(struct drm_bridge *bridge)
+ 	d2l_write(tc->i2c, LVCFG, val);
+ }
+ 
++/*
++ * According to the datasheet, the horizontal back porch, front porch and sync
++ * length must be a multiple of 2 and the minimal horizontal pulse width is 8.
++ * To workaround this, we modify the back porch and the sync pulse width by
++ * adding enough pixels. These pixels will then be substracted from the front
++ * porch which is ignored by the bridge.  Hopefully, this marginal modified
++ * timing is tolerated by the panel. The alternative is either a black screen
++ * (if the sync pulse width is too short or a shifted picture if the lengths
++ * are not even).
++ */
++static bool tc_mode_fixup(struct drm_bridge *bridge,
++			  const struct drm_display_mode *mode,
++			  struct drm_display_mode *adj)
++{
++	u16 hsync_len, hback_porch;
++
++	hback_porch = adj->htotal - adj->hsync_end;
++	if (hback_porch & 1) {
++		adj->hsync_end -= 1;
++		adj->hsync_start -= 1;
++	}
++
++	hsync_len = adj->hsync_end - adj->hsync_start;
++	if (hsync_len < 8)
++		adj->hsync_start -= 8 - hsync_len;
++	else if (hsync_len & 1)
++		adj->hsync_start -= 1;
++
++	return adj->hsync_start >= adj->hdisplay;
++}
++
+ static enum drm_mode_status
+ tc_mode_valid(struct drm_bridge *bridge,
+ 	      const struct drm_display_info *info,
+@@ -603,6 +634,7 @@ static const struct drm_bridge_funcs tc_bridge_funcs = {
+ 	.attach = tc_bridge_attach,
+ 	.pre_enable = tc_bridge_pre_enable,
+ 	.enable = tc_bridge_enable,
++	.mode_fixup = tc_mode_fixup,
+ 	.mode_valid = tc_mode_valid,
+ 	.post_disable = tc_bridge_post_disable,
+ };
+
+-- 
+2.39.2
 
 
