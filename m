@@ -4,73 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D0DAC10F16
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 May 2024 11:22:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F10EC10F16
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 May 2024 11:24:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2rWb98zPrGXCpbCGlWbvrrBc0vDfjYtgn2+Fiv61KB0=; b=NZJqHWwRWqOxs9M8ZE0VXsrFwl
-	aDE7TByTZFejogeGku4YfgjT6PyuHs89J+SJDyuSw73vrYAgStvy9gb80ms05M6BtPNfi/L+3N3sE
-	8c+5pLXBovduV+aV509xYFx5ooMbZNcGiuFqq1IZVY7sVZd3oSoVYABqoK3s6TGkkn4nNWGq23JHd
-	3eT8b7vUo6lDn+BqNikmp/aMInRQQ5kzYOlAuzHsYbrdSWh0hCAsEQlhfFVLlPgtWHB8epyIqq92B
-	nL5P7zkqoRY3j99EiAJJvLY+mw8dybdbIecBBEBNrHR5/a8RDOe7aMP9dW3BzQ0+ZKY7OhnnmZQwb
-	EZD8Pspg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6/5d9mrey0z6E77J+ABi9iiwn9elsW+Czw3OW2qo5J0=; b=VGx85Xj2plBdvZEnO6PykdMNni
+	OUWsKEi5oh+J0oLMynY8+GMTpZP4cpVxcCcODMQhLVOH8awLSi6OwxAocsGdlECwmhRto53l7tRo2
+	CIXsPPd0VHhQ/ttsgH/c1x9LDPvDVBgPtqa/V2w95KYqHEZPBwtMujDyd9KBtCt0AwYeJlfYLEcA+
+	JdUOD8LMYej2X4S5HsABUVIrIlCOnzE0ur1RakhBXJ4IaKuAfaxgLM7ot53LE0kaOsqf5B3+OLchP
+	FpMhw0raoNBomOgsCvF9dBkyMczDD45Gr3GFtaOTmjj3FOJ9MJ69S4XQtJRu/U7qngfm21b0Hnec7
+	f2tyoxaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s3wQ5-000000075vT-0CzN;
-	Mon, 06 May 2024 11:22:09 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1s3wSV-000000076Mc-0Wkj;
+	Mon, 06 May 2024 11:24:39 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s3wQ1-000000075u9-3nMz;
-	Mon, 06 May 2024 11:22:07 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1714994524;
-	bh=WRfIjoGXJOrxKIMOIK6fA9+RaDmVZhu3OL5+XnDAkHA=;
-	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
-	b=15YeLV1kyZjf+iw+wMojXNyYslS6EWt/yfOUxNyedsZMJOicabHB71UbapyfmROU1
-	 laIfq9QuGhe0QV0/T5L4nHJ77wdtpK3oXS0uYY5yDXGNC/JOJTyhls5n5Penh0Wqjf
-	 PGBSwEY8x5qaMssoxcZdlkXKdvkxh04ii8WFniP97mrSYM1DD+teypxXAEvBBkuuoT
-	 sZi2n/FIs5kzrpXTO+Z4ooZcoTk43qBETtKt1yWTprQdyTk9P97Is7wnkj+6AfTdZw
-	 kluGZq24q4hXoVrNQWGDYASrMBnOX/1QgnlK3mUVBzPghA4+GAqlhyyI1LTbfVZqHZ
-	 R9zaOkJt6TbPQ==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id AE6573782087;
-	Mon,  6 May 2024 11:22:02 +0000 (UTC)
-Message-ID: <1b8fa907-b48f-4ebe-bc17-3de1d7c0d062@collabora.com>
-Date: Mon, 6 May 2024 13:22:02 +0200
+	id 1s3wSR-000000076LZ-0IK6;
+	Mon, 06 May 2024 11:24:36 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.97.1)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1s3wSD-000000005mU-15Wb;
+	Mon, 06 May 2024 11:24:21 +0000
+Date: Mon, 6 May 2024 12:24:17 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: arinc.unal@arinc9.com
+Cc: DENG Qingfang <dqfext@gmail.com>, Sean Wang <sean.wang@mediatek.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Bartel Eerdekens <bartel.eerdekens@constell8.be>,
+	mithat.guner@xeront.com, erkin.bozoglu@xeront.com,
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net-next v2] net: dsa: mt7530: detect PHY muxing when PHY
+ is defined on switch MDIO bus
+Message-ID: <Zji94d4yfEBaHlzt@makrotopia.org>
+References: <20240430-b4-for-netnext-mt7530-use-switch-mdio-bus-for-phy-muxing-v2-1-9104d886d0db@arinc9.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 0/3] drm/mediatek: Add support for OF graphs
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: Michael Walle <mwalle@kernel.org>,
- Alexandre Mergnat <amergnat@baylibre.com>, chunkuang.hu@kernel.org
-Cc: robh@kernel.org, krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
- p.zabel@pengutronix.de, airlied@gmail.com, daniel@ffwll.ch,
- maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de,
- matthias.bgg@gmail.com, shawn.sung@mediatek.com, yu-chang.lee@mediatek.com,
- ck.hu@mediatek.com, jitao.shi@mediatek.com, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- wenst@chromium.org, kernel@collabora.com
-References: <20240409120211.321153-1-angelogioacchino.delregno@collabora.com>
- <1fc23530-89ba-4e36-9e9a-a1289f56a9bc@baylibre.com>
- <608fdbde-ad06-45ec-9771-18aa9f002f2d@collabora.com>
- <D12H4GDJJEUF.1Y91H9RMUIX20@kernel.org>
- <50be68dc-b86a-4334-9f83-43c6fda2c271@collabora.com>
-Content-Language: en-US
-In-Reply-To: <50be68dc-b86a-4334-9f83-43c6fda2c271@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20240430-b4-for-netnext-mt7530-use-switch-mdio-bus-for-phy-muxing-v2-1-9104d886d0db@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240506_042206_186270_F899260E 
-X-CRM114-Status: GOOD (  22.81  )
+X-CRM114-CacheID: sfid-20240506_042435_135625_BB0EF36A 
+X-CRM114-Status: GOOD (  25.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,76 +75,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 06/05/24 12:56, AngeloGioacchino Del Regno ha scritto:
-> Il 06/05/24 12:02, Michael Walle ha scritto:
->> Hi Angelo,
->>
->> On Tue Apr 30, 2024 at 1:33 PM CEST, AngeloGioacchino Del Regno wrote:
->>>>> This series was tested on MT8195 Cherry Tomato and on MT8395 Radxa
->>>>> NIO-12L with both hardcoded paths, OF graph support and partially
->>>>> hardcoded paths (meaning main display through OF graph and external
->>>>> display hardcoded, because of OVL_ADAPTOR).
->>>>
->>>> Is that make sense for you to add the DTS changes of these boards into this 
->>>> serie ?
->>>> I asked because, IMHO, that could help to understand the serie.
->>>>
->>>
->>> Yes and no... but I imagine that you're asking this because you're trying to
->>> prepare something with a different SoC+board(s) combination :-)
->>>
->>> In that case, I'm preventively sorry because what follows here is not 100%
->>> perfectly tidy yet as I didn't mean to send the devicetree commits upstream
->>> before this series got picked....
->>>
->>> ... but there you go - I'm sure that you won't mind and that the example will
->>> be more than good enough for you.
->>
->> I've tested this series with the DSI0 output and it works. Nice! No
->> need for my DSI0 patch for the MT8395 anymore.
->>
->> But I can't get it to work with the DisplayPort output, that is the
->> dp_intf1/dp_tx interface. I don' know how the pipeline have to look
->> like. The functional spec seems to be ambiguous on this. The text
->> seem to refer to the second vdosys but there is also a diagram where
->> you can use the first vdosys and dsc0. If you have any pointers for
->> me, I'm all ears :)
->>
+On Tue, Apr 30, 2024 at 08:01:33AM +0300, Arınç ÜNAL via B4 Relay wrote:
+> From: Arınç ÜNAL <arinc.unal@arinc9.com>
+> 
+> Currently, the MT7530 DSA subdriver configures the MT7530 switch to provide
+> direct access to switch PHYs, meaning, the switch PHYs listen on the MDIO
+> bus the switch listens on. The PHY muxing feature makes use of this.
+> 
+> This is problematic as the PHY may be attached before the switch is
+> initialised, in which case, the PHY will fail to be attached.
+> 
+> Since commit 91374ba537bd ("net: dsa: mt7530: support OF-based registration
+> of switch MDIO bus"), we can describe the switch PHYs on the MDIO bus of
+> the switch on the device tree. Extend the check to detect PHY muxing when
+> the PHY is defined on the MDIO bus of the switch on the device tree.
+> 
+> When the PHY is described this way, the switch will be initialised first,
+> then the switch MDIO bus will be registered. Only after these steps, the
+> PHY will be attached.
+> 
+> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+
+Reviewed-by: Daniel Golle <daniel@makrotopia.org>
+
+> ---
+> Changes in v2:
+> - Address the terminology on the patch log.
+> - Link to v1: https://lore.kernel.org/r/20240429-b4-for-netnext-mt7530-use-switch-mdio-bus-for-phy-muxing-v1-1-1f775983e155@arinc9.com
+> ---
+>  drivers/net/dsa/mt7530.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+> index 2b9f904a98f0..6cf21c9d523b 100644
+> --- a/drivers/net/dsa/mt7530.c
+> +++ b/drivers/net/dsa/mt7530.c
+> @@ -2483,7 +2483,8 @@ mt7530_setup(struct dsa_switch *ds)
+>  			if (!phy_node)
+>  				continue;
+>  
+> -			if (phy_node->parent == priv->dev->of_node->parent) {
+> +			if (phy_node->parent == priv->dev->of_node->parent ||
+> +			    phy_node->parent->parent == priv->dev->of_node) {
+
+I had some concerns about missing check for phy_node->parent != NULL,
+but it's impossible in practise. If phy_node exists, it will have a parent
+node as well.
+
+To be super extra safe, maybe doing
+phy_node->parent && phy_node->parent->parent == priv->dev->of_node
+would be better.
+
+>  				ret = of_get_phy_mode(mac_np, &interface);
+>  				if (ret && ret != -ENODEV) {
+>  					of_node_put(mac_np);
+> 
+> ---
+> base-commit: 5c4c0edca68a5841a8d53ccd49596fe199c8334c
+> change-id: 20240429-b4-for-netnext-mt7530-use-switch-mdio-bus-for-phy-muxing-586269371c55
+> 
+> Best regards,
+> -- 
+> Arınç ÜNAL <arinc.unal@arinc9.com>
 > 
 > 
-> The problem with this is that you need DDP_COMPONENT_DRM_OVL_ADAPTOR... which is
-> a software thing and not HW, so that can't be described in devicetree.
 > 
-> The only thing this series won't deal with is exactly that.
-
-Sorry, no, I got confused.
-
-The series *does* already deal with that, as the pipeline is built before the check
-for OVL_ADAPTOR components, so that will get probed.
-
-What I got confused about is the fact that I promised myself to cleanup the support
-for that OVL_ADAPTOR thing (which is unrelated to this series, even...), but again,
-this series will still get that probed anyway.
-
-Anyway.
-
-The pipeline for DP1 should be simply
-
-VDOSYS 1 -> MERGE 5 -> DP_INTF 1 -> DP
-
-(eDP on VDOSYS 0 -> MERGE 0 --- DP on VDOSYS 1 -> MERGE 5)
-
-Cheers,
-Angelo
-
-> 
-> It's relatively easy, though, to add support for the OVL_ADAPTOR... as it would
-> be just a matter of checking if any of the components in the pipeline contain a
-> compatible that is in the OVL_ADAPTOR compatible list.
-> 
-> I'll try to add that up today, let's see what I can do.
-> 
-
-
-
 
