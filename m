@@ -4,71 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76626C4345F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 May 2024 08:19:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D912C4345F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 May 2024 08:21:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
 	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HdixhyCdkxbsOaEUZRzsyGScImkACO1gmM3YlrUoxD4=; b=X4+Ue/wxsutSwZ
-	MwA4gP4fd/V3KNYWfdza+F3PHW7s7eEBhuyzqp5cKg5GO6SfCv9ulyFTK3zzH0P729P4TgIkiXtzu
-	ReGDpqPL7yCwuvP9rg94ZyuRduFrpHMKHmu1tCkTd1Qfq1j8qRz4tGlvCIzarQM9dTMuJp5miGvKV
-	Oa+YPkfjxG022gog5zLzqeM4qTM6R/ENMHwNQLOQKPSI7kAOpKrPgDyfidS1OhobtCUoKVCl9YluD
-	2gU5JEuVLDb/ixAV5m6o8XA4j1N/mnHhQk93VHAjXuh5Dz9aB7UsruW4GExRO5YmKxe5lsuhto4vE
-	d+7B/wO6sXF3Q7uhKP4w==;
+	List-Owner; bh=tmDdcKP/w1lSqdUXDZt0r8WrvJuiZTD+uLc8uT6i3VI=; b=sEDsqDdbagrdg6
+	r3PV8vcj4CjKP8WdnVMCsh/66vLZwRdKGrKPXrl6RxWYl/CcO9lOGMOE1GA8/Ys9Cg5FEOtsKjdoY
+	75Z9R11YGJxFNYIUPJxepG9KQaQbKqf28dHgDIuiG7Mj8Oi27rh3FAOjn2Z+A4M36ICgnAFCoipTc
+	kHiR/H8sMm7K0ZxF5t5dy7G3nh9S1W98SGNCGFrOTil4iD2OkjDHZvkv/VpzYpmTDemCcca0h3YmL
+	GiMLXoUTibS9KX46sGCGIN2jrpJ5D2QGPNHG7oPLzc8Sr8mDD3qTEqBfJaq87b9Hju4aFImkMMZ0l
+	1OJv4hHIYe0tJEBZFT3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s3tZH-00000006bvq-0iTL;
-	Mon, 06 May 2024 08:19:27 +0000
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
+	id 1s3tam-00000006cKj-3Zbh;
+	Mon, 06 May 2024 08:21:00 +0000
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s3tZD-00000006buQ-3weU
+	id 1s3taf-00000006cI6-0zqP
 	for linux-mediatek@lists.infradead.org;
-	Mon, 06 May 2024 08:19:25 +0000
-Received: by mail-ej1-x635.google.com with SMTP id a640c23a62f3a-a599eedc8eeso327831766b.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 06 May 2024 01:19:22 -0700 (PDT)
+	Mon, 06 May 2024 08:20:55 +0000
+Received: by mail-ej1-x629.google.com with SMTP id a640c23a62f3a-a59c5c9c6aeso201645266b.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 06 May 2024 01:20:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1714983561; x=1715588361; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=HdixhyCdkxbsOaEUZRzsyGScImkACO1gmM3YlrUoxD4=;
-        b=Fdxfm/yPTHfZQQbjx8HWF1irLtiCk6Y83yu7Hmp3mzTQlQgDKoYKlGh6bmkAnE/OcV
-         E2+40q34Ow1AMxVywG6GRtf6sk9HpomK+p5MIRZnqU3Y8CzXWsNky6oIL6jBSmWgSkRd
-         e0112XiWbDuH7avYoeyLPEyHd08Rz0eI+ILQFypwwb/PfTGx2fQAOoG8LjOA13XjKl9d
-         rAtZ1qPoksQRw5JCelYLTh6Y+IlYihzSCgM5Kr1ytxFaR/mSUBAjOkkroZnB4WQz6KCZ
-         2HB5ynC5jATDUEnnB0UPnT+p8R8H1LNFr+gHJWGYFCi/rL7Sw5u9RpQi+HcOD7gKd9//
-         BoTQ==
+        d=linaro.org; s=google; t=1714983651; x=1715588451; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=tmDdcKP/w1lSqdUXDZt0r8WrvJuiZTD+uLc8uT6i3VI=;
+        b=p4msLcVbzH9UWmpz4i7D4/ZBfRFsb0TtXS+a1IB2vzJQMY0w61f3pFggiib73yUDjY
+         yCv79YZStnZ/cctLYqvRubO8+dNz3O4w7i+xvRByWW2p8v9eEV+rqYn7mujbLjkN8aH+
+         rzN2u+38PZoCk8khROwE2HgHXNu7HkmuwfWHLbPyprIUnQIj+ssB4q2rInVFAbok8OS2
+         0sA6z8oSBw9I2f3H1tV8l3DxCqQ/UgSMuVtSoOu+R3gE8xk7ZMVIb1+SVyK87wBeCkyA
+         LzJHl9Bq7mJNo8E00IY2qC406xIfJzjZLRNxmBbM9U5hnEVxSKBPbOJaQ+JyDVKqYaGC
+         qP/Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1714983561; x=1715588361;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=HdixhyCdkxbsOaEUZRzsyGScImkACO1gmM3YlrUoxD4=;
-        b=tltzQD/Yp8CF9/7l7ugmBP3J8K7rbpTS2Ii44jomB6CsgbGCDdAZJs1OoOiHbaLp+f
-         2OiAiOM1NDd9Ai+wxoYvQxlFasS/7inJg8vm7/3pJFfo6AJQUKBJzdT9CCcU7yOYil8g
-         7oqtxedmeDefF4AR88VjI8GlSU/yfPhxVh3m42q7E97GP2qUSMhflUYynX328P057jDD
-         c2qYzt28uoYptgYx9li3JKUm1HUu6qFMdy9fjaK04ZtDq6Eeca71M1aptk/B7/b9IEWX
-         AwY25eY0RhlChGhx8QxfBoM/OTX50pGYAGX49n1SiUgJkITn3y+g2uPv0UD6zwuNSeHL
-         9ZKw==
-X-Forwarded-Encrypted: i=1; AJvYcCVn2MmA00kK7oSq1Zn9U8cr+PrF1epj1yt3jpFIU4P356VgjgeUP7hhLmYG4v7FfUf5RxWbzc9444g9SjmP4Fd9eSVmAhvlGBVJZtoQSfabQXj8
-X-Gm-Message-State: AOJu0YzIbUVqaM0MI6p81JUHt98KXU0aOJYuHtB8sNN8BWkPyQmNHT5a
-	uJiFUa4eQ54nf7wDyBvDyMkAahXt/R4KQM9KK9DE1og98J6f19sRZ8Cmo6RiSrU=
-X-Google-Smtp-Source: AGHT+IEdyfq5VODqBUDlk0X50mcux+MjqiewKSI1JYPmG5jMazQSiQY5m4WaEqX1A4C5cVyImuf0BQ==
-X-Received: by 2002:a17:906:fb94:b0:a59:a9c5:e73b with SMTP id lr20-20020a170906fb9400b00a59a9c5e73bmr3973961ejb.46.1714983561108;
-        Mon, 06 May 2024 01:19:21 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1714983651; x=1715588451;
+        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=tmDdcKP/w1lSqdUXDZt0r8WrvJuiZTD+uLc8uT6i3VI=;
+        b=jNyfS/pb3a6dsDjMmvRcJfOf4leNTKzRubLwKxY3Bv2tN+5aBrGcAt/Lmxu85zvVEJ
+         djCRPOjUKUe3Mwzf+yzT+wXxX/m2sDeU1cDeYZqp4Yb/S5arTt7LphtwmNj8f3282mDu
+         fmfH7oNoItZCyz8fzfY5W5kvGfgCny+uVwnxYZpuWAW8NY+Los4V60ieAHgUff0tZNlr
+         br2hpvLXQYabc0mLeuUXeAy9ggyKTHPQD1Oxj3dF3vAml4yP95LGP3PjHqw79yIEzyCp
+         VG1hG4Qxfo73zYVPrtz0YDBEbyYelYB3To1Z6NaGpWooViWoEvD1Dxkm8rEvlDbyymLc
+         anTQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXxMYsjn5U1dPK6Gb24mrtTv8MK8LvsJyhNHq/WsAqFZVKCCpU6h0xrln++wkyToRVuNnCw4KmkPKD8oIWRs369Rep7od/6P+jytbmuj5qscNfr
+X-Gm-Message-State: AOJu0YwuZzhWNZE1Qw4nJlQQK1KSop6Mud/ePWaGihh0GpQaGt9EFTph
+	kxabULsVwKhs8z5moEjbWvRRQ5rovE+Rb4Vj/wPYJ1jzwTy43JP0C6Qg8TzEins=
+X-Google-Smtp-Source: AGHT+IGZugCF55E3mU1WDQzk+ixOdDGn2ORJUjR1HtaCqaeFlXIxs5cPG2OOwXDTs5Xwl9OR1Wvf2A==
+X-Received: by 2002:a17:906:1d51:b0:a59:c220:16a5 with SMTP id o17-20020a1709061d5100b00a59c22016a5mr2666066ejh.9.1714983651254;
+        Mon, 06 May 2024 01:20:51 -0700 (PDT)
 Received: from [192.168.1.20] ([178.197.206.169])
-        by smtp.gmail.com with ESMTPSA id n7-20020a170906688700b00a59af83e403sm2357104ejr.220.2024.05.06.01.19.19
+        by smtp.gmail.com with ESMTPSA id wr8-20020a170907700800b00a59be52ff98sm1884910ejb.191.2024.05.06.01.20.49
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 06 May 2024 01:19:20 -0700 (PDT)
-Message-ID: <e8042ecc-e0d0-43df-8a59-707870862dc2@linaro.org>
-Date: Mon, 6 May 2024 10:19:18 +0200
+        Mon, 06 May 2024 01:20:50 -0700 (PDT)
+Message-ID: <174a8bfe-7a9e-4816-9bde-de48f04b07f6@linaro.org>
+Date: Mon, 6 May 2024 10:20:47 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v1 3/5] dt-bindings: net: mediatek,net: add reset-cells
+Subject: Re: [RFC v1 5/5] arm64: dts: mediatek: Add mt7986 based Bananapi R3
+ Mini
 To: Frank Wunderlich <linux@fw-web.de>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
  Conor Dooley <conor+dt@kernel.org>,
@@ -79,9 +80,9 @@ To: Frank Wunderlich <linux@fw-web.de>, Rob Herring <robh@kernel.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 References: <20240505164549.65644-1-linux@fw-web.de>
- <20240505164549.65644-4-linux@fw-web.de>
-Content-Language: en-US
+ <20240505164549.65644-6-linux@fw-web.de>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Content-Language: en-US
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
  cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
@@ -126,13 +127,12 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20240505164549.65644-4-linux@fw-web.de>
+In-Reply-To: <20240505164549.65644-6-linux@fw-web.de>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240506_011924_133543_398ABFAE 
-X-CRM114-Status: UNSURE (   7.79  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240506_012053_368121_3B71A32B 
+X-CRM114-Status: GOOD (  15.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -144,20 +144,113 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Tianling Shen <cnsztl@immortalwrt.org>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Eric Woudstra <ericwouds@gmail.com>, linux-clk@vger.kernel.org, linux-leds@vger.kernel.org
+Cc: devicetree@vger.kernel.org, Tianling Shen <cnsztl@immortalwrt.org>, netdev@vger.kernel.org, Tianling Shen <cnsztl@gmail.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Eric Woudstra <ericwouds@gmail.com>, linux-clk@vger.kernel.org, linux-leds@vger.kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 05/05/2024 18:45, Frank Wunderlich wrote:
 > From: Frank Wunderlich <frank-w@public-files.de>
 > 
-> Add missing binding for property used in mt7986a.dtsi.
+> Add device Tree for Bananapi R3 Mini SBC.
 > 
+> Co-developed-by: Eric Woudstra <ericwouds@gmail.com>
+> Signed-off-by: Eric Woudstra <ericwouds@gmail.com>
+> Co-developed-by: Tianling Shen <cnsztl@gmail.com>
+> Signed-off-by: Tianling Shen <cnsztl@gmail.com>
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> ---
+>  arch/arm64/boot/dts/mediatek/Makefile         |   1 +
+>  .../mediatek/mt7986a-bananapi-bpi-r3-mini.dts | 486 ++++++++++++++++++
+>  2 files changed, 487 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-mini.dts
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
+> index 37b4ca3a87c9..1763b001ab06 100644
+> --- a/arch/arm64/boot/dts/mediatek/Makefile
+> +++ b/arch/arm64/boot/dts/mediatek/Makefile
+> @@ -11,6 +11,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-bananapi-bpi-r64.dtb
+>  dtb-$(CONFIG_ARCH_MEDIATEK) += mt7981b-xiaomi-ax3000t.dtb
+>  dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-acelink-ew-7886cax.dtb
+>  dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3.dtb
+> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-mini.dtb
+>  dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-emmc.dtbo
+>  dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-nand.dtbo
+>  dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-nor.dtbo
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-mini.dts b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-mini.dts
+> new file mode 100644
+> index 000000000000..c764b4dc4752
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-mini.dts
+> @@ -0,0 +1,486 @@
+> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> +/*
+> + * Copyright (C) 2021 MediaTek Inc.
+> + * Authors: Frank Wunderlich <frank-w@public-files.de>
+> + *          Eric Woudstra <ericwouds@gmail.com>
+> + *          Tianling Shen <cnsztl@immortalwrt.org>
+> + */
+> +
+> +/dts-v1/;
+> +
+> +#include <dt-bindings/gpio/gpio.h>
+> +#include <dt-bindings/input/input.h>
+> +#include <dt-bindings/leds/common.h>
+> +#include <dt-bindings/pinctrl/mt65xx.h>
+> +
+> +#include "mt7986a.dtsi"
+> +
+> +/ {
+> +	model = "Bananapi BPI-R3 Mini";
+> +	chassis-type = "embedded";
+> +	compatible = "bananapi,bpi-r3mini", "mediatek,mt7986a";
+> +
+> +	aliases {
+> +		serial0 = &uart0;
+> +		ethernet0 = &gmac0;
+> +		ethernet1 = &gmac1;
+> +	};
+> +
+> +	chosen {
+> +		stdout-path = "serial0:115200n8";
+> +	};
+> +
+> +	dcin: regulator-12vd {
 
-Again, no, it is not missing, if the device is not reset controller.
+Please use name for all fixed regulators which matches current format
+recommendation: 'regulator-[0-9]+v[0-9]+'
 
-Provide explanation why this is suitable in the binding. IOW, why DTS is
-right, but binding is wrong.
+https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git/commit/?id=b6d4b3500d57370f5b3abf0701c9166b384db976
+
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "12vd";
+> +		regulator-min-microvolt = <12000000>;
+> +		regulator-max-microvolt = <12000000>;
+> +		regulator-boot-on;
+> +		regulator-always-on;
+> +	};
+> +
+> +	fan: pwm-fan {
+> +		compatible = "pwm-fan";
+> +		#cooling-cells = <2>;
+> +		/* cooling level (0, 1, 2) - pwm inverted */
+> +		cooling-levels = <255 96 0>;
+> +		pwms = <&pwm 0 10000>;
+> +		status = "okay";
+
+Why? Where is it disabled?
+
+> +	};
+> +
+> +	reg_1p8v: regulator-1p8v {
+
+Please use name for all fixed regulators which matches current format
+recommendation: 'regulator-[0-9]+v[0-9]+'
+
+https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git/commit/?id=b6d4b3500d57370f5b3abf0701c9166b384db976
+
+In other places as well.
+
+
 
 Best regards,
 Krzysztof
