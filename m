@@ -4,71 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0B24C4345F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 May 2024 08:18:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB4F1C4345F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 May 2024 08:18:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
 	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kyCSU7ZejXSusFRIt11zlWxVxJqQYg4pbqRIurqwXTA=; b=eRBZrBtb+qHGg6
-	OmyhPR8XgQ3wFVooVCwQ+8wucEUiUDjdwFyDbrKjZiiLbzyTQpII/UccPAYsKKgFXq9dRXdq4dj6K
-	Jpt/AL1CBMbushAwT9nCqmABkVAdXF3hL7uz639KhHvX+PiD1aT/EGxEbNTPZ+C0gl0TzKd8LaFcg
-	hYcUCPMFQuAZAcY+UWwQRWle8iY4+cO+Ee04QewHc2rb6fPCsUzrxW5qZDYd8oYVCyect6feBvoUO
-	FxKYkEVuOj+vBO4m//xvRDVqN/VpQJKf84x+Q0C6XITfKhR2RfQj9+OaaEcPrYRWvblNzq2zdfKrd
-	BGywOiXD0wR1HOn2vU9g==;
+	List-Owner; bh=yF2PY372A06TG1ZrARmVPbaU8+5CywxP38mhOMI8D+U=; b=OevBPV5p2iE1vL
+	+lNX2eAV6fZxtz6GLIsTkgFRObJjFfY6nGl5abY+/NRirZ8njTkCqvfeDpzTxtU8QIl5/pmU00umf
+	bgk4Nkr6mA9FuIWGrJ8Lfuv2bwiXrdrdW2Ml/PuRCrXO2wBsg88NzVWgs3DgWJUv7Ie1JpnRGicdi
+	1rcTIyzX021nNUECnMtiyCwKepeluwys2NmRcbtt1s4iX2mGvOqF4Nl7SWjBbJPswZmfs5MqaoNB1
+	/JCxktOGjgxdfJKzECDcHv6KlLUcmnqFpkjaQJ5Unt6uuMjXOHww3HvokCQyZJrtxo6Lp5r1ccZGM
+	fPxZ41bPnXSbYAnI8Kow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s3tYB-00000006bVU-1MVP;
-	Mon, 06 May 2024 08:18:19 +0000
-Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
+	id 1s3tYg-00000006biu-21Yr;
+	Mon, 06 May 2024 08:18:50 +0000
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s3tY8-00000006bUg-2RAX
+	id 1s3tYd-00000006bga-1KsE
 	for linux-mediatek@lists.infradead.org;
-	Mon, 06 May 2024 08:18:17 +0000
-Received: by mail-ej1-x632.google.com with SMTP id a640c23a62f3a-a599c55055dso366461266b.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 06 May 2024 01:18:14 -0700 (PDT)
+	Mon, 06 May 2024 08:18:49 +0000
+Received: by mail-ej1-x636.google.com with SMTP id a640c23a62f3a-a59a64db066so362558766b.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 06 May 2024 01:18:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1714983493; x=1715588293; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1714983524; x=1715588324; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:content-language
          :from:references:cc:to:subject:user-agent:mime-version:date
          :message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=kyCSU7ZejXSusFRIt11zlWxVxJqQYg4pbqRIurqwXTA=;
-        b=xpI4ACBjc/CJTLacbVUk8qzYaKwPA58U3RajWB3G0Z0KPIO9Uaz5UthpIlZ6aPyRjq
-         EwUTGSc4yvltxj39WOlsADWsqDvqFT7/+nYx1laStNKvAk3+6gKXuQMQcQ4gvaG6S6Yq
-         Qjzj2NDRHqduWzxTfNeAbMwzSvnhuFHjSMSJGjzblIRkXFFGkW2e3A3NEb641n+2WUgv
-         2RW0mWH6R1zG6xhZ2ejQnbdPrG5pfej5pIn9nFKt851kAt9iuKVti3oXGw+80JpQkE+2
-         BJrnfc0ps/eJu/Tr4/4FJo61mWEi0DjYogO34UvIfQAYVpsik2t04pRfbdcR7y1FyofX
-         Jyew==
+        bh=yF2PY372A06TG1ZrARmVPbaU8+5CywxP38mhOMI8D+U=;
+        b=nMVaEtcd4DCzrsOXesSmbddq8LxdwCs8/ujBTolkZIBmSrRuOVHkHy3ux19eZC1p9b
+         7gZ6hXQA/4WwlousmBb4duEltXMWdcMORno1GFiYZFjHzlbNZ2tqYNhDHVfJBwXRWbeD
+         qFWQsHsGsHHHErroELHow0txlpgIio4u0Fz8nrIrUj0cupsga53kQRjY0ooOuHoqywFK
+         OU0ZQiUGf/yzvCq90XY2nI4J2DcQTUbRDFegIuta1LZDwy1WZxTTVPZ0H76RKLhn+ZIa
+         SGLNKshVzYSvK4A2IQlgzNkEkSRbqNzdlWDyJud8pkwF1NiTUUDZ7091BDwI0OHHg6Y+
+         38zA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1714983493; x=1715588293;
+        d=1e100.net; s=20230601; t=1714983524; x=1715588324;
         h=content-transfer-encoding:in-reply-to:autocrypt:content-language
          :from:references:cc:to:subject:user-agent:mime-version:date
          :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=kyCSU7ZejXSusFRIt11zlWxVxJqQYg4pbqRIurqwXTA=;
-        b=bxLzJtcAYZgaHKPbLNricBb2vO4kXHMh28jFTpFwA/8fa0UPw4hg0Drh2k7Scf6qtH
-         v1wYmXUntuQkfAM7wYT5z14YhfUbjadAYs+UQTtIDimWwGiH/I6yr7cgE3brTmYFu+8Z
-         seEB5oqVBVxY5dYgibzJ9+u8IJnXtHdL5vK6vAbVKtjt7nPf7dQYNfm7wVdQ7KpHuS2/
-         4s5XuMZlNMPKYQ+/jE0KmAykBWJgHXjdiUS+cGY7T/eXQAQCUEuxKnosmVEsn5ngiGE7
-         28Q7o4ZheaEWdUo1Bp1fnbrOSGgJgABwztI76rUhcGJJ6kNlIJdN1ZP2b33t6i6yPGLP
-         D/ag==
-X-Forwarded-Encrypted: i=1; AJvYcCWRLkYclxAUK/u8i0R7h0DOMtL/2dGhJyyTJJ13IlRSB7ANoJ278FeK5UPNqPetSvNm+eDWla0/D3QDAJgnzZTOcGx60TO+veaCE5v/V/QWNjSg
-X-Gm-Message-State: AOJu0YyQh1Lm/eUBOvK7qSPlyzVV08jD5UsnMR4OzsTZTHUomAnNVMGY
-	VkdWTjEAmJI09h8RxvqZWykp/dK7fBdRs2GYu1HDvJqymHUKXLypITTzW5/z3N0=
-X-Google-Smtp-Source: AGHT+IGZE9M9suIC6Fm7AZpwYuowYLCkk0lDnHD88smv+8cHP+bSZpP9hULxklnYnT75Tl8jHWBztg==
-X-Received: by 2002:a17:907:7f03:b0:a59:c52b:9938 with SMTP id qf3-20020a1709077f0300b00a59c52b9938mr2347063ejc.55.1714983493379;
-        Mon, 06 May 2024 01:18:13 -0700 (PDT)
+        bh=yF2PY372A06TG1ZrARmVPbaU8+5CywxP38mhOMI8D+U=;
+        b=XyUsJ99JIt8u9OaXsvhVNqej0cJ9ddklz8DJsTBVG4qFE0axD4u3M3dSss/Icm7lhj
+         b5yqfNwUHhwO0CBOLRy7FTnLhYemh2m6IMG0NqMuqinmRLASQMynFbE2CHjgjyoXTuTl
+         ZGYJ4b/21IKnBCs4vUzmzZaZWDq7i47bCpZXYuQoVT1OQQljpfPg7rCXwLd43pCSN7YM
+         6PKFlaciwfgq94BPcm8fJM7gn+QkppfqwADkGcddy/c6+dioT1zhAT683FjVL+/ro/W2
+         tOWWCqIFhGaDRvXxElxktwFJ8QQdw46l8pOdQFTCDGYX4j2yq5cNQTK9d4SkDZCmZhYG
+         p13w==
+X-Forwarded-Encrypted: i=1; AJvYcCXoDceUAiHaGw1tgZwWJ6heb5B4qN5kSOR1gJNjxNHZ1hOSSCaTtdtAMYKfMUnhT+pOlmxF5+VF73/26a1qEJlN+unVXvTnaaP5p1yyQx/07Ds5
+X-Gm-Message-State: AOJu0YzTRxvhX2k3YhOWYOyAt5a0tzQsmW6Bvu10wVFs6DkmgLRmOVsU
+	egRVGaP0yyXY8C8l8aHLRxUVTdQ087nJMuiQ46durpGFe1kl8iUNGhZ8UFJJZEY=
+X-Google-Smtp-Source: AGHT+IGkXHLj7TZIljpsAuYgZI4b/vPFjApDJ1jdpylvcEBdmY6+JzDb2ahXllr2WdjayC/CG56vPA==
+X-Received: by 2002:a17:907:809:b0:a59:db0f:6bd5 with SMTP id wv9-20020a170907080900b00a59db0f6bd5mr793266ejb.9.1714983524678;
+        Mon, 06 May 2024 01:18:44 -0700 (PDT)
 Received: from [192.168.1.20] ([178.197.206.169])
-        by smtp.gmail.com with ESMTPSA id le5-20020a170906ae0500b00a59d5f879d2sm520398ejb.32.2024.05.06.01.18.11
+        by smtp.gmail.com with ESMTPSA id og14-20020a1709071dce00b00a59bfcac17dsm1823671ejc.39.2024.05.06.01.18.42
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 06 May 2024 01:18:12 -0700 (PDT)
-Message-ID: <8e9fd4c9-f537-4413-b8c8-988b001b64c0@linaro.org>
-Date: Mon, 6 May 2024 10:18:09 +0200
+        Mon, 06 May 2024 01:18:44 -0700 (PDT)
+Message-ID: <9f8237c4-f603-459a-9d34-9cda556874b8@linaro.org>
+Date: Mon, 6 May 2024 10:18:41 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v1 1/5] dt-bindings: leds: add led trigger netdev
+Subject: Re: [RFC v1 2/5] dt-bindings: clock: mediatek: add address-cells and
+ size-cells to ethsys
 To: Frank Wunderlich <linux@fw-web.de>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
  Conor Dooley <conor+dt@kernel.org>,
@@ -79,7 +80,7 @@ To: Frank Wunderlich <linux@fw-web.de>, Rob Herring <robh@kernel.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 References: <20240505164549.65644-1-linux@fw-web.de>
- <20240505164549.65644-2-linux@fw-web.de>
+ <20240505164549.65644-3-linux@fw-web.de>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Content-Language: en-US
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
@@ -126,12 +127,13 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20240505164549.65644-2-linux@fw-web.de>
+In-Reply-To: <20240505164549.65644-3-linux@fw-web.de>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240506_011816_633067_7C1B65A1 
-X-CRM114-Status: GOOD (  12.79  )
+X-CRM114-CacheID: sfid-20240506_011847_413560_7AC6C230 
+X-CRM114-Status: UNSURE (   6.05  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -150,28 +152,11 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On 05/05/2024 18:45, Frank Wunderlich wrote:
 > From: Frank Wunderlich <frank-w@public-files.de>
 > 
-> Add led trigger implemented with config-symbol LEDS_TRIGGER_NETDEV to
-> binding.
-> 
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> ---
->  Documentation/devicetree/bindings/leds/common.yaml | 2 ++
->  1 file changed, 2 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/leds/common.yaml b/Documentation/devicetree/bindings/leds/common.yaml
-> index 8a3c2398b10c..bf9a101e4d42 100644
-> --- a/Documentation/devicetree/bindings/leds/common.yaml
-> +++ b/Documentation/devicetree/bindings/leds/common.yaml
-> @@ -113,6 +113,8 @@ properties:
->              # LED indicates NAND memory activity (deprecated),
->              # in new implementations use "mtd"
->            - nand-disk
-> +            # LED indicates network activity
-> +          - netdev
+> Add missing properties already used in mt7986a.dtsi.
 
-"dev" is redundant (there is no flash-dev or usb-host-dev). Two network
-interfaces are already provided, so your commit msg must provide
-rationale why this is not enough and why this is useful/needed.
+Missing for what? Or why? Provide context, IOW, explain why they are
+missing.
+
 
 Best regards,
 Krzysztof
