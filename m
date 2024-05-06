@@ -4,65 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 130E8C41513
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 May 2024 13:36:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 603E2C25B4F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 May 2024 13:36:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9XSMUdIH/xbrKSJ/1FY3kzcDlUdNOj3PZQCySZMGJPo=; b=B0HdsFKBjuXg9QVWDIVgxwSMrT
-	VSs4p0V16ZV91Nd3xgwWpHFyOYzbzB2f8OeY97mXvUeneWHRqupsea0EZaFvsU3DSlu/n1g64uQta
-	/TGa6LAiH0c3nJF9yieJkMsp7oiVc5CC4GjbfU5Y0qGGvqHdnRYtylGMDg2ABb3WSf+dq41iSZynb
-	Ecn6yKkWKxuGni4/0UWNwOwzd86ye0d5DPXQLVzpsjf7mSAPPQKy590PcQcY77qyK3Sz5wTo8ozc1
-	G5I/UQLT95zlNgbXJMP8PS7YgiIFTJLn8WDDU1bbJqT+eSRpmbjNqCsFITRMlR80oErk7QUFGf6/y
-	MjV8TGUw==;
+	bh=d/M+nbQZghrYWQgFZi3Igy/SC6rg1+xGJ3oQ4bcPWKQ=; b=oW2J1/SWJAREpKuHMqIYmWPS3b
+	2oBvrhw1j8NkeYh5xdY++u32H2iJNMTmlF8cI5xaXsnhKui51qkYYTO++gTiVL5tTtxScwpI2l+xs
+	kXm7FLGsPTc7bNZT2NSkPfHlVpxb1jWtJ+sS90+6RaN4uuRzwMbmZO9eYqE13cuOd4sXQeCmn3rvb
+	Rj+uowsj2AvBytwojy4Dq/9uUpEQoD1qnOr1Pf7yXyoM/1xISLboJsMTHtozjwdjBorIsri/5T6pr
+	XvldgMevk5wa0mEc5gQI2ZUNghUI4OT8A7O4t5LNAbC6a4B1mnLjZVJ4OGSvY426XlifQ+zCX8qpF
+	JQ4+lj/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s3yVx-00000007Tkz-149D;
-	Mon, 06 May 2024 13:36:21 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1s3yW5-00000007TrU-2Xqn;
+	Mon, 06 May 2024 13:36:29 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s3yVZ-00000007TSo-3feO;
-	Mon, 06 May 2024 13:35:58 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=9XSMUdIH/xbrKSJ/1FY3kzcDlUdNOj3PZQCySZMGJPo=; b=aFewYo5EZT/TqeQ6AnZ18PgcyQ
-	nTOvKhHciJWaAo5m9zke8Dm8Eg8LpECmZXQPptV3LcfbTI96NzR9DnUFV05YlAuAN5bk7xejg71Cr
-	fX0ILZjMxV4laoUFGvP8kIxEpf53EHtuAGMclD23ALaqqLxfRPAt3Od4zwYfQZ18XWwzCcSDcig/m
-	ejZMrZx0VNOwvz0Jie7WQXQqRIaPPdKNmrsN7QQRTlPtCco/BqN0ty137bSieqKsZ0DHRHe8thRYJ
-	+CDLbJUXQ2YKDWf+dlmclX5lQolJacfjN+QPsk3gyYudji3D8cOyBHvXRKbEKVTas2KiAN+ORrWkT
-	BD4e40Tw==;
-Received: from dfw.source.kernel.org ([139.178.84.217])
-	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s3yVR-00000001j76-0ORQ;
-	Mon, 06 May 2024 13:35:53 +0000
+	id 1s3yVN-00000007TJm-0O5W;
+	Mon, 06 May 2024 13:36:02 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 87F106120A;
-	Mon,  6 May 2024 13:35:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CB2EAC4AF67;
-	Mon,  6 May 2024 13:35:42 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 58A4BCE0E64;
+	Mon,  6 May 2024 13:35:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EC444C116B1;
+	Mon,  6 May 2024 13:35:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1715002547;
-	bh=gBI1ftlJZK9GLIPJr/NbCBA/Qls8YZkI0rH9liGw82E=;
+	s=k20201202; t=1715002542;
+	bh=On4XVAth8phH/tpwuPnVAjW8rZ3xEljXuSTJvjxVCxA=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=h9hLaZa9H6GjxzIZRfYYsRrPiaEmUBLgk6uaHxdbdFwp22Q8cgdEsaIYiY/Rf9Ypn
-	 lKfCsi5ROojUiHyhphcOKtuGgMn09uF3w7sGI7DHHmw2wJfmOSWNqILS6JyTqtR9mI
-	 vTuU+4CE27bz6NZqk7YLmD41xVHbRzFLlUmbvDv8txUgLoEyF8D9AvcZ7zPiVB+ui8
-	 TvBIrBVQR0u5CFL8Bwl8nowBUbU/Ns+7KxHFwvblEdcotqt5Gym8KN1BTbu6g1+FR8
-	 AGjo26xCkv+3PXBt4SaWMbcRwgdKOz6aL0v5qHB8opihXv97Ht6PM7oKtG2bMOFK4c
-	 cxXwl1Tzm7rXg==
+	b=Ikbmr446+4FNMnf+X2Ixk0yrmfaW3BrQGq12yjTcqCoCnSMkfSMw79qQvU1rgZfqu
+	 JcZnBDtaLaFpqmQqg4UdyeA5sK5j3exP0iGyduTW+eyccA9s4j2R2u7Lm954PYjFJ1
+	 Q+l9MRMFtFOtcpDQ8ztJ8OYkO3Ce1eEN/UUkyu6VIt2vdXkRs8dxE10Y7teetNDRns
+	 cdh+7BrTVQUTngjQ2ZR5sArhQPeeXTR/doaIIdckPjZqmAcuvwIr3bYhciLCreXU9j
+	 6zdG+E+/fBgrr4+SEsziVEUOj+pHa3QSTlHgUxUB4CL6ONgrBQh8PAJVMZlOYWzcoi
+	 BbhbiM5RK5trg==
 From: Michael Walle <mwalle@kernel.org>
-Date: Mon, 06 May 2024 15:34:38 +0200
-Subject: [PATCH 09/20] drm/bridge: tc358775: remove complex vsdelay
- calculation
+Date: Mon, 06 May 2024 15:34:37 +0200
+Subject: [PATCH 08/20] drm/bridge: tc358775: remove error message if
+ regulator is missing
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20240506-tc358775-fix-powerup-v1-9-545dcf00b8dd@kernel.org>
+Content-Transfer-Encoding: 7bit
+Message-Id: <20240506-tc358775-fix-powerup-v1-8-545dcf00b8dd@kernel.org>
 References: <20240506-tc358775-fix-powerup-v1-0-545dcf00b8dd@kernel.org>
 In-Reply-To: <20240506-tc358775-fix-powerup-v1-0-545dcf00b8dd@kernel.org>
 To: Andrzej Hajda <andrzej.hajda@intel.com>, 
@@ -83,8 +69,8 @@ Cc: Daniel Semkowicz <dse@thaumatec.com>, dri-devel@lists.freedesktop.org,
  linux-arm-kernel@lists.infradead.org, Michael Walle <mwalle@kernel.org>
 X-Mailer: b4 0.12.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240506_143549_753963_C2CE0343 
-X-CRM114-Status: GOOD (  13.24  )
+X-CRM114-CacheID: sfid-20240506_063545_628460_4DF438D5 
+X-CRM114-Status: GOOD (  10.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,113 +85,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-To cite the datasheet on VSDELAY:
-  During DSI link speed is slower than that of LVDS link’s, data needs
-  to be buffer within 775XBG before outputting to prevent data from
-  underflow. Register field VPCTRL[VSDELAY] is used to for this purpose
-
-This driver assumes that the DSI link speed is the pixel clock (as does
-every DSI bridge driver), after all the LVDS clock is derived from the
-DSI clock. Thus we know for a fact, that the DSI link is not slower than
-the LVDS side. Just use the (sane) default value of the bridge and drop
-the complicated calculation here.
-
-While at it, replace the TC358775_VPCTRL_MSF() and
-TC358775_VPCTRL_OPXLFMT() inline functions by the usual macros for a bit
-flag.
+A missing regulator node will automatically be replaced by a dummy. Thus
+regulators are optional anyway. Remove the error message.
 
 Signed-off-by: Michael Walle <mwalle@kernel.org>
 ---
- drivers/gpu/drm/bridge/tc358775.c | 49 +++++++--------------------------------
- 1 file changed, 8 insertions(+), 41 deletions(-)
+ drivers/gpu/drm/bridge/tc358775.c | 14 ++++----------
+ 1 file changed, 4 insertions(+), 10 deletions(-)
 
 diff --git a/drivers/gpu/drm/bridge/tc358775.c b/drivers/gpu/drm/bridge/tc358775.c
-index 54aea58a3406..a9d731e87970 100644
+index b7f15164e655..54aea58a3406 100644
 --- a/drivers/gpu/drm/bridge/tc358775.c
 +++ b/drivers/gpu/drm/bridge/tc358775.c
-@@ -109,7 +109,9 @@
- #define RDPKTLN         0x0404  /* Command Read Packet Length */
+@@ -675,18 +675,12 @@ static int tc_probe(struct i2c_client *client)
+ 		return ret;
  
- #define VPCTRL          0x0450  /* Video Path Control */
--#define EVTMODE		BIT(5)  /* Video event mode enable, tc35876x only */
-+#define VPCTRL_MSF	BIT(0)
-+#define VPCTRL_OPXLFMT	BIT(8)
-+#define VPCTRL_EVTMODE	BIT(5)  /* Video event mode enable, tc35876x only */
- #define HTIM1           0x0454  /* Horizontal Timing Control 1 */
- #define HTIM2           0x0458  /* Horizontal Timing Control 2 */
- #define VTIM1           0x045C  /* Vertical Timing Control 1 */
-@@ -187,30 +189,6 @@ enum {
+ 	tc->vddio = devm_regulator_get(dev, "vddio");
+-	if (IS_ERR(tc->vddio)) {
+-		ret = PTR_ERR(tc->vddio);
+-		dev_err(dev, "vddio-supply not found\n");
+-		return ret;
+-	}
++	if (IS_ERR(tc->vddio))
++		return PTR_ERR(tc->vddio);
  
- #define L0EN BIT(1)
+ 	tc->vdd = devm_regulator_get(dev, "vdd");
+-	if (IS_ERR(tc->vdd)) {
+-		ret = PTR_ERR(tc->vdd);
+-		dev_err(dev, "vdd-supply not found\n");
+-		return ret;
+-	}
++	if (IS_ERR(tc->vdd))
++		return PTR_ERR(tc->vdd);
  
--#define TC358775_VPCTRL_VSDELAY__MASK	0x3FF00000
--#define TC358775_VPCTRL_VSDELAY__SHIFT	20
--static inline u32 TC358775_VPCTRL_VSDELAY(uint32_t val)
--{
--	return ((val) << TC358775_VPCTRL_VSDELAY__SHIFT) &
--			TC358775_VPCTRL_VSDELAY__MASK;
--}
--
--#define TC358775_VPCTRL_OPXLFMT__MASK	0x00000100
--#define TC358775_VPCTRL_OPXLFMT__SHIFT	8
--static inline u32 TC358775_VPCTRL_OPXLFMT(uint32_t val)
--{
--	return ((val) << TC358775_VPCTRL_OPXLFMT__SHIFT) &
--			TC358775_VPCTRL_OPXLFMT__MASK;
--}
--
--#define TC358775_VPCTRL_MSF__MASK	0x00000001
--#define TC358775_VPCTRL_MSF__SHIFT	0
--static inline u32 TC358775_VPCTRL_MSF(uint32_t val)
--{
--	return ((val) << TC358775_VPCTRL_MSF__SHIFT) &
--			TC358775_VPCTRL_MSF__MASK;
--}
--
- #define TC358775_LVCFG_PCLKDIV__MASK	0x000000f0
- #define TC358775_LVCFG_PCLKDIV__SHIFT	4
- static inline u32 TC358775_LVCFG_PCLKDIV(uint32_t val)
-@@ -350,7 +328,6 @@ static void tc_bridge_enable(struct drm_bridge *bridge)
- 	u32 hback_porch, hsync_len, hfront_porch, hactive, htime1, htime2;
- 	u32 vback_porch, vsync_len, vfront_porch, vactive, vtime1, vtime2;
- 	unsigned int val = 0;
--	u16 dsiclk, clkdiv, byteclk, t1, t2, t3, vsdelay;
- 	struct drm_display_mode *mode;
- 	struct drm_connector *connector = get_connector(bridge->encoder);
- 
-@@ -398,27 +375,17 @@ static void tc_bridge_enable(struct drm_bridge *bridge)
- 
- 	/* Video event mode vs pulse mode bit, does not exist for tc358775 */
- 	if (tc->type == TC358765)
--		val = EVTMODE;
-+		val = VPCTRL_EVTMODE;
- 	else
- 		val = 0;
- 
- 	if (tc->bpc == 8)
--		val |= TC358775_VPCTRL_OPXLFMT(1);
-+		val |= VPCTRL_OPXLFMT;
- 	else /* bpc = 6; */
--		val |= TC358775_VPCTRL_MSF(1);
--
--	dsiclk = mode->crtc_clock * 3 * tc->bpc / tc->num_dsi_lanes / 1000;
--	clkdiv = dsiclk / (tc->lvds_link == DUAL_LINK ? DIVIDE_BY_6 : DIVIDE_BY_3);
--	byteclk = dsiclk / 4;
--	t1 = hactive * (tc->bpc * 3 / 8) / tc->num_dsi_lanes;
--	t2 = ((100000 / clkdiv)) * (hactive + hback_porch + hsync_len + hfront_porch) / 1000;
--	t3 = ((t2 * byteclk) / 100) - (hactive * (tc->bpc * 3 / 8) /
--		tc->num_dsi_lanes);
--
--	vsdelay = (clkdiv * (t1 + t3) / byteclk) - hback_porch - hsync_len - hactive;
-+		val |= VPCTRL_MSF;
- 
--	val |= TC358775_VPCTRL_VSDELAY(vsdelay);
--	regmap_write(tc->regmap, VPCTRL, val);
-+	regmap_update_bits(tc->regmap, VPCTRL, val,
-+			   VPCTRL_OPXLFMT | VPCTRL_MSF | VPCTRL_EVTMODE);
- 
- 	regmap_write(tc->regmap, HTIM1, htime1);
- 	regmap_write(tc->regmap, VTIM1, vtime1);
+ 	tc->stby_gpio = devm_gpiod_get_optional(dev, "stby", GPIOD_OUT_HIGH);
+ 	if (IS_ERR(tc->stby_gpio))
 
 -- 
 2.39.2
