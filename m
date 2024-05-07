@@ -4,71 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B7F4C10F1A
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 May 2024 07:26:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB80DC10F1A
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 May 2024 08:38:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4v7M/MN8aqackQkVc3/4p8TWYBtdQ4GtrVcP+9uGN+o=; b=CEIQx/lglBFhIcUr4zYsWHU2j2
-	GyAwM3urvKCkvVmmt44e03OO8wvcZI2EmvjOIhI0R1ylQy9zp8lJt1PPBUcDwwm51ZjvFwzZsf2rQ
-	SMowi6S/le9aUny5Zbyyp+ENjl+GPQ3UPhB6KkcybaoOyxXVXmFttkQmeDhS1R9/KUGUQTSwOUox7
-	sXjImir1mphRZeZbfU0ABpnCSpxpIurOlr4HHN4HpLqBP3PjTzVYBlJPtd0YDd7He+WJ4PWU0ixO5
-	UsxE5iO5l5d8Wj6fooZHgw+3ywNebVkxq8NZlUBsyIeO2oyF45DJvYMyfwZjoPKPDLFwM8dljdeiZ
-	osDsR3Hw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=kCgSfPagde6d/ABPspOMI3lsg3aDrKX9SBMWiVfXbrc=; b=zGSAcWFkUbaQDwTMIA6B33kD5s
+	WoYrL77muSFjm2MvoCAP3TUpvBxc0k/siyU6UasrbjzCfdkTXbclYfo8OP7qxVIPxGNk9CXV+mrxS
+	i16D3THIZ2K1fGe72hlauy9kGxBYfJjBxdfKXlpJyLFJxnwYNzy0q5CZ+2Th1j3CqwHCZwKVhTUAU
+	kpiRtKvE+UcDUncir/hzAQYL9jTseQhV4YTmbeybvXxsQjT2Zg7OUIfmalrVIsJ2on1ghulINuKwq
+	RcCeUAFnif9dffiGLFFmGMTAw//hxdjtOqJsgn2IShonxo4BdtndCofwt/jCs6iID6EW2MtcniUpC
+	mrMr1ICA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s4FDJ-00000009yNM-0YEV;
-	Tue, 07 May 2024 07:26:13 +0000
-Received: from relay5-d.mail.gandi.net ([217.70.183.197])
+	id 1s4GKz-0000000AA0i-3lbC;
+	Tue, 07 May 2024 08:38:13 +0000
+Received: from mx1.tq-group.com ([93.104.207.81])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s4FDE-00000009yLD-35UZ;
-	Tue, 07 May 2024 07:26:11 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id BD86D1C000B;
-	Tue,  7 May 2024 07:25:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1715066763;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=4v7M/MN8aqackQkVc3/4p8TWYBtdQ4GtrVcP+9uGN+o=;
-	b=dVkAKfMa8MHTQynPcQ3YAVbZrgfRh6T4busyc3WHCkNHdQkwOBeaIP1lU8DpDJvToT7dDo
-	QH4c4lQ7H3wvZ0aG6tibjt3GzxGQBiCEtnAWqev8m4WwMo58OvBxJhY8Z4DOP9SiChMfmB
-	aULtIe7z/hBie94nnxmZteRvu4XfMEJFc+OKw+pKoMADu/0nz3TupUYORdC5L/srw3Yuc/
-	J5r94ZvX3q2sGmJai2zDFkXHbb5WBu5+B6W0/+uTCMbATLvU4kr7NObbtmailB+iKXCwjt
-	/soagSRjRZ6dgMubU7zcvW3GiPhfyBnSmDN7RtqRduQYodG+ErBeGtVI9UhQgw==
-Message-ID: <904e5bd2-4495-4c1b-a172-ffcd737e6ee3@arinc9.com>
-Date: Tue, 7 May 2024 10:25:57 +0300
+	id 1s4GKq-0000000A9ub-05N3;
+	Tue, 07 May 2024 08:38:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+  d=tq-group.com; i=@tq-group.com; q=dns/txt; s=key1;
+  t=1715071084; x=1746607084;
+  h=from:to:cc:subject:date:message-id:in-reply-to:
+   references:mime-version:content-transfer-encoding;
+  bh=kCgSfPagde6d/ABPspOMI3lsg3aDrKX9SBMWiVfXbrc=;
+  b=p5dntRIGgCHmU+XbyQ6NMa6WBBdixMkz/gO2OI8Nomg19XMNQWA1tLiB
+   n/+3/pcxtJXrBh8rDR359gDGPFuxXgnOk8D5Ag+5HZKW60ND5HMAMNDtQ
+   oc6/1DoaENbhgxXp1TXRY++3eWpAuPhTgH0Igq5mq5Cuyd7l8mDw+BPNa
+   /VDucWdLt8spC9DA8kA2YJ2K7frkyZj3vZxKu1u7KtvYzBpYa3QCuleQU
+   8lf00UJjrhfauxoHk1eHLQLkXulQcTAttysyIZUbrXGifRgpcRX/a/iG9
+   2ePxcOc+ktStuHObXc9MUyLWhAK01CBOY2g91M1Bp+ithPpUlVjgF2orw
+   A==;
+X-CSE-ConnectionGUID: Svc8qAVLTSiOeuN7nyehnw==
+X-CSE-MsgGUID: 2I61W6DfS5iDfT/LbGMx+A==
+X-IronPort-AV: E=Sophos;i="6.07,260,1708383600"; 
+   d="scan'208";a="36780743"
+Received: from vmailcow01.tq-net.de ([10.150.86.48])
+  by mx1.tq-group.com with ESMTP; 07 May 2024 10:37:59 +0200
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id DEE5D176472;
+	Tue,  7 May 2024 10:37:50 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ew.tq-group.com;
+	s=dkim; t=1715071075;
+	h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:in-reply-to:references;
+	bh=kCgSfPagde6d/ABPspOMI3lsg3aDrKX9SBMWiVfXbrc=;
+	b=QPZnrgN6o+h3vyUvwj0wVo0UJUUiAfyFAdHT8nXdQARRbD1/AQQiMaWv0HDsoNBFU5vZjG
+	nYWxaj4Vez9+E8JSKgUhbSG0VdkE2LUrGCrv4RVUkR2xXf3HE7/zjdAHdV8gBsixT2+JUF
+	9jEl6x11SaXvMgiRVfxKDyscOmjcJAgVVL3lsyNrwPmvo8ZF+HRF4lzq2WX1eJxacxiFXF
+	hDmzArHEU3NCrhtti+I/ZT7hxC9ZY76n9F0mRkuDpXA0CABTRLgYVWMpi51wx19+Hs5xNq
+	lW3wq92IuckX2fFQaO5zs4Q6Ys4Ux5UN+Ia2VwfB/yeifesQ4q9efaWFv5dlxw==
+From: Alexander Stein <alexander.stein@ew.tq-group.com>
+To: Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sam Ravnborg <sam@ravnborg.org>, Vinay Simha BN <simhavcs@gmail.com>, Tony Lindgren <tony@atomide.com>, dri-devel@lists.freedesktop.org, Michael Walle <mwalle@kernel.org>
+Cc: Daniel Semkowicz <dse@thaumatec.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Michael Walle <mwalle@kernel.org>
+Subject: Re: [PATCH 01/20] drm/bridge: add dsi_lp11_notify mechanism
+Date: Tue, 07 May 2024 10:37:54 +0200
+Message-ID: <2189493.irdbgypaU6@steina-w>
+Organization: TQ-Systems GmbH
+In-Reply-To: <20240506-tc358775-fix-powerup-v1-1-545dcf00b8dd@kernel.org>
+References: <20240506-tc358775-fix-powerup-v1-0-545dcf00b8dd@kernel.org> <20240506-tc358775-fix-powerup-v1-1-545dcf00b8dd@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next v2] net: dsa: mt7530: detect PHY muxing when PHY
- is defined on switch MDIO bus
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: DENG Qingfang <dqfext@gmail.com>, Sean Wang <sean.wang@mediatek.com>,
- Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
- Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Bartel Eerdekens <bartel.eerdekens@constell8.be>, mithat.guner@xeront.com,
- erkin.bozoglu@xeront.com, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20240430-b4-for-netnext-mt7530-use-switch-mdio-bus-for-phy-muxing-v2-1-9104d886d0db@arinc9.com>
- <Zji94d4yfEBaHlzt@makrotopia.org>
-Content-Language: en-US
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <Zji94d4yfEBaHlzt@makrotopia.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-GND-Sasl: arinc.unal@arinc9.com
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="iso-8859-1"
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240507_002609_136556_E9C7A640 
-X-CRM114-Status: GOOD (  22.47  )
+X-CRM114-CacheID: sfid-20240507_013804_687891_3584CD49 
+X-CRM114-Status: GOOD (  28.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,60 +87,124 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 06/05/2024 14:24, Daniel Golle wrote:
-> On Tue, Apr 30, 2024 at 08:01:33AM +0300, Arınç ÜNAL via B4 Relay wrote:
->> From: Arınç ÜNAL <arinc.unal@arinc9.com>
->>
->> Currently, the MT7530 DSA subdriver configures the MT7530 switch to provide
->> direct access to switch PHYs, meaning, the switch PHYs listen on the MDIO
->> bus the switch listens on. The PHY muxing feature makes use of this.
->>
->> This is problematic as the PHY may be attached before the switch is
->> initialised, in which case, the PHY will fail to be attached.
->>
->> Since commit 91374ba537bd ("net: dsa: mt7530: support OF-based registration
->> of switch MDIO bus"), we can describe the switch PHYs on the MDIO bus of
->> the switch on the device tree. Extend the check to detect PHY muxing when
->> the PHY is defined on the MDIO bus of the switch on the device tree.
->>
->> When the PHY is described this way, the switch will be initialised first,
->> then the switch MDIO bus will be registered. Only after these steps, the
->> PHY will be attached.
->>
->> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-> 
-> Reviewed-by: Daniel Golle <daniel@makrotopia.org>
-> 
->> ---
->> Changes in v2:
->> - Address the terminology on the patch log.
->> - Link to v1: https://lore.kernel.org/r/20240429-b4-for-netnext-mt7530-use-switch-mdio-bus-for-phy-muxing-v1-1-1f775983e155@arinc9.com
->> ---
->>   drivers/net/dsa/mt7530.c | 3 ++-
->>   1 file changed, 2 insertions(+), 1 deletion(-)
->>
->> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
->> index 2b9f904a98f0..6cf21c9d523b 100644
->> --- a/drivers/net/dsa/mt7530.c
->> +++ b/drivers/net/dsa/mt7530.c
->> @@ -2483,7 +2483,8 @@ mt7530_setup(struct dsa_switch *ds)
->>   			if (!phy_node)
->>   				continue;
->>   
->> -			if (phy_node->parent == priv->dev->of_node->parent) {
->> +			if (phy_node->parent == priv->dev->of_node->parent ||
->> +			    phy_node->parent->parent == priv->dev->of_node) {
-> 
-> I had some concerns about missing check for phy_node->parent != NULL,
-> but it's impossible in practise. If phy_node exists, it will have a parent
-> node as well.
-> 
-> To be super extra safe, maybe doing
-> phy_node->parent && phy_node->parent->parent == priv->dev->of_node
-> would be better.
+Hi Michael,
 
-At the current state of this driver where the hardware probes on OF, I
-don't see any benefit of doing this so I'm going to pass on this for now.
+Am Montag, 6. Mai 2024, 15:34:30 CEST schrieb Michael Walle:
+> Some bridges have very strict power-up reqirements. In this case, the
+> Toshiba TC358775. The reset has to be deasserted while *both* the DSI
+> clock and DSI data lanes are in LP-11 mode. After the reset is relased,
+> the bridge needs the DSI clock to actually be able to process I2C
+> access. This access will configure the DSI side of the bridge during
+> which the DSI data lanes have to be in LP-11 mode.
 
-Arınç
+Apparently this is an issue for a lot of DSI bridges. But enabling LP-11 for
+a bridge is impossible with current documentation [1], which states "A DSI
+host should keep the PHY powered down until the pre_enable operation is
+called."
+Additionally tc358767/tc9595 (DSI-DP bridge) needs LP-11 for AUX channel
+access to even get EDID. This is a requirement before pre_enable would
+even be possible.
+
+So some changes to the current flow are needed. But I am not so sure
+about LP-11 notification. IMHO a device request to the DSI host to
+enable LP-11 seems more sensible.
+
+Best regards,
+Alexander
+
+[1] https://www.kernel.org/doc/html/latest/gpu/drm-kms-helpers.html#mipi-ds=
+i-bridge-operation
+
+> After everything is
+> configured the video stream can finally be enabled.
+>=20
+> This means:
+>  (1) The bridge has to be configured completely in .pre_enable() op
+>      (with the clock turned on and data lanes in LP-11 mode, thus
+>      .pre_enable_prev_first has to be set).
+>  (2) The bridge will enable its output in the .enable() op
+>  (3) There must be some mechanism before (1) where the bridge can
+>      release its reset while the clock lane is still in LP-11 mode.
+>=20
+> Unfortunately, (3) is crucial for a correct operation of the bridge.
+> To satisfy this requriment, introduce a new callback .dsi_lp11_notify()
+> which will be called by the DSI host driver.
+>=20
+> Signed-off-by: Michael Walle <mwalle@kernel.org>
+> ---
+>  drivers/gpu/drm/drm_bridge.c | 16 ++++++++++++++++
+>  include/drm/drm_bridge.h     | 12 ++++++++++++
+>  2 files changed, 28 insertions(+)
+>=20
+> diff --git a/drivers/gpu/drm/drm_bridge.c b/drivers/gpu/drm/drm_bridge.c
+> index 28abe9aa99ca..98cd6558aecb 100644
+> --- a/drivers/gpu/drm/drm_bridge.c
+> +++ b/drivers/gpu/drm/drm_bridge.c
+> @@ -1339,6 +1339,22 @@ void drm_bridge_hpd_notify(struct drm_bridge *brid=
+ge,
+>  }
+>  EXPORT_SYMBOL_GPL(drm_bridge_hpd_notify);
+> =20
+> +/**
+> + * drm_bridge_dsi_lp11_notify - notify clock/data lanes LP-11 mode
+> + * @bridge: bridge control structure
+> + *
+> + * DSI host drivers shall call this function while the clock and data la=
+nes
+> + * are still in LP-11 mode.
+> + *
+> + * This function shall be called in a context that can sleep.
+> + */
+> +void drm_bridge_dsi_lp11_notify(struct drm_bridge *bridge)
+> +{
+> +	if (bridge->funcs->dsi_lp11_notify)
+> +		bridge->funcs->dsi_lp11_notify(bridge);
+> +}
+> +EXPORT_SYMBOL_GPL(drm_bridge_dsi_lp11_notify);
+> +
+>  #ifdef CONFIG_OF
+>  /**
+>   * of_drm_find_bridge - find the bridge corresponding to the device node=
+ in
+> diff --git a/include/drm/drm_bridge.h b/include/drm/drm_bridge.h
+> index 4baca0d9107b..4ef61274e0a8 100644
+> --- a/include/drm/drm_bridge.h
+> +++ b/include/drm/drm_bridge.h
+> @@ -630,6 +630,17 @@ struct drm_bridge_funcs {
+>  	 */
+>  	void (*hpd_disable)(struct drm_bridge *bridge);
+> =20
+> +	/**
+> +	 * dsi_lp11_notify:
+> +	 *
+> +	 * Will be called by the DSI host driver while both the DSI clock
+> +	 * lane as well as the DSI data lanes are in LP-11 mode. Some bridges
+> +	 * need this state while releasing the reset, for example.
+> +	 * Not all DSI host drivers will support this. Therefore, the DSI
+> +	 * bridge driver must not rely on this op to be called.
+> +	 */
+> +	void (*dsi_lp11_notify)(struct drm_bridge *bridge);
+> +
+>  	/**
+>  	 * @debugfs_init:
+>  	 *
+> @@ -898,6 +909,7 @@ void drm_bridge_hpd_enable(struct drm_bridge *bridge,
+>  void drm_bridge_hpd_disable(struct drm_bridge *bridge);
+>  void drm_bridge_hpd_notify(struct drm_bridge *bridge,
+>  			   enum drm_connector_status status);
+> +void drm_bridge_dsi_lp11_notify(struct drm_bridge *bridge);
+> =20
+>  #ifdef CONFIG_DRM_PANEL_BRIDGE
+>  bool drm_bridge_is_panel(const struct drm_bridge *bridge);
+>=20
+>=20
+
+
+=2D-=20
+TQ-Systems GmbH | M=FChlstra=DFe 2, Gut Delling | 82229 Seefeld, Germany
+Amtsgericht M=FCnchen, HRB 105018
+Gesch=E4ftsf=FChrer: Detlef Schneider, R=FCdiger Stahl, Stefan Schneider
+http://www.tq-group.com/
+
+
 
