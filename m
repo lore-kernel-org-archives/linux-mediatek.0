@@ -4,205 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2746DC10F1A
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 May 2024 15:55:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 939AAC41513
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 May 2024 16:26:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8Yocex2f039OEQzoZ87Ru2nEr1g5DkLXmF70q2YrfF0=; b=CsZ/IgCo8o9golZ/Avn+KyBENQ
-	n7rfKbRY35GPyzkTkJzTJJk/yQgfUg9HZZUovoQw7GpZ3C+ov9R0Hw/V6W8OnioAoECrXuYthCr+v
-	il6/T1ANYlyYPo8REjkJd0n17FtUO4pOeKsOE/x1DCD17F54gr+b9KAUkzA1XfORTOrZUhCTYr6P7
-	dWgrXux22o5LaQwRvV9Z4KQaToL7wRjlUilik897tHif001s5Cj4mCJMQRmufaMovhUVyf1DcYcDS
-	vrvWA2tZX1RODinDT7uMbwXIZj3+IgTHIFr/RKQNCWYAI/urRwgg7pWjogijkG1Xy0kQTgwtILANU
-	xzkXqZnQ==;
+	bh=eaU9lfNeGvzDk/FguUmNiX85th2MDtqaVJk9CUYYnuw=; b=Cdc6+OJtufCyDVdG+iXrh6nJTX
+	Jm5UCHM/eorXROjSnmLUUpSVFpE/1g2A1dIwiCTfyp+wrz82ctaWs9F9G11rxwVzYflWgFKRe7EIb
+	Kb5rxMZMz2dZ/6AoBPW+ZhxXn8KTisFX7h6iSo164X+moprv+VMD7zSj8poWfZOsNn5H0I9yEpF2c
+	auhCWw1KeAtUl4A4rQ6JYZEo87SOSVr1F5TL/T5sZwvMpi6j6NU1SlQN7Wh7EhCXAbHn+jcgPtRhM
+	4TSm1/SQBPg9vwDrhHhV533IBitLlyt1LZqw5RKaDK910u376eFmZQiHGMxgynRv2l0hUmSiUgaeq
+	HsQ4/yWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s4N9k-0000000Bp36-2T4J;
-	Tue, 07 May 2024 15:55:04 +0000
-Received: from mgamail.intel.com ([198.175.65.15])
+	id 1s4Ne4-0000000BxGz-13tS;
+	Tue, 07 May 2024 16:26:24 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s4N9g-0000000Bp0R-3rz5;
-	Tue, 07 May 2024 15:55:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1715097301; x=1746633301;
-  h=message-id:date:subject:to:references:from:in-reply-to:
-   content-transfer-encoding:mime-version;
-  bh=TJtXAgodlfk2muYMs1ZHEwK/pCWhBrUeUvz41xe/PNw=;
-  b=kKLTcwZ7FmxoJhqkYb7mkh95if8HV8dZ/DTXt8YXGKZz9Zz7rp/wAAIb
-   /7MUSQtF2NSNAQw2+uK6NthVfQSP/oosp0hS8Hgvv7iyACNiYl5MNykC2
-   3KLljUpvvZ0G95p+95rGVsP3lLDoQxmwa8udKq85MfkTLBxuRdusgmJ1M
-   ioH/Tv8aMx46rhqJ/O7IiNuCVCHMy0fmPeIvYTWyRn5lcouvc2tMRO1TB
-   76Tw/i6fUw9rsHlL5KGVM/OpN/IPIqmz41mKExf+UJFdKt22b+JT5xIiU
-   QuTN6x1wQQTVuN3wTExM+yWMUtefbM5VXV88qlAzlOnSZ4a74bS5Ckxc0
-   A==;
-X-CSE-ConnectionGUID: w9KNXAjVQ3Gj+soeeI8dRQ==
-X-CSE-MsgGUID: 6GwKsConSH+LXtMxyKI/bQ==
-X-IronPort-AV: E=McAfee;i="6600,9927,11066"; a="14690632"
-X-IronPort-AV: E=Sophos;i="6.08,142,1712646000"; 
-   d="scan'208";a="14690632"
-Received: from orviesa007.jf.intel.com ([10.64.159.147])
-  by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 May 2024 08:54:57 -0700
-X-CSE-ConnectionGUID: +dAE8OswRVSiU7klsTrCRA==
-X-CSE-MsgGUID: mZBpqNoxSnmCPN9FHhiY0Q==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.08,142,1712646000"; 
-   d="scan'208";a="29088897"
-Received: from fmsmsx603.amr.corp.intel.com ([10.18.126.83])
-  by orviesa007.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384; 07 May 2024 08:54:56 -0700
-Received: from fmsmsx611.amr.corp.intel.com (10.18.126.91) by
- fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35; Tue, 7 May 2024 08:54:55 -0700
-Received: from fmsmsx603.amr.corp.intel.com (10.18.126.83) by
- fmsmsx611.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35; Tue, 7 May 2024 08:54:55 -0700
-Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
- fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35 via Frontend Transport; Tue, 7 May 2024 08:54:55 -0700
-Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.168)
- by edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.35; Tue, 7 May 2024 08:54:54 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=htWYmJy31eXfjergSa9a8DBfNELbRCPMLjlNv0YLUPt5y1dMXexIz4Cvh6OWElsfPA5bpbob/p9/EdUnliEn7tsaa5bJevYe8q7sB4JU3+X6mTv9o+r34L/AunznI58J9GzmN8l0NHqqG7nvjNXHRDavhSXbMuxV0bvy05T7Krq9HNd7zJlSdIC/Iofsbid7XqAEj+9tprQUDa23izeLjDiaIUryf/pc+0PM0SHavGM8c0KAPj6oprW6UdNttEGWCzI0YXrZTFkvxbZ3HIA3XEW1T+WvzgzHZb0q6nDuKO8LFuelsILoPByJ81MMeL7Vqnw43OFL+6ukqnGXLoY2hw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=8Yocex2f039OEQzoZ87Ru2nEr1g5DkLXmF70q2YrfF0=;
- b=Vgmbo2Y60nEc79+HdX3tlJ0DDsqCTSkMHk8nmYqKMgyeCVqu5QLbvRl056GwQr7pfGrmy5WTpkugjd+0CPE+mEOX+b+TuP3Ab9piAmRZj/tPC7hsqSKrAlznBat0JYInFpzY3rEx4LaEMO5Fo6Xgtn0/MQeOFSpcWOvOuhDG8zVvrI+UPXcS7hNXrEtn3hgipyfkOBdcUqCBSWQdCAZTuHQdCR0wj1HGesQIS86f/w+yKAB3nXAVEX/HisNRKHIm2SfJ99oR8EOYtDOEhneV3Xt1ukjtMhafQ35QFSzblXcpV1rBspFB0SrN+XQD+5hlkCeStbc2qSXbDU95k3JkHA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Received: from MN6PR11MB8102.namprd11.prod.outlook.com (2603:10b6:208:46d::9)
- by MW4PR11MB6984.namprd11.prod.outlook.com (2603:10b6:303:22e::22) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7544.42; Tue, 7 May
- 2024 15:54:52 +0000
-Received: from MN6PR11MB8102.namprd11.prod.outlook.com
- ([fe80::bfb:c63:7490:93eb]) by MN6PR11MB8102.namprd11.prod.outlook.com
- ([fe80::bfb:c63:7490:93eb%3]) with mapi id 15.20.7544.041; Tue, 7 May 2024
- 15:54:52 +0000
-Message-ID: <9b9a42af-1a73-4896-9bfe-afd55ae5b278@intel.com>
-Date: Tue, 7 May 2024 17:54:46 +0200
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net v2 2/2] net: ethernet: mediatek: use ADMAv1 instead of
- ADMAv2.0 on MT7981 and MT7986
-Content-Language: en-US
-To: Daniel Golle <daniel@makrotopia.org>, Felix Fietkau <nbd@nbd.name>, "Sean
- Wang" <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, "Lorenzo
- Bianconi" <lorenzo@kernel.org>, "David S. Miller" <davem@davemloft.net>, Eric
- Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, "Paolo
- Abeni" <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	<netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-References: <6747c038f4fc3b490e1b7a355cdaaf361e359def.1715084578.git.daniel@makrotopia.org>
- <9a694114ffbbf5f03384b0cbf0c27b9528c94576.1715084578.git.daniel@makrotopia.org>
-From: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-In-Reply-To: <9a694114ffbbf5f03384b0cbf0c27b9528c94576.1715084578.git.daniel@makrotopia.org>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: WA1P291CA0024.POLP291.PROD.OUTLOOK.COM
- (2603:10a6:1d0:19::18) To MN6PR11MB8102.namprd11.prod.outlook.com
- (2603:10b6:208:46d::9)
+	id 1s4Ndz-0000000BxFm-3iQi;
+	Tue, 07 May 2024 16:26:21 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 381EB6177E;
+	Tue,  7 May 2024 16:26:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 98957C2BBFC;
+	Tue,  7 May 2024 16:26:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1715099178;
+	bh=/5I1D7aRR2QRwr2mUkZwUa89+yp2b+yvvGuDrXWWovQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=JpoiKtsCDRWS9H1oYa/F6JwX9mrEjG8l7IWfcqtNn8AuxO8/CG1gIbh+CBbJ+550C
+	 WAlUqrQJbhClxSfpmosuhoTg6boD5NTMroeZI9Fd8abpXOQEC8Qfb61cMnMWTcqHGJ
+	 qc19+ywvq3bGZfGibwZ9QJ4MV75vqbdvXJoiTpNqc8OSCaY5cI20S51TOvsiyXl93Y
+	 WXEaFYRfmR3uzX2eY9TGF9k1Vmkq5xuO8R7wXsQ5ZIef9QFo0svLZwoTEIgMskSn5t
+	 fH+QFguKVRjj0sdmB5nqvzlmr5EutpSOO6F74VMLulMZCWuqpPJLvVVXw/9HQauPP4
+	 YN1cqa1a8rv2g==
+Date: Tue, 7 May 2024 11:26:16 -0500
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: mripard@kernel.org, maarten.lankhorst@linux.intel.com,
+	krzysztof.kozlowski+dt@linaro.org, linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org, conor+dt@kernel.org, ck.hu@mediatek.com,
+	airlied@gmail.com, linux-mediatek@lists.infradead.org,
+	wenst@chromium.org, chunkuang.hu@kernel.org, daniel@ffwll.ch,
+	tzimmermann@suse.de, matthias.bgg@gmail.com, jitao.shi@mediatek.com,
+	shawn.sung@mediatek.com, linux-arm-kernel@lists.infradead.org,
+	p.zabel@pengutronix.de, dri-devel@lists.freedesktop.org,
+	kernel@collabora.com, yu-chang.lee@mediatek.com
+Subject: Re: [PATCH v3 1/3] dt-bindings: display: mediatek: Add OF graph
+ support for board path
+Message-ID: <171509917467.817282.9286531892598521217.robh@kernel.org>
+References: <20240502115622.248456-1-angelogioacchino.delregno@collabora.com>
+ <20240502115622.248456-2-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: MN6PR11MB8102:EE_|MW4PR11MB6984:EE_
-X-MS-Office365-Filtering-Correlation-Id: bae6844f-7c73-4539-7404-08dc6eae0869
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230031|376005|366007|7416005|1800799015|921011;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?ZHhmNVNKTnhNL3R1Tkg2eVhvanpzZ21taFZuMUpwTWNvYWU3SXZIMGpSTU8x?=
- =?utf-8?B?b3E3L3BwS0hrb3lqakNOSzFNTHhxMldpdGlZR29Tak4xbE91d0lNYXF6cjg2?=
- =?utf-8?B?TCtZTXl1Q3hYaFBsZzNmVlZmMjQ2czNFK3lUSGN4c3ZQN2d4T0pMdTdGZ1hH?=
- =?utf-8?B?RG0yUWZWUFV6eFBHWkQ1RG12U1V0TVAvTXFjdHJURnk3SExKTHhtS3BpeGta?=
- =?utf-8?B?VXBlWmZNYnBDbzNEc1hDNk5Rbmc0ekgwL0NxSTA3dDdRVUhoSVhleDFPSXoy?=
- =?utf-8?B?TTdVd2lsSmZZK29teVJkcVB4YW9zVFhyMUZjblpOK0YyL1dBVmRWYy96WkRq?=
- =?utf-8?B?QUF1a1h3R2dSTE84TXJadnFZeVFtclY3bVRmc0k0b2llTm5senBUMSs3ZEUy?=
- =?utf-8?B?NkFzR2NWdksyWlBNbHpibVdhL1ArL1R3ajJRN3dCWmhzYUlUcll0R01LaWRH?=
- =?utf-8?B?OWdSODBBMFpFZUI3NGE5RFl0YXh0ZmhuZG1qTnF3SGYyOVFJWm9admdSdU8r?=
- =?utf-8?B?UHdkeVpPaSsycDJieGZ5VnRybzBjajJPdXhjV1VoZUFZZ3QwM0dNUUhsTFRm?=
- =?utf-8?B?UDJ4eVFDNXpjWUNlMFpGZ2xFWUxjL2N4bDZ2QW5EMktPUGhxK0hvM1VJWTI5?=
- =?utf-8?B?NnVCbTI1REhEQldXNHh1OEZra2JLKy9WeU5nUXdTZ0EzeDJidVVuSHNkb21P?=
- =?utf-8?B?Y29qbWxqZFZxZXpsZjJsdHhxaEIxTEdzVmNyTXZ4clRTWGpsaHJPYWo2TkJ3?=
- =?utf-8?B?RWFCMXNWQWhnNXdvTW9kdWplL09kUlBUVG9JNEU3NXM2SW1MUXFNUE14a0Jw?=
- =?utf-8?B?aURKckhPWWZtL0kyM2FSNTNqU2U3UjNjbzZFVkFJd0lwVUlhMkE4bHJmNHlt?=
- =?utf-8?B?ZVpab0U3b2kySTk0ck1IdWRhbEphS1hENW9qQ1JhV3JiS0F4ODhhZDdtVHRt?=
- =?utf-8?B?SkFiUEN4clhreWpQRUhyVzN6UW5YQ1pBcUhVYU50TTVxNDZzRFo1WUhPV1dF?=
- =?utf-8?B?c2NmZGtqVm1zRUMvbi9RUTNsb00vRklTNHoreGFVVnpmTHVwdmpsVmhhWWpM?=
- =?utf-8?B?YWU0SHE4WmJKSG9kdXJCN25JQTVMeTAxQmkxdFpPVFhKSHB1dnV6dmtQaS9Q?=
- =?utf-8?B?Umw2SFB5U3l2cFJMWXJ1Zm84MXRwVG5CSnorRzhNSW4ya0NmRDJJa3FiNFZX?=
- =?utf-8?B?dTdKZ0FKS1VGZTVWNTRSdUtPTm9adlNJS0pFenI5TEg0RHk5SG1NcEsybXM4?=
- =?utf-8?B?NGErd1FPdGlTOVlHYkorT01ZVVJyWkN3clVVcGFjeU5jVFFZOU91Zk50djEw?=
- =?utf-8?B?cHZUV0FMWmh1YnIwZG10RWRvclNOdzE0SG95Mm9VZHVkZzA2UWtaeWd4bVJj?=
- =?utf-8?B?N0t4aFlYUzE2dFNSM1poNHY3ZVZHM3VLNUpnM3RoSmQ5Q3o5cllUM1pUcERa?=
- =?utf-8?B?dUZiajQwazBSV3hObnNnTXhMSW9RNi9nRHp1YnBzOE5YZCtzcUlLSys4YTlJ?=
- =?utf-8?B?blczbmdsbGRIQWdJdXVFeUtETlgrQXVMRDc4RS9CS2FJUHpUWWwvVnd5bWFt?=
- =?utf-8?B?TFd4d3JuODFCWFFlT09YN2dZbnJUOS85WjF1T25BWUdrTm9iUitwVHN6alFZ?=
- =?utf-8?B?K0F1NTIxV1M3cGxQalgweVpxZ2hRc0lLZmo2dnB5SEVVVTFBY1BEQ0NsUUcv?=
- =?utf-8?B?UXBTWWNOSjdzYjgxUVFPRVE5VEIxVFFLdzdqYlVtZTRwVVNlSVkvQmVpUGRB?=
- =?utf-8?Q?/OZEI/IMhoVF/JjSeL0y8x3PZSxiYDEwG7aNveS?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MN6PR11MB8102.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(376005)(366007)(7416005)(1800799015)(921011);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?SnpJZzFTSmF5djN0cVZEWE5jL2lGVXVQQitEQTJWK2JEV3VaRWgvMkZoZ0Zy?=
- =?utf-8?B?VWVmUTduSUtUck1CY0UyR29TY0RyQSticVNTUnpnbVJOUy9IeHdZOCtWTXRH?=
- =?utf-8?B?QUV2azNWN2lPVVVNc2RlbnZaUlhzZ2hFTENWSS9kVUV2QWZiS0dLNGpCRExC?=
- =?utf-8?B?ZXFweFRUSlI3ek1BTlRBQVFoZDMzWDFsa2JsTHBmTU0yWTlBbjNKUndkOUZw?=
- =?utf-8?B?S0hzSHkvaElBd1pYMkk1Ri85SW1aSG9sKzQyMS81UUxHSkZmaTFqaUxVWmhD?=
- =?utf-8?B?dE1yZnlleVd3alhUSEdvZ2U0eU5JNGFaUjREMlRNNDFhNU5sdkJsdU1JenRD?=
- =?utf-8?B?VXhHNjF0YjVQZ2J4WFhEeWtWbjlCOGdQbTMzQ3ZCb3NHTWhiODJYRVRHeFNi?=
- =?utf-8?B?NHRrakhyWDNiSjZaOExFTlRpY0s1L0l5a3dBY21JNUI0SVVNckZ4MkU2MWs4?=
- =?utf-8?B?YlJ5VnZ6alhkVGkvVWJEdG5YRHlyUlhqY3RuMVVxeWlmSDl6aVZubFFqS21u?=
- =?utf-8?B?b0MwTldHRkVwWWZPOFd2aDhFSG83aWF4d2EzR2kwQUNDTEtESUR6bW81VzY0?=
- =?utf-8?B?cWI1Mm1sVnVOU1d4dXV4VkhKR1FiOTVROUJCVXVuUUhRT1hEN25tbVRNUTRt?=
- =?utf-8?B?eGgyMHZUckh6VDZEL0NGMGVHS3B4bzRpTDhLbFlZZDZvY0k1Tkk2QUF5VkdT?=
- =?utf-8?B?dHZYZDVWWUU0S3hGcUQvZ3ZKd0xPRnJUUTlRVkd5dnE3Sm0xUFJ2SVN0QndE?=
- =?utf-8?B?UitVT2V6UlgybGdMb2d3NFZld1dRY2IvUXlIak9jdmtmcDNDNnMvczJaY2lL?=
- =?utf-8?B?S0pmNnAyaVQ5ZHhla3BneTU0QnovMFJhWVgrY0ZuMXFnenV1V09BMzVrUlhi?=
- =?utf-8?B?RjlvZWFrMVd1L1pXRG11Rmk5ay91TGZpMnJOc2pwMjNua2xDT1NsS0hPT0dX?=
- =?utf-8?B?T0tSUG9Ma2VkNnkyKzlrNmZwZmhEZ3VGT3lLSW9BUTU5NDBHdnU4WXJBYXpZ?=
- =?utf-8?B?dGkzRy9NTnh2b013bEg3Mzk4WjhMRFpPcTNyL0V6M0NCUmRFN3ZwRmw0RTFm?=
- =?utf-8?B?dDU1aGZYZXJGaDZzV29BNjdiOW0wTkdBa0JoNVpab0ZCS2JmSCt5a1RWbCtS?=
- =?utf-8?B?aGIveUNtYndiOHpFSld4Q2ZxdHBpcGN3TkowbXdickIxUGNpcC9KY3pOdmds?=
- =?utf-8?B?RkY0SjJ6dm93VXZCaDJkVHFhc3RQQkl1SDI2bmIyamYxeC9hZ1RnZjdZaXFt?=
- =?utf-8?B?cnJwSi9BK0h1cVZMV09NRjBEeDdrTWdQV2hvdHgrVkJqZmEvY1kxbkF3VWpv?=
- =?utf-8?B?dUNNUm43YitMSXpvL1kyZmFpQ0wza282MExReGZ0NXNlYUMyemhxd3pHc0Uy?=
- =?utf-8?B?ck1TVXh2MngxdWxOdkgxNDE2bGZDblBwMXhaRWpVeld5OTVIRXptMElNRG4v?=
- =?utf-8?B?Vy9GNkczS0lYUllyU1NDc29rV2FSS25LeVBxWUQ5Y1FPSk5RU1lpNFVTT2tF?=
- =?utf-8?B?aXM2ZVhSUE9WeDAyanF6dWJjaHFVWUYya2ZGNUFSbnVyQ2RBdzJCWGl3NEdS?=
- =?utf-8?B?aUNscURJbmhHd1pNTGNpT2xoa0ZSZVNQdUh6TDJ6ZVpVSHV2VGNYNG1JZ0FL?=
- =?utf-8?B?SmFyZ3dOK0ZFMzE0UkpqT1pYa1FwZEUzMHI4dnRDUVZjNXZKR2xZZGdreHFl?=
- =?utf-8?B?ZktDRXBNU3JHN1pPUVNtWGY3amM2T2kxVDI2RlkrVmtiZjVjd0ZDeFhqZ05K?=
- =?utf-8?B?TjRvQ2JLSDlCUU5wWEFlZTFVNHV1OUxZUm1lVVJpSzZyYnNaeFpUYlN2RTVl?=
- =?utf-8?B?UFBMelNmS3hTdDhjRyt1alozQVhjbE5JSkp5VDZZbE02NjBFdTNpMk4yMWdn?=
- =?utf-8?B?bURvZDJtRjl6eThBNzVJenM4Yjd0T24xTCtaSWdkbk15V3VUc0JmUWI4d2ZT?=
- =?utf-8?B?WTAwbkxiK2FYTEJZUjA4NENvSkw1TTAwSHdZVWRBckY1QitsUSt2Wm1tWHAy?=
- =?utf-8?B?UUV6Q0ZXcXFHYUdTMjd5MHZKd1ZPRGdVNEJGcmlQV3U4ZDdqMlk4U2JybHd1?=
- =?utf-8?B?bUdYWVA3bUxoZGlveHdMZXRWMEI0ZzVkUXFoV1NCTFFnNDFRUzN5THFhWXZB?=
- =?utf-8?B?VkRxRGRDdCt0aU1ET2ZTNkVTY0NtSjZDUW1JQ0FNSFBTN3NyRnhBVk1XQ05y?=
- =?utf-8?B?c3c9PQ==?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: bae6844f-7c73-4539-7404-08dc6eae0869
-X-MS-Exchange-CrossTenant-AuthSource: MN6PR11MB8102.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 May 2024 15:54:52.4923
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: adrXBkzz8BaodIuvaURg4gmtpp91/wCeI2Ca3dSHJJAWgRgu6z32kfH+X4gSIcRKiNsz7HL5T1eJFIxvPHTT3bOqMy+uDmJRq9PS90mlA9w=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW4PR11MB6984
-X-OriginatorOrg: intel.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240502115622.248456-2-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240507_085501_057155_FDA6352F 
-X-CRM114-Status: GOOD (  16.31  )
+X-CRM114-CacheID: sfid-20240507_092620_139280_1404C795 
+X-CRM114-Status: GOOD (  15.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -217,62 +79,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 5/7/24 14:25, Daniel Golle wrote:
-> ADMAv2.0 is plagued by RX hangs which can't easily detected and happen upon
 
-nit: missing "be" after "can't",
-but no need to respin just for that
-
-> receival of a corrupted Ethernet frame.
+On Thu, 02 May 2024 13:56:20 +0200, AngeloGioacchino Del Regno wrote:
+> The display IPs in MediaTek SoCs support being interconnected with
+> different instances of DDP IPs (for example, merge0 or merge1) and/or
+> with different DDP IPs (for example, rdma can be connected with either
+> color, dpi, dsi, merge, etc), forming a full Display Data Path that
+> ends with an actual display.
 > 
-> Use ADMAv1 instead which is also still present and usable, and doesn't
-> suffer from that problem.
+> The final display pipeline is effectively board specific, as it does
+> depend on the display that is attached to it, and eventually on the
+> sensors supported by the board (for example, Adaptive Ambient Light
+> would need an Ambient Light Sensor, otherwise it's pointless!), other
+> than the output type.
 > 
-> Fixes: 197c9e9b17b1 ("net: ethernet: mtk_eth_soc: introduce support for mt7986 chipset")
-> Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> Add support for OF graphs to most of the MediaTek DDP (display) bindings
+> to add flexibility to build custom hardware paths, hence enabling board
+> specific configuration of the display pipeline and allowing to finally
+> migrate away from using hardcoded paths.
+> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
-> v2: improve commit message
->   drivers/net/ethernet/mediatek/mtk_eth_soc.c | 46 ++++++++++-----------
->   1 file changed, 23 insertions(+), 23 deletions(-)
+>  .../display/mediatek/mediatek,aal.yaml        | 40 +++++++++++++++++++
+>  .../display/mediatek/mediatek,ccorr.yaml      | 21 ++++++++++
+>  .../display/mediatek/mediatek,color.yaml      | 22 ++++++++++
+>  .../display/mediatek/mediatek,dither.yaml     | 22 ++++++++++
+>  .../display/mediatek/mediatek,dpi.yaml        | 25 +++++++++++-
+>  .../display/mediatek/mediatek,dsc.yaml        | 24 +++++++++++
+>  .../display/mediatek/mediatek,dsi.yaml        | 27 ++++++++++++-
+>  .../display/mediatek/mediatek,ethdr.yaml      | 22 ++++++++++
+>  .../display/mediatek/mediatek,gamma.yaml      | 19 +++++++++
+>  .../display/mediatek/mediatek,merge.yaml      | 23 +++++++++++
+>  .../display/mediatek/mediatek,od.yaml         | 22 ++++++++++
+>  .../display/mediatek/mediatek,ovl-2l.yaml     | 22 ++++++++++
+>  .../display/mediatek/mediatek,ovl.yaml        | 22 ++++++++++
+>  .../display/mediatek/mediatek,postmask.yaml   | 21 ++++++++++
+>  .../display/mediatek/mediatek,rdma.yaml       | 22 ++++++++++
+>  .../display/mediatek/mediatek,ufoe.yaml       | 21 ++++++++++
+>  16 files changed, 372 insertions(+), 3 deletions(-)
 > 
-> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> index 3eefb735ce19..d7d73295f0dc 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> @@ -110,16 +110,16 @@ static const struct mtk_reg_map mt7986_reg_map = {
 
-MT7981 uses the same regmap, so is covered too, fine
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 
->   	.tx_irq_mask		= 0x461c,
->   	.tx_irq_status		= 0x4618,
->   	.pdma = {
-> -		.rx_ptr		= 0x6100,
-> -		.rx_cnt_cfg	= 0x6104,
-> -		.pcrx_ptr	= 0x6108,
-> -		.glo_cfg	= 0x6204,
-> -		.rst_idx	= 0x6208,
-> -		.delay_irq	= 0x620c,
-> -		.irq_status	= 0x6220,
-> -		.irq_mask	= 0x6228,
-> -		.adma_rx_dbg0	= 0x6238,
-> -		.int_grp	= 0x6250,
-> +		.rx_ptr		= 0x4100,
-> +		.rx_cnt_cfg	= 0x4104,
-> +		.pcrx_ptr	= 0x4108,
-> +		.glo_cfg	= 0x4204,
-> +		.rst_idx	= 0x4208,
-> +		.delay_irq	= 0x420c,
-> +		.irq_status	= 0x4220,
-> +		.irq_mask	= 0x4228,
-> +		.adma_rx_dbg0	= 0x4238,
-> +		.int_grp	= 0x4250,
->   	},
->   	.qdma = {
->   		.qtx_cfg	= 0x4400,
-
-// ...
-
-Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
 
