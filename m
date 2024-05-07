@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7B57C10F1A
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 May 2024 13:35:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 481CCC25B4F
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 May 2024 13:37:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=E0S3d32Z3NO/m5L6a9/Bhx8lycxkFbsUHsPISnlxlk0=; b=FW3Xn6EGML39/96b92QGfX8ElU
-	pN8L0Nc9SRSq15ROVvouUlOlTike1hDr6fHE/rwrsRTVFxsuQOiodHDv6c9SfD7VTLUB6jc2ru2/Z
-	5zMeWm+Ttm5cmccWb3O/ZujvDe9atq0CMawTk7rUUhJz+di5q5FhY24OiqqCU+PqOJEl2a2/v4yFm
-	LaG7fmNYTBVMcERsPZIEzRISu5+D9ZyfbmKjp/FSwznoPnv7FhbFRHFfi97rvDtriAweif8AOoL24
-	mgs0g3pFl5moEGW8n7IEixKopYiJHaujxlLCNDceL2VWYOdkTLXV3sxZ6rBcS0GJqQGrGZ538ImkS
-	KzKE2nUg==;
+	bh=sb3COXjaLZ3LKhLfel7MrZiwEb2kOrxewyyn8qZZmH0=; b=H0G4FpTKmIBGHU1c5rEDyWrcmD
+	H+Lma1PK2JPChEbJ5RyEUEUwDSrcD03kGkVLlZ/f1/NiQ6UPT3/YH0Z026kvD6a5Xer5cw4eVjIIV
+	Cnlalo8Lbfmh9LimFmh3Mx96zaB7/M6VrTvVA39uBmfSa+c0VWLrFpDA+ySSNAhFR4QK57AYUJkHB
+	zpfOl0EUbmXkexRpqgjx5ngYwfnxBh+1ncMqPenlPbOtIQlHy5jcd+aiB+k/st/PRlK8Sr/iyyxoS
+	BhQ1m/49ZVoKEr4/3tb7iPwf8MuCO59wjBqKlWshA69+rt+OvYfun16jMOCk2QsNfxfcwszFOHy1Z
+	E8zHhpcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s4Kyb-0000000BGbB-4Blx;
-	Tue, 07 May 2024 13:35:26 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1s4L09-0000000BH9N-47wN;
+	Tue, 07 May 2024 13:37:01 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s4KyW-0000000BGYa-3fNE;
-	Tue, 07 May 2024 13:35:22 +0000
+	id 1s4L06-0000000BH43-29kb;
+	Tue, 07 May 2024 13:37:00 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1715088914;
-	bh=pOCQz3gNCarQ5ERyPBaqmc183TaFYRqz2TLXiHRUir0=;
+	s=mail; t=1715089010;
+	bh=8ZdZRvPpy8p9haCHUSb79/UqGYMNQOBxy8T7ffZURpE=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=rfMbzHuEK8B1UvOiS8atKWGCHk0UHqHkaiuYgPG4wxBDpcwwMW7hEt1bJPi3Rs/l5
-	 Fxq0yo/LZO2xuviFM1XfTfAIVKm8ntX0gvhwVV7o4bpuOTTHLi0R3J5jp567rOoXki
-	 XsYxwtAYtpOwSUl0dYaGrD02zAyBGeBeiopZ5uHa44w96p7B1j8ijeDtMafnFrTDGw
-	 Ld4ChAjd98t/YbeJoEIUmogP6UDCfJL6D9Z1k6PANQ002b14NseyKHWtSoVY9vJe4I
-	 uh1AoMPFn5cxIkcP4fvxe698ek5LfqkxLK+6KTxFfu8FN6jC3+Kynf9bwPkbVvJTDG
-	 45sMrHdFyleiA==
+	b=NBtj+wwZR7gCX8gtvs1KtnlHA68KoPewfcROdg5rJqCgBsf2HvCPBW8Thc0+bH/4n
+	 qMIM5KrOVjQU0hSrMhYjJW+Vg+cgO6MO8c98CtB719/xPpWorW+tS0MDtIPnJXCo+c
+	 ycLA6T25yEsb7hCnkSmspVOmYI407EJ0jGGXRP/Y7ILPR/dJ/c3f/usSJOT8dnsNz3
+	 bp70G4RDz58I6ZasmnjL86CzdOni+U/kmtqUgAe1SAZij6racJllxMlilhEsUDT/cg
+	 r00etxpcA+3kxKPAOImfmZBNuPGmr3dxZfOMcvVM4GbuvsctAFWznLwLXgZSdX3/P0
+	 pspjXnisVPe1g==
 Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 4DF1B3782134;
-	Tue,  7 May 2024 13:35:13 +0000 (UTC)
-Message-ID: <a18a10e5-42e1-4302-b9f3-43c6174e2cf9@collabora.com>
-Date: Tue, 7 May 2024 15:35:12 +0200
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id C67A637820FC;
+	Tue,  7 May 2024 13:36:48 +0000 (UTC)
+Message-ID: <5397474a-7ef1-4005-83a9-854f77056ecb@collabora.com>
+Date: Tue, 7 May 2024 15:36:48 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v1 5/5] arm64: dts: mediatek: Add mt7986 based Bananapi R3
- Mini
+Subject: Re: [RFC v1 2/5] dt-bindings: clock: mediatek: add address-cells and
+ size-cells to ethsys
 To: frank-w@public-files.de, Frank Wunderlich <linux@fw-web.de>,
  Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
@@ -62,20 +62,20 @@ Cc: Eric Woudstra <ericwouds@gmail.com>,
  Tianling Shen <cnsztl@immortalwrt.org>, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org,
  linux-leds@vger.kernel.org, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Tianling Shen <cnsztl@gmail.com>
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 References: <20240505164549.65644-1-linux@fw-web.de>
- <20240505164549.65644-6-linux@fw-web.de>
- <a4099612-a4ae-4211-9674-c7053d2a995a@collabora.com>
- <3E013BA7-0264-4AC3-B677-BDD16B1F8D90@public-files.de>
+ <20240505164549.65644-3-linux@fw-web.de>
+ <a43a076f-7d7e-4c7d-8be1-45569c7b2c16@collabora.com>
+ <6A98D99E-C64E-441F-9496-EBF39141C4BA@public-files.de>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <3E013BA7-0264-4AC3-B677-BDD16B1F8D90@public-files.de>
+In-Reply-To: <6A98D99E-C64E-441F-9496-EBF39141C4BA@public-files.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240507_063521_193561_532D593C 
-X-CRM114-Status: GOOD (  26.29  )
+X-CRM114-CacheID: sfid-20240507_063658_821032_C659F1F4 
+X-CRM114-Status: UNSURE (   5.70  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,342 +90,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 06/05/24 18:00, Frank Wunderlich ha scritto:
-> Hi
-> 
-> Thanks for review.
-> 
-> Am 6. Mai 2024 14:48:59 MESZ schrieb AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>:
+Il 06/05/24 18:01, Frank Wunderlich ha scritto:
+> Am 6. Mai 2024 14:48:58 MESZ schrieb AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>:
 >> Il 05/05/24 18:45, Frank Wunderlich ha scritto:
 >>> From: Frank Wunderlich <frank-w@public-files.de>
 >>>
->>> Add device Tree for Bananapi R3 Mini SBC.
+>>> Add missing properties already used in mt7986a.dtsi.
 >>>
->>> Co-developed-by: Eric Woudstra <ericwouds@gmail.com>
->>> Signed-off-by: Eric Woudstra <ericwouds@gmail.com>
->>> Co-developed-by: Tianling Shen <cnsztl@gmail.com>
->>> Signed-off-by: Tianling Shen <cnsztl@gmail.com>
 >>> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
->>> ---
->>>    arch/arm64/boot/dts/mediatek/Makefile         |   1 +
->>>    .../mediatek/mt7986a-bananapi-bpi-r3-mini.dts | 486 ++++++++++++++++++
->>>    2 files changed, 487 insertions(+)
->>>    create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-mini.dts
->>>
->>> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
->>> index 37b4ca3a87c9..1763b001ab06 100644
->>> --- a/arch/arm64/boot/dts/mediatek/Makefile
->>> +++ b/arch/arm64/boot/dts/mediatek/Makefile
->>> @@ -11,6 +11,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-bananapi-bpi-r64.dtb
->>>    dtb-$(CONFIG_ARCH_MEDIATEK) += mt7981b-xiaomi-ax3000t.dtb
->>>    dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-acelink-ew-7886cax.dtb
->>>    dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3.dtb
->>> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-mini.dtb
->>>    dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-emmc.dtbo
->>>    dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-nand.dtbo
->>>    dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-nor.dtbo
->>> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-mini.dts b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-mini.dts
->>> new file mode 100644
->>> index 000000000000..c764b4dc4752
->>> --- /dev/null
->>> +++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-mini.dts
->>> @@ -0,0 +1,486 @@
->>> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
->>> +/*
->>> + * Copyright (C) 2021 MediaTek Inc.
->>> + * Authors: Frank Wunderlich <frank-w@public-files.de>
->>> + *          Eric Woudstra <ericwouds@gmail.com>
->>> + *          Tianling Shen <cnsztl@immortalwrt.org>
->>> + */
->>> +
->>> +/dts-v1/;
->>> +
->>> +#include <dt-bindings/gpio/gpio.h>
->>> +#include <dt-bindings/input/input.h>
->>> +#include <dt-bindings/leds/common.h>
->>> +#include <dt-bindings/pinctrl/mt65xx.h>
->>> +
->>> +#include "mt7986a.dtsi"
->>> +
->>> +/ {
->>> +	model = "Bananapi BPI-R3 Mini";
->>> +	chassis-type = "embedded";
->>> +	compatible = "bananapi,bpi-r3mini", "mediatek,mt7986a";
->>> +
->>> +	aliases {
->>> +		serial0 = &uart0;
->>> +		ethernet0 = &gmac0;
->>> +		ethernet1 = &gmac1;
->>> +	};
->>> +
->>> +	chosen {
->>> +		stdout-path = "serial0:115200n8";
->>> +	};
->>> +
->>> +	dcin: regulator-12vd {
->>> +		compatible = "regulator-fixed";
->>> +		regulator-name = "12vd";
->>> +		regulator-min-microvolt = <12000000>;
->>> +		regulator-max-microvolt = <12000000>;
->>> +		regulator-boot-on;
->>> +		regulator-always-on;
->>> +	};
->>> +
->>> +	fan: pwm-fan {
->>> +		compatible = "pwm-fan";
->>> +		#cooling-cells = <2>;
->>> +		/* cooling level (0, 1, 2) - pwm inverted */
->>> +		cooling-levels = <255 96 0>;
 >>
->> Did you try to actually invert the PWM?
->>
->> Look for PWM_POLARITY_INVERTED ;-)
-> 
-> Mtk pwm driver does not support it
-> 
-> https://elixir.bootlin.com/linux/latest/source/drivers/pwm/pwm-mediatek.c#L211
-> 
-
-You're right, sorry - I confused the general purpose PWM controller with the
-rather specific DISP_PWM controller (which does support polarity inversion).
-
-It's good - but I'd appreciate if you can please add a comment stating that
-the PWM values are inverted in SW because the controller does *not* support
-polarity inversion... so that next time someone looks at this will immediately
-understand what's going on and why :-)
-
->>> +		pwms = <&pwm 0 10000>;
->>> +		status = "okay";
->>> +	};
->>> +
->>> +	reg_1p8v: regulator-1p8v {
->>> +		compatible = "regulator-fixed";
->>> +		regulator-name = "1.8vd";
->>> +		regulator-min-microvolt = <1800000>;
->>> +		regulator-max-microvolt = <1800000>;
->>> +		regulator-boot-on;
->>> +		regulator-always-on;
->>> +		vin-supply = <&dcin>;
->>> +	};
->>> +
->>> +	reg_3p3v: regulator-3p3v {
->>> +		compatible = "regulator-fixed";
->>> +		regulator-name = "3.3vd";
->>> +		regulator-min-microvolt = <3300000>;
->>> +		regulator-max-microvolt = <3300000>;
->>> +		regulator-boot-on;
->>> +		regulator-always-on;
->>> +		vin-supply = <&dcin>;
->>> +	};
->>> +
->>> +	usb_vbus: regulator-usb-vbus {
->>> +		compatible = "regulator-fixed";
->>> +		regulator-name = "usb_vbus";
->>> +		regulator-min-microvolt = <5000000>;
->>> +		regulator-max-microvolt = <5000000>;
->>> +		gpios = <&pio 20 GPIO_ACTIVE_LOW>;
->>> +		regulator-boot-on;
->>> +	};
->>> +
->>> +	en8811_a: regulator-phy1 {
->>> +		compatible = "regulator-fixed";
->>> +		regulator-name = "phy1";
->>> +		regulator-min-microvolt = <3300000>;
->>> +		regulator-max-microvolt = <3300000>;
->>> +		gpio = <&pio 16 GPIO_ACTIVE_LOW>;
->>> +		regulator-always-on;
->>> +	};
->>> +
->>> +	en8811_b: regulator-phy2 {
->>> +		compatible = "regulator-fixed";
->>> +		regulator-name = "phy2";
->>> +		regulator-min-microvolt = <3300000>;
->>> +		regulator-max-microvolt = <3300000>;
->>> +		gpio = <&pio 17 GPIO_ACTIVE_LOW>;
->>> +		regulator-always-on;
->>> +	};
->>> +
->>> +	leds {
->>> +		compatible = "gpio-leds";
->>> +
->>> +		green_led: led-0 {
->>> +			color = <LED_COLOR_ID_GREEN>;
->>> +			function = LED_FUNCTION_POWER;
->>> +			gpios = <&pio 19 GPIO_ACTIVE_HIGH>;
->>> +			default-state = "on";
->>> +		};
->>> +	};
->>> +
->>> +	gpio-keys {
->>> +		compatible = "gpio-keys";
->>> +
->>> +		reset-key {
->>> +			label = "reset";
->>> +			linux,code = <KEY_RESTART>;
->>> +			gpios = <&pio 7 GPIO_ACTIVE_LOW>;
->>> +		};
->>> +	};
->>> +
->>> +};
->>> +
->>> +&cpu_thermal {
->>> +	cooling-maps {
->>> +		map0 {
->>> +			/* active: set fan to cooling level 2 */
->>> +			cooling-device = <&fan 2 2>;
->>> +			trip = <&cpu_trip_active_high>;
->>> +		};
->>> +
->>> +		map1 {
->>> +			/* active: set fan to cooling level 1 */
->>> +			cooling-device = <&fan 1 1>;
->>> +			trip = <&cpu_trip_active_med>;
->>> +		};
->>> +
->>> +		map2 {
->>> +			/* active: set fan to cooling level 0 */
->>> +			cooling-device = <&fan 0 0>;
->>> +			trip = <&cpu_trip_active_low>;
->>> +		};
->>> +	};
->>> +};
->>> +
->>> +&crypto {
->>> +	status = "okay";
->>> +};
->>> +
->>> +&eth {
->>> +	status = "okay";
->>> +
->>> +	gmac0: mac@0 {
->>> +		compatible = "mediatek,eth-mac";
->>> +		reg = <0>;
->>> +		phy-mode = "2500base-x";
->>> +		phy-handle = <&phy14>;
->>> +	};
->>> +
->>> +	gmac1: mac@1 {
->>> +		compatible = "mediatek,eth-mac";
->>> +		reg = <1>;
->>> +		phy-mode = "2500base-x";
->>> +		phy-handle = <&phy15>;
->>> +	};
->>> +
->>> +	mdio: mdio-bus {
->>> +		#address-cells = <1>;
->>> +		#size-cells = <0>;
->>> +	};
->>> +};
->>> +
->>> +&mmc0 {
->>> +	pinctrl-names = "default", "state_uhs";
->>> +	pinctrl-0 = <&mmc0_pins_default>;
->>> +	pinctrl-1 = <&mmc0_pins_uhs>;
->>> +	vmmc-supply = <&reg_3p3v>;
->>> +	vqmmc-supply = <&reg_1p8v>;
->>> +};
->>> +
->>> +
->>> +&i2c0 {
->>> +	pinctrl-names = "default";
->>> +	pinctrl-0 = <&i2c_pins>;
->>> +	status = "okay";
->>> +
->>> +	/* MAC Address EEPROM */
->>> +	eeprom@50 {
->>> +		compatible = "atmel,24c02";
->>> +		reg = <0x50>;
->>> +
->>> +		address-width = <8>;
->>> +		pagesize = <8>;
->>> +		size = <256>;
->>> +	};
->>> +};
->>> +
->>> +&mdio {
->>
->> You can just move all this stuff to where you declare the mdio-bus....
-> 
-> Ok,see these 2 lines are already above,so can be dropped here.
-> 
->>> +	#address-cells = <1>;
->>> +	#size-cells = <0>;
->>> +
->>> +	phy14: ethernet-phy@14 {
->>
->> I say that this is `phy0: ethernet-phy@14` - because this is the first PHY on this
->> board.
-> 
-> Ok,i change this and phy15
-> 
->>> +		reg = <14>;
->>
->> Uhm.. doesn't this require the ethernet-phy-id03a2.a411 compatible?
-> 
-> I can add it,but worked without it.
-> 
-> There was a discussion about that and result was we don't need it in board dts,maybe add compatible in binding example.
-> 
-> https://patchwork.kernel.org/project/netdevbpf/patch/20240206194751.1901802-2-ericwouds@gmail.com/#25703356
-> 
-
-Ah, okay. Leave it then.
-
->>> +		interrupts-extended = <&pio 48 IRQ_TYPE_EDGE_FALLING>;
->>> +		reset-gpios = <&pio 49 GPIO_ACTIVE_LOW>;
->>> +		reset-assert-us = <10000>;
->>> +		reset-deassert-us = <20000>;
->>> +		phy-mode = "2500base-x";
->>> +		full-duplex;
->>> +		pause;
->>> +		airoha,pnswap-rx;
->>> +
->>> +		leds {
->>> +			#address-cells = <1>;
->>> +			#size-cells = <0>;
->>> +
->>> +			led@0 { /* en8811_a_gpio5 */
->>> +				reg = <0>;
->>> +				color = <LED_COLOR_ID_YELLOW>;
->>> +				function = LED_FUNCTION_LAN;
->>> +				function-enumerator = <1>;
->>
->> Why aren't you simply using a label?
-> 
-> You mean the comment? I can add it of course like for regulators.
-> 
-
-I mean in place of the function-enumerator... that's practically used to
-distinguish between instances, it's not too common to see it, and usually
-"label" replaces exactly that - just that, instead of a different number,
-it gets a different name with no (usually) meaningless numbers :-)
-
-Cheers!
-
->>> +				default-state = "keep";
->>> +				linux,default-trigger = "netdev";
->>> +			};
->>> +			led@1 { /* en8811_a_gpio4 */
->>> +				reg = <1>;
->>> +				color = <LED_COLOR_ID_GREEN>;
->>> +				function = LED_FUNCTION_LAN;
->>> +				function-enumerator = <2>;
->>> +				default-state = "keep";
->>> +				linux,default-trigger = "netdev";
->>> +			};
->>> +		};
->>> +	};
->>> +
->>> +	phy15: ethernet-phy@15 {
->>> +		reg = <15>;
->>
->> Same here.
+>> Fixes tag? :-)
 >>
 >> Cheers,
 >> Angelo
->>
 > 
-> 
+> Should i use fixes tag of binding commit or where dts (-part) was added?
 > regards Frank
 
+You're fixing the binding, so, the binding one :-)
+
+Cheers,
+Angelo
 
