@@ -4,94 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C35E3C25B4F
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 May 2024 13:39:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA224C25B5F
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 May 2024 14:07:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5p3RC2fOBcO/yszjFBGlQ+kLMIrLhRgtWIMaY5UGI4Q=; b=j+eZdzgpU4D43d3+aAtDEQTws/
-	NEZMpcIhzcG7x0kUemz7IsDYzcLvPcT1h28XA1wBbrnSHh2ZZUpLTBha/xy27uEHrKa15tArsM/et
-	vBZ6gmEtIpP0XFXwR0ZzfGBFgzY2AmEAckUDXSV6F2LgpdCERqAg3l1vF+6zdoVMhchCXU7EJUs7F
-	s+pUI9rArql851n59MEVDRFDU7X+vKVAqDv2G7GVgd9WsgBxo65Ru0lw0Ht+d9WX9V8DCoDWRfdxO
-	PhnuajgxIEsDMs5b58S9jBrgrxpGYM0q7uHnMdLSYFAR6CY9haWnizTyi/vKIaY8vbM9/F7kOptKb
-	4zDOcJdg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=p9mzz6Cb++6bvLqqBO4EXY8GElAqViGqGDjbSV4R+2U=; b=peSStTSnyARUcIlqGfqb9xqxji
+	32L1zVeUS+QDEsJFSz+bI5fVgL57S8WJoN0RYSzxKl6CBNJCQdv82eFiZJe4oIorr4EovCy5oL72Y
+	OtQp9cRgWsh7EO3R3+GOX+RTRt/oOBp2CCwv/l+ZHyo9jBZjb+yhsWqdFOdRB6PHtIdzIPyyeGvXI
+	K/SHFqVWZVI/P10zKw2/r/6WdDHExCqtJ+SRYrP8CpWar9I84+16povMHdxQd6C/7yXJTrBmSUoJN
+	UHApSMsZ3hjQ1dx2JJk5+z1CfKPtnG+B+u9LJcSuA2K8LivTc7zVQ7aeQixAb/S80S5hH1O2ot7LM
+	QsU0tVyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s4L2f-0000000BHvn-1Epr;
-	Tue, 07 May 2024 13:39:37 +0000
-Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
+	id 1s4LTN-0000000BNwW-0o7Y;
+	Tue, 07 May 2024 14:07:13 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s4L2b-0000000BHsf-3ujl
-	for linux-mediatek@lists.infradead.org;
-	Tue, 07 May 2024 13:39:35 +0000
-Received: by mail-lf1-x136.google.com with SMTP id 2adb3069b0e04-5210684cee6so1463649e87.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 07 May 2024 06:39:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1715089169; x=1715693969; darn=lists.infradead.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=5p3RC2fOBcO/yszjFBGlQ+kLMIrLhRgtWIMaY5UGI4Q=;
-        b=jACnwJXlXazbqw/IM16t1tnDXlV6R/ElNJzAHkW2ZTZ6qxtz8bDtskzJI96275b4JE
-         6GYbGalKj3lLjtTrrsYDpuDbcSCGw75NZqE6aotoZlHebVz/oXNZRJpk7ZXxf2sdgY9h
-         ht9Dx1CNouQrCSeX/4+fuDugqjBleixdJiKDbt2AmawVngZaHe4wmXYxDpJDTHGUNKwP
-         yTfOypvtuHeX/Rqw3KpcpoQDPiL7YcyOlaQWc1iap4x9nhPYKhH8oB2rZrszyCT18LTp
-         JlcuA516XuMZDbFM/C1aTaiqP6SsTd7pgfjdydAzlIQ7HIFk0mYlhhLdrMSbDunODUvL
-         Jypg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1715089169; x=1715693969;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=5p3RC2fOBcO/yszjFBGlQ+kLMIrLhRgtWIMaY5UGI4Q=;
-        b=sRcZdBJPKs+bBnb5f6ZDo0uWXxWW1Nf9lh91d2t8aj8MVE5nOida8+Hvudpo5L3zNT
-         P2oPy4zG3n874yGVy3FXzo/QB/8cL2TryGZsh4q2uQ5UfP0wTDomB4emD0kWCtTEIIWM
-         KQkYpFkk8uSxBBSBFXR4u4/CamaZ1xPgiP+zUda+Rm7x8jHs40vTcJjkqrhta47zpFm1
-         Srrm67/f4DNQ+6dCUnHhQwZe5mKu5z4spr+0JhPg4d8uY5OhdOG2n+OaJgnaxvVfYpUO
-         hJd4JBYS4Cw2gkwNCqN+EUMtrwYPVwwkA6IMcKQgLNwjjZluRcENHpnF711pKyrVBqQV
-         ha8g==
-X-Forwarded-Encrypted: i=1; AJvYcCWnEbn6a8H7A3+O59OWVHrp1Zu7qV5sKnwZuUVy/fXcIwJUuhf+Dl25R3unIueC55QnKq2hl6t8yogocc9O/HttyQ1W+rQ15SQxnA3U65w6oR3F
-X-Gm-Message-State: AOJu0Yxq3zxyZHoaH8jkRBInUpFOdxBFAo0UD/NmyGihUiOYHmi7UtxG
-	vYKUXy1sleEU4Kch0fj5zZqScGg3mU3msWY/1xnrmGX7wK/soqu8Cxl/bQqWpRA=
-X-Google-Smtp-Source: AGHT+IESLrpsKBO3/nRqeo+k6p8A6E2bV8DthVHdN8GSSDT4aFa4P1rb+4V8Tlme+ePuRrgdQdEv7A==
-X-Received: by 2002:a19:8c16:0:b0:51e:150e:2c45 with SMTP id o22-20020a198c16000000b0051e150e2c45mr8493801lfd.63.1715089168968;
-        Tue, 07 May 2024 06:39:28 -0700 (PDT)
-Received: from eriador.lumag.spb.ru (dzdbxzyyyyyyyyyyyykxt-3.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::227])
-        by smtp.gmail.com with ESMTPSA id x36-20020a056512132400b0051d4321ef58sm2127976lfu.61.2024.05.07.06.39.28
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 07 May 2024 06:39:28 -0700 (PDT)
-Date: Tue, 7 May 2024 16:39:27 +0300
-From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-To: Alexander Stein <alexander.stein@ew.tq-group.com>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, 
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sam Ravnborg <sam@ravnborg.org>, 
-	Vinay Simha BN <simhavcs@gmail.com>, Tony Lindgren <tony@atomide.com>, 
-	dri-devel@lists.freedesktop.org, Michael Walle <mwalle@kernel.org>, 
-	Daniel Semkowicz <dse@thaumatec.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH 01/20] drm/bridge: add dsi_lp11_notify mechanism
-Message-ID: <577v55mspa672t2bqbwwvdtfdgtbj6mpejo3n56qk7bt2j6bt3@q54dfnupcvs4>
-References: <20240506-tc358775-fix-powerup-v1-0-545dcf00b8dd@kernel.org>
- <20240506-tc358775-fix-powerup-v1-1-545dcf00b8dd@kernel.org>
- <2189493.irdbgypaU6@steina-w>
+	id 1s4LTI-0000000BNu2-3Zvx;
+	Tue, 07 May 2024 14:07:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1715090827;
+	bh=RnSnnIBaIv8995gmimhjYrXTZEZ2sbsQAMLxEaMzgiY=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=m8aoXmM6wOBYG811jg1mwfUO/i2Y7i0TydyPeFIzthOrO5pqNbZPW4VsJhjjxGdN6
+	 R6DSYRgaPeSHmoiSYWipCr2mCYCV04oSpHFrOG+jbwRI9EqwVcbc36VTX1quI2QNuj
+	 XQtvZ/MVPCmVt49o+dCX32NSl/+FLF+/Wl+H+kWwnU78j/q3v9C4qWj/p0hSqrTgSn
+	 GEHFFmvGpCxlSsxFoc5UamzxRk1g2c/8lxgJFqQNETzuhK/IB+aGyVSeDzi53m4Wez
+	 B0dBiczAKmC73ixqerGRmlUIH68lzllvVG3Mt2wJpCRhdFg4MW+xPE4uZekRjb6mGN
+	 pBrD5tU8qkx9g==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id E91D337820FC;
+	Tue,  7 May 2024 14:07:05 +0000 (UTC)
+Message-ID: <46347f5d-e09b-4e83-a5a2-e12407f442a4@collabora.com>
+Date: Tue, 7 May 2024 16:07:05 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 2/3] dt-bindings: arm: mediatek: mmsys: Add OF graph
+ support for board path
+To: =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
+ "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "wenst@chromium.org" <wenst@chromium.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "tzimmermann@suse.de" <tzimmermann@suse.de>,
+ =?UTF-8?B?U2hhd24gU3VuZyAo5a6L5a2d6KyZKQ==?= <Shawn.Sung@mediatek.com>,
+ "mripard@kernel.org" <mripard@kernel.org>,
+ =?UTF-8?B?Sml0YW8gU2hpICjnn7PorrDmtpsp?= <jitao.shi@mediatek.com>,
+ "daniel@ffwll.ch" <daniel@ffwll.ch>,
+ "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ "maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
+ "robh@kernel.org" <robh@kernel.org>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "airlied@gmail.com" <airlied@gmail.com>,
+ "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
+ "kernel@collabora.com" <kernel@collabora.com>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ =?UTF-8?B?WXUtY2hhbmcgTGVlICjmnY7nprnnkosp?= <Yu-chang.Lee@mediatek.com>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+References: <20240409120211.321153-1-angelogioacchino.delregno@collabora.com>
+ <20240409120211.321153-3-angelogioacchino.delregno@collabora.com>
+ <aa7e3bcf70383e563a65919f924ec2e5e4cd778c.camel@mediatek.com>
+ <becdc2e5-4a1d-4280-b6f8-78d4903be283@collabora.com>
+ <4dfb09b9c437ab2baa0898eca13a43fd7475047a.camel@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <4dfb09b9c437ab2baa0898eca13a43fd7475047a.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <2189493.irdbgypaU6@steina-w>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240507_063934_050316_FBC94044 
-X-CRM114-Status: GOOD (  39.34  )
+X-CRM114-CacheID: sfid-20240507_070709_098060_32C4FBDA 
+X-CRM114-Status: GOOD (  35.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,134 +98,284 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, May 07, 2024 at 10:37:54AM +0200, Alexander Stein wrote:
-> Hi Michael,
+Il 07/05/24 08:59, CK Hu (èƒ¡ä¿Šå…‰) ha scritto:
+> On Thu, 2024-05-02 at 10:50 +0200, AngeloGioacchino Del Regno wrote:
+>> Il 25/04/24 04:23, CK Hu (èƒ¡ä¿Šå…‰) ha scritto:
+>>> Hi, Angelo:
+>>>
+>>> On Tue, 2024-04-09 at 14:02 +0200, AngeloGioacchino Del Regno
+>>> wrote:
+>>>> Document OF graph on MMSYS/VDOSYS: this supports up to three DDP
+>>>> paths
+>>>> per HW instance (so potentially up to six displays for multi-vdo
+>>>> SoCs).
+>>>>
+>>>> The MMSYS or VDOSYS is always the first component in the DDP
+>>>> pipeline,
+>>>> so it only supports an output port with multiple endpoints -
+>>>> where
+>>>> each
+>>>> endpoint defines the starting point for one of the (currently
+>>>> three)
+>>>> possible hardware paths.
+>>>>
+>>>> Signed-off-by: AngeloGioacchino Del Regno <
+>>>> angelogioacchino.delregno@collabora.com>
+>>>> ---
+>>>>    .../bindings/arm/mediatek/mediatek,mmsys.yaml | 23
+>>>> +++++++++++++++++++
+>>>>    1 file changed, 23 insertions(+)
+>>>>
+>>>> diff --git
+>>>> a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.y
+>>>> aml
+>>>> b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.y
+>>>> aml
+>>>> index b3c6888c1457..4e9acd966aa5 100644
+>>>> ---
+>>>> a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.y
+>>>> aml
+>>>> +++
+>>>> b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.y
+>>>> aml
+>>>> @@ -93,6 +93,29 @@ properties:
+>>>>      '#reset-cells':
+>>>>        const: 1
+>>>>    
+>>>> +  port:
+>>>> +    $ref: /schemas/graph.yaml#/properties/port
+>>>> +    description:
+>>>> +      Output port node. This port connects the MMSYS/VDOSYS
+>>>> output
+>>>> to
+>>>> +      the first component of one display pipeline, for example
+>>>> one
+>>>> of
+>>>> +      the available OVL or RDMA blocks.
+>>>> +      Some MediaTek SoCs support up to three display outputs per
+>>>> MMSYS.
+>>>> +    properties:
+>>>> +      endpoint@0:
+>>>> +        $ref: /schemas/graph.yaml#/properties/endpoint
+>>>> +        description: Output to the primary display pipeline
+>>>> +
+>>>> +      endpoint@1:
+>>>> +        $ref: /schemas/graph.yaml#/properties/endpoint
+>>>> +        description: Output to the secondary display pipeline
+>>>> +
+>>>> +      endpoint@2:
+>>>> +        $ref: /schemas/graph.yaml#/properties/endpoint
+>>>> +        description: Output to the tertiary display pipeline
+>>>> +
+>>>> +    required:
+>>>> +      - endpoint@0
+>>>> +
+>>>
+>>> mmsys/vdosys does not output data to the first component of display
+>>> pipeline, so this connection looks 'virtual'. Shall we add
+>>> something
+>>> virtual in device tree? You add this in order to decide which
+>>> pipeline
+>>> is 1st, 2nd, 3rd, but for device it don't care which one is first.
+>>> In
+>>> computer, software could change which display is the primary
+>>> display.
+>>> I'm not sure it's good to decide display order in device tree?
+>>>
+>>
+>> Devicetree describes hardware, so nothing virtual can be present -
+>> and in any case,
+>> the primary/secondary/tertiary pipeline is in relation to MM/VDO SYS,
+>> not referred
+>> to software.
+>>
+>> Better explaining, the primary pipeline is not necessarily the
+>> primary display in
+>> DRM terms: that's a concept that is completely detached from the
+>> scope of this
+>> series and this graph - and it's something that shall be managed
+>> solely by the
+>> driver (mediatek-drm in this case).
+>>
+>> Coming back to the connection looking, but *not* being virtual: the
+>> sense here is
+>> that the MM/VDOSYS blocks are used in the display pipeline to
+>> "stitch" together
+>> the various display pipeline hardware blocks, or, said differently,
+>> setting up the
+>> routing between all of those (P.S.: mmsys_mtxxxx_routing_table!)
+>> through the VDO
+>> Input Selection (VDOx_SEL_IN) or Output Selection (VDOx_SEL_OUT) and
+>> with the
+>> assistance of the VDO Multiple Output Mask (VDOx_MOUT) for the
+>> multiple outputs
+>> usecase, both of which, are described by this graph.
 > 
-> Am Montag, 6. Mai 2024, 15:34:30 CEST schrieb Michael Walle:
-> > Some bridges have very strict power-up reqirements. In this case, the
-> > Toshiba TC358775. The reset has to be deasserted while *both* the DSI
-> > clock and DSI data lanes are in LP-11 mode. After the reset is relased,
-> > the bridge needs the DSI clock to actually be able to process I2C
-> > access. This access will configure the DSI side of the bridge during
-> > which the DSI data lanes have to be in LP-11 mode.
+> I agree this part, but this is related to display device OF graph.
+> These display device would output video data from one device and input
+> to another video device. These video device would not input or output
+> video data to mmsys/vdosys.
 > 
-> Apparently this is an issue for a lot of DSI bridges. But enabling LP-11 for
-> a bridge is impossible with current documentation [1], which states "A DSI
-> host should keep the PHY powered down until the pre_enable operation is
-> called."
-> Additionally tc358767/tc9595 (DSI-DP bridge) needs LP-11 for AUX channel
-> access to even get EDID. This is a requirement before pre_enable would
-> even be possible.
+>>
+>> This means that the VDOSYS is really the "master" of the display
+>> pipeline since
+>> everything gets enabled, mixed and matched from there - and that's in
+>> the sense
+>> of hardware operation, so we are *really* (and not virtually!)
+>> flipping switches.
 > 
-> So some changes to the current flow are needed. But I am not so sure
-> about LP-11 notification. IMHO a device request to the DSI host to
-> enable LP-11 seems more sensible.
+> I agree mmsys/vdosys is master of video pipeline, so let's define what
+> the port in mmsys/vdosys is. If the port means the master relationship,
+> mmsys/vdosys should output port to every display device. Or use a
+> simply way to show the master relation ship
+> 
+> mmsys-subdev = <&ovl0, &rdma0, &color0, ...>, <&ovl1, &rdma1, &color1,
+> ...>;
+> 
 
-Granted that there can be several DSI devices sharing the DSI bus (aka
-split-link), I was toying with the idea of making the DSI host call
-attached DSI devices when the transition happens.
+There's no need to list all of the VDO0/VDO1/mmsys devices in one big array
+property, because the actual possible devices can be defined:
+   1. In the bindings; and
+   2. In the actual OF graph that we write for each SoC+board combination.
 
-I don't have a fully working PoC and I probably won't have it ready til
-the end of May because of the lack of time and different local
-priorities.
+A graph cannot contain a connection to a device that cannot be connected to
+the previous, so, your "mmsys-subdev" list can be retrieved by looking at the
+graph:
+  - Start from VDO0/1 or MMSYS
+  - Walk through (visually, even) OUTPUT ports
+    - VDO0 (read output ep) -> ovl0 (read output ep) -> rdma0 (read output ep) ->
+      color0 (...) -> etc
+  - Nothing more - it's all defined there.
 
 > 
-> Best regards,
-> Alexander
+> Another problem is how to group display device? If two pipeline could
+> be route to the same display interface, such as
 > 
-> [1] https://www.kernel.org/doc/html/latest/gpu/drm-kms-helpers.html#mipi-dsi-bridge-operation
+> rdma0 -> dsi
+> rdma1 -> dsi
 > 
-> > After everything is
-> > configured the video stream can finally be enabled.
-> > 
-> > This means:
-> >  (1) The bridge has to be configured completely in .pre_enable() op
-> >      (with the clock turned on and data lanes in LP-11 mode, thus
-> >      .pre_enable_prev_first has to be set).
-> >  (2) The bridge will enable its output in the .enable() op
-> >  (3) There must be some mechanism before (1) where the bridge can
-> >      release its reset while the clock lane is still in LP-11 mode.
-> > 
-> > Unfortunately, (3) is crucial for a correct operation of the bridge.
-> > To satisfy this requriment, introduce a new callback .dsi_lp11_notify()
-> > which will be called by the DSI host driver.
-> > 
-> > Signed-off-by: Michael Walle <mwalle@kernel.org>
-> > ---
-> >  drivers/gpu/drm/drm_bridge.c | 16 ++++++++++++++++
-> >  include/drm/drm_bridge.h     | 12 ++++++++++++
-> >  2 files changed, 28 insertions(+)
-> > 
-> > diff --git a/drivers/gpu/drm/drm_bridge.c b/drivers/gpu/drm/drm_bridge.c
-> > index 28abe9aa99ca..98cd6558aecb 100644
-> > --- a/drivers/gpu/drm/drm_bridge.c
-> > +++ b/drivers/gpu/drm/drm_bridge.c
-> > @@ -1339,6 +1339,22 @@ void drm_bridge_hpd_notify(struct drm_bridge *bridge,
-> >  }
-> >  EXPORT_SYMBOL_GPL(drm_bridge_hpd_notify);
-> >  
-> > +/**
-> > + * drm_bridge_dsi_lp11_notify - notify clock/data lanes LP-11 mode
-> > + * @bridge: bridge control structure
-> > + *
-> > + * DSI host drivers shall call this function while the clock and data lanes
-> > + * are still in LP-11 mode.
-> > + *
-> > + * This function shall be called in a context that can sleep.
-> > + */
-> > +void drm_bridge_dsi_lp11_notify(struct drm_bridge *bridge)
-> > +{
-> > +	if (bridge->funcs->dsi_lp11_notify)
-> > +		bridge->funcs->dsi_lp11_notify(bridge);
-> > +}
-> > +EXPORT_SYMBOL_GPL(drm_bridge_dsi_lp11_notify);
-> > +
-> >  #ifdef CONFIG_OF
-> >  /**
-> >   * of_drm_find_bridge - find the bridge corresponding to the device node in
-> > diff --git a/include/drm/drm_bridge.h b/include/drm/drm_bridge.h
-> > index 4baca0d9107b..4ef61274e0a8 100644
-> > --- a/include/drm/drm_bridge.h
-> > +++ b/include/drm/drm_bridge.h
-> > @@ -630,6 +630,17 @@ struct drm_bridge_funcs {
-> >  	 */
-> >  	void (*hpd_disable)(struct drm_bridge *bridge);
-> >  
-> > +	/**
-> > +	 * dsi_lp11_notify:
-> > +	 *
-> > +	 * Will be called by the DSI host driver while both the DSI clock
-> > +	 * lane as well as the DSI data lanes are in LP-11 mode. Some bridges
-> > +	 * need this state while releasing the reset, for example.
-> > +	 * Not all DSI host drivers will support this. Therefore, the DSI
-> > +	 * bridge driver must not rely on this op to be called.
-> > +	 */
-> > +	void (*dsi_lp11_notify)(struct drm_bridge *bridge);
-> > +
-> >  	/**
-> >  	 * @debugfs_init:
-> >  	 *
-> > @@ -898,6 +909,7 @@ void drm_bridge_hpd_enable(struct drm_bridge *bridge,
-> >  void drm_bridge_hpd_disable(struct drm_bridge *bridge);
-> >  void drm_bridge_hpd_notify(struct drm_bridge *bridge,
-> >  			   enum drm_connector_status status);
-> > +void drm_bridge_dsi_lp11_notify(struct drm_bridge *bridge);
-> >  
-> >  #ifdef CONFIG_DRM_PANEL_BRIDGE
-> >  bool drm_bridge_is_panel(const struct drm_bridge *bridge);
-> > 
-> > 
-> 
-> 
-> -- 
-> TQ-Systems GmbH | Mühlstraße 2, Gut Delling | 82229 Seefeld, Germany
-> Amtsgericht München, HRB 105018
-> Geschäftsführer: Detlef Schneider, Rüdiger Stahl, Stefan Schneider
-> http://www.tq-group.com/
-> 
-> 
+> Would this be single group?
 
--- 
-With best wishes
-Dmitry
+There are multiple ways of doing this, but one that comes to my mind right now and
+that looks clean as well is the following:
+
+ovl0@ef01 {
+    .....
+   ports {
+     port@0 {
+       reg = <0>;
+       ovl0_in: endpoint {
+         remote-endpoint = <&vdosys0_out>;
+       };
+     };
+
+     port@1 {
+       reg = <1>;
+       ovl0_out0: endpoint@0 {
+         remote-endpoint = <&rdma0_in>;
+       };
+       ovl0_out1: endpoint@1 {
+         remote-endpoint = <&rdma1_in>;
+       };
+     };
+   };
+};
+
+rdma0@1234 {
+    .....
+   ports {
+     port@0 {
+       reg = <0>;
+       rdma0_in: endpoint {
+         remote-endpoint = <&ovl0_out0>; /* assuming ovl0 outputs to rdma0...*/
+       };
+     };
+     port@1 {
+       reg = <1>;
+       rdma0_out: endpoint@1 {
+         remote-endpoint = <&dsi_dual_intf0_in>;
+       };
+     };
+   };
+};
+
+
+rdma1@5678 {
+    .....
+   ports {
+     port@0 {
+       reg = <0>;
+       rdma1_in: endpoint {
+         /* assuming ovl0 outputs to rdma1 as well... can be something else. */
+         remote-endpoint = <&ovl0_out1>;
+       };
+     };
+     port@1 {
+       reg = <1>;
+       rdma1_out: endpoint {
+         remote-endpoint = <&dsi_dual_intf1_in>;
+       };
+     };
+   };
+};
+
+
+dsi@9abcd {
+    .....
+   ports {
+     port@0 {
+       reg = <0>;
+       /* Where endpoint@0 could be always DSI LEFT CTRL */
+       dsi_dual_intf0_in: endpoint@0 {
+         remote-endpoint = <&rdma0_out>;
+       };
+       /* ...and @1 could be always DSI RIGHT CTRL */
+       dsi_dual_intf1_in: endpoint@1 {
+         remote-endpoint = <&rdma1_out>;
+       };
+     };
+
+     port@1 {
+       reg = <1>;
+       dsi0_out: endpoint {
+         remote-endpoint = <&dsi_panel_in>;
+       };
+     };
+   };
+};
+
+...for a dual-dsi panel, it'd be a similar graph.
+
+Cheers,
+Angelo
+
+> 
+> mmsys-subdev = <&rdma0, &rdma1, &dsi>;
+> 
+> Or two group?
+> 
+> mmsys-subdev = <&rdma0, &dsi>, <&rdma1, &dsi>;
+> 
+> I think we should clearly define this.
+> 
+> Regards,
+> CK
+> 
+>>
+>>
+>> Cheers,
+>> Angelo
+>>
+>>> Regards,
+>>> CK
+>>>
+>>>
+>>>>    required:
+>>>>      - compatible
+>>>>      - reg
+>>
+>>
+
+
+
 
