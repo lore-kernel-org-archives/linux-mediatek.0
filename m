@@ -4,73 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 594E0C04FFE
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 May 2024 20:38:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62F0EC04FFE
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 May 2024 21:15:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8hyMQc364GzRHiQvLV8v/9Hi/7DoGsWnhRdSDKuyil0=; b=BBLNKjtQe2/3oOJ7VHZ+XtjP8s
-	OEbR2buJVzz1OG2kTUTk+g/XAa5C4gxXqv8pYNaaqe1uYg+POpzMcFaMCZNZ6L0boC7HQsGYYCLQZ
-	tYLyQLcH0n73WHQg34ITCS007DS9NO62UrZLy5b89pVTtJD5IHdu8mcdSnvBEmEOaZy87NzVv63I/
-	bo6hC0iYT1kYO35WwnzuAJTNWwIU2noJJle6YZcVSr07sfioU6deQ3FZHlqxyVzy1ko8GpmKm03gh
-	bbPVsrLj8Lj1wNiBLB8JY5LeAhf0uZ8N+fYLUGnf32fmygeB5v7JrOpd+Qtft1UCSWJxlvucsS7wT
-	ehnQyoAg==;
+	bh=buSNW1rXJ5tp0mHF2b1c12zxGyNSJnH+cWUgnRIBSqA=; b=C3MSEAKIbJytCIYJ8ftXy1Y+K3
+	GCDwTl5n09nX+RosjIeDsn020XxgP/X5d+RXnS5dgbRhuQ67R5OSkGjHMdNoLffuTPFLi2jAACdPR
+	jaGphV3c6sFKT0/gRR5UV0dirbUUDiEQTY8JVQ1bbFvJHeI2z6eT35ap1kgcQH5sfxGFkYDopuI2G
+	0unKZFIF9Iu0BXpLHFueJns9h1IgWvbU3Im3+EzRzJE2VsSKZn4rGsy0oGhylWGcYTKayqpTOgVPA
+	voJfydGDElFPk8rBOg1vteN1bC6SeSNuuKvCzUsIizx5gjLqbvWK44DxbFP+aS+GaMHNYveR/LOwi
+	ohOtiwuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s4o3e-0000000Gulw-0HOu;
-	Wed, 08 May 2024 20:38:34 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1s4od2-0000000Gzok-23T4;
+	Wed, 08 May 2024 21:15:08 +0000
+Received: from mail-qk1-x730.google.com ([2607:f8b0:4864:20::730])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s4o3a-0000000Gul3-1zJ2
+	id 1s4ocz-0000000Gzn7-0J4k
 	for linux-mediatek@lists.infradead.org;
-	Wed, 08 May 2024 20:38:32 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 2A981CE19F7
-	for <linux-mediatek@lists.infradead.org>; Wed,  8 May 2024 20:38:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6939AC32786
-	for <linux-mediatek@lists.infradead.org>; Wed,  8 May 2024 20:38:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1715200707;
-	bh=iELKPKEBdzp99N3dT3F0Gig++k6H1GB9X40m4RmGOXA=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=kBNAqTg4HplcgEYFfj01exaT7HAJ7N+FPWaC/TIuRtChjY8DK2FRDaX93GhxSEBw7
-	 FAqPYf0Z18yxPQAcd9/CTsXCX3Iu9+hhdjy2Bw+6EehEFvSs0k/YeYRowDbHru8Stb
-	 MdErkMNhjlkl+hEmuA9AgEQ8V0nS8H+G5C+FWaD/c1iH9sBWOReEbWP4GrqW7VmnZ5
-	 DNuz5abzNzoJPXy3uXPuJNUpC4KgjvtX4pUNY+0OaQIMsU3ww6uMWEsn9Hn2OibqCt
-	 JFqASvEe7AAt9FyFBGujWXAB5TJF2A/wWAlcHSz/kj3VrEB+8Xnh+7pbYPcfdlq6w+
-	 +X3hN60qFmhfA==
-Received: by mail-ej1-f52.google.com with SMTP id a640c23a62f3a-a59a0906a7aso4850966b.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 08 May 2024 13:38:27 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCVPnrd7LiKRguZwnjaPRadAwQqxSOiwToBvEtbouETdAPOohHdO8LmlGAOnajljLxlfF+MAtkj3yQI2ox2EQNqFJxLkOT1qRYhugaOmzuuxpzIF
-X-Gm-Message-State: AOJu0Yx6YX/a50JzHrv5coe1gsfAuxm+tu2EZh2qZWwm7IGF/ZK+PWED
-	AVrIs20xAvX8UMNPCcGmbAYQOc1q3HzCGh31PpDQ29yUELODuCmB+A8IZ2o8pb60ijPPGpBHqoz
-	Ksfb4WSS2Pr9fVds6VHfwhKRXojY=
-X-Google-Smtp-Source: AGHT+IGl3o8/eHyjVt0T4UwXGfTaWvH2xFalvsf84UytUpmXoRi9teX9R7b2iY+GS6HtUaWKgNUfBGoI1uT+V5ZO1m8=
-X-Received: by 2002:a17:906:df14:b0:a59:bce9:8454 with SMTP id
- a640c23a62f3a-a59fb94f6d3mr232661766b.1.1715200705917; Wed, 08 May 2024
- 13:38:25 -0700 (PDT)
+	Wed, 08 May 2024 21:15:06 +0000
+Received: by mail-qk1-x730.google.com with SMTP id af79cd13be357-792b94301eeso11455285a.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 08 May 2024 14:15:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1715202901; x=1715807701; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=buSNW1rXJ5tp0mHF2b1c12zxGyNSJnH+cWUgnRIBSqA=;
+        b=Wqw8c4S6ztSZtZWWJImaKeCQpexkZ7eFmlPjJ0Q2MdOoD9Q9/lbCdZisjQomu1FpXg
+         GNcUj89T8kxER19xEDD0wLAYERAR1eOEBCVvsqVZX8KLWMZLnRbQVsiY4EaFHKH/5Uyq
+         4xwxibBkwN4cAxbRdwoBHC1aNcSVeTpSo9seo=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1715202901; x=1715807701;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=buSNW1rXJ5tp0mHF2b1c12zxGyNSJnH+cWUgnRIBSqA=;
+        b=E4HVPvDmYW3cbabWyUtMLppG3clSZZIuiGdeHC+mR3OHzyC0Ijlhqg3kMyIGGu2GMN
+         fnj+LbZL79/3HyC61ye2Q/E2kN+XMbp0Cn/B6x1jpFGBKqUcbS3n9Bv7EIzHTkiniiSh
+         PzDQzGwUvLi03U2GdINvr8Heti8r+cpHZydiSPkxIbndxxiBzReLYgPzpISOX08EcEC6
+         lom28QnrxnoK1UIPi2XDTNJNXHdbLPCJzL3hH44xn6cSIsKLzMtWaiDM13zsL5UvEPcs
+         ssaeQOMvDr5btlM3e+nyAPz5qdcCPLHTiu5VLv5EVG26+iAnydh71P8bPa1Hk/AsCg7e
+         5/Pg==
+X-Forwarded-Encrypted: i=1; AJvYcCWN8+BRoLy6zEYh58u1nASNhg8OHZSqrbxz44DOiqAl17lNH+zn0rhLA61OEjw3e/eKH+FAPm1pte5JbHa3JxTNahJfVxaGuZ912AKox2+rcURo
+X-Gm-Message-State: AOJu0YwQbriVkvwoR5DibftIGM8g8VVrbu8qehfKdS5ru6PfseNURSVt
+	IzXqDXD3NWII0yTFLQDDfLqy9CSx8J8vQCt/ZKUmWX21OYvk6+nBhfDEtUcTrxyr9EsgJTxdxbE
+	=
+X-Google-Smtp-Source: AGHT+IGXrtFIVUrIYMutRDWOd1ho3q7rqrFSvJMaNzDi1JBs6XV8+K2LQ9W9slkSm9DK6OIXXiS2Aw==
+X-Received: by 2002:a05:6214:e69:b0:6a0:c162:2944 with SMTP id 6a1803df08f44-6a15153bdabmr38499706d6.29.1715202900627;
+        Wed, 08 May 2024 14:15:00 -0700 (PDT)
+Received: from mail-qt1-f169.google.com (mail-qt1-f169.google.com. [209.85.160.169])
+        by smtp.gmail.com with ESMTPSA id pv7-20020ad45487000000b006a0f4d06452sm5903774qvb.88.2024.05.08.14.15.00
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 08 May 2024 14:15:00 -0700 (PDT)
+Received: by mail-qt1-f169.google.com with SMTP id d75a77b69052e-439b1c72676so47181cf.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 08 May 2024 14:15:00 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCWIA2GJ247Pv7C+bf78S1MXb6P5vXzX/yBxKkgKTQ/9nTW431AZkux6uCdAbmgqYA5nzHutfjcnH01FbggFaKjqgRVJdLh5pp+nuycTd/JnmfwD
+X-Received: by 2002:a05:622a:1c0d:b0:43a:c1cd:2f4c with SMTP id
+ d75a77b69052e-43df44dc04cmr169931cf.5.1715202879034; Wed, 08 May 2024
+ 14:14:39 -0700 (PDT)
 MIME-Version: 1.0
-References: <965cd14922aea67e2750ff2c2ecad773f8ba485a.1715109394.git.sean.wang@kernel.org>
- <202405081456.v2MvcQ0P-lkp@intel.com> <CABBYNZLH7mGdP7AcdHnY8q=3i=Lupk-D2Af4G5X4o1_XdbTfVw@mail.gmail.com>
-In-Reply-To: <CABBYNZLH7mGdP7AcdHnY8q=3i=Lupk-D2Af4G5X4o1_XdbTfVw@mail.gmail.com>
-From: Sean Wang <sean.wang@kernel.org>
-Date: Wed, 8 May 2024 13:38:13 -0700
-X-Gmail-Original-Message-ID: <CAGp9LzrNE9Hi-a9y8oQMXmug44k7VUsmcDiAiXgbFu8bLbtFTg@mail.gmail.com>
-Message-ID: <CAGp9LzrNE9Hi-a9y8oQMXmug44k7VUsmcDiAiXgbFu8bLbtFTg@mail.gmail.com>
-Subject: Re: [PATCH v4 1/5] Bluetooth: btmtk: add the function to get the fw name
-To: Luiz Augusto von Dentz <luiz.dentz@gmail.com>
-Cc: kernel test robot <lkp@intel.com>, marcel@holtmann.org, johan.hedberg@gmail.com, 
-	oe-kbuild-all@lists.linux.dev, linux-bluetooth@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	Sean Wang <sean.wang@mediatek.com>
+References: <20240503213441.177109-1-dianders@chromium.org> <CACRpkdYbtfE9RLsDewV2UwnJknCp_sFEgc+cq=OF+Qd3tkTcwA@mail.gmail.com>
+In-Reply-To: <CACRpkdYbtfE9RLsDewV2UwnJknCp_sFEgc+cq=OF+Qd3tkTcwA@mail.gmail.com>
+From: Doug Anderson <dianders@chromium.org>
+Date: Wed, 8 May 2024 14:14:22 -0700
+X-Gmail-Original-Message-ID: <CAD=FV=WoYm43SzrdrSZ1Np58iQ4nMwF0u6uamOAnZc4pqmBpsg@mail.gmail.com>
+Message-ID: <CAD=FV=WoYm43SzrdrSZ1Np58iQ4nMwF0u6uamOAnZc4pqmBpsg@mail.gmail.com>
+Subject: Re: [RFT PATCH v2 00/48] drm/panel: Remove most store/double-check of
+ prepared/enabled state
+To: Linus Walleij <linus.walleij@linaro.org>
+Cc: dri-devel@lists.freedesktop.org, Maxime Ripard <mripard@kernel.org>, 
+	Chris Morgan <macromorgan@hotmail.com>, Yuran Pereira <yuran.pereira@hotmail.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Daniel Vetter <daniel@ffwll.ch>, 
+	David Airlie <airlied@gmail.com>, =?UTF-8?Q?Guido_G=C3=BCnther?= <agx@sigxcpu.org>, 
+	Jerry Han <hanxu5@huaqin.corp-partner.google.com>, 
+	Jessica Zhang <quic_jesszhan@quicinc.com>, Jonathan Corbet <corbet@lwn.net>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Ondrej Jirman <megi@xff.cz>, 
+	Purism Kernel Team <kernel@puri.sm>, Robert Chiras <robert.chiras@nxp.com>, Sam Ravnborg <sam@ravnborg.org>, 
+	Stefan Mavrodiev <stefan@olimex.com>, Sumit Semwal <sumit.semwal@linaro.org>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, linux-arm-kernel@lists.infradead.org, 
+	linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240508_133830_966847_C8824A2E 
-X-CRM114-Status: GOOD (  21.42  )
+X-CRM114-CacheID: sfid-20240508_141505_126847_7977F7A5 
+X-CRM114-Status: GOOD (  42.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,108 +113,122 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Hi,
 
-On Wed, May 8, 2024 at 7:37=E2=80=AFAM Luiz Augusto von Dentz
-<luiz.dentz@gmail.com> wrote:
+On Sun, May 5, 2024 at 11:52=E2=80=AFPM Linus Walleij <linus.walleij@linaro=
+.org> wrote:
 >
-> Hi Sean,
+> On Fri, May 3, 2024 at 11:36=E2=80=AFPM Douglas Anderson <dianders@chromi=
+um.org> wrote:
 >
-> On Wed, May 8, 2024 at 3:13=E2=80=AFAM kernel test robot <lkp@intel.com> =
-wrote:
+> > As talked about in commit d2aacaf07395 ("drm/panel: Check for already
+> > prepared/enabled in drm_panel"), we want to remove needless code from
+> > panel drivers that was storing and double-checking the
+> > prepared/enabled state. Even if someone was relying on the
+> > double-check before, that double-check is now in the core and not
+> > needed in individual drivers.
 > >
-> > Hi,
+> > This series attempts to do just that. While the original grep, AKA:
+> >   git grep 'if.*>prepared' -- drivers/gpu/drm/panel
+> >   git grep 'if.*>enabled' -- drivers/gpu/drm/panel
+> > ...still produces a few hits after my series, they are _mostly_ all
+> > gone. The ones that are left are less trivial to fix.
 > >
-> > kernel test robot noticed the following build warnings:
+> > One of the main reasons that many panels probably needed to store and
+> > double-check their prepared/enabled appears to have been to handle
+> > shutdown and/or remove. Panels drivers often wanted to force the power
+> > off for panels in these cases and this was a good reason for the
+> > double-check.
 > >
-> > [auto build test WARNING on bluetooth/master]
-> > [also build test WARNING on bluetooth-next/master linus/master v6.9-rc7=
- next-20240507]
-> > [If your patch is applied to the wrong git tree, kindly drop us a note.
-> > And when submitting patch, we suggest to use '--base' as documented in
-> > https://git-scm.com/docs/git-format-patch#_base_tree_information]
+> > In response to my V1 series [1] we had much discussion of what to
+> > do. The conclusion was that as long as DRM modeset drivers properly
+> > called drm_atomic_helper_shutdown() that we should be able to remove
+> > the explicit shutdown/remove handling in the panel drivers. Most of
+> > the patches to improve DRM modeset drivers [2] [3] [4] have now
+> > landed.
 > >
-> > url:    https://github.com/intel-lab-lkp/linux/commits/sean-wang-kernel=
--org/Bluetooth-btmtk-apply-the-common-btmtk_fw_get_filename/20240508-032333
-> > base:   https://git.kernel.org/pub/scm/linux/kernel/git/bluetooth/bluet=
-ooth.git master
-> > patch link:    https://lore.kernel.org/r/965cd14922aea67e2750ff2c2ecad7=
-73f8ba485a.1715109394.git.sean.wang%40kernel.org
-> > patch subject: [PATCH v4 1/5] Bluetooth: btmtk: add the function to get=
- the fw name
-> > config: arm64-defconfig (https://download.01.org/0day-ci/archive/202405=
-08/202405081456.v2MvcQ0P-lkp@intel.com/config)
-> > compiler: aarch64-linux-gcc (GCC) 13.2.0
-> > reproduce (this is a W=3D1 build): (https://download.01.org/0day-ci/arc=
-hive/20240508/202405081456.v2MvcQ0P-lkp@intel.com/reproduce)
+> > In contrast to my V1 series, I broke the V2 series up a lot
+> > more. Since a few of the panel drivers in V1 already landed, we had
+> > fewer total drivers and so we could devote a patch to each panel.
+> > Also, since we were now relying on DRM modeset drivers I felt like we
+> > should split the patches for each panel into two: one that's
+> > definitely safe and one that could be reverted if we found a
+> > problematic DRM modeset driver that we couldn't fix.
 > >
-> > If you fix the issue in a separate patch/commit (i.e. not just a new ve=
-rsion of
-> > the same patch/commit), kindly add following tags
-> > | Reported-by: kernel test robot <lkp@intel.com>
-> > | Closes: https://lore.kernel.org/oe-kbuild-all/202405081456.v2MvcQ0P-l=
-kp@intel.com/
+> > Sorry for the large number of patches. I've set things to mostly just
+> > CC people on the cover letter and the patches that are relevant to
+> > them. I've tried to CC people on the whole series that have shown
+> > interest in this TODO item.
 > >
-> > All warnings (new ones prefixed by >>):
+> > As patches in this series are reviewed and/or tested they could be
+> > landed. There's really no ordering requirement for the series unless
+> > patches touch the same driver.
 > >
-> >    drivers/bluetooth/btmtk.c: In function 'btmtk_fw_get_filename':
-> > >> drivers/bluetooth/btmtk.c:115:35: warning: 'mediatek/BT_RAM_CODE_MT'=
- directive output truncated writing 23 bytes into a region of size 8 [-Wfor=
-mat-truncation=3D]
-> >      115 |                          "mediatek/BT_RAM_CODE_MT%04x_1a_%x_=
-hdr.bin",
-> >          |                           ~~~~~~~~^~~~~~~~~~~~~~~
-> >    drivers/bluetooth/btmtk.c:115:26: note: directive argument in the ra=
-nge [1, 256]
-> >      115 |                          "mediatek/BT_RAM_CODE_MT%04x_1a_%x_=
-hdr.bin",
-> >          |                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~=
-~~~~~~~~
-> >    drivers/bluetooth/btmtk.c:114:17: note: 'snprintf' output between 41=
- and 43 bytes into a destination of size 8
-> >      114 |                 snprintf(buf, sizeof(size),
-> >          |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~
-> >      115 |                          "mediatek/BT_RAM_CODE_MT%04x_1a_%x_=
-hdr.bin",
-> >          |                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~=
-~~~~~~~~~
-> >      116 |                          dev_id & 0xffff, (fw_ver & 0xff) + =
-1);
-> >          |                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~=
-~~
+> > NOTE: this touches _a lot_ of drivers, is repetitive, and is not
+> > really possible to generate automatically. That means it's entirely
+> > possible that my eyes glazed over and I did something wrong. Please
+> > double-check me and don't assume that I got everything perfect, though
+> > I did my best. I have at least confirmed that "allmodconfig" for arm64
+> > doesn't fall on its face with this series. I haven't done a ton of
+> > other testing.
 > >
-> >
-> > vim +115 drivers/bluetooth/btmtk.c
-> >
-> >    105
-> >    106  void btmtk_fw_get_filename(char *buf, size_t size, u32 dev_id, =
-u32 fw_ver,
-> >    107                             u32 fw_flavor)
-> >    108  {
-> >    109          if (dev_id =3D=3D 0x7925)
-> >    110                  snprintf(buf, size,
-> >    111                           "mediatek/mt%04x/BT_RAM_CODE_MT%04x_1_=
-%x_hdr.bin",
-> >    112                           dev_id & 0xffff, dev_id & 0xffff, (fw_=
-ver & 0xff) + 1);
-> >    113          else if (dev_id =3D=3D 0x7961 && fw_flavor)
-> >    114                  snprintf(buf, sizeof(size),
-> >  > 115                           "mediatek/BT_RAM_CODE_MT%04x_1a_%x_hdr=
-.bin",
-> >    116                           dev_id & 0xffff, (fw_ver & 0xff) + 1);
-> >    117          else
-> >    118                  snprintf(buf, size,
-> >    119                           "mediatek/BT_RAM_CODE_MT%04x_1_%x_hdr.=
-bin",
-> >    120                           dev_id & 0xffff, (fw_ver & 0xff) + 1);
-> >    121  }
-> >    122  EXPORT_SYMBOL_GPL(btmtk_fw_get_filename);
-> >    123
+> > [1] https://lore.kernel.org/r/20230804140605.RFC.4.I930069a32baab6faf46=
+d6b234f89613b5cec0f14@changeid
+> > [2] https://lore.kernel.org/r/20230901234015.566018-1-dianders@chromium=
+.org
+> > [3] https://lore.kernel.org/r/20230901234202.566951-1-dianders@chromium=
+.org
+> > [4] https://lore.kernel.org/r/20230921192749.1542462-1-dianders@chromiu=
+m.org
 >
-> Could you please fix the above?
+> This is the right thing to do, thanks for looking into this!
+>
+> As for the behaviour of .remove() I doubt whether in many cases
+> the original driver authors have even tested this themselves.
 
-No problem, I'll take care of it and send it over later.
+Yeah, I'd tend to agree.
 
-                 Sean
->
-> --
-> Luiz Augusto von Dentz
+
+> I would say we should just apply the series as soon as it's non-RFC
+
+It's not actually RFC now, but "RFT" (request for testing). I don't
+_think_ there's any need to send a version without the RFT tag before
+landing unless someone really feels strongly about it.
+
+
+> after the next merge window
+
+With drm-misc there's not really any specific reason to wait for the
+merge window to open/close as we can land in drm-misc-next at any time
+regardless of the merge window. drm-misc-next will simply stop feeding
+linuxnext for a while.
+
+That all being said, I'm happy to delay landing this until after the
+next -rc1 comes out if people would prefer that. If I don't hear
+anything, I guess I'll just wait until -rc1 before landing any of
+these.
+
+
+> and see what happens. I doubt it
+> will cause much trouble.
+
+I can land the whole series if that's what everyone agrees on. As I
+mentioned above, I'm at least slightly worried that I did something
+stupid _somewhere_ in this series since no automation was possible and
+with repetitive tasks like this it's super easy to flub something up.
+It's _probably_ fine, but I guess I still have the worry in the back
+of my mind.
+
+If folks think I should just apply the whole series then I'm happy to
+do that. If folks think I should just land parts of the series as they
+are reviewed/tested I can do that as well. Let me know. If I don't
+hear anything I'd tend to just land patches that are reviewed/tested.
+Then after a month or so (hopefully) I'd send out a v2 with anything
+left.
+
+
+> The series:
+> Acked-by: Linus Walleij <linus.walleij@linaro.org>
+
+Thanks!
+
+-Doug
 
