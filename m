@@ -4,79 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27EA8C04FFE
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 May 2024 20:17:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB393C25B5F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 May 2024 20:36:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=blx7G0yR3BpUKBgsvZxIJPfTNB/LIdR6xC+S6ZS9kQY=; b=Vb1jtwkMrud1juajr7dLz7SHQJ
-	nRnZzhnR/7EOT3j2ZiD6zeMZt+7lG7LZfB1Rr8uYatp+c2anwtiogg940M/DGtqDRHsAlNfbd6HiM
-	w57NFtaDy1KgdZhl1ZlzbiOaKYNAi/cgHMKw19YkLGeZOyub5IJlP0Zn8Uz0QN/LswB1eEYpjb5Yd
-	8/9iPGkengdc+QjPh+pf+9Av98TrifN+Y8YPGawwSy0BoucZTiUNcT6SwGWevrQyokLxnTNGzwsoZ
-	BDGQz/f37S7z3j8AxTXrMNXnBwboKR1sEtZ5nDqZjI87tlcwCqc3D3o41QOJq/Pjcc+mFw9au9SzX
-	qlMA0PGg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=9EJrNjnQ94tNIPxAIgt9sB60vsO9dm0laWb/MY0phbE=; b=oTt0+IZcMiYk0t
+	DpVHz+ZHFVn5FtR+bhyth3mn/EWx9D6HTLSbyDJYS+Xl2b4lMyVLKqAxTy5vlZ9EItV1nzL7B6sk5
+	nZGXH6cpsdNcCenFePR/EE59F+3dsQ2qTC54F87cqDzPsmD+OMFKiJpzf2Q6p1ux691Cn5lBilP81
+	znW0GZutJ+ZFEVVrzCdexOm4BAxkuTEMCLTC6ohHuOmzklQeXaZuktEZrq7Vv+u4EqO/R5L0L2kQm
+	sfLnFa/0jZcWdV/zXc9Sp0TweZvpvgF9psOFsvDrqj+K9vQk//E/mnLPFCke5Lc6OXgwR03CZd7BE
+	/Tkxjm1L/cEf1WRPUAVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s4niz-0000000GrRQ-1Htd;
-	Wed, 08 May 2024 20:17:13 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1s4o1i-0000000GuNK-1lP1;
+	Wed, 08 May 2024 20:36:34 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s4nit-0000000GrP0-1gtM;
-	Wed, 08 May 2024 20:17:09 +0000
+	id 1s4o1e-0000000GuLp-0cHL;
+	Wed, 08 May 2024 20:36:31 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 56189CE1A66;
-	Wed,  8 May 2024 20:17:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 13308C113CC;
-	Wed,  8 May 2024 20:16:56 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 50E8461707;
+	Wed,  8 May 2024 20:36:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DE262C113CC;
+	Wed,  8 May 2024 20:36:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1715199424;
-	bh=AeePNuL7SFwUOG4gPSg8rwAm8IPCSABF4FYA1EDT90I=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=OSZyA/tB5lOjpS4LC/9SY0EU+oSR2ADLqzy+2Oxxm/z6SO+lSeYqArptx9zIchIXk
-	 UiNicWJF1t0rqW+/75aVsY9qju7Ua4/12VQZiJiUlaEiH4nP7dtm6m8nHPMJVkL/e7
-	 dT4l7ucoWkMp4DEZQmkg02x4F/I3bajuOdqHxt96PxG7vcQGPSxmIVSWWk4UWM2Npy
-	 5j8C7jHMtngGG50t8cy9/OfatYDYYOm8fCYKK5P4uKlv6Q2FcvJcfql94ojXTASiir
-	 Unt1u5D51eAHSMTj76PGlYkMWXCG+OJIRRO2EgobbMJJ0WcJKSBDeElVhnooiXnVGX
-	 evN2ku1af2CsA==
-Date: Wed, 8 May 2024 21:16:54 +0100
-From: Simon Horman <horms@kernel.org>
-To: Allen <allen.lkml@gmail.com>
-Cc: "Russell King (Oracle)" <linux@armlinux.org.uk>,
-	Allen Pais <apais@linux.microsoft.com>, netdev@vger.kernel.org,
-	jes@trained-monkey.org, davem@davemloft.net, edumazet@google.com,
-	kuba@kernel.org, pabeni@redhat.com, kda@linux-powerpc.org,
-	cai.huoqing@linux.dev, dougmill@linux.ibm.com, npiggin@gmail.com,
-	christophe.leroy@csgroup.eu, aneesh.kumar@kernel.org,
-	naveen.n.rao@linux.ibm.com, nnac123@linux.ibm.com,
-	tlfalcon@linux.ibm.com, cooldavid@cooldavid.org,
-	marcin.s.wojtas@gmail.com, mlindner@marvell.com,
-	stephen@networkplumber.org, nbd@nbd.name, sean.wang@mediatek.com,
-	Mark-MC.Lee@mediatek.com, lorenzo@kernel.org,
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
-	borisp@nvidia.com, bryan.whitehead@microchip.com,
-	UNGLinuxDriver@microchip.com, louis.peens@corigine.com,
-	richardcochran@gmail.com, linux-rdma@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-acenic@sunsite.dk,
-	linux-arm-kernel@lists.infradead.org, linuxppc-dev@lists.ozlabs.org,
-	linux-mediatek@lists.infradead.org, oss-drivers@corigine.com,
-	linux-net-drivers@amd.com
-Subject: Re: [PATCH 1/1] [RFC] ethernet: Convert from tasklet to BH workqueue
-Message-ID: <20240508201654.GA2248333@kernel.org>
-References: <20240507190111.16710-1-apais@linux.microsoft.com>
- <20240507190111.16710-2-apais@linux.microsoft.com>
- <Zjp/kgBE2ddjV044@shell.armlinux.org.uk>
- <CAOMdWSKfkT4K9MAOn-rL44pycHPhVDj4CtiYkru5y_s0S-sPeQ@mail.gmail.com>
+	s=k20201202; t=1715200589;
+	bh=ZulLVyVHZHxm3YQ8KxXaqVfwKUOEaGw+eiS2cOdkylk=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Y6+MJFeM78qqdB1XJ3JJhbByN11JY6ENFlRiNajEPrMo2Hb9KkLhcXq/ezpilTCeb
+	 7KGeWG02EmtxzXSluz/JlgVI9Mrl7rVoSPu296IWatHdYzvt1yAi9Mc4vo+HafapYu
+	 PTPaC6N9kmoeeYjpVvC8uprnuRBHpYbzfTo3DoZTRrMl/bPV0EK4t5oX8Wp06+667Y
+	 vpgbwTxBgGaD6AduR6ATOFKs19xEkO7rhFCNphkYUxEMdOmL+uK7g1MpKvWyxb788f
+	 XajdlXmuyn0VhMANfI6+hraMc4pj9ry1wcu2bUgt2sw0iiBWWg+1KsbxqdSQ1chdOL
+	 RDwMiG6WHNFJQ==
+Message-ID: <74767f1d-639a-4477-a38b-e5f15bf575df@kernel.org>
+Date: Wed, 8 May 2024 22:36:20 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAOMdWSKfkT4K9MAOn-rL44pycHPhVDj4CtiYkru5y_s0S-sPeQ@mail.gmail.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] mailbox: mtk-cmdq: Fix sleeping function called from
+ invalid context
+To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>
+References: <20240508095143.12023-1-jason-jh.lin@mediatek.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
+ cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
+ JMp7PSyMPzpUXfU12yfcRYVEMQrmplNZssmYhiTeVicuOOypWugZKVLGNm0IweVCaZ/DJDIH
+ gNbpvVwjcKYrx85m9cBVEBUGaQP6AT7qlVCkrf50v8bofSIyVa2xmubbAwwFA1oxoOusjPIE
+ J3iadrwpFvsZjF5uHAKS+7wHLoW9hVzOnLbX6ajk5Hf8Pb1m+VH/E8bPBNNYKkfTtypTDUCj
+ NYcd27tjnXfG+SDs/EXNUAIRefCyvaRG7oRYF3Ec+2RgQDRnmmjCjoQNbFrJvJkFHlPeHaeS
+ BosGY+XWKydnmsfY7SSnjAzLUGAFhLd/XDVpb1Een2XucPpKvt9ORF+48gy12FA5GduRLhQU
+ vK4tU7ojoem/G23PcowM1CwPurC8sAVsQb9KmwTGh7rVz3ks3w/zfGBy3+WmLg++C2Wct6nM
+ Pd8/6CBVjEWqD06/RjI2AnjIq5fSEH/BIfXXfC68nMp9BZoy3So4ZsbOlBmtAPvMYX6U8VwD
+ TNeBxJu5Ex0Izf1NV9CzC3nNaFUYOY8KfN01X5SExAoVTr09ewARAQABzSVLcnp5c3p0b2Yg
+ S296bG93c2tpIDxrcnprQGtlcm5lbC5vcmc+wsGVBBMBCgA/AhsDBgsJCAcDAgYVCAIJCgsE
+ FgIDAQIeAQIXgBYhBJvQfg4MUfjVlne3VBuTQ307QWKbBQJgPO8PBQkUX63hAAoJEBuTQ307
+ QWKbBn8P+QFxwl7pDsAKR1InemMAmuykCHl+XgC0LDqrsWhAH5TYeTVXGSyDsuZjHvj+FRP+
+ gZaEIYSw2Yf0e91U9HXo3RYhEwSmxUQ4Fjhc9qAwGKVPQf6YuQ5yy6pzI8brcKmHHOGrB3tP
+ /MODPt81M1zpograAC2WTDzkICfHKj8LpXp45PylD99J9q0Y+gb04CG5/wXs+1hJy/dz0tYy
+ iua4nCuSRbxnSHKBS5vvjosWWjWQXsRKd+zzXp6kfRHHpzJkhRwF6ArXi4XnQ+REnoTfM5Fk
+ VmVmSQ3yFKKePEzoIriT1b2sXO0g5QXOAvFqB65LZjXG9jGJoVG6ZJrUV1MVK8vamKoVbUEe
+ 0NlLl/tX96HLowHHoKhxEsbFzGzKiFLh7hyboTpy2whdonkDxpnv/H8wE9M3VW/fPgnL2nPe
+ xaBLqyHxy9hA9JrZvxg3IQ61x7rtBWBUQPmEaK0azW+l3ysiNpBhISkZrsW3ZUdknWu87nh6
+ eTB7mR7xBcVxnomxWwJI4B0wuMwCPdgbV6YDUKCuSgRMUEiVry10xd9KLypR9Vfyn1AhROrq
+ AubRPVeJBf9zR5UW1trJNfwVt3XmbHX50HCcHdEdCKiT9O+FiEcahIaWh9lihvO0ci0TtVGZ
+ MCEtaCE80Q3Ma9RdHYB3uVF930jwquplFLNF+IBCn5JRzsFNBFVDXDQBEADNkrQYSREUL4D3
+ Gws46JEoZ9HEQOKtkrwjrzlw/tCmqVzERRPvz2Xg8n7+HRCrgqnodIYoUh5WsU84N03KlLue
+ MNsWLJBvBaubYN4JuJIdRr4dS4oyF1/fQAQPHh8Thpiz0SAZFx6iWKB7Qrz3OrGCjTPcW6ei
+ OMheesVS5hxietSmlin+SilmIAPZHx7n242u6kdHOh+/SyLImKn/dh9RzatVpUKbv34eP1wA
+ GldWsRxbf3WP9pFNObSzI/Bo3kA89Xx2rO2roC+Gq4LeHvo7ptzcLcrqaHUAcZ3CgFG88CnA
+ 6z6lBZn0WyewEcPOPdcUB2Q7D/NiUY+HDiV99rAYPJztjeTrBSTnHeSBPb+qn5ZZGQwIdUW9
+ YegxWKvXXHTwB5eMzo/RB6vffwqcnHDoe0q7VgzRRZJwpi6aMIXLfeWZ5Wrwaw2zldFuO4Dt
+ 91pFzBSOIpeMtfgb/Pfe/a1WJ/GgaIRIBE+NUqckM+3zJHGmVPqJP/h2Iwv6nw8U+7Yyl6gU
+ BLHFTg2hYnLFJI4Xjg+AX1hHFVKmvl3VBHIsBv0oDcsQWXqY+NaFahT0lRPjYtrTa1v3tem/
+ JoFzZ4B0p27K+qQCF2R96hVvuEyjzBmdq2esyE6zIqftdo4MOJho8uctOiWbwNNq2U9pPWmu
+ 4vXVFBYIGmpyNPYzRm0QPwARAQABwsF8BBgBCgAmAhsMFiEEm9B+DgxR+NWWd7dUG5NDfTtB
+ YpsFAmA872oFCRRflLYACgkQG5NDfTtBYpvScw/9GrqBrVLuJoJ52qBBKUBDo4E+5fU1bjt0
+ Gv0nh/hNJuecuRY6aemU6HOPNc2t8QHMSvwbSF+Vp9ZkOvrM36yUOufctoqON+wXrliEY0J4
+ ksR89ZILRRAold9Mh0YDqEJc1HmuxYLJ7lnbLYH1oui8bLbMBM8S2Uo9RKqV2GROLi44enVt
+ vdrDvo+CxKj2K+d4cleCNiz5qbTxPUW/cgkwG0lJc4I4sso7l4XMDKn95c7JtNsuzqKvhEVS
+ oic5by3fbUnuI0cemeizF4QdtX2uQxrP7RwHFBd+YUia7zCcz0//rv6FZmAxWZGy5arNl6Vm
+ lQqNo7/Poh8WWfRS+xegBxc6hBXahpyUKphAKYkah+m+I0QToCfnGKnPqyYIMDEHCS/RfqA5
+ t8F+O56+oyLBAeWX7XcmyM6TGeVfb+OZVMJnZzK0s2VYAuI0Rl87FBFYgULdgqKV7R7WHzwD
+ uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
+ 7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
+ 5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
+In-Reply-To: <20240508095143.12023-1-jason-jh.lin@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240508_131707_870968_21411692 
-X-CRM114-Status: GOOD (  29.20  )
+X-CRM114-CacheID: sfid-20240508_133630_326229_25825465 
+X-CRM114-Status: GOOD (  22.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,64 +112,121 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Alexandre Mergnat <amergnat@baylibre.com>, Singo Chang <singo.chang@mediatek.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Project_Global_Chrome_Upstream_Group@mediatek.com, Jason-ch Chen <jason-ch.chen@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, Johnson Wang <johnson.wang@mediatek.com>, Shawn Sung <shawn.sung@mediatek.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, May 07, 2024 at 12:27:10PM -0700, Allen wrote:
-> On Tue, May 7, 2024 at 12:23 PM Russell King (Oracle)
-> <linux@armlinux.org.uk> wrote:
-> >
-> > On Tue, May 07, 2024 at 07:01:11PM +0000, Allen Pais wrote:
-> > > The only generic interface to execute asynchronously in the BH context is
-> > > tasklet; however, it's marked deprecated and has some design flaws. To
-> > > replace tasklets, BH workqueue support was recently added. A BH workqueue
-> > > behaves similarly to regular workqueues except that the queued work items
-> > > are executed in the BH context.
-> > >
-> > > This patch converts drivers/ethernet/* from tasklet to BH workqueue.
-> >
-> > I doubt you're going to get many comments on this patch, being so large
-> > and spread across all drivers. I'm not going to bother trying to edit
-> > this down to something more sensible, I'll just plonk my comment here.
-> >
-> > For the mvpp2 driver, you're only updating a comment - and looking at
-> > it, the comment no longer reflects the code. It doesn't make use of
-> > tasklets at all. That makes the comment wrong whether or not it's
-> > updated. So I suggest rather than doing a search and replace for
-> > "tasklet" to "BH blahblah" (sorry, I don't remember what you replaced
-> > it with) just get rid of that bit of the comment.
-> >
+On 08/05/2024 11:51, Jason-JH.Lin wrote:
+> When we run kernel with lockdebug option, we will get the BUG below:
+> [  106.692124] BUG: sleeping function called from invalid context at drivers/base/power/runtime.c:1164
+> [  106.692190] in_atomic(): 1, irqs_disabled(): 128, non_block: 0, pid: 3616, name: kworker/u17:3
+
+Trim logs from irrelevant context. timestamps are useless his. Registers
+as well. Addresses of stacktrace as well and better just decode it.
+
+
+> [  106.692226] preempt_count: 1, expected: 0
+> [  106.692254] RCU nest depth: 0, expected: 0
+> [  106.692282] INFO: lockdep is turned off.
+> [  106.692306] irq event stamp: 0
+> [  106.692331] hardirqs last  enabled at (0): [<0000000000000000>] 0x0
+> [  106.692376] hardirqs last disabled at (0): [<ffffffee15d37fa0>] copy_process+0xc90/0x2ac0
+> [  106.692429] softirqs last  enabled at (0): [<ffffffee15d37fc4>] copy_process+0xcb4/0x2ac0
+> [  106.692473] softirqs last disabled at (0): [<0000000000000000>] 0x0
+> [  106.692513] CPU: 1 PID: 3616 Comm: kworker/u17:3 Not tainted 6.1.87-lockdep-14133-g26e933aca785 #1 6839942e1cf34914b0a366137843dd2366f52aa9
+> [  106.692556] Hardware name: Google Ciri sku0/unprovisioned board (DT)
+> [  106.692586] Workqueue: imgsys_runner imgsys_runner_func
+> [  106.692638] Call trace:
+> [  106.692662]  dump_backtrace+0x100/0x120
+> [  106.692702]  show_stack+0x20/0x2c
+> [  106.692737]  dump_stack_lvl+0x84/0xb4
+> [  106.692775]  dump_stack+0x18/0x48
+> [  106.692809]  __might_resched+0x354/0x4c0
+> [  106.692847]  __might_sleep+0x98/0xe4
+> [  106.692883]  __pm_runtime_resume+0x70/0x124
+> [  106.692921]  cmdq_mbox_send_data+0xe4/0xb1c
+> [  106.692964]  msg_submit+0x194/0x2dc
+> [  106.693003]  mbox_send_message+0x190/0x330
+> [  106.693043]  imgsys_cmdq_sendtask+0x1618/0x2224
+> [  106.693082]  imgsys_runner_func+0xac/0x11c
+> [  106.693118]  process_one_work+0x638/0xf84
+> [  106.693158]  worker_thread+0x808/0xcd0
+> [  106.693196]  kthread+0x24c/0x324
+> [  106.693231]  ret_from_fork+0x10/0x20
 > 
->  Thank you Russell.
+> We found that there is a spin_lock_irqsave protection in msg_submit()
+> of mailbox.c and it is in the atomic context.
+> So when cmdq driver calls pm_runtime_get_sync() in cmdq_mbox_send_data(),
+> it will get this BUG report.
 > 
->  I will get rid of the comment. If it helps, I can create a patch for each
-> driver. We did that in the past, with this series, I thought it would be
-> easier to apply one patch.
+> 1. Change pm_runtime_get_sync() to pm_runtime_get() to avoid using sleep
+>    in atomic context.
+> 2. Move clk_bulk_enable() outside cmdq_runtime_resume() to ensure GCE
+>    clocks are enabled before configuring GCE register.
+> 3. Add used_count to avoid cmdq_runtime_suspend() being called before
+>    calling cmdq_runtime_resume().
+> 
+> Fixes: 8afe816b0c99 ("mailbox: mtk-cmdq-mailbox: Implement Runtime PM with autosuspend")
+> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+> ---
+>  drivers/mailbox/mtk-cmdq-mailbox.c | 24 +++++++++++++++---------
+>  1 file changed, 15 insertions(+), 9 deletions(-)
+> 
+> diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
+> index 033aff11f87c..b50f42e69aab 100644
+> --- a/drivers/mailbox/mtk-cmdq-mailbox.c
+> +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+> @@ -82,6 +82,7 @@ struct cmdq {
+>  	const struct gce_plat	*pdata;
+>  	struct cmdq_thread	*thread;
+>  	struct clk_bulk_data	clocks[CMDQ_GCE_NUM_MAX];
+> +	atomic_t		used_count;
+>  	bool			suspended;
+>  };
+>  
+> @@ -317,14 +318,21 @@ static int cmdq_runtime_resume(struct device *dev)
+>  {
+>  	struct cmdq *cmdq = dev_get_drvdata(dev);
+>  
+> -	return clk_bulk_enable(cmdq->pdata->gce_num, cmdq->clocks);
+> +	atomic_inc(&cmdq->used_count);
 
-Hi Allen and Russell,
+Do not implement own runtime PM counter...
 
-My 2c worth:
+> +	return 0;
+>  }
+>  
+>  static int cmdq_runtime_suspend(struct device *dev)
+>  {
+>  	struct cmdq *cmdq = dev_get_drvdata(dev);
+>  
+> +	if (atomic_read(&cmdq->used_count) == 0) {
+> +		dev_warn(dev, "%s when used_count is 0!", __func__);
+> +		return -EINVAL;
+> +	}
+> +
+>  	clk_bulk_disable(cmdq->pdata->gce_num, cmdq->clocks);
+> +	atomic_dec(&cmdq->used_count);
+>  	return 0;
+>  }
+>  
+> @@ -392,9 +400,8 @@ static int cmdq_mbox_send_data(struct mbox_chan *chan, void *data)
+>  	/* Client should not flush new tasks if suspended. */
+>  	WARN_ON(cmdq->suspended);
+>  
+> -	ret = pm_runtime_get_sync(cmdq->mbox.dev);
+> -	if (ret < 0)
+> -		return ret;
+> +	WARN_ON(pm_runtime_get(cmdq->mbox.dev) < 0);
+> +	WARN_ON(clk_bulk_enable(cmdq->pdata->gce_num, cmdq->clocks));
 
-* In general non bug-fix patches for networking code should be targeted at
-  net-next. This means that they should include net-next in the subject,
-  and be based on that tree.
+That's a no... First, you remove error handling. Second, you add WARN
+and code should not have WARNs for error handling.
 
-  Subject: [PATCH net-next] ...
+All this looks like terrible hacky workaround just to make warning go
+away, without actually addressing real problem.
 
-* This series does not appear to apply to net-next
+Best regards,
+Krzysztof
 
-* This series appears to depend on code which is not present in net-next.
-  f.e. disable_work_sync
-
-* The Infiniband patches should probably be submitted separately
-  to the relevant maintainers
-
-* As this patch seems to involve many non-trivial changes
-  it seems to me that it would be best to break it up somehow.
-  To allow proper review.
-
-* Patch-sets for net-next should be limited to 15 patches,
-  so perhaps multiple sequential batches would be a way forwards.
-
-Link: https://docs.kernel.org/process/maintainer-netdev.html
 
