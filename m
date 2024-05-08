@@ -4,96 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20342C25B4F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 May 2024 18:26:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27EA8C04FFE
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 May 2024 20:17:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8wpwOVnWMbAEATDi6P7jxqoYe5/Zc9mCOeyjYqVImqI=; b=QToDHXqXU/FVYaD0xnGUsRi/AG
-	JdFXEVX+M+6SVa3LARUCaOvdnnlRd+rQev06yYl+KzNWTevdFNZgCoQiOte+IkX1C0/Ky4+1XX5dn
-	QYXKJrC0T7ykb849C7h9MKsLTBj3oREXOTHFi2FyLeMDZ1L6TLiELKueL+c1loNH5HQVGyNZplITR
-	5m0d4vc0/HKFuU/136tBcTTff8FmfoqXi5pHvFO3Gbls5mluN29iDKKhBlMVzicgbs1xaFj9rQ078
-	JNQE8TN8phRA+elpppu2Ij6GCgIFkWoCmaiVemxmRXbYQEDnpZPlDYkIq7rOPqKa9UcLFqwycGIN9
-	4USHpOEw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=blx7G0yR3BpUKBgsvZxIJPfTNB/LIdR6xC+S6ZS9kQY=; b=Vb1jtwkMrud1juajr7dLz7SHQJ
+	nRnZzhnR/7EOT3j2ZiD6zeMZt+7lG7LZfB1Rr8uYatp+c2anwtiogg940M/DGtqDRHsAlNfbd6HiM
+	w57NFtaDy1KgdZhl1ZlzbiOaKYNAi/cgHMKw19YkLGeZOyub5IJlP0Zn8Uz0QN/LswB1eEYpjb5Yd
+	8/9iPGkengdc+QjPh+pf+9Av98TrifN+Y8YPGawwSy0BoucZTiUNcT6SwGWevrQyokLxnTNGzwsoZ
+	BDGQz/f37S7z3j8AxTXrMNXnBwboKR1sEtZ5nDqZjI87tlcwCqc3D3o41QOJq/Pjcc+mFw9au9SzX
+	qlMA0PGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s4lzP-0000000GWZV-07QX;
-	Wed, 08 May 2024 18:26:03 +0000
-Received: from mout.gmx.net ([212.227.15.18])
+	id 1s4niz-0000000GrRQ-1Htd;
+	Wed, 08 May 2024 20:17:13 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s4lzH-0000000GWW2-0np9;
-	Wed, 08 May 2024 18:26:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
-	s=s31663417; t=1715192732; x=1715797532; i=frank-w@public-files.de;
-	bh=8wpwOVnWMbAEATDi6P7jxqoYe5/Zc9mCOeyjYqVImqI=;
-	h=X-UI-Sender-Class:MIME-Version:Message-ID:From:To:Cc:Subject:
-	 Content-Type:Date:In-Reply-To:References:
-	 Content-Transfer-Encoding:cc:content-transfer-encoding:
-	 content-type:date:from:message-id:mime-version:reply-to:subject:
-	 to;
-	b=YWqiOAZWPMaeNYhFjc7Dl91wHa3AoK/8ndnZhRXkks2a7xnBfaEL9mEFdBx2ZHvj
-	 JF/BZvyGwnIQMqn/egivRa0xiSszgIhV9GVlTtXZlayE/ynpiAiEMqmiCktvL0IuP
-	 QsWt5iYLDWIJ6OfXkJBkBLTYIHiiW9txd4oHJC8tdiqalLyJEmVcZxLBEs3PbiorY
-	 nesZV3RKHBG0l3sYb/XQ0sB0BqqPsELRfKJ1giH+40euQ6PB2ABrGD6wEYxhNfod4
-	 qX4oQj6baDxpCoH5L2Ak5WdLKfvuqWmsTcW+uIO4i14Yef4QcPssu08ibZaLuec7O
-	 3va0pl4li7gEnTjbJw==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [217.61.153.232] ([217.61.153.232]) by web-mail.gmx.net
- (3c-app-gmx-bs02.server.lan [172.19.170.51]) (via HTTP); Wed, 8 May 2024
- 20:25:32 +0200
+	id 1s4nit-0000000GrP0-1gtM;
+	Wed, 08 May 2024 20:17:09 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 56189CE1A66;
+	Wed,  8 May 2024 20:17:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 13308C113CC;
+	Wed,  8 May 2024 20:16:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1715199424;
+	bh=AeePNuL7SFwUOG4gPSg8rwAm8IPCSABF4FYA1EDT90I=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=OSZyA/tB5lOjpS4LC/9SY0EU+oSR2ADLqzy+2Oxxm/z6SO+lSeYqArptx9zIchIXk
+	 UiNicWJF1t0rqW+/75aVsY9qju7Ua4/12VQZiJiUlaEiH4nP7dtm6m8nHPMJVkL/e7
+	 dT4l7ucoWkMp4DEZQmkg02x4F/I3bajuOdqHxt96PxG7vcQGPSxmIVSWWk4UWM2Npy
+	 5j8C7jHMtngGG50t8cy9/OfatYDYYOm8fCYKK5P4uKlv6Q2FcvJcfql94ojXTASiir
+	 Unt1u5D51eAHSMTj76PGlYkMWXCG+OJIRRO2EgobbMJJ0WcJKSBDeElVhnooiXnVGX
+	 evN2ku1af2CsA==
+Date: Wed, 8 May 2024 21:16:54 +0100
+From: Simon Horman <horms@kernel.org>
+To: Allen <allen.lkml@gmail.com>
+Cc: "Russell King (Oracle)" <linux@armlinux.org.uk>,
+	Allen Pais <apais@linux.microsoft.com>, netdev@vger.kernel.org,
+	jes@trained-monkey.org, davem@davemloft.net, edumazet@google.com,
+	kuba@kernel.org, pabeni@redhat.com, kda@linux-powerpc.org,
+	cai.huoqing@linux.dev, dougmill@linux.ibm.com, npiggin@gmail.com,
+	christophe.leroy@csgroup.eu, aneesh.kumar@kernel.org,
+	naveen.n.rao@linux.ibm.com, nnac123@linux.ibm.com,
+	tlfalcon@linux.ibm.com, cooldavid@cooldavid.org,
+	marcin.s.wojtas@gmail.com, mlindner@marvell.com,
+	stephen@networkplumber.org, nbd@nbd.name, sean.wang@mediatek.com,
+	Mark-MC.Lee@mediatek.com, lorenzo@kernel.org,
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+	borisp@nvidia.com, bryan.whitehead@microchip.com,
+	UNGLinuxDriver@microchip.com, louis.peens@corigine.com,
+	richardcochran@gmail.com, linux-rdma@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-acenic@sunsite.dk,
+	linux-arm-kernel@lists.infradead.org, linuxppc-dev@lists.ozlabs.org,
+	linux-mediatek@lists.infradead.org, oss-drivers@corigine.com,
+	linux-net-drivers@amd.com
+Subject: Re: [PATCH 1/1] [RFC] ethernet: Convert from tasklet to BH workqueue
+Message-ID: <20240508201654.GA2248333@kernel.org>
+References: <20240507190111.16710-1-apais@linux.microsoft.com>
+ <20240507190111.16710-2-apais@linux.microsoft.com>
+ <Zjp/kgBE2ddjV044@shell.armlinux.org.uk>
+ <CAOMdWSKfkT4K9MAOn-rL44pycHPhVDj4CtiYkru5y_s0S-sPeQ@mail.gmail.com>
 MIME-Version: 1.0
-Message-ID: <trinity-2158d675-7049-4432-b925-6ace44401aa0-1715192732273@3c-app-gmx-bs02>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Frank Wunderlich <linux@fw-web.de>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley
- <conor+dt@kernel.org>, Michael Turquette <mturquette@baylibre.com>, Stephen
- Boyd <sboyd@kernel.org>, Pavel Machek <pavel@ucw.cz>, Lee Jones
- <lee@kernel.org>, "David S. Miller" <davem@davemloft.net>, Eric Dumazet
- <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
- <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>, Eric
- Woudstra <ericwouds@gmail.com>, Tianling Shen <cnsztl@immortalwrt.org>,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-clk@vger.kernel.org, linux-leds@vger.kernel.org,
- netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Tianling Shen <cnsztl@gmail.com>
-Subject: Aw: Re: [RFC v1 5/5] arm64: dts: mediatek: Add mt7986 based
- Bananapi R3 Mini
-Content-Type: text/plain; charset=UTF-8
-Date: Wed, 8 May 2024 20:25:32 +0200
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <a18a10e5-42e1-4302-b9f3-43c6174e2cf9@collabora.com>
-References: <20240505164549.65644-1-linux@fw-web.de>
- <20240505164549.65644-6-linux@fw-web.de>
- <a4099612-a4ae-4211-9674-c7053d2a995a@collabora.com>
- <3E013BA7-0264-4AC3-B677-BDD16B1F8D90@public-files.de>
- <a18a10e5-42e1-4302-b9f3-43c6174e2cf9@collabora.com>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:/xOfloKHQgJmPgkc9fdvkCETd9KNf9I5dIewtuJxvNKD4cUM1xpAut+kcghfLa+0aHrjb
- kbd8cMSSRy0luf9H6RS1ic2JJEi1PO8E7Dr5edqyFkNa20wM8C45JFfO8Y8qo7SIUkz8f9AIEKmO
- ixvdAAYadRvtf7kdI4G8IwXZhdrkvHMskTAkpJgRhNYwipdg1o7tMuOU+Xmo1HllZVjaMrCIm0MV
- UYIX+aSs2gQhZBVYmubf2wb4EoTzURk6Y+M/otxM51V11Oq2shRoJIrGIqB4CyocCLik6bUloCIO
- j4=
-UI-OutboundReport: notjunk:1;M01:P0:mmBOuEib9cM=;Tw4zuQm8GkQB3y9mHlDqvBj6pZx
- 21YW6gdUBoTUn9pWWZZ1pRw91UVMm77D/oLRkUpmSeRXRE8322PK8anAOxv7S4R0zBYi4RSWJ
- fTFXpWp6shuJz9gxq9KuTxjCq5MSks9pt8g+UeSgRtdlgDRYDgmxdJbLfNZ3MNq6NCUkTZPxU
- zWF+dxgjiQDwk0n977Bmgnop0lI0rUC1KrAU2niFS+beo+Z7cESKsgqz4u195ShcMrmfdTtgW
- H47rdF6L3yhNBhvvWMwF0iQ5Kv+3WJixLJJV9i0kZRsaxhoq5QTJf+rwqEpuM7C2qChkLb07i
- twW0intWb6XaWKjiLvnUr7aehXKtFOguXka7AfoRauEc9RAdz5IJWbRqVjlvA8ZuK2jcPXroc
- H6fhT2rNPIneL91LAPJyEpAHVMiQ3esC2lLsAP4fngyBfDN8We+c8zWtJHUdBOncI3uPBhVzU
- aEupQ5h91DCJkhT+tm8F6XMqTQSWDtV////+OFAjJQTDCd+Xt2EVG5XvNoQoy4Ds7g8IukGuh
- YvdEuPLFbIDxt6wJkKM14BzC7gdjgO+H62Ggm72xx2owuTBllQ66/PXE2LcSp3jA1fNfq7Y47
- MxBmNg3Si9CZarNcAZYG5/+C9Ut8JsgxVLBmp7DABj9qwS9qfgITzQ3Z0Iq1PuoZkRYrY+Zql
- kNwtgPDDiy3/VKQCAQnEDqokNILxAzhb91Hykr2LfJFnKvXccMW8NBKKH8DHUqs=
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAOMdWSKfkT4K9MAOn-rL44pycHPhVDj4CtiYkru5y_s0S-sPeQ@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240508_112555_729662_33BC2160 
-X-CRM114-Status: GOOD (  20.94  )
+X-CRM114-CacheID: sfid-20240508_131707_870968_21411692 
+X-CRM114-Status: GOOD (  29.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,118 +91,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi
-
-> Gesendet: Dienstag, 07. Mai 2024 um 15:35 Uhr
-> Von: "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.c=
-om>
->
-> Il 06/05/24 18:00, Frank Wunderlich ha scritto:
-
-> >>> +	fan: pwm-fan {
-> >>> +		compatible =3D "pwm-fan";
-> >>> +		#cooling-cells =3D <2>;
-> >>> +		/* cooling level (0, 1, 2) - pwm inverted */
-> >>> +		cooling-levels =3D <255 96 0>;
-> >>
-> >> Did you try to actually invert the PWM?
-> >>
-> >> Look for PWM_POLARITY_INVERTED ;-)
+On Tue, May 07, 2024 at 12:27:10PM -0700, Allen wrote:
+> On Tue, May 7, 2024 at 12:23 PM Russell King (Oracle)
+> <linux@armlinux.org.uk> wrote:
 > >
-> > Mtk pwm driver does not support it
+> > On Tue, May 07, 2024 at 07:01:11PM +0000, Allen Pais wrote:
+> > > The only generic interface to execute asynchronously in the BH context is
+> > > tasklet; however, it's marked deprecated and has some design flaws. To
+> > > replace tasklets, BH workqueue support was recently added. A BH workqueue
+> > > behaves similarly to regular workqueues except that the queued work items
+> > > are executed in the BH context.
+> > >
+> > > This patch converts drivers/ethernet/* from tasklet to BH workqueue.
 > >
-> > https://elixir.bootlin.com/linux/latest/source/drivers/pwm/pwm-mediate=
-k.c#L211
+> > I doubt you're going to get many comments on this patch, being so large
+> > and spread across all drivers. I'm not going to bother trying to edit
+> > this down to something more sensible, I'll just plonk my comment here.
 > >
->
-> You're right, sorry - I confused the general purpose PWM controller with=
- the
-> rather specific DISP_PWM controller (which does support polarity inversi=
-on).
->
-> It's good - but I'd appreciate if you can please add a comment stating t=
-hat
-> the PWM values are inverted in SW because the controller does *not* supp=
-ort
-> polarity inversion... so that next time someone looks at this will immed=
-iately
-> understand what's going on and why :-)
-
-so i would change comment like this:
-
-		/* cooling level (0, 1, 2)
-		 * signal is inverted on board
-		 * mtk pwm driver does not support
-		 * PWM_POLARITY_INVERTED */
-
-> >>> +		pwms =3D <&pwm 0 10000>;
-> >>> +		status =3D "okay";
-> >>> +	};
-> >>> +
-> >>> +	phy14: ethernet-phy@14 {
-...
-> >>> +		interrupts-extended =3D <&pio 48 IRQ_TYPE_EDGE_FALLING>;
-> >>> +		reset-gpios =3D <&pio 49 GPIO_ACTIVE_LOW>;
-> >>> +		reset-assert-us =3D <10000>;
-> >>> +		reset-deassert-us =3D <20000>;
-> >>> +		phy-mode =3D "2500base-x";
-> >>> +		full-duplex;
-> >>> +		pause;
-> >>> +		airoha,pnswap-rx;
-> >>> +
-> >>> +		leds {
-> >>> +			#address-cells =3D <1>;
-> >>> +			#size-cells =3D <0>;
-> >>> +
-> >>> +			led@0 { /* en8811_a_gpio5 */
-> >>> +				reg =3D <0>;
-> >>> +				color =3D <LED_COLOR_ID_YELLOW>;
-> >>> +				function =3D LED_FUNCTION_LAN;
-> >>> +				function-enumerator =3D <1>;
-> >>
-> >> Why aren't you simply using a label?
+> > For the mvpp2 driver, you're only updating a comment - and looking at
+> > it, the comment no longer reflects the code. It doesn't make use of
+> > tasklets at all. That makes the comment wrong whether or not it's
+> > updated. So I suggest rather than doing a search and replace for
+> > "tasklet" to "BH blahblah" (sorry, I don't remember what you replaced
+> > it with) just get rid of that bit of the comment.
 > >
-> > You mean the comment? I can add it of course like for regulators.
-> >
->
-> I mean in place of the function-enumerator... that's practically used to
-> distinguish between instances, it's not too common to see it, and usuall=
-y
-> "label" replaces exactly that - just that, instead of a different number=
-,
-> it gets a different name with no (usually) meaningless numbers :-)
+> 
+>  Thank you Russell.
+> 
+>  I will get rid of the comment. If it helps, I can create a patch for each
+> driver. We did that in the past, with this series, I thought it would be
+> easier to apply one patch.
 
-as far as i understand using label also makes "function" property useless,=
- after discussing
-this with eric i would drop both on all 4 places by labels like these:
+Hi Allen and Russell,
 
-label =3D "yellow-lan";
-label =3D "green-lan";
-...
+My 2c worth:
 
-not sure if we should drop color property too...
+* In general non bug-fix patches for networking code should be targeted at
+  net-next. This means that they should include net-next in the subject,
+  and be based on that tree.
 
-> >>> +				default-state =3D "keep";
-> >>> +				linux,default-trigger =3D "netdev";
-> >>> +			};
-> >>> +			led@1 { /* en8811_a_gpio4 */
-> >>> +				reg =3D <1>;
-> >>> +				color =3D <LED_COLOR_ID_GREEN>;
-> >>> +				function =3D LED_FUNCTION_LAN;
-> >>> +				function-enumerator =3D <2>;
-> >>> +				default-state =3D "keep";
-> >>> +				linux,default-trigger =3D "netdev";
-> >>> +			};
-> >>> +		};
-> >>> +	};
-> >>> +
-> >>> +	phy15: ethernet-phy@15 {
-> >>> +		reg =3D <15>;
-> >>
-> >> Same here.
-> >>
-> >> Cheers,
-> >> Angelo
+  Subject: [PATCH net-next] ...
 
-regards Frank
+* This series does not appear to apply to net-next
+
+* This series appears to depend on code which is not present in net-next.
+  f.e. disable_work_sync
+
+* The Infiniband patches should probably be submitted separately
+  to the relevant maintainers
+
+* As this patch seems to involve many non-trivial changes
+  it seems to me that it would be best to break it up somehow.
+  To allow proper review.
+
+* Patch-sets for net-next should be limited to 15 patches,
+  so perhaps multiple sequential batches would be a way forwards.
+
+Link: https://docs.kernel.org/process/maintainer-netdev.html
 
