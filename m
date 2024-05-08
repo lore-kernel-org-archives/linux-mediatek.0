@@ -4,68 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6EEC5C04FFE
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 May 2024 12:26:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16032C04FFE
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 May 2024 12:30:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=c6FK8kE2E3qY4r3/M503lbKRVuqOuZQLe5oE7UqdJHg=; b=jKII3MdUyCQfudixXKJ0NWR5gy
-	owDbM6lseITg/ctJNoFfpfKbJ+v1ejvkzcxvKDfUvCQ3UW7XK/Yv0OBJkLJK3h76qKNB5aIdYF+WS
-	s1khv0aEW3NYBy7liQamn6fL2AhWI7i0BDFeG5cj+0q8IIb6mDSbCW1pSuXYBxb5SpXmMBjtoZ/Mq
-	2ZRcH3lZR/oFLlST49EI+O0vlr3rq9/F7PGw6si7eMx3TMIdrWn5tLAMhWhVo54DhBXYutCQhGTlR
-	JrUEl9FJposnQ4x/yz2kx9r+UCAGj66ighYI84qlebXyUt4XwIAS7725zPKeDj1zV+6HEBK7bckqA
-	yZYi82lA==;
+	bh=G0EgRcxHPYVYNFfngVUMS5fl9BPyKfiAOc6TK4fQlus=; b=Lph7Ah5oP4Tsty11Fs5wc/ghft
+	/DXaWV9UjgoJ8TrdvBxmGPQbnrbs3yMZ36RnDgCwHE3nMMd8yryr73HGJBWooZYp4mFAQ7I6olJwH
+	jCWziY+NW/rrGA8gqXnZd9GqiAoKQdxYk0HtpIktpdEtrcVvJ+fAUxi89+fklQDTl4iT78gtsEMR+
+	OX76ok9qLlR2vQCyKf0tO9mtHTGZQZElabgKGZj9mE2AsVxm81FyVt39WcCG/miOkg4u7A3RXpbpC
+	IBFSEdNjSPZRKNpttUzmvtQvINTflmldUXNMN4gp2eiT5SiZj54c+RIqAlOgady4bszOAURYshuEP
+	trxtQhdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s4gNM-0000000FQnq-0Uq6;
-	Wed, 08 May 2024 12:26:24 +0000
+	id 1s4gRG-0000000FRH9-3Ggq;
+	Wed, 08 May 2024 12:30:26 +0000
 Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s4gNF-0000000FQmM-2IZj;
-	Wed, 08 May 2024 12:26:22 +0000
+	id 1s4gRD-0000000FRGZ-3wPW;
+	Wed, 08 May 2024 12:30:25 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
 	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
 	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
 	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=c6FK8kE2E3qY4r3/M503lbKRVuqOuZQLe5oE7UqdJHg=; b=V+mV4j4inbuhAz6AIWRBNs3IQi
-	NOZlDUdJ4zXWr1Ml995bvReYQczAhXUaZixVikHFfF9GMKnM/xQuazWx3+DtIV2MjnBM0/P03+NWY
-	6aRqHq4BPcMEkSXNYwCAZtw1KVS35tu/FVWMSKmbsPG3tu4HKOZ7hjgDUoZ2/TAL54cc=;
+	bh=G0EgRcxHPYVYNFfngVUMS5fl9BPyKfiAOc6TK4fQlus=; b=YsDzDW2A+bVrOGPszxwm4oD4pi
+	CO2xvST/CSj+z8fQ2InMekf0lKYl0rOLSNpPabRc0iChULUg45TXtjH4aLhJ3C5vaTqfcSX7QLZu/
+	x0TCY9uWV/xoOOSP0i1ui1oqWWRzq/5YpNWtL3V2Qs0hHij8xb/AoLiJ32yXWcE6Vvf0=;
 Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
 	(envelope-from <andrew@lunn.ch>)
-	id 1s4gMu-00Ewpn-6b; Wed, 08 May 2024 14:25:56 +0200
-Date: Wed, 8 May 2024 14:25:56 +0200
+	id 1s4gRB-00EwrQ-Dp; Wed, 08 May 2024 14:30:21 +0200
+Date: Wed, 8 May 2024 14:30:21 +0200
 From: Andrew Lunn <andrew@lunn.ch>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: Sky Huang <SkyLake.Huang@mediatek.com>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Qingfang Deng <dqfext@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Steven Liu <Steven.Liu@mediatek.com>
-Subject: Re: [PATCH 2/3] net: phy: mediatek: Add mtk phy lib for token ring
- access & LED/other manipulations
-Message-ID: <a005409e-255e-4633-a58c-6c29e6708b34@lunn.ch>
+To: SkyLake Huang =?utf-8?B?KOm7g+WVn+a+pCk=?= <SkyLake.Huang@mediatek.com>
+Cc: "linux@armlinux.org.uk" <linux@armlinux.org.uk>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"kuba@kernel.org" <kuba@kernel.org>,
+	"pabeni@redhat.com" <pabeni@redhat.com>,
+	"edumazet@google.com" <edumazet@google.com>,
+	"netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+	"dqfext@gmail.com" <dqfext@gmail.com>,
+	Steven Liu =?utf-8?B?KOWKieS6uuixqik=?= <steven.liu@mediatek.com>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"davem@davemloft.net" <davem@davemloft.net>,
+	"hkallweit1@gmail.com" <hkallweit1@gmail.com>,
+	"daniel@makrotopia.org" <daniel@makrotopia.org>,
+	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH 3/3] net: phy: mediatek: add support for built-in 2.5G
+ ethernet PHY on MT7988
+Message-ID: <577176af-9f6c-45f9-824f-2b4ca762b2f7@lunn.ch>
 References: <20240425023325.15586-1-SkyLake.Huang@mediatek.com>
- <20240425023325.15586-3-SkyLake.Huang@mediatek.com>
- <Zjo9SZiGKDUf2Kwx@makrotopia.org>
+ <20240425023325.15586-4-SkyLake.Huang@mediatek.com>
+ <ZiocBmBWiNnbeyGq@shell.armlinux.org.uk>
+ <4ccd437ee744382a8483ffe71d06cd495dacec71.camel@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <Zjo9SZiGKDUf2Kwx@makrotopia.org>
+In-Reply-To: <4ccd437ee744382a8483ffe71d06cd495dacec71.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240508_052617_604527_60E66C49 
-X-CRM114-Status: GOOD (  17.47  )
+X-CRM114-CacheID: sfid-20240508_053024_005508_C899A0D4 
+X-CRM114-Status: GOOD (  15.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,30 +83,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, May 07, 2024 at 03:40:09PM +0100, Daniel Golle wrote:
-> > +/* Registers on MDIO_MMD_VEND2 */
-> > +#define MTK_PHY_LED0_ON_CTRL			0x24
-> > +#define MTK_PHY_LED1_ON_CTRL			0x26
-> > +#define   MTK_PHY_LED_ON_MASK			GENMASK(6, 0)
-> 
-> Shouldn't this be
-> GENMASK(6, 0) | BIT(7)
-> 
-> to include the MTK_PHY_LED_ON_LINK2500 bit as well?
-> 
-> I also noticed that this bit is the only difference between the LED
-> controller of the internal 2.5G PHY in MT7988 and the Airoha EN8811H
-> (driver air_en8811h.c, present in net-next). The EN8811H seems to use
-> BIT(8) for LED_ON_LINK2500.
-> 
-> Could you create this helper library in a way that it would be useful
-> also for the otherwise identical LED controller of the Airoha EN8811H,
-> ie. supporting both variants with LED_ON_LINK2500 at BIT(7) as well as
-> BIT(8) would be worth it imho as all the rest could be shared.
+> > > +ret = request_firmware(&fw, MT7988_2P5GE_PMB, dev);
+> > > +if (ret) {
+> > > +dev_err(dev, "failed to load firmware: %s, ret: %d\n",
+> > > +MT7988_2P5GE_PMB, ret);
+> > > +return ret;
+> > > +}
+> > 
+> > This will block for userspace while holding phydev->lock and the
+> > RTNL.
+> > That blocks much of the networking APIs, which is not a good idea. If
+> > you have a number of these PHYs, then the RTNL will serialise the
+> > loading of firmware.
+> > 
+> I'm not sure I really get this. MT7988's internal 2.5Gphy is built
+> inside SoC. We won't have a number of these PHYs.
 
-Please trim the email when replying to just what is relevant. If i
-need to page down lots of time to find a comment it is possible i will
-skip write passed a comment...
+How long does firmware download take? If you are holding RTNL you are
+blocking all other network configuration. How many Ethernets does this
+device have? If it is just one, it is not too bad, but if there is a
+built in switch, you cannot be configuring that switch at the same
+time firmware download is happening...
 
      Andrew
 
