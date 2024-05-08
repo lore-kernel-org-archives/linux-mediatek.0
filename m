@@ -4,63 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B590AC19F4F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 May 2024 12:44:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB7F1C04FFE
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 May 2024 13:03:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=onHewic4/zSIlq/VRSzMuUNIGcT7hGAT8KQExfLr8rM=; b=nYucAjq5d8YibJ
-	WKkyHZHjSsUXL+E3T0G6pVPU6XQFY5VmBe97NlQ+aeK5okA19dPELkiJO43tEPvdFHy1dsyh/LPAf
-	HjHDLaA5VVn2HuG8n3+KUDEPk/CX1zAQBX4d6/+ugFsP18bpHOhWqpJDRAnoBPdO5KvEOpSfOmswg
-	BhJ1g/IYbIMJL216M5uTgmzIUhZDuBNvuqVGwlGUlNOYpNgVnlouwN2UYRzqI/BLg2oJxtgm19gLo
-	ImJzFoJ5GcKC31GvatwUScbKqKq32zhLgIeoMQhtTTJxs2w8Rg9AG11/HxZ6VV9prb13uvaeNzp3c
-	Al0MhFa1h/lSNxqIF16g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=l0zRmct2ZnJ8rcrkIyNmqOkYrlrszfNhSbLj84fE9c8=; b=oAk/JNGEyhCym6uf0Dw/IYMwxG
+	V2OO/E8ewcV7VsWuWdU4JI1F2ms7uss4wHdxFoEIjRb7cqiXPFlqI4Op0oCMcDJIp8Oqo/YcwFC7R
+	VA5+EgoLOcv3ipTXXmzSFbgQzTMU3IXr+/T37TiYK6uMHo3O/0gKedl47ZHfIqOBRS+/vBahd6A09
+	kxOWE89Iqxxk3ubufXsr+l0f8Qwb2bEqwjPJ8LaeBCGu6Y3TPA0zg1oTo5CHuG+tZc/mQR2bAG9AT
+	pdEyr5A+W5JbxDx1Fui9P8uEgPleagLd26x2lt/s+Y8HQotr+Vhb119iWXgs9DQrYk60NlRQPF1oI
+	zH/Fhatg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s4gf7-0000000FUaT-1FsZ;
-	Wed, 08 May 2024 12:44:45 +0000
+	id 1s4gxX-0000000FYMd-2IvY;
+	Wed, 08 May 2024 13:03:47 +0000
 Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s4gf1-0000000FUWD-2OwN;
-	Wed, 08 May 2024 12:44:41 +0000
+	id 1s4gxL-0000000FYHN-2wJd;
+	Wed, 08 May 2024 13:03:39 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1715172274;
-	bh=zmA2+tCDw16RjR/3j2+3tT2/AoPS7qyS7V4GhqwgqXw=;
+	s=mail; t=1715173413;
+	bh=5FEuNuqB/xNgZpz5eMrt4wnOu5jHXdgJutLLPE66LU8=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=0dlrTVYwZFLMOymDDPlJgMbxax0vrGgshPR1ATXjluKj3gCwGqOe5vshSy1Ca1D90
-	 f2l0qTwdyAXKnHmvaT5ORfPUx3ApHfGv4O1Uc9V6fcDd8LU47uHDPX3W4y6qaTgTYA
-	 WBdL/E2V5xvnWpUTjf0ZGE5l/wfenCVvMY7Czjgkdl14CsdLp9eM36npJVbV56HSqF
-	 YPK2E6LM0FudDvRLGaOHGhLh1QGENj7rSoSL2RqZNJvaYR4K/cIQIoXRmwfo5EgVRg
-	 AgwV+NQhFNE2JtQmEKzkAY6jF+apNbGMD09fq1NgcerZdL3UsPDXaKE2EsfCqf16Io
-	 0UCnpCetXVo6A==
+	b=D4VLAPfuxR04RrUjyNzTm7l5RZgiJoBmJV1sabUa/Kk325ubbamcDSvyqRzIrOfpw
+	 VWUkvUkvJgc0PYKVdPkRzqcdmAanVMw9vNxQIgtEWw7h7QXxyA5uS1m+qqs/+bcfDK
+	 1rCndo0hswsnhlVKE7ZU0SEXuBQFTQLGJ3Xjzhd3kejwMqKfM8xkCO7uBWvmarC1Dj
+	 lR29yk7jjk5UbWW8QLktLZaTXPLFlNfhZ4p9WWigL2Fb5YHx4mEJNBDZUtB9XIphk4
+	 Y8lywEA0ZnlXn63dHFHXriFjoruE9Kps2B/gaoMj3iIdWb5LB6kI1OoyF18Xb8eQkP
+	 G2fS605ZHlgqg==
 Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id C7A863782112;
-	Wed,  8 May 2024 12:44:33 +0000 (UTC)
-Message-ID: <5de7d6af-54ac-49b7-b5c2-fa9381310288@collabora.com>
-Date: Wed, 8 May 2024 14:44:33 +0200
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 87E133782113;
+	Wed,  8 May 2024 13:03:32 +0000 (UTC)
+Message-ID: <cbf73111-a6cf-47da-9563-89d49fbdb17d@collabora.com>
+Date: Wed, 8 May 2024 15:03:31 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] mailbox: mtk-cmdq: Fix sleeping function called from
- invalid context
-To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Jassi Brar <jassisinghbrar@gmail.com>
-References: <20240508095143.12023-1-jason-jh.lin@mediatek.com>
+Subject: Re: [PATCH v2 2/3] dt-bindings: arm: mediatek: mmsys: Add OF graph
+ support for board path
+To: =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
+ "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "wenst@chromium.org" <wenst@chromium.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "tzimmermann@suse.de" <tzimmermann@suse.de>,
+ =?UTF-8?B?U2hhd24gU3VuZyAo5a6L5a2d6KyZKQ==?= <Shawn.Sung@mediatek.com>,
+ "mripard@kernel.org" <mripard@kernel.org>,
+ =?UTF-8?B?Sml0YW8gU2hpICjnn7PorrDmtpsp?= <jitao.shi@mediatek.com>,
+ "daniel@ffwll.ch" <daniel@ffwll.ch>,
+ "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ "maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
+ "robh@kernel.org" <robh@kernel.org>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "airlied@gmail.com" <airlied@gmail.com>,
+ "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
+ "kernel@collabora.com" <kernel@collabora.com>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ =?UTF-8?B?WXUtY2hhbmcgTGVlICjmnY7nprnnkosp?= <Yu-chang.Lee@mediatek.com>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+References: <20240409120211.321153-1-angelogioacchino.delregno@collabora.com>
+ <20240409120211.321153-3-angelogioacchino.delregno@collabora.com>
+ <aa7e3bcf70383e563a65919f924ec2e5e4cd778c.camel@mediatek.com>
+ <becdc2e5-4a1d-4280-b6f8-78d4903be283@collabora.com>
+ <4dfb09b9c437ab2baa0898eca13a43fd7475047a.camel@mediatek.com>
+ <46347f5d-e09b-4e83-a5a2-e12407f442a4@collabora.com>
+ <847e1a84b532956f697d24014d684c86f0b76f03.camel@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20240508095143.12023-1-jason-jh.lin@mediatek.com>
+In-Reply-To: <847e1a84b532956f697d24014d684c86f0b76f03.camel@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240508_054439_790411_876500CF 
-X-CRM114-Status: GOOD (  29.79  )
+X-CRM114-CacheID: sfid-20240508_060336_098793_D585B8A8 
+X-CRM114-Status: GOOD (  43.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,192 +97,399 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Alexandre Mergnat <amergnat@baylibre.com>, Singo Chang <singo.chang@mediatek.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Project_Global_Chrome_Upstream_Group@mediatek.com, Jason-ch Chen <jason-ch.chen@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, Johnson Wang <johnson.wang@mediatek.com>, Shawn Sung <shawn.sung@mediatek.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 08/05/24 11:51, Jason-JH.Lin ha scritto:
-> When we run kernel with lockdebug option, we will get the BUG below:
-> [  106.692124] BUG: sleeping function called from invalid context at drivers/base/power/runtime.c:1164
-> [  106.692190] in_atomic(): 1, irqs_disabled(): 128, non_block: 0, pid: 3616, name: kworker/u17:3
-> [  106.692226] preempt_count: 1, expected: 0
-> [  106.692254] RCU nest depth: 0, expected: 0
-> [  106.692282] INFO: lockdep is turned off.
-> [  106.692306] irq event stamp: 0
-> [  106.692331] hardirqs last  enabled at (0): [<0000000000000000>] 0x0
-> [  106.692376] hardirqs last disabled at (0): [<ffffffee15d37fa0>] copy_process+0xc90/0x2ac0
-> [  106.692429] softirqs last  enabled at (0): [<ffffffee15d37fc4>] copy_process+0xcb4/0x2ac0
-> [  106.692473] softirqs last disabled at (0): [<0000000000000000>] 0x0
-> [  106.692513] CPU: 1 PID: 3616 Comm: kworker/u17:3 Not tainted 6.1.87-lockdep-14133-g26e933aca785 #1 6839942e1cf34914b0a366137843dd2366f52aa9
-> [  106.692556] Hardware name: Google Ciri sku0/unprovisioned board (DT)
-> [  106.692586] Workqueue: imgsys_runner imgsys_runner_func
-> [  106.692638] Call trace:
-> [  106.692662]  dump_backtrace+0x100/0x120
-> [  106.692702]  show_stack+0x20/0x2c
-> [  106.692737]  dump_stack_lvl+0x84/0xb4
-> [  106.692775]  dump_stack+0x18/0x48
-> [  106.692809]  __might_resched+0x354/0x4c0
-> [  106.692847]  __might_sleep+0x98/0xe4
-> [  106.692883]  __pm_runtime_resume+0x70/0x124
-> [  106.692921]  cmdq_mbox_send_data+0xe4/0xb1c
-> [  106.692964]  msg_submit+0x194/0x2dc
-> [  106.693003]  mbox_send_message+0x190/0x330
-> [  106.693043]  imgsys_cmdq_sendtask+0x1618/0x2224
-> [  106.693082]  imgsys_runner_func+0xac/0x11c
-> [  106.693118]  process_one_work+0x638/0xf84
-> [  106.693158]  worker_thread+0x808/0xcd0
-> [  106.693196]  kthread+0x24c/0x324
-> [  106.693231]  ret_from_fork+0x10/0x20
+Il 08/05/24 09:19, CK Hu (胡俊光) ha scritto:
+> On Tue, 2024-05-07 at 16:07 +0200, AngeloGioacchino Del Regno wrote:
+>> Il 07/05/24 08:59, CK Hu (胡俊光) ha scritto:
+>>> On Thu, 2024-05-02 at 10:50 +0200, AngeloGioacchino Del Regno
+>>> wrote:
+>>>> Il 25/04/24 04:23, CK Hu (胡俊光) ha scritto:
+>>>>> Hi, Angelo:
+>>>>>
+>>>>> On Tue, 2024-04-09 at 14:02 +0200, AngeloGioacchino Del Regno
+>>>>> wrote:
+>>>>>> Document OF graph on MMSYS/VDOSYS: this supports up to three
+>>>>>> DDP
+>>>>>> paths
+>>>>>> per HW instance (so potentially up to six displays for multi-
+>>>>>> vdo
+>>>>>> SoCs).
+>>>>>>
+>>>>>> The MMSYS or VDOSYS is always the first component in the DDP
+>>>>>> pipeline,
+>>>>>> so it only supports an output port with multiple endpoints -
+>>>>>> where
+>>>>>> each
+>>>>>> endpoint defines the starting point for one of the (currently
+>>>>>> three)
+>>>>>> possible hardware paths.
+>>>>>>
+>>>>>> Signed-off-by: AngeloGioacchino Del Regno <
+>>>>>> angelogioacchino.delregno@collabora.com>
+>>>>>> ---
+>>>>>>     .../bindings/arm/mediatek/mediatek,mmsys.yaml | 23
+>>>>>> +++++++++++++++++++
+>>>>>>     1 file changed, 23 insertions(+)
+>>>>>>
+>>>>>> diff --git
+>>>>>> a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mms
+>>>>>> ys.y
+>>>>>> aml
+>>>>>> b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mms
+>>>>>> ys.y
+>>>>>> aml
+>>>>>> index b3c6888c1457..4e9acd966aa5 100644
+>>>>>> ---
+>>>>>> a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mms
+>>>>>> ys.y
+>>>>>> aml
+>>>>>> +++
+>>>>>> b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mms
+>>>>>> ys.y
+>>>>>> aml
+>>>>>> @@ -93,6 +93,29 @@ properties:
+>>>>>>       '#reset-cells':
+>>>>>>         const: 1
+>>>>>>     
+>>>>>> +  port:
+>>>>>> +    $ref: /schemas/graph.yaml#/properties/port
+>>>>>> +    description:
+>>>>>> +      Output port node. This port connects the MMSYS/VDOSYS
+>>>>>> output
+>>>>>> to
+>>>>>> +      the first component of one display pipeline, for
+>>>>>> example
+>>>>>> one
+>>>>>> of
+>>>>>> +      the available OVL or RDMA blocks.
+>>>>>> +      Some MediaTek SoCs support up to three display outputs
+>>>>>> per
+>>>>>> MMSYS.
+>>>>>> +    properties:
+>>>>>> +      endpoint@0:
+>>>>>> +        $ref: /schemas/graph.yaml#/properties/endpoint
+>>>>>> +        description: Output to the primary display pipeline
+>>>>>> +
+>>>>>> +      endpoint@1:
+>>>>>> +        $ref: /schemas/graph.yaml#/properties/endpoint
+>>>>>> +        description: Output to the secondary display
+>>>>>> pipeline
+>>>>>> +
+>>>>>> +      endpoint@2:
+>>>>>> +        $ref: /schemas/graph.yaml#/properties/endpoint
+>>>>>> +        description: Output to the tertiary display pipeline
+>>>>>> +
+>>>>>> +    required:
+>>>>>> +      - endpoint@0
+>>>>>> +
+>>>>>
+>>>>> mmsys/vdosys does not output data to the first component of
+>>>>> display
+>>>>> pipeline, so this connection looks 'virtual'. Shall we add
+>>>>> something
+>>>>> virtual in device tree? You add this in order to decide which
+>>>>> pipeline
+>>>>> is 1st, 2nd, 3rd, but for device it don't care which one is
+>>>>> first.
+>>>>> In
+>>>>> computer, software could change which display is the primary
+>>>>> display.
+>>>>> I'm not sure it's good to decide display order in device tree?
+>>>>>
+>>>>
+>>>> Devicetree describes hardware, so nothing virtual can be present
+>>>> -
+>>>> and in any case,
+>>>> the primary/secondary/tertiary pipeline is in relation to MM/VDO
+>>>> SYS,
+>>>> not referred
+>>>> to software.
+>>>>
+>>>> Better explaining, the primary pipeline is not necessarily the
+>>>> primary display in
+>>>> DRM terms: that's a concept that is completely detached from the
+>>>> scope of this
+>>>> series and this graph - and it's something that shall be managed
+>>>> solely by the
+>>>> driver (mediatek-drm in this case).
+>>>>
+>>>> Coming back to the connection looking, but *not* being virtual:
+>>>> the
+>>>> sense here is
+>>>> that the MM/VDOSYS blocks are used in the display pipeline to
+>>>> "stitch" together
+>>>> the various display pipeline hardware blocks, or, said
+>>>> differently,
+>>>> setting up the
+>>>> routing between all of those (P.S.: mmsys_mtxxxx_routing_table!)
+>>>> through the VDO
+>>>> Input Selection (VDOx_SEL_IN) or Output Selection (VDOx_SEL_OUT)
+>>>> and
+>>>> with the
+>>>> assistance of the VDO Multiple Output Mask (VDOx_MOUT) for the
+>>>> multiple outputs
+>>>> usecase, both of which, are described by this graph.
+>>>
+>>> I agree this part, but this is related to display device OF graph.
+>>> These display device would output video data from one device and
+>>> input
+>>> to another video device. These video device would not input or
+>>> output
+>>> video data to mmsys/vdosys.
+>>>
+>>>>
+>>>> This means that the VDOSYS is really the "master" of the display
+>>>> pipeline since
+>>>> everything gets enabled, mixed and matched from there - and
+>>>> that's in
+>>>> the sense
+>>>> of hardware operation, so we are *really* (and not virtually!)
+>>>> flipping switches.
+>>>
+>>> I agree mmsys/vdosys is master of video pipeline, so let's define
+>>> what
+>>> the port in mmsys/vdosys is. If the port means the master
+>>> relationship,
+>>> mmsys/vdosys should output port to every display device. Or use a
+>>> simply way to show the master relation ship
+>>>
+>>> mmsys-subdev = <&ovl0, &rdma0, &color0, ...>, <&ovl1, &rdma1,
+>>> &color1,
+>>> ...>;
+>>>
+>>
+>> There's no need to list all of the VDO0/VDO1/mmsys devices in one big
+>> array
+>> property, because the actual possible devices can be defined:
+>>     1. In the bindings; and
+>>     2. In the actual OF graph that we write for each SoC+board
+>> combination.
+>>
+>> A graph cannot contain a connection to a device that cannot be
+>> connected to
+>> the previous, so, your "mmsys-subdev" list can be retrieved by
+>> looking at the
+>> graph:
+>>    - Start from VDO0/1 or MMSYS
+>>    - Walk through (visually, even) OUTPUT ports
+>>      - VDO0 (read output ep) -> ovl0 (read output ep) -> rdma0 (read
+>> output ep) ->
+>>        color0 (...) -> etc
+>>    - Nothing more - it's all defined there.
+>>
+>>>
+>>> Another problem is how to group display device? If two pipeline
+>>> could
+>>> be route to the same display interface, such as
+>>>
+>>> rdma0 -> dsi
+>>> rdma1 -> dsi
+>>>
+>>> Would this be single group?
+>>
+>> There are multiple ways of doing this, but one that comes to my mind
+>> right now and
+>> that looks clean as well is the following:
+>>
+>> ovl0@ef01 {
+>>      .....
+>>     ports {
+>>       port@0 {
+>>         reg = <0>;
+>>         ovl0_in: endpoint {
+>>           remote-endpoint = <&vdosys0_out>;
+>>         };
+>>       };
 > 
-> We found that there is a spin_lock_irqsave protection in msg_submit()
-> of mailbox.c and it is in the atomic context.
-> So when cmdq driver calls pm_runtime_get_sync() in cmdq_mbox_send_data(),
-> it will get this BUG report.
+> I'm not sure how do you define this port from OVL to vdosys. If this
+> port means 'master relationship', others could add port in COLOR to
+> point to vdosys because COLOR and vdosys has the 'master relationship'
+> and I could not reject this. So we need more specific definition of
+> this port.
+
+
+> Only the 'first' device in pipeline could have this port?
+
+Correct. Only the first device in a pipeline - and this is actually a restriction
+that the generic binding definition of port already gives, in a way.
+
+
+> In mt8173, one pipeline is
 > 
-> 1. Change pm_runtime_get_sync() to pm_runtime_get() to avoid using sleep
->     in atomic context.
-> 2. Move clk_bulk_enable() outside cmdq_runtime_resume() to ensure GCE
->     clocks are enabled before configuring GCE register.
-> 3. Add used_count to avoid cmdq_runtime_suspend() being called before
->     calling cmdq_runtime_resume().
+> ovl -> color -> aal -> od -> rdma -> ufo -> dsi
 > 
-> Fixes: 8afe816b0c99 ("mailbox: mtk-cmdq-mailbox: Implement Runtime PM with autosuspend")
-> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-> ---
->   drivers/mailbox/mtk-cmdq-mailbox.c | 24 +++++++++++++++---------
->   1 file changed, 15 insertions(+), 9 deletions(-)
+> But rdma has an option to read data from od or directly from DRAM. If
+> from DRAM, the pipeline would be changed to
 > 
-> diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
-> index 033aff11f87c..b50f42e69aab 100644
-> --- a/drivers/mailbox/mtk-cmdq-mailbox.c
-> +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-> @@ -82,6 +82,7 @@ struct cmdq {
->   	const struct gce_plat	*pdata;
->   	struct cmdq_thread	*thread;
->   	struct clk_bulk_data	clocks[CMDQ_GCE_NUM_MAX];
-> +	atomic_t		used_count;
->   	bool			suspended;
->   };
->   
-> @@ -317,14 +318,21 @@ static int cmdq_runtime_resume(struct device *dev)
->   {
->   	struct cmdq *cmdq = dev_get_drvdata(dev);
->   
-> -	return clk_bulk_enable(cmdq->pdata->gce_num, cmdq->clocks);
-> +	atomic_inc(&cmdq->used_count);
-> +	return 0;
->   }
->   
->   static int cmdq_runtime_suspend(struct device *dev)
->   {
->   	struct cmdq *cmdq = dev_get_drvdata(dev);
->   
-> +	if (atomic_read(&cmdq->used_count) == 0) {
-> +		dev_warn(dev, "%s when used_count is 0!", __func__);
-> +		return -EINVAL;
-> +	}
-> +
->   	clk_bulk_disable(cmdq->pdata->gce_num, cmdq->clocks);
-> +	atomic_dec(&cmdq->used_count);
->   	return 0;
->   }
->   
-> @@ -392,9 +400,8 @@ static int cmdq_mbox_send_data(struct mbox_chan *chan, void *data)
->   	/* Client should not flush new tasks if suspended. */
->   	WARN_ON(cmdq->suspended);
->   
-> -	ret = pm_runtime_get_sync(cmdq->mbox.dev);
-> -	if (ret < 0)
-> -		return ret;
-> +	WARN_ON(pm_runtime_get(cmdq->mbox.dev) < 0);
+> rdma -> ufo -> dsi
+> 
+> 
+> So it's confused which one is 'first'.
 
-That's a bit sketchy, and I'm afraid that this will break in some other ways.
+That's why the pipeline is *board-specific* and not soc-generic!
 
-We could - again - simply change the msg_submit() function in mailbox.c, so that
-it takes into account that a driver may need PM done.
+And what you described is *exactly* the reason why I'm adding support for the
+OF graphs in mediatek-drm: specifying the correct pipeline for each board as per
+what each board wants to use (said differently: for each board's *capabilities*).
 
-A low effort example (which may be good enough or not) is:
+So, if on a certain board you want to skip OD, you can hook RDMA up directly to
+MMSYS/VDOSYS.
 
-static void msg_submit(struct mbox_chan *chan)
-{
-	unsigned count, idx;
-	unsigned long flags;
-	void *data;
-	int err;
+In MT8173, one pipeline for one board uses endpoints IN/OUT like this:
 
-	if (chan->mbox->ops->pm_off) {
-		err = chan->mbox->ops->pm_on();
-		if (err)
-			return err;
-	}
+MMSYS -> OVL -> COLOR -> AAL -> OD -> RDMA -> UFO -> DSI
 
-	spin_lock_irqsave(&chan->lock, flags);
+and for another board, endpoints will be like
 
-	if (!chan->msg_count || chan->active_req) {
-		err = -EBUSY;
-		goto exit;
-	}
+MMSYS -> RDMA -> UFO -> DSI
 
-	......
-
-	exit:
-	spin_unlock_irqrestore(&chan->lock, flags);
-
-	if (!err && (chan->txdone_method & TXDONE_BY_POLL)) {
-		/* kick start the timer immediately to avoid delays */
-		spin_lock_irqsave(&chan->mbox->poll_hrt_lock, flags);
-		hrtimer_start(&chan->mbox->poll_hrt, 0, HRTIMER_MODE_REL);
-		spin_unlock_irqrestore(&chan->mbox->poll_hrt_lock, flags);
-	}
-
-/* I guess setting it OFF can't fail anyway, so this would be a void function */
-	if (chan->mbox->ops->pm_off)
-		chan->mbox->ops->pm_off();
-}
+...which is the exact same as you described, and I think that your confusion comes
+from the fact that you didn't put MMSYS at the beginning of the pipeline :-)
 
 
-Then we can wire up the two functions in the MediaTek driver - where our mailbox
-only simply needs pm_runtime_get_sync() and pm_runtime_put().
 
-The reason why I'm suggesting a callback is that this would catch the case of
-mailboxes that need "more complicated" flows for ON/OFF.
 
-Jassi, do you like the idea?
+In case you need any *temporary override* on any board that defines a pipeline like
 
-If you do, I can eventually go for a real commit with better names than pm_off/on
-if I can find any - so that then Jason can go on with his mtk-cmdq fix on top of
-that.
+MMSYS -> OVL -> COLOR -> AAL -> OD -> RDMA -> UFO -> DSI
+
+so that the pipeline *temporarily* becomes (for power management, or for any other
+reason) RDMA -> UFO -> DSI .... that's not a concern: the graph is present, and it
+is used to tell to the driver what is the regular pipeline to use.
+Eventual temporary overrides can be managed transparently inside of the driver with
+C code and no changes to the devicetree are required.
+
+
+> I don't know how to decide which device could point to mmsys/vdosys. So
+> please give a specific definition.
+> 
+
+Nothing points TO mmsys/vdosys. It is mmsys/vdosys pointing to a device.
+
+So, mmsys/vdosys must point to the *first device in the pipeline*.
+
+Any other doubt?
 
 Cheers,
 Angelo
 
-> +	WARN_ON(clk_bulk_enable(cmdq->pdata->gce_num, cmdq->clocks));
->   
->   	task = kzalloc(sizeof(*task), GFP_ATOMIC);
->   	if (!task) {
-> @@ -465,7 +472,8 @@ static void cmdq_mbox_shutdown(struct mbox_chan *chan)
->   	struct cmdq_task *task, *tmp;
->   	unsigned long flags;
->   
-> -	WARN_ON(pm_runtime_get_sync(cmdq->mbox.dev) < 0);
-> +	WARN_ON(pm_runtime_get(cmdq->mbox.dev) < 0);
-> +	WARN_ON(clk_bulk_enable(cmdq->pdata->gce_num, cmdq->clocks));
->   
->   	spin_lock_irqsave(&thread->chan->lock, flags);
->   	if (list_empty(&thread->task_busy_list))
-> @@ -507,11 +515,9 @@ static int cmdq_mbox_flush(struct mbox_chan *chan, unsigned long timeout)
->   	struct cmdq_task *task, *tmp;
->   	unsigned long flags;
->   	u32 enable;
-> -	int ret;
->   
-> -	ret = pm_runtime_get_sync(cmdq->mbox.dev);
-> -	if (ret < 0)
-> -		return ret;
-> +	WARN_ON(pm_runtime_get(cmdq->mbox.dev) < 0);
-> +	WARN_ON(clk_bulk_enable(cmdq->pdata->gce_num, cmdq->clocks));
->   
->   	spin_lock_irqsave(&thread->chan->lock, flags);
->   	if (list_empty(&thread->task_busy_list))
+> Regards,
+> CK
+> 
+>>
+>>       port@1 {
+>>         reg = <1>;
+>>         ovl0_out0: endpoint@0 {
+>>           remote-endpoint = <&rdma0_in>;
+>>         };
+>>         ovl0_out1: endpoint@1 {
+>>           remote-endpoint = <&rdma1_in>;
+>>         };
+>>       };
+>>     };
+>> };
+>>
+>> rdma0@1234 {
+>>      .....
+>>     ports {
+>>       port@0 {
+>>         reg = <0>;
+>>         rdma0_in: endpoint {
+>>           remote-endpoint = <&ovl0_out0>; /* assuming ovl0 outputs to
+>> rdma0...*/
+>>         };
+>>       };
+>>       port@1 {
+>>         reg = <1>;
+>>         rdma0_out: endpoint@1 {
+>>           remote-endpoint = <&dsi_dual_intf0_in>;
+>>         };
+>>       };
+>>     };
+>> };
+>>
+>>
+>> rdma1@5678 {
+>>      .....
+>>     ports {
+>>       port@0 {
+>>         reg = <0>;
+>>         rdma1_in: endpoint {
+>>           /* assuming ovl0 outputs to rdma1 as well... can be
+>> something else. */
+>>           remote-endpoint = <&ovl0_out1>;
+>>         };
+>>       };
+>>       port@1 {
+>>         reg = <1>;
+>>         rdma1_out: endpoint {
+>>           remote-endpoint = <&dsi_dual_intf1_in>;
+>>         };
+>>       };
+>>     };
+>> };
+>>
+>>
+>> dsi@9abcd {
+>>      .....
+>>     ports {
+>>       port@0 {
+>>         reg = <0>;
+>>         /* Where endpoint@0 could be always DSI LEFT CTRL */
+>>         dsi_dual_intf0_in: endpoint@0 {
+>>           remote-endpoint = <&rdma0_out>;
+>>         };
+>>         /* ...and @1 could be always DSI RIGHT CTRL */
+>>         dsi_dual_intf1_in: endpoint@1 {
+>>           remote-endpoint = <&rdma1_out>;
+>>         };
+>>       };
+>>
+>>       port@1 {
+>>         reg = <1>;
+>>         dsi0_out: endpoint {
+>>           remote-endpoint = <&dsi_panel_in>;
+>>         };
+>>       };
+>>     };
+>> };
+>>
+>> ...for a dual-dsi panel, it'd be a similar graph.
+>>
+>> Cheers,
+>> Angelo
+>>
+>>>
+>>> mmsys-subdev = <&rdma0, &rdma1, &dsi>;
+>>>
+>>> Or two group?
+>>>
+>>> mmsys-subdev = <&rdma0, &dsi>, <&rdma1, &dsi>;
+>>>
+>>> I think we should clearly define this.
+>>>
+>>> Regards,
+>>> CK
+>>>
+>>>>
+>>>>
+>>>> Cheers,
+>>>> Angelo
+>>>>
+>>>>> Regards,
+>>>>> CK
+>>>>>
+>>>>>
+>>>>>>     required:
+>>>>>>       - compatible
+>>>>>>       - reg
+>>>>
+>>>>
+>>
+>>
+>>
+
 
 
