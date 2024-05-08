@@ -4,78 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A2DEC04FFE
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 May 2024 07:13:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D62D0C04FFE
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 May 2024 07:34:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PvjDz/GIWwpaXZUYT3Hih8RuzFmPB4D2ZxY5GbrNvuc=; b=4b/jjUOSeer6o/92ywBkCZcrBm
-	3eT5KS+OpZ2mua4vKUhoyi4tJX+il1HFbcRpvrh2nu8thvEBlWQJbj+5xcVAOeE0f256rqtfb8IqZ
-	FXTM9/GRgk4WsICbMuN1SB5piRTjozgpVJWL14FSYNzkv/2rsW39/VP4bgxmxHD6gVsRPWV7Q80yN
-	1esgsA9SwZb+Ll0qPZOYrHF9tSFcu8PAzV6faXUR9nUw80vyyyIRAiZ397OeQJpweLUsB5TIfVBgD
-	KVe4qgPV9BEI0drQfzl/yqiddo3ky6scAvHAHIm4HyTZGnBVNfBBRC9XTuhK9DjqEmVq/tGEgilsc
-	4kIHPRwg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rF/2iNTpK7PCPk9q8VAeGl8eNFP04A3s3bJrskUzgxc=; b=ZHd7gKgS1yTSkaqs8qPM6fDLzK
+	RHWOUurvWsCCGB+RLck81cjlpKroA98R+F5XT03zYugYbNrjosvUHkW17bJukrIE4ZcI1+xIuMBSW
+	bS0sKyX9p+O4AprXHtaOFTGi6pFa5xu6CF7B/hZRb3EoU5GcFyS7Xh9/mXpXvkY42fvU1t10DhDxq
+	M1LP/psWcRkgMK/oZJgXCkunJ9W3BDLOk5Hk+MeySqcYdgfcv07rT9KyErpDUuLprRxlktCcH4avU
+	MumX+mV/uNnk23H3k67OxWu31JR+LH54dv8c1PCShfjD5MEkvURerhaLGbmceu9EOzzE0+xVG9c6R
+	5VluW8DQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s4bUY-0000000EMXW-3z1l;
-	Wed, 08 May 2024 07:13:31 +0000
-Received: from mgamail.intel.com ([192.198.163.8])
+	id 1s4bpC-0000000EPjQ-1Mdl;
+	Wed, 08 May 2024 07:34:50 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s4bUT-0000000EMSi-2DUB
-	for linux-mediatek@lists.infradead.org;
-	Wed, 08 May 2024 07:13:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1715152406; x=1746688406;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=kcyv9B4aVwqHiIYH9soi2Une9+zbvCi85GRN+JQDBrw=;
-  b=mk9DHKCCviB6iiRrt4bSeBEwuxsKtDoQkwRX1sYekybAtnm8CC2YL0p8
-   3ZjktXMtAiFYU16wCRciYzryiSYssiAWTHBZuK+KRHQ35eRgg9RHJPzWI
-   e7/Dld2d8okKcGlX+FBYfKUY4xwifbvsLpEnxXwcaCdziMmfm7cVYG+Av
-   N4yCyW8cIsgoOANuJMpJs1c2QKGPKTivxJunDscIawj6c1m7yNi5NOmDo
-   VwCRzhmcpzIAsNmITsDIeZgap3CYw8mvVdJMWoxJzJWfHbqfEHYaMCtb+
-   gtkerVW1W6E/M6juo3aC3zQqzR0/KzSnCkeozy5Uec1deFHXHA511Dicx
-   w==;
-X-CSE-ConnectionGUID: SogdmqjhQuus7eGIh+JXNw==
-X-CSE-MsgGUID: XWYdA8ApROq+RwDm0ehlAg==
-X-IronPort-AV: E=McAfee;i="6600,9927,11066"; a="28510636"
-X-IronPort-AV: E=Sophos;i="6.08,144,1712646000"; 
-   d="scan'208";a="28510636"
-Received: from fmviesa003.fm.intel.com ([10.60.135.143])
-  by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 May 2024 00:13:13 -0700
-X-CSE-ConnectionGUID: ENhzKVk6SOGhN6R8K3Ve/w==
-X-CSE-MsgGUID: 3/5Xc0TtRTCLRkYiBpYK5w==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.08,144,1712646000"; 
-   d="scan'208";a="33310222"
-Received: from lkp-server01.sh.intel.com (HELO f8b243fe6e68) ([10.239.97.150])
-  by fmviesa003.fm.intel.com with ESMTP; 08 May 2024 00:13:10 -0700
-Received: from kbuild by f8b243fe6e68 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1s4bUC-00037E-0m;
-	Wed, 08 May 2024 07:13:08 +0000
-Date: Wed, 8 May 2024 15:12:52 +0800
-From: kernel test robot <lkp@intel.com>
-To: sean.wang@kernel.org, marcel@holtmann.org, johan.hedberg@gmail.com,
-	luiz.dentz@gmail.com
-Cc: oe-kbuild-all@lists.linux.dev, linux-bluetooth@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [PATCH v4 1/5] Bluetooth: btmtk: add the function to get the fw
- name
-Message-ID: <202405081456.v2MvcQ0P-lkp@intel.com>
-References: <965cd14922aea67e2750ff2c2ecad773f8ba485a.1715109394.git.sean.wang@kernel.org>
+	id 1s4bp8-0000000EPiY-0u3Q;
+	Wed, 08 May 2024 07:34:48 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 77CE761998;
+	Wed,  8 May 2024 07:34:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F19B3C113CC;
+	Wed,  8 May 2024 07:34:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1715153685;
+	bh=lAlbifORId4Iqe5Et4Xx4lAvJBrGMg1upJ1kuvRnFog=;
+	h=Date:Subject:To:References:From:In-Reply-To:From;
+	b=bH0BIpcQ1Qx5tXc90kqXcjBLjM3aDHGeOF4O3gcjEXcYyKQH1p9QFHJo2andx6Euj
+	 Suhgrg5xWomacSm2dNFYfCs3i0ZTz4hr4H6A0n/sfJy2XPaGBGkoLky8KwXWPaCUaw
+	 lPXXJ4hhkhWJbGgArkjdyDb7rRuXPYVFd0VDEU2D1N93/D1eG2dRmyjbtefsfDTjTs
+	 ktwE+YYvUxaEMtcpmBgc6sThtiW5zX2FnZITt2whmRSVaTTfYAA7SsrLe74DT3GPSp
+	 69mPVHZoqEK0X27Zoao6u+E3EweIqNULayDUS/2D9pwAVxrQy6WyOddgNmQl9Uyh6N
+	 r2JBAA2LfLzLA==
+Message-ID: <e96bfb0a-fa1d-423e-925d-32f4e1e00421@kernel.org>
+Date: Wed, 8 May 2024 09:34:37 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <965cd14922aea67e2750ff2c2ecad773f8ba485a.1715109394.git.sean.wang@kernel.org>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] dt-bindings: net: mediatek: remove wrongly added
+ clocks and SerDes
+To: Daniel Golle <daniel@makrotopia.org>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>,
+ netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <1569290b21cc787a424469ed74456a7e976b102d.1715084326.git.daniel@makrotopia.org>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <1569290b21cc787a424469ed74456a7e976b102d.1715084326.git.daniel@makrotopia.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240508_001325_603562_6AEB4117 
-X-CRM114-Status: GOOD (  11.96  )
+X-CRM114-CacheID: sfid-20240508_003446_400966_AA90C0E6 
+X-CRM114-Status: GOOD (  13.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,70 +124,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On 07/05/2024 14:20, Daniel Golle wrote:
+> Several clocks as well as both sgmiisys phandles were added by mistake
+> to the Ethernet bindings for MT7988. Also, the total number of clocks
+> didn't match with the actual number of items listed.
+> 
+> This happened because the vendor driver which served as a reference uses
+> a high number of syscon phandles to access various parts of the SoC
+> which wasn't acceptable upstream. Hence several parts which have never
+> previously been supported (such SerDes PHY and USXGMII PCS) are going to
+> be implemented by separate drivers. As a result the device tree will
+> look much more sane.
+> 
+> Quickly align the bindings with the upcoming reality of the drivers
+> actually adding support for the remaining Ethernet-related features of
+> the MT7988 SoC.
+> 
+> Fixes: c94a9aabec36 ("dt-bindings: net: mediatek,net: add mt7988-eth binding")
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> ---
+> v2: don't make changes to the order of clocks
 
-kernel test robot noticed the following build warnings:
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-[auto build test WARNING on bluetooth/master]
-[also build test WARNING on bluetooth-next/master linus/master v6.9-rc7 next-20240507]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+Best regards,
+Krzysztof
 
-url:    https://github.com/intel-lab-lkp/linux/commits/sean-wang-kernel-org/Bluetooth-btmtk-apply-the-common-btmtk_fw_get_filename/20240508-032333
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/bluetooth/bluetooth.git master
-patch link:    https://lore.kernel.org/r/965cd14922aea67e2750ff2c2ecad773f8ba485a.1715109394.git.sean.wang%40kernel.org
-patch subject: [PATCH v4 1/5] Bluetooth: btmtk: add the function to get the fw name
-config: arm64-defconfig (https://download.01.org/0day-ci/archive/20240508/202405081456.v2MvcQ0P-lkp@intel.com/config)
-compiler: aarch64-linux-gcc (GCC) 13.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240508/202405081456.v2MvcQ0P-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202405081456.v2MvcQ0P-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
-   drivers/bluetooth/btmtk.c: In function 'btmtk_fw_get_filename':
->> drivers/bluetooth/btmtk.c:115:35: warning: 'mediatek/BT_RAM_CODE_MT' directive output truncated writing 23 bytes into a region of size 8 [-Wformat-truncation=]
-     115 |                          "mediatek/BT_RAM_CODE_MT%04x_1a_%x_hdr.bin",
-         |                           ~~~~~~~~^~~~~~~~~~~~~~~
-   drivers/bluetooth/btmtk.c:115:26: note: directive argument in the range [1, 256]
-     115 |                          "mediatek/BT_RAM_CODE_MT%04x_1a_%x_hdr.bin",
-         |                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   drivers/bluetooth/btmtk.c:114:17: note: 'snprintf' output between 41 and 43 bytes into a destination of size 8
-     114 |                 snprintf(buf, sizeof(size),
-         |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~
-     115 |                          "mediatek/BT_RAM_CODE_MT%04x_1a_%x_hdr.bin",
-         |                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-     116 |                          dev_id & 0xffff, (fw_ver & 0xff) + 1);
-         |                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-vim +115 drivers/bluetooth/btmtk.c
-
-   105	
-   106	void btmtk_fw_get_filename(char *buf, size_t size, u32 dev_id, u32 fw_ver,
-   107				   u32 fw_flavor)
-   108	{
-   109		if (dev_id == 0x7925)
-   110			snprintf(buf, size,
-   111				 "mediatek/mt%04x/BT_RAM_CODE_MT%04x_1_%x_hdr.bin",
-   112				 dev_id & 0xffff, dev_id & 0xffff, (fw_ver & 0xff) + 1);
-   113		else if (dev_id == 0x7961 && fw_flavor)
-   114			snprintf(buf, sizeof(size),
- > 115				 "mediatek/BT_RAM_CODE_MT%04x_1a_%x_hdr.bin",
-   116				 dev_id & 0xffff, (fw_ver & 0xff) + 1);
-   117		else
-   118			snprintf(buf, size,
-   119				 "mediatek/BT_RAM_CODE_MT%04x_1_%x_hdr.bin",
-   120				 dev_id & 0xffff, (fw_ver & 0xff) + 1);
-   121	}
-   122	EXPORT_SYMBOL_GPL(btmtk_fw_get_filename);
-   123	
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
 
