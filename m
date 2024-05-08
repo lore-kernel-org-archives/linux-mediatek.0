@@ -4,71 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16032C04FFE
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 May 2024 12:30:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B590AC19F4F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 May 2024 12:44:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=G0EgRcxHPYVYNFfngVUMS5fl9BPyKfiAOc6TK4fQlus=; b=Lph7Ah5oP4Tsty11Fs5wc/ghft
-	/DXaWV9UjgoJ8TrdvBxmGPQbnrbs3yMZ36RnDgCwHE3nMMd8yryr73HGJBWooZYp4mFAQ7I6olJwH
-	jCWziY+NW/rrGA8gqXnZd9GqiAoKQdxYk0HtpIktpdEtrcVvJ+fAUxi89+fklQDTl4iT78gtsEMR+
-	OX76ok9qLlR2vQCyKf0tO9mtHTGZQZElabgKGZj9mE2AsVxm81FyVt39WcCG/miOkg4u7A3RXpbpC
-	IBFSEdNjSPZRKNpttUzmvtQvINTflmldUXNMN4gp2eiT5SiZj54c+RIqAlOgady4bszOAURYshuEP
-	trxtQhdg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=onHewic4/zSIlq/VRSzMuUNIGcT7hGAT8KQExfLr8rM=; b=nYucAjq5d8YibJ
+	WKkyHZHjSsUXL+E3T0G6pVPU6XQFY5VmBe97NlQ+aeK5okA19dPELkiJO43tEPvdFHy1dsyh/LPAf
+	HjHDLaA5VVn2HuG8n3+KUDEPk/CX1zAQBX4d6/+ugFsP18bpHOhWqpJDRAnoBPdO5KvEOpSfOmswg
+	BhJ1g/IYbIMJL216M5uTgmzIUhZDuBNvuqVGwlGUlNOYpNgVnlouwN2UYRzqI/BLg2oJxtgm19gLo
+	ImJzFoJ5GcKC31GvatwUScbKqKq32zhLgIeoMQhtTTJxs2w8Rg9AG11/HxZ6VV9prb13uvaeNzp3c
+	Al0MhFa1h/lSNxqIF16g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s4gRG-0000000FRH9-3Ggq;
-	Wed, 08 May 2024 12:30:26 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1s4gf7-0000000FUaT-1FsZ;
+	Wed, 08 May 2024 12:44:45 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s4gRD-0000000FRGZ-3wPW;
-	Wed, 08 May 2024 12:30:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=G0EgRcxHPYVYNFfngVUMS5fl9BPyKfiAOc6TK4fQlus=; b=YsDzDW2A+bVrOGPszxwm4oD4pi
-	CO2xvST/CSj+z8fQ2InMekf0lKYl0rOLSNpPabRc0iChULUg45TXtjH4aLhJ3C5vaTqfcSX7QLZu/
-	x0TCY9uWV/xoOOSP0i1ui1oqWWRzq/5YpNWtL3V2Qs0hHij8xb/AoLiJ32yXWcE6Vvf0=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1s4gRB-00EwrQ-Dp; Wed, 08 May 2024 14:30:21 +0200
-Date: Wed, 8 May 2024 14:30:21 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: SkyLake Huang =?utf-8?B?KOm7g+WVn+a+pCk=?= <SkyLake.Huang@mediatek.com>
-Cc: "linux@armlinux.org.uk" <linux@armlinux.org.uk>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"kuba@kernel.org" <kuba@kernel.org>,
-	"pabeni@redhat.com" <pabeni@redhat.com>,
-	"edumazet@google.com" <edumazet@google.com>,
-	"netdev@vger.kernel.org" <netdev@vger.kernel.org>,
-	"dqfext@gmail.com" <dqfext@gmail.com>,
-	Steven Liu =?utf-8?B?KOWKieS6uuixqik=?= <steven.liu@mediatek.com>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"davem@davemloft.net" <davem@davemloft.net>,
-	"hkallweit1@gmail.com" <hkallweit1@gmail.com>,
-	"daniel@makrotopia.org" <daniel@makrotopia.org>,
-	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH 3/3] net: phy: mediatek: add support for built-in 2.5G
- ethernet PHY on MT7988
-Message-ID: <577176af-9f6c-45f9-824f-2b4ca762b2f7@lunn.ch>
-References: <20240425023325.15586-1-SkyLake.Huang@mediatek.com>
- <20240425023325.15586-4-SkyLake.Huang@mediatek.com>
- <ZiocBmBWiNnbeyGq@shell.armlinux.org.uk>
- <4ccd437ee744382a8483ffe71d06cd495dacec71.camel@mediatek.com>
+	id 1s4gf1-0000000FUWD-2OwN;
+	Wed, 08 May 2024 12:44:41 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1715172274;
+	bh=zmA2+tCDw16RjR/3j2+3tT2/AoPS7qyS7V4GhqwgqXw=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=0dlrTVYwZFLMOymDDPlJgMbxax0vrGgshPR1ATXjluKj3gCwGqOe5vshSy1Ca1D90
+	 f2l0qTwdyAXKnHmvaT5ORfPUx3ApHfGv4O1Uc9V6fcDd8LU47uHDPX3W4y6qaTgTYA
+	 WBdL/E2V5xvnWpUTjf0ZGE5l/wfenCVvMY7Czjgkdl14CsdLp9eM36npJVbV56HSqF
+	 YPK2E6LM0FudDvRLGaOHGhLh1QGENj7rSoSL2RqZNJvaYR4K/cIQIoXRmwfo5EgVRg
+	 AgwV+NQhFNE2JtQmEKzkAY6jF+apNbGMD09fq1NgcerZdL3UsPDXaKE2EsfCqf16Io
+	 0UCnpCetXVo6A==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id C7A863782112;
+	Wed,  8 May 2024 12:44:33 +0000 (UTC)
+Message-ID: <5de7d6af-54ac-49b7-b5c2-fa9381310288@collabora.com>
+Date: Wed, 8 May 2024 14:44:33 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <4ccd437ee744382a8483ffe71d06cd495dacec71.camel@mediatek.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] mailbox: mtk-cmdq: Fix sleeping function called from
+ invalid context
+To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Jassi Brar <jassisinghbrar@gmail.com>
+References: <20240508095143.12023-1-jason-jh.lin@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20240508095143.12023-1-jason-jh.lin@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240508_053024_005508_C899A0D4 
-X-CRM114-Status: GOOD (  15.12  )
+X-CRM114-CacheID: sfid-20240508_054439_790411_876500CF 
+X-CRM114-Status: GOOD (  29.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,30 +72,192 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Alexandre Mergnat <amergnat@baylibre.com>, Singo Chang <singo.chang@mediatek.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Project_Global_Chrome_Upstream_Group@mediatek.com, Jason-ch Chen <jason-ch.chen@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, Johnson Wang <johnson.wang@mediatek.com>, Shawn Sung <shawn.sung@mediatek.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> > > +ret = request_firmware(&fw, MT7988_2P5GE_PMB, dev);
-> > > +if (ret) {
-> > > +dev_err(dev, "failed to load firmware: %s, ret: %d\n",
-> > > +MT7988_2P5GE_PMB, ret);
-> > > +return ret;
-> > > +}
-> > 
-> > This will block for userspace while holding phydev->lock and the
-> > RTNL.
-> > That blocks much of the networking APIs, which is not a good idea. If
-> > you have a number of these PHYs, then the RTNL will serialise the
-> > loading of firmware.
-> > 
-> I'm not sure I really get this. MT7988's internal 2.5Gphy is built
-> inside SoC. We won't have a number of these PHYs.
+Il 08/05/24 11:51, Jason-JH.Lin ha scritto:
+> When we run kernel with lockdebug option, we will get the BUG below:
+> [  106.692124] BUG: sleeping function called from invalid context at drivers/base/power/runtime.c:1164
+> [  106.692190] in_atomic(): 1, irqs_disabled(): 128, non_block: 0, pid: 3616, name: kworker/u17:3
+> [  106.692226] preempt_count: 1, expected: 0
+> [  106.692254] RCU nest depth: 0, expected: 0
+> [  106.692282] INFO: lockdep is turned off.
+> [  106.692306] irq event stamp: 0
+> [  106.692331] hardirqs last  enabled at (0): [<0000000000000000>] 0x0
+> [  106.692376] hardirqs last disabled at (0): [<ffffffee15d37fa0>] copy_process+0xc90/0x2ac0
+> [  106.692429] softirqs last  enabled at (0): [<ffffffee15d37fc4>] copy_process+0xcb4/0x2ac0
+> [  106.692473] softirqs last disabled at (0): [<0000000000000000>] 0x0
+> [  106.692513] CPU: 1 PID: 3616 Comm: kworker/u17:3 Not tainted 6.1.87-lockdep-14133-g26e933aca785 #1 6839942e1cf34914b0a366137843dd2366f52aa9
+> [  106.692556] Hardware name: Google Ciri sku0/unprovisioned board (DT)
+> [  106.692586] Workqueue: imgsys_runner imgsys_runner_func
+> [  106.692638] Call trace:
+> [  106.692662]  dump_backtrace+0x100/0x120
+> [  106.692702]  show_stack+0x20/0x2c
+> [  106.692737]  dump_stack_lvl+0x84/0xb4
+> [  106.692775]  dump_stack+0x18/0x48
+> [  106.692809]  __might_resched+0x354/0x4c0
+> [  106.692847]  __might_sleep+0x98/0xe4
+> [  106.692883]  __pm_runtime_resume+0x70/0x124
+> [  106.692921]  cmdq_mbox_send_data+0xe4/0xb1c
+> [  106.692964]  msg_submit+0x194/0x2dc
+> [  106.693003]  mbox_send_message+0x190/0x330
+> [  106.693043]  imgsys_cmdq_sendtask+0x1618/0x2224
+> [  106.693082]  imgsys_runner_func+0xac/0x11c
+> [  106.693118]  process_one_work+0x638/0xf84
+> [  106.693158]  worker_thread+0x808/0xcd0
+> [  106.693196]  kthread+0x24c/0x324
+> [  106.693231]  ret_from_fork+0x10/0x20
+> 
+> We found that there is a spin_lock_irqsave protection in msg_submit()
+> of mailbox.c and it is in the atomic context.
+> So when cmdq driver calls pm_runtime_get_sync() in cmdq_mbox_send_data(),
+> it will get this BUG report.
+> 
+> 1. Change pm_runtime_get_sync() to pm_runtime_get() to avoid using sleep
+>     in atomic context.
+> 2. Move clk_bulk_enable() outside cmdq_runtime_resume() to ensure GCE
+>     clocks are enabled before configuring GCE register.
+> 3. Add used_count to avoid cmdq_runtime_suspend() being called before
+>     calling cmdq_runtime_resume().
+> 
+> Fixes: 8afe816b0c99 ("mailbox: mtk-cmdq-mailbox: Implement Runtime PM with autosuspend")
+> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+> ---
+>   drivers/mailbox/mtk-cmdq-mailbox.c | 24 +++++++++++++++---------
+>   1 file changed, 15 insertions(+), 9 deletions(-)
+> 
+> diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
+> index 033aff11f87c..b50f42e69aab 100644
+> --- a/drivers/mailbox/mtk-cmdq-mailbox.c
+> +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+> @@ -82,6 +82,7 @@ struct cmdq {
+>   	const struct gce_plat	*pdata;
+>   	struct cmdq_thread	*thread;
+>   	struct clk_bulk_data	clocks[CMDQ_GCE_NUM_MAX];
+> +	atomic_t		used_count;
+>   	bool			suspended;
+>   };
+>   
+> @@ -317,14 +318,21 @@ static int cmdq_runtime_resume(struct device *dev)
+>   {
+>   	struct cmdq *cmdq = dev_get_drvdata(dev);
+>   
+> -	return clk_bulk_enable(cmdq->pdata->gce_num, cmdq->clocks);
+> +	atomic_inc(&cmdq->used_count);
+> +	return 0;
+>   }
+>   
+>   static int cmdq_runtime_suspend(struct device *dev)
+>   {
+>   	struct cmdq *cmdq = dev_get_drvdata(dev);
+>   
+> +	if (atomic_read(&cmdq->used_count) == 0) {
+> +		dev_warn(dev, "%s when used_count is 0!", __func__);
+> +		return -EINVAL;
+> +	}
+> +
+>   	clk_bulk_disable(cmdq->pdata->gce_num, cmdq->clocks);
+> +	atomic_dec(&cmdq->used_count);
+>   	return 0;
+>   }
+>   
+> @@ -392,9 +400,8 @@ static int cmdq_mbox_send_data(struct mbox_chan *chan, void *data)
+>   	/* Client should not flush new tasks if suspended. */
+>   	WARN_ON(cmdq->suspended);
+>   
+> -	ret = pm_runtime_get_sync(cmdq->mbox.dev);
+> -	if (ret < 0)
+> -		return ret;
+> +	WARN_ON(pm_runtime_get(cmdq->mbox.dev) < 0);
 
-How long does firmware download take? If you are holding RTNL you are
-blocking all other network configuration. How many Ethernets does this
-device have? If it is just one, it is not too bad, but if there is a
-built in switch, you cannot be configuring that switch at the same
-time firmware download is happening...
+That's a bit sketchy, and I'm afraid that this will break in some other ways.
 
-     Andrew
+We could - again - simply change the msg_submit() function in mailbox.c, so that
+it takes into account that a driver may need PM done.
+
+A low effort example (which may be good enough or not) is:
+
+static void msg_submit(struct mbox_chan *chan)
+{
+	unsigned count, idx;
+	unsigned long flags;
+	void *data;
+	int err;
+
+	if (chan->mbox->ops->pm_off) {
+		err = chan->mbox->ops->pm_on();
+		if (err)
+			return err;
+	}
+
+	spin_lock_irqsave(&chan->lock, flags);
+
+	if (!chan->msg_count || chan->active_req) {
+		err = -EBUSY;
+		goto exit;
+	}
+
+	......
+
+	exit:
+	spin_unlock_irqrestore(&chan->lock, flags);
+
+	if (!err && (chan->txdone_method & TXDONE_BY_POLL)) {
+		/* kick start the timer immediately to avoid delays */
+		spin_lock_irqsave(&chan->mbox->poll_hrt_lock, flags);
+		hrtimer_start(&chan->mbox->poll_hrt, 0, HRTIMER_MODE_REL);
+		spin_unlock_irqrestore(&chan->mbox->poll_hrt_lock, flags);
+	}
+
+/* I guess setting it OFF can't fail anyway, so this would be a void function */
+	if (chan->mbox->ops->pm_off)
+		chan->mbox->ops->pm_off();
+}
+
+
+Then we can wire up the two functions in the MediaTek driver - where our mailbox
+only simply needs pm_runtime_get_sync() and pm_runtime_put().
+
+The reason why I'm suggesting a callback is that this would catch the case of
+mailboxes that need "more complicated" flows for ON/OFF.
+
+Jassi, do you like the idea?
+
+If you do, I can eventually go for a real commit with better names than pm_off/on
+if I can find any - so that then Jason can go on with his mtk-cmdq fix on top of
+that.
+
+Cheers,
+Angelo
+
+> +	WARN_ON(clk_bulk_enable(cmdq->pdata->gce_num, cmdq->clocks));
+>   
+>   	task = kzalloc(sizeof(*task), GFP_ATOMIC);
+>   	if (!task) {
+> @@ -465,7 +472,8 @@ static void cmdq_mbox_shutdown(struct mbox_chan *chan)
+>   	struct cmdq_task *task, *tmp;
+>   	unsigned long flags;
+>   
+> -	WARN_ON(pm_runtime_get_sync(cmdq->mbox.dev) < 0);
+> +	WARN_ON(pm_runtime_get(cmdq->mbox.dev) < 0);
+> +	WARN_ON(clk_bulk_enable(cmdq->pdata->gce_num, cmdq->clocks));
+>   
+>   	spin_lock_irqsave(&thread->chan->lock, flags);
+>   	if (list_empty(&thread->task_busy_list))
+> @@ -507,11 +515,9 @@ static int cmdq_mbox_flush(struct mbox_chan *chan, unsigned long timeout)
+>   	struct cmdq_task *task, *tmp;
+>   	unsigned long flags;
+>   	u32 enable;
+> -	int ret;
+>   
+> -	ret = pm_runtime_get_sync(cmdq->mbox.dev);
+> -	if (ret < 0)
+> -		return ret;
+> +	WARN_ON(pm_runtime_get(cmdq->mbox.dev) < 0);
+> +	WARN_ON(clk_bulk_enable(cmdq->pdata->gce_num, cmdq->clocks));
+>   
+>   	spin_lock_irqsave(&thread->chan->lock, flags);
+>   	if (list_empty(&thread->task_busy_list))
+
 
