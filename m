@@ -4,60 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1D77C10F1A
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 May 2024 17:12:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8210BC10F1A
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 May 2024 21:35:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cD69ICcj5UxBlb9k5M5IBUdciufwch/ZUuxho43dmes=; b=g7biTM9avw+Yr0/QcwMW5WjfTv
-	Gya8rU66Hhytp97r5ItAbADlpA2m2EeKzEAPl9b3SiSo6ux+Srgbx3FQuhBSJ4SokrCtRsXRiF5e5
-	9wBvwztCTKPjeSWHTmVfZ3OaNBq8HKk053P0NQW/f+qzJ2o8Ogf2bDwSuvIN+zPGRUhPO2Au42UQz
-	WUsnAMjF3aSbw7Zz6zfqewwHjKdTQnxFjDLpWHa+FMIRWdiV0IOIjq+dXJT1vMcO1uqT+i0hVln5h
-	kvegp9EIoamUkNMQW6m6EgyQKGMgj3I263KKKC2cpRni37M19J3a6CBxfTl2O/Heb5qO9pajadqti
-	/j3hVa2g==;
+	bh=1Yo3NJl/+D3HjDzk2u86J+UDtYtrXvOHQjT1qCvhfSw=; b=mr+1TCHnqNfph7AflvVvU3CToF
+	AQSTYK6MenRGe0UhIZkxyaI6JPDlQhsIZfftDruo7BvK2Z/yrKEMbA4sQ9F2cdc7IT79/+eYdSI7B
+	QluSqsPJ1wN4fcaF9ofkxfiO/irrU8/9qxHxj6BdTgc6jEKpGMsK0v8Jze5W44OrhJHEgIsqOPM9i
+	dSyF2b0Gf3QRInLbevi4FOPWvA7FUuscP3hUcm0MP+bOntmsWmQGZwodrGL9zrmk+KObIgeL/eeof
+	P34vx0lx2+uMCQerqFiJk5dj25Ix2tYdiMx60OSSJL7uQ687pBCTfHOdfiTeTK0ffFrVdivW5O9iO
+	zBHdqw8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s57Jm-00000002BQp-1ksp;
-	Thu, 09 May 2024 17:12:30 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1s5BQJ-00000002yTK-3Tj4;
+	Thu, 09 May 2024 21:35:31 +0000
+Received: from mail-ua1-x935.google.com ([2607:f8b0:4864:20::935])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s57Ji-00000002BPd-2E8e;
-	Thu, 09 May 2024 17:12:27 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id C216661D93;
-	Thu,  9 May 2024 17:12:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0EC76C116B1;
-	Thu,  9 May 2024 17:12:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1715274745;
-	bh=cD69ICcj5UxBlb9k5M5IBUdciufwch/ZUuxho43dmes=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=KmcaWCvuTAwE0V4qjpfxETVLf9F2J5Qmo/FtC5jp+UKUhl7ySNG+KBuESwaKd3yHx
-	 hwlj3vg4jK5L29lUClun8XTp1MBptH3DqI3fQOYU5LB6WPwNXmJJdG1sBnmXZHYMtc
-	 9a0pBF/T3T+7v4NHsR/vhDDcrpf+EOZ84GZu3omNfQ6oUWsXj2jfSJvHCvtQCNe1fD
-	 xiy8BfpxUK4Bpx87LS9zq2Aawbe5Yg0a5UgUOrep5IMpXY6EYtjrby6r+UmQlocOB/
-	 FuIX50e64Y6TFUkRLzjRMEbeeNj/aDtcezYQ3/FdEi9TnDCLTu3t9qxcCKODyIc5um
-	 02IRTZl6oQRUg==
-Date: Thu, 9 May 2024 18:12:18 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Frank Wunderlich <linux@fw-web.de>
-Subject: Re: [PATCH v2 1/2] dt-bindings: arm64: dts: mediatek: add BananaPi
- R3 Mini
-Message-ID: <20240509-petroleum-game-3f1fce762eca@spud>
-References: <20240509152157.10162-1-linux@fw-web.de>
- <20240509152157.10162-2-linux@fw-web.de>
- <20240509-velcro-march-6878a4ee1f73@spud>
+	id 1s5BQG-00000002yRr-0795;
+	Thu, 09 May 2024 21:35:29 +0000
+Received: by mail-ua1-x935.google.com with SMTP id a1e0cc1a2514c-7f82c932858so440806241.0;
+        Thu, 09 May 2024 14:35:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1715290524; x=1715895324; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=1Yo3NJl/+D3HjDzk2u86J+UDtYtrXvOHQjT1qCvhfSw=;
+        b=mNsL8kb9/Z6xLrvW8+HWibUzs88K1FNdFpBRiNUagrItlzIWJhDEXxCygV2lqvTksQ
+         XCAvxdJaquWL0l/Ujr2WoKLgFEUkEKkhiI3jD2rWma/wxx7EHg419EOwvpJUaB1i7BwX
+         WaAmHfW2zxZUcds1G2upO3HXJMkkC4EmKXftJVNj07wY6/UqvWAe0hhumseJq+qrcpK+
+         cFzpkJu9t7QSZUDdHMeYDl2uhtAZZsPbvJ27pEh5JfJDV92hVfdCJo4WX5GYzIblCyQa
+         w8ZwZO9R2fbKfQhRGumS3b6aXr9FTK8ZAxAjR8T7BAn8vsxn3WDPHdhNmeua9u1xaIBB
+         b28w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1715290524; x=1715895324;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=1Yo3NJl/+D3HjDzk2u86J+UDtYtrXvOHQjT1qCvhfSw=;
+        b=jUX7RNJETJzNmyejzMNEKgsWDETy7HGT3wWuOcYx7tTQk+NX6Zm6/DhhcDsGmQDA3z
+         9zDhYBkte0ZDEs95vHMvtoSlVzqUDb/yBnFKjOtzTog/mTWAmbx+Ibc1XTgFjeZqPlff
+         TuJpV7Naayw399pW+gpZijh3kcTFGoVlUNSDlHtQAzDOBoLgC3wWB+7s23Rp4Jv2yst8
+         WhMXq2k6w5TjDRWamiT78XX0Y0jqe3VtjVsdARU3xyY60WrEaT4Gem+8gi9gzaSPQjlt
+         bpUPWY3vVi+m+svDM3VX6+WqZFJrP5Y9VLN7uBvrOmPBcxsvaKBDNlC+UMe+j4M4toMv
+         8Y1w==
+X-Forwarded-Encrypted: i=1; AJvYcCVWab52eueSf6E8kJmH97OoD7u4KZAXyLDsdFfJkOOSYD6mTIc2lWa/k2NmTsXcKqtvO1tYy1Zo4m+UTg/NhcoZccL71C4lywk8RGd66cNGO1Kcg3uSimDjmD4T6kuqIpJRxwmIDFbkNMyZn4BtYHjE7CErA8iBxY4=
+X-Gm-Message-State: AOJu0YxZ0mu2i6X1GQWfp1H682Y1nzGcX6Dbhtzg1AB5CBSUJ3BNjjsT
+	EuKupMoPEEXLAx4TUp7fMJICReZqT2u6Ach85nz9hfK6PDyAGze3/2UAz+In3SfPokuGFtyq6UH
+	Vch475rMFwnzZ2aXcLXAa9BiFh8s=
+X-Google-Smtp-Source: AGHT+IEDcACUSM80VSR45ArKgZiWP4c9kqdCth3bLU1kbXd1shP57oMwEOz/0YVPrQ6VzKWJJJR4QpRgtprtu6Wem7s=
+X-Received: by 2002:a05:6102:3ece:b0:47e:5c2e:5695 with SMTP id
+ ada2fe7eead31-48077e45cc6mr1030292137.23.1715290523779; Thu, 09 May 2024
+ 14:35:23 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="VuTyzBpp28zUKDaK"
-Content-Disposition: inline
-In-Reply-To: <20240509-velcro-march-6878a4ee1f73@spud>
+References: <20240507190111.16710-1-apais@linux.microsoft.com>
+ <20240507190111.16710-2-apais@linux.microsoft.com> <Zjp/kgBE2ddjV044@shell.armlinux.org.uk>
+ <CAOMdWSKfkT4K9MAOn-rL44pycHPhVDj4CtiYkru5y_s0S-sPeQ@mail.gmail.com> <20240508201654.GA2248333@kernel.org>
+In-Reply-To: <20240508201654.GA2248333@kernel.org>
+From: Allen <allen.lkml@gmail.com>
+Date: Thu, 9 May 2024 14:35:12 -0700
+Message-ID: <CAOMdWSJ2vV5gYpEQUCpAco3W9ZKKmmj1LXGzk7kTbAaBmsQknQ@mail.gmail.com>
+Subject: Re: [PATCH 1/1] [RFC] ethernet: Convert from tasklet to BH workqueue
+To: Simon Horman <horms@kernel.org>
+Cc: "Russell King (Oracle)" <linux@armlinux.org.uk>, Allen Pais <apais@linux.microsoft.com>, 
+	netdev@vger.kernel.org, jes@trained-monkey.org, davem@davemloft.net, 
+	edumazet@google.com, kuba@kernel.org, pabeni@redhat.com, 
+	kda@linux-powerpc.org, cai.huoqing@linux.dev, dougmill@linux.ibm.com, 
+	npiggin@gmail.com, christophe.leroy@csgroup.eu, aneesh.kumar@kernel.org, 
+	naveen.n.rao@linux.ibm.com, nnac123@linux.ibm.com, tlfalcon@linux.ibm.com, 
+	cooldavid@cooldavid.org, marcin.s.wojtas@gmail.com, mlindner@marvell.com, 
+	stephen@networkplumber.org, nbd@nbd.name, sean.wang@mediatek.com, 
+	Mark-MC.Lee@mediatek.com, lorenzo@kernel.org, matthias.bgg@gmail.com, 
+	angelogioacchino.delregno@collabora.com, borisp@nvidia.com, 
+	bryan.whitehead@microchip.com, UNGLinuxDriver@microchip.com, 
+	louis.peens@corigine.com, richardcochran@gmail.com, 
+	linux-rdma@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-acenic@sunsite.dk, linux-arm-kernel@lists.infradead.org, 
+	linuxppc-dev@lists.ozlabs.org, linux-mediatek@lists.infradead.org, 
+	oss-drivers@corigine.com, linux-net-drivers@amd.com
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240509_101226_647596_B4C28519 
-X-CRM114-Status: GOOD (  11.57  )
+X-CRM114-CacheID: sfid-20240509_143528_111047_6F532A75 
+X-CRM114-Status: GOOD (  36.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,38 +100,70 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Pavel Machek <pavel@ucw.cz>, Michael Turquette <mturquette@baylibre.com>, Eric Dumazet <edumazet@google.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-clk@vger.kernel.org, linux-leds@vger.kernel.org, Rob Herring <robh@kernel.org>, Tianling Shen <cnsztl@immortalwrt.org>, Lee Jones <lee@kernel.org>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Stephen Boyd <sboyd@kernel.org>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Eric Woudstra <ericwouds@gmail.com>, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+> > > On Tue, May 07, 2024 at 07:01:11PM +0000, Allen Pais wrote:
+> > > > The only generic interface to execute asynchronously in the BH context is
+> > > > tasklet; however, it's marked deprecated and has some design flaws. To
+> > > > replace tasklets, BH workqueue support was recently added. A BH workqueue
+> > > > behaves similarly to regular workqueues except that the queued work items
+> > > > are executed in the BH context.
+> > > >
+> > > > This patch converts drivers/ethernet/* from tasklet to BH workqueue.
+> > >
+> > > I doubt you're going to get many comments on this patch, being so large
+> > > and spread across all drivers. I'm not going to bother trying to edit
+> > > this down to something more sensible, I'll just plonk my comment here.
+> > >
+> > > For the mvpp2 driver, you're only updating a comment - and looking at
+> > > it, the comment no longer reflects the code. It doesn't make use of
+> > > tasklets at all. That makes the comment wrong whether or not it's
+> > > updated. So I suggest rather than doing a search and replace for
+> > > "tasklet" to "BH blahblah" (sorry, I don't remember what you replaced
+> > > it with) just get rid of that bit of the comment.
+> > >
+> >
+> >  Thank you Russell.
+> >
+> >  I will get rid of the comment. If it helps, I can create a patch for each
+> > driver. We did that in the past, with this series, I thought it would be
+> > easier to apply one patch.
+>
+> Hi Allen and Russell,
+>
+> My 2c worth:
+>
+> * In general non bug-fix patches for networking code should be targeted at
+>   net-next. This means that they should include net-next in the subject,
+>   and be based on that tree.
+>
+>   Subject: [PATCH net-next] ...
+>
+> * This series does not appear to apply to net-next
+>
+> * This series appears to depend on code which is not present in net-next.
+>   f.e. disable_work_sync
+>
+> * The Infiniband patches should probably be submitted separately
+>   to the relevant maintainers
+>
+> * As this patch seems to involve many non-trivial changes
+>   it seems to me that it would be best to break it up somehow.
+>   To allow proper review.
+>
+> * Patch-sets for net-next should be limited to 15 patches,
+>   so perhaps multiple sequential batches would be a way forwards.
+>
+> Link: https://docs.kernel.org/process/maintainer-netdev.html
 
---VuTyzBpp28zUKDaK
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+ Thank you very much for taking the time to write back.
+Since the patches that are necessary for this series are not in
+net-next, I could not target net-next.
 
-On Thu, May 09, 2024 at 06:09:21PM +0100, Conor Dooley wrote:
-> On Thu, May 09, 2024 at 05:21:56PM +0200, Frank Wunderlich wrote:
-> > From: Frank Wunderlich <frank-w@public-files.de>
-> >=20
-> > Add MT7988A based BananaPi R3 Mini.
-> >=20
-> > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
->=20
-> Acked-by: Conor Dooley <conor.dooley@microchip.com>
+ I will wait for the patches to land in net-next, and the v2 will
+be broken into multiple smaller sets(per driver).
 
-btw, subject here is odd. s/dts: // :)
-
---VuTyzBpp28zUKDaK
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZj0D8gAKCRB4tDGHoIJi
-0sISAP4yfgcGwbSR0//UJHU/u1e/KT1zyw6C6I2NV5mGn9AR3gEAktdYhKOWv4G3
-nLBkdVhjppQAPXsK4/uD936eZspTQws=
-=DOFJ
------END PGP SIGNATURE-----
-
---VuTyzBpp28zUKDaK--
+Thanks.
+ Allen
 
