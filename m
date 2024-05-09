@@ -4,80 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B88E2C10F1A
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 May 2024 08:58:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA399C10F1A
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 May 2024 09:13:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0Wiz5MoTmXNXCF7A/NdDpUQr0zJjTgt8byvzglF4DEc=; b=XmHTEvgswvyrSMOG1lBtEtv0xs
-	kjzHZCuw/ivCAysY1iLUm7AlO5aj047KJbENfkH7WCfG6uRGt0bigxB/mMeKk2QCHoZ1UqDwtiK7x
-	tDqAWpQSynGQMfm/uOC1yHYcnQ+AowPQp8J0Rmhjqxf4mnO8eSugUzfa4j+YyRKs5GYYtVWNCNWQ+
-	a6uae3uypjjMSxYWdCZZvFl9YC7yn8+YZbH1EK2PZFIGg6emeVaS3uEceEzvE5hc0c/Dim6oRXvT+
-	vT4e+skhoPBsV2KOlsdySKag0JnloABXPsnuouVniwf0D06sFOWpFnERMRAbZPJVlAC2QxmEKgdnY
-	QoKbZb+g==;
+	bh=2XIm3l1xwbX2zt99nKzw8Aeonu491LzVXfpgjoinZHE=; b=eAU3fQ4QGIX5iOx3bh44h2rt00
+	ziMpIw30+i1MWyaUyJM7iS6Q5i+hNlKFt8usbyy3WCr9s0KGQVJnJ/gLVzB9qhgLFWClZlxODAKEA
+	YHiPLFIwnRATN9go1wvY2ifBtZ17lg/3y/P/Xqv/vGU1hrnZ+3Apf/FuvY+9qZK1Y2XJSD/2oY9Mp
+	5wGVTlHrPfe7l4LL/VN9VafmLdSNiGO89mZZ1yYNvW8DHIqJ2xrFDa3APj6m5q33I4I5P5WnOlX/6
+	7ocUFeTJKfzLB9YIQvC0b7pEXbOIIycer7HMT66PtnNNhDkRmBwcsumO9U/uP0BYbHTMwqQuUnzi2
+	1L/nQoOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s4zbp-00000000tlM-2w14;
-	Thu, 09 May 2024 08:58:37 +0000
-Received: from mail-lj1-x235.google.com ([2a00:1450:4864:20::235])
+	id 1s4zqB-00000000we8-1Z0r;
+	Thu, 09 May 2024 09:13:27 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s4zbm-00000000tkQ-2nh6
-	for linux-mediatek@lists.infradead.org;
-	Thu, 09 May 2024 08:58:36 +0000
-Received: by mail-lj1-x235.google.com with SMTP id 38308e7fff4ca-2e44d32a480so7838391fa.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 09 May 2024 01:58:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1715245110; x=1715849910; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=0Wiz5MoTmXNXCF7A/NdDpUQr0zJjTgt8byvzglF4DEc=;
-        b=P89PCndeF7FyJtE+r2GaSTJki28ggzKINkVpScRyy2fEIpjMdFqQpYp4H24ev7CawU
-         d4XNsQeWJIYUs7My/KGBXcTi3SvoIfex8cc/ii2J+VJAkIKOzAz4sxLfzy30PSzxlRX4
-         3uQsMYD7IZNe17O7EhqLmHQ+j73u6HP8WVmQU=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1715245110; x=1715849910;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=0Wiz5MoTmXNXCF7A/NdDpUQr0zJjTgt8byvzglF4DEc=;
-        b=NBn+AlfmvDnzu1+E2C0Gllwn/K81bS+wEcpqujQHoBEAHZbDlLDTmWGA18sdlr4QbJ
-         7vHCKNAP6ibOGFiaOCNkMzrITNNwVhOVeyeViRZh4xJc6lnMNo9W3QUKOjeAy+1Ui1JP
-         m8Ypadi6SZRKBqQeFTr60T0T8esfG3WpsbcxuQUqdZJ9wFP3OHniRxR6tPpmmfXcpETA
-         xWruEGO5+vlVZIWSEpiqu94Mj0/ShN7uN2kB/s7fOneUjIzfe/HqKJz+lwM8X2WZRgnX
-         3TqIu7XspizyznpFVPonMyBIP8oR8ggucNa9vnaaLaSVbQGGoDY4QUOYYQlApKn495WT
-         KsQw==
-X-Forwarded-Encrypted: i=1; AJvYcCUFeRGj9Dv1hyliaJQ3/TAWYuWH1fuZAJrv87iE8sCktFu4xLnNZ7sWQy2u9seAFImJV6/r4oqEeuLU/CLXAzCTUCbjoQpJNjSgI0iltN/K4o4T
-X-Gm-Message-State: AOJu0YxAFoocamwBHHlTJRWJeyt+AuvVWqF7/eL3qs+PL/yuAUW/d5eS
-	V2J2IGNn3vD42PbptC0V4mo879z67XQo/YDSSeLZofycrJcONR18hUmewoG7KH27kxfls3hmq5/
-	tG60K2MDPjCq/VmEMQ45PADMAqi3bQ2OsSyn7
-X-Google-Smtp-Source: AGHT+IH9ObFL6J8WFDRyP8J9A5dWQL9UrJwiJ65mOUZ6bLzWBgApqNI6WPFqJ6HGRFDelg160CI2ttiR8RE+Eg7y928=
-X-Received: by 2002:a2e:99d4:0:b0:2de:c6b5:2888 with SMTP id
- 38308e7fff4ca-2e447194771mr32704081fa.3.1715245110374; Thu, 09 May 2024
- 01:58:30 -0700 (PDT)
+	id 1s4zq7-00000000wcV-2ojg;
+	Thu, 09 May 2024 09:13:25 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1715245999;
+	bh=NKeC3HSPrcO8YGQah7jVicYXn1UrXm0HIq2+GZU4qb8=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=aRvGTQiF85dxBDSN9fPkXOnIxpElVdaX7KpVKTj40xDidst6eL2eqnswdPhgJUiFi
+	 PNHR0gTmZBcx31tDijXxnLOSw7ShYMkm9O3lueWNdiBa42INll3QIiVMVa+pbslzcj
+	 lp3jANfu7BxQkq9jikVQu/8ihHTpPRRmK7Knk5vdP+dwkgS+OdCYp4QMbvK4F37N1M
+	 YCuQXPG8fYfibrlQv8v+Xd436g7BncoUBCmFLit4wT+dp+AyFxs+rxkagPyXKblmn8
+	 /aRagpfQ1G41xvOQF7+IRZMhna8WD2FqCG0y1kozJb/mMKjCwgHcVAAI6J41g7HV6J
+	 Cd51XjsIAPtKA==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 2B0C33780894;
+	Thu,  9 May 2024 09:13:19 +0000 (UTC)
+Message-ID: <f0548f88-fe81-4c07-9583-ef1a1c5ae519@collabora.com>
+Date: Thu, 9 May 2024 11:13:18 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] ASoC: mediatek: mt8192: fix register configuration for
+ tdm
+To: Hsin-Te Yuan <yuanhsinte@chromium.org>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Jiaxin Yu <jiaxin.yu@mediatek.com>
+Cc: linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 References: <20240509-8192-tdm-v1-1-530b54645763@chromium.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
 In-Reply-To: <20240509-8192-tdm-v1-1-530b54645763@chromium.org>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Thu, 9 May 2024 16:58:19 +0800
-Message-ID: <CAGXv+5HYsKFpHWXE45N+4K1LbKA1Lan8rDHm6=+YvsY0CXKoMg@mail.gmail.com>
-Subject: Re: [PATCH] ASoC: mediatek: mt8192: fix register configuration for tdm
-To: Hsin-Te Yuan <yuanhsinte@chromium.org>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Jiaxin Yu <jiaxin.yu@mediatek.com>, linux-sound@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240509_015834_754715_A3F5B9F1 
-X-CRM114-Status: GOOD (  17.76  )
+X-CRM114-CacheID: sfid-20240509_021323_899955_3B2384AB 
+X-CRM114-Status: UNSURE (   7.48  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,50 +79,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, May 9, 2024 at 3:31=E2=80=AFPM Hsin-Te Yuan <yuanhsinte@chromium.or=
-g> wrote:
->
+Il 09/05/24 09:31, Hsin-Te Yuan ha scritto:
 > For DSP_A, data is a BCK cycle behind LRCK trigger edge. For DSP_B, this
 > delay doesn't exist. Fix the delay configuration to match the standard.
->
-> Fixes: 52fcd65414abfc ("ASoC: mediatek: mt8192: support tdm in platform d=
-river")
+> 
+> Fixes: 52fcd65414abfc ("ASoC: mediatek: mt8192: support tdm in platform driver")
 > Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
 
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-> ---
->  sound/soc/mediatek/mt8192/mt8192-dai-tdm.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/sound/soc/mediatek/mt8192/mt8192-dai-tdm.c b/sound/soc/media=
-tek/mt8192/mt8192-dai-tdm.c
-> index 9ce06821c7d0f..49440db370af0 100644
-> --- a/sound/soc/mediatek/mt8192/mt8192-dai-tdm.c
-> +++ b/sound/soc/mediatek/mt8192/mt8192-dai-tdm.c
-> @@ -566,10 +566,10 @@ static int mtk_dai_tdm_hw_params(struct snd_pcm_sub=
-stream *substream,
->                 tdm_con |=3D 1 << DELAY_DATA_SFT;
->                 tdm_con |=3D get_tdm_lrck_width(format) << LRCK_TDM_WIDTH=
-_SFT;
->         } else if (tdm_priv->tdm_out_mode =3D=3D TDM_OUT_DSP_A) {
-> -               tdm_con |=3D 0 << DELAY_DATA_SFT;
-> +               tdm_con |=3D 1 << DELAY_DATA_SFT;
->                 tdm_con |=3D 0 << LRCK_TDM_WIDTH_SFT;
->         } else if (tdm_priv->tdm_out_mode =3D=3D TDM_OUT_DSP_B) {
-> -               tdm_con |=3D 1 << DELAY_DATA_SFT;
-> +               tdm_con |=3D 0 << DELAY_DATA_SFT;
->                 tdm_con |=3D 0 << LRCK_TDM_WIDTH_SFT;
->         }
->
->
-> ---
-> base-commit: 45db3ab70092637967967bfd8e6144017638563c
-> change-id: 20240509-8192-tdm-cbf2a73c9dd3
->
-> Best regards,
-> --
-> Hsin-Te Yuan <yuanhsinte@chromium.org>
->
->
 
