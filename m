@@ -4,65 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BAFAC10F1A
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 May 2024 12:47:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F01CC10F1A
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 May 2024 15:22:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=azh3jkpwUkK1BDWHA193744+q2OM6G0yEYf353EXV+c=; b=KOYjsKF8e0zbttL8m2gwHU7Hq+
-	1eGn3OrNpFvWVoVTfj+5k7pR4jl213Nnnav4YPHcFgK+GBwnP7Hw47XPdFZtwhJWH7FdWEYZ8nP50
-	aRLO8vz+uV2j6KNtrE17JZYuRjZj30SQ3gNZLlJYhjI+USKHla7vJ6DDDZf5D/O2AetVnTy8dwmsk
-	QCuNvOg3rJ/84MeHiIccufcgU1n4vWRgouXatRfI7Rw/PuAKwotEDakQFwp1XQwfYXp8c3oDVy/TN
-	0td25K824BOjgvW8j77wlaqO5wzYhbTZtQxFNVFfk2s2kNDJ7QsWkNGlxKe1eEJfhZTSY4JdfulSX
-	E3lwDBww==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=fotgTM148ZqesmSfyYXvxrplZmNhg1acut380A13LMw=; b=UH0VKMTR+NF2AC
+	TndWQP8Xm0+LLDpYRQNm7NyqB8e041HG0K+gD9KzIBBV+iEhfaMKX0iLk63JX+r6I7meDIQ6m/tf6
+	qNpnGf4UwebBF6EfdrF6PFWi8tlDdWKe4cHK5RHYFGjnAltyzW74JRU23uLa0k+C4aFNBhmUzUJMJ
+	lXVngPWMEIQq9gUaO+//1rvUXRdrhgHChBQe+fC+uoqLgKpZWAQdn+lW5lMxjMvApWR/9mbnSziYj
+	gYl/+sKkxAmrAloGDQCvs1jR/a31imEQWL3lZinWBbTt5SCibP8ZmsmpeGFxgPuslGny0Dq9cnkMu
+	YnWOV7oiMoSV0WcYI60g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s53At-00000001Tdc-2GYh;
-	Thu, 09 May 2024 12:47:03 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1s55bF-00000001s7s-3CiZ;
+	Thu, 09 May 2024 15:22:25 +0000
+Received: from mxout2.routing.net ([2a03:2900:1:a::b])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s53Aq-00000001TbF-04Ou;
-	Thu, 09 May 2024 12:47:01 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 12B84CE1B4E;
-	Thu,  9 May 2024 12:46:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 09D71C116B1;
-	Thu,  9 May 2024 12:46:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1715258817;
-	bh=Y1puUf3Rn4PFEIfYWjo05C5VlGgGVxqEMZoIhApAwoE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=AQoXxdBT+Gf6/1FnwrPKEUEL8un/LA/u/2/sGpDCC3rxgKcoqyWXiIYW010ItlUum
-	 CLW5mYm545cimXqZBYmCGhgG0TDtnkqwrORVR4iSIbEqIRhyhcrt3kwfXNkXg6K64O
-	 w/OV3lp+KVg/vrgpg6Otpk5K6rEE7UjvK0+ZQ/3ke7FMj3+1HjaVBF4DAXoz4gPzwI
-	 0n+UHl6L4pv6WqF0RUQ69KZCeD51zRNa7aM9mIiyeZyDaYmsZpsgrROCD8g6oq1W5t
-	 bWTjyIxOyJS//5RBCY/Nlq3g0oX9RTKZSdE+TICUdGYgN2wahiJLQ61bVw8OeIOqkv
-	 DvX0r1wcBJS5w==
-Date: Thu, 9 May 2024 08:46:55 -0400
-From: Sasha Levin <sashal@kernel.org>
-To: Pavel Machek <pavel@ucw.cz>
-Cc: linux-kernel@vger.kernel.org, stable@vger.kernel.org,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Joerg Roedel <jroedel@suse.de>, yong.wu@mediatek.com,
-	joro@8bytes.org, will@kernel.org, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com, iommu@lists.linux.dev,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH AUTOSEL 4.19 7/7] iommu: mtk: fix module autoloading
-Message-ID: <ZjzFv38K2fudS_zQ@sashalap>
-References: <20240422232040.1616527-1-sashal@kernel.org>
- <20240422232040.1616527-7-sashal@kernel.org>
- <Zied1/2cELhaQupG@duo.ucw.cz>
+	id 1s55b7-00000001s2m-2HAX;
+	Thu, 09 May 2024 15:22:22 +0000
+Received: from mxbox3.masterlogin.de (unknown [192.168.10.78])
+	by mxout2.routing.net (Postfix) with ESMTP id 591226024A;
+	Thu,  9 May 2024 15:22:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+	s=20200217; t=1715268126;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=fotgTM148ZqesmSfyYXvxrplZmNhg1acut380A13LMw=;
+	b=pZGwikcb0fsbAnFSwhOmJmJNL+0A2wQOMwfNjjzcAj22oltjQL3GjN20xnOEnqYHVNOoVV
+	REm5ejw0Mgx31iV60ZmucqomylPsXnLM0aTrabFSw0IBcbmX/Q+46paSNjj2BZWKaI0zrV
+	OotCNlOIyCPo3WMRuYr0/9V0+VI8CA8=
+Received: from frank-G5.. (fttx-pool-217.61.150.116.bambit.de [217.61.150.116])
+	by mxbox3.masterlogin.de (Postfix) with ESMTPSA id 0BF403604D4;
+	Thu,  9 May 2024 15:22:05 +0000 (UTC)
+From: Frank Wunderlich <linux@fw-web.de>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Pavel Machek <pavel@ucw.cz>,
+	Lee Jones <lee@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2 0/2] Add Bananapi R3 Mini
+Date: Thu,  9 May 2024 17:21:55 +0200
+Message-Id: <20240509152157.10162-1-linux@fw-web.de>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii; format=flowed
-Content-Disposition: inline
-In-Reply-To: <Zied1/2cELhaQupG@duo.ucw.cz>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Mail-ID: 576f1382-99ca-463f-b168-02acee2867b6
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240509_054700_257896_00C268A0 
-X-CRM114-Status: GOOD (  11.40  )
+X-CRM114-CacheID: sfid-20240509_082217_732988_6FFD35C3 
+X-CRM114-Status: GOOD (  11.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,33 +77,38 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Tianling Shen <cnsztl@immortalwrt.org>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Eric Woudstra <ericwouds@gmail.com>, linux-clk@vger.kernel.org, linux-leds@vger.kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Apr 23, 2024 at 01:39:03PM +0200, Pavel Machek wrote:
->Hi!
->
->> [ Upstream commit 7537e31df80cb58c27f3b6fef702534ea87a5957 ]
->>
->> Add MODULE_DEVICE_TABLE(), so modules could be properly autoloaded
->> based on the alias from of_device_id table.
->
->This patch is queued for 4.19 and 5.15, but not 5.10. I believe that's
->wrong.
+From: Frank Wunderlich <frank-w@public-files.de>
 
-Heh, this is funny. It fails to build on 5.10:
+Add mt7986 based BananaPi R3 Mini SBC.
 
-drivers/iommu/mtk_iommu.c:872:1: warning: data definition has no type or storage class
-   872 | MODULE_DEVICE_TABLE(of, mtk_iommu_of_ids);
-       | ^~~~~~~~~~~~~~~~~~~
-drivers/iommu/mtk_iommu.c:872:1: error: type defaults to 'int' in declaration of 'MODULE_DEVICE_TABLE' [-Werror=implicit-int]
-drivers/iommu/mtk_iommu.c:872:1: warning: parameter names (without types) in function declaration
-cc1: some warnings being treated as errors
-make[2]: *** [scripts/Makefile.build:286: drivers/iommu/mtk_iommu.o] Error 1
+changes in v2:
+- dropped patches for unrealated binding fixes which are already fixed in next.
+- add missing node for nand
+- add some information about the board in description
+    
+change dts based on review from angelo+krzysztof
+    
+ - drop fan status
+ - rename phy14 to phy0 and phy15 to phy1
+ - drop default-trigger from phys and so also the binding-patch
+ - use regulator names based on regexp regulator-[0-9]+v[0-9]+
+ - add comment for pwm
 
-But not on any of the older trees.
+Frank Wunderlich (2):
+  dt-bindings: arm64: dts: mediatek: add BananaPi R3 Mini
+  arm64: dts: mediatek: Add  mt7986 based Bananapi R3 Mini
+
+ .../devicetree/bindings/arm/mediatek.yaml     |   1 +
+ arch/arm64/boot/dts/mediatek/Makefile         |   1 +
+ .../mediatek/mt7986a-bananapi-bpi-r3-mini.dts | 493 ++++++++++++++++++
+ 3 files changed, 495 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-mini.dts
 
 -- 
-Thanks,
-Sasha
+2.34.1
+
 
