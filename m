@@ -4,82 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3208C10F1A
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 May 2024 10:35:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BAFAC10F1A
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 May 2024 12:47:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3wZpSISw02AkMaqaiI9Sh3u2pXSHx2hF/a4I3zrIJuA=; b=AG09W8YgsI2oo0/A1i/kJ+egFu
-	AWEdNCBRoyY8LPD+EMUMZEeP5ZSuBLtTpZlBbSB9EoAhZCYdEDpqqGTPfFuZrO9Nq6E5M4f3e3sRU
-	CcoYVw/NmbPefFHlrd3y1ftiCv/FcsfH7D6yql5l/zhFsBYZnn1wbfboTeLy4+jJtJcWiasQlHiQ2
-	+EyvHaMBOuzp3GS4Ndznlao4XP4CiqxE/+MUnN5gFGXcPqkaI4+78K86bzCWlOeRPIA3j79hFSGdt
-	14d4aawX8Gq60hVSc8i7cfI+fkZOrS1gPAjdfovNh/bZAsJBromY/K15a4su9RnECqmTQ9JtcuquA
-	tW9AnJ0Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=azh3jkpwUkK1BDWHA193744+q2OM6G0yEYf353EXV+c=; b=KOYjsKF8e0zbttL8m2gwHU7Hq+
+	1eGn3OrNpFvWVoVTfj+5k7pR4jl213Nnnav4YPHcFgK+GBwnP7Hw47XPdFZtwhJWH7FdWEYZ8nP50
+	aRLO8vz+uV2j6KNtrE17JZYuRjZj30SQ3gNZLlJYhjI+USKHla7vJ6DDDZf5D/O2AetVnTy8dwmsk
+	QCuNvOg3rJ/84MeHiIccufcgU1n4vWRgouXatRfI7Rw/PuAKwotEDakQFwp1XQwfYXp8c3oDVy/TN
+	0td25K824BOjgvW8j77wlaqO5wzYhbTZtQxFNVFfk2s2kNDJ7QsWkNGlxKe1eEJfhZTSY4JdfulSX
+	E3lwDBww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s517q-000000018aA-1XW9;
-	Thu, 09 May 2024 10:35:46 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1s53At-00000001Tdc-2GYh;
+	Thu, 09 May 2024 12:47:03 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s517l-000000018Yl-3dkb;
-	Thu, 09 May 2024 10:35:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1715250939;
-	bh=yUFjn5LgIseSlP5T8cF8o6oSVyNEeYFPfa85RpGltZQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=VVkEIbzpWZBvoo+AGxYiBrxmlZHSO7kgiZISU74YaiehKK0foNrq9ESvOxV8mahIW
-	 8+BI/miaCR5Sl3n9FUKFLwESCae0sbqwHikuPkM+WfPbC+ucFS+nV+p5sz+KSWMuGx
-	 Ghdt5pLACOwnT5V9vKF+9vfg+Cy18gM3JAsk/snehyXICDAeqgZ1xPJO5ER9IBlakA
-	 CECayktcd1COsS9C7QI+gOh5UIR6PsXzgUSGlQHIpD6vRbKGTEwkXmlw2t7P1Tnyr/
-	 NQU+73paDKP+YVWwXu/dgYfqjduYUJOX+rtZCd2KFMy+IdPhDTHQMocULWZy+HlREA
-	 9oS/v48nqW5nw==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id EE0EC3782174;
-	Thu,  9 May 2024 10:35:37 +0000 (UTC)
-Message-ID: <708ed735-1666-4da3-8d8f-d0ba073f6360@collabora.com>
-Date: Thu, 9 May 2024 12:35:37 +0200
+	id 1s53Aq-00000001TbF-04Ou;
+	Thu, 09 May 2024 12:47:01 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 12B84CE1B4E;
+	Thu,  9 May 2024 12:46:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 09D71C116B1;
+	Thu,  9 May 2024 12:46:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1715258817;
+	bh=Y1puUf3Rn4PFEIfYWjo05C5VlGgGVxqEMZoIhApAwoE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=AQoXxdBT+Gf6/1FnwrPKEUEL8un/LA/u/2/sGpDCC3rxgKcoqyWXiIYW010ItlUum
+	 CLW5mYm545cimXqZBYmCGhgG0TDtnkqwrORVR4iSIbEqIRhyhcrt3kwfXNkXg6K64O
+	 w/OV3lp+KVg/vrgpg6Otpk5K6rEE7UjvK0+ZQ/3ke7FMj3+1HjaVBF4DAXoz4gPzwI
+	 0n+UHl6L4pv6WqF0RUQ69KZCeD51zRNa7aM9mIiyeZyDaYmsZpsgrROCD8g6oq1W5t
+	 bWTjyIxOyJS//5RBCY/Nlq3g0oX9RTKZSdE+TICUdGYgN2wahiJLQ61bVw8OeIOqkv
+	 DvX0r1wcBJS5w==
+Date: Thu, 9 May 2024 08:46:55 -0400
+From: Sasha Levin <sashal@kernel.org>
+To: Pavel Machek <pavel@ucw.cz>
+Cc: linux-kernel@vger.kernel.org, stable@vger.kernel.org,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Joerg Roedel <jroedel@suse.de>, yong.wu@mediatek.com,
+	joro@8bytes.org, will@kernel.org, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com, iommu@lists.linux.dev,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH AUTOSEL 4.19 7/7] iommu: mtk: fix module autoloading
+Message-ID: <ZjzFv38K2fudS_zQ@sashalap>
+References: <20240422232040.1616527-1-sashal@kernel.org>
+ <20240422232040.1616527-7-sashal@kernel.org>
+ <Zied1/2cELhaQupG@duo.ucw.cz>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: Aw: Re: [RFC v1 5/5] arm64: dts: mediatek: Add mt7986 based
- Bananapi R3 Mini
-To: Frank Wunderlich <linux@fw-web.de>,
- Frank Wunderlich <frank-w@public-files.de>
-Cc: Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
- <sboyd@kernel.org>, Pavel Machek <pavel@ucw.cz>, Lee Jones <lee@kernel.org>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Eric Woudstra <ericwouds@gmail.com>, Tianling Shen <cnsztl@immortalwrt.org>,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-clk@vger.kernel.org, linux-leds@vger.kernel.org,
- netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Tianling Shen <cnsztl@gmail.com>
-References: <20240505164549.65644-1-linux@fw-web.de>
- <20240505164549.65644-6-linux@fw-web.de>
- <a4099612-a4ae-4211-9674-c7053d2a995a@collabora.com>
- <3E013BA7-0264-4AC3-B677-BDD16B1F8D90@public-files.de>
- <a18a10e5-42e1-4302-b9f3-43c6174e2cf9@collabora.com>
- <trinity-2158d675-7049-4432-b925-6ace44401aa0-1715192732273@3c-app-gmx-bs02>
- <a9980df7-7d65-4818-8dd3-b056ba5ac566@collabora.com>
- <7859DAB9-107F-432D-AA3D-0F54AE0E30D5@fw-web.de>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <7859DAB9-107F-432D-AA3D-0F54AE0E30D5@fw-web.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii; format=flowed
+Content-Disposition: inline
+In-Reply-To: <Zied1/2cELhaQupG@duo.ucw.cz>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240509_033542_152748_BFBF4599 
-X-CRM114-Status: GOOD (  24.28  )
+X-CRM114-CacheID: sfid-20240509_054700_257896_00C268A0 
+X-CRM114-Status: GOOD (  11.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,163 +77,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 09/05/24 12:30, Frank Wunderlich ha scritto:
-> Am 9. Mai 2024 12:10:59 MESZ schrieb AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>:
->> Il 08/05/24 20:25, Frank Wunderlich ha scritto:
->>> Hi
->>>
->>>> Gesendet: Dienstag, 07. Mai 2024 um 15:35 Uhr
->>>> Von: "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>
->>>>
->>>> Il 06/05/24 18:00, Frank Wunderlich ha scritto:
->>>
->>>>>>> +	fan: pwm-fan {
->>>>>>> +		compatible = "pwm-fan";
->>>>>>> +		#cooling-cells = <2>;
->>>>>>> +		/* cooling level (0, 1, 2) - pwm inverted */
->>>>>>> +		cooling-levels = <255 96 0>;
->>>>>>
->>>>>> Did you try to actually invert the PWM?
->>>>>>
->>>>>> Look for PWM_POLARITY_INVERTED ;-)
->>>>>
->>>>> Mtk pwm driver does not support it
->>>>>
->>>>> https://elixir.bootlin.com/linux/latest/source/drivers/pwm/pwm-mediatek.c#L211
->>>>>
->>>>
->>>> You're right, sorry - I confused the general purpose PWM controller with the
->>>> rather specific DISP_PWM controller (which does support polarity inversion).
->>>>
->>>> It's good - but I'd appreciate if you can please add a comment stating that
->>>> the PWM values are inverted in SW because the controller does *not* support
->>>> polarity inversion... so that next time someone looks at this will immediately
->>>> understand what's going on and why :-)
->>>
->>> so i would change comment like this:
->>>
->>> 		/* cooling level (0, 1, 2)
->>> 		 * signal is inverted on board
->>> 		 * mtk pwm driver does not support
->>> 		 * PWM_POLARITY_INVERTED */
->>>
+On Tue, Apr 23, 2024 at 01:39:03PM +0200, Pavel Machek wrote:
+>Hi!
+>
+>> [ Upstream commit 7537e31df80cb58c27f3b6fef702534ea87a5957 ]
 >>
->> There you go:
->>
->> /*
->> * The signal is inverted on this board and the general purpose
->> * PWM HW IP in this SoC does not support polarity inversion.
->> */
->> /* Cooling level < 0  1  2> */
->> cooling-levels = <255 96 0>;
-> 
-> Thanks for clearing structure of the comment,but imho actually it is a driver issue (for all mtk SoC). Not sure it is really a hardware limitation. So i would change this to "... and the PWM driver does not support polarity inversion."
-> 
->>>>>>> +		pwms = <&pwm 0 10000>;
->>>>>>> +		status = "okay";
->>>>>>> +	};
->>>>>>> +
->>>>>>> +	phy14: ethernet-phy@14 {
->>> ...
->>>>>>> +		interrupts-extended = <&pio 48 IRQ_TYPE_EDGE_FALLING>;
->>>>>>> +		reset-gpios = <&pio 49 GPIO_ACTIVE_LOW>;
->>>>>>> +		reset-assert-us = <10000>;
->>>>>>> +		reset-deassert-us = <20000>;
->>>>>>> +		phy-mode = "2500base-x";
->>>>>>> +		full-duplex;
->>>>>>> +		pause;
->>>>>>> +		airoha,pnswap-rx;
->>>>>>> +
->>>>>>> +		leds {
->>>>>>> +			#address-cells = <1>;
->>>>>>> +			#size-cells = <0>;
->>>>>>> +
->>>>>>> +			led@0 { /* en8811_a_gpio5 */
->>>>>>> +				reg = <0>;
->>>>>>> +				color = <LED_COLOR_ID_YELLOW>;
->>>>>>> +				function = LED_FUNCTION_LAN;
->>>>>>> +				function-enumerator = <1>;
->>>>>>
->>>>>> Why aren't you simply using a label?
->>>>>
->>>>> You mean the comment? I can add it of course like for regulators.
->>>>>
->>>>
->>>> I mean in place of the function-enumerator... that's practically used to
->>>> distinguish between instances, it's not too common to see it, and usually
->>>> "label" replaces exactly that - just that, instead of a different number,
->>>> it gets a different name with no (usually) meaningless numbers :-)
->>>
->>> as far as i understand using label also makes "function" property useless, after discussing
->>> this with eric i would drop both on all 4 places by labels like these:
->>>
->>> label = "yellow-lan";
->>> label = "green-lan";
->>> ...
->>>
->>> not sure if we should drop color property too...
->>>
->>
->> I'm looking at the leds binding (leds/common.yaml) right now.
->>
->> My suggestion of using 'label' was actually wrong - and your devicetree was
->> actually right!!! (apart from the default-trigger that may not work)
->>
->> Infact, the documentation says, in brief:
->>
->> - function-enumerator is ignored if label is present
->> - function doesn't say that gets ignored
->> - color doesn't say that gets ignored
->> - label says:
->>   - If not present -> get string from node name
->>   - function-enumerator ignored
->>   - This property is deprecated
->>
->> ...but the 'label' binding does not say 'deprecated: true', which is something
->> that must be fixed!
-> 
-> Ok,i can try to add the property to binding (independ of this series). Imho label was cleaner than function and function-enumerator...
-> 
+>> Add MODULE_DEVICE_TABLE(), so modules could be properly autoloaded
+>> based on the alias from of_device_id table.
+>
+>This patch is queued for 4.19 and 5.15, but not 5.10. I believe that's
+>wrong.
 
-Oh I sort of agree with you, I liked the label more, as it's more consistent with
-everything else... but oh well. :-)
+Heh, this is funny. It fails to build on 5.10:
 
->> So, I'm sorry for the confusion, the noise and the useless loss of time around
->> this - you can keep the LED nodes as they are, and that's a lesson for the future
->> me reviewing another node like this one.
-> 
-> Don't worry, we are all humas...i missed looking in linux-next for the other binding-patches.
-> 
->> P.S.: This shouldn't have been a RFC, as the patches are more than RFC quality!!!
-> 
-> I sent it as RFC because i had not expected to be merged before next is closed.
-> 
+drivers/iommu/mtk_iommu.c:872:1: warning: data definition has no type or storage class
+   872 | MODULE_DEVICE_TABLE(of, mtk_iommu_of_ids);
+       | ^~~~~~~~~~~~~~~~~~~
+drivers/iommu/mtk_iommu.c:872:1: error: type defaults to 'int' in declaration of 'MODULE_DEVICE_TABLE' [-Werror=implicit-int]
+drivers/iommu/mtk_iommu.c:872:1: warning: parameter names (without types) in function declaration
+cc1: some warnings being treated as errors
+make[2]: *** [scripts/Makefile.build:286: drivers/iommu/mtk_iommu.o] Error 1
 
-Ah at least from my side, no worries... when I see RFC I generally expect to see
-"dubious/head-scratching stuff", not "sub-optimal timing to send a patch" :-P
+But not on any of the older trees.
 
-Cheers!
-Angelo
-
->>
->>>>>>> +				default-state = "keep";
->>>>>>> +				linux,default-trigger = "netdev";
->>>>>>> +			};
->>>>>>> +			led@1 { /* en8811_a_gpio4 */
->>>>>>> +				reg = <1>;
->>>>>>> +				color = <LED_COLOR_ID_GREEN>;
->>>>>>> +				function = LED_FUNCTION_LAN;
->>>>>>> +				function-enumerator = <2>;
->>>>>>> +				default-state = "keep";
->>>>>>> +				linux,default-trigger = "netdev";
->>>>>>> +			};
->>>>>>> +		};
->>>>>>> +	};
->>>>>>> +
->>>>>>> +	phy15: ethernet-phy@15 {
->>>>>>> +		reg = <15>;
-> 
-> 
-> regards Frank
-
+-- 
+Thanks,
+Sasha
 
