@@ -4,73 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B73AC25B10
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 May 2024 09:54:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F0C5C10F1A
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 May 2024 10:11:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=j4A/xX1yuoTXQPJxZSU++qe3x9DPYpUYp1GCrfLK9Ek=; b=PVEcVzPkthyuQykKlcD8ADP/AM
-	jq3VB0ti/8DEWzQzmqOu8k4s03VuEfwJyaC/jysapT+t1ZfzcIua5GLdErlX6dEh3I/MrEvFjQyDs
-	bJqfHPB7tcR983wxVH+Ae/+xtZq9Hco4r3X2Oc2i8nk+yAoWqWW3/QdJlvOnM2xVCHJumpE4YfbOb
-	QLLk4eMz7GEVb8tzHeA9IjklE/cqYONKw5xsYbdtI30iysQVXSORfCXQpp8+TMGI16BFtdIWM+VXi
-	5WwB/BeP0W4xyQYSDtRloTEI/deeQs/jooyJukBo6AFo2iAkhFJO8+aKx8NfXcKYHR/wR5/tYxtPE
-	eKOxY0yQ==;
+	bh=71S4ymiyZvNoQcHz5UTKOrz1F7Uu1XwMBs9mUTqHKZY=; b=KaUIyj2q/74rpWMVrSMvanC52z
+	Koqv07h3pfH13KQZyo2BY0qXCRrkjYb2juY4eejhRECNuWMW/d6BnEGtbDlHDEPqjDzQ8DkYdrOJl
+	X1xx2zBnhdpxFl3mb3vB7mZW76iKPkdlnsc8ggT2tqDcRvg9mRSqBgcU8uQWb+K2z1tf5xADoN8G/
+	xc7MkShnFEbVS6jwfpJp/7P38GJrl6i9Oh3QC76f7HfGHScLZIKb/3MVi2+hh4IxK1zYTBrKN9NuV
+	1UCxHwRNiM53afZeLf0Ooj2Qo5FaaRpQshJL+sUbXYahYX5XsCcrGzYJ9zVbD3iZan3QcVQOqk9D0
+	h54+T5ZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s50UB-000000012tU-1haE;
-	Thu, 09 May 2024 09:54:47 +0000
+	id 1s50k4-000000015Ru-1L1E;
+	Thu, 09 May 2024 10:11:12 +0000
 Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s50U8-000000012rF-1HfB;
-	Thu, 09 May 2024 09:54:45 +0000
+	id 1s50jx-000000015Q1-0nA8;
+	Thu, 09 May 2024 10:11:09 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1715248472;
-	bh=vlum46Tb8PK1ROm2H5JtmPI6YiTvRNegUq7mRooArb4=;
+	s=mail; t=1715249461;
+	bh=2LnYN9nc3SQsqAASkrGVaJVc2LgnjoBJzHW2Q9QiI6Q=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=njHpLvDQoHLR62SJqkphCa4t2y6tge0nUhsPjiEp71pkNWsyrAN9BxUS304Kx7X7p
-	 gNzc+DR86MGpZTq+PcN5NGK7RqX1XBRruJSACmb0wweYeaAXtNL9djgi9y32NYf7Fp
-	 z7IBKnI5nwAd7fhzO8nGjt/Kl/UTDQaQRXAETNW7sYcIYYl3xj6ufid1lfBQmy9dOr
-	 1JKijGa9ezVTF6Aj3opG0KkReV/MAVHTvZx24CDxcp7a9nysq14/ymKDQ+MAVnSeez
-	 9hsjM1FNr3fdjZEE7DZu18QYbwQvt3fFVSNeBM7HbE06eEI+geyYFFWJQoOCfG+UVr
-	 1szJShnvwrpvA==
+	b=0Hzv31iAsIm4B1HeTQAjmmQCSI3i7Ksjvh28OlgI0QFbqUVIBBggMoVuDGJoM2xzR
+	 NRQF7Opxi8NtCObvbptm0TeTTCo5k7Br/nCEc8PmhaSOBwxL9MYvOxU4Df28dAJe8D
+	 JidG8I/KjROo53PimQ71rzlTgYjHTsddh1uXyD1kT6rWty2Zw6conx5jodeW/0+5Ux
+	 8RnDQloSkFHNRuNYp2FF5Q+uoKmfVREVGm0Cbwj/X5eC4w/AYcodYw9Tp0nKVBGSs7
+	 RFPZPfb6E8TWevSntJJGzeyIOVfwHTdZ6wGLOYWGo7GGHmqqRuL6tNudvc70fKqfWK
+	 AFt6QgH5hAqGQ==
 Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id C518637820FA;
-	Thu,  9 May 2024 09:54:31 +0000 (UTC)
-Message-ID: <2aefd938-f70a-4133-a3a8-9c96464c9f5f@collabora.com>
-Date: Thu, 9 May 2024 11:54:31 +0200
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 58C7B3780627;
+	Thu,  9 May 2024 10:11:00 +0000 (UTC)
+Message-ID: <a9980df7-7d65-4818-8dd3-b056ba5ac566@collabora.com>
+Date: Thu, 9 May 2024 12:10:59 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] media: mediatek: vcodec: add decoder command to
- support stateless decoder
-To: Yunfei Dong <yunfei.dong@mediatek.com>,
- =?UTF-8?Q?N=C3=ADcolas_F_=2E_R_=2E_A_=2E_Prado?= <nfraprado@collabora.com>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Nathan Hebert <nhebert@chromium.org>,
- Sebastian Fricke <sebastian.fricke@collabora.com>
-Cc: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
- Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20240316081344.4262-1-yunfei.dong@mediatek.com>
+Subject: Re: Aw: Re: [RFC v1 5/5] arm64: dts: mediatek: Add mt7986 based
+ Bananapi R3 Mini
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: Frank Wunderlich <linux@fw-web.de>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>,
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+ <sboyd@kernel.org>, Pavel Machek <pavel@ucw.cz>, Lee Jones <lee@kernel.org>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Eric Woudstra <ericwouds@gmail.com>, Tianling Shen <cnsztl@immortalwrt.org>,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-clk@vger.kernel.org, linux-leds@vger.kernel.org,
+ netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Tianling Shen <cnsztl@gmail.com>
+References: <20240505164549.65644-1-linux@fw-web.de>
+ <20240505164549.65644-6-linux@fw-web.de>
+ <a4099612-a4ae-4211-9674-c7053d2a995a@collabora.com>
+ <3E013BA7-0264-4AC3-B677-BDD16B1F8D90@public-files.de>
+ <a18a10e5-42e1-4302-b9f3-43c6174e2cf9@collabora.com>
+ <trinity-2158d675-7049-4432-b925-6ace44401aa0-1715192732273@3c-app-gmx-bs02>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20240316081344.4262-1-yunfei.dong@mediatek.com>
+In-Reply-To: <trinity-2158d675-7049-4432-b925-6ace44401aa0-1715192732273@3c-app-gmx-bs02>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240509_025444_495043_A28C6E2B 
-X-CRM114-Status: GOOD (  21.17  )
+X-CRM114-CacheID: sfid-20240509_031105_403551_4FBC8933 
+X-CRM114-Status: GOOD (  21.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,128 +91,151 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 16/03/24 09:13, Yunfei Dong ha scritto:
-> The supported decoder commands are different for stateless and
-> stateful architecture. Add stateless decoder commands to fix
-> the v4l2-compliance test error below.
+Il 08/05/24 20:25, Frank Wunderlich ha scritto:
+> Hi
 > 
-> Codec ioctls:
->      VIDIOC_ENCODER_CMD returned -1 (Inappropriate ioctl for device)
->      VIDIOC_TRY_ENCODER_CMD returned -1 (Inappropriate ioctl for device)
->   test VIDIOC_(TRY_)ENCODER_CMD: OK (Not Supported)
->      VIDIOC_G_ENC_INDEX returned -1 (Inappropriate ioctl for device)
->   test VIDIOC_G_ENC_INDEX: OK (Not Supported)
->      VIDIOC_DECODER_CMD returned -1 (Invalid argument)
->      VIDIOC_TRY_DECODER_CMD returned -1 (Invalid argument)
->      VIDIOC_TRY_DECODER_CMD returned -1 (Invalid argument)
->      fail: v4l2-test-codecs.cpp(126): ret
->   test VIDIOC_(TRY_)DECODER_CMD: FAIL
+>> Gesendet: Dienstag, 07. Mai 2024 um 15:35 Uhr
+>> Von: "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>
+>>
+>> Il 06/05/24 18:00, Frank Wunderlich ha scritto:
 > 
-> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+>>>>> +	fan: pwm-fan {
+>>>>> +		compatible = "pwm-fan";
+>>>>> +		#cooling-cells = <2>;
+>>>>> +		/* cooling level (0, 1, 2) - pwm inverted */
+>>>>> +		cooling-levels = <255 96 0>;
+>>>>
+>>>> Did you try to actually invert the PWM?
+>>>>
+>>>> Look for PWM_POLARITY_INVERTED ;-)
+>>>
+>>> Mtk pwm driver does not support it
+>>>
+>>> https://elixir.bootlin.com/linux/latest/source/drivers/pwm/pwm-mediatek.c#L211
+>>>
+>>
+>> You're right, sorry - I confused the general purpose PWM controller with the
+>> rather specific DISP_PWM controller (which does support polarity inversion).
+>>
+>> It's good - but I'd appreciate if you can please add a comment stating that
+>> the PWM values are inverted in SW because the controller does *not* support
+>> polarity inversion... so that next time someone looks at this will immediately
+>> understand what's going on and why :-)
+> 
+> so i would change comment like this:
+> 
+> 		/* cooling level (0, 1, 2)
+> 		 * signal is inverted on board
+> 		 * mtk pwm driver does not support
+> 		 * PWM_POLARITY_INVERTED */
+> 
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+There you go:
 
-Nicolas, Sebastian, anything to add?
+/*
+  * The signal is inverted on this board and the general purpose
+  * PWM HW IP in this SoC does not support polarity inversion.
+  */
+/* Cooling level < 0  1  2> */
+cooling-levels = <255 96 0>;
+
+
+
+>>>>> +		pwms = <&pwm 0 10000>;
+>>>>> +		status = "okay";
+>>>>> +	};
+>>>>> +
+>>>>> +	phy14: ethernet-phy@14 {
+> ...
+>>>>> +		interrupts-extended = <&pio 48 IRQ_TYPE_EDGE_FALLING>;
+>>>>> +		reset-gpios = <&pio 49 GPIO_ACTIVE_LOW>;
+>>>>> +		reset-assert-us = <10000>;
+>>>>> +		reset-deassert-us = <20000>;
+>>>>> +		phy-mode = "2500base-x";
+>>>>> +		full-duplex;
+>>>>> +		pause;
+>>>>> +		airoha,pnswap-rx;
+>>>>> +
+>>>>> +		leds {
+>>>>> +			#address-cells = <1>;
+>>>>> +			#size-cells = <0>;
+>>>>> +
+>>>>> +			led@0 { /* en8811_a_gpio5 */
+>>>>> +				reg = <0>;
+>>>>> +				color = <LED_COLOR_ID_YELLOW>;
+>>>>> +				function = LED_FUNCTION_LAN;
+>>>>> +				function-enumerator = <1>;
+>>>>
+>>>> Why aren't you simply using a label?
+>>>
+>>> You mean the comment? I can add it of course like for regulators.
+>>>
+>>
+>> I mean in place of the function-enumerator... that's practically used to
+>> distinguish between instances, it's not too common to see it, and usually
+>> "label" replaces exactly that - just that, instead of a different number,
+>> it gets a different name with no (usually) meaningless numbers :-)
+> 
+> as far as i understand using label also makes "function" property useless, after discussing
+> this with eric i would drop both on all 4 places by labels like these:
+> 
+> label = "yellow-lan";
+> label = "green-lan";
+> ...
+> 
+> not sure if we should drop color property too...
+> 
+
+I'm looking at the leds binding (leds/common.yaml) right now.
+
+My suggestion of using 'label' was actually wrong - and your devicetree was
+actually right!!! (apart from the default-trigger that may not work)
+
+Infact, the documentation says, in brief:
+
+- function-enumerator is ignored if label is present
+- function doesn't say that gets ignored
+- color doesn't say that gets ignored
+- label says:
+   - If not present -> get string from node name
+   - function-enumerator ignored
+   - This property is deprecated
+
+...but the 'label' binding does not say 'deprecated: true', which is something
+that must be fixed!
+
+
+So, I'm sorry for the confusion, the noise and the useless loss of time around
+this - you can keep the LED nodes as they are, and that's a lesson for the future
+me reviewing another node like this one.
+
+P.S.: This shouldn't have been a RFC, as the patches are more than RFC quality!!!
 
 Cheers,
 Angelo
 
-> ---
-> changed with v1:
-> - remove the static function prefix.
-> - fix some messages not reasonable.
-> ---
->   .../mediatek/vcodec/decoder/mtk_vcodec_dec.c  | 60 +++++++++++++++++--
->   1 file changed, 54 insertions(+), 6 deletions(-)
+>>>>> +				default-state = "keep";
+>>>>> +				linux,default-trigger = "netdev";
+>>>>> +			};
+>>>>> +			led@1 { /* en8811_a_gpio4 */
+>>>>> +				reg = <1>;
+>>>>> +				color = <LED_COLOR_ID_GREEN>;
+>>>>> +				function = LED_FUNCTION_LAN;
+>>>>> +				function-enumerator = <2>;
+>>>>> +				default-state = "keep";
+>>>>> +				linux,default-trigger = "netdev";
+>>>>> +			};
+>>>>> +		};
+>>>>> +	};
+>>>>> +
+>>>>> +	phy15: ethernet-phy@15 {
+>>>>> +		reg = <15>;
+>>>>
+>>>> Same here.
+>>>>
+>>>> Cheers,
+>>>> Angelo
 > 
-> diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
-> index ba742f0e391d..c2b64a528028 100644
-> --- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
-> +++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
-> @@ -80,21 +80,18 @@ static struct mtk_q_data *mtk_vdec_get_q_data(struct mtk_vcodec_dec_ctx *ctx,
->   	return &ctx->q_data[MTK_Q_DATA_DST];
->   }
->   
-> -static int vidioc_try_decoder_cmd(struct file *file, void *priv,
-> -				struct v4l2_decoder_cmd *cmd)
-> +static int stateful_try_decoder_cmd(struct file *file, void *priv, struct v4l2_decoder_cmd *cmd)
->   {
->   	return v4l2_m2m_ioctl_try_decoder_cmd(file, priv, cmd);
->   }
->   
-> -
-> -static int vidioc_decoder_cmd(struct file *file, void *priv,
-> -				struct v4l2_decoder_cmd *cmd)
-> +static int stateful_decoder_cmd(struct file *file, void *priv, struct v4l2_decoder_cmd *cmd)
->   {
->   	struct mtk_vcodec_dec_ctx *ctx = fh_to_dec_ctx(priv);
->   	struct vb2_queue *src_vq, *dst_vq;
->   	int ret;
->   
-> -	ret = vidioc_try_decoder_cmd(file, priv, cmd);
-> +	ret = stateful_try_decoder_cmd(file, priv, cmd);
->   	if (ret)
->   		return ret;
->   
-> @@ -128,6 +125,57 @@ static int vidioc_decoder_cmd(struct file *file, void *priv,
->   	return 0;
->   }
->   
-> +static int stateless_try_decoder_cmd(struct file *file, void *priv, struct v4l2_decoder_cmd *cmd)
-> +{
-> +	return v4l2_m2m_ioctl_stateless_try_decoder_cmd(file, priv, cmd);
-> +}
-> +
-> +static int stateless_decoder_cmd(struct file *file, void *priv, struct v4l2_decoder_cmd *cmd)
-> +{
-> +	struct mtk_vcodec_dec_ctx *ctx = fh_to_dec_ctx(priv);
-> +	int ret;
-> +
-> +	ret = v4l2_m2m_ioctl_stateless_try_decoder_cmd(file, priv, cmd);
-> +	if (ret)
-> +		return ret;
-> +
-> +	mtk_v4l2_vdec_dbg(3, ctx, "decoder cmd=%u", cmd->cmd);
-> +	switch (cmd->cmd) {
-> +	case V4L2_DEC_CMD_FLUSH:
-> +		/*
-> +		 * If the flag of the output buffer is equals V4L2_BUF_FLAG_M2M_HOLD_CAPTURE_BUF,
-> +		 * this command will prevent dequeueing the capture buffer containing the last
-> +		 * decoded frame. Or do nothing
-> +		 */
-> +		break;
-> +	default:
-> +		mtk_v4l2_vdec_err(ctx, "invalid stateless decoder cmd=%u", cmd->cmd);
-> +		return -EINVAL;
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static int vidioc_try_decoder_cmd(struct file *file, void *priv, struct v4l2_decoder_cmd *cmd)
-> +{
-> +	struct mtk_vcodec_dec_ctx *ctx = fh_to_dec_ctx(priv);
-> +
-> +	if (ctx->dev->vdec_pdata->uses_stateless_api)
-> +		return stateless_try_decoder_cmd(file, priv, cmd);
-> +
-> +	return stateful_try_decoder_cmd(file, priv, cmd);
-> +}
-> +
-> +static int vidioc_decoder_cmd(struct file *file, void *priv, struct v4l2_decoder_cmd *cmd)
-> +{
-> +	struct mtk_vcodec_dec_ctx *ctx = fh_to_dec_ctx(priv);
-> +
-> +	if (ctx->dev->vdec_pdata->uses_stateless_api)
-> +		return stateless_decoder_cmd(file, priv, cmd);
-> +
-> +	return stateful_decoder_cmd(file, priv, cmd);
-> +}
-> +
->   void mtk_vdec_unlock(struct mtk_vcodec_dec_ctx *ctx)
->   {
->   	mutex_unlock(&ctx->dev->dec_mutex[ctx->hw_id]);
-
-
+> regards Frank
 
 
