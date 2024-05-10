@@ -4,63 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DF24C25B10
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 May 2024 06:22:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8F70C25B4F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 May 2024 07:43:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=F7PRYWugpBBv/gpZ3rVIVHb57uxHn2I1FQ+P58C7EUg=; b=zJEFeq8G5quHooPIoJ/s3jN70o
-	7lEoIzJhF/PW87UxoiCA1mwPIpZTWeNK9W1BhovKZ/AshUwTaQhXKUEb6gEItW/u/TU8d5Atr11bL
-	UFsHU/ntgRigqTIgR826CDBLzWyOBcn/MTs/HEcQmhTH6xNcV9LUvlZ+RLiN12BMs982yU0Fi7NuT
-	L5wZRxiEeqJ8YVo/TCvjcqgIAkJ3kkvEOf+VR0S0+Uqh4gYeq3JTJ9pAgF1Yvb8h3WFxwvYvZOlXG
-	2Lb48dncr8BPiZf9RSVcYG4yOzlRhZOg3F0YokyxKD0QNyzeHytZvfaoUv/W2qJUSZQ+4i2yvvsbO
-	eiXSRuMg==;
+	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=niuXEqqR8RnV+jmqddfR0pqtgAFtRJIUEsYODsA2d0w=; b=jtRztlnM8qRBxcfzlK2nZOzzzY
+	55+R3FzISRWJtBD/qku82ed3d00Ytig30Cj7enFi0LLq5yqONzCFGRgpv7nFIbPlGSbVLv+bznQG9
+	rCV4FAr/U84EVEdow2MCkglyc3PQltu54ZU9pnCpBX7G9QJM/i9l75ywrSEEbDHVP799tKpaiD8j2
+	uf1TiqTMOEtEBV41wteb7NJq/IhzRqSh7FVvcLqNlF0ABr/tW7LzCFIYuk6IlB9d1g9fBC9k92KCy
+	4MHM9cyy5Ro9hLdlDoAKUjGyim2bmqKs5ehUZJbUdlQDmLuTmjVHSpTHDpdHnp9yQWTVLH0SROZqN
+	AV1yRDIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s5Je3-00000004C75-3ucG;
-	Fri, 10 May 2024 06:22:15 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1s5KuJ-00000004PTE-2hMO;
+	Fri, 10 May 2024 07:43:07 +0000
+Received: from mail.tradeharmony.pl ([5.196.29.197])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s5Jdy-00000004C63-3diN;
-	Fri, 10 May 2024 06:22:12 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 50A9C61E1B;
-	Fri, 10 May 2024 06:22:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 464C2C113CC;
-	Fri, 10 May 2024 06:22:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1715322128;
-	bh=T9jRIkRpc7yRgY2Mi79GUCF2sA7gPb2fWldAOAEDO/E=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=KdNs4fcZdoKnBhQbc27T8hwMl6ahthARRP72sHArwK+IaXVrcuUSnsR0QMVpHlS02
-	 ofHYXAFj3fImM0nt1Z0L5esAnNO+Bi4CgQCkFAb1Dox3AJtQHUjmXipHvRjLPmcG53
-	 OSND6iGiKvjPNNwBK/b1lPFPfn/IjqUF59+qNkkoyo5+u6j4ogw61iIuAhPaBYVIUB
-	 kKB9r7h8eDEmDNlrRHua+FC8QZ0SQsCgs494A7axCiVFXtrR3gRBunG8kB3uvKwie5
-	 Ni03D4wiEs020UF0hXl2hCSwrpNvNZHhH1FkDkbJdNCOvV7C0hvsc586RTEAP2i7Gp
-	 /isBY25dzuVlw==
-From: Mark Brown <broonie@kernel.org>
-To: Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, 
- Takashi Iwai <tiwai@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Jiaxin Yu <jiaxin.yu@mediatek.com>, Hsin-Te Yuan <yuanhsinte@chromium.org>
-Cc: linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-In-Reply-To: <20240509-8192-tdm-v1-1-530b54645763@chromium.org>
-References: <20240509-8192-tdm-v1-1-530b54645763@chromium.org>
-Subject: Re: [PATCH] ASoC: mediatek: mt8192: fix register configuration for
- tdm
-Message-Id: <171532212481.2044808.8204957750366408255.b4-ty@kernel.org>
-Date: Fri, 10 May 2024 07:22:04 +0100
+	id 1s5KuD-00000004PSA-2i0Y
+	for linux-mediatek@lists.infradead.org;
+	Fri, 10 May 2024 07:43:05 +0000
+Received: by mail.tradeharmony.pl (Postfix, from userid 1002)
+	id A720B25E7B; Fri, 10 May 2024 09:41:28 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tradeharmony.pl;
+	s=mail; t=1715326906;
+	bh=niuXEqqR8RnV+jmqddfR0pqtgAFtRJIUEsYODsA2d0w=;
+	h=Date:From:To:Subject:From;
+	b=c1l0h4QG7U5QDKtGUXRsgM471jbISCDWfRAw+mcR1TP0XXsv3/mbS8GE0VcoCuhYa
+	 BHwnWmrlcrIQiv8xRyq44n3wQH3TYYC4jd0Pu0cd31DDUvRUJyI3hZyI4JjdcL5+YZ
+	 zU9t2KEh6CAY1qFfeOspsBdoeQBLvTO/dv3lTAIjIkFAma8SPLFNDpuQrfKAxIx98Q
+	 k35vQijeajB7btmZabqOqfrePYWzcm/ueR9XNM5N/VUtsXozQiCGSbdTrZPZHP7XTF
+	 H6Kn65gbhxVZ5z21A18jRI5b3IxElSijBfaMloLWR2YsRI8AO1A7zRJ0LdhdGa/RLo
+	 edL/OF0X5zQPw==
+Received: by mail.tradeharmony.pl for <linux-mediatek@lists.infradead.org>; Fri, 10 May 2024 07:41:14 GMT
+Message-ID: <20240510084500-0.1.67.2bt3a.0.64o86cl8dd@tradeharmony.pl>
+Date: Fri, 10 May 2024 07:41:14 GMT
+From: "Karol Michun" <karol.michun@tradeharmony.pl>
+To: <linux-mediatek@lists.infradead.org>
+Subject: W sprawie samochodu 
+X-Mailer: mail.tradeharmony.pl
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.14-dev
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240509_232211_012382_3A6BFDBC 
-X-CRM114-Status: GOOD (  11.92  )
+X-CRM114-CacheID: sfid-20240510_004303_567195_ECBCDD85 
+X-CRM114-Status: UNSURE (   0.23  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,38 +67,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 09 May 2024 07:31:29 +0000, Hsin-Te Yuan wrote:
-> For DSP_A, data is a BCK cycle behind LRCK trigger edge. For DSP_B, this
-> delay doesn't exist. Fix the delay configuration to match the standard.
-> 
-> 
+Dzie=C5=84 dobry,
 
-Applied to
+chcieliby=C5=9Bmy zapewni=C4=87 Pa=C5=84stwu kompleksowe rozwi=C4=85zania=
+, je=C5=9Bli chodzi o system monitoringu GPS.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+Precyzyjne monitorowanie pojazd=C3=B3w na mapach cyfrowych, =C5=9Bledzeni=
+e ich parametr=C3=B3w eksploatacyjnych w czasie rzeczywistym oraz kontrol=
+a paliwa to kluczowe funkcjonalno=C5=9Bci naszego systemu.=20
 
-Thanks!
+Organizowanie pracy pracownik=C3=B3w jest dzi=C4=99ki temu prostsze i bar=
+dziej efektywne, a oszcz=C4=99dno=C5=9Bci i optymalizacja w zakresie pono=
+szonych koszt=C3=B3w, maj=C4=85 dla ka=C5=BCdego przedsi=C4=99biorcy ogro=
+mne znaczenie.
 
-[1/1] ASoC: mediatek: mt8192: fix register configuration for tdm
-      commit: a85ed162f0efcfdd664954414a05d1d560cc95dc
+Dopasujemy nasz=C4=85 ofert=C4=99 do Pa=C5=84stwa oczekiwa=C5=84 i potrze=
+b organizacji. Czy mogliby=C5=9Bmy porozmawia=C4=87 o naszej propozycji?=20
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
+Pozdrawiam
+Karol Michun
 
