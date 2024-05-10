@@ -4,98 +4,236 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEE0BC25B10
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 May 2024 08:30:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B06FBC25B4F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 May 2024 09:35:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:From:
-	Subject:Message-ID:References:Mime-Version:In-Reply-To:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1rgOzgujhnvYD1hl94e4qkSiu3O2GWcZAN3PDCbOvIw=; b=Lpzoj1eLwlLQv0Ib/hBe6+twY8
-	JL49m+csZL23eIPe3fxQSlE1HdLvYrigeR2jn858XenFB74J09NKrxVHfjhq9OJA+B0Ib/ToTPM1N
-	JnLfuuEDIsQe2VHzsrG+XVkEpBgpj9/GDy5ArbdoXgch08pIesp6vZ+Vn060Y6uPEUV+2ExyRTrig
-	FnvbxysU3kNHVLeE9kqjqvlJonyIUTCM7pAfOhG/QBekzMjbhADR9u8L5/OZ2g+DqMH/e8CYgjAJH
-	iHO8GT7daGzga6WfK+4pePU3qz6WDYJgrFAQPdeOpOwJ8ys0PDAyhKHSPISpvZ0+kZD/9oQGGOVbz
-	jdk3xLtw==;
+	bh=g8HEjFbY8fwEa4PN0znUpJVPQsEiuhU8uzvLkgj8iUI=; b=K/nNzTL4TTrMCutYCtrQ47sExz
+	OxcVVb43BmYeQGM6ohLweNr1OIt4FkVfMN0KMJ/zapmqrjC68wIhAr47c4J5sLw1OgWDv06zwHtgW
+	UQtNKJlqF225h2RI4Y2QbNTrdoUPT5xcIU8il1Hs/SixqQLmuDu2JiqoY9XulVB5nPgiwnEDumK3f
+	XZ8CZGrbcCGQ1VdcF0OKUmrRvr0Eui4GH5UIvl6DpZ5XJBH3yzdxnfvhY3uuW86803H0sBhMQMLJM
+	g30o/vjqvsZQoH/jav0+N+k1anETECcoudm2IyGLDwb4j/UFNWIYFD9CmIJkZB2Rq7t9DYt3fA1DH
+	yKWZuk2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s5Ldt-00000004VNT-12xQ;
-	Fri, 10 May 2024 08:30:13 +0000
-Received: from mail-yb1-xb49.google.com ([2607:f8b0:4864:20::b49])
+	id 1s5Mee-00000004iQu-2upe;
+	Fri, 10 May 2024 09:35:04 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s5Ldf-00000004VCL-1YWU
-	for linux-mediatek@lists.infradead.org;
-	Fri, 10 May 2024 08:30:09 +0000
-Received: by mail-yb1-xb49.google.com with SMTP id 3f1490d57ef6-de8b6847956so3761150276.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 10 May 2024 01:29:41 -0700 (PDT)
+	id 1s5MeY-00000004iOE-2kEr;
+	Fri, 10 May 2024 09:35:00 +0000
+X-UUID: 8c7a5dfa0eb011ef9a78ddf43a9225dc-20240510
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=g8HEjFbY8fwEa4PN0znUpJVPQsEiuhU8uzvLkgj8iUI=;
+	b=hJ0AAsuGOhlBVqtP/+dVRq4M1MLPpmsn7C4vyo6Z23C9oCQxJLSJ6iKGYwW9V2+g8O55oX7RpioZaeNzs8yGJucB98PedZXJG/vm71dwDGvLWrXjFoK5BcmEzvvCbT+cWCpgPJG2gN5Jkeu7mBGfNwYBz7CezXpWRy1QQHLlsy4=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.38,REQID:6282ff90-acbb-494e-a189-c083350af122,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:82c5f88,CLOUDID:3db09892-e2c0-40b0-a8fe-7c7e47299109,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 8c7a5dfa0eb011ef9a78ddf43a9225dc-20240510
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
+	(envelope-from <ck.hu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1169901861; Fri, 10 May 2024 02:34:50 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Fri, 10 May 2024 17:34:47 +0800
+Received: from APC01-PSA-obe.outbound.protection.outlook.com (172.21.101.237)
+ by mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 10 May 2024 17:34:47 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=IC+fBSpVICcdbXJjZrz/23BkMIjyTEJw7KuSjN4/HA991AJFUJ+gasUs7BauBAOuOM4lNpoMc0wmme5xYYCwhyF/beZssOE7YmyfSep2OAbeRNGCmZ+QjJotTAeMX6P8p7kPz87s4gixqcF5DvFVVfp+S4FibrHx7lKxJPDhGwF55jC8F25VPuoy8qVujhnrBg2LiI2BOeUUK5SyVSTEtdc6MEAv5OQbBnK5g6sA00j+G/NU7GBnyvgAwXIzAHjR+dL6qMLGJsirI2YUnqcurzB3bAGQlqqI4RtzKx7DRpOCU5DRnVwCUa6DDbGplFRIY0o8le1ZfE7GWqODiwS/Pw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=g8HEjFbY8fwEa4PN0znUpJVPQsEiuhU8uzvLkgj8iUI=;
+ b=RHlSBfhpN8Mo1jHH8yHwnT5CnbzE9u4n51yDpqAnKQa1ouzkyBDe0LeEDgExOcxCWuIQaPMSPXuEy5QtcVWQvlew11JfMOhKg6scb2Bn3lEDhCJ4yj/o/YTzcud0dMBW4J95/4qGiiWxDg39DBg1xvd1mBnBaQT+b/5l8B67SJSDZUud6pzOp3XXACrG7/rnyH0Axu9xCPgvuRUEpkzcVcxX9vMZvPbtQR9d5bMuYGtGZnxL2qkUB9TBw3lhilW+ksEA93n5VCvT8avwKz1oHDahjIy9lPUmZWS+rlqPqXYAI36Ua7iDKx8kiXK8EKClUTrwWq/GMvpC1aa52/EiNg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1715329781; x=1715934581; darn=lists.infradead.org;
-        h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
-         :date:from:to:cc:subject:date:message-id:reply-to;
-        bh=1rgOzgujhnvYD1hl94e4qkSiu3O2GWcZAN3PDCbOvIw=;
-        b=Cq0WMFajfrBav8Avs/m116SkMMtmbPGPKRnyXjuC4q+wcS1n+t1zMvW9ymkIlvfEK6
-         6pk43/DHuRFjDmWiHFliIGWkpTOVF7PWcMdhshbLNSS2S4AohPzGLCCtiKNblmejlwQD
-         ng8F5jj5V//2N7PpUzmTGvplef92tPQh0CzJ/OAHM6rkBGcz3Smv5LnJnrJhU0N7b/so
-         Qnk9Q26NQ0yylZ8/BNyap3PTOkpvIR883wu+KykQbBjATZEHBr2gBoQMUnujq8gAc0bc
-         VjFJ1rr1SY/oYUSrbCpY9vd+b/Tk/MxNHUDG22iATyJll1m6hb9l7J7sjFAvhFUq5Tck
-         dphA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1715329781; x=1715934581;
-        h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
-         :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=1rgOzgujhnvYD1hl94e4qkSiu3O2GWcZAN3PDCbOvIw=;
-        b=Zm0at0rngMvBXuUcHFx70j3a8qc4jDhFVPEhUQOcknX9iPgf4T4P3lEVOg6do4YHhe
-         SKZ08LBpcDcy3ANdcHTglmPxdPYD7vNTQgNvqxtOeFW7N4xuGmEQutMPI1cc736s0Nef
-         eOm16tRDlnDHk6MjH31SmYcEKguiVEECFpUecI4JzcThQpi1+oVbfArU8xvyFX8R/ruN
-         JbD5o6kAZNIGMGKw/spuXFgliyuQMQXBNuA+yjtYs3mnL1s/q2nrWHDcE+05e4nF5cej
-         llEc7huwxAmaH1v+lll8q+bpMff7/z5cdAMdmZd8E+3SM3NR35+tMyGv0uqBGXno/Km/
-         Lzfg==
-X-Forwarded-Encrypted: i=1; AJvYcCVOnt+4A0WqV/r365TChfWIfpzECii/EvIKm7kg/KFCYCw9cr3TUVjHw04ffFf/4Zb9KhCdGlBvrTkOpBfwcHjiYoKSpzXy+nxPne9z9qiRc7f7
-X-Gm-Message-State: AOJu0Yx2R0/Ps5yjJ+B2sn214jjFSfNMVH3m7RGBkU1GzRH+Y8JtCnOo
-	SF+muTUclNRprEASnbZzDJQ5GGxig6mHczYLWehBCl6wOZEzLM6JDvHjMK1qp7n5vdMaP/4J+5a
-	aEgQHqEei6Q==
-X-Google-Smtp-Source: AGHT+IErXb5g6AungsmPytlAilYvIjOD/4Po0VHprtzjyDLrHlK63Zecx3FqXAaxAukl2U9Tm3cDQAPzGKMp9Q==
-X-Received: from joychakr.c.googlers.com ([fda3:e722:ac3:cc00:4f:4b78:c0a8:6ea])
- (user=joychakr job=sendgmr) by 2002:a25:c58a:0:b0:de5:a44c:25af with SMTP id
- 3f1490d57ef6-debcfccdc58mr1147167276.5.1715329780959; Fri, 10 May 2024
- 01:29:40 -0700 (PDT)
-Date: Fri, 10 May 2024 08:29:29 +0000
-In-Reply-To: <20240510082929.3792559-1-joychakr@google.com>
-Mime-Version: 1.0
-References: <20240510082929.3792559-1-joychakr@google.com>
-X-Mailer: git-send-email 2.45.0.118.g7fe29c98d7-goog
-Message-ID: <20240510082929.3792559-2-joychakr@google.com>
-Subject: [PATCH v3 1/1] nvmem: Change return type of reg read/write to ssize_t
-From: Joy Chakraborty <joychakr@google.com>
-To: Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>, 
-	Alyssa Rosenzweig <alyssa@rosenzweig.io>, Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, 
-	Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
-	NXP Linux Team <linux-imx@nxp.com>, Vladimir Zapolskiy <vz@mleia.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, 
-	Jerome Brunet <jbrunet@baylibre.com>, 
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
-	Claudiu Beznea <claudiu.beznea@tuxon.dev>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Orson Zhai <orsonzhai@gmail.com>, 
-	Baolin Wang <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>, 
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
-	Vincent Shih <vincent.sunplus@gmail.com>, Chen-Yu Tsai <wens@csie.org>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
-	Rafal Milecki <rafal@milecki.pl>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, 
-	Masami Hiramatsu <mhiramat@kernel.org>, Michal Simek <michal.simek@amd.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, asahi@lists.linux.dev, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev, 
-	manugautam@google.com, Joy Chakraborty <joychakr@google.com>
-Content-Type: text/plain; charset="UTF-8"
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=g8HEjFbY8fwEa4PN0znUpJVPQsEiuhU8uzvLkgj8iUI=;
+ b=W1QBGUtLRJSJzHCWj8F58/bYEgRy0eh3jCqFnS4CDGWFKTqDirpVaoLr9JsQFHvUzU/UYQd6DGrVDvBnZUCrUT/dPdvqGoFkgAVg/TZ+8G8W9X3VAf8JhtEPyfc07eoDjGz7Fbq27tXhAhKWo6QtkWk4n0Nh1xuvAM3yBdPKCRQ=
+Received: from TYZPR03MB6624.apcprd03.prod.outlook.com (2603:1096:400:1f4::13)
+ by JH0PR03MB8949.apcprd03.prod.outlook.com (2603:1096:990:87::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7587.15; Fri, 10 May
+ 2024 09:34:44 +0000
+Received: from TYZPR03MB6624.apcprd03.prod.outlook.com
+ ([fe80::9ce6:1e85:c4a7:2a54]) by TYZPR03MB6624.apcprd03.prod.outlook.com
+ ([fe80::9ce6:1e85:c4a7:2a54%4]) with mapi id 15.20.7587.011; Fri, 10 May 2024
+ 09:34:44 +0000
+From: =?utf-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>
+To: "angelogioacchino.delregno@collabora.com"
+	<angelogioacchino.delregno@collabora.com>, "chunkuang.hu@kernel.org"
+	<chunkuang.hu@kernel.org>
+CC: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"wenst@chromium.org" <wenst@chromium.org>, "devicetree@vger.kernel.org"
+	<devicetree@vger.kernel.org>, "tzimmermann@suse.de" <tzimmermann@suse.de>,
+	=?utf-8?B?U2hhd24gU3VuZyAo5a6L5a2d6KyZKQ==?= <Shawn.Sung@mediatek.com>,
+	"mripard@kernel.org" <mripard@kernel.org>,
+	=?utf-8?B?Sml0YW8gU2hpICjnn7PorrDmtpsp?= <jitao.shi@mediatek.com>,
+	"daniel@ffwll.ch" <daniel@ffwll.ch>, "p.zabel@pengutronix.de"
+	<p.zabel@pengutronix.de>, "conor+dt@kernel.org" <conor+dt@kernel.org>,
+	"maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
+	"robh@kernel.org" <robh@kernel.org>, "dri-devel@lists.freedesktop.org"
+	<dri-devel@lists.freedesktop.org>, "airlied@gmail.com" <airlied@gmail.com>,
+	"krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
+	"kernel@collabora.com" <kernel@collabora.com>, "matthias.bgg@gmail.com"
+	<matthias.bgg@gmail.com>, =?utf-8?B?WXUtY2hhbmcgTGVlICjmnY7nprnnkosp?=
+	<Yu-chang.Lee@mediatek.com>, "linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>
+Subject: Re: [PATCH v2 2/3] dt-bindings: arm: mediatek: mmsys: Add OF graph
+ support for board path
+Thread-Topic: [PATCH v2 2/3] dt-bindings: arm: mediatek: mmsys: Add OF graph
+ support for board path
+Thread-Index: AQHainXPkoeeapgKhkmHjjX1T7SS9LF4WlSAgAtsa4CAB7xpgIAAd5qAgAEgaYCAAGApgIABFxEAgAA+yYCAAZR5gA==
+Date: Fri, 10 May 2024 09:34:44 +0000
+Message-ID: <de23d55dd1c84bf9b04119014c3785189ce6f9da.camel@mediatek.com>
+References: <20240409120211.321153-1-angelogioacchino.delregno@collabora.com>
+	 <20240409120211.321153-3-angelogioacchino.delregno@collabora.com>
+	 <aa7e3bcf70383e563a65919f924ec2e5e4cd778c.camel@mediatek.com>
+	 <becdc2e5-4a1d-4280-b6f8-78d4903be283@collabora.com>
+	 <4dfb09b9c437ab2baa0898eca13a43fd7475047a.camel@mediatek.com>
+	 <46347f5d-e09b-4e83-a5a2-e12407f442a4@collabora.com>
+	 <847e1a84b532956f697d24014d684c86f0b76f03.camel@mediatek.com>
+	 <cbf73111-a6cf-47da-9563-89d49fbdb17d@collabora.com>
+	 <ee721fd3339f8b3a25464ca57ca192343a51e514.camel@mediatek.com>
+	 <34caf545-1fc9-4905-a82f-2596f053b3ff@collabora.com>
+In-Reply-To: <34caf545-1fc9-4905-a82f-2596f053b3ff@collabora.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: TYZPR03MB6624:EE_|JH0PR03MB8949:EE_
+x-ms-office365-filtering-correlation-id: d467bb8a-6b9d-4291-d76b-08dc70d46ce0
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;ARA:13230031|7416005|376005|1800799015|366007|38070700009;
+x-microsoft-antispam-message-info: =?utf-8?B?MnBqSDRheGlEVWFSVStpK2srdlBQcVpkWFluMWJnUnhvVlNkN0RvVXVPSjFa?=
+ =?utf-8?B?dU8vUkZldHZuL252Rnkva2pudE9RMGlsUDFYZHkyc0dBeGx5cXpubW5TTDJt?=
+ =?utf-8?B?UXhmN0EvbjVYTU9QU1hOaUJabXhVK2RvK0lWS1lETEtwTnFuZnBENUZDUmVP?=
+ =?utf-8?B?YWdqR2t2T3hWaTI2K29PTnRGRG1seExvcDFkeWtBaDV4WENJbnkza0J3SVF1?=
+ =?utf-8?B?Z2ZvYjlsVVA1Ymw4czd0enFXeDl6VzE4eFJLRlhzVHZOY2hxd09CN3BoaURZ?=
+ =?utf-8?B?RjZTbllRaTVIRnV4Z2VKNHNOLzh5R0lrVHFrWEhzczBYcEh2OUxWNEo4bjdT?=
+ =?utf-8?B?ZlY4Z3hvTmV1Lzh4czdzdG50eE41dGVDN1ZNb0xNTm1EWW41bS9QTWhZWGo5?=
+ =?utf-8?B?dXIyMDNqczIyVzJ6WVdzWU1yMVVDYVJBN1VtRDYxK0JNbS8xV0tUWFhLZWJG?=
+ =?utf-8?B?cEVMYXVFRktYWVVDSXZDK2ZMVEV3T1RpTEFoaEFuS01tRS9BTno5QWdsVlo4?=
+ =?utf-8?B?dWU2SzludENnVkF2Nk1YYnJvd1pTeUtRbEx5WmlFOFo5ckFPRjNEQkZHeXZm?=
+ =?utf-8?B?KzV0Wko1Q25JYVJGQ0tiZHJoZkdzQWV5OGYzZkdyU1BCempMc2tOdDArTEFY?=
+ =?utf-8?B?eFBMdVVFVkJRUC9iWHhPVW8vT0dIczljSUR2REt5NTRZbXNDcFVkRnQ4bHFq?=
+ =?utf-8?B?MU15a0ZRbVIyNWVzN1lRSnFWTXF6dFVZUTR3Vm53L2NxazFWSkdYZGwvRWNO?=
+ =?utf-8?B?U2tWa2tXZzFaL2UzMGtQVm81RURGa2hDbng4YmZ4d3ZLcEFOazF0bEZlTXph?=
+ =?utf-8?B?YStEdGxNdEdzSkJvakJYT2w1NHNzem9FbEpET2pUMUVnMGVxR2hCemF1L2I3?=
+ =?utf-8?B?cDFyK2V0MlNYVldmQ1pvTnFhUXBNeDBSSHVNdHJ6QitjdzZnN2h2WFY5ckdY?=
+ =?utf-8?B?OUs5dXU2bGhYQnlITFd4aGdPN05lVWVkMko0UzNXZDNXb3hsb3pNOCs2c0JR?=
+ =?utf-8?B?Yjc5bXJPd1drYWJ4RENzeDJHS1RDR1J5Tjd3Z3c3aC9sRjhzUFFFNjVlQTNy?=
+ =?utf-8?B?NS9RY1BBLzk2a3loUXBKSEpFaktrRVBLcE50Q0gwaTdGTlVIK0dkV1ZBNE5m?=
+ =?utf-8?B?dFVYVFdxVVBjMkdwcjNETkNlc1A2eDZLMFB0d0Y0KzVhYmRPK2ZFQ3VZVzVZ?=
+ =?utf-8?B?N2lYNFBYKy9ldUk4bVpxNlErVUJ0eVB3VjNrV3JqcHZZdHdNVXlCMVYxMjhP?=
+ =?utf-8?B?SjJLWUwvdmVpeURLZ090RHQxMEU0OUFPWmhGWHo1eGE1MHl4WmcwQWR3dGNW?=
+ =?utf-8?B?b09ZZ2dBM3Y2TTJXRTRYUmhRSzNoYURUL1I0VFNJVS95b2d2RmNnZm5GRUU1?=
+ =?utf-8?B?Q1JGSkxDWDE4RHNLNGh0TkNFRTlEVnBUV2p2VElZN2NFZzdSa1d4VEE2Z1o0?=
+ =?utf-8?B?YWpTZmdGTmMxTlNvdHZwS2F1a1U5M1NORXNoSnA1OVFxdzd4b0Y1VzM2bG52?=
+ =?utf-8?B?UlNlUUpwd2tCSzZCdHNTMHN4T0hhUlZpdGI0YTUyOFVlOXc0Tm03anR3WjNm?=
+ =?utf-8?B?NjMyazFCT0ViNTdnT0NpTWI3N0ZEakFTUzZWUkQxa0xkd2NueDYyV1RCd2o4?=
+ =?utf-8?B?UTc3blNUeEpXMUYrK3E1L1FZSnVWOWg5bzFFT1NxcFV1SjVrQlNXaU11WmN6?=
+ =?utf-8?B?TDhoa0ZkRXpnYllYQzVmWUxpUGx2UnAwSnJEald5clZ1N1poKzQ0aTJpVGxD?=
+ =?utf-8?B?MTFIVVRiTFZMUWhWakhNSWxrQ0JYa3RTeXA4SzNsekx6V2JLMTQ1Zjc4Y0Vz?=
+ =?utf-8?B?cnE0UFVSa1lwdEdLVHk5UT09?=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB6624.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(7416005)(376005)(1800799015)(366007)(38070700009);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?bzZJVnJINlVPQzE0dnJHay85WEVpTDhlam92OXZ1WVpOd1hlU1BBUEJTNnBx?=
+ =?utf-8?B?R0RadVppSmdtZVJCUWRnREY0a3Q4TEN1L0F4WUhRSVNXYjV6NUo5dUFQZHE1?=
+ =?utf-8?B?dFZMU2RFSXQySUhDdTNkcHZVeW1UNWUyeHVDamtjUTYrQWFIOXR6bFdqMVJO?=
+ =?utf-8?B?TCt3a1BxaDcwUGJ6OHN0bW9BNkZqWUVLRHJQWTZtZ0YzUEVzVFhGajN1M21V?=
+ =?utf-8?B?SmVWU05nTHJ4VmRHaXZsbExLRy9BSG9oajYzcis4NFpIcjdVRWoydGl5U3hk?=
+ =?utf-8?B?eGtIUklXelREM2ZmU0N6b29TYW1xcTBmVlhqTWJ5SVJWQzEyMXRQTjVETXll?=
+ =?utf-8?B?VjBsTGpqUWZFV0VVWXpVT3YrWW9PTFBuZmwwckhTeWFyTjRwWkJXY1ZaUXRZ?=
+ =?utf-8?B?NTdCU1h1RXNKUDJZWHF1bHRvcXZUVmYwUEx6aHlkRU1QclZaS0ZSWHZBS2dN?=
+ =?utf-8?B?U05RekcvTTBZN3NKRUM5VE1kQlk4T1RZUVpoK3FleUdiNzFHODBMQjNTbTJq?=
+ =?utf-8?B?ZjFpRXhObWdHRjkrNXFxRGxiR3lFU3pDNkNidis5QUxDSjBRVkV3bVpuTnVn?=
+ =?utf-8?B?ckFOaGQ5ZWVuUjlpVTFPTU14S1Q4M2NtRU9lZzBWVFcrd3grWjBGajlCU3hw?=
+ =?utf-8?B?UnY4Y1I2aS9sMFVMbUpHZ3Nmd1kzMXRQU2Q1NmVCbWJ2Q1JmekY3eEpvc1VU?=
+ =?utf-8?B?RnFRUG82Z0tMaExBTTAxNGp6VnVVTHNzM21YanEyVzR3UEZDeTJTaXVRMGY5?=
+ =?utf-8?B?Rmk1NWxKNmhXcTNQUzJFVGxBMXk1MjN4T3dSaWR4SDRncy9MaFlUbWVjYzFS?=
+ =?utf-8?B?dFYrSzljbWZLR29STllUZVB1Y0lFVHpqOFZteU5hbEQzbVJNWWFqMEk3cWxE?=
+ =?utf-8?B?YXFTcWlpL0hhaDBjRnZsNHpMU0FtSFAvWnQvYWJxbFQxVEZQaDNWMFFOQ0Z2?=
+ =?utf-8?B?NUlLeTdodERSZ1VoamY1cjJFY3RPc3lkang0SlhoYWdLUVlsUzhHSURSU3M2?=
+ =?utf-8?B?ZlJuaGhZZDJiUFdnT1dsbHVjOC9rbmJGOVJBeWpHNytLV0dqTmNjeC85Z05P?=
+ =?utf-8?B?QlpYK3VWOUF5UFhFZXE5UDg5MSsvZ2tKS2VhV3hCdWVaY0dkQmV6UTJuV3p5?=
+ =?utf-8?B?QmxhSHoxQ2ttclFXR2dxelo4dzJDbGVjWmpaQUVIbDNRR0Y2UElxRExWMWh4?=
+ =?utf-8?B?OWVmWmk1MjhpS1RxdWJpN1lkTkh4NEhITlk3SUxxVi81M0JRelJZa1YwMlpJ?=
+ =?utf-8?B?T3h5TWRMVC9jaEkydkIzQ3pDaWp0Z3pMOVJqWmZ0cThEdVFhUURNOGUybnlu?=
+ =?utf-8?B?VEEybTN6WXFEeVovZHNuQ1VPZUorVFNvQ2tJejN4SG1Tajd4R1h2YWtRcmtn?=
+ =?utf-8?B?OGk0ZmxtOXhBMktUdzI4VWticVd0ek5kdjl6amVhNkI2Q0VUQVdzYlJJZ0sr?=
+ =?utf-8?B?dFk2R0VGekNBdWdLblZ4Y3luNnVBNG9HdlFRRHBPSW5hV25tRkNENStuVUdq?=
+ =?utf-8?B?UTg4VThXQ0t3VEFZK0gzcW9ESUhLSyt0TGdFQk9EZ1FuelQwa2kyUFNRcVhE?=
+ =?utf-8?B?Q3dkY1dQaEwyVEMxWFpDWERRT1l5VFVCcHBqK1E3aEVPRU5iNkJjYloycmNL?=
+ =?utf-8?B?ZUlsSHB2R2Z0QUo5QVhvbGxzWGRSRFpXeVZQYjdVa0I2V0F0dmszL2pCYzhZ?=
+ =?utf-8?B?aEU2d0dta0RURkg4ZlNqZnNzRHJsbTFHbVY1UCt1S3RPOFVhQzVzRzNyS1Nv?=
+ =?utf-8?B?S05MOE9BQXN5YXJ5dVJ2NnJEN0dwRDdHbG4zNnZWN2swVXFQWGxKdzlXbDlm?=
+ =?utf-8?B?bHhsWkVKM3I3Q0JiY1JSdUxiUUpJQ3lvVUIxM2l3Ym9ZMFA2OTEvT2dRMzQ2?=
+ =?utf-8?B?U3pSZWwyTGE5Z043aTJpMnpSS2JWRGczWVFRN2Z3UTVPam1JQVdHTytqZmZU?=
+ =?utf-8?B?S21idjlEK0xmVE1zY0NmZmlwWUlYcWVLSzlxVmRGbHFUMXNWRzRwTjA1cFIv?=
+ =?utf-8?B?TlVheWlsMExmK1FmZ2tKTnZnd2YzMnNBaGMyM2FnVUtXanhUREJ3Rm90ZElp?=
+ =?utf-8?B?bkl2TVUyajRrdGlPWHRBUFp2ditKWDJGZUovbmpNSk5XSm5TNndKcytxQ0M5?=
+ =?utf-8?Q?fzei4Bv2Lvurf+rt7g+ez7tCS?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <CA0C17037CBE6743AA0AAE4288FCBF5E@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB6624.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: d467bb8a-6b9d-4291-d76b-08dc70d46ce0
+X-MS-Exchange-CrossTenant-originalarrivaltime: 10 May 2024 09:34:44.1701
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: Xc5fb2w9oUTq0Z+obrkKR7HY3PQDeejEKbbUsTMb784UwZfNsQPSS7sQqbIsZNzNcvEQKxDVdq2WDiRl3XKqCg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: JH0PR03MB8949
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--27.678400-8.000000
+X-TMASE-MatchedRID: CxmI61mtwh8NtKv7cnNXnSa1MaKuob8PofZV/2Xa0cJauByPtDznddP8
+	W0t/rMaUuF0hjaCRm7eXlSuRSjjgAR2P280ZiGmRdARARTk4h58g0UhtlIhR0bw2tvOM+/Mn/3I
+	kNzIvYoOnQFe+ESmb0znK6vsLfhdIvRezSnFjJZXRc75iroKqAjGZtPrBBPZrfmHrLgoJIlyWgG
+	h40SiSOMRM8R9ToUYStPY82M+A1uw2DJ6UHhjHQjiPEKUh+xB+KVrLOZD1BXREPdNmmPe2oPMrt
+	sTYdEzg81lPkV83tGsIjTclREIPflI3mP8aC0PB9Ib/6w+1lWS6QCTCuzfiVdr4gfya+A9UA6Oq
+	jdGfjicvNgy8MD0IfXKedVMauy+rDkYiOjmaAHaRfvUfL+585t9InWSoxyrB+Cckfm+bb6AD2qM
+	jSvib9wa5KOJY8aPdFBANMkj9p/xZT98H9cWYnIv73wEu0Nx79CFB7klVg4fagsZM0qVv13rgVH
+	QadHXfQ4eOl9sylSBHFKl/tRPdmkn4dMSWXlsdCFaAixm5eU+fM+smQZqWkI9osn8JrdJPQlw4O
+	8X7MZyNOgGT75p32Hk41aRgHEZlgFWhWut0cL2Swdo9pBBGwCDQvhfLY4eVLzNBnatH86nqriXS
+	lutGr4eGNmVNIZ7rNGETJ3dsWRze/jgBthTktMDORqgKKiYqOhJ9m53n4aD9nZJIPtHyFCmLcv0
+	/1n7Qj6kCfX0Edc7A58mVLXaqWXupOhUR/AE8iwo1o2HzwJDwZGE/+dMc1i6PLFEfB74c9Ae1UP
+	qORDqt2/peTn4i5MCVrsW5SRxagWiErfFUIB2eAiCmPx4NwMFrpUbb72MU1B0Hk1Q1KyJHtBsf5
+	/UXJWbyfuMOJ2Z13QfwsVk0UbslCGssfkpInQ==
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--27.678400-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: C63CCA99980AC2DB01604F7B6527E6921F1E639723D0AC1DADF6F1D81302F4032000:8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240510_012959_762835_1F914A17 
-X-CRM114-Status: GOOD (  26.49  )
+X-CRM114-CacheID: sfid-20240510_023458_937396_569AD8F2 
+X-CRM114-Status: GOOD (  11.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,1609 +248,330 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Change return type of reg_read() and reg_write() callback to ssize_t for
-nvmem suppliers to return number of bytes read/written to the nvmem core.
-
-Currently nvmem core assumes the amount of data read/written is equal
-to what it has requested from the supplier, this return code facilitates
-better error handling in the nvmem core.
-
-Signed-off-by: Joy Chakraborty <joychakr@google.com>
----
- drivers/nvmem/apple-efuses.c        |  7 +--
- drivers/nvmem/bcm-ocotp.c           | 12 ++---
- drivers/nvmem/brcm_nvram.c          | 10 ++--
- drivers/nvmem/core.c                | 83 +++++++++++++----------------
- drivers/nvmem/imx-iim.c             |  6 +--
- drivers/nvmem/imx-ocotp-ele.c       |  4 +-
- drivers/nvmem/imx-ocotp-scu.c       | 12 ++---
- drivers/nvmem/imx-ocotp.c           | 10 ++--
- drivers/nvmem/jz4780-efuse.c        |  7 +--
- drivers/nvmem/lan9662-otpc.c        | 12 ++---
- drivers/nvmem/layerscape-sfp.c      | 11 ++--
- drivers/nvmem/lpc18xx_eeprom.c      | 14 ++---
- drivers/nvmem/lpc18xx_otp.c         |  6 +--
- drivers/nvmem/meson-efuse.c         | 22 +++++---
- drivers/nvmem/meson-mx-efuse.c      |  6 +--
- drivers/nvmem/microchip-otpc.c      |  6 +--
- drivers/nvmem/mtk-efuse.c           |  6 +--
- drivers/nvmem/mxs-ocotp.c           |  7 +--
- drivers/nvmem/nintendo-otp.c        |  6 +--
- drivers/nvmem/qcom-spmi-sdam.c      | 12 ++---
- drivers/nvmem/qfprom.c              | 14 ++---
- drivers/nvmem/qoriq-efuse.c         |  6 +--
- drivers/nvmem/rave-sp-eeprom.c      | 18 +++----
- drivers/nvmem/rmem.c                |  4 +-
- drivers/nvmem/rockchip-efuse.c      | 19 +++----
- drivers/nvmem/rockchip-otp.c        | 19 +++----
- drivers/nvmem/sc27xx-efuse.c        |  3 +-
- drivers/nvmem/sec-qfprom.c          |  4 +-
- drivers/nvmem/snvs_lpgpr.c          | 17 +++---
- drivers/nvmem/sprd-efuse.c          |  8 +--
- drivers/nvmem/stm32-bsec-optee-ta.c | 12 ++---
- drivers/nvmem/stm32-bsec-optee-ta.h | 20 +++----
- drivers/nvmem/stm32-romem.c         | 26 ++++-----
- drivers/nvmem/sunplus-ocotp.c       |  4 +-
- drivers/nvmem/sunxi_sid.c           | 18 ++++---
- drivers/nvmem/u-boot-env.c          |  6 +--
- drivers/nvmem/uniphier-efuse.c      |  6 +--
- drivers/nvmem/vf610-ocotp.c         |  7 +--
- drivers/nvmem/zynqmp_nvmem.c        | 13 ++---
- include/linux/nvmem-provider.h      |  4 +-
- 40 files changed, 255 insertions(+), 232 deletions(-)
-
-diff --git a/drivers/nvmem/apple-efuses.c b/drivers/nvmem/apple-efuses.c
-index d3d49d22338b..c97328ee220a 100644
---- a/drivers/nvmem/apple-efuses.c
-+++ b/drivers/nvmem/apple-efuses.c
-@@ -15,10 +15,11 @@ struct apple_efuses_priv {
- 	void __iomem *fuses;
- };
- 
--static int apple_efuses_read(void *context, unsigned int offset, void *val,
--			     size_t bytes)
-+static ssize_t apple_efuses_read(void *context, unsigned int offset, void *val,
-+				 size_t bytes)
- {
- 	struct apple_efuses_priv *priv = context;
-+	size_t bytes_read = bytes;
- 	u32 *dst = val;
- 
- 	while (bytes >= sizeof(u32)) {
-@@ -27,7 +28,7 @@ static int apple_efuses_read(void *context, unsigned int offset, void *val,
- 		offset += sizeof(u32);
- 	}
- 
--	return 0;
-+	return bytes_read;
- }
- 
- static int apple_efuses_probe(struct platform_device *pdev)
-diff --git a/drivers/nvmem/bcm-ocotp.c b/drivers/nvmem/bcm-ocotp.c
-index 2490f44caa40..9435002787bd 100644
---- a/drivers/nvmem/bcm-ocotp.c
-+++ b/drivers/nvmem/bcm-ocotp.c
-@@ -148,8 +148,8 @@ static int disable_ocotp_program(void __iomem *base)
- 	return ret;
- }
- 
--static int bcm_otpc_read(void *context, unsigned int offset, void *val,
--	size_t bytes)
-+static ssize_t bcm_otpc_read(void *context, unsigned int offset, void *val,
-+			     size_t bytes)
- {
- 	struct otpc_priv *priv = context;
- 	u32 *buf = val;
-@@ -176,11 +176,11 @@ static int bcm_otpc_read(void *context, unsigned int offset, void *val,
- 		reset_start_bit(priv->base);
- 	}
- 
--	return 0;
-+	return bytes_read;
- }
- 
--static int bcm_otpc_write(void *context, unsigned int offset, void *val,
--	size_t bytes)
-+static ssize_t bcm_otpc_write(void *context, unsigned int offset, void *val,
-+			      size_t bytes)
- {
- 	struct otpc_priv *priv = context;
- 	u32 *buf = val;
-@@ -214,7 +214,7 @@ static int bcm_otpc_write(void *context, unsigned int offset, void *val,
- 
- 	disable_ocotp_program(priv->base);
- 
--	return 0;
-+	return bytes_written;
- }
- 
- static struct nvmem_config bcm_otpc_nvmem_config = {
-diff --git a/drivers/nvmem/brcm_nvram.c b/drivers/nvmem/brcm_nvram.c
-index 5cdf339cfbec..dd0e52eb12bd 100644
---- a/drivers/nvmem/brcm_nvram.c
-+++ b/drivers/nvmem/brcm_nvram.c
-@@ -46,8 +46,8 @@ struct brcm_nvram_header {
- 	__le32 config_ncdl;	/* ncdl values for memc */
- };
- 
--static int brcm_nvram_read(void *context, unsigned int offset, void *val,
--			   size_t bytes)
-+static ssize_t brcm_nvram_read(void *context, unsigned int offset, void *val,
-+			       size_t bytes)
- {
- 	struct brcm_nvram *priv = context;
- 	size_t to_copy;
-@@ -61,7 +61,11 @@ static int brcm_nvram_read(void *context, unsigned int offset, void *val,
- 
- 	memset((uint8_t *)val + to_copy, priv->padding_byte, bytes - to_copy);
- 
--	return 0;
-+	/*
-+	 * Returning bytes requested as the whole buffer is padded even if the
-+	 * requested bytes to be read is out of bounds of resource size.
-+	 */
-+	return bytes;
- }
- 
- static int brcm_nvram_copy_data(struct brcm_nvram *priv, struct platform_device *pdev)
-diff --git a/drivers/nvmem/core.c b/drivers/nvmem/core.c
-index e1ec3b7200d7..a41b29e60e58 100644
---- a/drivers/nvmem/core.c
-+++ b/drivers/nvmem/core.c
-@@ -55,8 +55,8 @@ static LIST_HEAD(nvmem_lookup_list);
- 
- static BLOCKING_NOTIFIER_HEAD(nvmem_notifier);
- 
--static int __nvmem_reg_read(struct nvmem_device *nvmem, unsigned int offset,
--			    void *val, size_t bytes)
-+static ssize_t __nvmem_reg_read(struct nvmem_device *nvmem, unsigned int offset,
-+				void *val, size_t bytes)
- {
- 	if (nvmem->reg_read)
- 		return nvmem->reg_read(nvmem->priv, offset, val, bytes);
-@@ -64,10 +64,10 @@ static int __nvmem_reg_read(struct nvmem_device *nvmem, unsigned int offset,
- 	return -EINVAL;
- }
- 
--static int __nvmem_reg_write(struct nvmem_device *nvmem, unsigned int offset,
--			     void *val, size_t bytes)
-+static ssize_t __nvmem_reg_write(struct nvmem_device *nvmem, unsigned int offset,
-+				 void *val, size_t bytes)
- {
--	int ret;
-+	ssize_t ret;
- 
- 	if (nvmem->reg_write) {
- 		gpiod_set_value_cansleep(nvmem->wp_gpio, 0);
-@@ -79,8 +79,8 @@ static int __nvmem_reg_write(struct nvmem_device *nvmem, unsigned int offset,
- 	return -EINVAL;
- }
- 
--static int nvmem_access_with_keepouts(struct nvmem_device *nvmem,
--				      unsigned int offset, void *val,
-+static ssize_t nvmem_access_with_keepouts(struct nvmem_device *nvmem,
-+					  unsigned int offset, void *val,
- 				      size_t bytes, int write)
- {
- 
-@@ -88,7 +88,7 @@ static int nvmem_access_with_keepouts(struct nvmem_device *nvmem,
- 	unsigned int kend, ksize;
- 	const struct nvmem_keepout *keepout = nvmem->keepout;
- 	const struct nvmem_keepout *keepoutend = keepout + nvmem->nkeepout;
--	int rc;
-+	ssize_t rc, count = 0;
- 
- 	/*
- 	 * Skip all keepouts before the range being accessed.
-@@ -107,11 +107,12 @@ static int nvmem_access_with_keepouts(struct nvmem_device *nvmem,
- 			else
- 				rc = __nvmem_reg_read(nvmem, offset, val, ksize);
- 
--			if (rc)
-+			if (rc < 0)
- 				return rc;
- 
- 			offset += ksize;
- 			val += ksize;
-+			count += rc;
- 		}
- 
- 		/*
-@@ -135,16 +136,21 @@ static int nvmem_access_with_keepouts(struct nvmem_device *nvmem,
- 	if (offset < end) {
- 		ksize = end - offset;
- 		if (write)
--			return __nvmem_reg_write(nvmem, offset, val, ksize);
-+			rc = __nvmem_reg_write(nvmem, offset, val, ksize);
- 		else
--			return __nvmem_reg_read(nvmem, offset, val, ksize);
-+			rc = __nvmem_reg_read(nvmem, offset, val, ksize);
-+
-+		if (rc < 0)
-+			return rc;
-+
-+		count += rc;
- 	}
- 
--	return 0;
-+	return count;
- }
- 
--static int nvmem_reg_read(struct nvmem_device *nvmem, unsigned int offset,
--			  void *val, size_t bytes)
-+static ssize_t nvmem_reg_read(struct nvmem_device *nvmem, unsigned int offset,
-+			      void *val, size_t bytes)
- {
- 	if (!nvmem->nkeepout)
- 		return __nvmem_reg_read(nvmem, offset, val, bytes);
-@@ -152,8 +158,8 @@ static int nvmem_reg_read(struct nvmem_device *nvmem, unsigned int offset,
- 	return nvmem_access_with_keepouts(nvmem, offset, val, bytes, false);
- }
- 
--static int nvmem_reg_write(struct nvmem_device *nvmem, unsigned int offset,
--			   void *val, size_t bytes)
-+static ssize_t nvmem_reg_write(struct nvmem_device *nvmem, unsigned int offset,
-+			       void *val, size_t bytes)
- {
- 	if (!nvmem->nkeepout)
- 		return __nvmem_reg_write(nvmem, offset, val, bytes);
-@@ -195,7 +201,6 @@ static ssize_t bin_attr_nvmem_read(struct file *filp, struct kobject *kobj,
- {
- 	struct device *dev;
- 	struct nvmem_device *nvmem;
--	int rc;
- 
- 	if (attr->private)
- 		dev = attr->private;
-@@ -221,12 +226,7 @@ static ssize_t bin_attr_nvmem_read(struct file *filp, struct kobject *kobj,
- 	if (!nvmem->reg_read)
- 		return -EPERM;
- 
--	rc = nvmem_reg_read(nvmem, pos, buf, count);
--
--	if (rc)
--		return rc;
--
--	return count;
-+	return nvmem_reg_read(nvmem, pos, buf, count);
- }
- 
- static ssize_t bin_attr_nvmem_write(struct file *filp, struct kobject *kobj,
-@@ -235,7 +235,6 @@ static ssize_t bin_attr_nvmem_write(struct file *filp, struct kobject *kobj,
- {
- 	struct device *dev;
- 	struct nvmem_device *nvmem;
--	int rc;
- 
- 	if (attr->private)
- 		dev = attr->private;
-@@ -261,12 +260,7 @@ static ssize_t bin_attr_nvmem_write(struct file *filp, struct kobject *kobj,
- 	if (!nvmem->reg_write)
- 		return -EPERM;
- 
--	rc = nvmem_reg_write(nvmem, pos, buf, count);
--
--	if (rc)
--		return rc;
--
--	return count;
-+	return nvmem_reg_write(nvmem, pos, buf, count);
- }
- 
- static umode_t nvmem_bin_attr_get_umode(struct nvmem_device *nvmem)
-@@ -1638,9 +1632,12 @@ static int __nvmem_cell_read(struct nvmem_device *nvmem,
- 
- 	rc = nvmem_reg_read(nvmem, cell->offset, buf, cell->raw_len);
- 
--	if (rc)
-+	if (rc < 0)
- 		return rc;
- 
-+	if (rc != cell->raw_len)
-+		return -EIO;
-+
- 	/* shift bits in-place */
- 	if (cell->bit_offset || cell->nbits)
- 		nvmem_shift_read_buffer_in_place(cell, buf);
-@@ -1713,8 +1710,11 @@ static void *nvmem_cell_prepare_write_buffer(struct nvmem_cell_entry *cell,
- 
- 		/* setup the first byte with lsb bits from nvmem */
- 		rc = nvmem_reg_read(nvmem, cell->offset, &v, 1);
--		if (rc)
-+		if (rc < 1) {
-+			if (rc == 0)
-+				rc = -EIO;
- 			goto err;
-+		}
- 		*b++ |= GENMASK(bit_offset - 1, 0) & v;
- 
- 		/* setup rest of the byte if any */
-@@ -1733,8 +1733,11 @@ static void *nvmem_cell_prepare_write_buffer(struct nvmem_cell_entry *cell,
- 		/* setup the last byte with msb bits from nvmem */
- 		rc = nvmem_reg_read(nvmem,
- 				    cell->offset + cell->bytes - 1, &v, 1);
--		if (rc)
-+		if (rc < 1) {
-+			if (rc == 0)
-+				rc = -EIO;
- 			goto err;
-+		}
- 		*p |= GENMASK(7, (nbits + bit_offset) % BITS_PER_BYTE) & v;
- 
- 	}
-@@ -1774,10 +1777,7 @@ static int __nvmem_cell_entry_write(struct nvmem_cell_entry *cell, void *buf, si
- 	if (cell->bit_offset || cell->nbits)
- 		kfree(buf);
- 
--	if (rc)
--		return rc;
--
--	return len;
-+	return rc;
- }
- 
- /**
-@@ -2052,17 +2052,10 @@ int nvmem_device_read(struct nvmem_device *nvmem,
- 		      unsigned int offset,
- 		      size_t bytes, void *buf)
- {
--	int rc;
--
- 	if (!nvmem)
- 		return -EINVAL;
- 
--	rc = nvmem_reg_read(nvmem, offset, buf, bytes);
--
--	if (rc)
--		return rc;
--
--	return bytes;
-+	return nvmem_reg_read(nvmem, offset, buf, bytes);
- }
- EXPORT_SYMBOL_GPL(nvmem_device_read);
- 
-diff --git a/drivers/nvmem/imx-iim.c b/drivers/nvmem/imx-iim.c
-index f13bbd164086..f9f912bd4e41 100644
---- a/drivers/nvmem/imx-iim.c
-+++ b/drivers/nvmem/imx-iim.c
-@@ -29,8 +29,8 @@ struct iim_priv {
- 	struct clk *clk;
- };
- 
--static int imx_iim_read(void *context, unsigned int offset,
--			  void *buf, size_t bytes)
-+static ssize_t imx_iim_read(void *context, unsigned int offset,
-+			    void *buf, size_t bytes)
- {
- 	struct iim_priv *iim = context;
- 	int i, ret;
-@@ -49,7 +49,7 @@ static int imx_iim_read(void *context, unsigned int offset,
- 
- 	clk_disable_unprepare(iim->clk);
- 
--	return 0;
-+	return bytes;
- }
- 
- static struct imx_iim_drvdata imx27_drvdata = {
-diff --git a/drivers/nvmem/imx-ocotp-ele.c b/drivers/nvmem/imx-ocotp-ele.c
-index cf920542f939..3025fe8aa991 100644
---- a/drivers/nvmem/imx-ocotp-ele.c
-+++ b/drivers/nvmem/imx-ocotp-ele.c
-@@ -61,7 +61,7 @@ static enum fuse_type imx_ocotp_fuse_type(void *context, u32 index)
- 	return FUSE_INVALID;
- }
- 
--static int imx_ocotp_reg_read(void *context, unsigned int offset, void *val, size_t bytes)
-+static ssize_t imx_ocotp_reg_read(void *context, unsigned int offset, void *val, size_t bytes)
- {
- 	struct imx_ocotp_priv *priv = context;
- 	void __iomem *reg = priv->base + priv->data->reg_off;
-@@ -102,7 +102,7 @@ static int imx_ocotp_reg_read(void *context, unsigned int offset, void *val, siz
- 
- 	kfree(p);
- 
--	return 0;
-+	return bytes;
- };
- 
- static int imx_ele_ocotp_probe(struct platform_device *pdev)
-diff --git a/drivers/nvmem/imx-ocotp-scu.c b/drivers/nvmem/imx-ocotp-scu.c
-index 517d83e11af2..033261827141 100644
---- a/drivers/nvmem/imx-ocotp-scu.c
-+++ b/drivers/nvmem/imx-ocotp-scu.c
-@@ -129,8 +129,8 @@ static int imx_sc_misc_otp_fuse_read(struct imx_sc_ipc *ipc, u32 word,
- 	return 0;
- }
- 
--static int imx_scu_ocotp_read(void *context, unsigned int offset,
--			      void *val, size_t bytes)
-+static ssize_t imx_scu_ocotp_read(void *context, unsigned int offset,
-+				  void *val, size_t bytes)
- {
- 	struct ocotp_priv *priv = context;
- 	u32 count, index, num_bytes;
-@@ -174,11 +174,11 @@ static int imx_scu_ocotp_read(void *context, unsigned int offset,
- 
- 	kfree(p);
- 
--	return 0;
-+	return bytes;
- }
- 
--static int imx_scu_ocotp_write(void *context, unsigned int offset,
--			       void *val, size_t bytes)
-+static ssize_t imx_scu_ocotp_write(void *context, unsigned int offset,
-+				   void *val, size_t bytes)
- {
- 	struct ocotp_priv *priv = context;
- 	struct arm_smccc_res res;
-@@ -215,7 +215,7 @@ static int imx_scu_ocotp_write(void *context, unsigned int offset,
- 
- 	mutex_unlock(&scu_ocotp_mutex);
- 
--	return res.a0;
-+	return res.a0 < 0 ? res.a0 : bytes;
- }
- 
- static struct nvmem_config imx_scu_ocotp_nvmem_config = {
-diff --git a/drivers/nvmem/imx-ocotp.c b/drivers/nvmem/imx-ocotp.c
-index 79dd4fda0329..4338bc83665a 100644
---- a/drivers/nvmem/imx-ocotp.c
-+++ b/drivers/nvmem/imx-ocotp.c
-@@ -154,8 +154,8 @@ static void imx_ocotp_clr_err_if_set(struct ocotp_priv *priv)
- 	writel(bm_ctrl_error, base + IMX_OCOTP_ADDR_CTRL_CLR);
- }
- 
--static int imx_ocotp_read(void *context, unsigned int offset,
--			  void *val, size_t bytes)
-+static ssize_t imx_ocotp_read(void *context, unsigned int offset,
-+			      void *val, size_t bytes)
- {
- 	struct ocotp_priv *priv = context;
- 	unsigned int count;
-@@ -217,7 +217,7 @@ static int imx_ocotp_read(void *context, unsigned int offset,
- 
- 	kfree(p);
- 
--	return ret;
-+	return ret < 0 ? ret : bytes;
- }
- 
- static int imx_ocotp_cell_pp(void *context, const char *id, int index,
-@@ -307,8 +307,8 @@ static void imx_ocotp_set_imx7_timing(struct ocotp_priv *priv)
- 	writel(timing, priv->base + IMX_OCOTP_ADDR_TIMING);
- }
- 
--static int imx_ocotp_write(void *context, unsigned int offset, void *val,
--			   size_t bytes)
-+static ssize_t imx_ocotp_write(void *context, unsigned int offset, void *val,
-+			       size_t bytes)
- {
- 	struct ocotp_priv *priv = context;
- 	u32 *buf = val;
-diff --git a/drivers/nvmem/jz4780-efuse.c b/drivers/nvmem/jz4780-efuse.c
-index 0b01b840edd9..606a63232c3d 100644
---- a/drivers/nvmem/jz4780-efuse.c
-+++ b/drivers/nvmem/jz4780-efuse.c
-@@ -66,10 +66,11 @@ struct jz4780_efuse {
- };
- 
- /* main entry point */
--static int jz4780_efuse_read(void *context, unsigned int offset,
--			     void *val, size_t bytes)
-+static ssize_t jz4780_efuse_read(void *context, unsigned int offset,
-+				 void *val, size_t bytes)
- {
- 	struct jz4780_efuse *efuse = context;
-+	size_t bytes_read = bytes;
- 
- 	while (bytes > 0) {
- 		size_t start = offset & ~(JZ_EFU_READ_SIZE - 1);
-@@ -112,7 +113,7 @@ static int jz4780_efuse_read(void *context, unsigned int offset,
- 		bytes -= chunk;
- 	}
- 
--	return 0;
-+	return bytes_read;
- }
- 
- static struct nvmem_config jz4780_efuse_nvmem_config = {
-diff --git a/drivers/nvmem/lan9662-otpc.c b/drivers/nvmem/lan9662-otpc.c
-index 56fc19f092a7..4a2aa3324b2d 100644
---- a/drivers/nvmem/lan9662-otpc.c
-+++ b/drivers/nvmem/lan9662-otpc.c
-@@ -119,8 +119,8 @@ static int lan9662_otp_write_byte(struct lan9662_otp *otp, u32 offset, u8 data)
- 	return rc;
- }
- 
--static int lan9662_otp_read(void *context, unsigned int offset,
--			    void *_val, size_t bytes)
-+static ssize_t lan9662_otp_read(void *context, unsigned int offset,
-+				void *_val, size_t bytes)
- {
- 	struct lan9662_otp *otp = context;
- 	u8 *val = _val;
-@@ -136,11 +136,11 @@ static int lan9662_otp_read(void *context, unsigned int offset,
- 	}
- 	lan9662_otp_power(otp, false);
- 
--	return rc;
-+	return rc < 0 ? rc : bytes;
- }
- 
--static int lan9662_otp_write(void *context, unsigned int offset,
--			     void *_val, size_t bytes)
-+static ssize_t lan9662_otp_write(void *context, unsigned int offset,
-+				 void *_val, size_t bytes)
- {
- 	struct lan9662_otp *otp = context;
- 	u8 *val = _val;
-@@ -167,7 +167,7 @@ static int lan9662_otp_write(void *context, unsigned int offset,
- 	}
- 	lan9662_otp_power(otp, false);
- 
--	return rc;
-+	return rc < 0 ? rc : bytes;
- }
- 
- static struct nvmem_config otp_config = {
-diff --git a/drivers/nvmem/layerscape-sfp.c b/drivers/nvmem/layerscape-sfp.c
-index e2b424561949..fdff3374b5a4 100644
---- a/drivers/nvmem/layerscape-sfp.c
-+++ b/drivers/nvmem/layerscape-sfp.c
-@@ -26,14 +26,17 @@ struct layerscape_sfp_data {
- 	enum regmap_endian endian;
- };
- 
--static int layerscape_sfp_read(void *context, unsigned int offset, void *val,
--			       size_t bytes)
-+static ssize_t layerscape_sfp_read(void *context, unsigned int offset, void *val,
-+				   size_t bytes)
- {
- 	struct layerscape_sfp_priv *priv = context;
-+	int ret;
- 
--	return regmap_bulk_read(priv->regmap,
--				LAYERSCAPE_SFP_OTP_OFFSET + offset, val,
-+	ret = regmap_bulk_read(priv->regmap,
-+			       LAYERSCAPE_SFP_OTP_OFFSET + offset, val,
- 				bytes / 4);
-+
-+	return ret < 0 ? ret : bytes;
- }
- 
- static struct nvmem_config layerscape_sfp_nvmem_config = {
-diff --git a/drivers/nvmem/lpc18xx_eeprom.c b/drivers/nvmem/lpc18xx_eeprom.c
-index a73acc7377d2..1f68731ff865 100644
---- a/drivers/nvmem/lpc18xx_eeprom.c
-+++ b/drivers/nvmem/lpc18xx_eeprom.c
-@@ -87,10 +87,11 @@ static int lpc18xx_eeprom_busywait_until_prog(struct lpc18xx_eeprom_dev *eeprom)
- 	return -ETIMEDOUT;
- }
- 
--static int lpc18xx_eeprom_gather_write(void *context, unsigned int reg,
--				       void *val, size_t bytes)
-+static ssize_t lpc18xx_eeprom_gather_write(void *context, unsigned int reg,
-+					   void *val, size_t bytes)
- {
- 	struct lpc18xx_eeprom_dev *eeprom = context;
-+	size_t bytes_written = bytes;
- 	unsigned int offset = reg;
- 	int ret;
- 
-@@ -123,13 +124,14 @@ static int lpc18xx_eeprom_gather_write(void *context, unsigned int reg,
- 	lpc18xx_eeprom_writel(eeprom, LPC18XX_EEPROM_PWRDWN,
- 			      LPC18XX_EEPROM_PWRDWN_YES);
- 
--	return 0;
-+	return bytes_written;
- }
- 
--static int lpc18xx_eeprom_read(void *context, unsigned int offset,
--			       void *val, size_t bytes)
-+static ssize_t lpc18xx_eeprom_read(void *context, unsigned int offset,
-+				   void *val, size_t bytes)
- {
- 	struct lpc18xx_eeprom_dev *eeprom = context;
-+	size_t bytes_read = bytes;
- 
- 	lpc18xx_eeprom_writel(eeprom, LPC18XX_EEPROM_PWRDWN,
- 			      LPC18XX_EEPROM_PWRDWN_NO);
-@@ -147,7 +149,7 @@ static int lpc18xx_eeprom_read(void *context, unsigned int offset,
- 	lpc18xx_eeprom_writel(eeprom, LPC18XX_EEPROM_PWRDWN,
- 			      LPC18XX_EEPROM_PWRDWN_YES);
- 
--	return 0;
-+	return bytes_read;
- }
- 
- 
-diff --git a/drivers/nvmem/lpc18xx_otp.c b/drivers/nvmem/lpc18xx_otp.c
-index adc9948e7b2e..c60a565b6b97 100644
---- a/drivers/nvmem/lpc18xx_otp.c
-+++ b/drivers/nvmem/lpc18xx_otp.c
-@@ -37,8 +37,8 @@ struct lpc18xx_otp {
- 	void __iomem *base;
- };
- 
--static int lpc18xx_otp_read(void *context, unsigned int offset,
--			    void *val, size_t bytes)
-+static ssize_t lpc18xx_otp_read(void *context, unsigned int offset,
-+				void *val, size_t bytes)
- {
- 	struct lpc18xx_otp *otp = context;
- 	unsigned int count = bytes >> 2;
-@@ -52,7 +52,7 @@ static int lpc18xx_otp_read(void *context, unsigned int offset,
- 	for (i = index; i < (index + count); i++)
- 		*buf++ = readl(otp->base + i * LPC18XX_OTP_WORD_SIZE);
- 
--	return 0;
-+	return bytes;
- }
- 
- static struct nvmem_config lpc18xx_otp_nvmem_config = {
-diff --git a/drivers/nvmem/meson-efuse.c b/drivers/nvmem/meson-efuse.c
-index 33678d0af2c2..ed2124d916fc 100644
---- a/drivers/nvmem/meson-efuse.c
-+++ b/drivers/nvmem/meson-efuse.c
-@@ -14,22 +14,28 @@
- 
- #include <linux/firmware/meson/meson_sm.h>
- 
--static int meson_efuse_read(void *context, unsigned int offset,
--			    void *val, size_t bytes)
-+static ssize_t meson_efuse_read(void *context, unsigned int offset,
-+				void *val, size_t bytes)
- {
- 	struct meson_sm_firmware *fw = context;
-+	int ret;
- 
--	return meson_sm_call_read(fw, (u8 *)val, bytes, SM_EFUSE_READ, offset,
--				  bytes, 0, 0, 0);
-+	ret = meson_sm_call_read(fw, (u8 *)val, bytes, SM_EFUSE_READ, offset,
-+				 bytes, 0, 0, 0);
-+
-+	return ret < 0 ? ret : bytes;
- }
- 
--static int meson_efuse_write(void *context, unsigned int offset,
--			     void *val, size_t bytes)
-+static ssize_t meson_efuse_write(void *context, unsigned int offset,
-+				 void *val, size_t bytes)
- {
- 	struct meson_sm_firmware *fw = context;
-+	int ret;
-+
-+	ret = meson_sm_call_write(fw, (u8 *)val, bytes, SM_EFUSE_WRITE, offset,
-+				  bytes, 0, 0, 0);
- 
--	return meson_sm_call_write(fw, (u8 *)val, bytes, SM_EFUSE_WRITE, offset,
--				   bytes, 0, 0, 0);
-+	return ret < 0 ? ret : bytes;
- }
- 
- static const struct of_device_id meson_efuse_match[] = {
-diff --git a/drivers/nvmem/meson-mx-efuse.c b/drivers/nvmem/meson-mx-efuse.c
-index 8a16f5f02657..de51841216c1 100644
---- a/drivers/nvmem/meson-mx-efuse.c
-+++ b/drivers/nvmem/meson-mx-efuse.c
-@@ -131,8 +131,8 @@ static int meson_mx_efuse_read_addr(struct meson_mx_efuse *efuse,
- 	return 0;
- }
- 
--static int meson_mx_efuse_read(void *context, unsigned int offset,
--			       void *buf, size_t bytes)
-+static ssize_t meson_mx_efuse_read(void *context, unsigned int offset,
-+				   void *buf, size_t bytes)
- {
- 	struct meson_mx_efuse *efuse = context;
- 	u32 tmp;
-@@ -162,7 +162,7 @@ static int meson_mx_efuse_read(void *context, unsigned int offset,
- 
- 	meson_mx_efuse_hw_disable(efuse);
- 
--	return err;
-+	return err < 0 ? err : bytes;
- }
- 
- static const struct meson_mx_efuse_platform_data meson6_efuse_data = {
-diff --git a/drivers/nvmem/microchip-otpc.c b/drivers/nvmem/microchip-otpc.c
-index 7cf81738a3e0..c47fdb169734 100644
---- a/drivers/nvmem/microchip-otpc.c
-+++ b/drivers/nvmem/microchip-otpc.c
-@@ -143,8 +143,8 @@ static int mchp_otpc_prepare_read(struct mchp_otpc *otpc,
-  * packet. The user will have to be aware of the memory footprint before doing
-  * the read request.
-  */
--static int mchp_otpc_read(void *priv, unsigned int off, void *val,
--			  size_t bytes)
-+static ssize_t mchp_otpc_read(void *priv, unsigned int off, void *val,
-+			      size_t bytes)
- {
- 	struct mchp_otpc *otpc = priv;
- 	struct mchp_otpc_packet *packet;
-@@ -187,7 +187,7 @@ static int mchp_otpc_read(void *priv, unsigned int off, void *val,
- 		} while (payload_size >= 0 && len < bytes);
- 	}
- 
--	return 0;
-+	return len;
- }
- 
- static int mchp_otpc_init_packets_list(struct mchp_otpc *otpc, u32 *size)
-diff --git a/drivers/nvmem/mtk-efuse.c b/drivers/nvmem/mtk-efuse.c
-index 9caf04667341..d9db85933ed6 100644
---- a/drivers/nvmem/mtk-efuse.c
-+++ b/drivers/nvmem/mtk-efuse.c
-@@ -20,8 +20,8 @@ struct mtk_efuse_priv {
- 	void __iomem *base;
- };
- 
--static int mtk_reg_read(void *context,
--			unsigned int reg, void *_val, size_t bytes)
-+static ssize_t mtk_reg_read(void *context,
-+			    unsigned int reg, void *_val, size_t bytes)
- {
- 	struct mtk_efuse_priv *priv = context;
- 	void __iomem *addr = priv->base + reg;
-@@ -31,7 +31,7 @@ static int mtk_reg_read(void *context,
- 	for (i = 0; i < bytes; i++, val++)
- 		*val = readb(addr + i);
- 
--	return 0;
-+	return bytes;
- }
- 
- static int mtk_efuse_gpu_speedbin_pp(void *context, const char *id, int index,
-diff --git a/drivers/nvmem/mxs-ocotp.c b/drivers/nvmem/mxs-ocotp.c
-index 7b78f18f9545..50734489fb3a 100644
---- a/drivers/nvmem/mxs-ocotp.c
-+++ b/drivers/nvmem/mxs-ocotp.c
-@@ -56,10 +56,11 @@ static int mxs_ocotp_wait(struct mxs_ocotp *otp)
- 	return 0;
- }
- 
--static int mxs_ocotp_read(void *context, unsigned int offset,
--			  void *val, size_t bytes)
-+static ssize_t mxs_ocotp_read(void *context, unsigned int offset,
-+			      void *val, size_t bytes)
- {
- 	struct mxs_ocotp *otp = context;
-+	size_t bytes_read = bytes;
- 	u32 *buf = val;
- 	int ret;
- 
-@@ -102,7 +103,7 @@ static int mxs_ocotp_read(void *context, unsigned int offset,
- disable_clk:
- 	clk_disable(otp->clk);
- 
--	return ret;
-+	return ret < 0 ? ret : bytes_read;
- }
- 
- static struct nvmem_config ocotp_config = {
-diff --git a/drivers/nvmem/nintendo-otp.c b/drivers/nvmem/nintendo-otp.c
-index 355e7f1fc6d5..bcc5246517ae 100644
---- a/drivers/nvmem/nintendo-otp.c
-+++ b/drivers/nvmem/nintendo-otp.c
-@@ -45,8 +45,8 @@ static const struct nintendo_otp_devtype_data latte_otp_data = {
- 	.num_banks = 8,
- };
- 
--static int nintendo_otp_reg_read(void *context,
--				 unsigned int reg, void *_val, size_t bytes)
-+static ssize_t nintendo_otp_reg_read(void *context,
-+				     unsigned int reg, void *_val, size_t bytes)
- {
- 	struct nintendo_otp_priv *priv = context;
- 	u32 *val = _val;
-@@ -61,7 +61,7 @@ static int nintendo_otp_reg_read(void *context,
- 		reg += WORD_SIZE;
- 	}
- 
--	return 0;
-+	return bytes;
- }
- 
- static const struct of_device_id nintendo_otp_of_table[] = {
-diff --git a/drivers/nvmem/qcom-spmi-sdam.c b/drivers/nvmem/qcom-spmi-sdam.c
-index 9aa8f42faa4c..ac7e3b84b2ac 100644
---- a/drivers/nvmem/qcom-spmi-sdam.c
-+++ b/drivers/nvmem/qcom-spmi-sdam.c
-@@ -60,8 +60,8 @@ static bool sdam_is_ro(unsigned int offset, size_t len)
- 	return false;
- }
- 
--static int sdam_read(void *priv, unsigned int offset, void *val,
--				size_t bytes)
-+static ssize_t sdam_read(void *priv, unsigned int offset, void *val,
-+			 size_t bytes)
- {
- 	struct sdam_chip *sdam = priv;
- 	struct device *dev = sdam->sdam_config.dev;
-@@ -78,11 +78,11 @@ static int sdam_read(void *priv, unsigned int offset, void *val,
- 		dev_err(dev, "Failed to read SDAM offset %#x len=%zd, rc=%d\n",
- 						offset, bytes, rc);
- 
--	return rc;
-+	return rc < 0 ? rc : bytes;
- }
- 
--static int sdam_write(void *priv, unsigned int offset, void *val,
--				size_t bytes)
-+static ssize_t sdam_write(void *priv, unsigned int offset, void *val,
-+			  size_t bytes)
- {
- 	struct sdam_chip *sdam = priv;
- 	struct device *dev = sdam->sdam_config.dev;
-@@ -105,7 +105,7 @@ static int sdam_write(void *priv, unsigned int offset, void *val,
- 		dev_err(dev, "Failed to write SDAM offset %#x len=%zd, rc=%d\n",
- 						offset, bytes, rc);
- 
--	return rc;
-+	return rc < 0 ? rc : bytes;
- }
- 
- static int sdam_probe(struct platform_device *pdev)
-diff --git a/drivers/nvmem/qfprom.c b/drivers/nvmem/qfprom.c
-index 116a39e804c7..4c40c23a92e7 100644
---- a/drivers/nvmem/qfprom.c
-+++ b/drivers/nvmem/qfprom.c
-@@ -251,10 +251,10 @@ static int qfprom_enable_fuse_blowing(const struct qfprom_priv *priv,
-  *
-  * Writes to fuses.  WARNING: THIS IS PERMANENT.
-  *
-- * Return: 0 or -err.
-+ * Return: bytes written or -err.
-  */
--static int qfprom_reg_write(void *context, unsigned int reg, void *_val,
--			    size_t bytes)
-+static ssize_t qfprom_reg_write(void *context, unsigned int reg, void *_val,
-+				size_t bytes)
- {
- 	struct qfprom_priv *priv = context;
- 	struct qfprom_touched_values old;
-@@ -314,11 +314,11 @@ static int qfprom_reg_write(void *context, unsigned int reg, void *_val,
- exit_enabled_fuse_blowing:
- 	qfprom_disable_fuse_blowing(priv, &old);
- 
--	return ret;
-+	return ret < 0 ? ret : bytes;
- }
- 
--static int qfprom_reg_read(void *context,
--			unsigned int reg, void *_val, size_t bytes)
-+static ssize_t qfprom_reg_read(void *context,
-+			       unsigned int reg, void *_val, size_t bytes)
- {
- 	struct qfprom_priv *priv = context;
- 	u8 *val = _val;
-@@ -331,7 +331,7 @@ static int qfprom_reg_read(void *context,
- 	while (words--)
- 		*val++ = readb(base + reg + i++);
- 
--	return 0;
-+	return bytes;
- }
- 
- static void qfprom_runtime_disable(void *data)
-diff --git a/drivers/nvmem/qoriq-efuse.c b/drivers/nvmem/qoriq-efuse.c
-index e7fd04d6dd94..12a1e9d20e67 100644
---- a/drivers/nvmem/qoriq-efuse.c
-+++ b/drivers/nvmem/qoriq-efuse.c
-@@ -14,8 +14,8 @@ struct qoriq_efuse_priv {
- 	void __iomem *base;
- };
- 
--static int qoriq_efuse_read(void *context, unsigned int offset, void *val,
--			    size_t bytes)
-+static ssize_t qoriq_efuse_read(void *context, unsigned int offset, void *val,
-+				size_t bytes)
- {
- 	struct qoriq_efuse_priv *priv = context;
- 
-@@ -24,7 +24,7 @@ static int qoriq_efuse_read(void *context, unsigned int offset, void *val,
- 
- 	/* Ignore trailing bytes (there shouldn't be any) */
- 
--	return 0;
-+	return bytes;
- }
- 
- static int qoriq_efuse_probe(struct platform_device *pdev)
-diff --git a/drivers/nvmem/rave-sp-eeprom.c b/drivers/nvmem/rave-sp-eeprom.c
-index 9ecf3873cbb7..7011b247a96b 100644
---- a/drivers/nvmem/rave-sp-eeprom.c
-+++ b/drivers/nvmem/rave-sp-eeprom.c
-@@ -214,11 +214,11 @@ rave_sp_eeprom_page_access(struct rave_sp_eeprom *eeprom,
-  * arbitrary offset (not necessary page aligned) of arbitrary length
-  * (is not constrained by EEPROM page size).
-  *
-- * Returns zero in case of success or negative error code in case of
-- * failure.
-+ * Returns number of bytes in case of success or negative error code
-+ * in case of failure.
-  */
--static int rave_sp_eeprom_access(struct rave_sp_eeprom *eeprom,
--				 enum rave_sp_eeprom_access_type type,
-+static ssize_t rave_sp_eeprom_access(struct rave_sp_eeprom *eeprom,
-+				     enum rave_sp_eeprom_access_type type,
- 				 unsigned int offset, u8 *data,
- 				 unsigned int data_len)
- {
-@@ -267,18 +267,18 @@ static int rave_sp_eeprom_access(struct rave_sp_eeprom *eeprom,
- 	} while (residue);
- out:
- 	mutex_unlock(&eeprom->mutex);
--	return ret;
-+	return ret < 0 ? ret : data_len;
- }
- 
--static int rave_sp_eeprom_reg_read(void *eeprom, unsigned int offset,
--				   void *val, size_t bytes)
-+static ssize_t rave_sp_eeprom_reg_read(void *eeprom, unsigned int offset,
-+				       void *val, size_t bytes)
- {
- 	return rave_sp_eeprom_access(eeprom, RAVE_SP_EEPROM_READ,
- 				     offset, val, bytes);
- }
- 
--static int rave_sp_eeprom_reg_write(void *eeprom, unsigned int offset,
--				    void *val, size_t bytes)
-+static ssize_t rave_sp_eeprom_reg_write(void *eeprom, unsigned int offset,
-+					void *val, size_t bytes)
- {
- 	return rave_sp_eeprom_access(eeprom, RAVE_SP_EEPROM_WRITE,
- 				     offset, val, bytes);
-diff --git a/drivers/nvmem/rmem.c b/drivers/nvmem/rmem.c
-index 752d0bf4445e..e8526438ce4a 100644
---- a/drivers/nvmem/rmem.c
-+++ b/drivers/nvmem/rmem.c
-@@ -17,8 +17,8 @@ struct rmem {
- 	phys_addr_t size;
- };
- 
--static int rmem_read(void *context, unsigned int offset,
--		     void *val, size_t bytes)
-+static ssize_t rmem_read(void *context, unsigned int offset,
-+			 void *val, size_t bytes)
- {
- 	struct rmem *priv = context;
- 	size_t available = priv->mem->size;
-diff --git a/drivers/nvmem/rockchip-efuse.c b/drivers/nvmem/rockchip-efuse.c
-index 2b40978ddb18..36cf62f534df 100644
---- a/drivers/nvmem/rockchip-efuse.c
-+++ b/drivers/nvmem/rockchip-efuse.c
-@@ -52,8 +52,8 @@ struct rockchip_efuse_chip {
- 	struct clk *clk;
- };
- 
--static int rockchip_rk3288_efuse_read(void *context, unsigned int offset,
--				      void *val, size_t bytes)
-+static ssize_t rockchip_rk3288_efuse_read(void *context, unsigned int offset,
-+					  void *val, size_t bytes)
- {
- 	struct rockchip_efuse_chip *efuse = context;
- 	u8 *buf = val;
-@@ -65,6 +65,7 @@ static int rockchip_rk3288_efuse_read(void *context, unsigned int offset,
- 		return ret;
- 	}
- 
-+	ret = bytes;
- 	writel(RK3288_LOAD | RK3288_PGENB, efuse->base + REG_EFUSE_CTRL);
- 	udelay(1);
- 	while (bytes--) {
-@@ -89,11 +90,11 @@ static int rockchip_rk3288_efuse_read(void *context, unsigned int offset,
- 
- 	clk_disable_unprepare(efuse->clk);
- 
--	return 0;
-+	return ret;
- }
- 
--static int rockchip_rk3328_efuse_read(void *context, unsigned int offset,
--				      void *val, size_t bytes)
-+static ssize_t rockchip_rk3328_efuse_read(void *context, unsigned int offset,
-+					  void *val, size_t bytes)
- {
- 	struct rockchip_efuse_chip *efuse = context;
- 	unsigned int addr_start, addr_end, addr_offset, addr_len;
-@@ -144,11 +145,11 @@ static int rockchip_rk3328_efuse_read(void *context, unsigned int offset,
- nomem:
- 	clk_disable_unprepare(efuse->clk);
- 
--	return ret;
-+	return ret < 0 ? ret : bytes;
- }
- 
--static int rockchip_rk3399_efuse_read(void *context, unsigned int offset,
--				      void *val, size_t bytes)
-+static ssize_t rockchip_rk3399_efuse_read(void *context, unsigned int offset,
-+					  void *val, size_t bytes)
- {
- 	struct rockchip_efuse_chip *efuse = context;
- 	unsigned int addr_start, addr_end, addr_offset, addr_len;
-@@ -200,7 +201,7 @@ static int rockchip_rk3399_efuse_read(void *context, unsigned int offset,
- 
- 	clk_disable_unprepare(efuse->clk);
- 
--	return 0;
-+	return bytes;
- }
- 
- static struct nvmem_config econfig = {
-diff --git a/drivers/nvmem/rockchip-otp.c b/drivers/nvmem/rockchip-otp.c
-index cb9aa5428350..54c4dbb2e57e 100644
---- a/drivers/nvmem/rockchip-otp.c
-+++ b/drivers/nvmem/rockchip-otp.c
-@@ -144,10 +144,11 @@ static int rockchip_otp_ecc_enable(struct rockchip_otp *otp, bool enable)
- 	return ret;
- }
- 
--static int px30_otp_read(void *context, unsigned int offset,
--			 void *val, size_t bytes)
-+static ssize_t px30_otp_read(void *context, unsigned int offset,
-+			     void *val, size_t bytes)
- {
- 	struct rockchip_otp *otp = context;
-+	size_t bytes_read = bytes;
- 	u8 *buf = val;
- 	int ret;
- 
-@@ -181,11 +182,11 @@ static int px30_otp_read(void *context, unsigned int offset,
- read_end:
- 	writel(0x0 | OTPC_USE_USER_MASK, otp->base + OTPC_USER_CTRL);
- 
--	return ret;
-+	return ret < 0 ? ret : bytes_read;
- }
- 
--static int rk3588_otp_read(void *context, unsigned int offset,
--			   void *val, size_t bytes)
-+static ssize_t rk3588_otp_read(void *context, unsigned int offset,
-+			       void *val, size_t bytes)
- {
- 	struct rockchip_otp *otp = context;
- 	unsigned int addr_start, addr_end, addr_len;
-@@ -227,11 +228,11 @@ static int rk3588_otp_read(void *context, unsigned int offset,
- read_end:
- 	kfree(buf);
- 
--	return ret;
-+	return ret < 0 ? ret : bytes;
- }
- 
--static int rockchip_otp_read(void *context, unsigned int offset,
--			     void *val, size_t bytes)
-+static ssize_t rockchip_otp_read(void *context, unsigned int offset,
-+				 void *val, size_t bytes)
- {
- 	struct rockchip_otp *otp = context;
- 	int ret;
-@@ -249,7 +250,7 @@ static int rockchip_otp_read(void *context, unsigned int offset,
- 
- 	clk_bulk_disable_unprepare(otp->data->num_clks, otp->clks);
- 
--	return ret;
-+	return ret < 0 ? ret : bytes;
- }
- 
- static struct nvmem_config otp_config = {
-diff --git a/drivers/nvmem/sc27xx-efuse.c b/drivers/nvmem/sc27xx-efuse.c
-index 4e2ffefac96c..45a2da241271 100644
---- a/drivers/nvmem/sc27xx-efuse.c
-+++ b/drivers/nvmem/sc27xx-efuse.c
-@@ -121,7 +121,7 @@ static int sc27xx_efuse_poll_status(struct sc27xx_efuse *efuse, u32 bits)
- 	return 0;
- }
- 
--static int sc27xx_efuse_read(void *context, u32 offset, void *val, size_t bytes)
-+static ssize_t sc27xx_efuse_read(void *context, u32 offset, void *val, size_t bytes)
- {
- 	struct sc27xx_efuse *efuse = context;
- 	u32 buf, blk_index = offset / SC27XX_EFUSE_BLOCK_WIDTH;
-@@ -194,6 +194,7 @@ static int sc27xx_efuse_read(void *context, u32 offset, void *val, size_t bytes)
- 	if (!ret) {
- 		buf >>= blk_offset;
- 		memcpy(val, &buf, bytes);
-+		ret = bytes;
- 	}
- 
- 	return ret;
-diff --git a/drivers/nvmem/sec-qfprom.c b/drivers/nvmem/sec-qfprom.c
-index 19799b3fe00a..dbacaab519e7 100644
---- a/drivers/nvmem/sec-qfprom.c
-+++ b/drivers/nvmem/sec-qfprom.c
-@@ -20,7 +20,7 @@ struct sec_qfprom {
- 	struct device *dev;
- };
- 
--static int sec_qfprom_reg_read(void *context, unsigned int reg, void *_val, size_t bytes)
-+static ssize_t sec_qfprom_reg_read(void *context, unsigned int reg, void *_val, size_t bytes)
- {
- 	struct sec_qfprom *priv = context;
- 	unsigned int i;
-@@ -40,7 +40,7 @@ static int sec_qfprom_reg_read(void *context, unsigned int reg, void *_val, size
- 		val[i] = tmp[reg & 3];
- 	}
- 
--	return 0;
-+	return bytes;
- }
- 
- static int sec_qfprom_probe(struct platform_device *pdev)
-diff --git a/drivers/nvmem/snvs_lpgpr.c b/drivers/nvmem/snvs_lpgpr.c
-index 89c27112320f..6b02d69f7158 100644
---- a/drivers/nvmem/snvs_lpgpr.c
-+++ b/drivers/nvmem/snvs_lpgpr.c
-@@ -50,8 +50,8 @@ static const struct snvs_lpgpr_cfg snvs_lpgpr_cfg_imx7d = {
- 	.size		= 16,
- };
- 
--static int snvs_lpgpr_write(void *context, unsigned int offset, void *val,
--			    size_t bytes)
-+static ssize_t snvs_lpgpr_write(void *context, unsigned int offset, void *val,
-+				size_t bytes)
- {
- 	struct snvs_lpgpr_priv *priv = context;
- 	const struct snvs_lpgpr_cfg *dcfg = priv->dcfg;
-@@ -72,18 +72,23 @@ static int snvs_lpgpr_write(void *context, unsigned int offset, void *val,
- 	if (lock_reg & IMX_GPR_HL)
- 		return -EPERM;
- 
--	return regmap_bulk_write(priv->regmap, dcfg->offset + offset, val,
-+	ret = regmap_bulk_write(priv->regmap, dcfg->offset + offset, val,
- 				bytes / 4);
-+
-+	return ret < 0 ? ret : bytes;
- }
- 
--static int snvs_lpgpr_read(void *context, unsigned int offset, void *val,
--			   size_t bytes)
-+static ssize_t snvs_lpgpr_read(void *context, unsigned int offset, void *val,
-+			       size_t bytes)
- {
- 	struct snvs_lpgpr_priv *priv = context;
- 	const struct snvs_lpgpr_cfg *dcfg = priv->dcfg;
-+	int ret;
- 
--	return regmap_bulk_read(priv->regmap, dcfg->offset + offset,
-+	ret = regmap_bulk_read(priv->regmap, dcfg->offset + offset,
- 			       val, bytes / 4);
-+
-+	return ret < 0 ? ret : bytes;
- }
- 
- static int snvs_lpgpr_probe(struct platform_device *pdev)
-diff --git a/drivers/nvmem/sprd-efuse.c b/drivers/nvmem/sprd-efuse.c
-index 1a7e4e5d8b86..54f1e210d3d4 100644
---- a/drivers/nvmem/sprd-efuse.c
-+++ b/drivers/nvmem/sprd-efuse.c
-@@ -291,7 +291,7 @@ static int sprd_efuse_raw_read(struct sprd_efuse *efuse, int blk, u32 *val,
- 	return 0;
- }
- 
--static int sprd_efuse_read(void *context, u32 offset, void *val, size_t bytes)
-+static ssize_t sprd_efuse_read(void *context, u32 offset, void *val, size_t bytes)
- {
- 	struct sprd_efuse *efuse = context;
- 	bool blk_double = efuse->data->blk_double;
-@@ -318,10 +318,10 @@ static int sprd_efuse_read(void *context, u32 offset, void *val, size_t bytes)
- 
- unlock:
- 	sprd_efuse_unlock(efuse);
--	return ret;
-+	return ret < 0 ? ret : bytes;
- }
- 
--static int sprd_efuse_write(void *context, u32 offset, void *val, size_t bytes)
-+static ssize_t sprd_efuse_write(void *context, u32 offset, void *val, size_t bytes)
- {
- 	struct sprd_efuse *efuse = context;
- 	bool blk_double = efuse->data->blk_double;
-@@ -355,7 +355,7 @@ static int sprd_efuse_write(void *context, u32 offset, void *val, size_t bytes)
- 
- unlock:
- 	sprd_efuse_unlock(efuse);
--	return ret;
-+	return ret < 0 ? ret : bytes;
- }
- 
- static int sprd_efuse_probe(struct platform_device *pdev)
-diff --git a/drivers/nvmem/stm32-bsec-optee-ta.c b/drivers/nvmem/stm32-bsec-optee-ta.c
-index f89ce791dd12..d2a93bfe80e5 100644
---- a/drivers/nvmem/stm32-bsec-optee-ta.c
-+++ b/drivers/nvmem/stm32-bsec-optee-ta.c
-@@ -136,8 +136,8 @@ void stm32_bsec_optee_ta_close(void *ctx)
- }
- 
- /* stm32_bsec_optee_ta_read() - nvmem read access using PTA client driver */
--int stm32_bsec_optee_ta_read(struct tee_context *ctx, unsigned int offset,
--			     void *buf, size_t bytes)
-+ssize_t stm32_bsec_optee_ta_read(struct tee_context *ctx, unsigned int offset,
-+				 void *buf, size_t bytes)
- {
- 	struct tee_shm *shm;
- 	struct tee_ioctl_invoke_arg arg;
-@@ -198,12 +198,12 @@ int stm32_bsec_optee_ta_read(struct tee_context *ctx, unsigned int offset,
- out_tee_session:
- 	stm32_bsec_ta_close_session(ctx, session_id);
- 
--	return ret;
-+	return ret < 0 ? ret : bytes;
- }
- 
- /* stm32_bsec_optee_ta_write() - nvmem write access using PTA client driver */
--int stm32_bsec_optee_ta_write(struct tee_context *ctx, unsigned int lower,
--			      unsigned int offset, void *buf, size_t bytes)
-+ssize_t stm32_bsec_optee_ta_write(struct tee_context *ctx, unsigned int lower,
-+				  unsigned int offset, void *buf, size_t bytes)
- {	struct tee_shm *shm;
- 	struct tee_ioctl_invoke_arg arg;
- 	struct tee_param param[2];
-@@ -294,5 +294,5 @@ int stm32_bsec_optee_ta_write(struct tee_context *ctx, unsigned int lower,
- out_tee_session:
- 	stm32_bsec_ta_close_session(ctx, session_id);
- 
--	return ret;
-+	return ret < 0 ? ret : bytes;
- }
-diff --git a/drivers/nvmem/stm32-bsec-optee-ta.h b/drivers/nvmem/stm32-bsec-optee-ta.h
-index 3966a0535179..c96cfde9b0f0 100644
---- a/drivers/nvmem/stm32-bsec-optee-ta.h
-+++ b/drivers/nvmem/stm32-bsec-optee-ta.h
-@@ -33,10 +33,10 @@ void stm32_bsec_optee_ta_close(void *ctx);
-  * @bytes: number of bytes to read
-  *
-  * Return:
-- *	On success, 0. On failure, -errno.
-+ *	On success, bytes read. On failure, -errno.
-  */
--int stm32_bsec_optee_ta_read(struct tee_context *ctx, unsigned int offset,
--			     void *buf, size_t bytes);
-+ssize_t stm32_bsec_optee_ta_read(struct tee_context *ctx, unsigned int offset,
-+				 void *buf, size_t bytes);
- 
- /**
-  * stm32_bsec_optee_ta_write() - nvmem write access using TA client driver
-@@ -47,10 +47,10 @@ int stm32_bsec_optee_ta_read(struct tee_context *ctx, unsigned int offset,
-  * @bytes: number of bytes to write
-  *
-  * Return:
-- *	On success, 0. On failure, -errno.
-+ *	On success, bytes written. On failure, -errno.
-  */
--int stm32_bsec_optee_ta_write(struct tee_context *ctx, unsigned int lower,
--			      unsigned int offset, void *buf, size_t bytes);
-+ssize_t stm32_bsec_optee_ta_write(struct tee_context *ctx, unsigned int lower,
-+				  unsigned int offset, void *buf, size_t bytes);
- 
- #else
- 
-@@ -63,15 +63,15 @@ static inline void stm32_bsec_optee_ta_close(void *ctx)
- {
- }
- 
--static inline int stm32_bsec_optee_ta_read(struct tee_context *ctx,
--					   unsigned int offset, void *buf,
-+static inline ssize_t stm32_bsec_optee_ta_read(struct tee_context *ctx,
-+					       unsigned int offset, void *buf,
- 					   size_t bytes)
- {
- 	return -EOPNOTSUPP;
- }
- 
--static inline int stm32_bsec_optee_ta_write(struct tee_context *ctx,
--					    unsigned int lower,
-+static inline ssize_t stm32_bsec_optee_ta_write(struct tee_context *ctx,
-+						unsigned int lower,
- 					    unsigned int offset, void *buf,
- 					    size_t bytes)
- {
-diff --git a/drivers/nvmem/stm32-romem.c b/drivers/nvmem/stm32-romem.c
-index 82879b1c9eb9..aed620af788c 100644
---- a/drivers/nvmem/stm32-romem.c
-+++ b/drivers/nvmem/stm32-romem.c
-@@ -40,8 +40,8 @@ struct stm32_romem_priv {
- 	struct tee_context *ctx;
- };
- 
--static int stm32_romem_read(void *context, unsigned int offset, void *buf,
--			    size_t bytes)
-+static ssize_t stm32_romem_read(void *context, unsigned int offset, void *buf,
-+				size_t bytes)
- {
- 	struct stm32_romem_priv *priv = context;
- 	u8 *buf8 = buf;
-@@ -50,7 +50,7 @@ static int stm32_romem_read(void *context, unsigned int offset, void *buf,
- 	for (i = offset; i < offset + bytes; i++)
- 		*buf8++ = readb_relaxed(priv->base + i);
- 
--	return 0;
-+	return bytes;
- }
- 
- static int stm32_bsec_smc(u8 op, u32 otp, u32 data, u32 *result)
-@@ -71,8 +71,8 @@ static int stm32_bsec_smc(u8 op, u32 otp, u32 data, u32 *result)
- #endif
- }
- 
--static int stm32_bsec_read(void *context, unsigned int offset, void *buf,
--			   size_t bytes)
-+static ssize_t stm32_bsec_read(void *context, unsigned int offset, void *buf,
-+			       size_t bytes)
- {
- 	struct stm32_romem_priv *priv = context;
- 	struct device *dev = priv->cfg.dev;
-@@ -115,11 +115,11 @@ static int stm32_bsec_read(void *context, unsigned int offset, void *buf,
- 		skip_bytes = 0;
- 	}
- 
--	return 0;
-+	return j;
- }
- 
--static int stm32_bsec_write(void *context, unsigned int offset, void *buf,
--			    size_t bytes)
-+static ssize_t stm32_bsec_write(void *context, unsigned int offset, void *buf,
-+				size_t bytes)
- {
- 	struct stm32_romem_priv *priv = context;
- 	struct device *dev = priv->cfg.dev;
-@@ -142,19 +142,19 @@ static int stm32_bsec_write(void *context, unsigned int offset, void *buf,
- 	if (offset + bytes >= priv->lower * 4)
- 		dev_warn(dev, "Update of upper OTPs with ECC protection (word programming, only once)\n");
- 
--	return 0;
-+	return bytes;
- }
- 
--static int stm32_bsec_pta_read(void *context, unsigned int offset, void *buf,
--			       size_t bytes)
-+static ssize_t stm32_bsec_pta_read(void *context, unsigned int offset, void *buf,
-+				   size_t bytes)
- {
- 	struct stm32_romem_priv *priv = context;
- 
- 	return stm32_bsec_optee_ta_read(priv->ctx, offset, buf, bytes);
- }
- 
--static int stm32_bsec_pta_write(void *context, unsigned int offset, void *buf,
--				size_t bytes)
-+static ssize_t stm32_bsec_pta_write(void *context, unsigned int offset, void *buf,
-+				    size_t bytes)
- {
- 	struct stm32_romem_priv *priv = context;
- 
-diff --git a/drivers/nvmem/sunplus-ocotp.c b/drivers/nvmem/sunplus-ocotp.c
-index 38f5d9df39cd..7bda128bb93e 100644
---- a/drivers/nvmem/sunplus-ocotp.c
-+++ b/drivers/nvmem/sunplus-ocotp.c
-@@ -114,7 +114,7 @@ static int sp_otp_read_real(struct sp_ocotp_priv *otp, int addr, char *value)
- 	return ret;
- }
- 
--static int sp_ocotp_read(void *priv, unsigned int offset, void *value, size_t bytes)
-+static ssize_t sp_ocotp_read(void *priv, unsigned int offset, void *value, size_t bytes)
- {
- 	struct sp_ocotp_priv *otp = priv;
- 	unsigned int addr;
-@@ -140,7 +140,7 @@ static int sp_ocotp_read(void *priv, unsigned int offset, void *value, size_t by
- disable_clk:
- 	clk_disable(otp->clk);
- 
--	return ret;
-+	return ret < 0 ? ret : bytes;
- }
- 
- static struct nvmem_config sp_ocotp_nvmem_config = {
-diff --git a/drivers/nvmem/sunxi_sid.c b/drivers/nvmem/sunxi_sid.c
-index ba14a76208ab..5d5ec8f4b1bf 100644
---- a/drivers/nvmem/sunxi_sid.c
-+++ b/drivers/nvmem/sunxi_sid.c
-@@ -36,10 +36,11 @@ struct sunxi_sid {
- 	u32			value_offset;
- };
- 
--static int sunxi_sid_read(void *context, unsigned int offset,
--			  void *val, size_t bytes)
-+static ssize_t sunxi_sid_read(void *context, unsigned int offset,
-+			      void *val, size_t bytes)
- {
- 	struct sunxi_sid *sid = context;
-+	size_t bytes_read = bytes;
- 	u32 word;
- 
- 	/* .stride = 4 so offset is guaranteed to be aligned */
-@@ -50,13 +51,13 @@ static int sunxi_sid_read(void *context, unsigned int offset,
- 	bytes = bytes % 4;
- 
- 	if (!bytes)
--		return 0;
-+		return bytes_read;
- 
- 	/* Handle any trailing bytes */
- 	word = readl_relaxed(sid->base + sid->value_offset + offset);
- 	memcpy(val, &word, bytes);
- 
--	return 0;
-+	return bytes_read;
- }
- 
- static int sun8i_sid_register_readout(const struct sunxi_sid *sid,
-@@ -90,10 +91,11 @@ static int sun8i_sid_register_readout(const struct sunxi_sid *sid,
-  * to be not reliable at all.
-  * Read by the registers instead.
-  */
--static int sun8i_sid_read_by_reg(void *context, unsigned int offset,
--				 void *val, size_t bytes)
-+static ssize_t sun8i_sid_read_by_reg(void *context, unsigned int offset,
-+				     void *val, size_t bytes)
- {
- 	struct sunxi_sid *sid = context;
-+	size_t bytes_read = bytes;
- 	u32 word;
- 	int ret;
- 
-@@ -109,7 +111,7 @@ static int sun8i_sid_read_by_reg(void *context, unsigned int offset,
- 	}
- 
- 	if (!bytes)
--		return 0;
-+		return bytes_read;
- 
- 	/* Handle any trailing bytes */
- 	ret = sun8i_sid_register_readout(sid, offset, &word);
-@@ -118,7 +120,7 @@ static int sun8i_sid_read_by_reg(void *context, unsigned int offset,
- 
- 	memcpy(val, &word, bytes);
- 
--	return 0;
-+	return bytes_read;
- }
- 
- static int sunxi_sid_probe(struct platform_device *pdev)
-diff --git a/drivers/nvmem/u-boot-env.c b/drivers/nvmem/u-boot-env.c
-index befbab156cda..2288a2891bb2 100644
---- a/drivers/nvmem/u-boot-env.c
-+++ b/drivers/nvmem/u-boot-env.c
-@@ -47,8 +47,8 @@ struct u_boot_env_image_broadcom {
- 	DECLARE_FLEX_ARRAY(uint8_t, data);
- } __packed;
- 
--static int u_boot_env_read(void *context, unsigned int offset, void *val,
--			   size_t bytes)
-+static ssize_t u_boot_env_read(void *context, unsigned int offset, void *val,
-+			       size_t bytes)
- {
- 	struct u_boot_env *priv = context;
- 	struct device *dev = priv->dev;
-@@ -66,7 +66,7 @@ static int u_boot_env_read(void *context, unsigned int offset, void *val,
- 		return -EIO;
- 	}
- 
--	return 0;
-+	return bytes_read;
- }
- 
- static int u_boot_env_read_post_process_ethaddr(void *context, const char *id, int index,
-diff --git a/drivers/nvmem/uniphier-efuse.c b/drivers/nvmem/uniphier-efuse.c
-index 6ad3295d3195..a6c28e03adc2 100644
---- a/drivers/nvmem/uniphier-efuse.c
-+++ b/drivers/nvmem/uniphier-efuse.c
-@@ -16,8 +16,8 @@ struct uniphier_efuse_priv {
- 	void __iomem *base;
- };
- 
--static int uniphier_reg_read(void *context,
--			     unsigned int reg, void *_val, size_t bytes)
-+static ssize_t uniphier_reg_read(void *context,
-+				 unsigned int reg, void *_val, size_t bytes)
- {
- 	struct uniphier_efuse_priv *priv = context;
- 	u8 *val = _val;
-@@ -26,7 +26,7 @@ static int uniphier_reg_read(void *context,
- 	for (offs = 0; offs < bytes; offs += sizeof(u8))
- 		*val++ = readb(priv->base + reg + offs);
- 
--	return 0;
-+	return bytes;
- }
- 
- static int uniphier_efuse_probe(struct platform_device *pdev)
-diff --git a/drivers/nvmem/vf610-ocotp.c b/drivers/nvmem/vf610-ocotp.c
-index ee9c61ae727d..4e2bdb38305d 100644
---- a/drivers/nvmem/vf610-ocotp.c
-+++ b/drivers/nvmem/vf610-ocotp.c
-@@ -143,11 +143,12 @@ static int vf610_get_fuse_address(int base_addr_offset)
- 	return -EINVAL;
- }
- 
--static int vf610_ocotp_read(void *context, unsigned int offset,
--			void *val, size_t bytes)
-+static ssize_t vf610_ocotp_read(void *context, unsigned int offset,
-+				void *val, size_t bytes)
- {
- 	struct vf610_ocotp *ocotp = context;
- 	void __iomem *base = ocotp->base;
-+	size_t bytes_read = bytes;
- 	u32 reg, *buf = val;
- 	int fuse_addr;
- 	int ret;
-@@ -193,7 +194,7 @@ static int vf610_ocotp_read(void *context, unsigned int offset,
- 		offset += 4;
- 	}
- 
--	return 0;
-+	return bytes_read;
- }
- 
- static struct nvmem_config ocotp_config = {
-diff --git a/drivers/nvmem/zynqmp_nvmem.c b/drivers/nvmem/zynqmp_nvmem.c
-index 8682adaacd69..1502d4998159 100644
---- a/drivers/nvmem/zynqmp_nvmem.c
-+++ b/drivers/nvmem/zynqmp_nvmem.c
-@@ -56,8 +56,8 @@ struct xilinx_efuse {
- 	u32 pufuserfuse;
- };
- 
--static int zynqmp_efuse_access(void *context, unsigned int offset,
--			       void *val, size_t bytes, enum efuse_access flag,
-+static ssize_t zynqmp_efuse_access(void *context, unsigned int offset,
-+				   void *val, size_t bytes, enum efuse_access flag,
- 			       unsigned int pufflag)
- {
- 	struct device *dev = context;
-@@ -140,10 +140,10 @@ static int zynqmp_efuse_access(void *context, unsigned int offset,
- 	dma_free_coherent(dev, sizeof(struct xilinx_efuse),
- 			  efuse, dma_addr);
- 
--	return ret;
-+	return ret < 0 ? ret : bytes;
- }
- 
--static int zynqmp_nvmem_read(void *context, unsigned int offset, void *val, size_t bytes)
-+static ssize_t zynqmp_nvmem_read(void *context, unsigned int offset, void *val, size_t bytes)
- {
- 	struct device *dev = context;
- 	int ret;
-@@ -166,6 +166,7 @@ static int zynqmp_nvmem_read(void *context, unsigned int offset, void *val, size
- 
- 		dev_dbg(dev, "Read chipid val %x %x\n", idcode, version);
- 		*(int *)val = version & SILICON_REVISION_MASK;
-+		ret = SOC_VER_SIZE;
- 		break;
- 	/* Efuse offset starts from 0xc */
- 	case EFUSE_START_OFFSET ... EFUSE_END_OFFSET:
-@@ -182,8 +183,8 @@ static int zynqmp_nvmem_read(void *context, unsigned int offset, void *val, size
- 	return ret;
- }
- 
--static int zynqmp_nvmem_write(void *context,
--			      unsigned int offset, void *val, size_t bytes)
-+static ssize_t zynqmp_nvmem_write(void *context,
-+				  unsigned int offset, void *val, size_t bytes)
- {
- 	int pufflag = 0;
- 
-diff --git a/include/linux/nvmem-provider.h b/include/linux/nvmem-provider.h
-index 3ebeaa0ded00..f7e83a59aa2f 100644
---- a/include/linux/nvmem-provider.h
-+++ b/include/linux/nvmem-provider.h
-@@ -16,9 +16,9 @@
- #include <linux/gpio/consumer.h>
- 
- struct nvmem_device;
--typedef int (*nvmem_reg_read_t)(void *priv, unsigned int offset,
-+typedef ssize_t (*nvmem_reg_read_t)(void *priv, unsigned int offset,
- 				void *val, size_t bytes);
--typedef int (*nvmem_reg_write_t)(void *priv, unsigned int offset,
-+typedef ssize_t (*nvmem_reg_write_t)(void *priv, unsigned int offset,
- 				 void *val, size_t bytes);
- /* used for vendor specific post processing of cell data */
- typedef int (*nvmem_cell_post_process_t)(void *priv, const char *id, int index,
--- 
-2.45.0.118.g7fe29c98d7-goog
-
+T24gVGh1LCAyMDI0LTA1LTA5IGF0IDExOjI3ICswMjAwLCBBbmdlbG9HaW9hY2NoaW5vIERlbCBS
+ZWdubyB3cm90ZToNCj4gSWwgMDkvMDUvMjQgMDc6NDIsIENLIEh1ICjog6Hkv4rlhYkpIGhhIHNj
+cml0dG86DQo+ID4gT24gV2VkLCAyMDI0LTA1LTA4IGF0IDE1OjAzICswMjAwLCBBbmdlbG9HaW9h
+Y2NoaW5vIERlbCBSZWdubw0KPiA+IHdyb3RlOg0KPiA+ID4gSWwgMDgvMDUvMjQgMDk6MTksIENL
+IEh1ICjog6Hkv4rlhYkpIGhhIHNjcml0dG86DQo+ID4gPiA+IE9uIFR1ZSwgMjAyNC0wNS0wNyBh
+dCAxNjowNyArMDIwMCwgQW5nZWxvR2lvYWNjaGlubyBEZWwgUmVnbm8NCj4gPiA+ID4gd3JvdGU6
+DQo+ID4gPiA+ID4gSWwgMDcvMDUvMjQgMDg6NTksIENLIEh1ICjog6Hkv4rlhYkpIGhhIHNjcml0
+dG86DQo+ID4gPiA+ID4gPiBPbiBUaHUsIDIwMjQtMDUtMDIgYXQgMTA6NTAgKzAyMDAsIEFuZ2Vs
+b0dpb2FjY2hpbm8gRGVsDQo+ID4gPiA+ID4gPiBSZWdubw0KPiA+ID4gPiA+ID4gd3JvdGU6DQo+
+ID4gPiA+ID4gPiA+IElsIDI1LzA0LzI0IDA0OjIzLCBDSyBIdSAo6IOh5L+K5YWJKSBoYSBzY3Jp
+dHRvOg0KPiA+ID4gPiA+ID4gPiA+IEhpLCBBbmdlbG86DQo+ID4gPiA+ID4gPiA+ID4gDQo+ID4g
+PiA+ID4gPiA+ID4gT24gVHVlLCAyMDI0LTA0LTA5IGF0IDE0OjAyICswMjAwLCBBbmdlbG9HaW9h
+Y2NoaW5vIERlbA0KPiA+ID4gPiA+ID4gPiA+IFJlZ25vDQo+ID4gPiA+ID4gPiA+ID4gd3JvdGU6
+DQo+ID4gPiA+ID4gPiA+ID4gPiBEb2N1bWVudCBPRiBncmFwaCBvbiBNTVNZUy9WRE9TWVM6IHRo
+aXMgc3VwcG9ydHMgdXANCj4gPiA+ID4gPiA+ID4gPiA+IHRvDQo+ID4gPiA+ID4gPiA+ID4gPiB0
+aHJlZQ0KPiA+ID4gPiA+ID4gPiA+ID4gRERQDQo+ID4gPiA+ID4gPiA+ID4gPiBwYXRocw0KPiA+
+ID4gPiA+ID4gPiA+ID4gcGVyIEhXIGluc3RhbmNlIChzbyBwb3RlbnRpYWxseSB1cCB0byBzaXgg
+ZGlzcGxheXMNCj4gPiA+ID4gPiA+ID4gPiA+IGZvcg0KPiA+ID4gPiA+ID4gPiA+ID4gbXVsdGkt
+DQo+ID4gPiA+ID4gPiA+ID4gPiB2ZG8NCj4gPiA+ID4gPiA+ID4gPiA+IFNvQ3MpLg0KPiA+ID4g
+PiA+ID4gPiA+ID4gDQo+ID4gPiA+ID4gPiA+ID4gPiBUaGUgTU1TWVMgb3IgVkRPU1lTIGlzIGFs
+d2F5cyB0aGUgZmlyc3QgY29tcG9uZW50IGluDQo+ID4gPiA+ID4gPiA+ID4gPiB0aGUNCj4gPiA+
+ID4gPiA+ID4gPiA+IEREUA0KPiA+ID4gPiA+ID4gPiA+ID4gcGlwZWxpbmUsDQo+ID4gPiA+ID4g
+PiA+ID4gPiBzbyBpdCBvbmx5IHN1cHBvcnRzIGFuIG91dHB1dCBwb3J0IHdpdGggbXVsdGlwbGUN
+Cj4gPiA+ID4gPiA+ID4gPiA+IGVuZHBvaW50cyAtDQo+ID4gPiA+ID4gPiA+ID4gPiB3aGVyZQ0K
+PiA+ID4gPiA+ID4gPiA+ID4gZWFjaA0KPiA+ID4gPiA+ID4gPiA+ID4gZW5kcG9pbnQgZGVmaW5l
+cyB0aGUgc3RhcnRpbmcgcG9pbnQgZm9yIG9uZSBvZiB0aGUNCj4gPiA+ID4gPiA+ID4gPiA+IChj
+dXJyZW50bHkNCj4gPiA+ID4gPiA+ID4gPiA+IHRocmVlKQ0KPiA+ID4gPiA+ID4gPiA+ID4gcG9z
+c2libGUgaGFyZHdhcmUgcGF0aHMuDQo+ID4gPiA+ID4gPiA+ID4gPiANCj4gPiA+ID4gPiA+ID4g
+PiA+IFNpZ25lZC1vZmYtYnk6IEFuZ2Vsb0dpb2FjY2hpbm8gRGVsIFJlZ25vIDwNCj4gPiA+ID4g
+PiA+ID4gPiA+IGFuZ2Vsb2dpb2FjY2hpbm8uZGVscmVnbm9AY29sbGFib3JhLmNvbT4NCj4gPiA+
+ID4gPiA+ID4gPiA+IC0tLQ0KPiA+ID4gPiA+ID4gPiA+ID4gICAgICAuLi4vYmluZGluZ3MvYXJt
+L21lZGlhdGVrL21lZGlhdGVrLG1tc3lzLnlhbWwgfA0KPiA+ID4gPiA+ID4gPiA+ID4gMjMNCj4g
+PiA+ID4gPiA+ID4gPiA+ICsrKysrKysrKysrKysrKysrKysNCj4gPiA+ID4gPiA+ID4gPiA+ICAg
+ICAgMSBmaWxlIGNoYW5nZWQsIDIzIGluc2VydGlvbnMoKykNCj4gPiA+ID4gPiA+ID4gPiA+IA0K
+PiA+ID4gPiA+ID4gPiA+ID4gZGlmZiAtLWdpdA0KPiA+ID4gPiA+ID4gPiA+ID4gYS9Eb2N1bWVu
+dGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvYXJtL21lZGlhdGVrL21lZGkNCj4gPiA+ID4gPiA+
+ID4gPiA+IGF0ZWsNCj4gPiA+ID4gPiA+ID4gPiA+ICxtbXMNCj4gPiA+ID4gPiA+ID4gPiA+IHlz
+LnkNCj4gPiA+ID4gPiA+ID4gPiA+IGFtbA0KPiA+ID4gPiA+ID4gPiA+ID4gYi9Eb2N1bWVudGF0
+aW9uL2RldmljZXRyZWUvYmluZGluZ3MvYXJtL21lZGlhdGVrL21lZGkNCj4gPiA+ID4gPiA+ID4g
+PiA+IGF0ZWsNCj4gPiA+ID4gPiA+ID4gPiA+ICxtbXMNCj4gPiA+ID4gPiA+ID4gPiA+IHlzLnkN
+Cj4gPiA+ID4gPiA+ID4gPiA+IGFtbA0KPiA+ID4gPiA+ID4gPiA+ID4gaW5kZXggYjNjNjg4OGMx
+NDU3Li40ZTlhY2Q5NjZhYTUgMTAwNjQ0DQo+ID4gPiA+ID4gPiA+ID4gPiAtLS0NCj4gPiA+ID4g
+PiA+ID4gPiA+IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2FybS9tZWRpYXRl
+ay9tZWRpDQo+ID4gPiA+ID4gPiA+ID4gPiBhdGVrDQo+ID4gPiA+ID4gPiA+ID4gPiAsbW1zDQo+
+ID4gPiA+ID4gPiA+ID4gPiB5cy55DQo+ID4gPiA+ID4gPiA+ID4gPiBhbWwNCj4gPiA+ID4gPiA+
+ID4gPiA+ICsrKw0KPiA+ID4gPiA+ID4gPiA+ID4gYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUv
+YmluZGluZ3MvYXJtL21lZGlhdGVrL21lZGkNCj4gPiA+ID4gPiA+ID4gPiA+IGF0ZWsNCj4gPiA+
+ID4gPiA+ID4gPiA+ICxtbXMNCj4gPiA+ID4gPiA+ID4gPiA+IHlzLnkNCj4gPiA+ID4gPiA+ID4g
+PiA+IGFtbA0KPiA+ID4gPiA+ID4gPiA+ID4gQEAgLTkzLDYgKzkzLDI5IEBAIHByb3BlcnRpZXM6
+DQo+ID4gPiA+ID4gPiA+ID4gPiAgICAgICAgJyNyZXNldC1jZWxscyc6DQo+ID4gPiA+ID4gPiA+
+ID4gPiAgICAgICAgICBjb25zdDogMQ0KPiA+ID4gPiA+ID4gPiA+ID4gICAgICANCj4gPiA+ID4g
+PiA+ID4gPiA+ICsgIHBvcnQ6DQo+ID4gPiA+ID4gPiA+ID4gPiArICAgICRyZWY6IC9zY2hlbWFz
+L2dyYXBoLnlhbWwjL3Byb3BlcnRpZXMvcG9ydA0KPiA+ID4gPiA+ID4gPiA+ID4gKyAgICBkZXNj
+cmlwdGlvbjoNCj4gPiA+ID4gPiA+ID4gPiA+ICsgICAgICBPdXRwdXQgcG9ydCBub2RlLiBUaGlz
+IHBvcnQgY29ubmVjdHMgdGhlDQo+ID4gPiA+ID4gPiA+ID4gPiBNTVNZUy9WRE9TWVMNCj4gPiA+
+ID4gPiA+ID4gPiA+IG91dHB1dA0KPiA+ID4gPiA+ID4gPiA+ID4gdG8NCj4gPiA+ID4gPiA+ID4g
+PiA+ICsgICAgICB0aGUgZmlyc3QgY29tcG9uZW50IG9mIG9uZSBkaXNwbGF5IHBpcGVsaW5lLA0K
+PiA+ID4gPiA+ID4gPiA+ID4gZm9yDQo+ID4gPiA+ID4gPiA+ID4gPiBleGFtcGxlDQo+ID4gPiA+
+ID4gPiA+ID4gPiBvbmUNCj4gPiA+ID4gPiA+ID4gPiA+IG9mDQo+ID4gPiA+ID4gPiA+ID4gPiAr
+ICAgICAgdGhlIGF2YWlsYWJsZSBPVkwgb3IgUkRNQSBibG9ja3MuDQo+ID4gPiA+ID4gPiA+ID4g
+PiArICAgICAgU29tZSBNZWRpYVRlayBTb0NzIHN1cHBvcnQgdXAgdG8gdGhyZWUgZGlzcGxheQ0K
+PiA+ID4gPiA+ID4gPiA+ID4gb3V0cHV0cw0KPiA+ID4gPiA+ID4gPiA+ID4gcGVyDQo+ID4gPiA+
+ID4gPiA+ID4gPiBNTVNZUy4NCj4gPiA+ID4gPiA+ID4gPiA+ICsgICAgcHJvcGVydGllczoNCj4g
+PiA+ID4gPiA+ID4gPiA+ICsgICAgICBlbmRwb2ludEAwOg0KPiA+ID4gPiA+ID4gPiA+ID4gKyAg
+ICAgICAgJHJlZjoNCj4gPiA+ID4gPiA+ID4gPiA+IC9zY2hlbWFzL2dyYXBoLnlhbWwjL3Byb3Bl
+cnRpZXMvZW5kcG9pbnQNCj4gPiA+ID4gPiA+ID4gPiA+ICsgICAgICAgIGRlc2NyaXB0aW9uOiBP
+dXRwdXQgdG8gdGhlIHByaW1hcnkgZGlzcGxheQ0KPiA+ID4gPiA+ID4gPiA+ID4gcGlwZWxpbmUN
+Cj4gPiA+ID4gPiA+ID4gPiA+ICsNCj4gPiA+ID4gPiA+ID4gPiA+ICsgICAgICBlbmRwb2ludEAx
+Og0KPiA+ID4gPiA+ID4gPiA+ID4gKyAgICAgICAgJHJlZjoNCj4gPiA+ID4gPiA+ID4gPiA+IC9z
+Y2hlbWFzL2dyYXBoLnlhbWwjL3Byb3BlcnRpZXMvZW5kcG9pbnQNCj4gPiA+ID4gPiA+ID4gPiA+
+ICsgICAgICAgIGRlc2NyaXB0aW9uOiBPdXRwdXQgdG8gdGhlIHNlY29uZGFyeSBkaXNwbGF5DQo+
+ID4gPiA+ID4gPiA+ID4gPiBwaXBlbGluZQ0KPiA+ID4gPiA+ID4gPiA+ID4gKw0KPiA+ID4gPiA+
+ID4gPiA+ID4gKyAgICAgIGVuZHBvaW50QDI6DQo+ID4gPiA+ID4gPiA+ID4gPiArICAgICAgICAk
+cmVmOg0KPiA+ID4gPiA+ID4gPiA+ID4gL3NjaGVtYXMvZ3JhcGgueWFtbCMvcHJvcGVydGllcy9l
+bmRwb2ludA0KPiA+ID4gPiA+ID4gPiA+ID4gKyAgICAgICAgZGVzY3JpcHRpb246IE91dHB1dCB0
+byB0aGUgdGVydGlhcnkgZGlzcGxheQ0KPiA+ID4gPiA+ID4gPiA+ID4gcGlwZWxpbmUNCj4gPiA+
+ID4gPiA+ID4gPiA+ICsNCj4gPiA+ID4gPiA+ID4gPiA+ICsgICAgcmVxdWlyZWQ6DQo+ID4gPiA+
+ID4gPiA+ID4gPiArICAgICAgLSBlbmRwb2ludEAwDQo+ID4gPiA+ID4gPiA+ID4gPiArDQo+ID4g
+PiA+ID4gPiA+ID4gDQo+ID4gPiA+ID4gPiA+ID4gbW1zeXMvdmRvc3lzIGRvZXMgbm90IG91dHB1
+dCBkYXRhIHRvIHRoZSBmaXJzdA0KPiA+ID4gPiA+ID4gPiA+IGNvbXBvbmVudCBvZg0KPiA+ID4g
+PiA+ID4gPiA+IGRpc3BsYXkNCj4gPiA+ID4gPiA+ID4gPiBwaXBlbGluZSwgc28gdGhpcyBjb25u
+ZWN0aW9uIGxvb2tzICd2aXJ0dWFsJy4gU2hhbGwgd2UNCj4gPiA+ID4gPiA+ID4gPiBhZGQNCj4g
+PiA+ID4gPiA+ID4gPiBzb21ldGhpbmcNCj4gPiA+ID4gPiA+ID4gPiB2aXJ0dWFsIGluIGRldmlj
+ZSB0cmVlPyBZb3UgYWRkIHRoaXMgaW4gb3JkZXIgdG8gZGVjaWRlDQo+ID4gPiA+ID4gPiA+ID4g
+d2hpY2gNCj4gPiA+ID4gPiA+ID4gPiBwaXBlbGluZQ0KPiA+ID4gPiA+ID4gPiA+IGlzIDFzdCwg
+Mm5kLCAzcmQsIGJ1dCBmb3IgZGV2aWNlIGl0IGRvbid0IGNhcmUgd2hpY2gNCj4gPiA+ID4gPiA+
+ID4gPiBvbmUgaXMNCj4gPiA+ID4gPiA+ID4gPiBmaXJzdC4NCj4gPiA+ID4gPiA+ID4gPiBJbg0K
+PiA+ID4gPiA+ID4gPiA+IGNvbXB1dGVyLCBzb2Z0d2FyZSBjb3VsZCBjaGFuZ2Ugd2hpY2ggZGlz
+cGxheSBpcyB0aGUNCj4gPiA+ID4gPiA+ID4gPiBwcmltYXJ5DQo+ID4gPiA+ID4gPiA+ID4gZGlz
+cGxheS4NCj4gPiA+ID4gPiA+ID4gPiBJJ20gbm90IHN1cmUgaXQncyBnb29kIHRvIGRlY2lkZSBk
+aXNwbGF5IG9yZGVyIGluDQo+ID4gPiA+ID4gPiA+ID4gZGV2aWNlDQo+ID4gPiA+ID4gPiA+ID4g
+dHJlZT8NCj4gPiA+ID4gPiA+ID4gPiANCj4gPiA+ID4gPiA+ID4gDQo+ID4gPiA+ID4gPiA+IERl
+dmljZXRyZWUgZGVzY3JpYmVzIGhhcmR3YXJlLCBzbyBub3RoaW5nIHZpcnR1YWwgY2FuIGJlDQo+
+ID4gPiA+ID4gPiA+IHByZXNlbnQNCj4gPiA+ID4gPiA+ID4gLQ0KPiA+ID4gPiA+ID4gPiBhbmQg
+aW4gYW55IGNhc2UsDQo+ID4gPiA+ID4gPiA+IHRoZSBwcmltYXJ5L3NlY29uZGFyeS90ZXJ0aWFy
+eSBwaXBlbGluZSBpcyBpbiByZWxhdGlvbiB0bw0KPiA+ID4gPiA+ID4gPiBNTS9WRE8NCj4gPiA+
+ID4gPiA+ID4gU1lTLA0KPiA+ID4gPiA+ID4gPiBub3QgcmVmZXJyZWQNCj4gPiA+ID4gPiA+ID4g
+dG8gc29mdHdhcmUuDQo+ID4gPiA+ID4gPiA+IA0KPiA+ID4gPiA+ID4gPiBCZXR0ZXIgZXhwbGFp
+bmluZywgdGhlIHByaW1hcnkgcGlwZWxpbmUgaXMgbm90DQo+ID4gPiA+ID4gPiA+IG5lY2Vzc2Fy
+aWx5DQo+ID4gPiA+ID4gPiA+IHRoZQ0KPiA+ID4gPiA+ID4gPiBwcmltYXJ5IGRpc3BsYXkgaW4N
+Cj4gPiA+ID4gPiA+ID4gRFJNIHRlcm1zOiB0aGF0J3MgYSBjb25jZXB0IHRoYXQgaXMgY29tcGxl
+dGVseSBkZXRhY2hlZA0KPiA+ID4gPiA+ID4gPiBmcm9tDQo+ID4gPiA+ID4gPiA+IHRoZQ0KPiA+
+ID4gPiA+ID4gPiBzY29wZSBvZiB0aGlzDQo+ID4gPiA+ID4gPiA+IHNlcmllcyBhbmQgdGhpcyBn
+cmFwaCAtIGFuZCBpdCdzIHNvbWV0aGluZyB0aGF0IHNoYWxsIGJlDQo+ID4gPiA+ID4gPiA+IG1h
+bmFnZWQNCj4gPiA+ID4gPiA+ID4gc29sZWx5IGJ5IHRoZQ0KPiA+ID4gPiA+ID4gPiBkcml2ZXIg
+KG1lZGlhdGVrLWRybSBpbiB0aGlzIGNhc2UpLg0KPiA+ID4gPiA+ID4gPiANCj4gPiA+ID4gPiA+
+ID4gQ29taW5nIGJhY2sgdG8gdGhlIGNvbm5lY3Rpb24gbG9va2luZywgYnV0ICpub3QqIGJlaW5n
+DQo+ID4gPiA+ID4gPiA+IHZpcnR1YWw6DQo+ID4gPiA+ID4gPiA+IHRoZQ0KPiA+ID4gPiA+ID4g
+PiBzZW5zZSBoZXJlIGlzDQo+ID4gPiA+ID4gPiA+IHRoYXQgdGhlIE1NL1ZET1NZUyBibG9ja3Mg
+YXJlIHVzZWQgaW4gdGhlIGRpc3BsYXkNCj4gPiA+ID4gPiA+ID4gcGlwZWxpbmUgdG8NCj4gPiA+
+ID4gPiA+ID4gInN0aXRjaCIgdG9nZXRoZXINCj4gPiA+ID4gPiA+ID4gdGhlIHZhcmlvdXMgZGlz
+cGxheSBwaXBlbGluZSBoYXJkd2FyZSBibG9ja3MsIG9yLCBzYWlkDQo+ID4gPiA+ID4gPiA+IGRp
+ZmZlcmVudGx5LA0KPiA+ID4gPiA+ID4gPiBzZXR0aW5nIHVwIHRoZQ0KPiA+ID4gPiA+ID4gPiBy
+b3V0aW5nIGJldHdlZW4gYWxsIG9mIHRob3NlIChQLlMuOg0KPiA+ID4gPiA+ID4gPiBtbXN5c19t
+dHh4eHhfcm91dGluZ190YWJsZSEpDQo+ID4gPiA+ID4gPiA+IHRocm91Z2ggdGhlIFZETw0KPiA+
+ID4gPiA+ID4gPiBJbnB1dCBTZWxlY3Rpb24gKFZET3hfU0VMX0lOKSBvciBPdXRwdXQgU2VsZWN0
+aW9uDQo+ID4gPiA+ID4gPiA+IChWRE94X1NFTF9PVVQpDQo+ID4gPiA+ID4gPiA+IGFuZA0KPiA+
+ID4gPiA+ID4gPiB3aXRoIHRoZQ0KPiA+ID4gPiA+ID4gPiBhc3Npc3RhbmNlIG9mIHRoZSBWRE8g
+TXVsdGlwbGUgT3V0cHV0IE1hc2sgKFZET3hfTU9VVCkNCj4gPiA+ID4gPiA+ID4gZm9yDQo+ID4g
+PiA+ID4gPiA+IHRoZQ0KPiA+ID4gPiA+ID4gPiBtdWx0aXBsZSBvdXRwdXRzDQo+ID4gPiA+ID4g
+PiA+IHVzZWNhc2UsIGJvdGggb2Ygd2hpY2gsIGFyZSBkZXNjcmliZWQgYnkgdGhpcyBncmFwaC4N
+Cj4gPiA+ID4gPiA+IA0KPiA+ID4gPiA+ID4gSSBhZ3JlZSB0aGlzIHBhcnQsIGJ1dCB0aGlzIGlz
+IHJlbGF0ZWQgdG8gZGlzcGxheSBkZXZpY2UgT0YNCj4gPiA+ID4gPiA+IGdyYXBoLg0KPiA+ID4g
+PiA+ID4gVGhlc2UgZGlzcGxheSBkZXZpY2Ugd291bGQgb3V0cHV0IHZpZGVvIGRhdGEgZnJvbSBv
+bmUNCj4gPiA+ID4gPiA+IGRldmljZQ0KPiA+ID4gPiA+ID4gYW5kDQo+ID4gPiA+ID4gPiBpbnB1
+dA0KPiA+ID4gPiA+ID4gdG8gYW5vdGhlciB2aWRlbyBkZXZpY2UuIFRoZXNlIHZpZGVvIGRldmlj
+ZSB3b3VsZCBub3QgaW5wdXQNCj4gPiA+ID4gPiA+IG9yDQo+ID4gPiA+ID4gPiBvdXRwdXQNCj4g
+PiA+ID4gPiA+IHZpZGVvIGRhdGEgdG8gbW1zeXMvdmRvc3lzLg0KPiA+ID4gPiA+ID4gDQo+ID4g
+PiA+ID4gPiA+IA0KPiA+ID4gPiA+ID4gPiBUaGlzIG1lYW5zIHRoYXQgdGhlIFZET1NZUyBpcyBy
+ZWFsbHkgdGhlICJtYXN0ZXIiIG9mIHRoZQ0KPiA+ID4gPiA+ID4gPiBkaXNwbGF5DQo+ID4gPiA+
+ID4gPiA+IHBpcGVsaW5lIHNpbmNlDQo+ID4gPiA+ID4gPiA+IGV2ZXJ5dGhpbmcgZ2V0cyBlbmFi
+bGVkLCBtaXhlZCBhbmQgbWF0Y2hlZCBmcm9tIHRoZXJlIC0NCj4gPiA+ID4gPiA+ID4gYW5kDQo+
+ID4gPiA+ID4gPiA+IHRoYXQncyBpbg0KPiA+ID4gPiA+ID4gPiB0aGUgc2Vuc2UNCj4gPiA+ID4g
+PiA+ID4gb2YgaGFyZHdhcmUgb3BlcmF0aW9uLCBzbyB3ZSBhcmUgKnJlYWxseSogKGFuZCBub3QN
+Cj4gPiA+ID4gPiA+ID4gdmlydHVhbGx5ISkNCj4gPiA+ID4gPiA+ID4gZmxpcHBpbmcgc3dpdGNo
+ZXMuDQo+ID4gPiA+ID4gPiANCj4gPiA+ID4gPiA+IEkgYWdyZWUgbW1zeXMvdmRvc3lzIGlzIG1h
+c3RlciBvZiB2aWRlbyBwaXBlbGluZSwgc28gbGV0J3MNCj4gPiA+ID4gPiA+IGRlZmluZQ0KPiA+
+ID4gPiA+ID4gd2hhdA0KPiA+ID4gPiA+ID4gdGhlIHBvcnQgaW4gbW1zeXMvdmRvc3lzIGlzLiBJ
+ZiB0aGUgcG9ydCBtZWFucyB0aGUgbWFzdGVyDQo+ID4gPiA+ID4gPiByZWxhdGlvbnNoaXAsDQo+
+ID4gPiA+ID4gPiBtbXN5cy92ZG9zeXMgc2hvdWxkIG91dHB1dCBwb3J0IHRvIGV2ZXJ5IGRpc3Bs
+YXkgZGV2aWNlLiBPcg0KPiA+ID4gPiA+ID4gdXNlDQo+ID4gPiA+ID4gPiBhDQo+ID4gPiA+ID4g
+PiBzaW1wbHkgd2F5IHRvIHNob3cgdGhlIG1hc3RlciByZWxhdGlvbiBzaGlwDQo+ID4gPiA+ID4g
+PiANCj4gPiA+ID4gPiA+IG1tc3lzLXN1YmRldiA9IDwmb3ZsMCwgJnJkbWEwLCAmY29sb3IwLCAu
+Li4+LCA8Jm92bDEsDQo+ID4gPiA+ID4gPiAmcmRtYTEsDQo+ID4gPiA+ID4gPiAmY29sb3IxLA0K
+PiA+ID4gPiA+ID4gLi4uPjsNCj4gPiA+ID4gPiA+IA0KPiA+ID4gPiA+IA0KPiA+ID4gPiA+IFRo
+ZXJlJ3Mgbm8gbmVlZCB0byBsaXN0IGFsbCBvZiB0aGUgVkRPMC9WRE8xL21tc3lzIGRldmljZXMg
+aW4NCj4gPiA+ID4gPiBvbmUNCj4gPiA+ID4gPiBiaWcNCj4gPiA+ID4gPiBhcnJheQ0KPiA+ID4g
+PiA+IHByb3BlcnR5LCBiZWNhdXNlIHRoZSBhY3R1YWwgcG9zc2libGUgZGV2aWNlcyBjYW4gYmUg
+ZGVmaW5lZDoNCj4gPiA+ID4gPiAgICAgIDEuIEluIHRoZSBiaW5kaW5nczsgYW5kDQo+ID4gPiA+
+ID4gICAgICAyLiBJbiB0aGUgYWN0dWFsIE9GIGdyYXBoIHRoYXQgd2Ugd3JpdGUgZm9yIGVhY2gN
+Cj4gPiA+ID4gPiBTb0MrYm9hcmQNCj4gPiA+ID4gPiBjb21iaW5hdGlvbi4NCj4gPiA+ID4gPiAN
+Cj4gPiA+ID4gPiBBIGdyYXBoIGNhbm5vdCBjb250YWluIGEgY29ubmVjdGlvbiB0byBhIGRldmlj
+ZSB0aGF0IGNhbm5vdA0KPiA+ID4gPiA+IGJlDQo+ID4gPiA+ID4gY29ubmVjdGVkIHRvDQo+ID4g
+PiA+ID4gdGhlIHByZXZpb3VzLCBzbywgeW91ciAibW1zeXMtc3ViZGV2IiBsaXN0IGNhbiBiZSBy
+ZXRyaWV2ZWQNCj4gPiA+ID4gPiBieQ0KPiA+ID4gPiA+IGxvb2tpbmcgYXQgdGhlDQo+ID4gPiA+
+ID4gZ3JhcGg6DQo+ID4gPiA+ID4gICAgIC0gU3RhcnQgZnJvbSBWRE8wLzEgb3IgTU1TWVMNCj4g
+PiA+ID4gPiAgICAgLSBXYWxrIHRocm91Z2ggKHZpc3VhbGx5LCBldmVuKSBPVVRQVVQgcG9ydHMN
+Cj4gPiA+ID4gPiAgICAgICAtIFZETzAgKHJlYWQgb3V0cHV0IGVwKSAtPiBvdmwwIChyZWFkIG91
+dHB1dCBlcCkgLT4NCj4gPiA+ID4gPiByZG1hMA0KPiA+ID4gPiA+IChyZWFkDQo+ID4gPiA+ID4g
+b3V0cHV0IGVwKSAtPg0KPiA+ID4gPiA+ICAgICAgICAgY29sb3IwICguLi4pIC0+IGV0Yw0KPiA+
+ID4gPiA+ICAgICAtIE5vdGhpbmcgbW9yZSAtIGl0J3MgYWxsIGRlZmluZWQgdGhlcmUuDQo+ID4g
+PiA+ID4gDQo+ID4gPiA+ID4gPiANCj4gPiA+ID4gPiA+IEFub3RoZXIgcHJvYmxlbSBpcyBob3cg
+dG8gZ3JvdXAgZGlzcGxheSBkZXZpY2U/IElmIHR3bw0KPiA+ID4gPiA+ID4gcGlwZWxpbmUNCj4g
+PiA+ID4gPiA+IGNvdWxkDQo+ID4gPiA+ID4gPiBiZSByb3V0ZSB0byB0aGUgc2FtZSBkaXNwbGF5
+IGludGVyZmFjZSwgc3VjaCBhcw0KPiA+ID4gPiA+ID4gDQo+ID4gPiA+ID4gPiByZG1hMCAtPiBk
+c2kNCj4gPiA+ID4gPiA+IHJkbWExIC0+IGRzaQ0KPiA+ID4gPiA+ID4gDQo+ID4gPiA+ID4gPiBX
+b3VsZCB0aGlzIGJlIHNpbmdsZSBncm91cD8NCj4gPiA+ID4gPiANCj4gPiA+ID4gPiBUaGVyZSBh
+cmUgbXVsdGlwbGUgd2F5cyBvZiBkb2luZyB0aGlzLCBidXQgb25lIHRoYXQgY29tZXMgdG8NCj4g
+PiA+ID4gPiBteQ0KPiA+ID4gPiA+IG1pbmQNCj4gPiA+ID4gPiByaWdodCBub3cgYW5kDQo+ID4g
+PiA+ID4gdGhhdCBsb29rcyBjbGVhbiBhcyB3ZWxsIGlzIHRoZSBmb2xsb3dpbmc6DQo+ID4gPiA+
+ID4gDQo+ID4gPiA+ID4gb3ZsMEBlZjAxIHsNCj4gPiA+ID4gPiAgICAgICAuLi4uLg0KPiA+ID4g
+PiA+ICAgICAgcG9ydHMgew0KPiA+ID4gPiA+ICAgICAgICBwb3J0QDAgew0KPiA+ID4gPiA+ICAg
+ICAgICAgIHJlZyA9IDwwPjsNCj4gPiA+ID4gPiAgICAgICAgICBvdmwwX2luOiBlbmRwb2ludCB7
+DQo+ID4gPiA+ID4gICAgICAgICAgICByZW1vdGUtZW5kcG9pbnQgPSA8JnZkb3N5czBfb3V0PjsN
+Cj4gPiA+ID4gPiAgICAgICAgICB9Ow0KPiA+ID4gPiA+ICAgICAgICB9Ow0KPiA+ID4gPiANCj4g
+PiA+ID4gSSdtIG5vdCBzdXJlIGhvdyBkbyB5b3UgZGVmaW5lIHRoaXMgcG9ydCBmcm9tIE9WTCB0
+byB2ZG9zeXMuIElmDQo+ID4gPiA+IHRoaXMNCj4gPiA+ID4gcG9ydCBtZWFucyAnbWFzdGVyIHJl
+bGF0aW9uc2hpcCcsIG90aGVycyBjb3VsZCBhZGQgcG9ydCBpbg0KPiA+ID4gPiBDT0xPUiB0bw0K
+PiA+ID4gPiBwb2ludCB0byB2ZG9zeXMgYmVjYXVzZSBDT0xPUiBhbmQgdmRvc3lzIGhhcyB0aGUg
+J21hc3Rlcg0KPiA+ID4gPiByZWxhdGlvbnNoaXAnDQo+ID4gPiA+IGFuZCBJIGNvdWxkIG5vdCBy
+ZWplY3QgdGhpcy4gU28gd2UgbmVlZCBtb3JlIHNwZWNpZmljDQo+ID4gPiA+IGRlZmluaXRpb24g
+b2YNCj4gPiA+ID4gdGhpcyBwb3J0Lg0KPiA+ID4gDQo+ID4gPiANCj4gPiA+ID4gT25seSB0aGUg
+J2ZpcnN0JyBkZXZpY2UgaW4gcGlwZWxpbmUgY291bGQgaGF2ZSB0aGlzIHBvcnQ/DQo+ID4gPiAN
+Cj4gPiA+IENvcnJlY3QuIE9ubHkgdGhlIGZpcnN0IGRldmljZSBpbiBhIHBpcGVsaW5lIC0gYW5k
+IHRoaXMgaXMNCj4gPiA+IGFjdHVhbGx5IGENCj4gPiA+IHJlc3RyaWN0aW9uDQo+ID4gPiB0aGF0
+IHRoZSBnZW5lcmljIGJpbmRpbmcgZGVmaW5pdGlvbiBvZiBwb3J0IGFscmVhZHkgZ2l2ZXMsIGlu
+IGENCj4gPiA+IHdheS4NCj4gPiA+IA0KPiA+ID4gDQo+ID4gPiA+IEluIG10ODE3Mywgb25lIHBp
+cGVsaW5lIGlzDQo+ID4gPiA+IA0KPiA+ID4gPiBvdmwgLT4gY29sb3IgLT4gYWFsIC0+IG9kIC0+
+IHJkbWEgLT4gdWZvIC0+IGRzaQ0KPiA+ID4gPiANCj4gPiA+ID4gQnV0IHJkbWEgaGFzIGFuIG9w
+dGlvbiB0byByZWFkIGRhdGEgZnJvbSBvZCBvciBkaXJlY3RseSBmcm9tDQo+ID4gPiA+IERSQU0u
+DQo+ID4gPiA+IElmDQo+ID4gPiA+IGZyb20gRFJBTSwgdGhlIHBpcGVsaW5lIHdvdWxkIGJlIGNo
+YW5nZWQgdG8NCj4gPiA+ID4gDQo+ID4gPiA+IHJkbWEgLT4gdWZvIC0+IGRzaQ0KPiA+ID4gPiAN
+Cj4gPiA+ID4gDQo+ID4gPiA+IFNvIGl0J3MgY29uZnVzZWQgd2hpY2ggb25lIGlzICdmaXJzdCcu
+DQo+ID4gPiANCj4gPiA+IFRoYXQncyB3aHkgdGhlIHBpcGVsaW5lIGlzICpib2FyZC1zcGVjaWZp
+YyogYW5kIG5vdCBzb2MtZ2VuZXJpYyENCj4gPiA+IA0KPiA+ID4gQW5kIHdoYXQgeW91IGRlc2Ny
+aWJlZCBpcyAqZXhhY3RseSogdGhlIHJlYXNvbiB3aHkgSSdtIGFkZGluZw0KPiA+ID4gc3VwcG9y
+dA0KPiA+ID4gZm9yIHRoZQ0KPiA+ID4gT0YgZ3JhcGhzIGluIG1lZGlhdGVrLWRybTogc3BlY2lm
+eWluZyB0aGUgY29ycmVjdCBwaXBlbGluZSBmb3INCj4gPiA+IGVhY2gNCj4gPiA+IGJvYXJkIGFz
+IHBlcg0KPiA+ID4gd2hhdCBlYWNoIGJvYXJkIHdhbnRzIHRvIHVzZSAoc2FpZCBkaWZmZXJlbnRs
+eTogZm9yIGVhY2ggYm9hcmQncw0KPiA+ID4gKmNhcGFiaWxpdGllcyopLg0KPiA+ID4gDQo+ID4g
+PiBTbywgaWYgb24gYSBjZXJ0YWluIGJvYXJkIHlvdSB3YW50IHRvIHNraXAgT0QsIHlvdSBjYW4g
+aG9vayBSRE1BDQo+ID4gPiB1cA0KPiA+ID4gZGlyZWN0bHkgdG8NCj4gPiA+IE1NU1lTL1ZET1NZ
+Uy4NCj4gPiA+IA0KPiA+ID4gSW4gTVQ4MTczLCBvbmUgcGlwZWxpbmUgZm9yIG9uZSBib2FyZCB1
+c2VzIGVuZHBvaW50cyBJTi9PVVQgbGlrZQ0KPiA+ID4gdGhpczoNCj4gPiA+IA0KPiA+ID4gTU1T
+WVMgLT4gT1ZMIC0+IENPTE9SIC0+IEFBTCAtPiBPRCAtPiBSRE1BIC0+IFVGTyAtPiBEU0kNCj4g
+PiA+IA0KPiA+ID4gYW5kIGZvciBhbm90aGVyIGJvYXJkLCBlbmRwb2ludHMgd2lsbCBiZSBsaWtl
+DQo+ID4gPiANCj4gPiA+IE1NU1lTIC0+IFJETUEgLT4gVUZPIC0+IERTSQ0KPiA+ID4gDQo+ID4g
+PiAuLi53aGljaCBpcyB0aGUgZXhhY3Qgc2FtZSBhcyB5b3UgZGVzY3JpYmVkLCBhbmQgSSB0aGlu
+ayB0aGF0DQo+ID4gPiB5b3VyDQo+ID4gPiBjb25mdXNpb24gY29tZXMNCj4gPiA+IGZyb20gdGhl
+IGZhY3QgdGhhdCB5b3UgZGlkbid0IHB1dCBNTVNZUyBhdCB0aGUgYmVnaW5uaW5nIG9mIHRoZQ0K
+PiA+ID4gcGlwZWxpbmUgOi0pDQo+ID4gDQo+ID4gSW4gb25lIGJvYXJkLCBib3RoIE9WTCBhbmQg
+UkRNQSBjb3VsZCBzd2l0Y2ggZHluYW1pY2FsbHkuIEJlY2F1c2UNCj4gPiBlYWNoDQo+ID4gb25l
+IGNvdWxkIGJlIHRoZSBmaXJzdCBpbiBvbmUgYm9hcmQsIG1tc3lzIHBvaW50IHRvIGJvdGggb3Zs
+IGFuZA0KPiA+IHJkbWE/DQo+ID4gDQo+IA0KPiBOby4NCj4gDQo+IE1NU1lTIHdvdWxkIHN0aWxs
+IHBvaW50IE9OTFkgdG8gT1ZMLCBiZWNhdXNlIE9WTCBpcyB0aGUgImVhcmxpZXN0DQo+IHBvaW50
+Ig0KPiBvZiB0aGUgcGlwZWxpbmUgdGhhdCB0aGlzIG9uZSBib2FyZCBkb2VzIHN1cHBvcnQuDQo+
+IA0KPiBJbiB0aGF0IGNhc2UsIFJETUEgYmVpbmcgcHJlc2VudCBhdCBhIGxhdGVyIHBvaW50IGlu
+IHRoZSBwaXBlbGluZQ0KPiBkb2VzIG5vdA0KPiBtYXR0ZXIgYW5kIGRvZXMgbm90IHByZXZlbnQg
+dXMgZnJvbSAqdGVtcG9yYXJpbHkqIHNraXBwaW5nIE9WTC1DT0xPUi0NCj4gQUFMLU9EDQo+IGFu
+ZCBnb2luZyBNTVNZUy0+UkRNQSAqZGlyZWN0bHkqLg0KPiANCj4gU3dpdGNoaW5nIGR5bmFtaWNh
+bGx5IGlzIGEgZHJpdmVyIGR1dHkgYW5kIHdpbGwgYmUgMTAwJSBwb3NzaWJsZSAoYXMNCj4gbXVj
+aA0KPiBhcyBpdCBpcyByaWdodCBub3cpIHRvIGR5bmFtaWNhbGx5IHN3aXRjaCBPVkwgYW5kIFJE
+TUEgYXMgbG9uZyBhcw0KPiBib3RoIGFyZQ0KPiBwcmVzZW50IGluIHRoZSBwaXBlbGluZS4NCj4g
+DQo+IFdpdGggdGhpcyBleGFjdCBwaXBlbGluZToNCj4gDQo+IE1NU1lTIC0+IE9WTCAtPiBDT0xP
+UiAtPiBBQUwgLT4gT0QgLT4gUkRNQSAtPiBVRk8gLT4gRFNJDQo+IA0KPiB0aGUgZHJpdmVyIF9j
+YW4gc3dpdGNoIGR5bmFtaWNhbGx5XyBiZXR3ZWVuIE1NU1lTLT5PVkwtPi4uLi0+UkRNQSBhbmQN
+Cj4gTU1TWVMtPlJETUEgYXMgdGhlIGRyaXZlciBpdHNlbGYgKmlzIGFsbG93ZWQgdG8qIHRlbXBv
+cmFyaWx5IGlnbm9yZQ0KPiBwYXJ0DQo+IG9mIHRoZSBwaXBlbGluZS4NCj4gDQo+IFBsZWFzZSBu
+b3RlIHRoYXQsIGluIGNhc2UgaXQgaXMgbmVlZGVkICh0cnVzdCBtZSBvbiB0aGlzOiBpdCdzIG5v
+dA0KPiBuZWVkZWQpDQo+IGEgY3VzdG9tIHByb3BlcnR5IGluIHRoZSBlbmRwb2ludCBub2RlIGNh
+biBhbHdheXMgYmUgaW50cm9kdWNlZA0KPiBsYXRlciwgc28NCj4gdGhhdCB5b3UgY2FuIGRlY2xh
+cmUgYSBub2RlIGxpa2UNCj4gDQo+ICAgICAgICAgICBlbmRwb2ludEAwIHsNCj4gICAgICAgICAg
+ICAgcmVtb3RlLWVuZHBvaW50ID0gPCZvdmwwX2luPjsNCj4gICAgICAgICAgICAgbWVkaWF0ZWss
+c2hvcnQtcGF0aCA9IDwmcmRtYTBfaW4+Ow0KPiAgICAgICAgICAgfTsNCj4gDQo+IC4uLmJ1dCBh
+Z2FpbiwgdGhhdCdzIG5ldmVyIGdvaW5nIHRvIGJlIG5lZWRlZCwgYXMgdGhlIGRyaXZlciBhbHJl
+YWR5DQo+IGRvZXMNCj4gaGF2ZSBrbm93bGVkZ2Ugb2YgdGhlIGZhY3QgdGhhdCBSRE1BIGlzIGlu
+IHRoZSBwaXBlbGluZSwgc28gaXQgaXMNCj4gcG9zc2libGUNCj4gdG8gc2ltcGx5IGRvIGEgdGVt
+cG9yYXJ5IG92ZXJyaWRlIGluIHRoZSBkcml2ZXIuDQo+IA0KPiBXaGF0IHRoZSBPRiBHcmFwaCBz
+dXBwb3J0IGRvZXMgaXMgdG8gYnVpbGQgdGhlIHNhbWUgYXJyYXlzLCB0aGF0IHdlDQo+IGN1cnJl
+bnRseQ0KPiBoYXZlIGhhcmRjb2RlZCBpbiBtZWRpYXRlay1kcm0sIGJ5IHJlYWRpbmcgZnJvbSBk
+ZXZpY2UgdHJlZS4NCj4gDQo+IE5vdGhpbmcgZWxzZSBhbmQgbm90aGluZyBtb3JlIC0gZm9yIG5v
+dy4NCj4gDQo+IEhhdmluZyB0aGUgT0YgR3JhcGggc3VwcG9ydCBtYWtlcyB1cyBhYmxlIHRvIGFs
+c28gYWRkIG5ldyBkdWFsLXBhdGgNCj4gc3VwcG9ydA0KPiB3aXRoIG1vcmUgY29tcGxpY2F0ZWQg
+Y29ubmVjdGlvbnMgdGhhbiB0aGUgY3VycmVudCBvbmVzLCB3aXRob3V0IGFueQ0KPiBwcm9ibGVt
+DQo+IGFuZCwgaW4gbWFueSBjYXNlcywgd2l0aG91dCBldmVuIG1vZGlmeWluZyB0aGUgYmluZGlu
+Z3MgZnJvbSB3aGF0IEkNCj4gcHJvdmlkZWQNCj4gaW4gdGhpcyBzZXJpZXMuDQoNCk9LLCBwbGVh
+c2UgYWRkIHRoZSBpbmZvcm1hdGlvbiB3ZSBkaXNjdXNzZWQgaW50byBiaW5kaW5nIGRvY3VtZW50
+IHRvDQpwcmV2ZW50IGFueW9uZSBtaXN1c2luZyB0aGlzIGJpbmRpbmcuDQoNClJlZ2FyZHMsDQpD
+Sw0KDQo+IA0KPiBDaGVlcnMsDQo+IEFuZ2Vsbw0KPiANCj4gPiBSZWdhcmRzLA0KPiA+IENLDQo+
+ID4gDQo+ID4gPiANCj4gPiA+IA0KPiA+ID4gDQo+ID4gPiANCj4gPiA+IEluIGNhc2UgeW91IG5l
+ZWQgYW55ICp0ZW1wb3Jhcnkgb3ZlcnJpZGUqIG9uIGFueSBib2FyZCB0aGF0DQo+ID4gPiBkZWZp
+bmVzIGENCj4gPiA+IHBpcGVsaW5lIGxpa2UNCj4gPiA+IA0KPiA+ID4gTU1TWVMgLT4gT1ZMIC0+
+IENPTE9SIC0+IEFBTCAtPiBPRCAtPiBSRE1BIC0+IFVGTyAtPiBEU0kNCj4gPiA+IA0KPiA+ID4g
+c28gdGhhdCB0aGUgcGlwZWxpbmUgKnRlbXBvcmFyaWx5KiBiZWNvbWVzIChmb3IgcG93ZXIgbWFu
+YWdlbWVudCwNCj4gPiA+IG9yDQo+ID4gPiBmb3IgYW55IG90aGVyDQo+ID4gPiByZWFzb24pIFJE
+TUEgLT4gVUZPIC0+IERTSSAuLi4uIHRoYXQncyBub3QgYSBjb25jZXJuOiB0aGUgZ3JhcGgNCj4g
+PiA+IGlzDQo+ID4gPiBwcmVzZW50LCBhbmQgaXQNCj4gPiA+IGlzIHVzZWQgdG8gdGVsbCB0byB0
+aGUgZHJpdmVyIHdoYXQgaXMgdGhlIHJlZ3VsYXIgcGlwZWxpbmUgdG8NCj4gPiA+IHVzZS4NCj4g
+PiA+IEV2ZW50dWFsIHRlbXBvcmFyeSBvdmVycmlkZXMgY2FuIGJlIG1hbmFnZWQgdHJhbnNwYXJl
+bnRseSBpbnNpZGUNCj4gPiA+IG9mDQo+ID4gPiB0aGUgZHJpdmVyIHdpdGgNCj4gPiA+IEMgY29k
+ZSBhbmQgbm8gY2hhbmdlcyB0byB0aGUgZGV2aWNldHJlZSBhcmUgcmVxdWlyZWQuDQo+ID4gPiAN
+Cj4gPiA+IA0KPiA+ID4gPiBJIGRvbid0IGtub3cgaG93IHRvIGRlY2lkZSB3aGljaCBkZXZpY2Ug
+Y291bGQgcG9pbnQgdG8NCj4gPiA+ID4gbW1zeXMvdmRvc3lzLiBTbw0KPiA+ID4gPiBwbGVhc2Ug
+Z2l2ZSBhIHNwZWNpZmljIGRlZmluaXRpb24uDQo+ID4gPiA+IA0KPiA+ID4gDQo+ID4gPiBOb3Ro
+aW5nIHBvaW50cyBUTyBtbXN5cy92ZG9zeXMuIEl0IGlzIG1tc3lzL3Zkb3N5cyBwb2ludGluZyB0
+byBhDQo+ID4gPiBkZXZpY2UuDQo+ID4gPiANCj4gPiA+IFNvLCBtbXN5cy92ZG9zeXMgbXVzdCBw
+b2ludCB0byB0aGUgKmZpcnN0IGRldmljZSBpbiB0aGUNCj4gPiA+IHBpcGVsaW5lKi4NCj4gPiA+
+IA0KPiA+ID4gQW55IG90aGVyIGRvdWJ0Pw0KPiA+ID4gDQo+ID4gPiBDaGVlcnMsDQo+ID4gPiBB
+bmdlbG8NCj4gPiA+IA0KPiA+ID4gPiBSZWdhcmRzLA0KPiA+ID4gPiBDSw0KPiA+ID4gPiANCj4g
+PiA+ID4gPiANCj4gPiA+ID4gPiAgICAgICAgcG9ydEAxIHsNCj4gPiA+ID4gPiAgICAgICAgICBy
+ZWcgPSA8MT47DQo+ID4gPiA+ID4gICAgICAgICAgb3ZsMF9vdXQwOiBlbmRwb2ludEAwIHsNCj4g
+PiA+ID4gPiAgICAgICAgICAgIHJlbW90ZS1lbmRwb2ludCA9IDwmcmRtYTBfaW4+Ow0KPiA+ID4g
+PiA+ICAgICAgICAgIH07DQo+ID4gPiA+ID4gICAgICAgICAgb3ZsMF9vdXQxOiBlbmRwb2ludEAx
+IHsNCj4gPiA+ID4gPiAgICAgICAgICAgIHJlbW90ZS1lbmRwb2ludCA9IDwmcmRtYTFfaW4+Ow0K
+PiA+ID4gPiA+ICAgICAgICAgIH07DQo+ID4gPiA+ID4gICAgICAgIH07DQo+ID4gPiA+ID4gICAg
+ICB9Ow0KPiA+ID4gPiA+IH07DQo+ID4gPiA+ID4gDQo+ID4gPiA+ID4gcmRtYTBAMTIzNCB7DQo+
+ID4gPiA+ID4gICAgICAgLi4uLi4NCj4gPiA+ID4gPiAgICAgIHBvcnRzIHsNCj4gPiA+ID4gPiAg
+ICAgICAgcG9ydEAwIHsNCj4gPiA+ID4gPiAgICAgICAgICByZWcgPSA8MD47DQo+ID4gPiA+ID4g
+ICAgICAgICAgcmRtYTBfaW46IGVuZHBvaW50IHsNCj4gPiA+ID4gPiAgICAgICAgICAgIHJlbW90
+ZS1lbmRwb2ludCA9IDwmb3ZsMF9vdXQwPjsgLyogYXNzdW1pbmcgb3ZsMA0KPiA+ID4gPiA+IG91
+dHB1dHMgdG8NCj4gPiA+ID4gPiByZG1hMC4uLiovDQo+ID4gPiA+ID4gICAgICAgICAgfTsNCj4g
+PiA+ID4gPiAgICAgICAgfTsNCj4gPiA+ID4gPiAgICAgICAgcG9ydEAxIHsNCj4gPiA+ID4gPiAg
+ICAgICAgICByZWcgPSA8MT47DQo+ID4gPiA+ID4gICAgICAgICAgcmRtYTBfb3V0OiBlbmRwb2lu
+dEAxIHsNCj4gPiA+ID4gPiAgICAgICAgICAgIHJlbW90ZS1lbmRwb2ludCA9IDwmZHNpX2R1YWxf
+aW50ZjBfaW4+Ow0KPiA+ID4gPiA+ICAgICAgICAgIH07DQo+ID4gPiA+ID4gICAgICAgIH07DQo+
+ID4gPiA+ID4gICAgICB9Ow0KPiA+ID4gPiA+IH07DQo+ID4gPiA+ID4gDQo+ID4gPiA+ID4gDQo+
+ID4gPiA+ID4gcmRtYTFANTY3OCB7DQo+ID4gPiA+ID4gICAgICAgLi4uLi4NCj4gPiA+ID4gPiAg
+ICAgIHBvcnRzIHsNCj4gPiA+ID4gPiAgICAgICAgcG9ydEAwIHsNCj4gPiA+ID4gPiAgICAgICAg
+ICByZWcgPSA8MD47DQo+ID4gPiA+ID4gICAgICAgICAgcmRtYTFfaW46IGVuZHBvaW50IHsNCj4g
+PiA+ID4gPiAgICAgICAgICAgIC8qIGFzc3VtaW5nIG92bDAgb3V0cHV0cyB0byByZG1hMSBhcyB3
+ZWxsLi4uIGNhbg0KPiA+ID4gPiA+IGJlDQo+ID4gPiA+ID4gc29tZXRoaW5nIGVsc2UuICovDQo+
+ID4gPiA+ID4gICAgICAgICAgICByZW1vdGUtZW5kcG9pbnQgPSA8Jm92bDBfb3V0MT47DQo+ID4g
+PiA+ID4gICAgICAgICAgfTsNCj4gPiA+ID4gPiAgICAgICAgfTsNCj4gPiA+ID4gPiAgICAgICAg
+cG9ydEAxIHsNCj4gPiA+ID4gPiAgICAgICAgICByZWcgPSA8MT47DQo+ID4gPiA+ID4gICAgICAg
+ICAgcmRtYTFfb3V0OiBlbmRwb2ludCB7DQo+ID4gPiA+ID4gICAgICAgICAgICByZW1vdGUtZW5k
+cG9pbnQgPSA8JmRzaV9kdWFsX2ludGYxX2luPjsNCj4gPiA+ID4gPiAgICAgICAgICB9Ow0KPiA+
+ID4gPiA+ICAgICAgICB9Ow0KPiA+ID4gPiA+ICAgICAgfTsNCj4gPiA+ID4gPiB9Ow0KPiA+ID4g
+PiA+IA0KPiA+ID4gPiA+IA0KPiA+ID4gPiA+IGRzaUA5YWJjZCB7DQo+ID4gPiA+ID4gICAgICAg
+Li4uLi4NCj4gPiA+ID4gPiAgICAgIHBvcnRzIHsNCj4gPiA+ID4gPiAgICAgICAgcG9ydEAwIHsN
+Cj4gPiA+ID4gPiAgICAgICAgICByZWcgPSA8MD47DQo+ID4gPiA+ID4gICAgICAgICAgLyogV2hl
+cmUgZW5kcG9pbnRAMCBjb3VsZCBiZSBhbHdheXMgRFNJIExFRlQgQ1RSTCAqLw0KPiA+ID4gPiA+
+ICAgICAgICAgIGRzaV9kdWFsX2ludGYwX2luOiBlbmRwb2ludEAwIHsNCj4gPiA+ID4gPiAgICAg
+ICAgICAgIHJlbW90ZS1lbmRwb2ludCA9IDwmcmRtYTBfb3V0PjsNCj4gPiA+ID4gPiAgICAgICAg
+ICB9Ow0KPiA+ID4gPiA+ICAgICAgICAgIC8qIC4uLmFuZCBAMSBjb3VsZCBiZSBhbHdheXMgRFNJ
+IFJJR0hUIENUUkwgKi8NCj4gPiA+ID4gPiAgICAgICAgICBkc2lfZHVhbF9pbnRmMV9pbjogZW5k
+cG9pbnRAMSB7DQo+ID4gPiA+ID4gICAgICAgICAgICByZW1vdGUtZW5kcG9pbnQgPSA8JnJkbWEx
+X291dD47DQo+ID4gPiA+ID4gICAgICAgICAgfTsNCj4gPiA+ID4gPiAgICAgICAgfTsNCj4gPiA+
+ID4gPiANCj4gPiA+ID4gPiAgICAgICAgcG9ydEAxIHsNCj4gPiA+ID4gPiAgICAgICAgICByZWcg
+PSA8MT47DQo+ID4gPiA+ID4gICAgICAgICAgZHNpMF9vdXQ6IGVuZHBvaW50IHsNCj4gPiA+ID4g
+PiAgICAgICAgICAgIHJlbW90ZS1lbmRwb2ludCA9IDwmZHNpX3BhbmVsX2luPjsNCj4gPiA+ID4g
+PiAgICAgICAgICB9Ow0KPiA+ID4gPiA+ICAgICAgICB9Ow0KPiA+ID4gPiA+ICAgICAgfTsNCj4g
+PiA+ID4gPiB9Ow0KPiA+ID4gPiA+IA0KPiA+ID4gPiA+IC4uLmZvciBhIGR1YWwtZHNpIHBhbmVs
+LCBpdCdkIGJlIGEgc2ltaWxhciBncmFwaC4NCj4gPiA+ID4gPiANCj4gPiA+ID4gPiBDaGVlcnMs
+DQo+ID4gPiA+ID4gQW5nZWxvDQo+ID4gPiA+ID4gDQo+ID4gPiA+ID4gPiANCj4gPiA+ID4gPiA+
+IG1tc3lzLXN1YmRldiA9IDwmcmRtYTAsICZyZG1hMSwgJmRzaT47DQo+ID4gPiA+ID4gPiANCj4g
+PiA+ID4gPiA+IE9yIHR3byBncm91cD8NCj4gPiA+ID4gPiA+IA0KPiA+ID4gPiA+ID4gbW1zeXMt
+c3ViZGV2ID0gPCZyZG1hMCwgJmRzaT4sIDwmcmRtYTEsICZkc2k+Ow0KPiA+ID4gPiA+ID4gDQo+
+ID4gPiA+ID4gPiBJIHRoaW5rIHdlIHNob3VsZCBjbGVhcmx5IGRlZmluZSB0aGlzLg0KPiA+ID4g
+PiA+ID4gDQo+ID4gPiA+ID4gPiBSZWdhcmRzLA0KPiA+ID4gPiA+ID4gQ0sNCj4gPiA+ID4gPiA+
+IA0KPiA+ID4gPiA+ID4gPiANCj4gPiA+ID4gPiA+ID4gDQo+ID4gPiA+ID4gPiA+IENoZWVycywN
+Cj4gPiA+ID4gPiA+ID4gQW5nZWxvDQo+ID4gPiA+ID4gPiA+IA0KPiA+ID4gPiA+ID4gPiA+IFJl
+Z2FyZHMsDQo+ID4gPiA+ID4gPiA+ID4gQ0sNCj4gPiA+ID4gPiA+ID4gPiANCj4gPiA+ID4gPiA+
+ID4gPiANCj4gPiA+ID4gPiA+ID4gPiA+ICAgICAgcmVxdWlyZWQ6DQo+ID4gPiA+ID4gPiA+ID4g
+PiAgICAgICAgLSBjb21wYXRpYmxlDQo+ID4gPiA+ID4gPiA+ID4gPiAgICAgICAgLSByZWcNCj4g
+PiA+ID4gPiA+ID4gDQo+ID4gPiA+ID4gPiA+IA0KPiA+ID4gPiA+IA0KPiA+ID4gPiA+IA0KPiA+
+ID4gPiA+IA0KPiA+ID4gDQo+ID4gPiANCj4gDQo+IA0KPiANCg==
 
