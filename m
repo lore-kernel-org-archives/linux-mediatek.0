@@ -4,64 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 951F5C25B75
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 May 2024 10:09:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 181D4C25B74
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 May 2024 10:11:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Z/WoFrvovhx3TjGf6PEhjjpe0N0RvfIBAXim3j3woxY=; b=wuUV/bEGgnzu5tN1OQNqgDnqpF
-	UYGEIJcRiHRYhuorhTRp4krdl/AZAv5zkUIIzJeS7mS/Ab4T1ws4w6CXQHFokg+eQQJIUEI8ZN+TK
-	N22cev5EjwfbH9VN0D4NxoNE4Xp3EZJSKQBek1RLexX2WwABoLAQz8JjjvyyEoeM+ilkelHq+23WB
-	On65oNMfYrlNfTviq+k+edpCWJ5x1E/mMD22LpmFgIrBngHZDdEw/C0gpM5O2QoYpEcLH4EeODRqa
-	RyNHnnai+FJ7jd9dW94dzGm+FsS7c1Cj2DTjdoxnRmbW+T88G4S18cip2moRtN4u8qQarnKMup5HI
-	w3vyjDTA==;
+	bh=6SjqpeMgnNWzpS1QEhyKPEdfiZAfk0s+YPyTcOM6xKQ=; b=2+UwKhyH32G53F4ebz6EG90hUD
+	msE8SvXiALvIHSTttDNT1SHSjBZOaRGCAkn7LPwOvQt0OKMplOLaU/RySdze0rAR0tQlcSq9V9hp1
+	bPLNmd6Na8vYA1T7oCGrx9lIYC7NzP3McR4odjnU8GPjF4tIK9jy7Utz9aD3dxBmTjO2/o7THvLKJ
+	odJBlTDWK286MDPRAN6KiaS4k9VDKEqfklnzDocT9Vvs+J7UVgUr9dsCD111CQBeMbUeJ4J8FVBHa
+	qxiyyQkWP/tWe5On48/JDHRyI0RfK+ONYUCWWRko/gr4blymx1OkcqhhzEjL0NU8h4HC80V7P/3z9
+	XBwdW1/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s5NBx-00000004ol8-1EJK;
-	Fri, 10 May 2024 10:09:29 +0000
+	id 1s5NDt-00000004pNm-2ZMn;
+	Fri, 10 May 2024 10:11:29 +0000
 Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s5NBr-00000004ogk-3Z0G;
-	Fri, 10 May 2024 10:09:26 +0000
+	id 1s5NDq-00000004pMc-0Ott;
+	Fri, 10 May 2024 10:11:27 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1715335762;
-	bh=zDhfa47N/P77GAGDKEYJOkBZbcpC4MiLu1UflRoPcVY=;
+	s=mail; t=1715335884;
+	bh=c1waZ+eyh/3LEv2xQyu5LjuVf0SWbog1966q3KjkEqw=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=aLBC1eT2R2dCqcM7+JHgnygWVN3zXRbup1PZw4+H4WZFP2gLlgg52G7fr5GTPYBbx
-	 V40TPp85Db6ALfgjx7CC+OUUtfJZLGErdoZ1GSTV9ZHDfRxK39VehOxAH/me6URBiG
-	 YznTW9cH7Zoggwav0qrtBhLfuN/Ud+XwY4Te/tEZO2wUNj57S+iMtdjsoZ+YkhQ5xN
-	 SWRByM1ofUgHo6dT5UI4zjzfa7/WN6gg4JKzreWu37FcxUPt0iUnrQCcmzXZUhs9+/
-	 Es3N6PakVVcePdDYKeN2zm2fWGthULnr8h8X7ttYz5tOVia5EnMGNbXZuRu88UQw+M
-	 Ljtm9G0NnqYDQ==
+	b=xJk+hOhpaV0T+ju3F8+sGmHBtzFTyVUG4277e8N/HYwbkr3BX3CzBx/+wcN2hgGpe
+	 y3AQfCENjfRWsQqdzX9NFQcE6TCs0Uotjwtt9fg9LZId1pbDM11ZYIgJo4uNpzZkdY
+	 PnTqo9/+m/7JFxbRrFDEoqFkqIJ0VZ6crTG9McyI4maP8wggHhvKx30Wg8XTzClStG
+	 9FwDc0JokaW1oDrkqv4OxNLzVAO+B3GnAKvPKu5ny7tz7dWVkxfryNJjCzGuw1FWRn
+	 SruPRMpQcZD28dXZLjtT+UObBpWlZRpJ164RAFgDp6ZALOCqDHsItLhm9U+1Qm20Vt
+	 af9aDi8aR6llA==
 Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id C8E9E3782185;
-	Fri, 10 May 2024 10:09:21 +0000 (UTC)
-Message-ID: <f72b241f-11ab-4165-af51-14413d4e9f7a@collabora.com>
-Date: Fri, 10 May 2024 12:09:21 +0200
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 1D92A3782185;
+	Fri, 10 May 2024 10:11:22 +0000 (UTC)
+Message-ID: <d95cafca-bc4c-4571-a6ed-b66b6f63a579@collabora.com>
+Date: Fri, 10 May 2024 12:11:21 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 1/1] Fix get efuse issue for MT8188 DPTX
-To: Liankun Yang <liankun.yang@mediatek.com>, chunkuang.hu@kernel.org,
- p.zabel@pengutronix.de, airlied@gmail.com, daniel@ffwll.ch,
- matthias.bgg@gmail.com, jitao.shi@mediatek.com, mac.shen@mediatek.com
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20240510061716.31103-1-liankun.yang@mediatek.com>
+Subject: Re: [PATCH v3 1/1] nvmem: Change return type of reg read/write to
+ ssize_t
+To: Joy Chakraborty <joychakr@google.com>, Hector Martin <marcan@marcan.st>,
+ Sven Peter <sven@svenpeter.dev>, Alyssa Rosenzweig <alyssa@rosenzweig.io>,
+ Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
+ Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
+ Vladimir Zapolskiy <vz@mleia.com>, Neil Armstrong
+ <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>,
+ Jerome Brunet <jbrunet@baylibre.com>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Bjorn Andersson <andersson@kernel.org>,
+ Konrad Dybcio <konrad.dybcio@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
+ Orson Zhai <orsonzhai@gmail.com>, Baolin Wang
+ <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Vincent Shih <vincent.sunplus@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Samuel Holland <samuel@sholland.org>, Rafal Milecki <rafal@milecki.pl>,
+ Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+ Masami Hiramatsu <mhiramat@kernel.org>, Michal Simek <michal.simek@amd.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, asahi@lists.linux.dev,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
+ manugautam@google.com
+References: <20240510082929.3792559-1-joychakr@google.com>
+ <20240510082929.3792559-2-joychakr@google.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20240510061716.31103-1-liankun.yang@mediatek.com>
+In-Reply-To: <20240510082929.3792559-2-joychakr@google.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240510_030924_057950_4BEC722D 
-X-CRM114-Status: GOOD (  15.84  )
+X-CRM114-CacheID: sfid-20240510_031126_345785_862BA961 
+X-CRM114-Status: UNSURE (   8.96  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,127 +103,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 10/05/24 08:16, Liankun Yang ha scritto:
-> Fix get efuse issue for MT8188 DPTX.
+Il 10/05/24 10:29, Joy Chakraborty ha scritto:
+> Change return type of reg_read() and reg_write() callback to ssize_t for
+> nvmem suppliers to return number of bytes read/written to the nvmem core.
 > 
-> Signed-off-by: Liankun Yang <liankun.yang@mediatek.com>
-
-I may agree with this commit, but:
-1. The commit title is incorrect - I don't see "drm/mediatek:" - please look at
-    the history to find out the right titles for your commits; and
-2. The commit description isn't describing anything, you're just repeating the
-    title: please add a description. What was wrong? What did you fix precisely?
-3. There's no Fixes tag. Please add the relevant one.
-
-Regards,
-Angelo
-
-> ---
->   drivers/gpu/drm/mediatek/mtk_dp.c | 85 ++++++++++++++++++++++++++++++-
->   1 file changed, 84 insertions(+), 1 deletion(-)
+> Currently nvmem core assumes the amount of data read/written is equal
+> to what it has requested from the supplier, this return code facilitates
+> better error handling in the nvmem core.
 > 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
-> index 2136a596efa1..32b36b63a4e1 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dp.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dp.c
-> @@ -145,6 +145,89 @@ struct mtk_dp_data {
->   	u16 audio_m_div2_bit;
->   };
->   
-> +static const struct mtk_dp_efuse_fmt mt8188_dp_efuse_fmt[MTK_DP_CAL_MAX] = {
-> +	[MTK_DP_CAL_GLB_BIAS_TRIM] = {
-> +		.idx = 0,
-> +		.shift = 10,
-> +		.mask = 0x1f,
-> +		.min_val = 1,
-> +		.max_val = 0x1e,
-> +		.default_val = 0xf,
-> +	},
-> +	[MTK_DP_CAL_CLKTX_IMPSE] = {
-> +		.idx = 0,
-> +		.shift = 15,
-> +		.mask = 0xf,
-> +		.min_val = 1,
-> +		.max_val = 0xe,
-> +		.default_val = 0x8,
-> +	},
-> +	[MTK_DP_CAL_LN_TX_IMPSEL_PMOS_0] = {
-> +		.idx = 1,
-> +		.shift = 0,
-> +		.mask = 0xf,
-> +		.min_val = 1,
-> +		.max_val = 0xe,
-> +		.default_val = 0x8,
-> +	},
-> +	[MTK_DP_CAL_LN_TX_IMPSEL_PMOS_1] = {
-> +		.idx = 1,
-> +		.shift = 8,
-> +		.mask = 0xf,
-> +		.min_val = 1,
-> +		.max_val = 0xe,
-> +		.default_val = 0x8,
-> +	},
-> +	[MTK_DP_CAL_LN_TX_IMPSEL_PMOS_2] = {
-> +		.idx = 1,
-> +		.shift = 16,
-> +		.mask = 0xf,
-> +		.min_val = 1,
-> +		.max_val = 0xe,
-> +		.default_val = 0x8,
-> +	},
-> +	[MTK_DP_CAL_LN_TX_IMPSEL_PMOS_3] = {
-> +		.idx = 1,
-> +		.shift = 24,
-> +		.mask = 0xf,
-> +		.min_val = 1,
-> +		.max_val = 0xe,
-> +		.default_val = 0x8,
-> +	},
-> +	[MTK_DP_CAL_LN_TX_IMPSEL_NMOS_0] = {
-> +		.idx = 1,
-> +		.shift = 4,
-> +		.mask = 0xf,
-> +		.min_val = 1,
-> +		.max_val = 0xe,
-> +		.default_val = 0x8,
-> +	},
-> +	[MTK_DP_CAL_LN_TX_IMPSEL_NMOS_1] = {
-> +		.idx = 1,
-> +		.shift = 12,
-> +		.mask = 0xf,
-> +		.min_val = 1,
-> +		.max_val = 0xe,
-> +		.default_val = 0x8,
-> +	},
-> +	[MTK_DP_CAL_LN_TX_IMPSEL_NMOS_2] = {
-> +		.idx = 1,
-> +		.shift = 20,
-> +		.mask = 0xf,
-> +		.min_val = 1,
-> +		.max_val = 0xe,
-> +		.default_val = 0x8,
-> +	},
-> +	[MTK_DP_CAL_LN_TX_IMPSEL_NMOS_3] = {
-> +		.idx = 1,
-> +		.shift = 28,
-> +		.mask = 0xf,
-> +		.min_val = 1,
-> +		.max_val = 0xe,
-> +		.default_val = 0x8,
-> +	},
-> +};
-> +
->   static const struct mtk_dp_efuse_fmt mt8195_edp_efuse_fmt[MTK_DP_CAL_MAX] = {
->   	[MTK_DP_CAL_GLB_BIAS_TRIM] = {
->   		.idx = 3,
-> @@ -2758,7 +2841,7 @@ static SIMPLE_DEV_PM_OPS(mtk_dp_pm_ops, mtk_dp_suspend, mtk_dp_resume);
->   static const struct mtk_dp_data mt8188_dp_data = {
->   	.bridge_type = DRM_MODE_CONNECTOR_DisplayPort,
->   	.smc_cmd = MTK_DP_SIP_ATF_VIDEO_UNMUTE,
-> -	.efuse_fmt = mt8195_dp_efuse_fmt,
-> +	.efuse_fmt = mt8188_dp_efuse_fmt,
->   	.audio_supported = true,
->   	.audio_pkt_in_hblank_area = true,
->   	.audio_m_div2_bit = MT8188_AUDIO_M_CODE_MULT_DIV_SEL_DP_ENC0_P0_DIV_2,
+> Signed-off-by: Joy Chakraborty <joychakr@google.com>
+
+For MediaTek:
+
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
 
 
