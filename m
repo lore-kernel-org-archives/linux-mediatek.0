@@ -4,92 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C229C10F1A
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 May 2024 21:38:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8475DC10F1A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 May 2024 02:18:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZcXomuFTNs6kAOjv+oYFgSUhkraR2OB9WxwHOqU2kw0=; b=eLK44UiWLxPiWDLzAdRNbin5yL
-	QTqSfmfTFu6cAxATRJ3hlIBzLShdGPt/jZSMaHjByp2VKgqwFtpOfePBrbG6N4LftoiigzwaClRaO
-	Djy/2pl4xlGzKDNagSuZL4S9GtKa+Oku4G+m6UZSXVdE4sLUGfMOoij1eReF0zmQbKx73AruCuvs4
-	kES6dkhgsPIqTUyzTICB51Qa48WK8J3uwyvdBCFvDMroNzIlRsj9YI1kK/HGRLOIj4reJN0bOSj/m
-	4KFzdPowTm4RXbGoLGOq2n61zYdbx4KCKAa0tJgjBHP1Owblr0tFdZt/ccFwWu6pQGBewnqqwnoMw
-	qlUADSuw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=DQMjWMZ5it8OZyRBbUrQVWokP1+YbLgDB/9+MCPLpVQ=; b=uuN1oUcQYyHNEeSO2KO35bhY4S
+	S6sna4VaUee+eRpBeH4F+6IXpkXNaQGivfgnvO62lZxzq4MzHCPtgPFjK4zFn/Id6rm1HBE/EOdPP
+	g/MFRT1y2cT62OErZD5E2RyKWa3BBoNNkuFsOUCkiNRgSmTV3ABX7LABdAK2RTXG9Y70GE97y08fU
+	l3FOIJzoOwDxusS4+waQMW3/QRDVXMNk/FAEo5inG+kzOB1txErMR3e1CJEOp9Y6E5zhzg+zHb4hE
+	0poHGuwVzydSiXOGe06hGvoe8hmBZTFUGFD3y/9c07sXA2+fMLsnJqqsGUR3dJGfgnDgsHyGASLjR
+	4mq0lxIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s5BTZ-00000002zAa-2bT7;
-	Thu, 09 May 2024 21:38:53 +0000
-Received: from mail-ua1-x92b.google.com ([2607:f8b0:4864:20::92b])
+	id 1s5FqB-00000003j7U-0W6i;
+	Fri, 10 May 2024 02:18:31 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s5BTT-00000002z7S-0315;
-	Thu, 09 May 2024 21:38:48 +0000
-Received: by mail-ua1-x92b.google.com with SMTP id a1e0cc1a2514c-7f170dc5f70so381208241.1;
-        Thu, 09 May 2024 14:38:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1715290725; x=1715895525; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=ZcXomuFTNs6kAOjv+oYFgSUhkraR2OB9WxwHOqU2kw0=;
-        b=TMBmyKWy86zQnZfSvaXmd3U6FeK0fRGgL2qe/jTjiy5CIdLe7RAef5U7PkcrAzMd5c
-         MnkVlvW7+wqiU4I8E4BR9isi5G7v0gwtZgPBGzo8I9pwwgGrdDQL/BXQ88pxauNPlh07
-         9NmVk244xV5z74pk2Hs52fsLdoANhPDF1swS7JJpKKixNPbFNaJ/nIvpB+aFaeniZiQa
-         zrHd9QL9OuA9cKepbb91x1jUGdmvit8zqQKvMrKEtygEBL5Cub2/0FIxrCd2E7ECLBtn
-         3pkQkeLZIWpCuqAb23Bg0mmuQReQ8VVfmVgKJQVw4w95WpRgGUnDO8X7HhDO0nitO8f3
-         69tg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1715290725; x=1715895525;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=ZcXomuFTNs6kAOjv+oYFgSUhkraR2OB9WxwHOqU2kw0=;
-        b=fHXh0G3FFWPUPjOYeAjzzGweGpgS9DsI0cc6UI/8yU0KaU5uqUD9qL5JzQu589UzJT
-         sE/IniXO3LFdoV4zJJJ3fJzQ8UE6C4wd2iC+g1gnld1W7l3a2H/W52OElYAtiKo0LZaY
-         oX9CWuFj6AdzoU7gzHYd7GqBkseUv6J11X4Wt680Lb/NztvWAL66V2u7uvcjtO+YZ1GL
-         oqJKjuV8XP6101tSC9w1c26hzP6kq8MnCDHyrqVWuSbuP9maDVP+aZkhNzTcRbEI1rFO
-         1M8F+mUzD+jV/fJcgInTPx8aOAhTaNazd3o+q/oCRzksglH6kHLxxFIo4hrw5gnBLXz8
-         Grrg==
-X-Forwarded-Encrypted: i=1; AJvYcCVEDvHardhwB90EnKipc5pUtPiwgPpKuQ0kvz8FTJzyOd2pHHP57JUk2fmT0cg+MK2rLqTv9Ou9vN5wgADcFNicZlfkjtv7PqIptwvtf2JPXDevV8tMbd+9iJ4WHO9K9ITLWWoGfZdsd4tBT9W22UMsnPp5RuGjhWM=
-X-Gm-Message-State: AOJu0Ywz5c8Rm3028gS27i47dDrN/6yfUnKuS4tvSPdEu1jaXFM54q77
-	D90vUvSsJfhJP0QMgbeqG6Xn/jY7P/LyDFoAINQK1zht5AG30CXuJOisNmT+5EOzGujX9GELml1
-	P6JzLIZ+BP5DTWD0i05OOdeOhhKM=
-X-Google-Smtp-Source: AGHT+IGDPdAnAHFbOGEVVQfuthPYBDUFn04X97C8h8u5g41EhAQrrR+vQZTM+R921KKRTb5redHLdvkWlrvB0RI6wnw=
-X-Received: by 2002:a05:6122:2a51:b0:4d8:75ca:8cbe with SMTP id
- 71dfb90a1353d-4df8839a7cemr976657e0c.16.1715290725239; Thu, 09 May 2024
- 14:38:45 -0700 (PDT)
+	id 1s5Fq7-00000003j5Y-0owB;
+	Fri, 10 May 2024 02:18:29 +0000
+X-UUID: 9288a6b20e7311ef9a78ddf43a9225dc-20240509
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=DQMjWMZ5it8OZyRBbUrQVWokP1+YbLgDB/9+MCPLpVQ=;
+	b=PDFEemqR/w0/yqQQ7l/P/cErFe2kgjlMvWtMjC7+1eTYWdc6wOhqtBDESAspqaesZG5il+7hUZpt6p5qdjlH94hQW7JSyvxAplzA0gfTobJj3lD2beKzc/1dXtQbarchLBiGNiGkP7pgU92Pp93rwEfCm9rxWy1hviZmZ4Q/6hg=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.38,REQID:5a02340f-663d-4c65-ba5a-5968dd8ca22b,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:82c5f88,CLOUDID:d865ac83-4f93-4875-95e7-8c66ea833d57,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:5,IP:nil,UR
+	L:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,S
+	PR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 9288a6b20e7311ef9a78ddf43a9225dc-20240509
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+	(envelope-from <liankun.yang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1965204056; Thu, 09 May 2024 19:18:21 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Fri, 10 May 2024 10:18:14 +0800
+Received: from mszsdhlt06.gcn.mediatek.inc (10.16.6.206) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 10 May 2024 10:18:14 +0800
+From: Liankun Yang <liankun.yang@mediatek.com>
+To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@gmail.com>,
+	<daniel@ffwll.ch>, <matthias.bgg@gmail.com>,
+	<angelogioacchino.delregno@collabora.com>, <jitao.shi@mediatek.com>,
+	<mac.shen@mediatek.com>, <liankun.yang@mediatek.com>
+CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>
+Subject: [PATCH v1 1/1] Support YUV422 for DPTX.
+Date: Fri, 10 May 2024 10:15:29 +0800
+Message-ID: <20240510021810.19302-1-liankun.yang@mediatek.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-References: <20240507190111.16710-1-apais@linux.microsoft.com>
- <20240507190111.16710-2-apais@linux.microsoft.com> <Zjp/kgBE2ddjV044@shell.armlinux.org.uk>
- <CAOMdWSKfkT4K9MAOn-rL44pycHPhVDj4CtiYkru5y_s0S-sPeQ@mail.gmail.com>
- <20240508201654.GA2248333@kernel.org> <e9633d41d0d004db3ec6e2b6d9dcb95d029dbb94.camel@redhat.com>
-In-Reply-To: <e9633d41d0d004db3ec6e2b6d9dcb95d029dbb94.camel@redhat.com>
-From: Allen <allen.lkml@gmail.com>
-Date: Thu, 9 May 2024 14:38:34 -0700
-Message-ID: <CAOMdWS+WRC7KOqPUXJ88ikCDPS-6oZ0i6OFTUk95DFTfYtNZcA@mail.gmail.com>
-Subject: Re: [PATCH 1/1] [RFC] ethernet: Convert from tasklet to BH workqueue
-To: Paolo Abeni <pabeni@redhat.com>
-Cc: Simon Horman <horms@kernel.org>, "Russell King (Oracle)" <linux@armlinux.org.uk>, 
-	Allen Pais <apais@linux.microsoft.com>, netdev@vger.kernel.org, jes@trained-monkey.org, 
-	davem@davemloft.net, edumazet@google.com, kuba@kernel.org, 
-	kda@linux-powerpc.org, cai.huoqing@linux.dev, dougmill@linux.ibm.com, 
-	npiggin@gmail.com, christophe.leroy@csgroup.eu, aneesh.kumar@kernel.org, 
-	naveen.n.rao@linux.ibm.com, nnac123@linux.ibm.com, tlfalcon@linux.ibm.com, 
-	cooldavid@cooldavid.org, marcin.s.wojtas@gmail.com, mlindner@marvell.com, 
-	stephen@networkplumber.org, nbd@nbd.name, sean.wang@mediatek.com, 
-	Mark-MC.Lee@mediatek.com, lorenzo@kernel.org, matthias.bgg@gmail.com, 
-	angelogioacchino.delregno@collabora.com, borisp@nvidia.com, 
-	bryan.whitehead@microchip.com, UNGLinuxDriver@microchip.com, 
-	louis.peens@corigine.com, richardcochran@gmail.com, 
-	linux-rdma@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-acenic@sunsite.dk, linux-arm-kernel@lists.infradead.org, 
-	linuxppc-dev@lists.ozlabs.org, linux-mediatek@lists.infradead.org, 
-	oss-drivers@corigine.com, linux-net-drivers@amd.com
-Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--4.021300-8.000000
+X-TMASE-MatchedRID: UqpZKsHsMCd6C/DhL53MofU1Xpm2N12SEbxKVXd70tXfUZT83lbkEH3q
+	33AN90RFNEOprWfLXKfxmtEYLZtVoj3BvXglGRuk4pdq9sdj8LU7r2Gtb9iBYWHtZs6e3ZMHgSk
+	lFxt6Wp0ANcTxXeakRbFdDzVRJSPNxz6opuAAUJKO0rt0LpQGeVo1rFkFFs1atK3FOVf6Entlln
+	dVQSPeh37oxe7d+k8QcAwOsowI+VKlTHNxJDwdpELEoH0ynuZVFk73i4rVVIH4JyR+b5tvoBFG4
+	EGBR4d4XLIhLtaujX6/GjIHLzn7BgEzlKcqjzGckDpLRKO9xhThKQh1LCmGBpsoi2XrUn/Jn6Kd
+	MrRsL14qtq5d3cxkNRz4tF/sDU5vhRA3SI9h7KmYftgi7sAl3zpKgU6ixfgAeW4/xVzXMTY/l3L
+	cZRxL5jxLPNsXewJyspCzPmuFTck1skRKpMV4OkGv8R81e9TV82Gj2QC3yG0smXVK/H8eHzG7sr
+	7xobSAzcDEvJaUSgU=
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--4.021300-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: E8F621250D14A1442EC801CC57FAB1D2DE56DC6ACD66D8FDC57EB1D2246BAA102000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240509_143847_089642_16C6D8EA 
-X-CRM114-Status: GOOD (  18.43  )
+X-CRM114-CacheID: sfid-20240509_191827_759164_164D4C9B 
+X-CRM114-Status: GOOD (  15.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,30 +100,203 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Paolo,
+Adjust the training sequence.Detects the actual link condition
+and calculates the bandwidth where the relevant resolution resides.
 
-> On Wed, 2024-05-08 at 21:16 +0100, Simon Horman wrote:
-> > * As this patch seems to involve many non-trivial changes
-> >   it seems to me that it would be best to break it up somehow.
-> >   To allow proper review.
->
-> I would like to stress this latest point: it looks like the changes to
-> all the drivers are completely independent. If so, you have to break
-> the series on a per driver basis. Since the total number of patch will
-> be higher then 15 (maximum size allowed on netdev) you will have to
-> split this in several smaller series.
->
+The bandwidth is recalculated and modes that exceed the bandwidth are
+filtered.
 
- Right, it's a valid point. Per-driver might not work. Depending on the
-driver and changes, I will try and make it an independent series.
+Example Modify bandwidth filtering requirements.
 
-> Beyond making the change reviewable, it will allow eventually reverting
-> the changes individually, should that cause any regressions.
->
+Signed-off-by: Liankun Yang <liankun.yang@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_dp.c | 81 ++++++++++++++++++-------------
+ 1 file changed, 46 insertions(+), 35 deletions(-)
 
-Thank you, I understand the concern here. Will work on it in v2.
+diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
+index 2136a596efa1..3e645bd6fe27 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dp.c
++++ b/drivers/gpu/drm/mediatek/mtk_dp.c
+@@ -66,6 +66,13 @@ enum {
+ 	MTK_DP_CAL_MAX,
+ };
+ 
++enum mtk_dp_color_format {
++	MTK_DP_COLOR_FORMAT_RGB = 0,
++	MTK_DP_COLOR_FORMAT_YUV422 = 0x1,
++	MTK_DP_COLOR_FORMAT_YUV444 = 0x2,
++	MTK_DP_COLOR_FORMAT_YUV420 = 0x3,
++};
++
+ struct mtk_dp_train_info {
+ 	bool sink_ssc;
+ 	bool cable_plugged_in;
+@@ -84,7 +91,7 @@ struct mtk_dp_audio_cfg {
+ };
+ 
+ struct mtk_dp_info {
+-	enum dp_pixelformat format;
++	enum mtk_dp_color_format format;
+ 	struct videomode vm;
+ 	struct mtk_dp_audio_cfg audio_cur_cfg;
+ };
+@@ -457,7 +464,7 @@ static void mtk_dp_set_msa(struct mtk_dp *mtk_dp)
+ }
+ 
+ static int mtk_dp_set_color_format(struct mtk_dp *mtk_dp,
+-				   enum dp_pixelformat color_format)
++				   enum mtk_dp_color_format color_format)
+ {
+ 	u32 val;
+ 
+@@ -467,10 +474,10 @@ static int mtk_dp_set_color_format(struct mtk_dp *mtk_dp,
+ 			   DP_TEST_COLOR_FORMAT_MASK);
+ 
+ 	switch (color_format) {
+-	case DP_PIXELFORMAT_YUV422:
++	case MTK_DP_COLOR_FORMAT_YUV422:
+ 		val = PIXEL_ENCODE_FORMAT_DP_ENC0_P0_YCBCR422;
+ 		break;
+-	case DP_PIXELFORMAT_RGB:
++	case MTK_DP_COLOR_FORMAT_RGB:
+ 		val = PIXEL_ENCODE_FORMAT_DP_ENC0_P0_RGB;
+ 		break;
+ 	default:
+@@ -1322,7 +1329,7 @@ static void mtk_dp_initialize_priv_data(struct mtk_dp *mtk_dp)
+ 	mtk_dp->train_info.lane_count = mtk_dp->max_lanes;
+ 	mtk_dp->train_info.cable_plugged_in = plugged_in;
+ 
+-	mtk_dp->info.format = DP_PIXELFORMAT_RGB;
++	mtk_dp->info.format = MTK_DP_COLOR_FORMAT_YUV422;
+ 	memset(&mtk_dp->info.vm, 0, sizeof(struct videomode));
+ 	mtk_dp->audio_enable = false;
+ }
+@@ -1371,7 +1378,7 @@ static void mtk_dp_sdp_set_down_cnt_init_in_hblank(struct mtk_dp *mtk_dp)
+ 
+ 	drm_display_mode_from_videomode(vm, &mode);
+ 
+-	pix_clk_mhz = mtk_dp->info.format == DP_PIXELFORMAT_YUV420 ?
++	pix_clk_mhz = mtk_dp->info.format == MTK_DP_COLOR_FORMAT_YUV420 ?
+ 		      mode.clock / 2000 : mode.clock / 1000;
+ 
+ 	switch (mtk_dp->train_info.lane_count) {
+@@ -1870,6 +1877,7 @@ static irqreturn_t mtk_dp_hpd_event_thread(int hpd, void *dev)
+ 	struct mtk_dp *mtk_dp = dev;
+ 	unsigned long flags;
+ 	u32 status;
++	int ret;
+ 
+ 	if (mtk_dp->need_debounce && mtk_dp->train_info.cable_plugged_in)
+ 		msleep(100);
+@@ -1888,9 +1896,28 @@ static irqreturn_t mtk_dp_hpd_event_thread(int hpd, void *dev)
+ 			memset(&mtk_dp->info.audio_cur_cfg, 0,
+ 			       sizeof(mtk_dp->info.audio_cur_cfg));
+ 
++			mtk_dp->enabled = false;
++			/* power off aux */
++			mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
++			       DP_PWR_STATE_BANDGAP_TPLL,
++			       DP_PWR_STATE_MASK);
++
+ 			mtk_dp->need_debounce = false;
+ 			mod_timer(&mtk_dp->debounce_timer,
+ 				  jiffies + msecs_to_jiffies(100) - 1);
++		} else {
++			mtk_dp_aux_panel_poweron(mtk_dp, true);
++
++			ret = mtk_dp_parse_capabilities(mtk_dp);
++			if (ret)
++				drm_err(mtk_dp->drm_dev, "Can't parse capabilities\n");
++
++			/* Training */
++			ret = mtk_dp_training(mtk_dp);
++			if (ret)
++				drm_err(mtk_dp->drm_dev, "Training failed, %d\n", ret);
++
++			mtk_dp->enabled = true;
+ 		}
+ 	}
+ 
+@@ -2057,16 +2084,6 @@ static struct edid *mtk_dp_get_edid(struct drm_bridge *bridge,
+ 
+ 	new_edid = drm_get_edid(connector, &mtk_dp->aux.ddc);
+ 
+-	/*
+-	 * Parse capability here to let atomic_get_input_bus_fmts and
+-	 * mode_valid use the capability to calculate sink bitrates.
+-	 */
+-	if (mtk_dp_parse_capabilities(mtk_dp)) {
+-		drm_err(mtk_dp->drm_dev, "Can't parse capabilities\n");
+-		kfree(new_edid);
+-		new_edid = NULL;
+-	}
+-
+ 	if (new_edid) {
+ 		struct cea_sad *sads;
+ 
+@@ -2243,14 +2260,10 @@ static void mtk_dp_bridge_atomic_enable(struct drm_bridge *bridge,
+ 		return;
+ 	}
+ 
+-	mtk_dp_aux_panel_poweron(mtk_dp, true);
+-
+-	/* Training */
+-	ret = mtk_dp_training(mtk_dp);
+-	if (ret) {
+-		drm_err(mtk_dp->drm_dev, "Training failed, %d\n", ret);
+-		goto power_off_aux;
+-	}
++	/* power on aux */
++	mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
++			   DP_PWR_STATE_BANDGAP_TPLL_LANE,
++			   DP_PWR_STATE_MASK);
+ 
+ 	ret = mtk_dp_video_config(mtk_dp);
+ 	if (ret)
+@@ -2310,12 +2323,11 @@ mtk_dp_bridge_mode_valid(struct drm_bridge *bridge,
+ {
+ 	struct mtk_dp *mtk_dp = mtk_dp_from_bridge(bridge);
+ 	u32 bpp = info->color_formats & DRM_COLOR_FORMAT_YCBCR422 ? 16 : 24;
+-	u32 rate = min_t(u32, drm_dp_max_link_rate(mtk_dp->rx_cap) *
+-			      drm_dp_max_lane_count(mtk_dp->rx_cap),
+-			 drm_dp_bw_code_to_link_rate(mtk_dp->max_linkrate) *
+-			 mtk_dp->max_lanes);
++	u32 lane_count_min = mtk_dp->train_info.lane_count;
++	u32 rate = drm_dp_bw_code_to_link_rate(mtk_dp->train_info.link_rate) *
++			 lane_count_min;
+ 
+-	if (rate < mode->clock * bpp / 8)
++	if (rate * 97 / 100 < (mode->clock * bpp / 8))
+ 		return MODE_CLOCK_HIGH;
+ 
+ 	return MODE_OK;
+@@ -2356,10 +2368,9 @@ static u32 *mtk_dp_bridge_atomic_get_input_bus_fmts(struct drm_bridge *bridge,
+ 	struct drm_display_mode *mode = &crtc_state->adjusted_mode;
+ 	struct drm_display_info *display_info =
+ 		&conn_state->connector->display_info;
+-	u32 rate = min_t(u32, drm_dp_max_link_rate(mtk_dp->rx_cap) *
+-			      drm_dp_max_lane_count(mtk_dp->rx_cap),
+-			 drm_dp_bw_code_to_link_rate(mtk_dp->max_linkrate) *
+-			 mtk_dp->max_lanes);
++	u32 lane_count_min = mtk_dp->train_info.lane_count;
++	u32 rate = drm_dp_bw_code_to_link_rate(mtk_dp->train_info.link_rate) *
++			 lane_count_min;
+ 
+ 	*num_input_fmts = 0;
+ 
+@@ -2406,9 +2417,9 @@ static int mtk_dp_bridge_atomic_check(struct drm_bridge *bridge,
+ 		 bridge_state->output_bus_cfg.format);
+ 
+ 	if (input_bus_format == MEDIA_BUS_FMT_YUYV8_1X16)
+-		mtk_dp->info.format = DP_PIXELFORMAT_YUV422;
++		mtk_dp->info.format = MTK_DP_COLOR_FORMAT_YUV422;
+ 	else
+-		mtk_dp->info.format = DP_PIXELFORMAT_RGB;
++		mtk_dp->info.format = MTK_DP_COLOR_FORMAT_RGB;
+ 
+ 	if (!crtc) {
+ 		drm_err(mtk_dp->drm_dev,
+-- 
+2.18.0
 
-Thank you very much for your time and suggestions.
-
- - Allen
 
