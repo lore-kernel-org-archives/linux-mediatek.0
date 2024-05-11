@@ -4,83 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7034DC04FFE
-	for <linux-mediatek@archiver.kernel.org>; Sat, 11 May 2024 12:43:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9690FC04FFE
+	for <linux-mediatek@archiver.kernel.org>; Sat, 11 May 2024 12:44:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=d4VKieaSxJD4O9fan0sp4G+844Bs3wrwI3hZbLLfkXY=; b=ZyoJMkUbp8LG1T9HhIrwJy2bah
-	JIdAuwgE7CcLGJDnZ+eMVRAMa4FDSFTxxpmqjou0sZwxabqiCsYdCx+2ym45dMFnpotbxkgzH+Oiv
-	qg6DdvEg5mVdPVx0slxlwq0++aaEgYKZldH6YC+GFjFFHYUYQhgyzJAvyugrV1osLOxtYQCZe0QOw
-	U1a6MQYttArqKi2VqaL5aIUzZ8yP1fhkATAv9g59KM+w3I5baRUFbhQySQsVi/9F2wDhcaXd9ckSk
-	Jhj6ix7y9vhkBxCHt1dcbRsFWJzitC5rJFlaGLZxU/hShdeH4HVBXixKbE96lGsVKCBDmgLXiEt3S
-	+GZXaUrw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=BZ8Z0Aarz6dukVwTSg6oFxXKuRw0aMvSSKkaUBN7Jgo=; b=15h1diTBczZmF12ADQXkJyrbd6
+	EqabLrYwixqaZqF3yFLfLMyIgsC05b1MIpbCMDrpV1QJIfWxfBwvNlZn1iqtPDNUEF1zPM5Z7+YlD
+	U9hTUOoe8t377m1jBoIjgXtm2jIdyz7AAA6iaiorVPBld05WuN8FdeY1ZI56gkJ2wwqCiRdPtkByK
+	S8FQ0uvjt6IUOE0ypkmTzh9/tcCIXGsEDXXV/C158EBSOjB3fh4ZLZgq6Me/0tREGjr+h7SpYXM+j
+	1212+0x/Li20BIp1gIRosesoUZJxtp1nSPiD3HQgDNcTeMkKGhNYo1kYU1SQAybXSV7/gi3Rs+pkO
+	fqtCFz/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s5m4k-00000007uwe-2uMn;
-	Sat, 11 May 2024 12:43:42 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1s5m5N-00000007vAr-0ALe;
+	Sat, 11 May 2024 12:44:21 +0000
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s5m4g-00000007uv2-1epV;
-	Sat, 11 May 2024 12:43:39 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id EE4C0CE04AE;
-	Sat, 11 May 2024 12:43:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 56CA8C2BBFC;
-	Sat, 11 May 2024 12:43:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1715431412;
-	bh=d4VKieaSxJD4O9fan0sp4G+844Bs3wrwI3hZbLLfkXY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=IMvdel0DY2pBVYj1A7coO/B+rMIO47XYcatES8h6dp3q/a0wHnEdYkkQhKc0kHM6F
-	 R5siUi5TNnYhyvsFZ3ct4vYXvIO//GNTkmIVazERoyp2vZdrDSPeZwuFlzD5viOLZF
-	 qu51GpXkvw7//RsxRf0s+wfmt9GuzAx/faZwnoCK0QODpe4erqsiy51Fu8KCroI9Er
-	 SXWB3N9Bzm3bkRLX+vpX3xIb+298XdKui2spF938GLhwbl3bb8edtYKBLnA8JzMxcc
-	 nXEESPNyPUFg8xwI6zZxJpcq4fhBlUvadsbA95jMtmYdMdcaijYUFF6T1DLpx9XJ8q
-	 tOTHuogfZFawA==
-Date: Sat, 11 May 2024 13:43:24 +0100
-From: Conor Dooley <conor@kernel.org>
-To: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
-	Gregory Clement <gregory.clement@bootlin.com>,
-	Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>, Lee Jones <lee@kernel.org>,
-	UNGLinuxDriver@microchip.com,
-	Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
-	Miquel Raynal <miquel.raynal@bootlin.com>,
-	Richard Weinberger <richard@nod.at>,
-	Vignesh Raghavendra <vigneshr@ti.com>,
-	Yisen Zhuang <yisen.zhuang@huawei.com>,
-	Salil Mehta <salil.mehta@huawei.com>,
+	id 1s5m5I-00000007v9B-3BJk;
+	Sat, 11 May 2024 12:44:18 +0000
+Received: by mail-wr1-x42e.google.com with SMTP id ffacd0b85a97d-350513d2c6aso1156512f8f.2;
+        Sat, 11 May 2024 05:44:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1715431454; x=1716036254; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=BZ8Z0Aarz6dukVwTSg6oFxXKuRw0aMvSSKkaUBN7Jgo=;
+        b=IsfBbfx68506UJP02e93eheuJauhTtmpir0yc+uRCwd+8XtgjextrjGmtwDe0PjDyW
+         F+rVM0toI0Wj938DQQtnSWUMD2JMLW3ttLOcNigB6xoRt8E89J6MOEc5ufXSMy0vdlEJ
+         yY62sHeszia4JZxEnIhgXhctPU/q82hDBvUH+cU9M8hMMZyviRtmZHaSxECvhMwMtrD0
+         oDu+UeqrV56AZMACAjCieb9L67ph+QWOjEe42lemWP3PJRtdN5Z2ePk+iyeXBPfL2Svr
+         5na3UHTX5St3nuuhhxQZS9B5gifP9GchxJv00eIex/IdPPHm57v38i6Vzu7iERlQb1rb
+         D6fQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1715431454; x=1716036254;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=BZ8Z0Aarz6dukVwTSg6oFxXKuRw0aMvSSKkaUBN7Jgo=;
+        b=QCBpp1M/ZOy6My4XkZV7qPBsJ/ldtPLYzHIUJNk9JGCeuqkchlhY3TDe9j/9+52hLA
+         x2wwY8J4pqP+GpAboZ5vzjVTKVyuNIpDzjol3QkSSVf7FUOsaDr8XL4OEWkorcwuOgFG
+         s20zIXPQ1yYuVDbwIdZr0PoclfgULYcypoXdvKVGkEpXhk7sgbUq+kMYW1xUE0WHhwzH
+         dLvBpAXZoOz3zHh8HJspOmE6VgJcxGFjMgavgyfQ94APhccWwOkNEps738iccjS8WAHh
+         GP6fqWUz33+Ijp6PHAC6cyIbHzdcxNYm1TKL1YNVgsO4SVdZuvRNJHPc/YMEce7msHUP
+         bj7Q==
+X-Forwarded-Encrypted: i=1; AJvYcCVt2OUtW52Fm0bnwDNlin6eHz6xgaVQ1KKLAHhPdOEfq2aO4BT25dhEW1KUfYcScg/wGZP8MSRM6i+xhAyJEyqYahDd0BM+xT+kDlsX2CSjVRGxBLqcMgaxnoFMowv0ZLwmxlv37eX3G5QdoLfI7VZgZZtIhip2n7I=
+X-Gm-Message-State: AOJu0YwRiUK9L94eruoUucAU9mEX5WFcROrv80OcX2Y4eR5cNu6BxP8U
+	6dyuXra7Ec/7F8p8hCHZg+ePtaP7NACAhZilUsH3NtpZxhINlQOy
+X-Google-Smtp-Source: AGHT+IHkUpBwdP2Rs+StkRWiK5hqO0KXE+W4zhMPOSox52JFXK9GDaBhCcgl7UPv1pYmQBpqXPckvQ==
+X-Received: by 2002:a05:600c:4f4e:b0:41b:a271:60a9 with SMTP id 5b1f17b1804b1-41feaa2f38bmr41453825e9.6.1715431454258;
+        Sat, 11 May 2024 05:44:14 -0700 (PDT)
+Received: from localhost.localdomain (IGLD-84-229-253-184.inter.net.il. [84.229.253.184])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-41fd10cf8besm49870535e9.1.2024.05.11.05.44.12
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 11 May 2024 05:44:14 -0700 (PDT)
+From: Elad Yifee <eladwf@gmail.com>
+To: 
+Cc: eladwf@gmail.com,
+	Sam.Shih@mediatek.com,
+	steven.liu@mediatek.com,
+	bc-bocun.chen@mediatek.com,
+	SkyLake.Huang@mediatek.com,
+	Henry.Yen@mediatek.com,
+	john@phrozen.org,
+	Felix Fietkau <nbd@nbd.name>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
 	"David S. Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org,
-	linux-mips@vger.kernel.org, linux-mtd@lists.infradead.org,
-	netdev@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] dt-bindings: mfd: syscon: Add more simple compatibles
-Message-ID: <20240511-trailing-confiding-93e4c97f2adf@spud>
-References: <20240510123018.3902184-1-robh@kernel.org>
+	netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH net RFC] net: ethernet: mtk_eth_soc: ppe: add source port comparison
+Date: Sat, 11 May 2024 15:42:26 +0300
+Message-ID: <20240511124230.13991-1-eladwf@gmail.com>
+X-Mailer: git-send-email 2.44.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="BSbcBdeN2vnKatp0"
-Content-Disposition: inline
-In-Reply-To: <20240510123018.3902184-1-robh@kernel.org>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240511_054338_640746_C9FEB295 
-X-CRM114-Status: UNSURE (   9.43  )
+X-CRM114-CacheID: sfid-20240511_054416_821146_6E8FA652 
+X-CRM114-Status: UNSURE (   9.25  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -96,36 +108,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Resolve packet loss issue on the following conditions:
+	- utilizing multiple GMACs
+	- device has more than 4GB DRAM
+	- using PPE
 
---BSbcBdeN2vnKatp0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Elad Yifee <eladwf@gmail.com>
+---
+ drivers/net/ethernet/mediatek/mtk_ppe.c      | 4 ++++
+ drivers/net/ethernet/mediatek/mtk_ppe_regs.h | 1 +
+ 2 files changed, 5 insertions(+)
 
-On Fri, May 10, 2024 at 07:30:14AM -0500, Rob Herring (Arm) wrote:
-> Add another batch of various "simple" syscon compatibles which were
-> undocumented or still documented with old text bindings. Remove the old
-> text binding docs for the ones which were documented.
->=20
-> Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
-> ---
-> This batch is mostly from arm32 platforms.
+diff --git a/drivers/net/ethernet/mediatek/mtk_ppe.c b/drivers/net/ethernet/mediatek/mtk_ppe.c
+index 6ce0db3a1a92..6415ba618ebf 100644
+--- a/drivers/net/ethernet/mediatek/mtk_ppe.c
++++ b/drivers/net/ethernet/mediatek/mtk_ppe.c
+@@ -1053,6 +1053,10 @@ void mtk_ppe_start(struct mtk_ppe *ppe)
+ 	      MTK_PPE_GLO_CFG_IP4_L4_CS_DROP |
+ 	      MTK_PPE_GLO_CFG_IP4_CS_DROP |
+ 	      MTK_PPE_GLO_CFG_FLOW_DROP_UPDATE;
++
++	if (mtk_is_netsys_v2_or_greater(ppe->eth))
++		val |= MTK_PPE_GLO_CFG_SP_CMP_EN;
++
+ 	ppe_w32(ppe, MTK_PPE_GLO_CFG, val);
+ 
+ 	ppe_w32(ppe, MTK_PPE_DEFAULT_CPU_PORT, 0);
+diff --git a/drivers/net/ethernet/mediatek/mtk_ppe_regs.h b/drivers/net/ethernet/mediatek/mtk_ppe_regs.h
+index 3ce088eef0ef..61fea4b4b65b 100644
+--- a/drivers/net/ethernet/mediatek/mtk_ppe_regs.h
++++ b/drivers/net/ethernet/mediatek/mtk_ppe_regs.h
+@@ -18,6 +18,7 @@
+ #define MTK_PPE_GLO_CFG_UDP_LITE_EN		BIT(10)
+ #define MTK_PPE_GLO_CFG_UDP_LEN_DROP		BIT(11)
+ #define MTK_PPE_GLO_CFG_MCAST_ENTRIES		GNEMASK(13, 12)
++#define MTK_PPE_GLO_CFG_SP_CMP_EN		BIT(25)
+ #define MTK_PPE_GLO_CFG_BUSY			BIT(31)
+ 
+ #define MTK_PPE_FLOW_CFG			0x204
+-- 
+2.44.0
 
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
-
-Cheers,
-Conor.
-
---BSbcBdeN2vnKatp0
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHQEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZj9n7AAKCRB4tDGHoIJi
-0gG1AP47sdu3A8RqntUv+sHeomfUnc/kOanj3aHZojsdbapUpAD0DOQrlhFkp8Gc
-XbFn8V4hiQpWfuV/HoEcegLy+fB9DQ==
-=jck4
------END PGP SIGNATURE-----
-
---BSbcBdeN2vnKatp0--
 
