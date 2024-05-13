@@ -4,65 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40DA2C25B10
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 May 2024 12:24:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A044C25B10
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 May 2024 13:06:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=fXvZVy+O0FXOwaoVLJHn7SMWSPa7OrLUhbpPfhZ4/e8=; b=1zkt5qeBD17pgh/IOJPDGUG8JC
-	tvUM6k+d2nhpmbxBbVkMctql7hLkszmDHM9BNrWi1yjrggUm/xDbPBchxBjvaiGgAFL2yuVsIG8s1
-	ke/OrNCwi3sILl68ulRtR84PtR+GT9hROETr5I9Lo6HMBjYdDNNLyVRmBp3Y7lMF5jNfuCQbT0wT2
-	7b+W0MjvOzESY+eemdOKxQ7U8GdrBW9uA76BCUz7/Ljva2yQHz9b5XQ7XG6dvNRKAvMTivNqFwBvC
-	QsVyVFUDlOrv+pI5D4NBu30CFXm3fNiKlmwgAVMKHDhfoZBVHBL1Hr4l52t/Xm73eoCvM8eh7BWCL
-	MutRlTDw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=aUEm2yA5QWTQ0N7GwKDENzD1O7bUJDClAT9F61hq+ZM=; b=SmQDvhwGGMgXJg
+	Rbbn6XQWmzgvq2bVOIzckFoKDV7GHSy18wN9+8Oms7NfwBSbbp8WPNeA5ES+MMuO54Q24HDCZ9eB8
+	TMlBlqM5nYTp8hVGwblDTDZRDk2vvhq78CfH+Vsxy4s6CKe7d3x9QLgBCBz2Wuk1O2NT7rCxs9zwk
+	RPZPUT5YN3B4rWuFB6Xso69KtO4GnOQPM3aJN10O9mEMqw2RaNpiCpoCVSsNbqfcV8zDOWp8Z9bYE
+	NhbN3rMJErdBcru8UtfZyOfIGtmZU9miKt741IFQJrUhlPc7EXLFF4hZunhLGFyvepg1Nx8TLcY6S
+	zrGesuJNrqz8YHXZREUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s6Uj0-0000000CnrX-3F5K;
-	Mon, 13 May 2024 12:24:14 +0000
-Received: from m16.mail.163.com ([220.197.31.5])
-	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s6Uiv-0000000CnpK-47Jt
-	for linux-mediatek@lists.infradead.org;
-	Mon, 13 May 2024 12:24:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=fXvZV
-	y+O0FXOwaoVLJHn7SMWSPa7OrLUhbpPfhZ4/e8=; b=D8Hm/MyCPnHJihPxUCHiI
-	P1HSTNEkpHjBo1Kl3c6zL2djILhqLO8vGi+XVR5Pf7U3CqY7Noey5cRHv1FSt5HU
-	7Dz6htONyX1b9UlIJ8BfbDgR0HGTV8EIwkl+Q16i38MalqWQeZSvCbCEZj8m6lVn
-	vrj49TR2K73YVUDXYkYoRY=
-Received: from flipped.. (unknown [159.226.94.118])
-	by gzga-smtp-mta-g2-1 (Coremail) with SMTP id _____wD3f6dEBkJm50hfEQ--.9117S2;
-	Mon, 13 May 2024 20:23:33 +0800 (CST)
-From: Sicong Huang <congei42@163.com>
-To: nbd@nbd.name,
-	ryder.lee@mediatek.com,
-	shayne.chen@mediatek.com,
-	sean.wang@mediatek.com,
-	kvalo@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com
-Cc: linux-wireless@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	Sicong Huang <congei42@163.com>
-Subject: [PATCH v1] wifi: mt76: mt7615: fix null pointer dereference bug
-Date: Mon, 13 May 2024 20:23:29 +0800
-Message-Id: <20240513122329.170380-1-congei42@163.com>
-X-Mailer: git-send-email 2.34.1
+	id 1s6VO8-0000000CvkK-28T3;
+	Mon, 13 May 2024 13:06:44 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
+	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1s6VO5-0000000Cvig-1sDc;
+	Mon, 13 May 2024 13:06:42 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1715605596;
+	bh=/Eyn9bkH5uoTKww4e9w5tijFhp5wmymIjSTpXFGepHA=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=RH/1CAKa1enDROjodfX18vOgP9pZ7PFlTktwN5ISlQGt93tgVOI3O6SLI9OJqh46y
+	 QsrPDKVwoyf9ZhqG3HEOTWaqO2KLDYrrmHLZnjyGbHoMUKR/NMtG+LzW1NZNNpSKVr
+	 5DJl7o8Yruis5fCyVYZ4LicMK51zs2YpZAn+quzWarB31aXV5dqCSeGQm6kRUSXRiU
+	 AwAVby/LufM0XWqtm4fr5EmVxWnYsuQ3C4M3M5+pz1G3s8QXhPccW+J65xTLvtoqW7
+	 r/EHIqlF+nYjbhXu/ZcOFea9GeyiPVTkfeoBSavfbwMoPwNSA9dbgkn7LyrR9eruc6
+	 kYD/jn0+NzIUg==
+Received: from [IPV6:fd00::2a:39ce] (cola.collaboradmins.com [IPv6:2a01:4f8:1c1c:5717::1])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 91EC53782139;
+	Mon, 13 May 2024 13:06:33 +0000 (UTC)
+Message-ID: <a7a20d35-f566-4c3c-aef1-cb7a0f349cf6@collabora.com>
+Date: Mon, 13 May 2024 15:06:32 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: _____wD3f6dEBkJm50hfEQ--.9117S2
-X-Coremail-Antispam: 1Uf129KBjvdXoWrZryDKr1rKr17WrykJry3CFg_yoWfCwb_WF
-	WkuF1ftw18Gr1kKr42vr4xArW0k395Za48W3sIqrWSq39rJFZrGryavr9rGrZrCrn2vrW3
-	Gr1DJFyrX39IvjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
-	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7IUjvtCDUUUUU==
-X-Originating-IP: [159.226.94.118]
-X-CM-SenderInfo: 5frqwvrlusqiywtou0bp/xtbBFQfd8mXAlaaUfQAAsC
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 1/2] dt-bindings: arm64: mediatek: add BananaPi R3 Mini
+To: Frank Wunderlich <linux@fw-web.de>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>,
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+ <sboyd@kernel.org>, Pavel Machek <pavel@ucw.cz>, Lee Jones <lee@kernel.org>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+References: <20240510095707.6895-1-linux@fw-web.de>
+ <20240510095707.6895-2-linux@fw-web.de>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20240510095707.6895-2-linux@fw-web.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240513_052410_644645_88540E70 
-X-CRM114-Status: UNSURE (   7.90  )
+X-CRM114-CacheID: sfid-20240513_060641_708127_5D0C43A2 
+X-CRM114-Status: UNSURE (   5.05  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -75,34 +78,19 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Tianling Shen <cnsztl@immortalwrt.org>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Conor Dooley <conor.dooley@microchip.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Eric Woudstra <ericwouds@gmail.com>, linux-clk@vger.kernel.org, linux-leds@vger.kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Function mt7615_coredump_work will call vzalloc to allocate a large amount
-of memory space, the size of which is 1300KB. There should be a null
-pointer check after vzalloc. Otherwise, when the memory allocation fails
-and returns NULL, the function will cause a Kernel crash.
+Il 10/05/24 11:57, Frank Wunderlich ha scritto:
+> From: Frank Wunderlich <frank-w@public-files.de>
+> 
+> Add MT7988A based BananaPi R3 Mini.
+> 
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> Acked-by: Conor Dooley <conor.dooley@microchip.com>
 
-Signed-off-by: Sicong Huang <congei42@163.com>
----
- drivers/net/wireless/mediatek/mt76/mt7615/mac.c | 3 +++
- 1 file changed, 3 insertions(+)
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-index 7ba789834e8d..04eb52904520 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-@@ -2341,6 +2341,9 @@ void mt7615_coredump_work(struct work_struct *work)
- 	}
- 
- 	dump = vzalloc(MT76_CONNAC_COREDUMP_SZ);
-+	if(!dump)
-+		return;
-+
- 	data = dump;
- 
- 	while (true) {
--- 
-2.34.1
 
 
