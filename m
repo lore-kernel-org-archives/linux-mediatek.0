@@ -4,79 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8436EC25B75
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 May 2024 13:12:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE17AC25B75
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 May 2024 13:23:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DZHu85XO74EtbBNuBJcN0UlLOWxVY42rjyySz3P8158=; b=jZhUFJ3LDqaV98f93ARCqhBJnq
-	HCOXiPu1en7tJUBrorw8D/cjoi3uK5siQAevdq2yVuWzebYoOxA/dyjK9ROfSUScyDttN3D5p91u1
-	MvBfqdeQ9OPV0YErEXk7qiZu2c+MOLg0PNaIStHcjSxraSKerrH9mgRLOAtskmYmpijkBJbjJ/91S
-	/OXhVrvTzsWoRUKjQLWa/bVZ8RyKZjyqAD35cr7svYVDn+pbaL8C4os4TcUk+2JodcqTAA2OZN43d
-	4dtMABLtuOaXmVDKVoSxkwWnXqGEqR48YaNOw6qCz7yPSU24smE1t7ee0y7PJT+MOnhYzopDhhpPi
-	s32U0bjg==;
+	bh=s3gOCpfBrhzTq1OT9XWjvIOrPRoa34NwbUK1Pv56I/4=; b=x5BoRDw10mnbIcLVlO8ASrOnKu
+	9+5EEmjo/MySqfo8Wqa/11U1vZ9eFFLxCP84zKrWfbqQVUwU2yVpg9IMtxGAhb2D/jeCdsowj5v7h
+	/+/vkzA7nbaMtmnsRXLoUOr1wE0O1zmgAzPmv7ws6UWJNrWvRkMkp4fOU3IaiuBxswtH/JlkwSZs8
+	CGb3JhmUi5EmNMd/S4clEyl9ZeU/+zPktK3nWZQqRo03dQDo4P9adQWgcfhZuB0qqrxdIFMeLaXzO
+	G2b5kMn8lN410gYaIJN8y+CKN4eZa9TyQkWD9vlCJytJAbC6cZKNLWc9GGf+2vIYhTwO9CBnD3wFz
+	x/LQ9l0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s6VTZ-0000000Cx9M-08Eo;
-	Mon, 13 May 2024 13:12:21 +0000
+	id 1s6VeK-0000000Cz6B-3jSK;
+	Mon, 13 May 2024 13:23:28 +0000
 Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s6VTV-0000000Cx7T-1XGR;
-	Mon, 13 May 2024 13:12:19 +0000
+	id 1s6VeH-0000000Cz4J-1bPD
+	for linux-mediatek@lists.infradead.org;
+	Mon, 13 May 2024 13:23:27 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1715605935;
-	bh=iGwqCXIPo5Sz/mVwtdsEoVu5uuBlckkioU0/F3+rFJM=;
+	s=mail; t=1715606603;
+	bh=t1H7HAV/m+hR/GfN+DOdTuWAsHyeaN+y7Y2Agzg+V3g=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=wP4V4wRD3bgtkqQVaTg10pjSetuDkdLdu8u+Xm46+KGCWbUbEeETjSVCBADEVn3fH
-	 5ONQmZ70MG6ygHnm46zi/Pi8HOrdgBWGe0HomQUvnqwcRJO38IxFF8GkkZrecDGHsc
-	 FN/NQHFV1WRuXQkLBQDdb5RAENk/TVRsH7RZLLwN+DLcgi8rTAmHcONOb35dybZdfE
-	 /79ktkbLNe4UW7oxoVgeFqQcoNtrnyw6zll/ILwHuotrt4/gSQTc8Ya/N/37Lue3Zk
-	 jOzF4liFus2SVMYo5aqP3RWGFt+aqquKqsOro4PyXJexL3+2zxSHex5q91CHHwjLMr
-	 34XuAB1Rl0PoA==
+	b=LMMcKOQ3nlPAVjMUrM1mld35tSehSr7BGfqtvdlQKDFpi6n4rxqWcS9xLZmVOUvJ1
+	 I7O+uXDfjLyDUrSjcsKOrPp8SbJX3S4IWdSDkOr433V0PWMwORrZizwJw5KVGv+GFI
+	 y7u2GhIZt09nZaPkZD3USVNuE9/oohZqsnrnck46YWQRSraK0uOTdqk+g7xPkY6xG6
+	 WJmVw5657EyAnvdSXi0RrO12zwDbj4sEhrWSRgr1CSBpZLz3dine/oL0O7XEpuM5Uv
+	 Zqxbou4d8phP41CaVoENSNBhfRRzqt2gXCDcczfPNXSYxgMNzxChJb7P4Mr/ILMcdj
+	 7d8D9spaLz8kA==
 Received: from [IPV6:fd00::2a:39ce] (cola.collaboradmins.com [IPv6:2a01:4f8:1c1c:5717::1])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 7867A3782167;
-	Mon, 13 May 2024 13:12:13 +0000 (UTC)
-Message-ID: <debde564-eac8-4d07-8e25-75e321150df7@collabora.com>
-Date: Mon, 13 May 2024 15:12:12 +0200
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 2CE553782017;
+	Mon, 13 May 2024 13:23:23 +0000 (UTC)
+Message-ID: <dd997ba8-3d66-422a-b5df-ff2c0e6b96d1@collabora.com>
+Date: Mon, 13 May 2024 15:23:22 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] dt-bindings: mfd: syscon: Add more simple compatibles
-To: "Rob Herring (Arm)" <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Nicolas Ferre <nicolas.ferre@microchip.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Claudiu Beznea <claudiu.beznea@tuxon.dev>, Andrew Lunn <andrew@lunn.ch>,
- Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
- Gregory Clement <gregory.clement@bootlin.com>,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
- <sboyd@kernel.org>, Lee Jones <lee@kernel.org>,
- UNGLinuxDriver@microchip.com, Thomas Bogendoerfer
- <tsbogend@alpha.franken.de>, Miquel Raynal <miquel.raynal@bootlin.com>,
- Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>,
- Yisen Zhuang <yisen.zhuang@huawei.com>, Salil Mehta
- <salil.mehta@huawei.com>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org,
- linux-mips@vger.kernel.org, linux-mtd@lists.infradead.org,
- netdev@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <20240510123018.3902184-1-robh@kernel.org>
+Subject: Re: [PATCH v1] wifi: mt76: mt7615: fix null pointer dereference bug
+To: Sicong Huang <congei42@163.com>, nbd@nbd.name, ryder.lee@mediatek.com,
+ shayne.chen@mediatek.com, sean.wang@mediatek.com, kvalo@kernel.org,
+ matthias.bgg@gmail.com
+Cc: linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
+References: <20240513122329.170380-1-congei42@163.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20240510123018.3902184-1-robh@kernel.org>
+In-Reply-To: <20240513122329.170380-1-congei42@163.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240513_061217_571531_050B4E2B 
-X-CRM114-Status: UNSURE (   5.77  )
+X-CRM114-CacheID: sfid-20240513_062325_865269_6359C877 
+X-CRM114-Status: UNSURE (   6.25  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -92,16 +77,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 10/05/24 14:30, Rob Herring (Arm) ha scritto:
-> Add another batch of various "simple" syscon compatibles which were
-> undocumented or still documented with old text bindings. Remove the old
-> text binding docs for the ones which were documented.
-> 
-> Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
+Il 13/05/24 14:23, Sicong Huang ha scritto:
+> Function mt7615_coredump_work will call vzalloc to allocate a large amount
+> of memory space, the size of which is 1300KB. There should be a null
+> pointer check after vzalloc. Otherwise, when the memory allocation fails
 
-For MediaTek
+Otherwise, if the memory allocation fails ...
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> and returns NULL, the function will cause a Kernel crash.
+>  > Signed-off-by: Sicong Huang <congei42@163.com>
 
+Please add the relevant Fixes tag and resend.
+
+Cheers,
+Angelo
 
 
