@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54802C25B10
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 May 2024 13:06:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6A82C25B78
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 May 2024 13:11:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kKNzPBNZdWfxQofIIVU92MNW+8Zh86jGjA3lwllcw4o=; b=3UwWmEDGjoZlO5
-	nXHElMhWIBQie6G/Y1vdeDjLCnNZXxbmhv6ZIvDNT8VrvsffAKsk92z3uFYL1iTp6oMvVa4zmb/pP
-	caZSGQKQH1Kcr73f2/Iz/Y54OjycpPJQ5o97OYg4Oc2iNJCWdBC2Tfwkp8iy+nEl2U55duAcQZk2g
-	dIE9abMJ1W6QNKhyhVacxiz/Nh8Tt0o2sJe+AUu058PmbMGIVBu6p2kcBxjPK/wSmVU67PjB8NFuL
-	fP34oyqu7furs1NVi7GSbv4gomTctZeAcK4BxlLuneOMG9A3apRfgB6m0quHqh3oRl0iSAIsaJuHk
-	YOucDkkBWQ8psyynF6zg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=5SM3BQI5OPCfHCt5shR0osADes7QnRCcDX5aiQ+6JBs=; b=UHoA+rPOBH5bKepAfIWJugiVd1
+	s/DGFYc4PAfV4c+M5D73zzlBzCwwMGn7cQGuMWynRdcjn8y7N9Xm0XiupVIj4ApuOmab7BI97DFW9
+	ILPlj3BdUiyU+Mm/iWsMG+4Y0n3zRcYB8QH0P08QJHIJ21lXfIf8D1TfchzH9VPmWSUj1zq33kW0J
+	4ZoHJzgkupfiyFnMG61e5d2WB+iWELb0ga6s1nnIc3IWXRXsNF6O/AdzqoP9cD60/UDoAAvxLhYRD
+	wuTC9bFFsyEYo7zw/dYqgdptwNWIX4ZMBDETAgs8PBdhwhKCQ5C6oNWbdevu53N+QZ42SoDoBIgTP
+	QStF7a0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s6VOD-0000000Cvmp-4Ago;
-	Mon, 13 May 2024 13:06:50 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1s6VSS-0000000CwsO-1aqt;
+	Mon, 13 May 2024 13:11:12 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s6VO6-0000000Cvio-3Ism;
-	Mon, 13 May 2024 13:06:44 +0000
+	id 1s6VSO-0000000CwrU-2X7X;
+	Mon, 13 May 2024 13:11:10 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1715605598;
-	bh=PwpEC1pK3iSkqw+CUTBIysDmEzi1NrNuBuYMQbLR1QA=;
+	s=mail; t=1715605867;
+	bh=vb6VU8I039xfs50EqqXBhoNIQO7NhR8KG4nRvOrcCHk=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=rCKM86jdnNzFNN0ZUZ8E7eyk85EtZ5u7XrKBA7CCGs6T6jwEfTPstTgmjidxcDNmy
-	 DWB91bI686mgao6PL9WvTDeR8YnmEwpuLEoVBhDPBce2ue6hGUBpcog1VHVseGOQLG
-	 5+4DJzStCqRLCBriuWPRcv8MQv+z7W5KOcUmV4zxH8dnHEOO5tGbYNZcKyBx1kM70x
-	 QodtRT3zS3RbF9Q5vR0sNbuMpF9bS99lwDH9yij19wEM/dqLt8hcciqRveiW1CJxNs
-	 cpNSfF6jRUyVdWVvcMpoje/bAEGj4DMSku+Dz0bMqzha65lsQVF2c26BofluEZqhn2
-	 1Ka8V2pMGCDAA==
+	b=I32CpzZMSeEnyQQCPetjzV9Baf0RaDjXYyWuOQ7GalN+1Snmnyj2y5odmTtvsfEbn
+	 eY6qK+WoDRvy6NqqRZ1qi3OQw5Wug8y0FrgEwyHAiX3laIbkUf2WolxGx57mvVWnTM
+	 so1gyFQccRJL6+MiYYOGxyCvGrf3jMVbwuwAsFTB6X6WwIkXOfT/cWZEv+91soz08w
+	 IXZhG0wH/tSdB5mvWOG0kE0hkl82yBmMTB6PgyuDLcp2mbvajMZ17OflNB9Y0maGww
+	 Q92JrkYD8782MJcckvuL29IpeF35t5+Xp7JYHiKpfu2tJ8W7Tl6kspnb/EqRAzEQ3B
+	 kFp+dQgqwr5Hw==
 Received: from [IPV6:fd00::2a:39ce] (cola.collaboradmins.com [IPv6:2a01:4f8:1c1c:5717::1])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 39BB23782167;
-	Mon, 13 May 2024 13:06:36 +0000 (UTC)
-Message-ID: <a91e7353-7d09-43bd-ad4e-b5bdf15a6a9b@collabora.com>
-Date: Mon, 13 May 2024 15:06:34 +0200
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 7380A3782139;
+	Mon, 13 May 2024 13:11:05 +0000 (UTC)
+Message-ID: <ffa57617-3c87-47d7-8882-becfe40abc17@collabora.com>
+Date: Mon, 13 May 2024 15:11:04 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 2/2] arm64: dts: mediatek: Add mt7986 based Bananapi R3
- Mini
-To: Frank Wunderlich <linux@fw-web.de>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
- <sboyd@kernel.org>, Pavel Machek <pavel@ucw.cz>, Lee Jones <lee@kernel.org>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-References: <20240510095707.6895-1-linux@fw-web.de>
- <20240510095707.6895-3-linux@fw-web.de>
+Subject: Re: [PATCH v2 1/2] Add write DP phyd register from parse dts
+To: Liankun Yang <liankun.yang@mediatek.com>, chunkuang.hu@kernel.org,
+ p.zabel@pengutronix.de, airlied@gmail.com, daniel@ffwll.ch,
+ maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de,
+ robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+ chunfeng.yun@mediatek.com, vkoul@kernel.org, kishon@kernel.org,
+ matthias.bgg@gmail.com, jitao.shi@mediatek.com, mac.shen@mediatek.com,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org
+References: <20240510110523.12524-1-liankun.yang@mediatek.com>
+ <20240510110523.12524-2-liankun.yang@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20240510095707.6895-3-linux@fw-web.de>
+In-Reply-To: <20240510110523.12524-2-liankun.yang@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240513_060643_007814_1275DCBF 
-X-CRM114-Status: UNSURE (   6.94  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240513_061108_944116_C4D5CA55 
+X-CRM114-Status: GOOD (  19.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,36 +79,112 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Tianling Shen <cnsztl@immortalwrt.org>, netdev@vger.kernel.org, Tianling Shen <cnsztl@gmail.com>, linux-kernel@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Eric Woudstra <ericwouds@gmail.com>, linux-clk@vger.kernel.org, linux-leds@vger.kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 10/05/24 11:57, Frank Wunderlich ha scritto:
-> From: Frank Wunderlich <frank-w@public-files.de>
+Il 10/05/24 13:04, Liankun Yang ha scritto:
+> During the testing phase, screen flickering is observed when
+> using displayport for screen casting. Relevant SSC register parameters
+> are set in dts to address the screen flickering issue effectively and
+> improve compatibility with different devices by adjusting the SSC gear.
 > 
-> Add devicetree for Bananapi R3 Mini SBC.
+> Obtaining the DPTX node, parsing the dts to obtain PHY register address
+> and value can adapt to settings of different manufacturers projects.
 > 
-> Key features:
-> - MediaTek MT7986A(Filogic 830) Quad core ARM Cortex A53
-> - Wifi 6 2.4G/5G (MT7976C)
-> - 2G DDR RAM
-> - 8G eMMC flash
-> - 128MB Nand flash
-> - 2x 2.5GbE network port
-> - 1x M.2 Key B USB interface
-> - 1x M.2 KEY M PCIe interface
-> - 1x USB2.0 interface
+> Changeds in v2:
+> - Optimized method of writing to DP PHY register
+> https://patchwork.kernel.org/project/linux-mediatek/patch/
+> 20240403040517.3279-1-liankun.yang@mediatek.com/
 > 
-> source: https://wiki.banana-pi.org/Banana_Pi_BPI-R3_Mini
-> 
-> Co-developed-by: Eric Woudstra <ericwouds@gmail.com>
-> Signed-off-by: Eric Woudstra <ericwouds@gmail.com>
-> Co-developed-by: Tianling Shen <cnsztl@gmail.com>
-> Signed-off-by: Tianling Shen <cnsztl@gmail.com>
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> Reviewed-by: Daniel Golle <daniel@makrotopia.org>
+> Signed-off-by: Liankun Yang <liankun.yang@mediatek.com>
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+There's no devicetree support in this driver - infact, it's being probed by
+mtk-dp as a platform device.
+
+You keep sending untested stuff. Fourth time in a row.
+
+Please, TEST YOUR COMMITS upstream before sending!
+
+Regards,
+Angelo
+
+> ---
+>   drivers/phy/mediatek/phy-mtk-dp.c | 37 +++++++++++++++++++++++++++++++
+>   1 file changed, 37 insertions(+)
+> 
+> diff --git a/drivers/phy/mediatek/phy-mtk-dp.c b/drivers/phy/mediatek/phy-mtk-dp.c
+> index d7024a144335..ce78112d5938 100644
+> --- a/drivers/phy/mediatek/phy-mtk-dp.c
+> +++ b/drivers/phy/mediatek/phy-mtk-dp.c
+> @@ -28,6 +28,10 @@
+>   #define MTK_DP_PHY_DIG_SW_RST		(PHY_OFFSET + 0x38)
+>   #define DP_GLB_SW_RST_PHYD		BIT(0)
+>   
+> +#define MTK_DP_PHY_DIG_GLB_DA_REG_14	(PHY_OFFSET + 0xD8)
+> +#define XTP_GLB_TXPLL_SSC_DELTA_RBR_DEFAULT	GENMASK(15, 0)
+> +#define XTP_GLB_TXPLL_SSC_DELTA_HBR_DEFAULT	GENMASK(31, 16)
+> +
+>   #define MTK_DP_LANE0_DRIVING_PARAM_3		(PHY_OFFSET + 0x138)
+>   #define MTK_DP_LANE1_DRIVING_PARAM_3		(PHY_OFFSET + 0x238)
+>   #define MTK_DP_LANE2_DRIVING_PARAM_3		(PHY_OFFSET + 0x338)
+> @@ -78,10 +82,39 @@
+>   #define DRIVING_PARAM_8_DEFAULT	(XTP_LN_TX_LCTXCP1_SW2_PRE1_DEFAULT | \
+>   				 XTP_LN_TX_LCTXCP1_SW3_PRE0_DEFAULT)
+>   
+> +#define SSC_SETTING	"dp-ssc-setting"
+> +#define RG_XTP_GLB_TXPLL_SSC_DELTA_HBR	"ssc-delta-hbr"
+> +
+>   struct mtk_dp_phy {
+>   	struct regmap *regs;
+> +	struct device *dev;
+>   };
+>   
+> +static int mtk_dp_set_ssc_config(struct phy *phy, struct mtk_dp_phy *dp_phy)
+> +{
+> +	int ret;
+> +	u32 read_value = 0, reg_mask = 0;
+> +	struct device_node *ssc_node = NULL;
+> +
+> +	ssc_node = of_find_node_by_name(dp_phy->dev->of_node, SSC_SETTING);
+> +	if (!ssc_node) {
+> +		dev_err(&phy->dev, "SSC node is NULL\n");
+> +		return -ENODEV;
+> +	}
+> +
+> +	ret = of_property_read_u32(ssc_node, RG_XTP_GLB_TXPLL_SSC_DELTA_HBR, &read_value);
+> +	if (ret < 0 || !read_value) {
+> +		dev_err(&phy->dev, "Read SSC vlaue fail!\n");
+> +		return -EINVAL;
+> +	}
+> +	read_value |= read_value << 16;
+> +	reg_mask |= XTP_GLB_TXPLL_SSC_DELTA_HBR_DEFAULT;
+> +
+> +	regmap_update_bits(dp_phy->regs, MTK_DP_PHY_DIG_GLB_DA_REG_14, reg_mask, read_value);
+> +
+> +	return 0;
+> +}
+> +
+>   static int mtk_dp_phy_init(struct phy *phy)
+>   {
+>   	struct mtk_dp_phy *dp_phy = phy_get_drvdata(phy);
+> @@ -137,6 +170,8 @@ static int mtk_dp_phy_configure(struct phy *phy, union phy_configure_opts *opts)
+>   	regmap_update_bits(dp_phy->regs, MTK_DP_PHY_DIG_PLL_CTL_1,
+>   			   TPLL_SSC_EN, opts->dp.ssc ? TPLL_SSC_EN : 0);
+>   
+> +	mtk_dp_set_ssc_config(phy, dp_phy);
+> +
+>   	return 0;
+>   }
+>   
+> @@ -186,6 +221,8 @@ static int mtk_dp_phy_probe(struct platform_device *pdev)
+>   	if (!dev->of_node)
+>   		phy_create_lookup(phy, "dp", dev_name(dev));
+>   
+> +	dp_phy->dev = dev;
+> +
+>   	return 0;
+>   }
+>   
 
 
 
