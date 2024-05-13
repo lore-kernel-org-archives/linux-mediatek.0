@@ -4,89 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A96FC25B78
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 May 2024 16:28:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3019C25B10
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 May 2024 20:51:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dreGzymTKJvTE2xPwadAY/8dXCucGzSp5e1CjkI9194=; b=denpzKNZI3rRzVcm59EF6ynbFU
-	GwjpCD33dDZVk7xh0iZEp5S1utuuyYsfwDPHsEolc0ej0uPknlwYYUa1Qr77P1bAQnqaLBhplUfqz
-	Zhh45WUpyvwFBCMTJXRcciGC+0edvvvQ/XQfXzZeLfQmo5E9ZrYUx6cq1qRGrDAz52loj8u/3xJpu
-	vw2jnxTrsIdus46NIr1kVj3uAg4M7RxWnZQjGw7bkA9Rc8/NKuW6N7mQ44ykkIYOAqaCkc0+ATW8H
-	iQECtCNf1VJdouFIlKqTyLf6D6jlKXP3Sz3VJESSbCmBXLuWWah2XFrReuLc0BYBJe0OjgAiqE4kO
-	KeBswKEQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Rv7jmDTVVRFwx435oiB3ZXmxSleUrrvg/LBh8jNJlFU=; b=RX3kZtxtv/sGoqY226fnSV7CwN
+	9AEapBZnP8fo+S9SKTH3OljvCLlcvbFMTqSpTaWjm0kdY0cXhS/gEmRC34gIz9krELAAoF5LXp7QO
+	l5UY2POyzRobzP2GWw4Il/lSVN4uzrig0V8m8oc7N8qnBGq3ieoUj8EjN+mSHdsoqDP2u9iCOyZiJ
+	tiaST8kD9USCurZqvg7jbs9v9VRY69m4Z4uxirNF4XWYtdlSL4mtHeq2U6CA5PNqmE19ubnrN2zgl
+	XAF6zM4H7KJb3PYbdLRW098wtrmRwBpvzVMEy2bNpApw5WlwAIcP3MO7HuNkyQVx30V4UTvqjoHDl
+	e+t/AQtw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s6YXY-0000000DY33-3pHw;
-	Mon, 13 May 2024 16:28:40 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1s6ce6-0000000EAZP-2LsK;
+	Mon, 13 May 2024 20:51:42 +0000
+Received: from mail-yw1-x1134.google.com ([2607:f8b0:4864:20::1134])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s6YXU-0000000DY0n-21as;
-	Mon, 13 May 2024 16:28:37 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id DF8C760ECA;
-	Mon, 13 May 2024 16:28:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 41FCCC113CC;
-	Mon, 13 May 2024 16:28:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1715617715;
-	bh=dreGzymTKJvTE2xPwadAY/8dXCucGzSp5e1CjkI9194=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=YNkZuFVTgpilJnrk8k42qcAleha/WbDDTTi4Qgq1tTQkm/Ebiz7FPNf4ikKCYaseZ
-	 7N/pgS2dC5ti1KaPZSiSLdW/c6tTGcnFlO62YIXDDWkRxvldaFiXI/Srbw/GdDaOSK
-	 DaayMNussMq2hVzzqpQ4sQVLtgVw5hUd3e5iOowyHxXbnwpZZeSn3IPbrE4xjB9JQ5
-	 UEBlb/U+w8eMMvj4P/3IvFENgPyKzxEFpGfobya5R1G/vQmxTvV5/tySFTFP9RkkuQ
-	 cuN7q1aKqATShYTqcCv+FfOEphVxJJQx/WaucdXMtNgpqQZRnZFj3XD/7kEz30I3nC
-	 N/zGUS/lTIcUw==
-Date: Mon, 13 May 2024 17:28:29 +0100
-From: Conor Dooley <conor@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: CK Hu =?utf-8?B?KOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
-	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"wenst@chromium.org" <wenst@chromium.org>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	"tzimmermann@suse.de" <tzimmermann@suse.de>,
-	Shawn Sung =?utf-8?B?KOWui+WtneismSk=?= <Shawn.Sung@mediatek.com>,
-	"mripard@kernel.org" <mripard@kernel.org>,
-	Jitao Shi =?utf-8?B?KOefs+iusOa2myk=?= <jitao.shi@mediatek.com>,
-	"daniel@ffwll.ch" <daniel@ffwll.ch>,
-	"p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
-	"conor+dt@kernel.org" <conor+dt@kernel.org>,
-	"maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
-	"robh@kernel.org" <robh@kernel.org>,
-	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
-	"airlied@gmail.com" <airlied@gmail.com>,
-	"krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
-	"kernel@collabora.com" <kernel@collabora.com>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	Yu-chang Lee =?utf-8?B?KOadjuemueeSiyk=?= <Yu-chang.Lee@mediatek.com>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
-Subject: Re: [PATCH v2 2/3] dt-bindings: arm: mediatek: mmsys: Add OF graph
- support for board path
-Message-ID: <20240513-papaya-bagged-8f01503b0a22@spud>
-References: <4dfb09b9c437ab2baa0898eca13a43fd7475047a.camel@mediatek.com>
- <46347f5d-e09b-4e83-a5a2-e12407f442a4@collabora.com>
- <847e1a84b532956f697d24014d684c86f0b76f03.camel@mediatek.com>
- <cbf73111-a6cf-47da-9563-89d49fbdb17d@collabora.com>
- <ee721fd3339f8b3a25464ca57ca192343a51e514.camel@mediatek.com>
- <34caf545-1fc9-4905-a82f-2596f053b3ff@collabora.com>
- <de23d55dd1c84bf9b04119014c3785189ce6f9da.camel@mediatek.com>
- <c384946a-e151-4afb-82f7-d31a5a26aff6@collabora.com>
- <5b0ed6dd7190496d70fe625ac9b4539eb0181c0a.camel@mediatek.com>
- <6796f082-dfbe-45dc-bd01-3c9b4ac73865@collabora.com>
+	id 1s6ce0-0000000EAX2-0tgq
+	for linux-mediatek@lists.infradead.org;
+	Mon, 13 May 2024 20:51:40 +0000
+Received: by mail-yw1-x1134.google.com with SMTP id 00721157ae682-62050e00cfdso42295527b3.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 13 May 2024 13:51:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1715633494; x=1716238294; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Rv7jmDTVVRFwx435oiB3ZXmxSleUrrvg/LBh8jNJlFU=;
+        b=Z921T6Lj8KZ2EDZ5OhikOnUj4vlKVvMfos7OJH67XprY5kzCSO1ZU2IR7CRriKenxd
+         CeM2thYErEDMbjewgonwVeiZ9Dj6a2l2GjxmQ+EBX8elwNdFcTt2kqf85/BPauIOceMH
+         T+na7MhHzwjaN42kEjQKoKup9kxNGV2Q7+Y5XG1c5vxFjnJIl/c0S8nUn6YRLG3l007Y
+         W2/VzoTlmPcGomLDfY7efGtb3LJmDnoa2Ty8X1FBjGXytAsdeZX5IPzVaqYd6OWviJf3
+         hBqbPN+j1/N5MZT/FcL/kymRqn3NTJ+GEOsyYaErTBED1NDuwJbU0kFfVONKR9KQi6GN
+         VFPA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1715633494; x=1716238294;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Rv7jmDTVVRFwx435oiB3ZXmxSleUrrvg/LBh8jNJlFU=;
+        b=SePOacmS+ZpBwijUQ/LW55j2e4Yo9ZKc4gLmn0rn9DUo0hyw8bQxHE7ygOcbrkb83+
+         TMgwr6DDM8rFd+k6lYSUlxkwPJXQgNk+Q9Y+J6qc7PxCmHA5snBWj2IR0Opi/dmjCaYL
+         rLUSaRMHuoLr2LtHJAm/HluN5ji0NKdZKhkG5rraNGLetpKd8h9FYjKmbrrzVLh3fxjK
+         D++wRZjU8uZcLUm/RuUz0UXEBzNJs7uCaRnB3SdEQtsvi8G8D8MIDS8zz+J7HxrAaQYw
+         YVvyIg5Ow5CKCEX78RBQOB6Pdu48pkjSSv/h2Y3ipDc4agEfX9PjVnK8RlrNenS8wBEp
+         VrjQ==
+X-Forwarded-Encrypted: i=1; AJvYcCV9rq1lkzSlriDPx4WqJh8lEBpXwext531dCtLwEqpnaxg6Mf6KZCLQnPamC6SUxETniiHaFhoaYOGgVcD14pauNUDkxmYagN/Fj8+/0KgtLtQX
+X-Gm-Message-State: AOJu0Yxil9oSDcoK+1KSrYpLRntbq+fiNp7OcX55tW7KBhBcGFaIcaId
+	nLuTQnduWggJXCUoLfc6zxqDb4Wxh0/5gs3T4qlsvhqeDeyqoxAmLCjQ2lSRyF4ytFnempwavjI
+	efEXPOY5kEG8ou+oimzfTWVh4HrkJ+eu+doGFxA==
+X-Google-Smtp-Source: AGHT+IHIMCINiS4Rm3W7vEHXnxoinnBVVMUXT21CaUFl/K9jprbEih1fz56tIA0O4ev2Ijok+dKJMkYRTsYw4QOpIww=
+X-Received: by 2002:a05:690c:ed4:b0:61a:e9f6:2b1b with SMTP id
+ 00721157ae682-622aff774d9mr145019207b3.8.1715633492884; Mon, 13 May 2024
+ 13:51:32 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="aZdOAVgj7H5otCBg"
-Content-Disposition: inline
-In-Reply-To: <6796f082-dfbe-45dc-bd01-3c9b4ac73865@collabora.com>
+References: <20240504-pinctrl-cleanup-v2-0-26c5f2dc1181@nxp.com>
+ <20240504-pinctrl-cleanup-v2-7-26c5f2dc1181@nxp.com> <CAMuHMdUD=1rpns_mLF2rMM-x5EnOK7TExaJxoJVkbXjVz1H8uQ@mail.gmail.com>
+In-Reply-To: <CAMuHMdUD=1rpns_mLF2rMM-x5EnOK7TExaJxoJVkbXjVz1H8uQ@mail.gmail.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Mon, 13 May 2024 22:51:21 +0200
+Message-ID: <CACRpkdaUecnwvHFdtGkuM80SObvXpXZkWGYoUMgnNHcvObYF0g@mail.gmail.com>
+Subject: Re: [PATCH v2 07/20] pinctrl: renesas: Use scope based of_node_put() cleanups
+To: Geert Uytterhoeven <geert@linux-m68k.org>
+Cc: "Peng Fan (OSS)" <peng.fan@oss.nxp.com>, Thierry Reding <thierry.reding@gmail.com>, 
+	Jonathan Hunter <jonathanh@nvidia.com>, Dvorkin Dmitry <dvorkin@tibbo.com>, Wells Lu <wellslutw@gmail.com>, 
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+	Emil Renner Berthing <kernel@esmil.dk>, Jianlong Huang <jianlong.huang@starfivetech.com>, 
+	Hal Feng <hal.feng@starfivetech.com>, Orson Zhai <orsonzhai@gmail.com>, 
+	Baolin Wang <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>, 
+	Viresh Kumar <vireshk@kernel.org>, Shiraz Hashim <shiraz.linux.kernel@gmail.com>, soc@kernel.org, 
+	Krzysztof Kozlowski <krzk@kernel.org>, Sylwester Nawrocki <s.nawrocki@samsung.com>, 
+	Alim Akhtar <alim.akhtar@samsung.com>, Geert Uytterhoeven <geert+renesas@glider.be>, 
+	Patrice Chotard <patrice.chotard@foss.st.com>, Heiko Stuebner <heiko@sntech.de>, 
+	Damien Le Moal <dlemoal@kernel.org>, Ludovic Desroches <ludovic.desroches@microchip.com>, 
+	Nicolas Ferre <nicolas.ferre@microchip.com>, 
+	Alexandre Belloni <alexandre.belloni@bootlin.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
+	Dong Aisheng <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>, 
+	Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Chester Lin <chester62515@gmail.com>, 
+	Matthias Brugger <mbrugger@suse.com>, Ghennadi Procopciuc <ghennadi.procopciuc@oss.nxp.com>, 
+	Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Sascha Hauer <s.hauer@pengutronix.de>, Andrew Jeffery <andrew@codeconstruct.com.au>, 
+	Joel Stanley <joel@jms.id.au>, Dan Carpenter <dan.carpenter@linaro.org>, 
+	Tony Lindgren <tony@atomide.com>, Stephen Warren <swarren@wwwdotorg.org>, linux-gpio@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-tegra@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, 
+	linux-stm32@st-md-mailman.stormreply.com, linux-samsung-soc@vger.kernel.org, 
+	linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-riscv@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	imx@lists.linux.dev, linux-aspeed@lists.ozlabs.org, openbmc@lists.ozlabs.org, 
+	Peng Fan <peng.fan@nxp.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240513_092836_639443_2E4827B9 
-X-CRM114-Status: GOOD (  21.83  )
+X-CRM114-CacheID: sfid-20240513_135136_509835_D90A8FD7 
+X-CRM114-Status: GOOD (  12.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,85 +118,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Mon, May 13, 2024 at 1:59=E2=80=AFPM Geert Uytterhoeven <geert@linux-m68=
+k.org> wrote:
+> On Sat, May 4, 2024 at 3:14=E2=80=AFPM Peng Fan (OSS) <peng.fan@oss.nxp.c=
+om> wrote:
+> > From: Peng Fan <peng.fan@nxp.com>
+> >
+> > Use scope based of_node_put() cleanup to simplify code.
+> >
+> > Signed-off-by: Peng Fan <peng.fan@nxp.com>
+>
+> Thanks for your patch!
+>
+> Reviewed-by: Geert Uytterhoeven <geert+renesas@glider.be>
+> Acked-by: Geert Uytterhoeven <geert+renesas@glider.be>
 
---aZdOAVgj7H5otCBg
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Does this go into the Renesas patch stack?
 
-On Mon, May 13, 2024 at 03:44:00PM +0200, AngeloGioacchino Del Regno wrote:
-> Il 13/05/24 08:15, CK Hu (=E8=83=A1=E4=BF=8A=E5=85=89) ha scritto:
-> > On Fri, 2024-05-10 at 12:14 +0200, AngeloGioacchino Del Regno wrote:
-> > > Il 10/05/24 11:34, CK Hu (=E8=83=A1=E4=BF=8A=E5=85=89) ha scritto:
-> > > > On Thu, 2024-05-09 at 11:27 +0200, AngeloGioacchino Del Regno
-> > > > wrote:
-> > > > > Il 09/05/24 07:42, CK Hu (=E8=83=A1=E4=BF=8A=E5=85=89) ha scritto:
-> > > > > > On Wed, 2024-05-08 at 15:03 +0200, AngeloGioacchino Del Regno
-> > > > > > wrote:
-> > > > > > > Il 08/05/24 09:19, CK Hu (=E8=83=A1=E4=BF=8A=E5=85=89) ha scr=
-itto:
-> > > > > > > > On Tue, 2024-05-07 at 16:07 +0200, AngeloGioacchino Del
-> > > > > > > > Regno
-> > > > > > > > wrote:
-> > > > > > > > > Il 07/05/24 08:59, CK Hu (=E8=83=A1=E4=BF=8A=E5=85=89) ha=
- scritto:
-> > > > > > > > > > On Thu, 2024-05-02 at 10:50 +0200, AngeloGioacchino Del
-> > > > > > > > > > Regno
-> > > > > > > > > > wrote:
-> > > > > > > > > > > Il 25/04/24 04:23, CK Hu (=E8=83=A1=E4=BF=8A=E5=85=89=
-) ha scritto:
-> > > > > > > > > > > > Hi, Angelo:
-> > > > > > > > > > > >=20
-> > > > > > > > > > > > On Tue, 2024-04-09 at 14:02 +0200, AngeloGioacchino
-> > > > > > > > > > > > Del
-> > > > > > > > > > > > Regno
-> > > > > > > > > > > > wrote:
-> > > > > > > > > > > > > Document OF graph on MMSYS/VDOSYS: this supports
-> > > > > > > > > > > > > up
-> > > > > > > > > > > > > to
-> > > > > > > > > > > > > three
-> > > > > > > > > > > > > DDP
-> > > > > > > > > > > > > paths
-> > > > > > > > > > > > > per HW instance (so potentially up to six
-> > > > > > > > > > > > > displays
-> > > > > > > > > > > > > for
-> > > > > > > > > > > > > multi-
-> > > > > > > > > > > > > vdo
-> > > > > > > > > > > > > SoCs).
-> > > > > > > > > > > > >=20
-> > > > > > > > > > > > > The MMSYS or VDOSYS is always the first component
-> > > > > > > > > > > > > in
-> > > > > > > > > > > > > the
-> > > > > > > > > > > > > DDP
-> > > > > > > > > > > > > pipeline,
-> > > > > > > > > > > > > so it only supports an output port with multiple
-> > > > > > > > > > > > > endpoints -
-> > > > > > > > > > > > > where
-> > > > > > > > > > > > > each
-> > > > > > > > > > > > > endpoint defines the starting point for one of
-> > > > > > > > > > > > > the
-> > > > > > > > > > > > > (currently
-> > > > > > > > > > > > > three)
-> > > > > > > > > > > > > possible hardware paths.
-> > > > > > > > > > > > >=20
-> > > > > > > > > > > > > Signed-off-by: AngeloGioacchino Del Regno <
-> > > > > > > > > > > > > angelogioacchino.delregno@collabora.com>
+I think the patch stands fine without the rest of the series.
 
-One of you guys, probably =E8=83=A1=E4=BF=8A=E5=85=89, has a mail client th=
-at is completely
-mangling these quotes. Can you try to fix that please? It makes reading
-the thread unfun :/
-
---aZdOAVgj7H5otCBg
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZkI/rQAKCRB4tDGHoIJi
-0jwnAP9uirCN5nWb54TXI+oti65ABU7175drHSW8qsorNLLmJAD+LES8EPnVXHkZ
-ntqNSxhNBnabta4KQYednD8SAoWwyAw=
-=uI9h
------END PGP SIGNATURE-----
-
---aZdOAVgj7H5otCBg--
+Yours,
+Linus Walleij
 
