@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A457C25B74
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 May 2024 14:35:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44238C25B10
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 May 2024 16:13:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:
-	Content-Type:Content-Transfer-Encoding:Subject:Cc:To:From:Date:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=PFnpTfOL55B98whOBYqeX5GtqS8lO3C48yZIUQx7zyc=; b=fc6vRWS+XtQRmg2GBOAKgC2aW3
-	J0mE4KzJ59ISIhBhHrf66nUPK8RKfDTILK03pjr25VUYgCvc1GJfp0XKERmD9Fv48NSkIfGwXQIyF
-	quMlXWqTycS78xXqY7MEhnaALzqqpQFfD1fyxE2ImuIfvk9jISUeKp4ztq/xo7i+LUhSohjZrvaHA
-	k6qRGij0IMQczbos+zArBK0403L2dj1dPsUCnkJ+NKHdiQFaI/3Ln4W2g5cbY13quT5gteVqifIeZ
-	oA29+hY35JPXVzmzJONJXiDmn9Kz2lX7hXZ5KVS8TInKrJMvYMz0sBvVcbyJvmtCq61/E2wymlsUx
-	YD9rV3FA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=LOVFZJ+BqcOUrfYAc+t3JTl1Px9e1RzXz+g9BZGFk4g=; b=42sAGj1potikjSC/nIQZdgXgRg
+	P+C2POC0GZajZv+VnET9D9OEOM5BvNK9+zbLYZKtTG0ytbWR1bucUxVYLgHLBEx1kdIIZNt86QVGg
+	OJ/rGngtyteW9DsMsNcZLd52L3cvAjCl58XNvqJwESJGRrWk4lzhhldkHColvyk7i4pR+ppqKhUcc
+	rYC3WwQ28ND2YZ6dQn55/wWSpfW6d8A+ZFFn684YGgE3LeW6b94e7PeZBhwe9KFu99OGLH4AhfRYS
+	c94ZfkEnUXVao3vZvgz3nVBp3bnHK08L2eGX7WbSzHqXvShQpSWRaw6DQj3f2BnU+NdJ2QoOTAauN
+	+/aVqNdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s6Wlm-0000000DCw1-3hGH;
-	Mon, 13 May 2024 14:35:14 +0000
-Received: from m16.mail.163.com ([220.197.31.4])
-	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s6Wlj-0000000DCu7-3qQb
+	id 1s6YIk-0000000DU19-1GRp;
+	Mon, 13 May 2024 16:13:22 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1s6YIe-0000000DTuA-1wu2
 	for linux-mediatek@lists.infradead.org;
-	Mon, 13 May 2024 14:35:13 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Date:From:Subject:Content-Type:MIME-Version:
-	Message-ID; bh=9nzg/fErxEjKWjyhShJtIW1S2P310lBM8cdNG0yqw2E=; b=S
-	q//C1p7vO9sEZTIzIOaq5C79zEs67w1lOgXscsJi2RfqBaGaAGTChO1TTrjDwk0i
-	bWm1rtp0gHw2qnFB9fQo4WdclAZpvefL0GX30KgT3oVok01B8IDg+Hc4S0J98bqZ
-	0ZVOpEWhGclYEweVc9mJIgCJy40l3qa3zUAw7ry9UY=
-Received: from congei42$163.com ( [159.226.94.118] ) by
- ajax-webmail-wmsvr-40-139 (Coremail) ; Mon, 13 May 2024 22:34:45 +0800
- (CST)
-X-Originating-IP: [159.226.94.118]
-Date: Mon, 13 May 2024 22:34:45 +0800 (CST)
-From: sicong <congei42@163.com>
-To: nbd@nbd.name, lorenzo@kernel.org, ryder.lee@mediatek.com, 
-	shayne.chen@mediatek.com, sean.wang@mediatek.com, kvalo@kernel.org, 
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com
-Cc: linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH v1] wifi: mt76: mt7615: fix null pointer dereference bug
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20230109(dcb5de15)
- Copyright (c) 2002-2024 www.mailtech.cn 163com
-X-NTES-SC: AL_Qu2aB/qav0Aj4yOdYOkfm0YUj+44Wsa4uvgk2YJeOpt4jBHo2yEbXHxAJUH3z96DCxCKmxuUSSZ39+txcKNgZYAKsjYvNC++oOzKkizu8n3qqQ==
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset=GBK
+	Mon, 13 May 2024 16:13:20 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id E52CBCE0F21;
+	Mon, 13 May 2024 16:13:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CBBA6C2BD11;
+	Mon, 13 May 2024 16:13:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1715616792;
+	bh=9X9buD5qIepHwJgVEc7Tyvi2IGtdfBBEoBZf+F32eEw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=e4T9yt8zd7VwONxhyB9dqukJEUzFjzdKvhaeSeqHS1SazgSP6+4gca6CZSNOZZwLF
+	 6AV3Gsf1pSE/BUQhM/uxyqztiDVqDanKO/8K3WjtMObBq44p9+svVN76dEdrVwHafy
+	 KcSKVZTjUzaiEc9LjNyhijFGEQtsJa9nBC/Pt5Wgv5Ze4CzfWKKmbIRFlLIw40nqMh
+	 OY4SL+jq1vruxkYZGruP4RxAWSC/nmL7iwW0E/U+0tETVov3iZL5eKtNK2T7FVo9NP
+	 GOIxTsh4cXLnAbfC9aD3dO9ClndE+kV8tdSK8me3ZBBoUFaOCDlfd+fyql1qm3cwX3
+	 A6eovMVw1wJiw==
+Date: Mon, 13 May 2024 18:13:08 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: sicong <congei42@163.com>
+Cc: nbd@nbd.name, ryder.lee@mediatek.com, shayne.chen@mediatek.com,
+	sean.wang@mediatek.com, kvalo@kernel.org, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v1] wifi: mt76: mt7615: fix null pointer dereference bug
+Message-ID: <ZkI8FPNxOQAUFeyU@lore-desk>
+References: <6206228d.bdee.18f72609cf4.Coremail.congei42@163.com>
 MIME-Version: 1.0
-Message-ID: <6206228d.bdee.18f72609cf4.Coremail.congei42@163.com>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: _____wD3f8MFJUJmWPQkAA--.696W
-X-CM-SenderInfo: 5frqwvrlusqiywtou0bp/1tbizQfd8mV4HLKD6AAKs3
-X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="Rp72CSPL56MRPJkI"
+Content-Disposition: inline
+In-Reply-To: <6206228d.bdee.18f72609cf4.Coremail.congei42@163.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240513_073512_452830_EB19B77C 
-X-CRM114-Status: UNSURE (   6.54  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240513_091316_831837_E3D3B7D8 
+X-CRM114-Status: GOOD (  15.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,21 +74,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-RnVuY3Rpb24gbXQ3NjE1X2NvcmVkdW1wX3dvcmsgd2lsbCBjYWxsIHZ6YWxsb2MgdG8gYWxsb2Nh
-dGUgYSBsYXJnZSBhbW91bnQKb2YgbWVtb3J5IHNwYWNlLCB0aGUgc2l6ZSBvZiB3aGljaCBpcyAx
-MzAwS0IuIFRoZXJlIHNob3VsZCBiZSBhIG51bGwKcG9pbnRlciBjaGVjayBhZnRlciB2emFsbG9j
-LiBPdGhlcndpc2UsIHdoZW4gdGhlIG1lbW9yeSBhbGxvY2F0aW9uIGZhaWxzCmFuZCByZXR1cm5z
-IE5VTEwsIHRoZSBmdW5jdGlvbiB3aWxsIGNhdXNlIGtlcm5lbCBjcmFzaC4KCkZpeGVzOiBkZTc5
-MTA5ODQ1OWQgKCJ3aWZpOiBtdDc2OiBtdDc2MTU6IGZpeCBudWxsIHBvaW50ZXIgZGVyZWZlcmVu
-Y2UgYnVnIikKU2lnbmVkLW9mZi1ieTogU2ljb25nIEh1YW5nIDxjb25nZWk0MkAxNjMuY29tPgot
-LS0KIGRyaXZlcnMvbmV0L3dpcmVsZXNzL21lZGlhdGVrL210NzYvbXQ3NjE1L21hYy5jIHwgMyAr
-KysKIDEgZmlsZSBjaGFuZ2VkLCAzIGluc2VydGlvbnMoKykKCmRpZmYgLS1naXQgYS9kcml2ZXJz
-L25ldC93aXJlbGVzcy9tZWRpYXRlay9tdDc2L210NzYxNS9tYWMuYyBiL2RyaXZlcnMvbmV0L3dp
-cmVsZXNzL21lZGlhdGVrL210NzYvbXQ3NjE1L21hYy5jCmluZGV4IDdiYTc4OTgzNGU4ZC4uMDRl
-YjUyOTA0NTIwIDEwMDY0NAotLS0gYS9kcml2ZXJzL25ldC93aXJlbGVzcy9tZWRpYXRlay9tdDc2
-L210NzYxNS9tYWMuYworKysgYi9kcml2ZXJzL25ldC93aXJlbGVzcy9tZWRpYXRlay9tdDc2L210
-NzYxNS9tYWMuYwpAQCAtMjM0MSw2ICsyMzQxLDkgQEAgdm9pZCBtdDc2MTVfY29yZWR1bXBfd29y
-ayhzdHJ1Y3Qgd29ya19zdHJ1Y3QgKndvcmspCiAJfQogCiAJZHVtcCA9IHZ6YWxsb2MoTVQ3Nl9D
-T05OQUNfQ09SRURVTVBfU1opOworCWlmKCFkdW1wKQorCQlyZXR1cm47CisKIAlkYXRhID0gZHVt
-cDsKIAogCXdoaWxlICh0cnVlKSB7Ci0tIAoyLjM0LjE=
+
+--Rp72CSPL56MRPJkI
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+> Function mt7615_coredump_work will call vzalloc to allocate a large amount
+> of memory space, the size of which is 1300KB. There should be a null
+> pointer check after vzalloc. Otherwise, when the memory allocation fails
+> and returns NULL, the function will cause kernel crash.
+>=20
+> Fixes: de791098459d ("wifi: mt76: mt7615: fix null pointer dereference bu=
+g")
+> Signed-off-by: Sicong Huang <congei42@163.com>
+> ---
+>  drivers/net/wireless/mediatek/mt76/mt7615/mac.c | 3 +++
+>  1 file changed, 3 insertions(+)
+>=20
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c b/drivers/ne=
+t/wireless/mediatek/mt76/mt7615/mac.c
+> index 7ba789834e8d..04eb52904520 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
+> @@ -2341,6 +2341,9 @@ void mt7615_coredump_work(struct work_struct *work)
+>  	}
+> =20
+>  	dump =3D vzalloc(MT76_CONNAC_COREDUMP_SZ);
+> +	if(!dump)
+> +		return;
+> +
+>  	data =3D dump;
+> =20
+>  	while (true) {
+> --=20
+> 2.34.1
+
+I guess the kernel will not crash here since we check the dump pointer in t=
+he
+while loop, we will just flush the msg_list queue.
+
+Regards,
+Lorenzo
+
+--Rp72CSPL56MRPJkI
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZkI8FAAKCRA6cBh0uS2t
+rH1PAQC/NKiI0N81cddugxpBRaXspuRUoF19NUeJfif9gvHdsgD/VuFcYRSNEGoW
+GUwuGu32v2UJhfMKmHJtcJPVj6QV9g0=
+=8TYy
+-----END PGP SIGNATURE-----
+
+--Rp72CSPL56MRPJkI--
 
