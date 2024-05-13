@@ -4,94 +4,199 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 821FBC25B10
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 May 2024 13:44:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FD6AC25B78
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 May 2024 13:50:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=f8UCIiXHZ4C4OMFvZQrVXI6jBzM4QCEKDOuhDQSn0bU=; b=M1KGG4vo/TGqW2tsya3kr7MZUx
-	26rzTxpjwy+02w/pJ7EJqPD4fEUV4Sy422lILlbmznxmF9YF9anvybksSUPeI9BqIaVor49va/QF1
-	6QwwPsVVc3RcX0MlzO1Uf3WvN92ByWXGgvvK/l3dPj4Bl1YVDSQsFQ/F9gfjozdJC1yVTfJKx2aJh
-	DYp977ieVF0DJW4WuznbNiyNntTwc1JjYIflEr/Dt63/CR6ynTeuMlAUtzDkUlkDcSpjFA4vZDsKF
-	hsSj4NZUIt7cG1Ikr8mqyIO/KfpP3YdIWBy3XptSlHSAGZ57LtKS0FGZ/wx1+ILRFiu1lN5vj23UG
-	H4VAItjg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hWpe+YZqBfCXQ7SfhnFz+kRqr4edaqfBeOgEHzl+C8M=; b=bFCs3lD1lUFjUNdfsmhloJAR1W
+	kM8WociDKkSEXH7sf7BTt/jRtRQVIa4j7EgRzU0E+Yo9AoqiAz6gjQ4FfVgjyKonsR02DleHIlLF+
+	HNk4y5ARLtiLLRYd37si6KgMnISrmpzErDS+HiHXzMnPDstwUvWTSY63LyiBvhppkssP1Qg745SPQ
+	PTOhmq+vaV+XlZqMvITjAjzVglSkwyU3Vjvad3COwQ5jD0x+dcmcey+Vwkqihde+WGYHgzJ0rdiIc
+	0MswdNNDEEek6dSLMVlYRZjLlJLEKibTFddW1cwwi8ysbpNu+UgeNF/7vyYAyh266t6H73qLNNlyF
+	NuChgWtA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s6VyQ-0000000D2kW-2qKI;
-	Mon, 13 May 2024 13:44:14 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1s6W4q-0000000D4bF-02Ex;
+	Mon, 13 May 2024 13:50:52 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s6VyG-0000000D2fO-49q9;
-	Mon, 13 May 2024 13:44:07 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1715607843;
-	bh=a5H0jlS71mdc4liz2uLWoLh2l0Gk0zvJip1OKV1VVbE=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=UY0ETdfByL++VWKlf7ilG0MZvNY47NkIAkodSqKJWR+lIUtx1kOGwbaWy6m0bfGDG
-	 andoJLIZdw67JX3JfvUPtC4gR0mLmVK43p9qnN+FF0c9eERtjvOqt8zaai61V6rlB2
-	 PbfYxV0rX+t6Cr1yCsP4Qib/eD6MX8iyOKfkZX6Ds/SnPh9Yzcj0PdJIqy+N7J9YS2
-	 1O6FoMWBKcDjCiS0zUvwuBVw3C5QmwoLFS1SszhV9hHcLwWegzCGVj+A85rQVhD4Az
-	 B484s28nE4myrG5EHSlyLNwFCSCP9E0KroR7JDcVj8bS3b7ok4lh5WpA3F4YmrH0zI
-	 4Y7nppRiWU+kw==
-Received: from [IPV6:fd00::2a:39ce] (cola.collaboradmins.com [IPv6:2a01:4f8:1c1c:5717::1])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 7DC633782017;
-	Mon, 13 May 2024 13:44:01 +0000 (UTC)
-Message-ID: <6796f082-dfbe-45dc-bd01-3c9b4ac73865@collabora.com>
-Date: Mon, 13 May 2024 15:44:00 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/3] dt-bindings: arm: mediatek: mmsys: Add OF graph
- support for board path
-To: =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
- "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "wenst@chromium.org" <wenst@chromium.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "tzimmermann@suse.de" <tzimmermann@suse.de>,
- =?UTF-8?B?U2hhd24gU3VuZyAo5a6L5a2d6KyZKQ==?= <Shawn.Sung@mediatek.com>,
- "mripard@kernel.org" <mripard@kernel.org>,
- =?UTF-8?B?Sml0YW8gU2hpICjnn7PorrDmtpsp?= <jitao.shi@mediatek.com>,
- "daniel@ffwll.ch" <daniel@ffwll.ch>,
- "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
- "conor+dt@kernel.org" <conor+dt@kernel.org>,
- "maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
- "robh@kernel.org" <robh@kernel.org>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- "airlied@gmail.com" <airlied@gmail.com>,
- "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
- "kernel@collabora.com" <kernel@collabora.com>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- =?UTF-8?B?WXUtY2hhbmcgTGVlICjmnY7nprnnkosp?= <Yu-chang.Lee@mediatek.com>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
-References: <20240409120211.321153-1-angelogioacchino.delregno@collabora.com>
- <20240409120211.321153-3-angelogioacchino.delregno@collabora.com>
- <aa7e3bcf70383e563a65919f924ec2e5e4cd778c.camel@mediatek.com>
- <becdc2e5-4a1d-4280-b6f8-78d4903be283@collabora.com>
- <4dfb09b9c437ab2baa0898eca13a43fd7475047a.camel@mediatek.com>
- <46347f5d-e09b-4e83-a5a2-e12407f442a4@collabora.com>
- <847e1a84b532956f697d24014d684c86f0b76f03.camel@mediatek.com>
- <cbf73111-a6cf-47da-9563-89d49fbdb17d@collabora.com>
- <ee721fd3339f8b3a25464ca57ca192343a51e514.camel@mediatek.com>
- <34caf545-1fc9-4905-a82f-2596f053b3ff@collabora.com>
- <de23d55dd1c84bf9b04119014c3785189ce6f9da.camel@mediatek.com>
- <c384946a-e151-4afb-82f7-d31a5a26aff6@collabora.com>
- <5b0ed6dd7190496d70fe625ac9b4539eb0181c0a.camel@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+	id 1s6W4m-0000000D4Zn-3Psa;
+	Mon, 13 May 2024 13:50:50 +0000
+X-UUID: cafc4b66112f11efa8f1cd58ee6c2400-20240513
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=hWpe+YZqBfCXQ7SfhnFz+kRqr4edaqfBeOgEHzl+C8M=;
+	b=lTR11aoW/NNIKCOa/DcP7GPXqCW3IROicgJGDd/woQZAKGTbS/nRJjgEWZP9xcviBpsjA9PzWVGw3xPvOR1XpuA4AXB4OI6vfsmVNyCoipuv9qgOvech7yXxM9Z2r14IGKYAuOvF87UNIIvAok3CpK1IgwMQyHqJTQL4IrQfvEk=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.38,REQID:9442d9ce-c58b-4306-8818-8e3bf04c23d8,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:82c5f88,CLOUDID:6fa5b292-e2c0-40b0-a8fe-7c7e47299109,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: cafc4b66112f11efa8f1cd58ee6c2400-20240513
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <liankun.yang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1153391063; Mon, 13 May 2024 06:50:43 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Mon, 13 May 2024 21:50:40 +0800
+Received: from APC01-SG2-obe.outbound.protection.outlook.com (172.21.101.237)
+ by mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Mon, 13 May 2024 21:50:40 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=IpP17X3U6rSFd/c1MGBhB+upCRRlCe4iqORWihePYZslJFfOmJLQMDw9xpAvlZa1bweJf6BirmIOQSp3jWL6PsXxjsyTgFOc6oKPhBOpW1OocRYhttiwN98VZwfVL+XqRDo0gDaOxMUJWdxsTxUmNchEQ2G6W6e45T1DFVSj/f0ydue2wvqZwiYHfkYEWfGjmlhQUB33KZ3hQl47V2udA+jgcpdOPOb0TthnplXAnbIXJf+YRiT+WjrYycdB2SLzv00jgfPnas+7Jt2KO6fqhtXtrqaWXqK5385WV63cMjGQCgY71ChffnM91+v0LlS5pilBpWlv73FUJGsOCuOBWw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=hWpe+YZqBfCXQ7SfhnFz+kRqr4edaqfBeOgEHzl+C8M=;
+ b=T5qwjahm6fzM+KdJR+J+HnORzx2BbZQVlndx0c5IlhHMXbGqfLVqMwzjtSa2l/ur5hkwypwTBEDkvsoKhzMAXd8jrTXb94T/QzlKH3XCRBO2A6wesgZtAMrzW1/QzH/DYq52Hypg8gHBn5FrEqsisema1KUF4XtA9dXeMWUKnHM2a4xlIf0sTxTE7LDhSltmMV5ZUHU5PidVr3Us9QsqmMC9fP9n+Olgfa0Y05GrSqbeLBgmrfuT0GvKlrWKN3Lb46fnp//P28/BKtcWVzVyaL5oXWpvTK/B1aV5zznSVIebUpPnhj3EmkQjsiYK2Buq/9fiDdgM/TNyFIonxZGLkA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=hWpe+YZqBfCXQ7SfhnFz+kRqr4edaqfBeOgEHzl+C8M=;
+ b=eBwCHqeBS3tPGMIASf4QD2ZbXnTc2cdoukcEfVs8fjMDaV6XEa9zN6nhq3ob5vmmHqVyDFlF5+IVnRdmvwXKTVXAKAAxW/YhCEzfDALK62dxeoj37G4cfyIWQpBFMUAT5w2aTvM58eBjvfJPvWRQ/gFpM8mihlxERovHUNFYVe4=
+Received: from TYZPR03MB5760.apcprd03.prod.outlook.com (2603:1096:400:70::13)
+ by SI2PR03MB6857.apcprd03.prod.outlook.com (2603:1096:4:19e::13) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7587.22; Mon, 13 May
+ 2024 13:50:38 +0000
+Received: from TYZPR03MB5760.apcprd03.prod.outlook.com
+ ([fe80::10a4:6aaa:bf25:96f3]) by TYZPR03MB5760.apcprd03.prod.outlook.com
+ ([fe80::10a4:6aaa:bf25:96f3%5]) with mapi id 15.20.7587.021; Mon, 13 May 2024
+ 13:50:38 +0000
+From: =?utf-8?B?TElBTktVTiBZQU5HICjmnajov57lnaQp?= <Liankun.Yang@mediatek.com>
+To: =?utf-8?B?TWFjIFNoZW4gKOayiOS/iik=?= <Mac.Shen@mediatek.com>,
+	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
+	=?utf-8?B?Sml0YW8gU2hpICjnn7PorrDmtpsp?= <jitao.shi@mediatek.com>,
+	"daniel@ffwll.ch" <daniel@ffwll.ch>, "p.zabel@pengutronix.de"
+	<p.zabel@pengutronix.de>, "airlied@gmail.com" <airlied@gmail.com>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"angelogioacchino.delregno@collabora.com"
+	<angelogioacchino.delregno@collabora.com>
+CC: "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
+	<linux-mediatek@lists.infradead.org>, "linux-kernel@vger.kernel.org"
+	<linux-kernel@vger.kernel.org>
+Subject: Re: [PATCH v1 1/1] Support YUV422 for DPTX.
+Thread-Topic: [PATCH v1 1/1] Support YUV422 for DPTX.
+Thread-Index: AQHaooBUIGH6W/xvtUqO0jWVw5iHGrGQPkOAgAT1zAA=
+Date: Mon, 13 May 2024 13:50:37 +0000
+Message-ID: <86238b30a01b4790837d5b56e1970ccc3af72c9f.camel@mediatek.com>
+References: <20240510021810.19302-1-liankun.yang@mediatek.com>
+	 <8d624845-7450-485c-8000-0194bcf56458@collabora.com>
+In-Reply-To: <8d624845-7450-485c-8000-0194bcf56458@collabora.com>
+Accept-Language: zh-CN, en-US
 Content-Language: en-US
-In-Reply-To: <5b0ed6dd7190496d70fe625ac9b4539eb0181c0a.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: TYZPR03MB5760:EE_|SI2PR03MB6857:EE_
+x-ms-office365-filtering-correlation-id: e5070f46-0a67-41ea-eb0b-08dc7353abbc
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;ARA:13230031|376005|366007|1800799015|7416005|38070700009;
+x-microsoft-antispam-message-info: =?utf-8?B?N3RST2d5RGhzb2o3NTRHL1JodkExMnFTWUM3aklHRDlGV1Y0VlIxTkdqRWpp?=
+ =?utf-8?B?WVZHWEw2VDhRNWVDdXowYzNtTWswMEY3K0JhektoQ1orUm9SMEVob3lobngw?=
+ =?utf-8?B?Rm5hazZjUHBmbzJlRmljNy9mTm1zNmx6eGs3N242ZHdRRXludmJESlJNT0xp?=
+ =?utf-8?B?MDVSR21YUWZxVEdUM09hYzI2ZURiLyt1QTNGSDdtajdtaHU4cVhGMHBWaEV6?=
+ =?utf-8?B?OWN1elhyMlFuNWg2MVdYREdvbE1DaFRBUnJlYmFITnpYb1ZMRWp4c1N1dlBh?=
+ =?utf-8?B?N2pFRkVxN3VLSEJLTVh4ZGpONEEvOFNuLzZ4NCtoODc1VEh0ZTlCSVREYmZF?=
+ =?utf-8?B?TzFhdmdGSlNYWFY3RGVtbHovME9MNmRiakVWdElZU3FJZG9BSjgzcEk4V3Nr?=
+ =?utf-8?B?UU93UFRGSVhkOG0wUGY0WW9VcW44bWMrbzhwU2dWaDVhMmRzUXRET3U0WGFV?=
+ =?utf-8?B?M0puRFl0VlNVK1pkaGNUUWNoWm9jbWpSbHAxazhEbnUwM2tUY1VvWGVHeXRB?=
+ =?utf-8?B?bmNFRWpDT2lJUm5uU3htN3cvMC9KcWJ5dGo3TzVoL1MvL0NSWGM4NjJORUhi?=
+ =?utf-8?B?aUo5TTZrcnorNXpuQU8xTUpabnR5eXoyWmNkdmVKeERkTWtxajdyMVF5RVNP?=
+ =?utf-8?B?WXFhS1ZvRUhqb0FSbFJOT1JIZXVwU1BKOHpWRy9ndnhHZ002VWRxUVdmMXRi?=
+ =?utf-8?B?U0VNNmVURGd0Z1FnOVR2aVROYjJEVjRFWm9Nc1VjNlhXUitkQ1R6UTg1RmY2?=
+ =?utf-8?B?eVRQeEZBZTlIZXBxK3NLa2xwMzBiNmdvcjRoZ0hYSEtKQWNaWGpEQmEzdEMr?=
+ =?utf-8?B?WUxkNnk1WjhBemtPdlVaVzNOaitVSHVmazhROEN2dmFZQ2RCekVGMlhrdWJL?=
+ =?utf-8?B?bk15Rmk1enJka1M2d1JGa1NaOVRKa09HMFMxeXNlWExxZzVQOWp2azV4b3JB?=
+ =?utf-8?B?ZHpLOW05TXd4Z2h0ZGozR3F4dFNKVnl4OVFlSVMyVnBpeVRobWJxQ3FiYVRj?=
+ =?utf-8?B?RDk1dHpWTk9YdExLcmtMTkhQaTVxMjYwRmxEZDFseVo3cnZhL1EwWVlIZVA5?=
+ =?utf-8?B?Vi92SDVUQUZaUUpaOGMvV25WaWpEMC9YRGFpWlNCS09pWThXSHBLM2NYSmpm?=
+ =?utf-8?B?R3lTNXM0U1pDeVdoaG1pNWdJaGlDM1VBWWt4eFpVSTVUOGdIZ0dzOHdRR0w4?=
+ =?utf-8?B?eThkZU1FUFF1UEFHM1F0dnk1K1kyMmdrdXY2d2gwb0FCdGRBaTc0WHZwRncz?=
+ =?utf-8?B?Z213aVVvOU1LRStPcXdFMFVYZTZrWHRPNlJ0ckhac3dkdXhXUFV1YlhtQTZG?=
+ =?utf-8?B?bmFoakExYTBhSmhSU09ZcTJWbnJCa2RJb3JWbDFZeW5QOHJCZmNmcjUvbEMz?=
+ =?utf-8?B?QTM5cHJLeWtWSDFPa0IyUWg0NGt6aW9hd0UzRWlhZ2F5UEtpa1VKMG9vQmw0?=
+ =?utf-8?B?SWJqWjBub0tLZ0t5Lys2SEFiaTNQKy91NkxhbGxEcXM2Q0FNUzhCTGdUWXZh?=
+ =?utf-8?B?SUpNY3lmNi9CMk13dXkveW9PZmNXakZrU2czZ0pHUEhrbHkyL1NRR0NQdENE?=
+ =?utf-8?B?LzZWbFJJeUhkTDNuM2FWMVJsbVRlV1FHL2Fxak5JYWl0VzZWbjlITDJiYXBo?=
+ =?utf-8?B?Wk0ydGI0b1R6cnRKQXAxaWdtMGx6alBRMTNuaCtkRTBQaUZyUGsrSEJPWGUw?=
+ =?utf-8?B?cmpSU003cnJpV3FVcW96NDNpSFZTWlBGbC9ubFYxNVdlTjlvY0ZHWGllcUFY?=
+ =?utf-8?Q?d3EqpE3x6zluVSdwAxeG7OiiOGojGwtZIZsbY60?=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB5760.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(376005)(366007)(1800799015)(7416005)(38070700009);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?WWIvb25lWUp1TFI0UDVZb1ZoYVlpWEdvbU45M0h6TXFnVGFRVzN6aE94TlBt?=
+ =?utf-8?B?NGJlc2tsT0pkQ2UwMXQ5ZUFVeFBMaVlBTDdnMmsreEllL3lZd3VxT0hhZjZl?=
+ =?utf-8?B?M0FjaEhVSDZPdkFuRW9FekczV3hPOFhjNEtBVEx6cTU0eVEvY2gvQVRCeWtR?=
+ =?utf-8?B?TE9IRlExRGVZQ0JMWXQ4NTR2UHAvV05DblRlWTd5ei9Ud3kzeENPWGhtWUFL?=
+ =?utf-8?B?WXBGK1RzUXR4c2JVVzRueTNCZ1JzZmpvTGdpR29GbjNEOXc4dVBZTGV0NjVp?=
+ =?utf-8?B?ZlNmOHlkc3VhUVNqaURoQnpEMEZYMFlwMmpIcDErSkNHdFFIK0doa3VCUjZD?=
+ =?utf-8?B?bGlmMkVodUxPUGdJQjNIRncyeVNpN0huMmlPMG5rdnFxTERwK1p4UWQ1UkNs?=
+ =?utf-8?B?TUdZKytFMGtUaW5Lcnh6MU1jSU9aSVp5b1dlWVdGLzkySG5JWVJJOC9nVEJu?=
+ =?utf-8?B?SERWKzJLNC81em9iZTlPMElzRTlVc0tFaVlHN2l3QzZLd0dqL2N3M3JtaFNx?=
+ =?utf-8?B?STJzUTlnbG5DTThhbnpJRFpLaTVZZVlyVVdxYlBDR0hHMW9ZeWc0dUs5NmZn?=
+ =?utf-8?B?OXh0dUxLdWE4NTlTbk9tRmVVZ1EvSFM0RnhUdlVXV2RhYzJjK3NIc0p5V2tG?=
+ =?utf-8?B?UlB2SEFKeEJacklkaWV1endYRytSZnNpZi92OHpRZkhzbmswM1lRNDVGcHp0?=
+ =?utf-8?B?aXdRSzV6eEg0empnWHk1dHJRYW9tVWhSUXBTTjBNbGw4ZzNYbVZVcXQyemNt?=
+ =?utf-8?B?QnJ1TmRLVUJzVVZxbzN6K0xLSE9MVHVFa3VmV0ZKU0RadkJaeHlvb3VOSFZk?=
+ =?utf-8?B?TWJ4bnFvWVdFZk1oNklxb0VEN3ZpRnZuZ2FFQ0hDa2NLc00rMlhJa2x5OHhX?=
+ =?utf-8?B?YVNhUDk5UmJIL2c5Y2hnUm5NWXY4NnMzRy9NMHBhQTJLNkVCa1lRTDFpZnVi?=
+ =?utf-8?B?NndOUXVieitqazJpQnpaaGtyMFdYSjJrYnFBQUJtMlFkRDVvQW1UdDJWWlk2?=
+ =?utf-8?B?eDR3S3RmbkdsMnJ0NlZOS3Z0akxCSUlKQjFobHBCWDhpTjhNMUNlV2pVZFBY?=
+ =?utf-8?B?VGtmNm1GRW5NaWJPSnBuSU5SbHh0ZjhXTnV1Q29yc0c3UHEwb20wdjBpU2pC?=
+ =?utf-8?B?cG0zUE1uMDBxV3hxV3lsakFUZzVkTHE1MUhER3krOEpwSUFzOGlaRHhLdE5a?=
+ =?utf-8?B?dS9UVG1XbnJKMUE0dC92UTY0RHdFSEtCMkJVTHcyZjF1NWZvcm44blJRNzdY?=
+ =?utf-8?B?dzAvV3N3b09Yajl1a0xRK3lJYzlaUjh3eDZnWi83NEpGWnp2emNMNnJoM28v?=
+ =?utf-8?B?MXE5enRTc0ZTQlJiTGpBb3ZNdWNEQklYZ2w1SlZIbkY5b005Wnoza1ZYVkFw?=
+ =?utf-8?B?d0tHbE1TRDFNaThRVUlVSUxBNWpkTDI4b3JYcW0rejE2TTZXcjhiRG9HemlL?=
+ =?utf-8?B?QWZWTk9DUE5kUWNXUUx3a0I2NEVkMFBLL3RwUmk0RVE3cTdnakFmdm5wVHdZ?=
+ =?utf-8?B?VCtScHRQcStPaHJHa05UMFVMZGZteHlMdmg5WEFWbWpkQW5JcVdEMjF4UWps?=
+ =?utf-8?B?WllZR1ZST3ErTUhwYlBWNGl6SlRCUWw3SVZTd2JCRy9OZENsRzdvdWgvQS85?=
+ =?utf-8?B?V0haYlg3azF3VkQ1Ung4YnBGUzIrZFhTYnd3ekhjZTRFbWp6YzBuYkdXbEkx?=
+ =?utf-8?B?Mll3c29KS29jcGtYWXd3VjJuVktNQlE5L3Jrb0k5TnRFOWZBR1dXV1dERFZE?=
+ =?utf-8?B?RWpiZm9ER1Z6M0lPdkV1dU5GYmtiRGYwSDJIaEx4TUFNSm5aN21FR1oxdFlU?=
+ =?utf-8?B?KzJoc2l4WlBwQTZNV3BGTzA2b2paeURxMkJkeW1sUG55SWFCS3dabHBXZEdl?=
+ =?utf-8?B?SmpISllNb2xNNGg2UUtTYVZtRm5FaERROU42MFRIVk5WYTMvZSswTXd5bm5Q?=
+ =?utf-8?B?cHJpbFJWdXBpNlkvSmJQU1JFbzViWllGWVRIRDdha1VOL2xkY1Y5UUMzdzZM?=
+ =?utf-8?B?R0JsVFgzcnBPaktNZ2h2a3RraDE5d3p5OFpiMDEweTVRRERqZkRMeXVRYnBR?=
+ =?utf-8?B?QW5TMmlqekJEY2UzYk9NSGFsWDFINGFzbzExSzlVS05TdUE5TTFXb0RBM2lV?=
+ =?utf-8?B?KzBha1BvbERhc0ZlNGNCZ1FnVjB5QzBQOVZWU0ZzektmNW5HdGRURTNmQzBu?=
+ =?utf-8?B?QUE9PQ==?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <32031FDAD619744DA80F3CDBF6790EE7@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB5760.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: e5070f46-0a67-41ea-eb0b-08dc7353abbc
+X-MS-Exchange-CrossTenant-originalarrivaltime: 13 May 2024 13:50:37.9988
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: +tNFAxYnt+809af4EL46aPQCc8Dn5HlbhXzMFOBnDRHpz7BuozfBm2+gxhSS2+yYb/Sfy6IcBjTll9/Yl5+mvgxrjc1JeAPg180DbNDAtYs=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SI2PR03MB6857
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240513_064405_383007_2275B6AC 
-X-CRM114-Status: GOOD (  28.27  )
+X-CRM114-CacheID: sfid-20240513_065048_898322_5A943B0D 
+X-CRM114-Status: GOOD (  20.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,693 +211,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 13/05/24 08:15, CK Hu (胡俊光) ha scritto:
-> On Fri, 2024-05-10 at 12:14 +0200, AngeloGioacchino Del Regno wrote:
->> Il 10/05/24 11:34, CK Hu (胡俊光) ha scritto:
->>> On Thu, 2024-05-09 at 11:27 +0200, AngeloGioacchino Del Regno
->>> wrote:
->>>> Il 09/05/24 07:42, CK Hu (胡俊光) ha scritto:
->>>>> On Wed, 2024-05-08 at 15:03 +0200, AngeloGioacchino Del Regno
->>>>> wrote:
->>>>>> Il 08/05/24 09:19, CK Hu (胡俊光) ha scritto:
->>>>>>> On Tue, 2024-05-07 at 16:07 +0200, AngeloGioacchino Del
->>>>>>> Regno
->>>>>>> wrote:
->>>>>>>> Il 07/05/24 08:59, CK Hu (胡俊光) ha scritto:
->>>>>>>>> On Thu, 2024-05-02 at 10:50 +0200, AngeloGioacchino Del
->>>>>>>>> Regno
->>>>>>>>> wrote:
->>>>>>>>>> Il 25/04/24 04:23, CK Hu (胡俊光) ha scritto:
->>>>>>>>>>> Hi, Angelo:
->>>>>>>>>>>
->>>>>>>>>>> On Tue, 2024-04-09 at 14:02 +0200, AngeloGioacchino
->>>>>>>>>>> Del
->>>>>>>>>>> Regno
->>>>>>>>>>> wrote:
->>>>>>>>>>>> Document OF graph on MMSYS/VDOSYS: this supports
->>>>>>>>>>>> up
->>>>>>>>>>>> to
->>>>>>>>>>>> three
->>>>>>>>>>>> DDP
->>>>>>>>>>>> paths
->>>>>>>>>>>> per HW instance (so potentially up to six
->>>>>>>>>>>> displays
->>>>>>>>>>>> for
->>>>>>>>>>>> multi-
->>>>>>>>>>>> vdo
->>>>>>>>>>>> SoCs).
->>>>>>>>>>>>
->>>>>>>>>>>> The MMSYS or VDOSYS is always the first component
->>>>>>>>>>>> in
->>>>>>>>>>>> the
->>>>>>>>>>>> DDP
->>>>>>>>>>>> pipeline,
->>>>>>>>>>>> so it only supports an output port with multiple
->>>>>>>>>>>> endpoints -
->>>>>>>>>>>> where
->>>>>>>>>>>> each
->>>>>>>>>>>> endpoint defines the starting point for one of
->>>>>>>>>>>> the
->>>>>>>>>>>> (currently
->>>>>>>>>>>> three)
->>>>>>>>>>>> possible hardware paths.
->>>>>>>>>>>>
->>>>>>>>>>>> Signed-off-by: AngeloGioacchino Del Regno <
->>>>>>>>>>>> angelogioacchino.delregno@collabora.com>
->>>>>>>>>>>> ---
->>>>>>>>>>>>        .../bindings/arm/mediatek/mediatek,mmsys.ya
->>>>>>>>>>>> ml |
->>>>>>>>>>>> 23
->>>>>>>>>>>> +++++++++++++++++++
->>>>>>>>>>>>        1 file changed, 23 insertions(+)
->>>>>>>>>>>>
->>>>>>>>>>>> diff --git
->>>>>>>>>>>> a/Documentation/devicetree/bindings/arm/mediatek/
->>>>>>>>>>>> medi
->>>>>>>>>>>> atek
->>>>>>>>>>>> ,mms
->>>>>>>>>>>> ys.y
->>>>>>>>>>>> aml
->>>>>>>>>>>> b/Documentation/devicetree/bindings/arm/mediatek/
->>>>>>>>>>>> medi
->>>>>>>>>>>> atek
->>>>>>>>>>>> ,mms
->>>>>>>>>>>> ys.y
->>>>>>>>>>>> aml
->>>>>>>>>>>> index b3c6888c1457..4e9acd966aa5 100644
->>>>>>>>>>>> ---
->>>>>>>>>>>> a/Documentation/devicetree/bindings/arm/mediatek/
->>>>>>>>>>>> medi
->>>>>>>>>>>> atek
->>>>>>>>>>>> ,mms
->>>>>>>>>>>> ys.y
->>>>>>>>>>>> aml
->>>>>>>>>>>> +++
->>>>>>>>>>>> b/Documentation/devicetree/bindings/arm/mediatek/
->>>>>>>>>>>> medi
->>>>>>>>>>>> atek
->>>>>>>>>>>> ,mms
->>>>>>>>>>>> ys.y
->>>>>>>>>>>> aml
->>>>>>>>>>>> @@ -93,6 +93,29 @@ properties:
->>>>>>>>>>>>          '#reset-cells':
->>>>>>>>>>>>            const: 1
->>>>>>>>>>>>        
->>>>>>>>>>>> +  port:
->>>>>>>>>>>> +    $ref: /schemas/graph.yaml#/properties/port
->>>>>>>>>>>> +    description:
->>>>>>>>>>>> +      Output port node. This port connects the
->>>>>>>>>>>> MMSYS/VDOSYS
->>>>>>>>>>>> output
->>>>>>>>>>>> to
->>>>>>>>>>>> +      the first component of one display
->>>>>>>>>>>> pipeline,
->>>>>>>>>>>> for
->>>>>>>>>>>> example
->>>>>>>>>>>> one
->>>>>>>>>>>> of
->>>>>>>>>>>> +      the available OVL or RDMA blocks.
->>>>>>>>>>>> +      Some MediaTek SoCs support up to three
->>>>>>>>>>>> display
->>>>>>>>>>>> outputs
->>>>>>>>>>>> per
->>>>>>>>>>>> MMSYS.
->>>>>>>>>>>> +    properties:
->>>>>>>>>>>> +      endpoint@0:
->>>>>>>>>>>> +        $ref:
->>>>>>>>>>>> /schemas/graph.yaml#/properties/endpoint
->>>>>>>>>>>> +        description: Output to the primary
->>>>>>>>>>>> display
->>>>>>>>>>>> pipeline
->>>>>>>>>>>> +
->>>>>>>>>>>> +      endpoint@1:
->>>>>>>>>>>> +        $ref:
->>>>>>>>>>>> /schemas/graph.yaml#/properties/endpoint
->>>>>>>>>>>> +        description: Output to the secondary
->>>>>>>>>>>> display
->>>>>>>>>>>> pipeline
->>>>>>>>>>>> +
->>>>>>>>>>>> +      endpoint@2:
->>>>>>>>>>>> +        $ref:
->>>>>>>>>>>> /schemas/graph.yaml#/properties/endpoint
->>>>>>>>>>>> +        description: Output to the tertiary
->>>>>>>>>>>> display
->>>>>>>>>>>> pipeline
->>>>>>>>>>>> +
->>>>>>>>>>>> +    required:
->>>>>>>>>>>> +      - endpoint@0
->>>>>>>>>>>> +
->>>>>>>>>>>
->>>>>>>>>>> mmsys/vdosys does not output data to the first
->>>>>>>>>>> component of
->>>>>>>>>>> display
->>>>>>>>>>> pipeline, so this connection looks 'virtual'. Shall
->>>>>>>>>>> we
->>>>>>>>>>> add
->>>>>>>>>>> something
->>>>>>>>>>> virtual in device tree? You add this in order to
->>>>>>>>>>> decide
->>>>>>>>>>> which
->>>>>>>>>>> pipeline
->>>>>>>>>>> is 1st, 2nd, 3rd, but for device it don't care
->>>>>>>>>>> which
->>>>>>>>>>> one is
->>>>>>>>>>> first.
->>>>>>>>>>> In
->>>>>>>>>>> computer, software could change which display is
->>>>>>>>>>> the
->>>>>>>>>>> primary
->>>>>>>>>>> display.
->>>>>>>>>>> I'm not sure it's good to decide display order in
->>>>>>>>>>> device
->>>>>>>>>>> tree?
->>>>>>>>>>>
->>>>>>>>>>
->>>>>>>>>> Devicetree describes hardware, so nothing virtual can
->>>>>>>>>> be
->>>>>>>>>> present
->>>>>>>>>> -
->>>>>>>>>> and in any case,
->>>>>>>>>> the primary/secondary/tertiary pipeline is in
->>>>>>>>>> relation to
->>>>>>>>>> MM/VDO
->>>>>>>>>> SYS,
->>>>>>>>>> not referred
->>>>>>>>>> to software.
->>>>>>>>>>
->>>>>>>>>> Better explaining, the primary pipeline is not
->>>>>>>>>> necessarily
->>>>>>>>>> the
->>>>>>>>>> primary display in
->>>>>>>>>> DRM terms: that's a concept that is completely
->>>>>>>>>> detached
->>>>>>>>>> from
->>>>>>>>>> the
->>>>>>>>>> scope of this
->>>>>>>>>> series and this graph - and it's something that shall
->>>>>>>>>> be
->>>>>>>>>> managed
->>>>>>>>>> solely by the
->>>>>>>>>> driver (mediatek-drm in this case).
->>>>>>>>>>
->>>>>>>>>> Coming back to the connection looking, but *not*
->>>>>>>>>> being
->>>>>>>>>> virtual:
->>>>>>>>>> the
->>>>>>>>>> sense here is
->>>>>>>>>> that the MM/VDOSYS blocks are used in the display
->>>>>>>>>> pipeline to
->>>>>>>>>> "stitch" together
->>>>>>>>>> the various display pipeline hardware blocks, or,
->>>>>>>>>> said
->>>>>>>>>> differently,
->>>>>>>>>> setting up the
->>>>>>>>>> routing between all of those (P.S.:
->>>>>>>>>> mmsys_mtxxxx_routing_table!)
->>>>>>>>>> through the VDO
->>>>>>>>>> Input Selection (VDOx_SEL_IN) or Output Selection
->>>>>>>>>> (VDOx_SEL_OUT)
->>>>>>>>>> and
->>>>>>>>>> with the
->>>>>>>>>> assistance of the VDO Multiple Output Mask
->>>>>>>>>> (VDOx_MOUT)
->>>>>>>>>> for
->>>>>>>>>> the
->>>>>>>>>> multiple outputs
->>>>>>>>>> usecase, both of which, are described by this graph.
->>>>>>>>>
->>>>>>>>> I agree this part, but this is related to display
->>>>>>>>> device OF
->>>>>>>>> graph.
->>>>>>>>> These display device would output video data from one
->>>>>>>>> device
->>>>>>>>> and
->>>>>>>>> input
->>>>>>>>> to another video device. These video device would not
->>>>>>>>> input
->>>>>>>>> or
->>>>>>>>> output
->>>>>>>>> video data to mmsys/vdosys.
->>>>>>>>>
->>>>>>>>>>
->>>>>>>>>> This means that the VDOSYS is really the "master" of
->>>>>>>>>> the
->>>>>>>>>> display
->>>>>>>>>> pipeline since
->>>>>>>>>> everything gets enabled, mixed and matched from there
->>>>>>>>>> -
->>>>>>>>>> and
->>>>>>>>>> that's in
->>>>>>>>>> the sense
->>>>>>>>>> of hardware operation, so we are *really* (and not
->>>>>>>>>> virtually!)
->>>>>>>>>> flipping switches.
->>>>>>>>>
->>>>>>>>> I agree mmsys/vdosys is master of video pipeline, so
->>>>>>>>> let's
->>>>>>>>> define
->>>>>>>>> what
->>>>>>>>> the port in mmsys/vdosys is. If the port means the
->>>>>>>>> master
->>>>>>>>> relationship,
->>>>>>>>> mmsys/vdosys should output port to every display
->>>>>>>>> device. Or
->>>>>>>>> use
->>>>>>>>> a
->>>>>>>>> simply way to show the master relation ship
->>>>>>>>>
->>>>>>>>> mmsys-subdev = <&ovl0, &rdma0, &color0, ...>, <&ovl1,
->>>>>>>>> &rdma1,
->>>>>>>>> &color1,
->>>>>>>>> ...>;
->>>>>>>>>
->>>>>>>>
->>>>>>>> There's no need to list all of the VDO0/VDO1/mmsys
->>>>>>>> devices in
->>>>>>>> one
->>>>>>>> big
->>>>>>>> array
->>>>>>>> property, because the actual possible devices can be
->>>>>>>> defined:
->>>>>>>>        1. In the bindings; and
->>>>>>>>        2. In the actual OF graph that we write for each
->>>>>>>> SoC+board
->>>>>>>> combination.
->>>>>>>>
->>>>>>>> A graph cannot contain a connection to a device that
->>>>>>>> cannot
->>>>>>>> be
->>>>>>>> connected to
->>>>>>>> the previous, so, your "mmsys-subdev" list can be
->>>>>>>> retrieved
->>>>>>>> by
->>>>>>>> looking at the
->>>>>>>> graph:
->>>>>>>>       - Start from VDO0/1 or MMSYS
->>>>>>>>       - Walk through (visually, even) OUTPUT ports
->>>>>>>>         - VDO0 (read output ep) -> ovl0 (read output ep)
->>>>>>>> ->
->>>>>>>> rdma0
->>>>>>>> (read
->>>>>>>> output ep) ->
->>>>>>>>           color0 (...) -> etc
->>>>>>>>       - Nothing more - it's all defined there.
->>>>>>>>
->>>>>>>>>
->>>>>>>>> Another problem is how to group display device? If two
->>>>>>>>> pipeline
->>>>>>>>> could
->>>>>>>>> be route to the same display interface, such as
->>>>>>>>>
->>>>>>>>> rdma0 -> dsi
->>>>>>>>> rdma1 -> dsi
->>>>>>>>>
->>>>>>>>> Would this be single group?
->>>>>>>>
->>>>>>>> There are multiple ways of doing this, but one that comes
->>>>>>>> to
->>>>>>>> my
->>>>>>>> mind
->>>>>>>> right now and
->>>>>>>> that looks clean as well is the following:
->>>>>>>>
->>>>>>>> ovl0@ef01 {
->>>>>>>>         .....
->>>>>>>>        ports {
->>>>>>>>          port@0 {
->>>>>>>>            reg = <0>;
->>>>>>>>            ovl0_in: endpoint {
->>>>>>>>              remote-endpoint = <&vdosys0_out>;
->>>>>>>>            };
->>>>>>>>          };
->>>>>>>
->>>>>>> I'm not sure how do you define this port from OVL to
->>>>>>> vdosys. If
->>>>>>> this
->>>>>>> port means 'master relationship', others could add port in
->>>>>>> COLOR to
->>>>>>> point to vdosys because COLOR and vdosys has the 'master
->>>>>>> relationship'
->>>>>>> and I could not reject this. So we need more specific
->>>>>>> definition of
->>>>>>> this port.
->>>>>>
->>>>>>
->>>>>>> Only the 'first' device in pipeline could have this port?
->>>>>>
->>>>>> Correct. Only the first device in a pipeline - and this is
->>>>>> actually a
->>>>>> restriction
->>>>>> that the generic binding definition of port already gives, in
->>>>>> a
->>>>>> way.
->>>>>>
->>>>>>
->>>>>>> In mt8173, one pipeline is
->>>>>>>
->>>>>>> ovl -> color -> aal -> od -> rdma -> ufo -> dsi
->>>>>>>
->>>>>>> But rdma has an option to read data from od or directly
->>>>>>> from
->>>>>>> DRAM.
->>>>>>> If
->>>>>>> from DRAM, the pipeline would be changed to
->>>>>>>
->>>>>>> rdma -> ufo -> dsi
->>>>>>>
->>>>>>>
->>>>>>> So it's confused which one is 'first'.
->>>>>>
->>>>>> That's why the pipeline is *board-specific* and not soc-
->>>>>> generic!
->>>>>>
->>>>>> And what you described is *exactly* the reason why I'm adding
->>>>>> support
->>>>>> for the
->>>>>> OF graphs in mediatek-drm: specifying the correct pipeline
->>>>>> for
->>>>>> each
->>>>>> board as per
->>>>>> what each board wants to use (said differently: for each
->>>>>> board's
->>>>>> *capabilities*).
->>>>>>
->>>>>> So, if on a certain board you want to skip OD, you can hook
->>>>>> RDMA
->>>>>> up
->>>>>> directly to
->>>>>> MMSYS/VDOSYS.
->>>>>>
->>>>>> In MT8173, one pipeline for one board uses endpoints IN/OUT
->>>>>> like
->>>>>> this:
->>>>>>
->>>>>> MMSYS -> OVL -> COLOR -> AAL -> OD -> RDMA -> UFO -> DSI
->>>>>>
->>>>>> and for another board, endpoints will be like
->>>>>>
->>>>>> MMSYS -> RDMA -> UFO -> DSI
->>>>>>
->>>>>> ...which is the exact same as you described, and I think that
->>>>>> your
->>>>>> confusion comes
->>>>>> from the fact that you didn't put MMSYS at the beginning of
->>>>>> the
->>>>>> pipeline :-)
->>>>>
->>>>> In one board, both OVL and RDMA could switch dynamically.
->>>>> Because
->>>>> each
->>>>> one could be the first in one board, mmsys point to both ovl
->>>>> and
->>>>> rdma?
->>>>>
->>>>
->>>> No.
->>>>
->>>> MMSYS would still point ONLY to OVL, because OVL is the "earliest
->>>> point"
->>>> of the pipeline that this one board does support.
->>>>
->>>> In that case, RDMA being present at a later point in the pipeline
->>>> does not
->>>> matter and does not prevent us from *temporarily* skipping OVL-
->>>> COLOR-
->>>> AAL-OD
->>>> and going MMSYS->RDMA *directly*.
->>>>
->>>> Switching dynamically is a driver duty and will be 100% possible
->>>> (as
->>>> much
->>>> as it is right now) to dynamically switch OVL and RDMA as long as
->>>> both are
->>>> present in the pipeline.
->>>>
->>>> With this exact pipeline:
->>>>
->>>> MMSYS -> OVL -> COLOR -> AAL -> OD -> RDMA -> UFO -> DSI
->>>>
->>>> the driver _can switch dynamically_ between MMSYS->OVL->...->RDMA
->>>> and
->>>> MMSYS->RDMA as the driver itself *is allowed to* temporarily
->>>> ignore
->>>> part
->>>> of the pipeline.
->>>>
->>>> Please note that, in case it is needed (trust me on this: it's
->>>> not
->>>> needed)
->>>> a custom property in the endpoint node can always be introduced
->>>> later, so
->>>> that you can declare a node like
->>>>
->>>>             endpoint@0 {
->>>>               remote-endpoint = <&ovl0_in>;
->>>>               mediatek,short-path = <&rdma0_in>;
->>>>             };
->>>>
->>>> ...but again, that's never going to be needed, as the driver
->>>> already
->>>> does
->>>> have knowledge of the fact that RDMA is in the pipeline, so it is
->>>> possible
->>>> to simply do a temporary override in the driver.
->>>>
->>>> What the OF Graph support does is to build the same arrays, that
->>>> we
->>>> currently
->>>> have hardcoded in mediatek-drm, by reading from device tree.
->>>>
->>>> Nothing else and nothing more - for now.
->>>>
->>>> Having the OF Graph support makes us able to also add new dual-
->>>> path
->>>> support
->>>> with more complicated connections than the current ones, without
->>>> any
->>>> problem
->>>> and, in many cases, without even modifying the bindings from what
->>>> I
->>>> provided
->>>> in this series.
->>>
->>> OK, please add the information we discussed into binding document
->>> to
->>> prevent anyone misusing this binding.
->>>
->>
->> Sorry CK, but the binding *does* already have this information inside
->> - not
->> in terms of "phrases", but in terms of restrictions of the binding...
->>
->> If you want, though, I can add this information in the description of
->> the
->> commit that is adding this binding, is that okay for you?
-> 
-> I think what we discuss could be translated to restrictions. This is a
-> restriction description:
-> 
-> If one component has option to be first component or middle component
-> of one pipeline, it's treated as middle component not first component.
-> 
-> In mt8195, there are 8 vdo1_rdma. So each one is the first component of
-> display pipeline. So the maximum display pipe number is not 3, maybe 8
-> or more.
-> 
-
-I will add the information in the commit description for the next version
-of this series.
-
-Thanks,
-Angelo
-
-> Regards,
-> CK
-> 
-> 
->>
->> Thanks,
->> Angelo
->>
->>> Regards,
->>> CK
->>>
->>>>
->>>> Cheers,
->>>> Angelo
->>>>
->>>>> Regards,
->>>>> CK
->>>>>
->>>>>>
->>>>>>
->>>>>>
->>>>>>
->>>>>> In case you need any *temporary override* on any board that
->>>>>> defines a
->>>>>> pipeline like
->>>>>>
->>>>>> MMSYS -> OVL -> COLOR -> AAL -> OD -> RDMA -> UFO -> DSI
->>>>>>
->>>>>> so that the pipeline *temporarily* becomes (for power
->>>>>> management,
->>>>>> or
->>>>>> for any other
->>>>>> reason) RDMA -> UFO -> DSI .... that's not a concern: the
->>>>>> graph
->>>>>> is
->>>>>> present, and it
->>>>>> is used to tell to the driver what is the regular pipeline to
->>>>>> use.
->>>>>> Eventual temporary overrides can be managed transparently
->>>>>> inside
->>>>>> of
->>>>>> the driver with
->>>>>> C code and no changes to the devicetree are required.
->>>>>>
->>>>>>
->>>>>>> I don't know how to decide which device could point to
->>>>>>> mmsys/vdosys. So
->>>>>>> please give a specific definition.
->>>>>>>
->>>>>>
->>>>>> Nothing points TO mmsys/vdosys. It is mmsys/vdosys pointing
->>>>>> to a
->>>>>> device.
->>>>>>
->>>>>> So, mmsys/vdosys must point to the *first device in the
->>>>>> pipeline*.
->>>>>>
->>>>>> Any other doubt?
->>>>>>
->>>>>> Cheers,
->>>>>> Angelo
->>>>>>
->>>>>>> Regards,
->>>>>>> CK
->>>>>>>
->>>>>>>>
->>>>>>>>          port@1 {
->>>>>>>>            reg = <1>;
->>>>>>>>            ovl0_out0: endpoint@0 {
->>>>>>>>              remote-endpoint = <&rdma0_in>;
->>>>>>>>            };
->>>>>>>>            ovl0_out1: endpoint@1 {
->>>>>>>>              remote-endpoint = <&rdma1_in>;
->>>>>>>>            };
->>>>>>>>          };
->>>>>>>>        };
->>>>>>>> };
->>>>>>>>
->>>>>>>> rdma0@1234 {
->>>>>>>>         .....
->>>>>>>>        ports {
->>>>>>>>          port@0 {
->>>>>>>>            reg = <0>;
->>>>>>>>            rdma0_in: endpoint {
->>>>>>>>              remote-endpoint = <&ovl0_out0>; /* assuming
->>>>>>>> ovl0
->>>>>>>> outputs to
->>>>>>>> rdma0...*/
->>>>>>>>            };
->>>>>>>>          };
->>>>>>>>          port@1 {
->>>>>>>>            reg = <1>;
->>>>>>>>            rdma0_out: endpoint@1 {
->>>>>>>>              remote-endpoint = <&dsi_dual_intf0_in>;
->>>>>>>>            };
->>>>>>>>          };
->>>>>>>>        };
->>>>>>>> };
->>>>>>>>
->>>>>>>>
->>>>>>>> rdma1@5678 {
->>>>>>>>         .....
->>>>>>>>        ports {
->>>>>>>>          port@0 {
->>>>>>>>            reg = <0>;
->>>>>>>>            rdma1_in: endpoint {
->>>>>>>>              /* assuming ovl0 outputs to rdma1 as well...
->>>>>>>> can
->>>>>>>> be
->>>>>>>> something else. */
->>>>>>>>              remote-endpoint = <&ovl0_out1>;
->>>>>>>>            };
->>>>>>>>          };
->>>>>>>>          port@1 {
->>>>>>>>            reg = <1>;
->>>>>>>>            rdma1_out: endpoint {
->>>>>>>>              remote-endpoint = <&dsi_dual_intf1_in>;
->>>>>>>>            };
->>>>>>>>          };
->>>>>>>>        };
->>>>>>>> };
->>>>>>>>
->>>>>>>>
->>>>>>>> dsi@9abcd {
->>>>>>>>         .....
->>>>>>>>        ports {
->>>>>>>>          port@0 {
->>>>>>>>            reg = <0>;
->>>>>>>>            /* Where endpoint@0 could be always DSI LEFT
->>>>>>>> CTRL */
->>>>>>>>            dsi_dual_intf0_in: endpoint@0 {
->>>>>>>>              remote-endpoint = <&rdma0_out>;
->>>>>>>>            };
->>>>>>>>            /* ...and @1 could be always DSI RIGHT CTRL */
->>>>>>>>            dsi_dual_intf1_in: endpoint@1 {
->>>>>>>>              remote-endpoint = <&rdma1_out>;
->>>>>>>>            };
->>>>>>>>          };
->>>>>>>>
->>>>>>>>          port@1 {
->>>>>>>>            reg = <1>;
->>>>>>>>            dsi0_out: endpoint {
->>>>>>>>              remote-endpoint = <&dsi_panel_in>;
->>>>>>>>            };
->>>>>>>>          };
->>>>>>>>        };
->>>>>>>> };
->>>>>>>>
->>>>>>>> ...for a dual-dsi panel, it'd be a similar graph.
->>>>>>>>
->>>>>>>> Cheers,
->>>>>>>> Angelo
->>>>>>>>
->>>>>>>>>
->>>>>>>>> mmsys-subdev = <&rdma0, &rdma1, &dsi>;
->>>>>>>>>
->>>>>>>>> Or two group?
->>>>>>>>>
->>>>>>>>> mmsys-subdev = <&rdma0, &dsi>, <&rdma1, &dsi>;
->>>>>>>>>
->>>>>>>>> I think we should clearly define this.
->>>>>>>>>
->>>>>>>>> Regards,
->>>>>>>>> CK
->>>>>>>>>
->>>>>>>>>>
->>>>>>>>>>
->>>>>>>>>> Cheers,
->>>>>>>>>> Angelo
->>>>>>>>>>
->>>>>>>>>>> Regards,
->>>>>>>>>>> CK
->>>>>>>>>>>
->>>>>>>>>>>
->>>>>>>>>>>>        required:
->>>>>>>>>>>>          - compatible
->>>>>>>>>>>>          - reg
->>>>>>>>>>
->>>>>>>>>>
->>>>>>>>
->>>>>>>>
->>>>>>>>
->>>>>>
->>>>>>
->>>>
->>>>
->>>>
->>
-
+T24gRnJpLCAyMDI0LTA1LTEwIGF0IDEyOjA1ICswMjAwLCBBbmdlbG9HaW9hY2NoaW5vIERlbCBS
+ZWdubyB3cm90ZToNCj4gSWwgMTAvMDUvMjQgMDQ6MTUsIExpYW5rdW4gWWFuZyBoYSBzY3JpdHRv
+Og0KPiA+IEFkanVzdCB0aGUgdHJhaW5pbmcgc2VxdWVuY2UuRGV0ZWN0cyB0aGUgYWN0dWFsIGxp
+bmsgY29uZGl0aW9uDQo+ID4gYW5kIGNhbGN1bGF0ZXMgdGhlIGJhbmR3aWR0aCB3aGVyZSB0aGUg
+cmVsZXZhbnQgcmVzb2x1dGlvbiByZXNpZGVzLg0KPiA+IA0KPiA+IFRoZSBiYW5kd2lkdGggaXMg
+cmVjYWxjdWxhdGVkIGFuZCBtb2RlcyB0aGF0IGV4Y2VlZCB0aGUgYmFuZHdpZHRoDQo+ID4gYXJl
+DQo+ID4gZmlsdGVyZWQuDQo+ID4gDQo+ID4gRXhhbXBsZSBNb2RpZnkgYmFuZHdpZHRoIGZpbHRl
+cmluZyByZXF1aXJlbWVudHMuDQo+ID4gDQo+ID4gU2lnbmVkLW9mZi1ieTogTGlhbmt1biBZYW5n
+IDxsaWFua3VuLnlhbmdAbWVkaWF0ZWsuY29tPg0KPiA+IC0tLQ0KPiA+ICAgZHJpdmVycy9ncHUv
+ZHJtL21lZGlhdGVrL210a19kcC5jIHwgODEgKysrKysrKysrKysrKysrKysrLS0tLS0tDQo+ID4g
+LS0tLS0tLQ0KPiA+ICAgMSBmaWxlIGNoYW5nZWQsIDQ2IGluc2VydGlvbnMoKyksIDM1IGRlbGV0
+aW9ucygtKQ0KPiA+IA0KPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
+bXRrX2RwLmMNCj4gPiBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHAuYw0KPiA+IGlu
+ZGV4IDIxMzZhNTk2ZWZhMS4uM2U2NDViZDZmZTI3IDEwMDY0NA0KPiA+IC0tLSBhL2RyaXZlcnMv
+Z3B1L2RybS9tZWRpYXRlay9tdGtfZHAuYw0KPiA+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRp
+YXRlay9tdGtfZHAuYw0KPiA+IEBAIC02Niw2ICs2NiwxMyBAQCBlbnVtIHsNCj4gPiAgIAlNVEtf
+RFBfQ0FMX01BWCwNCj4gPiAgIH07DQo+ID4gICANCj4gPiArZW51bSBtdGtfZHBfY29sb3JfZm9y
+bWF0IHsNCj4gPiArCU1US19EUF9DT0xPUl9GT1JNQVRfUkdCID0gMCwNCj4gPiArCU1US19EUF9D
+T0xPUl9GT1JNQVRfWVVWNDIyID0gMHgxLA0KPiA+ICsJTVRLX0RQX0NPTE9SX0ZPUk1BVF9ZVVY0
+NDQgPSAweDIsDQo+ID4gKwlNVEtfRFBfQ09MT1JfRk9STUFUX1lVVjQyMCA9IDB4MywNCj4gPiAr
+fTsNCj4gDQo+IFRoaXMgaXMgZ2l2aW5nIHRoZSBzYW1lIHZhbHVlcyBhcyBkcm1fZHAuaCwgaGVu
+Y2UgdW5uZWVkZWQuDQoNCkJlY2F1c2UgdXNpbmcgdGhlIHNhbWUgdmFsdWVzIGFzIGRybV9kcC5o
+IGlzIHdyb25nLEkgd2lsbCB1c2Ugb3RoZXINCm1ldGhvZHMgdG8gZGVhbCB3aXRoIHRoZSBwcm9i
+bGVtIGluIG5leHQgdmVyc2lvbi4NCg0KPiANCj4gPiArDQo+ID4gICBzdHJ1Y3QgbXRrX2RwX3Ry
+YWluX2luZm8gew0KPiA+ICAgCWJvb2wgc2lua19zc2M7DQo+ID4gICAJYm9vbCBjYWJsZV9wbHVn
+Z2VkX2luOw0KPiA+IEBAIC04NCw3ICs5MSw3IEBAIHN0cnVjdCBtdGtfZHBfYXVkaW9fY2ZnIHsN
+Cj4gPiAgIH07DQo+ID4gICANCj4gPiAgIHN0cnVjdCBtdGtfZHBfaW5mbyB7DQo+ID4gLQllbnVt
+IGRwX3BpeGVsZm9ybWF0IGZvcm1hdDsNCj4gPiArCWVudW0gbXRrX2RwX2NvbG9yX2Zvcm1hdCBm
+b3JtYXQ7DQo+ID4gICAJc3RydWN0IHZpZGVvbW9kZSB2bTsNCj4gPiAgIAlzdHJ1Y3QgbXRrX2Rw
+X2F1ZGlvX2NmZyBhdWRpb19jdXJfY2ZnOw0KPiA+ICAgfTsNCj4gPiBAQCAtNDU3LDcgKzQ2NCw3
+IEBAIHN0YXRpYyB2b2lkIG10a19kcF9zZXRfbXNhKHN0cnVjdCBtdGtfZHANCj4gPiAqbXRrX2Rw
+KQ0KPiANCj4gLi5zbmlwLi4NCj4gDQo+ID4gQEAgLTE4ODgsOSArMTg5NiwyOCBAQCBzdGF0aWMg
+aXJxcmV0dXJuX3QNCj4gPiBtdGtfZHBfaHBkX2V2ZW50X3RocmVhZChpbnQgaHBkLCB2b2lkICpk
+ZXYpDQo+ID4gICAJCQltZW1zZXQoJm10a19kcC0+aW5mby5hdWRpb19jdXJfY2ZnLCAwLA0KPiA+
+ICAgCQkJICAgICAgIHNpemVvZihtdGtfZHAtPmluZm8uYXVkaW9fY3VyX2NmZykpOw0KPiA+ICAg
+DQo+ID4gKwkJCW10a19kcC0+ZW5hYmxlZCA9IGZhbHNlOw0KPiA+ICsJCQkvKiBwb3dlciBvZmYg
+YXV4ICovDQo+ID4gKwkJCW10a19kcF91cGRhdGVfYml0cyhtdGtfZHAsDQo+ID4gTVRLX0RQX1RP
+UF9QV1JfU1RBVEUsDQo+ID4gKwkJCSAgICAgICBEUF9QV1JfU1RBVEVfQkFOREdBUF9UUExMLA0K
+PiA+ICsJCQkgICAgICAgRFBfUFdSX1NUQVRFX01BU0spOw0KPiA+ICsNCj4gDQo+IFRoaXMgY29t
+bWl0IGlzIG5vdCBldmVuIGJhc2VkIG9uIHVwc3RyZWFtLCBzbyB5b3UgaGF2ZW4ndCBldmVuIHRl
+c3RlZA0KPiBpdCB1cHN0cmVhbS4NCj4gDQo+IERvbid0IHNlbmQgdW50ZXN0ZWQgY29tbWl0cy4N
+Cj4gVGhlcmUncyBub3RoaW5nIHRvIHJldmlldyBoZXJlLg0KPiANCj4gUmVnYXJkcywNCj4gQW5n
+ZWxvDQo+IA0KDQpJIHdpbGwgZG8gaXQgYmFzZWQgb24gdXBzdHJlYW0gaW4gbmV4dCB2ZXJzaW9u
+Lg0KDQpUaGFuayB5b3UgdmVyeSBtdXNoIGZvciB5b3VyIGNvbW1lbnRzLg0KDQpCZXN0IFJlZ2Fy
+ZHMsDQpMaWFua3VuIFlhbmcNCg0KDQoNCg0K
 
