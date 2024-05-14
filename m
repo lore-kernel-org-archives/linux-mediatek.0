@@ -4,104 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC299C04FFE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 May 2024 08:07:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C725C04FFE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 May 2024 09:46:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mAZGt+1Rc/qtuBUqNnzX2rBGCR5XoalBEqWaRtcOihM=; b=OA5gAM5ao9oEeEGKUMRxEMjkoF
-	YH9VcGev8jJMLdHpqsDQ9y1Y+8B8VyTv5qu26gayxANLWEplFEwuusNRFMXEkzBbWuXyAm0af5BpC
-	oY0PnxDNuZXyXTRvi+1BkpGy3tEGtqpIB06G9HHq60r9dQWNk+7Xrb6u8GKy3YRtIsQM1jaiY626w
-	e8rO80Dh530GfKPhGpenBA4l3TcXLBV/hqEioJIBlm5AsLGb+lISZyAVohINRQH7obiN7lmn3Mm5n
-	rs3Ujl5aislgEjFfwR7JPX6yEW9NfHLnwNNvGWrG7yrEFN6gMxpwOhqLDRMVzWs+Et/NsfYqQy+Hw
-	GUsPWWPg==;
+	bh=IkB2CmWVoQi8nHsh1zrtwZs7auH/ln4/oBpNWO83qYA=; b=FW2N+K12xbC6bS19u4FfiwOA37
+	qDAaBR4Mn7kea13Ku8LUFq9ByzdJWLuYxay6NXu/4GYy47X06PuTGKkCUdDny5t9+KW5XY8RtpVn2
+	MVUpnTAz43RuCWsNJE8dGqNMHB5XtI/HxVGDzZ6F/Qzki9N7os5yfnEFbGbhZkPT6SCKT4UkmrYtd
+	tDhaly2uxulPZs+An7CrjlzFnrJUA6Lxw5zTahx52YCyaAL7eKZbi0O1Ue9kiNIrUI5iIGixixgsf
+	fodbS9UXFphNAqtZ9v5inTvixWeA1NRRU+oA6vrtDxAhUrvF+yC4h6BzQmHGRbwL4gZjcT8xxPLYt
+	8UlRV+OQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s6nC1-0000000FJJH-2Buz;
-	Tue, 14 May 2024 08:07:25 +0000
-Received: from mail-yw1-f172.google.com ([209.85.128.172])
+	id 1s6okB-0000000FUzX-1wjc;
+	Tue, 14 May 2024 09:46:47 +0000
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s6nBw-0000000FJHC-3RZJ;
-	Tue, 14 May 2024 08:07:22 +0000
-Received: by mail-yw1-f172.google.com with SMTP id 00721157ae682-61d35d266e7so62338997b3.1;
-        Tue, 14 May 2024 01:07:16 -0700 (PDT)
+	id 1s6ok7-0000000FUxT-0TOy
+	for linux-mediatek@lists.infradead.org;
+	Tue, 14 May 2024 09:46:45 +0000
+Received: by mail-wm1-x336.google.com with SMTP id 5b1f17b1804b1-41fd5dc03easo33266045e9.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 14 May 2024 02:46:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1715680000; x=1716284800; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :cc:to:from:subject:user-agent:mime-version:date:message-id:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=IkB2CmWVoQi8nHsh1zrtwZs7auH/ln4/oBpNWO83qYA=;
+        b=qUbS3zDHmDwJroGFAkJ+0Nnx1HlMq8XJbnUYn8d2jIrXYkQrYXGSN0QJg3TjFpOmFa
+         DOMLARLO+oA5V+GWGc9KgiBxO+JgX0pXJmB/0d+N7tK1p9Y53Y/unchR1r18zqxBoWvZ
+         NoQTbVU5qjGp2CZzujJzpvTobWil0nDPogpjUqH+G2UtIwfr43FWFPomMSNekN0UoX3o
+         gD9K0f2EglyxREM41I6nfflY3Ht1wZAVlU1cHaAAZeJFF26i+5QH0LVIrunFqlNHfe6R
+         jmzNTd8wkrpRgCWbzW9aVN83dciAAomyC6GSWYPj/0ThEgxjnrZbCo9eFIEtnj0Njogo
+         orkA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1715674035; x=1716278835;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=mAZGt+1Rc/qtuBUqNnzX2rBGCR5XoalBEqWaRtcOihM=;
-        b=FFcLdxYb0tPbtpGZmYOIGW/yg4rhFuOwO2/7dEULyIrBI67sQIUJS6hdcJHsTBFPqw
-         fgxPAZSSuds3pMbJiDAetZFcy65Kvy7wuGITm7d+D086elXZy6s4f4cAm5gbheveQk30
-         dc13yifvG+rHrYmeYbIA31tLum2MGAayQgBcPoKZBm5xP8UetB5/lycjHvu99xyDgo00
-         hOkWTzZUtnj4BYDmnvlDlPp9SCIpE/bdBPHVQAe5obM0eW9poQYoFe30NGNKpgrp7RrT
-         Ti/s03l2rpUWIbBvXUvh+b0VyEpZdjLSDwjEbiRM/o14C+Z1BxD1kgw2OPvGe6WhWzE8
-         i1qA==
-X-Forwarded-Encrypted: i=1; AJvYcCUXB9Lsu7+nw+9Pg3Gt08e9gYUlwTiXlCngKoJP6/kKNSg7S95iSgZwFFuA6HqihkjOjNiSSPQ0iisN9CUmH6Fq2ucartmDIKiGWGBXO+amtD7++72X1ny90rc3IVe1gKHqow9hZKSn1O5hOMn3ZZ1gqI6y3FsHT/bnUhsikuAzQsC6hAAiWTAmegjXP4bWCYni4wWOTbqUWzYOA0GsO5Zms7kDVfF3lqaCDn/7xoM7vKpszFqQx7i1t1tVACA=
-X-Gm-Message-State: AOJu0YwNkIA2ob+AiE/nIIcC6p3ZcdJC2RyoD8UZB7+kM5qvgldoa/JZ
-	3jus5b8+vTtM+N+OdmPBu2542OOyZdPo1b6oeDnfO4t5+g/uO0tiu7TUwImi
-X-Google-Smtp-Source: AGHT+IGFNanLRT/XPZ4PZ+CK9VZ/rBh3R2tSavFWZjiMapxky9clDrgK7yp4IXhgf7j6Jn01dhM3VQ==
-X-Received: by 2002:a81:ae55:0:b0:61b:3304:d29d with SMTP id 00721157ae682-622affc4efemr124366907b3.7.1715674034886;
-        Tue, 14 May 2024 01:07:14 -0700 (PDT)
-Received: from mail-yw1-f177.google.com (mail-yw1-f177.google.com. [209.85.128.177])
-        by smtp.gmail.com with ESMTPSA id 00721157ae682-6209e3793f5sm24817287b3.111.2024.05.14.01.07.14
+        d=1e100.net; s=20230601; t=1715680000; x=1716284800;
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :cc:to:from:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=IkB2CmWVoQi8nHsh1zrtwZs7auH/ln4/oBpNWO83qYA=;
+        b=QytslTWDDXXz43qly6wzttnIZYEr5h8DK0BrzpHj3j79E2UE1d07eOD4DpV5uGpymh
+         n7HQ1ByxDYCMvEP2V29kaLfzFnYh3NcAtDaCdqW8b0A2FBnCxGAKIBl7ZyTUsN1RUTkN
+         039RJQiPnD8X+yDK+Ow85+FowslScTsjC13aEoEq0dcmLGQGNaxuX23J1opujEIJkXTd
+         xRbriNuV2s33X7rrkLTJ5RwDNGC19iTMPZcUT4ay22rbQu9+Ft2WyriVOwZwQQOCFFhz
+         CqBPiuoXTGDRjDN+y9sXrvKTEixvtS64Dfjw0qeweYw117GZzAuExBM8YZsw8Suf5kvM
+         tB9Q==
+X-Forwarded-Encrypted: i=1; AJvYcCXCQitqyYhVacuTbyW6kf9XibPtMDisWZdsCxZwha1WUu63xv0NQfT+d24/mKAG7qiBKYsMihGPHFTLqhzNChgINNXLJte9vG5QBcsemCdwK/Te
+X-Gm-Message-State: AOJu0Yzr/FrTbN9Hac9wskLMfKTe8tGVTZ2SyqFbmGx9MdjKkiRpFUKl
+	pN1FvTiXGZjRZG3/txf+5Q6B+0VKO+rr5SzbTPY6XNL/fi7Bsd644wOONOc8hSs=
+X-Google-Smtp-Source: AGHT+IHI9NnnEnfZQk9MA7NTlxQwC32L9S31bdQwSyla8T9wKGzvt0e3SXI39TydgYKcKtH5LYQ8qw==
+X-Received: by 2002:a05:600c:4f4e:b0:41b:f577:604 with SMTP id 5b1f17b1804b1-41feac5a675mr86518995e9.30.1715679999836;
+        Tue, 14 May 2024 02:46:39 -0700 (PDT)
+Received: from [192.168.1.172] ([93.5.22.158])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4200e518984sm120917605e9.23.2024.05.14.02.46.38
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 14 May 2024 01:07:14 -0700 (PDT)
-Received: by mail-yw1-f177.google.com with SMTP id 00721157ae682-61e04fcf813so59817277b3.3;
-        Tue, 14 May 2024 01:07:14 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCW2frHw/xhoDz27C+ZCQTTpX4vFNIHYyMh9eVTPekl2C8B+TSAQXBcPlWlGQSXt4J+02MxO756oxvkOw9d2g2qpe7FjksgiSaFE7r2owFWB3siZBeVJc6vfSz32ht5Lwp4OV20viN3RVOhOyzJwrwmpKQMltagMOUZAZ/C2yfqCKyYtPtLYICKmy2mbOYsu/0WzrmlKsiaNgw4NffH4kAYq/ShYe1BiVaakPt+nLE+ChWKCNuGZy/0ew1Cgiag=
-X-Received: by 2002:a05:690c:fd0:b0:611:7132:e6ba with SMTP id
- 00721157ae682-622b0147778mr138786587b3.40.1715674014345; Tue, 14 May 2024
- 01:06:54 -0700 (PDT)
+        Tue, 14 May 2024 02:46:39 -0700 (PDT)
+Message-ID: <1815c5b4-ab7a-410c-b5ea-26ef83813d3c@baylibre.com>
+Date: Tue, 14 May 2024 11:46:37 +0200
 MIME-Version: 1.0
-References: <20240504-pinctrl-cleanup-v2-0-26c5f2dc1181@nxp.com>
- <20240504-pinctrl-cleanup-v2-7-26c5f2dc1181@nxp.com> <CAMuHMdUD=1rpns_mLF2rMM-x5EnOK7TExaJxoJVkbXjVz1H8uQ@mail.gmail.com>
- <CACRpkdaUecnwvHFdtGkuM80SObvXpXZkWGYoUMgnNHcvObYF0g@mail.gmail.com>
- <CAMuHMdWCD+k8=iX8+tcK76DU_m9quR8BV+K68K73SygJzCz5VA@mail.gmail.com> <CACRpkdYS8=cHT=7tGbzWZ73jbLhjqdpssbaHH-qREe=bcHYe2A@mail.gmail.com>
-In-Reply-To: <CACRpkdYS8=cHT=7tGbzWZ73jbLhjqdpssbaHH-qREe=bcHYe2A@mail.gmail.com>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Tue, 14 May 2024 10:06:42 +0200
-X-Gmail-Original-Message-ID: <CAMuHMdUucOu-c7tbeBBCMaoouFcUnJi0aRU--pc2Gk9QWNrANg@mail.gmail.com>
-Message-ID: <CAMuHMdUucOu-c7tbeBBCMaoouFcUnJi0aRU--pc2Gk9QWNrANg@mail.gmail.com>
-Subject: Re: [PATCH v2 07/20] pinctrl: renesas: Use scope based of_node_put() cleanups
-To: Linus Walleij <linus.walleij@linaro.org>
-Cc: "Peng Fan (OSS)" <peng.fan@oss.nxp.com>, Thierry Reding <thierry.reding@gmail.com>, 
-	Jonathan Hunter <jonathanh@nvidia.com>, Dvorkin Dmitry <dvorkin@tibbo.com>, Wells Lu <wellslutw@gmail.com>, 
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
-	Emil Renner Berthing <kernel@esmil.dk>, Jianlong Huang <jianlong.huang@starfivetech.com>, 
-	Hal Feng <hal.feng@starfivetech.com>, Orson Zhai <orsonzhai@gmail.com>, 
-	Baolin Wang <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>, 
-	Viresh Kumar <vireshk@kernel.org>, Shiraz Hashim <shiraz.linux.kernel@gmail.com>, soc@kernel.org, 
-	Krzysztof Kozlowski <krzk@kernel.org>, Sylwester Nawrocki <s.nawrocki@samsung.com>, 
-	Alim Akhtar <alim.akhtar@samsung.com>, Geert Uytterhoeven <geert+renesas@glider.be>, 
-	Patrice Chotard <patrice.chotard@foss.st.com>, Heiko Stuebner <heiko@sntech.de>, 
-	Damien Le Moal <dlemoal@kernel.org>, Ludovic Desroches <ludovic.desroches@microchip.com>, 
-	Nicolas Ferre <nicolas.ferre@microchip.com>, 
-	Alexandre Belloni <alexandre.belloni@bootlin.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
-	Dong Aisheng <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>, 
-	Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, Chester Lin <chester62515@gmail.com>, 
-	Matthias Brugger <mbrugger@suse.com>, Ghennadi Procopciuc <ghennadi.procopciuc@oss.nxp.com>, 
-	Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Andrew Jeffery <andrew@codeconstruct.com.au>, 
-	Joel Stanley <joel@jms.id.au>, Dan Carpenter <dan.carpenter@linaro.org>, 
-	Tony Lindgren <tony@atomide.com>, Stephen Warren <swarren@wwwdotorg.org>, linux-gpio@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-tegra@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, 
-	linux-stm32@st-md-mailman.stormreply.com, linux-samsung-soc@vger.kernel.org, 
-	linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-riscv@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	imx@lists.linux.dev, linux-aspeed@lists.ozlabs.org, openbmc@lists.ozlabs.org, 
-	Peng Fan <peng.fan@nxp.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 0/3] drm/mediatek: Add support for OF graphs
+From: Alexandre Mergnat <amergnat@baylibre.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ chunkuang.hu@kernel.org
+Cc: robh@kernel.org, krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+ p.zabel@pengutronix.de, airlied@gmail.com, daniel@ffwll.ch,
+ maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de,
+ matthias.bgg@gmail.com, shawn.sung@mediatek.com, yu-chang.lee@mediatek.com,
+ ck.hu@mediatek.com, jitao.shi@mediatek.com, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ wenst@chromium.org, kernel@collabora.com
+References: <20240409120211.321153-1-angelogioacchino.delregno@collabora.com>
+ <1fc23530-89ba-4e36-9e9a-a1289f56a9bc@baylibre.com>
+ <608fdbde-ad06-45ec-9771-18aa9f002f2d@collabora.com>
+ <a77357c7-0442-4478-b375-436eb6b114be@baylibre.com>
+Content-Language: en-US
+In-Reply-To: <a77357c7-0442-4478-b375-436eb6b114be@baylibre.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240514_010720_905162_B09412C2 
-X-CRM114-Status: GOOD (  22.71  )
+X-CRM114-CacheID: sfid-20240514_024643_253185_46345EA3 
+X-CRM114-Status: GOOD (  28.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,39 +104,463 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, May 14, 2024 at 9:33=E2=80=AFAM Linus Walleij <linus.walleij@linaro=
-.org> wrote:
-> On Tue, May 14, 2024 at 8:36=E2=80=AFAM Geert Uytterhoeven <geert@linux-m=
-68k.org> wrote:
-> > > Does this go into the Renesas patch stack?
-> > > I think the patch stands fine without the rest of the series.
-> >
-> > Sure, I can do that.
->
-> Please apply it!
+Hi Angelo,
 
-OK, will queue in renesas-pinctrl for v6.11.
+Gentle ping because I'm stuck if I rebase my serie on top of yours.
 
-> > From your positive response to v1, I thought that perhaps you just
-> > wanted to take the full series yourself?
->
-> Sorry, I always prefer submaintainers to pick their stuff, they
-> know what they are doing and they can test the entire patch
-> stack properly.
+On 02/05/2024 18:53, Alexandre Mergnat wrote:
+> 
+> 
+> On 30/04/2024 13:33, AngeloGioacchino Del Regno wrote:
+>> Il 30/04/24 12:17, Alexandre Mergnat ha scritto:
+>>> Hi Angelo,
+>>>
+>>> On 09/04/2024 14:02, AngeloGioacchino Del Regno wrote:
+>>>> This series was tested on MT8195 Cherry Tomato and on MT8395 Radxa
+>>>> NIO-12L with both hardcoded paths, OF graph support and partially
+>>>> hardcoded paths (meaning main display through OF graph and external
+>>>> display hardcoded, because of OVL_ADAPTOR).
+>>>
+>>> Is that make sense for you to add the DTS changes of these boards into this serie ?
+>>> I asked because, IMHO, that could help to understand the serie.
+>>>
+>>
+>> Yes and no... but I imagine that you're asking this because you're trying to
+>> prepare something with a different SoC+board(s) combination :-)
+>>
+>> In that case, I'm preventively sorry because what follows here is not 100%
+>> perfectly tidy yet as I didn't mean to send the devicetree commits upstream
+>> before this series got picked....
+>>
+>> ... but there you go - I'm sure that you won't mind and that the example will
+>> be more than good enough for you.
+>>
+>> Please note that one of the reasons why I didn't want to add this to the series
+>> is that the following changes show only a mere 50% of the reasons why we want OF
+>> graph support on mediatek-drm (but mainly, it's because I didn't have time to
+>> actually rebase etc :-P )
+> 
+> Thanks for the explanations and examples.
+> Unfortunately, I have 2 display but only one is working (the main: DSI0) when I use the dts method.
+> I've probably missed something but I don't know what.
+> 
+> In my "mmsys" node, if I swap display (the ext endpoint with the main endpoint), the DPI0 is 
+> working, but not the DSI0. I conclude my both paths are good.
+> 
+> Then, I've put some trace into "mtk_drm_of_ddp_path_build" to check if it parse the two endpoint of 
+> the node. Both are parsed, but "of_ep.port" is always = 0. According to "of_graph_parse_endpoint" 
+> function, "port" is the value of the parent "reg", whereas "id" is the value of the endpoint "reg".
+> So I replaced "of_ep.port" by "of_ep.id". Now I've of_ep.id = 0 for main and of_ep.id = 1 for EXT.
+> 
+> Now I've the good CRTC path, I get this error:
+>    mediatek-drm mediatek-drm.1.auto: Invalid display hw pipeline. Last component: 54 (ret=-2)
+>    mediatek-drm mediatek-drm.1.auto: probe with driver mediatek-drm failed with error -22
+> 
+> After quick look, the "cpath" into "mtk_drm_of_ddp_path_build_one" (or deeper functions) seems not 
+> be used as it should, due to the previous "of_ep.port" => "of_ep.id" change of course.
+> 
+> But I probably have to fix "of_ep.port" because I've mis-coded something. Just in case, I share you 
+> my diff:
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts b/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
+> index 1aa3426f561b..f660481d3fe8 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
+> @@ -109,15 +109,51 @@ vsys_lcm_reg: regulator-vsys-lcm {
+>       };
+>   };
+> 
+> +&cpu0 {
+> +    proc-supply = <&mt6357_vproc_reg>;
+> +    sram-supply = <&mt6357_vsram_proc_reg>;
+> +};
+> +
+> +&cpu1 {
+> +    proc-supply = <&mt6357_vproc_reg>;
+> +    sram-supply = <&mt6357_vsram_proc_reg>;
+> +};
+> +
+> +&cpu2 {
+> +    proc-supply = <&mt6357_vproc_reg>;
+> +    sram-supply = <&mt6357_vsram_proc_reg>;
+> +};
+> +
+> +&cpu3 {
+> +    proc-supply = <&mt6357_vproc_reg>;
+> +    sram-supply = <&mt6357_vsram_proc_reg>;
+> +};
+> +
+> +&dither0_out {
+> +    remote-endpoint = <&dsi0_in>;
+> +};
+> +
+>   &dpi0 {
+>       pinctrl-0 = <&dpi_default_pins>;
+>       pinctrl-1 = <&dpi_idle_pins>;
+>       pinctrl-names = "default", "sleep";
+>       status = "okay";
+> +    ports {
+> +        #address-cells = <1>;
+> +        #size-cells = <0>;
+> 
+> -    port {
+> -        dpi_out: endpoint {
+> -            remote-endpoint = <&it66121_in>;
+> +        port@0 {
+> +            reg = <0>;
+> +            dpi0_in: endpoint {
+> +                remote-endpoint = <&rdma1_out>;
+> +            };
+> +        };
+> +
+> +        port@1 {
+> +            reg = <1>;
+> +            dpi0_out: endpoint {
+> +                remote-endpoint = <&it66121_in>;
+> +            };
+>           };
+>       };
+>   };
+> @@ -137,36 +173,28 @@ panel@0 {
+> 
+>           port {
+>               panel_in: endpoint {
+> -                remote-endpoint = <&dsi_out>;
+> +                remote-endpoint = <&dsi0_out>;
+>               };
+>           };
+>       };
+> +    ports {
+> +        #address-cells = <1>;
+> +        #size-cells = <0>;
+> 
+> -    port {
+> -        dsi_out: endpoint {
+> -            remote-endpoint = <&panel_in>;
+> +        port@0 {
+> +            reg = <0>;
+> +            dsi0_in: endpoint {
+> +                remote-endpoint = <&dither0_out>;
+> +            };
+>           };
+> -    };
+> -};
+> 
+> -&cpu0 {
+> -    proc-supply = <&mt6357_vproc_reg>;
+> -    sram-supply = <&mt6357_vsram_proc_reg>;
+> -};
+> -
+> -&cpu1 {
+> -    proc-supply = <&mt6357_vproc_reg>;
+> -    sram-supply = <&mt6357_vsram_proc_reg>;
+> -};
+> -
+> -&cpu2 {
+> -    proc-supply = <&mt6357_vproc_reg>;
+> -    sram-supply = <&mt6357_vsram_proc_reg>;
+> -};
+> -
+> -&cpu3 {
+> -    proc-supply = <&mt6357_vproc_reg>;
+> -    sram-supply = <&mt6357_vsram_proc_reg>;
+> +        port@1 {
+> +            reg = <1>;
+> +            dsi0_out: endpoint {
+> +                remote-endpoint = <&panel_in>;
+> +            };
+> +        };
+> +    };
+>   };
+> 
+>   &ethernet {
+> @@ -229,7 +257,7 @@ port@0 {
+>                   reg = <0>;
+>                   it66121_in: endpoint {
+>                       bus-width = <12>;
+> -                    remote-endpoint = <&dpi_out>;
+> +                    remote-endpoint = <&dpi0_out>;
+>                   };
+>               };
+> 
+> @@ -557,6 +585,10 @@ &pwm {
+>       status = "okay";
+>   };
+> 
+> +&rdma1_out {
+> +    remote-endpoint = <&dpi0_in>;
+> +};
+> +
+>   &ssusb {
+>       dr_mode = "otg";
+>       maximum-speed = "high-speed";
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8365.dtsi b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
+> index d34519a33c90..dbb559959a9d 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8365.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
+> @@ -762,6 +762,19 @@ mmsys: syscon@14000000 {
+>               compatible = "mediatek,mt8365-mmsys", "syscon";
+>               reg = <0 0x14000000 0 0x1000>;
+>               #clock-cells = <1>;
+> +            port {
+> +                #address-cells = <1>;
+> +                #size-cells = <0>;
+> +
+> +                mmsys_main: endpoint@0 {
+> +                    reg = <0>;
+> +                    remote-endpoint = <&ovl0_in>;
+> +                };
+> +                mmsys_ext: endpoint@1 {
+> +                    reg = <1>;
+> +                    remote-endpoint = <&rdma1_in>;
+> +                };
+> +            };
+>           };
+> 
+>           mutex: mutex@14001000 {
+> @@ -801,6 +814,24 @@ ovl0: ovl@1400b000 {
+>               interrupts = <GIC_SPI 161 IRQ_TYPE_LEVEL_LOW>;
+>               iommus = <&iommu M4U_PORT_DISP_OVL0>;
+>               power-domains = <&spm MT8365_POWER_DOMAIN_MM>;
+> +            ports {
+> +                #address-cells = <1>;
+> +                #size-cells = <0>;
+> +
+> +                port@0 {
+> +                    reg = <0>;
+> +                    ovl0_in: endpoint {
+> +                        remote-endpoint = <&mmsys_main>;
+> +                    };
+> +                };
+> +
+> +                port@1 {
+> +                    reg = <1>;
+> +                    ovl0_out: endpoint {
+> +                        remote-endpoint = <&rdma0_in>;
+> +                    };
+> +                };
+> +            };
+>           };
+> 
+>           rdma0: rdma@1400d000 {
+> @@ -811,6 +842,24 @@ rdma0: rdma@1400d000 {
+>               iommus = <&iommu M4U_PORT_DISP_RDMA0>;
+>               mediatek,rdma-fifo-size = <5120>;
+>               power-domains = <&spm MT8365_POWER_DOMAIN_MM>;
+> +            ports {
+> +                #address-cells = <1>;
+> +                #size-cells = <0>;
+> +
+> +                port@0 {
+> +                    reg = <0>;
+> +                    rdma0_in: endpoint {
+> +                        remote-endpoint = <&ovl0_out>;
+> +                    };
+> +                };
+> +
+> +                port@1 {
+> +                    reg = <1>;
+> +                    rdma0_out: endpoint {
+> +                        remote-endpoint = <&color0_in>;
+> +                    };
+> +                };
+> +            };
+>           };
+> 
+>           color0: color@1400f000 {
+> @@ -819,6 +868,24 @@ color0: color@1400f000 {
+>               clocks = <&mmsys CLK_MM_MM_DISP_COLOR0>;
+>               interrupts = <GIC_SPI 164 IRQ_TYPE_LEVEL_LOW>;
+>               power-domains = <&spm MT8365_POWER_DOMAIN_MM>;
+> +            ports {
+> +                #address-cells = <1>;
+> +                #size-cells = <0>;
+> +
+> +                port@0 {
+> +                    reg = <0>;
+> +                    color0_in: endpoint {
+> +                        remote-endpoint = <&rdma0_out>;
+> +                    };
+> +                };
+> +
+> +                port@1 {
+> +                    reg = <1>;
+> +                    color0_out: endpoint {
+> +                        remote-endpoint = <&ccorr0_in>;
+> +                    };
+> +                };
+> +            };
+>           };
+> 
+>           ccorr0: ccorr@14010000 {
+> @@ -827,6 +894,24 @@ ccorr0: ccorr@14010000 {
+>               clocks = <&mmsys CLK_MM_MM_DISP_CCORR0>;
+>               interrupts = <GIC_SPI 165 IRQ_TYPE_LEVEL_LOW>;
+>               power-domains = <&spm MT8365_POWER_DOMAIN_MM>;
+> +            ports {
+> +                #address-cells = <1>;
+> +                #size-cells = <0>;
+> +
+> +                port@0 {
+> +                    reg = <0>;
+> +                    ccorr0_in: endpoint {
+> +                        remote-endpoint = <&color0_out>;
+> +                    };
+> +                };
+> +
+> +                port@1 {
+> +                    reg = <1>;
+> +                    ccorr0_out: endpoint {
+> +                        remote-endpoint = <&aal0_in>;
+> +                    };
+> +                };
+> +            };
+>           };
+> 
+>           aal0: aal@14011000 {
+> @@ -835,6 +920,24 @@ aal0: aal@14011000 {
+>               clocks = <&mmsys CLK_MM_MM_DISP_AAL0>;
+>               interrupts = <GIC_SPI 166 IRQ_TYPE_LEVEL_LOW>;
+>               power-domains = <&spm MT8365_POWER_DOMAIN_MM>;
+> +            ports {
+> +                #address-cells = <1>;
+> +                #size-cells = <0>;
+> +
+> +                port@0 {
+> +                    reg = <0>;
+> +                    aal0_in: endpoint {
+> +                        remote-endpoint = <&ccorr0_out>;
+> +                    };
+> +                };
+> +
+> +                port@1 {
+> +                    reg = <1>;
+> +                    aal0_out: endpoint {
+> +                        remote-endpoint = <&gamma0_in>;
+> +                    };
+> +                };
+> +            };
+>           };
+> 
+>           gamma0: gamma@14012000 {
+> @@ -843,6 +946,24 @@ gamma0: gamma@14012000 {
+>               clocks = <&mmsys CLK_MM_MM_DISP_GAMMA0>;
+>               interrupts = <GIC_SPI 167 IRQ_TYPE_LEVEL_LOW>;
+>               power-domains = <&spm MT8365_POWER_DOMAIN_MM>;
+> +            ports {
+> +                #address-cells = <1>;
+> +                #size-cells = <0>;
+> +
+> +                port@0 {
+> +                    reg = <0>;
+> +                    gamma0_in: endpoint {
+> +                        remote-endpoint = <&aal0_out>;
+> +                    };
+> +                };
+> +
+> +                port@1 {
+> +                    reg = <1>;
+> +                    gamma0_out: endpoint {
+> +                        remote-endpoint = <&dither0_in>;
+> +                    };
+> +                };
+> +            };
+>           };
+> 
+>           dither0: dither@14013000 {
+> @@ -851,6 +972,23 @@ dither0: dither@14013000 {
+>               clocks = <&mmsys CLK_MM_MM_DISP_DITHER0>;
+>               interrupts = <GIC_SPI 168 IRQ_TYPE_LEVEL_LOW>;
+>               power-domains = <&spm MT8365_POWER_DOMAIN_MM>;
+> +            ports {
+> +                #address-cells = <1>;
+> +                #size-cells = <0>;
+> +
+> +                port@0 {
+> +                    reg = <0>;
+> +                    dither0_in: endpoint {
+> +                        remote-endpoint = <&gamma0_out>;
+> +                    };
+> +                };
+> +
+> +                port@1 {
+> +                    reg = <1>;
+> +                    dither0_out: endpoint {
+> +                    };
+> +                };
+> +            };
+>           };
+> 
+>           dsi0: dsi@14014000 {
+> @@ -874,6 +1012,23 @@ rdma1: rdma@14016000 {
+>               iommus = <&iommu M4U_PORT_DISP_RDMA1>;
+>               mediatek,rdma-fifo-size = <2048>;
+>               power-domains = <&spm MT8365_POWER_DOMAIN_MM>;
+> +            ports {
+> +                #address-cells = <1>;
+> +                #size-cells = <0>;
+> +
+> +                port@0 {
+> +                    reg = <0>;
+> +                    rdma1_in: endpoint {
+> +                        remote-endpoint = <&mmsys_ext>;
+> +                    };
+> +                };
+> +
+> +                port@1 {
+> +                    reg = <1>;
+> +                    rdma1_out: endpoint {
+> +                    };
+> +                };
+> +            };
+>           };
+> 
+>           dpi0: dpi@14018000 {
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> index dacf4eaa3457..5992b7865310 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> @@ -230,22 +230,6 @@ static const unsigned int mt8195_mtk_ddp_ext[] = {
+>       DDP_COMPONENT_DP_INTF1,
+>   };
+> 
+> -static const unsigned int mt8365_mtk_ddp_main[] = {
+> -    DDP_COMPONENT_OVL0,
+> -    DDP_COMPONENT_RDMA0,
+> -    DDP_COMPONENT_COLOR0,
+> -    DDP_COMPONENT_CCORR,
+> -    DDP_COMPONENT_AAL0,
+> -    DDP_COMPONENT_GAMMA,
+> -    DDP_COMPONENT_DITHER0,
+> -    DDP_COMPONENT_DSI0,
+> -};
+> -
+> -static const unsigned int mt8365_mtk_ddp_ext[] = {
+> -    DDP_COMPONENT_RDMA1,
+> -    DDP_COMPONENT_DPI0,
+> -};
+> -
+>   static const struct mtk_mmsys_driver_data mt2701_mmsys_driver_data = {
+>       .main_path = mt2701_mtk_ddp_main,
+>       .main_len = ARRAY_SIZE(mt2701_mtk_ddp_main),
+> @@ -334,10 +318,6 @@ static const struct mtk_mmsys_driver_data mt8195_vdosys1_driver_data = {
+>   };
+> 
+>   static const struct mtk_mmsys_driver_data mt8365_mmsys_driver_data = {
+> -    .main_path = mt8365_mtk_ddp_main,
+> -    .main_len = ARRAY_SIZE(mt8365_mtk_ddp_main),
+> -    .ext_path = mt8365_mtk_ddp_ext,
+> -    .ext_len = ARRAY_SIZE(mt8365_mtk_ddp_ext),
+>       .mmsys_dev_num = 1,
+>   };
+> 
+> 
+> 
+> -- 
+> Regards,
+> Alexandre
 
-OK, will (try to ;-) remember...
-
-Gr{oetje,eeting}s,
-
-                        Geert
-
---=20
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k=
-.org
-
-In personal conversations with technical people, I call myself a hacker. Bu=
-t
-when I'm talking to journalists I just say "programmer" or something like t=
-hat.
-                                -- Linus Torvalds
+-- 
+Regards,
+Alexandre
 
