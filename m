@@ -4,106 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3019C25B10
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 May 2024 20:51:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97B71C25B79
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 May 2024 01:53:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Rv7jmDTVVRFwx435oiB3ZXmxSleUrrvg/LBh8jNJlFU=; b=RX3kZtxtv/sGoqY226fnSV7CwN
-	9AEapBZnP8fo+S9SKTH3OljvCLlcvbFMTqSpTaWjm0kdY0cXhS/gEmRC34gIz9krELAAoF5LXp7QO
-	l5UY2POyzRobzP2GWw4Il/lSVN4uzrig0V8m8oc7N8qnBGq3ieoUj8EjN+mSHdsoqDP2u9iCOyZiJ
-	tiaST8kD9USCurZqvg7jbs9v9VRY69m4Z4uxirNF4XWYtdlSL4mtHeq2U6CA5PNqmE19ubnrN2zgl
-	XAF6zM4H7KJb3PYbdLRW098wtrmRwBpvzVMEy2bNpApw5WlwAIcP3MO7HuNkyQVx30V4UTvqjoHDl
-	e+t/AQtw==;
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=fChpoExeFzd2Az+Su556Ffsvq3JBbvZA6mRiE3/6qbE=; b=JXQlksEHQ4lOq6d+JIkEMry3bT
+	XapNHBoFWv+6JYoRmW0Swl7IzWjQEDE9UN3cOxDMnSt2oX2Qion7moeVVAomyDfB6ZZHtiru1DL5S
+	IqxCD5WXnhw1lVW3ixqFhFGsWFsv9m7bQpsoa8uoKlMY19WnKM3i9lcBA2p4vgJWq+KeLFaQA58pt
+	TobFtfNVtdJZNMZ13GZ9OQpIVBFD2Bj23BuEpuhszR0wK3THvIkIy5198fXCBNQxRFCyQ83GGiH0J
+	8DZ0gldbU486+Img1iunZhrsvnHv1slm0rtkDe5KvGaW3HWxtLZ2//Magk/LdsMcQ5VzR0C5dP2o5
+	dWwPYw6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s6ce6-0000000EAZP-2LsK;
-	Mon, 13 May 2024 20:51:42 +0000
-Received: from mail-yw1-x1134.google.com ([2607:f8b0:4864:20::1134])
+	id 1s6hMD-0000000EkRq-2r3I;
+	Tue, 14 May 2024 01:53:33 +0000
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s6ce0-0000000EAX2-0tgq
-	for linux-mediatek@lists.infradead.org;
-	Mon, 13 May 2024 20:51:40 +0000
-Received: by mail-yw1-x1134.google.com with SMTP id 00721157ae682-62050e00cfdso42295527b3.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 13 May 2024 13:51:35 -0700 (PDT)
+	id 1s6hM9-0000000EkQj-3lRX;
+	Tue, 14 May 2024 01:53:31 +0000
+Received: by mail-ej1-x62d.google.com with SMTP id a640c23a62f3a-a5a5cce2ce6so496162266b.3;
+        Mon, 13 May 2024 18:53:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1715633494; x=1716238294; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Rv7jmDTVVRFwx435oiB3ZXmxSleUrrvg/LBh8jNJlFU=;
-        b=Z921T6Lj8KZ2EDZ5OhikOnUj4vlKVvMfos7OJH67XprY5kzCSO1ZU2IR7CRriKenxd
-         CeM2thYErEDMbjewgonwVeiZ9Dj6a2l2GjxmQ+EBX8elwNdFcTt2kqf85/BPauIOceMH
-         T+na7MhHzwjaN42kEjQKoKup9kxNGV2Q7+Y5XG1c5vxFjnJIl/c0S8nUn6YRLG3l007Y
-         W2/VzoTlmPcGomLDfY7efGtb3LJmDnoa2Ty8X1FBjGXytAsdeZX5IPzVaqYd6OWviJf3
-         hBqbPN+j1/N5MZT/FcL/kymRqn3NTJ+GEOsyYaErTBED1NDuwJbU0kFfVONKR9KQi6GN
-         VFPA==
+        d=gmail.com; s=20230601; t=1715651606; x=1716256406; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=fChpoExeFzd2Az+Su556Ffsvq3JBbvZA6mRiE3/6qbE=;
+        b=lihx5nY7tAovB5nR+Oej+qm/Y3cL7tYN+9h2vpYJ5FcBUHSdl1qzrM9kXmzYYVBOV4
+         fFkptS+vjq/EV0uuRrZBAXWKj9DBs/1Jbr7QGAeTEdfF8WHKu/QqLl3Hu37ZIq4F84Zp
+         fQ06DscDLB2oeuCgvIIXXcyMaNbH3D1VC9gloSpt+89lZ8lSZ7bmuTcGSPCXtSb6eiSt
+         NXuoYc264g4ybKxuCDVKtJ0uxfsvBgGpC7c+BDrO9N4fKCvUGqdt4uYi0ZxFfutgiSjS
+         apdGK2wN/bYu5kGUnz+mLV5EDZ8zApIL79CXSzuU/Hz89nyak7TJZQ+ByhmdBrkhDezr
+         nA8Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1715633494; x=1716238294;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Rv7jmDTVVRFwx435oiB3ZXmxSleUrrvg/LBh8jNJlFU=;
-        b=SePOacmS+ZpBwijUQ/LW55j2e4Yo9ZKc4gLmn0rn9DUo0hyw8bQxHE7ygOcbrkb83+
-         TMgwr6DDM8rFd+k6lYSUlxkwPJXQgNk+Q9Y+J6qc7PxCmHA5snBWj2IR0Opi/dmjCaYL
-         rLUSaRMHuoLr2LtHJAm/HluN5ji0NKdZKhkG5rraNGLetpKd8h9FYjKmbrrzVLh3fxjK
-         D++wRZjU8uZcLUm/RuUz0UXEBzNJs7uCaRnB3SdEQtsvi8G8D8MIDS8zz+J7HxrAaQYw
-         YVvyIg5Ow5CKCEX78RBQOB6Pdu48pkjSSv/h2Y3ipDc4agEfX9PjVnK8RlrNenS8wBEp
-         VrjQ==
-X-Forwarded-Encrypted: i=1; AJvYcCV9rq1lkzSlriDPx4WqJh8lEBpXwext531dCtLwEqpnaxg6Mf6KZCLQnPamC6SUxETniiHaFhoaYOGgVcD14pauNUDkxmYagN/Fj8+/0KgtLtQX
-X-Gm-Message-State: AOJu0Yxil9oSDcoK+1KSrYpLRntbq+fiNp7OcX55tW7KBhBcGFaIcaId
-	nLuTQnduWggJXCUoLfc6zxqDb4Wxh0/5gs3T4qlsvhqeDeyqoxAmLCjQ2lSRyF4ytFnempwavjI
-	efEXPOY5kEG8ou+oimzfTWVh4HrkJ+eu+doGFxA==
-X-Google-Smtp-Source: AGHT+IHIMCINiS4Rm3W7vEHXnxoinnBVVMUXT21CaUFl/K9jprbEih1fz56tIA0O4ev2Ijok+dKJMkYRTsYw4QOpIww=
-X-Received: by 2002:a05:690c:ed4:b0:61a:e9f6:2b1b with SMTP id
- 00721157ae682-622aff774d9mr145019207b3.8.1715633492884; Mon, 13 May 2024
- 13:51:32 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1715651606; x=1716256406;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=fChpoExeFzd2Az+Su556Ffsvq3JBbvZA6mRiE3/6qbE=;
+        b=F7/k3R6isPVGXUl0oNMoSHPQ/LtaCVZ6KUPkP8KPQ3TvwKQrTHo5xaJ7i+4tXehWmO
+         nDoIgHF+BjKSjjNlltN+6Q1H3PPlnqLiouTbiBcPtctp+oWr0ewV7VJxCjv8f/QzexuL
+         F9kbypkHLmno2XCsaqeGVwXhTzeVXGp2I4iE1/aN7EIEMr0WhHpZPBLvAfy4Dp++GUQG
+         MjIPbjvpigm6ZhjqcoDdmVSUUSYCQVOtojJJnCk8oxUT9hi/psGQ6uwWiT7HDjEVOyss
+         3kPrVTNv07TjPrZr3qERkvThcGaPUA4pUi+3vE3odwSMHiz7coqu9u4ug6ZQmbFljuVE
+         fEGg==
+X-Forwarded-Encrypted: i=1; AJvYcCVPDVPOKLb0GVUWfGsUzyJmNr7heBjT58W2r2rmYGEzUtGfePK4oDLxffOpbxuxkeGDE/NVtjEsVkgVG27jHD5MB1UJlfH6JIX6m8JITIg8lhvfPzNCvm95nF/muaVxbkITPwzeD70eWxio6tzlsWTUZES1CG5l3zs=
+X-Gm-Message-State: AOJu0YyZ/WNF+VF/1n9mINxjuinIAqz6+EyqbYBJv2gxeB6AOpsXvn3C
+	FvPKXI50r0kkcuzIsvwo20wP4txO0kwghb+9e0AnCYZW3bxMSxPi
+X-Google-Smtp-Source: AGHT+IEq75Ot9SYG0z3IC3m2UdmZpVoWZknjsilYqX60VGzRKZRAz2xfjnSBvmr44ctRbHZ8aQgmWA==
+X-Received: by 2002:a17:906:594e:b0:a59:cd18:92f5 with SMTP id a640c23a62f3a-a5a2d54c699mr725052066b.11.1715651606075;
+        Mon, 13 May 2024 18:53:26 -0700 (PDT)
+Received: from localhost.lan (031011218106.poznan.vectranet.pl. [31.11.218.106])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a5a179c7ddfsm663377066b.121.2024.05.13.18.53.24
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 13 May 2024 18:53:25 -0700 (PDT)
+From: =?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <zajec5@gmail.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>
+Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Lala Lin <lala.lin@mediatek.com>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>
+Subject: [PATCH V2 1/2] dt-bindings: nvmem: mediatek: efuse: add support for MT7981
+Date: Tue, 14 May 2024 03:51:53 +0200
+Message-Id: <20240514015154.11206-1-zajec5@gmail.com>
+X-Mailer: git-send-email 2.35.3
 MIME-Version: 1.0
-References: <20240504-pinctrl-cleanup-v2-0-26c5f2dc1181@nxp.com>
- <20240504-pinctrl-cleanup-v2-7-26c5f2dc1181@nxp.com> <CAMuHMdUD=1rpns_mLF2rMM-x5EnOK7TExaJxoJVkbXjVz1H8uQ@mail.gmail.com>
-In-Reply-To: <CAMuHMdUD=1rpns_mLF2rMM-x5EnOK7TExaJxoJVkbXjVz1H8uQ@mail.gmail.com>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Mon, 13 May 2024 22:51:21 +0200
-Message-ID: <CACRpkdaUecnwvHFdtGkuM80SObvXpXZkWGYoUMgnNHcvObYF0g@mail.gmail.com>
-Subject: Re: [PATCH v2 07/20] pinctrl: renesas: Use scope based of_node_put() cleanups
-To: Geert Uytterhoeven <geert@linux-m68k.org>
-Cc: "Peng Fan (OSS)" <peng.fan@oss.nxp.com>, Thierry Reding <thierry.reding@gmail.com>, 
-	Jonathan Hunter <jonathanh@nvidia.com>, Dvorkin Dmitry <dvorkin@tibbo.com>, Wells Lu <wellslutw@gmail.com>, 
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
-	Emil Renner Berthing <kernel@esmil.dk>, Jianlong Huang <jianlong.huang@starfivetech.com>, 
-	Hal Feng <hal.feng@starfivetech.com>, Orson Zhai <orsonzhai@gmail.com>, 
-	Baolin Wang <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>, 
-	Viresh Kumar <vireshk@kernel.org>, Shiraz Hashim <shiraz.linux.kernel@gmail.com>, soc@kernel.org, 
-	Krzysztof Kozlowski <krzk@kernel.org>, Sylwester Nawrocki <s.nawrocki@samsung.com>, 
-	Alim Akhtar <alim.akhtar@samsung.com>, Geert Uytterhoeven <geert+renesas@glider.be>, 
-	Patrice Chotard <patrice.chotard@foss.st.com>, Heiko Stuebner <heiko@sntech.de>, 
-	Damien Le Moal <dlemoal@kernel.org>, Ludovic Desroches <ludovic.desroches@microchip.com>, 
-	Nicolas Ferre <nicolas.ferre@microchip.com>, 
-	Alexandre Belloni <alexandre.belloni@bootlin.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
-	Dong Aisheng <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>, 
-	Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, Chester Lin <chester62515@gmail.com>, 
-	Matthias Brugger <mbrugger@suse.com>, Ghennadi Procopciuc <ghennadi.procopciuc@oss.nxp.com>, 
-	Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Andrew Jeffery <andrew@codeconstruct.com.au>, 
-	Joel Stanley <joel@jms.id.au>, Dan Carpenter <dan.carpenter@linaro.org>, 
-	Tony Lindgren <tony@atomide.com>, Stephen Warren <swarren@wwwdotorg.org>, linux-gpio@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-tegra@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, 
-	linux-stm32@st-md-mailman.stormreply.com, linux-samsung-soc@vger.kernel.org, 
-	linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-riscv@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	imx@lists.linux.dev, linux-aspeed@lists.ozlabs.org, openbmc@lists.ozlabs.org, 
-	Peng Fan <peng.fan@nxp.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240513_135136_509835_D90A8FD7 
-X-CRM114-Status: GOOD (  12.65  )
+X-CRM114-CacheID: sfid-20240513_185329_967683_01FBA398 
+X-CRM114-Status: UNSURE (   9.61  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,25 +99,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, May 13, 2024 at 1:59=E2=80=AFPM Geert Uytterhoeven <geert@linux-m68=
-k.org> wrote:
-> On Sat, May 4, 2024 at 3:14=E2=80=AFPM Peng Fan (OSS) <peng.fan@oss.nxp.c=
-om> wrote:
-> > From: Peng Fan <peng.fan@nxp.com>
-> >
-> > Use scope based of_node_put() cleanup to simplify code.
-> >
-> > Signed-off-by: Peng Fan <peng.fan@nxp.com>
->
-> Thanks for your patch!
->
-> Reviewed-by: Geert Uytterhoeven <geert+renesas@glider.be>
-> Acked-by: Geert Uytterhoeven <geert+renesas@glider.be>
+From: Rafał Miłecki <rafal@milecki.pl>
 
-Does this go into the Renesas patch stack?
+Add compatible for MT7981 SoC.
 
-I think the patch stands fine without the rest of the series.
+Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
+---
+V2: Use new compatible instead of MT7986's one
 
-Yours,
-Linus Walleij
+ Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml b/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
+index cf5f9e22bb7e..a773101d8538 100644
+--- a/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
++++ b/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
+@@ -28,6 +28,7 @@ properties:
+           - enum:
+               - mediatek,mt7622-efuse
+               - mediatek,mt7623-efuse
++              - mediatek,mt7981-efuse
+               - mediatek,mt7986-efuse
+               - mediatek,mt8173-efuse
+               - mediatek,mt8183-efuse
+-- 
+2.35.3
+
 
