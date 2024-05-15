@@ -4,89 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9EF2C25B75
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 May 2024 17:45:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB4FBC25B75
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 May 2024 23:15:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Inmc+syrxkqK6aZQdAoIkvH5UOxtf+2Na/UaXVJLBFc=; b=hHELud/ocT1kGkLIWCi6ihYEmW
-	yAz2Wd9o7cFWgPYHiKqOUbKCDRsLaBFzw2uw+t2lfNFyULmuKrT4FUGZ12nzuHFU/fx9l6zyXXRr2
-	JfKKA1pib8RNfgyDDAIwWvTMCbmBqYJg1teqyTxpAH1eHkqd+Eq13fR9jDrT1EgNxSC9fPTgiTzNo
-	7xF5AC9xcy+mS5ocbS3VyAGQZpQADTStejhJOxFYd0bmAR9Dx5CF0esqZkBRyfL7qckhGC/bvg4J5
-	ZHMEJXxUoN/mosTGLn99H3eg1SSEZIbAShJsppXMfYaNZaSrzv89uYXlt3B+AGdvFavtGITgtcnzI
-	mxtm0rbw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=s8lTrIOPp2rps4ETyvV9vi8AsmvDY3xHbsdrzyXbxxM=; b=RTA1zrdeyZDj8NBw14NmpRj7yU
+	Bce3WDVE+fYsW6l+5kAGRoiFWAAKobB6hR/1PLVDGKwqVahSD7ZQviFFZ7MfvRIPsnyr4HdfR3+JC
+	8Cw79ebxR7JPy84eocViE1IrkPMyCGA47wT94AZcpI5ZAUUyITJknYkAoG0m61jkdvMpc7cKg6Y+D
+	64ZNM3pCs1QTraSvQIaOSYWTJyAj08vNp0L46y/KYuEzYMn9SRIiLaayqUDgoigW+XyVvviw3DEG7
+	vGLoCLMSvxV+aKMWqEvMbQyPCRsBboN6Xn9fuTHt/k24SCGr5mLW5HoEGm5DYl2F3hyKm9XSlfxTH
+	HWUJTb/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s7IhB-00000002SGq-1YmV;
-	Wed, 15 May 2024 17:45:41 +0000
-Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
+	id 1s7NqY-00000003861-13le;
+	Wed, 15 May 2024 23:15:42 +0000
+Received: from mail-oo1-f49.google.com ([209.85.161.49])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s7Ih7-00000002SFD-3kn1
+	id 1s7NqR-00000003828-2Gyf
 	for linux-mediatek@lists.infradead.org;
-	Wed, 15 May 2024 17:45:39 +0000
-Received: by mail-pf1-x434.google.com with SMTP id d2e1a72fcca58-6f44ed6e82fso6264684b3a.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 15 May 2024 10:45:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1715795135; x=1716399935; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=Inmc+syrxkqK6aZQdAoIkvH5UOxtf+2Na/UaXVJLBFc=;
-        b=YLuDOJ6Ck7EqdFgDYU6vF+I3txI2N/p8956nonYYscsy56YiXVUnu548jt6QzQhsqi
-         sCvQvYBKY38VmtauRYwltYAMKehk9qdxnuT4eig7a9AXd5ihOY1MvwNQl5w1s5M1/+ap
-         WAefFJtgFXtlKp8Up6EkPtUy4m6DgcNToZqvbpBL8BSumfcq2ufRCzKIGRz02wJSzo1r
-         mWick9hEWpRC+Mwxjp2RGS1i4kof0frC/yJRhASUqTuamjYMOCF/5kcY1Sp+72BzQkDb
-         IqYhlC/7+Q9NMCVkvnf0t/KdjKjBFlfDTNE4RJvTtGjlwNEwfGD10TIIqTukOliQt3vZ
-         LIXw==
+	Wed, 15 May 2024 23:15:40 +0000
+Received: by mail-oo1-f49.google.com with SMTP id 006d021491bc7-5b2f2a584c6so212198eaf.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 15 May 2024 16:15:33 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1715795135; x=1716399935;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Inmc+syrxkqK6aZQdAoIkvH5UOxtf+2Na/UaXVJLBFc=;
-        b=DfJST+Ll5cb14nA4sFmqu/oLQxARLoFQZZ1gl899mIJf6kLmWeSXV6z6SEq4DZrx0V
-         hBiQ4WX6p2y0Kd/3LQ0ydskRD+nnrcemMC8RBzLAGUaI3G5yIe+Q22LTCFz21VF22wyw
-         0zgQPUWSQ2qbHmq8Y7Zygn69dcNCa3zcmUwr9BAF34Zj48pE8PWRQGkizuhav7qIgr0I
-         qjWj4mPUkXR4Hrp+iOeR3quSxe/UCIoW94AbK+/Dz7rHmJJMLLXFNQcRDyKJdjcmFtqj
-         v7XcfOMfS/0LUkxpLsxhSrHB/Aa/hXzXtH1t2mcM/vZIWlELmMrChNOVxPVmNcSd+h0d
-         DsrQ==
-X-Forwarded-Encrypted: i=1; AJvYcCX1kY++tI5HTmctKJ+mjNYPAAd9Rem/78PWQ9L0Uk7z2HrILZqUogeA0JZOQk9n+mOcCfgsH1hN2aJvo6Jgsb2O2pcGlZyzUxzbZopxba2U3AUz
-X-Gm-Message-State: AOJu0YyPdzMv011bTCs5IBM8xzRRTurCYmP8QrA5Krp2V6LLH19U0mSp
-	lOOZ2Jv6Fx1sZ2nnCgia8L1cNT97cKBMpiF12NTRzlMkJoGuAvst/yo8wLOJtg==
-X-Google-Smtp-Source: AGHT+IHqT+V07QT8d8OIJOetBXVRP2MvqJqTkiAGp4q63p16McqvNFOMMSJe88kfRvnGTsQMprg35Q==
-X-Received: by 2002:a05:6a00:270f:b0:6f6:7b6c:51f6 with SMTP id d2e1a72fcca58-6f67b6c5295mr995107b3a.24.1715795135090;
-        Wed, 15 May 2024 10:45:35 -0700 (PDT)
-Received: from google.com (57.92.83.34.bc.googleusercontent.com. [34.83.92.57])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-6f4d2a828e2sm11379011b3a.72.2024.05.15.10.45.34
+        d=1e100.net; s=20230601; t=1715814933; x=1716419733;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=s8lTrIOPp2rps4ETyvV9vi8AsmvDY3xHbsdrzyXbxxM=;
+        b=irLUSq1mYsQ9lvZlGz8Ard/uOlNW4x2lSezLBs+Ab6tjWTzgpG7+zdfPGcLV+P4X9t
+         7OIwIjpcZnP+RQyCL6u7SzMoHevVW83O9jkG1oKoX6767d7BgRdsbNOX8c+TXhCk4bPj
+         pNUCexAbTGQqwz+dit4UAC4NyZnJQ8D5l+x/4wM4XHpGGcMHVMz5+M48cLwKI1PLsJJA
+         c3fCWtCBhxpKexxkePoS+xJHenTxk+388FJvj1lMT29hUFqQqbozbEYhVqbwI9d8b+fY
+         OTiBMQiOpi1ZuA+mE1cSsHN2UTEbiP0HL5evJcnCbMQ643obRBEAr3bIKLveL8wqBNGe
+         2YnQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVjj7fKsOlV+IKGln3ZeBBv2tYBecrDrP9kQxGmGN0YzyNnPRc5mZEB3EZFUgvhqXXvAJ/eVc+Lv7WH81RUS3zeEC47doYxywsg5xmGSoKNoBNm
+X-Gm-Message-State: AOJu0YxBzLZpAc75gGwV8l867xUVIfRuN06VayGl0KuYTfHwqlsHC4LH
+	Oc9gAj27GlA/MPwhTwfqD4oDB92sg5RO/jSErpnHKgK0jR8u/c90
+X-Google-Smtp-Source: AGHT+IHJZzy1efEISuW3awypyoQF6Uoeq89kZn447ERsBVT1h1CIAYblZT6dnBXhB5s6AqsgZ4ehKw==
+X-Received: by 2002:a05:6830:2051:b0:6f1:2171:4f9a with SMTP id 46e09a7af769-6f12171526cmr4177443a34.0.1715814932887;
+        Wed, 15 May 2024 16:15:32 -0700 (PDT)
+Received: from sean-ThinkPad-T450s.lan ([207.191.35.252])
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-6f0ec2e566dsm2032159a34.15.2024.05.15.16.15.31
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 15 May 2024 10:45:34 -0700 (PDT)
-Date: Wed, 15 May 2024 17:45:31 +0000
-From: Carlos Llamas <cmllamas@google.com>
-To: Yenchia Chen <yenchia.chen@mediatek.com>
-Cc: stable@vger.kernel.org, Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Sasha Levin <sashal@kernel.org>, Simon Horman <horms@kernel.org>,
-	Zhengchao Shao <shaozhengchao@huawei.com>,
-	Pedro Tammela <pctammela@mojatatu.com>,
-	Ryosuke Yasuoka <ryasuoka@redhat.com>, Thomas Graf <tgraf@suug.ch>,
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 5.15 2/2] netlink: annotate data-races around sk->sk_err
-Message-ID: <ZkT0u3RMc89Fe6PV@google.com>
-References: <20240515073644.32503-1-yenchia.chen@mediatek.com>
- <20240515073644.32503-3-yenchia.chen@mediatek.com>
+        Wed, 15 May 2024 16:15:32 -0700 (PDT)
+From: sean.wang@kernel.org
+To: marcel@holtmann.org,
+	johan.hedberg@gmail.com,
+	luiz.dentz@gmail.com
+Cc: linux-bluetooth@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Sean Wang <sean.wang@mediatek.com>
+Subject: [PATCH v5 1/5] Bluetooth: btmtk: add the function to get the fw name
+Date: Wed, 15 May 2024 16:15:17 -0700
+Message-Id: <ce0337178bf617d52ff320a36837d75bf537df2d.1715813148.git.sean.wang@kernel.org>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240515073644.32503-3-yenchia.chen@mediatek.com>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240515_104537_958007_11B356B8 
-X-CRM114-Status: GOOD (  12.14  )
+X-CRM114-CacheID: sfid-20240515_161535_661977_81AAEBC8 
+X-CRM114-Status: GOOD (  12.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,56 +82,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, May 15, 2024 at 03:36:38PM +0800, Yenchia Chen wrote:
-> From: Eric Dumazet <edumazet@google.com>
-> 
-> syzbot caught another data-race in netlink when
-> setting sk->sk_err.
-> 
-> Annotate all of them for good measure.
-> 
-> BUG: KCSAN: data-race in netlink_recvmsg / netlink_recvmsg
-> 
-> write to 0xffff8881613bb220 of 4 bytes by task 28147 on cpu 0:
-> netlink_recvmsg+0x448/0x780 net/netlink/af_netlink.c:1994
-> sock_recvmsg_nosec net/socket.c:1027 [inline]
-> sock_recvmsg net/socket.c:1049 [inline]
-> __sys_recvfrom+0x1f4/0x2e0 net/socket.c:2229
-> __do_sys_recvfrom net/socket.c:2247 [inline]
-> __se_sys_recvfrom net/socket.c:2243 [inline]
-> __x64_sys_recvfrom+0x78/0x90 net/socket.c:2243
-> do_syscall_x64 arch/x86/entry/common.c:50 [inline]
-> do_syscall_64+0x41/0xc0 arch/x86/entry/common.c:80
-> entry_SYSCALL_64_after_hwframe+0x63/0xcd
-> 
-> write to 0xffff8881613bb220 of 4 bytes by task 28146 on cpu 1:
-> netlink_recvmsg+0x448/0x780 net/netlink/af_netlink.c:1994
-> sock_recvmsg_nosec net/socket.c:1027 [inline]
-> sock_recvmsg net/socket.c:1049 [inline]
-> __sys_recvfrom+0x1f4/0x2e0 net/socket.c:2229
-> __do_sys_recvfrom net/socket.c:2247 [inline]
-> __se_sys_recvfrom net/socket.c:2243 [inline]
-> __x64_sys_recvfrom+0x78/0x90 net/socket.c:2243
-> do_syscall_x64 arch/x86/entry/common.c:50 [inline]
-> do_syscall_64+0x41/0xc0 arch/x86/entry/common.c:80
-> entry_SYSCALL_64_after_hwframe+0x63/0xcd
-> 
-> value changed: 0x00000000 -> 0x00000016
-> 
-> Reported by Kernel Concurrency Sanitizer on:
-> CPU: 1 PID: 28146 Comm: syz-executor.0 Not tainted 6.6.0-rc3-syzkaller-00055-g9ed22ae6be81 #0
-> Hardware name: Google Google Compute Engine/Google Compute Engine, BIOS Google 09/06/2023
-> 
-> Fixes: 1da177e4c3f4 ("Linux-2.6.12-rc2")
-> Signed-off-by: Eric Dumazet <edumazet@google.com>
-> Reported-by: syzbot <syzkaller@googlegroups.com>
-> Reviewed-by: Simon Horman <horms@kernel.org>
-> Link: https://lore.kernel.org/r/20231003183455.3410550-1-edumazet@google.com
-> Signed-off-by: Jakub Kicinski <kuba@kernel.org>
-> Signed-off-by: yenchia.chen <yenchia.chen@mediatek.com>
-> ---
+From: Sean Wang <sean.wang@mediatek.com>
 
-The conflict resolution looks good to me, thanks!
+Include a shared function to get the firmware name, to prevent repeating
+code for similar chipsets.
 
-Reviewed-by: Carlos Llamas <cmllamas@google.com>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+v3: first added to the series
+v4: rebase onto the latest code and add an additional parameter
+    fw_flavor into the function btmtk_fw_get_filename.
+v5: fix an issue about the directive output truncated writing caught by
+    the linux test robot
+---
+ drivers/bluetooth/btmtk.c | 18 ++++++++++++++++++
+ drivers/bluetooth/btmtk.h |  8 ++++++++
+ 2 files changed, 26 insertions(+)
+
+diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
+index 812fd2a8f853..a27c251bf56e 100644
+--- a/drivers/bluetooth/btmtk.c
++++ b/drivers/bluetooth/btmtk.c
+@@ -103,6 +103,24 @@ static void btmtk_coredump_notify(struct hci_dev *hdev, int state)
+ 	}
+ }
+ 
++void btmtk_fw_get_filename(char *buf, size_t size, u32 dev_id, u32 fw_ver,
++			   u32 fw_flavor)
++{
++	if (dev_id == 0x7925)
++		snprintf(buf, size,
++			 "mediatek/mt%04x/BT_RAM_CODE_MT%04x_1_%x_hdr.bin",
++			 dev_id & 0xffff, dev_id & 0xffff, (fw_ver & 0xff) + 1);
++	else if (dev_id == 0x7961 && fw_flavor)
++		snprintf(buf, size,
++			 "mediatek/BT_RAM_CODE_MT%04x_1a_%x_hdr.bin",
++			 dev_id & 0xffff, (fw_ver & 0xff) + 1);
++	else
++		snprintf(buf, size,
++			 "mediatek/BT_RAM_CODE_MT%04x_1_%x_hdr.bin",
++			 dev_id & 0xffff, (fw_ver & 0xff) + 1);
++}
++EXPORT_SYMBOL_GPL(btmtk_fw_get_filename);
++
+ int btmtk_setup_firmware_79xx(struct hci_dev *hdev, const char *fwname,
+ 			      wmt_cmd_sync_func_t wmt_cmd_sync)
+ {
+diff --git a/drivers/bluetooth/btmtk.h b/drivers/bluetooth/btmtk.h
+index cbcdb99a22e6..e76b8a358be8 100644
+--- a/drivers/bluetooth/btmtk.h
++++ b/drivers/bluetooth/btmtk.h
+@@ -160,6 +160,9 @@ int btmtk_register_coredump(struct hci_dev *hdev, const char *name,
+ 			    u32 fw_version);
+ 
+ int btmtk_process_coredump(struct hci_dev *hdev, struct sk_buff *skb);
++
++void btmtk_fw_get_filename(char *buf, size_t size, u32 dev_id, u32 fw_ver,
++			   u32 fw_flavor);
+ #else
+ 
+ static inline int btmtk_set_bdaddr(struct hci_dev *hdev,
+@@ -194,4 +197,9 @@ static int btmtk_process_coredump(struct hci_dev *hdev, struct sk_buff *skb)
+ {
+ 	return -EOPNOTSUPP;
+ }
++
++static void btmtk_fw_get_filename(char *buf, size_t size, u32 dev_id,
++				  u32 fw_ver, u32 fw_flavor)
++{
++}
+ #endif
+-- 
+2.25.1
+
 
