@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1C4EC25B78
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 May 2024 23:15:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82447C25B75
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 May 2024 23:15:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FFGLv+/W/92QSc/vAIXNlWmURdmlafsCOBe70BkQWmk=; b=A+UUTyv6HV9OxOQppyDIMaokLa
-	Bb3kPkM+rnzJFU9MwAW0V47m0TnaVHERMm5TZRONYPRr9e5D6r+YL1Cj9YXplvqU8AOLx/e6PINbK
-	vPuSrYRwoLR4AvFaLX/F+sdmGJbsvPWpHiDyo1oHUDjiA6mpz37zT5wnXOU3maBtW/MZL8touKrZQ
-	v7T8qiqTnQ3Q7mLgsAe2tzbm4DlD78iIZkW7hdm1cH7qY7XzE/veaLQBbL/cIZB/Nb7eITrJc1yTO
-	jNDXadqNuj59WI36THhTNapX216BDOdzfbmWv5P14c52KDSgTb/LmREFOfHXhkUYPuiGfvQsQ/025
-	nqlz2dnA==;
+	bh=Ze1QygMwN68meqo9PDmwz469IrrkJxaffJS5Hm7aDfQ=; b=aCGzLjAzGDQyZrXtyjnROGRTl5
+	I8Fz35mFSrfm3aUHkhyC4hz5jkEzhoHw9dmogN2Y5dnb4XUUg5idKKPWAw+IX2+wot+ou4Mu4R+1s
+	KImUDKHOWArPYKjJErQ9zw12MNuSGDyBciqoZIt0J7yywuaCk4iWL85O1VouLxaW0n20vlqf1QU0R
+	5JVxQ8FnUD4Zg4219sNu/JFshA7zX+wm2KWvIfZ/y+MZvhMelYn1nDFnmzgElSLN7H5mF4AxMNVGq
+	1PJUtcwgsKgrdkfdoJhh0kiwVSovGBCRnuxX0lpXLkKTAITfFUJk8y0MAuN9KTdDXjDgGhZ44aZ0H
+	QjLByyfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s7Nqa-0000000386z-2oCN;
-	Wed, 15 May 2024 23:15:47 +0000
-Received: from mail-oi1-f177.google.com ([209.85.167.177])
+	id 1s7Nqg-000000038Ab-46dv;
+	Wed, 15 May 2024 23:15:51 +0000
+Received: from mail-oo1-f51.google.com ([209.85.161.51])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s7NqU-0000000383z-3BCv
+	id 1s7NqX-0000000385h-38Ts
 	for linux-mediatek@lists.infradead.org;
-	Wed, 15 May 2024 23:15:41 +0000
-Received: by mail-oi1-f177.google.com with SMTP id 5614622812f47-3c9b5776fbfso359027b6e.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 15 May 2024 16:15:37 -0700 (PDT)
+	Wed, 15 May 2024 23:15:43 +0000
+Received: by mail-oo1-f51.google.com with SMTP id 006d021491bc7-5b282c5fe88so366705eaf.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 15 May 2024 16:15:41 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1715814937; x=1716419737;
+        d=1e100.net; s=20230601; t=1715814941; x=1716419741;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=FFGLv+/W/92QSc/vAIXNlWmURdmlafsCOBe70BkQWmk=;
-        b=dD67ndMMankmi/Ex6ChvkP3MCZGI5qgL01MGM0EARgdYtji5jU0C0fau+/+g3H0aUF
-         bLs/7y1j08e6b0souUwc5hp8oMgAQOPAEi+sxJ9abUbPMKqgZwePaNENkSUBStR2b3ks
-         rNuuuJ7D1ei5nTcq9nSjjzRnApd2voAwb3Z2BYyWYFyXIKtP0QCY3a8PjGE7GI/67gxr
-         EEE/w8TceKJWykw7PlyHkMS3b6eyVsURTylZncqvFypkYvA5uzVbFwWkqe11gfQECgg0
-         iIFfaas0FKfuCAfsXqeRnt3KI/cQombj1bArVsUWAqhuEwQuP1PVHpQzkYGDvNxUyOW1
-         wdww==
-X-Forwarded-Encrypted: i=1; AJvYcCXfcJSdhSI8qImhkIuPhPy/1D1TsDNtSHuXrLj2GuKU4+1u/5Tnqjqhk9VcuXwHYqIUmKOKMSkKoV1Y9aqRxyJQ0h/VowxWnBnmLDjvNTbipCmn
-X-Gm-Message-State: AOJu0YwHLc4QFzrt9T4fDcC0v2UCxqo/GE92jjQ1sAPuNO9qde0jYK/y
-	Jk7P4zE+w7noRHQU4v7zeez0UpZNPtABBWyhc2TTMn8m4oXrVHvU
-X-Google-Smtp-Source: AGHT+IGPg0TcyM5FM5P2N8MzncJHqBNaf4XUzVq0k/1hKGGahsM8lm6b1acACn8c1v7G9KBmrprMLQ==
-X-Received: by 2002:a05:6830:14cd:b0:6f0:e2aa:ea49 with SMTP id 46e09a7af769-6f0e92ce674mr19960426a34.3.1715814936703;
-        Wed, 15 May 2024 16:15:36 -0700 (PDT)
+        bh=Ze1QygMwN68meqo9PDmwz469IrrkJxaffJS5Hm7aDfQ=;
+        b=HDr3DpZnKaWPWlOo0OwXyo5kpllNCnxMziDHzMl+YyPcA61Mc2wSdDb11Lg5RAvEM6
+         Of8NlMCzwzpx80YpvCTk94a20jYxPsfnYbMu54SIxAYHR+yLFUdT2R7TIHYxhHx3cz2P
+         MJrOh99kdfsElarhYz4zE5SQnAcY8EhPXGYMBkV8wnfnwYqJ9cYWUzUclghLzHXC7CZp
+         Zw7CoZG2uwgnlRYowsdvkHde2xCK/+27OYPkhNd8Rb4yzFbVOuRLLZVhSifOCyC/fJYW
+         VHMUaDBhxvXLv4VYZqkl3Ubb4czRxmg4BnucfTPaf97beuwObXaziB9+YZgCD99IjBqQ
+         estA==
+X-Forwarded-Encrypted: i=1; AJvYcCXmeekkAgoiAXqsnQdOxtZr8lUNel+R/BeU87PK+aygAwExCVMwo2wJu361CfsrgdREL7TKR2HcwT/g7VQL8PjInlg8SafTwNyVfuyY4P4NREAT
+X-Gm-Message-State: AOJu0Yx/IAARlyLnGqULKZ+Lynxbc+abJ1JhUTD6QZk6n5DshU+FkR77
+	tziM9sDMaw6eNNldp4vCUwONlsWNltnvF4N9xUAve+sr1iMsnpSE
+X-Google-Smtp-Source: AGHT+IFeY6IBOmS16l1KarBie8GoRXUZtYtFiMESabNjNgeh9/aF2ykz5OpkEZWWolf+VV2rf5fl6g==
+X-Received: by 2002:a4a:de14:0:b0:5b2:7aa7:7b29 with SMTP id 006d021491bc7-5b28193d5e7mr17763186eaf.1.1715814940930;
+        Wed, 15 May 2024 16:15:40 -0700 (PDT)
 Received: from sean-ThinkPad-T450s.lan ([207.191.35.252])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-6f0ec2e566dsm2032159a34.15.2024.05.15.16.15.35
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-6f0ec2e566dsm2032159a34.15.2024.05.15.16.15.39
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 15 May 2024 16:15:36 -0700 (PDT)
+        Wed, 15 May 2024 16:15:40 -0700 (PDT)
 From: sean.wang@kernel.org
 To: marcel@holtmann.org,
 	johan.hedberg@gmail.com,
@@ -60,17 +60,17 @@ Cc: linux-bluetooth@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	Hao Qin <hao.qin@mediatek.com>,
 	Sean Wang <sean.wang@mediatek.com>
-Subject: [PATCH v5 3/5] Bluetooth: btusb: mediatek: refactor the function btusb_mtk_reset
-Date: Wed, 15 May 2024 16:15:19 -0700
-Message-Id: <fc7dccf0990d1eda52f7b9ebbe5348e06979107d.1715813148.git.sean.wang@kernel.org>
+Subject: [PATCH v5 5/5] Bluetooth: btusb: mediatek: add MT7922 subsystem reset
+Date: Wed, 15 May 2024 16:15:21 -0700
+Message-Id: <90f8b0663933990ed1bf47dd6698d8ff69f1a948.1715813148.git.sean.wang@kernel.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <ce0337178bf617d52ff320a36837d75bf537df2d.1715813148.git.sean.wang@kernel.org>
 References: <ce0337178bf617d52ff320a36837d75bf537df2d.1715813148.git.sean.wang@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240515_161538_907706_DB036D31 
-X-CRM114-Status: GOOD (  12.70  )
+X-CRM114-CacheID: sfid-20240515_161541_937854_5B1B3844 
+X-CRM114-Status: GOOD (  11.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,90 +87,53 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Hao Qin <hao.qin@mediatek.com>
 
-Extract the function btusb_mtk_subsys_reset from the btusb_mtk_reset
-for the future handling of resetting bluetooth controller without
-the USB reset.
+Add the support of MT7922 bluetooth subsystem reset that was called the
+auto revert to self-recover from the fatal error in the controller like
+the host encounters HCI cmd timeout or the controller crashes.
 
 Co-developed-by: Sean Wang <sean.wang@mediatek.com>
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 Signed-off-by: Hao Qin <hao.qin@mediatek.com>
 ---
-v3: refine the git message
+v3: split from the v2 to make the patch do one thing in a patch.
 v4: rebase onto the latest code
 v5: no change
 ---
- drivers/bluetooth/btusb.c | 45 +++++++++++++++++++++++----------------
- 1 file changed, 27 insertions(+), 18 deletions(-)
+ drivers/bluetooth/btusb.c | 14 +++++++++++++-
+ 1 file changed, 13 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index 611135d1ce01..602456e94fdb 100644
+index ddd5ca7596e5..79aefdb3324d 100644
 --- a/drivers/bluetooth/btusb.c
 +++ b/drivers/bluetooth/btusb.c
-@@ -3033,28 +3033,13 @@ static u32 btusb_mtk_reset_done(struct hci_dev *hdev)
- 	return val & MTK_BT_RST_DONE;
- }
- 
--static int btusb_mtk_reset(struct hci_dev *hdev, void *rst_data)
-+static int btusb_mtk_subsys_reset(struct hci_dev *hdev, u32 dev_id)
- {
- 	struct btusb_data *data = hci_get_drvdata(hdev);
--	struct btmediatek_data *mediatek;
+@@ -3039,7 +3039,16 @@ static int btusb_mtk_subsys_reset(struct hci_dev *hdev, u32 dev_id)
  	u32 val;
  	int err;
  
--	/* It's MediaTek specific bluetooth reset mechanism via USB */
--	if (test_and_set_bit(BTUSB_HW_RESET_ACTIVE, &data->flags)) {
--		bt_dev_err(hdev, "last reset failed? Not resetting again");
--		return -EBUSY;
--	}
--
--	err = usb_autopm_get_interface(data->intf);
--	if (err < 0)
--		return err;
--
--	btusb_stop_traffic(data);
--	usb_kill_anchored_urbs(&data->tx_anchor);
--	mediatek = hci_get_priv(hdev);
--
--	if (mediatek->dev_id == 0x7925) {
-+	if (dev_id == 0x7925) {
+-	if (dev_id == 0x7925) {
++	if (dev_id == 0x7922) {
++		btusb_mtk_uhw_reg_read(data, MTK_BT_SUBSYS_RST, &val);
++		val |= 0x00002020;
++		btusb_mtk_uhw_reg_write(data, MTK_BT_SUBSYS_RST, val);
++		btusb_mtk_uhw_reg_write(data, MTK_EP_RST_OPT, 0x00010001);
++		btusb_mtk_uhw_reg_read(data, MTK_BT_SUBSYS_RST, &val);
++		val |= BIT(0);
++		btusb_mtk_uhw_reg_write(data, MTK_BT_SUBSYS_RST, val);
++		msleep(100);
++	} else if (dev_id == 0x7925) {
  		btusb_mtk_uhw_reg_read(data, MTK_BT_RESET_REG_CONNV3, &val);
  		val |= (1 << 5);
  		btusb_mtk_uhw_reg_write(data, MTK_BT_RESET_REG_CONNV3, val);
-@@ -3098,8 +3083,32 @@ static int btusb_mtk_reset(struct hci_dev *hdev, void *rst_data)
+@@ -3079,6 +3088,9 @@ static int btusb_mtk_subsys_reset(struct hci_dev *hdev, u32 dev_id)
+ 	if (err < 0)
+ 		bt_dev_err(hdev, "Reset timeout");
+ 
++	if (dev_id == 0x7922)
++		btusb_mtk_uhw_reg_write(data, MTK_UDMA_INT_STA_BT, 0x000000FF);
++
+ 	btusb_mtk_id_get(data, 0x70010200, &val);
  	if (!val)
  		bt_dev_err(hdev, "Can't get device id, subsys reset fail.");
- 
--	usb_queue_reset_device(data->intf);
-+	return err;
-+}
- 
-+static int btusb_mtk_reset(struct hci_dev *hdev, void *rst_data)
-+{
-+	struct btusb_data *data = hci_get_drvdata(hdev);
-+	struct btmediatek_data *mtk_data;
-+	int err;
-+
-+	/* It's MediaTek specific bluetooth reset mechanism via USB */
-+	if (test_and_set_bit(BTUSB_HW_RESET_ACTIVE, &data->flags)) {
-+		bt_dev_err(hdev, "last reset failed? Not resetting again");
-+		return -EBUSY;
-+	}
-+
-+	err = usb_autopm_get_interface(data->intf);
-+	if (err < 0)
-+		return err;
-+
-+	btusb_stop_traffic(data);
-+	usb_kill_anchored_urbs(&data->tx_anchor);
-+	mtk_data = hci_get_priv(hdev);
-+
-+	err = btusb_mtk_subsys_reset(hdev, mtk_data->dev_id);
-+
-+	usb_queue_reset_device(data->intf);
- 	clear_bit(BTUSB_HW_RESET_ACTIVE, &data->flags);
- 
- 	return err;
 -- 
 2.25.1
 
