@@ -4,92 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83BF2C25B75
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 May 2024 08:52:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C6AFC25B79
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 May 2024 11:23:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FPZC2tLZzoMwQUMQ/NsgDeMOgcmg6uOukKnCCk0Jz0k=; b=OpCXoA0rtn4Lq5GVAwlCJrHrvg
-	TGS8g8FZrrUJCIFxrox6xyXDW6Ol3TabmzMn9NTiAK9M0NO5MpY81aDV5Ll1WiNz+hUYhYcLEP9ps
-	+7cfSP3dndGiLrqG02NhKsH1lQN1GNoI9ds7JzGMDd4mzThq/mDDs3H7m0Faqi+o7mSa9UinC0Pus
-	9x+0X/Hey0404YGE/uttyg2mAGVUgIhwIL5sFSeABFTUelhnu7rFdm5PL4vag1Gi3zi1jgXQE4qWA
-	hMgUeZZsRW+KZKzrt0Qa19uQuqXFvXm3zlrof1tPZIRTuc9X2P2MGL41aXAP9sL/UB9xAJgqS5Knj
-	hSTEzpcw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=CsDipHrMcSMQZ5T1xzar/uAvtmPl0zEeVcCMjR5KaC0=; b=uFeOkPE0q5TPu8eXW9bQ/qKowK
+	p3pl/RKHJoy2ptu/TgBEIVJ8YCSroOJGZdeBQgy2Gl1gvDrqEBRQ2Hw+0gg4leKVt6Zoir5dE5SGe
+	cXreqyWh6gZoERrzn6UZlq0+EYy1FxhE1e9UJL1ZO+xNm2r/ElTLZ2WHm84QdDgKoTlB8OVpxmRBa
+	vUdHS3Oqu2Xhflvlo0NKcEOR5P7eh0p4EpovZM4PwLzvyJGFFV+ixwQOLa75dpViZjxdnqu+5IH5v
+	aIqJ1/wfu4nZsih9zzr/TVFhWyg2XFhmL8P49F4lDp94B7lUPafNvQC4bGdrzsUYcGvmW9smtf6UM
+	oV80mRGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s7AMv-00000000zbs-0OnC;
-	Wed, 15 May 2024 08:52:13 +0000
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+	id 1s7Cjg-00000001M8D-2CMw;
+	Wed, 15 May 2024 11:23:52 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s7AMr-00000000zVW-0UrE;
-	Wed, 15 May 2024 08:52:10 +0000
-Received: by mail-wr1-x431.google.com with SMTP id ffacd0b85a97d-34d96054375so5104164f8f.2;
-        Wed, 15 May 2024 01:51:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1715763118; x=1716367918; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=FPZC2tLZzoMwQUMQ/NsgDeMOgcmg6uOukKnCCk0Jz0k=;
-        b=nFoeftwaMxVQGXCzrZNekrnX1k4LpX3ryTW117lh0VRPPaav4ou3nHiB+8YKzFdbuF
-         AgW9ewgEk1UAAsSlqSbkrNV3Nn3ZDYoCetWPgZFhl3XYYLLe9QKXNzLd9fQ5oHz9YOfJ
-         mvAOBP4KIXTuYHiZ53q+OPBwGwpdP+SWKAoVMeMJ3Veww/4qcDYtdlbsfta1afKJ+jEo
-         rvzc4DjD7OWIy60JfQ9XLphp8MyZB0QphEb0IGOINSqZP/BD8G1pHPrqy7J2KbBlJ1Ws
-         ZVwN+i5EJo4Rr6Nk0rO4ufDHqWw4UxerbfzqVs90zzEu22CqjdWIXuYB9myM5R4ZuubQ
-         EZLg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1715763118; x=1716367918;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=FPZC2tLZzoMwQUMQ/NsgDeMOgcmg6uOukKnCCk0Jz0k=;
-        b=shjGHAfejLnhKtO8j4rqJVsuvG9cWRz7M+hbSoD8TvBAF7kriuqLvFLNX11BuuWvzJ
-         qWIWmcPs4LgUG3cGV//x2VFBxT1YLjHQ+23ONJW14dl6cPVIp65vK5d+1y0CqeH6wbIk
-         JO+shgMITyeRWzp54cQBHxaON5c4oUkS6/9f3Wag3Tb8xof+j3g3RhPa/vsVli/NbMok
-         npYMa/asadVcJQaRIkxqvhVgYKWPD3bxOEwfc27j0qT4YWzGQG2H3xQ+5ZkT0U/isMW0
-         c2+pRae7fuwq+FjZr3i/X44przPjbUjzwCI91dMkxHFf4+ZBimhAYBKsfN3E5fPr96ye
-         cJxg==
-X-Forwarded-Encrypted: i=1; AJvYcCX7mb+Xulevj8sGtVO9gjmE0t8ypaE3sCAo1pdk30CJY0wrNFOmt3NEUJorTMwy0DEzy67B4lTD1d9oWNwAvCWT0Zun46/26pjssfO5Y/3AupcnohKPvJwO0yNXrdOgrTPr8S0G8mdQOgsiRr4hasAqSOfmxqxh1rA=
-X-Gm-Message-State: AOJu0YwBUTF1Y264ke1SGCmB/rfmF6v6KHcGDju0MRYTt25So8r0B3Jr
-	Qr1QS0CTP43INHxREqJ/E9SRAPcQVZGrnpd0CNyMfUGqT0Hl7odq
-X-Google-Smtp-Source: AGHT+IG0SgB8ilO2X7vWlAcw0j1o8wIr1Ltsv+huCeg2g2aeWDyRUcSAab3sNsKxpfx63E9tmVfbbg==
-X-Received: by 2002:adf:fc08:0:b0:34c:cca6:3d18 with SMTP id ffacd0b85a97d-3504aa66a33mr10191172f8f.68.1715763113485;
-        Wed, 15 May 2024 01:51:53 -0700 (PDT)
-Received: from ALPER-PC.. ([178.233.24.52])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3502b8a8454sm15825034f8f.56.2024.05.15.01.51.51
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 15 May 2024 01:51:53 -0700 (PDT)
-From: Alper Nebi Yasak <alpernebiyasak@gmail.com>
-To: linux-kernel@vger.kernel.org
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Rob Herring <robh@kernel.org>,
-	linux-clk@vger.kernel.org,
-	=?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
-	linux-mediatek@lists.infradead.org,
-	Michael Turquette <mturquette@baylibre.com>,
-	Conor Dooley <conor+dt@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	devicetree@vger.kernel.org,
-	Alper Nebi Yasak <alpernebiyasak@gmail.com>
-Subject: [RESEND PATCH v2 2/2] arm64: dts: mediatek: mt8173: Fix timer 13 MHz clock description
-Date: Wed, 15 May 2024 11:51:05 +0300
-Message-ID: <20240515085137.2842804-2-alpernebiyasak@gmail.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240515085137.2842804-1-alpernebiyasak@gmail.com>
-References: <20240515085137.2842804-1-alpernebiyasak@gmail.com>
+	id 1s7Cjc-00000001M6M-3ZWR;
+	Wed, 15 May 2024 11:23:50 +0000
+X-UUID: 95f0e09c12ad11efa8f1cd58ee6c2400-20240515
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=CsDipHrMcSMQZ5T1xzar/uAvtmPl0zEeVcCMjR5KaC0=;
+	b=c5i5rGnnJH3cA62MBtwDtZc6hm/5liYJDd3mi5O3txRo3QBUwqth6IeDGnLCUfL3ofUnyM181II9a1vWpUTv0VpCWe4O9PPQn3H8Fyi41hHoK7C213GLoj0m7oHTVR2D0FHyK5MvsmTMNuNJ9Vmyus5vJTCAuwyQF13v6k7x2ng=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.38,REQID:3d71601b-16b8-4892-87bd-edee090b7d70,IP:0,U
+	RL:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:25
+X-CID-META: VersionHash:82c5f88,CLOUDID:3bc81ffc-ed05-4274-9204-014369d201e8,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 95f0e09c12ad11efa8f1cd58ee6c2400-20240515
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
+	(envelope-from <yong.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1174990795; Wed, 15 May 2024 04:23:42 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 15 May 2024 19:23:36 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 15 May 2024 19:23:35 +0800
+From: Yong Wu <yong.wu@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, <christian.koenig@amd.com>, Sumit Semwal
+	<sumit.semwal@linaro.org>, Andrew Morton <akpm@linux-foundation.org>
+CC: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley
+	<conor+dt@kernel.org>, Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+	Brian Starkey <Brian.Starkey@arm.com>, John Stultz <jstultz@google.com>,
+	<tjmercier@google.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Yong Wu <yong.wu@mediatek.com>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-media@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
+	<linaro-mm-sig@lists.linaro.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, Robin Murphy <robin.murphy@arm.com>,
+	Vijayanand Jitta <quic_vjitta@quicinc.com>, Joakim Bech
+	<joakim.bech@linaro.org>, Jeffrey Kardatzke <jkardatzke@google.com>, "Pavel
+ Machek" <pavel@ucw.cz>, Simon Ser <contact@emersion.fr>, Pekka Paalanen
+	<ppaalanen@gmail.com>, <willy@infradead.org>, Logan Gunthorpe
+	<logang@deltatee.com>, Daniel Vetter <daniel@ffwll.ch>,
+	<jianjiao.zeng@mediatek.com>, <kuohong.wang@mediatek.com>,
+	<youlin.pei@mediatek.com>
+Subject: [PATCH v5 1/9] dt-bindings: reserved-memory: Add mediatek,dynamic-restricted-region
+Date: Wed, 15 May 2024 19:23:00 +0800
+Message-ID: <20240515112308.10171-2-yong.wu@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20240515112308.10171-1-yong.wu@mediatek.com>
+References: <20240515112308.10171-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--3.946300-8.000000
+X-TMASE-MatchedRID: l5qCKP2S+CYxaBEU4bKrV8LPXKYZysJRecvjbu/xDjpMOjKUxCZwr6oy
+	tXMP4p4T7Oz5SO8AjrT8deRGOD4hQJ/vdeQQfVo4zfqlpbtmcWhMkOX0Uoduubuqk4cq52pzNDP
+	jsaoNaOmcPcDHCp4L+uSWVqW5qzmOGHMruoCVNItsG7r4Qh7N3J15MaKbV6Qv92wasZo4p00VN8
+	HXIE+U8k5/nzWZD6z607K+59sjwLdAXbiRmn1bD54CIKY/Hg3AaZGo0EeYG978V77yhJRgo99pj
+	zubZ2rHwrbXMGDYqV+FR9Hau8GO7oCxaPcRWGBYkik2Q7DaYM+FM1ZvdZds7crl8mP4ERMT9yXU
+	za0W6DonyDffjvbK+iB9TparQODyGAhBST/DW+QK0fPSRjZItaWn1XP+V4+Y82Gj2QC3yG0smXV
+	K/H8eHzG7sr7xobSAsPEFD+rZA81DDKa3G4nrLQ==
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--3.946300-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 92DBBFBA56F52E6A5E22EDA4524B47671DD9FFB83DFC8A6B06D3DD2320D9BA292000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240515_015209_199951_DA06775E 
-X-CRM114-Status: GOOD (  15.47  )
+X-CRM114-CacheID: sfid-20240515_042348_918209_4A010D26 
+X-CRM114-Status: GOOD (  13.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,62 +114,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-A previous patch fixes an issue with the mt8173-infracfg clock driver
-when working as a module, but has the side effect of skipping set up of
-CLK_INFRA_CLK_13M in that case. This clock is used by the timer device.
+Add a binding for describing the dynamic restricted reserved memory range.
+The memory range also will be defined in the TEE firmware. It means the TEE
+will be configured with the same address/size that is being set in this
+DT node. Regarding to the detail TEE command, Please search
+MTK_TZCMD_SECMEM_ZALLOC and MTK_TZCMD_SECMEM_FREE.
 
-Similar to the MT8183, MT8192, MT8195 and MT8186 cases [1], change the
-input clock of the timer block a fixed factor divide-by-2 clock that
-takes the 26 MHz oscillator as its input.
-
-Also remove the RTC clock from the timer node while we're here. According
-to commit 59311b19d7f63 ("clocksource/drivers/timer-mediatek: Add system
-timer bindings") it is no longer used.
-
-[1] https://lore.kernel.org/all/20221201084229.3464449-1-wenst@chromium.org/
-
-Signed-off-by: Alper Nebi Yasak <alpernebiyasak@gmail.com>
+Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 ---
-Tested on a MT8173 Chromebook. But I'm not sure I understand all of
-this, so review with a pinch of salt.
+ .../mediatek,dynamic-restricted-region.yaml   | 43 +++++++++++++++++++
+ 1 file changed, 43 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/reserved-memory/mediatek,dynamic-restricted-region.yaml
 
-Changes in v2:
-- Add this patch
-
- arch/arm64/boot/dts/mediatek/mt8173.dtsi | 12 ++++++++++--
- 1 file changed, 10 insertions(+), 2 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-index 3458be7f7f61..809b379b6818 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-@@ -244,6 +244,15 @@ psci {
- 		cpu_on	 = <0x84000003>;
- 	};
- 
-+	clk13m: fixed-factor-clock-13m {
-+		compatible = "fixed-factor-clock";
-+		#clock-cells = <0>;
-+		clocks = <&clk26m>;
-+		clock-div = <2>;
-+		clock-mult = <1>;
-+		clock-output-names = "clk13m";
-+	};
+diff --git a/Documentation/devicetree/bindings/reserved-memory/mediatek,dynamic-restricted-region.yaml b/Documentation/devicetree/bindings/reserved-memory/mediatek,dynamic-restricted-region.yaml
+new file mode 100644
+index 000000000000..5cbe3a5637fa
+--- /dev/null
++++ b/Documentation/devicetree/bindings/reserved-memory/mediatek,dynamic-restricted-region.yaml
+@@ -0,0 +1,43 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/reserved-memory/mediatek,dynamic-restricted-region.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
- 	clk26m: oscillator0 {
- 		compatible = "fixed-clock";
- 		#clock-cells = <0>;
-@@ -530,8 +539,7 @@ timer: timer@10008000 {
- 				     "mediatek,mt6577-timer";
- 			reg = <0 0x10008000 0 0x1000>;
- 			interrupts = <GIC_SPI 144 IRQ_TYPE_LEVEL_LOW>;
--			clocks = <&infracfg CLK_INFRA_CLK_13M>,
--				 <&topckgen CLK_TOP_RTC_SEL>;
-+			clocks = <&clk13m>;
- 		};
- 
- 		pwrap: pwrap@1000d000 {
++title: MediaTek Dynamic Reserved Region
++
++description:
++  A memory region that can dynamically transition as a whole between
++  secure and non-secure states. This memory will be protected by OP-TEE
++  when allocations are active and unprotected otherwise.
++
++maintainers:
++  - Yong Wu <yong.wu@mediatek.com>
++
++allOf:
++  - $ref: reserved-memory.yaml
++
++properties:
++  compatible:
++    const: mediatek,dynamic-restricted-region
++
++required:
++  - compatible
++  - reg
++  - reusable
++
++unevaluatedProperties: false
++
++examples:
++  - |
++    reserved-memory {
++        #address-cells = <1>;
++        #size-cells = <1>;
++        ranges;
++
++        reserved-memory@80000000 {
++            compatible = "mediatek,dynamic-restricted-region";
++            reg = <0x80000000 0x18000000>;
++            reusable;
++        };
++    };
 -- 
-2.43.0
+2.25.1
 
 
