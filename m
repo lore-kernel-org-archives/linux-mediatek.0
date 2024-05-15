@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E425DC25B78
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 May 2024 17:44:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9EF2C25B75
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 May 2024 17:45:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aHE7vKazSCPusjGW9s/KeLr4sCT6I3eVwP0aPWhjdjY=; b=sEd1JQfQZjTMZWD05IE9fcA4ET
-	NBo+AYu+RZvd9gm4SmSWYJnYBwAAPVOzEeLfDavT4Syu9rJaEX0e8tApGYkF66g+YZpJoCZ9/tH7m
-	R9sfwEKbeTfBJMiiZDyfoAkr2u4rGcb8gMKSshy53hKrV6IVSWxdlO3FoWsd1nI+8z/mNsbkwuWD/
-	eqRI0OsPMSKQlbakioRHL8RVDlHztIE4s+kdgK3fwlL2W6lr1kOEkrvxQsQKnjiT4ujSqI/VB+CvF
-	FfoweYIclufkJOM0sPmNiR9L8M2z3i4pTk5jqcoGqJ830m81c7nMQSUD8anEUz+9mnZR2SMHTH9l1
-	EkBnMzvg==;
+	bh=Inmc+syrxkqK6aZQdAoIkvH5UOxtf+2Na/UaXVJLBFc=; b=hHELud/ocT1kGkLIWCi6ihYEmW
+	yAz2Wd9o7cFWgPYHiKqOUbKCDRsLaBFzw2uw+t2lfNFyULmuKrT4FUGZ12nzuHFU/fx9l6zyXXRr2
+	JfKKA1pib8RNfgyDDAIwWvTMCbmBqYJg1teqyTxpAH1eHkqd+Eq13fR9jDrT1EgNxSC9fPTgiTzNo
+	7xF5AC9xcy+mS5ocbS3VyAGQZpQADTStejhJOxFYd0bmAR9Dx5CF0esqZkBRyfL7qckhGC/bvg4J5
+	ZHMEJXxUoN/mosTGLn99H3eg1SSEZIbAShJsppXMfYaNZaSrzv89uYXlt3B+AGdvFavtGITgtcnzI
+	mxtm0rbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s7IgU-00000002S2S-3d7Z;
-	Wed, 15 May 2024 17:44:58 +0000
-Received: from mail-oa1-x36.google.com ([2001:4860:4864:20::36])
+	id 1s7IhB-00000002SGq-1YmV;
+	Wed, 15 May 2024 17:45:41 +0000
+Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s7IgO-00000002S18-0mb0
+	id 1s7Ih7-00000002SFD-3kn1
 	for linux-mediatek@lists.infradead.org;
-	Wed, 15 May 2024 17:44:54 +0000
-Received: by mail-oa1-x36.google.com with SMTP id 586e51a60fabf-23d1c4c14ceso4524546fac.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 15 May 2024 10:44:50 -0700 (PDT)
+	Wed, 15 May 2024 17:45:39 +0000
+Received: by mail-pf1-x434.google.com with SMTP id d2e1a72fcca58-6f44ed6e82fso6264684b3a.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 15 May 2024 10:45:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1715795090; x=1716399890; darn=lists.infradead.org;
+        d=google.com; s=20230601; t=1715795135; x=1716399935; darn=lists.infradead.org;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=aHE7vKazSCPusjGW9s/KeLr4sCT6I3eVwP0aPWhjdjY=;
-        b=ZyGPrpvjjnP7rIsGqMw/hjE8+FaZqKP6JX/b+pbVXTuLUyHJ/XlC446dj/YQkrWVkw
-         bd19fmJry9T+k0SRn9ppCw1WDpIZQGnhIBwcJ1gzZQgAphEVUNwISXptQBLy9Th4E77e
-         1xlvH6P9cElUILIGkLo/HDIpqZi9B/3nOavsQqf3G104FJWuS66S7khidktKbpPRBy1f
-         /kULut6zCpdqwccXKfh/43FignU7iZPT9T+VtyNFddedfQPizUPmyLtcLVct7w2BOLQm
-         8cu48SkEHNbBONpkHD03CYop/Mwq820Uoagvw3ears9JcXTllM6RMQSwKfTF2eF7Kgx/
-         nmTA==
+        bh=Inmc+syrxkqK6aZQdAoIkvH5UOxtf+2Na/UaXVJLBFc=;
+        b=YLuDOJ6Ck7EqdFgDYU6vF+I3txI2N/p8956nonYYscsy56YiXVUnu548jt6QzQhsqi
+         sCvQvYBKY38VmtauRYwltYAMKehk9qdxnuT4eig7a9AXd5ihOY1MvwNQl5w1s5M1/+ap
+         WAefFJtgFXtlKp8Up6EkPtUy4m6DgcNToZqvbpBL8BSumfcq2ufRCzKIGRz02wJSzo1r
+         mWick9hEWpRC+Mwxjp2RGS1i4kof0frC/yJRhASUqTuamjYMOCF/5kcY1Sp+72BzQkDb
+         IqYhlC/7+Q9NMCVkvnf0t/KdjKjBFlfDTNE4RJvTtGjlwNEwfGD10TIIqTukOliQt3vZ
+         LIXw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1715795090; x=1716399890;
+        d=1e100.net; s=20230601; t=1715795135; x=1716399935;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=aHE7vKazSCPusjGW9s/KeLr4sCT6I3eVwP0aPWhjdjY=;
-        b=P6EsyYh1vnY8ujYL577OknQRbg4/ZFU8HUU6xM+o2ydlvu8fMw9UdNYhQ0OiIUHRo5
-         tqYyH7F5WZWx8hH/gWlW5IV1Tphcuo7gbsFzfPnCg6yrghZjIX8KGrkkz4870sXLgP6z
-         UUOCfgvTD1h/201BygmO+GiPuO8oYSeMIDgBpkmIsqM0CP0gOY/Y5eH3ht1cEwFrj7uQ
-         oyfkzhyx7s3Jpf1737gEAHF/YyHEWlK1Ne3pk9ZBqeYdH7XmMrEqxo94o5HVBDpxiuS2
-         7wFuQbsfOfeubXdhknYhX4mPShPnjxlTkllsVfcII+ulXiuSr1w7oLg2vR2+41rBhVP8
-         S8Ug==
-X-Forwarded-Encrypted: i=1; AJvYcCUHcJsqtgzuf0uGuJi0FPg052h1KkrOLuKSYXiJHhvmXD7COSBMx7gUPJWC+0msAv2k1cIeYt0xIC64yXDO6NQ6x6XNTaPFaKGLgDe56jNCKXbO
-X-Gm-Message-State: AOJu0Yx8paU63hjDzfQcTNHllEE0A6v4bzvwXdNR/aun99rkU0PkJfSr
-	WDDnA9HQ2Pt8yTVCGXz55sub1vVDbPlHTMTUesJuFHVmJe3KxFmHUOxCIbL45A==
-X-Google-Smtp-Source: AGHT+IF16vw5ldq2DEQeMTmXB3e2sX+wSSbbVPVrx/3sJzxb2YomXPDc5Mwow7eXWfCtuMlI4cEQLg==
-X-Received: by 2002:a05:6871:a00f:b0:240:eab9:1635 with SMTP id 586e51a60fabf-24172a904bcmr18531712fac.21.1715795088326;
-        Wed, 15 May 2024 10:44:48 -0700 (PDT)
+        bh=Inmc+syrxkqK6aZQdAoIkvH5UOxtf+2Na/UaXVJLBFc=;
+        b=DfJST+Ll5cb14nA4sFmqu/oLQxARLoFQZZ1gl899mIJf6kLmWeSXV6z6SEq4DZrx0V
+         hBiQ4WX6p2y0Kd/3LQ0ydskRD+nnrcemMC8RBzLAGUaI3G5yIe+Q22LTCFz21VF22wyw
+         0zgQPUWSQ2qbHmq8Y7Zygn69dcNCa3zcmUwr9BAF34Zj48pE8PWRQGkizuhav7qIgr0I
+         qjWj4mPUkXR4Hrp+iOeR3quSxe/UCIoW94AbK+/Dz7rHmJJMLLXFNQcRDyKJdjcmFtqj
+         v7XcfOMfS/0LUkxpLsxhSrHB/Aa/hXzXtH1t2mcM/vZIWlELmMrChNOVxPVmNcSd+h0d
+         DsrQ==
+X-Forwarded-Encrypted: i=1; AJvYcCX1kY++tI5HTmctKJ+mjNYPAAd9Rem/78PWQ9L0Uk7z2HrILZqUogeA0JZOQk9n+mOcCfgsH1hN2aJvo6Jgsb2O2pcGlZyzUxzbZopxba2U3AUz
+X-Gm-Message-State: AOJu0YyPdzMv011bTCs5IBM8xzRRTurCYmP8QrA5Krp2V6LLH19U0mSp
+	lOOZ2Jv6Fx1sZ2nnCgia8L1cNT97cKBMpiF12NTRzlMkJoGuAvst/yo8wLOJtg==
+X-Google-Smtp-Source: AGHT+IHqT+V07QT8d8OIJOetBXVRP2MvqJqTkiAGp4q63p16McqvNFOMMSJe88kfRvnGTsQMprg35Q==
+X-Received: by 2002:a05:6a00:270f:b0:6f6:7b6c:51f6 with SMTP id d2e1a72fcca58-6f67b6c5295mr995107b3a.24.1715795135090;
+        Wed, 15 May 2024 10:45:35 -0700 (PDT)
 Received: from google.com (57.92.83.34.bc.googleusercontent.com. [34.83.92.57])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-6f4d2ade2c9sm11332969b3a.125.2024.05.15.10.44.47
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-6f4d2a828e2sm11379011b3a.72.2024.05.15.10.45.34
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 15 May 2024 10:44:47 -0700 (PDT)
-Date: Wed, 15 May 2024 17:44:44 +0000
+        Wed, 15 May 2024 10:45:34 -0700 (PDT)
+Date: Wed, 15 May 2024 17:45:31 +0000
 From: Carlos Llamas <cmllamas@google.com>
 To: Yenchia Chen <yenchia.chen@mediatek.com>
 Cc: stable@vger.kernel.org, Eric Dumazet <edumazet@google.com>,
@@ -70,24 +70,23 @@ Cc: stable@vger.kernel.org, Eric Dumazet <edumazet@google.com>,
 	"David S. Miller" <davem@davemloft.net>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	Sasha Levin <sashal@kernel.org>, Simon Horman <horms@kernel.org>,
-	Ryosuke Yasuoka <ryasuoka@redhat.com>,
 	Zhengchao Shao <shaozhengchao@huawei.com>,
-	Pedro Tammela <pctammela@mojatatu.com>, Thomas Graf <tgraf@suug.ch>,
+	Pedro Tammela <pctammela@mojatatu.com>,
+	Ryosuke Yasuoka <ryasuoka@redhat.com>, Thomas Graf <tgraf@suug.ch>,
 	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 5.15 1/2] netlink: annotate lockless accesses to
- nlk->max_recvmsg_len
-Message-ID: <ZkT0jFN-XWKf4jQK@google.com>
+Subject: Re: [PATCH 5.15 2/2] netlink: annotate data-races around sk->sk_err
+Message-ID: <ZkT0u3RMc89Fe6PV@google.com>
 References: <20240515073644.32503-1-yenchia.chen@mediatek.com>
- <20240515073644.32503-2-yenchia.chen@mediatek.com>
+ <20240515073644.32503-3-yenchia.chen@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240515073644.32503-2-yenchia.chen@mediatek.com>
+In-Reply-To: <20240515073644.32503-3-yenchia.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240515_104452_294651_2DBC665A 
-X-CRM114-Status: GOOD (  12.74  )
+X-CRM114-CacheID: sfid-20240515_104537_958007_11B356B8 
+X-CRM114-Status: GOOD (  12.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,55 +101,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, May 15, 2024 at 03:36:37PM +0800, Yenchia Chen wrote:
+On Wed, May 15, 2024 at 03:36:38PM +0800, Yenchia Chen wrote:
 > From: Eric Dumazet <edumazet@google.com>
 > 
-> syzbot reported a data-race in data-race in netlink_recvmsg() [1]
+> syzbot caught another data-race in netlink when
+> setting sk->sk_err.
 > 
-> Indeed, netlink_recvmsg() can be run concurrently,
-> and netlink_dump() also needs protection.
+> Annotate all of them for good measure.
 > 
-> [1]
 > BUG: KCSAN: data-race in netlink_recvmsg / netlink_recvmsg
 > 
-> read to 0xffff888141840b38 of 8 bytes by task 23057 on cpu 0:
-> netlink_recvmsg+0xea/0x730 net/netlink/af_netlink.c:1988
-> sock_recvmsg_nosec net/socket.c:1017 [inline]
-> sock_recvmsg net/socket.c:1038 [inline]
-> __sys_recvfrom+0x1ee/0x2e0 net/socket.c:2194
-> __do_sys_recvfrom net/socket.c:2212 [inline]
-> __se_sys_recvfrom net/socket.c:2208 [inline]
-> __x64_sys_recvfrom+0x78/0x90 net/socket.c:2208
+> write to 0xffff8881613bb220 of 4 bytes by task 28147 on cpu 0:
+> netlink_recvmsg+0x448/0x780 net/netlink/af_netlink.c:1994
+> sock_recvmsg_nosec net/socket.c:1027 [inline]
+> sock_recvmsg net/socket.c:1049 [inline]
+> __sys_recvfrom+0x1f4/0x2e0 net/socket.c:2229
+> __do_sys_recvfrom net/socket.c:2247 [inline]
+> __se_sys_recvfrom net/socket.c:2243 [inline]
+> __x64_sys_recvfrom+0x78/0x90 net/socket.c:2243
 > do_syscall_x64 arch/x86/entry/common.c:50 [inline]
 > do_syscall_64+0x41/0xc0 arch/x86/entry/common.c:80
 > entry_SYSCALL_64_after_hwframe+0x63/0xcd
 > 
-> write to 0xffff888141840b38 of 8 bytes by task 23037 on cpu 1:
-> netlink_recvmsg+0x114/0x730 net/netlink/af_netlink.c:1989
-> sock_recvmsg_nosec net/socket.c:1017 [inline]
-> sock_recvmsg net/socket.c:1038 [inline]
-> ____sys_recvmsg+0x156/0x310 net/socket.c:2720
-> ___sys_recvmsg net/socket.c:2762 [inline]
-> do_recvmmsg+0x2e5/0x710 net/socket.c:2856
-> __sys_recvmmsg net/socket.c:2935 [inline]
-> __do_sys_recvmmsg net/socket.c:2958 [inline]
-> __se_sys_recvmmsg net/socket.c:2951 [inline]
-> __x64_sys_recvmmsg+0xe2/0x160 net/socket.c:2951
+> write to 0xffff8881613bb220 of 4 bytes by task 28146 on cpu 1:
+> netlink_recvmsg+0x448/0x780 net/netlink/af_netlink.c:1994
+> sock_recvmsg_nosec net/socket.c:1027 [inline]
+> sock_recvmsg net/socket.c:1049 [inline]
+> __sys_recvfrom+0x1f4/0x2e0 net/socket.c:2229
+> __do_sys_recvfrom net/socket.c:2247 [inline]
+> __se_sys_recvfrom net/socket.c:2243 [inline]
+> __x64_sys_recvfrom+0x78/0x90 net/socket.c:2243
 > do_syscall_x64 arch/x86/entry/common.c:50 [inline]
 > do_syscall_64+0x41/0xc0 arch/x86/entry/common.c:80
 > entry_SYSCALL_64_after_hwframe+0x63/0xcd
 > 
-> value changed: 0x0000000000000000 -> 0x0000000000001000
+> value changed: 0x00000000 -> 0x00000016
 > 
 > Reported by Kernel Concurrency Sanitizer on:
-> CPU: 1 PID: 23037 Comm: syz-executor.2 Not tainted 6.3.0-rc4-syzkaller-00195-g5a57b48fdfcb #0
-> Hardware name: Google Google Compute Engine/Google Compute Engine, BIOS Google 03/02/2023
+> CPU: 1 PID: 28146 Comm: syz-executor.0 Not tainted 6.6.0-rc3-syzkaller-00055-g9ed22ae6be81 #0
+> Hardware name: Google Google Compute Engine/Google Compute Engine, BIOS Google 09/06/2023
 > 
-> Fixes: 9063e21fb026 ("netlink: autosize skb lengthes")
-> Reported-by: syzbot <syzkaller@googlegroups.com>
+> Fixes: 1da177e4c3f4 ("Linux-2.6.12-rc2")
 > Signed-off-by: Eric Dumazet <edumazet@google.com>
-> Reviewed-by: Simon Horman <simon.horman@corigine.com>
-> Link: https://lore.kernel.org/r/20230403214643.768555-1-edumazet@google.com
+> Reported-by: syzbot <syzkaller@googlegroups.com>
+> Reviewed-by: Simon Horman <horms@kernel.org>
+> Link: https://lore.kernel.org/r/20231003183455.3410550-1-edumazet@google.com
 > Signed-off-by: Jakub Kicinski <kuba@kernel.org>
 > Signed-off-by: yenchia.chen <yenchia.chen@mediatek.com>
 > ---
