@@ -4,73 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82447C25B75
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 May 2024 23:15:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB585C25B78
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 May 2024 23:27:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ze1QygMwN68meqo9PDmwz469IrrkJxaffJS5Hm7aDfQ=; b=aCGzLjAzGDQyZrXtyjnROGRTl5
-	I8Fz35mFSrfm3aUHkhyC4hz5jkEzhoHw9dmogN2Y5dnb4XUUg5idKKPWAw+IX2+wot+ou4Mu4R+1s
-	KImUDKHOWArPYKjJErQ9zw12MNuSGDyBciqoZIt0J7yywuaCk4iWL85O1VouLxaW0n20vlqf1QU0R
-	5JVxQ8FnUD4Zg4219sNu/JFshA7zX+wm2KWvIfZ/y+MZvhMelYn1nDFnmzgElSLN7H5mF4AxMNVGq
-	1PJUtcwgsKgrdkfdoJhh0kiwVSovGBCRnuxX0lpXLkKTAITfFUJk8y0MAuN9KTdDXjDgGhZ44aZ0H
-	QjLByyfA==;
+	bh=Jma/wmR/AAqqjGKey/ctSoVg24QcxAyKc4t4ngWEG98=; b=zlxyLMwtlKZeXhm86jKLVB2O+R
+	i766+We9Lq6dLeV9YJBSLO8/Q5kI8Ojw4mOu0O/+9rtQBjRHRtvmbHgQl/uXZjdOgqT30YQ2CMwG9
+	3VcfE3QC0Jq+LQdkdNOAJkfBTGkFhJzahWSRZzfKX9VExPs5DbY7h9t89YcdStc+IvuzMiOtmrlqO
+	NVlIyfU6gpgQaLWA/BCmztMCI41UVn4i06QQaVDyDXXXY4GzhOsNFc3eEtoletdL3Z/8unO22ee0S
+	1yeI3TbV/sGHo5neREj1jdvGMxHlm5yLdSIxKpxEFx1/ZZ4hs+311GZ5d9++CBXXv+jl8+dX0OOgw
+	KSt3YB5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s7Nqg-000000038Ab-46dv;
-	Wed, 15 May 2024 23:15:51 +0000
-Received: from mail-oo1-f51.google.com ([209.85.161.51])
+	id 1s7O1a-000000039ao-1DEu;
+	Wed, 15 May 2024 23:27:06 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s7NqX-0000000385h-38Ts
+	id 1s7O1W-000000039a4-2ZC1
 	for linux-mediatek@lists.infradead.org;
-	Wed, 15 May 2024 23:15:43 +0000
-Received: by mail-oo1-f51.google.com with SMTP id 006d021491bc7-5b282c5fe88so366705eaf.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 15 May 2024 16:15:41 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1715814941; x=1716419741;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Ze1QygMwN68meqo9PDmwz469IrrkJxaffJS5Hm7aDfQ=;
-        b=HDr3DpZnKaWPWlOo0OwXyo5kpllNCnxMziDHzMl+YyPcA61Mc2wSdDb11Lg5RAvEM6
-         Of8NlMCzwzpx80YpvCTk94a20jYxPsfnYbMu54SIxAYHR+yLFUdT2R7TIHYxhHx3cz2P
-         MJrOh99kdfsElarhYz4zE5SQnAcY8EhPXGYMBkV8wnfnwYqJ9cYWUzUclghLzHXC7CZp
-         Zw7CoZG2uwgnlRYowsdvkHde2xCK/+27OYPkhNd8Rb4yzFbVOuRLLZVhSifOCyC/fJYW
-         VHMUaDBhxvXLv4VYZqkl3Ubb4czRxmg4BnucfTPaf97beuwObXaziB9+YZgCD99IjBqQ
-         estA==
-X-Forwarded-Encrypted: i=1; AJvYcCXmeekkAgoiAXqsnQdOxtZr8lUNel+R/BeU87PK+aygAwExCVMwo2wJu361CfsrgdREL7TKR2HcwT/g7VQL8PjInlg8SafTwNyVfuyY4P4NREAT
-X-Gm-Message-State: AOJu0Yx/IAARlyLnGqULKZ+Lynxbc+abJ1JhUTD6QZk6n5DshU+FkR77
-	tziM9sDMaw6eNNldp4vCUwONlsWNltnvF4N9xUAve+sr1iMsnpSE
-X-Google-Smtp-Source: AGHT+IFeY6IBOmS16l1KarBie8GoRXUZtYtFiMESabNjNgeh9/aF2ykz5OpkEZWWolf+VV2rf5fl6g==
-X-Received: by 2002:a4a:de14:0:b0:5b2:7aa7:7b29 with SMTP id 006d021491bc7-5b28193d5e7mr17763186eaf.1.1715814940930;
-        Wed, 15 May 2024 16:15:40 -0700 (PDT)
-Received: from sean-ThinkPad-T450s.lan ([207.191.35.252])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-6f0ec2e566dsm2032159a34.15.2024.05.15.16.15.39
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 15 May 2024 16:15:40 -0700 (PDT)
-From: sean.wang@kernel.org
-To: marcel@holtmann.org,
-	johan.hedberg@gmail.com,
-	luiz.dentz@gmail.com
-Cc: linux-bluetooth@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Hao Qin <hao.qin@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>
-Subject: [PATCH v5 5/5] Bluetooth: btusb: mediatek: add MT7922 subsystem reset
-Date: Wed, 15 May 2024 16:15:21 -0700
-Message-Id: <90f8b0663933990ed1bf47dd6698d8ff69f1a948.1715813148.git.sean.wang@kernel.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <ce0337178bf617d52ff320a36837d75bf537df2d.1715813148.git.sean.wang@kernel.org>
-References: <ce0337178bf617d52ff320a36837d75bf537df2d.1715813148.git.sean.wang@kernel.org>
+	Wed, 15 May 2024 23:27:04 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id D9603CE0AB7
+	for <linux-mediatek@lists.infradead.org>; Wed, 15 May 2024 23:26:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 24B32C32781
+	for <linux-mediatek@lists.infradead.org>; Wed, 15 May 2024 23:26:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1715815619;
+	bh=Dly9VJssQKlGr4nuNsuWgUhzWU16eHtlmaSmjqzEbtM=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=q4F8ysOfkr92N1KApuAXQfMKIJBEOMG4NHZAuxp3HDd325XnEyrFYls3ZOiQ5mtcF
+	 ybv0ZXtaCjkurb9PmrzV9BmEJWb7D9VqIPHBG9GJfGYlz/iJqh7VnDn1pFwT2Z0VXY
+	 vZYvjErDad16ZZsuNly4sNQ0LjP4GeTmIVBm4irqZq1NTyr8KKY76+GwPY3v3PyHl8
+	 1trFgtQArp2eliFaSbBxolncwiektGIgVoBGlQNEsyOoZSPZHy8O2Qhej5VJicSCHZ
+	 +tsfLTbKE9nzDLR2O1qEh1iwHkSwPCGRCXK04UxI/eEr+qNq17uMkCwZBfJ0qqGfaN
+	 lnjf7kmSdvSWg==
+Received: by mail-ed1-f42.google.com with SMTP id 4fb4d7f45d1cf-575070cff74so73578a12.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 15 May 2024 16:26:59 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCWai0wXn6ZNaRsRqLZgHT83yEfVtW1P24fLfadf2dHAzp/qgf5PWKeMx0+dL40jEE0VfZ1gnDon+q9EiX5AprqxTLlod6o2WmvsMlvZyEtazS3W
+X-Gm-Message-State: AOJu0YygzBFHwML/y6rp5H7p/wPnAAoOLaiguxMFWshfEvMwuDJKWH4P
+	1A9qO4ylk3B3xbxnMNQOudI6zNKNRNEM2ijHZU+zFuI0t2VPJZT/sfAOMioqGYxLUZ/uCBW7cOE
+	ZELrhx9fP1JdR4BMvbpfnLKhJooI=
+X-Google-Smtp-Source: AGHT+IG9Xw6qhwjkVuZfgDD8lRq6KGIE3S0/7KdscGUUPCpx9YHwTsEyoDV+3UrO5ntqcmGMtzVO+O95aJyPT3TM4ZA=
+X-Received: by 2002:a17:906:f591:b0:a5a:5bf2:b889 with SMTP id
+ a640c23a62f3a-a5a5bf2b8b4mr1196952966b.0.1715815617724; Wed, 15 May 2024
+ 16:26:57 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20240515015155.24931-1-mingyen.hsieh@mediatek.com>
+In-Reply-To: <20240515015155.24931-1-mingyen.hsieh@mediatek.com>
+From: Sean Wang <sean.wang@kernel.org>
+Date: Wed, 15 May 2024 16:26:45 -0700
+X-Gmail-Original-Message-ID: <CAGp9Lzprjai3iyab9WERsEm+Y8o6SgASKmL4tsimhSyjY-nG_Q@mail.gmail.com>
+Message-ID: <CAGp9Lzprjai3iyab9WERsEm+Y8o6SgASKmL4tsimhSyjY-nG_Q@mail.gmail.com>
+Subject: Re: [PATCH] wifi: mt76: mt792x: fix scheduler interference in drv own process
+To: Mingyen Hsieh <mingyen.hsieh@mediatek.com>
+Cc: nbd@nbd.name, lorenzo@kernel.org, deren.wu@mediatek.com, 
+	Sean.Wang@mediatek.com, Soul.Huang@mediatek.com, Leon.Yen@mediatek.com, 
+	Eric-SY.Chang@mediatek.com, km.lin@mediatek.com, robin.chiu@mediatek.com, 
+	ch.yeh@mediatek.com, posh.sun@mediatek.com, Quan.Zhou@mediatek.com, 
+	Ryder.Lee@mediatek.com, Shayne.Chen@mediatek.com, 
+	linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	Michael Lo <michael.lo@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240515_161541_937854_5B1B3844 
-X-CRM114-Status: GOOD (  11.47  )
+X-CRM114-CacheID: sfid-20240515_162703_040623_370E7181 
+X-CRM114-Status: GOOD (  20.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,56 +87,95 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Hao Qin <hao.qin@mediatek.com>
+Hi, Mingyen
 
-Add the support of MT7922 bluetooth subsystem reset that was called the
-auto revert to self-recover from the fatal error in the controller like
-the host encounters HCI cmd timeout or the controller crashes.
+On Tue, May 14, 2024 at 6:52=E2=80=AFPM Mingyen Hsieh
+<mingyen.hsieh@mediatek.com> wrote:
+>
+> From: Michael Lo <michael.lo@mediatek.com>
+>
+> Add some time to wait for LP engine to complete its operation
+> before polling pmctrl register.
+>
+> Signed-off-by: Michael Lo <michael.lo@mediatek.com>
+> Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+> ---
+>  drivers/net/wireless/mediatek/mt76/mt7921/pci.c  | 3 +++
+>  drivers/net/wireless/mediatek/mt76/mt7925/pci.c  | 3 +++
+>  drivers/net/wireless/mediatek/mt76/mt792x.h      | 1 +
+>  drivers/net/wireless/mediatek/mt76/mt792x_core.c | 6 ++++++
+>  4 files changed, 13 insertions(+)
+>
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/ne=
+t/wireless/mediatek/mt76/mt7921/pci.c
+> index f768e9389ac6..0f7d5a92f3d0 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+> @@ -339,6 +339,9 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
+>         bus_ops->rmw =3D mt7921_rmw;
+>         dev->mt76.bus =3D bus_ops;
+>
+> +       if (mt7921_disable_aspm)
+> +               dev->disable_aspm =3D true;
+> +
+>         ret =3D mt792xe_mcu_fw_pmctrl(dev);
+>         if (ret)
+>                 goto err_free_dev;
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c b/drivers/ne=
+t/wireless/mediatek/mt76/mt7925/pci.c
+> index 07b74d492ce1..e7039e312538 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
+> @@ -373,6 +373,9 @@ static int mt7925_pci_probe(struct pci_dev *pdev,
+>         bus_ops->rmw =3D mt7925_rmw;
+>         dev->mt76.bus =3D bus_ops;
+>
+> +       if (mt7925_disable_aspm)
+> +               dev->disable_aspm =3D true;
+> +
+>         ret =3D __mt792x_mcu_fw_pmctrl(dev);
+>         if (ret)
+>                 goto err_free_dev;
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt792x.h b/drivers/net/wi=
+reless/mediatek/mt76/mt792x.h
+> index 20578497a405..8f913336a668 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt792x.h
+> +++ b/drivers/net/wireless/mediatek/mt76/mt792x.h
+> @@ -190,6 +190,7 @@ struct mt792x_dev {
+>         bool fw_assert:1;
+>         bool has_eht:1;
+>         bool regd_in_progress:1;
+> +       bool disable_aspm:1;
+>         wait_queue_head_t wait;
+>
+>         struct work_struct init_work;
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_core.c b/drivers/n=
+et/wireless/mediatek/mt76/mt792x_core.c
+> index a405af8d9052..a11e5438a36e 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt792x_core.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
+> @@ -766,6 +766,12 @@ int __mt792xe_mcu_drv_pmctrl(struct mt792x_dev *dev)
+>
+>         for (i =3D 0; i < MT792x_DRV_OWN_RETRY_COUNT; i++) {
+>                 mt76_wr(dev, MT_CONN_ON_LPCTL, PCIE_LPCR_HOST_CLR_OWN);
+> +
+> +               if (!dev->disable_aspm) {
+> +                       /* wait for LP engine to complete its operation *=
+/
+> +                       usleep_range(2000, 3000);
+> +               }
+> +
 
-Co-developed-by: Sean Wang <sean.wang@mediatek.com>
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-Signed-off-by: Hao Qin <hao.qin@mediatek.com>
----
-v3: split from the v2 to make the patch do one thing in a patch.
-v4: rebase onto the latest code
-v5: no change
----
- drivers/bluetooth/btusb.c | 14 +++++++++++++-
- 1 file changed, 13 insertions(+), 1 deletion(-)
+I think we can reduce the extra delay on platforms that don't support
+ASPM. Basically, if the platform doesn't support ASPM, we can get rid
+of the wait.
 
-diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index ddd5ca7596e5..79aefdb3324d 100644
---- a/drivers/bluetooth/btusb.c
-+++ b/drivers/bluetooth/btusb.c
-@@ -3039,7 +3039,16 @@ static int btusb_mtk_subsys_reset(struct hci_dev *hdev, u32 dev_id)
- 	u32 val;
- 	int err;
- 
--	if (dev_id == 0x7925) {
-+	if (dev_id == 0x7922) {
-+		btusb_mtk_uhw_reg_read(data, MTK_BT_SUBSYS_RST, &val);
-+		val |= 0x00002020;
-+		btusb_mtk_uhw_reg_write(data, MTK_BT_SUBSYS_RST, val);
-+		btusb_mtk_uhw_reg_write(data, MTK_EP_RST_OPT, 0x00010001);
-+		btusb_mtk_uhw_reg_read(data, MTK_BT_SUBSYS_RST, &val);
-+		val |= BIT(0);
-+		btusb_mtk_uhw_reg_write(data, MTK_BT_SUBSYS_RST, val);
-+		msleep(100);
-+	} else if (dev_id == 0x7925) {
- 		btusb_mtk_uhw_reg_read(data, MTK_BT_RESET_REG_CONNV3, &val);
- 		val |= (1 << 5);
- 		btusb_mtk_uhw_reg_write(data, MTK_BT_RESET_REG_CONNV3, val);
-@@ -3079,6 +3088,9 @@ static int btusb_mtk_subsys_reset(struct hci_dev *hdev, u32 dev_id)
- 	if (err < 0)
- 		bt_dev_err(hdev, "Reset timeout");
- 
-+	if (dev_id == 0x7922)
-+		btusb_mtk_uhw_reg_write(data, MTK_UDMA_INT_STA_BT, 0x000000FF);
-+
- 	btusb_mtk_id_get(data, 0x70010200, &val);
- 	if (!val)
- 		bt_dev_err(hdev, "Can't get device id, subsys reset fail.");
--- 
-2.25.1
-
+>                 if (mt76_poll_msec_tick(dev, MT_CONN_ON_LPCTL,
+>                                         PCIE_LPCR_HOST_OWN_SYNC, 0, 50, 1=
+))
+>                         break;
+> --
+> 2.25.1
+>
+>
 
