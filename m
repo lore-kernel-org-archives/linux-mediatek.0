@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87F3CC25B75
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 May 2024 07:44:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F14BC25B75
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 May 2024 07:49:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Message-ID:In-Reply-To:Date:References:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bvTKlTmj4iTQSjVMzLXaiH2Pp4nfPaIIc8afPGUhn9g=; b=xb9bSjnu57m1n/J4xk1d7eu3DU
-	RiDjrp59JKrWvWA4IIi9M0u3/EjdFcYDLGFbfOBxxhSTfOLDdYa39kTfnQ5WshrLtLtrHzqQIMk+M
-	NbTHyta38vnv5CozVRVtYTORJ840Zo0cuHB9wqThzERIc2v5LAbEAmXJDngB2EYZKafJZ4kCDc/Dw
-	HzsYQWAByNW9jISp+vbR7lWbsVrR3HHG3rr1be9m6Q0S8Ww1bD4ekkQ3LOLlNMdjc58xZBY6H4hkk
-	153Oiv8bjqr2V4Vej/kU1TmWq1YeDJHFJj0PGv9VDCrr+frxTiVsQ1uL14U9t93r2C9eVhs3yn1CM
-	OARtBjJA==;
+	bh=ge8e4h3UMypPCIdfQ9dILMu/Uub24xtFTsawJKyXGXA=; b=tegjBFJPIvUsOB372ruuZIMwuU
+	+QbmOzizT0CqoiKfqfXsllc8y7W2vskEFu6vZAWhXCImHqYz1+gucAw+fCAlkL87/hOaLzharGGBD
+	EQeK/oaxtLGzE/H//4QV2DaZOiVjM9KakFN8zxcMANJq1qrjltysqlwy8GkGwPgLtPaHED1gMfalZ
+	PEK8Dfn/hXi6tMDX3KmU7jgiOmY4pDVkYcWSxFrhs3tb454LeH/oA05XXUFGpDpqHqKo1UO1C3bQf
+	Xh3XHzcLkfaBNva07PaWRHx37FKmGuOWzuNoj1G+oQp9G8w/0axcFmCgzgZU9XzyIGgSQwVzws6sa
+	1H9QHmVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s79Ja-00000000pCF-0AP8;
-	Wed, 15 May 2024 07:44:42 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1s79Nu-00000000qA6-0NbS;
+	Wed, 15 May 2024 07:49:10 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s79JW-00000000pAr-1H6H;
-	Wed, 15 May 2024 07:44:40 +0000
+	id 1s79Np-00000000q78-1DW9;
+	Wed, 15 May 2024 07:49:07 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 9CAB7CE12E4;
-	Wed, 15 May 2024 07:44:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9F155C116B1;
-	Wed, 15 May 2024 07:44:32 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id BF7FC61465;
+	Wed, 15 May 2024 07:49:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6255BC116B1;
+	Wed, 15 May 2024 07:49:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1715759075;
-	bh=bvTKlTmj4iTQSjVMzLXaiH2Pp4nfPaIIc8afPGUhn9g=;
+	s=k20201202; t=1715759344;
+	bh=ge8e4h3UMypPCIdfQ9dILMu/Uub24xtFTsawJKyXGXA=;
 	h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
-	b=sOe8MBb0GMi8B6RNArHYHnn2wmfj8iW153/Op1yqauk4dwL3qiShXk37OjJymaY2B
-	 WmrRoXZup873BV0nAf7ZQ/H7SDXcuzuKT0Z3AshBZi3VRcxGRMQyG225K1gySZ8/QA
-	 VTcs2IYcK6Wu+mFudlUkszb852+Ws3TcaZxeQg+d02OVf9cI6H/6gaxiVdL1S01iTC
-	 qfT9+OiXmn6MJWgLekN4pSs/QoyO593MpHoINMWfTx6KbMUfbLAN5Y+xtWDrFm5buq
-	 IYd7O33mYQHVb2pfhi0/uTIgqRRlvgz6PmN4LcYSbyPQptHEr8plLSmk/c6P8QuxF8
-	 Gm8GpBFV3DP8A==
+	b=drzJz1u1/ePj3xCPiPsgyWP2UtQ9Tc2bHK6Fx/miLrBfoqCZd31POrlfy7mi8V4zK
+	 deIdpBqlx2zfdxgCIZOCEMwsl7/j7lD7G+PvbiSPqw1SzYINeI/HO04E4AsZegECxN
+	 V8qR8CL2MCJYkrhmYOHxQ9BP3HkTZxtpVMZqBizGeNA11X/32nQOdA+rKc0qqhfhs0
+	 VCBwc80fx/eyIEl0Nn+IPMce+5Shnjo05AwfxH48bEVLa3ndqatQMppDOFV/W8vfPY
+	 k0ROHvuajNuzw5g8Vo1BtnUvpe0wzE5XeA/HKuU21TEdhkjC0yx1Z6r8dqrD+RbrHE
+	 LaW5HOfpMNQ6A==
 From: Kalle Valo <kvalo@kernel.org>
-To: Johannes Berg <johannes@sipsolutions.net>
-Cc: Oleksandr Natalenko <oleksandr@natalenko.name>,
-  linux-kernel@vger.kernel.org,  linux-wireless@vger.kernel.org,  "Linux
+To: Oleksandr Natalenko <oleksandr@natalenko.name>
+Cc: linux-kernel@vger.kernel.org,  linux-wireless@vger.kernel.org,  "Linux
  regression tracking (Thorsten Leemhuis)" <regressions@leemhuis.info>,
+  Johannes Berg <johannes@sipsolutions.net>,
   linux-mediatek@lists.infradead.org,
   linux-arm-kernel@lists.infradead.org,  Felix Fietkau <nbd@nbd.name>,
   Lorenzo Bianconi <lorenzo@kernel.org>,  Ryder Lee
@@ -59,18 +59,18 @@ Subject: Re: [REGRESSION] MT7915E doesn't work any more with v6.9
 References: <6061263.lOV4Wx5bFT@natalenko.name>
 	<2341660.ElGaqSPkdT@natalenko.name>
 	<60fe8df750a74331b8a54a76d55d5e8349ac46b4.camel@sipsolutions.net>
-Date: Wed, 15 May 2024 10:44:30 +0300
-In-Reply-To: <60fe8df750a74331b8a54a76d55d5e8349ac46b4.camel@sipsolutions.net>
-	(Johannes Berg's message of "Wed, 15 May 2024 08:23:35 +0200")
-Message-ID: <87zfsrcye9.fsf@kernel.org>
+	<2200096.irdbgypaU6@natalenko.name>
+Date: Wed, 15 May 2024 10:48:59 +0300
+In-Reply-To: <2200096.irdbgypaU6@natalenko.name> (Oleksandr Natalenko's
+	message of "Wed, 15 May 2024 09:15:12 +0200")
+Message-ID: <87v83fcy6s.fsf@kernel.org>
 User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240515_004438_769648_DB8DD947 
-X-CRM114-Status: UNSURE (   9.70  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240515_004905_394936_A5E15B5E 
+X-CRM114-Status: GOOD (  13.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,32 +85,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Johannes Berg <johannes@sipsolutions.net> writes:
+Oleksandr Natalenko <oleksandr@natalenko.name> writes:
 
-> On Wed, 2024-05-15 at 00:51 +0200, Oleksandr Natalenko wrote:
->> Also /cc Johannes because of this commit:
->>=20
->> 6092077ad09ce wifi: mac80211: introduce 'channel request'
->>=20
->> On st=C5=99eda 15. kv=C4=9Btna 2024 0:43:40, SEL=C4=8C Oleksandr Natalen=
-ko wrote:
->> > Hello Felix, Lorenzo et al.
->> >=20
->> > With v6.9 kernel the following card:
->> >=20
->> > 01:00.0 Unclassified device [0002]: MEDIATEK Corp. MT7915E 802.11ax PC=
-I Express Wireless Network Adapter [14c3:7915]
->> >=20
->> > doesn't work any more. Upon mt7915e module insertion the following spl=
-at happens:
->> >=20
+> Hello Johannes.
 >
-> 6.9 didn't get commit 2f7cf3b61d85 ("wifi: mt76: mt7915: add missing
-> chanctx ops")? Huh?
+> On st=C5=99eda 15. kv=C4=9Btna 2024 8:23:35, SEL=C4=8C Johannes Berg wrot=
+e:
+>> On Wed, 2024-05-15 at 00:51 +0200, Oleksandr Natalenko wrote:
+>> > Also /cc Johannes because of this commit:
+>> >=20
+>> > 6092077ad09ce wifi: mac80211: introduce 'channel request'
+>> >=20
+>> > On st=C5=99eda 15. kv=C4=9Btna 2024 0:43:40, SEL=C4=8C Oleksandr Natal=
+enko wrote:
+>> > > Hello Felix, Lorenzo et al.
+>> > >=20
+>> > > With v6.9 kernel the following card:
+>> > >=20
+>> > > 01:00.0 Unclassified device [0002]: MEDIATEK Corp. MT7915E 802.11ax =
+PCI Express Wireless Network Adapter [14c3:7915]
+>> > >=20
+>> > > doesn't work any more. Upon mt7915e module insertion the following s=
+plat happens:
+>> > >=20
+>>=20
+>> 6.9 didn't get commit 2f7cf3b61d85 ("wifi: mt76: mt7915: add missing
+>> chanctx ops")? Huh?
+>
+> Yes, you are right, this commit is not present in v6.9, and I can find it=
+ in the "next" branch only.
+>
+> I can also confirm this commit fixes the regression for me.
 
-Ah, it will be only in v6.10-rc1. Oleksandr, can you try this commit:
+Thanks for testing.
 
-https://git.kernel.org/linus/2f7cf3b61d85
+#regzbot fix: 2f7cf3b61d85
 
 --=20
 https://patchwork.kernel.org/project/linux-wireless/list/
