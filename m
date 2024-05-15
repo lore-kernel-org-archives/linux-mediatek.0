@@ -4,74 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BEAB7C25B75
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 May 2024 07:40:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87F3CC25B75
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 May 2024 07:44:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aGfHdT97q06/TBHLdt84bAk2QjFXy+qL8wCDQ3NgfeQ=; b=1NdAuF/MRqRMaP
-	0xBSNyjBZ01e2bVDkWAPwV0MA3MqYpGxwNYATBaARbeyZr/K2oztJgfM1PmVrB5CRlMBPBCgF1eKr
-	Nm8fbP+pm+ciCBQ1Ua+1xBiRJeogKA6eQSZx2w5rxcVtmk5Z96h3hzTfiTtXNEpjcGlWDBwHEat2l
-	SiMkE0XRx2rC8gFshb9OS1yGBx3MDNYXQ3/ODZnP5sTdVAlzytWnVrYOCJ2GlynL+uOmt+YvVBux7
-	KGY/auujHQ2CIkeYfIW4PRpbmWuj+wpkjbqP82Mjg1GveDyCVCjEvFni4BQCVKpdX/WehT2Gv5uO9
-	u/7p5ZXy4jph7/r0ABSw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:In-Reply-To:Date:References:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=bvTKlTmj4iTQSjVMzLXaiH2Pp4nfPaIIc8afPGUhn9g=; b=xb9bSjnu57m1n/J4xk1d7eu3DU
+	RiDjrp59JKrWvWA4IIi9M0u3/EjdFcYDLGFbfOBxxhSTfOLDdYa39kTfnQ5WshrLtLtrHzqQIMk+M
+	NbTHyta38vnv5CozVRVtYTORJ840Zo0cuHB9wqThzERIc2v5LAbEAmXJDngB2EYZKafJZ4kCDc/Dw
+	HzsYQWAByNW9jISp+vbR7lWbsVrR3HHG3rr1be9m6Q0S8Ww1bD4ekkQ3LOLlNMdjc58xZBY6H4hkk
+	153Oiv8bjqr2V4Vej/kU1TmWq1YeDJHFJj0PGv9VDCrr+frxTiVsQ1uL14U9t93r2C9eVhs3yn1CM
+	OARtBjJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s79Fx-00000000oSR-1my2;
-	Wed, 15 May 2024 07:40:57 +0000
-Received: from wp530.webpack.hosteurope.de ([80.237.130.52])
+	id 1s79Ja-00000000pCF-0AP8;
+	Wed, 15 May 2024 07:44:42 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s79Fu-00000000oQo-3PFZ;
-	Wed, 15 May 2024 07:40:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=leemhuis.info; s=he214686; h=Content-Transfer-Encoding:Content-Type:
-	In-Reply-To:Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:From:Sender:Reply-To:Subject:Date:Message-ID:To:Cc:MIME-Version:
-	Content-Type:Content-Transfer-Encoding:Content-ID:Content-Description:
-	In-Reply-To:References; bh=aGfHdT97q06/TBHLdt84bAk2QjFXy+qL8wCDQ3NgfeQ=;
-	t=1715758854; x=1716190854; b=izZ/saYI6+0hRMD6AjPmfoRF7cygAhy+K3NTVuJhrWfpm+8
-	dL2D0DVidB3pkl/+08nUXwYXMpEV/cMvJMhzx90raqjh0Jd2pLlBndsAoqnZQb6ooeQyzMHCyNufn
-	ZkQBGLVFt840dqX+qOGsWIfyqWRkvnQPRa+oCS3ezc1s5rlrMJb3KEXcPuYg2MmfH6wDqkpFSLmEo
-	bxxmXc8EVubBm3wzG8rNi2SLAOhVYnIqGZZruTXFT0XhlfHzOJaclZXcKU5TZheN4ftvRuWNoYhD+
-	Tbe4KvVv8OWSpM+SGNwXZedxzTa0grQpHYNNEEDNyzLYGJ+Edegr4UCh6S6+qX5w==;
-Received: from [2a02:8108:8980:2478:8cde:aa2c:f324:937e]; authenticated
-	by wp530.webpack.hosteurope.de running ExIM with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
-	id 1s79Fh-00045X-MQ; Wed, 15 May 2024 09:40:41 +0200
-Message-ID: <a603a67b-6703-4f63-93ee-98a05c605d02@leemhuis.info>
-Date: Wed, 15 May 2024 09:40:40 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+	id 1s79JW-00000000pAr-1H6H;
+	Wed, 15 May 2024 07:44:40 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 9CAB7CE12E4;
+	Wed, 15 May 2024 07:44:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9F155C116B1;
+	Wed, 15 May 2024 07:44:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1715759075;
+	bh=bvTKlTmj4iTQSjVMzLXaiH2Pp4nfPaIIc8afPGUhn9g=;
+	h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
+	b=sOe8MBb0GMi8B6RNArHYHnn2wmfj8iW153/Op1yqauk4dwL3qiShXk37OjJymaY2B
+	 WmrRoXZup873BV0nAf7ZQ/H7SDXcuzuKT0Z3AshBZi3VRcxGRMQyG225K1gySZ8/QA
+	 VTcs2IYcK6Wu+mFudlUkszb852+Ws3TcaZxeQg+d02OVf9cI6H/6gaxiVdL1S01iTC
+	 qfT9+OiXmn6MJWgLekN4pSs/QoyO593MpHoINMWfTx6KbMUfbLAN5Y+xtWDrFm5buq
+	 IYd7O33mYQHVb2pfhi0/uTIgqRRlvgz6PmN4LcYSbyPQptHEr8plLSmk/c6P8QuxF8
+	 Gm8GpBFV3DP8A==
+From: Kalle Valo <kvalo@kernel.org>
+To: Johannes Berg <johannes@sipsolutions.net>
+Cc: Oleksandr Natalenko <oleksandr@natalenko.name>,
+  linux-kernel@vger.kernel.org,  linux-wireless@vger.kernel.org,  "Linux
+ regression tracking (Thorsten Leemhuis)" <regressions@leemhuis.info>,
+  linux-mediatek@lists.infradead.org,
+  linux-arm-kernel@lists.infradead.org,  Felix Fietkau <nbd@nbd.name>,
+  Lorenzo Bianconi <lorenzo@kernel.org>,  Ryder Lee
+ <ryder.lee@mediatek.com>,  Shayne Chen <shayne.chen@mediatek.com>,  Sean
+ Wang <sean.wang@mediatek.com>,  Matthias Brugger <matthias.bgg@gmail.com>,
+  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+  Peter Chiu <chui-hao.chiu@mediatek.com>,  StanleyYP Wang
+ <StanleyYP.Wang@mediatek.com>,  Linux regressions mailing list
+ <regressions@lists.linux.dev>
 Subject: Re: [REGRESSION] MT7915E doesn't work any more with v6.9
-To: Oleksandr Natalenko <oleksandr@natalenko.name>,
- linux-kernel@vger.kernel.org, linux-wireless@vger.kernel.org,
- Johannes Berg <johannes@sipsolutions.net>
-Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
- Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
- Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Peter Chiu <chui-hao.chiu@mediatek.com>,
- StanleyYP Wang <StanleyYP.Wang@mediatek.com>,
- Linux regressions mailing list <regressions@lists.linux.dev>
 References: <6061263.lOV4Wx5bFT@natalenko.name>
- <2341660.ElGaqSPkdT@natalenko.name>
- <60fe8df750a74331b8a54a76d55d5e8349ac46b4.camel@sipsolutions.net>
- <2200096.irdbgypaU6@natalenko.name>
-From: "Linux regression tracking (Thorsten Leemhuis)"
- <regressions@leemhuis.info>
-Content-Language: en-US, de-DE
-In-Reply-To: <2200096.irdbgypaU6@natalenko.name>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-bounce-key: webpack.hosteurope.de;regressions@leemhuis.info;1715758854;267c0b8a;
-X-HE-SMSGID: 1s79Fh-00045X-MQ
+	<2341660.ElGaqSPkdT@natalenko.name>
+	<60fe8df750a74331b8a54a76d55d5e8349ac46b4.camel@sipsolutions.net>
+Date: Wed, 15 May 2024 10:44:30 +0300
+In-Reply-To: <60fe8df750a74331b8a54a76d55d5e8349ac46b4.camel@sipsolutions.net>
+	(Johannes Berg's message of "Wed, 15 May 2024 08:23:35 +0200")
+Message-ID: <87zfsrcye9.fsf@kernel.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240515_004055_028399_4C9F5074 
-X-CRM114-Status: GOOD (  10.81  )
+X-CRM114-CacheID: sfid-20240515_004438_769648_DB8DD947 
+X-CRM114-Status: UNSURE (   9.70  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,39 +82,39 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: Linux regressions mailing list <regressions@lists.linux.dev>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 15.05.24 09:15, Oleksandr Natalenko wrote:
-> On středa 15. května 2024 8:23:35, SELČ Johannes Berg wrote:
->> On Wed, 2024-05-15 at 00:51 +0200, Oleksandr Natalenko wrote:
->>> Also /cc Johannes because of this commit:
->>>
->>> 6092077ad09ce wifi: mac80211: introduce 'channel request'
->>>
->>> On středa 15. května 2024 0:43:40, SELČ Oleksandr Natalenko wrote:
->>>> Hello Felix, Lorenzo et al.
->>>>
->>>> With v6.9 kernel the following card:
->>>>
->>>> 01:00.0 Unclassified device [0002]: MEDIATEK Corp. MT7915E 802.11ax PCI Express Wireless Network Adapter [14c3:7915]
->>>> doesn't work any more. Upon mt7915e module insertion the following splat happens:
->>
->> 6.9 didn't get commit 2f7cf3b61d85 ("wifi: mt76: mt7915: add missing
->> chanctx ops")? Huh?
+Johannes Berg <johannes@sipsolutions.net> writes:
 
-FWIW, seems there was and earlier report about this that I missed:
-https://lore.kernel.org/all/CAAMvbhGHe4PM5M=JJZRQ2m5_aVZ=4DPG76MT+q5qi3HA+7_wzQ@mail.gmail.com/
+> On Wed, 2024-05-15 at 00:51 +0200, Oleksandr Natalenko wrote:
+>> Also /cc Johannes because of this commit:
+>>=20
+>> 6092077ad09ce wifi: mac80211: introduce 'channel request'
+>>=20
+>> On st=C5=99eda 15. kv=C4=9Btna 2024 0:43:40, SEL=C4=8C Oleksandr Natalen=
+ko wrote:
+>> > Hello Felix, Lorenzo et al.
+>> >=20
+>> > With v6.9 kernel the following card:
+>> >=20
+>> > 01:00.0 Unclassified device [0002]: MEDIATEK Corp. MT7915E 802.11ax PC=
+I Express Wireless Network Adapter [14c3:7915]
+>> >=20
+>> > doesn't work any more. Upon mt7915e module insertion the following spl=
+at happens:
+>> >=20
+>
+> 6.9 didn't get commit 2f7cf3b61d85 ("wifi: mt76: mt7915: add missing
+> chanctx ops")? Huh?
 
-> Yes, you are right, this commit is not present in v6.9, and I can find it in the "next" branch only.
-> 
-> I can also confirm this commit fixes the regression for me.
+Ah, it will be only in v6.10-rc1. Oleksandr, can you try this commit:
 
-So all we need to resolve this is to ask Greg to pick up the patch for
-the next 6.9.y. release? Then I'll take care of that in a few hours,
-unless somebody else does it first or I get some kind of "might be a bad
-idea for now" signal from anyone.
+https://git.kernel.org/linus/2f7cf3b61d85
 
-Ciao, Thorsten
+--=20
+https://patchwork.kernel.org/project/linux-wireless/list/
+
+https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatc=
+hes
 
