@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72D5AC25B7A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 May 2024 11:25:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AD13C25B7A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 May 2024 11:25:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=99yDZfI0Js1lTRhQwhKsEvFeH9oWtTeH78nbVnrbyNg=; b=bkE6cApTRJUqvFOTmMdiMT2S5H
-	o6mRyrzAX6eoXZFG073qukzGc/snbjCyufJQ5wD7sS9Bkp8ZnxxJWZaOoVFKU8yz215pNHCGCMeyX
-	m5XjlL6WI0VUdNEtZSBQPDJV46Vu0lzRmp28S9dSS1HSBcUztnIJ9Acg9UOGPCiBucaPtReBQrV9B
-	KMREQn3+++cAgMO6WKyUH21T4HyfWM0PG96WCDiQAHcCtjA52kcocHnhdgz3630HTlmwwWCs/O0wJ
-	n4E4TsI7Ni0Kb0AtBZJOpIh9Y4VsoqoYTfbe/WMt7u31QyqzYfbEpK5orjr0G8dSrl0pLpKZN1cpI
-	oYFgTRqA==;
+	bh=buygVuho50A/P4N5uY7njaMQ+WncCQXnsVcfc7HwcY0=; b=K7ojtbFurvzjcqXOxZuVQ0e5xs
+	HPNiFNWcUWCoRx6RruDHeF+Eyz+2ElFlswVXkuaYLhjZIh3n9DrLGpW8PxGqf5K7n3tbH7R9LgFIa
+	SEnqb79pNrUHkR6ARVqPw1mdJ3GynhseigqMxUXgXDpKHpRxMB8NyzJkMOlmCtjZx1U/bJed67pM1
+	S6taRNBRVgZrAzNF9DYdm2m+g7spcXzBHfaZI8gRGZ1u++GlMixfYIZ6jlMAr35/wANdP6E00QM7K
+	wt5xn92Fc1pUKIVH+MvcPZc97X02N+C1Yl7di67UXht0VoTGQdmVN1YLg/eVG1G6tMYITW9zaibRd
+	dzapaQMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s7ClE-00000001NCr-4BLx;
-	Wed, 15 May 2024 11:25:29 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1s7ClU-00000001NNx-30xs;
+	Wed, 15 May 2024 11:25:45 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s7Ckh-00000001MoX-1Oem;
-	Wed, 15 May 2024 11:25:04 +0000
-X-UUID: bddc5d7a12ad11efa8f1cd58ee6c2400-20240515
+	id 1s7Cko-00000001Mt3-1iTc;
+	Wed, 15 May 2024 11:25:12 +0000
+X-UUID: c32ecea212ad11ef9a78ddf43a9225dc-20240515
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=99yDZfI0Js1lTRhQwhKsEvFeH9oWtTeH78nbVnrbyNg=;
-	b=IIFLdnlonqyJNu0RCA01LMs0YCz8YYHgC7AU4Eecg4V5y8WIUsljC7PJsjQbXVxYk7LzwduZaVGhwWapwRy+IaaUZOcQ844CDpBJqpwFZi2k5DZfl85VOZ0e71RXbi5C0tC+7mTtZIJKcBniMWmLtp1xRfkMc/1s9PwbPMVqBbk=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=buygVuho50A/P4N5uY7njaMQ+WncCQXnsVcfc7HwcY0=;
+	b=mcOjeSVbXrvH93OGysML/6AnWgc7vchqqyRzFb512YCWnsjpaM/MQJt04MRNCORCmyeZvs9Tcvaf7Lozq5EF9NhEKZY676Tdw4D/n903s2OFOudAVJyhJPECM7KBQ6eoaF+ZvF/5GvxPEG4+BdhL6FEQQowWTiEuNJCMzxiZSkY=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.38,REQID:ec8ac358-3b83-44dd-a2a7-85adde3c84a2,IP:0,U
+X-CID-O-INFO: VERSION:1.1.38,REQID:cd5116bd-c027-4c94-90aa-0dc2a6563fa0,IP:0,U
 	RL:0,TC:0,Content:-25,EDM:-25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACT
 	ION:release,TS:-50
-X-CID-META: VersionHash:82c5f88,CLOUDID:b12be383-4f93-4875-95e7-8c66ea833d57,B
+X-CID-META: VersionHash:82c5f88,CLOUDID:fb2be383-4f93-4875-95e7-8c66ea833d57,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:1,IP:nil,UR
 	L:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,S
 	PR:NO,DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: bddc5d7a12ad11efa8f1cd58ee6c2400-20240515
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+X-UUID: c32ecea212ad11ef9a78ddf43a9225dc-20240515
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
 	(envelope-from <yong.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 897463764; Wed, 15 May 2024 04:24:49 -0700
+	with ESMTP id 599841215; Wed, 15 May 2024 04:24:58 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
  mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 15 May 2024 19:24:46 +0800
+ 15.2.1118.26; Wed, 15 May 2024 19:24:55 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 15 May 2024 19:24:45 +0800
+ 15.2.1118.26 via Frontend Transport; Wed, 15 May 2024 19:24:54 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
 	<matthias.bgg@gmail.com>, <christian.koenig@amd.com>, Sumit Semwal
@@ -73,9 +73,9 @@ CC: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley
 	<logang@deltatee.com>, Daniel Vetter <daniel@ffwll.ch>,
 	<jianjiao.zeng@mediatek.com>, <kuohong.wang@mediatek.com>,
 	<youlin.pei@mediatek.com>
-Subject: [PATCH v5 6/9] dma-buf: heaps: restricted_heap: Add dma_ops
-Date: Wed, 15 May 2024 19:23:05 +0800
-Message-ID: <20240515112308.10171-7-yong.wu@mediatek.com>
+Subject: [PATCH v5 7/9] dma-buf: heaps: restricted_heap: Add MediaTek restricted heap and heap_init
+Date: Wed, 15 May 2024 19:23:06 +0800
+Message-ID: <20240515112308.10171-8-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20240515112308.10171-1-yong.wu@mediatek.com>
 References: <20240515112308.10171-1-yong.wu@mediatek.com>
@@ -84,8 +84,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240515_042455_700562_7E6CB4B9 
-X-CRM114-Status: GOOD (  16.06  )
+X-CRM114-CacheID: sfid-20240515_042502_757391_7F2DF05F 
+X-CRM114-Status: GOOD (  27.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,163 +100,213 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the dma_ops for this restricted heap. For restricted buffer,
-1) cache_ops/mmap are not allowed, thus return EPERM for them.
-2) In map_dma_buf, use DMA_ATTR_SKIP_CPU_SYNC to skip cache sync since
-   the buffer is protected.
-This type buffers are marked by sg_dma_mark_restricted, the user could
-check if this is a restricted buffer by sg_dma_is_restricted.
+Add a MediaTek restricted heap which uses TEE service call to restrict
+buffer. Currently this restricted heap is NULL, Prepare for the later
+patch. Mainly there are two changes:
+a) Add a heap_init ops since TEE probe late than restricted heap, thus
+   initialize the heap when we require the buffer the first time.
+b) Add a priv_data for each heap, like the special data used by MTK
+   (such as "TEE session") can be placed in priv_data.
+
+Currently our heap depends on CMA which could only be bool, thus
+depend on "TEE=y".
 
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 ---
- drivers/dma-buf/heaps/restricted_heap.c | 102 ++++++++++++++++++++++++
- drivers/dma-buf/heaps/restricted_heap.h |   2 +
- 2 files changed, 104 insertions(+)
+ drivers/dma-buf/heaps/Kconfig               |   7 ++
+ drivers/dma-buf/heaps/Makefile              |   1 +
+ drivers/dma-buf/heaps/restricted_heap.c     |  11 ++
+ drivers/dma-buf/heaps/restricted_heap.h     |   2 +
+ drivers/dma-buf/heaps/restricted_heap_mtk.c | 115 ++++++++++++++++++++
+ 5 files changed, 136 insertions(+)
+ create mode 100644 drivers/dma-buf/heaps/restricted_heap_mtk.c
 
+diff --git a/drivers/dma-buf/heaps/Kconfig b/drivers/dma-buf/heaps/Kconfig
+index e54506f480ea..84f748fb2856 100644
+--- a/drivers/dma-buf/heaps/Kconfig
++++ b/drivers/dma-buf/heaps/Kconfig
+@@ -21,3 +21,10 @@ config DMABUF_HEAPS_RESTRICTED
+ 	  heap is to manage buffers that are inaccessible to the kernel and user space.
+ 	  There may be several ways to restrict it, for example it may be encrypted or
+ 	  protected by a TEE or hypervisor. If in doubt, say N.
++
++config DMABUF_HEAPS_RESTRICTED_MTK
++	bool "MediaTek DMA-BUF Restricted Heap"
++	depends on DMABUF_HEAPS_RESTRICTED && TEE=y
++	help
++	  Enable restricted dma-buf heaps for MediaTek platform. This heap is backed by
++	  TEE client interfaces. If in doubt, say N.
+diff --git a/drivers/dma-buf/heaps/Makefile b/drivers/dma-buf/heaps/Makefile
+index a2437c1817e2..0028aa9d875f 100644
+--- a/drivers/dma-buf/heaps/Makefile
++++ b/drivers/dma-buf/heaps/Makefile
+@@ -1,4 +1,5 @@
+ # SPDX-License-Identifier: GPL-2.0
+ obj-$(CONFIG_DMABUF_HEAPS_CMA)		+= cma_heap.o
+ obj-$(CONFIG_DMABUF_HEAPS_RESTRICTED)	+= restricted_heap.o
++obj-$(CONFIG_DMABUF_HEAPS_RESTRICTED_MTK)	+= restricted_heap_mtk.o
+ obj-$(CONFIG_DMABUF_HEAPS_SYSTEM)	+= system_heap.o
 diff --git a/drivers/dma-buf/heaps/restricted_heap.c b/drivers/dma-buf/heaps/restricted_heap.c
-index 8bb3c1876a69..4e45d46a6467 100644
+index 4e45d46a6467..8bc8a5e3f969 100644
 --- a/drivers/dma-buf/heaps/restricted_heap.c
 +++ b/drivers/dma-buf/heaps/restricted_heap.c
-@@ -8,10 +8,16 @@
- #include <linux/dma-buf.h>
- #include <linux/dma-heap.h>
- #include <linux/err.h>
-+#include <linux/scatterlist.h>
- #include <linux/slab.h>
- 
- #include "restricted_heap.h"
- 
-+struct restricted_heap_attachment {
-+	struct sg_table			*table;
-+	struct device			*dev;
-+};
-+
- static int
- restricted_heap_memory_allocate(struct restricted_heap *rheap, struct restricted_buffer *buf)
+@@ -151,11 +151,22 @@ restricted_heap_allocate(struct dma_heap *heap, unsigned long size,
+ 			 unsigned long fd_flags, unsigned long heap_flags)
  {
-@@ -45,6 +51,101 @@ restricted_heap_memory_free(struct restricted_heap *rheap, struct restricted_buf
- 	ops->free(rheap, buf);
- }
+ 	struct restricted_heap *rheap = dma_heap_get_drvdata(heap);
++	const struct restricted_heap_ops *ops = rheap->ops;
+ 	struct restricted_buffer *restricted_buf;
+ 	DEFINE_DMA_BUF_EXPORT_INFO(exp_info);
+ 	struct dma_buf *dmabuf;
+ 	int ret;
  
-+static int restricted_heap_attach(struct dma_buf *dmabuf, struct dma_buf_attachment *attachment)
-+{
-+	struct restricted_buffer *restricted_buf = dmabuf->priv;
-+	struct restricted_heap_attachment *a;
-+	struct sg_table *table;
-+
-+	a = kzalloc(sizeof(*a), GFP_KERNEL);
-+	if (!a)
-+		return -ENOMEM;
-+
-+	table = sg_dup_table(&restricted_buf->sg_table);
-+	if (!table) {
-+		kfree(a);
-+		return -ENOMEM;
++	/*
++	 * In some implements, TEE is required to protect buffer. However TEE probe
++	 * may be late, Thus heap_init is performed when the first buffer is requested.
++	 */
++	if (ops->heap_init) {
++		ret = ops->heap_init(rheap);
++		if (ret)
++			return ERR_PTR(ret);
 +	}
 +
-+	sg_dma_mark_restricted(table->sgl);
-+	a->table = table;
-+	a->dev = attachment->dev;
-+	attachment->priv = a;
+ 	restricted_buf = kzalloc(sizeof(*restricted_buf), GFP_KERNEL);
+ 	if (!restricted_buf)
+ 		return ERR_PTR(-ENOMEM);
+diff --git a/drivers/dma-buf/heaps/restricted_heap.h b/drivers/dma-buf/heaps/restricted_heap.h
+index 6d9599a4a34e..2a33a1c7a48b 100644
+--- a/drivers/dma-buf/heaps/restricted_heap.h
++++ b/drivers/dma-buf/heaps/restricted_heap.h
+@@ -19,6 +19,8 @@ struct restricted_heap {
+ 	const char		*name;
+ 
+ 	const struct restricted_heap_ops *ops;
 +
++	void			*priv_data;
+ };
+ 
+ struct restricted_heap_ops {
+diff --git a/drivers/dma-buf/heaps/restricted_heap_mtk.c b/drivers/dma-buf/heaps/restricted_heap_mtk.c
+new file mode 100644
+index 000000000000..52e805eb9858
+--- /dev/null
++++ b/drivers/dma-buf/heaps/restricted_heap_mtk.c
+@@ -0,0 +1,115 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * DMABUF restricted heap exporter for MediaTek
++ *
++ * Copyright (C) 2024 MediaTek Inc.
++ */
++#define pr_fmt(fmt)     "rheap_mtk: " fmt
++
++#include <linux/dma-buf.h>
++#include <linux/err.h>
++#include <linux/module.h>
++#include <linux/slab.h>
++#include <linux/tee_drv.h>
++#include <linux/uuid.h>
++
++#include "restricted_heap.h"
++
++#define TZ_TA_MEM_UUID_MTK		"4477588a-8476-11e2-ad15-e41f1390d676"
++
++#define TEE_PARAM_NUM			4
++
++enum mtk_secure_mem_type {
++	/*
++	 * MediaTek static chunk memory carved out for TrustZone. The memory
++	 * management is inside the TEE.
++	 */
++	MTK_SECURE_MEMORY_TYPE_CM_TZ	= 1,
++};
++
++struct mtk_restricted_heap_data {
++	struct tee_context	*tee_ctx;
++	u32			tee_session;
++
++	const enum mtk_secure_mem_type mem_type;
++
++};
++
++static int mtk_tee_ctx_match(struct tee_ioctl_version_data *ver, const void *data)
++{
++	return ver->impl_id == TEE_IMPL_ID_OPTEE;
++}
++
++static int mtk_tee_session_init(struct mtk_restricted_heap_data *data)
++{
++	struct tee_param t_param[TEE_PARAM_NUM] = {0};
++	struct tee_ioctl_open_session_arg arg = {0};
++	uuid_t ta_mem_uuid;
++	int ret;
++
++	data->tee_ctx = tee_client_open_context(NULL, mtk_tee_ctx_match, NULL, NULL);
++	if (IS_ERR(data->tee_ctx)) {
++		pr_err_once("%s: open context failed, ret=%ld\n", __func__,
++			    PTR_ERR(data->tee_ctx));
++		return -ENODEV;
++	}
++
++	arg.num_params = TEE_PARAM_NUM;
++	arg.clnt_login = TEE_IOCTL_LOGIN_PUBLIC;
++	ret = uuid_parse(TZ_TA_MEM_UUID_MTK, &ta_mem_uuid);
++	if (ret)
++		goto close_context;
++	memcpy(&arg.uuid, &ta_mem_uuid.b, sizeof(ta_mem_uuid));
++
++	ret = tee_client_open_session(data->tee_ctx, &arg, t_param);
++	if (ret < 0 || arg.ret) {
++		pr_err_once("%s: open session failed, ret=%d:%d\n",
++			    __func__, ret, arg.ret);
++		ret = -EINVAL;
++		goto close_context;
++	}
++	data->tee_session = arg.session;
++	return 0;
++
++close_context:
++	tee_client_close_context(data->tee_ctx);
++	return ret;
++}
++
++static int mtk_restricted_heap_init(struct restricted_heap *rheap)
++{
++	struct mtk_restricted_heap_data *data = rheap->priv_data;
++
++	if (!data->tee_ctx)
++		return mtk_tee_session_init(data);
 +	return 0;
 +}
 +
-+static void restricted_heap_detach(struct dma_buf *dmabuf, struct dma_buf_attachment *attachment)
-+{
-+	struct restricted_heap_attachment *a = attachment->priv;
-+
-+	sg_free_table(a->table);
-+	kfree(a->table);
-+	kfree(a);
-+}
-+
-+static struct sg_table *
-+restricted_heap_map_dma_buf(struct dma_buf_attachment *attachment,
-+			    enum dma_data_direction direction)
-+{
-+	struct restricted_heap_attachment *a = attachment->priv;
-+	struct sg_table *table = a->table;
-+	int ret;
-+
-+	ret = dma_map_sgtable(attachment->dev, table, direction, DMA_ATTR_SKIP_CPU_SYNC);
-+	if (ret)
-+		return ERR_PTR(ret);
-+	return table;
-+}
-+
-+static void
-+restricted_heap_unmap_dma_buf(struct dma_buf_attachment *attachment, struct sg_table *table,
-+			      enum dma_data_direction direction)
-+{
-+	struct restricted_heap_attachment *a = attachment->priv;
-+
-+	WARN_ON(a->table != table);
-+
-+	dma_unmap_sgtable(attachment->dev, table, direction, DMA_ATTR_SKIP_CPU_SYNC);
-+}
-+
-+static int
-+restricted_heap_dma_buf_begin_cpu_access(struct dma_buf *dmabuf, enum dma_data_direction direction)
-+{
-+	return -EPERM;
-+}
-+
-+static int
-+restricted_heap_dma_buf_end_cpu_access(struct dma_buf *dmabuf, enum dma_data_direction direction)
-+{
-+	return -EPERM;
-+}
-+
-+static int restricted_heap_dma_buf_mmap(struct dma_buf *dmabuf, struct vm_area_struct *vma)
-+{
-+	return -EPERM;
-+}
-+
-+static void restricted_heap_free(struct dma_buf *dmabuf)
-+{
-+	struct restricted_buffer *restricted_buf = dmabuf->priv;
-+	struct restricted_heap *rheap = dma_heap_get_drvdata(restricted_buf->heap);
-+
-+	restricted_heap_memory_free(rheap, restricted_buf);
-+	kfree(restricted_buf);
-+}
-+
-+static const struct dma_buf_ops restricted_heap_buf_ops = {
-+	.attach		= restricted_heap_attach,
-+	.detach		= restricted_heap_detach,
-+	.map_dma_buf	= restricted_heap_map_dma_buf,
-+	.unmap_dma_buf	= restricted_heap_unmap_dma_buf,
-+	.begin_cpu_access = restricted_heap_dma_buf_begin_cpu_access,
-+	.end_cpu_access	= restricted_heap_dma_buf_end_cpu_access,
-+	.mmap		= restricted_heap_dma_buf_mmap,
-+	.release	= restricted_heap_free,
++static const struct restricted_heap_ops mtk_restricted_heap_ops = {
++	.heap_init		= mtk_restricted_heap_init,
 +};
 +
- static struct dma_buf *
- restricted_heap_allocate(struct dma_heap *heap, unsigned long size,
- 			 unsigned long fd_flags, unsigned long heap_flags)
-@@ -66,6 +167,7 @@ restricted_heap_allocate(struct dma_heap *heap, unsigned long size,
- 	if (ret)
- 		goto err_free_buf;
- 	exp_info.exp_name = dma_heap_get_name(heap);
-+	exp_info.ops = &restricted_heap_buf_ops;
- 	exp_info.size = restricted_buf->size;
- 	exp_info.flags = fd_flags;
- 	exp_info.priv = restricted_buf;
-diff --git a/drivers/dma-buf/heaps/restricted_heap.h b/drivers/dma-buf/heaps/restricted_heap.h
-index 5783275d5714..6d9599a4a34e 100644
---- a/drivers/dma-buf/heaps/restricted_heap.h
-+++ b/drivers/dma-buf/heaps/restricted_heap.h
-@@ -11,6 +11,8 @@
- struct restricted_buffer {
- 	struct dma_heap		*heap;
- 	size_t			size;
++static struct mtk_restricted_heap_data mtk_restricted_heap_data = {
++	.mem_type		= MTK_SECURE_MEMORY_TYPE_CM_TZ,
++};
 +
-+	struct sg_table		sg_table;
- };
- 
- struct restricted_heap {
++static struct restricted_heap mtk_restricted_heaps[] = {
++	{
++		.name		= "restricted_mtk_cm",
++		.ops		= &mtk_restricted_heap_ops,
++		.priv_data	= &mtk_restricted_heap_data,
++	},
++};
++
++static int mtk_restricted_heap_initialize(void)
++{
++	struct restricted_heap *rheap = mtk_restricted_heaps;
++	unsigned int i;
++
++	for (i = 0; i < ARRAY_SIZE(mtk_restricted_heaps); i++, rheap++)
++		restricted_heap_add(rheap);
++	return 0;
++}
++module_init(mtk_restricted_heap_initialize);
++MODULE_DESCRIPTION("MediaTek Restricted Heap Driver");
++MODULE_LICENSE("GPL");
 -- 
 2.25.1
 
