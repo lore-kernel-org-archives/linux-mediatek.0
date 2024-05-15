@@ -4,72 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2095C25B75
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 May 2024 06:23:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 061A3C25B75
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 May 2024 07:15:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+fR3/NxAITdhdq3Ycr1Czm/xkzyiUXiiJ++SU9SO1o8=; b=qphKiJQkeqGwmO44L8osZ+d0zh
-	uNfNveVe2cBBIx3ki0qI/dcCJEc1Jj0mYR88yme+e8EviyND0qFyOTfMKU5evWX4duFbU+m7TkRYJ
-	Dwq3bAHfbgjklGqHlHE3im3eYolYKkjHHf7KbzvL8jUjNxZUjoMLVhDOSS8C+KuFJPMRL9ZQrmVg9
-	gz5X4AbWQu0mcW8ECyFQubFONmBo9wwcJZT7MJdVAkGcweA4NFC86bCsX06TkZ8VMyvZ4exiuDkk+
-	pu24csLvMbiK4++i6D9+hI3hyvFWntHMcNWbjObeOVVDQ8rlzo9OMO/RFSvZvPKXCGOnOkMS5XKe0
-	Fp2plDyA==;
+	bh=MQDUZN0OMyoox6Z93YbNjehKhvRKHn2tu12DYd6IG4c=; b=GanrlTkI+GfeMbEL75lNCrD1vf
+	Ev4plC7eO8puUE0R7dZncysweybSpQq+gj1Ytgwt19FWxgWW+B1qMuwt7ivr+OVTwn/mG7A2Gtkp7
+	fBOEwFDdotrm5R7xgfCoLVLV7LFCPBazyL3Vq47t0l37Fr0AEXsiOvhfNUTmYTDevceiriDNVLmTf
+	er4S7vz68FBw+jNhUC8Pv4e+tC9jH57G2piqTRMbwIFFjexr4pxEjV93qY7Ywhy22HaVMU/l8tIp0
+	bXMArRuZDIJhLRpkRi2Ngb8X7LmkqxLKvt8NvQtjdNUpRowEPNfsHi6QMKvtF8/y03BrfRhtzpZUH
+	l9TEidbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s783I-00000000dfs-416y;
-	Wed, 15 May 2024 06:23:48 +0000
-Received: from s3.sipsolutions.net ([2a01:4f8:242:246e::2] helo=sipsolutions.net)
+	id 1s78ra-00000000k5M-3R7O;
+	Wed, 15 May 2024 07:15:46 +0000
+Received: from prime.voidband.net ([2a05:f480:1800:ee:5400:4ff:feab:5961])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s783F-00000000df3-1uOI;
-	Wed, 15 May 2024 06:23:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=sipsolutions.net; s=mail; h=MIME-Version:Content-Transfer-Encoding:
-	Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender
-	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-To:
-	Resent-Cc:Resent-Message-ID; bh=+fR3/NxAITdhdq3Ycr1Czm/xkzyiUXiiJ++SU9SO1o8=;
-	t=1715754221; x=1716963821; b=ZD2U0CjWMtQ9HPl6b9Lq1VYN4ng+k0VmXrY/IMfeIoZ5Bvn
-	RB701lJFE7JwXYVPPLkgnicYwTHxRK4eGlkDtYschnHniuD+Z659647ZASysj0xTYlKuy356nNY6u
-	U2t4v8qvA3BCcR6oj7+C61ey1/kLRqgGMe6SXBTC8aaZlo2mwU7OWhtJJhrL73RWPTIt/JhVBTjsx
-	cYGv1asycxxpxDeN2VMJNJKh3X09NH+JA+NRd4t8fHL05oWs4hLbqE0pRXrUcQ0AxkSU91RmnRPo5
-	lLEqRn5K8ZcgVWmY3dOg3cCClJfurOraWvwvRgkOKEoKd348lX3DLb4IygfE+6/w==;
-Received: by sipsolutions.net with esmtpsa (TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
-	(Exim 4.97)
-	(envelope-from <johannes@sipsolutions.net>)
-	id 1s7837-00000005zBf-1jNr;
-	Wed, 15 May 2024 08:23:37 +0200
-Message-ID: <60fe8df750a74331b8a54a76d55d5e8349ac46b4.camel@sipsolutions.net>
+	id 1s78rU-00000000k2R-15eh;
+	Wed, 15 May 2024 07:15:41 +0000
+Received: from spock.localnet (unknown [94.142.239.106])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	(No client certificate requested)
+	by prime.voidband.net (Postfix) with ESMTPSA id E595E6356CD1;
+	Wed, 15 May 2024 09:15:24 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=natalenko.name;
+	s=dkim-20170712; t=1715757325;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=MQDUZN0OMyoox6Z93YbNjehKhvRKHn2tu12DYd6IG4c=;
+	b=R2pLt/FYUh5KewsQxU5COKqCEmn9Ug1dJfcyz6XCkQVzGWAgY6RTxKZsQ1ubJWTjXFc4rB
+	JvAY6X3Y0cgHtC/c95eZQKKg50iKAHuomQrTPUjDcxcr+LwKJv9OHodC5nt453x7DZ74KX
+	Z3yaVPZmfRloZIom6ZcitNrAqAMcWLE=
+From: Oleksandr Natalenko <oleksandr@natalenko.name>
+To: linux-kernel@vger.kernel.org, linux-wireless@vger.kernel.org,
+ "Linux regression tracking (Thorsten Leemhuis)" <regressions@leemhuis.info>,
+ Johannes Berg <johannes@sipsolutions.net>
+Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
+ Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
+ Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Peter Chiu <chui-hao.chiu@mediatek.com>,
+ StanleyYP Wang <StanleyYP.Wang@mediatek.com>,
+ Linux regressions mailing list <regressions@lists.linux.dev>
 Subject: Re: [REGRESSION] MT7915E doesn't work any more with v6.9
-From: Johannes Berg <johannes@sipsolutions.net>
-To: Oleksandr Natalenko <oleksandr@natalenko.name>, 
-	linux-kernel@vger.kernel.org, linux-wireless@vger.kernel.org, "Linux
-	regression tracking (Thorsten Leemhuis)"
-	 <regressions@leemhuis.info>
-Cc: linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org,  Felix Fietkau <nbd@nbd.name>,
- Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>,
- Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
- Kalle Valo <kvalo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Peter
- Chiu <chui-hao.chiu@mediatek.com>, StanleyYP Wang
- <StanleyYP.Wang@mediatek.com>,  Linux regressions mailing list
- <regressions@lists.linux.dev>
-Date: Wed, 15 May 2024 08:23:35 +0200
-In-Reply-To: <2341660.ElGaqSPkdT@natalenko.name>
-References: <6061263.lOV4Wx5bFT@natalenko.name>
-	 <2341660.ElGaqSPkdT@natalenko.name>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.50.4 (3.50.4-1.fc39) 
+Date: Wed, 15 May 2024 09:15:12 +0200
+Message-ID: <2200096.irdbgypaU6@natalenko.name>
+In-Reply-To: <60fe8df750a74331b8a54a76d55d5e8349ac46b4.camel@sipsolutions.net>
+References: <6061263.lOV4Wx5bFT@natalenko.name> <2341660.ElGaqSPkdT@natalenko.name>
+ <60fe8df750a74331b8a54a76d55d5e8349ac46b4.camel@sipsolutions.net>
 MIME-Version: 1.0
-X-malware-bazaar: not-scanned
+Content-Type: multipart/signed; boundary="nextPart13529873.uLZWGnKmhe";
+ micalg="pgp-sha256"; protocol="application/pgp-signature"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240514_232345_723101_EF2A4F5C 
-X-CRM114-Status: UNSURE (   7.84  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240515_001540_445569_EA0B79D5 
+X-CRM114-Status: GOOD (  12.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,26 +80,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2024-05-15 at 00:51 +0200, Oleksandr Natalenko wrote:
-> Also /cc Johannes because of this commit:
->=20
-> 6092077ad09ce wifi: mac80211: introduce 'channel request'
->=20
-> On st=C5=99eda 15. kv=C4=9Btna 2024 0:43:40, SEL=C4=8C Oleksandr Natalenk=
-o wrote:
-> > Hello Felix, Lorenzo et al.
-> >=20
-> > With v6.9 kernel the following card:
-> >=20
-> > 01:00.0 Unclassified device [0002]: MEDIATEK Corp. MT7915E 802.11ax PCI=
- Express Wireless Network Adapter [14c3:7915]
-> >=20
-> > doesn't work any more. Upon mt7915e module insertion the following spla=
-t happens:
-> >=20
+--nextPart13529873.uLZWGnKmhe
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"; protected-headers="v1"
+From: Oleksandr Natalenko <oleksandr@natalenko.name>
+Subject: Re: [REGRESSION] MT7915E doesn't work any more with v6.9
+Date: Wed, 15 May 2024 09:15:12 +0200
+Message-ID: <2200096.irdbgypaU6@natalenko.name>
+MIME-Version: 1.0
 
-6.9 didn't get commit 2f7cf3b61d85 ("wifi: mt76: mt7915: add missing
-chanctx ops")? Huh?
+Hello Johannes.
 
-johannes
+On st=C5=99eda 15. kv=C4=9Btna 2024 8:23:35, SEL=C4=8C Johannes Berg wrote:
+> On Wed, 2024-05-15 at 00:51 +0200, Oleksandr Natalenko wrote:
+> > Also /cc Johannes because of this commit:
+> >=20
+> > 6092077ad09ce wifi: mac80211: introduce 'channel request'
+> >=20
+> > On st=C5=99eda 15. kv=C4=9Btna 2024 0:43:40, SEL=C4=8C Oleksandr Natale=
+nko wrote:
+> > > Hello Felix, Lorenzo et al.
+> > >=20
+> > > With v6.9 kernel the following card:
+> > >=20
+> > > 01:00.0 Unclassified device [0002]: MEDIATEK Corp. MT7915E 802.11ax P=
+CI Express Wireless Network Adapter [14c3:7915]
+> > >=20
+> > > doesn't work any more. Upon mt7915e module insertion the following sp=
+lat happens:
+> > >=20
+>=20
+> 6.9 didn't get commit 2f7cf3b61d85 ("wifi: mt76: mt7915: add missing
+> chanctx ops")? Huh?
+
+Yes, you are right, this commit is not present in v6.9, and I can find it i=
+n the "next" branch only.
+
+I can also confirm this commit fixes the regression for me.
+
+Thank you.
+
+> johannes
+>=20
+
+
+=2D-=20
+Oleksandr Natalenko (post-factum)
+--nextPart13529873.uLZWGnKmhe
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part.
+Content-Transfer-Encoding: 7Bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEZUOOw5ESFLHZZtOKil/iNcg8M0sFAmZEYQAACgkQil/iNcg8
+M0vELBAAtzFurVLA2p05EBkdZqnYzYFZSF1PqO+Gl9ycGnsEtOrfdBLnJX68Fe3Y
+2ALMWI/SiP+nY16RnLH74Zv1vZPZ4cCraP2RcsZx7foWX3/5Vp6HXZNCTft4mY/z
+ukh1bYGL22wgMYzcdxcsYzNWx8hPPBWtcQBLlI135gWwsFMWLceLqSxdSArycjjM
+RgmmKUYWC7hicfeQ2IusZ+KIETvOadet1mW5Jkgtb0Xl7BD2bdeWmTEaPudRye4/
+alYhrMEKUDWRr48uV5KohVlj4SR06t3RF2TVg9bGfupyhD80DRobXE2MqTsQ04ve
+2X9XeXPkfhVzo1MjZMqNhbln1tG1C9v3E+yQIqyZ4N9hrCZ4T6RMztz/OooHkNqq
+NfVnZFf59FTPfkd4kCb4gzJ6bcxT2DVnbnBndeGSQ3yh+4xA5uokbezQBUuw9ub/
+iVoPo6bTo15GE3uM47+LEGQcahYG6PC798n5megvVCuBepFvVEkOW4Tku6vI3rx+
+ox+NpWdgm7u0262OdwpMXBEQzj0aCJC8KafE9TmfAMF+5DNdD6r+gqR+4SL0A90l
+GJHudrVX0MD9ZixIq5Nc0rVpT2i167xZHgMfq24Uw04M2awxSZIb9oyEiwYCP9QL
+svxPKWThbWw8uZB2yWKDUqzotS1Xo6cYZEV/MrgN28czKZlvA0Q=
+=EtZ6
+-----END PGP SIGNATURE-----
+
+--nextPart13529873.uLZWGnKmhe--
+
+
+
 
