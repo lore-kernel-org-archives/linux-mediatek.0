@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1014C25B74
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 May 2024 12:31:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79769C25B77
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 May 2024 12:31:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xeweRzJYcKjXRAjEmm1BvsiICj+90Ol864tdWm391kg=; b=GPqXs7QfOcldgnzuo24AM89n/R
-	qTs2OQBeuK215qMjP8RXMiNqhrD+EaJIV1vOSdQTwwQ68EjurOHNPl4gyjY6FuQ0zSiUxiZVmJYCS
-	uJ768XpEK9BbkpdMiUtQrRo3hhoQdsUj8vwWRjgbn0Ck2P8+4ninFLRtTw+9w+J4MtFGq2PMnoP9L
-	y6SC5Pko2WvFLQwbqLlHQpJiF657vQhvmVPdsCD87SkASe9OilyIJkTex38Zt2DmtCgC/0Pc480Rf
-	F78YbX19eaxywuSUbpyUDHTTaRJtgNZG7rrket/I9e+nXAbS2KO9t3RqeskYaOOZbOZLPVTEkLytr
-	eeLFDrQQ==;
+	bh=Sus3517Y5lUw+PztYhbUBV9X/dEtqRqOKLOqzdKp68c=; b=coTtT81kBOc/M+Cn+SL/Nt+HtC
+	fsOPwLzUA429eZeshB5bgbFGt072gzl+5dFmhCcFRr80nCwX8nlJHfvFJjCwzQVivmMaDcpyWA5Xk
+	Qz/W4ssQZ8zMOIPLx67q5X8mQYRohuY6gdNEWBd9AmPhFDfEebTJd3wQb0bKyaH0M/Z/Rs0F+8zoM
+	dLlvhBMoxkdtsJrAL5zwBH31CCIwDl2dRphO/SaprPLbqVnvwFpTS+rbPW0TnCmIkq9jQp5okY7sL
+	LwpCejeG8s5Ao9+gGQyp+VHLqEyyddfuz3IU62I4rLs8czrzsByB4Ms4tclz1JoLZAPmJO1S9gaNT
+	bT6D5UXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s7aGb-00000004ovo-2c9I;
-	Thu, 16 May 2024 12:31:26 +0000
+	id 1s7aGh-00000004p0c-3NPZ;
+	Thu, 16 May 2024 12:31:31 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s7aGY-00000004ouP-1EH0;
-	Thu, 16 May 2024 12:31:23 +0000
-X-UUID: 30c7cc98138011ef9a78ddf43a9225dc-20240516
+	id 1s7aGe-00000004oxU-1cdc;
+	Thu, 16 May 2024 12:31:29 +0000
+X-UUID: 3539c290138011ef9a78ddf43a9225dc-20240516
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=xeweRzJYcKjXRAjEmm1BvsiICj+90Ol864tdWm391kg=;
-	b=KKJEAYNF+jtT5xyY4Px4uJVFP10MV3jHvzVwG8HDlbzFrsGuLbUl2FzwHbgKhjI0yj+Ggn/6YTyLd9cWN5hwlgix2jEN51cpZBUSs8rGqabgGuv/4LR66XVOFcq21WeYGEGNznVMu/56FiVFo6kEZ71vZ48gH+WQ2c4Y6hnLYGo=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Sus3517Y5lUw+PztYhbUBV9X/dEtqRqOKLOqzdKp68c=;
+	b=Z8SRYhUqQvh293a/UmnXSbbJM+iO6zeQBz0jfBd22bZUD2yjZoCugn2ZwjPn2JRJFoj7E/qjjzdPsTt4dQ2AUkDhlIlIwMJWlFoCWmwW1YPOG/Rnlezayae0Nux2w19eZ+OP3y39FAB6TQQd6kIxoDjjE4y8EPehJHXwSbDlyIs=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.38,REQID:5bb15e92-fffd-4060-9c35-93c316068e57,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:82c5f88,CLOUDID:5b1bf083-4f93-4875-95e7-8c66ea833d57,B
+X-CID-O-INFO: VERSION:1.1.38,REQID:b4b766bc-cd97-46a9-b7eb-dc7e3eea10f7,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:82c5f88,CLOUDID:a9657087-8d4f-477b-89d2-1e3bdbef96d1,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
 	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 30c7cc98138011ef9a78ddf43a9225dc-20240516
+X-UUID: 3539c290138011ef9a78ddf43a9225dc-20240516
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <yunfei.dong@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 185745103; Thu, 16 May 2024 05:31:16 -0700
+	with ESMTP id 1813943294; Thu, 16 May 2024 05:31:24 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 16 May 2024 05:21:13 -0700
+ 15.2.1118.26; Thu, 16 May 2024 20:21:20 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 16 May 2024 20:21:12 +0800
+ 15.2.1118.26 via Frontend Transport; Thu, 16 May 2024 20:21:19 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Jeffrey Kardatzke <jkardatzke@google.com>,
 	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
@@ -75,9 +75,9 @@ CC: Chen-Yu Tsai <wenst@chromium.org>, Yong Wu <yong.wu@mediatek.com>, Hsin-Yi
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v6,04/24] v4l: add documentation for restricted memory flag
-Date: Thu, 16 May 2024 20:20:42 +0800
-Message-ID: <20240516122102.16379-5-yunfei.dong@mediatek.com>
+Subject: [PATCH v6,09/24] media: mediatek: vcodec: allocate tee share memory
+Date: Thu, 16 May 2024 20:20:47 +0800
+Message-ID: <20240516122102.16379-10-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20240516122102.16379-1-yunfei.dong@mediatek.com>
 References: <20240516122102.16379-1-yunfei.dong@mediatek.com>
@@ -86,8 +86,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240516_053122_394097_B1496260 
-X-CRM114-Status: GOOD (  12.32  )
+X-CRM114-CacheID: sfid-20240516_053128_530130_C1FFC968 
+X-CRM114-Status: GOOD (  18.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,44 +102,187 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Jeffrey Kardatzke <jkardatzke@google.com>
+Allocate two share memory for each lat and core hardware used to share
+information with optee-os. Msg buffer used to send ipi command and get ack
+command with optee-os, data buffer used to store vsi information which
+used for hardware decode.
 
-Adds documentation for V4L2_MEMORY_FLAG_RESTRICTED.
-
-Signed-off-by: Jeffrey Kardatzke <jkardatzke@google.com>
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 ---
- Documentation/userspace-api/media/v4l/buffer.rst | 10 +++++++++-
- 1 file changed, 9 insertions(+), 1 deletion(-)
+ .../vcodec/decoder/mtk_vcodec_dec_optee.c     | 80 ++++++++++++++++++-
+ .../vcodec/decoder/mtk_vcodec_dec_optee.h     | 32 ++++++++
+ 2 files changed, 111 insertions(+), 1 deletion(-)
 
-diff --git a/Documentation/userspace-api/media/v4l/buffer.rst b/Documentation/userspace-api/media/v4l/buffer.rst
-index 52bbee81c080..807e43bfed2b 100644
---- a/Documentation/userspace-api/media/v4l/buffer.rst
-+++ b/Documentation/userspace-api/media/v4l/buffer.rst
-@@ -696,7 +696,7 @@ enum v4l2_memory
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.c
+index 38d9c1c1785a..611fb0e56480 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.c
+@@ -47,13 +47,69 @@ int mtk_vcodec_dec_optee_private_init(struct mtk_vcodec_dec_dev *vcodec_dev)
+ }
+ EXPORT_SYMBOL_GPL(mtk_vcodec_dec_optee_private_init);
  
- .. _memory-flags:
- 
--Memory Consistency Flags
-+Memory Flags
- ------------------------
- 
- .. raw:: latex
-@@ -728,6 +728,14 @@ Memory Consistency Flags
- 	only if the buffer is used for :ref:`memory mapping <mmap>` I/O and the
- 	queue reports the :ref:`V4L2_BUF_CAP_SUPPORTS_MMAP_CACHE_HINTS
- 	<V4L2-BUF-CAP-SUPPORTS-MMAP-CACHE-HINTS>` capability.
-+    * .. _`V4L2-MEMORY-FLAG-RESTRICTED`:
++static void mtk_vcodec_dec_optee_deinit_memref(struct mtk_vdec_optee_ca_info *ca_info,
++					       enum mtk_vdec_optee_data_index data_index)
++{
++	tee_shm_free(ca_info->shm_memref[data_index].msg_shm);
++}
 +
-+      - ``V4L2_MEMORY_FLAG_RESTRICTED``
-+      - 0x00000002
-+      - The queued buffers are expected to be in restricted memory. If not, an
-+	error will be returned. This flag can only be used with ``V4L2_MEMORY_DMABUF``.
-+	Typically restricted buffers are allocated using a restricted dma-heap. This flag
-+	can only be specified if the ``V4L2_BUF_CAP_SUPPORTS_RESTRICTED_MEM`` is set.
++static int mtk_vcodec_dec_optee_init_memref(struct tee_context *tee_vdec_ctx,
++					    struct mtk_vdec_optee_ca_info *ca_info,
++					    enum mtk_vdec_optee_data_index data_index)
++{
++	struct mtk_vdec_optee_shm_memref *shm_memref;
++	int alloc_size = 0, err = 0;
++	u64 shm_param_type = 0;
++	bool copy_buffer;
++
++	switch (data_index) {
++	case OPTEE_MSG_INDEX:
++		shm_param_type = TEE_IOCTL_PARAM_ATTR_TYPE_MEMREF_INOUT;
++		alloc_size = MTK_VDEC_OPTEE_MSG_SIZE;
++		copy_buffer = true;
++		break;
++	case OPTEE_DATA_INDEX:
++		shm_param_type = TEE_IOCTL_PARAM_ATTR_TYPE_MEMREF_INOUT;
++		alloc_size = MTK_VDEC_OPTEE_HW_SIZE;
++		copy_buffer = false;
++		break;
++	default:
++		pr_err(MTK_DBG_VCODEC_STR "tee invalid data_index: %d.\n", data_index);
++		return -EINVAL;
++	}
++
++	shm_memref = &ca_info->shm_memref[data_index];
++
++	/* Allocate dynamic shared memory with decoder TA */
++	shm_memref->msg_shm_size = alloc_size;
++	shm_memref->param_type = shm_param_type;
++	shm_memref->copy_to_ta = copy_buffer;
++	shm_memref->msg_shm = tee_shm_alloc_kernel_buf(tee_vdec_ctx, shm_memref->msg_shm_size);
++	if (IS_ERR(shm_memref->msg_shm)) {
++		pr_err(MTK_DBG_VCODEC_STR "tee alloc buf fail: data_index:%d.\n", data_index);
++		return -ENOMEM;
++	}
++
++	shm_memref->msg_shm_ca_buf = tee_shm_get_va(shm_memref->msg_shm, 0);
++	if (IS_ERR(shm_memref->msg_shm_ca_buf)) {
++		pr_err(MTK_DBG_VCODEC_STR "tee get shm va fail: data_index:%d.\n", data_index);
++		err = PTR_ERR(shm_memref->msg_shm_ca_buf);
++		goto err_get_msg_va;
++	}
++
++	return err;
++err_get_msg_va:
++	tee_shm_free(shm_memref->msg_shm);
++	return err;
++}
++
+ static int mtk_vcodec_dec_optee_init_hw_info(struct mtk_vdec_optee_private *optee_private,
+ 					     enum mtk_vdec_hw_id hardware_index)
+ {
+ 	struct device *dev = &optee_private->vcodec_dev->plat_dev->dev;
+ 	struct tee_ioctl_open_session_arg session_arg;
+ 	struct mtk_vdec_optee_ca_info *ca_info;
+-	int err = 0, session_func;
++	int err, i, j, session_func;
  
- .. raw:: latex
+ 	/* Open lat and core session with vdec TA. */
+ 	switch (hardware_index) {
+@@ -87,6 +143,24 @@ static int mtk_vcodec_dec_optee_init_hw_info(struct mtk_vdec_optee_private *opte
+ 	dev_dbg(dev, MTK_DBG_VCODEC_STR "open vdec tee session hw_id:%d session_id=%x.\n",
+ 		hardware_index, ca_info->vdec_session_id);
  
++	/* Allocate dynamic shared memory with decoder TA */
++	for (i = 0; i < OPTEE_MAX_INDEX; i++) {
++		err = mtk_vcodec_dec_optee_init_memref(optee_private->tee_vdec_ctx, ca_info, i);
++		if (err) {
++			dev_err(dev, MTK_DBG_VCODEC_STR "init vdec memref failed: %d.\n", i);
++			goto err_init_memref;
++		}
++	}
++
++	return err;
++err_init_memref:
++	if (i != 0) {
++		for (j = 0; j < i; j++)
++			mtk_vcodec_dec_optee_deinit_memref(ca_info, j);
++	}
++
++	tee_client_close_session(optee_private->tee_vdec_ctx, ca_info->vdec_session_id);
++
+ 	return err;
+ }
+ 
+@@ -94,12 +168,16 @@ static void mtk_vcodec_dec_optee_deinit_hw_info(struct mtk_vdec_optee_private *o
+ 						enum mtk_vdec_hw_id hw_id)
+ {
+ 	struct mtk_vdec_optee_ca_info *ca_info;
++	int i;
+ 
+ 	if (hw_id == MTK_VDEC_LAT0)
+ 		ca_info = &optee_private->lat_ca;
+ 	else
+ 		ca_info = &optee_private->core_ca;
+ 
++	for (i = 0; i < OPTEE_MAX_INDEX; i++)
++		mtk_vcodec_dec_optee_deinit_memref(ca_info, i);
++
+ 	tee_client_close_session(optee_private->tee_vdec_ctx, ca_info->vdec_session_id);
+ }
+ 
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.h b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.h
+index 8b1dca49331e..24aa63af9887 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.h
++++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.h
+@@ -18,16 +18,48 @@
+ 
+ #define MTK_OPTEE_MAX_TEE_PARAMS 4
+ 
++#define MTK_VDEC_OPTEE_MSG_SIZE     128
++#define MTK_VDEC_OPTEE_HW_SIZE      (8 * SZ_1K)
++
++/**
++ * struct mtk_vdec_optee_shm_memref - share memory reference params
++ * @msg_shm:        message shared with TA in TEE.
++ * @msg_shm_ca_buf: ca buffer.
++ *
++ * @msg_shm_size:   share message size.
++ * @param_type:     each tee param types.
++ * @copy_to_ta:     need to copy data from ca to share memory.
++ */
++struct mtk_vdec_optee_shm_memref {
++	struct tee_shm *msg_shm;
++	u8 *msg_shm_ca_buf;
++
++	u32 msg_shm_size;
++	u64 param_type;
++	bool copy_to_ta;
++};
++
+ /**
+  * struct mtk_vdec_optee_ca_info - ca related param
+  * @vdec_session_id:   optee TA session identifier.
+  * @hw_id:             hardware index.
+  * @vdec_session_func: trusted application function id used specific to the TA.
++ * @shm_memref:        share memory reference params.
+  */
+ struct mtk_vdec_optee_ca_info {
+ 	u32 vdec_session_id;
+ 	enum mtk_vdec_hw_id hw_id;
+ 	u32 vdec_session_func;
++	struct mtk_vdec_optee_shm_memref shm_memref[MTK_OPTEE_MAX_TEE_PARAMS];
++};
++
++/*
++ * enum mtk_vdec_optee_data_index - used to indentify each share memory information
++ */
++enum mtk_vdec_optee_data_index {
++	OPTEE_MSG_INDEX = 0,
++	OPTEE_DATA_INDEX,
++	OPTEE_MAX_INDEX,
+ };
+ 
+ /**
 -- 
 2.25.1
 
