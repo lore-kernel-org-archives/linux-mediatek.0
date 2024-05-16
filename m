@@ -4,103 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06163C25B7D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 May 2024 12:21:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 977B7C25B74
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 May 2024 12:22:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3mN2fLq/jknwxdCirQZ8h3ADw1ezytG2RrBDiDF2Oj4=; b=a3K2UqEQMe9s+TZMqFSX8x5SUt
-	oqNzMigFNQR55ZwzG7HMU0Fn9UgkRKpjlJ8anmYcXs9+Vfi1hKkHQX4X9pkPt3Teur3zQlSH61RXF
-	jL2pv1jiO+ipwlivIpYDJlyHLeVhr+DCP0BD2ieXC27851Qz41m48jsjd/lqghGC5+bSDReDxpA0x
-	ZUem3R39X07rAGk7r8oAl36iKUyly7rlZmVFVc5Q1JasZhnGUbo7XFqcG+vgA77MWoPRbZQfBWnYF
-	YjPfF6yn8uxszLUb9qj6URyC5f4C7q/KHTGPox/N5Xd9b1CUFkDloudPPb5A94LecTD5edwvBbDaB
-	HAPPnmjQ==;
+	bh=HXlCrXmz0HDISBo3inWbsA9qk+byK7Wi/fKLU0WjL68=; b=JBsh0pTSf8BcjghwBYheqlxZ/w
+	DHct6IQJnStd1HqAXHHnHH0UzpyhegHPdCmh1/wJf6Q9L6zXg8b0XNhgDsRPYwspfJ9wv5bl6uZ5W
+	9k19GLQGV5c+SHJV84La+sm7rJXEQZQYCZfHlmAtaxo9JBBEmFWu7fH+DSm0rGEvxt2db1yS+5IUP
+	9rJPZrgNWaaojsA2775G0MjN9WBorXrpZezmHSHSQYaiPBfu/pTez40ZSVnWD3kCmXDPpFBSxMnkC
+	PRIafCd90T9NPyrm0SpBvkEqYKKak+aYD+GV2jVRq1c4PtYZZGJMBhqQ2KZgmJA9B3NPpTieG33Ag
+	IWITI8yQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s7a79-00000004krD-1OQ8;
-	Thu, 16 May 2024 12:21:39 +0000
+	id 1s7a7W-00000004lDz-3M1O;
+	Thu, 16 May 2024 12:22:02 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s7a6v-00000004ked-3NkO;
-	Thu, 16 May 2024 12:21:29 +0000
-X-UUID: cda502bc137e11efa8f1cd58ee6c2400-20240516
+	id 1s7a70-00000004kjZ-25cD;
+	Thu, 16 May 2024 12:21:32 +0000
+X-UUID: d0ce0d9e137e11efa8f1cd58ee6c2400-20240516
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=3mN2fLq/jknwxdCirQZ8h3ADw1ezytG2RrBDiDF2Oj4=;
-	b=KOcPOdFe9gm9yB6qyreaTdKvlY3s3mzYMrBHntGFBfSq3szRqC0Iw38tu1CHo3jf5PrG5l9L1FInJLIvE4ZXdYZ46WhJm8R9E3QLxTiSWmdMDw48k7Cb+Az5CQzVYHpeQx8ASYJh47M3usCGlOzH0HivErmQFMuiNHhaKmfcNuM=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=HXlCrXmz0HDISBo3inWbsA9qk+byK7Wi/fKLU0WjL68=;
+	b=D7Eeg8iB0tw0ieiM8NO/r9h2W7UiUsf0znHR2+MViZ9+5CpjUMBfMicAqg4hh/1pAjz2rk3xYU8qNPZaNPtDeFCMOyEzpNW8WYvJjCxSUIPZPcHgOcA0sCaQnwnw4y1LyjaHHKGqJPZgyEQsD28Z2x1uWb1tBbAMzqLdxAMtK6c=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.38,REQID:37c1046e-bc6d-44be-9659-d7021e870a3d,IP:0,U
+X-CID-O-INFO: VERSION:1.1.38,REQID:2c697897-419a-4ebc-a01d-ecbb9f245f92,IP:0,U
 	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
 	N:release,TS:-25
-X-CID-META: VersionHash:82c5f88,CLOUDID:ee1fd792-e2c0-40b0-a8fe-7c7e47299109,B
+X-CID-META: VersionHash:82c5f88,CLOUDID:2020d792-e2c0-40b0-a8fe-7c7e47299109,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
 	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: cda502bc137e11efa8f1cd58ee6c2400-20240516
+X-UUID: d0ce0d9e137e11efa8f1cd58ee6c2400-20240516
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <yunfei.dong@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 336931303; Thu, 16 May 2024 05:21:20 -0700
+	with ESMTP id 1632365720; Thu, 16 May 2024 05:21:26 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 16 May 2024 20:21:17 +0800
+ 15.2.1118.26; Thu, 16 May 2024 20:21:23 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 16 May 2024 20:21:16 +0800
+ 15.2.1118.26 via Frontend Transport; Thu, 16 May 2024 20:21:22 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Jeffrey Kardatzke <jkardatzke@google.com>,
 	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
-	<nfraprado@collabora.com>, Nathan Hebert <nhebert@chromium.org>, "Nicolas
- Dufresne" <nicolas.dufresne@collabora.com>, Hans Verkuil
+	<nfraprado@collabora.com>, Nathan Hebert <nhebert@chromium.org>, Nicolas
+ Dufresne <nicolas.dufresne@collabora.com>, Hans Verkuil
 	<hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
 	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
 	<benjamin.gaignard@collabora.com>, Sebastian Fricke
-	<sebastian.fricke@collabora.com>, Tomasz Figa <tfiga@chromium.org>, "Mauro
- Carvalho Chehab" <mchehab@kernel.org>, Marek Szyprowski
+	<sebastian.fricke@collabora.com>, Tomasz Figa <tfiga@chromium.org>, Mauro
+ Carvalho Chehab <mchehab@kernel.org>, Marek Szyprowski
 	<m.szyprowski@samsung.com>
-CC: Chen-Yu Tsai <wenst@chromium.org>, Yong Wu <yong.wu@mediatek.com>,
-	"Hsin-Yi Wang" <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
-	"Daniel Vetter" <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>, Yunfei
- Dong <yunfei.dong@mediatek.com>, Sumit Semwal <sumit.semwal@linaro.org>,
-	"Brian Starkey" <Brian.Starkey@arm.com>, John Stultz <jstultz@google.com>, "T
- . J . Mercier" <tjmercier@google.com>, =?UTF-8?q?Christian=20K=C3=B6nig?=
+CC: Chen-Yu Tsai <wenst@chromium.org>, Yong Wu <yong.wu@mediatek.com>, Hsin-Yi
+ Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, Daniel
+ Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>, Yunfei Dong
+	<yunfei.dong@mediatek.com>, Sumit Semwal <sumit.semwal@linaro.org>, Brian
+ Starkey <Brian.Starkey@arm.com>, John Stultz <jstultz@google.com>, "T . J .
+ Mercier" <tjmercier@google.com>, =?UTF-8?q?Christian=20K=C3=B6nig?=
 	<christian.koenig@amd.com>, Matthias Brugger <matthias.bgg@gmail.com>,
 	<linux-media@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v6,07/24] dma-heap: Provide accessors so that in-kernel drivers can allocate dmabufs from specific heaps
-Date: Thu, 16 May 2024 20:20:45 +0800
-Message-ID: <20240516122102.16379-8-yunfei.dong@mediatek.com>
+Subject: [PATCH v6,11/24] media: mediatek: vcodec: initialize msg and vsi information
+Date: Thu, 16 May 2024 20:20:49 +0800
+Message-ID: <20240516122102.16379-12-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20240516122102.16379-1-yunfei.dong@mediatek.com>
 References: <20240516122102.16379-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--7.817000-8.000000
-X-TMASE-MatchedRID: qPZlTxuLTeftt0HEL3BUV4lD2T5imTkJ2qBSQHAh8pg0QmmUihPzrFJS
-	0b8z/9TB8AyWk2NFMNbijpjet3oGSJCoy9iDotiwNNHZMWDTEbe4UO5+xwKkcStjI02a+7m1J7o
-	vlkPXpS3VaZR68ynk9lCRaYaDm6fHBCaQyxlaPkG3D7EeeyZCMzGZtPrBBPZrEvoxTu3fj1tEe5
-	BdjBKTALjfysYMcGyRGce8edCRlYkmcsJib2IjaaOuVibdZNTv7yWPaQc4INQOkJQR4QWbsG+3c
-	txX3zZNo2jEjZ+uot1HVle6mAl0da+/EguYor8cFEUknJ/kEl7dB/CxWTRRu9bFCwAgdKkSZVhc
-	Zw1+0o4U24haPFkSUhqL6AAGbHEsKH3Be5ENxfV32uEPMy/F85RMZUCEHkRt
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--7.817000-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: B05BE9A084C6E79A300EE59DB9F2350863A9B78A9FE89CF540FF27CE85EAB6142000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240516_052125_973352_37FDFCE6 
-X-CRM114-Status: GOOD (  21.98  )
+X-CRM114-CacheID: sfid-20240516_052130_739657_5C6C4F4A 
+X-CRM114-Status: GOOD (  20.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,184 +102,141 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: John Stultz <jstultz@google.com>
+Need to initialize msg and vsi information before sending to optee-os, then
+calling optee invoke command to send the information to optee-os.
 
-This allows drivers who don't want to create their own
-DMA-BUF exporter to be able to allocate DMA-BUFs directly
-from existing DMA-BUF Heaps.
+For the optee communication interface is different with scp, using
+flag to separate them.
 
-There is some concern that the premise of DMA-BUF heaps is
-that userland knows better about what type of heap memory
-is needed for a pipeline, so it would likely be best for
-drivers to import and fill DMA-BUFs allocated by userland
-instead of allocating one themselves, but this is still
-up for debate.
-
-Signed-off-by: John Stultz <jstultz@google.com>
-Signed-off-by: T.J. Mercier <tjmercier@google.com>
-Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-[Yong: Fix the checkpatch alignment warning]
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 ---
- drivers/dma-buf/dma-heap.c | 83 ++++++++++++++++++++++++++++++--------
- include/linux/dma-heap.h   |  6 +++
- 2 files changed, 73 insertions(+), 16 deletions(-)
+ .../vcodec/decoder/mtk_vcodec_dec_drv.h       |  2 +
+ .../mediatek/vcodec/decoder/vdec_vpu_if.c     | 49 ++++++++++++++++---
+ .../mediatek/vcodec/decoder/vdec_vpu_if.h     |  4 ++
+ 3 files changed, 49 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/dma-buf/dma-heap.c b/drivers/dma-buf/dma-heap.c
-index 97025ee8500f..6efe833a4b10 100644
---- a/drivers/dma-buf/dma-heap.c
-+++ b/drivers/dma-buf/dma-heap.c
-@@ -51,12 +51,24 @@ static dev_t dma_heap_devt;
- static struct class *dma_heap_class;
- static DEFINE_XARRAY_ALLOC(dma_heap_minors);
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
+index 76a0323f993c..1540cb8bfe5c 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
++++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
+@@ -175,6 +175,7 @@ struct mtk_vcodec_dec_pdata {
+  * @vpu_inst: vpu instance pointer.
+  *
+  * @is_10bit_bitstream: set to true if it's 10bit bitstream
++ * @is_secure_playback: Secure Video Playback (SVP) mode
+  */
+ struct mtk_vcodec_dec_ctx {
+ 	enum mtk_instance_type type;
+@@ -220,6 +221,7 @@ struct mtk_vcodec_dec_ctx {
+ 	void *vpu_inst;
  
--static int dma_heap_buffer_alloc(struct dma_heap *heap, size_t len,
--				 unsigned int fd_flags,
--				 unsigned int heap_flags)
-+/**
-+ * dma_heap_buffer_alloc - Allocate dma-buf from a dma_heap
-+ * @heap:	DMA-Heap to allocate from
-+ * @len:	size to allocate in bytes
-+ * @fd_flags:	flags to set on returned dma-buf fd
-+ * @heap_flags: flags to pass to the dma heap
-+ *
-+ * This is for internal dma-buf allocations only. Free returned buffers with dma_buf_put().
-+ */
-+struct dma_buf *dma_heap_buffer_alloc(struct dma_heap *heap, size_t len,
-+				      unsigned int fd_flags,
-+				      unsigned int heap_flags)
- {
--	struct dma_buf *dmabuf;
--	int fd;
-+	if (fd_flags & ~DMA_HEAP_VALID_FD_FLAGS)
-+		return ERR_PTR(-EINVAL);
-+
-+	if (heap_flags & ~DMA_HEAP_VALID_HEAP_FLAGS)
-+		return ERR_PTR(-EINVAL);
- 
- 	/*
- 	 * Allocations from all heaps have to begin
-@@ -64,9 +76,20 @@ static int dma_heap_buffer_alloc(struct dma_heap *heap, size_t len,
- 	 */
- 	len = PAGE_ALIGN(len);
- 	if (!len)
--		return -EINVAL;
-+		return ERR_PTR(-EINVAL);
-+
-+	return heap->ops->allocate(heap, len, fd_flags, heap_flags);
-+}
-+EXPORT_SYMBOL_GPL(dma_heap_buffer_alloc);
- 
--	dmabuf = heap->ops->allocate(heap, len, fd_flags, heap_flags);
-+static int dma_heap_bufferfd_alloc(struct dma_heap *heap, size_t len,
-+				   unsigned int fd_flags,
-+				   unsigned int heap_flags)
-+{
-+	struct dma_buf *dmabuf;
-+	int fd;
-+
-+	dmabuf = dma_heap_buffer_alloc(heap, len, fd_flags, heap_flags);
- 	if (IS_ERR(dmabuf))
- 		return PTR_ERR(dmabuf);
- 
-@@ -104,15 +127,9 @@ static long dma_heap_ioctl_allocate(struct file *file, void *data)
- 	if (heap_allocation->fd)
- 		return -EINVAL;
- 
--	if (heap_allocation->fd_flags & ~DMA_HEAP_VALID_FD_FLAGS)
--		return -EINVAL;
--
--	if (heap_allocation->heap_flags & ~DMA_HEAP_VALID_HEAP_FLAGS)
--		return -EINVAL;
--
--	fd = dma_heap_buffer_alloc(heap, heap_allocation->len,
--				   heap_allocation->fd_flags,
--				   heap_allocation->heap_flags);
-+	fd = dma_heap_bufferfd_alloc(heap, heap_allocation->len,
-+				     heap_allocation->fd_flags,
-+				     heap_allocation->heap_flags);
- 	if (fd < 0)
- 		return fd;
- 
-@@ -205,6 +222,7 @@ void *dma_heap_get_drvdata(struct dma_heap *heap)
- {
- 	return heap->priv;
- }
-+EXPORT_SYMBOL_GPL(dma_heap_get_drvdata);
+ 	bool is_10bit_bitstream;
++	bool is_secure_playback;
+ };
  
  /**
-  * dma_heap_get_name - get heap name
-@@ -217,6 +235,7 @@ const char *dma_heap_get_name(struct dma_heap *heap)
- {
- 	return heap->name;
- }
-+EXPORT_SYMBOL_GPL(dma_heap_get_name);
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
+index 82e57ae983d5..5336769a3fb5 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
+@@ -148,7 +148,10 @@ static void vpu_dec_ipi_handler(void *data, unsigned int len, void *priv)
  
- /**
-  * dma_heap_add - adds a heap to dmabuf heaps
-@@ -307,6 +326,37 @@ struct dma_heap *dma_heap_add(const struct dma_heap_export_info *exp_info)
- 	kfree(heap);
- 	return err_ret;
- }
-+EXPORT_SYMBOL_GPL(dma_heap_add);
-+
-+/**
-+ * dma_heap_find - get the heap registered with the specified name
-+ * @name: Name of the DMA-Heap to find
-+ *
-+ * Returns:
-+ * The DMA-Heap with the provided name.
-+ *
-+ * NOTE: DMA-Heaps returned from this function MUST be released using
-+ * dma_heap_put() when the user is done to enable the heap to be unloaded.
-+ */
-+struct dma_heap *dma_heap_find(const char *name)
-+{
-+	struct dma_heap *h;
-+
-+	mutex_lock(&heap_list_lock);
-+	list_for_each_entry(h, &heap_list, list) {
-+		if (!kref_get_unless_zero(&h->refcount))
-+			continue;
-+
-+		if (!strcmp(h->name, name)) {
-+			mutex_unlock(&heap_list_lock);
-+			return h;
+ static int vcodec_vpu_send_msg(struct vdec_vpu_inst *vpu, void *msg, int len)
+ {
+-	int err, id, msgid;
++	struct mtk_vdec_optee_data_to_shm *optee_data;
++	int data_size, id, hw_id, msgid;
++	void *ack_msg, *data_msg;
++	int err;
+ 
+ 	msgid = *(uint32_t *)msg;
+ 	mtk_vdec_debug(vpu->ctx, "id=%X", msgid);
+@@ -158,16 +161,46 @@ static int vcodec_vpu_send_msg(struct vdec_vpu_inst *vpu, void *msg, int len)
+ 
+ 	if (vpu->ctx->dev->vdec_pdata->hw_arch == MTK_VDEC_LAT_SINGLE_CORE) {
+ 		if (msgid == AP_IPIMSG_DEC_CORE ||
+-		    msgid == AP_IPIMSG_DEC_CORE_END)
++		    msgid == AP_IPIMSG_DEC_CORE_END) {
++			optee_data = &vpu->core_optee_info;
+ 			id = vpu->core_id;
+-		else
++		} else {
++			optee_data = &vpu->lat_optee_info;
+ 			id = vpu->id;
 +		}
-+		dma_heap_put(h);
+ 	} else {
++		optee_data = &vpu->lat_optee_info;
+ 		id = vpu->id;
+ 	}
+ 
+-	err = mtk_vcodec_fw_ipi_send(vpu->ctx->dev->fw_handler, id, msg,
+-				     len, 2000);
++	if (!vpu->ctx->is_secure_playback) {
++		err = mtk_vcodec_fw_ipi_send(vpu->ctx->dev->fw_handler, id, msg, len, 2000);
++	} else {
++		hw_id = (id == SCP_IPI_VDEC_LAT) ? MTK_VDEC_LAT0 : MTK_VDEC_CORE;
++
++		mtk_vcodec_dec_optee_set_data(optee_data, msg, len, OPTEE_MSG_INDEX);
++
++		/* There is no need to copy the data (VSI) message to shared memory,
++		 * but we still need to set the buffer size to a non-zero value.
++		 */
++		if (msgid == AP_IPIMSG_DEC_CORE || msgid == AP_IPIMSG_DEC_START) {
++			data_msg = mtk_vcodec_dec_get_shm_buffer_va(vpu->ctx->dev->optee_private,
++								    hw_id, OPTEE_DATA_INDEX);
++			data_size = mtk_vcodec_dec_get_shm_buffer_size(vpu->ctx->dev->optee_private,
++								       hw_id, OPTEE_DATA_INDEX);
++			mtk_vcodec_dec_optee_set_data(optee_data, data_msg, data_size,
++						      OPTEE_DATA_INDEX);
++		}
++
++		err = mtk_vcodec_dec_optee_invokd_cmd(vpu->ctx->dev->optee_private,
++						      hw_id, optee_data);
++		vpu->failure = err;
++
++		ack_msg = mtk_vcodec_dec_get_shm_buffer_va(vpu->ctx->dev->optee_private, hw_id,
++							   OPTEE_MSG_INDEX);
++		vpu_dec_ipi_handler(ack_msg, 0, vpu->ctx->dev);
 +	}
-+	mutex_unlock(&heap_list_lock);
-+	return NULL;
-+}
-+EXPORT_SYMBOL_GPL(dma_heap_find);
- 
- static void dma_heap_release(struct kref *ref)
- {
-@@ -332,6 +382,7 @@ void dma_heap_put(struct dma_heap *heap)
- {
- 	kref_put(&heap->refcount, dma_heap_release);
- }
-+EXPORT_SYMBOL_GPL(dma_heap_put);
- 
- static char *dma_heap_devnode(const struct device *dev, umode_t *mode)
- {
-diff --git a/include/linux/dma-heap.h b/include/linux/dma-heap.h
-index d57593f8a1bc..3cbf9bff2346 100644
---- a/include/linux/dma-heap.h
-+++ b/include/linux/dma-heap.h
-@@ -46,6 +46,12 @@ const char *dma_heap_get_name(struct dma_heap *heap);
- 
- struct dma_heap *dma_heap_add(const struct dma_heap_export_info *exp_info);
- 
-+struct dma_heap *dma_heap_find(const char *name);
 +
- void dma_heap_put(struct dma_heap *heap);
+ 	if (err) {
+ 		mtk_vdec_err(vpu->ctx, "send fail vpu_id=%d msg_id=%X status=%d",
+ 			     id, msgid, err);
+@@ -213,7 +246,11 @@ int vpu_dec_init(struct vdec_vpu_inst *vpu)
+ 		return err;
+ 	}
  
-+struct dma_buf *dma_heap_buffer_alloc(struct dma_heap *heap, size_t len,
-+				      unsigned int fd_flags,
-+				      unsigned int heap_flags);
-+
- #endif /* _DMA_HEAPS_H */
+-	if (vpu->ctx->dev->vdec_pdata->hw_arch == MTK_VDEC_LAT_SINGLE_CORE) {
++	/* Using tee interface to communicate with optee os directly for SVP mode,
++	 * fw ipi interface is used for normal playback.
++	 */
++	if (vpu->ctx->dev->vdec_pdata->hw_arch == MTK_VDEC_LAT_SINGLE_CORE &&
++	    !vpu->ctx->is_secure_playback) {
+ 		err = mtk_vcodec_fw_ipi_register(vpu->ctx->dev->fw_handler,
+ 						 vpu->core_id, vpu->handler,
+ 						 "vdec", vpu->ctx->dev);
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.h b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.h
+index 57ed9b1f5eaa..8e9d4c2cbb88 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.h
++++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.h
+@@ -27,6 +27,8 @@ struct mtk_vcodec_dec_ctx;
+  * @codec_type     : use codec type to separate different codecs
+  * @capture_type:	used capture type to separate different capture format
+  * @fb_sz  : frame buffer size of each plane
++ * @lat_optee_info  : used to send msg to optee shm buffer
++ * @core_optee_info  : used to send msg to optee shm buffer
+  */
+ struct vdec_vpu_inst {
+ 	int id;
+@@ -43,6 +45,8 @@ struct vdec_vpu_inst {
+ 	unsigned int codec_type;
+ 	unsigned int capture_type;
+ 	unsigned int fb_sz[2];
++	struct mtk_vdec_optee_data_to_shm lat_optee_info;
++	struct mtk_vdec_optee_data_to_shm core_optee_info;
+ };
+ 
+ /**
 -- 
 2.25.1
 
