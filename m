@@ -4,84 +4,174 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF4EFC25B74
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 May 2024 09:43:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FA0CC25B79
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 May 2024 09:57:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=t/q0eqiauuse8nQxpBlJDlXhGqjAUNS2SNkoA9VylTA=; b=KIb46NmngtzEOiaSeI5yL1N7qm
-	XeQouup0OlwglCy3Jbnr53Kp3WlRCWxCnxqIEN1QYkGP7NlRcmh54NPVPWdQ8AQtJ4kpwmB6GIM+y
-	1WgBXBYu8AvC/bnDq5RMA695CmyC7qdtqkHgbnX7OeoyXBn63WaYdubUCpRR48z5HHgS/djC7mviW
-	T8/X+mMSYzXOkkEDhCg9KdKkO+VTQ1kCtkLkXoqKxzoYGfI46RrOtDlGSS/aHwZikxUfRVvJkoZnq
-	//klLBn9oifkZEDmREMvx0z37p2RtScq+j1c5gKjcOiOWX+AnZCAZnvY96eV2ymRAZ5aQG4122RAL
-	lvqC3s9A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=AtogAQBGdbQp7v7pJjNF5hvP5bd6cN/6aCd6VzpGpmI=; b=0NO34bUSFzP589k23j9Nb/H3JY
+	RSpf/uKLL4zIYZP5FTMFAGXF+4M8OuHFBWfWCckyqoE7uylEE7ZS5qQwqYL9kMLlVhHqt4I04DoBx
+	Y1BWDufHDl2HluiIElPEnFMEKFvY9PkPCNjGdKXfhQfdBnxHv7cB+RsHz1+MSdtM8IrL4FHLtuQYD
+	d1kYlDGzS9bArV1QUkutHYJ9/6H4WlXwO3BJ4vsFwBftoLfVL4PpDOdqvweUP3ZcUNSiKspTDafcb
+	yy0JDZG2ideYq1qgkldgSI5y82LXPymFpIDmQVWlkGOctD+56Lt2vuArpSzwsxGQmr/bCCLr7jLAo
+	jwVNqoJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s7Xdg-00000004MFW-0mSY;
-	Thu, 16 May 2024 09:43:04 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1s7XrL-00000004OjH-3YNb;
+	Thu, 16 May 2024 09:57:11 +0000
+Received: from mx0a-0016f401.pphosted.com ([67.231.148.174] helo=mx0b-0016f401.pphosted.com)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s7XdY-00000004ME8-2o63;
-	Thu, 16 May 2024 09:43:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1715852573;
-	bh=H3O243kSJW6K88T+dVi/0NKhZPWFTW+Zoxcp6Ablel0=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=gnNhJynDO17dcyTxR6IcUdoYBioRyWNo6YNIhTGnexQTXUsYyAh9GShoVghxoArH6
-	 qxyvmblrOC38+tgZ2W1QMK+KtFJ+z5espYG1FUXHJ4GHmSYz8iFWf2rGv5TH6oM/2t
-	 kSTbK/2h6IGMLbuu7Eb2dM1Je+8U6sck88t1mdEOba1Jc056FMXxrg93uCAIscqApD
-	 LPv6a3twrBJWDshPYZrzh9zIx3E/xDZUelDBzwBrl267PPBuvqmYs/a4M3jbeeKWuT
-	 fnL8KRGnEwYgUY+muMuyWySO6+OTxU8xyMQbQ5P0G3zWlHcLAe97uCx9TyWvZmKMuo
-	 FNeNt38DERbjw==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 0726737821A9;
-	Thu, 16 May 2024 09:42:51 +0000 (UTC)
-Message-ID: <eea541cb-1917-44de-ae40-0824372baab8@collabora.com>
-Date: Thu, 16 May 2024 11:42:51 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 2/3] dt-bindings: arm: mediatek: mmsys: Add OF graph
- support for board path
-To: =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
- "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "wenst@chromium.org" <wenst@chromium.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "tzimmermann@suse.de" <tzimmermann@suse.de>,
- =?UTF-8?B?U2hhd24gU3VuZyAo5a6L5a2d6KyZKQ==?= <Shawn.Sung@mediatek.com>,
- "mripard@kernel.org" <mripard@kernel.org>,
- =?UTF-8?B?Sml0YW8gU2hpICjnn7PorrDmtpsp?= <jitao.shi@mediatek.com>,
- "daniel@ffwll.ch" <daniel@ffwll.ch>,
- "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
- "conor+dt@kernel.org" <conor+dt@kernel.org>,
- "maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
- "robh@kernel.org" <robh@kernel.org>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- "airlied@gmail.com" <airlied@gmail.com>,
- "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
- "kernel@collabora.com" <kernel@collabora.com>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- =?UTF-8?B?WXUtY2hhbmcgTGVlICjmnY7nprnnkosp?= <Yu-chang.Lee@mediatek.com>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
-References: <20240516081104.83458-1-angelogioacchino.delregno@collabora.com>
- <20240516081104.83458-3-angelogioacchino.delregno@collabora.com>
- <389716757b2a79f56b3cf4f4127549795c867785.camel@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+	id 1s7XrI-00000004OhK-2SBo;
+	Thu, 16 May 2024 09:57:10 +0000
+Received: from pps.filterd (m0045849.ppops.net [127.0.0.1])
+	by mx0a-0016f401.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 44G403ku017213;
+	Thu, 16 May 2024 02:56:29 -0700
+Received: from nam10-dm6-obe.outbound.protection.outlook.com (mail-dm6nam10lp2100.outbound.protection.outlook.com [104.47.58.100])
+	by mx0a-0016f401.pphosted.com (PPS) with ESMTPS id 3y5aqxrwm0-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 16 May 2024 02:56:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=CrhoMDh1AWFVSdX8QPjDPOxgDvah7xu2YCLFXD1Xp6FU118ZWuW9ToMyHdoEdR2woEgJco/KG3B+cY853yKcfWoSuw4POE9QXky1O6h3odCm2PhXEP3M4t40ZAY1gHViHu98zQWSiNlgtOPYWc3FB08MLJCv7ZU0Fh4pdc4hMtfFM8ILd67aO0lHOZ/KJWdKSLz4raU1sB26uXzur5vGDnrr3xa0f7EaFPET1diymgEhurnyABgbW8rZtC5uyJN7FqVmIltEXNtIj1p2k+esOd/0MWHdUxXpeaIfXj2G5jnv8FkaBcTUbrRyf53Zee0knKMZwqgdqhXenfQILzXhnA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=AtogAQBGdbQp7v7pJjNF5hvP5bd6cN/6aCd6VzpGpmI=;
+ b=MEpIMXfq4Lhy6CXJr6vndf5HtnJN79rwiEVbkSC/1k82qVUUgGY80j1DXSpuC4WITeyukm4va3aCpTbpMHJ4ED8anTRafSpGfGmTjJxck5P2V6m/NnJphigjiBYgIv+eaR/kH8CkrT7rmwwWTj0K3wYdj/1gnjTNQZ7yOKYEzBAU3VLswP8W/Ycdwt1j76M6i0Xf91GjOYtYh33a6SeObkV/osJwuZU0o76uoFxCuCK+zanNa1X8Hx8dAngn4PHySKfSN6UV5XUA8bhO5eeM0jEQLe7J//R9IVe9Hj8NuaLcvYZWWKJaQgZ7gs9JJf/GeCujRVgrqwienT868pptIg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=marvell.com; dmarc=pass action=none header.from=marvell.com;
+ dkim=pass header.d=marvell.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=marvell.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=AtogAQBGdbQp7v7pJjNF5hvP5bd6cN/6aCd6VzpGpmI=;
+ b=vl2QTcgxn8dmIWFMPrNEks+5L2o6ODum9fDNgUUhwJ5k6r/OXMbIDYYamxbqjdlEOM+X9pBPlsBLt0nyHOzGneOU88Gdyf0T6pJBwIk/LhSTXK/Oo5yTi6T4BVfI5+AqKqJ6Ac88kVTqduB3PJxfECpS4xMEI59foGBVAh0bo0I=
+Received: from PH0PR18MB4474.namprd18.prod.outlook.com (2603:10b6:510:ea::22)
+ by MN2PR18MB3605.namprd18.prod.outlook.com (2603:10b6:208:268::13) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7587.26; Thu, 16 May
+ 2024 09:56:25 +0000
+Received: from PH0PR18MB4474.namprd18.prod.outlook.com
+ ([fe80::eeed:4f:2561:f916]) by PH0PR18MB4474.namprd18.prod.outlook.com
+ ([fe80::eeed:4f:2561:f916%5]) with mapi id 15.20.7452.049; Thu, 16 May 2024
+ 09:56:25 +0000
+From: Hariprasad Kelam <hkelam@marvell.com>
+To: Chen Ni <nichen@iscas.ac.cn>, "nbd@nbd.name" <nbd@nbd.name>,
+        "sean.wang@mediatek.com" <sean.wang@mediatek.com>,
+        "Mark-MC.Lee@mediatek.com"
+	<Mark-MC.Lee@mediatek.com>,
+        "lorenzo@kernel.org" <lorenzo@kernel.org>,
+        "davem@davemloft.net" <davem@davemloft.net>,
+        "edumazet@google.com"
+	<edumazet@google.com>,
+        "kuba@kernel.org" <kuba@kernel.org>,
+        "pabeni@redhat.com" <pabeni@redhat.com>,
+        "matthias.bgg@gmail.com"
+	<matthias.bgg@gmail.com>,
+        "angelogioacchino.delregno@collabora.com"
+	<angelogioacchino.delregno@collabora.com>
+CC: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+        "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+        "linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>,
+        "linux-mediatek@lists.infradead.org"
+	<linux-mediatek@lists.infradead.org>
+Subject: ] [PATCH net-next] net: ethernet: mtk_eth_soc: add missing check for
+ rhashtable_init
+Thread-Topic: ] [PATCH net-next] net: ethernet: mtk_eth_soc: add missing check
+ for rhashtable_init
+Thread-Index: AQHap3dQVMNVjNkdZEasWxrQ03s9qw==
+Date: Thu, 16 May 2024 09:56:25 +0000
+Message-ID: <PH0PR18MB44744D577E2114AA1B72857DDEED2@PH0PR18MB4474.namprd18.prod.outlook.com>
+References: <20240516092427.3897322-1-nichen@iscas.ac.cn>
+In-Reply-To: <20240516092427.3897322-1-nichen@iscas.ac.cn>
+Accept-Language: en-US
 Content-Language: en-US
-In-Reply-To: <389716757b2a79f56b3cf4f4127549795c867785.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: PH0PR18MB4474:EE_|MN2PR18MB3605:EE_
+x-ms-office365-filtering-correlation-id: 5bad6d3f-70a6-49c6-135a-08dc758e7309
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;ARA:13230031|7416005|376005|1800799015|366007|38070700009|921011;
+x-microsoft-antispam-message-info: =?us-ascii?Q?lqtIwCb6M8NZ1prkKvtaUN4hveQvizC6g7fC6fZzq2GTwU16MiyZjnO7EdfF?=
+ =?us-ascii?Q?i+QRlxQK/opDvTF26m6QR5T+JUUdggMPQz32Z4Dokm5pcg6l8xb/8uGJ0rhB?=
+ =?us-ascii?Q?FQ6VjvE9+YPt6snMlTcUl60T+V/3JxXJkUPk9clA+l/fyekhOQJazuLnDaUW?=
+ =?us-ascii?Q?T2SHtuurMkS1yqRV3poMo5mGyP02MQBeKES4g1tcLQmi/0UQVr9soy7Q3ZKl?=
+ =?us-ascii?Q?H4CD7kHvhxqKJhjZN9juhgzpCaOyhsBktvDjk80XQy6QwcKaSIR9tap0hRsX?=
+ =?us-ascii?Q?R+66/D8Z/Oa56Nyua0qvFsZB2ThUGAY3YZAKKgRzhA0fh9O4NdPVlL1P7Yhl?=
+ =?us-ascii?Q?MBtoHQGP0lsC2eRRDjV80KUlkiokPPFj8Hp/E7ewZ2d1slfYJa8uTV0hcGlE?=
+ =?us-ascii?Q?eLBPP+mTSIB+iwbCkpGa+o5g8xQ6P1GViljnUjfcUUV6LMeQpDWfKBw57tiN?=
+ =?us-ascii?Q?bhWYMVi3kiU1hCpg0/5gEQdvEFuOLUIBTDZ6g0RJTAqY/VLPB3W+AekB1omb?=
+ =?us-ascii?Q?FPLBE8GiX7t4ggWH23z03robaTvQtUPUOaXIIHHWrDfJE+vloH1cGCjZdP+O?=
+ =?us-ascii?Q?RFcL7MJ/D0ZwK57Phgx9MuiyQuuedNnUeA5uEgRf3FfJAWb1s3IWhsSo2AZc?=
+ =?us-ascii?Q?Jyo5z6bvG3oHEW3AqFaR2RzaO6LdPoO6zfOKkaWoow5BetLslBzOO3N8p5S3?=
+ =?us-ascii?Q?LCO8BQwlqo9oBujATpHMGaMNpHAqZqYEH2tIrC37nbuX0/HeD0WK8Ae9/dmt?=
+ =?us-ascii?Q?ivreOTkfzbCQLJPQarizaqCmySW8+BAyJmfb5KdcKkR1+jsq8t5G3mEpEE2I?=
+ =?us-ascii?Q?jJMw6s16s2KUJC59RsTrD4T09pYqhrfgBioDk+c/SbZnVGR9uQxuasluQ+Dy?=
+ =?us-ascii?Q?h461feF8cTb+MNs8BveCtooi7blGrkHGdLjrurRa/U94wgbIHLTAp7hGD74Y?=
+ =?us-ascii?Q?PQkPXFFk2pCHkDwdeb9++MhwpImUNXytoAtMmShHQFqJVfDGkDpJPbZIkFq1?=
+ =?us-ascii?Q?6HEa3w1wJiH/m/FnWlEtf6zd1P29p0ExoJLXRod10QPd2iK/9WJaa7R4sIoH?=
+ =?us-ascii?Q?QyFDjYJYzoEMvg+X984QOAKmDUUUlb+e4CK7XwJ+oayqQ2UBHyIfve06JMJx?=
+ =?us-ascii?Q?l3oGJ7Ij1laHOQZLXwl6wkYswhprRf0tC8naMGI8xZsgJ1dHvoJfuaRRwp91?=
+ =?us-ascii?Q?CtEnsgD2DVCjIvoX4mGv6gzBNf+s7N2YxPbvDW+GyLZqpkp3kfeW/3XRfVjU?=
+ =?us-ascii?Q?+Z0TKvA47wjEFjOXWt0H2OlaCIMQazI2yIzg2Zy5zae4MhTxSQ2WUcoQkABD?=
+ =?us-ascii?Q?pOgUaW3+UK3imU7Bs9kKPgS62Qz2VpCRzoESnD6FGE2KI+h8MRg/uUpG8fJr?=
+ =?us-ascii?Q?0w/Z0RM=3D?=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH0PR18MB4474.namprd18.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(7416005)(376005)(1800799015)(366007)(38070700009)(921011);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?OGPtNnYsGPao/8/WveHfgUzqcb++irPKLtdcWRJXIHbjMCqZDDgAG8qtkyqG?=
+ =?us-ascii?Q?nQhCUi7ruQ3ECgyLMx94IFMBktGTt0vERBX8xJO9EFjUJFnS9Xh7Zd7r9tNM?=
+ =?us-ascii?Q?uA1I0wYqn/FUqZM2n4II3AhJiJXpY2OMytTkADu4MQeuX6KxefpOSvyb2lfU?=
+ =?us-ascii?Q?fS/3dTosuq0XgYEW0VcEsE3O9ElJUF0E/pkQC9MG6zNc5fIsLks4cd57MSf6?=
+ =?us-ascii?Q?UMheySMJ3na89rQZ6If/vFXbhQ/x4ZJDDMoGAgGa0bf0tstRVbi3Iv0elWN+?=
+ =?us-ascii?Q?j2++tW7Oq0R86caMF3neqIRiaLKnLtKwi/dcGQyY78hAkM+Ir/kbeSbmgDus?=
+ =?us-ascii?Q?aW6CznK1JQbXKBc9hDfvQeqYN8gg5sz6rrBWdl9c9MQRlzw2lVXvRlr5JB1Y?=
+ =?us-ascii?Q?MSdKWHKxOwH1TVzOXCzufFtWAWPEeY3DP9zN2+MJ5BapLSIxPxw4rvEX0Yib?=
+ =?us-ascii?Q?/vGzXYiJHExXpMny5g0PdMEIs99WGJGM5kiFti/yGRLqQrbmTIKfFb3gXmWP?=
+ =?us-ascii?Q?AYoq6/pwUai6Py+Dtgr2ZIehNrbcgO7b2nWZRMttWuFrX4EIlhSIwXWS0MuE?=
+ =?us-ascii?Q?mymLxHrjpWMnfS1LbSIK4bPI8w29/A4PbEKp7DH9iox86Y0bj//LcpreeuGl?=
+ =?us-ascii?Q?AYK0X7VKlY4u1BSMqCm5pT1aj+OOdHY9d3hEe5WrGy8XW6YUuQ9sXeLgddCM?=
+ =?us-ascii?Q?ndZqa4JqHEuSar98xL5NsWGIB6sCK29spdCiePysYvvNjBXxB5HQYcbiPkhv?=
+ =?us-ascii?Q?pRKUj7Vfzv7dc4z2wvePIHFAUrcMMFlueAykb0D0fE0M0nEGidWjXIgdeYVF?=
+ =?us-ascii?Q?Nhx94fxFBg9KWZRT4jiQeE9GBxtdIzIrvmY6TKFnzPWXXaF1o3CqWA+OE6X4?=
+ =?us-ascii?Q?lEziOTPWOhk53lJdcS3RvscuBh3d9fRubP/Qh+gVsP6U49F09qWMmWeGcgb/?=
+ =?us-ascii?Q?w/TI0KF1VrnvO/o2nARNzRqUAY51oDiMe+5VxUt2GNhp4WhyQoRShYPGYQ8j?=
+ =?us-ascii?Q?nIci3WNlIm9P9eJKhV6TAH+8IYVVL9jh5ztJOZ2fNE8aMQxkdgnIgzxca5Kh?=
+ =?us-ascii?Q?uqoxOWpZzDewexVTfyxCIqK81UMlL8UpcBu+wQ/hXMy39npWYz8QGjkR3G8V?=
+ =?us-ascii?Q?5tJWjKE/Rp+fkWIZdKmHI5w5Ey4vjOlz97dNvaNphcKfZcfijJ7S08gfeozA?=
+ =?us-ascii?Q?h3LPZQ+JpzCmEjQoeBuE4KXE1DDAqfumKLaJhVT0NgABB588CgJHdBv9IdEV?=
+ =?us-ascii?Q?fNJX+irc87q4KPm4IUG4lHb/tB9dWmIDO5vAMJTlxTp/tRrxX20Y+bcXRtu/?=
+ =?us-ascii?Q?NXui3Gz27sNUxkv76h6L2iq/3l6KSYo67ZsADECh/lp/MmNNEDFNV6Wewxaw?=
+ =?us-ascii?Q?3QsWODUDp9H7BmdmScxGSfJnh30S7lNdNwhGEVCz5KIfaM6CbTgxJJTsdLAO?=
+ =?us-ascii?Q?CbnpnLTcpwR7OZ+AsmduyF4yuszleyY0VRxK/jBpjkQzvfyXYLnHGggPZnJj?=
+ =?us-ascii?Q?NxcETglajlCxDu5bPsw+yPobmtJv/9CjyPokNAelkrxYwIcwzIuo0GOIv/JM?=
+ =?us-ascii?Q?ROzCD2ufsJakAFOjclw=3D?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-OriginatorOrg: marvell.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: PH0PR18MB4474.namprd18.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 5bad6d3f-70a6-49c6-135a-08dc758e7309
+X-MS-Exchange-CrossTenant-originalarrivaltime: 16 May 2024 09:56:25.5049
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 70e1fb47-1155-421d-87fc-2e58f638b6e0
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: cTnV78523HN5oDryv6JtBhVAbhMNFiyO5ApiuNh1nv7FsPCcXQVzEzrrTCD+aAjTxb47JBeNDjTtoyJGDSHBzQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR18MB3605
+X-Proofpoint-GUID: UyTGBgPlA-KBuRTLYRL7rrqFtpz3nbDO
+X-Proofpoint-ORIG-GUID: UyTGBgPlA-KBuRTLYRL7rrqFtpz3nbDO
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.650,FMLib:17.11.176.26
+ definitions=2024-05-16_05,2024-05-15_01,2023-05-22_02
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240516_024256_883310_32765995 
-X-CRM114-Status: GOOD (  21.79  )
+X-CRM114-CacheID: sfid-20240516_025708_748202_97BB1310 
+X-CRM114-Status: GOOD (  19.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,100 +186,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 16/05/24 11:23, CK Hu (胡俊光) ha scritto:
-> Hi, Angelo:
-> 
-> On Thu, 2024-05-16 at 10:11 +0200, AngeloGioacchino Del Regno wrote:
->> Document OF graph on MMSYS/VDOSYS: this supports up to three DDP paths
->> per HW instance (so potentially up to six displays for multi-vdo SoCs).
->>
->> The MMSYS or VDOSYS is always the first component in the DDP pipeline,
->> so it only supports an output port with multiple endpoints - where each
->> endpoint defines the starting point for one of the (currently three)
->> possible hardware paths.
->>
->> Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> ---
->>   .../bindings/arm/mediatek/mediatek,mmsys.yaml | 28 +++++++++++++++++++
->>   1 file changed, 28 insertions(+)
->>
->> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
->> index b3c6888c1457..0ef67ca4122b 100644
->> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
->> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
->> @@ -93,6 +93,34 @@ properties:
->>     '#reset-cells':
->>       const: 1
->>   
->> +  port:
->> +    $ref: /schemas/graph.yaml#/properties/port
->> +    description:
->> +      Output port node. This port connects the MMSYS/VDOSYS output to
->> +      the first component of one display pipeline, for example one of
->> +      the available OVL or RDMA blocks.
->> +      Some MediaTek SoCs support multiple display outputs per MMSYS.
-> 
-> The display pipeline number usually depend on how many display interface. Display interface is in the end of pipeline.
-> 
 
-I have never stated that the display pipeline number depends on that.
 
-Plus, the display interface is not described in the mmsys binding: this document
-is only saying that mmsys' endpoint is to be connected to a (supported) component
-of your choice. Nothing else.
+> Add check for the return value of rhashtable_init() and return the error =
+if it
+> fails in order to catch the error.
+>=20
+> Fixes: 33fc42de3327 ("net: ethernet: mtk_eth_soc: support creating mac
+> address based offload entries")
+> Signed-off-by: Chen Ni <nichen@iscas.ac.cn>
+> ---
+>  drivers/net/ethernet/mediatek/mtk_ppe.c | 5 ++++-
+>  1 file changed, 4 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/drivers/net/ethernet/mediatek/mtk_ppe.c
+> b/drivers/net/ethernet/mediatek/mtk_ppe.c
+> index 0acee405a749..f7e5e6e52cdf 100644
+> --- a/drivers/net/ethernet/mediatek/mtk_ppe.c
+> +++ b/drivers/net/ethernet/mediatek/mtk_ppe.c
+> @@ -884,12 +884,15 @@ struct mtk_ppe *mtk_ppe_init(struct mtk_eth *eth,
+> void __iomem *base, int index)
+>  	struct mtk_ppe *ppe;
+>  	u32 foe_flow_size;
+>  	void *foe;
+> +	int ret;
+>=20
+>  	ppe =3D devm_kzalloc(dev, sizeof(*ppe), GFP_KERNEL);
+>  	if (!ppe)
+>  		return NULL;
+>=20
+> -	rhashtable_init(&ppe->l2_flows, &mtk_flow_l2_ht_params);
+> +	ret =3D rhashtable_init(&ppe->l2_flows, &mtk_flow_l2_ht_params);
+> +	if (ret)
+> +		return NULL;
 
-> In below case, two RDMA is merged into one pipeline and output to one display interface DP_INTF. This is usually ONE display.
-> 
-> RDMA -+
->        Merge -> ... -> DP_INTF
-> RDMA -+
-> 
-> In below case, one RDMA data output to two display interface DSI and DPI. This is usually TWO display with the same content.
-> 
->                 +-> DSI
-> RDMA -> ... -> +
->                 +-> DPI
-> 
+Instead of returning NULL, return actual error ERR_PTR(ret) and use IS_ERR_=
+OR_NULL API to validate the error
 
-The actual content of a display is a software capability - if the hardware supports
-that, and some MediaTek SoCs do, the connection does not happen at the endpoint of
-mmsys, but later.
-
-> So the display pipeline number does not depend on the number of first component. It usually depend on the number of display interface.
-> 
-
-I sure agree with that, but again, I have *never stated* that the display pipeline
-number depends on the number of the first component.
-
-> Regards,
-> CK
-> 
-> 
->> +    properties:
->> +      endpoint@0:
->> +        $ref: /schemas/graph.yaml#/properties/endpoint
->> +        description: Output to the primary display pipeline
->> +
->> +      endpoint@1:
->> +        $ref: /schemas/graph.yaml#/properties/endpoint
->> +        description: Output to the secondary display pipeline
->> +
->> +      endpoint@2:
->> +        $ref: /schemas/graph.yaml#/properties/endpoint
->> +        description: Output to the tertiary display pipeline
->> +
->> +    oneOf:
->> +      - required:
->> +          - endpoint@0
->> +      - required:
->> +          - endpoint@1
->> +      - required:
->> +          - endpoint@2
->> +
->>   required:
->>     - compatible
->>     - reg
-
+Thanks,
+Hariprasad k
+>=20
+>  	/* need to allocate a separate device, since it PPE DMA access is
+>  	 * not coherent.
+> --
+> 2.25.1
+>=20
 
 
