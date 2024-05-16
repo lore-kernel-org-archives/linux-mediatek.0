@@ -4,176 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC15AC25B74
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 May 2024 08:17:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9600C25B74
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 May 2024 09:08:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8+azLIRRDgAuQHkgqIunPWdxDv5P7+tRkVYiQ1DJ4UM=; b=z54sy26yd9xwxSznWIMcJODyoK
-	y9ToHfrxpo2KbNNjj/6/YYRPjkVj/rsLhpg5dkJNNvhXppmNyCp/w0xhnIp6IRzTULhy06F9E6U9O
-	DEaevvMLNWCN/C45CZ5Pnbc7b7e5EZpf7lToRu/MSvWFfryrk9swh+hkiFx7IEQqhXadhhQlooYb/
-	6VIvHleHfkyb4zVFfkyWWDUiDW17BlOuTMYuxXeYcib9T9aiwIRbRAXsKxU4wSMNf2mMPcS7aisWf
-	X9AsdfVNVqISMQMIJz4tkh6+TudERUJsKB665ujv+4OzASqO10TomQsY9ja8af/u/baSlMjPBcV7D
-	Gu2EtgEg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=CPaLwBA3pYm8v6QU7KqOj6WBMgQZi+fj1uTzlIRRqXw=; b=bB7hu6WuU+V9arfN/ky+3yiDFP
+	eRmAHgCtCpi4uJUH3+Oc7fhT3ZooQsWYjPAgZM/py6Y48r7isVU5zes2ZwlEAl3pxpQyFBNUdf8Xg
+	lHQIC1AKVM9vJ+23vYbOOwXwaLHksP5YCcularMPdoijBQHyoQzyYFxEJ2Dv0ayWzdTt8zGFGZ9M0
+	LA27hjAi6F85QizJWm/3TkBPEDVUCklTp6dgb9rZrvubDszctrwVdBmp0+0lZXx6vWsvhis4E3wCN
+	7lUJsm2GMyLVep7NO5moTV9U8U320oPPhWPS6PCI+A4Kjoyixp+N9BMIxqe6B1h3mS4+gu4h26vVo
+	+sY59u/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s7WIw-000000047dz-3hOV;
-	Thu, 16 May 2024 08:17:34 +0000
-Received: from mail-mw2nam12on20600.outbound.protection.outlook.com ([2a01:111:f403:200a::600] helo=NAM12-MW2-obe.outbound.protection.outlook.com)
+	id 1s7X6U-00000004GM4-3B4E;
+	Thu, 16 May 2024 09:08:46 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s7WIu-000000047cT-11rW;
-	Thu, 16 May 2024 08:17:34 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=FbKZCcrlL5R4rcYy0gVVZPIHBVFWhhm/HqsbgrrgEO13i2dPn0ZOtShGm2aG+KLjX4n0CCOuhGYT6mOgEKH0v0NKvKbpQxvqi+nYEw3VUUjvVZekoH6zxzA50dyvonuJFT+LbBdtKGgs2DDJM6Vh6VkYCRTX9y6JRS8TKAQnL7eLSs8JrDoRAy5ATAAepFJ0wzyi9Uizw8PEh/fvsqatw6FBbn8E4ThtS0bhOn/pDrtiRCPcuT9bDR7DxmPPrr54UrFr81m5It5YKlelgxuHAkjxv9IQCeZPuZIWZPm42LiNCAQRi9PoIvxi+X/SGvqUj3FUfHXpd2iyZs+dSrv98Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=8+azLIRRDgAuQHkgqIunPWdxDv5P7+tRkVYiQ1DJ4UM=;
- b=KQRpWF6gJ1wmAbYn012Ldp8iTz6KVUjQLte7ugL0f1ph6XCDg6Rt2Jc+1TST6XqEpFzNMlGdaAyddQurNlPV5QYapEEEZkdZzlQKJzRA/yRzSutM+g5ajMN1UfC8znZcaiSmArDWqQeTeELSeRd+egSR12hxG80RuaPSCMALypnRwA88L+rYdlgPgl+PFl10yug6zqryJ/IV4d+fM9H9hb3MwS8t4HnZoOEXHTgzF/ddRb/99xQ2nmZl7DnGOM3iAYmv3mx0vQ4F7U4syBUt1+qQliLxZIEnr8hTbevUAdncRThbA6YmIG39Wy+gYSWQBXmx/WwRlNlceEJ4gEj6xQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
- header.d=amd.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=8+azLIRRDgAuQHkgqIunPWdxDv5P7+tRkVYiQ1DJ4UM=;
- b=Dvn7rcxvIR36UojGAFZ1jo9nCG7cRGzS9JO9paoOH+he4c11U9sGAhXLUeulIzr2bcwrviQI1IokPbGpN6q+aocSe9JFxqKtDEo7q+QSP7Ymquf5033vkB+bijsXnfELIOEutqkskq92o8hQfLJ3nC2HXSP4/vFsuIKtZRfF+jw=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=amd.com;
-Received: from PH7PR12MB5685.namprd12.prod.outlook.com (2603:10b6:510:13c::22)
- by SA1PR12MB6919.namprd12.prod.outlook.com (2603:10b6:806:24e::6) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7587.28; Thu, 16 May
- 2024 08:17:23 +0000
-Received: from PH7PR12MB5685.namprd12.prod.outlook.com
- ([fe80::46fb:96f2:7667:7ca5]) by PH7PR12MB5685.namprd12.prod.outlook.com
- ([fe80::46fb:96f2:7667:7ca5%2]) with mapi id 15.20.7587.025; Thu, 16 May 2024
- 08:17:23 +0000
-Message-ID: <98721904-003d-4d0d-8cfe-1cecdd59ce01@amd.com>
-Date: Thu, 16 May 2024 10:17:13 +0200
+	id 1s7X6Q-00000004GKu-1zsp;
+	Thu, 16 May 2024 09:08:44 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1715850519;
+	bh=vAvIJTNsbVbIUiKWdSGN2T4HDQRkXCi7vBZQDlnrV20=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=1qmPN4MSogKM726TEtrCF4Tayjl4D9lGv8cUo9U3gjtBt4iuHPC4vUOcHtcVtC7LL
+	 kZ2tPsVVIjSqzQMLT+QkQPfI6+vPhn41A+iKsCfqm3PVa62heoQ/5xCzeu6jHJ6y3G
+	 xDopWBQ/hLf/EAD4n6TM+jLLuPAxs19y3tKU86/FFeJe7g8q7Z5DH5NZAQ+T2/Gal+
+	 VHs+vNfktYstW1sLm9wglPx1XzgUY0ffpKw12A5apzywF5U+UWLyC50QxeWF9M2AHe
+	 KE1gjqOyoCVi20JlkHRQTxkCk8HktQYfhVqRxyRb1BHAmM3Hsaxz0gMlBGFSdjHCDH
+	 5NKeFVye9ny3Q==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 3FD18378218B;
+	Thu, 16 May 2024 09:08:39 +0000 (UTC)
+Message-ID: <f0a59da9-7b1a-4a11-bc3e-e39c9fa4e3bd@collabora.com>
+Date: Thu, 16 May 2024 11:08:38 +0200
+MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 2/9] scatterlist: Add a flag for the restricted memory
-To: Yong Wu <yong.wu@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+Subject: Re: [PATCH] thermal/drivers/mediatek/lvts_thermal: Remove filtered
+ mode for mt8188
+To: Julien Panis <jpanis@baylibre.com>, "Rafael J. Wysocki"
+ <rafael@kernel.org>, Daniel Lezcano <daniel.lezcano@linaro.org>,
+ Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Sumit Semwal <sumit.semwal@linaro.org>,
- Andrew Morton <akpm@linux-foundation.org>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Brian Starkey <Brian.Starkey@arm.com>, John Stultz <jstultz@google.com>,
- tjmercier@google.com,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org, dri-devel@lists.freedesktop.org,
- linaro-mm-sig@lists.linaro.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Robin Murphy <robin.murphy@arm.com>,
- Vijayanand Jitta <quic_vjitta@quicinc.com>,
- Joakim Bech <joakim.bech@linaro.org>,
- Jeffrey Kardatzke <jkardatzke@google.com>, Pavel Machek <pavel@ucw.cz>,
- Simon Ser <contact@emersion.fr>, Pekka Paalanen <ppaalanen@gmail.com>,
- willy@infradead.org, Logan Gunthorpe <logang@deltatee.com>,
- Daniel Vetter <daniel@ffwll.ch>, jianjiao.zeng@mediatek.com,
- kuohong.wang@mediatek.com, youlin.pei@mediatek.com
-References: <20240515112308.10171-1-yong.wu@mediatek.com>
- <20240515112308.10171-3-yong.wu@mediatek.com>
+ Nicolas Pitre <npitre@baylibre.com>
+Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20240515-mtk-thermal-mt8188-mode-fix-v1-1-e656b310b67f@baylibre.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-From: =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>
-In-Reply-To: <20240515112308.10171-3-yong.wu@mediatek.com>
+In-Reply-To: <20240515-mtk-thermal-mt8188-mode-fix-v1-1-e656b310b67f@baylibre.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: FR5P281CA0028.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:d10:f1::10) To PH7PR12MB5685.namprd12.prod.outlook.com
- (2603:10b6:510:13c::22)
-MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PH7PR12MB5685:EE_|SA1PR12MB6919:EE_
-X-MS-Office365-Filtering-Correlation-Id: 2e9e231d-7fe7-4221-66a4-08dc75809d15
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230031|7416005|1800799015|376005|366007;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?UWl6SVNuR2lDcHpncXBJWW9HV1dQK0U3c3dRbkQ5YTBoV2R5YTB1cDljV21k?=
- =?utf-8?B?V2NQb2RFZ3haUlhoUnpMbDhpTmNIQkJrZDgvT1A0Ry81blNMRWNxT3IvNnI3?=
- =?utf-8?B?ckJITFZYcjlrOUUybnByY09SZDZibmVOL2RyQ1lmcHYvcmlZZXBYcEI5RVpM?=
- =?utf-8?B?ZHJVa25sY083dDZRK2d3QXpYeklLdzFnRnNBU2tuWlhSU1BFSHM4aFR6Z2h6?=
- =?utf-8?B?aG5qYmNXU3JwR0ZmTDM5cCtjM0krTitQVGVTR1FjSEFDUlNtYWgvZlNCWm1M?=
- =?utf-8?B?SkpXYi9zNkhYajR4RnVLbVlBRmhJd2hxOEM3dHJlaTBneGZjNnVXVW9rd1hC?=
- =?utf-8?B?UEFRY0RxRkpLWTVHcng5RjQyQ0hlQ05oaDdQR2NqL25qY2MxcnNtQlFiUk5i?=
- =?utf-8?B?YXgzdmhJTlVEVVI2aVE3dC9rVHY1dm9PQU9NcDU3aUdRMnQra1gvY2hMcmhT?=
- =?utf-8?B?Z05Uc2FGTGxpdTZQWmhQNmlOMVc1M2tHeUVBNjNTeUlrQVlLWjh4YzJIOVlw?=
- =?utf-8?B?Q0hHdHRLTlMyMEU5bXNIWW1KTXk3RjZITnlwbXZQNHNRQ0JkLzVxRFRzeExp?=
- =?utf-8?B?YTZleERQU2R1SE9tQmdHWFhXdU5xSkRHSnFqVUZOcm1MV3NVYVdoZjZSTGpE?=
- =?utf-8?B?eWllcDRYbWkydTZoeWxteWY3ZTY0RXF6bWt5L2JQcGxKR3Q1WldyVTB4SEor?=
- =?utf-8?B?V213OHIzemhlL3ZRYk1OZW9wTTEzaUNnalFPVjJOcHMzVWF2dnMzL3lUeHNP?=
- =?utf-8?B?dmY1Zk1pODVhQTAxR3FjaThpRXQ3UkFPTkRPRFlMdVB5U2p6aE8wSjdvZVp6?=
- =?utf-8?B?SUZDR0JGTnhQZDc4enl0c1VTYU8xaE52MGt0V2NBTDZYaUg4MWlUcm4wd2Jr?=
- =?utf-8?B?TDJjQmtHR2ZrTVAxcmVoS0Q1M0U3OHMvUHlTUzhRYnJmNXFlR0V3dTMxZTJq?=
- =?utf-8?B?MjNHME82emVrODVhbjJzNTFLSERqcGhrb2RLWUVnWkhZVE1SVmtYNEp3b0NO?=
- =?utf-8?B?ckpyZnQ1UktqNlJ4MjBzd2xIUTR1NnFBbmN5bzJRSmNYTUpqOWVIK25oQjF0?=
- =?utf-8?B?emZuMnlEV21GbGptQ2RUUUxWWXAwVjJ6NDZiSHlDWFQ2UUkrNlEyQVRJUEN3?=
- =?utf-8?B?dU1HbjBrWkpaNnpzQkhDMHkzTE1XSmdka21NMVFtS09EZ2xnN2wxM2IwQ3ZZ?=
- =?utf-8?B?OHlIU0RTc2ZKUGZCSzg1R3UwWTQ4UFM3UWRwb3RmRzZjdE5NSGhJSlpSU0xB?=
- =?utf-8?B?RmJlZ3MvZDZ5Yk16aytrRlIvRDBhOFRJQTFZenNjRkl3U3hvUFliaWpzVEVJ?=
- =?utf-8?B?RDdkNTBwd3dobGdJNk5ZVUl1c2tGYWJqQzFPUUgwdnk1UUJHSlhtdys1RFIv?=
- =?utf-8?B?ektpNkl0a0NFYnNPZVk3WlVCN2loTm1Za255aUlXajltMW1oZFRDc0NucEpi?=
- =?utf-8?B?Z1ZGVXFDTUIyeWJKZjl3NmUxWHVGd0FlcEF3WXpTMXFNalhTSTk0YlRhQmNU?=
- =?utf-8?B?dFpiSjBSZjlkTFRFVTZXS0xnbU0rOE0rOENXcW1NUkxheEY4SDZWdFM0VE4v?=
- =?utf-8?B?YWNwQ3BnVzMyN3dXUDhsTmQza1NiQ0MyV2F0bGk4VmVRQ053UXZZQ0xBTjlq?=
- =?utf-8?B?UkR1T3I2R1Q4TjBNc1FOUVNnSkNWaEErYlZqcC91eXNPT0JEQWZUMG9zSzZK?=
- =?utf-8?B?Sjk3NW9jdHlKclg5OWxuUUl0d3BsenJlYnNUYXI5TTl6UFYwakh6USt3PT0=?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH7PR12MB5685.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(7416005)(1800799015)(376005)(366007);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?U3lPekRCYmwvWm4yVno3U0hKQ1pGNFlMRk4vV0N2MDQ4dXlTd1d2L1JiT25o?=
- =?utf-8?B?YmF4akF5SS92eTdzUVdKRThFcjM3NlpjL1lod2xPQkNDQldIUnVKZzNKYWJm?=
- =?utf-8?B?emJ4dEpnNTNVbSt2aWJiQit1NHpzUFJ4NS9MOW5qbUNNZ3gyeWdyTWQ2OWxE?=
- =?utf-8?B?K29SR1pscVlDWTUwNkdhZThMZDFZbFNEQ2FMN2tvUitZTjcrdVhoQzdNelJp?=
- =?utf-8?B?bzV4Z2hMMTVxRnJSelZvaHdVVUxVaHpjclIra0h4ekxjWCtzS1dGTWVaSEI3?=
- =?utf-8?B?SmNGeTJhSEhucDJIYjBSRFNvVi9OVGhiVjBlTHVFeVBMd2cyWFExTTZlQkQ1?=
- =?utf-8?B?SHNIZ3BFZWhuOWo1V0Z5K3dFRVZpWU5mMU1ueXA2ZkJUelRQczM3amFSMGpk?=
- =?utf-8?B?aG0zWTd3bys3S1ZBVy9NY241STZENVByY1ZZT2Nkb2FQUjJHQ1pqZ0Z0TUVQ?=
- =?utf-8?B?N29LZVFTa2xBZkd3dmFoUUwrQUg5YndDOTlxSFl3YWZaYVFkMmltTnJmVTBL?=
- =?utf-8?B?MklFdThaeWoxcDNTeEdSang4bHhpa2dHRFFwSlU2UHlNT1BlTkY1ZzRRMDNs?=
- =?utf-8?B?bVdTRGJkSlM4bHNrTWJtbklzZEIyQXdBRGNseEwxTUZsYWRBSFBIY2FxbFFH?=
- =?utf-8?B?alFra1NtMXpiaEEvZEFERCt1a2dlNUZwVi9HZisyTDBHZWo3bHlkTlpmWnFE?=
- =?utf-8?B?T09rU0JOUG1pUDZDUzZKRHFQVXB1UCtZZTVmbENGNllvYWN0TGtCVEFNVHgz?=
- =?utf-8?B?ZlQyQldlYkVxYlg0a3p2VnFhRk1admI5YWZyVnE2VkhoZENxNmo3N2RtaW1X?=
- =?utf-8?B?blR0SmdaSC9sbUlrYnBjV1Bxc2lCWE5FblNSZ2xhcnN0N3o0UmJjSTdRMWtn?=
- =?utf-8?B?eElBNGtBRWQ1cUdlaUk0cWxEdkdPZnBkQjlKSnhacHlNVWVKNFlhNExSZDUz?=
- =?utf-8?B?QUQxVVF6UVZOY1FqU0RvZGh1aHhzOVZvY3BCc1A1NSttaFI3bVNscVNtd0hB?=
- =?utf-8?B?Y1dla2crV2dPT3o0TFVLdDRMcUVNR2g3Z2taV0tyaStkVVZlV29GNzVlQzk2?=
- =?utf-8?B?VVJ5akRlUXkvajNaV3dUYWVqQ05GSnd6TUIrajdlQWpiYlp0eVZsUVlCQzdu?=
- =?utf-8?B?ZStNb1N3Y3NLOSswaUprdWV2cndzclRYNitXYTdYL3BUNkpLZEZZQTB0bEhz?=
- =?utf-8?B?SDlWZGFjdGVsek9hQ3Y5M0RrOHVzcmVhaHB0UlBDZ1NnYXYrVUxnRytXcU12?=
- =?utf-8?B?bFJ6ejhxR2I2bTNkMURxQUtVR3RsSndTcTlhcFhQL1IzVlNHeURNNXQxbzVt?=
- =?utf-8?B?Q1JwSjQwd3czQ1RZN3ZEamdRRldvL2g4VllqVXZTNE9vUmRKMXNqOVRGcnFj?=
- =?utf-8?B?enhTKzcxcFBjV291amg0RXhLWFV6NlFxZ2NiaW5yZmg0a0FwSUI5ZGtkcVMw?=
- =?utf-8?B?a3ZVTnBpMmdqdi9hVE4yR0RHMDRmVFhlQW5nSm0xOHRvOVJyYzgrOEVWVXlq?=
- =?utf-8?B?ZlZxbUtBdERBVHB1TW1TRHRqZDhya3FtVDIwQnNTL0diNUpVdWcrbE5XL29O?=
- =?utf-8?B?OHA2M1VLcEVjMVhYQTMxclVnOG9tdjE3b1pNcXM5RWdtSTJxQ1p2Q2tyS1Rk?=
- =?utf-8?B?NkV3REViUXVyU3hQbWpDRGJYQ2c4RnJjVVNLSWtiTk5IRDlDZDY4ZUxkNnF5?=
- =?utf-8?B?bm00NXFXT1RLVDRVcGZvTE5QSC9LS0FYaUdmVkw5aTU2TXZlcUFoVGppUDdO?=
- =?utf-8?B?Z2RDeXBrR1Fzc2N1SnVwVm00NzRBclJ4a2t0OFdMNFE1QjBHdGRvTHlHUGdt?=
- =?utf-8?B?VmVicEZpTVFXTUdFN01vVU14Qko5b05zdFA2RG1EZkV4bldwOVJWVHJIWldH?=
- =?utf-8?B?cHFQR3VkUzlKVHlaaC9PK3IrWkQ4a09INTlJWlZnc3N4eGlud0pMc0dnaFYw?=
- =?utf-8?B?WCtBQ2dvSlNOK21McVZEb29RRjRDeGVhV1kzWm54NDlZVjB5WCtLK0pMVkxL?=
- =?utf-8?B?bGdZY21jUXprZzNlT2xHZjVicE9lRWhQa1laS3MzSGo5WGZBQU1sS2d5UG9E?=
- =?utf-8?B?TjFneTVZdmNGczBrYW9xTy9ST2Vta2FFaHlTbEZrY0dRYWRQd3RLNnF4Qnpm?=
- =?utf-8?Q?i2y61XutfjVzBrFH7EIbgF2a+?=
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 2e9e231d-7fe7-4221-66a4-08dc75809d15
-X-MS-Exchange-CrossTenant-AuthSource: PH7PR12MB5685.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 May 2024 08:17:23.2867
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: E/3J65Vpjj8VR/q3lBtToWEE/e44ViWcRRQm415hEkXgXUyQHRW4Lf24FVTjTjs4
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR12MB6919
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240516_011732_299509_102A2BFD 
-X-CRM114-Status: GOOD (  23.22  )
+X-CRM114-CacheID: sfid-20240516_020842_738669_A37427D5 
+X-CRM114-Status: GOOD (  14.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -188,86 +79,81 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am 15.05.24 um 13:23 schrieb Yong Wu:
-> Introduce a FLAG for the restricted memory which means the memory is
-> protected by TEE or hypervisor, then it's inaccessiable for kernel.
->
-> Currently we don't use sg_dma_unmark_restricted, thus this interface
-> has not been added.
+Il 15/05/24 17:03, Julien Panis ha scritto:
+> Filtered mode is not supported on mt8188 SoC and is the source of bad
+> results. Move to immediate mode which provides good temperatures.
+> 
+> Signed-off-by: Julien Panis <jpanis@baylibre.com>
 
-Why should that be part of the scatterlist? It doesn't seem to affect 
-any of it's functionality.
+Please add the relevant Fixes tag, after which:
 
-As far as I can see the scatterlist shouldn't be the transport of this 
-kind of information.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Regards,
-Christian.
-
->
-> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 > ---
->   include/linux/scatterlist.h | 34 ++++++++++++++++++++++++++++++++++
->   1 file changed, 34 insertions(+)
->
-> diff --git a/include/linux/scatterlist.h b/include/linux/scatterlist.h
-> index 77df3d7b18a6..a6ad9018eca0 100644
-> --- a/include/linux/scatterlist.h
-> +++ b/include/linux/scatterlist.h
-> @@ -282,6 +282,7 @@ static inline void sg_unmark_end(struct scatterlist *sg)
+> Filtered mode was set by mistake and difficulties with the test setup
+> prevented from catching this earlier. Use default mode (immediate mode)
+> instead.
+> ---
+>   drivers/thermal/mediatek/lvts_thermal.c | 6 ------
+>   1 file changed, 6 deletions(-)
+> 
+> diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
+> index 0bb3a495b56e..82c355c466cf 100644
+> --- a/drivers/thermal/mediatek/lvts_thermal.c
+> +++ b/drivers/thermal/mediatek/lvts_thermal.c
+> @@ -1458,7 +1458,6 @@ static const struct lvts_ctrl_data mt8188_lvts_mcu_data_ctrl[] = {
+>   		},
+>   		VALID_SENSOR_MAP(1, 1, 1, 1),
+>   		.offset = 0x0,
+> -		.mode = LVTS_MSR_FILTERED_MODE,
+>   	},
+>   	{
+>   		.lvts_sensor = {
+> @@ -1469,7 +1468,6 @@ static const struct lvts_ctrl_data mt8188_lvts_mcu_data_ctrl[] = {
+>   		},
+>   		VALID_SENSOR_MAP(1, 1, 0, 0),
+>   		.offset = 0x100,
+> -		.mode = LVTS_MSR_FILTERED_MODE,
+>   	}
+>   };
 >   
->   #define SG_DMA_BUS_ADDRESS	(1 << 0)
->   #define SG_DMA_SWIOTLB		(1 << 1)
-> +#define SG_DMA_RESTRICTED	(2 << 1)
+> @@ -1483,7 +1481,6 @@ static const struct lvts_ctrl_data mt8188_lvts_ap_data_ctrl[] = {
+>   		},
+>   		VALID_SENSOR_MAP(0, 1, 0, 0),
+>   		.offset = 0x0,
+> -		.mode = LVTS_MSR_FILTERED_MODE,
+>   	},
+>   	{
+>   		.lvts_sensor = {
+> @@ -1496,7 +1493,6 @@ static const struct lvts_ctrl_data mt8188_lvts_ap_data_ctrl[] = {
+>   		},
+>   		VALID_SENSOR_MAP(1, 1, 1, 0),
+>   		.offset = 0x100,
+> -		.mode = LVTS_MSR_FILTERED_MODE,
+>   	},
+>   	{
+>   		.lvts_sensor = {
+> @@ -1507,7 +1503,6 @@ static const struct lvts_ctrl_data mt8188_lvts_ap_data_ctrl[] = {
+>   		},
+>   		VALID_SENSOR_MAP(1, 1, 0, 0),
+>   		.offset = 0x200,
+> -		.mode = LVTS_MSR_FILTERED_MODE,
+>   	},
+>   	{
+>   		.lvts_sensor = {
+> @@ -1518,7 +1513,6 @@ static const struct lvts_ctrl_data mt8188_lvts_ap_data_ctrl[] = {
+>   		},
+>   		VALID_SENSOR_MAP(1, 1, 0, 0),
+>   		.offset = 0x300,
+> -		.mode = LVTS_MSR_FILTERED_MODE,
+>   	}
+>   };
 >   
->   /**
->    * sg_dma_is_bus_address - Return whether a given segment was marked
-> @@ -352,6 +353,31 @@ static inline void sg_dma_mark_swiotlb(struct scatterlist *sg)
->   	sg->dma_flags |= SG_DMA_SWIOTLB;
->   }
->   
-> +/**
-> + * sg_dma_mark_restricted - Mark the scatterlist for restricted buffer.
-> + * @sg:		SG entry
-> + *
-> + * Description:
-> + *   Marks a a scatterlist for the restricted buffer that may be inaccessiable
-> + *   in kernel if it is protected.
-> + */
-> +static inline void sg_dma_mark_restricted(struct scatterlist *sg)
-> +{
-> +	sg->dma_flags |= SG_DMA_RESTRICTED;
-> +}
-> +
-> +/**
-> + * sg_dma_is_restricted - Return whether the scatterlist was marked as restricted
-> + *                        buffer.
-> + * @sg:		SG entry
-> + *
-> + * Description:
-> + *   Returns true if the scatterlist was marked as restricted buffer.
-> + */
-> +static inline bool sg_dma_is_restricted(struct scatterlist *sg)
-> +{
-> +	return sg->dma_flags & SG_DMA_RESTRICTED;
-> +}
->   #else
->   
->   static inline bool sg_dma_is_bus_address(struct scatterlist *sg)
-> @@ -372,6 +398,14 @@ static inline void sg_dma_mark_swiotlb(struct scatterlist *sg)
->   {
->   }
->   
-> +static inline bool sg_dma_is_restricted(struct scatterlist *sg)
-> +{
-> +	return false;
-> +}
-> +
-> +static inline void sg_dma_mark_restrited(struct scatterlist *sg)
-> +{
-> +}
->   #endif	/* CONFIG_NEED_SG_DMA_FLAGS */
->   
->   /**
+> 
+> ---
+> base-commit: 82d92a9a1b9ea0ea52aff27cddd05009b4edad49
+> change-id: 20240515-mtk-thermal-mt8188-mode-fix-e583d9a31da1
+> 
+> Best regards,
 
 
