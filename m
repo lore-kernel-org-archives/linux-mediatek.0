@@ -4,80 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EDF5C25B7A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 May 2024 09:59:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0431C25B74
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 May 2024 10:10:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DWlrwy/mx942uMsR8QdTRe4w1ohW6v6D4WP49WWIz4s=; b=0TKGIAetXsIieMdVWTFEw8SJn/
-	f8hvzAUDrrmIZhvhO0ao/n1fbb6mA/mBmOkXTkE7EcUYDfkeemDvB6FFtOGE9FX/WUmQeksmxY47V
-	86NUwida8XyGUUBuq0di1mw47sv0Yd6AS26T9CR0HBlYC7RamY5hePh9khnlkXVwrFFudmsdVwi9h
-	qWklFzsgPRlWCAwUp/3zrhayE9Xwl5xYtDMSogLM9AEJMWzI6xQrmYAHp4ayOMNs0NFRMlAQ8klp5
-	DOlDSKkWUG8hGH2s8/MvieRKRFM1aQ3A/aRBAGhva8byY7TDvMSTHhqzADGv3LgD/EodPSrg0ZG4w
-	kQQ8YwHg==;
+	bh=HEU+LgmmgDVyOfKi+zsItewHaYSNavSa9EUs7P2UYn4=; b=EDv589vV90fI4pCBYl2bNvFri2
+	sZ2cnM+UMJtpA6vxwTHi0DdzGV9ckmI3PqKTsNHcqeF12ZY/Iu3E0NvYXZSTWHixCJIShVf+dWviC
+	1kvJDEZGjW9yV7CLJ6yAz32FLZW8ac0EqWpItpCA2YHdL42WfuRE7a9Jm9aOqhECuWlC9gWxu3Op1
+	x7P5clTBiXoBjdC6PdBYov8CQcC35pNu//YUel2AhOMeGt+OL8C2nid3B+NW0kHYNjkoDOlk/EXkR
+	rI8Lm8PLF2KTUjRGhhLEkBPvTXENsqalV0YuBRLlPi7VvEg5eED0zATZgpI09FhXlSbUb4/sHoFCk
+	hROtwEqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s7Xtj-00000004PSp-2Z9M;
-	Thu, 16 May 2024 09:59:39 +0000
+	id 1s7Y4P-00000004RAt-49i1;
+	Thu, 16 May 2024 10:10:41 +0000
 Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s7Xtg-00000004PRU-110u;
-	Thu, 16 May 2024 09:59:37 +0000
+	id 1s7Y4M-00000004RAB-1kMw;
+	Thu, 16 May 2024 10:10:39 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1715853574;
-	bh=dK2WkFIc661KKKqOwvbtfh51Ajk+5fstyZfpRUmwN2M=;
+	s=mail; t=1715854237;
+	bh=ugAWDM1qcmrWTtKMSTkkvc0MnR1N8NG07aVhZyc9Avw=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=qdf7UJxluJK7VRWEKILOAxaP85bTBG6aWspLroV80yixGNmF+YeHh3KaaEQ54GWC6
-	 MFF0PReIwv3Tb+NZgyCaVmHtAi2TIHYZT+rqfslChY2gL3EVI86K//FHPSmhH2y6Q+
-	 vVFgRpybXddrl63bTWXm80tWUPOem0I2PZuPyeBTtzYPePWnE+OthXuCDER7SRS7Tq
-	 ffehsgmYFMGtvzeASN5aAGEgVp4r1Xu3I4z+4NpQOMO61GgSYhxcUG6F4yXu5xOZfq
-	 efT0kxjT8MMuw2KFQu9vUPez1MN58/reCdKydoel5SrNhGiBH9FoOzAIFmZcpraHFk
-	 Qhs155mWVGxNA==
+	b=ofNxsnreO1XE/kyXC7ZuR3rY6V4IutCD9oOaUATenbvbQsjVohi9FgRTlITcOb9PZ
+	 dNnJPWBBR4z18EGOqiPm1gF1E+VvieBbt4bFQAVqyX7UewABZnh1SsuxxMtpIE3piP
+	 qpfXmqZdlGzgC2/IpnR1n3PxjbrI9hx0f/q1BWYpvhaIH4FlDLto4UEYIzyZDhp4Yh
+	 2i5McbxDiyUGAkfk2H4sn/dwIx531RWun2FaJjDjVvJmAHQxHwssYJYGsGwv181f//
+	 WPFGDeUzq/0Kb45dPjOFyVyT+t/fgwObBv9y5JFs1zIZZPvvwyvvDb1pHQcRlowEbi
+	 9ZopzBNxptJ/w==
 Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id BAD343780C13;
-	Thu, 16 May 2024 09:59:32 +0000 (UTC)
-Message-ID: <a1d91cee-e2e4-4310-a9b4-984626144ab2@collabora.com>
-Date: Thu, 16 May 2024 11:59:31 +0200
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 1D90C3780C13;
+	Thu, 16 May 2024 10:10:36 +0000 (UTC)
+Message-ID: <f9e09d27-4e28-4ed9-95a5-66c8dba6d499@collabora.com>
+Date: Thu, 16 May 2024 12:10:35 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 2/9] scatterlist: Add a flag for the restricted memory
-To: Yong Wu <yong.wu@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, christian.koenig@amd.com,
- Sumit Semwal <sumit.semwal@linaro.org>,
- Andrew Morton <akpm@linux-foundation.org>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Brian Starkey <Brian.Starkey@arm.com>, John Stultz <jstultz@google.com>,
- tjmercier@google.com, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Robin Murphy <robin.murphy@arm.com>,
- Vijayanand Jitta <quic_vjitta@quicinc.com>,
- Joakim Bech <joakim.bech@linaro.org>,
- Jeffrey Kardatzke <jkardatzke@google.com>, Pavel Machek <pavel@ucw.cz>,
- Simon Ser <contact@emersion.fr>, Pekka Paalanen <ppaalanen@gmail.com>,
- willy@infradead.org, Logan Gunthorpe <logang@deltatee.com>,
- Daniel Vetter <daniel@ffwll.ch>, jianjiao.zeng@mediatek.com,
- kuohong.wang@mediatek.com, youlin.pei@mediatek.com
-References: <20240515112308.10171-1-yong.wu@mediatek.com>
- <20240515112308.10171-3-yong.wu@mediatek.com>
+Subject: Re: [PATCH net-next] net: ethernet: mtk_eth_soc: add missing check
+ for rhashtable_init
+To: Chen Ni <nichen@iscas.ac.cn>, nbd@nbd.name, sean.wang@mediatek.com,
+ Mark-MC.Lee@mediatek.com, lorenzo@kernel.org, davem@davemloft.net,
+ edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
+ matthias.bgg@gmail.com
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20240516092427.3897322-1-nichen@iscas.ac.cn>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20240515112308.10171-3-yong.wu@mediatek.com>
+In-Reply-To: <20240516092427.3897322-1-nichen@iscas.ac.cn>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240516_025936_447105_D20845FF 
-X-CRM114-Status: GOOD (  21.44  )
+X-CRM114-CacheID: sfid-20240516_031038_681073_5F3D4FB6 
+X-CRM114-Status: GOOD (  16.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,83 +78,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 15/05/24 13:23, Yong Wu ha scritto:
-> Introduce a FLAG for the restricted memory which means the memory is
-> protected by TEE or hypervisor, then it's inaccessiable for kernel.
+Il 16/05/24 11:24, Chen Ni ha scritto:
+> Add check for the return value of rhashtable_init() and return the error
+> if it fails in order to catch the error.
 > 
-> Currently we don't use sg_dma_unmark_restricted, thus this interface
-> has not been added.
-> 
-> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> Fixes: 33fc42de3327 ("net: ethernet: mtk_eth_soc: support creating mac address based offload entries")
+> Signed-off-by: Chen Ni <nichen@iscas.ac.cn>
 > ---
->   include/linux/scatterlist.h | 34 ++++++++++++++++++++++++++++++++++
->   1 file changed, 34 insertions(+)
+>   drivers/net/ethernet/mediatek/mtk_ppe.c | 5 ++++-
+>   1 file changed, 4 insertions(+), 1 deletion(-)
 > 
-> diff --git a/include/linux/scatterlist.h b/include/linux/scatterlist.h
-> index 77df3d7b18a6..a6ad9018eca0 100644
-> --- a/include/linux/scatterlist.h
-> +++ b/include/linux/scatterlist.h
-> @@ -282,6 +282,7 @@ static inline void sg_unmark_end(struct scatterlist *sg)
+> diff --git a/drivers/net/ethernet/mediatek/mtk_ppe.c b/drivers/net/ethernet/mediatek/mtk_ppe.c
+> index 0acee405a749..f7e5e6e52cdf 100644
+> --- a/drivers/net/ethernet/mediatek/mtk_ppe.c
+> +++ b/drivers/net/ethernet/mediatek/mtk_ppe.c
+> @@ -884,12 +884,15 @@ struct mtk_ppe *mtk_ppe_init(struct mtk_eth *eth, void __iomem *base, int index)
+>   	struct mtk_ppe *ppe;
+>   	u32 foe_flow_size;
+>   	void *foe;
+> +	int ret;
 >   
->   #define SG_DMA_BUS_ADDRESS	(1 << 0)
->   #define SG_DMA_SWIOTLB		(1 << 1)
-> +#define SG_DMA_RESTRICTED	(2 << 1)
+>   	ppe = devm_kzalloc(dev, sizeof(*ppe), GFP_KERNEL);
+>   	if (!ppe)
+>   		return NULL;
+>   
+> -	rhashtable_init(&ppe->l2_flows, &mtk_flow_l2_ht_params);
+> +	ret = rhashtable_init(&ppe->l2_flows, &mtk_flow_l2_ht_params);
+> +	if (ret)
+> +		return NULL;
 
-I think you wanted to write (1 << 2) here :-)
+return PTR_ERR(ret);
+
+..then in mtk_eth_soc.c, you will have to fix the check:
+			if (!eth->ppe[i]) {
+
+to IS_ERR_OR_NULL( ... )
 
 Cheers,
 Angelo
 
 >   
->   /**
->    * sg_dma_is_bus_address - Return whether a given segment was marked
-> @@ -352,6 +353,31 @@ static inline void sg_dma_mark_swiotlb(struct scatterlist *sg)
->   	sg->dma_flags |= SG_DMA_SWIOTLB;
->   }
->   
-> +/**
-> + * sg_dma_mark_restricted - Mark the scatterlist for restricted buffer.
-> + * @sg:		SG entry
-> + *
-> + * Description:
-> + *   Marks a a scatterlist for the restricted buffer that may be inaccessiable
-> + *   in kernel if it is protected.
-> + */
-> +static inline void sg_dma_mark_restricted(struct scatterlist *sg)
-> +{
-> +	sg->dma_flags |= SG_DMA_RESTRICTED;
-> +}
-> +
-> +/**
-> + * sg_dma_is_restricted - Return whether the scatterlist was marked as restricted
-> + *                        buffer.
-> + * @sg:		SG entry
-> + *
-> + * Description:
-> + *   Returns true if the scatterlist was marked as restricted buffer.
-> + */
-> +static inline bool sg_dma_is_restricted(struct scatterlist *sg)
-> +{
-> +	return sg->dma_flags & SG_DMA_RESTRICTED;
-> +}
->   #else
->   
->   static inline bool sg_dma_is_bus_address(struct scatterlist *sg)
-> @@ -372,6 +398,14 @@ static inline void sg_dma_mark_swiotlb(struct scatterlist *sg)
->   {
->   }
->   
-> +static inline bool sg_dma_is_restricted(struct scatterlist *sg)
-> +{
-> +	return false;
-> +}
-> +
-> +static inline void sg_dma_mark_restrited(struct scatterlist *sg)
-> +{
-> +}
->   #endif	/* CONFIG_NEED_SG_DMA_FLAGS */
->   
->   /**
+>   	/* need to allocate a separate device, since it PPE DMA access is
+>   	 * not coherent.
 
 
 
