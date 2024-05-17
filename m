@@ -4,70 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A4ECC04FFE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 May 2024 11:23:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FB57C25B78
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 May 2024 11:29:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=buaaQ/FZmEo3j8/vGmgqZyVrY+cQ6I001lhcHvr1mvk=; b=jjaMf9vRYmYkHZNtvpGac6gu0d
-	I/nD+Hfw0HD0X299IB0WeQict7i8CvR5iZ4zthK9uua/ZDW4+RgPI2qamj9mODLBjZO9A5m6DOZ9E
-	T3jrpVro2PSSDMBScmZ53MAjMME887ETbzXYjg8r6OtC5zipuJiB0F53dBj+V78wfbd0CuO1vkuqI
-	krHxAb1Bytay//XRq+3u9iVbMF6pZLB2rRjdOjwoC4jVtjoR4PFuafBBEtcSu4ShtoupZpD5YfjVW
-	hOk3eAvoRl/adtLma9y4UxLhFyf6/ANqaHIwU7d89cbxWVl7e/93q9l1U/cM5kpJyI6YRqts3y7EO
-	pMKRoTHQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=nlO9hOsvvWncarTJ6TVIoeOrJIY+No0MzifzoPhfPog=; b=kQFSvJDC88lpai6wmiS+RaNUBT
+	IZHoRB4jlcRqxReoBFzWxdp4eLRFddcpYvAlNbFSZLHKkCgva+eN8VRgfj+Ulz8lLygWY5Kr1VYbM
+	oP9yCeXAuy+iJy64+rtTSMD2HH3PwoKO51GCxwpPApHDCrPMrdwRdFWCq+eig+jCht4b2MeUPkFQE
+	SxwYAwaHBTbKjldOdZZQHH68qVZgju/taQRkxjjGQMD+Ke/uo3GZ/sqvUw5R3Z71NWtO/YV/zYgtQ
+	UlUnO3Wfa65UqRlgU+KarX1ZnTqU2tXFVmXLTdRcVU+d6mz1S/XBhvaApkSf7JZWjxyYhT0GMBQWt
+	GgTSwQgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s7vgP-00000007dv8-0NVT;
-	Fri, 17 May 2024 11:23:29 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1s7vmM-00000007fGF-2hXW;
+	Fri, 17 May 2024 11:29:38 +0000
+Received: from mail-pl1-f182.google.com ([209.85.214.182])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s7vgL-00000007duM-2TFD;
-	Fri, 17 May 2024 11:23:27 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1715945004;
-	bh=t1oRx5quleIZIXruOJvRYEzRTKhRag7Aj8Fnm51J3kM=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=2OD+hhn9SW30Ydu2LGewa9jzaESmHUxXrkr6SlPCRV/WKO52/YU3erv82twMgl6jd
-	 waq6Kfi1E+O8RJTeThqg+6nIvh+3yzcqcPwaiDJ+/gx8I96WmeW/+8beC5M/hWStfy
-	 uxNLCv8pkW2Qeor+69gghAnSjOkqRMCc+FnHzCVI6Lvjp2o/2twpw5aOFN1hB4t+Ng
-	 +Xf2M+25tZrk4k3Y5agl7SLQs1dNpU5Hy+WTCvSufIJPRu3aRrlRdtxlOK7VDFjQbn
-	 8GwmUXZJEWrKW/+y5V5oSysosvm8vtbqiTKmJ5r1HciVkkBYgrnsRLuH9YmIXDIciP
-	 MkbeFu6BLjsyw==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 60B3537821B5;
-	Fri, 17 May 2024 11:23:23 +0000 (UTC)
-Message-ID: <af6cad98-fde0-440d-8d26-05045387df08@collabora.com>
-Date: Fri, 17 May 2024 13:23:22 +0200
+	id 1s7vmJ-00000007fFR-2MoF
+	for linux-mediatek@lists.infradead.org;
+	Fri, 17 May 2024 11:29:37 +0000
+Received: by mail-pl1-f182.google.com with SMTP id d9443c01a7336-1e4c4fb6af3so3334615ad.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 17 May 2024 04:29:33 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1715945373; x=1716550173;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=nlO9hOsvvWncarTJ6TVIoeOrJIY+No0MzifzoPhfPog=;
+        b=BiOIactxCUIC+KlQwG6SBEWx146G9p7gJ0djmRtSNbK3psEa75gU1EGekcvXH+y05t
+         zFfuwbK4g+ZSWaq6e7tMA62c4hPuNILoZP64MSqF1oyhXj2952PmaAF77x5zuWp1M5Pu
+         IbNqoGGgQ0PLcaIlHZXHSLRmTttRLyYR27Bm3K2nos08rdto+uWm6+dyxZYA9P2ZW0RF
+         UMvKoycXJccfOlMOuS6ptNLnZONqrV+XGvTsS5H3qZ4CVZtieKeNMKPmrfdQ58XhVLt3
+         Hh2/i+Vj5yoEsD+hUXtseS8Nfy2sqALD5P5szoLfHPYrvWtsn8lF8z5WFw3+nPjPEDMO
+         cMFg==
+X-Forwarded-Encrypted: i=1; AJvYcCWk4M7uHbNvIDyAkLD1i2I96hVy+/zV7VslHVxFu8SWiwBMZhCPm3VQ9bCG3Zv7fSs57ChleHd3DNhZ8z2aVL5w+k75nI3v5zPCNXXJ/P+K58QH
+X-Gm-Message-State: AOJu0Yxd3DObvAzzCw3dK0neuNDIV6XiPVm3XmfikqnD0q5mVaxIPa9x
+	0iWqGTfjyGaIZpvR2fnrZtCeM7YqjpEaJ/6hKfvyGVg4a2sRdhsuXnGwy8XD
+X-Google-Smtp-Source: AGHT+IFXEv9ghbQqSRx2esLmvtTnthat8U/buSvB+ab+E7flOcpeqYIcoK+QbYJeauvapLTXM3Ua+w==
+X-Received: by 2002:a17:903:22ce:b0:1eb:904:dfd7 with SMTP id d9443c01a7336-1eef9f34562mr409147175ad.2.1715945373309;
+        Fri, 17 May 2024 04:29:33 -0700 (PDT)
+Received: from localhost (fpd11144dd.ap.nuro.jp. [209.17.68.221])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-1ef0c03b2afsm155146735ad.230.2024.05.17.04.29.30
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 17 May 2024 04:29:31 -0700 (PDT)
+Date: Fri, 17 May 2024 20:29:29 +0900
+From: Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>
+To: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+Cc: linux-pci@vger.kernel.org, bhelgaas@google.com, lpieralisi@kernel.org,
+	robh@kernel.org, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Bjorn Helgaas <helgaas@kernel.org>
+Subject: Re: [PATCH] PCI: mt7621: Fix possible string truncation in snprintf
+Message-ID: <20240517112929.GZ202520@rocinante>
+References: <20240111082704.2259450-1-sergio.paracuellos@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] drm/mediatek/dp: fix spurious kfree()
-To: Michael Walle <mwalle@kernel.org>, Chun-Kuang Hu
- <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
- David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Jani Nikula <jani.nikula@intel.com>, Chen-Yu Tsai <wenst@chromium.org>,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org
-References: <20240517093024.1702750-1-mwalle@kernel.org>
- <de0191f3-271b-4f0e-aa73-910543587c9d@collabora.com>
- <D1BVE3G40OVL.3KX13LU75M122@kernel.org>
- <0d8f89d4-e16e-4c8d-b983-38df8fcc387e@collabora.com>
- <D1BVPABXTSPH.22ML1GLOMHEJR@kernel.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <D1BVPABXTSPH.22ML1GLOMHEJR@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20240111082704.2259450-1-sergio.paracuellos@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240517_042326_061959_3D6C5317 
-X-CRM114-Status: GOOD (  19.24  )
+X-CRM114-CacheID: sfid-20240517_042935_624634_3D50B926 
+X-CRM114-Status: UNSURE (   7.67  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,74 +85,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 17/05/24 13:21, Michael Walle ha scritto:
-> On Fri May 17, 2024 at 1:09 PM CEST, AngeloGioacchino Del Regno wrote:
->> Il 17/05/24 13:07, Michael Walle ha scritto:
->>> On Fri May 17, 2024 at 12:35 PM CEST, AngeloGioacchino Del Regno wrote:
->>>> Il 17/05/24 11:30, Michael Walle ha scritto:
->>>>> drm_edid_to_sad() might return an error or just zero. If that is the
->>>>> case, we must not free the SADs because there was no allocation in
->>>>> the first place.
->>>>>
->>>>> Fixes: dab12fa8d2bd ("drm/mediatek/dp: fix memory leak on ->get_edid callback audio detection")
->>>>> Signed-off-by: Michael Walle <mwalle@kernel.org>
->>>>> ---
->>>>>     drivers/gpu/drm/mediatek/mtk_dp.c | 10 ++++++++--
->>>>>     1 file changed, 8 insertions(+), 2 deletions(-)
->>>>>
->>>>> diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
->>>>> index 536366956447..ada12927bbac 100644
->>>>> --- a/drivers/gpu/drm/mediatek/mtk_dp.c
->>>>> +++ b/drivers/gpu/drm/mediatek/mtk_dp.c
->>>>> @@ -2073,9 +2073,15 @@ static const struct drm_edid *mtk_dp_edid_read(struct drm_bridge *bridge,
->>>>>     		 */
->>>>>     		const struct edid *edid = drm_edid_raw(drm_edid);
->>>>>     		struct cea_sad *sads;
->>>>> +		int ret;
->>>>>     
->>>>> -		audio_caps->sad_count = drm_edid_to_sad(edid, &sads);
->>>>> -		kfree(sads);
->>>>> +		ret = drm_edid_to_sad(edid, &sads);
->>>>> +		/* Ignore any errors */
->>>>> +		if (ret < 0)
->>>>> +			ret = 0;
->>>>> +		if (ret)
->>>>
->>>> Eh, this will never work, because you're clearing the error before checking
->>>> if there's any error here?!?! :-P
->>>
->>> Don't get what you mean? Yes, I'm ignoring the error. Thus, in case
->>> of an error ret will be zero and there will be no free. If ret was
->>> zero, there won't be a free either. So you're left with the "normal"
->>> case, where you have to free the sads. Just like before.
->>>
->>>> Anyway in reality, it returns -ENOMEM if the allocation was not successful...
->>>> in the event that any future update adds any other error we'd be back with the same
->>>> issue, but I'm not sure how much should we worry about that.
->>>>
->>>> To be extremely safe, we could do...
->>>>
->>>> if (ret != -ENOMEM)
->>>> 	kfree(sads)
->>>>
->>>> audio_caps->sad_count = ret < 0 ? 0 : ret;
->>>
->>> Which is the same as above, but you only check for ENOMEM?
->>>
->>
->> Yes, the point is to avoid kfree(sads) for -ENOMEM only, as other errors that may
->> be introduced later might still allocate it and leave it allocated.
+Hello,
+
+> The following warning appears when driver is compiled with W=1.
 > 
-> Honestly, I doubt that any sane function will allocate memory, then
-> return an error and expect the caller to free it.
+> CC      drivers/pci/controller/pcie-mt7621.o
+> drivers/pci/controller/pcie-mt7621.c: In function ‘mt7621_pcie_probe’:
+> drivers/pci/controller/pcie-mt7621.c:228:49: error: ‘snprintf’ output may
+> be truncated before the last format character [-Werror=format-truncation=]
+> 228 |         snprintf(name, sizeof(name), "pcie-phy%d", slot);
+>     |                                                 ^
+> drivers/pci/controller/pcie-mt7621.c:228:9: note: ‘snprintf’ output between
+> 10 and 11 bytes into a destination of size 10
+> 228 |         snprintf(name, sizeof(name), "pcie-phy%d", slot);
+>     |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 > 
+> Clean this up increasing destination buffer one byte.
 
-My point was "you never know". But that wasn't a strong opinion anyway.
+Applied to controller/mt7621, thank you!
 
-It's ok for me regardless of what you choose, either follow what I said or don't,
-the end result is the same, you're still fixing the issue and both ways are
-acceptable, so...
+[1/1] PCI: mt7621: Fix string truncation in mt7621_pcie_parse_port()
+      https://git.kernel.org/pci/pci/c/fd6eb49a84a8
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
+	Krzysztof
 
