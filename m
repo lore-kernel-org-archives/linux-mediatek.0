@@ -4,61 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33DDFC25B77
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 May 2024 02:18:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45C14C41513
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 May 2024 02:51:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=n8LXtNuPs1T0FwCJ4tyBd0pKUOD1CJ/nDtHY2O0VUkQ=; b=W1M3SgxMLvnBpn
-	2h/0XQWOnFQD1YgefyWh5Wnw+I0AVBrtFZSZoh1gQlCUGge4hvO4/zfSYUFzdh50JmxJA4/3mmhLK
-	h5i0M9BK7EhvhX3k3dAU6pNbDBMBQ2a0u+MJeoQ78+wV7eAHZso/qWqwfQmqP0XSTf1e3xxb+SMmX
-	GKy6sKsS2H+PvqoBTsNPdgtOA2vu720nxlQZamIic8DKNAhPir4FLko4ygxxAW4ZojHrWhA512V9q
-	sKkiEysr+G4fAAI46BqjyMVyi1M9G0QwXoZsowHGI+RXWOYsoBmv/UzfwSG8dho4yH+z5tmfMK5GH
-	5gz9YP0XLba8h2T4W8iw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=463KGa2jvmribgYp0V3Mbh1Q7BI1I/5292+6J9XiUGA=; b=SeAyYnhAYM8Xcb+ATRT4XFXlZz
+	qoXOEaifiLw/cXNOVKnDQNfci8ynrWBvEU9RPi6hbECkXt/xHVTHsMTGU2VkjXywMCIaehHvPlRzw
+	nBZaIPjk3wopOTjfVJRdgtZlOmDoz75bcmF6GpTB7LORW3TeehiLAanRNH6Pd8embePOn8LIkowuK
+	hMaM4dq1kmkcXJRWski2q5A3cY9EVLZALQQPbxpQasgZ7EU40ht6fXtia+lJgBlvJ2vkf9LYLwMHH
+	RCVT7dhNIIpG5iVhPgGAUE1nXFueT/sTYBdYYZR9yNH+DXIvZkyisguz63oHkDiC2WehCJuR89VzM
+	cQBcy5nw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s7nAX-00000006c2q-030x;
-	Fri, 17 May 2024 02:18:01 +0000
-Received: from relay2-d.mail.gandi.net ([2001:4b98:dc4:8::222])
+	id 1s7ngd-00000006fPg-2KGX;
+	Fri, 17 May 2024 02:51:11 +0000
+Received: from smtp81.cstnet.cn ([159.226.251.81] helo=cstnet.cn)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s7nAT-00000006c1Q-1CEx;
-	Fri, 17 May 2024 02:17:58 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 98B1C40006;
-	Fri, 17 May 2024 02:17:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1715912270;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=n8LXtNuPs1T0FwCJ4tyBd0pKUOD1CJ/nDtHY2O0VUkQ=;
-	b=KY2G/WYp0/vwq1jpNBxeQSt4VnFzz7zuDt2pCo9g9M55oqo9ueszQZenZhwt1QnS1BthhX
-	WzN5s4b0QFc95b++3a2N/xq4777R7kavfVVgm7zSzYTmM6PeSgzmH4OrYiwCkeBfLb5DB2
-	Yy4tczx7NwWpeNPJzjZSmctS3SlC+C3KPTkoq7X7ukxcQJq4Fo+ULQ3L3/Gehgcuf1RxDN
-	U1QIur2aZ8UM1202wL3hk36BNclrXsf7Dyjj7nNWjDHohDC7T50qiOWlIkRrypqn/a+8OJ
-	Gy2Vi9cLxCsjTLBwfVyG6gq0UR2LKfZOzKpaDfsbBxHQbEynZwwDYTiiNqVV0Q==
-Message-ID: <a29dd7d1-40a8-4c88-99aa-651a3305b640@arinc9.com>
-Date: Fri, 17 May 2024 05:17:47 +0300
+	id 1s7ngZ-00000006fOh-45zJ;
+	Fri, 17 May 2024 02:51:09 +0000
+Received: from localhost (unknown [124.16.138.129])
+	by APP-03 (Coremail) with SMTP id rQCowAC3v5MIxkZmdCJ_Cw--.63667S2;
+	Fri, 17 May 2024 10:50:49 +0800 (CST)
+From: Chen Ni <nichen@iscas.ac.cn>
+To: nbd@nbd.name,
+	sean.wang@mediatek.com,
+	Mark-MC.Lee@mediatek.com,
+	lorenzo@kernel.org,
+	davem@davemloft.net,
+	edumazet@google.com,
+	kuba@kernel.org,
+	pabeni@redhat.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com
+Cc: netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Chen Ni <nichen@iscas.ac.cn>
+Subject: [PATCH net-next v2] net: ethernet: mtk_eth_soc: add missing check for rhashtable_init
+Date: Fri, 17 May 2024 10:39:22 +0800
+Message-Id: <20240517023922.362327-1-nichen@iscas.ac.cn>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: mt7622: fix switch probe on bananapi-r64
-To: Frank Wunderlich <linux@fw-web.de>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-References: <20240516204847.171029-1-linux@fw-web.de>
-Content-Language: en-US
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <20240516204847.171029-1-linux@fw-web.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-GND-Sasl: arinc.unal@arinc9.com
+X-CM-TRANSID: rQCowAC3v5MIxkZmdCJ_Cw--.63667S2
+X-Coremail-Antispam: 1UD129KBjvJXoW7uF1rZrWftF4UWw17ArWxXrb_yoW8AFWDpr
+	4Yya47ZF1rJw4UWa1kAa1xZFW5Ga1xK34DGFyfZw1Sv345Ar47JF1Utay5ZrW0yrWDKFsI
+	yr1jv3sxCFZ8Jw7anT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDU0xBIdaVrnRJUUUkE14x267AKxVW8JVW5JwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
+	rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
+	1l84ACjcxK6xIIjxv20xvE14v26F1j6w1UM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26F4j
+	6r4UJwA2z4x0Y4vEx4A2jsIE14v26rxl6s0DM28EF7xvwVC2z280aVCY1x0267AKxVW0oV
+	Cq3wAS0I0E0xvYzxvE52x082IY62kv0487Mc02F40EFcxC0VAKzVAqx4xG6I80ewAv7VC0
+	I7IYx2IY67AKxVWUJVWUGwAv7VC2z280aVAFwI0_Gr0_Cr1lOx8S6xCaFVCjc4AY6r1j6r
+	4UM4x0Y48IcxkI7VAKI48JM4x0x7Aq67IIx4CEVc8vx2IErcIFxwACI402YVCY1x02628v
+	n2kIc2xKxwCF04k20xvY0x0EwIxGrwCFx2IqxVCFs4IE7xkEbVWUJVW8JwC20s026c02F4
+	0E14v26r1j6r18MI8I3I0E7480Y4vE14v26r106r1rMI8E67AF67kF1VAFwI0_Jw0_GFyl
+	IxkGc2Ij64vIr41lIxAIcVC0I7IYx2IY67AKxVWUJVWUCwCI42IY6xIIjxv20xvEc7CjxV
+	AFwI0_Gr0_Cr1lIxAIcVCF04k26cxKx2IYs7xG6r1j6r1xMIIF0xvEx4A2jsIE14v26r1j
+	6r4UMIIF0xvEx4A2jsIEc7CjxVAFwI0_Gr0_Gr1UYxBIdaVFxhVjvjDU0xZFpf9x0JUq38
+	nUUUUU=
+X-Originating-IP: [124.16.138.129]
+X-CM-SenderInfo: xqlfxv3q6l2u1dvotugofq/
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240516_191757_561649_B723089D 
-X-CRM114-Status: GOOD (  11.56  )
+X-CRM114-CacheID: sfid-20240516_195108_437828_D2A37C0B 
+X-CRM114-Status: GOOD (  13.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,30 +84,60 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 16/05/2024 23:48, Frank Wunderlich wrote:
-> From: Frank Wunderlich <frank-w@public-files.de>
-> 
-> After commit 868ff5f4944a
-> ("net: dsa: mt7530-mdio: read PHY address of switch from device tree")
-> the mt7531 switch on Bananapi-R64 was not detected.
-> 
-> mt7530-mdio mdio-bus:00: reset timeout
-> mt7530-mdio mdio-bus:00: probe with driver mt7530-mdio failed with error -110
-> 
-> Fix this by adding phy address in devicetree.
-> 
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+Add check for the return value of rhashtable_init() and return the error
+if it fails in order to catch the error.
 
-I don't like the mention of the Linux kernel driver on the patch log. What
-you're fixing is the incorrect description of the switch's PHY address on
-the DTS file. Whether or not any driver from any project is actually
-reading it from the DTS file is irrelevant to this patch. That said, I
-already have a patch series I've been meaning to send the next version of
-that already addresses this. Please wait for that.
+Fixes: 33fc42de3327 ("net: ethernet: mtk_eth_soc: support creating mac address based offload entries")
+Signed-off-by: Chen Ni <nichen@iscas.ac.cn>
+---
+Changelog:
 
-Arınç
+v1 -> v2:
+
+1. Rewrite the error handling.
+---
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 2 +-
+ drivers/net/ethernet/mediatek/mtk_ppe.c     | 5 ++++-
+ 2 files changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index cae46290a7ae..f9b8956a8726 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -4957,7 +4957,7 @@ static int mtk_probe(struct platform_device *pdev)
+ 
+ 			eth->ppe[i] = mtk_ppe_init(eth, eth->base + ppe_addr, i);
+ 
+-			if (!eth->ppe[i]) {
++			if (IS_ERR_OR_NULL(eth->ppe[i])) {
+ 				err = -ENOMEM;
+ 				goto err_deinit_ppe;
+ 			}
+diff --git a/drivers/net/ethernet/mediatek/mtk_ppe.c b/drivers/net/ethernet/mediatek/mtk_ppe.c
+index 0acee405a749..4895c6febaf8 100644
+--- a/drivers/net/ethernet/mediatek/mtk_ppe.c
++++ b/drivers/net/ethernet/mediatek/mtk_ppe.c
+@@ -884,12 +884,15 @@ struct mtk_ppe *mtk_ppe_init(struct mtk_eth *eth, void __iomem *base, int index)
+ 	struct mtk_ppe *ppe;
+ 	u32 foe_flow_size;
+ 	void *foe;
++	int ret;
+ 
+ 	ppe = devm_kzalloc(dev, sizeof(*ppe), GFP_KERNEL);
+ 	if (!ppe)
+ 		return NULL;
+ 
+-	rhashtable_init(&ppe->l2_flows, &mtk_flow_l2_ht_params);
++	ret = rhashtable_init(&ppe->l2_flows, &mtk_flow_l2_ht_params);
++	if (ret)
++		return ERR_PTR(ret);
+ 
+ 	/* need to allocate a separate device, since it PPE DMA access is
+ 	 * not coherent.
+-- 
+2.25.1
+
 
