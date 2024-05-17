@@ -4,145 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C9F4C04FFE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 May 2024 06:14:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 973CEC04FFE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 May 2024 06:27:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=J3o804ncxF/enh0kdjgc+0YUwQx2VM+mClNeplniKwc=; b=Qgdp2YXrMcArkLOdtUrnL4oRJ4
-	OqpnztfzFD80Os+oGi90c/L6Q5N9pydBnb4N9VYbBGmplQyoEHMTUaR51AClBn+LxnrK7/3GlKtag
-	QFaS3J5gX8Ch4NAuTao9tKG02pmREadpJfZTLjkHfa23OTusa7x+bkOTLRaZiZXHJ1NJSafP1ZgFW
-	J5jkwNsnIRztBz1nqE2ffLGmYYtAJ4NUYNhdCREGO5r8+f0swtiZ137l5lf5HKKOdsVzc/JrdIObN
-	2A+L7ftYenRruZmrO3S5gtiPC9ia8GP4dhz+CZ95V1/HIzGiV4Qdm/lfcELDZqYV42dDG9DBEGNat
-	8v+T2lIQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
+	In-Reply-To:Subject:CC:To:From:Date:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=KSti7LZBJijnnjjGg+r9r/T80cHLGp/ZM8X5SLLmURE=; b=rhloXWhQEJAnIP
+	3RkjYkocfAit1tNxJOY2HU9PSDN/f0aGhxGtstP/KnAmQBC+GfaJgSBKbqjf2uM13X9lPbBR/BHT1
+	6Pew5Ph9qQHWz57ciY0Knyc5elz2OSR4skdU9wgVfy34fD/G01L13xLnLWxeOtT08WUvckgTN6nYs
+	SGpHQk2wd8Y5TYPsE61nWBXwgogoq0yJ7JmYi1d1iziuQxERt/7J0GrPnAJ8EACJmqHD9NICyfy7u
+	ZEDc/PsTCLm5K66pHTDbUFALZ74r7vXWoQe7zZzWNckvNm+g4wxHk9o5UERfQ2jhp0Sxr7A4jhkfS
+	lkHQO2gjxdgQ0+r3E8iw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s7qrF-00000006vDi-185M;
-	Fri, 17 May 2024 06:14:21 +0000
-Received: from mx07-00178001.pphosted.com ([185.132.182.106])
+	id 1s7r4D-00000006x0v-3Ydn;
+	Fri, 17 May 2024 06:27:46 +0000
+Received: from mout.gmx.net ([212.227.17.22])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s7qr9-00000006vCh-33XF;
-	Fri, 17 May 2024 06:14:17 +0000
-Received: from pps.filterd (m0241204.ppops.net [127.0.0.1])
-	by mx07-00178001.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 44H0O4Ye003261;
-	Fri, 17 May 2024 08:13:35 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=foss.st.com; h=
-	message-id:date:mime-version:subject:to:cc:references:from
-	:in-reply-to:content-type:content-transfer-encoding; s=
-	selector1; bh=J3o804ncxF/enh0kdjgc+0YUwQx2VM+mClNeplniKwc=; b=CV
-	xSZy930UTX7kDamAv2gi390UDjIU+WfLGT6+qTNZa8Hkd+yJK75cIjojTcNGENLI
-	BZXukHl1cbO+xx0BClOTjP4+RS637PPEZfSGyM5gcLPtlikd9R82kz62BFQCUdjg
-	hg7KKyl1iltJ7WLlSnl73hlsyoLrSH4JScIhCCz5Atn5dnoL4Qog2D57Ukm5e4ei
-	7lGcFyD2wB2a/S/nX+IftdXds93oxlEx06x7ejgzCNxb1dAlqpVZ9aDQL7DgoNF3
-	6W7MH/CNQYmJRAhI6UKq5f2XqI/btsPocfwEo0I/o9aUe09mZKEAIhrOAYKJFBSG
-	bWg2Tl1y24/bmqSNujYQ==
-Received: from beta.dmz-ap.st.com (beta.dmz-ap.st.com [138.198.100.35])
-	by mx07-00178001.pphosted.com (PPS) with ESMTPS id 3y4sxwghph-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Fri, 17 May 2024 08:13:35 +0200 (MEST)
-Received: from euls16034.sgp.st.com (euls16034.sgp.st.com [10.75.44.20])
-	by beta.dmz-ap.st.com (STMicroelectronics) with ESMTP id 924C54002D;
-	Fri, 17 May 2024 08:13:20 +0200 (CEST)
-Received: from Webmail-eu.st.com (shfdag1node1.st.com [10.75.129.69])
-	by euls16034.sgp.st.com (STMicroelectronics) with ESMTP id 79F8F20F54A;
-	Fri, 17 May 2024 08:11:54 +0200 (CEST)
-Received: from [10.48.87.62] (10.48.87.62) by SHFDAG1NODE1.st.com
- (10.75.129.69) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.35; Fri, 17 May
- 2024 08:11:51 +0200
-Message-ID: <124b75a6-d8da-4e29-8dce-79d18c355ba2@foss.st.com>
-Date: Fri, 17 May 2024 08:11:50 +0200
+	id 1s7r48-00000006wzy-1cXt;
+	Fri, 17 May 2024 06:27:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
+	s=s31663417; t=1715927247; x=1716532047; i=frank-w@public-files.de;
+	bh=KSti7LZBJijnnjjGg+r9r/T80cHLGp/ZM8X5SLLmURE=;
+	h=X-UI-Sender-Class:Date:From:To:CC:Subject:Reply-to:In-Reply-To:
+	 References:Message-ID:MIME-Version:Content-Type:
+	 Content-Transfer-Encoding:cc:content-transfer-encoding:
+	 content-type:date:from:message-id:mime-version:reply-to:subject:
+	 to;
+	b=pAyHbHTWAucMKnf5hZV52obw5cl9MF+XJ8nbO1LT6OAQjmOLvvW60GZlEieN67wC
+	 Wl/B7UHv8k0sspKoFRSK3vqKceOkgZohdzu4wGcp8PVAvVJ8dygd7C4HvZDv0p/n1
+	 /QcVF+yLgTjFmtOpSH1xgspijv4D441N4iJIh8+nt+lg95aT8RR1CKfi+b3hwW0Ij
+	 DN8C+I4cmY+AKtXdE//T4Zs/S+lM4alGhadJ492Yf86igmjCfa0eECbxTfLJjaFSS
+	 +oEiDfDlViWSc9aZFuf6hkHhg34GpLlBvT9hepl5eK4GCc78bb/F1vj6bp0ItlGbC
+	 4PNi8mDcM0y36lw6og==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [127.0.0.1] ([217.61.157.120]) by mail.gmx.net (mrgmx104
+ [212.227.17.168]) with ESMTPSA (Nemesis) id 1MCsQ4-1sGcVK3k6C-00CO8K; Fri, 17
+ May 2024 08:27:27 +0200
+Date: Fri, 17 May 2024 08:27:24 +0200
+From: Frank Wunderlich <frank-w@public-files.de>
+To: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
+ Frank Wunderlich <linux@fw-web.de>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+CC: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Daniel Golle <daniel@makrotopia.org>
+Subject: Re: [PATCH] arm64: dts: mt7622: fix switch probe on bananapi-r64
+User-Agent: K-9 Mail for Android
+In-Reply-To: <a29dd7d1-40a8-4c88-99aa-651a3305b640@arinc9.com>
+References: <20240516204847.171029-1-linux@fw-web.de> <a29dd7d1-40a8-4c88-99aa-651a3305b640@arinc9.com>
+Message-ID: <5AEE5668-0C8E-4EE4-A398-66CB99DF5650@public-files.de>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 03/20] pinctrl: stm32: Use scope based of_node_put()
- cleanups
-To: "Peng Fan (OSS)" <peng.fan@oss.nxp.com>,
-        Linus Walleij
-	<linus.walleij@linaro.org>,
-        Thierry Reding <thierry.reding@gmail.com>,
-        Jonathan Hunter <jonathanh@nvidia.com>,
-        Dvorkin Dmitry <dvorkin@tibbo.com>, Wells Lu <wellslutw@gmail.com>,
-        Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-        Alexandre Torgue <alexandre.torgue@foss.st.com>,
-        Emil Renner Berthing
-	<kernel@esmil.dk>,
-        Jianlong Huang <jianlong.huang@starfivetech.com>,
-        Hal Feng
-	<hal.feng@starfivetech.com>,
-        Orson Zhai <orsonzhai@gmail.com>,
-        Baolin Wang
-	<baolin.wang@linux.alibaba.com>,
-        Chunyan Zhang <zhang.lyra@gmail.com>,
-        Viresh
- Kumar <vireshk@kernel.org>,
-        Shiraz Hashim <shiraz.linux.kernel@gmail.com>, <soc@kernel.org>,
-        Krzysztof Kozlowski <krzk@kernel.org>,
-        Sylwester Nawrocki
-	<s.nawrocki@samsung.com>,
-        Alim Akhtar <alim.akhtar@samsung.com>,
-        Geert
- Uytterhoeven <geert+renesas@glider.be>,
-        Heiko Stuebner <heiko@sntech.de>, Damien Le Moal <dlemoal@kernel.org>,
-        Ludovic Desroches
-	<ludovic.desroches@microchip.com>,
-        Nicolas Ferre
-	<nicolas.ferre@microchip.com>,
-        Alexandre Belloni
-	<alexandre.belloni@bootlin.com>,
-        Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-        Dong Aisheng <aisheng.dong@nxp.com>,
-        Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>,
-        Jacky Bai <ping.bai@nxp.com>,
-        Pengutronix
- Kernel Team <kernel@pengutronix.de>,
-        Chester Lin <chester62515@gmail.com>,
-        Matthias Brugger <mbrugger@suse.com>,
-        Ghennadi Procopciuc
-	<ghennadi.procopciuc@oss.nxp.com>,
-        Sean Wang <sean.wang@kernel.org>,
-        Matthias
- Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>,
-        Sascha Hauer
-	<s.hauer@pengutronix.de>,
-        Andrew Jeffery <andrew@codeconstruct.com.au>,
-        Joel
- Stanley <joel@jms.id.au>,
-        Dan Carpenter <dan.carpenter@linaro.org>,
-        Tony
- Lindgren <tony@atomide.com>,
-        Stephen Warren <swarren@wwwdotorg.org>
-CC: <linux-gpio@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-        <linux-tegra@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-        <linux-stm32@st-md-mailman.stormreply.com>,
-        <linux-samsung-soc@vger.kernel.org>,
-        <linux-renesas-soc@vger.kernel.org>,
-        <linux-rockchip@lists.infradead.org>,
-        <linux-riscv@lists.infradead.org>,
-        <linux-mediatek@lists.infradead.org>, <imx@lists.linux.dev>,
-        <linux-aspeed@lists.ozlabs.org>, <openbmc@lists.ozlabs.org>,
-        Peng Fan
-	<peng.fan@nxp.com>
-References: <20240504-pinctrl-cleanup-v2-0-26c5f2dc1181@nxp.com>
- <20240504-pinctrl-cleanup-v2-3-26c5f2dc1181@nxp.com>
-Content-Language: en-US
-From: Patrice CHOTARD <patrice.chotard@foss.st.com>
-In-Reply-To: <20240504-pinctrl-cleanup-v2-3-26c5f2dc1181@nxp.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.48.87.62]
-X-ClientProxiedBy: SHFCAS1NODE1.st.com (10.75.129.72) To SHFDAG1NODE1.st.com
- (10.75.129.69)
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.650,FMLib:17.11.176.26
- definitions=2024-05-16_07,2024-05-15_01,2023-05-22_02
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:Kf2A6v05q+qtEmd2sdgj+X3dXiUTxa75IbK9gn0tp+6l79sLMxj
+ v0xPOTwHoe9+p63e9G/VEtFaWz2dBUk0ZburZoeH4Pfr3q0eNPoegr2h2sr93a/pxMwx/IO
+ cvNBVDojRXmbcw4AZyIf/69QC+mCTv5GVgKrcyzuWOKaCgY5u7zT09JH/fBlK6SRuTonI3B
+ yQRc6G1v85K8U9r+wNvmA==
+UI-OutboundReport: notjunk:1;M01:P0:lA743/OJgs4=;r/sYu7nzWZ3+S01iYf5EWePZiH3
+ bCW2LwckE9ONLkbibSk6ZQeva9RYiL7nJ23nCVr7LTGRxa9Jl9sl+aZw9uhfw+PxAh23XIlhA
+ WShhBbq7qTJEHBLELZmBolmbFIjbPdu/tA3rQQTdoALCTlmjgwsDVEWUZRCO3uhDmjJdu32e9
+ TZQlK9gDqQ52Q/bxx7kxRQhHYW/tMLHhuXFUtIudW79l9dBppnCMVFYDALT6XpIVrYZwyG4Gl
+ 6RAcps6WSvrduK21eKGK9AISI4LZ/oGYhLWGHk8GKq5Nqh4dgSOmz1iregZgSd24okIeNPSZW
+ mjeJi+oD54cMWU8ytubZs8QGVuGSp504pCxf297v/+ITcmTB96xKQFhrDSYXR4FSB11sY0TJk
+ Hx9WseiXQgxXbVr+ls+h5/sz+NWYjaIW9Y6Dl6rtdgtAuovq6EooUy90cZHcx7mfVAvHS4zvx
+ 9DNdJ8qKOm6EsoblygiBeV2z0KXCwiMihVu+En3uf4hVZBw6wfSx8uuagoE9zp3KNNDV5mG//
+ nRrLdllnEq8O2RN9dpKEoFgnlRPBNP3QGsRKUIZc9ZRCcm4phfb6Wcoe5+WoU2oCzC6lbt4OQ
+ tQvRAPWashvtNtCv9T+Atv41R39pN0j5s5Xhlqrcw8+7ynUlBIYnrXdzRNCF5pL6q2Jl48LwI
+ bK4hsYoumvsy3364WSQfjgXAdeTq7y6njwLFutRdlSXzCF6BVihTDvSgPGTUf+qOXeFPZCaaP
+ A4SNPd6NA94ChFkcS5GK8PNxk6cTf2FRo5201g2FNj9jLVzmGZdskzi6nGC9tHszAlbeP9SCD
+ PV+VKLMUaNMo7rZd/yBFPbf+HdLbe7FFYwpoW7SUG1VBU=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240516_231416_097085_612D8143 
-X-CRM114-Status: GOOD (  13.81  )
+X-CRM114-CacheID: sfid-20240516_232740_812725_21EFD977 
+X-CRM114-Status: GOOD (  11.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -154,53 +94,46 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: frank-w@public-files.de
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Am 17=2E Mai 2024 04:17:47 MESZ schrieb "Ar=C4=B1n=C3=A7 =C3=9CNAL" <arinc=
+=2Eunal@arinc9=2Ecom>:
+>On 16/05/2024 23:48, Frank Wunderlich wrote:
+>> From: Frank Wunderlich <frank-w@public-files=2Ede>
+>>=20
+>> After commit 868ff5f4944a
+>> ("net: dsa: mt7530-mdio: read PHY address of switch from device tree")
+>> the mt7531 switch on Bananapi-R64 was not detected=2E
+>>=20
+>> mt7530-mdio mdio-bus:00: reset timeout
+>> mt7530-mdio mdio-bus:00: probe with driver mt7530-mdio failed with erro=
+r -110
+>>=20
+>> Fix this by adding phy address in devicetree=2E
+>>=20
+>> Signed-off-by: Frank Wunderlich <frank-w@public-files=2Ede>
+>
+>I don't like the mention of the Linux kernel driver on the patch log=2E W=
+hat
+>you're fixing is the incorrect description of the switch's PHY address on
+>the DTS file=2E Whether or not any driver from any project is actually
+>reading it from the DTS file is irrelevant to this patch=2E That said, I
+>already have a patch series I've been meaning to send the next version of
+>that already addresses this=2E Please wait for that=2E
+>
+>Ar=C4=B1n=C3=A7
 
+Hi arinc,
 
-On 5/4/24 15:20, Peng Fan (OSS) wrote:
-> From: Peng Fan <peng.fan@nxp.com>
-> 
-> Use scope based of_node_put() cleanup to simplify code.
-> 
-> Signed-off-by: Peng Fan <peng.fan@nxp.com>
-> ---
->  drivers/pinctrl/stm32/pinctrl-stm32.c | 4 +---
->  1 file changed, 1 insertion(+), 3 deletions(-)
-> 
-> diff --git a/drivers/pinctrl/stm32/pinctrl-stm32.c b/drivers/pinctrl/stm32/pinctrl-stm32.c
-> index 978ccdbaf3d3..a8673739871d 100644
-> --- a/drivers/pinctrl/stm32/pinctrl-stm32.c
-> +++ b/drivers/pinctrl/stm32/pinctrl-stm32.c
-> @@ -670,7 +670,6 @@ static int stm32_pctrl_dt_node_to_map(struct pinctrl_dev *pctldev,
->  				 struct device_node *np_config,
->  				 struct pinctrl_map **map, unsigned *num_maps)
->  {
-> -	struct device_node *np;
->  	unsigned reserved_maps;
->  	int ret;
->  
-> @@ -678,12 +677,11 @@ static int stm32_pctrl_dt_node_to_map(struct pinctrl_dev *pctldev,
->  	*num_maps = 0;
->  	reserved_maps = 0;
->  
-> -	for_each_child_of_node(np_config, np) {
-> +	for_each_child_of_node_scoped(np_config, np) {
->  		ret = stm32_pctrl_dt_subnode_to_map(pctldev, np, map,
->  				&reserved_maps, num_maps);
->  		if (ret < 0) {
->  			pinctrl_utils_free_map(pctldev, *map, *num_maps);
-> -			of_node_put(np);
->  			return ret;
->  		}
->  	}
-> 
+From=20my PoV it is a regression in next/6=2E10 because the driver change wa=
+s merged (without "broadcast" fallback) and the dts patch [1] is not=2E
 
-Hi
+I agree that my patch can be dropped because there was already one=2E
 
-Reviewed-by: Patrice Chotard <patrice.chotard@foss.st.com>
+regards Frank
 
-Thanks
-Patrice
+[1] https://patchwork=2Ekernel=2Eorg/project/linux-arm-kernel/patch/202403=
+14-for-mediatek-mt7531-phy-address-v1-1-52f58db01acd@arinc9=2Ecom/
 
