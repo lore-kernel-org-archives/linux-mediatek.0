@@ -4,89 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF59AC25B77
-	for <linux-mediatek@archiver.kernel.org>; Sat, 18 May 2024 21:12:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10D4FC25B74
+	for <linux-mediatek@archiver.kernel.org>; Sat, 18 May 2024 21:31:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6LaAmsr6IbfLWHWEKclaaIPD9AP5Zg/0Ttt/N0I0x4E=; b=eysq3GcWnhDpZdrnJtNvgBGE3Z
-	W6ePzDvuOO6lLB0hvQQfWBm39skFvGsGf6pagjnyJM9H/kdrrDCwXeQaE2J0okwDrz2I2E4Dr98Nv
-	zALvt7NEH0Ge9BIgZ1UWobLK+UWW0YMoyxiYadNM/1kjKrPdEDxdhg5tstaN2QuJAAXAZduCk5ZxB
-	k962o6GIH+W483fIJLWiBdiFAw8yXqwzcnkI4mIcMaKek5R+iTJuzMdk/mx6Srzp5WbW13zctcljS
-	8/qpYwQ4MGj9jMzwJtwFkV+WRP8njDq23mYpX63tm2O1qdZtWXZdRk7zvHJkvbUwM9dOP3pMbpdYT
-	Xyr/QsnA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+Gw54EQDhpSeWtmk2FoI7jwIsmxZHVbz3aBCdHeXgw0=; b=CdgOHEbSfOKmb02xB1rl4+KKEs
+	/hERqh49tNJ36qXu5rXEmCLU8K0VVWpgKYwtOVXM/PFCX+0z/Ym42flI8skWCE/GBbJWHN6YrUnXY
+	2m0oEv/YUPAy300haoANwoJ7rsP/u4cHIax7Yad/VcL8tvmDaFuoD7DDHQ/ekYvrj+XG3Ksxx7TiE
+	gI6flx/uQsXQTLJSMMqjKRLUbLsYCZvo9ZmYWDUkboAiKaOAx39n2Qclg93hRhtW+WJpL/6cj/5s3
+	VHlzB58sPWb2fovhCYZslrAy3xaD67D507m9YjVOCENwfZ6hIMs+NDjK0drTRSXkNL1uhUp37vNFy
+	F4oUYpeA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s8RLu-0000000AnSt-1zBp;
-	Sat, 18 May 2024 21:12:26 +0000
-Received: from mail-lj1-x230.google.com ([2a00:1450:4864:20::230])
+	id 1s8ReB-0000000ApiM-2Owi;
+	Sat, 18 May 2024 21:31:19 +0000
+Received: from mgamail.intel.com ([192.198.163.7])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s8RLh-0000000AnIH-3Mtl
-	for linux-mediatek@lists.infradead.org;
-	Sat, 18 May 2024 21:12:17 +0000
-Received: by mail-lj1-x230.google.com with SMTP id 38308e7fff4ca-2e576057c06so20306491fa.0
-        for <linux-mediatek@lists.infradead.org>; Sat, 18 May 2024 14:12:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1716066724; x=1716671524; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=6LaAmsr6IbfLWHWEKclaaIPD9AP5Zg/0Ttt/N0I0x4E=;
-        b=iFT+0U3LhJeC3K2zhmIgtuVidFln308GYRiiqFy2FY/3xCpTammlXy0q0c2e4vOtF0
-         58WG0ZKGH23Lb8Jk7/VEPQVvCmh4xDADAKuQFUWkyySQqw4lWH3SQrA5i/zGPP7pXfrM
-         eUhG9R2Ue65g9CoSkK/mKN0DZ+o59ghr6j0YhXKyhvhfpu4yVd4w68ydW+C2mXoAjY+b
-         q90eXM9SOHUODCRQQs6+J6W9sIQIZ3NQ/6CFnYpF9A8Ed+A5U0L6ZzHuS4919LPiZCm2
-         CDV4AuxWO8FFK9Txu9UW2mw2HHR+wvgn22AWdbARaz8rL9i3GxP1CeGthkNH8aaMHcai
-         86hA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1716066724; x=1716671524;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=6LaAmsr6IbfLWHWEKclaaIPD9AP5Zg/0Ttt/N0I0x4E=;
-        b=W7m4+hdRLxX8I4gqKjKWzavRpjpsnbHYyoluQaFOP3sWGPl4zxD541gi/fZCsLpmup
-         uu9rYm++9mQfF8774t2CjWxsRk8/bICer3S7rUBaR2Ar5we7HYpqzRA09JuT+bqNB/1Z
-         W+DPkVOBZwXYfpTXvfVOPXRiqkkZmsvDa9UFMWe3AjhvE17vPBxEgdJSidEWrRN8mhgG
-         +uNkqhPr4BPKVjLqv5XHI0JcG4kkOzE3yMkC3e3k2LXLbf+MXiDbIOBPMhkiczenHzln
-         BxJl4Lp58VWI4lQstRjIaP6BJ8CLbiiY2dYwj9YZ75XwCaDzYzRRAU49Ro+gkRL9XTGX
-         Elrg==
-X-Forwarded-Encrypted: i=1; AJvYcCUtvMKUv9tlvOOWS+Fp4CAJjqk3xwtV9WRuuROGbVDFvDM8tbXR8CyO2m+f63Yr3yc57cKv1i9q3RsY7vZsk8/NlXl+S/RkY3/M731gI4YN1N4/
-X-Gm-Message-State: AOJu0YyF2yJAzWk2KO/Ett5wuhvyrhQRaC3JL+3mByjRqBOLcndogMPy
-	JbB7hxYOUYi2k6RyV1szO+bcByyWQZ5MQdhfeCod9QuCAvYONzhTETodkpAF6MA=
-X-Google-Smtp-Source: AGHT+IH2pXhxB9mDHw2Rl92k7GN8nvvr1DxEDU6XaMXuGmC+B9Bmnitesxw7rLcLqh6c221chfar1A==
-X-Received: by 2002:a2e:91ce:0:b0:2df:1e3e:327f with SMTP id 38308e7fff4ca-2e52039bcb3mr173818671fa.38.1716066724409;
-        Sat, 18 May 2024 14:12:04 -0700 (PDT)
-Received: from krzk-bin.. ([178.197.206.169])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5733c323d3asm13151340a12.90.2024.05.18.14.12.03
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 18 May 2024 14:12:03 -0700 (PDT)
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-To: Lee Jones <lee@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
+	id 1s8Re7-0000000Aphg-3qkZ;
+	Sat, 18 May 2024 21:31:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1716067876; x=1747603876;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=YcuHLa93vOsQrMH7qC/ZJuanpLd3bFvl73b4w8gDm7k=;
+  b=VBSXkLw4KuHcKdSpOwcfX8SeWmdL41XDkJxomRCNY1vaJrPU20dMn+jP
+   8SR073XJO+1lHqynZTPLyZZ7uTKsUBKFlGDi/9L8dk+dV7DMhaII2He6F
+   Toh/HK8iFf016PKA19EfEx3xBPpclQaoK/KsqjxIQT9tCi8FzyEu+5EFN
+   hmObEKdSjE/pkfHuz1ch4Ibos0OimMoFl9Vpr0fMAtp6JccCDFZCTNZIr
+   z27AveQiF5J2LK7VqcqGYZwQNiVq2bcxsJXg8+56LYlUVKw2LrcBrk9IQ
+   711pl1tUsYH99XDABBMxWXc7r78w65ML9qIATOEAn66q3ymavVS+ees63
+   g==;
+X-CSE-ConnectionGUID: D7fvKfPURL6P7owiOZqx6Q==
+X-CSE-MsgGUID: ttK6YODHTciOXuBOeD+Rlw==
+X-IronPort-AV: E=McAfee;i="6600,9927,11076"; a="37608906"
+X-IronPort-AV: E=Sophos;i="6.08,171,1712646000"; 
+   d="scan'208";a="37608906"
+Received: from orviesa008.jf.intel.com ([10.64.159.148])
+  by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 May 2024 14:31:08 -0700
+X-CSE-ConnectionGUID: sc9c9u6PRKSkFMa9ZLiDIw==
+X-CSE-MsgGUID: ovrQszmMR3mDpHLmAvxfng==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.08,171,1712646000"; 
+   d="scan'208";a="32710517"
+Received: from unknown (HELO 108735ec233b) ([10.239.97.151])
+  by orviesa008.jf.intel.com with ESMTP; 18 May 2024 14:31:03 -0700
+Received: from kbuild by 108735ec233b with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1s8Rds-0002do-28;
+	Sat, 18 May 2024 21:31:00 +0000
+Date: Sun, 19 May 2024 05:30:03 +0800
+From: kernel test robot <lkp@intel.com>
+To: Sky Huang <SkyLake.Huang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Qingfang Deng <dqfext@gmail.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	MandyJH Liu <mandyjh.liu@mediatek.com>,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH 2/4] arm64: dts: mediatek: mt8365: use a specific SCPSYS compatible
-Date: Sat, 18 May 2024 23:11:57 +0200
-Message-ID: <20240518211159.142920-2-krzysztof.kozlowski@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240518211159.142920-1-krzysztof.kozlowski@linaro.org>
-References: <20240518211159.142920-1-krzysztof.kozlowski@linaro.org>
+Cc: oe-kbuild-all@lists.linux.dev, netdev@vger.kernel.org,
+	Steven Liu <Steven.Liu@mediatek.com>,
+	"SkyLake.Huang" <skylake.huang@mediatek.com>
+Subject: Re: [PATCH net-next v2 2/5] net: phy: mediatek: Move LED and
+ read/write page helper functions into mtk phy lib
+Message-ID: <202405190537.zWJuRc1r-lkp@intel.com>
+References: <20240517102908.12079-3-SkyLake.Huang@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240517102908.12079-3-SkyLake.Huang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240518_141214_068200_F75005CF 
-X-CRM114-Status: GOOD (  11.61  )
+X-CRM114-CacheID: sfid-20240518_143116_017411_4090AE7F 
+X-CRM114-Status: GOOD (  12.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,31 +99,98 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SoCs should use dedicated compatibles for each of their syscon nodes to
-precisely describe the block.  Using an incorrect compatible does not
-allow to properly match/validate children of the syscon device.  Replace
-SYSCFG compatible, which does not have children, with a new dedicated
-one for SCPSYS block.
+Hi Sky,
 
-Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
----
- arch/arm64/boot/dts/mediatek/mt8365.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+kernel test robot noticed the following build errors:
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8365.dtsi b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-index 24581f7410aa..d3da5a22c2d2 100644
---- a/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-@@ -300,7 +300,7 @@ syscfg_pctl: syscfg-pctl@10005000 {
- 		};
- 
- 		scpsys: syscon@10006000 {
--			compatible = "mediatek,mt8365-syscfg", "syscon", "simple-mfd";
-+			compatible = "mediatek,mt8365-scpsys", "syscon", "simple-mfd";
- 			reg = <0 0x10006000 0 0x1000>;
- 			#power-domain-cells = <1>;
- 
+[auto build test ERROR on next-20240517]
+[cannot apply to net-next/main net/main linus/master v6.9 v6.9-rc7 v6.9-rc6 v6.9]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Sky-Huang/net-phy-mediatek-Re-organize-MediaTek-ethernet-phy-drivers/20240517-184536
+base:   next-20240517
+patch link:    https://lore.kernel.org/r/20240517102908.12079-3-SkyLake.Huang%40mediatek.com
+patch subject: [PATCH net-next v2 2/5] net: phy: mediatek: Move LED and read/write page helper functions into mtk phy lib
+config: m68k-allmodconfig (https://download.01.org/0day-ci/archive/20240519/202405190537.zWJuRc1r-lkp@intel.com/config)
+compiler: m68k-linux-gcc (GCC) 13.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240519/202405190537.zWJuRc1r-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202405190537.zWJuRc1r-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+   m68k-linux-ld: drivers/net/phy/mediatek/mtk-ge-soc.o: in function `mt798x_phy_eee':
+   mtk-ge-soc.c:(.text+0x892): undefined reference to `phy_select_page'
+   m68k-linux-ld: mtk-ge-soc.c:(.text+0xaaa): undefined reference to `__phy_modify'
+   m68k-linux-ld: drivers/net/phy/mediatek/mtk-ge-soc.o: in function `mt798x_phy_led_hw_control_get':
+>> mtk-ge-soc.c:(.text+0x32): undefined reference to `mtk_phy_led_hw_ctrl_get'
+   m68k-linux-ld: drivers/net/phy/mediatek/mtk-ge-soc.o: in function `mt798x_phy_led_hw_control_set':
+>> mtk-ge-soc.c:(.text+0x64): undefined reference to `mtk_phy_led_hw_ctrl_set'
+   m68k-linux-ld: drivers/net/phy/mediatek/mtk-ge-soc.o: in function `mt798x_phy_led_hw_is_supported':
+>> mtk-ge-soc.c:(.text+0x88): undefined reference to `mtk_phy_led_hw_is_supported'
+   m68k-linux-ld: drivers/net/phy/mediatek/mtk-ge-soc.o: in function `mt798x_phy_led_blink_set':
+>> mtk-ge-soc.c:(.text+0xe0): undefined reference to `mtk_phy_hw_led_blink_set'
+>> m68k-linux-ld: mtk-ge-soc.c:(.text+0xfa): undefined reference to `mtk_phy_hw_led_on_set'
+   m68k-linux-ld: drivers/net/phy/mediatek/mtk-ge-soc.o: in function `mt798x_phy_led_brightness_set':
+   mtk-ge-soc.c:(.text+0x136): undefined reference to `mtk_phy_hw_led_blink_set'
+   m68k-linux-ld: mtk-ge-soc.c:(.text+0x15a): undefined reference to `mtk_phy_hw_led_on_set'
+   m68k-linux-ld: drivers/net/phy/mediatek/mtk-ge-soc.o: in function `mt7981_phy_finetune':
+   mtk-ge-soc.c:(.text+0x19e): undefined reference to `phy_write_mmd'
+   m68k-linux-ld: mtk-ge-soc.c:(.text+0x1ea): undefined reference to `phy_select_page'
+   m68k-linux-ld: mtk-ge-soc.c:(.text+0x200): undefined reference to `__mdiobus_write'
+   m68k-linux-ld: mtk-ge-soc.c:(.text+0x2f4): undefined reference to `phy_restore_page'
+   m68k-linux-ld: mtk-ge-soc.c:(.text+0x30c): undefined reference to `phy_modify_mmd'
+   m68k-linux-ld: drivers/net/phy/mediatek/mtk-ge-soc.o: in function `mt7988_phy_finetune':
+   mtk-ge-soc.c:(.text+0x48a): undefined reference to `phy_write_mmd'
+   m68k-linux-ld: mtk-ge-soc.c:(.text+0x4c2): undefined reference to `phy_select_page'
+   m68k-linux-ld: mtk-ge-soc.c:(.text+0x4d8): undefined reference to `__mdiobus_write'
+   m68k-linux-ld: mtk-ge-soc.c:(.text+0x592): undefined reference to `phy_restore_page'
+   m68k-linux-ld: mtk-ge-soc.c:(.text+0x5aa): undefined reference to `phy_modify_mmd'
+   m68k-linux-ld: drivers/net/phy/mediatek/mtk-ge-soc.o: in function `mt798x_phy_common_finetune':
+   mtk-ge-soc.c:(.text+0x5e6): undefined reference to `phy_select_page'
+   m68k-linux-ld: mtk-ge-soc.c:(.text+0x5fc): undefined reference to `__mdiobus_write'
+   m68k-linux-ld: mtk-ge-soc.c:(.text+0x766): undefined reference to `phy_restore_page'
+   m68k-linux-ld: drivers/net/phy/mediatek/mtk-ge-soc.o: in function `mt798x_phy_eee':
+   mtk-ge-soc.c:(.text+0x79c): undefined reference to `phy_modify_mmd'
+   m68k-linux-ld: mtk-ge-soc.c:(.text+0x8ac): undefined reference to `__mdiobus_write'
+   m68k-linux-ld: mtk-ge-soc.c:(.text+0xa8a): undefined reference to `phy_restore_page'
+   m68k-linux-ld: drivers/net/phy/mediatek/mtk-ge-soc.o: in function `cal_cycle.constprop.0':
+   mtk-ge-soc.c:(.text+0xb1e): undefined reference to `phy_modify_mmd'
+   m68k-linux-ld: mtk-ge-soc.c:(.text+0xb50): undefined reference to `phy_read_mmd'
+   m68k-linux-ld: drivers/net/phy/mediatek/mtk-ge-soc.o: in function `tx_vcm_cal_sw':
+   mtk-ge-soc.c:(.text+0xc70): undefined reference to `phy_modify_mmd'
+   m68k-linux-ld: drivers/net/phy/mediatek/mtk-ge-soc.o: in function `tx_amp_fill_result.isra.0':
+   mtk-ge-soc.c:(.text+0x1016): undefined reference to `phy_modify_mmd'
+   m68k-linux-ld: drivers/net/phy/mediatek/mtk-ge-soc.o: in function `rext_cal_efuse':
+   mtk-ge-soc.c:(.text+0x121e): undefined reference to `phy_modify_mmd'
+   m68k-linux-ld: drivers/net/phy/mediatek/mtk-ge-soc.o: in function `cal_efuse':
+   mtk-ge-soc.c:(.text+0x12c8): undefined reference to `phy_modify_mmd'
+   m68k-linux-ld: mtk-ge-soc.c:(.text+0x13e4): undefined reference to `phy_write_mmd'
+   m68k-linux-ld: drivers/net/phy/mediatek/mtk-ge-soc.o: in function `mt7988_phy_probe':
+   mtk-ge-soc.c:(.text+0x15ec): undefined reference to `devm_phy_package_join'
+>> m68k-linux-ld: mtk-ge-soc.c:(.text+0x1688): undefined reference to `mtk_phy_leds_state_init'
+   m68k-linux-ld: mtk-ge-soc.c:(.text+0x16ba): undefined reference to `phy_modify_mmd'
+   m68k-linux-ld: drivers/net/phy/mediatek/mtk-ge-soc.o: in function `mt7981_phy_probe':
+>> mtk-ge-soc.c:(.text+0x17b4): undefined reference to `mtk_phy_leds_state_init'
+   m68k-linux-ld: drivers/net/phy/mediatek/mtk-ge-soc.o:(.data+0x7a): undefined reference to `genphy_suspend'
+   m68k-linux-ld: drivers/net/phy/mediatek/mtk-ge-soc.o:(.data+0x7e): undefined reference to `genphy_resume'
+   m68k-linux-ld: drivers/net/phy/mediatek/mtk-ge-soc.o:(.data+0x92): undefined reference to `genphy_handle_interrupt_no_ack'
+>> m68k-linux-ld: drivers/net/phy/mediatek/mtk-ge-soc.o:(.data+0xb2): undefined reference to `mtk_phy_read_page'
+>> m68k-linux-ld: drivers/net/phy/mediatek/mtk-ge-soc.o:(.data+0xb6): undefined reference to `mtk_phy_write_page'
+   m68k-linux-ld: drivers/net/phy/mediatek/mtk-ge-soc.o:(.data+0x18c): undefined reference to `genphy_suspend'
+   m68k-linux-ld: drivers/net/phy/mediatek/mtk-ge-soc.o:(.data+0x190): undefined reference to `genphy_resume'
+   m68k-linux-ld: drivers/net/phy/mediatek/mtk-ge-soc.o:(.data+0x1a4): undefined reference to `genphy_handle_interrupt_no_ack'
+   m68k-linux-ld: drivers/net/phy/mediatek/mtk-ge-soc.o:(.data+0x1c4): undefined reference to `mtk_phy_read_page'
+   m68k-linux-ld: drivers/net/phy/mediatek/mtk-ge-soc.o:(.data+0x1c8): undefined reference to `mtk_phy_write_page'
+   m68k-linux-ld: drivers/net/phy/mediatek/mtk-ge-soc.o: in function `phy_module_init':
+   mtk-ge-soc.c:(.init.text+0x12): undefined reference to `phy_drivers_register'
+
 -- 
-2.43.0
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
