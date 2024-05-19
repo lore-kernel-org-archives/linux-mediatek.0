@@ -4,74 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E16AC25B79
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B471C25B75
 	for <linux-mediatek@archiver.kernel.org>; Sun, 19 May 2024 18:42:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dpZwSG8AUDPUPcQ/cg7yOTW8I5h5fbBcK+XT13gbyOc=; b=K+akZxdVbvkIxaLAJ9+0LI0n1y
-	AD+fENhmu7X0UbCC0saWQ1xiyoDCcv1kxofRkRY8rRntbDZMRo4/OEuCeMNLBYR1Xjva2CYqw4aZS
-	odTteUXPOW2ecqvc5VefQz5aoIrQN0Jikx5lnrrRvw2EO7/3UYMs7FNjlj4fOvJIPaxYWIG35+m5B
-	lxn/vswHyLOUEJT/Wt3ggGC4TtqRkAYHCVpqLGJVM7mXrDxIti8QdkNtM/5YkA7KP2E22z4XDM7c0
-	EL4Jll7whj7u1cc2ebqan3iU/nUNs2y81hVOfmKNVKPb9+0A56RwWU/UPlp6/Ibs00gpnSz1RHXK4
-	ygRYIIHw==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=m+HwIKa8QAruaHjDaMWv2MKCcdgE6o0aq2ewD+8PT4s=; b=DwfflW4Vbvf1fr
+	HFs3vFJIW8TUH+jInOUNu4B/ohigiSn+u9WsGgvS85s8Us/0ndajgCwr3Hc1Sc0ADMdBT5mfYF/Tz
+	/i37NWoloFglz6GrgTDiAjwW6ZmxAn/tJ8VKF3SFtqW/Xw6A/tF50Mm67mUazbjM1k6rbjlvsKVql
+	OjvgsN1DW+4zkJT+Xkzq/7wFURX3d2Eqd3nmyjQ/ld0LWRQ1kDKtxT1fJtM4ULWGAPANiBmNFZkSy
+	2r/YdfNGswM5q8w/COZ/y7k/ZBy/gyG/G24k6QFNQpkRs1FvS9ZSIY0yf8KK+HI4Tr5KBzgCC8NNz
+	qNwvf9ZL1tVZMRUpBXRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s8lUZ-0000000CWK0-1VwB;
-	Sun, 19 May 2024 18:42:43 +0000
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
-	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s8lUU-0000000CWGY-4AmP
-	for linux-mediatek@lists.infradead.org;
+	id 1s8lUX-0000000CWIj-2csO;
 	Sun, 19 May 2024 18:42:41 +0000
-Received: by mail-ed1-x529.google.com with SMTP id 4fb4d7f45d1cf-571ba432477so7331965a12.1
-        for <linux-mediatek@lists.infradead.org>; Sun, 19 May 2024 11:42:38 -0700 (PDT)
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1s8lUU-0000000CWGN-0so4
+	for linux-mediatek@lists.infradead.org;
+	Sun, 19 May 2024 18:42:39 +0000
+Received: by mail-ed1-x52c.google.com with SMTP id 4fb4d7f45d1cf-5727dc6d3edso6902549a12.0
+        for <linux-mediatek@lists.infradead.org>; Sun, 19 May 2024 11:42:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1716144157; x=1716748957; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=dpZwSG8AUDPUPcQ/cg7yOTW8I5h5fbBcK+XT13gbyOc=;
-        b=YWwaGgE5ka6mUkZM+JpNgr67twPXCxqo00Xg52+goRUcCp4DQphLvAy+hW0KwfWl+d
-         1l2qyVvUTxlUk+xFkCXdApVDmyGSp/ESFyT28SWjGxKNb1twOFORuksV0tu9G1kCbkyR
-         YR/eNh3UgYvELKe6XrBUKC1TiLVKPACjRPi6HkkUaRBOr8aTmoFa7hfzZJ/JjWafIMRk
-         tAVw6YIrllkLjbT08v9MwWw60stSMudeqZEvsETrtaLr1rrLh7iaXapAnUoS+C9zTAMH
-         wTDdcCr4hwBmqhxDyad05TJ3ykNgTlOPw5mPWsMCmrwKILZ1uZ/aSoHD2g//2xqJMex2
-         wBxQ==
+        d=linaro.org; s=google; t=1716144155; x=1716748955; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=m+HwIKa8QAruaHjDaMWv2MKCcdgE6o0aq2ewD+8PT4s=;
+        b=AHYN+pDQrzQpFvCvqvb7PDu+dHAi53suQSPqpaG9/YLPt647L/D+7BY73zQ1evtEvf
+         qGlitD9dztVktTbCTT7V8hFEoDVenO5NIT3v2XJpcfdhLdiFI+crVveytiCApDphdQrk
+         Xnr7OCFb/5A2aJMQPLprX6K4SYrkMI+LHi7uJ1zCXAc+boTVMB77Dx+bbrA9BV8YrUgu
+         8tu+hCZZcknb6vv6lObJ3H41d7shS+u3vjMOVCF2YanFyjerINHxdnA9Y9DQnsQn12N6
+         gxRXUo8Sd/v/qZzWwEyhLxh6eQdjhKaurVOLcQHsUFFFqEFJrJlYaaJ/nVEq3jRhm/VY
+         1LTw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1716144157; x=1716748957;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=dpZwSG8AUDPUPcQ/cg7yOTW8I5h5fbBcK+XT13gbyOc=;
-        b=abY2gB+CtDiAbV69Xks7lfOjlzAomnjBOV1PRX91lu8+kirSpXZfr2z5Fro3QPtDtp
-         8QBXhTjEiBIEV1I0YfsKz1Vu1p1Irj7uROXdZLOWMypKPmXhYHN/THn8LWrMTT+JV/fN
-         nIfdGpHdxNCmNzV6y43QntZauj78DNb4ByPz7nUgOZkHv0reDAzb6RG/hHjxTDTwCWlK
-         lSyqGoVC49XTAmU6Wqk3RSz5kamkfk8cklF6tC0Dp12J4QEREA5YPjP+Tw0z3bS6mmYe
-         FOxBPZJp4+dtiu7g9fpv5mvqhTmlRPthDXQCJGpa3fiAW6eVSZhTNlv7qKJLNO67RBch
-         67fQ==
-X-Forwarded-Encrypted: i=1; AJvYcCU2igPBWj3YJa8yT8osPmrpJwH1Cjs4vzdQ6kbYgyHdGJUCNNfhIJpL31Ajbinozh4DvC8GO2gBtCXjplPdw2e1p95p42YuXGEQiuiqZ0LXikXa
-X-Gm-Message-State: AOJu0YyNyWJAelpxL0rqZ7XrZ4k44sYzlU86HPT8ZxV/yodQ8Fojw5b4
-	sUYhAQM4G+FWpT/yQo/pRwiX7wzH5GGQGBq0IipwMbcp8qMawooqHez2vAbPT3w=
-X-Google-Smtp-Source: AGHT+IGq5QA1nd3Au7MNo1HsMLjHK/fKiObB5dGcnX8+/eslrDY+fDV6uC0IXG4Am+hQUeL97oiW3A==
-X-Received: by 2002:a50:ab47:0:b0:572:9984:1921 with SMTP id 4fb4d7f45d1cf-5734d5bec35mr18573696a12.17.1716144156802;
-        Sun, 19 May 2024 11:42:36 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1716144155; x=1716748955;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=m+HwIKa8QAruaHjDaMWv2MKCcdgE6o0aq2ewD+8PT4s=;
+        b=qun6uJEgp4gOKyZeHEgt1XlKY8Zyl7VFD/Fpya6YQTe3dRYAWXbwTF9PoGHPLR3xok
+         IxT/UaVbxTuOAAnDq2UyPpR41ied0dyTT4pvjy9yZz4h6JVsi8HrfG7zVjOa/9vWS3WD
+         gmXFHpvQTxoAnzlJy1MoepfTYATNLeZoUYHB1VIt9VpERMDRgPLc9sJA79w3tatqKfjm
+         5w86Ri6sDJMRhJ8en2bZjwP8hUNlkZPW+yDtrqt9GALFdlaLIB1dRGyTuR+9a12VevMS
+         WaZJbGZFBPWY3NoR1B/PIaMbemZeXYFno38AIWKTenBKD62P4f1v6C+uj3eNx3QlL7BA
+         lpmQ==
+X-Forwarded-Encrypted: i=1; AJvYcCV+Hr6tTkq/2Rw/IS7AxeHbFowmEkGbLm5tCTnHRUrFaEPH8n2oj0hK0XCbCxc/Ag41G8ZV56dIAB2OFi5eRBo++vJ11ASQM+ZhbrImafFzqS+7
+X-Gm-Message-State: AOJu0YwXjJjZ+S9ijGAAvpMyO8CGXmH9McqdLOLQJXil9czoFuxFqhfV
+	p9IpuN4mYKLslYM6HFkgWXrNPXTPUc9wjATFIfQH3nGLDiDPDaad0ru0HDdpHvM=
+X-Google-Smtp-Source: AGHT+IGBFpqWhK0RMasalcUHn9CfY/XMaOeYt+zsp5+d2c3FSkiM5Pd4rESufwvDhyyTXCO7bUSzGg==
+X-Received: by 2002:a50:8a8d:0:b0:574:ecec:187c with SMTP id 4fb4d7f45d1cf-574ecec19b2mr8805646a12.36.1716144154985;
+        Sun, 19 May 2024 11:42:34 -0700 (PDT)
 Received: from [127.0.1.1] ([178.197.206.169])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-575313d97desm1789397a12.41.2024.05.19.11.42.35
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-575313d97desm1789397a12.41.2024.05.19.11.42.31
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 19 May 2024 11:42:36 -0700 (PDT)
+        Sun, 19 May 2024 11:42:34 -0700 (PDT)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Date: Sun, 19 May 2024 20:42:16 +0200
-Subject: [PATCH 1/8] dt-bindings: mfd: syscon: Drop hwlocks
+Subject: [PATCH 0/8] dt-bindings: mfd: syscon: Document more compatibles
+ and require simpe-mfd description
+Date: Sun, 19 May 2024 20:42:15 +0200
+Message-Id: <20240519-dt-bindings-mfd-syscon-split-v1-0-aaf996e2313a@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240519-dt-bindings-mfd-syscon-split-v1-1-aaf996e2313a@linaro.org>
-References: <20240519-dt-bindings-mfd-syscon-split-v1-0-aaf996e2313a@linaro.org>
-In-Reply-To: <20240519-dt-bindings-mfd-syscon-split-v1-0-aaf996e2313a@linaro.org>
+X-B4-Tracking: v=1; b=H4sIAAdISmYC/x3MwQ5EQAwA0F+RnjVhZhF+RRyWFk0omYqsiH/fi
+ eO7vBuMg7BBk9wQ+BSTTSPyNIFh/urEKBQNLnOfrMgrpAN7URKdDNeR0C4bNkXbFznQV+x8XZe
+ F8wSx2AOP8nv7tnueP2KjNbluAAAA
 To: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>, 
  Krzysztof Kozlowski <krzk+dt@kernel.org>, 
  Conor Dooley <conor+dt@kernel.org>, 
@@ -85,27 +86,26 @@ Cc: Jiaxun Yang <jiaxun.yang@flygoat.com>, devicetree@vger.kernel.org,
  linux-mediatek@lists.infradead.org, 
  Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=798;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3403;
  i=krzysztof.kozlowski@linaro.org; h=from:subject:message-id;
- bh=EqrHKI7VqbulYVlL7ynNasI0rcDDscSlOl3m111YLJk=;
- b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBmSkgQzbjNRKze4/tMYsq0YCrgQq1HylGQx0Qnm
- fqs4ZngdWKJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZkpIEAAKCRDBN2bmhouD
- 17QrD/4qpVSOIgs2t0h8pAjNveQargz+qOiw594JnIjDv6W9T5TOx98Bo6TUfs4/dOlgAY5xYli
- 0FjQ6Ci8fX580v6LBDTyMzc+nVynHVOmYzmYpvbh4QxfD+Qxra17DEBwcB7F5fg52ZtQGz7lyvh
- rT3LhCwP0H/dp6BAqZRx5X8KCMt2Z7S2w+hbeEMJg6SLOQlIVrS9Uz1kOVGh4hie4ul1I8AXgEr
- PU2JfdPUgI2cRzZyU24CdOD8r3OVy+G+tPKAdU7xcOX+s7C7DpzIt8j1eh9f9wqABaSbUr49cLy
- /MUV00fMYeJD6YUqdtDYuRQdHv5fCRsrb5aqn90Dr85Q10QVChqIHOK5twXFpbodDbxUC2Jm/BQ
- lOfthfNcBxd2CO8POoeiZz1ngZ6ImW5XBCuird02ojDd8Zr8ZQ3KCCnR3AHoIdNCSEpNScROLJY
- SlLcUXAZMj2tCj0/T+cezMOpEsEsUm09HCPuHF1JOOxwth+Ie1zhC8zyxCkEx6Hju1fsNF29jE9
- JK2y1Q5XbOIPL+yOy53hO1EyI9MudcamsNusJ69cRtxodgzP3wJ/IKIyWRmUyc/p+OToz6hDAt4
- SDCiB7zwL1QcJ/K4g2cOnE2bxDuzmviGpLpyoi5X4/+57XZWhBwMDmjr9JyLNoQXLcXABaNQ7U/
- y86LmG1E/OCfb4Q==
+ bh=74vF+IoSfFoLMUH7RudSQwr4gdZA+l9TqbQpYx1aLQY=;
+ b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBmSkgNECgP7nhUrDjjCAV6sziyTN/z6FdpJw6+n
+ O76OPg36LaJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZkpIDQAKCRDBN2bmhouD
+ 1wFnD/910Xe1MkF3fmCQCzKEKdW2xCOK0f8FSyuRvHro+0QKHjH5momKKqzOXtAPRZm7nzXmgQq
+ ZSQR5V8q3OALE6XefzeXf8jyfJrDGyl2f9ebjTlIIRlRIld2cVpKK9DCKlScVNriDLnT5Udfngm
+ QEC39hCSZu9JbNAFCAmzpP2AF8mP1UOz1UrRJ6fBhYEB4aihn8T23agzrIq+IVgA3NqEGEIk9sc
+ RlJG8G5a9nA68PTX/Y75Z3eUtkDD84BlC8JPJN751MHUB7XtjSMjouLU/k923WS8B5ebTeCZKkw
+ XpA0tvfxHb+SgXtN8rDXelwPXtLoweDbrdmZVOKFyF/6M58KCGHj692p2Scb9yDCUp8834nuQ/2
+ N8HP0VDobIbw+lHKzLcGtFngxkmULJ2Oy84z+fV+hjzgXSZeJEW0VAaFz43YZt6thBUdcQPZrjr
+ DEw09N21D/07IUSBUmgolRfzqVPdddyxMxreyQ2wMewXE7OtjIw1S9LBQCU3dNWYn5uZi6AWHOm
+ KlB21MfTO8Invpc1xGovfDtW0VNt3zyXWORgKqJSf5fd7E8GJE0m9NOEQbf9ldNwidy1b06AvFX
+ 3/HsjPHeEGndsEGtwdhneLPP4GAKxA/erNnfhHEdfy8/Zqh/GgwnJL5G0RZtpt2K+HWFCngv2U4
+ OKMbB87TmI3MJqA==
 X-Developer-Key: i=krzysztof.kozlowski@linaro.org; a=openpgp;
  fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240519_114239_091982_64A3ADA5 
-X-CRM114-Status: UNSURE (   8.25  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240519_114238_327501_9977A97F 
+X-CRM114-Status: GOOD (  10.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,32 +120,90 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Apparently there is no in-tree DTS syscon node having hwlocks, so drop
-the property to simplify the binding.
+Hi,
 
-Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Dependency
+==========
+Depends on https://lore.kernel.org/r/20240510123018.3902184-1-robh@kernel.org
+because it touches the same lines.
+
+Merging
+=======
+1. Bindings: preferrably everything via MFD tree (file/context dependencies).
+2. DTS: via subarch maintainers (no dependencies).
+
+Description/problem
+===================
+Simple syscon nodes can be documented in common syscon.yaml, however
+devices with simple-mfd compatible, thus some children, should have
+their own schema listing these children.  Such listing makes the binding
+specific, allows better validation (so the incorrect child would not
+appear in the simple-mfd node) and actually enforces repeated rule for
+simple-mfd devices:
+
+  "simple-mfd" is only for simple devices, where the children do not
+  depend on the parent.
+
+Currently the syscon+simple-mfd binding is quite broad and allows
+any child or property, thus above rule cannot be enforced.
+
+Solution
+========
+1. Split the syscon.yaml binding into common syscon properties, used
+   potentially by many bindings, and only simple syscon devices (NO
+   simple-mfd!).
+2. Move some known simple-mfd bindings from syscon.yaml to dedicated
+   files.
+
+This patchset might introduce new dtbs_check warnings for devices having
+simple-mfd and being part of syscon.yaml previously. I fixed some of
+them, but probably not all.
+
+Best regards,
+Krzysztof
+
+To: Lee Jones <lee@kernel.org>
+To: Rob Herring <robh@kernel.org>
+To: Krzysztof Kozlowski <krzk+dt@kernel.org>
+To: Conor Dooley <conor+dt@kernel.org>
+To: Lars Povlsen <lars.povlsen@microchip.com>
+To: Steen Hegelund <Steen.Hegelund@microchip.com>
+To: Daniel Machon <daniel.machon@microchip.com>
+To: UNGLinuxDriver@microchip.com
+To: Nishanth Menon <nm@ti.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: devicetree@vger.kernel.org
+Cc: linux-kernel@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-mediatek@lists.infradead.org
+
 ---
- Documentation/devicetree/bindings/mfd/syscon.yaml | 5 -----
- 1 file changed, 5 deletions(-)
+Krzysztof Kozlowski (8):
+      dt-bindings: mfd: syscon: Drop hwlocks
+      dt-bindings: soc: sprd: sc9863a-glbregs: Document SC9863A syscon
+      dt-bindings: soc: intel: lgm-syscon: Move to dedicated schema
+      dt-bindings: soc: microchip: sparx5-cpu-syscon: Move to dedicated schema
+      dt-bindings: soc: ti: am654-serdes-ctrl: Move to dedicated schema
+      dt-bindings: mfd: syscon: Split and enforce documenting MFD children
+      dt-bindings: mfd: syscon: Add APM poweroff mailbox
+      arm64: dts: apm: Add dedicated syscon poweroff compatibles
 
-diff --git a/Documentation/devicetree/bindings/mfd/syscon.yaml b/Documentation/devicetree/bindings/mfd/syscon.yaml
-index 4d289935c08f..622ea0f1b08e 100644
---- a/Documentation/devicetree/bindings/mfd/syscon.yaml
-+++ b/Documentation/devicetree/bindings/mfd/syscon.yaml
-@@ -141,11 +141,6 @@ properties:
-   resets:
-     maxItems: 1
- 
--  hwlocks:
--    maxItems: 1
--    description:
--      Reference to a phandle of a hardware spinlock provider node.
--
- required:
-   - compatible
-   - reg
+ .../devicetree/bindings/mfd/syscon-common.yaml     |  72 +++++++
+ Documentation/devicetree/bindings/mfd/syscon.yaml  | 222 +++++++++------------
+ .../bindings/soc/intel/intel,lgm-syscon.yaml       |  53 +++++
+ .../soc/microchip/microchip,sparx5-cpu-syscon.yaml |  49 +++++
+ .../bindings/soc/sprd/sprd,sc9863a-glbregs.yaml    |  55 +++++
+ .../bindings/soc/ti/ti,am654-serdes-ctrl.yaml      |  42 ++++
+ arch/arm64/boot/dts/apm/apm-merlin.dts             |   2 +-
+ arch/arm64/boot/dts/apm/apm-mustang.dts            |   2 +-
+ 8 files changed, 365 insertions(+), 132 deletions(-)
+---
+base-commit: ca42fd4fd365cbaf798f17f655aee3d8192829f3
+change-id: 20240517-dt-bindings-mfd-syscon-split-37e23996523d
 
+Best regards,
 -- 
-2.43.0
+Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 
