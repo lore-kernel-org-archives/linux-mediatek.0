@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75628C25B79
-	for <linux-mediatek@archiver.kernel.org>; Sun, 19 May 2024 18:43:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22D16C25B78
+	for <linux-mediatek@archiver.kernel.org>; Sun, 19 May 2024 18:43:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=a4iZfdoNm6KmetFlM+rflXj8Ify4OoKkEWH1DVjf6SY=; b=LXikEv+iIbFFrVQGvUFwr05nBO
-	qv4l2gF0clKGmX91tF5flSlRN3mwzm57R3aTFkY5zR/cHMVS72eab3Qj2u2KX/B+3XDZWZdbFZn0P
-	Mh6BVWOJES8CoY0k2WVpfFDljSHbUN2zBBkQyMsg0bZRPmYo98wOQzVtWh0MCo+xMDBhAZDuIUuaD
-	cvxsEjWvbG95JEQG9yCHBh2Ur5XIxEublfXlLrnO5Hcaovp3CD/4Y8MsRfde73Ueeo42GH0XBfM8X
-	LcfP9F5p578xDXhMmEOx9xGcCwr/mZEXpbkP+OrRB3ubhXq407YSiMFK3GhuYTmqqjRYNvHKOLVaI
-	h3ChJTmg==;
+	bh=M7SjlJl42p0vv40zj9mQVcZTHeMqcgXlSP/MvwIgG+g=; b=G00+RwSj0EPaaSRYc4UTKCjVfF
+	eBIFYGtCgdBGFrpy7M8JCUpYUZoR7QUzk+YQYjEYI85ycLhbT4CzpSBeVQHnpaMQD73i2rVGxbXEa
+	TyQUKeut0jwukJzhjEHwoypVViV7HUF5quoi2hvPUCHAR+yeXGv+N3nRDyWXItFiKSdIWHkLsLUQh
+	yk3bf0RWfaRwKrOk3eemtarD140ZeWxkvgSDrV31Kcp9OqTL4SveeFXOzT0T+6mRHNoAD9kBWMhIc
+	JG+hMRdRWHWLD66Nuoe3IMaz8rOfA0Ac+y/siXc5G0IwwtMkZyMrwoUH3gGoqkxNAEmf3WplbbzdO
+	MTp3ryNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s8lUy-0000000CWc2-3nJG;
-	Sun, 19 May 2024 18:43:08 +0000
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
+	id 1s8lV7-0000000CWiV-2IPH;
+	Sun, 19 May 2024 18:43:17 +0000
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s8lUb-0000000CWKo-0zq3
+	id 1s8lUc-0000000CWLl-3ksF
 	for linux-mediatek@lists.infradead.org;
-	Sun, 19 May 2024 18:42:47 +0000
-Received: by mail-ed1-x535.google.com with SMTP id 4fb4d7f45d1cf-572c65cea55so10944091a12.0
-        for <linux-mediatek@lists.infradead.org>; Sun, 19 May 2024 11:42:44 -0700 (PDT)
+	Sun, 19 May 2024 18:42:49 +0000
+Received: by mail-ed1-x531.google.com with SMTP id 4fb4d7f45d1cf-5755fafa5a7so1384125a12.1
+        for <linux-mediatek@lists.infradead.org>; Sun, 19 May 2024 11:42:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1716144163; x=1716748963; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1716144165; x=1716748965; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=a4iZfdoNm6KmetFlM+rflXj8Ify4OoKkEWH1DVjf6SY=;
-        b=QeFNY/fqz8dn18fozXBEJO3yOXHdjWrJoBmNnZ0jImzJEg6EqVhxkCIovbNc1Nd38+
-         agAlsUO5oVTG7/Dt+gps/ky+OOoHH/SnIgm8enoGEQOcCZ8xsvpk6BR50Go4O554LfHq
-         lCDhyGOAAI1NxX03edxeUQfDbJGxvTueXAUyD8Rp3qk5orKuQ0sss8CMKvHtgKuF/zWT
-         JDG6HX7kP8G6jzkXgCpxSTF0wZ37J4T/KIePO1CM5ePSyKwq1JCuhNe2/+m9tX9ixGGf
-         zBEc7aQt96CPH9E8SNhYwIfYGm3vvCcK46PNH0dz6sKQV26A3HlHg0fwxpZyAeEt94Lu
-         zVKQ==
+        bh=M7SjlJl42p0vv40zj9mQVcZTHeMqcgXlSP/MvwIgG+g=;
+        b=af5hKVNLSwIq9j0nlW/oLrRGQvm0obvV2uNAHJUN1PBR3FqYXw4b8RW1nibQSPxcCl
+         88N9QZDvIIghnm01FjNjgcrIQt8pS3fHJCCQfgddLFoaMsYmVIoJFx1Q6cawcJdWkb2P
+         pWqp9VBXo/tvF1JHaSoqOY6DcOaFzVN2gI6UkGkdV26T7to0l+oa87QNoOHROsOFpVdy
+         YTKn/JG4nQG4rYFIPO7g6ttDsiO0UqdofOsE6QPAM+iQB2Vir7565nBgexxVb1UYkVuQ
+         SUae5+z/YRebzcTlmRqaXeKRAeVk/Z3Bx4ZGn+rgTbF5kUjKffhV12qVOTs9cckBvBzH
+         bNvg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1716144163; x=1716748963;
+        d=1e100.net; s=20230601; t=1716144165; x=1716748965;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=a4iZfdoNm6KmetFlM+rflXj8Ify4OoKkEWH1DVjf6SY=;
-        b=pacYSW9qOQVxi8AZJtvCi5E1bXnqF3BvWq7c56OpkbGyS2VCZ9NVyca0uifHhtSykq
-         L7he+S0z9IYDEmklCXiKtiZKp6h64u4h8025W3dnaI9IY9Ob6QI/Conxim7r4tPldfIf
-         Sd0gEq9LkvXNa+lccDPxS6CfwGisA2P2JNEh8FILR/27uMwhXfnd1Z0rPt9gfT6RMdjq
-         S9nQkE8B1FMM1kkBqwGsrcbMlu8pISvWEg/EpasU1wFZDT5hSlDR5L6jHWG128pETiPV
-         X10bDyEv8NMT6rjfkagyxUrn4flGsM/bTXwp0Beej4lNP/pmUqFPPHN4XQEl9+80OY4L
-         64hA==
-X-Forwarded-Encrypted: i=1; AJvYcCWZ0owpNyL4fbuy1yc76161aAaBlY+lKD580VIY3vr3hpAAXmv//uoZxsFld3Q7Lmnty1D+TJm8EPUEm0Eg4bA99vENh7NXH9/Q5m1gP/UQLCA/
-X-Gm-Message-State: AOJu0Yy/cIDRPjFb0YtBGSJBzoGSQGN/iuWOvDXgVmgEm8qDfWGDgqy0
-	TWEFGiKqHJy5TIUbe49UdAaS+3j+gFGxiU3iKmtFr4oKHT8+R9xO7wdIvOWt8U0=
-X-Google-Smtp-Source: AGHT+IERAhveijxy7giHqZCwdGvg8/ABsrt2a2x/cjeUxbcFttmT+WJNsMDmCsz0XPPz7M6nBgPbSw==
-X-Received: by 2002:a50:ab0e:0:b0:572:a712:64e0 with SMTP id 4fb4d7f45d1cf-5752b481447mr3925832a12.11.1716144163350;
-        Sun, 19 May 2024 11:42:43 -0700 (PDT)
+        bh=M7SjlJl42p0vv40zj9mQVcZTHeMqcgXlSP/MvwIgG+g=;
+        b=J+/fXQ78iOMwi/vtPrFH/bR1iQ4iCsPqUBzr7nasMJLmv8VmXEheIex/U2igIIsEUf
+         RWSx8Pkk1uHSiNVtpNWKlnLjPY3tGGqINXvTtc4Zas88t0Hhmz3dHgZB0+cZz0WL3NRN
+         wKch/Uu73fdroGoEA7eBDm8n7+RUa1yRUPgZ/MjpfO8+h4yJwjec96tk5jz/3jyH9rCi
+         l753epKQNLHnLrhqds0y7EoBkL/qV2ELwYrA/NLl+ojGP3a9LRTPkvEME3RDnTo39q5C
+         0BtNh4BMW87jYbjcyzmrOJetsn669gcYyqYZqO6HyCaI2Nzsb2vFTFnYEPYbbWeDcUj/
+         kidw==
+X-Forwarded-Encrypted: i=1; AJvYcCW054zRa4gyZxbQsjNGloNa0QjSk151Pvu5A495QbQ7DBZZ8MUaIArkIZG/vh8aNXmZ5GDB68ua0KCgddLwuV+ExigSfT/QQFaATvIUadzAE98P
+X-Gm-Message-State: AOJu0YxafjU6aSG9DeGuYeujz/+HVaCWpbUZytNq3/WEul8PCA1q2p0i
+	U/z8MNPsMgvMx0WiooYZx2lw8dRHJnDCjh5vMF3CrLse5R6nj3jIS7wj1fcF9YU=
+X-Google-Smtp-Source: AGHT+IEsFEpdSqOAM6J5qyzDUCJneEXJ3Ysf7DmgHnwA7qHARRDxO2SQ1UpJZcz+0tw+btI581FdDA==
+X-Received: by 2002:a50:c359:0:b0:574:fe5f:4f79 with SMTP id 4fb4d7f45d1cf-574fe5f5348mr6793830a12.24.1716144164805;
+        Sun, 19 May 2024 11:42:44 -0700 (PDT)
 Received: from [127.0.1.1] ([178.197.206.169])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-575313d97desm1789397a12.41.2024.05.19.11.42.41
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-575313d97desm1789397a12.41.2024.05.19.11.42.43
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 19 May 2024 11:42:42 -0700 (PDT)
+        Sun, 19 May 2024 11:42:44 -0700 (PDT)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Date: Sun, 19 May 2024 20:42:20 +0200
-Subject: [PATCH 5/8] dt-bindings: soc: ti: am654-serdes-ctrl: Move to
- dedicated schema
+Date: Sun, 19 May 2024 20:42:21 +0200
+Subject: [PATCH 6/8] dt-bindings: mfd: syscon: Split and enforce
+ documenting MFD children
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240519-dt-bindings-mfd-syscon-split-v1-5-aaf996e2313a@linaro.org>
+Message-Id: <20240519-dt-bindings-mfd-syscon-split-v1-6-aaf996e2313a@linaro.org>
 References: <20240519-dt-bindings-mfd-syscon-split-v1-0-aaf996e2313a@linaro.org>
 In-Reply-To: <20240519-dt-bindings-mfd-syscon-split-v1-0-aaf996e2313a@linaro.org>
 To: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>, 
@@ -86,26 +86,26 @@ Cc: Jiaxun Yang <jiaxun.yang@flygoat.com>, devicetree@vger.kernel.org,
  linux-mediatek@lists.infradead.org, 
  Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2354;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=11415;
  i=krzysztof.kozlowski@linaro.org; h=from:subject:message-id;
- bh=OOdH/VA0xsPMRYhcDacK8D0Tn//KGept+QvEXbjxFgc=;
- b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBmSkgU4qP0BJA4XKDpZ7Wvn50e/Ri2RoAv0jgbH
- 9A5h7StGdCJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZkpIFAAKCRDBN2bmhouD
- 14vtD/41lxCZUAle71Z5RV8DtWeAuAW/4vtMslb18wpwO4PjUZSfIurRxsBNpDMWmbrEe5wehNg
- IAhl1W+I41vdMBBoL7AofhxwwKbux/y1V7rCbwG5X0+GN7TFASHMg5GIbpMn96zQOiV+7W3FiFA
- imCHWAJyb9SWI6mGK2D2jEPDYxWCbLjxTVhcQOYPtvE4m74ZZzf+ovUro73pKnPPpKRLEYJhRIb
- k8+2XQDDYDnk4uXSFKwLlXmrVkqr23d22h+U4koosUkp+hwt7wg+0DTS7oXzeh3qnaSpz/7bgyV
- 5xj7jAHTln/hZ33G52/KeVAbFLBmeRxymyyy4IKSYay0VXEX0sCF0VpOPpSvlFlgzE0DKifTs8E
- Mpsri0yFQWHGSc2ydrPWW9UuAbYqbRM3QI3hDYNYJ8kCiw7ow7Jce5P6T2iPindQD9Na2UeCGsO
- 4dkgV/wnARN4SXiOOKsv/+h3Bp68Ij/p/CqyJ6BUWvVQWqj2kzWGwhJQTHL4E4hIQL80vbf7Y3m
- OqGNYuhwiKLkI2nn9rRYJec/AEznTgsy2jV2QYzxJ/JLv/Icowas55bmAHmN6v1EIVsGMhqMT8O
- iWrqJWeAiMI2wfiA0/KBKpUKSMmPHRpV3fjtqUyufu+foR/O0H3n07+DmdNm1ntnONRpaAFAnlj
- 49hSv2Iy146uRlw==
+ bh=qtoYw3fdVhclXTClljRbEBWK7+OTsR0mSt+0Br6IjhU=;
+ b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBmSkgVnvLOsAJbHLJZCtbySDycWCqH0kFau5Quu
+ 6kHj0zLHKyJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZkpIFQAKCRDBN2bmhouD
+ 11QlEACYNX//aIKpWxoPYETKQidjY/01vwBwUZEG3iDc/egKhwD2iVfGd0rm6KjUtPJhvdtZAnP
+ fYeCYFMi9Lri8n7rvQFpDAm7PLaiGyL0+U0gq5RIj7JYkXwoxVPfFGoXv+MJQZypBBZwJ/qjK0U
+ 3/YY2b3dJgwNBg3jQQvKxHQJaInhAijErYzdTFydtQomLKu5T4t73Ru/DduOLdSqEv1pofdcdg7
+ 7ncFXrD7zoxDSC2E0yUvua44Uv4wigxUweERoCJeWvQ8vdLlcIc4d5RroOuCLsX6At7owc5N8xs
+ bNI75Le0SoUU4Isqk1mEhEHB+lYuWx8nZEVyyhay3/7xcWDnxlao4ICn8LfDTNrWq0KPEFnRaKB
+ N0lLM2rRnkJ5V7XCK9Wzssuv9oKZbirV3M+J95ZplRoXldvrPKmgqvdwnaDMWjzkR3JgiwdCfSE
+ bjdiO7w8n8Q6Np9PdQ3DnT7ha/rliYae3kculV9a8FMiOaKc7AgilHdtePkXVPTUXMiayc10wd5
+ tYx0OQsKfvNIrtRMXoOyEz6VAxjX0K6VWjr4kauUpfbJrEKTdlmbTsK7irRWNBhUBe23lWr1dPC
+ 1dY0Sn/+w2ynLy6N54QC1G3Ez5J4hib7NBVB2+c96ynOLH5QvRspEOb80cCgSgTLkzY+xw1Vvpr
+ wpkAzYsUZ8Em3Ew==
 X-Developer-Key: i=krzysztof.kozlowski@linaro.org; a=openpgp;
  fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240519_114245_540283_288C34B3 
-X-CRM114-Status: GOOD (  14.40  )
+X-CRM114-CacheID: sfid-20240519_114247_038740_BC2834B2 
+X-CRM114-Status: GOOD (  16.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,81 +120,357 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-ti,am654-serdes-ctrl is not a simple syscon device - it has children -
-thus it should be fully documented in its own binding.
+Simple syscon nodes can be documented in common syscon.yaml, however
+devices with simple-mfd compatible, thus with some children, should have
+their own schema listing these children.  Such listing makes the binding
+specific, allows better validation (so the incorrect child would not
+appear in the simple-mfd node) and actually enforces repeated rule for
+simple-mfd devices:
+
+  "simple-mfd" is only for simple devices, where the children do not
+  depend on the parent.
+
+Currently the syscon+simple-mfd binding is quite broad and allows
+any child or property, thus above rule cannot be enforced.
+
+Split the syscon.yaml binding into:
+1. Common syscon properties, used potentially by many bindings.
+2. Simple syscon devices (NO simple-mfd!).
 
 Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 ---
 
-Context might depend on
-https://lore.kernel.org/r/20240510123018.3902184-1-robh@kernel.org
-and also further patches here depend on this one.
+Depends on:
+1. https://lore.kernel.org/r/20240510123018.3902184-1-robh@kernel.org
+2. Previous patches in the series.
 ---
- Documentation/devicetree/bindings/mfd/syscon.yaml  |  1 -
- .../bindings/soc/ti/ti,am654-serdes-ctrl.yaml      | 42 ++++++++++++++++++++++
- 2 files changed, 42 insertions(+), 1 deletion(-)
+ .../devicetree/bindings/mfd/syscon-common.yaml     |  72 +++++++
+ Documentation/devicetree/bindings/mfd/syscon.yaml  | 212 +++++++++------------
+ 2 files changed, 162 insertions(+), 122 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/mfd/syscon.yaml b/Documentation/devicetree/bindings/mfd/syscon.yaml
-index 91adf781e8ba..b17fa0487178 100644
---- a/Documentation/devicetree/bindings/mfd/syscon.yaml
-+++ b/Documentation/devicetree/bindings/mfd/syscon.yaml
-@@ -116,7 +116,6 @@ properties:
-               - ti,am62-usb-phy-ctrl
-               - ti,am62p-cpsw-mac-efuse
-               - ti,am654-dss-oldi-io-ctrl
--              - ti,am654-serdes-ctrl
-               - ti,j784s4-pcie-ctrl
-               - ti,keystone-pllctrl
- 
-diff --git a/Documentation/devicetree/bindings/soc/ti/ti,am654-serdes-ctrl.yaml b/Documentation/devicetree/bindings/soc/ti/ti,am654-serdes-ctrl.yaml
+diff --git a/Documentation/devicetree/bindings/mfd/syscon-common.yaml b/Documentation/devicetree/bindings/mfd/syscon-common.yaml
 new file mode 100644
-index 000000000000..a10a3b89ae05
+index 000000000000..c3ff3a7afce3
 --- /dev/null
-+++ b/Documentation/devicetree/bindings/soc/ti/ti,am654-serdes-ctrl.yaml
-@@ -0,0 +1,42 @@
-+# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
++++ b/Documentation/devicetree/bindings/mfd/syscon-common.yaml
+@@ -0,0 +1,72 @@
++# SPDX-License-Identifier: GPL-2.0
 +%YAML 1.2
 +---
-+$id: http://devicetree.org/schemas/soc/ti/ti,am654-serdes-ctrl.yaml#
++$id: http://devicetree.org/schemas/mfd/syscon-common.yaml#
 +$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+title: Texas Instruments AM654 Serdes Control Syscon
++title: System Controller Registers R/W Common Properties
++
++description: |
++  System controller node represents a register region containing a set
++  of miscellaneous registers. The registers are not cohesive enough to
++  represent as any specific type of device. The typical use-case is
++  for some other node's driver, or platform-specific code, to acquire
++  a reference to the syscon node (e.g. by phandle, node path, or
++  search using a specific compatible value), interrogate the node (or
++  associated OS driver) to determine the location of the registers,
++  and access the registers directly.
 +
 +maintainers:
-+  - Nishanth Menon <nm@ti.com>
++  - Lee Jones <lee@kernel.org>
++
++select:
++  properties:
++    compatible:
++      contains:
++        enum:
++          - syscon
++
++  required:
++    - compatible
 +
 +properties:
 +  compatible:
-+    items:
-+      - const: ti,am654-serdes-ctrl
-+      - const: syscon
++    contains:
++      const: syscon
++    minItems: 2
++    maxItems: 5  # Should be enough
 +
 +  reg:
 +    maxItems: 1
 +
-+  mux-controller:
-+    $ref: /schemas/mux/reg-mux.yaml#
++  reg-io-width:
++    description: |
++      The size (in bytes) of the IO accesses that should be performed
++      on the device.
++    enum: [1, 2, 4, 8]
 +
 +required:
 +  - compatible
 +  - reg
-+  - mux-controller
 +
-+additionalProperties: false
++allOf:
++  - if:
++      properties:
++        compatible:
++          contains:
++            const: simple-mfd
++    then:
++      properties:
++        compatible:
++          minItems: 3
++          maxItems: 5
++
++additionalProperties: true
 +
 +examples:
 +  - |
-+    clock@4080 {
-+        compatible = "ti,am654-serdes-ctrl", "syscon";
-+        reg = <0x4080 0x4>;
-+
-+        mux-controller {
-+            compatible = "mmio-mux";
-+            #mux-control-cells = <1>;
-+            mux-reg-masks = <0x0 0x3>; /* lane select */
-+        };
++    syscon: syscon@1c00000 {
++        compatible = "allwinner,sun8i-h3-system-controller", "syscon";
++        reg = <0x01c00000 0x1000>;
 +    };
++...
+diff --git a/Documentation/devicetree/bindings/mfd/syscon.yaml b/Documentation/devicetree/bindings/mfd/syscon.yaml
+index b17fa0487178..70e3961bc96f 100644
+--- a/Documentation/devicetree/bindings/mfd/syscon.yaml
++++ b/Documentation/devicetree/bindings/mfd/syscon.yaml
+@@ -4,7 +4,7 @@
+ $id: http://devicetree.org/schemas/mfd/syscon.yaml#
+ $schema: http://devicetree.org/meta-schemas/core.yaml#
+ 
+-title: System Controller Registers R/W
++title: System Controller Devices
+ 
+ description: |
+   System controller node represents a register region containing a set
+@@ -19,122 +19,99 @@ description: |
+ maintainers:
+   - Lee Jones <lee@kernel.org>
+ 
+-select:
+-  properties:
+-    compatible:
+-      contains:
+-        enum:
+-          - syscon
+-
+-  required:
+-    - compatible
+-
+ properties:
+   compatible:
+-    anyOf:
+-      - items:
+-          - enum:
+-              - al,alpine-sysfabric-service
+-              - allwinner,sun8i-a83t-system-controller
+-              - allwinner,sun8i-h3-system-controller
+-              - allwinner,sun8i-v3s-system-controller
+-              - allwinner,sun50i-a64-system-controller
+-              - altr,l3regs
+-              - altr,sdr-ctl
+-              - amd,pensando-elba-syscon
+-              - amlogic,meson-mx-assist
+-              - amlogic,meson-mx-bootrom
+-              - amlogic,meson8-analog-top
+-              - amlogic,meson8b-analog-top
+-              - amlogic,meson8-pmu
+-              - amlogic,meson8b-pmu
+-              - apm,xgene-csw
+-              - apm,xgene-efuse
+-              - apm,xgene-mcb
+-              - apm,xgene-rb
+-              - apm,xgene-scu
+-              - atmel,sama5d2-sfrbu
+-              - atmel,sama5d3-nfc-io
+-              - atmel,sama5d3-sfrbu
+-              - atmel,sama5d4-sfrbu
+-              - axis,artpec6-syscon
+-              - brcm,cru-clkset
+-              - brcm,sr-cdru
+-              - brcm,sr-mhb
+-              - cirrus,ep7209-syscon1
+-              - cirrus,ep7209-syscon2
+-              - cirrus,ep7209-syscon3
+-              - cnxt,cx92755-uc
+-              - freecom,fsg-cs2-system-controller
+-              - fsl,imx93-aonmix-ns-syscfg
+-              - fsl,imx93-wakeupmix-syscfg
+-              - fsl,ls1088a-reset
+-              - fsl,vf610-anatop
+-              - fsl,vf610-mscm-cpucfg
+-              - hisilicon,dsa-subctrl
+-              - hisilicon,hi6220-sramctrl
+-              - hisilicon,hip04-ppe
+-              - hisilicon,pcie-sas-subctrl
+-              - hisilicon,peri-subctrl
+-              - hpe,gxp-sysreg
+-              - loongson,ls1b-syscon
+-              - loongson,ls1c-syscon
+-              - lsi,axxia-syscon
+-              - marvell,armada-3700-cpu-misc
+-              - marvell,armada-3700-nb-pm
+-              - marvell,armada-3700-avs
+-              - marvell,armada-3700-usb2-host-misc
+-              - marvell,dove-global-config
+-              - mediatek,mt2701-pctl-a-syscfg
+-              - mediatek,mt2712-pctl-a-syscfg
+-              - mediatek,mt6397-pctl-pmic-syscfg
+-              - mediatek,mt8135-pctl-a-syscfg
+-              - mediatek,mt8135-pctl-b-syscfg
+-              - mediatek,mt8173-pctl-a-syscfg
+-              - mediatek,mt8365-syscfg
+-              - microchip,lan966x-cpu-syscon
+-              - microchip,sam9x60-sfr
+-              - microchip,sama7g5-ddr3phy
+-              - mscc,ocelot-cpu-syscon
+-              - mstar,msc313-pmsleep
+-              - nuvoton,ma35d1-sys
+-              - nuvoton,wpcm450-shm
+-              - rockchip,px30-qos
+-              - rockchip,rk3036-qos
+-              - rockchip,rk3066-qos
+-              - rockchip,rk3128-qos
+-              - rockchip,rk3228-qos
+-              - rockchip,rk3288-qos
+-              - rockchip,rk3368-qos
+-              - rockchip,rk3399-qos
+-              - rockchip,rk3568-qos
+-              - rockchip,rk3588-qos
+-              - rockchip,rv1126-qos
+-              - st,spear1340-misc
+-              - stericsson,nomadik-pmu
+-              - starfive,jh7100-sysmain
+-              - ti,am62-usb-phy-ctrl
+-              - ti,am62p-cpsw-mac-efuse
+-              - ti,am654-dss-oldi-io-ctrl
+-              - ti,j784s4-pcie-ctrl
+-              - ti,keystone-pllctrl
+-
+-          - const: syscon
+-
+-      - contains:
+-          const: syscon
+-        minItems: 2
+-        maxItems: 5  # Should be enough
++    items:
++      - enum:
++          - al,alpine-sysfabric-service
++          - allwinner,sun8i-a83t-system-controller
++          - allwinner,sun8i-h3-system-controller
++          - allwinner,sun8i-v3s-system-controller
++          - allwinner,sun50i-a64-system-controller
++          - altr,l3regs
++          - altr,sdr-ctl
++          - amd,pensando-elba-syscon
++          - amlogic,meson-mx-assist
++          - amlogic,meson-mx-bootrom
++          - amlogic,meson8-analog-top
++          - amlogic,meson8b-analog-top
++          - amlogic,meson8-pmu
++          - amlogic,meson8b-pmu
++          - apm,xgene-csw
++          - apm,xgene-efuse
++          - apm,xgene-mcb
++          - apm,xgene-rb
++          - apm,xgene-scu
++          - atmel,sama5d2-sfrbu
++          - atmel,sama5d3-nfc-io
++          - atmel,sama5d3-sfrbu
++          - atmel,sama5d4-sfrbu
++          - axis,artpec6-syscon
++          - brcm,cru-clkset
++          - brcm,sr-cdru
++          - brcm,sr-mhb
++          - cirrus,ep7209-syscon1
++          - cirrus,ep7209-syscon2
++          - cirrus,ep7209-syscon3
++          - cnxt,cx92755-uc
++          - freecom,fsg-cs2-system-controller
++          - fsl,imx93-aonmix-ns-syscfg
++          - fsl,imx93-wakeupmix-syscfg
++          - fsl,ls1088a-reset
++          - fsl,vf610-anatop
++          - fsl,vf610-mscm-cpucfg
++          - hisilicon,dsa-subctrl
++          - hisilicon,hi6220-sramctrl
++          - hisilicon,hip04-ppe
++          - hisilicon,pcie-sas-subctrl
++          - hisilicon,peri-subctrl
++          - hpe,gxp-sysreg
++          - loongson,ls1b-syscon
++          - loongson,ls1c-syscon
++          - lsi,axxia-syscon
++          - marvell,armada-3700-cpu-misc
++          - marvell,armada-3700-nb-pm
++          - marvell,armada-3700-avs
++          - marvell,armada-3700-usb2-host-misc
++          - marvell,dove-global-config
++          - mediatek,mt2701-pctl-a-syscfg
++          - mediatek,mt2712-pctl-a-syscfg
++          - mediatek,mt6397-pctl-pmic-syscfg
++          - mediatek,mt8135-pctl-a-syscfg
++          - mediatek,mt8135-pctl-b-syscfg
++          - mediatek,mt8173-pctl-a-syscfg
++          - mediatek,mt8365-syscfg
++          - microchip,lan966x-cpu-syscon
++          - microchip,sam9x60-sfr
++          - microchip,sama7g5-ddr3phy
++          - mscc,ocelot-cpu-syscon
++          - mstar,msc313-pmsleep
++          - nuvoton,ma35d1-sys
++          - nuvoton,wpcm450-shm
++          - rockchip,px30-qos
++          - rockchip,rk3036-qos
++          - rockchip,rk3066-qos
++          - rockchip,rk3128-qos
++          - rockchip,rk3228-qos
++          - rockchip,rk3288-qos
++          - rockchip,rk3368-qos
++          - rockchip,rk3399-qos
++          - rockchip,rk3568-qos
++          - rockchip,rk3588-qos
++          - rockchip,rv1126-qos
++          - st,spear1340-misc
++          - stericsson,nomadik-pmu
++          - starfive,jh7100-sysmain
++          - ti,am62-usb-phy-ctrl
++          - ti,am62p-cpsw-mac-efuse
++          - ti,am654-dss-oldi-io-ctrl
++          - ti,j784s4-pcie-ctrl
++          - ti,keystone-pllctrl
++      - const: syscon
+ 
+   reg:
+     maxItems: 1
+ 
+-  reg-io-width:
+-    description: |
+-      The size (in bytes) of the IO accesses that should be performed
+-      on the device.
+-    enum: [1, 2, 4, 8]
+-
+   resets:
+     maxItems: 1
+ 
+@@ -143,18 +120,9 @@ required:
+   - reg
+ 
+ allOf:
+-  - if:
+-      properties:
+-        compatible:
+-          contains:
+-            const: simple-mfd
+-    then:
+-      properties:
+-        compatible:
+-          minItems: 3
+-          maxItems: 5
++  - $ref: syscon-common.yaml#
+ 
+-additionalProperties: true
++unevaluatedProperties: false
+ 
+ examples:
+   - |
 
 -- 
 2.43.0
