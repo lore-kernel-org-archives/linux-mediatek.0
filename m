@@ -4,91 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 145EBC25B75
-	for <linux-mediatek@archiver.kernel.org>; Sun, 19 May 2024 17:18:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E16AC25B79
+	for <linux-mediatek@archiver.kernel.org>; Sun, 19 May 2024 18:42:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZFfFHRscCa8sWyp/mI5Ke4tlOhkyrUjzyPT9JQYiZXs=; b=D6dOdhljSF3KCC/6LaETxRM+pA
-	ZgfecOkAiNAOlyg6AawhlPrr1GSrYD79cVJngK5a8QCzQx1sY1whVTMCFDbJTyj2hWodY28K5oJde
-	OYkWu2FCuTp6sG5FEuDY8TsXmlI2lQu32Gj81kIdwptKg4wTX+kKUVFhI7gryOCJIrYLIw6rYslUZ
-	HhAtcbdLqBSvHHYelHMIB1UlUQJq8NibdRZ5WsR50eMWcsR03pJ88iTQqKl7UHkH8K3tgsXWcEK8Q
-	ORFPr7wSAKaHSW1rs9OatNOIhIS7I82CW6s77/iVONcIRq/Kjqtck+sthnXJ2il0YXKmTW3uZlLk2
-	yBtopz3Q==;
+	bh=dpZwSG8AUDPUPcQ/cg7yOTW8I5h5fbBcK+XT13gbyOc=; b=K+akZxdVbvkIxaLAJ9+0LI0n1y
+	AD+fENhmu7X0UbCC0saWQ1xiyoDCcv1kxofRkRY8rRntbDZMRo4/OEuCeMNLBYR1Xjva2CYqw4aZS
+	odTteUXPOW2ecqvc5VefQz5aoIrQN0Jikx5lnrrRvw2EO7/3UYMs7FNjlj4fOvJIPaxYWIG35+m5B
+	lxn/vswHyLOUEJT/Wt3ggGC4TtqRkAYHCVpqLGJVM7mXrDxIti8QdkNtM/5YkA7KP2E22z4XDM7c0
+	EL4Jll7whj7u1cc2ebqan3iU/nUNs2y81hVOfmKNVKPb9+0A56RwWU/UPlp6/Ibs00gpnSz1RHXK4
+	ygRYIIHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s8kAm-0000000COAG-3jnm;
-	Sun, 19 May 2024 17:18:12 +0000
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+	id 1s8lUZ-0000000CWK0-1VwB;
+	Sun, 19 May 2024 18:42:43 +0000
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s8kAi-0000000CO99-1uWE
+	id 1s8lUU-0000000CWGY-4AmP
 	for linux-mediatek@lists.infradead.org;
-	Sun, 19 May 2024 17:18:11 +0000
-Received: by mail-wr1-x434.google.com with SMTP id ffacd0b85a97d-351cda41b53so1398858f8f.2
-        for <linux-mediatek@lists.infradead.org>; Sun, 19 May 2024 10:18:06 -0700 (PDT)
+	Sun, 19 May 2024 18:42:41 +0000
+Received: by mail-ed1-x529.google.com with SMTP id 4fb4d7f45d1cf-571ba432477so7331965a12.1
+        for <linux-mediatek@lists.infradead.org>; Sun, 19 May 2024 11:42:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1716139085; x=1716743885; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=ZFfFHRscCa8sWyp/mI5Ke4tlOhkyrUjzyPT9JQYiZXs=;
-        b=WCtXXf968oWJgSjAHQgaQz8nkmgqw1Lc8wcbPkcoHoofsBpqtRuI4hv/SkR7KnVMNA
-         RnZqcgbFSmujJioVerd1a5mwvdmV44Iw7L+oqlHaajcuQHXO9Kqa0zU3oGBMlS/n2DtK
-         VXq3YeQvEQjFGi388n6U+aImZ1Ekk5+s/qHdlYnrY3024DROr2ARQgzGVc7HHg+aAO91
-         0zGbLKjFQJIXfFCR5R6t6mHOGSM+A1ddKAg7EwUldaAE2n7GOQXXLWowAOFCEbmjAbxw
-         exR1wzje5kx6Bh2WOGC+SLFeC9tAA0giOnP09CudwENnSO9RFhXrAOfCvJkqBXlChix8
-         N+8w==
+        d=linaro.org; s=google; t=1716144157; x=1716748957; darn=lists.infradead.org;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=dpZwSG8AUDPUPcQ/cg7yOTW8I5h5fbBcK+XT13gbyOc=;
+        b=YWwaGgE5ka6mUkZM+JpNgr67twPXCxqo00Xg52+goRUcCp4DQphLvAy+hW0KwfWl+d
+         1l2qyVvUTxlUk+xFkCXdApVDmyGSp/ESFyT28SWjGxKNb1twOFORuksV0tu9G1kCbkyR
+         YR/eNh3UgYvELKe6XrBUKC1TiLVKPACjRPi6HkkUaRBOr8aTmoFa7hfzZJ/JjWafIMRk
+         tAVw6YIrllkLjbT08v9MwWw60stSMudeqZEvsETrtaLr1rrLh7iaXapAnUoS+C9zTAMH
+         wTDdcCr4hwBmqhxDyad05TJ3ykNgTlOPw5mPWsMCmrwKILZ1uZ/aSoHD2g//2xqJMex2
+         wBxQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1716139085; x=1716743885;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=ZFfFHRscCa8sWyp/mI5Ke4tlOhkyrUjzyPT9JQYiZXs=;
-        b=eE6x/3Zc2fk6of11iHlMd/MoMf3YiwFo6xTWR2ec0d4mQlppC5MkrtkQ5Dh+m47JH2
-         evOTWsVNYEHSE3T07XcRzzGGNAwWCDCvN5338TT2Zp9G6yFii5Z9Cs0rYOh/FbESu+lV
-         G+BjU4VLlIVtm1Dzt1OX6B3ESpepnJJV6UIr0xMmS0c298D3165JHw31s5FLliTzbKEf
-         XbQDc2P7Y1glRRGrS4HUXzpQO/fWRqWPXU8NYyqOABV0ScbqVYf4TToI75p6AAVUkkdv
-         mHG4BneGjprKYdUKRkTFIRw6LamTBXrcQ9TKW+3Fg4epmW+1D/n1l4lhWLdcMcsqS5Sv
-         Holw==
-X-Forwarded-Encrypted: i=1; AJvYcCUjtMoA+0i5G3Gk6kiJE3YpxzZQEtqCiw1XlTNK8SuJqov2aI4FB9EsTsqZyGsarrlGyccVFaeP1x12/XbOSUQro6eYgQpU/SZjWYm5gWdzRFkY
-X-Gm-Message-State: AOJu0Ywu4MeEAyOwric0eynXleVTcfFRQtGtSsNLLpajJrG4pzNKRIhx
-	R9fRwBzsQvBOkUekgSHp+oG7KFGC37e0Tgpv9+RPJDN0jzJFfzaMsnaxjEksSgw=
-X-Google-Smtp-Source: AGHT+IEVe3OJrvn9s1tUxcavG0nrrG8NUEl7NTZuN0MfcIVSegrUuefd4sCREc8FAj/4MId4r0LPwQ==
-X-Received: by 2002:a5d:6350:0:b0:351:dea5:f808 with SMTP id ffacd0b85a97d-351dea6093bmr7250421f8f.26.1716139085076;
-        Sun, 19 May 2024 10:18:05 -0700 (PDT)
-Received: from [192.168.1.172] ([93.5.22.158])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3502b896a89sm26871478f8f.31.2024.05.19.10.18.03
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 19 May 2024 10:18:04 -0700 (PDT)
-Message-ID: <ce1de395-3f60-4f7f-9424-bf036134de94@baylibre.com>
-Date: Sun, 19 May 2024 19:18:03 +0200
+        d=1e100.net; s=20230601; t=1716144157; x=1716748957;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=dpZwSG8AUDPUPcQ/cg7yOTW8I5h5fbBcK+XT13gbyOc=;
+        b=abY2gB+CtDiAbV69Xks7lfOjlzAomnjBOV1PRX91lu8+kirSpXZfr2z5Fro3QPtDtp
+         8QBXhTjEiBIEV1I0YfsKz1Vu1p1Irj7uROXdZLOWMypKPmXhYHN/THn8LWrMTT+JV/fN
+         nIfdGpHdxNCmNzV6y43QntZauj78DNb4ByPz7nUgOZkHv0reDAzb6RG/hHjxTDTwCWlK
+         lSyqGoVC49XTAmU6Wqk3RSz5kamkfk8cklF6tC0Dp12J4QEREA5YPjP+Tw0z3bS6mmYe
+         FOxBPZJp4+dtiu7g9fpv5mvqhTmlRPthDXQCJGpa3fiAW6eVSZhTNlv7qKJLNO67RBch
+         67fQ==
+X-Forwarded-Encrypted: i=1; AJvYcCU2igPBWj3YJa8yT8osPmrpJwH1Cjs4vzdQ6kbYgyHdGJUCNNfhIJpL31Ajbinozh4DvC8GO2gBtCXjplPdw2e1p95p42YuXGEQiuiqZ0LXikXa
+X-Gm-Message-State: AOJu0YyNyWJAelpxL0rqZ7XrZ4k44sYzlU86HPT8ZxV/yodQ8Fojw5b4
+	sUYhAQM4G+FWpT/yQo/pRwiX7wzH5GGQGBq0IipwMbcp8qMawooqHez2vAbPT3w=
+X-Google-Smtp-Source: AGHT+IGq5QA1nd3Au7MNo1HsMLjHK/fKiObB5dGcnX8+/eslrDY+fDV6uC0IXG4Am+hQUeL97oiW3A==
+X-Received: by 2002:a50:ab47:0:b0:572:9984:1921 with SMTP id 4fb4d7f45d1cf-5734d5bec35mr18573696a12.17.1716144156802;
+        Sun, 19 May 2024 11:42:36 -0700 (PDT)
+Received: from [127.0.1.1] ([178.197.206.169])
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-575313d97desm1789397a12.41.2024.05.19.11.42.35
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 19 May 2024 11:42:36 -0700 (PDT)
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Date: Sun, 19 May 2024 20:42:16 +0200
+Subject: [PATCH 1/8] dt-bindings: mfd: syscon: Drop hwlocks
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 2/3] dt-bindings: arm: mediatek: mmsys: Add OF graph
- support for board path
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- chunkuang.hu@kernel.org
-Cc: robh@kernel.org, krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
- p.zabel@pengutronix.de, airlied@gmail.com, daniel@ffwll.ch,
- maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de,
- matthias.bgg@gmail.com, shawn.sung@mediatek.com, yu-chang.lee@mediatek.com,
- ck.hu@mediatek.com, jitao.shi@mediatek.com, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- wenst@chromium.org, kernel@collabora.com
-References: <20240516081104.83458-1-angelogioacchino.delregno@collabora.com>
- <20240516081104.83458-3-angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <20240516081104.83458-3-angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+Message-Id: <20240519-dt-bindings-mfd-syscon-split-v1-1-aaf996e2313a@linaro.org>
+References: <20240519-dt-bindings-mfd-syscon-split-v1-0-aaf996e2313a@linaro.org>
+In-Reply-To: <20240519-dt-bindings-mfd-syscon-split-v1-0-aaf996e2313a@linaro.org>
+To: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Lars Povlsen <lars.povlsen@microchip.com>, 
+ Steen Hegelund <Steen.Hegelund@microchip.com>, 
+ Daniel Machon <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com, 
+ Nishanth Menon <nm@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Jiaxun Yang <jiaxun.yang@flygoat.com>, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+X-Mailer: b4 0.13.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=798;
+ i=krzysztof.kozlowski@linaro.org; h=from:subject:message-id;
+ bh=EqrHKI7VqbulYVlL7ynNasI0rcDDscSlOl3m111YLJk=;
+ b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBmSkgQzbjNRKze4/tMYsq0YCrgQq1HylGQx0Qnm
+ fqs4ZngdWKJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZkpIEAAKCRDBN2bmhouD
+ 17QrD/4qpVSOIgs2t0h8pAjNveQargz+qOiw594JnIjDv6W9T5TOx98Bo6TUfs4/dOlgAY5xYli
+ 0FjQ6Ci8fX580v6LBDTyMzc+nVynHVOmYzmYpvbh4QxfD+Qxra17DEBwcB7F5fg52ZtQGz7lyvh
+ rT3LhCwP0H/dp6BAqZRx5X8KCMt2Z7S2w+hbeEMJg6SLOQlIVrS9Uz1kOVGh4hie4ul1I8AXgEr
+ PU2JfdPUgI2cRzZyU24CdOD8r3OVy+G+tPKAdU7xcOX+s7C7DpzIt8j1eh9f9wqABaSbUr49cLy
+ /MUV00fMYeJD6YUqdtDYuRQdHv5fCRsrb5aqn90Dr85Q10QVChqIHOK5twXFpbodDbxUC2Jm/BQ
+ lOfthfNcBxd2CO8POoeiZz1ngZ6ImW5XBCuird02ojDd8Zr8ZQ3KCCnR3AHoIdNCSEpNScROLJY
+ SlLcUXAZMj2tCj0/T+cezMOpEsEsUm09HCPuHF1JOOxwth+Ie1zhC8zyxCkEx6Hju1fsNF29jE9
+ JK2y1Q5XbOIPL+yOy53hO1EyI9MudcamsNusJ69cRtxodgzP3wJ/IKIyWRmUyc/p+OToz6hDAt4
+ SDCiB7zwL1QcJ/K4g2cOnE2bxDuzmviGpLpyoi5X4/+57XZWhBwMDmjr9JyLNoQXLcXABaNQ7U/
+ y86LmG1E/OCfb4Q==
+X-Developer-Key: i=krzysztof.kozlowski@linaro.org; a=openpgp;
+ fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240519_101808_624477_2C94DACF 
-X-CRM114-Status: GOOD (  10.10  )
+X-CRM114-CacheID: sfid-20240519_114239_091982_64A3ADA5 
+X-CRM114-Status: UNSURE (   8.25  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,110 +120,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Angelo,
+Apparently there is no in-tree DTS syscon node having hwlocks, so drop
+the property to simplify the binding.
 
-On 16/05/2024 10:11, AngeloGioacchino Del Regno wrote:
-> +    oneOf:
-> +      - required:
-> +          - endpoint@0
-> +      - required:
-> +          - endpoint@1
-> +      - required:
-> +          - endpoint@2
+Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+---
+ Documentation/devicetree/bindings/mfd/syscon.yaml | 5 -----
+ 1 file changed, 5 deletions(-)
 
-I'm not sure this is what you expect because I must remove this part to pass the dt-validate.
-
-I have 2 possible display at the same time (DSI and DPI), then I add this in my DTSI:
-
-		mmsys: syscon@14000000 {
-			compatible = "mediatek,mt8365-mmsys", "syscon";
-			reg = <0 0x14000000 0 0x1000>;
-			#clock-cells = <1>;
-			port {
-				#address-cells = <1>;
-				#size-cells = <0>;
-
-				mmsys_main: endpoint@0 {
-					reg = <0>;
-					remote-endpoint = <&ovl0_in>;
-				};
-				mmsys_ext: endpoint@1 {
-					reg = <1>;
-					remote-endpoint = <&rdma1_in>;
-				};
-			};
-		};
-
-But the DTS check returns me an error:
-
-dt-validate -s Documentation/devicetree/bindings arch/arm64/boot/dts/mediatek/mt8365-evk.dtb
-/home/*******/linux-upstream/arch/arm64/boot/dts/mediatek/mt8365-evk.dtb: syscon@14000000: port: 
-More than one condition true in oneOf schema:
-         {'$ref': '/schemas/graph.yaml#/properties/port', 
-
-          'oneOf': [{'required': ['endpoint@0']}, 
-
-                    {'required': ['endpoint@1']}, 
-
-                    {'required': ['endpoint@2']}], 
-
-          'properties': {'endpoint@0': {'$ref': '/schemas/graph.yaml#/properties/endpoint'}, 
-
-                         'endpoint@1': {'$ref': '/schemas/graph.yaml#/properties/endpoint'},
-                         'endpoint@2': {'$ref': '/schemas/graph.yaml#/properties/endpoint'}}} 
-
-         from schema $id: http://devicetree.org/schemas/arm/mediatek/mediatek,mmsys.yaml#
-
-
-In other hand, if I use "ports" to keep only one endpoint for each port:
-
-		mmsys: syscon@14000000 {
-			compatible = "mediatek,mt8365-mmsys", "syscon";
-			reg = <0 0x14000000 0 0x1000>;
-			#clock-cells = <1>;
-			ports {
-				#address-cells = <1>;
-				#size-cells = <0>;
-
-				port@0 {
-					#address-cells = <1>;
-					#size-cells = <0>;
-					reg = <0>;
-					mmsys_main: endpoint@0 {
-						reg = <0>;
-						remote-endpoint = <&ovl0_in>;
-					};
-				};
-
-				port@1 {
-					#address-cells = <1>;
-					#size-cells = <0>;
-					reg = <1>;
-					mmsys_ext: endpoint@1 {
-						reg = <1>;
-						remote-endpoint = <&rdma1_in>;
-					};
-				};
-			};
-		};
-
-The DTS check returns another error:
-
-dt-validate -s Documentation/devicetree/bindings arch/arm64/boot/dts/mediatek/mt8365-evk.dtb
-/home/*******/linux-upstream/arch/arm64/boot/dts/mediatek/mt8365-evk.dtb: syscon@14000000: 'ports' 
-does not match any of the regexes: 'pinctrl-[0-9]+'
-         from schema $id: http://devicetree.org/schemas/arm/mediatek/mediatek,mmsys.yaml#
-
-Additionally, with the last DTS example, displays aren't working, probably because "ports" isn't 
-well parsed.
-
-So, I don't know how you want to manage multiple display, but IMHO there are 2 ways:
-- removing the current "oneOf".
-- adding the "ports" support in the documentation and driver (to be parsed).
-
-Still possible I missed something and I doing shit :)
+diff --git a/Documentation/devicetree/bindings/mfd/syscon.yaml b/Documentation/devicetree/bindings/mfd/syscon.yaml
+index 4d289935c08f..622ea0f1b08e 100644
+--- a/Documentation/devicetree/bindings/mfd/syscon.yaml
++++ b/Documentation/devicetree/bindings/mfd/syscon.yaml
+@@ -141,11 +141,6 @@ properties:
+   resets:
+     maxItems: 1
+ 
+-  hwlocks:
+-    maxItems: 1
+-    description:
+-      Reference to a phandle of a hardware spinlock provider node.
+-
+ required:
+   - compatible
+   - reg
 
 -- 
-Regards,
-Alexandre
+2.43.0
+
 
