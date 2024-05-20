@@ -4,90 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68EBCC25B79
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 May 2024 15:01:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 591A5C04FFE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 May 2024 15:16:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ViWFnlRfa6HfsCpt9sNPud6U2bBS5mkJbqnxes4Nv44=; b=MnToU1QC9iTmtvcBJmRgH4Rfmu
-	tLuScVY4R8kzdKnNAeO6PoKMyNKWkMeL/Xb/+YhGNXbpyXY+MwguzzLuo4oyiWrEbuGb2c3uy6tnf
-	iQKSIQhoH7JC0Uo/BQ0lIjLzC4M3VFdFynX33ZvXzHlf1EnN5Q61MguJyT/AwlMWIAbyrKsd9WZAN
-	fJ7RrJpg+TMqxsm29K1yxtbCbXQICZ2w1aUnSynmvGaoFKtOU0H/v70NdTQXICW12Mj/aEvwbzrLr
-	iBvdYngTjt6i3qASG8oIjguneXKmjYuEO9FYPjNYmO42yEYn0nr/2BuOsWHk8ifdFWUNarNifC6xl
-	wEqgdPPg==;
+	bh=ryV0aYFzIMJdCddjHyuQKhuy2KCXWenwWutqfpLTYmI=; b=pM3270PmiSBQW1xAybQlA/xhUN
+	0pZLSMTU7VRzk7YU3yLQ7C8NEz/if9c4zgi02JJfKRrmSigIenOr7Kq4EuWYhEPhSf92oRJzkdh/j
+	+H4ntN4TTriNi9Lau4dpCukvbxrl700ClT/Uq+RVhMLA/fYNhG48h9J8JV17JvClhYgJTIpN5p/ct
+	xp4xReZvad8qb8qOwcWz+3TIdTuLtFtj2+aoFmlyULYyMUD8J5G9/QLmnA6cR5SVnCEf6ldrvbQCY
+	PG1NdvxJQe8rdGYQZN+42fN9utuYjEhbDwlPbU1lvlgg/isLxuySB5gF1Hya0zuh5INUE+sP67v7G
+	5aWKTVvw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s94WT-0000000EmRS-1hd2;
-	Mon, 20 May 2024 15:01:57 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1s94kr-0000000Eohq-2SCs;
+	Mon, 20 May 2024 15:16:49 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s94WO-0000000EmQ8-3SMM;
-	Mon, 20 May 2024 15:01:54 +0000
-Received: from pps.filterd (m0279871.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 44KCAjP9029799;
-	Mon, 20 May 2024 15:01:44 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
-	message-id:date:mime-version:subject:to:cc:references:from
-	:in-reply-to:content-type:content-transfer-encoding; s=
-	qcppdkim1; bh=ViWFnlRfa6HfsCpt9sNPud6U2bBS5mkJbqnxes4Nv44=; b=KH
-	zDrnPS1fdfel7KxCI9YWLJcFc0omE4hPzN51YzAyvtF8H5eJjOOx5MAZiWV3kDR6
-	nHGCtoJ4w5zdWfkijZpbcYZr/YeHui7gsMfIHDRMEZ6O366kEhiLoTNKLvkLvfC1
-	w5pEo/5Bz3A16Df819O08VcmWtQMpFSwy2S//XpEsNJAOVjB9snSFAjsVdA13wTs
-	WVUEpNn0F8FDv0nvRWsBQdWEncLfX8BK2FtYGiKKxpkZDx6O/7sDpUXNiJJn+950
-	qshmrVa7sRv1cTq8eU4tFzdA2ee9xfy93ozB8Gg06WZ1wMRe9faa3BxnZ4HuNvVz
-	/+/KURVGk03kcLvRRpsQ==
-Received: from nasanppmta01.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3y6psauk5q-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 20 May 2024 15:01:44 +0000 (GMT)
-Received: from nasanex01c.na.qualcomm.com (nasanex01c.na.qualcomm.com [10.45.79.139])
-	by NASANPPMTA01.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 44KF1hue032086
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 20 May 2024 15:01:43 GMT
-Received: from [10.216.60.210] (10.80.80.8) by nasanex01c.na.qualcomm.com
- (10.45.79.139) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.9; Mon, 20 May
- 2024 08:01:39 -0700
-Message-ID: <7ab7636c-9da0-8053-a264-6031c416ab6b@quicinc.com>
-Date: Mon, 20 May 2024 20:31:35 +0530
+	id 1s94ko-0000000EohG-0SbW
+	for linux-mediatek@lists.infradead.org;
+	Mon, 20 May 2024 15:16:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1716218203;
+	bh=iT54/HpDZG8UdWdWEo4UM/5Vmmtz6kPS3fZOIckwce0=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=PEM5ajG07x1wmKTgoTEoazS/bTJarTiT+sxB/IglZCSJOMS1Y+itH3w3KGVoenTrF
+	 /bmBaeMBVyFHFkHWnGKJ4O81QJ3IY+QFcxKCuB7EnzXY7Xl7c5DkO+E6BxEMNbFlle
+	 wskUYdjGCsSjekpTct7zzgAq7M30OxnzHZODxegIu/e1BNect8Rl8x/RnAHXEbaSaC
+	 PxqKtOqf0jOYnK89+356X5iClHu4Xx4Ey0zWk7QqTN3GYPia0zXRlGkc+J82DldF1n
+	 rnIaH7lRpT2HPR3zLfkmQMJibPtKKqxh9ppmk3c+1Q79F9i82UWrNvU6/0Jl7NpNMH
+	 GScbg2diT5X2g==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 9C549378000A;
+	Mon, 20 May 2024 15:16:42 +0000 (UTC)
+Message-ID: <db915f6f-fa78-4747-9b1f-b36851d657f6@collabora.com>
+Date: Mon, 20 May 2024 17:16:42 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH] remoteproc: mediatek: Zero out only remaining bytes of
- IPI buffer
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 00/15] Mediatek thermal sensor driver support for
+ MT8186 and MT8188
+To: Julien Panis <jpanis@baylibre.com>, Nicolas Pitre <nico@fluxnic.net>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>, linux-pm@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
+Cc: Nicolas Pitre <npitre@baylibre.com>
+References: <20240402032729.2736685-1-nico@fluxnic.net>
+ <981a8748-16d0-4744-b097-aa9dd14c63a8@collabora.com>
+ <eae892e8-f888-4d15-85a5-c89b6b6825f7@baylibre.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        <mathieu.poirier@linaro.org>
-CC: <andersson@kernel.org>, <matthias.bgg@gmail.com>,
-        <linux-remoteproc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-        <linux-arm-kernel@lists.infradead.org>,
-        <linux-mediatek@lists.infradead.org>, <kernel@collabora.com>
-References: <20240520112724.139945-1-angelogioacchino.delregno@collabora.com>
-From: Mukesh Ojha <quic_mojha@quicinc.com>
-In-Reply-To: <20240520112724.139945-1-angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
- nasanex01c.na.qualcomm.com (10.45.79.139)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-GUID: Bd0pJb3d-7DgY5dqmoJk8-rBGLOCNNDJ
-X-Proofpoint-ORIG-GUID: Bd0pJb3d-7DgY5dqmoJk8-rBGLOCNNDJ
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.650,FMLib:17.12.28.16
- definitions=2024-05-20_05,2024-05-17_03,2024-05-17_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 bulkscore=0 mlxscore=0
- adultscore=0 lowpriorityscore=0 malwarescore=0 mlxlogscore=999
- priorityscore=1501 phishscore=0 impostorscore=0 spamscore=0 clxscore=1011
- suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.19.0-2405010000 definitions=main-2405200120
+In-Reply-To: <eae892e8-f888-4d15-85a5-c89b6b6825f7@baylibre.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240520_080153_035019_38E9D360 
-X-CRM114-Status: GOOD (  13.25  )
+X-CRM114-CacheID: sfid-20240520_081646_561208_5817E4CE 
+X-CRM114-Status: GOOD (  16.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,38 +79,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 5/20/2024 4:57 PM, AngeloGioacchino Del Regno wrote:
-> In scp_ipi_handler(), instead of zeroing out the entire shared
-> buffer, which may be as large as 600 bytes, overwrite it with the
-> received data, then zero out only the remaining bytes.
+Il 20/05/24 14:53, Julien Panis ha scritto:
+> On 4/23/24 11:22, AngeloGioacchino Del Regno wrote:
+>> Il 02/04/24 05:25, Nicolas Pitre ha scritto:
+>>> This is a bunch of patches to support the MT8186 and MT8188 thermal
+>>> sensor configurations. Several changes are needed to cope with oddities
+>>> these SOCs implement.
+>>>
+>>> All values (calibration data offsets, etc.) were lifted and adapted from
+>>> the vendor driver source code.
+>>>
+>>
+>> I picked patches 7 and 12 (and also fixed them) introducing the nodes for the
+>> LVTS controllers, but will not pick 9 and 15, as they're either missing thermal
+>> zones and/or using the wrong names; let's wait for the next cycle for those, as
+>> I will also be able to add the SVS on top (needs a bit of time for testing),
+>> getting both SoCs complete on the LVTS side, without rushing.
+>>
+>> Cheers,
+>> Angelo
+>>
 > 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->   drivers/remoteproc/mtk_scp.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+> Hello Angelo.
 > 
-> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-> index e5214d43181e..dc70cf7db44d 100644
-> --- a/drivers/remoteproc/mtk_scp.c
-> +++ b/drivers/remoteproc/mtk_scp.c
-> @@ -117,8 +117,8 @@ static void scp_ipi_handler(struct mtk_scp *scp)
->   		return;
->   	}
->   
-> -	memset(scp->share_buf, 0, scp_sizes->ipi_share_buffer_size);
->   	memcpy_fromio(scp->share_buf, &rcv_obj->share_buf, len);
-> +	memset(&scp->share_buf[len], 0, scp_sizes->ipi_share_buffer_size - len);
+> I took over Nico's work, so I might have missed a few things, but I'm
+> a little bit confused with patches 7 and 13 (you wrote '12' but meant
+> '13' I guess, didn't you ?).
+> 
+> It seems to me that patches 7 and 13 were applied in next-20240503
+> (f5bcf8ab0950 and d3dbc472ac66). But I don't find them any more in
+> next-20240520. It's likely that I don't understand well the process, but
+> I prefer being sure...Should I resend them in next series ?
 
-Although, it does not make any difference apart from a write of len 
-bytes, still a good improvement to do ..
+Yes, please.
 
-Acked-by: Mukesh Ojha <quic_mojha@quicinc.com>
+> 
+> Just a comment about d3dbc472ac66. There's a typo error, I think:
+> nvmem-cell-names = "lvts-calib-data1";
+> ...should be replaced with
+> nvmem-cell-names = "lvts-calib-data-1";
+> ...according to the related yaml.
 
--Mukesh
+Yes, that was a typo :-)
 
->   	handler(scp->share_buf, len, ipi_desc[id].priv);
->   	scp_ipi_unlock(scp, id);
->   
+Cheers,
+Angelo
+
+
 
