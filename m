@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 104CAC04FFE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 May 2024 15:34:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04A0FC04FFE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 May 2024 15:35:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Q2d46BIzaS71fynIkzwWpbI/UQLh+9rw0YHOl7HkTKw=; b=ZIXg+EBV0nLAef/WX/dtaD/UJ6
-	IqELnKtTLX8YA0pxNDLRnfiEmDSTdcbyRXd3/HQ/kLitWKPqH1m9y5bk4LkwQ8EizwktucpNRQyn+
-	D2KF+pqwYo9Do0emmPh6fib8i66/pz/KSHId7mhECS7Yts8mc69a4/fbwB/2EePo7qns2NyHIlYc/
-	xfmZvxZXUo0n0ulL5BPfSYWIBEhCMby+HvJIQUIgxb9WV9cB0LB9fOLezhzw3o6vyHpjlWxIKiooj
-	A49zkrt/WZm1MNqtw72HEjF+Nub5XAxXRA9Iyi7o/fX6CWEF47JVEGDT2oEYPELlK+PU67a1U6KbY
-	zwkZS8hw==;
+	bh=sAGBZ1PEBcf/fJDsVPro0tPE1WsZuaRgTUZ3iHIhxSQ=; b=kEFIklLYxbplINu+EC8DUMItJt
+	6Bvh1rUhGfqQ9uzLkfYU0TdZ5kaTDPcn5rYHmzeaDGAYb1AB+1OCPY0iuF8J8Mx+I8PqGSL5n36+O
+	1E96ePVhc9JxazJlzbEajnTyySCuzMZz9/CdSJXOlryApQxeuVCnaHzGUdiGn8id4Luvipt0N9JV9
+	XVCO80LLubkqVqTJDDkl+OrcsH4Eov2sdJhdEq92xtpQq4mT6Vsw08ZMs91ubPqoxawLKLPIwe/tm
+	hwRbwo930Ys/8gXTYZLfEhxqdML2pzOqh4CEYC4ih19R8YErBkyws0gq/zywD7EeoWImpevJogdIT
+	Bw3feU9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s9520-0000000ErEf-1vk0;
-	Mon, 20 May 2024 15:34:32 +0000
-Received: from mail-lj1-x234.google.com ([2a00:1450:4864:20::234])
+	id 1s952Y-0000000ErSP-2TBN;
+	Mon, 20 May 2024 15:35:06 +0000
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s951v-0000000ErAw-1Mdp
+	id 1s952U-0000000ErPl-1LOj
 	for linux-mediatek@lists.infradead.org;
-	Mon, 20 May 2024 15:34:30 +0000
-Received: by mail-lj1-x234.google.com with SMTP id 38308e7fff4ca-2e576057c06so34820801fa.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 20 May 2024 08:34:25 -0700 (PDT)
+	Mon, 20 May 2024 15:35:04 +0000
+Received: by mail-wr1-x430.google.com with SMTP id ffacd0b85a97d-351da5838fcso2543384f8f.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 20 May 2024 08:35:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1716219264; x=1716824064; darn=lists.infradead.org;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1716219301; x=1716824101; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=Q2d46BIzaS71fynIkzwWpbI/UQLh+9rw0YHOl7HkTKw=;
-        b=GWfu3J4dzkMFa7V7oIMAYyOJ622siqfVXsYKamdJd+RllnkEakwLSyUqAhe169+X8+
-         69KjTNTxjTyxPh/z+IKLds9KVZ6GIa1+ZkTnugaUcOabSZtqD8rqjIi/0b7aQVww0E8j
-         9YBOrGW2TeXVpZg1QC9DYhqIsCirdm2AQ/h4aUzwRb6/iILynm2wy52Mip/HlrrImmAD
-         KMQ/BebFPbXGVgBMeaF7ybCoYcWJBujUaHnXIwDoccC4JsAvm7XYkMzCxUa+SeoaXEaa
-         1KTmyLSNKIFazMOgnxHtr+7ykfqYR+f4LwfVgb0Fwmt+jUvkMJ9owhjl6XoafEX2XGx3
-         0IjQ==
+        bh=sAGBZ1PEBcf/fJDsVPro0tPE1WsZuaRgTUZ3iHIhxSQ=;
+        b=tY54VACqvZcfJOeC5dxB9JIbfFgXw07Tp7LHCDEYS1N6Q7JqL6y8EWXELG6YcTplYn
+         vE9wCF9I+UKJ0/ujNvZab/X2seY45q+e4OGIW2MFqOrR3atlTWy6h8w4H5B5PBFhdOyt
+         EoR+cS6kHhhASCXk5EeV4Qx1FcfP3P+Sdqvze6s6yPJrheuGsi/rzFqxSgjMDuu7sHSE
+         d5dceh/G6BmvIwZz7zkzYnsh2ZmFBlIbfA2a4OQaA++/a62xQI7KclX2sTSjGx2fwBc3
+         K9cTVBoA5AF/vsxng3psIzdkPGHkGoH+ToV6apmynYhLkz7HAjlJCk6efi5SAULTJ7xv
+         5Dvg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1716219264; x=1716824064;
+        d=1e100.net; s=20230601; t=1716219301; x=1716824101;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Q2d46BIzaS71fynIkzwWpbI/UQLh+9rw0YHOl7HkTKw=;
-        b=oiKroxRUymWBKPjXerdvRnap/j+NKokhxgyUQwsqhHC8cQAZq8crKXJ3/bSXTLN+Jd
-         DHCB7gKlveX+QzMG4dpZ/5ljK3ytnPLFxH3u4DFwq2SScCx3IKRp1vokcS+Lu7bhRN5e
-         mxS0WwfWuzVP1LpcrDfAFfzrBargVw+YqK2XmSFkdljr1WhW8a4ZdrkMNme58AqaKAYK
-         9iqtDDjDZO17UssDfx5rYcESSdKQuIj/aTUqMGHVDVL8aDXsa4AQUwjvCr/V7qwCfmun
-         b+xyhhOAVEwbZun4yDuY5QmKFD6SPhvKFP8HZoyxgJGbohswWoVE5qEJoBu7rFlSo2+K
-         PuhA==
-X-Forwarded-Encrypted: i=1; AJvYcCXiIyY5vr9Pq2B02sXTg/BKDeVIOdjRkBCs7B3jfOFquq1IeplCg0aKnPA+0l/FJxFnstRlsfNH0R8QrdIrB9f1IqAd2CXlYS0Z0U/Dz3/kQgWd
-X-Gm-Message-State: AOJu0Yzm6eqkjncEdKUAkrMwWvI5EjNcEUuXZkX90yYhFXd6vVBTWv3q
-	mSQIuDnahJsu2PD0R2DvoN6jf6p9ldqNFs/NsbKTFT8hXeE6objfYc+Cc7OltB4=
-X-Google-Smtp-Source: AGHT+IFwdu6YJ9mb/t8HH6MJk6jbYDbj8a+haKLMBrRf9ny2u4juPEFKyoKT/juaePI9RR6Hkf8E8A==
-X-Received: by 2002:a2e:a6a6:0:b0:2e2:72a7:8435 with SMTP id 38308e7fff4ca-2e5204b2e7emr164397641fa.45.1716219263883;
-        Mon, 20 May 2024 08:34:23 -0700 (PDT)
+        bh=sAGBZ1PEBcf/fJDsVPro0tPE1WsZuaRgTUZ3iHIhxSQ=;
+        b=P/McmR1k6lCV1a2Cm2bTqU6YZr0ciVnHyVYuclknQlVtqiOw0rRafr6msgMJRgxLxB
+         6NVnUbqMvXBF9S+bPUxqrxZ69DKJ6seU1aqOUGrk0EjPy2teVziNTqSF0QUuRjUsTNJx
+         oDaV06ZOusQARQA0lQLF3r13ZXBdwElFRS1C6RUU3mkZ8EUUneJnVu4k+60YuHYForEV
+         3pFhPQcr+IpQHLJisFPcCJ4O7ybcOhjBmqwZaz2qua/lwqhUwjaD4dhhFL1N/7ECQ3nV
+         3jeH9373iejWdDxyAfdsXlI+SQHerOHDHZlS9qGAiByykQK7RimiRWaq+G4nrEyX/IQ0
+         JnXQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUyp0iUcy1uMKdF9BjQKKBAgDkrxW7XQoUpyptDRSymNnuyrFPpMDdQd+2dV0n/S0bZl6DfLlEwvKBATrL3d7n4ty+pp3qcZS1V0zPy/G+NWsdu
+X-Gm-Message-State: AOJu0YzPuoLX4BQzyLBpp96WO/c9v0cfMaE83w8oCOC3KhESRdXheMr/
+	qlRKNt4xIlLm+AYwXmNuOzx0nXwMJykW9OZ9LoJVi/xiKAg33BAqFWIaDw7mvTI=
+X-Google-Smtp-Source: AGHT+IFNk692k3RqaMXye+c2Qq79nAeUMEO50j29S1MXyLQIcYzL4B0x4R28xGbxScdBA6EWOGa/VA==
+X-Received: by 2002:adf:e586:0:b0:34c:b2df:6f01 with SMTP id ffacd0b85a97d-3504a737f13mr21144851f8f.21.1716219300694;
+        Mon, 20 May 2024 08:35:00 -0700 (PDT)
 Received: from [192.168.1.172] ([93.5.22.158])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-42003bf579esm374395215e9.43.2024.05.20.08.34.21
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3502b79bcedsm29225112f8f.19.2024.05.20.08.34.59
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 20 May 2024 08:34:22 -0700 (PDT)
-Message-ID: <23609d0b-0908-4acc-9fc7-d74d2c06e80f@baylibre.com>
-Date: Mon, 20 May 2024 17:34:21 +0200
+        Mon, 20 May 2024 08:35:00 -0700 (PDT)
+Message-ID: <1de9d53c-bfc3-4d10-bf9a-b89ce756836b@baylibre.com>
+Date: Mon, 20 May 2024 17:34:58 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 1/3] dt-bindings: display: mediatek: Add OF graph
- support for board path
+Subject: Re: [PATCH v4 3/3] drm/mediatek: Implement OF graphs support for
+ display paths
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  chunkuang.hu@kernel.org
 Cc: robh@kernel.org, krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
@@ -80,15 +80,15 @@ Cc: robh@kernel.org, krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
  linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
  wenst@chromium.org, kernel@collabora.com
 References: <20240516081104.83458-1-angelogioacchino.delregno@collabora.com>
- <20240516081104.83458-2-angelogioacchino.delregno@collabora.com>
+ <20240516081104.83458-4-angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
 From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <20240516081104.83458-2-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20240516081104.83458-4-angelogioacchino.delregno@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240520_083427_479687_4A65C7C6 
-X-CRM114-Status: GOOD (  13.44  )
+X-CRM114-CacheID: sfid-20240520_083502_454446_CDC1F4E8 
+X-CRM114-Status: GOOD (  13.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,25 +107,25 @@ Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
 Tested-by: Alexandre Mergnat <amergnat@baylibre.com>
 
 On 16/05/2024 10:11, AngeloGioacchino Del Regno wrote:
-> The display IPs in MediaTek SoCs support being interconnected with
-> different instances of DDP IPs (for example, merge0 or merge1) and/or
-> with different DDP IPs (for example, rdma can be connected with either
-> color, dpi, dsi, merge, etc), forming a full Display Data Path that
-> ends with an actual display.
+> It is impossible to add each and every possible DDP path combination
+> for each and every possible combination of SoC and board: right now,
+> this driver hardcodes configuration for 10 SoCs and this is going to
+> grow larger and larger, and with new hacks like the introduction of
+> mtk_drm_route which is anyway not enough for all final routes as the
+> DSI cannot be connected to MERGE if it's not a dual-DSI, or enabling
+> DSC preventively doesn't work if the display doesn't support it, or
+> others.
 > 
-> The final display pipeline is effectively board specific, as it does
-> depend on the display that is attached to it, and eventually on the
-> sensors supported by the board (for example, Adaptive Ambient Light
-> would need an Ambient Light Sensor, otherwise it's pointless!), other
-> than the output type.
+> Since practically all display IPs in MediaTek SoCs support being
+> interconnected with different instances of other, or the same, IPs
+> or with different IPs and in different combinations, the final DDP
+> pipeline is effectively a board specific configuration.
 > 
-> Add support for OF graphs to most of the MediaTek DDP (display) bindings
-> to add flexibility to build custom hardware paths, hence enabling board
-> specific configuration of the display pipeline and allowing to finally
-> migrate away from using hardcoded paths.
-> 
-> Reviewed-by: Rob Herring (Arm)<robh@kernel.org>
-> Signed-off-by: AngeloGioacchino Del Regno<angelogioacchino.delregno@collabora.com>
+> Implement OF graphs support to the mediatek-drm drivers, allowing to
+> stop hardcoding the paths, and preventing this driver to get a huge
+> amount of arrays for each board and SoC combination, also paving the
+> way to share the same mtk_mmsys_driver_data between multiple SoCs,
+> making it more straightforward to add support for new chips.
 
 -- 
 Regards,
