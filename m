@@ -4,70 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49924C25B77
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 May 2024 21:08:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D3EEC25B77
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 May 2024 21:08:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BB4/H3DHo/IXnp+vmYhMNI+r0MbR2MG7q6a2QYVhNSE=; b=MWC1elIwgLIO/XRP4s+FLubEkh
-	A5fcfOUy6Ezh1Vq13rk7rHUO2p/mQPNmUgJ0vzbFmSh219qa5uBlECD/o05C0fKBXC372JO1aHiyc
-	T9eVdgLNCBF6YhYjytgba8dRjx0wWh/HmwxsQMLQd3u/1dYuEOCIcKOhCgg7iFB2HdYymRNrhPc4U
-	6DxlZ95loIbODlGEQ9s8LGNDNYZP5xSsbPzzj8V5fZGpl1hVhU58YBDi02bKWkp9eG+QyVAJeCKKY
-	2dDSE1TaPko/O0gh4xdKnUzSOdsvHcI6BshAOiPO06xGIE5ozHgm2Z1jcqkokSE2jW2/4gEBAhb6o
-	ntD4iHdA==;
+	bh=XIPzsDxufq/6qv417OEGAyVct/krB1Fsa3KxivyH120=; b=YU60VyUAVuSHUqLzMCBFmmH484
+	Vdh+GlHCCuJb15piM9waienTeq7vsiLBi+/s0tzLBZSizCi/aAhgsYar+BN7bRXgzF9pl/fwiqRgS
+	RdNFO4L+LaulWjOOfDpRqhXsEgu71bPJGX6HSuZfhDoFN4p6+HQiSvYQ0qL/MVoK1wUuFnAh/uxxx
+	b8jUWciIQnNSWZUDJLqdVjupZsWaW/QuofcwxZpsx07RszlgwJu2XLIY6VBnajhrSzRPDMIo23XQ+
+	1w8XlZKImycyIVwfSpAYF7k9fAenPEeAH6Vv3hbbHXylWh/8Y0c04VuM8xwckvY8ND4xm6Ngb2yF3
+	d/A58I5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s9AF7-0000000FYcv-3uDh;
-	Mon, 20 May 2024 21:08:25 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1s9AFc-0000000FYkO-4AHd;
+	Mon, 20 May 2024 21:08:56 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s9AF4-0000000FYc0-2AU6;
-	Mon, 20 May 2024 21:08:23 +0000
+	id 1s9AFZ-0000000FYjV-2Cdc;
+	Mon, 20 May 2024 21:08:55 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 03F2061ED9;
-	Mon, 20 May 2024 21:08:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 80B35C2BD10;
-	Mon, 20 May 2024 21:08:21 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id F0BDCCE0B2F;
+	Mon, 20 May 2024 21:08:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 10D29C2BD10;
+	Mon, 20 May 2024 21:08:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1716239301;
-	bh=XdvSekiHzDgJlBrerJZoQRBoaKO5FPl+a2h4OopvYLE=;
+	s=k20201202; t=1716239330;
+	bh=KXsctDjiPvmFDLCwn2rtvgL33Mj9ioJK9ltO3XPn0mI=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Ij5EYZFGTBA7BJSVz7ErkPMIRsocyNH/PgnxEFQBTMJX7RWsdMCIGu/r2hU7yB/an
-	 pxS1stbrBh7YtMJQ04A4Nh66T9CknlpTEDP/yR2/fhIdVZ3wPWwHWH210zl6bDax3b
-	 epnP2SDwOs/dEbDvypvdSMsnTmiWxL17NXjMa8TSucLyGi+3Bxlo/urmzCd3x5u7yU
-	 ndnzeW8ny2fxUmSu+0lj3g0hv/CFbL708Nv7kINz1KL9jmj56tUruHT2xEbUrE1y7p
-	 /GIGGE4yrT5ge1Ql2IKQ+5zbXRRDjncOp/AKgNDNmYZ6l/OT6WZ/5BpObWMjzbe+hf
-	 wGc9pi/oxUmAA==
-Date: Mon, 20 May 2024 16:08:20 -0500
+	b=vOkwLKD1HIFpF9QNIzg2+NQCdduRTnqataQ6SZfpBXX6/qoY8CFjKY0uaY5xz+Cjg
+	 lMqfdGVaAXZvb71HnMqwCvzJM3AOTzn6ko1H2A0intxz30sWVtAkTRAz0dTbRvjGCT
+	 3kMZ0lldfDEeyZwaJ5534aPg3t09thcvQcsWrN0yBblftQjRqc4qI1hkAKLc330lxK
+	 Vv+PsQ+2ehYFjZPFt/vCtoQKaJf4TrNJI95+0vWkY5pMtpr89cFFsPi66WxDTLd9D+
+	 Swrb84DuONnqM43uHE48GsCmur+ywprWxhuxrSIo7TsaLpSI/3H6jcvtHKCV6yg9is
+	 l0LV+oxYBB3Tg==
+Date: Mon, 20 May 2024 16:08:49 -0500
 From: "Rob Herring (Arm)" <robh@kernel.org>
 To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Lars Povlsen <lars.povlsen@microchip.com>, Lee Jones <lee@kernel.org>,
-	linux-mediatek@lists.infradead.org, UNGLinuxDriver@microchip.com,
+Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>, Nishanth Menon <nm@ti.com>,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	Daniel Machon <daniel.machon@microchip.com>,
-	Jiaxun Yang <jiaxun.yang@flygoat.com>,
-	Steen Hegelund <Steen.Hegelund@microchip.com>,
-	Conor Dooley <conor+dt@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Nishanth Menon <nm@ti.com>, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
+	UNGLinuxDriver@microchip.com, Lee Jones <lee@kernel.org>,
+	Lars Povlsen <lars.povlsen@microchip.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>
-Subject: Re: [PATCH 4/8] dt-bindings: soc: microchip: sparx5-cpu-syscon: Move
- to dedicated schema
-Message-ID: <171623929821.1525513.17330365725365080199.robh@kernel.org>
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+	Conor Dooley <conor+dt@kernel.org>,
+	Steen Hegelund <Steen.Hegelund@microchip.com>
+Subject: Re: [PATCH 5/8] dt-bindings: soc: ti: am654-serdes-ctrl: Move to
+ dedicated schema
+Message-ID: <171623932593.1530457.11631541498637142639.robh@kernel.org>
 References: <20240519-dt-bindings-mfd-syscon-split-v1-0-aaf996e2313a@linaro.org>
- <20240519-dt-bindings-mfd-syscon-split-v1-4-aaf996e2313a@linaro.org>
+ <20240519-dt-bindings-mfd-syscon-split-v1-5-aaf996e2313a@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240519-dt-bindings-mfd-syscon-split-v1-4-aaf996e2313a@linaro.org>
+In-Reply-To: <20240519-dt-bindings-mfd-syscon-split-v1-5-aaf996e2313a@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240520_140822_624276_BB81C237 
-X-CRM114-Status: GOOD (  12.60  )
+X-CRM114-CacheID: sfid-20240520_140853_795597_A66413EC 
+X-CRM114-Status: GOOD (  12.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,10 +82,9 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-On Sun, 19 May 2024 20:42:19 +0200, Krzysztof Kozlowski wrote:
-> microchip,sparx5-cpu-syscon is not a simple syscon device - it has
-> children and implements simple-mfd compatible - thus it should be fully
-> documented in its own binding.
+On Sun, 19 May 2024 20:42:20 +0200, Krzysztof Kozlowski wrote:
+> ti,am654-serdes-ctrl is not a simple syscon device - it has children -
+> thus it should be fully documented in its own binding.
 > 
 > Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 > 
@@ -97,8 +95,8 @@ On Sun, 19 May 2024 20:42:19 +0200, Krzysztof Kozlowski wrote:
 > and also further patches here depend on this one.
 > ---
 >  Documentation/devicetree/bindings/mfd/syscon.yaml  |  1 -
->  .../soc/microchip/microchip,sparx5-cpu-syscon.yaml | 49 ++++++++++++++++++++++
->  2 files changed, 49 insertions(+), 1 deletion(-)
+>  .../bindings/soc/ti/ti,am654-serdes-ctrl.yaml      | 42 ++++++++++++++++++++++
+>  2 files changed, 42 insertions(+), 1 deletion(-)
 > 
 
 Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
