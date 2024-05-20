@@ -4,87 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A2F7C04FFE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 May 2024 13:19:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80E08C25B7B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 May 2024 13:34:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7aASBHYEJ2GmCl53uLDmFJwacwwec87xHdsVfr2Oydk=; b=M04snjn7hH10/nUMp8mPcSJWIA
-	eLziFLw44OGf6PWOjaqG6LTz0YBPBlw7XCo/PrmG2sgu8TgQyz9mofTdN/y38+xFf6fmkJttqSuk2
-	+HKkbNspd2zmbhmA/qMLc3JXlIyAh5qR3oYL+jeIEfNeTK1eDWdaXMr6WBDokAkPa8HAV4yTTRsfv
-	ICOU8wFKjWSwwdKRTcamTvMnac9ePr8dfa9zIogPeDaTmJ6sLtF/SN4DxVgMUS7sJiMKFatINr5J0
-	2i+4gkWFN+tX5IuecHLIONVDCc5PUTLaxw7lhbpx+RCw8HlHM9320na8NLSSc2DdpsNj+nxA9+Xjw
-	j5HJceig==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7MTkFW5EKW6VtXAQK1YmzVyloY2FLZZSBaVZDYaOtOU=; b=ozx5XPX7V5yxzYGAbxlYiv1mv6
+	tdf3SiDoJFehV/DSWP0pfSpQRzEMbZHmc6uyUVU4hAuj0iIRuJ3lrjbQ9r7GP1dCmPoJMYajHn/5q
+	roX/PJAiVgmJbnSjDHVHNgUhKBKuqWgrbD9kBUBc+g/aH56E53M2GQSbimtLvqXWHcVERTDmtUILa
+	UeAbnd5bWgUfAIXYaNVz4pQvd5rjQukcSKiwJqG2VN6Tb9rv40UUrlOYmkoa1leXWMTIclLFaZZMG
+	6uHB61nJ4cV+AMUG5xuNfpCLQb+U+Kegq6cVTNZIubS//3EWgpUiH+9fiu/y4XUwZw8Kcl1bxuB5a
+	XKjp0Btg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s92va-0000000EZ5R-365E;
-	Mon, 20 May 2024 13:19:46 +0000
-Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
+	id 1s939c-0000000EbMr-1IJ7;
+	Mon, 20 May 2024 13:34:16 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s92vW-0000000EZ3P-31eC
-	for linux-mediatek@lists.infradead.org;
-	Mon, 20 May 2024 13:19:44 +0000
-Received: by mail-lf1-x135.google.com with SMTP id 2adb3069b0e04-520f9d559f6so5270315e87.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 20 May 2024 06:19:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1716211180; x=1716815980; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=7aASBHYEJ2GmCl53uLDmFJwacwwec87xHdsVfr2Oydk=;
-        b=kJhM5CJgBb9AmMhQm39sDzGmd7eFKFySoTB4vebW3ckW3tOH+eolKAr2dlFyopF4m9
-         P08/pr4NojexvUZ751YcfPIWeubIAOwtRvFvnpCUwAWCzp+1p5IHFROSnX4j7Bv6evA/
-         lS6Sf6FL5GYzSRedXRLUUviJ8T2DKrq2+hXeHuUsWLndmzvY5GEy+dLMv9bsE0J/90BM
-         HTqO5RHrOeWNKiLXp+0h/A0aIG1aXxjhYGOr+PkNjugFlZ49cVqprUqzJWoZds1cDh9u
-         5AZ/zJZp4wksoyf5nhr+Ms/tB6U9Z/bt0ALyv9gV+3nzpJrDoUme6okHPLkfDIVB+sSB
-         p6rg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1716211180; x=1716815980;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=7aASBHYEJ2GmCl53uLDmFJwacwwec87xHdsVfr2Oydk=;
-        b=Y5OO2t9E7A+1YKumFe8DvwUWOp75YK1oovj2OepDAgZjf+0GU3JjODJi30Atn6y1xH
-         VbiHG+vWV8a8wqDI8K8OQHpQyLUbb4t4jQrAlSo52p9+9cm6IsCjH/JrZah/BPJclLlA
-         jJ0OrOhMDNx5ITLo/3/Q/8O1K/nWxRZ0kiE4HGedkGqujV/CDP5+LieKPWaHvOEjepq1
-         wF7t3dwCjdP5nckhotDjC748GqwbF27NNFi1KFWjrbBnWFdajpSLS1nJeOWUMu52qhrR
-         Krc9TzXhLkNJw8K1H15yg3vYpa4WbazmfaCLOTjjVRfg2JtyYojobRGCG/AIhMvNbgSI
-         +/ow==
-X-Forwarded-Encrypted: i=1; AJvYcCWbFthb2ptow9mx32PODnZJTiDZRmA/0SXI43RP6Oh3uXsLbxX38K8mwFDG/3vGt3L/77LCCL8C1K5n+HxA/YG4dC6jF7CP6RrEV9fLZuF4eLEa
-X-Gm-Message-State: AOJu0YyhA4+c3bBR0x1gq5SVdw6lAn0oLweHqeo+7GC1IwjzrKwW83+G
-	vaNsDIKtoAaF5lmhyOtA7bY2BLs6+dUm2WuNidI5rk968GGhEMqgaKPVMHMJ2dI=
-X-Google-Smtp-Source: AGHT+IHUPykzDKwW1LbytWT4wZMwyTT0C5peIVfK/LqhFmf7eVbVhlrgRZ2xa8GpF4TZkCY6CYmKhQ==
-X-Received: by 2002:ac2:5f49:0:b0:51f:b781:728f with SMTP id 2adb3069b0e04-5220fc72ffamr15400487e87.32.1716211180523;
-        Mon, 20 May 2024 06:19:40 -0700 (PDT)
-Received: from ?IPV6:2a01:cb1d:433:4e00:3518:6eec:d551:4012? ([2a01:cb1d:433:4e00:3518:6eec:d551:4012])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3502b79bd4fsm29437399f8f.7.2024.05.20.06.19.39
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 20 May 2024 06:19:40 -0700 (PDT)
-Message-ID: <aa4c1439-bf9a-4710-b534-27d5f845e6e9@baylibre.com>
-Date: Mon, 20 May 2024 15:19:38 +0200
+	id 1s939Y-0000000EbME-20NJ;
+	Mon, 20 May 2024 13:34:13 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=7MTkFW5EKW6VtXAQK1YmzVyloY2FLZZSBaVZDYaOtOU=; b=IOp6znxwuh16I4+DNrVElh1uf3
+	LQPxTYVNYVj4WuzeoZdhZj+T+Gk58XMxXkoBlL6vFSdxP0Ry9C+M7xeZI21ZO79kC7fSlSZO75pSe
+	CUQ4ue2/ndyXxKlu/QhFa2rSXY4PeMxY5Hu06Ef5cqyou1EzKucmfXKbpIjphqf/0uwM=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1s939F-00FhPN-Bj; Mon, 20 May 2024 15:33:53 +0200
+Date: Mon, 20 May 2024 15:33:53 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Sky Huang <SkyLake.Huang@mediatek.com>
+Cc: Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Qingfang Deng <dqfext@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Steven Liu <Steven.Liu@mediatek.com>
+Subject: Re: [PATCH net-next v3 5/5] net: phy: add driver for built-in 2.5G
+ ethernet PHY on MT7988
+Message-ID: <62b19955-23b8-4cd1-b09c-68546f612b44@lunn.ch>
+References: <20240520113456.21675-1-SkyLake.Huang@mediatek.com>
+ <20240520113456.21675-6-SkyLake.Huang@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 15/15] arm64: dts: mediatek: mt8188: add default
- thermal zones
-To: Daniel Lezcano <daniel.lezcano@linaro.org>,
- Nicolas Pitre <nico@fluxnic.net>, linux-pm@vger.kernel.org,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
-Cc: Nicolas Pitre <npitre@baylibre.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-References: <20240402032729.2736685-1-nico@fluxnic.net>
- <20240402032729.2736685-16-nico@fluxnic.net>
- <aab10d22-b1a1-45e9-85bc-a4334aa6c497@linaro.org>
-Content-Language: en-US
-From: Julien Panis <jpanis@baylibre.com>
-In-Reply-To: <aab10d22-b1a1-45e9-85bc-a4334aa6c497@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240520113456.21675-6-SkyLake.Huang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240520_061942_783552_FEE8D021 
-X-CRM114-Status: GOOD (  15.23  )
+X-CRM114-CacheID: sfid-20240520_063412_543868_E6D08320 
+X-CRM114-Status: GOOD (  24.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,37 +79,152 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 4/4/24 17:16, Daniel Lezcano wrote:
->
-> Hi Nico,
->
-> a few comments about this description.
->
-> On 02/04/2024 05:25, Nicolas Pitre wrote:
->> From: Nicolas Pitre <npitre@baylibre.com>
->>
->> Inspired by the vendor kernel but adapted to the upstream thermal
->> driver version.
->
-> [ ... ]
->
->> +    thermal_zones: thermal-zones {
->> +        cpu-little0-thermal {
->> +            polling-delay = <1000>;
->
-> Except if I'm wrong, the driver supports the interrupt mode, so it not necessary to poll 
-> constantly when there is no mitigation. You can remove the line and everywhere else.
+> +static int mt798x_2p5ge_phy_config_init(struct phy_device *phydev)
+> +{
+> +	struct mtk_i2p5ge_phy_priv *priv = phydev->priv;
+> +	struct device *dev = &phydev->mdio.dev;
+> +	const struct firmware *fw;
+> +	struct pinctrl *pinctrl;
+> +	int ret, i;
+> +	u16 reg;
+> +
+> +	if (!priv->fw_loaded) {
+> +		if (!priv->md32_en_cfg_base || !priv->pmb_addr) {
+> +			dev_err(dev, "MD32_EN_CFG base & PMB addresses aren't valid\n");
+> +			return -EINVAL;
+> +		}
+> +
 
-Hello Daniel,
+https://www.kernel.org/doc/html/latest/process/coding-style.html
 
-By reading at the comment in the driver, above lvts_irq_handler(),
-I'm not sure actually. Here is what I read:
-"The interrupt is configured for thermal events when crossing the
-hot temperature limit".
-IOW, lvts_irq_handler() is not meant to notify some "data ready"
-event, as far as I understand.
-Don't you think we should keep this polling-delay ?
+  6) Functions
 
-Julien
+  Functions should be short and sweet, and do just one thing. They
+  should fit on one or two screenfuls of text (the ISO/ANSI screen
+  size is 80x24, as we all know), and do one thing and do that well.
 
+This is a big function, which does multiple things. Maybe pull the
+downloading of firmware into a helper.
+
+> +		ret = request_firmware(&fw, MT7988_2P5GE_PMB, dev);
+> +		if (ret) {
+> +			dev_err(dev, "failed to load firmware: %s, ret: %d\n",
+> +				MT7988_2P5GE_PMB, ret);
+> +			return ret;
+> +		}
+> +
+> +		if (fw->size != MT7988_2P5GE_PMB_SIZE) {
+> +			dev_err(dev, "Firmware size 0x%zx != 0x%x\n",
+> +				fw->size, MT7988_2P5GE_PMB_SIZE);
+> +			return -EINVAL;
+> +		}
+> +
+> +		reg = readw(priv->md32_en_cfg_base);
+> +		if (reg & MD32_EN) {
+> +			phy_set_bits(phydev, MII_BMCR, BMCR_RESET);
+> +			usleep_range(10000, 11000);
+> +		}
+> +		phy_set_bits(phydev, MII_BMCR, BMCR_PDOWN);
+> +
+> +		/* Write magic number to safely stall MCU */
+> +		phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x800e, 0x1100);
+> +		phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x800f, 0x00df);
+> +
+> +		for (i = 0; i < MT7988_2P5GE_PMB_SIZE - 1; i += 4)
+> +			writel(*((uint32_t *)(fw->data + i)), priv->pmb_addr + i);
+> +		release_firmware(fw);
+> +
+> +		writew(reg & ~MD32_EN, priv->md32_en_cfg_base);
+> +		writew(reg | MD32_EN, priv->md32_en_cfg_base);
+> +		phy_set_bits(phydev, MII_BMCR, BMCR_RESET);
+> +		/* We need a delay here to stabilize initialization of MCU */
+> +		usleep_range(7000, 8000);
+> +		dev_info(dev, "Firmware loading/trigger ok.\n");
+> +
+> +		priv->fw_loaded = true;
+
+So there is no way to know if this has already happened? Maybe the
+bootloader downloaded the firmware so it could TFTP boot? Linux will
+download the firmware again, which is a waste of time.
+
+> +		iounmap(priv->md32_en_cfg_base);
+> +		iounmap(priv->pmb_addr);
+> +	}
+> +
+> +	/* Setup LED */
+> +	phy_set_bits_mmd(phydev, MDIO_MMD_VEND2, MTK_PHY_LED0_ON_CTRL,
+> +			 MTK_PHY_LED_ON_POLARITY | MTK_PHY_LED_ON_LINK10 |
+> +			 MTK_PHY_LED_ON_LINK100 | MTK_PHY_LED_ON_LINK1000 |
+> +			 MTK_PHY_LED_ON_LINK2500);
+> +	phy_set_bits_mmd(phydev, MDIO_MMD_VEND2, MTK_PHY_LED1_ON_CTRL,
+> +			 MTK_PHY_LED_ON_FDX | MTK_PHY_LED_ON_HDX);
+> +
+> +	pinctrl = devm_pinctrl_get_select(&phydev->mdio.dev, "i2p5gbe-led");
+
+Calls to devm_pinctrl_get_select() is pretty unusual in drivers:
+
+https://elixir.bootlin.com/linux/latest/C/ident/devm_pinctrl_get_select
+
+Why is this needed? Generally, the DT file should describe the needed
+pinmux setting, without needed anything additionally.
+
+> +static int mt798x_2p5ge_phy_get_features(struct phy_device *phydev)
+> +{
+> +	int ret;
+> +
+> +	ret = genphy_c45_pma_read_abilities(phydev);
+> +	if (ret)
+> +		return ret;
+> +
+> +	/* We don't support HDX at MAC layer on mt7988. So mask phy's HDX capabilities here. */
+
+So you make it clear, the MAC does not support half duplex. The MAC
+should then remove it, not the PHY.
+
+> +	linkmode_clear_bit(ETHTOOL_LINK_MODE_100baseT_Half_BIT, phydev->supported);
+> +
+> +	return 0;
+> +}
+> +
+> +static int mt798x_2p5ge_phy_read_status(struct phy_device *phydev)
+> +{
+> +	int ret;
+> +
+> +	/* When MDIO_STAT1_LSTATUS is raised genphy_c45_read_link(), this phy actually
+> +	 * hasn't finished AN. So use CL22's link update function instead.
+> +	 */
+> +	ret = genphy_update_link(phydev);
+> +	if (ret)
+> +		return ret;
+> +
+> +	phydev->speed = SPEED_UNKNOWN;
+> +	phydev->duplex = DUPLEX_UNKNOWN;
+> +	phydev->pause = 0;
+> +	phydev->asym_pause = 0;
+> +
+> +	/* We'll read link speed through vendor specific registers down below. So remove
+> +	 * phy_resolve_aneg_linkmode (AN on) & genphy_c45_read_pma (AN off).
+> +	 */
+> +	if (phydev->autoneg == AUTONEG_ENABLE && phydev->autoneg_complete) {
+> +		ret = genphy_c45_read_lpa(phydev);
+> +		if (ret < 0)
+> +			return ret;
+> +
+> +		/* Clause 45 doesn't define 1000BaseT support. Read the link partner's 1G
+> +		 * advertisement via Clause 22
+> +		 */
+> +		ret = phy_read(phydev, MII_STAT1000);
+> +		if (ret < 0)
+> +			return ret;
+> +		mii_stat1000_mod_linkmode_lpa_t(phydev->lp_advertising, ret);
+> +	} else if (phydev->autoneg == AUTONEG_DISABLE) {
+> +		return -EOPNOTSUPP;
+> +	}
+
+It is a bit late doing this now. The user requested this a long time
+ago, and it will be hard to understand why it now returns EOPNOTSUPP.
+You should check for AUTONEG_DISABLE in config_aneg() and return the
+error there.
+
+      Andrew
 
