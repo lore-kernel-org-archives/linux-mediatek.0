@@ -4,82 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9AD71C25B7A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 May 2024 17:49:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8009C25B77
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 May 2024 19:40:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XfldnoFCtlXjDUGIkjCxDruNAojvgZwZWzyNtsiBzQI=; b=sFA9EHYMj7grRGIXesrJzkg07s
-	iUU76/H1WG6wcKCqw7qFCztJR3Jptrbw1yqgRTtOf3wUZWKBhJ6gmauiBGo06parIvi9ndvzArPeq
-	mr8goXedE5PZTLYUTe5Y/swuigPDWm1zbjdwIvoDmaD45Ydpw5BfhzZF2yKykDJ5eb1QoO2/ikfZS
-	/9GeEqv6Tav7UXKbxD2kjketVyxLs5CtvEiiLrdvJTiZvGgkUpqTJ4CKpe5i1tJNIm901+HsD8fKy
-	zZYvwutrTrRf3uTIuJissbQqheuAj8JTL90LAeDgdGWxLaejue2POR5DyxkLUOOyAUpsW4hDN/DDr
-	84JTNRWw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rNYn/xwQupG/60gIP6cmO64mjb0M2Dpl91wRfP6ktEc=; b=PuhX2nyVoSkW6VBo5gYlXLTx7w
+	gKaYf/fYhHm3pLHF8QxJUhHQhLW1AQlmj9a972HvhijBnnkSTVrNuu049xblQUC+9FMtF2/Og2b7y
+	+ZJ9xzg7W8xu1vr3jabVRK9xgZZC3+UQIT9HGkdaC5GuKzNvXaWboIAVZ8oCbhxDKph0+t/YMqqFm
+	dAD+z1y7GJpOMQvVn7AhiLaYsoeFFrojx9INjKhj6wK+0KaVzPTg7ap02xb/4qjE8ch11WwgYP7JY
+	9Vi0RXSjKQhV+EIonZHY8qVHBE2IEh+5IbuZ9LtceRueVVGPym8Fo05TMYAftgH5CKqq+ywfRHTjW
+	/0Jn01gQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s978O-0000000FAh8-1nsg;
-	Mon, 20 May 2024 17:49:16 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1s98sG-0000000FO4p-2w7Q;
+	Mon, 20 May 2024 19:40:44 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s978F-0000000FAc6-313E;
-	Mon, 20 May 2024 17:49:13 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=XfldnoFCtlXjDUGIkjCxDruNAojvgZwZWzyNtsiBzQI=; b=HOEcB3m6VMMOMDPp2cPBpKomlO
-	FekL9B6kRdA3i7PGuGVL6jOAl8+l8w4sUza98ZBCYB/she/YBJ87BuBH/uYaxdE0EVgc3NuHmKYlW
-	G1Ufav1ydalYq60mo06uVnnWf/kBK2CQ8r2vQNHzg4CLAw1v9RiQvAk9/zNTZjnT/kfcomuOfzkX6
-	5T7DUyMXFY3xpexzATBep97nyKXYp78EbdrCUPVIVzmv5gisGMe3TS8KECo+DwihcrSHB0zDyCcvH
-	4nTUFM0bejLOuEE2KQzySqDJv7nHOjAlIOYeDIK/HOKE000QjQLooBC1E7cXoNEvMFVCsonX1lTb3
-	+UnysHNg==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:52632)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1s977m-0007BC-2Y;
-	Mon, 20 May 2024 18:48:38 +0100
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1s977k-0004Tz-AX; Mon, 20 May 2024 18:48:36 +0100
-Date: Mon, 20 May 2024 18:48:36 +0100
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: SkyLake Huang =?utf-8?B?KOm7g+WVn+a+pCk=?= <SkyLake.Huang@mediatek.com>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"kuba@kernel.org" <kuba@kernel.org>,
-	"pabeni@redhat.com" <pabeni@redhat.com>,
-	"edumazet@google.com" <edumazet@google.com>,
-	"netdev@vger.kernel.org" <netdev@vger.kernel.org>,
-	"dqfext@gmail.com" <dqfext@gmail.com>,
-	Steven Liu =?utf-8?B?KOWKieS6uuixqik=?= <steven.liu@mediatek.com>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"davem@davemloft.net" <davem@davemloft.net>,
-	"hkallweit1@gmail.com" <hkallweit1@gmail.com>,
-	"daniel@makrotopia.org" <daniel@makrotopia.org>,
-	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH net-next v2 5/5] net: phy: add driver for built-in 2.5G
- ethernet PHY on MT7988
-Message-ID: <ZkuM9C0Yd/uwwzUA@shell.armlinux.org.uk>
-References: <20240517102908.12079-1-SkyLake.Huang@mediatek.com>
- <20240517102908.12079-6-SkyLake.Huang@mediatek.com>
- <cc0f67de-171e-45e1-90d9-b6b40ec71827@lunn.ch>
- <283c893aa17837e7189a852af4f88662cda5536f.camel@mediatek.com>
- <8a5f14f4-4cd9-48b5-a62c-711800cee942@lunn.ch>
+	id 1s98sA-0000000FO2Z-12xY
+	for linux-mediatek@lists.infradead.org;
+	Mon, 20 May 2024 19:40:39 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id C48A161E5B;
+	Mon, 20 May 2024 19:40:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 6872BC32789;
+	Mon, 20 May 2024 19:40:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1716234032;
+	bh=KKvmUiNEkdDNOF+4LIuWQvPdLdakaCHzGqUIUcvsXaM=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=tOg8RPralfb5JUgiBhuOkvD4qy/awCGhqgdY6MgIl11YzgpkuA9WdJeVmkHfdWRTU
+	 2UNInfTbEn7dUochGzuClWoz2e9EkfPTNzInitxgDHWT36v6jn2QPkRFZp6wxLUvix
+	 uLG5SwvhtlyU678Wvx4FF8w3gS0HBYD+hc8u84rF4HBDSCrj8HbrXYHqHrjk29dEEH
+	 eVDxf/hUE7XSWsHSAkDpIzf60lE0nAM7224xuHZBWhYEjRBOJSLR2qkjKN4yypKHWW
+	 sOkGBv/bfxnoMBOVyCgCx8tPnJ306dHPmPpjmKfJjY0JBEv/V0HdjA2z8T2vqvD/XN
+	 L3vPd8ifwFQgg==
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 58154C54BB0;
+	Mon, 20 May 2024 19:40:32 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <8a5f14f4-4cd9-48b5-a62c-711800cee942@lunn.ch>
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH v5 1/5] Bluetooth: btmtk: add the function to get the fw name
+From: patchwork-bot+bluetooth@kernel.org
+Message-Id: <171623403235.10216.9445226154249031065.git-patchwork-notify@kernel.org>
+Date: Mon, 20 May 2024 19:40:32 +0000
+References: <ce0337178bf617d52ff320a36837d75bf537df2d.1715813148.git.sean.wang@kernel.org>
+In-Reply-To: <ce0337178bf617d52ff320a36837d75bf537df2d.1715813148.git.sean.wang@kernel.org>
+To: Sean Wang <sean.wang@kernel.org>
+Cc: marcel@holtmann.org, johan.hedberg@gmail.com, luiz.dentz@gmail.com,
+ linux-bluetooth@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, sean.wang@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240520_104909_652301_53B730F0 
-X-CRM114-Status: GOOD (  11.33  )
+X-CRM114-CacheID: sfid-20240520_124038_551167_B1C9885F 
+X-CRM114-Status: UNSURE (   8.09  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,23 +76,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, May 20, 2024 at 03:02:21PM +0200, Andrew Lunn wrote:
-> > Actually this phy is strictly binded to (XFI)MAC on this platform.
-> > So I directly disable HDX feature of PHY.
-> 
-> Sorry, i don't follow your answer:
-> 
-> Can the PHY do half duplex?
-> Can the MAC do half duplex?
-> 
-> The part which cannot do half-duplex should be the part which disables
-> half-duplex.
+Hello:
 
-Note that if the PHY is doing rate adaption (preferably in a form that
-it can control the MAC transmission rate), then even if the MAC can't
-do half-duplex, the PHY can still do half-duplex.
+This series was applied to bluetooth/bluetooth-next.git (master)
+by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
 
+On Wed, 15 May 2024 16:15:17 -0700 you wrote:
+> From: Sean Wang <sean.wang@mediatek.com>
+> 
+> Include a shared function to get the firmware name, to prevent repeating
+> code for similar chipsets.
+> 
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> 
+> [...]
+
+Here is the summary with links:
+  - [v5,1/5] Bluetooth: btmtk: add the function to get the fw name
+    https://git.kernel.org/bluetooth/bluetooth-next/c/1a9f00aa23b8
+  - [v5,2/5] Bluetooth: btmtk: apply the common btmtk_fw_get_filename
+    https://git.kernel.org/bluetooth/bluetooth-next/c/8a5b9ee69fe6
+  - [v5,3/5] Bluetooth: btusb: mediatek: refactor the function btusb_mtk_reset
+    https://git.kernel.org/bluetooth/bluetooth-next/c/9d5a3b40987d
+  - [v5,4/5] Bluetooth: btusb: mediatek: reset the controller before downloading the fw
+    https://git.kernel.org/bluetooth/bluetooth-next/c/8f9fa6c70d35
+  - [v5,5/5] Bluetooth: btusb: mediatek: add MT7922 subsystem reset
+    https://git.kernel.org/bluetooth/bluetooth-next/c/2a6bc5724952
+
+You are awesome, thank you!
 -- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 
