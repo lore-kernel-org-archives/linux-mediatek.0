@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3F1BC04FFE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 May 2024 10:06:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9110C04FFE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 May 2024 10:07:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
 	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lSvPWojDpzKX092L/6OhftF6lNjVjUW7qvYbcd/Etvc=; b=juytqwrtLZyXbU8LyOFk7tNvIn
-	UgQY/9tIGIyRlObIChjzmFSgAXnYijhddQqXAfxRs1+gpECu/au6Yhn2uwCQcIRsaIPx7mGsGX9Rg
-	w8ACrAWXCzVFGR/n6oj2PhcpRIzcA1CloWOhUBN4+1HjWlu6WSU5ACuyLC6T1mqolbmi58K0MIuPx
-	pFwHKbhapoQ32m6kwbKNLyXow3CR2fHqZrQataA4BOCGZCfO/kzdkk0M61vsnhEnc8VCDH9s15ny+
-	Zdgs8to+jDdj8LeCeMLvHiatz4bXlPDZeaegozHAn/uCeWudR7Gecs769RyxEj3+JNVoJhbdq9ZZd
-	TR0enehg==;
+	bh=pxPMqAY/aU5gIoSiUS92fYAscj+sSWgB4aaWVm2L8Lw=; b=RIy/zzgkRyQ7d5VqCwNJizDhhH
+	5g0ZhLV6Ohoa7yKHIS8nrgMSoQekl9YLfLtSno0NcHjegeA27kjKqmRaSIpLz12wI3jqNQIKecdCa
+	qPIsCmYZpqYhHT68LL/U17Dc+TzXA0R0zyTDbDJqvD3c1qACsGMjUSaTOe/ZaPA2VwzKTZh+xEtTh
+	etk3dxDo5XOCe83nCMtHq827DEQENzTNjUpcO/FZ8tTwJokcIXPbRwti0DDWQp7MbwSZjVbadGcAi
+	X8Jwmg3162V4zdNhX9wdFLvZFsA3UV6XePrIhy5osmhBXvM0w4HGCtXOySwH7nm4V5jP+8XmSueGm
+	c0H/jDcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s8zv0-0000000E5SK-487q;
-	Mon, 20 May 2024 10:06:58 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1s8zvp-0000000E5aL-1EEf;
+	Mon, 20 May 2024 10:07:49 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s8zux-0000000E5RN-0VWG;
-	Mon, 20 May 2024 10:06:56 +0000
+	id 1s8zvl-0000000E5ZF-1RQu;
+	Mon, 20 May 2024 10:07:46 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1716199613;
-	bh=vb+S3v0VFH+2kufPH8rXeEV4ZmE//CWYzZhNwvQ83wM=;
+	s=mail; t=1716199663;
+	bh=Jl0VSMzpxw+uB3ZgHQznLYmi1oC4WCpBlOZgtEV3Z9w=;
 	h=Date:Subject:To:References:From:In-Reply-To:From;
-	b=38z8CCsuKFNlEFOI8zKZiaIoR24d2xYKgwkiqCs0fEy6eEbUr0nwwXkrXcCfQmtbL
-	 nUaoOacEpmeJb2ebeOQd7ubBmu+PHX3ChWO2IOnD9iqkfKPvyAdHb5YBDKBjnbDHCy
-	 ozft6KKYyyMHEEesYZpKiDFPW5GhNQkf5NDk2FZJ1815WWY/UvHHlW2FyqzVWq8rKg
-	 EwPxZE0TtgCda3YVcbM5mR07OouW9zwsREHiboOh8aQKjW3VkeIJhzwnb1CXX2rYJ+
-	 hKObzyxCt9iQV9klOjOBQAHK+S/6I9T0zGihr7EITRtI6pjFwuDPqCAMbkGAQqtKj3
-	 YU4dg37ZORrTQ==
+	b=cwMtKEnPHOVhyE9B7bNRvji/07H+iAAD+TiOZlwX6sL9cz5I6jICgKOe1JFR+cWqc
+	 Ol4wS21c02IOys3Zrclfhxahnq/z3fMWDM2y76akDefFU9D4U/V9dYaGG/5ovYA4Nr
+	 kham+RZ162cGdNrUFLFOONayt7N/jD5K/dWdsgKHydCAiFSoth0zOP5LOYzng6qVrU
+	 0XPZgPbmy7Bo3KF/R+a+NJfelYDbblq/hFayfB04NvVTHwmMRl0vy3qt2Mabrtgy66
+	 W5//+FUGqFHmnNBSBLJmQn+LnTNEa+B6Fde8sA/bbzAwaHWgZ8mnPO1x6HWNOvv60s
+	 dOXr/yjcTkqQQ==
 Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 1699D37809D1;
-	Mon, 20 May 2024 10:06:53 +0000 (UTC)
-Message-ID: <f7760293-ded2-4d89-928c-a73359a045d2@collabora.com>
-Date: Mon, 20 May 2024 12:06:52 +0200
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id EB54837809D1;
+	Mon, 20 May 2024 10:07:42 +0000 (UTC)
+Message-ID: <671a4b1e-3d95-438c-beae-d967e0ad1c77@collabora.com>
+Date: Mon, 20 May 2024 12:07:42 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/4] arm64: dts: mediatek: mt8365: drop incorrect
- power-domain-cells
+Subject: Re: [PATCH 4/4] arm64: dts: mediatek: mt8173-elm: correct PMIC's
+ syscon reg entry
 To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
  Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
@@ -57,17 +57,15 @@ To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org
 References: <20240518211159.142920-1-krzysztof.kozlowski@linaro.org>
- <20240518211159.142920-3-krzysztof.kozlowski@linaro.org>
- <3b1be547-ac49-40fb-909f-96952c299545@collabora.com>
- <1540f43c-9859-49a8-9b20-1fb08d1c153f@linaro.org>
+ <20240518211159.142920-4-krzysztof.kozlowski@linaro.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <1540f43c-9859-49a8-9b20-1fb08d1c153f@linaro.org>
+In-Reply-To: <20240518211159.142920-4-krzysztof.kozlowski@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240520_030655_525266_5BF983AD 
-X-CRM114-Status: GOOD (  12.44  )
+X-CRM114-CacheID: sfid-20240520_030745_553881_F3D75F61 
+X-CRM114-Status: GOOD (  13.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,35 +80,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 20/05/24 12:03, Krzysztof Kozlowski ha scritto:
-> On 20/05/2024 11:58, AngeloGioacchino Del Regno wrote:
->> Il 18/05/24 23:11, Krzysztof Kozlowski ha scritto:
->>> The top SCPSYS node is not a power domain provider.  It's child
->>> "power-controller" is instead.  Fix dtbs_check warnings like:
->>>
->>>     mt8365-evk.dtb: syscon@10006000: '#power-domain-cells' does not match any of the regexes: 'pinctrl-[0-9]+'
->>>
->>> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
->>
->> Well if you're fixing that by migrating to scpsys compatible, you might as well
->> resolve all of the warnings in one commit, removing that power-domain-cells
->> property in patch [2/4], otherwise this one is technically a fix for that.
->>
->> Please squash [2/4] and [3/4], like that it just makes more sense.
->>
+Il 18/05/24 23:11, Krzysztof Kozlowski ha scritto:
+> The MT6297 PMIC has address/size cells == 1, thus its syscon child node
+> has incorrect number of entries in "reg" property.  Fix dtbs_check
+> warning:
 > 
-> That's independent thing. Previous compatible - syscfg - also did not
-> allow power domains. The difference is that bindings did not print a
-> warning without my change. We can reverse the patches if this is more
-> suitable.
+>    mt8173-elm.dtb: syscon@c000: reg: [[0, 49152], [0, 264]] is too long
 > 
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-You're still introducing a warning with patch 2.
+That node is unused and not needed at all, even...
+Unless anyone has any strong opinion against, I suggest to simply remove it.
 
-As for swapping the order, that could also be a solution, but I still don't see
-that as an independent thing - in any case, swapping them is something I can do
-while applying, eventually.
+Cheers,
+Angelo
 
-
+> ---
+>   arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
+> index 6d962d437e02..0e2439860223 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
+> @@ -1138,7 +1138,7 @@ rtc: mt6397rtc {
+>   		syscfg_pctl_pmic: syscon@c000 {
+>   			compatible = "mediatek,mt6397-pctl-pmic-syscfg",
+>   				     "syscon";
+> -			reg = <0 0x0000c000 0 0x0108>;
+> +			reg = <0x0000c000 0x0108>;
+>   		};
+>   	};
+>   };
 
 
