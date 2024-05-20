@@ -4,76 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 587A6C25B77
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 May 2024 10:39:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69E3EC04FFE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 May 2024 10:43:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9XHU7DCdFscvy/igtWISabDGjxqRwRqaN+vCXyzkJok=; b=25USZySHwDjMcTKhfUs1OvdZme
-	auYIE8VSByoQ7rZ+zmud4eEUQ0KmT5iCe1IUW7DK/M5dwtXsZN2PLg4hc6rDQMOOJ5wdLfoqXNFse
-	xxDPfCD0+xZxuI/Oris1Ckga5/rGlF93zpUPfSAiFRt56MszGFDnC7uzcKVvO968QBRjt/m2MkWap
-	Qp71FvnjaC+WQIX1ghYyoGQ9r981rGd1RyfKMMLRcKkvSNjJzTpEV8qB3v0c2BZqu2bGH9BDFFhjX
-	N9to8YhwZ+nZmBl7JXpE1sXQzDTe7c3ygSqg6N9+8xb3VexVTELyITKRtdmtsRN6XRsNje/jWtkpR
-	rOxD+2NA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=icwVF42TmZ2hZjEXcduZvhpSy5tVelIfuJSjSBSENHo=; b=WXkh+k8n2iJnmGO7s7mvyH+A+0
+	ODsP1kqH+UO3oQBSipwZ3MmVsZnHb0Qaj7PwnkSU0yw5/kurmbNf5KcDbyTs5UZeuhq44Jvv9LMDW
+	HIQvmJid9mDSw55xI45N4BuDAWTQe/KJ23ppijGRrkSEm8LEmjh5EUi5rAdwkI/Et9HNj5Vv9DjN+
+	45cBM4IaWv8+x2rjq0poP39U5xMfhbV8MiWU1YTl5cBrpDZL7OOX5qs1bdKMIl6MXJfl3hmvQad8N
+	tLV+2e1HqDIIQ1y0zRHU5oncpeMIICbC8Pc8rVfTJb+rVBsIKrEc96BQcT8+3rBt1nExpz2uK5MaF
+	pGLuR6zw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s90QI-0000000EAv4-3bcl;
-	Mon, 20 May 2024 10:39:18 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1s90UT-0000000EBiZ-3Ymg;
+	Mon, 20 May 2024 10:43:37 +0000
+Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s90QF-0000000EAuC-0Sci;
-	Mon, 20 May 2024 10:39:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1716201553;
-	bh=SHW/8R1rZW6GQ0+dQmnBh5FqymykMd2pJcGiHNDCymE=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Q17js6Qw8ZLqCwlkxxxvBQmYWUCrDoBpm2WovUL1stZMFnleC358R46dJltv/pShw
-	 eSDFiEPvoXDErP7D6+1vTLB6WMXDtSkLydJNLnwoxXC9xrqBUklx/FeGHteTiSHqQY
-	 QZg2wpn6yoSQzxHlGa9kWkB0KRjJFVGN6Rr+Xl5OVeFhBSnitViD0i0AAWg6ubATLx
-	 yvBeVHVONpXYwm1MLCmbIkyXMUNc3K//FKCPuVUzI2GHO8EzMQQxsfI4yA0zr3YhzY
-	 wDWc++6o5z7CbKE4Btd8jnwWBCWK1yWNbmUojdiHwhvv1911vDqGnN5HzpH7LoSr3K
-	 VunJhnpC3bRHA==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 53DB3378219E;
-	Mon, 20 May 2024 10:39:12 +0000 (UTC)
-Message-ID: <c4e18dc7-5843-457b-9696-b14de21a1105@collabora.com>
-Date: Mon, 20 May 2024 12:39:11 +0200
+	id 1s90UO-0000000EBdy-1ubT
+	for linux-mediatek@lists.infradead.org;
+	Mon, 20 May 2024 10:43:35 +0000
+Received: by mail-lf1-x12f.google.com with SMTP id 2adb3069b0e04-51fcb7dc722so3667196e87.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 20 May 2024 03:43:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1716201807; x=1716806607; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=icwVF42TmZ2hZjEXcduZvhpSy5tVelIfuJSjSBSENHo=;
+        b=WhPs+B6L2+z9wNokzXkUDMHQ2ik9RPqpwHUOWb9XenZqNTHg3W15d9Bu17tmOf3MWv
+         8cyuBNAzWLwKx8IVYHnxZhZYLAcbY2wk47Y1YgjAZg976X0D0bwHqjRWzZm++HXcv9ml
+         rIsdrQeatyZ07ojnpLn92GYSaN+NOZaW90gURClrxFBz4iGaDpnRH0rtpOHeqeMB53E7
+         htVNI5ipnv7GPgYUshmibcDcpx4nUv/mOEt1Oskn7Yj3pY48eo+Bhl2pdxvZH0dsjpPF
+         9P2veOQFmwvvRjwRSWp1lNYiEVukNnRTiTvDiDEHEoSW0jGnILpflDcO2DfkLu5aiL7s
+         C/eg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1716201807; x=1716806607;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=icwVF42TmZ2hZjEXcduZvhpSy5tVelIfuJSjSBSENHo=;
+        b=HWzz5fqzSzUNowm5bZba5lSyJDZOVITQiQho1sh4itEpxho7kEmC+uBvxo231vs5D1
+         NNvrbm0cggRMq/qVseTC3CkfimJNq35EP/eICVvbtrRs9lsdP8x8NH5xS5GAzpaQznvb
+         qn2CDmcu4tDDo7BDbMubipKjFBLDePhah1phdY8zmeLc5mm/Y/xpYw/B8LyDlgpF4n1P
+         YlimxMigoI8uJQD/dY8N1c3HHFz3NdPmzeuYsgcF3kxc2QwMFyfcDCyl04uvidWUejRt
+         1Qu9DSbfQmqnMo6Eg8OuxpVl7ozOhr91Thc4JTdopNlliYTSICtztAqUb7oGwuWGnrU1
+         2KKA==
+X-Forwarded-Encrypted: i=1; AJvYcCUlpKcmurOjwXH2VXu6cTDqgzfMuCIFCM2Vh8Qfxq9p4EPV8Ccsvii06vj6bNsp7rNvlf8m1Onug+evICI9qoKszDtEv+ZrgzRj69yU3pdAj8JQ
+X-Gm-Message-State: AOJu0Yys3DTLxK4HyVVc38ojmohGNcjgsd7q5qXekr1qcighMCXu5CcD
+	p1knKLU0ZYavyFzOW/vy0YSZJz7cXWFSMxCJPAlZrwNxQ4WA44TZUgXbL4K5mtU=
+X-Google-Smtp-Source: AGHT+IFzot8n6xHV0OHm6wH4k0sEr+LYxBLD0eD+umJwBs/mAovf2bSRWjBos0WaEoAs2a0risJ1Ww==
+X-Received: by 2002:a05:6512:4801:b0:51d:8ff3:f835 with SMTP id 2adb3069b0e04-52407cddc3fmr1595444e87.26.1716201806986;
+        Mon, 20 May 2024 03:43:26 -0700 (PDT)
+Received: from eriador.lumag.spb.ru (dzdbxzyyyyyyyyyyyykxt-3.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::227])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-5238bee41afsm2044239e87.294.2024.05.20.03.43.25
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 20 May 2024 03:43:26 -0700 (PDT)
+Date: Mon, 20 May 2024 13:43:24 +0300
+From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+To: Vignesh Raman <vignesh.raman@collabora.com>
+Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com, 
+	helen.koike@collabora.com, airlied@gmail.com, daniel@ffwll.ch, robdclark@gmail.com, 
+	david.heidelberg@collabora.com, guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com, 
+	mcanal@igalia.com, linux-mediatek@lists.infradead.org, 
+	linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	amd-gfx@lists.freedesktop.org, linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org, 
+	virtualization@lists.linux-foundation.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 1/6] drm/ci: uprev mesa version
+Message-ID: <2qzmfv3oc6feihwxu3tl37rg6w3qsj2vddu5olvqk6vhqr26cc@bxu5y6ijvtfa>
+References: <20240517092502.647420-1-vignesh.raman@collabora.com>
+ <20240517092502.647420-2-vignesh.raman@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 14/16] arm64: defconfig: enable mt8365 sound
-To: Alexandre Mergnat <amergnat@baylibre.com>,
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Lee Jones <lee@kernel.org>,
- Flora Fu <flora.fu@mediatek.com>, Jaroslav Kysela <perex@perex.cz>,
- Takashi Iwai <tiwai@suse.com>, Sumit Semwal <sumit.semwal@linaro.org>,
- =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>,
- Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>
-Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org
-References: <20240226-audio-i350-v4-0-082b22186d4c@baylibre.com>
- <20240226-audio-i350-v4-14-082b22186d4c@baylibre.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20240226-audio-i350-v4-14-082b22186d4c@baylibre.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240517092502.647420-2-vignesh.raman@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240520_033915_308180_298EF7A4 
-X-CRM114-Status: UNSURE (   8.19  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240520_034332_567842_055F3957 
+X-CRM114-Status: GOOD (  17.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,15 +97,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 26/04/24 19:22, Alexandre Mergnat ha scritto:
-> Enable the MediaTek MT8365-EVK sound support.
+On Fri, May 17, 2024 at 02:54:57PM +0530, Vignesh Raman wrote:
+> zlib.net is not allowing tarball download anymore and results
+> in below error in kernel+rootfs_arm32 container build,
+> urllib.error.HTTPError: HTTP Error 403: Forbidden
+> urllib.error.HTTPError: HTTP Error 415: Unsupported Media Type
 > 
-> The audio feature is handled by the MT8365 SoC and
-> the MT6357 PMIC codec audio.
+> Uprev mesa to latest version which includes a fix for this issue.
+> https://gitlab.freedesktop.org/mesa/mesa/-/commit/908f444e
 > 
-> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+> Use id_tokens for JWT authentication. Since s3 bucket is migrated to
+> mesa-rootfs, update the variables accordingly. Also copy helper scripts
+> to install, so that the ci jobs can use these scripts for logging.
+> 
+> Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
+> ---
+> 
+> v2:
+>   - Uprev to recent version and use id_tokens for JWT authentication
+> 
+> ---
+>  drivers/gpu/drm/ci/build-igt.sh   |  2 +-
+>  drivers/gpu/drm/ci/build.sh       |  6 +++--
+>  drivers/gpu/drm/ci/container.yml  | 12 +++------
+>  drivers/gpu/drm/ci/gitlab-ci.yml  | 44 +++++++++++++++++++++----------
+>  drivers/gpu/drm/ci/image-tags.yml |  2 +-
+>  drivers/gpu/drm/ci/lava-submit.sh |  4 +--
+>  drivers/gpu/drm/ci/test.yml       |  2 ++
+>  7 files changed, 44 insertions(+), 28 deletions(-)
+> 
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+[skipped]
 
+> diff --git a/drivers/gpu/drm/ci/test.yml b/drivers/gpu/drm/ci/test.yml
+> index 8bc63912fddb..612c9ede3507 100644
+> --- a/drivers/gpu/drm/ci/test.yml
+> +++ b/drivers/gpu/drm/ci/test.yml
+> @@ -150,6 +150,8 @@ msm:sdm845:
+>      BM_KERNEL: https://${PIPELINE_ARTIFACTS_BASE}/arm64/cheza-kernel
+>      GPU_VERSION: sdm845
+>      RUNNER_TAG: google-freedreno-cheza
+> +    DEVICE_TYPE: sdm845-cheza-r3
+> +    FARM: google
 
+I see that this is the only user of the FARM: tag. Is it correct?
+Also we miss DEVICE_TYPE for several other boards. Should we be adding
+them?
+
+>    script:
+>      - ./install/bare-metal/cros-servo.sh
+>  
+> -- 
+> 2.40.1
+> 
+
+-- 
+With best wishes
+Dmitry
 
