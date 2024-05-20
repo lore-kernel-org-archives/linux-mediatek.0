@@ -4,67 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C15FC04FFE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 May 2024 15:17:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6BD9CC04FFE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 May 2024 15:23:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UHGBxKDSRAwkz9GOkKpjyDGJS5FfMPLL/9Zqrg3igro=; b=J6WBaqMF/XPWGDUSfNms3f0PGV
-	qC3PeSj5wrRDA68x17gcMQrG1vly65AI1774apRgou4mfWa/AhHsbnjskS9encV7U4qiWgxQyj8bn
-	a3m+P+12zjXDHydtneTyGNsegMgHQjx7/s8MZoM9+hZcnk+ULJjZ00CGJyk3MhZWB7r+f4G2Im7gb
-	BhTX6I6wtK9VbuJgpeIVuHe9FrBGik+CIgM+TC2+F2mfSUxoo7ie1lw/K1dJ8wlxmiebXW+0sG9z7
-	qlMhIOX1WGzOMTagMVlHnJJDr+N+IoXur+6ZASwtcPxtS5QxOlmL9zR6QWlyvZSRuqti4HftdaEPw
-	1MKwkGcg==;
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BvrEYs9DYAbC5MlxDXuq2vHAc+BawiypTJLqHR9+P4I=; b=II3i9itGFf0Pe1yAqJYyHtY/dV
+	HVi+jYM5z/mBRtqMQizOYUhKwcODtxKBT9kqYzrAj7dSKWkIWOKJx/o0ZnQAQqsbrP2Hx8gogz2Bm
+	Kdkki4zi9EAGCS0nrtuMxEk2ACwMf2ZaLdpytOSMrXvtwTHk40KtXFnDTS7zrG0/bWzSRUSlOTBbA
+	VwKQ+rm3Qim2zgXrvhjO56JDIVdJCUQhERjhaKrablT7WLduGg6D3I93T22pWKRwrVXaeTzkSowGq
+	9HQAIxm05fATPzdmcv1WoNqr08KoP6np6egE3RMmVJWTLufx6BbPQyUIrWviSV1bgw/5f1l23aHgf
+	mE+ygQmA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s94lj-0000000Eoo9-3IWs;
-	Mon, 20 May 2024 15:17:43 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1s94r8-0000000EpZy-3iOz;
+	Mon, 20 May 2024 15:23:18 +0000
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s94lg-0000000Eon6-2Tvq
+	id 1s94r6-0000000EpZ6-0ndc
 	for linux-mediatek@lists.infradead.org;
-	Mon, 20 May 2024 15:17:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1716218259;
-	bh=uOtGIokG1ej2tjKbqGupcKq5GCu2h9Y/Z6vGZV0u5Xs=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=UEJRy9kw6Npf7mH1E9bD3EIuQBame++rtyXg98us58+Q5wDNSXd+3ZunPzuNYT6Q/
-	 4fXLAANOecpWvIoGki2FE25wKASJzcIG66ffpZJ//fnGnglhMn1MxhI85R5DHbf2EE
-	 u0SbmVsFH6yrYm9CJpiGOxyqU7YN8Kk/lajgx+FxijhA3I4pxnRgKfzuhwoZ0hJb3F
-	 3nBjfBn//3QToBasV5/TXI3+JmNyL/VaI7tzKaU8D/oAS0AQfysZFHIeOjKVJlNqGU
-	 sO8N98F4CNw31ZjhOSNGSG85apx3031BocjAGZHQUzcxI+OJYpcMFjo6xA249T0Eqd
-	 ir4O31HVWGm7Q==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id EB98637810F1;
-	Mon, 20 May 2024 15:17:38 +0000 (UTC)
-Message-ID: <42c247c8-f4d6-4adb-a44e-218acfef6dce@collabora.com>
-Date: Mon, 20 May 2024 17:17:38 +0200
+	Mon, 20 May 2024 15:23:18 +0000
+Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-41f9ce16ed8so29779165e9.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 20 May 2024 08:23:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1716218593; x=1716823393; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:to:subject:user-agent:mime-version:date:message-id:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=BvrEYs9DYAbC5MlxDXuq2vHAc+BawiypTJLqHR9+P4I=;
+        b=DUjuy+OKCY9qvISJVXqARr5WbHSP8TkUHCASzA/78D+bIRZPuPhMTzQDFB3TxP/MRS
+         HmeL1nnZoE9GR0zIYtcsWeIhPuYmJh6YL3NhpFsQoVLXF037Xesj93UXSaaS9ae3oXkp
+         e3XrLPfN1WKWc75GLD6ykDd8nMGIh63hfwMVzJ9/sNIRYBxoE/8cyfMJ2p6ixIUrRmsp
+         jjdOLCzFauGfejI5Py5JY4EMTNIEyqWtFdVhw0wDQL2JkRH0wG8FOjVwZE9qQiSAqlZv
+         Ue/B68UIGONYY2YYhwWIDpwEtXgpeTHipwXBEaOxs1KxOfs0faulqqI3IRgEcg2rcvpA
+         sBAw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1716218593; x=1716823393;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=BvrEYs9DYAbC5MlxDXuq2vHAc+BawiypTJLqHR9+P4I=;
+        b=wl5BYa+I/y+OnC9eBpSvIsD8kbZPMUvTYDKqpyNrVrt7zx3MvoRyKoi3ynmrKNEMqa
+         Wc2UxC4EzLhTD8Ak7WvJQNFGVr+eQUHEigPloijZi281wfwEAkQjKExo/7M3fmR7SYFD
+         0THWXJoRflYzYLn3TI/rvVl+Pk1xJ3BZT3N+S5OMQmVkljuLfKis7o7VRWG6/N5SnoOn
+         iW9euGQNEG19Y63Qzyr5jS/9u6AykoaGSbGA+w3mj6QupE5/XCOkc9WjziAsMDVFXlaq
+         EHgQclHk3/6t/b5gyutAX+ef9nMhfOZgz6vRSl9O/0S7/NYXw7cxPY+CgqJtF7NctPSh
+         g3lw==
+X-Forwarded-Encrypted: i=1; AJvYcCV5+l5D7ouaj6W3SK6uRkNt5WsU1IeheQzoRheRhXRFzi2Ua2ftz/W/Imhb1nuDyg/sKt4GPOSuuHvXf2XJuHy/QxkZaarcdHQGbi/inOwNwHzn
+X-Gm-Message-State: AOJu0YwwyhPbLSN15sTBRIuw+tsl9Bg+FLoowbbKJVfH8ApcqJuvXamp
+	MUllvuo7gRvUDmojBrCjvtnzfNFIN+OFruSG6Cri28zIpCX/npGOae2jDGbG/2M=
+X-Google-Smtp-Source: AGHT+IEfQLzDF+6DeA5WUKvuzwObOI9YQj9ggS89zR1Mmor4R3KYRZxxcVlburs7BeHxESEegxmkMA==
+X-Received: by 2002:a05:600c:3ca3:b0:41c:23f3:65fa with SMTP id 5b1f17b1804b1-41feac55e3cmr276704235e9.28.1716218593164;
+        Mon, 20 May 2024 08:23:13 -0700 (PDT)
+Received: from [192.168.1.172] ([93.5.22.158])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-41f88111033sm461769625e9.34.2024.05.20.08.23.11
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 20 May 2024 08:23:12 -0700 (PDT)
+Message-ID: <51a47736-ffe8-49e2-b798-d409ca587501@baylibre.com>
+Date: Mon, 20 May 2024 17:23:11 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 00/15] Mediatek thermal sensor driver support for
- MT8186 and MT8188
-To: Julien Panis <jpanis@baylibre.com>, Nicolas Pitre <nico@fluxnic.net>,
- Daniel Lezcano <daniel.lezcano@linaro.org>, linux-pm@vger.kernel.org,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
-Cc: Nicolas Pitre <npitre@baylibre.com>
-References: <20240402032729.2736685-1-nico@fluxnic.net>
- <981a8748-16d0-4744-b097-aa9dd14c63a8@collabora.com>
- <13468147-6853-4bd8-bd3d-d1f1927133fa@baylibre.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH 2/4] arm64: dts: mediatek: mt8365: use a specific SCPSYS
+ compatible
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ MandyJH Liu <mandyjh.liu@mediatek.com>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20240518211159.142920-1-krzysztof.kozlowski@linaro.org>
+ <20240518211159.142920-2-krzysztof.kozlowski@linaro.org>
+ <f42ef151-6eee-418f-91e1-5ac08d161119@collabora.com>
+ <2cc638ca-0add-4c8c-b844-606e22dbd253@linaro.org>
+ <cf8c87fe-7a4f-423f-9c97-3759eeee4894@collabora.com>
 Content-Language: en-US
-In-Reply-To: <13468147-6853-4bd8-bd3d-d1f1927133fa@baylibre.com>
+From: Alexandre Mergnat <amergnat@baylibre.com>
+In-Reply-To: <cf8c87fe-7a4f-423f-9c97-3759eeee4894@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240520_081740_797307_28EA19EF 
-X-CRM114-Status: GOOD (  13.34  )
+X-CRM114-CacheID: sfid-20240520_082316_387662_81BD7A94 
+X-CRM114-Status: GOOD (  14.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,37 +104,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 20/05/24 15:18, Julien Panis ha scritto:
-> On 4/23/24 11:22, AngeloGioacchino Del Regno wrote:
->> Il 02/04/24 05:25, Nicolas Pitre ha scritto:
->>> This is a bunch of patches to support the MT8186 and MT8188 thermal
->>> sensor configurations. Several changes are needed to cope with oddities
->>> these SOCs implement.
+Hello Krzysztof,
+
+On 20/05/2024 12:12, AngeloGioacchino Del Regno wrote:
+> Il 20/05/24 12:03, Krzysztof Kozlowski ha scritto:
+>> On 20/05/2024 11:55, AngeloGioacchino Del Regno wrote:
+>>> Il 18/05/24 23:11, Krzysztof Kozlowski ha scritto:
+>>>> SoCs should use dedicated compatibles for each of their syscon nodes to
+>>>> precisely describe the block.  Using an incorrect compatible does not
+>>>> allow to properly match/validate children of the syscon device.  Replace
+>>>> SYSCFG compatible, which does not have children, with a new dedicated
+>>>> one for SCPSYS block.
+>>>>
+>>>> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 >>>
->>> All values (calibration data offsets, etc.) were lifted and adapted from
->>> the vendor driver source code.
->>>
+>>> Technically, that's not a SCPSYS block, but called SYSCFG in MT8365, but the
+>>> meaning and the functioning is the same, so it's fine for me.
 >>
->> I picked patches 7 and 12 (and also fixed them) introducing the nodes for the
->> LVTS controllers, but will not pick 9 and 15, as they're either missing thermal
->> zones and/or using the wrong names; let's wait for the next cycle for those, as
->> I will also be able to add the SVS on top (needs a bit of time for testing),
->> getting both SoCs complete on the LVTS side, without rushing.
->>
->> Cheers,
->> Angelo
+>> So there are two syscfg blocks? With exactly the same set of registers
+>> or different?
 >>
 > 
-> What do you mean by "missing" thermal zones ? (is there some reference
-> code somewhere listing them, or whatever ? how can I know which ones are
-> missing ?)
+> I'm not sure about that, I don't have the MT8365 datasheet...
 > 
-> It seems to me that Nico took into account your comment about 'tzone_name'
-> and fixed these names in v3 ('cpu-little0-thermal', ...). Are they still wrong ?
-> 
+> Adding Alexandre to the loop - I think he can clarify as he should have the
+> required documentation.
 
-Check mt8195.dtsi ;-)
+Unfortunately, The SCPSYS (@10006000) isn't documented, but according to the functionnal 
+specification, it seems to have only one block.
 
-Cheers
+I don't have the history why SYSCFG instead of SCPSYS.
 
+I've tested your serie and have a regression at the kernel boot time:
+[    7.738117] mtk-power-controller 10006000.syscon:power-controller: Failed to create device link 
+(0x180) with 14000000.syscon
+
+It's related to your patch 3/4.
+
+-- 
+Regards,
+Alexandre
 
