@@ -4,74 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72A26C04FFE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 May 2024 11:56:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 499A6C25B78
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 May 2024 12:53:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GnACuVzDP4Oyv0nSMiTACsNp/+0tNas+HeZfoD7dLh0=; b=ZuW776PISTfrTmoY9OQqd7/wn9
-	5EKGAYjYyGNqU5lo2/ONA99pe/aDv0vSzg5zoxj8ZfbAT8c96y3k5l1Fi+elqHtNXg1AeA8XFla90
-	GkZcBFgaq01y4Kfaq7G6S94J1S7CaroeDHXgy4tbLaq5wjppbjCAhJYrm+jdGx1QQRLb7xAUrOT8E
-	C5bI8hj2i73MO7NKUQ8/gFH+txS5MeCoB+gz/e5UheOqlifbuyoi+BZNGjKqbFQJ+MlhzlgmV1VVI
-	Ac89fmOZJMbZmufC+0DbUETykI1JunK9xPYcR5NRU+aabyWb6AuehgozXPTtJBs/vNNl/KLKliaN3
-	wLk/XQGA==;
+	bh=XpTS/UOJcc9WbuJR5vn3xPlMLUss9X8Ut2VcUbv1GcI=; b=ADK5cx7t9iCVZyFIE74Tv/eyAg
+	GyUOAQ/QmmzB5sOEUBw7Cap148ClFRHpBrXTizhIGQblit1Alu/43gXS/I3m054XAT33056DSn7vt
+	lEvf7twGxBsxZUDKjmiIyGCoOIHETtRsq8dfTVu3SI+CLjQvLzBv9Oem+Z3I/TrkIwy/yDZAchWeY
+	Ix8LsLequ9BMvQKcC+Kfagw99+meGX4hgGVmRe4qVduePVJPV2rBwPwOBfs2/2yyE6yu1n/neLBM+
+	tvGqkijfbOS9zyZnTvKEYPIkwrurXmwM1EwkANQqg0AjabQ0O7VdSpOa4hGw9pIkxvowEPG+eeQQG
+	AUDIZdrQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s91cZ-0000000ENsh-0XKv;
-	Mon, 20 May 2024 11:56:03 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1s92WV-0000000EVbx-0HB8;
+	Mon, 20 May 2024 12:53:51 +0000
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s91cV-0000000ENrX-2e30;
-	Mon, 20 May 2024 11:56:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1716206157;
-	bh=HVdVs5WsRae2+1QNnkZk8b+8Vke7zSeq7GNWP4iLtE0=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Pz57cOLcladhmdo5+/6Yy/Ks3GaYaTeKHcKTulsGnX7erKkpYOuVfk9HZAMKqnUy3
-	 t5SxNsaK0MHnaYCs7Iofizh3vsfHicUMyp1YOWul5M/ED7vFcj8y4QSU0I5E4WLFpb
-	 l/RqSzWiOq83+TlinnXWNfxJ7xVLRus4h5vUcgMU1HR8myXFmQYOmihk1hgLIbDbAc
-	 otfrAnUpt8A0LM43u4m3Fbf0Vf0+FIoZtEGN1Xc5aEYoTHgj2YrDshVMA5bRORqpWk
-	 Qq3s8hMeFveAo193c4XDBnxSuy1hSsZlehIycchb46jTXjThyfZ0QN6snIYwlGXveL
-	 JdseYdQ8dOAmA==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 6141C3780BFE;
-	Mon, 20 May 2024 11:55:56 +0000 (UTC)
-Message-ID: <df152312-a8ab-40d8-a361-fe5100e11dd9@collabora.com>
-Date: Mon, 20 May 2024 13:55:55 +0200
+	id 1s92WR-0000000EVaf-2c8D
+	for linux-mediatek@lists.infradead.org;
+	Mon, 20 May 2024 12:53:49 +0000
+Received: by mail-wr1-x436.google.com with SMTP id ffacd0b85a97d-34dc8d3fbf1so1678090f8f.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 20 May 2024 05:53:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1716209624; x=1716814424; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=XpTS/UOJcc9WbuJR5vn3xPlMLUss9X8Ut2VcUbv1GcI=;
+        b=pJLPbmA94n9cTm8UEppaYn7KWo1SjmFLg0H3zs7yEPadm3Y/9RqLCTKP8/9jvntYHP
+         vh3PglajUP9uZ1UG0hWydVSdWlmb0eVEfj2alP+9rvNISaIpUGHqyGST58NsWGMEwCd3
+         PPWC6g2stSnphBKN/Q7c0Xy7A2wsP8Ve0iP20fZ76x5j7wC2CqqkIklL507el/aDSiTM
+         FPss8jjscOImnYQtgICuXeHW4GtMUW7DCmc7a/+zLFz1YAvAQtE9PVd1eVQAoQbjY/Pp
+         qR5mnFY0KhW/2s8AJxu+DpU+VeI/bEIHS/qQt2y9ikdMzITPsyefOPA458WQ30sdytjG
+         f0LA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1716209624; x=1716814424;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=XpTS/UOJcc9WbuJR5vn3xPlMLUss9X8Ut2VcUbv1GcI=;
+        b=f3la3yS5xaL5dGDnBE6DjmcJsX/sMf5cOzh1yClO/qsO1E6T4p+nlFpAIROmXDN/QI
+         U/BcdFelo+EERaxTb0Bd+htEmRl+Nd1jNSgVgWYufCFfyfnnnySRjV8sIwytnK40ylMy
+         6vBR6ZasSUZkyH7w1U4GDm9IrNBHP7WglT5pDOnggqKdNhJs20Yd20/Pco/PBfX2rLU9
+         2A0szpX4He45I7xBfu4VLABB2LixcQhscAyYvK47lzCVewUFZ/SUij1HP8UZAEYO5E39
+         t+o8b2aHd0eMiOOukWqrSlr4bRiHbQminfZt8AmkVZ1DtOgMnBYGJsBQSStdwptg3GRt
+         id2Q==
+X-Forwarded-Encrypted: i=1; AJvYcCU23st4Qf5O5FVYqItQhC+Ln5t73I9DEOxV2TgkDUaxPOfbQBid2++rvKpb05uP29On1KpqSECDBReuC2s+jrnosfERcc5F/p5cm00QmgQ1MO7q
+X-Gm-Message-State: AOJu0YyxkW8rzUG3zj9n952qbCCBFdiEH9Aqg8twwDzJRC4y6t2st6x+
+	wBcni1TyYfmJw522oxNSJeIfsIl9Gw7/rraM5JfK6oDSA6vl0CQEKedcwr/co/M=
+X-Google-Smtp-Source: AGHT+IH3TUiR89Y7ynALFtrZoHqN4V0wClqNFYlgiy6j8bhsqgAWhVOwSDHKAiedHWew5HkCZs07ZA==
+X-Received: by 2002:a05:600c:4e8c:b0:41a:408b:dbaa with SMTP id 5b1f17b1804b1-41fea539875mr229021755e9.0.1716209623945;
+        Mon, 20 May 2024 05:53:43 -0700 (PDT)
+Received: from ?IPV6:2a01:cb1d:433:4e00:3518:6eec:d551:4012? ([2a01:cb1d:433:4e00:3518:6eec:d551:4012])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-41fe004eae9sm407632325e9.1.2024.05.20.05.53.42
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 20 May 2024 05:53:43 -0700 (PDT)
+Message-ID: <eae892e8-f888-4d15-85a5-c89b6b6825f7@baylibre.com>
+Date: Mon, 20 May 2024 14:53:42 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 2/3] dt-bindings: arm: mediatek: mmsys: Add OF graph
- support for board path
-To: Alexandre Mergnat <amergnat@baylibre.com>, chunkuang.hu@kernel.org
-Cc: robh@kernel.org, krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
- p.zabel@pengutronix.de, airlied@gmail.com, daniel@ffwll.ch,
- maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de,
- matthias.bgg@gmail.com, shawn.sung@mediatek.com, yu-chang.lee@mediatek.com,
- ck.hu@mediatek.com, jitao.shi@mediatek.com, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- wenst@chromium.org, kernel@collabora.com
-References: <20240516081104.83458-1-angelogioacchino.delregno@collabora.com>
- <20240516081104.83458-3-angelogioacchino.delregno@collabora.com>
- <ce1de395-3f60-4f7f-9424-bf036134de94@baylibre.com>
- <7dbe08cf-47a1-4da6-9035-6b0932cf8426@collabora.com>
- <67f13b3c-18b2-4042-9908-b4d41c24cdb0@baylibre.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v3 00/15] Mediatek thermal sensor driver support for
+ MT8186 and MT8188
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Nicolas Pitre <nico@fluxnic.net>, Daniel Lezcano
+ <daniel.lezcano@linaro.org>, linux-pm@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
+Cc: Nicolas Pitre <npitre@baylibre.com>
+References: <20240402032729.2736685-1-nico@fluxnic.net>
+ <981a8748-16d0-4744-b097-aa9dd14c63a8@collabora.com>
 Content-Language: en-US
-In-Reply-To: <67f13b3c-18b2-4042-9908-b4d41c24cdb0@baylibre.com>
+From: Julien Panis <jpanis@baylibre.com>
+In-Reply-To: <981a8748-16d0-4744-b097-aa9dd14c63a8@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240520_045559_840774_E9CAE193 
-X-CRM114-Status: UNSURE (   7.54  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240520_055347_885160_F15D4C65 
+X-CRM114-Status: GOOD (  14.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,23 +98,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 20/05/24 13:49, Alexandre Mergnat ha scritto:
-> 
-> 
-> On 20/05/2024 12:53, AngeloGioacchino Del Regno wrote:
->>> So, I don't know how you want to manage multiple display, but IMHO there are 2 
->>> ways:
->>> - removing the current "oneOf".
+On 4/23/24 11:22, AngeloGioacchino Del Regno wrote:
+> Il 02/04/24 05:25, Nicolas Pitre ha scritto:
+>> This is a bunch of patches to support the MT8186 and MT8188 thermal
+>> sensor configurations. Several changes are needed to cope with oddities
+>> these SOCs implement.
 >>
->> ...eh I think this should be anyOf instead :-)
+>> All values (calibration data offsets, etc.) were lifted and adapted from
+>> the vendor driver source code.
 >>
->> I'll check later and send a v5.
-> 
-> "anyOf" behavior works as expected on my side, dt-validate pass ;)
-> 
+>
+> I picked patches 7 and 12 (and also fixed them) introducing the nodes for the
+> LVTS controllers, but will not pick 9 and 15, as they're either missing thermal
+> zones and/or using the wrong names; let's wait for the next cycle for those, as
+> I will also be able to add the SVS on top (needs a bit of time for testing),
+> getting both SoCs complete on the LVTS side, without rushing.
+>
+> Cheers,
+> Angelo
+>
 
-Hey, thanks for the test, buys me some important time.
+Hello Angelo.
 
-Cheers!
-Angelo
+I took over Nico's work, so I might have missed a few things, but I'm
+a little bit confused with patches 7 and 13 (you wrote '12' but meant
+'13' I guess, didn't you ?).
+
+It seems to me that patches 7 and 13 were applied in next-20240503
+(f5bcf8ab0950 and d3dbc472ac66). But I don't find them any more in
+next-20240520. It's likely that I don't understand well the process, but
+I prefer being sure...Should I resend them in next series ?
+
+Just a comment about d3dbc472ac66. There's a typo error, I think:
+nvmem-cell-names = "lvts-calib-data1";
+...should be replaced with
+nvmem-cell-names = "lvts-calib-data-1";
+...according to the related yaml.
+
+Julien
+
+
+
 
