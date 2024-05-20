@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE429C25B7A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 May 2024 11:02:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11E9BC04FFE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 May 2024 11:03:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SIDOKwIcUp4lPPO/PDmHDa/A/zxT15SPb9EQ0kHZyQI=; b=OZE9FhZmXv6xI5WS3cCFFUxtin
-	iTfGxawGmFqeKmm6Ougie639JnQEGu17wGaXoMxvKCh87hYJy5lmQ4xPF/2X83wHAZOACvUUzcDlw
-	6pDaftR9g1vP8ETsoKasJviLMc71FKjwn0ao6TbYSyEj45+OdNCItRs0Fjd0JakIzIgV42SrJvdie
-	KWzEe7VjhTTxeH9i0G1Jc3T6TPQ3KENd4GaxNMsbqWDAPK/RD7/CA2e/QJbfmSgj9Ww+S9YvJ7/KU
-	8U+krMVde87fT+4mv8RWA2kkDYPCXvL9r7DMRDyRwc0hAKQIcemQkenITxT+NDxKqhrtGyD3zZD6Z
-	aSsmfYkQ==;
+	bh=gDt5zL9HqHL0LNTVxzu6RK9k/3ub+zUe1M1krBVr+UI=; b=X3FNB3Kcreh/0ollQUph5tXLsu
+	7Dqcs5syUuG1Wg7nHhxPzWJVdLmc2jpIhnGqpxrdKlStVjNXagBgaJ2mdb2fczqlpJjawDXasf277
+	Xyybmg9AF1NXqiOQbEoHb1TulTMYKL6F+d0w3uzEzg69aYosBasLHxvkrWeuj9EgD8Dqb1qH8AVBz
+	KWMXtd/C1eXHX/6oVKDZKiC67F/YkzR19BIGEDqLJacyAXZpWltRRiLfZ0pM7iKGWDUS+gsyb+SkN
+	n79Vv4I2ViiSysXsyqmR+wVcJZsi1Z6PRma9pSJC10/aoMQ/z5FzncXjQVtBN4sWc5mfUivUFoTzD
+	/112eyKw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s90nB-0000000EELA-0v1t;
-	Mon, 20 May 2024 11:02:57 +0000
+	id 1s90nT-0000000EEUL-2tvq;
+	Mon, 20 May 2024 11:03:15 +0000
 Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s90n5-0000000EEFb-2iSn
+	id 1s90nQ-0000000EESk-47ht
 	for linux-mediatek@lists.infradead.org;
-	Mon, 20 May 2024 11:02:54 +0000
-Received: by mail-lf1-x133.google.com with SMTP id 2adb3069b0e04-51f0602bc58so2339502e87.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 20 May 2024 04:02:47 -0700 (PDT)
+	Mon, 20 May 2024 11:03:14 +0000
+Received: by mail-lf1-x133.google.com with SMTP id 2adb3069b0e04-51fdc9af005so5175785e87.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 20 May 2024 04:03:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1716202966; x=1716807766; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1716202991; x=1716807791; darn=lists.infradead.org;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=SIDOKwIcUp4lPPO/PDmHDa/A/zxT15SPb9EQ0kHZyQI=;
-        b=hZzb5vYak1CsQ8+WUyq3VSW2fMaqMMvvCfWUbFe7CuxHsJjGsXUzvBzW0w27LzjUZy
-         k3PbXEmq5GYvCA1jqM6cVXNtOzMeyZa1ybELBzCQaCeYaZXqvgo09Vmbu767MiaWZUKc
-         MJpZpPypEM+SeKkxu9azq/fAVU9haCXjXXzGWth7BhzufEoIWE+1kGXp/1qWVqI1TCpR
-         /eiyFbaYptc+3g8hdlUs9PIf1D7ID9hw7q4BM0PQ2M3uBce9H8mU80DNZWtmdnw8/jN6
-         zBsq8JST/IOwvv5jg5NzcRWdIcHVyw3AuZ/fZOlJiXrHsIb7VYC3CBtACODfsz2Jdtey
-         MEtA==
+        bh=gDt5zL9HqHL0LNTVxzu6RK9k/3ub+zUe1M1krBVr+UI=;
+        b=bmHpPXdUSwJ6cBQ5LYw9062E5m4tONJNOP+8WyCY9lMj2tTa/5BSy1GxIVnWkW2qPw
+         pY5we+ekpPcKqXZOKv7J+pX1F5ifyNFWFxLGV0PErRCgQ6yZ/vt4vSOE6kuPumxTne5K
+         7AOU8iGoT4zuUlS1X5ZGkWjXqfR6mYCwBGfBgqdf4xWKz/FnfMgx+T2GF6J/PLNgcEgp
+         6X/+Mpo4k6NdR5+t1N+kSAU7JZ348wr15JO4OwGCkRI2qzUNzrWVUzF1iqd/TOxNkFtF
+         g240WPuB4eqtn4UKK/ZuowHQbtncIx3wxkq/64jkhwUlIJkOe7Of3kaYuQQGTA+3raC2
+         gVgg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1716202966; x=1716807766;
+        d=1e100.net; s=20230601; t=1716202991; x=1716807791;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=SIDOKwIcUp4lPPO/PDmHDa/A/zxT15SPb9EQ0kHZyQI=;
-        b=RP/7geocv4+QkdkirtMRj2+21xVVD7RpNKzwlrDl1h9jZ+LmLCbNAhwzoy+Lx/ojmd
-         Bz5VTQz2k6UiRFkqt84COmX8FBqXi9xQnKKET12pFmH0SPn6eys48J8fA9LXxp6KRS8s
-         WpHjV0TNQ0kIuwVKqN8xZrdx7lnQEOU0Z4F13cVX+wM27HjpUtPIlQpDvekIKc6H90E5
-         uTVZ4jcZFpLYDCat/8uGwsUxf/txNYjr3o7nK+nbHsqSyzfEeSOUa4bu47jmRbtdR9Il
-         jOlR8TFFfpI/CycGObWaSIu9Z1pJmrIkFZm3OomKsRJzGhBk7s9rVKu94P3wFiptv3vs
-         iDXA==
-X-Forwarded-Encrypted: i=1; AJvYcCVZi3DexjZytIlXP2aBITFZk/TmGv21uFjeqDfsup6usFdSKGP6P1iFytbQyMJv+wVY+uFU+zbnRRIs5fnaY9+6/BRcRPGg1lDcJ6oekckQWZf6
-X-Gm-Message-State: AOJu0YwBFj/UvngpSXTQRrxoNu5WLcbT5ekschajTi9vSSHjjzj/xXo0
-	r3CPWAHm+K7Sq47P8urPC094qg8UUy42G4Qy60bZJOrP7iFEG06uhVebPrn4kkM=
-X-Google-Smtp-Source: AGHT+IHe2PgQwC1mRKPz+r1r564vDGsot6Gznz5gkwCdKTo8R1LGu6rQBjXQZQUxapTX0MQHaaP1KA==
-X-Received: by 2002:ac2:44a8:0:b0:513:dbcd:7b8e with SMTP id 2adb3069b0e04-52407cdde08mr1551456e87.24.1716202966284;
-        Mon, 20 May 2024 04:02:46 -0700 (PDT)
+        bh=gDt5zL9HqHL0LNTVxzu6RK9k/3ub+zUe1M1krBVr+UI=;
+        b=MhhmUlNjHHFz5AFybCKNgUg1gRAmbO7+OKQCPRCWSjJY65p4z95dMnkpkp4h/F60Lp
+         0ZMJ82hg1wUB1PDSIwIgXxqOYtfsKQ6Sh+NVldDqHqsSc4o8KlGEtXw5wlDoXGt6raeD
+         KriLu9Ufe/Ddc/igcF9U0RT4Q/Tos+DhdN4qgD7v76vpU9sxxL7nxamWFxMkUxizK1AP
+         F7e6zaM0HHyOOJ8xh9FzPNiwPlX76HUnSnBijEXmA45O0uv6bc4IS6H24V+VsjssbOUT
+         riU8FxK+qcFQsBkPkUyC802nysYp1KRjKzkNcSW7C17ei2mcRgTWhPU+VV0pw6bLT1QL
+         OGfQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVyIinfcf+hOG7vjtFac7td3cOAwTlnWbX0qnD0dPyQ9EFWiyCeTFVlS5JSwBgmBXrapki3C2AouYfer4Uq/jV9tPMHhJTtwGlndJ6BVwRuYxmn
+X-Gm-Message-State: AOJu0Ywf6OrPa5/jdv35IU0Z1EQ7ua/QTcKfuAm12ao4x7yBCAnFH7r5
+	oah1BOczV6irvCOFdNyyY2ZWmIJfQBqrTWuuAAjalucdzHRA4LLlrNnJIMssN70=
+X-Google-Smtp-Source: AGHT+IEACx6wIZ/owZMa9fgLdIORVLGiIVgPJ5CApXgwF8B9qZycal7wPuLLAhEdV381KLhAEa79fg==
+X-Received: by 2002:a05:6512:33cf:b0:51d:9291:6945 with SMTP id 2adb3069b0e04-522102785abmr29386158e87.44.1716202991332;
+        Mon, 20 May 2024 04:03:11 -0700 (PDT)
 Received: from eriador.lumag.spb.ru (dzdbxzyyyyyyyyyyyykxt-3.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::227])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-5236e80e8c9sm2317384e87.238.2024.05.20.04.02.45
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-5225132505csm3241339e87.116.2024.05.20.04.03.10
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 20 May 2024 04:02:45 -0700 (PDT)
-Date: Mon, 20 May 2024 14:02:44 +0300
+        Mon, 20 May 2024 04:03:10 -0700 (PDT)
+Date: Mon, 20 May 2024 14:03:09 +0300
 From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
 To: Vignesh Raman <vignesh.raman@collabora.com>
 Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com, 
@@ -72,17 +72,17 @@ Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com,
 	linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org, 
 	amd-gfx@lists.freedesktop.org, linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org, 
 	virtualization@lists.linux-foundation.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 3/6] drm/ci: build virtual GPU driver as module
-Message-ID: <elftuzsd7lhz6y5ow6rb5uu5fb5b5jcprxtvxtxtojo774rnyr@swpeg4vkgtnc>
+Subject: Re: [PATCH v2 4/6] drm/ci: uprev IGT
+Message-ID: <4hnd6bznqsp3ve7dh6uhz3ygs7yyapqcrainnqlhfejomcdbvo@htlnfpqb3jg3>
 References: <20240517092502.647420-1-vignesh.raman@collabora.com>
- <20240517092502.647420-4-vignesh.raman@collabora.com>
+ <20240517092502.647420-5-vignesh.raman@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240517092502.647420-4-vignesh.raman@collabora.com>
+In-Reply-To: <20240517092502.647420-5-vignesh.raman@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240520_040251_719419_ADBEBA75 
-X-CRM114-Status: GOOD (  20.63  )
+X-CRM114-CacheID: sfid-20240520_040313_048570_DD57937C 
+X-CRM114-Status: GOOD (  10.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,108 +97,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, May 17, 2024 at 02:54:59PM +0530, Vignesh Raman wrote:
-> With latest IGT, the tests tries to load the module and it
-> fails. So build the virtual GPU driver for virtio as module.
-
-Why? If the test fails on module loading (if the driver is built-in)
-then it's the test that needs to be fixed, not the kerenel config.
-
-It's fine as a temporal workaround, but please include a link to the
-patch posted to fix the issue.
-
+On Fri, May 17, 2024 at 02:55:00PM +0530, Vignesh Raman wrote:
+> test-list.txt and test-list-full.txt are not generated for
+> cross-builds and they are required by drm-ci for testing
+> arm32 targets.
+> 
+> This is fixed in igt-gpu-tools. So uprev IGT to include the
+> commit which fixes this issue. Disable building xe driver
+> tests for non-intel platforms.
 > 
 > Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
 > ---
 > 
 > v2:
->   - No changes.
+>   - Split IGT uprev to seperate patch.
 > 
-> ---
->  drivers/gpu/drm/ci/build.sh       | 1 -
->  drivers/gpu/drm/ci/igt_runner.sh  | 6 +++---
->  drivers/gpu/drm/ci/image-tags.yml | 4 ++--
->  drivers/gpu/drm/ci/test.yml       | 1 +
->  drivers/gpu/drm/ci/x86_64.config  | 2 +-
->  5 files changed, 7 insertions(+), 7 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/ci/build.sh b/drivers/gpu/drm/ci/build.sh
-> index a67871fdcd3f..e938074ac8e7 100644
-> --- a/drivers/gpu/drm/ci/build.sh
-> +++ b/drivers/gpu/drm/ci/build.sh
-> @@ -157,7 +157,6 @@ fi
->  
->  mkdir -p artifacts/install/lib
->  mv install/* artifacts/install/.
-> -rm -rf artifacts/install/modules
->  ln -s common artifacts/install/ci-common
->  cp .config artifacts/${CI_JOB_NAME}_config
->  
-> diff --git a/drivers/gpu/drm/ci/igt_runner.sh b/drivers/gpu/drm/ci/igt_runner.sh
-> index 20026612a9bd..55532f79fbdc 100755
-> --- a/drivers/gpu/drm/ci/igt_runner.sh
-> +++ b/drivers/gpu/drm/ci/igt_runner.sh
-> @@ -30,10 +30,10 @@ case "$DRIVER_NAME" in
->              export IGT_FORCE_DRIVER="panfrost"
->          fi
->          ;;
-> -    amdgpu)
-> +    amdgpu|virtio_gpu)
->          # Cannot use HWCI_KERNEL_MODULES as at that point we don't have the module in /lib
-> -        mv /install/modules/lib/modules/* /lib/modules/.
-> -        modprobe amdgpu
-> +        mv /install/modules/lib/modules/* /lib/modules/. || true
-> +        modprobe --first-time $DRIVER_NAME
->          ;;
->  esac
->  
-> diff --git a/drivers/gpu/drm/ci/image-tags.yml b/drivers/gpu/drm/ci/image-tags.yml
-> index 60323ebc7304..328f5c560742 100644
-> --- a/drivers/gpu/drm/ci/image-tags.yml
-> +++ b/drivers/gpu/drm/ci/image-tags.yml
-> @@ -4,9 +4,9 @@ variables:
->     DEBIAN_BASE_TAG: "${CONTAINER_TAG}"
->  
->     DEBIAN_X86_64_BUILD_IMAGE_PATH: "debian/x86_64_build"
-> -   DEBIAN_BUILD_TAG: "2023-10-08-config"
-> +   DEBIAN_BUILD_TAG: "2024-05-09-virtio"
->  
-> -   KERNEL_ROOTFS_TAG: "2023-10-06-amd"
-> +   KERNEL_ROOTFS_TAG: "2024-05-09-virtio"
->  
->     DEBIAN_X86_64_TEST_BASE_IMAGE: "debian/x86_64_test-base"
->     DEBIAN_X86_64_TEST_IMAGE_GL_PATH: "debian/x86_64_test-gl"
-> diff --git a/drivers/gpu/drm/ci/test.yml b/drivers/gpu/drm/ci/test.yml
-> index 612c9ede3507..864ac3809d84 100644
-> --- a/drivers/gpu/drm/ci/test.yml
-> +++ b/drivers/gpu/drm/ci/test.yml
-> @@ -350,6 +350,7 @@ virtio_gpu:none:
->    script:
->      - ln -sf $CI_PROJECT_DIR/install /install
->      - mv install/bzImage /lava-files/bzImage
-> +    - mkdir -p /lib/modules
 
-Is it necessary to create it manually here?
+Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
 
->      - mkdir -p $CI_PROJECT_DIR/results
->      - ln -sf $CI_PROJECT_DIR/results /results
->      - install/crosvm-runner.sh install/igt_runner.sh
-> diff --git a/drivers/gpu/drm/ci/x86_64.config b/drivers/gpu/drm/ci/x86_64.config
-> index 1cbd49a5b23a..78479f063e8e 100644
-> --- a/drivers/gpu/drm/ci/x86_64.config
-> +++ b/drivers/gpu/drm/ci/x86_64.config
-> @@ -91,7 +91,7 @@ CONFIG_KVM=y
->  CONFIG_KVM_GUEST=y
->  CONFIG_VIRT_DRIVERS=y
->  CONFIG_VIRTIO_FS=y
-> -CONFIG_DRM_VIRTIO_GPU=y
-> +CONFIG_DRM_VIRTIO_GPU=m
->  CONFIG_SERIAL_8250_CONSOLE=y
->  CONFIG_VIRTIO_NET=y
->  CONFIG_VIRTIO_CONSOLE=y
-> -- 
-> 2.40.1
-> 
 
 -- 
 With best wishes
