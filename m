@@ -4,85 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69E3EC04FFE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 May 2024 10:43:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E56FC04FFE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 May 2024 10:46:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=icwVF42TmZ2hZjEXcduZvhpSy5tVelIfuJSjSBSENHo=; b=WXkh+k8n2iJnmGO7s7mvyH+A+0
-	ODsP1kqH+UO3oQBSipwZ3MmVsZnHb0Qaj7PwnkSU0yw5/kurmbNf5KcDbyTs5UZeuhq44Jvv9LMDW
-	HIQvmJid9mDSw55xI45N4BuDAWTQe/KJ23ppijGRrkSEm8LEmjh5EUi5rAdwkI/Et9HNj5Vv9DjN+
-	45cBM4IaWv8+x2rjq0poP39U5xMfhbV8MiWU1YTl5cBrpDZL7OOX5qs1bdKMIl6MXJfl3hmvQad8N
-	tLV+2e1HqDIIQ1y0zRHU5oncpeMIICbC8Pc8rVfTJb+rVBsIKrEc96BQcT8+3rBt1nExpz2uK5MaF
-	pGLuR6zw==;
+	bh=33VnrnZQnXRRdfZfVThbMcf3rBaLFM2cLbyWTGtXaGE=; b=JpTG7Op3RY3dEEDDmwi7H9O16T
+	Tqb5hgQaCjsEGlXGet+opwmeL8lQFRv/+2VPCbusD+Kbp8jhqJE8liGukJ9bnCDsVDMJkYCMh1Als
+	+IIzI5HOII1X0X4HfQn0XFbtizf+mIwEY4d/lz5bIQjjdN00rQlsNd0h7SsKDG5pgpBH7sLb4NRm4
+	fo6MLMhFVyaQmFV5+JrYI/rDsl9xUH7pOhVP/9S1aiRFyUk+inHVbnwn5h8aHDbz7unwkd45NNKye
+	do6WHjVdvXY1hpbgKi3qZGuiaNnoRv6ujySynDS/PTJJbwcE3Np1SP3t7DVTCkpkayw1KklN1rn4G
+	Tmd90ZYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s90UT-0000000EBiZ-3Ymg;
-	Mon, 20 May 2024 10:43:37 +0000
-Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
+	id 1s90XV-0000000ECI5-0hBz;
+	Mon, 20 May 2024 10:46:45 +0000
+Received: from mail-ua1-x92b.google.com ([2607:f8b0:4864:20::92b])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s90UO-0000000EBdy-1ubT
+	id 1s90XS-0000000ECGw-0YD9
 	for linux-mediatek@lists.infradead.org;
-	Mon, 20 May 2024 10:43:35 +0000
-Received: by mail-lf1-x12f.google.com with SMTP id 2adb3069b0e04-51fcb7dc722so3667196e87.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 20 May 2024 03:43:28 -0700 (PDT)
+	Mon, 20 May 2024 10:46:43 +0000
+Received: by mail-ua1-x92b.google.com with SMTP id a1e0cc1a2514c-7f16ff3aa61so793648241.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 20 May 2024 03:46:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1716201807; x=1716806607; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=icwVF42TmZ2hZjEXcduZvhpSy5tVelIfuJSjSBSENHo=;
-        b=WhPs+B6L2+z9wNokzXkUDMHQ2ik9RPqpwHUOWb9XenZqNTHg3W15d9Bu17tmOf3MWv
-         8cyuBNAzWLwKx8IVYHnxZhZYLAcbY2wk47Y1YgjAZg976X0D0bwHqjRWzZm++HXcv9ml
-         rIsdrQeatyZ07ojnpLn92GYSaN+NOZaW90gURClrxFBz4iGaDpnRH0rtpOHeqeMB53E7
-         htVNI5ipnv7GPgYUshmibcDcpx4nUv/mOEt1Oskn7Yj3pY48eo+Bhl2pdxvZH0dsjpPF
-         9P2veOQFmwvvRjwRSWp1lNYiEVukNnRTiTvDiDEHEoSW0jGnILpflDcO2DfkLu5aiL7s
-         C/eg==
+        d=linaro.org; s=google; t=1716201999; x=1716806799; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=33VnrnZQnXRRdfZfVThbMcf3rBaLFM2cLbyWTGtXaGE=;
+        b=a0E3Z7cZ5TqcxyDwbCX9nbF0zicJWKZwZ6VBJvO2OLfMS9rSxKAvSKJgrEZT1M6CH+
+         GHTdhDO3kf6ufJMZGTrJBVClypy5iNTOu7qqcD3tWccO+CiZiEd7/j5SOfrqTwWX0YUh
+         zE+q5ssOpXyJLYCokzKzRFovoFqqWbIXuMbWetx2lkQNWZv59K8jx20COvagTulOvjd1
+         Nza52G5bbEG+imIFYiyBbG3SEg//woTMpoFJ15wK4LFzFfQ8tkaQQl4sFMzaBkou7etm
+         uTz8vqL7IypS2fvwj2WZwRMp3PMJVh9dUj136yZuNsdFj/frpTVM5+Od0Ldeup/aQIfP
+         d57g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1716201807; x=1716806607;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=icwVF42TmZ2hZjEXcduZvhpSy5tVelIfuJSjSBSENHo=;
-        b=HWzz5fqzSzUNowm5bZba5lSyJDZOVITQiQho1sh4itEpxho7kEmC+uBvxo231vs5D1
-         NNvrbm0cggRMq/qVseTC3CkfimJNq35EP/eICVvbtrRs9lsdP8x8NH5xS5GAzpaQznvb
-         qn2CDmcu4tDDo7BDbMubipKjFBLDePhah1phdY8zmeLc5mm/Y/xpYw/B8LyDlgpF4n1P
-         YlimxMigoI8uJQD/dY8N1c3HHFz3NdPmzeuYsgcF3kxc2QwMFyfcDCyl04uvidWUejRt
-         1Qu9DSbfQmqnMo6Eg8OuxpVl7ozOhr91Thc4JTdopNlliYTSICtztAqUb7oGwuWGnrU1
-         2KKA==
-X-Forwarded-Encrypted: i=1; AJvYcCUlpKcmurOjwXH2VXu6cTDqgzfMuCIFCM2Vh8Qfxq9p4EPV8Ccsvii06vj6bNsp7rNvlf8m1Onug+evICI9qoKszDtEv+ZrgzRj69yU3pdAj8JQ
-X-Gm-Message-State: AOJu0Yys3DTLxK4HyVVc38ojmohGNcjgsd7q5qXekr1qcighMCXu5CcD
-	p1knKLU0ZYavyFzOW/vy0YSZJz7cXWFSMxCJPAlZrwNxQ4WA44TZUgXbL4K5mtU=
-X-Google-Smtp-Source: AGHT+IFzot8n6xHV0OHm6wH4k0sEr+LYxBLD0eD+umJwBs/mAovf2bSRWjBos0WaEoAs2a0risJ1Ww==
-X-Received: by 2002:a05:6512:4801:b0:51d:8ff3:f835 with SMTP id 2adb3069b0e04-52407cddc3fmr1595444e87.26.1716201806986;
-        Mon, 20 May 2024 03:43:26 -0700 (PDT)
-Received: from eriador.lumag.spb.ru (dzdbxzyyyyyyyyyyyykxt-3.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::227])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-5238bee41afsm2044239e87.294.2024.05.20.03.43.25
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 20 May 2024 03:43:26 -0700 (PDT)
-Date: Mon, 20 May 2024 13:43:24 +0300
-From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-To: Vignesh Raman <vignesh.raman@collabora.com>
-Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com, 
-	helen.koike@collabora.com, airlied@gmail.com, daniel@ffwll.ch, robdclark@gmail.com, 
-	david.heidelberg@collabora.com, guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com, 
-	mcanal@igalia.com, linux-mediatek@lists.infradead.org, 
-	linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	amd-gfx@lists.freedesktop.org, linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org, 
-	virtualization@lists.linux-foundation.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 1/6] drm/ci: uprev mesa version
-Message-ID: <2qzmfv3oc6feihwxu3tl37rg6w3qsj2vddu5olvqk6vhqr26cc@bxu5y6ijvtfa>
-References: <20240517092502.647420-1-vignesh.raman@collabora.com>
- <20240517092502.647420-2-vignesh.raman@collabora.com>
+        d=1e100.net; s=20230601; t=1716201999; x=1716806799;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=33VnrnZQnXRRdfZfVThbMcf3rBaLFM2cLbyWTGtXaGE=;
+        b=Uqo2KNdJISzvf88HhNZjPu0CFKxOrW2kQw1WWcSwx+TTjbOWeQMQW/vcZiSRbQcnNb
+         Z2kvGqf8556WR1wiExMDHrGXZj+93OJbW92Sme/YABbYGF1wb05ThbNEbw9ncmoLh0a5
+         v+sqvpY/ZTZ2bYrkVtf/Kf7DSOsYfJFtKxJ9dhJWqmLZz+lZaU560w6czKdGARHjIm4A
+         RRSw0qTSYMwJaiEI1scJpinDbNxFgkj252ZnW+KrxT2B1vXdPoAtkM5ykIc7i2+y3rL7
+         o2ZBzXz8GTcOz+Z530MECOqnpITEjAPB88r0/FL87q9R/91FMkshydhY5xnulnO0r7ck
+         1gAg==
+X-Forwarded-Encrypted: i=1; AJvYcCX2U9b/oq2qm1Eabn1pV7s1MsePLPbduMX7awkwccVINDCr3GLn+zDajVlCNMKCR3muCiIlkkb//sRSUhFbHzqj3f4b0yBpea92G/jI3QkgOZtU
+X-Gm-Message-State: AOJu0YwVZwc7/PxJavWM5PHrFnabRTAf8/Cs7DVJqR0dcBRSsNIAoXo2
+	M56LFhK+bv7P980FQ5ZQoGpQo6LQUFnaY8JK6mV45TqlEr0DTINI4B8gZampbcRfwSgXjWNOePA
+	Q575ECpNGzPzBMBN+8q4GgayNqszK49D08/kRWA==
+X-Google-Smtp-Source: AGHT+IGs3xAJDCVogm4isgBXwwArR/oG+a8UL/2JuAU4s5nJywQAM3yVXZncptK/GUfVpwY1Us0rOwSRkd1XTe+hwz0=
+X-Received: by 2002:a05:6102:3707:b0:47c:24fa:b627 with SMTP id
+ ada2fe7eead31-48077de52e5mr31442181137.13.1716201999159; Mon, 20 May 2024
+ 03:46:39 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240517092502.647420-2-vignesh.raman@collabora.com>
+References: <20240507020037.14009-1-gavin.liu@mediatek.com>
+In-Reply-To: <20240507020037.14009-1-gavin.liu@mediatek.com>
+From: Sumit Garg <sumit.garg@linaro.org>
+Date: Mon, 20 May 2024 16:16:28 +0530
+Message-ID: <CAFA6WYN79E8Hyxsaxu20hkyNebMqBWV7az5ByekTuii7Y7qjng@mail.gmail.com>
+Subject: Re: [PATCH v3] optee: add timeout value to optee_notif_wait() to
+ support timeout
+To: "gavin.liu" <gavin.liu@mediatek.com>
+Cc: Jens Wiklander <jens.wiklander@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	op-tee@lists.trustedfirmware.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240520_034332_567842_055F3957 
-X-CRM114-Status: GOOD (  17.56  )
+X-CRM114-CacheID: sfid-20240520_034642_184722_430096B3 
+X-CRM114-Status: GOOD (  24.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,61 +90,133 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, May 17, 2024 at 02:54:57PM +0530, Vignesh Raman wrote:
-> zlib.net is not allowing tarball download anymore and results
-> in below error in kernel+rootfs_arm32 container build,
-> urllib.error.HTTPError: HTTP Error 403: Forbidden
-> urllib.error.HTTPError: HTTP Error 415: Unsupported Media Type
-> 
-> Uprev mesa to latest version which includes a fix for this issue.
-> https://gitlab.freedesktop.org/mesa/mesa/-/commit/908f444e
-> 
-> Use id_tokens for JWT authentication. Since s3 bucket is migrated to
-> mesa-rootfs, update the variables accordingly. Also copy helper scripts
-> to install, so that the ci jobs can use these scripts for logging.
-> 
-> Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
+Hi,
+
+On Tue, 7 May 2024 at 07:31, gavin.liu <gavin.liu@mediatek.com> wrote:
+>
+> From: Gavin Liu <gavin.liu@mediatek.com>
+>
+> Add timeout value to support self waking when timeout to avoid waiting
+> indefinitely.
+>
+> Signed-off-by: Gavin Liu <gavin.liu@mediatek.com>
 > ---
-> 
-> v2:
->   - Uprev to recent version and use id_tokens for JWT authentication
-> 
+> change in v3:
+> 1. change the comment in optee_rpc_cmd.h
+> 2. add macro for "TEE_ERROR_TIMEOUT"
+> 3. change from "TEEC_ERROR_BUSY" to "TEE_ERROR_TIMEOUT"
 > ---
->  drivers/gpu/drm/ci/build-igt.sh   |  2 +-
->  drivers/gpu/drm/ci/build.sh       |  6 +++--
->  drivers/gpu/drm/ci/container.yml  | 12 +++------
->  drivers/gpu/drm/ci/gitlab-ci.yml  | 44 +++++++++++++++++++++----------
->  drivers/gpu/drm/ci/image-tags.yml |  2 +-
->  drivers/gpu/drm/ci/lava-submit.sh |  4 +--
->  drivers/gpu/drm/ci/test.yml       |  2 ++
->  7 files changed, 44 insertions(+), 28 deletions(-)
-> 
+>  drivers/tee/optee/notif.c         |  9 +++++++--
+>  drivers/tee/optee/optee_private.h |  5 ++++-
+>  drivers/tee/optee/optee_rpc_cmd.h |  1 +
+>  drivers/tee/optee/rpc.c           | 10 ++++++++--
+>  4 files changed, 20 insertions(+), 5 deletions(-)
+>
 
-[skipped]
+Although the change looks reasonable to me, can you point me to
+corresponding OP-TEE OS changes to be sure that ABI compatibility is
+maintained?
 
-> diff --git a/drivers/gpu/drm/ci/test.yml b/drivers/gpu/drm/ci/test.yml
-> index 8bc63912fddb..612c9ede3507 100644
-> --- a/drivers/gpu/drm/ci/test.yml
-> +++ b/drivers/gpu/drm/ci/test.yml
-> @@ -150,6 +150,8 @@ msm:sdm845:
->      BM_KERNEL: https://${PIPELINE_ARTIFACTS_BASE}/arm64/cheza-kernel
->      GPU_VERSION: sdm845
->      RUNNER_TAG: google-freedreno-cheza
-> +    DEVICE_TYPE: sdm845-cheza-r3
-> +    FARM: google
+-Sumit
 
-I see that this is the only user of the FARM: tag. Is it correct?
-Also we miss DEVICE_TYPE for several other boards. Should we be adding
-them?
-
->    script:
->      - ./install/bare-metal/cros-servo.sh
->  
-> -- 
-> 2.40.1
-> 
-
--- 
-With best wishes
-Dmitry
+> diff --git a/drivers/tee/optee/notif.c b/drivers/tee/optee/notif.c
+> index 0d7878e770cd..1970880c796f 100644
+> --- a/drivers/tee/optee/notif.c
+> +++ b/drivers/tee/optee/notif.c
+> @@ -29,7 +29,7 @@ static bool have_key(struct optee *optee, u_int key)
+>         return false;
+>  }
+>
+> -int optee_notif_wait(struct optee *optee, u_int key)
+> +int optee_notif_wait(struct optee *optee, u_int key, u32 timeout)
+>  {
+>         unsigned long flags;
+>         struct notif_entry *entry;
+> @@ -70,7 +70,12 @@ int optee_notif_wait(struct optee *optee, u_int key)
+>          * Unlock temporarily and wait for completion.
+>          */
+>         spin_unlock_irqrestore(&optee->notif.lock, flags);
+> -       wait_for_completion(&entry->c);
+> +       if (timeout != 0) {
+> +               if (!wait_for_completion_timeout(&entry->c, timeout))
+> +                       rc = -ETIMEDOUT;
+> +       } else {
+> +               wait_for_completion(&entry->c);
+> +       }
+>         spin_lock_irqsave(&optee->notif.lock, flags);
+>
+>         list_del(&entry->link);
+> diff --git a/drivers/tee/optee/optee_private.h b/drivers/tee/optee/optee_private.h
+> index 429cc20be5cc..424898cdc4e9 100644
+> --- a/drivers/tee/optee/optee_private.h
+> +++ b/drivers/tee/optee/optee_private.h
+> @@ -26,6 +26,9 @@
+>  #define TEEC_ERROR_BUSY                        0xFFFF000D
+>  #define TEEC_ERROR_SHORT_BUFFER                0xFFFF0010
+>
+> +/* API Return Codes are from the GP TEE Internal Core API Specification */
+> +#define TEE_ERROR_TIMEOUT              0xFFFF3001
+> +
+>  #define TEEC_ORIGIN_COMMS              0x00000002
+>
+>  /*
+> @@ -252,7 +255,7 @@ struct optee_call_ctx {
+>
+>  int optee_notif_init(struct optee *optee, u_int max_key);
+>  void optee_notif_uninit(struct optee *optee);
+> -int optee_notif_wait(struct optee *optee, u_int key);
+> +int optee_notif_wait(struct optee *optee, u_int key, u32 timeout);
+>  int optee_notif_send(struct optee *optee, u_int key);
+>
+>  u32 optee_supp_thrd_req(struct tee_context *ctx, u32 func, size_t num_params,
+> diff --git a/drivers/tee/optee/optee_rpc_cmd.h b/drivers/tee/optee/optee_rpc_cmd.h
+> index f3f06e0994a7..4576751b490c 100644
+> --- a/drivers/tee/optee/optee_rpc_cmd.h
+> +++ b/drivers/tee/optee/optee_rpc_cmd.h
+> @@ -41,6 +41,7 @@
+>   * Waiting on notification
+>   * [in]    value[0].a      OPTEE_RPC_NOTIFICATION_WAIT
+>   * [in]    value[0].b      notification value
+> + * [in]    value[0].c      timeout in milliseconds or 0 if no timeout
+>   *
+>   * Sending a synchronous notification
+>   * [in]    value[0].a      OPTEE_RPC_NOTIFICATION_SEND
+> diff --git a/drivers/tee/optee/rpc.c b/drivers/tee/optee/rpc.c
+> index f086812f1179..5de4504665be 100644
+> --- a/drivers/tee/optee/rpc.c
+> +++ b/drivers/tee/optee/rpc.c
+> @@ -130,6 +130,8 @@ static void handle_rpc_func_cmd_i2c_transfer(struct tee_context *ctx,
+>  static void handle_rpc_func_cmd_wq(struct optee *optee,
+>                                    struct optee_msg_arg *arg)
+>  {
+> +       int rc = 0;
+> +
+>         if (arg->num_params != 1)
+>                 goto bad;
+>
+> @@ -139,7 +141,8 @@ static void handle_rpc_func_cmd_wq(struct optee *optee,
+>
+>         switch (arg->params[0].u.value.a) {
+>         case OPTEE_RPC_NOTIFICATION_WAIT:
+> -               if (optee_notif_wait(optee, arg->params[0].u.value.b))
+> +               rc = optee_notif_wait(optee, arg->params[0].u.value.b, arg->params[0].u.value.c);
+> +               if (rc)
+>                         goto bad;
+>                 break;
+>         case OPTEE_RPC_NOTIFICATION_SEND:
+> @@ -153,7 +156,10 @@ static void handle_rpc_func_cmd_wq(struct optee *optee,
+>         arg->ret = TEEC_SUCCESS;
+>         return;
+>  bad:
+> -       arg->ret = TEEC_ERROR_BAD_PARAMETERS;
+> +       if (rc == -ETIMEDOUT)
+> +               arg->ret = TEE_ERROR_TIMEOUT;
+> +       else
+> +               arg->ret = TEEC_ERROR_BAD_PARAMETERS;
+>  }
+>
+>  static void handle_rpc_func_cmd_wait(struct optee_msg_arg *arg)
+> --
+> 2.18.0
+>
 
