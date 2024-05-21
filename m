@@ -4,89 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65B76C25B7A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 May 2024 14:41:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D126C25B74
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 May 2024 15:16:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nZ1k0uetES8u8MlD8iJUWjUc76+6FpZkYnzMg83sWbo=; b=B1/Ino3sP5o0gpX48TsYekMrh5
-	G7hnbKMnEvvL+K2PhUo0JsoHveTDTxmYD6Fr/+Ra/YtlYxenXWmOUr3KHBSnneB/fYMaAag/8IUa6
-	aDKeUVV+oHS/FuHtJRwhYESYDagIZccvSzuXM6rrFzmNLtpXU/wSUYTPG/HMCz3yVENjfxeayF3g8
-	UzHDbyQmF3exYBAhYaFKZIySrxhi8WseakbfXLB4QkanDgCj6jEKYzrkn2/JsCme3NHErFZvt4Hi8
-	BCgVrYnfbAdJGQtXdQtdYwWzTm4V/wUneGD5i7U5EsV9DzXPhxqrSWIM1syYWJuU83WhIub1obPho
-	+E3mbd6Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=zgoKFoQ+1ZxeBSFvhA/0PLTmzF3XLdEhqXLatkcXB1c=; b=Aeg5QG5mScGo9y
+	jDZi8FHOXfTMFxz+FbA2egmp6aZq7oaz/hcmG48KKeq0iHq3XNCeKSSESv3laT3o/gqd65aalST0Y
+	C2A3ehb1wvKrCZs8HAL9msPy616i5eJudYL4hI1L7q2ntdDMja0v1iSx3dY5u4jF6vdR07VWNzkzr
+	zL/RJsBTRIWO1hB3TCc9Aqry384HzTfliZ5O/WupcHNy17p1/kHGcaVnzGmAq2PBzYCQoxjYUiAnm
+	JURy+VAqDxqrvcNnQNROl2KYqCyBzRjP2gnQkq9eRBQQlmYaKTRUAVNkIXurzQCz0iYlJVpVdBlAp
+	t28hjMC3jLUFUhvQ4lMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s9QgM-00000000Cs1-3QPo;
-	Tue, 21 May 2024 14:41:38 +0000
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+	id 1s9RDm-00000000JaO-2NXt;
+	Tue, 21 May 2024 15:16:10 +0000
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s9QgI-00000000Cpu-3cp2
+	id 1s9Q7n-000000006An-3CQs
 	for linux-mediatek@lists.infradead.org;
-	Tue, 21 May 2024 14:41:37 +0000
-Received: by mail-wr1-x430.google.com with SMTP id ffacd0b85a97d-351d4909783so3270545f8f.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 21 May 2024 07:41:34 -0700 (PDT)
+	Tue, 21 May 2024 14:05:58 +0000
+Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-41fd5dc04f0so23494635e9.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 21 May 2024 07:05:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1716302493; x=1716907293; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=nZ1k0uetES8u8MlD8iJUWjUc76+6FpZkYnzMg83sWbo=;
-        b=JStZ/2d1+EFC1RV0GgMo9xHiWvyCqQ3K4AJh0cZ5lrmdpzqFC40OjtCw95d5yP8ero
-         wTzuKlslT+Z8MuytfWzJzB9M/ZqnCrTifTQ2mpiXeod24NfFBGsFm/E1ua5QctZLsZU8
-         /TIiPnlvCRCdt2Hb7t0xhlmRDTdmhL5faYkKIY1paSri7fsKTMTgyiROdGLpTWRW2sLy
-         o34z559R3Drn09DrUWvnXaX3AL49zWl3EkgDldAPjZP/15fvuooUryLmyYH9kzTtcTMQ
-         lYIbG9Irh2KFO86X993Paou7jfuQgzu9mFggPaWn+STxSinglldTP2VXWGsNFHgJy9MY
-         GmEg==
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1716300348; x=1716905148; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=zgoKFoQ+1ZxeBSFvhA/0PLTmzF3XLdEhqXLatkcXB1c=;
+        b=TXc8kA2nsj8FUj8V+Z2Nh9h1mp++jObti3SgpgElXv8YGsDZlfNvTrFUVosqnmVODp
+         bk42IjhAS6e5TInHY1NmpId/SNqrfA/5KCN0xZwCSEQ+xqJvGhckhQ+IKDgkWeJCrAfA
+         FiIrZ5yUoXkhFBhgWFCKqJUvwx1CCMxf1/ZfYaFw4w2Jtf7unSfe9U9DYFdLpC/0oEts
+         IeGBK6lHWIz6tDGUTiovuNTTMM/UnjVVL49q6x3B7lKyF+oTyFrEKwAXrugoGIZCHsL1
+         jaYaRpvG/jkUccgue6v94MxF+eeR1LtnuFPi9Yt9IFk79b13oYrq01c4LZCf8kLtnwus
+         nJwg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1716302493; x=1716907293;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=nZ1k0uetES8u8MlD8iJUWjUc76+6FpZkYnzMg83sWbo=;
-        b=O3//EIzU1FBeS+/tBDL1cYX9IKkNYM5LgS3cDEHVngZxPzuX/Eukc548V6XnCVYjQg
-         prpPgNyMWyfTmSUAvAYbawRI3r+PC8K9yHahlKUmR1gTScgGvqMBN0OQQVp/ZDUi3FsJ
-         LcGBN8q7h6dgrq1+oY+5gWUywBqSkrV6ZgbsH4WZ+l1WLQm93WYrpgsZn2x5yfE3BdfK
-         vJsRzLgCbkm8GW13gLfcgBz/bFnhH0EDIGchIsJFcS6driac1L6FElpDXe/Iz9GuMJG5
-         qoO0tkHntMMhcao3vMAL6OcWx57iEk7tBUjjBVH9Xo0Y117Rb6+emcVPE4x31NaY1xc+
-         ogvg==
-X-Forwarded-Encrypted: i=1; AJvYcCXx/Dtv1jxFNOeh4PChhsH7a2MDDpqt3bx/TwF3VzI081KYl4VVnkGrtYkh3wBBYqjxR8FGOF4SlG127OcRBrfEjm1X1Z3hJAT+wyFsz0lIGO/u
-X-Gm-Message-State: AOJu0YzLxv8ZeuFHk055mcm2CfPXdRXmwktEX7rfmfUYySF2ojMIexZC
-	CGuMvv22NFOxqShtQ39PWo2oRQi4a915h2f24KNnYdAQS1Bwp+mczSBbVLbz7XM=
-X-Google-Smtp-Source: AGHT+IHj1hRyPZRmpYHWeU3LYRrDP7CJ224DzJ6GRA/c94bv1YnN1lYSiHKxZR3Gf4iM4ruXYyQNOA==
-X-Received: by 2002:a05:600c:1794:b0:41e:454b:2f7 with SMTP id 5b1f17b1804b1-41feab40be5mr262645805e9.23.1716302492758;
-        Tue, 21 May 2024 07:41:32 -0700 (PDT)
-Received: from [10.2.5.115] (abordeaux-651-1-78-161.w90-5.abo.wanadoo.fr. [90.5.97.161])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-41ff5e3dcfbsm428288055e9.22.2024.05.21.07.41.31
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 21 May 2024 07:41:32 -0700 (PDT)
-Message-ID: <8078d106-0173-4f04-aab7-4b2726b0bb3a@baylibre.com>
-Date: Tue, 21 May 2024 16:41:30 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 4/4] arm64: dts: mediatek: mt8188: add default thermal
- zones
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Daniel Lezcano <daniel.lezcano@linaro.org>,
- Nicolas Pitre <npitre@baylibre.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20240521-mtk-thermal-mt818x-dtsi-v4-0-b91ee678411c@baylibre.com>
- <20240521-mtk-thermal-mt818x-dtsi-v4-4-b91ee678411c@baylibre.com>
- <ff12e104-da8b-4800-bfbe-a006ffe1b840@collabora.com>
-Content-Language: en-US
+        d=1e100.net; s=20230601; t=1716300348; x=1716905148;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=zgoKFoQ+1ZxeBSFvhA/0PLTmzF3XLdEhqXLatkcXB1c=;
+        b=K88GLGymXTEMOp0pHmv+BiU6mZZmyAffyL/lz7X2cHEHKf7/g0bQy0+Z0blRTvLWiJ
+         EhyQkVPWuH1qPlI8i9AIvTyI3SWY5fUGk26b895p43aTJvp5IkWwAxLXU7nHpsfzzIV7
+         C9Qhf+mWpXYVaTqqW8i9j/YDoKZjawVXXB2ZeIcmgb28SPJ7hjYjlt3/ENAYRW3YUFSF
+         VoLvPeVCvwkla/M5Cpsyv5XdaWiM/TsS/AwkZd7t7zEmaSshW0IBVpLUOi5ySc6ozyG4
+         cBepL6y59H9/TjBNfc8Bt+Qm8+DwbBk2+mtKXVKI1+fXFRgKbGDgRvVDupoCr2sfP2kS
+         K4DA==
+X-Forwarded-Encrypted: i=1; AJvYcCUXdTxYPBOv7HfYACHTXUiMqnS910D8veLDmVpMdV5FlYOiHn8Al+uISTJIFiNLK9nTRrcC+zTCRrjT6wKRZVhSd80VcZSA5U8PEi2lDWBYt8or
+X-Gm-Message-State: AOJu0YxnNJV1/joFlcdaEZ8aPA5lzM/WLTGE+NtjOqJD4fdsw41Sa1O+
+	fgpGFgdRufZzyyIkCOQQ4ANUxZ9b1BHbD+46Zg14TAV+EOhVWPllEhKdKsZw3xk=
+X-Google-Smtp-Source: AGHT+IFmqJnb4ObWiPzsVQuZAWrqnThUPe8ztSlw4PvCSGE0QT/f8sLOvVgkTo5aE0vFaVuHcCymvA==
+X-Received: by 2002:a05:600c:3592:b0:420:1a0d:f15d with SMTP id 5b1f17b1804b1-4201a0df409mr219365415e9.22.1716300347840;
+        Tue, 21 May 2024 07:05:47 -0700 (PDT)
+Received: from [127.0.1.1] (abordeaux-651-1-78-161.w90-5.abo.wanadoo.fr. [90.5.97.161])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-42015deac1asm342085945e9.17.2024.05.21.07.05.46
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 21 May 2024 07:05:47 -0700 (PDT)
 From: Julien Panis <jpanis@baylibre.com>
-In-Reply-To: <ff12e104-da8b-4800-bfbe-a006ffe1b840@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Subject: [PATCH v4 0/4] Mediatek thermal sensor driver support for MT8186
+ and MT8188
+Date: Tue, 21 May 2024 16:05:34 +0200
+Message-Id: <20240521-mtk-thermal-mt818x-dtsi-v4-0-b91ee678411c@baylibre.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAC6qTGYC/x2Myw5AMBAAf0X2bJOqV/kVcSgWG1rSNiIR/65xm
+ znMPODJMXlokwccXez5sFGKNIFx1XYh5Ck6SCELUUqBJmwYVnJG75FVpm6cgmekUee1mpuh0gJ
+ ifTqa+f7PXf++H1oE/hRpAAAA
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Daniel Lezcano <daniel.lezcano@linaro.org>, 
+ Nicolas Pitre <npitre@baylibre.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Julien Panis <jpanis@baylibre.com>
+X-Mailer: b4 0.13.0
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1716300346; l=1983;
+ i=jpanis@baylibre.com; s=20230526; h=from:subject:message-id;
+ bh=JUfb8zY+izCRC4r50MixNaaw78CPvzL7Ajdm+ROpRS8=;
+ b=Rv1gAaXrI9T1gUh79Yf80ndSE1qfUTglrDHcSeo8X96oSkWcD33mgOnC648Krl2/j+tLEWccz
+ CmXGPBXvimlD6ZQ+ofFFt6ktYgM86f2JCojX6rEzyAeR/IoO0YZIbF0
+X-Developer-Key: i=jpanis@baylibre.com; a=ed25519;
+ pk=8eSM4/xkiHWz2M1Cw1U3m2/YfPbsUdEJPCWY3Mh9ekQ=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240521_074134_938072_CCCDB21E 
-X-CRM114-Status: GOOD (  18.18  )
+X-CRM114-CacheID: sfid-20240521_070555_878580_38EE32FB 
+X-CRM114-Status: GOOD (  10.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,112 +107,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 5/21/24 16:19, AngeloGioacchino Del Regno wrote:
-> Il 21/05/24 16:05, Julien Panis ha scritto:
->> From: Nicolas Pitre <npitre@baylibre.com>
->>
->> Inspired by the vendor kernel but adapted to the upstream thermal
->> driver version.
->>
->> Signed-off-by: Nicolas Pitre <npitre@baylibre.com>
->> Signed-off-by: Julien Panis <jpanis@baylibre.com>
->> ---
->>   arch/arm64/boot/dts/mediatek/mt8188.dtsi | 432 +++++++++++++++++++++++++++++++
->>   1 file changed, 432 insertions(+)
->>
->> diff --git a/arch/arm64/boot/dts/mediatek/mt8188.dtsi b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
->> index a9f1b9db54a6..2b0f3e03acc1 100644
->> --- a/arch/arm64/boot/dts/mediatek/mt8188.dtsi
->> +++ b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
->> @@ -12,6 +12,8 @@
->>   #include <dt-bindings/pinctrl/mediatek,mt8188-pinfunc.h>
->>   #include <dt-bindings/power/mediatek,mt8188-power.h>
->>   #include <dt-bindings/reset/mt8188-resets.h>
->> +#include <dt-bindings/thermal/thermal.h>
->> +#include <dt-bindings/thermal/mediatek,lvts-thermal.h>
->>     / {
->>       compatible = "mediatek,mt8188";
->
-> ..snip..
->
->> +
->> +        gpu1-thermal {
->
-> You forgot to implement my feedback to Nicolas - this must be gpu-thermal
+This is a bunch of patches to support the MT8186 and MT8188 thermal
+sensor configurations.
 
-Sorry, I did not forget. I just did not understand correctly.
-Even after looking at mt8195, I thought that only the '_'
-in 'cpu_big0-thermal' and 'cpu_big1-thermal' were wrong
-in v3. Thanks for making it clear.
+Since the patches of v3 were applied except those related to the SoC
+device trees, this series includes only patches for 'mt8186.dtsi' and
+'mt8188.dtsi'.
 
->
->> +            polling-delay = <1000>;
->> +            polling-delay-passive = <250>;
->> +            thermal-sensors = <&lvts_ap MT8188_AP_GPU1>;
->> +
->> +            trips {
->> +                gpu1_alert0: trip-alert0 {
->> +                    temperature = <85000>;
->> +                    hysteresis = <2000>;
->> +                    type = "passive";
->> +                };
->> +
->> +                gpu1_alert1: trip-alert1 {
->> +                    temperature = <95000>;
->> +                    hysteresis = <2000>;
->> +                    type = "hot";
->> +                };
->> +
->> +                gpu1_crit: trip-crit {
->> +                    temperature = <100000>;
->> +                    hysteresis = <0>;
->> +                    type = "critical";
->> +                };
->> +            };
->> +        };
->> +
->> +        gpu2-thermal {
->
-> ...and for consistency with the other SoCs, this must be gpu1-thermal.
+Signed-off-by: Julien Panis <jpanis@baylibre.com>
+---
+Changes in v4:
+- Fix wrong thermal zone names.
+- Lower 'polling-delay-passive' values.
+- Set 'hysteresis' value to 0 for 'critical' trips.
+- Add a 'hot' trip point in between 'passive' and 'critical' trips.
+- Link to v3: https://lore.kernel.org/all/20240402032729.2736685-1-nico@fluxnic.net/
 
-Now I think I get it, thank you.
+Changes in v3:
+- use meaningful name for binding index definitions
+- reuse LVTS_COEFF_*_MT7988 on MT8186 per reviewer request
+- do similarly for MT8188 that now reuses LVTS_COEFF_*_MT8195
+- use thermal zone names the svs driver wants
+- adjust some DT node names and iospace length
+- remove variable .hw_tshut_temp as it is constant across all SOCs
+- Link to v2: https://lore.kernel.org/all/20240318212428.3843952-1-nico@fluxnic.net/
 
->
->> +            polling-delay = <1000>;
->> +            polling-delay-passive = <250>;
->> +            thermal-sensors = <&lvts_ap MT8188_AP_GPU2>;
->> +
->> +            trips {
->> +                gpu2_alert0: trip-alert0 {
->> +                    temperature = <85000>;
->> +                    hysteresis = <2000>;
->> +                    type = "passive";
->> +                };
->> +
->> +                gpu2_alert1: trip-alert1 {
->> +                    temperature = <95000>;
->> +                    hysteresis = <2000>;
->> +                    type = "hot";
->> +                };
->> +
->> +                gpu2_crit: trip-crit {
->> +                    temperature = <100000>;
->> +                    hysteresis = <0>;
->> +                    type = "critical";
->> +                };
->> +            };
->> +        };
->> +
->> +        soc1-thermal {
->
-> Any idea of what can "soc1" ever be? What measurement point is that?
->
-> VPU? IMG? INFRA?
->
-> soc1, soc2, soc3 make little sense.
+Changes in v2:
+- renamed CPU cluster thermal zones in DT
+- fixed logic to cope with empty controller slots at the beginning
+- isolated bindings to their own patches
+- added MT8188 default thermal zones
+- Link to v1: https://lore.kernel.org/all/20240111223020.3593558-1-nico@fluxnic.net/T/
 
-No idea to be honest. I'll try to find out that information
-and will change that in v5.
+---
+Nicolas Pitre (4):
+      arm64: dts: mediatek: mt8186: add lvts definitions
+      arm64: dts: mediatek: mt8186: add default thermal zones
+      arm64: dts: mediatek: mt8188: add lvts definitions
+      arm64: dts: mediatek: mt8188: add default thermal zones
 
-Julien
+ arch/arm64/boot/dts/mediatek/mt8186.dtsi | 309 ++++++++++++++++++++
+ arch/arm64/boot/dts/mediatek/mt8188.dtsi | 467 +++++++++++++++++++++++++++++++
+ 2 files changed, 776 insertions(+)
+---
+base-commit: 632483ea8004edfadd035de36e1ab2c7c4f53158
+change-id: 20240520-mtk-thermal-mt818x-dtsi-eca378f9b6a0
+
+Best regards,
+-- 
+Julien Panis <jpanis@baylibre.com>
+
 
