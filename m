@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C225DC25B74
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 May 2024 08:00:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9E03C25B75
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 May 2024 08:02:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mrG4L0Id8m1vEvhz8bFJNpNmuyB/tcDoEmSNg+wwNmg=; b=lOZV9XR65ZloM3yUFE9FMK924c
-	1lYQS5vxsd/m+Pan2/FomFRIXViUGvj+FeYJ6C5yvP6Ymy+h9ui4UeJB/aSCzycaN/5U4gj91ZHON
-	FkvCwgQrV6BkX5+xjIS6K32g94cce98nk5l5GleKCQhspwC+z2N9HwwKfX8eBVL/EVhFw3wIpbXEb
-	WRV0ArI6DNcJndQyCIB6gWtQS4iRsepDH5iwnCP/UIPb7gjfg/lBmtlHmWa1WB3z+UcN4ifzZvVJd
-	wY6LCsCsKze7hDMGPYscC8wfNgG8kNQeAPByEw3BgAE1Xqf6huRfOtnR3q6e/b/mnOY6scsubAFbp
-	xycpXl/g==;
+	bh=7kCyUnqVx1+C+SdKIMjJvScX8hkiLMSCuso6ogQ42is=; b=L9sOugC35fF7Djf9RNgyA+tz3H
+	avSwYUQsDpiwKyXjklCuQAldVBIoQSUR0l9Vg0KSgAZTdTtVh7jjQiPn3rViY7WW29+SY5NYUvaUV
+	abnIeUiDhyluazRpgl9fTRc58mDHSaK5lKiJvNKH+PlWyVqyy4F5AiNPX707pxDfC6428548yAVYM
+	zOqtb/mE/SOeVbuhcoQHTIzTV0AxHOfUeuvs3xsqctElib86oyYpngiqwjfAu6tpkr9OZCRssfNOS
+	O2msCZpeqoTQwifEdhKHpNgw19hZV5K48QB9EL9rKHI+Ja4DK+7Praq17FmCgfIzx1Er/ImtDRCj4
+	0ygwAh7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s9KQc-0000000GhUK-1v2g;
-	Tue, 21 May 2024 08:00:58 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1s9KS2-0000000GhjU-1PSw;
+	Tue, 21 May 2024 08:02:26 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s9KQY-0000000GhTK-3HZU;
-	Tue, 21 May 2024 08:00:56 +0000
+	id 1s9KRz-0000000Ghi5-0E43;
+	Tue, 21 May 2024 08:02:24 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id D0F6E6204C;
-	Tue, 21 May 2024 08:00:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7FB7BC2BD11;
-	Tue, 21 May 2024 08:00:48 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id EC4F6CE0E58;
+	Tue, 21 May 2024 08:02:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 74339C4AF07;
+	Tue, 21 May 2024 08:02:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1716278453;
-	bh=UMpk2XmZFk9Hk1ptfnrlb3PT18Y5P5/o13Gl8p/rTa8=;
+	s=k20201202; t=1716278540;
+	bh=KSahs3ldXZzAAoo4YJC7zEMWf0t3JgGj4P52e6oIDEk=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=GEG1oVRDFQZ3M8NXYgC62/zcQW/TtmqELe4qJdxz6mUqysgfKAgxQY69Y6m1vqaqd
-	 cTyKSO3eXTTNUJvm+U6h3BEC+aQreWmR848UD37c33veGWJKnPeCTgnJYCeIBdLbVm
-	 miabfZE5RdCJWafgZkKm2DFSlcDqn5feIJ6fDcJq27FaGi/OlvsTqGCgJAtWBymkY6
-	 MDDX4Ydjtya156CW1WiBPh2oXLmypoTZ+u6LE7Li4sjt/Ca7nmhcYOkra6AbZHbvFk
-	 FD0kE3YdPMW5hxy2i5RRSGyS1AiNbov/DUpEQriACHVyt1p6mEiJ8xawxfyXVxJz66
-	 /og1CepEkGusA==
-Message-ID: <fe8af4fb-0cf6-4eb8-9500-dbe42b3a6a4b@kernel.org>
-Date: Tue, 21 May 2024 10:00:46 +0200
+	b=NBd534qGql8kDsW+LAoUj/V4vtcYdQ8tRwXftoOb+LKJEt0bS/FnpITbWETFFeGm9
+	 LsQQFm8jzTyTrs9RoiHFASxhIf9hbD7l1oJUvi4DW56ZjtDEQzF2gVeKuLe7Olc60v
+	 9n/efYPhhw3pLi5UqKZGUCdl1Cw5759w5snO171KVJ/zvFqSQGfZkExH8IL/Yfyp8d
+	 zkczv/I3x99efihSJkM+Ddffy0Eo9m1MkuMSwr6S98LTUHxJdfKh4dpW58Kost1trk
+	 s+1BZ/KI3QO8CjkCpqxDrXEA5nCrQfYIA8zQRy/m+iOFKVVXHy9NPFkn9cBrsHJRvN
+	 G5uJ4kqrQq4IA==
+Message-ID: <20ab0093-5ae1-461b-962d-ada2e6ba52b9@kernel.org>
+Date: Tue, 21 May 2024 10:02:13 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/8] dt-bindings: soc: intel: lgm-syscon: Move to
- dedicated schema
+Subject: Re: [PATCH 6/8] dt-bindings: mfd: syscon: Split and enforce
+ documenting MFD children
 To: Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Cc: Lee Jones <lee@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -59,8 +59,8 @@ Cc: Lee Jones <lee@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org
 References: <20240519-dt-bindings-mfd-syscon-split-v1-0-aaf996e2313a@linaro.org>
- <20240519-dt-bindings-mfd-syscon-split-v1-3-aaf996e2313a@linaro.org>
- <20240520210729.GA1509114-robh@kernel.org>
+ <20240519-dt-bindings-mfd-syscon-split-v1-6-aaf996e2313a@linaro.org>
+ <20240520212025.GA1531862-robh@kernel.org>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -106,13 +106,12 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20240520210729.GA1509114-robh@kernel.org>
+In-Reply-To: <20240520212025.GA1531862-robh@kernel.org>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240521_010054_937792_C6799FA5 
-X-CRM114-Status: UNSURE (   9.53  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240521_010223_525893_31F52C5F 
+X-CRM114-Status: GOOD (  13.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,37 +126,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 20/05/2024 23:07, Rob Herring wrote:
-> On Sun, May 19, 2024 at 08:42:18PM +0200, Krzysztof Kozlowski wrote:
->> intel,lgm-syscon is not a simple syscon device - it has children - thus
->> it should be fully documented in its own binding.
+On 20/05/2024 23:20, Rob Herring wrote:
+> On Sun, May 19, 2024 at 08:42:21PM +0200, Krzysztof Kozlowski wrote:
+>> Simple syscon nodes can be documented in common syscon.yaml, however
+>> devices with simple-mfd compatible, thus with some children, should have
+>> their own schema listing these children.  Such listing makes the binding
+>> specific, allows better validation (so the incorrect child would not
+>> appear in the simple-mfd node) and actually enforces repeated rule for
+>> simple-mfd devices:
+>>
+>>   "simple-mfd" is only for simple devices, where the children do not
+>>   depend on the parent.
+>>
+>> Currently the syscon+simple-mfd binding is quite broad and allows
+>> any child or property, thus above rule cannot be enforced.
+>>
+>> Split the syscon.yaml binding into:
+>> 1. Common syscon properties, used potentially by many bindings.
+>> 2. Simple syscon devices (NO simple-mfd!).
 >>
 >> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 ...
 
->> +
->> +maintainers:
->> +  - Ramuthevar Vadivel Murugan <vadivel.muruganx.ramuthevar@linux.intel.com>
->> +
->> +properties:
->> +  compatible:
->> +    items:
->> +      - const: intel,lgm-syscon
->> +      - const: syscon
->> +
->> +  reg:
->> +    maxItems: 1
->> +
->> +  "#address-cells":
->> +    const: 1
->> +
->> +  "#size-cells":
->> +    const: 1
-> 
-> Should have ranges.
 
-ack
+>>  
+>>  description: |
+>>    System controller node represents a register region containing a set
+>> @@ -19,122 +19,99 @@ description: |
+>>  maintainers:
+>>    - Lee Jones <lee@kernel.org>
+>>  
+>> -select:
+>> -  properties:
+>> -    compatible:
+>> -      contains:
+>> -        enum:
+>> -          - syscon
+>> -
+>> -  required:
+>> -    - compatible
+>> -
+> 
+> Removing this is only going to work with v2024.04. The only way it 
+> works for older versions is listing all the compatibles here. That's a 
+> bit new for us to require it.
+
+I'll keep it, in such case. Anyway its removal is not really related to
+main concept of this patch.
 
 Best regards,
 Krzysztof
