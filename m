@@ -4,71 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3944BC25B78
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 May 2024 07:09:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C8A2C25B74
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 May 2024 07:57:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=T+M1w3zP69leNzDYGB+eQJBf2fU2ra4ePF0HjjDxYy4=; b=3OmVjaZN7T2NjC7OAjWQ7NLTEz
-	v5ssynWvMeK2YGm5qytV4t5F3GFYboTt5qtMv7o0x39wecItfS1mqGIYQVPNoohGSaNb5kbCSlfRY
-	Uy2uErUJ9GaUgxALCVq8OuhwC6ReE1tFq+/m6d8ZLAIUDZhU5K1hQyGwNX2CaKNAoXBHuWkayTMN5
-	2eD+hPdVh1hD8T9cVgugFg254GI5NVKI1zHO5z9hGDz554I1bgBHwrQR45fo6ogWYMCLtn9qiknJd
-	tCX3q/bo4QmSrc3wnSsdiXzfTjKTCZ3INP9sJwLjL+0lN5lpz2AaqHLMtla4IdHBax14xIgdsDseC
-	SNtqG/VA==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=xEjW7ERx6PP34Et4K7YPZ1VqN3HIrdz/SsMJbFlSfdg=; b=0kTRXEAYU3FvdVfZK322GbebfQ
+	tHrw8eba8HaDlItCD4QNQBVRjPMXmsoFHeWaFkqnj1YiXn2MXZy+MGJg5sRvDSvK4Et5B2VqdbXOG
+	HAP61VSnvEysGcSAuP6JBpaxDcBGb+K6BAcNEdICVoSZrW8CDS2GgmSw7foayK+iPuZbee0EtSA+G
+	K+k4ykrWPXtf3ChNhuT2W0Jjxv/9Zd/R1m4zQcgKItu9xkxlvX0ZuQPzLQHw9idQqT+YLCB2oix/6
+	+iHFC1+410zzD5c800sN5fk6jgtQ7UELwItzTGrZKGaE/DFs7LFh7Ob7LxNzccS2VAXpBn2pQq+Ys
+	e5mDCMvw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s9Jcq-0000000GYmi-3THZ;
-	Tue, 21 May 2024 07:09:32 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1s9KNS-0000000GgXn-18O1;
+	Tue, 21 May 2024 07:57:42 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s9Jcn-0000000GYl2-0AvO;
-	Tue, 21 May 2024 07:09:31 +0000
+	id 1s9KNK-0000000GgUM-4BZ7;
+	Tue, 21 May 2024 07:57:36 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1716275365;
-	bh=2kRe9Ce8rakW5lnoclVrGvOqgAaS9QJgR7+JBCR7qys=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=dMb57hvRLq5Ogx/eVkr0GikvvOOcmA5elS88vCrGss1/i4ZaMGyJDakkzpsPqdKT0
-	 orLLIzRjSegeeBGqdqT+YLzJOOqeU4I3VEw+Wyz6V/8JUomxmKVqURakWOBdWDGMhc
-	 a8uCQLH53IZiJhwL5OhP7wuPoxDUYVsSHadDZiP0iwDeoqLby10l9/7WR9H1v92C4z
-	 GO4BQg9kw2QgpPDnELBL9rBKXBR05jMVNEwyv7QDoC9dNX7xJ579aMYDO0a3pLAUBx
-	 e4xY/BitVag16MsRrKACbRbrpr6Ufokn02bNWB4NaOnAPDNsq22TPAVjmswEHYFEQY
-	 Uo90BDiUZNPUQ==
-Received: from [100.66.96.193] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	s=mail; t=1716278246;
+	bh=UV3oiJ3DoGjT3mmgDCUUEAq/37YTbI+I9dS8P5EBex8=;
+	h=From:To:Cc:Subject:Date:From;
+	b=LBVIbCSt0+3R9yRCbYrXWF6yRFUlnx4X85vxJtP8yl1TPoN8WTZILOjYi+dVxE7gz
+	 v10LMJty1+pTxzcKGgKSxRTGmjpGqmwa/j+d7MH18X3vyTuWqDFHcZ5fDEJJjQK7Xy
+	 J8w67WaAxBwn1Nm7H8PNP3D2/b/FoSOrm/JUy3ohZ7jMWwEPQFeWcO0qGBZD2/DzuV
+	 B9rl3djGW0rfCcenZTpSkgUlq6K8Hu0BrYs8wLteg1WA1CMAcGPsBOCQdTa0mf3CPe
+	 iL3aHDTwIyEU5CJPPaa+FeezqVVHu5oF/Vyr0wXeSbGvp9Ly2FAk0afHLylcUkocmX
+	 BcLO6MI6EwpIg==
+Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: vignesh)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 97C6B378202E;
-	Tue, 21 May 2024 07:09:21 +0000 (UTC)
-Message-ID: <f3646d66-01f0-476c-8b7f-5df102790fcb@collabora.com>
-Date: Tue, 21 May 2024 12:39:19 +0530
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id B1BC5378001E;
+	Tue, 21 May 2024 07:57:24 +0000 (UTC)
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: chunkuang.hu@kernel.org
+Cc: robh@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	conor+dt@kernel.org,
+	p.zabel@pengutronix.de,
+	airlied@gmail.com,
+	daniel@ffwll.ch,
+	maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org,
+	tzimmermann@suse.de,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	shawn.sung@mediatek.com,
+	yu-chang.lee@mediatek.com,
+	ck.hu@mediatek.com,
+	jitao.shi@mediatek.com,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	wenst@chromium.org,
+	kernel@collabora.com
+Subject: [PATCH v5 0/3] drm/mediatek: Add support for OF graphs
+Date: Tue, 21 May 2024 09:57:14 +0200
+Message-ID: <20240521075717.50330-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.45.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 3/6] drm/ci: build virtual GPU driver as module
-Content-Language: en-US
-To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com,
- helen.koike@collabora.com, airlied@gmail.com, daniel@ffwll.ch,
- robdclark@gmail.com, david.heidelberg@collabora.com,
- guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com,
- mcanal@igalia.com, linux-mediatek@lists.infradead.org,
- linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org,
- amd-gfx@lists.freedesktop.org, linux-arm-msm@vger.kernel.org,
- intel-gfx@lists.freedesktop.org, virtualization@lists.linux-foundation.org,
- linux-kernel@vger.kernel.org
-References: <20240517092502.647420-1-vignesh.raman@collabora.com>
- <20240517092502.647420-4-vignesh.raman@collabora.com>
- <elftuzsd7lhz6y5ow6rb5uu5fb5b5jcprxtvxtxtojo774rnyr@swpeg4vkgtnc>
-From: Vignesh Raman <vignesh.raman@collabora.com>
-In-Reply-To: <elftuzsd7lhz6y5ow6rb5uu5fb5b5jcprxtvxtxtojo774rnyr@swpeg4vkgtnc>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240521_000929_258190_D020BA9C 
-X-CRM114-Status: GOOD (  19.92  )
+X-CRM114-CacheID: sfid-20240521_005735_235690_BF8D7E54 
+X-CRM114-Status: GOOD (  17.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,116 +90,91 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Dmitry,
+Changes in v5:
+ - Fixed commit [2/3], changed allOf -> anyOf to get the
+   intended allowance in the binding
 
-On 20/05/24 16:32, Dmitry Baryshkov wrote:
-> On Fri, May 17, 2024 at 02:54:59PM +0530, Vignesh Raman wrote:
->> With latest IGT, the tests tries to load the module and it
->> fails. So build the virtual GPU driver for virtio as module.
-> 
-> Why? If the test fails on module loading (if the driver is built-in)
-> then it's the test that needs to be fixed, not the kerenel config.
-> 
-> It's fine as a temporal workaround, but please include a link to the
-> patch posted to fix the issue.
+Changes in v4:
+ - Fixed a typo that caused pure OF graphs pipelines multiple
+   concurrent outputs to not get correctly parsed (port->id); 
+ - Added OVL_ADAPTOR support for OF graph specified pipelines;
+ - Now tested with fully OF Graph specified pipelines on MT8195
+   Chromebooks and MT8395 boards;
+ - Rebased on next-20240516
 
-I will recheck this issue and post a link to the fix.
+Changes in v3:
+ - Rebased on next-20240502 because of renames in mediatek-drm
 
-Regards,
-Vignesh
+Changes in v2:
+ - Fixed wrong `required` block indentation in commit [2/3]
 
-> 
->>
->> Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
->> ---
->>
->> v2:
->>    - No changes.
->>
->> ---
->>   drivers/gpu/drm/ci/build.sh       | 1 -
->>   drivers/gpu/drm/ci/igt_runner.sh  | 6 +++---
->>   drivers/gpu/drm/ci/image-tags.yml | 4 ++--
->>   drivers/gpu/drm/ci/test.yml       | 1 +
->>   drivers/gpu/drm/ci/x86_64.config  | 2 +-
->>   5 files changed, 7 insertions(+), 7 deletions(-)
->>
->> diff --git a/drivers/gpu/drm/ci/build.sh b/drivers/gpu/drm/ci/build.sh
->> index a67871fdcd3f..e938074ac8e7 100644
->> --- a/drivers/gpu/drm/ci/build.sh
->> +++ b/drivers/gpu/drm/ci/build.sh
->> @@ -157,7 +157,6 @@ fi
->>   
->>   mkdir -p artifacts/install/lib
->>   mv install/* artifacts/install/.
->> -rm -rf artifacts/install/modules
->>   ln -s common artifacts/install/ci-common
->>   cp .config artifacts/${CI_JOB_NAME}_config
->>   
->> diff --git a/drivers/gpu/drm/ci/igt_runner.sh b/drivers/gpu/drm/ci/igt_runner.sh
->> index 20026612a9bd..55532f79fbdc 100755
->> --- a/drivers/gpu/drm/ci/igt_runner.sh
->> +++ b/drivers/gpu/drm/ci/igt_runner.sh
->> @@ -30,10 +30,10 @@ case "$DRIVER_NAME" in
->>               export IGT_FORCE_DRIVER="panfrost"
->>           fi
->>           ;;
->> -    amdgpu)
->> +    amdgpu|virtio_gpu)
->>           # Cannot use HWCI_KERNEL_MODULES as at that point we don't have the module in /lib
->> -        mv /install/modules/lib/modules/* /lib/modules/.
->> -        modprobe amdgpu
->> +        mv /install/modules/lib/modules/* /lib/modules/. || true
->> +        modprobe --first-time $DRIVER_NAME
->>           ;;
->>   esac
->>   
->> diff --git a/drivers/gpu/drm/ci/image-tags.yml b/drivers/gpu/drm/ci/image-tags.yml
->> index 60323ebc7304..328f5c560742 100644
->> --- a/drivers/gpu/drm/ci/image-tags.yml
->> +++ b/drivers/gpu/drm/ci/image-tags.yml
->> @@ -4,9 +4,9 @@ variables:
->>      DEBIAN_BASE_TAG: "${CONTAINER_TAG}"
->>   
->>      DEBIAN_X86_64_BUILD_IMAGE_PATH: "debian/x86_64_build"
->> -   DEBIAN_BUILD_TAG: "2023-10-08-config"
->> +   DEBIAN_BUILD_TAG: "2024-05-09-virtio"
->>   
->> -   KERNEL_ROOTFS_TAG: "2023-10-06-amd"
->> +   KERNEL_ROOTFS_TAG: "2024-05-09-virtio"
->>   
->>      DEBIAN_X86_64_TEST_BASE_IMAGE: "debian/x86_64_test-base"
->>      DEBIAN_X86_64_TEST_IMAGE_GL_PATH: "debian/x86_64_test-gl"
->> diff --git a/drivers/gpu/drm/ci/test.yml b/drivers/gpu/drm/ci/test.yml
->> index 612c9ede3507..864ac3809d84 100644
->> --- a/drivers/gpu/drm/ci/test.yml
->> +++ b/drivers/gpu/drm/ci/test.yml
->> @@ -350,6 +350,7 @@ virtio_gpu:none:
->>     script:
->>       - ln -sf $CI_PROJECT_DIR/install /install
->>       - mv install/bzImage /lava-files/bzImage
->> +    - mkdir -p /lib/modules
-> 
-> Is it necessary to create it manually here?
-> 
->>       - mkdir -p $CI_PROJECT_DIR/results
->>       - ln -sf $CI_PROJECT_DIR/results /results
->>       - install/crosvm-runner.sh install/igt_runner.sh
->> diff --git a/drivers/gpu/drm/ci/x86_64.config b/drivers/gpu/drm/ci/x86_64.config
->> index 1cbd49a5b23a..78479f063e8e 100644
->> --- a/drivers/gpu/drm/ci/x86_64.config
->> +++ b/drivers/gpu/drm/ci/x86_64.config
->> @@ -91,7 +91,7 @@ CONFIG_KVM=y
->>   CONFIG_KVM_GUEST=y
->>   CONFIG_VIRT_DRIVERS=y
->>   CONFIG_VIRTIO_FS=y
->> -CONFIG_DRM_VIRTIO_GPU=y
->> +CONFIG_DRM_VIRTIO_GPU=m
->>   CONFIG_SERIAL_8250_CONSOLE=y
->>   CONFIG_VIRTIO_NET=y
->>   CONFIG_VIRTIO_CONSOLE=y
->> -- 
->> 2.40.1
->>
-> 
+
+The display IPs in MediaTek SoCs are *VERY* flexible and those support
+being interconnected with different instances of DDP IPs (for example,
+merge0 or merge1) and/or with different DDP IPs (for example, rdma can
+be connected with either color, dpi, dsi, merge, etc), forming a full
+Display Data Path that ends with an actual display.
+
+This series was born because of an issue that I've found while enabling
+support for MT8195/MT8395 boards with DSI output as main display: the
+current mtk_drm_route variations would not work as currently, the driver
+hardcodes a display path for Chromebooks, which have a DisplayPort panel
+with DSC support, instead of a DSI panel without DSC support.
+
+There are other reasons for which I wrote this series, and I find that
+hardcoding those paths - when a HW path is clearly board-specific - is
+highly suboptimal. Also, let's not forget about keeping this driver from
+becoming a huge list of paths for each combination of SoC->board->disp
+and... this and that.
+
+For more information, please look at the commit description for each of
+the commits included in this series.
+
+This series is essential to enable support for the MT8195/MT8395 EVK,
+Kontron i1200, Radxa NIO-12L and, mainly, for non-Chromebook boards
+and Chromebooks to co-exist without conflicts.
+
+Besides, this is also a valid option for MT8188 Chromebooks which might
+have different DSI-or-eDP displays depending on the model (as far as I
+can see from the mtk_drm_route attempt for this SoC that is already
+present in this driver).
+
+This series was tested on MT8195 Cherry Tomato and on MT8395 Radxa
+NIO-12L with both hardcoded paths, OF graph support and partially
+hardcoded paths, and pure OF graph support including pipelines that
+require OVL_ADAPTOR support.
+
+AngeloGioacchino Del Regno (3):
+  dt-bindings: display: mediatek: Add OF graph support for board path
+  dt-bindings: arm: mediatek: mmsys: Add OF graph support for board path
+  drm/mediatek: Implement OF graphs support for display paths
+
+ .../bindings/arm/mediatek/mediatek,mmsys.yaml |  28 ++
+ .../display/mediatek/mediatek,aal.yaml        |  40 +++
+ .../display/mediatek/mediatek,ccorr.yaml      |  21 ++
+ .../display/mediatek/mediatek,color.yaml      |  22 ++
+ .../display/mediatek/mediatek,dither.yaml     |  22 ++
+ .../display/mediatek/mediatek,dpi.yaml        |  25 +-
+ .../display/mediatek/mediatek,dsc.yaml        |  24 ++
+ .../display/mediatek/mediatek,dsi.yaml        |  27 +-
+ .../display/mediatek/mediatek,ethdr.yaml      |  22 ++
+ .../display/mediatek/mediatek,gamma.yaml      |  19 ++
+ .../display/mediatek/mediatek,merge.yaml      |  23 ++
+ .../display/mediatek/mediatek,od.yaml         |  22 ++
+ .../display/mediatek/mediatek,ovl-2l.yaml     |  22 ++
+ .../display/mediatek/mediatek,ovl.yaml        |  22 ++
+ .../display/mediatek/mediatek,postmask.yaml   |  21 ++
+ .../display/mediatek/mediatek,rdma.yaml       |  22 ++
+ .../display/mediatek/mediatek,ufoe.yaml       |  21 ++
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h       |   1 +
+ .../gpu/drm/mediatek/mtk_disp_ovl_adaptor.c   |  40 ++-
+ drivers/gpu/drm/mediatek/mtk_dpi.c            |  16 +-
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c        | 282 ++++++++++++++++--
+ drivers/gpu/drm/mediatek/mtk_drm_drv.h        |   2 +-
+ drivers/gpu/drm/mediatek/mtk_dsi.c            |  10 +-
+ 23 files changed, 713 insertions(+), 41 deletions(-)
+
+-- 
+2.45.1
+
 
