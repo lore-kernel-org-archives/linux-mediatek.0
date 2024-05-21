@@ -4,82 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA6ECC25B74
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 May 2024 16:47:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC8ECC25B74
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 May 2024 17:20:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PZAIDSZz5noc6if4QKqooN9MLNYkeL9UbakI+8iRBos=; b=KJZJJovb/xMMEb17UTFEI+jbw5
-	gUdZWTy9PR4A1o/sQqmRD/BgJyoiLK2MjNXZ6Fhtb2ceDO5CHjYw2TpIAqxeAaEsspUgShIC7/e3a
-	ChEoVxYOhfZx/XiW1ZRXOFCb6EVUcji+N9eYb1hZ15pHkwmfUOXLLqvwsoP/E5ockwI4QM9xj8Otr
-	pQbYLq0id75pDmb+oivuEeFaIWMSMqHyDxYp9CQgUy/PVPmOsAMlWp01giNis1So3dd8fK3WBbeka
-	xkogPk4NHs/OrJyNK5kKNeNRPEGRuzOg3JCQqDIsxcGrWlR7VP61AcILh5ew3tId72bJ8R667dIZi
-	dJDcz5KQ==;
+	bh=RJd+jLDj+nE6uz28VeZVLjgHVLytLup2I3KEv0uM3ZI=; b=P3qf0Hjyj2VKQkdybUGBNmmF+5
+	NRiK9ueRAnWaUKCQzsw6CRDG/CkYBdp095RvE2sU6ToO8WV7rH90xKH63oB/rgEeBEZBhuRc+E+v8
+	UwzfmloBsNFhGT+O47Xlop2+bmM08TAqyQyXuhoPRnjVyJzl51d0PBFscunlXpdQh+yjpqGX2tG20
+	uyDlIpFx6rsX4acx6AiS97SRd7wUfks9zF33vMVCsp8Ygo/BcIeNyTinbJeHMhykxnm9aiIo+n7pQ
+	3yem5CrLMb8VEQV8JXOMQNkLfmGgQLXi4/Uf0YRxrYcIjo2jOZIttoIMW7beRddyyS/R+eGskoYVY
+	Kdhm4IwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s9SeN-00000000YOM-3b2n;
-	Tue, 21 May 2024 16:47:43 +0000
-Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
+	id 1s9T9x-00000000bcG-0YpI;
+	Tue, 21 May 2024 17:20:21 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s9SeK-00000000YNb-47O3
-	for linux-mediatek@lists.infradead.org;
-	Tue, 21 May 2024 16:47:42 +0000
-Received: by mail-pf1-x431.google.com with SMTP id d2e1a72fcca58-6f44881ad9eso525993b3a.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 21 May 2024 09:47:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1716310056; x=1716914856; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=PZAIDSZz5noc6if4QKqooN9MLNYkeL9UbakI+8iRBos=;
-        b=s/cW5O6LM9ERWWMjmUhL78Gg3dA3MQ0RyOyz24HIQMSyf9YpXqc4FbS67ulnbx6h1x
-         JM+D1F9/lG7pyKB6FcQYhzfRlUbHAjLkC730rEweyE4hVLWXHZmxQ6uSUIbB+/CIfjNE
-         M9zrWQ/E/xcQMWHPPqrTwiDdu3liCCIgaGt4+E5I22puq975fPidH/0UuCo2LGaMEpP7
-         8Gs8Vk5GivpgT28qpTKZkfGGieZ2b362OCt+l5BXgJetw7ZNOutF7zZyGfZkDyvlxWBN
-         NqsNvQ+kahVj7u7LQKsaUUk5jf3hNh+0gtwdMWjXFpJb0aKzbj8BVpEz7MUTqbm4Gdcc
-         uFqw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1716310056; x=1716914856;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=PZAIDSZz5noc6if4QKqooN9MLNYkeL9UbakI+8iRBos=;
-        b=sCVXcDPYgoJBqi6xQKbiagb9lxDG9WnmBYnj1Bzqmp9Hp5D7uOclNrDzawlegqjYhy
-         lUILc7HOkp+M+7LYmPuYUhn1rfSh2w+UbbjtkbSU5y4YkyV51qzQ0TLFgzkrLv9E6hbR
-         ISnLSHa3BFg0DJW36KPwFEoNAWivbQWSYYUcsUNcfQjcFlHB5Yk29kKYCH51uxizU9OG
-         wxIPblYy3bqRs5HiOegPD9Gx0o3/FCl43LWLp7/hBo0obZPD58wwCstm/g5Kg/NUONWr
-         ZNw3CQFp45G1rKAqor/K0CtNGVn/Qfs7QciepUZjQ+foV+1JmXY+fHKnrcjkTzA7ul34
-         6m4Q==
-X-Forwarded-Encrypted: i=1; AJvYcCVqj6ic8C55uT+YPVlHDqcZ/vF0l0eEXBInrJS/w6eRXfSCXwIa7Hyp3hEkAVBA3FYxONWA9XivFGfg2w6nRGulFByWp4h9G/Yz5CGF24kEV07F
-X-Gm-Message-State: AOJu0Yx6Um/+N6IrGI+76R0goiucIMVc9s972hkMP+wsIxlYHEBs3OqW
-	mrKste17VLEpPAaiTxW37LzfFOj3kx4Y6IID9YkmohyIXEX7kxy/MNcpzvXAWNM=
-X-Google-Smtp-Source: AGHT+IEM61ROSOw0CzG0X8FSdmCEEg6WGFlarYhclikyQ2fR7QmVIqgP4xaOcvcYDgnr0vf49H+LBA==
-X-Received: by 2002:a05:6a00:2284:b0:6ee:1d68:d33 with SMTP id d2e1a72fcca58-6f4e02ca2abmr35478343b3a.15.1716310056526;
-        Tue, 21 May 2024 09:47:36 -0700 (PDT)
-Received: from p14s ([2604:3d09:148c:c800:df1a:22de:40b2:f110])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-6584e7897bdsm9707304a12.21.2024.05.21.09.47.35
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 21 May 2024 09:47:36 -0700 (PDT)
-Date: Tue, 21 May 2024 10:47:33 -0600
-From: Mathieu Poirier <mathieu.poirier@linaro.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: andersson@kernel.org, matthias.bgg@gmail.com,
-	linux-remoteproc@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, kernel@collabora.com
-Subject: Re: [PATCH] remoteproc: mediatek: Zero out only remaining bytes of
- IPI buffer
-Message-ID: <ZkzQJepyjPz4Su+k@p14s>
-References: <20240520112724.139945-1-angelogioacchino.delregno@collabora.com>
+	id 1s9T9s-00000000bb0-3Efw;
+	Tue, 21 May 2024 17:20:18 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=RJd+jLDj+nE6uz28VeZVLjgHVLytLup2I3KEv0uM3ZI=; b=AKHJbxhM8E812pfN+rbN0A7Ynb
+	lb5RZeWMAMx0mSYA/q4bjkMOiudDWCg4Sse12fhYsvum5aFfc7jwBbEFdaOaJDWNZFO1PM2QyEoEb
+	+MY3XeYM8qtLfBKxEwNwsDo9LLpoDjqIqbrYS03jPvAnTmZzR8qRXxoROLSaUXYGm8rY=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1s9T9k-00Fm5g-V6; Tue, 21 May 2024 19:20:08 +0200
+Date: Tue, 21 May 2024 19:20:08 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: SkyLake Huang =?utf-8?B?KOm7g+WVn+a+pCk=?= <SkyLake.Huang@mediatek.com>
+Cc: "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"linux@armlinux.org.uk" <linux@armlinux.org.uk>,
+	"kuba@kernel.org" <kuba@kernel.org>,
+	"pabeni@redhat.com" <pabeni@redhat.com>,
+	"edumazet@google.com" <edumazet@google.com>,
+	"netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+	"dqfext@gmail.com" <dqfext@gmail.com>,
+	Steven Liu =?utf-8?B?KOWKieS6uuixqik=?= <steven.liu@mediatek.com>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"davem@davemloft.net" <davem@davemloft.net>,
+	"hkallweit1@gmail.com" <hkallweit1@gmail.com>,
+	"daniel@makrotopia.org" <daniel@makrotopia.org>,
+	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH net-next v3 5/5] net: phy: add driver for built-in 2.5G
+ ethernet PHY on MT7988
+Message-ID: <5b437ed2-1404-47f8-a320-f44dee98dfee@lunn.ch>
+References: <20240520113456.21675-1-SkyLake.Huang@mediatek.com>
+ <20240520113456.21675-6-SkyLake.Huang@mediatek.com>
+ <62b19955-23b8-4cd1-b09c-68546f612b44@lunn.ch>
+ <f7bc69930796b3797dc0e31237267e045a86f823.camel@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240520112724.139945-1-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <f7bc69930796b3797dc0e31237267e045a86f823.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240521_094741_048494_55138366 
-X-CRM114-Status: GOOD (  14.32  )
+X-CRM114-CacheID: sfid-20240521_102017_033444_2C1C1399 
+X-CRM114-Status: GOOD (  26.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,37 +83,112 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, May 20, 2024 at 01:27:24PM +0200, AngeloGioacchino Del Regno wrote:
-> In scp_ipi_handler(), instead of zeroing out the entire shared
-> buffer, which may be as large as 600 bytes, overwrite it with the
-> received data, then zero out only the remaining bytes.
-> 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  drivers/remoteproc/mtk_scp.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-> index e5214d43181e..dc70cf7db44d 100644
-> --- a/drivers/remoteproc/mtk_scp.c
-> +++ b/drivers/remoteproc/mtk_scp.c
-> @@ -117,8 +117,8 @@ static void scp_ipi_handler(struct mtk_scp *scp)
->  		return;
->  	}
->  
-> -	memset(scp->share_buf, 0, scp_sizes->ipi_share_buffer_size);
->  	memcpy_fromio(scp->share_buf, &rcv_obj->share_buf, len);
-> +	memset(&scp->share_buf[len], 0, scp_sizes->ipi_share_buffer_size - len);
+>     That is to say, for safety, we need to load firmware again right
+> atfer booting into Linux kernel. Actually, this takes just about 11ms.
 
-I will apply this patch when rc1 comes out next week.
+Since this is only 11ms, its not a big deal. If this was going over
+MDIO it would be much slower and then it does become significant.
 
-Thanks,
-Mathieu
+> > > +/* Setup LED */
+> > > +phy_set_bits_mmd(phydev, MDIO_MMD_VEND2, MTK_PHY_LED0_ON_CTRL,
+> > > + MTK_PHY_LED_ON_POLARITY | MTK_PHY_LED_ON_LINK10 |
+> > > + MTK_PHY_LED_ON_LINK100 | MTK_PHY_LED_ON_LINK1000 |
+> > > + MTK_PHY_LED_ON_LINK2500);
+> > > +phy_set_bits_mmd(phydev, MDIO_MMD_VEND2, MTK_PHY_LED1_ON_CTRL,
+> > > + MTK_PHY_LED_ON_FDX | MTK_PHY_LED_ON_HDX);
+> > > +
+> > > +pinctrl = devm_pinctrl_get_select(&phydev->mdio.dev, "i2p5gbe-
+> > led");
+> > 
+> > Calls to devm_pinctrl_get_select() is pretty unusual in drivers:
+> > 
+> > 
+> https://elixir.bootlin.com/linux/latest/C/ident/devm_pinctrl_get_select
+> > 
+> > Why is this needed? Generally, the DT file should describe the needed
+> > pinmux setting, without needed anything additionally.
+> > 
+> This is needed because we need to switch to i2p5gbe-led pinmux group
+> after we set correct polarity. Or LED may blink unexpectedly.
 
->  	handler(scp->share_buf, len, ipi_desc[id].priv);
->  	scp_ipi_unlock(scp, id);
->  
-> -- 
-> 2.45.1
+Since this is unusual, you should add a comment. Also, does the device
+tree binding explain this? I expect most DT authors are used to
+listing all the needed pins in the default pinmux node, and so will do
+that, unless there is a comment in the binding advising against it.
+
+> > It is a bit late doing this now. The user requested this a long time
+> > ago, and it will be hard to understand why it now returns EOPNOTSUPP.
+> > You should check for AUTONEG_DISABLE in config_aneg() and return the
+> > error there.
+> > 
+> >       Andrew
+> Maybe I shouldn't return EOPNOTSUPP in config_aneg directly?
+> In this way, _phy_state_machine will be broken if I trigger "$ ethtool
+> -s ethtool eth1 autoneg off"
 > 
+> [  520.781368] ------------[ cut here ]------------
+> root@OpenWrt:/# [  520.785978] _phy_start_aneg+0x0/0xa4: returned: -95
+> [  520.792263] WARNING: CPU: 3 PID: 423 at drivers/net/phy/phy.c:1254 _phy_state_machine+0x78/0x258
+> [  520.801039] Modules linked in:
+> [  520.804087] CPU: 3 PID: 423 Comm: kworker/u16:4 Tainted: G        W          6.8.0-rc7-next-20240306-bpi-r3+ #102
+> [  520.814335] Hardware name: MediaTek MT7988A Reference Board (DT)
+> [  520.820330] Workqueue: events_power_efficient phy_state_machine
+> [  520.826240] pstate: 60400005 (nZCv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+> [  520.833190] pc : _phy_state_machine+0x78/0x258
+> [  520.837623] lr : _phy_state_machine+0x78/0x258
+> [  520.842056] sp : ffff800084b7bd30
+> [  520.845360] x29: ffff800084b7bd30 x28: 0000000000000000 x27: 0000000000000000
+> [  520.852487] x26: ffff000000c56900 x25: ffff000000c56980 x24: ffff000000012ac0
+> [  520.859613] x23: ffff00000001d005 x22: ffff000000fdf000 x21: 0000000000000001
+> [  520.866738] x20: 0000000000000004 x19: ffff000003a90000 x18: ffffffffffffffff
+> [  520.873864] x17: 0000000000000000 x16: 0000000000000000 x15: ffff800104b7b977
+> [  520.880988] x14: 0000000000000000 x13: 0000000000000183 x12: 00000000ffffffea
+> [  520.888114] x11: 0000000000000001 x10: 0000000000000001 x9 : ffff8000837222f0
+> [  520.895239] x8 : 0000000000017fe8 x7 : c0000000ffffefff x6 : 0000000000000001
+> [  520.902365] x5 : 0000000000000000 x4 : 0000000000000000 x3 : 0000000000000000
+> [  520.909490] x2 : 0000000000000000 x1 : 0000000000000000 x0 : ffff000004120000
+> [  520.916615] Call trace:
+> [  520.919052]  _phy_state_machine+0x78/0x258
+> [  520.923139]  phy_state_machine+0x2c/0x80
+> [  520.927051]  process_one_work+0x178/0x31c
+> [  520.931054]  worker_thread+0x280/0x494
+> [  520.934795]  kthread+0xe4/0xe8
+> [  520.937841]  ret_from_fork+0x10/0x20
+> [  520.941408] ---[ end trace 0000000000000000 ]---
+> 
+> Now I prefer to give a warning like this, in
+> mt798x_2p5ge_phy_config_aneg():
+> if (phydev->autoneg == AUTONEG_DISABLE) {
+> 	dev_warn(&phydev->mdio.dev, "Once AN off is set, this phy can't
+> link.\n");
+> 	return genphy_c45_pma_setup_forced(phydev);
+> }
+
+That is ugly.
+
+Ideally we should fix phylib to support a PHY which cannot do fixed
+link. I suggest you first look at phy_ethtool_ksettings_set() and see
+what it does if passed cmd->base.autoneg == True, but
+ETHTOOL_LINK_MODE_Autoneg_BIT is not set in supported, because the PHY
+does not support autoneg. Is that handled? Does it return EOPNOTSUPP?
+Understanding this might help you implement the opposite.
+
+The opposite is however not easy. There is no linkmode bit indicating
+a PHY can do forced settings. The BMSR has a bit indicating the PHY is
+capable of auto-neg, which is used to set
+ETHTOOL_LINK_MODE_Autoneg_BIT. However there is no bit to indicate the
+PHY supports forced configuration. The standard just assumes all PHYs
+which are standard conforming can do forced settings. And i think this
+is the first PHY we have come across which is broken like this.
+
+So maybe we cannot fix this in phylib. In that case, the MAC drivers
+ksetting_set() should check if the user is attempting to disable
+autoneg, and return -EOPNOTSUPP. And i would keep the stack trace
+above, which will help developers understand they need the MAC to help
+out work around the broken PHY. You can probably also simplify the PHY
+driver, take out any code which tries to handle forced settings.
+
+	Andrew
+
+
 
