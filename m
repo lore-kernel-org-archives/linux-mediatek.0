@@ -4,95 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D126C25B74
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 May 2024 15:16:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F163C25B78
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 May 2024 16:36:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=zgoKFoQ+1ZxeBSFvhA/0PLTmzF3XLdEhqXLatkcXB1c=; b=Aeg5QG5mScGo9y
-	jDZi8FHOXfTMFxz+FbA2egmp6aZq7oaz/hcmG48KKeq0iHq3XNCeKSSESv3laT3o/gqd65aalST0Y
-	C2A3ehb1wvKrCZs8HAL9msPy616i5eJudYL4hI1L7q2ntdDMja0v1iSx3dY5u4jF6vdR07VWNzkzr
-	zL/RJsBTRIWO1hB3TCc9Aqry384HzTfliZ5O/WupcHNy17p1/kHGcaVnzGmAq2PBzYCQoxjYUiAnm
-	JURy+VAqDxqrvcNnQNROl2KYqCyBzRjP2gnQkq9eRBQQlmYaKTRUAVNkIXurzQCz0iYlJVpVdBlAp
-	t28hjMC3jLUFUhvQ4lMA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=TtllaMRJfGnVHwCm6walKh4WuYIDKssYdMI6QD/2XGA=; b=AEfWfA8sDbRgb76cjUnQf+FRJb
+	1msR+66juiCkfcrzkY0u1jRsBcepslRZielkY88lIT5jwhADwlE3jMW+hWr5k9jAAP8hi1K1CqxHJ
+	VBfHi92w3vMJr4XvLoyHJpFTt/ZdSqw7RTP9JmVQO6g7jdlfgGF5Lfbl0opBC9+9FArWfnWHLzUmP
+	kiS1FyB9MeDMzQGdht8sKZwZjeDOJ1XBmBaeuW2EV2E+x87rb0mdhICA47fx4uCKgdmTsxbd1yF/i
+	pnxXrGntCuMcKjQPn+0ixqZepwAqfQpQlBIvHBfKxBRwJacIwvWsIOJWVHK0unQYxTkmfnFjxqiS/
+	VEmmSaDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s9RDm-00000000JaO-2NXt;
-	Tue, 21 May 2024 15:16:10 +0000
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+	id 1s9STu-00000000WZW-2PE5;
+	Tue, 21 May 2024 16:36:54 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s9Q7n-000000006An-3CQs
-	for linux-mediatek@lists.infradead.org;
-	Tue, 21 May 2024 14:05:58 +0000
-Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-41fd5dc04f0so23494635e9.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 21 May 2024 07:05:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1716300348; x=1716905148; darn=lists.infradead.org;
-        h=cc:to:content-transfer-encoding:mime-version:message-id:date
-         :subject:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=zgoKFoQ+1ZxeBSFvhA/0PLTmzF3XLdEhqXLatkcXB1c=;
-        b=TXc8kA2nsj8FUj8V+Z2Nh9h1mp++jObti3SgpgElXv8YGsDZlfNvTrFUVosqnmVODp
-         bk42IjhAS6e5TInHY1NmpId/SNqrfA/5KCN0xZwCSEQ+xqJvGhckhQ+IKDgkWeJCrAfA
-         FiIrZ5yUoXkhFBhgWFCKqJUvwx1CCMxf1/ZfYaFw4w2Jtf7unSfe9U9DYFdLpC/0oEts
-         IeGBK6lHWIz6tDGUTiovuNTTMM/UnjVVL49q6x3B7lKyF+oTyFrEKwAXrugoGIZCHsL1
-         jaYaRpvG/jkUccgue6v94MxF+eeR1LtnuFPi9Yt9IFk79b13oYrq01c4LZCf8kLtnwus
-         nJwg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1716300348; x=1716905148;
-        h=cc:to:content-transfer-encoding:mime-version:message-id:date
-         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=zgoKFoQ+1ZxeBSFvhA/0PLTmzF3XLdEhqXLatkcXB1c=;
-        b=K88GLGymXTEMOp0pHmv+BiU6mZZmyAffyL/lz7X2cHEHKf7/g0bQy0+Z0blRTvLWiJ
-         EhyQkVPWuH1qPlI8i9AIvTyI3SWY5fUGk26b895p43aTJvp5IkWwAxLXU7nHpsfzzIV7
-         C9Qhf+mWpXYVaTqqW8i9j/YDoKZjawVXXB2ZeIcmgb28SPJ7hjYjlt3/ENAYRW3YUFSF
-         VoLvPeVCvwkla/M5Cpsyv5XdaWiM/TsS/AwkZd7t7zEmaSshW0IBVpLUOi5ySc6ozyG4
-         cBepL6y59H9/TjBNfc8Bt+Qm8+DwbBk2+mtKXVKI1+fXFRgKbGDgRvVDupoCr2sfP2kS
-         K4DA==
-X-Forwarded-Encrypted: i=1; AJvYcCUXdTxYPBOv7HfYACHTXUiMqnS910D8veLDmVpMdV5FlYOiHn8Al+uISTJIFiNLK9nTRrcC+zTCRrjT6wKRZVhSd80VcZSA5U8PEi2lDWBYt8or
-X-Gm-Message-State: AOJu0YxnNJV1/joFlcdaEZ8aPA5lzM/WLTGE+NtjOqJD4fdsw41Sa1O+
-	fgpGFgdRufZzyyIkCOQQ4ANUxZ9b1BHbD+46Zg14TAV+EOhVWPllEhKdKsZw3xk=
-X-Google-Smtp-Source: AGHT+IFmqJnb4ObWiPzsVQuZAWrqnThUPe8ztSlw4PvCSGE0QT/f8sLOvVgkTo5aE0vFaVuHcCymvA==
-X-Received: by 2002:a05:600c:3592:b0:420:1a0d:f15d with SMTP id 5b1f17b1804b1-4201a0df409mr219365415e9.22.1716300347840;
-        Tue, 21 May 2024 07:05:47 -0700 (PDT)
-Received: from [127.0.1.1] (abordeaux-651-1-78-161.w90-5.abo.wanadoo.fr. [90.5.97.161])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-42015deac1asm342085945e9.17.2024.05.21.07.05.46
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 21 May 2024 07:05:47 -0700 (PDT)
-From: Julien Panis <jpanis@baylibre.com>
-Subject: [PATCH v4 0/4] Mediatek thermal sensor driver support for MT8186
- and MT8188
-Date: Tue, 21 May 2024 16:05:34 +0200
-Message-Id: <20240521-mtk-thermal-mt818x-dtsi-v4-0-b91ee678411c@baylibre.com>
+	id 1s9STq-00000000WWv-0c8K;
+	Tue, 21 May 2024 16:36:51 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 1B847CE1054;
+	Tue, 21 May 2024 16:36:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 79D4DC4AF09;
+	Tue, 21 May 2024 16:36:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1716309405;
+	bh=lYt216ymFJHBZ77aQufJ3Q3bw6WnfSXmHT40ibI+voI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=R125lnd/GrW8NgD1Z4m0tbheWzZqVzXgZ+EsSDoel2OsjLM3dXYDHKxiV8i7szfBL
+	 nGYAuwPC6KixOq3bAkHAX4scDgOhC3h8U/zPhYkYa6ZiuwRyNv3bivkKE+v4FnT/p6
+	 Vo3xKNFwHnJ/ehFdJY6W8RoHOuybIgv5kirLnk5lBZgZYrqQdxg3K1TftWnvM1mvkU
+	 c3Ezvo6WAXWP5zdlPdBfp64eNQc1D4WPuJZcpbZLDt6UJguBNGDi2fXI0Y9RD8tp/l
+	 u2A2FoQlZkmXmHnBosKB+rJA9kAJDm1xN0JjCstmU+1sa8SJi0yiTbdVtA7bS3H1M7
+	 xnPG0srtngn2w==
+Date: Tue, 21 May 2024 17:36:39 +0100
+From: Simon Horman <horms@kernel.org>
+To: Sky Huang <SkyLake.Huang@mediatek.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Qingfang Deng <dqfext@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Steven Liu <Steven.Liu@mediatek.com>
+Subject: Re: [PATCH net-next v4 1/5] net: phy: mediatek: Re-organize MediaTek
+ ethernet phy drivers
+Message-ID: <20240521163639.GB839490@kernel.org>
+References: <20240521101548.9286-1-SkyLake.Huang@mediatek.com>
+ <20240521101548.9286-2-SkyLake.Huang@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAC6qTGYC/x2Myw5AMBAAf0X2bJOqV/kVcSgWG1rSNiIR/65xm
- znMPODJMXlokwccXez5sFGKNIFx1XYh5Ck6SCELUUqBJmwYVnJG75FVpm6cgmekUee1mpuh0gJ
- ifTqa+f7PXf++H1oE/hRpAAAA
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Daniel Lezcano <daniel.lezcano@linaro.org>, 
- Nicolas Pitre <npitre@baylibre.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Julien Panis <jpanis@baylibre.com>
-X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1716300346; l=1983;
- i=jpanis@baylibre.com; s=20230526; h=from:subject:message-id;
- bh=JUfb8zY+izCRC4r50MixNaaw78CPvzL7Ajdm+ROpRS8=;
- b=Rv1gAaXrI9T1gUh79Yf80ndSE1qfUTglrDHcSeo8X96oSkWcD33mgOnC648Krl2/j+tLEWccz
- CmXGPBXvimlD6ZQ+ofFFt6ktYgM86f2JCojX6rEzyAeR/IoO0YZIbF0
-X-Developer-Key: i=jpanis@baylibre.com; a=ed25519;
- pk=8eSM4/xkiHWz2M1Cw1U3m2/YfPbsUdEJPCWY3Mh9ekQ=
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240521101548.9286-2-SkyLake.Huang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240521_070555_878580_38EE32FB 
-X-CRM114-Status: GOOD (  10.96  )
+X-CRM114-CacheID: sfid-20240521_093650_847402_B18F1D42 
+X-CRM114-Status: GOOD (  19.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,54 +83,91 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This is a bunch of patches to support the MT8186 and MT8188 thermal
-sensor configurations.
+On Tue, May 21, 2024 at 06:15:44PM +0800, Sky Huang wrote:
+> From: "SkyLake.Huang" <skylake.huang@mediatek.com>
+> 
+> Re-organize MediaTek ethernet phy driver files and get ready to integrate
+> some common functions and add new 2.5G phy driver.
+> mtk-ge.c: MT7530 Gphy on MT7621 & MT7531 Gphy
+> mtk-ge-soc.c: Built-in Gphy on MT7981 & Built-in switch Gphy on MT7988
+> mtk-2p5ge.c: Planned for built-in 2.5G phy on MT7988
+> 
+> Signed-off-by: SkyLake.Huang <skylake.huang@mediatek.com>
 
-Since the patches of v3 were applied except those related to the SoC
-device trees, this series includes only patches for 'mt8186.dtsi' and
-'mt8188.dtsi'.
+...
 
-Signed-off-by: Julien Panis <jpanis@baylibre.com>
----
-Changes in v4:
-- Fix wrong thermal zone names.
-- Lower 'polling-delay-passive' values.
-- Set 'hysteresis' value to 0 for 'critical' trips.
-- Add a 'hot' trip point in between 'passive' and 'critical' trips.
-- Link to v3: https://lore.kernel.org/all/20240402032729.2736685-1-nico@fluxnic.net/
+> diff --git a/drivers/net/phy/Kconfig b/drivers/net/phy/Kconfig
+> index 1df0595..e0e4b5e 100644
+> --- a/drivers/net/phy/Kconfig
+> +++ b/drivers/net/phy/Kconfig
+> @@ -251,22 +251,7 @@ config MAXLINEAR_GPHY
+>  	  Support for the Maxlinear GPY115, GPY211, GPY212, GPY215,
+>  	  GPY241, GPY245 PHYs.
+>  
+> -config MEDIATEK_GE_PHY
+> -	tristate "MediaTek Gigabit Ethernet PHYs"
+> -	help
+> -	  Supports the MediaTek Gigabit Ethernet PHYs.
+> -
+> -config MEDIATEK_GE_SOC_PHY
+> -	tristate "MediaTek SoC Ethernet PHYs"
+> -	depends on (ARM64 && ARCH_MEDIATEK) || COMPILE_TEST
+> -	depends on NVMEM_MTK_EFUSE
+> -	help
+> -	  Supports MediaTek SoC built-in Gigabit Ethernet PHYs.
+> -
+> -	  Include support for built-in Ethernet PHYs which are present in
+> -	  the MT7981 and MT7988 SoCs. These PHYs need calibration data
+> -	  present in the SoCs efuse and will dynamically calibrate VCM
+> -	  (common-mode voltage) during startup.
+> +source "drivers/net/phy/mediatek/Kconfig"
+>  
+>  config MICREL_PHY
+>  	tristate "Micrel PHYs"
 
-Changes in v3:
-- use meaningful name for binding index definitions
-- reuse LVTS_COEFF_*_MT7988 on MT8186 per reviewer request
-- do similarly for MT8188 that now reuses LVTS_COEFF_*_MT8195
-- use thermal zone names the svs driver wants
-- adjust some DT node names and iospace length
-- remove variable .hw_tshut_temp as it is constant across all SOCs
-- Link to v2: https://lore.kernel.org/all/20240318212428.3843952-1-nico@fluxnic.net/
+...
 
-Changes in v2:
-- renamed CPU cluster thermal zones in DT
-- fixed logic to cope with empty controller slots at the beginning
-- isolated bindings to their own patches
-- added MT8188 default thermal zones
-- Link to v1: https://lore.kernel.org/all/20240111223020.3593558-1-nico@fluxnic.net/T/
+> diff --git a/drivers/net/phy/mediatek/Kconfig b/drivers/net/phy/mediatek/Kconfig
+> new file mode 100644
+> index 0000000..2fa3a78
+> --- /dev/null
+> +++ b/drivers/net/phy/mediatek/Kconfig
+> @@ -0,0 +1,22 @@
+> +# SPDX-License-Identifier: GPL-2.0-only
+> +config MEDIATEK_GE_PHY
+> +	tristate "MediaTek Gigabit Ethernet PHYs"
+> +	help
+> +	  Supports the MediaTek non-built-in Gigabit Ethernet PHYs.
+> +
+> +	  Non-built-in Gigabit Ethernet PHYs include mt7530/mt7531.
+> +	  You may find mt7530 inside mt7621. This driver shares some
+> +	  common operations with MediaTek SoC built-in Gigabit
+> +	  Ethernet PHYs.
+> +
+> +config MEDIATEK_GE_SOC_PHY
+> +	bool "MediaTek SoC Ethernet PHYs"
 
----
-Nicolas Pitre (4):
-      arm64: dts: mediatek: mt8186: add lvts definitions
-      arm64: dts: mediatek: mt8186: add default thermal zones
-      arm64: dts: mediatek: mt8188: add lvts definitions
-      arm64: dts: mediatek: mt8188: add default thermal zones
+Hi,
 
- arch/arm64/boot/dts/mediatek/mt8186.dtsi | 309 ++++++++++++++++++++
- arch/arm64/boot/dts/mediatek/mt8188.dtsi | 467 +++++++++++++++++++++++++++++++
- 2 files changed, 776 insertions(+)
----
-base-commit: 632483ea8004edfadd035de36e1ab2c7c4f53158
-change-id: 20240520-mtk-thermal-mt818x-dtsi-eca378f9b6a0
+This patch changes this kconfig option from tristate to bool.
 
-Best regards,
+This seems to break allmodconfig builds.
+
+I think that is because MEDIATEK_GE_SOC_PHY is builtin while
+PHYLIB is a module, and this driver uses symbols from PHYLIB.
+
+> +	depends on (ARM64 && ARCH_MEDIATEK) || COMPILE_TEST
+> +	select NVMEM_MTK_EFUSE
+> +	help
+> +	  Supports MediaTek SoC built-in Gigabit Ethernet PHYs.
+> +
+> +	  Include support for built-in Ethernet PHYs which are present in
+> +	  the MT7981 and MT7988 SoCs. These PHYs need calibration data
+> +	  present in the SoCs efuse and will dynamically calibrate VCM
+> +	  (common-mode voltage) during startup.
+
+...
+
 -- 
-Julien Panis <jpanis@baylibre.com>
-
+pw-bot: changes-requested
 
