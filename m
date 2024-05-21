@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFD9FC25B77
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 May 2024 21:22:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 432E8C25B74
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 May 2024 06:56:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tg1qbLCJATh0fAvY0OYpCWrQOdxi5+SocWmqaVlbks0=; b=GE7etsADL1cai3t7wHOhsG0CIt
-	fyFlKyFjD4nhlnMd56+pZQ+2HUyrtSFeQwzUm/SEPvP9NRKQpad/SzngHgAGwv+02dvXOpAEyyl7r
-	0gx1aFhVvzdF1PtV+0tSyQFsNzwisRXIOb6EC0x3WzAxt1YdV9XDxj09qUGf5UNUKZ45xAkdGoW2h
-	TZj5Ff4t5fHWrdBYwNEbUPkAxTFyH/a2568/a90/TAbabtgoJ0dEE9FdNmTr5AZMcrh8UGigLcaaa
-	urGa7akbEYz+eRcHGy6D1kMCKGG68W49H4+rxd5KGGAnyWnnGvX5Y5nL4oUpBeF+Jr9+UnCjvkMu+
-	NGHSDzEw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=wPu6Kq++kDE6qclpWVSKcklJKFws72EPlNnYDVEeoqo=; b=z56XKOg7/XDdWWAQUk0ZKKMcHK
+	YRph5VP2xOsjy5Mt70I7RvFyL7NJUuc5RDPVRjsJ3BeZ4BGWQe7zhX4acFJXo4Y8/mDZxOcucZKra
+	AbWrHTdE48tdf0W0RHHY7f9dfmhxmilIU1qUlcz6/hRnXjeN719rXwhDJdYcTPpzABYiUVrCUBIZ0
+	XvGurU/nItEuVJfF0A2fmaYf7GJZSep651eoj9Eomk5HZlFlpM5GQkhx6oo7xDsoHB4Zn/nd6vjq9
+	SHeu06p2eys/nk60pGq6PyPlC9TVWp4HHAYhPxr9MxbO7cXh4wh2orOutMyXAWGwtTn1B1uY+NMiu
+	QTR5gKzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s9ASY-0000000Fa3S-2RMH;
-	Mon, 20 May 2024 21:22:18 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1s9JQW-0000000GWbt-1TCq;
+	Tue, 21 May 2024 06:56:48 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s9ASV-0000000Fa2f-3JIg;
-	Mon, 20 May 2024 21:22:17 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 5CCDDCE0D8B;
-	Mon, 20 May 2024 21:22:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5316FC2BD10;
-	Mon, 20 May 2024 21:22:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1716240132;
-	bh=E6TcOxL5uy2e/cY4PINVvMynIN5+jOe4ZcRRrYdWzI4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=LnRkzITjHDtw1/8w6vcbvQuDUN6HuU47f1hvl2WQCtNmV34bpDgGs7PqLUp3BrxBV
-	 ykGPf4vNTIhPlw4eeRCjb2JS6hgyXkNf3DLcDfGvEBsLpteCBRLMPQNJasJsFCtgB9
-	 M1xpLWCcIVSRz1A13weQPlssLjuYSa8VrwgJLFj0xTfX3/d7ke9jhSCc0b1hMJHqZa
-	 QyU32FqXxDf+ISb0cYIlN8dbGaeUcoMH1lG9GGDnTkmgc39/57noMjGGSGWlE8Z4xe
-	 e1cM/rmxDzkxJtPmtW+RrWST7M63H4Vv9OyMfIwAy6eWxPo4eydWzeXgjeVOAgKjpa
-	 ERtWs9Q1FoAsw==
-Date: Mon, 20 May 2024 16:22:11 -0500
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	devicetree@vger.kernel.org,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	Daniel Machon <daniel.machon@microchip.com>,
-	Conor Dooley <conor+dt@kernel.org>, Nishanth Menon <nm@ti.com>,
-	Jiaxun Yang <jiaxun.yang@flygoat.com>,
-	linux-mediatek@lists.infradead.org,
-	Steen Hegelund <Steen.Hegelund@microchip.com>,
-	Lars Povlsen <lars.povlsen@microchip.com>,
-	linux-kernel@vger.kernel.org, Lee Jones <lee@kernel.org>,
-	UNGLinuxDriver@microchip.com
-Subject: Re: [PATCH 7/8] dt-bindings: mfd: syscon: Add APM poweroff mailbox
-Message-ID: <171624012885.1611775.15501873485589051240.robh@kernel.org>
-References: <20240519-dt-bindings-mfd-syscon-split-v1-0-aaf996e2313a@linaro.org>
- <20240519-dt-bindings-mfd-syscon-split-v1-7-aaf996e2313a@linaro.org>
+	id 1s9JQS-0000000GWau-48ct;
+	Tue, 21 May 2024 06:56:46 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1716274598;
+	bh=TfIOtUcqbwJkZ6notRudlNbUTFukk69iQGuDM3mE/MU=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=j8hBCfaCITG8b7pfUhoD1HKU00f770m7cYI7bu4vJH8rk/LXn0Yf+54WofcnvQcjO
+	 EBrwL0Jt2wDVrxrr+0JBpPbNrJOira99dUdCUm9/dP/GWui7vnBWQNV3pOEVCaXWfP
+	 KIkcTRj8vFjREo+/EPduJnkDhULrUqWVhWOHchgYqBE6VpSp3LlufdpcPgqZgmEoMb
+	 0Xi1EdMqEXTobHSa/oC9awjBJi9zI4qGB7izvFUBxKilyV71NgrBMi44w52x5Tklr3
+	 l7edZajr7e5ZeXhaq1i2UPch5QdDzhEK/PASHKWT3nl9DpEwW0izTYnOWML1e/u8Iq
+	 K8mL3G0ETrAaA==
+Received: from [100.66.96.193] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: vignesh)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 3B376378202E;
+	Tue, 21 May 2024 06:56:35 +0000 (UTC)
+Message-ID: <87fba814-eb5a-4b6a-800b-158987fca1d8@collabora.com>
+Date: Tue, 21 May 2024 12:26:33 +0530
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240519-dt-bindings-mfd-syscon-split-v1-7-aaf996e2313a@linaro.org>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 2/6] drm/ci: generate testlist from build
+Content-Language: en-US
+To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com,
+ helen.koike@collabora.com, airlied@gmail.com, daniel@ffwll.ch,
+ robdclark@gmail.com, david.heidelberg@collabora.com,
+ guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com,
+ mcanal@igalia.com, linux-mediatek@lists.infradead.org,
+ linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ amd-gfx@lists.freedesktop.org, linux-arm-msm@vger.kernel.org,
+ intel-gfx@lists.freedesktop.org, virtualization@lists.linux-foundation.org,
+ linux-kernel@vger.kernel.org
+References: <20240517092502.647420-1-vignesh.raman@collabora.com>
+ <20240517092502.647420-3-vignesh.raman@collabora.com>
+ <o363vir3dqz2znrnifo6enbdwudalmxqbigdkci2ykxf5qjbnx@2ngllflxotgk>
+From: Vignesh Raman <vignesh.raman@collabora.com>
+In-Reply-To: <o363vir3dqz2znrnifo6enbdwudalmxqbigdkci2ykxf5qjbnx@2ngllflxotgk>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240520_142216_032451_C29CCCB6 
-X-CRM114-Status: UNSURE (   8.67  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240520_235645_209023_4A7C0392 
+X-CRM114-Status: GOOD (  16.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,16 +83,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Dmitry,
 
-On Sun, 19 May 2024 20:42:22 +0200, Krzysztof Kozlowski wrote:
-> Add compatible for an already used syscon poweroff/mailbox block in APM.
+On 20/05/24 16:30, Dmitry Baryshkov wrote:
+> On Fri, May 17, 2024 at 02:54:58PM +0530, Vignesh Raman wrote:
+>> Stop vendoring the testlist into the kernel. Instead, use the
+>> testlist from the IGT build to ensure we do not miss renamed
+>> or newly added tests.
+>>
+>> Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
+>> ---
+>>
+>> v2:
+>>    - Fix testlist generation for arm and arm64 builds.
+>>
+>> ---
+>>   drivers/gpu/drm/ci/build-igt.sh  |   34 +
+>>   drivers/gpu/drm/ci/igt_runner.sh |    9 +-
+>>   drivers/gpu/drm/ci/testlist.txt  | 2761 ------------------------------
+>>   3 files changed, 39 insertions(+), 2765 deletions(-)
+>>   delete mode 100644 drivers/gpu/drm/ci/testlist.txt
+>>
+>> diff --git a/drivers/gpu/drm/ci/build-igt.sh b/drivers/gpu/drm/ci/build-igt.sh
+>> index 7859554756c4..e62244728613 100644
+>> --- a/drivers/gpu/drm/ci/build-igt.sh
+>> +++ b/drivers/gpu/drm/ci/build-igt.sh
 > 
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> ---
->  Documentation/devicetree/bindings/mfd/syscon.yaml | 2 ++
->  1 file changed, 2 insertions(+)
+> [...]
 > 
+>> @@ -26,6 +50,16 @@ meson build $MESON_OPTIONS $EXTRA_MESON_ARGS
+>>   ninja -C build -j${FDO_CI_CONCURRENT:-4} || ninja -C build -j 1
+>>   ninja -C build install
+>>   
+>> +if [[ "$KERNEL_ARCH" = "arm64" ]]; then
+>> +    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/igt/lib/aarch64-linux-gnu
+>> +elif [[ "$KERNEL_ARCH" = "arm" ]]; then
+>> +    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/igt/lib
+>> +else
+>> +    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/igt/lib64
+> 
+> Could you please clarify this part? The arm64 vs arm don't look logical
+> from my point of view.
+> 
+> The rest LGTM.
 
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+The libs are installed in the below path for different arch.
 
+ > find . -name libigt.so
+./x86/igt/lib64/libigt.so
+./arm64/igt/lib/aarch64-linux-gnu/libigt.so
+./arm/igt/lib/libigt.so
+~/igt-build
+
+So for arm64 it is 'lib/aarch64-linux-gnu' and arm it is 'lib'.
+
+s3.freedesktop.org/artifacts/vigneshraman/linux/1179691/arm64/igt.tar.gz
+s3.freedesktop.org/artifacts/vigneshraman/linux/1179691/arm/igt.tar.gz
+s3.freedesktop.org/artifacts/vigneshraman/linux/1179691/x86_64/igt.tar.gz
+
+Regards,
+Vignesh
+
+> 
+>> +fi
+>> +
+>> +generate_testlist
+>> +
+>>   mkdir -p artifacts/
+>>   tar -cf artifacts/igt.tar /igt
+>>   
 
