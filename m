@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC3EBC25B7C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 May 2024 12:23:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 799E8C25B7C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 May 2024 12:24:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:References:Cc:To:Subject:From:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=P774akruKOSuhtY2RJs3RA99QVuT+DlUyrfAqCZgSuw=; b=UnGcNl/LxlbbGgknEOAACdGfz8
-	NYjUNLe9ZmKa+qg2VMV3oj/0rlexQUPqjN4tJVCyi2YW3Yb+fOGMHAwZA7rHxYMejWt1j73jpcUM6
-	wlLnnv3WiDR44QoW7d4pynkX4juds8aqVQlAX1tpIcn5kRW8BUMNERt8/BOYW/uXVjL/3+UF5s8Oa
-	OUnYIOmkke2QiEpqdSVrY/eD/C7xiZRUMmWsqKbkJ7Byz65KOk9nNoAlrMP09nc0F2v7zWT78PK4w
-	BV9QsLxQnQgvvKpA9XFPJWaKa/dLvscrGlwt3k2aERj63yl8jtOeeZEZrAShih82ZQOUqFUKXyOoh
-	qRvmCMqw==;
+	bh=BvMpVoZBxpYmC0HL2vYDl64KkyD1ERPQzI5CiZ5GXaU=; b=rBZz0rSjzHmsAGH3Ziou7R+Kdt
+	klNcZX8T6yWA4AErCdjoGruJbhDL3wkwTeNf83UJQieRIgLwoBAp8KwXw4S49vFFgdkcOu4j8TK6o
+	PT9fTTd+mx3HpBISxVeH/9MISES8PHfmOIFv61lRNkBcppIxjtTgdF8jv4GTrTRmUIF58WTQ8S/yQ
+	2Rq1NSoDS94t4GKgl3rbauDW3VqR/hfnFPtfYGkg4YtfpLu6tzC4uBOLDq/wcVj6OM4B4huC6sIsY
+	jGTuDUs1bQ4iLyXmQV0usnXnrDJAzHukhOo6vhdFZvR0cNbtGfDlgT/5P7rqJmIv9geVFjT15EYhy
+	ftD43PuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s9l0a-00000002u96-4BBx;
-	Wed, 22 May 2024 12:23:53 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1s9l1E-00000002uMm-3seG;
+	Wed, 22 May 2024 12:24:32 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s9l0W-00000002u6E-1v34;
-	Wed, 22 May 2024 12:23:50 +0000
+	id 1s9l1B-00000002uKQ-2dYJ;
+	Wed, 22 May 2024 12:24:30 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1716380626;
-	bh=phyztzXqZHdPHKrf8rO419t6Fa+vJzO/hs+BEbFz/nw=;
+	s=mail; t=1716380668;
+	bh=EPQiEdOm8pWQsKWJp92+fqy66UV0mN3U7t5279kB71c=;
 	h=Date:From:Subject:To:Cc:References:In-Reply-To:From;
-	b=wGtt6tJ8efObrlDVvEey44Szoh4c08bH3fMQfohugPaeRsm9KFwFA3jOqdSYSEAv+
-	 maoxRUVow1+2xlQCMMNQRPb3s4feJW1s9UewOa7ShgHaVdchpVZLJzwTI8ddNHGK0t
-	 HFcDYGDmTRixht+2huS7tt9hol7Nba0lW/E955CPt5wBqw1Dg6nYD2i4eCvzVugZ8J
-	 OL67a6QxlMHhfrCyx4kmP7taxCzYJNnZs+dvkrgOJu36Z5E+Hmha3AzGoQPYgT9CkB
-	 ilqG4Xc8xR9PKDEqJDo0aG7ymp/DWMUg5Q4w+W6nUzziwB8qDtvhft9Zg6bV9cnU5o
-	 LoW7f8jvWkuWQ==
+	b=sozDw0DPD0uUURT3kUpLdSLj4oFB+YkwD4ki4HAn2/SPsB3gVGldkHTul93jLe1Yv
+	 sQz2WKx8N7XR5bH0rKz1lxIZG/eEYW8/lX59gPAjfXX62EtctyKRUG/vLSObWZBYhE
+	 IZfxvTjLTMrLP9IJpF63a2spdtVdyUpekBl8hU9PVA4WBLb3j8xlvxCxgarSRaf9z7
+	 dlRtSh7i67t6SuGRlwIldPf6OYni9kAgtMoreCUswb70DhL9+iH+GgBBWFa597CUL8
+	 HKRiDv7uU6C2OchAaGZVccJty1TSliFdFcbUVUHx+Qcok3c9JduJaBDtBu4Sx6KQsb
+	 BBWLUd04o+Utg==
 Received: from [100.95.196.182] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: andrzej.p)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 40C6F37821A0;
-	Wed, 22 May 2024 12:23:45 +0000 (UTC)
-Message-ID: <b76dc54f-ca33-4851-9999-72740cd22060@collabora.com>
-Date: Wed, 22 May 2024 14:23:44 +0200
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id D3E2337821A0;
+	Wed, 22 May 2024 12:24:26 +0000 (UTC)
+Message-ID: <f6819ac7-ba7a-442e-9408-af7bb673667c@collabora.com>
+Date: Wed, 22 May 2024 14:24:26 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 From: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-Subject: Re: [PATCH v6,09/24] media: mediatek: vcodec: allocate tee share
- memory
+Subject: Re: [PATCH v6,04/24] v4l: add documentation for restricted memory
+ flag
 To: Yunfei Dong <yunfei.dong@mediatek.com>,
  Jeffrey Kardatzke <jkardatzke@google.com>,
  =?UTF-8?Q?N=C3=ADcolas_F_=2E_R_=2E_A_=2E_Prado?= <nfraprado@collabora.com>,
@@ -73,14 +73,14 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>, Yong Wu <yong.wu@mediatek.com>,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  Project_Global_Chrome_Upstream_Group@mediatek.com
 References: <20240516122102.16379-1-yunfei.dong@mediatek.com>
- <20240516122102.16379-10-yunfei.dong@mediatek.com>
+ <20240516122102.16379-5-yunfei.dong@mediatek.com>
 Content-Language: en-US
-In-Reply-To: <20240516122102.16379-10-yunfei.dong@mediatek.com>
+In-Reply-To: <20240516122102.16379-5-yunfei.dong@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240522_052348_655273_65BDA422 
-X-CRM114-Status: GOOD (  27.07  )
+X-CRM114-CacheID: sfid-20240522_052429_817992_A46F64BA 
+X-CRM114-Status: GOOD (  16.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,219 +95,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Yunfei,
+Hi Yunfei & Jeffrey,
 
 W dniu 16.05.2024 o 14:20, Yunfei Dong pisze:
-> Allocate two share memory for each lat and core hardware used to share
-> information with optee-os. Msg buffer used to send ipi command and get ack
-> command with optee-os, data buffer used to store vsi information which
-> used for hardware decode.
+> From: Jeffrey Kardatzke <jkardatzke@google.com>
 > 
+> Adds documentation for V4L2_MEMORY_FLAG_RESTRICTED.
+> 
+
+Why not in the patch where the flag is actually being added?
+ From that commit until this commit it would be undocumented.
+
+While at it...
+
+> Signed-off-by: Jeffrey Kardatzke <jkardatzke@google.com>
 > Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 > ---
->   .../vcodec/decoder/mtk_vcodec_dec_optee.c     | 80 ++++++++++++++++++-
->   .../vcodec/decoder/mtk_vcodec_dec_optee.h     | 32 ++++++++
->   2 files changed, 111 insertions(+), 1 deletion(-)
+>   Documentation/userspace-api/media/v4l/buffer.rst | 10 +++++++++-
+>   1 file changed, 9 insertions(+), 1 deletion(-)
 > 
-> diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.c
-> index 38d9c1c1785a..611fb0e56480 100644
-> --- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.c
-> +++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.c
-> @@ -47,13 +47,69 @@ int mtk_vcodec_dec_optee_private_init(struct mtk_vcodec_dec_dev *vcodec_dev)
->   }
->   EXPORT_SYMBOL_GPL(mtk_vcodec_dec_optee_private_init);
+> diff --git a/Documentation/userspace-api/media/v4l/buffer.rst b/Documentation/userspace-api/media/v4l/buffer.rst
+> index 52bbee81c080..807e43bfed2b 100644
+> --- a/Documentation/userspace-api/media/v4l/buffer.rst
+> +++ b/Documentation/userspace-api/media/v4l/buffer.rst
+> @@ -696,7 +696,7 @@ enum v4l2_memory
 >   
-> +static void mtk_vcodec_dec_optee_deinit_memref(struct mtk_vdec_optee_ca_info *ca_info,
-> +					       enum mtk_vdec_optee_data_index data_index)
-> +{
-> +	tee_shm_free(ca_info->shm_memref[data_index].msg_shm);
-> +}
-> +
-> +static int mtk_vcodec_dec_optee_init_memref(struct tee_context *tee_vdec_ctx,
-> +					    struct mtk_vdec_optee_ca_info *ca_info,
-> +					    enum mtk_vdec_optee_data_index data_index)
-> +{
-> +	struct mtk_vdec_optee_shm_memref *shm_memref;
-> +	int alloc_size = 0, err = 0;
-> +	u64 shm_param_type = 0;
-> +	bool copy_buffer;
-> +
-> +	switch (data_index) {
-> +	case OPTEE_MSG_INDEX:
-> +		shm_param_type = TEE_IOCTL_PARAM_ATTR_TYPE_MEMREF_INOUT;
-> +		alloc_size = MTK_VDEC_OPTEE_MSG_SIZE;
-> +		copy_buffer = true;
-> +		break;
-> +	case OPTEE_DATA_INDEX:
-> +		shm_param_type = TEE_IOCTL_PARAM_ATTR_TYPE_MEMREF_INOUT;
-> +		alloc_size = MTK_VDEC_OPTEE_HW_SIZE;
-> +		copy_buffer = false;
-> +		break;
-> +	default:
-> +		pr_err(MTK_DBG_VCODEC_STR "tee invalid data_index: %d.\n", data_index);
-> +		return -EINVAL;
-> +	}
-> +
-> +	shm_memref = &ca_info->shm_memref[data_index];
-> +
-> +	/* Allocate dynamic shared memory with decoder TA */
-> +	shm_memref->msg_shm_size = alloc_size;
-> +	shm_memref->param_type = shm_param_type;
-> +	shm_memref->copy_to_ta = copy_buffer;
-> +	shm_memref->msg_shm = tee_shm_alloc_kernel_buf(tee_vdec_ctx, shm_memref->msg_shm_size);
-> +	if (IS_ERR(shm_memref->msg_shm)) {
-> +		pr_err(MTK_DBG_VCODEC_STR "tee alloc buf fail: data_index:%d.\n", data_index);
-> +		return -ENOMEM;
-> +	}
-> +
-> +	shm_memref->msg_shm_ca_buf = tee_shm_get_va(shm_memref->msg_shm, 0);
-> +	if (IS_ERR(shm_memref->msg_shm_ca_buf)) {
-> +		pr_err(MTK_DBG_VCODEC_STR "tee get shm va fail: data_index:%d.\n", data_index);
-> +		err = PTR_ERR(shm_memref->msg_shm_ca_buf);
-> +		goto err_get_msg_va;
-> +	}
-> +
-> +	return err;
-
-Anything other than a zero possible here? In error-free exectution the return
-value of zero is set far away from here. And then both error-free execution
-and error recovery end in "return err;" which looks kind of weird to me.
-Maybe that's just my personal preference, but I'd prefer "return 0;" here.
-Alternatively, maybe rename "err" as "ret"? This applies to all patches.
-
-I wouldn't mind a blank line here to visually separate the error recovery path
-from error-free execution. This applies to all patches.
-
-> +err_get_msg_va:
-> +	tee_shm_free(shm_memref->msg_shm);
-> +	return err;
-> +}
-> +
->   static int mtk_vcodec_dec_optee_init_hw_info(struct mtk_vdec_optee_private *optee_private,
->   					     enum mtk_vdec_hw_id hardware_index)
->   {
->   	struct device *dev = &optee_private->vcodec_dev->plat_dev->dev;
->   	struct tee_ioctl_open_session_arg session_arg;
->   	struct mtk_vdec_optee_ca_info *ca_info;
-> -	int err = 0, session_func;
-> +	int err, i, j, session_func;
+>   .. _memory-flags:
 >   
->   	/* Open lat and core session with vdec TA. */
->   	switch (hardware_index) {
-> @@ -87,6 +143,24 @@ static int mtk_vcodec_dec_optee_init_hw_info(struct mtk_vdec_optee_private *opte
->   	dev_dbg(dev, MTK_DBG_VCODEC_STR "open vdec tee session hw_id:%d session_id=%x.\n",
->   		hardware_index, ca_info->vdec_session_id);
+> -Memory Consistency Flags
+> +Memory Flags
+>   ------------------------
 >   
-> +	/* Allocate dynamic shared memory with decoder TA */
-> +	for (i = 0; i < OPTEE_MAX_INDEX; i++) {
-> +		err = mtk_vcodec_dec_optee_init_memref(optee_private->tee_vdec_ctx, ca_info, i);
-> +		if (err) {
-> +			dev_err(dev, MTK_DBG_VCODEC_STR "init vdec memref failed: %d.\n", i);
-> +			goto err_init_memref;
-> +		}
-> +	}
+>   .. raw:: latex
+> @@ -728,6 +728,14 @@ Memory Consistency Flags
+>   	only if the buffer is used for :ref:`memory mapping <mmap>` I/O and the
+>   	queue reports the :ref:`V4L2_BUF_CAP_SUPPORTS_MMAP_CACHE_HINTS
+>   	<V4L2-BUF-CAP-SUPPORTS-MMAP-CACHE-HINTS>` capability.
+> +    * .. _`V4L2-MEMORY-FLAG-RESTRICTED`:
 > +
-> +	return err;
-> +err_init_memref:
-> +	if (i != 0) {
+> +      - ``V4L2_MEMORY_FLAG_RESTRICTED``
+> +      - 0x00000002
+> +      - The queued buffers are expected to be in restricted memory. If not, an
+> +	error will be returned. This flag can only be used with ``V4L2_MEMORY_DMABUF``.
+> +	Typically restricted buffers are allocated using a restricted dma-heap. This flag
+> +	can only be specified if the ``V4L2_BUF_CAP_SUPPORTS_RESTRICTED_MEM`` is set.
 
-Isn't i now equal to the index at which init memref failed?
-
-> +		for (j = 0; j < i; j++)
-> +			mtk_vcodec_dec_optee_deinit_memref(ca_info, j);
-> +	}
-
-So instead of the above maybe:
-
-	--i;
-	while (i >= 0)
-		mtk_vcodec_dec_optee_deinit_memref(ca_info, i--);
-
-after --i the i points to the last successfully initialized memref unless < 0.
-This way you can eliminate the j.
-
-> +
-> +	tee_client_close_session(optee_private->tee_vdec_ctx, ca_info->vdec_session_id);
-> +
->   	return err;
->   }
->   
-> @@ -94,12 +168,16 @@ static void mtk_vcodec_dec_optee_deinit_hw_info(struct mtk_vdec_optee_private *o
->   						enum mtk_vdec_hw_id hw_id)
->   {
->   	struct mtk_vdec_optee_ca_info *ca_info;
-> +	int i;
->   
->   	if (hw_id == MTK_VDEC_LAT0)
->   		ca_info = &optee_private->lat_ca;
->   	else
->   		ca_info = &optee_private->core_ca;
->   
-> +	for (i = 0; i < OPTEE_MAX_INDEX; i++)
-> +		mtk_vcodec_dec_optee_deinit_memref(ca_info, i);
-> +
->   	tee_client_close_session(optee_private->tee_vdec_ctx, ca_info->vdec_session_id);
->   }
->   
-> diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.h b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.h
-> index 8b1dca49331e..24aa63af9887 100644
-> --- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.h
-> +++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.h
-> @@ -18,16 +18,48 @@
->   
->   #define MTK_OPTEE_MAX_TEE_PARAMS 4
->   
-> +#define MTK_VDEC_OPTEE_MSG_SIZE     128
-> +#define MTK_VDEC_OPTEE_HW_SIZE      (8 * SZ_1K)
-> +
-> +/**
-> + * struct mtk_vdec_optee_shm_memref - share memory reference params
-
-maybe s/share/shared ? Applies to other occurences as well.
+is V4L2_BUF_CAP_SUPPORTS_RESTRICTED_MEM documented? Can it be referenced here
+in a way similar to how V4L2_BUF_CAP_SUPPORTS_MMAP_CACHE_HINTS is?
 
 Regards,
 
 Andrzej
 
-> + * @msg_shm:        message shared with TA in TEE.
-> + * @msg_shm_ca_buf: ca buffer.
-> + *
-> + * @msg_shm_size:   share message size.
-> + * @param_type:     each tee param types.
-> + * @copy_to_ta:     need to copy data from ca to share memory.
-> + */
-> +struct mtk_vdec_optee_shm_memref {
-> +	struct tee_shm *msg_shm;
-> +	u8 *msg_shm_ca_buf;
-> +
-> +	u32 msg_shm_size;
-> +	u64 param_type;
-> +	bool copy_to_ta;
-> +};
-> +
->   /**
->    * struct mtk_vdec_optee_ca_info - ca related param
->    * @vdec_session_id:   optee TA session identifier.
->    * @hw_id:             hardware index.
->    * @vdec_session_func: trusted application function id used specific to the TA.
-> + * @shm_memref:        share memory reference params.
->    */
->   struct mtk_vdec_optee_ca_info {
->   	u32 vdec_session_id;
->   	enum mtk_vdec_hw_id hw_id;
->   	u32 vdec_session_func;
-> +	struct mtk_vdec_optee_shm_memref shm_memref[MTK_OPTEE_MAX_TEE_PARAMS];
-> +};
-> +
-> +/*
-> + * enum mtk_vdec_optee_data_index - used to indentify each share memory information
-> + */
-> +enum mtk_vdec_optee_data_index {
-> +	OPTEE_MSG_INDEX = 0,
-> +	OPTEE_DATA_INDEX,
-> +	OPTEE_MAX_INDEX,
->   };
 >   
->   /**
+>   .. raw:: latex
+>   
 
 
