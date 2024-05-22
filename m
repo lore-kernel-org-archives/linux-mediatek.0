@@ -4,97 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 571AAC25B7A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 May 2024 09:23:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6BC0CC25B77
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 May 2024 11:16:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JRjtoycu6QiYQPIcHAZ506CIemzizife0bP7oo/LEUE=; b=IscPB6aRL9UlmAvD5Ct2guJigS
-	XcvhSEl0QUil4z+nizsdC4hZEkSGo204ZvWRLJMhCu7XzpARecK7AfcBAUPLhafqW5d4eLL//xDkt
-	0o4UO2p9woDhITdPWtUOiG6gW0DeYFpExVBcRjHdnBgo017WhvLjh8p3lc1FVC/DlbcAskTEsTDO+
-	KwLlYuMOyDa2vuR3QW/WevXEbu2yPwhp+ON+RNtZw7btSRh4ETmkQoxpgm5bdA07k3SQkkvTLqEKF
-	qU7mL+3Msw1un97XAbC40uVC4nvemlQ/nu/RLZWnCYskgt4HX+9i/5Wkzkfd2cd28+58yuJOXMmEX
-	BiHm2PNA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=b4I1m7xKVTyYsdzU1xyi4ewlcSDXoVx5WsGrUlhqQCQ=; b=nt55Bly9j07R07WGbA+p9ekbVt
+	34GTbH0xscIHdHYZH2CwqxOUYopOKZoUqwdofzM8Ky/RvRrYks98j1kJxupTwkbpv0Zcg3p2tyyXJ
+	XFa8UoyKg8dnrcWrH5N4W3wcpRe18VaBwexcwQjJPW1lYOF9RjUyz6+bjVV16n06h1ug7b7perb6Q
+	3l6Up3/rQgPtREW4yWkqglwueHHF0S1UKuncm8bYg1zVXfevEoBf2tPN3GZ9kmlUoegtyPXDaFlzU
+	xD7IzdwTRM99ZjWmPfIoJ+ndfEUMKGgXQlv0Lwml85R5rfqVKiRp4nttp6sDq/vJgdP8VrEubEs/C
+	7ZVsl+Ig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s9iCA-00000002UXp-0IdC;
-	Wed, 22 May 2024 09:23:38 +0000
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+	id 1s9jxX-00000002kvv-4C6q;
+	Wed, 22 May 2024 11:16:40 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s9iC6-00000002UWP-2prI
-	for linux-mediatek@lists.infradead.org;
-	Wed, 22 May 2024 09:23:37 +0000
-Received: by mail-wm1-x329.google.com with SMTP id 5b1f17b1804b1-41fe54cb0e3so36070585e9.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 22 May 2024 02:23:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1716369812; x=1716974612; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=JRjtoycu6QiYQPIcHAZ506CIemzizife0bP7oo/LEUE=;
-        b=0Y50EMz6cHIwVKxvJTLZKhEnehYJZb0yFXc27Od3DIIS2S7E7UUl6iH0Doa4GQsHbZ
-         ITW54DdUpW0YoJ08RLqa3BF6w5tD6flnA4NF7cWF0B6NLYyCEYHnztZ35qMQB04uz7PH
-         MAcq398kXSwv28pvwX/cDtUrQHSOdXn84afXOREk+picy4U3Dtz1VshcrFiq6sngbQus
-         oJ5ts1LRrIJ4Nd8Ge0Qj/caz5xa/WGe5JYKS6CIztOvIUdusziE658+wpJQQ6H0Zp1Ie
-         xERkAjdUKOuGc5sAOooR+yiACL8lG5JHq0VeKZx1GShCwXD7YI4N0rG+9CjrrFNzrAXc
-         GUQg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1716369812; x=1716974612;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=JRjtoycu6QiYQPIcHAZ506CIemzizife0bP7oo/LEUE=;
-        b=nKgDFnHUxVesSzEasMuBBy9VaIl7waQhmZL0E5uGnQYwGvDOemOLmcYA1dTGLRA9dY
-         19KhYBskaZtBDClSHxzkhvcn7blx1MKipsiY1/i7M9pSAnl4X+UR9J/UU9VqzH35L1O6
-         tgwQxw/CwA5BsyMbxZOLsoZXCGw3va6F66rqz1viKcestP4H99+tynMUZLFxRsAnAMfi
-         cORfFKH9CmenFtCOX0Q1aK27D7BHrhA4VUBmI5mmMBG7zw4EneSHb6oZOuKKWFMK0Y82
-         CCOlnKec0nDif3cV0PIS4SjBU1t/LbvjBZccGG4DM9fPRjlcYO5S+whOxU3dfO6KbA30
-         4QSA==
-X-Forwarded-Encrypted: i=1; AJvYcCULtrrcUkyQ/xAbKSJbhWQ8p+LbBIg7QiuwDNb/qu8+UkBdwm4LqPVz+Z6ogzHZ3Ow5C/kUzhea4nG2PyzrpsmzBzTXXcLVyD6nPZYX/Ka4vVgu
-X-Gm-Message-State: AOJu0Yw2Z0XcBYU3mUhr1phNIKPq6y3icT4GtB1fbJz9Abc2nVLaCGAz
-	lzhpmCuhzMYYNfJ4Ic3MkLt0VDnUaQfCyKEQ3iwX6NxtDXjkSs5rgl05dEjn2gwijiqNKuM3I6M
-	NpR8=
-X-Google-Smtp-Source: AGHT+IGBRKl5DCZ+kljNpjZnc9YzdCw1hs2bWkudIcHS/AaEdVRmj8bHA3gNsPb+/c/8i/lsYuEbJQ==
-X-Received: by 2002:a05:600c:ac1:b0:41b:f359:2b53 with SMTP id 5b1f17b1804b1-420fd37f2f5mr9924295e9.37.1716369811860;
-        Wed, 22 May 2024 02:23:31 -0700 (PDT)
-Received: from [192.168.1.172] ([93.5.22.158])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-42011d91edfsm402874715e9.44.2024.05.22.02.23.30
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 22 May 2024 02:23:31 -0700 (PDT)
-Message-ID: <e9b8a423-9ee3-4f5d-a0a2-374603762127@baylibre.com>
-Date: Wed, 22 May 2024 11:23:28 +0200
+	id 1s9jxT-00000002kth-0NDB;
+	Wed, 22 May 2024 11:16:37 +0000
+Received: from pendragon.ideasonboard.com (81-175-209-231.bb.dnainternet.fi [81.175.209.231])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id ED5DCD49;
+	Wed, 22 May 2024 13:16:18 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1716376579;
+	bh=q83AOrxhjHdDtbOcVJNIw+dm8Yj5lnBFmVhmfjLn9IA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=YY5D39vjYu90YM40AKH7ctfUmXDtAh3vruu9Dqw2jQ0NLNg+p6WrLmo9V7u80L71G
+	 ULiTQnW/MDSY/YmaYPNEkMMkY14OWGsTrZo+WvhbojfStattNgZP5ollUYzcsHdSof
+	 gSbVh5HKYAenHcnPeB8iJ3mhIXdBV6fvJtxyM+zw=
+Date: Wed, 22 May 2024 14:16:22 +0300
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Yunfei Dong <yunfei.dong@mediatek.com>
+Cc: Jeffrey Kardatzke <jkardatzke@google.com>,
+	=?utf-8?B?TsOtY29sYXMgRiAuIFIgLiBBIC4=?= Prado <nfraprado@collabora.com>,
+	Nathan Hebert <nhebert@chromium.org>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+	Sebastian Fricke <sebastian.fricke@collabora.com>,
+	Tomasz Figa <tfiga@chromium.org>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Marek Szyprowski <m.szyprowski@samsung.com>,
+	Chen-Yu Tsai <wenst@chromium.org>, Yong Wu <yong.wu@mediatek.com>,
+	Hsin-Yi Wang <hsinyi@chromium.org>,
+	Fritz Koenig <frkoenig@chromium.org>,
+	Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>,
+	Sumit Semwal <sumit.semwal@linaro.org>,
+	Brian Starkey <Brian.Starkey@arm.com>,
+	John Stultz <jstultz@google.com>,
+	"T . J . Mercier" <tjmercier@google.com>,
+	Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	linux-media@vger.kernel.org, dri-devel@lists.freedesktop.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v6,04/24] v4l: add documentation for restricted memory
+ flag
+Message-ID: <20240522111622.GA31185@pendragon.ideasonboard.com>
+References: <20240516122102.16379-1-yunfei.dong@mediatek.com>
+ <20240516122102.16379-5-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 07/16] ASoC: mediatek: mt8365: Add ADDA DAI support
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Lee Jones <lee@kernel.org>,
- Flora Fu <flora.fu@mediatek.com>, Jaroslav Kysela <perex@perex.cz>,
- Takashi Iwai <tiwai@suse.com>, Sumit Semwal <sumit.semwal@linaro.org>,
- =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>,
- Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>
-Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org
-References: <20240226-audio-i350-v4-0-082b22186d4c@baylibre.com>
- <20240226-audio-i350-v4-7-082b22186d4c@baylibre.com>
- <a693b696-92cf-48cf-8c9d-17aa7f182d98@collabora.com>
-Content-Language: en-US
-From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <a693b696-92cf-48cf-8c9d-17aa7f182d98@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20240516122102.16379-5-yunfei.dong@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240522_022334_826592_D1C68AAA 
-X-CRM114-Status: GOOD (  11.41  )
+X-CRM114-CacheID: sfid-20240522_041635_324491_6F94FDEF 
+X-CRM114-Status: GOOD (  20.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,31 +90,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Jefrey,
 
+Thank you for the patch.
 
-On 20/05/2024 12:27, AngeloGioacchino Del Regno wrote:
->> +int mt8365_dai_disable_adda_on(struct mtk_base_afe *afe)
->> +{
->> +    unsigned long flags;
->> +    struct mt8365_afe_private *afe_priv = afe->platform_priv;
->> +
->> +    spin_lock_irqsave(&afe_priv->afe_ctrl_lock, flags);
->> +
->> +    adda_afe_on_ref_cnt--;
->> +    if (adda_afe_on_ref_cnt == 0)
->> +        regmap_update_bits(afe->regmap, AFE_ADDA_UL_DL_CON0,
->> +                   AFE_ADDA_UL_DL_ADDA_AFE_ON,
->> +                   ~AFE_ADDA_UL_DL_ADDA_AFE_ON);
->> +    else if (adda_afe_on_ref_cnt < 0)
->> +        adda_afe_on_ref_cnt = 0;
+On Thu, May 16, 2024 at 08:20:42PM +0800, Yunfei Dong wrote:
+> From: Jeffrey Kardatzke <jkardatzke@google.com>
 > 
-> Should we dev_warn() here? The refcount should never be less than zero - if it is,
-> then there's some issue somewhere that must be solved.
+> Adds documentation for V4L2_MEMORY_FLAG_RESTRICTED.
+> 
+> Signed-off-by: Jeffrey Kardatzke <jkardatzke@google.com>
+> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+> ---
+>  Documentation/userspace-api/media/v4l/buffer.rst | 10 +++++++++-
+>  1 file changed, 9 insertions(+), 1 deletion(-)
+> 
+> diff --git a/Documentation/userspace-api/media/v4l/buffer.rst b/Documentation/userspace-api/media/v4l/buffer.rst
+> index 52bbee81c080..807e43bfed2b 100644
+> --- a/Documentation/userspace-api/media/v4l/buffer.rst
+> +++ b/Documentation/userspace-api/media/v4l/buffer.rst
+> @@ -696,7 +696,7 @@ enum v4l2_memory
+>  
+>  .. _memory-flags:
+>  
+> -Memory Consistency Flags
+> +Memory Flags
+>  ------------------------
+>  
+>  .. raw:: latex
+> @@ -728,6 +728,14 @@ Memory Consistency Flags
+>  	only if the buffer is used for :ref:`memory mapping <mmap>` I/O and the
+>  	queue reports the :ref:`V4L2_BUF_CAP_SUPPORTS_MMAP_CACHE_HINTS
+>  	<V4L2-BUF-CAP-SUPPORTS-MMAP-CACHE-HINTS>` capability.
+> +    * .. _`V4L2-MEMORY-FLAG-RESTRICTED`:
+> +
+> +      - ``V4L2_MEMORY_FLAG_RESTRICTED``
+> +      - 0x00000002
+> +      - The queued buffers are expected to be in restricted memory. If not, an
+> +	error will be returned. This flag can only be used with ``V4L2_MEMORY_DMABUF``.
+> +	Typically restricted buffers are allocated using a restricted dma-heap. This flag
+> +	can only be specified if the ``V4L2_BUF_CAP_SUPPORTS_RESTRICTED_MEM`` is set.
 
-Ok to add dev_warn, but I also want to keep "adda_afe_on_ref_cnt = 0;" for robustness, even if it 
-shouldn't reach this case.
+Why is this flag needed ? Given that the usage model requires the V4L2
+device to be a dma buf importer, why would userspace set the
+V4L2_BUF_CAP_SUPPORTS_RESTRICTED_MEM flag and pass a non-restricted
+buffer to the device ?
+
+The V4L2_BUF_CAP_SUPPORTS_RESTRICTED_MEM flag also needs to be
+documented in the relevant section, I don't think that's done in this
+series.
+
+>  
+>  .. raw:: latex
+>  
 
 -- 
 Regards,
-Alexandre
+
+Laurent Pinchart
 
