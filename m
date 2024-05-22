@@ -4,70 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FAEEC25B77
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 May 2024 11:52:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0199C25B77
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 May 2024 12:14:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Xu2xbDFrIisqkiFW+9svNW96My0Yr4/xbGQerzlTu/U=; b=d8Dfb7YZ8mxSc8SPMmOy8UIPYP
-	bjCYGrkWZf6ZFG8eYlyqrwmeG51VcCw/ZdsHKPFzXP/IYSspfmqbpAu/nGSqTgqZ0V5qg9eWILioe
-	11O56f/b8OtYthRU2Yf7ROdrWkirKKVEneZRo1ffp0eEXB740eahT3j1U8vG5oK6wYxnOiKJDfRsp
-	42yR2hc5pVIF4PuzlZPOJLqE0AmghiEFFzBsOvW4LwUTi8PNFOFnZUkyl9hvHLnBfza2Mm1w5UxjT
-	LvPuGREZlAgPHWj1ZFQw0zaB2HRwNphVbONXhf2BJy3RunwjHf3f2gzocZAItZJAbJMhXcCVf+Xx0
-	WhbcuODQ==;
+	bh=7LPX/aFT8FecBEtUcToMxRHrqSU4UA6l7RrD4CtA9B0=; b=pbNi62TyHsyXHHx9utql5XwT2y
+	tSgz+DUNH9RufStUv5HHFZGXgPgTeGAiPwiWXJiFNr90YtV7gS8/Z5gEWR29rXoNXeHrAlKK4/sbi
+	JDEuJdaq1yvpxtv11mBetpXbZt1v2gu9S8X1LkfKTWLPI2FxIDhS5yl0RHbG0oKjigULJOS6RkI5T
+	bPH6PdHlOxf3HOVjPhp72lDaz50nU186pwxoGbBzvfsIda7/19AYdE29C5ynWaAYj+daPEnCfUpT8
+	JB2QlWAMnkDL+67k25dKRtoci7xf2QHY1SJYHBdVBE2N96R55SrZX8/dXyv1e/FxAv0CAkyD73K7/
+	jS8g/PZw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s9kVo-00000002qCG-3PIC;
-	Wed, 22 May 2024 11:52:04 +0000
-Received: from out-185.mta1.migadu.com ([2001:41d0:203:375::b9])
-	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s9kVl-00000002q9e-2Yj7
-	for linux-mediatek@lists.infradead.org;
-	Wed, 22 May 2024 11:52:03 +0000
-X-Envelope-To: angelogioacchino.delregno@collabora.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
-	t=1716378718;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Xu2xbDFrIisqkiFW+9svNW96My0Yr4/xbGQerzlTu/U=;
-	b=SmY6yPwzE1VAz/Bf2rxlkNXmbYgzZCsOCxh1eF1Ici1b576SEdtnwRLopD6pHZR+8ZKUfC
-	gIdfycBn+QmiBKg+WzeU1GmxKC84jgBZ4bq5xn65qhEUvcxynL6vWVlym9j9NHmjm8labV
-	I35/hMSeG1Ia8SHP7HCJBq1Q98JYdEs=
-X-Envelope-To: chunkuang.hu@kernel.org
-X-Envelope-To: robh@kernel.org
-X-Envelope-To: krzysztof.kozlowski+dt@linaro.org
-X-Envelope-To: conor+dt@kernel.org
-X-Envelope-To: p.zabel@pengutronix.de
-X-Envelope-To: airlied@gmail.com
-X-Envelope-To: daniel@ffwll.ch
-X-Envelope-To: maarten.lankhorst@linux.intel.com
-X-Envelope-To: mripard@kernel.org
-X-Envelope-To: tzimmermann@suse.de
-X-Envelope-To: matthias.bgg@gmail.com
-X-Envelope-To: shawn.sung@mediatek.com
-X-Envelope-To: yu-chang.lee@mediatek.com
-X-Envelope-To: ck.hu@mediatek.com
-X-Envelope-To: jitao.shi@mediatek.com
-X-Envelope-To: devicetree@vger.kernel.org
-X-Envelope-To: linux-kernel@vger.kernel.org
-X-Envelope-To: dri-devel@lists.freedesktop.org
-X-Envelope-To: linux-mediatek@lists.infradead.org
-X-Envelope-To: linux-arm-kernel@lists.infradead.org
-X-Envelope-To: wenst@chromium.org
-X-Envelope-To: kernel@collabora.com
-X-Envelope-To: amergnat@baylibre.com
-Message-ID: <6026a614-adea-4a92-8732-07dadb93d530@linux.dev>
-Date: Wed, 22 May 2024 19:51:49 +0800
+	id 1s9krL-00000002spZ-0qB2;
+	Wed, 22 May 2024 12:14:19 +0000
+Received: from azure-sdnproxy.icoremail.net ([20.232.28.96])
+	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1s9krG-00000002soN-41PQ;
+	Wed, 22 May 2024 12:14:17 +0000
+Received: from [172.38.8.164] (unknown [219.141.235.82])
+	by mail (Coremail) with SMTP id AQAAfwA36Nhu4U1mKeeuAA--.46576S2;
+	Wed, 22 May 2024 20:13:36 +0800 (CST)
+Message-ID: <665202d7-46be-4dc8-a6be-3579e1ec078f@bosc.ac.cn>
+Date: Wed, 22 May 2024 20:13:34 +0800
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 Subject: Re: [v5,3/3] drm/mediatek: Implement OF graphs support for display
  paths
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: Sui Jingfeng <sui.jingfeng@linux.dev>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  chunkuang.hu@kernel.org
 Cc: robh@kernel.org, krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
@@ -80,16 +47,33 @@ Cc: robh@kernel.org, krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
  wenst@chromium.org, kernel@collabora.com,
  Alexandre Mergnat <amergnat@baylibre.com>
 References: <20240521075717.50330-4-angelogioacchino.delregno@collabora.com>
- <d0c9a2e4-1d6c-49ca-9639-3037fde0869d@linux.dev>
 Content-Language: en-US, en-AU
-In-Reply-To: <d0c9a2e4-1d6c-49ca-9639-3037fde0869d@linux.dev>
+From: Sui Jingfeng <suijingfeng@bosc.ac.cn>
+Organization: bosc
+In-Reply-To: <20240521075717.50330-4-angelogioacchino.delregno@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Migadu-Flow: FLOW_OUT
+X-CM-TRANSID: AQAAfwA36Nhu4U1mKeeuAA--.46576S2
+X-Coremail-Antispam: 1UD129KBjvJXoW7tFW3CFWkXFy5Ww4kur1xZrb_yoW8Aw1Dpr
+	WUWFZxArWj9r47Wr4vqF45Aryq9r40v3y3X34UWa4Ik3Z8XFyfZr1Ig34Yvw4fKrZ7ua48
+	Aa1ktan8W3y8trDanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDU0xBIdaVrnRJUUUv2b7Iv0xC_Zr1lb4IE77IF4wAFF20E14v26ryj6rWUM7CY07I2
+	0VC2zVCF04k26cxKx2IYs7xG6r1S6rWUM7CIcVAFz4kK6r1j6r18M28lY4IEw2IIxxk0rw
+	A2F7IY1VAKz4vEj48ve4kI8wA2z4x0Y4vE2Ix0cI8IcVAFwI0_Jr0_JF4l84ACjcxK6xII
+	jxv20xvEc7CjxVAFwI0_Gr0_Cr1l84ACjcxK6I8E87Iv67AKxVW8JVWxJwA2z4x0Y4vEx4
+	A2jsIEc7CjxVAFwI0_Gr0_Gr1UM2AIxVAIcxkEcVAq07x20xvEncxIr21l5I8CrVACY4xI
+	64kE6c02F40Ex7xfMcIj6xIIjxv20xvE14v26r1j6r18McIj6I8E87Iv67AKxVW8JVWxJw
+	Am72CE4IkC6x0Yz7v_Jr0_Gr1lF7xvr2IY64vIr41lFIxGxcIEc7CjxVA2Y2ka0xkIwI1l
+	c2xSY4AK67AK6ryUMxAIw28IcxkI7VAKI48JMxC20s026xCaFVCjc4AY6r1j6r4UMI8I3I
+	0E5I8CrVAFwI0_Jr0_Jr4lx2IqxVCjr7xvwVAFwI0_JrI_JrWlx4CE17CEb7AF67AKxVW8
+	ZVWrXwCIc40Y0x0EwIxGrwCI42IY6xIIjxv20xvE14v26r1j6r1xMIIF0xvE2Ix0cI8IcV
+	CY1x0267AKxVW8JVWxJwCI42IY6xAIw20EY4v20xvaj40_Jr0_JF4lIxAIcVC2z280aVAF
+	wI0_Jr0_Gr1lIxAIcVC2z280aVCY1x0267AKxVW8JVW8JrUvcSsGvfC2KfnxnUUI43ZEXa
+	7IU0wL05UUUUU==
+X-CM-SenderInfo: xvxlyxpqjiv03j6e02nfoduhdfq/
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240522_045201_829680_5EF7C45F 
-X-CRM114-Status: UNSURE (   3.10  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240522_051415_157932_934998CC 
+X-CRM114-Status: GOOD (  13.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,9 +91,75 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Hi,
 
 
-On 5/22/24 19:48, Sui Jingfeng wrote:
-> if the not bridge is not ready
+On 5/21/24 15:57, AngeloGioacchino Del Regno wrote:
+> +static int mtk_drm_of_get_ddp_comp_type(struct device_node *node, enum mtk_ddp_comp_type *ctype)
+> +{
+> +	const struct of_device_id *of_id = of_match_node(mtk_ddp_comp_dt_ids, node);
+> +
+> +	if (!of_id)
+> +		return -EINVAL;
+> +
+> +	*ctype = (enum mtk_ddp_comp_type)((uintptr_t)of_id->data);
+> +
+> +	return 0;
+> +}
+> +
+> +static int mtk_drm_of_get_ddp_ep_cid(struct device_node *node,
+> +				     int output_port, enum mtk_crtc_path crtc_path,
+> +				     struct device_node **next, unsigned int *cid)
+> +{
+> +	struct device_node *ep_dev_node, *ep_out;
+> +	enum mtk_ddp_comp_type comp_type;
+> +	int ret;
+> +
+> +	ep_out = of_graph_get_endpoint_by_regs(node, output_port, crtc_path);
+> +	if (!ep_out)
+> +		return -ENOENT;
+> +
+> +	ep_dev_node = of_graph_get_remote_port_parent(ep_out);
 
+below here, 'ep_out' will not be used anymore.
 
-'not' -> 'next'
+of_node_put(ep_out);
+
+Maybe we should call it under a error handling tag?
+But this is trivial problem.
+
+> +	if (!ep_dev_node)
+> +		return -EINVAL;
+> +
+> +	/*
+> +	 * Pass the next node pointer regardless of failures in the later code
+> +	 * so that if this function is called in a loop it will walk through all
+> +	 * of the subsequent endpoints anyway.
+> +	 */
+> +	*next = ep_dev_node;
+> +
+> +	if (!of_device_is_available(ep_dev_node))
+> +		return -ENODEV;
+> +
+> +	ret = mtk_drm_of_get_ddp_comp_type(ep_dev_node, &comp_type);
+> +	if (ret) {
+> +		if (mtk_ovl_adaptor_is_comp_present(ep_dev_node)) {
+> +			*cid = (unsigned int)DDP_COMPONENT_DRM_OVL_ADAPTOR;
+> +			return 0;
+> +		}
+> +		return ret;
+> +	}
+> +
+> +	ret = mtk_ddp_comp_get_id(ep_dev_node, comp_type);
+> +	if (ret < 0)
+> +		return ret;
+> +
+> +	/* All ok! Pass the Component ID to the caller. */
+> +	*cid = (unsigned int)ret;
+> +
+> +	return 0;
+> +}
+> +
+
+-- 
+Best regards
+Sui Jingfeng
+
 
