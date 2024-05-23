@@ -4,86 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9933C25B7A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 May 2024 21:04:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21BBBC25B79
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 May 2024 05:45:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:Subject:From:MIME-Version:Date:
+	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iT1AOadXKdkeYb8c0TgcpuQB1WGmLOhZwg6j5OThiw8=; b=JSiD5Y95MOH345YrEjNHYQIWvD
-	Uxii5bwi+HdRRP3TdAGcHMs3jd/0k1Ezlksu9yTKXayFebJmQgQGJuoWw1FRE7XCugo9Bw8+Dz9T/
-	6ZC/bz5F8yLkJBN1DHvBP07YvEyKCdc8EudFMu9+2EAn6Yu1Ng0RJmHOjmRpSl7l2EbApJPFm/mOk
-	U0bL/Xi5q4WkLXridQn1QXelF60g6RNu2nFDSd03dUsCnK59DQyxImsmHqkXrw6RHhk8iz2/XvpFz
-	IQ7wZCQWNKaKFOdvHJzCAEYmVU9oNUfYz+zgUL5tPp3kqkQsP30aIPdIJnO7l5rraF9hHa7QtHAoc
-	1Sf0MOlA==;
+	bh=uTyeLMDb4lNaxhZJTQsoV5C1v2Ta4iSW4vHweH8NajA=; b=R1ERVcmKH1xrmgoN7tiHXH+qFD
+	Q9/1BRcMcjESESzFnywGG6p+88gDIMRF6NyPaudosc2oixlNT748CI/lkQjupNmPKV2BtCkRX585y
+	L3Vy2vOOGKFoLa3yc6iIMRkM8JlzALX2ggJ4AnTYKn+U9rs4dC7/NPWOsdWp/zDwGSzxKVyyWTnZ7
+	rseNF6Zr+WBKOj26uOfkeh5mdxBvQUYB0FfAfA5yTkoNsf9wiwP1alHurJqQKxz7m8Me2GfIo1cuD
+	ATopFE4A/XO48O4HVGqUvSAGEI1gLKrYso3FynE4iG0fjC8mluoR+WAxfnl3nGIgyQrCicwUqtF+e
+	n+5ArB3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s9t8T-000000046oV-2bg5;
-	Wed, 22 May 2024 21:04:33 +0000
-Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
+	id 1sA1H2-0000000587y-47k6;
+	Thu, 23 May 2024 05:45:56 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s9t8Q-000000046mM-2xC2
-	for linux-mediatek@lists.infradead.org;
-	Wed, 22 May 2024 21:04:32 +0000
-Received: by mail-pf1-x42c.google.com with SMTP id d2e1a72fcca58-6f44390e328so2795015b3a.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 22 May 2024 14:04:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1716411868; x=1717016668; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:subject:from:user-agent:mime-version:date:message-id:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=iT1AOadXKdkeYb8c0TgcpuQB1WGmLOhZwg6j5OThiw8=;
-        b=KUZXNP/zuHkw5NrDPWciAAbigFxYgZLt/WNzoo/+RljhY8rzYVZpxOGGyU3yVKtzz2
-         jPwalsiCjqK0nD1hbyohknqGqkaQhNsNi69bPFEvqGxyWapbH5UaJBLyYElgb9Dp9Ui4
-         FY2wi2wzj88+vkjyyp1NG6zTwPETM0ihzmMBtEZmFTc+/JT24DlPDMC2bVAj8scTwSBE
-         y7DJBVIG/4fePTKvF2zKvkvIyf/pzIPUBZTFFoAZZ49hz0/T0GKDOV3m4GzJle8mpTeT
-         bTrdUlBHi3K97OhFw0gF8eAU/p5fFUr6FzmZ6xHGsBdm/XGfJQzWZXH5em8zu4O9Dicb
-         Isow==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1716411868; x=1717016668;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:subject:from:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=iT1AOadXKdkeYb8c0TgcpuQB1WGmLOhZwg6j5OThiw8=;
-        b=lk4MzqEJ4fgAE3eKLF8BRbIoQ5IV+F7I8CHxFzqNPyyxhlEbZ0ioPfSiXIYJfu+VwE
-         d1pRohbooRzw7d1+x0sFGgqPc9GT9sBg+1GBTXZFg1vGjk0HhIXeAtkEYz6KCuxzNerS
-         r9yur+oRNtf/BiBYHjRLjIw15wZJpxjByTnpGXb9O7JUGNWKlprGMcEROLceo/j++cD1
-         /gMOx5egPYRH+JTAV3SVxfX/ZbBhNa/QwKiFqlX84oBZAI/SFr8YJpyiaDd3KWg9+C5p
-         PmhWY0l8Yccp5KcSGzpaVAvuYmKGUK5jV4IWgQ+2sLBnb/L3GAxTG0bQs8sbRXIzidl8
-         dJWA==
-X-Forwarded-Encrypted: i=1; AJvYcCULuWAJoYsQJH/jmE6skvSfEuBzVHZnI+8/SZYi+gsj0RZyfrgMRBSB3xRIj8L4ePmtbwBswCVvq6mVH5MrthFX5L8fW9ZOne0tSVUnsUNai5Pj
-X-Gm-Message-State: AOJu0YzmNbhlkjkSdlA0mcyIioFVzWxzV5C4cOHlgDIncVLc3l1iiTxr
-	1Qwxb379oG1pMLHQlUR5Ixm/JR6SWr4Nx+efU5VOUkw06jJvjNrK
-X-Google-Smtp-Source: AGHT+IHyvIyJqabzGn2pk+6jufjKdtxxS7JXm8ZDJHA57VzobiooDn0JOUAk0HMf2Nxvd5Pxfsf4dg==
-X-Received: by 2002:a05:6a21:3483:b0:1af:cfca:e515 with SMTP id adf61e73a8af0-1b1f87386a9mr4758616637.12.1716411868131;
-        Wed, 22 May 2024 14:04:28 -0700 (PDT)
-Received: from [10.5.5.43] ([103.139.191.219])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-6f4d2a663bbsm23606465b3a.17.2024.05.22.14.04.23
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 22 May 2024 14:04:27 -0700 (PDT)
-Message-ID: <dc8a05ee-ed84-4517-baad-a220d8702f07@gmail.com>
-Date: Thu, 23 May 2024 02:34:20 +0530
+	id 1sA1Gz-00000005874-00ed;
+	Thu, 23 May 2024 05:45:55 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1716443149;
+	bh=ixt8OajYR20IPA+H5M4ytRrCuvQEPCIDj6wZr5U9vZU=;
+	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
+	b=V6XZISe2rHRPDxCU3RcaRltfEjMsf3Um1F7s2Knx3jBoPnoWXYLTzBB1x2GEXFNlA
+	 zCUCvq/awcplJhGU9EHEmA06ZVtHfJe0QRL0SxHOCBDpNUeLpks5b6o7YrYR8Z+0JD
+	 jJVHUHbOum7lO29ITpT33LzBWBmhEmtjVsm1AeUnTM81zmzbDR00y3AVw7dE0/xQ7q
+	 wgIzSxGobBDfFQRLyrrVAK78jMvSAybnilANfAm2CwRhrPydRXI5h2h1YYYNI9aIDM
+	 pVoGtRcF0sS4YgQRyYQUvx/UVf6KA9mvN2TP05pxOmAzrMSCZx594KP6GwZlPhptpQ
+	 PQxZ6jnI5aOrg==
+Received: from [100.66.96.193] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: vignesh)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 8AA8637820E5;
+	Thu, 23 May 2024 05:45:45 +0000 (UTC)
+Message-ID: <bb94b70d-cb6d-4ca6-8c80-abb6a12c2ef3@collabora.com>
+Date: Thu, 23 May 2024 11:15:42 +0530
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-From: Kartik Agarwala <agarwala.kartik@gmail.com>
-Subject: Re: [PATCH] ASoC: dt-bindings: mt6358: Convert to dtschema
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- lgirdwood@gmail.com, broonie@kernel.org, robh@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com
-Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <20240518081621.63386-1-agarwala.kartik@gmail.com>
- <c05f91f5-a878-4f36-b325-0ac8e038a7e5@linaro.org>
-Content-Language: en-US, ar-LB
-In-Reply-To: <c05f91f5-a878-4f36-b325-0ac8e038a7e5@linaro.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Subject: Re: [PATCH v2 3/6] drm/ci: build virtual GPU driver as module
+From: Vignesh Raman <vignesh.raman@collabora.com>
+To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com,
+ helen.koike@collabora.com, airlied@gmail.com, daniel@ffwll.ch,
+ robdclark@gmail.com, david.heidelberg@collabora.com,
+ guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com,
+ mcanal@igalia.com, linux-mediatek@lists.infradead.org,
+ linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ amd-gfx@lists.freedesktop.org, linux-arm-msm@vger.kernel.org,
+ intel-gfx@lists.freedesktop.org, virtualization@lists.linux-foundation.org,
+ linux-kernel@vger.kernel.org
+References: <20240517092502.647420-1-vignesh.raman@collabora.com>
+ <20240517092502.647420-4-vignesh.raman@collabora.com>
+ <elftuzsd7lhz6y5ow6rb5uu5fb5b5jcprxtvxtxtojo774rnyr@swpeg4vkgtnc>
+ <f3646d66-01f0-476c-8b7f-5df102790fcb@collabora.com>
+Content-Language: en-US
+In-Reply-To: <f3646d66-01f0-476c-8b7f-5df102790fcb@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240522_140430_812281_A8F2BA04 
-X-CRM114-Status: GOOD (  22.45  )
+X-CRM114-CacheID: sfid-20240522_224553_361740_41B74EE7 
+X-CRM114-Status: GOOD (  18.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,115 +84,139 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 5/20/24 12:39 PM, Krzysztof Kozlowski wrote:
-> On 18/05/2024 10:16, Kartik Agarwala wrote:
->> Convert Mediatek MT6358 Audio Codec bindings from text to dtschema.
+Hi Dmitry,
+
+On 21/05/24 12:39, Vignesh Raman wrote:
+> Hi Dmitry,
+> 
+> On 20/05/24 16:32, Dmitry Baryshkov wrote:
+>> On Fri, May 17, 2024 at 02:54:59PM +0530, Vignesh Raman wrote:
+>>> With latest IGT, the tests tries to load the module and it
+>>> fails. So build the virtual GPU driver for virtio as module.
 >>
->> Signed-off-by: Kartik Agarwala <agarwala.kartik@gmail.com>
->> ---
->>  .../bindings/sound/mediatek,mt6358.yaml       | 47 +++++++++++++++++++
->>  .../devicetree/bindings/sound/mt6358.txt      | 26 ----------
->>  2 files changed, 47 insertions(+), 26 deletions(-)
->>  create mode 100644 Documentation/devicetree/bindings/sound/mediatek,mt6358.yaml
->>  delete mode 100644 Documentation/devicetree/bindings/sound/mt6358.txt
+>> Why? If the test fails on module loading (if the driver is built-in)
+>> then it's the test that needs to be fixed, not the kerenel config.
 >>
->> diff --git a/Documentation/devicetree/bindings/sound/mediatek,mt6358.yaml b/Documentation/devicetree/bindings/sound/mediatek,mt6358.yaml
->> new file mode 100644
->> index 000000000..f57ef2aa5
->> --- /dev/null
->> +++ b/Documentation/devicetree/bindings/sound/mediatek,mt6358.yaml
->> @@ -0,0 +1,47 @@
->> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
->> +%YAML 1.2
->> +---
->> +$id: http://devicetree.org/schemas/sound/mediatek,mt6358.yaml#
->> +$schema: http://devicetree.org/meta-schemas/core.yaml#
->> +
->> +title: Mediatek MT6358 Audio Codec
->> +
->> +maintainers:
->> +  - Kartik Agarwala <agarwala.kartik@gmail.com>
->> +
->> +description: |
+>> It's fine as a temporal workaround, but please include a link to the
+>> patch posted to fix the issue.
 > 
-> Do not need '|' unless you need to preserve formatting.
+> I will recheck this issue and post a link to the fix.
 
-Noted
 
-> 
->> +  The communication between MT6358 and SoC is through Mediatek PMIC wrapper.
->> +  For more detail, please visit Mediatek PMIC wrapper documentation.
->> +  Must be a child node of PMIC wrapper.
-> 
-> Did you update the PMIC wrapper binding with ref to this?
+This was the issue seen with IGT commit 
+https://gitlab.freedesktop.org/drm/igt-gpu-tools/-/commit/7d1841317c13c19c26b6352f923b205d43742c55 
 
-I am sorry but if I understand this comment, you are asking me to update this
-file [1], correct?
 
-1. https://www.kernel.org/doc/Documentation/devicetree/bindings/soc/mediatek/pwrap.txt
+[    4.450571] [drm:virtio_gpu_init] *ERROR* failed to find virt queues
+[    4.450962] virtio_gpu virtio0: probe with driver virtio_gpu failed 
+with error -2
+[    5.471417] [drm:virtio_gpu_init] *ERROR* failed to find virt queues
+[    5.471916] virtio_gpu virtio0: probe with driver virtio_gpu failed 
+with error -2
 
-> 
->> +
->> +properties:
->> +  compatible:
->> +    enum:
->> +      - mediatek,mt6358-sound
->> +      - mediatek,mt6366-sound
-> 
-> You did not test the DTS.
-> 
-> I think I raised the issue already: please make necessary fixes to the
-> binding (with explanation) or to the DTS, when converting the binding.
->
+https://gitlab.freedesktop.org/vigneshraman/linux/-/jobs/59037122
 
-Apologies again. Just to be sure, am I correct to assume that you want 
-me to fix the dts file [1] as it has both these compatibles 
-mentioned instead of only one and I should fix that by dropping one of 
-the two compatibles?
-
-[1] https://elixir.bootlin.com/linux/latest/source/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi#L1246
-
->> +
->> +  Avdd-supply:
->> +    description: power source of AVDD
->> +
->> +  mediatek,dmic-mode:
->> +    $ref: /schemas/types.yaml#/definitions/uint32
->> +    description: |
-> 
-> Do not need '|' unless you need to preserve formatting.
-> 
->> +      Indicates how many data pins are used to transmit two channels of PDM
->> +      signal. 0 means two wires, 1 means one wire. Default value is 0.
->> +    enum:
->> +      - 0 # one wire
->> +      - 1 # two wires
->> +
->> +required:
->> +  - compatible
->> +  - Avdd-supply
->> +
->> +additionalProperties: false
->> +
->> +examples:
->> +  - |
->> +    mt6358_snd {
-> 
-> Node names should be generic. See also an explanation and list of
-> examples (not exhaustive) in DT specification:
-> https://devicetree-specification.readthedocs.io/en/latest/chapter2-devicetree-basics.html#generic-names-recommendation
-> 
-> Definitely no underscores. Probably this is "codec" or "audio-codec".
-
-Noted
-
-> 
-> Best regards,
-> Krzysztof
-> 
-
-Thanks for the review!
+With the recent uprev of IGT to 
+https://gitlab.freedesktop.org/drm/igt-gpu-tools/-/commit/0df7b9b97f9da0e364f5ee30fe331004b8c86b56,
+this issue is not seen. So will drop this commit.
 
 Regards,
-Kartik Agarwala
+Vignesh
+
+> 
+> Regards,
+> Vignesh
+> 
+>>
+>>>
+>>> Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
+>>> ---
+>>>
+>>> v2:
+>>>    - No changes.
+>>>
+>>> ---
+>>>   drivers/gpu/drm/ci/build.sh       | 1 -
+>>>   drivers/gpu/drm/ci/igt_runner.sh  | 6 +++---
+>>>   drivers/gpu/drm/ci/image-tags.yml | 4 ++--
+>>>   drivers/gpu/drm/ci/test.yml       | 1 +
+>>>   drivers/gpu/drm/ci/x86_64.config  | 2 +-
+>>>   5 files changed, 7 insertions(+), 7 deletions(-)
+>>>
+>>> diff --git a/drivers/gpu/drm/ci/build.sh b/drivers/gpu/drm/ci/build.sh
+>>> index a67871fdcd3f..e938074ac8e7 100644
+>>> --- a/drivers/gpu/drm/ci/build.sh
+>>> +++ b/drivers/gpu/drm/ci/build.sh
+>>> @@ -157,7 +157,6 @@ fi
+>>>   mkdir -p artifacts/install/lib
+>>>   mv install/* artifacts/install/.
+>>> -rm -rf artifacts/install/modules
+>>>   ln -s common artifacts/install/ci-common
+>>>   cp .config artifacts/${CI_JOB_NAME}_config
+>>> diff --git a/drivers/gpu/drm/ci/igt_runner.sh 
+>>> b/drivers/gpu/drm/ci/igt_runner.sh
+>>> index 20026612a9bd..55532f79fbdc 100755
+>>> --- a/drivers/gpu/drm/ci/igt_runner.sh
+>>> +++ b/drivers/gpu/drm/ci/igt_runner.sh
+>>> @@ -30,10 +30,10 @@ case "$DRIVER_NAME" in
+>>>               export IGT_FORCE_DRIVER="panfrost"
+>>>           fi
+>>>           ;;
+>>> -    amdgpu)
+>>> +    amdgpu|virtio_gpu)
+>>>           # Cannot use HWCI_KERNEL_MODULES as at that point we don't 
+>>> have the module in /lib
+>>> -        mv /install/modules/lib/modules/* /lib/modules/.
+>>> -        modprobe amdgpu
+>>> +        mv /install/modules/lib/modules/* /lib/modules/. || true
+>>> +        modprobe --first-time $DRIVER_NAME
+>>>           ;;
+>>>   esac
+>>> diff --git a/drivers/gpu/drm/ci/image-tags.yml 
+>>> b/drivers/gpu/drm/ci/image-tags.yml
+>>> index 60323ebc7304..328f5c560742 100644
+>>> --- a/drivers/gpu/drm/ci/image-tags.yml
+>>> +++ b/drivers/gpu/drm/ci/image-tags.yml
+>>> @@ -4,9 +4,9 @@ variables:
+>>>      DEBIAN_BASE_TAG: "${CONTAINER_TAG}"
+>>>      DEBIAN_X86_64_BUILD_IMAGE_PATH: "debian/x86_64_build"
+>>> -   DEBIAN_BUILD_TAG: "2023-10-08-config"
+>>> +   DEBIAN_BUILD_TAG: "2024-05-09-virtio"
+>>> -   KERNEL_ROOTFS_TAG: "2023-10-06-amd"
+>>> +   KERNEL_ROOTFS_TAG: "2024-05-09-virtio"
+>>>      DEBIAN_X86_64_TEST_BASE_IMAGE: "debian/x86_64_test-base"
+>>>      DEBIAN_X86_64_TEST_IMAGE_GL_PATH: "debian/x86_64_test-gl"
+>>> diff --git a/drivers/gpu/drm/ci/test.yml b/drivers/gpu/drm/ci/test.yml
+>>> index 612c9ede3507..864ac3809d84 100644
+>>> --- a/drivers/gpu/drm/ci/test.yml
+>>> +++ b/drivers/gpu/drm/ci/test.yml
+>>> @@ -350,6 +350,7 @@ virtio_gpu:none:
+>>>     script:
+>>>       - ln -sf $CI_PROJECT_DIR/install /install
+>>>       - mv install/bzImage /lava-files/bzImage
+>>> +    - mkdir -p /lib/modules
+>>
+>> Is it necessary to create it manually here?
+>>
+>>>       - mkdir -p $CI_PROJECT_DIR/results
+>>>       - ln -sf $CI_PROJECT_DIR/results /results
+>>>       - install/crosvm-runner.sh install/igt_runner.sh
+>>> diff --git a/drivers/gpu/drm/ci/x86_64.config 
+>>> b/drivers/gpu/drm/ci/x86_64.config
+>>> index 1cbd49a5b23a..78479f063e8e 100644
+>>> --- a/drivers/gpu/drm/ci/x86_64.config
+>>> +++ b/drivers/gpu/drm/ci/x86_64.config
+>>> @@ -91,7 +91,7 @@ CONFIG_KVM=y
+>>>   CONFIG_KVM_GUEST=y
+>>>   CONFIG_VIRT_DRIVERS=y
+>>>   CONFIG_VIRTIO_FS=y
+>>> -CONFIG_DRM_VIRTIO_GPU=y
+>>> +CONFIG_DRM_VIRTIO_GPU=m
+>>>   CONFIG_SERIAL_8250_CONSOLE=y
+>>>   CONFIG_VIRTIO_NET=y
+>>>   CONFIG_VIRTIO_CONSOLE=y
+>>> -- 
+>>> 2.40.1
+>>>
+>>
 
