@@ -4,110 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D5DDC25B75
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 May 2024 12:52:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5A95C25B75
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 May 2024 13:32:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Se5yKiZY3cYmLG86r4HoJS7Sn93sN289pgSkPgaOq50=; b=zkKmZYRTnVFXf0dOlYLDG9ODPA
-	pwGEs51WcIFQia5//lTCJa79H9ZUMpQazGvuom/rFEQ464W2Gel+RDHRlW49x/DA6Oe62VN2Cd3cO
-	85lA7uWiUq9oS+qH1pTjP9wCImwxyFoDk0M++WSq8lZb6bfRawFeH2uw6pD51h6RZhmJuqsqYfhh4
-	VwWFhQG9qBkIfL/+hLJvuknjbjrXglS0xeNgUXlxu10eTAYGIPNiKa2ECE6XJVIA0Oew4/r2WL3zB
-	PSW610dtOImsoqqCNooMbbvoqYi9FhYI4XkGJKEakMi5R/Fx+1JUhm2VGyK//RE62EWBdXdjBvODa
-	vhSHkKgA==;
+	bh=K7LnUJV/ul4zvNOijWfpD3HQX0dmiN+xduI0Vio1++E=; b=4eATbOV4gMgsw+LQKBUw+qEwuS
+	O4zqjYyRKCU+7WWFCt7lBcT7U4H+v7D8t9dCai0Jl1w/OsvDRugCMPIAQQBYNFeuv9yQtcwNkvcLG
+	wQtSnp/GVpXAB+qKzibSoEGmeyNpwXVUfSsxKdFGpVmhnPMDOwFx/ffZW8zyuti0FdofzFKnVFa4Z
+	WPO50Flxt2AWhc76M382WnCchngPevRn4mU5T7QHUZOBlQYy8+VyK0DeYiTRgJyM0rDie9YCszrFQ
+	oVsAnV8d7+IHddDHX347IZNf1i9tB439TyfEjHQV6WT6UjG1K/6VpQqhvtexbsDiZcQucnXi0xfki
+	q3F+CxvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sA7vS-00000006GdF-2g4x;
-	Thu, 23 May 2024 12:52:06 +0000
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+	id 1sA8Ym-00000006NEV-2wkk;
+	Thu, 23 May 2024 13:32:44 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sA7tE-00000006F7n-07BJ
-	for linux-mediatek@lists.infradead.org;
-	Thu, 23 May 2024 12:49:52 +0000
-Received: by mail-wr1-x434.google.com with SMTP id ffacd0b85a97d-354c5b7fafaso2001165f8f.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 23 May 2024 05:49:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1716468585; x=1717073385; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=Se5yKiZY3cYmLG86r4HoJS7Sn93sN289pgSkPgaOq50=;
-        b=Msa5DeXLTeq+TemjBcGVDCa2RwP3M8hKx6GZAOnB3iMoJKwm4WNNtE6fxLwO9IhN3l
-         dF9la1x3n/Lw9DYUi6RuJFMrF00b8rDx2FJQuHl7ipwuCFVvkYFYYYIx8alwVpCq05yq
-         uwRkTFGKFPLOaVw2G7JuCo8uk72pmUoP56CwhXTGzD7ieIUnKV7aS64c2HqjsA95i6NI
-         gqpVBKw0IBZNxLfDI6D0MlwkKAD5EQ+cQWKK3oxWAskPoNtk+d7S0MtDMQQQI/slM+9V
-         c1Cv3R/3I33LDLCtaA3UvBF4nSkDR1TaR4ZYIZ/oNV37OhlfZAspOWuo9O21XPWXNkcq
-         +YtQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1716468585; x=1717073385;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Se5yKiZY3cYmLG86r4HoJS7Sn93sN289pgSkPgaOq50=;
-        b=s+hbGvHTXiht6XYtA73mrCiSPWKxY+x7g7U2NbQDjarBcPfAeMzT67g6ry24zCxAYL
-         Iu//N7IwD0yD6nj861XrBCNtjdng+a3OTpgVD9cVgRw2oF+gqKrdZrTkzDyzKBH94j7T
-         BpWFxpsGJrZ40/Hh40CyH/PLm4opXGbM/KchQvf4MZ4sQ1cSK3eRAPPYvMfxPQUWo9NK
-         rP9O+0Eu/5Xtr9z24FMZeI1YO0h6UT6PUpjdJtdow4Q9c2PWXQoj+BJLLePstkQb7lm4
-         8SzvkV3+vE7mWSWCkhwwsag5rOLKICxJBZkRSM5jtKesRYB4hCswbx85FhGQU1frb5Vz
-         miPg==
-X-Forwarded-Encrypted: i=1; AJvYcCWbj1mha3EfJxf1VBFjqul6M0gpOGLdr3JPP0N5iyRMh2q2OzqB9lcmqTopBcv/wsxXM3wyIlKGSw5Q2+SD+h3Us8a3a+qpfeEXiFi8bfQItFi0
-X-Gm-Message-State: AOJu0YzjcK8ERkL2T1iCmaSbQtHhrh/N8/8dZFXK0UaHwdcdZWd+H+Pp
-	rdPuN3d6qhHc1qo5QasrPj3OizM7imVuxlV7iz0WZZXWnlHu5lKAsyG3HYtb9Tc=
-X-Google-Smtp-Source: AGHT+IFe0EMNXxp/jyDkREWoIn7QKBFlEltWoXTiTialrbLA2YC5vXnZQFAJzQyRCRWD39PWDNl05A==
-X-Received: by 2002:adf:cc89:0:b0:354:f1b2:543d with SMTP id ffacd0b85a97d-354f1b254ccmr3454090f8f.40.1716468585244;
-        Thu, 23 May 2024 05:49:45 -0700 (PDT)
-Received: from [127.0.1.1] ([93.5.22.158])
-        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-354faf3fa68sm1259611f8f.116.2024.05.23.05.49.44
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 23 May 2024 05:49:44 -0700 (PDT)
-From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Thu, 23 May 2024 14:49:27 +0200
-Subject: [PATCH v4 14/15] arm64: dts: mediatek: add display blocks support
- for the MT8365 SoC
+	id 1sA8Yj-00000006NDF-0aHU;
+	Thu, 23 May 2024 13:32:42 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1716471157;
+	bh=XeQz3w/hUWaPU3J2hnJbXUfOfb/MW7L/8XI55oK1Q1E=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=TvMt8tQ0na57JMSeUdhSEOtE6oFveOwVj7FLg6CwXMNVdAfTTwhvV+Eb3gvBybV76
+	 dGVQlH9w6nmCg6iD5BE6EG2hpE5IaiviT1BksksYMvdlAejEp6KEGNFlZgNDiIAjlt
+	 T0yFs7GqSboOLYKzVYPcrf5e2vFcmGuxMFeFAzurgsAyyLD77Ynyrurl9xueegZ4t5
+	 t9UQvSEh/2clybcLyje7HgASsmzPy36Lk5Iy/g20jKMPEx5dyYPb6J6uS0SSg4aHU1
+	 ue73Kn1VWRiqxh6GQ4ssEGB949Na/nswde1S5YmCTfbPaOfSteaYAgwqhJ+lvHtSD3
+	 g+ib9hYEVDyTQ==
+Received: from [100.95.196.182] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: andrzej.p)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 1918E37820E5;
+	Thu, 23 May 2024 13:32:36 +0000 (UTC)
+Message-ID: <1c219718-47fd-4671-a57c-8f057b7db431@collabora.com>
+Date: Thu, 23 May 2024 15:32:35 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20231023-display-support-v4-14-ed82eb168fb1@baylibre.com>
-References: <20231023-display-support-v4-0-ed82eb168fb1@baylibre.com>
-In-Reply-To: <20231023-display-support-v4-0-ed82eb168fb1@baylibre.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Jitao Shi <jitao.shi@mediatek.com>, CK Hu <ck.hu@mediatek.com>, 
- Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, 
- Alexandre Mergnat <amergnat@baylibre.com>
-X-Mailer: b4 0.12.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=10844;
- i=amergnat@baylibre.com; h=from:subject:message-id;
- bh=lU/uMCxAKyj9AwKsnWy/Ow0+0Mx6C47OWj2fk20wygs=;
- b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBmTztTqnu9b2aIaIWJ0hKtpp6UVCNGX6RPUv4DdKew
- 40JNF3uJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZk87UwAKCRArRkmdfjHURQ0AD/
- wJ5MXROUA1rCDxyx9Zh/bqVBknkCecExjt0trkPcZlYfI60rgOMu6mExpqddwpH//jmORvwkmTrfoa
- ZJva/9O3YVSBR40g9DnbZi8e3f3JUNPPMl3PlBT9/BzaO90E1x20HljKzSbytkXL42tk7pY8vvt5UJ
- +9ESt9dMQTkCUG0UOx1wmEv/K4Ns3ouzelOOywp9ldxoNPwy8II+UTShFOhdlT3Sf/lkee++msz1D1
- xG2/bY/DUoTGNF1fBUBCodnVbbEvOtZmGqLThfB277uY0Ji43emAmZ36MxyfSAb9Eyp9eN3qj8e+d6
- EG2TkKsve6nO19v4s/BNAwZEF3Xp1OuISKzk4RmVJrUGGSB7f5a5dJEaKHDnrBf+usQ62Y+ZROL/6/
- 9nC7QqtdpKZTL3rSGF+u626zHep3p5o0vnUTxVXdUASpvEjjC5jdPqGXuYkDUGAWWEzJCKaAw+wwIb
- NmyIVgzwpQLtddb0fCqIsVP1x/4hSn2lQMAJ9c3mbfIKjyzIZ6cCAfTWqw3LbNYPU87pZVnLnOWOh3
- qhlfN2ibFv8iB3JkTUMe8YL/Ws4lqsLtQYtO6tJqoe66PW1/3tWhKVs1VwmbK3PmOx2h0e+zTLlYYI
- woB1FosuLGBwKI952wUzq7xh3Z6Y2B7qNArUtDuDKAMh+uZUspx0A+qnoDtA==
-X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
- fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6,23/24] media: mediatek: vcodec: support av1 svp decoder
+ for mt8188
+To: Yunfei Dong <yunfei.dong@mediatek.com>,
+ Jeffrey Kardatzke <jkardatzke@google.com>,
+ =?UTF-8?Q?N=C3=ADcolas_F_=2E_R_=2E_A_=2E_Prado?= <nfraprado@collabora.com>,
+ Nathan Hebert <nhebert@chromium.org>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Sebastian Fricke <sebastian.fricke@collabora.com>,
+ Tomasz Figa <tfiga@chromium.org>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Marek Szyprowski <m.szyprowski@samsung.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>, Yong Wu <yong.wu@mediatek.com>,
+ Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
+ Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>,
+ Sumit Semwal <sumit.semwal@linaro.org>, Brian Starkey
+ <Brian.Starkey@arm.com>, John Stultz <jstultz@google.com>,
+ "T . J . Mercier" <tjmercier@google.com>,
+ =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-media@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20240516122102.16379-1-yunfei.dong@mediatek.com>
+ <20240516122102.16379-24-yunfei.dong@mediatek.com>
+Content-Language: en-US
+From: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
+In-Reply-To: <20240516122102.16379-24-yunfei.dong@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240523_054948_626234_9C930813 
-X-CRM114-Status: GOOD (  11.80  )
+X-CRM114-CacheID: sfid-20240523_063241_363065_F53FF05B 
+X-CRM114-Status: GOOD (  25.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,413 +95,275 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-- Add aliases for each display components to help display drivers.
-- Add the Display Pulse Width Modulation (DISP_PWM) to provide PWM signals
-  for the LED driver of mobile LCM.
-- Add the MIPI Display Serial Interface (DSI) PHY support. (up to 4-lane
-  output)
-- Add the display mutex support.
-- Add the following display component support:
-  - OVL0 (Overlay)
-  - RDMA0 (Data Path Read DMA)
-  - Color0
-  - CCorr0 (Color Correction)
-  - AAL0 (Adaptive Ambient Light)
-  - GAMMA0
-  - Dither0
-  - DSI0 (Display Serial Interface)
-  - RDMA1 (Data Path Read DMA)
-  - DPI0 (Display Parallel Interface)
+Hi Yunfei and Xiaoyong,
 
-Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
----
- arch/arm64/boot/dts/mediatek/mt8365.dtsi | 336 +++++++++++++++++++++++++++++++
- 1 file changed, 336 insertions(+)
+W dniu 16.05.2024 o 14:21, Yunfei Dong pisze:
+> From: Xiaoyong Lu <xiaoyong.lu@mediatek.com>
+> 
+> Change av1 driver to support secure video playback(svp) for
+> mt8188. Need to map shared memory with optee interface and
+> wait interrupt in optee-os.
+> 
+> Signed-off-by: Xiaoyong Lu <xiaoyong.lu@mediatek.com>
+> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+> ---
+>   .../vcodec/decoder/vdec/vdec_av1_req_lat_if.c | 97 ++++++++++++-------
+>   1 file changed, 63 insertions(+), 34 deletions(-)
+> 
+> diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_av1_req_lat_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_av1_req_lat_if.c
+> index bf21f2467a0f..a3ad35df7f73 100644
+> --- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_av1_req_lat_if.c
+> +++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_av1_req_lat_if.c
+> @@ -58,6 +58,9 @@
+>   #define SEG_LVL_ALT_Q 0
+>   #define SECONDARY_FILTER_STRENGTH_NUM_BITS 2
+>   
+> +#define AV1_IQ_TABLE_SIZE	0x12200
+> +#define AV1_CDF_TABLE_SIZE	0xFE80
+> +
+>   static const short div_lut[DIV_LUT_NUM + 1] = {
+>   	16384, 16320, 16257, 16194, 16132, 16070, 16009, 15948, 15888, 15828, 15768,
+>   	15709, 15650, 15592, 15534, 15477, 15420, 15364, 15308, 15252, 15197, 15142,
+> @@ -641,6 +644,8 @@ struct vdec_av1_slice_fb {
+>    * @frame:		current frame info
+>    * @state:		status after decode done
+>    * @cur_lst_tile_id:	tile id for large scale
+> + * @tile_group:		tile group info
+> + * @reservd:		reserved
+>    */
+>   struct vdec_av1_slice_vsi {
+>   	/* lat */
+> @@ -665,6 +670,8 @@ struct vdec_av1_slice_vsi {
+>   	struct vdec_av1_slice_frame frame;
+>   	struct vdec_av1_slice_state state;
+>   	u32 cur_lst_tile_id;
+> +	struct vdec_av1_slice_tile_group tile_group;
+> +	unsigned int reservd[4];
+>   };
+>   
+>   /**
+> @@ -692,7 +699,6 @@ struct vdec_av1_slice_pfc {
+>    * @cdf_temp:           cdf temp buffer
+>    * @tile:               tile buffer
+>    * @slots:              slots info
+> - * @tile_group:         tile_group entry
+>    * @level:              level of current resolution
+>    * @width:              width of last picture
+>    * @height:             height of last picture
+> @@ -717,7 +723,6 @@ struct vdec_av1_slice_instance {
+>   	struct mtk_vcodec_mem cdf_temp;
+>   	struct mtk_vcodec_mem tile;
+>   	struct vdec_av1_slice_slot slots;
+> -	struct vdec_av1_slice_tile_group tile_group;
+>   
+>   	/* for resolution change and get_pic_info */
+>   	enum vdec_av1_slice_resolution_level level;
+> @@ -774,24 +779,28 @@ static int vdec_av1_slice_init_cdf_table(struct vdec_av1_slice_instance *instanc
+>   
+>   	ctx = instance->ctx;
+>   	vsi = instance->vpu.vsi;
+> -	remote_cdf_table = mtk_vcodec_fw_map_dm_addr(ctx->dev->fw_handler,
+> -						     (u32)vsi->cdf_table_addr);
+> -	if (IS_ERR(remote_cdf_table)) {
+> -		mtk_vdec_err(ctx, "failed to map cdf table\n");
+> -		return PTR_ERR(remote_cdf_table);
+> -	}
+> -
+> -	mtk_vdec_debug(ctx, "map cdf table to 0x%p\n", remote_cdf_table);
+>   
+>   	if (instance->cdf_table.va)
+>   		mtk_vcodec_mem_free(ctx, &instance->cdf_table);
+> +	vsi->cdf_table_size = AV1_CDF_TABLE_SIZE;
+> +	mtk_vdec_debug(ctx, "svp %d. cdf table size 0x%x\n",
+> +		       instance->ctx->is_secure_playback, vsi->cdf_table_size);
+>   	instance->cdf_table.size = vsi->cdf_table_size;
+>   
+>   	ret = mtk_vcodec_mem_alloc(ctx, &instance->cdf_table);
+>   	if (ret)
+>   		return ret;
+>   
+> -	memcpy(instance->cdf_table.va, remote_cdf_table, vsi->cdf_table_size);
+> +	if (!instance->ctx->is_secure_playback) {
+> +		remote_cdf_table = mtk_vcodec_fw_map_dm_addr(ctx->dev->fw_handler,
+> +							     (u32)vsi->cdf_table_addr);
+> +		if (IS_ERR(remote_cdf_table)) {
+> +			mtk_vdec_err(ctx, "failed to map cdf table\n");
+> +			return PTR_ERR(remote_cdf_table);
+> +		}
+> +
+> +		memcpy(instance->cdf_table.va, remote_cdf_table, vsi->cdf_table_size);
+> +	}
+>   
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8365.dtsi b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-index 24581f7410aa..9f88645141d6 100644
---- a/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-@@ -8,6 +8,7 @@
- #include <dt-bindings/clock/mediatek,mt8365-clk.h>
- #include <dt-bindings/interrupt-controller/arm-gic.h>
- #include <dt-bindings/interrupt-controller/irq.h>
-+#include <dt-bindings/memory/mediatek,mt8365-larb-port.h>
- #include <dt-bindings/phy/phy.h>
- #include <dt-bindings/power/mediatek,mt8365-power.h>
- 
-@@ -17,6 +18,19 @@ / {
- 	#address-cells = <2>;
- 	#size-cells = <2>;
- 
-+	aliases {
-+		aal0 = &aal0;
-+		ccorr0 = &ccorr0;
-+		color0 = &color0;
-+		dither0 = &dither0;
-+		dpi0 = &dpi0;
-+		dsi0 = &dsi0;
-+		gamma0 = &gamma0;
-+		ovl0 = &ovl0;
-+		rdma0 = &rdma0;
-+		rdma1 = &rdma1;
-+	};
-+
- 	cpus {
- 		#address-cells = <1>;
- 		#size-cells = <0>;
-@@ -607,6 +621,15 @@ spi: spi@1100a000 {
- 			status = "disabled";
- 		};
- 
-+		disp_pwm: pwm@1100e000 {
-+			compatible = "mediatek,mt8365-disp-pwm", "mediatek,mt8183-disp-pwm";
-+			reg = <0 0x1100e000 0 0x1000>;
-+			clock-names = "main", "mm";
-+			clocks = <&topckgen CLK_TOP_DISP_PWM_SEL>, <&infracfg CLK_IFR_DISP_PWM>;
-+			power-domains = <&spm MT8365_POWER_DOMAIN_MM>;
-+			#pwm-cells = <2>;
-+		};
-+
- 		i2c3: i2c@1100f000 {
- 			compatible = "mediatek,mt8365-i2c", "mediatek,mt8168-i2c";
- 			reg = <0 0x1100f000 0 0xa0>, <0 0x11000200 0 0x80>;
-@@ -703,6 +726,15 @@ ethernet: ethernet@112a0000 {
- 			status = "disabled";
- 		};
- 
-+		mipi_tx0: dsi-phy@11c00000 {
-+			compatible = "mediatek,mt8365-mipi-tx", "mediatek,mt8183-mipi-tx";
-+			reg = <0 0x11c00000 0 0x800>;
-+			clock-output-names = "mipi_tx0_pll";
-+			clocks = <&clk26m>;
-+			#clock-cells = <0>;
-+			#phy-cells = <0>;
-+		};
-+
- 		u3phy: t-phy@11cc0000 {
- 			compatible = "mediatek,mt8365-tphy", "mediatek,generic-tphy-v2";
- 			#address-cells = <1>;
-@@ -730,6 +762,26 @@ mmsys: syscon@14000000 {
- 			compatible = "mediatek,mt8365-mmsys", "syscon";
- 			reg = <0 0x14000000 0 0x1000>;
- 			#clock-cells = <1>;
-+			port {
-+				#address-cells = <1>;
-+				#size-cells = <0>;
-+
-+				mmsys_main: endpoint@0 {
-+					reg = <0>;
-+					remote-endpoint = <&ovl0_in>;
-+				};
-+				mmsys_ext: endpoint@1 {
-+					reg = <1>;
-+					remote-endpoint = <&rdma1_in>;
-+				};
-+			};
-+		};
-+
-+		mutex: mutex@14001000 {
-+			compatible =  "mediatek,mt8365-disp-mutex";
-+			reg = <0 0x14001000 0 0x1000>;
-+			interrupts = <GIC_SPI 154 IRQ_TYPE_LEVEL_LOW>;
-+			power-domains = <&spm MT8365_POWER_DOMAIN_MM>;
- 		};
- 
- 		smi_common: smi@14002000 {
-@@ -755,6 +807,290 @@ larb0: larb@14003000 {
- 			mediatek,larb-id = <0>;
- 		};
- 
-+		ovl0: ovl@1400b000 {
-+			compatible = "mediatek,mt8365-disp-ovl", "mediatek,mt8192-disp-ovl";
-+			reg = <0 0x1400b000 0 0x1000>;
-+			clocks = <&mmsys CLK_MM_MM_DISP_OVL0>;
-+			interrupts = <GIC_SPI 161 IRQ_TYPE_LEVEL_LOW>;
-+			iommus = <&iommu M4U_PORT_DISP_OVL0>;
-+			power-domains = <&spm MT8365_POWER_DOMAIN_MM>;
-+			ports {
-+				#address-cells = <1>;
-+				#size-cells = <0>;
-+
-+				port@0 {
-+					#address-cells = <1>;
-+					#size-cells = <0>;
-+					reg = <0>;
-+					ovl0_in: endpoint@0 {
-+						reg = <0>;
-+						remote-endpoint = <&mmsys_main>;
-+					};
-+				};
-+
-+				port@1 {
-+					#address-cells = <1>;
-+					#size-cells = <0>;
-+					reg = <1>;
-+					ovl0_out: endpoint@0 {
-+						reg = <0>;
-+						remote-endpoint = <&rdma0_in>;
-+					};
-+				};
-+			};
-+		};
-+
-+		rdma0: rdma@1400d000 {
-+			compatible = "mediatek,mt8365-disp-rdma", "mediatek,mt8183-disp-rdma";
-+			reg = <0 0x1400d000 0 0x1000>;
-+			clocks = <&mmsys CLK_MM_MM_DISP_RDMA0>;
-+			interrupts = <GIC_SPI 162 IRQ_TYPE_LEVEL_LOW>;
-+			iommus = <&iommu M4U_PORT_DISP_RDMA0>;
-+			mediatek,rdma-fifo-size = <5120>;
-+			power-domains = <&spm MT8365_POWER_DOMAIN_MM>;
-+			ports {
-+				#address-cells = <1>;
-+				#size-cells = <0>;
-+
-+				port@0 {
-+					#address-cells = <1>;
-+					#size-cells = <0>;
-+					reg = <0>;
-+					rdma0_in: endpoint@0 {
-+						reg = <0>;
-+						remote-endpoint = <&ovl0_out>;
-+					};
-+				};
-+
-+				port@1 {
-+					#address-cells = <1>;
-+					#size-cells = <0>;
-+					reg = <1>;
-+					rdma0_out: endpoint@0 {
-+						reg = <0>;
-+						remote-endpoint = <&color0_in>;
-+					};
-+				};
-+			};
-+		};
-+
-+		color0: color@1400f000 {
-+			compatible = "mediatek,mt8365-disp-color", "mediatek,mt8173-disp-color";
-+			reg = <0 0x1400f000 0 0x1000>;
-+			clocks = <&mmsys CLK_MM_MM_DISP_COLOR0>;
-+			interrupts = <GIC_SPI 164 IRQ_TYPE_LEVEL_LOW>;
-+			power-domains = <&spm MT8365_POWER_DOMAIN_MM>;
-+			ports {
-+				#address-cells = <1>;
-+				#size-cells = <0>;
-+
-+				port@0 {
-+					#address-cells = <1>;
-+					#size-cells = <0>;
-+					reg = <0>;
-+					color0_in: endpoint@0 {
-+						reg = <0>;
-+						remote-endpoint = <&rdma0_out>;
-+					};
-+				};
-+
-+				port@1 {
-+					#address-cells = <1>;
-+					#size-cells = <0>;
-+					reg = <1>;
-+					color0_out: endpoint@0 {
-+						reg = <0>;
-+						remote-endpoint = <&ccorr0_in>;
-+					};
-+				};
-+			};
-+		};
-+
-+		ccorr0: ccorr@14010000 {
-+			compatible = "mediatek,mt8365-disp-ccorr", "mediatek,mt8183-disp-ccorr";
-+			reg = <0 0x14010000 0 0x1000>;
-+			clocks = <&mmsys CLK_MM_MM_DISP_CCORR0>;
-+			interrupts = <GIC_SPI 165 IRQ_TYPE_LEVEL_LOW>;
-+			power-domains = <&spm MT8365_POWER_DOMAIN_MM>;
-+			ports {
-+				#address-cells = <1>;
-+				#size-cells = <0>;
-+
-+				port@0 {
-+					#address-cells = <1>;
-+					#size-cells = <0>;
-+					reg = <0>;
-+					ccorr0_in: endpoint@0 {
-+						reg = <0>;
-+						remote-endpoint = <&color0_out>;
-+					};
-+				};
-+
-+				port@1 {
-+					#address-cells = <1>;
-+					#size-cells = <0>;
-+					reg = <1>;
-+					ccorr0_out: endpoint@0 {
-+						reg = <0>;
-+						remote-endpoint = <&aal0_in>;
-+					};
-+				};
-+			};
-+		};
-+
-+		aal0: aal@14011000 {
-+			compatible = "mediatek,mt8365-disp-aal", "mediatek,mt8183-disp-aal";
-+			reg = <0 0x14011000 0 0x1000>;
-+			clocks = <&mmsys CLK_MM_MM_DISP_AAL0>;
-+			interrupts = <GIC_SPI 166 IRQ_TYPE_LEVEL_LOW>;
-+			power-domains = <&spm MT8365_POWER_DOMAIN_MM>;
-+			ports {
-+				#address-cells = <1>;
-+				#size-cells = <0>;
-+
-+				port@0 {
-+					#address-cells = <1>;
-+					#size-cells = <0>;
-+					reg = <0>;
-+					aal0_in: endpoint@0 {
-+						reg = <0>;
-+						remote-endpoint = <&ccorr0_out>;
-+					};
-+				};
-+
-+				port@1 {
-+					#address-cells = <1>;
-+					#size-cells = <0>;
-+					reg = <1>;
-+					aal0_out: endpoint@0 {
-+						reg = <0>;
-+						remote-endpoint = <&gamma0_in>;
-+					};
-+				};
-+			};
-+		};
-+
-+		gamma0: gamma@14012000 {
-+			compatible = "mediatek,mt8365-disp-gamma", "mediatek,mt8183-disp-gamma";
-+			reg = <0 0x14012000 0 0x1000>;
-+			clocks = <&mmsys CLK_MM_MM_DISP_GAMMA0>;
-+			interrupts = <GIC_SPI 167 IRQ_TYPE_LEVEL_LOW>;
-+			power-domains = <&spm MT8365_POWER_DOMAIN_MM>;
-+			ports {
-+				#address-cells = <1>;
-+				#size-cells = <0>;
-+
-+				port@0 {
-+					#address-cells = <1>;
-+					#size-cells = <0>;
-+					reg = <0>;
-+					gamma0_in: endpoint@0 {
-+						reg = <0>;
-+						remote-endpoint = <&aal0_out>;
-+					};
-+				};
-+
-+				port@1 {
-+					#address-cells = <1>;
-+					#size-cells = <0>;
-+					reg = <1>;
-+					gamma0_out: endpoint@0 {
-+						reg = <0>;
-+						remote-endpoint = <&dither0_in>;
-+					};
-+				};
-+			};
-+		};
-+
-+		dither0: dither@14013000 {
-+			compatible = "mediatek,mt8365-disp-dither", "mediatek,mt8183-disp-dither";
-+			reg = <0 0x14013000 0 0x1000>;
-+			clocks = <&mmsys CLK_MM_MM_DISP_DITHER0>;
-+			interrupts = <GIC_SPI 168 IRQ_TYPE_LEVEL_LOW>;
-+			power-domains = <&spm MT8365_POWER_DOMAIN_MM>;
-+			ports {
-+				#address-cells = <1>;
-+				#size-cells = <0>;
-+
-+				port@0 {
-+					#address-cells = <1>;
-+					#size-cells = <0>;
-+					reg = <0>;
-+					dither0_in: endpoint@0 {
-+						reg = <0>;
-+						remote-endpoint = <&gamma0_out>;
-+					};
-+				};
-+
-+				port@1 {
-+					#address-cells = <1>;
-+					#size-cells = <0>;
-+					reg = <1>;
-+					dither0_out: endpoint@0 {
-+						reg = <0>;
-+					};
-+				};
-+			};
-+		};
-+
-+		dsi0: dsi@14014000 {
-+			compatible = "mediatek,mt8365-dsi", "mediatek,mt8183-dsi";
-+			reg = <0 0x14014000 0 0x1000>;
-+			clock-names = "engine", "digital", "hs";
-+			clocks = <&mmsys CLK_MM_MM_DSI0>,
-+				 <&mmsys CLK_MM_DSI0_DIG_DSI>,
-+				 <&mipi_tx0>;
-+			interrupts = <GIC_SPI 169 IRQ_TYPE_LEVEL_LOW>;
-+			phy-names = "dphy";
-+			phys = <&mipi_tx0>;
-+			power-domains = <&spm MT8365_POWER_DOMAIN_MM>;
-+		};
-+
-+		rdma1: rdma@14016000 {
-+			compatible = "mediatek,mt8365-disp-rdma", "mediatek,mt8183-disp-rdma";
-+			reg = <0 0x14016000 0 0x1000>;
-+			clocks = <&mmsys CLK_MM_MM_DISP_RDMA1>;
-+			interrupts = <GIC_SPI 195 IRQ_TYPE_LEVEL_LOW>;
-+			iommus = <&iommu M4U_PORT_DISP_RDMA1>;
-+			mediatek,rdma-fifo-size = <2048>;
-+			power-domains = <&spm MT8365_POWER_DOMAIN_MM>;
-+			ports {
-+				#address-cells = <1>;
-+				#size-cells = <0>;
-+
-+				port@0 {
-+					#address-cells = <1>;
-+					#size-cells = <0>;
-+					reg = <0>;
-+					rdma1_in: endpoint@1 {
-+						reg = <1>;
-+						remote-endpoint = <&mmsys_ext>;
-+					};
-+				};
-+
-+				port@1 {
-+					#address-cells = <1>;
-+					#size-cells = <0>;
-+					reg = <1>;
-+					rdma1_out: endpoint@1 {
-+						reg = <1>;
-+					};
-+				};
-+			};
-+		};
-+
-+		dpi0: dpi@14018000 {
-+			compatible = "mediatek,mt8365-dpi", "mediatek,mt8192-dpi";
-+			reg = <0 0x14018000 0 0x1000>;
-+			clocks = <&mmsys CLK_MM_DPI0_DPI0>,
-+				 <&mmsys CLK_MM_MM_DPI0>,
-+				 <&apmixedsys CLK_APMIXED_LVDSPLL>;
-+			clock-names = "pixel", "engine", "pll";
-+			interrupts = <GIC_SPI 197 IRQ_TYPE_LEVEL_LOW>;
-+			power-domains = <&spm MT8365_POWER_DOMAIN_MM>;
-+			status = "disabled";
-+		};
-+
- 		camsys: syscon@15000000 {
- 			compatible = "mediatek,mt8365-imgsys", "syscon";
- 			reg = <0 0x15000000 0 0x1000>;
+In the original version mtk_vcodec_fw_map_dm_addr() is called before
+mtk_vcodec_mem_alloc(), so if the former fails, the function terminates
+early. After this patch is applied mtk_vcodec_mem_alloc() is called first and
+when it is successful mtk_vcodec_fw_map_dm_addr() is called which may fail.
+In case it fails maybe mtk_vcodec_mem_free() should be called before returning?
 
--- 
-2.25.1
+>   	return 0;
+>   }
+> @@ -805,25 +814,26 @@ static int vdec_av1_slice_init_iq_table(struct vdec_av1_slice_instance *instance
+>   
+>   	ctx = instance->ctx;
+>   	vsi = instance->vpu.vsi;
+> -	remote_iq_table = mtk_vcodec_fw_map_dm_addr(ctx->dev->fw_handler,
+> -						    (u32)vsi->iq_table_addr);
+> -	if (IS_ERR(remote_iq_table)) {
+> -		mtk_vdec_err(ctx, "failed to map iq table\n");
+> -		return PTR_ERR(remote_iq_table);
+> -	}
+> -
+> -	mtk_vdec_debug(ctx, "map iq table to 0x%p\n", remote_iq_table);
+>   
+>   	if (instance->iq_table.va)
+>   		mtk_vcodec_mem_free(ctx, &instance->iq_table);
+> +	vsi->iq_table_size = AV1_IQ_TABLE_SIZE;
+>   	instance->iq_table.size = vsi->iq_table_size;
+>   
+>   	ret = mtk_vcodec_mem_alloc(ctx, &instance->iq_table);
+>   	if (ret)
+>   		return ret;
+>   
+> -	memcpy(instance->iq_table.va, remote_iq_table, vsi->iq_table_size);
+> +	if (!instance->ctx->is_secure_playback) {
+> +		remote_iq_table = mtk_vcodec_fw_map_dm_addr(ctx->dev->fw_handler,
+> +							    (u32)vsi->iq_table_addr);
+> +		if (IS_ERR(remote_iq_table)) {
+> +			mtk_vdec_err(ctx, "failed to map iq table\n");
+> +			return PTR_ERR(remote_iq_table);
+> +		}
+>   
+> +		memcpy(instance->iq_table.va, remote_iq_table, vsi->iq_table_size);
+> +	}
+
+The same comment as above applies.
+
+Regards,
+
+Andrzej
+
+>   	return 0;
+>   }
+>   
+> @@ -1388,7 +1398,7 @@ static int vdec_av1_slice_setup_tile_group(struct vdec_av1_slice_instance *insta
+>   					   struct vdec_av1_slice_vsi *vsi)
+>   {
+>   	struct v4l2_ctrl_av1_tile_group_entry *ctrl_tge;
+> -	struct vdec_av1_slice_tile_group *tile_group = &instance->tile_group;
+> +	struct vdec_av1_slice_tile_group *tile_group = &vsi->tile_group;
+>   	struct vdec_av1_slice_uncompressed_header *uh = &vsi->frame.uh;
+>   	struct vdec_av1_slice_tile *tile = &uh->tile;
+>   	struct v4l2_ctrl *ctrl;
+> @@ -1629,7 +1639,9 @@ static void vdec_av1_slice_setup_lat_buffer(struct vdec_av1_slice_instance *inst
+>   
+>   	vsi->tile.buf = instance->tile.dma_addr;
+>   	vsi->tile.size = instance->tile.size;
+> -	memcpy(lat_buf->tile_addr.va, instance->tile.va, 64 * instance->tile_group.num_tiles);
+> +	if (!instance->ctx->is_secure_playback)
+> +		memcpy(lat_buf->tile_addr.va, instance->tile.va,
+> +		       64 * vsi->tile_group.num_tiles);
+>   
+>   	vsi->cdf_table.buf = instance->cdf_table.dma_addr;
+>   	vsi->cdf_table.size = instance->cdf_table.size;
+> @@ -1646,7 +1658,7 @@ static void vdec_av1_slice_setup_seg_buffer(struct vdec_av1_slice_instance *inst
+>   	/* reset segment buffer */
+>   	if (uh->primary_ref_frame == AV1_PRIMARY_REF_NONE || !uh->seg.segmentation_enabled) {
+>   		mtk_vdec_debug(instance->ctx, "reset seg %d\n", vsi->slot_id);
+> -		if (vsi->slot_id != AV1_INVALID_IDX) {
+> +		if (!instance->ctx->is_secure_playback && vsi->slot_id != AV1_INVALID_IDX) {
+>   			buf = &instance->seg[vsi->slot_id];
+>   			memset(buf->va, 0, buf->size);
+>   		}
+> @@ -1657,7 +1669,7 @@ static void vdec_av1_slice_setup_tile_buffer(struct vdec_av1_slice_instance *ins
+>   					     struct vdec_av1_slice_vsi *vsi,
+>   					     struct mtk_vcodec_mem *bs)
+>   {
+> -	struct vdec_av1_slice_tile_group *tile_group = &instance->tile_group;
+> +	struct vdec_av1_slice_tile_group *tile_group = &vsi->tile_group;
+>   	struct vdec_av1_slice_uncompressed_header *uh = &vsi->frame.uh;
+>   	struct vdec_av1_slice_tile *tile = &uh->tile;
+>   	u32 tile_num, tile_row, tile_col;
+> @@ -1740,7 +1752,9 @@ static int vdec_av1_slice_setup_lat(struct vdec_av1_slice_instance *instance,
+>   		return ret;
+>   
+>   	vdec_av1_slice_setup_seg_buffer(instance, vsi);
+> -	vdec_av1_slice_setup_tile_buffer(instance, vsi, bs);
+> +	if (!instance->ctx->is_secure_playback)
+> +		vdec_av1_slice_setup_tile_buffer(instance, vsi, bs);
+> +
+>   	vdec_av1_slice_setup_lat_buffer(instance, vsi, bs, lat_buf);
+>   
+>   	return 0;
+> @@ -1803,10 +1817,15 @@ static int vdec_av1_slice_setup_core_buffer(struct vdec_av1_slice_instance *inst
+>   
+>   	/* frame buffer */
+>   	vsi->fb.y.dma_addr = fb->base_y.dma_addr;
+> -	if (plane == 1)
+> -		vsi->fb.c.dma_addr = fb->base_y.dma_addr + size;
+> -	else
+> -		vsi->fb.c.dma_addr = fb->base_c.dma_addr;
+> +
+> +	if (!instance->ctx->is_secure_playback) {
+> +		if (plane == 1)
+> +			vsi->fb.c.dma_addr = fb->base_y.dma_addr + size;
+> +		else
+> +			vsi->fb.c.dma_addr = fb->base_c.dma_addr;
+> +	}
+> +	vsi->fb.y.size = instance->ctx->picinfo.fb_sz[0];
+> +	vsi->fb.c.size = instance->ctx->picinfo.fb_sz[1];
+>   
+>   	/* reference buffers */
+>   	vq = v4l2_m2m_get_vq(instance->ctx->m2m_ctx, V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE);
+> @@ -1829,6 +1848,7 @@ static int vdec_av1_slice_setup_core_buffer(struct vdec_av1_slice_instance *inst
+>   		}
+>   
+>   		vref->y.dma_addr = vb2_dma_contig_plane_dma_addr(vb, 0);
+> +		vref->y.size = size;
+>   		if (plane == 1)
+>   			vref->c.dma_addr = vref->y.dma_addr + size;
+>   		else
+> @@ -1905,7 +1925,13 @@ static int vdec_av1_slice_init(struct mtk_vcodec_dec_ctx *ctx)
+>   		goto error_vsi;
+>   	}
+>   	instance->init_vsi = vsi;
+> -	instance->core_vsi = mtk_vcodec_fw_map_dm_addr(ctx->dev->fw_handler, (u32)vsi->core_vsi);
+> +	if (ctx->is_secure_playback)
+> +		instance->core_vsi =
+> +			mtk_vcodec_dec_get_shm_buffer_va(ctx->dev->optee_private, MTK_VDEC_CORE,
+> +							 OPTEE_DATA_INDEX);
+> +	else
+> +		instance->core_vsi = mtk_vcodec_fw_map_dm_addr(ctx->dev->fw_handler,
+> +							       (u32)vsi->core_vsi);
+>   
+>   	if (!instance->core_vsi) {
+>   		mtk_vdec_err(ctx, "failed to get AV1 core vsi\n");
+> @@ -1917,11 +1943,12 @@ static int vdec_av1_slice_init(struct mtk_vcodec_dec_ctx *ctx)
+>   		mtk_vdec_err(ctx, "remote vsi size 0x%x mismatch! expected: 0x%zx\n",
+>   			     vsi->vsi_size, sizeof(struct vdec_av1_slice_vsi));
+>   
+> -	instance->irq_enabled = 1;
+> +	instance->irq_enabled = !ctx->is_secure_playback;
+>   	instance->inneracing_mode = IS_VDEC_INNER_RACING(instance->ctx->dev->dec_capability);
+>   
+> -	mtk_vdec_debug(ctx, "vsi 0x%p core_vsi 0x%llx 0x%p, inneracing_mode %d\n",
+> -		       vsi, vsi->core_vsi, instance->core_vsi, instance->inneracing_mode);
+> +	mtk_vdec_debug(ctx, "secure %d:vsi 0x%p core_vsi 0x%llx 0x%p, inneracing_mode %d\n",
+> +		       ctx->is_secure_playback, vsi, vsi->core_vsi, instance->core_vsi,
+> +		       instance->inneracing_mode);
+>   
+>   	ret = vdec_av1_slice_init_cdf_table(instance);
+>   	if (ret)
+> @@ -2114,7 +2141,9 @@ static int vdec_av1_slice_lat_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
+>   			vdec_msg_queue_qbuf(&ctx->msg_queue.lat_ctx, lat_buf);
+>   		return -EBUSY;
+>   	}
+> -	vsi->trans.dma_addr_end += ctx->msg_queue.wdma_addr.dma_addr;
+> +	if (!instance->ctx->is_secure_playback)
+> +		vsi->trans.dma_addr_end += ctx->msg_queue.wdma_addr.dma_addr;
+> +
+>   	mtk_vdec_debug(ctx, "lat dma 1 0x%pad 0x%pad\n",
+>   		       &pfc->vsi.trans.dma_addr, &pfc->vsi.trans.dma_addr_end);
+>   
 
 
