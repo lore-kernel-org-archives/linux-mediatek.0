@@ -4,87 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 370EBC25B7C
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 May 2024 12:51:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93E7BC25B79
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 May 2024 12:52:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oV7UBZ9+FOaGpy1Hnl2xMvcmGJrrQkTOfJMy4GT33U0=; b=Y94Ow33JNLm8K27EOS46grLzgd
-	oJJqGN0r2wrCuoSpiicchC2nm2B0nXUmzsGlC7cEzJCPNdp/3PR5NEi3siEqOwYzw+i2oXUU4ITb4
-	MlPOhuDw4By72yVeQbQO4TRR9wWGb+HJrv4/tNjJsTXZqFwQjAD6XEgF7hOKSwrtj9XQIVObeF5VZ
-	Dcp5jB6ac2bK8ZDrExexdPXMvNAQBb7QURlBkAV/1AvZ40wGXl9tjZGF+1LeJ/jcV7SkyU9MdVEZM
-	/jgZGCxbyU2ZR1CEBit8gTROnateC2CAOHh+bIVWv1kGJ8GLtRrUvb3pJql0b7GdrOu1/pqRlBaFn
-	3SsDC+IA==;
+	bh=oycOZ7tNpDXuadcC0Px0ysSti2axPPJ+EdThdDwGHQA=; b=IEYHzAL4Jq2NsVnf/OCUZfpKMw
+	ojvBTgNp0o8KbZr2gqF+HRhWnvYHfAuv21Huk8uneobasF4C2ZD+Zyx6yh7uzyA/Nr3QhopC9nXkp
+	HyN8xnAAdSz+BmkJDewcP6kYiU2+dGRjP0k5wMMTFOS4ZTTx2cGVoB9YliW4IAERCbcSeTkjIarap
+	HInXncxUkVKxtAMyVLTqofzazxScl4T64PNq3QhikAbIg1E8SW39DRm6oSoen9UfMbU9Z9PTTH31I
+	fJv4sDo34TIQGOTBoCX50FiLTMCOziqWazWtO2tIots+capyfk1fRIDccyJgnkUZSjV5Pqm1PfIM6
+	s4dTgbgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sA7vG-00000006GWD-209y;
-	Thu, 23 May 2024 12:51:54 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1sA7vS-00000006GcT-00bv;
+	Thu, 23 May 2024 12:52:06 +0000
+Received: from mail-wr1-f50.google.com ([209.85.221.50])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sA7tF-00000006FAZ-3RFK
-	for linux-mediatek@bombadil.infradead.org;
-	Thu, 23 May 2024 12:49:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=oV7UBZ9+FOaGpy1Hnl2xMvcmGJrrQkTOfJMy4GT33U0=; b=JAqPo6eRfwu4LGTE810A3UE4CW
-	ABzJkHKsMQMfNeTv624JwJtFaHAo6UEoRfliFHk9UUl5cIbmdTQgXv0qS3lLIoVQSEcgJrt18sIao
-	oMBcoCnEh+BfgdB67MUa1ulHc2q5LyebeEyeM70cJTWdbeIBL3d9EWKwbC+D8+EC91+qHKeWpxgUb
-	VxSWOrwRBCUuVxyNASdLBgeYddAqvPOmhBJnADNMRMxPLioDxTPi1xWidI9IiCW/6Iu+cEPHY+BBw
-	8ckDb3K53az1x4x7gB2Zyk450Qia+YlmUxCdplGy3xfD8VKjBzZeLb6Ur4VW+As6/sDIbcB09xcBM
-	qxHNQ4/Q==;
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
-	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sA7tB-00000009JHk-2ooL
+	id 1sA7tF-00000006F9W-0MYd
 	for linux-mediatek@lists.infradead.org;
-	Thu, 23 May 2024 12:49:48 +0000
-Received: by mail-wr1-x432.google.com with SMTP id ffacd0b85a97d-34f0e55787aso5018142f8f.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 23 May 2024 05:49:43 -0700 (PDT)
+	Thu, 23 May 2024 12:49:51 +0000
+Received: by mail-wr1-f50.google.com with SMTP id ffacd0b85a97d-34e7a35d5d4so1771475f8f.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 23 May 2024 05:49:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1716468582; x=1717073382; darn=lists.infradead.org;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1716468587; x=1717073387; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=oV7UBZ9+FOaGpy1Hnl2xMvcmGJrrQkTOfJMy4GT33U0=;
-        b=rFyl2gzUq+mqz0cw7QzC90VJohQ9D+mo536ueoJGms8tEOo8E2dQD866wlY3rsmwyt
-         oiYYUNgppv+1ONLejzO81/7pBp4KskZcPgIoa+3K0taCPp7E0hGo0ppBIUt84Cq4lDMo
-         Is9su/6yTNfGk/VFi2zS9bovHHZzHfJGTbwmL1tzoRu5skdqzxcARUFT95wFsND/u75T
-         pvfJrVqDUVCT1hzXUGMhREx5hzQKtbTKRleYSVc3kiKBF1WOggh6i5tmdPSjs1gzx7q1
-         xNqqa/zDfT9HU+Qj6eaCS77+t2WNDZ0cH3/VVLaYnhP8N/jvMmQkdGrWC8le7RUsjd/i
-         hQdA==
+        bh=oycOZ7tNpDXuadcC0Px0ysSti2axPPJ+EdThdDwGHQA=;
+        b=jX1j+gdi/iN9S75CVO0dDd/+dwQhaszWhPKG1fGVe3zfiwnoajwH7OeGZ67GwH3dld
+         SkjoUJwibBzgUFlH+Iuw+V+EYYdlWf5Q4LeC3+IUSEKNBGYkf/ekvQKAAKfcn/IocHnj
+         DYFr3+PbCPr9KYVKfY4rXSI5gIOSKLVdgQ45S+e75Ug3+jkEtF7s67N7pcBKKW76I3Wx
+         q4bed+Z339Nr/Y+Xd5NVe/5KiHNT9ZDVRJPsB6QPinxuRDn9sEf5StMxyRMKSPcIvM8/
+         fnlggCF9Xcji13uMo6xWZLIFZZ+t8eP6hgKaBwKUqCOQqwaJSwrzUpzncYW0UOoUuOH4
+         PVIQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1716468582; x=1717073382;
+        d=1e100.net; s=20230601; t=1716468587; x=1717073387;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=oV7UBZ9+FOaGpy1Hnl2xMvcmGJrrQkTOfJMy4GT33U0=;
-        b=vCWydbyFGQ19Tt/LuxZLjbbRTgc9buvPodiwLgAuCYG71fDyL63UJTr3uREPR6k1DD
-         viY9zHtEe3rH6Uo/kxOnHM2gtXBxMeuJXN838ADIdt4b42ugVFvaFTSyBs10/oFYbYZ7
-         xYBfueMqf0JTdUJV1Iszmu5WHUciylqFGAb8AEi7NDx90FJiriEGiBw/RrEXwnfw1W+7
-         DLv6I7WpvdqrDSsJsTfcjE7sxIpC5m7j9seENHmOE0830uyaSeHgM50yXXZXXXgyJQaX
-         497hBUD6YErHhS9C43yDQywPZ8XXj89jVG/JylxrlD1c6uGY2tciiv8UxxaPMaavaKPM
-         KaYQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWLHni58wyz1FtgGVkfnoBnm3DHZdgHUHw/j9VsBt2yBypTr8tjrT9GLqn/TCrfi4bLNBxIft82HtaKI/pFj1O5mEeAszs1FZ+ls0DOoHUW60+D
-X-Gm-Message-State: AOJu0YwvApQhDa22ZCAkcRk31sFWCLiAEu5RTlv8FcATtmnXFP3iqdN2
-	idvWdTYj7mn4AsoUEI4XpbWn7fQkjIlyMBf0bjj/CKpYdpWAX8GlznKFW8bGJ3g=
-X-Google-Smtp-Source: AGHT+IHznoqV8aiJ8ieyvNlccfqDAnlHarASle5JQ78h8I9hJnV/p+wU3L9SVwzX72hcSRNDfLxJhA==
-X-Received: by 2002:adf:cd11:0:b0:354:f44d:a01b with SMTP id ffacd0b85a97d-354f44da262mr2654995f8f.15.1716468582558;
-        Thu, 23 May 2024 05:49:42 -0700 (PDT)
+        bh=oycOZ7tNpDXuadcC0Px0ysSti2axPPJ+EdThdDwGHQA=;
+        b=E55yP2WE/MKtPAn/lLDkqT/xkIH8YUgVxxItFq+cRByOHdXepD08BhGAl+qMV6flrN
+         d3cWpCCpkDhuyUmCYVK99CKn0p+h6iSh5NV9zqbGoWOsHppklOxjgH/ktPnAw4tPd/Fm
+         II5tuib3b7THDqdoRlq45vcCG/MhX5fjJE8MfcWia9Y6MoD+I3BjdgIIxcawXBl3qvqh
+         TyhRLqvavMSwcV6N5AmMeGaIM+xzMbUv5iH0DzP7oZU0WuBq0qnEpL3MXD7RqlOgbRL/
+         mPja7SiRnZzQOISMsXf7O1b8FhjTR/x3k9zh3T7L2khDeCASBRUJ72Tz0kzTfA2uR9B5
+         nDEw==
+X-Forwarded-Encrypted: i=1; AJvYcCXxDktPFMiX9FxocbX64zJ6qWwxx0M0iK7AtttvjHee13hMEEy+oU6OHqzfYXebjzwY5qte9mUAHK1iU6Errgr6+27rX0KiF1eLuVtHOGg+8d70
+X-Gm-Message-State: AOJu0YxQnsMhT2I/Ht/zmBnYJTyk7TVQHyiJa13RQ2OcInR1K1zA7QGB
+	a0Kv4SHjlwQuTS0G0aTPmhP+2lKwSMnVdA5cDh3GU5goVyiGwtVihRCY+VYOApI=
+X-Google-Smtp-Source: AGHT+IEZBKw4aRDaUfqIZ3HhxIEs0XVj22IR3fb3hJtSwVaakG3EHrDMERpceHbfsvVhrvnaHwM2Yw==
+X-Received: by 2002:a5d:6e0e:0:b0:34a:e884:977b with SMTP id ffacd0b85a97d-354d8cde868mr3706774f8f.32.1716468586704;
+        Thu, 23 May 2024 05:49:46 -0700 (PDT)
 Received: from [127.0.1.1] ([93.5.22.158])
-        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-354faf3fa68sm1259611f8f.116.2024.05.23.05.49.41
+        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-354faf3fa68sm1259611f8f.116.2024.05.23.05.49.45
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 23 May 2024 05:49:42 -0700 (PDT)
-From: amergnat@baylibre.com
-Date: Thu, 23 May 2024 14:49:25 +0200
-Subject: [PATCH v4 12/15] drm/mediatek: add MT8365 SoC support
+        Thu, 23 May 2024 05:49:46 -0700 (PDT)
+From: Alexandre Mergnat <amergnat@baylibre.com>
+Date: Thu, 23 May 2024 14:49:28 +0200
+Subject: [PATCH v4 15/15] arm64: dts: mediatek: add display support for
+ mt8365-evk
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20231023-display-support-v4-12-ed82eb168fb1@baylibre.com>
+Message-Id: <20231023-display-support-v4-15-ed82eb168fb1@baylibre.com>
 References: <20231023-display-support-v4-0-ed82eb168fb1@baylibre.com>
 In-Reply-To: <20231023-display-support-v4-0-ed82eb168fb1@baylibre.com>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
@@ -101,27 +87,26 @@ To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
 Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, 
- Alexandre Mergnat <amergnat@baylibre.com>, 
- Fabien Parent <fparent@baylibre.com>
+ Alexandre Mergnat <amergnat@baylibre.com>
 X-Mailer: b4 0.12.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1708; i=amergnat@baylibre.com;
- h=from:subject:message-id; bh=T02ZuZj0ijmxlVVq8ULLWlzrN07sh07XViJUCnaN+hM=;
- b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBmTztTmiIN+hH5sjsyB9OiMxaQ+PFDyvdz2GQAG3OY
- CSOzjz6JAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZk87UwAKCRArRkmdfjHURUisEA
- Cc6FfVzLDHM6GIBiFrX5C8yWAmpB0sfQBWzm2/LiHReGOMzvEj84wrDpQJRaAHErRiZBkTOVNdb8HE
- z+CGacZIQhgv9SbUW3xZipNp/2egvC03hrEzaOmQPN9btFE0hSyy2vnM+C6oNN/NpYgAQdFXk1CNyM
- Kf0xyyH5QH7L8WRbapNjD8A83yMh2cZvoGb7Q2vsCfXWQpK1FwMhi2m4busv8/QNxNn95jSnZKFPHC
- Iqrfq5kV+wkCmSGBhD3/VyrESQlissctczNW0FbMrhk4mMuWYOMUdr+jSpQuw9LsuquvbbYYpBvbdQ
- 8Itrnr9R0jaFg2o2LCZ70PuferPP7bBi3BcJjbevQ+H0+wWU8B2MmB0Qm4nvhW6JijGLSS3RRjelak
- gjB8D9PsgqllVBW7ZKiEqwggDK/LCSUmduby2ppRsrCkeSEqmN1N9Dd9zSDbAhscXNZkxKoiJxaAc+
- qn5/l2e1pYlPhmpm8z3+STuZE0OVZrQYSK8RsGHCGDmogWOLpQXKV8mOeThvPc8fiT4eH+QQN+HFL5
- iSVPE+L/1Zr3TpF20aZB9aUESBilPV+qbtUEY+6f2GGjWMhKBpEWRVFL3nUGjOlIlmlFfdflvEP0Ey
- 49OgjwmNz5P82LcR+net2PCW5fGe+fHv+3Fe12bq8/wx5L/XuDF8Wvm50Mpw==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=7338; i=amergnat@baylibre.com;
+ h=from:subject:message-id; bh=Miid+XRLrzyZJ6tHRL1QimqZm1BYrPtI1n+pX0IpuHI=;
+ b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBmTztT5vXYcQ4OqH46y/UQ4yMaKGBks0Vn1gzo0f3u
+ /sBJobuJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZk87UwAKCRArRkmdfjHURfz8EA
+ CxQ2SYZy/golUmlaRHjwXobDoreqHuQxY/59fsMFVIAOlaebtWs6zAjZpasYJyvBXdqsk1zztecnPD
+ P9813ZmEpeETVyb4TR1JBjpkRbZSDIMJZrps3Fcy6jpFo8Lu7zsUj6OcYB2BmVdCDqYJ6IP4Bx+7tJ
+ h2JhhyhIMoSOh+8Sonm6NrQ67pYCXox3ygX5hV1lOUSk7+hlOkQqydg0BWXf8aoVIbiszauu8dUMMc
+ uKe/F/TbNeE5QXy8+ZjDO1QZlMXuKFi+b2cnO0Pl60UtxSAiddfCDPcTLWuTB5I6E/vSRF+aCcjlAw
+ IGQ0wPZ17t52s1YfUtg+KDFE4yX7CwUCKBtMY9VQn1WcLPBq4L1381kJP1hWx4FG/ozo8XpfaAGb+9
+ SvRST6gL9JnVcbqDCltfVsXOyQcPATDLLFAY8z0FNxnyZ8NY5CHwBlPPBait+4UlkKP90skXAkjK28
+ DFtDBR/EJNkEvMI8KjxQI2z7xV2WFKSprHVODt8wNKXz2HeGxzG54Po1XMvMP2IZLL1uzGAhtbiLKr
+ epOx0DoRGs5+Q8VTk5P124G7PTSogLkHwyWsLMspSkc6lwwXR+6M6ltAvqHV6URtIuukdqQghyQdOw
+ aNcKNiib+aSHhqDIGIqJMienVEgncy7DwaSFG2+r8zV+zbbHi4kT9WmV2BhA==
 X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
  fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240523_134945_799084_B5DBA951 
-X-CRM114-Status: GOOD (  10.61  )
+X-CRM114-CacheID: sfid-20240523_054949_464448_75AB70B9 
+X-CRM114-Status: GOOD (  11.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -136,50 +121,312 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Fabien Parent <fparent@baylibre.com>
+MIPI DSI:
+- Add "vsys_lcm_reg" regulator support and setup the "mt6357_vsim1_reg",
+to power the pannel plugged to the DSI connector.
+- Setup the Display Parallel Interface.
+  - Add the startek kd070fhfid015 pannel support.
 
-Add DRM support for MT8365 SoC.
+HDMI:
+- Add HDMI connector support.
+- Add the "ite,it66121" HDMI bridge support, driven by I2C1.
+- Setup the Display Parallel Interface.
 
-Signed-off-by: Fabien Parent <fparent@baylibre.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 ---
- drivers/gpu/drm/mediatek/mtk_drm_drv.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8365-evk.dts | 236 ++++++++++++++++++++++++++++
+ 1 file changed, 236 insertions(+)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index ce8f3cc6e853..e1c3281651ae 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -318,6 +318,10 @@ static const struct mtk_mmsys_driver_data mt8195_vdosys1_driver_data = {
- 	.mmsys_dev_num = 2,
+diff --git a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts b/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
+index 50cbaefa1a99..6e972e2c1586 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
+@@ -26,6 +26,21 @@ chosen {
+ 		stdout-path = "serial0:921600n8";
+ 	};
+ 
++	connector {
++		compatible = "hdmi-connector";
++		label = "hdmi";
++		type = "d";
++
++		port {
++			#address-cells = <1>;
++			#size-cells = <0>;
++			hdmi_connector_in: endpoint@0 {
++				reg = <0>;
++				remote-endpoint = <&hdmi_connector_out>;
++			};
++		};
++	};
++
+ 	firmware {
+ 		optee {
+ 			compatible = "linaro,optee-tz";
+@@ -86,6 +101,15 @@ optee_reserved: optee@43200000 {
+ 			reg = <0 0x43200000 0 0x00c00000>;
+ 		};
+ 	};
++
++	vsys_lcm_reg: regulator-vsys-lcm {
++		compatible = "regulator-fixed";
++		enable-active-high;
++		gpio = <&pio 129 GPIO_ACTIVE_HIGH>;
++		regulator-max-microvolt = <5000000>;
++		regulator-min-microvolt = <5000000>;
++		regulator-name = "vsys_lcm";
++	};
  };
  
-+static const struct mtk_mmsys_driver_data mt8365_mmsys_driver_data = {
-+	.mmsys_dev_num = 1,
+ &cpu0 {
+@@ -108,6 +132,89 @@ &cpu3 {
+ 	sram-supply = <&mt6357_vsram_proc_reg>;
+ };
+ 
++&dither0_out {
++	remote-endpoint = <&dsi0_in>;
 +};
 +
- static const struct of_device_id mtk_drm_of_ids[] = {
- 	{ .compatible = "mediatek,mt2701-mmsys",
- 	  .data = &mt2701_mmsys_driver_data},
-@@ -345,6 +349,8 @@ static const struct of_device_id mtk_drm_of_ids[] = {
- 	  .data = &mt8195_vdosys0_driver_data},
- 	{ .compatible = "mediatek,mt8195-vdosys1",
- 	  .data = &mt8195_vdosys1_driver_data},
-+	{ .compatible = "mediatek,mt8365-mmsys",
-+	  .data = &mt8365_mmsys_driver_data},
- 	{ }
++&dpi0 {
++	pinctrl-0 = <&dpi_default_pins>;
++	pinctrl-1 = <&dpi_idle_pins>;
++	pinctrl-names = "default", "sleep";
++	status = "okay";
++	ports {
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		port@0 {
++			#address-cells = <1>;
++			#size-cells = <0>;
++			reg = <0>;
++			dpi0_in: endpoint@1 {
++				reg = <1>;
++				remote-endpoint = <&rdma1_out>;
++			};
++		};
++
++		port@1 {
++			#address-cells = <1>;
++			#size-cells = <0>;
++			reg = <1>;
++			dpi0_out: endpoint@1 {
++				reg = <1>;
++				remote-endpoint = <&it66121_in>;
++			};
++		};
++	};
++};
++
++&dsi0 {
++	#address-cells = <1>;
++	#size-cells = <0>;
++	status = "okay";
++
++	panel@0 {
++		compatible = "startek,kd070fhfid015";
++		reg = <0>;
++		enable-gpios = <&pio 67 GPIO_ACTIVE_HIGH>;
++		reset-gpios = <&pio 20 GPIO_ACTIVE_HIGH>;
++		iovcc-supply = <&mt6357_vsim1_reg>;
++		power-supply = <&vsys_lcm_reg>;
++
++		port {
++			#address-cells = <1>;
++			#size-cells = <0>;
++			panel_in: endpoint@0 {
++				reg = <0>;
++				remote-endpoint = <&dsi0_out>;
++			};
++		};
++	};
++	ports {
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		port@0 {
++			#address-cells = <1>;
++			#size-cells = <0>;
++			reg = <0>;
++			dsi0_in: endpoint@0 {
++				reg = <0>;
++				remote-endpoint = <&dither0_out>;
++			};
++		};
++
++		port@1 {
++			#address-cells = <1>;
++			#size-cells = <0>;
++			reg = <1>;
++			dsi0_out: endpoint@0 {
++				reg = <0>;
++				remote-endpoint = <&panel_in>;
++			};
++		};
++	};
++};
++
+ &ethernet {
+ 	pinctrl-0 = <&ethernet_pins>;
+ 	pinctrl-names = "default";
+@@ -138,6 +245,56 @@ &i2c0 {
+ 	status = "okay";
  };
- MODULE_DEVICE_TABLE(of, mtk_drm_of_ids);
-@@ -732,6 +738,8 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
- 	  .data = (void *)MTK_DISP_MUTEX },
- 	{ .compatible = "mediatek,mt8195-disp-mutex",
- 	  .data = (void *)MTK_DISP_MUTEX },
-+	{ .compatible = "mediatek,mt8365-disp-mutex",
-+	  .data = (void *)MTK_DISP_MUTEX },
- 	{ .compatible = "mediatek,mt8173-disp-od",
- 	  .data = (void *)MTK_DISP_OD },
- 	{ .compatible = "mediatek,mt2701-disp-ovl",
+ 
++&i2c1 {
++	#address-cells = <1>;
++	#size-cells = <0>;
++	clock-div = <2>;
++	clock-frequency = <100000>;
++	pinctrl-0 = <&i2c1_pins>;
++	pinctrl-names = "default";
++	status = "okay";
++
++	it66121_hdmi: hdmi@4c {
++		#sound-dai-cells = <0>;
++		compatible = "ite,it66121";
++		interrupt-parent = <&pio>;
++		interrupts = <68 IRQ_TYPE_LEVEL_LOW>;
++		pinctrl-0 = <&ite_pins>;
++		pinctrl-names = "default";
++		reg = <0x4c>;
++		reset-gpios = <&pio 69 GPIO_ACTIVE_LOW>;
++		vcn18-supply = <&mt6357_vsim2_reg>;
++		vcn33-supply = <&mt6357_vibr_reg>;
++		vrf12-supply = <&mt6357_vrf12_reg>;
++
++		ports {
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			port@0 {
++				#address-cells = <1>;
++				#size-cells = <0>;
++				reg = <0>;
++				it66121_in: endpoint@0 {
++					reg = <0>;
++					bus-width = <12>;
++					remote-endpoint = <&dpi0_out>;
++				};
++			};
++
++			port@1 {
++				#address-cells = <1>;
++				#size-cells = <0>;
++				reg = <1>;
++				hdmi_connector_out: endpoint@0 {
++					reg = <0>;
++					remote-endpoint = <&hdmi_connector_in>;
++				};
++			};
++		};
++	};
++};
++
+ &mmc0 {
+ 	assigned-clock-parents = <&topckgen CLK_TOP_MSDCPLL>;
+ 	assigned-clocks = <&topckgen CLK_TOP_MSDC50_0_SEL>;
+@@ -180,7 +337,55 @@ &mt6357_pmic {
+ 	#interrupt-cells = <2>;
+ };
+ 
++&mt6357_vsim1_reg {
++	regulator-min-microvolt = <1800000>;
++	regulator-max-microvolt = <1800000>;
++};
++
+ &pio {
++	dpi_default_pins: dpi-default-pins {
++		pins {
++			pinmux = <MT8365_PIN_0_GPIO0__FUNC_DPI_D0>,
++				 <MT8365_PIN_1_GPIO1__FUNC_DPI_D1>,
++				 <MT8365_PIN_2_GPIO2__FUNC_DPI_D2>,
++				 <MT8365_PIN_3_GPIO3__FUNC_DPI_D3>,
++				 <MT8365_PIN_4_GPIO4__FUNC_DPI_D4>,
++				 <MT8365_PIN_5_GPIO5__FUNC_DPI_D5>,
++				 <MT8365_PIN_6_GPIO6__FUNC_DPI_D6>,
++				 <MT8365_PIN_7_GPIO7__FUNC_DPI_D7>,
++				 <MT8365_PIN_8_GPIO8__FUNC_DPI_D8>,
++				 <MT8365_PIN_9_GPIO9__FUNC_DPI_D9>,
++				 <MT8365_PIN_10_GPIO10__FUNC_DPI_D10>,
++				 <MT8365_PIN_11_GPIO11__FUNC_DPI_D11>,
++				 <MT8365_PIN_12_GPIO12__FUNC_DPI_DE>,
++				 <MT8365_PIN_13_GPIO13__FUNC_DPI_VSYNC>,
++				 <MT8365_PIN_14_GPIO14__FUNC_DPI_CK>,
++				 <MT8365_PIN_15_GPIO15__FUNC_DPI_HSYNC>;
++			drive-strength = <4>;
++		};
++	};
++
++	dpi_idle_pins: dpi-idle-pins {
++		pins {
++			pinmux = <MT8365_PIN_0_GPIO0__FUNC_GPIO0>,
++				 <MT8365_PIN_1_GPIO1__FUNC_GPIO1>,
++				 <MT8365_PIN_2_GPIO2__FUNC_GPIO2>,
++				 <MT8365_PIN_3_GPIO3__FUNC_GPIO3>,
++				 <MT8365_PIN_4_GPIO4__FUNC_GPIO4>,
++				 <MT8365_PIN_5_GPIO5__FUNC_GPIO5>,
++				 <MT8365_PIN_6_GPIO6__FUNC_GPIO6>,
++				 <MT8365_PIN_7_GPIO7__FUNC_GPIO7>,
++				 <MT8365_PIN_8_GPIO8__FUNC_GPIO8>,
++				 <MT8365_PIN_9_GPIO9__FUNC_GPIO9>,
++				 <MT8365_PIN_10_GPIO10__FUNC_GPIO10>,
++				 <MT8365_PIN_11_GPIO11__FUNC_GPIO11>,
++				 <MT8365_PIN_12_GPIO12__FUNC_GPIO12>,
++				 <MT8365_PIN_13_GPIO13__FUNC_GPIO13>,
++				 <MT8365_PIN_14_GPIO14__FUNC_GPIO14>,
++				 <MT8365_PIN_15_GPIO15__FUNC_GPIO15>;
++		};
++	};
++
+ 	ethernet_pins: ethernet-pins {
+ 		phy_reset_pins {
+ 			pinmux = <MT8365_PIN_133_TDM_TX_DATA1__FUNC_GPIO133>;
+@@ -222,6 +427,33 @@ pins {
+ 		};
+ 	};
+ 
++	i2c1_pins: i2c1-pins {
++		pins {
++			pinmux = <MT8365_PIN_59_SDA1__FUNC_SDA1_0>,
++				 <MT8365_PIN_60_SCL1__FUNC_SCL1_0>;
++			bias-pull-up;
++		};
++	};
++
++	ite_pins: ite-pins {
++		irq_ite_pins {
++			pinmux = <MT8365_PIN_68_CMDAT0__FUNC_GPIO68>;
++			input-enable;
++			bias-pull-up;
++		};
++
++		pwr_pins {
++			pinmux = <MT8365_PIN_70_CMDAT2__FUNC_GPIO70>,
++				 <MT8365_PIN_71_CMDAT3__FUNC_GPIO71>;
++			output-high;
++		};
++
++		rst_ite_pins {
++			pinmux = <MT8365_PIN_69_CMDAT1__FUNC_GPIO69>;
++			output-high;
++		};
++	};
++
+ 	mmc0_default_pins: mmc0-default-pins {
+ 		clk-pins {
+ 			pinmux = <MT8365_PIN_99_MSDC0_CLK__FUNC_MSDC0_CLK>;
+@@ -377,6 +609,10 @@ &pwm {
+ 	status = "okay";
+ };
+ 
++&rdma1_out {
++	remote-endpoint = <&dpi0_in>;
++};
++
+ &ssusb {
+ 	dr_mode = "otg";
+ 	maximum-speed = "high-speed";
 
 -- 
 2.25.1
