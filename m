@@ -4,72 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2680C25B7A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 May 2024 08:44:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DCA8C25B7E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 May 2024 08:45:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RotGzbqUHvqHDCuN+GP71eTRfv5/+PABGOxY4Zbxn4g=; b=yRhWDzq0kiv840kmPuFWemAvc7
-	xsYe3WkWUfhhi1V1m4rMZURnhaJp6U+az1p9W3zgdNc6JRWfN6h3HUXjnVz/KS9haMxrSYEpLVAkX
-	e0lScg+iFyg++1s3SI1gL8la4x2seiHMKs7b+8jDW5mCnOfzJOu6o9ekWKKI39Vblp9si1iDkrzfd
-	8OYSeQAsmju8r4jxNCJARTzLZCXbqsxAsKnC0pdE8xBC25EfK/h/teaXzHo+YWLw4dNUebFA6ytxH
-	pelbtqHdkMr/PbC5DhbTKQ4YeVDQ1p6IC/14wxXjsE7dpaYoThQM1+pwtKjjgOSlrOE8c6fLSdPli
-	vGBlCPsg==;
+	bh=Qi1a6qRL/sSf88RkAxOBKeEEBw29sLy7LzarlapS72s=; b=bd/gbu9LxPqsDFu/LyttxVjeay
+	sUvIsmpoTtZHD03fX6egT8BZDqgDDuDHDT+yW8XEJER3x2PglWWVyGv1ZzfYIOB5G7+Y6q5B6DWR/
+	YxEUdn2cwxM8O+8mrjDwiwR7wAGmsj5dcjpl+OXFEXirdUicDqYqoQGPQJ0t1GXDJYkVs7f4hSlSK
+	ETyRHa/QY4lO/R/bLUvQ0DSGngg3PSlV9SApoJuuhHAMSJ5KZkn60c2b/Up92YL4Pnrfy4idP5OfY
+	tEQb2uPPWrkZyDvhQdSrQZyD0QFzYVDjKvmKyBaK/+o1S4GOjh+BXe4UOMX7HKdiKuUyyppKTJVhy
+	Du4UNDpw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sA43h-00000005XwT-0zz3;
-	Thu, 23 May 2024 08:44:21 +0000
-Received: from mail-lj1-x22e.google.com ([2a00:1450:4864:20::22e])
+	id 1sA44L-00000005YH4-2Sir;
+	Thu, 23 May 2024 08:45:01 +0000
+Received: from mail-lj1-x22f.google.com ([2a00:1450:4864:20::22f])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sA42M-00000005Wyp-3XwP
+	id 1sA42U-00000005X7I-2dBz
 	for linux-mediatek@lists.infradead.org;
-	Thu, 23 May 2024 08:43:07 +0000
-Received: by mail-lj1-x22e.google.com with SMTP id 38308e7fff4ca-2e1fa824504so71852411fa.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 23 May 2024 01:42:56 -0700 (PDT)
+	Thu, 23 May 2024 08:43:19 +0000
+Received: by mail-lj1-x22f.google.com with SMTP id 38308e7fff4ca-2e6792ea67fso90660631fa.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 23 May 2024 01:43:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1716453775; x=1717058575; darn=lists.infradead.org;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1716453785; x=1717058585; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=RotGzbqUHvqHDCuN+GP71eTRfv5/+PABGOxY4Zbxn4g=;
-        b=nl2gMTv0gvdk0kiv25suPWzrOsVTZlC10xhvAq2Wa3+DLMvvcCDTJuhP7KozHv/L7z
-         qnaoPVUnpLgpl3R28Bv0XAmrPrRtQ8brX8sSkzaZQC5erJTJst14YfItOpu/WPIsBU5I
-         EMKQKUvsPtSnPaugHa70gm4lvzw6j4CSnE+5CVuoSWIgTVSHSDzgwYWm4aQF8R0XYv6o
-         wsRnjUP/nbmq1VykRrD9BkM83Ckagacv+Jp3T5p5JIs36AjVhnnFux2tPN1lkjhhCUSg
-         lI+6DZ9XxUfD1CAbaDPAf1Bk4BGztFHDKv39gqYLb+W8t23y7kMwGjtCByG0l2i+SHYL
-         uiCA==
+        bh=Qi1a6qRL/sSf88RkAxOBKeEEBw29sLy7LzarlapS72s=;
+        b=j003Sttm23flPp4AzAKMOFonTZx87v1VHE2FZSa4uX9PdfWgpzak5jDEcyLEpnJZFJ
+         On2/11r2XnfJb8nQ5vkQXKIgqtvY8FZvwhHfVQtuDuPCORLaqDKssz1OI3mEN1EEJaul
+         2KUGvGaV/isAb1jn0re5r35q5L9tEqVtvX+1T/aoJNPTBqmXATaRqmT6RDan6iMZEG+Y
+         KLAc4BsYFwHnpAUDw4nftCoza9WK+0QaZYwS8ewu/reqxQVRXgbjdKrkF/jchBBbgNLP
+         UMFHx93W2h274zFH5E9x/l98Gaex3RJnvafx5iTQ6qM+2cvvRmFLSs62Yy1Yyc7om6Yg
+         Qe7Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1716453775; x=1717058575;
+        d=1e100.net; s=20230601; t=1716453785; x=1717058585;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=RotGzbqUHvqHDCuN+GP71eTRfv5/+PABGOxY4Zbxn4g=;
-        b=bIXG3sUGyItdsoUzmDwpdVkUvXSzb38W52bMIdvvL0SrNhuSa2suwHCxJ/oQI+QzBY
-         0xC5S3EjqI5vX8AMRMNjMv08+0XTrGkmw1f5UU0jgEsfQ8Bf8TEOVxjOoXUB8LasdbQD
-         hbhnuXcgW4FWyk/QoAFdFH7IfC97JNKZ+o/zkGD01Q9cJZLu1DnbR0hgJOhNaTstSySh
-         vJyeiYQtONyUFmQ6fTULI0GTIakQdI0q23N63AZSeQu3UhxHFRd0Uzmd9j34mt+d5q/m
-         o6MrvIGXI5QDa6n26oR/yMbufc+mgr+lM2oSDPlrzozX/mwI+GkA1xBk8CJVylJBct8d
-         to4Q==
-X-Forwarded-Encrypted: i=1; AJvYcCW8CG3ItWHBhfevj9bqfmY7lygoy3wx1o3DHH/Jy31GX22N/rcm9CCS7NlZkMrC6/KgxLvpziwopD9EEyrP4x9s3Qdj4V7kWhf5JepuCCm6930v
-X-Gm-Message-State: AOJu0YySSD6SgcpOIKcJ7lqo1qPjkZfn3KryX0OFxoe/dQGQGCKih6am
-	4rASCDG75YncRxw1ZiwcJeL3s1lnFeNRXEIESApOcNOXszlv816qKGrDRkpO8aU=
-X-Google-Smtp-Source: AGHT+IFt7Zo5FBE+ReMl1xHKyJIquG5WgSulZqvEkgeIrfDBNCLtQZVIPYPzTs+by6jCvhHNlY4Ybg==
-X-Received: by 2002:a2e:95d4:0:b0:2e1:d44b:db9c with SMTP id 38308e7fff4ca-2e9492c7dd5mr25433371fa.0.1716453775462;
-        Thu, 23 May 2024 01:42:55 -0700 (PDT)
+        bh=Qi1a6qRL/sSf88RkAxOBKeEEBw29sLy7LzarlapS72s=;
+        b=tr5nr3SbMeUsVh95Zn0058yrrXXukoWhKTnHNrUaizp3iHI2+AF06zm1arVfQWA26l
+         0hxxv4h03PQMOhoiQrFEQf5BTb6IL2EeDacnM9LH62lSDcZftxn2SYVOBX+84u1yXNgR
+         kbkYvkrE3pbtQu8NlhrFrXyLXB7rJiIGiELxaOQ7gRMp9qTm+ZgQynYE4zaq/ToRjJJ0
+         QamKwEBt6Cm55Zxqk+u6arm5vBZCbBdLFmy6iOxSoDzeMXfMlYwzUzQ7+hBZt973Jqx6
+         h7sJ7f3AqwTY8HttSOKC3gLTLM8OcK4rvtBWJGXe4BnaYNY/tVZe6rhhbzydqeup0FGS
+         DiGw==
+X-Forwarded-Encrypted: i=1; AJvYcCU72vWTQPy56SZ1z/ed2qQ0V6xcEm6qliIOr7lVoeft1A80DCsYdy9ym68rcn/o0Zt0+CgXeq64PdJx8p4CZFhuO1fFj2PHYXybj9fE4HIZ/TV/
+X-Gm-Message-State: AOJu0Yz9btBV+2HBG54DQOLWJ07z+msIgQ7wBFVAfQSSUE547oGB8Fow
+	45beTZ54z2VupDXpZeCx3isrNbxp8ItcYHr0oTntvkjUTrELMeFXiOaobY22dhg=
+X-Google-Smtp-Source: AGHT+IEC8A0HHPj75NGAeP//54dk/2jVLa5uX488Ev2piYWlbCHwXQw4FvShK6FEUUJOadzfj0zTTQ==
+X-Received: by 2002:a2e:9e8e:0:b0:2dc:d2c5:ee9 with SMTP id 38308e7fff4ca-2e9495022d1mr25227941fa.2.1716453785194;
+        Thu, 23 May 2024 01:43:05 -0700 (PDT)
 Received: from [127.0.1.1] ([93.5.22.158])
-        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-42100f3e03asm18556645e9.17.2024.05.23.01.42.54
+        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-42100f3e03asm18556645e9.17.2024.05.23.01.43.03
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 23 May 2024 01:42:54 -0700 (PDT)
+        Thu, 23 May 2024 01:43:04 -0700 (PDT)
 From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Thu, 23 May 2024 10:42:38 +0200
-Subject: [PATCH v5 09/16] ASoC: mediatek: mt8365: Add PCM DAI support
+Date: Thu, 23 May 2024 10:42:44 +0200
+Subject: [PATCH v5 15/16] arm64: dts: mediatek: add afe support for mt8365
+ SoC
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20240226-audio-i350-v5-9-e7e2569df481@baylibre.com>
+Content-Transfer-Encoding: 8bit
+Message-Id: <20240226-audio-i350-v5-15-e7e2569df481@baylibre.com>
 References: <20240226-audio-i350-v5-0-e7e2569df481@baylibre.com>
 In-Reply-To: <20240226-audio-i350-v5-0-e7e2569df481@baylibre.com>
 To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
@@ -90,24 +91,24 @@ Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
  dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org, 
  Alexandre Mergnat <amergnat@baylibre.com>
 X-Mailer: b4 0.12.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=8252; i=amergnat@baylibre.com;
- h=from:subject:message-id; bh=txa86VmZPoKRrts0NhHm2alf69zeqTA6ECXyv2H4sDU=;
- b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBmTwF/hRnpFVJH5jG9NA0r6ktvLas3xx1ghW/176tz
- I/NIa0GJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZk8BfwAKCRArRkmdfjHURfsED/
- 9mjb26gN6ZJA6v2JhDkX9rLsk/T9FeeYT2HxAwEkRB28wer2E7FHK2VWbTWGMVddW5hzVgIC/IvVzd
- 0A7zfKOr6Ktdmo+mOpj64Xp90OlFyQyx0CUV/hf8c7zH7/3o4+wYCyeKfKex5Skbh5hV0boDw9KS4w
- E+xD7qutLc3iBRHzd7vAusihTn868CnNUkz/+s3S983QKLW6cR922MjlOPuHG8I6NY1ZcUpGuVN8fa
- KQHJoeLIJNmwp+czjMkP14RyfzZAdPpSiRAZkMpcyE9kZ6m/ikzB7zh2RseUGy2RKFsBTygUdQlEdY
- zg0SJQVYUKf0JJy+uYH94DrdyRsm3iqO5EvGWSFz4oz3NkVkqI7eWAliQP6uf93EbmrgZt+hpX+T77
- 6u8PnLzSyoqq2XTahDy8XDI04nNykEwDIOdRF2TCOpd5oa0O86jwTuGSo4hMIITBSjzFKgkW+jD5Wg
- ayHJpU/g3YWJ2VH/f2nvCUNrYBka/yG8hNxrztmnOUi3Ku8s/X+4Z0B7kCBlarbY8ZQM2O8dacROvN
- 2Z6/mYUxalBbbvDnKxDuciYBcq6hrHEDU/VQS7Z8dLHTxBKRRmNUrAWgpEaaOqvYRKAb2PDLFzZO4l
- 1ntFH1+c35UF6+hahq454wOewb69oeMRWQr+VlwqGMtUzKrUV23Q0gUgBtyA==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2357; i=amergnat@baylibre.com;
+ h=from:subject:message-id; bh=t0tf5ggyvEv3KEhg9dzpup8fwcOHLyJsYbfkqMonRjM=;
+ b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBmTwGAc9/Ge7o5DXtFdzw8pFfAbUOoXwPsn9Na27uP
+ 1jtKDmiJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZk8BgAAKCRArRkmdfjHURVhgEA
+ DGnMGpkKmQMoej6HMPV795SB24cmQfeb3v9qbkuOFXsVg8Aiu95kwy+f/ezJ1B8ILYuHC5OE9kmpgl
+ 9/fn0zECIn0xOivhVfxwvZZDULtsR80G4LXm2EuZZAXoC8GkdsnZCZ4PQ0IQ68eLfQ4N9rFP/pfqZR
+ GrcimFwxFrH6Y9A2Pq3RAiTyNDpIf6qvTLHqelmm4fa2n67UozjZdWN1iZ9TXaVKijfEa1whxl1McJ
+ 2jDpItBbjUXfU3ZIfgXkBjNc999wZJWRGt/PpAcKRXB00Zly3TxA9FzV76WVH2a9WS3UW52K6hVBxU
+ SVRZBNCdQFIofWoFJosPtcV3EhBuv1t9zQP+bpwR9WQtaYGASWQg+04m3/4smtR63vWWkkcfVICtal
+ A/75ahpKxtnDr2+fS7Bj8ZlQiO3y1sJ0KQN2MTkLxR/BqXz8HlER3UReX8HHhCKXG3Qevs5RIlCX2Q
+ zFiwXwesYCxfD+R3WXk6GLPuc0TvGDq2hlWPm4IgLLfryBat+/rcLJ1+7BdPukxFMlkYtbxnd4va6B
+ ty79KRZeFeyLiyGv/jV+UTWiiXKWxzYSz2x/Q8i9dYRYTkhGlp8Gt3N5Ke0JKYRboFDteQmcBhJ0Dk
+ reBFU0Cotj4ggjTE5PhVDafEpxHq4x+4w10YK0LE2kBafEaKYhpum9VarC0w==
 X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
  fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240523_014259_579196_C5CC4A37 
-X-CRM114-Status: GOOD (  17.28  )
+X-CRM114-CacheID: sfid-20240523_014306_872526_2C8CFFD1 
+X-CRM114-Status: GOOD (  11.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,313 +123,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add Pulse Code Modulation Device Audio Interface support for MT8365 SoC.
+Add audio front end support of MT8365 SoC.
+Update the file header.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 ---
- sound/soc/mediatek/mt8365/mt8365-dai-pcm.c | 293 +++++++++++++++++++++++++++++
- 1 file changed, 293 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8365.dtsi | 43 ++++++++++++++++++++++++++++++--
+ 1 file changed, 41 insertions(+), 2 deletions(-)
 
-diff --git a/sound/soc/mediatek/mt8365/mt8365-dai-pcm.c b/sound/soc/mediatek/mt8365/mt8365-dai-pcm.c
-new file mode 100644
-index 000000000000..6be991d53333
---- /dev/null
-+++ b/sound/soc/mediatek/mt8365/mt8365-dai-pcm.c
-@@ -0,0 +1,293 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Mediatek 8365 ALSA SoC Audio DAI PCM Control
-+ *
-+ * Copyright (c) 2024 MediaTek Inc.
-+ * Authors: Jia Zeng <jia.zeng@mediatek.com>
-+ *          Alexandre Mergnat <amergnat@baylibre.com>
-+ */
+diff --git a/arch/arm64/boot/dts/mediatek/mt8365.dtsi b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
+index 24581f7410aa..0051d5613bcb 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8365.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
+@@ -2,9 +2,11 @@
+ /*
+  * (C) 2018 MediaTek Inc.
+  * Copyright (C) 2022 BayLibre SAS
+- * Fabien Parent <fparent@baylibre.com>
+- * Bernhard Rosenkränzer <bero@baylibre.com>
++ * Authors: Fabien Parent <fparent@baylibre.com>
++ *	    Bernhard Rosenkränzer <bero@baylibre.com>
++ *	    Alexandre Mergnat <amergnat@baylibre.com>
+  */
 +
-+#include <linux/bitops.h>
-+#include <linux/regmap.h>
-+#include <sound/pcm_params.h>
-+#include "mt8365-afe-clk.h"
-+#include "mt8365-afe-common.h"
+ #include <dt-bindings/clock/mediatek,mt8365-clk.h>
+ #include <dt-bindings/interrupt-controller/arm-gic.h>
+ #include <dt-bindings/interrupt-controller/irq.h>
+@@ -813,6 +815,43 @@ apu: syscon@19020000 {
+ 			reg = <0 0x19020000 0 0x1000>;
+ 			#clock-cells = <1>;
+ 		};
 +
-+struct mt8365_pcm_intf_data {
-+	bool slave_mode;
-+	bool lrck_inv;
-+	bool bck_inv;
-+	unsigned int format;
-+};
-+
-+/* DAI Drivers */
-+
-+static void mt8365_dai_enable_pcm1(struct mtk_base_afe *afe)
-+{
-+	regmap_update_bits(afe->regmap, PCM_INTF_CON1,
-+			   PCM_INTF_CON1_EN, PCM_INTF_CON1_EN);
-+}
-+
-+static void mt8365_dai_disable_pcm1(struct mtk_base_afe *afe)
-+{
-+	regmap_update_bits(afe->regmap, PCM_INTF_CON1,
-+			   PCM_INTF_CON1_EN, 0x0);
-+}
-+
-+static int mt8365_dai_configure_pcm1(struct snd_pcm_substream *substream,
-+				     struct snd_soc_dai *dai)
-+{
-+	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
-+	struct mt8365_afe_private *afe_priv = afe->platform_priv;
-+	struct mt8365_pcm_intf_data *pcm_priv = afe_priv->dai_priv[MT8365_AFE_IO_PCM1];
-+	bool slave_mode = pcm_priv->slave_mode;
-+	bool lrck_inv = pcm_priv->lrck_inv;
-+	bool bck_inv = pcm_priv->bck_inv;
-+	unsigned int fmt = pcm_priv->format;
-+	unsigned int bit_width = dai->sample_bits;
-+	unsigned int val = 0;
-+
-+	if (!slave_mode) {
-+		val |= PCM_INTF_CON1_MASTER_MODE |
-+		       PCM_INTF_CON1_BYPASS_ASRC;
-+
-+		if (lrck_inv)
-+			val |= PCM_INTF_CON1_SYNC_OUT_INV;
-+		if (bck_inv)
-+			val |= PCM_INTF_CON1_BCLK_OUT_INV;
-+	} else {
-+		val |= PCM_INTF_CON1_SLAVE_MODE;
-+
-+		if (lrck_inv)
-+			val |= PCM_INTF_CON1_SYNC_IN_INV;
-+		if (bck_inv)
-+			val |= PCM_INTF_CON1_BCLK_IN_INV;
-+
-+		/* TODO: add asrc setting */
-+	}
-+
-+	val |= FIELD_PREP(PCM_INTF_CON1_FORMAT_MASK, fmt);
-+
-+	if (fmt == MT8365_PCM_FORMAT_PCMA ||
-+	    fmt == MT8365_PCM_FORMAT_PCMB)
-+		val |= PCM_INTF_CON1_SYNC_LEN(1);
-+	else
-+		val |= PCM_INTF_CON1_SYNC_LEN(bit_width);
-+
-+	switch (substream->runtime->rate) {
-+	case 48000:
-+		val |= PCM_INTF_CON1_FS_48K;
-+		break;
-+	case 32000:
-+		val |= PCM_INTF_CON1_FS_32K;
-+		break;
-+	case 16000:
-+		val |= PCM_INTF_CON1_FS_16K;
-+		break;
-+	case 8000:
-+		val |= PCM_INTF_CON1_FS_8K;
-+		break;
-+	default:
-+		return -EINVAL;
-+	}
-+
-+	if (bit_width > 16)
-+		val |= PCM_INTF_CON1_24BIT | PCM_INTF_CON1_64BCK;
-+	else
-+		val |= PCM_INTF_CON1_16BIT | PCM_INTF_CON1_32BCK;
-+
-+	val |= PCM_INTF_CON1_EXT_MODEM;
-+
-+	regmap_update_bits(afe->regmap, PCM_INTF_CON1,
-+			   PCM_INTF_CON1_CONFIG_MASK, val);
-+
-+	return 0;
-+}
-+
-+static int mt8365_dai_pcm1_startup(struct snd_pcm_substream *substream,
-+				   struct snd_soc_dai *dai)
-+{
-+	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
-+
-+	if (snd_soc_dai_active(dai))
-+		return 0;
-+
-+	mt8365_afe_enable_main_clk(afe);
-+
-+	return 0;
-+}
-+
-+static void mt8365_dai_pcm1_shutdown(struct snd_pcm_substream *substream,
-+				     struct snd_soc_dai *dai)
-+{
-+	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
-+
-+	if (snd_soc_dai_active(dai))
-+		return;
-+
-+	mt8365_dai_disable_pcm1(afe);
-+	mt8365_afe_disable_main_clk(afe);
-+}
-+
-+static int mt8365_dai_pcm1_prepare(struct snd_pcm_substream *substream,
-+				   struct snd_soc_dai *dai)
-+{
-+	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
-+	int ret;
-+
-+	if ((snd_soc_dai_stream_active_playback(dai) +
-+	    snd_soc_dai_stream_active_capture(dai)) > 1) {
-+		dev_info(afe->dev, "%s '%s' active(%u-%u) already\n",
-+			 __func__, snd_pcm_stream_str(substream),
-+			 snd_soc_dai_stream_active_playback(dai),
-+			 snd_soc_dai_stream_active_capture(dai));
-+		return 0;
-+	}
-+
-+	ret = mt8365_dai_configure_pcm1(substream, dai);
-+	if (ret)
-+		return ret;
-+
-+	mt8365_dai_enable_pcm1(afe);
-+
-+	return 0;
-+}
-+
-+static int mt8365_dai_pcm1_set_fmt(struct snd_soc_dai *dai, unsigned int fmt)
-+{
-+	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
-+	struct mt8365_afe_private *afe_priv = afe->platform_priv;
-+	struct mt8365_pcm_intf_data *pcm_priv = afe_priv->dai_priv[MT8365_AFE_IO_PCM1];
-+
-+	switch (fmt & SND_SOC_DAIFMT_FORMAT_MASK) {
-+	case SND_SOC_DAIFMT_I2S:
-+		pcm_priv->format = MT8365_PCM_FORMAT_I2S;
-+		break;
-+	default:
-+		return -EINVAL;
-+	}
-+
-+	switch (fmt & SND_SOC_DAIFMT_INV_MASK) {
-+	case SND_SOC_DAIFMT_NB_NF:
-+		pcm_priv->bck_inv = false;
-+		pcm_priv->lrck_inv = false;
-+		break;
-+	case SND_SOC_DAIFMT_NB_IF:
-+		pcm_priv->bck_inv = false;
-+		pcm_priv->lrck_inv = true;
-+		break;
-+	case SND_SOC_DAIFMT_IB_NF:
-+		pcm_priv->bck_inv = true;
-+		pcm_priv->lrck_inv = false;
-+		break;
-+	case SND_SOC_DAIFMT_IB_IF:
-+		pcm_priv->bck_inv = true;
-+		pcm_priv->lrck_inv = true;
-+		break;
-+	default:
-+		return -EINVAL;
-+	}
-+
-+	switch (fmt & SND_SOC_DAIFMT_MASTER_MASK) {
-+	case SND_SOC_DAIFMT_CBM_CFM:
-+		pcm_priv->slave_mode = true;
-+		break;
-+	case SND_SOC_DAIFMT_CBS_CFS:
-+		pcm_priv->slave_mode = false;
-+		break;
-+	default:
-+		return -EINVAL;
-+	}
-+
-+	return 0;
-+}
-+
-+static const struct snd_soc_dai_ops mt8365_dai_pcm1_ops = {
-+	.startup	= mt8365_dai_pcm1_startup,
-+	.shutdown	= mt8365_dai_pcm1_shutdown,
-+	.prepare	= mt8365_dai_pcm1_prepare,
-+	.set_fmt	= mt8365_dai_pcm1_set_fmt,
-+};
-+
-+static struct snd_soc_dai_driver mtk_dai_pcm_driver[] = {
-+	{
-+		.name = "PCM1",
-+		.id = MT8365_AFE_IO_PCM1,
-+		.playback = {
-+			.stream_name = "PCM1 Playback",
-+			.channels_min = 1,
-+			.channels_max = 2,
-+			.rates = SNDRV_PCM_RATE_8000 |
-+				 SNDRV_PCM_RATE_16000 |
-+				 SNDRV_PCM_RATE_32000 |
-+				 SNDRV_PCM_RATE_48000,
-+			.formats = SNDRV_PCM_FMTBIT_S16_LE |
-+				   SNDRV_PCM_FMTBIT_S32_LE,
-+		},
-+		.capture = {
-+			.stream_name = "PCM1 Capture",
-+			.channels_min = 1,
-+			.channels_max = 2,
-+			.rates = SNDRV_PCM_RATE_8000 |
-+				 SNDRV_PCM_RATE_16000 |
-+				 SNDRV_PCM_RATE_32000 |
-+				 SNDRV_PCM_RATE_48000,
-+			.formats = SNDRV_PCM_FMTBIT_S16_LE |
-+				   SNDRV_PCM_FMTBIT_S32_LE,
-+		},
-+		.ops = &mt8365_dai_pcm1_ops,
-+		.symmetric_rate = 1,
-+		.symmetric_sample_bits = 1,
-+	}
-+};
-+
-+/* DAI widget */
-+
-+static const struct snd_soc_dapm_widget mtk_dai_pcm_widgets[] = {
-+	SND_SOC_DAPM_OUTPUT("PCM1 Out"),
-+	SND_SOC_DAPM_INPUT("PCM1 In"),
-+};
-+
-+/* DAI route */
-+
-+static const struct snd_soc_dapm_route mtk_dai_pcm_routes[] = {
-+	{"PCM1 Playback", NULL, "O07"},
-+	{"PCM1 Playback", NULL, "O08"},
-+	{"PCM1 Out", NULL, "PCM1 Playback"},
-+
-+	{"I09", NULL, "PCM1 Capture"},
-+	{"I22", NULL, "PCM1 Capture"},
-+	{"PCM1 Capture", NULL, "PCM1 In"},
-+};
-+
-+static int init_pcmif_priv_data(struct mtk_base_afe *afe)
-+{
-+	struct mt8365_afe_private *afe_priv = afe->platform_priv;
-+	struct mt8365_pcm_intf_data *pcmif_priv;
-+
-+	pcmif_priv = devm_kzalloc(afe->dev, sizeof(struct mt8365_pcm_intf_data),
-+				  GFP_KERNEL);
-+	if (!pcmif_priv)
-+		return -ENOMEM;
-+
-+	afe_priv->dai_priv[MT8365_AFE_IO_PCM1] = pcmif_priv;
-+	return 0;
-+}
-+
-+int mt8365_dai_pcm_register(struct mtk_base_afe *afe)
-+{
-+	struct mtk_base_afe_dai *dai;
-+
-+	dai = devm_kzalloc(afe->dev, sizeof(*dai), GFP_KERNEL);
-+	if (!dai)
-+		return -ENOMEM;
-+
-+	list_add(&dai->list, &afe->sub_dais);
-+	dai->dai_drivers = mtk_dai_pcm_driver;
-+	dai->num_dai_drivers = ARRAY_SIZE(mtk_dai_pcm_driver);
-+	dai->dapm_widgets = mtk_dai_pcm_widgets;
-+	dai->num_dapm_widgets = ARRAY_SIZE(mtk_dai_pcm_widgets);
-+	dai->dapm_routes = mtk_dai_pcm_routes;
-+	dai->num_dapm_routes = ARRAY_SIZE(mtk_dai_pcm_routes);
-+	return init_pcmif_priv_data(afe);
-+}
++		afe: audio-controller@11220000 {
++			compatible = "mediatek,mt8365-afe-pcm";
++			reg = <0 0x11220000 0 0x1000>;
++			#sound-dai-cells = <0>;
++			clocks = <&clk26m>,
++				 <&topckgen CLK_TOP_AUDIO_SEL>,
++				 <&topckgen CLK_TOP_AUD_I2S0_M>,
++				 <&topckgen CLK_TOP_AUD_I2S1_M>,
++				 <&topckgen CLK_TOP_AUD_I2S2_M>,
++				 <&topckgen CLK_TOP_AUD_I2S3_M>,
++				 <&topckgen CLK_TOP_AUD_ENGEN1_SEL>,
++				 <&topckgen CLK_TOP_AUD_ENGEN2_SEL>,
++				 <&topckgen CLK_TOP_AUD_1_SEL>,
++				 <&topckgen CLK_TOP_AUD_2_SEL>,
++				 <&topckgen CLK_TOP_APLL_I2S0_SEL>,
++				 <&topckgen CLK_TOP_APLL_I2S1_SEL>,
++				 <&topckgen CLK_TOP_APLL_I2S2_SEL>,
++				 <&topckgen CLK_TOP_APLL_I2S3_SEL>;
++			clock-names = "top_clk26m_clk",
++				      "top_audio_sel",
++				      "audio_i2s0_m",
++				      "audio_i2s1_m",
++				      "audio_i2s2_m",
++				      "audio_i2s3_m",
++				      "engen1",
++				      "engen2",
++				      "aud1",
++				      "aud2",
++				      "i2s0_m_sel",
++				      "i2s1_m_sel",
++				      "i2s2_m_sel",
++				      "i2s3_m_sel";
++			interrupts = <GIC_SPI 97 IRQ_TYPE_LEVEL_LOW>;
++			power-domains = <&spm MT8365_POWER_DOMAIN_AUDIO>;
++			status = "disabled";
++		};
+ 	};
+ 
+ 	timer {
 
 -- 
 2.25.1
