@@ -4,110 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53A9CC25B7C
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 May 2024 14:01:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4499C25B75
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 May 2024 19:46:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=y0mi1WL/7iRSdUpRf2YRMSaJjir0sEMp/gQx1uv98kI=; b=rv9nEsJkdvP3NEwCpqcIRlhVoP
-	owu2alDLsNrSUlUW+RBRtGS3gOwTB4LEwWSttpjlle3rrSyEpSAUGirRKSB+79DMY6eqi4bNEeL2R
-	lIZXJ4RIKFOUBj0ZIKVkzspFiF+MYS/uRoGYsmBn52HgHReElNILxThY4twsL+tcL0iB+NMToZl/+
-	9jlcSU5wc/OLvjVQUiRsPhuOK08tCizE1qImLv/Gj//HxYUcQB2ffZEliMgoF3FTj4AjgCCNBSubC
-	pK/zkWtouYiSw7ybQui0/sA72/TZSvW6SA0hiejs+tu+kk99ynfQL6dpUFC0tfKSIJroYOxZJh5fF
-	ueQ5fNng==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:In-Reply-To:Subject:Cc:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=uosf8zJX/OrVrpzgWdisB0fvzDFsKDb8UYB9Oox95ds=; b=FF4rRqcvinINbU
+	tELWGBPdNh56QVuHPgiNRQ3FGcptsRbKtlQxCCfTm+ehMDqwNFJ1szwBhAKSJU+iP4e8Bo9oVEhAY
+	wP0Uwei9kxY4AjfPSDiPd0bImtM4sMuLMIxydXPqfdKGX66gnwodwl907Igs9y+WW6aCfS0skeohr
+	ibGTojXLoHr7obXi0C4dHey4hq95mI4zfDKy2h/KooXkEiwgl6BNIgmlKYBH0B1yotF3M5MtI8DUg
+	0LcEBamt36PrjY0qPcXPU2dNUBAQqXM8QIA3MTj+eUTqZ0wLLFN529h47adeMpKIgflCI7CJ4ld2t
+	Joc2O/9ecuxuyVqetDxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sA90t-00000006R8l-1ldH;
-	Thu, 23 May 2024 14:01:47 +0000
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+	id 1sAEOm-00000007BLz-2qJT;
+	Thu, 23 May 2024 19:46:48 +0000
+Received: from galois.linutronix.de ([193.142.43.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sA7sv-00000006Esy-2vyH
-	for linux-mediatek@lists.infradead.org;
-	Thu, 23 May 2024 12:49:32 +0000
-Received: by mail-wr1-x42f.google.com with SMTP id ffacd0b85a97d-351b683f2d8so1646618f8f.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 23 May 2024 05:49:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1716468568; x=1717073368; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=y0mi1WL/7iRSdUpRf2YRMSaJjir0sEMp/gQx1uv98kI=;
-        b=RhwMuu/iyZXvUlXOusy9GyEU5bhUktJVadFmrJxb/igBMgJrLCuYHvyx6VzYFlQOso
-         j2zhGONOT4LhCPT75LYJliIggIsbI1U5NONJg5KgFB4wDbzOqr30SnkUZFEZeuvMQMu1
-         EUoaYtu75ChM0/+G1JPuSc3b2ELfwO2/9xLJXrb7mkd2B5CVA48zamV5HtgIUEvOdxuV
-         wO4bDCTGCrksK2DnINdozLJcsRqkMfMkfGN+c8InWgvTgm5lYVjBBi/++MTRjgh6/XBa
-         oRA8TOecIcLHTZk0hrLwkeeV8oDwrPin3dtPIg0rEDc67NHT/+lMU2K3cbOK4YcvLSQs
-         VxPw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1716468568; x=1717073368;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=y0mi1WL/7iRSdUpRf2YRMSaJjir0sEMp/gQx1uv98kI=;
-        b=LcQFdbEuCQv3Gb6+SNdW1QQbQjgNxzU1qrBjOm6eBmFR5VsnHE3DnQpoJpG1dpuAsa
-         VOPouv6Po8pmh1ej8ZngU4UDrODo1kNbpbF1NNx6BHgcxj6ZyZxFjgYecGCJw1xDsfGC
-         orNjvwWZRFVE2nitBPfDnGFbL3xiK83hQRbgC2mBZa5XqXxWvp4vOo7F1m/Llep6hhfT
-         pKTI3tWhXVQ+mMQ8b0jh317sC2D4APFxfDgxzmm+y6Wx2X8ndLrQgR3+gMGua3eXM6aT
-         oVhK6KviGWalio2Ez5K3X0iqkWRqOJhas4/GpCzqNsqgxbiKZGosen0eW5OKIQM/ZWA8
-         Lkhg==
-X-Forwarded-Encrypted: i=1; AJvYcCVzyfjHIjz9KEJgPcXXDtZTgXPT6+D3Dz6duVV7MKdooFu6rBKl80DUGszT3/cLdUaechMXWALMDQXqkCINT/VtCHYSNUMVXWm6fGAhwRssINu0
-X-Gm-Message-State: AOJu0Yy2c0JXPwSZXdvOJUFWWgdR+z9cG0jpsQ1szY40/GH9f1K6UGX+
-	4Xbz54xbJ0xhWOCbnFCTdLgYCtkVvWQSMRk+XbWTP5IKPcXJzVXMGHgYAfa6ELk=
-X-Google-Smtp-Source: AGHT+IHBLKdIYYu6QC45iqx4D28BFWQ2Pl61zO4qgqZxwAe7jzaeeQgHKXs3Sob/u4RnkADQNkEQLw==
-X-Received: by 2002:adf:e245:0:b0:354:e04d:13e0 with SMTP id ffacd0b85a97d-354e04d1478mr3622189f8f.46.1716468568326;
-        Thu, 23 May 2024 05:49:28 -0700 (PDT)
-Received: from [127.0.1.1] ([93.5.22.158])
-        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-354faf3fa68sm1259611f8f.116.2024.05.23.05.49.26
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 23 May 2024 05:49:27 -0700 (PDT)
-From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Thu, 23 May 2024 14:49:15 +0200
-Subject: [PATCH v4 02/15] dt-bindings: display: mediatek: ccorr: add
- compatible for MT8365 SoC
+	id 1sAEOe-00000007BKQ-2MiJ;
+	Thu, 23 May 2024 19:46:45 +0000
+From: Thomas Gleixner <tglx@linutronix.de>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
+	s=2020; t=1716493597;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to; bh=uosf8zJX/OrVrpzgWdisB0fvzDFsKDb8UYB9Oox95ds=;
+	b=BP4BAo/B69jc8ERVWFG98sNHLN1mENEzNZNBioaIc8i+Z2nQvyDhWBpGZ7Q8bSagQvkp0r
+	Qkoi9ly8VwbHcND/epo5p1JbpdIcYEl8tlsHT3u4xHypR3RHOL7tG0w8bz2Hs1dJWWmU4f
+	9xsJRC4V8XwLgNg3s+4rrrW0j57j58gUKlsP0mm4TFoC4IEnh+vHVVLtKkBKChvC4BS5PP
+	x3QInGMT3WmYjyr3TGr2x/BzBXD64Poz1/wfVeDDy//JS+wnJmjvWB0xYZfjR1BtJyVed4
+	Cr4QI2aVIO72pN618+SVkrXSP15TSfdaEaa+FZckgMIw022PRgqfwsae1NffWw==
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
+	s=2020e; t=1716493597;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to; bh=uosf8zJX/OrVrpzgWdisB0fvzDFsKDb8UYB9Oox95ds=;
+	b=KIpZqn5taXmZz3LONsNtK4wwCWpj93R/8rFGP6l7jO5arnhLumMZWFiopXw87IZFZtKX1z
+	eYmvNXSkHlMUZVDA==
+To: "dicken.ding" <dicken.ding@mediatek.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>
+Cc: wsd_upstream@mediatek.com, hanks.chen@mediatek.com,
+ ivan.tseng@mediatek.com, cheng-jui.wang@mediatek.com,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, "dicken.ding"
+ <dicken.ding@mediatek.com>
+Subject: Re: [PATCH 1/1] irq: Fix uaf issue in irq_find_at_or_after
+In-Reply-To: <20240523113949.10444-1-dicken.ding@mediatek.com>
+Date: Thu, 23 May 2024 21:46:36 +0200
+Message-ID: <87cypcfh0j.ffs@tglx>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20231023-display-support-v4-2-ed82eb168fb1@baylibre.com>
-References: <20231023-display-support-v4-0-ed82eb168fb1@baylibre.com>
-In-Reply-To: <20231023-display-support-v4-0-ed82eb168fb1@baylibre.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Jitao Shi <jitao.shi@mediatek.com>, CK Hu <ck.hu@mediatek.com>, 
- Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, 
- Alexandre Mergnat <amergnat@baylibre.com>
-X-Mailer: b4 0.12.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1102; i=amergnat@baylibre.com;
- h=from:subject:message-id; bh=upYLopDUv2sREO316+2x/IDyye/JUMDkTsLPG4uVl6w=;
- b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBmTztThGaQtVT5PRllT6P21gaIDXU8tLB5/ByVKkE0
- BePaKxCJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZk87UwAKCRArRkmdfjHURToFEA
- CNjvAKkIUW8c7JykffXwJogjsEowvMJNe3HDTc7LOREneBMS1az+BXGjSgO5blmyB7fGtgJsL+Zv0R
- xd0wNYYfAMLEXOp6KAn27MVcpfvIJi5NfP1SEwoEM222Y76QhHvMa08kSyxTal1L/cTL/I3X8qu0p7
- ckqMnSguyi04ZTm26UrzewnhaRayEqUUFk9I42ErrJAFj405GkoF+4hzqnIjKCITsH0t0Mj5c9c7Jl
- pVE4ly7f//JUU7dERFcqF4w+ajQu0eObx4T11VmSa3GRscWZb51v1Y2dh15JzJIZ7EDTtxD4z+CTxo
- GUNuzimI53FIMnh/pA6pwtIaIIr3Z4P/ql8LnNhf0/RZBfu7w3UgygJTJJdbsyFH2IEW56i8wOP043
- eGkiiE72dAhNyUMULnTHC9g9Gy4rh8FJFpfz8jOCnM8OUg7ZDQNnCGcVk+y8vq0gXBMZzoOKN5ouCl
- EyxNT5BGpLftb7AJibOGth78FavsW2MSW262b7XlnKPtR57/WLLKzsZqsX3Lnc8UrhJbxDN6a3EWyj
- HgVak1ai3PMyArhLZDYYGuvYLNUVdBljvCp96QgIapouQdmjQpjEchRTg3pn8/EggEKdxkFyK0D+AZ
- mQdy6aFqRFMDQOgv4qOpetSxiRH6ixvp6qQa08GGSz2ITAv8spirsDS4TVew==
-X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
- fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240523_054929_751996_8E5B27D3 
-X-CRM114-Status: UNSURE (   9.42  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240523_124640_904019_C1C3EDD2 
+X-CRM114-Status: GOOD (  14.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,32 +75,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Document the display Color Correction on MT8365, which is compatible
-with that of the MT8183.
+On Thu, May 23 2024 at 19:39, dicken.ding wrote:
+> The function "irq_find_at_or_after" is at the risk of use-after-free
+> due to the race condition between the functions "delayer_free_desc"
+> and "irq_desc_get_irq". The function "delayer_free_desc" could be
+> called between "mt_find" and "irq_desc_get_irq" due to the absence
+> of any locks to ensure atomic operations on the "irq_desc" structure.
+>
+> In this patch, we introduce a pair of locks, namely "rcu_read_lock"
+> and "rcu_read_unlock" to prevent the occurrence of use-after-free in
+> "irq_find_at_or_after".
 
-Acked-by: Rob Herring (Arm) <robh@kernel.org>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
----
- Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml | 3 +++
- 1 file changed, 3 insertions(+)
+Please read Documentation/process/maintainers-tip.rst and the general
+documentation how changelogs should be written.
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
-index 71ea277a5d8e..fca8e7bb0cbc 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
-@@ -24,6 +24,9 @@ properties:
-       - enum:
-           - mediatek,mt8183-disp-ccorr
-           - mediatek,mt8192-disp-ccorr
-+      - items:
-+          - const: mediatek,mt8365-disp-ccorr
-+          - const: mediatek,mt8183-disp-ccorr
-       - items:
-           - enum:
-               - mediatek,mt8186-disp-ccorr
+Something like this:
 
--- 
-2.25.1
+  irq_find_at_or_after() dereferences the interrupt descriptor which is
+  returned by mt_find() while neither holding sparse_irq_lock nor RCU
+  read lock, which means the descriptor can be freed between mt_find()
+  and the dereference.
 
+  Guard the access with a RCU read lock section.
+
+Hmm?
+
+> --- a/kernel/irq/irqdesc.c
+> +++ b/kernel/irq/irqdesc.c
+> @@ -160,9 +160,15 @@ static int irq_find_free_area(unsigned int from, unsigned int cnt)
+>  static unsigned int irq_find_at_or_after(unsigned int offset)
+>  {
+>  	unsigned long index = offset;
+> +	unsigned int irq = nr_irqs;
+> +
+> +	rcu_read_lock();
+>  	struct irq_desc *desc = mt_find(&sparse_irqs, &index, nr_irqs);
+> +	if (desc)
+> +		irq = irq_desc_get_irq(desc);
+> +	rcu_read_unlock();
+>  
+> -	return desc ? irq_desc_get_irq(desc) : nr_irqs;
+> +	return irq;
+
+I wrote guard above because that's what should be used for this:
+
+  	unsigned long index = offset;
+  	struct irq_desc *desc;
+
+        guard(rcu)();
+        desc = mt_find(&sparse_irqs, &index, nr_irqs);
+	return desc ? irq_desc_get_irq(desc) : nr_irqs;
+
+Thanks,
+
+        tglx
 
