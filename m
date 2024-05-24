@@ -4,44 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED6FBC25B74
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 May 2024 18:25:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0C2FC25B79
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 May 2024 18:30:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OQZpMrThUEGea1BAHMIcPc3cDr9uYVqQvvK108Ir1AU=; b=Pw8Q3nNRs3mbkcudgRlXy6+9dj
-	fagXG/Gm0ExdzoYcRzXzLZUM6LCoNTQC8ZNGf/VHEtfq2cZHRRF3WjVT7Rg+5nAzvFLny2pl4ULWP
-	dnJWMBwxtdAFvt+9+xOlNlxYk/7tnFnaRZA/kDCDF/I+OhI+moquCNG0AblUwvsehMhe4i2FJbnTi
-	wm55J69DwC8GgixZAG5f6CqEG44plnLEZzupgntAd1+rEgOkwdjrV8oHLO+9Hkql4JZ+WChVEnYb+
-	Pzc7Lffj7cOnUaAEoQmkURU1m8M4ZEHn6r5Z9CgduyfoI1sSwLDib2SwE3ecnEGPmyY7SyIK4dvOj
-	0SR3Y2qw==;
+	bh=iaUMhhMd54dtFhNkn184MRajR59ypgb42tdYKRQ0e/w=; b=A6ezi37SqWD/jPrIs3Ww7dkVow
+	qksNfvwQImaR0ADN55ug8s48TUkk0ii6bmsks3tCll22nD8CE+86xmcRnQdBsvb+495mJb60dLEmS
+	56fP7LeyHmLIFGiaEhqx3qx4bfKkoRZQ/rugA7J4e9aT7nHoQmSJjargSGjwKdPZh0oPvICGDy69+
+	e7Uk4ldHwOLR+ASPsSVMVN28X/m7AX5rFrLQvOgS8/rRAmV9/egEa5qZaP9NX+pl1I7R8AVWakLF1
+	1B2nuPBTxWwILPq3cokUrSsTpnxYOJx4qByhnUI8u69mouk55ZlbW9rH5/lquykcVglwRqKtlI2m3
+	pDu9K+/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sAZbC-00000009Yr0-36Tk;
-	Fri, 24 May 2024 18:25:02 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1sAZgk-00000009b6V-44vh;
+	Fri, 24 May 2024 18:30:47 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sAZb8-00000009Yok-12aa;
-	Fri, 24 May 2024 18:25:00 +0000
+	id 1sAZeL-00000009ZP9-3c3j;
+	Fri, 24 May 2024 18:28:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=iaUMhhMd54dtFhNkn184MRajR59ypgb42tdYKRQ0e/w=; b=KTlS6TwzczCt1/R3y4SsJZLzzy
+	gyxNP2rzC+avinUvkqhDHoOrFZENmIwe7/LXZI6HJ+V7hau9D6qQB93NCp4ge6RYD0ZvOEM7q0w6q
+	W1yMqT/qn9UfHH3+ocm8QdT732e/Hj77/aLRGhfhGh9Aqq77MaFILCwgCtMvPlmPn70EY5s3qD5eL
+	fKv2+ac01Iyecv1ilfPVAOF6VRC+ZPn7YTFDV/XeBFjp4ERowXIU7xfcBO0lnj386BbjhIAMWx7Wa
+	Xfwb4bdQfreFeisxKzeQ6puOSJ2q4G4LNCLQnNmkLo2guRtPimPlDUkoEC9JaQnkztLZq/V9BETy0
+	kq8CRiYA==;
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1sAZeF-00000009vKP-1re2;
+	Fri, 24 May 2024 18:28:16 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 461E4CE1902;
-	Fri, 24 May 2024 18:24:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 73617C2BBFC;
-	Fri, 24 May 2024 18:24:49 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id A39476324B;
+	Fri, 24 May 2024 18:28:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B0203C32782;
+	Fri, 24 May 2024 18:27:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1716575092;
-	bh=dQAvYzPorRE89EfGzh8i8K3dM861qHxxGaH5yINN8yM=;
+	s=k20201202; t=1716575280;
+	bh=iaUMhhMd54dtFhNkn184MRajR59ypgb42tdYKRQ0e/w=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=RODCe2RfnalsYZlh1raT+J+hlOnLKlOLEFrU7ogy/+lfPkotL0bgKTRXyLc2FoP3r
-	 KCJc47bVnKinr+kCpFO8Mtxpgq/dfHFHQGW16zuKMfWb8sbwrp0g4wq0lG0PpdBDiQ
-	 K4coGuPcmP6wvWvTBwI+r40PcDOSAlPp9ypel1extK4lbio6uzHn+rs2hjY2TYsaOv
-	 HrrfQczEa9KWhAf8JDDCSIYucYKGdawj5OM0BBE82WFtta3pCGxkRJkBQLKYTURsAe
-	 MzaloccbeQboBAUqo3q8PkfLkwrikEf/qgyYa2QhAOADreidlipc1uTLUGJHDnpTF1
-	 yqGpHAB2pOwbQ==
-Date: Fri, 24 May 2024 19:24:47 +0100
+	b=SZhUH4aWWWqt0PgRmttC7fMf6OKQMKFQaHx8QA5i5qnWu8kaDHTUUXhD3PO6Sa7FJ
+	 Zx49qQ8UmPSZ+TrCFfZwqS9Afm00Up9R3z7rqsG5edO+A7m+BcF3A5xpYuCVlPfj8X
+	 Tcp8nU3vzO9CguXj3x6bEadMjMvPrDTzwVSMzeOQLrP/aDoLz+CwOT/DRrfTXsF7Fn
+	 d8CaonqaKTBjxLjSBo9Y1dimcwQfBV3dnS9abLxfTmV2d6M2+Rzqu9s780YXYuMfG1
+	 IDrcbU8MDHhzJU6qu6K/MgZPweJktjReCeIoP92+hVIMoOIwbQEB7zlQL89Iuzaw4y
+	 5P4YONSSIG1eA==
+Date: Fri, 24 May 2024 19:27:54 +0100
 From: Conor Dooley <conor@kernel.org>
 To: Julien Panis <jpanis@baylibre.com>
 Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -57,17 +71,18 @@ Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org
 Subject: Re: [PATCH v5 1/6] dt-bindings: thermal: mediatek: Rename thermal
  zone definitions for MT8186 and MT8188
-Message-ID: <20240524-concerned-fritter-262f5e16293e@spud>
+Message-ID: <20240524-clatter-antivirus-b1939900ee58@spud>
 References: <20240524-mtk-thermal-mt818x-dtsi-v5-0-56f8579820e7@baylibre.com>
  <20240524-mtk-thermal-mt818x-dtsi-v5-1-56f8579820e7@baylibre.com>
+ <20240524-concerned-fritter-262f5e16293e@spud>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="nUnx8yrvH8DVkbj0"
+	protocol="application/pgp-signature"; boundary="joiORIfrHLDgKDZJ"
 Content-Disposition: inline
-In-Reply-To: <20240524-mtk-thermal-mt818x-dtsi-v5-1-56f8579820e7@baylibre.com>
+In-Reply-To: <20240524-concerned-fritter-262f5e16293e@spud>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240524_112458_738571_B4B25FEC 
-X-CRM114-Status: GOOD (  16.01  )
+X-CRM114-CacheID: sfid-20240524_192813_601232_5CAD1073 
+X-CRM114-Status: GOOD (  18.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,77 +98,49 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---nUnx8yrvH8DVkbj0
+--joiORIfrHLDgKDZJ
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Fri, May 24, 2024 at 11:04:34AM +0200, Julien Panis wrote:
-> Use thermal zone names that make more sense.
+On Fri, May 24, 2024 at 07:24:47PM +0100, Conor Dooley wrote:
+> On Fri, May 24, 2024 at 11:04:34AM +0200, Julien Panis wrote:
+> > Use thermal zone names that make more sense.
+> >=20
+> > Signed-off-by: Julien Panis <jpanis@baylibre.com>
 >=20
-> Signed-off-by: Julien Panis <jpanis@baylibre.com>
+> Removing the defines is an ABI break. If these are all the same devices,
+> but with more accurate naming, then keep the old defines and add new
+> ones. However, the GPU1 define changes in the course of this patch which
+> is more problematic.
 
-Removing the defines is an ABI break. If these are all the same devices,
-but with more accurate naming, then keep the old defines and add new
-ones. However, the GPU1 define changes in the course of this patch which
-is more problematic.
+> > [RFC] When PATCH 1/6 and 2/6 are squashed, checkpatch raises this WARNI=
+NG:
+> > "DT binding docs and includes should be a separate patch." That's why I
+> > split them in this v5. The problem is that the driver can't be compiled
+> > any more at PATCH 1/6. It needs PATCH 2/6 to be compiled. Should the
+> > checkpatch warning be ignored here ? Should I finally squash PATCH 1/6
+> > and PATCH 2/6 ?
 
-Why do these names even make more sense? Where did the old names come
-=66rom and where do the new?
+Heh, and there's just one of the issues caused by your ABI break...
+
+> Why do these names even make more sense? Where did the old names come
+> from and where do the new?
+
 
 Thanks,
-Conor.
+Conor
 
-> ---
->  include/dt-bindings/thermal/mediatek,lvts-thermal.h | 12 ++++++------
->  1 file changed, 6 insertions(+), 6 deletions(-)
->=20
-> diff --git a/include/dt-bindings/thermal/mediatek,lvts-thermal.h b/includ=
-e/dt-bindings/thermal/mediatek,lvts-thermal.h
-> index bf95309d2525..ddc7302a510a 100644
-> --- a/include/dt-bindings/thermal/mediatek,lvts-thermal.h
-> +++ b/include/dt-bindings/thermal/mediatek,lvts-thermal.h
-> @@ -24,7 +24,7 @@
->  #define MT8186_BIG_CPU1	5
->  #define MT8186_NNA		6
->  #define MT8186_ADSP		7
-> -#define MT8186_MFG		8
-> +#define MT8186_GPU		8
-> =20
->  #define MT8188_MCU_LITTLE_CPU0	0
->  #define MT8188_MCU_LITTLE_CPU1	1
-> @@ -34,11 +34,11 @@
->  #define MT8188_MCU_BIG_CPU1	5
-> =20
->  #define MT8188_AP_APU		0
-> -#define MT8188_AP_GPU1		1
-> -#define MT8188_AP_GPU2		2
-> -#define MT8188_AP_SOC1		3
-> -#define MT8188_AP_SOC2		4
-> -#define MT8188_AP_SOC3		5
-> +#define MT8188_AP_GPU0		1
-> +#define MT8188_AP_GPU1		2
-> +#define MT8188_AP_ADSP		3
-> +#define MT8188_AP_VDO		4
-> +#define MT8188_AP_INFRA		5
->  #define MT8188_AP_CAM1		6
->  #define MT8188_AP_CAM2		7
-> =20
->=20
-> --=20
-> 2.37.3
->=20
-
---nUnx8yrvH8DVkbj0
+--joiORIfrHLDgKDZJ
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZlDbbwAKCRB4tDGHoIJi
-0pUoAP0dmBcOmsdDvQ5P4PIIeZXUssG4s57m1H3nSypoY8IHtwEA2+8PySEExvRJ
-l+6ydH0nKFhDmkLEJ9IJUVAyimv5tAU=
-=ozOf
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZlDcKgAKCRB4tDGHoIJi
+0utTAP9kxCXNzFNcl8MrqFN8BJtQIS/Kvm+fTRGjMzR4A9EE5QD/UeZmmXbOuHu7
+Gpb2kaTXJjMEecS77c+BSdgxlowavgM=
+=xYN6
 -----END PGP SIGNATURE-----
 
---nUnx8yrvH8DVkbj0--
+--joiORIfrHLDgKDZJ--
 
