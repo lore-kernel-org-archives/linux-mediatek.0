@@ -4,85 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0C2FC25B79
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 May 2024 18:30:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84AAEC25B78
+	for <linux-mediatek@archiver.kernel.org>; Sat, 25 May 2024 06:26:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iaUMhhMd54dtFhNkn184MRajR59ypgb42tdYKRQ0e/w=; b=A6ezi37SqWD/jPrIs3Ww7dkVow
-	qksNfvwQImaR0ADN55ug8s48TUkk0ii6bmsks3tCll22nD8CE+86xmcRnQdBsvb+495mJb60dLEmS
-	56fP7LeyHmLIFGiaEhqx3qx4bfKkoRZQ/rugA7J4e9aT7nHoQmSJjargSGjwKdPZh0oPvICGDy69+
-	e7Uk4ldHwOLR+ASPsSVMVN28X/m7AX5rFrLQvOgS8/rRAmV9/egEa5qZaP9NX+pl1I7R8AVWakLF1
-	1B2nuPBTxWwILPq3cokUrSsTpnxYOJx4qByhnUI8u69mouk55ZlbW9rH5/lquykcVglwRqKtlI2m3
-	pDu9K+/w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:In-Reply-To:Date:References:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=FrQ0Seq2BG84rF7oUlf//L0FC3fJbD13/F2+vZoZNqU=; b=Cy/I/9WM7/dyKTvK6o83KrP4gR
+	86E/0W6nTfzDafJZdzUR6RNHTuhfa2q6Sd+AJtKy5mVrIQQYytDnirqAkH5JhBe3nRwfHT/GXIjs6
+	EqcfLzVDnKs5OIjSsVMpV5vCWrj01xf767nXjqiS/EFcj6tEr3y0+6IcWR6hfCiMNBYBYIhI9K1pa
+	WKIGpCcCPHenTi6BLasGU43B9VZkB6nW0eEXzGsOXivpjTBoBOit4ahfbAgAJzSM4IO7CqZqQThp7
+	93Q0mfQVlGouKuvZp5aIu+pQTDyaxO4QCeHIWfxjfUGKEvxauEdmCU2nxJiAq3Rg/u3EP454kKtdx
+	cJxCDtUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sAZgk-00000009b6V-44vh;
-	Fri, 24 May 2024 18:30:47 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1sAkr9-0000000AUrj-1zYm;
+	Sat, 25 May 2024 06:26:15 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sAZeL-00000009ZP9-3c3j;
-	Fri, 24 May 2024 18:28:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=iaUMhhMd54dtFhNkn184MRajR59ypgb42tdYKRQ0e/w=; b=KTlS6TwzczCt1/R3y4SsJZLzzy
-	gyxNP2rzC+avinUvkqhDHoOrFZENmIwe7/LXZI6HJ+V7hau9D6qQB93NCp4ge6RYD0ZvOEM7q0w6q
-	W1yMqT/qn9UfHH3+ocm8QdT732e/Hj77/aLRGhfhGh9Aqq77MaFILCwgCtMvPlmPn70EY5s3qD5eL
-	fKv2+ac01Iyecv1ilfPVAOF6VRC+ZPn7YTFDV/XeBFjp4ERowXIU7xfcBO0lnj386BbjhIAMWx7Wa
-	Xfwb4bdQfreFeisxKzeQ6puOSJ2q4G4LNCLQnNmkLo2guRtPimPlDUkoEC9JaQnkztLZq/V9BETy0
-	kq8CRiYA==;
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
-	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sAZeF-00000009vKP-1re2;
-	Fri, 24 May 2024 18:28:16 +0000
+	id 1sAkr6-0000000AUqh-1qy6;
+	Sat, 25 May 2024 06:26:13 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id A39476324B;
-	Fri, 24 May 2024 18:28:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B0203C32782;
-	Fri, 24 May 2024 18:27:56 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 41659CE1A2E;
+	Sat, 25 May 2024 06:26:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CB6CEC3277B;
+	Sat, 25 May 2024 06:26:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1716575280;
-	bh=iaUMhhMd54dtFhNkn184MRajR59ypgb42tdYKRQ0e/w=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=SZhUH4aWWWqt0PgRmttC7fMf6OKQMKFQaHx8QA5i5qnWu8kaDHTUUXhD3PO6Sa7FJ
-	 Zx49qQ8UmPSZ+TrCFfZwqS9Afm00Up9R3z7rqsG5edO+A7m+BcF3A5xpYuCVlPfj8X
-	 Tcp8nU3vzO9CguXj3x6bEadMjMvPrDTzwVSMzeOQLrP/aDoLz+CwOT/DRrfTXsF7Fn
-	 d8CaonqaKTBjxLjSBo9Y1dimcwQfBV3dnS9abLxfTmV2d6M2+Rzqu9s780YXYuMfG1
-	 IDrcbU8MDHhzJU6qu6K/MgZPweJktjReCeIoP92+hVIMoOIwbQEB7zlQL89Iuzaw4y
-	 5P4YONSSIG1eA==
-Date: Fri, 24 May 2024 19:27:54 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Julien Panis <jpanis@baylibre.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Daniel Lezcano <daniel.lezcano@linaro.org>,
-	Nicolas Pitre <npitre@baylibre.com>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org
-Subject: Re: [PATCH v5 1/6] dt-bindings: thermal: mediatek: Rename thermal
- zone definitions for MT8186 and MT8188
-Message-ID: <20240524-clatter-antivirus-b1939900ee58@spud>
-References: <20240524-mtk-thermal-mt818x-dtsi-v5-0-56f8579820e7@baylibre.com>
- <20240524-mtk-thermal-mt818x-dtsi-v5-1-56f8579820e7@baylibre.com>
- <20240524-concerned-fritter-262f5e16293e@spud>
+	s=k20201202; t=1716618367;
+	bh=FrQ0Seq2BG84rF7oUlf//L0FC3fJbD13/F2+vZoZNqU=;
+	h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
+	b=Q83foUHevDHnZksCEJB4J9NU2Ty3Fr82O1d/5JBoTa/OpPMxoZgWRg//YiFLFSMxf
+	 H98Pze5DoOJ47RYX12GwQO6Nip/K7B06qRxGl3MwWETp92FjreN/INaDeX6ztdQs6D
+	 JQ4QiOKFsMNnKcscQeLk215uOesIlYY/iEIcF8H3rwidFwDnno+wUq/sXrv0db/PST
+	 s1Z7vu35rKpQsFpRmP16a13teMChMguX/RvPuPrCuSc2Xrm/xi3Gca56i/TycfISSn
+	 zb4RrPCay1Mm8gSpvS9gKsf2jx4LI1KohYMSDD91/Z5nnTEK/6ArEBu142B/g++Btq
+	 w/YfBTQoB33/g==
+From: Kalle Valo <kvalo@kernel.org>
+To: Johannes Berg <johannes@sipsolutions.net>
+Cc: Oleksandr Natalenko <oleksandr@natalenko.name>,
+  linux-kernel@vger.kernel.org,  linux-wireless@vger.kernel.org,  "Linux
+ regression tracking (Thorsten Leemhuis)" <regressions@leemhuis.info>,
+  linux-mediatek@lists.infradead.org,
+  linux-arm-kernel@lists.infradead.org,  Felix Fietkau <nbd@nbd.name>,
+  Lorenzo Bianconi <lorenzo@kernel.org>,  Ryder Lee
+ <ryder.lee@mediatek.com>,  Shayne Chen <shayne.chen@mediatek.com>,  Sean
+ Wang <sean.wang@mediatek.com>,  Matthias Brugger <matthias.bgg@gmail.com>,
+  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+  Peter Chiu <chui-hao.chiu@mediatek.com>,  StanleyYP Wang
+ <StanleyYP.Wang@mediatek.com>,  Linux regressions mailing list
+ <regressions@lists.linux.dev>
+Subject: Re: [REGRESSION] MT7915E doesn't work any more with v6.9
+References: <6061263.lOV4Wx5bFT@natalenko.name>
+	<2341660.ElGaqSPkdT@natalenko.name>
+	<60fe8df750a74331b8a54a76d55d5e8349ac46b4.camel@sipsolutions.net>
+Date: Sat, 25 May 2024 09:26:01 +0300
+In-Reply-To: <60fe8df750a74331b8a54a76d55d5e8349ac46b4.camel@sipsolutions.net>
+	(Johannes Berg's message of "Wed, 15 May 2024 08:23:35 +0200")
+Message-ID: <878qzy9zly.fsf@kernel.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="joiORIfrHLDgKDZJ"
-Content-Disposition: inline
-In-Reply-To: <20240524-concerned-fritter-262f5e16293e@spud>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240524_192813_601232_5CAD1073 
-X-CRM114-Status: GOOD (  18.94  )
+X-CRM114-CacheID: sfid-20240524_232612_687600_EC6BDEF3 
+X-CRM114-Status: GOOD (  12.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,50 +84,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Johannes Berg <johannes@sipsolutions.net> writes:
 
---joiORIfrHLDgKDZJ
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+> On Wed, 2024-05-15 at 00:51 +0200, Oleksandr Natalenko wrote:
+>> Also /cc Johannes because of this commit:
+>>=20
+>> 6092077ad09ce wifi: mac80211: introduce 'channel request'
+>>=20
+>> On st=C5=99eda 15. kv=C4=9Btna 2024 0:43:40, SEL=C4=8C Oleksandr Natalen=
+ko wrote:
+>> > Hello Felix, Lorenzo et al.
+>> >=20
+>> > With v6.9 kernel the following card:
+>> >=20
+>> > 01:00.0 Unclassified device [0002]: MEDIATEK Corp. MT7915E
+>> > 802.11ax PCI Express Wireless Network Adapter [14c3:7915]
+>> >=20
+>> > doesn't work any more. Upon mt7915e module insertion the following spl=
+at happens:
+>> >=20
+>
+> 6.9 didn't get commit 2f7cf3b61d85 ("wifi: mt76: mt7915: add missing
+> chanctx ops")? Huh?
 
-On Fri, May 24, 2024 at 07:24:47PM +0100, Conor Dooley wrote:
-> On Fri, May 24, 2024 at 11:04:34AM +0200, Julien Panis wrote:
-> > Use thermal zone names that make more sense.
-> >=20
-> > Signed-off-by: Julien Panis <jpanis@baylibre.com>
->=20
-> Removing the defines is an ABI break. If these are all the same devices,
-> but with more accurate naming, then keep the old defines and add new
-> ones. However, the GPU1 define changes in the course of this patch which
-> is more problematic.
+Yeah, commit 2f7cf3b61d85 should have been taken to wireless tree but it
+fell through the cracks. I didn't realise that it's an important bugfix
+and the commit message didn't give any indication of that either.
 
-> > [RFC] When PATCH 1/6 and 2/6 are squashed, checkpatch raises this WARNI=
-NG:
-> > "DT binding docs and includes should be a separate patch." That's why I
-> > split them in this v5. The problem is that the driver can't be compiled
-> > any more at PATCH 1/6. It needs PATCH 2/6 to be compiled. Should the
-> > checkpatch warning be ignored here ? Should I finally squash PATCH 1/6
-> > and PATCH 2/6 ?
+But commit 2f7cf3b61d85 is now in Linus' tree so it would be good if
+someone could submit it to stable releases.
 
-Heh, and there's just one of the issues caused by your ABI break...
+--=20
+https://patchwork.kernel.org/project/linux-wireless/list/
 
-> Why do these names even make more sense? Where did the old names come
-> from and where do the new?
-
-
-Thanks,
-Conor
-
---joiORIfrHLDgKDZJ
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZlDcKgAKCRB4tDGHoIJi
-0utTAP9kxCXNzFNcl8MrqFN8BJtQIS/Kvm+fTRGjMzR4A9EE5QD/UeZmmXbOuHu7
-Gpb2kaTXJjMEecS77c+BSdgxlowavgM=
-=xYN6
------END PGP SIGNATURE-----
-
---joiORIfrHLDgKDZJ--
+https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatc=
+hes
 
