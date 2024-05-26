@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43846C25B75
-	for <linux-mediatek@archiver.kernel.org>; Sun, 26 May 2024 17:23:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0F0AC25B75
+	for <linux-mediatek@archiver.kernel.org>; Sun, 26 May 2024 18:16:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=gynUFeKlK7bwR/LNfSPExiIbRZQ2pzBMdaawzedPczQ=; b=lR04XB8bSkCn+l
-	LXGSRgQ5pq/IWjt1xsassYWrqp/8ae0UyXiKUe0k1qAYOeUDcPY7bihevleEYRPVeybbmHX68ClsV
-	Qz1Qe6++/izwSNFrJwGyX71D+Gm7pIiRcws729s71AWM/I+sqfjwSpw/KJlfevmYGRGRBm6dWHrrO
-	AhmJkTyxHdLejjHYW8yOIWtVZW3OB5zE7M1rw1I7VR48PXD5A1fLhGFVgyGsbfkzh7rZqGGqm/LC+
-	rgkNhLWuWzJVAqjCgaoh6aedgUx92ZEmrtwgD4HhsTIm8+6/xGYF7bex6t+LjiFt82CfSNB/i1ed/
-	gjDXHtSdIApBDuJXzvXA==;
+	List-Owner; bh=gynUFeKlK7bwR/LNfSPExiIbRZQ2pzBMdaawzedPczQ=; b=kAd7fCfxIXO/Qv
+	Du7vCo+aVVdIQyEqW3KFb23aPGXRpDvNWNpx4hztZ9K5XKQfqWsT1qAfOjuzwkf+H6BYR9q4ZeX3l
+	9ak164+Qo2nPDPyLheglRhwTPQvtkNyS3hT8/MeT8ZLhZNVg+C3g4EMLMu1g3rZPsGxLMy7g76DEQ
+	Gdt7F8cL9RH+fCLpCt+pjg7Vbpro7ICr89m1cuDDIFg83cgQHiyMPx8D24U+fpkmGvBRnb+VfNl/2
+	xW7zj0CKYkoDpL+iJyN8fHV8yeOWrHpw/qweBeXby+Ajzg6uvVfTAkXl8UmJ879GibI1r2H02ktKQ
+	64CD3jagqfg7AmGM1NUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBHao-0000000D01M-3Fww;
-	Sun, 26 May 2024 17:23:34 +0000
-Received: from mxout4.routing.net ([2a03:2900:1:a::9])
+	id 1sBIQR-0000000D4cp-05k0;
+	Sun, 26 May 2024 18:16:55 +0000
+Received: from mxout2.routing.net ([2a03:2900:1:a::b])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBHak-0000000Czzv-2hJ5;
-	Sun, 26 May 2024 17:23:33 +0000
-Received: from mxbox4.masterlogin.de (unknown [192.168.10.79])
-	by mxout4.routing.net (Postfix) with ESMTP id 3753A100106;
-	Sun, 26 May 2024 17:23:21 +0000 (UTC)
+	id 1sBIQM-0000000D4bl-298v;
+	Sun, 26 May 2024 18:16:52 +0000
+Received: from mxbox1.masterlogin.de (unknown [192.168.10.88])
+	by mxout2.routing.net (Postfix) with ESMTP id 82B725FAAF;
+	Sun, 26 May 2024 18:16:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1716744201;
+	s=20200217; t=1716747401;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding;
 	bh=gynUFeKlK7bwR/LNfSPExiIbRZQ2pzBMdaawzedPczQ=;
-	b=hNU8iFslxZcBlu/h5juR+tTS9mjzgIa+OFxpnGM1NTmv9xFFDyUE954EX7Snlp9dFlaeXx
-	0nLXm2e7PS3Ei9Co6TYABdh//toyX7WBY4vzQ28axdsaJQcJKUKovSDprT3jgTfNV1LDzX
-	xDovgR1FWPje028LytnutQCqK2KyC3k=
+	b=IynnE00z7paNMV+3GPrFYtyiFr+2FcbJUT9iiEdRE83sUPjLC9RWDzQO2vzoejp/rgLrPI
+	qZ4xpHVZj7BMbd1IkrqlIN4nTtvN6y70qhvJIzAkUtuna4hKTsNtxQ52Cm0HCs7o8D64+2
+	4AIok5UT37SA0dDt3C3pcMmqWuYY6WY=
 Received: from frank-G5.. (fttx-pool-157.180.226.247.bambit.de [157.180.226.247])
-	by mxbox4.masterlogin.de (Postfix) with ESMTPSA id 245798020D;
-	Sun, 26 May 2024 17:23:20 +0000 (UTC)
+	by mxbox1.masterlogin.de (Postfix) with ESMTPSA id 5A26040029;
+	Sun, 26 May 2024 18:16:40 +0000 (UTC)
 From: Frank Wunderlich <linux@fw-web.de>
 To: Felix Fietkau <nbd@nbd.name>,
 	Sean Wang <sean.wang@mediatek.com>,
@@ -53,14 +53,14 @@ To: Felix Fietkau <nbd@nbd.name>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Subject: [net] net: ethernet: mtk_eth_soc: handle dma buffer size soc specific
-Date: Sun, 26 May 2024 19:23:11 +0200
-Message-Id: <20240526172311.61081-1-linux@fw-web.de>
+Date: Sun, 26 May 2024 20:16:16 +0200
+Message-Id: <20240526181616.63727-1-linux@fw-web.de>
 X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Mail-ID: bb23b2ea-0cd9-4a4a-a53c-e29530ba1449
+X-Mail-ID: 61986cbb-004f-4af2-a9fc-cb68983d8dba
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240526_102330_971478_EEA76D89 
+X-CRM114-CacheID: sfid-20240526_111650_848932_81242693 
 X-CRM114-Status: GOOD (  18.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
