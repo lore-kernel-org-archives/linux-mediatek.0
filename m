@@ -4,63 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46008C25B7D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 May 2024 12:00:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D9E8C25B7C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 May 2024 12:00:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=hhafMyYkrX6Ps79nQk/HQYlP4TSCjh5F53nTwJudH2M=; b=kkGevDkqw4J7V7Nfe+eQvWMSsX
-	0L6zYy+f0jcwh3kdgy7xbLYXKF8VGB1foUlXu/5hNV7cOpBwpFwsbpV0weWykWvXnlCM1OBSRMCiK
-	qRUsyvI16pVqbt9Z38N3rENDCo3H2CFQMKyuvaQS4Ef+p5Xd2j+Xliss12FoHZq8Wi9mb9AFvRXOo
-	jc2Wypk0lCzde501RzLTmg1GMLd2Sc2oHFTCfzZWsdKiwvByEmefU+GA7scc5clm/gy+yZaq2uwEo
-	0LUNlAJHXnOq8LEHXPMpXQE0wSxF7vBK671OzFw0tmqZWtmmKsXZ0MD8PYD3d4eU6cFzbEa9J1XBg
-	orjOwqbQ==;
+	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=FfCeHjS+24EDjGWUbBotOmlzBOa+3LwxFW0+n/tqVOA=; b=HGlfcEZR4zp/utTJxpumJmFxdF
+	RTZgxAp4Tu9CgyWLdwF4sa0w9220AT3VhmzCuuggSG3sVdI5QmXyMQuUyZ9iseyyXkonxuTLZihMv
+	TpcVz5ocmYROOsYSikn3HFKV0I6JIO+e18wjrPUQsttV/xgyVxdsBgk2ikz/MRdeZ7P/QUmu5ITTz
+	yol64ocwJGve/sphmy9kqS5ZPmwCyoZIywetU6tI3P6/tHDqRkmPfB219zC+n8MY11RuL/ludsq7Z
+	n7Z1RRCMpxnW7x7ncLxgrMLJpu8dKJZV4yf+7Ix/+A/wL2xqa1E7pRZqT67DapXaKDJ7Vbp42g8F6
+	PjK+XeTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBZ1f-0000000ElwW-3qvb;
-	Mon, 27 May 2024 12:00:27 +0000
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
+	id 1sBZ1h-0000000ElxF-06QQ;
+	Mon, 27 May 2024 12:00:29 +0000
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBZ1U-0000000ElpX-1IP8;
-	Mon, 27 May 2024 12:00:19 +0000
-Received: by mail-ej1-x62a.google.com with SMTP id a640c23a62f3a-a6269ad7db2so365974866b.2;
-        Mon, 27 May 2024 05:00:09 -0700 (PDT)
+	id 1sBZ1U-0000000ElqW-437b;
+	Mon, 27 May 2024 12:00:20 +0000
+Received: by mail-ed1-x534.google.com with SMTP id 4fb4d7f45d1cf-5785eab8d5dso3275704a12.3;
+        Mon, 27 May 2024 05:00:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1716811208; x=1717416008; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=hhafMyYkrX6Ps79nQk/HQYlP4TSCjh5F53nTwJudH2M=;
-        b=JcEIcbxLtfBuA9MimYTzRDn+ig/VH6ksb2Nf13LnHVsXg+mqkshZ0BBTaWgrdGj2JI
-         i7qA1sP2lcF/qYEr2e0SmCMJnyQAKf9UodzdTqzeZrE7GLfoxMS62ibwdHu4ETVOqSQ9
-         1WYK1r/2uBBN8BynH7Q9ytedRo+DxBjPbx1Kv4tav8QOnw2bJ56sXUXP1i932eTpvOOD
-         GSjI2EAXnNtDopM9YyiiYqfAKmi2SMp9Ydlmvo3sacZXBvTjJsMnqn3J4EwqMlyXBN9V
-         EPQ4k7DxRRBkgeYjmiJKpbJqZkdaVA2g36z+/coxbdEjbu7V5Z50Q5xg34Y9kJyNv5AJ
-         Dqhw==
+        d=gmail.com; s=20230601; t=1716811215; x=1717416015; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=FfCeHjS+24EDjGWUbBotOmlzBOa+3LwxFW0+n/tqVOA=;
+        b=WYkjvTUYJ3U9ZC1KM1zL8//Uz49EyQAvV+qsvbeJ3h3MSCcjJLkgTiwvXig8zzXICD
+         vAhahTA/q0yCaQWF4WIOBYi8zW42CbhcyOAvGZ7G2z1APM5DpSnabcHE2SKIRBVtl2Ne
+         SO6fKExGhZ5o6Kt8xoAHI0AuZmCZvnDHn6RHFMlzTNgpxREtzqnnomzZgm1mSBR1lKqp
+         haoIqWgD0VbC3vUxuQfha2ei7K/SPWMC64D2hhAyOb+QottFeZ+Wu8oO72nqGYWKqzSv
+         t1sFpHeoVEpdqBh8h/Z0YgPm/snSTicvad8DimZIMnddbR9aUOfHpkiVDih8k22rFGtS
+         SKNQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1716811208; x=1717416008;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=hhafMyYkrX6Ps79nQk/HQYlP4TSCjh5F53nTwJudH2M=;
-        b=Y1cFLTr70svzouDQW9Un/HhG40GrBpKi3+gzFBuhzeP8Tg4OxpSvKO2vpIJx5Ttfvz
-         fcLN2O1rXBA6pG8+6YQugysQrF2vtpWDvMJ7qr90NceVUYSLspLK2bCVhf4g6C8T+KwF
-         0PZ1EGoPZ3gT+jyehnFQRk6aUo94q8vQrLkoC6QrUMrjdgqFSiqLjCuwXPrq09xAHu7A
-         1RGGFTGYB76hktXJd2sEGnw7KMnkDXXfASKKzf3RTa0tpw2Wk3l4cJQwA/ELj1wXIx0q
-         SlY4mjbD2xTTeoDihAHThEJPkvhdWmxSRSPAV7T0Nwn0E4AeDyUzObCML6uknYUgQFmY
-         RurA==
-X-Forwarded-Encrypted: i=1; AJvYcCUl6x5SADsx+OUIC+7QLoS+U8U7xG3U7XlArN1b1wkjdxIZwKLgZs+Ie9FtIsP1XsVWvh+yhXaUbwNXy4rt6wuI8FHPaD8zd6gARcJg3W9x8apnhkDqAN7tbIXRndCjixt7SETuvMoB/kmK/26A9PNOZXxz7eC9U8I=
-X-Gm-Message-State: AOJu0Ywt/51aGDmb8FaSPAAeUKRuaAF7rfzSKBrTZZx6EaBQLl7TQ+Uc
-	GLMEnG3kngA/VWm/an2rQjdo+w9N/ITYhmKS9h/hN1AEFu68vvQk
-X-Google-Smtp-Source: AGHT+IHXyqU91SZsF/SS8uKpX0+zjL62tJ/iZ7IZum1uxfDLP4xHlxHwVSiQEbMzdxUF/vH/7q7RvA==
-X-Received: by 2002:a17:907:512:b0:a59:29ea:ed1d with SMTP id a640c23a62f3a-a62641ce042mr508744466b.22.1716811208070;
-        Mon, 27 May 2024 05:00:08 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1716811215; x=1717416015;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=FfCeHjS+24EDjGWUbBotOmlzBOa+3LwxFW0+n/tqVOA=;
+        b=uvuZVHgUA1fKFSkynJMRDCO/gFkYA6tnxsQlvxVAh039shpRfzdUue3kzjlorS7EUb
+         dGtNktW8TEPnmKkkqljxDJB/adUSXtJ3Xy5nQeP5UOvVJz/DBOSjAeveb3oveTeZDcwQ
+         7kj7ZLHCJ37LqQJoz1QVNyqshzW9zshE9rgieWfoK+shdu09x76OEz5m1META4njoXtl
+         Eg9ueRi06JayzU9ue5U6lvmXk/EDyiUsXbhFeJ/dtB4SOnflTPzbInJUGugDnuLZ3u0F
+         kZsEKsCuGNZE46RVyZUmpTyyCHpHaj3k7WrDFdzAwEXM30V3DEddehsQGXB27Sl3mnnz
+         T+8A==
+X-Forwarded-Encrypted: i=1; AJvYcCXSQl74mtlHK8Qf5UtvS8IVymtmxexHialGo2oEqK5uV7I46K445BgBLPjO3FpXuStSDrD75468yDYrbMQ3GY3qdlpZymjNEs7yUuNyNN8g+3tSmx/i5I91t6R5eC1sY35VVfvFS0HC2BI2Zs9gIM5mUk3YfCHkMh0=
+X-Gm-Message-State: AOJu0Yx+azfC1f3MzM3uN4M4Cb0B8QvH58JL5RDhInYTH0pUs1lRfvRV
+	erHOH4nzVqudzbIbcT0GFUfxFUt2QIlKduPMrZtDpEVNiM4aaYQk
+X-Google-Smtp-Source: AGHT+IEM8oeuFJhoAvvCTnvnPABOftG2A+iSPr/DlNCJRz0DldQKpyblkdDhmCmRgoPYYa02crl3pQ==
+X-Received: by 2002:a17:906:f219:b0:a62:7ef:ca4a with SMTP id a640c23a62f3a-a6265134cd8mr474783666b.70.1716811215235;
+        Mon, 27 May 2024 05:00:15 -0700 (PDT)
 Received: from localhost.lan (031011218106.poznan.vectranet.pl. [31.11.218.106])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a626cc8da37sm484669766b.183.2024.05.27.05.00.06
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a626cc8da37sm484669766b.183.2024.05.27.05.00.13
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 27 May 2024 05:00:07 -0700 (PDT)
+        Mon, 27 May 2024 05:00:14 -0700 (PDT)
 From: =?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <zajec5@gmail.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
@@ -82,16 +83,18 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	linux-mediatek@lists.infradead.org,
 	openwrt-devel@lists.openwrt.org,
 	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>
-Subject: [PATCH 0/3] Add initial DT for OpenWrt One
-Date: Mon, 27 May 2024 13:59:30 +0200
-Message-Id: <20240527115933.7396-1-zajec5@gmail.com>
+Subject: [PATCH 3/3] arm64: dts: mediatek: Add OpenWrt One
+Date: Mon, 27 May 2024 13:59:33 +0200
+Message-Id: <20240527115933.7396-4-zajec5@gmail.com>
 X-Mailer: git-send-email 2.35.3
+In-Reply-To: <20240527115933.7396-1-zajec5@gmail.com>
+References: <20240527115933.7396-1-zajec5@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240527_050016_454559_92260442 
-X-CRM114-Status: GOOD (  10.69  )
+X-CRM114-CacheID: sfid-20240527_050017_047259_BB32520F 
+X-CRM114-Status: GOOD (  15.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,30 +111,50 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Rafał Miłecki <rafal@milecki.pl>
 
-OpenWrt project (https://openwrt.org/) celebrates its 20 years by
-releasing an OpenWrt One product. Early units have been produced and
-will be followed by DVT samples really soon. Then the mass production
-is about to start.
+OpenWrt One is the first ever OpenWrt product. It's based on MT7981B
+(AKA Filogic 820) and has 1 GiB or DDR4 RAM. The rest of peripherals
+remains to be added later.
 
-This patchset includes very initial DT for this product but with the
-pending work on MT7981 all gaps should be filled soon.
-
-Announcement:
-OpenWrt One - celebrating 20 years of OpenWrt
-https://lists.openwrt.org/pipermail/openwrt-devel/2024-January/042018.html
-
-Rafał Miłecki (3):
-  dt-bindings: vendor-prefixes: add OpenWrt
-  dt-bindings: arm64: dts: mediatek: Add OpenWrt One
-  arm64: dts: mediatek: Add OpenWrt One
-
- .../devicetree/bindings/arm/mediatek.yaml         |  1 +
- .../devicetree/bindings/vendor-prefixes.yaml      |  2 ++
+Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
+---
  arch/arm64/boot/dts/mediatek/Makefile             |  1 +
  .../boot/dts/mediatek/mt7981b-openwrt-one.dts     | 15 +++++++++++++++
- 4 files changed, 19 insertions(+)
+ 2 files changed, 16 insertions(+)
  create mode 100644 arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
 
+diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
+index 12f67959f257..06f960002ac2 100644
+--- a/arch/arm64/boot/dts/mediatek/Makefile
++++ b/arch/arm64/boot/dts/mediatek/Makefile
+@@ -9,6 +9,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-x20-dev.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-rfb1.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-bananapi-bpi-r64.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt7981b-cudy-wr3000-v1.dtb
++dtb-$(CONFIG_ARCH_MEDIATEK) += mt7981b-openwrt-one.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt7981b-xiaomi-ax3000t.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-acelink-ew-7886cax.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3.dtb
+diff --git a/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts b/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
+new file mode 100644
+index 000000000000..4f6cbb491287
+--- /dev/null
++++ b/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
+@@ -0,0 +1,15 @@
++// SPDX-License-Identifier: GPL-2.0-only OR MIT
++
++/dts-v1/;
++
++#include "mt7981b.dtsi"
++
++/ {
++	compatible = "openwrt,one", "mediatek,mt7981b";
++	model = "OpenWrt One";
++
++	memory@40000000 {
++		reg = <0 0x40000000 0 0x40000000>;
++		device_type = "memory";
++	};
++};
 -- 
 2.35.3
 
