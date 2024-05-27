@@ -4,67 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3503C25B74
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 May 2024 14:07:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B548C25B74
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 May 2024 14:13:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=n1BDsmlQwhdu8pSjqXWApM0rUAlRIrsJQgYV+C9j7cA=; b=T4FR6LBemd6zDcVEYu7ZJ+ISpr
-	EtCP4abUlLtmt9x6o6tORwPiZlW7epzM41DtMeksbCmeVabM6WiHV1Bno5pvw9/X9R6uRa2asZsI2
-	2OKp2qvQVgBoG4DWSG/yrTcjc1UOkUKGeG2h2ceaKjHT2mVEkTjdA6vJVHIHLWaZu9upzcP3Tpdg7
-	bdQ8qz5xCiN8pI3NXdppnEIyUtDjDQCwnph8U9HAQpxBEV1mfooQIhuMLxppLdRrKgew6anaM1CGE
-	cSUWpS86uTlMj5jJ6SxhgxlPGcNPVOa/9GGpEFbyaCcBgMMBTlkNx5z9pGBsxo/EubifFBeDj+TFI
-	7RTKScIQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6QXhHNuvYEYnR7K3rwn3o3D/DgRvn/dZvcvVIG2YiSg=; b=mTZMss5XkauUHm6jitWvtdbNDj
+	mqoewM3dIwcoNgTYV4TauHQh+GfJ9d2c3muB3MKPz9CmiyMTHt4Ltt9k2gAff7pMqiwfiWXGYB4Cq
+	6YGulfZeiKquJpxb1nqThcmhKterVlsrsnYFwB8QeeTGvDddyR73p1OTH/l0RLk0NccjJlB5mUfPv
+	V9BWZKy2HKwe9Bvwci/mctJpXdAo8FdvVKjd7nSrIcHRxkhdqRnUKIMzxFGGtAMKpHRUI0F98gguL
+	aNnsc+0DZEbd3BqgQKCvQHLrEp2L2EpaPH4oOrv/YOyi+Mt1XH2V3667dwrzenQBd6bKVzdMnrgPA
+	AGJdiyjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBb0G-0000000FH85-0nJO;
-	Mon, 27 May 2024 14:07:08 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1sBb6E-0000000FIBu-3OYg;
+	Mon, 27 May 2024 14:13:18 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBb0B-0000000FH5F-1r2B;
-	Mon, 27 May 2024 14:07:05 +0000
+	id 1sBb6A-0000000FIAC-3DvS;
+	Mon, 27 May 2024 14:13:16 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 3CA69CE0F0F;
-	Mon, 27 May 2024 14:07:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1EFFEC2BBFC;
-	Mon, 27 May 2024 14:06:59 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 4405361797;
+	Mon, 27 May 2024 14:13:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 051B4C2BBFC;
+	Mon, 27 May 2024 14:13:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1716818820;
-	bh=n1BDsmlQwhdu8pSjqXWApM0rUAlRIrsJQgYV+C9j7cA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Ehx7RqtiTvj5UM2EojGrpqHk52rXrmmpEwVgxNg4ez3WeVXuEJpLRg8XVEvdmrbIi
-	 XZAuJRh1npz3bYbtsjUh/YnyDryXBLknjyAH+2fnXiAC3o/uXlZj+MxC6TJhl7+uQu
-	 PNp3arxQctgWDfxJzJmYskrpp10Ann7gjf6LGKvmumNN0sRXDK8mX7Ay4UhZKU4P+E
-	 bXZQEzvWmyGDXC6wpSvzHeGalmiojKSz0HI41qiC1/HaX6fLB4hQWA6jDLPwwXUNFN
-	 0r/wqkaGHE9Bn/1GP+O0/xpnM6KIWVr16Fp7YGyNxdmY4Zc79BAHjTImWXTmD2Xa2x
-	 tIqnw7GJC01tQ==
-Date: Mon, 27 May 2024 16:06:58 +0200
-From: Maxime Ripard <mripard@kernel.org>
-To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, David Airlie <airlied@gmail.com>, 
-	Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	dri-devel@lists.freedesktop.org, linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org, 
-	Jason-ch Chen <jason-ch.chen@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, 
-	Nancy Lin <nancy.lin@mediatek.com>, Shawn Sung <shawn.sung@mediatek.com>, 
-	Project_Global_Chrome_Upstream_Group@mediatek.com, Jeffrey Kardatzke <jkardatzke@google.com>, 
-	Jason-jh Lin <jason-jh.lin@mediatek.corp-partner.google.com>
-Subject: Re: [PATCH v6 0/7] Add mediate-drm secure flow for SVP
-Message-ID: <20240527-determined-sage-piculet-bfec4a@houat>
-References: <20240525232928.5524-1-jason-jh.lin@mediatek.com>
+	s=k20201202; t=1716819194;
+	bh=x3V+F4/2QeO/JDxzdGbicGzEx4qIlmPs3Ym+NTYFZQE=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=MqI7gwa/aaYYapPYmn7ZK8TJiG53I9DF15SZVF4ArDBlNxpyD4rtIQ3hOvdlPW9R9
+	 2gOHmWYpazCwFs+Cc+l9CBt+EJpwcm5knT4eVgEq7wQFIhfB+91+ncm0TVOZjc6Za2
+	 mlf53jRfIIx5Ce0XgBoDWkSCRV6Rjhr86bPPl6LWgxaDF3PsqtILQyqjaRBNCg6qe0
+	 rWO02l6i73eXBYa3lAgePGaY2+J2PySdELWppLVcSQu1Jh0dXDOhghZwhVYZq8ViW8
+	 okfpQCdXgK20alYvb/hzy4rPTesuT3GZ8P7lKJE6IfPWr3Tvbr0u9xYxtvJJSkAEJJ
+	 o2LMCZqQx0wsw==
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Cc: Leon Yen <leon.yen@mediatek.com>,
+	Ming Yen Hsieh <MingYen.Hsieh@mediatek.com>,
+	Felix Fietkau <nbd@nbd.name>,
+	Sasha Levin <sashal@kernel.org>,
+	lorenzo@kernel.org,
+	ryder.lee@mediatek.com,
+	kvalo@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	deren.wu@mediatek.com,
+	horms@kernel.org,
+	sean.wang@mediatek.com,
+	kernel@mattwhitlock.name,
+	wang.zhao@mediatek.com,
+	linux-wireless@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH AUTOSEL 6.9 27/35] wifi: mt76: mt7921s: fix potential hung tasks during chip recovery
+Date: Mon, 27 May 2024 10:11:32 -0400
+Message-ID: <20240527141214.3844331-27-sashal@kernel.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20240527141214.3844331-1-sashal@kernel.org>
+References: <20240527141214.3844331-1-sashal@kernel.org>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="lkrd7n7cfhfphpnl"
-Content-Disposition: inline
-In-Reply-To: <20240525232928.5524-1-jason-jh.lin@mediatek.com>
+X-stable: review
+X-Patchwork-Hint: Ignore
+X-stable-base: Linux 6.9.2
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240527_070703_975520_E6F70DBF 
-X-CRM114-Status: GOOD (  24.33  )
+X-CRM114-CacheID: sfid-20240527_071314_925363_9A66EF2E 
+X-CRM114-Status: GOOD (  12.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,77 +89,105 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: Leon Yen <leon.yen@mediatek.com>
 
---lkrd7n7cfhfphpnl
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+[ Upstream commit ecf0b2b8a37c8464186620bef37812a117ff6366 ]
 
-Hi,
+During chip recovery (e.g. chip reset), there is a possible situation that
+kernel worker reset_work is holding the lock and waiting for kernel thread
+stat_worker to be parked, while stat_worker is waiting for the release of
+the same lock.
+It causes a deadlock resulting in the dumping of hung tasks messages and
+possible rebooting of the device.
 
-On Sun, May 26, 2024 at 07:29:21AM GMT, Jason-JH.Lin wrote:
-> From: Jason-jh Lin <jason-jh.lin@mediatek.corp-partner.google.com>
->=20
-> Memory Definitions:
-> secure memory - Memory allocated in the TEE (Trusted Execution
-> Environment) which is inaccessible in the REE (Rich Execution
-> Environment, i.e. linux kernel/userspace).
-> secure handle - Integer value which acts as reference to 'secure
-> memory'. Used in communication between TEE and REE to reference
-> 'secure memory'.
-> secure buffer - 'secure memory' that is used to store decrypted,
-> compressed video or for other general purposes in the TEE.
-> secure surface - 'secure memory' that is used to store graphic buffers.
->=20
-> Memory Usage in SVP:
-> The overall flow of SVP starts with encrypted video coming in from an
-> outside source into the REE. The REE will then allocate a 'secure
-> buffer' and send the corresponding 'secure handle' along with the
-> encrypted, compressed video data to the TEE. The TEE will then decrypt
-> the video and store the result in the 'secure buffer'. The REE will
-> then allocate a 'secure surface'. The REE will pass the 'secure
-> handles' for both the 'secure buffer' and 'secure surface' into the
-> TEE for video decoding. The video decoder HW will then decode the
-> contents of the 'secure buffer' and place the result in the 'secure
-> surface'. The REE will then attach the 'secure surface' to the overlay
-> plane for rendering of the video.
->=20
-> Everything relating to ensuring security of the actual contents of the
-> 'secure buffer' and 'secure surface' is out of scope for the REE and
-> is the responsibility of the TEE.
->=20
-> DRM driver handles allocation of gem objects that are backed by a 'secure
-> surface' and for displaying a 'secure surface' on the overlay plane.
-> This introduces a new flag for object creation called
-> DRM_MTK_GEM_CREATE_RESTRICTED which indicates it should be a 'secure
-> surface'. All changes here are in MediaTek specific code.
-> ---
-> TODO:
-> 1) Drop MTK_DRM_IOCTL_GEM_CREATE and use DMA_HEAP_IOCTL_ALLOC in userspace
-> 2) DRM driver use secure mailbox channel to handle normal and secure flow
-> 3) Implement setting mmsys routing table in the secure world series
+This patch prevents the execution of stat_worker during the chip recovery.
 
-I'm not sure what you mean here. Why are you trying to upstream
-something that still needs to be removed from your patch series?
+Signed-off-by: Leon Yen <leon.yen@mediatek.com>
+Signed-off-by: Ming Yen Hsieh <MingYen.Hsieh@mediatek.com>
+Signed-off-by: Felix Fietkau <nbd@nbd.name>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/net/wireless/mediatek/mt76/mt7921/mac.c      | 2 ++
+ drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c  | 2 --
+ drivers/net/wireless/mediatek/mt76/mt7921/sdio_mac.c | 2 --
+ drivers/net/wireless/mediatek/mt76/sdio.c            | 3 ++-
+ 4 files changed, 4 insertions(+), 5 deletions(-)
 
-Also, I made some comments on the previous version that have been
-entirely ignored and still apply on this version:
-https://lore.kernel.org/dri-devel/20240415-guppy-of-perpetual-current-3a797=
-4@houat/
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+index 867e14f6b93a0..73e42ef429837 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+@@ -663,6 +663,7 @@ void mt7921_mac_reset_work(struct work_struct *work)
+ 	int i, ret;
+ 
+ 	dev_dbg(dev->mt76.dev, "chip reset\n");
++	set_bit(MT76_RESET, &dev->mphy.state);
+ 	dev->hw_full_reset = true;
+ 	ieee80211_stop_queues(hw);
+ 
+@@ -691,6 +692,7 @@ void mt7921_mac_reset_work(struct work_struct *work)
+ 	}
+ 
+ 	dev->hw_full_reset = false;
++	clear_bit(MT76_RESET, &dev->mphy.state);
+ 	pm->suspended = false;
+ 	ieee80211_wake_queues(hw);
+ 	ieee80211_iterate_active_interfaces(hw,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c
+index c866144ff0613..031ba9aaa4e2f 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c
+@@ -64,7 +64,6 @@ int mt7921e_mac_reset(struct mt792x_dev *dev)
+ 	mt76_wr(dev, dev->irq_map->host_irq_enable, 0);
+ 	mt76_wr(dev, MT_PCIE_MAC_INT_ENABLE, 0x0);
+ 
+-	set_bit(MT76_RESET, &dev->mphy.state);
+ 	set_bit(MT76_MCU_RESET, &dev->mphy.state);
+ 	wake_up(&dev->mt76.mcu.wait);
+ 	skb_queue_purge(&dev->mt76.mcu.res_q);
+@@ -115,7 +114,6 @@ int mt7921e_mac_reset(struct mt792x_dev *dev)
+ 
+ 	err = __mt7921_start(&dev->phy);
+ out:
+-	clear_bit(MT76_RESET, &dev->mphy.state);
+ 
+ 	local_bh_disable();
+ 	napi_enable(&dev->mt76.tx_napi);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mac.c
+index 389eb0903807e..1f77cf71ca701 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mac.c
+@@ -98,7 +98,6 @@ int mt7921s_mac_reset(struct mt792x_dev *dev)
+ 	mt76_connac_free_pending_tx_skbs(&dev->pm, NULL);
+ 	mt76_txq_schedule_all(&dev->mphy);
+ 	mt76_worker_disable(&dev->mt76.tx_worker);
+-	set_bit(MT76_RESET, &dev->mphy.state);
+ 	set_bit(MT76_MCU_RESET, &dev->mphy.state);
+ 	wake_up(&dev->mt76.mcu.wait);
+ 	skb_queue_purge(&dev->mt76.mcu.res_q);
+@@ -135,7 +134,6 @@ int mt7921s_mac_reset(struct mt792x_dev *dev)
+ 
+ 	err = __mt7921_start(&dev->phy);
+ out:
+-	clear_bit(MT76_RESET, &dev->mphy.state);
+ 
+ 	mt76_worker_enable(&dev->mt76.tx_worker);
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/sdio.c b/drivers/net/wireless/mediatek/mt76/sdio.c
+index 3e88798df0178..a4ed00eebc483 100644
+--- a/drivers/net/wireless/mediatek/mt76/sdio.c
++++ b/drivers/net/wireless/mediatek/mt76/sdio.c
+@@ -499,7 +499,8 @@ static void mt76s_tx_status_data(struct mt76_worker *worker)
+ 	dev = container_of(sdio, struct mt76_dev, sdio);
+ 
+ 	while (true) {
+-		if (test_bit(MT76_REMOVED, &dev->phy.state))
++		if (test_bit(MT76_RESET, &dev->phy.state) ||
++		    test_bit(MT76_REMOVED, &dev->phy.state))
+ 			break;
+ 
+ 		if (!dev->drv->tx_status_data(dev, &update))
+-- 
+2.43.0
 
-Maxime
-
---lkrd7n7cfhfphpnl
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZlSTgQAKCRAnX84Zoj2+
-dhjrAYDF6bR4iF7gYsP2hmqjPJbIPGkYuq7u09k5+hu3sX7JKhq1g9n5v5hX7VH6
-mU5WwlwBgN4eDfGwGhtYaDZJA62JTLpJVnIl2BS0XO5+OiU6EzKrzRJluNKcWPpS
-+8EyU4dfAQ==
-=0kUw
------END PGP SIGNATURE-----
-
---lkrd7n7cfhfphpnl--
 
