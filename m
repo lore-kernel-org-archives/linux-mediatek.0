@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3865C25B79
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 May 2024 22:15:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C82E4C25B74
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 May 2024 22:30:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=k5YoBN47w5IsZg0BgdqxDWyBmssOg1ao0QpWC3Q6PYw=; b=0g1R0LJCc9LLQrRGZjbLLA4jcm
-	Um2+08as1W92KDCiFgi6ponPrZq41qXQ25QH23GUHjYd5+OEsAndcNPUE+Z36ZwkktMKTn4mjYzX0
-	QbDoiIpbpwZE8kyBcWnLjjWrotY3K/AKkLoh1BMXWlC2qOE+DJGWF13wLZ8iFtH+oTlP/jI/MDAee
-	D4TwsVG6H4AGHax3q2naqqaXIT3X6QPnKIqv+Btn+PsPX3vrv34Ff0LTJ0SkWhndsG2HklxvwQsJN
-	/lEUn+tsBPNNsx6HdNccHtQP2uiAdKENCr5rXi6ushODtCrvyepy6HSz0R3K5lQuyGtnOCVFe7fZI
-	WWdmLGUg==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=BUF1iCTsSeejwUjwPAfIGGoxajcclmOzCEE7eEq3HaU=; b=yw2ODzEZDsZ071Tv7FNLO14tkh
+	CBF/MfEwOmpsx13WkwO5K24kzVBpWSXa5gW6sRKXEkX9lvqUoNcedwcSVeqh+X+JlAGgtRhBNwEim
+	h9RpL/LMJNAAsb0125ob8CGEnMe+2OWAa4X9wQUdMPmXFYddflYkyNqMK35oFetnzXvgW7BiuggJu
+	Z4PMB1yHRONtuQKZwPJ5W13/BE7uJ9HojaP/ZlnS+xjRoxeWzAl7nRqhNniqzCqVIV2KXql0yl19E
+	/f8FFd0OagwUZSKe5x4xKKUWAIW+XPcpxqQfakuhNqUscI4DqHKIYU3ufPTFYhNmE09UFcMAWMT0W
+	oudohpvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBicU-0000000GSpQ-1WeL;
-	Mon, 27 May 2024 22:15:06 +0000
-Received: from fgw20-7.mail.saunalahti.fi ([62.142.5.81])
+	id 1sBirO-0000000GUpn-3EMe;
+	Mon, 27 May 2024 22:30:30 +0000
+Received: from fgw21-7.mail.saunalahti.fi ([62.142.5.82])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBicB-0000000GScD-0l93
+	id 1sBhsl-0000000GNhN-42xv
 	for linux-mediatek@lists.infradead.org;
-	Mon, 27 May 2024 22:14:48 +0000
+	Mon, 27 May 2024 21:27:54 +0000
 Received: from localhost (88-113-26-230.elisa-laajakaista.fi [88.113.26.230])
 	by fgw22.mail.saunalahti.fi (Halon) with ESMTP
-	id fae89320-1c6f-11ef-8e2a-005056bdf889;
-	Tue, 28 May 2024 00:27:55 +0300 (EEST)
+	id f5f62320-1c6f-11ef-8e2a-005056bdf889;
+	Tue, 28 May 2024 00:27:47 +0300 (EEST)
 From: Andy Shevchenko <andy.shevchenko@gmail.com>
 To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
 	Linus Walleij <linus.walleij@linaro.org>,
@@ -52,17 +52,16 @@ Cc: Dong Aisheng <aisheng.dong@nxp.com>,
 	Paul Cercueil <paul@crapouillou.net>,
 	Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>,
 	Andy Shevchenko <andy.shevchenko@gmail.com>
-Subject: [PATCH v1 07/11] pinctrl: imx: Convert to use func member
-Date: Tue, 28 May 2024 00:24:42 +0300
-Message-ID: <20240527212742.1432960-8-andy.shevchenko@gmail.com>
+Subject: [PATCH v1 00/11] pinctrl: pinmux: Embed and reuse struct pinfunction
+Date: Tue, 28 May 2024 00:24:35 +0300
+Message-ID: <20240527212742.1432960-1-andy.shevchenko@gmail.com>
 X-Mailer: git-send-email 2.45.1
-In-Reply-To: <20240527212742.1432960-1-andy.shevchenko@gmail.com>
-References: <20240527212742.1432960-1-andy.shevchenko@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240527_151447_403182_3D474ACD 
-X-CRM114-Status: GOOD (  10.66  )
+X-CRM114-CacheID: sfid-20240527_142752_438141_F71BA491 
+X-CRM114-Status: UNSURE (   7.19  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,56 +76,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Convert drivers to use func member embedded in struct function_desc,
-because other members will be removed to avoid duplication and
-desynchronisation of the generic pin function description.
+As promised to Linus W. there is a series that converts struct function_desc
+to use struct pinfunction. With this it both struct group_desc and struct
+function_desc will rely on the generic data types (struct pingroup and struct
+pinfunction respectively).
 
-Signed-off-by: Andy Shevchenko <andy.shevchenko@gmail.com>
----
- drivers/pinctrl/freescale/pinctrl-imx.c | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+I haven't compiled everything, some builds might fail. Anyway, comments, reviews,
+testing are all appreciated.
 
-diff --git a/drivers/pinctrl/freescale/pinctrl-imx.c b/drivers/pinctrl/freescale/pinctrl-imx.c
-index 2d3d80921c0d..44921e3bdb94 100644
---- a/drivers/pinctrl/freescale/pinctrl-imx.c
-+++ b/drivers/pinctrl/freescale/pinctrl-imx.c
-@@ -266,7 +266,7 @@ static int imx_pmx_set(struct pinctrl_dev *pctldev, unsigned selector,
- 	npins = grp->grp.npins;
- 
- 	dev_dbg(ipctl->dev, "enable function %s group %s\n",
--		func->name, grp->grp.name);
-+		func->func.name, grp->grp.name);
- 
- 	for (i = 0; i < npins; i++) {
- 		/*
-@@ -593,21 +593,21 @@ static int imx_pinctrl_parse_functions(struct device_node *np,
- 		return -EINVAL;
- 
- 	/* Initialise function */
--	func->name = np->name;
--	func->num_group_names = of_get_child_count(np);
--	if (func->num_group_names == 0) {
-+	func->func.name = np->name;
-+	func->func.ngroups = of_get_child_count(np);
-+	if (func->func.ngroups == 0) {
- 		dev_info(ipctl->dev, "no groups defined in %pOF\n", np);
- 		return -EINVAL;
- 	}
- 
--	group_names = devm_kcalloc(ipctl->dev, func->num_group_names,
--				   sizeof(char *), GFP_KERNEL);
-+	group_names = devm_kcalloc(ipctl->dev, func->ngroups, sizeof(*func->func.groups),
-+				   GFP_KERNEL);
- 	if (!group_names)
- 		return -ENOMEM;
- 	i = 0;
- 	for_each_child_of_node(np, child)
- 		group_names[i++] = child->name;
--	func->group_names = group_names;
-+	func->func.groups = group_names;
- 
- 	i = 0;
- 	for_each_child_of_node(np, child) {
+Andy Shevchenko (11):
+  pinctrl: berlin: Make use of struct pinfunction
+  pinctrl: equilibrium: Make use of struct pinfunction
+  pinctrl: ingenic: Provide a helper macro INGENIC_PIN_FUNCTION()
+  pinctrl: mediatek: Provide a helper macro PINCTRL_PIN_FUNCTION()
+  pinctrl: pinmux: Add a convenient define PINCTRL_FUNCTION_DESC()
+  pinctrl: pinmux: Embed struct pinfunction into struct function_desc
+  pinctrl: imx: Convert to use func member
+  pinctrl: ingenic: Convert to use func member
+  pinctrl: keembay: Convert to use func member
+  pinctrl: mediatek: Convert to use func member
+  pinctrl: pinmux: Remove unused members from struct function_desc
+
+ drivers/pinctrl/berlin/berlin.c           |  33 +-
+ drivers/pinctrl/berlin/berlin.h           |   6 -
+ drivers/pinctrl/core.h                    |   2 +-
+ drivers/pinctrl/freescale/pinctrl-imx.c   |  14 +-
+ drivers/pinctrl/mediatek/pinctrl-moore.c  |  10 +-
+ drivers/pinctrl/mediatek/pinctrl-moore.h  |   6 +
+ drivers/pinctrl/mediatek/pinctrl-mt7622.c |  32 +-
+ drivers/pinctrl/mediatek/pinctrl-mt7623.c |  42 +-
+ drivers/pinctrl/mediatek/pinctrl-mt7629.c |  20 +-
+ drivers/pinctrl/mediatek/pinctrl-mt7981.c |  34 +-
+ drivers/pinctrl/mediatek/pinctrl-mt7986.c |  24 +-
+ drivers/pinctrl/pinctrl-equilibrium.c     |  18 +-
+ drivers/pinctrl/pinctrl-equilibrium.h     |  12 -
+ drivers/pinctrl/pinctrl-ingenic.c         | 707 +++++++++++-----------
+ drivers/pinctrl/pinctrl-keembay.c         |  22 +-
+ drivers/pinctrl/pinmux.c                  |  15 +-
+ drivers/pinctrl/pinmux.h                  |  19 +-
+ 17 files changed, 501 insertions(+), 515 deletions(-)
+
 -- 
 2.45.1
 
