@@ -4,106 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA9C1C25B74
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 May 2024 12:58:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3503C25B74
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 May 2024 14:07:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rNZ98tycbIm8gHCECF6fFAUqvVWA7Py4cjGRVlBtUzM=; b=QuSL0814k2I3F/djfWo9jSG3lD
-	OWhw4eJEI/x/oIrWkuOcCnAAGU6CFSUBJWR5JmICRGU5KhePHdslDYfdUwK5VKaOgAQV79r8dA6Gx
-	eC4QQrHYySTcbFv4jH3e/sZiY1/OYFITs7rpYWrntJr0di8Fmw9OMtD/8R3mDZZ0FOA6as/wklv4K
-	Tz+5/uT0TGxpwnwPdOukumoTgodikro+R1HLrGzwyvO5MeUY6ITNWto1/wzJTJidQGk/2xDOQ+RHc
-	cmHcRRkvwi2TcvDsPIBkVKbmAgtM/e/Lyo+yVn3CJYwyumY/wEQaqwJgOB3Wz5mdEEpzjgM9Mp8ye
-	557BgeQw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=n1BDsmlQwhdu8pSjqXWApM0rUAlRIrsJQgYV+C9j7cA=; b=T4FR6LBemd6zDcVEYu7ZJ+ISpr
+	EtCP4abUlLtmt9x6o6tORwPiZlW7epzM41DtMeksbCmeVabM6WiHV1Bno5pvw9/X9R6uRa2asZsI2
+	2OKp2qvQVgBoG4DWSG/yrTcjc1UOkUKGeG2h2ceaKjHT2mVEkTjdA6vJVHIHLWaZu9upzcP3Tpdg7
+	bdQ8qz5xCiN8pI3NXdppnEIyUtDjDQCwnph8U9HAQpxBEV1mfooQIhuMLxppLdRrKgew6anaM1CGE
+	cSUWpS86uTlMj5jJ6SxhgxlPGcNPVOa/9GGpEFbyaCcBgMMBTlkNx5z9pGBsxo/EubifFBeDj+TFI
+	7RTKScIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBZw9-0000000Eys3-2V5q;
-	Mon, 27 May 2024 12:58:49 +0000
-Received: from mail-yb1-xb33.google.com ([2607:f8b0:4864:20::b33])
+	id 1sBb0G-0000000FH85-0nJO;
+	Mon, 27 May 2024 14:07:08 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBZvA-0000000EyAY-3KzV
-	for linux-mediatek@lists.infradead.org;
-	Mon, 27 May 2024 12:57:55 +0000
-Received: by mail-yb1-xb33.google.com with SMTP id 3f1490d57ef6-df4e1366da6so5316657276.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 27 May 2024 05:57:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1716814666; x=1717419466; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=rNZ98tycbIm8gHCECF6fFAUqvVWA7Py4cjGRVlBtUzM=;
-        b=YAfXQ9P7Kdh1v4FJD9mBzGlX/+pKjiki1nC+WVeajx0aVnQi0ZCTEuclKTwEozGogx
-         /JIPiOoFARKOzltzJG9f9IKh4jCL2DqwZGbwuX3rruAb7Bo1SeoiPyqe3hPCXIYzTGwx
-         pxW2pBczrs9PDFAjAmSCLHRSVMySIN9z8gdZI/U6q+xEyHFiXbv3X+NBjG6RyPBcNMum
-         hhou0/P2MGrsDGj/zs9ciai9UaZkD4pVykN6DtXppN/Pu6wD7Wvjf3Gm2ElcB6TwWOMi
-         z5i+yrCcMAThDLJk8fEFyk9OAkCYJ/TrpfoO83XJbf52XKPigtyfcrg8Lle/oiTMRbWz
-         g2ZA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1716814666; x=1717419466;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=rNZ98tycbIm8gHCECF6fFAUqvVWA7Py4cjGRVlBtUzM=;
-        b=kWeTj+9x5y/n39s61lDQ7F5Tci5iNAzsGqtSF8E9objal/E60cwoJAPy8nOz2snC6R
-         Td7Dyw0ogikboQK+gB3qOt6oT5WIfYANsOzlPn03qN+9mf5DI+vfZyQKBU7lC6ugG8c1
-         HlN/aqH4Walk+MbAJ4d5oHjtFWFNZSNcqqbXRzGNH/hN6zUCa+LIMEXEPFVGPffUXXDr
-         WPzq38zCDkGQYlSD9Dk9IV0J5jljYqZyrtDzfx56ZUkgDXrv2Fpsd5msyMRu3YySNyFn
-         fjPkp6D0EnmLIylFVc8X4njVD+myRV8o4hI++s4mhm3/MgSZlY8OGGaTnG9K3JX+n13u
-         9Fgw==
-X-Forwarded-Encrypted: i=1; AJvYcCVEtAMwRkzxwZPAMv8qiIiNYVyNr9iHIY6u1EMmmfwBfH42jQIlzvnEZnrE6QjFlnpslnhOGaNXrrtxygJLsPI7QZhmSPOLJxsVix/Vd/d2lN2g
-X-Gm-Message-State: AOJu0YxXqBmbI/T2n3g2ISvEDFYCvF0LB8qCYSyqNkboDH9bHDxijBEw
-	h10PHe0JdCdkvyK1GdYD7wI8aqxnmFLEQvYkdPKLR/WmVYdiod5F3lNQKcX1O9pyJdoWpeVz3Fu
-	YLjVErNci+OQlIzP9nyopSBUIUm91cpHCi9gguw==
-X-Google-Smtp-Source: AGHT+IGPHGbdeDgQwNEq4mWXFwTqV0k8iDBOK2TyTZ4utk5viKokv4dr91DnLp+C01zzJZrl1Jzg3NthvUqaC/NhrDk=
-X-Received: by 2002:a05:6902:70a:b0:df7:9946:b32c with SMTP id
- 3f1490d57ef6-df79946bc95mr6983978276.29.1716814666366; Mon, 27 May 2024
- 05:57:46 -0700 (PDT)
+	id 1sBb0B-0000000FH5F-1r2B;
+	Mon, 27 May 2024 14:07:05 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 3CA69CE0F0F;
+	Mon, 27 May 2024 14:07:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1EFFEC2BBFC;
+	Mon, 27 May 2024 14:06:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1716818820;
+	bh=n1BDsmlQwhdu8pSjqXWApM0rUAlRIrsJQgYV+C9j7cA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Ehx7RqtiTvj5UM2EojGrpqHk52rXrmmpEwVgxNg4ez3WeVXuEJpLRg8XVEvdmrbIi
+	 XZAuJRh1npz3bYbtsjUh/YnyDryXBLknjyAH+2fnXiAC3o/uXlZj+MxC6TJhl7+uQu
+	 PNp3arxQctgWDfxJzJmYskrpp10Ann7gjf6LGKvmumNN0sRXDK8mX7Ay4UhZKU4P+E
+	 bXZQEzvWmyGDXC6wpSvzHeGalmiojKSz0HI41qiC1/HaX6fLB4hQWA6jDLPwwXUNFN
+	 0r/wqkaGHE9Bn/1GP+O0/xpnM6KIWVr16Fp7YGyNxdmY4Zc79BAHjTImWXTmD2Xa2x
+	 tIqnw7GJC01tQ==
+Date: Mon, 27 May 2024 16:06:58 +0200
+From: Maxime Ripard <mripard@kernel.org>
+To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, David Airlie <airlied@gmail.com>, 
+	Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	dri-devel@lists.freedesktop.org, linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org, 
+	Jason-ch Chen <jason-ch.chen@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, 
+	Nancy Lin <nancy.lin@mediatek.com>, Shawn Sung <shawn.sung@mediatek.com>, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com, Jeffrey Kardatzke <jkardatzke@google.com>, 
+	Jason-jh Lin <jason-jh.lin@mediatek.corp-partner.google.com>
+Subject: Re: [PATCH v6 0/7] Add mediate-drm secure flow for SVP
+Message-ID: <20240527-determined-sage-piculet-bfec4a@houat>
+References: <20240525232928.5524-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
-References: <20240504-pinctrl-cleanup-v2-0-26c5f2dc1181@nxp.com> <20240504-pinctrl-cleanup-v2-8-26c5f2dc1181@nxp.com>
-In-Reply-To: <20240504-pinctrl-cleanup-v2-8-26c5f2dc1181@nxp.com>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Mon, 27 May 2024 14:57:35 +0200
-Message-ID: <CACRpkdbt0kE6VP3O+63U1rmJ_JKRvWENCnETT4f+mvNMMphLeA@mail.gmail.com>
-Subject: Re: [PATCH v2 08/20] pinctrl: st: Use scope based of_node_put() cleanups
-To: "Peng Fan (OSS)" <peng.fan@oss.nxp.com>
-Cc: Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
-	Dvorkin Dmitry <dvorkin@tibbo.com>, Wells Lu <wellslutw@gmail.com>, 
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
-	Emil Renner Berthing <kernel@esmil.dk>, Jianlong Huang <jianlong.huang@starfivetech.com>, 
-	Hal Feng <hal.feng@starfivetech.com>, Orson Zhai <orsonzhai@gmail.com>, 
-	Baolin Wang <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>, 
-	Viresh Kumar <vireshk@kernel.org>, Shiraz Hashim <shiraz.linux.kernel@gmail.com>, soc@kernel.org, 
-	Krzysztof Kozlowski <krzk@kernel.org>, Sylwester Nawrocki <s.nawrocki@samsung.com>, 
-	Alim Akhtar <alim.akhtar@samsung.com>, Geert Uytterhoeven <geert+renesas@glider.be>, 
-	Patrice Chotard <patrice.chotard@foss.st.com>, Heiko Stuebner <heiko@sntech.de>, 
-	Damien Le Moal <dlemoal@kernel.org>, Ludovic Desroches <ludovic.desroches@microchip.com>, 
-	Nicolas Ferre <nicolas.ferre@microchip.com>, 
-	Alexandre Belloni <alexandre.belloni@bootlin.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
-	Dong Aisheng <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>, 
-	Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, Chester Lin <chester62515@gmail.com>, 
-	Matthias Brugger <mbrugger@suse.com>, Ghennadi Procopciuc <ghennadi.procopciuc@oss.nxp.com>, 
-	Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Andrew Jeffery <andrew@codeconstruct.com.au>, 
-	Joel Stanley <joel@jms.id.au>, Dan Carpenter <dan.carpenter@linaro.org>, 
-	Tony Lindgren <tony@atomide.com>, Stephen Warren <swarren@wwwdotorg.org>, linux-gpio@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-tegra@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, 
-	linux-stm32@st-md-mailman.stormreply.com, linux-samsung-soc@vger.kernel.org, 
-	linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-riscv@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	imx@lists.linux.dev, linux-aspeed@lists.ozlabs.org, openbmc@lists.ozlabs.org, 
-	Peng Fan <peng.fan@nxp.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="lkrd7n7cfhfphpnl"
+Content-Disposition: inline
+In-Reply-To: <20240525232928.5524-1-jason-jh.lin@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240527_055749_043247_190C81D3 
-X-CRM114-Status: UNSURE (   7.97  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240527_070703_975520_E6F70DBF 
+X-CRM114-Status: GOOD (  24.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,17 +79,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, May 4, 2024 at 3:14=E2=80=AFPM Peng Fan (OSS) <peng.fan@oss.nxp.com=
-> wrote:
 
-> From: Peng Fan <peng.fan@nxp.com>
->
-> Use scope based of_node_put() cleanup to simplify code.
->
-> Signed-off-by: Peng Fan <peng.fan@nxp.com>
+--lkrd7n7cfhfphpnl
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Patch applied.
+Hi,
 
-Yours,
-Linus Walleij
+On Sun, May 26, 2024 at 07:29:21AM GMT, Jason-JH.Lin wrote:
+> From: Jason-jh Lin <jason-jh.lin@mediatek.corp-partner.google.com>
+>=20
+> Memory Definitions:
+> secure memory - Memory allocated in the TEE (Trusted Execution
+> Environment) which is inaccessible in the REE (Rich Execution
+> Environment, i.e. linux kernel/userspace).
+> secure handle - Integer value which acts as reference to 'secure
+> memory'. Used in communication between TEE and REE to reference
+> 'secure memory'.
+> secure buffer - 'secure memory' that is used to store decrypted,
+> compressed video or for other general purposes in the TEE.
+> secure surface - 'secure memory' that is used to store graphic buffers.
+>=20
+> Memory Usage in SVP:
+> The overall flow of SVP starts with encrypted video coming in from an
+> outside source into the REE. The REE will then allocate a 'secure
+> buffer' and send the corresponding 'secure handle' along with the
+> encrypted, compressed video data to the TEE. The TEE will then decrypt
+> the video and store the result in the 'secure buffer'. The REE will
+> then allocate a 'secure surface'. The REE will pass the 'secure
+> handles' for both the 'secure buffer' and 'secure surface' into the
+> TEE for video decoding. The video decoder HW will then decode the
+> contents of the 'secure buffer' and place the result in the 'secure
+> surface'. The REE will then attach the 'secure surface' to the overlay
+> plane for rendering of the video.
+>=20
+> Everything relating to ensuring security of the actual contents of the
+> 'secure buffer' and 'secure surface' is out of scope for the REE and
+> is the responsibility of the TEE.
+>=20
+> DRM driver handles allocation of gem objects that are backed by a 'secure
+> surface' and for displaying a 'secure surface' on the overlay plane.
+> This introduces a new flag for object creation called
+> DRM_MTK_GEM_CREATE_RESTRICTED which indicates it should be a 'secure
+> surface'. All changes here are in MediaTek specific code.
+> ---
+> TODO:
+> 1) Drop MTK_DRM_IOCTL_GEM_CREATE and use DMA_HEAP_IOCTL_ALLOC in userspace
+> 2) DRM driver use secure mailbox channel to handle normal and secure flow
+> 3) Implement setting mmsys routing table in the secure world series
+
+I'm not sure what you mean here. Why are you trying to upstream
+something that still needs to be removed from your patch series?
+
+Also, I made some comments on the previous version that have been
+entirely ignored and still apply on this version:
+https://lore.kernel.org/dri-devel/20240415-guppy-of-perpetual-current-3a797=
+4@houat/
+
+Maxime
+
+--lkrd7n7cfhfphpnl
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZlSTgQAKCRAnX84Zoj2+
+dhjrAYDF6bR4iF7gYsP2hmqjPJbIPGkYuq7u09k5+hu3sX7JKhq1g9n5v5hX7VH6
+mU5WwlwBgN4eDfGwGhtYaDZJA62JTLpJVnIl2BS0XO5+OiU6EzKrzRJluNKcWPpS
++8EyU4dfAQ==
+=0kUw
+-----END PGP SIGNATURE-----
+
+--lkrd7n7cfhfphpnl--
 
