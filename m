@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32CD4C25B74
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 May 2024 14:31:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F581C25B74
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 May 2024 14:32:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0efZWgnDrxA5raTbUXfdhrIM9xEvUpffen86sbJg00o=; b=jUfxxkWduk2yEeGe6wBWOyCbKb
-	KL+cL13d/gGKiIdsYRojRNnr0zY0d9srSrlofJN2A86PoVVk6qf4E4Q8kOkZc/mtO78TiKukjRH0n
-	ATM4Seyak/Ff3YSUEcJOB/Gh6BLvMSVD04yHo9WAMez+uD7beFP7YIQqMITgJN2Me+xkhNyvT7kA7
-	2dH9u3lZ6tUxMqX5ZmPUS8kYv31Lj3GDD+SJXVmONJ4r96MWJ39th/HYauUq3L60Dt3CYpKTGymaY
-	sHuEMk2XhNJT1NaOzjSveBCQ/HlH4eaAgrn7EXjB9JjKewErb0pnDuQLvaXiLAaIyHRRU3rkayWh9
-	jtAId6fA==;
+	bh=ZQ17a/iLujZzVSd89dXMBcpp9ZUt4UGWARp53g7FF8Y=; b=wPYFqASZSLk7oQM75tF8yj0Og4
+	St3W9SXA/yRfbdeWZO8ovq64GmO8jNZqe8FBm1OFmUW65LrZ7LWpBKC0DW1YfVIF69qyYpr+4bo2I
+	j4fjQnTNGZdhRSkVEO1blXzxgzfhNabofNBzNFvMGQse6QjIUNHN+DEWZGWieM/WCDaU15/UoErt1
+	Q4Jqt89+vN4cOBx7h7WKOilIplFwk6MOXmy/pidIboq1QvYy3ahKS3n56s/wd31id9GYLSgLswSgI
+	sg1SUqOhxXAtYSrUcr1kSAPbrtWMMcircGdKdpbKoxcOo6rO7sWrRnOXLIG/UGN2/Gg0W5WiibQb8
+	yOHVoVpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBbO0-0000000FO2T-1xuB;
-	Mon, 27 May 2024 14:31:40 +0000
+	id 1sBbOW-0000000FODp-0Bsd;
+	Mon, 27 May 2024 14:32:12 +0000
 Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBbNv-0000000FNzn-3JqO;
-	Mon, 27 May 2024 14:31:37 +0000
+	id 1sBbOR-0000000FOBY-42st;
+	Mon, 27 May 2024 14:32:09 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id BB482CE0CEF;
-	Mon, 27 May 2024 14:31:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DEADFC2BBFC;
-	Mon, 27 May 2024 14:31:28 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id C0C74CE0DAB;
+	Mon, 27 May 2024 14:32:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CD814C2BBFC;
+	Mon, 27 May 2024 14:32:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1716820293;
-	bh=uApgsJJxOubvE2eBsFgoGQECDj08o4Q3rliHOrn3NK8=;
+	s=k20201202; t=1716820325;
+	bh=ud+xc3Woes3dtWt2WEOvs7TmXHnOAhJ5zvYhFMRyKlA=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Lj3JfLsb6I2Lo69yyV0+ilNR42gLkM7TPJ/3RwKwiaOPqxeXuls9aHp/BvpyBMNV0
-	 iFPfpK1m32mFpc3mHrYVQOnU1XDpabvBE+PfRy5n60gf15iJ801qQkfeSkOwulP0W/
-	 Sqcjtx+Ez02Yz8cJx8piu173KkGrxi7iani0ICveFkQ3aY+2j0bjbNazHIABvWxU6A
-	 zmIosKdbfAMG3p+ZEJlXXkFTZFWM0oAsV9fH8XQVdDjLX/li1QWOlQ9N6kv9+L0J2M
-	 rJuouMIp+lr0KF9nbJIfNQgWvyGfAWqLjp07AF7lgPV7XI4Jp+2Ne3iVfkvRWeUK2v
-	 Ncp8fyP9xUQ+A==
-Message-ID: <b7e4842d-279e-45c8-9650-f4044e6af808@kernel.org>
-Date: Mon, 27 May 2024 16:31:26 +0200
+	b=sfUXTTJ/9TLSJVqKwTe58rUjutXxgczZ8xOpGSoyrFongXFywsDio70ElpuDS5vhm
+	 uIEkgzGqzct1TWVunVj5Jc4C6K1EVA22Req9RITKcDcTtwpWrcLHY3LG8kpMC00vZT
+	 ALOKy4b4HrYUTHJapVmGV8tJ6pWSxrCehP6g6rT/4QVHdqnlBJH+nT6yAJtZGVSvBo
+	 vwup7FybTBdLHEOOc199ug197wSpnH1ceYWDEEX6Q24JEv3Ix6hZUZBzSoKiTat9AB
+	 WGYyJOcNYD3Q1ezoLhpLItG0vydaIQyRX0640ERFpGN2b/YLITQX4tLlolnh9shwko
+	 +aTgFuD3+ruYg==
+Message-ID: <0cf39ca2-a951-49c8-81a3-c92a73bcc6d5@kernel.org>
+Date: Mon, 27 May 2024 16:31:58 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/3] dt-bindings: vendor-prefixes: add OpenWrt
+Subject: Re: [PATCH 2/3] dt-bindings: arm64: dts: mediatek: Add OpenWrt One
 To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
@@ -63,7 +63,7 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
  openwrt-devel@lists.openwrt.org, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?=
  <rafal@milecki.pl>
 References: <20240527115933.7396-1-zajec5@gmail.com>
- <20240527115933.7396-2-zajec5@gmail.com>
+ <20240527115933.7396-3-zajec5@gmail.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -109,12 +109,12 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20240527115933.7396-2-zajec5@gmail.com>
+In-Reply-To: <20240527115933.7396-3-zajec5@gmail.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240527_073136_587201_F173AD17 
-X-CRM114-Status: UNSURE (   5.82  )
+X-CRM114-CacheID: sfid-20240527_073208_497546_11FA5936 
+X-CRM114-Status: UNSURE (   6.58  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -133,11 +133,11 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On 27/05/2024 13:59, Rafał Miłecki wrote:
 > From: Rafał Miłecki <rafal@milecki.pl>
 > 
-> OpenWrt project (with the help of MediaTek and Banana Pi) has produced
-> its very first own hardware. It needs its own prefix.
+> OpenWrt One is the first ever OpenWrt product. It's based on MT7981B and
+> has entered an early production stage.
 > 
 > Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
-> ---
+
 
 Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
