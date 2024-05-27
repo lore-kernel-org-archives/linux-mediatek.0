@@ -4,119 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26F88C25B74
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 May 2024 15:57:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A8C1C25B74
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 May 2024 16:14:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:Subject:References:Cc:To:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cCQzbMHV0uZw8ARZF6tyJxZsTWRc/buEbEqLjIXSnlw=; b=zyqtiJ8y9e5uZHx/PqCN/ghUPJ
-	bkFqnmkLeDr64F8Szlsy6lufu+0mVjD1Lr0liFZqqIqx9uGe2W1R4OGH/gFgzgcHoJLmo5huFFMuq
-	4fHQddiV6p+rx9b+wqvpLD29LvRBvuSV0V+q5PaiXRLDCh8PbULMGX5GyYy0jAXG2qAz5I4rxwMwu
-	29w48MtgAiC0zEIpOfjfPo+IsjkSemuXLd2b0+bWQ0whACWLHgKbfOZjRgtU0Op3K0Teq3yTJqA+3
-	jxH9emtYBPMOLtd6eaRwUrzy3DG2wsB7c75oFjnuYOzLnN1oiZssEBxVW2kEES5Fev/RjxKgwWOCo
-	Bl/RzZrw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=GLtPNS2jldkvChLLBZmBdFhCDLFJuWcDZglJtWyDICU=; b=y7N1ztUGbwx3M8oFUqLjJxgGEp
+	aOCAJ/6vgOSyKvfs7azw9zWEJISCcqFLlGrCl9IIvdEm7HwUl8Vp9/fBtXqI+m2JxmKwuipxZXOvG
+	UgpUVOtxSV9kWVOgsj98EA4jkkPIgks7EJlGOSAO6VkfbH0mQaE0GCrSfcY2lyXvggv9QU6TA85Of
+	7wQFpHL/cZP3G6fYB4KDFULiEMcTcBQLW9urDKZbNIJNuPbQg8SbjWapecI8+W2fp6FsdVd3I6HzN
+	ueLY5EVzyhSJlOB/qr6ZP6Acylc4+12gooTT3lzIBcjF/+MAT/MPAHPv7oIt65YrYJ6HVU7OOUmlV
+	KI1C86tw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBcjQ-0000000FheB-3Viv;
-	Mon, 27 May 2024 15:57:52 +0000
-Received: from mout.web.de ([212.227.17.12])
+	id 1sBczH-0000000FmFz-3jxX;
+	Mon, 27 May 2024 16:14:15 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBcjL-0000000FhcN-26s7;
-	Mon, 27 May 2024 15:57:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
-	s=s29768273; t=1716825410; x=1717430210; i=markus.elfring@web.de;
-	bh=cCQzbMHV0uZw8ARZF6tyJxZsTWRc/buEbEqLjIXSnlw=;
-	h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:To:Cc:References:
-	 Subject:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:
-	 cc:content-transfer-encoding:content-type:date:from:message-id:
-	 mime-version:reply-to:subject:to;
-	b=PUTkJtv+17tmHPSwdj2hf899Cxz87JZtpAv6Jc/t460ErK6rIZ1XjrMEwjT/IL5e
-	 u6asEjjbaWV05EEJOrnLlJNLso+bKJ6JUhoe+vAQmYcyr1mOVJ9CmwVzJFYdsDjWk
-	 lhH7BRvhFBzVj6hnFHPSxBLuofy8FnxnuGCzKVh06VXSoykW9+Z5sNppeifyGBhS7
-	 Tbby0eXDkzEd3ur+rXCvlZhYwOhxY2j+kjNeQE+m/gaI7bzpQ3HVkzXeOYg+oIyfZ
-	 hv0kSHTDq7XWjQmMF+X+gAfIYHkN5y02reNDf+/pFuI1uzraU+ayvVz08dwXuor0H
-	 +gQ8lygtBMIj/W0VNQ==
-X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
-Received: from [192.168.178.21] ([94.31.83.95]) by smtp.web.de (mrweb106
- [213.165.67.124]) with ESMTPSA (Nemesis) id 1N6JxT-1sa0Ai3q9J-016inV; Mon, 27
- May 2024 17:56:50 +0200
-Message-ID: <aa58efd3-b502-4bed-8c84-e5d78da23fbe@web.de>
-Date: Mon, 27 May 2024 17:56:43 +0200
+	id 1sBczD-0000000FmDF-3tyW;
+	Mon, 27 May 2024 16:14:13 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.97.1)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1sBcyu-000000007MD-3VgY;
+	Mon, 27 May 2024 16:13:52 +0000
+Date: Mon, 27 May 2024 17:13:42 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: Sunil Kovvuri Goutham <sgoutham@marvell.com>
+Subject: Re: [net v2] net: ethernet: mtk_eth_soc: handle dma buffer size soc
+ specific
+Message-ID: <kbzsne4rm4232w44ph3a3hbpgr3th4xvnxazdq3fblnbamrloo@uvs3jyftecma>
+References: <20240527142142.126796-1-linux@fw-web.de>
+ <BY3PR18MB4737D0ED774B14833353D202C6F02@BY3PR18MB4737.namprd18.prod.outlook.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Peng Fan <peng.fan@nxp.com>, soc@kernel.org,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Alim Akhtar <alim.akhtar@samsung.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Angelo Gioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Baolin Wang <baolin.wang@linux.alibaba.com>,
- Chester Lin <chester62515@gmail.com>, Chunyan Zhang <zhang.lyra@gmail.com>,
- Claudiu Beznea <claudiu.beznea@tuxon.dev>,
- Damien Le Moal <dlemoal@kernel.org>, Dan Carpenter
- <dan.carpenter@linaro.org>, Dong Aisheng <aisheng.dong@nxp.com>,
- Dvorkin Dmitry <dvorkin@tibbo.com>, Emil Renner Berthing <kernel@esmil.dk>,
- Fabio Estevam <festevam@gmail.com>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- Ghennadi Procopciuc <ghennadi.procopciuc@oss.nxp.com>,
- Hal Feng <hal.feng@starfivetech.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, Jacky Bai <ping.bai@nxp.com>,
- Jianlong Huang <jianlong.huang@starfivetech.com>,
- Joel Stanley <joel@jms.id.au>, Jonathan Hunter <jonathanh@nvidia.com>,
- Krzysztof Kozlowski <krzk@kernel.org>,
- Linus Walleij <linus.walleij@linaro.org>,
- Ludovic Desroches <ludovic.desroches@microchip.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Matthias Brugger <mbrugger@suse.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Nicolas Ferre <nicolas.ferre@microchip.com>, Orson Zhai
- <orsonzhai@gmail.com>, Patrice Chotard <patrice.chotard@foss.st.com>,
- Sascha Hauer <s.hauer@pengutronix.de>, Sean Wang <sean.wang@kernel.org>,
- Shawn Guo <shawnguo@kernel.org>,
- Shiraz Hashim <shiraz.linux.kernel@gmail.com>,
- Stephen Warren <swarren@wwwdotorg.org>,
- Sylwester Nawrocki <s.nawrocki@samsung.com>,
- Thierry Reding <thierry.reding@gmail.com>, Tony Lindgren <tony@atomide.com>,
- Viresh Kumar <vireshk@kernel.org>, Wells Lu <wellslutw@gmail.com>
-Cc: LKML <linux-kernel@vger.kernel.org>, linux-gpio@vger.kernel.org,
- linux-tegra@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-samsung-soc@vger.kernel.org,
- linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-riscv@lists.infradead.org, linux-mediatek@lists.infradead.org,
- imx@lists.linux.dev, linux-aspeed@lists.ozlabs.org,
- openbmc@lists.ozlabs.org, kernel@pengutronix.de,
- Peng Fan <peng.fan@oss.nxp.com>
-References: <20240504-pinctrl-cleanup-v2-18-26c5f2dc1181@nxp.com>
-Subject: Re: [PATCH v2 18/20] pinctrl: freescale: mxs: Fix refcount of child
-Content-Language: en-GB
-From: Markus Elfring <Markus.Elfring@web.de>
-In-Reply-To: <20240504-pinctrl-cleanup-v2-18-26c5f2dc1181@nxp.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:fY28vuOzSy7D3myo+NUo+Q8h4MAB+DMYH6x54XY9zacr23bFm3Z
- XEU1mqywgExmQK1yZjuU6En9jXs1HgcwzsaQZ+4suTC5BPEjIf/Fg4o0HdX3AuRpQZI2yac
- KrkniKWThKnQbs96+yLl/Dm5E5NsImhOyFs1ksUAetHBWVW2WfIWoOdGSaoQFZRJLEXutYy
- iCHwBxLqQsK9Mq+39k2DQ==
-UI-OutboundReport: notjunk:1;M01:P0:TjeN7uyFccs=;bjTTRHq6gIBTOMFXSFUogBWSZuQ
- ZTwgZq2VnppV1aZlnrDYMmOmytXyq0JrjEzIfy/yH2myRvZFwVxrMpYgtVdN++fuf8ainJk/t
- uFkTD8huhpK+v/6sd6lXCGtTOMoxBExDvHrzfiIvMwNnj5vJaD78bXrOpQIviBkrbo/dpouOC
- Ln7QFnEpQNN9tfIRGg8gaddFRITCsPb8eIY2ZjqdGWqcC0mpb+GXVonl0LzMFBCnUIrGNucUB
- JyF0gcU5WkAg6RJMxI6bQbphTn5At4z7kJpzYsMNnHFABhVCUal+gm0247pr1mpjl/KiGECTR
- XNTX442NdkykPvhiMNWp17M35HW0J6oLENbsSL8PyhGQHAW5h5EnpFB5SuC+MkmcW7VQwxd36
- lCdpZmXrsZsRJ7AbJhptgf/dByjHu/LOLAj4+ethb/xC2SLDH84JLTDzzYCw43EzHk/09K8p9
- cDEpfpl8+VPFN35SSlqs/3lTQxU1UurqQF96DxIJCZdCGRE3icPsCoTwZMOJqDYJkYsmztQRH
- YW541Ftvhar9wZSgE19Bcj1s0L3HXu9Xp3pkz7IcX+lrc7RPJuNoPC+xc48ucMhoGmNSMI5WK
- RVp1WSoLoJahSt7/mjjyxqyly6XzUtnKE6um1tWMAR0vojK8hQcOOL84UbAmXM7tbS+2QyuCj
- LkzuEZ/KIlY89jP9+dNMuuSCCwKeQJA7ykttwUV0aQte1rS7POYfJSX2aeTAa8Z7rWLzt7kHc
- AmtJvjHPIr4iMol58kTZo18kQbOqJQsi9qx7qS9pObTVMxyOiWt4lPdDW0vYOWO4MOmC4QlIy
- k96VHg44SU3OMjnGBpPp4v6EScAmUEUHJaYg/CdI/NGc8=
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <BY3PR18MB4737D0ED774B14833353D202C6F02@BY3PR18MB4737.namprd18.prod.outlook.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240527_085747_857137_C73716AA 
-X-CRM114-Status: UNSURE (   5.82  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240527_091411_998480_9D3C1FBF 
+X-CRM114-Status: GOOD (  19.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -128,32 +58,73 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Steven Liu <steven.liu@mediatek.com>, SkyLake Huang <SkyLake.Huang@mediatek.com>, Sam Shih <Sam.Shih@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Frank Wunderlich <linux@fw-web.de>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, Mark Lee <Mark-MC.Lee@mediatek.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-How do you think about to use the summary phrase =E2=80=9CFix reference co=
-unting for children in mxs_pinctrl_probe_dt()=E2=80=9D?
+On Mon, May 27, 2024 at 03:55:55PM GMT, Sunil Kovvuri Goutham wrote:
+> 
+> 
+> > -----Original Message-----
+> > From: Frank Wunderlich <linux@fw-web.de>
+> > Sent: Monday, May 27, 2024 7:52 PM
+> > To: Felix Fietkau <nbd@nbd.name>; Sean Wang <sean.wang@mediatek.com>;
+> > Mark Lee <Mark-MC.Lee@mediatek.com>; Lorenzo Bianconi
+> > <lorenzo@kernel.org>; David S. Miller <davem@davemloft.net>; Eric Dumazet
+> > <edumazet@google.com>; Jakub Kicinski <kuba@kernel.org>; Paolo Abeni
+> > <pabeni@redhat.com>; Matthias Brugger <matthias.bgg@gmail.com>;
+> > AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> > Cc: Frank Wunderlich <frank-w@public-files.de>; John Crispin
+> > <john@phrozen.org>; netdev@vger.kernel.org; linux-kernel@vger.kernel.org;
+> > linux-arm-kernel@lists.infradead.org; linux-mediatek@lists.infradead.org;
+> > Daniel Golle <daniel@makrotopia.org>
+> > Subject: [net v2] net: ethernet: mtk_eth_soc: handle dma buffer size soc specific
+> > 
+> > From: Frank Wunderlich <frank-w@public-files.de>
+> > 
+> > The mainline MTK ethernet driver suffers long time from rarly but annoying tx
+> > queue timeouts. We think that this is caused by fixed dma sizes hardcoded for
+> > all SoCs.
+> > 
+> > Use the dma-size implementation from SDK in a per SoC manner.
+> > 
+> > Fixes: 656e705243fd ("net-next: mediatek: add support for MT7623
+> > ethernet")
+> > Suggested-by: Daniel Golle <daniel@makrotopia.org>
+> > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> 
+> ..............
+> > 
+> > diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> > b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> > index cae46290a7ae..f1ff1be73926 100644
+> > --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> > +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> 
+> .............
+> > @@ -1142,40 +1142,46 @@ static int mtk_init_fq_dma(struct mtk_eth *eth)
+> >  						       cnt * soc->tx.desc_size,
+> >  						       &eth->phy_scratch_ring,
+> >  						       GFP_KERNEL);
+> 
+> ..............
+> > -	for (i = 0; i < cnt; i++) {
+> > -		dma_addr_t addr = dma_addr + i * MTK_QDMA_PAGE_SIZE;
+> > -		struct mtk_tx_dma_v2 *txd;
+> > +		dma_addr = dma_map_single(eth->dma_dev,
+> > +					  eth->scratch_head[j], len *
+> > MTK_QDMA_PAGE_SIZE,
+> > +					  DMA_FROM_DEVICE);
+> > 
+> 
+> As per commit msg, the fix is for transmit queue timeouts.
+> But the DMA buffer changes seems for receive pkts.
+> Can you please elaborate the connection here.
 
+*I guess* the memory window used for both, TX and RX DMA descriptors
+needs to be wisely split to not risk TX queue overruns, depending on the
+SoC speed and without hurting RX performance...
 
-=E2=80=A6
-> of_get_next_child() will increase refcount =E2=80=A6
-
-                                    the reference counter?
-
-
-> Per current implementation, 'child' will be override by
-
-                                              overridden?
-
-
-> for_each_child_of_node(np, child), so use of_get_child_count to avoid
-> refcount leakage.
-
-Another wording suggestion:
-  for_each_child_of_node(np, child). Thus use an of_get_child_count() call
-  to avoid reference counting leakage.
-
-
-Regards,
-Markus
+Maybe someone inside MediaTek (I've added to Cc now) and more familiar
+with the design can elaborate in more detail.
 
