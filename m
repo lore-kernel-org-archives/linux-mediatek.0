@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EA85C25B7C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 May 2024 12:58:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA9C1C25B74
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 May 2024 12:58:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pJJyP+9frURhdd/ZV2qsiiwzKPVnn0nUZRG4Ztdu5Ds=; b=273R7qwvCoSPVAbMBrb711k82I
-	KEf0BlNMNA4tzriN6rrx04hWo8LXh7akSUmxt8n4Eo1bKaHF9ZPfYOz3fiTHFNx3K7zJ4lVgPAY0E
-	gW9iDPTOSZBgJ9A1uKSa11Tp1esPehzzz6D/ibdlOcKVF5TPQzAFEj0VBNlGdl7VIIwEM5wdakklH
-	DrCxjGLWJKjJuio0CaNTS2AiYv++36mdjZp6G7EXwW5MiVbIQzVF2+FS/TP1M9QizZVSL/hY4MGKl
-	ZblRIbUOmAwKNTWgDx1JS49gH+zGDXVWo0afQYGh2OvlDjiwORcRTu8SyW6cdoiHRWStwhZU1uISR
-	76JwVMMg==;
+	bh=rNZ98tycbIm8gHCECF6fFAUqvVWA7Py4cjGRVlBtUzM=; b=QuSL0814k2I3F/djfWo9jSG3lD
+	OWhw4eJEI/x/oIrWkuOcCnAAGU6CFSUBJWR5JmICRGU5KhePHdslDYfdUwK5VKaOgAQV79r8dA6Gx
+	eC4QQrHYySTcbFv4jH3e/sZiY1/OYFITs7rpYWrntJr0di8Fmw9OMtD/8R3mDZZ0FOA6as/wklv4K
+	Tz+5/uT0TGxpwnwPdOukumoTgodikro+R1HLrGzwyvO5MeUY6ITNWto1/wzJTJidQGk/2xDOQ+RHc
+	cmHcRRkvwi2TcvDsPIBkVKbmAgtM/e/Lyo+yVn3CJYwyumY/wEQaqwJgOB3Wz5mdEEpzjgM9Mp8ye
+	557BgeQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBZvn-0000000EyWz-0Z6y;
-	Mon, 27 May 2024 12:58:27 +0000
-Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136])
+	id 1sBZw9-0000000Eys3-2V5q;
+	Mon, 27 May 2024 12:58:49 +0000
+Received: from mail-yb1-xb33.google.com ([2607:f8b0:4864:20::b33])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBZuU-0000000Exjk-1GtA
+	id 1sBZvA-0000000EyAY-3KzV
 	for linux-mediatek@lists.infradead.org;
-	Mon, 27 May 2024 12:57:08 +0000
-Received: by mail-yw1-x1136.google.com with SMTP id 00721157ae682-62a145e0bb2so25537747b3.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 27 May 2024 05:57:04 -0700 (PDT)
+	Mon, 27 May 2024 12:57:55 +0000
+Received: by mail-yb1-xb33.google.com with SMTP id 3f1490d57ef6-df4e1366da6so5316657276.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 27 May 2024 05:57:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1716814624; x=1717419424; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1716814666; x=1717419466; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=pJJyP+9frURhdd/ZV2qsiiwzKPVnn0nUZRG4Ztdu5Ds=;
-        b=yfRENSO/znGBBDXmi16J8La6XDgBnN7pNz5mbDk9M+8a+d1KwC+o+efhnnqO3omdyk
-         1XQEe36RPiQUTQ6pPI2u7koVP8baWky11wnOJ2T5qvQBlCpAPWf40l0YS/M+EaF2xCvF
-         dCPCR2VRI+GLiJKW198rFaTJGCefBNzqV++W2vO9v9E/3GRwV1Rpt4vLxoPtsw8jFaDx
-         YJQM37yVpjuATh3bgKUeLKSEVL7VNGZI3ZXKVBvD4047Ff/pZ1boLUjWq+aufCYjqwgn
-         ShZ7tj0UlJ4epN1BpRsZEOB5shB4GvCpmFIterZNu2RHeKQ0ZQ7bXaDx+wEjm++tFM7M
-         H8VA==
+        bh=rNZ98tycbIm8gHCECF6fFAUqvVWA7Py4cjGRVlBtUzM=;
+        b=YAfXQ9P7Kdh1v4FJD9mBzGlX/+pKjiki1nC+WVeajx0aVnQi0ZCTEuclKTwEozGogx
+         /JIPiOoFARKOzltzJG9f9IKh4jCL2DqwZGbwuX3rruAb7Bo1SeoiPyqe3hPCXIYzTGwx
+         pxW2pBczrs9PDFAjAmSCLHRSVMySIN9z8gdZI/U6q+xEyHFiXbv3X+NBjG6RyPBcNMum
+         hhou0/P2MGrsDGj/zs9ciai9UaZkD4pVykN6DtXppN/Pu6wD7Wvjf3Gm2ElcB6TwWOMi
+         z5i+yrCcMAThDLJk8fEFyk9OAkCYJ/TrpfoO83XJbf52XKPigtyfcrg8Lle/oiTMRbWz
+         g2ZA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1716814624; x=1717419424;
+        d=1e100.net; s=20230601; t=1716814666; x=1717419466;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=pJJyP+9frURhdd/ZV2qsiiwzKPVnn0nUZRG4Ztdu5Ds=;
-        b=wr46HFxIzBsz2yqVDKQ1vmozt3HbQec95Oo5ByKIlHBIp91FPnuuRX6BdV29rrnde/
-         aERbtngO3wTa4KffVdn6DSIr0H2LNNnyr4SUN8GBFkafeKf41zrvfOQId4cLgfBRe64n
-         HS+HvdmAeL0rp1oPRO7bA0hUg4xf3x9KFtiqH9HRXH25Z7s1uMmi2wB1owBPdJu7Dm/6
-         1uNrWqmjJ1upTNQFjszVlRONLdrtELhAkB28E7kJSkfPYhLBuaF1pySTB48CYYsxQo7M
-         XfR44fmSt8Id59yK1y0WE/cCwZGI4jK0PChgTH5dXh5m3LohO3mUnnXb89h84egzhM1j
-         r98A==
-X-Forwarded-Encrypted: i=1; AJvYcCVmsXQS5vYn12KZMJgf2yu6s1cccv6xxN5gR7j4jrjjyPQeHSyC4bFKKOmzegil5bd9aMLpudWXdnl9Va9aKSg/dca5ScsVKIXJbJYAWwnn5DKG
-X-Gm-Message-State: AOJu0Yzvjj5navwiUDyja4F5NgsN5mtl6Hto7IfUQddTuh3hhHei+hiv
-	oNbC+Pd29zhNDiUPqsfhBSERmL3UUWcKm0ryXKT1RGCZFuobsRf8PIPWVyUKa9eLquLTllrsJ4j
-	ZfgC88IF1nQ7IkR2MpVyUUFBEK2QsE1Wwa2opLA==
-X-Google-Smtp-Source: AGHT+IHtuitKU1in514NtpJEfJGREAKzOXikcv6xhBvHaqSAyXXF4vYDUv/B437jXNYfH7CNGKFQFe5YOvThvoGTSqk=
-X-Received: by 2002:a25:7486:0:b0:dc2:3f75:1f79 with SMTP id
- 3f1490d57ef6-df772184c54mr8792593276.23.1716814624064; Mon, 27 May 2024
- 05:57:04 -0700 (PDT)
+        bh=rNZ98tycbIm8gHCECF6fFAUqvVWA7Py4cjGRVlBtUzM=;
+        b=kWeTj+9x5y/n39s61lDQ7F5Tci5iNAzsGqtSF8E9objal/E60cwoJAPy8nOz2snC6R
+         Td7Dyw0ogikboQK+gB3qOt6oT5WIfYANsOzlPn03qN+9mf5DI+vfZyQKBU7lC6ugG8c1
+         HlN/aqH4Walk+MbAJ4d5oHjtFWFNZSNcqqbXRzGNH/hN6zUCa+LIMEXEPFVGPffUXXDr
+         WPzq38zCDkGQYlSD9Dk9IV0J5jljYqZyrtDzfx56ZUkgDXrv2Fpsd5msyMRu3YySNyFn
+         fjPkp6D0EnmLIylFVc8X4njVD+myRV8o4hI++s4mhm3/MgSZlY8OGGaTnG9K3JX+n13u
+         9Fgw==
+X-Forwarded-Encrypted: i=1; AJvYcCVEtAMwRkzxwZPAMv8qiIiNYVyNr9iHIY6u1EMmmfwBfH42jQIlzvnEZnrE6QjFlnpslnhOGaNXrrtxygJLsPI7QZhmSPOLJxsVix/Vd/d2lN2g
+X-Gm-Message-State: AOJu0YxXqBmbI/T2n3g2ISvEDFYCvF0LB8qCYSyqNkboDH9bHDxijBEw
+	h10PHe0JdCdkvyK1GdYD7wI8aqxnmFLEQvYkdPKLR/WmVYdiod5F3lNQKcX1O9pyJdoWpeVz3Fu
+	YLjVErNci+OQlIzP9nyopSBUIUm91cpHCi9gguw==
+X-Google-Smtp-Source: AGHT+IGPHGbdeDgQwNEq4mWXFwTqV0k8iDBOK2TyTZ4utk5viKokv4dr91DnLp+C01zzJZrl1Jzg3NthvUqaC/NhrDk=
+X-Received: by 2002:a05:6902:70a:b0:df7:9946:b32c with SMTP id
+ 3f1490d57ef6-df79946bc95mr6983978276.29.1716814666366; Mon, 27 May 2024
+ 05:57:46 -0700 (PDT)
 MIME-Version: 1.0
-References: <20240504-pinctrl-cleanup-v2-0-26c5f2dc1181@nxp.com> <20240504-pinctrl-cleanup-v2-3-26c5f2dc1181@nxp.com>
-In-Reply-To: <20240504-pinctrl-cleanup-v2-3-26c5f2dc1181@nxp.com>
+References: <20240504-pinctrl-cleanup-v2-0-26c5f2dc1181@nxp.com> <20240504-pinctrl-cleanup-v2-8-26c5f2dc1181@nxp.com>
+In-Reply-To: <20240504-pinctrl-cleanup-v2-8-26c5f2dc1181@nxp.com>
 From: Linus Walleij <linus.walleij@linaro.org>
-Date: Mon, 27 May 2024 14:56:53 +0200
-Message-ID: <CACRpkdZ+YPAXTNU-kaA8ywBLW0RpGJBpXJqPD7aJ+B1V=axPrg@mail.gmail.com>
-Subject: Re: [PATCH v2 03/20] pinctrl: stm32: Use scope based of_node_put() cleanups
+Date: Mon, 27 May 2024 14:57:35 +0200
+Message-ID: <CACRpkdbt0kE6VP3O+63U1rmJ_JKRvWENCnETT4f+mvNMMphLeA@mail.gmail.com>
+Subject: Re: [PATCH v2 08/20] pinctrl: st: Use scope based of_node_put() cleanups
 To: "Peng Fan (OSS)" <peng.fan@oss.nxp.com>
 Cc: Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
 	Dvorkin Dmitry <dvorkin@tibbo.com>, Wells Lu <wellslutw@gmail.com>, 
@@ -101,8 +101,8 @@ Cc: Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240527_055706_396152_BFF67DF9 
-X-CRM114-Status: UNSURE (   8.07  )
+X-CRM114-CacheID: sfid-20240527_055749_043247_190C81D3 
+X-CRM114-Status: UNSURE (   7.97  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -118,7 +118,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, May 4, 2024 at 3:13=E2=80=AFPM Peng Fan (OSS) <peng.fan@oss.nxp.com=
+On Sat, May 4, 2024 at 3:14=E2=80=AFPM Peng Fan (OSS) <peng.fan@oss.nxp.com=
 > wrote:
 
 > From: Peng Fan <peng.fan@nxp.com>
