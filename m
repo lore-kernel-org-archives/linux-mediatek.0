@@ -4,76 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51F6EC25B79
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 May 2024 14:18:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A837C25B74
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 May 2024 14:22:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JtPaFfJwQU+Qgy4GqqY/nTSyim9B83lSS4yG6t6sdfQ=; b=Nwa+CoRSv7VDHxj4L3qoaK9N2E
-	L0zK5loqA3w751QvzKY5zbgMS6AejRLkI9twOrBAbz/u9/2qJG2wqQvZcVGBboQG9X6li4oQbXcr8
-	eweK3yi2Twvxu6ZW/AX4P48Gl7V5aOc5LBGWiZU7zhDukSFFzzdkAHlPeekV1dFyV+CIhES6e6cYp
-	QlYSjOcHec/nk0fi3xNW6pjTui/yFqc9oZM0Sb9JKfQTmOrG7HLK5gh2iOM1aVf6N2c4BEpmL0idI
-	z4QfuMJDCx9/obzkC66VrAuw53ZSW1Ju/fdvBjcgPN7NiEAwbQwT5rAuNEAs3aSDbzxn7anABU0Zr
-	BV17kBKg==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=hiOQ8/ye/TAlumJArsn1YKtZ+Y0SMuYKwQl/8eLNSX4=; b=UX+PWunPSZeQOA
+	mY3PcW8Ijab9wnsjSU7nxUt9BQK400Ug4Wao7iMW97hRdM7Wit1dk7OxM2m4x+CEVJRjQynUS/f9M
+	GC7EJN+RHoxl2RwHA6OCDoBGjz30oeMCZpvIG3nakkyrUgaGM7w/0n9Cli252LVbsy4MpOIy/ic8S
+	rsN40j9XEYFxNrj8XUS3Vn/nVExFUIinRtnj4yWGrMhZZ4NvZmYzWdaHPj++Aa5YLWZlSb/b9RX83
+	MEiP2mwv5DlBT52Ccmh9MWCBdCOZo7VTyTx2hBmScWRkN57kuHaNf2LPD4axfIL2ZRSW1UxrR+6u9
+	Wpg0zwQEd8F8Nu4UHkCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBbAo-0000000FJkB-3GD5;
-	Mon, 27 May 2024 14:18:02 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1sBbEw-0000000FKqB-07v6;
+	Mon, 27 May 2024 14:22:18 +0000
+Received: from mxout2.routing.net ([2a03:2900:1:a::b])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBbAk-0000000FJiN-0RKs;
-	Mon, 27 May 2024 14:17:59 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 5678161244;
-	Mon, 27 May 2024 14:17:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 26680C2BBFC;
-	Mon, 27 May 2024 14:17:55 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1716819477;
-	bh=XYkTLSRQDTcxmvQu5eHrjpEjE9SsJfxPR7keFDJH58g=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=DvWkoY4B/KX7YYfunqKxbVkM2CnpujKIzYuj/1mdyfQ/HXDfuvp21e5ivem5BMu/M
-	 Q0pqVFyyIVM92mp8+fCAUPMcu3Ux2q9Mncmx8tAazTMJALIKfqFHn8TDJgTseTlaVL
-	 FzUblO7S7a1t71kHytiYEXZoWHMYpZfpSkYPZ1WphH0ae1vAmiFLOU3lSQoaxOdmpH
-	 uDRYNhwQegznLLf6LtG4FPL8O+xAzmCo2s8veZTAN1hGrohKkv+jesFKb3qAFB0zOZ
-	 flCzXZ0Y78gJiI2+TTm+IWJxCtHRJpCmQZXXolfNhVmS7T6yjY4nDeUJOZF/Q9iXC+
-	 MC/bIXHAQmOoA==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: Leon Yen <leon.yen@mediatek.com>,
-	Ming Yen Hsieh <MingYen.Hsieh@mediatek.com>,
-	Felix Fietkau <nbd@nbd.name>,
-	Sasha Levin <sashal@kernel.org>,
-	lorenzo@kernel.org,
-	ryder.lee@mediatek.com,
-	kvalo@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	deren.wu@mediatek.com,
-	horms@kernel.org,
-	kernel@mattwhitlock.name,
-	wang.zhao@mediatek.com,
-	linux-wireless@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.1 13/17] wifi: mt76: mt7921s: fix potential hung tasks during chip recovery
-Date: Mon, 27 May 2024 10:16:50 -0400
-Message-ID: <20240527141712.3853988-13-sashal@kernel.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240527141712.3853988-1-sashal@kernel.org>
-References: <20240527141712.3853988-1-sashal@kernel.org>
+	id 1sBbEs-0000000FKoV-0euI;
+	Mon, 27 May 2024 14:22:16 +0000
+Received: from mxbox3.masterlogin.de (unknown [192.168.10.78])
+	by mxout2.routing.net (Postfix) with ESMTP id 3688260415;
+	Mon, 27 May 2024 14:22:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+	s=20200217; t=1716819731;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=hiOQ8/ye/TAlumJArsn1YKtZ+Y0SMuYKwQl/8eLNSX4=;
+	b=OLD9Gj1wgQoy8RQ9C5N9q1VKaejTAVsQYXgo5m89XFj1Gv0Gi8stniepnea8ef8RRN8B4O
+	Z9Z6cC15RCp5UCpS2pVQQE+lwTL9w3U3aGq3oX1UTDLQ291Vpfhu19ZQrknpDZ6dkynSdM
+	bmE3+yt3iyLHCbo90ps4Qu5nSbJ9BOU=
+Received: from frank-G5.. (fttx-pool-217.61.154.6.bambit.de [217.61.154.6])
+	by mxbox3.masterlogin.de (Postfix) with ESMTPSA id 2125836014D;
+	Mon, 27 May 2024 14:22:10 +0000 (UTC)
+From: Frank Wunderlich <linux@fw-web.de>
+To: Felix Fietkau <nbd@nbd.name>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [net v2] net: ethernet: mtk_eth_soc: handle dma buffer size soc specific
+Date: Mon, 27 May 2024 16:21:42 +0200
+Message-Id: <20240527142142.126796-1-linux@fw-web.de>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.1.92
 Content-Transfer-Encoding: 8bit
+X-Mail-ID: 909db082-f0a2-4ba0-9a81-10d1f1ce0d2f
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240527_071758_406723_AB4CBC5C 
-X-CRM114-Status: GOOD (  11.93  )
+X-CRM114-CacheID: sfid-20240527_072214_546390_66E3805E 
+X-CRM114-Status: GOOD (  18.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,108 +73,367 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, linux-mediatek@lists.infradead.org, John Crispin <john@phrozen.org>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Leon Yen <leon.yen@mediatek.com>
+From: Frank Wunderlich <frank-w@public-files.de>
 
-[ Upstream commit ecf0b2b8a37c8464186620bef37812a117ff6366 ]
+The mainline MTK ethernet driver suffers long time from rarly but
+annoying tx queue timeouts. We think that this is caused by fixed
+dma sizes hardcoded for all SoCs.
 
-During chip recovery (e.g. chip reset), there is a possible situation that
-kernel worker reset_work is holding the lock and waiting for kernel thread
-stat_worker to be parked, while stat_worker is waiting for the release of
-the same lock.
-It causes a deadlock resulting in the dumping of hung tasks messages and
-possible rebooting of the device.
+Use the dma-size implementation from SDK in a per SoC manner.
 
-This patch prevents the execution of stat_worker during the chip recovery.
-
-Signed-off-by: Leon Yen <leon.yen@mediatek.com>
-Signed-off-by: Ming Yen Hsieh <MingYen.Hsieh@mediatek.com>
-Signed-off-by: Felix Fietkau <nbd@nbd.name>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
+Fixes: 656e705243fd ("net-next: mediatek: add support for MT7623 ethernet")
+Suggested-by: Daniel Golle <daniel@makrotopia.org>
+Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 ---
- drivers/net/wireless/mediatek/mt76/mt7921/mac.c      | 2 ++
- drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c  | 2 --
- drivers/net/wireless/mediatek/mt76/mt7921/sdio_mac.c | 2 --
- drivers/net/wireless/mediatek/mt76/sdio.c            | 3 ++-
- 4 files changed, 4 insertions(+), 5 deletions(-)
+sorry for multiple posting in first version
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-index 49ddca84f7862..cae7c21ca1f8b 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-@@ -883,6 +883,7 @@ void mt7921_mac_reset_work(struct work_struct *work)
- 	int i, ret;
+based on SDK:
+
+https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds/+/fac194d6253d339e15c651c052b532a449a04d6e
+
+v2:
+- fix unused variable 'addr' in 32bit build
+---
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 105 +++++++++++++-------
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h |   9 +-
+ 2 files changed, 78 insertions(+), 36 deletions(-)
+
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index cae46290a7ae..f1ff1be73926 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -1131,9 +1131,9 @@ static int mtk_init_fq_dma(struct mtk_eth *eth)
+ {
+ 	const struct mtk_soc_data *soc = eth->soc;
+ 	dma_addr_t phy_ring_tail;
+-	int cnt = MTK_QDMA_RING_SIZE;
++	int cnt = soc->tx.fq_dma_size;
+ 	dma_addr_t dma_addr;
+-	int i;
++	int i, j, len;
  
- 	dev_dbg(dev->mt76.dev, "chip reset\n");
-+	set_bit(MT76_RESET, &dev->mphy.state);
- 	dev->hw_full_reset = true;
- 	ieee80211_stop_queues(hw);
+ 	if (MTK_HAS_CAPS(eth->soc->caps, MTK_SRAM))
+ 		eth->scratch_ring = eth->sram_base;
+@@ -1142,40 +1142,46 @@ static int mtk_init_fq_dma(struct mtk_eth *eth)
+ 						       cnt * soc->tx.desc_size,
+ 						       &eth->phy_scratch_ring,
+ 						       GFP_KERNEL);
++
+ 	if (unlikely(!eth->scratch_ring))
+ 		return -ENOMEM;
  
-@@ -911,6 +912,7 @@ void mt7921_mac_reset_work(struct work_struct *work)
+-	eth->scratch_head = kcalloc(cnt, MTK_QDMA_PAGE_SIZE, GFP_KERNEL);
+-	if (unlikely(!eth->scratch_head))
+-		return -ENOMEM;
++	phy_ring_tail = eth->phy_scratch_ring + soc->tx.desc_size * (cnt - 1);
+ 
+-	dma_addr = dma_map_single(eth->dma_dev,
+-				  eth->scratch_head, cnt * MTK_QDMA_PAGE_SIZE,
+-				  DMA_FROM_DEVICE);
+-	if (unlikely(dma_mapping_error(eth->dma_dev, dma_addr)))
+-		return -ENOMEM;
++	for (j = 0; j < DIV_ROUND_UP(soc->tx.fq_dma_size, MTK_FQ_DMA_LENGTH); j++) {
++		len = min_t(int, cnt - j * MTK_FQ_DMA_LENGTH, MTK_FQ_DMA_LENGTH);
++		eth->scratch_head[j] = kcalloc(len, MTK_QDMA_PAGE_SIZE, GFP_KERNEL);
+ 
+-	phy_ring_tail = eth->phy_scratch_ring + soc->tx.desc_size * (cnt - 1);
++		if (unlikely(!eth->scratch_head[j]))
++			return -ENOMEM;
+ 
+-	for (i = 0; i < cnt; i++) {
+-		dma_addr_t addr = dma_addr + i * MTK_QDMA_PAGE_SIZE;
+-		struct mtk_tx_dma_v2 *txd;
++		dma_addr = dma_map_single(eth->dma_dev,
++					  eth->scratch_head[j], len * MTK_QDMA_PAGE_SIZE,
++					  DMA_FROM_DEVICE);
+ 
+-		txd = eth->scratch_ring + i * soc->tx.desc_size;
+-		txd->txd1 = addr;
+-		if (i < cnt - 1)
+-			txd->txd2 = eth->phy_scratch_ring +
+-				    (i + 1) * soc->tx.desc_size;
++		if (unlikely(dma_mapping_error(eth->dma_dev, dma_addr)))
++			return -ENOMEM;
+ 
+-		txd->txd3 = TX_DMA_PLEN0(MTK_QDMA_PAGE_SIZE);
+-		if (MTK_HAS_CAPS(soc->caps, MTK_36BIT_DMA))
+-			txd->txd3 |= TX_DMA_PREP_ADDR64(addr);
+-		txd->txd4 = 0;
+-		if (mtk_is_netsys_v2_or_greater(eth)) {
+-			txd->txd5 = 0;
+-			txd->txd6 = 0;
+-			txd->txd7 = 0;
+-			txd->txd8 = 0;
++		for (i = 0; i < cnt; i++) {
++			struct mtk_tx_dma_v2 *txd;
++
++			txd = eth->scratch_ring + (j * MTK_FQ_DMA_LENGTH + i) * soc->tx.desc_size;
++			txd->txd1 = dma_addr + i * MTK_QDMA_PAGE_SIZE;
++			if (j * MTK_FQ_DMA_LENGTH + i < cnt)
++				txd->txd2 = eth->phy_scratch_ring +
++					    (j * MTK_FQ_DMA_LENGTH + i + 1) * soc->tx.desc_size;
++
++			txd->txd3 = TX_DMA_PLEN0(MTK_QDMA_PAGE_SIZE);
++			if (MTK_HAS_CAPS(soc->caps, MTK_36BIT_DMA))
++				txd->txd3 |= TX_DMA_PREP_ADDR64(dma_addr + i * MTK_QDMA_PAGE_SIZE);
++
++			txd->txd4 = 0;
++			if (mtk_is_netsys_v2_or_greater(eth)) {
++				txd->txd5 = 0;
++				txd->txd6 = 0;
++				txd->txd7 = 0;
++				txd->txd8 = 0;
++			}
+ 		}
  	}
  
- 	dev->hw_full_reset = false;
-+	clear_bit(MT76_RESET, &dev->mphy.state);
- 	pm->suspended = false;
- 	ieee80211_wake_queues(hw);
- 	ieee80211_iterate_active_interfaces(hw,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c
-index 8dd60408b117e..cb20ddcad137c 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c
-@@ -78,7 +78,6 @@ int mt7921e_mac_reset(struct mt7921_dev *dev)
- 	mt76_wr(dev, MT_WFDMA0_HOST_INT_ENA, 0);
- 	mt76_wr(dev, MT_PCIE_MAC_INT_ENABLE, 0x0);
+@@ -2457,7 +2463,7 @@ static int mtk_tx_alloc(struct mtk_eth *eth)
+ 	if (MTK_HAS_CAPS(soc->caps, MTK_QDMA))
+ 		ring_size = MTK_QDMA_RING_SIZE;
+ 	else
+-		ring_size = MTK_DMA_SIZE;
++		ring_size = soc->tx.dma_size;
  
--	set_bit(MT76_RESET, &dev->mphy.state);
- 	set_bit(MT76_MCU_RESET, &dev->mphy.state);
- 	wake_up(&dev->mt76.mcu.wait);
- 	skb_queue_purge(&dev->mt76.mcu.res_q);
-@@ -129,7 +128,6 @@ int mt7921e_mac_reset(struct mt7921_dev *dev)
+ 	ring->buf = kcalloc(ring_size, sizeof(*ring->buf),
+ 			       GFP_KERNEL);
+@@ -2465,8 +2471,8 @@ static int mtk_tx_alloc(struct mtk_eth *eth)
+ 		goto no_tx_mem;
  
- 	err = __mt7921_start(&dev->phy);
- out:
--	clear_bit(MT76_RESET, &dev->mphy.state);
+ 	if (MTK_HAS_CAPS(soc->caps, MTK_SRAM)) {
+-		ring->dma = eth->sram_base + ring_size * sz;
+-		ring->phys = eth->phy_scratch_ring + ring_size * (dma_addr_t)sz;
++		ring->dma = eth->sram_base + soc->tx.fq_dma_size * sz;
++		ring->phys = eth->phy_scratch_ring + soc->tx.fq_dma_size * (dma_addr_t)sz;
+ 	} else {
+ 		ring->dma = dma_alloc_coherent(eth->dma_dev, ring_size * sz,
+ 					       &ring->phys, GFP_KERNEL);
+@@ -2588,6 +2594,7 @@ static void mtk_tx_clean(struct mtk_eth *eth)
+ static int mtk_rx_alloc(struct mtk_eth *eth, int ring_no, int rx_flag)
+ {
+ 	const struct mtk_reg_map *reg_map = eth->soc->reg_map;
++	const struct mtk_soc_data *soc = eth->soc;
+ 	struct mtk_rx_ring *ring;
+ 	int rx_data_len, rx_dma_size, tx_ring_size;
+ 	int i;
+@@ -2595,7 +2602,7 @@ static int mtk_rx_alloc(struct mtk_eth *eth, int ring_no, int rx_flag)
+ 	if (MTK_HAS_CAPS(eth->soc->caps, MTK_QDMA))
+ 		tx_ring_size = MTK_QDMA_RING_SIZE;
+ 	else
+-		tx_ring_size = MTK_DMA_SIZE;
++		tx_ring_size = soc->tx.dma_size;
  
- 	local_bh_disable();
- 	napi_enable(&dev->mt76.tx_napi);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mac.c
-index fd07b66233920..46af03803de73 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mac.c
-@@ -98,7 +98,6 @@ int mt7921s_mac_reset(struct mt7921_dev *dev)
- 	mt76_connac_free_pending_tx_skbs(&dev->pm, NULL);
- 	mt76_txq_schedule_all(&dev->mphy);
- 	mt76_worker_disable(&dev->mt76.tx_worker);
--	set_bit(MT76_RESET, &dev->mphy.state);
- 	set_bit(MT76_MCU_RESET, &dev->mphy.state);
- 	wake_up(&dev->mt76.mcu.wait);
- 	skb_queue_purge(&dev->mt76.mcu.res_q);
-@@ -135,7 +134,6 @@ int mt7921s_mac_reset(struct mt7921_dev *dev)
+ 	if (rx_flag == MTK_RX_FLAGS_QDMA) {
+ 		if (ring_no)
+@@ -2610,7 +2617,7 @@ static int mtk_rx_alloc(struct mtk_eth *eth, int ring_no, int rx_flag)
+ 		rx_dma_size = MTK_HW_LRO_DMA_SIZE;
+ 	} else {
+ 		rx_data_len = ETH_DATA_LEN;
+-		rx_dma_size = MTK_DMA_SIZE;
++		rx_dma_size = soc->rx.dma_size;
+ 	}
  
- 	err = __mt7921_start(&dev->phy);
- out:
--	clear_bit(MT76_RESET, &dev->mphy.state);
+ 	ring->frag_size = mtk_max_frag_size(rx_data_len);
+@@ -3139,7 +3146,10 @@ static void mtk_dma_free(struct mtk_eth *eth)
+ 			mtk_rx_clean(eth, &eth->rx_ring[i], false);
+ 	}
  
- 	mt76_worker_enable(&dev->mt76.tx_worker);
+-	kfree(eth->scratch_head);
++	for (i = 0; i < DIV_ROUND_UP(soc->tx.fq_dma_size, MTK_FQ_DMA_LENGTH); i++) {
++		kfree(eth->scratch_head[i]);
++		eth->scratch_head[i] = NULL;
++	}
+ }
  
-diff --git a/drivers/net/wireless/mediatek/mt76/sdio.c b/drivers/net/wireless/mediatek/mt76/sdio.c
-index fc4fb94635645..2a81c2f663449 100644
---- a/drivers/net/wireless/mediatek/mt76/sdio.c
-+++ b/drivers/net/wireless/mediatek/mt76/sdio.c
-@@ -499,7 +499,8 @@ static void mt76s_tx_status_data(struct mt76_worker *worker)
- 	dev = container_of(sdio, struct mt76_dev, sdio);
+ static bool mtk_hw_reset_check(struct mtk_eth *eth)
+@@ -5052,11 +5062,14 @@ static const struct mtk_soc_data mt2701_data = {
+ 		.desc_size = sizeof(struct mtk_tx_dma),
+ 		.dma_max_len = MTK_TX_DMA_BUF_LEN,
+ 		.dma_len_offset = 16,
++		.dma_size = MTK_DMA_SIZE(2K),
++		.fq_dma_size = MTK_DMA_SIZE(2K),
+ 	},
+ 	.rx = {
+ 		.desc_size = sizeof(struct mtk_rx_dma),
+ 		.irq_done_mask = MTK_RX_DONE_INT,
+ 		.dma_l4_valid = RX_DMA_L4_VALID,
++		.dma_size = MTK_DMA_SIZE(2K),
+ 		.dma_max_len = MTK_TX_DMA_BUF_LEN,
+ 		.dma_len_offset = 16,
+ 	},
+@@ -5076,11 +5089,14 @@ static const struct mtk_soc_data mt7621_data = {
+ 		.desc_size = sizeof(struct mtk_tx_dma),
+ 		.dma_max_len = MTK_TX_DMA_BUF_LEN,
+ 		.dma_len_offset = 16,
++		.dma_size = MTK_DMA_SIZE(2K),
++		.fq_dma_size = MTK_DMA_SIZE(2K),
+ 	},
+ 	.rx = {
+ 		.desc_size = sizeof(struct mtk_rx_dma),
+ 		.irq_done_mask = MTK_RX_DONE_INT,
+ 		.dma_l4_valid = RX_DMA_L4_VALID,
++		.dma_size = MTK_DMA_SIZE(2K),
+ 		.dma_max_len = MTK_TX_DMA_BUF_LEN,
+ 		.dma_len_offset = 16,
+ 	},
+@@ -5102,11 +5118,14 @@ static const struct mtk_soc_data mt7622_data = {
+ 		.desc_size = sizeof(struct mtk_tx_dma),
+ 		.dma_max_len = MTK_TX_DMA_BUF_LEN,
+ 		.dma_len_offset = 16,
++		.dma_size = MTK_DMA_SIZE(2K),
++		.fq_dma_size = MTK_DMA_SIZE(2K),
+ 	},
+ 	.rx = {
+ 		.desc_size = sizeof(struct mtk_rx_dma),
+ 		.irq_done_mask = MTK_RX_DONE_INT,
+ 		.dma_l4_valid = RX_DMA_L4_VALID,
++		.dma_size = MTK_DMA_SIZE(2K),
+ 		.dma_max_len = MTK_TX_DMA_BUF_LEN,
+ 		.dma_len_offset = 16,
+ 	},
+@@ -5127,11 +5146,14 @@ static const struct mtk_soc_data mt7623_data = {
+ 		.desc_size = sizeof(struct mtk_tx_dma),
+ 		.dma_max_len = MTK_TX_DMA_BUF_LEN,
+ 		.dma_len_offset = 16,
++		.dma_size = MTK_DMA_SIZE(2K),
++		.fq_dma_size = MTK_DMA_SIZE(2K),
+ 	},
+ 	.rx = {
+ 		.desc_size = sizeof(struct mtk_rx_dma),
+ 		.irq_done_mask = MTK_RX_DONE_INT,
+ 		.dma_l4_valid = RX_DMA_L4_VALID,
++		.dma_size = MTK_DMA_SIZE(2K),
+ 		.dma_max_len = MTK_TX_DMA_BUF_LEN,
+ 		.dma_len_offset = 16,
+ 	},
+@@ -5150,11 +5172,14 @@ static const struct mtk_soc_data mt7629_data = {
+ 		.desc_size = sizeof(struct mtk_tx_dma),
+ 		.dma_max_len = MTK_TX_DMA_BUF_LEN,
+ 		.dma_len_offset = 16,
++		.dma_size = MTK_DMA_SIZE(2K),
++		.fq_dma_size = MTK_DMA_SIZE(2K),
+ 	},
+ 	.rx = {
+ 		.desc_size = sizeof(struct mtk_rx_dma),
+ 		.irq_done_mask = MTK_RX_DONE_INT,
+ 		.dma_l4_valid = RX_DMA_L4_VALID,
++		.dma_size = MTK_DMA_SIZE(2K),
+ 		.dma_max_len = MTK_TX_DMA_BUF_LEN,
+ 		.dma_len_offset = 16,
+ 	},
+@@ -5176,6 +5201,8 @@ static const struct mtk_soc_data mt7981_data = {
+ 		.desc_size = sizeof(struct mtk_tx_dma_v2),
+ 		.dma_max_len = MTK_TX_DMA_BUF_LEN_V2,
+ 		.dma_len_offset = 8,
++		.dma_size = MTK_DMA_SIZE(4K),
++		.fq_dma_size = MTK_DMA_SIZE(2K),
+ 	},
+ 	.rx = {
+ 		.desc_size = sizeof(struct mtk_rx_dma),
+@@ -5183,6 +5210,7 @@ static const struct mtk_soc_data mt7981_data = {
+ 		.dma_l4_valid = RX_DMA_L4_VALID_V2,
+ 		.dma_max_len = MTK_TX_DMA_BUF_LEN,
+ 		.dma_len_offset = 16,
++		.dma_size = MTK_DMA_SIZE(1K),
+ 	},
+ };
  
- 	while (true) {
--		if (test_bit(MT76_REMOVED, &dev->phy.state))
-+		if (test_bit(MT76_RESET, &dev->phy.state) ||
-+		    test_bit(MT76_REMOVED, &dev->phy.state))
- 			break;
+@@ -5202,6 +5230,8 @@ static const struct mtk_soc_data mt7986_data = {
+ 		.desc_size = sizeof(struct mtk_tx_dma_v2),
+ 		.dma_max_len = MTK_TX_DMA_BUF_LEN_V2,
+ 		.dma_len_offset = 8,
++		.dma_size = MTK_DMA_SIZE(4K),
++		.fq_dma_size = MTK_DMA_SIZE(2K),
+ 	},
+ 	.rx = {
+ 		.desc_size = sizeof(struct mtk_rx_dma),
+@@ -5209,6 +5239,7 @@ static const struct mtk_soc_data mt7986_data = {
+ 		.dma_l4_valid = RX_DMA_L4_VALID_V2,
+ 		.dma_max_len = MTK_TX_DMA_BUF_LEN,
+ 		.dma_len_offset = 16,
++		.dma_size = MTK_DMA_SIZE(1K),
+ 	},
+ };
  
- 		if (!dev->drv->tx_status_data(dev, &update))
+@@ -5228,6 +5259,8 @@ static const struct mtk_soc_data mt7988_data = {
+ 		.desc_size = sizeof(struct mtk_tx_dma_v2),
+ 		.dma_max_len = MTK_TX_DMA_BUF_LEN_V2,
+ 		.dma_len_offset = 8,
++		.dma_size = MTK_DMA_SIZE(4K),
++		.fq_dma_size = MTK_DMA_SIZE(4K),
+ 	},
+ 	.rx = {
+ 		.desc_size = sizeof(struct mtk_rx_dma_v2),
+@@ -5235,6 +5268,7 @@ static const struct mtk_soc_data mt7988_data = {
+ 		.dma_l4_valid = RX_DMA_L4_VALID_V2,
+ 		.dma_max_len = MTK_TX_DMA_BUF_LEN_V2,
+ 		.dma_len_offset = 8,
++		.dma_size = MTK_DMA_SIZE(1K),
+ 	},
+ };
+ 
+@@ -5249,6 +5283,8 @@ static const struct mtk_soc_data rt5350_data = {
+ 		.desc_size = sizeof(struct mtk_tx_dma),
+ 		.dma_max_len = MTK_TX_DMA_BUF_LEN,
+ 		.dma_len_offset = 16,
++		.dma_size = MTK_DMA_SIZE(2K),
++		.fq_dma_size = MTK_DMA_SIZE(2K),
+ 	},
+ 	.rx = {
+ 		.desc_size = sizeof(struct mtk_rx_dma),
+@@ -5256,6 +5292,7 @@ static const struct mtk_soc_data rt5350_data = {
+ 		.dma_l4_valid = RX_DMA_L4_VALID_PDMA,
+ 		.dma_max_len = MTK_TX_DMA_BUF_LEN,
+ 		.dma_len_offset = 16,
++		.dma_size = MTK_DMA_SIZE(2K),
+ 	},
+ };
+ 
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+index 4eab30b44070..f5174f6cb1bb 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+@@ -32,7 +32,9 @@
+ #define MTK_TX_DMA_BUF_LEN	0x3fff
+ #define MTK_TX_DMA_BUF_LEN_V2	0xffff
+ #define MTK_QDMA_RING_SIZE	2048
+-#define MTK_DMA_SIZE		512
++#define MTK_DMA_SIZE(x)		(SZ_##x)
++#define MTK_FQ_DMA_HEAD		32
++#define MTK_FQ_DMA_LENGTH	2048
+ #define MTK_RX_ETH_HLEN		(ETH_HLEN + ETH_FCS_LEN)
+ #define MTK_RX_HLEN		(NET_SKB_PAD + MTK_RX_ETH_HLEN + NET_IP_ALIGN)
+ #define MTK_DMA_DUMMY_DESC	0xffffffff
+@@ -1176,6 +1178,8 @@ struct mtk_soc_data {
+ 		u32	desc_size;
+ 		u32	dma_max_len;
+ 		u32	dma_len_offset;
++		u32	dma_size;
++		u32	fq_dma_size;
+ 	} tx;
+ 	struct {
+ 		u32	desc_size;
+@@ -1183,6 +1187,7 @@ struct mtk_soc_data {
+ 		u32	dma_l4_valid;
+ 		u32	dma_max_len;
+ 		u32	dma_len_offset;
++		u32	dma_size;
+ 	} rx;
+ };
+ 
+@@ -1264,7 +1269,7 @@ struct mtk_eth {
+ 	struct napi_struct		rx_napi;
+ 	void				*scratch_ring;
+ 	dma_addr_t			phy_scratch_ring;
+-	void				*scratch_head;
++	void				*scratch_head[MTK_FQ_DMA_HEAD];
+ 	struct clk			*clks[MTK_CLK_MAX];
+ 
+ 	struct mii_bus			*mii_bus;
 -- 
-2.43.0
+2.34.1
 
 
