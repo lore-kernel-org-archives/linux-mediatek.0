@@ -4,64 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C82E4C25B74
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 May 2024 22:30:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61B90C25B74
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 May 2024 23:43:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=BUF1iCTsSeejwUjwPAfIGGoxajcclmOzCEE7eEq3HaU=; b=yw2ODzEZDsZ071Tv7FNLO14tkh
-	CBF/MfEwOmpsx13WkwO5K24kzVBpWSXa5gW6sRKXEkX9lvqUoNcedwcSVeqh+X+JlAGgtRhBNwEim
-	h9RpL/LMJNAAsb0125ob8CGEnMe+2OWAa4X9wQUdMPmXFYddflYkyNqMK35oFetnzXvgW7BiuggJu
-	Z4PMB1yHRONtuQKZwPJ5W13/BE7uJ9HojaP/ZlnS+xjRoxeWzAl7nRqhNniqzCqVIV2KXql0yl19E
-	/f8FFd0OagwUZSKe5x4xKKUWAIW+XPcpxqQfakuhNqUscI4DqHKIYU3ufPTFYhNmE09UFcMAWMT0W
-	oudohpvQ==;
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=IfhPK1L6y3rw017RUONTn5kQQgIIO20S7PuQcjiORbE=; b=YvkPjqrfu296+7XRovUG9K8T4c
+	lPImra5iR5sRJcQFsy8BBb1dhwXMhHasxr7Zus+LwZmkQ53F+kBVsQn0oxH+vhjdGVAW5/enMN1CI
+	WSGDyH+GfM3pDcEYT0La26bNYQ8hCZWO2pmV35M9EyR5eEwau1/VGDv9GBsaccKV6c4vjzWNDoxm9
+	OOWcVTS+SK9lvLtzv5WRgIjLkrRrNGYH19EYbsSRLsYCfXDrx5WKr6PKHIP5m6BtqvNetXqKT3HIU
+	SxreGJkOJrL2eiFfOJti/cZ/rgxTZnoGeTZecC0kLAQcz3Ex4XrA/BbpP3JZEIkrKxtO4OdUEWNBf
+	THaCn8Og==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBirO-0000000GUpn-3EMe;
-	Mon, 27 May 2024 22:30:30 +0000
-Received: from fgw21-7.mail.saunalahti.fi ([62.142.5.82])
+	id 1sBjzZ-0000000Gbh6-1nyC;
+	Mon, 27 May 2024 23:43:01 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBhsl-0000000GNhN-42xv
-	for linux-mediatek@lists.infradead.org;
-	Mon, 27 May 2024 21:27:54 +0000
-Received: from localhost (88-113-26-230.elisa-laajakaista.fi [88.113.26.230])
-	by fgw22.mail.saunalahti.fi (Halon) with ESMTP
-	id f5f62320-1c6f-11ef-8e2a-005056bdf889;
-	Tue, 28 May 2024 00:27:47 +0300 (EEST)
-From: Andy Shevchenko <andy.shevchenko@gmail.com>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	linux-gpio@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	imx@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-mips@vger.kernel.org
-Cc: Dong Aisheng <aisheng.dong@nxp.com>,
-	Fabio Estevam <festevam@gmail.com>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Jacky Bai <ping.bai@nxp.com>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Sean Wang <sean.wang@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Paul Cercueil <paul@crapouillou.net>,
-	Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>,
-	Andy Shevchenko <andy.shevchenko@gmail.com>
-Subject: [PATCH v1 00/11] pinctrl: pinmux: Embed and reuse struct pinfunction
-Date: Tue, 28 May 2024 00:24:35 +0300
-Message-ID: <20240527212742.1432960-1-andy.shevchenko@gmail.com>
-X-Mailer: git-send-email 2.45.1
+	id 1sBjzV-0000000GbgK-1x5C;
+	Mon, 27 May 2024 23:42:59 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id B732D61978;
+	Mon, 27 May 2024 23:42:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B19FAC2BBFC;
+	Mon, 27 May 2024 23:42:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1716853371;
+	bh=XUGNe4Vne0m7pN3CMpt65nY5zW6n4Cua0wTpgEl0dxI=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=CZszdni2CFdUNNsdaZQSdg5xyv2aQogk6pGHNwOc4uqLYLDCvOQmcSZ0kn8u+298X
+	 KpbX3qLNsRuXhWknHdCEkOhfPUtWjkSFsPv/EU9WtIAbyPTgRe8GoGqQGAY1AbHeOY
+	 hoXeHswPUOoGseVhJFFKmOC+BI2hk7/79aLxRobZfrbKEi4twNZOdHpv1gAu11jS90
+	 zMPOTHWY7nd4og9A93W8OF0excwX1wAEgcksaNMyiyOH4tkk7veTAP6UflJz42ir9a
+	 jzw7zUJf2XnF1tK81SpynefzpwVwhNpFffDHLDKLMEIz9rLTl+jpUEMu8qwWUqE2nj
+	 eKslG/W+wlbcQ==
+Date: Mon, 27 May 2024 16:42:49 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Chen Ni <nichen@iscas.ac.cn>
+Cc: nbd@nbd.name, sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
+ lorenzo@kernel.org, davem@davemloft.net, edumazet@google.com,
+ pabeni@redhat.com, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net-next v2] net: ethernet: mtk_eth_soc: add missing
+ check for rhashtable_init
+Message-ID: <20240527164249.4aafd105@kernel.org>
+In-Reply-To: <20240517023922.362327-1-nichen@iscas.ac.cn>
+References: <20240517023922.362327-1-nichen@iscas.ac.cn>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240527_142752_438141_F71BA491 
-X-CRM114-Status: UNSURE (   7.19  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240527_164257_587416_E54DA474 
+X-CRM114-Status: GOOD (  16.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,47 +75,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-As promised to Linus W. there is a series that converts struct function_desc
-to use struct pinfunction. With this it both struct group_desc and struct
-function_desc will rely on the generic data types (struct pingroup and struct
-pinfunction respectively).
+On Fri, 17 May 2024 10:39:22 +0800 Chen Ni wrote:
+> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> index cae46290a7ae..f9b8956a8726 100644
+> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> @@ -4957,7 +4957,7 @@ static int mtk_probe(struct platform_device *pdev)
+>  
+>  			eth->ppe[i] = mtk_ppe_init(eth, eth->base + ppe_addr, i);
+>  
+> -			if (!eth->ppe[i]) {
+> +			if (IS_ERR_OR_NULL(eth->ppe[i])) {
+>  				err = -ENOMEM;
 
-I haven't compiled everything, some builds might fail. Anyway, comments, reviews,
-testing are all appreciated.
+You still discard the real error here.
 
-Andy Shevchenko (11):
-  pinctrl: berlin: Make use of struct pinfunction
-  pinctrl: equilibrium: Make use of struct pinfunction
-  pinctrl: ingenic: Provide a helper macro INGENIC_PIN_FUNCTION()
-  pinctrl: mediatek: Provide a helper macro PINCTRL_PIN_FUNCTION()
-  pinctrl: pinmux: Add a convenient define PINCTRL_FUNCTION_DESC()
-  pinctrl: pinmux: Embed struct pinfunction into struct function_desc
-  pinctrl: imx: Convert to use func member
-  pinctrl: ingenic: Convert to use func member
-  pinctrl: keembay: Convert to use func member
-  pinctrl: mediatek: Convert to use func member
-  pinctrl: pinmux: Remove unused members from struct function_desc
+>  				goto err_deinit_ppe;
+>  			}
+> diff --git a/drivers/net/ethernet/mediatek/mtk_ppe.c b/drivers/net/ethernet/mediatek/mtk_ppe.c
+> index 0acee405a749..4895c6febaf8 100644
+> --- a/drivers/net/ethernet/mediatek/mtk_ppe.c
+> +++ b/drivers/net/ethernet/mediatek/mtk_ppe.c
+> @@ -884,12 +884,15 @@ struct mtk_ppe *mtk_ppe_init(struct mtk_eth *eth, void __iomem *base, int index)
+>  	struct mtk_ppe *ppe;
+>  	u32 foe_flow_size;
+>  	void *foe;
+> +	int ret;
+>  
+>  	ppe = devm_kzalloc(dev, sizeof(*ppe), GFP_KERNEL);
+>  	if (!ppe)
+>  		return NULL;
 
- drivers/pinctrl/berlin/berlin.c           |  33 +-
- drivers/pinctrl/berlin/berlin.h           |   6 -
- drivers/pinctrl/core.h                    |   2 +-
- drivers/pinctrl/freescale/pinctrl-imx.c   |  14 +-
- drivers/pinctrl/mediatek/pinctrl-moore.c  |  10 +-
- drivers/pinctrl/mediatek/pinctrl-moore.h  |   6 +
- drivers/pinctrl/mediatek/pinctrl-mt7622.c |  32 +-
- drivers/pinctrl/mediatek/pinctrl-mt7623.c |  42 +-
- drivers/pinctrl/mediatek/pinctrl-mt7629.c |  20 +-
- drivers/pinctrl/mediatek/pinctrl-mt7981.c |  34 +-
- drivers/pinctrl/mediatek/pinctrl-mt7986.c |  24 +-
- drivers/pinctrl/pinctrl-equilibrium.c     |  18 +-
- drivers/pinctrl/pinctrl-equilibrium.h     |  12 -
- drivers/pinctrl/pinctrl-ingenic.c         | 707 +++++++++++-----------
- drivers/pinctrl/pinctrl-keembay.c         |  22 +-
- drivers/pinctrl/pinmux.c                  |  15 +-
- drivers/pinctrl/pinmux.h                  |  19 +-
- 17 files changed, 501 insertions(+), 515 deletions(-)
+Please convert the return NULL in this function to 
+return ERR_PTR(-ENOMEM) and use the error code in mtk_probe()
 
--- 
-2.45.1
+> -	rhashtable_init(&ppe->l2_flows, &mtk_flow_l2_ht_params);
+> +	ret = rhashtable_init(&ppe->l2_flows, &mtk_flow_l2_ht_params);
+> +	if (ret)
+> +		return ERR_PTR(ret);
 
+Also there are two direct return NULLs without calling rhashtable_destroy()
+later in this function. Please fix that in a separate patch.
+
+>  	/* need to allocate a separate device, since it PPE DMA access is
+>  	 * not coherent.
 
