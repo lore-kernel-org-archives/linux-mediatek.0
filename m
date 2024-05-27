@@ -4,120 +4,118 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF6C3C25B79
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 May 2024 14:27:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32CD4C25B74
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 May 2024 14:31:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:Subject:References:Cc:To:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WBD5fZbJKASRGqCVJjwjF0/sBlA3tJ1is50PhfAuexQ=; b=gVzQuEVcQ2K4Z0WkMIC0yRt+aw
-	+bc9kOLY+hGqSqAQowE1Nk9ra8wkVWpQ6sszG0Hs5IX84ISl88cCATTCPBWmaeD38GZ/yiwgNlX2B
-	4Y+z5YOZCXrXiwU8IlVZACW6cFQ9qEwfsn4YV4e89wI6IGkXn5D0f4oy8uHgWVRayOcU31nLGsRAd
-	ESm6RGantwKU+GJULYcux9ter/qCTz5dBufIZoB5Wz9ObKL5vte+NYy4yQj/nj9sNchxbYCslGJau
-	lC+lXbWARv7/4ed7dA/2pMmZn8KIZN9Z55ivhlwYuwPdTTgVtD9qVeZ/O4zV3DJlBzKr3nKPiXhzQ
-	Wny0ttcA==;
+	bh=0efZWgnDrxA5raTbUXfdhrIM9xEvUpffen86sbJg00o=; b=jUfxxkWduk2yEeGe6wBWOyCbKb
+	KL+cL13d/gGKiIdsYRojRNnr0zY0d9srSrlofJN2A86PoVVk6qf4E4Q8kOkZc/mtO78TiKukjRH0n
+	ATM4Seyak/Ff3YSUEcJOB/Gh6BLvMSVD04yHo9WAMez+uD7beFP7YIQqMITgJN2Me+xkhNyvT7kA7
+	2dH9u3lZ6tUxMqX5ZmPUS8kYv31Lj3GDD+SJXVmONJ4r96MWJ39th/HYauUq3L60Dt3CYpKTGymaY
+	sHuEMk2XhNJT1NaOzjSveBCQ/HlH4eaAgrn7EXjB9JjKewErb0pnDuQLvaXiLAaIyHRRU3rkayWh9
+	jtAId6fA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBbJe-0000000FMeb-1cRk;
-	Mon, 27 May 2024 14:27:11 +0000
-Received: from mout.web.de ([212.227.17.12])
+	id 1sBbO0-0000000FO2T-1xuB;
+	Mon, 27 May 2024 14:31:40 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBbJD-0000000FMKS-0kaT;
-	Mon, 27 May 2024 14:26:46 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
-	s=s29768273; t=1716819939; x=1717424739; i=markus.elfring@web.de;
-	bh=WBD5fZbJKASRGqCVJjwjF0/sBlA3tJ1is50PhfAuexQ=;
-	h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:To:Cc:References:
-	 Subject:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:
-	 cc:content-transfer-encoding:content-type:date:from:message-id:
-	 mime-version:reply-to:subject:to;
-	b=vX3VhVktvAsC3VEpXA8voazwMQsxjS3krCXirqMDaKAZ3hS5dLEBLJJcYH/CnQUD
-	 LX884yPHk6T2CjcYkXrEWl3j7h+qjsuQr6krfiSjSbT9o7hELP6R1MOL3ePslfGIM
-	 nUn+Cno9/WCN6Qt7tnw9wJkEH43RGHNxZEMJFx1wgs5oyZoUK9bL3MJfGys243Jnt
-	 RWe1fGAwlia3NmWKjA9buWb62mNSN4PEffNKdBdV4ee2XJY9EETUDzwTlBNTo8KlT
-	 kv2IvCfd4sTrUVWvA5STc6LBECDk34micjPSbDUs3ES7nw1m899uLKkS35frEPwr4
-	 gv2XA0CeWBiz5oCAtw==
-X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
-Received: from [192.168.178.21] ([94.31.83.95]) by smtp.web.de (mrweb105
- [213.165.67.124]) with ESMTPSA (Nemesis) id 1Mtgyj-1sV3WP3CJT-017EBc; Mon, 27
- May 2024 16:25:38 +0200
-Message-ID: <96beb071-ec2c-475f-8fa2-d519a1b1dc28@web.de>
-Date: Mon, 27 May 2024 16:25:18 +0200
+	id 1sBbNv-0000000FNzn-3JqO;
+	Mon, 27 May 2024 14:31:37 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id BB482CE0CEF;
+	Mon, 27 May 2024 14:31:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DEADFC2BBFC;
+	Mon, 27 May 2024 14:31:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1716820293;
+	bh=uApgsJJxOubvE2eBsFgoGQECDj08o4Q3rliHOrn3NK8=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Lj3JfLsb6I2Lo69yyV0+ilNR42gLkM7TPJ/3RwKwiaOPqxeXuls9aHp/BvpyBMNV0
+	 iFPfpK1m32mFpc3mHrYVQOnU1XDpabvBE+PfRy5n60gf15iJ801qQkfeSkOwulP0W/
+	 Sqcjtx+Ez02Yz8cJx8piu173KkGrxi7iani0ICveFkQ3aY+2j0bjbNazHIABvWxU6A
+	 zmIosKdbfAMG3p+ZEJlXXkFTZFWM0oAsV9fH8XQVdDjLX/li1QWOlQ9N6kv9+L0J2M
+	 rJuouMIp+lr0KF9nbJIfNQgWvyGfAWqLjp07AF7lgPV7XI4Jp+2Ne3iVfkvRWeUK2v
+	 Ncp8fyP9xUQ+A==
+Message-ID: <b7e4842d-279e-45c8-9650-f4044e6af808@kernel.org>
+Date: Mon, 27 May 2024 16:31:26 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-To: Peng Fan <peng.fan@nxp.com>, soc@kernel.org,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Alim Akhtar <alim.akhtar@samsung.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Angelo Gioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Baolin Wang <baolin.wang@linux.alibaba.com>,
- Chester Lin <chester62515@gmail.com>, Chunyan Zhang <zhang.lyra@gmail.com>,
- Claudiu Beznea <claudiu.beznea@tuxon.dev>,
- Damien Le Moal <dlemoal@kernel.org>, Dan Carpenter
- <dan.carpenter@linaro.org>, Dong Aisheng <aisheng.dong@nxp.com>,
- Dvorkin Dmitry <dvorkin@tibbo.com>, Emil Renner Berthing <kernel@esmil.dk>,
- Fabio Estevam <festevam@gmail.com>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- Ghennadi Procopciuc <ghennadi.procopciuc@oss.nxp.com>,
- Hal Feng <hal.feng@starfivetech.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, Jacky Bai <ping.bai@nxp.com>,
- Jianlong Huang <jianlong.huang@starfivetech.com>,
- Joel Stanley <joel@jms.id.au>, Jonathan Hunter <jonathanh@nvidia.com>,
- Krzysztof Kozlowski <krzk@kernel.org>,
- Linus Walleij <linus.walleij@linaro.org>,
- Ludovic Desroches <ludovic.desroches@microchip.com>,
+Subject: Re: [PATCH 1/3] dt-bindings: vendor-prefixes: add OpenWrt
+To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Matthias Brugger <mbrugger@suse.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Nicolas Ferre <nicolas.ferre@microchip.com>, Orson Zhai
- <orsonzhai@gmail.com>, Patrice Chotard <patrice.chotard@foss.st.com>,
- Sascha Hauer <s.hauer@pengutronix.de>, Sean Wang <sean.wang@kernel.org>,
- Shawn Guo <shawnguo@kernel.org>,
- Shiraz Hashim <shiraz.linux.kernel@gmail.com>,
- Stephen Warren <swarren@wwwdotorg.org>,
- Sylwester Nawrocki <s.nawrocki@samsung.com>,
- Thierry Reding <thierry.reding@gmail.com>, Tony Lindgren <tony@atomide.com>,
- Viresh Kumar <vireshk@kernel.org>, Wells Lu <wellslutw@gmail.com>
-Cc: LKML <linux-kernel@vger.kernel.org>, linux-gpio@vger.kernel.org,
- linux-tegra@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-samsung-soc@vger.kernel.org,
- linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-riscv@lists.infradead.org, linux-mediatek@lists.infradead.org,
- imx@lists.linux.dev, linux-aspeed@lists.ozlabs.org,
- openbmc@lists.ozlabs.org, kernel@pengutronix.de,
- Peng Fan <peng.fan@oss.nxp.com>,
- Emil Renner Berthing <emil.renner.berthing@canonical.com>
-References: <20240504-pinctrl-cleanup-v2-4-26c5f2dc1181@nxp.com>
-Subject: Re: [PATCH v2 04/20] pinctrl: starfive: Use scope based of_node_put()
- cleanups
-Content-Language: en-GB
-From: Markus Elfring <Markus.Elfring@web.de>
-In-Reply-To: <20240504-pinctrl-cleanup-v2-4-26c5f2dc1181@nxp.com>
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>
+Cc: Chen-Yu Tsai <wenst@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ =?UTF-8?Q?N=C3=ADcolas_F_=2E_R_=2E_A_=2E_Prado?= <nfraprado@collabora.com>,
+ Macpaul Lin <macpaul.lin@mediatek.com>,
+ Heiko Stuebner <heiko.stuebner@cherry.de>,
+ Neil Armstrong <neil.armstrong@linaro.org>,
+ Chris Morgan <macromorgan@hotmail.com>, Sebastian Reichel <sre@kernel.org>,
+ Linus Walleij <linus.walleij@linaro.org>, Sean Wang
+ <sean.wang@mediatek.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ openwrt-devel@lists.openwrt.org, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?=
+ <rafal@milecki.pl>
+References: <20240527115933.7396-1-zajec5@gmail.com>
+ <20240527115933.7396-2-zajec5@gmail.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <20240527115933.7396-2-zajec5@gmail.com>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:+RyPoq5wWT0ZiaKtbHEM7oUjpYEVZsaQY6N7Y3GqAcCCbvu/2JH
- u2A1o9G2LZb7XdHLU3H69K/ZAgfhJvU9jxdpYiqAnNWG9BA1SqA6BdADoQmnmuaRrP6fAil
- 8Vj3+benFoPx5AOFPUxJJt7XUQwXd4D4fxOV2u0S4nMX3GZIShaRs493PFfPvepvyAbRCtv
- sA0TyVvmVIL0Nk6+KE4zA==
-UI-OutboundReport: notjunk:1;M01:P0:31oKYLNiYt8=;Hxns51jU3fPbLxYZhS6Zxy9O8BL
- qcSJkc+8tI81FYEgYUDEjPFyxO5CsD0G4Yr1KM0HiJM1RAdO+budqXdzmwIJQJO5p6Qgg2nVe
- YKgM7j5yLFrWsSzyaik+NFTvY+PW6VUe11QHVHkDricbyYHE5P9qzbTg86+yeRiFSOOQZksg9
- Xdrs6r2eTX9AowMfEJqKIKNofU6TcDdmBmEh2hd5cMEugRlaO/xU/ubiYD/XRmfkiGEw2Tk9X
- NW8zaQg81GL2PPwft4f4poEafCoYwl+CIrmPHqURH/2YArZiC4UDm9VTu3lTVR8WSADgs2juL
- WzjmfuF3Nb/H8VSJqqzY977EL7BYu0JfjXhqczsj/AJHIU8x7U9FkHQwVLD+/aW9Q5b/a9OPw
- LI1zUhjAqpzjkl9ILHME5dfhA7gkD4YfqDP0iVyWu+VnmZh/pblaybHt4rD5ZI5OfaaxJKTej
- VGs+IMuQBrMttXj/4DWsuAy6tL2ASvq9ajbc+W4PfJFRO8eiyAiXlRr8A1ilG3Wwi2usEs8x0
- pyhK5u8Ye84ZDNXC0xiObkf3AMdCBhIc+0OAJbS7S/lr4Wa88XoId5G8Ib9v3q3Danb/+yyUK
- 5YECHUaogBhuwKJTAPf6awFWX25sWIKFsuMiL9bOP098OSKsVamHNvrpo4VNiI2KTPlO3jYMF
- m4zC6H3fMiyTT6q5AwrZQbBuPo5FStw2mq46jULp/VkrI2I5mP81da+ZdY2nuNi0JHqnAsXYb
- nCNKXCaTB/N8hkFz1ZJ6BaXlj9tzCbHQ/4RlK/pJC38X/hUvhfMryOHSpF+68/zEebizBSnT2
- Xmop5HdbEWKcl91rEpyYcoeHY0XK5F3NVihbciHAlOag4=
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240527_072644_227595_5AF20FA8 
-X-CRM114-Status: GOOD (  10.41  )
+X-CRM114-CacheID: sfid-20240527_073136_587201_F173AD17 
+X-CRM114-Status: UNSURE (   5.82  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -132,85 +130,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> Use scope based of_node_put() cleanup to simplify code.
+On 27/05/2024 13:59, Rafał Miłecki wrote:
+> From: Rafał Miłecki <rafal@milecki.pl>
+> 
+> OpenWrt project (with the help of MediaTek and Banana Pi) has produced
+> its very first own hardware. It needs its own prefix.
+> 
+> Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
+> ---
 
-I see opportunities to improve affected function implementations another b=
-it.
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
+Best regards,
+Krzysztof
 
-=E2=80=A6
-> +++ b/drivers/pinctrl/starfive/pinctrl-starfive-jh7100.c
-=E2=80=A6
-> @@ -543,18 +540,18 @@ static int starfive_dt_node_to_map(struct pinctrl_=
-dev *pctldev,
->  			pins =3D devm_kcalloc(dev, npins, sizeof(*pins), GFP_KERNEL);
->  			if (!pins) {
->  				ret =3D -ENOMEM;
-> -				goto put_child;
-> +				goto free_map;
->  			}
->
->  			pinmux =3D devm_kcalloc(dev, npins, sizeof(*pinmux), GFP_KERNEL);
->  			if (!pinmux) {
->  				ret =3D -ENOMEM;
-> -				goto put_child;
-> +				goto free_map;
->  			}
-=E2=80=A6
-> @@ -623,8 +620,6 @@ static int starfive_dt_node_to_map(struct pinctrl_de=
-v *pctldev,
->  	mutex_unlock(&sfp->mutex);
->  	return 0;
->
-> -put_child:
-> -	of_node_put(child);
->  free_map:
->  	pinctrl_utils_free_map(pctldev, map, nmaps);
->  	mutex_unlock(&sfp->mutex);
-=E2=80=A6
-> +++ b/drivers/pinctrl/starfive/pinctrl-starfive-jh7110.c
-=E2=80=A6
-> @@ -175,18 +175,18 @@ static int jh7110_dt_node_to_map(struct pinctrl_de=
-v *pctldev,
->  		pins =3D devm_kcalloc(dev, npins, sizeof(*pins), GFP_KERNEL);
->  		if (!pins) {
->  			ret =3D -ENOMEM;
-> -			goto put_child;
-> +			goto free_map;
->  		}
->
->  		pinmux =3D devm_kcalloc(dev, npins, sizeof(*pinmux), GFP_KERNEL);
->  		if (!pinmux) {
->  			ret =3D -ENOMEM;
-> -			goto put_child;
-> +			goto free_map;
->  		}
-=E2=80=A6
-> @@ -233,8 +233,6 @@ static int jh7110_dt_node_to_map(struct pinctrl_dev =
-*pctldev,
->  	*num_maps =3D nmaps;
->  	return 0;
->
-> -put_child:
-> -	of_node_put(child);
->  free_map:
->  	pinctrl_utils_free_map(pctldev, map, nmaps);
->  	mutex_unlock(&sfp->mutex);
-
-
-1. Exception handling is repeated a few times also according to memory all=
-ocation failures.
-   How do you think about to use a corresponding label like =E2=80=9Ce_nom=
-em=E2=80=9D
-   so that another bit of duplicate source code can be avoided?
-   https://wiki.sei.cmu.edu/confluence/display/c/MEM12-C.+Consider+using+a=
-+goto+chain+when+leaving+a+function+on+error+when+using+and+releasing+reso=
-urces
-
-2. Will development interests grow for the usage of a statement like =E2=
-=80=9Cguard(mutex)(&sfp->mutex);=E2=80=9D?
-
-
-Regards,
-Markus
 
