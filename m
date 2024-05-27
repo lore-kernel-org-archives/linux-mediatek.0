@@ -4,73 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F969C27C43
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 May 2024 17:36:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE8E9C25B74
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 May 2024 18:29:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iDkdkxzJ9auxG+/FKRL7xr2TfsBW506+9aGLABAn4NQ=; b=fWkk7WJPJWYX+G4uCBIJc/zp2D
-	+TTbH8AC4p9hBHgs2RKx9/KSxCYecevGt+hkTbRFc30vQrBhk3863MrPl+qZEK/KKC16DwnQlMFTY
-	3RFegmJ691R6Bh8JchWxNMr9CPcbviHciP2MPTrUpnfo6KZ/y+BcGU2j2Qk51W9tmTzPM6axFX93Z
-	BjISnL7FTWr1deZMroozJ/qKsZvn4zOIHdzU0A2p5IQr+HIMx3iqQJLHvpHprdsYdBB0uZ04MhJnb
-	qpGsrhEkDQhLxNUiyC/hiWsG050HlWDb/YGXZX1fRC7c8LRY0FJcUwqFi1ePSMNLj21VAIvu6b4wn
-	Obo7gC3g==;
+	bh=YE7ZZ+9xlkPR4lCdiKnmWCGkl3YlSD91qy3t6iG2whg=; b=Pmb0XsUnv5/J6Er3FLBf1VRLtz
+	Y4mKNuKkR8wI74OCYhllzbstIlAM/pyLnL205EKMjVUqWLbrUNfVOOJkl8JazSg5F+ZtLdWR9mxfZ
+	8BK0zPl+/T4YSgz0O9VMscAdR36tNEyfAUodu+6t449CqSOFb6VZaX8bUS/FijNTNx3rlxnutm+6U
+	D9O5C2ODmS7WOb+dPZDX0OFMZxxTMPBl5XV427zUIfb/vuUwGmktD8YGeXEKT0vyPI2CcujGHWjVL
+	8Bq5tJn/EKRI1Al8I/ZhLxvr0jjMnXWwoYOm9F9PIloRDlL80zZU21nP49ZNLxwlbbNRs8FO0JsBU
+	BVjCsT1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBeH2-0000000Fyz1-3cBK;
-	Mon, 27 May 2024 17:36:40 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sBf5o-0000000G3Pd-1In0;
+	Mon, 27 May 2024 18:29:08 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBeGz-0000000FyyJ-1aE4;
-	Mon, 27 May 2024 17:36:38 +0000
+	id 1sBf5l-0000000G3P2-1uuD;
+	Mon, 27 May 2024 18:29:06 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 5B80A61B9A;
-	Mon, 27 May 2024 17:36:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A1853C2BBFC;
-	Mon, 27 May 2024 17:36:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1716831396;
-	bh=9azP1CoqBgVzc1Ap21svaHMHj3h571dn+Ed1pu/oZnU=;
+	by dfw.source.kernel.org (Postfix) with ESMTP id BACB761BB6;
+	Mon, 27 May 2024 18:29:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 06725C2BBFC;
+	Mon, 27 May 2024 18:29:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1716834543;
+	bh=WCEO9fUe+0GQf8DDEogefQXVqjO2ehsYlYrxbZijXSo=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Zye5Y2M6ZcwVdvsk5HTNp16+CzXgCstjS1xb9IxfH4+tcOhW0sR7W9u0/bCC4mRr+
-	 yh8xka7Oj//VwikLVjQ/a1J4ULjGTAZR9BTXzaaC9Me/U9cttPvRwq7JjYeYOfPFgM
-	 wTD2X1BPGVI+HcaQPOyatPyo7ZOBJGU3RCDci8lR7XNQNGJHNWl01ouq3JAhpN+9le
-	 Q5n83MV6Wji9XSwh+MP/R4TGaf8fKV4ZgmQNI+Bmw6J1/8UwKih+cIF2qDRgHmiuwT
-	 BPIdf5HQfXTu7gZbMcD9YJVjWtMlb0TD7JiU+9nG/dX2WpeqV9d8iRMiYwWzGH7DVH
-	 +Ou4bN2/Bejtg==
-Date: Mon, 27 May 2024 18:36:30 +0100
-From: Conor Dooley <conor@kernel.org>
-To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>
-Cc: Jassi Brar <jassisinghbrar@gmail.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>,
+	b=Ts958yWY3Uvgact64hd/8yz4QyfDipMqtBbY/9pVuFx+VF1ewGl8LXX5oEJyebBNf
+	 j+b3dC4Dbh0v1012gogIXFfxbjJCf/QDEnnSW4dVov7qH0Mp1bcckdjelsWFugx+s0
+	 4MRV+cu3sey7bBVubpney7vFb8erx5y5Uch8dW4o=
+Date: Mon, 27 May 2024 20:29:07 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Kalle Valo <kvalo@kernel.org>
+Cc: Johannes Berg <johannes@sipsolutions.net>,
+	Oleksandr Natalenko <oleksandr@natalenko.name>,
+	linux-kernel@vger.kernel.org, linux-wireless@vger.kernel.org,
+	"Linux regression tracking (Thorsten Leemhuis)" <regressions@leemhuis.info>,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Jason-ch Chen <jason-ch.chen@mediatek.com>,
-	Singo Chang <singo.chang@mediatek.com>,
-	Nancy Lin <nancy.lin@mediatek.com>,
-	Shawn Sung <shawn.sung@mediatek.com>, linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org,
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH RESEND,v6 2/8] dt-bindings: mailbox: Add property for
- CMDQ secure driver
-Message-ID: <20240527-bullion-slapping-d35fcddb56d5@spud>
-References: <20240526144443.14345-1-jason-jh.lin@mediatek.com>
- <20240526144443.14345-3-jason-jh.lin@mediatek.com>
+	Peter Chiu <chui-hao.chiu@mediatek.com>,
+	StanleyYP Wang <StanleyYP.Wang@mediatek.com>,
+	Linux regressions mailing list <regressions@lists.linux.dev>
+Subject: Re: [REGRESSION] MT7915E doesn't work any more with v6.9
+Message-ID: <2024052750-rippling-catty-1cb5@gregkh>
+References: <6061263.lOV4Wx5bFT@natalenko.name>
+ <2341660.ElGaqSPkdT@natalenko.name>
+ <60fe8df750a74331b8a54a76d55d5e8349ac46b4.camel@sipsolutions.net>
+ <878qzy9zly.fsf@kernel.org>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="gfL6Eu9ihKM1A1EB"
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20240526144443.14345-3-jason-jh.lin@mediatek.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <878qzy9zly.fsf@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240527_103637_615841_A54E8013 
-X-CRM114-Status: GOOD (  28.72  )
+X-CRM114-CacheID: sfid-20240527_112905_652425_033AFF4F 
+X-CRM114-Status: GOOD (  15.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,106 +84,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Sat, May 25, 2024 at 09:26:01AM +0300, Kalle Valo wrote:
+> Johannes Berg <johannes@sipsolutions.net> writes:
+> 
+> > On Wed, 2024-05-15 at 00:51 +0200, Oleksandr Natalenko wrote:
+> >> Also /cc Johannes because of this commit:
+> >> 
+> >> 6092077ad09ce wifi: mac80211: introduce 'channel request'
+> >> 
+> >> On středa 15. května 2024 0:43:40, SELČ Oleksandr Natalenko wrote:
+> >> > Hello Felix, Lorenzo et al.
+> >> > 
+> >> > With v6.9 kernel the following card:
+> >> > 
+> >> > 01:00.0 Unclassified device [0002]: MEDIATEK Corp. MT7915E
+> >> > 802.11ax PCI Express Wireless Network Adapter [14c3:7915]
+> >> > 
+> >> > doesn't work any more. Upon mt7915e module insertion the following splat happens:
+> >> > 
+> >
+> > 6.9 didn't get commit 2f7cf3b61d85 ("wifi: mt76: mt7915: add missing
+> > chanctx ops")? Huh?
+> 
+> Yeah, commit 2f7cf3b61d85 should have been taken to wireless tree but it
+> fell through the cracks. I didn't realise that it's an important bugfix
+> and the commit message didn't give any indication of that either.
+> 
+> But commit 2f7cf3b61d85 is now in Linus' tree so it would be good if
+> someone could submit it to stable releases.
 
---gfL6Eu9ihKM1A1EB
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+It's already in 6.9.1, does it need to go anywhere else?
 
-On Sun, May 26, 2024 at 10:44:37PM +0800, Jason-JH.Lin wrote:
-> 1. Add mboxes property to define a GCE loopping thread as a secure IRQ
-> handler.
-> The CMDQ secure driver requests a mbox channel and sends a looping
-> command to the GCE thread. The looping command will wait for a secure
-> packet done event signal from secure world and then jump back to the
-> first instuction. Each time it waits for an event, it notifies the
-> CMDQ driver to perform the same action as the IRQ handler.
->=20
-> 2. Add gce-events property from gce-props.yaml to define a
-> secure packet done signal in secure world.
-> There are 1024 events IDs for GCE to use to execute instructions in
-> the specific event happened. These events could be signaled by HW or SW
-> and their value would be different in different SoC because of HW event
-> IDs distribution range from 0 to 1023.
-> If we set a static event ID: 855 for mt8188, it might be conflict the
-> event ID original set in mt8195.
+thanks,
 
-Two different SoCs, two different compatibles, no problem.
-I'm almost certain you previously told me that the firmware changing
-could result in a different event ID, but I see no mention of that here.
-The commit messages makes it seem like this can be determined by the
-compatible, so either give me a commit message that explains why the
-compatible is not sufficient or drop the patch.
-
-> So we define an event ID that will be set when GCE runs to the end of
-> secure cmdq packet in the secure world.
->=20
-> This can reduce the latency of software communication between normal
-> world and secure world. In addition, we can also remove the complex
-> logic after the secure packet done in the secure world.
->=20
-> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-> Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
-> ---
->  .../devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml | 8 +++++++-
->  1 file changed, 7 insertions(+), 1 deletion(-)
->=20
-> diff --git a/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailb=
-ox.yaml b/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.ya=
-ml
-> index cef9d7601398..6e5e848d61d9 100644
-> --- a/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
-> +++ b/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
-> @@ -49,6 +49,10 @@ properties:
->      items:
->        - const: gce
-> =20
-> +  mboxes:
-> +    items:
-> +      - description: GCE looping thread as a secure IRQ handler
-
-Why is this needed? It's going to be a reference to itself, right?
-Why can't you just reserve a channel in the driver?
-
-Thanks,
-Conor.
-
-> +
->  required:
->    - compatible
->    - "#mbox-cells"
-> @@ -57,6 +61,8 @@ required:
->    - clocks
-> =20
->  allOf:
-> +  - $ref: /schemas/mailbox/mediatek,gce-props.yaml#
-> +
->    - if:
->        not:
->          properties:
-> @@ -67,7 +73,7 @@ allOf:
->        required:
->          - clock-names
-> =20
-> -additionalProperties: false
-> +unevaluatedProperties: false
-> =20
->  examples:
->    - |
-> --=20
-> 2.18.0
->=20
-
---gfL6Eu9ihKM1A1EB
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZlTEngAKCRB4tDGHoIJi
-0to1AQDxMdlkCNTKNL4Cai++qtW6p5V+CLhlWwb1OMH0cnYOqgEArzOexHmWlxUE
-80S67d+XuFdcAciAe/PNG2Dd7EsXdwA=
-=ITK7
------END PGP SIGNATURE-----
-
---gfL6Eu9ihKM1A1EB--
+greg k-h
 
