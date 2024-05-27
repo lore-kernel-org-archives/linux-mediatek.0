@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30A60C25B74
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 May 2024 14:16:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51F6EC25B79
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 May 2024 14:18:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fcqbBIjXrIxTm3qA6NlfGZ9bNDL0BJWd1X63XMCOJqE=; b=4aHNIV2ta9W8zbEmeByaU033pb
-	P3/66z+fkyXFVHa6hnNv7G4Rs7d6wqBgkqDW/wqX26b6WX8PYz2vSmFSgWH17BxCm0u/N7Lgiqlwm
-	kGtIt9OieMXZ66zzdTkhA2B8xX7ltf9iaQDn/B5RdT+D2tdTlDq/C4sCU6bhZ8dWnAKA26arGs0AR
-	pCJOiamhKiIcp0X2RB38DG5/9eBwZ+8/fex+3tvg0AlDd+6lafyQzvzQsKCDhKx8dKpvbuSzvarn3
-	vnAVtE6ThCl10bqtJ2pEwuR3XVrKszmu6Z8Pr57XRAjB4mpCDDOu9Q0g/omkvu7ZJoXOQXJMcuttB
-	E02tFXZA==;
+	bh=JtPaFfJwQU+Qgy4GqqY/nTSyim9B83lSS4yG6t6sdfQ=; b=Nwa+CoRSv7VDHxj4L3qoaK9N2E
+	L0zK5loqA3w751QvzKY5zbgMS6AejRLkI9twOrBAbz/u9/2qJG2wqQvZcVGBboQG9X6li4oQbXcr8
+	eweK3yi2Twvxu6ZW/AX4P48Gl7V5aOc5LBGWiZU7zhDukSFFzzdkAHlPeekV1dFyV+CIhES6e6cYp
+	QlYSjOcHec/nk0fi3xNW6pjTui/yFqc9oZM0Sb9JKfQTmOrG7HLK5gh2iOM1aVf6N2c4BEpmL0idI
+	z4QfuMJDCx9/obzkC66VrAuw53ZSW1Ju/fdvBjcgPN7NiEAwbQwT5rAuNEAs3aSDbzxn7anABU0Zr
+	BV17kBKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBb9c-0000000FJO8-30ke;
-	Mon, 27 May 2024 14:16:48 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sBbAo-0000000FJkB-3GD5;
+	Mon, 27 May 2024 14:18:02 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBb9X-0000000FJKx-1hRz;
-	Mon, 27 May 2024 14:16:45 +0000
+	id 1sBbAk-0000000FJiN-0RKs;
+	Mon, 27 May 2024 14:17:59 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id E1F3F61884;
-	Mon, 27 May 2024 14:16:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CFC54C32789;
-	Mon, 27 May 2024 14:16:40 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 5678161244;
+	Mon, 27 May 2024 14:17:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 26680C2BBFC;
+	Mon, 27 May 2024 14:17:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1716819402;
-	bh=qmzfbgT/lRFvyfSF8XbDrGuMVke0vtK6h4MSti5Bikc=;
+	s=k20201202; t=1716819477;
+	bh=XYkTLSRQDTcxmvQu5eHrjpEjE9SsJfxPR7keFDJH58g=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=WnUXiClIFiRiG5vkqym1h9mu0Aff3XzxVqTCkJ5gT51A+LdtZYJv5Z23DGjqHcKkd
-	 B5i3g208uWJnYadimWWPHA3JixO9T8BcdLZKlnlZr+NTC/qNT55vdrwuMxYXOEXBdt
-	 oNqoOOIwGy8/1QMx9xE8Lma/FypTn/By/RMkHZ3dJNdv4/M2BMPE2Wa4jamFIzlCzZ
-	 FlafDrq/TOg4QMt8bJCp0GqkNwF/aHS0TE5fMciJVSUA+bdNJt6dg/HIjsDvbzeKeR
-	 ZgpGZyf2fzxmLVZbTSAZHse7f4uK4wrzp88ir2Q8WSN35GJg1LyUcN5qCeKNJOvja1
-	 sZ5MWbubTk2UA==
+	b=DvWkoY4B/KX7YYfunqKxbVkM2CnpujKIzYuj/1mdyfQ/HXDfuvp21e5ivem5BMu/M
+	 Q0pqVFyyIVM92mp8+fCAUPMcu3Ux2q9Mncmx8tAazTMJALIKfqFHn8TDJgTseTlaVL
+	 FzUblO7S7a1t71kHytiYEXZoWHMYpZfpSkYPZ1WphH0ae1vAmiFLOU3lSQoaxOdmpH
+	 uDRYNhwQegznLLf6LtG4FPL8O+xAzmCo2s8veZTAN1hGrohKkv+jesFKb3qAFB0zOZ
+	 flCzXZ0Y78gJiI2+TTm+IWJxCtHRJpCmQZXXolfNhVmS7T6yjY4nDeUJOZF/Q9iXC+
+	 MC/bIXHAQmOoA==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -60,20 +60,20 @@ Cc: Leon Yen <leon.yen@mediatek.com>,
 	linux-wireless@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.6 16/21] wifi: mt76: mt7921s: fix potential hung tasks during chip recovery
-Date: Mon, 27 May 2024 10:15:27 -0400
-Message-ID: <20240527141551.3853516-16-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.1 13/17] wifi: mt76: mt7921s: fix potential hung tasks during chip recovery
+Date: Mon, 27 May 2024 10:16:50 -0400
+Message-ID: <20240527141712.3853988-13-sashal@kernel.org>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240527141551.3853516-1-sashal@kernel.org>
-References: <20240527141551.3853516-1-sashal@kernel.org>
+In-Reply-To: <20240527141712.3853988-1-sashal@kernel.org>
+References: <20240527141712.3853988-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.6.32
+X-stable-base: Linux 6.1.92
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240527_071643_604246_472391EB 
-X-CRM114-Status: GOOD (  12.03  )
+X-CRM114-CacheID: sfid-20240527_071758_406723_AB4CBC5C 
+X-CRM114-Status: GOOD (  11.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,10 +113,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  4 files changed, 4 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-index 21f9374542290..cd4eee3749226 100644
+index 49ddca84f7862..cae7c21ca1f8b 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-@@ -663,6 +663,7 @@ void mt7921_mac_reset_work(struct work_struct *work)
+@@ -883,6 +883,7 @@ void mt7921_mac_reset_work(struct work_struct *work)
  	int i, ret;
  
  	dev_dbg(dev->mt76.dev, "chip reset\n");
@@ -124,7 +124,7 @@ index 21f9374542290..cd4eee3749226 100644
  	dev->hw_full_reset = true;
  	ieee80211_stop_queues(hw);
  
-@@ -691,6 +692,7 @@ void mt7921_mac_reset_work(struct work_struct *work)
+@@ -911,6 +912,7 @@ void mt7921_mac_reset_work(struct work_struct *work)
  	}
  
  	dev->hw_full_reset = false;
@@ -133,18 +133,18 @@ index 21f9374542290..cd4eee3749226 100644
  	ieee80211_wake_queues(hw);
  	ieee80211_iterate_active_interfaces(hw,
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c
-index c866144ff0613..031ba9aaa4e2f 100644
+index 8dd60408b117e..cb20ddcad137c 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c
-@@ -64,7 +64,6 @@ int mt7921e_mac_reset(struct mt792x_dev *dev)
- 	mt76_wr(dev, dev->irq_map->host_irq_enable, 0);
+@@ -78,7 +78,6 @@ int mt7921e_mac_reset(struct mt7921_dev *dev)
+ 	mt76_wr(dev, MT_WFDMA0_HOST_INT_ENA, 0);
  	mt76_wr(dev, MT_PCIE_MAC_INT_ENABLE, 0x0);
  
 -	set_bit(MT76_RESET, &dev->mphy.state);
  	set_bit(MT76_MCU_RESET, &dev->mphy.state);
  	wake_up(&dev->mt76.mcu.wait);
  	skb_queue_purge(&dev->mt76.mcu.res_q);
-@@ -115,7 +114,6 @@ int mt7921e_mac_reset(struct mt792x_dev *dev)
+@@ -129,7 +128,6 @@ int mt7921e_mac_reset(struct mt7921_dev *dev)
  
  	err = __mt7921_start(&dev->phy);
  out:
@@ -153,10 +153,10 @@ index c866144ff0613..031ba9aaa4e2f 100644
  	local_bh_disable();
  	napi_enable(&dev->mt76.tx_napi);
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mac.c
-index 389eb0903807e..1f77cf71ca701 100644
+index fd07b66233920..46af03803de73 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mac.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mac.c
-@@ -98,7 +98,6 @@ int mt7921s_mac_reset(struct mt792x_dev *dev)
+@@ -98,7 +98,6 @@ int mt7921s_mac_reset(struct mt7921_dev *dev)
  	mt76_connac_free_pending_tx_skbs(&dev->pm, NULL);
  	mt76_txq_schedule_all(&dev->mphy);
  	mt76_worker_disable(&dev->mt76.tx_worker);
@@ -164,7 +164,7 @@ index 389eb0903807e..1f77cf71ca701 100644
  	set_bit(MT76_MCU_RESET, &dev->mphy.state);
  	wake_up(&dev->mt76.mcu.wait);
  	skb_queue_purge(&dev->mt76.mcu.res_q);
-@@ -135,7 +134,6 @@ int mt7921s_mac_reset(struct mt792x_dev *dev)
+@@ -135,7 +134,6 @@ int mt7921s_mac_reset(struct mt7921_dev *dev)
  
  	err = __mt7921_start(&dev->phy);
  out:
@@ -173,7 +173,7 @@ index 389eb0903807e..1f77cf71ca701 100644
  	mt76_worker_enable(&dev->mt76.tx_worker);
  
 diff --git a/drivers/net/wireless/mediatek/mt76/sdio.c b/drivers/net/wireless/mediatek/mt76/sdio.c
-index c52d550f0c32a..2c761d469c06b 100644
+index fc4fb94635645..2a81c2f663449 100644
 --- a/drivers/net/wireless/mediatek/mt76/sdio.c
 +++ b/drivers/net/wireless/mediatek/mt76/sdio.c
 @@ -499,7 +499,8 @@ static void mt76s_tx_status_data(struct mt76_worker *worker)
