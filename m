@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B39EC25B74
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 May 2024 14:15:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30A60C25B74
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 May 2024 14:16:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6QXhHNuvYEYnR7K3rwn3o3D/DgRvn/dZvcvVIG2YiSg=; b=N1sqMFgEvlNyVwpYFfO1p9A2SB
-	nF842CMqHZwcnHnIls59q3h2oNiFZyFuMsBUX0TX5+XXuCrKtJdQXJZ5fNdUJPVO1x3rjCpePK9Zy
-	+/j+VzMJIRCF4Nug/1Jz4VYIdcR0O1SRvQwN3igqYo5AZ2ZVQ60L3baEJmRAprOlWX/BAeg51o0pi
-	os1v50c5FD6ZCLTR+u+MR8fMGN9hFBGR2w8vWmAe4w72OAI/9R6H2mBSmT3HjvXiPcKtEiP9J850d
-	vlRNdda0w0pSM5WnSIMLhVbN3TUlOF/CPHeg9/sATumypmJ8jm8YMtIxbbpD+YHE7CZYrmOG8qJ+b
-	r4Yr43xg==;
+	bh=fcqbBIjXrIxTm3qA6NlfGZ9bNDL0BJWd1X63XMCOJqE=; b=4aHNIV2ta9W8zbEmeByaU033pb
+	P3/66z+fkyXFVHa6hnNv7G4Rs7d6wqBgkqDW/wqX26b6WX8PYz2vSmFSgWH17BxCm0u/N7Lgiqlwm
+	kGtIt9OieMXZ66zzdTkhA2B8xX7ltf9iaQDn/B5RdT+D2tdTlDq/C4sCU6bhZ8dWnAKA26arGs0AR
+	pCJOiamhKiIcp0X2RB38DG5/9eBwZ+8/fex+3tvg0AlDd+6lafyQzvzQsKCDhKx8dKpvbuSzvarn3
+	vnAVtE6ThCl10bqtJ2pEwuR3XVrKszmu6Z8Pr57XRAjB4mpCDDOu9Q0g/omkvu7ZJoXOQXJMcuttB
+	E02tFXZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBb8E-0000000FItk-3nuM;
-	Mon, 27 May 2024 14:15:22 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1sBb9c-0000000FJO8-30ke;
+	Mon, 27 May 2024 14:16:48 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBb89-0000000FIoU-0tkf;
-	Mon, 27 May 2024 14:15:19 +0000
+	id 1sBb9X-0000000FJKx-1hRz;
+	Mon, 27 May 2024 14:16:45 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 1C399CE0FAF;
-	Mon, 27 May 2024 14:15:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EA81CC4AF0E;
-	Mon, 27 May 2024 14:15:10 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id E1F3F61884;
+	Mon, 27 May 2024 14:16:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CFC54C32789;
+	Mon, 27 May 2024 14:16:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1716819313;
-	bh=x3V+F4/2QeO/JDxzdGbicGzEx4qIlmPs3Ym+NTYFZQE=;
+	s=k20201202; t=1716819402;
+	bh=qmzfbgT/lRFvyfSF8XbDrGuMVke0vtK6h4MSti5Bikc=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=U5YUqmagyv8rkxCexM5pGFE0R4IkMnPY2rRplIw96kGYv05UBlfKdykAQ3inwOF4w
-	 UelSnxV/TPWWVXNxFs5nfmVhW0nKT7otSg3I+Pd0Fy85o8TzXi7aZvdaiDQV40OXHk
-	 SG8BVFwERSieBjJooBJaqVB/iTGFL0lVjPWYhwYwDfai+Kz4pF3+NDB2nMelu5ckUZ
-	 dPtTwnIN949iKJ4q78TfFqUlP2YulR3sPwRj5M0/i5NAmXVt+Q8dU2vvTfMiKikbYI
-	 oE0AMOh9tHyQNTgyI/oqLIYAdJBLvMrYfVj2Swve+rw28K/69PwIBXR5pjk5OvcklA
-	 k5anqUVDdzwaQ==
+	b=WnUXiClIFiRiG5vkqym1h9mu0Aff3XzxVqTCkJ5gT51A+LdtZYJv5Z23DGjqHcKkd
+	 B5i3g208uWJnYadimWWPHA3JixO9T8BcdLZKlnlZr+NTC/qNT55vdrwuMxYXOEXBdt
+	 oNqoOOIwGy8/1QMx9xE8Lma/FypTn/By/RMkHZ3dJNdv4/M2BMPE2Wa4jamFIzlCzZ
+	 FlafDrq/TOg4QMt8bJCp0GqkNwF/aHS0TE5fMciJVSUA+bdNJt6dg/HIjsDvbzeKeR
+	 ZgpGZyf2fzxmLVZbTSAZHse7f4uK4wrzp88ir2Q8WSN35GJg1LyUcN5qCeKNJOvja1
+	 sZ5MWbubTk2UA==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -60,19 +60,19 @@ Cc: Leon Yen <leon.yen@mediatek.com>,
 	linux-wireless@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.8 23/30] wifi: mt76: mt7921s: fix potential hung tasks during chip recovery
-Date: Mon, 27 May 2024 10:13:32 -0400
-Message-ID: <20240527141406.3852821-23-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.6 16/21] wifi: mt76: mt7921s: fix potential hung tasks during chip recovery
+Date: Mon, 27 May 2024 10:15:27 -0400
+Message-ID: <20240527141551.3853516-16-sashal@kernel.org>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240527141406.3852821-1-sashal@kernel.org>
-References: <20240527141406.3852821-1-sashal@kernel.org>
+In-Reply-To: <20240527141551.3853516-1-sashal@kernel.org>
+References: <20240527141551.3853516-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.8.11
+X-stable-base: Linux 6.6.32
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240527_071517_987508_D28D33E5 
+X-CRM114-CacheID: sfid-20240527_071643_604246_472391EB 
 X-CRM114-Status: GOOD (  12.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -113,7 +113,7 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  4 files changed, 4 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-index 867e14f6b93a0..73e42ef429837 100644
+index 21f9374542290..cd4eee3749226 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
 @@ -663,6 +663,7 @@ void mt7921_mac_reset_work(struct work_struct *work)
@@ -173,7 +173,7 @@ index 389eb0903807e..1f77cf71ca701 100644
  	mt76_worker_enable(&dev->mt76.tx_worker);
  
 diff --git a/drivers/net/wireless/mediatek/mt76/sdio.c b/drivers/net/wireless/mediatek/mt76/sdio.c
-index 3e88798df0178..a4ed00eebc483 100644
+index c52d550f0c32a..2c761d469c06b 100644
 --- a/drivers/net/wireless/mediatek/mt76/sdio.c
 +++ b/drivers/net/wireless/mediatek/mt76/sdio.c
 @@ -499,7 +499,8 @@ static void mt76s_tx_status_data(struct mt76_worker *worker)
