@@ -4,110 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24C01C25B74
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 May 2024 14:39:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F156FC25B7D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 May 2024 14:53:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9nyRfm+SN3CqrYFGnTKE23NbG9T7boLJ6SWPpGV2k+A=; b=fyD3BO4LeAjfh+V31HKRvyTawX
-	ad5edcBfdgadnD1iemtfjYlNTsVQpT5KN2zCAOmw6AK8n32zUgavKzA8o4INtXuZjW20bDD+WvijN
-	X689eKzYri38Xtj0eRb4waH6eMSKrdRZ0vJNofUDT81c/flLoLPIdFA8Ge4FnlAmTknC8zeFYHHAV
-	qaIb+O4wXcUYS1jIOOVsGJc3XcP+sTtESn0fn1ROlGaPjZQRFV0VaucCOJdSfD56JItBmZoZfPYwO
-	B5OKTzAcjTgg9n6KY0iBszamDXILmPJpvuguovGQfVOykOQ9KukmoO3u2+dHohMUCy0x7YS/YWgvI
-	kJ3GVgTA==;
+	bh=Hna0WN7JjlKVki9CKW7L0dNcuFoKFDF6IdzoULKxqX4=; b=HmOgrXLgyrrbzCvHV/ev29VS7+
+	Ptrbi4fJ4vjreRKqI6Lufb3UPEK+I10TY/dy24jKontkliBuU2t0VrTKgyeWQjtYF+iNswGyJFvYI
+	pRy6Dn+aDhTT6o+p2YoUrMyy/sOd5w8EWiPq4z1OO+0W9JWi0GsDeo2O43/cxZq/ae2lhiAIHmuRR
+	VLSgdJsCXtLWQGrTio4w/TBsb+r2S8M3Mp19HjPD9ybc0gYnszbaUCBobHoF+zo1ddWKyreQbCVzR
+	MnxalSYYEVFv96bZBK0xJocemk1uqbcguxMc3HCVkl9TLRCvmsqxF/gppXgOQMzwGPEes4G9UAnTh
+	u/oKGMGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBbVp-0000000FQKW-2L2O;
-	Mon, 27 May 2024 14:39:45 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1sBbj9-0000000FT4L-0FnZ;
+	Mon, 27 May 2024 14:53:31 +0000
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBbVl-0000000FQI3-0Ehw;
-	Mon, 27 May 2024 14:39:43 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id C4ADACE0F14;
-	Mon, 27 May 2024 14:39:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 67308C2BBFC;
-	Mon, 27 May 2024 14:39:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1716820778;
-	bh=LTzAeQbWSEDNWOH2P70XmQh6fXMro9sYPlcl4RmxHIo=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=fy1HLRrdHADwr80iTcEu+8mbp5DFXt29WViy9yKXPTuW9LBkAZd3/A5DmcCJh4ety
-	 0jjzLqLSe08dkHaZ3Dp0md23Vbd7C2DlMzxev/N4hBOQrExlnTZfVNw3hxUaDNQDn6
-	 QSskvipjszuko3VoYZI8E6C7lPtvw74l9cDJzY/JlP6EiAQZnuclInSY9eGLrOBghU
-	 Rs4pUOeMivzkWvJAvtHHIeH4r16U1WlYMFSALGBz+XKIYTL3y2pLeucYpOEvWbkFQh
-	 VGwKpZd15Ra2HGy31G7GU4tKJmGNhHaRKNcJNrqS5alyl/p0E7arkUmrC/JbeUeAzF
-	 zr11hI7eJ5Qiw==
-Message-ID: <b2ff1677-ea89-4b0d-b376-ef5caac06a3b@kernel.org>
-Date: Mon, 27 May 2024 16:39:33 +0200
+	id 1sBbj5-0000000FT2G-3CP6
+	for linux-mediatek@lists.infradead.org;
+	Mon, 27 May 2024 14:53:29 +0000
+Received: by mail-ej1-x635.google.com with SMTP id a640c23a62f3a-a62ef52e837so134127566b.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 27 May 2024 07:53:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1716821604; x=1717426404; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=Hna0WN7JjlKVki9CKW7L0dNcuFoKFDF6IdzoULKxqX4=;
+        b=rqnc1vHcpzVLW2dCKJTSZ6XOskgA9PEm/fpz51xF6WEAS3QpO1N7n/mIaQzBHWdJI9
+         cWPGbgb9ygRXt3Au5my4LxXjwx3Ea0MLCHDh1tmr2vgcPYhAavKrmZ1zsUFxrWBSO8wn
+         M2BTlW2ZlsHFWaMmyjvvJj96aYVtQy/OSnu8VdSRo1HNpCtr7tor60g2gAhlOYMa6+lR
+         PEhLzaEKNZguSd16pSjSkEruoT6IWLnd4camzIcvKyg07tk4bvehSyf5TAxf8GYvNNn+
+         xxf2YIiWvdz4b/IN81UpvIdoUHzvuuKOnjc546bFF6XEPj3mkaDZVMpl+CWxthuMo+W1
+         eiGA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1716821604; x=1717426404;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=Hna0WN7JjlKVki9CKW7L0dNcuFoKFDF6IdzoULKxqX4=;
+        b=cRxJJlfCgUDm6UWzhpTg4od+RVpp38xnG0XRLnER5jGBc7CL7vT22IUb9YddSvpK1p
+         L4TLe80ygBPBU7fY1XsC9uOJtiWu8W4wQfSqahhV64tLNy0tTZx64A2P7pd2BZOM8cV1
+         7brqoR+xz0F506swEEQocyD2nHiZm5HD2oVbe3rwWNoOc1axz5C0DXy/pzjFlN0YrG6+
+         gUHuUNh5M6bPZ/4KljdVLBaR/XCV6ea3xEMY4diZBVNxLgZ2vfHeA1sd2sA1TleK9wz2
+         XX+c+smHnKCGvvoEtKEDUVQPbcNWHjfVpQPQqR5i4x81PeJIjRx2oGgcixw9MgBvzgmP
+         79nw==
+X-Forwarded-Encrypted: i=1; AJvYcCUiDCQunHhOHwA6SMfPizSyD+bO5wfvryK+Tf2PHe6Arur0PEgwaBdtv6zKbaq3fQYsRJiAHZXeEvZ51Abv3EmvVbE09yYyIkRVbGu0OJj+DJDl
+X-Gm-Message-State: AOJu0YzBcUc2m3Wm0yR9YvNWXNlhHaSFlPPipJqZoVvrlp1cQ950M5Qw
+	uCVANmozfRa5Uc/1ttI+kFwHFtXAW1FEdJsLfbK1Sf3kg2aMooMtgVW+3qNCJT4=
+X-Google-Smtp-Source: AGHT+IF0cBRnqOxCG5tbMSyKBE410khljOPfZUZyo5RRnH39akZSBsPRH0RsV2L6AMGFjz3XyzjUsQ==
+X-Received: by 2002:a17:906:a0a:b0:a5a:4683:e961 with SMTP id a640c23a62f3a-a6264f0eeaemr626181766b.52.1716821603593;
+        Mon, 27 May 2024 07:53:23 -0700 (PDT)
+Received: from [192.168.1.70] ([84.102.31.61])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a626c97a029sm502902966b.93.2024.05.27.07.53.21
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 27 May 2024 07:53:22 -0700 (PDT)
+Message-ID: <f553b3f2-d895-446a-a741-7a151ebeb3ed@baylibre.com>
+Date: Mon, 27 May 2024 16:53:20 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/5] dt-bindings: mfd: mediatek,mt8195-scpsys: Add support
- for MT8188
+Subject: Re: [PATCH 5/5] arm64: dts: mediatek: mt8188: Add support for Mali
+ GPU on Panfrost
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  linux-mediatek@lists.infradead.org
 Cc: lee@kernel.org, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
  matthias.bgg@gmail.com, mandyjh.liu@mediatek.com,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, kernel@collabora.com,
- jpanis@baylibre.com
+ linux-arm-kernel@lists.infradead.org, kernel@collabora.com
 References: <20240527093908.97574-1-angelogioacchino.delregno@collabora.com>
- <20240527093908.97574-2-angelogioacchino.delregno@collabora.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
+ <20240527093908.97574-6-angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <20240527093908.97574-2-angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset=UTF-8
+From: Julien Panis <jpanis@baylibre.com>
+In-Reply-To: <20240527093908.97574-6-angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240527_073942_074342_0C734FD9 
-X-CRM114-Status: UNSURE (   6.05  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240527_075327_931103_990BA3DC 
+X-CRM114-Status: GOOD (  10.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,16 +99,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 27/05/2024 11:39, AngeloGioacchino Del Regno wrote:
-> Add a compatible string for the scpsys block found in the MediaTek
-> MT8188 SoC.
-> 
+On 5/27/24 11:39, AngeloGioacchino Del Regno wrote:
+> Add the necessary OPP table for the GPU and also add a GPU node
+> to enable support for the Valhall-JM G57 MC3 found on this SoC,
+> using the Panfrost driver.
+>
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+[...]
 
-Best regards,
-Krzysztof
+>   
+> +		gpu: gpu@13000000 {
+> +			compatible = "mediatek,mt8188-mali", "arm,mali-valhall-jm";
+> +			reg = <0 0x13000000 0 0x4000>;
+> +
+> +			clocks = <&mfgcfg CLK_MFGCFG_BG3D>;
+> +			interrupts = <GIC_SPI 383 IRQ_TYPE_LEVEL_HIGH 0>,
+> +				     <GIC_SPI 382 IRQ_TYPE_LEVEL_HIGH 0>,
+> +				     <GIC_SPI 381 IRQ_TYPE_LEVEL_HIGH 0>;
+> +			interrupt-names = "job", "mmu", "gpu";
+> +			operating-points-v2 = <&gpu_opp_table>;
+> +			power-domains = <&spm MT8188_POWER_DOMAIN_MFG2>,
+> +					<&spm MT8188_POWER_DOMAIN_MFG3>,
+> +					<&spm MT8188_POWER_DOMAIN_MFG4>;
+> +			power-domain-names = "core0", "core1", "core2";
+
+Hi Angelo,
+
+I think you should add something like that here:
+#cooling-cells = <2>;
+(the warning is raised when I run 'make dtbs_check')
+
+Julien
 
 
