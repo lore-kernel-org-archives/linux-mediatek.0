@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A159C25B74
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 May 2024 17:29:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F969C27C43
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 May 2024 17:36:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7i3HHxr+FZXrpHZk66CJoa9lBp61kJPFRiR8dLMG28U=; b=1t+39eXzsfnWWoXuuHoE6Mpr+z
-	SKaPx2q+9n+swipPzefdNlY+89aC8tYM+oI/JaxClV3igogmKNYdwDLNmsTrqBrpAPSZsNMCdWRqk
-	dTPzh9qsjAaSOAQ+X+QvSJtNhEc3SbcBymNwKAkeoMaeFXxNYDWPWbLJLVtRdY0I6y8kWphvBTsJI
-	rCDl8vYlyhqXIqz4Imt8DH+OMlu/zj93JCIiFOD3060IwjAtPrK2segO3sSyTTB3gjh7nnJs49laP
-	yDndVtdKV/vm91LhRSdQBNjem3dPmRuSpWL3CIyMYHHq6wZudr4FwtJC7rHnQr7ye/HAR4dJ6lKjM
-	QNGeMU3Q==;
+	bh=iDkdkxzJ9auxG+/FKRL7xr2TfsBW506+9aGLABAn4NQ=; b=fWkk7WJPJWYX+G4uCBIJc/zp2D
+	+TTbH8AC4p9hBHgs2RKx9/KSxCYecevGt+hkTbRFc30vQrBhk3863MrPl+qZEK/KKC16DwnQlMFTY
+	3RFegmJ691R6Bh8JchWxNMr9CPcbviHciP2MPTrUpnfo6KZ/y+BcGU2j2Qk51W9tmTzPM6axFX93Z
+	BjISnL7FTWr1deZMroozJ/qKsZvn4zOIHdzU0A2p5IQr+HIMx3iqQJLHvpHprdsYdBB0uZ04MhJnb
+	qpGsrhEkDQhLxNUiyC/hiWsG050HlWDb/YGXZX1fRC7c8LRY0FJcUwqFi1ePSMNLj21VAIvu6b4wn
+	Obo7gC3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBe9m-0000000Fy7y-0DYR;
-	Mon, 27 May 2024 17:29:10 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1sBeH2-0000000Fyz1-3cBK;
+	Mon, 27 May 2024 17:36:40 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBe9i-0000000Fy79-1jjs;
-	Mon, 27 May 2024 17:29:08 +0000
+	id 1sBeGz-0000000FyyJ-1aE4;
+	Mon, 27 May 2024 17:36:38 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id E364ACE0FFF;
-	Mon, 27 May 2024 17:29:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 03AB3C2BBFC;
-	Mon, 27 May 2024 17:28:58 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 5B80A61B9A;
+	Mon, 27 May 2024 17:36:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A1853C2BBFC;
+	Mon, 27 May 2024 17:36:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1716830942;
-	bh=7i3HHxr+FZXrpHZk66CJoa9lBp61kJPFRiR8dLMG28U=;
+	s=k20201202; t=1716831396;
+	bh=9azP1CoqBgVzc1Ap21svaHMHj3h571dn+Ed1pu/oZnU=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=H5uJoSqx3pJ+EzYT62rpf1TlQZ23hQZdtjGFmPN85Nji9cZDtYuv6V+smkqyDa0tC
-	 UwAwL4vwO8xLPz9e7trjDNstvhY2tCil6W8FKRJMW7Ey8Bh/f3+rPprBPP3q5xowQ4
-	 47ORJPSJOe9uv4cSz8gJz/m9E8zJ/S8BB0yaiCU+pizhycf60XKq+05r5xNrnIzDda
-	 rSSf7Y4jV/FicQHw6V1b5C4VGRXRky8YIsmpGXFbtTkOva36k1CDq2nT3T+0FNi9IF
-	 A6ISG84RRuhHjHNkb/8qQaj6xmAi4PeUSOKIbQoYJRPwVDNVK/lkY9hd3xKIKsg4Vo
-	 1qPZ1N53beKJQ==
-Date: Mon, 27 May 2024 18:28:56 +0100
+	b=Zye5Y2M6ZcwVdvsk5HTNp16+CzXgCstjS1xb9IxfH4+tcOhW0sR7W9u0/bCC4mRr+
+	 yh8xka7Oj//VwikLVjQ/a1J4ULjGTAZR9BTXzaaC9Me/U9cttPvRwq7JjYeYOfPFgM
+	 wTD2X1BPGVI+HcaQPOyatPyo7ZOBJGU3RCDci8lR7XNQNGJHNWl01ouq3JAhpN+9le
+	 Q5n83MV6Wji9XSwh+MP/R4TGaf8fKV4ZgmQNI+Bmw6J1/8UwKih+cIF2qDRgHmiuwT
+	 BPIdf5HQfXTu7gZbMcD9YJVjWtMlb0TD7JiU+9nG/dX2WpeqV9d8iRMiYwWzGH7DVH
+	 +Ou4bN2/Bejtg==
+Date: Mon, 27 May 2024 18:36:30 +0100
 From: Conor Dooley <conor@kernel.org>
-To: Julien Panis <jpanis@baylibre.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
+To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>
+Cc: Jassi Brar <jassisinghbrar@gmail.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Rob Herring <robh+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Daniel Lezcano <daniel.lezcano@linaro.org>,
-	Nicolas Pitre <npitre@baylibre.com>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org
-Subject: Re: [PATCH v5 1/6] dt-bindings: thermal: mediatek: Rename thermal
- zone definitions for MT8186 and MT8188
-Message-ID: <20240527-wife-dress-3ecaf1509506@spud>
-References: <20240524-mtk-thermal-mt818x-dtsi-v5-0-56f8579820e7@baylibre.com>
- <20240524-mtk-thermal-mt818x-dtsi-v5-1-56f8579820e7@baylibre.com>
- <20240524-concerned-fritter-262f5e16293e@spud>
- <20240524-clatter-antivirus-b1939900ee58@spud>
- <61a1be10-7df3-4ba7-b7b4-ccc7f0379656@baylibre.com>
+	Conor Dooley <conor+dt@kernel.org>,
+	Jason-ch Chen <jason-ch.chen@mediatek.com>,
+	Singo Chang <singo.chang@mediatek.com>,
+	Nancy Lin <nancy.lin@mediatek.com>,
+	Shawn Sung <shawn.sung@mediatek.com>, linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org,
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH RESEND,v6 2/8] dt-bindings: mailbox: Add property for
+ CMDQ secure driver
+Message-ID: <20240527-bullion-slapping-d35fcddb56d5@spud>
+References: <20240526144443.14345-1-jason-jh.lin@mediatek.com>
+ <20240526144443.14345-3-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="bM4p+zZXQPt+WasM"
+	protocol="application/pgp-signature"; boundary="gfL6Eu9ihKM1A1EB"
 Content-Disposition: inline
-In-Reply-To: <61a1be10-7df3-4ba7-b7b4-ccc7f0379656@baylibre.com>
+In-Reply-To: <20240526144443.14345-3-jason-jh.lin@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240527_102906_834091_1AB4DDA8 
-X-CRM114-Status: GOOD (  25.45  )
+X-CRM114-CacheID: sfid-20240527_103637_615841_A54E8013 
+X-CRM114-Status: GOOD (  28.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,65 +86,105 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---bM4p+zZXQPt+WasM
+--gfL6Eu9ihKM1A1EB
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Mon, May 27, 2024 at 05:25:35PM +0200, Julien Panis wrote:
-> On 5/24/24 20:27, Conor Dooley wrote:
-> > On Fri, May 24, 2024 at 07:24:47PM +0100, Conor Dooley wrote:
-> > > On Fri, May 24, 2024 at 11:04:34AM +0200, Julien Panis wrote:
-> > > > Use thermal zone names that make more sense.
-> > > >=20
-> > > > Signed-off-by: Julien Panis <jpanis@baylibre.com>
-> > > Removing the defines is an ABI break. If these are all the same devic=
-es,
-> > > but with more accurate naming, then keep the old defines and add new
-> > > ones. However, the GPU1 define changes in the course of this patch wh=
-ich
-> > > is more problematic.
-> > > > [RFC] When PATCH 1/6 and 2/6 are squashed, checkpatch raises this W=
-ARNING:
-> > > > "DT binding docs and includes should be a separate patch." That's w=
-hy I
-> > > > split them in this v5. The problem is that the driver can't be comp=
-iled
-> > > > any more at PATCH 1/6. It needs PATCH 2/6 to be compiled. Should the
-> > > > checkpatch warning be ignored here ? Should I finally squash PATCH =
-1/6
-> > > > and PATCH 2/6 ?
-> > Heh, and there's just one of the issues caused by your ABI break...
+On Sun, May 26, 2024 at 10:44:37PM +0800, Jason-JH.Lin wrote:
+> 1. Add mboxes property to define a GCE loopping thread as a secure IRQ
+> handler.
+> The CMDQ secure driver requests a mbox channel and sends a looping
+> command to the GCE thread. The looping command will wait for a secure
+> packet done event signal from secure world and then jump back to the
+> first instuction. Each time it waits for an event, it notifies the
+> CMDQ driver to perform the same action as the IRQ handler.
 >=20
-> Conor,
->=20
-> Would Russell's suggestion be acceptable for you ?
-> I mean, this one:
-> https://lore.kernel.org/all/ZlDMNkdE2jmFgD8B@shell.armlinux.org.uk/
->=20
-> I could implement it, but before submitting it I would like to make
-> sure that it suits everyone.
+> 2. Add gce-events property from gce-props.yaml to define a
+> secure packet done signal in secure world.
+> There are 1024 events IDs for GCE to use to execute instructions in
+> the specific event happened. These events could be signaled by HW or SW
+> and their value would be different in different SoC because of HW event
+> IDs distribution range from 0 to 1023.
+> If we set a static event ID: 855 for mt8188, it might be conflict the
+> event ID original set in mt8195.
 
-How's that going to work? MT8188_AP_GPU1 currently means 1, after your
-series it means 2.
-You're gonna need to pick a different naming for the new defines to
-avoid that. Additionally, why even delete the old ones? Just define
-new names with the same numbering and you don't need to worry about
-any compatibility issues.
+Two different SoCs, two different compatibles, no problem.
+I'm almost certain you previously told me that the firmware changing
+could result in a different event ID, but I see no mention of that here.
+The commit messages makes it seem like this can be determined by the
+compatible, so either give me a commit message that explains why the
+compatible is not sufficient or drop the patch.
+
+> So we define an event ID that will be set when GCE runs to the end of
+> secure cmdq packet in the secure world.
+>=20
+> This can reduce the latency of software communication between normal
+> world and secure world. In addition, we can also remove the complex
+> logic after the secure packet done in the secure world.
+>=20
+> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+> Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
+> ---
+>  .../devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml | 8 +++++++-
+>  1 file changed, 7 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailb=
+ox.yaml b/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.ya=
+ml
+> index cef9d7601398..6e5e848d61d9 100644
+> --- a/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
+> +++ b/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
+> @@ -49,6 +49,10 @@ properties:
+>      items:
+>        - const: gce
+> =20
+> +  mboxes:
+> +    items:
+> +      - description: GCE looping thread as a secure IRQ handler
+
+Why is this needed? It's going to be a reference to itself, right?
+Why can't you just reserve a channel in the driver?
 
 Thanks,
 Conor.
 
---bM4p+zZXQPt+WasM
+> +
+>  required:
+>    - compatible
+>    - "#mbox-cells"
+> @@ -57,6 +61,8 @@ required:
+>    - clocks
+> =20
+>  allOf:
+> +  - $ref: /schemas/mailbox/mediatek,gce-props.yaml#
+> +
+>    - if:
+>        not:
+>          properties:
+> @@ -67,7 +73,7 @@ allOf:
+>        required:
+>          - clock-names
+> =20
+> -additionalProperties: false
+> +unevaluatedProperties: false
+> =20
+>  examples:
+>    - |
+> --=20
+> 2.18.0
+>=20
+
+--gfL6Eu9ihKM1A1EB
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZlTC2AAKCRB4tDGHoIJi
-0kYaAQCBeeWym98m0dKTR3H3Xk4DUECdqWHnyikIkpibSIdLBQEA0YSS+Kyv4IH8
-jOjyvUdcAS6mMC++BHn0WX/1xnIDNwY=
-=lnm9
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZlTEngAKCRB4tDGHoIJi
+0to1AQDxMdlkCNTKNL4Cai++qtW6p5V+CLhlWwb1OMH0cnYOqgEArzOexHmWlxUE
+80S67d+XuFdcAciAe/PNG2Dd7EsXdwA=
+=ITK7
 -----END PGP SIGNATURE-----
 
---bM4p+zZXQPt+WasM--
+--gfL6Eu9ihKM1A1EB--
 
