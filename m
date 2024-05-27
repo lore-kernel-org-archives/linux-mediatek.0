@@ -4,94 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02D42C25B74
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 May 2024 15:25:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56D07C25B74
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 May 2024 15:53:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YAjC+AWcuEwWtYc+0bhe6ljoU6fNPzKyPApNDIZd6II=; b=MOLWXJpCesN1rqXlMlRDcOpe7s
-	FMI6czU1gk/V2QLoeADTkWPn7N62S0fU5GrsUCgZe+7A5sAqxmBarZxrj39uq7U8/jAn+TRuAbr76
-	XbB85jj5EI8xU9ApfYhpMH9b7Yt7IWek61JYbV794sWL5gt+1jSMa2dH79AA858u5u3FfjXwLRDgH
-	oEm1rvSCXeJEd2E51b47Rasve5oJJl5DkQMHCZ0lFzWIZm9zJ/Q9NagF3XCdg35iiLxNl0HWXVRL4
-	4CAzGOrGWHDUn13hxdL54GZphDVIQ68KmFdlrJ1llIqSaLr4CKPFnAaOu5jQE16X4EskNAg6Lwn24
-	Z0gnYCeA==;
+	bh=iC4pMqfb4hzCsC4mrtoheBzzCX+jebiTXeYB+FxV4WM=; b=TUpYsadzB9pjQyJHXpQg8x0hm6
+	yqOFS7PJSYjhSE4osoicl18tKHcxbeQ4UjWdBbqhUVvpA2AumX/lAV8DadDy2CH0N9SMwTyj94gVc
+	5o0CQEcHo5hlQ6uS9lXq7xTQVggJPTmjhg8DMjcxNExOZidgNQfs29OviN+sI3SBKZc/mKw0FKmQl
+	sJeZy+a7xwE6WZzOgYO2p7vJM/6rdEYECa8Br6JKoyzt0datQaNqasprQWR13vQyz9D0YCjs0BC+w
+	xphioaWjXbg2Px4qiep9ZO6++4TlzLNVjdnqI/nFhCIsDzMyURsqkxs3GtLR7sYZ4/OgkHLWD6v/X
+	zwVnbVIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBcEL-0000000FaUs-0v0x;
-	Mon, 27 May 2024 15:25:45 +0000
-Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
+	id 1sBcem-0000000Ffl9-2E1w;
+	Mon, 27 May 2024 15:53:04 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBcEH-0000000FaTe-0JtK
-	for linux-mediatek@lists.infradead.org;
-	Mon, 27 May 2024 15:25:42 +0000
-Received: by mail-ed1-x531.google.com with SMTP id 4fb4d7f45d1cf-5785fc9c543so3408060a12.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 27 May 2024 08:25:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1716823538; x=1717428338; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=YAjC+AWcuEwWtYc+0bhe6ljoU6fNPzKyPApNDIZd6II=;
-        b=JPWTYt35qGmbUWztauYvl3v+ihdUwueKDm0cFVOOlSBxxGkvvDG2BCDrsUz0YFLKee
-         h5JxXCSWL8fjp3cBN1FDkB8QrQZXuTJq1OjNupc57eL3GqMzNkzfkgjrAkKUgyyI3GIX
-         jGsOKWYZhj9N0rpR4SVE7ke6zXc8mK3IZ4MLe4LSmanaoaANeMtOzAqEiwTjJk7kfi8l
-         a2CgToeb7bkAFbYhmHb3t+NPWBLorqbAtkkif/quSVO7vlu14PDYGrSdOGCmkrWSqIAR
-         d9lSh7Qan0pbY6OIWJxRjjmqbvycmbI/GJQJi3+i22D8u3JudAcJ/YByLcN41lzj57TX
-         4vaA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1716823538; x=1717428338;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=YAjC+AWcuEwWtYc+0bhe6ljoU6fNPzKyPApNDIZd6II=;
-        b=j5GQ/9XsclT7CaiScpF1SA5Tb01iXxIEk0L3DJDdIsocTBz0onFtD6T5/1jBvCMHXQ
-         saPI9XI6XZ1B5d4XWTlzTx0oOcC5NP6csL9sntnQyuaxMJym7REJ5LQDpgInbBsg3aUO
-         0x9UqmkdzgeemShFEHegf/uREFgF6g1kd27/896KakOUF6OdtNTTz5MBHQhTYbUGaF5P
-         vySbHjOT1+Hvd5jJsBUJ1lGEhnG4xESVGXCteCEomk3enHHajUEb2QmlRO+FsToyN0Yf
-         CjDYNhxKTIUB/yliHXBvg18RJ6UxHTwlvDyQfCUp4aMchsEz0DHiaBg6125/dg6tuwUY
-         swyQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVmmWklt+xH38T/yMTplVXq47uuqzBg15TRnjV4jz1hBZNtUuZghQFE7eATjJ8YuhD6puNGc268LAaJ2b4e9Xucn09r86nNWSuXExoIPVE7PwUD
-X-Gm-Message-State: AOJu0Yzylnh8WbaCszAwnMkaQBuOEOxmf2p8soF44Hu2OJ5lyB1A0Owt
-	JqqouG6F6iH7DqMg41+vSPkZxGu04EOG2N4xGptPKqLJNfhs+F4w2bKiSIkKCMw=
-X-Google-Smtp-Source: AGHT+IGiRaldR9hXVy64MuaHnv1OfdgE/94U8ZZ1bdADsFNgO9ZW17mi5WmshRO62qu9oJ2+WFqVOw==
-X-Received: by 2002:a50:ab13:0:b0:578:5d8a:cd91 with SMTP id 4fb4d7f45d1cf-5785d8ad8e6mr7556248a12.41.1716823538210;
-        Mon, 27 May 2024 08:25:38 -0700 (PDT)
-Received: from [192.168.1.70] ([84.102.31.61])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-579c3bbee4asm2952382a12.76.2024.05.27.08.25.36
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 27 May 2024 08:25:37 -0700 (PDT)
-Message-ID: <61a1be10-7df3-4ba7-b7b4-ccc7f0379656@baylibre.com>
-Date: Mon, 27 May 2024 17:25:35 +0200
+	id 1sBcei-0000000Ffjr-10k3;
+	Mon, 27 May 2024 15:53:01 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 314B4CE0DAB;
+	Mon, 27 May 2024 15:52:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B00EEC2BBFC;
+	Mon, 27 May 2024 15:52:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1716825176;
+	bh=ublOx72acyNOeeVaCWRsyHmqdVfgbtXS0a5Hkh7LaXQ=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=XvtvWAsAu7Htom0xdcQVR8q3NVLpL1WbXUNSiEfjmSgWgRQ+0qltD6J058p4VZMnj
+	 dufe7Ogf0KbX68VO2mvJriHWUJxO+ubhZfv6Lgv0ZL5Nzx6dpWUZylFXBVGe9xjWz/
+	 La1Km13UILNYnfdRZhhIG7w2jGuYPo/5J75PJB3WJTFGbl5wYkQLJqXusZM1dXXOnS
+	 oCcZlBOrGqVBdg2894e7jRmG8YYUruirXGXXX3OYAr7FXFXdqlBq6hW4+Tyeo67tx1
+	 yXti2NxfbbDFv43zE/RXHsXDM1RlVZAAo8Wnh9A7ozwEjiD/VkKY+YJa7x08jrAQs4
+	 9vR/zMrvJCscA==
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Cc: Fullway Wang <fullwaywang@outlook.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Sasha Levin <sashal@kernel.org>,
+	tiffany.lin@mediatek.com,
+	andrew-ct.chen@mediatek.com,
+	yunfei.dong@mediatek.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	hverkuil-cisco@xs4all.nl,
+	nicolas.dufresne@collabora.com,
+	colin.i.king@gmail.com,
+	linux-media@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH AUTOSEL 6.9 21/23] media: mtk-vcodec: potential null pointer deference in SCP
+Date: Mon, 27 May 2024 11:50:22 -0400
+Message-ID: <20240527155123.3863983-21-sashal@kernel.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20240527155123.3863983-1-sashal@kernel.org>
+References: <20240527155123.3863983-1-sashal@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 1/6] dt-bindings: thermal: mediatek: Rename thermal
- zone definitions for MT8186 and MT8188
-To: Conor Dooley <conor@kernel.org>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Daniel Lezcano <daniel.lezcano@linaro.org>,
- Nicolas Pitre <npitre@baylibre.com>, "Rafael J. Wysocki"
- <rafael@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
- Lukasz Luba <lukasz.luba@arm.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org
-References: <20240524-mtk-thermal-mt818x-dtsi-v5-0-56f8579820e7@baylibre.com>
- <20240524-mtk-thermal-mt818x-dtsi-v5-1-56f8579820e7@baylibre.com>
- <20240524-concerned-fritter-262f5e16293e@spud>
- <20240524-clatter-antivirus-b1939900ee58@spud>
-Content-Language: en-US
-From: Julien Panis <jpanis@baylibre.com>
-In-Reply-To: <20240524-clatter-antivirus-b1939900ee58@spud>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+X-stable: review
+X-Patchwork-Hint: Ignore
+X-stable-base: Linux 6.9.2
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240527_082541_145908_E5522ACA 
-X-CRM114-Status: GOOD (  14.47  )
+X-CRM114-CacheID: sfid-20240527_085300_498477_4760BFF1 
+X-CRM114-Status: UNSURE (   9.05  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,40 +87,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 5/24/24 20:27, Conor Dooley wrote:
-> On Fri, May 24, 2024 at 07:24:47PM +0100, Conor Dooley wrote:
->> On Fri, May 24, 2024 at 11:04:34AM +0200, Julien Panis wrote:
->>> Use thermal zone names that make more sense.
->>>
->>> Signed-off-by: Julien Panis <jpanis@baylibre.com>
->> Removing the defines is an ABI break. If these are all the same devices,
->> but with more accurate naming, then keep the old defines and add new
->> ones. However, the GPU1 define changes in the course of this patch which
->> is more problematic.
->>> [RFC] When PATCH 1/6 and 2/6 are squashed, checkpatch raises this WARNING:
->>> "DT binding docs and includes should be a separate patch." That's why I
->>> split them in this v5. The problem is that the driver can't be compiled
->>> any more at PATCH 1/6. It needs PATCH 2/6 to be compiled. Should the
->>> checkpatch warning be ignored here ? Should I finally squash PATCH 1/6
->>> and PATCH 2/6 ?
-> Heh, and there's just one of the issues caused by your ABI break...
+From: Fullway Wang <fullwaywang@outlook.com>
 
-Conor,
+[ Upstream commit 53dbe08504442dc7ba4865c09b3bbf5fe849681b ]
 
-Would Russell's suggestion be acceptable for you ?
-I mean, this one:
-https://lore.kernel.org/all/ZlDMNkdE2jmFgD8B@shell.armlinux.org.uk/
+The return value of devm_kzalloc() needs to be checked to avoid
+NULL pointer deference. This is similar to CVE-2022-3113.
 
-I could implement it, but before submitting it I would like to make
-sure that it suits everyone.
+Link: https://lore.kernel.org/linux-media/PH7PR20MB5925094DAE3FD750C7E39E01BF712@PH7PR20MB5925.namprd20.prod.outlook.com
+Signed-off-by: Fullway Wang <fullwaywang@outlook.com>
+Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ .../media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c   | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Julien
-
->
->> Why do these names even make more sense? Where did the old names come
->> from and where do the new?
->
-> Thanks,
-> Conor
+diff --git a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c
+index 6bbe55de6ce9a..ff23b225db705 100644
+--- a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c
++++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c
+@@ -79,6 +79,8 @@ struct mtk_vcodec_fw *mtk_vcodec_fw_scp_init(void *priv, enum mtk_vcodec_fw_use
+ 	}
+ 
+ 	fw = devm_kzalloc(&plat_dev->dev, sizeof(*fw), GFP_KERNEL);
++	if (!fw)
++		return ERR_PTR(-ENOMEM);
+ 	fw->type = SCP;
+ 	fw->ops = &mtk_vcodec_rproc_msg;
+ 	fw->scp = scp;
+-- 
+2.43.0
 
 
