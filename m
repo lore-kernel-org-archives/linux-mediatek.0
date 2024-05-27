@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09FA2C25B74
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 May 2024 07:07:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 752E3C25B78
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 May 2024 07:54:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RcSwrAOBgk0SabpBSOsxuNeS90Z/JnZDn0cwEFk4oc8=; b=KbMPBLvKj8FXvBev/P2vZejjsg
-	0gm9wDHLGHTq/6x0KSM2n5/7/9scYLy6UUM6UvkBn96ZGPm/pETd5umJBVRUTK5xZkFuTJYAD8m6j
-	hRIGgYdlAdzJ8eF9xskltP7LoGsUajkqA3vD0jH5vbBvStJKQUpGfLCxpqFaCQ6+r2YF0TQzsZDo4
-	2/Hg4wMjJi/v/5urIKBo8KwLn6PhpkwrTz+uQz5X88hHqhkyMua6m+6N/2jKfygEWabg8SNpw5Jci
-	B02NEI52ELplwnPxvBPlURcOiu3YXpzO2vb4LWLEhrCZu3tu6KJWXphenb/OOg4CST/hB47Ugmpcv
-	EbmXIMfg==;
+	bh=/ZV/h6vQsdHCKRsoJtSYQORaM3AAsx3HRHL7zmr/VbI=; b=tbuCGQG0ipqgreVaRDAukfcEUR
+	X/j8Yub5lb7HZE3tjMpmyhq09QBMOZ/Ao5riSI12E6DQpiE059gCCg9avxop7d4bELoSpsjBVBK3p
+	uFjC2BXTjpaDDAlbz4FWYt3ewNBBJ9ojYJ6ZzEwFl1G5w0oCmVTrVgfk+1IXYlRTPAmEFLuzweZRp
+	bk5I9Ll7ULKKiwJezOh1BIqYMfTvyFRdASQdEVr3oru39GbhnmWRLYH4MpPySxq80kGrBPZ+jwyBs
+	wjHxhGCOybxe7KbeQtDXdWsFEChoKKBdJZtQVQSS/JjPsjxU4lu5WZDwvnhftxJ1kJQ/OHtxtp2ts
+	DH1hFccA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBUSA-0000000E0Wl-0oZG;
-	Mon, 27 May 2024 07:07:30 +0000
-Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
+	id 1sBVBS-0000000E8x9-0NnM;
+	Mon, 27 May 2024 07:54:18 +0000
+Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBUS7-0000000E0Ue-470h
+	id 1sBVBQ-0000000E8vu-0WsM
 	for linux-mediatek@lists.infradead.org;
-	Mon, 27 May 2024 07:07:29 +0000
-Received: by mail-lf1-x134.google.com with SMTP id 2adb3069b0e04-5295f012748so3212392e87.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 27 May 2024 00:07:25 -0700 (PDT)
+	Mon, 27 May 2024 07:54:17 +0000
+Received: by mail-lf1-x12f.google.com with SMTP id 2adb3069b0e04-5295eb47b48so3017865e87.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 27 May 2024 00:54:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1716793643; x=1717398443; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1716796453; x=1717401253; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=RcSwrAOBgk0SabpBSOsxuNeS90Z/JnZDn0cwEFk4oc8=;
-        b=iq3orxdZt3tlQJodE0VJXeTmbp/DpoLtn8v/CIuWdLgccv4hILwPcoR5wqSojfgz57
-         twQ3fbYhZ4nc2v2kUdnhqscyfwXuU8eeJQdDL1o51EVm6GxxMffpp0N0t/yQFoieG95o
-         maK9jTYDWDs3w4MfttJL5mmdExh/nJStuJwrI=
+        bh=/ZV/h6vQsdHCKRsoJtSYQORaM3AAsx3HRHL7zmr/VbI=;
+        b=gXTqEGkCWoCW6sD7BePNogrsyLOmukCgYBHcTLhzoyutf1JyQgzBKdz8psvDHq82Fd
+         kNhaNbnZ69J8+meoZdtkxVg8hvQV9lp4sGfcjp4mluQSth4vDLu2KX046x9j+JhHVNDr
+         b0qn7e6GLQM/DhqdZLWq0kVk62MUKd5q7kuuQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1716793643; x=1717398443;
+        d=1e100.net; s=20230601; t=1716796453; x=1717401253;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=RcSwrAOBgk0SabpBSOsxuNeS90Z/JnZDn0cwEFk4oc8=;
-        b=ono7MsvNNnUWnlyeJkO//tRZj86xPVIWQZhmwB+87SEcTmo5kYrhDJ82D0GMNvG0YG
-         SXvv+/fNgvLqVdeeOZ5r3x3zdFpp4t30waHZ5KH9tB/5OrH97urO22xh97acoiMfV67t
-         YPAhpSdBjxC8m0TT9YbI+IXvRp3gj2ClIwRWTjllDWLkdO4V2E0V67aqehYhwFq3mZMr
-         YOhKM61qzRYC2GN5RXSkBHxArm6HgQ0X7rOnMQZjPeDYkrwQvwVR8RAjh5YoTgeoYQHj
-         mL3LKShcW/NZpmcoF1TXDASSZec4eRgBimSnNVMRiJnishV5VRetczoo/vw1ZorAd7nD
-         zrnA==
-X-Forwarded-Encrypted: i=1; AJvYcCXxkoDEKTaVQZ9j1iFeuPsSDjkNnQysna06kIQY3oj34BnJjTU4L+TuqKGgvowjRKdAWpXrCOV2RXmL/wnlkZElaQSJdNvADS3UE/5k9yNJGADf
-X-Gm-Message-State: AOJu0YzlzkRkJHWzKgoFASPFfotSaQThshKUAmOOC7Xj1mhzTC2ee5kW
-	bUajRn3hZ5xWHFEuaYfBmt2FoYSa9il69ZrdvgWN2eQ8rocyx7Qnb73YKsQ4QNilBVaHZroBvaN
-	ANSSWxVoPHeFzr4F36w4mpvGtAvqsawfC9ie8
-X-Google-Smtp-Source: AGHT+IH6hkPVE7ofiPKTM1LpKdq3IVMXIknOENA5KSdXkvMNG/QOho/QQ2nuWyvBQu7FsSYAuoYRgFJca6ReR+79/8Q=
-X-Received: by 2002:a19:5f07:0:b0:51f:3cb3:48a4 with SMTP id
- 2adb3069b0e04-529646e3b70mr4742266e87.1.1716793643444; Mon, 27 May 2024
- 00:07:23 -0700 (PDT)
+        bh=/ZV/h6vQsdHCKRsoJtSYQORaM3AAsx3HRHL7zmr/VbI=;
+        b=iBtd1EiopIVEME4CiOPdpedgP/ch1HzBRGrh6t1OIQ+AwCA1hP801UDbagTFESDNWQ
+         Xv7JM8hNfx0KJJTvQWWYq0dm0aMq9NkoRZe9Ld4JJp+4QeMqz53Nnggua14mU3xqVrlh
+         59/hDmgIALay/T524NWQZ+j83c1VYgll1xZ5eCWhdwXWOnJWhwwQPOjsLF93TxZVPpDb
+         8A/s13NlxFMsa2ElXRePdxvHxMXLqfxeT+uEzNfVLdEYBJvcSD4+eo5iWTOUdSIXEYrI
+         lGZKMquckVVLl3RfohKPfSRYYAw76Z9h3ggcrNW1bAaiKYr+2BmrmbnENQ06Qx0pq7TS
+         94eQ==
+X-Forwarded-Encrypted: i=1; AJvYcCW87JwGeGZfs7oEbC+tG7L2pmo2UGlNpZtK6cGHBF8pDE0tFJmWLw3SEANO++9cWdqkJq//qyptKTH/UYlhNyGpfXL7CSjowIRl2idWo++KT2rr
+X-Gm-Message-State: AOJu0YxWHZGY6yhTCnwPkeW6vbZlYHzObd0paLuiNXuP0UXo3d+Fj189
+	x76qRvTQeeXpWmfzNhjrrNi4wd+JZaBp61iPIzJ0qJe9crzXVuXtsYAzeRO3EodRP1zMp2rIsmu
+	THANxUzI9WDz5rjqjvdf7jq7//t8nQKeWam39
+X-Google-Smtp-Source: AGHT+IEr6BRhzwQNd70coArCp9R36H5Sfgvu1jqLEpaNgVYG5JEtSZ3QSk58bvLscssV5LNqg4qreFKps/AUod4hV0I=
+X-Received: by 2002:ac2:4548:0:b0:51c:348:3ba9 with SMTP id
+ 2adb3069b0e04-52964baf3ebmr4816022e87.22.1716796453243; Mon, 27 May 2024
+ 00:54:13 -0700 (PDT)
 MIME-Version: 1.0
-References: <20240516122102.16379-1-yunfei.dong@mediatek.com> <20240516122102.16379-15-yunfei.dong@mediatek.com>
-In-Reply-To: <20240516122102.16379-15-yunfei.dong@mediatek.com>
+References: <20240516122102.16379-1-yunfei.dong@mediatek.com> <20240516122102.16379-25-yunfei.dong@mediatek.com>
+In-Reply-To: <20240516122102.16379-25-yunfei.dong@mediatek.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Mon, 27 May 2024 15:07:12 +0800
-Message-ID: <CAGXv+5Fo2x1R1=rJgC6ymLPMJYOypQdu9wQNdgSrjREyiQWHPw@mail.gmail.com>
-Subject: Re: [PATCH v6,14/24] media: mediatek: vcodec: Add capture format to
- support one plane memory
+Date: Mon, 27 May 2024 15:54:02 +0800
+Message-ID: <CAGXv+5EdwQMCPu7ksshCQ_FQZ460TFrxQN4TE2t=LEOK-rNU5g@mail.gmail.com>
+Subject: Re: [PATCH v6, 24/24] media: mediatek: vcodec: support vp9 svp
+ decoder for mt8188
 To: Yunfei Dong <yunfei.dong@mediatek.com>
 Cc: Jeffrey Kardatzke <jkardatzke@google.com>, 
 	=?UTF-8?B?TsOtY29sYXMgRiAuIFIgLiBBIC4gUHJhZG8=?= <nfraprado@collabora.com>, 
@@ -87,8 +87,8 @@ Cc: Jeffrey Kardatzke <jkardatzke@google.com>,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240527_000728_050411_58F49453 
-X-CRM114-Status: GOOD (  22.27  )
+X-CRM114-CacheID: sfid-20240527_005416_184718_9F3C1F70 
+X-CRM114-Status: GOOD (  24.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,117 +103,247 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
 On Thu, May 16, 2024 at 8:21=E2=80=AFPM Yunfei Dong <yunfei.dong@mediatek.c=
 om> wrote:
 >
-> Define one uncompressed capture format V4L2_PIX_FMT_MS21 in order to
-> support one plane memory. The buffer size is luma + chroma, luma is
-> stored at the start and chrome is stored at the end.
+> From: Yilong Zhou <yilong.zhou@mediatek.com>
 >
+> Change vp9 driver to support secure video playback(svp) for
+> mt8188. Need to map shared memory with optee interface and
+> wait interrupt in optee-os.
+>
+> Signed-off-by: Yilong Zhou <yilong.zhou@mediatek.com>
 > Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 > ---
->  Documentation/userspace-api/media/v4l/pixfmt-reserved.rst | 8 ++++++++
->  drivers/media/v4l2-core/v4l2-common.c                     | 2 ++
->  drivers/media/v4l2-core/v4l2-ioctl.c                      | 1 +
->  include/uapi/linux/videodev2.h                            | 1 +
->  4 files changed, 12 insertions(+)
+>  .../vcodec/decoder/vdec/vdec_vp9_req_lat_if.c | 91 ++++++++++++-------
+>  1 file changed, 59 insertions(+), 32 deletions(-)
 >
-> diff --git a/Documentation/userspace-api/media/v4l/pixfmt-reserved.rst b/=
-Documentation/userspace-api/media/v4l/pixfmt-reserved.rst
-> index 886ba7b08d6b..6ec899649d50 100644
-> --- a/Documentation/userspace-api/media/v4l/pixfmt-reserved.rst
-> +++ b/Documentation/userspace-api/media/v4l/pixfmt-reserved.rst
-> @@ -295,6 +295,14 @@ please make a proposal on the linux-media mailing li=
-st.
->        - Compressed format used by Nuvoton NPCM video driver. This format=
- is
->          defined in Remote Framebuffer Protocol (RFC 6143, chapter 7.7.4 =
-Hextile
->          Encoding).
-> +    * .. _V4L2-PIX-FMT-MS21:
+> diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9=
+_req_lat_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp=
+9_req_lat_if.c
+> index cf48d09b78d7..9f64661800af 100644
+> --- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_la=
+t_if.c
+> +++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_la=
+t_if.c
+> @@ -141,6 +141,7 @@ struct vdec_vp9_slice_frame_counts {
+>   * @skip:      skip counts.
+>   * @y_mode:    Y prediction mode counts.
+>   * @filter:    interpolation filter counts.
+> + * @mv_joint:  motion vector joint counts.
+>   * @sign:      motion vector sign counts.
+>   * @classes:   motion vector class counts.
+>   * @class0:    motion vector class0 bit counts.
+> @@ -804,6 +805,9 @@ static void vdec_vp9_slice_setup_frame_ctx(struct vde=
+c_vp9_slice_instance *insta
+>         error_resilient_mode =3D HDR_FLAG(ERROR_RESILIENT);
+>         reset_frame_context =3D uh->reset_frame_context;
+>
+> +       if (instance->ctx->is_secure_playback)
+> +               return;
 > +
-> +      - ``V4L2_PIX_FMT_MS21``
-> +      - 'MS21'
-> +      - This format has one plane, luma and chroma are stored in a conti=
-guous
-> +        memory. Luma pixel in 16x32 tiles at the start, chroma pixel in =
-16x16
-> +        tiles at the end. The image height must be aligned with 32 and t=
-he image
-> +        width must be aligned with 16.
->  .. raw:: latex
+>         /*
+>          * according to "6.2 Uncompressed header syntax" in
+>          * "VP9 Bitstream & Decoding Process Specification",
+> @@ -818,8 +822,7 @@ static void vdec_vp9_slice_setup_frame_ctx(struct vde=
+c_vp9_slice_instance *insta
+>                  * 2 resets just the context specified in the frame heade=
+r
+>                  * 3 resets all contexts
+>                  */
+> -               if (key_frame || error_resilient_mode ||
+> -                   reset_frame_context =3D=3D 3) {
+> +               if (key_frame || error_resilient_mode || reset_frame_cont=
+ext =3D=3D 3) {
+>                         /* use default table */
+>                         for (i =3D 0; i < 4; i++)
+>                                 instance->dirty[i] =3D 0;
+> @@ -1042,6 +1045,9 @@ static void vdec_vp9_slice_setup_seg_buffer(struct =
+vdec_vp9_slice_instance *inst
+>  {
+>         struct vdec_vp9_slice_uncompressed_header *uh;
 >
->      \normalsize
-> diff --git a/drivers/media/v4l2-core/v4l2-common.c b/drivers/media/v4l2-c=
-ore/v4l2-common.c
-> index 4165c815faef..5ae54cf48dc7 100644
-> --- a/drivers/media/v4l2-core/v4l2-common.c
-> +++ b/drivers/media/v4l2-core/v4l2-common.c
-> @@ -271,6 +271,8 @@ const struct v4l2_format_info *v4l2_format_info(u32 f=
-ormat)
->                   .block_w =3D { 16, 8, 0, 0 }, .block_h =3D { 32, 16, 0,=
- 0 }},
->                 { .format =3D V4L2_PIX_FMT_MT2110R, .pixel_enc =3D V4L2_P=
-IXEL_ENC_YUV, .mem_planes =3D 2, .comp_planes =3D 2, .bpp =3D { 5, 10, 0, 0=
- }, .bpp_div =3D { 4, 4, 1, 1 }, .hdiv =3D 2, .vdiv =3D 2,
->                   .block_w =3D { 16, 8, 0, 0 }, .block_h =3D { 32, 16, 0,=
- 0 }},
-> +               { .format =3D V4L2_PIX_FMT_MS21, pixel_enc =3D V4L2_PIXEL=
-_ENC_YUV, .mem_planes =3D 1, .comp_planes =3D 2, .bpp =3D { 1, 2, 0, 0 }, .=
-bpp_div =3D { 1, 1, 1, 1 }, .hdiv =3D 2, .vdiv =3D 2,
+> +       if (instance->ctx->is_secure_playback)
+> +               return;
+> +
+>         /* reset segment buffer */
+>         uh =3D &vsi->frame.uh;
+>         if (uh->frame_type =3D=3D 0 ||
+> @@ -1172,15 +1178,16 @@ static int vdec_vp9_slice_setup_lat(struct vdec_v=
+p9_slice_instance *instance,
+>
+>         vdec_vp9_slice_setup_seg_buffer(instance, vsi, &instance->seg[0])=
+;
+>
+> -       /* setup prob/tile buffers for LAT */
+> -
+> -       ret =3D vdec_vp9_slice_setup_prob_buffer(instance, vsi);
+> -       if (ret)
+> -               goto err;
+> +       if (!instance->ctx->is_secure_playback) {
+> +               /* setup prob/tile buffers for LAT */
+> +               ret =3D vdec_vp9_slice_setup_prob_buffer(instance, vsi);
+> +               if (ret)
+> +                       goto err;
+>
+> -       ret =3D vdec_vp9_slice_setup_tile_buffer(instance, vsi, bs);
+> -       if (ret)
+> -               goto err;
+> +               ret =3D vdec_vp9_slice_setup_tile_buffer(instance, vsi, b=
+s);
+> +               if (ret)
+> +                       goto err;
+> +       }
+>
+>         return 0;
+>
+> @@ -1599,7 +1606,8 @@ static int vdec_vp9_slice_update_single(struct vdec=
+_vp9_slice_instance *instance
+>                        pfc->seq, vsi->state.crc[4], vsi->state.crc[5],
+>                        vsi->state.crc[6], vsi->state.crc[7]);
+>
+> -       vdec_vp9_slice_update_prob(instance, vsi);
+> +       if (!instance->ctx->is_secure_playback)
+> +               vdec_vp9_slice_update_prob(instance, vsi);
+>
+>         instance->width =3D vsi->frame.uh.frame_width;
+>         instance->height =3D vsi->frame.uh.frame_height;
+> @@ -1632,7 +1640,8 @@ static int vdec_vp9_slice_update_lat(struct vdec_vp=
+9_slice_instance *instance,
+>                 return -EAGAIN;
+>         }
+>
+> -       vdec_vp9_slice_update_prob(instance, vsi);
+> +       if (!instance->ctx->is_secure_playback)
+> +               vdec_vp9_slice_update_prob(instance, vsi);
+>
+>         instance->width =3D vsi->frame.uh.frame_width;
+>         instance->height =3D vsi->frame.uh.frame_height;
+> @@ -1694,8 +1703,13 @@ static int vdec_vp9_slice_setup_core_buffer(struct=
+ vdec_vp9_slice_instance *inst
+>                 return -EINVAL;
+>
+>         /* update internal buffer's width/height */
+> -       instance->dpb[vb->index].width =3D w;
+> -       instance->dpb[vb->index].height =3D h;
+> +       for (i =3D 0; i < vq->num_buffers; i++) {
 
-                                                 ^
-This is missing a '.' before 'pixel_enc', which breaks the build.
+Starting in v6.10-rc1 with the introduction of REMOVE_BUFS, vq->num_buffers
+was removed. There is now vq->max_num_buffers.
+
+> +               if (vb =3D=3D vq->bufs[i]) {
+
+This should probably use the helper "vb2_get_buffer(vq, i)".
 
 ChenYu
 
-> +                 .block_w =3D { 16, 8, 0, 0 }, .block_h =3D { 32, 16, 0,=
- 0 }},
+> +                       instance->dpb[i].width =3D w;
+> +                       instance->dpb[i].height =3D h;
+> +                       break;
+> +               }
+> +       }
 >
->                 /* YUV planar formats */
->                 { .format =3D V4L2_PIX_FMT_NV12,    .pixel_enc =3D V4L2_P=
-IXEL_ENC_YUV, .mem_planes =3D 1, .comp_planes =3D 2, .bpp =3D { 1, 2, 0, 0 =
-}, .bpp_div =3D { 1, 1, 1, 1 }, .hdiv =3D 2, .vdiv =3D 2 },
-> diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-co=
-re/v4l2-ioctl.c
-> index 4c76d17b4629..3a68f2b9e7a4 100644
-> --- a/drivers/media/v4l2-core/v4l2-ioctl.c
-> +++ b/drivers/media/v4l2-core/v4l2-ioctl.c
-> @@ -1529,6 +1529,7 @@ static void v4l_fill_fmtdesc(struct v4l2_fmtdesc *f=
-mt)
->                 case V4L2_PIX_FMT_MT2110T:      descr =3D "Mediatek 10bit=
- Tile Mode"; break;
->                 case V4L2_PIX_FMT_MT2110R:      descr =3D "Mediatek 10bit=
- Raster Mode"; break;
->                 case V4L2_PIX_FMT_HEXTILE:      descr =3D "Hextile Compre=
-ssed Format"; break;
-> +               case V4L2_PIX_FMT_MS21:         descr =3D "MediaTek One P=
-lane Format"; break;
->                 default:
->                         if (fmt->description[0])
->                                 return;
-> diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev=
-2.h
-> index 89eb1a3c6555..7aff2f2c8f9c 100644
-> --- a/include/uapi/linux/videodev2.h
-> +++ b/include/uapi/linux/videodev2.h
-> @@ -800,6 +800,7 @@ struct v4l2_pix_format {
->  #define V4L2_PIX_FMT_MM21     v4l2_fourcc('M', 'M', '2', '1') /* Mediate=
-k 8-bit block mode, two non-contiguous planes */
->  #define V4L2_PIX_FMT_MT2110T  v4l2_fourcc('M', 'T', '2', 'T') /* Mediate=
-k 10-bit block tile mode */
->  #define V4L2_PIX_FMT_MT2110R  v4l2_fourcc('M', 'T', '2', 'R') /* Mediate=
-k 10-bit block raster mode */
-> +#define V4L2_PIX_FMT_MS21     v4l2_fourcc('M', 'S', '2', '1') /* MediaTe=
-k 8-bit block mode with one plane */
->  #define V4L2_PIX_FMT_INZI     v4l2_fourcc('I', 'N', 'Z', 'I') /* Intel P=
-lanar Greyscale 10-bit and Depth 16-bit */
->  #define V4L2_PIX_FMT_CNF4     v4l2_fourcc('C', 'N', 'F', '4') /* Intel 4=
--bit packed depth confidence information */
->  #define V4L2_PIX_FMT_HI240    v4l2_fourcc('H', 'I', '2', '4') /* BTTV 8-=
-bit dithered RGB */
+>         /*
+>          * get buffer's width/height from instance
+> @@ -1779,7 +1793,8 @@ static int vdec_vp9_slice_setup_core(struct vdec_vp=
+9_slice_instance *instance,
+>         if (ret)
+>                 goto err;
+>
+> -       vdec_vp9_slice_setup_seg_buffer(instance, vsi, &instance->seg[1])=
+;
+> +       if (!instance->ctx->is_secure_playback)
+> +               vdec_vp9_slice_setup_seg_buffer(instance, vsi, &instance-=
+>seg[1]);
+>
+>         return 0;
+>
+> @@ -1874,19 +1889,31 @@ static int vdec_vp9_slice_init(struct mtk_vcodec_=
+dec_ctx *ctx)
+>                 goto error_vsi;
+>         }
+>         instance->init_vsi =3D vsi;
+> -       instance->core_vsi =3D mtk_vcodec_fw_map_dm_addr(ctx->dev->fw_han=
+dler,
+> -                                                      (u32)vsi->core_vsi=
+);
+> -       if (!instance->core_vsi) {
+> -               mtk_vdec_err(ctx, "failed to get VP9 core vsi\n");
+> -               ret =3D -EINVAL;
+> -               goto error_vsi;
+> -       }
+>
+> -       instance->irq =3D 1;
+> +       if (ctx->is_secure_playback) {
+> +               instance->core_vsi =3D
+> +                       mtk_vcodec_dec_get_shm_buffer_va(ctx->dev->optee_=
+private, MTK_VDEC_CORE,
+> +                                                        OPTEE_DATA_INDEX=
+);
+> +               if (!instance->core_vsi) {
+> +                       mtk_vdec_err(ctx, "failed to get VP9 svp core vsi=
+\n");
+> +                       ret =3D -EINVAL;
+> +                       goto error_vsi;
+> +               }
+> +               instance->irq =3D 0;
+> +       } else {
+> +               instance->core_vsi =3D mtk_vcodec_fw_map_dm_addr(ctx->dev=
+->fw_handler,
+> +                                                              (u32)vsi->=
+core_vsi);
+> +               if (!instance->core_vsi) {
+> +                       mtk_vdec_err(ctx, "failed to get VP9 normal core =
+vsi\n");
+> +                       ret =3D -EINVAL;
+> +                       goto error_vsi;
+> +               }
+> +               instance->irq =3D 1;
+>
+> -       ret =3D vdec_vp9_slice_init_default_frame_ctx(instance);
+> -       if (ret)
+> -               goto error_default_frame_ctx;
+> +               ret =3D vdec_vp9_slice_init_default_frame_ctx(instance);
+> +               if (ret)
+> +                       goto error_default_frame_ctx;
+> +       }
+>
+>         ctx->drv_handle =3D instance;
+>
+> @@ -2101,9 +2128,12 @@ static int vdec_vp9_slice_lat_decode(void *h_vdec,=
+ struct mtk_vcodec_mem *bs,
+>                        (unsigned long)pfc->vsi.trans.dma_addr,
+>                        (unsigned long)pfc->vsi.trans.dma_addr_end);
+>
+> -       vdec_msg_queue_update_ube_wptr(&ctx->msg_queue,
+> -                                      vsi->trans.dma_addr_end +
+> -                                      ctx->msg_queue.wdma_addr.dma_addr)=
+;
+> +       if (!instance->ctx->is_secure_playback) {
+> +               vsi->trans.dma_addr_end +=3D ctx->msg_queue.wdma_addr.dma=
+_addr;
+> +               mtk_vdec_debug(ctx, "core dma_addr_end 0x%lx\n",
+> +                              (unsigned long)pfc->vsi.trans.dma_addr_end=
+);
+> +       }
+> +       vdec_msg_queue_update_ube_wptr(&ctx->msg_queue, vsi->trans.dma_ad=
+dr_end);
+>         vdec_msg_queue_qbuf(&ctx->msg_queue.core_ctx, lat_buf);
+>
+>         return 0;
+> @@ -2183,9 +2213,6 @@ static int vdec_vp9_slice_core_decode(struct vdec_l=
+at_buf *lat_buf)
+>                 goto err;
+>         }
+>
+> -       pfc->vsi.trans.dma_addr_end +=3D ctx->msg_queue.wdma_addr.dma_add=
+r;
+> -       mtk_vdec_debug(ctx, "core dma_addr_end 0x%lx\n",
+> -                      (unsigned long)pfc->vsi.trans.dma_addr_end);
+>         vdec_msg_queue_update_ube_rptr(&ctx->msg_queue, pfc->vsi.trans.dm=
+a_addr_end);
+>         ctx->dev->vdec_pdata->cap_to_disp(ctx, 0, lat_buf->src_buf_req);
+>
 > --
 > 2.25.1
 >
