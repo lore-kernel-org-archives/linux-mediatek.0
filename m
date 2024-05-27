@@ -4,72 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FAF6C25B78
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 May 2024 18:30:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B252C25B74
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 May 2024 20:57:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:Message-ID:In-Reply-To:Subject:cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VNwqDkuFgKjhVHJW0w5JUYp4JYk3Ki4mNKDdPxV9apI=; b=LdRoishJi4m0pUM3rxIZPgFAGt
-	SFnyIl6f0HrBiXKdoGik68Z7UPHVh++4o/WbgbaBhlVLxcEzbQiXBmqg8kGdllW6PzC/6BC+NBiWq
-	D2X6u9be92nwy9PS1l3wKl3uEWjeYYyPeqH/lI7ZIeUxUg46uXPqWMdFisPUm3IHVgVgmvnrk3ZjD
-	jqbbH1wfNs8Vari9z04Ke7r9nOoxa9KXbjfLPvdb3/J6scgUQ1PvVT3f6tFa3hNiaFmExQtLbEvzq
-	miOVHz41ndFmamuOFaz/L1dISH4nQaREFwT3cmaMdCZNmopWwmE+YdzHdcfQxX/vkR61lxktSlkL6
-	CT76MQIg==;
+	bh=e8bs9EbhcdQK3rxulMupHjqyar0ItbldeLVgIYJXmjo=; b=bAGAAhZ9c57nTublSi7VDqivuf
+	NQZcMIcpGs9HFGfPTNPBveD+rKKiM91RKSIjUlfe90pQT5mv0Fv+oXFCqeG2mlMNOvBz+WYh8r7Oi
+	DGp+ppX4u8l1KsrWqEknn8m+kSw+hU2mBOHNalt3POeI3FYqiRaE5t9A0tSLuA6mIaQvL94yQgRHw
+	lO9RFjmXJAjSMyVTxRVp0lDMTA53bLACyos8a1tITtQA5nA6VTQvrjDMah46nCqJZZ6UMmU+cTmV5
+	4/WuiIZ80tUnPOJ2CXbNcgKoD2QF0tDl8gTIo2BP7YDiHyi/wOnP8iY9/JjiKiJVXtF2KImrWXXAW
+	Z39l/6og==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBf7N-0000000G3hU-0mGo;
-	Mon, 27 May 2024 18:30:45 +0000
-Received: from s3.sipsolutions.net ([2a01:4f8:242:246e::2] helo=sipsolutions.net)
+	id 1sBhPK-0000000GIXB-19VY;
+	Mon, 27 May 2024 20:57:26 +0000
+Received: from mail-qk1-x729.google.com ([2607:f8b0:4864:20::729])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBf7J-0000000G3gG-2sZT;
-	Mon, 27 May 2024 18:30:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=sipsolutions.net; s=mail; h=MIME-Version:Content-Transfer-Encoding:
-	Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender
-	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-To:
-	Resent-Cc:Resent-Message-ID; bh=VNwqDkuFgKjhVHJW0w5JUYp4JYk3Ki4mNKDdPxV9apI=;
-	t=1716834638; x=1718044238; b=qq294NiMW+Umd//R+Iek7poOaRGs2K1N+kxAfA++JAMN4WX
-	AH5YRPm6GZchkqKp4X5SINGVpOC9zRJxk7f3mDYzRPNVQw497X0JsNNIA/67Jgv7GrlnPjvp3oScr
-	R0KC1q0I8yMlBhw4NW17tNI5NMF5W2kf8tzmlYUWLNOJqH2g3AiGzZK9mYVgW7qdE52AK9/CJjeiX
-	wQLap1ly8oRafHyClUxs/Jb/WXhaGwPv940xDmPVHzBGMEIxt/QYiptlezfMKCwyuZCn2HbQrMzqT
-	53613LhEH/eVR2HRldiXAG4n/c72aegBxp41AglEceokZfoHH7KfxEfZMbB2EFZA==;
-Received: by sipsolutions.net with esmtpsa (TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
-	(Exim 4.97)
-	(envelope-from <johannes@sipsolutions.net>)
-	id 1sBf7B-0000000D2t4-0Xcd;
-	Mon, 27 May 2024 20:30:33 +0200
-Message-ID: <98871a58e675aef7ad7f2e5bd3bb2ee526d29d5f.camel@sipsolutions.net>
-Subject: Re: [REGRESSION] MT7915E doesn't work any more with v6.9
-From: Johannes Berg <johannes@sipsolutions.net>
-To: Greg KH <gregkh@linuxfoundation.org>, Kalle Valo <kvalo@kernel.org>
-Cc: Oleksandr Natalenko <oleksandr@natalenko.name>, 
- linux-kernel@vger.kernel.org, linux-wireless@vger.kernel.org, "Linux
- regression tracking (Thorsten Leemhuis)" <regressions@leemhuis.info>,
- linux-mediatek@lists.infradead.org,  linux-arm-kernel@lists.infradead.org,
- Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, Ryder
- Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, Sean
- Wang <sean.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Peter
- Chiu <chui-hao.chiu@mediatek.com>, StanleyYP Wang
- <StanleyYP.Wang@mediatek.com>,  Linux regressions mailing list
- <regressions@lists.linux.dev>
-Date: Mon, 27 May 2024 20:30:31 +0200
-In-Reply-To: <2024052750-rippling-catty-1cb5@gregkh>
-References: <6061263.lOV4Wx5bFT@natalenko.name>
-	 <2341660.ElGaqSPkdT@natalenko.name>
-	 <60fe8df750a74331b8a54a76d55d5e8349ac46b4.camel@sipsolutions.net>
-	 <878qzy9zly.fsf@kernel.org> <2024052750-rippling-catty-1cb5@gregkh>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.50.4 (3.50.4-1.fc39) 
+	id 1sBhPG-0000000GIWP-0XG0
+	for linux-mediatek@lists.infradead.org;
+	Mon, 27 May 2024 20:57:24 +0000
+Received: by mail-qk1-x729.google.com with SMTP id af79cd13be357-794ab1bafedso9615585a.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 27 May 2024 13:57:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1716843437; x=1717448237; darn=lists.infradead.org;
+        h=mime-version:references:message-id:in-reply-to:subject:cc:to:from
+         :date:from:to:cc:subject:date:message-id:reply-to;
+        bh=e8bs9EbhcdQK3rxulMupHjqyar0ItbldeLVgIYJXmjo=;
+        b=caIyKBoHIGBpZjmdFfeM3zDoNEU+Qp9vAjBvpZUhEiKcMfXY+9W97pIjDwB2ig1bDJ
+         cfeuAuukRPeBtQsPYn/ratLF88ixPe35r3bQPtcj1RZIT2ePwNXo38LZpK0jOnAomrNG
+         Jc+Xtu8jKcqfsSATCHWK9G74Hvj82FhnWOkLHqGj+XfUxlCr/7LtwikQmfoRYJdwKDLy
+         SKO7YLd+Bl8VGBO8+2LTBQYkv1dQscPNmk8r+MDlE0Q1sHHU6nDe4COiL7nCLxUgyeFO
+         aaYNsh8SKCdWyhSvhMV70W5ai1QV9FO/iXtoU6GpXX3a9EsCS5gC0TkSMVnKIBaprKve
+         gz6w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1716843437; x=1717448237;
+        h=mime-version:references:message-id:in-reply-to:subject:cc:to:from
+         :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=e8bs9EbhcdQK3rxulMupHjqyar0ItbldeLVgIYJXmjo=;
+        b=mRRiGmO3aVHTuaI2jas7ZverOVeP3IaypPMmNJ763XHtwf77j8grwkZg5XbICEm8M1
+         8KZtVW/Ieoebg0nBg2K5CFttz6JjLCNiPtEEQOFL5qr7G7qi0Utywd/vL1w8wLcZUqbf
+         8VpybMGwW+jqhT4UZhtxCy+oOlPirOKnvOwAsuW8geWmAJUF/AzSX9WDBJiRDD+R4lPY
+         yOB7ZMmGF5grhRDzOYP/4/465+9rmGwDTregHJyQsl2Jrz/cX9EhWypUfoxd3kO0EqEg
+         Ssr9GK9IQf+fGKUEWEg6R/OU6n+WArUVLltDCZFKs0heav7sSNgDkIgtbQF+UEw1B/ih
+         ojDQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXDY1N81VyuK7M4GMw0HsOn9nk3iDV8QwIWUzOB/0O0ghmJ6MtxEtE1qEjuri5BuG6sxKQ8M3nVQsx3SgWNdDmS+hebfZdHJ4SqFtLcchE/zadT
+X-Gm-Message-State: AOJu0YwMSfaeLb6QgOjpdQ4+SzBc2m57WTZtcwLJRyViGU5LtP7EpiLV
+	zzjdEMeJkhr3ul//pwSZTepV2kcUz2w9KMQu9eLls/c8FMQ28HRgV25VRd42Lpo=
+X-Google-Smtp-Source: AGHT+IEFA5Xl71Sl0vHc2fZVv9T+NoQ5HUfuJTzWManJsQ0IRn5ypl+K46w3nAeESk2lSwtK276CTA==
+X-Received: by 2002:a05:620a:4548:b0:792:e0b0:7219 with SMTP id af79cd13be357-794ab1130a1mr1438768185a.77.1716843437229;
+        Mon, 27 May 2024 13:57:17 -0700 (PDT)
+Received: from xanadu (modemcable018.15-162-184.mc.videotron.ca. [184.162.15.18])
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-794abd4406esm325258085a.128.2024.05.27.13.57.16
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 27 May 2024 13:57:16 -0700 (PDT)
+Date: Mon, 27 May 2024 16:57:15 -0400 (EDT)
+From: Nicolas Pitre <npitre@baylibre.com>
+To: Conor Dooley <conor@kernel.org>
+cc: Julien Panis <jpanis@baylibre.com>, Rob Herring <robh@kernel.org>, 
+    Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+    Conor Dooley <conor+dt@kernel.org>, 
+    Matthias Brugger <matthias.bgg@gmail.com>, 
+    AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+    Daniel Lezcano <daniel.lezcano@linaro.org>, 
+    "Rafael J. Wysocki" <rafael@kernel.org>, Zhang Rui <rui.zhang@intel.com>, 
+    Lukasz Luba <lukasz.luba@arm.com>, devicetree@vger.kernel.org, 
+    linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+    linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org
+Subject: Re: [PATCH v5 1/6] dt-bindings: thermal: mediatek: Rename thermal
+ zone definitions for MT8186 and MT8188
+In-Reply-To: <20240527-wife-dress-3ecaf1509506@spud>
+Message-ID: <r9q3n5n4-4pqn-53so-4n65-33p432530793@onlyvoer.pbz>
+References: <20240524-mtk-thermal-mt818x-dtsi-v5-0-56f8579820e7@baylibre.com> <20240524-mtk-thermal-mt818x-dtsi-v5-1-56f8579820e7@baylibre.com> <20240524-concerned-fritter-262f5e16293e@spud> <20240524-clatter-antivirus-b1939900ee58@spud>
+ <61a1be10-7df3-4ba7-b7b4-ccc7f0379656@baylibre.com> <20240527-wife-dress-3ecaf1509506@spud>
 MIME-Version: 1.0
-X-malware-bazaar: not-scanned
+Content-Type: text/plain; charset=US-ASCII
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240527_113041_896940_97962D9D 
-X-CRM114-Status: GOOD (  12.76  )
+X-CRM114-CacheID: sfid-20240527_135722_320793_1041D620 
+X-CRM114-Status: GOOD (  26.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,21 +99,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2024-05-27 at 20:29 +0200, Greg KH wrote:
-> >=20
-> > Yeah, commit 2f7cf3b61d85 should have been taken to wireless tree but i=
-t
-> > fell through the cracks. I didn't realise that it's an important bugfix
-> > and the commit message didn't give any indication of that either.
-> >=20
-> > But commit 2f7cf3b61d85 is now in Linus' tree so it would be good if
-> > someone could submit it to stable releases.
->=20
-> It's already in 6.9.1, does it need to go anywhere else?
->=20
+On Mon, 27 May 2024, Conor Dooley wrote:
 
-No, but apparently we need a similar commit for mt7915e or something? I
-have no idea why I missed those. I'll take a look tomorrow.
+> On Mon, May 27, 2024 at 05:25:35PM +0200, Julien Panis wrote:
+> > On 5/24/24 20:27, Conor Dooley wrote:
+> > > On Fri, May 24, 2024 at 07:24:47PM +0100, Conor Dooley wrote:
+> > > > On Fri, May 24, 2024 at 11:04:34AM +0200, Julien Panis wrote:
+> > > > > Use thermal zone names that make more sense.
+> > > > > 
+> > > > > Signed-off-by: Julien Panis <jpanis@baylibre.com>
+> > > > Removing the defines is an ABI break. If these are all the same devices,
+> > > > but with more accurate naming, then keep the old defines and add new
+> > > > ones. However, the GPU1 define changes in the course of this patch which
+> > > > is more problematic.
+> > > > > [RFC] When PATCH 1/6 and 2/6 are squashed, checkpatch raises this WARNING:
+> > > > > "DT binding docs and includes should be a separate patch." That's why I
+> > > > > split them in this v5. The problem is that the driver can't be compiled
+> > > > > any more at PATCH 1/6. It needs PATCH 2/6 to be compiled. Should the
+> > > > > checkpatch warning be ignored here ? Should I finally squash PATCH 1/6
+> > > > > and PATCH 2/6 ?
+> > > Heh, and there's just one of the issues caused by your ABI break...
+> > 
+> > Conor,
+> > 
+> > Would Russell's suggestion be acceptable for you ?
+> > I mean, this one:
+> > https://lore.kernel.org/all/ZlDMNkdE2jmFgD8B@shell.armlinux.org.uk/
+> > 
+> > I could implement it, but before submitting it I would like to make
+> > sure that it suits everyone.
+> 
+> How's that going to work? MT8188_AP_GPU1 currently means 1, after your
+> series it means 2.
+> You're gonna need to pick a different naming for the new defines to
+> avoid that. Additionally, why even delete the old ones? Just define
+> new names with the same numbering and you don't need to worry about
+> any compatibility issues.
 
-johannes
+Isn't this making a mountain out of a molehill here?
+
+Seriously... none of this was present in a released kernel. The naming 
+can be adjusted "atomically" so compilation doesn't break, and 
+it is within maintainers' discretion to bypass the checkpatch warning in 
+such particular case.
+
+
+Nicolas
 
