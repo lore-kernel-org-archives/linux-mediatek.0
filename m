@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E7FFC25B7C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 May 2024 19:50:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A655C25B7C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 May 2024 19:50:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=B6sn0pIWwwSnfY8AGhWWYQzwnQKI9fY7QhhOOQ0QLcw=; b=AwoqCuNXteEnr7XRnhUki4hxVt
-	JBBSkd7dfO2fvyqHzVt1ao29SxYoJiQw+BGBAr1zrL0bbwG9nMNOH3ltuRZc294lph3C4zxkkBsYn
-	8AKd2CyagMqj4A18/N1Y3Q1qGJDf8e1xVy6Rlj2zQ/vMSJmRCEORofeiiO/yMnziSZCbCbblbV9pl
-	2qpsLvGaj6YVV/R36V9Utnut1klqGLHwCvn5tN0e59O/Rd4M0Z7xHe1aqZYAIlrKgTcndYaoctBEs
-	mhT2gbqgbFju+vdi3aKUnGfUnRYX6EbM0VtAHcXsTD5U+uvmKCP1shsKv7hBpXWeSDMMYRCC7De7O
-	dwC/JU3w==;
+	bh=RY+WVFLqdM7a+qcWgzDS/sUrunQ9bLGJdi2eK9+Oz8E=; b=TpmDJCHbaCUVTjH21Du6jrMBLj
+	IyCKME82CGUGFjMmy65eF1Cb6ErdIAvay+0/e3fGyKfytm5idBYYZA0+N1Qlq91nc7gKJtZs1MgWw
+	YvvfF4VVCZ46OB0ImrSvo9bfz9rvG/RJRYpAmaTCeoEyzZ5S51rL8gb1+GlFpVZr6Kut1N1xub7OQ
+	k9UwRWKMh+Dd31oHLkWB841NQcasKvZRPO2DycJJTbR1zAoIGPWvZkNihaIBHBnWkWzTIUkpKi9h3
+	9sp+vrtfqDGKIJiIPzpnYTWjegu2KUgRsptF8o8P0+FKfGmEGgsaToqd0wPGTPQ3phwls+/LYEaJi
+	AT9h69lA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sC2qM-00000001szJ-2eUE;
-	Tue, 28 May 2024 19:50:46 +0000
+	id 1sC2qY-00000001t69-1mb5;
+	Tue, 28 May 2024 19:50:58 +0000
 Received: from fgw21-7.mail.saunalahti.fi ([62.142.5.82])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sC2ph-00000001sY0-3SLs
+	id 1sC2pj-00000001sYl-1TTi
 	for linux-mediatek@lists.infradead.org;
-	Tue, 28 May 2024 19:50:08 +0000
+	Tue, 28 May 2024 19:50:09 +0000
 Received: from localhost (88-113-26-230.elisa-laajakaista.fi [88.113.26.230])
-	by fgw21.mail.saunalahti.fi (Halon) with ESMTP
-	id 7a1a2509-1d2b-11ef-aaf5-005056bdd08f;
-	Tue, 28 May 2024 22:50:04 +0300 (EEST)
+	by fgw20.mail.saunalahti.fi (Halon) with ESMTP
+	id 7a993cff-1d2b-11ef-8d3a-005056bd6ce9;
+	Tue, 28 May 2024 22:50:05 +0300 (EEST)
 From: Andy Shevchenko <andy.shevchenko@gmail.com>
 To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
 	Linus Walleij <linus.walleij@linaro.org>,
@@ -53,17 +53,17 @@ Cc: Dong Aisheng <aisheng.dong@nxp.com>,
 	Paul Cercueil <paul@crapouillou.net>,
 	Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>,
 	Andy Shevchenko <andy.shevchenko@gmail.com>
-Subject: [PATCH v2 08/11] pinctrl: ingenic: Convert to use func member
-Date: Tue, 28 May 2024 22:44:59 +0300
-Message-ID: <20240528194951.1489887-9-andy.shevchenko@gmail.com>
+Subject: [PATCH v2 09/11] pinctrl: keembay: Convert to use func member
+Date: Tue, 28 May 2024 22:45:00 +0300
+Message-ID: <20240528194951.1489887-10-andy.shevchenko@gmail.com>
 X-Mailer: git-send-email 2.45.1
 In-Reply-To: <20240528194951.1489887-1-andy.shevchenko@gmail.com>
 References: <20240528194951.1489887-1-andy.shevchenko@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240528_125006_124882_4AA8542C 
-X-CRM114-Status: GOOD (  12.07  )
+X-CRM114-CacheID: sfid-20240528_125007_648766_74190BA0 
+X-CRM114-Status: GOOD (  14.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,53 +84,71 @@ desynchronisation of the generic pin function description.
 
 Signed-off-by: Andy Shevchenko <andy.shevchenko@gmail.com>
 ---
- drivers/pinctrl/pinctrl-ingenic.c | 16 +++++++---------
- 1 file changed, 7 insertions(+), 9 deletions(-)
+ drivers/pinctrl/pinctrl-keembay.c | 22 +++++++++++-----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
 
-diff --git a/drivers/pinctrl/pinctrl-ingenic.c b/drivers/pinctrl/pinctrl-ingenic.c
-index 959b9ea83a66..31703737731b 100644
---- a/drivers/pinctrl/pinctrl-ingenic.c
-+++ b/drivers/pinctrl/pinctrl-ingenic.c
-@@ -96,9 +96,7 @@
+diff --git a/drivers/pinctrl/pinctrl-keembay.c b/drivers/pinctrl/pinctrl-keembay.c
+index b1349ee22799..245a74ed97ee 100644
+--- a/drivers/pinctrl/pinctrl-keembay.c
++++ b/drivers/pinctrl/pinctrl-keembay.c
+@@ -1566,7 +1566,7 @@ static int keembay_add_functions(struct keembay_pinctrl *kpc,
+ 		unsigned int grp_idx = 0;
+ 		int j;
  
- #define INGENIC_PIN_FUNCTION(_name_, id)							\
- 	{											\
--		.name = _name_,									\
--		.group_names = id##_groups,							\
--		.num_group_names = ARRAY_SIZE(id##_groups),					\
-+		.func = PINCTRL_PINFUNCTION(_name_, id##_groups, ARRAY_SIZE(id##_groups)),	\
- 		.data = NULL,									\
- 	}
+-		group_names = devm_kcalloc(kpc->dev, func->num_group_names,
++		group_names = devm_kcalloc(kpc->dev, func->func.ngroups,
+ 					   sizeof(*group_names), GFP_KERNEL);
+ 		if (!group_names)
+ 			return -ENOMEM;
+@@ -1576,20 +1576,20 @@ static int keembay_add_functions(struct keembay_pinctrl *kpc,
+ 			struct keembay_mux_desc *mux;
  
-@@ -3769,7 +3767,7 @@ static int ingenic_pinmux_set_mux(struct pinctrl_dev *pctldev,
- 		return -EINVAL;
- 
- 	dev_dbg(pctldev->dev, "enable function %s group %s\n",
--		func->name, grp->grp.name);
-+		func->func.name, grp->grp.name);
- 
- 	mode = (uintptr_t)grp->data;
- 	if (mode <= 3) {
-@@ -4317,14 +4315,14 @@ static int __init ingenic_pinctrl_probe(struct platform_device *pdev)
- 	}
- 
- 	for (i = 0; i < chip_info->num_functions; i++) {
--		const struct function_desc *func = &chip_info->functions[i];
-+		const struct function_desc *function = &chip_info->functions[i];
-+		const struct pinfunction *func = &function->func;
- 
- 		err = pinmux_generic_add_function(jzpc->pctl, func->name,
--				func->group_names, func->num_group_names,
--				func->data);
-+						  func->groups, func->ngroups,
-+						  function->data);
- 		if (err < 0) {
--			dev_err(dev, "Failed to register function %s\n",
--					func->name);
-+			dev_err(dev, "Failed to register function %s\n", func->name);
- 			return err;
+ 			for (mux = pdesc->drv_data; mux->name; mux++) {
+-				if (!strcmp(mux->name, func->name))
++				if (!strcmp(mux->name, func->func.name))
+ 					group_names[grp_idx++] = pdesc->name;
+ 			}
  		}
+ 
+-		func->group_names = group_names;
++		func->func.groups = group_names;
  	}
+ 
+ 	/* Add all functions */
+ 	for (i = 0; i < kpc->nfuncs; i++) {
+ 		pinmux_generic_add_function(kpc->pctrl,
+-					    functions[i].name,
+-					    functions[i].group_names,
+-					    functions[i].num_group_names,
++					    functions[i].func.name,
++					    functions[i].func.groups,
++					    functions[i].func.ngroups,
+ 					    functions[i].data);
+ 	}
+ 
+@@ -1619,17 +1619,17 @@ static int keembay_build_functions(struct keembay_pinctrl *kpc)
+ 			struct function_desc *fdesc;
+ 
+ 			/* Check if we already have function for this mux */
+-			for (fdesc = keembay_funcs; fdesc->name; fdesc++) {
+-				if (!strcmp(mux->name, fdesc->name)) {
+-					fdesc->num_group_names++;
++			for (fdesc = keembay_funcs; fdesc->func.name; fdesc++) {
++				if (!strcmp(mux->name, fdesc->func.name)) {
++					fdesc->func.ngroups++;
+ 					break;
+ 				}
+ 			}
+ 
+ 			/* Setup new function for this mux we didn't see before */
+ 			if (!fdesc->name) {
+-				fdesc->name = mux->name;
+-				fdesc->num_group_names = 1;
++				fdesc->func.name = mux->name;
++				fdesc->func.ngroups = 1;
+ 				fdesc->data = &mux->mode;
+ 				kpc->nfuncs++;
+ 			}
 -- 
 2.45.1
 
