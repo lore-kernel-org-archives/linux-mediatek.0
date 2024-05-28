@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03E63C25B78
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDE7CC25B7E
 	for <linux-mediatek@archiver.kernel.org>; Tue, 28 May 2024 19:51:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,25 +12,25 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Txf0s58H6Q4NSZ3SDUwuUbpYwOluZ/B8Go6BCuuhXho=; b=Z3srFISU5bsDaSay67Xeectohb
-	Y5XVEG6kAfreL1P9oT6jqht9Fn9SUXzv0PA9RyqNIIN84OdAGLdBmeyC/b5Uo8UDvv5fmgS52N+TH
-	zqvtJssB/Q+JS6iA5A/kXNhPQ3V0usU1IvH+3rjtdUBU4rz8uVFEbmDbI4lWy4Ym2P+cMBkcKJmfi
-	p+zISpdMKEi+E5jhhWJEwOcvU5IgV9lOIDa1+LaYMCB877XkzImxhi0jC+v+6te+M5t+ANaWlqpzD
-	hDEtzw6juq3AyIGBCqIBjzhzEJw5UzAY3UyWPlkSQ+lQY61+9tRj1hfkfkCsa7FVHyI8IcuvDtDWQ
-	6gRCKOCQ==;
+	bh=k5YoBN47w5IsZg0BgdqxDWyBmssOg1ao0QpWC3Q6PYw=; b=uSE8tPFTpS0rI0IKnSVz1az3S7
+	u7oDEvbQS3d5hMNg6fcopfF6jmZ5kNi/wlBfTIARxCsQiZ60LqBqzhiMPU3jFDoFYJZ8IV7RZpCwx
+	nLE1jAdYa+eiERd8hWLrfaPPHnjcp3k6/Dz4eK3ADQzML028DS0Rc7Aa/z+NXVT8Vq/edPI2JLtnl
+	nJEjV0fa5t0c9jmq8Fsn6m5ONFqp7tc82/6JOMlxOOLhD07TQDr4dwn+bwRNvOsBOzlez6QnPdYSQ
+	NLdeSu1Dp0g9j85IjAMvKo6sCQwer3UinJTa6EyAVjMRj3dbNMDEJ5UOExJMm19RaYnW7nuRmhJpr
+	Bq9tDjig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sC2qZ-00000001t6f-26pw;
-	Tue, 28 May 2024 19:50:59 +0000
-Received: from fgw22-7.mail.saunalahti.fi ([62.142.5.83])
+	id 1sC2qa-00000001t7J-0ePY;
+	Tue, 28 May 2024 19:51:00 +0000
+Received: from fgw23-7.mail.saunalahti.fi ([62.142.5.84])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sC2pj-00000001sZH-32kQ
+	id 1sC2pj-00000001sXu-3kLw
 	for linux-mediatek@lists.infradead.org;
-	Tue, 28 May 2024 19:50:09 +0000
+	Tue, 28 May 2024 19:50:10 +0000
 Received: from localhost (88-113-26-230.elisa-laajakaista.fi [88.113.26.230])
 	by fgw21.mail.saunalahti.fi (Halon) with ESMTP
-	id 7afd847c-1d2b-11ef-aaf5-005056bdd08f;
-	Tue, 28 May 2024 22:50:05 +0300 (EEST)
+	id 798dced9-1d2b-11ef-aaf5-005056bdd08f;
+	Tue, 28 May 2024 22:50:03 +0300 (EEST)
 From: Andy Shevchenko <andy.shevchenko@gmail.com>
 To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
 	Linus Walleij <linus.walleij@linaro.org>,
@@ -53,17 +53,17 @@ Cc: Dong Aisheng <aisheng.dong@nxp.com>,
 	Paul Cercueil <paul@crapouillou.net>,
 	Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>,
 	Andy Shevchenko <andy.shevchenko@gmail.com>
-Subject: [PATCH v2 10/11] pinctrl: mediatek: Convert to use func member
-Date: Tue, 28 May 2024 22:45:01 +0300
-Message-ID: <20240528194951.1489887-11-andy.shevchenko@gmail.com>
+Subject: [PATCH v2 07/11] pinctrl: imx: Convert to use func member
+Date: Tue, 28 May 2024 22:44:58 +0300
+Message-ID: <20240528194951.1489887-8-andy.shevchenko@gmail.com>
 X-Mailer: git-send-email 2.45.1
 In-Reply-To: <20240528194951.1489887-1-andy.shevchenko@gmail.com>
 References: <20240528194951.1489887-1-andy.shevchenko@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240528_125008_001857_A2E3AB3C 
-X-CRM114-Status: GOOD (  13.20  )
+X-CRM114-CacheID: sfid-20240528_125008_190203_1AB7E112 
+X-CRM114-Status: GOOD (  10.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,55 +84,50 @@ desynchronisation of the generic pin function description.
 
 Signed-off-by: Andy Shevchenko <andy.shevchenko@gmail.com>
 ---
- drivers/pinctrl/mediatek/pinctrl-moore.c | 10 +++++-----
- drivers/pinctrl/mediatek/pinctrl-moore.h |  4 +---
- 2 files changed, 6 insertions(+), 8 deletions(-)
+ drivers/pinctrl/freescale/pinctrl-imx.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-moore.c b/drivers/pinctrl/mediatek/pinctrl-moore.c
-index d972584c0519..aad4891223d3 100644
---- a/drivers/pinctrl/mediatek/pinctrl-moore.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-moore.c
-@@ -56,7 +56,7 @@ static int mtk_pinmux_set_mux(struct pinctrl_dev *pctldev,
- 		return -EINVAL;
+diff --git a/drivers/pinctrl/freescale/pinctrl-imx.c b/drivers/pinctrl/freescale/pinctrl-imx.c
+index 2d3d80921c0d..44921e3bdb94 100644
+--- a/drivers/pinctrl/freescale/pinctrl-imx.c
++++ b/drivers/pinctrl/freescale/pinctrl-imx.c
+@@ -266,7 +266,7 @@ static int imx_pmx_set(struct pinctrl_dev *pctldev, unsigned selector,
+ 	npins = grp->grp.npins;
  
- 	dev_dbg(pctldev->dev, "enable function %s group %s\n",
+ 	dev_dbg(ipctl->dev, "enable function %s group %s\n",
 -		func->name, grp->grp.name);
 +		func->func.name, grp->grp.name);
  
- 	for (i = 0; i < grp->grp.npins; i++) {
- 		const struct mtk_pin_desc *desc;
-@@ -620,12 +620,12 @@ static int mtk_build_functions(struct mtk_pinctrl *hw)
- 	int i, err;
+ 	for (i = 0; i < npins; i++) {
+ 		/*
+@@ -593,21 +593,21 @@ static int imx_pinctrl_parse_functions(struct device_node *np,
+ 		return -EINVAL;
  
- 	for (i = 0; i < hw->soc->nfuncs ; i++) {
--		const struct function_desc *func = hw->soc->funcs + i;
-+		const struct function_desc *function = hw->soc->funcs + i;
-+		const struct pinfunction *func = &function->func;
- 
- 		err = pinmux_generic_add_function(hw->pctrl, func->name,
--						  func->group_names,
--						  func->num_group_names,
--						  func->data);
-+						  func->groups, func->ngroups,
-+						  function->data);
- 		if (err < 0) {
- 			dev_err(hw->dev, "Failed to register function %s\n",
- 				func->name);
-diff --git a/drivers/pinctrl/mediatek/pinctrl-moore.h b/drivers/pinctrl/mediatek/pinctrl-moore.h
-index 5945e4fe021f..229d19561e22 100644
---- a/drivers/pinctrl/mediatek/pinctrl-moore.h
-+++ b/drivers/pinctrl/mediatek/pinctrl-moore.h
-@@ -45,9 +45,7 @@
- 
- #define PINCTRL_PIN_FUNCTION(_name_, id)							\
- 	{											\
--		.name = _name_,									\
--		.group_names = id##_groups,							\
--		.num_group_names = ARRAY_SIZE(id##_groups),					\
-+		.func = PINCTRL_PINFUNCTION(_name_, id##_groups, ARRAY_SIZE(id##_groups)),	\
- 		.data = NULL,									\
+ 	/* Initialise function */
+-	func->name = np->name;
+-	func->num_group_names = of_get_child_count(np);
+-	if (func->num_group_names == 0) {
++	func->func.name = np->name;
++	func->func.ngroups = of_get_child_count(np);
++	if (func->func.ngroups == 0) {
+ 		dev_info(ipctl->dev, "no groups defined in %pOF\n", np);
+ 		return -EINVAL;
  	}
  
+-	group_names = devm_kcalloc(ipctl->dev, func->num_group_names,
+-				   sizeof(char *), GFP_KERNEL);
++	group_names = devm_kcalloc(ipctl->dev, func->ngroups, sizeof(*func->func.groups),
++				   GFP_KERNEL);
+ 	if (!group_names)
+ 		return -ENOMEM;
+ 	i = 0;
+ 	for_each_child_of_node(np, child)
+ 		group_names[i++] = child->name;
+-	func->group_names = group_names;
++	func->func.groups = group_names;
+ 
+ 	i = 0;
+ 	for_each_child_of_node(np, child) {
 -- 
 2.45.1
 
