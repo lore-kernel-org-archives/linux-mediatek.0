@@ -4,89 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B225C25B7C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 May 2024 13:13:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69642C25B78
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 May 2024 14:03:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VMcndx1MyOn/tzGp7W1bciJqyD0f9IArD3yPKz887Vo=; b=39PyfTuBms9bM+XKsuUnjgH6Ym
-	BwpQSV/KocTTxkT+DV+OC0fGyWeTB87PsTamLZX2Q0MPcb3/f7rgMwlqYTaQrMDilhGWTXcE7FBH3
-	+DJR178XBdmQ+LEs32j0oDP93V4QBPdJLtzJr9+5HkrHn8b2GiHVCfNStDpqG7EerFsOWj2wV7AHb
-	j31sVBW7ipru8+SchIfXmaDj2nOgJaxizdkPgntiEsEwUEBE/tpVt6w+TcPwFjJw7mFvhYRTMXAYY
-	MvM4JsOghC8ssjNWVmN3dQ14KUALLDux47eYs+X0PbQMW8WZ/4+Ps5ceYpciZhkqBaNrnL2y9UT6I
-	Iwfj3mBA==;
+	bh=qf2B6uaVwOzsoHSnptOmqBPxKS/mvVhhFLc7hn4ujoo=; b=G+17NOf0W4kS4UFilCsJA84O0J
+	vfDKOmO0wONNGjkcIJP5/fqS4QbUTGH8stH9bTb3VJ+znVfc33B+MjH4OnX6iqmruDsfwCnrA9rLL
+	cmf0DlW5Y7d1t2GPIv5OPJaJ9mId97UrIv0arjSeLiIugEOvHfCPg+5CylGjXpQzoNYr78Ph3fVKV
+	WiE4mxxkiNELaMmvtl1tvATx7B4f24aMn3Pdv5r48YpPGPaPjlNha2KqTw/ggusxQOnxTMNdSzlli
+	rlEMq8G3T1egK2daeGswSjM2irLxHdK1P3x3f7yQ+Kjw2K9xaqqC8kpyPlcSVBH9nKJNM0ayaVS13
+	B6Gcjoog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBweJ-00000000jKj-3dhC;
-	Tue, 28 May 2024 13:13:55 +0000
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+	id 1sBxQH-00000000vDl-3crv;
+	Tue, 28 May 2024 14:03:29 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sBweG-00000000jJC-2Srn
-	for linux-mediatek@lists.infradead.org;
-	Tue, 28 May 2024 13:13:54 +0000
-Received: by mail-wr1-x429.google.com with SMTP id ffacd0b85a97d-35508106cc2so730159f8f.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 28 May 2024 06:13:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1716902026; x=1717506826; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=VMcndx1MyOn/tzGp7W1bciJqyD0f9IArD3yPKz887Vo=;
-        b=woZOZDqe9AWDN2rEQSFi4R04L5wInT43k8sCpvMR7mNPWlwvkjPPc9EOqL9sE0YK4c
-         6AP/LSs8fTKd1RfqlWKNX1BbDPlu9hLPCVBouMobZNczoKgs0LGHzW3dpQ76KOAGN8gc
-         NZbgudWDsIpshMHiLuAvAUMyjl3rTqflrXl23O4hWTk1FNJ/DfSRTpEWHwKZAg5fBU3c
-         Lm4hnkHRbL7JL8/R8qdxnwYkGSc1f8wgk5xvusFBonqIX4Jcfl9O7H/zFYXoH16JJYx8
-         DVJ04c5SbjMGOZFc4lswLvV5AC90GWn5wI1dnJvrPTThNmKipWhdg3L2dzFN0uNTbAbv
-         8NFA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1716902026; x=1717506826;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=VMcndx1MyOn/tzGp7W1bciJqyD0f9IArD3yPKz887Vo=;
-        b=Jsy3QcrZTBQBG0VXexbVtM//IJHLIi8k4N6avWC9DloyTh9GcTJqsW0/3D8AVENDnd
-         VrJ0j9GBQz6mICsXMe5td7UuHAI3KpK88+X0h4iUGgIoG0UxE+aHY2XN9DOiYhwhfvK/
-         rPDveppIS84MVBYTPomOAoirfaqE9Ofuh53isJI3VBciDxnITLb9DhRGkpH/JHvlQ1AZ
-         CMAZfhkcgwKCddJzalBcCaLUv+ifYjyYjAxIF5O+SWiRjyWBOGoLi6hHG0Ax3zb1IT60
-         ADZN9DxAyo3go4z38/7u1CRXDAyb8ECzHhFAoD1p4oJF7YtZCohf4J1ojq4LoCKxXG4G
-         /xCg==
-X-Forwarded-Encrypted: i=1; AJvYcCUseBioUdvNFMY/+AYsOO76cpMOHIi4sb2PDp5ECUBZt8bsBQ5EoGzXEPUjG7ic5CTndg4s5YrvHqYWidIv3Dl6pldQyhHB2l0U3y2Mz+tN5vhz
-X-Gm-Message-State: AOJu0YxnfJaX+TpGo1lFwRtax4jEc70MoWV+TtioLETbV/I8TrOccfS2
-	r7NVbW2qOJf3gUlVR2et8LGQwd7XJu9I3sF+3NNG6Omz818HF/zpoclimW7PkRg=
-X-Google-Smtp-Source: AGHT+IFcjZPdSjwdhRZc+nZsDK1tBXTV9ToeKuYOV9I7MWvMKdFyTLe3sxT6lJtaaMcKP9OprZr8vQ==
-X-Received: by 2002:adf:e648:0:b0:357:40e8:e574 with SMTP id ffacd0b85a97d-35740e8e60amr5679648f8f.37.1716902025896;
-        Tue, 28 May 2024 06:13:45 -0700 (PDT)
-Received: from [10.3.5.161] (laubervilliers-657-1-248-155.w90-24.abo.wanadoo.fr. [90.24.137.155])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3557a090805sm11546560f8f.48.2024.05.28.06.13.44
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 28 May 2024 06:13:45 -0700 (PDT)
-Message-ID: <2e872daa-a9d8-430f-9a6c-90001dd3391e@baylibre.com>
-Date: Tue, 28 May 2024 15:13:43 +0200
+	id 1sBxQE-00000000vCa-07V3;
+	Tue, 28 May 2024 14:03:27 +0000
+Received: from pps.filterd (m0279872.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 44SBk8vv022220;
+	Tue, 28 May 2024 14:03:15 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
+	cc:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+	qf2B6uaVwOzsoHSnptOmqBPxKS/mvVhhFLc7hn4ujoo=; b=lpd2Bp9vr4QSBIlh
+	DaKx7lGbc3rAM6mHbYohIazHhC5cGS34GLOmLeS/d93fwBKAI1XEg/KAlKyF4yXt
+	Eg525t0jjTM+yaVF2oB5DQVQna09y2EWLTSuAuDQ3DsqRvnAvr/yYKCA+uBvCTT+
+	Aze/MrNNzVVFx7e9W/orwCZMMjq0DaYAMH+tYRudg9/JiTs+tln9pZ4ZQWuNBx7N
+	lgQB6ArMKrZ1prSHP9CDarIBbfqQQ/yxLZ89ZfywLNX3/MwMycv+lGmvwdHpwYFk
+	8H5qayWedmBDpl9Iz+3VpsTlZtT2lJrB0my8qxQ1F+qqxWIEYPdkrh2RaYdpngTc
+	7Hj+lg==
+Received: from nalasppmta04.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3yb9yj68tr-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 28 May 2024 14:03:14 +0000 (GMT)
+Received: from nalasex01a.na.qualcomm.com (nalasex01a.na.qualcomm.com [10.47.209.196])
+	by NALASPPMTA04.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 44SE3DHl010926
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 28 May 2024 14:03:13 GMT
+Received: from [10.110.122.222] (10.80.80.8) by nalasex01a.na.qualcomm.com
+ (10.47.209.196) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.9; Tue, 28 May
+ 2024 07:03:12 -0700
+Message-ID: <38842d90-f64d-410d-8ef5-6e1d09ff01a0@quicinc.com>
+Date: Tue, 28 May 2024 07:03:12 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 5/5] arm64: dts: mediatek: mt8188: Add support for Mali
- GPU on Panfrost
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-mediatek@lists.infradead.org
-Cc: lee@kernel.org, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- matthias.bgg@gmail.com, mandyjh.liu@mediatek.com,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, kernel@collabora.com
-References: <20240527093908.97574-1-angelogioacchino.delregno@collabora.com>
- <20240527093908.97574-6-angelogioacchino.delregno@collabora.com>
- <f553b3f2-d895-446a-a741-7a151ebeb3ed@baylibre.com>
- <4715d477-5f66-47db-973f-af64a3009113@collabora.com>
+Subject: Re: [PATCH] clk: mediatek: Add a module description where missing
 Content-Language: en-US
-From: Julien Panis <jpanis@baylibre.com>
-In-Reply-To: <4715d477-5f66-47db-973f-af64a3009113@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        <sboyd@kernel.org>
+CC: <mturquette@baylibre.com>, <matthias.bgg@gmail.com>,
+        <linux-clk@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+        <linux-arm-kernel@lists.infradead.org>,
+        <linux-mediatek@lists.infradead.org>, <kernel@collabora.com>
+References: <20240528121320.160685-1-angelogioacchino.delregno@collabora.com>
+From: Jeff Johnson <quic_jjohnson@quicinc.com>
+In-Reply-To: <20240528121320.160685-1-angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
+ nalasex01a.na.qualcomm.com (10.47.209.196)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-GUID: 8ONwqeoyukzF1gfyG5FMT2wykvTPWjZW
+X-Proofpoint-ORIG-GUID: 8ONwqeoyukzF1gfyG5FMT2wykvTPWjZW
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.650,FMLib:17.12.28.16
+ definitions=2024-05-28_09,2024-05-28_01,2024-05-17_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 priorityscore=1501
+ adultscore=0 mlxscore=0 phishscore=0 mlxlogscore=711 spamscore=0
+ clxscore=1011 impostorscore=0 bulkscore=0 suspectscore=0 malwarescore=0
+ lowpriorityscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.19.0-2405170001 definitions=main-2405280104
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240528_061352_687342_2728CCD6 
-X-CRM114-Status: GOOD (  15.94  )
+X-CRM114-CacheID: sfid-20240528_070326_236853_54B19800 
+X-CRM114-Status: UNSURE (   7.87  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,51 +101,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 5/28/24 12:36, AngeloGioacchino Del Regno wrote:
-> Il 27/05/24 16:53, Julien Panis ha scritto:
->> On 5/27/24 11:39, AngeloGioacchino Del Regno wrote:
->>> Add the necessary OPP table for the GPU and also add a GPU node
->>> to enable support for the Valhall-JM G57 MC3 found on this SoC,
->>> using the Panfrost driver.
->>>
->>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->>> ---
->>
->> [...]
->>
->>> +        gpu: gpu@13000000 {
->>> +            compatible = "mediatek,mt8188-mali", "arm,mali-valhall-jm";
->>> +            reg = <0 0x13000000 0 0x4000>;
->>> +
->>> +            clocks = <&mfgcfg CLK_MFGCFG_BG3D>;
->>> +            interrupts = <GIC_SPI 383 IRQ_TYPE_LEVEL_HIGH 0>,
->>> +                     <GIC_SPI 382 IRQ_TYPE_LEVEL_HIGH 0>,
->>> +                     <GIC_SPI 381 IRQ_TYPE_LEVEL_HIGH 0>;
->>> +            interrupt-names = "job", "mmu", "gpu";
->>> +            operating-points-v2 = <&gpu_opp_table>;
->>> +            power-domains = <&spm MT8188_POWER_DOMAIN_MFG2>,
->>> +                    <&spm MT8188_POWER_DOMAIN_MFG3>,
->>> +                    <&spm MT8188_POWER_DOMAIN_MFG4>;
->>> +            power-domain-names = "core0", "core1", "core2";
->>
->> Hi Angelo,
->>
->> I think you should add something like that here:
->> #cooling-cells = <2>;
->> (the warning is raised when I run 'make dtbs_check')
->>
->> Julien
->>
->
-> I can either add it to a v2 of this series, or you can add it in your patch where
-> you're actually adding the thermal support.
->
-> I have no preferences about who adds it, and I agree that cooling-cells should
-> eventually get there, so I'll leave the choice to you :-)
->
-> Cheers,
-> Angelo
+On 5/28/2024 5:13 AM, AngeloGioacchino Del Regno wrote:
+> Add a MODULE_DESCRIPTION() on all drivers that miss it to avoid
+> modpost warnings.
+> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-I will add it to my patch.
-Julien
+All drivers/clk/mediatek MODULE_DESCRIPTION warnings resolved :)
+
+Tested-by: Jeff Johnson <quic_jjohnson@quicinc.com>
+
 
