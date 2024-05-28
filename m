@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCF1CC25B7E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 May 2024 19:50:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4C69C25B7E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 May 2024 19:50:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=H9xWEWxro/WWlUrBW/pAGr1CE2Irj1NlpQU8IUuk1xw=; b=2f2T8J15/jIrSMzWxfo7ZAlFwS
-	SDdyfJ26WtUVM71kFIdwYQo/MzAAfo2bLSNJvWawv+Rz/Txn/2lMWxxlzxL5rPnQuITNP6EExQMVP
-	MWqWdMDn34oQPkN4adwCFeDuB86WoNwczC/JahgXhlH/mnWHlJFqfTo3MFIbWgWER88SJbQextnNr
-	LaCqiH1MNsq66HmvUKdUgliYGFw+YlykAWFWsJMPMmzOuZvkA0xjXMWA1ktuECXZnLAwFSciquZRL
-	3LrVQk5VZX67dvWtvqb/9viTS8lm1faMoL8irCOjdDeXZOUp/kcvyhMjLHMRNFVmlUTnecVyr06Rz
-	MCWDJdGQ==;
+	bh=P68p1HEYJ1lmWTQLtyhb1b1Guc+wf5SaQtvljCR8Cac=; b=zK8t9B9qvzFlKZr4zmSpYwJPrh
+	01ESx/z6dM1n+6pGpRAa0+LLobUhsd2U30zbqcuDpvDa6IL8XWzGpxxLAbxl3JSulGKMdDIWdo1cH
+	n/xrDn/l3Q6Bh6U3dSS/9+BUS7VydrILmZ13AJTDvNaNlrPjmHs2IhSXs2e8pv5uDXqrZdYPPo0V7
+	QBqWj4TH4geVOtAi3b6vid2DNzB899lMdw13LC9Y9j3xbWnEWkXLwB7AZmsg8Up+R+7XgSbvh9+ME
+	WpACdMmXJjMjKnEyZ0aEfohbumSPKb1aXG6a4T6VBwbm47UpozeEUFXokc90wamNEBNquxHwVyuCE
+	FgE6VDwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sC2ps-00000001sgE-0sWS;
-	Tue, 28 May 2024 19:50:16 +0000
-Received: from fgw20-7.mail.saunalahti.fi ([62.142.5.81])
+	id 1sC2q2-00000001smh-0NF2;
+	Tue, 28 May 2024 19:50:26 +0000
+Received: from fgw22-7.mail.saunalahti.fi ([62.142.5.83])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sC2pb-00000001sTO-4Bkm
+	id 1sC2pf-00000001sVS-1RqW
 	for linux-mediatek@lists.infradead.org;
-	Tue, 28 May 2024 19:50:03 +0000
+	Tue, 28 May 2024 19:50:05 +0000
 Received: from localhost (88-113-26-230.elisa-laajakaista.fi [88.113.26.230])
-	by fgw20.mail.saunalahti.fi (Halon) with ESMTP
-	id 74d7eea0-1d2b-11ef-8d3a-005056bd6ce9;
-	Tue, 28 May 2024 22:49:56 +0300 (EEST)
+	by fgw22.mail.saunalahti.fi (Halon) with ESMTP
+	id 7893f7c5-1d2b-11ef-8e2b-005056bdf889;
+	Tue, 28 May 2024 22:50:01 +0300 (EEST)
 From: Andy Shevchenko <andy.shevchenko@gmail.com>
 To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
 	Linus Walleij <linus.walleij@linaro.org>,
@@ -53,17 +53,17 @@ Cc: Dong Aisheng <aisheng.dong@nxp.com>,
 	Paul Cercueil <paul@crapouillou.net>,
 	Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>,
 	Andy Shevchenko <andy.shevchenko@gmail.com>
-Subject: [PATCH v2 01/11] pinctrl: berlin: Make use of struct pinfunction
-Date: Tue, 28 May 2024 22:44:52 +0300
-Message-ID: <20240528194951.1489887-2-andy.shevchenko@gmail.com>
+Subject: [PATCH v2 05/11] pinctrl: pinmux: Add a convenient define PINCTRL_FUNCTION_DESC()
+Date: Tue, 28 May 2024 22:44:56 +0300
+Message-ID: <20240528194951.1489887-6-andy.shevchenko@gmail.com>
 X-Mailer: git-send-email 2.45.1
 In-Reply-To: <20240528194951.1489887-1-andy.shevchenko@gmail.com>
 References: <20240528194951.1489887-1-andy.shevchenko@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240528_125000_266415_85E699B6 
-X-CRM114-Status: GOOD (  14.80  )
+X-CRM114-CacheID: sfid-20240528_125003_719170_48786E77 
+X-CRM114-Status: GOOD (  11.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,117 +80,91 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 
-Since pin control provides a generic data type for the pin function,
-use it in the driver.
+Add PINCTRL_FUNCTION_DESC() macro for inline use.
+
+While at it, fix adjective form in the comment of PINCTRL_GROUP_DESC().
 
 Signed-off-by: Andy Shevchenko <andy.shevchenko@gmail.com>
 ---
- drivers/pinctrl/berlin/berlin.c | 21 +++++++++------------
- drivers/pinctrl/berlin/berlin.h |  6 ------
- 2 files changed, 9 insertions(+), 18 deletions(-)
+ drivers/pinctrl/core.h   |  2 +-
+ drivers/pinctrl/pinmux.c |  9 +++------
+ drivers/pinctrl/pinmux.h | 11 ++++++++++-
+ 3 files changed, 14 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/pinctrl/berlin/berlin.c b/drivers/pinctrl/berlin/berlin.c
-index 9550cc8095c2..c372a2a24be4 100644
---- a/drivers/pinctrl/berlin/berlin.c
-+++ b/drivers/pinctrl/berlin/berlin.c
-@@ -27,7 +27,7 @@ struct berlin_pinctrl {
- 	struct regmap *regmap;
- 	struct device *dev;
- 	const struct berlin_pinctrl_desc *desc;
--	struct berlin_pinctrl_function *functions;
-+	struct pinfunction *functions;
- 	unsigned nfunctions;
- 	struct pinctrl_dev *pctrl_dev;
+diff --git a/drivers/pinctrl/core.h b/drivers/pinctrl/core.h
+index 837fd5bd903d..4e07707d2435 100644
+--- a/drivers/pinctrl/core.h
++++ b/drivers/pinctrl/core.h
+@@ -206,7 +206,7 @@ struct group_desc {
+ 	void *data;
  };
-@@ -120,12 +120,12 @@ static const char *berlin_pinmux_get_function_name(struct pinctrl_dev *pctrl_dev
- static int berlin_pinmux_get_function_groups(struct pinctrl_dev *pctrl_dev,
- 					     unsigned function,
- 					     const char * const **groups,
--					     unsigned * const num_groups)
-+					     unsigned * const ngroups)
+ 
+-/* Convenience macro to define a generic pin group descriptor */
++/* Convenient macro to define a generic pin group descriptor */
+ #define PINCTRL_GROUP_DESC(_name, _pins, _num_pins, _data)	\
+ (struct group_desc) {						\
+ 	.grp = PINCTRL_PINGROUP(_name, _pins, _num_pins),	\
+diff --git a/drivers/pinctrl/pinmux.c b/drivers/pinctrl/pinmux.c
+index addba55334d9..8d69fa1b0bff 100644
+--- a/drivers/pinctrl/pinmux.c
++++ b/drivers/pinctrl/pinmux.c
+@@ -852,13 +852,13 @@ EXPORT_SYMBOL_GPL(pinmux_generic_get_function);
+  * @pctldev: pin controller device
+  * @name: name of the function
+  * @groups: array of pin groups
+- * @num_groups: number of pin groups
++ * @ngroups: number of pin groups
+  * @data: pin controller driver specific data
+  */
+ int pinmux_generic_add_function(struct pinctrl_dev *pctldev,
+ 				const char *name,
+ 				const char * const *groups,
+-				const unsigned int num_groups,
++				const unsigned int ngroups,
+ 				void *data)
  {
- 	struct berlin_pinctrl *pctrl = pinctrl_dev_get_drvdata(pctrl_dev);
- 
- 	*groups = pctrl->functions[function].groups;
--	*num_groups = pctrl->functions[function].ngroups;
-+	*ngroups = pctrl->functions[function].ngroups;
- 
- 	return 0;
- }
-@@ -153,7 +153,7 @@ static int berlin_pinmux_set(struct pinctrl_dev *pctrl_dev,
- {
- 	struct berlin_pinctrl *pctrl = pinctrl_dev_get_drvdata(pctrl_dev);
- 	const struct berlin_desc_group *group_desc = pctrl->desc->groups + group;
--	struct berlin_pinctrl_function *func = pctrl->functions + function;
-+	struct pinfunction *func = pctrl->functions + function;
- 	struct berlin_desc_function *function_desc =
- 		berlin_pinctrl_find_function_by_name(pctrl, group_desc,
- 						     func->name);
-@@ -180,7 +180,7 @@ static const struct pinmux_ops berlin_pinmux_ops = {
- static int berlin_pinctrl_add_function(struct berlin_pinctrl *pctrl,
- 				       const char *name)
- {
--	struct berlin_pinctrl_function *function = pctrl->functions;
-+	struct pinfunction *function = pctrl->functions;
- 
- 	while (function->name) {
- 		if (!strcmp(function->name, name)) {
-@@ -214,8 +214,7 @@ static int berlin_pinctrl_build_state(struct platform_device *pdev)
- 	}
- 
- 	/* we will reallocate later */
--	pctrl->functions = kcalloc(max_functions,
--				   sizeof(*pctrl->functions), GFP_KERNEL);
-+	pctrl->functions = kcalloc(max_functions, sizeof(*pctrl->functions), GFP_KERNEL);
- 	if (!pctrl->functions)
+ 	struct function_desc *function;
+@@ -877,10 +877,7 @@ int pinmux_generic_add_function(struct pinctrl_dev *pctldev,
+ 	if (!function)
  		return -ENOMEM;
  
-@@ -242,8 +241,7 @@ static int berlin_pinctrl_build_state(struct platform_device *pdev)
- 		desc_function = desc_group->functions;
+-	function->name = name;
+-	function->group_names = groups;
+-	function->num_group_names = num_groups;
+-	function->data = data;
++	*function = PINCTRL_FUNCTION_DESC(name, groups, ngroups, data);
  
- 		while (desc_function->name) {
--			struct berlin_pinctrl_function
--				*function = pctrl->functions;
-+			struct pinfunction *function = pctrl->functions;
- 			const char **groups;
- 			bool found = false;
- 
-@@ -264,16 +262,15 @@ static int berlin_pinctrl_build_state(struct platform_device *pdev)
- 				function->groups =
- 					devm_kcalloc(&pdev->dev,
- 						     function->ngroups,
--						     sizeof(char *),
-+						     sizeof(*function->groups),
- 						     GFP_KERNEL);
--
- 				if (!function->groups) {
- 					kfree(pctrl->functions);
- 					return -ENOMEM;
- 				}
- 			}
- 
--			groups = function->groups;
-+			groups = (const char **)function->groups;
- 			while (*groups)
- 				groups++;
- 
-diff --git a/drivers/pinctrl/berlin/berlin.h b/drivers/pinctrl/berlin/berlin.h
-index d7787754d1ed..231aab61d415 100644
---- a/drivers/pinctrl/berlin/berlin.h
-+++ b/drivers/pinctrl/berlin/berlin.h
-@@ -28,12 +28,6 @@ struct berlin_pinctrl_desc {
- 	unsigned			ngroups;
+ 	error = radix_tree_insert(&pctldev->pin_function_tree, selector, function);
+ 	if (error)
+diff --git a/drivers/pinctrl/pinmux.h b/drivers/pinctrl/pinmux.h
+index 7c8aa25ccc80..52e6e4db88b4 100644
+--- a/drivers/pinctrl/pinmux.h
++++ b/drivers/pinctrl/pinmux.h
+@@ -145,6 +145,15 @@ struct function_desc {
+ 	void *data;
  };
  
--struct berlin_pinctrl_function {
--	const char	*name;
--	const char	**groups;
--	unsigned	ngroups;
--};
--
- #define BERLIN_PINCTRL_GROUP(_name, _offset, _width, _lsb, ...)		\
- 	{								\
- 		.name = _name,						\
++/* Convenient macro to define a generic pin function descriptor */
++#define PINCTRL_FUNCTION_DESC(_name, _grps, _num_grps, _data)	\
++(struct function_desc) {					\
++	.name = _name,						\
++	.group_names = _grps,					\
++	.num_group_names = _num_grps,				\
++	.data = _data,						\
++}
++
+ int pinmux_generic_get_function_count(struct pinctrl_dev *pctldev);
+ 
+ const char *
+@@ -162,7 +171,7 @@ struct function_desc *pinmux_generic_get_function(struct pinctrl_dev *pctldev,
+ int pinmux_generic_add_function(struct pinctrl_dev *pctldev,
+ 				const char *name,
+ 				const char * const *groups,
+-				unsigned int const num_groups,
++				unsigned int const ngroups,
+ 				void *data);
+ 
+ int pinmux_generic_remove_function(struct pinctrl_dev *pctldev,
 -- 
 2.45.1
 
