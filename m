@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38C10C25B75
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 May 2024 15:06:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC5DFC25B75
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 May 2024 15:08:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yxA56lcClYQgcxSH9kn0eLVYQZH1vrJtSUbCUV2semo=; b=oieqyN08oSoxRsHdgOspWkhip7
-	1owxgG+DHRAGSADfyhGNDJvTo0InR5IH7+GfmBmjJF8EATQwpnTHAi8BqdIsh90vfewCS+Lf25ulB
-	WhZ+s3o5CovGWqkAQQ35qZHd0NmJ/P8DoPFozbaz2mCyFAugMRY/2TTvsDyqsPiiHHD0THKeFsPHo
-	xAfSFdCEU97XnhP1K8o/UagG49hNU6I8b1SOUTekFz8ARw0yZDdq8vJHCqZKQMqS/P52iO0VghuIb
-	30DP5r3LcbxlNYTXCr4lrzLkZsLjmsWClCCz5bbzwg+YhzjXYWxhicrXbj7d/89VHkWKVjvh0ZvK8
-	d1MOQ9+w==;
+	bh=bG/I5PjISR3GNky3YgXH7WZr7Mj1eUteE0sJsV/JQNQ=; b=1DSWVG1tbu/7RTL7QKhp4wDp/c
+	suLlyD9T/tLihGpcwZsVUSZR7lhuSahbRh0PQUrDxOs53+utz5Pkdm0xMFkbsI4zVmXyomghd0dft
+	l7uldCCAhsGnQMtJsxUn0fIJvHkAl+8/IJv8H0Aph+BMjaX/tfPk2g7nI1yPJB3v5aiVkqnTqyWIF
+	8ITagCQkfoUuMTu11MoWfOOj8KszliMTe3CKbNS8J2s4MCpLlmLURtYanEDvUi6KqjVba3yQXXndh
+	2JHDX+K7dyn8jCmMM8tdA4HOW8dzvs1bmZnLkjlauehEmBhJiZMIvURlSS7zzWzzOBTBEA76iojRj
+	uH1I4s2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCKt1-00000004czm-2bqK;
-	Wed, 29 May 2024 15:06:43 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1sCKuT-00000004d9G-0q6x;
+	Wed, 29 May 2024 15:08:13 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCKsy-00000004cz1-2vWn
+	id 1sCKuP-00000004d8c-3yQw
 	for linux-mediatek@lists.infradead.org;
-	Wed, 29 May 2024 15:06:42 +0000
+	Wed, 29 May 2024 15:08:11 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 13533611B5;
-	Wed, 29 May 2024 15:06:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 40132C113CC;
-	Wed, 29 May 2024 15:06:39 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 2AE2061252;
+	Wed, 29 May 2024 15:08:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 80D8FC32782;
+	Wed, 29 May 2024 15:08:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1716995199;
-	bh=yxA56lcClYQgcxSH9kn0eLVYQZH1vrJtSUbCUV2semo=;
+	s=k20201202; t=1716995288;
+	bh=s7ps87vVMx2pZPlwmX1rES59yV6+9ATQata99PWEn08=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=hFxG5yzWTMSQT6N3jnRJ0bnhcPnsNZQrECVd7k7ZcJ0gU9IthcYCQ24pPqO85Y66K
-	 An4W5By91u6ZfG8k4kir6NbaXA2e4deuoTzIFGibG1dDoNNuTxDukt37L1ATnMJvVV
-	 qMPaHWpvJuTMneZP5DDgOuF26pVUdRdfO5IKn47zfZ7n8W25H+9u89ZZS972lZ2v/6
-	 jcKZEbxn4hRIL4kNuHoho/1NaCRwPOjnvhIp/z8qsJoW9WX1GCXHWNvQKLPlVJF2/2
-	 Gepy5hc0yc0tcXGj5cIyOzuNW3SdNzoxpCNpO/FaFlxn0J5PucRmHZ0fZ5BOfFfNHY
-	 2FQ124DiJNopw==
-Date: Wed, 29 May 2024 17:06:36 +0200
+	b=ibMzuFMTCM+AQiG5i8eWDBciUQ23hxUTJF7vdNWCjI8/jV0NK/q9Mehp6YnJuNnZj
+	 0WVcg60MMuEtmDrcbvinf+xjsw4wMjPqOksOzcwSof+CuGb7OS8z7rnBzRo0aYV6ne
+	 l8MvgmfTNFDEMPn/Q/kw3OgTU/ObgQNm6gpp/tOd5vRTGtZLMxO4pqE9oY8m71vx+p
+	 jgPU36T6VROJvWp+SstqHlgmuZVMI6MNoH6xvnKedj+gL06bCtds6VaPzOt/wHl7bj
+	 3PXUMvsy1whjY38Y2+iyAU680EgFI4t2pNZ5Gj17ZtT/1WRFe76bWLxJTUgvemSsHN
+	 4xaaNzKw9jroA==
+Date: Wed, 29 May 2024 17:08:05 +0200
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Vladimir Oltean <olteanv@gmail.com>
+To: Andrew Lunn <andrew@lunn.ch>
 Cc: netdev@vger.kernel.org, arinc.unal@arinc9.com, daniel@makrotopia.org,
-	dqfext@gmail.com, sean.wang@mediatek.com, andrew@lunn.ch,
-	f.fainelli@gmail.com, davem@davemloft.net, edumazet@google.com,
+	dqfext@gmail.com, sean.wang@mediatek.com, f.fainelli@gmail.com,
+	olteanv@gmail.com, davem@davemloft.net, edumazet@google.com,
 	kuba@kernel.org, pabeni@redhat.com,
 	linux-mediatek@lists.infradead.org, lorenzo.bianconi83@gmail.com,
 	nbd@nbd.name
 Subject: Re: [PATCH net-next] net: dsa: mt7530: Add debugfs support
-Message-ID: <ZldEfH1Yy0cH2-OS@lore-desk>
+Message-ID: <ZldE1cBeAk9jw3hs@lore-desk>
 References: <0999545cf558ded50087e174096bb631e59b5583.1716979901.git.lorenzo@kernel.org>
- <20240529133130.namqhprxpvhzgkzr@skbuf>
+ <9ad6b014-11e1-4def-8217-b1fbeac768c3@lunn.ch>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="/RtT3VCISYzBUF7O"
+	protocol="application/pgp-signature"; boundary="OaVPF9wAGqO9CW/o"
 Content-Disposition: inline
-In-Reply-To: <20240529133130.namqhprxpvhzgkzr@skbuf>
+In-Reply-To: <9ad6b014-11e1-4def-8217-b1fbeac768c3@lunn.ch>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240529_080640_815559_4ECB7A93 
-X-CRM114-Status: GOOD (  14.11  )
+X-CRM114-CacheID: sfid-20240529_080810_048080_7173CC16 
+X-CRM114-Status: GOOD (  12.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,13 +78,11 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---/RtT3VCISYzBUF7O
+--OaVPF9wAGqO9CW/o
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-> Hi Lorenzo,
->=20
 > On Wed, May 29, 2024 at 12:54:37PM +0200, Lorenzo Bianconi wrote:
 > > Introduce debugfs support for mt7530 dsa switch.
 > > Add the capability to read or write device registers through debugfs:
@@ -94,33 +92,33 @@ Content-Transfer-Encoding: quoted-printable
 > > 0x75300000
 > >=20
 > > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> > ---
 >=20
-> Apart from the obvious NACK on permitting user space to alter random
-> registers outside of the driver's control.
->=20
-> Have you looked at /sys/kernel/debug/regmap/? Or at ethtool --register-du=
-mp?
+> In addition to Vladimirs NACK, you can also take a look at how
+> mv88e6xxx exports registers and tables using devlink regions.
 
-ack, regmap sysfs is fine to dump registers value.
-It was just very handy for me to have the capability to change registers
-during development (moreover we already have something similar in mt76).
-Anyway it is probably something more related to development so I do not
-have a strong opinion on it and we discard the patch.
+ack, right. Anyway in my case (mt7530-mmio) regmap is enough to dump regist=
+er
+values. Thanks for the pointer.
 
 Regards,
 Lorenzo
 
---/RtT3VCISYzBUF7O
+>=20
+>     Andrew
+>=20
+> ---
+> pw-bot: cr
+
+--OaVPF9wAGqO9CW/o
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZldEfAAKCRA6cBh0uS2t
-rLDnAP9swkHUjJEKW5Ab+4GBdK/KDD+HxQLITJ12/+o/AUuj+gD/bpboxwJozpMB
-vKM1pXtTs/fZ3qr4bBQx/eqgvfRbhQk=
-=+fhy
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZldE1QAKCRA6cBh0uS2t
+rDG1AP9/CYLBt46VeY5RGxfWpNGfr2xd1FICgLMbVOLHU8LZfgD8CN57WIZxzRwa
+/1pgn48IUmvDKL/SrWwzuPMPlYWMfgc=
+=/dg/
 -----END PGP SIGNATURE-----
 
---/RtT3VCISYzBUF7O--
+--OaVPF9wAGqO9CW/o--
 
