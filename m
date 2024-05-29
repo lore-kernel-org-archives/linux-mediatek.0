@@ -4,94 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06466C25B75
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 May 2024 09:12:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D3A1C25B7C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 May 2024 09:16:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ciTtYKEbBr+vQK3oiFVI2dnU7hwIdnBzRqy3mCB0PTM=; b=09bDkINWOQUctMfo1On5aGLqBU
-	vUZ+kV3ys38u2IwU6MBUvpUuslM20Ovyp1Q+nrF8QiD1gYd7gbT2X4AtqvW6X85hb4BcJs5wHKebk
-	fmH8w7pU1eVRYbXA7O8I6bkGXojNisCIoFZPBfBz6e02sozlwr3Td04CPw0ihZV4aDNk5B0UbYZtn
-	TBRi4lKAn2lNmfIk2S4FMXQ5NtCV0wU6UTW7JQEL6UnHeYj4t2dl5+TTprlzWNeG71bkBzjmaxAZA
-	gcHJhl3sONTLXOU5GicpGh3Hf5SegvSar+Tg8K7NDb7TmCgH5GjBqSpkRPp/YPsBLEyrx0M7f6Qyb
-	rHuKUJfQ==;
+	bh=P/11FGodoFA+E+NLZvrYREmdgvCahBEkTi/n+hGxNYc=; b=ohQSmsI95g85CUmNwme9HMNz/+
+	h3S8rWIYbben++qMB0jWLgskRg437HJhkIwraXKZxofF8hA/nfz2KVlu3Dc4XVflFEItbdL/Pa29w
+	ArUkmJlxCb/+h3IHlWbGrG9//Mf/KGrYeEsAfY1rZM7uNVvPh7O5J6a/wuGA5e8g381iofYhWPzF5
+	WnB5E5Hs/+wblQPeEQwyE83uQ3EZVykzDWqIfO7vmg3bh9TKEk/PLAF61qiLYuXu+nmLCNGKPdAfu
+	j6jnuWEnA5uymUXrOu/AXpChuM0VLCi1tYH62crkgSmJ9KT5rys9p/kAYhedPXfC782TbRb4KUtkE
+	7p+XPQcg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCFM8-00000003a9I-3s4r;
-	Wed, 29 May 2024 09:12:24 +0000
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
+	id 1sCFPk-00000003aZ7-3gpJ;
+	Wed, 29 May 2024 09:16:08 +0000
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCFM4-00000003a8M-2c5d
-	for linux-mediatek@lists.infradead.org;
-	Wed, 29 May 2024 09:12:22 +0000
-Received: by mail-wr1-x435.google.com with SMTP id ffacd0b85a97d-354f51ac110so1823465f8f.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 29 May 2024 02:12:17 -0700 (PDT)
+	id 1sCFPh-00000003aYH-1dTe;
+	Wed, 29 May 2024 09:16:07 +0000
+Received: by mail-ej1-x633.google.com with SMTP id a640c23a62f3a-a626776cc50so194936366b.3;
+        Wed, 29 May 2024 02:16:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1716973936; x=1717578736; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=ciTtYKEbBr+vQK3oiFVI2dnU7hwIdnBzRqy3mCB0PTM=;
-        b=hHlbpwFDqQelx0FLWl67WgLXkmzH+FhPrF0ubKCeM7MSHvmC7Mzk9DSTj5B2xmbZyo
-         7aQit0qnbLY9r6G5qBrkkOXWU9ImyUowWbR4VYJ4Em1KMWHVPwD/Tp+0B5j0YgwWXZvA
-         0K/ra+92uScWA0000NvX8PaX64mUt0TsaRg9gQjn2NbS/4YAoN+rp+cu4YGy8y3nnPPG
-         1eXTrx7G/DkSAt+6Lxu2ctSvn7TYVwDnm0ae9kSclckTD0fdiqc20w60JQ1pM6fvwhsD
-         uFponIPmR9+PTzZTrzaP6vEv1dyBK5D6+dguKtpmxvo9lr3SVfAZFvIanIWVffzL6ayR
-         Ex8A==
+        d=gmail.com; s=20230601; t=1716974162; x=1717578962; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=P/11FGodoFA+E+NLZvrYREmdgvCahBEkTi/n+hGxNYc=;
+        b=fjoYg2DTbxoKGfS+cOKYf2DABHpqm/cjbksnargVX4MkRMvZ+6neLnlIHCm5zOAxiu
+         6cnMQFAUTjAagoJxoJiI9+2FpXkgQ1OkM/DJSj09D4VQiwXeVEZV3jpbGsHfNk0srRJ2
+         CJh+7yJTCV02YwrakqDhiRDKiClxNwBYn/GWjllHCuOBipJgshjifyrOCSZwoMl9gfCr
+         1svq2u2BQU3LdboqgMDtXSotLK3QT2Lo6CbpiV7mO97bOR8hvtYVj4Gz4wZVqOD3AcgH
+         HRf35TpBczZU5CAeOjAB1dfC5PHWhbKYFLEiDtcP1YQE0ZW6eTV2eJ2X4bstozmz/q2k
+         UqfQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1716973936; x=1717578736;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=ciTtYKEbBr+vQK3oiFVI2dnU7hwIdnBzRqy3mCB0PTM=;
-        b=Yq/PomIl0FcwSO0m6fXftZrz8dMR3Ht9PT8d9I8QH0pFhNzwNyBKyyfMgwMnCUjp9B
-         Z+/ezxTFSAnCA0Is/dsHPk3Lg3HdfUwHmEIn6bp74eTV/YGn3u8Whzjvsa14AEL3EY02
-         C2lAeiibXEjM05oeIuOJ/L5pn3F2hpvsPeaCLhsCB+g7xkhcZpkgrm5/AEMTbHygh5LK
-         WKi9s7MtJfpWSSmXDpK0FnRqkYtHZFIem4pQ+/aLMUqohTX8TFobW14GWJdr9V67bJ9W
-         hyPb1l4auGTNES/ZDrv4LWxlAAy0Rg0+sII4k/9W8fOxQHVGKED0l27w08RC4vI5barK
-         2OtQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWucjOlUs/3NSIHlzjMKP+q0QY/S+PpMqnNfpaiMXesRN66acWPMQQ90faORL9+y1FbdEpLrfiz46PamueRa7yRw6PatXjGWwoTlhlcGdjInhkK
-X-Gm-Message-State: AOJu0Yy+EKkPbJs92bMyAMI8NjcBnd0OT0lUk2VBvIkpS9s5VZZqUWwu
-	mWMjpd4Vi2eCCcNnHJS0jEKorNv8TQvmJ0tgnDwfTNqf90Gbx0Xc+5f5GOY4jmo=
-X-Google-Smtp-Source: AGHT+IGzTz+2XrrYGSweYUU8ur8Euj8k3ViZtqjUVGNlAHrRa8447ANMpaIZTurk5qHKqtB4e2nxWA==
-X-Received: by 2002:adf:ee0e:0:b0:354:e729:c101 with SMTP id ffacd0b85a97d-35527056972mr12104266f8f.12.1716973936132;
-        Wed, 29 May 2024 02:12:16 -0700 (PDT)
-Received: from [192.168.1.70] ([84.102.31.110])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3557a1c92f8sm14111197f8f.67.2024.05.29.02.12.14
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 29 May 2024 02:12:15 -0700 (PDT)
-Message-ID: <808db317-4cee-426b-a840-013a5e03098d@baylibre.com>
-Date: Wed, 29 May 2024 11:12:13 +0200
+        d=1e100.net; s=20230601; t=1716974162; x=1717578962;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=P/11FGodoFA+E+NLZvrYREmdgvCahBEkTi/n+hGxNYc=;
+        b=Q32sClKcgqyGeN4xn3J7qufZABBtjV6Ci+dBBwRqB0QqKkenMYmvqQzaZnNKOcdD1H
+         HVi6MPmJcSVhIUW0svw/gEEBnYBY8RxjKQYziX8W9MXNSNLsosj/qy6UTVD91H1dVHxC
+         XlZYMHvBBi7ffw34KOLATyxmye/WoLHF+ELvRF1DTRjxf0S0agzw6lnSozrMlpGjuCI0
+         Ns7gAx3a2b+Po7i+OWY91t/7BqGoXmRuw6pFifgmebVcsThFI1iKvNmHbIcWFoV99+Er
+         x4bPUbEJFctCsCgWX2w3mL5K2v6vsdfMG7paOqUcbrSDkE08oFp+6IeIYUI2lpK+ryU/
+         SjgA==
+X-Forwarded-Encrypted: i=1; AJvYcCUhrCQRYOQqfBHUp5bBCcdMkxJYEMJ/ZBzdPl5Q+zSVTcVyG97vXCgAYdxLno04/p0zV5RnOr+ojuA9MsH/zeF3Fpc0gLKaE/HdmdFXjGo9kZt9374aCrSa0lKem+9Y1SmehBpN9L1fXfsmYnqJLoe7HhNtbfKsWZ8=
+X-Gm-Message-State: AOJu0YzXrKlhhSNa24H3mYC8j6j1ivDBOwNKkh7V8nXLqP3GOfPLd9Hn
+	7otm6vPVVKiZ4ufjgTsmX0eJnin4YlQxl1Qb9r6LAzinlKLP0hF35c79D3mNmtJnaVhaDOyYhfG
+	3lGIz87tG9FHY5h+NA9WMfIia5kE=
+X-Google-Smtp-Source: AGHT+IFzCGL3iHzr4n/qBEh0rBcTkXqfRF+a6gRaRMQGh5+of4CGG73bxuOyvd2Zs59FzGTTgkYC/QKjn7uf1k5x4v0=
+X-Received: by 2002:a17:907:7e85:b0:a62:de58:b362 with SMTP id
+ a640c23a62f3a-a62de58d30fmr640122266b.55.1716974162356; Wed, 29 May 2024
+ 02:16:02 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 4/6] arm64: dts: mediatek: mt8186: add default thermal
- zones
-To: Chen-Yu Tsai <wenst@chromium.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Daniel Lezcano <daniel.lezcano@linaro.org>,
- Nicolas Pitre <npitre@baylibre.com>, "Rafael J. Wysocki"
- <rafael@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
- Lukasz Luba <lukasz.luba@arm.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org,
- Krzysztof Kozlowski <krzk@kernel.org>
-References: <20240529-mtk-thermal-mt818x-dtsi-v6-0-0c71478a9c37@baylibre.com>
- <20240529-mtk-thermal-mt818x-dtsi-v6-4-0c71478a9c37@baylibre.com>
- <75826085-fd59-466a-b1de-b4c323c801c1@collabora.com>
- <CAGXv+5FPG4ob3mTU0Utm8Wgk0_ZLw=NLPbfFerWh4OUeAz7UHw@mail.gmail.com>
-Content-Language: en-US
-From: Julien Panis <jpanis@baylibre.com>
-In-Reply-To: <CAGXv+5FPG4ob3mTU0Utm8Wgk0_ZLw=NLPbfFerWh4OUeAz7UHw@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+References: <20240528194951.1489887-1-andy.shevchenko@gmail.com>
+ <20240528194951.1489887-5-andy.shevchenko@gmail.com> <c52ff392-703c-482c-a297-c12d4e0dbd38@collabora.com>
+In-Reply-To: <c52ff392-703c-482c-a297-c12d4e0dbd38@collabora.com>
+From: Andy Shevchenko <andy.shevchenko@gmail.com>
+Date: Wed, 29 May 2024 12:15:26 +0300
+Message-ID: <CAHp75VeurNjWSLsM_cEphZZhqSM9TNc_ozGYcJ-vvefHg8NY2A@mail.gmail.com>
+Subject: Re: [PATCH v2 04/11] pinctrl: mediatek: Provide a helper macro PINCTRL_PIN_FUNCTION()
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
+	Linus Walleij <linus.walleij@linaro.org>, Daniel Golle <daniel@makrotopia.org>, 
+	linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, imx@lists.linux.dev, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-mips@vger.kernel.org, Dong Aisheng <aisheng.dong@nxp.com>, 
+	Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	Paul Cercueil <paul@crapouillou.net>, Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240529_021220_706801_62F7C1C0 
-X-CRM114-Status: GOOD (  15.41  )
+X-CRM114-CacheID: sfid-20240529_021605_452763_B19777C7 
+X-CRM114-Status: GOOD (  10.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,76 +97,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 5/29/24 10:33, Chen-Yu Tsai wrote:
-> On Wed, May 29, 2024 at 4:17 PM AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> wrote:
->> Il 29/05/24 07:57, Julien Panis ha scritto:
->>> From: Nicolas Pitre <npitre@baylibre.com>
->>>
->>> Inspired by the vendor kernel but adapted to the upstream thermal
->>> driver version.
->>>
->>> Signed-off-by: Nicolas Pitre <npitre@baylibre.com>
->>> Signed-off-by: Julien Panis <jpanis@baylibre.com>
->> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> I'm getting some crazy readings which would cause the machine to
-> immediately shutdown during boot. Anyone else see this? Or maybe
-> my device has bad calibration data?
+On Wed, May 29, 2024 at 11:24=E2=80=AFAM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+> Il 28/05/24 21:44, Andy Shevchenko ha scritto:
+> > Provide a helper macro to assign the struct function_desc entries.
+> > This helps further refactoring.
+> >
+> > Signed-off-by: Andy Shevchenko <andy.shevchenko@gmail.com>
 >
-> gpu_thermal-virtual-0
-> Adapter: Virtual device
-> temp1:       +229.7 C
->
-> nna_thermal-virtual-0
-> Adapter: Virtual device
-> temp1:       +229.7 C
->
-> cpu_big0_thermal-virtual-0
-> Adapter: Virtual device
-> temp1:         -7.2 C
->
-> cpu_little2_thermal-virtual-0
-> Adapter: Virtual device
-> temp1:       +157.2 C
->
-> cpu_little0_thermal-virtual-0
-> Adapter: Virtual device
-> temp1:       -277.1 C
->
-> adsp_thermal-virtual-0
-> Adapter: Virtual device
-> temp1:       +229.7 C
->
-> cpu_big1_thermal-virtual-0
-> Adapter: Virtual device
-> temp1:       +229.7 C
->
-> cam_thermal-virtual-0
-> Adapter: Virtual device
-> temp1:        +45.4 C
->
-> cpu_little1_thermal-virtual-0
-> Adapter: Virtual device
-> temp1:       -241.8 C
+> Not a strong opinion but, for commodity, I'd like to see "moore" mentione=
+d in the
+> title, as only the Moore pinctrl IPs are being touched here (where MTK ha=
+s two
+> different IPs: Moore and Paris).
 
-It's likely that your device has bad calibration data indeed. We observed the same
-behavior on the mt8186 device we used (a Corsola) and finally realized that the
-golden temperature was 0 (device not properly calibrated).
+If I need a new version, sure, I'll add that.
 
-To make a comparison, we run chromiumos v5.15 and dmesg output was:
-'This sample is not calibrated, fake !!'
-Additional debugging revealed that the golden temp was actually 0. As a result,
-chromiumos v5.15 does not use the calibration data. It uses some default values
-instead. That's why you can observe good temperatures with chromiumos v5.15
-even with a device that is not calibrated.
+> In any case:
+>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
+ora.com>
 
-This feature is not implemented in the driver upstream, so you need a device
-properly calibrated to get good temperatures with it. When we forced this
-driver using the default values used by chromiumos v5.15 instead of real calib
-data (temporarily, just for testing), the temperatures were good.
+Thanks!
 
-Please make sure your device is properly calibrated: 0 < golden temp < 62.
-
-Julien
-
+--=20
+With Best Regards,
+Andy Shevchenko
 
