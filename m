@@ -4,74 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50F3FC27C44
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CBE7C25B75
 	for <linux-mediatek@archiver.kernel.org>; Wed, 29 May 2024 12:06:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nb5nhOzKfN+J02YtDY3AeUrCiDolu7/gOfIHBIOnf24=; b=afcHuIggj61hNi7UYxP/qeaLSg
-	GmnUPMl2939jOIq3VLovPYnfbh4qileRJTNcw3BU4NOZcoYzK3rJinpgHoWOfbbh4CSIK4HUFJ99A
-	n4tOjTT3Y6zlQHaAjtuLZUSSmeIPOTveLl301RAO3g1g/x1DIgKiDmfKACJ4XM4QXpalqY0ZIiKj5
-	76GbpmKCzS+bOkkOpN+Pmigl/lNx2rj+v9sCCKVgspqmW1iKbMoWzBxFeo2KsNbuBsuHcXu5/fzJG
-	ZctGmlZftCB/FSzqUsA2z6GDI4jfIm8KVuaWp7weB8xaQ9vyu9hp3QkcYBynwBi48EHnVMaWf0eGd
-	T1/zbFoA==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=I+hNJ8egec9o+uP0G1/CTu9rHJU9k9FNHziIoURmA8I=; b=qFbF/4Q3mUKpNO9UZpz+dubHL+
+	Pg+ub4zg5uNeZdLLTfStbMGDF5DEPe/lyQ0KaB8Sm7KfLlTcA6aGv0FvTXYnUneXcWUPjoaVZRAKI
+	8JzCXRQsQI8Bsakn/Yj14bGRyqo3z4XQhndcDWJw6EkyQuxMYJMyDq6mS5CMhxiyArmb8ke27flnO
+	E81ch1LFKx7ECzHvt8mFacGV/pzsH9uwyT84TgAxejcSF4JefeCc5Dhl7rkbXuYto6ovc4Ipm44ZH
+	kIKj5DzxovmKIamTxegeauxspQvk5+ALCohM6MN9WNjt0m3/Z5GUjUsLacEtVNFFhornD8WMt9HiT
+	L6LL9+tA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCI4c-000000041nC-07xX;
+	id 1sCI4c-000000041nO-24q3;
 	Wed, 29 May 2024 12:06:30 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+Received: from michel.telenet-ops.be ([2a02:1800:110:4::f00:18])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCI4V-000000041kG-01MZ;
-	Wed, 29 May 2024 12:06:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1716984373;
-	bh=Kam7GlrgaXVFK23XrEQCDs7nyWMWsFNSiXp7twV37rk=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=YZhTN61tKJzQX2QRKsKJdg0qMXjNOgIKplP84ePEYUqM/Vzyo+YLquJ3+JKPqGczB
-	 HoulKRjZSwvmt5Rz3qazylvOEk+kXQns6p/icwwKZuURhfchSdXTFW/PcayaDFCI17
-	 EBj0vvpfOFsZz/g6VIB9d4otAOk1mJ3396Q+lpP+IIA8Mf4XawXWH08ozY9fT1VJRI
-	 jGiPhijsyo0ij+lC9ZnVS886LAYZz5XScl1pVAYGZYjt7tl5FXycHU0S/DXlJ3OIhe
-	 GmFCVOShbR4r5lIwoiRrV1wKkYRWmKVEebiTtNsGaXTGt9Uj0HFuf4dugAZGkEGYa2
-	 a8ReS6O0g27Bw==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id E2C45378216D;
-	Wed, 29 May 2024 12:06:12 +0000 (UTC)
-Message-ID: <ad047631-16b8-42ce-8a8d-1429e6af4517@collabora.com>
-Date: Wed, 29 May 2024 14:06:12 +0200
+	id 1sCI4Y-000000041kN-1bJJ
+	for linux-mediatek@lists.infradead.org;
+	Wed, 29 May 2024 12:06:28 +0000
+Received: from ramsan.of.borg ([IPv6:2a02:1810:ac12:ed80:1b01:1838:131c:4de4])
+	by michel.telenet-ops.be with bizsmtp
+	id V06J2C00H3VPV9V0606JRr; Wed, 29 May 2024 14:06:18 +0200
+Received: from rox.of.borg ([192.168.97.57])
+	by ramsan.of.borg with esmtp (Exim 4.95)
+	(envelope-from <geert@linux-m68k.org>)
+	id 1sCI3T-00GbKO-SF;
+	Wed, 29 May 2024 14:06:18 +0200
+Received: from geert by rox.of.borg with local (Exim 4.95)
+	(envelope-from <geert@linux-m68k.org>)
+	id 1sCI4Q-009XF6-73;
+	Wed, 29 May 2024 14:06:18 +0200
+From: Geert Uytterhoeven <geert+renesas@glider.be>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: soc@kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	Geert Uytterhoeven <geert+renesas@glider.be>
+Subject: [PATCH resend v3] arm64: dts: mediatek: mt7986a: bpi-r3: Convert to sugar syntax
+Date: Wed, 29 May 2024 14:06:14 +0200
+Message-Id: <2fd900a30b5a0f7de4ea68f60bac250794b8cdb4.1716984213.git.geert+renesas@glider.be>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 4/6] arm64: dts: mediatek: mt8186: add default thermal
- zones
-To: Julien Panis <jpanis@baylibre.com>, Chen-Yu Tsai <wenst@chromium.org>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Daniel Lezcano <daniel.lezcano@linaro.org>,
- Nicolas Pitre <npitre@baylibre.com>, "Rafael J. Wysocki"
- <rafael@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
- Lukasz Luba <lukasz.luba@arm.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org,
- Krzysztof Kozlowski <krzk@kernel.org>
-References: <20240529-mtk-thermal-mt818x-dtsi-v6-0-0c71478a9c37@baylibre.com>
- <20240529-mtk-thermal-mt818x-dtsi-v6-4-0c71478a9c37@baylibre.com>
- <75826085-fd59-466a-b1de-b4c323c801c1@collabora.com>
- <CAGXv+5FPG4ob3mTU0Utm8Wgk0_ZLw=NLPbfFerWh4OUeAz7UHw@mail.gmail.com>
- <808db317-4cee-426b-a840-013a5e03098d@baylibre.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <808db317-4cee-426b-a840-013a5e03098d@baylibre.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240529_050623_242221_4DF711B8 
-X-CRM114-Status: GOOD (  23.76  )
+X-CRM114-CacheID: sfid-20240529_050626_588575_846E2CAE 
+X-CRM114-Status: GOOD (  11.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,99 +70,284 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 29/05/24 11:12, Julien Panis ha scritto:
-> On 5/29/24 10:33, Chen-Yu Tsai wrote:
->> On Wed, May 29, 2024 at 4:17 PM AngeloGioacchino Del Regno
->> <angelogioacchino.delregno@collabora.com> wrote:
->>> Il 29/05/24 07:57, Julien Panis ha scritto:
->>>> From: Nicolas Pitre <npitre@baylibre.com>
->>>>
->>>> Inspired by the vendor kernel but adapted to the upstream thermal
->>>> driver version.
->>>>
->>>> Signed-off-by: Nicolas Pitre <npitre@baylibre.com>
->>>> Signed-off-by: Julien Panis <jpanis@baylibre.com>
->>> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> I'm getting some crazy readings which would cause the machine to
->> immediately shutdown during boot. Anyone else see this? Or maybe
->> my device has bad calibration data?
->>
->> gpu_thermal-virtual-0
->> Adapter: Virtual device
->> temp1:       +229.7 C
->>
->> nna_thermal-virtual-0
->> Adapter: Virtual device
->> temp1:       +229.7 C
->>
->> cpu_big0_thermal-virtual-0
->> Adapter: Virtual device
->> temp1:         -7.2 C
->>
->> cpu_little2_thermal-virtual-0
->> Adapter: Virtual device
->> temp1:       +157.2 C
->>
->> cpu_little0_thermal-virtual-0
->> Adapter: Virtual device
->> temp1:       -277.1 C
->>
->> adsp_thermal-virtual-0
->> Adapter: Virtual device
->> temp1:       +229.7 C
->>
->> cpu_big1_thermal-virtual-0
->> Adapter: Virtual device
->> temp1:       +229.7 C
->>
->> cam_thermal-virtual-0
->> Adapter: Virtual device
->> temp1:        +45.4 C
->>
->> cpu_little1_thermal-virtual-0
->> Adapter: Virtual device
->> temp1:       -241.8 C
-> 
-> It's likely that your device has bad calibration data indeed. We observed the same
-> behavior on the mt8186 device we used (a Corsola) and finally realized that the
-> golden temperature was 0 (device not properly calibrated).
-> 
-> To make a comparison, we run chromiumos v5.15 and dmesg output was:
-> 'This sample is not calibrated, fake !!'
-> Additional debugging revealed that the golden temp was actually 0. As a result,
-> chromiumos v5.15 does not use the calibration data. It uses some default values
-> instead. That's why you can observe good temperatures with chromiumos v5.15
-> even with a device that is not calibrated.
-> 
-> This feature is not implemented in the driver upstream, so you need a device
-> properly calibrated to get good temperatures with it. When we forced this
-> driver using the default values used by chromiumos v5.15 instead of real calib
-> data (temporarily, just for testing), the temperatures were good.
-> 
-> Please make sure your device is properly calibrated: 0 < golden temp < 62.
-> 
+Overlay syntactic sugar for generating target-path fragments is
+supported by the version of dtc supplied with the kernel since commit
+50aafd60898a8b3e ("scripts/dtc: Update to upstream version
+v1.4.6-21-g84e414b0b5bc").  Hence convert the Bananapi R3 overlay
+devicetree source files to sugar syntax, improving readability.
 
-Wait wait wait wait.
+Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
+---
+No changes in generated dtbo.
 
-What's up with that calibration data stuff?
+v3:
+  - Fix SoC part number,
 
-If there's any device that cannot use the calibration data, we need a way to
-recognize whether the provided data (read from efuse, of course) is valid,
-otherwise we're creating an important regression here.
+v2:
+  - Rebase on top of commit e630c7b0b6a69f66 ("arm64: dts: mediatek:
+    replace underscores in node names") in next-20240215 and later.
+---
+ .../mt7986a-bananapi-bpi-r3-emmc.dtso         | 28 +++---
+ .../mt7986a-bananapi-bpi-r3-nand.dtso         | 74 ++++++++-------
+ .../mediatek/mt7986a-bananapi-bpi-r3-nor.dtso | 90 +++++++++----------
+ .../mediatek/mt7986a-bananapi-bpi-r3-sd.dtso  | 16 ++--
+ 4 files changed, 98 insertions(+), 110 deletions(-)
 
-"This device is unlucky" is not a good reason to have this kind of regression.
+diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-emmc.dtso b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-emmc.dtso
+index 779dc6782bb1986f..047a8388811eb9c0 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-emmc.dtso
++++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-emmc.dtso
+@@ -9,21 +9,17 @@
+ 
+ / {
+ 	compatible = "bananapi,bpi-r3", "mediatek,mt7986a";
+-
+-	fragment@0 {
+-		target-path = "/soc/mmc@11230000";
+-		__overlay__ {
+-			bus-width = <8>;
+-			max-frequency = <200000000>;
+-			cap-mmc-highspeed;
+-			mmc-hs200-1_8v;
+-			mmc-hs400-1_8v;
+-			hs400-ds-delay = <0x14014>;
+-			non-removable;
+-			no-sd;
+-			no-sdio;
+-			status = "okay";
+-		};
+-	};
+ };
+ 
++&{/soc/mmc@11230000} {
++	bus-width = <8>;
++	max-frequency = <200000000>;
++	cap-mmc-highspeed;
++	mmc-hs200-1_8v;
++	mmc-hs400-1_8v;
++	hs400-ds-delay = <0x14014>;
++	non-removable;
++	no-sd;
++	no-sdio;
++	status = "okay";
++};
+diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nand.dtso b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nand.dtso
+index 7b97c5c91bd0264d..24398f8a7da4345c 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nand.dtso
++++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nand.dtso
+@@ -9,46 +9,44 @@
+ 
+ / {
+ 	compatible = "bananapi,bpi-r3", "mediatek,mt7986a";
++};
++
++&{/soc/spi@1100a000} {
++	#address-cells = <1>;
++	#size-cells = <0>;
++
++	spi_nand: flash@0 {
++		compatible = "spi-nand";
++		reg = <0>;
++		spi-max-frequency = <10000000>;
++		spi-tx-buswidth = <4>;
++		spi-rx-buswidth = <4>;
+ 
+-	fragment@0 {
+-		target-path = "/soc/spi@1100a000";
+-		__overlay__ {
++		partitions {
++			compatible = "fixed-partitions";
+ 			#address-cells = <1>;
+-			#size-cells = <0>;
+-			spi_nand: flash@0 {
+-				compatible = "spi-nand";
+-				reg = <0>;
+-				spi-max-frequency = <10000000>;
+-				spi-tx-buswidth = <4>;
+-				spi-rx-buswidth = <4>;
+-
+-				partitions {
+-					compatible = "fixed-partitions";
+-					#address-cells = <1>;
+-					#size-cells = <1>;
+-
+-					partition@0 {
+-						label = "bl2";
+-						reg = <0x0 0x100000>;
+-						read-only;
+-					};
+-
+-					partition@100000 {
+-						label = "reserved";
+-						reg = <0x100000 0x280000>;
+-					};
+-
+-					partition@380000 {
+-						label = "fip";
+-						reg = <0x380000 0x200000>;
+-						read-only;
+-					};
+-
+-					partition@580000 {
+-						label = "ubi";
+-						reg = <0x580000 0x7a80000>;
+-					};
+-				};
++			#size-cells = <1>;
++
++			partition@0 {
++				label = "bl2";
++				reg = <0x0 0x100000>;
++				read-only;
++			};
++
++			partition@100000 {
++				label = "reserved";
++				reg = <0x100000 0x280000>;
++			};
++
++			partition@380000 {
++				label = "fip";
++				reg = <0x380000 0x200000>;
++				read-only;
++			};
++
++			partition@580000 {
++				label = "ubi";
++				reg = <0x580000 0x7a80000>;
+ 			};
+ 		};
+ 	};
+diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nor.dtso b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nor.dtso
+index e48881be4ed60c98..6a0d529b54aca5bd 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nor.dtso
++++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nor.dtso
+@@ -9,54 +9,52 @@
+ 
+ / {
+ 	compatible = "bananapi,bpi-r3", "mediatek,mt7986a";
++};
++
++&{/soc/spi@1100a000} {
++	#address-cells = <1>;
++	#size-cells = <0>;
+ 
+-	fragment@0 {
+-		target-path = "/soc/spi@1100a000";
+-		__overlay__ {
++	flash@0 {
++		compatible = "jedec,spi-nor";
++		reg = <0>;
++		spi-max-frequency = <10000000>;
++
++		partitions {
++			compatible = "fixed-partitions";
+ 			#address-cells = <1>;
+-			#size-cells = <0>;
+-			flash@0 {
+-				compatible = "jedec,spi-nor";
+-				reg = <0>;
+-				spi-max-frequency = <10000000>;
+-
+-				partitions {
+-					compatible = "fixed-partitions";
+-					#address-cells = <1>;
+-					#size-cells = <1>;
+-
+-					partition@0 {
+-						label = "bl2";
+-						reg = <0x0 0x40000>;
+-						read-only;
+-					};
+-
+-					partition@40000 {
+-						label = "u-boot-env";
+-						reg = <0x40000 0x40000>;
+-					};
+-
+-					partition@80000 {
+-						label = "reserved2";
+-						reg = <0x80000 0x80000>;
+-					};
+-
+-					partition@100000 {
+-						label = "fip";
+-						reg = <0x100000 0x80000>;
+-						read-only;
+-					};
+-
+-					partition@180000 {
+-						label = "recovery";
+-						reg = <0x180000 0xa80000>;
+-					};
+-
+-					partition@c00000 {
+-						label = "fit";
+-						reg = <0xc00000 0x1400000>;
+-					};
+-				};
++			#size-cells = <1>;
++
++			partition@0 {
++				label = "bl2";
++				reg = <0x0 0x40000>;
++				read-only;
++			};
++
++			partition@40000 {
++				label = "u-boot-env";
++				reg = <0x40000 0x40000>;
++			};
++
++			partition@80000 {
++				label = "reserved2";
++				reg = <0x80000 0x80000>;
++			};
++
++			partition@100000 {
++				label = "fip";
++				reg = <0x100000 0x80000>;
++				read-only;
++			};
++
++			partition@180000 {
++				label = "recovery";
++				reg = <0x180000 0xa80000>;
++			};
++
++			partition@c00000 {
++				label = "fit";
++				reg = <0xc00000 0x1400000>;
+ 			};
+ 		};
+ 	};
+diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-sd.dtso b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-sd.dtso
+index f623bce075ce6ea4..d9e01967acc471b8 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-sd.dtso
++++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-sd.dtso
+@@ -9,15 +9,11 @@
+ 
+ / {
+ 	compatible = "bananapi,bpi-r3", "mediatek,mt7986a";
+-
+-	fragment@0 {
+-		target-path = "/soc/mmc@11230000";
+-		__overlay__ {
+-			bus-width = <4>;
+-			max-frequency = <52000000>;
+-			cap-sd-highspeed;
+-			status = "okay";
+-		};
+-	};
+ };
+ 
++&{/soc/mmc@11230000} {
++	bus-width = <4>;
++	max-frequency = <52000000>;
++	cap-sd-highspeed;
++	status = "okay";
++};
+-- 
+2.34.1
 
-Since - as far as I understand - downstream can recognize that, upstream should
-do the same.
-I'd be okay with refusing to even probe this driver on such devices for the
-moment being, as those are things that could be eventually handled on a second
-part series, even though I would prefer a kind of on-the-fly calibration or
-anyway something that would still make the unlucky ones to actually have good
-readings *right now*.
-
-Though, the fact that you assert that you observed this behavior on one of your
-devices and *still decided to send that upstream* is, in my opinion, unacceptable.
-
-Regards,
-Angelo
 
