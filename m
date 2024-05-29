@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D3A1C25B7C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 May 2024 09:16:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 387E9C25B7C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 May 2024 09:17:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=P/11FGodoFA+E+NLZvrYREmdgvCahBEkTi/n+hGxNYc=; b=ohQSmsI95g85CUmNwme9HMNz/+
-	h3S8rWIYbben++qMB0jWLgskRg437HJhkIwraXKZxofF8hA/nfz2KVlu3Dc4XVflFEItbdL/Pa29w
-	ArUkmJlxCb/+h3IHlWbGrG9//Mf/KGrYeEsAfY1rZM7uNVvPh7O5J6a/wuGA5e8g381iofYhWPzF5
-	WnB5E5Hs/+wblQPeEQwyE83uQ3EZVykzDWqIfO7vmg3bh9TKEk/PLAF61qiLYuXu+nmLCNGKPdAfu
-	j6jnuWEnA5uymUXrOu/AXpChuM0VLCi1tYH62crkgSmJ9KT5rys9p/kAYhedPXfC782TbRb4KUtkE
-	7p+XPQcg==;
+	bh=DhhdnnOXh6qGL5/6zvdk/VdVZmsP1nLae35wo137JWg=; b=G6q42NvcjaEjTi6Db/+ockhhzg
+	C2//7EMHwrbVgm/SRUY1vy/LsTKQ7pjOVNmTGUmcXN+kfsdbRDRSFGp07tMV3XoHVv2e+lHcEBOA4
+	EmRGSt3bQ9bJSREAy4ss4LvhDIU9I8IqgLZCcn500Jn7ABUOncGJ4iWtWoKINlfY87pqq1ovyD1Q0
+	DEQa9z+s7X2fWLPXHS3rtJKxJURVdy1l8d40YjkNBazEpFABOBD/9jEscOxYp96EuXPRbYXmti8Bz
+	uXoUQyhdCw6K06wiUnx/JmhaNX/mQmhCXQtkhjb8+T5LTewzsgfbWIr2gY+exY1xlJWa4eI1r4h2r
+	sVq0GXnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCFPk-00000003aZ7-3gpJ;
-	Wed, 29 May 2024 09:16:08 +0000
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+	id 1sCFQs-00000003alk-3rfd;
+	Wed, 29 May 2024 09:17:18 +0000
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCFPh-00000003aYH-1dTe;
-	Wed, 29 May 2024 09:16:07 +0000
-Received: by mail-ej1-x633.google.com with SMTP id a640c23a62f3a-a626776cc50so194936366b.3;
-        Wed, 29 May 2024 02:16:03 -0700 (PDT)
+	id 1sCFQp-00000003ak0-08Hq;
+	Wed, 29 May 2024 09:17:17 +0000
+Received: by mail-ed1-x536.google.com with SMTP id 4fb4d7f45d1cf-5789733769dso1107771a12.1;
+        Wed, 29 May 2024 02:17:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1716974162; x=1717578962; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1716974232; x=1717579032; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=P/11FGodoFA+E+NLZvrYREmdgvCahBEkTi/n+hGxNYc=;
-        b=fjoYg2DTbxoKGfS+cOKYf2DABHpqm/cjbksnargVX4MkRMvZ+6neLnlIHCm5zOAxiu
-         6cnMQFAUTjAagoJxoJiI9+2FpXkgQ1OkM/DJSj09D4VQiwXeVEZV3jpbGsHfNk0srRJ2
-         CJh+7yJTCV02YwrakqDhiRDKiClxNwBYn/GWjllHCuOBipJgshjifyrOCSZwoMl9gfCr
-         1svq2u2BQU3LdboqgMDtXSotLK3QT2Lo6CbpiV7mO97bOR8hvtYVj4Gz4wZVqOD3AcgH
-         HRf35TpBczZU5CAeOjAB1dfC5PHWhbKYFLEiDtcP1YQE0ZW6eTV2eJ2X4bstozmz/q2k
-         UqfQ==
+        bh=DhhdnnOXh6qGL5/6zvdk/VdVZmsP1nLae35wo137JWg=;
+        b=Eb2PCvD4J+ugjyy6arwNkzlCakNFqLp7V4qYucRS5GzFPp1jtSCSYpFl8zXXYjhxvN
+         tFfYwcig1bHkgSXcjIe6pdillZjd/h5Pjh2NfSQxDJxgZOyPEKNqNRteQ1wBmZR1xcWN
+         jJeYk6lTImbz1zJlbWHxi8rr0DT3DFpdTOjrOig+Av6WwkDtcErb5eYrCeawQSflIKjB
+         oVD2W/0EnJEpOKhn6A9fBZYPARbOROAj8pHoW1UWuSSmOpoS4Tk8FV0aNlTd/t98+USJ
+         Z6YcsBH88Q5r53v2PbZmlLJnxO+g0R5QA1VvG0bCVYNAruWrOEzvle8sHcb3CoPQ1IO+
+         87uQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1716974162; x=1717578962;
+        d=1e100.net; s=20230601; t=1716974232; x=1717579032;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=P/11FGodoFA+E+NLZvrYREmdgvCahBEkTi/n+hGxNYc=;
-        b=Q32sClKcgqyGeN4xn3J7qufZABBtjV6Ci+dBBwRqB0QqKkenMYmvqQzaZnNKOcdD1H
-         HVi6MPmJcSVhIUW0svw/gEEBnYBY8RxjKQYziX8W9MXNSNLsosj/qy6UTVD91H1dVHxC
-         XlZYMHvBBi7ffw34KOLATyxmye/WoLHF+ELvRF1DTRjxf0S0agzw6lnSozrMlpGjuCI0
-         Ns7gAx3a2b+Po7i+OWY91t/7BqGoXmRuw6pFifgmebVcsThFI1iKvNmHbIcWFoV99+Er
-         x4bPUbEJFctCsCgWX2w3mL5K2v6vsdfMG7paOqUcbrSDkE08oFp+6IeIYUI2lpK+ryU/
-         SjgA==
-X-Forwarded-Encrypted: i=1; AJvYcCUhrCQRYOQqfBHUp5bBCcdMkxJYEMJ/ZBzdPl5Q+zSVTcVyG97vXCgAYdxLno04/p0zV5RnOr+ojuA9MsH/zeF3Fpc0gLKaE/HdmdFXjGo9kZt9374aCrSa0lKem+9Y1SmehBpN9L1fXfsmYnqJLoe7HhNtbfKsWZ8=
-X-Gm-Message-State: AOJu0YzXrKlhhSNa24H3mYC8j6j1ivDBOwNKkh7V8nXLqP3GOfPLd9Hn
-	7otm6vPVVKiZ4ufjgTsmX0eJnin4YlQxl1Qb9r6LAzinlKLP0hF35c79D3mNmtJnaVhaDOyYhfG
-	3lGIz87tG9FHY5h+NA9WMfIia5kE=
-X-Google-Smtp-Source: AGHT+IFzCGL3iHzr4n/qBEh0rBcTkXqfRF+a6gRaRMQGh5+of4CGG73bxuOyvd2Zs59FzGTTgkYC/QKjn7uf1k5x4v0=
-X-Received: by 2002:a17:907:7e85:b0:a62:de58:b362 with SMTP id
- a640c23a62f3a-a62de58d30fmr640122266b.55.1716974162356; Wed, 29 May 2024
- 02:16:02 -0700 (PDT)
+        bh=DhhdnnOXh6qGL5/6zvdk/VdVZmsP1nLae35wo137JWg=;
+        b=NT/3qetR27GvnPtpxWrrcoftLmdxqg26+AmmVQxoqES4oTZ9UbM7Cf/0WF9lUlt5Om
+         6PcbdLSQOD1f96AWMKSVKl5sMgN/Sj/ez3mVwKG4ujbTQe/v8bJHD6FVdLE0lQ+19xNO
+         bVTlc89sB0nG5SZi+dmUV4r9e3cukl9XlKzEAoXkbI54Ec+1ols51HZqkP+AahA8ZRC6
+         aFW+nBrJMuRmal1UlJMxxZR77ZhDtXSfbi68UjrjTUXzZYpRwoqGpqTkD/rU3z8fh2Dl
+         xQSV86BvyhKkSHG/lO9jE4+7+d+O8YUoO0+rvFqGc8+pOoS5pcxTxHmQnj5tq8o52bWH
+         3fng==
+X-Forwarded-Encrypted: i=1; AJvYcCUCeu+7H5RW5JuYs6qd4W4T6/cfc3kXIpyj2JyoO7IXpRApJ16Ok/7/wfpF1bOjmXdIla89awQRS7HDQFAsiNiLjrR84CYBtHDaf/eiDZfZcSvCsy36UZpBya9wC2t/nWz5pE3uRRe+QVfH8Vn0XN4J+doEos2vebI=
+X-Gm-Message-State: AOJu0YwN6oNROkOhFdQi03bubj8BmcaQloIX+2ykf7hOGg6LABN8gPyy
+	AzuraOIJJvt+JiQ4UgPoKnmpb1TaDD0heGtGT8AB2K+pSiYPHGw5kW5EAfdFaXwl6kA9PhJjZT1
+	4PM8QPvuhNexukV4vE8/4d/1hnPs=
+X-Google-Smtp-Source: AGHT+IHGdwBKFS281WJKM1LepXLS87qJk4CkOo+icUfU1WShxVz0GmuGPZsuGmboZ5p2ros9zrvRRiQCXqmzCeTNR8M=
+X-Received: by 2002:a17:906:718f:b0:a5a:7493:5b68 with SMTP id
+ a640c23a62f3a-a642d95819emr140252866b.24.1716974232163; Wed, 29 May 2024
+ 02:17:12 -0700 (PDT)
 MIME-Version: 1.0
 References: <20240528194951.1489887-1-andy.shevchenko@gmail.com>
- <20240528194951.1489887-5-andy.shevchenko@gmail.com> <c52ff392-703c-482c-a297-c12d4e0dbd38@collabora.com>
-In-Reply-To: <c52ff392-703c-482c-a297-c12d4e0dbd38@collabora.com>
+ <20240528194951.1489887-11-andy.shevchenko@gmail.com> <358b6488-3f7c-4378-a811-175b6c77290f@collabora.com>
+In-Reply-To: <358b6488-3f7c-4378-a811-175b6c77290f@collabora.com>
 From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Date: Wed, 29 May 2024 12:15:26 +0300
-Message-ID: <CAHp75VeurNjWSLsM_cEphZZhqSM9TNc_ozGYcJ-vvefHg8NY2A@mail.gmail.com>
-Subject: Re: [PATCH v2 04/11] pinctrl: mediatek: Provide a helper macro PINCTRL_PIN_FUNCTION()
+Date: Wed, 29 May 2024 12:16:36 +0300
+Message-ID: <CAHp75VfG__AA7bHd15-dg1UphkvzwpMN6eXzJXhyUDNW0a1_1w@mail.gmail.com>
+Subject: Re: [PATCH v2 10/11] pinctrl: mediatek: Convert to use func member
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
 	Linus Walleij <linus.walleij@linaro.org>, Daniel Golle <daniel@makrotopia.org>, 
@@ -81,8 +81,8 @@ Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240529_021605_452763_B19777C7 
-X-CRM114-Status: GOOD (  10.37  )
+X-CRM114-CacheID: sfid-20240529_021715_099604_5B4E04F3 
+X-CRM114-Status: GOOD (  10.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,22 +99,20 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 On Wed, May 29, 2024 at 11:24=E2=80=AFAM AngeloGioacchino Del Regno
 <angelogioacchino.delregno@collabora.com> wrote:
-> Il 28/05/24 21:44, Andy Shevchenko ha scritto:
-> > Provide a helper macro to assign the struct function_desc entries.
-> > This helps further refactoring.
+>
+> Il 28/05/24 21:45, Andy Shevchenko ha scritto:
+> > Convert drivers to use func member embedded in struct function_desc,
+> > because other members will be removed to avoid duplication and
+> > desynchronisation of the generic pin function description.
 > >
 > > Signed-off-by: Andy Shevchenko <andy.shevchenko@gmail.com>
 >
-> Not a strong opinion but, for commodity, I'd like to see "moore" mentione=
-d in the
-> title, as only the Moore pinctrl IPs are being touched here (where MTK ha=
-s two
-> different IPs: Moore and Paris).
+> pinctrl: mediatek: moore: Convert to use func member
 
-If I need a new version, sure, I'll add that.
+Sure, if I need a new version. Otherwise I hope Linus can tweak this
+whilst applying.
 
-> In any case:
->
+> Then,
 > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
 ora.com>
 
