@@ -4,84 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 761D9C25B75
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 May 2024 09:45:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E610C27C44
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 May 2024 09:48:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Mwk/tyTv9CQDrGBR2+J82VIQl88qfKTbtJvAZBieAtw=; b=W47DQTdYxnxBBSbqoQe+kA3XFf
-	kWYRYyVdCg+IfNE4k2RabudjU2eQ6js0KoW0GCJWI+jGSEiGxM6/ZLmIfl95T8BUX1CKw+iTvIR4q
-	0WRFLP5VDedmvIqOidyw1Cq7urZCGfO3Vl0BGDunusR0dDQkVawyqLcSlTP90EiRdLdvNK/isoSCN
-	kXTNG9hOKillN2dbnJRH10MMYi3fFDN0neZPcK6ZhbWA617qR2dR8h53iMkksHSdOjZHQ5Y+VPId4
-	YJNOMOi7h/uZRK3OK+GrkEnbc6GZXKuSIVJyECO0EHFULJ4P0gcK9TjWOLjXc0aCgMep2fCifsUZi
-	SAt5dsFg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=oSOG+4dIcOJ+9tRtsuE41alokKTpntQ+uCKvQMVUpCM=; b=bGOj0/ATlVR9g9VQuxzcCqYLlb
+	SOvz9MCVHgGsy37rzg+7gdGC1VS1Z8FDED07KmlrLuOn29fxEevwXgeJcIjXx8Z8mm5alqu6kwszb
+	aUMrK1nIc6sYZMKT3UWF/mmJrswjf7OOKM2a+3E4W9zuuMckJ757bqqklu3ETQJnmPef0mMmGvQ3r
+	jNcycIXYvC1eYFU6IFLsfW9zLdQXVFDBV2aB1CnBVOSH8G20SLyVeZiuFk9DlnuxtAr7i0cbvsGgg
+	6m6G9L09dnbIsN342b5CwwErErgT6CKP0/77uSp1nWeHpdl2AbsMns7B2BXZf5pXpJG6Wvss1MRx4
+	dDF5gFCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCFsS-00000003gCA-08Wn;
-	Wed, 29 May 2024 09:45:48 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1sCFvH-00000003gpE-3Ppb;
+	Wed, 29 May 2024 09:48:43 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCEtV-00000003SJ4-3SSv;
-	Wed, 29 May 2024 08:42:53 +0000
-X-UUID: 69fcbe621d9711efbf6c7d4f5c147266-20240529
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Mwk/tyTv9CQDrGBR2+J82VIQl88qfKTbtJvAZBieAtw=;
-	b=uHmGkS5EuB/f9Lb6jRlHAlPhyS2Lff2BoLLZVJJi6BFRfctpuqcSWr9IgBkVYI6R/gMul984Z1THWrsYW47g/pqdr3uXgd4j4U93nt3ZrYW8s3fU6xqZeLdT3D9F4m+xozLpuFgAnH9J24mky6zE3u2EZh3ZJ1xYnQBLovhz3FU=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.39,REQID:8e7ec439-0c08-418d-87c1-1648847669a4,IP:0,U
-	RL:25,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:20
-X-CID-META: VersionHash:393d96e,CLOUDID:6977f243-4544-4d06-b2b2-d7e12813c598,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 69fcbe621d9711efbf6c7d4f5c147266-20240529
-Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw02.mediatek.com
-	(envelope-from <liju-clr.chen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1978795764; Wed, 29 May 2024 01:42:42 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 29 May 2024 16:42:39 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 29 May 2024 16:42:39 +0800
-From: Liju-clr Chen <liju-clr.chen@mediatek.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Jonathan Corbet <corbet@lwn.net>, Catalin
- Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, Steven
- Rostedt <rostedt@goodmis.org>, Masami Hiramatsu <mhiramat@kernel.org>,
-	Mathieu Desnoyers <mathieu.desnoyers@efficios.com>, Richard Cochran
-	<richardcochran@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Liju-clr Chen <Liju-clr.Chen@mediatek.com>, Yingshiuan Pan
-	<Yingshiuan.Pan@mediatek.com>, Ze-yu Wang <Ze-yu.Wang@mediatek.com>
-CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-doc@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-trace-kernel@vger.kernel.org>, <netdev@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, David Bradil <dbrazdil@google.com>,
-	Trilok Soni <quic_tsoni@quicinc.com>, Shawn Hsiao <shawn.hsiao@mediatek.com>,
-	PeiLun Suei <PeiLun.Suei@mediatek.com>, Chi-shen Yeh
-	<Chi-shen.Yeh@mediatek.com>, Kevenny Hsieh <Kevenny.Hsieh@mediatek.com>
-Subject: [PATCH v11 03/21] dt-bindings: hypervisor: Add MediaTek GenieZone hypervisor
-Date: Wed, 29 May 2024 16:42:21 +0800
-Message-ID: <20240529084239.11478-4-liju-clr.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20240529084239.11478-1-liju-clr.chen@mediatek.com>
-References: <20240529084239.11478-1-liju-clr.chen@mediatek.com>
+	id 1sCFvD-00000003gk3-1Cd4;
+	Wed, 29 May 2024 09:48:41 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1716976108;
+	bh=qf6ymj3RFfkiiaCFpxQKjdAF3Bl843ub+B+34Y8z/as=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=McsTEN60Vjt8NdHBol50pxTr9PPR0mANAwkso+KggPtbLZ96gx6WFt39jPm6RaST2
+	 9WqjTcIfbEqEMhdoXNljZZnOeUD6j0Y4bb4lPy08ZQ3TCXVOmmqJSvKdPGkTUDWURP
+	 VXfmKfgIig01ItkT2gCBlOaVsCXhP8ScrJn91p4t5ICU3QWERtAcUqalqq35HiaG4h
+	 0q5we2lYK1Ihh8muJAvwG+jH9RT1I3ZRltKrUpY80G3rY4+t/ccXt201Zkg9R2Oz77
+	 FaIYlc7dSvWos34mvwzBQejHsnFwEeLUGa2WrJvFiFAgKvkFZSmJrJh+6Z7HPjYq7C
+	 Dvhq2jHBKWPTQ==
+Received: from [100.66.96.193] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: vignesh)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 86B76378205D;
+	Wed, 29 May 2024 09:48:24 +0000 (UTC)
+Message-ID: <12f14064-fd1c-4e9c-94ee-ba7d492a4056@collabora.com>
+Date: Wed, 29 May 2024 15:18:22 +0530
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 4/6] drm/ci: uprev IGT
+Content-Language: en-US
+To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com,
+ helen.koike@collabora.com, airlied@gmail.com, daniel@ffwll.ch,
+ robdclark@gmail.com, david.heidelberg@collabora.com,
+ guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com,
+ mcanal@igalia.com, linux-mediatek@lists.infradead.org,
+ linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ amd-gfx@lists.freedesktop.org, linux-arm-msm@vger.kernel.org,
+ intel-gfx@lists.freedesktop.org, virtualization@lists.linux-foundation.org,
+ linux-kernel@vger.kernel.org
+References: <20240529024049.356327-1-vignesh.raman@collabora.com>
+ <20240529024049.356327-5-vignesh.raman@collabora.com>
+ <bj6mpegmxo6i5o34xyxwiytdaokv2u6p5iu4eoek3ctqimwviy@jbo5aw7gy4ue>
+From: Vignesh Raman <vignesh.raman@collabora.com>
+In-Reply-To: <bj6mpegmxo6i5o34xyxwiytdaokv2u6p5iu4eoek3ctqimwviy@jbo5aw7gy4ue>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240529_014249_917982_9FEF0D7D 
-X-CRM114-Status: GOOD (  17.92  )
+X-CRM114-CacheID: sfid-20240529_024839_577704_CE969E0C 
+X-CRM114-Status: GOOD (  14.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,93 +83,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Yi-De Wu <yi-de.wu@mediatek.com>
+Hi Dmitry,
 
-From: "Yingshiuan Pan" <yingshiuan.pan@mediatek.com>
+On 29/05/24 13:39, Dmitry Baryshkov wrote:
+> On Wed, May 29, 2024 at 08:10:47AM +0530, Vignesh Raman wrote:
+>> test-list.txt and test-list-full.txt are not generated for
+>> cross-builds and they are required by drm-ci for testing
+>> arm32 targets. This is fixed in igt-gpu-tools. So uprev
+>> IGT to include the commit which fixes this issue. Also
+>> disable building xe driver tests for non-intel platforms.
+>>
+>> Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+>> Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
+>> ---
+>>
+>> v2:
+>>    - Split IGT uprev to seperate patch.
+>>
+>> v3:
+>>    - No changes.
+>>
+>> ---
+>>   drivers/gpu/drm/ci/build-igt.sh  | 4 ++++
+>>   drivers/gpu/drm/ci/gitlab-ci.yml | 2 +-
+>>   2 files changed, 5 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/drivers/gpu/drm/ci/build-igt.sh b/drivers/gpu/drm/ci/build-igt.sh
+>> index b7d2a49a6db3..eddb5f782a5e 100644
+>> --- a/drivers/gpu/drm/ci/build-igt.sh
+>> +++ b/drivers/gpu/drm/ci/build-igt.sh
+>> @@ -45,6 +45,10 @@ MESON_OPTIONS="-Doverlay=disabled                    \
+>>                  -Dlibunwind=enabled                   \
+>>                  -Dprefix=/igt"
+>>   
+>> +if [[ "$KERNEL_ARCH" = "arm64" ]] || [[ "$KERNEL_ARCH" = "arm" ]]; then
+>> +    MESON_OPTIONS="$MESON_OPTIONS -Dxe_driver=disabled"
+>> +fi
+>> +
+>>   mkdir -p /igt
+>>   meson build $MESON_OPTIONS $EXTRA_MESON_ARGS
+>>   ninja -C build -j${FDO_CI_CONCURRENT:-4} || ninja -C build -j 1
+>> diff --git a/drivers/gpu/drm/ci/gitlab-ci.yml b/drivers/gpu/drm/ci/gitlab-ci.yml
+>> index 8f32de63d92e..1b29c3b6406b 100644
+>> --- a/drivers/gpu/drm/ci/gitlab-ci.yml
+>> +++ b/drivers/gpu/drm/ci/gitlab-ci.yml
+>> @@ -5,7 +5,7 @@ variables:
+>>     UPSTREAM_REPO: git://anongit.freedesktop.org/drm/drm
+>>     TARGET_BRANCH: drm-next
+>>   
+>> -  IGT_VERSION: d2af13d9f5be5ce23d996e4afd3e45990f5ab977
+>> +  IGT_VERSION: 0df7b9b97f9da0e364f5ee30fe331004b8c86b56
+> 
+> Let's land this, then I'll ask to uprev to
+> dc2d7fb4f978048b87707ea9ec32da748b01b378, which fixes an issue with the
+> writeback tests on MSM devices.
 
-Add documentation for GenieZone(gzvm) node. This node informs gzvm
-driver to start probing if proprietary geniezone hypervisor firmware is
-available and capable of executing virtual machine operations.
+Sure. Once this is merged, we can uprev to the latest IGT.
 
-[Reason to use dt solution]
-The GenieZone hypervisor acts as a vendor firmware to enable platform
-virtualization, offering an implementation that is independent of
-Linux-specific implementations.
-- Previously, our approach involved probing via hypercalls to detect the
-  presence of our hypervisor firmware. However, this method raised
-  concerns about potential impacts on all systems, including those
-  without the embedded GenieZone hypervisor.
-- By utilizing the device tree solution, we can accurately identify the
-  GenieZone hypervisor's presence without relying on hypercalls,
-  ensuring a more targeted and efficient detection process that
-  minimizes the risk of unintended consequences on non-GenieZone systems.
+Regards,
+Vignesh
 
-Link: https://lore.kernel.org/all/2fe0c7f9-55fc-ae63-3631-8526a0212ccd@linaro.org/
-
-Signed-off-by: Yingshiuan Pan <yingshiuan.pan@mediatek.com>
-Signed-off-by: Liju Chen <liju-clr.chen@mediatek.com>
-Signed-off-by: Yi-De Wu <yi-de.wu@mediatek.com>
----
- .../bindings/firmware/mediatek,geniezone.yaml | 34 +++++++++++++++++++
- MAINTAINERS                                   |  3 +-
- 2 files changed, 36 insertions(+), 1 deletion(-)
- create mode 100644 Documentation/devicetree/bindings/firmware/mediatek,geniezone.yaml
-
-diff --git a/Documentation/devicetree/bindings/firmware/mediatek,geniezone.yaml b/Documentation/devicetree/bindings/firmware/mediatek,geniezone.yaml
-new file mode 100644
-index 000000000000..9955890cb8b7
---- /dev/null
-+++ b/Documentation/devicetree/bindings/firmware/mediatek,geniezone.yaml
-@@ -0,0 +1,34 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/firmware/mediatek,geniezone.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: MediaTek GenieZone hypervisor
-+
-+maintainers:
-+  - Yingshiuan Pan <yingshiuan.pan@mediatek.com>
-+
-+description:
-+  GenieZone is a proprietary type-II hypervisor firmware developed by MediaTek,
-+  providing an isolated execution environment for mTEE (MediaTek Trusted
-+  Execution Environment) and AVF (Android Virtualization Framework) virtual
-+  machines. This binding facilitates the integration of GenieZone into the
-+  Android Virtualization Framework (AVF) with Crosvm as the VMM. The driver
-+  exposes hypervisor control interfaces to the VMM for managing virtual
-+  machine lifecycles and assisting virtual device emulation.
-+
-+properties:
-+  compatible:
-+    const: mediatek,geniezone
-+
-+required:
-+  - compatible
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    hypervisor {
-+        compatible = "mediatek,geniezone";
-+    };
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 59481b0764d6..f42bd174caad 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -9273,7 +9273,8 @@ F:	lib/vdso/
- GENIEZONE HYPERVISOR DRIVER
- M:	Yingshiuan Pan <yingshiuan.pan@mediatek.com>
- M:	Ze-Yu Wang <ze-yu.wang@mediatek.com>
--M:	Yi-De Wu <yi-de.wu@mediatek.com>
-+M:	Liju Chen <liju-clr.chen@mediatek.com>
-+F:	Documentation/devicetree/bindings/firmware/mediatek,geniezone.yaml
- F:	Documentation/virt/geniezone/
- 
- GENWQE (IBM Generic Workqueue Card)
--- 
-2.18.0
-
+> 
+>>   
+>>     DEQP_RUNNER_GIT_URL: https://gitlab.freedesktop.org/anholt/deqp-runner.git
+>>     DEQP_RUNNER_GIT_TAG: v0.15.0
+>> -- 
+>> 2.40.1
+>>
+> 
 
