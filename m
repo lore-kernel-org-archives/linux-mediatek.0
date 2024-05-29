@@ -4,98 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F4143C25B7C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 May 2024 05:58:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4322C25B75
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 May 2024 06:29:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LavDOYWBGYfpww4RDDUlyMd6cUxBIrRNj68m4ClU2/E=; b=GgL0CzJJoTuf3Vf/mDvNfkemEm
-	qcIGfd78Wk2m+gsW4USUzOdq35JiuMeCWZlRDcJs4M8yo6FotaKHxCuu2E9wyikbffhmtxdotOa/b
-	AYoxkoFi0OW4qZsMXGl2gqzynGLxdTlNSRMalTbbFnEmSXXuv17DyUvIexrQDIUMeGnAfJZIfvxUJ
-	8OO4knPyooAzB5t5nURzlT5tA/VS+kagVRfBr8CC33RSMtZmgGDdOYtrT29GPr4ouW287HToJT7Ji
-	y97Uet2ySk02NNFY0GcXtoTEhcaNgIuMgxTjJcM5lehKi2uNkfs2Pj2mO9JQBkMXgNrbOIV+fZtjH
-	sYQvKkIA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=LKjKCz6MWko6tQGKhAEekON+68KMgjRQz4EtM95IYls=; b=XJeV+6IY2xrEnDvCPtHj8k1nPx
+	j34MP6ot+vY2KhNV8n57U7B1zXJjqiTbBq8+8DtqKPUs5N+I/GdXN5E7vpbZSTtDFVxSyAsidxVC/
+	zM/orwFQCXVx61Jr0aAzPS4A7RTrbw4hgkyzq9gnpt/mjuI2WciY3s8gKXJQSvajBGSMLJQEUNC5/
+	1zJTDb2A1rDLyqsdCmmWtHAQR1EfhbiLaOEqmYOlMuFK9MbI2yR3kMoIg6Gr4qYvsNZzWkCcNXoSm
+	zrtUC0whaT3YUitH3uzCRgSvX9UrypbZ9H1z/N3LP6FctvTJLpn/zXXExlnCfgxCDqCK/akWSR+jp
+	XmpALiww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCCKc-00000002wOm-11Ea;
-	Wed, 29 May 2024 05:58:38 +0000
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+	id 1sCCow-000000030nm-1S8c;
+	Wed, 29 May 2024 06:29:58 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCCKG-00000002w5K-3usn
+	id 1sCCot-000000030mf-3dgT
 	for linux-mediatek@lists.infradead.org;
-	Wed, 29 May 2024 05:58:18 +0000
-Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-420180b5897so14261715e9.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 28 May 2024 22:58:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1716962294; x=1717567094; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=LavDOYWBGYfpww4RDDUlyMd6cUxBIrRNj68m4ClU2/E=;
-        b=yfq9DvRBKjLcI+679IzeN3VQ8kEtY1d7Gb/AyBYhFxO04ITg9BnLZ9FWUyXJi4dH9E
-         RBj9AU3CwYhoWVBk2KjCDnsW49VDN0j+C+DRQjNlThfAhQt6Y4sjRL7rWX0wG+z3w7cn
-         Twn8bDghObSwQJuKu7lJORbC++HWUAZcjOyyBr3gsGHITdqPb2RybSPL5AzuUYgnRmFC
-         XGSmqRnzwnLuUBYZFw9+s3rVIjD/Pl2cHSCAxL5kv7eJyyYTgb8g2v5NpuJNClpOSoK7
-         oYCGZCcKTt1I0VnJqtWFrrDMDZDGoOG7O4YJMBCT4hbnh9j1Q0q7hsHRbakB98VaGc1h
-         KbtQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1716962294; x=1717567094;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=LavDOYWBGYfpww4RDDUlyMd6cUxBIrRNj68m4ClU2/E=;
-        b=U9pYDP9jfrldO+8OR96ihvpm4OD87bYZK03tMAxGW7eruKt4dO7yFeHibCOXRLE8Ny
-         u1ovkM2sEoqO5vvHSTVyn8bj7zKojLWq+9ZaBbW795FYj1dRNNTvwq59KEur931+1OG2
-         sQUvG2iiCwkCZq953ED/rMSJnR3Pd9MIYs99VYHr5GCGCWvYHA2398ZOSAUZjM+cyL+p
-         1iniMaC83mMGK2MyHIxd3PY98Rx7mZFBNJewLQXpH6SZ5CxAQXzBQ4oz9vjygWUMC78s
-         JC0ANs/pzE44jMFbN/TqAgygO/C2QIwiXAAWDalNcZrkDfFuISkkvH5vuoR8EsRKONZY
-         aKBA==
-X-Forwarded-Encrypted: i=1; AJvYcCV1L8eVXG0R79OnKxUwcOhmsaA7c6Pjg923hROaipJsxXDnUc9PT2FQCM1ACINswlPyUFB0MDkXhNndrdTcxX6Cx9xeSNov01eodxJWNdU5KCHE
-X-Gm-Message-State: AOJu0YwFHfoyK5G+PuA/B2sRdHwXzex2XHU4YN9e2W+GPTltb72sueES
-	TVUFxchsIBZ+TTPQqKRhUh+y2e3v6pcPk1lLRNq1yt6i6qJS8XyOFJxC0xmFCg8=
-X-Google-Smtp-Source: AGHT+IHZIfWohQ6uIpAxspL5iEeAtgBFpqQ7jWd1q9AEXPsxCa6NOaculobfj9SZhiYUVhggmiBOKg==
-X-Received: by 2002:a05:600c:5806:b0:41b:e84d:67a3 with SMTP id 5b1f17b1804b1-42108962e2emr98466085e9.0.1716962294034;
-        Tue, 28 May 2024 22:58:14 -0700 (PDT)
-Received: from [127.0.1.1] ([84.102.31.110])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4210896676bsm169075435e9.4.2024.05.28.22.58.12
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 28 May 2024 22:58:13 -0700 (PDT)
-From: Julien Panis <jpanis@baylibre.com>
-Date: Wed, 29 May 2024 07:58:01 +0200
-Subject: [PATCH v6 6/6] arm64: dts: mediatek: mt8188: add default thermal
- zones
+	Wed, 29 May 2024 06:29:57 +0000
+X-UUID: dbb45f141d8411efbf6c7d4f5c147266-20240528
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=LKjKCz6MWko6tQGKhAEekON+68KMgjRQz4EtM95IYls=;
+	b=DKkFp48A4uCrVNcYBECyuq3/ntL6QDR5rt02icL9lIUNbGxzHxpWF5F6umNtMzl6QR+0XCXEMyXJldGdY9iixHPUtLdMh8GhGzXkEbAEAk5tbWJnJ9M5Zi65JeZUozpfP36CXqV/xpQXPClhXjUvN7BZtTpEg78G8anEA1IK2tk=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.39,REQID:edd051b8-d047-42c7-9a04-86b341de05bc,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:393d96e,CLOUDID:b4487384-4f93-4875-95e7-8c66ea833d57,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: dbb45f141d8411efbf6c7d4f5c147266-20240528
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+	(envelope-from <chris.lu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1144090263; Tue, 28 May 2024 23:29:53 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 29 May 2024 14:29:50 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 29 May 2024 14:29:50 +0800
+From: Chris Lu <chris.lu@mediatek.com>
+To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
+	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
+CC: Sean Wang <sean.wang@mediatek.com>, Deren Wu <deren.Wu@mediatek.com>,
+	Aaron Hou <aaron.hou@mediatek.com>, Steve Lee <steve.lee@mediatek.com>,
+	linux-bluetooth <linux-bluetooth@vger.kernel.org>, linux-kernel
+	<linux-kernel@vger.kernel.org>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Chris Lu <chris.lu@mediatek.com>
+Subject: [PATCH v2 2/3] Bluetooth: btmtk: add macro to get/set/clear MediaTek defined flags
+Date: Wed, 29 May 2024 14:29:45 +0800
+Message-ID: <20240529062946.5655-3-chris.lu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20240529062946.5655-1-chris.lu@mediatek.com>
+References: <20240529062946.5655-1-chris.lu@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20240529-mtk-thermal-mt818x-dtsi-v6-6-0c71478a9c37@baylibre.com>
-References: <20240529-mtk-thermal-mt818x-dtsi-v6-0-0c71478a9c37@baylibre.com>
-In-Reply-To: <20240529-mtk-thermal-mt818x-dtsi-v6-0-0c71478a9c37@baylibre.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Daniel Lezcano <daniel.lezcano@linaro.org>, 
- Nicolas Pitre <npitre@baylibre.com>, 
- "Rafael J. Wysocki" <rafael@kernel.org>, Zhang Rui <rui.zhang@intel.com>, 
- Lukasz Luba <lukasz.luba@arm.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- linux-pm@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>, 
- Julien Panis <jpanis@baylibre.com>
-X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1716962279; l=11449;
- i=jpanis@baylibre.com; s=20230526; h=from:subject:message-id;
- bh=6HvcJw/GiUMGA5QgSQkB+3ZEuSp1mJLMjRQtbGjzMsU=;
- b=mvxaIs4kZQBuy1OCGzgeNIRqej7H1QiOg2k9FUBBJsIaH1ixK53E4fYwlMxmoXPZSJNl6SAki
- 47bOhw5Ha/rCCBztqz5Wq6GHU8UZJ+49wBPJOVNqFcaGM+kJ3iHnuFt
-X-Developer-Key: i=jpanis@baylibre.com; a=ed25519;
- pk=8eSM4/xkiHWz2M1Cw1U3m2/YfPbsUdEJPCWY3Mh9ekQ=
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240528_225817_019309_BDA8837F 
-X-CRM114-Status: GOOD (  12.31  )
+X-CRM114-CacheID: sfid-20240528_232955_927636_98BDF946 
+X-CRM114-Status: GOOD (  10.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,491 +87,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Nicolas Pitre <npitre@baylibre.com>
+Define a enumeration to store MediaTek specific flags and
+macro function to set/test/clear the flags in data structure.
 
-Inspired by the vendor kernel but adapted to the upstream thermal
-driver version.
-
-Signed-off-by: Nicolas Pitre <npitre@baylibre.com>
-Signed-off-by: Julien Panis <jpanis@baylibre.com>
+Signed-off-by: Chris Lu <chris.lu@mediatek.com>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8188.dtsi | 447 +++++++++++++++++++++++++++++++
- 1 file changed, 447 insertions(+)
+ drivers/bluetooth/btmtk.h | 23 +++++++++++++++++++++++
+ 1 file changed, 23 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8188.dtsi b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-index 02786fe9891b..cd27966d2e3c 100644
---- a/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-@@ -13,6 +13,8 @@
- #include <dt-bindings/pinctrl/mediatek,mt8188-pinfunc.h>
- #include <dt-bindings/power/mediatek,mt8188-power.h>
- #include <dt-bindings/reset/mt8188-resets.h>
-+#include <dt-bindings/thermal/thermal.h>
-+#include <dt-bindings/thermal/mediatek,lvts-thermal.h>
+diff --git a/drivers/bluetooth/btmtk.h b/drivers/bluetooth/btmtk.h
+index e76b8a358be8..6a0697a22b16 100644
+--- a/drivers/bluetooth/btmtk.h
++++ b/drivers/bluetooth/btmtk.h
+@@ -128,6 +128,10 @@ struct btmtk_hci_wmt_params {
  
- / {
- 	compatible = "mediatek,mt8188";
-@@ -418,6 +420,450 @@ psci {
- 		method = "smc";
- 	};
+ typedef int (*btmtk_reset_sync_func_t)(struct hci_dev *, void *);
  
-+	thermal_zones: thermal-zones {
-+		cpu-little0-thermal {
-+			polling-delay = <1000>;
-+			polling-delay-passive = <150>;
-+			thermal-sensors = <&lvts_mcu MT8188_MCU_LITTLE_CPU0>;
-+
-+			trips {
-+				cpu_little0_alert0: trip-alert0 {
-+					temperature = <85000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
-+
-+				cpu_little0_alert1: trip-alert1 {
-+					temperature = <95000>;
-+					hysteresis = <2000>;
-+					type = "hot";
-+				};
-+
-+				cpu_little0_crit: trip-crit {
-+					temperature = <100000>;
-+					hysteresis = <0>;
-+					type = "critical";
-+				};
-+			};
-+
-+			cooling-maps {
-+				map0 {
-+					trip = <&cpu_little0_alert0>;
-+					cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+							 <&cpu1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+							 <&cpu2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+							 <&cpu3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+							 <&cpu4 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+							 <&cpu5 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+				};
-+			};
-+		};
-+
-+		cpu-little1-thermal {
-+			polling-delay = <1000>;
-+			polling-delay-passive = <150>;
-+			thermal-sensors = <&lvts_mcu MT8188_MCU_LITTLE_CPU1>;
-+
-+			trips {
-+				cpu_little1_alert0: trip-alert0 {
-+					temperature = <85000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
-+
-+				cpu_little1_alert1: trip-alert1 {
-+					temperature = <95000>;
-+					hysteresis = <2000>;
-+					type = "hot";
-+				};
-+
-+				cpu_little1_crit: trip-crit {
-+					temperature = <100000>;
-+					hysteresis = <0>;
-+					type = "critical";
-+				};
-+			};
-+
-+			cooling-maps {
-+				map0 {
-+					trip = <&cpu_little1_alert0>;
-+					cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+							 <&cpu1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+							 <&cpu2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+							 <&cpu3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+							 <&cpu4 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+							 <&cpu5 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+				};
-+			};
-+		};
-+
-+		cpu-little2-thermal {
-+			polling-delay = <1000>;
-+			polling-delay-passive = <150>;
-+			thermal-sensors = <&lvts_mcu MT8188_MCU_LITTLE_CPU2>;
-+
-+			trips {
-+				cpu_little2_alert0: trip-alert0 {
-+					temperature = <85000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
-+
-+				cpu_little2_alert1: trip-alert1 {
-+					temperature = <95000>;
-+					hysteresis = <2000>;
-+					type = "hot";
-+				};
-+
-+				cpu_little2_crit: trip-crit {
-+					temperature = <100000>;
-+					hysteresis = <0>;
-+					type = "critical";
-+				};
-+			};
-+
-+			cooling-maps {
-+				map0 {
-+					trip = <&cpu_little2_alert0>;
-+					cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+							 <&cpu1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+							 <&cpu2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+							 <&cpu3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+							 <&cpu4 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+							 <&cpu5 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+				};
-+			};
-+		};
-+
-+		cpu-little3-thermal {
-+			polling-delay = <1000>;
-+			polling-delay-passive = <150>;
-+			thermal-sensors = <&lvts_mcu MT8188_MCU_LITTLE_CPU3>;
-+
-+			trips {
-+				cpu_little3_alert0: trip-alert0 {
-+					temperature = <85000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
-+
-+				cpu_little3_alert1: trip-alert1 {
-+					temperature = <95000>;
-+					hysteresis = <2000>;
-+					type = "hot";
-+				};
-+
-+				cpu_little3_crit: trip-crit {
-+					temperature = <100000>;
-+					hysteresis = <0>;
-+					type = "critical";
-+				};
-+			};
-+
-+			cooling-maps {
-+				map0 {
-+					trip = <&cpu_little3_alert0>;
-+					cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+							 <&cpu1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+							 <&cpu2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+							 <&cpu3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+							 <&cpu4 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+							 <&cpu5 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+				};
-+			};
-+		};
-+
-+		cpu-big0-thermal {
-+			polling-delay = <1000>;
-+			polling-delay-passive = <100>;
-+			thermal-sensors = <&lvts_mcu MT8188_MCU_BIG_CPU0>;
-+
-+			trips {
-+				cpu_big0_alert0: trip-alert0 {
-+					temperature = <85000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
-+
-+				cpu_big0_alert1: trip-alert1 {
-+					temperature = <95000>;
-+					hysteresis = <2000>;
-+					type = "hot";
-+				};
-+
-+				cpu_big0_crit: trip-crit {
-+					temperature = <100000>;
-+					hysteresis = <0>;
-+					type = "critical";
-+				};
-+			};
-+
-+			cooling-maps {
-+				map0 {
-+					trip = <&cpu_big0_alert0>;
-+					cooling-device = <&cpu6 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+							 <&cpu7 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+				};
-+			};
-+		};
-+
-+		cpu-big1-thermal {
-+			polling-delay = <1000>;
-+			polling-delay-passive = <100>;
-+			thermal-sensors = <&lvts_mcu MT8188_MCU_BIG_CPU1>;
-+
-+			trips {
-+				cpu_big1_alert0: trip-alert0 {
-+					temperature = <85000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
-+
-+				cpu_big1_alert1: trip-alert1 {
-+					temperature = <95000>;
-+					hysteresis = <2000>;
-+					type = "hot";
-+				};
-+
-+				cpu_big1_crit: trip-crit {
-+					temperature = <100000>;
-+					hysteresis = <0>;
-+					type = "critical";
-+				};
-+			};
-+
-+			cooling-maps {
-+				map0 {
-+					trip = <&cpu_big1_alert0>;
-+					cooling-device = <&cpu6 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+							 <&cpu7 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+				};
-+			};
-+		};
-+
-+		apu-thermal {
-+			polling-delay = <1000>;
-+			polling-delay-passive = <250>;
-+			thermal-sensors = <&lvts_ap MT8188_AP_APU>;
-+
-+			trips {
-+				apu_alert0: trip-alert0 {
-+					temperature = <85000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
-+
-+				apu_alert1: trip-alert1 {
-+					temperature = <95000>;
-+					hysteresis = <2000>;
-+					type = "hot";
-+				};
-+
-+				apu_crit: trip-crit {
-+					temperature = <100000>;
-+					hysteresis = <0>;
-+					type = "critical";
-+				};
-+			};
-+		};
-+
-+		gpu-thermal {
-+			polling-delay = <1000>;
-+			polling-delay-passive = <250>;
-+			thermal-sensors = <&lvts_ap MT8188_AP_GPU0>;
-+
-+			trips {
-+				gpu_alert0: trip-alert0 {
-+					temperature = <85000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
-+
-+				gpu_alert1: trip-alert1 {
-+					temperature = <95000>;
-+					hysteresis = <2000>;
-+					type = "hot";
-+				};
-+
-+				gpu_crit: trip-crit {
-+					temperature = <100000>;
-+					hysteresis = <0>;
-+					type = "critical";
-+				};
-+			};
-+
-+			cooling-maps {
-+				map0 {
-+					trip = <&gpu_alert0>;
-+					cooling-device = <&gpu THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+				};
-+			};
-+		};
-+
-+		gpu1-thermal {
-+			polling-delay = <1000>;
-+			polling-delay-passive = <250>;
-+			thermal-sensors = <&lvts_ap MT8188_AP_GPU1>;
-+
-+			trips {
-+				gpu1_alert0: trip-alert0 {
-+					temperature = <85000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
-+
-+				gpu1_alert1: trip-alert1 {
-+					temperature = <95000>;
-+					hysteresis = <2000>;
-+					type = "hot";
-+				};
-+
-+				gpu1_crit: trip-crit {
-+					temperature = <100000>;
-+					hysteresis = <0>;
-+					type = "critical";
-+				};
-+			};
-+
-+			cooling-maps {
-+				map0 {
-+					trip = <&gpu1_alert0>;
-+					cooling-device = <&gpu THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+				};
-+			};
-+		};
-+
-+		adsp-thermal {
-+			polling-delay = <1000>;
-+			polling-delay-passive = <250>;
-+			thermal-sensors = <&lvts_ap MT8188_AP_ADSP>;
-+
-+			trips {
-+				soc_alert0: trip-alert0 {
-+					temperature = <85000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
-+
-+				soc_alert1: trip-alert1 {
-+					temperature = <95000>;
-+					hysteresis = <2000>;
-+					type = "hot";
-+				};
-+
-+				soc_crit: trip-crit {
-+					temperature = <100000>;
-+					hysteresis = <0>;
-+					type = "critical";
-+				};
-+			};
-+		};
-+
-+		vdo-thermal {
-+			polling-delay = <1000>;
-+			polling-delay-passive = <250>;
-+			thermal-sensors = <&lvts_ap MT8188_AP_VDO>;
-+
-+			trips {
-+				soc1_alert0: trip-alert0 {
-+					temperature = <85000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
-+
-+				soc1_alert1: trip-alert1 {
-+					temperature = <95000>;
-+					hysteresis = <2000>;
-+					type = "hot";
-+				};
-+
-+				soc1_crit: trip-crit {
-+					temperature = <100000>;
-+					hysteresis = <0>;
-+					type = "critical";
-+				};
-+			};
-+		};
-+
-+		infra-thermal {
-+			polling-delay = <1000>;
-+			polling-delay-passive = <250>;
-+			thermal-sensors = <&lvts_ap MT8188_AP_INFRA>;
-+
-+			trips {
-+				soc2_alert0: trip-alert0 {
-+					temperature = <85000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
-+
-+				soc2_alert1: trip-alert1 {
-+					temperature = <95000>;
-+					hysteresis = <2000>;
-+					type = "hot";
-+				};
-+
-+				soc2_crit: trip-crit {
-+					temperature = <100000>;
-+					hysteresis = <0>;
-+					type = "critical";
-+				};
-+			};
-+		};
-+
-+		cam1-thermal {
-+			polling-delay = <1000>;
-+			polling-delay-passive = <250>;
-+			thermal-sensors = <&lvts_ap MT8188_AP_CAM1>;
-+
-+			trips {
-+				cam1_alert0: trip-alert0 {
-+					temperature = <85000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
-+
-+				cam1_alert1: trip-alert1 {
-+					temperature = <95000>;
-+					hysteresis = <2000>;
-+					type = "hot";
-+				};
-+
-+				cam1_crit: trip-crit {
-+					temperature = <100000>;
-+					hysteresis = <0>;
-+					type = "critical";
-+				};
-+			};
-+		};
-+
-+		cam2-thermal {
-+			polling-delay = <1000>;
-+			polling-delay-passive = <250>;
-+			thermal-sensors = <&lvts_ap MT8188_AP_CAM2>;
-+
-+			trips {
-+				cam2_alert0: trip-alert0 {
-+					temperature = <85000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
-+
-+				cam2_alert1: trip-alert1 {
-+					temperature = <95000>;
-+					hysteresis = <2000>;
-+					type = "hot";
-+				};
-+
-+				cam2_crit: trip-crit {
-+					temperature = <100000>;
-+					hysteresis = <0>;
-+					type = "critical";
-+				};
-+			};
-+		};
-+	};
-+
- 	timer: timer {
- 		compatible = "arm,armv8-timer";
- 		interrupt-parent = <&gic>;
-@@ -1322,6 +1768,7 @@ gpu: gpu@13000000 {
- 					<&spm MT8188_POWER_DOMAIN_MFG3>,
- 					<&spm MT8188_POWER_DOMAIN_MFG4>;
- 			power-domain-names = "core0", "core1", "core2";
-+			#cooling-cells = <2>;
- 			status = "disabled";
- 		};
++enum {
++	__BTMTK_NUM_FLAGS,
++};
++
+ struct btmtk_coredump_info {
+ 	const char *driver_name;
+ 	u32 fw_version;
+@@ -136,11 +140,30 @@ struct btmtk_coredump_info {
+ };
  
-
+ struct btmediatek_data {
++	DECLARE_BITMAP(flags, __BTMTK_NUM_FLAGS);
++
+ 	u32 dev_id;
+ 	btmtk_reset_sync_func_t reset_sync;
+ 	struct btmtk_coredump_info cd_info;
+ };
+ 
++#define btmtk_set_flag(hdev, nr)						\
++	do {									\
++		struct btmediatek_data *mediatek = hci_get_priv((hdev));	\
++		set_bit((nr), mediatek->flags);					\
++	} while (0)
++
++#define btmtk_clear_flag(hdev, nr)						\
++	do {									\
++		struct btmediatek_data *mediatek = hci_get_priv((hdev));	\
++		clear_bit((nr), mediatek->flags);				\
++	} while (0)
++
++#define btmtk_get_flag(hdev)							\
++	(((struct btmediatek_data *)hci_get_priv(hdev))->flags)
++
++#define btmtk_test_flag(hdev, nr)	test_bit((nr), btmtk_get_flag(hdev))
++
+ typedef int (*wmt_cmd_sync_func_t)(struct hci_dev *,
+ 				   struct btmtk_hci_wmt_params *);
+ 
 -- 
-2.37.3
+2.18.0
 
 
