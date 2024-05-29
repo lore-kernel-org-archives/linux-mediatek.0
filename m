@@ -4,73 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C95F9C25B7C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 May 2024 05:58:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F028C25B7E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 May 2024 05:58:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=py0GeonwgnNaknxyxyM/bPk5f/ta2UYkhS/HU0w7EWw=; b=Kc26wUCTjTevBIYrHNTYUV1hqP
-	TUhqytO85ltYVzRGX27fQTtJmh2Kwpl3kjCjXRsOHYT0qoyK2s3Ltdl03Pkx3cwtV4JsOALDfhNcS
-	M/anYZjvr6p+1P0KcQUi+dfTaDVz7EcSpBbg3fzIInKH232I60+D6hkCDZGzwfvc/aEUZTA+caAXg
-	arPMXl2AAD61PP+eS3S518t47daX2b099qBxp/vx2tfNw/oikAixCdBKnnfzXhB7k+wzZwiwI/8zt
-	ao+Oj5jY/UXbg0X1vERyJLtLIiXAkEPNlEqrs/jwgzl2dzKOWNNMNZOK9QuZKjiOlE5fm1u1OfgYd
-	WSSKdGhQ==;
+	bh=3KPQvvAhw/QNVA2rWSAmQjx+yY2X/Ig4NrPz7gPkeZ8=; b=dekgdOfkpleQeg5w224mTjonBC
+	QfclNIGU1cvSFobeR8x6Q8xULsJcwpgtwbfBw6+R6Xg1ShvY72XABNJRiiXuShaAPp7OkHgFragoM
+	/CSQmQXo2LGUiewhb7+/+Vhoo85RVyX17V1tTCFoyAYvIX2LUtInwgZO3DC5/vswGhK+Hp9wcvC/d
+	f3FIGpYaCmaR6S3owyImWRnfHP0aPuD/dV0AMDCnhtYQbfrmYnNCd1yGNLhSWzIvvIGLPT2Pu3xB4
+	3KHltCfZQKufKRUrTjEry2rE09TczP8w9jXGJfXDAD1dtcKbB19fDxFALfQgmej0ZCyE515wvcSj9
+	2lB11jSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCCKJ-00000002w8H-0ght;
-	Wed, 29 May 2024 05:58:19 +0000
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+	id 1sCCKL-00000002w9q-2eMb;
+	Wed, 29 May 2024 05:58:21 +0000
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCCK7-00000002w0w-2Gbc
+	id 1sCCKA-00000002w2G-3aA9
 	for linux-mediatek@lists.infradead.org;
-	Wed, 29 May 2024 05:58:09 +0000
-Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-42108822e3cso2592445e9.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 28 May 2024 22:58:04 -0700 (PDT)
+	Wed, 29 May 2024 05:58:12 +0000
+Received: by mail-wm1-x329.google.com with SMTP id 5b1f17b1804b1-421087b6f3fso14562385e9.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 28 May 2024 22:58:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1716962284; x=1717567084; darn=lists.infradead.org;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1716962288; x=1717567088; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=py0GeonwgnNaknxyxyM/bPk5f/ta2UYkhS/HU0w7EWw=;
-        b=PHDgV75PzdPvzCDA4kdnZCaZnnCautuWeH0nmMiKftMATK1IevhIHFuSsru6siO/64
-         FvwOEc4t0GQDYvdg31BPgnyqtbXru580qMVz9GZQmRVcbFNBl8IM5obKY/TWroOqv2Ls
-         7ImaBKysTI2A2rs85Y7ADPuIod9uI/+IXUJ3fROOeEbormRcizmlb6TViU8Seb25cx1M
-         z5TbQxj9Mr/L628whwfUhxbYn/CMtQfpOptv6R2m1XBCd6ljn+eJU1M2xBZBsRqe3sQB
-         YxuDTZz1I/O2r8Ie0Fp2PdRgggf4sPQ51CSUQk+Aop0y9uRH0nrlVK7RGSLWeVgYTLqk
-         mOzA==
+        bh=3KPQvvAhw/QNVA2rWSAmQjx+yY2X/Ig4NrPz7gPkeZ8=;
+        b=Lm7HBCi+zN/5Xa8ZptZnQewDPIipbPNbtSOsBW9grAaxVjxEAPeaViAK9ZT+QGX9ed
+         lGvmGLrxP+QBUSA1zmiqpNRlu+5fo+fglAd19IeJWel5svEVl6YVySpnQq4b49jyOBg6
+         UX0a/t/rh/oaJ+1UEDw8zUvfYtQiurKhAPPaUryEyXvAvOK2/E3HeOptDhoPUsNFRhVZ
+         +f1IuLFMnwJqA4al7Cx+5+wnxd7vVgk3L0+/vp6dEtPomhGzMdMUsL5gOEPblixQtLCO
+         UO5E5vAWpxVsxihKpN+79hWlMPIpCjlz4G47XWk2qGYF3ykUvz2a1hEB5lxK4XAyAgjD
+         7t4w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1716962284; x=1717567084;
+        d=1e100.net; s=20230601; t=1716962288; x=1717567088;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=py0GeonwgnNaknxyxyM/bPk5f/ta2UYkhS/HU0w7EWw=;
-        b=AehA1097BpuPO1+e5q0AqCNwvZach+saPE4kyN9u/1DD8NAdaYlqfEdvHtXZlNxTa3
-         2Cyzw79iX3ka/dgfTPqawp5UF8cKOEgwNMv64BAhe6Btvb69R8elzdApQKCVL8f6sHtJ
-         p7PBvlv+xin39ItRdwN6gYNcAqTaILUTwNJR/kZ5ybKLWGP0xergYZGTiRKaoHM6NRll
-         Xgb+DTqv3xhQsSpQ1e7sXovwuXCrsRXHl4GexkqFoG11iVtiRy/MYCxkrPixHGwqTFXw
-         lrKyLBVsj+JVrzlyU3bFqcfhbkou7AaJkNeB7Fb1ECHIfA/67f17QytOaRpCC2XZBIMm
-         cqEg==
-X-Forwarded-Encrypted: i=1; AJvYcCV39Nl1GUPjwInSBkcwgBwKf7pwwdcmBUeIxMRSTOOuJeFuFB0LYPXS95c1GMQfMP576vP87Dlb25fj+Gce6eIUvMC48f2NZqfIWiWGVc6gMG8n
-X-Gm-Message-State: AOJu0Yz2kvSTIw9ybh1qAZjjtcMSnv2VAr27Ntfqf3LAHhfj1h3Fj7CC
-	7pnJmxYiGpZdwzep4mVnruLN7R+rRwP7hGc//rSLbDw78WCSUIpJTqiOfKsSn6E=
-X-Google-Smtp-Source: AGHT+IFBgBr868w8QAU+3YcZoh4tBW+ET1fjETfVihg6NGnEmbzACXvx/JGf3dJqRJTP60EWqb8pZg==
-X-Received: by 2002:adf:feca:0:b0:357:bedc:b555 with SMTP id ffacd0b85a97d-35c7b80e05dmr778871f8f.26.1716962283532;
-        Tue, 28 May 2024 22:58:03 -0700 (PDT)
+        bh=3KPQvvAhw/QNVA2rWSAmQjx+yY2X/Ig4NrPz7gPkeZ8=;
+        b=hyUIEYQEQVsLFFji6K0BufVHkUJrpuFUc4KUVnZlFkq9m8xvLuLAJzFAkjfA6aTKoc
+         W8lHtnNngtKtY/PPqbeyY/7tvUzhH3DL648GSTveKFGsxGIGpGvsAmqMY4RLh3npFSOE
+         S6VIKGCaeZRTA2CQP5J0gfVJlwCMn5jCAgdfY5HATlahRTzC+nPFdg/tyxB+LJ0Z5yns
+         LfWCzSmmxKFY+7LEWUspN2gFbsxj6r2zyB0hhbOSV0m6+8eJlqsA+kvQMdH5xReU9hd3
+         A9TEqzc/hqiJJxFe8UwLSgSXwN+qBMsPtzCO7YzJKA4JvajDe+VdTvJR3fmz6URqj86w
+         uKSA==
+X-Forwarded-Encrypted: i=1; AJvYcCXG3W/7gJIIVMUP2CIUQHV507vqny3gmjLhkhQgR2Nf9Vd/Viyjo7RSkcoX7YvV8CgCnDfnOjSVruyYyTducm5iSiq0kke1UpTkJYvRQSp+4ixt
+X-Gm-Message-State: AOJu0YypGOzj6GbcDOfrnMeGu7OD2w1xzB+XNxIUBOGGaWLsDI3t8VIO
+	JpIlLrrnspYdfkR5b0SKk6d5jvqa38HR4bmtrTCR+40eGDV2lk0jzW5r3Atuj5Y=
+X-Google-Smtp-Source: AGHT+IHRHeV/DqymbcQrp2sjzmirZJZlNgRDnEJKkc0ZTQJHByJvNmBGPhTAtrpx/elL6NKld9VpRw==
+X-Received: by 2002:a05:600c:5719:b0:420:173f:e1e9 with SMTP id 5b1f17b1804b1-421089e97bcmr98181745e9.21.1716962287803;
+        Tue, 28 May 2024 22:58:07 -0700 (PDT)
 Received: from [127.0.1.1] ([84.102.31.110])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4210896676bsm169075435e9.4.2024.05.28.22.58.01
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4210896676bsm169075435e9.4.2024.05.28.22.58.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 28 May 2024 22:58:03 -0700 (PDT)
+        Tue, 28 May 2024 22:58:07 -0700 (PDT)
 From: Julien Panis <jpanis@baylibre.com>
-Date: Wed, 29 May 2024 07:57:56 +0200
-Subject: [PATCH v6 1/6] dt-bindings: thermal: mediatek: Fix thermal zone
- definition for MT8186
+Date: Wed, 29 May 2024 07:57:58 +0200
+Subject: [PATCH v6 3/6] arm64: dts: mediatek: mt8186: add lvts definitions
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240529-mtk-thermal-mt818x-dtsi-v6-1-0c71478a9c37@baylibre.com>
+Message-Id: <20240529-mtk-thermal-mt818x-dtsi-v6-3-0c71478a9c37@baylibre.com>
 References: <20240529-mtk-thermal-mt818x-dtsi-v6-0-0c71478a9c37@baylibre.com>
 In-Reply-To: <20240529-mtk-thermal-mt818x-dtsi-v6-0-0c71478a9c37@baylibre.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -86,16 +85,17 @@ Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-pm@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>, 
  Julien Panis <jpanis@baylibre.com>
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1716962279; l=1871;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1716962279; l=1717;
  i=jpanis@baylibre.com; s=20230526; h=from:subject:message-id;
- bh=7TWp6ZYqTnWbqyJ5Cw7vRGWMMiL4bndT4gl1LDFj+mw=;
- b=fNpJGdF1e6oIhg16Qw3yuccxDifJLORx4N3h7feO2qRv4t5zX5kGrg92RNMGZjYaq0FJMoxzr
- kn93J44LFi/ClblQAuQP6CjaErOlZbnOjF2/u1vbrtp9LVgiaEPecsf
+ bh=ZXPmUPXXFa1JCVfBMk9FrptEjzZlcdWN0z1cSMSnOwA=;
+ b=OK85Uj3rrGZKhM3JHH4HH37bvvdgaZPlri/dH9Ot2gzRF2PTxp3xVfjp4zaOTnBta+MXzcw1t
+ V4Oh/qlSE9oCfjLLpHptTWE7PqNg4Q/NHo5lMhCIc5HTvkEf+y35Bto
 X-Developer-Key: i=jpanis@baylibre.com; a=ed25519;
  pk=8eSM4/xkiHWz2M1Cw1U3m2/YfPbsUdEJPCWY3Mh9ekQ=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240528_225807_601234_55AB05FF 
-X-CRM114-Status: GOOD (  15.26  )
+X-CRM114-CacheID: sfid-20240528_225810_931490_E2C42383 
+X-CRM114-Status: UNSURE (   9.32  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,49 +110,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fix a thermal zone name for consistency with the other SoCs:
-MFG contains GPU, the latter is more specific and must be used here.
+From: Nicolas Pitre <npitre@baylibre.com>
 
-The naming must be fixed "atomically" so compilation does not break.
-As a result, the change is made in the dt-bindings and in the LVTS
-driver within a single commit, despite the checkpatch warning.
+Values extracted from vendor source tree.
 
-The definition can be modified safely here because it is used only
-in the LVTS driver, which is modified accordingly.
-
-Fixes: a2ca202350f9 ("dt-bindings: thermal: mediatek: Add LVTS thermal controller definition for MT8186")
+Signed-off-by: Nicolas Pitre <npitre@baylibre.com>
+Link: https://lore.kernel.org/r/20240402032729.2736685-8-nico@fluxnic.net
+[Angelo: Fixed validation and quality issues]
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Julien Panis <jpanis@baylibre.com>
 ---
- drivers/thermal/mediatek/lvts_thermal.c             | 2 +-
- include/dt-bindings/thermal/mediatek,lvts-thermal.h | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ arch/arm64/boot/dts/mediatek/mt8186.dtsi | 19 +++++++++++++++++++
+ 1 file changed, 19 insertions(+)
 
-diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
-index 0bb3a495b56e..506eed52db1e 100644
---- a/drivers/thermal/mediatek/lvts_thermal.c
-+++ b/drivers/thermal/mediatek/lvts_thermal.c
-@@ -1436,7 +1436,7 @@ static const struct lvts_ctrl_data mt8186_lvts_data_ctrl[] = {
- 			  .cal_offsets = { 29, 30, 31 } },
- 			{ .dt_id = MT8186_ADSP,
- 			  .cal_offsets = { 34, 35, 28 } },
--			{ .dt_id = MT8186_MFG,
-+			{ .dt_id = MT8186_GPU,
- 			  .cal_offsets = { 39, 32, 33 } }
- 		},
- 		VALID_SENSOR_MAP(1, 1, 1, 0),
-diff --git a/include/dt-bindings/thermal/mediatek,lvts-thermal.h b/include/dt-bindings/thermal/mediatek,lvts-thermal.h
-index bf95309d2525..85d25b4d726d 100644
---- a/include/dt-bindings/thermal/mediatek,lvts-thermal.h
-+++ b/include/dt-bindings/thermal/mediatek,lvts-thermal.h
-@@ -24,7 +24,7 @@
- #define MT8186_BIG_CPU1	5
- #define MT8186_NNA		6
- #define MT8186_ADSP		7
--#define MT8186_MFG		8
-+#define MT8186_GPU		8
+diff --git a/arch/arm64/boot/dts/mediatek/mt8186.dtsi b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+index 4763ed5dc86c..caec83f5eece 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8186.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+@@ -1361,6 +1361,17 @@ spi0: spi@1100a000 {
+ 			status = "disabled";
+ 		};
  
- #define MT8188_MCU_LITTLE_CPU0	0
- #define MT8188_MCU_LITTLE_CPU1	1
++		lvts: thermal-sensor@1100b000 {
++			compatible = "mediatek,mt8186-lvts";
++			reg = <0 0x1100b000 0 0x1000>;
++			interrupts = <GIC_SPI 99 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&infracfg_ao CLK_INFRA_AO_THERM>;
++			resets = <&infracfg_ao MT8186_INFRA_THERMAL_CTRL_RST>;
++			nvmem-cells = <&lvts_efuse_data1 &lvts_efuse_data2>;
++			nvmem-cell-names = "lvts-calib-data-1", "lvts-calib-data-2";
++			#thermal-sensor-cells = <1>;
++		};
++
+ 		pwm0: pwm@1100e000 {
+ 			compatible = "mediatek,mt8186-disp-pwm", "mediatek,mt8183-disp-pwm";
+ 			reg = <0 0x1100e000 0 0x1000>;
+@@ -1676,6 +1687,14 @@ efuse: efuse@11cb0000 {
+ 			#address-cells = <1>;
+ 			#size-cells = <1>;
+ 
++			lvts_efuse_data1: lvts1-calib@1cc {
++				reg = <0x1cc 0x14>;
++			};
++
++			lvts_efuse_data2: lvts2-calib@2f8 {
++				reg = <0x2f8 0x14>;
++			};
++
+ 			gpu_speedbin: gpu-speedbin@59c {
+ 				reg = <0x59c 0x4>;
+ 				bits = <0 3>;
 
 -- 
 2.37.3
