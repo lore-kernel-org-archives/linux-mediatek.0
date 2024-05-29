@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B11C9C25B75
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 May 2024 07:50:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82729C25B7E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 May 2024 07:50:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rUkloy3cr7s1g/r9jUPyC0mMCcivf+7fvCTOA1/0I6o=; b=QV0+ydcGuNi/s7oO3Qb+Ho0yk4
-	U/hDgmotFox+wBo+DaExL3M4HZV3D9JFvV8/vlC1xeHXe6fcCsCmQ9NrA071KVg2IS/+J+MtxPK+E
-	rowdHsx+W7eN9Iz/wUwo09ZnZA6Gqzj96hdZCNayRtqOB4xTk5GtSdP8DbjbWkno33ayIvjPGAS/q
-	nX/adbd9YFtkPMGRpwco9YULo56dlfXz6t2SQt5XMOQCtL4BhZ2l4SOQYsZJxXp9P5PT74fFG1FZy
-	thOJsas92qGdX23y9VhdbTO2GgViptlxHF7a78DlBPaVM1MduttN9O+pK7YIz7nhas5fzy3N6BKur
-	iycYRUFw==;
+	bh=SzLa4QOccmrdl0LXb4EModwOR8sJTRCRvfPVbbiLAvo=; b=sBC5FINRbevspHF9qc9CmlpUf/
+	9bJscFsFa1Jk7Ozq86u45nweZ4TgYGBT5bkBXcJkx4IXYbEZCW8AcbjsZTvMb1TtpYrvzD/s1IQTl
+	/YDaVRjansEiFbVYlCm25fAPZmtIT9bJVIxuhL9bGhIMffoNtg5Ot9Ur8PFI6e2lU8H0oFd5WSHSL
+	ULRmzxHNVh1JGmqmBJYcB4qWDZYk8qekQjEw7Souq2OaU7rcJvMIiKRIwEQelZoljci8KOew2YWYs
+	BYV7O6krTkjgkcPHBQnnTVGNs/1AohPpnfjdcyYxJEV974lzEdXsj4evbXyxlqmSO2QyIwzDJ30ue
+	mnPia6aQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCE4q-00000003DoU-3X1x;
-	Wed, 29 May 2024 07:50:28 +0000
+	id 1sCE4s-00000003Dpr-3kqa;
+	Wed, 29 May 2024 07:50:30 +0000
 Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCE4a-00000003Deu-1FaL;
-	Wed, 29 May 2024 07:50:15 +0000
+	id 1sCE4a-00000003Des-1F7f;
+	Wed, 29 May 2024 07:50:16 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1716969011;
-	bh=YwrBrQBcvTpTydqwx/3BrbATRqTX/3arrlFSkJJkj0o=;
+	s=mail; t=1716969008;
+	bh=QvmjPuQtPKrMG7G1fVqtkkPz0Z4S4QAs9oH3e9Q5kHM=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=zHwV7YqKboVksBk1H/fFOxMLCR+eFI/6fhziE9xOl0mozz48T7pYwqUGEcBESQ4/o
-	 neiz3WWCjnDLmTWvFpill/DYwOsn2yxJCpkAVNH2ZdqoeWRl/qhJiwN4WlJS43qypP
-	 X8Gy5Jz/uQ+3MEoAj4BEUcziLDPKuiOwLfU6rqqD/uQ+2/aefsSjg5D9yr7udpEBcz
-	 6IaKIvtPTgoma+80FqvUjzGIVzHjkmzrQWkqBhGA4NIOsP5tjf+ikNjnUJFhCwLjHc
-	 X+nOQn7pgduCsJj+Ok0T9TrXh+2SHWaesUxMYNfptflfFkaGsl0vOsLGSYzbC+XyBr
-	 1ItasfsljEMiA==
+	b=288nz7lVfH5TDnNLWstJR68tIHVdDN0ENkAYZhzlrI1uuLu2+xCTXMhYKV5cPvySr
+	 FbZW1wLaAAT4bDTLNa+l3TjYDBs2MGgfkoO++GrJ4H3xTy9eDybVVaq8+kPgv3Zu+T
+	 ic02Rn4smYfD9y++Y41qnWfnzO9fplq0FdgJ2WrWVyDLm87Z1zsaTQxwERr+s4jl0R
+	 ZtiTNBeTgCZpUDxTM4LPmDjO1/Veu6sTnhZdCL5EphLiE15WMldWJxKvKgxlnGdHB7
+	 gJNA7VbBZCPYUVSez+qrb4pT4iyfg/3pxDt5bjMNRISXyl5IGlFEOlOCjwmaMTL7E+
+	 9iRVt9DstvUpQ==
 Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id C0C36378216B;
-	Wed, 29 May 2024 07:50:09 +0000 (UTC)
-Message-ID: <a621f422-d5b9-44ef-9001-ce6afe25eade@collabora.com>
-Date: Wed, 29 May 2024 09:50:08 +0200
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id DF3013780627;
+	Wed, 29 May 2024 07:50:06 +0000 (UTC)
+Message-ID: <6576cdd0-d526-4b0a-9a74-7737fd75f06f@collabora.com>
+Date: Wed, 29 May 2024 09:50:06 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/3] dt-bindings: vendor-prefixes: add OpenWrt
+Subject: Re: [PATCH 3/3] arm64: dts: mediatek: Add OpenWrt One
 To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
  Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>
@@ -63,15 +63,15 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
  openwrt-devel@lists.openwrt.org, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?=
  <rafal@milecki.pl>
 References: <20240527115933.7396-1-zajec5@gmail.com>
- <20240527115933.7396-2-zajec5@gmail.com>
+ <20240527115933.7396-4-zajec5@gmail.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20240527115933.7396-2-zajec5@gmail.com>
+In-Reply-To: <20240527115933.7396-4-zajec5@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240529_005013_061474_D0621449 
-X-CRM114-Status: UNSURE (   6.33  )
+X-CRM114-CacheID: sfid-20240529_005013_077322_41BF421B 
+X-CRM114-Status: UNSURE (   8.00  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -90,8 +90,9 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Il 27/05/24 13:59, Rafał Miłecki ha scritto:
 > From: Rafał Miłecki <rafal@milecki.pl>
 > 
-> OpenWrt project (with the help of MediaTek and Banana Pi) has produced
-> its very first own hardware. It needs its own prefix.
+> OpenWrt One is the first ever OpenWrt product. It's based on MT7981B
+> (AKA Filogic 820) and has 1 GiB or DDR4 RAM. The rest of peripherals
+> remains to be added later.
 > 
 > Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
 
