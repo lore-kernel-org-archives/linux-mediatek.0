@@ -4,66 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C343C25B7C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 May 2024 08:45:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 264C0C25B75
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 May 2024 08:45:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZGP8oELGPcLL2K0/k8Qv5hMob1JHaJDVAJcSoqVgo+Y=; b=oEBYlUViDCUaoq50mtLXQjR3cl
-	DVn5Ng2SsKtQcG7QZa2sqe4cP14PaIduCR77C09gcbHXTWabgSsq961wFwa5JGt4A9V5XNTdfJ/14
-	1nH60g6DBRwnkNdcUjuqy8W3DST49aX39WqrN1hm4M4dFNynpbnxXhpL1x3d/d+ZC8xGv/kk19La4
-	1OLTpUhC5mMQywv9iaDz3KfTx/IgZ4fuGyu8wmjfDKwTp1E4qEs7kzLkPy1bk0cmXUhFvPwsPDsRq
-	mzrnVm+YCk9U38YOzMvCfmDeYXxcctTRs084DE9rL5mXAnaL1xl5prPNiVHlb5PTibyj36y8lgbJF
-	uXoeL39A==;
+	bh=kBqE4j5z86E2dnbIeeWXjkmm4QgYtkEAv9tnNpqDh2I=; b=eu95VYGe7ZsyfmmmfljNVbR71T
+	z4kXrfKjqFTo/Iz9jeoJJaoPYFS8Ry1Tn1Zfq9SeU9MYewz3gQH0SpueBa8A5IWmgo+rrui4zARgc
+	jNpqkYGHhw0PXgRt8MVMswQ+5O9Fg/2CDCG0ng1mGFynI78Azj340uh4iorrVW0t1HLwMy298+x/0
+	La8SzwFJyXr1ECHEAH04/rTzc8nZ+DIzIbVGWjPFFSrIuVuzosrcqWONM+y3/rZgCe0xbdAiEobex
+	VlaWFedW0U6ISiTb/Mv0fGF/o+FDlh9m8cEpR0PUVTsvkK2bF732ZVTe4FF42NaEbMCcBTnhAt9hZ
+	cFK87j2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCEvg-00000003TgO-3G4Z;
-	Wed, 29 May 2024 08:45:04 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1sCEw2-00000003Tsn-1yk0;
+	Wed, 29 May 2024 08:45:26 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCEu3-00000003Sei-20NT;
-	Wed, 29 May 2024 08:43:31 +0000
-X-UUID: 7fa19e7c1d9711ef82c84f6416ccf2f3-20240529
+	id 1sCEu9-00000003Sim-1VFV;
+	Wed, 29 May 2024 08:43:36 +0000
+X-UUID: 7fc098b81d9711efbf6c7d4f5c147266-20240529
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=ZGP8oELGPcLL2K0/k8Qv5hMob1JHaJDVAJcSoqVgo+Y=;
-	b=oh56RVpsgk0kRxwS22BE6exOjXnORnmZw1ET+023wLRs+OJOfxnpm1AEQ58SLmozcN4LiAwzN+JcjilouVotVMP4f1Kl93iVnz3rAQzEPulWdiR2pb7uQtmMkAmXF7Fvvnz4xJjqho+bsW5G+xwj6WC8KrNC2PP/gIxG1EThljo=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=kBqE4j5z86E2dnbIeeWXjkmm4QgYtkEAv9tnNpqDh2I=;
+	b=tn4BW0K/To2qrjKMOWd4F8/+EUTcJX9kckxJ9TZJ5N0IFJ50kRCZDAp9hrNAKRniMDRIQPG4WGBO7iiJNII+86rlyx8OnwwlWQF7csbW5mtQHyNnwQXV6p7MeKJctxWTUg5apFsfaVG8GOm2VLT7j1vk5dVPu+xrn5e/4llw8wk=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.39,REQID:0399b57d-c9a2-4ca1-985a-c184aadc4103,IP:0,U
+X-CID-O-INFO: VERSION:1.1.39,REQID:1d0477c8-3689-4281-b31a-962cca178376,IP:0,U
 	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
 	N:release,TS:-25
-X-CID-META: VersionHash:393d96e,CLOUDID:06f65b93-e2c0-40b0-a8fe-7c7e47299109,B
+X-CID-META: VersionHash:393d96e,CLOUDID:1f1ef587-8d4f-477b-89d2-1e3bdbef96d1,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 7fa19e7c1d9711ef82c84f6416ccf2f3-20240529
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_ULN,TF_CID_SPAM_SNR
+X-UUID: 7fc098b81d9711efbf6c7d4f5c147266-20240529
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
 	(envelope-from <liju-clr.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 629750770; Wed, 29 May 2024 01:43:19 -0700
+	with ESMTP id 1774151587; Wed, 29 May 2024 01:43:19 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 29 May 2024 16:42:43 +0800
+ 15.2.1118.26; Wed, 29 May 2024 16:42:41 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 29 May 2024 16:42:42 +0800
+ 15.2.1118.26 via Frontend Transport; Wed, 29 May 2024 16:42:41 +0800
 From: Liju-clr Chen <liju-clr.chen@mediatek.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Jonathan Corbet <corbet@lwn.net>,
-	"Catalin Marinas" <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
-	"Steven Rostedt" <rostedt@goodmis.org>, Masami Hiramatsu
-	<mhiramat@kernel.org>, Mathieu Desnoyers <mathieu.desnoyers@efficios.com>,
-	Richard Cochran <richardcochran@gmail.com>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Liju-clr Chen
-	<Liju-clr.Chen@mediatek.com>, Yingshiuan Pan <Yingshiuan.Pan@mediatek.com>,
-	Ze-yu Wang <Ze-yu.Wang@mediatek.com>
+	Conor Dooley <conor+dt@kernel.org>, Jonathan Corbet <corbet@lwn.net>, Catalin
+ Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, Steven
+ Rostedt <rostedt@goodmis.org>, Masami Hiramatsu <mhiramat@kernel.org>,
+	Mathieu Desnoyers <mathieu.desnoyers@efficios.com>, Richard Cochran
+	<richardcochran@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Liju-clr Chen <Liju-clr.Chen@mediatek.com>, Yingshiuan Pan
+	<Yingshiuan.Pan@mediatek.com>, Ze-yu Wang <Ze-yu.Wang@mediatek.com>
 CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-doc@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-trace-kernel@vger.kernel.org>, <netdev@vger.kernel.org>,
@@ -71,32 +70,18 @@ CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	Trilok Soni <quic_tsoni@quicinc.com>, Shawn Hsiao <shawn.hsiao@mediatek.com>,
 	PeiLun Suei <PeiLun.Suei@mediatek.com>, Chi-shen Yeh
 	<Chi-shen.Yeh@mediatek.com>, Kevenny Hsieh <Kevenny.Hsieh@mediatek.com>
-Subject: [PATCH v11 21/21] virt: geniezone: Enable PTP for synchronizing time between host and guest VMs
-Date: Wed, 29 May 2024 16:42:39 +0800
-Message-ID: <20240529084239.11478-22-liju-clr.chen@mediatek.com>
+Subject: [PATCH v11 14/21] virt: geniezone: Optimize performance of protected VM memory
+Date: Wed, 29 May 2024 16:42:32 +0800
+Message-ID: <20240529084239.11478-15-liju-clr.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20240529084239.11478-1-liju-clr.chen@mediatek.com>
 References: <20240529084239.11478-1-liju-clr.chen@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--10.205400-8.000000
-X-TMASE-MatchedRID: y128Pza/oi5PB4rXagQZ+5LPLrFS265P4Ob1SHQRSIgNqAa+u3rIYNwB
-	sjzU/tkx4ZQqYHZtqxhYo3G+rvxrNao77AcuQhw7A9lly13c/gFozho8K1gAGlwpnAAvAwazG35
-	vfw/rSs3iML0m3w3HQzEptG9SICadGAS4UVZrvja4jAucHcCqnZYcYQ11P5U/xKLCLOyCW5B25K
-	XQ4QIGJr1A4/e8Np0k4I4a/QXu4NCR8u6DOJbzp8nUT+eskUQP7h2RrsKOiu0+gR+s21UkWIEpJ
-	RcbelqdADXE8V3mpEVDNcDXkV4d67bfdDP+zORmdXz3l78F3YmkWoMjFfK3Xpsoi2XrUn/Jn6Kd
-	MrRsL14qtq5d3cxkNZd/mwLf2BVU7XmIj3Q8NGKV/FaFi4vPW8I5R9GaztHqgQZKMf1HUClLDBw
-	YotNgRw==
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--10.205400-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 139515506FFD2417A89CF598BEB46A38A599400E7E3B732E405FAA2E0D15D1D22000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240529_014323_894344_C9BB6ED2 
-X-CRM114-Status: GOOD (  20.92  )
+X-CRM114-CacheID: sfid-20240529_014329_723097_DACC69DF 
+X-CRM114-Status: GOOD (  23.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,174 +98,187 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Yi-De Wu <yi-de.wu@mediatek.com>
 
-From: "Kevenny Hsieh" <kevenny.hsieh@mediatek.com>
+From: "Yingshiuan Pan" <yingshiuan.pan@mediatek.com>
 
-Enabled Precision Time Protocol (PTP) for improved host-guest VM time
-synchronization, optimizing operations needing precise clock sync in
-virtual environment.
+The memory protection mechanism performs better with batch operations on
+memory pages. To leverage this, we pre-allocate memory for VMs that are
+set to protected mode. As a result, the memory protection mechanism can
+proactively protect the pre-allocated memory in advance through batch
+operations, leading to improved performance during VM booting.
 
-Signed-off-by: Kevenny Hsieh <kevenny.hsieh@mediatek.com>
+Signed-off-by: Yingshiuan Pan <yingshiuan.pan@mediatek.com>
+Signed-off-by: Jerry Wang <ze-yu.wang@mediatek.com>
 Signed-off-by: Liju Chen <liju-clr.chen@mediatek.com>
 Signed-off-by: Yi-De Wu <yi-de.wu@mediatek.com>
 ---
- arch/arm64/geniezone/Makefile           |  2 +-
- arch/arm64/geniezone/gzvm_arch_common.h |  3 +
- arch/arm64/geniezone/hvc.c              | 73 +++++++++++++++++++++++++
- drivers/virt/geniezone/gzvm_exception.c |  3 +-
- include/linux/soc/mediatek/gzvm_drv.h   |  1 +
- include/uapi/linux/gzvm.h               |  1 +
- 6 files changed, 80 insertions(+), 3 deletions(-)
- create mode 100644 arch/arm64/geniezone/hvc.c
+ arch/arm64/geniezone/vm.c             | 127 ++++++++++++++++++++++++++
+ include/linux/soc/mediatek/gzvm_drv.h |   1 +
+ 2 files changed, 128 insertions(+)
 
-diff --git a/arch/arm64/geniezone/Makefile b/arch/arm64/geniezone/Makefile
-index 0e4f1087f9de..553a64a926dc 100644
---- a/arch/arm64/geniezone/Makefile
-+++ b/arch/arm64/geniezone/Makefile
-@@ -4,6 +4,6 @@
- #
- include $(srctree)/drivers/virt/geniezone/Makefile
+diff --git a/arch/arm64/geniezone/vm.c b/arch/arm64/geniezone/vm.c
+index 00c74a4bcfd7..db16716f5b8d 100644
+--- a/arch/arm64/geniezone/vm.c
++++ b/arch/arm64/geniezone/vm.c
+@@ -11,6 +11,8 @@
+ #include <linux/soc/mediatek/gzvm_drv.h>
+ #include "gzvm_arch_common.h"
  
--gzvm-y += vm.o vcpu.o vgic.o
-+gzvm-y += vm.o vcpu.o vgic.o hvc.o
- 
- obj-$(CONFIG_MTK_GZVM) += gzvm.o
-diff --git a/arch/arm64/geniezone/gzvm_arch_common.h b/arch/arm64/geniezone/gzvm_arch_common.h
-index 192d023722e5..8f5d8528ab96 100644
---- a/arch/arm64/geniezone/gzvm_arch_common.h
-+++ b/arch/arm64/geniezone/gzvm_arch_common.h
-@@ -83,6 +83,8 @@ int gzvm_hypcall_wrapper(unsigned long a0, unsigned long a1,
-  * @__pad: add an explicit '__u32 __pad;' in the middle to make it clear
-  *         what the actual layout is.
-  * @lr: The array of LRs(list registers).
-+ * @vtimer_offset: The offset maintained by hypervisor that is host cycle count
-+ *                 when guest VM startup.
-  *
-  * - Keep the same layout of hypervisor data struct.
-  * - Sync list registers back for acking virtual device interrupt status.
-@@ -91,6 +93,7 @@ struct gzvm_vcpu_hwstate {
- 	__le32 nr_lrs;
- 	__le32 __pad;
- 	__le64 lr[GIC_V3_NR_LRS];
-+	__le64 vtimer_offset;
- };
- 
- static inline unsigned int
-diff --git a/arch/arm64/geniezone/hvc.c b/arch/arm64/geniezone/hvc.c
-new file mode 100644
-index 000000000000..3d7f71f20dce
---- /dev/null
-+++ b/arch/arm64/geniezone/hvc.c
-@@ -0,0 +1,73 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Copyright (c) 2023 MediaTek Inc.
-+ */
-+#include <linux/clocksource.h>
-+#include <linux/kernel.h>
-+#include <linux/timekeeping.h>
-+#include <linux/soc/mediatek/gzvm_drv.h>
-+#include "gzvm_arch_common.h"
++#define PAR_PA47_MASK GENMASK_ULL(47, 12)
 +
-+#define GZVM_PTP_VIRT_COUNTER 0
-+#define GZVM_PTP_PHYS_COUNTER 1
+ /**
+  * gzvm_hypcall_wrapper() - the wrapper for hvc calls
+  * @a0: arguments passed in registers 0
+@@ -201,6 +203,126 @@ static int gzvm_vm_ioctl_get_pvmfw_size(struct gzvm *gzvm,
+ 	return 0;
+ }
+ 
 +/**
-+ * gzvm_handle_ptp_time() - Sync time between host and guest VM
-+ * @vcpu: Pointer to struct gzvm_vcpu_run in userspace
-+ * @counter: Counter type from guest VM
-+ * Return: Always return 0 because there are no cases of failure
++ * fill_constituents() - Populate pa to buffer until full
++ * @consti: Pointer to struct mem_region_addr_range.
++ * @consti_cnt: Constituent count.
++ * @max_nr_consti: Maximum number of constituent count.
++ * @gfn: Guest frame number.
++ * @total_pages: Total page numbers.
++ * @slot: Pointer to struct gzvm_memslot.
 + *
-+ * The following register values will be passed to the guest VM
-+ * for time synchronization:
-+ * regs->x0 (upper 32 bits) wall clock time
-+ * regs->x1 (lower 32 bits) wall clock time
-+ * regs->x2 (upper 32 bits) cycles
-+ * regs->x3 (lower 32 bits) cycles
++ * Return: how many pages we've fill in, negative if error
 + */
-+static int gzvm_handle_ptp_time(struct gzvm_vcpu *vcpu, int counter)
++static int fill_constituents(struct mem_region_addr_range *consti,
++			     int *consti_cnt, int max_nr_consti, u64 gfn,
++			     u32 total_pages, struct gzvm_memslot *slot)
 +{
-+	struct system_time_snapshot snapshot;
-+	u64 cycles = 0;
++	u64 pfn = 0, prev_pfn = 0, gfn_end = 0;
++	int nr_pages = 0;
++	int i = -1;
 +
-+	ktime_get_snapshot(&snapshot);
++	if (unlikely(total_pages == 0))
++		return -EINVAL;
++	gfn_end = gfn + total_pages;
 +
-+	switch (counter) {
-+	case GZVM_PTP_VIRT_COUNTER:
-+		cycles = snapshot.cycles -
-+			 le64_to_cpu(vcpu->hwstate->vtimer_offset);
-+		break;
-+	case GZVM_PTP_PHYS_COUNTER:
-+		cycles = snapshot.cycles;
-+		break;
-+	default:
-+		break;
++	while (i < max_nr_consti && gfn < gfn_end) {
++		if (pfn == (prev_pfn + 1)) {
++			consti[i].pg_cnt++;
++		} else {
++			i++;
++			if (i >= max_nr_consti)
++				break;
++			consti[i].address = PFN_PHYS(pfn);
++			consti[i].pg_cnt = 1;
++		}
++		prev_pfn = pfn;
++		gfn++;
++		nr_pages++;
 +	}
++	if (i != max_nr_consti)
++		i++;
++	*consti_cnt = i;
 +
-+	vcpu->run->hypercall.args[0] = upper_32_bits(snapshot.real);
-+	vcpu->run->hypercall.args[1] = lower_32_bits(snapshot.real);
-+	vcpu->run->hypercall.args[2] = upper_32_bits(cycles);
-+	vcpu->run->hypercall.args[3] = lower_32_bits(cycles);
++	return nr_pages;
++}
++
++/**
++ * gzvm_vm_populate_mem_region() - Iterate all mem slot and populate pa to
++ * buffer until it's full
++ * @gzvm: Pointer to struct gzvm.
++ * @slot_id: Memory slot id to be populated.
++ *
++ * Return: 0 if it is successful, negative if error
++ */
++int gzvm_vm_populate_mem_region(struct gzvm *gzvm, int slot_id)
++{
++	struct gzvm_memslot *memslot = &gzvm->memslot[slot_id];
++	struct gzvm_memory_region_ranges *region;
++	int max_nr_consti, remain_pages;
++	u64 gfn, gfn_end;
++	u32 buf_size;
++
++	buf_size = PAGE_SIZE * 2;
++	region = alloc_pages_exact(buf_size, GFP_KERNEL);
++	if (!region)
++		return -ENOMEM;
++
++	max_nr_consti = (buf_size - sizeof(*region)) /
++			sizeof(struct mem_region_addr_range);
++
++	region->slot = memslot->slot_id;
++	remain_pages = memslot->npages;
++	gfn = memslot->base_gfn;
++	gfn_end = gfn + remain_pages;
++
++	while (gfn < gfn_end) {
++		int nr_pages;
++
++		nr_pages = fill_constituents(region->constituents,
++					     &region->constituent_cnt,
++					     max_nr_consti, gfn,
++					     remain_pages, memslot);
++
++		if (nr_pages < 0) {
++			pr_err("Failed to fill constituents\n");
++			free_pages_exact(region, buf_size);
++			return -EFAULT;
++		}
++
++		region->gpa = PFN_PHYS(gfn);
++		region->total_pages = nr_pages;
++		remain_pages -= nr_pages;
++		gfn += nr_pages;
++
++		if (gzvm_arch_set_memregion(gzvm->vm_id, buf_size,
++					    virt_to_phys(region))) {
++			pr_err("Failed to register memregion to hypervisor\n");
++			free_pages_exact(region, buf_size);
++			return -EFAULT;
++		}
++	}
++	free_pages_exact(region, buf_size);
 +
 +	return 0;
 +}
 +
-+/**
-+ * gzvm_arch_handle_guest_hvc() - Handle architecture-related guest hvc
-+ * @vcpu: Pointer to struct gzvm_vcpu_run in userspace
-+ * Return:
-+ * * true - This hvc has been processed, no need to back to VMM.
-+ * * false - This hvc has not been processed, require userspace.
-+ */
-+bool gzvm_arch_handle_guest_hvc(struct gzvm_vcpu *vcpu)
++static int populate_all_mem_regions(struct gzvm *gzvm)
 +{
-+	int ret, counter;
++	int ret, i;
 +
-+	switch (vcpu->run->hypercall.args[0]) {
-+	case GZVM_HVC_PTP:
-+		counter = vcpu->run->hypercall.args[1];
-+		ret = gzvm_handle_ptp_time(vcpu, counter);
-+		return (ret == 0) ? true : false;
-+	default:
-+		break;
++	for (i = 0; i < GZVM_MAX_MEM_REGION; i++) {
++		if (gzvm->memslot[i].npages == 0)
++			continue;
++
++		ret = gzvm_vm_populate_mem_region(gzvm, i);
++		if (ret != 0)
++			return ret;
 +	}
-+	return false;
++
++	return 0;
 +}
-diff --git a/drivers/virt/geniezone/gzvm_exception.c b/drivers/virt/geniezone/gzvm_exception.c
-index cdfc99d24ded..5ffee863e378 100644
---- a/drivers/virt/geniezone/gzvm_exception.c
-+++ b/drivers/virt/geniezone/gzvm_exception.c
-@@ -56,7 +56,6 @@ bool gzvm_handle_guest_hvc(struct gzvm_vcpu *vcpu)
- 		ret = gzvm_handle_relinquish(vcpu, ipa);
- 		return (ret == 0) ? true : false;
- 	default:
--		break;
-+		return gzvm_arch_handle_guest_hvc(vcpu);
- 	}
--	return false;
- }
++
+ /**
+  * gzvm_vm_ioctl_cap_pvm() - Proceed GZVM_CAP_PROTECTED_VM's subcommands
+  * @gzvm: Pointer to struct gzvm.
+@@ -222,6 +344,11 @@ static int gzvm_vm_ioctl_cap_pvm(struct gzvm *gzvm,
+ 	case GZVM_CAP_PVM_SET_PVMFW_GPA:
+ 		fallthrough;
+ 	case GZVM_CAP_PVM_SET_PROTECTED_VM:
++		/*
++		 * To improve performance for protected VM, we have to populate VM's memory
++		 * before VM booting
++		 */
++		populate_all_mem_regions(gzvm);
+ 		ret = gzvm_vm_arch_enable_cap(gzvm, cap, &res);
+ 		return ret;
+ 	case GZVM_CAP_PVM_GET_PVMFW_SIZE:
 diff --git a/include/linux/soc/mediatek/gzvm_drv.h b/include/linux/soc/mediatek/gzvm_drv.h
-index 7c0ccbcd114f..4518f3b0a69b 100644
+index 982463eea4f6..54ac91670611 100644
 --- a/include/linux/soc/mediatek/gzvm_drv.h
 +++ b/include/linux/soc/mediatek/gzvm_drv.h
-@@ -227,6 +227,7 @@ int gzvm_handle_page_fault(struct gzvm_vcpu *vcpu);
- bool gzvm_handle_guest_exception(struct gzvm_vcpu *vcpu);
- int gzvm_handle_relinquish(struct gzvm_vcpu *vcpu, phys_addr_t ipa);
- bool gzvm_handle_guest_hvc(struct gzvm_vcpu *vcpu);
-+bool gzvm_arch_handle_guest_hvc(struct gzvm_vcpu *vcpu);
+@@ -159,6 +159,7 @@ int gzvm_vm_ioctl_arch_enable_cap(struct gzvm *gzvm,
  
- int gzvm_arch_create_device(u16 vm_id, struct gzvm_create_device *gzvm_dev);
- int gzvm_arch_inject_irq(struct gzvm *gzvm, unsigned int vcpu_idx,
-diff --git a/include/uapi/linux/gzvm.h b/include/uapi/linux/gzvm.h
-index 5411357ec05e..1cf89213a383 100644
---- a/include/uapi/linux/gzvm.h
-+++ b/include/uapi/linux/gzvm.h
-@@ -197,6 +197,7 @@ enum {
+ int gzvm_gfn_to_hva_memslot(struct gzvm_memslot *memslot, u64 gfn,
+ 			    u64 *hva_memslot);
++int gzvm_vm_populate_mem_region(struct gzvm *gzvm, int slot_id);
  
- /* hypercall definitions of GZVM_EXIT_HYPERCALL */
- enum {
-+	GZVM_HVC_PTP = 0x86000001,
- 	GZVM_HVC_MEM_RELINQUISH = 0xc6000009,
- };
- 
+ int gzvm_vm_ioctl_create_vcpu(struct gzvm *gzvm, u32 cpuid);
+ int gzvm_arch_vcpu_update_one_reg(struct gzvm_vcpu *vcpu, __u64 reg_id,
 -- 
 2.18.0
 
