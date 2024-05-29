@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A607C41513
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 May 2024 07:44:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1954EC25B7C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 May 2024 07:44:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ka2Maam5Ei5EuRcb2P0MO3/hFv2w3w7reQQ7Fg93ZTo=; b=XPP2i8qEDnpjIkSMJjZBK4BORJ
-	qkrAUvokS982OyD+UGoDXlQBj+/nVWksfod1nshIu3FC+ik6KyVjeQraMp+ZVYAHr/XcyOk3G8oAf
-	P9lFO2Aa/RxOsSgiY5mNfwcirWBggVL3wfuJZgJs1QBk5V/zKLOnGf16X2Ja86i2MxllTCSmmQ6lt
-	r4dS+sdz6UXwrlpCPcrY+YIP0cvbXNhb+cnTOUNOfRoSB+gvNTgagFsrZ/D50W1dj9bvWBKQoJyrH
-	hFkv9xvlfocmICbSSU2pz9oiWuHzqDVa8sORBOKArnk+kLd4td1ARSMKfRVV3bKQ5853U9Yz2sbN+
-	8olcTlUA==;
+	bh=S1XyMvug7w7dhtxZdl8ZlGvff2YgfxxUHgfNNPJEirc=; b=4DLjfCN/k59eYa7lU51eIz+B0R
+	g3ToAO7fldeEEjLsYnhql1bZsPzoyg9/852eeroZTTj6Hu68Q9fieT3Jc7iBSYgqV/v5VO5+hbKWA
+	ZtjcwIeJz1x1WQqxwvTIOl+6o1z4hWuISHBItWvqOK8AWgNMNkMknlKv98A4TDYqErJynkziSiVTm
+	ssFWKYI53WTfn3j6HHERI1HH8BqLOgB/gJYtSqNI//SZhUY/kj0xRXd8mJ263j5vGFw15rswesjUA
+	Re7wWNZ2NMStoObfXi7hqEA/JEdpMGNpEYbNCTgFtOYEsaV0lXM6Q7evBuOmP8rE0zvocbcRijtLW
+	Buu0LXZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCDyb-00000003BvQ-3wto;
-	Wed, 29 May 2024 07:44:01 +0000
-Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
+	id 1sCDzP-00000003CC6-2RFe;
+	Wed, 29 May 2024 07:44:51 +0000
+Received: from mail-lj1-x231.google.com ([2a00:1450:4864:20::231])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCDyY-00000003BuF-2e9t
+	id 1sCDzL-00000003C8M-3Q9M
 	for linux-mediatek@lists.infradead.org;
-	Wed, 29 May 2024 07:44:00 +0000
-Received: by mail-lf1-x12b.google.com with SMTP id 2adb3069b0e04-52ac99930c6so582211e87.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 29 May 2024 00:43:57 -0700 (PDT)
+	Wed, 29 May 2024 07:44:49 +0000
+Received: by mail-lj1-x231.google.com with SMTP id 38308e7fff4ca-2e72b8931caso17851941fa.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 29 May 2024 00:44:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1716968636; x=1717573436; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1716968685; x=1717573485; darn=lists.infradead.org;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=Ka2Maam5Ei5EuRcb2P0MO3/hFv2w3w7reQQ7Fg93ZTo=;
-        b=br7KtXjf+Q4+V4jKTkURqoCSjRI7FgE30Q93JWJGSGyTX6EAJIZvwD3zUirYWsTvAE
-         bzsvpeoBNaZdCbUHJXktG9N8ircW2VNHrY3WYFyVDpVj7N1be+sv8cU2X+VcjL62ACCh
-         karxT4Gd0FEqa4Pfha7uj5T3US7VRIAynlhTAkbBWrUdvQZGA9o6WD6CAS7NDzdWLMsr
-         O1YTOj56YsAYmxijjWIDtmuUUv4OablaUaQsuFn6Pt8UPY6TCGFEvYRxASlhXUlzSu//
-         t87zWvwb1QlsBj+250mk87RzHRvcfzo3A7Xtp6QwV9ePyj6au4C1ze5zLqVtxKxIsrHz
-         1OBA==
+        bh=S1XyMvug7w7dhtxZdl8ZlGvff2YgfxxUHgfNNPJEirc=;
+        b=qeAuhxtLQf3IGRqUpRGdLEFUQn2lQ5R8F97dw+wddye71g7Rb91pzXX85eZ4iF6/nk
+         ZgduyBXCfMpj8TLiYowjWFib39yv/v0FzfALw18NmgcuT5vm+Bx3t7Zjt8o84NM9QxrI
+         WN/8x0FOfAUB/4uq4+h+1jXYFKCpyOk/V0Y4auBnvNsskm/VV8QA/+0KMLfZ/a8d3KKH
+         c588euE6nf2qCHMj2VQ1Lwp8N0DkqIeH0KSF1bY5xO8jWURe/m3Y4sYZQbKJOEXUa4jB
+         Yfq5GmSNR34Ckw3ClJFver6hyPKGD8+tUTuxp/AVCrtguGwrkgfo/4KwIgSP2JK8Lz6D
+         yuYA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1716968636; x=1717573436;
+        d=1e100.net; s=20230601; t=1716968685; x=1717573485;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=Ka2Maam5Ei5EuRcb2P0MO3/hFv2w3w7reQQ7Fg93ZTo=;
-        b=rkzeI4EhWtwSEupFXsVkNTKucD8ZgGNaqrbLxzUzueKj+UtXAqiy+Hkd8fEOp/NNk4
-         6GW+qAQYFcCqnfWhbBMMPfyJKCNB5VIL4U5gi4IJ2MtGp93UJxqUBhcM0tANRcdmIjy6
-         fA8Alx3QDNQ5p9WwJXlgsnOtRsdL47hMyb9arWEjmfnUBIvlLAGyTMOovTJvksw4/vQ2
-         N7VNC8phk1D0cH4WT1MJw4A87p1W3r5rNu+8UIeReNq//usM+sIMUM+K/mTyRBoobEMH
-         OCJmqg8t/+jkXfSjDFg1mAmXu6Cv/GTTeCKCpPWAILx6ob2zFX2RY1AYXyA5Q1ZPxDSW
-         sK/w==
-X-Forwarded-Encrypted: i=1; AJvYcCXHiqcDkDubeYt8FaPhixfxuA12mN4hRXOuz7scNloKOf/X6XAAdblk76uvJf5urblUATI683O5T3qnP2pvn6+hx2uA+H6X/wfzDvCElRG00Zak
-X-Gm-Message-State: AOJu0YyZWUIwSTR1z+rBZeqz83Le59ZUG8Wl+P7flzoV/OPf59fRYVG6
-	nquEvbGJRJbYy+6oSPEN306ekFPsfBCYRDwsMbIQV3Ykvd9HFJ9YHuWuwWu7ihI=
-X-Google-Smtp-Source: AGHT+IEpKoJxeYMMRmRHKz19pKO8ijGaGc5T6KYCnRuUNFgdev3K9Yfz0P6oPUoZ1/TYqG8Ww0hnig==
-X-Received: by 2002:a05:6512:3241:b0:51c:df1f:2edc with SMTP id 2adb3069b0e04-529644ebe8cmr7988541e87.2.1716968635950;
-        Wed, 29 May 2024 00:43:55 -0700 (PDT)
+        bh=S1XyMvug7w7dhtxZdl8ZlGvff2YgfxxUHgfNNPJEirc=;
+        b=tkJui+xn8Qk6Kyj37tmomKehAOiT95DHdrT2o6Dn++3o9gWBAW0X6AnbgIEqlyQ6Uf
+         zPjklN3Qn87ahsVyqCQoRZgu04EEacYbKg+K0iyf5A3RgSQidr3PcKgG9FM/9LwLfbgQ
+         Kt9wOOiw8FZtT0PRChhj7fHfn4QEMv6+gTtTF361Ixz3cX045qq5X/YB1krspcQQYqMx
+         NM2sdqDaZ6LNXQ0kLQc91jB14K8/0sp8egMgfPAolwhopFxCm6CSuZTbcyrsCBhMTd5z
+         mYdqdBBJxZrD9yt1Qa83m7RhShQjkGvcSxOggcZAf2F/HXJTRqJsbJwRnnTdgFhmIUn/
+         0Qiw==
+X-Forwarded-Encrypted: i=1; AJvYcCV3hu1c/10qFFdy0PC4G/gXJDpbTdRhCyHMhRtI8AlQdnltrlpmsk9XWoE4b5GQ6QtR3qeo7f4734a2HZ766eDIS09DqlagWNFhHhDuAe5BiCsK
+X-Gm-Message-State: AOJu0YzzBOPAwlcVOgHCjfH/ULP9Xkk0mNSVOIQQceFIu/N4zfvS/wDv
+	PCP5tiutrbMVty9VnLpHbxm2wllB2GhJN+p0lQvKaL8RaDrKJGEsKKdE7jbAMIY=
+X-Google-Smtp-Source: AGHT+IHWA2lvLG0B0kntbUD/V5owakoa3EW0tQI6tq3UwCSFqELYaCxoJok/0cawUBov1/1KRXreEw==
+X-Received: by 2002:a2e:b05a:0:b0:2e7:c29:dadc with SMTP id 38308e7fff4ca-2e95b24e06amr72686241fa.34.1716968684582;
+        Wed, 29 May 2024 00:44:44 -0700 (PDT)
 Received: from eriador.lumag.spb.ru (dzdbxzyyyyyyyyyyyykxt-3.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::227])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-529a50b1d85sm978336e87.113.2024.05.29.00.43.55
+        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-2e9816943d2sm6297271fa.61.2024.05.29.00.44.43
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 29 May 2024 00:43:55 -0700 (PDT)
-Date: Wed, 29 May 2024 10:43:54 +0300
+        Wed, 29 May 2024 00:44:44 -0700 (PDT)
+Date: Wed, 29 May 2024 10:44:42 +0300
 From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
 To: Vignesh Raman <vignesh.raman@collabora.com>
 Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com, 
@@ -72,18 +72,17 @@ Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com,
 	linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org, 
 	amd-gfx@lists.freedesktop.org, linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org, 
 	virtualization@lists.linux-foundation.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 2/6] drm/ci: add farm variable
-Message-ID: <xhdcswueynlctjznqnxo663v2k6q2lrk55jjdodrkd7ojijaiw@lg3e2e5qcnny>
+Subject: Re: [PATCH v3 3/6] drm/ci: generate testlist from build
+Message-ID: <nsamdoevg6fhop3otikwsmu4ga6ysyrg2ogxbqhw3sqg2nbqq2@n5xbqid7ltiw>
 References: <20240529024049.356327-1-vignesh.raman@collabora.com>
- <20240529024049.356327-3-vignesh.raman@collabora.com>
+ <20240529024049.356327-4-vignesh.raman@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240529024049.356327-3-vignesh.raman@collabora.com>
+In-Reply-To: <20240529024049.356327-4-vignesh.raman@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240529_004358_695868_68896B13 
-X-CRM114-Status: UNSURE (   9.81  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240529_004447_899116_EFA17F2F 
+X-CRM114-Status: GOOD (  11.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,18 +97,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, May 29, 2024 at 08:10:45AM +0530, Vignesh Raman wrote:
-> Mesa uses structured logs for logging and debug purpose,
-> https://mesa.pages.freedesktop.org/-/mesa/-/jobs/59165650/artifacts/results/job_detail.json
-> 
-> Since drm-ci uses the mesa scripts, add the farm variable
-> and update the device type for missing jobs.
+On Wed, May 29, 2024 at 08:10:46AM +0530, Vignesh Raman wrote:
+> Stop vendoring the testlist into the kernel. Instead, use the
+> testlist from the IGT build to ensure we do not miss renamed
+> or newly added tests.
 > 
 > Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
 > ---
 > 
+> v2:
+>   - Fix testlist generation for arm and arm64 builds.
+> 
 > v3:
->   - New commit to add farm variable and update device type variable.
+>   - Rename generated testlist file to ci-testlist.
+> 
+> ---
+>  drivers/gpu/drm/ci/build-igt.sh  |   35 +
+>  drivers/gpu/drm/ci/igt_runner.sh |    9 +-
+>  drivers/gpu/drm/ci/testlist.txt  | 2761 ------------------------------
+>  3 files changed, 40 insertions(+), 2765 deletions(-)
+>  delete mode 100644 drivers/gpu/drm/ci/testlist.txt
 > 
 
 Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
