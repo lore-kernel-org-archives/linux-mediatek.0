@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 509F0C25B7C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 May 2024 08:44:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DB5CC25B7C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 May 2024 08:44:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OWFM4nTQsNg7v5rJDXzHNjnSiYJZYVK4U5rKeDo8VaA=; b=Fe0BhQByPGFyExKB0tvlj09MuW
-	c5Q45WW6j3hhanUdZEhTlZHUgDiXHflc2I3VsZIa0fXzq2sNQLkDLsXLGeX9fk3IbWpZEDF/pp8P6
-	BVPnhqG1hlKG/L7x6UCnqWguFJ9wMSKr9JoqSXSY0IxVC+sa0xNQ2YhvCIJ7/ge0F6R57kGStk2Eq
-	3vMf1ylFsP+dQ0+TWzEfJr+1BYOm25cKZK2GInUdDgJcos7ShwjpXgfYSvrE+jSmNxY6XHkw8auos
-	WmG1qBwOo8g4Tr0kYmKtNgB9FqBktieQCC/uet3y95eilz8DLZwjEIBDkzv4KSRLaVn3BHpN83TRR
-	6B6lMfLQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=j1seHF8vgxZLVkZ4tCtmjWXjvilkWrm0RSr1xSSx1sY=; b=FELFh0GGObBRKJyjBbp0pEYzzl
+	wBGWybiOB29gl5ktYQjLnxF6hsB0tSP57hY9fycDR9JcLglttjphK16ry9qIKj8a/5bt4x4qEGtRt
+	fWLFzPeudroVovZaLx+nqGzy92tvjS+AsAQevJWdklA4hTR798sPMGc3y+sipdeP/HEHKxsXKUwbB
+	ZkXpfPLEaqTUW2yfdmGPLfAdD5slaFCYMeD7nlrIUbERHA7gPhuJ29vbjIUajmwFJNtVwo9PIlQti
+	kGU+NPEEQF3SAtnZEMEwell6LA8fJrVTCvdF5yk+XxK2BzNveOGfRfr+IBGu1G31NWFPIKnTSPvMW
+	KeDhhNnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCEuj-00000003T4l-31En;
-	Wed, 29 May 2024 08:44:05 +0000
+	id 1sCEur-00000003TBN-20CC;
+	Wed, 29 May 2024 08:44:13 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCEtw-00000003SYr-31Lq;
-	Wed, 29 May 2024 08:43:22 +0000
-X-UUID: 7cb1dfd81d9711ef82c84f6416ccf2f3-20240529
+	id 1sCEtx-00000003SZc-231G;
+	Wed, 29 May 2024 08:43:25 +0000
+X-UUID: 7c4527d01d9711ef82c84f6416ccf2f3-20240529
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=OWFM4nTQsNg7v5rJDXzHNjnSiYJZYVK4U5rKeDo8VaA=;
-	b=cj4yBkK2bz+gmf9K/Q6OJWWzAUPwynpsixOn1+jjfSWOw7h5NPuP42UdrkLQl/B16zhpPaYn39uTiugMg5NiZTCmy4Myx46bOJqZJW1gFxKEWO8D9kljOX/srFs9uxQJFezSBUB/aKQf2jnDLoMs3YmQA0bPgK60+ZTduRR55Hc=;
+	h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=j1seHF8vgxZLVkZ4tCtmjWXjvilkWrm0RSr1xSSx1sY=;
+	b=luEFi5VJenGUvRTiTfGSyREqX2UXm29wbMELbNZtmVEpCMOUKC43hRNqICsxlpXweEub43S2gmP6JQ6SHLtAxrvSDMvmmoWNqf+6qOao106yHLe2O7CW6OKgxbVyAKPPSPbyVpXNKAt0g0y8W9imawDj7bD0cPxxJ7PBWJAnfPQ=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.39,REQID:943abe88-ef84-43d2-a30f-9a3217f12387,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:393d96e,CLOUDID:5679f243-4544-4d06-b2b2-d7e12813c598,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-O-INFO: VERSION:1.1.39,REQID:ebc783bf-60a0-4de0-831a-2db551eceaad,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:-25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACT
+	ION:release,TS:-50
+X-CID-META: VersionHash:393d96e,CLOUDID:e91df587-8d4f-477b-89d2-1e3bdbef96d1,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:1|19,IP:nil
+	,URL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:
+	1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 7cb1dfd81d9711ef82c84f6416ccf2f3-20240529
+X-CID-FACTOR: TF_CID_SPAM_ULS,TF_CID_SPAM_SNR
+X-UUID: 7c4527d01d9711ef82c84f6416ccf2f3-20240529
 Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw01.mediatek.com
 	(envelope-from <liju-clr.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1588747965; Wed, 29 May 2024 01:43:14 -0700
+	with ESMTP id 646330473; Wed, 29 May 2024 01:43:13 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
  MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 29 May 2024 01:42:40 -0700
+ 15.2.1118.26; Wed, 29 May 2024 01:42:39 -0700
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 29 May 2024 16:42:40 +0800
+ 15.2.1118.26 via Frontend Transport; Wed, 29 May 2024 16:42:39 +0800
 From: Liju-clr Chen <liju-clr.chen@mediatek.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>, Jonathan Corbet <corbet@lwn.net>, Catalin
@@ -70,18 +70,17 @@ CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	Trilok Soni <quic_tsoni@quicinc.com>, Shawn Hsiao <shawn.hsiao@mediatek.com>,
 	PeiLun Suei <PeiLun.Suei@mediatek.com>, Chi-shen Yeh
 	<Chi-shen.Yeh@mediatek.com>, Kevenny Hsieh <Kevenny.Hsieh@mediatek.com>
-Subject: [PATCH v11 07/21] virt: geniezone: Add vm capability check
-Date: Wed, 29 May 2024 16:42:25 +0800
-Message-ID: <20240529084239.11478-8-liju-clr.chen@mediatek.com>
+Subject: [PATCH v11 00/21] GenieZone hypervisor drivers
+Date: Wed, 29 May 2024 16:42:18 +0800
+Message-ID: <20240529084239.11478-1-liju-clr.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20240529084239.11478-1-liju-clr.chen@mediatek.com>
-References: <20240529084239.11478-1-liju-clr.chen@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240529_014317_111923_D7F8E0F4 
-X-CRM114-Status: GOOD (  25.89  )
+X-CRM114-CacheID: sfid-20240529_014317_879068_EC9A284B 
+X-CRM114-Status: GOOD (  21.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,357 +95,192 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Yi-De Wu <yi-de.wu@mediatek.com>
+From: Liju-Clr Chen <liju-clr.chen@mediatek.com>
 
-From: "Yingshiuan Pan" <yingshiuan.pan@mediatek.com>
+This series is based on linux-next, tag: next-20240529.
 
-Inquire the `capability support` on GenieZone hypervisor.
-Example:
-`GZVM_CAP_PROTECTED_VM` or `GZVM_CAP_VM_GPA_SIZE`.
+GenieZone hypervisor(gzvm) is a type-1 hypervisor that supports various virtual
+machine types and provides security features such as TEE-like scenarios and
+secure boot. It can create guest VMs for security use cases and has
+virtualization capabilities for both platform and interrupt. Although the
+hypervisor can be booted independently, it requires the assistance of GenieZone
+hypervisor kernel driver(gzvm-ko) to leverage the ability of Linux kernel for
+vCPU scheduling, memory management, inter-VM communication and virtio backend
+support.
 
-Signed-off-by: Yingshiuan Pan <yingshiuan.pan@mediatek.com>
-Signed-off-by: Jerry Wang <ze-yu.wang@mediatek.com>
-Signed-off-by: kevenny hsieh <kevenny.hsieh@mediatek.com>
-Signed-off-by: Liju Chen <liju-clr.chen@mediatek.com>
-Signed-off-by: Yi-De Wu <yi-de.wu@mediatek.com>
----
- arch/arm64/geniezone/gzvm_arch_common.h |   2 +
- arch/arm64/geniezone/vm.c               | 122 ++++++++++++++++++++++++
- drivers/virt/geniezone/gzvm_main.c      |  26 +++++
- drivers/virt/geniezone/gzvm_vm.c        |  23 ++++-
- include/linux/soc/mediatek/gzvm_drv.h   |   5 +
- include/uapi/linux/gzvm.h               |  31 ++++++
- 6 files changed, 208 insertions(+), 1 deletion(-)
+Changes in v11:
+- Resolve low memory issue by using only one api to get pages for guest VM.
+- The GenieZone hypervisor acts as a vendor firmware to enable platform
+  virtualization, offering an implementation that is independent of
+  Linux-specific implementations. So, relocate dt-binding yaml file to
+  the firmware path, as the dts node is used to confirm the presence of
+  the geniezone hypervisor firmware.
+- Fix coding style from viewer suggestion and checking tools.
 
-diff --git a/arch/arm64/geniezone/gzvm_arch_common.h b/arch/arm64/geniezone/gzvm_arch_common.h
-index 4250c0f567e7..e500dbe7f943 100644
---- a/arch/arm64/geniezone/gzvm_arch_common.h
-+++ b/arch/arm64/geniezone/gzvm_arch_common.h
-@@ -13,6 +13,7 @@ enum {
- 	GZVM_FUNC_DESTROY_VM = 1,
- 	GZVM_FUNC_SET_MEMREGION = 4,
- 	GZVM_FUNC_PROBE = 12,
-+	GZVM_FUNC_ENABLE_CAP = 13,
- 	NR_GZVM_FUNC,
- };
- 
-@@ -26,6 +27,7 @@ enum {
- #define MT_HVC_GZVM_DESTROY_VM		GZVM_HCALL_ID(GZVM_FUNC_DESTROY_VM)
- #define MT_HVC_GZVM_SET_MEMREGION	GZVM_HCALL_ID(GZVM_FUNC_SET_MEMREGION)
- #define MT_HVC_GZVM_PROBE		GZVM_HCALL_ID(GZVM_FUNC_PROBE)
-+#define MT_HVC_GZVM_ENABLE_CAP		GZVM_HCALL_ID(GZVM_FUNC_ENABLE_CAP)
- 
- /**
-  * gzvm_hypcall_wrapper() - the wrapper for hvc calls
-diff --git a/arch/arm64/geniezone/vm.c b/arch/arm64/geniezone/vm.c
-index d4f0aa81d224..0030e57bf77b 100644
---- a/arch/arm64/geniezone/vm.c
-+++ b/arch/arm64/geniezone/vm.c
-@@ -72,6 +72,40 @@ int gzvm_arch_set_memregion(u16 vm_id, size_t buf_size,
- 				    buf_size, region, 0, 0, 0, 0, &res);
- }
- 
-+static int gzvm_cap_vm_gpa_size(void __user *argp)
-+{
-+	__u64 value = CONFIG_ARM64_PA_BITS;
-+
-+	if (copy_to_user(argp, &value, sizeof(__u64)))
-+		return -EFAULT;
-+
-+	return 0;
-+}
-+
-+int gzvm_arch_check_extension(struct gzvm *gzvm, __u64 cap, void __user *argp)
-+{
-+	int ret;
-+
-+	switch (cap) {
-+	case GZVM_CAP_PROTECTED_VM: {
-+		__u64 success = 1;
-+
-+		if (copy_to_user(argp, &success, sizeof(__u64)))
-+			return -EFAULT;
-+
-+		return 0;
-+	}
-+	case GZVM_CAP_VM_GPA_SIZE: {
-+		ret = gzvm_cap_vm_gpa_size(argp);
-+		return ret;
-+	}
-+	default:
-+		break;
-+	}
-+
-+	return -EOPNOTSUPP;
-+}
-+
- /**
-  * gzvm_arch_create_vm() - create vm
-  * @vm_type: VM type. Only supports Linux VM now.
-@@ -97,3 +131,91 @@ int gzvm_arch_destroy_vm(u16 vm_id)
- 	return gzvm_hypcall_wrapper(MT_HVC_GZVM_DESTROY_VM, vm_id, 0, 0, 0, 0,
- 				    0, 0, &res);
- }
-+
-+static int gzvm_vm_arch_enable_cap(struct gzvm *gzvm,
-+				   struct gzvm_enable_cap *cap,
-+				   struct arm_smccc_res *res)
-+{
-+	return gzvm_hypcall_wrapper(MT_HVC_GZVM_ENABLE_CAP, gzvm->vm_id,
-+				    cap->cap, cap->args[0], cap->args[1],
-+				    cap->args[2], cap->args[3], cap->args[4],
-+				    res);
-+}
-+
-+/**
-+ * gzvm_vm_ioctl_get_pvmfw_size() - Get pvmfw size from hypervisor, return
-+ *				    in x1, and return to userspace in args
-+ * @gzvm: Pointer to struct gzvm.
-+ * @cap: Pointer to struct gzvm_enable_cap.
-+ * @argp: Pointer to struct gzvm_enable_cap in user space.
-+ *
-+ * Return:
-+ * * 0			- Succeed
-+ * * -EINVAL		- Hypervisor return invalid results
-+ * * -EFAULT		- Fail to copy back to userspace buffer
-+ */
-+static int gzvm_vm_ioctl_get_pvmfw_size(struct gzvm *gzvm,
-+					struct gzvm_enable_cap *cap,
-+					void __user *argp)
-+{
-+	struct arm_smccc_res res = {0};
-+
-+	if (gzvm_vm_arch_enable_cap(gzvm, cap, &res) != 0)
-+		return -EINVAL;
-+
-+	cap->args[1] = res.a1;
-+	if (copy_to_user(argp, cap, sizeof(*cap)))
-+		return -EFAULT;
-+
-+	return 0;
-+}
-+
-+/**
-+ * gzvm_vm_ioctl_cap_pvm() - Proceed GZVM_CAP_PROTECTED_VM's subcommands
-+ * @gzvm: Pointer to struct gzvm.
-+ * @cap: Pointer to struct gzvm_enable_cap.
-+ * @argp: Pointer to struct gzvm_enable_cap in user space.
-+ *
-+ * Return:
-+ * * 0			- Succeed
-+ * * -EINVAL		- Invalid subcommand or arguments
-+ */
-+static int gzvm_vm_ioctl_cap_pvm(struct gzvm *gzvm,
-+				 struct gzvm_enable_cap *cap,
-+				 void __user *argp)
-+{
-+	struct arm_smccc_res res = {0};
-+	int ret;
-+
-+	switch (cap->args[0]) {
-+	case GZVM_CAP_PVM_SET_PVMFW_GPA:
-+		fallthrough;
-+	case GZVM_CAP_PVM_SET_PROTECTED_VM:
-+		ret = gzvm_vm_arch_enable_cap(gzvm, cap, &res);
-+		return ret;
-+	case GZVM_CAP_PVM_GET_PVMFW_SIZE:
-+		ret = gzvm_vm_ioctl_get_pvmfw_size(gzvm, cap, argp);
-+		return ret;
-+	default:
-+		break;
-+	}
-+
-+	return -EINVAL;
-+}
-+
-+int gzvm_vm_ioctl_arch_enable_cap(struct gzvm *gzvm,
-+				  struct gzvm_enable_cap *cap,
-+				  void __user *argp)
-+{
-+	int ret;
-+
-+	switch (cap->cap) {
-+	case GZVM_CAP_PROTECTED_VM:
-+		ret = gzvm_vm_ioctl_cap_pvm(gzvm, cap, argp);
-+		return ret;
-+	default:
-+		break;
-+	}
-+
-+	return -EINVAL;
-+}
-diff --git a/drivers/virt/geniezone/gzvm_main.c b/drivers/virt/geniezone/gzvm_main.c
-index 8704549c5956..1d89e96015d1 100644
---- a/drivers/virt/geniezone/gzvm_main.c
-+++ b/drivers/virt/geniezone/gzvm_main.c
-@@ -41,12 +41,38 @@ int gzvm_err_to_errno(unsigned long err)
- 	return -EINVAL;
- }
- 
-+/**
-+ * gzvm_dev_ioctl_check_extension() - Check if given capability is support
-+ *				      or not
-+ *
-+ * @gzvm: Pointer to struct gzvm
-+ * @args: Pointer in u64 from userspace
-+ *
-+ * Return:
-+ * * 0			- Supported, no error
-+ * * -EOPNOTSUPP	- Unsupported
-+ * * -EFAULT		- Failed to get data from userspace
-+ */
-+long gzvm_dev_ioctl_check_extension(struct gzvm *gzvm, unsigned long args)
-+{
-+	__u64 cap;
-+	void __user *argp = (void __user *)args;
-+
-+	if (copy_from_user(&cap, argp, sizeof(uint64_t)))
-+		return -EFAULT;
-+	return gzvm_arch_check_extension(gzvm, cap, argp);
-+}
-+
- static long gzvm_dev_ioctl(struct file *filp, unsigned int cmd,
- 			   unsigned long user_args)
- {
- 	switch (cmd) {
- 	case GZVM_CREATE_VM:
- 		return gzvm_dev_ioctl_create_vm(user_args);
-+	case GZVM_CHECK_EXTENSION:
-+		if (!user_args)
-+			return -EINVAL;
-+		return gzvm_dev_ioctl_check_extension(NULL, user_args);
- 	default:
- 		break;
- 	}
-diff --git a/drivers/virt/geniezone/gzvm_vm.c b/drivers/virt/geniezone/gzvm_vm.c
-index 052ba236dfec..89cb97985e1d 100644
---- a/drivers/virt/geniezone/gzvm_vm.c
-+++ b/drivers/virt/geniezone/gzvm_vm.c
-@@ -130,6 +130,13 @@ gzvm_vm_ioctl_set_memory_region(struct gzvm *gzvm,
- 	return register_memslot_addr_range(gzvm, memslot);
- }
- 
-+static int gzvm_vm_ioctl_enable_cap(struct gzvm *gzvm,
-+				    struct gzvm_enable_cap *cap,
-+				    void __user *argp)
-+{
-+	return gzvm_vm_ioctl_arch_enable_cap(gzvm, cap, argp);
-+}
-+
- /* gzvm_vm_ioctl() - Ioctl handler of VM FD */
- static long gzvm_vm_ioctl(struct file *filp, unsigned int ioctl,
- 			  unsigned long arg)
-@@ -139,6 +146,10 @@ static long gzvm_vm_ioctl(struct file *filp, unsigned int ioctl,
- 	struct gzvm *gzvm = filp->private_data;
- 
- 	switch (ioctl) {
-+	case GZVM_CHECK_EXTENSION: {
-+		ret = gzvm_dev_ioctl_check_extension(gzvm, arg);
-+		break;
-+	}
- 	case GZVM_SET_USER_MEMORY_REGION: {
- 		struct gzvm_userspace_memory_region userspace_mem;
- 
-@@ -148,10 +159,20 @@ static long gzvm_vm_ioctl(struct file *filp, unsigned int ioctl,
- 		ret = gzvm_vm_ioctl_set_memory_region(gzvm, &userspace_mem);
- 		break;
- 	}
-+	case GZVM_ENABLE_CAP: {
-+		struct gzvm_enable_cap cap;
-+
-+		if (copy_from_user(&cap, argp, sizeof(cap))) {
-+			ret = -EFAULT;
-+			goto out;
-+		}
-+		ret = gzvm_vm_ioctl_enable_cap(gzvm, &cap, argp);
-+		break;
-+	}
- 	default:
- 		ret = -ENOTTY;
- 	}
--
-+out:
- 	return ret;
- }
- 
-diff --git a/include/linux/soc/mediatek/gzvm_drv.h b/include/linux/soc/mediatek/gzvm_drv.h
-index 3551de8eda1d..0792fefd6114 100644
---- a/include/linux/soc/mediatek/gzvm_drv.h
-+++ b/include/linux/soc/mediatek/gzvm_drv.h
-@@ -98,6 +98,7 @@ struct gzvm {
- 	u16 vm_id;
- };
- 
-+long gzvm_dev_ioctl_check_extension(struct gzvm *gzvm, unsigned long args);
- int gzvm_dev_ioctl_create_vm(unsigned long vm_type);
- 
- int gzvm_err_to_errno(unsigned long err);
-@@ -108,8 +109,12 @@ void gzvm_destroy_all_vms(void);
- int gzvm_arch_probe(void);
- int gzvm_arch_set_memregion(u16 vm_id, size_t buf_size,
- 			    phys_addr_t region);
-+int gzvm_arch_check_extension(struct gzvm *gzvm, __u64 cap, void __user *argp);
- int gzvm_arch_create_vm(unsigned long vm_type);
- int gzvm_arch_destroy_vm(u16 vm_id);
-+int gzvm_vm_ioctl_arch_enable_cap(struct gzvm *gzvm,
-+				  struct gzvm_enable_cap *cap,
-+				  void __user *argp);
- 
- int gzvm_gfn_to_hva_memslot(struct gzvm_memslot *memslot, u64 gfn,
- 			    u64 *hva_memslot);
-diff --git a/include/uapi/linux/gzvm.h b/include/uapi/linux/gzvm.h
-index 59c0f790b2e6..a79e787c9181 100644
---- a/include/uapi/linux/gzvm.h
-+++ b/include/uapi/linux/gzvm.h
-@@ -16,12 +16,30 @@
- #include <linux/types.h>
- #include <linux/ioctl.h>
- 
-+#define GZVM_CAP_VM_GPA_SIZE	0xa5
-+#define GZVM_CAP_PROTECTED_VM	0xffbadab1
-+
-+/* sub-commands put in args[0] for GZVM_CAP_PROTECTED_VM */
-+#define GZVM_CAP_PVM_SET_PVMFW_GPA		0
-+#define GZVM_CAP_PVM_GET_PVMFW_SIZE		1
-+/* GZVM_CAP_PVM_SET_PROTECTED_VM only sets protected but not load pvmfw */
-+#define GZVM_CAP_PVM_SET_PROTECTED_VM		2
-+
- /* GZVM ioctls */
- #define GZVM_IOC_MAGIC			0x92	/* gz */
- 
- /* ioctls for /dev/gzvm fds */
- #define GZVM_CREATE_VM             _IO(GZVM_IOC_MAGIC,   0x01) /* Returns a Geniezone VM fd */
- 
-+/*
-+ * Check if the given capability is supported or not.
-+ * The argument is capability. Ex. GZVM_CAP_PROTECTED_VM or GZVM_CAP_VM_GPA_SIZE
-+ * return is 0 (supported, no error)
-+ * return is -EOPNOTSUPP (unsupported)
-+ * return is -EFAULT (failed to get the argument from userspace)
-+ */
-+#define GZVM_CHECK_EXTENSION       _IO(GZVM_IOC_MAGIC,   0x03)
-+
- /* ioctls for VM fds */
- /* for GZVM_SET_MEMORY_REGION */
- struct gzvm_memory_region {
-@@ -53,4 +71,17 @@ struct gzvm_userspace_memory_region {
- #define GZVM_SET_USER_MEMORY_REGION _IOW(GZVM_IOC_MAGIC, 0x46, \
- 					 struct gzvm_userspace_memory_region)
- 
-+/**
-+ * struct gzvm_enable_cap: The `capability support` on GenieZone hypervisor
-+ * @cap: `GZVM_CAP_ARM_PROTECTED_VM` or `GZVM_CAP_ARM_VM_IPA_SIZE`
-+ * @args: x3-x7 registers can be used for additional args
-+ */
-+struct gzvm_enable_cap {
-+	__u64 cap;
-+	__u64 args[5];
-+};
-+
-+#define GZVM_ENABLE_CAP            _IOW(GZVM_IOC_MAGIC,  0xa3, \
-+					struct gzvm_enable_cap)
-+
- #endif /* __GZVM_H__ */
+Changes in v10:
+https://lore.kernel.org/all/20240412065718.29105-1-yi-de.wu@mediatek.com/
+- Optimize memory allocation: query hypervisor demand paging capability before
+  VM memory population.
+- Fix goto syntax according to ACK reviewer in `gzvm_vcpu.c`.
+- Fix coding style from viewer suggestion and checking tools.
+
+Changes in v9:
+https://lore.kernel.org/all/20240129083302.26044-1-yi-de.wu@mediatek.com/
+- Add gzvm_vm_allocate_guest_page function for demand paging support and
+  protected VM memory performance optimization.
+- Fix coding style from viewer suggestion and checking tools.
+
+Changes in v8:
+https://lore.kernel.org/all/20231228105147.13752-1-yi-de.wu@mediatek.com/
+- Add reasons for using dt solution in dt-bindings.
+- Add locks for memory pin/unpin and relinquish operations.
+- Add VM memory stats in debugfs.
+- Add tracing support for hypercall and vcpu exit reasons.
+- Enable PTP for timing synchronization between host and guests.
+- Optimize memory performance for protected VMs.
+- Refactor wording and titles in documentation.
+
+Changes in v7:
+https://lore.kernel.org/all/20231116152756.4250-1-yi-de.wu@mediatek.com/
+- Rebase these patches to the Linux 6.7-rc1 release.
+- Refactor patches 1 to 15 to improve coding style while ensuring they do not
+  violate the majority of the changes made in v6
+- Provide individual VM memory statistics within debugfs in patch 16.
+- Add tracing support for hyper call and vcpu exit_reason.
+
+Changes in v6:
+https://lore.kernel.org/all/20230919111210.19615-1-yi-de.wu@mediatek.com/
+- Rebase based on kernel 6.6-rc1
+- Keep dt solution and leave the reasons in the commit message
+- Remove arch/arm64/include/uapi/asm/gzvm_arch.h due to simplicity
+- Remove resampler in drivers/virt/geniezone/gzvm_irqfd.c due to defeature for
+  now
+- Remove PPI in arch/arm64/geniezone/vgic.c
+- Refactor vm related components into 3 smaller patches, namely adding vm
+  support, setting user memory region and checking vm capability
+- Refactor vcpu and vm component to remove unnecessary ARM prefix
+- Add demand paging to fix crash on destroying memory page, acclerate on booting
+  and support ballooning deflate
+- Add memory pin/unpin memory mechanism to support protected VM
+- Add block-based demand paging for performance concern
+- Response to reviewers and fix coding style accordingly
+
+
+Changes in v5:
+https://lore.kernel.org/all/20230727080005.14474-1-yi-de.wu@mediatek.com/
+- Add dt solution back for device initialization
+- Add GZVM_EXIT_GZ reason for gzvm_vcpu_run()
+- Add patch for guest page fault handler
+- Add patch for supporitng pin/unpin memory
+- Remove unused enum members, namely GZVM_FUNC_GET_REGS and GZVM_FUNC_SET_REGS
+- Use dev_debug() for debugging when platform device is available, and use
+  pr_debug() otherwise
+- Response to reviewers and fix bugs accordingly
+
+
+Changes in v4:
+https://lore.kernel.org/all/20230609085214.31071-1-yi-de.wu@mediatek.com/
+- Add macro to set VM as protected without triggering pvmfw in AVF.
+- Add support to pass dtb config to hypervisor.
+- Add support for virtual timer.
+- Add UAPI to pass memory region metadata to hypervisor.
+- Define our own macros for ARM's interrupt number
+- Elaborate more on GenieZone hyperivsor in documentation
+- Fix coding style.
+- Implement our own module for coverting ipa to pa
+- Modify the way of initializing device from dt to a more discoverable way
+- Move refactoring changes into indepedent patches.
+
+Changes in v3:
+https://lore.kernel.org/all/20230512080405.12043-1-yi-de.wu@mediatek.com/
+- Refactor: separate arch/arm64/geniezone/gzvm_arch.c into vm.c/vcpu.c/vgic.c
+- Remove redundant functions
+- Fix reviewer's comments
+
+Changes in v2:
+https://lore.kernel.org/all/20230428103622.18291-1-yi-de.wu@mediatek.com/
+- Refactor: move to drivers/virt/geniezone
+- Refactor: decouple arch-dependent and arch-independent
+- Check pending signal before entering guest context
+- Fix reviewer's comments
+
+Initial Commit in v1:
+https://lore.kernel.org/all/20230413090735.4182-1-yi-de.wu@mediatek.com/
+
+Yi-De Wu (21):
+  virt: geniezone: enable gzvm-ko in defconfig
+  docs: geniezone: Introduce GenieZone hypervisor
+  dt-bindings: hypervisor: Add MediaTek GenieZone hypervisor
+  virt: geniezone: Add GenieZone hypervisor driver
+  virt: geniezone: Add vm support
+  virt: geniezone: Add set_user_memory_region for vm
+  virt: geniezone: Add vm capability check
+  virt: geniezone: Add vcpu support
+  virt: geniezone: Add irqchip support for virtual interrupt injection
+  virt: geniezone: Add irqfd support
+  virt: geniezone: Add ioeventfd support
+  virt: geniezone: Add memory region purpose for hypervisor
+  virt: geniezone: Add dtb config support
+  virt: geniezone: Optimize performance of protected VM memory
+  virt: geniezone: Add memory pin/unpin support
+  virt: geniezone: Add demand paging support
+  virt: geniezone: Add block-based demand paging support
+  virt: geniezone: Add memory relinquish support
+  virt: geniezone: Provide individual VM memory statistics within
+    debugfs
+  virt: geniezone: Add tracing support for hyp call and vcpu exit_reason
+  virt: geniezone: Enable PTP for synchronizing time between host and
+    guest VMs
+
+ .../bindings/firmware/mediatek,geniezone.yaml |  34 +
+ Documentation/virt/geniezone/introduction.rst |  87 +++
+ Documentation/virt/index.rst                  |   1 +
+ MAINTAINERS                                   |  11 +
+ arch/arm64/Kbuild                             |   1 +
+ arch/arm64/configs/defconfig                  |   2 +
+ arch/arm64/geniezone/Makefile                 |   9 +
+ arch/arm64/geniezone/gzvm_arch_common.h       | 105 +++
+ arch/arm64/geniezone/hvc.c                    |  73 ++
+ arch/arm64/geniezone/vcpu.c                   |  80 +++
+ arch/arm64/geniezone/vgic.c                   |  50 ++
+ arch/arm64/geniezone/vm.c                     | 425 +++++++++++
+ drivers/virt/Kconfig                          |   2 +
+ drivers/virt/geniezone/Kconfig                |  16 +
+ drivers/virt/geniezone/Makefile               |  12 +
+ drivers/virt/geniezone/gzvm_common.h          |  12 +
+ drivers/virt/geniezone/gzvm_exception.c       |  61 ++
+ drivers/virt/geniezone/gzvm_ioeventfd.c       | 281 ++++++++
+ drivers/virt/geniezone/gzvm_irqfd.c           | 382 ++++++++++
+ drivers/virt/geniezone/gzvm_main.c            | 148 ++++
+ drivers/virt/geniezone/gzvm_mmu.c             | 243 +++++++
+ drivers/virt/geniezone/gzvm_vcpu.c            | 282 ++++++++
+ drivers/virt/geniezone/gzvm_vm.c              | 657 ++++++++++++++++++
+ include/linux/soc/mediatek/gzvm_drv.h         | 256 +++++++
+ include/trace/events/geniezone.h              |  84 +++
+ include/uapi/linux/gzvm.h                     | 402 +++++++++++
+ 26 files changed, 3716 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/firmware/mediatek,geniezone.yaml
+ create mode 100644 Documentation/virt/geniezone/introduction.rst
+ create mode 100644 arch/arm64/geniezone/Makefile
+ create mode 100644 arch/arm64/geniezone/gzvm_arch_common.h
+ create mode 100644 arch/arm64/geniezone/hvc.c
+ create mode 100644 arch/arm64/geniezone/vcpu.c
+ create mode 100644 arch/arm64/geniezone/vgic.c
+ create mode 100644 arch/arm64/geniezone/vm.c
+ create mode 100644 drivers/virt/geniezone/Kconfig
+ create mode 100644 drivers/virt/geniezone/Makefile
+ create mode 100644 drivers/virt/geniezone/gzvm_common.h
+ create mode 100644 drivers/virt/geniezone/gzvm_exception.c
+ create mode 100644 drivers/virt/geniezone/gzvm_ioeventfd.c
+ create mode 100644 drivers/virt/geniezone/gzvm_irqfd.c
+ create mode 100644 drivers/virt/geniezone/gzvm_main.c
+ create mode 100644 drivers/virt/geniezone/gzvm_mmu.c
+ create mode 100644 drivers/virt/geniezone/gzvm_vcpu.c
+ create mode 100644 drivers/virt/geniezone/gzvm_vm.c
+ create mode 100644 include/linux/soc/mediatek/gzvm_drv.h
+ create mode 100644 include/trace/events/geniezone.h
+ create mode 100644 include/uapi/linux/gzvm.h
+
 -- 
 2.18.0
 
