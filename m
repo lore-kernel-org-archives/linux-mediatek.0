@@ -4,85 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1954EC25B7C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 May 2024 07:44:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C651DC25B75
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 May 2024 07:48:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=S1XyMvug7w7dhtxZdl8ZlGvff2YgfxxUHgfNNPJEirc=; b=4DLjfCN/k59eYa7lU51eIz+B0R
-	g3ToAO7fldeEEjLsYnhql1bZsPzoyg9/852eeroZTTj6Hu68Q9fieT3Jc7iBSYgqV/v5VO5+hbKWA
-	ZtjcwIeJz1x1WQqxwvTIOl+6o1z4hWuISHBItWvqOK8AWgNMNkMknlKv98A4TDYqErJynkziSiVTm
-	ssFWKYI53WTfn3j6HHERI1HH8BqLOgB/gJYtSqNI//SZhUY/kj0xRXd8mJ263j5vGFw15rswesjUA
-	Re7wWNZ2NMStoObfXi7hqEA/JEdpMGNpEYbNCTgFtOYEsaV0lXM6Q7evBuOmP8rE0zvocbcRijtLW
-	Buu0LXZg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=wyD9HqZtSq4vczMlJ+45sDNKk0qk+SBg5VNyok2uFx4=; b=WAgJIWK1oy9Vn5391lIhADs/di
+	YeNgKZtwo6gxhw0AwmrR7QOrlfDnUgYnAqO7dBSuDtNQ2G4EVvTRyazuQJ3YswjtDiLRosX2TrQEq
+	b/T8IriLohJ+rpFIxgyRhyTpqyvZEEwSciA24eSEeIphN4Urxpte6eV40WAVxBrXA262C3rTIauyA
+	VTcOrDYv9P/qqQmlJxUl9pQqvIXUTJx8aDHKHTHtAyXr0flWoNQ2aq/e2eBuHMB3QkNut5Il536xH
+	Iv4LUE0CElH+V9K9U3u/m8XSj11xpe46VkbFBAtfxd+/6H8OoQQ1XiuuYKn6u3gUVtfcBL6Wq8iqz
+	7n2tzDhg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCDzP-00000003CC6-2RFe;
-	Wed, 29 May 2024 07:44:51 +0000
-Received: from mail-lj1-x231.google.com ([2a00:1450:4864:20::231])
+	id 1sCE3M-00000003DHP-1rXx;
+	Wed, 29 May 2024 07:48:56 +0000
+Received: from mail-yb1-xb32.google.com ([2607:f8b0:4864:20::b32])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCDzL-00000003C8M-3Q9M
+	id 1sCE3I-00000003DEd-495q
 	for linux-mediatek@lists.infradead.org;
-	Wed, 29 May 2024 07:44:49 +0000
-Received: by mail-lj1-x231.google.com with SMTP id 38308e7fff4ca-2e72b8931caso17851941fa.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 29 May 2024 00:44:46 -0700 (PDT)
+	Wed, 29 May 2024 07:48:54 +0000
+Received: by mail-yb1-xb32.google.com with SMTP id 3f1490d57ef6-df771b6cf71so1810755276.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 29 May 2024 00:48:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1716968685; x=1717573485; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=S1XyMvug7w7dhtxZdl8ZlGvff2YgfxxUHgfNNPJEirc=;
-        b=qeAuhxtLQf3IGRqUpRGdLEFUQn2lQ5R8F97dw+wddye71g7Rb91pzXX85eZ4iF6/nk
-         ZgduyBXCfMpj8TLiYowjWFib39yv/v0FzfALw18NmgcuT5vm+Bx3t7Zjt8o84NM9QxrI
-         WN/8x0FOfAUB/4uq4+h+1jXYFKCpyOk/V0Y4auBnvNsskm/VV8QA/+0KMLfZ/a8d3KKH
-         c588euE6nf2qCHMj2VQ1Lwp8N0DkqIeH0KSF1bY5xO8jWURe/m3Y4sYZQbKJOEXUa4jB
-         Yfq5GmSNR34Ckw3ClJFver6hyPKGD8+tUTuxp/AVCrtguGwrkgfo/4KwIgSP2JK8Lz6D
-         yuYA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1716968685; x=1717573485;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+        d=linaro.org; s=google; t=1716968930; x=1717573730; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=S1XyMvug7w7dhtxZdl8ZlGvff2YgfxxUHgfNNPJEirc=;
-        b=tkJui+xn8Qk6Kyj37tmomKehAOiT95DHdrT2o6Dn++3o9gWBAW0X6AnbgIEqlyQ6Uf
-         zPjklN3Qn87ahsVyqCQoRZgu04EEacYbKg+K0iyf5A3RgSQidr3PcKgG9FM/9LwLfbgQ
-         Kt9wOOiw8FZtT0PRChhj7fHfn4QEMv6+gTtTF361Ixz3cX045qq5X/YB1krspcQQYqMx
-         NM2sdqDaZ6LNXQ0kLQc91jB14K8/0sp8egMgfPAolwhopFxCm6CSuZTbcyrsCBhMTd5z
-         mYdqdBBJxZrD9yt1Qa83m7RhShQjkGvcSxOggcZAf2F/HXJTRqJsbJwRnnTdgFhmIUn/
-         0Qiw==
-X-Forwarded-Encrypted: i=1; AJvYcCV3hu1c/10qFFdy0PC4G/gXJDpbTdRhCyHMhRtI8AlQdnltrlpmsk9XWoE4b5GQ6QtR3qeo7f4734a2HZ766eDIS09DqlagWNFhHhDuAe5BiCsK
-X-Gm-Message-State: AOJu0YzzBOPAwlcVOgHCjfH/ULP9Xkk0mNSVOIQQceFIu/N4zfvS/wDv
-	PCP5tiutrbMVty9VnLpHbxm2wllB2GhJN+p0lQvKaL8RaDrKJGEsKKdE7jbAMIY=
-X-Google-Smtp-Source: AGHT+IHWA2lvLG0B0kntbUD/V5owakoa3EW0tQI6tq3UwCSFqELYaCxoJok/0cawUBov1/1KRXreEw==
-X-Received: by 2002:a2e:b05a:0:b0:2e7:c29:dadc with SMTP id 38308e7fff4ca-2e95b24e06amr72686241fa.34.1716968684582;
-        Wed, 29 May 2024 00:44:44 -0700 (PDT)
-Received: from eriador.lumag.spb.ru (dzdbxzyyyyyyyyyyyykxt-3.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::227])
-        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-2e9816943d2sm6297271fa.61.2024.05.29.00.44.43
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 29 May 2024 00:44:44 -0700 (PDT)
-Date: Wed, 29 May 2024 10:44:42 +0300
-From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-To: Vignesh Raman <vignesh.raman@collabora.com>
-Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com, 
-	helen.koike@collabora.com, airlied@gmail.com, daniel@ffwll.ch, robdclark@gmail.com, 
-	david.heidelberg@collabora.com, guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com, 
-	mcanal@igalia.com, linux-mediatek@lists.infradead.org, 
-	linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	amd-gfx@lists.freedesktop.org, linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org, 
-	virtualization@lists.linux-foundation.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 3/6] drm/ci: generate testlist from build
-Message-ID: <nsamdoevg6fhop3otikwsmu4ga6ysyrg2ogxbqhw3sqg2nbqq2@n5xbqid7ltiw>
-References: <20240529024049.356327-1-vignesh.raman@collabora.com>
- <20240529024049.356327-4-vignesh.raman@collabora.com>
+        bh=wyD9HqZtSq4vczMlJ+45sDNKk0qk+SBg5VNyok2uFx4=;
+        b=NS7T9ogapMKPG5xf4fz/PS1lfb4RkFvutM3Nq4P2B7sKODv2wMIAAq+ayw0ozV3SM7
+         JQqGFS3oT644Eje4v0XOmRv+Xi4dGRRSRvkKAAKVJpPbAS6oSauSA8E9pD/nAZS6tX6V
+         6mqXuG1bJmfCNXcG0aJHYX0c738PhS6C0ob2qQMN4EPQF7BFnJgdYwcPPudiWBoKRYYZ
+         7273C4TjXaG1AUfEWuRLjTzIsR3s+4LV8Wf2Br1XKcCUICFDJzr/79exG8u8ClZgjPQq
+         IyCHPiSGUiKEGwF8ItI91wq1OghqJD3Mw1+WMIrKeGEPquBCfTU9rmfqp33lc8J958p8
+         J4CQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1716968930; x=1717573730;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=wyD9HqZtSq4vczMlJ+45sDNKk0qk+SBg5VNyok2uFx4=;
+        b=Dy+M6jQRDPYVM1KmziVAUWAtytGSSLH4UpNBOTrtFE7yNu6VIq6XTV8zGfqopVdb+I
+         KYVQjkyzIoGAT3IDxpcVBrDQvL8oVURA5imoOyaz0nz2F0Xqu8vlVB1XoD+Atw5P+stY
+         vqCWAHB5heBVzx/Cl7vnvQGWZDuYuPmbRbgwQfZAUEiV0fHHM2l7WtViSneI6itqUaJx
+         qKOBmxpLK5Suw43XiIgjSX5ZGslK8bRToMf7WT9PVd7RkGfTHpztJaY7x5Jpc6S8ZYCj
+         nTNHA7HjEt4ZD16pPwsxpob/mRaFxcNN8i5C68SQlSWecHZq5a/iuQxwkMppQ7tjhxed
+         /2qg==
+X-Forwarded-Encrypted: i=1; AJvYcCXgqxe9BcQhKViPWKh3GLDsj88Vkmax/boqFx8AZtmMFv37q2ctqHEwsNqaSbnJq4kJpDrwdZh7BTThtxpHa024iEqdDqBSH1gMczq/AhdnVvd0
+X-Gm-Message-State: AOJu0YxpG9hCqaY1wJG0LtUlEutFZceITP5uRUfxHQf9+NccN8c5n7w3
+	WqUA3+rO4TAdZM0Gb82SIFnv/s0LrEyhFjqjNTrIHXjLwXpy0ODsF8KlcXve+2giCCwatLsK6+x
+	M1HtPFJ+UrM4WnOt8hrSMBoMPrG1xkvizaWPl7A==
+X-Google-Smtp-Source: AGHT+IHSd/PXVXnQLhPVNg7fFhMrsdBcZFygKj2F8W4r8xr+nErsQNh+mjoKNVlbSYTvLms578njjoquRxDdDDoH63I=
+X-Received: by 2002:a25:ad8e:0:b0:dcb:b072:82d5 with SMTP id
+ 3f1490d57ef6-df772267f49mr13018047276.64.1716968929711; Wed, 29 May 2024
+ 00:48:49 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240529024049.356327-4-vignesh.raman@collabora.com>
+References: <20240527115933.7396-1-zajec5@gmail.com> <20240527115933.7396-3-zajec5@gmail.com>
+In-Reply-To: <20240527115933.7396-3-zajec5@gmail.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Wed, 29 May 2024 09:48:39 +0200
+Message-ID: <CACRpkdaSsY0PnAU=UKJ0ZGLw0gJnBu3M9hQiQVBWjZF48cBO9g@mail.gmail.com>
+Subject: Re: [PATCH 2/3] dt-bindings: arm64: dts: mediatek: Add OpenWrt One
+To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Chen-Yu Tsai <wenst@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>, 
+	=?UTF-8?B?TsOtY29sYXMgRiAuIFIgLiBBIC4gUHJhZG8=?= <nfraprado@collabora.com>, 
+	Macpaul Lin <macpaul.lin@mediatek.com>, Heiko Stuebner <heiko.stuebner@cherry.de>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Chris Morgan <macromorgan@hotmail.com>, 
+	Sebastian Reichel <sre@kernel.org>, Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	openwrt-devel@lists.openwrt.org, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240529_004447_899116_EFA17F2F 
-X-CRM114-Status: GOOD (  11.71  )
+X-CRM114-CacheID: sfid-20240529_004853_059651_6E4245E8 
+X-CRM114-Status: UNSURE (   9.01  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,32 +99,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, May 29, 2024 at 08:10:46AM +0530, Vignesh Raman wrote:
-> Stop vendoring the testlist into the kernel. Instead, use the
-> testlist from the IGT build to ensure we do not miss renamed
-> or newly added tests.
-> 
-> Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
-> ---
-> 
-> v2:
->   - Fix testlist generation for arm and arm64 builds.
-> 
-> v3:
->   - Rename generated testlist file to ci-testlist.
-> 
-> ---
->  drivers/gpu/drm/ci/build-igt.sh  |   35 +
->  drivers/gpu/drm/ci/igt_runner.sh |    9 +-
->  drivers/gpu/drm/ci/testlist.txt  | 2761 ------------------------------
->  3 files changed, 40 insertions(+), 2765 deletions(-)
->  delete mode 100644 drivers/gpu/drm/ci/testlist.txt
-> 
+On Mon, May 27, 2024 at 2:00=E2=80=AFPM Rafa=C5=82 Mi=C5=82ecki <zajec5@gma=
+il.com> wrote:
 
-Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+> From: Rafa=C5=82 Mi=C5=82ecki <rafal@milecki.pl>
+>
+> OpenWrt One is the first ever OpenWrt product. It's based on MT7981B and
+> has entered an early production stage.
+>
+> Signed-off-by: Rafa=C5=82 Mi=C5=82ecki <rafal@milecki.pl>
 
+Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
 
--- 
-With best wishes
-Dmitry
+Yours,
+Linus Walleij
 
