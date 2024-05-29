@@ -4,99 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43841C25B7E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 May 2024 08:58:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06466C25B75
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 May 2024 09:12:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=21X9UlHX+fPsujEUXeJTIFpAAcXsNqjBqq3kXV2CRnA=; b=snD5nNWxtQosFHIDTfrdMDeUNr
-	GQaYVMISsseUV8ZQ1H6TuSgV1PzgpIFlChTkCCi5TNML3obyfVIbZaw5bQkQSdao3g/Hfr0Uy+/uU
-	u+bHmRbsNShEV+3er7qeOVzHLZOCsgKQU5tyM8rFK9FolGlkQCGC626fYVChsudX1QrDOoXfXuJWQ
-	BM6uysZ1qxnkcyGefjbKB1JCPUc5CZFFncuD3s6PtlLPAujaVmEgpofdWQ3zyZ/0zJqOznuyDiEMr
-	6W7cqrzFb/MFDTg1df6qQermTTEpsJ7zVPvsP014aBk7f5BOhNPJCiBC2UChR8aCnBeppH10Pp6m3
-	mvaLbcgA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ciTtYKEbBr+vQK3oiFVI2dnU7hwIdnBzRqy3mCB0PTM=; b=09bDkINWOQUctMfo1On5aGLqBU
+	vUZ+kV3ys38u2IwU6MBUvpUuslM20Ovyp1Q+nrF8QiD1gYd7gbT2X4AtqvW6X85hb4BcJs5wHKebk
+	fmH8w7pU1eVRYbXA7O8I6bkGXojNisCIoFZPBfBz6e02sozlwr3Td04CPw0ihZV4aDNk5B0UbYZtn
+	TBRi4lKAn2lNmfIk2S4FMXQ5NtCV0wU6UTW7JQEL6UnHeYj4t2dl5+TTprlzWNeG71bkBzjmaxAZA
+	gcHJhl3sONTLXOU5GicpGh3Hf5SegvSar+Tg8K7NDb7TmCgH5GjBqSpkRPp/YPsBLEyrx0M7f6Qyb
+	rHuKUJfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCF97-00000003YLg-3Vtk;
-	Wed, 29 May 2024 08:58:57 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1sCFM8-00000003a9I-3s4r;
+	Wed, 29 May 2024 09:12:24 +0000
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCF8r-00000003YFz-1oor;
-	Wed, 29 May 2024 08:58:43 +0000
-X-UUID: 7f0e9a0a1d9711efbf6c7d4f5c147266-20240529
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=21X9UlHX+fPsujEUXeJTIFpAAcXsNqjBqq3kXV2CRnA=;
-	b=cvMm7zbnjmcejupBjGP43TAJUHMcbPQil5pTdl/LWHkpnUxbQCbS6kP30NGioywxrm8eAfE4FcOmBNnlWyjPrjnIXPnC2nZWp9jFNrGEHXlIxFmPkniAs4itn/w5a11pW0bFdWyw7eRzIh3mGesMglX8p12r+3S1XwwBhVaGZ18=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.39,REQID:4976716d-2448-4f66-a492-2960b6ab0fd8,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:-30,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACT
-	ION:release,TS:-55
-X-CID-META: VersionHash:393d96e,CLOUDID:f1f55b93-e2c0-40b0-a8fe-7c7e47299109,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:2,IP:nil,UR
-	L:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:
-	1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 7f0e9a0a1d9711efbf6c7d4f5c147266-20240529
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
-	(envelope-from <liju-clr.chen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1164089388; Wed, 29 May 2024 01:43:18 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 29 May 2024 16:42:41 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 29 May 2024 16:42:41 +0800
-From: Liju-clr Chen <liju-clr.chen@mediatek.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Jonathan Corbet <corbet@lwn.net>,
-	"Catalin Marinas" <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
-	"Steven Rostedt" <rostedt@goodmis.org>, Masami Hiramatsu
-	<mhiramat@kernel.org>, Mathieu Desnoyers <mathieu.desnoyers@efficios.com>,
-	Richard Cochran <richardcochran@gmail.com>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Liju-clr Chen
-	<Liju-clr.Chen@mediatek.com>, Yingshiuan Pan <Yingshiuan.Pan@mediatek.com>,
-	Ze-yu Wang <Ze-yu.Wang@mediatek.com>
-CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-doc@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-trace-kernel@vger.kernel.org>, <netdev@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, David Bradil <dbrazdil@google.com>,
-	Trilok Soni <quic_tsoni@quicinc.com>, Shawn Hsiao <shawn.hsiao@mediatek.com>,
-	PeiLun Suei <PeiLun.Suei@mediatek.com>, Chi-shen Yeh
-	<Chi-shen.Yeh@mediatek.com>, Kevenny Hsieh <Kevenny.Hsieh@mediatek.com>,
-	Liju-clr Chen <liju-clr.chen@mediatek.com>
-Subject: [PATCH v11 12/21] virt: geniezone: Add memory region purpose for hypervisor
-Date: Wed, 29 May 2024 16:42:30 +0800
-Message-ID: <20240529084239.11478-13-liju-clr.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20240529084239.11478-1-liju-clr.chen@mediatek.com>
-References: <20240529084239.11478-1-liju-clr.chen@mediatek.com>
+	id 1sCFM4-00000003a8M-2c5d
+	for linux-mediatek@lists.infradead.org;
+	Wed, 29 May 2024 09:12:22 +0000
+Received: by mail-wr1-x435.google.com with SMTP id ffacd0b85a97d-354f51ac110so1823465f8f.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 29 May 2024 02:12:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1716973936; x=1717578736; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=ciTtYKEbBr+vQK3oiFVI2dnU7hwIdnBzRqy3mCB0PTM=;
+        b=hHlbpwFDqQelx0FLWl67WgLXkmzH+FhPrF0ubKCeM7MSHvmC7Mzk9DSTj5B2xmbZyo
+         7aQit0qnbLY9r6G5qBrkkOXWU9ImyUowWbR4VYJ4Em1KMWHVPwD/Tp+0B5j0YgwWXZvA
+         0K/ra+92uScWA0000NvX8PaX64mUt0TsaRg9gQjn2NbS/4YAoN+rp+cu4YGy8y3nnPPG
+         1eXTrx7G/DkSAt+6Lxu2ctSvn7TYVwDnm0ae9kSclckTD0fdiqc20w60JQ1pM6fvwhsD
+         uFponIPmR9+PTzZTrzaP6vEv1dyBK5D6+dguKtpmxvo9lr3SVfAZFvIanIWVffzL6ayR
+         Ex8A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1716973936; x=1717578736;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=ciTtYKEbBr+vQK3oiFVI2dnU7hwIdnBzRqy3mCB0PTM=;
+        b=Yq/PomIl0FcwSO0m6fXftZrz8dMR3Ht9PT8d9I8QH0pFhNzwNyBKyyfMgwMnCUjp9B
+         Z+/ezxTFSAnCA0Is/dsHPk3Lg3HdfUwHmEIn6bp74eTV/YGn3u8Whzjvsa14AEL3EY02
+         C2lAeiibXEjM05oeIuOJ/L5pn3F2hpvsPeaCLhsCB+g7xkhcZpkgrm5/AEMTbHygh5LK
+         WKi9s7MtJfpWSSmXDpK0FnRqkYtHZFIem4pQ+/aLMUqohTX8TFobW14GWJdr9V67bJ9W
+         hyPb1l4auGTNES/ZDrv4LWxlAAy0Rg0+sII4k/9W8fOxQHVGKED0l27w08RC4vI5barK
+         2OtQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWucjOlUs/3NSIHlzjMKP+q0QY/S+PpMqnNfpaiMXesRN66acWPMQQ90faORL9+y1FbdEpLrfiz46PamueRa7yRw6PatXjGWwoTlhlcGdjInhkK
+X-Gm-Message-State: AOJu0Yy+EKkPbJs92bMyAMI8NjcBnd0OT0lUk2VBvIkpS9s5VZZqUWwu
+	mWMjpd4Vi2eCCcNnHJS0jEKorNv8TQvmJ0tgnDwfTNqf90Gbx0Xc+5f5GOY4jmo=
+X-Google-Smtp-Source: AGHT+IGzTz+2XrrYGSweYUU8ur8Euj8k3ViZtqjUVGNlAHrRa8447ANMpaIZTurk5qHKqtB4e2nxWA==
+X-Received: by 2002:adf:ee0e:0:b0:354:e729:c101 with SMTP id ffacd0b85a97d-35527056972mr12104266f8f.12.1716973936132;
+        Wed, 29 May 2024 02:12:16 -0700 (PDT)
+Received: from [192.168.1.70] ([84.102.31.110])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3557a1c92f8sm14111197f8f.67.2024.05.29.02.12.14
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 29 May 2024 02:12:15 -0700 (PDT)
+Message-ID: <808db317-4cee-426b-a840-013a5e03098d@baylibre.com>
+Date: Wed, 29 May 2024 11:12:13 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--3.824400-8.000000
-X-TMASE-MatchedRID: Bo0EIJTmAYww2a0RxGqSGyVypP66BP0QNNuh+5zmS68Cgjr7b0ytGZas
-	fA8Y/RCF8B1Eq8wDKAEQzM3Grt8RghUBkTmMruyZhK8o4aoss8pKPIx+MJF9o99RlPzeVuQQpc2
-	xgJAY6Lr/EdEp4HtkngHGJy9aPQkxszLAY5oHhBDd+fuf9kcapoLFgHaE9Li9myiLZetSf8mfop
-	0ytGwvXiq2rl3dzGQ19+9ZqEp9FThLnv07eOR+FADAYkZXyNcIbd6xgOLRhrpgBPiGQ8jlcOwYV
-	dkT7SkWWPeZyqTFSSOvAR+R87rVR56r4mzrm8D9E37uz0EXFfMXRoPmWO3jekxwdkPqCq7vDEyN
-	+J8hd+jCS9WgDXVPCp6oP1a0mRIj
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--3.824400-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 4A0668940C8103318647D27F0CF410D4B8048F4C12FE9DF4285CF724B447C25D2000:8
-X-MTK: N
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 4/6] arm64: dts: mediatek: mt8186: add default thermal
+ zones
+To: Chen-Yu Tsai <wenst@chromium.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Daniel Lezcano <daniel.lezcano@linaro.org>,
+ Nicolas Pitre <npitre@baylibre.com>, "Rafael J. Wysocki"
+ <rafael@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
+ Lukasz Luba <lukasz.luba@arm.com>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org,
+ Krzysztof Kozlowski <krzk@kernel.org>
+References: <20240529-mtk-thermal-mt818x-dtsi-v6-0-0c71478a9c37@baylibre.com>
+ <20240529-mtk-thermal-mt818x-dtsi-v6-4-0c71478a9c37@baylibre.com>
+ <75826085-fd59-466a-b1de-b4c323c801c1@collabora.com>
+ <CAGXv+5FPG4ob3mTU0Utm8Wgk0_ZLw=NLPbfFerWh4OUeAz7UHw@mail.gmail.com>
+Content-Language: en-US
+From: Julien Panis <jpanis@baylibre.com>
+In-Reply-To: <CAGXv+5FPG4ob3mTU0Utm8Wgk0_ZLw=NLPbfFerWh4OUeAz7UHw@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240529_015841_526793_360CFD6F 
-X-CRM114-Status: GOOD (  14.68  )
+X-CRM114-CacheID: sfid-20240529_021220_706801_62F7C1C0 
+X-CRM114-Status: GOOD (  15.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,105 +106,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Yi-De Wu <yi-de.wu@mediatek.com>
+On 5/29/24 10:33, Chen-Yu Tsai wrote:
+> On Wed, May 29, 2024 at 4:17 PM AngeloGioacchino Del Regno
+> <angelogioacchino.delregno@collabora.com> wrote:
+>> Il 29/05/24 07:57, Julien Panis ha scritto:
+>>> From: Nicolas Pitre <npitre@baylibre.com>
+>>>
+>>> Inspired by the vendor kernel but adapted to the upstream thermal
+>>> driver version.
+>>>
+>>> Signed-off-by: Nicolas Pitre <npitre@baylibre.com>
+>>> Signed-off-by: Julien Panis <jpanis@baylibre.com>
+>> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> I'm getting some crazy readings which would cause the machine to
+> immediately shutdown during boot. Anyone else see this? Or maybe
+> my device has bad calibration data?
+>
+> gpu_thermal-virtual-0
+> Adapter: Virtual device
+> temp1:       +229.7 C
+>
+> nna_thermal-virtual-0
+> Adapter: Virtual device
+> temp1:       +229.7 C
+>
+> cpu_big0_thermal-virtual-0
+> Adapter: Virtual device
+> temp1:         -7.2 C
+>
+> cpu_little2_thermal-virtual-0
+> Adapter: Virtual device
+> temp1:       +157.2 C
+>
+> cpu_little0_thermal-virtual-0
+> Adapter: Virtual device
+> temp1:       -277.1 C
+>
+> adsp_thermal-virtual-0
+> Adapter: Virtual device
+> temp1:       +229.7 C
+>
+> cpu_big1_thermal-virtual-0
+> Adapter: Virtual device
+> temp1:       +229.7 C
+>
+> cam_thermal-virtual-0
+> Adapter: Virtual device
+> temp1:        +45.4 C
+>
+> cpu_little1_thermal-virtual-0
+> Adapter: Virtual device
+> temp1:       -241.8 C
 
-From: "Jerry Wang" <ze-yu.wang@mediatek.com>
+It's likely that your device has bad calibration data indeed. We observed the same
+behavior on the mt8186 device we used (a Corsola) and finally realized that the
+golden temperature was 0 (device not properly calibrated).
 
-Hypervisor might need to know the precise purpose of each memory
-region, so that it can provide specific memory protection. We add a new
-uapi to pass address and size of a memory region and its purpose.
+To make a comparison, we run chromiumos v5.15 and dmesg output was:
+'This sample is not calibrated, fake !!'
+Additional debugging revealed that the golden temp was actually 0. As a result,
+chromiumos v5.15 does not use the calibration data. It uses some default values
+instead. That's why you can observe good temperatures with chromiumos v5.15
+even with a device that is not calibrated.
 
-Signed-off-by: Jerry Wang <ze-yu.wang@mediatek.com>
-Signed-off-by: Liju-clr Chen <liju-clr.chen@mediatek.com>
-Signed-off-by: Yi-De Wu <yi-de.wu@mediatek.com>
----
- arch/arm64/geniezone/gzvm_arch_common.h |  2 ++
- arch/arm64/geniezone/vm.c               | 10 ++++++++++
- drivers/virt/geniezone/gzvm_vm.c        |  7 +++++++
- include/linux/soc/mediatek/gzvm_drv.h   |  3 +++
- 4 files changed, 22 insertions(+)
+This feature is not implemented in the driver upstream, so you need a device
+properly calibrated to get good temperatures with it. When we forced this
+driver using the default values used by chromiumos v5.15 instead of real calib
+data (temporarily, just for testing), the temperatures were good.
 
-diff --git a/arch/arm64/geniezone/gzvm_arch_common.h b/arch/arm64/geniezone/gzvm_arch_common.h
-index d4b49a4b283a..dabd11438e94 100644
---- a/arch/arm64/geniezone/gzvm_arch_common.h
-+++ b/arch/arm64/geniezone/gzvm_arch_common.h
-@@ -22,6 +22,7 @@ enum {
- 	GZVM_FUNC_PROBE = 12,
- 	GZVM_FUNC_ENABLE_CAP = 13,
- 	GZVM_FUNC_INFORM_EXIT = 14,
-+	GZVM_FUNC_MEMREGION_PURPOSE = 15,
- 	NR_GZVM_FUNC,
- };
- 
-@@ -44,6 +45,7 @@ enum {
- #define MT_HVC_GZVM_PROBE		GZVM_HCALL_ID(GZVM_FUNC_PROBE)
- #define MT_HVC_GZVM_ENABLE_CAP		GZVM_HCALL_ID(GZVM_FUNC_ENABLE_CAP)
- #define MT_HVC_GZVM_INFORM_EXIT		GZVM_HCALL_ID(GZVM_FUNC_INFORM_EXIT)
-+#define MT_HVC_GZVM_MEMREGION_PURPOSE	GZVM_HCALL_ID(GZVM_FUNC_MEMREGION_PURPOSE)
- 
- #define GIC_V3_NR_LRS			16
- 
-diff --git a/arch/arm64/geniezone/vm.c b/arch/arm64/geniezone/vm.c
-index 8690def2419f..c20a2ded2a4f 100644
---- a/arch/arm64/geniezone/vm.c
-+++ b/arch/arm64/geniezone/vm.c
-@@ -144,6 +144,16 @@ int gzvm_arch_destroy_vm(u16 vm_id)
- 				    0, 0, &res);
- }
- 
-+int gzvm_arch_memregion_purpose(struct gzvm *gzvm,
-+				struct gzvm_userspace_memory_region *mem)
-+{
-+	struct arm_smccc_res res;
-+
-+	return gzvm_hypcall_wrapper(MT_HVC_GZVM_MEMREGION_PURPOSE, gzvm->vm_id,
-+				    mem->guest_phys_addr, mem->memory_size,
-+				    mem->flags, 0, 0, 0, &res);
-+}
-+
- static int gzvm_vm_arch_enable_cap(struct gzvm *gzvm,
- 				   struct gzvm_enable_cap *cap,
- 				   struct arm_smccc_res *res)
-diff --git a/drivers/virt/geniezone/gzvm_vm.c b/drivers/virt/geniezone/gzvm_vm.c
-index 6d666974fbf7..91f08dd72c63 100644
---- a/drivers/virt/geniezone/gzvm_vm.c
-+++ b/drivers/virt/geniezone/gzvm_vm.c
-@@ -105,6 +105,7 @@ static int
- gzvm_vm_ioctl_set_memory_region(struct gzvm *gzvm,
- 				struct gzvm_userspace_memory_region *mem)
- {
-+	int ret;
- 	struct vm_area_struct *vma;
- 	struct gzvm_memslot *memslot;
- 	unsigned long size;
-@@ -128,6 +129,12 @@ gzvm_vm_ioctl_set_memory_region(struct gzvm *gzvm,
- 	memslot->vma = vma;
- 	memslot->flags = mem->flags;
- 	memslot->slot_id = mem->slot;
-+
-+	ret = gzvm_arch_memregion_purpose(gzvm, mem);
-+	if (ret) {
-+		pr_err("Failed to config memory region for the specified purpose\n");
-+		return -EFAULT;
-+	}
- 	return register_memslot_addr_range(gzvm, memslot);
- }
- 
-diff --git a/include/linux/soc/mediatek/gzvm_drv.h b/include/linux/soc/mediatek/gzvm_drv.h
-index 096e72b76e5c..3c2b5d9071c6 100644
---- a/include/linux/soc/mediatek/gzvm_drv.h
-+++ b/include/linux/soc/mediatek/gzvm_drv.h
-@@ -179,6 +179,9 @@ void gzvm_drv_irqfd_exit(void);
- int gzvm_vm_irqfd_init(struct gzvm *gzvm);
- void gzvm_vm_irqfd_release(struct gzvm *gzvm);
- 
-+int gzvm_arch_memregion_purpose(struct gzvm *gzvm,
-+				struct gzvm_userspace_memory_region *mem);
-+
- int gzvm_init_ioeventfd(struct gzvm *gzvm);
- int gzvm_ioeventfd(struct gzvm *gzvm, struct gzvm_ioeventfd *args);
- bool gzvm_ioevent_write(struct gzvm_vcpu *vcpu, __u64 addr, int len,
--- 
-2.18.0
+Please make sure your device is properly calibrated: 0 < golden temp < 62.
+
+Julien
 
 
