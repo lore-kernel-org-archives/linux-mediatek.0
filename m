@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBE68C25B74
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 May 2024 10:26:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3AD59C25B7E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 May 2024 10:36:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=J8pf6YD6PYPOxhuxnDNwdGpGAeMHzezf+cUCwL+fh0o=; b=eboQZ4PrXfyL5jn5xDwIBy2sTy
-	EBtgashuXFQqMJQ0bE+sM/Mavt4LW5UHGg4IiZ0S5zD6A6AZRtoSFNOCthKi5dURKGl13mxD58PIu
-	lcTScbFSMLYO/mbRRS4ePWcyeRr/wSeey9y5wlg1BGvUezU04G7Ep5esx//QzjweZZVXjPDdaqC7C
-	nYxqAM+TflHhslrraDJrZB4hjKzfPhHImcFdTbFwAoVABgJ23cllGyjUBrd89D+tAqBI+07+950Xy
-	iPPShvpO15j4gcWivtrUcbgVEMY6jAYxv1mw8wjk2B61j1AgI8lw+Zs6VAbkihGYt0uZVQhMiQkcH
-	QLEHaZCA==;
+	bh=7EB7Pfgo7d2NaDQG2bI7LdmS0RfvQbmEUJWLNeSOUPE=; b=qL4EqMrutZ/QIQyF4tf52AXiFL
+	8tm0eibqreJDP5OKVf6Y3PrzTHn9YdDdfnx0gDoH66qFdTNkpGzfQbOIXh7EBQMGet9gXJi4tfJ17
+	DPJabDBnzkc84WYIYr50ylPp9aNKPPcf8qicpl71ZBxdUtxhldBQPmNmz6wRH+D8HCu+8edBe1eV8
+	yeqRRcDFMIHdtq1FQYmxYi5qzlV/C1f25sIQtJGvYg94gCbETd4GxqaAB80qq4xZcjZ7IIan8Tstq
+	aDu+yJjQSdl8/FjKV6CyOv7wBvIwGdhFygzMVAUGOg9uY0o8qAFmIQKsfCez9MnkHKM1uvIjFKIr8
+	NlVykQNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCczF-00000006z6P-1kXs;
-	Thu, 30 May 2024 10:26:21 +0000
+	id 1sCd8j-0000000706u-0dPT;
+	Thu, 30 May 2024 10:36:09 +0000
 Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCcz8-00000006yXE-2U09;
-	Thu, 30 May 2024 10:26:17 +0000
+	id 1sCd8d-0000000705f-36LJ;
+	Thu, 30 May 2024 10:36:06 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
 	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=J8pf6YD6PYPOxhuxnDNwdGpGAeMHzezf+cUCwL+fh0o=; b=aWhB0q8FGQSlqKpGjJIcrnT3F7
-	Zx/XgjYvWTYLMXoHUeY8mv0PKp85aDgd8vJDRO0Fk1T9t9mc409SY5JpH350Izgo+CFy8ePIF4yDU
-	Vl0Dpi4nCJNm3K1qIk78HHqkPICKrFp9IHwh65eynTxZk1R6AoSxnaqUXmvEVehq4klMP7DZU6MWx
-	N9iwij8balZT7Ly1MLxQq+TnRIYoXkQaQ9GjC9FyXA9pq9wVsXMotY8zUmMAfvR/1dj/zQ3udRX3q
-	C5b2WwFnaS2DyuTgXgamN/N8sjbUnING7J9ih0sVJkqNhV5wsGy5UHGMG7gHU5852NdzAu7IQZXu2
-	UmqcMNbg==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:40714)
+	bh=7EB7Pfgo7d2NaDQG2bI7LdmS0RfvQbmEUJWLNeSOUPE=; b=Vfjo8HafVgU85X8wT31+ClDAnG
+	yFLvmJ1mBuR7Te0gX5R5ClsSqBm66It75TUU7WdBF/MreijEep3h3W6LOGOcOiHuHcN8L9lCZaZtL
+	cranp4f/nde77Us43ZL3lRXJteXoOjiMCxpQjt1+RKf+LfIEmW9S+6UPVQw7ndtOZ4XYbY0xPedzS
+	h7FCRBF3rpiZ+LzHS8Ga7SBoce/eVohOg08iGSmaFdtncg2fUpbXvCzDOmrJzAUslutJDcA5GWuEO
+	GyIMRn8b4UFTd4X8rkcVoT3Bqnpi/n1L0if6hDboA8jP0s6Re+YCakFmC9pqE0g5fJ/GawGTYlXeK
+	fJMoRYEg==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:42664)
 	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.96)
 	(envelope-from <linux@armlinux.org.uk>)
-	id 1sCcwo-0007FG-2a;
-	Thu, 30 May 2024 11:23:50 +0100
+	id 1sCd8I-0007GP-0U;
+	Thu, 30 May 2024 11:35:42 +0100
 Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
 	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1sCcwn-00054M-LC; Thu, 30 May 2024 11:23:49 +0100
-Date: Thu, 30 May 2024 11:23:49 +0100
+	id 1sCd8J-00054V-0z; Thu, 30 May 2024 11:35:43 +0100
+Date: Thu, 30 May 2024 11:35:42 +0100
 From: "Russell King (Oracle)" <linux@armlinux.org.uk>
 To: Sky Huang <SkyLake.Huang@mediatek.com>
 Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
@@ -62,18 +62,18 @@ Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	Steven Liu <Steven.Liu@mediatek.com>
-Subject: Re: [PATCH net-next v5 4/5] net: phy: mediatek: Extend 1G TX/RX link
- pulse time
-Message-ID: <ZlhTtSHRVrjWO0KD@shell.armlinux.org.uk>
+Subject: Re: [PATCH net-next v5 5/5] net: phy: add driver for built-in 2.5G
+ ethernet PHY on MT7988
+Message-ID: <ZlhWfua01SCOor80@shell.armlinux.org.uk>
 References: <20240530034844.11176-1-SkyLake.Huang@mediatek.com>
- <20240530034844.11176-5-SkyLake.Huang@mediatek.com>
+ <20240530034844.11176-6-SkyLake.Huang@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240530034844.11176-5-SkyLake.Huang@mediatek.com>
+In-Reply-To: <20240530034844.11176-6-SkyLake.Huang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240530_032614_654151_B41CEF78 
-X-CRM114-Status: GOOD (  11.98  )
+X-CRM114-CacheID: sfid-20240530_033604_890541_34AD3173 
+X-CRM114-Status: GOOD (  22.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,56 +88,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-A few suggestions:
-
-On Thu, May 30, 2024 at 11:48:43AM +0800, Sky Huang wrote:
-> +static int extend_an_new_lp_cnt_limit(struct phy_device *phydev)
+On Thu, May 30, 2024 at 11:48:44AM +0800, Sky Huang wrote:
+> +static int mt798x_2p5ge_phy_config_aneg(struct phy_device *phydev)
 > +{
-> +	int mmd_read_ret;
-> +	u32 reg_val;
-> +	int timeout;
-> +
-> +	timeout = read_poll_timeout(mmd_read_ret = phy_read_mmd, reg_val,
-> +				    (mmd_read_ret < 0) || reg_val & MTK_PHY_FINAL_SPEED_1000,
-> +				    10000, 1000000, false, phydev,
-> +				    MDIO_MMD_VEND1, MTK_PHY_LINK_STATUS_MISC);
-
-	timeout = phy_read_mmd_poll_timeout(phydev, MDIO_MMD_VEND1,
-					    MTK_PHY_LINK_STATUS_MISC,
-					    reg_val,
-					    reg_val & MTK_PHY_FINAL_SPEED_1000,
-					    10000, 1000000, false);
-
-> +	if (mmd_read_ret < 0)
-> +		return mmd_read_ret;
-
-So, what if the poll times out (timeout == -ETIMEDOUT) ? If you want to
-ignore that, then:
-
-	if (timeout < 0 && timeout != -ETIMEDOUT)
-		return timeout;
-
-> +int mtk_gphy_cl22_read_status(struct phy_device *phydev)
-> +{
+> +	bool changed = false;
+> +	u32 adv;
 > +	int ret;
 > +
-> +	ret = genphy_read_status(phydev);
-> +	if (ret)
-> +		return ret;
+> +	/* In fact, if we disable autoneg, we can't link up correctly:
+> +	 *  2.5G/1G: Need AN to exchange master/slave information.
+> +	 *  100M: Without AN, link starts at half duplex(According to IEEE 802.3-2018),
+> +	 *        which this phy doesn't support.
+> +	 *   10M: Deprecated in this ethernet phy.
+> +	 */
+> +	if (phydev->autoneg == AUTONEG_DISABLE)
+> +		return -EOPNOTSUPP;
+
+We have another driver (stmmac) where a platform driver is wanting to
+put a hack in the ksettings_set() ethtool path to error out on
+disabling AN for 1G speeds. This sounds like something that is
+applicable to more than one hardware (and I've been wondering whether
+it is universally true that 1G copper links and faster all require
+AN to function.)
+
+Thus, I'm wondering whether this is something that the core code should
+be doing.
+
+> +	/* This phy can't handle collision, and neither can (XFI)MAC it's connected to.
+> +	 * Although it can do HDX handshake, it doesn't support CSMA/CD that HDX requires.
+> +	 */
+
+What the MAC can and can't do really has little bearing on what link
+modes the PHY driver should be providing. It is the responsibility of
+the MAC driver to appropriately change what is supported when attaching
+to the PHY. If using phylink, this is done by phylink via the MAC driver
+telling phylink what it is capable of via mac_capabilities.
+
+> +static int mt798x_2p5ge_phy_get_rate_matching(struct phy_device *phydev,
+> +					      phy_interface_t iface)
+> +{
+> +	if (iface == PHY_INTERFACE_MODE_XGMII)
+> +		return RATE_MATCH_PAUSE;
+
+You mention above XFI...
+
+XFI is 10GBASE-R protocol to XFP module electrical standards.
+SFI is 10GBASE-R protocol to SFP+ module electrical standards.
+
+phy_interface_t is interested in the protocol. So, given that you
+mention XFI, why doesn't this test for PHY_INTERFACE_MODE_10GBASER?
+
+> +static int mt798x_2p5ge_phy_probe(struct phy_device *phydev)
+> +{
+> +	struct mtk_i2p5ge_phy_priv *priv;
 > +
-> +	if (phydev->autoneg == AUTONEG_ENABLE && !phydev->autoneg_complete) {
-> +		ret = phy_read(phydev, MII_CTRL1000);
-> +		if ((ret & ADVERTISE_1000FULL) || (ret & ADVERTISE_1000HALF)) {
+> +	priv = devm_kzalloc(&phydev->mdio.dev,
+> +			    sizeof(struct mtk_i2p5ge_phy_priv), GFP_KERNEL);
+> +	if (!priv)
+> +		return -ENOMEM;
+> +
+> +	switch (phydev->drv->phy_id) {
+> +	case MTK_2P5GPHY_ID_MT7988:
+> +		/* The original hardware only sets MDIO_DEVS_PMAPMD */
+> +		phydev->c45_ids.mmds_present |= (MDIO_DEVS_PCS | MDIO_DEVS_AN |
+> +						 MDIO_DEVS_VEND1 | MDIO_DEVS_VEND2);
 
-This is equivalent to:
-
-		if (ret & (ADVERTISE_1000FULL | ADVERTISE_1000HALF)) {
-
-which is easier to read.
-
-Thanks.
+No need for parens on the RHS. The RHS is an expression in its own
+right, and there's no point in putting parens around the expression
+to turn it into another expression!
 
 -- 
 RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
