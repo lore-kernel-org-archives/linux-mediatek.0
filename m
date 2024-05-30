@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72807C25B74
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 May 2024 08:36:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D53A8C25B78
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 May 2024 08:36:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7xwThRWWm7RGJSY39HVyy4ljf9OK8/1xd1SRHdwBmpo=; b=mR1y4FhCiUHFgY0XbgwvCUvarQ
-	z7pKivwtF9uyGonQN/6/BzOmEcxL5ZEcK5ypD+MQKHy1ZoK2MVFeLynoBVvN8bw/nkAVtiJGp/b4B
-	bcw1han8x4EXZwsIl6+41fvlhaqFzuky+EyRLU5Yq0yyoV9PeR3TUHj7fjIbp3MYsvwW9FcJak342
-	Rdc3Z/IuNL+tgCcvvAQSGHeyMEF84VNPJDJwdvT4mv9GhpbzlTT8qCuFOYIFDDSaUmruw+EaOxbaj
-	ZLYvJXE1nRnutgfKBm4YM33hCMgW5MxZzw/sc+9ZQ9CsHMMiye6FtQ/I9UVX+StFU/uBbUxnUJ4qt
-	bHiTDMxw==;
+	bh=IHkwqtBAKIh1FT18Wf08tYxtDsD9mBo3yYE6cpTa5lo=; b=olzEs7MGGBuIA/LprAXA1mY2kc
+	oJwxfgg1W1emKLMQCOFC0XtPhPtVpZPBcs0aWGWHXuaCJ7G5WgaLIT04zNiTpizlZzHRwA5FnOLOw
+	J8lgtQlOVdFW2fnQsUTTh0bULSL+WVot9Yfk7/vxVoJ2FKV91EmoTh5xPUUgGXI8I/GN5qLQLItWq
+	jRGy7rxknMv/J954RhNxDY53mLfwfvQg1UjImBVz9rlVQKD1Isngna/2BVRE+Gu/B4E+D0boBajuz
+	gYZCdJFrIYayBC6JWLHzKiX7FoNc5mE1101BKUKmKHPxqMBEQie4qAGmGUHd7sctsOPndzQI7AoCZ
+	2T0ErNmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCbGc-00000006e95-26oq;
-	Thu, 30 May 2024 08:36:10 +0000
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
+	id 1sCbGp-00000006eGU-1NVz;
+	Thu, 30 May 2024 08:36:25 +0000
+Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCbFz-00000006dn5-3bcx
+	id 1sCbG2-00000006dpN-3ow6
 	for linux-mediatek@lists.infradead.org;
-	Thu, 30 May 2024 08:35:34 +0000
-Received: by mail-pl1-x62f.google.com with SMTP id d9443c01a7336-1f480624d04so5933935ad.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 30 May 2024 01:35:31 -0700 (PDT)
+	Thu, 30 May 2024 08:35:38 +0000
+Received: by mail-pl1-x636.google.com with SMTP id d9443c01a7336-1f44b4404dfso5772005ad.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 30 May 2024 01:35:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1717058131; x=1717662931; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1717058134; x=1717662934; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=7xwThRWWm7RGJSY39HVyy4ljf9OK8/1xd1SRHdwBmpo=;
-        b=jx3GQdKBprVG7MRQUjDPO82gcD97AEk+Qpjs11qTHZIh+wE5NVfAu+AIFahEt/MwCb
-         DjKJm9tvzgum61YGjWdRTOGccQmk4ni88Qe6NTM1Ws6El4OKirHLNoy5Ca6r8aFjCN6r
-         PkGwXCPlK8Vr1E3VTdPYehYcPyXfA7ohKoPMw=
+        bh=IHkwqtBAKIh1FT18Wf08tYxtDsD9mBo3yYE6cpTa5lo=;
+        b=iQuZwjqwzlrIQ3nG04EOIWVW6DcuVe6gTx9q/LX+o2eE8Fo0jUwnhDPC03KsO5P9cy
+         1e3WxjnYhd7gdm7fXG4NnZbw5uo1Zu5vmcmz2jwZZ3zv4fWh6u4m+zO+eHTZa5q7Bigk
+         JR/Ug2eQpnT1/B0Q10ZWYF2ftHl5WG3Tfv1Zs=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1717058131; x=1717662931;
+        d=1e100.net; s=20230601; t=1717058134; x=1717662934;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=7xwThRWWm7RGJSY39HVyy4ljf9OK8/1xd1SRHdwBmpo=;
-        b=AWEXlA9xPv8CZ+qnTL+ho+CHFMcJZt+9Ezly4q7M/r4aCN3IaUNEIRxr1SC8MLn1Ru
-         XexoqDQ8ZNf9eD7LdiSeQSbCJRlFtFTqsehfXSIPa59HQMgEFYIm2F/q7j/sdwMiZlnc
-         axMSWgrQ+Am4mMxY0pprgLH/hreb8uCXhpsC35obKRp6vBHixd29gL9h79DKZLNS3+Ho
-         Ll0FGdydIHgl90F7mMQJr7bCChWwJuCrBDKe3jQZfypFC20o62lTOqExodmh+O9Gg684
-         5xG6QXE05cnZGc5etKHI93bqtVzXJKseceuhaRZm5OKyemKZl+vEVM1WNOaI16ahopGd
-         szQw==
-X-Forwarded-Encrypted: i=1; AJvYcCVBN1m5lsVtUMotZKxLWv0QkY9klpkgi98ddOKmz7ERaAhJoYvIghFHc7x3fAssUZ2+M/RS5TZpN/tcxAB1sqngNc0Z10kEI4OGDoNsyqbaFeqO
-X-Gm-Message-State: AOJu0YxZ4RWP7fM4hkUEPvcG/KWwUPxwJZvtyz1aFU6YtBVAjrNROb/D
-	KP5/Lk6LJ/+XZkFtn1m3xagID9N6jSbMovPHZY+F/HPIXDEqYj65KrhsKyHKQw==
-X-Google-Smtp-Source: AGHT+IEp028TMUUWRl/RXoMRYp1icLkfUsk+YnlWATTbz/4qqOD7Tx9V/9ogbJ57638g/PX+8PWjow==
-X-Received: by 2002:a17:902:c409:b0:1f5:e796:f26a with SMTP id d9443c01a7336-1f6193f2c1cmr16752955ad.5.1717058130799;
-        Thu, 30 May 2024 01:35:30 -0700 (PDT)
+        bh=IHkwqtBAKIh1FT18Wf08tYxtDsD9mBo3yYE6cpTa5lo=;
+        b=Vm494CWrgd/ibbY0y5fXuD4l35G/DUf3THujnbZ7E34TQMTjbHaL8h3zk64qL2Uvak
+         NC4JkkkntyMQmGcP/Fuy2+SCnWlS2xbDC2mbEqTxQKnk5AyUHGxJK0RZ8KBerLQfMRS9
+         ay+anMDb1YJx3Em/mlNJtqx+jDclrt7dKRzwfKTBCLbSfQ1OLa01YTxmkIlmFMRt7dVY
+         egRyW2Ym/3yb0HQZ0T+jk/1k36enWyIgxgziGuOnIyZOn6YVe1FCETB/hsq7Y2EC8Ujq
+         kqqvlLJe75E970DKm2JdIOuH332DquiWbxMwVjSCI87X7IIPorgxRPxRqPexuUPUgrZq
+         83dw==
+X-Forwarded-Encrypted: i=1; AJvYcCVxr7Rhss6fFnk1HKkJwno0kSY1LfT9uW5jMcF1wrs+vX2BwwIitgEQyRv9idDnIycaZuPQAVBwuNnFDR85xIPYXxkG5/jTkCWktmdIBLqFFWd1
+X-Gm-Message-State: AOJu0YxYHCQvzGpLnNw6nBlsQeTyAwNhWZj2XTrczjemFIF4Br8J7QEp
+	G20eyjM29r8lkuuTOUjRmNp5oIzwACAQLv5EqOQYJ4udN+WowshXs2j7p1EsBg==
+X-Google-Smtp-Source: AGHT+IGaMXKlAuHj3tKDXFrEymwDvO07A1BRFroXZlN02EvX5mN7HsOfQHvylgHcYJoSPTNjRI9s+A==
+X-Received: by 2002:a17:903:2095:b0:1f4:768b:445e with SMTP id d9443c01a7336-1f619605ee4mr11933665ad.24.1717058134222;
+        Thu, 30 May 2024 01:35:34 -0700 (PDT)
 Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:65f0:63a9:90bb:50b8])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-1f617390fe7sm10950635ad.146.2024.05.30.01.35.27
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-1f617390fe7sm10950635ad.146.2024.05.30.01.35.31
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 30 May 2024 01:35:30 -0700 (PDT)
+        Thu, 30 May 2024 01:35:33 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Frank Binns <frank.binns@imgtec.com>,
 	Matt Coster <matt.coster@imgtec.com>,
@@ -81,17 +81,17 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH 3/6] dt-bindings: gpu: powervr-rogue: Add MediaTek MT8173 GPU
-Date: Thu, 30 May 2024 16:35:02 +0800
-Message-ID: <20240530083513.4135052-4-wenst@chromium.org>
+Subject: [PATCH 4/6] drm/imagination: Add compatible string entry for Series6XT
+Date: Thu, 30 May 2024 16:35:03 +0800
+Message-ID: <20240530083513.4135052-5-wenst@chromium.org>
 X-Mailer: git-send-email 2.45.1.288.g0e0cd299f1-goog
 In-Reply-To: <20240530083513.4135052-1-wenst@chromium.org>
 References: <20240530083513.4135052-1-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240530_013532_007261_39CD1FF2 
-X-CRM114-Status: GOOD (  11.68  )
+X-CRM114-CacheID: sfid-20240530_013535_009585_0C8531BF 
+X-CRM114-Status: GOOD (  10.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,66 +106,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MediaTek MT8173 comes with a PowerVR Rogue GX6250, which is one
-of the Series6XT GPUs, another sub-family of the Rogue family.
-
-This was part of the very first few versions of the PowerVR submission,
-but was later dropped. The compatible string has been updated to follow
-the new naming scheme adopted for the AXE series.
-
-In a previous iteration of the PowerVR binding submission [1], the
-number of clocks required for the 6XT family was mentioned to be
-always 3. This is also reflected here.
-
-[1] https://lore.kernel.org/dri-devel/6eeccb26e09aad67fb30ffcd523c793a43c79c2a.camel@imgtec.com/
+The MediaTek MT8173 comes with a PowerVR Rogue GX6250, which is part
+of the Series6XT, another variation of the Rogue family of GPUs.
 
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- .../bindings/gpu/img,powervr-rogue.yaml       | 24 +++++++++++++++----
- 1 file changed, 20 insertions(+), 4 deletions(-)
+ drivers/gpu/drm/imagination/pvr_drv.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/gpu/img,powervr-rogue.yaml b/Documentation/devicetree/bindings/gpu/img,powervr-rogue.yaml
-index 256e252f8087..48aa205b66b4 100644
---- a/Documentation/devicetree/bindings/gpu/img,powervr-rogue.yaml
-+++ b/Documentation/devicetree/bindings/gpu/img,powervr-rogue.yaml
-@@ -12,10 +12,17 @@ maintainers:
+diff --git a/drivers/gpu/drm/imagination/pvr_drv.c b/drivers/gpu/drm/imagination/pvr_drv.c
+index 5c3b2d58d766..3d1a933c8303 100644
+--- a/drivers/gpu/drm/imagination/pvr_drv.c
++++ b/drivers/gpu/drm/imagination/pvr_drv.c
+@@ -1475,6 +1475,7 @@ pvr_remove(struct platform_device *plat_dev)
  
- properties:
-   compatible:
--    items:
--      - enum:
--          - ti,am62-gpu
--      - const: img,img-axe # IMG AXE GPU model/revision is fully discoverable
-+    oneOf:
-+      - items:
-+          - enum:
-+              - mediatek,mt8173-gpu
-+          # PowerVR 6XT GPU model/revision is fully discoverable
-+          - const: img,powervr-6xt
-+      - items:
-+          - enum:
-+              - ti,am62-gpu
-+          # IMG AXE GPU model/revision is fully discoverable
-+          - const: img,img-axe
- 
-   reg:
-     maxItems: 1
-@@ -56,6 +63,15 @@ allOf:
-       properties:
-         clocks:
-           maxItems: 1
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            const: img,powervr-6xt
-+    then:
-+      properties:
-+        clocks:
-+          minItems: 3
- 
- examples:
-   - |
+ static const struct of_device_id dt_match[] = {
+ 	{ .compatible = "img,img-axe", .data = NULL },
++	{ .compatible = "img,powervr-6xt", .data = NULL },
+ 	{}
+ };
+ MODULE_DEVICE_TABLE(of, dt_match);
 -- 
 2.45.1.288.g0e0cd299f1-goog
 
