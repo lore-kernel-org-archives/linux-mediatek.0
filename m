@@ -4,75 +4,187 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC319C25B78
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 May 2024 08:45:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11BF1C25B74
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 May 2024 08:57:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=oQcOVF+O655yruhPTVMERnaIwgJZSDJ5JXbzSnvNbU8=; b=YSm2VYEztxHABSgG+4/uFi5Bm3
-	L1jh9ewKDFy8gZpxTWcyn/hXyPi1UChfLq5GVMS8sS4SiYjpUCBX43s5foHVhs21CaZ1cQ0O0ciAF
-	EUjDgBHcIb0trDMiKuUFW2BDm7JqSwoSNcaP1qXMBxoFs+ttC0x+NaSVMOFU2iU3pfj5CrAKXbKXk
-	hB2tdAqsdL9NMVfFM5DzxaHSHl8XV75rOydH4UWOr2cYiYC2tBzR7LTJKj7G4eGU9sepbL17uNbC+
-	Jxd6/X41iLOd3D2uX7i/FqEBZQhguXICopF6rDfss9lyISEMm1rRkGWSjfSS6k2+Ox1v+i+rjyYpC
-	dU1VpAnQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=C7V76UDgySDnjhV7M3fUnDlnTf1EqpZ84NRA8KW6CQ8=; b=M9QSU2BfFP/AMCA0/kNN4b7rIj
+	7V2Pa7YykeXu6v/+4gl94jNLFMy39uYnyEls3XVON5C24NrtqwUwhZpFRM1JckoQEXg5vpk/HPwWb
+	vSkgZ69i1B8SZHHDWWv1tf+En1XWDOYPal+ASt3lgdHs19kxX4rBkuuc7lQekH82b8ZMBgdnDFQRq
+	fkDszNCf/B0EHE2DcJSHmBK+ksjbH/9KGYf3c1ma3oAiawhn+YZwJUenfTEYYbzlrtmILhVJiOEip
+	rTNDLmwHPHe2s6UAbi4eaF72mu6bDPkRJ3rFDD7sFuGP3QPqZS14oGeQF6pLgb3afknUhnMLezC+a
+	ORd2s7Hw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCbPN-00000006fo9-0tAt;
-	Thu, 30 May 2024 08:45:13 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1sCbbi-00000006iNA-1Zbo;
+	Thu, 30 May 2024 08:57:58 +0000
+Received: from mail-db5eur01on0621.outbound.protection.outlook.com ([2a01:111:f400:fe02::621] helo=EUR01-DB5-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCbPK-00000006fnM-0CZI
-	for linux-mediatek@lists.infradead.org;
-	Thu, 30 May 2024 08:45:11 +0000
-X-UUID: e71df7701e6011efbf6c7d4f5c147266-20240530
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=oQcOVF+O655yruhPTVMERnaIwgJZSDJ5JXbzSnvNbU8=;
-	b=YYiCj0LtprZ8ilhR6TXtCbLFhEx8BBpG/FBOpyt9fwxAeB9MaKTddKCGIA2XBTiQQPiaT0wyXrkHiV3a5hEEXXwGQWN4M4N6xdcCFVtkySGz2PDQonSwSNFDP/EDS6IayhCrE+UtLMgPJpQJoePLq7neRvlIoIovyjTFz68tzDo=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.39,REQID:270909c6-8459-4fa0-8b15-76a07c222b4a,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:393d96e,CLOUDID:da76fe43-4544-4d06-b2b2-d7e12813c598,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: e71df7701e6011efbf6c7d4f5c147266-20240530
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
-	(envelope-from <mingyen.hsieh@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2036508652; Thu, 30 May 2024 01:45:01 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 30 May 2024 01:44:59 -0700
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 30 May 2024 16:44:58 +0800
-From: Mingyen Hsieh <mingyen.hsieh@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo@kernel.org>
-CC: <deren.wu@mediatek.com>, <Sean.Wang@mediatek.com>,
-	<Soul.Huang@mediatek.com>, <Leon.Yen@mediatek.com>,
-	<Eric-SY.Chang@mediatek.com>, <km.lin@mediatek.com>,
-	<robin.chiu@mediatek.com>, <ch.yeh@mediatek.com>, <posh.sun@mediatek.com>,
-	<Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
-	<Shayne.Chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, Leon Yen <leon.yen@mediatek.com>, Ming
- Yen Hsieh <mingyen.hsieh@mediatek.com>
-Subject: [PATCH v2] wifi: mt76: mt7921: introduce CSA support
-Date: Thu, 30 May 2024 16:44:55 +0800
-Message-ID: <20240530084455.4290-1-mingyen.hsieh@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1sCbad-00000006hh8-2wah;
+	Thu, 30 May 2024 08:56:53 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=eLM6o9X5PCcXG/pW6L58VP5ctqpvwOKZNODgOPoBNSpKOejd3YiHKm/6WFSFpHlEemip3nCL0cZGeBdK4XG9dR9/mRKgBVXJDnu0feTAKZhRzw6alJdsg5eUhIVJcF8zd36hob4EExIeE415xABRoqrzPw5Lc/+b2MR8rYnQq4w8dSNuwVoh62CQYVxXR+YAc8KktEJQf2OOGAPag75UbfNgaK4050T4n8ODgbv4dRpovh081Yjcvr1Etn1+F47+EZ/NXedCd/5StCU+FaQ6XjHh3jqyvkkGZ9nvC3QjrEXj5zI2agPsqds+Rnje7ujpG89dNZrybX1n+2tKexCa+w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=C7V76UDgySDnjhV7M3fUnDlnTf1EqpZ84NRA8KW6CQ8=;
+ b=fBZIate9UVjIR6Q2kYWHH5+O4zFQvl8qq+8OwwP2xBYLIdh3IK/5frngR3QUtpzj18NmpqmN7Af5Hed03+P2cwokyrJr+ebs4286+QRNicdbbBDNUrhs1jTuwa9DhrZ3iy7puPhlAs7Wkg5Te0aUzqZdzIdfSPQ+sziFLrM8/lte/UBo9eb69tTv62A9WyokFF3C61jGQEcpIdow7rgMI1/QoWNVinmPa7J2553kma41pW35biiIA4YMqVEpBbLwx6oy6L+KEPMML57PrgL69YmKCDVcxAjTXlIH2WKzRGMhVEYulvsbSF2QSIJoD27anHC2K2xmlqeGZrJ7RZUyMQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=C7V76UDgySDnjhV7M3fUnDlnTf1EqpZ84NRA8KW6CQ8=;
+ b=sle8FNICGW6rx7op6xwd2GQyyRBOGZUXliOeiuuCkdS0yttlqYFEZtbqbLtTfyPTzyKC4sQBw34WOQQkw7kwOwPD5JeBrlLcy4K7+P5+BBiKB5EDAtzmzIc36N1ewghn7UOVhNhooTcX0hJEbsinsw0UCgocW4BwwvAVlMKx6mA=
+Received: from DU0PR04MB9417.eurprd04.prod.outlook.com (2603:10a6:10:358::11)
+ by DU2PR04MB8856.eurprd04.prod.outlook.com (2603:10a6:10:2e3::16) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7633.19; Thu, 30 May
+ 2024 08:41:55 +0000
+Received: from DU0PR04MB9417.eurprd04.prod.outlook.com
+ ([fe80::557f:6fcf:a5a7:981c]) by DU0PR04MB9417.eurprd04.prod.outlook.com
+ ([fe80::557f:6fcf:a5a7:981c%7]) with mapi id 15.20.7633.018; Thu, 30 May 2024
+ 08:41:55 +0000
+From: Peng Fan <peng.fan@nxp.com>
+To: Markus Elfring <Markus.Elfring@web.de>, "soc@kernel.org" <soc@kernel.org>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>, Alexandre Torgue
+	<alexandre.torgue@foss.st.com>, Alim Akhtar <alim.akhtar@samsung.com>, Andrew
+ Jeffery <andrew@codeconstruct.com.au>, Angelo Gioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Baolin Wang
+	<baolin.wang@linux.alibaba.com>, Chester Lin <chester62515@gmail.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>, Claudiu Beznea
+	<claudiu.beznea@tuxon.dev>, Damien Le Moal <dlemoal@kernel.org>, Dan
+ Carpenter <dan.carpenter@linaro.org>, Aisheng Dong <aisheng.dong@nxp.com>,
+	Dvorkin Dmitry <dvorkin@tibbo.com>, Emil Renner Berthing <kernel@esmil.dk>,
+	Fabio Estevam <festevam@gmail.com>, Geert Uytterhoeven
+	<geert+renesas@glider.be>, "Ghennadi Procopciuc (OSS)"
+	<ghennadi.procopciuc@oss.nxp.com>, Hal Feng <hal.feng@starfivetech.com>,
+	=?iso-8859-1?Q?Heiko_St=FCbner?= <heiko@sntech.de>, Jacky Bai
+	<ping.bai@nxp.com>, Jianlong Huang <jianlong.huang@starfivetech.com>, Joel
+ Stanley <joel@jms.id.au>, Jonathan Hunter <jonathanh@nvidia.com>, Krzysztof
+ Kozlowski <krzk@kernel.org>, Linus Walleij <linus.walleij@linaro.org>,
+	Ludovic Desroches <ludovic.desroches@microchip.com>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Matthias Brugger <mbrugger@suse.com>, Maxime
+ Coquelin <mcoquelin.stm32@gmail.com>, Nicolas Ferre
+	<nicolas.ferre@microchip.com>, Orson Zhai <orsonzhai@gmail.com>, Patrice
+ Chotard <patrice.chotard@foss.st.com>, Sascha Hauer <s.hauer@pengutronix.de>,
+	Sean Wang <sean.wang@kernel.org>, Shawn Guo <shawnguo@kernel.org>, Shiraz
+ Hashim <shiraz.linux.kernel@gmail.com>, Stephen Warren
+	<swarren@wwwdotorg.org>, Sylwester Nawrocki <s.nawrocki@samsung.com>, Thierry
+ Reding <thierry.reding@gmail.com>, Tony Lindgren <tony@atomide.com>, Viresh
+ Kumar <vireshk@kernel.org>, Wells Lu <wellslutw@gmail.com>
+CC: LKML <linux-kernel@vger.kernel.org>, "linux-gpio@vger.kernel.org"
+	<linux-gpio@vger.kernel.org>, "linux-tegra@vger.kernel.org"
+	<linux-tegra@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>,
+	"linux-stm32@st-md-mailman.stormreply.com"
+	<linux-stm32@st-md-mailman.stormreply.com>,
+	"linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>,
+	"linux-renesas-soc@vger.kernel.org" <linux-renesas-soc@vger.kernel.org>,
+	"linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
+	"linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"imx@lists.linux.dev" <imx@lists.linux.dev>, "linux-aspeed@lists.ozlabs.org"
+	<linux-aspeed@lists.ozlabs.org>, "openbmc@lists.ozlabs.org"
+	<openbmc@lists.ozlabs.org>, "kernel@pengutronix.de" <kernel@pengutronix.de>,
+	"Peng Fan (OSS)" <peng.fan@oss.nxp.com>, Emil Renner Berthing
+	<emil.renner.berthing@canonical.com>
+Subject: RE: [PATCH v2 04/20] pinctrl: starfive: Use scope based of_node_put()
+ cleanups
+Thread-Topic: [PATCH v2 04/20] pinctrl: starfive: Use scope based
+ of_node_put() cleanups
+Thread-Index: AQHaniTZ6VNSLl9dJE6yR3D8reUn1LGrRxsAgARWhwA=
+Date: Thu, 30 May 2024 08:41:55 +0000
+Message-ID: <DU0PR04MB9417AEB942C1EDC053B3894288F32@DU0PR04MB9417.eurprd04.prod.outlook.com>
+References: <20240504-pinctrl-cleanup-v2-4-26c5f2dc1181@nxp.com>
+ <96beb071-ec2c-475f-8fa2-d519a1b1dc28@web.de>
+In-Reply-To: <96beb071-ec2c-475f-8fa2-d519a1b1dc28@web.de>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nxp.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: DU0PR04MB9417:EE_|DU2PR04MB8856:EE_
+x-ms-office365-filtering-correlation-id: a17c9bc0-8824-4b88-17b4-08dc80845c67
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;ARA:13230031|366007|1800799015|7416005|376005|38070700009|921011;
+x-microsoft-antispam-message-info: =?iso-8859-1?Q?vwWKD5R/ZPNz7hT4YSpXw/38Yx8+28e/4XLE1fGHWRyd8PiR+xTbwcuZBo?=
+ =?iso-8859-1?Q?IfrDgwKT5BD6uj27ZmzTsJjhbo06pgCe2p+5ueSPZq1YqfzfSLKcVb4Txv?=
+ =?iso-8859-1?Q?YW9J2FDqeHpRo5Wh+zxswERh/JDlr7JSfn2xg5r75G14rvV1Mn/B4gho9x?=
+ =?iso-8859-1?Q?FByN+pg1Nx5GulB5XRwP1p/PUPq/TD8C3HdxpH6FF0giXHVcL933U/8frQ?=
+ =?iso-8859-1?Q?tne6V+6Kv2qtCk8/fnkyqwAGblQyjzr6EnvVtjpc0jdzbw8IDUCcWlvfj5?=
+ =?iso-8859-1?Q?MVDFNrBKP0yy7XiysiDAnfHYr5ZPtyecP9lN2laEDGbh/C12QS7CP8RWm0?=
+ =?iso-8859-1?Q?TEPwaMUPlXsyuehsMDMMSD2/gt1EfjX8aZrUKH4X/z7vXuH4VwZiC0gimq?=
+ =?iso-8859-1?Q?v2HCNKmDltkly/EOfFW89mQKMjEQHvlLak3SNiDt293JPEX303rzfW5rPF?=
+ =?iso-8859-1?Q?0k1FhBVlP9vS+TrU45/zCDSHHWd6S2JF0I6cbaetbTx66+FB1pSr23qFdD?=
+ =?iso-8859-1?Q?3TfQFbEwUwYAVSLoW6k2B6bmThXbzkowaNb/c10/tmMjnppYvkdbTenC52?=
+ =?iso-8859-1?Q?Cdsj+gcW8uLjEyffChAAlYByF4SPlAEsj9Qe+lBizlQNNq/n0UlCQkPxWx?=
+ =?iso-8859-1?Q?l4PepLBwMo0BOx7un1f0vrDCq9pE12of+lpaB5r5uRV0c8papu8mlGB5qc?=
+ =?iso-8859-1?Q?B1ha8PFAmL2hdEoEvSq4Th9oFUSXcIMXFxieRSCs1HJg33mTHdm3lis87z?=
+ =?iso-8859-1?Q?s5uRCgTx3EHskuAwupNkYpPAf0BNv6IYHprWVdTalE5o5cIbm0TW8hYQV5?=
+ =?iso-8859-1?Q?bxw45C7ySSSKiZ7ZMYz78VxDn+zonDHyjE7RwUX68Tida0Yq0NlDcjBOu5?=
+ =?iso-8859-1?Q?/go8rZA2AvZQUdIyQ0wRhMBAtQNXLU4ctJzN0BF7QY9KNSso0FHEw1S0YM?=
+ =?iso-8859-1?Q?ucAHjPRW5gn2oCFyU6SnWb1uupK4wo8e9v2sJuySac6m76sdRG29Tk7h51?=
+ =?iso-8859-1?Q?TP38iTPxL5HwW3Z5TsYRU6nQG8GRG5gFGY32D7qKEIR5jxBo3LvyhdLJVT?=
+ =?iso-8859-1?Q?Jro7avHMWag3j/4EwVI610Cq487BV7fzAIuOdzcAuJ8UM0BZxtic6Nw6E3?=
+ =?iso-8859-1?Q?M1nRVc/6bjBejit2bntSKUVwxy8QgyJUJm7+tlGR25ky4FIMXfrcJGJrN6?=
+ =?iso-8859-1?Q?IF6ea4jFvnQ29wlIijDLianGtmRpWEsJeABs6NNOeh5dAdGsMfNb1i+KjX?=
+ =?iso-8859-1?Q?wtp4WLMYNtrAfN0I6RDzyEgwInNbMPrcCNUP0yWkJBjsI6a/8vzZuK02ez?=
+ =?iso-8859-1?Q?6ephtZO5Ay3TtT62mCjJLqTS7POz5oZwLPqOmDVw3xhzZwQ=3D?=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU0PR04MB9417.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(366007)(1800799015)(7416005)(376005)(38070700009)(921011);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?erJcNYauynazoXLI4h3eC4/icEZgxpYRnfumI3n1eMrkZDIvW7TdeZflAT?=
+ =?iso-8859-1?Q?cOHo0hsA2dNZIdzXdLMo8H5SDvVG04NOMtx9SwyqOlbVepcppZYuL4WhVq?=
+ =?iso-8859-1?Q?haxk+DyZEQotGC4j3LnKaCTLv51AWQOQkng09eiqrkv51dFI2DsDZRr8DV?=
+ =?iso-8859-1?Q?ADJKR3lzvxfnZukzPz5C6RFXqkpuioUVxns+R5F37CEs1zv9/OWJo/rJnx?=
+ =?iso-8859-1?Q?uqx1JqxjUAXLobVLbFR1Kddugkc/0bcmCW58XnDK7DIAXybr+HK8nAJPtB?=
+ =?iso-8859-1?Q?hF6xH/9uAy4drsrayplgl54CJg18HsMVsZZhK/mDpW2pMFt3VNIKx6A/tC?=
+ =?iso-8859-1?Q?xWz1IEEXrsGC8U0aWAfnwzBBU9qFpE87m6W4LMrEhkf8BxE/P2HBP+k/sn?=
+ =?iso-8859-1?Q?z7qEu/Ud5mzrok6ll7JzrInpdeNn7DrY2qbN9tkAF7KPamcdqimblT1Bea?=
+ =?iso-8859-1?Q?N8RdAZL77KI0+J5bpK8rx49hRrEn2iHdlzA+ElA+t1XspvAld7giKHf076?=
+ =?iso-8859-1?Q?Py1FhebVhQFbBtdz27Mv/N2SixBneo9CmGGEHSm5OinAIltOnQ7WbmoBul?=
+ =?iso-8859-1?Q?GmdTVRNWMfmy0JXxwAHmbiwUNiJKmMsKd811bBKh/oJ9TXiWvjm1ZwWgbH?=
+ =?iso-8859-1?Q?LfOfL+hjSOUs+RtK/xRNcBHDBIrY4Olb7LwMaQBDCuYhusScrlr2kk6gxc?=
+ =?iso-8859-1?Q?2ZAcAieLqiFJJjglh7gc+ZuZeLXdg79sNpDLXvPypC/5kZHwrEAF9AOUpv?=
+ =?iso-8859-1?Q?QvxCmaWJ11kbowLKxC+2xKCLjl5aBNitaIeTpyLLF1VhfN2DBH+Tuw+BbX?=
+ =?iso-8859-1?Q?kXLhup0NO8AtoEKcFLF1g1NsvN3jcbGBdp/2jYn9KR32fjNyzMKFBy/Wih?=
+ =?iso-8859-1?Q?tCLNWwk0KPtp42w6N9fPTTLmz9RH1Ly6exvfMmZERZ94BUB9BpGWz62+GM?=
+ =?iso-8859-1?Q?BJMMTs27Dr+ps5wHGsvNpytYvWxaRmLBk4ttBvw/a2K20VJD+p9uA2go1Q?=
+ =?iso-8859-1?Q?7knc/TwdNLGU8d8Ur8R5EY2fwNIfR6t2TulfwDbxcgL/LJ5BlyKIyPLtEh?=
+ =?iso-8859-1?Q?qCvcZbXUFvHMsSKZscMeCjWHE8gXXzw0IZpZkA+1h1OCeL5z0IfeaRai9r?=
+ =?iso-8859-1?Q?YGUQOcjnXsGOhbL4BBUe2EEYlrK4hFucOlEv8meJ1V2dlJCBkjtXO8oHpy?=
+ =?iso-8859-1?Q?8Ma3u9+HxVSjr5RhqGGd4LeVQvo4llWvOiDLrdfDRe4GW1V5sZ3amZ7Cyt?=
+ =?iso-8859-1?Q?xasGfth9c70/SfOAF+q2PTNL88ncgUfbDeX+hxlxb3TgSgPUfo+Fb6N4Am?=
+ =?iso-8859-1?Q?ct4pg2/vV873tXfU8xgFud38F0gXgD7UHXTeX7eqmXXVcPtNBCLum3SHr3?=
+ =?iso-8859-1?Q?PNWDpvlMYKxZE+KWRt3RfxFCBoN2+XtxBDwYhjVyeJKEd6ZbQYHcV6X5Ph?=
+ =?iso-8859-1?Q?q8qKSI9dxUh9ij4GfJFtaeSp2a5ARSCEX/+fKp9LCeatV2sPKRu7RzMkmX?=
+ =?iso-8859-1?Q?exzOZWPvMMc7AVmkpdJTOMa3rMId30rScynljpx8dYRT2AcBRSGVYXArpS?=
+ =?iso-8859-1?Q?G2WzNg0fImm8leDAOJHwCvYW31q45+V+8ueY8BZ8LYuLrMmYtcdoB3khgi?=
+ =?iso-8859-1?Q?AcgN/9Ev0yN7Q=3D?=
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: text/plain
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: DU0PR04MB9417.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: a17c9bc0-8824-4b88-17b4-08dc80845c67
+X-MS-Exchange-CrossTenant-originalarrivaltime: 30 May 2024 08:41:55.3845
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: qoG7dsrkr9oh8mmGoXZheZDICE9EMpxy2yp66DuVW7+/rB4ezjGSAWkRYjEBeMcyFDWSkwcrSeju14JZyQYWBw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DU2PR04MB8856
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240530_014510_129958_CDE11679 
-X-CRM114-Status: GOOD (  15.50  )
+X-CRM114-CacheID: sfid-20240530_015651_776233_ADDD2C33 
+X-CRM114-Status: GOOD (  18.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,243 +199,110 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Leon Yen <leon.yen@mediatek.com>
+Hi Markus
 
-Add CSA (Channel Switch Announcement) related implementation
-in collaboration with mac80211 to deal with dynamic channel
-switching.
+> Subject: Re: [PATCH v2 04/20] pinctrl: starfive: Use scope based of_node_=
+put()
+> cleanups
+>
+> > Use scope based of_node_put() cleanup to simplify code.
+>
+> I see opportunities to improve affected function implementations another =
+bit.
+>
+>
+> ...
+> > +++ b/drivers/pinctrl/starfive/pinctrl-starfive-jh7100.c
+> ...
+> > @@ -543,18 +540,18 @@ static int starfive_dt_node_to_map(struct
+> pinctrl_dev *pctldev,
+> >                     pins =3D devm_kcalloc(dev, npins, sizeof(*pins),
+> GFP_KERNEL);
+> >                     if (!pins) {
+> >                             ret =3D -ENOMEM;
+> > -                           goto put_child;
+> > +                           goto free_map;
+> >                     }
+> >
+> >                     pinmux =3D devm_kcalloc(dev, npins, sizeof(*pinmux)=
+,
+> GFP_KERNEL);
+> >                     if (!pinmux) {
+> >                             ret =3D -ENOMEM;
+> > -                           goto put_child;
+> > +                           goto free_map;
+> >                     }
+> ...
+> > @@ -623,8 +620,6 @@ static int starfive_dt_node_to_map(struct
+> pinctrl_dev *pctldev,
+> >     mutex_unlock(&sfp->mutex);
+> >     return 0;
+> >
+> > -put_child:
+> > -   of_node_put(child);
+> >  free_map:
+> >     pinctrl_utils_free_map(pctldev, map, nmaps);
+> >     mutex_unlock(&sfp->mutex);
+> ...
+> > +++ b/drivers/pinctrl/starfive/pinctrl-starfive-jh7110.c
+> ...
+> > @@ -175,18 +175,18 @@ static int jh7110_dt_node_to_map(struct
+> pinctrl_dev *pctldev,
+> >             pins =3D devm_kcalloc(dev, npins, sizeof(*pins), GFP_KERNEL=
+);
+> >             if (!pins) {
+> >                     ret =3D -ENOMEM;
+> > -                   goto put_child;
+> > +                   goto free_map;
+> >             }
+> >
+> >             pinmux =3D devm_kcalloc(dev, npins, sizeof(*pinmux),
+> GFP_KERNEL);
+> >             if (!pinmux) {
+> >                     ret =3D -ENOMEM;
+> > -                   goto put_child;
+> > +                   goto free_map;
+> >             }
+> ...
+> > @@ -233,8 +233,6 @@ static int jh7110_dt_node_to_map(struct
+> pinctrl_dev *pctldev,
+> >     *num_maps =3D nmaps;
+> >     return 0;
+> >
+> > -put_child:
+> > -   of_node_put(child);
+> >  free_map:
+> >     pinctrl_utils_free_map(pctldev, map, nmaps);
+> >     mutex_unlock(&sfp->mutex);
+>
+>
+> 1. Exception handling is repeated a few times also according to memory
+> allocation failures.
+>    How do you think about to use a corresponding label like "e_nomem"
+>    so that another bit of duplicate source code can be avoided?
 
-Signed-off-by: Leon Yen <leon.yen@mediatek.com>
-Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
----
-v2: update subject format
----
- .../net/wireless/mediatek/mt76/mt7921/main.c  | 98 +++++++++++++++++++
- .../wireless/mediatek/mt76/mt7921/mt7921.h    |  1 +
- drivers/net/wireless/mediatek/mt76/mt792x.h   |  6 ++
- .../net/wireless/mediatek/mt76/mt792x_core.c  | 14 +++
- 4 files changed, 119 insertions(+)
+I have no plan to rework this series for non-accepted patches. If you have
+interest and time, feel free to take it.
+>
+> https://wiki.se/
+> i.cmu.edu%2Fconfluence%2Fdisplay%2Fc%2FMEM12-
+> C.%2BConsider%2Busing%2Ba%2Bgoto%2Bchain%2Bwhen%2Bleaving%2Ba%
+> 2Bfunction%2Bon%2Berror%2Bwhen%2Busing%2Band%2Breleasing%2Bresou
+> rces&data=3D05%7C02%7Cpeng.fan%40nxp.com%7C293bafdf40524fa4655b08
+> dc7e58f6b2%7C686ea1d3bc2b4c6fa92cd99c5c301635%7C0%7C0%7C63852
+> 4167804502915%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiL
+> CJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C0%7C%7C%7C&sdata
+> =3DKb5cz6sVxW1TNfQ8MM2F6YLIIztyjvW4wULEJLYKRM8%3D&reserved=3D0
+>
+> 2. Will development interests grow for the usage of a statement like
+> "guard(mutex)(&sfp->mutex);"?
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-index 3e3ad3518d85..22689bae9a3c 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-@@ -337,6 +337,9 @@ mt7921_add_interface(struct ieee80211_hw *hw, struct ieee80211_vif *vif)
- 	vif->driver_flags |= IEEE80211_VIF_BEACON_FILTER;
- 	if (phy->chip_cap & MT792x_CHIP_CAP_RSSI_NOTIFY_EVT_EN)
- 		vif->driver_flags |= IEEE80211_VIF_SUPPORTS_CQM_RSSI;
-+
-+	INIT_WORK(&mvif->csa_work, mt7921_csa_work);
-+	timer_setup(&mvif->csa_timer, mt792x_csa_timer, 0);
- out:
- 	mt792x_mutex_release(dev);
- 
-@@ -1337,6 +1340,9 @@ static int
- mt7921_add_chanctx(struct ieee80211_hw *hw,
- 		   struct ieee80211_chanctx_conf *ctx)
- {
-+	struct mt792x_dev *dev = mt792x_hw_dev(hw);
-+
-+	dev->new_ctx = ctx;
- 	return 0;
- }
- 
-@@ -1344,6 +1350,10 @@ static void
- mt7921_remove_chanctx(struct ieee80211_hw *hw,
- 		      struct ieee80211_chanctx_conf *ctx)
- {
-+	struct mt792x_dev *dev = mt792x_hw_dev(hw);
-+
-+	if (dev->new_ctx == ctx)
-+		dev->new_ctx = NULL;
- }
- 
- static void mt7921_ctx_iter(void *priv, u8 *mac,
-@@ -1399,6 +1409,89 @@ static void mt7921_mgd_complete_tx(struct ieee80211_hw *hw,
- 	mt7921_abort_roc(mvif->phy, mvif);
- }
- 
-+static int mt7921_switch_vif_chanctx(struct ieee80211_hw *hw,
-+				     struct ieee80211_vif_chanctx_switch *vifs,
-+				     int n_vifs,
-+				     enum ieee80211_chanctx_switch_mode mode)
-+{
-+	return mt792x_assign_vif_chanctx(hw, vifs->vif, vifs->link_conf,
-+					 vifs->new_ctx);
-+}
-+
-+void mt7921_csa_work(struct work_struct *work)
-+{
-+	struct mt792x_vif *mvif;
-+	struct mt792x_dev *dev;
-+	struct ieee80211_vif *vif;
-+	int ret;
-+
-+	mvif = (struct mt792x_vif *)container_of(work, struct mt792x_vif,
-+						csa_work);
-+	dev = mvif->phy->dev;
-+	vif = container_of((void *)mvif, struct ieee80211_vif, drv_priv);
-+
-+	mt792x_mutex_acquire(dev);
-+	ret = mt76_connac_mcu_uni_set_chctx(mvif->phy->mt76, &mvif->mt76,
-+					    dev->new_ctx);
-+	mt792x_mutex_release(dev);
-+
-+	ieee80211_chswitch_done(vif, !ret, 0);
-+}
-+
-+static int mt7921_pre_channel_switch(struct ieee80211_hw *hw,
-+				     struct ieee80211_vif *vif,
-+				     struct ieee80211_channel_switch *chsw)
-+{
-+	if (vif->type != NL80211_IFTYPE_STATION || !vif->cfg.assoc)
-+		return -EOPNOTSUPP;
-+
-+	/* Avoid beacon loss due to the CAC(Channel Availability Check) time
-+	 * of the AP.
-+	 */
-+	if (!cfg80211_chandef_usable(hw->wiphy, &chsw->chandef,
-+				     IEEE80211_CHAN_RADAR))
-+		return -EOPNOTSUPP;
-+
-+	return 0;
-+}
-+
-+static void mt7921_channel_switch(struct ieee80211_hw *hw,
-+				  struct ieee80211_vif *vif,
-+				  struct ieee80211_channel_switch *chsw)
-+{
-+	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
-+	u16 beacon_interval = vif->bss_conf.beacon_int;
-+
-+	mvif->csa_timer.expires = TU_TO_EXP_TIME(beacon_interval * chsw->count);
-+	add_timer(&mvif->csa_timer);
-+}
-+
-+static void mt7921_abort_channel_switch(struct ieee80211_hw *hw,
-+					struct ieee80211_vif *vif,
-+					struct ieee80211_bss_conf *link_conf)
-+{
-+	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
-+
-+	del_timer_sync(&mvif->csa_timer);
-+	cancel_work_sync(&mvif->csa_work);
-+}
-+
-+static void mt7921_channel_switch_rx_beacon(struct ieee80211_hw *hw,
-+					    struct ieee80211_vif *vif,
-+					    struct ieee80211_channel_switch *chsw)
-+{
-+	struct mt792x_dev *dev = mt792x_hw_dev(hw);
-+	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
-+	u16 beacon_interval = vif->bss_conf.beacon_int;
-+
-+	if (cfg80211_chandef_identical(&chsw->chandef,
-+				       &dev->new_ctx->def) &&
-+				       chsw->count) {
-+		mod_timer(&mvif->csa_timer,
-+			  TU_TO_EXP_TIME(beacon_interval * chsw->count));
-+	}
-+}
-+
- const struct ieee80211_ops mt7921_ops = {
- 	.tx = mt792x_tx,
- 	.start = mt7921_start,
-@@ -1458,6 +1551,11 @@ const struct ieee80211_ops mt7921_ops = {
- 	.unassign_vif_chanctx = mt792x_unassign_vif_chanctx,
- 	.mgd_prepare_tx = mt7921_mgd_prepare_tx,
- 	.mgd_complete_tx = mt7921_mgd_complete_tx,
-+	.switch_vif_chanctx = mt7921_switch_vif_chanctx,
-+	.pre_channel_switch = mt7921_pre_channel_switch,
-+	.channel_switch = mt7921_channel_switch,
-+	.abort_channel_switch = mt7921_abort_channel_switch,
-+	.channel_switch_rx_beacon = mt7921_channel_switch_rx_beacon,
- };
- EXPORT_SYMBOL_GPL(mt7921_ops);
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-index 6c5392c5d207..b85e76e50657 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-@@ -272,6 +272,7 @@ int mt7921_mcu_uni_rx_ba(struct mt792x_dev *dev,
- 			 bool enable);
- void mt7921_scan_work(struct work_struct *work);
- void mt7921_roc_work(struct work_struct *work);
-+void mt7921_csa_work(struct work_struct *work);
- int mt7921_mcu_uni_bss_ps(struct mt792x_dev *dev, struct ieee80211_vif *vif);
- void mt7921_coredump_work(struct work_struct *work);
- int mt7921_get_txpwr_info(struct mt792x_dev *dev, struct mt7921_txpwr *txpwr);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt792x.h b/drivers/net/wireless/mediatek/mt76/mt792x.h
-index 20578497a405..d4b84c7eca59 100644
---- a/drivers/net/wireless/mediatek/mt76/mt792x.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt792x.h
-@@ -109,6 +109,9 @@ struct mt792x_vif {
- 	struct ewma_rssi rssi;
- 
- 	struct ieee80211_tx_queue_params queue_params[IEEE80211_NUM_ACS];
-+
-+	struct work_struct csa_work;
-+	struct timer_list csa_timer;
- };
- 
- struct mt792x_phy {
-@@ -209,6 +212,8 @@ struct mt792x_dev {
- 	enum environment_cap country_ie_env;
- 	u32 backup_l1;
- 	u32 backup_l2;
-+
-+	struct ieee80211_chanctx_conf *new_ctx;
- };
- 
- static inline struct mt792x_dev *
-@@ -278,6 +283,7 @@ void mt792x_set_tsf(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 		    u64 timestamp);
- void mt792x_tx_worker(struct mt76_worker *w);
- void mt792x_roc_timer(struct timer_list *timer);
-+void mt792x_csa_timer(struct timer_list *timer);
- void mt792x_flush(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 		  u32 queues, bool drop);
- int mt792x_assign_vif_chanctx(struct ieee80211_hw *hw,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_core.c b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
-index a405af8d9052..2c95bc2aac0a 100644
---- a/drivers/net/wireless/mediatek/mt76/mt792x_core.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
-@@ -246,6 +246,14 @@ void mt792x_roc_timer(struct timer_list *timer)
- }
- EXPORT_SYMBOL_GPL(mt792x_roc_timer);
- 
-+void mt792x_csa_timer(struct timer_list *timer)
-+{
-+	struct mt792x_vif *mvif = from_timer(mvif, timer, csa_timer);
-+
-+	ieee80211_queue_work(mvif->phy->mt76->hw, &mvif->csa_work);
-+}
-+EXPORT_SYMBOL_GPL(mt792x_csa_timer);
-+
- void mt792x_flush(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 		  u32 queues, bool drop)
- {
-@@ -283,6 +291,11 @@ void mt792x_unassign_vif_chanctx(struct ieee80211_hw *hw,
- 	mutex_lock(&dev->mt76.mutex);
- 	mvif->mt76.ctx = NULL;
- 	mutex_unlock(&dev->mt76.mutex);
-+
-+	if (vif->bss_conf.csa_active) {
-+		del_timer_sync(&mvif->csa_timer);
-+		cancel_work_sync(&mvif->csa_work);
-+	}
- }
- EXPORT_SYMBOL_GPL(mt792x_unassign_vif_chanctx);
- 
-@@ -603,6 +616,7 @@ int mt792x_init_wiphy(struct ieee80211_hw *hw)
- 	ieee80211_hw_set(hw, SUPPORTS_DYNAMIC_PS);
- 	ieee80211_hw_set(hw, SUPPORTS_VHT_EXT_NSS_BW);
- 	ieee80211_hw_set(hw, CONNECTION_MONITOR);
-+	ieee80211_hw_set(hw, CHANCTX_STA_CSA);
- 
- 	if (dev->pm.enable)
- 		ieee80211_hw_set(hw, CONNECTION_MONITOR);
--- 
-2.18.0
+I have no plan on this.
 
+Thanks,
+Peng.
+>
+>
+> Regards,
+> Markus
 
