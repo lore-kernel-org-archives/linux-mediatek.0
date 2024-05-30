@@ -4,94 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53A05C25B74
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 May 2024 08:36:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC319C25B78
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 May 2024 08:45:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=P3dPYP7w2xcwwD4ezxBwzChfzLxfVatZgNqWhWYFewg=; b=kcdN3vJEmbMRLe50285Nw54FiG
-	rBWmbks/XhYDz9hhC4VAXJbd663TZVQof88tDldsBFFAPiDxpgN1Wkjk/PZEf7RCgJWlW7deyWC+x
-	1JlaDS/wmjv1VZGCUSD7EeufLUhIBeVq4zi7ahRQY2mZJVfrVRjzCDMeWqfC9OaRQAcFW6B4APSA6
-	TPcr5Z5JOwvhxz2Vccy9e4SwM2HEfmALrm4mJy5fSMf8f+blDvHs25qGlb9c8gKgK9fMgBZdk4o/z
-	rTwrEGI3ArHBDZLJAJBuQodKDx0Q4pVJrr5E/egKEHHn5+w7Y6ACPisrhVVjzJ9urqizgiYahSUg3
-	KFONQbLg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=oQcOVF+O655yruhPTVMERnaIwgJZSDJ5JXbzSnvNbU8=; b=YSm2VYEztxHABSgG+4/uFi5Bm3
+	L1jh9ewKDFy8gZpxTWcyn/hXyPi1UChfLq5GVMS8sS4SiYjpUCBX43s5foHVhs21CaZ1cQ0O0ciAF
+	EUjDgBHcIb0trDMiKuUFW2BDm7JqSwoSNcaP1qXMBxoFs+ttC0x+NaSVMOFU2iU3pfj5CrAKXbKXk
+	hB2tdAqsdL9NMVfFM5DzxaHSHl8XV75rOydH4UWOr2cYiYC2tBzR7LTJKj7G4eGU9sepbL17uNbC+
+	Jxd6/X41iLOd3D2uX7i/FqEBZQhguXICopF6rDfss9lyISEMm1rRkGWSjfSS6k2+Ox1v+i+rjyYpC
+	dU1VpAnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCbH8-00000006eRG-2qXL;
-	Thu, 30 May 2024 08:36:42 +0000
-Received: from mail-pg1-x52a.google.com ([2607:f8b0:4864:20::52a])
+	id 1sCbPN-00000006fo9-0tAt;
+	Thu, 30 May 2024 08:45:13 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCbGA-00000006dtm-1JgD
+	id 1sCbPK-00000006fnM-0CZI
 	for linux-mediatek@lists.infradead.org;
-	Thu, 30 May 2024 08:35:47 +0000
-Received: by mail-pg1-x52a.google.com with SMTP id 41be03b00d2f7-6c0fdf42328so158709a12.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 30 May 2024 01:35:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1717058141; x=1717662941; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=P3dPYP7w2xcwwD4ezxBwzChfzLxfVatZgNqWhWYFewg=;
-        b=ZRCK0BE2SunqARcBhuH7J/MAAP/rIb89KACjjupqYx19gPMfNf+4hjTOGZ5iBGTse7
-         0UPDF8P+755AQLn8E1wdFz/fZ8U03zOd/aZr4geiq3pj+JR3fMF/f21cEZ1oUpzK8OrT
-         4DQ2AETtCApEzKqoXL1+UxZcBS2QTkNJg3V2Y=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1717058141; x=1717662941;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=P3dPYP7w2xcwwD4ezxBwzChfzLxfVatZgNqWhWYFewg=;
-        b=oZ8aNLmMZjeRNRumdeq/qboBFxqt6U5muTZeyrNhG1t06YHuY/jsIxQB9QPMcfr3ke
-         xPUsqLkeUel6H22gdQqGSXF0A0vAHG5kieHB4hRfk3PL10PpFwD/xi9w9i5OQ7Pnt3NN
-         e+EX4hUuCzFMGiNkdeyrPvoWoOGFFzt9eiXLmbrNaYkxYNyZ6aSYhDGQCKnR2eZJLLQq
-         w75uPvvuWD5jh+Kvd+zJBa1KgNvliYQEtV1Q75fdnR+WMPswKv++gvSVEPiRRs9tnQn5
-         w0A1uNHD8ZVJddxJ5fB7fZDb6Je+iYsb5Z3WCfZMl5yj7XHIrUXTGy3+B7UXgdYjnt+G
-         RpVQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVtwR4Zfgx6FfDOPq3dimmQv0GDAzIHCVyNNQCuDUmjmZu3MBV+b3b8nHs1T24WVo2Rs4/HWzycC2MhaWEV9qBLHUcnlZOi9KF28UhJcZJb5HW/
-X-Gm-Message-State: AOJu0YxxvBeWaE53yNgCPvU6lHUgWl6+Ik623KHiYlmqExQSLtp7XYBe
-	85MUHBrH2yO/dr/TNBl8CSWHQNGb25AZmKiI6KfYGrbcvDRed/+J3uPJIVNY8g==
-X-Google-Smtp-Source: AGHT+IFl9n7DktKEcpEJ4WGQz7AcjFouxFiRzMPk6dDKBcDqPpXqbxbt5Utw0hXKMF4XUXofIeg46w==
-X-Received: by 2002:a05:6a21:99a3:b0:1b1:ec17:e59c with SMTP id adf61e73a8af0-1b264618a95mr1679425637.61.1717058141165;
-        Thu, 30 May 2024 01:35:41 -0700 (PDT)
-Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:65f0:63a9:90bb:50b8])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-1f617390fe7sm10950635ad.146.2024.05.30.01.35.38
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 30 May 2024 01:35:40 -0700 (PDT)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Frank Binns <frank.binns@imgtec.com>,
-	Matt Coster <matt.coster@imgtec.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
-	David Airlie <airlied@gmail.com>,
-	Daniel Vetter <daniel@ffwll.ch>,
-	dri-devel@lists.freedesktop.org,
-	linux-clk@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH 6/6] arm64: dts: mediatek: mt8173: Add GPU device nodes
-Date: Thu, 30 May 2024 16:35:05 +0800
-Message-ID: <20240530083513.4135052-7-wenst@chromium.org>
-X-Mailer: git-send-email 2.45.1.288.g0e0cd299f1-goog
-In-Reply-To: <20240530083513.4135052-1-wenst@chromium.org>
-References: <20240530083513.4135052-1-wenst@chromium.org>
+	Thu, 30 May 2024 08:45:11 +0000
+X-UUID: e71df7701e6011efbf6c7d4f5c147266-20240530
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=oQcOVF+O655yruhPTVMERnaIwgJZSDJ5JXbzSnvNbU8=;
+	b=YYiCj0LtprZ8ilhR6TXtCbLFhEx8BBpG/FBOpyt9fwxAeB9MaKTddKCGIA2XBTiQQPiaT0wyXrkHiV3a5hEEXXwGQWN4M4N6xdcCFVtkySGz2PDQonSwSNFDP/EDS6IayhCrE+UtLMgPJpQJoePLq7neRvlIoIovyjTFz68tzDo=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.39,REQID:270909c6-8459-4fa0-8b15-76a07c222b4a,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:393d96e,CLOUDID:da76fe43-4544-4d06-b2b2-d7e12813c598,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: e71df7701e6011efbf6c7d4f5c147266-20240530
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+	(envelope-from <mingyen.hsieh@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2036508652; Thu, 30 May 2024 01:45:01 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Thu, 30 May 2024 01:44:59 -0700
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Thu, 30 May 2024 16:44:58 +0800
+From: Mingyen Hsieh <mingyen.hsieh@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo@kernel.org>
+CC: <deren.wu@mediatek.com>, <Sean.Wang@mediatek.com>,
+	<Soul.Huang@mediatek.com>, <Leon.Yen@mediatek.com>,
+	<Eric-SY.Chang@mediatek.com>, <km.lin@mediatek.com>,
+	<robin.chiu@mediatek.com>, <ch.yeh@mediatek.com>, <posh.sun@mediatek.com>,
+	<Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
+	<Shayne.Chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, Leon Yen <leon.yen@mediatek.com>, Ming
+ Yen Hsieh <mingyen.hsieh@mediatek.com>
+Subject: [PATCH v2] wifi: mt76: mt7921: introduce CSA support
+Date: Thu, 30 May 2024 16:44:55 +0800
+Message-ID: <20240530084455.4290-1-mingyen.hsieh@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240530_013542_793316_EA2E881E 
-X-CRM114-Status: GOOD (  10.89  )
+X-CRM114-CacheID: sfid-20240530_014510_129958_CDE11679 
+X-CRM114-Status: GOOD (  15.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,55 +87,243 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MediaTek MT8173 comes with a PowerVR Rogue GX6250, which is part
-of the Series6XT, another variation of the Rogue family of GPUs.
+From: Leon Yen <leon.yen@mediatek.com>
 
-On top of the GPU is a glue layer that handles some clock and power
-signals.
+Add CSA (Channel Switch Announcement) related implementation
+in collaboration with mac80211 to deal with dynamic channel
+switching.
 
-Add device nodes for both.
-
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+Signed-off-by: Leon Yen <leon.yen@mediatek.com>
+Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8173.dtsi | 24 ++++++++++++++++++++++++
- 1 file changed, 24 insertions(+)
+v2: update subject format
+---
+ .../net/wireless/mediatek/mt76/mt7921/main.c  | 98 +++++++++++++++++++
+ .../wireless/mediatek/mt76/mt7921/mt7921.h    |  1 +
+ drivers/net/wireless/mediatek/mt76/mt792x.h   |  6 ++
+ .../net/wireless/mediatek/mt76/mt792x_core.c  | 14 +++
+ 4 files changed, 119 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-index 136b28f80cc2..3d7b9cc20a16 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-@@ -993,6 +993,30 @@ u2port1: usb-phy@11291000 {
- 			};
- 		};
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+index 3e3ad3518d85..22689bae9a3c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+@@ -337,6 +337,9 @@ mt7921_add_interface(struct ieee80211_hw *hw, struct ieee80211_vif *vif)
+ 	vif->driver_flags |= IEEE80211_VIF_BEACON_FILTER;
+ 	if (phy->chip_cap & MT792x_CHIP_CAP_RSSI_NOTIFY_EVT_EN)
+ 		vif->driver_flags |= IEEE80211_VIF_SUPPORTS_CQM_RSSI;
++
++	INIT_WORK(&mvif->csa_work, mt7921_csa_work);
++	timer_setup(&mvif->csa_timer, mt792x_csa_timer, 0);
+ out:
+ 	mt792x_mutex_release(dev);
  
-+		gpu: gpu@13000000 {
-+			compatible = "mediatek,mt8173-gpu", "img,powervr-6xt";
-+			reg = <0 0x13000000 0 0x10000>;
-+			interrupts = <GIC_SPI 217 IRQ_TYPE_LEVEL_LOW>;
-+			clocks = <&mfgtop CLK_MFG_G3D>,
-+				 <&mfgtop CLK_MFG_MEM>,
-+				 <&mfgtop CLK_MFG_AXI>;
-+			clock-names = "core", "mem", "sys";
-+			power-domains = <&mfgtop>;
-+		};
+@@ -1337,6 +1340,9 @@ static int
+ mt7921_add_chanctx(struct ieee80211_hw *hw,
+ 		   struct ieee80211_chanctx_conf *ctx)
+ {
++	struct mt792x_dev *dev = mt792x_hw_dev(hw);
 +
-+		mfgtop: clock-controller@13fff000 {
-+			compatible = "mediatek,mt8173-mfgtop";
-+			reg = <0 0x13fff000 0 0x1000>;
-+			clocks = <&topckgen CLK_TOP_AXI_MFG_IN_SEL>,
-+				 <&topckgen CLK_TOP_MEM_MFG_IN_SEL>,
-+				 <&topckgen CLK_TOP_MFG_SEL>,
-+				 <&clk26m>;
-+			clock-names = "sys", "mem", "core", "clk26m";
-+			power-domains = <&spm MT8173_POWER_DOMAIN_MFG>;
-+			#clock-cells = <1>;
-+			#power-domain-cells = <0>;
-+		};
++	dev->new_ctx = ctx;
+ 	return 0;
+ }
+ 
+@@ -1344,6 +1350,10 @@ static void
+ mt7921_remove_chanctx(struct ieee80211_hw *hw,
+ 		      struct ieee80211_chanctx_conf *ctx)
+ {
++	struct mt792x_dev *dev = mt792x_hw_dev(hw);
 +
- 		mmsys: syscon@14000000 {
- 			compatible = "mediatek,mt8173-mmsys", "syscon";
- 			reg = <0 0x14000000 0 0x1000>;
++	if (dev->new_ctx == ctx)
++		dev->new_ctx = NULL;
+ }
+ 
+ static void mt7921_ctx_iter(void *priv, u8 *mac,
+@@ -1399,6 +1409,89 @@ static void mt7921_mgd_complete_tx(struct ieee80211_hw *hw,
+ 	mt7921_abort_roc(mvif->phy, mvif);
+ }
+ 
++static int mt7921_switch_vif_chanctx(struct ieee80211_hw *hw,
++				     struct ieee80211_vif_chanctx_switch *vifs,
++				     int n_vifs,
++				     enum ieee80211_chanctx_switch_mode mode)
++{
++	return mt792x_assign_vif_chanctx(hw, vifs->vif, vifs->link_conf,
++					 vifs->new_ctx);
++}
++
++void mt7921_csa_work(struct work_struct *work)
++{
++	struct mt792x_vif *mvif;
++	struct mt792x_dev *dev;
++	struct ieee80211_vif *vif;
++	int ret;
++
++	mvif = (struct mt792x_vif *)container_of(work, struct mt792x_vif,
++						csa_work);
++	dev = mvif->phy->dev;
++	vif = container_of((void *)mvif, struct ieee80211_vif, drv_priv);
++
++	mt792x_mutex_acquire(dev);
++	ret = mt76_connac_mcu_uni_set_chctx(mvif->phy->mt76, &mvif->mt76,
++					    dev->new_ctx);
++	mt792x_mutex_release(dev);
++
++	ieee80211_chswitch_done(vif, !ret, 0);
++}
++
++static int mt7921_pre_channel_switch(struct ieee80211_hw *hw,
++				     struct ieee80211_vif *vif,
++				     struct ieee80211_channel_switch *chsw)
++{
++	if (vif->type != NL80211_IFTYPE_STATION || !vif->cfg.assoc)
++		return -EOPNOTSUPP;
++
++	/* Avoid beacon loss due to the CAC(Channel Availability Check) time
++	 * of the AP.
++	 */
++	if (!cfg80211_chandef_usable(hw->wiphy, &chsw->chandef,
++				     IEEE80211_CHAN_RADAR))
++		return -EOPNOTSUPP;
++
++	return 0;
++}
++
++static void mt7921_channel_switch(struct ieee80211_hw *hw,
++				  struct ieee80211_vif *vif,
++				  struct ieee80211_channel_switch *chsw)
++{
++	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
++	u16 beacon_interval = vif->bss_conf.beacon_int;
++
++	mvif->csa_timer.expires = TU_TO_EXP_TIME(beacon_interval * chsw->count);
++	add_timer(&mvif->csa_timer);
++}
++
++static void mt7921_abort_channel_switch(struct ieee80211_hw *hw,
++					struct ieee80211_vif *vif,
++					struct ieee80211_bss_conf *link_conf)
++{
++	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
++
++	del_timer_sync(&mvif->csa_timer);
++	cancel_work_sync(&mvif->csa_work);
++}
++
++static void mt7921_channel_switch_rx_beacon(struct ieee80211_hw *hw,
++					    struct ieee80211_vif *vif,
++					    struct ieee80211_channel_switch *chsw)
++{
++	struct mt792x_dev *dev = mt792x_hw_dev(hw);
++	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
++	u16 beacon_interval = vif->bss_conf.beacon_int;
++
++	if (cfg80211_chandef_identical(&chsw->chandef,
++				       &dev->new_ctx->def) &&
++				       chsw->count) {
++		mod_timer(&mvif->csa_timer,
++			  TU_TO_EXP_TIME(beacon_interval * chsw->count));
++	}
++}
++
+ const struct ieee80211_ops mt7921_ops = {
+ 	.tx = mt792x_tx,
+ 	.start = mt7921_start,
+@@ -1458,6 +1551,11 @@ const struct ieee80211_ops mt7921_ops = {
+ 	.unassign_vif_chanctx = mt792x_unassign_vif_chanctx,
+ 	.mgd_prepare_tx = mt7921_mgd_prepare_tx,
+ 	.mgd_complete_tx = mt7921_mgd_complete_tx,
++	.switch_vif_chanctx = mt7921_switch_vif_chanctx,
++	.pre_channel_switch = mt7921_pre_channel_switch,
++	.channel_switch = mt7921_channel_switch,
++	.abort_channel_switch = mt7921_abort_channel_switch,
++	.channel_switch_rx_beacon = mt7921_channel_switch_rx_beacon,
+ };
+ EXPORT_SYMBOL_GPL(mt7921_ops);
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
+index 6c5392c5d207..b85e76e50657 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
+@@ -272,6 +272,7 @@ int mt7921_mcu_uni_rx_ba(struct mt792x_dev *dev,
+ 			 bool enable);
+ void mt7921_scan_work(struct work_struct *work);
+ void mt7921_roc_work(struct work_struct *work);
++void mt7921_csa_work(struct work_struct *work);
+ int mt7921_mcu_uni_bss_ps(struct mt792x_dev *dev, struct ieee80211_vif *vif);
+ void mt7921_coredump_work(struct work_struct *work);
+ int mt7921_get_txpwr_info(struct mt792x_dev *dev, struct mt7921_txpwr *txpwr);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt792x.h b/drivers/net/wireless/mediatek/mt76/mt792x.h
+index 20578497a405..d4b84c7eca59 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt792x.h
++++ b/drivers/net/wireless/mediatek/mt76/mt792x.h
+@@ -109,6 +109,9 @@ struct mt792x_vif {
+ 	struct ewma_rssi rssi;
+ 
+ 	struct ieee80211_tx_queue_params queue_params[IEEE80211_NUM_ACS];
++
++	struct work_struct csa_work;
++	struct timer_list csa_timer;
+ };
+ 
+ struct mt792x_phy {
+@@ -209,6 +212,8 @@ struct mt792x_dev {
+ 	enum environment_cap country_ie_env;
+ 	u32 backup_l1;
+ 	u32 backup_l2;
++
++	struct ieee80211_chanctx_conf *new_ctx;
+ };
+ 
+ static inline struct mt792x_dev *
+@@ -278,6 +283,7 @@ void mt792x_set_tsf(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 		    u64 timestamp);
+ void mt792x_tx_worker(struct mt76_worker *w);
+ void mt792x_roc_timer(struct timer_list *timer);
++void mt792x_csa_timer(struct timer_list *timer);
+ void mt792x_flush(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 		  u32 queues, bool drop);
+ int mt792x_assign_vif_chanctx(struct ieee80211_hw *hw,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_core.c b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
+index a405af8d9052..2c95bc2aac0a 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt792x_core.c
++++ b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
+@@ -246,6 +246,14 @@ void mt792x_roc_timer(struct timer_list *timer)
+ }
+ EXPORT_SYMBOL_GPL(mt792x_roc_timer);
+ 
++void mt792x_csa_timer(struct timer_list *timer)
++{
++	struct mt792x_vif *mvif = from_timer(mvif, timer, csa_timer);
++
++	ieee80211_queue_work(mvif->phy->mt76->hw, &mvif->csa_work);
++}
++EXPORT_SYMBOL_GPL(mt792x_csa_timer);
++
+ void mt792x_flush(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 		  u32 queues, bool drop)
+ {
+@@ -283,6 +291,11 @@ void mt792x_unassign_vif_chanctx(struct ieee80211_hw *hw,
+ 	mutex_lock(&dev->mt76.mutex);
+ 	mvif->mt76.ctx = NULL;
+ 	mutex_unlock(&dev->mt76.mutex);
++
++	if (vif->bss_conf.csa_active) {
++		del_timer_sync(&mvif->csa_timer);
++		cancel_work_sync(&mvif->csa_work);
++	}
+ }
+ EXPORT_SYMBOL_GPL(mt792x_unassign_vif_chanctx);
+ 
+@@ -603,6 +616,7 @@ int mt792x_init_wiphy(struct ieee80211_hw *hw)
+ 	ieee80211_hw_set(hw, SUPPORTS_DYNAMIC_PS);
+ 	ieee80211_hw_set(hw, SUPPORTS_VHT_EXT_NSS_BW);
+ 	ieee80211_hw_set(hw, CONNECTION_MONITOR);
++	ieee80211_hw_set(hw, CHANCTX_STA_CSA);
+ 
+ 	if (dev->pm.enable)
+ 		ieee80211_hw_set(hw, CONNECTION_MONITOR);
 -- 
-2.45.1.288.g0e0cd299f1-goog
+2.18.0
 
 
