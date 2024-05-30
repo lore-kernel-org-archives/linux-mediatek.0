@@ -4,72 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2FEFC27C43
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 May 2024 15:02:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F8C2C27C44
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 May 2024 15:39:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=f9rXrmt7+8lC/knKP497JPEr1C/VriBpknTuw33hit0=; b=1Oxq/W57tID417q1FAcB7lcD82
-	7IdQnbnBZKg7E1mxuET/Alt12nkb1TBLfuwXT2L/f4J3C3d7TpNU+NtbCfxeVTccfANa7ZoMq2uvr
-	uAKC5XSA72wq9UjsAOMEGio6uyXK+QSoeqp25TWYBoUnVjM0rxS6VruU18/aNix+AW2kZ01hKnDH5
-	1mWYFkA7VMp7zjC2dRNrYx5HJorTi2mwMRtDRn1vtMJqECmbblkdWDbfh/3Mi/zfaGW/82j2LJt/t
-	NuW5+u9t8diqGHnBL7TKvKhv9TjWTYjGJCCaUKjzod5yLm/n0ggoZRxL4DZfPJ5HqC/RK+YHfViBu
-	dtI6d2NA==;
+	bh=euUKL3giV/ho/PPa2wLumzm+nzQsUuxb34Rbrl9xhq4=; b=KbFCw055U+cuHKlZ/Ryw5s7VqI
+	we0TR/szbo4UrjG5+gq225QCbcIOzT1jQ86Jz6AA2qe2pFrUVsqC/fYXEfy44yVrQ6FZssQNbwGEA
+	1W0gdQaWY9Kmy8dOGrp2D6qkPw77URbpUkX67FOwY4Iz6bS0XSlx60kaMKyHAEPiN4ocChh0OvuKD
+	FA/Y5US9vyIhAEuaG30jzXk81UkHmII9ZSj8JVN1o7RnMdxIzCyt+hgNcTuzh6SclySP/bM4AANQP
+	vf25NM+GKili4kx2ZRRTxzXkZGF+FUsGLmOevpVkdE/UYnuRvw8AUFqL2zdFFrPphotmFxhh9wEWt
+	zLWMV/3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sChHz-00000007dW0-2TUC;
-	Thu, 30 May 2024 15:01:59 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1sChro-00000007k36-0xWs;
+	Thu, 30 May 2024 15:39:00 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sChHw-00000007dVB-1Grf;
-	Thu, 30 May 2024 15:01:58 +0000
+	id 1sChrk-00000007k1j-1ENi;
+	Thu, 30 May 2024 15:38:58 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id B7AEA62803;
-	Thu, 30 May 2024 15:01:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E64C4C2BBFC;
-	Thu, 30 May 2024 15:01:53 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id E4D66CE1AC3;
+	Thu, 30 May 2024 15:38:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0EDDCC2BBFC;
+	Thu, 30 May 2024 15:38:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1717081314;
-	bh=f9rXrmt7+8lC/knKP497JPEr1C/VriBpknTuw33hit0=;
+	s=k20201202; t=1717083529;
+	bh=euUKL3giV/ho/PPa2wLumzm+nzQsUuxb34Rbrl9xhq4=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=YBSAZJmeLFUhs3Jcwhyp3/kZBkI/0GUWOjTf2m6GbQUWtJ7l8TGe6p7+ZasXZ5xEH
-	 dNiQW5VBgWpgu3R1pc05d7kqdmfT/8Dgv5dKot+NAqENkYOfCfTwe6I1jfG0twfVGR
-	 mqe5MNfQOmD8R1V6TPUJwzjleX1FwVnCDZZvs+b5fj/Tem9lDRr5AwwuExXfYZDEd9
-	 df/EjXzziWNKngavXZOR6W0jQvQZNgfhTzdnbt2BToaYRsO79+ZMJmVpoRh4XMa0Wm
-	 xq+2aTJEqG6jeiCmkjrhh9azTF4ik/jQrpOPaiP1bvEwHG7mnBC28voatWR8zGU0Le
-	 pZsaA+1PKvCiQ==
-Date: Thu, 30 May 2024 17:01:51 +0200
-From: "mripard@kernel.org" <mripard@kernel.org>
-To: Jason-JH Lin =?utf-8?B?KOael+edv+elpSk=?= <Jason-JH.Lin@mediatek.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
-	Singo Chang =?utf-8?B?KOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>, 
-	"linaro-mm-sig@lists.linaro.org" <linaro-mm-sig@lists.linaro.org>, "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>, 
-	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, 
-	"jason-jh.lin@mediatek.corp-partner.google.com" <jason-jh.lin@mediatek.corp-partner.google.com>, 
-	Jason-ch Chen =?utf-8?B?KOmZs+W7uuixqik=?= <Jason-ch.Chen@mediatek.com>, 
-	Shawn Sung =?utf-8?B?KOWui+WtneismSk=?= <Shawn.Sung@mediatek.com>, Nancy Lin =?utf-8?B?KOael+aso+ieoik=?= <Nancy.Lin@mediatek.com>, 
-	"daniel@ffwll.ch" <daniel@ffwll.ch>, "jkardatzke@google.com" <jkardatzke@google.com>, 
-	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, 
-	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>, "airlied@gmail.com" <airlied@gmail.com>, 
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, 
-	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v6 0/7] Add mediate-drm secure flow for SVP
-Message-ID: <20240530-inventive-nippy-bee-bb6fa6@houat>
-References: <20240525232928.5524-1-jason-jh.lin@mediatek.com>
- <20240527-determined-sage-piculet-bfec4a@houat>
- <4828461fa10101eec29e2885bc1aa0e2b7114e7c.camel@mediatek.com>
+	b=bTA3S5kn8ZlDjfTHAJ2im+bwNbQ1fjIQ6OiYCMdv8ybz9xvAoNcDz5vXlakFzfcZs
+	 zHC/+M8zb/rCdvbDJh5gjPenw0N90iz3U3UxXH0BCllvkroQC9wY5Gs8KTgQwx0Ap2
+	 JGwR4/e00D0nYeHNcyuSCmLP3rn43yFocmV308q+/RBjIWASDzyZLOMjbzcsVDeIkr
+	 JMAgaPyGXD9tAOejZl8wwWRyXzD8qSV/qrqMxzr5rhOHaTTCTgsgwF07SKuJ6H+l79
+	 6KTxARwkFXBaOSsDu3vQcpPBJv6LMWuqdMqNdjS4+UYmGvSOd9j+XascoQ4e7q6AcY
+	 NHvo6eobGTuDA==
+Date: Thu, 30 May 2024 16:38:43 +0100
+From: Conor Dooley <conor@kernel.org>
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Frank Binns <frank.binns@imgtec.com>,
+	Matt Coster <matt.coster@imgtec.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+	dri-devel@lists.freedesktop.org, linux-clk@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 3/6] dt-bindings: gpu: powervr-rogue: Add MediaTek MT8173
+ GPU
+Message-ID: <20240530-reptilian-revolver-a8cb1f2af8ba@spud>
+References: <20240530083513.4135052-1-wenst@chromium.org>
+ <20240530083513.4135052-4-wenst@chromium.org>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="bsilt325yu2nqtmw"
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="u4tlLkr2QYvGk/ip"
 Content-Disposition: inline
-In-Reply-To: <4828461fa10101eec29e2885bc1aa0e2b7114e7c.camel@mediatek.com>
+In-Reply-To: <20240530083513.4135052-4-wenst@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240530_080156_479980_ABB74EB7 
-X-CRM114-Status: GOOD (  38.90  )
+X-CRM114-CacheID: sfid-20240530_083856_645156_8A8FEEF2 
+X-CRM114-Status: GOOD (  13.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,109 +86,43 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---bsilt325yu2nqtmw
-Content-Type: text/plain; charset=utf-8
+--u4tlLkr2QYvGk/ip
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Tue, May 28, 2024 at 07:15:34AM GMT, Jason-JH Lin (=E6=9E=97=E7=9D=BF=E7=
-=A5=A5) wrote:
-> Hi Maxime,
+On Thu, May 30, 2024 at 04:35:02PM +0800, Chen-Yu Tsai wrote:
+> The MediaTek MT8173 comes with a PowerVR Rogue GX6250, which is one
+> of the Series6XT GPUs, another sub-family of the Rogue family.
 >=20
-> On Mon, 2024-05-27 at 16:06 +0200, Maxime Ripard wrote:
-> > Hi,
-> >=20
-> > On Sun, May 26, 2024 at 07:29:21AM GMT, Jason-JH.Lin wrote:
-> > > From: Jason-jh Lin <jason-jh.lin@mediatek.corp-partner.google.com>
-> > >=20
-> > > Memory Definitions:
-> > > secure memory - Memory allocated in the TEE (Trusted Execution
-> > > Environment) which is inaccessible in the REE (Rich Execution
-> > > Environment, i.e. linux kernel/userspace).
-> > > secure handle - Integer value which acts as reference to 'secure
-> > > memory'. Used in communication between TEE and REE to reference
-> > > 'secure memory'.
-> > > secure buffer - 'secure memory' that is used to store decrypted,
-> > > compressed video or for other general purposes in the TEE.
-> > > secure surface - 'secure memory' that is used to store graphic
-> > > buffers.
-> > >=20
-> > > Memory Usage in SVP:
-> > > The overall flow of SVP starts with encrypted video coming in from
-> > > an
-> > > outside source into the REE. The REE will then allocate a 'secure
-> > > buffer' and send the corresponding 'secure handle' along with the
-> > > encrypted, compressed video data to the TEE. The TEE will then
-> > > decrypt
-> > > the video and store the result in the 'secure buffer'. The REE will
-> > > then allocate a 'secure surface'. The REE will pass the 'secure
-> > > handles' for both the 'secure buffer' and 'secure surface' into the
-> > > TEE for video decoding. The video decoder HW will then decode the
-> > > contents of the 'secure buffer' and place the result in the 'secure
-> > > surface'. The REE will then attach the 'secure surface' to the
-> > > overlay
-> > > plane for rendering of the video.
-> > >=20
-> > > Everything relating to ensuring security of the actual contents of
-> > > the
-> > > 'secure buffer' and 'secure surface' is out of scope for the REE
-> > > and
-> > > is the responsibility of the TEE.
-> > >=20
-> > > DRM driver handles allocation of gem objects that are backed by a
-> > > 'secure
-> > > surface' and for displaying a 'secure surface' on the overlay
-> > > plane.
-> > > This introduces a new flag for object creation called
-> > > DRM_MTK_GEM_CREATE_RESTRICTED which indicates it should be a
-> > > 'secure
-> > > surface'. All changes here are in MediaTek specific code.
-> > > ---
-> > > TODO:
-> > > 1) Drop MTK_DRM_IOCTL_GEM_CREATE and use DMA_HEAP_IOCTL_ALLOC in
-> > > userspace
-> > > 2) DRM driver use secure mailbox channel to handle normal and
-> > > secure flow
-> > > 3) Implement setting mmsys routing table in the secure world series
-> >=20
-> > I'm not sure what you mean here. Why are you trying to upstream
-> > something that still needs to be removed from your patch series?
-> >=20
-> Because their is too much patches need to be fixed in this series, so I
-> list down the remaining TODO items and send to review for the other
-> patches.
+> This was part of the very first few versions of the PowerVR submission,
+> but was later dropped. The compatible string has been updated to follow
+> the new naming scheme adopted for the AXE series.
 >=20
-> Sorry for the bothering, I'll drop this at the next version.
-
-If you don't intend to use it, we just shouldn't add it. Removing the
-TODO item doesn't make sense, even more so if heaps should be the way
-you handle this.
-
-> > Also, I made some comments on the previous version that have been
-> > entirely ignored and still apply on this version:
-> >=20
-> https://lore.kernel.org/dri-devel/20240415-guppy-of-perpetual-current-3a7=
-974@houat/
-> >=20
+> In a previous iteration of the PowerVR binding submission [1], the
+> number of clocks required for the 6XT family was mentioned to be
+> always 3. This is also reflected here.
 >=20
-> I lost that mail in my mailbox, so I didn't reply at that time.
-> I have imported that mail and replied to you. Hope you don't mind :)
+> [1] https://lore.kernel.org/dri-devel/6eeccb26e09aad67fb30ffcd523c793a43c=
+79c2a.camel@imgtec.com/
+>=20
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 
-I haven't received that answer
+Reviewed-by: Conor Dooley <conor.dooley@microchip.com>
 
-Maxime
+Thanks,
+Conor.
 
---bsilt325yu2nqtmw
+--u4tlLkr2QYvGk/ip
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZliU3wAKCRAnX84Zoj2+
-dvrxAX0XabP7ScLHGhP6JhXAY0/kO0KsAhJ6bXLTnMOtM9E/W4y4qvPNP4LCV3Mo
-XV4YepABgM/zYB5oYrwydUNYU7q9S94P/MmmLhGyY8VJb52Xv+ugqz9UT6kvA1I0
-w0SqyRcoag==
-=wGDo
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZlidgwAKCRB4tDGHoIJi
+0jEUAP9dytPUMftkwmUYeOy5IxYQ34BgC+UeoK8voSx1buveXgEA3if/Ue6idDKS
+pCr8yS7NaLjlC7pujPpYExaUI9Mb/gk=
+=y4xH
 -----END PGP SIGNATURE-----
 
---bsilt325yu2nqtmw--
+--u4tlLkr2QYvGk/ip--
 
