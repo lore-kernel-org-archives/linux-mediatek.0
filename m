@@ -4,79 +4,121 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D921C25B74
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 May 2024 03:51:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D7D1C25B74
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 May 2024 04:22:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Lssezjq4B7Waaj9709ji6/fRNp4n1zWdjdOMbA7tHbg=; b=NXtmopoNVEcF/oEFrlo6GGypPR
-	HVy1GgIAkD3oDisw0RCOjXAezn5HwQ7f/0a7cS9lWkpX1g7jK9keGaP467eIsoKF2FXnBxhmRNFWO
-	RDsNtrYb3Ca2efEUK9LsB2WhagA2Qh/WBIg6QE159bnjEclm/DllSN8EfzCrYeYqeF+/upWXfiWHl
-	39UFcadG3bvRizBJZdMzPExBWmh0ZG9oL6b2reUyRQC1BH/Ys5+ZYMzqdv5e7PbB93NfWuhENvNBr
-	D+kxNYB1IX/c8PlW0OXXKUPaQz7r6PdxnFHwzNr0DV0LERmAsOb0gn5Qjg/DbPrDzXGhoIhqHSWGm
-	xqCaDGtQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=xBLzkMhspMVVnxkqgoE5gR4vmWralf60H1wWDRcdvnw=; b=c+fceANzpFfIDB
+	4N4iMZp6Tgli2VsDDoc2wRgH4JI1kYy8W++6lt88a9pWoLsEMGAcXPfl5ZWsHRN6/IbCWmDVM9ryu
+	zbmm6eTJRNKZLiz5OFR4bsLbSt5OKFSzIufVuWSor8ywhK16vMnUn6UjkIUvCJInY+W4yTSlXFxnG
+	n4ZFAvt9PNpASbaubsOwFSqu4x7KMUyOSY8r9w1iCzLA5Ti25FjAT0IZDGqG3UB2xaBMxvSJvH7+/
+	YaGfASCe/EoGaFRVNdLLFzExJk5JHNxqbqga9mw7x6EFfa0slCbCHms+Ht5wXwIDcRFkE1896pTBA
+	3vJ5Yk/WEkvB5vYEgMPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCWpO-00000006Em0-3rxC;
-	Thu, 30 May 2024 03:51:46 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1sCXIm-00000006Gqw-1RHB;
+	Thu, 30 May 2024 04:22:08 +0000
+Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCWpI-00000006Ekv-0Edi;
-	Thu, 30 May 2024 03:51:45 +0000
-X-UUID: ea061f721e3711efbf6c7d4f5c147266-20240529
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Lssezjq4B7Waaj9709ji6/fRNp4n1zWdjdOMbA7tHbg=;
-	b=Yn0Wnj8p1HJOPQaByQHQYdyo7k6mrYy7nr0U7pitbwoAD0I0fS5LVun/OrRztsRXZmP4v7+Xk9iePGxeBz9O+/pP+OJ6SKWulpOnhAsv4hbD6sKrH936TO0WzVrKopGS3Us3pJszKE5yAVssaU+zQTU1PO39i6CQ1m7XWMUKD0w=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.39,REQID:b8f699a2-31f4-465f-87cc-494d93d24b38,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:393d96e,CLOUDID:e607fb43-4544-4d06-b2b2-d7e12813c598,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: ea061f721e3711efbf6c7d4f5c147266-20240529
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
-	(envelope-from <skylake.huang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1045926773; Wed, 29 May 2024 20:51:37 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 29 May 2024 20:51:34 -0700
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 30 May 2024 11:51:34 +0800
-From: Sky Huang <SkyLake.Huang@mediatek.com>
-To: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>, "David S. Miller"
-	<davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub Kicinski
-	<kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Daniel Golle
-	<daniel@makrotopia.org>, Qingfang Deng <dqfext@gmail.com>, SkyLake Huang
-	<SkyLake.Huang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	<linux-kernel@vger.kernel.org>, <netdev@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-CC: Steven Liu <Steven.Liu@mediatek.com>, SkyLake.Huang
-	<skylake.huang@mediatek.com>
-Subject: [PATCH net-next v5 5/5] net: phy: add driver for built-in 2.5G ethernet PHY on MT7988
-Date: Thu, 30 May 2024 11:48:44 +0800
-Message-ID: <20240530034844.11176-6-SkyLake.Huang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20240530034844.11176-1-SkyLake.Huang@mediatek.com>
-References: <20240530034844.11176-1-SkyLake.Huang@mediatek.com>
+	id 1sCXIg-00000006GqD-2BLG;
+	Thu, 30 May 2024 04:22:07 +0000
+Received: by mail-pf1-x42f.google.com with SMTP id d2e1a72fcca58-6f8e9870e72so402748b3a.1;
+        Wed, 29 May 2024 21:21:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1717042919; x=1717647719; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=xBLzkMhspMVVnxkqgoE5gR4vmWralf60H1wWDRcdvnw=;
+        b=abT+ta+E4+VoM3SllOKKCEEiN+JA5sewKYONXjq6iAvAQThvBi6L3RL3x57NAIl/pN
+         UWfMxIXGjp/ns85tYCRoUPqbgUm+3JL5yY9NqitIIrqffmDfDinAJERLquzexSnw2T13
+         fZW7vmhzzLpkcaUnntg8grbnTKRfV/OBbCyPFhX5a9JOE8zwDe8Bmtc5mlGhQVzQ7Ezu
+         QcsaUx7q01bJqFsHR+7K8oL/zIuAiejgJWyKEcUeLRf3TzBztg21R/a7wKBYHTMkWwV0
+         6r4X3PHf/miofA8gAI1h572qy/uRPt42FMhdFow70/1d6KXxToGFZsUZYGlnfDvCuDa2
+         sEOg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1717042919; x=1717647719;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=xBLzkMhspMVVnxkqgoE5gR4vmWralf60H1wWDRcdvnw=;
+        b=Og3s74U+vBB9g6GaUythAKHY3eIkcrdppxLOgXP4m7HHgeqcMeFckW/WRkK97yvsKc
+         HG/O8SZRUslmWm4z3wKWBb854s4S9ROwiajPhjP7dtDhOeknOHIlUqkwMgqgGKUcCj4C
+         +eUNWrnr0nTfHVUVf/hCeXSuHSVZyjBW06UwwokEDC/h/az1mTikY+kbY1i6E3Lr5HDP
+         7ufB5H4OPPugZM/rpAx0l4MPo8NaBZiJgFqADV0MXdOsZIRUk4yVbLj7St86W/7AGAED
+         QTqXCDMUZV4dX/cFaNaB9CcG8EYdw0O9RcQWX3P7ktZB/7EGuqicWM8lSdQaA0IYIuPS
+         Rpgg==
+X-Forwarded-Encrypted: i=1; AJvYcCX+TPycc0fPLfcfQcvnRpg4LynavphaRDdOJjb5KhdfNPaURyhFylkN/QSLtyzYsB86d5+yIrzA31SO+8MOhYCBtHDmzue3lyt9wWulKST6HAZxwp3x9PbsnSWF0Yk6uHGSqKWsrul8vWRo5Araf95mkAFvaZj1HHk=
+X-Gm-Message-State: AOJu0Yxt7LgpOO2MGnQlYgVJXM3whw5CWXAeyPvpO4G9+rBYOh0MH+vY
+	SL1ym2aQYaqhTU90Bm3w4LVkACWUhfW02jI8Pr6hiAZ8WRAoqEuJ/9GHRr7y
+X-Google-Smtp-Source: AGHT+IELWc+Ian0RzmubNr/PJ38WEIz0KL3Ieb7m/tuYvJNFgMjfxZG8fmC9atETuYx6gTQgx8Gu6Q==
+X-Received: by 2002:a05:6a00:3485:b0:6f8:effd:7942 with SMTP id d2e1a72fcca58-702310daf06mr1253461b3a.2.1717042919124;
+        Wed, 29 May 2024 21:21:59 -0700 (PDT)
+Received: from [192.168.1.3] (ip68-4-215-93.oc.oc.cox.net. [68.4.215.93])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-6f8fcfe6cd2sm8765866b3a.162.2024.05.29.21.21.56
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 29 May 2024 21:21:58 -0700 (PDT)
+Message-ID: <ce9fe740-8c9a-4fc0-a65d-464f2c7da377@gmail.com>
+Date: Wed, 29 May 2024 21:21:54 -0700
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla Thunderbird
+Subject: Re: [net v2] net: ethernet: mtk_eth_soc: handle dma buffer size soc
+ specific
+To: =?UTF-8?B?QmMtYm9jdW4gQ2hlbiAo6Zmz5p+P5p2RKQ==?=
+ <bc-bocun.chen@mediatek.com>, "daniel@makrotopia.org"
+ <daniel@makrotopia.org>, "sgoutham@marvell.com" <sgoutham@marvell.com>
+References: <20240527142142.126796-1-linux@fw-web.de>
+ <BY3PR18MB4737D0ED774B14833353D202C6F02@BY3PR18MB4737.namprd18.prod.outlook.com>
+ <kbzsne4rm4232w44ph3a3hbpgr3th4xvnxazdq3fblnbamrloo@uvs3jyftecma>
+ <395096cbf03b25122b710ba684fb305e32700bba.camel@mediatek.com>
+ <BY3PR18MB4737EC8554AA453AF4B332E8C6F22@BY3PR18MB4737.namprd18.prod.outlook.com>
+ <4611828c0f2a4e9c8157e583217b7bc5072dc4ea.camel@mediatek.com>
+Content-Language: en-US
+From: Florian Fainelli <f.fainelli@gmail.com>
+Autocrypt: addr=f.fainelli@gmail.com; keydata=
+ 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
+ HGuUuzv+GKZ6nsysJw==
+In-Reply-To: <4611828c0f2a4e9c8157e583217b7bc5072dc4ea.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240529_205143_194717_E5ACDCC0 
-X-CRM114-Status: GOOD (  31.53  )
+X-CRM114-CacheID: sfid-20240529_212202_592966_FF8D82BB 
+X-CRM114-Status: GOOD (  22.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,525 +130,147 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: =?UTF-8?B?U3RldmVuIExpdSAo5YqJ5Lq66LGqKQ==?= <steven.liu@mediatek.com>, =?UTF-8?B?U2t5TGFrZSBIdWFuZyAo6buD5ZWf5r6kKQ==?= <SkyLake.Huang@mediatek.com>, =?UTF-8?B?U2FtIFNoaWggKOWPsueiqeS4iSk=?= <Sam.Shih@mediatek.com>, Sean Wang <Sean.Wang@mediatek.com>, "angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "davem@davemloft.net" <davem@davemloft.net>, "edumazet@google.com" <edumazet@google.com>, "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "john@phrozen.org" <john@phrozen.org>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "kuba@kernel.org" <kuba@kernel.org>, "linux@fw-web.de" <linux@fw-web.de>, "pabeni@redhat.com" <pabeni@redhat.com>, "lorenzo@kernel.org" <lorenzo@kernel.org>, =?UTF-8?B?TWFyay1NQyBMZWUgKOadjuaYjuaYjCk=?= <Mark-MC.Lee@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "nbd@nbd.name" <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "SkyLake.Huang" <skylake.huang@mediatek.com>
 
-v1:
-Add support for internal 2.5Gphy on MT7988. This driver will load
-necessary firmware, add appropriate time delay and figure out LED.
-Also, certain control registers will be set to fix link-up issues.
 
-v2:
-1. Move md32_en_cfg_base & pmb_addr detection in probe function.
-2. Do not read PMB & MD32_EN_CFG base addresses from dts. We won't
-change that from board to board. Leave them in driver code. Also,
-release those addresses after firmware is triggered.
-3. Remove half duplex code which leads to ambiguity. Those are for
-testing & developing previously.
-4. Use correct BMCR definitions.
-5. Correct config_aneg / get_features / read_status functions.
-6. Change mt7988_2p5ge prefix to mt798x_2p5ge in case that our next
-platform uses this 2.5Gphy driver.
+On 5/29/2024 6:46 PM, Bc-bocun Chen (陳柏村) wrote:
+> On Wed, 2024-05-29 at 17:50 +0000, Sunil Kovvuri Goutham wrote:
+>>   	
+>> External email : Please do not click links or open attachments until
+>> you have verified the sender or the content.
+>>   On Mon, 2024-05-27 at 17:13 +0100, Daniel Golle wrote:
+>>>> On Mon, May 27, 2024 at 03:55:55PM GMT, Sunil Kovvuri Goutham
+>>> wrote:
+>>>>>>
+>>>>>>
+>>>>>>>> -----Original Message-----
+>>>>>>>> From: Frank Wunderlich <linux@fw-web.de>
+>>>>>>>> Sent: Monday, May 27, 2024 7:52 PM
+>>>>>>>> To: Felix Fietkau <nbd@nbd.name>; Sean Wang <
+>>>>>>>> sean.wang@mediatek.com>;
+>>>>>>>> Mark Lee <Mark-MC.Lee@mediatek.com>; Lorenzo Bianconi
+>>>>>>>> <lorenzo@kernel.org>; David S. Miller <
+>> davem@davemloft.net>
+>>>>> ; Eric
+>>>>>>>> Dumazet
+>>>>>>>> <edumazet@google.com>; Jakub Kicinski <kuba@kernel.org>;
+>>>>> Paolo
+>>>>>>>> Abeni
+>>>>>>>> <pabeni@redhat.com>; Matthias Brugger <
+>>>>> matthias.bgg@gmail.com>;
+>>>>>>>> AngeloGioacchino Del Regno <
+>>>>>>>> angelogioacchino.delregno@collabora.com>
+>>>>>>>> Cc: Frank Wunderlich <frank-w@public-files.de>; John
+>>>>> Crispin
+>>>>>>>> <john@phrozen.org>; netdev@vger.kernel.org;
+>>>>>>>> linux-kernel@vger.kernel.org;
+>>>>>>>> linux-arm-kernel@lists.infradead.org;
+>>>>>>>> linux-mediatek@lists.infradead.org;
+>>>>>>>> Daniel Golle <daniel@makrotopia.org>
+>>>>>>>> Subject: [net v2] net: ethernet: mtk_eth_soc: handle dma
+>>>>> buffer
+>>>>>>>> size soc specific
+>>>>>>>>
+>>>>>>>> From: Frank Wunderlich <frank-w@public-files.de>
+>>>>>>>>
+>>>>>>>> The mainline MTK ethernet driver suffers long time from
+>>>>> rarly but
+>>>>>>>> annoying tx
+>>>>>>>> queue timeouts. We think that this is caused by fixed dma
+>>>>> sizes
+>>>>>>>> hardcoded for
+>>>>>>>> all SoCs.
+>>>>>>>>
+>>>>>>>> Use the dma-size implementation from SDK in a per SoC
+>>>>> manner.
+>>>>>>>>
+>>>>>>>> Fixes: 656e705243fd ("net-next: mediatek: add support for
+>>>>> MT7623
+>>>>>>>> ethernet")
+>>>>>>>> Suggested-by: Daniel Golle <daniel@makrotopia.org>
+>>>>>>>> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+>>>>
+>>>>>>
+>>>>>> ..............
+>>>>>>>>
+>>>>>>>> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+>>>>>>>> b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+>>>>>>>> index cae46290a7ae..f1ff1be73926 100644
+>>>>>>>> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+>>>>>>>> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+>>>>
+>>>>>>
+>>>>>> .............
+>>>>>>>> @@ -1142,40 +1142,46 @@ static int mtk_init_fq_dma(struct
+>>>>> mtk_eth
+>>>>>>>> *eth)
+>>>>>>>>                              cnt * soc-
+>>>>>>>>> tx.desc_size,
+>>>>>>>>                              &eth-
+>>>>>>>>> phy_scratch_ring,
+>>>>>>>>                              GFP_KERNEL);
+>>>>
+>>>>>>
+>>>>>> ..............
+>>>>>>>> -  for (i = 0; i < cnt; i++) {
+>>>>>>>> -      dma_addr_t addr = dma_addr + i *
+>> MTK_QDMA_PAGE_SIZE;
+>>>>>>>> -      struct mtk_tx_dma_v2 *txd;
+>>>>>>>> +      dma_addr = dma_map_single(eth->dma_dev,
+>>>>>>>> +                  eth->scratch_head[j], len *
+>>>>>>>> MTK_QDMA_PAGE_SIZE,
+>>>>>>>> +                  DMA_FROM_DEVICE);
+>>>>>>>>
+>>>>
+>>>>>>
+>>>>>> As per commit msg, the fix is for transmit queue timeouts.
+>>>>>> But the DMA buffer changes seems for receive pkts.
+>>>>>> Can you please elaborate the connection here.
+>>>
+>>>>
+>>>> *I guess* the memory window used for both, TX and RX DMA
+>>> descriptors
+>>>> needs to be wisely split to not risk TX queue overruns, depending
+>>> on
+>>>> the
+>>>> SoC speed and without hurting RX performance...
+>>>>
+>>>> Maybe someone inside MediaTek (I've added to Cc now) and more
+>>>> familiar
+>>>> with the design can elaborate in more detail.
+>>   
+>>> We've encountered a transmit queue timeout issue on the MT79888 and
+>>> have identified it as being related to the RSS feature.
+>>> We suspect this problem arises from a low level of free TX DMADs,
+>> the
+>>> TX Ring alomost full.
+>>> Since RSS is enabled, there are 4 Rx Rings, with each containing
+>> 2048
+>>> DMADs, totaling 8192 for Rx. In contrast, the Tx Ring has only 2048
+>>> DMADs. Tx DMADs will be consumed rapidly during a 10G LAN to 10G WAN
+>>> forwarding test, subsequently causing the transmit queue to stop.
+>>> Therefore, we reduced the number of Rx DMADs for each ring to
+>> balance
+>>> both Tx and Rx DMADs, which resolves this issue.
+>>
+>> Okay, but it’s still not clear why it’s resulting in a transmit
+>> timeout.
+>> When transmit queue is stopped and after some Tx pkts in the pipeline
+>> are flushed out, isn’t
+>> Tx queue wakeup not happening ?
+>>   
+> Yes, the transmit timeout is caused by the Tx queue not waking up.
+> The Tx queue stops when the free counter is less than ring->thres, and
+> it will wake up once the free counter is greater than ring->thres.
+> If the CPU is too late to wake up the Tx queues, it may cause a
+> transmit timeout.
+> Therefore, we balanced the TX and RX DMADs to improve this error
+> situation.
 
-v3:
-1. Add range check for firmware.
-2. Fix c45_ids.mmds_present in probe function.
-3. Still use genphy_update_link() in read_status because
-genphy_c45_read_link() can't correct detect link on this phy.
-
-v4:
-1. Move firmware loading function to mt798x_2p5ge_phy_load_fw()
-2. Add AN disable warning in mt798x_2p5ge_phy_config_aneg()
-3. Clarify the HDX comments in mt798x_2p5ge_phy_get_features()
-
-v5:
-1. Move md32_en_cfg_base & pmb_addr to local variables to achieve
-symmetric code.
-2. Print out firmware date code & version.
-3. Don't return error if LED pinctrl switching fails. Also, add
-comments to this unusual operations.
-4. Return -EOPNOTSUPP for AN off case in config_aneg().
-
-Signed-off-by: SkyLake.Huang <skylake.huang@mediatek.com>
----
- MAINTAINERS                          |   1 +
- drivers/net/phy/mediatek/Kconfig     |  11 +
- drivers/net/phy/mediatek/Makefile    |   1 +
- drivers/net/phy/mediatek/mtk-2p5ge.c | 422 +++++++++++++++++++++++++++
- 4 files changed, 435 insertions(+)
- create mode 100644 drivers/net/phy/mediatek/mtk-2p5ge.c
-
-diff --git a/MAINTAINERS b/MAINTAINERS
-index e58e05c..fe380f2 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -13793,6 +13793,7 @@ M:	Qingfang Deng <dqfext@gmail.com>
- M:	SkyLake Huang <SkyLake.Huang@mediatek.com>
- L:	netdev@vger.kernel.org
- S:	Maintained
-+F:	drivers/net/phy/mediatek/mtk-2p5ge.c
- F:	drivers/net/phy/mediatek/mtk-ge-soc.c
- F:	drivers/net/phy/mediatek/mtk-phy-lib.c
- F:	drivers/net/phy/mediatek/mtk-ge.c
-diff --git a/drivers/net/phy/mediatek/Kconfig b/drivers/net/phy/mediatek/Kconfig
-index 448bc20..1490352 100644
---- a/drivers/net/phy/mediatek/Kconfig
-+++ b/drivers/net/phy/mediatek/Kconfig
-@@ -25,3 +25,14 @@ config MEDIATEK_GE_SOC_PHY
- 	  the MT7981 and MT7988 SoCs. These PHYs need calibration data
- 	  present in the SoCs efuse and will dynamically calibrate VCM
- 	  (common-mode voltage) during startup.
-+
-+config MEDIATEK_2P5GE_PHY
-+	tristate "MediaTek 2.5Gb Ethernet PHYs"
-+	depends on (ARM64 && ARCH_MEDIATEK) || COMPILE_TEST
-+	select MTK_NET_PHYLIB
-+	help
-+	  Supports MediaTek SoC built-in 2.5Gb Ethernet PHYs.
-+
-+	  This will load necessary firmware and add appropriate time delay.
-+	  Accelerate this procedure through internal pbus instead of MDIO
-+	  bus. Certain link-up issues will also be fixed here.
-diff --git a/drivers/net/phy/mediatek/Makefile b/drivers/net/phy/mediatek/Makefile
-index 814879d..c6db8ab 100644
---- a/drivers/net/phy/mediatek/Makefile
-+++ b/drivers/net/phy/mediatek/Makefile
-@@ -2,3 +2,4 @@
- obj-$(CONFIG_MTK_NET_PHYLIB)		+= mtk-phy-lib.o
- obj-$(CONFIG_MEDIATEK_GE_PHY)		+= mtk-ge.o
- obj-$(CONFIG_MEDIATEK_GE_SOC_PHY)	+= mtk-ge-soc.o
-+obj-$(CONFIG_MEDIATEK_2P5GE_PHY)	+= mtk-2p5ge.o
-diff --git a/drivers/net/phy/mediatek/mtk-2p5ge.c b/drivers/net/phy/mediatek/mtk-2p5ge.c
-new file mode 100644
-index 0000000..33d1c8d
---- /dev/null
-+++ b/drivers/net/phy/mediatek/mtk-2p5ge.c
-@@ -0,0 +1,422 @@
-+// SPDX-License-Identifier: GPL-2.0+
-+#include <linux/bitfield.h>
-+#include <linux/firmware.h>
-+#include <linux/module.h>
-+#include <linux/nvmem-consumer.h>
-+#include <linux/of_address.h>
-+#include <linux/of_platform.h>
-+#include <linux/pinctrl/consumer.h>
-+#include <linux/phy.h>
-+#include <linux/pm_domain.h>
-+#include <linux/pm_runtime.h>
-+
-+#include "mtk.h"
-+
-+#define MTK_2P5GPHY_ID_MT7988	(0x00339c11)
-+
-+#define MT7988_2P5GE_PMB "mediatek/mt7988/i2p5ge-phy-pmb.bin"
-+#define MT7988_2P5GE_PMB_SIZE	(0x20000)
-+#define MT7988_2P5GE_PMB_BASE	(0x0f100000)
-+#define MT7988_2P5GE_PMB_LEN	(0x20000)
-+#define MT7988_2P5GE_MD32_EN_CFG_BASE	(0x0f0f0018)
-+#define MT7988_2P5GE_MD32_EN_CFG_LEN	(0x20)
-+#define   MD32_EN			BIT(0)
-+
-+#define BASE100T_STATUS_EXTEND		(0x10)
-+#define BASE1000T_STATUS_EXTEND		(0x11)
-+#define EXTEND_CTRL_AND_STATUS		(0x16)
-+
-+#define PHY_AUX_CTRL_STATUS		(0x1d)
-+#define   PHY_AUX_DPX_MASK		GENMASK(5, 5)
-+#define   PHY_AUX_SPEED_MASK		GENMASK(4, 2)
-+
-+#define MTK_PHY_LPI_PCS_DSP_CTRL		(0x121)
-+#define   MTK_PHY_LPI_SIG_EN_LO_THRESH100_MASK	GENMASK(12, 8)
-+
-+/* Registers on MTK phy page 1*/
-+#define MTK_PHY_PAGE_EXTENDED_1			0x0001
-+#define MTK_PHY_AUX_CTRL_AND_STATUS		(0x14)
-+#define   MTK_PHY_ENABLE_DOWNSHIFT		BIT(4)
-+
-+/* Registers on Token Ring debug nodes */
-+/* ch_addr = 0x0, node_addr = 0xf, data_addr = 0x3c */
-+#define AUTO_NP_10XEN				BIT(6)
-+
-+struct mtk_i2p5ge_phy_priv {
-+	bool fw_loaded;
-+	unsigned long led_state;
-+};
-+
-+enum {
-+	PHY_AUX_SPD_10 = 0,
-+	PHY_AUX_SPD_100,
-+	PHY_AUX_SPD_1000,
-+	PHY_AUX_SPD_2500,
-+};
-+
-+static int mt798x_2p5ge_phy_load_fw(struct phy_device *phydev)
-+{
-+	struct mtk_i2p5ge_phy_priv *priv = phydev->priv;
-+	void __iomem *md32_en_cfg_base, *pmb_addr;
-+	struct device *dev = &phydev->mdio.dev;
-+	const struct firmware *fw;
-+	int ret, i;
-+	u16 reg;
-+
-+	if (priv->fw_loaded)
-+		return 0;
-+
-+	pmb_addr = ioremap(MT7988_2P5GE_PMB_BASE, MT7988_2P5GE_PMB_LEN);
-+	if (!pmb_addr)
-+		return -ENOMEM;
-+	md32_en_cfg_base = ioremap(MT7988_2P5GE_MD32_EN_CFG_BASE, MT7988_2P5GE_MD32_EN_CFG_LEN);
-+	if (!md32_en_cfg_base) {
-+		ret = -ENOMEM;
-+		goto free_pmb;
-+	}
-+
-+	ret = request_firmware(&fw, MT7988_2P5GE_PMB, dev);
-+	if (ret) {
-+		dev_err(dev, "failed to load firmware: %s, ret: %d\n",
-+			MT7988_2P5GE_PMB, ret);
-+		goto free;
-+	}
-+
-+	if (fw->size != MT7988_2P5GE_PMB_SIZE) {
-+		dev_err(dev, "Firmware size 0x%zx != 0x%x\n",
-+			fw->size, MT7988_2P5GE_PMB_SIZE);
-+		ret = -EINVAL;
-+		goto free;
-+	}
-+
-+	reg = readw(md32_en_cfg_base);
-+	if (reg & MD32_EN) {
-+		phy_set_bits(phydev, MII_BMCR, BMCR_RESET);
-+		usleep_range(10000, 11000);
-+	}
-+	phy_set_bits(phydev, MII_BMCR, BMCR_PDOWN);
-+
-+	/* Write magic number to safely stall MCU */
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x800e, 0x1100);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x800f, 0x00df);
-+
-+	for (i = 0; i < MT7988_2P5GE_PMB_SIZE - 1; i += 4)
-+		writel(*((uint32_t *)(fw->data + i)), pmb_addr + i);
-+	release_firmware(fw);
-+	dev_info(dev, "Firmware date code: %x/%x/%x, version: %x.%x\n",
-+		 be16_to_cpu(*((uint16_t *)(fw->data + MT7988_2P5GE_PMB_SIZE - 8))),
-+		 *(fw->data + MT7988_2P5GE_PMB_SIZE - 6),
-+		 *(fw->data + MT7988_2P5GE_PMB_SIZE - 5),
-+		 *(fw->data + MT7988_2P5GE_PMB_SIZE - 2),
-+		 *(fw->data + MT7988_2P5GE_PMB_SIZE - 1));
-+
-+	writew(reg & ~MD32_EN, md32_en_cfg_base);
-+	writew(reg | MD32_EN, md32_en_cfg_base);
-+	phy_set_bits(phydev, MII_BMCR, BMCR_RESET);
-+	/* We need a delay here to stabilize initialization of MCU */
-+	usleep_range(7000, 8000);
-+	dev_info(dev, "Firmware loading/trigger ok.\n");
-+
-+	priv->fw_loaded = true;
-+
-+free:
-+	iounmap(md32_en_cfg_base);
-+free_pmb:
-+	iounmap(pmb_addr);
-+
-+	return ret ? ret : 0;
-+}
-+
-+static int mt798x_2p5ge_phy_config_init(struct phy_device *phydev)
-+{
-+	struct pinctrl *pinctrl;
-+	int ret;
-+
-+	ret = mt798x_2p5ge_phy_load_fw(phydev);
-+	if (ret < 0)
-+		return ret;
-+
-+	/* Setup LED */
-+	phy_set_bits_mmd(phydev, MDIO_MMD_VEND2, MTK_PHY_LED0_ON_CTRL,
-+			 MTK_PHY_LED_ON_POLARITY | MTK_PHY_LED_ON_LINK10 |
-+			 MTK_PHY_LED_ON_LINK100 | MTK_PHY_LED_ON_LINK1000 |
-+			 MTK_PHY_LED_ON_LINK2500);
-+	phy_set_bits_mmd(phydev, MDIO_MMD_VEND2, MTK_PHY_LED1_ON_CTRL,
-+			 MTK_PHY_LED_ON_FDX | MTK_PHY_LED_ON_HDX);
-+
-+	/* Switch pinctrl after setting polarity to avoid bogus blinking */
-+	pinctrl = devm_pinctrl_get_select(&phydev->mdio.dev, "i2p5gbe-led");
-+	if (IS_ERR(pinctrl))
-+		dev_err(&phydev->mdio.dev, "Fail to set LED pins!\n");
-+
-+	phy_modify_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_LPI_PCS_DSP_CTRL,
-+		       MTK_PHY_LPI_SIG_EN_LO_THRESH100_MASK, 0);
-+
-+	/* Enable 16-bit next page exchange bit if 1000-BT isn't advertising */
-+	tr_modify(phydev, 0x0, 0xf, 0x3c, AUTO_NP_10XEN,
-+		  FIELD_PREP(AUTO_NP_10XEN, 0x1));
-+
-+	/* Enable HW auto downshift */
-+	phy_modify_paged(phydev, MTK_PHY_PAGE_EXTENDED_1, MTK_PHY_AUX_CTRL_AND_STATUS,
-+			 0, MTK_PHY_ENABLE_DOWNSHIFT);
-+
-+	return 0;
-+}
-+
-+static int mt798x_2p5ge_phy_config_aneg(struct phy_device *phydev)
-+{
-+	bool changed = false;
-+	u32 adv;
-+	int ret;
-+
-+	/* In fact, if we disable autoneg, we can't link up correctly:
-+	 *  2.5G/1G: Need AN to exchange master/slave information.
-+	 *  100M: Without AN, link starts at half duplex(According to IEEE 802.3-2018),
-+	 *        which this phy doesn't support.
-+	 *   10M: Deprecated in this ethernet phy.
-+	 */
-+	if (phydev->autoneg == AUTONEG_DISABLE)
-+		return -EOPNOTSUPP;
-+
-+	ret = genphy_c45_an_config_aneg(phydev);
-+	if (ret < 0)
-+		return ret;
-+	if (ret > 0)
-+		changed = true;
-+
-+	/* Clause 45 doesn't define 1000BaseT support. Use Clause 22 instead in our design.
-+	 */
-+	adv = linkmode_adv_to_mii_ctrl1000_t(phydev->advertising);
-+	ret = phy_modify_changed(phydev, MII_CTRL1000, ADVERTISE_1000FULL, adv);
-+	if (ret < 0)
-+		return ret;
-+	if (ret > 0)
-+		changed = true;
-+
-+	return genphy_c45_check_and_restart_aneg(phydev, changed);
-+}
-+
-+static int mt798x_2p5ge_phy_get_features(struct phy_device *phydev)
-+{
-+	int ret;
-+
-+	ret = genphy_c45_pma_read_abilities(phydev);
-+	if (ret)
-+		return ret;
-+
-+	/* This phy can't handle collision, and neither can (XFI)MAC it's connected to.
-+	 * Although it can do HDX handshake, it doesn't support CSMA/CD that HDX requires.
-+	 */
-+	linkmode_clear_bit(ETHTOOL_LINK_MODE_100baseT_Half_BIT, phydev->supported);
-+
-+	return 0;
-+}
-+
-+static int mt798x_2p5ge_phy_read_status(struct phy_device *phydev)
-+{
-+	int ret;
-+
-+	/* When MDIO_STAT1_LSTATUS is raised genphy_c45_read_link(), this phy actually
-+	 * hasn't finished AN. So use CL22's link update function instead.
-+	 */
-+	ret = genphy_update_link(phydev);
-+	if (ret)
-+		return ret;
-+
-+	phydev->speed = SPEED_UNKNOWN;
-+	phydev->duplex = DUPLEX_UNKNOWN;
-+	phydev->pause = 0;
-+	phydev->asym_pause = 0;
-+
-+	/* We'll read link speed through vendor specific registers down below. So remove
-+	 * phy_resolve_aneg_linkmode (AN on) & genphy_c45_read_pma (AN off).
-+	 */
-+	if (phydev->autoneg == AUTONEG_ENABLE && phydev->autoneg_complete) {
-+		ret = genphy_c45_read_lpa(phydev);
-+		if (ret < 0)
-+			return ret;
-+
-+		/* Clause 45 doesn't define 1000BaseT support. Read the link partner's 1G
-+		 * advertisement via Clause 22
-+		 */
-+		ret = phy_read(phydev, MII_STAT1000);
-+		if (ret < 0)
-+			return ret;
-+		mii_stat1000_mod_linkmode_lpa_t(phydev->lp_advertising, ret);
-+	} else if (phydev->autoneg == AUTONEG_DISABLE) {
-+		linkmode_zero(phydev->lp_advertising);
-+	}
-+
-+	if (phydev->link) {
-+		ret = phy_read(phydev, PHY_AUX_CTRL_STATUS);
-+		if (ret < 0)
-+			return ret;
-+
-+		switch (FIELD_GET(PHY_AUX_SPEED_MASK, ret)) {
-+		case PHY_AUX_SPD_10:
-+			phydev->speed = SPEED_10;
-+			break;
-+		case PHY_AUX_SPD_100:
-+			phydev->speed = SPEED_100;
-+			break;
-+		case PHY_AUX_SPD_1000:
-+			phydev->speed = SPEED_1000;
-+			break;
-+		case PHY_AUX_SPD_2500:
-+			phydev->speed = SPEED_2500;
-+			break;
-+		}
-+
-+		phydev->duplex = DUPLEX_FULL;
-+		/* FIXME: The current firmware always enables rate adaptation mode. */
-+		phydev->rate_matching = RATE_MATCH_PAUSE;
-+	}
-+
-+	return 0;
-+}
-+
-+static int mt798x_2p5ge_phy_get_rate_matching(struct phy_device *phydev,
-+					      phy_interface_t iface)
-+{
-+	if (iface == PHY_INTERFACE_MODE_XGMII)
-+		return RATE_MATCH_PAUSE;
-+	return RATE_MATCH_NONE;
-+}
-+
-+static const unsigned long supported_triggers = (BIT(TRIGGER_NETDEV_FULL_DUPLEX) |
-+						 BIT(TRIGGER_NETDEV_LINK)        |
-+						 BIT(TRIGGER_NETDEV_LINK_10)     |
-+						 BIT(TRIGGER_NETDEV_LINK_100)    |
-+						 BIT(TRIGGER_NETDEV_LINK_1000)   |
-+						 BIT(TRIGGER_NETDEV_LINK_2500)   |
-+						 BIT(TRIGGER_NETDEV_RX)          |
-+						 BIT(TRIGGER_NETDEV_TX));
-+
-+static int mt798x_2p5ge_phy_led_blink_set(struct phy_device *phydev, u8 index,
-+					  unsigned long *delay_on,
-+					  unsigned long *delay_off)
-+{
-+	bool blinking = false;
-+	int err = 0;
-+	struct mtk_i2p5ge_phy_priv *priv = phydev->priv;
-+
-+	if (index > 1)
-+		return -EINVAL;
-+
-+	if (delay_on && delay_off && (*delay_on > 0) && (*delay_off > 0)) {
-+		blinking = true;
-+		*delay_on = 50;
-+		*delay_off = 50;
-+	}
-+
-+	err = mtk_phy_hw_led_blink_set(phydev, index, &priv->led_state, blinking);
-+	if (err)
-+		return err;
-+
-+	return mtk_phy_hw_led_on_set(phydev, index, &priv->led_state,
-+				     MTK_2P5GPHY_LED_ON_MASK, false);
-+}
-+
-+static int mt798x_2p5ge_phy_led_brightness_set(struct phy_device *phydev,
-+					       u8 index, enum led_brightness value)
-+{
-+	int err;
-+	struct mtk_i2p5ge_phy_priv *priv = phydev->priv;
-+
-+	err = mtk_phy_hw_led_blink_set(phydev, index, &priv->led_state, false);
-+	if (err)
-+		return err;
-+
-+	return mtk_phy_hw_led_on_set(phydev, index, &priv->led_state,
-+				     MTK_2P5GPHY_LED_ON_MASK, (value != LED_OFF));
-+}
-+
-+static int mt798x_2p5ge_phy_led_hw_is_supported(struct phy_device *phydev, u8 index,
-+						unsigned long rules)
-+{
-+	return mtk_phy_led_hw_is_supported(phydev, index, rules, supported_triggers);
-+}
-+
-+static int mt798x_2p5ge_phy_led_hw_control_get(struct phy_device *phydev, u8 index,
-+					       unsigned long *rules)
-+{
-+	struct mtk_i2p5ge_phy_priv *priv = phydev->priv;
-+
-+	return mtk_phy_led_hw_ctrl_get(phydev, index, rules, &priv->led_state,
-+				       MTK_2P5GPHY_LED_ON_SET,
-+				       MTK_2P5GPHY_LED_RX_BLINK_SET,
-+				       MTK_2P5GPHY_LED_TX_BLINK_SET);
-+};
-+
-+static int mt798x_2p5ge_phy_led_hw_control_set(struct phy_device *phydev, u8 index,
-+					       unsigned long rules)
-+{
-+	struct mtk_i2p5ge_phy_priv *priv = phydev->priv;
-+
-+	return mtk_phy_led_hw_ctrl_set(phydev, index, rules, &priv->led_state,
-+				       MTK_2P5GPHY_LED_ON_SET,
-+				       MTK_2P5GPHY_LED_RX_BLINK_SET,
-+				       MTK_2P5GPHY_LED_TX_BLINK_SET);
-+};
-+
-+static int mt798x_2p5ge_phy_probe(struct phy_device *phydev)
-+{
-+	struct mtk_i2p5ge_phy_priv *priv;
-+
-+	priv = devm_kzalloc(&phydev->mdio.dev,
-+			    sizeof(struct mtk_i2p5ge_phy_priv), GFP_KERNEL);
-+	if (!priv)
-+		return -ENOMEM;
-+
-+	switch (phydev->drv->phy_id) {
-+	case MTK_2P5GPHY_ID_MT7988:
-+		/* The original hardware only sets MDIO_DEVS_PMAPMD */
-+		phydev->c45_ids.mmds_present |= (MDIO_DEVS_PCS | MDIO_DEVS_AN |
-+						 MDIO_DEVS_VEND1 | MDIO_DEVS_VEND2);
-+		break;
-+	default:
-+		return -EINVAL;
-+	}
-+
-+	priv->fw_loaded = false;
-+	phydev->priv = priv;
-+
-+	mtk_phy_leds_state_init(phydev);
-+
-+	return 0;
-+}
-+
-+static struct phy_driver mtk_gephy_driver[] = {
-+	{
-+		PHY_ID_MATCH_MODEL(MTK_2P5GPHY_ID_MT7988),
-+		.name		= "MediaTek MT7988 2.5GbE PHY",
-+		.probe		= mt798x_2p5ge_phy_probe,
-+		.config_init	= mt798x_2p5ge_phy_config_init,
-+		.config_aneg    = mt798x_2p5ge_phy_config_aneg,
-+		.get_features	= mt798x_2p5ge_phy_get_features,
-+		.read_status	= mt798x_2p5ge_phy_read_status,
-+		.get_rate_matching	= mt798x_2p5ge_phy_get_rate_matching,
-+		.suspend	= genphy_suspend,
-+		.resume		= genphy_resume,
-+		.read_page	= mtk_phy_read_page,
-+		.write_page	= mtk_phy_write_page,
-+		.led_blink_set	= mt798x_2p5ge_phy_led_blink_set,
-+		.led_brightness_set = mt798x_2p5ge_phy_led_brightness_set,
-+		.led_hw_is_supported = mt798x_2p5ge_phy_led_hw_is_supported,
-+		.led_hw_control_get = mt798x_2p5ge_phy_led_hw_control_get,
-+		.led_hw_control_set = mt798x_2p5ge_phy_led_hw_control_set,
-+	},
-+};
-+
-+module_phy_driver(mtk_gephy_driver);
-+
-+static struct mdio_device_id __maybe_unused mtk_2p5ge_phy_tbl[] = {
-+	{ PHY_ID_MATCH_VENDOR(0x00339c00) },
-+	{ }
-+};
-+
-+MODULE_DESCRIPTION("MediaTek 2.5Gb Ethernet PHY driver");
-+MODULE_AUTHOR("SkyLake Huang <SkyLake.Huang@mediatek.com>");
-+MODULE_LICENSE("GPL");
-+
-+MODULE_DEVICE_TABLE(mdio, mtk_2p5ge_phy_tbl);
+All of this needs to go into the commit message please, thanks!
 -- 
-2.18.0
-
+Florian
 
