@@ -4,104 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E4AFC25B74
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 May 2024 09:22:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68FA1C25B74
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 May 2024 09:35:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FWN78EB24MX6Q0HZqErBr8t9tcr4nbKt3etlWVHkE68=; b=L1iVNYSO5+FdIyOerSUtOl5l5I
-	ex4oU+9JmyCcYuccnlrYVRakcwTbb9+d6Pkh8G43+zoCcQmjsF0BmTUzsx647osctjdDV+3WIylJ6
-	tT+nlqPYaY9z+S6/ytDWKM1U88JatjygzyS44K4Yrtop5W1osIr+9C63IzH9Jh9rhOC255d3aqVgh
-	zkU2+xVbSpv88Z8ppbriuRf6VOTjt5enxgdu7dmofPU0urrt69JipdlDoqnvZgmvwkYOEWJ1Ju1Z7
-	djIO+XU+QBnjIaYrff7QpOOlLywWG0Za0cKAePoPMXTqpsQlF5gQoXdHt4rBKCMKo2P3tS8iZBJwJ
-	sSYMf+yQ==;
+	bh=lzbzoq5hN9MaqQ/OUhiUzLR45d0C1od3fcsmWTURFN8=; b=oFJdKHxhDjdhCZWjmO5/l+U79E
+	t1VIjpUKcpoM/rNaxr6w/G7AUsWveaPce1syPQpdtCjhHQb7yz13MwFZIYg03zP86FD7HurkvKV81
+	QW0ZMaYZLJ+U8TDAOgWIlt3S6qk4/Nujnq5m/uhSEB6bBSh8LtClKiD34V1i0H2k2zy7JmoOxqA7P
+	1F95dYYqSikcYxcx+TnXOPpoHygq4NkeM7wwtkS/LrJWUiMCtHtkFI9WsKma6RPygY0bi/c0m/68W
+	AUAxqZzh3mT2uKiFJpB8FnV+OMTCqlQvlO3Y84q80pSO1GiX10j3jJo3S7OL50EqlQWcwSOaKHPM5
+	c12HXTzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCbz6-00000006nYM-1ARC;
-	Thu, 30 May 2024 09:22:08 +0000
-Received: from mail-qv1-f45.google.com ([209.85.219.45])
+	id 1sCcBb-00000006qP7-2P8B;
+	Thu, 30 May 2024 09:35:03 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCbyt-00000006nU6-0aaj;
-	Thu, 30 May 2024 09:21:59 +0000
-Received: by mail-qv1-f45.google.com with SMTP id 6a1803df08f44-6ad7a2f8715so6173346d6.1;
-        Thu, 30 May 2024 02:21:51 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1717060910; x=1717665710;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=FWN78EB24MX6Q0HZqErBr8t9tcr4nbKt3etlWVHkE68=;
-        b=H6IRWEuZgjr4Mnw0/rf+ILgJamZXuvifH36yXtysGkfdH+oYRJkKZ1Hd18E/TrV4AE
-         ll3X5evCCFLe6CljeSLLsSgPIi6YJ3MlUX0xH+Skf4aMHYuw54EvmXpOHF6HnENGkCCT
-         /gbkaB6AI/9qNsGzcbm6WCr0YhKZxoA8/+puE/9QLs8cJy1R2CTqh96z1AYq3o/VECuw
-         LD/GmH2bO0FHv4QElRZ4GieqHqxKvatL4xdsVRi8tnNZsn1COZ9lRF8VhSoLWPHEKTwI
-         9+vM9g0Fsh6HihZiDbCksYBXz2xj/N74NiN9d58mlxWItzOdyvRJap35s0AkYlvxRFAC
-         pxvw==
-X-Forwarded-Encrypted: i=1; AJvYcCVM1N05ibS0Rdqb31RyvgypN50t1bqvr9AcNEcs+bgVIZxpjVxnr8udNkJBQob/9hYwgk8aQHDFEOBmaw3nCovnXjzPUIyd6xz7txMufioas0Vv4JUgCZZUBQ906ovZaw5lU2Voj5FPqLDvXK9Gb5LUKe5nB2s9FCFWJuo85yM9w09MESx7GJTYXhU9fgyDV5uyrhpWdPBVTW2wUBtzkFdUj1jA8exSrt0B1Kqw90i/MeSejpaDh4dD5/Y/fms=
-X-Gm-Message-State: AOJu0YwqkaSj9gxeEAKfcpxZJY6DDZ4pzEr70OHeqStmmygA0czVgkxe
-	zQZZyStk2n/sXlaUF6pLqpbnG30r6Dzis7T3947moUBm81qORcNx7j2AgpZ7
-X-Google-Smtp-Source: AGHT+IH/USYzmkxRCQHaW2776bKsoNvXA99L8ys9FUU/EztaPiSrBpYjs7WLOMmolLExxgDv3nMMkA==
-X-Received: by 2002:a05:6214:3102:b0:6ad:7087:ef8a with SMTP id 6a1803df08f44-6ae0e76ff37mr24081896d6.9.1717060910165;
-        Thu, 30 May 2024 02:21:50 -0700 (PDT)
-Received: from mail-qk1-f169.google.com (mail-qk1-f169.google.com. [209.85.222.169])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-6ae0c519abesm6040806d6.29.2024.05.30.02.21.50
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 30 May 2024 02:21:50 -0700 (PDT)
-Received: by mail-qk1-f169.google.com with SMTP id af79cd13be357-792bdf626beso58528485a.1;
-        Thu, 30 May 2024 02:21:50 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCXAm7vKovo7bMsLPPOY9VqoSn3RwURJOKsCyzH20qt3I5xSsqL+5BH+8z+2regGreq9Q3RTSP2ociXLfSWPdG2g2NgNS00NxS6AWkDDTOkiJVANGrZn7qmw2NZ5ghkcIJmxhAQ42+kO66T8IiklYbHHgYK9WkankgemN8YRH2G7vWhU7bcYNzpyOJtag7Dne7OFocQf+XaIQbN4gNGENCRlE7OBvkIUW+5NmQ0C/ItHlMAzOI/q9l4LyA7xnTo=
-X-Received: by 2002:a25:8c84:0:b0:dd1:6cad:8fd3 with SMTP id
- 3f1490d57ef6-dfa5dcdc800mr946343276.27.1717060889311; Thu, 30 May 2024
- 02:21:29 -0700 (PDT)
+	id 1sCcB2-00000006qBP-38wG;
+	Thu, 30 May 2024 09:34:30 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1717061665;
+	bh=o6pclbl/e4/rRME/1Dx7hlQDIRY5Zc8zYMH7xjMpS+4=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=MUrOZo2DOxB4ZvfQbU3ZxYYEGA78mjReY7PMoUgtb0yOcdeKid/SjMAhVZg8rbORY
+	 4/koKuohCHMHlXnLZTIH69z6OMb1cRNB38ycMMcyQjpYfxr5GXoq6ifOvbOEcn3AmZ
+	 Q3UZCb2SKRNpWWvNrxsqgCp45TLZO4Gy5Q+czpqcZj8t5lfidTFL4O3u3Lild80+dg
+	 8p6Zs/T2B+Z67LYqyUpOBUln5ppWMsCAeW8BUmwYo17kPZYiVS/3mkYyIxlIrBsFY3
+	 zllvshp9VggWuc79uc8vEFBhOPtsrfDjSMEcHwmfWe17B+gA7389OiQPwUMk/Qh8f4
+	 Bq9v0X2siZmcQ==
+Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id D0DF637821AB;
+	Thu, 30 May 2024 09:34:23 +0000 (UTC)
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: jic23@kernel.org
+Cc: lars@metafoo.de,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	lee@kernel.org,
+	andy@kernel.org,
+	nuno.sa@analog.com,
+	bigunclemax@gmail.com,
+	dlechner@baylibre.com,
+	marius.cristea@microchip.com,
+	marcelo.schmitt@analog.com,
+	fr0st61te@gmail.com,
+	mitrutzceclan@gmail.com,
+	mike.looijmans@topic.nl,
+	marcus.folkesson@gmail.com,
+	linux-iio@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	kernel@collabora.com
+Subject: [PATCH v1 1/4] dt-bindings: iio: adc: Add MediaTek MT6359 PMIC AUXADC
+Date: Thu, 30 May 2024 11:34:07 +0200
+Message-ID: <20240530093410.112716-2-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.45.1
+In-Reply-To: <20240530093410.112716-1-angelogioacchino.delregno@collabora.com>
+References: <20240530093410.112716-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-References: <20240504-pinctrl-cleanup-v2-0-26c5f2dc1181@nxp.com>
- <20240504-pinctrl-cleanup-v2-7-26c5f2dc1181@nxp.com> <CAMuHMdUD=1rpns_mLF2rMM-x5EnOK7TExaJxoJVkbXjVz1H8uQ@mail.gmail.com>
- <ZlhAm-giX6jNaUKr@surfacebook.localdomain>
-In-Reply-To: <ZlhAm-giX6jNaUKr@surfacebook.localdomain>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Thu, 30 May 2024 11:21:17 +0200
-X-Gmail-Original-Message-ID: <CAMuHMdXqXVT3Y7N8pTb_68E23RkLGi=ySOSDkAWX4MOpP09Q4g@mail.gmail.com>
-Message-ID: <CAMuHMdXqXVT3Y7N8pTb_68E23RkLGi=ySOSDkAWX4MOpP09Q4g@mail.gmail.com>
-Subject: Re: [PATCH v2 07/20] pinctrl: renesas: Use scope based of_node_put() cleanups
-To: Andy Shevchenko <andy.shevchenko@gmail.com>
-Cc: "Peng Fan (OSS)" <peng.fan@oss.nxp.com>, Linus Walleij <linus.walleij@linaro.org>, 
-	Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
-	Dvorkin Dmitry <dvorkin@tibbo.com>, Wells Lu <wellslutw@gmail.com>, 
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
-	Emil Renner Berthing <kernel@esmil.dk>, Jianlong Huang <jianlong.huang@starfivetech.com>, 
-	Hal Feng <hal.feng@starfivetech.com>, Orson Zhai <orsonzhai@gmail.com>, 
-	Baolin Wang <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>, 
-	Viresh Kumar <vireshk@kernel.org>, Shiraz Hashim <shiraz.linux.kernel@gmail.com>, soc@kernel.org, 
-	Krzysztof Kozlowski <krzk@kernel.org>, Sylwester Nawrocki <s.nawrocki@samsung.com>, 
-	Alim Akhtar <alim.akhtar@samsung.com>, Geert Uytterhoeven <geert+renesas@glider.be>, 
-	Patrice Chotard <patrice.chotard@foss.st.com>, Heiko Stuebner <heiko@sntech.de>, 
-	Damien Le Moal <dlemoal@kernel.org>, Ludovic Desroches <ludovic.desroches@microchip.com>, 
-	Nicolas Ferre <nicolas.ferre@microchip.com>, 
-	Alexandre Belloni <alexandre.belloni@bootlin.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
-	Dong Aisheng <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>, 
-	Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, Chester Lin <chester62515@gmail.com>, 
-	Matthias Brugger <mbrugger@suse.com>, Ghennadi Procopciuc <ghennadi.procopciuc@oss.nxp.com>, 
-	Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Andrew Jeffery <andrew@codeconstruct.com.au>, 
-	Joel Stanley <joel@jms.id.au>, Dan Carpenter <dan.carpenter@linaro.org>, 
-	Tony Lindgren <tony@atomide.com>, Stephen Warren <swarren@wwwdotorg.org>, linux-gpio@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-tegra@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, 
-	linux-stm32@st-md-mailman.stormreply.com, linux-samsung-soc@vger.kernel.org, 
-	linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-riscv@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	imx@lists.linux.dev, linux-aspeed@lists.ozlabs.org, openbmc@lists.ozlabs.org, 
-	Peng Fan <peng.fan@nxp.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240530_022155_233416_51EFFB8B 
-X-CRM114-Status: GOOD (  22.04  )
+X-CRM114-CacheID: sfid-20240530_023429_206390_6D4ABD75 
+X-CRM114-Status: GOOD (  13.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,49 +93,157 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Andy,
+Add a new binding for the MT6350 Series (MT6357/8/9) PMIC AUXADC,
+providing various ADC channels for both internal temperatures and
+voltages, audio accessory detection (hp/mic/hp+mic and buttons,
+usually on a 3.5mm jack) other than some basic battery statistics
+on boards where the battery is managed by this PMIC.
 
-On Thu, May 30, 2024 at 11:03=E2=80=AFAM Andy Shevchenko
-<andy.shevchenko@gmail.com> wrote:
-> Mon, May 13, 2024 at 01:59:03PM +0200, Geert Uytterhoeven kirjoitti:
-> > On Sat, May 4, 2024 at 3:14=E2=80=AFPM Peng Fan (OSS) <peng.fan@oss.nxp=
-.com> wrote:
-> > You missed one trivial conversion, presumably because no error handling
-> > and thus no of_node_put() is involved?
->
-> Nothing is missed. The below is a redundant change.
->
-> ...
->
-> > -       for_each_child_of_node(np, child) {
-> > +       for_each_child_of_node_scoped(np, child) {
-> >                 if (of_property_count_u32_elems(child, RZN1_PINS_PROP) =
-> 0)
-> >                         count++;
-> >         }
-> >
-> > If you prefer not to include this
->
-> I prefer this not to be included as it will give a misleading signals to =
-the
-> use of the original API(s).
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ .../iio/adc/mediatek,mt6359-auxadc.yaml       | 43 +++++++++++++++++++
+ .../iio/adc/mediatek,mt6357-auxadc.h          | 21 +++++++++
+ .../iio/adc/mediatek,mt6358-auxadc.h          | 22 ++++++++++
+ .../iio/adc/mediatek,mt6359-auxadc.h          | 22 ++++++++++
+ 4 files changed, 108 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/iio/adc/mediatek,mt6359-auxadc.yaml
+ create mode 100644 include/dt-bindings/iio/adc/mediatek,mt6357-auxadc.h
+ create mode 100644 include/dt-bindings/iio/adc/mediatek,mt6358-auxadc.h
+ create mode 100644 include/dt-bindings/iio/adc/mediatek,mt6359-auxadc.h
 
-Thank you for reminding me to send this out as a separate patch :-)
+diff --git a/Documentation/devicetree/bindings/iio/adc/mediatek,mt6359-auxadc.yaml b/Documentation/devicetree/bindings/iio/adc/mediatek,mt6359-auxadc.yaml
+new file mode 100644
+index 000000000000..dd6c331905cf
+--- /dev/null
++++ b/Documentation/devicetree/bindings/iio/adc/mediatek,mt6359-auxadc.yaml
+@@ -0,0 +1,43 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/iio/adc/mediatek,mt6359-auxadc.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek MT6350 series PMIC AUXADC
++
++maintainers:
++  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
++
++description:
++  The Auxiliary Analog/Digital Converter (AUXADC) is an ADC found
++  in some MediaTek PMICs, performing various PMIC related measurements
++  such as battery and PMIC internal voltage regulators temperatures,
++  accessory detection resistance (usually, for a 3.5mm audio jack)
++  other than voltages for various PMIC internal components.
++
++properties:
++  compatible:
++    enum:
++      - mediatek,mt6357-auxadc
++      - mediatek,mt6358-auxadc
++      - mediatek,mt6359-auxadc
++
++  "#io-channel-cells":
++    const: 1
++
++additionalProperties: false
++
++required:
++  - compatible
++  - "#io-channel-cells"
++
++examples:
++  - |
++    pmic {
++        pmic_adc: adc {
++            compatible = "mediatek,mt6359-auxadc";
++            #io-channel-cells = <1>;
++        };
++    };
++...
+diff --git a/include/dt-bindings/iio/adc/mediatek,mt6357-auxadc.h b/include/dt-bindings/iio/adc/mediatek,mt6357-auxadc.h
+new file mode 100644
+index 000000000000..03ebb1d23953
+--- /dev/null
++++ b/include/dt-bindings/iio/adc/mediatek,mt6357-auxadc.h
+@@ -0,0 +1,21 @@
++/* SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause */
++
++#ifndef _DT_BINDINGS_MEDIATEK_MT6357_AUXADC_H
++#define _DT_BINDINGS_MEDIATEK_MT6357_AUXADC_H
++
++/* ADC Channel Index */
++#define MT6357_AUXADC_BATADC		0
++#define MT6357_AUXADC_ISENSE		1
++#define MT6357_AUXADC_VCDT		2
++#define MT6357_AUXADC_BAT_TEMP		3
++#define MT6357_AUXADC_CHIP_TEMP		4
++#define MT6357_AUXADC_ACCDET		5
++#define MT6357_AUXADC_VDCXO		6
++#define MT6357_AUXADC_TSX_TEMP		7
++#define MT6357_AUXADC_HPOFS_CAL		8
++#define MT6357_AUXADC_DCXO_TEMP		9
++#define MT6357_AUXADC_VCORE_TEMP	10
++#define MT6357_AUXADC_VPROC_TEMP	11
++#define MT6357_AUXADC_VBAT		12
++
++#endif
+diff --git a/include/dt-bindings/iio/adc/mediatek,mt6358-auxadc.h b/include/dt-bindings/iio/adc/mediatek,mt6358-auxadc.h
+new file mode 100644
+index 000000000000..efa08398fafd
+--- /dev/null
++++ b/include/dt-bindings/iio/adc/mediatek,mt6358-auxadc.h
+@@ -0,0 +1,22 @@
++/* SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause */
++
++#ifndef _DT_BINDINGS_MEDIATEK_MT6358_AUXADC_H
++#define _DT_BINDINGS_MEDIATEK_MT6358_AUXADC_H
++
++/* ADC Channel Index */
++#define MT6358_AUXADC_BATADC		0
++#define MT6358_AUXADC_VCDT		1
++#define MT6358_AUXADC_BAT_TEMP		2
++#define MT6358_AUXADC_CHIP_TEMP		3
++#define MT6358_AUXADC_ACCDET		4
++#define MT6358_AUXADC_VDCXO		5
++#define MT6358_AUXADC_TSX_TEMP		6
++#define MT6358_AUXADC_HPOFS_CAL		7
++#define MT6358_AUXADC_DCXO_TEMP		8
++#define MT6358_AUXADC_VBIF		9
++#define MT6358_AUXADC_VCORE_TEMP	10
++#define MT6358_AUXADC_VPROC_TEMP	11
++#define MT6358_AUXADC_VGPU_TEMP		12
++#define MT6358_AUXADC_VBAT		13
++
++#endif
+diff --git a/include/dt-bindings/iio/adc/mediatek,mt6359-auxadc.h b/include/dt-bindings/iio/adc/mediatek,mt6359-auxadc.h
+new file mode 100644
+index 000000000000..59826393ee7e
+--- /dev/null
++++ b/include/dt-bindings/iio/adc/mediatek,mt6359-auxadc.h
+@@ -0,0 +1,22 @@
++/* SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause */
++
++#ifndef _DT_BINDINGS_MEDIATEK_MT6359_AUXADC_H
++#define _DT_BINDINGS_MEDIATEK_MT6359_AUXADC_H
++
++/* ADC Channel Index */
++#define MT6359_AUXADC_BATADC		0
++#define MT6359_AUXADC_BAT_TEMP		1
++#define MT6359_AUXADC_CHIP_TEMP		2
++#define MT6359_AUXADC_ACCDET		3
++#define MT6359_AUXADC_VDCXO		4
++#define MT6359_AUXADC_TSX_TEMP		5
++#define MT6359_AUXADC_HPOFS_CAL		6
++#define MT6359_AUXADC_DCXO_TEMP		7
++#define MT6359_AUXADC_VBIF		8
++#define MT6359_AUXADC_VCORE_TEMP	9
++#define MT6359_AUXADC_VPROC_TEMP	10
++#define MT6359_AUXADC_VGPU_TEMP		11
++#define MT6359_AUXADC_VBAT		12
++#define MT6359_AUXADC_IBAT		13
++
++#endif
+-- 
+2.45.1
 
-https://lore.kernel.org/r/c0a28f466c42d5d59c7fadfa1fd05fd512d43b6f.17170607=
-08.git.geert+renesas@glider.be
-
-Gr{oetje,eeting}s,
-
-                        Geert
-
---=20
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k=
-.org
-
-In personal conversations with technical people, I call myself a hacker. Bu=
-t
-when I'm talking to journalists I just say "programmer" or something like t=
-hat.
-                                -- Linus Torvalds
 
