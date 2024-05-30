@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24345C25B74
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 May 2024 10:03:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E83F8C41513
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 May 2024 10:03:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4zczsW4dpoxWj3SrlUu1zfKSBf6kHrGDOsm5nh8xb+o=; b=fkKBzh8U4ia40xYSK+qvWjQfLc
-	ylIGl70ezJfAQeGE9KjAIohqy/BCOzsByxFyKlN1C0lcZf7exPD8B96CCL3FPx+SSUneqKfZZK+8F
-	CLY6sxQX1Bwk4rlm1p39QWNppQVsJ/NQVOLNfszl1kckxRWNnRhXJM/27KylnRxdT2JNtUIH5QuVw
-	OqM1XmGbTobUHdxD2m4wQg3JRn2V9bHtRtx3qUloeJiX8iQs5p4ulBqfNhsTL0XdBSVs1jm6Ge5A1
-	VwqHeiyBbrKEe2tuOeKr1TiI7/LfbaNr3invdervpNTqLECVb0h4TP9PbtxtcKDwCXwnsAbhAJabi
-	4kwPoL2Q==;
+	bh=2eRgwpZO0dVf61bURPnapq4+I2UZnC8M+2Y6S9obX3I=; b=S8O+ssK+W4AkFY8BM8Ql9FoybA
+	fr4Rqo9U+75cZssOYbX3RvEsd4n/1oPCGWyjGa3iGja917GmTn09R7znMVjWaIrR7MBWaWDtggClg
+	x6kO7+QEsU1e/8j8PLXQs26czQnY0hu0QkXT8ry+x16o2OGOkwdmpHs9e+4hqpgxKNs8BH26M+hpV
+	vGyjUBL1UO+Srvr1MPO40sx307uE+jiSusBQpVKjQ5aKWS9JttnMHfMoGQHCcq7HXRechiAPLwyuu
+	a6AUj7aMP2y8Nxyg+sr+ShYIxCPswZg3/HBG9M9TX4DTx6Rqm806CUL+TDt6MiyQzK9qvvHnVkrl9
+	0/BRKlWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCcdM-00000006vHy-39jB;
-	Thu, 30 May 2024 10:03:44 +0000
+	id 1sCcdV-00000006vLf-2Sd2;
+	Thu, 30 May 2024 10:03:57 +0000
 Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCcdI-00000006vG5-3PrF;
-	Thu, 30 May 2024 10:03:42 +0000
+	id 1sCcdJ-00000006vGC-2dhZ;
+	Thu, 30 May 2024 10:03:43 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1717063419;
-	bh=bwJjFeyzBTMV6+dpXNKXktvgWL+phVmXZH4aj9xRd3A=;
+	s=mail; t=1717063420;
+	bh=BpUdyerGMQW9Se3tgD7/uJMkpsV4naRte+uiUHQllLY=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=en3bq4pTZ9qiSymwfShbESCLgG/446i3zs7x8XSG7XPwH0YJAVT/b+AQbZ/VdJBb4
-	 NVT08gO+VHH6JCHBHnCMYwtoct5QLYmDw7/1iO4mABP8OE6q62m4G7moA2TOKy33CL
-	 49Nphd7a6pGYyPLdIKfqWMd0NLLZ49l8hb6mRFqETEUK+Jq3yPtl0uG0Go8p1k4Ztm
-	 rL57F6x/IzOLXxZsDqbYKz0ZBHnSFW0/m33GQa5Fmu90d92FwjKff1n2rAbOacDqPe
-	 i2CM3BkqxM1+87oLnaQ0+shS1UG2ifg3YWBwX6zPTIWNGYKXa9xBRxuqFoYx4VfX5u
-	 vYA9p/iuwZRsg==
+	b=FVVMBItQvMb1UhpUr7ebic/YB6pHY3UA731RCaqXSDX6Ey0J0NFZYVbxAY6iOhZ0E
+	 TwtYYvd0kM620CTeGenKPjK67V+BECV0wC+OjkifLFYNkP/6VTTh8ZPxA/oYnHZR9s
+	 xp8YGyyPYIcZ4ESwoByZyhKp/MU84+h3f/S6NU1kZFYkqTStMSd6F5yOfOjWAh1THQ
+	 rXxGOk9Y9RgZJLcbh2dBkJkT8BpAdxe7acPNTVx93AwW32lWXWl4N0HfYcb5wforfl
+	 WW/lPWx80YecqcpyZHlIcPCblugLeGIpKlO4dVgcm6wZXK/FbEYNsUy53jKIQvGKyf
+	 cNCubjJ3jpz+Q==
 Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id EF91137821A7;
-	Thu, 30 May 2024 10:03:37 +0000 (UTC)
-Message-ID: <f833747f-71de-4537-861a-8758fa350846@collabora.com>
-Date: Thu, 30 May 2024 12:03:37 +0200
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 3EE5C37821AB;
+	Thu, 30 May 2024 10:03:39 +0000 (UTC)
+Message-ID: <d2118c18-af98-4e3a-8113-1cb519677495@collabora.com>
+Date: Thu, 30 May 2024 12:03:38 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/6] dt-bindings: gpu: powervr-rogue: Add MediaTek MT8173
- GPU
+Subject: Re: [PATCH 4/6] drm/imagination: Add compatible string entry for
+ Series6XT
 To: Chen-Yu Tsai <wenst@chromium.org>, Frank Binns <frank.binns@imgtec.com>,
  Matt Coster <matt.coster@imgtec.com>,
  Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
@@ -61,15 +61,16 @@ Cc: David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 References: <20240530083513.4135052-1-wenst@chromium.org>
- <20240530083513.4135052-4-wenst@chromium.org>
+ <20240530083513.4135052-5-wenst@chromium.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20240530083513.4135052-4-wenst@chromium.org>
+In-Reply-To: <20240530083513.4135052-5-wenst@chromium.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240530_030341_132047_4971EF36 
-X-CRM114-Status: GOOD (  10.09  )
+X-CRM114-CacheID: sfid-20240530_030341_838549_C1CCE715 
+X-CRM114-Status: UNSURE (   5.87  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,18 +86,8 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 30/05/24 10:35, Chen-Yu Tsai ha scritto:
-> The MediaTek MT8173 comes with a PowerVR Rogue GX6250, which is one
-> of the Series6XT GPUs, another sub-family of the Rogue family.
-> 
-> This was part of the very first few versions of the PowerVR submission,
-> but was later dropped. The compatible string has been updated to follow
-> the new naming scheme adopted for the AXE series.
-> 
-> In a previous iteration of the PowerVR binding submission [1], the
-> number of clocks required for the 6XT family was mentioned to be
-> always 3. This is also reflected here.
-> 
-> [1] https://lore.kernel.org/dri-devel/6eeccb26e09aad67fb30ffcd523c793a43c79c2a.camel@imgtec.com/
+> The MediaTek MT8173 comes with a PowerVR Rogue GX6250, which is part
+> of the Series6XT, another variation of the Rogue family of GPUs.
 > 
 > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 
