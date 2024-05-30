@@ -4,74 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D57EC25B74
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 May 2024 12:48:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B32FC25B74
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 May 2024 13:35:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CCKgJaR0Vf8Ct4zEBD5+k2f7a93W/x521XyrouDnP5o=; b=ZPzvSKjxDmmqc7ng7b51cpwnJR
-	/G+d3TzXE/82wQtqskg1/Qp5r8/fe3WsnnQqGQajICGNgX2b05YSvU/Rz5Ded+W+bhw+6gTlOUgi0
-	pSLollviP2+sRVucoPSWZia1+D0zv3PjmQoBojG9b1qU91Ty+ysm/OD8UqaesBwII2t229ObTaSgf
-	WAmG7h1CgEPXb8xGUwU5cIHtCPRKeNRGDKCWChDnkLelw7Gijnr1uzR0GiWUQKKmHg5uvvuO/6c4C
-	x7Ds3eKQ+fxzg3FWlX1pyrdOwL7RtJ9u/gp+eHdlNs5FZnlPQTav5QoRHAI9X1tDpTQ1Tp3yaQ72X
-	ZhCbBv6g==;
+	bh=6ityrTb+cN3E6zdWopkba23K4YFJ51mGn7zptESF64M=; b=wqVIaZYAsda2MMLq5hrjCxduBX
+	6yOmFxPjIZQ0nY42TXGqstkTq1wUVKqc9HpTIiuTY43vikruEFAAhI+zKDeQ+dJhe2kOzbwLD9Wgo
+	E5P1GIBjanL1xyJppGiJP2GO4lkYE4rDLepcFMkOO1Bzxt2b/6jbwqag8oH0u5mGf0DGClBoZME7W
+	Rf1UWFBfd6mc90bC0jBVPCZSfHxXRIBrQpRoGosxN3GQ93a4XiWphN6fjTMBWVTCJMRc8/0Zi6r7K
+	tu6iGNMuI+CUS2VtQ7j1i8kQdF5IKS6tPsd0J45x6w1uTajIbEb6p3NqR+gAVjwQfPbjzf6R1SRjX
+	AZJJZnlg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCfCy-00000007HJb-3n7w;
-	Thu, 30 May 2024 12:48:40 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1sCfvy-00000007O7L-0Vtb;
+	Thu, 30 May 2024 13:35:10 +0000
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCfCu-00000007HFw-1MjT;
-	Thu, 30 May 2024 12:48:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1717073309;
-	bh=OP6XRog4cE88wYyTXoF/8qzQ5XybwFBKMvY44sDP6tg=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=0lOOhjDCGvhvKpRBJ/3tS866RbqNldDgB/AdLjHOSplmEAD1NddLepyromD58JEIm
-	 aIiut8ql2U2I69qnJROphoaKZptWc8+FSmBmxs/f/qGcyrQutRkt8on0N4KInkJ6ET
-	 JCkbum2LsZ3iFtmAVPJA6UNrB3Oi7ZxDqeMEVdK3EUOE3JvSrEWbjE06DbDXF07MdE
-	 sFH662HcsxZcimCVFbQtb1cKeVH+/RpZX5rlV7OgT2WLPLoe7lQ7fMPL79KsUq+iD/
-	 /vVsWPX/lEjEGxOd0y2tOjl1mZWTarVn1E/Qafprk5Ty8fmeAHeJ4FStntJ8538Oox
-	 6VJSqIKHdisKg==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 9DEF637821AD;
-	Thu, 30 May 2024 12:48:28 +0000 (UTC)
-Message-ID: <0e5a5b36-6969-416d-9a16-6c71d7986c73@collabora.com>
-Date: Thu, 30 May 2024 14:48:28 +0200
+	id 1sCfvu-00000007O6A-2YUg;
+	Thu, 30 May 2024 13:35:08 +0000
+Received: by mail-ej1-x62c.google.com with SMTP id a640c23a62f3a-a6267778b3aso64799666b.3;
+        Thu, 30 May 2024 06:35:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1717076104; x=1717680904; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=6ityrTb+cN3E6zdWopkba23K4YFJ51mGn7zptESF64M=;
+        b=MkRx1uCFD8wJuYdYNwqc41ib6hhPLusb1c+F4J67xcxxMQHoxqmBOqeXHKkSNECyG8
+         b7ncSrVEzJdQlefS5zaVDdc7SRNO3IbkjWE9FpuWJ+XU7oIbxusbUWR/pFcMwbziwQbl
+         +5v6ylD4lZsktfS7iTGXpDpUzTcTZWJLWXvnHBKVwnai7rs3zH2Iwoc4wtGkmrnRZJfc
+         SNknRsvcRNWDa5cja+lN1YMWCKkaCpPM7J7gjUmVSfPOQsEQmM9/GpSGmTG6nG6oclVm
+         LAF+XzXEXvRKKIwTAzBa5OvKXmOvomhv7swFl7QuIlLw3uyZeLB4RwIwooCTVs85MiOr
+         jqYg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1717076104; x=1717680904;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=6ityrTb+cN3E6zdWopkba23K4YFJ51mGn7zptESF64M=;
+        b=H0cwHZOsVFB2jdnLQjM8AtgydnaICTvB+ffiFgc6IG8EXN4UjuOAkrwR0yZBDgwLzZ
+         VT1zn+FkcOWf7gA4dc/eAHHMwPhDZkEjcvChImQORvFBTgQDfHE3mKM1BGVyYZQN82eW
+         tpLWMoWPahzyZw4cvslXhpheZNNB4Te5zOFxYakBEQttzGR1Ml1x3XMDDEBgGSQywZj6
+         Y+49s1axNxzF7bIJLqpbFvyrz2rOG8PUy8bZyOOE11kqtr98Oxa077fboLL4DvzflQTa
+         FHCDDRhgDObl8namMNuXtPxl/yAWIWO5zDNEd73G9bKHkDSdKEH1sTe8nW9LG5wDAneE
+         wjuQ==
+X-Forwarded-Encrypted: i=1; AJvYcCX3diPGpx1HqhEVwhAK7LAWxomeZEVwGICyxIfZq9V0kJ+2BZ/VdwJzkLtQBQc0Sm9PbHe+74tCO4PEZGT1EHQpN3+gh5WVTC5IcEDl8gHtW+9nC4SqzzAd6XWlQBWZCj134fIvTQCwg60QnmtQJAMX/R1oK/rT9Go=
+X-Gm-Message-State: AOJu0YxOLAn+trfisj8pL7lE9HVl17BvltJtbEiGLSEvy1n2eaNj08KJ
+	9fp67Ltg8sTJFRPb/KDE7G/btmGDkxlHcz8ScD8fbnY17mvnppWeZgRYHVsHr7p9G320+J3sAwi
+	jZEWH9lEHKgeW6EfpNaAkLgnn82A=
+X-Google-Smtp-Source: AGHT+IH7FtLH1XLeHqlHgAvWr9dzcasrfRvrJ3/m57OZQa4LKdwDt7riItXkQ11EXy8nI4WkwAdBQEESRzaKO1SQlGQ=
+X-Received: by 2002:a17:906:b3a0:b0:a5a:1562:5187 with SMTP id
+ a640c23a62f3a-a65e924fd51mr115572766b.55.1717076104311; Thu, 30 May 2024
+ 06:35:04 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/6] clk: mediatek: Add mt8173-mfgtop driver
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Frank Binns <frank.binns@imgtec.com>, Matt Coster
- <matt.coster@imgtec.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
- dri-devel@lists.freedesktop.org, linux-clk@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20240530083513.4135052-1-wenst@chromium.org>
- <20240530083513.4135052-3-wenst@chromium.org>
- <5a5842d7-adad-410b-bac2-9e5cb03ae18c@collabora.com>
- <CAGXv+5E5zFWVi+QmZj+mMb5jRfv138kz1FQyXiuzpe5Zz2KbZQ@mail.gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <CAGXv+5E5zFWVi+QmZj+mMb5jRfv138kz1FQyXiuzpe5Zz2KbZQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+References: <20240530093410.112716-1-angelogioacchino.delregno@collabora.com> <20240530093410.112716-3-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20240530093410.112716-3-angelogioacchino.delregno@collabora.com>
+From: Andy Shevchenko <andy.shevchenko@gmail.com>
+Date: Thu, 30 May 2024 16:34:27 +0300
+Message-ID: <CAHp75Vexddt1xUGogRDZA9pM1pFp2=ZtCQnCfXePahSCb+oKpg@mail.gmail.com>
+Subject: Re: [PATCH v1 2/4] iio: adc: Add support for MediaTek MT6357/8/9
+ Auxiliary ADC
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: jic23@kernel.org, lars@metafoo.de, robh@kernel.org, krzk+dt@kernel.org, 
+	conor+dt@kernel.org, matthias.bgg@gmail.com, lee@kernel.org, andy@kernel.org, 
+	nuno.sa@analog.com, bigunclemax@gmail.com, dlechner@baylibre.com, 
+	marius.cristea@microchip.com, marcelo.schmitt@analog.com, fr0st61te@gmail.com, 
+	mitrutzceclan@gmail.com, mike.looijmans@topic.nl, marcus.folkesson@gmail.com, 
+	linux-iio@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, kernel@collabora.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240530_054836_762443_83CB4D72 
-X-CRM114-Status: GOOD (  36.03  )
+X-CRM114-CacheID: sfid-20240530_063506_681748_3C286876 
+X-CRM114-Status: GOOD (  22.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,319 +96,297 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 30/05/24 12:16, Chen-Yu Tsai ha scritto:
-> On Thu, May 30, 2024 at 5:59 PM AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> wrote:
->>
->> Il 30/05/24 10:35, Chen-Yu Tsai ha scritto:
->>> The MFG (GPU) block on the MT8173 has a small glue layer, named MFG_TOP
->>> in the datasheet, that contains clock gates, some power sequence signal
->>> delays, and other unknown registers that get toggled when the GPU is
->>> powered on.
->>>
->>> The clock gates are exposed as clocks provided by a clock controller,
->>> while the power sequencing bits are exposed as one singular power domain.
->>>
->>> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
->>> ---
->>>    drivers/clk/mediatek/Kconfig             |   9 +
->>>    drivers/clk/mediatek/Makefile            |   1 +
->>>    drivers/clk/mediatek/clk-mt8173-mfgtop.c | 240 +++++++++++++++++++++++
->>>    3 files changed, 250 insertions(+)
->>>    create mode 100644 drivers/clk/mediatek/clk-mt8173-mfgtop.c
->>>
->>> diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
->>> index 70a005e7e1b1..9e279c739f1c 100644
->>> --- a/drivers/clk/mediatek/Kconfig
->>> +++ b/drivers/clk/mediatek/Kconfig
->>> @@ -500,6 +500,15 @@ config COMMON_CLK_MT8173_IMGSYS
->>>        help
->>>          This driver supports MediaTek MT8173 imgsys clocks.
->>>
->>> +config COMMON_CLK_MT8173_MFGTOP
->>> +     tristate "Clock and power driver for MediaTek MT8173 mfgtop"
->>> +     depends on COMMON_CLK_MT8173
->>> +     default COMMON_CLK_MT8173
->>> +     select PM_GENERIC_DOMAINS
->>> +     select PM_GENERIC_DOMAINS_OF
->>> +     help
->>> +       This driver supports MediaTek MT8173 mfgtop clocks and power domain.
->>> +
->>>    config COMMON_CLK_MT8173_MMSYS
->>>           tristate "Clock driver for MediaTek MT8173 mmsys"
->>>           depends on COMMON_CLK_MT8173
->>> diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
->>> index eeccfa039896..fdd3a76e12a1 100644
->>> --- a/drivers/clk/mediatek/Makefile
->>> +++ b/drivers/clk/mediatek/Makefile
->>> @@ -77,6 +77,7 @@ obj-$(CONFIG_COMMON_CLK_MT8167_VDECSYS) += clk-mt8167-vdec.o
->>>    obj-$(CONFIG_COMMON_CLK_MT8173) += clk-mt8173-apmixedsys.o clk-mt8173-infracfg.o \
->>>                                   clk-mt8173-pericfg.o clk-mt8173-topckgen.o
->>>    obj-$(CONFIG_COMMON_CLK_MT8173_IMGSYS) += clk-mt8173-img.o
->>> +obj-$(CONFIG_COMMON_CLK_MT8173_MFGTOP) += clk-mt8173-mfgtop.o
->>>    obj-$(CONFIG_COMMON_CLK_MT8173_MMSYS) += clk-mt8173-mm.o
->>>    obj-$(CONFIG_COMMON_CLK_MT8173_VDECSYS) += clk-mt8173-vdecsys.o
->>>    obj-$(CONFIG_COMMON_CLK_MT8173_VENCSYS) += clk-mt8173-vencsys.o
->>> diff --git a/drivers/clk/mediatek/clk-mt8173-mfgtop.c b/drivers/clk/mediatek/clk-mt8173-mfgtop.c
->>> new file mode 100644
->>> index 000000000000..85fa7a7453ed
->>> --- /dev/null
->>> +++ b/drivers/clk/mediatek/clk-mt8173-mfgtop.c
->>> @@ -0,0 +1,240 @@
->>> +// SPDX-License-Identifier: GPL-2.0-only
->>> +/*
->>> + * Copyright (c) 2024 Google LLC
->>> + * Author: Chen-Yu Tsai <wenst@chromium.org>
->>> + *
->>> + * Based on driver in downstream ChromeOS v5.15 kernel.
->>> + *
->>> + * Copyright (c) 2014 MediaTek Inc.
->>> + * Author: Chiawen Lee <chiawen.lee@mediatek.com>
->>> + */
->>> +
->>> +#include <dt-bindings/clock/mt8173-clk.h>
->>> +
->>> +#include <linux/bitfield.h>
->>> +#include <linux/clk.h>
->>> +#include <linux/mfd/syscon.h>
->>> +#include <linux/module.h>
->>> +#include <linux/of.h>
->>> +#include <linux/platform_device.h>
->>> +#include <linux/pm_domain.h>
->>> +#include <linux/pm_runtime.h>
->>> +#include <linux/regmap.h>
->>> +
->>> +#include "clk-gate.h"
->>> +#include "clk-mtk.h"
->>> +
->>> +static const struct mtk_gate_regs mfg_cg_regs = {
->>> +     .sta_ofs = 0x0000,
->>> +     .clr_ofs = 0x0008,
->>> +     .set_ofs = 0x0004,
->>> +};
->>> +
->>> +#define GATE_MFG(_id, _name, _parent, _shift, _flags)        \
->>> +             GATE_MTK_FLAGS(_id, _name, _parent, &mfg_cg_regs, _shift, &mtk_clk_gate_ops_setclr, _flags)
->>
->> Extra tabulation: please fix
-> 
-> One tab instead of two? OK.
-> 
+On Thu, May 30, 2024 at 12:34=E2=80=AFPM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> Add a driver to support reading the Auxiliary ADC IP found in the
+> MediaTek MT6357, MT6358 and MT6359 Power Management ICs.
+>
+> This driver provides multiple ADC channels for system monitoring,
+> such as battery voltage, PMIC temperature, PMIC-internal voltage
+> regulators temperature, and others.
 
-Yeah.
+> ---
 
->>> +
->>> +/* TODO: The block actually has dividers for the core and mem clocks. */
->>> +static const struct mtk_gate mfg_clks[] = {
->>> +     GATE_MFG(CLK_MFG_AXI, "mfg_axi", "axi_mfg_in_sel", 0, CLK_SET_RATE_PARENT),
->>> +     GATE_MFG(CLK_MFG_MEM, "mfg_mem", "mem_mfg_in_sel", 1, CLK_SET_RATE_PARENT),
->>> +     GATE_MFG(CLK_MFG_G3D, "mfg_g3d", "mfg_sel", 2, CLK_SET_RATE_PARENT),
->>> +     GATE_MFG(CLK_MFG_26M, "mfg_26m", "clk26m", 3, 0),
->>> +};
->>> +
->>> +static const struct mtk_clk_desc mfg_desc = {
->>> +     .clks = mfg_clks,
->>> +     .num_clks = ARRAY_SIZE(mfg_clks),
->>> +};
->>> +
->>> +struct mt8173_mfgtop_data {
->>> +     struct clk_hw_onecell_data *clk_data;
->>> +     struct regmap *regmap;
->>> +     struct generic_pm_domain genpd;
->>> +     struct of_phandle_args parent_pd, child_pd;
->>> +     struct clk *clk_26m;
->>> +};
->>> +
->>> +static const struct of_device_id of_match_clk_mt8173_mfgtop[] = {
->>> +     { .compatible = "mediatek,mt8173-mfgtop", .data = &mfg_desc },
->>> +     { /* sentinel */ }
->>> +};
->>> +MODULE_DEVICE_TABLE(of, of_match_clk_mt8173_mfgtop);
->>
->> Please move of_match_clk_mt8173_mfgtop before clk_mt8173_mfgtop_drv for consistency
->> with all the other clock drivers.
-> 
-> Ack.
-> 
->>> +
->>> +/* Delay count in clock cycles */
->>> +#define MFG_ACTIVE_POWER_CON0        0x24
->>> + #define RST_B_DELAY_CNT     GENMASK(7, 0)   /* pwr_rst_b de-assert delay during power-up */
->>> + #define CLK_EN_DELAY_CNT    GENMASK(15, 8)  /* CLK_DIS deassert delay during power-up */
->>> + #define CLK_DIS_DELAY_CNT   GENMASK(23, 16) /* CLK_DIS assert delay during power-down */
->>
->> The reason why I had EVT_FORCE_ABORT and ACTIVE_PWRCTL_EN in my driver is to
->> document that we're keeping the event force abort disabled and, more importantly,
->> we are keeping the "active power control" feature disabled.
->>
->> Please, add those two - or at least the ACTIVE_PWRCTL_EN - to keep that documented,
->> or this information will be lost for sure.
->> If in the future the ACTIVE_PWRCTL feature will become usable, it's going to be
->> just a 30 seconds change, as the info is already there.
-> 
-> OK.
-> 
->>> +
->>> +#define MFG_ACTIVE_POWER_CON1        0x28
->>> + #define PWR_ON_S_DELAY_CNT  GENMASK(7, 0)   /* pwr_on_s assert delay during power-up */
->>> + #define ISO_DELAY_CNT               GENMASK(15, 8)  /* ISO assert delay during power-down */
->>> + #define ISOOFF_DELAY_CNT    GENMASK(23, 16) /* ISO de-assert delay during power-up */
->>> + #define RST__DELAY_CNT              GENMASK(31, 24) /* pwr_rsb_b assert delay during power-down */
->>> +
->>> +static int clk_mt8173_mfgtop_power_on(struct generic_pm_domain *domain)
->>> +{
->>> +     struct mt8173_mfgtop_data *data = container_of(domain, struct mt8173_mfgtop_data, genpd);
->>> +
->>> +     /* drives internal power management */
->>> +     clk_prepare_enable(data->clk_26m);
->>> +
->>> +     /* Power on/off delays for various signals */
->>> +     regmap_write(data->regmap, MFG_ACTIVE_POWER_CON0,
->>> +                  FIELD_PREP(RST_B_DELAY_CNT, 77) |
->>> +                  FIELD_PREP(CLK_EN_DELAY_CNT, 61) |
->>> +                  FIELD_PREP(CLK_DIS_DELAY_CNT, 60));
->>
->> I get that this is kinda odd to read, but still...
->>
->> FIELD_PREP(CLK_DIS_DELAY_CNT, 60) |
->> FIELD_PREP(ACTIVE_PWRCTL_EN, 0));
->>
->> ...please :-)
-> 
-> Sure.
-> 
->>> +     regmap_write(data->regmap, MFG_ACTIVE_POWER_CON1,
->>> +                  FIELD_PREP(PWR_ON_S_DELAY_CNT, 11) |
->>> +                  FIELD_PREP(ISO_DELAY_CNT, 68) |
->>> +                  FIELD_PREP(ISOOFF_DELAY_CNT, 69) |
->>> +                  FIELD_PREP(RST__DELAY_CNT, 77));
->>> +
->>> +     /* Magic numbers related to core switch sequence and delays */
->>> +     regmap_write(data->regmap, 0xe0, 0x7a710184);
->>> +     regmap_write(data->regmap, 0xe4, 0x835f6856);
->>> +     regmap_write(data->regmap, 0xe8, 0x002b0234);
->>> +     regmap_write(data->regmap, 0xec, 0x80000000);
->>> +     regmap_write(data->regmap, 0xa0, 0x08000000);
->>
->> Is there any way to retrieve information about what those registers are?
-> 
-> I asked. They said the project was too long ago, and they could only
-> figure out that it had something to do with core switch sequencing and
-> delays between each core, which is what I put in the comment there.
-> 
+Here is no explanation on how this is differ to any of the three
+existing drivers? I.o.w. why do we need a brand new one?
 
-That's a bit sad to read, but okay, I guess we'll call it a day and keep the
-magic numbers around, as that's the only option. :-(
+...
 
->>> +
->>> +     return 0;
->>> +}
->>> +
->>> +static int clk_mt8173_mfgtop_power_off(struct generic_pm_domain *domain)
->>> +{
->>> +     struct mt8173_mfgtop_data *data = container_of(domain, struct mt8173_mfgtop_data, genpd);
->>> +
->>> +     /* Magic numbers related to core switch sequence and delays */
->>> +     regmap_write(data->regmap, 0xec, 0);
->>> +
->>> +     /* drives internal power management */
->>> +     clk_disable_unprepare(data->clk_26m);
->>> +
->>> +     return 0;
->>> +}
->>> +
->>> +static int clk_mt8173_mfgtop_probe(struct platform_device *pdev)
->>> +{
->>> +     struct device *dev = &pdev->dev;
->>> +     struct device_node *node = dev->of_node;
->>> +     struct mt8173_mfgtop_data *data;
->>> +     int ret;
->>> +
->>> +     data = devm_kzalloc(dev, sizeof(*data), GFP_KERNEL);
->>> +     if (!data)
->>> +             return -ENOMEM;
->>> +
->>> +     platform_set_drvdata(pdev, data);
->>> +
->>> +     data->clk_data = mtk_devm_alloc_clk_data(dev, ARRAY_SIZE(mfg_clks));
->>> +     if (!data->clk_data)
->>> +             return -ENOMEM;
->>> +
->>> +     /* MTK clock gates also uses regmap */
->>> +     data->regmap = device_node_to_regmap(node);
->>> +     if (IS_ERR(data->regmap))
->>> +             return dev_err_probe(dev, PTR_ERR(data->regmap), "Failed to get regmap\n");
->>> +
->>> +     data->child_pd.np = node;
->>> +     data->child_pd.args_count = 0;
->>> +     ret = of_parse_phandle_with_args(node, "power-domains", "#power-domain-cells", 0,
->>> +                                      &data->parent_pd);
->>> +     if (ret)
->>> +             return dev_err_probe(dev, ret, "Failed to parse power domain\n");
->>> +
->>> +     devm_pm_runtime_enable(dev);
->>> +     /*
->>> +      * Do a pm_runtime_resume_and_get() to workaround a possible
->>> +      * deadlock between clk_register() and the genpd framework.
->>> +      */
->>> +     ret = pm_runtime_resume_and_get(dev);
->>> +     if (ret) {
->>> +             dev_err_probe(dev, ret, "Failed to runtime resume device\n");
->>> +             goto put_of_node;
->>> +     }
->>> +
->>> +     ret = mtk_clk_register_gates(dev, node, mfg_clks, ARRAY_SIZE(mfg_clks),
->>> +                                  data->clk_data);
->>> +     if (ret) {
->>> +             dev_err_probe(dev, ret, "Failed to register clock gates\n");
->>> +             goto put_pm_runtime;
->>> +     }
->>> +
->>> +     data->clk_26m = clk_hw_get_clk(data->clk_data->hws[CLK_MFG_26M], "26m");
->>> +     if (IS_ERR(data->clk_26m)) {
->>> +             dev_err_probe(dev, PTR_ERR(data->clk_26m), "Failed to get 26 MHz clock\n");
->>> +             goto unregister_clks;
->>> +     }
->>> +
->>> +     ret = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, data->clk_data);
->>> +     if (ret) {
->>> +             dev_err_probe(dev, ret, "Failed to add clk OF provider\n");
->>> +             goto put_26m_clk;
->>> +     }
->>> +
->>> +     data->genpd.name = "mfg_apm";
->>
->> "mfg-apm" or "mfg-pwr" please!
-> 
-> Ack.
-> 
->> Everything else looks good.
->>
->> Thanks for taking care of that, I started this work way too much time ago and
->> realistically I wouldn't have been able to finish it due to time constraints.
->>
->> It's great to see that *finally* we can get some GPU upstream on this old SoC.
->> As its CPUs are really slow, LLVMPipe is quite unusable from a UX perspective
->> hence its only big issue was the lack of 3D HW acceleration.
-> 
-> I think there's still more work on the GPU driver side. I was digging
-> through the mailing list to find ways to get it running, and evidently
-> it doesn't fully support zink yet.
-> 
++ bits.h
 
-There's still more work to do, yes, but it's still a great advancement.
+> +#include <linux/delay.h>
 
->> This makes machines embedding this SoC usable, and that's simply awesome.
-> 
-> I'll give the patches a week to simmer while I go work on some
-> other stuff.
-> 
+> +#include <linux/kernel.h>
 
-Sure, no worries.
+Why?
 
-Cheers!
-Angelo
++ mod_devicetable.h
+> +#include <linux/module.h>
 
-> ChenYu
+> +#include <linux/of.h>
 
+Why?
+
+> +#include <linux/platform_device.h>
+> +#include <linux/regmap.h>
+
++ types.h
+
++ blank line
+
+> +#include <linux/iio/iio.h>
+
++ Blank line
+
+> +#include <linux/mfd/mt6397/core.h>
+
+...
+
+> +#define PMIC_RG_RESET_VAL              (BIT(0) | BIT(3))
+
+In this form it requires a comment explaining each mentioned bit.
+
+> +#define PMIC_AUXADC_ADCx(x)            ((x) << 1)
+
+Seems like a useless macro, it occupies much more space than in-place shift=
+.
+
+...
+
+> +#define MT6358_IMP0_CLEAR              (BIT(14) | BIT(7))
+
+As per above.
+
+...
+
+> +/**
+> + * struct mtk_pmic_auxadc_chan - PMIC AUXADC channel data
+> + * @req_idx:       Request register number
+> + * @req_mask:      Bitmask to activate a channel
+> + * @num_samples:   Number of AUXADC samples for averaging
+> + * @r_numerator:   Resistance ratio numerator
+> + * @r_denominator: Resistance ratio denominator
+> + */
+> +struct mtk_pmic_auxadc_chan {
+> +       u8 req_idx;
+> +       u16 req_mask;
+> +       u16 num_samples;
+
+> +       u8 r_numerator;
+> +       u8 r_denominator;
+
+Can you add struct u8_fract to the math.h and use it? I will Ack/R the
+respective patch.
+
+> +};
+
+...
+
+> +struct mtk_pmic_auxadc_pdata {
+> +       const struct iio_chan_spec *channels;
+> +       int num_channels;
+
+Why signed?
+
+> +       const struct mtk_pmic_auxadc_chan *desc;
+> +       const u16 *regs;
+> +       u16 sec_unlock_key;
+> +       u8 imp_adc_num;
+> +       int (*read_imp)(struct mt6359_auxadc *adc_dev, int *vbat, int *ib=
+at);
+> +};
+
+...
+
+> +static const u16 mt6357_auxadc_regs[] =3D {
+> +       [PMIC_HK_TOP_RST_CON0]  =3D 0xf90,
+
+Can we use the fixed-width values so all of them will look nice and
+easy to parse?
+
+> +       [PMIC_AUXADC_DCM_CON]   =3D 0x122e,
+> +       [PMIC_AUXADC_ADC0]      =3D 0x1088,
+> +       [PMIC_AUXADC_IMP0]      =3D 0x119c,
+> +       [PMIC_AUXADC_IMP1]      =3D 0x119e,
+> +       [PMIC_AUXADC_RQST0]     =3D 0x110e,
+> +       [PMIC_AUXADC_RQST1]     =3D 0x1114,
+> +};
+
+...
+
+> +static const u16 mt6358_auxadc_regs[] =3D {
+
+Ditto.
+
+> +       [PMIC_HK_TOP_RST_CON0]  =3D 0xf90,
+> +       [PMIC_AUXADC_DCM_CON]   =3D 0x1260,
+> +       [PMIC_AUXADC_ADC0]      =3D 0x1088,
+> +       [PMIC_AUXADC_IMP0]      =3D 0x1208,
+> +       [PMIC_AUXADC_IMP1]      =3D 0x120a,
+> +       [PMIC_AUXADC_RQST0]     =3D 0x1108,
+> +       [PMIC_AUXADC_RQST1]     =3D 0x110a,
+> +};
+
+...
+
+> +static const u16 mt6359_auxadc_regs[] =3D {
+
+Ditto.
+
+> +       [PMIC_FGADC_R_CON0]     =3D 0xd88,
+> +       [PMIC_HK_TOP_WKEY]      =3D 0xfb4,
+> +       [PMIC_HK_TOP_RST_CON0]  =3D 0xf90,
+> +       [PMIC_AUXADC_RQST0]     =3D 0x1108,
+> +       [PMIC_AUXADC_RQST1]     =3D 0x110a,
+> +       [PMIC_AUXADC_ADC0]      =3D 0x1088,
+> +       [PMIC_AUXADC_IMP0]      =3D 0x1208,
+> +       [PMIC_AUXADC_IMP1]      =3D 0x120a,
+> +       [PMIC_AUXADC_IMP3]      =3D 0x120e,
+> +};
+
+...
+
+> +       ret =3D regmap_read_poll_timeout(adc_dev->regmap, pdata->regs[PMI=
+C_AUXADC_IMP0],
+> +                                      val, !!(val & MT6358_IMP0_IRQ_RDY)=
+,
+> +                                      IMP_POLL_DELAY_US, AUXADC_TIMEOUT_=
+US);
+> +       if (ret) {
+> +               mt6358_stop_imp_conv(adc_dev);
+
+> +               return ret;
+> +       }
+> +
+> +       return 0;
+
+  if (ret)
+    foo()
+
+  return ret;
+
+
+...
+
+> +       int val_v, ret;
+
+Why is val_v signed?
+
+...
+
+> +       int val_v, val_i, ret;
+
+Ditto for all val_*.
+
+...
+
+> +       /* If it succeeded, wait for the registers to be populated */
+> +       usleep_range(IMP_STOP_DELAY_US, IMP_STOP_DELAY_US + 50);
+
+fsleep() ?
+
+...
+
+> +       /* Assert ADC reset */
+> +       regmap_set_bits(regmap, pdata->regs[PMIC_HK_TOP_RST_CON0], PMIC_R=
+G_RESET_VAL);
+
+No required delay in between?
+
+> +       /* De-assert ADC reset */
+> +       regmap_clear_bits(regmap, pdata->regs[PMIC_HK_TOP_RST_CON0], PMIC=
+_RG_RESET_VAL);
+
+...
+
+> +       /* Wait until all samples are averaged */
+> +       usleep_range(desc->num_samples * AUXADC_AVG_TIME_US,
+> +                    (desc->num_samples + 1) * AUXADC_AVG_TIME_US);
+
+fsleep()
+
+...
+
+> +       ret =3D regmap_read_poll_timeout(regmap,
+> +                                      (pdata->regs[PMIC_AUXADC_ADC0] +
+> +                                       PMIC_AUXADC_ADCx(chan->address)),
+
+Drop unneeded parentheses and possibly make it one line.
+
+> +                                      val, (val & PMIC_AUXADC_RDY_BIT),
+
+Unneeded parentheses.
+
+> +                                      AUXADC_POLL_DELAY_US, AUXADC_TIMEO=
+UT_US);
+> +       if (ret)
+> +               return ret;
+
+...
+
+> +       mutex_lock(&adc_dev->lock);
+
+Why not use cleanup.h?
+
+...
+
+> +static int mt6359_auxadc_probe(struct platform_device *pdev)
+> +{
+
+  struct device *dev =3D &pdev->dev;
+
+> +       struct device *mt6397_mfd_dev =3D pdev->dev.parent;
+
+  ... =3D dev->parent;
+
+> +       struct mt6359_auxadc *adc_dev;
+> +       struct iio_dev *indio_dev;
+> +       struct regmap *regmap;
+> +       int ret;
+> +
+> +       /* Regmap is from SoC PMIC Wrapper, parent of the mt6397 MFD */
+> +       regmap =3D dev_get_regmap(mt6397_mfd_dev->parent, NULL);
+> +       if (!regmap)
+> +               return dev_err_probe(&pdev->dev, -ENODEV, "Failed to get =
+regmap\n");
+> +
+> +       indio_dev =3D devm_iio_device_alloc(&pdev->dev, sizeof(*adc_dev))=
+;
+> +       if (!indio_dev)
+> +               return -ENOMEM;
+> +
+> +       adc_dev =3D iio_priv(indio_dev);
+> +       adc_dev->regmap =3D regmap;
+> +       adc_dev->dev =3D &pdev->dev;
+> +
+> +       adc_dev->pdata =3D device_get_match_data(&pdev->dev);
+> +       if (!adc_dev->pdata)
+> +               return -EINVAL;
+> +
+> +       mutex_init(&adc_dev->lock);
+> +
+> +       mt6359_auxadc_reset(adc_dev);
+> +
+> +       indio_dev->dev.parent =3D &pdev->dev;
+> +       indio_dev->name =3D dev_name(&pdev->dev);
+> +       indio_dev->info =3D &mt6359_auxadc_info;
+> +       indio_dev->modes =3D INDIO_DIRECT_MODE;
+> +       indio_dev->channels =3D adc_dev->pdata->channels;
+> +       indio_dev->num_channels =3D adc_dev->pdata->num_channels;
+> +
+> +       ret =3D devm_iio_device_register(&pdev->dev, indio_dev);
+> +       if (ret < 0)
+
+Why  ' < 0' ?
+
+> +               return dev_err_probe(&pdev->dev, ret, "failed to register=
+ iio device\n");
+> +
+> +       return 0;
+> +}
+
+--=20
+With Best Regards,
+Andy Shevchenko
 
