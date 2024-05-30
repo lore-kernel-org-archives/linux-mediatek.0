@@ -4,32 +4,32 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27A24C25B78
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 May 2024 08:59:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8A6DC25B78
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 May 2024 08:59:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=igt85d4mIhr28dEeDXK0gN8GC5QuggzjcSHyG7Z+LOI=; b=w2b7Yp5rEL6q4p91zbc5tQgxIY
-	a3aresXmelf215ij0CGUUy9Brq+PndS1YtOOX40gOJu3AQXvz52X1jLEn3O39R7U9qNbWMK8ESGow
-	d4yQMyOL0lOtW+fPKJFqcXhningf6eXyHU7cLnrKi5o+/t9ryxVlsgPajq+dNKYAZT0tyb9n4qllP
-	fEUwFCXGYhOzWR6yhum6eDOd6rCtWmbDO4ZcHDHttwJCFQMFqLqR0G5dmERLzBK6novvnge5LMiov
-	shyPEeg1XzTcBN/9h0LgeOe6wGmwZucuZgKg52W+1QePta7AMMLUx4dtBUxCCqT3T8JeQCL/+8VIu
-	BT6ETZ/w==;
+	bh=B6sn0pIWwwSnfY8AGhWWYQzwnQKI9fY7QhhOOQ0QLcw=; b=Tf/cf4J41CxCq8/zSxeQVc8arA
+	4IcCi0MCQMn1zQkNwiQEjCK3zVE9KkoCCpuZSMxV5vwtAdDcSLB6LEhsUJy+m2cs9Xb7VOd2Qe3EU
+	1Koqm7YmqP+99ZVZ1mqa2KuFja0F3ZX6w/pq9M9ImzKZIh5++KKQVVw+Vt085oAVEcaQDnia9NdJI
+	9uZXIUS0FYOww1H/t4qIdJXEOodlBgfiAa4yyWJ+Z6tFgA8BoqniZxqS+cT0G1qv+aeRml4YObk8V
+	cPzQnjNT0enVbmM/4a2tqXQp/mYTKTaELWwk3s9sBGXcpzYDrWwO+LYEc0AAY19PqpGrFZFJCawt7
+	a0ayhdig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCbd5-00000006j5M-2vnO;
-	Thu, 30 May 2024 08:59:23 +0000
-Received: from fgw22-7.mail.saunalahti.fi ([62.142.5.83])
+	id 1sCbdG-00000006jDT-3F2M;
+	Thu, 30 May 2024 08:59:34 +0000
+Received: from fgw23-7.mail.saunalahti.fi ([62.142.5.84])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCbc1-00000006iYL-0oZ1
+	id 1sCbcL-00000006imo-0OoZ
 	for linux-mediatek@lists.infradead.org;
-	Thu, 30 May 2024 08:58:20 +0000
+	Thu, 30 May 2024 08:58:38 +0000
 Received: from localhost (88-113-26-230.elisa-laajakaista.fi [88.113.26.230])
-	by fgw22.mail.saunalahti.fi (Halon) with ESMTP
-	id bdc774e0-1e62-11ef-8e2e-005056bdf889;
+	by fgw20.mail.saunalahti.fi (Halon) with ESMTP
+	id be284b31-1e62-11ef-8d3e-005056bd6ce9;
 	Thu, 30 May 2024 11:58:11 +0300 (EEST)
 From: Andy Shevchenko <andy.shevchenko@gmail.com>
 To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
@@ -53,17 +53,17 @@ Cc: Dong Aisheng <aisheng.dong@nxp.com>,
 	Paul Cercueil <paul@crapouillou.net>,
 	Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>,
 	Andy Shevchenko <andy.shevchenko@gmail.com>
-Subject: [PATCH v3 07/11] pinctrl: imx: Convert to use func member
-Date: Thu, 30 May 2024 11:55:16 +0300
-Message-ID: <20240530085745.1539925-8-andy.shevchenko@gmail.com>
+Subject: [PATCH v3 08/11] pinctrl: ingenic: Convert to use func member
+Date: Thu, 30 May 2024 11:55:17 +0300
+Message-ID: <20240530085745.1539925-9-andy.shevchenko@gmail.com>
 X-Mailer: git-send-email 2.45.1
 In-Reply-To: <20240530085745.1539925-1-andy.shevchenko@gmail.com>
 References: <20240530085745.1539925-1-andy.shevchenko@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240530_015817_666357_4184460A 
-X-CRM114-Status: GOOD (  10.98  )
+X-CRM114-CacheID: sfid-20240530_015837_394396_8CFE466C 
+X-CRM114-Status: GOOD (  12.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,50 +84,53 @@ desynchronisation of the generic pin function description.
 
 Signed-off-by: Andy Shevchenko <andy.shevchenko@gmail.com>
 ---
- drivers/pinctrl/freescale/pinctrl-imx.c | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+ drivers/pinctrl/pinctrl-ingenic.c | 16 +++++++---------
+ 1 file changed, 7 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/pinctrl/freescale/pinctrl-imx.c b/drivers/pinctrl/freescale/pinctrl-imx.c
-index 2d3d80921c0d..1ccdeb86d8a7 100644
---- a/drivers/pinctrl/freescale/pinctrl-imx.c
-+++ b/drivers/pinctrl/freescale/pinctrl-imx.c
-@@ -266,7 +266,7 @@ static int imx_pmx_set(struct pinctrl_dev *pctldev, unsigned selector,
- 	npins = grp->grp.npins;
+diff --git a/drivers/pinctrl/pinctrl-ingenic.c b/drivers/pinctrl/pinctrl-ingenic.c
+index 959b9ea83a66..31703737731b 100644
+--- a/drivers/pinctrl/pinctrl-ingenic.c
++++ b/drivers/pinctrl/pinctrl-ingenic.c
+@@ -96,9 +96,7 @@
  
- 	dev_dbg(ipctl->dev, "enable function %s group %s\n",
+ #define INGENIC_PIN_FUNCTION(_name_, id)							\
+ 	{											\
+-		.name = _name_,									\
+-		.group_names = id##_groups,							\
+-		.num_group_names = ARRAY_SIZE(id##_groups),					\
++		.func = PINCTRL_PINFUNCTION(_name_, id##_groups, ARRAY_SIZE(id##_groups)),	\
+ 		.data = NULL,									\
+ 	}
+ 
+@@ -3769,7 +3767,7 @@ static int ingenic_pinmux_set_mux(struct pinctrl_dev *pctldev,
+ 		return -EINVAL;
+ 
+ 	dev_dbg(pctldev->dev, "enable function %s group %s\n",
 -		func->name, grp->grp.name);
 +		func->func.name, grp->grp.name);
  
- 	for (i = 0; i < npins; i++) {
- 		/*
-@@ -593,21 +593,21 @@ static int imx_pinctrl_parse_functions(struct device_node *np,
- 		return -EINVAL;
- 
- 	/* Initialise function */
--	func->name = np->name;
--	func->num_group_names = of_get_child_count(np);
--	if (func->num_group_names == 0) {
-+	func->func.name = np->name;
-+	func->func.ngroups = of_get_child_count(np);
-+	if (func->func.ngroups == 0) {
- 		dev_info(ipctl->dev, "no groups defined in %pOF\n", np);
- 		return -EINVAL;
+ 	mode = (uintptr_t)grp->data;
+ 	if (mode <= 3) {
+@@ -4317,14 +4315,14 @@ static int __init ingenic_pinctrl_probe(struct platform_device *pdev)
  	}
  
--	group_names = devm_kcalloc(ipctl->dev, func->num_group_names,
--				   sizeof(char *), GFP_KERNEL);
-+	group_names = devm_kcalloc(ipctl->dev, func->func.ngroups,
-+				   sizeof(*func->func.groups), GFP_KERNEL);
- 	if (!group_names)
- 		return -ENOMEM;
- 	i = 0;
- 	for_each_child_of_node(np, child)
- 		group_names[i++] = child->name;
--	func->group_names = group_names;
-+	func->func.groups = group_names;
+ 	for (i = 0; i < chip_info->num_functions; i++) {
+-		const struct function_desc *func = &chip_info->functions[i];
++		const struct function_desc *function = &chip_info->functions[i];
++		const struct pinfunction *func = &function->func;
  
- 	i = 0;
- 	for_each_child_of_node(np, child) {
+ 		err = pinmux_generic_add_function(jzpc->pctl, func->name,
+-				func->group_names, func->num_group_names,
+-				func->data);
++						  func->groups, func->ngroups,
++						  function->data);
+ 		if (err < 0) {
+-			dev_err(dev, "Failed to register function %s\n",
+-					func->name);
++			dev_err(dev, "Failed to register function %s\n", func->name);
+ 			return err;
+ 		}
+ 	}
 -- 
 2.45.1
 
