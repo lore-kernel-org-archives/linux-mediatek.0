@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B191C27C43
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 May 2024 09:44:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D05CC25B7E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 May 2024 09:45:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZJVLD03TSbh0EX+KgNnmIHIuhindXa+wgSQyJxdLtmU=; b=cjOPNDY2HMZc3eVSS7ewCJMJlR
-	Zea2PryXxUF1RYG2oI84EH5TK0ytCthnZl2wtz7Pc2yyeC/EO3nv3gyJxJAb7JrJ5FMZ7VfQXj1DP
-	Pqm7gd6NSoVwZ8C9afujbE8t3XgYBiPa281r3i84WXhxDNQnmugcYsuBYIfktc7eWGz3Rr9P8inq/
-	C+93AfyWaIVi92mxFn350YmVbJ2hLCb9ucE5TVkpVDlClNzNxoCNb5EcRd4kCQlAcUi9/f+WyEAQ9
-	fiqOB0Lhl2Uhx2nlzw56Hw9J72No3g67SbT+8Y/fCIi91yKLatu0Xe23kpi+IGhu4BRdvYMHDzLWN
-	kWYOaGqA==;
+	bh=6rsq5l0XwM/4/+7Usg0Y8CxEkHkcvsP5ZRCqetWHmMc=; b=xlrCBynRl3WTt3NfshdMVqtwzA
+	3iodSf6VimHgb45+FDXo5Kg/sZf17m4gAhtoVKWjpF8lcBuRXRDLT5ogPLVWl4PFK5B4BJKQVUN5M
+	E5MUUtb6gyIYyJ3Q0Xs/zEfZrWkTCEh0rXcDzVqGchTZNbv/vCUnDNezg3+2avWwLCidUDm0yZVNu
+	7pHaD2zOV+nAamu3cUpw/p85e1YdMilY2Mxg1Xg66E4uwiaBK/5DywQT+WVwFKTHvTijFX/GoNl5C
+	J4KUwn9EMSc+bGtednLataadbjqsioQ6LY/9Ks7i5PBPayNuUH/K4ovDWhjiT5nBp8AyN4AzunmgT
+	bLqYMbYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCcLC-00000006sUc-3HvO;
-	Thu, 30 May 2024 09:44:58 +0000
-Received: from fgw20-7.mail.saunalahti.fi ([62.142.5.81])
+	id 1sCcLD-00000006sV6-1bPn;
+	Thu, 30 May 2024 09:44:59 +0000
+Received: from fgw23-7.mail.saunalahti.fi ([62.142.5.84])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCcKy-00000006sQM-3R84
+	id 1sCcL5-00000006sRX-0mGW
 	for linux-mediatek@lists.infradead.org;
-	Thu, 30 May 2024 09:44:46 +0000
+	Thu, 30 May 2024 09:44:53 +0000
 Received: from localhost (88-113-26-230.elisa-laajakaista.fi [88.113.26.230])
 	by fgw22.mail.saunalahti.fi (Halon) with ESMTP
-	id bac30c71-1e62-11ef-8e2e-005056bdf889;
-	Thu, 30 May 2024 11:58:06 +0300 (EEST)
+	id bc5935c4-1e62-11ef-8e2e-005056bdf889;
+	Thu, 30 May 2024 11:58:08 +0300 (EEST)
 From: Andy Shevchenko <andy.shevchenko@gmail.com>
 To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
 	Linus Walleij <linus.walleij@linaro.org>,
@@ -53,17 +53,18 @@ Cc: Dong Aisheng <aisheng.dong@nxp.com>,
 	Paul Cercueil <paul@crapouillou.net>,
 	Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>,
 	Andy Shevchenko <andy.shevchenko@gmail.com>
-Subject: [PATCH v3 02/11] pinctrl: equilibrium: Make use of struct pinfunction
-Date: Thu, 30 May 2024 11:55:11 +0300
-Message-ID: <20240530085745.1539925-3-andy.shevchenko@gmail.com>
+Subject: [PATCH v3 04/11] pinctrl: mediatek: moore: Provide a helper macro PINCTRL_PIN_FUNCTION()
+Date: Thu, 30 May 2024 11:55:13 +0300
+Message-ID: <20240530085745.1539925-5-andy.shevchenko@gmail.com>
 X-Mailer: git-send-email 2.45.1
 In-Reply-To: <20240530085745.1539925-1-andy.shevchenko@gmail.com>
 References: <20240530085745.1539925-1-andy.shevchenko@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240530_024445_056419_D348F499 
-X-CRM114-Status: GOOD (  16.58  )
+X-CRM114-CacheID: sfid-20240530_024451_605419_BB556439 
+X-CRM114-Status: UNSURE (   9.59  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,122 +79,246 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Provide a helper macro to assign the struct function_desc entries.
+This helps further refactoring.
 
-Since pin control provides a generic data type for the pin function,
-use it in the driver.
-
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Andy Shevchenko <andy.shevchenko@gmail.com>
 ---
- drivers/pinctrl/pinctrl-equilibrium.c | 24 +++++++++++++-----------
- drivers/pinctrl/pinctrl-equilibrium.h | 12 ------------
- 2 files changed, 13 insertions(+), 23 deletions(-)
+ drivers/pinctrl/mediatek/pinctrl-moore.h  |  8 +++++
+ drivers/pinctrl/mediatek/pinctrl-mt7622.c | 32 ++++++++---------
+ drivers/pinctrl/mediatek/pinctrl-mt7623.c | 42 +++++++++++------------
+ drivers/pinctrl/mediatek/pinctrl-mt7629.c | 20 +++++------
+ drivers/pinctrl/mediatek/pinctrl-mt7981.c | 34 +++++++++---------
+ drivers/pinctrl/mediatek/pinctrl-mt7986.c | 24 ++++++-------
+ 6 files changed, 84 insertions(+), 76 deletions(-)
 
-diff --git a/drivers/pinctrl/pinctrl-equilibrium.c b/drivers/pinctrl/pinctrl-equilibrium.c
-index 6e1be38865c3..a6d089eaaae5 100644
---- a/drivers/pinctrl/pinctrl-equilibrium.c
-+++ b/drivers/pinctrl/pinctrl-equilibrium.c
-@@ -566,8 +566,8 @@ static const struct pinconf_ops eqbr_pinconf_ops = {
- 	.pin_config_config_dbg_show	= pinconf_generic_dump_config,
+diff --git a/drivers/pinctrl/mediatek/pinctrl-moore.h b/drivers/pinctrl/mediatek/pinctrl-moore.h
+index e0313e7a1fe0..5945e4fe021f 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-moore.h
++++ b/drivers/pinctrl/mediatek/pinctrl-moore.h
+@@ -43,6 +43,14 @@
+ 		.data = id##_funcs,							\
+ 	}
+ 
++#define PINCTRL_PIN_FUNCTION(_name_, id)							\
++	{											\
++		.name = _name_,									\
++		.group_names = id##_groups,							\
++		.num_group_names = ARRAY_SIZE(id##_groups),					\
++		.data = NULL,									\
++	}
++
+ int mtk_moore_pinctrl_probe(struct platform_device *pdev,
+ 			    const struct mtk_pin_soc *soc);
+ 
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt7622.c b/drivers/pinctrl/mediatek/pinctrl-mt7622.c
+index 3c1148d59eff..2dc101991066 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt7622.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt7622.c
+@@ -823,22 +823,22 @@ static const char *mt7622_uart_groups[] = { "uart0_0_tx_rx",
+ static const char *mt7622_wdt_groups[] = { "watchdog", };
+ 
+ static const struct function_desc mt7622_functions[] = {
+-	{"antsel", mt7622_antsel_groups, ARRAY_SIZE(mt7622_antsel_groups)},
+-	{"emmc", mt7622_emmc_groups, ARRAY_SIZE(mt7622_emmc_groups)},
+-	{"eth",	mt7622_ethernet_groups, ARRAY_SIZE(mt7622_ethernet_groups)},
+-	{"i2c", mt7622_i2c_groups, ARRAY_SIZE(mt7622_i2c_groups)},
+-	{"i2s",	mt7622_i2s_groups, ARRAY_SIZE(mt7622_i2s_groups)},
+-	{"ir", mt7622_ir_groups, ARRAY_SIZE(mt7622_ir_groups)},
+-	{"led",	mt7622_led_groups, ARRAY_SIZE(mt7622_led_groups)},
+-	{"flash", mt7622_flash_groups, ARRAY_SIZE(mt7622_flash_groups)},
+-	{"pcie", mt7622_pcie_groups, ARRAY_SIZE(mt7622_pcie_groups)},
+-	{"pmic", mt7622_pmic_bus_groups, ARRAY_SIZE(mt7622_pmic_bus_groups)},
+-	{"pwm",	mt7622_pwm_groups, ARRAY_SIZE(mt7622_pwm_groups)},
+-	{"sd", mt7622_sd_groups, ARRAY_SIZE(mt7622_sd_groups)},
+-	{"spi",	mt7622_spic_groups, ARRAY_SIZE(mt7622_spic_groups)},
+-	{"tdm",	mt7622_tdm_groups, ARRAY_SIZE(mt7622_tdm_groups)},
+-	{"uart", mt7622_uart_groups, ARRAY_SIZE(mt7622_uart_groups)},
+-	{"watchdog", mt7622_wdt_groups, ARRAY_SIZE(mt7622_wdt_groups)},
++	PINCTRL_PIN_FUNCTION("antsel", mt7622_antsel),
++	PINCTRL_PIN_FUNCTION("emmc", mt7622_emmc),
++	PINCTRL_PIN_FUNCTION("eth", mt7622_ethernet),
++	PINCTRL_PIN_FUNCTION("i2c", mt7622_i2c),
++	PINCTRL_PIN_FUNCTION("i2s", mt7622_i2s),
++	PINCTRL_PIN_FUNCTION("ir", mt7622_ir),
++	PINCTRL_PIN_FUNCTION("led", mt7622_led),
++	PINCTRL_PIN_FUNCTION("flash", mt7622_flash),
++	PINCTRL_PIN_FUNCTION("pcie", mt7622_pcie),
++	PINCTRL_PIN_FUNCTION("pmic", mt7622_pmic_bus),
++	PINCTRL_PIN_FUNCTION("pwm", mt7622_pwm),
++	PINCTRL_PIN_FUNCTION("sd", mt7622_sd),
++	PINCTRL_PIN_FUNCTION("spi", mt7622_spic),
++	PINCTRL_PIN_FUNCTION("tdm", mt7622_tdm),
++	PINCTRL_PIN_FUNCTION("uart", mt7622_uart),
++	PINCTRL_PIN_FUNCTION("watchdog", mt7622_wdt),
  };
  
--static bool is_func_exist(struct eqbr_pmx_func *funcs, const char *name,
--			 unsigned int nr_funcs, unsigned int *idx)
-+static bool is_func_exist(struct pinfunction *funcs, const char *name,
-+			  unsigned int nr_funcs, unsigned int *idx)
- {
- 	int i;
+ static const struct mtk_eint_hw mt7622_eint_hw = {
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt7623.c b/drivers/pinctrl/mediatek/pinctrl-mt7623.c
+index 699977074697..3e59eada2825 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt7623.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt7623.c
+@@ -1341,27 +1341,27 @@ static const char *mt7623_uart_groups[] = { "uart0_0_txd_rxd",
+ static const char *mt7623_wdt_groups[] = { "watchdog_0", "watchdog_1", };
  
-@@ -584,13 +584,14 @@ static bool is_func_exist(struct eqbr_pmx_func *funcs, const char *name,
- 	return false;
- }
- 
--static int funcs_utils(struct device *dev, struct eqbr_pmx_func *funcs,
-+static int funcs_utils(struct device *dev, struct pinfunction *funcs,
- 		       unsigned int *nr_funcs, funcs_util_ops op)
- {
- 	struct device_node *node = dev->of_node;
- 	struct device_node *np;
- 	struct property *prop;
- 	const char *fn_name;
-+	const char **groups;
- 	unsigned int fid;
- 	int i, j;
- 
-@@ -620,15 +621,16 @@ static int funcs_utils(struct device *dev, struct eqbr_pmx_func *funcs,
- 
- 		case OP_COUNT_NR_FUNC_GRPS:
- 			if (is_func_exist(funcs, fn_name, *nr_funcs, &fid))
--				funcs[fid].nr_groups++;
-+				funcs[fid].ngroups++;
- 			break;
- 
- 		case OP_ADD_FUNC_GRPS:
- 			if (is_func_exist(funcs, fn_name, *nr_funcs, &fid)) {
--				for (j = 0; j < funcs[fid].nr_groups; j++)
--					if (!funcs[fid].groups[j])
-+				groups = (const char **)funcs[fid].groups;
-+				for (j = 0; j < funcs[fid].ngroups; j++)
-+					if (!groups[j])
- 						break;
--				funcs[fid].groups[j] = prop->value;
-+				groups[j] = prop->value;
- 			}
- 			break;
- 
-@@ -645,7 +647,7 @@ static int funcs_utils(struct device *dev, struct eqbr_pmx_func *funcs,
- static int eqbr_build_functions(struct eqbr_pinctrl_drv_data *drvdata)
- {
- 	struct device *dev = drvdata->dev;
--	struct eqbr_pmx_func *funcs = NULL;
-+	struct pinfunction *funcs = NULL;
- 	unsigned int nr_funcs = 0;
- 	int i, ret;
- 
-@@ -666,9 +668,9 @@ static int eqbr_build_functions(struct eqbr_pinctrl_drv_data *drvdata)
- 		return ret;
- 
- 	for (i = 0; i < nr_funcs; i++) {
--		if (!funcs[i].nr_groups)
-+		if (!funcs[i].ngroups)
- 			continue;
--		funcs[i].groups = devm_kcalloc(dev, funcs[i].nr_groups,
-+		funcs[i].groups = devm_kcalloc(dev, funcs[i].ngroups,
- 					       sizeof(*(funcs[i].groups)),
- 					       GFP_KERNEL);
- 		if (!funcs[i].groups)
-@@ -688,7 +690,7 @@ static int eqbr_build_functions(struct eqbr_pinctrl_drv_data *drvdata)
- 		ret = pinmux_generic_add_function(drvdata->pctl_dev,
- 						  funcs[i].name,
- 						  funcs[i].groups,
--						  funcs[i].nr_groups,
-+						  funcs[i].ngroups,
- 						  drvdata);
- 		if (ret < 0) {
- 			dev_err(dev, "Failed to register function %s\n",
-diff --git a/drivers/pinctrl/pinctrl-equilibrium.h b/drivers/pinctrl/pinctrl-equilibrium.h
-index 83768cc8b3db..b4d149bde39d 100644
---- a/drivers/pinctrl/pinctrl-equilibrium.h
-+++ b/drivers/pinctrl/pinctrl-equilibrium.h
-@@ -67,18 +67,6 @@ struct gpio_irq_type {
- 	unsigned int logic_type;
+ static const struct function_desc mt7623_functions[] = {
+-	{"audck", mt7623_aud_clk_groups, ARRAY_SIZE(mt7623_aud_clk_groups)},
+-	{"disp", mt7623_disp_pwm_groups, ARRAY_SIZE(mt7623_disp_pwm_groups)},
+-	{"eth",	mt7623_ethernet_groups, ARRAY_SIZE(mt7623_ethernet_groups)},
+-	{"sdio", mt7623_ext_sdio_groups, ARRAY_SIZE(mt7623_ext_sdio_groups)},
+-	{"hdmi", mt7623_hdmi_groups, ARRAY_SIZE(mt7623_hdmi_groups)},
+-	{"i2c", mt7623_i2c_groups, ARRAY_SIZE(mt7623_i2c_groups)},
+-	{"i2s",	mt7623_i2s_groups, ARRAY_SIZE(mt7623_i2s_groups)},
+-	{"ir",	mt7623_ir_groups, ARRAY_SIZE(mt7623_ir_groups)},
+-	{"lcd", mt7623_lcd_groups, ARRAY_SIZE(mt7623_lcd_groups)},
+-	{"msdc", mt7623_msdc_groups, ARRAY_SIZE(mt7623_msdc_groups)},
+-	{"nand", mt7623_nandc_groups, ARRAY_SIZE(mt7623_nandc_groups)},
+-	{"otg", mt7623_otg_groups, ARRAY_SIZE(mt7623_otg_groups)},
+-	{"pcie", mt7623_pcie_groups, ARRAY_SIZE(mt7623_pcie_groups)},
+-	{"pcm",	mt7623_pcm_groups, ARRAY_SIZE(mt7623_pcm_groups)},
+-	{"pwm",	mt7623_pwm_groups, ARRAY_SIZE(mt7623_pwm_groups)},
+-	{"pwrap", mt7623_pwrap_groups, ARRAY_SIZE(mt7623_pwrap_groups)},
+-	{"rtc", mt7623_rtc_groups, ARRAY_SIZE(mt7623_rtc_groups)},
+-	{"spi",	mt7623_spi_groups, ARRAY_SIZE(mt7623_spi_groups)},
+-	{"spdif", mt7623_spdif_groups, ARRAY_SIZE(mt7623_spdif_groups)},
+-	{"uart", mt7623_uart_groups, ARRAY_SIZE(mt7623_uart_groups)},
+-	{"watchdog", mt7623_wdt_groups, ARRAY_SIZE(mt7623_wdt_groups)},
++	PINCTRL_PIN_FUNCTION("audck", mt7623_aud_clk),
++	PINCTRL_PIN_FUNCTION("disp", mt7623_disp_pwm),
++	PINCTRL_PIN_FUNCTION("eth", mt7623_ethernet),
++	PINCTRL_PIN_FUNCTION("sdio", mt7623_ext_sdio),
++	PINCTRL_PIN_FUNCTION("hdmi", mt7623_hdmi),
++	PINCTRL_PIN_FUNCTION("i2c", mt7623_i2c),
++	PINCTRL_PIN_FUNCTION("i2s", mt7623_i2s),
++	PINCTRL_PIN_FUNCTION("ir", mt7623_ir),
++	PINCTRL_PIN_FUNCTION("lcd", mt7623_lcd),
++	PINCTRL_PIN_FUNCTION("msdc", mt7623_msdc),
++	PINCTRL_PIN_FUNCTION("nand", mt7623_nandc),
++	PINCTRL_PIN_FUNCTION("otg", mt7623_otg),
++	PINCTRL_PIN_FUNCTION("pcie", mt7623_pcie),
++	PINCTRL_PIN_FUNCTION("pcm", mt7623_pcm),
++	PINCTRL_PIN_FUNCTION("pwm", mt7623_pwm),
++	PINCTRL_PIN_FUNCTION("pwrap", mt7623_pwrap),
++	PINCTRL_PIN_FUNCTION("rtc", mt7623_rtc),
++	PINCTRL_PIN_FUNCTION("spi", mt7623_spi),
++	PINCTRL_PIN_FUNCTION("spdif", mt7623_spdif),
++	PINCTRL_PIN_FUNCTION("uart", mt7623_uart),
++	PINCTRL_PIN_FUNCTION("watchdog", mt7623_wdt),
  };
  
--/**
-- * struct eqbr_pmx_func: represent a pin function.
-- * @name: name of the pin function, used to lookup the function.
-- * @groups: one or more names of pin groups that provide this function.
-- * @nr_groups: number of groups included in @groups.
-- */
--struct eqbr_pmx_func {
--	const char		*name;
--	const char		**groups;
--	unsigned int		nr_groups;
--};
--
- /**
-  * struct eqbr_pin_bank: represent a pin bank.
-  * @membase: base address of the pin bank register.
+ static const struct mtk_eint_hw mt7623_eint_hw = {
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt7629.c b/drivers/pinctrl/mediatek/pinctrl-mt7629.c
+index 2ce411cb9c6e..98142e8c9801 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt7629.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt7629.c
+@@ -385,16 +385,16 @@ static const char *mt7629_wifi_groups[] = { "wf0_5g", "wf0_2g", };
+ static const char *mt7629_flash_groups[] = { "snfi", "spi_nor" };
+ 
+ static const struct function_desc mt7629_functions[] = {
+-	{"eth",	mt7629_ethernet_groups, ARRAY_SIZE(mt7629_ethernet_groups)},
+-	{"i2c", mt7629_i2c_groups, ARRAY_SIZE(mt7629_i2c_groups)},
+-	{"led",	mt7629_led_groups, ARRAY_SIZE(mt7629_led_groups)},
+-	{"pcie", mt7629_pcie_groups, ARRAY_SIZE(mt7629_pcie_groups)},
+-	{"pwm",	mt7629_pwm_groups, ARRAY_SIZE(mt7629_pwm_groups)},
+-	{"spi",	mt7629_spi_groups, ARRAY_SIZE(mt7629_spi_groups)},
+-	{"uart", mt7629_uart_groups, ARRAY_SIZE(mt7629_uart_groups)},
+-	{"watchdog", mt7629_wdt_groups, ARRAY_SIZE(mt7629_wdt_groups)},
+-	{"wifi", mt7629_wifi_groups, ARRAY_SIZE(mt7629_wifi_groups)},
+-	{"flash", mt7629_flash_groups, ARRAY_SIZE(mt7629_flash_groups)},
++	PINCTRL_PIN_FUNCTION("eth", mt7629_ethernet),
++	PINCTRL_PIN_FUNCTION("i2c", mt7629_i2c),
++	PINCTRL_PIN_FUNCTION("led", mt7629_led),
++	PINCTRL_PIN_FUNCTION("pcie", mt7629_pcie),
++	PINCTRL_PIN_FUNCTION("pwm", mt7629_pwm),
++	PINCTRL_PIN_FUNCTION("spi", mt7629_spi),
++	PINCTRL_PIN_FUNCTION("uart", mt7629_uart),
++	PINCTRL_PIN_FUNCTION("watchdog", mt7629_wdt),
++	PINCTRL_PIN_FUNCTION("wifi", mt7629_wifi),
++	PINCTRL_PIN_FUNCTION("flash", mt7629_flash),
+ };
+ 
+ static const struct mtk_eint_hw mt7629_eint_hw = {
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt7981.c b/drivers/pinctrl/mediatek/pinctrl-mt7981.c
+index ef6123765885..83092be5b614 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt7981.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt7981.c
+@@ -978,23 +978,23 @@ static const char *mt7981_ethernet_groups[] = { "smi_mdc_mdio", "gbe_ext_mdc_mdi
+ static const char *mt7981_ant_groups[] = { "ant_sel", };
+ 
+ static const struct function_desc mt7981_functions[] = {
+-	{"wa_aice",	mt7981_wa_aice_groups, ARRAY_SIZE(mt7981_wa_aice_groups)},
+-	{"dfd",	mt7981_dfd_groups, ARRAY_SIZE(mt7981_dfd_groups)},
+-	{"jtag", mt7981_jtag_groups, ARRAY_SIZE(mt7981_jtag_groups)},
+-	{"pta", mt7981_pta_groups, ARRAY_SIZE(mt7981_pta_groups)},
+-	{"pcm", mt7981_pcm_groups, ARRAY_SIZE(mt7981_pcm_groups)},
+-	{"udi", mt7981_udi_groups, ARRAY_SIZE(mt7981_udi_groups)},
+-	{"usb", mt7981_usb_groups, ARRAY_SIZE(mt7981_usb_groups)},
+-	{"ant", mt7981_ant_groups, ARRAY_SIZE(mt7981_ant_groups)},
+-	{"eth",	mt7981_ethernet_groups, ARRAY_SIZE(mt7981_ethernet_groups)},
+-	{"i2c", mt7981_i2c_groups, ARRAY_SIZE(mt7981_i2c_groups)},
+-	{"led",	mt7981_led_groups, ARRAY_SIZE(mt7981_led_groups)},
+-	{"pwm",	mt7981_pwm_groups, ARRAY_SIZE(mt7981_pwm_groups)},
+-	{"spi",	mt7981_spi_groups, ARRAY_SIZE(mt7981_spi_groups)},
+-	{"uart", mt7981_uart_groups, ARRAY_SIZE(mt7981_uart_groups)},
+-	{"watchdog", mt7981_wdt_groups, ARRAY_SIZE(mt7981_wdt_groups)},
+-	{"flash", mt7981_flash_groups, ARRAY_SIZE(mt7981_flash_groups)},
+-	{"pcie", mt7981_pcie_groups, ARRAY_SIZE(mt7981_pcie_groups)},
++	PINCTRL_PIN_FUNCTION("wa_aice", mt7981_wa_aice),
++	PINCTRL_PIN_FUNCTION("dfd", mt7981_dfd),
++	PINCTRL_PIN_FUNCTION("jtag", mt7981_jtag),
++	PINCTRL_PIN_FUNCTION("pta", mt7981_pta),
++	PINCTRL_PIN_FUNCTION("pcm", mt7981_pcm),
++	PINCTRL_PIN_FUNCTION("udi", mt7981_udi),
++	PINCTRL_PIN_FUNCTION("usb", mt7981_usb),
++	PINCTRL_PIN_FUNCTION("ant", mt7981_ant),
++	PINCTRL_PIN_FUNCTION("eth", mt7981_ethernet),
++	PINCTRL_PIN_FUNCTION("i2c", mt7981_i2c),
++	PINCTRL_PIN_FUNCTION("led", mt7981_led),
++	PINCTRL_PIN_FUNCTION("pwm", mt7981_pwm),
++	PINCTRL_PIN_FUNCTION("spi", mt7981_spi),
++	PINCTRL_PIN_FUNCTION("uart", mt7981_uart),
++	PINCTRL_PIN_FUNCTION("watchdog", mt7981_wdt),
++	PINCTRL_PIN_FUNCTION("flash", mt7981_flash),
++	PINCTRL_PIN_FUNCTION("pcie", mt7981_pcie),
+ };
+ 
+ static const struct mtk_eint_hw mt7981_eint_hw = {
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt7986.c b/drivers/pinctrl/mediatek/pinctrl-mt7986.c
+index 39e80fa644c1..5816b5fdb7ca 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt7986.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt7986.c
+@@ -879,18 +879,18 @@ static const char *mt7986_wdt_groups[] = { "watchdog", };
+ static const char *mt7986_wf_groups[] = { "wf_2g", "wf_5g", "wf_dbdc", };
+ 
+ static const struct function_desc mt7986_functions[] = {
+-	{"audio", mt7986_audio_groups, ARRAY_SIZE(mt7986_audio_groups)},
+-	{"emmc", mt7986_emmc_groups, ARRAY_SIZE(mt7986_emmc_groups)},
+-	{"eth", mt7986_ethernet_groups, ARRAY_SIZE(mt7986_ethernet_groups)},
+-	{"i2c", mt7986_i2c_groups, ARRAY_SIZE(mt7986_i2c_groups)},
+-	{"led", mt7986_led_groups, ARRAY_SIZE(mt7986_led_groups)},
+-	{"flash", mt7986_flash_groups, ARRAY_SIZE(mt7986_flash_groups)},
+-	{"pcie", mt7986_pcie_groups, ARRAY_SIZE(mt7986_pcie_groups)},
+-	{"pwm", mt7986_pwm_groups, ARRAY_SIZE(mt7986_pwm_groups)},
+-	{"spi", mt7986_spi_groups, ARRAY_SIZE(mt7986_spi_groups)},
+-	{"uart", mt7986_uart_groups, ARRAY_SIZE(mt7986_uart_groups)},
+-	{"watchdog", mt7986_wdt_groups, ARRAY_SIZE(mt7986_wdt_groups)},
+-	{"wifi", mt7986_wf_groups, ARRAY_SIZE(mt7986_wf_groups)},
++	PINCTRL_PIN_FUNCTION("audio", mt7986_audio),
++	PINCTRL_PIN_FUNCTION("emmc", mt7986_emmc),
++	PINCTRL_PIN_FUNCTION("eth", mt7986_ethernet),
++	PINCTRL_PIN_FUNCTION("i2c", mt7986_i2c),
++	PINCTRL_PIN_FUNCTION("led", mt7986_led),
++	PINCTRL_PIN_FUNCTION("flash", mt7986_flash),
++	PINCTRL_PIN_FUNCTION("pcie", mt7986_pcie),
++	PINCTRL_PIN_FUNCTION("pwm", mt7986_pwm),
++	PINCTRL_PIN_FUNCTION("spi", mt7986_spi),
++	PINCTRL_PIN_FUNCTION("uart", mt7986_uart),
++	PINCTRL_PIN_FUNCTION("watchdog", mt7986_wdt),
++	PINCTRL_PIN_FUNCTION("wifi", mt7986_wf),
+ };
+ 
+ static const struct mtk_eint_hw mt7986a_eint_hw = {
 -- 
 2.45.1
 
