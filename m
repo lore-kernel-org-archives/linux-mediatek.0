@@ -4,70 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF26EC25B75
-	for <linux-mediatek@archiver.kernel.org>; Fri, 31 May 2024 17:05:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8403C25B75
+	for <linux-mediatek@archiver.kernel.org>; Fri, 31 May 2024 20:36:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ym7rsIKUITf1o2rpDGFOU9sPvcJ2euU29jETwzwCyZk=; b=x0Of12Ya+cEztkvjTay5fQLF8f
-	x66Z9RiVseE4ZEWKvJMs3nXEAx1h9SH4TfIfKpxEpFklMigzkBjYSuxrR1CXVbCSDOgGSbkHa3vUI
-	jqk7W0KqvxZjpwKVhVroFKDLz1f3lKJMa9Lwr+4l7jSxu8xQa9NwtR7JWyMAfn0Bmbolb8HF2KPJw
-	KfLysuHQlCFdWMr82Q7H3Pq4cCLqCi6TACCi9ZcGHDN9EDJOGLM7ziIW9l2P0oTMMb+VXczM8+tb8
-	zRjKP9tcR1P/TTOQmO5YpdM3dBt7e0NFGqoGMjNAwtEeHBrxInh7uSZJCcmP9si4OZhhAhOaPygRZ
-	W1txOsIg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vPaT5kV0RaytnqbKHV0qIybAAkl95T0EN3+VxPZsshQ=; b=SNvUMutwgM3IKJueUQBVWjoKUa
+	9oycCThIO3ihwqttlQG7eVh/xgHEcfOs9TXlxma9eZQ89tNGyLW3IgTsV+818jjrBfmQOnMJ6CTmC
+	hDihnFLsGQE6ClxTKrRnRb7GNABiZfirFvBXbAdO1yoBFFW375y+BgiTvHewmfDCDwVmToys0F3G4
+	ifpkq3WeTXoqWWFh6+dhygNUaTg6N/wk3xVUgziTkEPZXbZkhAafvSizb5tGGmIgXc4/84RPIShka
+	HVyWPblaQpUK6aDq/PNNyaj+kR2QZn9Qpibvh5WjK5JgD52FxKlCUuKjP1UQiKSOemRCWfX17v48N
+	WNQ5b+3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sD5hN-0000000AxDT-477L;
-	Fri, 31 May 2024 17:05:49 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1sD8zI-0000000BOHL-0FOG;
+	Fri, 31 May 2024 20:36:32 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sD5hH-0000000AxCC-3EIB;
-	Fri, 31 May 2024 17:05:47 +0000
+	id 1sD8z9-0000000BODy-2yUT;
+	Fri, 31 May 2024 20:36:30 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 9FCB362CF7;
-	Fri, 31 May 2024 17:05:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3D71CC116B1;
-	Fri, 31 May 2024 17:05:38 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 4ACBCCE0DA2;
+	Fri, 31 May 2024 20:36:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D5434C2BD10;
+	Fri, 31 May 2024 20:36:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1717175142;
-	bh=ojVyu4m/QK0eLUTVMQOzVZ1/YGKhIT0HpeVHhtnOmKk=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=uyHzAlGy36mwd/hrJc4dAsxeyBUw+RfUNcOonw/PUWHZC7fON26bUJr9jG6PxPs+8
-	 +b64s2p3Kwp9LC40cykPj7lOOCNJk1a2AehDFiAUhwIEKcvoR3vFxaUBZMl79z5OPz
-	 FPJou03ZjeF5uFpYjrob/v2hj5gkmunLcAdogQvs4YPnYOr2qU1UYI674FY5fYEtkT
-	 bV6Iz9TBwQ6kGqqt2y+KSnIDKZ3O0Rl8R6hRSNb1kBzoIX5s9FQlSLhw1KvIrlTk5T
-	 n/ehnIOHOAjzlO1mWH2UnkRDSHieko8+XRtALn6kFf6EAbQWNq0BgUCKU55pJfp1KT
-	 NUoC3k6sQFn+w==
-From: Lee Jones <lee@kernel.org>
-To: jic23@kernel.org, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: lars@metafoo.de, robh@kernel.org, krzk+dt@kernel.org, 
- conor+dt@kernel.org, matthias.bgg@gmail.com, lee@kernel.org, 
- andy@kernel.org, nuno.sa@analog.com, bigunclemax@gmail.com, 
- dlechner@baylibre.com, marius.cristea@microchip.com, 
- marcelo.schmitt@analog.com, fr0st61te@gmail.com, mitrutzceclan@gmail.com, 
- mike.looijmans@topic.nl, marcus.folkesson@gmail.com, 
- linux-iio@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, kernel@collabora.com
-In-Reply-To: <20240530093410.112716-4-angelogioacchino.delregno@collabora.com>
-References: <20240530093410.112716-1-angelogioacchino.delregno@collabora.com>
- <20240530093410.112716-4-angelogioacchino.delregno@collabora.com>
-Subject: Re: (subset) [PATCH v1 3/4] mfd: mt6397-core: Add support for
- AUXADCs on MT6357/58/59 PMICs
-Message-Id: <171717513800.1210753.10558574294552850707.b4-ty@kernel.org>
-Date: Fri, 31 May 2024 18:05:38 +0100
+	s=k20201202; t=1717187780;
+	bh=WdOxa9rbUS6q9NaRbl/yb1oNoDnPk7wE0Gs06YTBa5U=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=BgzTgIjjAbBDZJJ7SdGkQGn03Ke7koI9sJcvxzGG85wTTVXYUoUXrCv+9F2+Fr/p0
+	 5ann9Kudtmbhm5NuShztMv0EAjFKOaxiiV420z9fm1LqUhVPUVOjjqLne17p6ZqDO6
+	 CcaaVgkybPhHQeBRx2sqjj+RSW+PjtVnZWl+o4Vr8Oxjr9x7Bb1Cx03QlEgURZp6EG
+	 16FKupbqrEl+oHu3VZYCeT6Mx98i18EH8N3S3AP2mWIg+PYTuDZWK6dcQ/bk5MvmF6
+	 fSkyQ45BE5IcQWascYcv86qbwspWcJ21Qps/yZ3OASZ6k7bTUBrGBqENi+FNwL1/53
+	 BTJoDAANj2F2A==
+Date: Fri, 31 May 2024 21:36:12 +0100
+From: Simon Horman <horms@kernel.org>
+To: Liju-clr Chen <liju-clr.chen@mediatek.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Jonathan Corbet <corbet@lwn.net>,
+	Catalin Marinas <catalin.marinas@arm.com>,
+	Will Deacon <will@kernel.org>, Steven Rostedt <rostedt@goodmis.org>,
+	Masami Hiramatsu <mhiramat@kernel.org>,
+	Mathieu Desnoyers <mathieu.desnoyers@efficios.com>,
+	Richard Cochran <richardcochran@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Yingshiuan Pan <Yingshiuan.Pan@mediatek.com>,
+	Ze-yu Wang <Ze-yu.Wang@mediatek.com>, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-doc@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-trace-kernel@vger.kernel.org, netdev@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	David Bradil <dbrazdil@google.com>,
+	Trilok Soni <quic_tsoni@quicinc.com>,
+	Shawn Hsiao <shawn.hsiao@mediatek.com>,
+	PeiLun Suei <PeiLun.Suei@mediatek.com>,
+	Chi-shen Yeh <Chi-shen.Yeh@mediatek.com>,
+	Kevenny Hsieh <Kevenny.Hsieh@mediatek.com>
+Subject: Re: [PATCH v11 08/21] virt: geniezone: Add vcpu support
+Message-ID: <20240531203612.GU491852@kernel.org>
+References: <20240529084239.11478-1-liju-clr.chen@mediatek.com>
+ <20240529084239.11478-9-liju-clr.chen@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-Mailer: b4 0.12.4
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240529084239.11478-9-liju-clr.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240531_100546_459720_CA630EEF 
-X-CRM114-Status: UNSURE (   5.71  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240531_133625_133809_7DABD5BE 
+X-CRM114-Status: GOOD (  26.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,18 +91,119 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 30 May 2024 11:34:09 +0200, AngeloGioacchino Del Regno wrote:
-> Add the relevant AUXADC driver entries to the MFD cells of the
-> MT6357, MT6358, MT6359 PMICs to support their Auxiliary ADCs.
+On Wed, May 29, 2024 at 04:42:26PM +0800, Liju-clr Chen wrote:
+> From: Yi-De Wu <yi-de.wu@mediatek.com>
 > 
+> From: "Yingshiuan Pan" <yingshiuan.pan@mediatek.com>
+
+nit: I think there should be at most one From line,
+     denoting the author of the patch. Based on the Signed-off-by
+     lines I assume that is Yingshiuan Pan.
+
+     If there are multiple authors perhaps
+     the Co-developed-by tag should be used below.
+
+     And on that note, it's not clear to me what the significance
+     of the Signed-off-by lines, other than that of
+     Yingshiuan Pan (presumed author) and Liju Chen (sender) are.
+     I'd suggest deleting them unless they are
+     accompanied by Co-developed-by tags.
+
+     And, lastly, the sender's signed-off-by line should come last.
+
+     See: https://www.kernel.org/doc/html/latest/process/submitting-patches.html#sign-your-work-the-developer-s-certificate-of-origin
+
 > 
+> VMM use this interface to create vcpu instance which is a fd, and this
+> fd will be for any vcpu operations, such as setting vcpu registers and
+> accepts the most important ioctl GZVM_VCPU_RUN which requests GenieZone
+> hypervisor to do context switch to execute VM's vcpu context.
+> 
+> Signed-off-by: Yingshiuan Pan <yingshiuan.pan@mediatek.com>
+> Signed-off-by: Jerry Wang <ze-yu.wang@mediatek.com>
+> Signed-off-by: kevenny hsieh <kevenny.hsieh@mediatek.com>
+> Signed-off-by: Liju Chen <liju-clr.chen@mediatek.com>
+> Signed-off-by: Yi-De Wu <yi-de.wu@mediatek.com>
 
-Applied, thanks!
+...
 
-[3/4] mfd: mt6397-core: Add support for AUXADCs on MT6357/58/59 PMICs
-      commit: fa9d9f4b5588003a955193fe9ff009687541f3e7
+> diff --git a/drivers/virt/geniezone/Makefile b/drivers/virt/geniezone/Makefile
+> index 25614ea3dea2..9cc453c0819b 100644
+> --- a/drivers/virt/geniezone/Makefile
+> +++ b/drivers/virt/geniezone/Makefile
+> @@ -6,4 +6,5 @@
+>  
+>  GZVM_DIR ?= ../../../drivers/virt/geniezone
+>  
+> -gzvm-y := $(GZVM_DIR)/gzvm_main.o $(GZVM_DIR)/gzvm_vm.o
+> +gzvm-y := $(GZVM_DIR)/gzvm_main.o $(GZVM_DIR)/gzvm_vm.o \
+> +	  $(GZVM_DIR)/gzvm_vcpu.o
+> diff --git a/drivers/virt/geniezone/gzvm_vcpu.c b/drivers/virt/geniezone/gzvm_vcpu.c
+> new file mode 100644
+> index 000000000000..1aca13fef422
+> --- /dev/null
+> +++ b/drivers/virt/geniezone/gzvm_vcpu.c
+> @@ -0,0 +1,249 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Copyright (c) 2023 MediaTek Inc.
+> + */
+> +
+> +#include <asm/sysreg.h>
 
---
-Lee Jones [李琼斯]
+nit: It's not clear to me that sysreg.h needs to be included in this file.
 
+> +#include <linux/anon_inodes.h>
+> +#include <linux/device.h>
+> +#include <linux/file.h>
+> +#include <linux/mm.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/slab.h>
+> +#include <linux/soc/mediatek/gzvm_drv.h>
+> +
+> +/* maximum size needed for holding an integer */
+> +#define ITOA_MAX_LEN 12
+> +
+> +static long gzvm_vcpu_update_one_reg(struct gzvm_vcpu *vcpu,
+> +				     void __user *argp,
+> +				     bool is_write)
+> +{
+> +	struct gzvm_one_reg reg;
+> +	void __user *reg_addr;
+> +	u64 data = 0;
+> +	u64 reg_size;
+> +	long ret;
+> +
+> +	if (copy_from_user(&reg, argp, sizeof(reg)))
+> +		return -EFAULT;
+> +
+> +	reg_addr = (void __user *)reg.addr;
+
+nit: Perhaps u64_to_user_ptr() is appropriate here.
+
+     Also in gzvm_vm_ioctl_create_device() in patch 09/21.
+
+> +	reg_size = (reg.id & GZVM_REG_SIZE_MASK) >> GZVM_REG_SIZE_SHIFT;
+> +	reg_size = BIT(reg_size);
+> +
+> +	if (reg_size != 1 && reg_size != 2 && reg_size != 4 && reg_size != 8)
+> +		return -EINVAL;
+> +
+> +	if (is_write) {
+> +		/* GZ hypervisor would filter out invalid vcpu register access */
+> +		if (copy_from_user(&data, reg_addr, reg_size))
+> +			return -EFAULT;
+> +	} else {
+> +		return -EOPNOTSUPP;
+> +	}
+> +
+> +	ret = gzvm_arch_vcpu_update_one_reg(vcpu, reg.id, is_write, &data);
+> +
+> +	if (ret)
+> +		return ret;
+> +
+> +	return 0;
+> +}
+
+...
 
