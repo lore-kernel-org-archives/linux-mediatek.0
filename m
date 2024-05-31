@@ -4,84 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E055C25B75
-	for <linux-mediatek@archiver.kernel.org>; Fri, 31 May 2024 16:07:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF26EC25B75
+	for <linux-mediatek@archiver.kernel.org>; Fri, 31 May 2024 17:05:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oFn5v4aZRlNAjW16cRM0lg9SWobwZE6eF9Pt1j9/ALk=; b=cPXE/RQCcg6uDFPuTfVaa9C5Wu
-	mCStWv9Jg2ZVXghycIaUsKvCDeZ2zBlm0HT9yJQiKpUSbkM5l5GIWXxYyD+K+tC+PrRs/AlrQ2rsf
-	H0gH8kqEbBR7DfKCWgVhUCyfzia/wzYIcIluZLOMTvho/r8+SeA8mBepQjGl+6fpIjZARdRPIRd2x
-	BANBqCk0potfg+qGuEYJ3Jzh+9Vh6HJrInEMt1UQNmc2alv38xuFN8NOO4cw9ZUEJ5iafEjGHdRXJ
-	3UD+CWOFaDNVv5bL/ZX6d/PIQ2cQRtSuYzirVU9bYBuFKzw3Hd62tYeki9C7ZTTz2YLDRiblCaJHA
-	97NCZFtw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ym7rsIKUITf1o2rpDGFOU9sPvcJ2euU29jETwzwCyZk=; b=x0Of12Ya+cEztkvjTay5fQLF8f
+	x66Z9RiVseE4ZEWKvJMs3nXEAx1h9SH4TfIfKpxEpFklMigzkBjYSuxrR1CXVbCSDOgGSbkHa3vUI
+	jqk7W0KqvxZjpwKVhVroFKDLz1f3lKJMa9Lwr+4l7jSxu8xQa9NwtR7JWyMAfn0Bmbolb8HF2KPJw
+	KfLysuHQlCFdWMr82Q7H3Pq4cCLqCi6TACCi9ZcGHDN9EDJOGLM7ziIW9l2P0oTMMb+VXczM8+tb8
+	zRjKP9tcR1P/TTOQmO5YpdM3dBt7e0NFGqoGMjNAwtEeHBrxInh7uSZJCcmP9si4OZhhAhOaPygRZ
+	W1txOsIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sD4nC-0000000Am0F-30OO;
-	Fri, 31 May 2024 16:07:46 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sD5hN-0000000AxDT-477L;
+	Fri, 31 May 2024 17:05:49 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sD4n8-0000000AlyF-0DtG;
-	Fri, 31 May 2024 16:07:43 +0000
+	id 1sD5hH-0000000AxCC-3EIB;
+	Fri, 31 May 2024 17:05:47 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 50BA062D2D;
-	Fri, 31 May 2024 16:07:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2BD16C2BD10;
-	Fri, 31 May 2024 16:07:34 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 9FCB362CF7;
+	Fri, 31 May 2024 17:05:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3D71CC116B1;
+	Fri, 31 May 2024 17:05:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1717171661;
-	bh=mE0OUhJiQMMzHxfgx0IOqHje5tQRxYiF+OB7kIk7BQE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=jmIiCxm0t+WW0oDLFbzpb97vsloCQOGygqInun3z/KqgTGXTl0X8sb6iu/GPspD+F
-	 NPEMmQfMP5NPkWPOQfPn+ZR01fhntn9dZ4xZJyreUlb5Jt3XqhrOCAgx2X6+3Qar+1
-	 sJl0/nS6GLx6bYMl5Q3Nq8TsaS4qvADsYam0QoK25lv4+38tki18s91Ryxs5eCPMLt
-	 08S6l5f4C1YPnmOk20oswNPJxj3VLzNXpY8FiHClDIxWUsDgs51ThFWVSM4JmnzSow
-	 5xhTgwGIfx6iTjLHyFhjj5oJWbEIomg04B1e5uyTuV9M8mBApgf8D8PsEm0x8SadNf
-	 bNMxEUZUv5Mxg==
-Date: Fri, 31 May 2024 17:07:32 +0100
+	s=k20201202; t=1717175142;
+	bh=ojVyu4m/QK0eLUTVMQOzVZ1/YGKhIT0HpeVHhtnOmKk=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=uyHzAlGy36mwd/hrJc4dAsxeyBUw+RfUNcOonw/PUWHZC7fON26bUJr9jG6PxPs+8
+	 +b64s2p3Kwp9LC40cykPj7lOOCNJk1a2AehDFiAUhwIEKcvoR3vFxaUBZMl79z5OPz
+	 FPJou03ZjeF5uFpYjrob/v2hj5gkmunLcAdogQvs4YPnYOr2qU1UYI674FY5fYEtkT
+	 bV6Iz9TBwQ6kGqqt2y+KSnIDKZ3O0Rl8R6hRSNb1kBzoIX5s9FQlSLhw1KvIrlTk5T
+	 n/ehnIOHOAjzlO1mWH2UnkRDSHieko8+XRtALn6kFf6EAbQWNq0BgUCKU55pJfp1KT
+	 NUoC3k6sQFn+w==
 From: Lee Jones <lee@kernel.org>
-To: Rob Herring <robh@kernel.org>
-Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
-	Gregory Clement <gregory.clement@bootlin.com>,
-	Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>, UNGLinuxDriver@microchip.com,
-	Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
-	Miquel Raynal <miquel.raynal@bootlin.com>,
-	Richard Weinberger <richard@nod.at>,
-	Vignesh Raghavendra <vigneshr@ti.com>,
-	Yisen Zhuang <yisen.zhuang@huawei.com>,
-	Salil Mehta <salil.mehta@huawei.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org,
-	linux-mips@vger.kernel.org, linux-mtd@lists.infradead.org,
-	netdev@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] dt-bindings: mfd: syscon: Add more simple compatibles
-Message-ID: <20240531160732.GT1005600@google.com>
-References: <20240510123018.3902184-1-robh@kernel.org>
- <20240531134536.GK1005600@google.com>
- <CAL_Jsq+Cu9PSFwp-6cT5svqP+GZ8rp5hBgXA2=cgqQYYUDDKDA@mail.gmail.com>
+To: jic23@kernel.org, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: lars@metafoo.de, robh@kernel.org, krzk+dt@kernel.org, 
+ conor+dt@kernel.org, matthias.bgg@gmail.com, lee@kernel.org, 
+ andy@kernel.org, nuno.sa@analog.com, bigunclemax@gmail.com, 
+ dlechner@baylibre.com, marius.cristea@microchip.com, 
+ marcelo.schmitt@analog.com, fr0st61te@gmail.com, mitrutzceclan@gmail.com, 
+ mike.looijmans@topic.nl, marcus.folkesson@gmail.com, 
+ linux-iio@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, kernel@collabora.com
+In-Reply-To: <20240530093410.112716-4-angelogioacchino.delregno@collabora.com>
+References: <20240530093410.112716-1-angelogioacchino.delregno@collabora.com>
+ <20240530093410.112716-4-angelogioacchino.delregno@collabora.com>
+Subject: Re: (subset) [PATCH v1 3/4] mfd: mt6397-core: Add support for
+ AUXADCs on MT6357/58/59 PMICs
+Message-Id: <171717513800.1210753.10558574294552850707.b4-ty@kernel.org>
+Date: Fri, 31 May 2024 18:05:38 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAL_Jsq+Cu9PSFwp-6cT5svqP+GZ8rp5hBgXA2=cgqQYYUDDKDA@mail.gmail.com>
+X-Mailer: b4 0.12.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240531_090742_261937_4F1171B5 
-X-CRM114-Status: GOOD (  16.07  )
+X-CRM114-CacheID: sfid-20240531_100546_459720_CA630EEF 
+X-CRM114-Status: UNSURE (   5.71  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,55 +82,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 31 May 2024, Rob Herring wrote:
-
-> On Fri, May 31, 2024 at 8:45 AM Lee Jones <lee@kernel.org> wrote:
-> >
-> > On Fri, 10 May 2024, Rob Herring (Arm) wrote:
-> >
-> > > Add another batch of various "simple" syscon compatibles which were
-> > > undocumented or still documented with old text bindings. Remove the old
-> > > text binding docs for the ones which were documented.
-> > >
-> > > Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
-> > > ---
-> > > This batch is mostly from arm32 platforms.
-> > > ---
-> > >  .../bindings/arm/amlogic/analog-top.txt       | 20 -------------
-> > >  .../bindings/arm/amlogic/assist.txt           | 17 -----------
-> > >  .../bindings/arm/amlogic/bootrom.txt          | 17 -----------
-> > >  .../devicetree/bindings/arm/amlogic/pmu.txt   | 18 ------------
-> > >  .../devicetree/bindings/arm/atmel-sysregs.txt | 29 -------------------
-> > >  .../devicetree/bindings/arm/axis.txt          | 16 ----------
-> > >  .../arm/cpu-enable-method/al,alpine-smp       | 10 -------
-> > >  .../arm/freescale/fsl,vf610-mscm-cpucfg.txt   | 14 ---------
-> > >  .../bindings/arm/marvell/marvell,dove.txt     | 15 ----------
-> > >  .../devicetree/bindings/arm/spear-misc.txt    |  9 ------
-> > >  .../bindings/clock/ti-keystone-pllctrl.txt    | 20 -------------
-> > >  .../devicetree/bindings/mfd/syscon.yaml       | 29 +++++++++++++++++++
-> > >  .../devicetree/bindings/mips/mscc.txt         | 17 -----------
-> > >  .../devicetree/bindings/mtd/atmel-nand.txt    |  9 ------
-> > >  .../bindings/net/hisilicon-hip04-net.txt      | 10 -------
-> > >  15 files changed, 29 insertions(+), 221 deletions(-)
-> > >  delete mode 100644 Documentation/devicetree/bindings/arm/amlogic/analog-top.txt
-> > >  delete mode 100644 Documentation/devicetree/bindings/arm/amlogic/assist.txt
-> > >  delete mode 100644 Documentation/devicetree/bindings/arm/amlogic/bootrom.txt
-> > >  delete mode 100644 Documentation/devicetree/bindings/arm/amlogic/pmu.txt
-> > >  delete mode 100644 Documentation/devicetree/bindings/arm/freescale/fsl,vf610-mscm-cpucfg.txt
-> > >  delete mode 100644 Documentation/devicetree/bindings/arm/spear-misc.txt
-> > >  delete mode 100644 Documentation/devicetree/bindings/clock/ti-keystone-pllctrl.txt
-> >
-> > No longer applies.  Please rebase and I'll promptly hoover this up.
+On Thu, 30 May 2024 11:34:09 +0200, AngeloGioacchino Del Regno wrote:
+> Add the relevant AUXADC driver entries to the MFD cells of the
+> MT6357, MT6358, MT6359 PMICs to support their Auxiliary ADCs.
 > 
-> I can't find where it doesn't. Fine on next, v6.10-rc1, your current
-> branch. Maybe something you applied today and haven't pushed out?
+> 
 
-That could well be the case.
+Applied, thanks!
 
-I just pushed for-mfd-next for you.
+[3/4] mfd: mt6397-core: Add support for AUXADCs on MT6357/58/59 PMICs
+      commit: fa9d9f4b5588003a955193fe9ff009687541f3e7
 
-Thanks.
-
--- 
+--
 Lee Jones [李琼斯]
+
 
