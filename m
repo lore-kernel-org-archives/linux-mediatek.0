@@ -4,65 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FA85C25B75
-	for <linux-mediatek@archiver.kernel.org>; Fri, 31 May 2024 13:52:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35B00C25B75
+	for <linux-mediatek@archiver.kernel.org>; Fri, 31 May 2024 13:57:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:To:
+	From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hRtBMB904f0yNjxEq/77JZlDFBXNkfQAFArNl1XY0gw=; b=i1u29G/G2RVLwzDGUnQ5ah4F92
-	P7FGEstl2SA3dICP8YfWd/3aJDAM3IbMOcc/L+sMeoTMGGJsiz+h638grMNF1j8y2fYE+9sf7x7eF
-	JreEl6dwR/G+EWFDVoRblvvQBUIBiEKaC9w9wDuNU7Evc6sr0jfFbhFCepT4Na8iv8rNvu/C42YD1
-	0d4/iC0fAiylOWX3CaU4+AQe0uFpzoPbdoZgopeJmQgc/8ATzgi9npXcywYNpaos4eN6rV+45XAIL
-	B8/U8hj0Hov+Nnu0bZihrYr0mEoD5Tw8x9ROi3Cdhy6d85XSH5K5TYS+VbxcenI8lfVVUiqfZJtGt
-	+kNCY8ew==;
+	bh=VayvOFE37WAuPRfdVrjSiRg/79iWz8eI4KGxBxpgkyU=; b=JrIZ90moGS2HG8xw+djprc3n1k
+	nv/KMfwr86SShLw86XX5hjoNGdKmxemwl3yMsAQysXGaWEsh23vdJCpJsQul1gEu172Cf4wzrKYdi
+	tRj54y0ncP5sjaL9xWUr7U8Tfe+G5bm9PBwpEXrT6lmHxLK3O44l2wGvx9tswNLW7iIuhzDFct41a
+	jzBcbuJWsH4rWYlRsbSlx7m5Nl7KC3cLjpu7ncolOO+s2BgChV/2zHBnULpkFjiN53xM7RC0dxQNz
+	EJrARBiF0jB976H4svj26n81VeHUATeiijg/zIGjmWJ/5gLXmWbtzcG9+W7orMFJHGk/Gq5iWAuM1
+	15H/x1sQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sD2fu-0000000APJX-1nCz;
-	Fri, 31 May 2024 13:52:06 +0000
+	id 1sD2lS-0000000AQVC-2Upv;
+	Fri, 31 May 2024 13:57:50 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sD2fm-0000000APId-32lQ;
-	Fri, 31 May 2024 13:52:02 +0000
+	id 1sD2lP-0000000AQU8-0l7k;
+	Fri, 31 May 2024 13:57:48 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 0AC4060C13;
-	Fri, 31 May 2024 13:51:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3BAC6C116B1;
-	Fri, 31 May 2024 13:51:55 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 7B5D462C4D;
+	Fri, 31 May 2024 13:57:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E8BABC116B1;
+	Fri, 31 May 2024 13:57:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1717163517;
-	bh=ZLFkgp0st89FLzWtvHCzJtpMDWqn9ddfK5U7FlGjMYk=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=TwEGLc+XlwUMXPYNsDsN6Ig+TdBfRDLS2l2cpDTAPxLfB7HfSvD/nJVkOds9Ryebt
-	 gyFP0C3E9IXLijews69ycBXVATbbW2e9088KOLeDLB3nQdvlrBsxtlnfmdAoki6nfJ
-	 r5KTONlV5h+k/E5PPaWH41J0A6cVYbOy9BA9JPawXz+Wn6fG5ojCH1tsXhdsvos5YD
-	 jrssIPJG9mA56h9Vb3FYB+PksD89PahVtj352Rlfj6k/muKmbdE1hZvdXcnNzojuZZ
-	 LkxoD6EA/eJSXuuGvR8Iq2bZ/Vzqm36ECAdVyC3zzJguGdh4XYDKLn2wFe/XaksUtW
-	 h7ai04owVO5sg==
+	s=k20201202; t=1717163866;
+	bh=C3ouozwm1IiFQ01Aw+++mEdQu3kWfVy8HqAjEf2Golg=;
+	h=From:To:In-Reply-To:References:Subject:Date:From;
+	b=dLLx7F5jq68u9NfFbNCrKk80jP07XZd3TTFhQIRksyVDsxu/exJ5iyJiUH3t5AC3w
+	 U/JwIHxLHktz6xncM3SGtmA4B/MY2fymJ6bRbc+axK3CBDvTfm9NJ/+CgDKTv1NEOD
+	 AN01qr1GmR6qqD8Px1J93Q4nqLVOGWhXj2tH64fkl0F/wwbmjsEBk17GSepKJChJuR
+	 xwAqGfoXp+B/QzJbTrDyTj4NRnS28uKuiMn66TRgLPbZTgxSkya+EXES8jjdhsDmc7
+	 Y+sqT2seBAWE+GY5unx1bAM4dtS4ZBARWE519vL2jMkIvltARLk285L+G5vCzamqcp
+	 YlbLKCjtnwYDw==
 From: Lee Jones <lee@kernel.org>
-To: linux-mediatek@lists.infradead.org, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: lee@kernel.org, robh@kernel.org, krzk+dt@kernel.org, 
- conor+dt@kernel.org, matthias.bgg@gmail.com, mandyjh.liu@mediatek.com, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, kernel@collabora.com, 
- jpanis@baylibre.com
-In-Reply-To: <20240527093908.97574-2-angelogioacchino.delregno@collabora.com>
-References: <20240527093908.97574-1-angelogioacchino.delregno@collabora.com>
- <20240527093908.97574-2-angelogioacchino.delregno@collabora.com>
-Subject: Re: (subset) [PATCH 1/5] dt-bindings: mfd: mediatek,mt8195-scpsys:
- Add support for MT8188
-Message-Id: <171716351496.1109202.13130330673737183145.b4-ty@kernel.org>
-Date: Fri, 31 May 2024 14:51:54 +0100
+To: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ MandyJH Liu <mandyjh.liu@mediatek.com>, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20240518211159.142920-1-krzysztof.kozlowski@linaro.org>
+References: <20240518211159.142920-1-krzysztof.kozlowski@linaro.org>
+Subject: Re: (subset) [PATCH 1/4] dt-bindings: mfd: mediatek,mt8195-scpsys:
+ add mediatek,mt8365-scpsys
+Message-Id: <171716386365.1113959.6499832475900299383.b4-ty@kernel.org>
+Date: Fri, 31 May 2024 14:57:43 +0100
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-Mailer: b4 0.12.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240531_065201_535310_DBF769AA 
-X-CRM114-Status: UNSURE (   6.36  )
+X-CRM114-CacheID: sfid-20240531_065747_308890_0410776A 
+X-CRM114-Status: UNSURE (   7.48  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -78,16 +79,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 27 May 2024 11:39:04 +0200, AngeloGioacchino Del Regno wrote:
-> Add a compatible string for the scpsys block found in the MediaTek
-> MT8188 SoC.
+On Sat, 18 May 2024 23:11:56 +0200, Krzysztof Kozlowski wrote:
+> Add a new mediatek,mt8365-scpsys compatible, for the SCPSYS syscon block
+> having power controller.  Previously the DTS was re-using SYSCFG
+> compatible, but that does not seem right, because SYSCFG does not have
+> children.
 > 
 > 
 
 Applied, thanks!
 
-[1/5] dt-bindings: mfd: mediatek,mt8195-scpsys: Add support for MT8188
-      commit: 5b8d73b7e1ceb2578f74d0a119a4b4a4be690d2e
+[1/4] dt-bindings: mfd: mediatek,mt8195-scpsys: add mediatek,mt8365-scpsys
+      commit: 50c779be27066b4e25873a15580999008d068ff7
 
 --
 Lee Jones [李琼斯]
