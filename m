@@ -4,69 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 445E5C25B75
-	for <linux-mediatek@archiver.kernel.org>; Fri, 31 May 2024 12:47:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF596C27C4F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 31 May 2024 13:07:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
 	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
 	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=m5Qi6tMPYenKxcCKUZxYlTD/osvUiKSTkXpMvG5RSX0=; b=Aa4H8di7fRp4TNYVqXh0NvNGYh
-	h2GDjAa7s9ZcfhtYtQcb2RfhxOW8egwgeZOvyyq9T3Na1pA8f1rCWTLV6zxzh5fUYKhF4z8FAcHj/
-	tqlsOj+BIHnaUZZAtow+ktE2NPKssSMx26bmBzZRgqy2xHmCo5r0uJ/qBz5h7WJssVmApg5QKYC4y
-	6eaeZVUAzfqiIcPxBpVI4EUYVeg/yQyLRoBJmuvDi18InDNIFT5DjcuLScqSpwT5bvCTfThItdDn0
-	a1GYpu2wQJxNpwZYRKJK6OGwA6/fzMeTHQ5dPiEcV4AXJEwBJXfCvHczXnovLaK+aYqSPGLVCIYmH
-	qi4CbmEg==;
+	bh=pxO3gqPht6V2x6BOOxWNMsCjnutkB5MD5qGZMejY1Kw=; b=zb6LWuEeUsIh2ZAHHD4nAKRwC0
+	Es+gC7NHn5y25QcwZw+rSUrsZOBf+YOR4M/OhxKBbWfokT+kM53XcR/pPM788cvPNumyrcNe3NCDI
+	ETmiyayvQBj31V9tYsxErfnR8RRq6YdZMeoJeCOm9NQlJdXURxGWq1QASl5rqxvZILfDJ1/61pc6s
+	jXHL/5eCRL35z3dDO3t6KDFovCYGhHluO9U4PtMdPFLyRUrIapHYuZDCHq/DP7Pyo3a58hK2OsnVQ
+	qN4hy5EWw8fSwxNRPf/0NwUY+MoOZudjKD7uEfsYIkEbmLs2j8Ycf4duqOv2OevxXbmG+3P96ur1Y
+	9ggwolJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sD1fJ-0000000AF4e-05PT;
-	Fri, 31 May 2024 12:47:26 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1sD1yN-0000000AHOB-1Swe;
+	Fri, 31 May 2024 13:07:07 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sD1fC-0000000AF1d-0Yw8;
-	Fri, 31 May 2024 12:47:20 +0000
+	id 1sD1yJ-0000000AHN9-0V69;
+	Fri, 31 May 2024 13:07:04 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1717159630;
-	bh=iW3CNwK1w77FA/ekGYhGcEUsJbEL6oKwZ2aHH3da/fY=;
+	s=mail; t=1717160821;
+	bh=Gysdjfj+HqOXnRL+AUVd8SZVjhHIt+02/qHfmXbJw7o=;
 	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=nMJCspMCwgj+AX5HCpHoS2O45tNHJjK1HppWZDKpt/HT5ymNCJrvo5t8DHASgqosc
-	 QZIBZ+gj+1S6uGNPuqktoxYdAlFFYBXUcBpC11wfRk0I6kPedKmwISfr5rkkzgxXhn
-	 CIPdeEZWFCFQRPGSz1crAbNxcAfRg2h/VR/ezyanJOv0hItqVyn+ADSVhQH05C0s0z
-	 /rfWdLvh3nPXbSDgQlTPZqO4Ij1v7QDfFSWdhurVLV69Ixol5lomhvLdLp8u0JrD64
-	 O0Pj2LGog4VDJth6oOhUBwtIswzHzynj/ztxPGFSqLNu0ErHNbCTgKQ/r31gxL2B48
-	 FN5C2FabIQumQ==
+	b=clhIQ4gSQyiGW5phyxgxdd84B5foEK4VYnSQeq7DvUgYHbzwAaVIZ2bXWBjCo92mi
+	 T7C52wwHQdzZj+DAUSzgogofYO03sRnI3o3Ursd2JAvwEe7jG6S569hQNb8wJOlfcB
+	 4AGkX5k56LBN61L2U3WN/E0Xm6Rb3QkqA9CQE/WsE4Vp2Sa125tTRiF3eeVN4BhCfl
+	 8ye7v/9dKYkuT5+wRTMs2oBsCktswU4OMHiZZyytPjAjgyQW32PC1Q0DJfITlw54ul
+	 Oqf/HJPIqcIuEbDkMw2ypDA/RtHiBHpi2cN8jypub8M5POIIG+3HKIWQ75pInM7hDq
+	 QNakC+O45csXQ==
 Received: from nicolas-tpx395.localdomain (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nicolas)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 0271F378148F;
-	Fri, 31 May 2024 12:47:08 +0000 (UTC)
-Message-ID: <9f73dffc48394e6304263ac2293a2b18864ae3dd.camel@collabora.com>
-Subject: Re: [PATCH] media: mediatek: vcodec: Reduce msg queue trans buffer
- size
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 717D537821AD;
+	Fri, 31 May 2024 13:06:57 +0000 (UTC)
+Message-ID: <84d2a7f87add1829fce20495a6b6e0b399381925.camel@collabora.com>
+Subject: Re: [PATCH v6,14/24] media: mediatek: vcodec: Add capture format to
+ support one plane memory
 From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Fei Shao <fshao@chromium.org>, AngeloGioacchino Del Regno
-	 <angelogioacchino.delregno@collabora.com>, Hans Verkuil
-	 <hverkuil-cisco@xs4all.nl>
-Cc: Yunfei Dong <yunfei.dong@mediatek.com>, Andrew-CT Chen
- <andrew-ct.chen@mediatek.com>, Dan Carpenter <dan.carpenter@linaro.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Tiffany Lin <tiffany.lin@mediatek.com>, Xiaoyong Lu
- <xiaoyong.lu@mediatek.com>,  linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org,  linux-media@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-Date: Fri, 31 May 2024 08:47:02 -0400
-In-Reply-To: <20240521095536.3869399-1-fshao@chromium.org>
-References: <20240521095536.3869399-1-fshao@chromium.org>
+To: Chen-Yu Tsai <wenst@chromium.org>, Andrzej Pietrasiewicz
+	 <andrzej.p@collabora.com>
+Cc: Yunfei Dong <yunfei.dong@mediatek.com>, Jeffrey Kardatzke
+ <jkardatzke@google.com>, =?ISO-8859-1?Q?N=EDcolas?= "F . R . A . Prado"
+ <nfraprado@collabora.com>, Nathan Hebert <nhebert@chromium.org>, Hans
+ Verkuil <hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
+ <benjamin.gaignard@collabora.com>, Sebastian Fricke
+ <sebastian.fricke@collabora.com>, Tomasz Figa <tfiga@chromium.org>, Mauro
+ Carvalho Chehab <mchehab@kernel.org>, Marek Szyprowski
+ <m.szyprowski@samsung.com>, Yong Wu <yong.wu@mediatek.com>,  Hsin-Yi Wang
+ <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter
+ <daniel@ffwll.ch>,  Steve Cho <stevecho@chromium.org>, Sumit Semwal
+ <sumit.semwal@linaro.org>, Brian Starkey <Brian.Starkey@arm.com>, John
+ Stultz <jstultz@google.com>, "T . J . Mercier" <tjmercier@google.com>,
+ Christian =?ISO-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>, Matthias
+ Brugger <matthias.bgg@gmail.com>,  linux-media@vger.kernel.org,
+ dri-devel@lists.freedesktop.org,  linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,  linux-mediatek@lists.infradead.org, 
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+Date: Fri, 31 May 2024 09:06:51 -0400
+In-Reply-To: <CAGXv+5Hg-61qQEiPScqEfO6irHnaJHHqcr=MYX=89RzUBRK7oA@mail.gmail.com>
+References: <20240516122102.16379-1-yunfei.dong@mediatek.com>
+	 <20240516122102.16379-15-yunfei.dong@mediatek.com>
+	 <1d4618ac-4316-495d-afdb-5849e4b1e805@collabora.com>
+	 <537a0969-afdf-4e48-a640-2d8fc665c964@collabora.com>
+	 <CAGXv+5Hg-61qQEiPScqEfO6irHnaJHHqcr=MYX=89RzUBRK7oA@mail.gmail.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 User-Agent: Evolution 3.52.1 (3.52.1-1.fc40) 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240531_054718_798102_EC76258D 
-X-CRM114-Status: GOOD (  20.57  )
+X-CRM114-CacheID: sfid-20240531_060703_505567_DD6EF525 
+X-CRM114-Status: GOOD (  36.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,66 +95,198 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Le mardi 21 mai 2024 =C3=A0 17:54 +0800, Fei Shao a =C3=A9crit=C2=A0:
-> In the MediaTek HW vcodec pipeline, the `trans` buffer is used to
-> transfer the data decoded by the lat decoder to the core decoder.
->=20
-> In the beginning, 6MB and 30MB were allocated for the trans buffer to
-> handle FHD and higher-resolution contents respectively, but it turns out
-> that's more than enough in practice and there's room for improvement.
->=20
-> The buffer sizes were reduced to 5MB / 8MB respectively and the decoders
-> have been validated to work normally on the MediaTek Android products.
-> It's time to adopt that change in the upstream MediaTek vcodec driver.
->=20
-> Reduce the msg queue trans buffer size to 5MB / 8MB respectively to
-> optimize the memory usage per decoder instance and improve the overall
-> system performance.
+Hi,
 
-I don't disagree with the change, but it feels like this is has hack over a
-hack. We have an entropy decoder (LAT) metadata buffer, which of course is
-resolution dependent, for which we hardcore two sizes.
+Le jeudi 23 mai 2024 =C3=A0 18:36 +0800, Chen-Yu Tsai a =C3=A9crit=C2=A0:
+> On Thu, May 23, 2024 at 6:14=E2=80=AFPM Andrzej Pietrasiewicz
+> <andrzej.p@collabora.com> wrote:
+> >=20
+> > Hi,
+> >=20
+> > I'm having second thoughts, please see inline,
+> >=20
+> > W dniu 22.05.2024 o 14:26, Andrzej Pietrasiewicz pisze:
+> > > Hi Yunfei,
+> > >=20
+> > > W dniu 16.05.2024 o 14:20, Yunfei Dong pisze:
+> > > > Define one uncompressed capture format V4L2_PIX_FMT_MS21 in order t=
+o
+> > > > support one plane memory. The buffer size is luma + chroma, luma is
+> > > > stored at the start and chrome is stored at the end.
+> > > >=20
+> > > > Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+> > > > ---
+> > > >   Documentation/userspace-api/media/v4l/pixfmt-reserved.rst | 8 +++=
++++++
+> > > >   drivers/media/v4l2-core/v4l2-common.c                     | 2 ++
+> > > >   drivers/media/v4l2-core/v4l2-ioctl.c                      | 1 +
+> > > >   include/uapi/linux/videodev2.h                            | 1 +
+> > > >   4 files changed, 12 insertions(+)
+> > > >=20
+> > > > diff --git a/Documentation/userspace-api/media/v4l/pixfmt-reserved.=
+rst b/Documentation/userspace-api/media/v4l/pixfmt-reserved.rst
+> > > > index 886ba7b08d6b..6ec899649d50 100644
+> > > > --- a/Documentation/userspace-api/media/v4l/pixfmt-reserved.rst
+> > > > +++ b/Documentation/userspace-api/media/v4l/pixfmt-reserved.rst
+> > > > @@ -295,6 +295,14 @@ please make a proposal on the linux-media mail=
+ing list.
+> > > >         - Compressed format used by Nuvoton NPCM video driver. This=
+ format is
+> > > >           defined in Remote Framebuffer Protocol (RFC 6143, chapter=
+ 7.7.4 Hextile
+> > > >           Encoding).
+> > > > +    * .. _V4L2-PIX-FMT-MS21:
+> > > > +
+> > > > +      - ``V4L2_PIX_FMT_MS21``
+> > > > +      - 'MS21'
+> > > > +      - This format has one plane, luma and chroma are stored in a=
+ contiguous
+> > >=20
+> > > Maybe s/one/single ?
+> > >=20
+> > > > +        memory. Luma pixel in 16x32 tiles at the start, chroma pix=
+el in 16x16
+> > >=20
+> > > maybe the word "pixel" is reduntant here? What else than pixels could=
+ tile sizes mean?
+> > > Any padding between luma and chroma?
+> > >=20
+> > > > +        tiles at the end. The image height must be aligned with 32=
+ and the image
+> > > > +        width must be aligned with 16.
+> > >=20
+> > > Maybe aligned to?
+> > >=20
+> > > >   .. raw:: latex
+> > > >       \normalsize
+> > > > diff --git a/drivers/media/v4l2-core/v4l2-common.c b/drivers/media/=
+v4l2-core/v4l2-common.c
+> > > > index 4165c815faef..5ae54cf48dc7 100644
+> > > > --- a/drivers/media/v4l2-core/v4l2-common.c
+> > > > +++ b/drivers/media/v4l2-core/v4l2-common.c
+> > > > @@ -271,6 +271,8 @@ const struct v4l2_format_info *v4l2_format_info=
+(u32 format)
+> > > >             .block_w =3D { 16, 8, 0, 0 }, .block_h =3D { 32, 16, 0,=
+ 0 }},
+> > > >           { .format =3D V4L2_PIX_FMT_MT2110R, .pixel_enc =3D V4L2_P=
+IXEL_ENC_YUV, .mem_planes =3D 2, .comp_planes =3D 2, .bpp =3D { 5, 10, 0, 0=
+ }, .bpp_div =3D { 4, 4, 1, 1 }, .hdiv =3D 2, .vdiv =3D 2,
+> > > >             .block_w =3D { 16, 8, 0, 0 }, .block_h =3D { 32, 16, 0,=
+ 0 }},
+> > > > +        { .format =3D V4L2_PIX_FMT_MS21, pixel_enc =3D V4L2_PIXEL_=
+ENC_YUV, .mem_planes =3D 1, .comp_planes =3D 2, .bpp =3D { 1, 2, 0, 0 }, .b=
+pp_div =3D { 1, 1, 1, 1 }, .hdiv =3D 2, .vdiv =3D 2,
+> > > > +          .block_w =3D { 16, 8, 0, 0 }, .block_h =3D { 32, 16, 0, =
+0 }},
+> > > >           /* YUV planar formats */
+> > > >           { .format =3D V4L2_PIX_FMT_NV12,    .pixel_enc =3D V4L2_P=
+IXEL_ENC_YUV, .mem_planes =3D 1, .comp_planes =3D 2, .bpp =3D { 1, 2, 0, 0 =
+}, .bpp_div =3D { 1, 1, 1, 1 }, .hdiv =3D 2, .vdiv =3D 2 },
+> > > > diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v=
+4l2-core/v4l2-ioctl.c
+> > > > index 4c76d17b4629..3a68f2b9e7a4 100644
+> > > > --- a/drivers/media/v4l2-core/v4l2-ioctl.c
+> > > > +++ b/drivers/media/v4l2-core/v4l2-ioctl.c
+> > > > @@ -1529,6 +1529,7 @@ static void v4l_fill_fmtdesc(struct v4l2_fmtd=
+esc *fmt)
+> > > >           case V4L2_PIX_FMT_MT2110T:    descr =3D "Mediatek 10bit T=
+ile Mode"; break;
+> > > >           case V4L2_PIX_FMT_MT2110R:    descr =3D "Mediatek 10bit R=
+aster Mode"; break;
+> > > >           case V4L2_PIX_FMT_HEXTILE:    descr =3D "Hextile Compress=
+ed Format"; break;
+> > > > +        case V4L2_PIX_FMT_MS21:        descr =3D "MediaTek One Pla=
+ne Format"; break;
+> > >=20
+> > > s/One/Single ?
+> > >=20
+> >=20
+> > On the other hand "single" would be [in this case incorrectly] associat=
+ed with
+> > single-planar API, which would be totally confusing.
+> >=20
+> > Still, the reality you are trying to model is complex: you use
+> > MPLANE, yet there's a single plane in case of secure playback.
+>=20
+> I don't think that's a problem though. The NV12 format (seen above in
+> the diff context) has the same attributes: 1 contiguous memory plane
+> containing two component planes.
+>=20
+> And it's perfectly fine for MPLANE drivers to support these formats,
+> Hantro being one of them that decodes to NV12. If a decoder can decode
+> into discontiguous buffers, it surely can decode into contiguous ones;
+> just set the second/third buffer address to the correct offset into
+> the first buffer based on the format layout.
 
-Any chance Mediatek can document this blob, or at least document the proper
-relation between the size and the resolution ? This way we could dynamicall=
-y
-size the buffer for the chosen resolution and trust it to remain big enough=
- for
-a long time. Removing the non scientific claim of "have been validated", wh=
-ich
-is producible for anyone hitting issue with that change in the future.
+There is some complexity and limitations not disclose here, but in 99% of t=
+he
+cases I agree.
+
+>=20
+> In retrospect we probably should have named "MM21" as "MM21M" to denote
+> that it is multi-memory-plane, and this "MS21" would have been "MM21",
+> having a single contiguous memory plane.
+>=20
+> And the MPLANE driver supporting "single memory plane" oddity gets
+> resolved if the API rework ever gets finished.
+
+Not clear what you are proposing here, since its too late to rename MM21. I
+agree with you there is no problem adding single allocation version of MM21=
+ to
+save on secure zones, and this is intented to be support by the MPLANE API =
+too.
+
+Though, on the other side, I'm thinking its an internal limitation that we =
+must
+have multiple allocation when using planar formats. We could certainly expo=
+rt
+twice the same dmabuf, in that capture case, data_offset would be used with=
+ its
+original design (driver provided). In fact, if we remove this internal
+limitation, we could stop the proliferation of duplicated pixel formats in =
+V4L2
+which is quite a bad design error in my opinion.
 
 Nicolas
 
 >=20
-> Signed-off-by: Fei Shao <fshao@chromium.org>
 >=20
-> CC: Yunfei Dong <yunfei.dong@mediatek.com>
+> Regards,
+> ChenYu
 >=20
-> ---
-> I consulted Yunfei and he confirmed that these are the sizes they are
-> using today.
->=20
->  .../media/platform/mediatek/vcodec/decoder/vdec_msg_queue.c   | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->=20
-> diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec_msg_queu=
-e.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec_msg_queue.c
-> index f283c4703dc6..e36741179a97 100644
-> --- a/drivers/media/platform/mediatek/vcodec/decoder/vdec_msg_queue.c
-> +++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec_msg_queue.c
-> @@ -29,9 +29,9 @@
->  static int vde_msg_queue_get_trans_size(int width, int height)
->  {
->  	if (width > 1920 || height > 1088)
-> -		return 30 * SZ_1M;
-> +		return 8 * SZ_1M;
->  	else
-> -		return 6 * SZ_1M;
-> +		return 5 * SZ_1M;
->  }
-> =20
->  void vdec_msg_queue_init_ctx(struct vdec_msg_queue_ctx *ctx, int hardwar=
-e_index)
+> > Regards,
+> >=20
+> > Andrzej
+> >=20
+> >=20
+> > > Regards,
+> > >=20
+> > > Andrzej
+> > >=20
+> > > >           default:
+> > > >               if (fmt->description[0])
+> > > >                   return;
+> > > > diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/vi=
+deodev2.h
+> > > > index 89eb1a3c6555..7aff2f2c8f9c 100644
+> > > > --- a/include/uapi/linux/videodev2.h
+> > > > +++ b/include/uapi/linux/videodev2.h
+> > > > @@ -800,6 +800,7 @@ struct v4l2_pix_format {
+> > > >   #define V4L2_PIX_FMT_MM21     v4l2_fourcc('M', 'M', '2', '1') /* =
+Mediatek 8-bit block mode, two non-contiguous planes */
+> > > >   #define V4L2_PIX_FMT_MT2110T  v4l2_fourcc('M', 'T', '2', 'T') /* =
+Mediatek 10-bit block tile mode */
+> > > >   #define V4L2_PIX_FMT_MT2110R  v4l2_fourcc('M', 'T', '2', 'R') /* =
+Mediatek 10-bit block raster mode */
+> > > > +#define V4L2_PIX_FMT_MS21     v4l2_fourcc('M', 'S', '2', '1') /* M=
+ediaTek 8-bit block mode with one plane */
+> > > >   #define V4L2_PIX_FMT_INZI     v4l2_fourcc('I', 'N', 'Z', 'I') /* =
+Intel Planar Greyscale 10-bit and Depth 16-bit */
+> > > >   #define V4L2_PIX_FMT_CNF4     v4l2_fourcc('C', 'N', 'F', '4') /* =
+Intel 4-bit packed depth confidence information */
+> > > >   #define V4L2_PIX_FMT_HI240    v4l2_fourcc('H', 'I', '2', '4') /* =
+BTTV 8-bit dithered RGB */
+> > >=20
+> >=20
 
 
