@@ -4,84 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42A1FC25B75
-	for <linux-mediatek@archiver.kernel.org>; Fri, 31 May 2024 07:29:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5411DC25B75
+	for <linux-mediatek@archiver.kernel.org>; Fri, 31 May 2024 08:38:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7AuBpLgSZMEBo2XzwoYxF5FL6n7LRJe6EeX7UzHv+C4=; b=Lfe4G79FIsWdpeFyxIe99icfZz
-	erMBKTOYptuMuQrvvVY51f8sIVhZ9iXDu3LTUf920xXtNemlaSXdvRaVEtHdokO5vDVFvVA9N0Ww2
-	Q0UI26MiaEPTjy7e4x+3qytwHVIaCdSrMn71I+AwkauBJUFOHBNMNnHfpbRE8eKLd3oZJd/Pgavqx
-	aPhajAUpq9pyPELJYF1O+3QRx3wGqScbvR1WWqAz1vaPQYR3iX278Q9ZcXw82lYwhNk8v0eSh7pkc
-	GqIfr9s8yxUQ0YmHzb/JLDBAz8G/fs7QeelFtNOOsVl1oaEJPoVBd0IMYupDfIe2wMkyj0k8jAFYg
-	e0G9oRHA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=BMwLestZgmk4mqZillFQkfuSiKmx8+iHR4IW4Az53nU=; b=Z/BWASHePFoW5a/bwhWhW8S4yM
+	HZjN53NnoSE8Yz/3e1jDkp2TBWxsjsddhs5mol8I2/gyEqlbA2CLOkRhcws0dEEpUj4HiXuK5uget
+	n+5E3fKZEaqWyh5O6jW0QCTePk9EZ/aXYkFAfn+xbOitAicnXx8Ir0Via4DIcEepPMP7SfnHfawcV
+	3xy8sJwt7xG+XLXBaNxNjMK1QTC5lu5y8gfXU1IjmfSUSZKKh8EuN8VWrSJJQNvAs2c/Lkt8GDQN0
+	yKzgd5SE2x2ebgU7d7ZnHnJ4lMDh4hN3Wp/fjfBpQKEQgm/swjv82oAIHIROMk/KMmQHG5uYLzGA2
+	K27Gg7gg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCwhX-00000009V75-3p24;
-	Fri, 31 May 2024 07:29:23 +0000
-Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
+	id 1sCxm2-00000009e0H-29Vj;
+	Fri, 31 May 2024 08:38:06 +0000
+Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sCwhU-00000009V6B-2Ya8
+	id 1sCxlx-00000009dxa-40rt
 	for linux-mediatek@lists.infradead.org;
-	Fri, 31 May 2024 07:29:22 +0000
-Received: by mail-lf1-x131.google.com with SMTP id 2adb3069b0e04-52b03d66861so1827440e87.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 31 May 2024 00:29:19 -0700 (PDT)
+	Fri, 31 May 2024 08:38:04 +0000
+Received: by mail-pl1-x635.google.com with SMTP id d9443c01a7336-1f32a3b9491so13261945ad.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 31 May 2024 01:37:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1717140558; x=1717745358; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=7AuBpLgSZMEBo2XzwoYxF5FL6n7LRJe6EeX7UzHv+C4=;
-        b=E8t+Cfub/pcNg/wnMBgWXOaUlr8iXUtNcNM4INUQgW+IzTPddZqwWkAFLmQnZjMnWc
-         e/3vqCrm76NJI2ptwJUUXwTGs3gBFd5V/3IWCMJJ5lNnMRyVCGWsUzDHYeyBuQQ+FsM0
-         HF5qQ/4PP0b/2RWXTcOmuBvMPZW9ngbdUqXRA=
+        d=chromium.org; s=google; t=1717144679; x=1717749479; darn=lists.infradead.org;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=BMwLestZgmk4mqZillFQkfuSiKmx8+iHR4IW4Az53nU=;
+        b=FhbFB/3VHOXwDW9R+ruYHZkOIfUFNXgsQM2nCjhs0gS8lzWyqPlhYNiqD3X1kMB807
+         yok5wH8WBkPlFpH5jr5dOWITc01HoghZSM6CKrUKxdiCfBbH2W8NGiNBs7MEGgO6YyHh
+         mGymVc8vod3zft9p1wqMCP1h59STkbodMDpdU=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1717140558; x=1717745358;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=7AuBpLgSZMEBo2XzwoYxF5FL6n7LRJe6EeX7UzHv+C4=;
-        b=SQ55tzX7q3o9HxXGGjwwH/2/+DDRaTshLtkWFVrcndrqWaVzT3JR0rKlBZ4NamP0GJ
-         EHR6UP1QJ4dlmZwEVq7krzqKWDwKwl9oKbmHdzBPSOFBnymsaWFKnhFSGZb+gcdoyMWI
-         /69XqiG9nOpwI20Jh0KgqzQdovUdVUx4Hfn1hQYwLb5qHNwCNh8c2RgZmj2BUZbTBF4h
-         DSIQ2mWSEWy6uQ9F8CkvcmnyvM3q8tNTstIc/xrZvYp6hXLd5RWDWt/oSeljFHgrtjzg
-         7u/D6Swk72uv7SqvUcZL6I436R10LGDhiA9KYouXCO0AUlwJtw4ppy0nP0Gkm6+eWpnQ
-         0Yig==
-X-Forwarded-Encrypted: i=1; AJvYcCVDiJ8uphpAEX/HOA3NywwNel2iQ1QZLlNQiQeiioPYJZ2j/v65u8792zT8/djRbiA1JtBnCJ9wvxZaLrf2l8hPGdbKEOLIND3dq3kyMlyXczWh
-X-Gm-Message-State: AOJu0YxwL9swm+DhyUWN7mmfggJrjTHTj4OdRjtYoMhJSIYM4Vq8ubVV
-	SrUokjxeOZaFipPIuImy4D4d11LsWIEPWTuj+dLEcsyEzOjHhr25tn8heAUORrV8mS86e9wc43I
-	4+Gr2AQ4+zXqFG2CQhPsP3Dl2YAI0gu2KhbgW
-X-Google-Smtp-Source: AGHT+IHG9cIqzvXzXFVSJ3u+mefhmJEYsDfRGLlyDYP+0F7chk9Cih1xUPNaF4GQKusTGlZd76NQwOCqr1Bnfxqn4zw=
-X-Received: by 2002:a05:6512:2029:b0:52b:8455:a9df with SMTP id
- 2adb3069b0e04-52b896b8210mr483694e87.34.1717140557358; Fri, 31 May 2024
- 00:29:17 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1717144679; x=1717749479;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=BMwLestZgmk4mqZillFQkfuSiKmx8+iHR4IW4Az53nU=;
+        b=e2MsJOWnjC2OTlhzuUwZCUZtTfYfAMi/reDKxtKCqYwhEPPbEN9i4CHEL8WAGdPRDV
+         1KxkcZwj232YI/2oFdC8WVCAV8IfeMvWo1+H6GAnm4PU4hQHJD2fYKGPSFUayNKJPH/W
+         hzMg2K60ZrfQqiDW78M7PWvWLP25SX/66Ex/HRR16eX0IxS2AUCZtxuiWADyG3/3e+/+
+         zxLRMySDE5hP7+QzH9K5qbYxxtHBJCLtqZcd09KHoSGZhDam0+eIZlWaQWEqDBrZ5Ws1
+         t+tV7PeFkqLKVLakvc23fr00nfxGotlVGCDyfa6yJJF1V5ngHNCA6HFez1rrF/5qR7VW
+         5KSg==
+X-Forwarded-Encrypted: i=1; AJvYcCX2f3jRBBZgK6Lvrb0i/8t+okuwRyJ1VJuooF8bUg946DhmJ/TF83u81G4n/lLLQ5fUN+VVVKyQDMhxJnPIAQdmN5WxqwZ4L4tSyYdsdIUywQz+
+X-Gm-Message-State: AOJu0YzfmOYtvju1nCiP2xzb+4cqwkSD8RXQQIJc4gec5czbJxR4KsBA
+	BO7bCKQ2ycL6TNteKS0Uts105BBgj2BRT+ClW5YXcf22xSyslghc93s2kbIYFw==
+X-Google-Smtp-Source: AGHT+IHVF/CjYv1gYu9lVMBUNy41C2j/6h4MXrfx+yak3WHwDeUdVuFOe+Oz/lM84SJ3D8ebAql2BQ==
+X-Received: by 2002:a17:902:c403:b0:1f4:ac56:3d15 with SMTP id d9443c01a7336-1f636fedfbcmr13329195ad.15.1717144679140;
+        Fri, 31 May 2024 01:37:59 -0700 (PDT)
+Received: from yuanhsinte.c.googlers.com (198.180.199.104.bc.googleusercontent.com. [104.199.180.198])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-1f63240379fsm11057545ad.252.2024.05.31.01.37.56
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 31 May 2024 01:37:58 -0700 (PDT)
+From: Hsin-Te Yuan <yuanhsinte@chromium.org>
+Date: Fri, 31 May 2024 08:37:54 +0000
+Subject: [PATCH RFT] ASoC: mediatek: mt8183-da7219-max98357: Fix kcontrol
+ name collision
 MIME-Version: 1.0
-References: <20240530083513.4135052-1-wenst@chromium.org> <20240530083513.4135052-2-wenst@chromium.org>
- <20240530-revisit-profanity-889f1bcae21a@spud>
-In-Reply-To: <20240530-revisit-profanity-889f1bcae21a@spud>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Fri, 31 May 2024 15:29:06 +0800
-Message-ID: <CAGXv+5F=AEE7t=YQ0hNGtV9rbVBm75D=ftJdZKwD_JmUW9gQWQ@mail.gmail.com>
-Subject: Re: [PATCH 1/6] dt-bindings: clock: mediatek: Add mt8173 mfgtop
-To: Conor Dooley <conor@kernel.org>
-Cc: Frank Binns <frank.binns@imgtec.com>, Matt Coster <matt.coster@imgtec.com>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, David Airlie <airlied@gmail.com>, 
-	Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org, 
-	linux-clk@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20240531-da7219-v1-1-ac3343f3ae6a@chromium.org>
+X-B4-Tracking: v=1; b=H4sIAGGMWWYC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
+ vPSU3UzU4B8JSMDIxMDU2ND3ZREcyNDS10jIwtDAwtTC2OLRFMloOKCotS0zAqwQdFKQW4hSrG
+ 1tQABn+CFXQAAAA==
+To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Alper Nebi Yasak <alpernebiyasak@gmail.com>
+Cc: linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Hsin-Te Yuan <yuanhsinte@chromium.org>
+X-Mailer: b4 0.12.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240531_002920_702621_73B67094 
-X-CRM114-Status: GOOD (  20.94  )
+X-CRM114-CacheID: sfid-20240531_013802_021550_B748A762 
+X-CRM114-Status: GOOD (  15.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,110 +96,79 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, May 30, 2024 at 11:43=E2=80=AFPM Conor Dooley <conor@kernel.org> wr=
-ote:
->
-> On Thu, May 30, 2024 at 04:35:00PM +0800, Chen-Yu Tsai wrote:
-> > The MFG (GPU) block on the MT8173 has a small glue layer, named MFG_TOP
-> > in the datasheet, that contains clock gates, some power sequence signal
-> > delays, and other unknown registers that get toggled when the GPU is
-> > powered on.
-> >
-> > The clock gates are exposed as clocks provided by a clock controller,
-> > while the power sequencing bits are exposed as one singular power domai=
-n.
-> >
-> > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> > ---
-> >  .../clock/mediatek,mt8173-mfgtop.yaml         | 71 +++++++++++++++++++
-> >  include/dt-bindings/clock/mt8173-clk.h        |  7 ++
-> >  2 files changed, 78 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt=
-8173-mfgtop.yaml
-> >
-> > diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt8173-mf=
-gtop.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt8173-mfgtop.=
-yaml
-> > new file mode 100644
-> > index 000000000000..03c3c1f8cf75
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/clock/mediatek,mt8173-mfgtop.ya=
-ml
-> > @@ -0,0 +1,71 @@
-> > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> > +%YAML 1.2
-> > +---
-> > +
-> > +$id: http://devicetree.org/schemas/clock/mediatek,mt8173-mfgtop.yaml#
-> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > +
-> > +title: MediaTek MT8173 MFG TOP controller
-> > +
-> > +maintainers:
-> > +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.co=
-m>
-> > +
-> > +description:
-> > +  The MFG TOP glue layer controls various signals going to the MFG (GP=
-U)
-> > +  block on the MT8173.
-> > +
-> > +properties:
-> > +  compatible:
-> > +    const: mediatek,mt8173-mfgtop
-> > +
-> > +  reg:
-> > +    maxItems: 1
-> > +
-> > +  clocks:
-> > +    minItems: 4
->
-> minItems is not needed when minItems =3D=3D maxItems.
+Since "Headphone Switch" kcontrol name has already been used by da7219,
+rename the control name from "Headphone" to "Headphones" to prevent the
+colision. Also, this change makes kcontrol name align with the one in
+mt8186-mt6366-da7219-max98357.c.
 
-Ack.
+Fixes: 9c7388baa2053 ("ASoC: mediatek: mt8183-da7219-max98357: Map missing jack kcontrols")
+Change-Id: I9ae69a4673cd04786b247cc514fdd20f878ef009
+Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
+---
+This patch fix the kcontrol name collision in mt8183-da7219-max98357.c.
+Originally, the "Headphone" kcontrol is added to meet PulseAudio's and
+PipeWire's needs, but that patch was untested. Since I don't have
+either setup, I wonder if someone can test this patch.
+---
+ sound/soc/mediatek/mt8183/mt8183-da7219-max98357.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-> > +    maxItems: 4
-> > +
-> > +  clock-names:
-> > +    items:
-> > +      - const: sys
-> > +      - const: mem
-> > +      - const: core
-> > +      - const: clk26m
-> > +
-> > +  power-domains:
-> > +    maxItems: 1
-> > +
-> > +  '#clock-cells':
-> > +    const: 1
-> > +
-> > +  '#power-domain-cells':
-> > +    const: 0
-> > +
-> > +required:
-> > +  - compatible
-> > +  - reg
-> > +  - clocks
-> > +  - clock-names
-> > +  - power-domains
-> > +  - '#clock-cells'
-> > +  - '#power-domain-cells'
-> > +
-> > +additionalProperties: false
-> > +
-> > +examples:
-> > +  - |
-> > +        #include <dt-bindings/clock/mt8173-clk.h>
-> > +        #include <dt-bindings/power/mt8173-power.h>
-> > +
-> > +        mfgtop: clock-controller@13fff000 {
->
-> The label here is used, so drop it.
+diff --git a/sound/soc/mediatek/mt8183/mt8183-da7219-max98357.c b/sound/soc/mediatek/mt8183/mt8183-da7219-max98357.c
+index acaf81fd6c9b..f848e14b091a 100644
+--- a/sound/soc/mediatek/mt8183/mt8183-da7219-max98357.c
++++ b/sound/soc/mediatek/mt8183/mt8183-da7219-max98357.c
+@@ -31,7 +31,7 @@ struct mt8183_da7219_max98357_priv {
+ 
+ static struct snd_soc_jack_pin mt8183_da7219_max98357_jack_pins[] = {
+ 	{
+-		.pin	= "Headphone",
++		.pin	= "Headphones",
+ 		.mask	= SND_JACK_HEADPHONE,
+ 	},
+ 	{
+@@ -626,7 +626,7 @@ static struct snd_soc_codec_conf mt6358_codec_conf[] = {
+ };
+ 
+ static const struct snd_kcontrol_new mt8183_da7219_max98357_snd_controls[] = {
+-	SOC_DAPM_PIN_SWITCH("Headphone"),
++	SOC_DAPM_PIN_SWITCH("Headphones"),
+ 	SOC_DAPM_PIN_SWITCH("Headset Mic"),
+ 	SOC_DAPM_PIN_SWITCH("Speakers"),
+ 	SOC_DAPM_PIN_SWITCH("Line Out"),
+@@ -634,7 +634,7 @@ static const struct snd_kcontrol_new mt8183_da7219_max98357_snd_controls[] = {
+ 
+ static const
+ struct snd_soc_dapm_widget mt8183_da7219_max98357_dapm_widgets[] = {
+-	SND_SOC_DAPM_HP("Headphone", NULL),
++	SND_SOC_DAPM_HP("Headphones", NULL),
+ 	SND_SOC_DAPM_MIC("Headset Mic", NULL),
+ 	SND_SOC_DAPM_SPK("Speakers", NULL),
+ 	SND_SOC_DAPM_SPK("Line Out", NULL),
+@@ -680,7 +680,7 @@ static struct snd_soc_codec_conf mt8183_da7219_rt1015_codec_conf[] = {
+ };
+ 
+ static const struct snd_kcontrol_new mt8183_da7219_rt1015_snd_controls[] = {
+-	SOC_DAPM_PIN_SWITCH("Headphone"),
++	SOC_DAPM_PIN_SWITCH("Headphones"),
+ 	SOC_DAPM_PIN_SWITCH("Headset Mic"),
+ 	SOC_DAPM_PIN_SWITCH("Left Spk"),
+ 	SOC_DAPM_PIN_SWITCH("Right Spk"),
+@@ -689,7 +689,7 @@ static const struct snd_kcontrol_new mt8183_da7219_rt1015_snd_controls[] = {
+ 
+ static const
+ struct snd_soc_dapm_widget mt8183_da7219_rt1015_dapm_widgets[] = {
+-	SND_SOC_DAPM_HP("Headphone", NULL),
++	SND_SOC_DAPM_HP("Headphones", NULL),
+ 	SND_SOC_DAPM_MIC("Headset Mic", NULL),
+ 	SND_SOC_DAPM_SPK("Left Spk", NULL),
+ 	SND_SOC_DAPM_SPK("Right Spk", NULL),
 
-Assume you mean _not_ used. Dropping. :D
+---
+base-commit: 4a4be1ad3a6efea16c56615f31117590fd881358
+change-id: 20240531-da7219-2281085838a5
 
-> Otherwise,
-> Reviewed-by: Conor Dooley <conor.dooley@microchip.com>
+Best regards,
+-- 
+Hsin-Te Yuan <yuanhsinte@chromium.org>
 
-Thanks!
 
