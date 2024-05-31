@@ -4,86 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D915C27C50
-	for <linux-mediatek@archiver.kernel.org>; Fri, 31 May 2024 20:37:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0303C25B75
+	for <linux-mediatek@archiver.kernel.org>; Fri, 31 May 2024 21:51:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
-	From:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=a9B0ojTRdLVSPqZj4HL0mnMQ3o0C/0sYD5JK6+HE7f4=; b=Fb7AaSV8KvBxUjT4frYkiYtBjY
-	7uyORwFLuqhHzao2NgN6Pp2pWXCUqrcbLQsXplsMcVLKvoOT45bEeYFp7JD80Zhvyt0XSwPZyLq9m
-	x5aqX15uTqKgFNUd34v/gLKxMDqNengkxQFsyRcSbL9OdWV1I5zcVIDcCRel9bnqK2pxdtDrDPc2e
-	/TBSGxiy1Ms3d5i6B+/53crSk1oXPR+0JG5++4y3+dbRCSkJqeF+dEc/eZzhkAC4hl9B2dRPwbBAN
-	+HmttowTHUTZUcKRdJ+hwiE2bCFT3klXGcqBBJWbWQx0S6UXMZ1R7G6rtJbaWr5Wx74ptQHj494V3
-	7wvXg/zw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=seSUTRRGhsxF1oRs+boO/6Tfbiu/AtXgg4hjQH7fMig=; b=iAxgqKDJVbOhBVk5zVXwiuG9yQ
+	C58ulXbnjRwufMcRgQckvdmXdPZgDTQCXititg9QfIuw5VaKq4BQUxbeymmzK5uVC1I7ciTohimhU
+	VpJq7V2qE0irFXjYRc408GuCi+q8Xvkw1RPKkywUg824oeXdmEnD+auPQIwzEG6vTJKswudc4Dh92
+	P8rgY9ZbWCCnGjdN5xmgnJq27OifyNst+7K65nTbaQUBLp4DkjdyiZsJUSi/T9yhCymgnXxds8dTh
+	NR5khsaCWy5ysl3kciTlLV5q+DMLwCGE53TDAvN7aroLLmYsgEAHWIQOkcthiXtD+7RpXS+O43e+q
+	IVCN4BYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sD90e-0000000BOob-2D7r;
-	Fri, 31 May 2024 20:37:56 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1sDA9x-0000000BXxo-2NZz;
+	Fri, 31 May 2024 21:51:37 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sD90Y-0000000BOlL-2UfW;
-	Fri, 31 May 2024 20:37:53 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 0B1A2CE1A9F;
-	Fri, 31 May 2024 20:37:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 3C342C116B1;
-	Fri, 31 May 2024 20:37:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1717187866;
-	bh=3TZNScVbrXSoesw2SWXp2AE9mBMjCfX0SRtPx+bRQhs=;
-	h=From:Subject:Date:To:Cc:Reply-To:From;
-	b=s09IE9TH7+7NX4fGYwfR697ra4WjhBGjhumR15erT2ntA3kBRBxfo8cwZBp9izirt
-	 rLPvAZ75ChCKH6G4Dh2hC33YUb08V5Q+LHgXn3Za+QLufN0UoGRIUHCKQKIQboF+5Z
-	 OJ6enNV/jsSDVMUDATB9Unothn2vdobk2AUPDeE9fLvjDwfXAH8bdDVV2Pq3M7y9Z+
-	 c2NSjSnwQhP9I6c/wTlfPOM/hIgC3fOykjWtuh/0M/hjlsh/ER8YdvUIMOIBRYthcA
-	 Fk2XwDSoIZYhctH1hKcW1iP5zuc3Ug7sF/bCs84AFLV5o1sL5mWhnMNTTvdl2qWT9e
-	 04IEI24/H0NyQ==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2319CC25B75;
-	Fri, 31 May 2024 20:37:46 +0000 (UTC)
-From: Sam Ravnborg via B4 Relay <devnull+sam.ravnborg.org@kernel.org>
-Subject: [PATCH 0/2] drm bridge: drop drm_bridge_chain_mode_fixup.
-Date: Fri, 31 May 2024 22:37:44 +0200
-Message-Id: <20240531-bridge_chain_mode-v1-0-8b49e36c5dd3@ravnborg.org>
+	id 1sDA9u-0000000BXuw-2Aab;
+	Fri, 31 May 2024 21:51:35 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1717192287;
+	bh=04+WeNiKlZeRvQNUcqF3z/qfK0uGdQPsEySldyyd/QE=;
+	h=From:Date:Subject:To:Cc:From;
+	b=KTACTn4QyLzhjtURNz0GjuGW8Y0d56XUFT9jEe1aFuXv59WRB+MkgToQwUTV7Gcoc
+	 ucHZWhCfGhNTmPcId6sBnT5AJLYdErTgSy55+/LpZsje9MWONalK80s7uo22HP9x6K
+	 UPcLZT+PYnw9i1c3UDa32oG6HBWctx6340MIC5JX/g5MCymPOe4asWqDdODXlNoLUm
+	 UoNGHrJcUaumiLBM2wsFlxm12AJKpcsFmOiAjV+HPTNn1G0QmzY1Be8ENRpB1YcZK+
+	 YuX8dVOcZQ3aMVyhu1cpL0IUxQhpOKc92lX3Jr5FN+rT6B3pLENIltxJJaZqalgYFT
+	 7PcmATw6Dn98g==
+Received: from [192.168.1.231] (zone.collabora.co.uk [167.235.23.81])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 754AA3780EC6;
+	Fri, 31 May 2024 21:51:25 +0000 (UTC)
+From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+Date: Fri, 31 May 2024 17:51:09 -0400
+Subject: [PATCH] arm64: dts: mediatek: cherry: Specify pull resistance for
+ RSEL GPIOs
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIABg1WmYC/x2MUQqAIBAFrxL7nWBWoF0lIqp92X5koRBBdPekz
- 2GYeSghChJ1xUMRlyQ5QoaqLGjZpuChhDOT0abRbV2pOQp7jFlKGPeDoRzYtsbCmYUpd2fEKvf
- /7If3/QDT/D+mYwAAAA==
-To: dri-devel@lists.freedesktop.org, 
- Andrzej Hajda <andrzej.hajda@intel.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>
-Cc: Sam Ravnborg <sam@ravnborg.org>, Maxime Ripard <mripard@kernel.org>, 
- Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, 
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
+Content-Transfer-Encoding: 8bit
+Message-Id: <20240531-tomato-rsel-gpio34-35-fix-v1-1-64ab2545f182@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAExGWmYC/x2MQQqAIBAAvyJ7bkFTKfpKdBDbaqFSNCKQ/p50n
+ IGZApkSU4ZBFEh0c+ZwVlCNAL+5cyXkuTK0sjXSaoVXONwVMGXacY0ctEFtceEHVW+dn520XnV
+ Q+5io6v89Tu/7AUpzSuprAAAA
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
  Matthias Brugger <matthias.bgg@gmail.com>, 
- Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, 
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@linux.ie>, 
- Daniel Vetter <daniel@ffwll.ch>
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, 
+ =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1717187864; l=888;
- i=sam@ravnborg.org; s=20230107; h=from:subject:message-id;
- bh=3TZNScVbrXSoesw2SWXp2AE9mBMjCfX0SRtPx+bRQhs=;
- b=RJEgq3whBcLtGPUqO61RcGUeDm3zjIZl6CXwG2rw8fjT9OIY0boyiUXJaUSs/arIEDMtutVOk/RW
- 0rYZJj4HBkh7CmMlGVs/q7tOwueKNcbyRkN/Pl8QH21RCSMlvz61
-X-Developer-Key: i=sam@ravnborg.org; a=ed25519;
- pk=R0+pqV7BRYOAeOIGkyOrSNke7arx5y3LkEuNi37YEyU=
-X-Endpoint-Received: by B4 Relay for sam@ravnborg.org/20230107 with
- auth_id=22
-X-Original-From: Sam Ravnborg <sam@ravnborg.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240531_133751_243377_C8C30D5E 
-X-CRM114-Status: UNSURE (   7.06  )
+X-CRM114-CacheID: sfid-20240531_145134_748510_0123E5E3 
+X-CRM114-Status: UNSURE (   9.51  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -96,37 +78,113 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: sam@ravnborg.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-I had a few bridge related patches in an old branch.
+GPIOs 34 and 35 on MT8195 are of type MTK_PULL_PU_PD_RSEL_TYPE, meaning
+not only can they be configured as pull-up or pull-down, but the pull
+resistance can also be configured.
 
-They were last posted here almost one year ago:
-https://lore.kernel.org/dri-devel/20220717174454.46616-1-sam@ravnborg.org/
+The current bias setting however doesn't specify a resistance value,
+resulting on the following errors:
 
-The following two patches gets rid of drm_bridge_chain_mode_fixup.
-The patches was already rb / ab - but due to the age a repost is
-due before applying the patches.
+mt8195-pinctrl 10005000.pinctrl: Not support rsel value 1 Ohm for pin = 34 (GPIO34)
+mt8195-pinctrl 10005000.pinctrl: Not support rsel value 1 Ohm for pin = 35 (GPIO35)
 
-	Sam
+Specify the pull resistance for those GPIOs to fix the errors.
+
+Fixes: 5bf7dabe40f2 ("arm64: dts: mediatek: cherry: Document gpios and add default pin config")
+Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8195-cherry-dojo-r1.dts   | 11 ++++++++---
+ arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dts | 11 ++++++++---
+ arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r3.dts | 11 ++++++++---
+ 3 files changed, 24 insertions(+), 9 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry-dojo-r1.dts b/arch/arm64/boot/dts/mediatek/mt8195-cherry-dojo-r1.dts
+index 88123842c818..49664de99b88 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195-cherry-dojo-r1.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry-dojo-r1.dts
+@@ -82,12 +82,17 @@ &pio_default {
+ 	pins-low-power-hdmi-disable {
+ 		pinmux = <PINMUX_GPIO31__FUNC_GPIO31>,
+ 			 <PINMUX_GPIO32__FUNC_GPIO32>,
+-			 <PINMUX_GPIO33__FUNC_GPIO33>,
+-			 <PINMUX_GPIO34__FUNC_GPIO34>,
+-			 <PINMUX_GPIO35__FUNC_GPIO35>;
++			 <PINMUX_GPIO33__FUNC_GPIO33>;
+ 		input-enable;
+ 		bias-pull-down;
+ 	};
++
++	pins-low-power-hdmi-rsel-disable {
++		pinmux = <PINMUX_GPIO34__FUNC_GPIO34>,
++			 <PINMUX_GPIO35__FUNC_GPIO35>;
++		input-enable;
++		bias-pull-down = <75000>;
++	};
+ };
+ 
+ &sound {
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dts b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dts
+index 2fe20e0dad83..2d6522c144b7 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dts
+@@ -19,13 +19,18 @@ &pio_default {
+ 	pins-low-power-hdmi-disable {
+ 		pinmux = <PINMUX_GPIO31__FUNC_GPIO31>,
+ 			 <PINMUX_GPIO32__FUNC_GPIO32>,
+-			 <PINMUX_GPIO33__FUNC_GPIO33>,
+-			 <PINMUX_GPIO34__FUNC_GPIO34>,
+-			 <PINMUX_GPIO35__FUNC_GPIO35>;
++			 <PINMUX_GPIO33__FUNC_GPIO33>;
+ 		input-enable;
+ 		bias-pull-down;
+ 	};
+ 
++	pins-low-power-hdmi-rsel-disable {
++		pinmux = <PINMUX_GPIO34__FUNC_GPIO34>,
++			 <PINMUX_GPIO35__FUNC_GPIO35>;
++		input-enable;
++		bias-pull-down = <75000>;
++	};
++
+ 	pins-low-power-pcie0-disable {
+ 		pinmux = <PINMUX_GPIO19__FUNC_GPIO19>,
+ 			 <PINMUX_GPIO20__FUNC_GPIO20>,
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r3.dts b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r3.dts
+index dd294ca98194..9049d362a5e0 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r3.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r3.dts
+@@ -20,13 +20,18 @@ &pio_default {
+ 	pins-low-power-hdmi-disable {
+ 		pinmux = <PINMUX_GPIO31__FUNC_GPIO31>,
+ 			 <PINMUX_GPIO32__FUNC_GPIO32>,
+-			 <PINMUX_GPIO33__FUNC_GPIO33>,
+-			 <PINMUX_GPIO34__FUNC_GPIO34>,
+-			 <PINMUX_GPIO35__FUNC_GPIO35>;
++			 <PINMUX_GPIO33__FUNC_GPIO33>;
+ 		input-enable;
+ 		bias-pull-down;
+ 	};
+ 
++	pins-low-power-hdmi-rsel-disable {
++		pinmux = <PINMUX_GPIO34__FUNC_GPIO34>,
++			 <PINMUX_GPIO35__FUNC_GPIO35>;
++		input-enable;
++		bias-pull-down = <75000>;
++	};
++
+ 	pins-low-power-pcie0-disable {
+ 		pinmux = <PINMUX_GPIO19__FUNC_GPIO19>,
+ 			 <PINMUX_GPIO20__FUNC_GPIO20>,
 
 ---
-Sam Ravnborg (2):
-      drm/mediatek: Drop chain_mode_fixup call in mode_valid()
-      drm/bridge: Drop drm_bridge_chain_mode_fixup
-
- drivers/gpu/drm/drm_bridge.c        | 37 -------------------------------------
- drivers/gpu/drm/mediatek/mtk_hdmi.c | 11 -----------
- include/drm/drm_bridge.h            |  3 ---
- 3 files changed, 51 deletions(-)
----
-base-commit: c9402efe492bb46ccbf94fedc4783eb8f8747567
-change-id: 20240531-bridge_chain_mode-9ed8528e92cd
+base-commit: 0e1980c40b6edfa68b6acf926bab22448a6e40c9
+change-id: 20240531-tomato-rsel-gpio34-35-fix-185acda05c17
 
 Best regards,
 -- 
-Sam Ravnborg <sam@ravnborg.org>
-
+Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
 
