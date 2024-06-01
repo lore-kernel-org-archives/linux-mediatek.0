@@ -4,71 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47D46C25B76
-	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Jun 2024 12:51:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50812C25B76
+	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Jun 2024 15:33:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+cYZV7E0s1zc+vxR1Gm7YvUbw/ud5fFPLK8v5yQhzYQ=; b=rzErvE2hjrYXxb6ypyuRS48GKa
-	Ms+u2gBKUkT98jxMfIcPNO8hAv4+sgGudBXJLXZwnYpDsu/1m8azG3ElF9QOLM50IeSWzjT3udB8P
-	L4zdI/LxnpmDEvbw3nAtRBfkvxbpGxIgav/nbsik170QaWuaT6dhYD6pUBf4kvb/yHCkOYN19Cp7z
-	DMUwTJvVRdJ2lG4k+iWsceMh++T2UZA2EPrCwCcRavrJVylboOswJo5zbi22fzfObEssg0PSWm0OU
-	Kaa2pSmk6u6u39lyefgLoZshteHhGzN4NYG38/rBrfmZjon0VWmoYe68ZyF+oIkBk0Zu9kW0GpYU2
-	aq/X6cLw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=l1AFRxEyRCAg+MdspwJSv1aPO94LzeCd6LCBLhdlZkg=; b=iJGzdwHhIMl5rRjhrFNS/cY96y
+	zFf5G4ybDs8PWUeG8vFUp8YomhJNaGyx9FfhHasMps4dSk/1L93PkgEUz3tmim3AptmzsqyXYkkmU
+	woLHIu4zWo0LTdAU//XQdn1OBQj9cOuebfC0U4fj2r2vzCs2eICkkXj6gJCl3PpdXExpL0a357CKE
+	Z7cTIngWYpYM3CgFTSQL7z3olZJCr8pqXKjKaXlFNM/fL9PpW9KXUT7/IxdL30itCOHMtQOMY7erA
+	6AjgYfLsYqlGY8DUG0bNPxR7zAdvlMDkIWHyzmDXfoJWclXSM2iusCx2yt4lP3TC9BH2Bp5Kb+0r4
+	RNDAQBcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sDOCd-0000000CcOO-17V5;
-	Sat, 01 Jun 2024 12:51:19 +0000
+	id 1sDQjC-0000000CtNY-1FEt;
+	Sat, 01 Jun 2024 15:33:06 +0000
 Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sDOCZ-0000000CcNa-0TIq;
-	Sat, 01 Jun 2024 12:51:16 +0000
+	id 1sDQj7-0000000CtMP-1jzX;
+	Sat, 01 Jun 2024 15:33:03 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id DD2E2CE10B6;
-	Sat,  1 Jun 2024 12:51:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 58518C116B1;
-	Sat,  1 Jun 2024 12:51:07 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 782FFCE0176;
+	Sat,  1 Jun 2024 15:32:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2D616C116B1;
+	Sat,  1 Jun 2024 15:32:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1717246271;
-	bh=IzVE8C5YnZqN4O/Tp+wPp3Yj9q5vgoAeBWNn9VqOA40=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ugZ44SuLkf2nnIYZlKqk7L03OHlHheoG4Me5zcNB7IszGH03C2Mx7je8pWFwWl9xj
-	 V2ZZowVtql7AsGfCxzRDb+NgzH3t2d/qKQ2f2sdjeYSpF4GDVLHCsKBAVl+sNlcR6s
-	 dnlheMQuFIXUIpaMMiv+qZLZ73qEtYjTXy3MYot3lnIUkr4XHWOH2uoGigf8ooMLjd
-	 SMShVhenf3y/P7QVCfB67ncRbUGP3Th0a+jqhQzs+rBqw7aASG9Qg1wWnRmQtTeY/q
-	 RX0sFMVXhPS7CsGPaO7ASsDQ6bXc3neZuCOLLMsD6sSLJ6SyQ/2kTznDa8/LItddZ2
-	 jkj8r+Ww1HPDw==
-Date: Sat, 1 Jun 2024 13:51:05 +0100
-From: Simon Horman <horms@kernel.org>
-To: Sky Huang <SkyLake.Huang@mediatek.com>
-Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Qingfang Deng <dqfext@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Steven Liu <Steven.Liu@mediatek.com>
-Subject: Re: [PATCH net-next v5 5/5] net: phy: add driver for built-in 2.5G
- ethernet PHY on MT7988
-Message-ID: <20240601125105.GJ491852@kernel.org>
-References: <20240530034844.11176-1-SkyLake.Huang@mediatek.com>
- <20240530034844.11176-6-SkyLake.Huang@mediatek.com>
+	s=k20201202; t=1717255975;
+	bh=4FoTUy/jB2ewyL/BKItSSopy5nZtqbaENV3Zmn4IIPo=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=tYYYK70Y1VfxXdhu8HJtcbzI9ZeIrOMGIcxacypG0pty+n750VXmCTkKtlqXNdcL8
+	 cBULeL3QxhweboRE8QnJI8c6Ow8u1575EB87Rl9ybjik4e9w1VVy4zJ+9Dw67PpBrY
+	 dje19reIi5Z+ldsxCDGxzNQ6ObYl/bg4p20cKBbJU0EYDYb8ZXgjhE5ZvNoXFbN+9T
+	 n6qRuLKuCwhdN0MeOHomJgax/9qsE1/LYQqfaa6WIgaSIPkbrt9MZZM0qR1XrT9Eyx
+	 KZ1xQvuRIZ58vzLgv6V4EqWBuwN1hfNiDtFC4P2C/JeJW3W8coFLR9oQr9KSoiUwGW
+	 4rXpMfC3DhCEA==
+Message-ID: <c2b97c8e-177e-4169-b001-ab0e3303734f@kernel.org>
+Date: Sat, 1 Jun 2024 17:32:48 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240530034844.11176-6-SkyLake.Huang@mediatek.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1 1/4] dt-bindings: iio: adc: Add MediaTek MT6359 PMIC
+ AUXADC
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ jic23@kernel.org
+Cc: lars@metafoo.de, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, matthias.bgg@gmail.com, lee@kernel.org,
+ andy@kernel.org, nuno.sa@analog.com, bigunclemax@gmail.com,
+ dlechner@baylibre.com, marius.cristea@microchip.com,
+ marcelo.schmitt@analog.com, fr0st61te@gmail.com, mitrutzceclan@gmail.com,
+ mike.looijmans@topic.nl, marcus.folkesson@gmail.com,
+ linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, kernel@collabora.com
+References: <20240530093410.112716-1-angelogioacchino.delregno@collabora.com>
+ <20240530093410.112716-2-angelogioacchino.delregno@collabora.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <20240530093410.112716-2-angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240601_055115_557160_3DF9E9FA 
-X-CRM114-Status: GOOD (  31.43  )
+X-CRM114-CacheID: sfid-20240601_083301_856467_F66F25CE 
+X-CRM114-Status: GOOD (  17.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,187 +125,83 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, May 30, 2024 at 11:48:44AM +0800, Sky Huang wrote:
-> From: "SkyLake.Huang" <skylake.huang@mediatek.com>
+On 30/05/2024 11:34, AngeloGioacchino Del Regno wrote:
+> Add a new binding for the MT6350 Series (MT6357/8/9) PMIC AUXADC,
+> providing various ADC channels for both internal temperatures and
+> voltages, audio accessory detection (hp/mic/hp+mic and buttons,
+> usually on a 3.5mm jack) other than some basic battery statistics
+> on boards where the battery is managed by this PMIC.
 > 
-> v1:
-> Add support for internal 2.5Gphy on MT7988. This driver will load
-> necessary firmware, add appropriate time delay and figure out LED.
-> Also, certain control registers will be set to fix link-up issues.
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>  .../iio/adc/mediatek,mt6359-auxadc.yaml       | 43 +++++++++++++++++++
+>  .../iio/adc/mediatek,mt6357-auxadc.h          | 21 +++++++++
+>  .../iio/adc/mediatek,mt6358-auxadc.h          | 22 ++++++++++
+>  .../iio/adc/mediatek,mt6359-auxadc.h          | 22 ++++++++++
+>  4 files changed, 108 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/iio/adc/mediatek,mt6359-auxadc.yaml
+>  create mode 100644 include/dt-bindings/iio/adc/mediatek,mt6357-auxadc.h
+>  create mode 100644 include/dt-bindings/iio/adc/mediatek,mt6358-auxadc.h
+>  create mode 100644 include/dt-bindings/iio/adc/mediatek,mt6359-auxadc.h
 > 
-> v2:
-> 1. Move md32_en_cfg_base & pmb_addr detection in probe function.
-> 2. Do not read PMB & MD32_EN_CFG base addresses from dts. We won't
-> change that from board to board. Leave them in driver code. Also,
-> release those addresses after firmware is triggered.
-> 3. Remove half duplex code which leads to ambiguity. Those are for
-> testing & developing previously.
-> 4. Use correct BMCR definitions.
-> 5. Correct config_aneg / get_features / read_status functions.
-> 6. Change mt7988_2p5ge prefix to mt798x_2p5ge in case that our next
-> platform uses this 2.5Gphy driver.
-> 
-> v3:
-> 1. Add range check for firmware.
-> 2. Fix c45_ids.mmds_present in probe function.
-> 3. Still use genphy_update_link() in read_status because
-> genphy_c45_read_link() can't correct detect link on this phy.
-> 
-> v4:
-> 1. Move firmware loading function to mt798x_2p5ge_phy_load_fw()
-> 2. Add AN disable warning in mt798x_2p5ge_phy_config_aneg()
-> 3. Clarify the HDX comments in mt798x_2p5ge_phy_get_features()
-> 
-> v5:
-> 1. Move md32_en_cfg_base & pmb_addr to local variables to achieve
-> symmetric code.
-> 2. Print out firmware date code & version.
-> 3. Don't return error if LED pinctrl switching fails. Also, add
-> comments to this unusual operations.
-> 4. Return -EOPNOTSUPP for AN off case in config_aneg().
-> 
-
-Hi Sky,
-
-This is a somewhat unusual way to arrange a patch description.
-
-Usually the description describes the change, particularly why
-the change is being made.
-
-While the per-version changes are listed below the scissors ("---").
-
-> Signed-off-by: SkyLake.Huang <skylake.huang@mediatek.com>
-
-...
-
-> diff --git a/drivers/net/phy/mediatek/mtk-2p5ge.c b/drivers/net/phy/mediatek/mtk-2p5ge.c
-
-...
-
-> +static int mt798x_2p5ge_phy_load_fw(struct phy_device *phydev)
-> +{
-> +	struct mtk_i2p5ge_phy_priv *priv = phydev->priv;
-> +	void __iomem *md32_en_cfg_base, *pmb_addr;
-> +	struct device *dev = &phydev->mdio.dev;
-> +	const struct firmware *fw;
-> +	int ret, i;
-> +	u16 reg;
+> diff --git a/Documentation/devicetree/bindings/iio/adc/mediatek,mt6359-auxadc.yaml b/Documentation/devicetree/bindings/iio/adc/mediatek,mt6359-auxadc.yaml
+> new file mode 100644
+> index 000000000000..dd6c331905cf
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/iio/adc/mediatek,mt6359-auxadc.yaml
+> @@ -0,0 +1,43 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/iio/adc/mediatek,mt6359-auxadc.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
 > +
-> +	if (priv->fw_loaded)
-> +		return 0;
+> +title: MediaTek MT6350 series PMIC AUXADC
 > +
-> +	pmb_addr = ioremap(MT7988_2P5GE_PMB_BASE, MT7988_2P5GE_PMB_LEN);
-> +	if (!pmb_addr)
-> +		return -ENOMEM;
-> +	md32_en_cfg_base = ioremap(MT7988_2P5GE_MD32_EN_CFG_BASE, MT7988_2P5GE_MD32_EN_CFG_LEN);
-
-nit: Networking still prefers code to be 80 columns wide or less.
-     It looks like that can be trivially achieved here and
-     several other places in this patch.
-
-     OTOH, I don't think there is no need to break lines to meet this
-     requirement where it is particularly awkward to do so.
-
-     Flagged by checkpatch.pl --max-line-length=80
-
-> +	if (!md32_en_cfg_base) {
-> +		ret = -ENOMEM;
-> +		goto free_pmb;
-> +	}
+> +maintainers:
+> +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > +
-> +	ret = request_firmware(&fw, MT7988_2P5GE_PMB, dev);
-> +	if (ret) {
-> +		dev_err(dev, "failed to load firmware: %s, ret: %d\n",
-> +			MT7988_2P5GE_PMB, ret);
-> +		goto free;
-> +	}
+> +description:
+> +  The Auxiliary Analog/Digital Converter (AUXADC) is an ADC found
+> +  in some MediaTek PMICs, performing various PMIC related measurements
+> +  such as battery and PMIC internal voltage regulators temperatures,
+> +  accessory detection resistance (usually, for a 3.5mm audio jack)
+> +  other than voltages for various PMIC internal components.
 > +
-> +	if (fw->size != MT7988_2P5GE_PMB_SIZE) {
-> +		dev_err(dev, "Firmware size 0x%zx != 0x%x\n",
-> +			fw->size, MT7988_2P5GE_PMB_SIZE);
-> +		ret = -EINVAL;
-> +		goto free;
-> +	}
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - mediatek,mt6357-auxadc
+> +      - mediatek,mt6358-auxadc
+> +      - mediatek,mt6359-auxadc
 > +
-> +	reg = readw(md32_en_cfg_base);
-> +	if (reg & MD32_EN) {
-> +		phy_set_bits(phydev, MII_BMCR, BMCR_RESET);
-> +		usleep_range(10000, 11000);
-> +	}
-> +	phy_set_bits(phydev, MII_BMCR, BMCR_PDOWN);
+> +  "#io-channel-cells":
+> +    const: 1
 > +
-> +	/* Write magic number to safely stall MCU */
-> +	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x800e, 0x1100);
-> +	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x800f, 0x00df);
-> +
-> +	for (i = 0; i < MT7988_2P5GE_PMB_SIZE - 1; i += 4)
-> +		writel(*((uint32_t *)(fw->data + i)), pmb_addr + i);
-> +	release_firmware(fw);
-> +	dev_info(dev, "Firmware date code: %x/%x/%x, version: %x.%x\n",
-> +		 be16_to_cpu(*((uint16_t *)(fw->data + MT7988_2P5GE_PMB_SIZE - 8))),
+> +additionalProperties: false
 
-If the data at fw->data + MT7988_2P5GE_PMB_SIZE - 8 is a 16-bit
-Big Endian value, then I think the cast should be to __be16 rather
-than uint16_t (and in any case u16 would be preferred to uint16_t
-as this is Kernel code).
-
-Flagged by Sparse.
-
-> +		 *(fw->data + MT7988_2P5GE_PMB_SIZE - 6),
-> +		 *(fw->data + MT7988_2P5GE_PMB_SIZE - 5),
-> +		 *(fw->data + MT7988_2P5GE_PMB_SIZE - 2),
-> +		 *(fw->data + MT7988_2P5GE_PMB_SIZE - 1));
-> +
-> +	writew(reg & ~MD32_EN, md32_en_cfg_base);
-> +	writew(reg | MD32_EN, md32_en_cfg_base);
-> +	phy_set_bits(phydev, MII_BMCR, BMCR_RESET);
-> +	/* We need a delay here to stabilize initialization of MCU */
-> +	usleep_range(7000, 8000);
-> +	dev_info(dev, "Firmware loading/trigger ok.\n");
-> +
-> +	priv->fw_loaded = true;
-> +
-> +free:
-> +	iounmap(md32_en_cfg_base);
-> +free_pmb:
-> +	iounmap(pmb_addr);
-> +
-> +	return ret ? ret : 0;
-> +}
-
-...
-
-> +static int mt798x_2p5ge_phy_led_blink_set(struct phy_device *phydev, u8 index,
-> +					  unsigned long *delay_on,
-> +					  unsigned long *delay_off)
-> +{
-> +	bool blinking = false;
-> +	int err = 0;
-> +	struct mtk_i2p5ge_phy_priv *priv = phydev->priv;
-
-nit: Please consider arranging local variables in reverse xmas tree order - 
-     longest line to shortest.
-
-     Edward Cree's tool can be helpful:
-     https://github.com/ecree-solarflare/xmastree
+If there is going to be a re-spin, please move this below required: block.
 
 > +
-> +	if (index > 1)
-> +		return -EINVAL;
+> +required:
+> +  - compatible
+> +  - "#io-channel-cells"
 > +
-> +	if (delay_on && delay_off && (*delay_on > 0) && (*delay_off > 0)) {
-> +		blinking = true;
-> +		*delay_on = 50;
-> +		*delay_off = 50;
-> +	}
-> +
-> +	err = mtk_phy_hw_led_blink_set(phydev, index, &priv->led_state, blinking);
-> +	if (err)
-> +		return err;
-> +
-> +	return mtk_phy_hw_led_on_set(phydev, index, &priv->led_state,
-> +				     MTK_2P5GPHY_LED_ON_MASK, false);
-> +}
+> +examples:
+> +  - |
+> +    pmic {
+> +        pmic_adc: adc {
+> +            compatible = "mediatek,mt6359-auxadc";
+> +            #io-channel-cells = <1>;
+> +        };
 
-...
+This suggests that you should grow (make complete) the parent PMIC example.
+
+Actually having this as a separate node is not really needed. Why it
+cannot be just part of the MFD/parent node?
+
+
+Best regards,
+Krzysztof
+
 
