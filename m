@@ -4,81 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50E0EC52D7C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Aug 2024 15:42:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 392F5C531DC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Aug 2024 15:46:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=O1aWP5ST7eabEAmdy9MKRcrR2g/nQXN2UIw338entCE=; b=deWOIORZcLU9ucdDgr6tK1URwl
-	BeDzAiJjqt1CC7rfiHSC9PBLECHbysVSI9DVVnznSzeQJJwurlvlxyY+eUXWMA/T7Of4j3XFCScSl
-	rLiLJPHxM2ygnEC/D2dBeWLcoAvNrtLcUDL+W2cZVQR2Zm/Wb0Ue3M5vc6k3ss80zSW5w9IQ7my8/
-	9XfL6aNBOnI1E8d+yXsSWysCrboeKDOZya5nlYNHVsjbdMug4ut0QWQgKdfxBkMoj4jWwnVc27IHT
-	kNHYhzs7h6t4lZAbbfM3SohHfLllKPm+GV2whxPRzs8OywGHUekNjDbaNuhUHNY4lb4sGtr7rpPti
-	N0yj+z9g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=8KkjefmtEin39SqnU6sUi3qVDiir10Z9IsOx4lfUUgs=; b=0BlmwlIU7USHg7
+	VK29OhgF0I1FXA6GF1uVwlg7VW30Pt8+eiZX+lvvQqnNhgxfvUukz97pm/asdDXIGJ0mvL9EXmpUN
+	nUAMbu8PEQMv97f8YUv5I43ZoBm4fB3z6eszVJOjsuupA6JZZDtd64FNHXchyuZ19/MgwbSxxbQ6B
+	DSqPu7QPLMg4faHPu+qOymXqHKF0PWGPfh6TCw8U4PxhZaBuqnsUphGe/1nBm1UhNdBdnXLEB6IP1
+	bneYTVa7i4Zn28E/k/USQco+eT+B7AftKFH70T63r531+OgKlZp/PpTXSk8LQHHGegzDiWG42EpMP
+	ZUYlee26QzysaEL24WwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shWQj-0000000HM44-3gWI;
-	Fri, 23 Aug 2024 15:42:25 +0000
-Received: from mail-lj1-x22d.google.com ([2a00:1450:4864:20::22d])
+	id 1shWUV-0000000HNHY-3Xne;
+	Fri, 23 Aug 2024 15:46:19 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shWN1-0000000HKx0-3MlH
-	for linux-mediatek@lists.infradead.org;
-	Fri, 23 Aug 2024 15:38:37 +0000
-Received: by mail-lj1-x22d.google.com with SMTP id 38308e7fff4ca-2f3f163e379so35464801fa.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 23 Aug 2024 08:38:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1724427513; x=1725032313; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=O1aWP5ST7eabEAmdy9MKRcrR2g/nQXN2UIw338entCE=;
-        b=C3n8PjI9IiPOu+uzjbgZTcP+hQm/jegJcTChjERnYAzP/nvgoJj6oZP2auRVCTM1wr
-         XNWe0pv+isAWE2NKq3ZkqMonXMjKYTYsjzwV0IYjgfRnbwGnc7C44B8dks55n+snI3Mk
-         1DSj3iYP1L6+dWfhDoAPCjTH2R5ifz3KFFB909VvJC9/bcuS9XESqEbmqSKJb5zZuOZt
-         jbbxL1UfEsfNa9NjNvFQzekz3qJaswk2xmD1BBn5pUn6R9aQjEswwRZx1E+m4pcdPWRV
-         ++B4ebMw+0FDF4TaEWPyGBfzroIb03E9bCQKzbRjS0STpR19PiRk7NzGKWwBWqpDSKFG
-         fwbg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1724427513; x=1725032313;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=O1aWP5ST7eabEAmdy9MKRcrR2g/nQXN2UIw338entCE=;
-        b=eGU6WBd1IFafF7BQzOpCxFFYdYUM1JJFARlidYYMn0YqSVsRMWrX41S0EVC5PVFDMP
-         0o6UN7lekgujsAapT17Nn05SC6UWts7YzVb/gKLYRtGb/hj7tqR3LoQaTnbUj6gZvC/u
-         C/dsj/iWCBVa8Oo2jzsD+dtZlMi8f93EKR7r0obYUGoNGEqwxhVtXbm5NuJkq6cYbGbi
-         V8yIOtvukK+vq1ty9nrPwtG31YzC0avJ/slLYgUs5qi7lMeDdqmNtx9uI4n9tA66Sanw
-         HrUKA/4OlXdg85acvRxFUIJYlUjPz5bc9cSqwffITZFgrGb+vhS0EaAcWKqupufEtPOW
-         CZqA==
-X-Forwarded-Encrypted: i=1; AJvYcCUXb6C+F4MfwmLiYyrc5pbH2StBEDkAAASwUwOceRPbql8j7psc8eFK4ICS0YWALG3JpzyLoQZIHaNNV7IB4w==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyO3LFB0CLx7UVldf9MzOwTRxTUZAFRUMmKjfSjpDKn0zwk1Evp
-	oKUQ1kK7UCH8pqEX69N4tGed+N50bQ5sse894OLINMS81qoHL/SL/Ihupk9qcsgL56sx7pJJzGV
-	mNUSpHsACD1dD8ZPItiEOHMCd/K4YAlmOovDEBQ==
-X-Google-Smtp-Source: AGHT+IGoetHNeUNRdUhqkqZzFJx0tdmOHprFon9EuHG0B3EcAz/iUjVn5fTsqlDFXz4Pq7FWblIoahHetuYR1hUHo0I=
-X-Received: by 2002:a05:6512:b22:b0:52c:ddef:4eb7 with SMTP id
- 2adb3069b0e04-53438846f4cmr2384658e87.20.1724427512959; Fri, 23 Aug 2024
- 08:38:32 -0700 (PDT)
+	id 1sEFjL-00000000RcE-33hs;
+	Mon, 03 Jun 2024 22:00:41 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 02B41CE0F7B;
+	Mon,  3 Jun 2024 22:00:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 54BDEC2BD10;
+	Mon,  3 Jun 2024 22:00:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1717452035;
+	bh=ZMS/4Gp6hXyd9fPwx/y5x+q7VhsaGgJvMHFGFXB2aCI=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=JWil5/qFuymosoPDATfZqx6FJDnMlkeS59q6fSB+oGtZnzLWlZsOYK17IUuX1oHS1
+	 +ZGbOlO5XGTxStebKzleLLdP/ku6ByksYgWD6+z1Mv7KGjnwR3GMzWiuZo1J++YQBe
+	 YnonzpNdWoLK+5fnowMqG8M5MeJ10EV/gsKGvDpIY4wVIBC1HO+F/kfe8gBd+/QboZ
+	 BrnDQ+EAlvw7Yi4J9eZ6M1GbDt3y6+iqhqMKYxUzNtAOVfJ3SN/iHY1B0HdRGk77/Z
+	 OryQ3BNvB0McYwdX86nz7FOZKP/BNHRMgHpGVTqXr+aaBtJCcPNM0ORUNnE3rDopfE
+	 4lfytT5yAufhQ==
+Date: Mon, 3 Jun 2024 17:00:32 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Corey Minyard <minyard@acm.org>, Allen Pais <apais@linux.microsoft.com>, Sebastian Reichel <sebastian.reichel@collabora.com>, Perry Yuan <perry.yuan@amd.com>, Giovanni Cabiddu <giovanni.cabiddu@intel.com>, Herbert Xu <herbert@gondor.apana.org.au>, Nuno Sa <nuno.sa@analog.com>, Guenter Roeck <linux@roeck-us.net>, Randy Dunlap <rdunlap@infradead.org>, Andi Shyti <andi.shyti@kernel.org>, Heiner Kallweit <hkallweit1@gmail.com>, Lee Jones <lee@kernel.org>, Samuel Holland <samuel@sholland.org>, Elad Nachman <enachman@marvell.com>, Arseniy Krasnov <AVKrasnov@sberdevices.ru>, Johannes Berg <johannes.berg@intel.com>, Gregory Greenman <gregory.greenman@intel.com>, Benjamin Berg <benjamin.berg@intel.com>, Bjorn Helgaas <bhelgaas@google.com>, Robert Richter <rrichter@amd.com>, Vinod Koul <vkoul@kernel.org>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, Hans de Goede <hdegoede@redhat.com>, Ilpo =?utf-8?B?SsOkcnZpbmVu?= <ilpo.jarvinen@linux.intel.com>, Nikita Kravets <teackot@gmail.com>, Jiri Slaby <jirislaby@kernel.org>, Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>, Stanley Chang <stanley_chang@realtek.com>, Heikki Krogerus <heikki.krogerus@linux.intel.com>, Abdel Alkuor <abdelalkuor@geotab.com>, Kent Overstreet <kent.overstreet@linux.dev>, Eric Biggers <ebiggers@google.com>, Kees Cook <keescook@chromium.org>, Ingo Molnar <mingo@kernel.org>, "Steven Rostedt (Google)" <rostedt@goodmis.org>, Daniel Bristot de Oliveira <bristot@kernel.org>, Andrew Morton <akpm@linux-foundation.org>, Hugh Dickins <hughd@google.com>, Abel Wu <wuyun.abel@bytedance.com>, John Johansen <john.johansen@canonical.com>, Mimi Zohar <zohar@linux.ibm.com>, Stefan Berger <stefanb@linux.ibm.com>, Roberto Sassu <roberto.sassu@huawei.com>, Eric Snowberg <eric.snowberg@oracle.com>, Takashi Iwai <tiwai@suse.de>, Takashi Sakamoto <o-takashi@sakamocchi.jp>, Jiapeng Chong <jiapeng.chong@linux.alibaba.com>, Mark Brown <broonie@kernel.org>, Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, linuxppc-dev@lists.ozlabs.org, linux-kernel@vger.kernel.org, keyrings@vger.kernel.org, linux-crypto@vger.kernel.org, linux-acpi@vger.kernel.org, linux-ide@vger.kernel.org, openipmi-developer@lists.sourceforge.net, linux-clk@vger.kernel.org, linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org, linux-pm@vger.kernel.org, qat-linux@intel.com, dri-devel@lists.freedesktop.org, intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org, nouveau@lists.freedesktop.org, linux-hwmon@vger.kernel.org, linux-i2c@vger.kernel.org, linux-leds@vger.kernel.org, linux-sunxi@lists.linux.dev, linux-omap@vger.kernel.org, linux-mmc@vger.kernel.org, linux-mtd@lists.infradead.org, netdev@vger.kernel.org, linux-wireless@vger.kernel.org, linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org, linux-gpio@vger.kernel.org, platform-driver-x86@vger.kernel.org, linux-staging@lists.linux.dev, linux-usb@vger.kernel.org, linux-fbdev@vger.kernel.org, linux-bcachefs@vger.kernel.org, linux-hardening@vger.kernel.org, cgroups@vger.kernel.org, linux-trace-kernel@vger.kernel.org, linux-mm@kvack.org, apparmor@lists.ubuntu.com, linux-security-module@vger.kernel.org, linux-integrity@vger.kernel.org, alsa-devel@alsa-project.org, linux-sound@vger.kernel.org, Michael Ellerman <mpe@ellerman.id.au>, Nicholas Piggin <npiggin@gmail.com>, Christophe Leroy <christophe.leroy@csgroup.eu>, "Naveen N. Rao" <naveen.n.rao@linux.ibm.com>, Thomas Gleixner <tglx@linutronix.de>, Ingo Molnar <mingo@redhat.com>, Borislav Petkov <bp@alien8.de>, Dave Hansen <dave.hansen@linux.intel.com>, x86@kernel.org, "H. Peter Anvin" <hpa@zytor.com>, David Howells <dhowells@redhat.com>, "David S. Miller" <davem@davemloft.net>, "Rafael J. Wysocki" <rafael@kernel.org>, Len Brown <lenb@kernel.org>, Sergey Shtylyov <s.shtylyov@omp.ru>, Damien Le Moal <dlemoal@kernel.org>,
+ Niklas Cassel <cassel@kernel.org>, Daniel Scally <djrscally@gmail.com>, Sakari Ailus <sakari.ailus@linux.intel.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Florian Fainelli <florian.fainelli@broadcom.com>, Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Heiko Stuebner <heiko@sntech.de>, Peter De Schrijver <pdeschrijver@nvidia.com>, Prashant Gaikwad <pgaikwad@nvidia.com>, Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, Huang Rui <ray.huang@amd.com>, "Gautham R. Shenoy" <gautham.shenoy@amd.com>, Mario Limonciello <mario.limonciello@amd.com>, Viresh Kumar <viresh.kumar@linaro.org>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, Jani Nikula <jani.nikula@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>, Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, Tvrtko Ursulin <tursulin@ursulin.net>, Karol Herbst <kherbst@redhat.com>, Lyude Paul <lyude@redhat.com>, Danilo Krummrich <dakr@redhat.com>, Jean Delvare <jdelvare@suse.com>, Alexander Shishkin <alexander.shishkin@linux.intel.com>, Pavel Machek <pavel@ucw.cz>, Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, Tony Lindgren <tony@atomide.com>, Adrian Hunter <adrian.hunter@intel.com>, Hu Ziji <huziji@marvell.com>, Ulf Hansson <ulf.hansson@linaro.org>, Miquel Raynal <miquel.raynal@bootlin.com>, Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>, Potnuri Bharat Teja <bharat@chelsio.com>, Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Miri Korenblit <miriam.rachel.korenblit@intel.com>, Kalle Valo <kvalo@kernel.org>, Mahesh J Salgaonkar <mahesh@linux.ibm.com>, Oliver O'Halloran <oohall@gmail.com>, Kishon Vijay Abraham I <kishon@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, JC Kuo <jckuo@nvidia.com>, Andrew Lunn <andrew@lunn.ch>, Gregory Clement <gregory.clement@bootlin.com>, Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Sebastian Reichel <sre@kernel.org>, Daniel Lezcano <daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>, Thinh Nguyen <Thinh.Nguyen@synopsys.com>, Helge Deller <deller@gmx.de>, Brian Foster <bfoster@redhat.com>, Zhihao Cheng <chengzhihao1@huawei.com>, Tejun Heo <tj@kernel.org>, Zefan Li <lizefan.x@bytedance.com>, Johannes Weiner <hannes@cmpxchg.org>, Peter Zijlstra <peterz@infradead.org>, Juri Lelli <juri.lelli@redhat.com>, Vincent Guittot <vincent.guittot@linaro.org>, Dietmar Eggemann <dietmar.eggemann@arm.com>, Ben Segall <bsegall@google.com>, Mel Gorman <mgorman@suse.de>, Daniel Bristot de Oliveira <bristot@redhat.com>, Valentin Schneider <vschneid@redhat.com>, Masami Hiramatsu <mhiramat@kernel.org>, Mathieu Desnoyers <mathieu.desnoyers@efficios.com>, Jason Baron <jbaron@akamai.com>, Jim Cromie <jim.cromie@gmail.com>, Paul Moore <paul@paul-moore.com>, James Morris <jmorris@namei.org>, "Serge E. Hallyn" <serge@hallyn.com>, Dmitry Kasatkin <dmitry.kasatkin@gmail.com>, Clemens Ladisch <clemens@ladisch.de>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, Linus Torvalds <torvalds@linux-foundation.org>
+Subject: Re: [PATCH v1 1/1] treewide: Align match_string() with
+ sysfs_match_string()
+Message-ID: <20240603220032.GA701908@bhelgaas>
 MIME-Version: 1.0
-References: <20240731191312.1710417-23-robh@kernel.org>
-In-Reply-To: <20240731191312.1710417-23-robh@kernel.org>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Fri, 23 Aug 2024 17:38:22 +0200
-Message-ID: <CACRpkdYDn80SnyihbibDaEMf08F19G-uPCd3Pywcie5Dv13eZQ@mail.gmail.com>
-Subject: Re: [PATCH] pinctrl: mediatek: Use of_property_read_bool()
-To: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240603211538.289765-1-andriy.shevchenko@linux.intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240823_083835_844942_EB0D973B 
-X-CRM114-Status: UNSURE (   8.92  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240603_150040_139938_90CE567C 
+X-CRM114-Status: GOOD (  18.23  )
+X-Mailman-Approved-At: Fri, 23 Aug 2024 08:43:04 -0700
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,19 +71,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 31, 2024 at 9:14=E2=80=AFPM Rob Herring (Arm) <robh@kernel.org>=
- wrote:
+On Sun, Jun 02, 2024 at 06:57:12PM +0300, Andy Shevchenko wrote:
+> Make two APIs look similar. Hence convert match_string() to be
+> a 2-argument macro. In order to avoid unneeded churn, convert
+> all users as well. There is no functional change intended.
 
-> Use of_property_read_bool() to read boolean properties rather than
-> of_find_property(). This is part of a larger effort to remove callers
-> of of_find_property() and similar functions. of_find_property() leaks
-> the DT struct property and data pointers which is a problem for
-> dynamically allocated nodes which may be freed.
->
-> Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
+Looks nice, thanks for doing this.
 
-Patch applied!
+> diff --git a/drivers/pci/pcie/aer.c b/drivers/pci/pcie/aer.c
+> index ac6293c24976..2d317c7e1cea 100644
+> --- a/drivers/pci/pcie/aer.c
+> +++ b/drivers/pci/pcie/aer.c
+> @@ -210,7 +210,7 @@ void pcie_ecrc_get_policy(char *str)
+>  {
+>  	int i;
+>  
+> -	i = match_string(ecrc_policy_str, ARRAY_SIZE(ecrc_policy_str), str);
+> +	i = match_string(ecrc_policy_str, str);
+>  	if (i < 0)
+>  		return;
+>  
 
-Yours,
-Linus Walleij
+Acked-by: Bjorn Helgaas <bhelgaas@google.com>	# drivers/pci/
+
+> +++ b/mm/vmpressure.c
+> @@ -388,7 +388,7 @@ int vmpressure_register_event(struct mem_cgroup *memcg,
+>  
+>  	/* Find required level */
+>  	token = strsep(&spec, ",");
+> -	ret = match_string(vmpressure_str_levels, VMPRESSURE_NUM_LEVELS, token);
+> +	ret = match_string(vmpressure_str_levels, token);
+
+VMPRESSURE_NUM_LEVELS looks like it's no longer used?
+
+>  	if (ret < 0)
+>  		goto out;
+>  	level = ret;
+> @@ -396,7 +396,7 @@ int vmpressure_register_event(struct mem_cgroup *memcg,
+>  	/* Find optional mode */
+>  	token = strsep(&spec, ",");
+>  	if (token) {
+> -		ret = match_string(vmpressure_str_modes, VMPRESSURE_NUM_MODES, token);
+> +		ret = match_string(vmpressure_str_modes, token);
+
+Ditto.
+
+>  		if (ret < 0)
+>  			goto out;
+>  		mode = ret;
 
