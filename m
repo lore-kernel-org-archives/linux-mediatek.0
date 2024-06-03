@@ -4,106 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DCF3C25B75
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Jun 2024 12:39:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21B5BC25B76
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Jun 2024 13:13:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IIvfTbGo1kzawCFnZh38qcrPfM+Vjo+5JerHBZYjZgY=; b=U6ocwsS+PJgp/CrTGaM6fssD/o
-	zthlP4q0ngsuT0yihTV9YQsH3ex/VuN9BsYxGvh/78CGcHX7O0HFFJDVirDq0/i7yaWXchnZ+tyTG
-	a7pWKR6I062UQ55+hM0SCP26XmnI77Put2NB0+9HJSbKeFejcqBCPZVb8F/5y3uWlkBtC0PIEpWxh
-	V1rJYUZL3/qmymeECgy4P7P1hibQsuL7aHEZ4HhrTWQHuU+RezJDQaIPsYaJz4ABWXtCRK+BzCZ6q
-	dXd0RLzGQIhsq2aEJ4oEtqRQPjCEE20f3HogEvJol5TSpfh/OQPVtkajpeUL1mzx9tpY/Sez8xReO
-	HN7p5MBg==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=drhVNyG8NrtusYwwo6SRbS2i2Nl9xSveYgoMAmBgJk8=; b=0Pu6sNXLxuMGXHHZg2UmXiYjTN
+	Jwh/zkStmLF5VOzzlQ1gJwO2Jm5cN0jODhyu5CiAAQU7znWW0Yw5t7OX9ILVQDsPXvUC/XrNW4OcH
+	Ntsn2ZSU/92ud82kYPIZxQsTkw9u/jzB5kecMOGu1vpWQqcdb/O3wSUT4r15MpNrKusLjHo1fR07L
+	gRfLoxrZKaIkcF2kpasuXe1BDSO0NJjSAah7gXXjZk976s5ldV6KwVcY+V4FvvW4OeWNYta99RdQc
+	b+8DAjtVT00mpou0pNLsDKjlr+1Ode0unhF0qla3g7hGslsRlV9efmCI316tSlph7KXS3ffIZlpLr
+	LTqdfIjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sE6yC-0000000Gilj-3EW8;
-	Mon, 03 Jun 2024 12:39:24 +0000
-Received: from esa.microchip.iphmx.com ([68.232.154.123])
+	id 1sE7V9-0000000GreU-3X4o;
+	Mon, 03 Jun 2024 13:13:27 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sE6y6-0000000Gij3-381i;
-	Mon, 03 Jun 2024 12:39:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
-  t=1717418358; x=1748954358;
-  h=message-id:date:mime-version:subject:to:cc:references:
-   from:in-reply-to:content-transfer-encoding;
-  bh=LEM9nLCZweC6fzBGd3LiqBJyI0EVR5DWYNV+RHxhfJc=;
-  b=nt0gjnLZwkhqMadgg6Z4IgjxnBNhJXyyN6FVylesspZuBSbUzMQMqQPw
-   thdk0EN89kqXG5bj2vPpB2Qc0anWdscs59ADq1P2BShBbrNe0e6/DF3GM
-   wlCK2vVxjR04gxJxhuAmZz4nPvxlWyr2/I7dM/IBWXdGvOBRyLjnD+OJz
-   JvlFTbA7hlsqocAuGlFbvaPbHIai2mSKURjeKUuISZ9eZ9BpbEOHonkTR
-   DcIQQQsxfyUGeqIxclzao4qP8KAkX25AakzR5BKa621VTV6rizqR6o7PH
-   2/jJOW2Iruh37xEigL1aI8E46sxn9027kEvbB0Fb9Ddy17yfoVTXEwxeW
-   Q==;
-X-CSE-ConnectionGUID: mGTV6IY0SjuqO4B8d/I3Zg==
-X-CSE-MsgGUID: cs2mH/dwScqctcaN/BguNA==
-X-IronPort-AV: E=Sophos;i="6.08,211,1712646000"; 
-   d="scan'208";a="194291692"
-X-Amp-Result: SKIPPED(no attachment in message)
-Received: from unknown (HELO email.microchip.com) ([170.129.1.10])
-  by esa6.microchip.iphmx.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256; 03 Jun 2024 05:39:11 -0700
-Received: from chn-vm-ex04.mchp-main.com (10.10.85.152) by
- chn-vm-ex02.mchp-main.com (10.10.85.144) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35; Mon, 3 Jun 2024 05:38:36 -0700
-Received: from [10.159.227.221] (10.10.85.11) by chn-vm-ex04.mchp-main.com
- (10.10.85.152) with Microsoft SMTP Server id 15.1.2507.35 via Frontend
- Transport; Mon, 3 Jun 2024 05:38:23 -0700
-Message-ID: <7e618af0-51a7-4941-a386-0ac68c66d358@microchip.com>
-Date: Mon, 3 Jun 2024 14:38:22 +0200
+	id 1sE7V6-0000000Grd4-0vwB;
+	Mon, 03 Jun 2024 13:13:26 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 86C57CE0B7E;
+	Mon,  3 Jun 2024 13:13:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A14E1C2BD10;
+	Mon,  3 Jun 2024 13:13:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1717420400;
+	bh=o1YRPJ6qJEZ1CMAFtxumb6TtfEE5pv+lHDiHuw1PFEk=;
+	h=From:To:Cc:Subject:Date:From;
+	b=XqwCPCKX92S0V0n2hk8gqca7Q80siGY7IyYeqsDcDKplKoaLuETUnF5Eb4+hIp8Se
+	 EMjE4Wv98oEVq25AEPIcNhc5Rv4Vp5amzbDKBsi8kieRM2j5opYqvBiRJiJuJ7Gebi
+	 6BrU0o5zCEeM5G73fgw1BHNTLM5dwUoFBXQZILY7sxz6kaSSGiWmWzy2d/rD/xoHEZ
+	 4GQBZp+JvQzEHI+EYhEcTEInAclvA+3A4Qpr9vLKDAqw26NX9kXyo/khVV8ubT6NHr
+	 Uvj+fRvVcl+CtQkpQYsdFC8u1KhyQNUFuBuc4JkOnW5zoUyxBPZygzXtmts3QyjDdk
+	 64SG8oh+K3S8g==
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
+	Gregory Clement <gregory.clement@bootlin.com>,
+	Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Lee Jones <lee@kernel.org>,
+	UNGLinuxDriver@microchip.com,
+	Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+	Miquel Raynal <miquel.raynal@bootlin.com>,
+	Richard Weinberger <richard@nod.at>,
+	Vignesh Raghavendra <vigneshr@ti.com>,
+	Yisen Zhuang <yisen.zhuang@huawei.com>,
+	Salil Mehta <salil.mehta@huawei.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Conor Dooley <conor.dooley@microchip.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-clk@vger.kernel.org,
+	linux-mips@vger.kernel.org,
+	linux-mtd@lists.infradead.org,
+	netdev@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH v2] dt-bindings: mfd: syscon: Add more simple compatibles
+Date: Mon,  3 Jun 2024 08:12:27 -0500
+Message-ID: <20240603131230.136196-2-robh@kernel.org>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 9/9] mmc: Convert from tasklet to BH workqueue
-To: Allen Pais <apais@linux.microsoft.com>, <linux-kernel@vger.kernel.org>
-CC: <tj@kernel.org>, <keescook@chromium.org>, <vkoul@kernel.org>,
-	<marcan@marcan.st>, <sven@svenpeter.dev>, <florian.fainelli@broadcom.com>,
-	<rjui@broadcom.com>, <sbranden@broadcom.com>, <paul@crapouillou.net>,
-	<Eugeniy.Paltsev@synopsys.com>, <manivannan.sadhasivam@linaro.org>,
-	<vireshk@kernel.org>, <Frank.Li@nxp.com>, <leoyang.li@nxp.com>,
-	<zw@zh-kernel.org>, <wangzhou1@hisilicon.com>, <haijie1@huawei.com>,
-	<shawnguo@kernel.org>, <s.hauer@pengutronix.de>, <sean.wang@mediatek.com>,
-	<matthias.bgg@gmail.com>, <angelogioacchino.delregno@collabora.com>,
-	<afaerber@suse.de>, <logang@deltatee.com>, <daniel@zonque.org>,
-	<haojian.zhuang@gmail.com>, <robert.jarzmik@free.fr>, <andersson@kernel.org>,
-	<konrad.dybcio@linaro.org>, <orsonzhai@gmail.com>,
-	<baolin.wang@linux.alibaba.com>, <zhang.lyra@gmail.com>,
-	<patrice.chotard@foss.st.com>, <linus.walleij@linaro.org>, <wens@csie.org>,
-	<jernej.skrabec@gmail.com>, <peter.ujfalusi@gmail.com>, <kys@microsoft.com>,
-	<haiyangz@microsoft.com>, <wei.liu@kernel.org>, <decui@microsoft.com>,
-	<jassisinghbrar@gmail.com>, <mchehab@kernel.org>,
-	<maintainers@bluecherrydvr.com>, <ulf.hansson@linaro.org>,
-	<manuel.lauss@gmail.com>, <mirq-linux@rere.qmqm.pl>,
-	<jh80.chung@samsung.com>, <oakad@yahoo.com>,
-	<hayashi.kunihiko@socionext.com>, <mhiramat@kernel.org>,
-	<brucechang@via.com.tw>, <HaraldWelte@viatech.com>, <pierre@ossman.eu>,
-	<duncan.sands@free.fr>, <stern@rowland.harvard.edu>, <oneukum@suse.com>,
-	<openipmi-developer@lists.sourceforge.net>, <dmaengine@vger.kernel.org>,
-	<asahi@lists.linux.dev>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-rpi-kernel@lists.infradead.org>, <linux-mips@vger.kernel.org>,
-	<imx@lists.linux.dev>, <linuxppc-dev@lists.ozlabs.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-actions@lists.infradead.org>,
-	<linux-arm-msm@vger.kernel.org>, <linux-riscv@lists.infradead.org>,
-	<linux-sunxi@lists.linux.dev>, <linux-tegra@vger.kernel.org>,
-	<linux-hyperv@vger.kernel.org>, <linux-rdma@vger.kernel.org>,
-	<linux-media@vger.kernel.org>, <linux-mmc@vger.kernel.org>,
-	<linux-omap@vger.kernel.org>, <linux-renesas-soc@vger.kernel.org>,
-	<linux-s390@vger.kernel.org>, <netdev@vger.kernel.org>,
-	<linux-usb@vger.kernel.org>
-References: <20240327160314.9982-1-apais@linux.microsoft.com>
- <20240327160314.9982-10-apais@linux.microsoft.com>
-Content-Language: en-US, fr
-From: Aubin Constans <aubin.constans@microchip.com>
-In-Reply-To: <20240327160314.9982-10-apais@linux.microsoft.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240603_053919_005731_4F43DA24 
-X-CRM114-Status: UNSURE (   8.56  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240603_061324_656574_B0800A33 
+X-CRM114-Status: GOOD (  18.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,50 +99,474 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 27/03/2024 17:03, Allen Pais wrote:
-> EXTERNAL EMAIL: Do not click links or open attachments unless you know the content is safe
-> 
-> The only generic interface to execute asynchronously in the BH context is
-> tasklet; however, it's marked deprecated and has some design flaws. To
-> replace tasklets, BH workqueue support was recently added. A BH workqueue
-> behaves similarly to regular workqueues except that the queued work items
-> are executed in the BH context.
-> 
-> This patch converts drivers/infiniband/* from tasklet to BH workqueue.
-> 
-> Based on the work done by Tejun Heo <tj@kernel.org>
-> Branch: https://git.kernel.org/pub/scm/linux/kernel/git/tj/wq.git for-6.10
-> 
-> Signed-off-by: Allen Pais <allen.lkml@gmail.com>
-> ---
->   drivers/mmc/host/atmel-mci.c                  | 35 ++++-----
-[...]
+Add another batch of various "simple" syscon compatibles which were
+undocumented or still documented with old text bindings. Remove the old
+text binding docs for the ones which were documented.
 
-For atmel-mci, judging from a few simple tests, performance is preserved.
-E.g. writing to a SD Card on the SAMA5D3-Xplained board:
-time dd if=/dev/zero of=/opt/_del_me bs=4k count=64k
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Acked-by: Stephen Boyd <sboyd@kernel.org>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Reviewed-by: Miquel Raynal <miquel.raynal@bootlin.com> # mtd
+Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
+---
+v2:
+- Rebase on mfd next branch
 
-      Base 6.9.0 : 0.07user 5.05system 0:18.92elapsed 27%CPU
-   Patched 6.9.0+: 0.12user 4.92system 0:18.76elapsed 26%CPU
+ .../bindings/arm/amlogic/analog-top.txt       | 20 -------------
+ .../bindings/arm/amlogic/assist.txt           | 17 -----------
+ .../bindings/arm/amlogic/bootrom.txt          | 17 -----------
+ .../devicetree/bindings/arm/amlogic/pmu.txt   | 18 ------------
+ .../devicetree/bindings/arm/atmel-sysregs.txt | 29 -------------------
+ .../devicetree/bindings/arm/axis.txt          | 16 ----------
+ .../arm/cpu-enable-method/al,alpine-smp       | 10 -------
+ .../arm/freescale/fsl,vf610-mscm-cpucfg.txt   | 14 ---------
+ .../bindings/arm/marvell/marvell,dove.txt     | 15 ----------
+ .../devicetree/bindings/arm/spear-misc.txt    |  9 ------
+ .../bindings/clock/ti-keystone-pllctrl.txt    | 20 -------------
+ .../devicetree/bindings/mfd/syscon.yaml       | 29 +++++++++++++++++++
+ .../devicetree/bindings/mips/mscc.txt         | 17 -----------
+ .../devicetree/bindings/mtd/atmel-nand.txt    |  9 ------
+ .../bindings/net/hisilicon-hip04-net.txt      | 10 -------
+ 15 files changed, 29 insertions(+), 221 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/arm/amlogic/analog-top.txt
+ delete mode 100644 Documentation/devicetree/bindings/arm/amlogic/assist.txt
+ delete mode 100644 Documentation/devicetree/bindings/arm/amlogic/bootrom.txt
+ delete mode 100644 Documentation/devicetree/bindings/arm/amlogic/pmu.txt
+ delete mode 100644 Documentation/devicetree/bindings/arm/freescale/fsl,vf610-mscm-cpucfg.txt
+ delete mode 100644 Documentation/devicetree/bindings/arm/spear-misc.txt
+ delete mode 100644 Documentation/devicetree/bindings/clock/ti-keystone-pllctrl.txt
 
-However, please resolve what checkpatch is complaining about:
-scripts/checkpatch.pl --strict 
-PATCH-9-9-mmc-Convert-from-tasklet-to-BH-workqueue.mbox
+diff --git a/Documentation/devicetree/bindings/arm/amlogic/analog-top.txt b/Documentation/devicetree/bindings/arm/amlogic/analog-top.txt
+deleted file mode 100644
+index 101dc21014ec..000000000000
+--- a/Documentation/devicetree/bindings/arm/amlogic/analog-top.txt
++++ /dev/null
+@@ -1,20 +0,0 @@
+-Amlogic Meson8 and Meson8b "analog top" registers:
+---------------------------------------------------
+-
+-The analog top registers contain information about the so-called
+-"metal revision" (which encodes the "minor version") of the SoC.
+-
+-Required properties:
+-- reg: the register range of the analog top registers
+-- compatible: depending on the SoC this should be one of:
+-		- "amlogic,meson8-analog-top"
+-		- "amlogic,meson8b-analog-top"
+-		along with "syscon"
+-
+-
+-Example:
+-
+-	analog_top: analog-top@81a8 {
+-		compatible = "amlogic,meson8-analog-top", "syscon";
+-		reg = <0x81a8 0x14>;
+-	};
+diff --git a/Documentation/devicetree/bindings/arm/amlogic/assist.txt b/Documentation/devicetree/bindings/arm/amlogic/assist.txt
+deleted file mode 100644
+index 7656812b67b9..000000000000
+--- a/Documentation/devicetree/bindings/arm/amlogic/assist.txt
++++ /dev/null
+@@ -1,17 +0,0 @@
+-Amlogic Meson6/Meson8/Meson8b assist registers:
+------------------------------------------------
+-
+-The assist registers contain basic information about the SoC,
+-for example the encoded SoC part number.
+-
+-Required properties:
+-- reg: the register range of the assist registers
+-- compatible: should be "amlogic,meson-mx-assist" along with "syscon"
+-
+-
+-Example:
+-
+-	assist: assist@7c00 {
+-		compatible = "amlogic,meson-mx-assist", "syscon";
+-		reg = <0x7c00 0x200>;
+-	};
+diff --git a/Documentation/devicetree/bindings/arm/amlogic/bootrom.txt b/Documentation/devicetree/bindings/arm/amlogic/bootrom.txt
+deleted file mode 100644
+index 407e27f230ab..000000000000
+--- a/Documentation/devicetree/bindings/arm/amlogic/bootrom.txt
++++ /dev/null
+@@ -1,17 +0,0 @@
+-Amlogic Meson6/Meson8/Meson8b bootrom:
+---------------------------------------
+-
+-The bootrom register area can be used to access SoC specific
+-information, such as the "misc version".
+-
+-Required properties:
+-- reg: the register range of the bootrom registers
+-- compatible: should be "amlogic,meson-mx-bootrom" along with "syscon"
+-
+-
+-Example:
+-
+-	bootrom: bootrom@d9040000 {
+-		compatible = "amlogic,meson-mx-bootrom", "syscon";
+-		reg = <0xd9040000 0x10000>;
+-	};
+diff --git a/Documentation/devicetree/bindings/arm/amlogic/pmu.txt b/Documentation/devicetree/bindings/arm/amlogic/pmu.txt
+deleted file mode 100644
+index 72f8d08198b6..000000000000
+--- a/Documentation/devicetree/bindings/arm/amlogic/pmu.txt
++++ /dev/null
+@@ -1,18 +0,0 @@
+-Amlogic Meson8 and Meson8b power-management-unit:
+--------------------------------------------------
+-
+-The pmu is used to turn off and on different power domains of the SoCs
+-This includes the power to the CPU cores.
+-
+-Required node properties:
+-- compatible value : depending on the SoC this should be one of:
+-			"amlogic,meson8-pmu"
+-			"amlogic,meson8b-pmu"
+-- reg : physical base address and the size of the registers window
+-
+-Example:
+-
+-	pmu@c81000e4 {
+-		compatible = "amlogic,meson8b-pmu", "syscon";
+-		reg = <0xc81000e0 0x18>;
+-	};
+diff --git a/Documentation/devicetree/bindings/arm/atmel-sysregs.txt b/Documentation/devicetree/bindings/arm/atmel-sysregs.txt
+index 67a66bf74895..7374beb5a613 100644
+--- a/Documentation/devicetree/bindings/arm/atmel-sysregs.txt
++++ b/Documentation/devicetree/bindings/arm/atmel-sysregs.txt
+@@ -41,35 +41,6 @@ Examples:
+ 		reg = <0xffffe800 0x200>;
+ 	};
+ 
+-RAMC PHY Controller required properties:
+-- compatible: Should be "microchip,sama7g5-ddr3phy", "syscon"
+-- reg: Should contain registers location and length
+-
+-Example:
+-
+-	ddr3phy: ddr3phy@e3804000 {
+-		compatible = "microchip,sama7g5-ddr3phy", "syscon";
+-		reg = <0xe3804000 0x1000>;
+-};
+-
+-Special Function Registers (SFR)
+-
+-Special Function Registers (SFR) manage specific aspects of the integrated
+-memory, bridge implementations, processor and other functionality not controlled
+-elsewhere.
+-
+-required properties:
+-- compatible: Should be "atmel,<chip>-sfr", "syscon" or
+-	"atmel,<chip>-sfrbu", "syscon"
+-  <chip> can be "sama5d3", "sama5d4" or "sama5d2".
+-  It also can be "microchip,sam9x60-sfr", "syscon".
+-- reg: Should contain registers location and length
+-
+-	sfr@f0038000 {
+-		compatible = "atmel,sama5d3-sfr", "syscon";
+-		reg = <0xf0038000 0x60>;
+-	};
+-
+ Security Module (SECUMOD)
+ 
+ The Security Module macrocell provides all necessary secure functions to avoid
+diff --git a/Documentation/devicetree/bindings/arm/axis.txt b/Documentation/devicetree/bindings/arm/axis.txt
+index ae345e1c8d2b..ebd33a88776f 100644
+--- a/Documentation/devicetree/bindings/arm/axis.txt
++++ b/Documentation/devicetree/bindings/arm/axis.txt
+@@ -7,22 +7,6 @@ ARTPEC-6 ARM SoC
+ Required root node properties:
+ - compatible = "axis,artpec6";
+ 
+-ARTPEC-6 System Controller
+---------------------------
+-
+-The ARTPEC-6 has a system controller with mixed functions controlling DMA, PCIe
+-and resets.
+-
+-Required properties:
+-- compatible: "axis,artpec6-syscon", "syscon"
+-- reg: Address and length of the register bank.
+-
+-Example:
+-	syscon {
+-		compatible = "axis,artpec6-syscon", "syscon";
+-		reg = <0xf8000000 0x48>;
+-	};
+-
+ ARTPEC-6 Development board:
+ ---------------------------
+ Required root node properties:
+diff --git a/Documentation/devicetree/bindings/arm/cpu-enable-method/al,alpine-smp b/Documentation/devicetree/bindings/arm/cpu-enable-method/al,alpine-smp
+index 35e5afb6d9ad..cc7b1402a31f 100644
+--- a/Documentation/devicetree/bindings/arm/cpu-enable-method/al,alpine-smp
++++ b/Documentation/devicetree/bindings/arm/cpu-enable-method/al,alpine-smp
+@@ -27,16 +27,6 @@ Properties:
+ - reg : Offset and length of the register set for the device
+ 
+ 
+-* Alpine System-Fabric Service Registers
+-
+-The System-Fabric Service Registers allow various operation on CPU and
+-system fabric, like powering CPUs off.
+-
+-Properties:
+-- compatible : Should contain "al,alpine-sysfabric-service" and "syscon".
+-- reg : Offset and length of the register set for the device
+-
+-
+ Example:
+ 
+ cpus {
+diff --git a/Documentation/devicetree/bindings/arm/freescale/fsl,vf610-mscm-cpucfg.txt b/Documentation/devicetree/bindings/arm/freescale/fsl,vf610-mscm-cpucfg.txt
+deleted file mode 100644
+index 44aa3c451ccf..000000000000
+--- a/Documentation/devicetree/bindings/arm/freescale/fsl,vf610-mscm-cpucfg.txt
++++ /dev/null
+@@ -1,14 +0,0 @@
+-Freescale Vybrid Miscellaneous System Control - CPU Configuration
+-
+-The MSCM IP contains multiple sub modules, this binding describes the first
+-block of registers which contains CPU configuration information.
+-
+-Required properties:
+-- compatible:	"fsl,vf610-mscm-cpucfg", "syscon"
+-- reg:		the register range of the MSCM CPU configuration registers
+-
+-Example:
+-	mscm_cpucfg: cpucfg@40001000 {
+-		compatible = "fsl,vf610-mscm-cpucfg", "syscon";
+-		reg = <0x40001000 0x800>;
+-	}
+diff --git a/Documentation/devicetree/bindings/arm/marvell/marvell,dove.txt b/Documentation/devicetree/bindings/arm/marvell/marvell,dove.txt
+index aaaf64c56e44..e10e8525eabd 100644
+--- a/Documentation/devicetree/bindings/arm/marvell/marvell,dove.txt
++++ b/Documentation/devicetree/bindings/arm/marvell/marvell,dove.txt
+@@ -5,18 +5,3 @@ Boards with a Marvell Dove SoC shall have the following properties:
+ 
+ Required root node property:
+ - compatible: must contain "marvell,dove";
+-
+-* Global Configuration registers
+-
+-Global Configuration registers of Dove SoC are shared by a syscon node.
+-
+-Required properties:
+-- compatible: must contain "marvell,dove-global-config" and "syscon".
+-- reg: base address and size of the Global Configuration registers.
+-
+-Example:
+-
+-gconf: global-config@e802c {
+-	compatible = "marvell,dove-global-config", "syscon";
+-	reg = <0xe802c 0x14>;
+-};
+diff --git a/Documentation/devicetree/bindings/arm/spear-misc.txt b/Documentation/devicetree/bindings/arm/spear-misc.txt
+deleted file mode 100644
+index e404e2556b4a..000000000000
+--- a/Documentation/devicetree/bindings/arm/spear-misc.txt
++++ /dev/null
+@@ -1,9 +0,0 @@
+-SPEAr Misc configuration
+-===========================
+-SPEAr SOCs have some miscellaneous registers which are used to configure
+-few properties of different peripheral controllers.
+-
+-misc node required properties:
+-
+-- compatible Should be	"st,spear1340-misc", "syscon".
+-- reg: Address range of misc space up to 8K
+diff --git a/Documentation/devicetree/bindings/clock/ti-keystone-pllctrl.txt b/Documentation/devicetree/bindings/clock/ti-keystone-pllctrl.txt
+deleted file mode 100644
+index c35cb6c4af4d..000000000000
+--- a/Documentation/devicetree/bindings/clock/ti-keystone-pllctrl.txt
++++ /dev/null
+@@ -1,20 +0,0 @@
+-* Device tree bindings for Texas Instruments keystone pll controller
+-
+-The main pll controller used to drive theC66x CorePacs, the switch fabric,
+-and a majority of the peripheral clocks (all but the ARM CorePacs, DDR3 and
+-the NETCP modules) requires a PLL Controller to manage the various clock
+-divisions, gating, and synchronization.
+-
+-Required properties:
+-
+-- compatible:		"ti,keystone-pllctrl", "syscon"
+-
+-- reg:			contains offset/length value for pll controller
+-			registers space.
+-
+-Example:
+-
+-pllctrl: pll-controller@02310000 {
+-	compatible = "ti,keystone-pllctrl", "syscon";
+-	reg = <0x02310000 0x200>;
+-};
+diff --git a/Documentation/devicetree/bindings/mfd/syscon.yaml b/Documentation/devicetree/bindings/mfd/syscon.yaml
+index 6a5834b11a35..79830dd51ac3 100644
+--- a/Documentation/devicetree/bindings/mfd/syscon.yaml
++++ b/Documentation/devicetree/bindings/mfd/syscon.yaml
+@@ -34,36 +34,59 @@ properties:
+     anyOf:
+       - items:
+           - enum:
++              - al,alpine-sysfabric-service
+               - allwinner,sun8i-a83t-system-controller
+               - allwinner,sun8i-h3-system-controller
+               - allwinner,sun8i-v3s-system-controller
+               - allwinner,sun50i-a64-system-controller
++              - altr,l3regs
+               - altr,sdr-ctl
+               - amd,pensando-elba-syscon
++              - amlogic,meson-mx-assist
++              - amlogic,meson-mx-bootrom
++              - amlogic,meson8-analog-top
++              - amlogic,meson8b-analog-top
++              - amlogic,meson8-pmu
++              - amlogic,meson8b-pmu
+               - apm,xgene-csw
+               - apm,xgene-efuse
+               - apm,xgene-mcb
+               - apm,xgene-rb
+               - apm,xgene-scu
++              - atmel,sama5d2-sfrbu
++              - atmel,sama5d3-nfc-io
++              - atmel,sama5d3-sfrbu
++              - atmel,sama5d4-sfrbu
++              - axis,artpec6-syscon
+               - brcm,cru-clkset
+               - brcm,sr-cdru
+               - brcm,sr-mhb
++              - cirrus,ep7209-syscon1
++              - cirrus,ep7209-syscon2
++              - cirrus,ep7209-syscon3
++              - cnxt,cx92755-uc
+               - freecom,fsg-cs2-system-controller
+               - fsl,imx93-aonmix-ns-syscfg
+               - fsl,imx93-wakeupmix-syscfg
+               - fsl,ls1088a-reset
++              - fsl,vf610-anatop
++              - fsl,vf610-mscm-cpucfg
+               - hisilicon,dsa-subctrl
+               - hisilicon,hi6220-sramctrl
++              - hisilicon,hip04-ppe
+               - hisilicon,pcie-sas-subctrl
+               - hisilicon,peri-subctrl
+               - hpe,gxp-sysreg
+               - intel,lgm-syscon
+               - loongson,ls1b-syscon
+               - loongson,ls1c-syscon
++              - lsi,axxia-syscon
+               - marvell,armada-3700-cpu-misc
+               - marvell,armada-3700-nb-pm
+               - marvell,armada-3700-avs
+               - marvell,armada-3700-usb2-host-misc
++              - marvell,dove-global-config
++              - mediatek,mt2701-pctl-a-syscfg
+               - mediatek,mt2712-pctl-a-syscfg
+               - mediatek,mt6397-pctl-pmic-syscfg
+               - mediatek,mt8135-pctl-a-syscfg
+@@ -71,7 +94,10 @@ properties:
+               - mediatek,mt8173-pctl-a-syscfg
+               - mediatek,mt8365-syscfg
+               - microchip,lan966x-cpu-syscon
++              - microchip,sam9x60-sfr
++              - microchip,sama7g5-ddr3phy
+               - microchip,sparx5-cpu-syscon
++              - mscc,ocelot-cpu-syscon
+               - mstar,msc313-pmsleep
+               - nuvoton,ma35d1-sys
+               - nuvoton,wpcm450-shm
+@@ -86,6 +112,8 @@ properties:
+               - rockchip,rk3568-qos
+               - rockchip,rk3588-qos
+               - rockchip,rv1126-qos
++              - st,spear1340-misc
++              - stericsson,nomadik-pmu
+               - starfive,jh7100-sysmain
+               - ti,am62-usb-phy-ctrl
+               - ti,am625-dss-oldi-io-ctrl
+@@ -93,6 +121,7 @@ properties:
+               - ti,am654-dss-oldi-io-ctrl
+               - ti,am654-serdes-ctrl
+               - ti,j784s4-pcie-ctrl
++              - ti,keystone-pllctrl
+ 
+           - const: syscon
+ 
+diff --git a/Documentation/devicetree/bindings/mips/mscc.txt b/Documentation/devicetree/bindings/mips/mscc.txt
+index cc916eaeed0a..e74165696b76 100644
+--- a/Documentation/devicetree/bindings/mips/mscc.txt
++++ b/Documentation/devicetree/bindings/mips/mscc.txt
+@@ -25,23 +25,6 @@ Example:
+ 		reg = <0x71070000 0x1c>;
+ 	};
+ 
+-
+-o CPU system control:
+-
+-The SoC has a few registers (ICPU_CFG:CPU_SYSTEM_CTRL) handling configuration of
+-the CPU: 8 general purpose registers, reset control, CPU en/disabling, CPU
+-endianness, CPU bus control, CPU status.
+-
+-Required properties:
+-- compatible: Should be "mscc,ocelot-cpu-syscon", "syscon"
+-- reg : Should contain registers location and length
+-
+-Example:
+-	syscon@70000000 {
+-		compatible = "mscc,ocelot-cpu-syscon", "syscon";
+-		reg = <0x70000000 0x2c>;
+-	};
+-
+ o HSIO regs:
+ 
+ The SoC has a few registers (HSIO) handling miscellaneous functionalities:
+diff --git a/Documentation/devicetree/bindings/mtd/atmel-nand.txt b/Documentation/devicetree/bindings/mtd/atmel-nand.txt
+index 4598930851d9..e36c35b17873 100644
+--- a/Documentation/devicetree/bindings/mtd/atmel-nand.txt
++++ b/Documentation/devicetree/bindings/mtd/atmel-nand.txt
+@@ -60,15 +60,6 @@ Required properties:
+ - reg: should contain 2 register ranges. The first one is pointing to the PMECC
+        block, and the second one to the PMECC_ERRLOC block.
+ 
+-* SAMA5 NFC I/O bindings:
+-
+-SAMA5 SoCs embed an advanced NAND controller logic to automate READ/WRITE page
+-operations. This interface to this logic is placed in a separate I/O range and
+-should thus have its own DT node.
+-
+-- compatible: should be "atmel,sama5d3-nfc-io", "syscon".
+-- reg: should contain the I/O range used to interact with the NFC logic.
+-
+ Example:
+ 
+ 	nfc_io: nfc-io@70000000 {
+diff --git a/Documentation/devicetree/bindings/net/hisilicon-hip04-net.txt b/Documentation/devicetree/bindings/net/hisilicon-hip04-net.txt
+index 464c0dafc617..c09eec6422ac 100644
+--- a/Documentation/devicetree/bindings/net/hisilicon-hip04-net.txt
++++ b/Documentation/devicetree/bindings/net/hisilicon-hip04-net.txt
+@@ -19,16 +19,6 @@ Optional properties:
+ [1] Documentation/devicetree/bindings/net/ethernet.txt
+ 
+ 
+-* Ethernet ppe node:
+-Control rx & tx fifos of all ethernet controllers.
+-Have 2048 recv channels shared by all ethernet controllers, only if no overlap.
+-Each controller's recv channel start from channel * number (RX_DESC_NUM).
+-
+-Required properties:
+-- compatible: "hisilicon,hip04-ppe", "syscon".
+-- reg: address and length of the register set for the device.
+-
+-
+ * MDIO bus node:
+ 
+ Required properties:
+-- 
+2.43.0
 
-   WARNING: please, no space before tabs
-   #72: FILE: drivers/mmc/host/atmel-mci.c:367:
-   +^Istruct work_struct ^Iwork;$
-
-Same as discussions on the USB patch[1] and others in this series, I am 
-also in favour of "workqueue" or similar in the comments, rather than 
-just "work".
-
-Apart from that:
-Tested-by: Aubin Constans <aubin.constans@microchip.com>
-Acked-by: Aubin Constans <aubin.constans@microchip.com>
-
-Thanks.
-
-[1]: 
-https://lore.kernel.org/linux-mmc/CAOMdWSLipPfm3OZTpjZz4uF4M+E_8QAoTeMcKBXawLnkTQx6Jg@mail.gmail.com/
 
