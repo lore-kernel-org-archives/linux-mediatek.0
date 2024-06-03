@@ -4,66 +4,137 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8F28C25B75
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Jun 2024 17:01:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D093C25B76
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Jun 2024 17:25:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+A4idQcki+8DQq24n70JeycG+uvt3GYwhDMfeVoIFew=; b=OUbMbxPqgnwtYyDpE1nXsg/sWy
-	kHpDLl2yYyh9mPyyu3zira2lKRMogDBqmsXMd/uOBTYcov1Mns5Z2Z8s6LvTd/acQ/Fi6s2LYv0yo
-	KayJMffX1oQi14j+7QmBpoEdJUdCWeq3DyM6XEFCrN0wc4NtuLXvM9SrMvrolZRoe/yps07rGq9BZ
-	pOMwIkMV3W1S/UAy0PdQCgxMClDPwEumUdX2g6B7XndrcIV10KyFrQoO3u9LW446aJxNMu4Ix6L3y
-	jveLUbtwGM8ejX9iniCeO7xVxv7BTJ9EAew61Fec7Qg21uKD5XuUG9GPvXpumnub0uX2vtVYMQljM
-	gohmhFiw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:
+	Content-Transfer-Encoding:Cc:Date:In-Reply-To:From:Subject:Mime-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=4DfOU8aQl0aDoujS+l1W8I9cPbB9Sd5aNNyJFDGp/QQ=; b=1F6LBL2+rjCGXkQshJneUs+8WU
+	QzUaZZvAkQbGNAHKoIm2JLEe6Wxi9nFp07VnDSvThX1vdhEKoqZLhwV3otxaxKp+lkkr50wMiGsNf
+	dlmNGIYiIxkwnzVL0idsYzfULHGWHOskDOOsXApFbo1gLou8E75IYv+8f0HIm5gIdKt51aLNSN6AJ
+	VliNcLJT3iGAWKfrm1nzJ1NvNXPFh02ZbDzKhT4REaKU9q/mmfTRXu0p3f3VZLwpFdt3Z7uEDLnkx
+	cW/BTpXIOWt5tTqlTRtHD0MNuiPeVkcJpXUQZi9gsIkLxeYPIk3mvqz/9dzMfkNl05boDgAg0F51N
+	plp/rBwg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sEB3h-0000000HROd-3Wal;
-	Mon, 03 Jun 2024 17:01:21 +0000
-Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
-	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sEB3f-0000000HRL8-08ru;
-	Mon, 03 Jun 2024 17:01:20 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.97.1)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1sEB3I-000000002Nq-1Sjk;
-	Mon, 03 Jun 2024 17:00:56 +0000
-Date: Mon, 3 Jun 2024 18:00:49 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>
-Cc: Sky Huang <SkyLake.Huang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Qingfang Deng <dqfext@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Steven Liu <Steven.Liu@mediatek.com>
-Subject: Re: [PATCH net-next v6 5/5] net: phy: add driver for built-in 2.5G
- ethernet PHY on MT7988
-Message-ID: <Zl32waW34yTiuF9u@makrotopia.org>
-References: <20240603121834.27433-1-SkyLake.Huang@mediatek.com>
- <20240603121834.27433-6-SkyLake.Huang@mediatek.com>
- <Zl3ELbG8c8y0/4DN@shell.armlinux.org.uk>
- <Zl3Fwoiv1bJlGaQZ@makrotopia.org>
- <Zl3IGN5ZHCQfQfmt@shell.armlinux.org.uk>
- <Zl3Yo3dwQlXEfP3i@makrotopia.org>
- <Zl3lkIDqnt4JD//u@shell.armlinux.org.uk>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <Zl3lkIDqnt4JD//u@shell.armlinux.org.uk>
+	id 1sEBQx-0000000HV0y-1bHa;
+	Mon, 03 Jun 2024 17:25:23 +0000
+Received: from linux.microsoft.com ([13.77.154.182])
+	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1sEBQs-0000000HUyd-0mYR;
+	Mon, 03 Jun 2024 17:25:19 +0000
+Received: from smtpclient.apple (d66-183-91-182.bchsia.telus.net [66.183.91.182])
+	by linux.microsoft.com (Postfix) with ESMTPSA id 4684920681D5;
+	Mon,  3 Jun 2024 10:25:13 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 4684920681D5
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
+	s=default; t=1717435514;
+	bh=4DfOU8aQl0aDoujS+l1W8I9cPbB9Sd5aNNyJFDGp/QQ=;
+	h=Subject:From:In-Reply-To:Date:Cc:References:To:From;
+	b=arwB9k2cp5qmOpH04JZQJkpaQ68dKr6NHq6/nWjIeKTEglSLJZbHneTkxRo0iYye3
+	 dopPLk66Mp6Cqqtct/3LWOtVyWSXCVY5VMtnmDbdTLbXrzM1H6t1A8KCeQ5Sp+gzGS
+	 Acr7rY4qAUIDkO+vSD/92kHIH7AgZovgYBJ1BnFc=
+Content-Type: text/plain;
+	charset=utf-8
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3774.600.62\))
+Subject: Re: [PATCH 9/9] mmc: Convert from tasklet to BH workqueue
+From: Allen Pais <apais@linux.microsoft.com>
+In-Reply-To: <7e618af0-51a7-4941-a386-0ac68c66d358@microchip.com>
+Date: Mon, 3 Jun 2024 10:25:02 -0700
+Cc: Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Tejun Heo <tj@kernel.org>,
+ Kees Cook <keescook@chromium.org>,
+ Vinod Koul <vkoul@kernel.org>,
+ marcan@marcan.st,
+ sven@svenpeter.dev,
+ florian.fainelli@broadcom.com,
+ Ray Jui <rjui@broadcom.com>,
+ Scott Branden <sbranden@broadcom.com>,
+ Paul Cercueil <paul@crapouillou.net>,
+ Eugeniy.Paltsev@synopsys.com,
+ manivannan.sadhasivam@linaro.org,
+ Viresh Kumar <vireshk@kernel.org>,
+ Frank.Li@nxp.com,
+ Leo Li <leoyang.li@nxp.com>,
+ zw@zh-kernel.org,
+ Zhou Wang <wangzhou1@hisilicon.com>,
+ haijie1@huawei.com,
+ Shawn Guo <shawnguo@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Sean Wang <sean.wang@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ angelogioacchino.delregno@collabora.com,
+ =?utf-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>,
+ Logan Gunthorpe <logang@deltatee.com>,
+ Daniel Mack <daniel@zonque.org>,
+ Haojian Zhuang <haojian.zhuang@gmail.com>,
+ Robert Jarzmik <robert.jarzmik@free.fr>,
+ andersson@kernel.org,
+ konrad.dybcio@linaro.org,
+ Orson Zhai <orsonzhai@gmail.com>,
+ baolin.wang@linux.alibaba.com,
+ Lyra Zhang <zhang.lyra@gmail.com>,
+ Patrice CHOTARD <patrice.chotard@foss.st.com>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ Chen-Yu Tsai <wens@csie.org>,
+ =?utf-8?Q?Jernej_=C5=A0krabec?= <jernej.skrabec@gmail.com>,
+ peter.ujfalusi@gmail.com,
+ kys@microsoft.com,
+ haiyangz@microsoft.com,
+ wei.liu@kernel.org,
+ decui@microsoft.com,
+ jassisinghbrar@gmail.com,
+ mchehab@kernel.org,
+ maintainers@bluecherrydvr.com,
+ ulf.hansson@linaro.org,
+ manuel.lauss@gmail.com,
+ mirq-linux@rere.qmqm.pl,
+ jh80.chung@samsung.com,
+ oakad@yahoo.com,
+ hayashi.kunihiko@socionext.com,
+ mhiramat@kernel.org,
+ brucechang@via.com.tw,
+ HaraldWelte@viatech.com,
+ pierre@ossman.eu,
+ duncan.sands@free.fr,
+ stern@rowland.harvard.edu,
+ oneukum@suse.com,
+ openipmi-developer@lists.sourceforge.net,
+ dmaengine@vger.kernel.org,
+ asahi@lists.linux.dev,
+ linux-arm-kernel@lists.infradead.org,
+ linux-rpi-kernel@lists.infradead.org,
+ linux-mips@vger.kernel.org,
+ imx@lists.linux.dev,
+ linuxppc-dev@lists.ozlabs.org,
+ linux-mediatek@lists.infradead.org,
+ linux-actions@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org,
+ linux-riscv@lists.infradead.org,
+ linux-sunxi@lists.linux.dev,
+ linux-tegra@vger.kernel.org,
+ linux-hyperv@vger.kernel.org,
+ linux-rdma@vger.kernel.org,
+ linux-media@vger.kernel.org,
+ linux-mmc@vger.kernel.org,
+ linux-omap@vger.kernel.org,
+ linux-renesas-soc@vger.kernel.org,
+ linux-s390@vger.kernel.org,
+ netdev@vger.kernel.org,
+ linux-usb@vger.kernel.org
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <61F36002-C765-410C-8EF9-203593C269FF@linux.microsoft.com>
+References: <20240327160314.9982-1-apais@linux.microsoft.com>
+ <20240327160314.9982-10-apais@linux.microsoft.com>
+ <7e618af0-51a7-4941-a386-0ac68c66d358@microchip.com>
+To: Aubin Constans <aubin.constans@microchip.com>
+X-Mailer: Apple Mail (2.3774.600.62)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240603_100119_122846_5CDDAEF6 
-X-CRM114-Status: GOOD (  34.92  )
+X-CRM114-CacheID: sfid-20240603_102518_422582_F7353A57 
+X-CRM114-Status: GOOD (  13.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,60 +149,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jun 03, 2024 at 04:47:28PM +0100, Russell King (Oracle) wrote:
-> On Mon, Jun 03, 2024 at 03:52:19PM +0100, Daniel Golle wrote:
-> > On Mon, Jun 03, 2024 at 02:41:44PM +0100, Russell King (Oracle) wrote:
-> > > On Mon, Jun 03, 2024 at 02:31:46PM +0100, Daniel Golle wrote:
-> > > > On Mon, Jun 03, 2024 at 02:25:01PM +0100, Russell King (Oracle) wrote:
-> > > > > On Mon, Jun 03, 2024 at 08:18:34PM +0800, Sky Huang wrote:
-> > > > > > Add support for internal 2.5Gphy on MT7988. This driver will load
-> > > > > > necessary firmware, add appropriate time delay and figure out LED.
-> > > > > > Also, certain control registers will be set to fix link-up issues.
-> > > > > 
-> > > > > Based on our previous discussion, it may be worth checking in the
-> > > > > .config_init() method whether phydev->interface is one of the
-> > > > > PHY interface modes that this PHY supports. As I understand from one
-> > > > > of your previous emails, the possibilities are XGMII, USXGMII or
-> > > > > INTERNAL. Thus:
-> > > > > 
-> > > > > > +static int mt798x_2p5ge_phy_config_init(struct phy_device *phydev)
-> > > > > > +{
-> > > > > > +	struct pinctrl *pinctrl;
-> > > > > > +	int ret;
-> > > > > 
-> > > > > 	/* Check that the PHY interface type is compatible */
-> > > > > 	if (phydev->interface != PHY_INTERFACE_MODE_INTERNAL &&
-> > > > > 	    phydev->interface != PHY_INTERFACE_MODE_XGMII &&
-> > > > > 	    phydev->interface != PHY_INTERFACE_MODE_USXGMII)
-> > > > > 		return -ENODEV;
-> > > > 
-> > > > The PHY is built-into the SoC, and as such the connection type should
-> > > > always be "internal". The PHY does not exist as dedicated IC, only
-> > > > as built-in part of the MT7988 SoC.
-> > > 
-> > > That's not how it was described to me by Sky.
-> > > 
-> > > If what you say is correct, then the implementation of
-> > > mt798x_2p5ge_phy_get_rate_matching() which checks for interface modes
-> > > other than INTERNAL is not correct. Also it means that config_init()
-> > > should not permit anything but INTERNAL.
-> > 
-> > The way the PHY is connected to the MAC *inside the chip* is XGMII
-> > according the MediaTek. So call it "internal" or "xgmii", however, up to
-> > my knowledge it's a fact that there is **only one way** this PHY is
-> > connected and used, and that is being an internal part of the MT7988 SoC.
-> > 
-> > Imho, as there are no actual XGMII signals exposed anywhere I'd use
-> > "internal" to describe the link between MAC and PHY (which are both
-> > inside the same chip package).
-> 
-> I don't care what gets decided about what's acceptable for the PHY to
-> accept, just that it checks for the acceptable modes in .config_init()
-> and the .get_rate_matching() method is not checking for interface
-> modes that are not permitted.
 
-What I meant to express is that there is no need for such a check, also
-not in config_init. There is only one way and one MAC-side interface mode
-to operate that PHY, so the value will anyway not be considered anywhere
-in the driver.
+
+> On Jun 3, 2024, at 5:38=E2=80=AFAM, Aubin Constans =
+<aubin.constans@microchip.com> wrote:
+>=20
+> On 27/03/2024 17:03, Allen Pais wrote:
+>> EXTERNAL EMAIL: Do not click links or open attachments unless you =
+know the content is safe
+>> The only generic interface to execute asynchronously in the BH =
+context is
+>> tasklet; however, it's marked deprecated and has some design flaws. =
+To
+>> replace tasklets, BH workqueue support was recently added. A BH =
+workqueue
+>> behaves similarly to regular workqueues except that the queued work =
+items
+>> are executed in the BH context.
+>> This patch converts drivers/infiniband/* from tasklet to BH =
+workqueue.
+>> Based on the work done by Tejun Heo <tj@kernel.org>
+>> Branch: https://git.kernel.org/pub/scm/linux/kernel/git/tj/wq.git =
+for-6.10
+>> Signed-off-by: Allen Pais <allen.lkml@gmail.com>
+>> ---
+>>  drivers/mmc/host/atmel-mci.c                  | 35 ++++-----
+> [...]
+>=20
+> For atmel-mci, judging from a few simple tests, performance is =
+preserved.
+> E.g. writing to a SD Card on the SAMA5D3-Xplained board:
+> time dd if=3D/dev/zero of=3D/opt/_del_me bs=3D4k count=3D64k
+>=20
+>     Base 6.9.0 : 0.07user 5.05system 0:18.92elapsed 27%CPU
+>  Patched 6.9.0+: 0.12user 4.92system 0:18.76elapsed 26%CPU
+>=20
+> However, please resolve what checkpatch is complaining about:
+> scripts/checkpatch.pl --strict =
+PATCH-9-9-mmc-Convert-from-tasklet-to-BH-workqueue.mbox
+>=20
+>  WARNING: please, no space before tabs
+>  #72: FILE: drivers/mmc/host/atmel-mci.c:367:
+>  +^Istruct work_struct ^Iwork;$
+>=20
+> Same as discussions on the USB patch[1] and others in this series, I =
+am also in favour of "workqueue" or similar in the comments, rather than =
+just "work".
+
+ Will send out a new version.
+
+Thank you very much for testing and providing your review.
+
+- Allen
+
+>=20
+> Apart from that:
+> Tested-by: Aubin Constans <aubin.constans@microchip.com>
+> Acked-by: Aubin Constans <aubin.constans@microchip.com>
+>=20
+> Thanks.
+>=20
+> [1]: =
+https://lore.kernel.org/linux-mmc/CAOMdWSLipPfm3OZTpjZz4uF4M+E_8QAoTeMcKBX=
+awLnkTQx6Jg@mail.gmail.com/
+
 
