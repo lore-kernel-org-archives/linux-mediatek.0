@@ -4,82 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69B35C25B75
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Jun 2024 18:30:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF0CEC25B76
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Jun 2024 19:25:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oCvWTMBZzFyQI14e28Nz1Gd7RpB4B15zOofvtVYziac=; b=H0SBa57OrrOUvfyZmAjZik1UnG
-	uingn4i9DvWTw/KFzEpGc8IvaoBRafBRMYq4mvOo8VuaKWbJ94L/4+ORz9mlivXq3qy0WjVW0sGfw
-	2wxRZEgCunWojnJ94BEwjztSgxwq/Vg3pfJmL1wpgrFM9eiiTe6xwWxx0uVUgWdHIdQgEywIF4mVa
-	AJH7JwOF7HYHPca6zNzG1q2V67ZgjvFxsgdTTUFjck4So1l6p+Vhik1+dVWKCJT/VcoCpqBckQ89t
-	JgtTbh02Jt1SUOWDcbzMtlogBH4aGbHSe4eKJ6RkzfkpqpCDXYKeO/cLRkZBtUflV+f/MbN5iQJpC
-	nx0FTn2g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=3ho/sytEmPR7aIAlSZxzlsWBIjDhubSXnBGb+VrHbnk=; b=xOYVb1jcLHrhI9
+	80aBFiOKD7pvI5EWZ2DP7BnyCoS7dsuzDsjYd8boJQNCqok8cCfKEjhuEY3V5aLj+/b9J0bvdhwl0
+	sWrTERoLjucXTn3hLDdhr2IopLDzoXUV9LfCzdBi15iMEl2ryxuMjAtsY9Iiau/D3k11QDhswB3Cv
+	fUNEo4esFVOHGYg/HxGO+8XNS3YT2ViaFEp5hsnvvNM1hCAZduhyHlVi3La7+w4Y9KKjvpT43i4c+
+	OHKMhMwnNAuG51zja+ZNpvpqahjOnH8zxhOYzdSJL6jMGC+maBgzsB+k2qdFqsq0cmKN3Dt2PpQ8L
+	3abxxqNtzxatMIbdbfRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sECSG-000000001eX-13qV;
-	Mon, 03 Jun 2024 18:30:48 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1sEDJH-00000000Be9-1plw;
+	Mon, 03 Jun 2024 19:25:35 +0000
+Received: from mxout4.routing.net ([2a03:2900:1:a::9])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sECSB-000000001di-3TJ1;
-	Mon, 03 Jun 2024 18:30:45 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=oCvWTMBZzFyQI14e28Nz1Gd7RpB4B15zOofvtVYziac=; b=QfcmgenTxMFEewMSOKyAloZXNF
-	K2qEiU+N51KbMp0eCj/A8qCg+g59IRTKIYInxtDu03ueIA5QIYfPZdoUWoHFSgmEJLFHdk69jfSkV
-	GZuu3G981AM4lxNY/pAc5MIgiGavYg1boBE1eQRjHVChzLcPrJOZuc7JtF4OdKu4DPWijvHbhpjYX
-	Zf92F7Z64mgG/k37NAFo6VG/kKzNpKbVPt0mQSpoIauHsKf/llM8CmUzT0OQomqIJm/ivVDXLgD9u
-	M1gSWH9Dslp/5E/2NCzjOAu0BzwztH8e07Bi3b5r6co4a+kslXyzH5dLSS/Lnv2s/mipYCrnwZuwb
-	BmyO1vrA==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:56784)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1sECRq-00034t-0s;
-	Mon, 03 Jun 2024 19:30:22 +0100
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1sECRo-0000eL-Ly; Mon, 03 Jun 2024 19:30:20 +0100
-Date: Mon, 3 Jun 2024 19:30:20 +0100
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: Sky Huang <SkyLake.Huang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
+	id 1sEDJD-00000000Bcj-2oFO;
+	Mon, 03 Jun 2024 19:25:33 +0000
+Received: from mxbox1.masterlogin.de (unknown [192.168.10.88])
+	by mxout4.routing.net (Postfix) with ESMTP id 9754410089E;
+	Mon,  3 Jun 2024 19:25:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+	s=20200217; t=1717442725;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=3ho/sytEmPR7aIAlSZxzlsWBIjDhubSXnBGb+VrHbnk=;
+	b=PWjc0lNtdY+VySgZcrgtOBGQlMRAb/PG5cDtAqZcvqj5hs6Ob4rnb7V8TVtQG+VYn8T7Vq
+	DHWhAZXR0n8bziSAteJuMZZTiYTRYeKtONj/Nb+8fup3F/bxa7ScC9EGvu6L+3EYKkUDs9
+	1tF8CikMa4K0HzCWN86M0zT+hTNGl9E=
+Received: from frank-G5.. (fttx-pool-80.245.76.156.bambit.de [80.245.76.156])
+	by mxbox1.masterlogin.de (Postfix) with ESMTPSA id 490004010B;
+	Mon,  3 Jun 2024 19:25:24 +0000 (UTC)
+From: Frank Wunderlich <linux@fw-web.de>
+To: Felix Fietkau <nbd@nbd.name>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
 	"David S. Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Qingfang Deng <dqfext@gmail.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Steven Liu <Steven.Liu@mediatek.com>
-Subject: Re: [PATCH net-next v6 5/5] net: phy: add driver for built-in 2.5G
- ethernet PHY on MT7988
-Message-ID: <Zl4LvKlhty/9o38y@shell.armlinux.org.uk>
-References: <20240603121834.27433-1-SkyLake.Huang@mediatek.com>
- <20240603121834.27433-6-SkyLake.Huang@mediatek.com>
- <Zl3ELbG8c8y0/4DN@shell.armlinux.org.uk>
- <Zl3Fwoiv1bJlGaQZ@makrotopia.org>
- <Zl3IGN5ZHCQfQfmt@shell.armlinux.org.uk>
- <Zl3Yo3dwQlXEfP3i@makrotopia.org>
- <Zl3lkIDqnt4JD//u@shell.armlinux.org.uk>
- <Zl32waW34yTiuF9u@makrotopia.org>
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [net v3] net: ethernet: mtk_eth_soc: handle dma buffer size soc specific
+Date: Mon,  3 Jun 2024 21:25:05 +0200
+Message-Id: <20240603192505.217881-1-linux@fw-web.de>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <Zl32waW34yTiuF9u@makrotopia.org>
+Content-Transfer-Encoding: 8bit
+X-Mail-ID: 5f76a187-31fa-4752-91ff-2a93f0492706
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240603_113043_889854_DCAB11D4 
-X-CRM114-Status: GOOD (  39.89  )
+X-CRM114-CacheID: sfid-20240603_122532_054972_6E910672 
+X-CRM114-Status: GOOD (  21.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,78 +73,384 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, linux-mediatek@lists.infradead.org, bc-bocun.chen@mediatek.com, John Crispin <john@phrozen.org>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jun 03, 2024 at 06:00:49PM +0100, Daniel Golle wrote:
-> On Mon, Jun 03, 2024 at 04:47:28PM +0100, Russell King (Oracle) wrote:
-> > On Mon, Jun 03, 2024 at 03:52:19PM +0100, Daniel Golle wrote:
-> > > On Mon, Jun 03, 2024 at 02:41:44PM +0100, Russell King (Oracle) wrote:
-> > > > On Mon, Jun 03, 2024 at 02:31:46PM +0100, Daniel Golle wrote:
-> > > > > On Mon, Jun 03, 2024 at 02:25:01PM +0100, Russell King (Oracle) wrote:
-> > > > > > On Mon, Jun 03, 2024 at 08:18:34PM +0800, Sky Huang wrote:
-> > > > > > > Add support for internal 2.5Gphy on MT7988. This driver will load
-> > > > > > > necessary firmware, add appropriate time delay and figure out LED.
-> > > > > > > Also, certain control registers will be set to fix link-up issues.
-> > > > > > 
-> > > > > > Based on our previous discussion, it may be worth checking in the
-> > > > > > .config_init() method whether phydev->interface is one of the
-> > > > > > PHY interface modes that this PHY supports. As I understand from one
-> > > > > > of your previous emails, the possibilities are XGMII, USXGMII or
-> > > > > > INTERNAL. Thus:
-> > > > > > 
-> > > > > > > +static int mt798x_2p5ge_phy_config_init(struct phy_device *phydev)
-> > > > > > > +{
-> > > > > > > +	struct pinctrl *pinctrl;
-> > > > > > > +	int ret;
-> > > > > > 
-> > > > > > 	/* Check that the PHY interface type is compatible */
-> > > > > > 	if (phydev->interface != PHY_INTERFACE_MODE_INTERNAL &&
-> > > > > > 	    phydev->interface != PHY_INTERFACE_MODE_XGMII &&
-> > > > > > 	    phydev->interface != PHY_INTERFACE_MODE_USXGMII)
-> > > > > > 		return -ENODEV;
-> > > > > 
-> > > > > The PHY is built-into the SoC, and as such the connection type should
-> > > > > always be "internal". The PHY does not exist as dedicated IC, only
-> > > > > as built-in part of the MT7988 SoC.
-> > > > 
-> > > > That's not how it was described to me by Sky.
-> > > > 
-> > > > If what you say is correct, then the implementation of
-> > > > mt798x_2p5ge_phy_get_rate_matching() which checks for interface modes
-> > > > other than INTERNAL is not correct. Also it means that config_init()
-> > > > should not permit anything but INTERNAL.
-> > > 
-> > > The way the PHY is connected to the MAC *inside the chip* is XGMII
-> > > according the MediaTek. So call it "internal" or "xgmii", however, up to
-> > > my knowledge it's a fact that there is **only one way** this PHY is
-> > > connected and used, and that is being an internal part of the MT7988 SoC.
-> > > 
-> > > Imho, as there are no actual XGMII signals exposed anywhere I'd use
-> > > "internal" to describe the link between MAC and PHY (which are both
-> > > inside the same chip package).
-> > 
-> > I don't care what gets decided about what's acceptable for the PHY to
-> > accept, just that it checks for the acceptable modes in .config_init()
-> > and the .get_rate_matching() method is not checking for interface
-> > modes that are not permitted.
-> 
-> What I meant to express is that there is no need for such a check, also
-> not in config_init. There is only one way and one MAC-side interface mode
-> to operate that PHY, so the value will anyway not be considered anywhere
-> in the driver.
+From: Frank Wunderlich <frank-w@public-files.de>
 
-No, it matters. With drivers using phylink, the PHY interface mode is
-used in certain circumstances to constrain what the net device can do.
-So, it makes sense for new PHY drivers to ensure that the PHY interface
-mode is one that they can support, rather than just accepting whatever
-is passed to them (which then can lead to maintainability issues for
-subsystems.)
+The mainline MTK ethernet driver suffers long time from rarly but
+annoying tx queue timeouts. We think that this is caused by fixed
+dma sizes hardcoded for all SoCs.
 
-So, excuse me for disagreeing with you, but I do want to see such a
-check in new PHY drivers.
+We suspect this problem arises from a low level of free TX DMADs,
+the TX Ring alomost full.
 
+The transmit timeout is caused by the Tx queue not waking up. The
+Tx queue stops when the free counter is less than ring->thres, and
+it will wake up once the free counter is greater than ring->thres.
+If the CPU is too late to wake up the Tx queues, it may cause a
+transmit timeout.
+Therefore, we increased the TX and RX DMADs to improve this error
+situation.
+
+Use the dma-size implementation from SDK in a per SoC manner. In
+difference to SDK we have no RSS feature yet, so all RX/TX sizes
+should be raised from 512 to 2048 byte except fqdma on mt7988 to
+avoid the tx timeout issue.
+
+Fixes: 656e705243fd ("net-next: mediatek: add support for MT7623 ethernet")
+Suggested-by: Daniel Golle <daniel@makrotopia.org>
+Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+---
+based on SDK:
+
+https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds/+/fac194d6253d339e15c651c052b532a449a04d6e
+
+v3:
+- rephrase commit message with some information from mtk
+- change the TX/RX DMA Size from 512 to 2048 for all platforms.
+  When rss gets upstream TX Size should be increases to 4096 and
+  the RX Size decreased to 1024 for MT798[1/6/8].
+- drop fq_dma_size from rt5350/mt7628 as this does not have QDMA
+v2:
+- fix unused variable 'addr' in 32bit build
+---
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 104 +++++++++++++-------
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h |   9 +-
+ 2 files changed, 77 insertions(+), 36 deletions(-)
+
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index cae46290a7ae..c84ce54a84a0 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -1131,9 +1131,9 @@ static int mtk_init_fq_dma(struct mtk_eth *eth)
+ {
+ 	const struct mtk_soc_data *soc = eth->soc;
+ 	dma_addr_t phy_ring_tail;
+-	int cnt = MTK_QDMA_RING_SIZE;
++	int cnt = soc->tx.fq_dma_size;
+ 	dma_addr_t dma_addr;
+-	int i;
++	int i, j, len;
+ 
+ 	if (MTK_HAS_CAPS(eth->soc->caps, MTK_SRAM))
+ 		eth->scratch_ring = eth->sram_base;
+@@ -1142,40 +1142,46 @@ static int mtk_init_fq_dma(struct mtk_eth *eth)
+ 						       cnt * soc->tx.desc_size,
+ 						       &eth->phy_scratch_ring,
+ 						       GFP_KERNEL);
++
+ 	if (unlikely(!eth->scratch_ring))
+ 		return -ENOMEM;
+ 
+-	eth->scratch_head = kcalloc(cnt, MTK_QDMA_PAGE_SIZE, GFP_KERNEL);
+-	if (unlikely(!eth->scratch_head))
+-		return -ENOMEM;
++	phy_ring_tail = eth->phy_scratch_ring + soc->tx.desc_size * (cnt - 1);
+ 
+-	dma_addr = dma_map_single(eth->dma_dev,
+-				  eth->scratch_head, cnt * MTK_QDMA_PAGE_SIZE,
+-				  DMA_FROM_DEVICE);
+-	if (unlikely(dma_mapping_error(eth->dma_dev, dma_addr)))
+-		return -ENOMEM;
++	for (j = 0; j < DIV_ROUND_UP(soc->tx.fq_dma_size, MTK_FQ_DMA_LENGTH); j++) {
++		len = min_t(int, cnt - j * MTK_FQ_DMA_LENGTH, MTK_FQ_DMA_LENGTH);
++		eth->scratch_head[j] = kcalloc(len, MTK_QDMA_PAGE_SIZE, GFP_KERNEL);
+ 
+-	phy_ring_tail = eth->phy_scratch_ring + soc->tx.desc_size * (cnt - 1);
++		if (unlikely(!eth->scratch_head[j]))
++			return -ENOMEM;
+ 
+-	for (i = 0; i < cnt; i++) {
+-		dma_addr_t addr = dma_addr + i * MTK_QDMA_PAGE_SIZE;
+-		struct mtk_tx_dma_v2 *txd;
++		dma_addr = dma_map_single(eth->dma_dev,
++					  eth->scratch_head[j], len * MTK_QDMA_PAGE_SIZE,
++					  DMA_FROM_DEVICE);
+ 
+-		txd = eth->scratch_ring + i * soc->tx.desc_size;
+-		txd->txd1 = addr;
+-		if (i < cnt - 1)
+-			txd->txd2 = eth->phy_scratch_ring +
+-				    (i + 1) * soc->tx.desc_size;
++		if (unlikely(dma_mapping_error(eth->dma_dev, dma_addr)))
++			return -ENOMEM;
+ 
+-		txd->txd3 = TX_DMA_PLEN0(MTK_QDMA_PAGE_SIZE);
+-		if (MTK_HAS_CAPS(soc->caps, MTK_36BIT_DMA))
+-			txd->txd3 |= TX_DMA_PREP_ADDR64(addr);
+-		txd->txd4 = 0;
+-		if (mtk_is_netsys_v2_or_greater(eth)) {
+-			txd->txd5 = 0;
+-			txd->txd6 = 0;
+-			txd->txd7 = 0;
+-			txd->txd8 = 0;
++		for (i = 0; i < cnt; i++) {
++			struct mtk_tx_dma_v2 *txd;
++
++			txd = eth->scratch_ring + (j * MTK_FQ_DMA_LENGTH + i) * soc->tx.desc_size;
++			txd->txd1 = dma_addr + i * MTK_QDMA_PAGE_SIZE;
++			if (j * MTK_FQ_DMA_LENGTH + i < cnt)
++				txd->txd2 = eth->phy_scratch_ring +
++					    (j * MTK_FQ_DMA_LENGTH + i + 1) * soc->tx.desc_size;
++
++			txd->txd3 = TX_DMA_PLEN0(MTK_QDMA_PAGE_SIZE);
++			if (MTK_HAS_CAPS(soc->caps, MTK_36BIT_DMA))
++				txd->txd3 |= TX_DMA_PREP_ADDR64(dma_addr + i * MTK_QDMA_PAGE_SIZE);
++
++			txd->txd4 = 0;
++			if (mtk_is_netsys_v2_or_greater(eth)) {
++				txd->txd5 = 0;
++				txd->txd6 = 0;
++				txd->txd7 = 0;
++				txd->txd8 = 0;
++			}
+ 		}
+ 	}
+ 
+@@ -2457,7 +2463,7 @@ static int mtk_tx_alloc(struct mtk_eth *eth)
+ 	if (MTK_HAS_CAPS(soc->caps, MTK_QDMA))
+ 		ring_size = MTK_QDMA_RING_SIZE;
+ 	else
+-		ring_size = MTK_DMA_SIZE;
++		ring_size = soc->tx.dma_size;
+ 
+ 	ring->buf = kcalloc(ring_size, sizeof(*ring->buf),
+ 			       GFP_KERNEL);
+@@ -2465,8 +2471,8 @@ static int mtk_tx_alloc(struct mtk_eth *eth)
+ 		goto no_tx_mem;
+ 
+ 	if (MTK_HAS_CAPS(soc->caps, MTK_SRAM)) {
+-		ring->dma = eth->sram_base + ring_size * sz;
+-		ring->phys = eth->phy_scratch_ring + ring_size * (dma_addr_t)sz;
++		ring->dma = eth->sram_base + soc->tx.fq_dma_size * sz;
++		ring->phys = eth->phy_scratch_ring + soc->tx.fq_dma_size * (dma_addr_t)sz;
+ 	} else {
+ 		ring->dma = dma_alloc_coherent(eth->dma_dev, ring_size * sz,
+ 					       &ring->phys, GFP_KERNEL);
+@@ -2588,6 +2594,7 @@ static void mtk_tx_clean(struct mtk_eth *eth)
+ static int mtk_rx_alloc(struct mtk_eth *eth, int ring_no, int rx_flag)
+ {
+ 	const struct mtk_reg_map *reg_map = eth->soc->reg_map;
++	const struct mtk_soc_data *soc = eth->soc;
+ 	struct mtk_rx_ring *ring;
+ 	int rx_data_len, rx_dma_size, tx_ring_size;
+ 	int i;
+@@ -2595,7 +2602,7 @@ static int mtk_rx_alloc(struct mtk_eth *eth, int ring_no, int rx_flag)
+ 	if (MTK_HAS_CAPS(eth->soc->caps, MTK_QDMA))
+ 		tx_ring_size = MTK_QDMA_RING_SIZE;
+ 	else
+-		tx_ring_size = MTK_DMA_SIZE;
++		tx_ring_size = soc->tx.dma_size;
+ 
+ 	if (rx_flag == MTK_RX_FLAGS_QDMA) {
+ 		if (ring_no)
+@@ -2610,7 +2617,7 @@ static int mtk_rx_alloc(struct mtk_eth *eth, int ring_no, int rx_flag)
+ 		rx_dma_size = MTK_HW_LRO_DMA_SIZE;
+ 	} else {
+ 		rx_data_len = ETH_DATA_LEN;
+-		rx_dma_size = MTK_DMA_SIZE;
++		rx_dma_size = soc->rx.dma_size;
+ 	}
+ 
+ 	ring->frag_size = mtk_max_frag_size(rx_data_len);
+@@ -3139,7 +3146,10 @@ static void mtk_dma_free(struct mtk_eth *eth)
+ 			mtk_rx_clean(eth, &eth->rx_ring[i], false);
+ 	}
+ 
+-	kfree(eth->scratch_head);
++	for (i = 0; i < DIV_ROUND_UP(soc->tx.fq_dma_size, MTK_FQ_DMA_LENGTH); i++) {
++		kfree(eth->scratch_head[i]);
++		eth->scratch_head[i] = NULL;
++	}
+ }
+ 
+ static bool mtk_hw_reset_check(struct mtk_eth *eth)
+@@ -5052,11 +5062,14 @@ static const struct mtk_soc_data mt2701_data = {
+ 		.desc_size = sizeof(struct mtk_tx_dma),
+ 		.dma_max_len = MTK_TX_DMA_BUF_LEN,
+ 		.dma_len_offset = 16,
++		.dma_size = MTK_DMA_SIZE(2K),
++		.fq_dma_size = MTK_DMA_SIZE(2K),
+ 	},
+ 	.rx = {
+ 		.desc_size = sizeof(struct mtk_rx_dma),
+ 		.irq_done_mask = MTK_RX_DONE_INT,
+ 		.dma_l4_valid = RX_DMA_L4_VALID,
++		.dma_size = MTK_DMA_SIZE(2K),
+ 		.dma_max_len = MTK_TX_DMA_BUF_LEN,
+ 		.dma_len_offset = 16,
+ 	},
+@@ -5076,11 +5089,14 @@ static const struct mtk_soc_data mt7621_data = {
+ 		.desc_size = sizeof(struct mtk_tx_dma),
+ 		.dma_max_len = MTK_TX_DMA_BUF_LEN,
+ 		.dma_len_offset = 16,
++		.dma_size = MTK_DMA_SIZE(2K),
++		.fq_dma_size = MTK_DMA_SIZE(2K),
+ 	},
+ 	.rx = {
+ 		.desc_size = sizeof(struct mtk_rx_dma),
+ 		.irq_done_mask = MTK_RX_DONE_INT,
+ 		.dma_l4_valid = RX_DMA_L4_VALID,
++		.dma_size = MTK_DMA_SIZE(2K),
+ 		.dma_max_len = MTK_TX_DMA_BUF_LEN,
+ 		.dma_len_offset = 16,
+ 	},
+@@ -5102,11 +5118,14 @@ static const struct mtk_soc_data mt7622_data = {
+ 		.desc_size = sizeof(struct mtk_tx_dma),
+ 		.dma_max_len = MTK_TX_DMA_BUF_LEN,
+ 		.dma_len_offset = 16,
++		.dma_size = MTK_DMA_SIZE(2K),
++		.fq_dma_size = MTK_DMA_SIZE(2K),
+ 	},
+ 	.rx = {
+ 		.desc_size = sizeof(struct mtk_rx_dma),
+ 		.irq_done_mask = MTK_RX_DONE_INT,
+ 		.dma_l4_valid = RX_DMA_L4_VALID,
++		.dma_size = MTK_DMA_SIZE(2K),
+ 		.dma_max_len = MTK_TX_DMA_BUF_LEN,
+ 		.dma_len_offset = 16,
+ 	},
+@@ -5127,11 +5146,14 @@ static const struct mtk_soc_data mt7623_data = {
+ 		.desc_size = sizeof(struct mtk_tx_dma),
+ 		.dma_max_len = MTK_TX_DMA_BUF_LEN,
+ 		.dma_len_offset = 16,
++		.dma_size = MTK_DMA_SIZE(2K),
++		.fq_dma_size = MTK_DMA_SIZE(2K),
+ 	},
+ 	.rx = {
+ 		.desc_size = sizeof(struct mtk_rx_dma),
+ 		.irq_done_mask = MTK_RX_DONE_INT,
+ 		.dma_l4_valid = RX_DMA_L4_VALID,
++		.dma_size = MTK_DMA_SIZE(2K),
+ 		.dma_max_len = MTK_TX_DMA_BUF_LEN,
+ 		.dma_len_offset = 16,
+ 	},
+@@ -5150,11 +5172,14 @@ static const struct mtk_soc_data mt7629_data = {
+ 		.desc_size = sizeof(struct mtk_tx_dma),
+ 		.dma_max_len = MTK_TX_DMA_BUF_LEN,
+ 		.dma_len_offset = 16,
++		.dma_size = MTK_DMA_SIZE(2K),
++		.fq_dma_size = MTK_DMA_SIZE(2K),
+ 	},
+ 	.rx = {
+ 		.desc_size = sizeof(struct mtk_rx_dma),
+ 		.irq_done_mask = MTK_RX_DONE_INT,
+ 		.dma_l4_valid = RX_DMA_L4_VALID,
++		.dma_size = MTK_DMA_SIZE(2K),
+ 		.dma_max_len = MTK_TX_DMA_BUF_LEN,
+ 		.dma_len_offset = 16,
+ 	},
+@@ -5176,6 +5201,8 @@ static const struct mtk_soc_data mt7981_data = {
+ 		.desc_size = sizeof(struct mtk_tx_dma_v2),
+ 		.dma_max_len = MTK_TX_DMA_BUF_LEN_V2,
+ 		.dma_len_offset = 8,
++		.dma_size = MTK_DMA_SIZE(2K),
++		.fq_dma_size = MTK_DMA_SIZE(2K),
+ 	},
+ 	.rx = {
+ 		.desc_size = sizeof(struct mtk_rx_dma),
+@@ -5183,6 +5210,7 @@ static const struct mtk_soc_data mt7981_data = {
+ 		.dma_l4_valid = RX_DMA_L4_VALID_V2,
+ 		.dma_max_len = MTK_TX_DMA_BUF_LEN,
+ 		.dma_len_offset = 16,
++		.dma_size = MTK_DMA_SIZE(2K),
+ 	},
+ };
+ 
+@@ -5202,6 +5230,8 @@ static const struct mtk_soc_data mt7986_data = {
+ 		.desc_size = sizeof(struct mtk_tx_dma_v2),
+ 		.dma_max_len = MTK_TX_DMA_BUF_LEN_V2,
+ 		.dma_len_offset = 8,
++		.dma_size = MTK_DMA_SIZE(2K),
++		.fq_dma_size = MTK_DMA_SIZE(2K),
+ 	},
+ 	.rx = {
+ 		.desc_size = sizeof(struct mtk_rx_dma),
+@@ -5209,6 +5239,7 @@ static const struct mtk_soc_data mt7986_data = {
+ 		.dma_l4_valid = RX_DMA_L4_VALID_V2,
+ 		.dma_max_len = MTK_TX_DMA_BUF_LEN,
+ 		.dma_len_offset = 16,
++		.dma_size = MTK_DMA_SIZE(2K),
+ 	},
+ };
+ 
+@@ -5228,6 +5259,8 @@ static const struct mtk_soc_data mt7988_data = {
+ 		.desc_size = sizeof(struct mtk_tx_dma_v2),
+ 		.dma_max_len = MTK_TX_DMA_BUF_LEN_V2,
+ 		.dma_len_offset = 8,
++		.dma_size = MTK_DMA_SIZE(2K),
++		.fq_dma_size = MTK_DMA_SIZE(4K),
+ 	},
+ 	.rx = {
+ 		.desc_size = sizeof(struct mtk_rx_dma_v2),
+@@ -5235,6 +5268,7 @@ static const struct mtk_soc_data mt7988_data = {
+ 		.dma_l4_valid = RX_DMA_L4_VALID_V2,
+ 		.dma_max_len = MTK_TX_DMA_BUF_LEN_V2,
+ 		.dma_len_offset = 8,
++		.dma_size = MTK_DMA_SIZE(2K),
+ 	},
+ };
+ 
+@@ -5249,6 +5283,7 @@ static const struct mtk_soc_data rt5350_data = {
+ 		.desc_size = sizeof(struct mtk_tx_dma),
+ 		.dma_max_len = MTK_TX_DMA_BUF_LEN,
+ 		.dma_len_offset = 16,
++		.dma_size = MTK_DMA_SIZE(2K),
+ 	},
+ 	.rx = {
+ 		.desc_size = sizeof(struct mtk_rx_dma),
+@@ -5256,6 +5291,7 @@ static const struct mtk_soc_data rt5350_data = {
+ 		.dma_l4_valid = RX_DMA_L4_VALID_PDMA,
+ 		.dma_max_len = MTK_TX_DMA_BUF_LEN,
+ 		.dma_len_offset = 16,
++		.dma_size = MTK_DMA_SIZE(2K),
+ 	},
+ };
+ 
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+index 4eab30b44070..f5174f6cb1bb 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+@@ -32,7 +32,9 @@
+ #define MTK_TX_DMA_BUF_LEN	0x3fff
+ #define MTK_TX_DMA_BUF_LEN_V2	0xffff
+ #define MTK_QDMA_RING_SIZE	2048
+-#define MTK_DMA_SIZE		512
++#define MTK_DMA_SIZE(x)		(SZ_##x)
++#define MTK_FQ_DMA_HEAD		32
++#define MTK_FQ_DMA_LENGTH	2048
+ #define MTK_RX_ETH_HLEN		(ETH_HLEN + ETH_FCS_LEN)
+ #define MTK_RX_HLEN		(NET_SKB_PAD + MTK_RX_ETH_HLEN + NET_IP_ALIGN)
+ #define MTK_DMA_DUMMY_DESC	0xffffffff
+@@ -1176,6 +1178,8 @@ struct mtk_soc_data {
+ 		u32	desc_size;
+ 		u32	dma_max_len;
+ 		u32	dma_len_offset;
++		u32	dma_size;
++		u32	fq_dma_size;
+ 	} tx;
+ 	struct {
+ 		u32	desc_size;
+@@ -1183,6 +1187,7 @@ struct mtk_soc_data {
+ 		u32	dma_l4_valid;
+ 		u32	dma_max_len;
+ 		u32	dma_len_offset;
++		u32	dma_size;
+ 	} rx;
+ };
+ 
+@@ -1264,7 +1269,7 @@ struct mtk_eth {
+ 	struct napi_struct		rx_napi;
+ 	void				*scratch_ring;
+ 	dma_addr_t			phy_scratch_ring;
+-	void				*scratch_head;
++	void				*scratch_head[MTK_FQ_DMA_HEAD];
+ 	struct clk			*clks[MTK_CLK_MAX];
+ 
+ 	struct mii_bus			*mii_bus;
 -- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+2.34.1
+
 
