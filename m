@@ -4,95 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF330C25B7E
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Jun 2024 07:14:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DA9EC27C52
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Jun 2024 07:41:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1O0SMHNCQdNY7eE1ZfPsRKnx5uzxN0Q7ClqTL82kBfE=; b=PSf2H94B6SEe8rZcaNQX+H0OKV
-	s0U752IwrEHdzqPy363NskxwIRlYmjfXxdA+q7Wjft0ahPgojSzdfUWDp2LsYPvAx05C4kts23Fy2
-	74EUtxhMpr4L302BAJudE1Sw9nX14ARxRG09TPcr+dWyzJDDzA/7mfeSFB3zc8sRa620S2kifsR2M
-	smWWUse86cnxNPAhMmeSo0IqgXCN2MEMxV07eGVoMC1lXio4MZHsEAp+krFLSLoZLY5iTVLiuQl+v
-	bki2cwwAT9aIkdwmDwEhnJTfaq+ep3DYqmlGcjeIYsmyYMjasSBsfF/Wrk+DOKYPt7oS+rVSumg6L
-	k1lRXbjg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=vCnoMy4gW37pGjxNmOGfcGS87C3TvaA24Lp8NUng/m0=; b=QiMilrDeNm0GierSP9OEqh8VW3
+	Cra+m9SzSqPO2+Z0tkCxxDFBgsaVrS8XnWdA/vNboXsfY1HL8VqEDrw2zrrAyj+Vq3GIo2EZAG8uI
+	x5LtJagQkmvps2bFdkH/gU1+e9KA+GoJOomhFRWiBFCWc+D0raTLkK8dobeCXdbt61T6IPBY3ITYb
+	EJpQyJ9XIIFnNUhj73mVRPGO7P5nnmbXtvgEyMO8N3Tw04ijc7g2m6HfIBg3O0a21SEIlmVChF43o
+	CjZ/NAK9vQZGfUdszVPmBINO7wngLGhmUsOOZ1Ok9qaNCiyqOxJULca5EPorFjxMSOPixzD8ArLHD
+	Y/W9HnFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sEONU-00000001Trv-1WiT;
-	Tue, 04 Jun 2024 07:14:40 +0000
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
+	id 1sEOnh-00000001YIq-1cTn;
+	Tue, 04 Jun 2024 07:41:45 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sEONP-00000001Tqj-2CjT;
-	Tue, 04 Jun 2024 07:14:36 +0000
-Received: by mail-ej1-x635.google.com with SMTP id a640c23a62f3a-a68f10171bdso251595866b.0;
-        Tue, 04 Jun 2024 00:14:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1717485273; x=1718090073; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=1O0SMHNCQdNY7eE1ZfPsRKnx5uzxN0Q7ClqTL82kBfE=;
-        b=KWDz98PUWs/2xoaTuWX4UCnX0glN11DDj0oJGl7VHR/F54xW+9R45/TK0Clp2HKxGT
-         dwzEf4I2KDCx56kKaU4njbQ98iV9RBLGoegEMrHd4hIMjaykPaEqGsqauj2dNGmXvxCL
-         hFE9+Lu8yJ2bh3FjgXBowu2tFVx7p3hiXVjKC9QSHq1nUiLMzuNFfG/k/jqVsB6W0Zjf
-         se1haDsjxo440+UOevZHFOr8YtFHsUyMbsNLnkYyeN4jsw1sgW3wvR/yQjL0lkZYYsPe
-         e01cwqdF9lnFmI0JbqPXX00CSPoy/T0rMXJbvUy6D8WI/rt29AW6NSft7CHElABocFdS
-         oSaQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1717485273; x=1718090073;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=1O0SMHNCQdNY7eE1ZfPsRKnx5uzxN0Q7ClqTL82kBfE=;
-        b=lc52OJQhCsNPYtbQzVQQtOYrZ+6niO53AEpGpptUELSkgwrDkHV7L+QgB32heeQLYx
-         S9/HJF/AfC09n3E5euk1i6ZyVhQun21Z8KgeL3uooNkHvs8wxaC+K4kwp/G1xPD7OLZt
-         B15I3uLxPrAsu3tsb22rMByGjRWJUlQjXSZdvHtMItfjZOtR9kSouPUw4ZzpXpT4/fgu
-         yDSxBAYBfrNN5y/iTNv/GC/yIP0wJDnnhiPm8X2iRKzHXNpx9xht2y2L9qMpF1WYywk4
-         VWQepLPFiLxHbS0mRhSm1m+HhXeCAHhoDwU/D2+xiwLGscPYd535ZE/MlVmShSzbA5rI
-         pK2w==
-X-Forwarded-Encrypted: i=1; AJvYcCWjpYfXOXY8OSX1ym7CPc65bghcUwaoQ1fcYQ888aGa9/oURPn0CId1CG+dVtulSEQwVgy8B3tSR0I6UeF7W1BWYT4dvcB6apfbgF/bxNCn489ZZZdOKkhTX+yLS0B5URm7hnik77owGnm2JkAZFmdrCxR6+xdaoWk=
-X-Gm-Message-State: AOJu0Yw6bJVAbFty0QDMTfvEqbzsaUiO4yMWY6BzzPoNyDo0dkmfxaBQ
-	o91VKIWlGwxtFKyBG8zvHYvvBQk3OPv/4grBLU1kzFoXnKXlWIq3DFnlMw==
-X-Google-Smtp-Source: AGHT+IH/HoOTvOP1YSrMHxJv9HF+dks0c4NXtd8r+IyQkn7/51/OXLwRI8a2BGTAekCG+qQ77XdGHg==
-X-Received: by 2002:a17:906:5655:b0:a68:b839:485a with SMTP id a640c23a62f3a-a68b839626cmr594199966b.77.1717485272415;
-        Tue, 04 Jun 2024 00:14:32 -0700 (PDT)
-Received: from [192.168.26.149] (031011218106.poznan.vectranet.pl. [31.11.218.106])
-        by smtp.googlemail.com with ESMTPSA id a640c23a62f3a-a68ccf77cd3sm402597366b.13.2024.06.04.00.14.30
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 04 Jun 2024 00:14:32 -0700 (PDT)
-Message-ID: <a8845e9a-839c-4741-a868-1f415b926d40@gmail.com>
-Date: Tue, 4 Jun 2024 09:14:30 +0200
+	id 1sEOne-00000001YHG-3808
+	for linux-mediatek@lists.infradead.org;
+	Tue, 04 Jun 2024 07:41:44 +0000
+X-UUID: ddecac08224511ef82c84f6416ccf2f3-20240604
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=vCnoMy4gW37pGjxNmOGfcGS87C3TvaA24Lp8NUng/m0=;
+	b=ty0Hjejg1DYOz7PPH9gbkJgSYFB3JIw17xNfdMHQFgG7IKidg2TOo6JOVC3xVY55LQQRXwxwFbhK7UWNOnXlv6ZPW9PXVrH8nJZQ0A5T708FzSNuPcCQySmMGO1ZyaIkIEPcgH93KvQoNipwtgVbHvvoD+aKxiJNuJOC4iVC6J8=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.39,REQID:496a3067-9754-4733-ae4b-562b503de436,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:393d96e,CLOUDID:08fe2d44-4544-4d06-b2b2-d7e12813c598,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: ddecac08224511ef82c84f6416ccf2f3-20240604
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
+	(envelope-from <jiande.lu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 692521859; Tue, 04 Jun 2024 00:41:34 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Tue, 4 Jun 2024 15:41:30 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Tue, 4 Jun 2024 15:41:30 +0800
+From: Jiande Lu <jiande.lu@mediatek.com>
+To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
+	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
+CC: Sean Wang <sean.wang@mediatek.com>, Chris Lu <chris.lu@mediatek.com>,
+	Deren Wu <deren.Wu@mediatek.com>, Aaron Hou <aaron.hou@mediatek.com>, "Steve
+ Lee" <steve.lee@mediatek.com>, linux-bluetooth
+	<linux-bluetooth@vger.kernel.org>, linux-kernel
+	<linux-kernel@vger.kernel.org>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Jiande Lu <jiande.lu@mediatek.com>
+Subject: [PATCH] Bluetooth: btusb: Add USB HW IDs for MT7920/MT7925
+Date: Tue, 4 Jun 2024 15:41:00 +0800
+Message-ID: <20240604074100.572-1-jiande.lu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/3] dt-bindings: vendor-prefixes: add OpenWrt
-Content-Language: en-US
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Linus Walleij <linus.walleij@linaro.org>, Conor Dooley
- <conor+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>,
- Chen-Yu Tsai <wenst@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
- =?UTF-8?Q?N=C3=ADcolas_F_=2E_R_=2E_A_=2E_Prado?= <nfraprado@collabora.com>,
- Macpaul Lin <macpaul.lin@mediatek.com>,
- Heiko Stuebner <heiko.stuebner@cherry.de>,
- Neil Armstrong <neil.armstrong@linaro.org>,
- Chris Morgan <macromorgan@hotmail.com>, Sebastian Reichel <sre@kernel.org>,
- Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- openwrt-devel@lists.openwrt.org, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?=
- <rafal@milecki.pl>
-References: <20240527115933.7396-1-zajec5@gmail.com>
- <20240527115933.7396-2-zajec5@gmail.com>
- <CACRpkda-egxVtP8Tan9T_EfQX6ekqQDf3LaVUu0by7aWY1Qmag@mail.gmail.com>
- <ed191114-0259-4de9-8e32-6718fd5e6747@collabora.com>
-From: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
-In-Reply-To: <ed191114-0259-4de9-8e32-6718fd5e6747@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--4.703900-8.000000
+X-TMASE-MatchedRID: yvDAzrttxFVys0UAwvp+/ANARH50Lwx2uLwbhNl9B5VUvqB5o/Lqcx4u
+	a24ul9odlQyR652shZxIg7V1v/s3Rx1YpEPWJiyz4pdq9sdj8LUK3n1SHen81Xe9QDr8+LTcPOm
+	svTTYiPHi8zVgXoAltsIJ+4gwXrEtwrbXMGDYqV+eVW/ZdL52j0CK+Db3ho1yetUmjQUx2zddNn
+	8SXR397s3/wxQI4Cm55M5efyQJ5Xs2GIkImAO0vyKNY+qbNCUOjK6ZzRHW/PGz2uN2Wc67hHZrU
+	bEZipAEiWT09mQz7szw9kH8zAy44aOuVLnx3A74
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--4.703900-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 08934D42DCF5218560D29DD22AA74B15C6C053DEC15DEBE8655CB9616CDD33102000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240604_001435_586630_26ED7810 
-X-CRM114-Status: GOOD (  11.67  )
+X-CRM114-CacheID: sfid-20240604_004142_826924_A12546FD 
+X-CRM114-Status: UNSURE (   8.76  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,27 +100,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 3.06.2024 09:37, AngeloGioacchino Del Regno wrote:
-> Il 29/05/24 09:42, Linus Walleij ha scritto:
->> On Mon, May 27, 2024 at 2:00 PM Rafał Miłecki <zajec5@gmail.com> wrote:
->>
->>> From: Rafał Miłecki <rafal@milecki.pl>
->>>
->>> OpenWrt project (with the help of MediaTek and Banana Pi) has produced
->>> its very first own hardware. It needs its own prefix.
->>>
->>> Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
->>
->> Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
->>
-> 
-> Hello,
-> 
-> I'm not sure about who should pick this particular patch - should I pick it into
-> the MediaTek tree, or...?
+Add HW IDs for wireless module. These HW IDs are extracted from
+Windows driver inf file. Note these HW IDs without official drivers,
+still in testing phase. Thus, we update module HW ID and test
+ensure consistent boot success.
 
-We have ack from DT maintainer. Similar PATCH was picked by you during
-the previous merge windows in the commit d67c211261d1 ("dt-bindings:
-vendor-prefixes: add Cudy"). I don't see why this one couldn't go
-through your / mediatek tree :)
+Signed-off-by: Jiande Lu <jiande.lu@mediatek.com>
+---
+ drivers/bluetooth/btusb.c | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
+
+diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+index 79aefdb3324d..62fc836f8afb 100644
+--- a/drivers/bluetooth/btusb.c
++++ b/drivers/bluetooth/btusb.c
+@@ -585,6 +585,20 @@ static const struct usb_device_id quirks_table[] = {
+ 						     BTUSB_WIDEBAND_SPEECH |
+ 						     BTUSB_VALID_LE_STATES },
+ 
++	/* Additional MediaTek MT7920 Bluetooth devices */
++	{ USB_DEVICE(0x0489, 0xe134), .driver_info = BTUSB_MEDIATEK |
++						     BTUSB_WIDEBAND_SPEECH |
++						     BTUSB_VALID_LE_STATES },
++	{ USB_DEVICE(0x13d3, 0x3620), .driver_info = BTUSB_MEDIATEK |
++						     BTUSB_WIDEBAND_SPEECH |
++						     BTUSB_VALID_LE_STATES },
++	{ USB_DEVICE(0x13d3, 0x3621), .driver_info = BTUSB_MEDIATEK |
++						     BTUSB_WIDEBAND_SPEECH |
++						     BTUSB_VALID_LE_STATES },
++	{ USB_DEVICE(0x13d3, 0x3622), .driver_info = BTUSB_MEDIATEK |
++						     BTUSB_WIDEBAND_SPEECH |
++						     BTUSB_VALID_LE_STATES },
++
+ 	/* Additional MediaTek MT7921 Bluetooth devices */
+ 	{ USB_DEVICE(0x0489, 0xe0c8), .driver_info = BTUSB_MEDIATEK |
+ 						     BTUSB_WIDEBAND_SPEECH |
+@@ -685,6 +699,9 @@ static const struct usb_device_id quirks_table[] = {
+ 	{ USB_DEVICE(0x0489, 0xe113), .driver_info = BTUSB_MEDIATEK |
+ 						     BTUSB_WIDEBAND_SPEECH |
+ 						     BTUSB_VALID_LE_STATES },
++	{ USB_DEVICE(0x0489, 0xe139), .driver_info = BTUSB_MEDIATEK |
++						     BTUSB_WIDEBAND_SPEECH |
++						     BTUSB_VALID_LE_STATES },
+ 	{ USB_DEVICE(0x13d3, 0x3602), .driver_info = BTUSB_MEDIATEK |
+ 						     BTUSB_WIDEBAND_SPEECH |
+ 						     BTUSB_VALID_LE_STATES },
+-- 
+2.18.0
+
 
