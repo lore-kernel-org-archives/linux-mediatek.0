@@ -4,87 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD34CC25B74
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Jun 2024 04:22:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0603C25B7E
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Jun 2024 06:32:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sZTkPdaoUs8jQNyMlsxEd3PQVY77PvdNJflZvZlG4XM=; b=VMBcNLyDgtBKn24NmFTnzP4duq
-	tD72Qk1i9kKs5ZvNuenPThUqo38FyJyi20fTlDrUWGpowb6j08YkyGxvIPwXYqC7nE4AQXps/0PkG
-	8G8nYK85QcCf396vjPtIymju+mDb4jk9cOjdDTClFkfaOteqPB0MRnKLut/ybfRJIXJEppDPGWxeZ
-	HvrUGFfOFioZWxRebcucLnK5hyvyi+KeIxBhyG8FScIifa7Lhzs2E4YGkL3AllIZf/soFVK1LGwGc
-	jHLEHSxXvW4RyKkp61hHQMH404171kY/xFfWpSoiejdJb0GTj343WnuLDl6dseonGhTmt6DLfYZio
-	6SauW1ng==;
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Fz+XDDXq5ys5kE0CMYMOtO36VP/HBwJd0Xynw9uYwg4=; b=vLCPKA0//Fs1DLbKG0+Rm3pbbN
+	es9vssndhc36XJRDTSnX8qzPrVZ5djT/PX1jbqlFm8bZwW5ZDzXyOvRaRzTIZDrJ6Fx2u9XWXZ31R
+	dzXJjEHMwjB6hz5p/pE0lcD/BrNkP/K+W5XwrG7DqDLxz6Dud6w4Z5pgrKYczKQyDFIdyaK7U4Wcb
+	/C0M8SgQb9FYQgh52LDzmE40X3CYC/GKZm2nypDli6OOavFamcVSUMX1wsCaVVwZBoScP/rtCKsQq
+	IjpR7C5s7nJ7vPMpCJYYBloKDil0TpDy8g00wRhAjPlV84KYUvKxunL0+2uiw96PwuHVe/HmjBU/J
+	nuexV+Xw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sELgV-000000019s9-25ty;
-	Tue, 04 Jun 2024 04:22:07 +0000
-Received: from mail-lj1-x22c.google.com ([2a00:1450:4864:20::22c])
+	id 1sENif-00000001OXh-07X2;
+	Tue, 04 Jun 2024 06:32:29 +0000
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sELgR-000000019nF-40IR
-	for linux-mediatek@lists.infradead.org;
-	Tue, 04 Jun 2024 04:22:05 +0000
-Received: by mail-lj1-x22c.google.com with SMTP id 38308e7fff4ca-2eaa80cb573so35455341fa.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 03 Jun 2024 21:21:59 -0700 (PDT)
+	id 1sENia-00000001OWL-2GRL;
+	Tue, 04 Jun 2024 06:32:25 +0000
+Received: by mail-ed1-x531.google.com with SMTP id 4fb4d7f45d1cf-57a1fe6392eso5839781a12.0;
+        Mon, 03 Jun 2024 23:32:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1717474918; x=1718079718; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=sZTkPdaoUs8jQNyMlsxEd3PQVY77PvdNJflZvZlG4XM=;
-        b=PGwiUIgRp8oqGMNiJHRKOln7VhdPfRtxhAaWiBrnoemhXwS/KfMtsadqq+Ev0qgo1w
-         LLfza2NqqauRyqZrc9BTcni1kyDPWtFPgFS/ge2eoj+duyaqejUQrPi+EGhQhl4K9Nzg
-         /uWVeFxyqKUiOPTdWs1dxkGU3936XDssvCAHQ=
+        d=gmail.com; s=20230601; t=1717482742; x=1718087542; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=Fz+XDDXq5ys5kE0CMYMOtO36VP/HBwJd0Xynw9uYwg4=;
+        b=E39HfAMUsOACxDlSxTNsfeuSEXv7Og2rD+MXb2xgCY5V0gudar1IIN4ygEtHHwb9q5
+         EpHegphykUJJ1tNTT8R+tvynyW1QoN5bdT/OgqcwWC1D1d0HENHw/jsEg9YHk1090Efa
+         mfaKq8QQ+7YLMeBiTxnY4ch8ujUtOnKvmRshtrMI/xZBO1risqznMS7xaIAAWIJ5k6P/
+         z8+nH0UBizpXwXV+ibX3Dr3F8hQUBNEJjTffb3TBcwFrpjoaaPz7oDRQoDsR5VhXEcIe
+         FG4GqjFot6cFrlaFXU3DTzhIihmwiQwgpEg74Ux3DBCmpZjOPFr7zEt0Hbp4M/cHFIFq
+         EiTQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1717474918; x=1718079718;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=sZTkPdaoUs8jQNyMlsxEd3PQVY77PvdNJflZvZlG4XM=;
-        b=GNi/Yho0VFCphmoSLdYWhPFcJ1roMDhzIL7oLf1HpAAMOADyaxNzt9EijZ0zUtPH3l
-         Vs69sc6o7t8GhiCQxRRD74IEjgm+nb5WOAHBC2bzaMR6LeuXszdao+5atm+yb4lCfl/t
-         OI9+15dpdUanxuX98/6LS+FnrPLhEycNVgkTVauxHwF2ezIeQ6yx+Bulxb9vDGVwhA4q
-         H9i9o9nfmr5plNHU4CVD3ELaGinfn+epcpUhJBiyBy1oxZ8uiaKl07krsCAEj58em9cE
-         8mcxfZ0mVASI/yIpUHbxCKX+SUgS9427h0wJOkDBy2QK0hQBtMe6wj8rXhr0us8UZB6A
-         EqPw==
-X-Forwarded-Encrypted: i=1; AJvYcCXEBpzzO1MOp5fE7gL1WmvBIEWfXd0DEDjLzz9xPGrvOBxYugiSGzbwD2N2mOJEW077A2tNoIBTraIeyaUFWWOKTa3JjGS+7PTglMs1s3VqbOXm
-X-Gm-Message-State: AOJu0Yx6rvdPkfalxbVud5zPMJCMHfm5RTaAkvB7HoZq3Q61zmCU/yXa
-	sHcYEqCIlC4hSkhE5kTQQVPscjat6jarrgVHa4A9UrjYtHB9TrtPxJ2W65EQtl4yE4H+TFkUf06
-	Is0WyxJSIUzUu62aoFzo7HGtUmkOXkiyY1hhu
-X-Google-Smtp-Source: AGHT+IGDgg2+V5eJ8x467mxNrV7nhwIMgXm1gR49RnrnhPkROZN8HdeL71iXvR/Wj+N6cLD7tGCc7y6sYjgN44bSwNQ=
-X-Received: by 2002:a19:5f53:0:b0:51d:5f0b:816f with SMTP id
- 2adb3069b0e04-52b89590e7cmr5639078e87.15.1717474917527; Mon, 03 Jun 2024
- 21:21:57 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1717482742; x=1718087542;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=Fz+XDDXq5ys5kE0CMYMOtO36VP/HBwJd0Xynw9uYwg4=;
+        b=KH5hnfpw2QOGOz/JwTa5TeGaK13mWvnifoaUrvww1V07OWtRvmR+9hPJhuDYyolEiK
+         cMqM6nQSl69jYujM+hMr2BZ2Hg/1PcxRzrJWBQ1X7fzVUl7M/I2X7dYeAdp6hZOuKiDV
+         K7Q7FvJmYkuVl8Dbl1uHYPpri/rP9vAUAJQ0mGEypTZUcnTusbaP2Wb90WhxXPXzZHtY
+         8gF/QT7ewcEwLI0MhTBIo1pezx1Acf2I4afGvMRsMyEGe90ZQ/S7X7wAtAv6IqEVOUud
+         BDkeX1ZqXz+wz/gGLy3fzKxZ9FSJoWmwAyovOmXCJOUx0RI5GGTx0fWtEtf8WVv3AcsZ
+         fo3w==
+X-Forwarded-Encrypted: i=1; AJvYcCXlqaAVKZxSxzDWfGtS98tH8Med1r8PVCVzqU9QAHEHkwCQ+cngmM2tFcDoi8g1Kb8X1A1m87uUeN0rSHQy1EtCi16Kck7rb/gMvhzo3Oco2044GcRtJo3/vkjwMXPUXxLHLvSGpFzHpP3xd0c5qlPLrpD5W8IVxbY=
+X-Gm-Message-State: AOJu0YyjrTljBx3b3tE8SeuBP6EXArFyZ5yxiDnC/XQDtRkWYQcQ3tut
+	Bjq2It3BxHfIxqkNftsKBQpUu5G+4wWJoLrWoa0IdG6NFZSWb6lugHJY5A==
+X-Google-Smtp-Source: AGHT+IENlfqn9D6YRaI1QrG289xSj3O43M8np8Iv/IszPozkc38G4q4lvRCl010LNwGBSt5VyyL8Tg==
+X-Received: by 2002:a50:99d5:0:b0:57a:243c:205 with SMTP id 4fb4d7f45d1cf-57a36450152mr7702632a12.31.1717482741525;
+        Mon, 03 Jun 2024 23:32:21 -0700 (PDT)
+Received: from localhost.lan (031011218106.poznan.vectranet.pl. [31.11.218.106])
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-57a31b991a6sm6679658a12.7.2024.06.03.23.32.20
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 03 Jun 2024 23:32:20 -0700 (PDT)
+From: =?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <zajec5@gmail.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>
+Subject: [PATCH V2] arm64: dts: mediatek: mt7981: add I2C controller
+Date: Tue,  4 Jun 2024 08:31:59 +0200
+Message-Id: <20240604063159.29216-1-zajec5@gmail.com>
+X-Mailer: git-send-email 2.35.3
 MIME-Version: 1.0
-References: <20240530083513.4135052-1-wenst@chromium.org> <20240530083513.4135052-4-wenst@chromium.org>
- <cc5847a486a760921375f069a4f65cd29453a624.camel@imgtec.com> <CAHCN7xJ7X9_yNJa7-HyU=FzN2G1cV8i9R+PoTHm-DKyiOPenUQ@mail.gmail.com>
-In-Reply-To: <CAHCN7xJ7X9_yNJa7-HyU=FzN2G1cV8i9R+PoTHm-DKyiOPenUQ@mail.gmail.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Tue, 4 Jun 2024 12:21:46 +0800
-Message-ID: <CAGXv+5GeWpBaFw89KsKyQi4t+Wjh=+58UQ7hyPaLM6pwGELiVA@mail.gmail.com>
-Subject: Re: [PATCH 3/6] dt-bindings: gpu: powervr-rogue: Add MediaTek MT8173 GPU
-To: Adam Ford <aford173@gmail.com>
-Cc: Frank Binns <Frank.Binns@imgtec.com>, 
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "tzimmermann@suse.de" <tzimmermann@suse.de>, 
-	Matt Coster <Matt.Coster@imgtec.com>, "sboyd@kernel.org" <sboyd@kernel.org>, 
-	"robh@kernel.org" <robh@kernel.org>, "krzk+dt@kernel.org" <krzk+dt@kernel.org>, 
-	"maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>, 
-	"mripard@kernel.org" <mripard@kernel.org>, "conor+dt@kernel.org" <conor+dt@kernel.org>, 
-	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>, 
-	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, 
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, 
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "airlied@gmail.com" <airlied@gmail.com>, 
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "daniel@ffwll.ch" <daniel@ffwll.ch>, 
-	"linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240603_212204_092543_C438DBAC 
-X-CRM114-Status: GOOD (  34.39  )
+X-CRM114-CacheID: sfid-20240603_233224_601689_3F4548CA 
+X-CRM114-Status: UNSURE (   9.97  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,138 +96,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, May 31, 2024 at 10:25=E2=80=AFPM Adam Ford <aford173@gmail.com> wro=
-te:
->
-> On Fri, May 31, 2024 at 8:37=E2=80=AFAM Frank Binns <Frank.Binns@imgtec.c=
-om> wrote:
-> >
-> > Hi ChenYu,
-> >
-> > On Thu, 2024-05-30 at 16:35 +0800, Chen-Yu Tsai wrote:
-> > > The MediaTek MT8173 comes with a PowerVR Rogue GX6250, which is one
-> > > of the Series6XT GPUs, another sub-family of the Rogue family.
-> >
-> > I've added Adam Ford who sent out some DT related patches [1] for the R=
-enesas
-> > variant of GX6250 and the GX6650 (another Series6XT GPU).
-> >
->
-> Thanks for including me.
->
-> > >
-> > > This was part of the very first few versions of the PowerVR submissio=
-n,
-> > > but was later dropped. The compatible string has been updated to foll=
-ow
-> > > the new naming scheme adopted for the AXE series.
-> > >
-> > > In a previous iteration of the PowerVR binding submission [1], the
-> > > number of clocks required for the 6XT family was mentioned to be
-> > > always 3. This is also reflected here.
-> > >
-> > > [1] https://lore.kernel.org/dri-devel/6eeccb26e09aad67fb30ffcd523c793=
-a43c79c2a.camel@imgtec.com/
-> > >
-> > > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> > > ---
-> > >  .../bindings/gpu/img,powervr-rogue.yaml       | 24 +++++++++++++++--=
---
-> > >  1 file changed, 20 insertions(+), 4 deletions(-)
-> > >
-> > > diff --git a/Documentation/devicetree/bindings/gpu/img,powervr-rogue.=
-yaml b/Documentation/devicetree/bindings/gpu/img,powervr-rogue.yaml
-> > > index 256e252f8087..48aa205b66b4 100644
-> > > --- a/Documentation/devicetree/bindings/gpu/img,powervr-rogue.yaml
-> > > +++ b/Documentation/devicetree/bindings/gpu/img,powervr-rogue.yaml
-> > > @@ -12,10 +12,17 @@ maintainers:
-> > >
-> > >  properties:
-> > >    compatible:
-> > > -    items:
-> > > -      - enum:
-> > > -          - ti,am62-gpu
-> > > -      - const: img,img-axe # IMG AXE GPU model/revision is fully dis=
-coverable
-> > > +    oneOf:
-> > > +      - items:
-> > > +          - enum:
-> > > +              - mediatek,mt8173-gpu
-> > > +          # PowerVR 6XT GPU model/revision is fully discoverable
-> > > +          - const: img,powervr-6xt
-> > > +      - items:
-> > > +          - enum:
-> > > +              - ti,am62-gpu
-> > > +          # IMG AXE GPU model/revision is fully discoverable
-> > > +          - const: img,img-axe
-> >
-> > The Series6XT GPU models have differing numbers of power domains (eithe=
-r 2, 4 or
-> > 5). Whereas, the AXE GPUs have a single power domain, so I assume there=
- should
-> > be a related change here.
-> >
-> > The GX6250 has two power domains (lets call them A and B). There's a co=
-nstraint
-> > that if domain B is powered then domain A must also be powered.
-> >
-> > In patch 6 [2] it's setting the power domain to MT8173_POWER_DOMAIN_MFG=
-, which I
-> > believe corresponds to power domain B. I assume this works because the =
-MTK power
-> > controller driver is encoding the constraint above, meaning that when w=
-e disable
-> > or enable MT8173_POWER_DOMAIN_MFG it's also disabling/enabling MT8173_P=
-OWER_DOMA
-> > IN_MFG_2D (domain A).
-> >
->
-> In the cover letter of this series, it was noted that the GPU
-> enumerates, but it doesn' fully function yet.  This is also the case
-> for both of the Renesas variants I have been testing, and I was nicely
-> asked to postpone my series until the driver was closer to being
-> ready.
+From: Rafał Miłecki <rafal@milecki.pl>
 
-Yeah. Frank laid out the current state of GX6250 support and future plans
-in his reply to the clk driver patch.
+MT7981 has one on-SoC I2C controller that differs from recent Mediatek
+blocks by having a different SLAVE_ADDR register offset (thus a custom
+binding compatible string).
 
-> Even if the driver isn't ready yet, it would be nice to move the
-> bindings forward.
+Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
+---
+V2: Don't put board-specific clock-div & clock-frequency in the SoC dtsi
+    Thanks Angelo!
 
-Agreed. It would be nice to have an agreed upon set of bindings. We
-can then move our downstream stuff comply with it.
+ arch/arm64/boot/dts/mediatek/mt7981b.dtsi | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
 
+diff --git a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
+index 0fc7c6d33d72..64aeeb24efac 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
+@@ -94,6 +94,21 @@ pwm@10048000 {
+ 			#pwm-cells = <2>;
+ 		};
+ 
++		i2c@11007000 {
++			compatible = "mediatek,mt7981-i2c";
++			reg = <0 0x11007000 0 0x1000>,
++			      <0 0x10217080 0 0x80>;
++			interrupts = <GIC_SPI 136 IRQ_TYPE_LEVEL_HIGH>;
++			clocks = <&infracfg CLK_INFRA_I2C0_CK>,
++				 <&infracfg CLK_INFRA_AP_DMA_CK>,
++				 <&infracfg CLK_INFRA_I2C_MCK_CK>,
++				 <&infracfg CLK_INFRA_I2C_PCK_CK>;
++			clock-names = "main", "dma", "arb", "pmic";
++			#address-cells = <1>;
++			#size-cells = <0>;
++			status = "disabled";
++		};
++
+ 		pio: pinctrl@11d00000 {
+ 			compatible = "mediatek,mt7981-pinctrl";
+ 			reg = <0 0x11d00000 0 0x1000>,
+-- 
+2.35.3
 
-Thanks
-ChenYu
-
-> adam
->
-> > Thanks
-> > Frank
-> >
-> > [1] https://lists.freedesktop.org/archives/dri-devel/2024-February/4435=
-48.html
-> > [2] https://lists.freedesktop.org/archives/dri-devel/2024-May/455833.ht=
-ml
-> >
-> > >
-> > >    reg:
-> > >      maxItems: 1
-> > > @@ -56,6 +63,15 @@ allOf:
-> > >        properties:
-> > >          clocks:
-> > >            maxItems: 1
-> > > +  - if:
-> > > +      properties:
-> > > +        compatible:
-> > > +          contains:
-> > > +            const: img,powervr-6xt
-> > > +    then:
-> > > +      properties:
-> > > +        clocks:
-> > > +          minItems: 3
-> > >
-> > >  examples:
-> > >    - |
 
