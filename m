@@ -4,72 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FC52C25B78
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Jun 2024 10:38:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A441C25B78
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Jun 2024 10:55:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pH9ZKqrblk6HYsmXchrgYLlEbA+5XWNC5/gQxlobSLA=; b=wYV6O6RxrNxs+Y+/hA2tOu9U0i
-	rXAj0iKiGjNsg5ycXj+h9guR4pC2gB/VFRf0lwqvkRgP9Mavf0EzGfXgrQfkhQpzO6qRi5tlKBHin
-	R79gBwrwMmtGhUrEs/D+QuJv6weFNcq8eDjojZqpstOpy6p7xKgqiy+o2lzapat0/7xYdKL02myAf
-	9jeoQ31cTw2fsQzWEdd9uAs1hvT1+4SK+MD4UVCsR51AXlSXIm6gY+JJEiPQynd2TvZgoSLsUUbAa
-	O5eQ/R1QkHyIkPcS+tuKhYWgZsuaWY7oXtrM7DWU0wx65EacuYnQWff1L/24j4xN0fIAy1YmY/qYI
-	tjHM30Ig==;
+	bh=IDj6XyLMkdypUs5XebPk9O6Y/tAg4OP0rl7m8sDWpro=; b=JMc3pDGTHHLqMRnhHC7vI0REvy
+	eJ2x/x1TnPjePFbJxsUL8GFDHQcWG0oYiFzGbSIkfPmemngu5/4/KOAesmkKsVGhyPq0KYAc7896x
+	2LcrDb4zEqznAuu+ninwpiCIQNzKxAJm8vJAe939UAJnXAscnMFBtTPlDFOeGU+3f1Sj7d14PgHBn
+	Ye4+ojKVaTeEWcw3TOnfvs9Fx0A7pRRstEBRqLQ4AlqburAvGsC7ZsiwXaBNoMve+EllP92zP5OOO
+	m2lFIAVLOPwdeWCHQcw861t4b7UT1iPc3vBOcV1Y1dvqoelCvQV6ljF78h0K80L732A1OhREwSc9Q
+	bpSh05GA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sERYT-000000020DL-0bw4;
-	Tue, 04 Jun 2024 10:38:13 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1sERpV-000000024Ic-3p20;
+	Tue, 04 Jun 2024 10:55:49 +0000
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sERYP-000000020CZ-0ezE;
-	Tue, 04 Jun 2024 10:38:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1717497486;
-	bh=83qgTD6GQKD17zryJJer2RaJbdNVFmS+NMwIUzNFP2U=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=ajzzr07WHRA3SgHRuBDCGrgT90Benyyh2fvI3m5ZL1ML0Ytj8ma90RiDPSTJtxBGC
-	 z614fqAVpWsLRylzPGu0BKDiOJ8IVxxF94KDPE7b16HP8VBJzeZq6oWf4NBpZdxDck
-	 BHCnZjYTl5RSR8HgSSqpmLUlJtTlzUDi5532SvlyJpT7lcdNUaZfZUtF7jyqD58O4P
-	 U5DgXMKmsMvhTvoGiOBz3jQ1RuWK+AwEz/1jguOV+f+Qrxh1oFSan5MXKdu0qEAUZh
-	 99huVFDrNcTGrfvlY8YVotC/qdBtYL5lGMUukd6jdOQxkv5ruYz8yJYtYsmT5NmGv5
-	 BRHqt/Cc1vAMA==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id C690937821DC;
-	Tue,  4 Jun 2024 10:38:04 +0000 (UTC)
-Message-ID: <84f1c58c-0a5d-4131-a16b-b76bf28862ee@collabora.com>
-Date: Tue, 4 Jun 2024 12:38:04 +0200
+	id 1sERpR-000000024GN-1VXZ;
+	Tue, 04 Jun 2024 10:55:47 +0000
+Received: by mail-ed1-x52a.google.com with SMTP id 4fb4d7f45d1cf-57a6fcb823fso1678315a12.3;
+        Tue, 04 Jun 2024 03:55:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1717498542; x=1718103342; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=IDj6XyLMkdypUs5XebPk9O6Y/tAg4OP0rl7m8sDWpro=;
+        b=DeXQctIQGWSgfFy29CT9e9K4CBgHmsuGBDWWFXRS7R4YPhMYUtnw6/vXoGPL8nF3P0
+         UFRdeLOUQMYKH5s6NIhRemBEqi/s1kjFzwhKYA/r5ex1qUvfokbH5qlSZMAXl4NteRaG
+         ZdeptX11RAWCnoeegKbAJMg9jxSAaMJmM87UzX5uA/WOt/umrH/KtJN1OA0Q9QWCwdjY
+         DY0U9y0J+sVk8VHR202vU5ZTVSOrouQJR48Hw2fkHI9Cy/2uZMWzFrJ8rhkl8/g4bp8f
+         lmaj/2PVBFU637DNncfC9Qb9Q1vum7qfa+doi6mMDbAKWRfkge0QktgyxkJj7vaQHZ1Q
+         q59A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1717498542; x=1718103342;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=IDj6XyLMkdypUs5XebPk9O6Y/tAg4OP0rl7m8sDWpro=;
+        b=r58JSIcmxnjOGa/AItmdwg8pYq/XzP2hwyyheWOZ32IPiZUkoCdAjcybjNsl+blxu3
+         3frlHh+ABA1HFASMOyBA2lWmMASzr/c1if1+OwVgD4GI2HI9P6XkGz23A3sOZXPOiCZP
+         EBvxNrM70wXBfc7EF2zQxZ0IWXPCMXzxEW8cR9yZyuH+BXQnhapUUnd6BOljfgOcoIwB
+         wI37WPzRFfB93+0UnTHG7IfiKQcSvmIz/JsdiBzfgUl7t+izWYSNaXmAaCR2a3LWBZ5L
+         QkuYOylYZciFrLz5wPw293wePZvTohRcdbGk9yjQDF4NZFziqRWq8vCGRUcRnEth2nb5
+         mLSQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUq8kqse/r/M33ovCugDvS8VjCvVCxT140qXqcw+qyc5DRXM5SDEvzoaUjDj0iyMESQfMlMFJCg/3DY3PHN+PalLwRxblzv4JxYl8yfdj/pyXiiSle238cmrKRQ3xcu5Y6A2eUoA0Sh3kSZBgzEfQpqrjivMbJbiR4=
+X-Gm-Message-State: AOJu0YzqgBoYCKIej765NVSis/5/BdlTNBkDrK5Rnc+xpsiueYvPWvf9
+	ockqW9ZxUL+cOhwRaHdQP7py8VABtJrxn9aQTKy2qHvH2TOv8mEoK7XM5bwSNoRFQQJPkhI217d
+	CV96aJkScsMOb+CGjBl6v6mCKNyOoq0yQtBI=
+X-Google-Smtp-Source: AGHT+IFmZt6Y9UJZxMqsQKH1greIZFtT4Z7hrqbjSEJ/dY7Mmt/YlBYihOWjiM0e7kzDgcBKFTWWMMLnuGmhwMU9t2Q=
+X-Received: by 2002:a17:906:6acd:b0:a65:26dc:3c25 with SMTP id
+ a640c23a62f3a-a6821b71ea0mr796196266b.54.1717498542174; Tue, 04 Jun 2024
+ 03:55:42 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 2/4] iio: adc: Add support for MediaTek MT6357/8/9
- Auxiliary ADC
-To: Andy Shevchenko <andy.shevchenko@gmail.com>
-Cc: jic23@kernel.org, lars@metafoo.de, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, matthias.bgg@gmail.com, lee@kernel.org,
- andy@kernel.org, nuno.sa@analog.com, bigunclemax@gmail.com,
- dlechner@baylibre.com, marius.cristea@microchip.com,
- marcelo.schmitt@analog.com, fr0st61te@gmail.com, mitrutzceclan@gmail.com,
- mike.looijmans@topic.nl, marcus.folkesson@gmail.com,
- linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, kernel@collabora.com
 References: <20240530093410.112716-1-angelogioacchino.delregno@collabora.com>
  <20240530093410.112716-3-angelogioacchino.delregno@collabora.com>
- <CAHp75Vexddt1xUGogRDZA9pM1pFp2=ZtCQnCfXePahSCb+oKpg@mail.gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <CAHp75Vexddt1xUGogRDZA9pM1pFp2=ZtCQnCfXePahSCb+oKpg@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+ <20240602111141.0058f39e@jic23-huawei> <60e55919-2a8c-4d83-89a1-6e4ae156d34d@collabora.com>
+In-Reply-To: <60e55919-2a8c-4d83-89a1-6e4ae156d34d@collabora.com>
+From: Andy Shevchenko <andy.shevchenko@gmail.com>
+Date: Tue, 4 Jun 2024 13:55:05 +0300
+Message-ID: <CAHp75Vf5a8VVyOXQRt9P1QnM6GHZ3rLuvnBF63H_83QBHOTJ9w@mail.gmail.com>
+Subject: Re: [PATCH v1 2/4] iio: adc: Add support for MediaTek MT6357/8/9
+ Auxiliary ADC
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Jonathan Cameron <jic23@kernel.org>, lars@metafoo.de, robh@kernel.org, krzk+dt@kernel.org, 
+	conor+dt@kernel.org, matthias.bgg@gmail.com, lee@kernel.org, andy@kernel.org, 
+	nuno.sa@analog.com, bigunclemax@gmail.com, dlechner@baylibre.com, 
+	marius.cristea@microchip.com, marcelo.schmitt@analog.com, fr0st61te@gmail.com, 
+	mitrutzceclan@gmail.com, mike.looijmans@topic.nl, marcus.folkesson@gmail.com, 
+	linux-iio@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, kernel@collabora.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240604_033809_384935_58550ECB 
-X-CRM114-Status: GOOD (  38.95  )
+X-CRM114-CacheID: sfid-20240604_035545_421602_55080F22 
+X-CRM114-Status: GOOD (  11.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,361 +98,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 30/05/24 15:34, Andy Shevchenko ha scritto:
-> On Thu, May 30, 2024 at 12:34 PM AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> wrote:
->>
->> Add a driver to support reading the Auxiliary ADC IP found in the
->> MediaTek MT6357, MT6358 and MT6359 Power Management ICs.
->>
->> This driver provides multiple ADC channels for system monitoring,
->> such as battery voltage, PMIC temperature, PMIC-internal voltage
->> regulators temperature, and others.
-> 
->> ---
-> 
-> Here is no explanation on how this is differ to any of the three
-> existing drivers? I.o.w. why do we need a brand new one?
-> 
+On Tue, Jun 4, 2024 at 12:42=E2=80=AFPM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+> Il 02/06/24 12:11, Jonathan Cameron ha scritto:
+> > On Thu, 30 May 2024 11:34:08 +0200
+> > AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> wr=
+ote:
 
-Not a SoC AUXADC but a PMIC AUXADC, different register layout and different
-handling for configuration, reset, and reading.
+...
 
-So okay I'm adding a nicer text of what I just wrote to the commit description.
+> > What are IMP channels?
+>
+> Honestly? Well, it's called like that. I don't have any clear description=
+ of that
+> and not even datasheets are unrolling the meaning of "IMP". So.. I don't =
+know.
+>
+> What I know is what I wrote in the driver, and this is:
+> * IMP has IBAT and VBAT ADCs
+> * It needs different handling from the other ADCs, as shown.
+>
+> ...and nothing else :-(
 
-> ...
-> 
-> + bits.h
-> 
->> +#include <linux/delay.h>
-> 
->> +#include <linux/kernel.h>
-> 
-> Why?
-> 
+I could speculate with confidence that this means IMPedance (since it's ADC=
+).
 
-Because I forgot to cleanup the headers :-\
+From MTK6329  datasheet:
+"The hardware also includes necessary modes to allow for simultaneous
+current and voltage measurement
+which can be utilized to estimate the battery impedance."
+And googling in vendor trees also suggests the same.
 
-> + mod_devicetable.h
->> +#include <linux/module.h>
-> 
->> +#include <linux/of.h>
-> 
-> Why?
-> 
-
-Same reason :')
-
-...And yes that should be linux/property.h instead, for device_get_match_data().
-
->> +#include <linux/platform_device.h>
->> +#include <linux/regmap.h>
-> 
-> + types.h
-> 
-> + blank line
-> 
->> +#include <linux/iio/iio.h>
-> 
-> + Blank line
-> 
->> +#include <linux/mfd/mt6397/core.h>
-> 
-> ...
-> 
->> +#define PMIC_RG_RESET_VAL              (BIT(0) | BIT(3))
-> 
-> In this form it requires a comment explaining each mentioned bit.
-> 
-
-I don't have an explanation for this, I know it's two different bits from some
-reveng, but the downstream driver declares that simply as 0x9.
-
-Should I just "mask" this as 0x9 instead?
-
->> +#define PMIC_AUXADC_ADCx(x)            ((x) << 1)
-> 
-> Seems like a useless macro, it occupies much more space than in-place shift.
-> 
-
-Well that was done to enhance human readability, but okay I will just use an
-in-place shift.
-
-> ...
-> 
->> +#define MT6358_IMP0_CLEAR              (BIT(14) | BIT(7))
-> 
-> As per above.
-> 
-
-Same, I don't have any explanation for that.
-
-If you prefer, I can define this as 0x4080, but honestly I prefer keeping
-it as-is since I am sure it's not a magic number but really two bits to flip
-in a register.
-
-> ...
-> 
->> +/**
->> + * struct mtk_pmic_auxadc_chan - PMIC AUXADC channel data
->> + * @req_idx:       Request register number
->> + * @req_mask:      Bitmask to activate a channel
->> + * @num_samples:   Number of AUXADC samples for averaging
->> + * @r_numerator:   Resistance ratio numerator
->> + * @r_denominator: Resistance ratio denominator
->> + */
->> +struct mtk_pmic_auxadc_chan {
->> +       u8 req_idx;
->> +       u16 req_mask;
->> +       u16 num_samples;
-> 
->> +       u8 r_numerator;
->> +       u8 r_denominator;
-> 
-> Can you add struct u8_fract to the math.h and use it? I will Ack/R the
-> respective patch.
-> 
-
-Yeah, I did that exactly because u8_fract wasn't there and I didn't want
-to waste more bits, but since you just asked for it... well, I'm happier :-)
-
->> +};
-> 
-> ...
-> 
->> +struct mtk_pmic_auxadc_pdata {
->> +       const struct iio_chan_spec *channels;
->> +       int num_channels;
-> 
-> Why signed?
-> 
-
-Yeah, that doesn't make any sense, that's going to be u8.
-
->> +       const struct mtk_pmic_auxadc_chan *desc;
->> +       const u16 *regs;
->> +       u16 sec_unlock_key;
->> +       u8 imp_adc_num;
->> +       int (*read_imp)(struct mt6359_auxadc *adc_dev, int *vbat, int *ibat);
->> +};
-> 
-> ...
-> 
->> +static const u16 mt6357_auxadc_regs[] = {
->> +       [PMIC_HK_TOP_RST_CON0]  = 0xf90,
-> 
-> Can we use the fixed-width values so all of them will look nice and
-> easy to parse?
-> 
-
-We obviously can, let's do that.
-
->> +       [PMIC_AUXADC_DCM_CON]   = 0x122e,
->> +       [PMIC_AUXADC_ADC0]      = 0x1088,
->> +       [PMIC_AUXADC_IMP0]      = 0x119c,
->> +       [PMIC_AUXADC_IMP1]      = 0x119e,
->> +       [PMIC_AUXADC_RQST0]     = 0x110e,
->> +       [PMIC_AUXADC_RQST1]     = 0x1114,
->> +};
-> 
-> ...
-> 
->> +static const u16 mt6358_auxadc_regs[] = {
-> 
-> Ditto.
-> 
->> +       [PMIC_HK_TOP_RST_CON0]  = 0xf90,
->> +       [PMIC_AUXADC_DCM_CON]   = 0x1260,
->> +       [PMIC_AUXADC_ADC0]      = 0x1088,
->> +       [PMIC_AUXADC_IMP0]      = 0x1208,
->> +       [PMIC_AUXADC_IMP1]      = 0x120a,
->> +       [PMIC_AUXADC_RQST0]     = 0x1108,
->> +       [PMIC_AUXADC_RQST1]     = 0x110a,
->> +};
-> 
-> ...
-> 
->> +static const u16 mt6359_auxadc_regs[] = {
-> 
-> Ditto.
-> 
->> +       [PMIC_FGADC_R_CON0]     = 0xd88,
->> +       [PMIC_HK_TOP_WKEY]      = 0xfb4,
->> +       [PMIC_HK_TOP_RST_CON0]  = 0xf90,
->> +       [PMIC_AUXADC_RQST0]     = 0x1108,
->> +       [PMIC_AUXADC_RQST1]     = 0x110a,
->> +       [PMIC_AUXADC_ADC0]      = 0x1088,
->> +       [PMIC_AUXADC_IMP0]      = 0x1208,
->> +       [PMIC_AUXADC_IMP1]      = 0x120a,
->> +       [PMIC_AUXADC_IMP3]      = 0x120e,
->> +};
-> 
-> ...
-> 
->> +       ret = regmap_read_poll_timeout(adc_dev->regmap, pdata->regs[PMIC_AUXADC_IMP0],
->> +                                      val, !!(val & MT6358_IMP0_IRQ_RDY),
->> +                                      IMP_POLL_DELAY_US, AUXADC_TIMEOUT_US);
->> +       if (ret) {
->> +               mt6358_stop_imp_conv(adc_dev);
-> 
->> +               return ret;
->> +       }
->> +
->> +       return 0;
-> 
->    if (ret)
->      foo()
-> 
->    return ret;
-> 
-> 
-> ...
-> 
->> +       int val_v, ret;
-> 
-> Why is val_v signed?
-> 
-> ...
-> 
->> +       int val_v, val_i, ret;
-> 
-> Ditto for all val_*.
-> 
-
-Yup, changed to u32.
-
-> ...
-> 
->> +       /* If it succeeded, wait for the registers to be populated */
->> +       usleep_range(IMP_STOP_DELAY_US, IMP_STOP_DELAY_US + 50);
-> 
-> fsleep() ?
-> 
-
-Okay
-
-> ...
-> 
->> +       /* Assert ADC reset */
->> +       regmap_set_bits(regmap, pdata->regs[PMIC_HK_TOP_RST_CON0], PMIC_RG_RESET_VAL);
-> 
-> No required delay in between?
-> 
-
-No, as strange as it may look, there is no delay required in between: this is
-because the register R/W is behind the PMIC Wrapper as much as all of the other
-MediaTek PMIC (sub)devices, so, missing delays was intentional here, yes.
-
->> +       /* De-assert ADC reset */
->> +       regmap_clear_bits(regmap, pdata->regs[PMIC_HK_TOP_RST_CON0], PMIC_RG_RESET_VAL);
-> 
-> ...
-> 
->> +       /* Wait until all samples are averaged */
->> +       usleep_range(desc->num_samples * AUXADC_AVG_TIME_US,
->> +                    (desc->num_samples + 1) * AUXADC_AVG_TIME_US);
-> 
-> fsleep()
-> 
-> ...
-> 
->> +       ret = regmap_read_poll_timeout(regmap,
->> +                                      (pdata->regs[PMIC_AUXADC_ADC0] +
->> +                                       PMIC_AUXADC_ADCx(chan->address)),
-> 
-> Drop unneeded parentheses and possibly make it one line.
-> 
->> +                                      val, (val & PMIC_AUXADC_RDY_BIT),
-> 
-> Unneeded parentheses.
-> 
-
-Yeah, forgot those there during cleanup, whoops!
-
->> +                                      AUXADC_POLL_DELAY_US, AUXADC_TIMEOUT_US);
->> +       if (ret)
->> +               return ret;
-> 
-> ...
-> 
->> +       mutex_lock(&adc_dev->lock);
-> 
-> Why not use cleanup.h?
-> 
-
-I want to unlock the mutex immediately right after executing read_imp() or
-mt6359_auxadc_read_adc(), and I don't want the reset to be done while a mutex
-is being held, as that makes no sense for this driver.
-
-Besides, I find the macros in cleanup.h to be cryptic - in my opinion, they
-require better documentation as, for example, I don't understand when the
-guard(mutex)(my_mutex) is supposed to acquire the lock and when it's supposed
-to release it.
-
-
-> ...
-> 
->> +static int mt6359_auxadc_probe(struct platform_device *pdev)
->> +{
-> 
->    struct device *dev = &pdev->dev;
-
-Yeah without that it simply looked more "beautiful" to read, but okay, added.
-
-> 
->> +       struct device *mt6397_mfd_dev = pdev->dev.parent;
-> 
->    ... = dev->parent;
-> 
->> +       struct mt6359_auxadc *adc_dev;
->> +       struct iio_dev *indio_dev;
->> +       struct regmap *regmap;
->> +       int ret;
->> +
->> +       /* Regmap is from SoC PMIC Wrapper, parent of the mt6397 MFD */
->> +       regmap = dev_get_regmap(mt6397_mfd_dev->parent, NULL);
->> +       if (!regmap)
->> +               return dev_err_probe(&pdev->dev, -ENODEV, "Failed to get regmap\n");
->> +
->> +       indio_dev = devm_iio_device_alloc(&pdev->dev, sizeof(*adc_dev));
->> +       if (!indio_dev)
->> +               return -ENOMEM;
->> +
->> +       adc_dev = iio_priv(indio_dev);
->> +       adc_dev->regmap = regmap;
->> +       adc_dev->dev = &pdev->dev;
->> +
->> +       adc_dev->pdata = device_get_match_data(&pdev->dev);
->> +       if (!adc_dev->pdata)
->> +               return -EINVAL;
->> +
->> +       mutex_init(&adc_dev->lock);
->> +
->> +       mt6359_auxadc_reset(adc_dev);
->> +
->> +       indio_dev->dev.parent = &pdev->dev;
->> +       indio_dev->name = dev_name(&pdev->dev);
->> +       indio_dev->info = &mt6359_auxadc_info;
->> +       indio_dev->modes = INDIO_DIRECT_MODE;
->> +       indio_dev->channels = adc_dev->pdata->channels;
->> +       indio_dev->num_channels = adc_dev->pdata->num_channels;
->> +
->> +       ret = devm_iio_device_register(&pdev->dev, indio_dev);
->> +       if (ret < 0)
-> 
-> Why  ' < 0' ?
-> 
-
-Uuuuuh.. well... I have no idea why this "< 0" is in there, I must have gremlins
-living inside my keyboard, secretly inserting those checks when I'm not looking.
-
-Must definitely be that.
-
-Jokes apart, thanks for the review!
-...a v2 will come asap, along with the math.h change :-)
-
-Cheers!
-Angelo
-
-
+--=20
+With Best Regards,
+Andy Shevchenko
 
