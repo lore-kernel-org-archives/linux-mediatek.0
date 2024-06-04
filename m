@@ -4,63 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D60E0C25B78
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Jun 2024 15:52:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE527C25B78
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Jun 2024 16:07:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=wP9p/ublkWkidxQhBLIOzn0pobHI9SdBuzjEGc3Nkt0=; b=xenChoAcADhFuYtOwhUrPZ4jvD
-	O24akXPupUZJmOOqGW8+Jl+zQiB7iyL2P5TTDB75Y5JT2SYJVscXVkpjkY0KksP3mcjObgtLOIqPp
-	ppJfgHYTH9H3l1lEDrT+JAtUJZMX0UV02jB05fyFDCaIzWpR9Xlcx02rxOa+8EWjXZbPzUysVzfGB
-	SWirImkLeHE5xVA3ag1/Mq5X506vY8wKHHrp9llK7xLc+rOFNJpEr/6tt/2uC4Is+k3infW3BZDT+
-	SPosHDXzlWfEvtjcGbkUbkljc4dfnVtqzIhx0dTBjkioXiGxCi0CpsFazZkQFKn9CC//pTyHZs9Ii
-	tD98AedA==;
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=DVcQEIP+MENTssUPsqaOZqlKvsqibx0etjqeiTYhCrQ=; b=s5jwtp2gYso7uIrjFCJHl8zsVV
+	GzYbyQI9TZsVuQtllvVpum+PgVjZ2rLZQyV/8DfNMVuRWulVwB7QXiDC5+Ei1+oAvIplMRzXdW7wX
+	Mo9HePQ4VL6mI3InWml8kcSeESVrMg+EsjpRlF+So9gOIVcBw+DxYfZa5Qd6JyqYKmPhcBA2JTKmr
+	daC6g2JEji3GIbJWUpIXPyU8yvxYnbQJnyy2YbtZHzUIHKkoqtMkiurERdkZizQNLvfTqBdv0EQUV
+	DcoZpfw5SP55tMe6yG+MP7JKud8D/HgBgqvrUSsQHtFNd7iaoE/yzsvx0iELS8qXYlSszKea4ou7V
+	g2XVBKqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sEWSK-000000030Rg-1aLd;
-	Tue, 04 Jun 2024 15:52:12 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1sEWgk-000000033yF-0yac;
+	Tue, 04 Jun 2024 16:07:06 +0000
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sEWSG-000000030ON-1O5E;
-	Tue, 04 Jun 2024 15:52:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1717516322;
-	bh=aU39Zju7G/ZcjOCuvNg6T7bf9rw418NWUZA0995XVcE=;
-	h=Date:From:To:Cc:Subject:From;
-	b=K6eT2fbbobWaa+xr2vZ6eT0DcOXgNXHgliFL7RjgZzxyr4FN9mQv4GXM2UnnVRi92
-	 ZYoS22KtO4ee/+56Q6wtpd4FCD8h9HaBmCskIZs7UIEXUEKswUnKYGlacx91G1s+yM
-	 o92NcaGkhDjo5IYD9r01wDI2ezorrJ0yh2Vh+dgGCD+uI27QgYINZIWc/P/UHVtgnM
-	 6bP+qFvweKSAkAUMETp3m/eBV2GguEfRjbbmHv8dSUsDYj7py59KENTAUbdzpzyDDy
-	 Y+hmfzYcNC1+ju7emtFv1x2vnXKlMr1SuMR9LHs6X8b8IZRkClLWoFXGz7pCqsTMJ7
-	 /zNK6mHMk4cGA==
-Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id AEA243782196;
-	Tue,  4 Jun 2024 15:52:00 +0000 (UTC)
-Date: Tue, 4 Jun 2024 11:51:58 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: linux-mediatek@lists.infradead.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, kernel@collabora.com
-Subject: Probe failures on mt8183-kukui-jacuzzi-juniper-sku16
-Message-ID: <e5912054-0fc9-47ff-8f38-9b9a3e9d2156@notapiano>
+	id 1sEWgf-000000033uw-1kve
+	for linux-mediatek@lists.infradead.org;
+	Tue, 04 Jun 2024 16:07:03 +0000
+Received: by mail-wr1-x432.google.com with SMTP id ffacd0b85a97d-35e4aaa0f33so3022663f8f.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 04 Jun 2024 09:06:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1717517218; x=1718122018; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:date:message-id:subject
+         :references:in-reply-to:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=DVcQEIP+MENTssUPsqaOZqlKvsqibx0etjqeiTYhCrQ=;
+        b=MyaNhD88jP8t4ev5l7GQzlz3bcj9yR6SW5MLFwwRxb5xdh7HMC0LQqjS8bFYnXaPbA
+         ps4SZQkVmcr+gSnHyqgwGXlcPXbmP2T5O3H5EUov7YfUV5db0r5iNsyyu3g32SBqX4d5
+         HTK0EcWqyNE/ABKN74F0SQZbRBwVo3dXJf3DjAEjm5AJd2hGYGgXHshekaeQ8JHBrpNJ
+         xyGBgwSeZHpgo7PZVNLYArPeAdesMxLPII/boAX2dUiybA1HBvbCl0Xe1egvg+bEzzRC
+         SB/0gytjLJkzzVbdrgLTg6X5WSVjUwlhJLyM50u2nopPkOVTZ8aIKBMI3eqqZDRVXNVP
+         XQDA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1717517218; x=1718122018;
+        h=content-transfer-encoding:mime-version:date:message-id:subject
+         :references:in-reply-to:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=DVcQEIP+MENTssUPsqaOZqlKvsqibx0etjqeiTYhCrQ=;
+        b=Os66oQ+Y/GmqHdbBjVkJCNyNC4wvg7ShW0ZEJVoP/ZpI6hthqzpAwFFizZEhkY8VkG
+         Ptm7e0YHkonKBIPE2t3oaWviaxhQGq0n69idGa2cUQe5bJOAlveNjSRZeM2fe3TkRjuY
+         5+c414wvnnILKy51bz2zheLhsDygTRONzU+LuMmSPGfFED+pkVVdmor8iy/6i7fErxeF
+         GE8EBTiTBn799NAGeNklJOlFLWCt5Inl0etn/K7oiusmixfRI+AMH3/bv1FdRrw9at0i
+         Rz3EEY+NC/nmItzrwJUwmLwB+pI43yyGLJsI6ZAjafy5VdI6QJGuEmseYvGNmZHFS77K
+         3iaw==
+X-Forwarded-Encrypted: i=1; AJvYcCWeGPeYLajWboLhkivxcnNkH1p/zPyRpjLsO66kIeF2pBRU7xFRKvBp8lyQ62ksvpUHoTzYXuBCDQYVLMK+8UVmdhmG4zp0vrNlPgBqJO0WMatF
+X-Gm-Message-State: AOJu0YxWY4wur3FqDU4tAMvW44b2IgUa4v6HVamNSlLGNzcar5q7V9JO
+	r35EgVqgF/YBaT1hAdw7NUjzNj3vMQuCURS5rUyayFxGUIvCbcOwJhY1zhGV7su1E3qU71gwnxy
+	H
+X-Google-Smtp-Source: AGHT+IFYA1dhRvmL2GTj5Q6k/vk2zOUsQMMogmi/rc6o5NV9inVq5WoI7Vq75aDni69dzFSZ/DMrow==
+X-Received: by 2002:a5d:438e:0:b0:354:c43d:d5a with SMTP id ffacd0b85a97d-35e0f26984cmr10765554f8f.24.1717517217961;
+        Tue, 04 Jun 2024 09:06:57 -0700 (PDT)
+Received: from [192.168.1.195] ([5.133.47.210])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-35dd04da756sm11983392f8f.59.2024.06.04.09.06.55
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 04 Jun 2024 09:06:57 -0700 (PDT)
+From: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+To: Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>, 
+ Alyssa Rosenzweig <alyssa@rosenzweig.io>, Shawn Guo <shawnguo@kernel.org>, 
+ Sascha Hauer <s.hauer@pengutronix.de>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, 
+ Vladimir Zapolskiy <vz@mleia.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, 
+ Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
+ Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Bjorn Andersson <andersson@kernel.org>, 
+ Konrad Dybcio <konrad.dybcio@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Orson Zhai <orsonzhai@gmail.com>, 
+ Baolin Wang <baolin.wang@linux.alibaba.com>, 
+ Chunyan Zhang <zhang.lyra@gmail.com>, 
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+ Vincent Shih <vincent.sunplus@gmail.com>, Chen-Yu Tsai <wens@csie.org>, 
+ Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Samuel Holland <samuel@sholland.org>, Rafal Milecki <rafal@milecki.pl>, 
+ Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, 
+ Masami Hiramatsu <mhiramat@kernel.org>, Michal Simek <michal.simek@amd.com>, 
+ Joy Chakraborty <joychakr@google.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, asahi@lists.linux.dev, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev, 
+ manugautam@google.com
+In-Reply-To: <20240510082929.3792559-1-joychakr@google.com>
+References: <20240510082929.3792559-1-joychakr@google.com>
+Subject: Re: [PATCH v3 0/1] nvmem: Handle actual amount of data
+ read/written by suppliers
+Message-Id: <171751721565.70889.16944298203785853489.b4-ty@linaro.org>
+Date: Tue, 04 Jun 2024 17:06:55 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.12.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240604_085208_675602_939E7E28 
-X-CRM114-Status: GOOD (  11.58  )
+X-CRM114-CacheID: sfid-20240604_090701_558471_E4103238 
+X-CRM114-Status: GOOD (  11.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,261 +123,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
 
-We're monitoring the status of device probe on the
-mt8183-kukui-jacuzzi-juniper-sku16 platform in KernelCI, and I thought it'd be
-helpful to share the results.
+On Fri, 10 May 2024 08:29:28 +0000, Joy Chakraborty wrote:
+> This Patch series stems from discussions in patchset,
+> "[PATCH v2] nvmem: rmem: Fix return value of rmem_read()"
+> (https://lore.kernel.org/all/20240206042408.224138-1-joychakr@google.com/).
+> Where we come across the fact that currently the nvmem suppliers do not
+> actually let the core know how much data has been actually read or written.
+> Instead they are expected to return 0 for success and the core assumes that
+> the amount of data written is equal to what the core has requested.
+> 
+> [...]
 
-These are the current failures:
+Applied, thanks!
 
-* /soc/i2c@11009000/trackpad@15
-* /soc/svs@1100bc00
-* /thermal-sensor1
-* /thermal-sensor2
+[1/1] nvmem: Change return type of reg read/write to ssize_t
+      commit: f5de138db5b76de7d96d4cf92f871ba893ba0119
 
-In more details:
+Best regards,
+-- 
+Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
 
-* /soc/i2c@11009000/trackpad@15: I believe this is a second source trackpad and
-  is thus waiting for the "platform/chrome: Introduce DT hardware prober" series
-  [1] to be merged before it can be handled. Although looks like there haven't
-  been updates to the series in a while.
-
-* /soc/svs@1100bc00: On the logs the following is reported:
-
-    SVSB_GPU: cannot get "gpu-thermal" thermal zone
-
-  MT8183 uses the auxadc_thermal driver, which apparently only registers one
-  thermal zone (tz 0, for the CPU):
-
-    devm_thermal_of_zone_register(&pdev->dev, 0, mt,
-                              &mtk_thermal_ops);
-
-  As a quick hack I changed the 0 to 2, so the GPU thermal zone got registered,
-  and that did allow SVS to go further in its probe, but still resulted in an
-  error:
-  
-    [    9.330993] mtk-svs 1100bc00.svs: M_HW_RES0: 0x00320090
-    [    9.336700] mtk-svs 1100bc00.svs: M_HW_RES1: 0xa3ffff5f
-    [    9.342628] mtk-svs 1100bc00.svs: M_HW_RES2: 0x47cf47cf
-    [    9.347898] mtk-svs 1100bc00.svs: M_HW_RES3: 0xa3ffff5f
-    [    9.353164] mtk-svs 1100bc00.svs: M_HW_RES4: 0xa3fff1aa
-    [    9.358400] mtk-svs 1100bc00.svs: M_HW_RES5: 0x47ec4b82
-    [    9.358411] mtk-svs 1100bc00.svs: M_HW_RES6: 0xa3ff9aac
-    [    9.358416] mtk-svs 1100bc00.svs: M_HW_RES7: 0xa3ff1c13
-    [    9.358420] mtk-svs 1100bc00.svs: M_HW_RES8: 0x4bec4beb
-    [    9.358424] mtk-svs 1100bc00.svs: M_HW_RES9: 0xa3ff7b02
-    [    9.358429] mtk-svs 1100bc00.svs: M_HW_RES14: 0x06ce7583
-    [    9.370719] mtk-svs 1100bc00.svs: M_HW_RES15: 0x00220010
-    [    9.381134] mtk-svs 1100bc00.svs: M_HW_RES16: 0xa3ffdf46
-    [    9.381141] mtk-svs 1100bc00.svs: M_HW_RES17: 0x47ec47eb
-    [    9.391612] mtk-svs 1100bc00.svs: M_HW_RES18: 0xa3ffd443
-    [    9.477419]  SVSB_CPU_LITTLE: svs_init01_isr_handler: VDN74~30:0x16202931~0x363b4147, DC:0x02bb0013
-    [    9.495313] cpu cpu4: cpu4: failed to find OPP for 1781000000
-    [    9.495549]  SVSB_CPU_BIG: svs_init01_isr_handler: VDN74~30:0x16212a33~0x393e444b, DC:0x02d000d0
-    [    9.495847]  SVSB_CCI: svs_init01_isr_handler: VDN74~30:0x141b252e~0x33394147, DC:0x02c10049
-    [    9.495897]  SVSB_GPU: buck voltage: 700000uV, expected vboot: 800000uV
-    [    9.496184] mtk-svs 1100bc00.svs: error -EPERM: svs start fail
-    [    9.496204] mtk-svs 1100bc00.svs: probe with driver mtk-svs failed with error -1
-  
-  so it seems that more changes will be required in addition to updating
-  auxadc_thermal to register multiple thermal zones.
-
-* /thermal-sensor1, /thermal-sensor2: The following is reported:
-
-    [    2.813605] thermal_sys: Failed to find 'trips' node
-    [    2.813611] thermal_sys: Failed to find trip points for thermal-sensor1 id=0
-    [    2.813619] generic-adc-thermal thermal-sensor1: Thermal zone sensor register failed: -22
-    [    2.813624] generic-adc-thermal thermal-sensor1: probe with driver generic-adc-thermal failed with error -22
-
-  And the same for thermal-sensor2. So both are missing the required 'trips'
-  subnode.
-
-If you have any additional information on these issues please let me know.
-
-Full test results are included below if you're curious.
-
-Note: these results are from today's next: next-20240604
-
-Thanks,
-Nícolas
-
-
-[1] [RFC PATCH v3 0/5] platform/chrome: Introduce DT hardware prober
-https://lore.kernel.org/all/20231128084236.157152-1-wenst@chromium.org/
-  
-
-TAP version 13
-1..1
-# timeout set to 45
-# selftests: dt: test_unprobed_devices.sh
-# TAP version 13
-# 1..166
-# ok 1 / # SKIP
-# ok 2 /backlight_lcd0
-# ok 3 /bt-sco
-# ok 4 /cci
-# ok 5 /cpus/cpu@0 # SKIP
-# ok 6 /cpus/cpu@1 # SKIP
-# ok 7 /cpus/cpu@100 # SKIP
-# ok 8 /cpus/cpu@101 # SKIP
-# ok 9 /cpus/cpu@102 # SKIP
-# ok 10 /cpus/cpu@103 # SKIP
-# ok 11 /cpus/cpu@2 # SKIP
-# ok 12 /cpus/cpu@3 # SKIP
-# ok 13 /cpus/idle-states/cluster-sleep-0 # SKIP
-# ok 14 /cpus/idle-states/cluster-sleep-1 # SKIP
-# ok 15 /cpus/idle-states/cpu-sleep # SKIP
-# ok 16 /cpus/l2-cache0 # SKIP
-# ok 17 /cpus/l2-cache1 # SKIP
-# ok 18 /firmware/chromeos # SKIP
-# ok 19 /firmware/coreboot
-# ok 20 /fixed-factor-clock-13m # SKIP
-# ok 21 /max98357a
-# ok 22 /mt8183-sound
-# ok 23 /opp-table-0 # SKIP
-# ok 24 /opp-table-cci # SKIP
-# ok 25 /opp-table-cluster0 # SKIP
-# ok 26 /opp-table-cluster1 # SKIP
-# ok 27 /oscillator # SKIP
-# ok 28 /oscillator1 # SKIP
-# ok 29 /pmu-a53
-# ok 30 /pmu-a73
-# ok 31 /pp1200-mipibrdg
-# ok 32 /pp1800-mipibrdg
-# ok 33 /pp3300-panel
-# ok 34 /psci
-# ok 35 /regulator-vsys
-# ok 36 /regulator0
-# ok 37 /regulator1
-# ok 38 /regulator2
-# ok 39 /regulator3
-# ok 40 /regulator4
-# ok 41 /regulator5
-# ok 42 /regulator6
-# ok 43 /reserved-memory/memory@50000000 # SKIP
-# ok 44 /reserved-memory/ramoops
-# ok 45 /soc
-# ok 46 /soc/aal@14010000
-# ok 47 /soc/audio-controller@11220000
-# ok 48 /soc/audio-controller@11220000/mt8183-afe-pcm
-# ok 49 /soc/auxadc@11001000
-# ok 50 /soc/ccorr@1400f000
-# ok 51 /soc/color@1400e000
-# ok 52 /soc/cpu-debug@d410000
-# ok 53 /soc/cpu-debug@d510000
-# ok 54 /soc/cpu-debug@d610000
-# ok 55 /soc/cpu-debug@d710000
-# ok 56 /soc/cpu-debug@d810000
-# ok 57 /soc/cpu-debug@d910000
-# ok 58 /soc/cpu-debug@da10000
-# ok 59 /soc/cpu-debug@db10000
-# ok 60 /soc/dither@14012000 # SKIP
-# ok 61 /soc/dma-controller0@14001000
-# ok 62 /soc/dma-controller@14005000 # SKIP
-# ok 63 /soc/dsi-phy@11e50000
-# ok 64 /soc/dsi@14014000
-# ok 65 /soc/efuse@11f10000
-# ok 66 /soc/efuse@8000000
-# ok 67 /soc/gamma@14011000
-# ok 68 /soc/gpu@13040000
-# ok 69 /soc/i2c@11005000
-# ok 70 /soc/i2c@11007000
-# ok 71 /soc/i2c@11007000/touchscreen@10
-# ok 72 /soc/i2c@11008000
-# ok 73 /soc/i2c@11008000/anx7625@58
-# ok 74 /soc/i2c@11008000/anx7625@58/aux-bus/panel
-# ok 75 /soc/i2c@11009000
-# not ok 76 /soc/i2c@11009000/trackpad@15
-# ok 77 /soc/i2c@11009000/trackpad@2c
-# ok 78 /soc/i2c@1100f000
-# ok 79 /soc/i2c@11011000
-# ok 80 /soc/i2c@11016000
-# ok 81 /soc/i2c@11016000/ts3a227e@3b
-# ok 82 /soc/interrupt-controller@c000000 # SKIP
-# ok 83 /soc/interrupt-controller@c530a80 # SKIP
-# ok 84 /soc/iommu@10205000
-# ok 85 /soc/jpeg-encoder@17030000
-# ok 86 /soc/larb@14017000
-# ok 87 /soc/larb@15021000
-# ok 88 /soc/larb@1502f000
-# ok 89 /soc/larb@16010000
-# ok 90 /soc/larb@17010000
-# ok 91 /soc/larb@1a001000
-# ok 92 /soc/larb@1a002000
-# ok 93 /soc/mailbox@10238000
-# ok 94 /soc/mdp3-ccorr@1401c000 # SKIP
-# ok 95 /soc/mdp3-rsz0@14003000 # SKIP
-# ok 96 /soc/mdp3-rsz1@14004000 # SKIP
-# ok 97 /soc/mdp3-wdma@14006000 # SKIP
-# ok 98 /soc/mmc@11230000
-# ok 99 /soc/mmc@11240000
-# ok 100 /soc/mmc@11240000/qca-wifi@1
-# ok 101 /soc/mutex@14016000
-# ok 102 /soc/ovl@14008000
-# ok 103 /soc/ovl@14009000
-# ok 104 /soc/ovl@1400a000
-# ok 105 /soc/pinctrl@10005000
-# ok 106 /soc/pwm@11006000
-# ok 107 /soc/pwm@1100e000
-# ok 108 /soc/pwrap@1000d000
-# ok 109 /soc/pwrap@1000d000/pmic
-# ok 110 /soc/pwrap@1000d000/pmic/keys
-# ok 111 /soc/pwrap@1000d000/pmic/mt6358codec
-# ok 112 /soc/pwrap@1000d000/pmic/mt6358regulator
-# ok 113 /soc/pwrap@1000d000/pmic/rtc
-# ok 114 /soc/rdma@1400b000
-# ok 115 /soc/rdma@1400c000
-# ok 116 /soc/scp@10500000
-# ok 117 /soc/scp@10500000/cros-ec-rpmsg
-# ok 118 /soc/serial@11002000
-# ok 119 /soc/serial@11003000
-# ok 120 /soc/serial@11003000/bluetooth
-# ok 121 /soc/smi@14019000
-# ok 122 /soc/spi@1100a000
-# ok 123 /soc/spi@1100a000/tpm@0
-# ok 124 /soc/spi@11010000
-# ok 125 /soc/spi@11010000/flash@0
-# ok 126 /soc/spi@11012000
-# ok 127 /soc/spi@11012000/cros-ec@0
-# ok 128 /soc/spi@11012000/cros-ec@0/extcon0
-# ok 129 /soc/spi@11012000/cros-ec@0/i2c-tunnel
-# ok 130 /soc/spi@11012000/cros-ec@0/i2c-tunnel/sbs-battery@b
-# ok 131 /soc/spi@11012000/cros-ec@0/keyboard-controller
-# ok 132 /soc/spi@11012000/cros-ec@0/typec
-# ok 133 /soc/spi@11012000/cros-ec@0/typec/connector@0 # SKIP
-# not ok 134 /soc/svs@1100bc00
-# ok 135 /soc/syscon@10000000
-# ok 136 /soc/syscon@10001000
-# ok 137 /soc/syscon@10003000
-# ok 138 /soc/syscon@10006000 # SKIP
-# ok 139 /soc/syscon@10006000/power-controller
-# ok 140 /soc/syscon@1000c000
-# ok 141 /soc/syscon@13000000
-# ok 142 /soc/syscon@14000000
-# ok 143 /soc/syscon@15020000
-# ok 144 /soc/syscon@16000000
-# ok 145 /soc/syscon@17000000
-# ok 146 /soc/syscon@19000000
-# ok 147 /soc/syscon@19010000
-# ok 148 /soc/syscon@19180000
-# ok 149 /soc/syscon@19280000
-# ok 150 /soc/syscon@1a000000
-# ok 151 /soc/syscon@c530000
-# ok 152 /soc/t-phy@11f40000
-# ok 153 /soc/thermal-sensor@1100b000
-# ok 154 /soc/timer@10017000 # SKIP
-# ok 155 /soc/usb@11201000
-# ok 156 /soc/usb@11201000/usb@11200000
-# ok 157 /soc/usb@11201000/usb@11200000/hub@1
-# ok 158 /soc/video-codec@16020000
-# ok 159 /soc/watchdog@10007000
-# not ok 160 /thermal-sensor1
-# not ok 161 /thermal-sensor2
-# ok 162 /timer # SKIP
-# ok 163 /vddio-mipibrdg
-# ok 164 /volume-buttons
-# ok 165 /wifi-pwrseq
-# ok 166 /wifi-wakeup
-# # Totals: pass:127 fail:4 xfail:0 xpass:0 skip:35 error:0
 
