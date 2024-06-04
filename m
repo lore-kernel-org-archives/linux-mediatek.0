@@ -4,64 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47514C25B78
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Jun 2024 12:45:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D60BC25B78
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Jun 2024 13:19:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0x9htRSO0NLNUb0aQsPU3PIIPLwOcwvZqjmibRcaXos=; b=B9bvmYNX5jE32kqv3KybPX3KYS
-	3b73vSt4VhuCCxLTdhCj/q+/9szo5MBEMvF2NNH309aCZNT8TaXq5WJ5iG3bP8qf3RFjX4doOo1MC
-	xfXDMLOpwBNoAdUW6Fu1460rf9ya0Lwy2CRMMqmv5Xbs1eby5kgIq9MkZMG/eNNsPR9YC2NmwAlb5
-	tTcxOAGfTF7aZALINS/3eqF7njIDnBFOlMNSRMnI45g1Dt8AJtR+a7jAjHwlVqqErAGisE7f637s9
-	i+oUlDVPRR+iEjckXRjHPgYwHz9VyuHGa6YreY2oVz5QD5cCOJS+j0Xbt29Ox+oy3A5VydM10J1K/
-	vR3gC0QA==;
+	bh=YJVMvwv8yrvbQTt6Dpj5ooLvEPn9RhqjCuP8saFqK3k=; b=OhaQ07v0HSrJ5zMqIoKFbqadvd
+	EWtOGqEJjpFr+RTZ/6lJcC2yLgbwAzElJuAt3gsvD9//hYol7PG084sZ2WAcAZPw2YXkTnJRHLDoM
+	mnX8AGvhKMPFMl2XOt5gctcxKoMNJmpd3Jp266aHOoTlnw0hidlSgfpaDbYODjdHOurJZxN2euNAf
+	wxn8N5C5h2Keg+nL9PzOnscvom28U56847aZJb0Tm3DNOhe3fl1zjsjUy5QfoDouLowltHZx9NRt2
+	/y05ghKoxmDqKnQvVxjYiQYfivJazBOW9/UDkqzx7VGDwn4af40TPDZ+Ci1XtFXqRhbb5GV+ddXet
+	1RFa4rCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sETXt-00000002L1p-3qSZ;
-	Tue, 04 Jun 2024 12:45:45 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1sEU4U-00000002TsN-32zn;
+	Tue, 04 Jun 2024 13:19:26 +0000
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sETXq-00000002L0R-3cYb;
-	Tue, 04 Jun 2024 12:45:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1717505141;
-	bh=ojfNzIBBbgrqBeuKRr8YSDJc2OO06w8xhq1YsaHW3so=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=wNYI8J1EYr7CjgxQW69jcDJVLr1ZvE3wixnGaGWykao2gshPD0ZFLywPgYx5NWSia
-	 H/9YKnVDVoP/i3LdAOIzHOgKA/GsIG+iK9HNslhf7zv+3qD37BeinD1hOPlpiJP2r+
-	 h1M3Or22pRu3EMF6bVO9nRJtj27RuAGSAgbUQvAKkDvH9e0zS5P5o767D/En0hb1x+
-	 8gSLym7vtHaqDEOCyRA2awta8Uo5u0Dl0XnmIbQAtRtizErtsikHySM4yfMR3aH7J4
-	 21qBomjmAzKZLwqW0X9v3QQexMJuMKntI/NspLlB2wB5qVLxfX7UPD8kdTvo8kZcPm
-	 mPUSra+h7viUA==
-Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id A8FA637821A8;
-	Tue,  4 Jun 2024 12:45:40 +0000 (UTC)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, 
- =?utf-8?q?Rafa=C5=82_Mi=C5=82ecki?= <zajec5@gmail.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- =?utf-8?q?Rafa=C5=82_Mi=C5=82ecki?= <rafal@milecki.pl>
-In-Reply-To: <20240604063159.29216-1-zajec5@gmail.com>
-References: <20240604063159.29216-1-zajec5@gmail.com>
-Subject: Re: [PATCH V2] arm64: dts: mediatek: mt7981: add I2C controller
-Message-Id: <171750514061.334947.2592643629827567886.b4-ty@collabora.com>
-Date: Tue, 04 Jun 2024 14:45:40 +0200
+	id 1sEU4R-00000002Tqf-1qhG;
+	Tue, 04 Jun 2024 13:19:24 +0000
+Received: by mail-ed1-x52d.google.com with SMTP id 4fb4d7f45d1cf-57a50fecbadso3515800a12.3;
+        Tue, 04 Jun 2024 06:19:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1717507162; x=1718111962; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=YJVMvwv8yrvbQTt6Dpj5ooLvEPn9RhqjCuP8saFqK3k=;
+        b=bbvbjpLl/gXX6Rl1d7Wz/ixmtqJVC63V/zR98zaArJcKMkH0xU12wtxW+75PiR537w
+         ZzKPEZJbHwQyyiTzggPkb4xfxVbk5o+ZgNxGN6Ou4eQBK+0rv6J1fS85s4s9VYgGeSfY
+         oeOyTvBayeWJ2tc21tsI0fFeTmxk2jYyqgyZ0QL+ietnwOQQyFaTT0XcoRLjq8W+VxnO
+         oWYGILeavIXdRu7+tRWBFFLNsGfq4X59/soXmXuaW3qcAwzzg2k2C6si/XK0f3PBk8iL
+         t/iFJHX12F7qXo5ptqlsSinxzm51YHazd91NA2Vjg7tFotyNAFY6e/Bu8MSbXbw74cz7
+         PGuQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1717507162; x=1718111962;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=YJVMvwv8yrvbQTt6Dpj5ooLvEPn9RhqjCuP8saFqK3k=;
+        b=StG2yqliPr6LItnlJa0FhRAYkSLHkqw743/jHpfUQVTfqdswy5m90430uCLrohwVaD
+         1TOHLHOJAF6vef+ILBtswKWY/s+dtzuzj1ez9BpnFAVgY6oHBuaRmqpI58SdmwM7Dy7n
+         B+YMaSHirSkExi1z5eHQ/bp1Eqcsc3xAqcOeDJC4Ux2+BQIklZ3sVMR9rh1HcgIxAmqA
+         7QcAcSSxxkO5luW+4gCbpUjkpGw3V0kwAR+GF8XCjkZtthbG3oilQEVlkWoR7UMM6LkL
+         TgUrUGOLXzbIeKyEeNI1ROXimGjFegRxrU04vCdesOUxMY9DHgRRT7dUyJedgI5SJ+1T
+         fo+w==
+X-Forwarded-Encrypted: i=1; AJvYcCXtlyVH7HeQbcnrqI3EIW1bV3Hj2B7eVccF+QcC1IHBrCzei16wjRGN8wgbRf+Ju4jaxHotFH+boQQU8hxi9nsFR7+J1IqCOFU6S0YoMBkudygS8QAqM6GQE0+qC/Zf5DzVNdjk7oEXU9J6OOeyLGFMOrzhcJJwdPs=
+X-Gm-Message-State: AOJu0Yyxg28JV1lQOLzpaP7YMYk3IAl00uu8gQBqLGI38RDp4vsvB5GR
+	IRzWIwSPBHcbxzIL+ArpH2WGeCOYYnwtBQ5msoRvo9IBjn/TJN/jsxrzcuu2pl4AXSF6GJwhvaa
+	YL7Abog+uVg00aC14INW2/sR05Hs=
+X-Google-Smtp-Source: AGHT+IHDbpSFR8VgGbrUMxndBUIdfujfvQsl0DAQdoYXCdvQ0K5qPJ6brxy9idGG/uw3HyLxGrGZcT0HjfDhQ1mq2G4=
+X-Received: by 2002:a17:906:d794:b0:a68:eca8:2d3e with SMTP id
+ a640c23a62f3a-a68eca82ef6mr449184766b.12.1717507161399; Tue, 04 Jun 2024
+ 06:19:21 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-Mailer: b4 0.13.0
+References: <20240604123008.327424-1-angelogioacchino.delregno@collabora.com> <20240604123008.327424-4-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20240604123008.327424-4-angelogioacchino.delregno@collabora.com>
+From: Andy Shevchenko <andy.shevchenko@gmail.com>
+Date: Tue, 4 Jun 2024 16:18:43 +0300
+Message-ID: <CAHp75VdtfsSA7quU3Eo0=Yv=J_yXVo5_+_WgxGFJ5M_MLbf7NA@mail.gmail.com>
+Subject: Re: [PATCH v2 3/5] math.h: Add unsigned 8 bits fractional numbers type
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: jic23@kernel.org, lars@metafoo.de, robh@kernel.org, krzk+dt@kernel.org, 
+	conor+dt@kernel.org, matthias.bgg@gmail.com, lee@kernel.org, andy@kernel.org, 
+	nuno.sa@analog.com, bigunclemax@gmail.com, dlechner@baylibre.com, 
+	marius.cristea@microchip.com, marcelo.schmitt@analog.com, fr0st61te@gmail.com, 
+	mitrutzceclan@gmail.com, mike.looijmans@topic.nl, marcus.folkesson@gmail.com, 
+	linux-iio@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, kernel@collabora.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240604_054543_204823_31D38CEE 
-X-CRM114-Status: UNSURE (   5.52  )
+X-CRM114-CacheID: sfid-20240604_061923_500098_DEEE7423 
+X-CRM114-Status: UNSURE (   6.46  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -77,20 +96,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 04 Jun 2024 08:31:59 +0200, Rafał Miłecki wrote:
-> MT7981 has one on-SoC I2C controller that differs from recent Mediatek
-> blocks by having a different SLAVE_ADDR register offset (thus a custom
-> binding compatible string).
-> 
-> 
+On Tue, Jun 4, 2024 at 3:30=E2=80=AFPM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> Some users may be requiring only rather small numbers as both
+> numerator and denominator: add signed and unsigned 8 bits
+> structs {s8,u8}_fract.
 
-Applied to v6.10-next/dts64, thanks!
+Reviewed-by: Andy Shevchenko <andy@kernel.org>
+Thank you!
 
-[1/1] arm64: dts: mediatek: mt7981: add I2C controller
-      commit: 85ccbe8afbb4d4744f4f3a1519c5a59a8b74c87d
-
-Cheers,
-Angelo
-
-
+--=20
+With Best Regards,
+Andy Shevchenko
 
