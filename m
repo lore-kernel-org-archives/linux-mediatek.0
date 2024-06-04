@@ -4,73 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DD41C27C50
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Jun 2024 13:50:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A155FC27C53
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Jun 2024 15:28:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
+	References:In-Reply-To:Cc:To:From:MIME-Version:Content-Transfer-Encoding:
+	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Po0t4on09wwdBMS00q8Bk3SGWM842RcXls5BfPeAIMQ=; b=sHwG3Zpc2DiHwFppJuzmYy3H2h
-	hvlf/Bow3vj5eTOrhohVJxL0yI2oFYIrl6qoqKC1v33pJAX7amAGYDvQE+asEa6Sh4hXabAx/dTc8
-	YrdnN64yjyxUFGJ41p8zi5amUYaunsfzltO66nALYgWgneVCpGxk5JRZ/ft0eTFbsXCBaXvBc5xog
-	W+X7dfSgZ17HidS+i6fcZ6fIlFBGmy6hf8fexhaY1Xlduw3pfFRzxDj6knhPvrtCr+NpOt03ixGXh
-	HS6vO+m6rsHgMVFzKvuhtg5rCrce0AnjUhSftY1vKEQex81VfiywCm63c28/FjSJ8OC9xs+vNWXwy
-	3hW1aPKQ==;
+	bh=WCbsUQRemPPlERnM+qfRlyL3+f4soW4QIivO9UM9yqk=; b=bq5qu9YuyzZ9e0NVXCSLTUCY97
+	qmQkRk5BrrXX0fCdxtwMUbLjJsd7X/PutbMeKBisjJwzfWzrNbWEwkCK1rT58WHMY/jYYNrXbpcbO
+	zxgrQMF6SUpXfyLEU3bkz+PCxLTWURO+L1lxcOUOkitSk48eLAXDXRFOAQRImjOwX9514gL9BnRd+
+	Z0FUVBpJacvJ3cA+0xZHfhCJ9HFDgXwInuwCMfSTdnWMDIRnzO7ejeixGLMJza9hvH2NKxu12BwFy
+	jlOCvzcgZ0CNSM+AkWVUkFK2s03sRU0v6fmpf0VZu6nJImr900uYnrabRepl1Fn9OU0j9QdvuBRDz
+	7EYkMgKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sEUYU-00000002ZAv-0qnV;
-	Tue, 04 Jun 2024 13:50:26 +0000
-Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
+	id 1sEW5n-00000002use-1vC1;
+	Tue, 04 Jun 2024 15:28:55 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sEUYQ-00000002ZAA-0J1r;
-	Tue, 04 Jun 2024 13:50:24 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.97.1)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1sEUYF-000000007pM-3kyt;
-	Tue, 04 Jun 2024 13:50:12 +0000
-Date: Tue, 4 Jun 2024 14:50:04 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: SkyLake Huang =?utf-8?B?KOm7g+WVn+a+pCk=?= <SkyLake.Huang@mediatek.com>
-Cc: "linux@armlinux.org.uk" <linux@armlinux.org.uk>,
-	"andrew@lunn.ch" <andrew@lunn.ch>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"kuba@kernel.org" <kuba@kernel.org>,
-	"pabeni@redhat.com" <pabeni@redhat.com>,
-	"edumazet@google.com" <edumazet@google.com>,
-	"netdev@vger.kernel.org" <netdev@vger.kernel.org>,
-	"dqfext@gmail.com" <dqfext@gmail.com>,
-	Steven Liu =?utf-8?B?KOWKieS6uuixqik=?= <steven.liu@mediatek.com>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"davem@davemloft.net" <davem@davemloft.net>,
-	"hkallweit1@gmail.com" <hkallweit1@gmail.com>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH net-next v6 5/5] net: phy: add driver for built-in 2.5G
- ethernet PHY on MT7988
-Message-ID: <Zl8bjNzdB7g1fRyn@makrotopia.org>
-References: <20240603121834.27433-1-SkyLake.Huang@mediatek.com>
- <20240603121834.27433-6-SkyLake.Huang@mediatek.com>
- <Zl3ELbG8c8y0/4DN@shell.armlinux.org.uk>
- <Zl3Fwoiv1bJlGaQZ@makrotopia.org>
- <Zl3IGN5ZHCQfQfmt@shell.armlinux.org.uk>
- <Zl3Yo3dwQlXEfP3i@makrotopia.org>
- <Zl3lkIDqnt4JD//u@shell.armlinux.org.uk>
- <Zl32waW34yTiuF9u@makrotopia.org>
- <Zl4LvKlhty/9o38y@shell.armlinux.org.uk>
- <864a09b213169bc20f33af2f35239c6154ca81e3.camel@mediatek.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+	id 1sEW5j-00000002ur6-3A4v;
+	Tue, 04 Jun 2024 15:28:53 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id F20A0612E7;
+	Tue,  4 Jun 2024 15:28:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 90147C2BBFC;
+	Tue,  4 Jun 2024 15:28:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1717514930;
+	bh=R1YRD2xWbJ4CKWMqqUw5zYxQzZsVAGnyTTQmzDLurbk=;
+	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
+	b=hUcn6va2iO2Svgq2BjnHS2k7iJpLoBCgeIqURzrr3foQWSsbvm3qFmPoZr5y9cMIw
+	 Q3TtZ1s23R3mRAbGvoharsyCtOKLx/WRtOC6mnCK+7cl+hPtXLDVzfOd0Hss44ty7E
+	 ExDmlClfc4BRbqd73lIxKA2Ae/NfymL0urM8EreUFyolUMQDHP2X5JhYJ91skDzFaG
+	 t4toNFuG9AlRxYCIbi61Zwcw6bkcuysdCRZdptyuRuFuLclBeUCVs2rpuic74ZYTaC
+	 M4bHe5uuVSoRgA19XfVWK4RHFdCSld1E4mqvOEwzhZ30bZQ64goqkJAI5caXLk9Bkb
+	 v6m4Otf9kYxYQ==
+Date: Tue, 04 Jun 2024 10:28:48 -0500
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <864a09b213169bc20f33af2f35239c6154ca81e3.camel@mediatek.com>
+MIME-Version: 1.0
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Chukun Pan <amadeus@jmu.edu.cn>
+Cc: linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ linux-arm-kernel@lists.infradead.org, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzk+dt@kernel.org>
+In-Reply-To: <20240602104021.387713-1-amadeus@jmu.edu.cn>
+References: <20240602104021.387713-1-amadeus@jmu.edu.cn>
+Message-Id: <171751454718.785691.9170634580021432127.robh@kernel.org>
+Subject: Re: [PATCH 1/2] dt-bindings: arm: mediatek: Add Bananapi BPI-R3
+ mini
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240604_065022_397106_84BDDC31 
-X-CRM114-Status: GOOD (  48.97  )
+X-CRM114-CacheID: sfid-20240604_082851_885289_4CA3034D 
+X-CRM114-Status: UNSURE (   9.99  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,153 +76,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jun 04, 2024 at 08:42:57AM +0000, SkyLake Huang (黃啟澤) wrote:
-> On Mon, 2024-06-03 at 19:30 +0100, Russell King (Oracle) wrote:
-> >  	 
-> > External email : Please do not click links or open attachments until
-> > you have verified the sender or the content.
-> >  On Mon, Jun 03, 2024 at 06:00:49PM +0100, Daniel Golle wrote:
-> > > On Mon, Jun 03, 2024 at 04:47:28PM +0100, Russell King (Oracle)
-> > wrote:
-> > > > On Mon, Jun 03, 2024 at 03:52:19PM +0100, Daniel Golle wrote:
-> > > > > On Mon, Jun 03, 2024 at 02:41:44PM +0100, Russell King (Oracle)
-> > wrote:
-> > > > > > On Mon, Jun 03, 2024 at 02:31:46PM +0100, Daniel Golle wrote:
-> > > > > > > On Mon, Jun 03, 2024 at 02:25:01PM +0100, Russell King
-> > (Oracle) wrote:
-> > > > > > > > On Mon, Jun 03, 2024 at 08:18:34PM +0800, Sky Huang
-> > wrote:
-> > > > > > > > > Add support for internal 2.5Gphy on MT7988. This driver
-> > will load
-> > > > > > > > > necessary firmware, add appropriate time delay and
-> > figure out LED.
-> > > > > > > > > Also, certain control registers will be set to fix
-> > link-up issues.
-> > > > > > > > 
-> > > > > > > > Based on our previous discussion, it may be worth
-> > checking in the
-> > > > > > > > .config_init() method whether phydev->interface is one of
-> > the
-> > > > > > > > PHY interface modes that this PHY supports. As I
-> > understand from one
-> > > > > > > > of your previous emails, the possibilities are XGMII,
-> > USXGMII or
-> > > > > > > > INTERNAL. Thus:
-> > > > > > > > 
-> > > > > > > > > +static int mt798x_2p5ge_phy_config_init(struct
-> > phy_device *phydev)
-> > > > > > > > > +{
-> > > > > > > > > +struct pinctrl *pinctrl;
-> > > > > > > > > +int ret;
-> > > > > > > > 
-> > > > > > > > /* Check that the PHY interface type is compatible */
-> > > > > > > > if (phydev->interface != PHY_INTERFACE_MODE_INTERNAL &&
-> > > > > > > >     phydev->interface != PHY_INTERFACE_MODE_XGMII &&
-> > > > > > > >     phydev->interface != PHY_INTERFACE_MODE_USXGMII)
-> > > > > > > > return -ENODEV;
-> > > > > > > 
-> > > > > > > The PHY is built-into the SoC, and as such the connection
-> > type should
-> > > > > > > always be "internal". The PHY does not exist as dedicated
-> > IC, only
-> > > > > > > as built-in part of the MT7988 SoC.
-> > > > > > 
-> > > > > > That's not how it was described to me by Sky.
-> > > > > > 
-> > > > > > If what you say is correct, then the implementation of
-> > > > > > mt798x_2p5ge_phy_get_rate_matching() which checks for
-> > interface modes
-> > > > > > other than INTERNAL is not correct. Also it means that
-> > config_init()
-> > > > > > should not permit anything but INTERNAL.
-> > > > > 
-> > > > > The way the PHY is connected to the MAC *inside the chip* is
-> > XGMII
-> > > > > according the MediaTek. So call it "internal" or "xgmii",
-> > however, up to
-> > > > > my knowledge it's a fact that there is **only one way** this
-> > PHY is
-> > > > > connected and used, and that is being an internal part of the
-> > MT7988 SoC.
-> > > > > 
-> > > > > Imho, as there are no actual XGMII signals exposed anywhere I'd
-> > use
-> > > > > "internal" to describe the link between MAC and PHY (which are
-> > both
-> > > > > inside the same chip package).
-> > > > 
-> > > > I don't care what gets decided about what's acceptable for the
-> > PHY to
-> > > > accept, just that it checks for the acceptable modes in
-> > .config_init()
-> > > > and the .get_rate_matching() method is not checking for interface
-> > > > modes that are not permitted.
-> > > 
-> > > What I meant to express is that there is no need for such a check,
-> > also
-> > > not in config_init. There is only one way and one MAC-side
-> > interface mode
-> > > to operate that PHY, so the value will anyway not be considered
-> > anywhere
-> > > in the driver.
-> > 
-> > No, it matters. With drivers using phylink, the PHY interface mode is
-> > used in certain circumstances to constrain what the net device can
-> > do.
-> > So, it makes sense for new PHY drivers to ensure that the PHY
-> > interface
-> > mode is one that they can support, rather than just accepting
-> > whatever
-> > is passed to them (which then can lead to maintainability issues for
-> > subsystems.)
-> > 
-> > So, excuse me for disagreeing with you, but I do want to see such a
-> > check in new PHY drivers.
-> > 
-> > -- 
-> > RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-> > FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
-> 
-> Hi Russell/Daniel,
->   IMO, we can check PHY_INTERFACE_MODE_INTERNAL &
-> PHY_INTERFACE_MODE_XGMII in config_init() or probe(). However,
-> PHY_INTERFACE_MODE_USXGMII isn't supported by this phy, and
-> drivers/net/ethernet/mediatek/mtk_eth_path.c uses
-> PHY_INTERFACE_MODE_USXGMII to switch netsys pcs mux (set
-> MUX_G2_USXGMII_SEL bit in TOP_MISC_NETSYS_PCS_MUX) so that XFI-MAC can
-> be connected to external 10Gphy.
->   So, basically, for 1st XFI-MAC on mt7988:
-> - PHY_INTERFACE_MODE_XGMII/PHY_INTERFACE_MODE_INTERNAL: built-in
-> 2.5Gphy
 
-Why both? Wouldn't just PHY_INTERFACE_MODE_INTERNAL be more clear?
-There is no XGMII interface exposed anywhere and both "internal" and
-"xgmii" would be used to express the exact same thing.
+On Sun, 02 Jun 2024 18:40:20 +0800, Chukun Pan wrote:
+> Add compatible for Bananapi BPI-R3 mini Router (Filogic 830).
+> 
+> Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
+> ---
+>  Documentation/devicetree/bindings/arm/mediatek.yaml | 1 +
+>  1 file changed, 1 insertion(+)
+> 
 
-> - PHY_INTERFACE_MODE_USXGMII: external 10Gphy
-> 
->   I add check in config_init():
-> /* Check if PHY interface type is compatible */
-> if (phydev->interface != PHY_INTERFACE_MODE_XGMII &&
->     phydev->interface != PHY_INTERFACE_MODE_INTERNAL)
-> 	return -ENODEV;
-> 
->   Also, test with different phy mode in dts:
-> [PHY_INTERFACE_MODE_USXGMII]
-> [   18.702102] mtk_soc_eth 15100000.ethernet eth1: mtk_open: could not
-> attach PHY: -19
-> root@OpenWrt:/# cat /proc/device-tree/soc/ethernet@15100000/mac@1/phy-c
-> onnection-type
-> usxgmii
-> 
-> [PHY_INTERFACE_MODE_INTERNAL]
-> [   18.329513] mtk_soc_eth 15100000.ethernet eth1: PHY [mdio-bus:0f]
-> driver [MediaTek MT7988 2.5GbE PHY] (irq=POLL)
-> [   18.339708] mtk_soc_eth 15100000.ethernet eth1: configuring for
-> phy/internal link mode
-> root@OpenWrt:/# cat /proc/device-tree/soc/ethernet@15100000
-> /mac@1/phy-connection-type
-> internal
-> 
-> Sky
+
+My bot found new DTB warnings on the .dts files added or changed in this
+series.
+
+Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
+are fixed by another series. Ultimately, it is up to the platform
+maintainer whether these warnings are acceptable or not. No need to reply
+unless the platform maintainer has comments.
+
+If you already ran DT checks and didn't see these error(s), then
+make sure dt-schema is up to date:
+
+  pip3 install dtschema --upgrade
+
+
+New warnings running 'make CHECK_DTBS=y mediatek/mt7986a-bananapi-bpi-r3-mini.dtb' for 20240602104021.387713-1-amadeus@jmu.edu.cn:
+
+arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-mini.dtb: crypto@10320000: interrupts: [[0, 116, 4], [0, 117, 4], [0, 118, 4], [0, 119, 4]] is too short
+	from schema $id: http://devicetree.org/schemas/crypto/inside-secure,safexcel.yaml#
+arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-mini.dtb: crypto@10320000: interrupt-names: ['ring0', 'ring1', 'ring2', 'ring3'] is too short
+	from schema $id: http://devicetree.org/schemas/crypto/inside-secure,safexcel.yaml#
+arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-mini.dtb: ethernet@15100000: mac@0: Unevaluated properties are not allowed ('phy-supply' was unexpected)
+	from schema $id: http://devicetree.org/schemas/net/mediatek,net.yaml#
+arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-mini.dtb: ethernet@15100000: mac@1: Unevaluated properties are not allowed ('phy-supply' was unexpected)
+	from schema $id: http://devicetree.org/schemas/net/mediatek,net.yaml#
+arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-mini.dtb: rfkill: 'reset-gpios' does not match any of the regexes: 'pinctrl-[0-9]+'
+	from schema $id: http://devicetree.org/schemas/net/rfkill-gpio.yaml#
+
+
+
+
+
 
