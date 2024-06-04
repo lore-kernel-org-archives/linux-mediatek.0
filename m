@@ -4,83 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A1EEC25B78
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Jun 2024 17:00:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 415DAC25B78
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Jun 2024 17:01:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:Message-ID:In-Reply-To:Subject:cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0FXev4Iglq7vn8M9/xJrlzCWzECxyOY6UHQcKBzcM8E=; b=qR4bgCxIDF16F/y3od8RsoX8eM
-	KvBeNRwz/K3G9SRpOFcR9mSrDItLRzYt3TRX8M8EGTQEsPTVK5GUHRNahySgM+a+5Uiq2tqiPZVo7
-	xdJWFwe0ktXk+/GkmIKFdvZivdJIootDF9HriO6TJ8gK2/Yg9/hojOs4YQ+48WP2wsGOOcpdV0sDp
-	MuxCbcEfWaFwfNnwfL7+iVlVUqyCwNXc+CvvDc7UFOHI9EXh3+Y43PnbHhuGXZyfcIKxwF2qB+vVb
-	5AonhPyOFrm0mQyxVFMRXeonnZ7Dic+2TpB9z78RZ30BMqPyLRg7CtPKyjE+Pd0Rx/fLI06tMd1j3
-	jLVg7/mA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=HzOGfsxtAbzPaiVG4Wh0M0g2GTonKekwIavduiotSwY=; b=yR0mhxpYLQICV7DmMM7XeoZCf+
+	Q/fwwe9RYaH3MhNGKgedwSXMESEGqhhF747fTMFXwI0W0GYnHoLuIM0944y0TmsWuoVrhNPSWWIyB
+	vrFlQJv9Co0fV7cFmpKdbgtJ/IDS2P/aP5lMaN7kWZh3Zv+T8GJqC+kPh9n7rfSb0T0G9wy+1ezrB
+	RICnDwsNXCAFwraD3idumzy5rS4ztUJ/Go3E3MOt4FItdtQR4XyYIr5HhHUW2iwdGUehwlOZi0+q8
+	tqF+12tSB+oPc7ZncJvo9vKgXBiOw8BMfPopWMJg9G4XH64e1rlqY1SuDcd3kb3/msmrfISVhKQkF
+	fMfPlKuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sEXWC-00000003DmO-2jZ2;
-	Tue, 04 Jun 2024 17:00:16 +0000
-Received: from mail-qt1-x82c.google.com ([2607:f8b0:4864:20::82c])
+	id 1sEXXL-00000003E0v-3nbS;
+	Tue, 04 Jun 2024 17:01:27 +0000
+Received: from mout.gmx.net ([212.227.17.21])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sEXW8-00000003DlF-3smq
-	for linux-mediatek@lists.infradead.org;
-	Tue, 04 Jun 2024 17:00:15 +0000
-Received: by mail-qt1-x82c.google.com with SMTP id d75a77b69052e-44026036ea8so3490261cf.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 04 Jun 2024 10:00:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1717520411; x=1718125211; darn=lists.infradead.org;
-        h=mime-version:references:message-id:in-reply-to:subject:cc:to:from
-         :date:from:to:cc:subject:date:message-id:reply-to;
-        bh=0FXev4Iglq7vn8M9/xJrlzCWzECxyOY6UHQcKBzcM8E=;
-        b=qMtXtbku13Uk1zcrec0JNriSknza+5MkmrmdDXNYo4/YYkHzvnOHCeAXL7kJmr3qWe
-         P5VKAyjIN00jwnN4l0elPZGMNGXZe3J4oJmLzJpdB3zHcYaY83tvCDBIOppbZFbmlFd8
-         UYfqLw6OTEd42Bi7Xp64oJQ1JCiFf69796rl0aWktb7K27pDVNkK0K2VdUIx7yVVNC5R
-         Go4KLUOzar3cd5N9Ordpa7IMLcWenc6AQCyi1ccNxtFgI13aQmpM5DyUDCjiwQ1Etf1M
-         NTaCUR/FCQJqoOuWy+J7zqRZLrKiAM3Bu2tKafCZmCAsgn361jO8D1b4GMg6uim2+7Ev
-         56iQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1717520411; x=1718125211;
-        h=mime-version:references:message-id:in-reply-to:subject:cc:to:from
-         :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=0FXev4Iglq7vn8M9/xJrlzCWzECxyOY6UHQcKBzcM8E=;
-        b=fjGlaA/5yPa1ZRbHpnyJn47skVf8xyMA6Kqt8k++56fT1K5rQ9WdrWtQtRn81JfFEA
-         UC20CjfYwGrA1aUslkAPu5u5EOewShGG6OoOuI7LUv3LidFslZO8sMYCSvImkkcVfD/h
-         E0UfCd5kgE6DMA+y1ASKlLJmUTC3PvOxSdiPxhTjOyvvZCPj3M9GUzA9n0hT2bli//GJ
-         WAjsJBxHM1gFrL+JoIrGH0d5esaM2XRO3XisXsAmSPQ/zQxsKK23xN6doDbrfsXGlGMq
-         XCiQFQlPANptnNrwscLCtygeBcsH0lPPkK0uxOH+HwZkFxKxT8ReZu2BIMDa5aY5q86P
-         OO9g==
-X-Forwarded-Encrypted: i=1; AJvYcCVmPF7rTxAKKaaRULmkQQxADXGyWpUk2laXkGp6kBvF2+jhDzKhPtAvPFvCrWcvpOCZ+exZPUUrvuxEJcyWwEqOZEi9RHcKp52kLjj0NKBrtlIz
-X-Gm-Message-State: AOJu0YyHqtm99jSGauxuUWJVihM1JpStsy8LINTtPXJAF2RoPmBDHVPc
-	q7l5fvcn939UVq1qZV57zUiGwkN9AWSBneo4tTN39KpCsO7HGNVQ+Ij/6Mkksek=
-X-Google-Smtp-Source: AGHT+IEQ+mgjmHq05bdk7xACEVNcsSDNdul6POVLs6t8LHbGadcCJYvlJlevhDqW8d5ZOSNb/8F20Q==
-X-Received: by 2002:a05:622a:20b:b0:43a:f89a:6631 with SMTP id d75a77b69052e-43ff5250db8mr133406231cf.8.1717520410432;
-        Tue, 04 Jun 2024 10:00:10 -0700 (PDT)
-Received: from xanadu (modemcable018.15-162-184.mc.videotron.ca. [184.162.15.18])
-        by smtp.gmail.com with ESMTPSA id d75a77b69052e-440204b5420sm7471591cf.17.2024.06.04.10.00.09
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 04 Jun 2024 10:00:10 -0700 (PDT)
-Date: Tue, 4 Jun 2024 13:00:08 -0400 (EDT)
-From: Nicolas Pitre <npitre@baylibre.com>
-To: Julien Panis <jpanis@baylibre.com>
-cc: "Rafael J. Wysocki" <rafael@kernel.org>, 
-    Daniel Lezcano <daniel.lezcano@linaro.org>, 
-    Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>, 
-    Matthias Brugger <matthias.bgg@gmail.com>, 
-    AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-    linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, 
-    linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2] thermal/drivers/mediatek/lvts_thermal: Return error
- in case of invalid efuse data
-In-Reply-To: <20240604-mtk-thermal-calib-check-v2-1-8f258254051d@baylibre.com>
-Message-ID: <25528q8o-73p2-25s2-5o2q-on72no5s91qr@onlyvoer.pbz>
-References: <20240604-mtk-thermal-calib-check-v2-1-8f258254051d@baylibre.com>
+	id 1sEXXH-00000003Dzz-1UYs;
+	Tue, 04 Jun 2024 17:01:25 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
+	s=s31663417; t=1717520476; x=1718125276; i=frank-w@public-files.de;
+	bh=HzOGfsxtAbzPaiVG4Wh0M0g2GTonKekwIavduiotSwY=;
+	h=X-UI-Sender-Class:MIME-Version:Message-ID:From:To:Cc:Subject:
+	 Content-Type:Date:In-Reply-To:References:
+	 Content-Transfer-Encoding:cc:content-transfer-encoding:
+	 content-type:date:from:message-id:mime-version:reply-to:subject:
+	 to;
+	b=Az0Z7vnOVH+mdpayYy/q9JTsVgSqUFFYhRbCJFajCAYqq0l4cL1H68GhtXgzwEwt
+	 QFzRTsi+wXBOzagyesuhXpm4XE75rtMVNS4T3+5dsJV9e2BACOXb+yMLqNLI/AM/o
+	 rwFDzIrCQjeoxdtA2ab5DVw56BKwQB9tGFy/mqEFP6snAmz6w5mweq2w3LrxY2ROu
+	 QXWWLhRn5qEjoRhfge/A2Rar2P31LrkwzE2w+fHzbgc9LP6Mw1UumfxlLt0DrrOod
+	 YcSah8NuT1hHfIp3H/D4n0OwmwHbpYpeHY0XhVCwxxxzyvqiqMVbVVfxwnAF7C1Ci
+	 +Gw3WpS/I7QYXH8hCA==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [217.61.157.72] ([217.61.157.72]) by web-mail.gmx.net
+ (3c-app-gmx-bap32.server.lan [172.19.172.102]) (via HTTP); Tue, 4 Jun 2024
+ 19:01:16 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Message-ID: <trinity-d7335867-6435-44f5-bddd-d825bcef2d33-1717520476265@3c-app-gmx-bap32>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
+ Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, Eric Woudstra <ericwouds@gmail.com>
+Subject: Aw: [PATCH v2 4/5] arm64: dts: mt7986: add dtbs with applied
+ overlays for bpi-r3
+Content-Type: text/plain; charset=UTF-8
+Date: Tue, 4 Jun 2024 19:01:16 +0200
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <trinity-a61f3152-8b44-4efb-9176-cc00a9449e63-1702133775512@3c-app-gmx-bs23>
+References: <20231025170832.78727-1-linux@fw-web.de>
+ <20231025170832.78727-5-linux@fw-web.de>
+ <trinity-a61f3152-8b44-4efb-9176-cc00a9449e63-1702133775512@3c-app-gmx-bs23>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:9D0FPugdNo2sfMSNB36s4sPbmzQ//ch9qQ1z7kf35oVBJSWNVj6kMbWcGc9aBiQjzC2SB
+ D1Vu1e/qPOaNy0YQ7wBPotozdIB6KVss7NxxSgDCwMNy7l5Ttlr5CQNzDIJt8ytkZQjTS5YmUo8E
+ gtZ0YupCJoTVOIh/Vs9ofhiqQYY6gL6/JZJMXjDq3bp7meLn6m5YVanVV2z8hjwx9RRrfi+KX4pG
+ Aa0ViS2D2mdGefzxOeNFGm5eh01PGaUap0p4Vs+d2CIbAwaTz9DR+afUDR5NvZx3AJ0Qd4HcfTpb
+ s4=
+UI-OutboundReport: notjunk:1;M01:P0:I33YQDgclag=;efPVmOXOv1ZURw5hMJZ0SQKXJ6t
+ l0gAZiw9iLJzhcMTcqoNArSgjhSaABD9M8NRYYIZ2v1hDD5xfE7eQk0nTpYnaSmFEQRUbDrC4
+ 8+ozPr8v/NjNh4sOnzZ6fDvdU25YkNzga/9QTz1qwDByef+IQ5cDLAQkYDPXkeqkc3AhZTyST
+ GRiy1ZgkXmzqFLqJvrsNN8tFmU948zvl9PVqZSPpkefDIg+qAZmLYf+exxmDyfl5EgLpuIGdA
+ wMs8iXVWR3tayyIbG7hiwVAQEpF7zoSMYOA8APv6TgmPYT8OzpjgaPoEW+zHtYrFi1iQRkBoM
+ 0zsFFMLTciAAjwltCBMoyzTHqf4f3aZGe+D1L2il2t+ZXzmprnyMknBctczSavcY77AnJu8NG
+ sUhX8NwV8gv2UiQ+Dk8Xnqxqmz9XvoAqPVNuznGVsXPH9UZJt96hBG+EQNuFBXKqQhX0lfyOc
+ ktmBjS0RqHcLGQ8hwE0w/iwgf812zGNACUS3mCTGelpfFSuJc4VZrOlwQrZMgjBs/ouAuZZ7U
+ 3vcDYZqduYAz/3xf020RQ4GakhzEi51eNTWqmhjNcgoNjH8T78AqVvshkJym/WmCGyCTzGAw9
+ EFIvTC6Tq5QFAM1VqYk8iPSiHtFu2j4ZM4UUkuYz1p9J54JKDIFQnq5yWoCj1yl4kgIU/JZE7
+ NZCfBoxXcBWRWTtjqV1KUGgx21lBowzqAlkzeRH78kLkDLIoy6UgFJigzXLay1M=
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240604_100012_999331_C9FB13F6 
-X-CRM114-Status: GOOD (  20.91  )
+X-CRM114-CacheID: sfid-20240604_100123_797318_5E39E572 
+X-CRM114-Status: GOOD (  15.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,53 +101,100 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 4 Jun 2024, Julien Panis wrote:
+Hi,
 
-> This patch prevents from registering thermal entries and letting the
-> driver misbehave if efuse data is invalid. A device is not properly
-> calibrated if the golden temperature is zero.
-> 
-> Fixes: f5f633b18234 ("thermal/drivers/mediatek: Add the Low Voltage Thermal Sensor driver")
-> Signed-off-by: Julien Panis <jpanis@baylibre.com>
+how to proceed here?
 
-Reviewed-by: Nicolas Pitre <npitre@baylibre.com>
+regards Frank
 
-> ---
-> Guard against invalid calibration data, following this discussion:
-> https://lore.kernel.org/all/ad047631-16b8-42ce-8a8d-1429e6af4517@collabora.com/
-> ---
-> Changes in v2:
-> - Add Fixes tag.
-> - Link to v1: https://lore.kernel.org/r/20240603-mtk-thermal-calib-check-v1-1-5d6bf040414c@baylibre.com
-> ---
->  drivers/thermal/mediatek/lvts_thermal.c | 6 +++++-
->  1 file changed, 5 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
-> index 0bb3a495b56e..185d5a32711f 100644
-> --- a/drivers/thermal/mediatek/lvts_thermal.c
-> +++ b/drivers/thermal/mediatek/lvts_thermal.c
-> @@ -769,7 +769,11 @@ static int lvts_golden_temp_init(struct device *dev, u8 *calib,
->  	 */
->  	gt = (((u32 *)calib)[0] >> lvts_data->gt_calib_bit_offset) & 0xff;
->  
-> -	if (gt && gt < LVTS_GOLDEN_TEMP_MAX)
-> +	/* A zero value for gt means that device has invalid efuse data */
-> +	if (!gt)
-> +		return -ENODATA;
-> +
-> +	if (gt < LVTS_GOLDEN_TEMP_MAX)
->  		golden_temp = gt;
->  
->  	golden_temp_offset = golden_temp * 500 + lvts_data->temp_offset;
-> 
-> ---
-> base-commit: 632483ea8004edfadd035de36e1ab2c7c4f53158
-> change-id: 20240603-mtk-thermal-calib-check-ba2ec24a1c32
-> 
-> Best regards,
-> -- 
-> Julien Panis <jpanis@baylibre.com>
-> 
-> 
+
+> Gesendet: Samstag, 09. Dezember 2023 um 16:56 Uhr
+> Von: "Frank Wunderlich" <frank-w@public-files.de>
+> An: "Frank Wunderlich" <linux@fw-web.de>
+> Cc: linux-mediatek@lists.infradead.org, "Matthias Brugger" <matthias.bgg=
+@gmail.com>, "AngeloGioacchino Del Regno" <angelogioacchino.delregno@colla=
+bora.com>, "Rob Herring" <robh+dt@kernel.org>, "Krzysztof Kozlowski" <krzy=
+sztof.kozlowski+dt@linaro.org>, "Conor Dooley" <conor+dt@kernel.org>, "Dan=
+iel Golle" <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, linux-ar=
+m-kernel@lists.infradead.org, "Eric Woudstra" <ericwouds@gmail.com>
+> Betreff: Aw: [PATCH v2 4/5] arm64: dts: mt7986: add dtbs with applied ov=
+erlays for bpi-r3
+>
+> Hi
+>
+> Parts 1-3 are applied here, but how to proceed with this? to add further=
+ devicetrees like
+> for mt7988 we have to fix the "broken" dt-overlays first.
+>
+> i want to keep to build the dtbo to allow dynamic apply in bootloader, b=
+ut they should be checked in
+> compiletime too and full dtb should be created for users not wanting to =
+handle overlays.
+>
+> regards Frank
+>
+>
+> > Gesendet: Mittwoch, 25. Oktober 2023 um 18:08 Uhr
+> > Von: "Frank Wunderlich" <linux@fw-web.de>
+>
+> > Build devicetree binaries for testing overlays and providing users
+> > full dtb without using overlays.
+> >
+> > Suggested-by: Rob Herring <robh+dt@kernel.org>
+> > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> > ---
+> > https://lore.kernel.org/all/CAL_JsqK_3xxD0DFwipXO85P=3Dq=3DEYjUdjE1_8g=
+1MKtvw3vVzx5A@mail.gmail.com/
+> > https://lore.kernel.org/all/CAL_JsqJSi=3DkJSix=3Df3787ULZnaCy_Y26Phdhy=
+5y9fat_vkDuUw@mail.gmail.com/
+> >
+> > v2:
+> > make full dtbs multiline for better readability
+> > ---
+> >  arch/arm64/boot/dts/mediatek/Makefile | 22 ++++++++++++++++++++++
+> >  1 file changed, 22 insertions(+)
+> >
+> > diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/d=
+ts/mediatek/Makefile
+> > index c99c3372a4b5..24eeba0703ce 100644
+> > --- a/arch/arm64/boot/dts/mediatek/Makefile
+> > +++ b/arch/arm64/boot/dts/mediatek/Makefile
+> > @@ -8,11 +8,33 @@ dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt6797-evb.dtb
+> >  dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt6797-x20-dev.dtb
+> >  dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7622-rfb1.dtb
+> >  dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7622-bananapi-bpi-r64.dtb
+> > +
+> >  dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3.dtb
+> >  dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-emmc.dtbo
+> >  dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-nand.dtbo
+> >  dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-nor.dtbo
+> >  dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-sd.dtbo
+> > +mt7986a-bananapi-bpi-r3-emmc-nand-dtbs :=3D \
+> > +	mt7986a-bananapi-bpi-r3.dtb \
+> > +	mt7986a-bananapi-bpi-r3-emmc.dtbo \
+> > +	mt7986a-bananapi-bpi-r3-nand.dtbo
+> > +dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-emmc-nand.dt=
+b
+> > +mt7986a-bananapi-bpi-r3-emmc-nor-dtbs :=3D \
+> > +	mt7986a-bananapi-bpi-r3.dtb \
+> > +	mt7986a-bananapi-bpi-r3-emmc.dtbo \
+> > +	mt7986a-bananapi-bpi-r3-nor.dtbo
+> > +dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-emmc-nor.dtb
+> > +mt7986a-bananapi-bpi-r3-sd-nand-dtbs :=3D \
+> > +	mt7986a-bananapi-bpi-r3.dtb \
+> > +	mt7986a-bananapi-bpi-r3-sd.dtbo \
+> > +	mt7986a-bananapi-bpi-r3-nand.dtbo
+> > +dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-sd-nand.dtb
+> > +mt7986a-bananapi-bpi-r3-sd-nor-dtbs :=3D \
+> > +	mt7986a-bananapi-bpi-r3.dtb \
+> > +	mt7986a-bananapi-bpi-r3-sd.dtbo \
+> > +	mt7986a-bananapi-bpi-r3-nor.dtbo
+> > +dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-sd-nor.dtb
+> > +
+> >  dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-rfb.dtb
+> >  dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986b-rfb.dtb
+> >  dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8167-pumpkin.dtb
+>
+>
+>
 
