@@ -4,60 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6FB7C27C53
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jun 2024 12:39:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20284C25B76
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jun 2024 13:10:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6H0fSn9uaFIKhZUXyFNM+0oXyb6mFu8B7TQQbIsdT44=; b=VbJ0GQ9mPU7V8NEXMHsZWvOWXZ
-	RfqUTs/fncPOwFYsaOWNcyK24wMR2SvkJIWIS5P/Uf/5EKSnETSpExN607S9BLw7bTGBiwcy/tAOw
-	5Osb4Tl8Y17cjFA1jfgRmRZaBdqu+NZTpgVQ0KJLMvLFoSZkuz/6ku9FdIq9IgyepRKxozlNFBsDZ
-	Ss4RZLhDAMc3He3tR5a4o1oJcFFJCQEi/k/GZqCxTyi7nYAAMi2DhM2tdv6Bk///TbHwpyLGKdHHv
-	gWQnRTat3VNmMXTHwhq7AUK5AwzUjsYOsPh85yi4MSU/0UVNKYXqjCebqzCo6lb+/2c+2MvCEzCsd
-	N6Le7YSA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:
+	References:Date:Message-Id:From:Subject:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=eeJkXWSQREqrNkwIoIJm9Rxx5SWj77ejDqgIavCpbl0=; b=Y/Tze911tUH9x6NTv5LhF3vVId
+	kNoWISL1r/z2OTbDz4ugdwMxtQaoCyJsjnt/Gjyu/6uR42gG2jvkIhF0rR56jXo9oxaYqG63eumlU
+	tRbk1dazhty/YWZRgaEC0tH+umkE9+550a7D/nOOEU5zTjzGc2HqqSdjOKB3WVqx+S35HdoykC/OI
+	mgAxuWDXbBuaBdWhDBnim8Ldq5uam6RY73+1x0Ba0FEx+QH8N7Pd44xxT3iHCzn8TkHX/X+Bmb4Mn
+	2PsjHikVxdPKkHdED6rP0K97cXmsoC3Yf/CQHK/mpCq5ALVkyOGVkT9ZouCU1A7EEHS96Y20LDTij
+	ocogKSNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sEpvr-000000062eP-0zIm;
-	Wed, 05 Jun 2024 12:39:59 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sEpvl-000000062a8-3OJv;
-	Wed, 05 Jun 2024 12:39:55 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id E3BB9339;
-	Wed,  5 Jun 2024 05:40:16 -0700 (PDT)
-Received: from [10.57.39.129] (unknown [10.57.39.129])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 39FE93F762;
-	Wed,  5 Jun 2024 05:39:48 -0700 (PDT)
-Message-ID: <b7f7403b-142a-4914-a787-f92292069d6d@arm.com>
-Date: Wed, 5 Jun 2024 13:39:51 +0100
+	id 1sEqPY-00000006AVr-0jft;
+	Wed, 05 Jun 2024 13:10:40 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
+	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1sEqPR-00000006ATk-2PIh;
+	Wed, 05 Jun 2024 13:10:35 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id B9BA961972;
+	Wed,  5 Jun 2024 13:10:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 844D4C32782;
+	Wed,  5 Jun 2024 13:10:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1717593031;
+	bh=u3bAQnWwZ28p/kNsVqk2e4u6Iq8eIG5zznvzDkYoUog=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=k/OmKoe09Hnm9ndfZnuOCZUr5Of+DpVHDTCZ2aB1AuRqQycgkANEzX5Mhejcjt6or
+	 eF/GEgPsSTorLYM5jtvxNLaNoSgld5P0WGOgqBNOAjhFWjVgK9xP6BSckBSBTOY2Ny
+	 v7y3yyhCyfuDxo6tvjYtyjCpXSOmiclyiivveMrkLJJ0lvXq2A58doanTU1ntfaSpR
+	 qsNk6Q2BIm6uP88sHhJJvXuzkgm4yY/WI+ysX0VdgB/UI6wV1LDWGP9GkznMdaxZXF
+	 v/FevXfVS3lkD4MAX3jLb28EhlZXt4vy4DcK6fITG2ozKSIgL9rCglsxaEfCJJKGUa
+	 oMBv3cVpEaW7A==
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 6D3E0D3E99A;
+	Wed,  5 Jun 2024 13:10:31 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/2] drm/panfrost: Add support for Mali on the MT8188
- SoC
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- boris.brezillon@collabora.com
-Cc: maarten.lankhorst@linux.intel.com, mripard@kernel.org,
- tzimmermann@suse.de, airlied@gmail.com, daniel@ffwll.ch, robh@kernel.org,
- krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
- dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20240604123922.331469-1-angelogioacchino.delregno@collabora.com>
- <20240604123922.331469-3-angelogioacchino.delregno@collabora.com>
- <f44611fd-523a-4b4d-accd-20fdfbac178a@arm.com>
- <6dee4870-3ca2-46d7-a30b-014a7d34135a@collabora.com>
-From: Steven Price <steven.price@arm.com>
-Content-Language: en-GB
-In-Reply-To: <6dee4870-3ca2-46d7-a30b-014a7d34135a@collabora.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Subject: Re: [net v3] net: ethernet: mtk_eth_soc: handle dma buffer size soc
+ specific
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <171759303143.15829.1231118828058253183.git-patchwork-notify@kernel.org>
+Date: Wed, 05 Jun 2024 13:10:31 +0000
+References: <20240603192505.217881-1-linux@fw-web.de>
+In-Reply-To: <20240603192505.217881-1-linux@fw-web.de>
+To: Frank Wunderlich <linux@fw-web.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240605_053954_051403_934EBED5 
-X-CRM114-Status: GOOD (  37.17  )
+X-CRM114-CacheID: sfid-20240605_061033_758199_6ECC3C89 
+X-CRM114-Status: UNSURE (   8.77  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,154 +70,35 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: daniel@makrotopia.org, angelogioacchino.delregno@collabora.com, netdev@vger.kernel.org, sean.wang@mediatek.com, linux-kernel@vger.kernel.org, Mark-MC.Lee@mediatek.com, edumazet@google.com, linux-mediatek@lists.infradead.org, bc-bocun.chen@mediatek.com, john@phrozen.org, matthias.bgg@gmail.com, kuba@kernel.org, pabeni@redhat.com, lorenzo@kernel.org, davem@davemloft.net, linux-arm-kernel@lists.infradead.org, nbd@nbd.name
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 05/06/2024 12:43, AngeloGioacchino Del Regno wrote:
-> Il 05/06/24 11:18, Steven Price ha scritto:
->> On 04/06/2024 13:39, AngeloGioacchino Del Regno wrote:
->>> MediaTek MT8188 has a Mali-G57 MC3 (Valhall-JM): add a new
->>> compatible and platform data using the same supplies and the
->>> same power domain lists as MT8183 (one regulator, three power
->>> domains).
->>>
->>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->>> ---
->>>   drivers/gpu/drm/panfrost/panfrost_drv.c | 9 +++++++++
->>>   1 file changed, 9 insertions(+)
->>>
->>> diff --git a/drivers/gpu/drm/panfrost/panfrost_drv.c b/drivers/gpu/drm/panfrost/panfrost_drv.c
->>> index ef9f6c0716d5..4e2d9f671a0d 100644
->>> --- a/drivers/gpu/drm/panfrost/panfrost_drv.c
->>> +++ b/drivers/gpu/drm/panfrost/panfrost_drv.c
->>> @@ -777,6 +777,14 @@ static const struct panfrost_compatible mediatek_mt8186_data = {
->>>   	.pm_features = BIT(GPU_PM_CLK_DIS) | BIT(GPU_PM_VREG_OFF),
->>>   };
->>>   
->>> +static const struct panfrost_compatible mediatek_mt8188_data = {
->>> +	.num_supplies = ARRAY_SIZE(mediatek_mt8183_b_supplies) - 1,
->>> +	.supply_names = mediatek_mt8183_b_supplies,
->>
->> I think this is a little confusing. Ideally we'd drop the existing
->> mediatek_xxx_supplies which are the same as default_supplies and just
->> use that instead.
->>
->>> +	.num_pm_domains = ARRAY_SIZE(mediatek_mt8183_pm_domains),
->>> +	.pm_domain_names = mediatek_mt8183_pm_domains,
->>
->> We'd want at least a comment explaining that this isn't a typo (i.e. /*
->> mt8188 uses the same pm domains as mt8183 */). But I'm also wondering if
->> it would be sensible to simply have one domain list, something like:
->>
->> --->8---
->> static const char * const mediatek_pm_domains[] = { "core0", "core1",
->> 						    "core2", "core3",
->> 						    "core4" };
->>
->> static const struct panfrost_compatible mediatek_mt8183_data = {
->> 	...
->> 	.num_pm_domains = 3,
->> 	.pm_domain_names = mediatek_pm_domains,
->> };
->> ...
->> static const struct panfrost_compatible mediatek_mt8186_data = {
->> 	...
->> 	.num_pm_domains = 2,
->> 	.pm_domain_names = mediatek_pm_domains,
->> };
->> ...
->> static const struct panfrost_compatible mediatek_mt8188_data = {
->> 	...
->> 	.num_pm_domains = 3,
->> 	.pm_domain_names = mediatek_pm_domains,
->> };
->> ...
->> static const struct panfrost_compatible mediatek_mt8192_data = {
->> 	...
->> 	.num_pm_domains = 5,
->> 	.pm_domain_names = mediatek_pm_domains,
->> };
->> --->8---
->>
->> OTOH what you've got it no worse than what we already had, so it's up to
->> you whether you want to tidy this up or just add a comment so it doesn't
->> look like there's a typo.
->>
+Hello:
+
+This patch was applied to netdev/net.git (main)
+by David S. Miller <davem@davemloft.net>:
+
+On Mon,  3 Jun 2024 21:25:05 +0200 you wrote:
+> From: Frank Wunderlich <frank-w@public-files.de>
 > 
-> I didn't disclose my plan, but you've already shown part of it, so seeing that
-> you preventively agree with at least part of that is fun :-)
+> The mainline MTK ethernet driver suffers long time from rarly but
+> annoying tx queue timeouts. We think that this is caused by fixed
+> dma sizes hardcoded for all SoCs.
 > 
-> I surely won't be able to do what I want to do for *this* cycle as I'm mostly
-> sure that I won't have time for this in the next 3 weeks - but anyway....
+> We suspect this problem arises from a low level of free TX DMADs,
+> the TX Ring alomost full.
 > 
-> What I was thinking is that we should either look for a number of power domains
-> limited by a max power domains definition (that should already be present somewhere
-> in panfrost if I recall correctly) without even caring about the actual power
-> domain names, or we should look for a number of PDs having any name matching,
-> in a for loop, snprintf(*something, sizeof(something), "core%d", i).
-> 
-> This means that, with the snprintf idea, we don't even have to set any
-> pm_domain_names list anymore, at all, and we can either reuse num_pm_domains
-> or just get the number of PDs limited by the binding - but that's a problem for
-> the future me/us I guess...
-> 
-> But since we're there...
-> 
-> Please, I'd like to hear your opinion about the core%d idea :-)
+> [...]
 
-I was tempted to suggest something like it... ;) But two things made me
-wary:
+Here is the summary with links:
+  - [net,v3] net: ethernet: mtk_eth_soc: handle dma buffer size soc specific
+    https://git.kernel.org/netdev/net/c/c57e55819443
 
- * It's a bigger change, and I didn't want to suggest such a large
-refactor - let's get this patch in first.
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
- * There is no technical reason why designs will have a power domain per
-core. In particular there is the concept of 'stacks' added in later GPUs
-(so for these GPUs it should be "stack%d"). We also don't want the
-bindings being decided based on the driver, so if there's an integration
-which has e.g. "core01", "core23", etc we should support that rather
-than encouraging people to invent different names just to make the
-bindings easier.
-
-Having said that, we could have special handling for
-pm_domain_names==NULL where "core%d" is assumed, leaving the current
-approach for any 'weird' GPU integrations that might crop up in the future.
-
-> Anyway, I think that for now I'm choosing the "comment shortcut" for this patch.
-
-Agreed - there's no point holding up adding support for a new GPU for
-this clean up.
-
-> P.S.: Thanks for the feedback!
-
-No problem.
-
-Thanks,
-
-Steve
-
-> Cheers,
-> Angelo
-> 
->> Steve
->>
->>> +	.pm_features = BIT(GPU_PM_CLK_DIS) | BIT(GPU_PM_VREG_OFF),
->>> +};
->>> +
->>>   static const char * const mediatek_mt8192_supplies[] = { "mali", NULL };
->>>   static const char * const mediatek_mt8192_pm_domains[] = { "core0", "core1", "core2",
->>>   							   "core3", "core4" };
->>> @@ -808,6 +816,7 @@ static const struct of_device_id dt_match[] = {
->>>   	{ .compatible = "mediatek,mt8183-mali", .data = &mediatek_mt8183_data },
->>>   	{ .compatible = "mediatek,mt8183b-mali", .data = &mediatek_mt8183_b_data },
->>>   	{ .compatible = "mediatek,mt8186-mali", .data = &mediatek_mt8186_data },
->>> +	{ .compatible = "mediatek,mt8188-mali", .data = &mediatek_mt8188_data },
->>>   	{ .compatible = "mediatek,mt8192-mali", .data = &mediatek_mt8192_data },
->>>   	{}
->>>   };
->>
-> 
-> 
-> 
 
 
