@@ -4,89 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57B51C25B76
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jun 2024 08:55:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 841A8C25B76
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jun 2024 09:18:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZzCw56uBajgoPcSKxbxBOTmVAmxJFjZGHkEQgNNQnIk=; b=hbGhpfW5mK1azx+jkAvuXPAZl9
-	fuJL5Dy3W/Z1PAK4AYbb/nBMmMFSyIJrlM0CwucorpE7aMSHhSspfbkt/hZXD8GJoLOhcsl01abET
-	7IgkUQSMKT3AbCJTWU1l4hofWbR6V7GvbOciXDEpLBKsAQbLQVjm/ipzDMchAHT7Qw19aq8F1WWfK
-	td17f9EpOdIaRm+N2nhFgs7RnWUD3fjG3e2+OqS64faIivo4tlFtEr4dp3xse3n4yS0mPHjassNeO
-	VvsauQIGZMLOxvD3SZB8cPLNB2xExLo1S3NDbTPeywYrN8jBw6CHsDOzeoajy/yrPLEwbHYQHgRzr
-	d0Jr0hKQ==;
+	bh=mO50GyjH39bxbc5EOT1/9MA3fLxrVQNmcbavUHwbgME=; b=ODD2LLNg9lVgGU2HOl+Y2D50Gr
+	m7OZzSqIqXvVc9ecIp2+s+wRETl95QjC8aIQ5BQPN95yse4kWF9CjgTrkU/jX7LX7lhDJsYz4BcWJ
+	cIKGwA7AaSZ5U6ii8Hulkpf6H+Q3X9bdA9gfFpVBsRd95DibbEpUch8nIjzDmcEG2sGRqjUyFpqmJ
+	J/Bd1WaJ2OWL/WB9UwL/HnRbDxJQeIJKeaWqHeqKfwslJp8T8mVAsIt2+SagUqzKLfKw6eFjizTA3
+	n1tGp3GD6PQkK1EiX8sAOH3dhT0KPnJhQglkAZMjZ79A05WD6Q3ziWOdI/w3LN1himgqXyM2Qb3yi
+	ResJ9FxQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sEmQB-00000005Ieb-3N29;
-	Wed, 05 Jun 2024 08:55:03 +0000
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
-	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sEmQ4-00000005IZn-3QuN;
-	Wed, 05 Jun 2024 08:54:58 +0000
-Received: by mail-ej1-x62e.google.com with SMTP id a640c23a62f3a-a68c8b90c85so463833366b.2;
-        Wed, 05 Jun 2024 01:54:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1717577694; x=1718182494; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ZzCw56uBajgoPcSKxbxBOTmVAmxJFjZGHkEQgNNQnIk=;
-        b=lgvBsYxaRRfQRBTuU+kSzk5pmqLNubc3rgxdJ7Qdlet7idSgrXDqIrpUumv1JruHBO
-         o9bnwd82M1QiFCbEq0TY4w6pqxN3O5dNVhju/dM5GYdBeGXLN8/6epQPBfsIJLaI4bcF
-         SZob0Ov5juv9cIVmCbNhs45gQD5RYw6psjIab2CkZjzrgWTThtekaFD4MX7ZwlDNuuvy
-         9OSNveMXj91MNHcO3R3o/l2mUrZ4IqllseAM/FyzfLX76HsKA+ncBy/8oCH28FK7uBzu
-         jO6M69fQCdyJ0fyqFrthXYO/xZCR8BawrD53f5KmwGzxYxfL+F+SH6PKZGcLsfbx2Sab
-         sfgQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1717577694; x=1718182494;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=ZzCw56uBajgoPcSKxbxBOTmVAmxJFjZGHkEQgNNQnIk=;
-        b=BbBHkZB1qWYnihv8SvRvLdqZzPjSXMTUWgcK0kn9HbP+bkLNiv/KV6wUGCx0H92CRR
-         AxMQX30kIiHcwznhpyE/XVnJMWdQaM89waES/BXoayjm2h4UyXaUQgGHhLdgoZ3wj/On
-         wdcOm6stlmGolZRG1qEyNuo0jgWG/5OLGUfOravLTJycHkJ0yTqEIkfy0Ll3IH+1efOk
-         b5JjnrWoM7ruhrsaasN8sZnNEdiu7CduN71BRgq+QdxM81UzI0qUFa9fpgtqElOtU4h1
-         NQhzrKgrY1DeXm3R59bjRL6h5jwNTXHZOVeOqXHOoZxfLZZbcz5aSamwmLA7+MmWTcM1
-         FSaw==
-X-Forwarded-Encrypted: i=1; AJvYcCWe1B12Nfrd/jVD+WLbLEzdEwAuGGajqsaIwAlnlNGORTTy3TUw5WdVnGEkSBbLJeVwymmQv7QsQA2oR1zpmz4n0B44pwaMcE1qAYpX+nBUfjp2mcoIBJYSuSo5Vk5hw1H6AVTxkJwFJWi6b9phZwoeBMzU4IHeKew=
-X-Gm-Message-State: AOJu0YzfHdyKKjpiPIYcrWIp5FD2V8NT7c7zRUQm/E+QZZTLrDT34OkG
-	fL5WL2cCMwo4XJu8sZ1adoaCMOEKy2nix1PUiH2nt+p77BUoZD7kjRag4g==
-X-Google-Smtp-Source: AGHT+IH6OtCR7PLNaxYCvlpziDK8I1V+86+Us/G+mB0/DfR0zTAG5P+/fb+cGawEEBhtJmDl0TX/5A==
-X-Received: by 2002:a17:906:b209:b0:a66:7b79:3573 with SMTP id a640c23a62f3a-a699f6664demr134166666b.25.1717577693663;
-        Wed, 05 Jun 2024 01:54:53 -0700 (PDT)
-Received: from localhost.lan (031011218106.poznan.vectranet.pl. [31.11.218.106])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a68bfe84c67sm586249866b.62.2024.06.05.01.54.52
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 05 Jun 2024 01:54:53 -0700 (PDT)
-From: =?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <zajec5@gmail.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Jiri Slaby <jirislaby@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>
-Cc: linux-serial@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>
-Subject: [PATCH 2/2] arm64: dts: mediatek: mt7988: add UART controllers
-Date: Wed,  5 Jun 2024 10:54:33 +0200
-Message-Id: <20240605085433.26513-2-zajec5@gmail.com>
-X-Mailer: git-send-email 2.35.3
-In-Reply-To: <20240605085433.26513-1-zajec5@gmail.com>
-References: <20240605085433.26513-1-zajec5@gmail.com>
+	id 1sEmmp-00000005MD1-1PEl;
+	Wed, 05 Jun 2024 09:18:27 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1sEmml-00000005MB7-1R98;
+	Wed, 05 Jun 2024 09:18:25 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id BF2FDDA7;
+	Wed,  5 Jun 2024 02:18:44 -0700 (PDT)
+Received: from [10.57.39.129] (unknown [10.57.39.129])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 147E13F792;
+	Wed,  5 Jun 2024 02:18:16 -0700 (PDT)
+Message-ID: <f44611fd-523a-4b4d-accd-20fdfbac178a@arm.com>
+Date: Wed, 5 Jun 2024 10:18:20 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 2/2] drm/panfrost: Add support for Mali on the MT8188
+ SoC
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ boris.brezillon@collabora.com
+Cc: maarten.lankhorst@linux.intel.com, mripard@kernel.org,
+ tzimmermann@suse.de, airlied@gmail.com, daniel@ffwll.ch, robh@kernel.org,
+ krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
+ dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20240604123922.331469-1-angelogioacchino.delregno@collabora.com>
+ <20240604123922.331469-3-angelogioacchino.delregno@collabora.com>
+From: Steven Price <steven.price@arm.com>
+Content-Language: en-GB
+In-Reply-To: <20240604123922.331469-3-angelogioacchino.delregno@collabora.com>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240605_015456_933604_C1674AE3 
-X-CRM114-Status: GOOD (  11.68  )
+X-CRM114-CacheID: sfid-20240605_021824_007282_879B7856 
+X-CRM114-Status: GOOD (  19.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,70 +70,89 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Rafał Miłecki <rafal@milecki.pl>
+On 04/06/2024 13:39, AngeloGioacchino Del Regno wrote:
+> MediaTek MT8188 has a Mali-G57 MC3 (Valhall-JM): add a new
+> compatible and platform data using the same supplies and the
+> same power domain lists as MT8183 (one regulator, three power
+> domains).
+> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>  drivers/gpu/drm/panfrost/panfrost_drv.c | 9 +++++++++
+>  1 file changed, 9 insertions(+)
+> 
+> diff --git a/drivers/gpu/drm/panfrost/panfrost_drv.c b/drivers/gpu/drm/panfrost/panfrost_drv.c
+> index ef9f6c0716d5..4e2d9f671a0d 100644
+> --- a/drivers/gpu/drm/panfrost/panfrost_drv.c
+> +++ b/drivers/gpu/drm/panfrost/panfrost_drv.c
+> @@ -777,6 +777,14 @@ static const struct panfrost_compatible mediatek_mt8186_data = {
+>  	.pm_features = BIT(GPU_PM_CLK_DIS) | BIT(GPU_PM_VREG_OFF),
+>  };
+>  
+> +static const struct panfrost_compatible mediatek_mt8188_data = {
+> +	.num_supplies = ARRAY_SIZE(mediatek_mt8183_b_supplies) - 1,
+> +	.supply_names = mediatek_mt8183_b_supplies,
 
-MT7988 has three on-SoC UART controllers that support M16C450 and
-M16550A modes.
+I think this is a little confusing. Ideally we'd drop the existing
+mediatek_xxx_supplies which are the same as default_supplies and just
+use that instead.
 
-Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
----
- arch/arm64/boot/dts/mediatek/mt7988a.dtsi | 35 ++++++++++++++++++++++-
- 1 file changed, 34 insertions(+), 1 deletion(-)
+> +	.num_pm_domains = ARRAY_SIZE(mediatek_mt8183_pm_domains),
+> +	.pm_domain_names = mediatek_mt8183_pm_domains,
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
-index aa728331e876..7690a83911af 100644
---- a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
-@@ -86,7 +86,7 @@ infracfg: clock-controller@10001000 {
- 			#clock-cells = <1>;
- 		};
- 
--		clock-controller@1001b000 {
-+		topckgen: clock-controller@1001b000 {
- 			compatible = "mediatek,mt7988-topckgen", "syscon";
- 			reg = <0 0x1001b000 0 0x1000>;
- 			#clock-cells = <1>;
-@@ -124,6 +124,39 @@ pwm@10048000 {
- 			status = "disabled";
- 		};
- 
-+		serial@11000000 {
-+			compatible = "mediatek,mt7988-uart", "mediatek,mt6577-uart";
-+			reg = <0 0x11000000 0 0x100>;
-+			interrupts = <GIC_SPI 123 IRQ_TYPE_LEVEL_HIGH>;
-+			interrupt-names = "uart", "wakeup";
-+			clocks = <&topckgen CLK_TOP_UART_SEL>,
-+				 <&infracfg CLK_INFRA_52M_UART0_CK>;
-+			clock-names = "baud", "bus";
-+			status = "disabled";
-+		};
-+
-+		serial@11000100 {
-+			compatible = "mediatek,mt7988-uart", "mediatek,mt6577-uart";
-+			reg = <0 0x11000100 0 0x100>;
-+			interrupts = <GIC_SPI 124 IRQ_TYPE_LEVEL_HIGH>;
-+			interrupt-names = "uart", "wakeup";
-+			clocks = <&topckgen CLK_TOP_UART_SEL>,
-+				 <&infracfg CLK_INFRA_52M_UART1_CK>;
-+			clock-names = "baud", "bus";
-+			status = "disabled";
-+		};
-+
-+		serial@11000200 {
-+			compatible = "mediatek,mt7988-uart", "mediatek,mt6577-uart";
-+			reg = <0 0x11000200 0 0x100>;
-+			interrupts = <GIC_SPI 125 IRQ_TYPE_LEVEL_HIGH>;
-+			interrupt-names = "uart", "wakeup";
-+			clocks = <&topckgen CLK_TOP_UART_SEL>,
-+				 <&infracfg CLK_INFRA_52M_UART2_CK>;
-+			clock-names = "baud", "bus";
-+			status = "disabled";
-+		};
-+
- 		i2c@11003000 {
- 			compatible = "mediatek,mt7981-i2c";
- 			reg = <0 0x11003000 0 0x1000>,
--- 
-2.35.3
+We'd want at least a comment explaining that this isn't a typo (i.e. /*
+mt8188 uses the same pm domains as mt8183 */). But I'm also wondering if
+it would be sensible to simply have one domain list, something like:
+
+--->8---
+static const char * const mediatek_pm_domains[] = { "core0", "core1",
+						    "core2", "core3",
+						    "core4" };
+
+static const struct panfrost_compatible mediatek_mt8183_data = {
+	...
+	.num_pm_domains = 3,
+	.pm_domain_names = mediatek_pm_domains,
+};
+...
+static const struct panfrost_compatible mediatek_mt8186_data = {
+	...
+	.num_pm_domains = 2,
+	.pm_domain_names = mediatek_pm_domains,
+};
+...
+static const struct panfrost_compatible mediatek_mt8188_data = {
+	...
+	.num_pm_domains = 3,
+	.pm_domain_names = mediatek_pm_domains,
+};
+...
+static const struct panfrost_compatible mediatek_mt8192_data = {
+	...
+	.num_pm_domains = 5,
+	.pm_domain_names = mediatek_pm_domains,
+};
+--->8---
+
+OTOH what you've got it no worse than what we already had, so it's up to
+you whether you want to tidy this up or just add a comment so it doesn't
+look like there's a typo.
+
+Steve
+
+> +	.pm_features = BIT(GPU_PM_CLK_DIS) | BIT(GPU_PM_VREG_OFF),
+> +};
+> +
+>  static const char * const mediatek_mt8192_supplies[] = { "mali", NULL };
+>  static const char * const mediatek_mt8192_pm_domains[] = { "core0", "core1", "core2",
+>  							   "core3", "core4" };
+> @@ -808,6 +816,7 @@ static const struct of_device_id dt_match[] = {
+>  	{ .compatible = "mediatek,mt8183-mali", .data = &mediatek_mt8183_data },
+>  	{ .compatible = "mediatek,mt8183b-mali", .data = &mediatek_mt8183_b_data },
+>  	{ .compatible = "mediatek,mt8186-mali", .data = &mediatek_mt8186_data },
+> +	{ .compatible = "mediatek,mt8188-mali", .data = &mediatek_mt8188_data },
+>  	{ .compatible = "mediatek,mt8192-mali", .data = &mediatek_mt8192_data },
+>  	{}
+>  };
 
 
