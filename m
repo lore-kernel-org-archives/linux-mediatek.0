@@ -4,71 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 958E2C25B76
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jun 2024 11:52:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77CDBC27C53
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jun 2024 12:08:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=S3rlsrdKV4ITdG7iMD1R+1ofxMlJ7yERBSCG/FDiD/o=; b=wmjDlIbTdLHpQ4wj9dI0h9cNGw
-	y/QM7hjXzd1+RchnOgB6vBNc8uunwlLonjs2S/2jjoeIVTvjG8prb2LT1O8tRf6Qx4EiuZ70w9n9O
-	d1TosdqJ1Kybj7W2UyMigqiECb9kT+v0li2g3OFV11PRVGDFPCD4p7sF45Kz8Cti3B2Tf83EQybiP
-	KU2nUOTWOoAys4jmEBUT1Swk2bYKpNj1HF+vIUmL1GtYSZ8a+1Pi7fzqLZip6QK7VMYZYQi5hgzmB
-	gdhqaSW0diAoBWCJy+xGBKkSbB4Lv08tQ84zo0Otf/0aJNQ5YGOYR9+Bjr8aEpoFU17niScUf2nuf
-	bmwgm0+Q==;
+	bh=A+Jy6TnAch8hM58JmH0SYF1pqLZno3osBoPsTEHv+lA=; b=CX/fVRBoFMKKf2oNYlWWROgK/I
+	/q+mJ3E1DHaHQJBBuwb9fgxw2bGcw6E5OLPXRsWhDlGUQv1pJE8XZCy8bgXzz+sWG05UPQ2qiM4fX
+	5Tfe5+S7pe7WhvtprMlbJ2/aY17QZwHNs6aCQp6Zwg60rVoHYykxZKQqQFWw96nPTE/qHnnOOpD3p
+	LCL8w+oAKjGJifOc4q8v2dwapD68j05kET2kyueVnE29BpTtEs4CtE/eCT/BsmI/29Y9FAa+4030A
+	igb27yqywdA1djVLI0RNz4d9uYdzVu1cyokgrLV6kgxpsLAecgUcCis4hPZmfcZCw736LIF3kilDi
+	hPMjzlrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sEpCB-00000005nau-12UH;
-	Wed, 05 Jun 2024 11:52:47 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sEpR9-00000005tHn-0KmY;
+	Wed, 05 Jun 2024 12:08:15 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sEpC7-00000005nYk-0mkG;
-	Wed, 05 Jun 2024 11:52:45 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id A1C73617FE;
-	Wed,  5 Jun 2024 11:52:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2F483C32781;
-	Wed,  5 Jun 2024 11:52:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1717588362;
-	bh=g3iRvxT62XnaNPCsvLlGtLyXzGD5qCPrw+stjFgQ0lY=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=UZKwb6v55vs/XbVMZfgVqHO6V1D+0YFZt9lgpLTuI5/gXDdiPfjuaA9pdS8WwLjmR
-	 5Gm+YifG1CivhJoiTst0C1RfzTLFDKJYm6sTm0YvIOeygciD8kYIaXtwtHNjSklHxy
-	 8ZxMjUDvKHNjboczOwqreRYsm95KbSUaIVRQHzabGPRS5q/Mk1YdrpcPtrSdSQmRVI
-	 csjhdkM5DCBgRHMkVPqiiNAXAPS/KS6plggC4XmsFVv+m0mh2P+oStLqar7pIN70Vp
-	 ej6AzFFDzxMQQhcBqv7BRmVVDvGYMTacgqIwJ8d+QYeCosyg4h+0rM20ls1wqWmUbz
-	 l8vAm4e2KSw0w==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: Jaegeuk Kim <jaegeuk@kernel.org>,
-	=?UTF-8?q?Light=20Hsieh=20=28=E8=AC=9D=E6=98=8E=E7=87=88=29?= <Light.Hsieh@mediatek.com>,
-	Daeho Jeong <daehojeong@google.com>,
-	Chao Yu <chao@kernel.org>,
-	Sasha Levin <sashal@kernel.org>,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	linux-f2fs-devel@lists.sourceforge.net,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.6 09/20] f2fs: don't set RO when shutting down f2fs
-Date: Wed,  5 Jun 2024 07:51:52 -0400
-Message-ID: <20240605115225.2963242-9-sashal@kernel.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240605115225.2963242-1-sashal@kernel.org>
-References: <20240605115225.2963242-1-sashal@kernel.org>
+	id 1sEpR4-00000005tEw-0Bwl;
+	Wed, 05 Jun 2024 12:08:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1717589287;
+	bh=SEelAXJG08W65CGyIkQNJoq9sAMJ1WDyzRM79iKUXRg=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=q4umy/URL73BSCdwadNG+zMBW0WyFzpLdzU7QUN9h1ffq1JWcUCnyf7v1PiPLHBdG
+	 8Wx9dm/te1pzrfMcbIO565ZK26aWPMPpTtWaIUyTbNGsJh8p4DxkD8Z1vo4wOssR7g
+	 kYfcxYV/5ouZbvra3P3f9ln8JVaFO3j2jBLk7yiygZaZGpdxwfjVJ1yL9SKMWedYP1
+	 Wz2Y4P1B1VHNN4dl/irJzCqyt7dVbyhyTfTdROa7ZdLA2eqHlz3xP3iEHUqRkFGmPs
+	 ZYXYRCCodStjOWqDr+Iy8xKjNPtC5VSYQzWo8MAT8jIc1eD34H6gYSaISEbEQsNy8j
+	 W5b79ZDQ100Ig==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 0334D3781185;
+	Wed,  5 Jun 2024 12:08:05 +0000 (UTC)
+Message-ID: <d6bbd959-93fc-4374-af60-310859b266dc@collabora.com>
+Date: Wed, 5 Jun 2024 14:08:05 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-stable: review
-X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.6.32
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 2/3] media: i2c: Add GC05A2 image sensor driver
+To: Zhi Mao <zhi.mao@mediatek.com>, mchehab@kernel.org, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, sakari.ailus@linux.intel.com
+Cc: laurent.pinchart@ideasonboard.com, shengnan.wang@mediatek.com,
+ yaya.chang@mediatek.com, Project_Global_Chrome_Upstream_Group@mediatek.com,
+ yunkec@chromium.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
+ jacopo.mondi@ideasonboard.com, 10572168@qq.com, hverkuil-cisco@xs4all.nl,
+ heiko@sntech.de, jernej.skrabec@gmail.com, macromorgan@hotmail.com,
+ linus.walleij@linaro.org, hdegoede@redhat.com,
+ tomi.valkeinen@ideasonboard.com, gerald.loacker@wolfvision.net,
+ andy.shevchenko@gmail.com, bingbu.cao@intel.com,
+ dan.scally@ideasonboard.com, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20240605105540.17937-1-zhi.mao@mediatek.com>
+ <20240605105540.17937-3-zhi.mao@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20240605105540.17937-3-zhi.mao@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240605_045243_295243_E5050A2D 
-X-CRM114-Status: GOOD (  11.28  )
+X-CRM114-CacheID: sfid-20240605_050810_295302_111D4AE2 
+X-CRM114-Status: GOOD (  28.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,57 +85,317 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Jaegeuk Kim <jaegeuk@kernel.org>
+Il 05/06/24 12:55, Zhi Mao ha scritto:
+> Add a V4L2 sub-device driver for Galaxycore GC05A2 image sensor.
+> 
+> Signed-off-by: Zhi Mao <zhi.mao@mediatek.com>
+> ---
+>   drivers/media/i2c/Kconfig  |   10 +
+>   drivers/media/i2c/Makefile |    1 +
+>   drivers/media/i2c/gc05a2.c | 1361 ++++++++++++++++++++++++++++++++++++
+>   3 files changed, 1372 insertions(+)
+>   create mode 100644 drivers/media/i2c/gc05a2.c
+> 
+> diff --git a/drivers/media/i2c/Kconfig b/drivers/media/i2c/Kconfig
+> index c6d3ee472d81..4e7c71c95143 100644
+> --- a/drivers/media/i2c/Kconfig
+> +++ b/drivers/media/i2c/Kconfig
+> @@ -70,6 +70,16 @@ config VIDEO_GC0308
+>   	  To compile this driver as a module, choose M here: the
+>   	  module will be called gc0308.
+>   
+> +config VIDEO_GC05A2
+> +	tristate "GalaxyCore gc05a2 sensor support"
+> +	select V4L2_CCI_I2C
+> +	help
+> +	  This is a Video4Linux2 sensor driver for the GalaxyCore gc05a2
+> +	  camera.
+> +
+> +	  To compile this driver as a module, choose M here: the
+> +	  module will be called gc05a2.
+> +
+>   config VIDEO_GC2145
+>   	select V4L2_CCI_I2C
+>   	tristate "GalaxyCore GC2145 sensor support"
+> diff --git a/drivers/media/i2c/Makefile b/drivers/media/i2c/Makefile
+> index dfbe6448b549..8ed6faf0f854 100644
+> --- a/drivers/media/i2c/Makefile
+> +++ b/drivers/media/i2c/Makefile
+> @@ -38,6 +38,7 @@ obj-$(CONFIG_VIDEO_DW9768) += dw9768.o
+>   obj-$(CONFIG_VIDEO_DW9807_VCM) += dw9807-vcm.o
+>   obj-$(CONFIG_VIDEO_ET8EK8) += et8ek8/
+>   obj-$(CONFIG_VIDEO_GC0308) += gc0308.o
+> +obj-$(CONFIG_VIDEO_GC05A2) += gc05a2.o
+>   obj-$(CONFIG_VIDEO_GC2145) += gc2145.o
+>   obj-$(CONFIG_VIDEO_HI556) += hi556.o
+>   obj-$(CONFIG_VIDEO_HI846) += hi846.o
+> diff --git a/drivers/media/i2c/gc05a2.c b/drivers/media/i2c/gc05a2.c
+> new file mode 100644
+> index 000000000000..87a209b27fc2
+> --- /dev/null
+> +++ b/drivers/media/i2c/gc05a2.c
+> @@ -0,0 +1,1361 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Driver for GalaxyCore gc05a2 image sensor
+> + *
+> + * Copyright 2024 MediaTek
+> + *
+> + * Zhi Mao <zhi.mao@mediatek.com>
+> + */
+> +#include <linux/array_size.h>
+> +#include <linux/bits.h>
+> +#include <linux/clk.h>
+> +#include <linux/container_of.h>
+> +#include <linux/delay.h>
+> +#include <linux/device.h>
+> +#include <linux/err.h>
+> +#include <linux/gpio/consumer.h>
+> +#include <linux/math64.h>
+> +#include <linux/mod_devicetable.h>
+> +#include <linux/pm_runtime.h>
+> +#include <linux/property.h>
+> +#include <linux/regulator/consumer.h>
+> +#include <linux/types.h>
+> +#include <linux/units.h>
+> +
+> +#include <media/v4l2-cci.h>
+> +#include <media/v4l2-ctrls.h>
+> +#include <media/v4l2-event.h>
+> +#include <media/v4l2-fwnode.h>
+> +#include <media/v4l2-subdev.h>
+> +
+> +#define GC05A2_REG_TEST_PATTERN_EN CCI_REG8(0x008c)
+> +#define GC05A2_REG_TEST_PATTERN_IDX CCI_REG8(0x008d)
+> +#define GC05A2_TEST_PATTERN_EN 0x01
+> +
+> +#define GC05A2_STREAMING_REG CCI_REG8(0x0100)
+> +
+> +#define GC05A2_FLIP_REG CCI_REG8(0x0101)
+> +#define GC05A2_FLIP_H_MASK BIT(0)
+> +#define GC05A2_FLIP_V_MASK BIT(1)
+> +
+> +#define GC05A2_EXP_REG CCI_REG16(0x0202)
+> +#define GC05A2_EXP_MARGIN 16
+> +#define GC05A2_EXP_MIN 4
+> +#define GC05A2_EXP_STEP 1
+> +
+> +#define GC05A2_AGAIN_REG CCI_REG16(0x0204)
+> +#define GC05A2_AGAIN_MIN 1024
+> +#define GC05A2_AGAIN_MAX (1024 * 16)
+> +#define GC05A2_AGAIN_STEP 1
+> +
+> +#define GC05A2_FRAME_LENGTH_REG CCI_REG16(0x0340)
+> +#define GC05A2_VTS_MAX 0xffff
+> +
+> +#define GC05A2_REG_CHIP_ID CCI_REG16(0x03f0)
+> +#define GC05A2_CHIP_ID 0x05a2
+> +
+> +#define GC05A2_NATIVE_WIDTH 2592
+> +#define GC05A2_NATIVE_HEIGHT 1944
+> +
+> +#define GC05A2_DEFAULT_CLK_FREQ (24 * HZ_PER_MHZ)
+> +#define GC05A2_MBUS_CODE MEDIA_BUS_FMT_SGRBG10_1X10
+> +#define GC05A2_DATA_LANES 2
+> +#define GC05A2_RGB_DEPTH 10
+> +#define GC05A2_SLEEP_US  (2 * USEC_PER_MSEC)
+> +
 
-[ Upstream commit 3bdb7f161697e2d5123b89fe1778ef17a44858e7 ]
+..snip..
 
-Shutdown does not check the error of thaw_super due to readonly, which
-causes a deadlock like below.
+> +static int gc05a2_parse_fwnode(struct gc05a2 *gc05a2)
+> +{
+> +	struct fwnode_handle *endpoint;
+> +	struct v4l2_fwnode_endpoint bus_cfg = {
+> +		.bus_type = V4L2_MBUS_CSI2_DPHY,
+> +	};
+> +	int ret;
+> +	struct device *dev = gc05a2->dev;
+> +
+> +	endpoint =
+> +		fwnode_graph_get_endpoint_by_id(dev_fwnode(dev), 0, 0,
+> +						FWNODE_GRAPH_ENDPOINT_NEXT);
+> +	if (!endpoint) {
+> +		dev_err(dev, "endpoint node not found\n");
 
-f2fs_ioc_shutdown(F2FS_GOING_DOWN_FULLSYNC)        issue_discard_thread
- - bdev_freeze
-  - freeze_super
- - f2fs_stop_checkpoint()
-  - f2fs_handle_critical_error                     - sb_start_write
-    - set RO                                         - waiting
- - bdev_thaw
-  - thaw_super_locked
-    - return -EINVAL, if sb_rdonly()
- - f2fs_stop_discard_thread
-  -> wait for kthread_stop(discard_thread);
+This function is used only in probe stage, and logging should be consistent.
+Check below :-)
 
-Reported-by: "Light Hsieh (謝明燈)" <Light.Hsieh@mediatek.com>
-Reviewed-by: Daeho Jeong <daehojeong@google.com>
-Reviewed-by: Chao Yu <chao@kernel.org>
-Signed-off-by: Jaegeuk Kim <jaegeuk@kernel.org>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- fs/f2fs/super.c | 10 ++++++++--
- 1 file changed, 8 insertions(+), 2 deletions(-)
+> +		return -EINVAL;
+> +	}
+> +
 
-diff --git a/fs/f2fs/super.c b/fs/f2fs/super.c
-index 5d294c8a025ca..ec3f4a5ed2172 100644
---- a/fs/f2fs/super.c
-+++ b/fs/f2fs/super.c
-@@ -4178,9 +4178,15 @@ void f2fs_handle_critical_error(struct f2fs_sb_info *sbi, unsigned char reason,
- 	if (shutdown)
- 		set_sbi_flag(sbi, SBI_IS_SHUTDOWN);
- 
--	/* continue filesystem operators if errors=continue */
--	if (continue_fs || f2fs_readonly(sb))
-+	/*
-+	 * Continue filesystem operators if errors=continue. Should not set
-+	 * RO by shutdown, since RO bypasses thaw_super which can hang the
-+	 * system.
-+	 */
-+	if (continue_fs || f2fs_readonly(sb) || shutdown) {
-+		f2fs_warn(sbi, "Stopped filesystem due to reason: %d", reason);
- 		return;
-+	}
- 
- 	f2fs_warn(sbi, "Remounting filesystem read-only");
- 	/*
+..snip..
+
+> +
+> +static int gc05a2_probe(struct i2c_client *client)
+> +{
+> +	struct device *dev = &client->dev;
+> +	struct gc05a2 *gc05a2;
+> +	int ret;
+> +
+> +	gc05a2 = devm_kzalloc(dev, sizeof(*gc05a2), GFP_KERNEL);
+> +	if (!gc05a2)
+> +		return -ENOMEM;
+> +
+> +	gc05a2->dev = dev;
+> +
+> +	ret = gc05a2_parse_fwnode(gc05a2);
+> +	if (ret)
+> +		return ret;
+> +
+> +	gc05a2->regmap = devm_cci_regmap_init_i2c(client, 16);
+> +	if (IS_ERR(gc05a2->regmap))
+> +		return dev_err_probe(dev, PTR_ERR(gc05a2->regmap),
+> +				     "failed to init CCI\n");
+> +
+> +	gc05a2->xclk = devm_clk_get(dev, NULL);
+> +	if (IS_ERR(gc05a2->xclk))
+> +		return dev_err_probe(dev, PTR_ERR(gc05a2->xclk),
+> +				     "failed to get xclk\n");
+> +
+> +	ret = clk_set_rate(gc05a2->xclk, GC05A2_DEFAULT_CLK_FREQ);
+> +	if (ret)
+> +		return dev_err_probe(dev, ret,
+> +				     "failed to set xclk frequency\n");
+> +
+> +	ret = gc05a2_get_regulators(dev, gc05a2);
+> +	if (ret < 0)
+> +		return dev_err_probe(dev, ret,
+> +				     "failed to get regulators\n");
+> +
+> +	gc05a2->reset_gpio = devm_gpiod_get(dev, "reset", GPIOD_OUT_LOW);
+> +	if (IS_ERR(gc05a2->reset_gpio))
+> +		return dev_err_probe(dev, PTR_ERR(gc05a2->reset_gpio),
+> +				     "failed to get gpio\n");
+> +
+> +	v4l2_i2c_subdev_init(&gc05a2->sd, client, &gc05a2_subdev_ops);
+> +	gc05a2->sd.internal_ops = &gc05a2_internal_ops;
+> +	gc05a2->cur_mode = &gc05a2_modes[0];
+> +
+> +	ret = gc05a2_init_controls(gc05a2);
+> +	if (ret)
+> +		return dev_err_probe(dev, ret,
+> +				     "failed to init controls\n");
+> +
+> +	gc05a2->sd.flags |= V4L2_SUBDEV_FL_HAS_DEVNODE |
+> +			    V4L2_SUBDEV_FL_HAS_EVENTS;
+> +	gc05a2->pad.flags = MEDIA_PAD_FL_SOURCE;
+> +	gc05a2->sd.dev = &client->dev;
+> +	gc05a2->sd.entity.function = MEDIA_ENT_F_CAM_SENSOR;
+> +
+> +	ret = media_entity_pads_init(&gc05a2->sd.entity, 1, &gc05a2->pad);
+> +	if (ret < 0) {
+> +		dev_err(dev, "could not register media entity\n");
+
+For logging strings consistency, you should use dev_err_probe() everywhere,
+at this point, because that's printing the error code.
+
+So here it'd be
+
+if (ret < 0) {
+	dev_err_probe(dev, ret, "could not register media entity\n");
+	goto err_v4l2_ctrl_handler_free;
+}
+
+> +		goto err_v4l2_ctrl_handler_free;
+> +	}
+> +
+> +	gc05a2->sd.state_lock = gc05a2->ctrls.lock;
+> +	ret = v4l2_subdev_init_finalize(&gc05a2->sd);
+> +	if (ret < 0) {
+> +		dev_err(dev, "v4l2 subdev init error: %d\n", ret);
+
+same here
+
+> +		goto err_media_entity_cleanup;
+> +	}
+> +
+> +	pm_runtime_enable(gc05a2->dev);
+> +	pm_runtime_set_autosuspend_delay(gc05a2->dev, 1000);
+> +	pm_runtime_use_autosuspend(gc05a2->dev);
+> +	pm_runtime_idle(gc05a2->dev);
+> +
+> +	ret = v4l2_async_register_subdev_sensor(&gc05a2->sd);
+> +	if (ret < 0) {
+> +		dev_err(dev, "could not register v4l2 device\n");
+
+ditto
+
+> +		goto err_rpm;
+> +	}
+> +
+> +	return 0;
+> +
+> +err_rpm:
+> +	pm_runtime_disable(gc05a2->dev);
+> +	v4l2_subdev_cleanup(&gc05a2->sd);
+> +
+> +err_media_entity_cleanup:
+> +	media_entity_cleanup(&gc05a2->sd.entity);
+> +
+> +err_v4l2_ctrl_handler_free:
+> +	v4l2_ctrl_handler_free(&gc05a2->ctrls);
+> +
+> +	return ret;
+> +}
+> +
+> +static void gc05a2_remove(struct i2c_client *client)
+> +{
+> +	struct v4l2_subdev *sd = i2c_get_clientdata(client);
+> +	struct gc05a2 *gc05a2 = to_gc05a2(sd);
+> +
+> +	v4l2_async_unregister_subdev(&gc05a2->sd);
+> +	v4l2_subdev_cleanup(sd);
+> +	media_entity_cleanup(&gc05a2->sd.entity);
+> +	v4l2_ctrl_handler_free(&gc05a2->ctrls);
+> +
+> +	pm_runtime_disable(&client->dev);
+> +	if (!pm_runtime_status_suspended(&client->dev))
+> +		gc05a2_power_off(gc05a2->dev);
+> +	pm_runtime_set_suspended(&client->dev);
+> +}
+> +
+> +static const struct of_device_id gc05a2_of_match[] = {
+> +	{ .compatible = "galaxycore,gc05a2" },
+> +	{}
+
+{ /* sentinel */ }
+
+
+After which, looks good to me, so, after addressing my comments:
+
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+> +};
+> +MODULE_DEVICE_TABLE(of, gc05a2_of_match);
+> +
+> +static DEFINE_RUNTIME_DEV_PM_OPS(gc05a2_pm_ops,
+> +				 gc05a2_power_off,
+> +				 gc05a2_power_on,
+> +				 NULL);
+> +
+> +static struct i2c_driver gc05a2_i2c_driver = {
+> +	.driver = {
+> +		.of_match_table = gc05a2_of_match,
+> +		.pm = pm_ptr(&gc05a2_pm_ops),
+> +		.name  = "gc05a2",
+> +	},
+> +	.probe = gc05a2_probe,
+> +	.remove = gc05a2_remove,
+> +};
+> +module_i2c_driver(gc05a2_i2c_driver);
+> +
+> +MODULE_DESCRIPTION("GalaxyCore gc05a2 Camera driver");
+> +MODULE_AUTHOR("Zhi Mao <zhi.mao@mediatek.com>");
+> +MODULE_LICENSE("GPL");
+
 -- 
-2.43.0
+AngeloGioacchino Del Regno
+Senior Software Engineer
+
+Collabora Ltd.
+Platinum Building, St John's Innovation Park, Cambridge CB4 0DS, UK
+Registered in England & Wales, no. 5513718
 
 
