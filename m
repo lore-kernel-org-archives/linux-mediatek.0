@@ -4,76 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06B2EC25B78
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Jun 2024 23:12:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0764C27C50
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jun 2024 00:24:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7lQ0d0Nz+HbLsf7tMKwA36s0niKRTo9V+v6ebXU5h6Q=; b=oUE+GkCURP0jvPbpGfBmDzyOyV
-	iM9JbtJ4e3LqDVhQXlDI+TJoaiFVhe1SdTjRYhHvqfbCvhT4fuiao2cWJJs9MQBtIiBPEkXS8HhJc
-	CNROu9g8R1tkAmeOGzTLYqyJ0MVgsiiwfcZuu4zNGqPdcqfazv9iGfREoJgmLYDEWixPoqtC6o2Fk
-	0iWwr/tl6fDZLHV7uADpEkgAetSguEcsf3dxkDwnmWup8ivaliN1WdGPWF882t0NL7zi0SEf7jYkZ
-	fpuYPRymzQVBCIYq4EExyaMMXY1h9XR5bwY/EbWLTuIs/vadiTlErLfHiYm6HOP2/dqnPe3ftaxFX
-	FOb0Vnlg==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=UXkqvnUlOHE+7g2Lf+Wpe/9y5rRcSPhO6InYqluayHc=; b=eI1ByinhlSfGAgxspM7SIr9JDO
+	2bKPBaqapPTfjp+ltSirrcycvCbKUFtyqpEKoizmqiffvw8H8p4osEvhBwysjRFnV34PpVCRuBLwP
+	w0jToGcF3UWvjaBu0ecDKYuwUBH6kzalU/6Lxg0ENvVIUN9ItFuBzP7mBUuhmO4wIzwEggo/wE76O
+	G8C86WFFzEB8gkH0L/vM33pMrgUmx4QtoYGqHPgzeP5lqkFQx3LtvXbvvb764eklmLJIw9JOGF2l6
+	HpDGR5/t5RNL+5BQMePEyRcoPPr3nhTDzUt5enAmB2hPjZkPVu9Spqfvzm41xJzikzAh1KKEnT0Z+
+	KzboiXag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sEdKD-000000049F8-0mcX;
-	Tue, 04 Jun 2024 23:12:17 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1sEeRq-00000004GC2-2wAT;
+	Wed, 05 Jun 2024 00:24:14 +0000
+Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sEdKA-000000049Ek-1ZQo
+	id 1sEeRo-00000004GAi-0zi1
 	for linux-mediatek@lists.infradead.org;
-	Tue, 04 Jun 2024 23:12:15 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 0AB8D614E7
-	for <linux-mediatek@lists.infradead.org>; Tue,  4 Jun 2024 23:12:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B30F4C4AF09
-	for <linux-mediatek@lists.infradead.org>; Tue,  4 Jun 2024 23:12:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1717542732;
-	bh=Nncx+VVQYs0qKAe+KYVC/Kq04OFO3sM0r6o5Yfj4L+Y=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=TGmqu/JbAds/BOUP6NJv9uDpQdDc/BI2Phd0s9JNPrcmBLG2b00Ut5yLxZHbL7SSB
-	 krisyQgobjXaZorWf4l7kqFMtC+Od9Zts3EgMdfjex8DS3FmGHFvSdyAojCYOrl0ox
-	 bW3YgkUNt/eCOBfMRZxWUmcKMDnyOT4z5w42AYSLicrupkQ023phB9VeWrRXzrm5j6
-	 bN6d4b4NkRj3xE3WVZWNKCvVIcEtd+0+g2LrdApNE85ph2nWB1gwLoDqzFxTtqBvNH
-	 H9oFsM9keKhxve5qd7O18oO+7T0TDa3+pkPg7ZaHuIW4d+tFXpH0QfGBWRyGUK+mk1
-	 QAZeW5Wu62EUQ==
-Received: by mail-ed1-f49.google.com with SMTP id 4fb4d7f45d1cf-57a2e8ddb04so789784a12.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 04 Jun 2024 16:12:12 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCW3jV6++u0/+s32wtMGE2E/Uvh92NimJuwvVUWw2/Ha+WVV2Wzol3FqdwKeZT9O3Nzi/ydJHxChsXr0c6aSCLpPs0bUTydP+2kUCY1i+0C0sFwW
-X-Gm-Message-State: AOJu0Yws/DuXVp4lhsQ0kWKrMR4iYjnD22CKnQ/k1B5FHTZ4T1Tf3LlZ
-	W9Ur7m3uG2vIvf0ejGidndVMtMie/81BKVXemgLTcBuaqL/CZjy2Pd7VhlDlh2AJOW9fvcRXtpe
-	+DjmA/aWUG+rBtHGuuZEGHIyB19s=
-X-Google-Smtp-Source: AGHT+IFBy/YLm3dKndSIi0drXsYIFEcFE6IgO+ZhYtbwCYfAKF4s8Yf1d2uOu0EPT0ChXDxKpI637E40N+LOAI1+bGE=
-X-Received: by 2002:a17:907:90d5:b0:a68:5676:275d with SMTP id
- a640c23a62f3a-a69a026fc59mr36867566b.6.1717542731220; Tue, 04 Jun 2024
- 16:12:11 -0700 (PDT)
+	Wed, 05 Jun 2024 00:24:13 +0000
+Received: by mail-pl1-x630.google.com with SMTP id d9443c01a7336-1f692d6e990so16282335ad.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 04 Jun 2024 17:24:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1717547050; x=1718151850; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=UXkqvnUlOHE+7g2Lf+Wpe/9y5rRcSPhO6InYqluayHc=;
+        b=WzkEsWPVuvSgpoJs8rUhXQ1jzOuNXtkfdY53X4JBVqNU0cie3U34D/Ip6M6OYmAYYu
+         BDtZPN0XOJSwM9ScJf4z+FdMFNMx4VVkEQ/bcU9bMUFrZ44XwRYD7IZMOXytIkLYOYwA
+         G9P7Bqa5Jp14iA3aB/4dJh/2NH66VepPFG8hM=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1717547050; x=1718151850;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=UXkqvnUlOHE+7g2Lf+Wpe/9y5rRcSPhO6InYqluayHc=;
+        b=l1HQKw3DeizYtHSvv/pLiVynw3JmeUfF7MbVOAyr3WU4bYS5DgKwhXMmPBjjmsTAok
+         YEXpd91oaOBk+m+mhrCBwjEA8CgwB3DIQCS7rcuMq2kj8+rXR2EHZdpLvFbnWNq0YHEa
+         qZCOn25yPmoA+uys7R/2ZXE8kBGSuACeWVzRiUpD2c2Fd0vH8yMDfjSTnY9nj6Tl/m4M
+         UChwZYbKItQ7VAxUt30lv4GK9d7cOx9wvdyt06t4Zg57XzH8tg9Zli/5VNFhcZ5j6RIP
+         Tr/UnJvjk0it46VmP60J8l23npfoFxf8BJs0zpgMPNpKW/V1VekmC30ELJdTRfQrnOeC
+         7aFQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUATqF5zZ9QAxikfAHniNAe++piPMUIMFsBgFw/W7iHSICyZW60Q6xZi7SymOarloYxey2sKpX3/UjApVkTeZ7KlHJSo9l4KFmQYyYzeTLcR2t/
+X-Gm-Message-State: AOJu0YwWAfolf1i2pq/rn5tOiHP9lpqB5AavrRHaSSwU0yqiNB243YFn
+	oMcW0vMmIKr15HR+y9RcNaSw8JJD91pdQLW2qR5nVii3pEy6hANgNLEIxpebfg==
+X-Google-Smtp-Source: AGHT+IGvUgTyAuYEN02i7ZduVODq/yACl5LSlZJPkmZP9QjjxS40pxNiem+pMYUDo4VgKeR8msH+hQ==
+X-Received: by 2002:a17:902:d512:b0:1f6:1c5f:e089 with SMTP id d9443c01a7336-1f6a5a86e72mr14291545ad.60.1717547050047;
+        Tue, 04 Jun 2024 17:24:10 -0700 (PDT)
+Received: from dianders.sjc.corp.google.com ([2620:15c:9d:2:3609:ff79:4625:8a71])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-1f6323dd862sm89032025ad.147.2024.06.04.17.24.08
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 04 Jun 2024 17:24:09 -0700 (PDT)
+From: Douglas Anderson <dianders@chromium.org>
+To: dri-devel@lists.freedesktop.org,
+	Maxime Ripard <mripard@kernel.org>
+Cc: Linus Walleij <linus.walleij@linaro.org>,
+	Chris Morgan <macromorgan@hotmail.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Yuran Pereira <yuran.pereira@hotmail.com>,
+	Douglas Anderson <dianders@chromium.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Daniel Vetter <daniel@ffwll.ch>,
+	David Airlie <airlied@gmail.com>,
+	Jerry Han <hanxu5@huaqin.corp-partner.google.com>,
+	Jessica Zhang <quic_jesszhan@quicinc.com>,
+	Jonathan Corbet <corbet@lwn.net>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Robert Chiras <robert.chiras@nxp.com>,
+	Stefan Mavrodiev <stefan@olimex.com>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-doc@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH v3 00/24] drm/panel: Remove most store/double-check of prepared/enabled state
+Date: Tue,  4 Jun 2024 17:22:46 -0700
+Message-ID: <20240605002401.2848541-1-dianders@chromium.org>
+X-Mailer: git-send-email 2.45.1.288.g0e0cd299f1-goog
 MIME-Version: 1.0
-References: <20240523112131.31437-1-mingyen.hsieh@mediatek.com>
-In-Reply-To: <20240523112131.31437-1-mingyen.hsieh@mediatek.com>
-From: Sean Wang <sean.wang@kernel.org>
-Date: Tue, 4 Jun 2024 16:11:58 -0700
-X-Gmail-Original-Message-ID: <CAGp9LzrPUUjo8xLNdUddu=GCd2T8PP=Cw_+MKQCw23Emeg=n6Q@mail.gmail.com>
-Message-ID: <CAGp9LzrPUUjo8xLNdUddu=GCd2T8PP=Cw_+MKQCw23Emeg=n6Q@mail.gmail.com>
-Subject: Re: [PATCH v2] wifi: mt76: mt792x: fix scheduler interference in drv
- own process
-To: Mingyen Hsieh <mingyen.hsieh@mediatek.com>
-Cc: nbd@nbd.name, lorenzo@kernel.org, deren.wu@mediatek.com, 
-	Sean.Wang@mediatek.com, Soul.Huang@mediatek.com, Leon.Yen@mediatek.com, 
-	Eric-SY.Chang@mediatek.com, km.lin@mediatek.com, robin.chiu@mediatek.com, 
-	ch.yeh@mediatek.com, posh.sun@mediatek.com, Quan.Zhou@mediatek.com, 
-	Ryder.Lee@mediatek.com, Shayne.Chen@mediatek.com, 
-	linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	Michael Lo <michael.lo@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240604_161214_565780_8B7913E5 
-X-CRM114-Status: GOOD (  21.70  )
+X-CRM114-CacheID: sfid-20240604_172412_332712_6B2ED93A 
+X-CRM114-Status: GOOD (  22.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,145 +105,121 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
 
-On Thu, May 23, 2024 at 4:21=E2=80=AFAM Mingyen Hsieh
-<mingyen.hsieh@mediatek.com> wrote:
->
-> From: Michael Lo <michael.lo@mediatek.com>
->
-> Add some time to wait for LP engine to complete its operation
-> before polling pmctrl register.
->
-> Signed-off-by: Michael Lo <michael.lo@mediatek.com>
-> Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+As talked about in commit d2aacaf07395 ("drm/panel: Check for already
+prepared/enabled in drm_panel"), we want to remove needless code from
+panel drivers that was storing and double-checking the
+prepared/enabled state. Even if someone was relying on the
+double-check before, that double-check is now in the core and not
+needed in individual drivers.
 
-The new patch is an improvement over v1 as it avoids unnecessary
-waiting in specific cases, such as when users are forced to disable
-ASPM or when the host doesn't support ASPM as I suggested in v1. Thus,
+This series attempts to do just that. While the original grep, AKA:
+  git grep 'if.*>prepared' -- drivers/gpu/drm/panel
+  git grep 'if.*>enabled' -- drivers/gpu/drm/panel
+...still produces a few hits after my series, they are _mostly_ all
+gone. The ones that are left are less trivial to fix.
 
-Acked-by: Sean Wang <sean.wang@mediatek.com>
+One of the main reasons that many panels probably needed to store and
+double-check their prepared/enabled appears to have been to handle
+shutdown and/or remove. Panels drivers often wanted to force the power
+off for panels in these cases and this was a good reason for the
+double-check.
 
-> ---
-> v2: change funcion and variable naming.
-> ---
->
->  drivers/net/wireless/mediatek/mt76/mt76.h     |  1 +
->  .../net/wireless/mediatek/mt76/mt7921/pci.c   |  3 +++
->  .../net/wireless/mediatek/mt76/mt7925/pci.c   |  3 +++
->  drivers/net/wireless/mediatek/mt76/mt792x.h   |  1 +
->  .../net/wireless/mediatek/mt76/mt792x_core.c  |  4 ++++
->  drivers/net/wireless/mediatek/mt76/pci.c      | 23 +++++++++++++++++++
->  6 files changed, 35 insertions(+)
->
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wire=
-less/mediatek/mt76/mt76.h
-> index 11b9f22ca7f3..4168104fa141 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt76.h
-> +++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-> @@ -1081,6 +1081,7 @@ bool ____mt76_poll_msec(struct mt76_dev *dev, u32 o=
-ffset, u32 mask, u32 val,
->
->  void mt76_mmio_init(struct mt76_dev *dev, void __iomem *regs);
->  void mt76_pci_disable_aspm(struct pci_dev *pdev);
-> +bool mt76_pci_aspm_supported(struct pci_dev *pdev);
->
->  static inline u16 mt76_chip(struct mt76_dev *dev)
->  {
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/ne=
-t/wireless/mediatek/mt76/mt7921/pci.c
-> index f768e9389ac6..ca54ae7deb54 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-> @@ -339,6 +339,9 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
->         bus_ops->rmw =3D mt7921_rmw;
->         dev->mt76.bus =3D bus_ops;
->
-> +       if (!mt7921_disable_aspm && mt76_pci_aspm_supported(pdev))
-> +               dev->aspm_supported =3D true;
-> +
->         ret =3D mt792xe_mcu_fw_pmctrl(dev);
->         if (ret)
->                 goto err_free_dev;
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c b/drivers/ne=
-t/wireless/mediatek/mt76/mt7925/pci.c
-> index 07b74d492ce1..2449b3e6c396 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-> @@ -373,6 +373,9 @@ static int mt7925_pci_probe(struct pci_dev *pdev,
->         bus_ops->rmw =3D mt7925_rmw;
->         dev->mt76.bus =3D bus_ops;
->
-> +       if (!mt7925_disable_aspm && mt76_pci_aspm_supported(pdev))
-> +               dev->aspm_supported =3D true;
-> +
->         ret =3D __mt792x_mcu_fw_pmctrl(dev);
->         if (ret)
->                 goto err_free_dev;
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt792x.h b/drivers/net/wi=
-reless/mediatek/mt76/mt792x.h
-> index 20578497a405..c2c42e5d650a 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt792x.h
-> +++ b/drivers/net/wireless/mediatek/mt76/mt792x.h
-> @@ -190,6 +190,7 @@ struct mt792x_dev {
->         bool fw_assert:1;
->         bool has_eht:1;
->         bool regd_in_progress:1;
-> +       bool aspm_supported:1;
->         wait_queue_head_t wait;
->
->         struct work_struct init_work;
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_core.c b/drivers/n=
-et/wireless/mediatek/mt76/mt792x_core.c
-> index a405af8d9052..588b24edfdd9 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt792x_core.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
-> @@ -766,6 +766,10 @@ int __mt792xe_mcu_drv_pmctrl(struct mt792x_dev *dev)
->
->         for (i =3D 0; i < MT792x_DRV_OWN_RETRY_COUNT; i++) {
->                 mt76_wr(dev, MT_CONN_ON_LPCTL, PCIE_LPCR_HOST_CLR_OWN);
-> +
-> +               if (dev->aspm_supported)
-> +                       usleep_range(2000, 3000);
-> +
->                 if (mt76_poll_msec_tick(dev, MT_CONN_ON_LPCTL,
->                                         PCIE_LPCR_HOST_OWN_SYNC, 0, 50, 1=
-))
->                         break;
-> diff --git a/drivers/net/wireless/mediatek/mt76/pci.c b/drivers/net/wirel=
-ess/mediatek/mt76/pci.c
-> index 4c1c159fbb62..b5031ca7f73f 100644
-> --- a/drivers/net/wireless/mediatek/mt76/pci.c
-> +++ b/drivers/net/wireless/mediatek/mt76/pci.c
-> @@ -45,3 +45,26 @@ void mt76_pci_disable_aspm(struct pci_dev *pdev)
->                                            aspm_conf);
->  }
->  EXPORT_SYMBOL_GPL(mt76_pci_disable_aspm);
-> +
-> +bool mt76_pci_aspm_supported(struct pci_dev *pdev)
-> +{
-> +       struct pci_dev *parent =3D pdev->bus->self;
-> +       u16 aspm_conf, parent_aspm_conf =3D 0;
-> +       bool result =3D true;
-> +
-> +       pcie_capability_read_word(pdev, PCI_EXP_LNKCTL, &aspm_conf);
-> +       aspm_conf &=3D PCI_EXP_LNKCTL_ASPMC;
-> +       if (parent) {
-> +               pcie_capability_read_word(parent, PCI_EXP_LNKCTL,
-> +                                         &parent_aspm_conf);
-> +               parent_aspm_conf &=3D PCI_EXP_LNKCTL_ASPMC;
-> +       }
-> +
-> +       if (!aspm_conf && (!parent || !parent_aspm_conf)) {
-> +               /* aspm already disabled */
-> +               result =3D false;
-> +       }
-> +
-> +       return result;
-> +}
-> +EXPORT_SYMBOL_GPL(mt76_pci_aspm_supported);
-> --
-> 2.18.0
->
->
+In response to my V1 series [1] we had much discussion of what to
+do. The conclusion was that as long as DRM modeset drivers properly
+called drm_atomic_helper_shutdown() that we should be able to remove
+the explicit shutdown/remove handling in the panel drivers. Most of
+the patches to improve DRM modeset drivers [2] [3] [4] have now
+landed.
+
+In contrast to my V1 series, I broke the V2 series up a lot
+more. Since a few of the panel drivers in V1 already landed, we had
+fewer total drivers and so we could devote a patch to each panel.
+Also, since we were now relying on DRM modeset drivers I felt like we
+should split the patches for each panel into two: one that's
+definitely safe and one that could be reverted if we found a
+problematic DRM modeset driver that we couldn't fix.
+
+Many of the patches in the V2 series [5] landed, so this V3 series is
+the patches that are left plus one new bonus patch. At this point, we
+may want to just land the patches that are left since it seems like
+nobody is going to test/review them and they've all been Acked by
+Linus and Maxime.
+
+NOTE: this touches _a lot_ of drivers, is repetitive, and is not
+really possible to generate automatically. That means it's entirely
+possible that my eyes glazed over and I did something wrong. Please
+double-check me and don't assume that I got everything perfect, though
+I did my best. I have at least confirmed that "allmodconfig" for arm64
+doesn't fall on its face with this series. I haven't done a ton of
+other testing.
+
+[1] https://lore.kernel.org/r/20230804140605.RFC.4.I930069a32baab6faf46d6b234f89613b5cec0f14@changeid
+[2] https://lore.kernel.org/r/20230901234015.566018-1-dianders@chromium.org
+[3] https://lore.kernel.org/r/20230901234202.566951-1-dianders@chromium.org
+[4] https://lore.kernel.org/r/20230921192749.1542462-1-dianders@chromium.org
+[5] https://lore.kernel.org/r/20240503213441.177109-1-dianders@chromium.org/
+
+Changes in v3:
+- drm/panel: Avoid warnings w/ panel-simple/panel-edp at shutdown
+
+Changes in v2:
+- Only handle 1 panel per patch.
+- Split removal of prepared/enabled from handling of remove/shutdown.
+
+Douglas Anderson (24):
+  drm/panel: boe-himax8279d: Stop tracking prepared/enabled
+  drm/panel: boe-himax8279d: Don't call unprepare+disable at
+    shutdown/remove
+  drm/panel: khadas-ts050: Stop tracking prepared/enabled
+  drm/panel: khadas-ts050: Don't call unprepare+disable at
+    shutdown/remove
+  drm/panel: olimex-lcd-olinuxino: Stop tracking prepared/enabled
+  drm/panel: olimex-lcd-olinuxino: Don't call unprepare+disable at
+    remove
+  drm/panel: osd-osd101t2587-53ts: Stop tracking prepared/enabled
+  drm/panel: osd-osd101t2587-53ts: Don't call unprepare+disable at
+    shutdown/remove
+  drm/panel: tdo-tl070wsh30: Stop tracking prepared
+  drm/panel: tdo-tl070wsh30: Don't call unprepare+disable at
+    shutdown/remove
+  drm/panel: jdi-lt070me05000: Stop tracking prepared/enabled
+  drm/panel: jdi-lt070me05000: Don't call disable at shutdown/remove
+  drm/panel: panasonic-vvx10f034n00: Stop tracking prepared/enabled
+  drm/panel: panasonic-vvx10f034n00: Don't call disable at
+    shutdown/remove
+  drm/panel: seiko-43wvf1g: Stop tracking prepared/enabled
+  drm/panel: seiko-43wvf1g: Don't call disable at shutdown/remove
+  drm/panel: sharp-lq101r1sx01: Stop tracking prepared/enabled
+  drm/panel: sharp-lq101r1sx01: Don't call disable at shutdown/remove
+  drm/panel: sharp-ls043t1le01: Stop tracking prepared
+  drm/panel: sharp-ls043t1le01: Don't call disable at shutdown/remove
+  drm/panel: raydium-rm67191: Stop tracking enabled
+  drm/panel: raydium-rm67191: Don't call unprepare+disable at shutdown
+  drm/panel: Update TODO list item for cleaning up prepared/enabled
+    tracking
+  drm/panel: Avoid warnings w/ panel-simple/panel-edp at shutdown
+
+ Documentation/gpu/todo.rst                    |  47 +++---
+ drivers/gpu/drm/drm_panel.c                   |  12 ++
+ drivers/gpu/drm/panel/panel-boe-himax8279d.c  |  40 -----
+ .../gpu/drm/panel/panel-drm-shutdown-check.h  | 151 ++++++++++++++++++
+ drivers/gpu/drm/panel/panel-edp.c             |  19 +--
+ .../gpu/drm/panel/panel-jdi-lt070me05000.c    |  35 ----
+ drivers/gpu/drm/panel/panel-khadas-ts050.c    |  39 -----
+ .../drm/panel/panel-olimex-lcd-olinuxino.c    |  44 -----
+ .../drm/panel/panel-osd-osd101t2587-53ts.c    |  41 +----
+ .../drm/panel/panel-panasonic-vvx10f034n00.c  |  47 +-----
+ drivers/gpu/drm/panel/panel-raydium-rm67191.c |  26 ---
+ drivers/gpu/drm/panel/panel-seiko-43wvf1g.c   |  49 ------
+ .../gpu/drm/panel/panel-sharp-lq101r1sx01.c   |  63 +-------
+ .../gpu/drm/panel/panel-sharp-ls043t1le01.c   |  24 ---
+ drivers/gpu/drm/panel/panel-simple.c          |  19 +--
+ drivers/gpu/drm/panel/panel-tdo-tl070wsh30.c  |  23 ---
+ 16 files changed, 199 insertions(+), 480 deletions(-)
+ create mode 100644 drivers/gpu/drm/panel/panel-drm-shutdown-check.h
+
+-- 
+2.45.1.288.g0e0cd299f1-goog
+
 
