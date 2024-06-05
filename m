@@ -4,58 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 841A8C25B76
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jun 2024 09:18:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4AC2DC25B76
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jun 2024 10:34:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mO50GyjH39bxbc5EOT1/9MA3fLxrVQNmcbavUHwbgME=; b=ODD2LLNg9lVgGU2HOl+Y2D50Gr
-	m7OZzSqIqXvVc9ecIp2+s+wRETl95QjC8aIQ5BQPN95yse4kWF9CjgTrkU/jX7LX7lhDJsYz4BcWJ
-	cIKGwA7AaSZ5U6ii8Hulkpf6H+Q3X9bdA9gfFpVBsRd95DibbEpUch8nIjzDmcEG2sGRqjUyFpqmJ
-	J/Bd1WaJ2OWL/WB9UwL/HnRbDxJQeIJKeaWqHeqKfwslJp8T8mVAsIt2+SagUqzKLfKw6eFjizTA3
-	n1tGp3GD6PQkK1EiX8sAOH3dhT0KPnJhQglkAZMjZ79A05WD6Q3ziWOdI/w3LN1himgqXyM2Qb3yi
-	ResJ9FxQ==;
+	bh=wjMM368z2X3T8NkMBQQVcWwwS77I1mMcWpt9FHGndWA=; b=26bY38GphThRppyM+lqKWRotqd
+	wHFd7XmoyRSlvv76iQlyOSH6WD7wiTg+n+48svINM0szd5VtFKEhYS28Aw9cvWn62CWorT/ZeAjfD
+	YCTA5vDzkwme3NsNeAykwZK/DfiLZt6a2p5uJaTC1dWLvzjy8NvSxRyCoxo1dfgL5tmG+lqC9movC
+	g16cSGn1Wllone0y7t6qIJmw6lEYxk+vaS7gplKhwWD6pkJUdUjOmE+CeSKdF0RFqu609deylacAx
+	74MsjwRVNjgr0oCFIi1QeTX+r3KJ++NZ2n60dfA54Mt85cVm81+oehkZ7I1RwvAX2R/xT9VIvolDo
+	tyaCNktA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sEmmp-00000005MD1-1PEl;
-	Wed, 05 Jun 2024 09:18:27 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sEmml-00000005MB7-1R98;
-	Wed, 05 Jun 2024 09:18:25 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id BF2FDDA7;
-	Wed,  5 Jun 2024 02:18:44 -0700 (PDT)
-Received: from [10.57.39.129] (unknown [10.57.39.129])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 147E13F792;
-	Wed,  5 Jun 2024 02:18:16 -0700 (PDT)
-Message-ID: <f44611fd-523a-4b4d-accd-20fdfbac178a@arm.com>
-Date: Wed, 5 Jun 2024 10:18:20 +0100
+	id 1sEny3-00000005aq4-0uj7;
+	Wed, 05 Jun 2024 10:34:07 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1sEnxz-00000005apa-3RcJ;
+	Wed, 05 Jun 2024 10:34:05 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1717583640;
+	bh=eH24vgsLERbd3MYpYzbhRI8kWxjPs+cAWp3PbPHeY0g=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Byc2XsjFNOtmoxmeq1t4/Y6lFk8XI9w58HPODiFSKd+q6R26KtgR7ooUWEd2ERRzS
+	 vHrHxs2/hWI++7mhxHeq6zvUIpUQSOvrEy7XpT+5Y6WcxrJ8T2KsTEWRPnX8lvckd8
+	 bo0OC1Z39tBMPzR/hct3JWzf/xzzJkI0whMl4Bdf/VPFwxz47PxjNVqeYybm+kmqV1
+	 p6Zz+NZxcVq/jqtk4yq/CI1yfegntDNo6Q/53WFkDtl7QkUJxTLBGxxhfspDUzFrwp
+	 hCmASjDRKawD/PalbuCdzhHYeXjzpzg5/+TsCbV3Erc6c4C4DDODBD1JvPtwn4veTZ
+	 2KUfygeDK8PDQ==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 2602437806BA;
+	Wed,  5 Jun 2024 10:34:00 +0000 (UTC)
+Message-ID: <7a5679f1-04a9-490e-ad9d-8f7e706c90cf@collabora.com>
+Date: Wed, 5 Jun 2024 12:33:59 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/2] drm/panfrost: Add support for Mali on the MT8188
- SoC
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- boris.brezillon@collabora.com
-Cc: maarten.lankhorst@linux.intel.com, mripard@kernel.org,
- tzimmermann@suse.de, airlied@gmail.com, daniel@ffwll.ch, robh@kernel.org,
- krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
- dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+Subject: Re: [PATCH] thermal/drivers/mediatek/lvts_thermal: Return error in
+ case of invalid efuse data
+To: Nicolas Pitre <npitre@baylibre.com>
+Cc: Julien Panis <jpanis@baylibre.com>, "Rafael J. Wysocki"
+ <rafael@kernel.org>, Daniel Lezcano <daniel.lezcano@linaro.org>,
+ Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-pm@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org
-References: <20240604123922.331469-1-angelogioacchino.delregno@collabora.com>
- <20240604123922.331469-3-angelogioacchino.delregno@collabora.com>
-From: Steven Price <steven.price@arm.com>
-Content-Language: en-GB
-In-Reply-To: <20240604123922.331469-3-angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset=UTF-8
+References: <20240603-mtk-thermal-calib-check-v1-1-5d6bf040414c@baylibre.com>
+ <af024ad1-93f6-4d7a-b139-7eb2fa12eb81@collabora.com>
+ <359n7s98-08p8-177q-n51s-33rs215soqq2@onlyvoer.pbz>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <359n7s98-08p8-177q-n51s-33rs215soqq2@onlyvoer.pbz>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240605_021824_007282_879B7856 
-X-CRM114-Status: GOOD (  19.30  )
+X-CRM114-CacheID: sfid-20240605_033404_055931_935CE3F1 
+X-CRM114-Status: GOOD (  10.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,89 +81,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 04/06/2024 13:39, AngeloGioacchino Del Regno wrote:
-> MediaTek MT8188 has a Mali-G57 MC3 (Valhall-JM): add a new
-> compatible and platform data using the same supplies and the
-> same power domain lists as MT8183 (one regulator, three power
-> domains).
+Il 04/06/24 18:33, Nicolas Pitre ha scritto:
+> On Tue, 4 Jun 2024, AngeloGioacchino Del Regno wrote:
 > 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  drivers/gpu/drm/panfrost/panfrost_drv.c | 9 +++++++++
->  1 file changed, 9 insertions(+)
+>> Il 03/06/24 14:06, Julien Panis ha scritto:
+>>> This patch prevents from registering thermal entries and letting the
+>>> driver misbehave if efuse data is invalid. A device is not properly
+>>> calibrated if the golden temperature is zero.
+>>>
+>>> Signed-off-by: Julien Panis <jpanis@baylibre.com>
+>>
+>> Fixes tag, please.
 > 
-> diff --git a/drivers/gpu/drm/panfrost/panfrost_drv.c b/drivers/gpu/drm/panfrost/panfrost_drv.c
-> index ef9f6c0716d5..4e2d9f671a0d 100644
-> --- a/drivers/gpu/drm/panfrost/panfrost_drv.c
-> +++ b/drivers/gpu/drm/panfrost/panfrost_drv.c
-> @@ -777,6 +777,14 @@ static const struct panfrost_compatible mediatek_mt8186_data = {
->  	.pm_features = BIT(GPU_PM_CLK_DIS) | BIT(GPU_PM_VREG_OFF),
->  };
->  
-> +static const struct panfrost_compatible mediatek_mt8188_data = {
-> +	.num_supplies = ARRAY_SIZE(mediatek_mt8183_b_supplies) - 1,
-> +	.supply_names = mediatek_mt8183_b_supplies,
+> What should it refer to? This is arguably a robustness enhancement for a
+> defficiency that has been there all along.
+> 
+> 
 
-I think this is a little confusing. Ideally we'd drop the existing
-mediatek_xxx_supplies which are the same as default_supplies and just
-use that instead.
+If that's been there since day 1, the fixes tag should be the day 1 commit,
+of course.
 
-> +	.num_pm_domains = ARRAY_SIZE(mediatek_mt8183_pm_domains),
-> +	.pm_domain_names = mediatek_mt8183_pm_domains,
+I see that as an important bugfix and not just a robustness enhancement, as
+SoCs with uncalibrated LVTS would *not work*, as the kernel would shut down
+the system before even loading the userspace.
 
-We'd want at least a comment explaining that this isn't a typo (i.e. /*
-mt8188 uses the same pm domains as mt8183 */). But I'm also wondering if
-it would be sensible to simply have one domain list, something like:
-
---->8---
-static const char * const mediatek_pm_domains[] = { "core0", "core1",
-						    "core2", "core3",
-						    "core4" };
-
-static const struct panfrost_compatible mediatek_mt8183_data = {
-	...
-	.num_pm_domains = 3,
-	.pm_domain_names = mediatek_pm_domains,
-};
-...
-static const struct panfrost_compatible mediatek_mt8186_data = {
-	...
-	.num_pm_domains = 2,
-	.pm_domain_names = mediatek_pm_domains,
-};
-...
-static const struct panfrost_compatible mediatek_mt8188_data = {
-	...
-	.num_pm_domains = 3,
-	.pm_domain_names = mediatek_pm_domains,
-};
-...
-static const struct panfrost_compatible mediatek_mt8192_data = {
-	...
-	.num_pm_domains = 5,
-	.pm_domain_names = mediatek_pm_domains,
-};
---->8---
-
-OTOH what you've got it no worse than what we already had, so it's up to
-you whether you want to tidy this up or just add a comment so it doesn't
-look like there's a typo.
-
-Steve
-
-> +	.pm_features = BIT(GPU_PM_CLK_DIS) | BIT(GPU_PM_VREG_OFF),
-> +};
-> +
->  static const char * const mediatek_mt8192_supplies[] = { "mali", NULL };
->  static const char * const mediatek_mt8192_pm_domains[] = { "core0", "core1", "core2",
->  							   "core3", "core4" };
-> @@ -808,6 +816,7 @@ static const struct of_device_id dt_match[] = {
->  	{ .compatible = "mediatek,mt8183-mali", .data = &mediatek_mt8183_data },
->  	{ .compatible = "mediatek,mt8183b-mali", .data = &mediatek_mt8183_b_data },
->  	{ .compatible = "mediatek,mt8186-mali", .data = &mediatek_mt8186_data },
-> +	{ .compatible = "mediatek,mt8188-mali", .data = &mediatek_mt8188_data },
->  	{ .compatible = "mediatek,mt8192-mali", .data = &mediatek_mt8192_data },
->  	{}
->  };
+Regards,
+Angelo
 
 
