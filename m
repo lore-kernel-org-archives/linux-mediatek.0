@@ -4,73 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77CDBC27C53
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jun 2024 12:08:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D7FDC25B76
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jun 2024 12:33:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=A+Jy6TnAch8hM58JmH0SYF1pqLZno3osBoPsTEHv+lA=; b=CX/fVRBoFMKKf2oNYlWWROgK/I
-	/q+mJ3E1DHaHQJBBuwb9fgxw2bGcw6E5OLPXRsWhDlGUQv1pJE8XZCy8bgXzz+sWG05UPQ2qiM4fX
-	5Tfe5+S7pe7WhvtprMlbJ2/aY17QZwHNs6aCQp6Zwg60rVoHYykxZKQqQFWw96nPTE/qHnnOOpD3p
-	LCL8w+oAKjGJifOc4q8v2dwapD68j05kET2kyueVnE29BpTtEs4CtE/eCT/BsmI/29Y9FAa+4030A
-	igb27yqywdA1djVLI0RNz4d9uYdzVu1cyokgrLV6kgxpsLAecgUcCis4hPZmfcZCw736LIF3kilDi
-	hPMjzlrA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hQUL2PzKR+JdrLffnBAs2bKimKacdctH4BdntKoRNT4=; b=koz/hFtj29hadIKZEI9f7WDzNF
+	yB0jsKtigiAkPWgTKU6C+W9UZj8RDvZj+zWmu7gAEW7LvbC237a3WFRwEa8RKx+Qn5X9ZJ0yte+EU
+	T3Nw7kHmnuZ3V1VHM09KRsvKSf+BJm8NzlJWg0v8MO7cnJyiBUqUYIFJYgSNHolQlcfAniqO6ScdS
+	4j3cVaW4rC9c15HjjdwswNZ3ODZC3h///BoL9xrwBghJfNZqGMj86gKz6DtFzxg4z/vblbFUFFp2b
+	m4XuVSzFQbPD9p0Z2AYFrZx84pCd9gDKqFiM2QUBO6EPuB2Ku/iJRVyKtcjAKsQ6k+t8qsubrmc4a
+	2lICq6Hw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sEpR9-00000005tHn-0KmY;
-	Wed, 05 Jun 2024 12:08:15 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1sEppW-000000060n3-26zh;
+	Wed, 05 Jun 2024 12:33:26 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sEpR4-00000005tEw-0Bwl;
-	Wed, 05 Jun 2024 12:08:11 +0000
+	id 1sEppS-000000060m5-2Obm;
+	Wed, 05 Jun 2024 12:33:24 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1717589287;
-	bh=SEelAXJG08W65CGyIkQNJoq9sAMJ1WDyzRM79iKUXRg=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=q4umy/URL73BSCdwadNG+zMBW0WyFzpLdzU7QUN9h1ffq1JWcUCnyf7v1PiPLHBdG
-	 8Wx9dm/te1pzrfMcbIO565ZK26aWPMPpTtWaIUyTbNGsJh8p4DxkD8Z1vo4wOssR7g
-	 kYfcxYV/5ouZbvra3P3f9ln8JVaFO3j2jBLk7yiygZaZGpdxwfjVJ1yL9SKMWedYP1
-	 Wz2Y4P1B1VHNN4dl/irJzCqyt7dVbyhyTfTdROa7ZdLA2eqHlz3xP3iEHUqRkFGmPs
-	 ZYXYRCCodStjOWqDr+Iy8xKjNPtC5VSYQzWo8MAT8jIc1eD34H6gYSaISEbEQsNy8j
-	 W5b79ZDQ100Ig==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	s=mail; t=1717590798;
+	bh=43JzBq3ntkiARgDqq61v/eTzXhWt2IKimvfmiXq/pWI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=RO67AvLJAYr/9hxw8E5sXcBQritIrnEVl/iQvjAhAnQIH50bMDpCu3lrbl+NeBTtX
+	 U1S8ZPqTvJzFHzKfHaeAhwOv/oMThjyyrtQGqzipSltDsIfzA2X4kiCDGvzdTioHLF
+	 TYWpDN5Tr8ZMDm2AyCYFreP+xOtBzZ0JQOEg0nFMN9ZGUitEn6s1iZ2X0IxUmcQWKl
+	 pM1CdV8+nLW7+tYqUsrYzpx/hKqMF4rv4Z2Ep/u+KNy7nh+tpZZn35THRJuJ6baqIY
+	 DN+ZSjvrgszTNK5WRraqWdq/OZw1jSBbSEA4XKfhb2YdBW7Rl6IWIeb4R0eEjS1Kj4
+	 zYStJebSWO6SA==
+Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 0334D3781185;
-	Wed,  5 Jun 2024 12:08:05 +0000 (UTC)
-Message-ID: <d6bbd959-93fc-4374-af60-310859b266dc@collabora.com>
-Date: Wed, 5 Jun 2024 14:08:05 +0200
+	(Authenticated sender: nfraprado)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 321BB37804C8;
+	Wed,  5 Jun 2024 12:33:15 +0000 (UTC)
+Date: Wed, 5 Jun 2024 08:33:14 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: linux-mediatek@lists.infradead.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, kernel@collabora.com
+Subject: Re: Probe failures on mt8183-kukui-jacuzzi-juniper-sku16
+Message-ID: <2491f962-a8e1-44c4-8ff9-f8c3e58a2a39@notapiano>
+References: <e5912054-0fc9-47ff-8f38-9b9a3e9d2156@notapiano>
+ <CAGXv+5HJKur9vWq4j_x7-fuL5H0SY_oQNYFWTxFCC1EBxF9yQw@mail.gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 2/3] media: i2c: Add GC05A2 image sensor driver
-To: Zhi Mao <zhi.mao@mediatek.com>, mchehab@kernel.org, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, sakari.ailus@linux.intel.com
-Cc: laurent.pinchart@ideasonboard.com, shengnan.wang@mediatek.com,
- yaya.chang@mediatek.com, Project_Global_Chrome_Upstream_Group@mediatek.com,
- yunkec@chromium.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
- jacopo.mondi@ideasonboard.com, 10572168@qq.com, hverkuil-cisco@xs4all.nl,
- heiko@sntech.de, jernej.skrabec@gmail.com, macromorgan@hotmail.com,
- linus.walleij@linaro.org, hdegoede@redhat.com,
- tomi.valkeinen@ideasonboard.com, gerald.loacker@wolfvision.net,
- andy.shevchenko@gmail.com, bingbu.cao@intel.com,
- dan.scally@ideasonboard.com, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20240605105540.17937-1-zhi.mao@mediatek.com>
- <20240605105540.17937-3-zhi.mao@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20240605105540.17937-3-zhi.mao@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAGXv+5HJKur9vWq4j_x7-fuL5H0SY_oQNYFWTxFCC1EBxF9yQw@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240605_050810_295302_111D4AE2 
-X-CRM114-Status: GOOD (  28.02  )
+X-CRM114-CacheID: sfid-20240605_053322_934790_929D0DD4 
+X-CRM114-Status: GOOD (  24.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,317 +79,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 05/06/24 12:55, Zhi Mao ha scritto:
-> Add a V4L2 sub-device driver for Galaxycore GC05A2 image sensor.
+On Wed, Jun 05, 2024 at 04:01:06PM +0800, Chen-Yu Tsai wrote:
+> Hi,
 > 
-> Signed-off-by: Zhi Mao <zhi.mao@mediatek.com>
-> ---
->   drivers/media/i2c/Kconfig  |   10 +
->   drivers/media/i2c/Makefile |    1 +
->   drivers/media/i2c/gc05a2.c | 1361 ++++++++++++++++++++++++++++++++++++
->   3 files changed, 1372 insertions(+)
->   create mode 100644 drivers/media/i2c/gc05a2.c
+> On Tue, Jun 4, 2024 at 11:52 PM Nícolas F. R. A. Prado
+> <nfraprado@collabora.com> wrote:
+> >
+> > Hi,
+> >
+> > We're monitoring the status of device probe on the
+> > mt8183-kukui-jacuzzi-juniper-sku16 platform in KernelCI, and I thought it'd be
+> > helpful to share the results.
+> >
+> > These are the current failures:
+> >
+> > * /soc/i2c@11009000/trackpad@15
+> > * /soc/svs@1100bc00
+> > * /thermal-sensor1
+> > * /thermal-sensor2
+> >
+> > In more details:
+> >
+> > * /soc/i2c@11009000/trackpad@15: I believe this is a second source trackpad and
+> >   is thus waiting for the "platform/chrome: Introduce DT hardware prober" series
+> >   [1] to be merged before it can be handled. Although looks like there haven't
+> >   been updates to the series in a while.
 > 
-> diff --git a/drivers/media/i2c/Kconfig b/drivers/media/i2c/Kconfig
-> index c6d3ee472d81..4e7c71c95143 100644
-> --- a/drivers/media/i2c/Kconfig
-> +++ b/drivers/media/i2c/Kconfig
-> @@ -70,6 +70,16 @@ config VIDEO_GC0308
->   	  To compile this driver as a module, choose M here: the
->   	  module will be called gc0308.
->   
-> +config VIDEO_GC05A2
-> +	tristate "GalaxyCore gc05a2 sensor support"
-> +	select V4L2_CCI_I2C
-> +	help
-> +	  This is a Video4Linux2 sensor driver for the GalaxyCore gc05a2
-> +	  camera.
-> +
-> +	  To compile this driver as a module, choose M here: the
-> +	  module will be called gc05a2.
-> +
->   config VIDEO_GC2145
->   	select V4L2_CCI_I2C
->   	tristate "GalaxyCore GC2145 sensor support"
-> diff --git a/drivers/media/i2c/Makefile b/drivers/media/i2c/Makefile
-> index dfbe6448b549..8ed6faf0f854 100644
-> --- a/drivers/media/i2c/Makefile
-> +++ b/drivers/media/i2c/Makefile
-> @@ -38,6 +38,7 @@ obj-$(CONFIG_VIDEO_DW9768) += dw9768.o
->   obj-$(CONFIG_VIDEO_DW9807_VCM) += dw9807-vcm.o
->   obj-$(CONFIG_VIDEO_ET8EK8) += et8ek8/
->   obj-$(CONFIG_VIDEO_GC0308) += gc0308.o
-> +obj-$(CONFIG_VIDEO_GC05A2) += gc05a2.o
->   obj-$(CONFIG_VIDEO_GC2145) += gc2145.o
->   obj-$(CONFIG_VIDEO_HI556) += hi556.o
->   obj-$(CONFIG_VIDEO_HI846) += hi846.o
-> diff --git a/drivers/media/i2c/gc05a2.c b/drivers/media/i2c/gc05a2.c
-> new file mode 100644
-> index 000000000000..87a209b27fc2
-> --- /dev/null
-> +++ b/drivers/media/i2c/gc05a2.c
-> @@ -0,0 +1,1361 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Driver for GalaxyCore gc05a2 image sensor
-> + *
-> + * Copyright 2024 MediaTek
-> + *
-> + * Zhi Mao <zhi.mao@mediatek.com>
-> + */
-> +#include <linux/array_size.h>
-> +#include <linux/bits.h>
-> +#include <linux/clk.h>
-> +#include <linux/container_of.h>
-> +#include <linux/delay.h>
-> +#include <linux/device.h>
-> +#include <linux/err.h>
-> +#include <linux/gpio/consumer.h>
-> +#include <linux/math64.h>
-> +#include <linux/mod_devicetable.h>
-> +#include <linux/pm_runtime.h>
-> +#include <linux/property.h>
-> +#include <linux/regulator/consumer.h>
-> +#include <linux/types.h>
-> +#include <linux/units.h>
-> +
-> +#include <media/v4l2-cci.h>
-> +#include <media/v4l2-ctrls.h>
-> +#include <media/v4l2-event.h>
-> +#include <media/v4l2-fwnode.h>
-> +#include <media/v4l2-subdev.h>
-> +
-> +#define GC05A2_REG_TEST_PATTERN_EN CCI_REG8(0x008c)
-> +#define GC05A2_REG_TEST_PATTERN_IDX CCI_REG8(0x008d)
-> +#define GC05A2_TEST_PATTERN_EN 0x01
-> +
-> +#define GC05A2_STREAMING_REG CCI_REG8(0x0100)
-> +
-> +#define GC05A2_FLIP_REG CCI_REG8(0x0101)
-> +#define GC05A2_FLIP_H_MASK BIT(0)
-> +#define GC05A2_FLIP_V_MASK BIT(1)
-> +
-> +#define GC05A2_EXP_REG CCI_REG16(0x0202)
-> +#define GC05A2_EXP_MARGIN 16
-> +#define GC05A2_EXP_MIN 4
-> +#define GC05A2_EXP_STEP 1
-> +
-> +#define GC05A2_AGAIN_REG CCI_REG16(0x0204)
-> +#define GC05A2_AGAIN_MIN 1024
-> +#define GC05A2_AGAIN_MAX (1024 * 16)
-> +#define GC05A2_AGAIN_STEP 1
-> +
-> +#define GC05A2_FRAME_LENGTH_REG CCI_REG16(0x0340)
-> +#define GC05A2_VTS_MAX 0xffff
-> +
-> +#define GC05A2_REG_CHIP_ID CCI_REG16(0x03f0)
-> +#define GC05A2_CHIP_ID 0x05a2
-> +
-> +#define GC05A2_NATIVE_WIDTH 2592
-> +#define GC05A2_NATIVE_HEIGHT 1944
-> +
-> +#define GC05A2_DEFAULT_CLK_FREQ (24 * HZ_PER_MHZ)
-> +#define GC05A2_MBUS_CODE MEDIA_BUS_FMT_SGRBG10_1X10
-> +#define GC05A2_DATA_LANES 2
-> +#define GC05A2_RGB_DEPTH 10
-> +#define GC05A2_SLEEP_US  (2 * USEC_PER_MSEC)
-> +
+> I've been working on other stuff and haven't had time to respin this series.
 
-..snip..
+No worries, but it's good to know that that's the latest status and I didn't
+miss something.
 
-> +static int gc05a2_parse_fwnode(struct gc05a2 *gc05a2)
-> +{
-> +	struct fwnode_handle *endpoint;
-> +	struct v4l2_fwnode_endpoint bus_cfg = {
-> +		.bus_type = V4L2_MBUS_CSI2_DPHY,
-> +	};
-> +	int ret;
-> +	struct device *dev = gc05a2->dev;
-> +
-> +	endpoint =
-> +		fwnode_graph_get_endpoint_by_id(dev_fwnode(dev), 0, 0,
-> +						FWNODE_GRAPH_ENDPOINT_NEXT);
-> +	if (!endpoint) {
-> +		dev_err(dev, "endpoint node not found\n");
+> 
+> Just to confirm, is the failure due to pinctrl conflicts when the trackpad
+> variants probe asynchronously?
 
-This function is used only in probe stage, and logging should be consistent.
-Check below :-)
+Yes:
 
-> +		return -EINVAL;
-> +	}
-> +
+[    2.185408] input: hid-over-i2c 06CB:CDB5 Mouse as /devices/platform/soc/11009000.i2c/i2c-2/2-002c/0018:06CB:CDB5.0001/input/input2
+[    2.845044] mt8183-pinctrl 10005000.pinctrl: pin GPIO7 already requested by 2-002c; cannot claim for 2-0015
+[    2.854700] mt8183-pinctrl 10005000.pinctrl: error -EINVAL: pin-7 (2-0015)
+[    2.869503] mt8183-pinctrl 10005000.pinctrl: error -EINVAL: could not request pin 7 (GPIO7) from group GPIO7  on device pinctrl_paris
+[    2.894885] elan_i2c 2-0015: Error applying setting, reverse things back
 
-..snip..
+> 
+[..]
+> > * /thermal-sensor1, /thermal-sensor2: The following is reported:
+> >
+> >     [    2.813605] thermal_sys: Failed to find 'trips' node
+> >     [    2.813611] thermal_sys: Failed to find trip points for thermal-sensor1 id=0
+> >     [    2.813619] generic-adc-thermal thermal-sensor1: Thermal zone sensor register failed: -22
+> >     [    2.813624] generic-adc-thermal thermal-sensor1: probe with driver generic-adc-thermal failed with error -22
+> >
+> >   And the same for thermal-sensor2. So both are missing the required 'trips'
+> >   subnode.
+> 
+> IIRC either the driver or the DT had comments saying "these zones don't
+> need trip points". In that case maybe the driver should use
+> thermal_tripless_zone_device_register() for them?
 
-> +
-> +static int gc05a2_probe(struct i2c_client *client)
-> +{
-> +	struct device *dev = &client->dev;
-> +	struct gc05a2 *gc05a2;
-> +	int ret;
-> +
-> +	gc05a2 = devm_kzalloc(dev, sizeof(*gc05a2), GFP_KERNEL);
-> +	if (!gc05a2)
-> +		return -ENOMEM;
-> +
-> +	gc05a2->dev = dev;
-> +
-> +	ret = gc05a2_parse_fwnode(gc05a2);
-> +	if (ret)
-> +		return ret;
-> +
-> +	gc05a2->regmap = devm_cci_regmap_init_i2c(client, 16);
-> +	if (IS_ERR(gc05a2->regmap))
-> +		return dev_err_probe(dev, PTR_ERR(gc05a2->regmap),
-> +				     "failed to init CCI\n");
-> +
-> +	gc05a2->xclk = devm_clk_get(dev, NULL);
-> +	if (IS_ERR(gc05a2->xclk))
-> +		return dev_err_probe(dev, PTR_ERR(gc05a2->xclk),
-> +				     "failed to get xclk\n");
-> +
-> +	ret = clk_set_rate(gc05a2->xclk, GC05A2_DEFAULT_CLK_FREQ);
-> +	if (ret)
-> +		return dev_err_probe(dev, ret,
-> +				     "failed to set xclk frequency\n");
-> +
-> +	ret = gc05a2_get_regulators(dev, gc05a2);
-> +	if (ret < 0)
-> +		return dev_err_probe(dev, ret,
-> +				     "failed to get regulators\n");
-> +
-> +	gc05a2->reset_gpio = devm_gpiod_get(dev, "reset", GPIOD_OUT_LOW);
-> +	if (IS_ERR(gc05a2->reset_gpio))
-> +		return dev_err_probe(dev, PTR_ERR(gc05a2->reset_gpio),
-> +				     "failed to get gpio\n");
-> +
-> +	v4l2_i2c_subdev_init(&gc05a2->sd, client, &gc05a2_subdev_ops);
-> +	gc05a2->sd.internal_ops = &gc05a2_internal_ops;
-> +	gc05a2->cur_mode = &gc05a2_modes[0];
-> +
-> +	ret = gc05a2_init_controls(gc05a2);
-> +	if (ret)
-> +		return dev_err_probe(dev, ret,
-> +				     "failed to init controls\n");
-> +
-> +	gc05a2->sd.flags |= V4L2_SUBDEV_FL_HAS_DEVNODE |
-> +			    V4L2_SUBDEV_FL_HAS_EVENTS;
-> +	gc05a2->pad.flags = MEDIA_PAD_FL_SOURCE;
-> +	gc05a2->sd.dev = &client->dev;
-> +	gc05a2->sd.entity.function = MEDIA_ENT_F_CAM_SENSOR;
-> +
-> +	ret = media_entity_pads_init(&gc05a2->sd.entity, 1, &gc05a2->pad);
-> +	if (ret < 0) {
-> +		dev_err(dev, "could not register media entity\n");
+I believe you're thinking of the SoC thermal zones, which had trips added (and
+the comment removed) in commit 978979409209 ("arm64: dts: mediatek: mt8183:
+Refactor thermal zones"). But these are the kukui board thermal zones.
 
-For logging strings consistency, you should use dev_err_probe() everywhere,
-at this point, because that's printing the error code.
+The thermal-zones dt-binding does describe the 'trips' node as required, so I
+think the only option in this case is to add trips to them, or remove the
+thermal zones altogether. I'm guessing the
+thermal_tripless_zone_device_register() helper is meant for other thermal zones
+that aren't described in the DT.
 
-So here it'd be
-
-if (ret < 0) {
-	dev_err_probe(dev, ret, "could not register media entity\n");
-	goto err_v4l2_ctrl_handler_free;
-}
-
-> +		goto err_v4l2_ctrl_handler_free;
-> +	}
-> +
-> +	gc05a2->sd.state_lock = gc05a2->ctrls.lock;
-> +	ret = v4l2_subdev_init_finalize(&gc05a2->sd);
-> +	if (ret < 0) {
-> +		dev_err(dev, "v4l2 subdev init error: %d\n", ret);
-
-same here
-
-> +		goto err_media_entity_cleanup;
-> +	}
-> +
-> +	pm_runtime_enable(gc05a2->dev);
-> +	pm_runtime_set_autosuspend_delay(gc05a2->dev, 1000);
-> +	pm_runtime_use_autosuspend(gc05a2->dev);
-> +	pm_runtime_idle(gc05a2->dev);
-> +
-> +	ret = v4l2_async_register_subdev_sensor(&gc05a2->sd);
-> +	if (ret < 0) {
-> +		dev_err(dev, "could not register v4l2 device\n");
-
-ditto
-
-> +		goto err_rpm;
-> +	}
-> +
-> +	return 0;
-> +
-> +err_rpm:
-> +	pm_runtime_disable(gc05a2->dev);
-> +	v4l2_subdev_cleanup(&gc05a2->sd);
-> +
-> +err_media_entity_cleanup:
-> +	media_entity_cleanup(&gc05a2->sd.entity);
-> +
-> +err_v4l2_ctrl_handler_free:
-> +	v4l2_ctrl_handler_free(&gc05a2->ctrls);
-> +
-> +	return ret;
-> +}
-> +
-> +static void gc05a2_remove(struct i2c_client *client)
-> +{
-> +	struct v4l2_subdev *sd = i2c_get_clientdata(client);
-> +	struct gc05a2 *gc05a2 = to_gc05a2(sd);
-> +
-> +	v4l2_async_unregister_subdev(&gc05a2->sd);
-> +	v4l2_subdev_cleanup(sd);
-> +	media_entity_cleanup(&gc05a2->sd.entity);
-> +	v4l2_ctrl_handler_free(&gc05a2->ctrls);
-> +
-> +	pm_runtime_disable(&client->dev);
-> +	if (!pm_runtime_status_suspended(&client->dev))
-> +		gc05a2_power_off(gc05a2->dev);
-> +	pm_runtime_set_suspended(&client->dev);
-> +}
-> +
-> +static const struct of_device_id gc05a2_of_match[] = {
-> +	{ .compatible = "galaxycore,gc05a2" },
-> +	{}
-
-{ /* sentinel */ }
-
-
-After which, looks good to me, so, after addressing my comments:
-
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-> +};
-> +MODULE_DEVICE_TABLE(of, gc05a2_of_match);
-> +
-> +static DEFINE_RUNTIME_DEV_PM_OPS(gc05a2_pm_ops,
-> +				 gc05a2_power_off,
-> +				 gc05a2_power_on,
-> +				 NULL);
-> +
-> +static struct i2c_driver gc05a2_i2c_driver = {
-> +	.driver = {
-> +		.of_match_table = gc05a2_of_match,
-> +		.pm = pm_ptr(&gc05a2_pm_ops),
-> +		.name  = "gc05a2",
-> +	},
-> +	.probe = gc05a2_probe,
-> +	.remove = gc05a2_remove,
-> +};
-> +module_i2c_driver(gc05a2_i2c_driver);
-> +
-> +MODULE_DESCRIPTION("GalaxyCore gc05a2 Camera driver");
-> +MODULE_AUTHOR("Zhi Mao <zhi.mao@mediatek.com>");
-> +MODULE_LICENSE("GPL");
-
--- 
-AngeloGioacchino Del Regno
-Senior Software Engineer
-
-Collabora Ltd.
-Platinum Building, St John's Innovation Park, Cambridge CB4 0DS, UK
-Registered in England & Wales, no. 5513718
-
+Thanks,
+Nícolas
 
