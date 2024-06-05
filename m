@@ -4,67 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D7FDC25B76
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jun 2024 12:33:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6FB7C27C53
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jun 2024 12:39:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hQUL2PzKR+JdrLffnBAs2bKimKacdctH4BdntKoRNT4=; b=koz/hFtj29hadIKZEI9f7WDzNF
-	yB0jsKtigiAkPWgTKU6C+W9UZj8RDvZj+zWmu7gAEW7LvbC237a3WFRwEa8RKx+Qn5X9ZJ0yte+EU
-	T3Nw7kHmnuZ3V1VHM09KRsvKSf+BJm8NzlJWg0v8MO7cnJyiBUqUYIFJYgSNHolQlcfAniqO6ScdS
-	4j3cVaW4rC9c15HjjdwswNZ3ODZC3h///BoL9xrwBghJfNZqGMj86gKz6DtFzxg4z/vblbFUFFp2b
-	m4XuVSzFQbPD9p0Z2AYFrZx84pCd9gDKqFiM2QUBO6EPuB2Ku/iJRVyKtcjAKsQ6k+t8qsubrmc4a
-	2lICq6Hw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6H0fSn9uaFIKhZUXyFNM+0oXyb6mFu8B7TQQbIsdT44=; b=VbJ0GQ9mPU7V8NEXMHsZWvOWXZ
+	RfqUTs/fncPOwFYsaOWNcyK24wMR2SvkJIWIS5P/Uf/5EKSnETSpExN607S9BLw7bTGBiwcy/tAOw
+	5Osb4Tl8Y17cjFA1jfgRmRZaBdqu+NZTpgVQ0KJLMvLFoSZkuz/6ku9FdIq9IgyepRKxozlNFBsDZ
+	Ss4RZLhDAMc3He3tR5a4o1oJcFFJCQEi/k/GZqCxTyi7nYAAMi2DhM2tdv6Bk///TbHwpyLGKdHHv
+	gWQnRTat3VNmMXTHwhq7AUK5AwzUjsYOsPh85yi4MSU/0UVNKYXqjCebqzCo6lb+/2c+2MvCEzCsd
+	N6Le7YSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sEppW-000000060n3-26zh;
-	Wed, 05 Jun 2024 12:33:26 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
-	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sEppS-000000060m5-2Obm;
-	Wed, 05 Jun 2024 12:33:24 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1717590798;
-	bh=43JzBq3ntkiARgDqq61v/eTzXhWt2IKimvfmiXq/pWI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=RO67AvLJAYr/9hxw8E5sXcBQritIrnEVl/iQvjAhAnQIH50bMDpCu3lrbl+NeBTtX
-	 U1S8ZPqTvJzFHzKfHaeAhwOv/oMThjyyrtQGqzipSltDsIfzA2X4kiCDGvzdTioHLF
-	 TYWpDN5Tr8ZMDm2AyCYFreP+xOtBzZ0JQOEg0nFMN9ZGUitEn6s1iZ2X0IxUmcQWKl
-	 pM1CdV8+nLW7+tYqUsrYzpx/hKqMF4rv4Z2Ep/u+KNy7nh+tpZZn35THRJuJ6baqIY
-	 DN+ZSjvrgszTNK5WRraqWdq/OZw1jSBbSEA4XKfhb2YdBW7Rl6IWIeb4R0eEjS1Kj4
-	 zYStJebSWO6SA==
-Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 321BB37804C8;
-	Wed,  5 Jun 2024 12:33:15 +0000 (UTC)
-Date: Wed, 5 Jun 2024 08:33:14 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: linux-mediatek@lists.infradead.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, kernel@collabora.com
-Subject: Re: Probe failures on mt8183-kukui-jacuzzi-juniper-sku16
-Message-ID: <2491f962-a8e1-44c4-8ff9-f8c3e58a2a39@notapiano>
-References: <e5912054-0fc9-47ff-8f38-9b9a3e9d2156@notapiano>
- <CAGXv+5HJKur9vWq4j_x7-fuL5H0SY_oQNYFWTxFCC1EBxF9yQw@mail.gmail.com>
+	id 1sEpvr-000000062eP-0zIm;
+	Wed, 05 Jun 2024 12:39:59 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1sEpvl-000000062a8-3OJv;
+	Wed, 05 Jun 2024 12:39:55 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id E3BB9339;
+	Wed,  5 Jun 2024 05:40:16 -0700 (PDT)
+Received: from [10.57.39.129] (unknown [10.57.39.129])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 39FE93F762;
+	Wed,  5 Jun 2024 05:39:48 -0700 (PDT)
+Message-ID: <b7f7403b-142a-4914-a787-f92292069d6d@arm.com>
+Date: Wed, 5 Jun 2024 13:39:51 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAGXv+5HJKur9vWq4j_x7-fuL5H0SY_oQNYFWTxFCC1EBxF9yQw@mail.gmail.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 2/2] drm/panfrost: Add support for Mali on the MT8188
+ SoC
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ boris.brezillon@collabora.com
+Cc: maarten.lankhorst@linux.intel.com, mripard@kernel.org,
+ tzimmermann@suse.de, airlied@gmail.com, daniel@ffwll.ch, robh@kernel.org,
+ krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
+ dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20240604123922.331469-1-angelogioacchino.delregno@collabora.com>
+ <20240604123922.331469-3-angelogioacchino.delregno@collabora.com>
+ <f44611fd-523a-4b4d-accd-20fdfbac178a@arm.com>
+ <6dee4870-3ca2-46d7-a30b-014a7d34135a@collabora.com>
+From: Steven Price <steven.price@arm.com>
+Content-Language: en-GB
+In-Reply-To: <6dee4870-3ca2-46d7-a30b-014a7d34135a@collabora.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240605_053322_934790_929D0DD4 
-X-CRM114-Status: GOOD (  24.78  )
+X-CRM114-CacheID: sfid-20240605_053954_051403_934EBED5 
+X-CRM114-Status: GOOD (  37.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,75 +72,151 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 05, 2024 at 04:01:06PM +0800, Chen-Yu Tsai wrote:
-> Hi,
+On 05/06/2024 12:43, AngeloGioacchino Del Regno wrote:
+> Il 05/06/24 11:18, Steven Price ha scritto:
+>> On 04/06/2024 13:39, AngeloGioacchino Del Regno wrote:
+>>> MediaTek MT8188 has a Mali-G57 MC3 (Valhall-JM): add a new
+>>> compatible and platform data using the same supplies and the
+>>> same power domain lists as MT8183 (one regulator, three power
+>>> domains).
+>>>
+>>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>>> ---
+>>>   drivers/gpu/drm/panfrost/panfrost_drv.c | 9 +++++++++
+>>>   1 file changed, 9 insertions(+)
+>>>
+>>> diff --git a/drivers/gpu/drm/panfrost/panfrost_drv.c b/drivers/gpu/drm/panfrost/panfrost_drv.c
+>>> index ef9f6c0716d5..4e2d9f671a0d 100644
+>>> --- a/drivers/gpu/drm/panfrost/panfrost_drv.c
+>>> +++ b/drivers/gpu/drm/panfrost/panfrost_drv.c
+>>> @@ -777,6 +777,14 @@ static const struct panfrost_compatible mediatek_mt8186_data = {
+>>>   	.pm_features = BIT(GPU_PM_CLK_DIS) | BIT(GPU_PM_VREG_OFF),
+>>>   };
+>>>   
+>>> +static const struct panfrost_compatible mediatek_mt8188_data = {
+>>> +	.num_supplies = ARRAY_SIZE(mediatek_mt8183_b_supplies) - 1,
+>>> +	.supply_names = mediatek_mt8183_b_supplies,
+>>
+>> I think this is a little confusing. Ideally we'd drop the existing
+>> mediatek_xxx_supplies which are the same as default_supplies and just
+>> use that instead.
+>>
+>>> +	.num_pm_domains = ARRAY_SIZE(mediatek_mt8183_pm_domains),
+>>> +	.pm_domain_names = mediatek_mt8183_pm_domains,
+>>
+>> We'd want at least a comment explaining that this isn't a typo (i.e. /*
+>> mt8188 uses the same pm domains as mt8183 */). But I'm also wondering if
+>> it would be sensible to simply have one domain list, something like:
+>>
+>> --->8---
+>> static const char * const mediatek_pm_domains[] = { "core0", "core1",
+>> 						    "core2", "core3",
+>> 						    "core4" };
+>>
+>> static const struct panfrost_compatible mediatek_mt8183_data = {
+>> 	...
+>> 	.num_pm_domains = 3,
+>> 	.pm_domain_names = mediatek_pm_domains,
+>> };
+>> ...
+>> static const struct panfrost_compatible mediatek_mt8186_data = {
+>> 	...
+>> 	.num_pm_domains = 2,
+>> 	.pm_domain_names = mediatek_pm_domains,
+>> };
+>> ...
+>> static const struct panfrost_compatible mediatek_mt8188_data = {
+>> 	...
+>> 	.num_pm_domains = 3,
+>> 	.pm_domain_names = mediatek_pm_domains,
+>> };
+>> ...
+>> static const struct panfrost_compatible mediatek_mt8192_data = {
+>> 	...
+>> 	.num_pm_domains = 5,
+>> 	.pm_domain_names = mediatek_pm_domains,
+>> };
+>> --->8---
+>>
+>> OTOH what you've got it no worse than what we already had, so it's up to
+>> you whether you want to tidy this up or just add a comment so it doesn't
+>> look like there's a typo.
+>>
 > 
-> On Tue, Jun 4, 2024 at 11:52 PM Nícolas F. R. A. Prado
-> <nfraprado@collabora.com> wrote:
-> >
-> > Hi,
-> >
-> > We're monitoring the status of device probe on the
-> > mt8183-kukui-jacuzzi-juniper-sku16 platform in KernelCI, and I thought it'd be
-> > helpful to share the results.
-> >
-> > These are the current failures:
-> >
-> > * /soc/i2c@11009000/trackpad@15
-> > * /soc/svs@1100bc00
-> > * /thermal-sensor1
-> > * /thermal-sensor2
-> >
-> > In more details:
-> >
-> > * /soc/i2c@11009000/trackpad@15: I believe this is a second source trackpad and
-> >   is thus waiting for the "platform/chrome: Introduce DT hardware prober" series
-> >   [1] to be merged before it can be handled. Although looks like there haven't
-> >   been updates to the series in a while.
+> I didn't disclose my plan, but you've already shown part of it, so seeing that
+> you preventively agree with at least part of that is fun :-)
 > 
-> I've been working on other stuff and haven't had time to respin this series.
-
-No worries, but it's good to know that that's the latest status and I didn't
-miss something.
-
+> I surely won't be able to do what I want to do for *this* cycle as I'm mostly
+> sure that I won't have time for this in the next 3 weeks - but anyway....
 > 
-> Just to confirm, is the failure due to pinctrl conflicts when the trackpad
-> variants probe asynchronously?
-
-Yes:
-
-[    2.185408] input: hid-over-i2c 06CB:CDB5 Mouse as /devices/platform/soc/11009000.i2c/i2c-2/2-002c/0018:06CB:CDB5.0001/input/input2
-[    2.845044] mt8183-pinctrl 10005000.pinctrl: pin GPIO7 already requested by 2-002c; cannot claim for 2-0015
-[    2.854700] mt8183-pinctrl 10005000.pinctrl: error -EINVAL: pin-7 (2-0015)
-[    2.869503] mt8183-pinctrl 10005000.pinctrl: error -EINVAL: could not request pin 7 (GPIO7) from group GPIO7  on device pinctrl_paris
-[    2.894885] elan_i2c 2-0015: Error applying setting, reverse things back
-
+> What I was thinking is that we should either look for a number of power domains
+> limited by a max power domains definition (that should already be present somewhere
+> in panfrost if I recall correctly) without even caring about the actual power
+> domain names, or we should look for a number of PDs having any name matching,
+> in a for loop, snprintf(*something, sizeof(something), "core%d", i).
 > 
-[..]
-> > * /thermal-sensor1, /thermal-sensor2: The following is reported:
-> >
-> >     [    2.813605] thermal_sys: Failed to find 'trips' node
-> >     [    2.813611] thermal_sys: Failed to find trip points for thermal-sensor1 id=0
-> >     [    2.813619] generic-adc-thermal thermal-sensor1: Thermal zone sensor register failed: -22
-> >     [    2.813624] generic-adc-thermal thermal-sensor1: probe with driver generic-adc-thermal failed with error -22
-> >
-> >   And the same for thermal-sensor2. So both are missing the required 'trips'
-> >   subnode.
+> This means that, with the snprintf idea, we don't even have to set any
+> pm_domain_names list anymore, at all, and we can either reuse num_pm_domains
+> or just get the number of PDs limited by the binding - but that's a problem for
+> the future me/us I guess...
 > 
-> IIRC either the driver or the DT had comments saying "these zones don't
-> need trip points". In that case maybe the driver should use
-> thermal_tripless_zone_device_register() for them?
+> But since we're there...
+> 
+> Please, I'd like to hear your opinion about the core%d idea :-)
 
-I believe you're thinking of the SoC thermal zones, which had trips added (and
-the comment removed) in commit 978979409209 ("arm64: dts: mediatek: mt8183:
-Refactor thermal zones"). But these are the kukui board thermal zones.
+I was tempted to suggest something like it... ;) But two things made me
+wary:
 
-The thermal-zones dt-binding does describe the 'trips' node as required, so I
-think the only option in this case is to add trips to them, or remove the
-thermal zones altogether. I'm guessing the
-thermal_tripless_zone_device_register() helper is meant for other thermal zones
-that aren't described in the DT.
+ * It's a bigger change, and I didn't want to suggest such a large
+refactor - let's get this patch in first.
+
+ * There is no technical reason why designs will have a power domain per
+core. In particular there is the concept of 'stacks' added in later GPUs
+(so for these GPUs it should be "stack%d"). We also don't want the
+bindings being decided based on the driver, so if there's an integration
+which has e.g. "core01", "core23", etc we should support that rather
+than encouraging people to invent different names just to make the
+bindings easier.
+
+Having said that, we could have special handling for
+pm_domain_names==NULL where "core%d" is assumed, leaving the current
+approach for any 'weird' GPU integrations that might crop up in the future.
+
+> Anyway, I think that for now I'm choosing the "comment shortcut" for this patch.
+
+Agreed - there's no point holding up adding support for a new GPU for
+this clean up.
+
+> P.S.: Thanks for the feedback!
+
+No problem.
 
 Thanks,
-Nícolas
+
+Steve
+
+> Cheers,
+> Angelo
+> 
+>> Steve
+>>
+>>> +	.pm_features = BIT(GPU_PM_CLK_DIS) | BIT(GPU_PM_VREG_OFF),
+>>> +};
+>>> +
+>>>   static const char * const mediatek_mt8192_supplies[] = { "mali", NULL };
+>>>   static const char * const mediatek_mt8192_pm_domains[] = { "core0", "core1", "core2",
+>>>   							   "core3", "core4" };
+>>> @@ -808,6 +816,7 @@ static const struct of_device_id dt_match[] = {
+>>>   	{ .compatible = "mediatek,mt8183-mali", .data = &mediatek_mt8183_data },
+>>>   	{ .compatible = "mediatek,mt8183b-mali", .data = &mediatek_mt8183_b_data },
+>>>   	{ .compatible = "mediatek,mt8186-mali", .data = &mediatek_mt8186_data },
+>>> +	{ .compatible = "mediatek,mt8188-mali", .data = &mediatek_mt8188_data },
+>>>   	{ .compatible = "mediatek,mt8192-mali", .data = &mediatek_mt8192_data },
+>>>   	{}
+>>>   };
+>>
+> 
+> 
+> 
+
 
