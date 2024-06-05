@@ -4,68 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55436C25B76
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jun 2024 16:50:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4CD4C25B76
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jun 2024 17:01:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=MrUm6TVgNgOxRBqjlCR9GXbxCSqb5jc6ibUIxE9kYSo=; b=J7eFLJ9qwSM2SkOk2hmq9rj7Bd
-	uN2ynQ2vRTO0VnFiLmtXyTlv6pifDCgUkrVeWhll01BYguzni6AjuJhh+u2KaLuwoJG7fVSX+O30l
-	eHz0D0R1GUqh4639LSYrq1c5J74vMG3AY9cMuv8Inl7wApyiyXCzAkWM9mlHbh7Lxiud5C3QiORaR
-	jwmC+PzuVqxwyH9//xQ7PYKJLCu4KMbalD60THfGzYTFmYmGtjtKDUvWPhZ4au65s71tPKlVKmSVK
-	rVmzueBye8SrtxiYVUgpJrmnuGDZDpdRsvzw4sqEMz9VnzEPStqhT5xJkiTUBnxIsejlG+ut/r3zQ
-	+hcq/BcA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zCAN5fvV7sG+TBo7QjvDHZ1N+Q5/foWftqmae93zAu8=; b=OK8HQQ3bsFqWF9dfoI1K604l+4
+	5XSlmebij+qCYNEm1pbszWH1MWO4LEzVyK0WSYbj2mxkoXTCks1AOpDV8hjbrUsXM/w/v/s78ch70
+	Aet8Xs69sG5josjc0vSUSBQ+JcHfvR2fRb1b7E9eV8hQFwc6eyoJq7BPpiyZDZ1VNNFxbOG/L1keo
+	vRypwhzywEzjZKSfSH36rFZgD7GWN7hO1cqVAiSLPcI+DAnIv/ouLEipxHTyrxWDgbA43WxTmvgkX
+	91rDydd6NftRoeYcHtKinPoEiXBugtCbffuaSZGHmCMu7fUi8h6gCncKWslNTiC+w/ddWn7fxndD4
+	XFLalPwg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sEtqc-00000006tMk-0Ax1;
-	Wed, 05 Jun 2024 16:50:50 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1sEu1H-00000006vdc-1kmT;
+	Wed, 05 Jun 2024 17:01:51 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sEtqY-00000006tLO-1otG;
-	Wed, 05 Jun 2024 16:50:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1717606245;
-	bh=rn22rgV/+4N/k6+hZ8EN8fGz0X09E6tz/BF8d70bBkI=;
-	h=From:Date:Subject:To:Cc:From;
-	b=UQRXnT0y8rT7OOFPfI77fSfMEOgn+D0WBLZRM9L3723QaUghV8BZH690prWHfrG5O
-	 8fhiTaV82s+4J4eHM/o0nrYI1UEgaB0BlSu+m2mzQH5siGVSjxdUHGtUq/lQMwDBz3
-	 IhoufMtuktQns06jD4yAzyTHaPZ3BfjFn2DNrTxXlgAkTzhT8K0F/YRsm4AgrOPoHn
-	 S2dUtJp/TQEDiplx1TOQXwH0KNgY8HrDTDk1UBFq326TrpahA3gCeWf39K+AM+9mX7
-	 7gAkEqMpilaRBluurczL1IO77EG+v0EdGzaqwKImCbmGATOdeyF3gScOcvGKrQ4Yxd
-	 Z/GwoG7d1uJMQ==
-Received: from [192.168.1.250] (zone.collabora.co.uk [167.235.23.81])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 6C8E1378219B;
-	Wed,  5 Jun 2024 16:50:42 +0000 (UTC)
-From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Date: Wed, 05 Jun 2024 12:50:25 -0400
-Subject: [PATCH] drm/mediatek: Don't print error if EDEFER_PROBE returned
- on component_add
+	id 1sEu1D-00000006vcx-0uUT;
+	Wed, 05 Jun 2024 17:01:48 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id C1756619DD;
+	Wed,  5 Jun 2024 17:01:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D5BE5C2BD11;
+	Wed,  5 Jun 2024 17:01:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1717606905;
+	bh=zCAN5fvV7sG+TBo7QjvDHZ1N+Q5/foWftqmae93zAu8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=WMVXVjuexfcZSyHxqtr1cu1NbAxWpdd5f2pgLM3J901K7EBR/QIUNRvX3EYy5zAP/
+	 V6szEVh85JczRPq6EZS1PcEECSQvxB+J3lpOrOyQfc77moyXedzKsOzMMk9OmbmIYw
+	 obkmtDM/8kPVjYCWTkzm5EJdggxPFsHGXI+uvheIS93y+AKXtpzbs7O5f2UO6JoH/F
+	 xGS7Gwzz+FAHjoI2lgr7jGibGup1FAokBMAE/gvvlWkKVFjCYRpLgnz7t4J7qA2zzJ
+	 hoHZu0I5QkYFzK8SFvfRsTXUrCvli7LPhSDIkifyXbLT1MgdlhyIhJRH/TybTcgSrD
+	 vd71AsMjFK+sQ==
+Date: Wed, 5 Jun 2024 18:01:40 +0100
+From: Conor Dooley <conor@kernel.org>
+To: =?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Jiri Slaby <jirislaby@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, linux-serial@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	=?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
+Subject: Re: [PATCH 1/2] dt-bindings: serial: mediatek,uart: add MT7988
+Message-ID: <20240605-luridness-spinach-361baff3266f@spud>
+References: <20240605085433.26513-1-zajec5@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20240605-mtk-disp-rdma-dev-err-probe-v1-1-91259e1d3a93@collabora.com>
-X-B4-Tracking: v=1; b=H4sIAFCXYGYC/x3MwQpAQBAG4FfRnE3tCsWryGHZH5OwzUpK3t3m+
- F2+hyJUEKnNHlJcEuXYE2ye0bi4fQaLT6bCFKWpTcXbubKXGFj95tjjYqhy0GMAY2pGa5x1jQW
- lISgmuf+969/3A7NVTa5tAAAA
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, 
- Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, 
- =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-X-Mailer: b4 0.13.0
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="qvD3WpJf0cT24KfH"
+Content-Disposition: inline
+In-Reply-To: <20240605085433.26513-1-zajec5@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240605_095046_627103_967304B8 
-X-CRM114-Status: GOOD (  10.62  )
+X-CRM114-CacheID: sfid-20240605_100147_326836_70D91A41 
+X-CRM114-Status: UNSURE (   9.38  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,166 +79,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use dev_err_probe() in the component_add() error path to prevent
-printing an error when the probe is deferred. This was observed on
-mt8195 with the disp-rdma driver:
 
-  mediatek-disp-rdma 1c002000.rdma: Failed to add component: -517
+--qvD3WpJf0cT24KfH
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-But the same pattern is used across many other drivers, so update them
-all.
+On Wed, Jun 05, 2024 at 10:54:32AM +0200, Rafa=C5=82 Mi=C5=82ecki wrote:
+> From: Rafa=C5=82 Mi=C5=82ecki <rafal@milecki.pl>
+>=20
+> Add compatible string for serial on MT7988 SoC.
+>=20
+> Signed-off-by: Rafa=C5=82 Mi=C5=82ecki <rafal@milecki.pl>
 
-Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
----
- drivers/gpu/drm/mediatek/mtk_disp_aal.c         | 2 +-
- drivers/gpu/drm/mediatek/mtk_disp_ccorr.c       | 2 +-
- drivers/gpu/drm/mediatek/mtk_disp_color.c       | 2 +-
- drivers/gpu/drm/mediatek/mtk_disp_gamma.c       | 2 +-
- drivers/gpu/drm/mediatek/mtk_disp_merge.c       | 2 +-
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c         | 2 +-
- drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c | 2 +-
- drivers/gpu/drm/mediatek/mtk_disp_rdma.c        | 2 +-
- drivers/gpu/drm/mediatek/mtk_ethdr.c            | 2 +-
- drivers/gpu/drm/mediatek/mtk_mdp_rdma.c         | 2 +-
- 10 files changed, 10 insertions(+), 10 deletions(-)
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_aal.c b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
-index 3ce8f32b06d5..892dc40458fb 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_aal.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
-@@ -197,7 +197,7 @@ static int mtk_disp_aal_probe(struct platform_device *pdev)
- 
- 	ret = component_add(dev, &mtk_disp_aal_component_ops);
- 	if (ret)
--		dev_err(dev, "Failed to add component: %d\n", ret);
-+		dev_err_probe(dev, ret, "Failed to add component\n");
- 
- 	return ret;
- }
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c b/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
-index df35e90dd25f..fc273ebdbcd2 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
-@@ -182,7 +182,7 @@ static int mtk_disp_ccorr_probe(struct platform_device *pdev)
- 
- 	ret = component_add(dev, &mtk_disp_ccorr_component_ops);
- 	if (ret)
--		dev_err(dev, "Failed to add component: %d\n", ret);
-+		dev_err_probe(dev, ret, "Failed to add component\n");
- 
- 	return ret;
- }
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_color.c b/drivers/gpu/drm/mediatek/mtk_disp_color.c
-index 7f0085be5671..c2c374e9a8e3 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_color.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_color.c
-@@ -126,7 +126,7 @@ static int mtk_disp_color_probe(struct platform_device *pdev)
- 
- 	ret = component_add(dev, &mtk_disp_color_component_ops);
- 	if (ret)
--		dev_err(dev, "Failed to add component: %d\n", ret);
-+		dev_err_probe(dev, ret, "Failed to add component\n");
- 
- 	return ret;
- }
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-index ca8d1f3aca03..ec926b32c34d 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-@@ -287,7 +287,7 @@ static int mtk_disp_gamma_probe(struct platform_device *pdev)
- 
- 	ret = component_add(dev, &mtk_disp_gamma_component_ops);
- 	if (ret)
--		dev_err(dev, "Failed to add component: %d\n", ret);
-+		dev_err_probe(dev, ret, "Failed to add component\n");
- 
- 	return ret;
- }
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_merge.c b/drivers/gpu/drm/mediatek/mtk_disp_merge.c
-index 77c057e0e671..2f6a605542d5 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_merge.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_merge.c
-@@ -354,7 +354,7 @@ static int mtk_disp_merge_probe(struct platform_device *pdev)
- 
- 	ret = component_add(dev, &mtk_disp_merge_component_ops);
- 	if (ret != 0)
--		dev_err(dev, "Failed to add component: %d\n", ret);
-+		dev_err_probe(dev, ret, "Failed to add component\n");
- 
- 	return ret;
- }
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-index b552a02d7eae..ffdc9ca5b6f5 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-@@ -555,7 +555,7 @@ static int mtk_disp_ovl_probe(struct platform_device *pdev)
- 	ret = component_add(dev, &mtk_disp_ovl_component_ops);
- 	if (ret) {
- 		pm_runtime_disable(dev);
--		dev_err(dev, "Failed to add component: %d\n", ret);
-+		dev_err_probe(dev, ret, "Failed to add component\n");
- 	}
- 
- 	return ret;
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
-index 02dd7dcdfedb..c9d6f2b39e92 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
-@@ -612,7 +612,7 @@ static int mtk_disp_ovl_adaptor_probe(struct platform_device *pdev)
- 	ret = component_add(dev, &mtk_disp_ovl_adaptor_comp_ops);
- 	if (ret != 0) {
- 		pm_runtime_disable(dev);
--		dev_err(dev, "Failed to add component: %d\n", ret);
-+		dev_err_probe(dev, ret, "Failed to add component\n");
- 	}
- 
- 	return ret;
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-index 7b1a6e631200..ac83e89e39d2 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-@@ -373,7 +373,7 @@ static int mtk_disp_rdma_probe(struct platform_device *pdev)
- 	ret = component_add(dev, &mtk_disp_rdma_component_ops);
- 	if (ret) {
- 		pm_runtime_disable(dev);
--		dev_err(dev, "Failed to add component: %d\n", ret);
-+		dev_err_probe(dev, ret, "Failed to add component\n");
- 	}
- 
- 	return ret;
-diff --git a/drivers/gpu/drm/mediatek/mtk_ethdr.c b/drivers/gpu/drm/mediatek/mtk_ethdr.c
-index 156c6ff547e8..25b305bff97e 100644
---- a/drivers/gpu/drm/mediatek/mtk_ethdr.c
-+++ b/drivers/gpu/drm/mediatek/mtk_ethdr.c
-@@ -341,7 +341,7 @@ static int mtk_ethdr_probe(struct platform_device *pdev)
- 
- 	ret = component_add(dev, &mtk_ethdr_component_ops);
- 	if (ret)
--		dev_notice(dev, "Failed to add component: %d\n", ret);
-+		dev_err_probe(dev, ret, "Failed to add component\n");
- 
- 	return ret;
- }
-diff --git a/drivers/gpu/drm/mediatek/mtk_mdp_rdma.c b/drivers/gpu/drm/mediatek/mtk_mdp_rdma.c
-index 925cbb7471ec..3a0944bee134 100644
---- a/drivers/gpu/drm/mediatek/mtk_mdp_rdma.c
-+++ b/drivers/gpu/drm/mediatek/mtk_mdp_rdma.c
-@@ -324,7 +324,7 @@ static int mtk_mdp_rdma_probe(struct platform_device *pdev)
- 	ret = component_add(dev, &mtk_mdp_rdma_component_ops);
- 	if (ret != 0) {
- 		pm_runtime_disable(dev);
--		dev_err(dev, "Failed to add component: %d\n", ret);
-+		dev_err_probe(dev, ret, "Failed to add component\n");
- 	}
- 	return ret;
- }
 
----
-base-commit: d97496ca23a2d4ee80b7302849404859d9058bcd
-change-id: 20240605-mtk-disp-rdma-dev-err-probe-ef9c10a1a91e
 
-Best regards,
--- 
-Nícolas F. R. A. Prado <nfraprado@collabora.com>
+--qvD3WpJf0cT24KfH
+Content-Type: application/pgp-signature; name="signature.asc"
 
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZmCZ9AAKCRB4tDGHoIJi
+0q0iAPoDuLBzRzyjKeEDkDAevQJGAoIppk4kVDr53+/aFXCfDwD/alSAM+OD8lbR
+hxxmPOADF69E/+HRKcGGDPwKRJyDWQk=
+=taoy
+-----END PGP SIGNATURE-----
+
+--qvD3WpJf0cT24KfH--
 
