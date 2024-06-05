@@ -4,81 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96DD1C25B76
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jun 2024 08:15:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67D8EC25B76
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jun 2024 08:26:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LBJGp2n7Qi8iczry8F3rJYPAUsV9sny6tREW8YboOY4=; b=yV3GGtC1Qypty/WQZlxHB4HXsy
-	Dsp0pXGZbx3qUuH5QmMODuQFl0QX9hj5nKAviBar34+QteIaoSTxX3Vn9oZ2DZM3NFLAX+y0v3Go/
-	KmI2cnfSww6rIDXgZ6WCYHpY5Cxr+8om2l3VC5+T6bqyAwkItsZPVB1Lhf+rm5Wcamh14zHOHA4rE
-	lj5nJhP61X2FQBM7HWLHC3XWMAcSkbNaMZuBf3FcdxMVY0bae2uiyFz/U8Gcyvb7lzBpTKQ0Mgy52
-	sZ0IxTc+aWUcPpqbXiD0kZRd6ZTf0jB3VxZ4zymUM8f3khGX3edHwz7cxX0s2xE+pvxnVx7maj4cB
-	f6Zjxk9Q==;
+	bh=KTYgiHqEKqI6DY4xUoSYEerbolGYT7sqcHeeQXdfKvE=; b=yeMIh+YnGx2Z78bF0RXiN2uBla
+	CrsGfx1zSdIP3m8Aghzi5oHi/0Xi5c1N35Mkk7Rdd+QS6VTtG1medMJq+XQDVmqveE8Q5Dv5Vv4JR
+	qKOccdzA/C71wHP5AX5tYMlvKd/b33XptoDvZIqzhFJPzLsuXVnp6lKGND6nmzg6m0MI1gLesAOPr
+	6Sof5q/K9Dto/G/xHP/amxVZ7cfSzCkpJBKjm8bPGHHAeRqNu9gXvdDqeZhCHCviNLcvVIKFRirvC
+	CtZW86hV55aU8j5eg5/Csvb53cCUNj93XnIQ3eiz8TPhvZfQP6vlHwR0Pt5M9NZGLyv7L4zOlmglZ
+	WrkDb4zw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sEloE-000000058PN-41rv;
-	Wed, 05 Jun 2024 08:15:50 +0000
-Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
+	id 1sEly6-00000005CIr-3kpV;
+	Wed, 05 Jun 2024 08:26:02 +0000
+Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sEloC-000000058KH-0rBj
+	id 1sEly2-00000005CFc-3Nkh
 	for linux-mediatek@lists.infradead.org;
-	Wed, 05 Jun 2024 08:15:49 +0000
-Received: by mail-lf1-x12a.google.com with SMTP id 2adb3069b0e04-52b894021cbso6241263e87.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 05 Jun 2024 01:15:40 -0700 (PDT)
+	Wed, 05 Jun 2024 08:26:00 +0000
+Received: by mail-lf1-x12f.google.com with SMTP id 2adb3069b0e04-52b8f5d811aso4631122e87.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 05 Jun 2024 01:25:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1717575339; x=1718180139; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1717575956; x=1718180756; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=LBJGp2n7Qi8iczry8F3rJYPAUsV9sny6tREW8YboOY4=;
-        b=keJxt1/F7RupcnoXOC2z8FgBsYpfBJsE6llPDvqecpxVHZDYK7WsyEhjgAlJdFRR5j
-         38lkUlJHqHx5Vr6mMOAxCuIXon6DYfUaWfr9Q1qPH06gKBm1Noq5mX5I30GtwTsHPouH
-         EeGoNuKWhoZYjMzOYtt1NSbTzYT/PisQeqziA=
+        bh=KTYgiHqEKqI6DY4xUoSYEerbolGYT7sqcHeeQXdfKvE=;
+        b=WTlXcqvvNR/hx3iYvx8QlXLo5ktAbCuxG7mUBpJvJraVzi4r1c5hXz6o1HgbPSVElz
+         /HsgUXAi3hPOBoEyxFsmhx8u1bVgHELipHjajb3NHHWLtk5o2wWRI1euWh0mElTzQafh
+         /ypmz50/9a81mUvjQavnFuHVnnM3omdP2hJpk=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1717575339; x=1718180139;
+        d=1e100.net; s=20230601; t=1717575956; x=1718180756;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=LBJGp2n7Qi8iczry8F3rJYPAUsV9sny6tREW8YboOY4=;
-        b=Ez2mx+2NXdt1yyGe/4IIOVsOvk+JAwEP8VBKamkE/fxoQYEblNrBBKM+UR2EqLO83l
-         u+2Co5K2ZV0cXhj06l7JW9YOaQNf2uLvnT992oDXl95hfsNyVhTB0KqhPyElR5HCrCc6
-         qgkK6DL2rmOSCo50Qqt8tYtVsuPnfm6augyQjCBMPSXYUCOKf2g0Ra1oKi1tQ0EqboTS
-         oiGC8D16PaTJe0MQjQdb9N7EhNcX0JC/J6EJKQZVdBgtQSyvzqoVtEVvsJILNP5HHugT
-         14WFCptGOhqA7Oyt4cAhcEFe6LA3Ky7VXFotoP7ZjijlzdYtIDNvuEgQCttINhQLXwxI
-         vYyA==
-X-Forwarded-Encrypted: i=1; AJvYcCXqDxrcrH0/nbLkNCWAEsdeAF1/s9gx+hGcZt3Fc+FzjkvptWU93kMWrWXg0qutsCKzgQx1wZtpQKX6hgGvVtwsu2cwjt622k2LmBHRkm2rWrJy
-X-Gm-Message-State: AOJu0YxXu6hh1tu+PNRSWcamW6OqoHeEU+UAeXBITizPkr2fefp/Nw9X
-	S/XxbYJ92nvOgTfR69NDkkARt4TJc5Awifnx6wcxk2hZKKMJMwohg66uPAv022U0NLK+CFIm1n8
-	oTDcUQNAbHyppzE/lVFQo+UJB8vprkrFgzcBV
-X-Google-Smtp-Source: AGHT+IFv2EhtdnevSPCvIeqSgMPmgn2c2ifR+LCf/RGmcOYSAbDEQu2piNDxPs8NQh7dFB09wa+cSR9ks7fS+1w/wzo=
-X-Received: by 2002:ac2:4c92:0:b0:52b:84bd:344f with SMTP id
- 2adb3069b0e04-52bab4fa611mr941691e87.53.1717575331623; Wed, 05 Jun 2024
- 01:15:31 -0700 (PDT)
+        bh=KTYgiHqEKqI6DY4xUoSYEerbolGYT7sqcHeeQXdfKvE=;
+        b=KQyNSWnPlBqrjHjsjsxqY3UfNjktHOMTq489ai42VCnVIfbJeRXV40yfhlNQQenUPL
+         r2UaEZKoc7iFudVVMVLgCXOZuDA/i3tLBDE6SMfZ46/l5hY3+ol1mgNg9BcJ0/4mMPU+
+         91+ZDdkqQcq3GiD1LRzsqHRtO7UJDWi2j8m08FhrJUowmwrQtQr47krtbu5r+tPwgHuj
+         +BEdEnzW8uO0FT9YxdUhIrYliDtaPN+hE36OVPuYjCIZP6InyMPAFAnzy0LN5bgI95SU
+         pQoZ+lxT3WFug9VcOgthlONfFENfiIFxAxLJCJGY7HraU54cELMqTElug++nUvZdQ/9V
+         0Ldw==
+X-Forwarded-Encrypted: i=1; AJvYcCW/NYV+vTTB6xVGoveipTyi0c1bFXdEVWKLpVXUWf5Fi84qmoJOWzkde+tnsIsSD1nIkWIrwfdRtjbvaVYUdYd10gJ9B3dSNp6Wv0PQnEBwHCi2
+X-Gm-Message-State: AOJu0YxjQkhPT3K5ynT91ZEZOwYCE2nE+/+Z0Toxvw3Ed6fXbxE9636/
+	ZCUciv43vevJ1qdPLIw7WItrhUAx8nfRkMose+b9tR/jB+onuZRtAnZYdOP0h7YQ5Rg7wq3PzUa
+	18vVKQ6uuJa7ykupSzmU7honi2Fwsqz0068bP
+X-Google-Smtp-Source: AGHT+IEz6cLO0SYpIuAYgl0GIp5y8JoS82uXIYv/gjnD7flwuduPkyTGJYNwDh582C9DE0cOUwen7uBXY5qAmo/W3wY=
+X-Received: by 2002:a05:6512:3082:b0:52b:423b:ade2 with SMTP id
+ 2adb3069b0e04-52bab4b85b8mr1349765e87.3.1717575955882; Wed, 05 Jun 2024
+ 01:25:55 -0700 (PDT)
 MIME-Version: 1.0
-References: <20240531-da7219-v1-1-ac3343f3ae6a@chromium.org>
-In-Reply-To: <20240531-da7219-v1-1-ac3343f3ae6a@chromium.org>
+References: <20240530083513.4135052-1-wenst@chromium.org> <20240530083513.4135052-6-wenst@chromium.org>
+ <4f20f130-c9ab-43ea-a758-e29d7be10db0@collabora.com>
+In-Reply-To: <4f20f130-c9ab-43ea-a758-e29d7be10db0@collabora.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Wed, 5 Jun 2024 16:15:20 +0800
-Message-ID: <CAGXv+5G3RjUOyGR2kqd1V-keQZLvBPaMmiW8BZgLGw6jcZe0nA@mail.gmail.com>
-Subject: Re: [PATCH RFT] ASoC: mediatek: mt8183-da7219-max98357: Fix kcontrol
- name collision
-To: Hsin-Te Yuan <yuanhsinte@chromium.org>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Alper Nebi Yasak <alpernebiyasak@gmail.com>, linux-sound@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
+Date: Wed, 5 Jun 2024 16:25:44 +0800
+Message-ID: <CAGXv+5GuGz-KahcbKtuyUA1-59sMWSL0QucOdp8FPoQWrc9YUQ@mail.gmail.com>
+Subject: Re: [PATCH 5/6] arm64: dts: mediatek: mt8173: Fix MFG_ASYNC power
+ domain clock
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Frank Binns <frank.binns@imgtec.com>, Matt Coster <matt.coster@imgtec.com>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, David Airlie <airlied@gmail.com>, 
+	Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org, 
+	linux-clk@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240605_011548_259696_BA42EEAF 
-X-CRM114-Status: GOOD (  23.33  )
+X-CRM114-CacheID: sfid-20240605_012558_924956_F92E479B 
+X-CRM114-Status: GOOD (  23.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,99 +96,120 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, May 31, 2024 at 4:38=E2=80=AFPM Hsin-Te Yuan <yuanhsinte@chromium.o=
-rg> wrote:
+On Thu, May 30, 2024 at 6:03=E2=80=AFPM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
 >
-> Since "Headphone Switch" kcontrol name has already been used by da7219,
-> rename the control name from "Headphone" to "Headphones" to prevent the
-> colision. Also, this change makes kcontrol name align with the one in
+> Il 30/05/24 10:35, Chen-Yu Tsai ha scritto:
+> > The MFG_ASYNC domain, which is likely associated to the whole MFG block=
+,
+> > currently specifies clk26m as its domain clock. This is bogus, since th=
+e
+> > clock is an external crystal with no controls. Also, the MFG block has
+> > a independent CLK_TOP_AXI_MFG_IN_SEL clock, which according to the bloc=
+k
+> > diagram, gates access to the hardware registers. Having this one as the
+> > domain clock makes much more sense. This also fixes access to the MFGTO=
+P
+> > registers.
+> >
+> > Change the MFG_ASYNC domain clock to CLK_TOP_AXI_MFG_IN_SEL.
+> >
+> > Fixes: 8b6562644df9 ("arm64: dts: mediatek: Add mt8173 power domain con=
+troller")
+> > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+>
+> Just one question... what happens if there's no GPU support at all and th=
+is
+> power domain gets powered off?
+>
+> I expect the answer to be "nothing", so I'm preventively giving you my
 
-  ^ collision
+Well it's powered off by default. Just double checked, and without the fina=
+l
+patch:
 
-> mt8186-mt6366-da7219-max98357.c.
->
-> Fixes: 9c7388baa2053 ("ASoC: mediatek: mt8183-da7219-max98357: Map missin=
-g jack kcontrols")
-> Change-Id: I9ae69a4673cd04786b247cc514fdd20f878ef009
-> Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
+# cat /sys/kernel/debug/pm_genpd/pm_genpd_summary
+domain                          status          children
+            performance
+    /device                                             runtime status
+---------------------------------------------------------------------------=
+-------------------
+mfg                             off-0
+            0
+mfg_2d                          off-0
+            0
+                                                mfg
+mfg_async                       off-0
+            0
+                                                mfg_2d
 
-Otherwise,
+And with the last patch but with the powervr removed:
 
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+# cat /sys/kernel/debug/pm_genpd/pm_genpd_summary
+domain                          status          children
+            performance
+    /device                                             runtime status
+---------------------------------------------------------------------------=
+-------------------
+mfg_apm                         off-0
+            0
+mfg                             off-0
+            0
+                                                mfg_apm
+    /devices/platform/soc/13fff000.clock-controller     suspended
+            0
+mfg_2d                          off-0
+            0
+                                                mfg
+mfg_async                       off-0
+            0
+                                                mfg_2d
 
-> ---
-> This patch fix the kcontrol name collision in mt8183-da7219-max98357.c.
-> Originally, the "Headphone" kcontrol is added to meet PulseAudio's and
-> PipeWire's needs, but that patch was untested. Since I don't have
-> either setup, I wonder if someone can test this patch.
-> ---
->  sound/soc/mediatek/mt8183/mt8183-da7219-max98357.c | 10 +++++-----
->  1 file changed, 5 insertions(+), 5 deletions(-)
+Things seem to work OK. I can SSH in, and the framebuffer console on the sc=
+reen
+works fine.
+
+
+Note that accessing the regmap through debugfs doesn't do much good. regmap
+doesn't handle runtime PM. And the syscon regmap isn't even tied to a
+struct device. Dumping the regmap through debugfs while the power domain
+is off gives all zeroes, likely due to bus isolation.
+
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
+ora.com>
+
+Thanks!
+
+ChenYu
+
+> ....but if I'm wrong and the answer isn't exactly "nothing", then I still=
+ agree
+> with this commit, but only after removing the Fixes tag.
 >
-> diff --git a/sound/soc/mediatek/mt8183/mt8183-da7219-max98357.c b/sound/s=
-oc/mediatek/mt8183/mt8183-da7219-max98357.c
-> index acaf81fd6c9b..f848e14b091a 100644
-> --- a/sound/soc/mediatek/mt8183/mt8183-da7219-max98357.c
-> +++ b/sound/soc/mediatek/mt8183/mt8183-da7219-max98357.c
-> @@ -31,7 +31,7 @@ struct mt8183_da7219_max98357_priv {
+> Cheers,
+> Angelo
 >
->  static struct snd_soc_jack_pin mt8183_da7219_max98357_jack_pins[] =3D {
->         {
-> -               .pin    =3D "Headphone",
-> +               .pin    =3D "Headphones",
->                 .mask   =3D SND_JACK_HEADPHONE,
->         },
->         {
-> @@ -626,7 +626,7 @@ static struct snd_soc_codec_conf mt6358_codec_conf[] =
-=3D {
->  };
->
->  static const struct snd_kcontrol_new mt8183_da7219_max98357_snd_controls=
-[] =3D {
-> -       SOC_DAPM_PIN_SWITCH("Headphone"),
-> +       SOC_DAPM_PIN_SWITCH("Headphones"),
->         SOC_DAPM_PIN_SWITCH("Headset Mic"),
->         SOC_DAPM_PIN_SWITCH("Speakers"),
->         SOC_DAPM_PIN_SWITCH("Line Out"),
-> @@ -634,7 +634,7 @@ static const struct snd_kcontrol_new mt8183_da7219_ma=
-x98357_snd_controls[] =3D {
->
->  static const
->  struct snd_soc_dapm_widget mt8183_da7219_max98357_dapm_widgets[] =3D {
-> -       SND_SOC_DAPM_HP("Headphone", NULL),
-> +       SND_SOC_DAPM_HP("Headphones", NULL),
->         SND_SOC_DAPM_MIC("Headset Mic", NULL),
->         SND_SOC_DAPM_SPK("Speakers", NULL),
->         SND_SOC_DAPM_SPK("Line Out", NULL),
-> @@ -680,7 +680,7 @@ static struct snd_soc_codec_conf mt8183_da7219_rt1015=
-_codec_conf[] =3D {
->  };
->
->  static const struct snd_kcontrol_new mt8183_da7219_rt1015_snd_controls[]=
- =3D {
-> -       SOC_DAPM_PIN_SWITCH("Headphone"),
-> +       SOC_DAPM_PIN_SWITCH("Headphones"),
->         SOC_DAPM_PIN_SWITCH("Headset Mic"),
->         SOC_DAPM_PIN_SWITCH("Left Spk"),
->         SOC_DAPM_PIN_SWITCH("Right Spk"),
-> @@ -689,7 +689,7 @@ static const struct snd_kcontrol_new mt8183_da7219_rt=
-1015_snd_controls[] =3D {
->
->  static const
->  struct snd_soc_dapm_widget mt8183_da7219_rt1015_dapm_widgets[] =3D {
-> -       SND_SOC_DAPM_HP("Headphone", NULL),
-> +       SND_SOC_DAPM_HP("Headphones", NULL),
->         SND_SOC_DAPM_MIC("Headset Mic", NULL),
->         SND_SOC_DAPM_SPK("Left Spk", NULL),
->         SND_SOC_DAPM_SPK("Right Spk", NULL),
->
-> ---
-> base-commit: 4a4be1ad3a6efea16c56615f31117590fd881358
-> change-id: 20240531-da7219-2281085838a5
->
-> Best regards,
-> --
-> Hsin-Te Yuan <yuanhsinte@chromium.org>
+> > ---
+> >   arch/arm64/boot/dts/mediatek/mt8173.dtsi | 2 +-
+> >   1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot=
+/dts/mediatek/mt8173.dtsi
+> > index 3458be7f7f61..136b28f80cc2 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> > @@ -497,7 +497,7 @@ power-domain@MT8173_POWER_DOMAIN_USB {
+> >                               };
+> >                               mfg_async: power-domain@MT8173_POWER_DOMA=
+IN_MFG_ASYNC {
+> >                                       reg =3D <MT8173_POWER_DOMAIN_MFG_=
+ASYNC>;
+> > -                                     clocks =3D <&clk26m>;
+> > +                                     clocks =3D <&topckgen CLK_TOP_AXI=
+_MFG_IN_SEL>;
+> >                                       clock-names =3D "mfg";
+> >                                       #address-cells =3D <1>;
+> >                                       #size-cells =3D <0>;
 >
 >
 
