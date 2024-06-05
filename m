@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B652C25B76
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jun 2024 10:57:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E0DCC25B76
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jun 2024 10:57:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fb26AgPNd4BL3KfUcuJ1Y43xEbUdYBkw2/OmhV6m3VQ=; b=Mi0Au5UA/TSAYKrXdejdy5l9QJ
-	UOL/oNyMXvNa+1UUu3KGOQqG2PubQIOlulmwZxaOPCCM4OkMpjOxkeJtYdyVrZmLD8LFHctyGaw1T
-	zyKzghXrY8GByqQT22L6e0Q6hIHYA/ypcM90yJ7TNHZLHwvZEl78XYUX+YhJAlkjqsvuWSBHPyrN1
-	LW6F2LRa0O+nd2hvkQiGSgr1KB+zwzOQqVK+SI2BzVYI7fwjV9NgfUTvOIzF1cTiMoE3UrtpisiU3
-	dK4bMKSriH5v02cJYsSuBvCEqhdasR9HEMFds29/BmzhVNe39BKfm8YOPee2hQsCzKifOdF7fJZvU
-	d+0gs0mA==;
+	bh=T7mIr+t/6d/0mox7UxZ9GqbaTZMq4mpqJIVQyRs3Ilc=; b=B0Cmmsiz7P+HK4rA+GXa9QYK+M
+	E6EvIFNJDBZwbpNI+raBIUmEKK+Wuzh5l378xnfoCmJllXqeNoCTyhkfjwY6/XnU3KjLOrN2HtT/I
+	ih4vxrBNanMg5i6Vr2Fgy2U4CvXglD5ps3zs6S43YJn3z3cjjfI7onM/RcY1iKHi98k3I8XvtuqNM
+	LjNqfQUbPuRo3fZPhxzpRq0d5aRhHXSAXq8JOQAyN1bUS2QD2K0r3nhAKLLGTK+3UJY07dlXwE+Ch
+	vn6r5K4U+84A5GB222LEqAOLNzJBaVWkM1k4fCuzA5EOtCT3g8bleXlpI/FtRos2x3f8AF8tE3/rO
+	jf0ZQniw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sEoKD-00000005dET-49Bj;
-	Wed, 05 Jun 2024 10:57:01 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1sEoKM-00000005dLQ-45Vn;
+	Wed, 05 Jun 2024 10:57:10 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sEoK9-00000005dB5-087F;
-	Wed, 05 Jun 2024 10:56:59 +0000
-X-UUID: 5086a3c4232a11ef82c84f6416ccf2f3-20240605
+	id 1sEoKI-00000005dFw-2tta;
+	Wed, 05 Jun 2024 10:57:08 +0000
+X-UUID: 553d72c6232a11efbf6c7d4f5c147266-20240605
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=fb26AgPNd4BL3KfUcuJ1Y43xEbUdYBkw2/OmhV6m3VQ=;
-	b=keGR34IeooZpwGkD+Caw2N8hmoyeLAjwUjh7S7IOh9FI7YBLwIkufLBdiR9gaDrOW7J2KyDS40XvJa/bYIVRdPyu0WqXNDhKQt0rib54/oEHfQnJpuVZc4UPQl9Br3RHSDxpTvw8GC0Y5p2ZLpCCKTyMMRVW0WgxfScJNmGsqkw=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=T7mIr+t/6d/0mox7UxZ9GqbaTZMq4mpqJIVQyRs3Ilc=;
+	b=FhQ+a9XRK5dDSxdrY1EOQ6qAQ0p9GCNI7ssQhQg1iM6na+oOzaMTabJQx+p9mNHMElskFfbDEKO/+y+OwSJQ+lmbFgoHF3caXl4v1dSnrB+OvskaTI9XRQEjhyCplvU1AOCsJk35Q679/Kg3J76T+bA3AI0NuNZd/217h/XI1XM=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.39,REQID:d0baca5f-f479-4bd7-8f44-f7e2803cc4e0,IP:0,U
-	RL:25,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:393d96e,CLOUDID:e1c8a593-e2c0-40b0-a8fe-7c7e47299109,B
+X-CID-O-INFO: VERSION:1.1.39,REQID:a197245c-6a19-4680-b834-3e729f9e9672,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:393d96e,CLOUDID:69e13e88-8d4f-477b-89d2-1e3bdbef96d1,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_ULN,TF_CID_SPAM_SNR
-X-UUID: 5086a3c4232a11ef82c84f6416ccf2f3-20240605
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 553d72c6232a11efbf6c7d4f5c147266-20240605
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
 	(envelope-from <zhi.mao@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2052698154; Wed, 05 Jun 2024 03:56:51 -0700
+	with ESMTP id 2001172523; Wed, 05 Jun 2024 03:56:59 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 5 Jun 2024 18:56:31 +0800
+ 15.2.1118.26; Wed, 5 Jun 2024 18:56:56 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 5 Jun 2024 18:56:30 +0800
+ 15.2.1118.26 via Frontend Transport; Wed, 5 Jun 2024 18:56:55 +0800
 From: Zhi Mao <zhi.mao@mediatek.com>
 To: <mchehab@kernel.org>, <robh+dt@kernel.org>,
 	<krzysztof.kozlowski+dt@linaro.org>, <sakari.ailus@linux.intel.com>
@@ -68,34 +68,21 @@ CC: <laurent.pinchart@ideasonboard.com>, <shengnan.wang@mediatek.com>,
 	<andy.shevchenko@gmail.com>, <bingbu.cao@intel.com>,
 	<dan.scally@ideasonboard.com>, <linux-media@vger.kernel.org>,
 	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH v5 1/3] media: dt-bindings: i2c: add GalaxyCore GC05A2 image sensor
-Date: Wed, 5 Jun 2024 18:55:38 +0800
-Message-ID: <20240605105540.17937-2-zhi.mao@mediatek.com>
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+Subject: [PATCH v5 3/3] MAINTAINERS: Add entry for GC05A2 image sensor
+Date: Wed, 5 Jun 2024 18:55:40 +0800
+Message-ID: <20240605105540.17937-4-zhi.mao@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20240605105540.17937-1-zhi.mao@mediatek.com>
 References: <20240605105540.17937-1-zhi.mao@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--1.694300-8.000000
-X-TMASE-MatchedRID: +k55+NgUc6auhCBFl/b63mNW0DAjL5p++OI6XsK3BWHfUZT83lbkEEd0
-	Rzx07LDV96TYN1fO8g6y9AsAxk+TJQAwGIAo3Shb71Wx2uUbPLdbAoaK+wS4jee+ZCR6qEmPGAg
-	eo2y7APIP/Y2o61xSj9FJTP+oKoX59GlJz+74uGzr/EBmiNuXt/ZCh7IN8a4A5vn0qvY6UyajxY
-	yRBa/qJV/Hpl/zcOjl5MIx11wv+CPKayT/BQTiGpmUbUziM6CAz/vewFNwGkYrRBmEoUL45+82j
-	05Yv7FAgtx5V6mhri+3PqqUxLGdNGUPC3MufmSvhKsq3EUGXry7PFN22SEG4a6c9X2DKLPd82Gj
-	2QC3yG0smXVK/H8eHzG7sr7xobSAsPEFD+rZA81DDKa3G4nrLQ==
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--1.694300-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 99AE71AD0B0DA4A7801071FA0DD349A8416C49F4C085F314C2FB0CA500FD13592000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240605_035657_220003_BB77CB1F 
-X-CRM114-Status: GOOD (  12.87  )
+X-CRM114-CacheID: sfid-20240605_035706_826034_4578BD4D 
+X-CRM114-Status: UNSURE (   9.33  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,136 +97,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add YAML device tree binding for GC05A2 CMOS image sensor,
-and the relevant MAINTAINERS entries.
+Add maintain entry for GC05A2 image sensor
 
-
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Zhi Mao <zhi.mao@mediatek.com>
 ---
- .../bindings/media/i2c/galaxycore,gc05a2.yaml | 112 ++++++++++++++++++
- 1 file changed, 112 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/media/i2c/galaxycore,gc05a2.yaml
+ MAINTAINERS | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/media/i2c/galaxycore,gc05a2.yaml b/Documentation/devicetree/bindings/media/i2c/galaxycore,gc05a2.yaml
-new file mode 100644
-index 000000000000..0e7a7b5ac89f
---- /dev/null
-+++ b/Documentation/devicetree/bindings/media/i2c/galaxycore,gc05a2.yaml
-@@ -0,0 +1,112 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+# Copyright (c) 2023 MediaTek Inc.
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/media/i2c/galaxycore,gc05a2.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
+diff --git a/MAINTAINERS b/MAINTAINERS
+index bb9f8077b37d..e2ef7a57c0e3 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -9099,6 +9099,13 @@ S:	Maintained
+ F:	Documentation/devicetree/bindings/media/i2c/galaxycore,gc0308.yaml
+ F:	drivers/media/i2c/gc0308.c
+ 
++GALAXYCORE GC05a2 CAMERA SENSOR DRIVER
++M:	Zhi Mao <zhi.mao@mediatek.com>
++L:	linux-media@vger.kernel.org
++S:	Maintained
++F:	Documentation/devicetree/bindings/media/i2c/galaxycore,gc05a2.yaml
++F:	drivers/media/i2c/gc05a2.c
 +
-+title: GalaxyCore gc05a2 1/5" 5M Pixel MIPI CSI-2 sensor
-+
-+maintainers:
-+  - Zhi Mao <zhi.mao@mediatek.com>
-+
-+description:
-+  The gc05a2 is a raw image sensor with an MIPI CSI-2 image data
-+  interface and CCI (I2C compatible) control bus. The output format
-+  is raw Bayer.
-+
-+properties:
-+  compatible:
-+    const: galaxycore,gc05a2
-+
-+  reg:
-+    maxItems: 1
-+
-+  clocks:
-+    maxItems: 1
-+
-+  dovdd-supply: true
-+
-+  avdd-supply: true
-+
-+  dvdd-supply: true
-+
-+  reset-gpios:
-+    description: Reference to the GPIO connected to the RESETB pin.
-+    maxItems: 1
-+
-+  port:
-+    $ref: /schemas/graph.yaml#/$defs/port-base
-+    additionalProperties: false
-+    description:
-+      Output port node, single endpoint describing the CSI-2 transmitter.
-+
-+    properties:
-+      endpoint:
-+        $ref: /schemas/media/video-interfaces.yaml#
-+        unevaluatedProperties: false
-+
-+        properties:
-+          data-lanes:
-+            oneOf:
-+              - items:
-+                  - const: 1
-+                  - const: 2
-+                  - const: 3
-+                  - const: 4
-+              - items:
-+                  - const: 1
-+                  - const: 2
-+
-+          link-frequencies: true
-+
-+        required:
-+          - data-lanes
-+          - link-frequencies
-+
-+    required:
-+      - endpoint
-+
-+required:
-+  - compatible
-+  - reg
-+  - clocks
-+  - dovdd-supply
-+  - avdd-supply
-+  - dvdd-supply
-+  - reset-gpios
-+  - port
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/gpio/gpio.h>
-+
-+    i2c {
-+        #address-cells = <1>;
-+        #size-cells = <0>;
-+
-+        sensor@37 {
-+            compatible =  "galaxycore,gc05a2";
-+            reg = <0x37>;
-+
-+            clocks = <&gc05a2_clk>;
-+
-+            reset-gpios = <&pio 21 GPIO_ACTIVE_LOW>;
-+
-+            avdd-supply = <&gc05a2_avdd>;
-+            dovdd-supply = <&gc05a2_dovdd>;
-+            dvdd-supply = <&gc05a2_dvdd>;
-+
-+            port {
-+                sensor_out: endpoint {
-+                    data-lanes = <1 2>;
-+                    link-frequencies = /bits/ 64 <448000000 224000000>;
-+                    remote-endpoint = <&seninf_csi_port_1_in>;
-+                };
-+            };
-+        };
-+    };
-+
-+...
+ GALAXYCORE GC2145 SENSOR DRIVER
+ M:	Alain Volmat <alain.volmat@foss.st.com>
+ L:	linux-media@vger.kernel.org
 -- 
 2.25.1
 
