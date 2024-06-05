@@ -4,84 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76CA3C25B76
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jun 2024 18:07:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2BD7C27C52
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jun 2024 19:35:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oQPi1Wj70Oupw3S1Uh8a0kVTS9NCfvHSV4FIWEU0DCI=; b=bsShUWSv9ZE97UQpclOru+9ktc
-	LnrXLL/DB1A8oitJCE0ICqIp68SWoKxg+/8FPQ/Yowple/+4EJvHt969r17WkJ2h6Phcz4/c78BB/
-	p9j3uRz1C70gJu6RberEJObWtnN5ekmeUKzl32ggMW5WPhwkMci8bsR3nWAOpbWm1mPEPr+s7KL+p
-	/d0FcEQJ+7f8vxjTyiepbpx85IOMqq4WAEv3E8rfPN4KCfjqk8biQizUYNvY6ziW1hIV38wkqvbPj
-	43JdAXVt7ArAf3erLpgIWmhgb7wvLmue0oS7JXLvbEYlRMowxr/yXAIZbE4WIs4o+Ur63PSps1Hyu
-	5STnTb7A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=TNsZkpgGA2JJEfc6O6J1wPfkJqlf7SIqcO8G925mUrg=; b=gmS18fzfSP9a8TAtb8nlWMKSBQ
+	tQkFzPsrHg5lPTKW0q2RsJYY/hAvT0g7gDe2btB0zHTMULm51AiVN4pLBrOlmv4ukBVJWuOFcMyCk
+	laKl+6oijP/kXLdmjk41tJw5wKWJgoBc9BLu0Vkyf5+OpNwCmw1rx5poey8W9ghNTzuh9RExw7CFl
+	vF/eR5WP/iRg2ukwPzt50CvXn+VV3f5mSLqGp98/gE1uhSfSUmytntZ4o7DodkqOGOdBStsSblGKJ
+	D8iAd53xT0aRVTO3Oob1t9PEx0XoKKC5f4lTVbC7v5Qut8q2wOL0SjzHUtJesvQuOSx5eE5Z3RU82
+	X9bDYjrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sEv2M-000000076Jb-2Okl;
-	Wed, 05 Jun 2024 18:07:02 +0000
-Received: from mail-lj1-x236.google.com ([2a00:1450:4864:20::236])
+	id 1sEwQQ-00000007KvB-32CE;
+	Wed, 05 Jun 2024 19:35:58 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sEv2J-000000076H8-1uLV
-	for linux-mediatek@lists.infradead.org;
-	Wed, 05 Jun 2024 18:07:01 +0000
-Received: by mail-lj1-x236.google.com with SMTP id 38308e7fff4ca-2eaae2a6dc1so2202181fa.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 05 Jun 2024 11:06:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1717610814; x=1718215614; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=oQPi1Wj70Oupw3S1Uh8a0kVTS9NCfvHSV4FIWEU0DCI=;
-        b=Bjfn1wcjSVqgVIQxhnGNs8VPJlkM3ZOHtADHRYWqUyeKvVz4UvpDfBnTZXw9aXimg8
-         Ppz36qDhELd4+X9sMjYSqN+HRrXIZhzEzTuBIuPWlKT30qbGLUp7UMCe7Q/iOjHpxS0u
-         2ICvBZwlARQKC6UJ0yl/72nuJ1soIuBTryjOhPs/hCQLq+RwGzmAshWU34alPmS9FdUi
-         jy+vCXnwqI4Mav8W1deIU0U37J1OCCP1x+CpLyR93Vay7ZQLS63893lnp4paZuZMxyfU
-         pK4w51BA7oyacvNnGrOYLyF+yVptTb0wwaMozYfqCkj1Jpf2o5b18pMSVajtblc22X6k
-         6DQw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1717610814; x=1718215614;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=oQPi1Wj70Oupw3S1Uh8a0kVTS9NCfvHSV4FIWEU0DCI=;
-        b=TAq4tsCpyxbfVsCQ1g9LGDtFGNBtP4er0zTen3X5kyQjlgopeYTcB/Y99/jJWDhVFL
-         TdCnVOZrtafoGRLcc05wfuMeoy7vYTVeq1T4HP/gbrnDHhuM1KyBxzY8UtZOy8rPjrmV
-         1/OT+WH2QuWY1c3BPdEGeEoXPL2vofwB4MDiwgTcMeWG3QrK4Rl8o1tzwmYhMgBtPP12
-         WOjcDixyZPbnJL4E293+iCxu4Y6l0o7BOyCgcrZonzuci7UHrOzQ1u3veutyh4wkrKkn
-         KaCrvRXcM4YsF7oDSoNInZfdBpY5fYgUKkn7rpY1LcG4G483oBgw6usvqNDHhXTd9ohA
-         VPCg==
-X-Forwarded-Encrypted: i=1; AJvYcCWeaBQyiSk7bFVNEYAh4ozB07ROxejL9X/10SMt7X2Ji/jwY82/nPX4ZA953JigssLdPGgDdZCAepu5Nv0LfPH4WsVW/tNn8N8STGcnqacB+ptS
-X-Gm-Message-State: AOJu0YwOB6V1Su+IP8AF5kM8kC/pROujsVJrZe0aWEBgwL7Saii0B0FQ
-	aiBIh8Lyqd4BU+14kxgxX6dDBeC556jTToB5ZiQ9NL3D//2VjkSPzLk7tO8MzYUhVoDSlpfzn6i
-	muxkvncJIVa2cJ8Itz03l3D96l+I=
-X-Google-Smtp-Source: AGHT+IFWST8ze+N1VpaqPM/3uL4sma2IzWxZluNfA2aUcgK/aGhvbZkVOWJpbYGfeGvQzByQV8DY+V2TKm/l0+o9t+M=
-X-Received: by 2002:a2e:a78f:0:b0:2de:8697:e08b with SMTP id
- 38308e7fff4ca-2eac79c888dmr29788511fa.26.1717610814048; Wed, 05 Jun 2024
- 11:06:54 -0700 (PDT)
+	id 1sEwQN-00000007Ktg-2mT7;
+	Wed, 05 Jun 2024 19:35:57 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1717616150;
+	bh=/OOgdOrNQp1uReXHDPfdGQSEZv1TGjR7OU/fKbfzaD0=;
+	h=From:Date:Subject:To:Cc:From;
+	b=pRspisL6ZFGD72AhvmkFlChFLPnCLMKYivkNMgGTSVW1fVa3s8f3pr/H0EBiPmlub
+	 9rzJRO7+DeoHX+Gv9XIG9AFNPhkBYpHelKf6cd9RFCkB9kletam3kHhL/QhEbQPH8n
+	 K69UUfhBH9DQYk5VJgaVrByIB2ustDGamGqmP56XOO9OmzwfW+NQmN/lqHpV+699mq
+	 kPN4OyUf4udZJU1i4kkGtJ63y8oRb5sF460GAlbK5/DgmBg9zDeB2hJVI6+q6CT2vH
+	 dVH5gmktk63yj4clNSHXM5uIpQaaqZY4w7GqVoXzLvgSd5aFKg3mTnzxcr/Rc8Ex6e
+	 TKKaOUL9mSQog==
+Received: from [192.168.1.251] (zone.collabora.co.uk [167.235.23.81])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id D518237821B7;
+	Wed,  5 Jun 2024 19:35:48 +0000 (UTC)
+From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+Date: Wed, 05 Jun 2024 15:35:44 -0400
+Subject: [PATCH] remoteproc: mediatek: Don't print error when optional scp
+ handle is missing
 MIME-Version: 1.0
-References: <20240529062946.5655-4-chris.lu@mediatek.com> <202405300602.AUh9Yu96-lkp@intel.com>
-In-Reply-To: <202405300602.AUh9Yu96-lkp@intel.com>
-From: Luiz Augusto von Dentz <luiz.dentz@gmail.com>
-Date: Wed, 5 Jun 2024 14:06:41 -0400
-Message-ID: <CABBYNZK53Fx8rmanh6fsLsNjppEtThtis8naKa11nLk3gCHbLQ@mail.gmail.com>
-Subject: Re: [PATCH v2 3/3] Bluetooth: btusb: mediatek: add MediaTek ISO data
- transmission function
-To: kernel test robot <lkp@intel.com>
-Cc: Chris Lu <chris.lu@mediatek.com>, Marcel Holtmann <marcel@holtmann.org>, 
-	Johan Hedberg <johan.hedberg@gmail.com>, llvm@lists.linux.dev, 
-	oe-kbuild-all@lists.linux.dev, Sean Wang <sean.wang@mediatek.com>, 
-	Deren Wu <deren.Wu@mediatek.com>, Aaron Hou <aaron.hou@mediatek.com>, 
-	Steve Lee <steve.lee@mediatek.com>, linux-bluetooth <linux-bluetooth@vger.kernel.org>, 
-	linux-kernel <linux-kernel@vger.kernel.org>, 
-	linux-mediatek <linux-mediatek@lists.infradead.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Message-Id: <20240605-mt8195-dma-scp-node-err-v1-1-f2cb42f24d6e@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAA++YGYC/x3MMQqAMAxA0atIZgO12KJeRRyKiZrBKqmIULy7x
+ fEN/2dIrMIJhiqD8i1JjljQ1BXMW4gro1AxWGNb443D/eqa3iHtAdN8YjyIkVXRh444WE/t4qD
+ Up/Iiz38ep/f9ADxlMk9pAAAA
+To: Bjorn Andersson <andersson@kernel.org>, 
+ Mathieu Poirier <mathieu.poirier@linaro.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: kernel@collabora.com, linux-remoteproc@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, 
+ =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+X-Mailer: b4 0.13.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240605_110659_514605_B2747783 
-X-CRM114-Status: GOOD (  14.44  )
+X-CRM114-CacheID: sfid-20240605_123555_905962_62B42FF9 
+X-CRM114-Status: GOOD (  12.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,56 +80,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Chris,
+The scp_get() helper has two users: the mtk-vcodec and the mtk-mdp3
+drivers. mdp3 considers the mediatek,scp phandle optional, and when it's
+missing mdp3 will directly look for the scp node based on compatible.
 
-On Wed, May 29, 2024 at 7:10=E2=80=AFPM kernel test robot <lkp@intel.com> w=
-rote:
->
-> Hi Chris,
->
-> kernel test robot noticed the following build errors:
->
-> [auto build test ERROR on bluetooth-next/master]
-> [also build test ERROR on next-20240529]
-> [cannot apply to bluetooth/master linus/master v6.10-rc1]
-> [If your patch is applied to the wrong git tree, kindly drop us a note.
-> And when submitting patch, we suggest to use '--base' as documented in
-> https://git-scm.com/docs/git-format-patch#_base_tree_information]
->
-> url:    https://github.com/intel-lab-lkp/linux/commits/Chris-Lu/Bluetooth=
--net-add-hci_iso_hdr-function-for-iso-data/20240529-143216
-> base:   https://git.kernel.org/pub/scm/linux/kernel/git/bluetooth/bluetoo=
-th-next.git master
-> patch link:    https://lore.kernel.org/r/20240529062946.5655-4-chris.lu%4=
-0mediatek.com
-> patch subject: [PATCH v2 3/3] Bluetooth: btusb: mediatek: add MediaTek IS=
-O data transmission function
-> config: i386-randconfig-014-20240530 (https://download.01.org/0day-ci/arc=
-hive/20240530/202405300602.AUh9Yu96-lkp@intel.com/config)
-> compiler: clang version 18.1.5 (https://github.com/llvm/llvm-project 617a=
-15a9eac96088ae5e9134248d8236e34b91b1)
-> reproduce (this is a W=3D1 build): (https://download.01.org/0day-ci/archi=
-ve/20240530/202405300602.AUh9Yu96-lkp@intel.com/reproduce)
->
-> If you fix the issue in a separate patch/commit (i.e. not just a new vers=
-ion of
-> the same patch/commit), kindly add following tags
-> | Reported-by: kernel test robot <lkp@intel.com>
-> | Closes: https://lore.kernel.org/oe-kbuild-all/202405300602.AUh9Yu96-lkp=
-@intel.com/
->
-> All errors (new ones prefixed by >>):
->
-> >> ld.lld: error: undefined symbol: btmtk_isopkt_pad
->    >>> referenced by btusb.c:2267 (drivers/bluetooth/btusb.c:2267)
->    >>>               drivers/bluetooth/btusb.o:(btusb_send_frame) in arch=
-ive vmlinux.a
+For that reason printing an error in the helper when the handle is
+missing is wrong, as it's not always an actual error. Besides, the other
+user, vcodec, already prints an error message on its own when the helper
+fails so this message doesn't add that much information.
 
-Please have the above fixed and while at move the vendor specific
-handling of the new endpoint to btmtk.c since that is not standard it
-shall not be part of btusb.c
+Remove the error message from the helper. This gets rid of the deceptive
+error on MT8195-Tomato:
 
+  mtk-mdp3 14001000.dma-controller: can't get SCP node
 
---=20
-Luiz Augusto von Dentz
+Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+---
+ drivers/remoteproc/mtk_scp.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+index b885a9a041e4..f813117b6312 100644
+--- a/drivers/remoteproc/mtk_scp.c
++++ b/drivers/remoteproc/mtk_scp.c
+@@ -37,10 +37,8 @@ struct mtk_scp *scp_get(struct platform_device *pdev)
+ 	struct platform_device *scp_pdev;
+ 
+ 	scp_node = of_parse_phandle(dev->of_node, "mediatek,scp", 0);
+-	if (!scp_node) {
+-		dev_err(dev, "can't get SCP node\n");
++	if (!scp_node)
+ 		return NULL;
+-	}
+ 
+ 	scp_pdev = of_find_device_by_node(scp_node);
+ 	of_node_put(scp_node);
+
+---
+base-commit: d97496ca23a2d4ee80b7302849404859d9058bcd
+change-id: 20240605-mt8195-dma-scp-node-err-6a8dea26d4f5
+
+Best regards,
+-- 
+Nícolas F. R. A. Prado <nfraprado@collabora.com>
+
 
