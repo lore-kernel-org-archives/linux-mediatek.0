@@ -4,68 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2BD7C27C52
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jun 2024 19:35:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFC1FC25B76
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jun 2024 21:05:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=TNsZkpgGA2JJEfc6O6J1wPfkJqlf7SIqcO8G925mUrg=; b=gmS18fzfSP9a8TAtb8nlWMKSBQ
-	tQkFzPsrHg5lPTKW0q2RsJYY/hAvT0g7gDe2btB0zHTMULm51AiVN4pLBrOlmv4ukBVJWuOFcMyCk
-	laKl+6oijP/kXLdmjk41tJw5wKWJgoBc9BLu0Vkyf5+OpNwCmw1rx5poey8W9ghNTzuh9RExw7CFl
-	vF/eR5WP/iRg2ukwPzt50CvXn+VV3f5mSLqGp98/gE1uhSfSUmytntZ4o7DodkqOGOdBStsSblGKJ
-	D8iAd53xT0aRVTO3Oob1t9PEx0XoKKC5f4lTVbC7v5Qut8q2wOL0SjzHUtJesvQuOSx5eE5Z3RU82
-	X9bDYjrA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=CKACt8Bou24AIgOecG3i1nmMxp/08sXpJ+XLFo6l+UE=; b=vRygkRHhoXgPE72uzbgEy/UbjT
+	6382sisp4WC1kXoJwa8TrucNlzCycBlKYV/E6lElPp5AiSNP0YPduPNeiztu8iHHkX4QMHbC/DqRL
+	WBaiqISJEHuy9v/OBYKl37kTWfAIJZNBHE6Fj2LA9kmn//MAuYw8vhPZE0bYa4YHYh4yuSahOJ41m
+	sMlogUbtZKS7M2pFn5jPSbDqaCl/IUaZ3vVFICrh2e4HsHFhsorrWNXK7Y5aQ9WioqgOcjGLyVoyY
+	zyNW5yRiArqnJfABzIkXZGyR+Jrat3R5w3SZsQtJP/460AIpTtXcQqrZeDSpUbLczxSpMJFhf4s0L
+	opENRjRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sEwQQ-00000007KvB-32CE;
-	Wed, 05 Jun 2024 19:35:58 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1sExpF-00000007Yha-1hJT;
+	Wed, 05 Jun 2024 21:05:41 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sEwQN-00000007Ktg-2mT7;
-	Wed, 05 Jun 2024 19:35:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1717616150;
-	bh=/OOgdOrNQp1uReXHDPfdGQSEZv1TGjR7OU/fKbfzaD0=;
-	h=From:Date:Subject:To:Cc:From;
-	b=pRspisL6ZFGD72AhvmkFlChFLPnCLMKYivkNMgGTSVW1fVa3s8f3pr/H0EBiPmlub
-	 9rzJRO7+DeoHX+Gv9XIG9AFNPhkBYpHelKf6cd9RFCkB9kletam3kHhL/QhEbQPH8n
-	 K69UUfhBH9DQYk5VJgaVrByIB2ustDGamGqmP56XOO9OmzwfW+NQmN/lqHpV+699mq
-	 kPN4OyUf4udZJU1i4kkGtJ63y8oRb5sF460GAlbK5/DgmBg9zDeB2hJVI6+q6CT2vH
-	 dVH5gmktk63yj4clNSHXM5uIpQaaqZY4w7GqVoXzLvgSd5aFKg3mTnzxcr/Rc8Ex6e
-	 TKKaOUL9mSQog==
-Received: from [192.168.1.251] (zone.collabora.co.uk [167.235.23.81])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id D518237821B7;
-	Wed,  5 Jun 2024 19:35:48 +0000 (UTC)
-From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Date: Wed, 05 Jun 2024 15:35:44 -0400
-Subject: [PATCH] remoteproc: mediatek: Don't print error when optional scp
- handle is missing
+	id 1sExpA-00000007YfD-0QRR;
+	Wed, 05 Jun 2024 21:05:38 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 2C22161A71;
+	Wed,  5 Jun 2024 21:05:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CEBFFC32782;
+	Wed,  5 Jun 2024 21:05:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1717621535;
+	bh=HX2FOEXY8UflXmGqEAtTtfooLXB6TYloRO4ddELc9EI=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=IotqZlJhbhOy1/VcjrFfU9iEv72PAg2bPladFlnP4BoBgvaeqES5SgqaWt9HzHWOt
+	 YUhdH8CWnoLBKRmYu3e7DuPDqeV2dDE90kKVFFx1mOr+170mvT9FqXR8xEVCApXYZD
+	 ZEalX9aDgV+/oqNlQbCO0YxeLbDF/hTQp/elWc5Wiyx35JgTuVjedn6Z2pq+V7h2oq
+	 KqiKecpswSFCXCeJ5Kc6Mmrp6vNoBzlR2IE3VPQGAM8EQjML3Fe4OffEaRzemgqD+L
+	 ttguZbJ0oGhJWZuwiGEDCdbWjzfMQwVM8FPoEFIYddoMH1WQK6YVyNVuwGJqKyknw7
+	 5NMtjUWVCWxrQ==
+From: Mark Brown <broonie@kernel.org>
+To: Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, 
+ Takashi Iwai <tiwai@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Alper Nebi Yasak <alpernebiyasak@gmail.com>, 
+ Hsin-Te Yuan <yuanhsinte@chromium.org>
+Cc: linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+In-Reply-To: <20240531-da7219-v1-1-ac3343f3ae6a@chromium.org>
+References: <20240531-da7219-v1-1-ac3343f3ae6a@chromium.org>
+Subject: Re: [PATCH RFT] ASoC: mediatek: mt8183-da7219-max98357: Fix
+ kcontrol name collision
+Message-Id: <171762153256.557520.12011428649748199502.b4-ty@kernel.org>
+Date: Wed, 05 Jun 2024 22:05:32 +0100
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20240605-mt8195-dma-scp-node-err-v1-1-f2cb42f24d6e@collabora.com>
-X-B4-Tracking: v=1; b=H4sIAA++YGYC/x3MMQqAMAxA0atIZgO12KJeRRyKiZrBKqmIULy7x
- fEN/2dIrMIJhiqD8i1JjljQ1BXMW4gro1AxWGNb443D/eqa3iHtAdN8YjyIkVXRh444WE/t4qD
- Up/Iiz38ep/f9ADxlMk9pAAAA
-To: Bjorn Andersson <andersson@kernel.org>, 
- Mathieu Poirier <mathieu.poirier@linaro.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: kernel@collabora.com, linux-remoteproc@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, 
- =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-X-Mailer: b4 0.13.0
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.14-dev-d4707
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240605_123555_905962_62B42FF9 
-X-CRM114-Status: GOOD (  12.08  )
+X-CRM114-CacheID: sfid-20240605_140536_383934_F951C0C5 
+X-CRM114-Status: GOOD (  12.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,48 +76,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The scp_get() helper has two users: the mtk-vcodec and the mtk-mdp3
-drivers. mdp3 considers the mediatek,scp phandle optional, and when it's
-missing mdp3 will directly look for the scp node based on compatible.
+On Fri, 31 May 2024 08:37:54 +0000, Hsin-Te Yuan wrote:
+> Since "Headphone Switch" kcontrol name has already been used by da7219,
+> rename the control name from "Headphone" to "Headphones" to prevent the
+> colision. Also, this change makes kcontrol name align with the one in
+> mt8186-mt6366-da7219-max98357.c.
+> 
+> 
 
-For that reason printing an error in the helper when the handle is
-missing is wrong, as it's not always an actual error. Besides, the other
-user, vcodec, already prints an error message on its own when the helper
-fails so this message doesn't add that much information.
+Applied to
 
-Remove the error message from the helper. This gets rid of the deceptive
-error on MT8195-Tomato:
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
-  mtk-mdp3 14001000.dma-controller: can't get SCP node
+Thanks!
 
-Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
----
- drivers/remoteproc/mtk_scp.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+[1/1] ASoC: mediatek: mt8183-da7219-max98357: Fix kcontrol name collision
+      commit: 97d8613679eb53bd0c07d0fbd3d8471e46ba46c1
 
-diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-index b885a9a041e4..f813117b6312 100644
---- a/drivers/remoteproc/mtk_scp.c
-+++ b/drivers/remoteproc/mtk_scp.c
-@@ -37,10 +37,8 @@ struct mtk_scp *scp_get(struct platform_device *pdev)
- 	struct platform_device *scp_pdev;
- 
- 	scp_node = of_parse_phandle(dev->of_node, "mediatek,scp", 0);
--	if (!scp_node) {
--		dev_err(dev, "can't get SCP node\n");
-+	if (!scp_node)
- 		return NULL;
--	}
- 
- 	scp_pdev = of_find_device_by_node(scp_node);
- 	of_node_put(scp_node);
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
 
----
-base-commit: d97496ca23a2d4ee80b7302849404859d9058bcd
-change-id: 20240605-mt8195-dma-scp-node-err-6a8dea26d4f5
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
-Best regards,
--- 
-Nícolas F. R. A. Prado <nfraprado@collabora.com>
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 
