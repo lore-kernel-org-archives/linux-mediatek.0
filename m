@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98A87C27C50
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jun 2024 00:24:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5EA6C27C55
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jun 2024 00:24:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/ZEZey5x5luD0xWg/8KZQe7BPyHWAO218kvdlS1elh8=; b=SMmBkOLOQfMks5Tc+kf01v5o9v
-	Mz9/cEVpNnunUJJiHSi8nfuBDFYazOd5F/9pEH67M1WFBgAyFv81fw5ffcybChHnWsh+gSgAtryp3
-	nu1NPNoltqY0WCiCK/oJQrbKFWcR3CvWErhS9am3RX6ohGmZn0g6FO6vtkFu9ymCgsHGcSbf8ekY+
-	Uhegb6DflnqYWGmZ5DYslX+V8bAkjssjMneKzUUrPtYnxXvPXYHmZRfVVKJ1ubr5Xf7jlPaOO6Ozf
-	8KIxHu8VtABxdqPXxovoz5cnPsTN000OYBIF60v6YMMk0ran8DEHhgEbsJX/dNyAhwPNn1BVEAAtm
-	4n5c3/sA==;
+	bh=XsRu3jEWU9sK1vmuNiyJjPrhOLNs5NH11TNjKSLZ2vI=; b=dUSmaXLHuVCr6PAqW5YP5X1/o6
+	OYh2bd7VAI74A0TN7Xq1fqD7QbI43PXj0CfKP325tN61sR3eLbds3ONoZx8M0Y3GSIQZqrA+Y8C5x
+	PoWeZm5b7eLEvGPVea2DBXQ9fntOidJbI5Bxhj9MyGLi9x7JGz7ca3W8C++3/Fu4Nfqgff+HdXpFy
+	976jxGuEaeBAVp8FYYb49mzr1dTOqlX/UBc4KLUeBTJbIELXB+W34eV259xAbwtIU+0NBCkdq1vHq
+	U/mWylpcVrg89zfa7iPzZ9+tAfBMWj1pTJzROeJSW3gjVRiPItNsMEqTQCTKEXhyEpvQM7KwM4S4Q
+	WnfuWzSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sEeRw-00000004GFT-0b8e;
-	Wed, 05 Jun 2024 00:24:20 +0000
-Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
+	id 1sEeRx-00000004GGS-0dpl;
+	Wed, 05 Jun 2024 00:24:21 +0000
+Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sEeRp-00000004GBL-1o6v
+	id 1sEeRs-00000004GCJ-1KBO
 	for linux-mediatek@lists.infradead.org;
-	Wed, 05 Jun 2024 00:24:15 +0000
-Received: by mail-pl1-x633.google.com with SMTP id d9443c01a7336-1f4a52b9413so48666925ad.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 04 Jun 2024 17:24:12 -0700 (PDT)
+	Wed, 05 Jun 2024 00:24:18 +0000
+Received: by mail-pl1-x629.google.com with SMTP id d9443c01a7336-1f4a5344ec7so2936335ad.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 04 Jun 2024 17:24:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1717547052; x=1718151852; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1717547055; x=1718151855; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=/ZEZey5x5luD0xWg/8KZQe7BPyHWAO218kvdlS1elh8=;
-        b=PyAf6lbcPWuyOQpNvA3U2nArH+++p7kAuLypyZlKCkiLvy0YRBbjq1EzFkiX7VGeTk
-         XuSWmKz3xwFR3zp2Ov/7d3+6fOUO5K1sCqR4VBToNE4BRuc1+YOXNONPvLv9xHZvr1at
-         alFFFqYmla/MTNXnhBz3rT1FwTNFzs0ZbgzQI=
+        bh=XsRu3jEWU9sK1vmuNiyJjPrhOLNs5NH11TNjKSLZ2vI=;
+        b=CXjmL8XFg4cam241BdQl5FgLBYmLdhu7TE5ZLZT+dDPNpgTldx2QYP32L98crpcz3T
+         yshhSIrLK8HDxkWYeFB4XBncnGgO4mFmCZ0mVXcCo0Hn2VqwhKZxEoit/6vR78eorFt2
+         jK6Yr1lz/iwqMrWgiog0T4bGAC7sWkBn7dtSE=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1717547052; x=1718151852;
+        d=1e100.net; s=20230601; t=1717547055; x=1718151855;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=/ZEZey5x5luD0xWg/8KZQe7BPyHWAO218kvdlS1elh8=;
-        b=UNMjIUO3RTxODkbi50mrPC02RtmruaV63chOczz2s/TBZLBONWRfag4lc3nambKwPg
-         i0kGKyHMKsX1XHQQp+gS97x/SNVPXbgL7Yw+btCP3eSX260OaTcEbc99MdMJv7g6wAr4
-         V+Pda/5+Z3TkLieRwVfFNN9DGBCXiCUiY9ZQKZtNchUTfoCtbhQZQhhnchLlhHcvpKro
-         tOsHPSi8xGPfwQktiN4Na9gnDeFj4gIDijG6rYUcM4xXNqxaSAawHNF7ORM32Est2HY+
-         V9saiaIevPWE/UM16yqsZXw+sitzjuHLzx6TsX1WO9p5hRVaE0TGvnRgjwm6rEQClUc8
-         aUoA==
-X-Forwarded-Encrypted: i=1; AJvYcCUvH8hWDRl/6VLmaccLCodToPd6DLHckup1U7beh+AkZsIw/PaN/z/5GO5zJCo82QyoS2kB7oGtyWShyt83vwlv+nkWJuwZhYZtdsjRJOCcsgas
-X-Gm-Message-State: AOJu0Yx8PjeMMAyG3krZfZp/KKcFJUkMR4V8mEu3pZouk6u2COg1mJg3
-	nkHJ7li+km6oRidGphGA9Ia0Ht4jNKhUcWQS9s88/FDaoJcILm+R9G4ZhcI9fQ==
-X-Google-Smtp-Source: AGHT+IEfsqqgmgYWM0BC/bbTU6AS9BdhPGPSHuCKwVJwHIAn7JXDeAeaFpMbK/YJKuIU6Ne3nlYqaw==
-X-Received: by 2002:a17:902:a515:b0:1f6:4cff:6ffd with SMTP id d9443c01a7336-1f6a5a83e7emr9332115ad.57.1717547052198;
-        Tue, 04 Jun 2024 17:24:12 -0700 (PDT)
+        bh=XsRu3jEWU9sK1vmuNiyJjPrhOLNs5NH11TNjKSLZ2vI=;
+        b=Zbgulez/0RntUN4BIb93zp+4gLV4i7j07pkeX00ZDpYTCwZ1XiI4+uEUtNDtIgRmmF
+         X80+EZRfFtebLUyxm49G3vFt12e2Wz+ljPz9dePFMw5jqUVOOPUekxoLKItqipovTKy3
+         lGYXbCUoNsxahCMF5r4mvDBjA/XtHxA19cdbPudR8K4kZp7xARMkKE5Oyxtae2B/SWnj
+         pC2R6CamQYmPDqWKdi7uEKoi3FkGNDFC1cKz6T93hlI+LjMotH+ChM3sWdl5/uihU2aB
+         POrphCSKZVLVhbaf9fQ3klWOWOWbuKu+QHt6HjgnkfroyIb0KJsECd/ojpGKk0xWV5fm
+         dCdQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVL4yJubBPkG7alkHX1AsAaN1UCoOMEgH1itjqiSl6Fcmxtv3pV+LupnXZfz40ia1TwBU80M/xH4w7CX7bqiYIEFuG4jDGYPRnpMRT/su1CfxAV
+X-Gm-Message-State: AOJu0Yz9OVZ8dpArJS6ey3QR94ewGiiqr+6qs0T68sIffd4HMFGUbTI9
+	qz02DyQtz9qysLtLl9RRy+CSCRcDdRms6fl/ibTCzDtyDGyKOUEdKTXwJ5Ulww==
+X-Google-Smtp-Source: AGHT+IEuttE4Gs9JJB+IuOsNqsKWp7EyRVQUbEuRZzgK3b55KLaK0AVYQ/oG9ywbjEwvWBwh98g+5w==
+X-Received: by 2002:a17:903:2303:b0:1f6:a572:86ab with SMTP id d9443c01a7336-1f6a572a1d3mr22763635ad.15.1717547055143;
+        Tue, 04 Jun 2024 17:24:15 -0700 (PDT)
 Received: from dianders.sjc.corp.google.com ([2620:15c:9d:2:3609:ff79:4625:8a71])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-1f6323dd862sm89032025ad.147.2024.06.04.17.24.10
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-1f6323dd862sm89032025ad.147.2024.06.04.17.24.12
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 04 Jun 2024 17:24:11 -0700 (PDT)
+        Tue, 04 Jun 2024 17:24:14 -0700 (PDT)
 From: Douglas Anderson <dianders@chromium.org>
 To: dri-devel@lists.freedesktop.org,
 	Maxime Ripard <mripard@kernel.org>
@@ -82,17 +82,17 @@ Cc: Linus Walleij <linus.walleij@linaro.org>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH v3 01/24] drm/panel: boe-himax8279d: Stop tracking prepared/enabled
-Date: Tue,  4 Jun 2024 17:22:47 -0700
-Message-ID: <20240604172305.v3.1.Ia3f254ab6e04e4f7afba6c066454498c8fb01324@changeid>
+Subject: [PATCH v3 02/24] drm/panel: boe-himax8279d: Don't call unprepare+disable at shutdown/remove
+Date: Tue,  4 Jun 2024 17:22:48 -0700
+Message-ID: <20240604172305.v3.2.I19086c524d38f28f746befe85cb39ffda9d2f666@changeid>
 X-Mailer: git-send-email 2.45.1.288.g0e0cd299f1-goog
 In-Reply-To: <20240605002401.2848541-1-dianders@chromium.org>
 References: <20240605002401.2848541-1-dianders@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240604_172413_481757_88C1F84E 
-X-CRM114-Status: GOOD (  16.48  )
+X-CRM114-CacheID: sfid-20240604_172416_387208_3329144D 
+X-CRM114-Status: GOOD (  15.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,16 +107,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-As talked about in commit d2aacaf07395 ("drm/panel: Check for already
-prepared/enabled in drm_panel"), we want to remove needless code from
-panel drivers that was storing and double-checking the
-prepared/enabled state. Even if someone was relying on the
-double-check before, that double-check is now in the core and not
-needed in individual drivers.
+It's the responsibility of a correctly written DRM modeset driver to
+call drm_atomic_helper_shutdown() at shutdown time and that should be
+disabling / unpreparing the panel if needed. Panel drivers shouldn't
+be calling these functions themselves.
 
-NOTE: as part of this, transition the panel's direct calls to its
-disable/unprepare functions in shutdown/remove to call through DRM
-panel.
+A recent effort was made to fix as many DRM modeset drivers as
+possible [1] [2] [3] and most drivers are fixed now.
+
+Unfortunately, grepping mainline for this panel's compatible string
+shows no hits, so we can't be 100% sure if the DRM modeset driver used
+with this panel has been fixed. If it is found that the DRM modeset
+driver hasn't been fixed then this patch could be temporarily reverted
+until it is.
+
+[1] https://lore.kernel.org/r/20230901234015.566018-1-dianders@chromium.org
+[2] https://lore.kernel.org/r/20230901234202.566951-1-dianders@chromium.org
+[3] https://lore.kernel.org/r/20230921192749.1542462-1-dianders@chromium.org
 
 Cc: Jerry Han <jerry.han.hq@gmail.com>
 Cc: Jitao Shi <jitao.shi@mediatek.com>
@@ -132,123 +139,51 @@ Changes in v2:
 - Only handle 1 panel per patch.
 - Split removal of prepared/enabled from handling of remove/shutdown.
 
- drivers/gpu/drm/panel/panel-boe-himax8279d.c | 31 +++-----------------
- 1 file changed, 4 insertions(+), 27 deletions(-)
+ drivers/gpu/drm/panel/panel-boe-himax8279d.c | 17 -----------------
+ 1 file changed, 17 deletions(-)
 
 diff --git a/drivers/gpu/drm/panel/panel-boe-himax8279d.c b/drivers/gpu/drm/panel/panel-boe-himax8279d.c
-index e225840b0d67..12e14615298b 100644
+index 12e14615298b..df746baae301 100644
 --- a/drivers/gpu/drm/panel/panel-boe-himax8279d.c
 +++ b/drivers/gpu/drm/panel/panel-boe-himax8279d.c
-@@ -47,9 +47,6 @@ struct panel_info {
- 	struct gpio_desc *enable_gpio;
- 	struct gpio_desc *pp33_gpio;
- 	struct gpio_desc *pp18_gpio;
--
--	bool prepared;
--	bool enabled;
- };
- 
- static inline struct panel_info *to_panel_info(struct drm_panel *panel)
-@@ -86,17 +83,12 @@ static int boe_panel_disable(struct drm_panel *panel)
- 	struct panel_info *pinfo = to_panel_info(panel);
- 	int err;
- 
--	if (!pinfo->enabled)
--		return 0;
--
- 	err = mipi_dsi_dcs_set_display_off(pinfo->link);
- 	if (err < 0) {
- 		dev_err(panel->dev, "failed to set display off: %d\n", err);
- 		return err;
- 	}
- 
--	pinfo->enabled = false;
--
- 	return 0;
- }
- 
-@@ -105,9 +97,6 @@ static int boe_panel_unprepare(struct drm_panel *panel)
- 	struct panel_info *pinfo = to_panel_info(panel);
- 	int err;
- 
--	if (!pinfo->prepared)
--		return 0;
--
- 	err = mipi_dsi_dcs_set_display_off(pinfo->link);
- 	if (err < 0)
- 		dev_err(panel->dev, "failed to set display off: %d\n", err);
-@@ -121,8 +110,6 @@ static int boe_panel_unprepare(struct drm_panel *panel)
- 
- 	disable_gpios(pinfo);
- 
--	pinfo->prepared = false;
--
- 	return 0;
- }
- 
-@@ -131,9 +118,6 @@ static int boe_panel_prepare(struct drm_panel *panel)
- 	struct panel_info *pinfo = to_panel_info(panel);
- 	int err;
- 
--	if (pinfo->prepared)
--		return 0;
--
- 	gpiod_set_value(pinfo->pp18_gpio, 1);
- 	/* T1: 5ms - 6ms */
- 	usleep_range(5000, 6000);
-@@ -180,8 +164,6 @@ static int boe_panel_prepare(struct drm_panel *panel)
- 	/* T7: 20ms - 21ms */
- 	usleep_range(20000, 21000);
- 
--	pinfo->prepared = true;
--
- 	return 0;
- 
- poweroff:
-@@ -194,9 +176,6 @@ static int boe_panel_enable(struct drm_panel *panel)
- 	struct panel_info *pinfo = to_panel_info(panel);
- 	int ret;
- 
--	if (pinfo->enabled)
--		return 0;
--
- 	usleep_range(120000, 121000);
- 
- 	ret = mipi_dsi_dcs_set_display_on(pinfo->link);
-@@ -205,8 +184,6 @@ static int boe_panel_enable(struct drm_panel *panel)
- 		return ret;
- 	}
- 
--	pinfo->enabled = true;
--
- 	return 0;
- }
- 
-@@ -917,11 +894,11 @@ static void panel_remove(struct mipi_dsi_device *dsi)
+@@ -894,14 +894,6 @@ static void panel_remove(struct mipi_dsi_device *dsi)
  	struct panel_info *pinfo = mipi_dsi_get_drvdata(dsi);
  	int err;
  
--	err = boe_panel_disable(&pinfo->base);
-+	err = drm_panel_disable(&pinfo->base);
+-	err = drm_panel_disable(&pinfo->base);
+-	if (err < 0)
+-		dev_err(&dsi->dev, "failed to disable panel: %d\n", err);
+-
+-	err = drm_panel_unprepare(&pinfo->base);
+-	if (err < 0)
+-		dev_err(&dsi->dev, "failed to unprepare panel: %d\n", err);
+-
+ 	err = mipi_dsi_detach(dsi);
  	if (err < 0)
- 		dev_err(&dsi->dev, "failed to disable panel: %d\n", err);
- 
--	err = boe_panel_unprepare(&pinfo->base);
-+	err = drm_panel_unprepare(&pinfo->base);
- 	if (err < 0)
- 		dev_err(&dsi->dev, "failed to unprepare panel: %d\n", err);
- 
-@@ -936,8 +913,8 @@ static void panel_shutdown(struct mipi_dsi_device *dsi)
- {
- 	struct panel_info *pinfo = mipi_dsi_get_drvdata(dsi);
- 
--	boe_panel_disable(&pinfo->base);
--	boe_panel_unprepare(&pinfo->base);
-+	drm_panel_disable(&pinfo->base);
-+	drm_panel_unprepare(&pinfo->base);
+ 		dev_err(&dsi->dev, "failed to detach from DSI host: %d\n", err);
+@@ -909,14 +901,6 @@ static void panel_remove(struct mipi_dsi_device *dsi)
+ 	drm_panel_remove(&pinfo->base);
  }
  
+-static void panel_shutdown(struct mipi_dsi_device *dsi)
+-{
+-	struct panel_info *pinfo = mipi_dsi_get_drvdata(dsi);
+-
+-	drm_panel_disable(&pinfo->base);
+-	drm_panel_unprepare(&pinfo->base);
+-}
+-
  static struct mipi_dsi_driver panel_driver = {
+ 	.driver = {
+ 		.name = "panel-boe-himax8279d",
+@@ -924,7 +908,6 @@ static struct mipi_dsi_driver panel_driver = {
+ 	},
+ 	.probe = panel_probe,
+ 	.remove = panel_remove,
+-	.shutdown = panel_shutdown,
+ };
+ module_mipi_dsi_driver(panel_driver);
+ 
 -- 
 2.45.1.288.g0e0cd299f1-goog
 
