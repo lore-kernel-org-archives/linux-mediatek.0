@@ -4,85 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4076BC25B75
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Jun 2024 03:28:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9FD7C25B75
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Jun 2024 04:16:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Uqp5qceNq5zHDEhmHDdIMgCbwP2xDR/VfW9ZZv9RNJk=; b=Mvbis06g2LILcz4uEGFCkA3dPW
-	a/0uNCYvu8VFfsC7xXCQJTmd4VifcvcAEFPetf7cWuNApolTrWSJ/4oJp2blCzRxlzxqP9k0srkWs
-	jcyfXaISeVOQS8+SZskW8JilNchFsmZukEnL7hXqkVTSoH7JY9SU2fVyNDavne50YT7283yqpR3LM
-	ME9NPePwp6YqKny2dUy87favgXfd+1r4fhqd2l84H3xD2g2MwSrp8r23S+IPZ/WLdPAeaiOHoUzdQ
-	/VxWvSMygrmNdF7YiKpCqRMEAB97+dCg7FytaEQnmFnd1Jxd4JKXHbG5r/T4FMs/YWRf3OLIy42nM
-	a6KiWAuA==;
+	bh=URXRNILWO7LZ/MwdWR1JeNjmEaFUftirMHuX7Pvwbt0=; b=zBcVnIy0lpnBIyotE4T7Xbdi67
+	TSRb2FMDREkfbM6xJcau29U+fRL+K//KO10mRKv1viJeK2/+h5ot7yKz17KK6D2xH9hnns+D9jbsH
+	HGB7eOjD2Rh4hGsFJvCffNLrdc2UVPJy2rJU29VZYAKZqadKD9/qOqXWZhrN4ZhxnMC/TZ6/VqETc
+	xRihid/eg8da/kbMJbdXaY71rMfi4bl1Oow3YYZLDJqkVKDAvWTZf1nFFvlz1CSv9D+PFe7PQ21nQ
+	zA8umbqeweSSWgXUw9OLB0eCE8hydVemWz7eDJk9S9N15TbCMhFcHNFt3D3EGHArKrq35wIZWON5B
+	8Mqv5t/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sF3nw-00000008Fup-39QK;
-	Thu, 06 Jun 2024 03:28:44 +0000
-Received: from mail-lj1-x231.google.com ([2a00:1450:4864:20::231])
+	id 1sF4Xp-00000008JCO-1q1J;
+	Thu, 06 Jun 2024 04:16:09 +0000
+Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sF3ns-00000008Fsz-4AAO
+	id 1sF4Xl-00000008JBf-1sMV
 	for linux-mediatek@lists.infradead.org;
-	Thu, 06 Jun 2024 03:28:42 +0000
-Received: by mail-lj1-x231.google.com with SMTP id 38308e7fff4ca-2ead2c6b553so3711901fa.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 05 Jun 2024 20:28:39 -0700 (PDT)
+	Thu, 06 Jun 2024 04:16:07 +0000
+Received: by mail-lf1-x12c.google.com with SMTP id 2adb3069b0e04-52b9af7a01bso621186e87.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 05 Jun 2024 21:16:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1717644517; x=1718249317; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1717647363; x=1718252163; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=Uqp5qceNq5zHDEhmHDdIMgCbwP2xDR/VfW9ZZv9RNJk=;
-        b=X70pDZMe4DPLj8bkpc6btVwSvSu6JJK8xRjGBAfAJatasMekMvoybGVKsix2iIa1zn
-         qBdQBBezWXR/EGTdR6ivgAoJbPOkIUXjhGs55UVRpJ3P0LdOmwRvKR/S8f9/TAg8Auz4
-         kZUcdKJZaqnO/VRg8y8QnJ39PUlrBL0/05FcA=
+        bh=URXRNILWO7LZ/MwdWR1JeNjmEaFUftirMHuX7Pvwbt0=;
+        b=OYGAlhKYi5tA4AY9WblZ6Tn9oXygX32IO/+u+Y4r4fFl78srsyQviryZQBlzXarIhN
+         YqXstK++iJbPixWD0LEpHAYIJ4urxs21zMZ+vElF5daSVmNzzcrJsTtZslD1v506mZix
+         zNmhABeIRCsFjtNuBM53hbVAdoIsQXNRF/mbU=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1717644517; x=1718249317;
+        d=1e100.net; s=20230601; t=1717647363; x=1718252163;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=Uqp5qceNq5zHDEhmHDdIMgCbwP2xDR/VfW9ZZv9RNJk=;
-        b=PgdzelGIaNo5MzmlPtxXxQO+MFopSQZtDaTSfz0uwwVIcG1hZTVbOTseOlJ8Epvoyo
-         gQNhmU+EpxVSjp5+YVRv+JjGh2Ky2GLHlJFTtY/q3aBAPyHjsqCFXEUrfWke8VdkNRZv
-         Bglo3Cyt19Ia0QxK0wVD40AnmxnT0fc9DCdzRyxyZIbhfxccvNV3Pmq2VqUHfwo8KGow
-         tXZfbQOpQ8558og+/ju4HRpDlmUZmqKpb8KoOkC5M7z4VWrJ3SkYdURC8csLB2szDHtY
-         HQyq+UQEoRoZxji8A8zS4iRsqYLR4tJhpjenmKdLHD9MryrdmL1ryzKGXKh/h9AnVDn0
-         qBAw==
-X-Forwarded-Encrypted: i=1; AJvYcCVFkYKsbkL/7o6TfRpxw+5e0OUjiLPUwQY5WoMxNRhinY3ov4tVoOWhe66L4RmGlbn6ZnFB8uJ658Ptomo6YTK9j8r7/7rvqwrgUsd1342OhEbB
-X-Gm-Message-State: AOJu0Ywg8kQfAXsQTqT8taBk0aZzvOIyYaClcFXYp0lL7f9Qxd1MJMfw
-	+MA2WkmgQ54gWgpN8266rHXLePr43Yfd3NHFX9aE+i7cBpthYuGmEzkn2Y76FtPJpt55aTMbPq4
-	g1OF7wkgjjVlf0wMiTzBROZNZ7LFc+PHpw3ZI
-X-Google-Smtp-Source: AGHT+IGsCEI0/+y91vNyNNYX+q2ZIumGw6d9Pxpjw+1niuix5bZfPr7FyV232O4Sowxvaw+VS8I/365F2zfGr+Nw9m4=
-X-Received: by 2002:ac2:48ad:0:b0:51d:34bb:3c6c with SMTP id
- 2adb3069b0e04-52bab4ea6dbmr2490766e87.31.1717644517343; Wed, 05 Jun 2024
- 20:28:37 -0700 (PDT)
+        bh=URXRNILWO7LZ/MwdWR1JeNjmEaFUftirMHuX7Pvwbt0=;
+        b=Joj+H91fnn4z0LWF3z1nD6qpx9N/GpLXP7e5SIi+yO4YT/922i1IPYkojnt2SD2Gpv
+         U/8yg755TIDWAMSMr6x8r1/vNDJMj5LAHPbaaeZrrsWCOrZEcF3IHNiy9hc9ted26+em
+         for81oAvDFotkMwo4mHCR2xY9qVeKqsjt2aQ8KI/yxo4rDyHNsCMJrqImCfOie0IfiFY
+         /N/1JcCR+FFpdqj1zaH5bF4E0htcELqoKE4xzUrK8fmmvHgeac/A1y5Gbst+3POJpfeH
+         OcMUtYQ9Qeyn3Lne0R4tV/JxVwAo0NweQ/PBeyJ1ae/Te75G7z0xsrZbb9vYD0d2cjob
+         Dv1g==
+X-Gm-Message-State: AOJu0Yyq3hO8K5PV5fixHYyv7fbTF8A+8VXOl2BZGpr4MvfXNqQzYETA
+	NpQ/Y7BXOT/nlbuIdScg/gt8CCt0nVL4P0mjNi3FD818OWcqnI0tf18HDgi3W+BuE9Uy9eHL2sV
+	V4GLdT4CR5DbhmIlsgLVZwZbDh4aM2Fjsxz0F
+X-Google-Smtp-Source: AGHT+IGDVi0x5PPWVVdHgpTQNURWwUeBkukHjuXk6z91V1QZIIbvs1uZFVAc1YhlkbIbH5GhY2rOcvp/C0AgH6thkKk=
+X-Received: by 2002:a05:6512:b88:b0:51b:4204:2f51 with SMTP id
+ 2adb3069b0e04-52bab4b7f8fmr3100481e87.8.1717647363043; Wed, 05 Jun 2024
+ 21:16:03 -0700 (PDT)
 MIME-Version: 1.0
-References: <20240530083513.4135052-1-wenst@chromium.org> <20240530083513.4135052-6-wenst@chromium.org>
- <4f20f130-c9ab-43ea-a758-e29d7be10db0@collabora.com> <CAGXv+5GuGz-KahcbKtuyUA1-59sMWSL0QucOdp8FPoQWrc9YUQ@mail.gmail.com>
- <08256a88-7165-41ca-b484-4acf1c8e316b@collabora.com>
-In-Reply-To: <08256a88-7165-41ca-b484-4acf1c8e316b@collabora.com>
+References: <e5912054-0fc9-47ff-8f38-9b9a3e9d2156@notapiano>
+ <CAGXv+5HJKur9vWq4j_x7-fuL5H0SY_oQNYFWTxFCC1EBxF9yQw@mail.gmail.com> <2491f962-a8e1-44c4-8ff9-f8c3e58a2a39@notapiano>
+In-Reply-To: <2491f962-a8e1-44c4-8ff9-f8c3e58a2a39@notapiano>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Thu, 6 Jun 2024 11:28:26 +0800
-Message-ID: <CAGXv+5EtKwdFRCX6BqmVVA5yXCDpJ8eb80m7yU8Aj7vz9E=36w@mail.gmail.com>
-Subject: Re: [PATCH 5/6] arm64: dts: mediatek: mt8173: Fix MFG_ASYNC power
- domain clock
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Frank Binns <frank.binns@imgtec.com>, Matt Coster <matt.coster@imgtec.com>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, David Airlie <airlied@gmail.com>, 
-	Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org, 
-	linux-clk@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
+Date: Thu, 6 Jun 2024 12:15:51 +0800
+Message-ID: <CAGXv+5HjRmn5o6uogn89OMLONWWaxBA5MJNKCesYXoR7G_FOEA@mail.gmail.com>
+Subject: Re: Probe failures on mt8183-kukui-jacuzzi-juniper-sku16
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
+Cc: linux-mediatek@lists.infradead.org, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, kernel@collabora.com
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240605_202841_113234_61F11FDF 
-X-CRM114-Status: GOOD (  30.89  )
+X-CRM114-CacheID: sfid-20240605_211605_781843_61F5F43B 
+X-CRM114-Status: GOOD (  33.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,156 +90,113 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 5, 2024 at 7:25=E2=80=AFPM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
+On Wed, Jun 5, 2024 at 8:33=E2=80=AFPM N=C3=ADcolas F. R. A. Prado
+<nfraprado@collabora.com> wrote:
 >
-> Il 05/06/24 10:25, Chen-Yu Tsai ha scritto:
-> > On Thu, May 30, 2024 at 6:03=E2=80=AFPM AngeloGioacchino Del Regno
-> > <angelogioacchino.delregno@collabora.com> wrote:
-> >>
-> >> Il 30/05/24 10:35, Chen-Yu Tsai ha scritto:
-> >>> The MFG_ASYNC domain, which is likely associated to the whole MFG blo=
-ck,
-> >>> currently specifies clk26m as its domain clock. This is bogus, since =
-the
-> >>> clock is an external crystal with no controls. Also, the MFG block ha=
-s
-> >>> a independent CLK_TOP_AXI_MFG_IN_SEL clock, which according to the bl=
-ock
-> >>> diagram, gates access to the hardware registers. Having this one as t=
-he
-> >>> domain clock makes much more sense. This also fixes access to the MFG=
-TOP
-> >>> registers.
-> >>>
-> >>> Change the MFG_ASYNC domain clock to CLK_TOP_AXI_MFG_IN_SEL.
-> >>>
-> >>> Fixes: 8b6562644df9 ("arm64: dts: mediatek: Add mt8173 power domain c=
-ontroller")
-> >>> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> >>
-> >> Just one question... what happens if there's no GPU support at all and=
- this
-> >> power domain gets powered off?
-> >>
-> >> I expect the answer to be "nothing", so I'm preventively giving you my
+> On Wed, Jun 05, 2024 at 04:01:06PM +0800, Chen-Yu Tsai wrote:
+> > Hi,
 > >
-> > Well it's powered off by default. Just double checked, and without the =
-final
-> > patch:
+> > On Tue, Jun 4, 2024 at 11:52=E2=80=AFPM N=C3=ADcolas F. R. A. Prado
+> > <nfraprado@collabora.com> wrote:
+> > >
+> > > Hi,
+> > >
+> > > We're monitoring the status of device probe on the
+> > > mt8183-kukui-jacuzzi-juniper-sku16 platform in KernelCI, and I though=
+t it'd be
+> > > helpful to share the results.
+> > >
+> > > These are the current failures:
+> > >
+> > > * /soc/i2c@11009000/trackpad@15
+> > > * /soc/svs@1100bc00
+> > > * /thermal-sensor1
+> > > * /thermal-sensor2
+> > >
+> > > In more details:
+> > >
+> > > * /soc/i2c@11009000/trackpad@15: I believe this is a second source tr=
+ackpad and
+> > >   is thus waiting for the "platform/chrome: Introduce DT hardware pro=
+ber" series
+> > >   [1] to be merged before it can be handled. Although looks like ther=
+e haven't
+> > >   been updates to the series in a while.
 > >
-> > # cat /sys/kernel/debug/pm_genpd/pm_genpd_summary
-> > domain                          status          children
-> >              performance
-> >      /device                                             runtime status
-> > -----------------------------------------------------------------------=
------------------------
-> > mfg                             off-0
-> >              0
-> > mfg_2d                          off-0
-> >              0
-> >                                                  mfg
-> > mfg_async                       off-0
-> >              0
-> >                                                  mfg_2d
-> >
-> > And with the last patch but with the powervr removed:
-> >
-> > # cat /sys/kernel/debug/pm_genpd/pm_genpd_summary
-> > domain                          status          children
-> >              performance
-> >      /device                                             runtime status
-> > -----------------------------------------------------------------------=
------------------------
-> > mfg_apm                         off-0
-> >              0
-> > mfg                             off-0
-> >              0
-> >                                                  mfg_apm
-> >      /devices/platform/soc/13fff000.clock-controller     suspended
-> >              0
-> > mfg_2d                          off-0
-> >              0
-> >                                                  mfg
-> > mfg_async                       off-0
-> >              0
-> >                                                  mfg_2d
-> >
-> > Things seem to work OK. I can SSH in, and the framebuffer console on th=
-e screen
-> > works fine.
-> >
-> >
-> > Note that accessing the regmap through debugfs doesn't do much good. re=
-gmap
-> > doesn't handle runtime PM. And the syscon regmap isn't even tied to a
-> > struct device. Dumping the regmap through debugfs while the power domai=
-n
-> > is off gives all zeroes, likely due to bus isolation.
-> >
+> > I've been working on other stuff and haven't had time to respin this se=
+ries.
 >
-> The last part where you say "gives all zeroes" is actually the best outco=
-me that
-> I could have ever expected.
->
-> So, well, many thanks for this very nice analysis and test.
->
-> >> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@col=
-labora.com>
->
-> I confirm my green light. It's beautiful when this kind of patches come u=
-pstream
-> especially with your replies actually removing any kind of possible doubt=
-.
+> No worries, but it's good to know that that's the latest status and I did=
+n't
+> miss something.
 >
 > >
-> > Thanks!
+> > Just to confirm, is the failure due to pinctrl conflicts when the track=
+pad
+> > variants probe asynchronously?
 >
-> Thank *you* for caring about this old platform!
+> Yes:
+>
+> [    2.185408] input: hid-over-i2c 06CB:CDB5 Mouse as /devices/platform/s=
+oc/11009000.i2c/i2c-2/2-002c/0018:06CB:CDB5.0001/input/input2
+> [    2.845044] mt8183-pinctrl 10005000.pinctrl: pin GPIO7 already request=
+ed by 2-002c; cannot claim for 2-0015
+> [    2.854700] mt8183-pinctrl 10005000.pinctrl: error -EINVAL: pin-7 (2-0=
+015)
+> [    2.869503] mt8183-pinctrl 10005000.pinctrl: error -EINVAL: could not =
+request pin 7 (GPIO7) from group GPIO7  on device pinctrl_paris
+> [    2.894885] elan_i2c 2-0015: Error applying setting, reverse things ba=
+ck
 
-Can you pick up this patch first?
+Yup. That's the issue. We work around it either with staggered driver probe
+(built-in vs module) or move the pinctrl up to the i2c bus node.
 
-Frank mentioned that the GPU core takes two power domains. I asked
-MediaTek for more information but I don't know how long that will take.
+> >
+> [..]
+> > > * /thermal-sensor1, /thermal-sensor2: The following is reported:
+> > >
+> > >     [    2.813605] thermal_sys: Failed to find 'trips' node
+> > >     [    2.813611] thermal_sys: Failed to find trip points for therma=
+l-sensor1 id=3D0
+> > >     [    2.813619] generic-adc-thermal thermal-sensor1: Thermal zone =
+sensor register failed: -22
+> > >     [    2.813624] generic-adc-thermal thermal-sensor1: probe with dr=
+iver generic-adc-thermal failed with error -22
+> > >
+> > >   And the same for thermal-sensor2. So both are missing the required =
+'trips'
+> > >   subnode.
+> >
+> > IIRC either the driver or the DT had comments saying "these zones don't
+> > need trip points". In that case maybe the driver should use
+> > thermal_tripless_zone_device_register() for them?
+>
+> I believe you're thinking of the SoC thermal zones, which had trips added=
+ (and
+> the comment removed) in commit 978979409209 ("arm64: dts: mediatek: mt818=
+3:
+> Refactor thermal zones"). But these are the kukui board thermal zones.
 
+I see. I dug through the schematics we have, and they all seem to say that
+the first NTC is for the SoC. The use for the second one seems to depend
+on the project, with some saying close to the LCM (display?) or LTE PA,
+and on the Jacuzzi family it's for ambient temp.
+
+Regarding trip points, for the NTC close to the SoC, I guess we could copy
+the SoC thermal trip points and reduce the values by some amount, 20
+degrees maybe? For the other one we could probably make the critical
+trip point some value that feels hot to the touch?
 
 ChenYu
 
-> Cheers,
-> Angelo
+> The thermal-zones dt-binding does describe the 'trips' node as required, =
+so I
+> think the only option in this case is to add trips to them, or remove the
+> thermal zones altogether. I'm guessing the
+> thermal_tripless_zone_device_register() helper is meant for other thermal=
+ zones
+> that aren't described in the DT.
 >
-> >
-> > ChenYu
-> >
-> >> ....but if I'm wrong and the answer isn't exactly "nothing", then I st=
-ill agree
-> >> with this commit, but only after removing the Fixes tag.
-> >>
-> >> Cheers,
-> >> Angelo
-> >>
-> >>> ---
-> >>>    arch/arm64/boot/dts/mediatek/mt8173.dtsi | 2 +-
-> >>>    1 file changed, 1 insertion(+), 1 deletion(-)
-> >>>
-> >>> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/bo=
-ot/dts/mediatek/mt8173.dtsi
-> >>> index 3458be7f7f61..136b28f80cc2 100644
-> >>> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> >>> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> >>> @@ -497,7 +497,7 @@ power-domain@MT8173_POWER_DOMAIN_USB {
-> >>>                                };
-> >>>                                mfg_async: power-domain@MT8173_POWER_D=
-OMAIN_MFG_ASYNC {
-> >>>                                        reg =3D <MT8173_POWER_DOMAIN_M=
-FG_ASYNC>;
-> >>> -                                     clocks =3D <&clk26m>;
-> >>> +                                     clocks =3D <&topckgen CLK_TOP_A=
-XI_MFG_IN_SEL>;
-> >>>                                        clock-names =3D "mfg";
-> >>>                                        #address-cells =3D <1>;
-> >>>                                        #size-cells =3D <0>;
-> >>
-> >>
->
+> Thanks,
+> N=C3=ADcolas
 
