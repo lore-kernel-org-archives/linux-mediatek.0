@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEFB4C27C52
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Jun 2024 21:12:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02855C27C54
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Jun 2024 23:25:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=lX2Ng7XFCj1aDAMOT6Ma1blTJm8OQAtEZ+Gj3uHDogo=; b=xRkYzSfQVMyjpKQ3xylAUpCRbT
-	38XNV9hYDfTP6i6MiLtSmNb4ehqK2UiKwZJffMfsjcHiUlioDdJT0JHBQA34T8fnYF57ff5tmIvrt
-	sE0kDFJZ+uU3IAkwKunsaoLK/b5oGNa7UTDaVcD3V4m2L3iR8RA+g/pwE9YodEYYrjyURSEIlQkd5
-	mZeNgDVey/6bHqLx5rDB2vK2UdcvCeglMWEtuYIV6B/iRGh6vdW9+WB7qjk+vQjwK6okHIeDb0Wxx
-	1UAOpG1pbXkvlwMqx8F/bP1Xq8J5vmnkNLkjCXfS5IFKHL7evI3QJE+fStNoZ3MfKhmJvLE3M5W4r
-	UaU1IjSg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=y1lxq/+z2K4FX9N+bWyv7xhFRLROhCxtCefd9JdYV2Y=; b=D2zZvYf2CDFTFf/CsHcXXqmVwM
+	9R6DRon0IczG6yPMz6cBHJ4hBfAGmwR0qxQR+iwHe90mdTWGxllk8S127v4n9YufyPw+8acX5p34h
+	WPZbxgjdxoBzgJOGOJffB2N4yIsfvFtzSBu9kQEw2W/4nYuRGR0xJ5SclA4cOsbEvZdwH5kxBbjoJ
+	uYVUCnKkNKmJVNQJCgoCCzanGYMhZWDPmYbME5Az1s9SyALGGG7vi1M63f3A2E6x3JuM6Ld0CgJdp
+	l9ewaEozgDJ4MjOnVuluyr3vno20B6gfw4XrvuqKaRbUHOGfM6xkPnr2xvhcunzYwBg5uIMUQgTg5
+	Pcm93VEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sFKPl-0000000BLzc-1YfB;
-	Thu, 06 Jun 2024 21:12:53 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1sFMTx-0000000BhmE-0DgN;
+	Thu, 06 Jun 2024 23:25:21 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sFKPh-0000000BLz0-1QJI;
-	Thu, 06 Jun 2024 21:12:51 +0000
+	id 1sFMTs-0000000Bhl7-0CFJ;
+	Thu, 06 Jun 2024 23:25:17 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1717708367;
-	bh=gfnupUAPz/WWhzeYdhaephd6S8G+uSgDbb6ssPacr2I=;
-	h=From:Date:Subject:To:Cc:From;
-	b=ou8kv5INNIPOe3y4ZRitv2E8GiMeLDqmhO0agsTUR5lVsRLxNeknvaBhN6raFEzoc
-	 WeuUIZOtMhHhBspNI+KeOet0L6HTZ0XSg71Ylfg/EpGde5h5uqslJ5rZFiB79wlf8h
-	 F19SzZAP4FWnPt6wI76tI5KqzXgqc7k2Gey5PIG+yFffnRGGrRqhuyPunF8VTRlISM
-	 XliylfIFW4Vk3dDzePOgxGSi/tqJf31C7Smfb1r+feNfQ9f6ohYvFkaOGxIJMJi89N
-	 QkGC9KL+WRJzRp4NDX09avtNHAUjVqF9rANgTHflIydBq7YxwMdF7xHIQGFD4S8zcX
-	 gyTTkzdDuw/aQ==
-Received: from [192.168.1.216] (zone.collabora.co.uk [167.235.23.81])
+	s=mail; t=1717716313;
+	bh=FCHNt6uHeP6/ERgm3lU0NCmUc0kw0E78oG06eYuXtr8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=PNJhSh3YzNZfKgt72Y8Et8spA1ZOtynviPXRlr931YntrbHhVV30Kt528LH92ku87
+	 LmFoY6843Q0hvwnuTFkIaT3yKbPEdM/nEWB0TaXVkZmG95t5HlAqXfmwpNmE103XRO
+	 JssY+wwym0O9KE8znpECg0J16CobMyZFkPR8a1UsHDdiHW021GWg5nAIek5lkIY9HH
+	 WMW+Ld4EE2XwpUQIQOP35fHtmnrhad7sXGg5JAxxjTLd8cJfax+CSf0FDGHP40XV+S
+	 Y8hSMehoAQXpOUSC0L5+hVB5MijaknQ0cl7347SdbluETuXoz6H0R16oPkZ9qjTL4S
+	 cv3HuoFT3AQZA==
+Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nfraprado)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 403E9378143B;
-	Thu,  6 Jun 2024 21:12:45 +0000 (UTC)
-From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Date: Thu, 06 Jun 2024 17:12:04 -0400
-Subject: [PATCH v2] arm64: dts: mediatek: mt8195: Add SCP phandle to MDP3
- DMA controller
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 7407E37821C1;
+	Thu,  6 Jun 2024 23:25:09 +0000 (UTC)
+Date: Thu, 6 Jun 2024 19:25:07 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: chunkuang.hu@kernel.org, robh@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+	p.zabel@pengutronix.de, airlied@gmail.com, daniel@ffwll.ch,
+	maarten.lankhorst@linux.intel.com, mripard@kernel.org,
+	tzimmermann@suse.de, matthias.bgg@gmail.com,
+	shawn.sung@mediatek.com, yu-chang.lee@mediatek.com,
+	ck.hu@mediatek.com, jitao.shi@mediatek.com,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, wenst@chromium.org,
+	kernel@collabora.com
+Subject: Re: [PATCH v4 0/3] drm/mediatek: Add support for OF graphs
+Message-ID: <1b23531d-0365-4163-a443-4ebece2c445e@notapiano>
+References: <20240516081104.83458-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Message-Id: <20240606-mt8195-dma-scp-node-err-v2-1-e14702e9d3f2@collabora.com>
-X-B4-Tracking: v=1; b=H4sIACMmYmYC/4WNQQqDMBBFryKz7hQzxGC76j2Ki5hMakCNTERax
- Ls39QJdvgf//R0yS+QM92oH4S3mmOYCdKnADXZ+MUZfGKgmXZu6wWlt1a1BP1nMbsE5eUYWQWN
- bz5aM16GBsl6EQ3yf5WdXeIh5TfI5jzb1s/+bm0KFgVyvKZD2hh8ujaPtk9irSxN0x3F8AWOwz
- jLCAAAA
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Moudy Ho <moudy.ho@mediatek.com>
-Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, 
- =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-X-Mailer: b4 0.13.0
+In-Reply-To: <20240516081104.83458-1-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240606_141249_695216_1BDDFACA 
-X-CRM114-Status: GOOD (  10.54  )
+X-CRM114-CacheID: sfid-20240606_162516_281457_2777E261 
+X-CRM114-Status: GOOD (  28.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,46 +82,183 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-While the MDP3 DMA controller can look for the SCP node based on
-compatible, it's best practice to supply the MDP3 node with a phandle to
-the SCP since that allows supporting dual core SCP as well. Besides,
-relying on the compatible search causes an error to be printed, since
-the phandle is tried first:
+On Thu, May 16, 2024 at 10:11:01AM +0200, AngeloGioacchino Del Regno wrote:
+> Changes in v4:
+>  - Fixed a typo that caused pure OF graphs pipelines multiple
+>    concurrent outputs to not get correctly parsed (port->id); 
+>  - Added OVL_ADAPTOR support for OF graph specified pipelines;
+>  - Now tested with fully OF Graph specified pipelines on MT8195
+>    Chromebooks and MT8395 boards;
+>  - Rebased on next-20240516
+> 
+> Changes in v3:
+>  - Rebased on next-20240502 because of renames in mediatek-drm
+> 
+> Changes in v2:
+>  - Fixed wrong `required` block indentation in commit [2/3]
+> 
+> 
+> The display IPs in MediaTek SoCs are *VERY* flexible and those support
+> being interconnected with different instances of DDP IPs (for example,
+> merge0 or merge1) and/or with different DDP IPs (for example, rdma can
+> be connected with either color, dpi, dsi, merge, etc), forming a full
+> Display Data Path that ends with an actual display.
+> 
+> This series was born because of an issue that I've found while enabling
+> support for MT8195/MT8395 boards with DSI output as main display: the
+> current mtk_drm_route variations would not work as currently, the driver
+> hardcodes a display path for Chromebooks, which have a DisplayPort panel
+> with DSC support, instead of a DSI panel without DSC support.
+> 
+> There are other reasons for which I wrote this series, and I find that
+> hardcoding those paths - when a HW path is clearly board-specific - is
+> highly suboptimal. Also, let's not forget about keeping this driver from
+> becoming a huge list of paths for each combination of SoC->board->disp
+> and... this and that.
+> 
+> For more information, please look at the commit description for each of
+> the commits included in this series.
+> 
+> This series is essential to enable support for the MT8195/MT8395 EVK,
+> Kontron i1200, Radxa NIO-12L and, mainly, for non-Chromebook boards
+> and Chromebooks to co-exist without conflicts.
+> 
+> Besides, this is also a valid option for MT8188 Chromebooks which might
+> have different DSI-or-eDP displays depending on the model (as far as I
+> can see from the mtk_drm_route attempt for this SoC that is already
+> present in this driver).
+> 
+> This series was tested on MT8195 Cherry Tomato and on MT8395 Radxa
+> NIO-12L with both hardcoded paths, OF graph support and partially
+> hardcoded paths, and pure OF graph support including pipelines that
+> require OVL_ADAPTOR support.
+> 
+> AngeloGioacchino Del Regno (3):
+>   dt-bindings: display: mediatek: Add OF graph support for board path
+>   dt-bindings: arm: mediatek: mmsys: Add OF graph support for board path
+>   drm/mediatek: Implement OF graphs support for display paths
+> 
+>  .../bindings/arm/mediatek/mediatek,mmsys.yaml |  28 ++
+>  .../display/mediatek/mediatek,aal.yaml        |  40 +++
+>  .../display/mediatek/mediatek,ccorr.yaml      |  21 ++
+>  .../display/mediatek/mediatek,color.yaml      |  22 ++
+>  .../display/mediatek/mediatek,dither.yaml     |  22 ++
+>  .../display/mediatek/mediatek,dpi.yaml        |  25 +-
+>  .../display/mediatek/mediatek,dsc.yaml        |  24 ++
+>  .../display/mediatek/mediatek,dsi.yaml        |  27 +-
+>  .../display/mediatek/mediatek,ethdr.yaml      |  22 ++
+>  .../display/mediatek/mediatek,gamma.yaml      |  19 ++
+>  .../display/mediatek/mediatek,merge.yaml      |  23 ++
+>  .../display/mediatek/mediatek,od.yaml         |  22 ++
+>  .../display/mediatek/mediatek,ovl-2l.yaml     |  22 ++
+>  .../display/mediatek/mediatek,ovl.yaml        |  22 ++
+>  .../display/mediatek/mediatek,postmask.yaml   |  21 ++
+>  .../display/mediatek/mediatek,rdma.yaml       |  22 ++
+>  .../display/mediatek/mediatek,ufoe.yaml       |  21 ++
+>  drivers/gpu/drm/mediatek/mtk_disp_drv.h       |   1 +
+>  .../gpu/drm/mediatek/mtk_disp_ovl_adaptor.c   |  40 ++-
+>  drivers/gpu/drm/mediatek/mtk_dpi.c            |  16 +-
+>  drivers/gpu/drm/mediatek/mtk_drm_drv.c        | 282 ++++++++++++++++--
+>  drivers/gpu/drm/mediatek/mtk_drm_drv.h        |   2 +-
+>  drivers/gpu/drm/mediatek/mtk_dsi.c            |  10 +-
+>  23 files changed, 713 insertions(+), 41 deletions(-)
+> 
+> -- 
+> 2.45.0
+> 
 
-  mtk-mdp3 14001000.dma-controller: can't get SCP node
+Hi Angelo,
 
-Add the missing phandle to follow the best practice and get rid of the
-error.
+I'm seeing issues with this series on MT8195-Tomato running on next-20240606:
 
-Fixes: 5710462a116c ("arm64: dts: mediatek: mt8195: add MDP3 nodes")
-Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
----
-Changes in v2:
-- Added scp phandle property in DT instead of removing the error message
-- Link to v1: https://lore.kernel.org/r/20240605-mt8195-dma-scp-node-err-v1-1-f2cb42f24d6e@collabora.com
----
- arch/arm64/boot/dts/mediatek/mt8195.dtsi | 1 +
- 1 file changed, 1 insertion(+)
+[    4.770965] refcount_t: addition on 0; use-after-free.
+[    4.770975] WARNING: CPU: 5 PID: 171 at lib/refcount.c:25 refcount_warn_saturate+0xa0/0x144
+[    4.770983] Modules linked in: videobuf2_common rfkill(+) kfifo_buf onboard_usb_dev(+) mc hid_multitouch(+) cros_ec_chardev cros_kbd_led_backlight snd_sof_mt8195 elan_i2c mtk_adsp_common sbs_battery snd_soc_mt8195_afe snd_sof_xtensa_dsp pwm_bl lvts_thermal(+) mt6577_auxadc pcie_mediatek_gen3(+) snd_sof_of coreboot_table backlight mtk_scp mtk_rpmsg snd_sof mtk_svs snd_sof_utils mtk_scp_ipi mt8195_mt6359 ramoops reed_solomon
+[    4.771000] CPU: 5 PID: 171 Comm: (udev-worker) Not tainted 6.10.0-rc2-next-20240606-00005-gf8e90366fe4b #472
+[    4.771002] Hardware name: Acer Tomato (rev2) board (DT)
+[    4.771003] pstate: 604000c9 (nZCv daIF +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[    4.771005] pc : refcount_warn_saturate+0xa0/0x144
+[    4.771007] lr : refcount_warn_saturate+0xa0/0x144
+[    4.771008] sp : ffff800080ce3950
+[    4.771009] x29: ffff800080ce3950 x28: ffff800080ce3c70 x27: ffff800080ce3c70
+[    4.771011] x26: 0000000000000000 x25: ffffaec95d6b53f0 x24: ffff5054d9468368
+[    4.771012] x23: ffff5054c0a81968 x22: 0000000000000000 x21: 0000000000000000
+[    4.771014] x20: ffff800080ce39d8 x19: ffff5054c0a81c68 x18: 0000000000000038
+[    4.771015] x17: ffffa18b9ed32000 x16: ffff800080028000 x15: fffffffffffeab58
+[    4.771017] x14: ffffaec95d181f48 x13: 00000000000006c6 x12: 0000000000000242
+[    4.771018] x11: fffffffffffeab58 x10: ffffaec95d1d9f48 x9 : 00000000fffff000
+[    4.771020] x8 : ffffaec95d181f48 x7 : ffffaec95d1d9f48 x6 : 0000000000000000
+[    4.771021] x5 : 80000000fffff000 x4 : 000000000000aff5 x3 : 00000000ffffffff
+[    4.771023] x2 : 0000000000000000 x1 : 0000000000000000 x0 : ffff5054d8af33c0
+[    4.771024] Call trace:
+[    4.771025]  refcount_warn_saturate+0xa0/0x144
+[    4.771027]  klist_next+0x184/0x1a8
+[    4.771030]  bus_for_each_dev+0x60/0xd4
+[    4.771033]  driver_attach+0x24/0x30
+[    4.771035]  bus_add_driver+0xe4/0x208
+[    4.771037]  driver_register+0x60/0x128
+[    4.771039]  __platform_driver_register+0x28/0x34
+[    4.771041]  lvts_driver_init+0x20/0x1000 [lvts_thermal]
+[    4.771046]  do_one_initcall+0x6c/0x1b0
+[    4.771048]  do_init_module+0x60/0x1f0
+[    4.771050]  load_module+0x191c/0x1b04
+[    4.771052]  init_module_from_file+0x84/0xc0
+[    4.771054]  __arm64_sys_finit_module+0x1b8/0x27c
+[    4.771056]  invoke_syscall+0x48/0x118
+[    4.771059]  el0_svc_common.constprop.0+0x40/0xe0
+[    4.771061]  do_el0_svc+0x1c/0x28
+[    4.771063]  el0_svc+0x34/0xdc
+[    4.771065]  el0t_64_sync_handler+0xc0/0xc4
+[    4.771067]  el0t_64_sync+0x190/0x194
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-index 2ee45752583c..a46062258603 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-@@ -2037,6 +2037,7 @@ dma-controller@14001000 {
- 			mediatek,gce-client-reg = <&gce1 SUBSYS_1400XXXX 0x1000 0x1000>;
- 			mediatek,gce-events = <CMDQ_EVENT_VPP0_MDP_RDMA_SOF>,
- 					      <CMDQ_EVENT_VPP0_MDP_RDMA_FRAME_DONE>;
-+			mediatek,scp = <&scp>;
- 			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
- 			iommus = <&iommu_vpp M4U_PORT_L4_MDP_RDMA>;
- 			clocks = <&vppsys0 CLK_VPP0_MDP_RDMA>;
 
----
-base-commit: d97496ca23a2d4ee80b7302849404859d9058bcd
-change-id: 20240605-mt8195-dma-scp-node-err-6a8dea26d4f5
+[    4.837189] refcount_t: saturated; leaking memory.
+[    4.837197] WARNING: CPU: 7 PID: 170 at lib/refcount.c:22 refcount_warn_saturate+0x74/0x144
+[    4.837205] Modules linked in: phy_mtk_dp(+) videodev videobuf2_common rfkill kfifo_buf onboard_usb_dev(+) mc hid_multitouch(+) cros_ec_chardev cros_kbd_led_backlight snd_sof_mt8195 elan_i2c mtk_adsp_common sbs_battery snd_soc_mt8195_afe snd_sof_xtensa_dsp pwm_bl lvts_thermal mt6577_auxadc pcie_mediatek_gen3(+) snd_sof_of coreboot_table backlight mtk_scp mtk_rpmsg snd_sof mtk_svs snd_sof_utils mtk_scp_ipi mt8195_mt6359 ramoops reed_solomon
+[    4.837221] CPU: 7 PID: 170 Comm: (udev-worker) Tainted: G        W          6.10.0-rc2-next-20240606-00005-gf8e90366fe4b #472
+[    4.837224] Tainted: [W]=WARN
+[    4.837224] Hardware name: Acer Tomato (rev2) board (DT)
+[    4.837225] pstate: 604000c9 (nZCv daIF +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[    4.837227] pc : refcount_warn_saturate+0x74/0x144
+[    4.837229] lr : refcount_warn_saturate+0x74/0x144
+[    4.837230] sp : ffff800080cdb950
+[    4.837231] x29: ffff800080cdb950 x28: ffff800080cdbc70 x27: ffff800080cdbc70
+[    4.837232] x26: 0000000000000000 x25: ffffaec95d6b53f0 x24: ffff5054d66544e8
+[    4.837234] x23: ffff5054c0a81968 x22: 0000000000000000 x21: 0000000000000000
+[    4.837235] x20: ffff800080cdb9d8 x19: ffff5054c0a81c68 x18: 0000000000000030
+[    4.837236] x17: 0000000000000000 x16: ffffaec95b03d998 x15: fffffffffffecb70
+[    4.837238] x14: ffffaec95d181f48 x13: 0000000000000825 x12: 00000000000002b7
+[    4.837239] x11: fffffffffffecb70 x10: ffffaec95d1d9f48 x9 : 00000000fffff000
+[    4.837240] x8 : ffffaec95d181f48 x7 : ffffaec95d1d9f48 x6 : 0000000000000000
+[    4.837242] x5 : 80000000fffff000 x4 : 000000000000aff5 x3 : 00000000ffffffff
+[    4.837243] x2 : 0000000000000000 x1 : 0000000000000000 x0 : ffff5054d8af4500
+[    4.837245] Call trace:
+[    4.837246]  refcount_warn_saturate+0x74/0x144
+[    4.837247]  klist_next+0x178/0x1a8
+[    4.837250]  bus_for_each_dev+0x60/0xd4
+[    4.837253]  driver_attach+0x24/0x30
+[    4.837255]  bus_add_driver+0xe4/0x208
+[    4.837257]  driver_register+0x60/0x128
+[    4.837259]  __platform_driver_register+0x28/0x34
+[    4.837260]  mtk_dp_phy_driver_init+0x20/0x1000 [phy_mtk_dp]
+[    4.837263]  do_one_initcall+0x6c/0x1b0
+[    4.837265]  do_init_module+0x60/0x1f0
+[    4.837268]  load_module+0x191c/0x1b04
+[    4.837269]  init_module_from_file+0x84/0xc0
+[    4.837271]  __arm64_sys_finit_module+0x1b8/0x27c
+[    4.837273]  invoke_syscall+0x48/0x118
+[    4.837276]  el0_svc_common.constprop.0+0x40/0xe0
+[    4.837277]  do_el0_svc+0x1c/0x28
+[    4.837279]  el0_svc+0x34/0xdc
+[    4.837282]  el0t_64_sync_handler+0xc0/0xc4
+[    4.837284]  el0t_64_sync+0x190/0x194
 
-Best regards,
--- 
-Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
+and many more occurrences.
+
+Config: http://0x0.st/XbqI.txt
+Full kernel logs: http://0x0.st/Xbq6.txt
+
+Thanks,
+N�colas
 
