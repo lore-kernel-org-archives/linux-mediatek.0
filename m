@@ -4,69 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A033C25B75
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Jun 2024 12:09:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E01A1C25B75
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Jun 2024 12:36:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JKx6aKDGW0AyjftAdYqCC21nD0Jz6nFDsHFcUvXDrbw=; b=opmaPgRpc37vuVZoDAoDuRzslK
-	uDZERLKhRitkUQUaIW6orrjkSqHz53dCU6Hmm5842efIWhz2oJXSVhAFfGiFJSn1vNO6ncKNJNay7
-	baOT68tQMfgPhrqdqzcrzhaEbOJoqPYHYhD1/wCy/TA15W4wnUahl5AXoJfeR8FLZEAjdt3a/DTFI
-	NnhbdLSrU4d9StHr3QCXT6NnMEfd5h2qHZKBRE7e3asQNNK4H+q/xmzxL8L2GLes0vJBQdhaT4uZY
-	xslKSep8bBJmIysFKSrAIfDLEv1fTZve3oQ/cZQqE3g6cKUmftivYuDGAkF8aKOIRIOr6goSQR5Z0
-	vhe7RP+Q==;
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:CC:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=fJXjSMjZjRnIAOv6T41W9J7qtEBo78dk8dXkH+wP9H8=; b=Urh4YUx3apEasXD2ytELWIGMjw
+	S69sRGEQTyIrveCfEfC46XrOfE369LRPttxFz1c/TjJc1/40VbiQum1JTJjS68SOHklmbDYZ3dVFb
+	dxOnNxJxG1gmcq17kigZcshNDSH6x5WYZxPTEPZb3HDSWv9/EOo+VenQXcB/14y8LI0t/aXjWZQ7c
+	sl8tUNJWA55ehX6Lz8GjPvui5AQTEIstaNXcGRZAgDTZfDpfqDQM89R25M/jnbCbgpXbv+n/Fx9vP
+	IFh1zf1LEiACMG990muL/9uPltYj8m2sxvXcx0Zj5tZ0wb71j4EtDsWjZOEYnA4Iruj76UkHBs3sx
+	I1OQGjmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sFBw8-00000009dG6-0A2v;
-	Thu, 06 Jun 2024 12:09:44 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1sFCLq-00000009iju-0FSY;
+	Thu, 06 Jun 2024 12:36:18 +0000
+Received: from frasgout.his.huawei.com ([185.176.79.56])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sFBw4-00000009dEe-06EF;
-	Thu, 06 Jun 2024 12:09:41 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1717675777;
-	bh=d/jCCF0NCqOhRllSWhbYbAQCzOnOV4aDMEeLQSfza+0=;
-	h=Date:Subject:To:References:From:In-Reply-To:From;
-	b=ex+NapCYaV6uQigRxoz9OgZuuxLinAt+ffhPwDJQBgGlx2SPufS1v3P+AztsrF40y
-	 dRz3GUhZMHA2YYKyeXhuBGMbG9HldE7vrKp5Z0aMkk7TJDryuZgGDfB6vIuUmaN5Jh
-	 ZtaoW+WFg76wAWKZsxuc9ptVjZ6wJAFaEFmmrrdiBvJ/OcdNeb1n1sjacYJ08NifXs
-	 gJXda7TmOb3v0I06XyPOME2H9GCfAv25M4/IRnJcZmn5FRz6dl9OI7Bt36nIC2i+vy
-	 6ozyecsSOFutlgR3Bx0/B/YDrWkIdTEhWye8VrqdgyMs7MzMaplLnHAA1p7tZ0ul1V
-	 Dy86HOeJ8iz6A==
-Received: from [100.93.89.217] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: benjamin.gaignard)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 8ACD83781022;
-	Thu,  6 Jun 2024 12:09:36 +0000 (UTC)
-Message-ID: <657ef910-e6fd-4791-988e-4aba03104c20@collabora.com>
-Date: Thu, 6 Jun 2024 14:09:35 +0200
+	id 1sFCLg-00000009icf-1LAN;
+	Thu, 06 Jun 2024 12:36:11 +0000
+Received: from mail.maildlp.com (unknown [172.18.186.216])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Vw3gN4y7Vz6K9Hc;
+	Thu,  6 Jun 2024 20:34:40 +0800 (CST)
+Received: from lhrpeml500005.china.huawei.com (unknown [7.191.163.240])
+	by mail.maildlp.com (Postfix) with ESMTPS id 8FE3C1408F9;
+	Thu,  6 Jun 2024 20:35:53 +0800 (CST)
+Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
+ (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Thu, 6 Jun
+ 2024 13:35:52 +0100
+Date: Thu, 6 Jun 2024 13:35:51 +0100
+From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+To: "=?ISO-8859-1?Q?N=EDcolas?= F. R. A. Prado" <nfraprado@collabora.com>
+CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
+	<p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, Daniel Vetter
+	<daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	<kernel@collabora.com>, <dri-devel@lists.freedesktop.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>
+Subject: Re: [PATCH] drm/mediatek: Don't print error if EDEFER_PROBE
+ returned on component_add
+Message-ID: <20240606133551.00007d14@Huawei.com>
+In-Reply-To: <20240605-mtk-disp-rdma-dev-err-probe-v1-1-91259e1d3a93@collabora.com>
+References: <20240605-mtk-disp-rdma-dev-err-probe-v1-1-91259e1d3a93@collabora.com>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 10/12] media: platform: mtk-mdp3: Get fine-grain
- control of cmdq_pkt_finalize()
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Moudy Ho
- <moudy.ho@mediatek.com>, "Jason-JH . Lin" <jason-jh.lin@mediatek.com>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org
-References: <20240222154120.16959-1-chunkuang.hu@kernel.org>
- <20240222154120.16959-11-chunkuang.hu@kernel.org>
-Content-Language: en-US
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-In-Reply-To: <20240222154120.16959-11-chunkuang.hu@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="ISO-8859-1"
+Content-Transfer-Encoding: quoted-printable
+X-Originating-IP: [10.202.227.76]
+X-ClientProxiedBy: lhrpeml500001.china.huawei.com (7.191.163.213) To
+ lhrpeml500005.china.huawei.com (7.191.163.240)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240606_050940_249885_BC0F7A3F 
-X-CRM114-Status: GOOD (  17.23  )
+X-CRM114-CacheID: sfid-20240606_053608_615250_74E4DA61 
+X-CRM114-Status: GOOD (  15.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,64 +76,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Wed, 05 Jun 2024 12:50:25 -0400
+N=EDcolas F. R. A. Prado <nfraprado@collabora.com> wrote:
 
-Le 22/02/2024 à 16:41, Chun-Kuang Hu a écrit :
-> In order to have fine-grained control, use cmdq_pkt_eoc() and
-> cmdq_pkt_jump_rel() to replace cmdq_pkt_finalize().
->
-> Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+> Use dev_err_probe() in the component_add() error path to prevent
+> printing an error when the probe is deferred. This was observed on
+> mt8195 with the disp-rdma driver:
+>=20
+>   mediatek-disp-rdma 1c002000.rdma: Failed to add component: -517
+>=20
+> But the same pattern is used across many other drivers, so update them
+> all.
+>=20
+> Signed-off-by: N=EDcolas F. R. A. Prado <nfraprado@collabora.com>
 > ---
->   drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c | 3 ++-
->   drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c | 2 ++
->   drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h | 1 +
->   3 files changed, 5 insertions(+), 1 deletion(-)
->
-> diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
-> index 6adac857a477..b720e69b341d 100644
-> --- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
-> +++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
-> @@ -471,7 +471,8 @@ int mdp_cmdq_send(struct mdp_dev *mdp, struct mdp_cmdq_param *param)
->   		dev_err(dev, "mdp_path_config error\n");
->   		goto err_free_path;
->   	}
-> -	cmdq_pkt_finalize(&cmd->pkt);
-> +	cmdq_pkt_eoc(&cmd->pkt);
-> +	cmdq_pkt_jump_rel(&cmd->pkt, CMDQ_INST_SIZE, mdp->cmdq_shift_pa);
->   
->   	for (i = 0; i < num_comp; i++)
->   		memcpy(&comps[i], path->comps[i].comp,
-> diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
-> index 94f4ed78523b..2214744c937c 100644
-> --- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
-> +++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
-> @@ -231,6 +231,8 @@ static int mdp_probe(struct platform_device *pdev)
->   		goto err_put_scp;
->   	}
->   
-> +	mdp->cmdq_shift_pa = cmdq_get_shift_pa(mdp->cmdq_clt->chan);
-> +
->   	init_waitqueue_head(&mdp->callback_wq);
->   	ida_init(&mdp->mdp_ida);
->   	platform_set_drvdata(pdev, mdp);
-> diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
-> index 7e21d226ceb8..ed61e0bb69ee 100644
-> --- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
-> +++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
-> @@ -83,6 +83,7 @@ struct mdp_dev {
->   	u32					id_count;
->   	struct ida				mdp_ida;
->   	struct cmdq_client			*cmdq_clt;
-> +	u8					cmdq_shift_pa;
+>  drivers/gpu/drm/mediatek/mtk_disp_aal.c         | 2 +-
+>  drivers/gpu/drm/mediatek/mtk_disp_ccorr.c       | 2 +-
+>  drivers/gpu/drm/mediatek/mtk_disp_color.c       | 2 +-
+>  drivers/gpu/drm/mediatek/mtk_disp_gamma.c       | 2 +-
+>  drivers/gpu/drm/mediatek/mtk_disp_merge.c       | 2 +-
+>  drivers/gpu/drm/mediatek/mtk_disp_ovl.c         | 2 +-
+>  drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c | 2 +-
+>  drivers/gpu/drm/mediatek/mtk_disp_rdma.c        | 2 +-
+>  drivers/gpu/drm/mediatek/mtk_ethdr.c            | 2 +-
+>  drivers/gpu/drm/mediatek/mtk_mdp_rdma.c         | 2 +-
+>  10 files changed, 10 insertions(+), 10 deletions(-)
+>=20
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_aal.c b/drivers/gpu/drm/me=
+diatek/mtk_disp_aal.c
+> index 3ce8f32b06d5..892dc40458fb 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_disp_aal.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
+> @@ -197,7 +197,7 @@ static int mtk_disp_aal_probe(struct platform_device =
+*pdev)
+> =20
+>  	ret =3D component_add(dev, &mtk_disp_aal_component_ops);
+>  	if (ret)
+> -		dev_err(dev, "Failed to add component: %d\n", ret);
+> +		dev_err_probe(dev, ret, "Failed to add component\n");
+Perhaps
+		return dev_err_probe(...)
 
-Can send a new version of this series because this patch can't
-be applied on media_tree/master branch.
-The code look correct for me but we need to be able to applied it
-to perform more checks.
+	return 0;
 
-Regards,
-Benjamin
+Whilst I can see you are focused on this one problem case, it
+might be better to use dev_err_probe() for all the similar
+cases earlier in these functions.
 
->   	wait_queue_head_t			callback_wq;
->   
->   	struct v4l2_device			v4l2_dev;
+Then that return dev_err_probe() pattern will make more sense
+as it will be consistent with all the other calls.
 
