@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29F67C27C54
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Jun 2024 20:10:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97639C27C52
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Jun 2024 20:54:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Hutjf4WwE6IKhYhoDpmSZWk+TUgz4ul3jgLdpMGfmk8=; b=KdYyfbIiVi6TRFb6v/BQNy15KF
-	mXzZ1xmWrEds0EOgIVX05G9NzwsrGhXtqNbcqPa3rdaSTYn1AsQOaO2aQoY+k0vCA3UHdQU/Y/E13
-	wRID9tU/XRU1aCCtE2qlSG5Q7rCFnLfwRkwW/KIloVjOuFwqunA4rB/Bp3BgU6FG6kzMD7JHC3f51
-	94PcBafhE+xFVZZI4vWWS3ZoMepBGurQzca4LP3hxHkPAzifrFI4bF8uHDLzBJOcYlD0jeOuMVRZI
-	pqX9zMcQO0yUu5octlJh05d3S68P+4/m+UUnxakizj+1TK8bdx+NFVwok+mSjjPElFig5o9rQEtfg
-	oIYNeiPQ==;
+	bh=MqoEdi+5Li7qCxgZnJ0d4rFJMsPiflzcBA1WO++S0A4=; b=P8u7fxt2bI0a5rN/ptqgr3qsU6
+	jZKdK2LrfSeWQGLwh/sl9PboiQfb/YbcXnGLZE3MbiyHy3slRgOtSxQMCFsG4R4nqN/e80elC4wRk
+	ZBKb0F+PiNQIWZouB8JNFncvjRz9TwpDGIUPz7Nrn8PNAYSnJizsoKfZUF4SecX6s10HtP49uy1p8
+	KM1JdQ+qv/Jpr342hTzS3Cey0KfEVV4Pmr0d8yR3u+RF+QazhA7of0xRRCC7Otm1m88gRofpE7/LD
+	bEV2m41zHG9V9tAxqmdcbm8qLx2IWLOswWO0xESl++fIMIV/BINmVelflYnJ/FaYmLGtDLTKEfHno
+	eJXJR1sg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sFJRW-0000000BCpU-3DJh;
-	Thu, 06 Jun 2024 20:10:38 +0000
-Received: from mail-lj1-x22c.google.com ([2a00:1450:4864:20::22c])
+	id 1sFK7R-0000000BJZB-2TSh;
+	Thu, 06 Jun 2024 20:53:57 +0000
+Received: from mail-lj1-x236.google.com ([2a00:1450:4864:20::236])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sFJRT-0000000BCoM-17oe
+	id 1sFK7O-0000000BJYi-2JF1
 	for linux-mediatek@lists.infradead.org;
-	Thu, 06 Jun 2024 20:10:37 +0000
-Received: by mail-lj1-x22c.google.com with SMTP id 38308e7fff4ca-2e72b8931caso14226961fa.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 06 Jun 2024 13:10:32 -0700 (PDT)
+	Thu, 06 Jun 2024 20:53:55 +0000
+Received: by mail-lj1-x236.google.com with SMTP id 38308e7fff4ca-2e6f2534e41so15522741fa.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 06 Jun 2024 13:53:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1717704631; x=1718309431; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1717707231; x=1718312031; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=Hutjf4WwE6IKhYhoDpmSZWk+TUgz4ul3jgLdpMGfmk8=;
-        b=Qstt52HMPZFzrbR1d80MqGe4tGgpjFO5JHCAamswwUT0wrTnMo7ZU/MNh6IgsyCRNC
-         uOx8gZWykqTPFKLA9sC0PesO1KeYZ7hP2M92V2LLN7o9q02GoNzW8wLuq8xSOXdIpBFI
-         A0BvsOzMGPZHvhEa7ElZ06Zr/5ngeLEsORBFEwy2yD/L/aWhlnoqBtnvjtcT2LiN+Voe
-         k41/MaN1ly0fR3XadsEu182yuWheGgXQcqwV6m/9zpEOi9mecmLGTlYi/G5YxBjfgb5U
-         KTT0XJvgxqwp75r8V6PRCHksovdp/qobNIaj/Prn9Ydu8RW+wWqRPwZv7jOji9nNihKS
-         +VjQ==
+        bh=MqoEdi+5Li7qCxgZnJ0d4rFJMsPiflzcBA1WO++S0A4=;
+        b=QwbVKrejANPlCT+E2K1of1WS8zesJn9kUHPn7iLd8hlQmMA8E05tMEepQ3uwZu/sTt
+         EytU6IlV8xZt9q5yFdT/Phqo5tjLsETYBy+/tOm110/+IsxStd9vyzqdlTyvU622K9PG
+         +1Zg+w+RWpzU3usUZr8RYnK4pga2ohVFykewgtvCuLlWhLfKNXTd9nJdBIecuoKcoyuC
+         i4Bv7M+woCkhb4muHyQ+QS8WbLqx2vNxzPGNXPdFTy7x6cU1jWRl7EgDaA46DRxPRNa7
+         8GtqRSWkygTEamG3fhkI1dRNC1Lj2KUgcHTK/27HauJpegF+VI0gNiMUJqIoGqspvNtN
+         dqvg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1717704631; x=1718309431;
+        d=1e100.net; s=20230601; t=1717707231; x=1718312031;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=Hutjf4WwE6IKhYhoDpmSZWk+TUgz4ul3jgLdpMGfmk8=;
-        b=feTNONRukNjpgYsl3b+Qy/pSo4AkAXRS1K8IHLfcFQpRf8s5B/xvFYOuWqTmn1kFJD
-         Hi/m/fZnvwSmJMYWoXAiLCUalB2thzOsyn95p1qeqlcvPkj9IJ7lIOtJ00zo8XzaPaNC
-         r2kEsuEZeUnAGXJRBCRnfDEbP0gRCsiIUwBJpw5vnuWKuHj6AL0FGpBHZtnMpcpdGu7Y
-         aeg+7x7b+uVT0V3ZUuaa63hnpoaT8Xj/vEwrceV63QyVcuqTileJ+jEFeKBiVSFdViee
-         sZSdlcxLjNfGFlIPnY87av9Jfg8ARMpqLStvDzBBwfhUVudSWnJSRgJnhdZmmnKqesGY
-         YJ0A==
-X-Forwarded-Encrypted: i=1; AJvYcCVNAhJFrS73LP8InDsvxlUWxVAagQChJBrjxFnmGi7PlW23QU1Qsbpwd0lghH+D2ipziPircbJ4k0Tj5kJx9ehzeQJGdjTz2tlXtl0ynSzo+iZ4
-X-Gm-Message-State: AOJu0YyBJyJf73toRUtzpC7eU71gzTHcU5ubkdT4fCKe+byVbrNVokGR
-	v39lNztWnLq4RNK0W9JG/HYqy08qqkWMTmMRTE5nwmjMwsTsP+RtNvxkye48eD2+SAB10xAxLD8
-	kneOwlCLRZwYU1DLMiQDAIWMBxEo=
-X-Google-Smtp-Source: AGHT+IHAsDb5+nsNxizNL0s50nQsiWVLkPf55QznG57cKaBnbaVfMJ/g6/XbUdNeCRsat4LY6v+75fSHMUV0aMYRwfU=
-X-Received: by 2002:a2e:b016:0:b0:2e1:7acb:6c40 with SMTP id
- 38308e7fff4ca-2eadce3f9a6mr4248981fa.29.1717704630713; Thu, 06 Jun 2024
- 13:10:30 -0700 (PDT)
+        bh=MqoEdi+5Li7qCxgZnJ0d4rFJMsPiflzcBA1WO++S0A4=;
+        b=kJ6R9cKo9c7abcCCIA1QFAOYE/vo/9bXTW9cJb1Ra1jbvH88aIQb+ydIhLJYaIvMDw
+         RqrQxK5+j9Dsuwqyjkl2k1T0CrAtMAU4QcFReim8gAl2lOW81Sd4VPqS6jlJr6Tbsu5c
+         mjKauV7dXg/Bw7yIjh7H0BI9GwTdkTHlX28R25sP7uHAKS+iiD6FDmAfz+QYlb+F7Swt
+         nDixD7xLpFsvrIe9XqF89kHYbqOZ1z2tcvGATgq5fv2bywyhYwat09Hgb5ISfrhlGvfZ
+         VPVMJCSCwKzK0YzbDr8QBWaTeUojxoOBH4NEQD+qc66nZf/AnUUx/XyziaZCPJppPwtk
+         Dqug==
+X-Forwarded-Encrypted: i=1; AJvYcCUuqinAkcG12I8XaZRUYav7yG9TnJZoNBRKHD91fGrVYOi3p0fUEapkUKTxa/E4ye1oqAc/M07APPl0PR5bPUNoL+SWzKRH2jKuYDCPo1vQpvg+
+X-Gm-Message-State: AOJu0YyPmsfka06tsnO8lMRGfu2C8YrN0/o9JXgjbIi57OIpAWQSYNq0
+	TtBT3w/wIgPoTxO9QM0m9iz5OWmoEQ+QXhwgThm32Ve30XCe27a4knFQkqnwtEidrNlZlz0kj1y
+	IrCbQaIHgl11cAIGgBTmXW7b2ACQ=
+X-Google-Smtp-Source: AGHT+IGe+E8yRR+CT71Fsvaer0y2RqxtMLRAiJ6nUZRps3iY7/5o5Z2BUQ/38UuLanYuW7ZWdPOf501mR5Ez+VzmzyI=
+X-Received: by 2002:a2e:8191:0:b0:2ea:83d1:47fe with SMTP id
+ 38308e7fff4ca-2eadce36253mr4325701fa.20.1717707230856; Thu, 06 Jun 2024
+ 13:53:50 -0700 (PDT)
 MIME-Version: 1.0
-References: <20240606114321.30515-1-chris.lu@mediatek.com> <20240606114321.30515-2-chris.lu@mediatek.com>
-In-Reply-To: <20240606114321.30515-2-chris.lu@mediatek.com>
+References: <20240606114321.30515-1-chris.lu@mediatek.com> <20240606114321.30515-3-chris.lu@mediatek.com>
+In-Reply-To: <20240606114321.30515-3-chris.lu@mediatek.com>
 From: Luiz Augusto von Dentz <luiz.dentz@gmail.com>
-Date: Thu, 6 Jun 2024 16:10:17 -0400
-Message-ID: <CABBYNZJdY8Oo5rwoJx7rAFPaTRhYRe7p0CEN52hv+7tBEoYCxg@mail.gmail.com>
-Subject: Re: [PATCH v4 1/4] Bluetooth: net: add hci_iso_hdr function for iso data
+Date: Thu, 6 Jun 2024 16:53:38 -0400
+Message-ID: <CABBYNZLRWpxfrYDk7JbozC-2mZk2r3BAOkCSEfhR48AH25RkZw@mail.gmail.com>
+Subject: Re: [PATCH v4 2/4] Bluetooth: btusb: add callback function in btusb suspend/resume
 To: Chris Lu <chris.lu@mediatek.com>
 Cc: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg <johan.hedberg@gmail.com>, 
 	Sean Wang <sean.wang@mediatek.com>, Deren Wu <deren.Wu@mediatek.com>, 
@@ -78,8 +78,8 @@ Cc: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg <johan.hedberg@gmail.co
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240606_131035_331345_C82458E5 
-X-CRM114-Status: GOOD (  16.18  )
+X-CRM114-CacheID: sfid-20240606_135354_688056_DF6DA717 
+X-CRM114-Status: GOOD (  15.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,36 +99,54 @@ Hi Chris,
 On Thu, Jun 6, 2024 at 7:43=E2=80=AFAM Chris Lu <chris.lu@mediatek.com> wro=
 te:
 >
-> Add function hci_iso_hdr to get skb->data when packet type is ISO.
+> Add new function: dev_suspend/dev_resume in btusb_data which are reserved
+> for vendor specific usage during suspend/resume. dev_suspend will be
+> added before stop traffic in btusb_suspend and dev_resume will be
+> added after resubmit urb in btusb_resuem.
 >
 > Signed-off-by: Chris Lu <chris.lu@mediatek.com>
 > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 > ---
->  include/net/bluetooth/hci.h | 5 +++++
->  1 file changed, 5 insertions(+)
+>  drivers/bluetooth/btusb.c | 9 +++++++++
+>  1 file changed, 9 insertions(+)
 >
-> diff --git a/include/net/bluetooth/hci.h b/include/net/bluetooth/hci.h
-> index e372a88e8c3f..b9f8f91f6c7f 100644
-> --- a/include/net/bluetooth/hci.h
-> +++ b/include/net/bluetooth/hci.h
-> @@ -2898,6 +2898,11 @@ static inline struct hci_sco_hdr *hci_sco_hdr(cons=
-t struct sk_buff *skb)
->         return (struct hci_sco_hdr *) skb->data;
->  }
+> diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+> index 79aefdb3324d..83765c0c14b4 100644
+> --- a/drivers/bluetooth/btusb.c
+> +++ b/drivers/bluetooth/btusb.c
+> @@ -891,6 +891,9 @@ struct btusb_data {
 >
-> +static inline struct hci_iso_hdr *hci_iso_hdr(const struct sk_buff *skb)
-> +{
-> +       return (struct hci_iso_hdr *) skb->data;
-> +}
+>         int (*setup_on_usb)(struct hci_dev *hdev);
+>
+> +       int (*dev_suspend)(struct hci_dev *hdev);
+> +       int (*dev_resume)(struct hci_dev *hdev);
 
-We might as well check the skb->len before attempting to cast
-skb->data or better yet use skb_pull_data but I guess that is not
-possible since you don't want to consume the skb?
+I'd name these suspend, resume respectively.
 
->  /* Command opcode pack/unpack */
->  #define hci_opcode_pack(ogf, ocf)      ((__u16) ((ocf & 0x03ff)|(ogf << =
-10)))
->  #define hci_opcode_ogf(op)             (op >> 10)
+>         int oob_wake_irq;   /* irq for out-of-band wake-on-bt */
+>         unsigned cmd_timeout_cnt;
+>
+> @@ -4715,6 +4718,9 @@ static int btusb_suspend(struct usb_interface *intf=
+, pm_message_t message)
+>
+>         cancel_work_sync(&data->work);
+>
+> +       if (data->dev_suspend)
+> +               data->dev_suspend(data->hdev);
+> +
+>         btusb_stop_traffic(data);
+>         usb_kill_anchored_urbs(&data->tx_anchor);
+>
+> @@ -4818,6 +4824,9 @@ static int btusb_resume(struct usb_interface *intf)
+>                         btusb_submit_isoc_urb(hdev, GFP_NOIO);
+>         }
+>
+> +       if (data->dev_resume)
+> +               data->dev_resume(hdev);
+> +
+>         spin_lock_irq(&data->txlock);
+>         play_deferred(data);
+>         clear_bit(BTUSB_SUSPENDING, &data->flags);
 > --
 > 2.18.0
 >
