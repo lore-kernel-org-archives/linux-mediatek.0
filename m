@@ -4,60 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30A3CC25B75
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Jun 2024 09:21:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99C82C27C52
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Jun 2024 09:23:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=CPx2yWaHLemhBUTcdRE5orcfKOPgZqYlIeD/3fVwd7g=; b=y1/4ONB+/phYtu
-	KOokjlRdPlHvJkXc+PCnzrd+wUQepXo9x/T+eF4Uxb2/NkH5ofXyNDFeu2Ir/spYCoMKbQl6pcc15
-	uIil0VYEIFhBo3D1IKDgWBqYhetoizD+qpGbZvAKDs6ZQoTuTJUPQS/6QLn6VePy5oUP56iFEtpWN
-	or1cS0DUrs3/aVWMcgab7hB6KdKEfnOBSYNC4XP0I26VlcFDNnRhbOtkIK/PCM6BKE5oWOGKppESX
-	bGDRSGXYD4PShPyj0StfvdRI2qMYdZSIl2vp5FZ4iDBIz2bQOUNq0mdyC9seEfHYA9VmHVllkqM9j
-	0cD6/gSPVUCu9suTKcxQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=YUWkF0EjrHqCvoEKuIYDl0OYArHcuV5t20sbJAKBaX8=; b=TI/xpQ0bnnNg57jBUD8m5WBOhL
+	qlp137/bTR2YVNKc+5DT/FZqKzjESJRu/y4SUprG2yX0mmSC5kHRt0gN27jhWtgOuf3fPZQXk7VxL
+	g23Cr83UW4ffjp/kDo+L/vFBRAQhsH1ebCbLWg3YHLJr9FDVHgKNBYQRKxNwzGdWuK0G1nntnW9ff
+	9POlj0vzVvZrm5SRrpk5oqnaAkD4zLLuj0JHD1I98qhZgjIrK/6hJC0xTZaijaBKwooGugo564v2T
+	QQ7vOyEZiKTZf4f0R4n6mVUxZNLFBna2XHdiWxjiNsr1TWu/w5sYYqMLJwF8AAUfCXTLwzcRN9GKD
+	U+tAgCJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sF9JS-000000096QM-2PfD;
-	Thu, 06 Jun 2024 09:21:38 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sF9Li-000000097aI-0Owu;
+	Thu, 06 Jun 2024 09:23:58 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sF9JO-000000096OA-2qW8;
-	Thu, 06 Jun 2024 09:21:36 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id C51C461CE2;
-	Thu,  6 Jun 2024 09:21:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 67703C2BD10;
-	Thu,  6 Jun 2024 09:21:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1717665693;
-	bh=C8sulEDJMrxWYwdcSw3tGuQJg30NjDlZJQNANrn1vsA=;
-	h=From:To:Cc:Subject:Date:From;
-	b=EFerXMHJ/BuFTp3gArt56JMANEARiwmx+3u3439NienSDrWW2U1at+iMb7h06wKYo
-	 FdA4GUWvOobJietEPmp/1VRYQv+nRH7GV5Li0/7m6VrX3cu/gTxU59KNTe24avtB5a
-	 3joAkd0XcXmYTl2SeMjjx5iWexZR+CqzwNBEl+s/cm/yMPz1bSeIOOJxuqA5Bkzs0M
-	 q4U37ml6qELvOwjX69MMw1O/kESa4cRAs/8MeTv74E+0N6wqyN6zY85wOUR7t7tWeV
-	 PVClUNTc5f7kyB9mhUNcOxnS3mjOfwowjgYjbtg6qsd4LpMaZODCzDCV0Dt66HImGa
-	 r6XZ0RyABTz4g==
-From: Michael Walle <mwalle@kernel.org>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	David Airlie <airlied@gmail.com>,
-	Daniel Vetter <daniel@ffwll.ch>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH RESEND v5] drm/mediatek: dpi/dsi: fix possible_crtcs calculation
-Date: Thu,  6 Jun 2024 11:21:22 +0200
-Message-Id: <20240606092122.2026313-1-mwalle@kernel.org>
-X-Mailer: git-send-email 2.39.2
+	id 1sF9La-000000097US-30ow
+	for linux-mediatek@lists.infradead.org;
+	Thu, 06 Jun 2024 09:23:56 +0000
+X-UUID: 7ad0e93423e611efba8bfb22b0451c12-20240606
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=YUWkF0EjrHqCvoEKuIYDl0OYArHcuV5t20sbJAKBaX8=;
+	b=E5Amf2qySzd55tJBDfoeXNcqZ3aQKQlWaMTom7BDRSMf9gctASs71sf7+nTBMzNKKdQkU2Lr1Gy2HwKcZJDQy6MqdpL+XGtqa1pokxlWp4Jm0mV64CW9MddubduAcJIv9f6zWicYVEwnscc96czgNCLpLB7TZOFYO4BOZxniwWc=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.39,REQID:d4fed7d5-20ff-4a34-b09e-73c539010f52,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:393d96e,CLOUDID:8e324744-4544-4d06-b2b2-d7e12813c598,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 7ad0e93423e611efba8bfb22b0451c12-20240606
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+	(envelope-from <chris.lu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 167413892; Thu, 06 Jun 2024 02:23:48 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS14N2.mediatek.inc (172.21.101.76) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Thu, 6 Jun 2024 17:23:45 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Thu, 6 Jun 2024 17:23:45 +0800
+From: Chris Lu <chris.lu@mediatek.com>
+To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
+	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
+CC: Sean Wang <sean.wang@mediatek.com>, Deren Wu <deren.Wu@mediatek.com>,
+	Aaron Hou <aaron.hou@mediatek.com>, Steve Lee <steve.lee@mediatek.com>,
+	linux-bluetooth <linux-bluetooth@vger.kernel.org>, linux-kernel
+	<linux-kernel@vger.kernel.org>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Chris Lu <chris.lu@mediatek.com>
+Subject: [PATCH v3 2/4] Bluetooth: btusb: add callback function in btusb suspend/resume
+Date: Thu, 6 Jun 2024 17:23:38 +0800
+Message-ID: <20240606092340.27675-3-chris.lu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20240606092340.27675-1-chris.lu@mediatek.com>
+References: <20240606092340.27675-1-chris.lu@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--4.166100-8.000000
+X-TMASE-MatchedRID: xKwqdG8zLkdQs1SN7/4/ILiMC5wdwKqdgRykyfrH1xl0Rk5xb2PnltXf
+	akMEIQ7HfLIS8FLmihpf1xEson1kFmQkHQEHAoWZJsxvR/kPS6pMkOX0UoduuQqiCYa6w8tvb7e
+	EsDP9hR2F8NrNX0LQ3A/uoMrYx9wGVOSZp87t6zCeAiCmPx4NwBnUJ0Ek6yhjxEHRux+uk8hxKp
+	vEGAbTDpA4qPsOFhGU2AcfteNpKqCv4HZLkRYL2yB16cmW2l1XxeTCd0IgD9vg1qtq6TmR6fzU0
+	+t51hhPdCxMVm/tSlF6biAvwhuk1HmVKZusLp922v9OjYWA2uMMswg45VMfPXY3pGDmoik6
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--4.166100-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: AFBE66133EF398CF08C94DC5187EB8B22737B0F790BA5777F38581CEC15F941D2000:8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240606_022134_869145_9E6B70EC 
-X-CRM114-Status: GOOD (  20.61  )
+X-CRM114-CacheID: sfid-20240606_022350_917021_B0AAFB01 
+X-CRM114-Status: UNSURE (   9.01  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,221 +97,55 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Jitao Shi <jitao.shi@mediatek.com>, =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?= <nfraprado@collabora.com>, "Jason-JH . Lin" <jason-jh.lin@mediatek.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Stu Hsieh <stu.hsieh@mediatek.com>, Michael Walle <mwalle@kernel.org>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mtk_find_possible_crtcs() assumes that the main path will always have
-the CRTC with id 0, the ext id 1 and the third id 2. This is only true
-if the paths are all available. But paths are optional (see also
-comment in mtk_drm_kms_init()), e.g. the main path might not be enabled
-or available at all. Then the CRTC IDs will shift one up, e.g. ext will
-be 0 and the third path will be 1.
+Add new function: dev_suspend/dev_resume in btusb_data which are reserved
+for vendor specific usage during suspend/resume. dev_suspend will be
+added before stop traffic in btusb_suspend and dev_resume will be
+added after resubmit urb in btusb_resuem.
 
-To fix that, dynamically calculate the IDs by the presence of the paths.
-
-While at it, make the return code a signed one and return -ENODEV if no
-path is found and handle the error in the callers.
-
-Fixes: 5aa8e7647676 ("drm/mediatek: dpi/dsi: Change the getting possible_crtc way")
-Suggested-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-Signed-off-by: Michael Walle <mwalle@kernel.org>
+Signed-off-by: Chris Lu <chris.lu@mediatek.com>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
-You can find v4 at [1]. Unfortunately, it was never applied and in the
-meantime there was a change in mtk_find_possible_crtcs(). So I've
-dropped Nícolas Reviewed and Tested-by tags and Angelos Reviewed-by
-tag.
+ drivers/bluetooth/btusb.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
-[1] https://lore.kernel.org/r/20230905084922.3908121-2-mwalle@kernel.org/
----
- drivers/gpu/drm/mediatek/mtk_ddp_comp.c | 105 ++++++++++++++++--------
- drivers/gpu/drm/mediatek/mtk_ddp_comp.h |   2 +-
- drivers/gpu/drm/mediatek/mtk_dpi.c      |   5 +-
- drivers/gpu/drm/mediatek/mtk_dsi.c      |   5 +-
- 4 files changed, 78 insertions(+), 39 deletions(-)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
-index 17b036411292..9a8c1cace8a0 100644
---- a/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
-@@ -514,29 +514,42 @@ static bool mtk_ddp_comp_find(struct device *dev,
- 	return false;
- }
+diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+index 79aefdb3324d..83765c0c14b4 100644
+--- a/drivers/bluetooth/btusb.c
++++ b/drivers/bluetooth/btusb.c
+@@ -891,6 +891,9 @@ struct btusb_data {
  
--static unsigned int mtk_ddp_comp_find_in_route(struct device *dev,
--					       const struct mtk_drm_route *routes,
--					       unsigned int num_routes,
--					       struct mtk_ddp_comp *ddp_comp)
-+static int mtk_ddp_comp_find_in_route(struct device *dev,
-+				      const struct mtk_drm_route *routes,
-+				      unsigned int num_routes,
-+				      struct mtk_ddp_comp *ddp_comp)
- {
--	int ret;
- 	unsigned int i;
+ 	int (*setup_on_usb)(struct hci_dev *hdev);
  
--	if (!routes) {
--		ret = -EINVAL;
--		goto err;
--	}
-+	if (!routes)
-+		return -EINVAL;
- 
- 	for (i = 0; i < num_routes; i++)
- 		if (dev == ddp_comp[routes[i].route_ddp].dev)
- 			return BIT(routes[i].crtc_id);
- 
--	ret = -ENODEV;
--err:
-+	return -ENODEV;
-+}
- 
--	DRM_INFO("Failed to find comp in ddp table, ret = %d\n", ret);
-+static bool mtk_ddp_path_available(const unsigned int *path,
-+				   unsigned int path_len,
-+				   struct device_node **comp_node)
-+{
-+	unsigned int i;
- 
--	return 0;
-+	if (!path || !path_len)
-+		return false;
++	int (*dev_suspend)(struct hci_dev *hdev);
++	int (*dev_resume)(struct hci_dev *hdev);
 +
-+	for (i = 0U; i < path_len; i++) {
-+		/* OVL_ADAPTOR doesn't have a device node */
-+		if (path[i] == DDP_COMPONENT_DRM_OVL_ADAPTOR)
-+			continue;
-+
-+		if (!comp_node[path[i]])
-+			return false;
-+	}
-+
-+	return true;
- }
+ 	int oob_wake_irq;   /* irq for out-of-band wake-on-bt */
+ 	unsigned cmd_timeout_cnt;
  
- int mtk_ddp_comp_get_id(struct device_node *node,
-@@ -554,32 +567,52 @@ int mtk_ddp_comp_get_id(struct device_node *node,
- 	return -EINVAL;
- }
+@@ -4715,6 +4718,9 @@ static int btusb_suspend(struct usb_interface *intf, pm_message_t message)
  
--unsigned int mtk_find_possible_crtcs(struct drm_device *drm, struct device *dev)
-+int mtk_find_possible_crtcs(struct drm_device *drm, struct device *dev)
- {
- 	struct mtk_drm_private *private = drm->dev_private;
--	unsigned int ret = 0;
--
--	if (mtk_ddp_comp_find(dev,
--			      private->data->main_path,
--			      private->data->main_len,
--			      private->ddp_comp))
--		ret = BIT(0);
--	else if (mtk_ddp_comp_find(dev,
--				   private->data->ext_path,
--				   private->data->ext_len,
--				   private->ddp_comp))
--		ret = BIT(1);
--	else if (mtk_ddp_comp_find(dev,
--				   private->data->third_path,
--				   private->data->third_len,
--				   private->ddp_comp))
--		ret = BIT(2);
--	else
--		ret = mtk_ddp_comp_find_in_route(dev,
--						 private->data->conn_routes,
--						 private->data->num_conn_routes,
--						 private->ddp_comp);
-+	const struct mtk_mmsys_driver_data *data;
-+	struct mtk_drm_private *priv_n;
-+	int i = 0, j;
-+	int ret;
+ 	cancel_work_sync(&data->work);
  
-+	for (j = 0; j < private->data->mmsys_dev_num; j++) {
-+		priv_n = private->all_drm_private[j];
-+		data = priv_n->data;
++	if (data->dev_suspend)
++		data->dev_suspend(data->hdev);
 +
-+		if (mtk_ddp_path_available(data->main_path, data->main_len,
-+					   priv_n->comp_node)) {
-+			if (mtk_ddp_comp_find(dev, data->main_path,
-+					      data->main_len,
-+					      priv_n->ddp_comp))
-+				return BIT(i);
-+			i++;
-+		}
-+
-+		if (mtk_ddp_path_available(data->ext_path, data->ext_len,
-+					   priv_n->comp_node)) {
-+			if (mtk_ddp_comp_find(dev, data->ext_path,
-+					      data->ext_len,
-+					      priv_n->ddp_comp))
-+				return BIT(i);
-+			i++;
-+		}
-+
-+		if (mtk_ddp_path_available(data->third_path, data->third_len,
-+					   priv_n->comp_node)) {
-+			if (mtk_ddp_comp_find(dev, data->third_path,
-+					      data->third_len,
-+					      priv_n->ddp_comp))
-+				return BIT(i);
-+			i++;
-+		}
-+	}
-+
-+	ret = mtk_ddp_comp_find_in_route(dev,
-+					 private->data->conn_routes,
-+					 private->data->num_conn_routes,
-+					 private->ddp_comp);
-+
-+	DRM_INFO("Failed to find comp in ddp table, ret = %d\n", ret);
- 	return ret;
- }
+ 	btusb_stop_traffic(data);
+ 	usb_kill_anchored_urbs(&data->tx_anchor);
  
-diff --git a/drivers/gpu/drm/mediatek/mtk_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_ddp_comp.h
-index 26236691ce4c..e2ea19d5ddcb 100644
---- a/drivers/gpu/drm/mediatek/mtk_ddp_comp.h
-+++ b/drivers/gpu/drm/mediatek/mtk_ddp_comp.h
-@@ -326,7 +326,7 @@ static inline void mtk_ddp_comp_encoder_index_set(struct mtk_ddp_comp *comp)
- 
- int mtk_ddp_comp_get_id(struct device_node *node,
- 			enum mtk_ddp_comp_type comp_type);
--unsigned int mtk_find_possible_crtcs(struct drm_device *drm, struct device *dev);
-+int mtk_find_possible_crtcs(struct drm_device *drm, struct device *dev);
- int mtk_ddp_comp_init(struct device_node *comp_node, struct mtk_ddp_comp *comp,
- 		      unsigned int comp_id);
- enum mtk_ddp_comp_type mtk_ddp_comp_get_type(unsigned int comp_id);
-diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-index 5c86aa0b75b2..b894be9f1f53 100644
---- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-@@ -814,7 +814,10 @@ static int mtk_dpi_bind(struct device *dev, struct device *master, void *data)
- 		return ret;
+@@ -4818,6 +4824,9 @@ static int btusb_resume(struct usb_interface *intf)
+ 			btusb_submit_isoc_urb(hdev, GFP_NOIO);
  	}
  
--	dpi->encoder.possible_crtcs = mtk_find_possible_crtcs(drm_dev, dpi->dev);
-+	ret = mtk_find_possible_crtcs(drm_dev, dpi->dev);
-+	if (ret < 0)
-+		goto err_cleanup;
-+	dpi->encoder.possible_crtcs = ret;
- 
- 	ret = drm_bridge_attach(&dpi->encoder, &dpi->bridge, NULL,
- 				DRM_BRIDGE_ATTACH_NO_CONNECTOR);
-diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index 2b0ac859a653..b450b7223aa2 100644
---- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -861,7 +861,10 @@ static int mtk_dsi_encoder_init(struct drm_device *drm, struct mtk_dsi *dsi)
- 		return ret;
- 	}
- 
--	dsi->encoder.possible_crtcs = mtk_find_possible_crtcs(drm, dsi->host.dev);
-+	ret = mtk_find_possible_crtcs(drm, dsi->host.dev);
-+	if (ret < 0)
-+		goto err_cleanup_encoder;
-+	dsi->encoder.possible_crtcs = ret;
- 
- 	ret = drm_bridge_attach(&dsi->encoder, &dsi->bridge, NULL,
- 				DRM_BRIDGE_ATTACH_NO_CONNECTOR);
++	if (data->dev_resume)
++		data->dev_resume(hdev);
++
+ 	spin_lock_irq(&data->txlock);
+ 	play_deferred(data);
+ 	clear_bit(BTUSB_SUSPENDING, &data->flags);
 -- 
-2.39.2
+2.18.0
 
 
