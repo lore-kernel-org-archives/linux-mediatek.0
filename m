@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 059C5C25B75
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2E96C27C55
 	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Jun 2024 09:28:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
@@ -12,66 +12,66 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eZKO88CO0xpIr8eEH7GyW6Q9PldkqlJN3BKnCMAVSJ4=; b=hr4bIXVQ0WmU5Jrq/PB7M6qJLO
-	KltJCupmkvs0onPBSUcVFKIdRf7/MoViFNR4yCrAIs8CNt5SvebRQWr/NtriBvA1wZkv9zM2HBTZw
-	MQAUIjvUmITaN9D46/fGFAt8GK835yDRDyMHnXkhXXQrOdCYix5ZnG6bVG7LGRo7/oNvAvtU0sXhu
-	nhTNKIQ1pD80LorVRsMEUBuQC8XPg3Wn71cHPCNImOSC393DiVzyYALWBmMzdZXaPzjNBWtfSSD7C
-	dgfx9A0572D56TIRaE3le7tQv8jinuIXyE5wJx5PgcUzXdw7G3HcnWdEIwQW0dVayKyVvIu0aat3I
-	QkVjCl1g==;
+	bh=tN2fthEvbDALIOfu9f+hoAOF8rB39TbT5fxu0nBzcF0=; b=ZNZdHVW8346U8EH8rTnlN1tBdB
+	TBHcV+sB67dyzO9dq6XTGyJrHyPxYx/ShGrYWsZC54emnZ4eIzBZ4Fvf6LRwPllnHz3DNt6JDcc1B
+	58s6mpp6ma3+Je8xZqR6+3sZ3VHRbBlvs1rj1fqV9aZvxaz2sLYDxBJqkIPTu4JK75udImICeAkpV
+	L3q6gAudve3HcQvge5/1KiGtlPWDdyOnb9ZIaRZpgZJTjLWbCbNEuLctxOd2ZYHpRJJLQdSZ/oPfz
+	bH7keEmBV/+6hRFO8T6nX6cxvrYQEz0h9qnhEVPdXrEvMayh3s1ZAKxN35mec7OSZsJaaqr2ULsGI
+	Lgi15GAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sF9QB-00000009BFz-1gpm;
-	Thu, 06 Jun 2024 09:28:35 +0000
+	id 1sF9QC-00000009BGl-18Xn;
+	Thu, 06 Jun 2024 09:28:36 +0000
 Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sF9P8-00000009AL8-36E8;
-	Thu, 06 Jun 2024 09:27:30 +0000
+	id 1sF9P8-00000009ALU-44xJ;
+	Thu, 06 Jun 2024 09:27:31 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=casper.20170209; h=Content-Type:MIME-Version:References:
 	In-Reply-To:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=eZKO88CO0xpIr8eEH7GyW6Q9PldkqlJN3BKnCMAVSJ4=; b=bSO71ozUPihmVroCZdh/M+o9P2
-	VZjPDdq8dOJ9icM0F9hSzuJX/BVGuhRNkXdqRBXLCgnx0DPw9bHZm0U4JRP0lU1DzsDhkEXPlj8iU
-	fCTKQsfxKSO4ZZHBN3ZZhFfrZqXGUiddiVAwaLYPeJ+bbiHt9aWRHnE3E5vxhOvDwBeToU0NVVvSE
-	Wo3hMsI6TIJ8YiNnvIvBHvUU6JBxfK7bZA+O5jJpda28HioTLlob10XdAjGRrStsr9TRKqrfdeTMG
-	xUAWBPPEdULAhqZGwTc5mNQ9REXNei4NXHgAaaGZNXSXJngivukmtfy/XJM45mBIUj2JD0sEb+Z7s
-	BqhTEFUg==;
+	bh=tN2fthEvbDALIOfu9f+hoAOF8rB39TbT5fxu0nBzcF0=; b=fIE3zc3dZNgnclTnobw3c33a4x
+	URMOZsM4H2uPMh858lnIP2nU0jUNWGMsHUj1PggFKMvOGZLbLawW9Q+LTul3zYAbekiIsFes4Bp7s
+	S5kA7xi395YVum1ynue7KdQKquxJGT2ztpE6mnDnGWkGvCX7ZuzIOaKhyUNAo2KeL49bY97Ud6JN+
+	j6ldIQXqGM1AWK/ViEsskxJdh+FfC3xFd+H6Hv8qmT5/ugautmZ3eReMA9fJISl8ZmtXIJf2+4f8c
+	8fORy5Q8ffpzKwU+4PsmObJF4+Xg88J6SGhMZFC5voblA7bqoU91d7FY2l66vvlbNFuwgq9/DR5UP
+	BqP6jdjw==;
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by casper.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sF9P5-0000000Cnfl-1yLF;
+	id 1sF9P5-0000000Cnfk-3TtL;
 	Thu, 06 Jun 2024 09:27:29 +0000
-X-UUID: f54e0c8c23e611efaf04eb0598667787-20240606
+X-UUID: f4eb3cb023e611efaf04eb0598667787-20240606
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=eZKO88CO0xpIr8eEH7GyW6Q9PldkqlJN3BKnCMAVSJ4=;
-	b=ITgbRBD2J4GULJIVdpgIc+lt39Z3uJ2yA24H/BcOJ5MP1yyqyfM+ChlyI8V2/wlujVvlcruab+P8cBYpccUpSSPh6DibjighLyCylumjr5jPfLiFsfbSmkzJfBn119AbKTrwrMSGjVCI45cI4+aDnQdcdQGdlyAuObo09j/QKwQ=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=tN2fthEvbDALIOfu9f+hoAOF8rB39TbT5fxu0nBzcF0=;
+	b=RaglGVt6YwvkqOwJMIvpN1FMlnJJRhLDVfPwMKRe6skv/soSzsUmj+gbE8WNxhcCDyZ1mywusrqEOedG2FQxvijvnN1+ihr2vwAjsvJqftvT+nC8vmEZ96DqvDLHw4BCnGEY6oFF5F9R4+3+twgQLuImboTnfk3+lq/vCTwCeWc=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.39,REQID:986a2cc8-6b5c-4ead-95c7-d9de7ec21c43,IP:0,U
+X-CID-O-INFO: VERSION:1.1.39,REQID:3a3ee920-fea2-4d79-9197-ab177e0bd6b9,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:393d96e,CLOUDID:85e2c984-4f93-4875-95e7-8c66ea833d57,B
+X-CID-META: VersionHash:393d96e,CLOUDID:0b3d4744-4544-4d06-b2b2-d7e12813c598,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
 	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: f54e0c8c23e611efaf04eb0598667787-20240606
+X-UUID: f4eb3cb023e611efaf04eb0598667787-20240606
 Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
 	(envelope-from <shawn.sung@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 880506714; Thu, 06 Jun 2024 02:27:13 -0700
+	with ESMTP id 1267874468; Thu, 06 Jun 2024 02:27:13 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
  mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 6 Jun 2024 17:26:37 +0800
+ 15.2.1118.26; Thu, 6 Jun 2024 17:26:36 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 6 Jun 2024 17:26:37 +0800
+ 15.2.1118.26 via Frontend Transport; Thu, 6 Jun 2024 17:26:36 +0800
 From: Shawn Sung <shawn.sung@mediatek.com>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Subject: [PATCH v8 07/16] drm/mediatek: Support more 10bit formats in OVL
-Date: Thu, 6 Jun 2024 17:26:26 +0800
-Message-ID: <20240606092635.27981-8-shawn.sung@mediatek.com>
+Subject: [PATCH v8 04/16] drm/mediatek: Add DRM_MODE_ROTATE_0 to rotation property
+Date: Thu, 6 Jun 2024 17:26:23 +0800
+Message-ID: <20240606092635.27981-5-shawn.sung@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20240606092635.27981-1-shawn.sung@mediatek.com>
 References: <20240606092635.27981-1-shawn.sung@mediatek.com>
@@ -79,8 +79,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240606_102727_823258_EC625C5A 
-X-CRM114-Status: GOOD (  10.71  )
+X-CRM114-CacheID: sfid-20240606_102728_172329_9AF53BAB 
+X-CRM114-Status: GOOD (  13.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,95 +98,85 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Hsiao Chien Sung <shawn.sung@mediatek.com>
 
-Support more 10bit formats in OVL.
+Always add DRM_MODE_ROTATE_0 to rotation property to meet
+IGT's (Intel GPU Tools) requirement.
 
 Reviewed-by: CK Hu <ck.hu@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 32 ++++++++++++++++++++++---
- 1 file changed, 29 insertions(+), 3 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_ddp_comp.h |  6 +++++-
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 17 +++++------------
+ drivers/gpu/drm/mediatek/mtk_plane.c    |  2 +-
+ 3 files changed, 11 insertions(+), 14 deletions(-)
 
+diff --git a/drivers/gpu/drm/mediatek/mtk_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_ddp_comp.h
+index 26236691ce4c..f7fe2e08dc8e 100644
+--- a/drivers/gpu/drm/mediatek/mtk_ddp_comp.h
++++ b/drivers/gpu/drm/mediatek/mtk_ddp_comp.h
+@@ -192,7 +192,11 @@ unsigned int mtk_ddp_comp_supported_rotations(struct mtk_ddp_comp *comp)
+ 	if (comp->funcs && comp->funcs->supported_rotations)
+ 		return comp->funcs->supported_rotations(comp->dev);
+ 
+-	return 0;
++	/*
++	 * In order to pass IGT tests, DRM_MODE_ROTATE_0 is required when
++	 * rotation is not supported.
++	 */
++	return DRM_MODE_ROTATE_0;
+ }
+ 
+ static inline unsigned int mtk_ddp_comp_layer_nr(struct mtk_ddp_comp *comp)
 diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-index 862ab683ed1b..d970cdce06bc 100644
+index b552a02d7eae..862ab683ed1b 100644
 --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
 +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-@@ -71,6 +71,22 @@
- #define	OVL_CON_VIRT_FLIP	BIT(9)
- #define	OVL_CON_HORZ_FLIP	BIT(10)
+@@ -296,27 +296,20 @@ int mtk_ovl_layer_check(struct device *dev, unsigned int idx,
+ 			struct mtk_plane_state *mtk_state)
+ {
+ 	struct drm_plane_state *state = &mtk_state->base;
+-	unsigned int rotation = 0;
  
-+static inline bool is_10bit_rgb(u32 fmt)
-+{
-+	switch (fmt) {
-+	case DRM_FORMAT_XRGB2101010:
-+	case DRM_FORMAT_ARGB2101010:
-+	case DRM_FORMAT_RGBX1010102:
-+	case DRM_FORMAT_RGBA1010102:
-+	case DRM_FORMAT_XBGR2101010:
-+	case DRM_FORMAT_ABGR2101010:
-+	case DRM_FORMAT_BGRX1010102:
-+	case DRM_FORMAT_BGRA1010102:
-+		return true;
-+	}
-+	return false;
-+}
-+
- static const u32 mt8173_formats[] = {
- 	DRM_FORMAT_XRGB8888,
- 	DRM_FORMAT_ARGB8888,
-@@ -88,12 +104,18 @@ static const u32 mt8173_formats[] = {
- static const u32 mt8195_formats[] = {
- 	DRM_FORMAT_XRGB8888,
- 	DRM_FORMAT_ARGB8888,
-+	DRM_FORMAT_XRGB2101010,
- 	DRM_FORMAT_ARGB2101010,
- 	DRM_FORMAT_BGRX8888,
- 	DRM_FORMAT_BGRA8888,
-+	DRM_FORMAT_BGRX1010102,
- 	DRM_FORMAT_BGRA1010102,
- 	DRM_FORMAT_ABGR8888,
- 	DRM_FORMAT_XBGR8888,
-+	DRM_FORMAT_XBGR2101010,
-+	DRM_FORMAT_ABGR2101010,
-+	DRM_FORMAT_RGBX1010102,
-+	DRM_FORMAT_RGBA1010102,
- 	DRM_FORMAT_RGB888,
- 	DRM_FORMAT_BGR888,
- 	DRM_FORMAT_RGB565,
-@@ -253,9 +275,7 @@ static void mtk_ovl_set_bit_depth(struct device *dev, int idx, u32 format,
- 	reg = readl(ovl->regs + DISP_REG_OVL_CLRFMT_EXT);
- 	reg &= ~OVL_CON_CLRFMT_BIT_DEPTH_MASK(idx);
+-	rotation = drm_rotation_simplify(state->rotation,
+-					 DRM_MODE_ROTATE_0 |
+-					 DRM_MODE_REFLECT_X |
+-					 DRM_MODE_REFLECT_Y);
+-	rotation &= ~DRM_MODE_ROTATE_0;
+-
+-	/* We can only do reflection, not rotation */
+-	if ((rotation & DRM_MODE_ROTATE_MASK) != 0)
++	/* check if any unsupported rotation is set */
++	if (state->rotation & ~mtk_ovl_supported_rotations(dev))
+ 		return -EINVAL;
  
--	if (format == DRM_FORMAT_RGBA1010102 ||
--	    format == DRM_FORMAT_BGRA1010102 ||
--	    format == DRM_FORMAT_ARGB2101010)
-+	if (is_10bit_rgb(format))
- 		bit_depth = OVL_CON_CLRFMT_10_BIT;
+ 	/*
+ 	 * TODO: Rotating/reflecting YUV buffers is not supported at this time.
+ 	 *	 Only RGB[AX] variants are supported.
++	 *	 Since DRM_MODE_ROTATE_0 means "no rotation", we should not
++	 *	 reject layers with this property.
+ 	 */
+-	if (state->fb->format->is_yuv && rotation != 0)
++	if (state->fb->format->is_yuv && (state->rotation & ~DRM_MODE_ROTATE_0))
+ 		return -EINVAL;
  
- 	reg |= OVL_CON_CLRFMT_BIT_DEPTH(bit_depth, idx);
-@@ -368,17 +388,23 @@ static unsigned int ovl_fmt_convert(struct mtk_disp_ovl *ovl, unsigned int fmt)
- 		return OVL_CON_CLRFMT_RGB888(ovl) | OVL_CON_BYTE_SWAP;
- 	case DRM_FORMAT_RGBX8888:
- 	case DRM_FORMAT_RGBA8888:
-+	case DRM_FORMAT_RGBX1010102:
-+	case DRM_FORMAT_RGBA1010102:
- 		return OVL_CON_CLRFMT_ARGB8888;
- 	case DRM_FORMAT_BGRX8888:
- 	case DRM_FORMAT_BGRA8888:
-+	case DRM_FORMAT_BGRX1010102:
- 	case DRM_FORMAT_BGRA1010102:
- 		return OVL_CON_CLRFMT_ARGB8888 | OVL_CON_BYTE_SWAP;
- 	case DRM_FORMAT_XRGB8888:
- 	case DRM_FORMAT_ARGB8888:
-+	case DRM_FORMAT_XRGB2101010:
- 	case DRM_FORMAT_ARGB2101010:
- 		return OVL_CON_CLRFMT_RGBA8888;
- 	case DRM_FORMAT_XBGR8888:
- 	case DRM_FORMAT_ABGR8888:
-+	case DRM_FORMAT_XBGR2101010:
-+	case DRM_FORMAT_ABGR2101010:
- 		return OVL_CON_CLRFMT_RGBA8888 | OVL_CON_BYTE_SWAP;
- 	case DRM_FORMAT_UYVY:
- 		return OVL_CON_CLRFMT_UYVY | OVL_CON_MTX_YUV_TO_RGB;
+-	state->rotation = rotation;
+-
+ 	return 0;
+ }
+ 
+diff --git a/drivers/gpu/drm/mediatek/mtk_plane.c b/drivers/gpu/drm/mediatek/mtk_plane.c
+index a74b26d35985..1723d4333f37 100644
+--- a/drivers/gpu/drm/mediatek/mtk_plane.c
++++ b/drivers/gpu/drm/mediatek/mtk_plane.c
+@@ -338,7 +338,7 @@ int mtk_plane_init(struct drm_device *dev, struct drm_plane *plane,
+ 		return err;
+ 	}
+ 
+-	if (supported_rotations & ~DRM_MODE_ROTATE_0) {
++	if (supported_rotations) {
+ 		err = drm_plane_create_rotation_property(plane,
+ 							 DRM_MODE_ROTATE_0,
+ 							 supported_rotations);
 -- 
 2.18.0
 
