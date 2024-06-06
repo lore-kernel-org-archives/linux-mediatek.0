@@ -4,68 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBEA6C27C54
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Jun 2024 15:26:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A764C27C52
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Jun 2024 19:11:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ly6BH2m3JoP+4FyQwUkwBE0M0aUYqYUYUqs4MtHE/7E=; b=1Y5+eXePBUWQ73rvWTdCEDQwRW
-	Jw/cop/mLBwRNSmA23mNBt7pPjE2L7pU3SrxWcFjqfRG3w60KoyqTagjtS1L9owdLnQamOb9fWIty
-	dS8g8mEqFxZ8GAI1tmHaFixBFw77jW8gYvyHtIIZH7Z8XM2JXGGkHVZW22oisS+Ih4hc0I1eYoK/d
-	61r/UqFum3RbBwHCUbGXswXS6IUx4J612ocJOiJMWXhm8nnaDOGsRYvF20K/2ZD/e/MFgfADEsFJL
-	2swHqBMrl79aunpp5xd1qEhgEfrU1HuWOIt7Rt/LYCjxu+oCxD4PTSetdJgWCfBKyB11wyrHXBaRs
-	22Nrx5SA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BNdeZQSKf2IqqK3qzU1VMTEZkMaINNY9Pq71b3gQVIQ=; b=ahlBb2hGRQb97PflP8mEjHlgrB
+	qZf220Mud+ne3nekG0UiAi8zyxwaXEHAS08fTPGnPxV61T8HgN15PpmP78fMvmjG1Ei/9rRnQNxdL
+	0lLq1gDH25OfxXQtmDQ8eQVkMzv7i6lD3t8QuLtz/o/WsQp3dJ0w6uPqCX7kJHNzd0Hc5xDOON1Pi
+	2E6SaCqzgYlkoWVpPKVjbIVjRW1y47/sEKDoqlYbFrS8o9QcnR0WnOm35VFkDqDyrHaccRMxDqO2F
+	7IHgmLS31CAvnlDbPoJqA4oPaqxhFrtnwWxd9IsLv25dXqrxLaeUTjm28VCvNFXu3zJsLEt7Z/w8W
+	Vxx1eLRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sFF0t-0000000AInZ-1KvJ;
-	Thu, 06 Jun 2024 15:26:51 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1sFIW7-0000000B4h0-3i1e;
+	Thu, 06 Jun 2024 19:11:19 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sFF0o-0000000AIlY-4C6Y;
-	Thu, 06 Jun 2024 15:26:49 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 3CC95CE1A4A;
-	Thu,  6 Jun 2024 15:26:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 876D4C32781;
-	Thu,  6 Jun 2024 15:26:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1717687604;
-	bh=g9DU+5xnLtEMAIzCRN/FCtyy6ez/NLtJEwNFQWO4WeU=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=n9YYwlQqi8SfeLRIhucMQqvCL6MADLMFzkhp4D8C64U83lkJpHMBY37hgmjOP8g2u
-	 PbB1bOkRo7ATQhklm+X/pB4T1W5TrkY+UO/qEFmXSBLN0Zo4jqd0mC2sC0/JVpGOO0
-	 /3PNRJ8Id42EncZ/nkr9/Ue9MLgd1Yx558CAvMQRrGSkv+GVhfIJGC82tdJjOfVDBw
-	 TpxpgHNYaEB/Y2szEPhbaNeEgUOIKoDMVjg+Jcc7V8PhWKisjFiTvdqQY7Y1fqR1XR
-	 A/ljObxNcUa6mEUqJ0AikEPWNu7IipRamnOIiM0qMzOlHowrF1r4emJGKJZKcuHfJY
-	 tM9V/P3wHarxw==
-Date: Thu, 6 Jun 2024 08:26:42 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: Elad Yifee <eladwf@gmail.com>
-Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>, Mark
- Lee <Mark-MC.Lee@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet
- <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Russell King
- <linux@armlinux.org.uk>, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Daniel Golle <daniel@makrotopia.org>
-Subject: Re: [PATCH net-next v5] net: ethernet: mtk_eth_soc: ppe: add
- support for multiple PPEs
-Message-ID: <20240606082642.397c0dc0@kernel.org>
-In-Reply-To: <CA+SN3soxVEUUWZHMFX7OeMj56wEw7p9Q=eXXNJwiYz6Bh=pb7Q@mail.gmail.com>
-References: <20240602173247.12651-1-eladwf@gmail.com>
-	<20240605194305.194286d8@kernel.org>
-	<CA+SN3soxVEUUWZHMFX7OeMj56wEw7p9Q=eXXNJwiYz6Bh=pb7Q@mail.gmail.com>
+	id 1sFIW4-0000000B4fn-0ORJ;
+	Thu, 06 Jun 2024 19:11:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1717701072;
+	bh=aISHoo9eqcpGDfEfq7sQGEadbxdEPOe8NFZxhgBU8jg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=P7nZUQURpBOQzSMFx1ivIMnAlTKc51oSoTL53hhjdnM46/9TwJaxSxuFf/LM3Ehhq
+	 vdT0dVZ+XBRIfc2ZC0Mjy3zBKTzxjWDO5bpq8Savkqc90SDhxfglSrHHpXmotRmJRM
+	 ss1W1Ndc2EayE+ddroBj4y+kZnDdom4lTBSAjtrX/Gx5SmG3jjDNCa+ZXWuh1FjLfO
+	 f2twwKH1qJSYP3caT+4zMcTklL33OlXh7Sn19IZQLFy/eE+y52TpZitSQxaX6h6PBm
+	 Hv5oY28vXFgXIfUvOxDgSmiGybN0iTau+ldY5O2BNF+qRC08xkdObnxMVSz+2nky2x
+	 q3CWPk+cuhg5g==
+Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 2DA7E378000A;
+	Thu,  6 Jun 2024 19:11:11 +0000 (UTC)
+Date: Thu, 6 Jun 2024 15:11:09 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Bjorn Andersson <andersson@kernel.org>,
+	Mathieu Poirier <mathieu.poirier@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, kernel@collabora.com,
+	linux-remoteproc@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] remoteproc: mediatek: Don't print error when optional
+ scp handle is missing
+Message-ID: <08125ad3-e5c8-4e96-912c-986b0e08b078@notapiano>
+References: <20240605-mt8195-dma-scp-node-err-v1-1-f2cb42f24d6e@collabora.com>
+ <99d19104-875c-4214-b4a4-4c228cc08b66@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <99d19104-875c-4214-b4a4-4c228cc08b66@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240606_082647_255475_5B563950 
-X-CRM114-Status: GOOD (  16.04  )
+X-CRM114-CacheID: sfid-20240606_121116_313784_69E3572B 
+X-CRM114-Status: GOOD (  20.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,17 +79,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 6 Jun 2024 08:56:49 +0300 Elad Yifee wrote:
-> > I thought Daniel's suggestion was to remove this field.
-> > I don't see your rebuke to that point or how it's addressed in the code.
-> > Also it would be good if you CCed Daniel, always CC people who gave you
-> > feedback.  
-> I talked to Daniel in private, I should have done that publicly.
-> Relying solely on ifindex%ppe_num could potentially lead to more than
-> one GMAC assigned to the same PPE.
-> Since the ingress device could be a non mtk type, I added that sanity check.
-> I think the additional field is a small price to keep things clear and simple.
+On Thu, Jun 06, 2024 at 12:50:56PM +0200, AngeloGioacchino Del Regno wrote:
+> Il 05/06/24 21:35, Nícolas F. R. A. Prado ha scritto:
+> > The scp_get() helper has two users: the mtk-vcodec and the mtk-mdp3
+> > drivers. mdp3 considers the mediatek,scp phandle optional, and when it's
+> > missing mdp3 will directly look for the scp node based on compatible.
+> > 
+> > For that reason printing an error in the helper when the handle is
+> > missing is wrong, as it's not always an actual error. Besides, the other
+> > user, vcodec, already prints an error message on its own when the helper
+> > fails so this message doesn't add that much information.
+> > 
+> > Remove the error message from the helper. This gets rid of the deceptive
+> > error on MT8195-Tomato:
+> > 
+> >    mtk-mdp3 14001000.dma-controller: can't get SCP node
+> 
+> I'm way more for giving it a SCP handle instead of silencing this print... the
+> SCP handle way *is* the correct one and I prefer it, as that'd also be the only
+> way to support Dual-Core SCP in MDP3.
+> 
+> I really want to see hardcoded stuff disappear and I really really *really* want
+> to see more consistency across DT nodes in MediaTek platforms.
+> 
+> So, still a one-line change, but do it on the devicetree instead of here please.
 
-Got it, could you include the justification for sticking to the current
-method in the commit message, maybe?
+Sure. So the missing scp phandle case is maintained exclusively for
+backwards-compatibility. And we're ok that the old DTs will keep getting the
+error.
+
+I'll send a v2 adding the phandle in the DT instead.
+
+Thanks,
+Nícolas
 
