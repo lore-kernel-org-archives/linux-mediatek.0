@@ -4,69 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D405C25B75
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Jun 2024 14:48:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBEA6C27C54
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Jun 2024 15:26:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wJj0WlMMB0aTAZbVw04a+VUP9WZR2hFsklAXKcfbfMA=; b=FdcQUIc3AususZBIUQUFfsbIzP
-	0vakldvIGMZ5i2qQOgBJClbsQTBirsda80d3qFwgp1GV+TvamEKmOoVPOn1ptyMDj2PKZHSymzK0Y
-	e8F1bq+/WR0ZwHXZy+tPjqx4ctKXmnyTbcrh+X53JGx7GBKs5AX2xwaSBL7GvU3qIyuup/+8p15AV
-	fkKeWHr8xpEQVOZ87X6JaQBe1595hAzqpb7xNsckwSLZZ9hselbhUEFQH27osghwkMF9/vA67pvLe
-	dZMcwZO74tEXkrUE1qxWH/Kl9wPm3VfLFoGmbQ4FBCd9gcmoA544HBojOp+2eMcW1Qa16DpxIcUpb
-	IYlGybPA==;
+	bh=ly6BH2m3JoP+4FyQwUkwBE0M0aUYqYUYUqs4MtHE/7E=; b=1Y5+eXePBUWQ73rvWTdCEDQwRW
+	Jw/cop/mLBwRNSmA23mNBt7pPjE2L7pU3SrxWcFjqfRG3w60KoyqTagjtS1L9owdLnQamOb9fWIty
+	dS8g8mEqFxZ8GAI1tmHaFixBFw77jW8gYvyHtIIZH7Z8XM2JXGGkHVZW22oisS+Ih4hc0I1eYoK/d
+	61r/UqFum3RbBwHCUbGXswXS6IUx4J612ocJOiJMWXhm8nnaDOGsRYvF20K/2ZD/e/MFgfADEsFJL
+	2swHqBMrl79aunpp5xd1qEhgEfrU1HuWOIt7Rt/LYCjxu+oCxD4PTSetdJgWCfBKyB11wyrHXBaRs
+	22Nrx5SA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sFEPU-0000000A8WT-1gxT;
-	Thu, 06 Jun 2024 14:48:12 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1sFF0t-0000000AInZ-1KvJ;
+	Thu, 06 Jun 2024 15:26:51 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sFEPQ-0000000A8Va-3UMd;
-	Thu, 06 Jun 2024 14:48:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1717685287;
-	bh=dQuMVnPcFvL2rm7IsOiVG0+PEE/oKkyHvTcPJNmZa+0=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=YtRrkQHKb+X7xskObtg8FVCsFdwW8ShtHfCWtk4KRWoyx36T/q0AyGDwcPLitgXD0
-	 juSSzZ3cVZnQbEDdzMDSSm8xGeGxl3vLT/L53APO2Uo9mJm74o3YO7FrEl2BM+EyDS
-	 RHflhbHlPHGWQ7EThEjdeN/fGUeVCYOlIKGO8DrwcAr/iYf/5sLnc4QHnStmIq0v0h
-	 xLL7JMpSpaAnGsWurIR2SiEcuC0uSUEfaXkzCyK0B0+QnKCJRPycr/Fv0n4gXpkoOX
-	 CpotkDssPI/ghb/8UWFmzZvE0qBspVDQY2C+F0VYLb5GEI9kUvXljorsWjykBsbJu8
-	 LAPtwkBjkdYrA==
-Received: from [100.95.196.25] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: koike)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 233DF37821F4;
-	Thu,  6 Jun 2024 14:48:01 +0000 (UTC)
-Message-ID: <da1366fa-4d48-4227-ae4b-4b39a6607973@collabora.com>
-Date: Thu, 6 Jun 2024 11:47:59 -0300
+	id 1sFF0o-0000000AIlY-4C6Y;
+	Thu, 06 Jun 2024 15:26:49 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 3CC95CE1A4A;
+	Thu,  6 Jun 2024 15:26:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 876D4C32781;
+	Thu,  6 Jun 2024 15:26:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1717687604;
+	bh=g9DU+5xnLtEMAIzCRN/FCtyy6ez/NLtJEwNFQWO4WeU=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=n9YYwlQqi8SfeLRIhucMQqvCL6MADLMFzkhp4D8C64U83lkJpHMBY37hgmjOP8g2u
+	 PbB1bOkRo7ATQhklm+X/pB4T1W5TrkY+UO/qEFmXSBLN0Zo4jqd0mC2sC0/JVpGOO0
+	 /3PNRJ8Id42EncZ/nkr9/Ue9MLgd1Yx558CAvMQRrGSkv+GVhfIJGC82tdJjOfVDBw
+	 TpxpgHNYaEB/Y2szEPhbaNeEgUOIKoDMVjg+Jcc7V8PhWKisjFiTvdqQY7Y1fqR1XR
+	 A/ljObxNcUa6mEUqJ0AikEPWNu7IipRamnOIiM0qMzOlHowrF1r4emJGKJZKcuHfJY
+	 tM9V/P3wHarxw==
+Date: Thu, 6 Jun 2024 08:26:42 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Elad Yifee <eladwf@gmail.com>
+Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>, Mark
+ Lee <Mark-MC.Lee@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet
+ <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Russell King
+ <linux@armlinux.org.uk>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Daniel Golle <daniel@makrotopia.org>
+Subject: Re: [PATCH net-next v5] net: ethernet: mtk_eth_soc: ppe: add
+ support for multiple PPEs
+Message-ID: <20240606082642.397c0dc0@kernel.org>
+In-Reply-To: <CA+SN3soxVEUUWZHMFX7OeMj56wEw7p9Q=eXXNJwiYz6Bh=pb7Q@mail.gmail.com>
+References: <20240602173247.12651-1-eladwf@gmail.com>
+	<20240605194305.194286d8@kernel.org>
+	<CA+SN3soxVEUUWZHMFX7OeMj56wEw7p9Q=eXXNJwiYz6Bh=pb7Q@mail.gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 0/6] drm/ci: uprev mesa/IGT and generate testlist
-To: Vignesh Raman <vignesh.raman@collabora.com>,
- dri-devel@lists.freedesktop.org
-Cc: daniels@collabora.com, airlied@gmail.com, daniel@ffwll.ch,
- robdclark@gmail.com, david.heidelberg@collabora.com,
- guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com,
- dmitry.baryshkov@linaro.org, mcanal@igalia.com,
- linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org,
- linux-rockchip@lists.infradead.org, amd-gfx@lists.freedesktop.org,
- linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
- virtualization@lists.linux-foundation.org, linux-kernel@vger.kernel.org
-References: <20240529024049.356327-1-vignesh.raman@collabora.com>
-Content-Language: en-US
-From: Helen Koike <helen.koike@collabora.com>
-In-Reply-To: <20240529024049.356327-1-vignesh.raman@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240606_074809_040529_5284FA22 
-X-CRM114-Status: GOOD (  11.92  )
+X-CRM114-CacheID: sfid-20240606_082647_255475_5B563950 
+X-CRM114-Status: GOOD (  16.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,107 +80,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Thu, 6 Jun 2024 08:56:49 +0300 Elad Yifee wrote:
+> > I thought Daniel's suggestion was to remove this field.
+> > I don't see your rebuke to that point or how it's addressed in the code.
+> > Also it would be good if you CCed Daniel, always CC people who gave you
+> > feedback.  
+> I talked to Daniel in private, I should have done that publicly.
+> Relying solely on ifindex%ppe_num could potentially lead to more than
+> one GMAC assigned to the same PPE.
+> Since the ingress device could be a non mtk type, I added that sanity check.
+> I think the additional field is a small price to keep things clear and simple.
 
-
-On 28/05/2024 23:40, Vignesh Raman wrote:
-> Uprev mesa and IGT to the latest version and stop vendoring the
-> testlist into the kernel. Instead, use the testlist from the
-> IGT build to ensure we do not miss renamed or newly added tests.
-> Update the xfails with the latest testlist run.
-> 
-> Add farm variable and update device type variable.
-> 
-> https://gitlab.freedesktop.org/vigneshraman/linux/-/pipelines/1187556
-> 
-> Vignesh Raman (6):
->    drm/ci: uprev mesa version
->    drm/ci: add farm variable
->    drm/ci: generate testlist from build
->    drm/ci: uprev IGT
->    drm/ci: skip driver specific tests
->    drm/ci: update xfails for the new testlist
-> 
->   drivers/gpu/drm/ci/build-igt.sh               |   41 +-
->   drivers/gpu/drm/ci/build.sh                   |    6 +-
->   drivers/gpu/drm/ci/container.yml              |   12 +-
->   drivers/gpu/drm/ci/gitlab-ci.yml              |   46 +-
->   drivers/gpu/drm/ci/igt_runner.sh              |    9 +-
->   drivers/gpu/drm/ci/image-tags.yml             |    2 +-
->   drivers/gpu/drm/ci/lava-submit.sh             |    4 +-
->   drivers/gpu/drm/ci/test.yml                   |   17 +-
->   drivers/gpu/drm/ci/testlist.txt               | 2761 -----------------
->   .../gpu/drm/ci/xfails/amdgpu-stoney-fails.txt |   41 +-
->   .../drm/ci/xfails/amdgpu-stoney-flakes.txt    |    7 +
->   .../gpu/drm/ci/xfails/amdgpu-stoney-skips.txt |   33 +-
->   drivers/gpu/drm/ci/xfails/i915-amly-fails.txt |   31 +
->   .../gpu/drm/ci/xfails/i915-amly-flakes.txt    |    9 +
->   drivers/gpu/drm/ci/xfails/i915-amly-skips.txt |   22 +-
->   drivers/gpu/drm/ci/xfails/i915-apl-fails.txt  |   46 +-
->   drivers/gpu/drm/ci/xfails/i915-apl-flakes.txt |    6 +
->   drivers/gpu/drm/ci/xfails/i915-apl-skips.txt  |   26 +-
->   drivers/gpu/drm/ci/xfails/i915-cml-fails.txt  |   38 +
->   drivers/gpu/drm/ci/xfails/i915-cml-flakes.txt |    6 +
->   drivers/gpu/drm/ci/xfails/i915-cml-skips.txt  |   23 +
->   drivers/gpu/drm/ci/xfails/i915-glk-fails.txt  |   41 +-
->   drivers/gpu/drm/ci/xfails/i915-glk-flakes.txt |    7 +
->   drivers/gpu/drm/ci/xfails/i915-glk-skips.txt  |   26 +-
->   drivers/gpu/drm/ci/xfails/i915-kbl-fails.txt  |   42 +-
->   drivers/gpu/drm/ci/xfails/i915-kbl-flakes.txt |    7 +-
->   drivers/gpu/drm/ci/xfails/i915-kbl-skips.txt  |   36 +-
->   drivers/gpu/drm/ci/xfails/i915-tgl-fails.txt  |   77 +-
->   drivers/gpu/drm/ci/xfails/i915-tgl-skips.txt  |   28 +-
->   drivers/gpu/drm/ci/xfails/i915-whl-fails.txt  |   63 +-
->   drivers/gpu/drm/ci/xfails/i915-whl-flakes.txt |    6 +
->   drivers/gpu/drm/ci/xfails/i915-whl-skips.txt  |   22 +-
->   .../drm/ci/xfails/mediatek-mt8173-fails.txt   |   30 +-
->   .../drm/ci/xfails/mediatek-mt8173-flakes.txt  |   11 +
->   .../drm/ci/xfails/mediatek-mt8173-skips.txt   |   16 +
->   .../drm/ci/xfails/mediatek-mt8183-fails.txt   |   21 +-
->   .../drm/ci/xfails/mediatek-mt8183-skips.txt   |   18 +
->   .../gpu/drm/ci/xfails/meson-g12b-fails.txt    |   24 +-
->   .../gpu/drm/ci/xfails/meson-g12b-skips.txt    |   18 +
->   .../gpu/drm/ci/xfails/msm-apq8016-fails.txt   |   12 +-
->   .../gpu/drm/ci/xfails/msm-apq8016-skips.txt   |   15 +
->   .../gpu/drm/ci/xfails/msm-apq8096-fails.txt   |    7 +
->   .../gpu/drm/ci/xfails/msm-apq8096-flakes.txt  |    6 +
->   .../gpu/drm/ci/xfails/msm-apq8096-skips.txt   |   26 +-
->   .../msm-sc7180-trogdor-kingoftown-fails.txt   |  175 +-
->   .../msm-sc7180-trogdor-kingoftown-flakes.txt  |    8 +
->   .../msm-sc7180-trogdor-kingoftown-skips.txt   |   19 +
->   ...sm-sc7180-trogdor-lazor-limozeen-fails.txt |  175 +-
->   ...m-sc7180-trogdor-lazor-limozeen-flakes.txt |    6 +
->   ...sm-sc7180-trogdor-lazor-limozeen-skips.txt |   16 +
->   .../gpu/drm/ci/xfails/msm-sdm845-fails.txt    |   38 +-
->   .../gpu/drm/ci/xfails/msm-sdm845-flakes.txt   |   25 +-
->   .../gpu/drm/ci/xfails/msm-sdm845-skips.txt    |   19 +
->   .../drm/ci/xfails/rockchip-rk3288-fails.txt   |   62 +-
->   .../drm/ci/xfails/rockchip-rk3288-skips.txt   |   21 +-
->   .../drm/ci/xfails/rockchip-rk3399-fails.txt   |   83 +-
->   .../drm/ci/xfails/rockchip-rk3399-flakes.txt  |   13 +-
->   .../drm/ci/xfails/rockchip-rk3399-skips.txt   |   19 +
->   drivers/gpu/drm/ci/xfails/update-xfails.py    |    4 +-
->   .../drm/ci/xfails/virtio_gpu-none-fails.txt   |   94 +-
->   .../drm/ci/xfails/virtio_gpu-none-skips.txt   |   20 +-
->   61 files changed, 1348 insertions(+), 3194 deletions(-)
->   delete mode 100644 drivers/gpu/drm/ci/testlist.txt
->   create mode 100644 drivers/gpu/drm/ci/xfails/i915-amly-flakes.txt
->   create mode 100644 drivers/gpu/drm/ci/xfails/i915-apl-flakes.txt
->   create mode 100644 drivers/gpu/drm/ci/xfails/i915-cml-flakes.txt
->   create mode 100644 drivers/gpu/drm/ci/xfails/i915-glk-flakes.txt
->   create mode 100644 drivers/gpu/drm/ci/xfails/i915-whl-flakes.txt
->   create mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8173-flakes.txt
->   create mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8173-skips.txt
->   create mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8183-skips.txt
->   create mode 100644 drivers/gpu/drm/ci/xfails/meson-g12b-skips.txt
->   create mode 100644 drivers/gpu/drm/ci/xfails/msm-apq8016-skips.txt
->   create mode 100644 drivers/gpu/drm/ci/xfails/msm-apq8096-flakes.txt
->   create mode 100644 drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-flakes.txt
->   create mode 100644 drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-lazor-limozeen-flakes.txt
-> 
-
-
-Applied to drm-misc-next
-
-Thanks
-Helen
+Got it, could you include the justification for sticking to the current
+method in the commit message, maybe?
 
