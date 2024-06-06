@@ -4,91 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88656C25B75
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Jun 2024 09:24:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C44F8C27C52
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Jun 2024 09:26:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MRbM1go2u6MZUEVsoScl8wXxNgQ/01QqJmmjheGQRzE=; b=uIV+wILadHdKuamWGQEaVCLa57
-	kv7bWZhTkMsNm3ylRWxfQemUv3GhwtpGAs0N+ymbKXuPG0+Sz7kxCa+E4rBsC+qCrJKSSMxChQl3p
-	peN+IV/C1SAHMhsNa7B9B2Uu5TQ8csVEZmqd1JYlNpnX5O/tglb4f8XpjbipejDPDNmMnxeChXENw
-	k/vPvYWx2SjpEbzi4eSf3lVoTntXCj+V9NfU8A3yzHMlLrMw4kokF0Q+Ys+0LinFsbcAoOoNycads
-	tQqdLY/GX80iSHrhrEcyfG8ywEYTD16nI4pXsH+ZrzZ9ZXmW9oSsatw6eH5ScLJPKJsAxSYB/DfcF
-	HJB1a/Rg==;
+	bh=pa0QB1Cd3dkPzE5XbSbdEfserqCpCI6xMn34GaQ3OaU=; b=em+RdZihNCgr7KHPrB3GJ8PpGk
+	NXHEQMd7MwOlbojUHwbTFHE4QZHCAdLnvzSjqY0g4ifG4+Fb1qROiQRn00r2G49ux6BTmusc1noVi
+	3dWHRbY0WsiWDZGLP4MOZbBdRhQxexVv0tsvbLpQL5lvHomv2GL/UKwotr5KVn3c3BaAuaRWm7TB+
+	bQKSwltN9MCW0Y/vffrxJfXzJAhK+WzSgXmZddD4K5CArt+v/0tv16thPWDZ3VsVxcw7VefTN2LWU
+	TZFv5tAtiqguFNG2zDK4CG8Wi3rnDwsjhNZMfVlokhgfWAhtuUX03apEvduX+aihy+Y5JJ6JEf97T
+	/v+AJFIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sF9M1-000000097oi-15RY;
-	Thu, 06 Jun 2024 09:24:17 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1sF9OU-000000099ja-2Xoc;
+	Thu, 06 Jun 2024 09:26:50 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sF9M0-000000097n9-2ooD
-	for linux-mediatek@bombadil.infradead.org;
-	Thu, 06 Jun 2024 09:24:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Content-Type:MIME-Version:References:
-	In-Reply-To:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=MRbM1go2u6MZUEVsoScl8wXxNgQ/01QqJmmjheGQRzE=; b=JBUnY9iqfG6tdyn/VQ6LDHQTUM
-	e+A3E0s9Skkiv2rsq2KDeAFYilN+E4dq7qZgW0lex0dA8VOhxKVmscztGFa+k5n0+Ns07ig1mxDyc
-	H5JctOsug22DDyrUb66/YTeVVvFk8gF/EBmKSiPjSlTNDW11vu87aTDz3bxbSKTscvmrWa2c2feyj
-	Bt6WqNFWEvXNYNiU7fxElxp24/rSjKusGRx2Of4QzyyIDlkSXqKr/RAo2NuvrKnlwz/Ire56VG3KK
-	1B8pAjCdHlXPkAsSNWKhvX1P6V/lN8RAEcGGvFHmQRwX62AtcdsEVTnI09BfpEb1q+6If76knRdZT
-	QGRDxPqA==;
-Received: from mailgw01.mediatek.com ([216.200.240.184])
-	by casper.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sF9Lw-0000000CnSC-1hSY
-	for linux-mediatek@lists.infradead.org;
-	Thu, 06 Jun 2024 09:24:15 +0000
-X-UUID: 80de741823e611efaf04eb0598667787-20240606
+	id 1sF9OP-000000099eG-0ZKT;
+	Thu, 06 Jun 2024 09:26:46 +0000
+X-UUID: e0df50a823e611efba8bfb22b0451c12-20240606
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=MRbM1go2u6MZUEVsoScl8wXxNgQ/01QqJmmjheGQRzE=;
-	b=pbSgjZcOdZm3iM1utyS0rRQLQ3QYX0V/CftowuGNFGfiqoQGGI+Ea/UISEp2+4j/elU6XGSGuHo75dpTMGez23c6e/st2lCqoFiKuXGvsMr+BnbQB31bZfCoIC2h6xYN4KctVPu9pyN9MHzti6kNa1E4sNF6pHCB33mwhRNTo+k=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=pa0QB1Cd3dkPzE5XbSbdEfserqCpCI6xMn34GaQ3OaU=;
+	b=a8rR0swZX5/Y/QX/uq8gZkm5NT/jePvOyf45uuLBqTzz3Wk24+v0hHNN9bQKntgQzqinqD0Wzj0tZcUrrRE8eFA6AjBA/xuLL9uZpX9o0HvWxnZE6O76kMMwRP92NKHMfVuiqPHLVYcKKzpZIc4Wb+NUfL5RL30lUQANAy09k5A=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.39,REQID:3ec22cf1-bfa4-46db-9269-11b07fb422f7,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:393d96e,CLOUDID:bdd8c984-4f93-4875-95e7-8c66ea833d57,B
+X-CID-O-INFO: VERSION:1.1.39,REQID:9123f3ed-70f7-4108-9f0b-50b09c30c3e5,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:393d96e,CLOUDID:9ee0c984-4f93-4875-95e7-8c66ea833d57,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
 	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 80de741823e611efaf04eb0598667787-20240606
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <chris.lu@mediatek.com>)
+X-UUID: e0df50a823e611efba8bfb22b0451c12-20240606
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+	(envelope-from <shawn.sung@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 297497365; Thu, 06 Jun 2024 02:23:58 -0700
+	with ESMTP id 2042007211; Thu, 06 Jun 2024 02:26:39 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 6 Jun 2024 17:23:44 +0800
+ 15.2.1118.26; Thu, 6 Jun 2024 17:26:37 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 6 Jun 2024 17:23:44 +0800
-From: Chris Lu <chris.lu@mediatek.com>
-To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
-	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
-CC: Sean Wang <sean.wang@mediatek.com>, Deren Wu <deren.Wu@mediatek.com>,
-	Aaron Hou <aaron.hou@mediatek.com>, Steve Lee <steve.lee@mediatek.com>,
-	linux-bluetooth <linux-bluetooth@vger.kernel.org>, linux-kernel
-	<linux-kernel@vger.kernel.org>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Chris Lu <chris.lu@mediatek.com>
-Subject: [PATCH v3 1/4] Bluetooth: net: add hci_iso_hdr function for iso data
-Date: Thu, 6 Jun 2024 17:23:37 +0800
-Message-ID: <20240606092340.27675-2-chris.lu@mediatek.com>
+ 15.2.1118.26 via Frontend Transport; Thu, 6 Jun 2024 17:26:37 +0800
+From: Shawn Sung <shawn.sung@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Subject: [PATCH v8 05/16] drm/mediatek: Set DRM mode configs accordingly
+Date: Thu, 6 Jun 2024 17:26:24 +0800
+Message-ID: <20240606092635.27981-6-shawn.sung@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20240606092340.27675-1-chris.lu@mediatek.com>
-References: <20240606092340.27675-1-chris.lu@mediatek.com>
+In-Reply-To: <20240606092635.27981-1-shawn.sung@mediatek.com>
+References: <20240606092635.27981-1-shawn.sung@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240606_102413_030063_A3A67FF1 
-X-CRM114-Status: UNSURE (   7.57  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240606_022645_209197_FBE37C42 
+X-CRM114-Status: GOOD (  14.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,33 +78,105 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Daniel Vetter <daniel@ffwll.ch>, Sean Paul <sean@poorly.run>, Jason Chen <jason-ch.chen@mediatek.corp-partner.google.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, CK Hu <ck.hu@mediatek.com>, "Nancy . Lin" <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, Bibby Hsieh <bibby.hsieh@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, Hsiao Chien Sung <shawn.sung@mediatek.com>, David Airlie <airlied@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add function hci_iso_hdr to get skb->data when packet type is ISO.
+From: Hsiao Chien Sung <shawn.sung@mediatek.com>
 
-Signed-off-by: Chris Lu <chris.lu@mediatek.com>
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Set DRM mode configs limitation according to the hardware capabilities
+and pass the IGT checks as below:
+
+- The test "graphics.IgtKms.kms_plane" requires a frame buffer with
+  width of 4512 pixels (> 4096).
+- The test "graphics.IgtKms.kms_cursor_crc" checks if the cursor size is
+  defined, and run the test with cursor size from 1x1 to 512x512.
+
+Please notice that the test conditions may change as IGT is updated.
+
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
+Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
 ---
- include/net/bluetooth/hci.h | 5 +++++
- 1 file changed, 5 insertions(+)
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c | 22 ++++++++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_drm_drv.h |  4 ++++
+ 2 files changed, 26 insertions(+)
 
-diff --git a/include/net/bluetooth/hci.h b/include/net/bluetooth/hci.h
-index e372a88e8c3f..b9f8f91f6c7f 100644
---- a/include/net/bluetooth/hci.h
-+++ b/include/net/bluetooth/hci.h
-@@ -2898,6 +2898,11 @@ static inline struct hci_sco_hdr *hci_sco_hdr(const struct sk_buff *skb)
- 	return (struct hci_sco_hdr *) skb->data;
- }
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index 8e047043202b..c9cad3a82737 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -294,6 +294,9 @@ static const struct mtk_mmsys_driver_data mt8188_vdosys0_driver_data = {
+ 	.conn_routes = mt8188_mtk_ddp_main_routes,
+ 	.num_conn_routes = ARRAY_SIZE(mt8188_mtk_ddp_main_routes),
+ 	.mmsys_dev_num = 2,
++	.max_width = 8191,
++	.min_width = 1,
++	.min_height = 1,
+ };
  
-+static inline struct hci_iso_hdr *hci_iso_hdr(const struct sk_buff *skb)
-+{
-+	return (struct hci_iso_hdr *) skb->data;
-+}
+ static const struct mtk_mmsys_driver_data mt8192_mmsys_driver_data = {
+@@ -308,6 +311,9 @@ static const struct mtk_mmsys_driver_data mt8195_vdosys0_driver_data = {
+ 	.main_path = mt8195_mtk_ddp_main,
+ 	.main_len = ARRAY_SIZE(mt8195_mtk_ddp_main),
+ 	.mmsys_dev_num = 2,
++	.max_width = 8191,
++	.min_width = 1,
++	.min_height = 1,
+ };
+ 
+ static const struct mtk_mmsys_driver_data mt8195_vdosys1_driver_data = {
+@@ -315,6 +321,9 @@ static const struct mtk_mmsys_driver_data mt8195_vdosys1_driver_data = {
+ 	.ext_len = ARRAY_SIZE(mt8195_mtk_ddp_ext),
+ 	.mmsys_id = 1,
+ 	.mmsys_dev_num = 2,
++	.max_width = 8191,
++	.min_width = 2, /* 2-pixel align when ethdr is bypassed */
++	.min_height = 1,
+ };
+ 
+ static const struct of_device_id mtk_drm_of_ids[] = {
+@@ -493,6 +502,15 @@ static int mtk_drm_kms_init(struct drm_device *drm)
+ 		for (j = 0; j < private->data->mmsys_dev_num; j++) {
+ 			priv_n = private->all_drm_private[j];
+ 
++			if (priv_n->data->max_width)
++				drm->mode_config.max_width = priv_n->data->max_width;
 +
- /* Command opcode pack/unpack */
- #define hci_opcode_pack(ogf, ocf)	((__u16) ((ocf & 0x03ff)|(ogf << 10)))
- #define hci_opcode_ogf(op)		(op >> 10)
++			if (priv_n->data->min_width)
++				drm->mode_config.min_width = priv_n->data->min_width;
++
++			if (priv_n->data->min_height)
++				drm->mode_config.min_height = priv_n->data->min_height;
++
+ 			if (i == CRTC_MAIN && priv_n->data->main_len) {
+ 				ret = mtk_crtc_create(drm, priv_n->data->main_path,
+ 						      priv_n->data->main_len, j,
+@@ -520,6 +538,10 @@ static int mtk_drm_kms_init(struct drm_device *drm)
+ 		}
+ 	}
+ 
++	/* IGT will check if the cursor size is configured */
++	drm->mode_config.cursor_width = drm->mode_config.max_width;
++	drm->mode_config.cursor_height = drm->mode_config.max_height;
++
+ 	/* Use OVL device for all DMA memory allocations */
+ 	crtc = drm_crtc_from_index(drm, 0);
+ 	if (crtc)
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.h b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
+index 78d698ede1bf..6cfa790e8df5 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.h
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
+@@ -46,6 +46,10 @@ struct mtk_mmsys_driver_data {
+ 	bool shadow_register;
+ 	unsigned int mmsys_id;
+ 	unsigned int mmsys_dev_num;
++
++	int max_width;
++	int min_width;
++	int min_height;
+ };
+ 
+ struct mtk_drm_private {
 -- 
 2.18.0
 
