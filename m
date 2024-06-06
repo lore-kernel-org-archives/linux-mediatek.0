@@ -4,60 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7636FC27C52
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Jun 2024 09:27:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A4E3C27C55
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Jun 2024 09:28:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=i3+6+QTyogEskPWqDueFjhPdOWhJo2GLN1jhaZk0OD0=; b=2HnRm/4TQuzK/Ppt4FnYUpZeAj
-	oLLECdpkM1eUbbSCEM0NYcaNiT7fzoXk60xZeXiuOx4eJ1cEu7CjgaEB6SJnrni6WYEyh459Z/Ul1
-	pBjEUja/4EETaqOkSk1dYncMS+7CIG/X+iEaGaIYsRvBFGqTschvU4udxc5tJhybDKERnAl5cwj2C
-	vWV2ifiFxqZ5T3DysvWYsXln0i0dyyw7RLBTWfuUYfwgfivoAcfflAfHtvk9G9ZynZk/b61AwvpFV
-	TPGft2cK5bfzSYvMlmaO6F1ARPctF7RAX0dU4G+/Eo5L7WDzPKY6xFtmNsQM+fLmXhoRBBW3nuwmM
-	MEG+Vs4w==;
+	bh=IYG8sTACi1sil6Kc88R4geVpX0U0sfptDuMXfXHnqPo=; b=A67bp32U4BBYU+z/yTzHC+9Hgp
+	fcIluP4h/g7HMWFDZVmEqdLvBc50RucXi4kx5Ur73y1+gfNXr6rdqDyPb/HOP35n8Ry/6tnP9tUky
+	fYkvy2a8jFeclq069BqIVOVgeeIakXU6rXiYRtXaJbMjHuUS9lRr6K5cRCMeNIctvbjnBirw5JMfo
+	IycCD1Cz+PsXLYmBnjnRZkPw8z74CYJOsfS4L6b67gF+M3hY0TFEqN0cLSfoP0xFIT4f4wBz+R1W1
+	n2PjWWCHKdfjBYSzQc5sgHzlFsmAImPFjFfba0FJ15sKuqJ/Yp2gwPkqTlmVRmhBZnR9hTNFJ7KfG
+	TNtInjZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sF9Pa-00000009AnI-3chU;
-	Thu, 06 Jun 2024 09:27:58 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1sF9Pc-00000009Aoz-3HDl;
+	Thu, 06 Jun 2024 09:28:00 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sF9Oy-00000009ACr-3onL;
+	id 1sF9P6-00000009AJ6-1fbY;
 	Thu, 06 Jun 2024 09:27:28 +0000
-X-UUID: f4c97daa23e611efaf04eb0598667787-20240606
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=casper.20170209; h=Content-Type:MIME-Version:References:
+	In-Reply-To:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=IYG8sTACi1sil6Kc88R4geVpX0U0sfptDuMXfXHnqPo=; b=dHYYcsvYNsCH1waSmS0pI6XaIc
+	8HcLIHHU9qWrKqNU95sBbMgwNFkLCY7kSN40Wgr9Oq4DSqKd8AcsTAmZGGAyUxCCraIq0gozLz0PR
+	PZA2oiMD/f0YTCCX3XtwR2wIsUYEHqq3T3Ptk+x6KoXrviUTiiHHxeoyosUs9jImXFp96xcafioDK
+	dOCYGrf8Nj/a+sG0Y0SaxDIOXYmvwFMYE3XyKNst8Opo8yg2nNXVh+vyv7xO44Kvo+thMz+omBe22
+	uauw/LbXGvCWZvkt+51KkLlim+SQFCP5gZCJRY7UWaFafSostlFUUrPBdgXo0Z2kqUdoMyuzTF7F1
+	2bA/2DMA==;
+Received: from mailgw02.mediatek.com ([216.200.240.185])
+	by casper.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1sF9P3-0000000Cnfj-0klp;
+	Thu, 06 Jun 2024 09:27:27 +0000
+X-UUID: f5a1186e23e611efba8bfb22b0451c12-20240606
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=i3+6+QTyogEskPWqDueFjhPdOWhJo2GLN1jhaZk0OD0=;
-	b=TX+wY4O8bpK9plw1UvskKY+YW4olVcFQ9HibznR0C8cZn4riwk24HXspqm4YZf9YcFbTvGqojIDOuwgy9Vd3XgmoUIWjAnMUh/e5U7LuAEOKAS6UdWieOMnGg5gfXTYyp8lOXDw5m2kKi225UeHefd8dvovgKLLXa1wfU5bHlJ4=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=IYG8sTACi1sil6Kc88R4geVpX0U0sfptDuMXfXHnqPo=;
+	b=eSQRTuysgTk/cb72ucW5Wxl3CkelCGV+UusobEboaT2w97y/eIXRy+waSutjuhfcqHRXpgFPyFelMzFpvn21/CE4MZzoEaTmI7OBWi5vUyUjMTWZUJJ+ltSRqpQP7kEBVSct8FiWBYYa2pPC9ELXsAnrAx8Bs3KQ/nzT/IttTQs=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.39,REQID:bbe3b9e8-79d9-4792-994e-3b9fb6ed0838,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:393d96e,CLOUDID:86e2c984-4f93-4875-95e7-8c66ea833d57,B
+X-CID-O-INFO: VERSION:1.1.39,REQID:3c280f16-2a0b-4eb4-befc-cc1c6290ab78,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:393d96e,CLOUDID:3ed44988-8d4f-477b-89d2-1e3bdbef96d1,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: f4c97daa23e611efaf04eb0598667787-20240606
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: f5a1186e23e611efba8bfb22b0451c12-20240606
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw02.mediatek.com
 	(envelope-from <shawn.sung@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 502751475; Thu, 06 Jun 2024 02:27:12 -0700
+	with ESMTP id 271539354; Thu, 06 Jun 2024 02:27:14 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 6 Jun 2024 02:26:36 -0700
+ 15.2.1118.26; Thu, 6 Jun 2024 17:26:37 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 6 Jun 2024 17:26:36 +0800
+ 15.2.1118.26 via Frontend Transport; Thu, 6 Jun 2024 17:26:37 +0800
 From: Shawn Sung <shawn.sung@mediatek.com>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Subject: [PATCH v8 03/16] drm/mediatek: Add missing plane settings when async update
-Date: Thu, 6 Jun 2024 17:26:22 +0800
-Message-ID: <20240606092635.27981-4-shawn.sung@mediatek.com>
+Subject: [PATCH v8 09/16] drm/mediatek: Support "None" blending in OVL
+Date: Thu, 6 Jun 2024 17:26:28 +0800
+Message-ID: <20240606092635.27981-10-shawn.sung@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20240606092635.27981-1-shawn.sung@mediatek.com>
 References: <20240606092635.27981-1-shawn.sung@mediatek.com>
@@ -65,9 +79,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240606_022721_252903_A3825A99 
-X-CRM114-Status: UNSURE (   9.20  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240606_102725_518798_9BFB0B25 
+X-CRM114-Status: GOOD (  12.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,32 +98,62 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Hsiao Chien Sung <shawn.sung@mediatek.com>
 
-Fix an issue that plane coordinate was not saved when
-calling async update.
+Support "None" alpha blending mode on MediaTek's chips.
 
-Fixes: 920fffcc8912 ("drm/mediatek: update cursors by using async atomic update")
-
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_plane.c | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 16 ++++++++++++++--
+ 1 file changed, 14 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_plane.c b/drivers/gpu/drm/mediatek/mtk_plane.c
-index 4625deb21d40..a74b26d35985 100644
---- a/drivers/gpu/drm/mediatek/mtk_plane.c
-+++ b/drivers/gpu/drm/mediatek/mtk_plane.c
-@@ -227,6 +227,8 @@ static void mtk_plane_atomic_async_update(struct drm_plane *plane,
- 	plane->state->src_y = new_state->src_y;
- 	plane->state->src_h = new_state->src_h;
- 	plane->state->src_w = new_state->src_w;
-+	plane->state->dst.x1 = new_state->dst.x1;
-+	plane->state->dst.y1 = new_state->dst.y1;
- 
- 	mtk_plane_update_new_state(new_state, new_plane_state);
- 	swap(plane->state->fb, new_state->fb);
--- 
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+index 738244a6164e..54a6f11aa867 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+@@ -38,6 +38,7 @@
+ #define DISP_REG_OVL_PITCH_MSB(n)		(0x0040 + 0x20 * (n))
+ #define OVL_PITCH_MSB_2ND_SUBBUF			BIT(16)
+ #define DISP_REG_OVL_PITCH(n)			(0x0044 + 0x20 * (n))
++#define OVL_CONST_BLEND					BIT(28)
+ #define DISP_REG_OVL_RDMA_CTRL(n)		(0x00c0 + 0x20 * (n))
+ #define DISP_REG_OVL_RDMA_GMC(n)		(0x00c8 + 0x20 * (n))
+ #define DISP_REG_OVL_ADDR_MT2701		0x0040
+@@ -428,6 +429,8 @@ void mtk_ovl_layer_config(struct device *dev, unsigned int idx,
+ 	unsigned int fmt = pending->format;
+ 	unsigned int offset = (pending->y << 16) | pending->x;
+ 	unsigned int src_size = (pending->height << 16) | pending->width;
++	unsigned int blend_mode = state->base.pixel_blend_mode;
++	unsigned int ignore_pixel_alpha = 0;
+ 	unsigned int con;
+ 	bool is_afbc = pending->modifier != DRM_FORMAT_MOD_LINEAR;
+ 	union overlay_pitch {
+@@ -449,6 +452,15 @@ void mtk_ovl_layer_config(struct device *dev, unsigned int idx,
+ 	if (state->base.fb && state->base.fb->format->has_alpha)
+ 		con |= OVL_CON_AEN | OVL_CON_ALPHA;
+
++	/* CONST_BLD must be enabled for XRGB formats although the alpha channel
++	 * can be ignored, or OVL will still read the value from memory.
++	 * For RGB888 related formats, whether CONST_BLD is enabled or not won't
++	 * affect the result. Therefore we use !has_alpha as the condition.
++	 */
++	if (blend_mode == DRM_MODE_BLEND_PIXEL_NONE ||
++	    (state->base.fb && !state->base.fb->format->has_alpha))
++		ignore_pixel_alpha = OVL_CONST_BLEND;
++
+ 	if (pending->rotation & DRM_MODE_REFLECT_Y) {
+ 		con |= OVL_CON_VIRT_FLIP;
+ 		addr += (pending->height - 1) * pending->pitch;
+@@ -464,8 +476,8 @@ void mtk_ovl_layer_config(struct device *dev, unsigned int idx,
+
+ 	mtk_ddp_write_relaxed(cmdq_pkt, con, &ovl->cmdq_reg, ovl->regs,
+ 			      DISP_REG_OVL_CON(idx));
+-	mtk_ddp_write_relaxed(cmdq_pkt, overlay_pitch.split_pitch.lsb, &ovl->cmdq_reg, ovl->regs,
+-			      DISP_REG_OVL_PITCH(idx));
++	mtk_ddp_write_relaxed(cmdq_pkt, overlay_pitch.split_pitch.lsb | ignore_pixel_alpha,
++			      &ovl->cmdq_reg, ovl->regs, DISP_REG_OVL_PITCH(idx));
+ 	mtk_ddp_write_relaxed(cmdq_pkt, src_size, &ovl->cmdq_reg, ovl->regs,
+ 			      DISP_REG_OVL_SRC_SIZE(idx));
+ 	mtk_ddp_write_relaxed(cmdq_pkt, offset, &ovl->cmdq_reg, ovl->regs,
+--
 2.18.0
 
 
