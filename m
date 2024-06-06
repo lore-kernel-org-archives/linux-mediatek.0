@@ -4,83 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80C45C25B75
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Jun 2024 09:06:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30A3CC25B75
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Jun 2024 09:21:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=TulsrRhbIDs8TKsNZRbXbYoBg2+wZ1zCZBN14dFoG5E=; b=kTu4lAWf4scOw6qUEQO9/+8UoE
-	SUAEmBW/KL5t+PaRJJtA3rTXP/nmczwbRMYOMs1dI2VU0adcS3OqIN32l37hwqQvTDO7BKeBrpHkD
-	2mEa1N6Tm0dJkfc/FEMOZsIRMBjdIfm6Nhp0fJMsVZq52MBQaEYSgqecWrd1M9hxKddZFqjlnN8J2
-	26IcFkBZQgdXQnebBd2MtFgYNvWTBFXMK3ZCW16LXTwAnE0vbEWiu+v2SJ44HrBHknDuOcIWqh7rU
-	oyu+oAV8jgep4gA07IWyoJIo8oO2ou0r52TEsIThrVsRSrPuIoDif9LUjMNZwpU4bLdonLyRIsvx9
-	FJufEAow==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=CPx2yWaHLemhBUTcdRE5orcfKOPgZqYlIeD/3fVwd7g=; b=y1/4ONB+/phYtu
+	KOokjlRdPlHvJkXc+PCnzrd+wUQepXo9x/T+eF4Uxb2/NkH5ofXyNDFeu2Ir/spYCoMKbQl6pcc15
+	uIil0VYEIFhBo3D1IKDgWBqYhetoizD+qpGbZvAKDs6ZQoTuTJUPQS/6QLn6VePy5oUP56iFEtpWN
+	or1cS0DUrs3/aVWMcgab7hB6KdKEfnOBSYNC4XP0I26VlcFDNnRhbOtkIK/PCM6BKE5oWOGKppESX
+	bGDRSGXYD4PShPyj0StfvdRI2qMYdZSIl2vp5FZ4iDBIz2bQOUNq0mdyC9seEfHYA9VmHVllkqM9j
+	0cD6/gSPVUCu9suTKcxQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sF94i-00000009170-46qk;
-	Thu, 06 Jun 2024 09:06:24 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1sF9JS-000000096QM-2PfD;
+	Thu, 06 Jun 2024 09:21:38 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sF94f-0000000914x-40rn;
-	Thu, 06 Jun 2024 09:06:23 +0000
-X-UUID: 06e9e59023e411efaf04eb0598667787-20240606
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=TulsrRhbIDs8TKsNZRbXbYoBg2+wZ1zCZBN14dFoG5E=;
-	b=meRGJnk6ziUMw8bfG5YwdnTXZ8OftlmFv16yhdTHyNmchu5fd0JqfDbu98jsgYSDLlISiTU91vS0GZoI9UyrVnhGbQT9sNTPi+5Fg9gWw3pCpdUU8wo9L13137J8ucGYCwdR+YaThhS29S2ltUZ7vW8JurHZrMQ5EsZz/UBvwds=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.39,REQID:43608eb4-5154-4774-8c21-952a986bfbf5,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:393d96e,CLOUDID:3aa2c984-4f93-4875-95e7-8c66ea833d57,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 06e9e59023e411efaf04eb0598667787-20240606
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
-	(envelope-from <jason-ch.chen@mediatek.corp-partner.google.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 147348820; Thu, 06 Jun 2024 02:06:14 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 6 Jun 2024 17:06:11 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 6 Jun 2024 17:06:11 +0800
-From: jason-ch chen <jason-ch.chen@mediatek.corp-partner.google.com>
-To: Bjorn Andersson <andersson@kernel.org>, Mathieu Poirier
-	<mathieu.poirier@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	id 1sF9JO-000000096OA-2qW8;
+	Thu, 06 Jun 2024 09:21:36 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id C51C461CE2;
+	Thu,  6 Jun 2024 09:21:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 67703C2BD10;
+	Thu,  6 Jun 2024 09:21:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1717665693;
+	bh=C8sulEDJMrxWYwdcSw3tGuQJg30NjDlZJQNANrn1vsA=;
+	h=From:To:Cc:Subject:Date:From;
+	b=EFerXMHJ/BuFTp3gArt56JMANEARiwmx+3u3439NienSDrWW2U1at+iMb7h06wKYo
+	 FdA4GUWvOobJietEPmp/1VRYQv+nRH7GV5Li0/7m6VrX3cu/gTxU59KNTe24avtB5a
+	 3joAkd0XcXmYTl2SeMjjx5iWexZR+CqzwNBEl+s/cm/yMPz1bSeIOOJxuqA5Bkzs0M
+	 q4U37ml6qELvOwjX69MMw1O/kESa4cRAs/8MeTv74E+0N6wqyN6zY85wOUR7t7tWeV
+	 PVClUNTc5f7kyB9mhUNcOxnS3mjOfwowjgYjbtg6qsd4LpMaZODCzDCV0Dt66HImGa
+	 r6XZ0RyABTz4g==
+From: Michael Walle <mwalle@kernel.org>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	David Airlie <airlied@gmail.com>,
+	Daniel Vetter <daniel@ffwll.ch>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<linux-remoteproc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	Jason Chen <Jason-ch.Chen@mediatek.com>
-Subject: [PATCH] remoteproc: mediatek: Increase MT8188 SCP core0 DRAM size
-Date: Thu, 6 Jun 2024 17:06:09 +0800
-Message-ID: <20240606090609.3199-1-jason-ch.chen@mediatek.corp-partner.google.com>
-X-Mailer: git-send-email 2.18.0
+Subject: [PATCH RESEND v5] drm/mediatek: dpi/dsi: fix possible_crtcs calculation
+Date: Thu,  6 Jun 2024 11:21:22 +0200
+Message-Id: <20240606092122.2026313-1-mwalle@kernel.org>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--11.374200-8.000000
-X-TMASE-MatchedRID: Xmee87WA04ARm9WAyl7+Dna57ruHAnHxJDAZBInjo2YUtdRZTmEaIUUe
-	RhGY4VMdIV4u8YKdeKsBtjkcfRMmqUN64DZ+6OgVngIgpj8eDcBpkajQR5gb3savT21DsLD/UEh
-	Wy9W70AGsWV0bdkf4OZnI7w0MyspY5QW3P0Do1rUHGWE57KOVV6Bw96C56Hm+BeJ5GJM55Sw=
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--11.374200-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 8F2C02F9BB7FE52F84685050D7437B8500119C0C2DF2251449391A35E88052222000:8
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240606_020622_031677_C3D620F5 
-X-CRM114-Status: UNSURE (   9.42  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240606_022134_869145_9E6B70EC 
+X-CRM114-Status: GOOD (  20.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,32 +69,221 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Jitao Shi <jitao.shi@mediatek.com>, =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?= <nfraprado@collabora.com>, "Jason-JH . Lin" <jason-jh.lin@mediatek.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Stu Hsieh <stu.hsieh@mediatek.com>, Michael Walle <mwalle@kernel.org>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Jason Chen <Jason-ch.Chen@mediatek.com>
+mtk_find_possible_crtcs() assumes that the main path will always have
+the CRTC with id 0, the ext id 1 and the third id 2. This is only true
+if the paths are all available. But paths are optional (see also
+comment in mtk_drm_kms_init()), e.g. the main path might not be enabled
+or available at all. Then the CRTC IDs will shift one up, e.g. ext will
+be 0 and the third path will be 1.
 
-Increase MT8188 SCP core0 DRAM size for HEVC driver.
+To fix that, dynamically calculate the IDs by the presence of the paths.
 
-Signed-off-by: Jason Chen <Jason-ch.Chen@mediatek.com>
+While at it, make the return code a signed one and return -ENODEV if no
+path is found and handle the error in the callers.
+
+Fixes: 5aa8e7647676 ("drm/mediatek: dpi/dsi: Change the getting possible_crtc way")
+Suggested-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+Signed-off-by: Michael Walle <mwalle@kernel.org>
 ---
- drivers/remoteproc/mtk_scp.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+You can find v4 at [1]. Unfortunately, it was never applied and in the
+meantime there was a change in mtk_find_possible_crtcs(). So I've
+dropped Nícolas Reviewed and Tested-by tags and Angelos Reviewed-by
+tag.
 
-diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-index b885a9a041e4..2119fc62c3f2 100644
---- a/drivers/remoteproc/mtk_scp.c
-+++ b/drivers/remoteproc/mtk_scp.c
-@@ -1390,7 +1390,7 @@ static const struct mtk_scp_sizes_data default_scp_sizes = {
- };
+[1] https://lore.kernel.org/r/20230905084922.3908121-2-mwalle@kernel.org/
+---
+ drivers/gpu/drm/mediatek/mtk_ddp_comp.c | 105 ++++++++++++++++--------
+ drivers/gpu/drm/mediatek/mtk_ddp_comp.h |   2 +-
+ drivers/gpu/drm/mediatek/mtk_dpi.c      |   5 +-
+ drivers/gpu/drm/mediatek/mtk_dsi.c      |   5 +-
+ 4 files changed, 78 insertions(+), 39 deletions(-)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
+index 17b036411292..9a8c1cace8a0 100644
+--- a/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
++++ b/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
+@@ -514,29 +514,42 @@ static bool mtk_ddp_comp_find(struct device *dev,
+ 	return false;
+ }
  
- static const struct mtk_scp_sizes_data mt8188_scp_sizes = {
--	.max_dram_size = 0x500000,
-+	.max_dram_size = 0x800000,
- 	.ipi_share_buffer_size = 600,
- };
+-static unsigned int mtk_ddp_comp_find_in_route(struct device *dev,
+-					       const struct mtk_drm_route *routes,
+-					       unsigned int num_routes,
+-					       struct mtk_ddp_comp *ddp_comp)
++static int mtk_ddp_comp_find_in_route(struct device *dev,
++				      const struct mtk_drm_route *routes,
++				      unsigned int num_routes,
++				      struct mtk_ddp_comp *ddp_comp)
+ {
+-	int ret;
+ 	unsigned int i;
  
+-	if (!routes) {
+-		ret = -EINVAL;
+-		goto err;
+-	}
++	if (!routes)
++		return -EINVAL;
+ 
+ 	for (i = 0; i < num_routes; i++)
+ 		if (dev == ddp_comp[routes[i].route_ddp].dev)
+ 			return BIT(routes[i].crtc_id);
+ 
+-	ret = -ENODEV;
+-err:
++	return -ENODEV;
++}
+ 
+-	DRM_INFO("Failed to find comp in ddp table, ret = %d\n", ret);
++static bool mtk_ddp_path_available(const unsigned int *path,
++				   unsigned int path_len,
++				   struct device_node **comp_node)
++{
++	unsigned int i;
+ 
+-	return 0;
++	if (!path || !path_len)
++		return false;
++
++	for (i = 0U; i < path_len; i++) {
++		/* OVL_ADAPTOR doesn't have a device node */
++		if (path[i] == DDP_COMPONENT_DRM_OVL_ADAPTOR)
++			continue;
++
++		if (!comp_node[path[i]])
++			return false;
++	}
++
++	return true;
+ }
+ 
+ int mtk_ddp_comp_get_id(struct device_node *node,
+@@ -554,32 +567,52 @@ int mtk_ddp_comp_get_id(struct device_node *node,
+ 	return -EINVAL;
+ }
+ 
+-unsigned int mtk_find_possible_crtcs(struct drm_device *drm, struct device *dev)
++int mtk_find_possible_crtcs(struct drm_device *drm, struct device *dev)
+ {
+ 	struct mtk_drm_private *private = drm->dev_private;
+-	unsigned int ret = 0;
+-
+-	if (mtk_ddp_comp_find(dev,
+-			      private->data->main_path,
+-			      private->data->main_len,
+-			      private->ddp_comp))
+-		ret = BIT(0);
+-	else if (mtk_ddp_comp_find(dev,
+-				   private->data->ext_path,
+-				   private->data->ext_len,
+-				   private->ddp_comp))
+-		ret = BIT(1);
+-	else if (mtk_ddp_comp_find(dev,
+-				   private->data->third_path,
+-				   private->data->third_len,
+-				   private->ddp_comp))
+-		ret = BIT(2);
+-	else
+-		ret = mtk_ddp_comp_find_in_route(dev,
+-						 private->data->conn_routes,
+-						 private->data->num_conn_routes,
+-						 private->ddp_comp);
++	const struct mtk_mmsys_driver_data *data;
++	struct mtk_drm_private *priv_n;
++	int i = 0, j;
++	int ret;
+ 
++	for (j = 0; j < private->data->mmsys_dev_num; j++) {
++		priv_n = private->all_drm_private[j];
++		data = priv_n->data;
++
++		if (mtk_ddp_path_available(data->main_path, data->main_len,
++					   priv_n->comp_node)) {
++			if (mtk_ddp_comp_find(dev, data->main_path,
++					      data->main_len,
++					      priv_n->ddp_comp))
++				return BIT(i);
++			i++;
++		}
++
++		if (mtk_ddp_path_available(data->ext_path, data->ext_len,
++					   priv_n->comp_node)) {
++			if (mtk_ddp_comp_find(dev, data->ext_path,
++					      data->ext_len,
++					      priv_n->ddp_comp))
++				return BIT(i);
++			i++;
++		}
++
++		if (mtk_ddp_path_available(data->third_path, data->third_len,
++					   priv_n->comp_node)) {
++			if (mtk_ddp_comp_find(dev, data->third_path,
++					      data->third_len,
++					      priv_n->ddp_comp))
++				return BIT(i);
++			i++;
++		}
++	}
++
++	ret = mtk_ddp_comp_find_in_route(dev,
++					 private->data->conn_routes,
++					 private->data->num_conn_routes,
++					 private->ddp_comp);
++
++	DRM_INFO("Failed to find comp in ddp table, ret = %d\n", ret);
+ 	return ret;
+ }
+ 
+diff --git a/drivers/gpu/drm/mediatek/mtk_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_ddp_comp.h
+index 26236691ce4c..e2ea19d5ddcb 100644
+--- a/drivers/gpu/drm/mediatek/mtk_ddp_comp.h
++++ b/drivers/gpu/drm/mediatek/mtk_ddp_comp.h
+@@ -326,7 +326,7 @@ static inline void mtk_ddp_comp_encoder_index_set(struct mtk_ddp_comp *comp)
+ 
+ int mtk_ddp_comp_get_id(struct device_node *node,
+ 			enum mtk_ddp_comp_type comp_type);
+-unsigned int mtk_find_possible_crtcs(struct drm_device *drm, struct device *dev);
++int mtk_find_possible_crtcs(struct drm_device *drm, struct device *dev);
+ int mtk_ddp_comp_init(struct device_node *comp_node, struct mtk_ddp_comp *comp,
+ 		      unsigned int comp_id);
+ enum mtk_ddp_comp_type mtk_ddp_comp_get_type(unsigned int comp_id);
+diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
+index 5c86aa0b75b2..b894be9f1f53 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dpi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+@@ -814,7 +814,10 @@ static int mtk_dpi_bind(struct device *dev, struct device *master, void *data)
+ 		return ret;
+ 	}
+ 
+-	dpi->encoder.possible_crtcs = mtk_find_possible_crtcs(drm_dev, dpi->dev);
++	ret = mtk_find_possible_crtcs(drm_dev, dpi->dev);
++	if (ret < 0)
++		goto err_cleanup;
++	dpi->encoder.possible_crtcs = ret;
+ 
+ 	ret = drm_bridge_attach(&dpi->encoder, &dpi->bridge, NULL,
+ 				DRM_BRIDGE_ATTACH_NO_CONNECTOR);
+diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+index 2b0ac859a653..b450b7223aa2 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dsi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+@@ -861,7 +861,10 @@ static int mtk_dsi_encoder_init(struct drm_device *drm, struct mtk_dsi *dsi)
+ 		return ret;
+ 	}
+ 
+-	dsi->encoder.possible_crtcs = mtk_find_possible_crtcs(drm, dsi->host.dev);
++	ret = mtk_find_possible_crtcs(drm, dsi->host.dev);
++	if (ret < 0)
++		goto err_cleanup_encoder;
++	dsi->encoder.possible_crtcs = ret;
+ 
+ 	ret = drm_bridge_attach(&dsi->encoder, &dsi->bridge, NULL,
+ 				DRM_BRIDGE_ATTACH_NO_CONNECTOR);
 -- 
-2.34.1
+2.39.2
 
 
