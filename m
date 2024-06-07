@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 374E3C27C5F
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71E28C27C53
 	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Jun 2024 14:42:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,61 +12,62 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rPORLPyzPDJEwvO3QsQBvkLUkFXGQoRmfMVT8jvuAKA=; b=VU6F8LhSPVQqmr+C/VRbTjeLzv
-	XVP7ymPyZZFJ8CtLxtA138A5H9/44h2GBnFovWjikfNoBMn0CZOHG4s/nsrD7ubNjeXDku2JXwf9R
-	vEl2gE/X//SX2JW6TsEB8cf9CZoI0gLaAA7kOPV7nc+YAk3ChC50mL47e7hFWGjwVnvXCWt4ceInn
-	iGnNnWOxiMMM4PrRegTl5qGUOQfj30no3LLSnUA/Zuum7NDQXNnfnj7ymOuKoXdog0PnnZDFF2vPp
-	lkE44LYUpRgqqn5QOfrouVX/p+qaO5PuXPze3BzkJK8/IJvXtPCNhnrGqGBD5LKYON+poOWV8K77U
-	CWTR4isg==;
+	bh=0Lu22uaIM6tuLyEZn0JeQI5Ra8rc/jfabfCSvCXYE/A=; b=iFGsecagEqaCX9DHkPOTn82bh8
+	f+N4RIRdlqTUXGgpPGH9Jzo9ldquh8Vzu3+ZfCvm99hEVfgmPal4nL86qHCyjJKtwOSOGXmmKbfd8
+	PSPYIMrfNNjjFRKj6cP8xKKc929/Fa8UUpemlsk54fc86pksGo8clSKZNHi5sEqcxVkg4G3ilH/Ut
+	RRgf+u/RxXaDRw0asQRG3kyquCeOaTJO2hd9sF28YcSBa1Ur/W5ynxDyotT1rta6YQFTcrtt8MCpN
+	o61mmnhaGqT1G6e+AX/EzTm+AzIQIf8JgLokNBHtO23ogqZS19gOJJz5bxvoLvNfqoAOeclpIOw/0
+	mKHVKxzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sFanT-0000000ETwL-2rIP;
-	Fri, 07 Jun 2024 14:42:27 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1sFanU-0000000ETwa-0Yvo;
+	Fri, 07 Jun 2024 14:42:28 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sFanO-0000000ETsA-2nw4;
+	id 1sFanO-0000000ETs0-1gOJ;
 	Fri, 07 Jun 2024 14:42:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1717771336;
-	bh=UjTA2F7adwWAMjgQ+i5VZ5k/ef5LLUXB78PRbI7/CD8=;
+Received: from pendragon.ideasonboard.com (81-175-209-231.bb.dnainternet.fi [81.175.209.231])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 0410C720;
+	Fri,  7 Jun 2024 16:42:03 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1717771324;
+	bh=TXfIcxfKZ+HO9/x3g0vX/xX24/WbzhKt8eJbqKRPiYI=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=s7wq/d6wNnb+x+qHcVp8tNbNm24/0sz84WoS/0xX1MqlBsfzuwd8UAFCdLXEAnZGb
-	 5xQbmjolOloH1lHIPPY3YafTDWDv8JN2Q97m54JTlZwGWryw/nqmCaTpekcr4bGfbJ
-	 i9lKm/ek3015xRo30aHYUTXLvCrx8uyN+j4auldQXQV33xXfug66PPUrvm4rThz1Bl
-	 Bji5BhnpO6G00+ITNzjZxQTwf4MH6gkpfSzyQkk8qdIpvHaizHnUR8aDhcaf+H1L9l
-	 MqTF3xOzq4s4fGKbMEA2ap4c+OUXbiu+DLPx6PUOx7l6MZ5GWSK0CYNps1kCWoyVO1
-	 O4HIL8SWS3QiQ==
-Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 408523782191;
-	Fri,  7 Jun 2024 14:42:15 +0000 (UTC)
-Date: Fri, 7 Jun 2024 10:42:13 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: linux-mediatek@lists.infradead.org,
+	b=hhiYA8rHBz74Da65hnnjBv6TmnLse8pBYPca66L+wnUmaI1rJTsMeWX2PkE9FFd2y
+	 2PmAfTk8/Z3/MYjvi6yklgkJ5exQ2LPdUf992QxJ7RhE8rbQ0Wv6AwzYK0ZbMaop5E
+	 D2DpiIgJDKc8PxDE3VdHzpu1nDbpq+iMmUx4j7r4=
+Date: Fri, 7 Jun 2024 17:41:54 +0300
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Julien Stephan <jstephan@baylibre.com>,
+	Louis Kuo <louis.kuo@mediatek.com>,
+	Phi-Bang Nguyen <pnguyen@baylibre.com>,
+	Andy Hsieh <andy.hsieh@mediatek.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
+	Florian Sylvestre <fsylvestre@baylibre.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, kernel@collabora.com
-Subject: Re: Probe failures on mt8183-kukui-jacuzzi-juniper-sku16
-Message-ID: <bbdf568c-bfc4-403f-a62e-3f2e00ba814f@notapiano>
-References: <e5912054-0fc9-47ff-8f38-9b9a3e9d2156@notapiano>
- <CAGXv+5HJKur9vWq4j_x7-fuL5H0SY_oQNYFWTxFCC1EBxF9yQw@mail.gmail.com>
- <2491f962-a8e1-44c4-8ff9-f8c3e58a2a39@notapiano>
- <CAGXv+5HjRmn5o6uogn89OMLONWWaxBA5MJNKCesYXoR7G_FOEA@mail.gmail.com>
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Paul Elder <paul.elder@ideasonboard.com>,
+	Rob Herring <robh+dt@kernel.org>
+Subject: Re: [PATCH v4 1/5] dt-bindings: media: add mediatek ISP3.0 sensor
+ interface
+Message-ID: <20240607144154.GD18479@pendragon.ideasonboard.com>
+References: <20240110141443.364655-1-jstephan@baylibre.com>
+ <20240110141443.364655-2-jstephan@baylibre.com>
+ <e0bf8667-cbb8-49ba-bb44-3edf93b019b8@linaro.org>
+ <CAEHHSvYt-aqFahi=B_si=duJH8xDgy_9nndgR-P0+U5THX69uw@mail.gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAGXv+5HjRmn5o6uogn89OMLONWWaxBA5MJNKCesYXoR7G_FOEA@mail.gmail.com>
+In-Reply-To: <CAEHHSvYt-aqFahi=B_si=duJH8xDgy_9nndgR-P0+U5THX69uw@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240607_074223_040815_C3E9554A 
-X-CRM114-Status: GOOD (  37.96  )
+X-CRM114-CacheID: sfid-20240607_074222_627486_2AD8333D 
+X-CRM114-Status: GOOD (  20.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,104 +82,266 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jun 06, 2024 at 12:15:51PM +0800, Chen-Yu Tsai wrote:
-> On Wed, Jun 5, 2024 at 8:33 PM Nícolas F. R. A. Prado
-> <nfraprado@collabora.com> wrote:
-> >
-> > On Wed, Jun 05, 2024 at 04:01:06PM +0800, Chen-Yu Tsai wrote:
-> > > Hi,
+Hi Krzysztof,
+
+On Fri, Jun 07, 2024 at 10:52:33AM +0200, Julien Stephan wrote:
+> Le ven. 12 janv. 2024 à 08:32, Krzysztof Kozlowski a écrit :
+> > On 10/01/2024 15:14, Julien Stephan wrote:
+> > > From: Louis Kuo <louis.kuo@mediatek.com>
 > > >
-> > > On Tue, Jun 4, 2024 at 11:52 PM Nícolas F. R. A. Prado
-> > > <nfraprado@collabora.com> wrote:
-> > > >
-> > > > Hi,
-> > > >
-> > > > We're monitoring the status of device probe on the
-> > > > mt8183-kukui-jacuzzi-juniper-sku16 platform in KernelCI, and I thought it'd be
-> > > > helpful to share the results.
-> > > >
-> > > > These are the current failures:
-> > > >
-> > > > * /soc/i2c@11009000/trackpad@15
-> > > > * /soc/svs@1100bc00
-> > > > * /thermal-sensor1
-> > > > * /thermal-sensor2
-> > > >
-> > > > In more details:
-> > > >
-> > > > * /soc/i2c@11009000/trackpad@15: I believe this is a second source trackpad and
-> > > >   is thus waiting for the "platform/chrome: Introduce DT hardware prober" series
-> > > >   [1] to be merged before it can be handled. Although looks like there haven't
-> > > >   been updates to the series in a while.
+> > > This adds the bindings, for the mediatek ISP3.0 SENINF module embedded in
+> > > some Mediatek SoC, such as the mt8365
 > > >
-> > > I've been working on other stuff and haven't had time to respin this series.
 > >
-> > No worries, but it's good to know that that's the latest status and I didn't
-> > miss something.
+> > ...
 > >
-> > >
-> > > Just to confirm, is the failure due to pinctrl conflicts when the trackpad
-> > > variants probe asynchronously?
+> > > +  clock-names:
+> > > +    items:
+> > > +      - const: camsys
+> > > +      - const: top_mux
+> > > +
+> > > +  phys:
+> > > +    minItems: 1
+> > > +    maxItems: 4
+> > > +    description:
+> > > +      phandle to the PHYs connected to CSI0/A, CSI1, CSI2 and CSI0B
+> > > +
+> > > +  phy-names:
+> > > +    minItems: 1
+> > > +    items:
+> > > +      - const: csi0
+> > > +      - const: csi1
+> > > +      - const: csi2
+> > > +      - const: csi0b
 > >
-> > Yes:
-> >
-> > [    2.185408] input: hid-over-i2c 06CB:CDB5 Mouse as /devices/platform/soc/11009000.i2c/i2c-2/2-002c/0018:06CB:CDB5.0001/input/input2
-> > [    2.845044] mt8183-pinctrl 10005000.pinctrl: pin GPIO7 already requested by 2-002c; cannot claim for 2-0015
-> > [    2.854700] mt8183-pinctrl 10005000.pinctrl: error -EINVAL: pin-7 (2-0015)
-> > [    2.869503] mt8183-pinctrl 10005000.pinctrl: error -EINVAL: could not request pin 7 (GPIO7) from group GPIO7  on device pinctrl_paris
-> > [    2.894885] elan_i2c 2-0015: Error applying setting, reverse things back
+> > Why one hardware has flexible number of phys?
 > 
-> Yup. That's the issue. We work around it either with staggered driver probe
-> (built-in vs module) or move the pinctrl up to the i2c bus node.
-
-I assume you're talking about the ChromeOS kernel?
-
-In any case, if I got things right, once your series lands these workarounds
-shouldn't be needed anymore, it will work as is. So I'd rather wait for that to
-happen, as the current DT looks the most correct, and the config changes
-couldn't be made to the upstream defconfig and seems fragile.
-
-It's ok for the test to keep failing for now, it shows that there are things
-that still need to be fixed, so it's serving its purpose :).
-
+> Hi Krzysztof,
 > 
-> > >
-> > [..]
-> > > > * /thermal-sensor1, /thermal-sensor2: The following is reported:
-> > > >
-> > > >     [    2.813605] thermal_sys: Failed to find 'trips' node
-> > > >     [    2.813611] thermal_sys: Failed to find trip points for thermal-sensor1 id=0
-> > > >     [    2.813619] generic-adc-thermal thermal-sensor1: Thermal zone sensor register failed: -22
-> > > >     [    2.813624] generic-adc-thermal thermal-sensor1: probe with driver generic-adc-thermal failed with error -22
-> > > >
-> > > >   And the same for thermal-sensor2. So both are missing the required 'trips'
-> > > >   subnode.
-> > >
-> > > IIRC either the driver or the DT had comments saying "these zones don't
-> > > need trip points". In that case maybe the driver should use
-> > > thermal_tripless_zone_device_register() for them?
+> seninf can have multiple port depending on the soc, each requiring its own phy
+> 
+> > > +
+> > > +  ports:
+> > > +    $ref: /schemas/graph.yaml#/properties/ports
+> > > +
+> > > +    properties:
+> > > +      port@0:
+> > > +        $ref: /schemas/graph.yaml#/$defs/port-base
+> > > +        unevaluatedProperties: false
+> > > +        description: CSI0 or CSI0A port
+> > > +
+> > > +        properties:
+> > > +          endpoint:
+> > > +            $ref: video-interfaces.yaml#
+> > > +            unevaluatedProperties: false
+> > > +
+> > > +            properties:
+> > > +              clock-lanes:
+> > > +                maxItems: 1
+> > > +              data-lanes:
+> > > +                minItems: 1
+> > > +                maxItems: 4
+> > > +
+> > > +      port@1:
+> > > +        $ref: /schemas/graph.yaml#/$defs/port-base
+> > > +        unevaluatedProperties: false
+> > > +        description: CSI1 port
+> > > +
+> > > +        properties:
+> > > +          endpoint:
+> > > +            $ref: video-interfaces.yaml#
+> > > +            unevaluatedProperties: false
+> > > +
+> > > +            properties:
+> > > +              clock-lanes:
+> > > +                maxItems: 1
+> > > +              data-lanes:
+> > > +                minItems: 1
+> > > +                maxItems: 4
+> > > +
+> > > +      port@2:
+> > > +        $ref: /schemas/graph.yaml#/$defs/port-base
+> > > +        unevaluatedProperties: false
+> > > +        description: CSI2 port
+> > > +
+> > > +        properties:
+> > > +          endpoint:
+> > > +            $ref: video-interfaces.yaml#
+> > > +            unevaluatedProperties: false
+> > > +
+> > > +            properties:
+> > > +              clock-lanes:
+> > > +                maxItems: 1
+> > > +              data-lanes:
+> > > +                minItems: 1
+> > > +                maxItems: 4
+> > > +
+> > > +      port@3:
+> > > +        $ref: /schemas/graph.yaml#/$defs/port-base
+> > > +        unevaluatedProperties: false
+> > > +        description: CSI0B port
+> > > +
+> > > +        properties:
+> > > +          endpoint:
+> > > +            $ref: video-interfaces.yaml#
+> > > +            unevaluatedProperties: false
+> > > +
+> > > +            properties:
+> > > +              clock-lanes:
+> > > +                maxItems: 1
+> > > +              data-lanes:
+> > > +                minItems: 1
+> > > +                maxItems: 2
+> > > +
+> > > +      port@4:
+> > > +        $ref: /schemas/graph.yaml#/properties/port
+> > > +        description: connection point for cam0
+> > > +
+> > > +      port@5:
+> > > +        $ref: /schemas/graph.yaml#/properties/port
+> > > +        description: connection point for cam1
+> > > +
+> > > +      port@6:
+> > > +        $ref: /schemas/graph.yaml#/properties/port
+> > > +        description: connection point for camsv0
+> > > +
+> > > +      port@7:
+> > > +        $ref: /schemas/graph.yaml#/properties/port
+> > > +        description: connection point for camsv1
+> > > +
+> > > +      port@8:
+> > > +        $ref: /schemas/graph.yaml#/properties/port
+> > > +        description: connection point for camsv2
+> > > +
+> > > +      port@9:
+> > > +        $ref: /schemas/graph.yaml#/properties/port
+> > > +        description: connection point for camsv3
+> > > +
+> > > +    required:
+> > > +      - port@0
+> > > +      - port@1
+> > > +      - port@2
+> > > +      - port@3
+> > > +      - port@4
+> > > +      - port@5
+> > > +      - port@6
+> > > +      - port@7
+> > > +      - port@8
+> > > +      - port@9
+> > > +
+> > > +required:
+> > > +  - compatible
+> > > +  - interrupts
+> > > +  - clocks
+> > > +  - clock-names
+> > > +  - power-domains
+> > > +  - ports
+> > > +
+> > > +additionalProperties: false
+> > > +
+> > > +examples:
+> > > +  - |
+> > > +    #include <dt-bindings/clock/mediatek,mt8365-clk.h>
+> > > +    #include <dt-bindings/interrupt-controller/irq.h>
+> > > +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> > > +    #include <dt-bindings/phy/phy.h>
+> > > +    #include <dt-bindings/power/mediatek,mt8365-power.h>
+> > > +
+> > > +    soc {
+> > > +          #address-cells = <2>;
+> > > +          #size-cells = <2>;
 > >
-> > I believe you're thinking of the SoC thermal zones, which had trips added (and
-> > the comment removed) in commit 978979409209 ("arm64: dts: mediatek: mt8183:
-> > Refactor thermal zones"). But these are the kukui board thermal zones.
-> 
-> I see. I dug through the schematics we have, and they all seem to say that
-> the first NTC is for the SoC. The use for the second one seems to depend
-> on the project, with some saying close to the LCM (display?) or LTE PA,
-> and on the Jacuzzi family it's for ambient temp.
-> 
-> Regarding trip points, for the NTC close to the SoC, I guess we could copy
-> the SoC thermal trip points and reduce the values by some amount, 20
-> degrees maybe? For the other one we could probably make the critical
-> trip point some value that feels hot to the touch?
+> > Use 4 spaces for example indentation.
+> >
+> > > +
+> > > +          seninf: seninf@15040000 {
+> >
+> > Node names should be generic. See also an explanation and list of
+> > examples (not exhaustive) in DT specification:
+> > https://devicetree-specification.readthedocs.io/en/latest/chapter2-devicetree-basics.html#generic-names-recommendation
 
-I wonder if it would make sense to have thermal zones defined in the specific
-board DTs for the second NTC given its position varies. I suppose it depends on
-how much of a difference that actually makes.
+The seninf is (mostly) a set of MIPI CSI-2 receivers. Would you prefer
+'csi', 'mipi-csi', 'csi-2' or any other name ?
 
-Unfortunately I don't have physical access to a mt8183 board, so I can't tell
-what value would be hot to the touch.
+There's also the camsv IP in the same series that needs a generic name.
+I really don't know what to propose for it. Could you recommend
+something that would make you happy ?
 
-Thanks,
-Nícolas
+On a side note, that document lacks appropriate generic names for lots
+of building blocks found in recent SoCs, it would be nice to get it
+updated. You will eventually get better quality DT patches then :-)
+
+> > > +                compatible = "mediatek,mt8365-seninf";
+> > > +                reg = <0 0x15040000 0 0x6000>;
+> > > +                interrupts = <GIC_SPI 210 IRQ_TYPE_LEVEL_LOW>;
+> > > +                clocks = <&camsys CLK_CAM_SENIF>,
+> > > +                         <&topckgen CLK_TOP_SENIF_SEL>;
+> > > +                clock-names = "camsys", "top_mux";
+> > > +
+> > > +                power-domains = <&spm MT8365_POWER_DOMAIN_CAM>;
+> > > +
+> > > +                phys = <&mipi_csi0 PHY_TYPE_DPHY>;
+> > > +                phy-names = "csi0";
+> > > +
+> > > +                ports {
+> > > +                      #address-cells = <1>;
+> > > +                      #size-cells = <0>;
+> > > +
+> > > +                      port@0 {
+> > > +                            reg = <0>;
+> > > +                            seninf_in1: endpoint {
+> > > +                              clock-lanes = <2>;
+> > > +                              data-lanes = <1 3 0 4>;
+> > > +                              remote-endpoint = <&isp1_out>;
+> > > +                            };
+> > > +                      };
+> > > +
+> > > +                      port@1 {
+> > > +                          reg = <1>;
+> > > +                      };
+> > > +
+> > > +                      port@2 {
+> > > +                            reg = <2>;
+> > > +                      };
+> > > +
+> > > +                      port@3 {
+> > > +                            reg = <3>;
+> > > +                      };
+> > > +
+> > > +                      port@4 {
+> > > +                            reg = <4>;
+> > > +                            seninf_camsv1_endpoint: endpoint {
+> > > +                                remote-endpoint = <&camsv1_endpoint>;
+> > > +                            };
+> > > +                      };
+> > > +
+> > > +                      port@5 {
+> > > +                            reg = <5>;
+> > > +                      };
+> > > +
+> > > +                      port@6 {
+> > > +                            reg = <6>;
+> > > +                      };
+> > > +
+> > > +                      port@7 {
+> > > +                            reg = <7>;
+> > > +                      };
+> > > +
+> > > +                      port@8 {
+> > > +                            reg = <8>;
+> > > +                      };
+> > > +
+> > > +                      port@9 {
+> > > +                            reg = <9>;
+> > > +                      };
+> > > +
+> >
+> > Stray blank line
+> >
+> > > +                };
+
+-- 
+Regards,
+
+Laurent Pinchart
 
