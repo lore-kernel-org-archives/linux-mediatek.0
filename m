@@ -4,91 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADF37C27C55
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Jun 2024 08:23:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89D3FC27C53
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Jun 2024 08:52:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Xki4DNxYH3tFmPh5FhgKcaBCEtbRud3Q1n3Xe5OAwZw=; b=XjAo0NjyEjlgRvR/ugARuIx9UB
-	eF2AC2PJAg6kvsL6D3afniRO1D8Xf7iObCRwLGthb3VrOSzSJJHG1ltg+c1ePQqYOyM0V93Hqge3z
-	w3YcCM6AVLUQ2rs5AGI134LFUwQScBfd3BhVINLcaQo5X2cteCG/sWX8KG+SYPVhgeKKwLFS3fW6e
-	qXFPdz/zdXh6c14mETICboBVvrVWFwvAr5YbVjgtTTqKtpNEO5TdP1IK6mAMTAL3nzVIkChUerM4A
-	oEzqSyTa9IFk/R8oDXN75PcQdGHviOxsJgrLs3ayf/49NtuvnSSQVPEGwcftdVY1oNN2mBJF9CiEh
-	ZDskHQSQ==;
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qjuZF9YFMCyt7vHEOY4hC4haJuA8BL1l+S1hJkJtq90=; b=k/O5ZPfQmGb6+gIv697ondrcpR
+	bS2hCbHgIH70mnmLUq6wEaw7EZc+pFnAezo0+uL1HsBx8Z0/XWsyPnsqcg/bEvFhMotF/LaQy2BNg
+	PeHohoYyymHqg7N7ROKzFS1RYrc31OqIA6Vk3jag1QK8X5ppz/j/8XSarelm/OwQCLJvOxJVvoVtv
+	QRVdg9TM7JddELtmUw4MIVAYZ5sKNgBfYWtK1lR+2pjietlVLeTKKjjBwm2KO1Cw6IhS0UpJ+91gp
+	sMO6T0oxCgWUj1jzwAYBpR+2TOdf5ZTNE46JsaNdGzySRRCZhVTgea1cIRxupOoqnwJql4u6ZXxVB
+	Ktuo1TiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sFUsX-0000000D61h-2i0b;
-	Fri, 07 Jun 2024 08:23:17 +0000
-Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
+	id 1sFVLA-0000000DCpm-3tsN;
+	Fri, 07 Jun 2024 08:52:52 +0000
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sFUsT-0000000D5xP-3OwH;
-	Fri, 07 Jun 2024 08:23:15 +0000
-Received: by mail-lf1-x135.google.com with SMTP id 2adb3069b0e04-52bbf73f334so214931e87.2;
-        Fri, 07 Jun 2024 01:23:11 -0700 (PDT)
+	id 1sFVL7-0000000DCoY-3GAG
+	for linux-mediatek@lists.infradead.org;
+	Fri, 07 Jun 2024 08:52:51 +0000
+Received: by mail-ej1-x62e.google.com with SMTP id a640c23a62f3a-a6e43dad8ecso40500266b.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 07 Jun 2024 01:52:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1717748590; x=1718353390; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=Xki4DNxYH3tFmPh5FhgKcaBCEtbRud3Q1n3Xe5OAwZw=;
-        b=ZSoj1zxOiHAih/3tzU4W3Er2Mx86yokPXTMszB1jgbqmcE5nPGUTjX4COTxrY9wf/S
-         IGc8zTgO5M0Gl1WjANQoImprtp29nbW+3uXrAchQ7dfa90spWHT4fKiyfX4THVaY8xfs
-         2w8JfRUnH+XspMI0sKs48uFp38sCcoMmwGY7VRHkYGSox7wh7Wbnr/4nLCydmTJjzAle
-         8KnKpBE73GHtKqSTlNMl7DauyidceA2u0fM6c4PvxbO1RoQ7VZ0GeyGsgdP7Ftm/04In
-         ddxiC2BfpxQON6A3ZKRscslKTLfZ6y8pR8GJ/PqrRptMTB+GNjZGYLSTpiuNsfD3WMER
-         s7aw==
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1717750366; x=1718355166; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=qjuZF9YFMCyt7vHEOY4hC4haJuA8BL1l+S1hJkJtq90=;
+        b=DaXIF8Ze/o7s8kQl1HWbUFNToxpQ9SeajGlW5L47ZNWe/EA5mGeQVOu9QsGYm2QmaU
+         8RV3QK+xOL2WnJ3DhZPiS3FN7tjGKP/XwzJfXkNK3d9oa9GDBs1+O2jsB6UZZg4RA878
+         uEIIH1Fa5R+26Kc2OrKRaYo8Ld5GpxZov1w1UJMm9FloYJCafek+/7YHXsBLrkvLLcsN
+         I/8dovrkd/Fh8Q7oPSE8MqSnuUP4n93C594pdAAeVYn7A25+wJYDh2jJslwSNqV7da0R
+         s/jCx1yGYVdy9TqbAKStKUjvh8itWXHISgTUZdJZHf3CT18Kw7E+toBrIkblLOjdIYJD
+         aGxg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1717748590; x=1718353390;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=Xki4DNxYH3tFmPh5FhgKcaBCEtbRud3Q1n3Xe5OAwZw=;
-        b=S6oppJd9HvAw+Ojg/nojvKfjEtrhKwcH6402dSQArCtxnw2wEzcyObwiDnk2gL2bVZ
-         rmxVXenTZU36/Cty5EhCG7ltF+RVa+DHQTajN/wBku/KTMyAkJcplTcMaf/BsNYv4keB
-         RkMRjiBH7z4e+rD11fKeMAii6YE++BXwNsDRgc5Zb5bl6hPl2MF8Hj7C1jNcicitaaXA
-         780LF4ioYvs3I2AozAQPUun3kv2epbJXcthwGwYwPi+YzSxe/0xkhXLhbpZWdYRVg9K9
-         x2IwaTAMG814EwANPwEEPq+hUzuh27GI7LyBSnl2WMwCHw3VAca7SprkMmOYNuUos3Mn
-         H84g==
-X-Forwarded-Encrypted: i=1; AJvYcCXWo6DolEDfvxmAaCmRIXg9nOMxKyNbSLBfb3tuX91jN+pVRr29LyY+I/77XQ2EhfpZUiFrTtiQ+T2VnxtwZTCZ5NPrQgI0Ito35v2rPxDR2Rqzv6A4n7Xa3191Gywz0rtqTcpwq4PQq6hJ46rw0Ib1G7briSJhpOA=
-X-Gm-Message-State: AOJu0Yz0SLXsXUGfX2z88wGO8BvWGsof6ieLvTfGlU9ZeJDRpgfdVcjV
-	yZ6O9EW+olKyDe219XmlDLjBLXdGU99Hy1X6qb9Mo2UjHvQ+lgcw
-X-Google-Smtp-Source: AGHT+IEb5i7LgkRXilX6yzFtiexWCseYnkhJBgkeCkc3DE0BW8NzvG9Xotg/hYhdnb5Fl7/6hPa3Gg==
-X-Received: by 2002:a05:6512:1042:b0:52b:bdf9:d10e with SMTP id 2adb3069b0e04-52bbdf9d44cmr575079e87.19.1717748589175;
-        Fri, 07 Jun 2024 01:23:09 -0700 (PDT)
-Received: from localhost.localdomain (IGLD-84-229-253-184.inter.net.il. [84.229.253.184])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4215809fcbesm80592335e9.0.2024.06.07.01.23.07
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 07 Jun 2024 01:23:08 -0700 (PDT)
-From: Elad Yifee <eladwf@gmail.com>
-To: 
-Cc: eladwf@gmail.com,
-	daniel@makrotopia.org,
-	Felix Fietkau <nbd@nbd.name>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Russell King <linux@armlinux.org.uk>,
-	netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH net-next v6] net: ethernet: mtk_eth_soc: ppe: add support for multiple PPEs
-Date: Fri,  7 Jun 2024 11:21:50 +0300
-Message-ID: <20240607082155.20021-1-eladwf@gmail.com>
-X-Mailer: git-send-email 2.45.1
+        d=1e100.net; s=20230601; t=1717750366; x=1718355166;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=qjuZF9YFMCyt7vHEOY4hC4haJuA8BL1l+S1hJkJtq90=;
+        b=S8k0k69CGzuoFwjJUJ2pGeiYmuwwaG+0E7mqvgCbqEml2k1kZgopcfmZUbpy595ruT
+         +YTzPSX1t2vJO6zGlCtZn1OpiUpSbwYZG3ogYt13TMN5RpAi2yfCVxhUgs94Nac9yglm
+         JJAFz0xLBIoETQ/6X59dHa0rOkREsATavO9ejO83B+ZgM4c2a3RHiFtMoHlRtjgVgqFm
+         rWznYGumqh2HN58TTiR0977MxFdJRQ+Ki9i+CYbolsnqwrOynV4FtrTxaLdq/abGiNEu
+         yHZgxhTTys5SqJXHYEtr8ygsHVBMxCuNLXIpmnwsKyk3tXIkVItUDDZXwa9Dt9eauqtK
+         CMng==
+X-Forwarded-Encrypted: i=1; AJvYcCVdoXGwg7pTgpdO1vkwULOgVIsVA5tz8f4bOOjrAT7eZZWmohrlteVhPOj+H28maNZbmpdjdYYhtpF07355loYQLLoWR9Ym1nwVCvtE1Gf+Xebo
+X-Gm-Message-State: AOJu0YwRnvi0L9ImEeWvdhIMBdFXbMNaK5EP9z/ZNejXR7FlZ7Jf7X+G
+	ywTQQXYI9yM73UOxWIAmABeLQNCF5AWXilYG29PHU87f+rmbz+L3W53Ch0K+jINKUApEjragidm
+	nW75eLQ7b7sr3VuGhy+AAcZh5p5tAW2qRkhAnTw==
+X-Google-Smtp-Source: AGHT+IHz0oblgfs6QK84jkLY1rRZ8G4iI07a+WGgFejWKVL3U8A1X2rtzxqVz9VMl0MyJrrPsb3bywI+y5oC/oU1aTg=
+X-Received: by 2002:a17:906:4090:b0:a6e:c5c0:ba42 with SMTP id
+ a640c23a62f3a-a6ec5c0bb34mr26417566b.30.1717750365646; Fri, 07 Jun 2024
+ 01:52:45 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20240110141443.364655-1-jstephan@baylibre.com>
+ <20240110141443.364655-2-jstephan@baylibre.com> <e0bf8667-cbb8-49ba-bb44-3edf93b019b8@linaro.org>
+In-Reply-To: <e0bf8667-cbb8-49ba-bb44-3edf93b019b8@linaro.org>
+From: Julien Stephan <jstephan@baylibre.com>
+Date: Fri, 7 Jun 2024 10:52:33 +0200
+Message-ID: <CAEHHSvYt-aqFahi=B_si=duJH8xDgy_9nndgR-P0+U5THX69uw@mail.gmail.com>
+Subject: Re: [PATCH v4 1/5] dt-bindings: media: add mediatek ISP3.0 sensor interface
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Louis Kuo <louis.kuo@mediatek.com>, Phi-Bang Nguyen <pnguyen@baylibre.com>, 
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Andy Hsieh <andy.hsieh@mediatek.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, 
+	Florian Sylvestre <fsylvestre@baylibre.com>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-media@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, 
+	Mauro Carvalho Chehab <mchehab@kernel.org>, Paul Elder <paul.elder@ideasonboard.com>, 
+	Rob Herring <robh+dt@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240607_012313_881419_95D51F34 
-X-CRM114-Status: GOOD (  27.95  )
+X-CRM114-CacheID: sfid-20240607_015249_845188_E4098DDC 
+X-CRM114-Status: GOOD (  15.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,388 +99,261 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the missing pieces to allow multiple PPEs units, one for each GMAC.
-mtk_gdm_config has been modified to work on targted mac ID,
-the inner loop moved outside of the function to allow unrelated
-operations like setting the MAC's PPE index.
-Introduce a sanity check in flow_offload_replace to account for
-non-MTK ingress devices.
-Additional field 'ppe_idx' was added to struct mtk_mac in order
-to keep track on the assigned PPE unit.
+Le ven. 12 janv. 2024 =C3=A0 08:32, Krzysztof Kozlowski
+<krzysztof.kozlowski@linaro.org> a =C3=A9crit :
+>
+> On 10/01/2024 15:14, Julien Stephan wrote:
+> > From: Louis Kuo <louis.kuo@mediatek.com>
+> >
+> > This adds the bindings, for the mediatek ISP3.0 SENINF module embedded =
+in
+> > some Mediatek SoC, such as the mt8365
+> >
+>
+> ...
+>
+> > +  clock-names:
+> > +    items:
+> > +      - const: camsys
+> > +      - const: top_mux
+> > +
+> > +  phys:
+> > +    minItems: 1
+> > +    maxItems: 4
+> > +    description:
+> > +      phandle to the PHYs connected to CSI0/A, CSI1, CSI2 and CSI0B
+> > +
+> > +  phy-names:
+> > +    minItems: 1
+> > +    items:
+> > +      - const: csi0
+> > +      - const: csi1
+> > +      - const: csi2
+> > +      - const: csi0b
+>
+> Why one hardware has flexible number of phys?
 
-Signed-off-by: Elad Yifee <eladwf@gmail.com>
----
-v6:
-	- updated commit message
-v5:	
-	- add sanity check for ppe index on flow_offload_replace
-	- moved ppe_num to mtk_soc_data
-v4: 
-	- applied changes suggested by Jakub Kicinski
-	- modified flow_offload_replace to get the correct PPE index from flow
-	- add gdma_to_ppe[x] registers to mtk_reg_map instead of using defines
-v3: applied changes suggested by Daniel Golle
-v2: fixed CI warnings
----
- drivers/net/ethernet/mediatek/mtk_eth_soc.c   | 112 +++++++++++-------
- drivers/net/ethernet/mediatek/mtk_eth_soc.h   |   8 +-
- .../net/ethernet/mediatek/mtk_ppe_offload.c   |  17 ++-
- 3 files changed, 92 insertions(+), 45 deletions(-)
+Hi Krzysztof,
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index cae46290a7ae..ef0c1cca03d1 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -80,7 +80,9 @@ static const struct mtk_reg_map mtk_reg_map = {
- 		.fq_blen	= 0x1b2c,
- 	},
- 	.gdm1_cnt		= 0x2400,
--	.gdma_to_ppe		= 0x4444,
-+	.gdma_to_ppe	= {
-+		[0]		= 0x4444,
-+	},
- 	.ppe_base		= 0x0c00,
- 	.wdma_base = {
- 		[0]		= 0x2800,
-@@ -144,7 +146,10 @@ static const struct mtk_reg_map mt7986_reg_map = {
- 		.tx_sch_rate	= 0x4798,
- 	},
- 	.gdm1_cnt		= 0x1c00,
--	.gdma_to_ppe		= 0x3333,
-+	.gdma_to_ppe	= {
-+		[0]		= 0x3333,
-+		[1]		= 0x4444,
-+	},
- 	.ppe_base		= 0x2000,
- 	.wdma_base = {
- 		[0]		= 0x4800,
-@@ -192,7 +197,11 @@ static const struct mtk_reg_map mt7988_reg_map = {
- 		.tx_sch_rate	= 0x4798,
- 	},
- 	.gdm1_cnt		= 0x1c00,
--	.gdma_to_ppe		= 0x3333,
-+	.gdma_to_ppe	= {
-+		[0]		= 0x3333,
-+		[1]		= 0x4444,
-+		[2]		= 0xcccc,
-+	},
- 	.ppe_base		= 0x2000,
- 	.wdma_base = {
- 		[0]		= 0x4800,
-@@ -2009,6 +2018,7 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
- 	struct mtk_rx_dma_v2 *rxd, trxd;
- 	int done = 0, bytes = 0;
- 	dma_addr_t dma_addr = DMA_MAPPING_ERROR;
-+	int ppe_idx = 0;
- 
- 	while (done < budget) {
- 		unsigned int pktlen, *rxdcsum;
-@@ -2052,6 +2062,7 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
- 			goto release_desc;
- 
- 		netdev = eth->netdev[mac];
-+		ppe_idx = eth->mac[mac]->ppe_idx;
- 
- 		if (unlikely(test_bit(MTK_RESETTING, &eth->state)))
- 			goto release_desc;
-@@ -2175,7 +2186,7 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
- 		}
- 
- 		if (reason == MTK_PPE_CPU_REASON_HIT_UNBIND_RATE_REACHED)
--			mtk_ppe_check_skb(eth->ppe[0], skb, hash);
-+			mtk_ppe_check_skb(eth->ppe[ppe_idx], skb, hash);
- 
- 		skb_record_rx_queue(skb, 0);
- 		napi_gro_receive(napi, skb);
-@@ -3266,37 +3277,27 @@ static int mtk_start_dma(struct mtk_eth *eth)
- 	return 0;
- }
- 
--static void mtk_gdm_config(struct mtk_eth *eth, u32 config)
-+static void mtk_gdm_config(struct mtk_eth *eth, u32 id, u32 config)
- {
--	int i;
-+	u32 val;
- 
- 	if (MTK_HAS_CAPS(eth->soc->caps, MTK_SOC_MT7628))
- 		return;
- 
--	for (i = 0; i < MTK_MAX_DEVS; i++) {
--		u32 val;
--
--		if (!eth->netdev[i])
--			continue;
-+	val = mtk_r32(eth, MTK_GDMA_FWD_CFG(id));
- 
--		val = mtk_r32(eth, MTK_GDMA_FWD_CFG(i));
-+	/* default setup the forward port to send frame to PDMA */
-+	val &= ~0xffff;
- 
--		/* default setup the forward port to send frame to PDMA */
--		val &= ~0xffff;
-+	/* Enable RX checksum */
-+	val |= MTK_GDMA_ICS_EN | MTK_GDMA_TCS_EN | MTK_GDMA_UCS_EN;
- 
--		/* Enable RX checksum */
--		val |= MTK_GDMA_ICS_EN | MTK_GDMA_TCS_EN | MTK_GDMA_UCS_EN;
-+	val |= config;
- 
--		val |= config;
-+	if (eth->netdev[id] && netdev_uses_dsa(eth->netdev[id]))
-+		val |= MTK_GDMA_SPECIAL_TAG;
- 
--		if (netdev_uses_dsa(eth->netdev[i]))
--			val |= MTK_GDMA_SPECIAL_TAG;
--
--		mtk_w32(eth, val, MTK_GDMA_FWD_CFG(i));
--	}
--	/* Reset and enable PSE */
--	mtk_w32(eth, RST_GL_PSE, MTK_RST_GL);
--	mtk_w32(eth, 0, MTK_RST_GL);
-+	mtk_w32(eth, val, MTK_GDMA_FWD_CFG(id));
- }
- 
- 
-@@ -3356,7 +3357,10 @@ static int mtk_open(struct net_device *dev)
- {
- 	struct mtk_mac *mac = netdev_priv(dev);
- 	struct mtk_eth *eth = mac->hw;
--	int i, err;
-+	struct mtk_mac *target_mac;
-+	int i, err, ppe_num;
-+
-+	ppe_num = eth->soc->ppe_num;
- 
- 	err = phylink_of_phy_connect(mac->phylink, mac->of_node, 0);
- 	if (err) {
-@@ -3380,18 +3384,38 @@ static int mtk_open(struct net_device *dev)
- 		for (i = 0; i < ARRAY_SIZE(eth->ppe); i++)
- 			mtk_ppe_start(eth->ppe[i]);
- 
--		gdm_config = soc->offload_version ? soc->reg_map->gdma_to_ppe
--						  : MTK_GDMA_TO_PDMA;
--		mtk_gdm_config(eth, gdm_config);
-+		for (i = 0; i < MTK_MAX_DEVS; i++) {
-+			if (!eth->netdev[i])
-+				break;
-+
-+			target_mac = netdev_priv(eth->netdev[i]);
-+			if (!soc->offload_version) {
-+				target_mac->ppe_idx = 0;
-+				gdm_config = MTK_GDMA_TO_PDMA;
-+			} else if (ppe_num >= 3 && target_mac->id == 2) {
-+				target_mac->ppe_idx = 2;
-+				gdm_config = soc->reg_map->gdma_to_ppe[2];
-+			} else if (ppe_num >= 2 && target_mac->id == 1) {
-+				target_mac->ppe_idx = 1;
-+				gdm_config = soc->reg_map->gdma_to_ppe[1];
-+			} else {
-+				target_mac->ppe_idx = 0;
-+				gdm_config = soc->reg_map->gdma_to_ppe[0];
-+			}
-+			mtk_gdm_config(eth, target_mac->id, gdm_config);
-+		}
-+		/* Reset and enable PSE */
-+		mtk_w32(eth, RST_GL_PSE, MTK_RST_GL);
-+		mtk_w32(eth, 0, MTK_RST_GL);
- 
- 		napi_enable(&eth->tx_napi);
- 		napi_enable(&eth->rx_napi);
- 		mtk_tx_irq_enable(eth, MTK_TX_DONE_INT);
- 		mtk_rx_irq_enable(eth, soc->rx.irq_done_mask);
- 		refcount_set(&eth->dma_refcnt, 1);
--	}
--	else
-+	} else {
- 		refcount_inc(&eth->dma_refcnt);
-+	}
- 
- 	phylink_start(mac->phylink);
- 	netif_tx_start_all_queues(dev);
-@@ -3468,7 +3492,8 @@ static int mtk_stop(struct net_device *dev)
- 	if (!refcount_dec_and_test(&eth->dma_refcnt))
- 		return 0;
- 
--	mtk_gdm_config(eth, MTK_GDMA_DROP_ALL);
-+	for (i = 0; i < MTK_MAX_DEVS; i++)
-+		mtk_gdm_config(eth, i, MTK_GDMA_DROP_ALL);
- 
- 	mtk_tx_irq_disable(eth, MTK_TX_DONE_INT);
- 	mtk_rx_irq_disable(eth, eth->soc->rx.irq_done_mask);
-@@ -4949,23 +4974,24 @@ static int mtk_probe(struct platform_device *pdev)
- 	}
- 
- 	if (eth->soc->offload_version) {
--		u32 num_ppe = mtk_is_netsys_v2_or_greater(eth) ? 2 : 1;
-+		u8 ppe_num = eth->soc->ppe_num;
- 
--		num_ppe = min_t(u32, ARRAY_SIZE(eth->ppe), num_ppe);
--		for (i = 0; i < num_ppe; i++) {
--			u32 ppe_addr = eth->soc->reg_map->ppe_base + i * 0x400;
-+		ppe_num = min_t(u8, ARRAY_SIZE(eth->ppe), ppe_num);
-+		for (i = 0; i < ppe_num; i++) {
-+			u32 ppe_addr = eth->soc->reg_map->ppe_base;
- 
-+			ppe_addr += (i == 2 ? 0xc00 : i * 0x400);
- 			eth->ppe[i] = mtk_ppe_init(eth, eth->base + ppe_addr, i);
- 
- 			if (!eth->ppe[i]) {
- 				err = -ENOMEM;
- 				goto err_deinit_ppe;
- 			}
--		}
-+			err = mtk_eth_offload_init(eth, i);
- 
--		err = mtk_eth_offload_init(eth);
--		if (err)
--			goto err_deinit_ppe;
-+			if (err)
-+				goto err_deinit_ppe;
-+		}
- 	}
- 
- 	for (i = 0; i < MTK_MAX_DEVS; i++) {
-@@ -5070,6 +5096,7 @@ static const struct mtk_soc_data mt7621_data = {
- 	.required_pctl = false,
- 	.version = 1,
- 	.offload_version = 1,
-+	.ppe_num = 1,
- 	.hash_offset = 2,
- 	.foe_entry_size = MTK_FOE_ENTRY_V1_SIZE,
- 	.tx = {
-@@ -5095,6 +5122,7 @@ static const struct mtk_soc_data mt7622_data = {
- 	.required_pctl = false,
- 	.version = 1,
- 	.offload_version = 2,
-+	.ppe_num = 1,
- 	.hash_offset = 2,
- 	.has_accounting = true,
- 	.foe_entry_size = MTK_FOE_ENTRY_V1_SIZE,
-@@ -5120,6 +5148,7 @@ static const struct mtk_soc_data mt7623_data = {
- 	.required_pctl = true,
- 	.version = 1,
- 	.offload_version = 1,
-+	.ppe_num = 1,
- 	.hash_offset = 2,
- 	.foe_entry_size = MTK_FOE_ENTRY_V1_SIZE,
- 	.disable_pll_modes = true,
-@@ -5169,6 +5198,7 @@ static const struct mtk_soc_data mt7981_data = {
- 	.required_pctl = false,
- 	.version = 2,
- 	.offload_version = 2,
-+	.ppe_num = 2,
- 	.hash_offset = 4,
- 	.has_accounting = true,
- 	.foe_entry_size = MTK_FOE_ENTRY_V2_SIZE,
-@@ -5195,6 +5225,7 @@ static const struct mtk_soc_data mt7986_data = {
- 	.required_pctl = false,
- 	.version = 2,
- 	.offload_version = 2,
-+	.ppe_num = 2,
- 	.hash_offset = 4,
- 	.has_accounting = true,
- 	.foe_entry_size = MTK_FOE_ENTRY_V2_SIZE,
-@@ -5221,6 +5252,7 @@ static const struct mtk_soc_data mt7988_data = {
- 	.required_pctl = false,
- 	.version = 3,
- 	.offload_version = 2,
-+	.ppe_num = 3,
- 	.hash_offset = 4,
- 	.has_accounting = true,
- 	.foe_entry_size = MTK_FOE_ENTRY_V3_SIZE,
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-index 4eab30b44070..4b5863b68822 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-@@ -1130,7 +1130,7 @@ struct mtk_reg_map {
- 		u32	tx_sch_rate;	/* tx scheduler rate control registers */
- 	} qdma;
- 	u32	gdm1_cnt;
--	u32	gdma_to_ppe;
-+	u32	gdma_to_ppe[3];
- 	u32	ppe_base;
- 	u32	wdma_base[3];
- 	u32	pse_iq_sta;
-@@ -1168,6 +1168,7 @@ struct mtk_soc_data {
- 	u8		offload_version;
- 	u8		hash_offset;
- 	u8		version;
-+	u8		ppe_num;
- 	u16		foe_entry_size;
- 	netdev_features_t hw_features;
- 	bool		has_accounting;
-@@ -1289,7 +1290,7 @@ struct mtk_eth {
- 
- 	struct metadata_dst		*dsa_meta[MTK_MAX_DSA_PORTS];
- 
--	struct mtk_ppe			*ppe[2];
-+	struct mtk_ppe			*ppe[3];
- 	struct rhashtable		flow_table;
- 
- 	struct bpf_prog			__rcu *prog;
-@@ -1314,6 +1315,7 @@ struct mtk_eth {
- struct mtk_mac {
- 	int				id;
- 	phy_interface_t			interface;
-+	u8				ppe_idx;
- 	int				speed;
- 	struct device_node		*of_node;
- 	struct phylink			*phylink;
-@@ -1435,7 +1437,7 @@ int mtk_gmac_sgmii_path_setup(struct mtk_eth *eth, int mac_id);
- int mtk_gmac_gephy_path_setup(struct mtk_eth *eth, int mac_id);
- int mtk_gmac_rgmii_path_setup(struct mtk_eth *eth, int mac_id);
- 
--int mtk_eth_offload_init(struct mtk_eth *eth);
-+int mtk_eth_offload_init(struct mtk_eth *eth, u8 id);
- int mtk_eth_setup_tc(struct net_device *dev, enum tc_setup_type type,
- 		     void *type_data);
- int mtk_flow_offload_cmd(struct mtk_eth *eth, struct flow_cls_offload *cls,
-diff --git a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-index aa262e6f4b85..f80af73d0a1b 100644
---- a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-+++ b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-@@ -245,10 +245,10 @@ mtk_flow_offload_replace(struct mtk_eth *eth, struct flow_cls_offload *f,
- 			 int ppe_index)
- {
- 	struct flow_rule *rule = flow_cls_offload_flow_rule(f);
-+	struct net_device *idev = NULL, *odev = NULL;
- 	struct flow_action_entry *act;
- 	struct mtk_flow_data data = {};
- 	struct mtk_foe_entry foe;
--	struct net_device *odev = NULL;
- 	struct mtk_flow_entry *entry;
- 	int offload_type = 0;
- 	int wed_index = -1;
-@@ -264,6 +264,17 @@ mtk_flow_offload_replace(struct mtk_eth *eth, struct flow_cls_offload *f,
- 		struct flow_match_meta match;
- 
- 		flow_rule_match_meta(rule, &match);
-+		if (mtk_is_netsys_v2_or_greater(eth)) {
-+			idev = __dev_get_by_index(&init_net, match.key->ingress_ifindex);
-+			if (idev) {
-+				struct mtk_mac *mac = netdev_priv(idev);
-+
-+				if (WARN_ON(mac->ppe_idx >= eth->soc->ppe_num))
-+					return -EINVAL;
-+
-+				ppe_index = mac->ppe_idx;
-+			}
-+		}
- 	} else {
- 		return -EOPNOTSUPP;
- 	}
-@@ -637,7 +648,9 @@ int mtk_eth_setup_tc(struct net_device *dev, enum tc_setup_type type,
- 	}
- }
- 
--int mtk_eth_offload_init(struct mtk_eth *eth)
-+int mtk_eth_offload_init(struct mtk_eth *eth, u8 id)
- {
-+	if (!eth->ppe[id] || !eth->ppe[id]->foe_table)
-+		return 0;
- 	return rhashtable_init(&eth->flow_table, &mtk_flow_ht_params);
- }
--- 
-2.45.1
+seninf can have multiple port depending on the soc, each requiring its own =
+phy
 
+>
+> > +
+> > +  ports:
+> > +    $ref: /schemas/graph.yaml#/properties/ports
+> > +
+> > +    properties:
+> > +      port@0:
+> > +        $ref: /schemas/graph.yaml#/$defs/port-base
+> > +        unevaluatedProperties: false
+> > +        description: CSI0 or CSI0A port
+> > +
+> > +        properties:
+> > +          endpoint:
+> > +            $ref: video-interfaces.yaml#
+> > +            unevaluatedProperties: false
+> > +
+> > +            properties:
+> > +              clock-lanes:
+> > +                maxItems: 1
+> > +              data-lanes:
+> > +                minItems: 1
+> > +                maxItems: 4
+> > +
+> > +      port@1:
+> > +        $ref: /schemas/graph.yaml#/$defs/port-base
+> > +        unevaluatedProperties: false
+> > +        description: CSI1 port
+> > +
+> > +        properties:
+> > +          endpoint:
+> > +            $ref: video-interfaces.yaml#
+> > +            unevaluatedProperties: false
+> > +
+> > +            properties:
+> > +              clock-lanes:
+> > +                maxItems: 1
+> > +              data-lanes:
+> > +                minItems: 1
+> > +                maxItems: 4
+> > +
+> > +      port@2:
+> > +        $ref: /schemas/graph.yaml#/$defs/port-base
+> > +        unevaluatedProperties: false
+> > +        description: CSI2 port
+> > +
+> > +        properties:
+> > +          endpoint:
+> > +            $ref: video-interfaces.yaml#
+> > +            unevaluatedProperties: false
+> > +
+> > +            properties:
+> > +              clock-lanes:
+> > +                maxItems: 1
+> > +              data-lanes:
+> > +                minItems: 1
+> > +                maxItems: 4
+> > +
+> > +      port@3:
+> > +        $ref: /schemas/graph.yaml#/$defs/port-base
+> > +        unevaluatedProperties: false
+> > +        description: CSI0B port
+> > +
+> > +        properties:
+> > +          endpoint:
+> > +            $ref: video-interfaces.yaml#
+> > +            unevaluatedProperties: false
+> > +
+> > +            properties:
+> > +              clock-lanes:
+> > +                maxItems: 1
+> > +              data-lanes:
+> > +                minItems: 1
+> > +                maxItems: 2
+> > +
+> > +      port@4:
+> > +        $ref: /schemas/graph.yaml#/properties/port
+> > +        description: connection point for cam0
+> > +
+> > +      port@5:
+> > +        $ref: /schemas/graph.yaml#/properties/port
+> > +        description: connection point for cam1
+> > +
+> > +      port@6:
+> > +        $ref: /schemas/graph.yaml#/properties/port
+> > +        description: connection point for camsv0
+> > +
+> > +      port@7:
+> > +        $ref: /schemas/graph.yaml#/properties/port
+> > +        description: connection point for camsv1
+> > +
+> > +      port@8:
+> > +        $ref: /schemas/graph.yaml#/properties/port
+> > +        description: connection point for camsv2
+> > +
+> > +      port@9:
+> > +        $ref: /schemas/graph.yaml#/properties/port
+> > +        description: connection point for camsv3
+> > +
+> > +    required:
+> > +      - port@0
+> > +      - port@1
+> > +      - port@2
+> > +      - port@3
+> > +      - port@4
+> > +      - port@5
+> > +      - port@6
+> > +      - port@7
+> > +      - port@8
+> > +      - port@9
+> > +
+> > +required:
+> > +  - compatible
+> > +  - interrupts
+> > +  - clocks
+> > +  - clock-names
+> > +  - power-domains
+> > +  - ports
+> > +
+> > +additionalProperties: false
+> > +
+> > +examples:
+> > +  - |
+> > +    #include <dt-bindings/clock/mediatek,mt8365-clk.h>
+> > +    #include <dt-bindings/interrupt-controller/irq.h>
+> > +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> > +    #include <dt-bindings/phy/phy.h>
+> > +    #include <dt-bindings/power/mediatek,mt8365-power.h>
+> > +
+> > +    soc {
+> > +          #address-cells =3D <2>;
+> > +          #size-cells =3D <2>;
+>
+> Use 4 spaces for example indentation.
+>
+> > +
+> > +          seninf: seninf@15040000 {
+>
+> Node names should be generic. See also an explanation and list of
+> examples (not exhaustive) in DT specification:
+> https://devicetree-specification.readthedocs.io/en/latest/chapter2-device=
+tree-basics.html#generic-names-recommendation
+>
+>
+> > +                compatible =3D "mediatek,mt8365-seninf";
+> > +                reg =3D <0 0x15040000 0 0x6000>;
+> > +                interrupts =3D <GIC_SPI 210 IRQ_TYPE_LEVEL_LOW>;
+> > +                clocks =3D <&camsys CLK_CAM_SENIF>,
+> > +                         <&topckgen CLK_TOP_SENIF_SEL>;
+> > +                clock-names =3D "camsys", "top_mux";
+> > +
+> > +                power-domains =3D <&spm MT8365_POWER_DOMAIN_CAM>;
+> > +
+> > +                phys =3D <&mipi_csi0 PHY_TYPE_DPHY>;
+> > +                phy-names =3D "csi0";
+> > +
+> > +                ports {
+> > +                      #address-cells =3D <1>;
+> > +                      #size-cells =3D <0>;
+> > +
+> > +                      port@0 {
+> > +                            reg =3D <0>;
+> > +                            seninf_in1: endpoint {
+> > +                              clock-lanes =3D <2>;
+> > +                              data-lanes =3D <1 3 0 4>;
+> > +                              remote-endpoint =3D <&isp1_out>;
+> > +                            };
+> > +                      };
+> > +
+> > +                      port@1 {
+> > +                          reg =3D <1>;
+> > +                      };
+> > +
+> > +                      port@2 {
+> > +                            reg =3D <2>;
+> > +                      };
+> > +
+> > +                      port@3 {
+> > +                            reg =3D <3>;
+> > +                      };
+> > +
+> > +                      port@4 {
+> > +                            reg =3D <4>;
+> > +                            seninf_camsv1_endpoint: endpoint {
+> > +                                remote-endpoint =3D <&camsv1_endpoint>=
+;
+> > +                            };
+> > +                      };
+> > +
+> > +                      port@5 {
+> > +                            reg =3D <5>;
+> > +                      };
+> > +
+> > +                      port@6 {
+> > +                            reg =3D <6>;
+> > +                      };
+> > +
+> > +                      port@7 {
+> > +                            reg =3D <7>;
+> > +                      };
+> > +
+> > +                      port@8 {
+> > +                            reg =3D <8>;
+> > +                      };
+> > +
+> > +                      port@9 {
+> > +                            reg =3D <9>;
+> > +                      };
+> > +
+>
+> Stray blank line
+>
+> > +                };
+>
+>
+>
+> Best regards,
+> Krzysztof
+>
 
