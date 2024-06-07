@@ -4,86 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E03BC27C53
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Jun 2024 16:35:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BD38C27C55
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Jun 2024 20:34:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:Date:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JSjugDn364e1bR2NBfOIb6HAziv7A8jZrYbuA88Eh+4=; b=r1ko8CfBaF6DesyTHgd7+zR8Bf
-	AIlW/pfjBapNlbzZiBA5+WgQV3ZpXL9TkprtgjbPjYoyCY0htKa4KyedvkApSxG7BVcVTHk+h9aTD
-	p54z2xND7zOhEX5p931m8a3aSdJvvgGxxQFFcbc2fGrcQN4EUhPg9N7e0VY8xH4XbEQnRo5KXne9G
-	3JWclV7CJDKBCbonKAIBHdMWzr8QcUXpPUk8QeQ6OZ7Riil2trb6NzO3jKWlEqCG+9iaZo8lNcqM5
-	FUseKIkv4kU8Tl8CYg6acv7QJuMVLdTXYNmP48Wh58TqJhvJmxImgotEkNesdGRjANZHTZ3uZtWwz
-	Jzn4+ZaA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=k/qOH0xVbdv81jM0nNIDKLRqUAZO1z/a91QrrgXPknI=; b=CuHxjG9Yupo/2CKr9Q62u37/Oi
+	LiWfKGFiF8OEWpGluwSPPUWhzMi7qKNeNrBNF7ts1tM2Jo7R2o89b0IRZRm8Ikooqk7NK7sK02zgC
+	uZoRwAGQyJXB7NY8U2fYcaL+3KABwolQr7356b2VDoVg2dNteFY4Ge179RS2W1KcsUi2i+PcogUYQ
+	8HJzGXtOUMc/f1HHUYdrSyHkVMsEmz5vvUbsmPOl24JVWEvl4swFWukUmiHXrrGKHL3xbUsX7vItn
+	C12AzotxsXkOX5iBwWQyg5jLz8qmhAwUbAul4ugJgbYPRxl4KftvuXMvbfPfapI2o1GfGbOgYx8o0
+	TqWdZodA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sFcYU-0000000Exga-0GPD;
-	Fri, 07 Jun 2024 16:35:06 +0000
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+	id 1sFgIW-0000000Fbh7-1yJY;
+	Fri, 07 Jun 2024 20:34:52 +0000
+Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sFcYQ-0000000ExeD-0FEU
+	id 1sFgIS-0000000FbeM-2TVD
 	for linux-mediatek@lists.infradead.org;
-	Fri, 07 Jun 2024 16:35:04 +0000
-Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-4216b80e36bso7105725e9.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 07 Jun 2024 09:34:57 -0700 (PDT)
+	Fri, 07 Jun 2024 20:34:50 +0000
+Received: by mail-lf1-x12d.google.com with SMTP id 2adb3069b0e04-52bc1261f45so962424e87.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 07 Jun 2024 13:34:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1717778096; x=1718382896; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:date:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=JSjugDn364e1bR2NBfOIb6HAziv7A8jZrYbuA88Eh+4=;
-        b=RAWMLCt8xlciqXD9aaDi3P8wdH5P9CooAvtIg0m/8pBd1ZRQXZgKDDPjhKG9LA9HJH
-         MtnBlT/2tTA4FzYzuWo0DPmaqrp5LRhFql22uImVxf7UB6ML1HdujqZ/kl0XeoHFlthI
-         mmgnF6BtK8/9zgMZPMsY6LBF5yfxEmTiRwC+Er1f5i2WtRX6Jn7iwGEJnGiy8CzkUdOX
-         NfDtHVzOJB+yycT2sRz7PrMMkhMG/RhgGzQm+RDwNSR+zBPA6Y7QeT7F8k/BHRo9TFMC
-         yQ7a4ltiIa6UNJek27dXu4ojNJbjxAXSDiZGpHlOrXnOQwNNdZ5VhDaorb3pP0v1Jx6K
-         BMGw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1717778096; x=1718382896;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:date:from:x-gm-message-state:from:to:cc:subject:date
+        d=linaro.org; s=google; t=1717792484; x=1718397284; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=JSjugDn364e1bR2NBfOIb6HAziv7A8jZrYbuA88Eh+4=;
-        b=Wugxc7phAewga79AUwkMsDathBYJfL51My4ZzhNgW7D/bTQrDcI9aR+yxG58ZNq73Z
-         hnCWKD8cHZolrQawu2F/fbk2DB4AP2ApIfTGFXRm4n5xZsy05UKjzfi446iJSY5aD9fm
-         XnKglZxAtAptrV+v+BbGe+ucHD7mktS0l0RxAAD3XB7fAPJcETIIh3fiE4kw4dSyQmwt
-         z/sZXSoE6UWhcagysyIZcby6OahZNlVKfWTUHzYiNiIvvwKl+dmA0TXge7Hq87g69ORV
-         osXSXd/ldqyl2kRrjTPRDABKG5nBUIrYAcWfj8w7sNBAgnue9ZiVxg/r+pGSG+rnPORM
-         TEpw==
-X-Forwarded-Encrypted: i=1; AJvYcCWJiyjnLimVnvZ7lAhsWDEthXa+vscX2oGYugimA/gQv66ko3jPh8hg3a7NiWsTJpM8PcDsxDoJfBda3KiKnMSm8SW9DurmS7LA34fvLnsW0SXM
-X-Gm-Message-State: AOJu0YzqIcOTl5iDl9j3HulUQO53NCI3Dwq2k6mg13r3sBx1xSfrW620
-	j3U4LLXSFO7Jf2z6gZuJGUNKgET/DqJlpqax7vs52NMgwD3q0XchCysZoDzr3nk=
-X-Google-Smtp-Source: AGHT+IGpGEuV4DVZ1kdf6ue+dBm6Ke4RvEdYp3g9xEjXsaFgOxYEd6wAXfkcbKsCsHOsq8Dy8bGbhw==
-X-Received: by 2002:a05:600c:3c83:b0:41c:13f6:206d with SMTP id 5b1f17b1804b1-42164a2e9d4mr30060715e9.25.1717778096151;
-        Fri, 07 Jun 2024 09:34:56 -0700 (PDT)
-Received: from localhost (p200300f65f283b0017c92b05fa289d44.dip0.t-ipconnect.de. [2003:f6:5f28:3b00:17c9:2b05:fa28:9d44])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4215c19e719sm58262335e9.3.2024.06.07.09.34.55
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 07 Jun 2024 09:34:55 -0700 (PDT)
-From: "Uwe =?utf-8?Q?Kleine-K=C3=B6nig?=" <ukleinek@baylibre.com>
-X-Google-Original-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
-Date: Fri, 7 Jun 2024 18:34:54 +0200
-To: Jeff Johnson <quic_jjohnson@quicinc.com>
-Cc: Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
-	Krzysztof Kozlowski <krzk@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
-	Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-pwm@vger.kernel.org, imx@lists.linux.dev, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-samsung-soc@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, kernel-janitors@vger.kernel.org
-Subject: Re: [PATCH] pwm: add missing MODULE_DESCRIPTION() macros
-Message-ID: <vunkvcpe7omv5tbsyw237hhauzyrhf6nujwvyv6vq5zd33udee@5b36qxbz5mjx>
-References: <20240607-md-drivers-pwm-v1-1-27237a2bec6a@quicinc.com>
+        bh=k/qOH0xVbdv81jM0nNIDKLRqUAZO1z/a91QrrgXPknI=;
+        b=v/Tg2OK002DV4uDJsYzoLC7w78wSsc2zSfdkzJI6g0UxB6Kjk2AjGMHSZuNcDiXx6z
+         YIbaqEDtPSuJ2eIOiKKhtqh9EJSgL1kq0akT3dMt9ZkLh00gKVEOeZzHeF3MoIZMz499
+         CxoDu+VAtYTuumPWRWYSBp1basDqzReC9WVUt/HwiHCxGJYtMS3Ai76IvCNEodGSrmdV
+         bc6jf+8rVV6VsMsx11VrP0sC3cI4aYI1hLtA/I/06AJJtoyHR6qRfuQlEpPP1J9+hpjQ
+         KyUetOllR9/k0o5XqAgnqgA7YzUF66gNMJOAqLd9rgo69Z8CVQsO75R0BbEGl5r3jzpK
+         A5PQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1717792484; x=1718397284;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=k/qOH0xVbdv81jM0nNIDKLRqUAZO1z/a91QrrgXPknI=;
+        b=mtpD83lTMl5cyOEU82UnIiDZiC2p1kA+SCbwFHH18hzoaaY5RAHGWm9injm4EnmtfP
+         6sI4RpZQjWTjumXm9K/d6ZSJRlf+twM8tgZ88fzI4t1zeMh1vJzX3huN+OlEIidZ1fKN
+         A1U+yoLt8jkbZnvRhST/Ye9qaHhq7jtVVV+XyLFVYUjK7TGGD7tWoOadiJ2VmZYqAIBw
+         HbUFW8uqf+OFFfvME4fz+6PJDpYmwhO4U3NFuYOX4mLttbe9cqIkXIXdIJEvAqcfIMbo
+         mPRzNUZoqPfIPhSGl9A6ZPBdFh0aySuRRsBcE/npTeg7LwV3aETnhiKPXYMV24IzdXR+
+         GnTw==
+X-Forwarded-Encrypted: i=1; AJvYcCU4bzkUE/MuBEbCj+dWH+U9jSfH5LXaf5hbejoznxd0H0TZgH9dIoo/g05axHGjnlVlQIMiga07KY94XHkd8fSheJhSU3B+8LriW7qhbfXXZjZ6
+X-Gm-Message-State: AOJu0YxRpXorlJvn/iqfdKp/xnqCE4Fj28q72+/wapWSrV4cLV3MDOyo
+	2zpOden8zxlc8vmzCzXzYNFWQaOic7c39ld1ZR45EULabkuI7r5dVuDRXkv2Rk5hQeMah8IWjZI
+	klK1B93qmv9O4NABraUxcQZoJcEKbgGziFMhtRg==
+X-Google-Smtp-Source: AGHT+IGEyJ+w+NYHGdHZTgbtEUQOfYGBIFct41lT8WKTrSrUoBr0eDijD2Dx44IKe7RqxIodGmEk6AWnkM/ViP3EgMk=
+X-Received: by 2002:a05:6512:131c:b0:52b:e2ab:7db2 with SMTP id
+ 2adb3069b0e04-52be2ab7e90mr867659e87.22.1717792484193; Fri, 07 Jun 2024
+ 13:34:44 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="uegcep6av77uozx5"
-Content-Disposition: inline
-In-Reply-To: <20240607-md-drivers-pwm-v1-1-27237a2bec6a@quicinc.com>
+References: <20240530085745.1539925-1-andy.shevchenko@gmail.com>
+In-Reply-To: <20240530085745.1539925-1-andy.shevchenko@gmail.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Fri, 7 Jun 2024 22:34:33 +0200
+Message-ID: <CACRpkdbHwY2UJ-OodeJu2VrhML6tcjKeD-00ZoZotmi1tKzsEg@mail.gmail.com>
+Subject: Re: [PATCH v3 00/11] pinctrl: pinmux: Embed and reuse struct
+To: Andy Shevchenko <andy.shevchenko@gmail.com>
+Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Daniel Golle <daniel@makrotopia.org>, linux-gpio@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, imx@lists.linux.dev, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-mips@vger.kernel.org, Dong Aisheng <aisheng.dong@nxp.com>, 
+	Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	Paul Cercueil <paul@crapouillou.net>, Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240607_093502_265839_0B51465D 
-X-CRM114-Status: GOOD (  11.77  )
+X-CRM114-CacheID: sfid-20240607_133448_809698_F99ECFAD 
+X-CRM114-Status: UNSURE (   9.62  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,59 +99,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Thu, May 30, 2024 at 10:57=E2=80=AFAM Andy Shevchenko
+<andy.shevchenko@gmail.com> wrote:
 
---uegcep6av77uozx5
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+> As promised to Linus W. there is a series that converts struct function_d=
+esc
+> to use struct pinfunction. With this it both struct group_desc and struct
+> function_desc will rely on the generic data types (struct pingroup and st=
+ruct
+> pinfunction respectively). I haven't compiled everything, some builds mig=
+ht
+> fail. Anyway, comments, reviews, testing are all appreciated.
+>
+> In v3:
+> - added 'moore' to the mediatek patches summary (AngeloGioacchino)
+> - added tags (AngeloGioacchino)
+> - fixed build error in IMX driver (LKP)
 
-Hello,
+A week passed, no comments.
+Patches applied!
 
-On Fri, Jun 07, 2024 at 09:02:33AM -0700, Jeff Johnson wrote:
-> make allmodconfig && make W=3D1 C=3D1 reports:
-> WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pwm/pwm-imx1.o
-> WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pwm/pwm-imx27.o
-> WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pwm/pwm-intel-l=
-gm.o
-> WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pwm/pwm-mediate=
-k.o
-> WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pwm/pwm-pxa.o
-> WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pwm/pwm-samsung=
-=2Eo
-> WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pwm/pwm-spear.o
-> WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pwm/pwm-viscont=
-i.o
->=20
-> Add the missing invocations of the MODULE_DESCRIPTION() macro.
->=20
-> Signed-off-by: Jeff Johnson <quic_jjohnson@quicinc.com>
-> ---
-> This addresses all of the issues in driver/pwm
->=20
-> Let me know if you want any of the individual module changes
-> segregated into separate patches.
-
-Looks good to me, I applied it to
-https://git.kernel.org/pub/scm/linux/kernel/git/ukleinek/linux.git pwm/for-=
-next
-
-Thanks
-Uwe
-
---uegcep6av77uozx5
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmZjNqkACgkQj4D7WH0S
-/k4LyAf+MocX0RpPC44cCBO/dFFZlEnU4+NMAXx+vRXpg0ASWbWuBgbMvXujfpeo
-YRQZYgDgLp/7/FndOQIPT59C9fFbWz0UdLPSiT/MkN+cbRAoiaMXD5JqiTrORPFq
-RFbNwOtXzQoRAEceczkKFb65oV7rwmyNyIBN9Vv3Ce/o+avvmlqdAziFU/smNwKz
-en3MhIonz85eSOessjikio9bmBGGFzT8US8WiD8Ya8zcQUZ/i9aXH/verkoyfsb/
-9hIlW/QY+mBn61RQeVHuF6O5W5Trnq4/sPf2TtnicRafEYBtwNFJRZmDviEqVp3g
-UVN+CF/yOMS6eo/89WixvZXyYMNuEQ==
-=bpJ1
------END PGP SIGNATURE-----
-
---uegcep6av77uozx5--
+Yours,
+Linus Walleij
 
