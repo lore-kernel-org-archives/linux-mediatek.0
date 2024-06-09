@@ -4,92 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78705C27C53
-	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Jun 2024 05:02:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E183C27C53
+	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Jun 2024 12:32:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:CC:To:Message-ID:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=FOGK3CkFa+pQXmCuqHhrB+08p7S3TGqbxM0mAlsI4ms=; b=iZ10pyBdFdoP0w7tXBHXO05y2D
-	tTNdMV5Q/Co5q4Se2f6LnF6IxiQK8QseEQKVHxBJXdbH67+kiiCpLDF6mVKzYBjQSNJTvjsFIV22w
-	9l75z3JCQnlipKYs5KTMf7TCeywC5JbEPx6dA6B/vZqMk2KIehHCeRjwsBrUWeC8ZY8oFZMEgmuIa
-	1OcZEen9a8a2+uCaGOJxy8HCNuW9Quwkeg7Pi7V8PymFT5DkClhocsSADsQYYZZaWOZ4QeqGdnjPZ
-	IXp5ac2oH3t4cBYj7IyTfF1O1jSmCCWNPtjO+/sBucF3yeCfDWCy71ve0CemvQ4AiuKz08ENYNbYx
-	WZ1N7XIg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Subject:Cc:To:From:Message-ID:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=iOi9N/nSSQsgietPsvs5I3VCicxzuSS2+LlhV6qmjjg=; b=y+TsVsTh0hxH26zFD0AtRT3qg1
+	7JepPYgMD6lrP8McjmvQgdudmy7XrlYa5LAhHGsTNVynrG4hdobEML/q+tAPhrUjhp+S1nlUCPhPS
+	wqlmUqYdvWIUXbj0kDj2QlbNIA1nUtRvJJscvhNHzWYnd0ZAUa7OZnJux77+HBAzDqWGB7tl1XL1j
+	4vEbgTHEQW0U635J6ggF+4urL6ifqV5sYbxOhpZzNpDPjL/75mg+KqkeMXboMvL+YXS8E1BySL182
+	NdqymZwCbL/NBs8QAYpSw8eiZsu7Wz8Ges4WatAbMbRdKjQ6aPDqWPmgBe2OqtSFeN+ZefhAy6ior
+	yXNHx4Bw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sGAh4-00000001mrb-2IQp;
-	Sun, 09 Jun 2024 05:02:14 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1sGHj9-00000002Zu3-1tkl;
+	Sun, 09 Jun 2024 12:32:51 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sGAh0-00000001mr3-1IlI;
-	Sun, 09 Jun 2024 05:02:12 +0000
-Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 4594egxD016776;
-	Sun, 9 Jun 2024 05:01:58 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
-	cc:content-transfer-encoding:content-type:date:from:message-id
-	:mime-version:subject:to; s=qcppdkim1; bh=FOGK3CkFa+pQXmCuqHhrB+
-	08p7S3TGqbxM0mAlsI4ms=; b=JugOeTN9DahbhDeTv94iNNfS8rspPGqUHT7RhI
-	5tc7TU08WibmMxs26Kc7KW9L1MCqJgTSASP3MaTz0jEkCYTeEApF5iuB+jsXJ/oY
-	emH27ZC4OF2XQHVvvsq6Xd690J3Dd3t9E8TCGJUqdQfdUBpEGQjedMCl+pol9ja6
-	ES4rB74ZRdL+oEOR4IxEPBoLhNpHVNA/rfq5edeh/FfeNoxOYBeexSYK25/AnCeh
-	WFLaIjBzz8/QM3OOqiEQT+BdrtJyOCgnfdRTKOc64LWNeaR1OAde8E0VcQfkreoV
-	Zq9rlfChIt/RhELAwGnTIykpMwyIS9VIA7AKL95cIJpE85kg==
-Received: from nalasppmta01.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3ymgfk1bn2-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Sun, 09 Jun 2024 05:01:58 +0000 (GMT)
-Received: from nalasex01a.na.qualcomm.com (nalasex01a.na.qualcomm.com [10.47.209.196])
-	by NALASPPMTA01.qualcomm.com (8.17.1.19/8.17.1.19) with ESMTPS id 45951vbm001982
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Sun, 9 Jun 2024 05:01:57 GMT
-Received: from [169.254.0.1] (10.80.80.8) by nalasex01a.na.qualcomm.com
- (10.47.209.196) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.9; Sat, 8 Jun 2024
- 22:01:57 -0700
-From: Jeff Johnson <quic_jjohnson@quicinc.com>
-Date: Sat, 8 Jun 2024 21:53:29 -0700
-Subject: [PATCH] regulator: add missing MODULE_DESCRIPTION() macro
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-ID: <20240608-md-drivers-regulator-v1-1-da338665db7a@quicinc.com>
-X-B4-Tracking: v=1; b=H4sIAEg1ZWYC/x3MQQqDQAxA0atI1g3MxFZKr1K6iE6qAR1LoiKId
- ++0y7f4/wAXU3F4VAeYbOo654J4qaAbOPeCmoqBAl1DE+44JUymm5ijSb+OvMyGRDXFW+IgsYG
- Sfkzeuv+3z1dxyy7YGudu+M1GzeuOE/siBuf5BXzmqOuFAAAA
-To: Support Opensource <support.opensource@diasemi.com>,
-        Liam Girdwood
-	<lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
-        Matthias Brugger
-	<matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-        <linux-mediatek@lists.infradead.org>,
-        <kernel-janitors@vger.kernel.org>,
-        "Jeff Johnson" <quic_jjohnson@quicinc.com>
-X-Mailer: b4 0.13.0
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
- nalasex01a.na.qualcomm.com (10.47.209.196)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-GUID: iUnXO7HMrvR-rPnVh8eNFpAM8lOXcZ3I
-X-Proofpoint-ORIG-GUID: iUnXO7HMrvR-rPnVh8eNFpAM8lOXcZ3I
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.28.16
- definitions=2024-06-09_02,2024-06-06_02,2024-05-17_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 lowpriorityscore=0
- clxscore=1011 priorityscore=1501 phishscore=0 adultscore=0 spamscore=0
- malwarescore=0 mlxlogscore=999 suspectscore=0 impostorscore=0 bulkscore=0
- mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.19.0-2405170001 definitions=main-2406090038
+	id 1sGHj5-00000002Zss-0uTy;
+	Sun, 09 Jun 2024 12:32:49 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id D5BD5CE0289;
+	Sun,  9 Jun 2024 12:32:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B9AAFC2BD10;
+	Sun,  9 Jun 2024 12:32:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1717936361;
+	bh=gfageaVpPs5ry5xzWB7cccoG0GS182Wtm9HpTExW198=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=c1SUlV46y1QW7hzJho8wZS2A0M4LByF1N4p2SZaHAX0Ol+cj9rIw12osuerjHfxTD
+	 XPSa0rgG/o7BLlTed8gNqA5lUUFGEPnjKUtGja2IArtozwzScXQmBD9iAxNlywX1PW
+	 Fz/7WBxQjc0CTSjqPNrI1ZF6JnxFrprlXxhSx07/iKW7Ri2qvmD1euHiKJ9j0RFvOz
+	 9pvNbYEsJGSpwsylYgVP3KOQBh8mz2BQzJaRbHAxeZdzZ1IO41JXW3bEg8dO7iUKyd
+	 b5hJ4ZIhw1bfdTo2qC9fyuzo5xnZDPs/m944aAE+rFsKhwDWbeHzjU81dL7d1jf1T8
+	 9Tjy8KBqAlDZg==
+Received: from sofa.misterjones.org ([185.219.108.64] helo=goblin-girl.misterjones.org)
+	by disco-boy.misterjones.org with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.95)
+	(envelope-from <maz@kernel.org>)
+	id 1sGHix-002715-Di;
+	Sun, 09 Jun 2024 13:32:39 +0100
+Date: Sun, 09 Jun 2024 13:32:38 +0100
+Message-ID: <864ja2l2jd.wl-maz@kernel.org>
+From: Marc Zyngier <maz@kernel.org>
+To: Manivannan Sadhasivam <mani@kernel.org>
+Cc: Jianjun Wang <jianjun.wang@mediatek.com>,	Lorenzo Pieralisi
+ <lpieralisi@kernel.org>,	Krzysztof =?UTF-8?B?V2lsY3p5xYRza2k=?=
+ <kw@linux.com>,	Rob Herring <robh@kernel.org>,	Bjorn Helgaas
+ <bhelgaas@google.com>,	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,	Ryder
+ Lee <ryder.lee@mediatek.com>,	linux-pci@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,	jieyy.yang@mediatek.com,
+	chuanjia.liu@mediatek.com,	qizhong.cheng@mediatek.com,
+	jian.yang@mediatek.com,	jianguo.zhang@mediatek.com
+Subject: Re: [PATCH v2 1/3] PCI: mediatek: Allocate MSI address with dmam_alloc_coherent()
+In-Reply-To: <20240608090152.GB3282@thinkpad>
+References: <20231211085256.31292-1-jianjun.wang@mediatek.com>
+	<20231211085256.31292-2-jianjun.wang@mediatek.com>
+	<20240608090152.GB3282@thinkpad>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/29.2
+ (aarch64-unknown-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+Content-Type: text/plain; charset=US-ASCII
+X-SA-Exim-Connect-IP: 185.219.108.64
+X-SA-Exim-Rcpt-To: mani@kernel.org, jianjun.wang@mediatek.com, lpieralisi@kernel.org, kw@linux.com, robh@kernel.org, bhelgaas@google.com, matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, ryder.lee@mediatek.com, linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, jieyy.yang@mediatek.com, chuanjia.liu@mediatek.com, qizhong.cheng@mediatek.com, jian.yang@mediatek.com, jianguo.zhang@mediatek.com
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org); SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240608_220210_416908_50D8BC58 
-X-CRM114-Status: GOOD (  12.57  )
+X-CRM114-CacheID: sfid-20240609_053247_481594_1D926A90 
+X-CRM114-Status: GOOD (  15.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,79 +92,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On x86, make allmodconfig && make W=1 C=1 reports:
-WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/regulator/da9121-regulator.o
-WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/regulator/max20411-regulator.o
-WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/regulator/rt4831-regulator.o
-WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/regulator/tps6286x-regulator.o
+On Sat, 08 Jun 2024 10:01:52 +0100,
+Manivannan Sadhasivam <mani@kernel.org> wrote:
+> 
+> On Mon, Dec 11, 2023 at 04:52:54PM +0800, Jianjun Wang wrote:
+> > Use dmam_alloc_coherent() to allocate the MSI address, instead of using
+> > virt_to_phys().
+> > 
+> 
+> What is the reason for this change? So now PCIE_MSI_VECTOR becomes unused?
 
-Add the missing invocation of the MODULE_DESCRIPTION() macro to all files
-which have a MODULE_LICENSE(). This includes mtk-dvfsrc-regulator.c, which
-did not produce a warning with the x86 allmodconfig, since it may cause
-this warning with other configurations.
+More importantly, this is yet another example of the DW reference
+driver nonsense, where memory is allocated for *MSI*, while the whole
+point of MSIs is that it is a write that doesn't target memory, making
+any form of RAM allocation absolutely pointless.
 
-Signed-off-by: Jeff Johnson <quic_jjohnson@quicinc.com>
----
- drivers/regulator/da9121-regulator.c     | 1 +
- drivers/regulator/max20411-regulator.c   | 1 +
- drivers/regulator/mtk-dvfsrc-regulator.c | 1 +
- drivers/regulator/rt4831-regulator.c     | 1 +
- drivers/regulator/tps6286x-regulator.c   | 1 +
- 5 files changed, 5 insertions(+)
+This silly approach has been cargo-culted for years, and while I
+caught a few in my time, you can't beat copy-paste.
 
-diff --git a/drivers/regulator/da9121-regulator.c b/drivers/regulator/da9121-regulator.c
-index 96257551bb12..3571b6242e3a 100644
---- a/drivers/regulator/da9121-regulator.c
-+++ b/drivers/regulator/da9121-regulator.c
-@@ -1192,4 +1192,5 @@ static struct i2c_driver da9121_regulator_driver = {
- 
- module_i2c_driver(da9121_regulator_driver);
- 
-+MODULE_DESCRIPTION("Dialog Semiconductor DA9121/DA9122/DA9220/DA9217/DA9130/DA9131/DA9132 regulator driver");
- MODULE_LICENSE("GPL v2");
-diff --git a/drivers/regulator/max20411-regulator.c b/drivers/regulator/max20411-regulator.c
-index 8c09dc71b16d..6614e767072f 100644
---- a/drivers/regulator/max20411-regulator.c
-+++ b/drivers/regulator/max20411-regulator.c
-@@ -161,4 +161,5 @@ static struct i2c_driver max20411_i2c_driver = {
- };
- module_i2c_driver(max20411_i2c_driver);
- 
-+MODULE_DESCRIPTION("Maxim MAX20411 High-Efficiency Single Step-Down Converter driver");
- MODULE_LICENSE("GPL");
-diff --git a/drivers/regulator/mtk-dvfsrc-regulator.c b/drivers/regulator/mtk-dvfsrc-regulator.c
-index f1280d45265d..1941aad5e247 100644
---- a/drivers/regulator/mtk-dvfsrc-regulator.c
-+++ b/drivers/regulator/mtk-dvfsrc-regulator.c
-@@ -211,4 +211,5 @@ static void __exit mtk_dvfsrc_regulator_exit(void)
- module_exit(mtk_dvfsrc_regulator_exit);
- 
- MODULE_AUTHOR("Arvin wang <arvin.wang@mediatek.com>");
-+MODULE_DESCRIPTION("MediaTek DVFSRC regulator driver");
- MODULE_LICENSE("GPL v2");
-diff --git a/drivers/regulator/rt4831-regulator.c b/drivers/regulator/rt4831-regulator.c
-index 97e6f7e2a0ba..7d1ba0c82271 100644
---- a/drivers/regulator/rt4831-regulator.c
-+++ b/drivers/regulator/rt4831-regulator.c
-@@ -202,4 +202,5 @@ static struct platform_driver rt4831_regulator_driver = {
- module_platform_driver(rt4831_regulator_driver);
- 
- MODULE_AUTHOR("ChiYuan Huang <cy_huang@richtek.com>");
-+MODULE_DESCRIPTION("Richtek RT4831 DSV RegulatorsRichtek RT4831 DSV Regulators driver");
- MODULE_LICENSE("GPL v2");
-diff --git a/drivers/regulator/tps6286x-regulator.c b/drivers/regulator/tps6286x-regulator.c
-index 758c70269653..65d0a5a145bd 100644
---- a/drivers/regulator/tps6286x-regulator.c
-+++ b/drivers/regulator/tps6286x-regulator.c
-@@ -156,4 +156,5 @@ static struct i2c_driver tps6286x_regulator_driver = {
- 
- module_i2c_driver(tps6286x_regulator_driver);
- 
-+MODULE_DESCRIPTION("TI TPS6286x Power Regulator driver");
- MODULE_LICENSE("GPL v2");
+IMO, this patch is only making things worse instead of fixing things.
 
----
-base-commit: 19ca0d8a433ff37018f9429f7e7739e9f3d3d2b4
-change-id: 20240608-md-drivers-regulator-223215da0e16
+	M.
 
+-- 
+Without deviation from the norm, progress is not possible.
 
