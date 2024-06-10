@@ -4,65 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E802C27C5F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jun 2024 08:43:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B921C27C5E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jun 2024 08:54:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gJX22UwsbDN2D//lp41IPOhz7i9utMQcuwXw0dQ5Dr8=; b=dcjRBG8YKTDGzzKcxu8f6huPbI
-	XfK5Le+e6bPrr3bmWr/F1PZRWUdLzk6wkRQ6fp1qsYxm1xFYzk9/l7lU/zZCTQRmFSZ4PyY4gS6pd
-	fbfYj0eIBl1pRojOGHp9HN68mJs4Y3UbriklaDndvfXH6kjp+5hcvC0OUHxF5JAshIrc6KdTorJdl
-	4/J+DSKM8+cSkbXvDm91oEuMrsH0uiFbYUABHphOvlonnJ3KtSzykLAWNe+Bm+any/EU4PRDfEx6q
-	4psmHmhQOXSV1ug7BJZxbRegcqnRkHl3VFVXPJzz3Z9mlpXWphC5gbqV/DoURJ55gIqwxBbBJcoS/
-	4nhMN5ew==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Opl2kB+M6xT0lh7iwJU+m7OFdUSnTcwoeJRD53//Fm8=; b=CwbHlB2VCQHT8NNp6nLlM8+ztS
+	nHkHxoHsNO8nGxNI+wtHeClfktdXO4AMqqsjP52USBQsZ5a8sMw5qkAwy9Y7xoBuC5dKqHimVRF0m
+	UUfgzVWxQr9AHBPH9gfpb/1HimSJ4tqKMPdsSrQ9J91cMOSRa4zROejbx/0UArFPHA9N+0+ZUv2dN
+	xjeA3pbhcEp/pq3NvGkimfin+u6AEox2FZa/Ah+0/hb31WhVb/sQTz5rEtwitVribvpajmQ2TF2Eu
+	DeTNBIY+5jzXaf7C7WvURV5vd+Ls+MwqLO0aIg0MgMJuDRNM9HytHuPJwZohraESqzB1v7teIvQGT
+	sOK3ZoGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sGacf-00000004IXh-38H6;
-	Mon, 10 Jun 2024 08:43:25 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1sGanm-00000004JhQ-42pW;
+	Mon, 10 Jun 2024 08:54:55 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sGacb-00000004IWE-3lSb;
-	Mon, 10 Jun 2024 08:43:23 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1718009000;
-	bh=LNIdzzsyqhCcgncvNLcOHzzyUBy2LZ72RSb393VPJD8=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=JjcWTaLH9RJQ8OsGhSaTMWLC5Fv/zpn5Gv1aSyQk78fF2Yx+4NKYt0+IVLJCbPibb
-	 5B6368IDCGBDKI2/MMnHFxYrXRPEXDdkEUN0739oxncZij4l7SgxsKJ23Mn0VTk4PJ
-	 XL0jKEPhjfmmF7kw1dPmRFmRYRfPYXlswCBbuyl+A/9bDww9tazb2H2WI66CU53R9c
-	 QnPEpd1S2BoYDlN9bP/nmNZ86U7SCMz/5xHTdjooR1S4aV9cq008K15l8q3VV6dhLb
-	 6uWN5CJXSJiHv2javX5Y9u5T2LLdtOZjD/d3LnzTBP5TzB1RvSn6K2NxdX+Uqaj5XS
-	 vXsSNPQWxW6gg==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id E2EDC378148F;
-	Mon, 10 Jun 2024 08:43:19 +0000 (UTC)
-Message-ID: <29cb4283-34ef-4c90-ad53-ea572576d3fa@collabora.com>
-Date: Mon, 10 Jun 2024 10:43:19 +0200
+	id 1sGani-00000004JfO-0K5z;
+	Mon, 10 Jun 2024 08:54:51 +0000
+Received: from pendragon.ideasonboard.com (81-175-209-231.bb.dnainternet.fi [81.175.209.231])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 10ED8397;
+	Mon, 10 Jun 2024 10:54:32 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1718009673;
+	bh=1uMH5ebVeQ4Wu83z83imey9mwf02x2hoI5G0NYSkvZY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=B/bfl5HBaA7nFpgLad02WGpvLjlGXYbbAV4ty6j4/RpX5kv1Q2wgz41Q5KSoelibo
+	 uTiq449X1R9B0IMnEs5FaInqPD27kZ4XeNltKl+Z5NZefD0QIzaAGAR78RuLM/Cnz3
+	 oR6T/B3sHY4GLIurI9PqMVRO6xjC6nQvUanY/CkY=
+Date: Mon, 10 Jun 2024 11:54:24 +0300
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Julien Stephan <jstephan@baylibre.com>,
+	Louis Kuo <louis.kuo@mediatek.com>,
+	Phi-Bang Nguyen <pnguyen@baylibre.com>,
+	Andy Hsieh <andy.hsieh@mediatek.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
+	Florian Sylvestre <fsylvestre@baylibre.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Paul Elder <paul.elder@ideasonboard.com>,
+	Rob Herring <robh+dt@kernel.org>
+Subject: Re: [PATCH v4 1/5] dt-bindings: media: add mediatek ISP3.0 sensor
+ interface
+Message-ID: <20240610085424.GH26663@pendragon.ideasonboard.com>
+References: <20240110141443.364655-1-jstephan@baylibre.com>
+ <20240110141443.364655-2-jstephan@baylibre.com>
+ <e0bf8667-cbb8-49ba-bb44-3edf93b019b8@linaro.org>
+ <CAEHHSvYt-aqFahi=B_si=duJH8xDgy_9nndgR-P0+U5THX69uw@mail.gmail.com>
+ <20240607144154.GD18479@pendragon.ideasonboard.com>
+ <cf49fbb3-9de6-4e57-bc38-d720f76118a7@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] regulator: add missing MODULE_DESCRIPTION() macro
-To: Jeff Johnson <quic_jjohnson@quicinc.com>,
- Support Opensource <support.opensource@diasemi.com>,
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, kernel-janitors@vger.kernel.org
-References: <20240608-md-drivers-regulator-v1-1-da338665db7a@quicinc.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20240608-md-drivers-regulator-v1-1-da338665db7a@quicinc.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <cf49fbb3-9de6-4e57-bc38-d720f76118a7@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240610_014322_103125_AC807740 
-X-CRM114-Status: GOOD (  16.79  )
+X-CRM114-CacheID: sfid-20240610_015450_332386_6AE4E78E 
+X-CRM114-Status: GOOD (  20.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,82 +84,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 09/06/24 06:53, Jeff Johnson ha scritto:
-> On x86, make allmodconfig && make W=1 C=1 reports:
-> WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/regulator/da9121-regulator.o
-> WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/regulator/max20411-regulator.o
-> WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/regulator/rt4831-regulator.o
-> WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/regulator/tps6286x-regulator.o
+Hi Krzysztof,
+
+On Mon, Jun 10, 2024 at 09:54:03AM +0200, Krzysztof Kozlowski wrote:
+> On 07/06/2024 16:41, Laurent Pinchart wrote:
+> > On Fri, Jun 07, 2024 at 10:52:33AM +0200, Julien Stephan wrote:
+> >> Le ven. 12 janv. 2024 à 08:32, Krzysztof Kozlowski a écrit :
+> >>> On 10/01/2024 15:14, Julien Stephan wrote:
 > 
-> Add the missing invocation of the MODULE_DESCRIPTION() macro to all files
-> which have a MODULE_LICENSE(). This includes mtk-dvfsrc-regulator.c, which
-> did not produce a warning with the x86 allmodconfig, since it may cause
-> this warning with other configurations.
+> Eeeh? January?
 > 
-> Signed-off-by: Jeff Johnson <quic_jjohnson@quicinc.com>
-> ---
->   drivers/regulator/da9121-regulator.c     | 1 +
->   drivers/regulator/max20411-regulator.c   | 1 +
->   drivers/regulator/mtk-dvfsrc-regulator.c | 1 +
->   drivers/regulator/rt4831-regulator.c     | 1 +
->   drivers/regulator/tps6286x-regulator.c   | 1 +
->   5 files changed, 5 insertions(+)
+> ...
 > 
-> diff --git a/drivers/regulator/da9121-regulator.c b/drivers/regulator/da9121-regulator.c
-> index 96257551bb12..3571b6242e3a 100644
-> --- a/drivers/regulator/da9121-regulator.c
-> +++ b/drivers/regulator/da9121-regulator.c
-> @@ -1192,4 +1192,5 @@ static struct i2c_driver da9121_regulator_driver = {
->   
->   module_i2c_driver(da9121_regulator_driver);
->   
-> +MODULE_DESCRIPTION("Dialog Semiconductor DA9121/DA9122/DA9220/DA9217/DA9130/DA9131/DA9132 regulator driver");
->   MODULE_LICENSE("GPL v2");
-> diff --git a/drivers/regulator/max20411-regulator.c b/drivers/regulator/max20411-regulator.c
-> index 8c09dc71b16d..6614e767072f 100644
-> --- a/drivers/regulator/max20411-regulator.c
-> +++ b/drivers/regulator/max20411-regulator.c
-> @@ -161,4 +161,5 @@ static struct i2c_driver max20411_i2c_driver = {
->   };
->   module_i2c_driver(max20411_i2c_driver);
->   
-> +MODULE_DESCRIPTION("Maxim MAX20411 High-Efficiency Single Step-Down Converter driver");
->   MODULE_LICENSE("GPL");
-> diff --git a/drivers/regulator/mtk-dvfsrc-regulator.c b/drivers/regulator/mtk-dvfsrc-regulator.c
-> index f1280d45265d..1941aad5e247 100644
-> --- a/drivers/regulator/mtk-dvfsrc-regulator.c
-> +++ b/drivers/regulator/mtk-dvfsrc-regulator.c
-> @@ -211,4 +211,5 @@ static void __exit mtk_dvfsrc_regulator_exit(void)
->   module_exit(mtk_dvfsrc_regulator_exit);
->   
->   MODULE_AUTHOR("Arvin wang <arvin.wang@mediatek.com>");
-> +MODULE_DESCRIPTION("MediaTek DVFSRC regulator driver");
+> >>>
+> >>>> +
+> >>>> +          seninf: seninf@15040000 {
+> >>>
+> >>> Node names should be generic. See also an explanation and list of
+> >>> examples (not exhaustive) in DT specification:
+> >>> https://devicetree-specification.readthedocs.io/en/latest/chapter2-devicetree-basics.html#generic-names-recommendation
+> > 
+> > The seninf is (mostly) a set of MIPI CSI-2 receivers. Would you prefer
+> > 'csi', 'mipi-csi', 'csi-2' or any other name ?
+> 
+> csi@ works for me
+> 
+> > There's also the camsv IP in the same series that needs a generic name.
+> > I really don't know what to propose for it. Could you recommend
+> > something that would make you happy ?
+> 
+> Sorry,that's almost half year old thread. Not present in my inbox.
 
-Can you please drop this one?
-I have a series floating that is removing this driver entirely and replacing it
-with a refactored one. Though, it has the same issue, so I'll have to send a v6.
+I remember someone presenting a talk titled "Beginner Linux kernel
+maintainer's toolbox" in Prague last year. The talk mentioned a tool
+call b4. I highly recommend it ;-)
 
-Anyway, v5 is there:
+> > On a side note, that document lacks appropriate generic names for lots
+> > of building blocks found in recent SoCs, it would be nice to get it
+> > updated. You will eventually get better quality DT patches then :-)
+> 
+> The list grew recently, so just add something there. But it is okay if
+> some name is not really generic, it's just recommendation.
 
-https://lore.kernel.org/r/20240424095416.1105639-1-angelogioacchino.delregno@collabora.com
+OK, then I think we can go for 'csi' for seninf, and keep 'camsv'.
 
+-- 
+Regards,
 
->   MODULE_LICENSE("GPL v2");
-> diff --git a/drivers/regulator/rt4831-regulator.c b/drivers/regulator/rt4831-regulator.c
-> index 97e6f7e2a0ba..7d1ba0c82271 100644
-> --- a/drivers/regulator/rt4831-regulator.c
-> +++ b/drivers/regulator/rt4831-regulator.c
-> @@ -202,4 +202,5 @@ static struct platform_driver rt4831_regulator_driver = {
->   module_platform_driver(rt4831_regulator_driver);
->   
->   MODULE_AUTHOR("ChiYuan Huang <cy_huang@richtek.com>");
-> +MODULE_DESCRIPTION("Richtek RT4831 DSV RegulatorsRichtek RT4831 DSV Regulators driver");
-
-Also, there's a typo here :-)
-
-After dropping mtk-dvfsrc-regulator changes and after fixing the typo:
-
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-
+Laurent Pinchart
 
