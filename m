@@ -4,86 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B5DAC27C55
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jun 2024 16:34:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86F83C27C5F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jun 2024 16:53:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=a5ZVwjIOaq5V5ku6UjCPO2SyGYT7pllWaiMtecMSfuM=; b=oc+yRyz3oj61RydsuKsweVyb8O
-	QAlf/jtzA0omyuNRtAh3FKBBmZRUfWDCQ6jEfZrHeVHJBxhN9J+dWUn2gtBZcW69inWsjkztD5QsD
-	5VxZaSCsKAWlqwvRQy7MdT2Gig26tZsX0b3uv+K191vVxn7bNk+JBP5hBGO0Zxs5CsAS9s1GDt9kh
-	MPkvzP1j3nlmyDxfy//sY8MZA3a+sChYqpOx9gJRIHRYV08ATTphAArer4imhspW62kmbc2254rVD
-	NtOwuTQMsnofNSg3fsNwdnz2FdDO6JLXn/F2Q6OjXuaDh0pIIeMSbAID8d4yh1ADB9iqQfqEKqahk
-	+RrzNuEA==;
+	bh=BES8ee5sXlc5zmrxJY2BlnRPRIoI2IPGXq+EX3VR1No=; b=2+OxoGUB50uWko54suQF2tg6h0
+	fA/0aRY7sMDLQTy3MGH2XA+XPNETYR4BwjX0C1y7HLuD5bd7VcVUUhvjSD1gpxgC0xROtNDkrPEwb
+	oXkKVgOWcISJGmHqiLmZSpd4JN6b8SOwNcj7LxK38+yGt39GoXqqsyfcDOwk/lAB0mIqAxN/2Lry2
+	W/jyLlePynerKf+7dAPlxdvCJTa0AqimFp1/J/sZPY52FPaq/Kkaz6VEfaUDlpoZm6hLa5ehgsAPv
+	TFkgRj8JoZI21FyXgCGz95i8pgfbFIRVAnQjqcv3pFTESBScnqw8CMaU+DNKoCKp3MJToU4YLMIxV
+	4/20fRxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sGhyV-00000005ofK-2fOg;
-	Mon, 10 Jun 2024 16:34:27 +0000
-Received: from mail-pg1-x52f.google.com ([2607:f8b0:4864:20::52f])
+	id 1sGiGs-00000005tkQ-3udl;
+	Mon, 10 Jun 2024 16:53:26 +0000
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sGhyR-00000005odR-3XkE
+	id 1sGiGm-00000005tgo-34q2
 	for linux-mediatek@lists.infradead.org;
-	Mon, 10 Jun 2024 16:34:26 +0000
-Received: by mail-pg1-x52f.google.com with SMTP id 41be03b00d2f7-6c53a315c6eso3400744a12.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 10 Jun 2024 09:34:19 -0700 (PDT)
+	Mon, 10 Jun 2024 16:53:25 +0000
+Received: by mail-ed1-x52c.google.com with SMTP id 4fb4d7f45d1cf-57c7ec8f1fcso1830227a12.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 10 Jun 2024 09:53:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1718037259; x=1718642059; darn=lists.infradead.org;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1718038399; x=1718643199; darn=lists.infradead.org;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=a5ZVwjIOaq5V5ku6UjCPO2SyGYT7pllWaiMtecMSfuM=;
-        b=mavs+icmds4Tr+pygKa6qZxaVUESeVLColKlPpM1l6CsvDB1wr7ypan5od1FYbwsJi
-         3kR6MQMlMTe3ohPghn+NIb/DWk0v04TXZsZxmBuypcCItEJl1px3eN2bc48idZzT1P4F
-         InMiRvarRBXdV/4cpi2ofDc7JUbhaPQwlLT7imvJa4HzjOxjuOm9QNA49uakyZ3wCKdB
-         YV0XPNL+FYbsWiNSDjkPhvnFQ1ZhckhQAYMIkYckPx7kqA64GhKFcep/XJkjcG3x4A00
-         nmb2eAnL9vKmonrfDZ8/oHA+NfVZu5pgNLlTRlzhHY/QkEL1WzDULgRQVMyhUpzRaAOy
-         XBiQ==
+        bh=BES8ee5sXlc5zmrxJY2BlnRPRIoI2IPGXq+EX3VR1No=;
+        b=cZx702ZtMdocaD015HWAuXn4nwrRZPgPcQLRkTTAIuhmTYP/3d746UmdPVeJIKdZma
+         uYqN7jzGTN0EifeudErSTvheaa4430YWI3dUVi8HCzxWSC1sSM9llnwW7dhTKMGSaW+B
+         6cZ9oBkpM06r/D1WUTE8feRxFQGMXvK+BfumAtU8oUm1dt1uXDLUpJjxLRZmW4L3Zr3/
+         tkvKiVSMDnV3kyFiX4DjKaW4viHRqCxfFiI0zF/Q9BpTTiAjk2afetRrXjXEoTAgoAsN
+         K3HAQFMPqKo8R8YUHim/4TBDlwYUDQbPSe7aZEAwceqeXbG2Rgh88+Fs6AmDZrNd1PbK
+         JtXw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1718037259; x=1718642059;
+        d=1e100.net; s=20230601; t=1718038399; x=1718643199;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=a5ZVwjIOaq5V5ku6UjCPO2SyGYT7pllWaiMtecMSfuM=;
-        b=UOwwX5Hq9StTWkOloDLw/ddzvnl3h3/jcqsVjJk775LtS1q0VWmU1zF+o+yBecdVEh
-         eq9kN16U5sHV60W3jhoE7qoJy7OD9CMypzYgLc97AAhK0AhixjDElgFUb8r3vmHIBUxv
-         DpMZRYzZiXXtyKpioF2QfrYaQpfJXAHM9SzxcmVp4ud76WCoQUuOvAHVL/ZrUYraeVc5
-         6qa1AWR1yrj8cdMEPNVK5DsqYGR3Oz+TzA/UdJIHSVHOe3H0vYpI9CQGiRbIGJhJA4nX
-         VUdKC7JXXbLahZHAF9Pj/V7zoKJgwTgnMG+ad0it8vg3gXOHj2NyHxz6xbG0eweDIf0X
-         YM6w==
-X-Forwarded-Encrypted: i=1; AJvYcCViOCPX/Vi0AEoZLE/AgePCzHu48y1yIfLEVP+WvxYj9XTbed8dE8db3eswljr+mQrLPbqC/PGSj8LYrpTHCFC7lulJDxLCqQrsfdz6xQ3U96np
-X-Gm-Message-State: AOJu0YySi37v+54xHcWESOjqSaUe8ckjJteRMAMRYocRQO8xFO9zwsT5
-	uX7v/XaIpkNUA/fF7JQTIPLV6uRBYYA/8Ze8z5XLe5Bmzlt79vmpsCRiDWuYcFE=
-X-Google-Smtp-Source: AGHT+IFiC+4Uq+TF9IRTc1VdS1ljR22BVVSd4bbzZX2VtGNhB8sV09mNvEyNr5N0F8tE3bUBY+/nLQ==
-X-Received: by 2002:a17:90b:33d0:b0:2c2:fdc5:2619 with SMTP id 98e67ed59e1d1-2c2fdc52e9bmr3594071a91.31.1718037259439;
-        Mon, 10 Jun 2024 09:34:19 -0700 (PDT)
-Received: from p14s ([2604:3d09:148c:c800:9b34:fecc:a6c:e2bc])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2c2f8fbc87asm3495711a91.47.2024.06.10.09.34.17
+        bh=BES8ee5sXlc5zmrxJY2BlnRPRIoI2IPGXq+EX3VR1No=;
+        b=d6o39Z2u4xJ5fq42vPLApo89nQHXjVDAIrLthhTuj4fBGwEUhDwV234VvwVsnEXhvl
+         Fc5i/C5A154zrYWkBwQh1dtXkbwZOgrl7Y2ALHnjvQrtx9g2razV9uDJp49j7AQZeLIg
+         DTovS4n13E7qNYhEg6N08LMhBmmX8afX5rQRXZaMkpjflYcKTCH5Im98Hu/zqczC0ldf
+         dnQYKHBJz0mH1qmpPQWSD4/Jbk1DqnyG56N0CNDkuIBNHvILaEOJqW94wQ/2l9NXq72u
+         Q893T50d+pkb5x07t0ooEtbFqxhAaqBgxHgrm1Dp+fSh5m+8OoY7pZDnGIpVQ4yjXSXb
+         0now==
+X-Forwarded-Encrypted: i=1; AJvYcCX7jJaEWWqJ0yRVb4Z7OUMuo+8rOpmZtthbYW1/V6/nnsu1AzF8/5QZxH9ZIaigm82TzWV2703+1mGIHWGv7+ADdpoRzU7NusDbqYE4ENJZ58ca
+X-Gm-Message-State: AOJu0YzcCKnrW2eyry6tqw87hJQ64l1ZblriM+I66gN8R0v5Tz8JuW8X
+	/KYvPa8Y9bs8n+vv13I9+2JcivOZOaPhBrbOIMhfXydozC942C3hiEa4ftFHWgk=
+X-Google-Smtp-Source: AGHT+IFEYSFuraPOa+WYVzdaL+ESVBNKCRmo08LglRUMqvJEaK4g/mE7UxIj5Y6FmBNmUXmvs8sJdQ==
+X-Received: by 2002:a17:906:e20c:b0:a6f:26a5:9f5f with SMTP id a640c23a62f3a-a6f26a5a0a5mr142869266b.42.1718038398698;
+        Mon, 10 Jun 2024 09:53:18 -0700 (PDT)
+Received: from localhost (p200300f65f283b00ca876ee5dd3d1e3b.dip0.t-ipconnect.de. [2003:f6:5f28:3b00:ca87:6ee5:dd3d:1e3b])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a6f20563a26sm133567866b.129.2024.06.10.09.53.17
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 10 Jun 2024 09:34:18 -0700 (PDT)
-Date: Mon, 10 Jun 2024 10:34:16 -0600
-From: Mathieu Poirier <mathieu.poirier@linaro.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: jason-ch chen <jason-ch.chen@mediatek.corp-partner.google.com>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Project_Global_Chrome_Upstream_Group@mediatek.com,
-	linux-remoteproc@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Jason Chen <Jason-ch.Chen@mediatek.com>
-Subject: Re: [PATCH] remoteproc: mediatek: Increase MT8188 SCP core0 DRAM size
-Message-ID: <ZmcrCLOCo0Q0W6AU@p14s>
-References: <20240606090609.3199-1-jason-ch.chen@mediatek.corp-partner.google.com>
- <bc12b046-d2fb-48ae-bd5b-a6ef6cc78c07@collabora.com>
+        Mon, 10 Jun 2024 09:53:18 -0700 (PDT)
+Date: Mon, 10 Jun 2024 18:53:16 +0200
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
+To: Jeff Johnson <quic_jjohnson@quicinc.com>
+Cc: Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
+	Krzysztof Kozlowski <krzk@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
+	Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-pwm@vger.kernel.org, imx@lists.linux.dev, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-samsung-soc@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, kernel-janitors@vger.kernel.org
+Subject: Re: [PATCH v2] pwm: add missing MODULE_DESCRIPTION() macros
+Message-ID: <t4xkx7mmokgj3lqmcl222s223obdahpqp6sqxgwaohisbqlbib@vitt25ggsezf>
+References: <20240610-md-drivers-pwm-v2-1-b337cfaa70ea@quicinc.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="lp35xxqvbjr4igp3"
 Content-Disposition: inline
-In-Reply-To: <bc12b046-d2fb-48ae-bd5b-a6ef6cc78c07@collabora.com>
+In-Reply-To: <20240610-md-drivers-pwm-v2-1-b337cfaa70ea@quicinc.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240610_093425_225237_D6B59C61 
-X-CRM114-Status: GOOD (  18.09  )
+X-CRM114-CacheID: sfid-20240610_095320_980745_31B2EABD 
+X-CRM114-Status: GOOD (  10.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,46 +97,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jun 06, 2024 at 01:00:11PM +0200, AngeloGioacchino Del Regno wrote:
-> Il 06/06/24 11:06, jason-ch chen ha scritto:
-> > From: Jason Chen <Jason-ch.Chen@mediatek.com>
-> > 
-> > Increase MT8188 SCP core0 DRAM size for HEVC driver.
 
-This is telling me _what_ gets done rather than _why_ it gets done.
+--lp35xxqvbjr4igp3
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-> > 
-> 
-> ....so the second core only gets a maximum of 0x200000 of SRAM?
-> I'm not sure how useful is the secondary SCP core, at this point, with so little
-> available SRAM but... okay, as you wish.
-> 
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> 
-> 
-> > Signed-off-by: Jason Chen <Jason-ch.Chen@mediatek.com>
-> > ---
-> >   drivers/remoteproc/mtk_scp.c | 2 +-
-> >   1 file changed, 1 insertion(+), 1 deletion(-)
-> > 
-> > diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-> > index b885a9a041e4..2119fc62c3f2 100644
-> > --- a/drivers/remoteproc/mtk_scp.c
-> > +++ b/drivers/remoteproc/mtk_scp.c
-> > @@ -1390,7 +1390,7 @@ static const struct mtk_scp_sizes_data default_scp_sizes = {
-> >   };
-> >   static const struct mtk_scp_sizes_data mt8188_scp_sizes = {
-> > -	.max_dram_size = 0x500000,
-> > +	.max_dram_size = 0x800000,
+Hello Jeff,
 
-Do you require to fix a "reserved-memory" node in a device tree file to account
-for this?
+On Mon, Jun 10, 2024 at 07:51:15AM -0700, Jeff Johnson wrote:
+> make allmodconfig && make W=3D1 C=3D1 reports:
+> WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pwm/pwm-imx1.o
+> WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pwm/pwm-imx27.o
+> WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pwm/pwm-intel-l=
+gm.o
+> WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pwm/pwm-mediate=
+k.o
+> WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pwm/pwm-pxa.o
+> WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pwm/pwm-samsung=
+=2Eo
+> WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pwm/pwm-spear.o
+> WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pwm/pwm-viscont=
+i.o
+>=20
+> Add the missing invocations of the MODULE_DESCRIPTION() macro.
+>=20
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
+ora.com>
+> Signed-off-by: Jeff Johnson <quic_jjohnson@quicinc.com>
 
-Thanks,
-Mathieu
+Thanks for the respin. Applied for next to
 
-> >   	.ipi_share_buffer_size = 600,
-> >   };
-> 
-> 
+https://git.kernel.org/pub/scm/linux/kernel/git/ukleinek/linux.git pwm/for-=
+next
+
+Thanks
+Uwe
+
+--lp35xxqvbjr4igp3
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmZnL3kACgkQj4D7WH0S
+/k7Y/gf+Oi0+dsAnW1E2XuJ43To/HG6xmMhALT1XJIHtAS1SRiuCRQ/KVw0Y07Ik
+Nr5ZJapzijm9o/YiKy3vJyMVEjozrO7E3AummZ24ZMBL7Ggz3EroPRAj8+l2v60k
+oz7i+Vs34vCraZGsPucTn52EuCnRMBh53fhz6bsKVKtOzNUD33k6c4V/BN9bIHfd
+MJpqwTO3ejnSMAUdC6ZPJc7ZTeddyiPi6u/I1UIm43Gud/1XGcnVXx7PL34kwB2R
+ng5cjCPGoiBYXfftDskl72+f2upFM5eJfueti5qqlGaT/C+wUxXQG3w5TGadSPmM
+00uycs1SX65h65o8xSssTRGIFQtOuQ==
+=OGvB
+-----END PGP SIGNATURE-----
+
+--lp35xxqvbjr4igp3--
 
