@@ -4,73 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE57AC27C5E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jun 2024 08:01:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 362E6C27C5E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jun 2024 08:07:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=T7sOaOcLfwTXry5kN9eWXyqvbgt7HqMGLZVaHMxo0Fk=; b=kClm+X0NWzg9uoQ3mBjMGpDgfh
-	3L2GCtdbaHSmPdIM2rrMkw/TzV0QazC5cBD/G7LSoUVtNaaQJ0aEI3GctC6Y0zcIFRPyozGLrhjZ6
-	ejTGCXC3N3StNloWXdEjQtRiNZiwCEg/FJLjLOtpGO+ovZPXn7maE7wyppP/8kkTHBzfa5ZlgNWDu
-	fVqJkuAB7Vw8jcKM5maZww8XKAqxQ0jbNm4L5Xr45B1UHo3e/Y+3cbtGABHfh5SKZu0u3ZO2LA3FE
-	ipi91oWgkeabChC5p0MgbsUY5yXDGuo2SuOfVTQ5NAwlo78yKGPL0KxdewmPdibB+sYk5TPdBW9b0
-	pJWDn/sw==;
+	bh=c51N0TVRjxVMvcqr4bXD5v2jvKFvgxBjo0lRz/PUzKg=; b=ZdtcFr9OO0cpwhzlM8XlBN+ECs
+	0+5UENA5ZA7Hz8LYNHWKeCPcx62AgWjNs4uRjteiej+q4u+BJZM2M0eiJ/I+RxqqSl+Y+12dd8DPr
+	/BECSchSottFNruDZDT8S+AUR8mEUmVSrtv4SDzvCn8yzneADFbQL/60Oz2v6fkouO1Glml6AjzFq
+	y5VgQefo7K9rzAk3skHtAYvY+LOZsktElPoGGq6f8qN7McDhZ1xDSb4eIk8jbQKSAfatTdpvoJU5L
+	5rc83U64GDij6okAznYkx5Eb8EzIum2hmUYxZOJD369c7ebd/JahnRXs1byZAng8XjGDFcXgRBYeD
+	eW/YcSbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sGZxs-000000049Zf-11yC;
-	Mon, 10 Jun 2024 08:01:16 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1sGa3P-00000004Aco-2jAb;
+	Mon, 10 Jun 2024 08:06:59 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sGZxl-000000049V3-1kBe;
-	Mon, 10 Jun 2024 08:01:12 +0000
+	id 1sGa3L-00000004Ac6-1iaE;
+	Mon, 10 Jun 2024 08:06:56 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1718006457;
-	bh=1qc8sEPJXgX5QVHao+W1jv64OvLM7kYZ9yU+Gf0Z1dI=;
+	s=mail; t=1718006811;
+	bh=Io/Z8pmSrin1ufDf1pTTnqKm0on+4xHG0V02DJ6G6fo=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=E0dNFPWFdu9QwVQ4mckqkzCeoKk+njabiRFivBjbv15atGBo7I9qaQPBmaW7/n6Uc
-	 3X3nXznhVVgzRjDCKXiBHSrwf8uH9+5XcjX7PneBkrSZonZZ0bholbelAR5GMynrKP
-	 M1zLUkSI4x65uIz3V3SlFVXoGCfXab9tc3iZbFaIfwtSEhOCfsRL8D6EvAIiw577VJ
-	 NJsd6JIp7RTwYZNluGNt+1Z9n+ex0jMkaE7lYtqDIPp0/jlF1Qu1eEJTyPR6vM3MLs
-	 04o9wsTQ2sRbMYpQFf0QjwrMnspMkN2pVwlhjDRiofbx3NigwoeW9PLdWONe53j33Q
-	 Z8ATGX7jzsuIw==
+	b=Fbc2JGTXECrFLODOjNn5zPCS+TLlAAFYhQsu2hcMV7wlYO+4bYbR+S8HFQTxnSQVJ
+	 6Lw4UXYbpVRg64axJD5r39bybViwB7dZRlj7x84GupRvj2cbdsQ5+UjO4joFxWbFhQ
+	 hYssLYCiK4OTf/t3g9+LVyhiaJx5dVOusA3Cm3KCXl9wJh6gQ3Vb0vLY0Gr1MPMKpz
+	 mnHV33QC32ZPJinIxRZ+yjf/gyt9Wkzqwg/4amvXJz/uAbjzenkmBekdVnWkxylBMS
+	 ZxGV0Hb/jugOFt00Svd/44yfxnsSyv+M3SA+WB21BMhiEogAj5jYLtDvdyuG9e4S9F
+	 mQrVlBtltHCxA==
 Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id E996B3780575;
-	Mon, 10 Jun 2024 08:00:55 +0000 (UTC)
-Message-ID: <e71a38a9-7a92-4156-a7f0-52f71d461d61@collabora.com>
-Date: Mon, 10 Jun 2024 10:00:55 +0200
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id E36503780575;
+	Mon, 10 Jun 2024 08:06:49 +0000 (UTC)
+Message-ID: <ca6b4ce2-4ebf-409d-b87d-2024445b9392@collabora.com>
+Date: Mon, 10 Jun 2024 10:06:49 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/5] dt-bindings: iio: adc: Add MediaTek MT6359 PMIC
- AUXADC
-To: Rob Herring <robh@kernel.org>
-Cc: jic23@kernel.org, lars@metafoo.de, krzk+dt@kernel.org,
- conor+dt@kernel.org, matthias.bgg@gmail.com, lee@kernel.org,
- andy@kernel.org, nuno.sa@analog.com, bigunclemax@gmail.com,
- dlechner@baylibre.com, marius.cristea@microchip.com,
- marcelo.schmitt@analog.com, fr0st61te@gmail.com, mitrutzceclan@gmail.com,
- mike.looijmans@topic.nl, marcus.folkesson@gmail.com,
- linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, andy.shevchenko@gmail.com,
- kernel@collabora.com
-References: <20240604123008.327424-1-angelogioacchino.delregno@collabora.com>
- <20240604123008.327424-2-angelogioacchino.delregno@collabora.com>
- <20240605235239.GA3455504-robh@kernel.org>
+Subject: Re: [PATCH] pwm: add missing MODULE_DESCRIPTION() macros
+To: Jeff Johnson <quic_jjohnson@quicinc.com>,
+ =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <ukleinek@kernel.org>,
+ Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, Krzysztof Kozlowski <krzk@kernel.org>,
+ Alim Akhtar <alim.akhtar@samsung.com>,
+ Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-pwm@vger.kernel.org, imx@lists.linux.dev,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ kernel-janitors@vger.kernel.org
+References: <20240607-md-drivers-pwm-v1-1-27237a2bec6a@quicinc.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20240605235239.GA3455504-robh@kernel.org>
+In-Reply-To: <20240607-md-drivers-pwm-v1-1-27237a2bec6a@quicinc.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240610_010109_812510_3638A094 
-X-CRM114-Status: GOOD (  16.18  )
+X-CRM114-CacheID: sfid-20240610_010655_639713_B3EC1E05 
+X-CRM114-Status: GOOD (  15.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,82 +83,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 06/06/24 01:52, Rob Herring ha scritto:
-> On Tue, Jun 04, 2024 at 02:30:04PM +0200, AngeloGioacchino Del Regno wrote:
->> Add a new binding for the MT6350 Series (MT6357/8/9) PMIC AUXADC,
->> providing various ADC channels for both internal temperatures and
->> voltages, audio accessory detection (hp/mic/hp+mic and buttons,
->> usually on a 3.5mm jack) other than some basic battery statistics
->> on boards where the battery is managed by this PMIC.
->>
->> Also add the necessary dt-binding headers for devicetree consumers.
->>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> ---
->>   .../iio/adc/mediatek,mt6359-auxadc.yaml       | 33 +++++++++++++++++++
->>   .../iio/adc/mediatek,mt6357-auxadc.h          | 21 ++++++++++++
->>   .../iio/adc/mediatek,mt6358-auxadc.h          | 22 +++++++++++++
->>   .../iio/adc/mediatek,mt6359-auxadc.h          | 22 +++++++++++++
->>   4 files changed, 98 insertions(+)
->>   create mode 100644 Documentation/devicetree/bindings/iio/adc/mediatek,mt6359-auxadc.yaml
->>   create mode 100644 include/dt-bindings/iio/adc/mediatek,mt6357-auxadc.h
->>   create mode 100644 include/dt-bindings/iio/adc/mediatek,mt6358-auxadc.h
->>   create mode 100644 include/dt-bindings/iio/adc/mediatek,mt6359-auxadc.h
->>
->> diff --git a/Documentation/devicetree/bindings/iio/adc/mediatek,mt6359-auxadc.yaml b/Documentation/devicetree/bindings/iio/adc/mediatek,mt6359-auxadc.yaml
->> new file mode 100644
->> index 000000000000..6497c416094d
->> --- /dev/null
->> +++ b/Documentation/devicetree/bindings/iio/adc/mediatek,mt6359-auxadc.yaml
->> @@ -0,0 +1,33 @@
->> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
->> +%YAML 1.2
->> +---
->> +$id: http://devicetree.org/schemas/iio/adc/mediatek,mt6359-auxadc.yaml#
->> +$schema: http://devicetree.org/meta-schemas/core.yaml#
->> +
->> +title: MediaTek MT6350 series PMIC AUXADC
->> +
->> +maintainers:
->> +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> +
->> +description:
->> +  The Auxiliary Analog/Digital Converter (AUXADC) is an ADC found
->> +  in some MediaTek PMICs, performing various PMIC related measurements
->> +  such as battery and PMIC internal voltage regulators temperatures,
->> +  accessory detection resistance (usually, for a 3.5mm audio jack)
->> +  other than voltages for various PMIC internal components.
->> +
->> +properties:
->> +  compatible:
->> +    enum:
->> +      - mediatek,mt6357-auxadc
->> +      - mediatek,mt6358-auxadc
->> +      - mediatek,mt6359-auxadc
->> +
->> +  "#io-channel-cells":
->> +    const: 1
+Il 07/06/24 18:02, Jeff Johnson ha scritto:
+> make allmodconfig && make W=1 C=1 reports:
+> WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pwm/pwm-imx1.o
+> WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pwm/pwm-imx27.o
+> WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pwm/pwm-intel-lgm.o
+> WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pwm/pwm-mediatek.o
+> WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pwm/pwm-pxa.o
+> WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pwm/pwm-samsung.o
+> WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pwm/pwm-spear.o
+> WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pwm/pwm-visconti.o
 > 
-> Why do you need a node here? Just add #io-channel-cells to the parent
-> node.
+> Add the missing invocations of the MODULE_DESCRIPTION() macro.
+> 
+> Signed-off-by: Jeff Johnson <quic_jjohnson@quicinc.com>
+> ---
+> This addresses all of the issues in driver/pwm
+> 
+> Let me know if you want any of the individual module changes
+> segregated into separate patches.
+> ---
+>   drivers/pwm/pwm-imx1.c      | 1 +
+>   drivers/pwm/pwm-imx27.c     | 1 +
+>   drivers/pwm/pwm-intel-lgm.c | 1 +
+>   drivers/pwm/pwm-mediatek.c  | 1 +
+>   drivers/pwm/pwm-pxa.c       | 1 +
+>   drivers/pwm/pwm-samsung.c   | 1 +
+>   drivers/pwm/pwm-spear.c     | 1 +
+>   drivers/pwm/pwm-visconti.c  | 1 +
+>   8 files changed, 8 insertions(+)
 > 
 
-Because some boards will want to avoid probing the related driver, as that will
-trigger a reset and this may not play well with ECs (namely, some Chromebooks),
-which are reading the same AUXADC block.
+..snip..
 
-If I avoid using a new node, instead of just using `status`, I'll have to add a
-"mediatek,disable-auxadc" property to the parent node, which isn't pretty...
+> diff --git a/drivers/pwm/pwm-mediatek.c b/drivers/pwm/pwm-mediatek.c
+> index 19a87873ad60..0b5d68a90e83 100644
+> --- a/drivers/pwm/pwm-mediatek.c
+> +++ b/drivers/pwm/pwm-mediatek.c
+> @@ -395,4 +395,5 @@ static struct platform_driver pwm_mediatek_driver = {
+>   module_platform_driver(pwm_mediatek_driver);
+>   
+>   MODULE_AUTHOR("John Crispin <blogic@openwrt.org>");
+> +MODULE_DESCRIPTION("MediaTek Pulse Width Modulator driver");
 
-Cheers,
-Angelo
+MediaTek SoCs have got two different PWM IPs, one of which is used exclusively
+for the Display PWM, and it is located in the DDP block.
 
->> +
->> +required:
->> +  - compatible
->> +  - "#io-channel-cells"
->> +
->> +additionalProperties: false
+So, there are two PWM IPs in one SoC:
+  - A general purpose PWM IP
+  - A DDP PWM IP
 
+This driver is for the general purpose PWM IP.. so, please, can we change this
+to "MediaTek general purpose Pulse Width Modulator driver"?
+
+After which,
+
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+>   MODULE_LICENSE("GPL v2");
 
 
