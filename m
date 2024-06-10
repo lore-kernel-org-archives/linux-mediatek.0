@@ -4,80 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9582C27C55
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jun 2024 16:11:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6187C27C55
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jun 2024 16:12:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0SBQKxFziNtepULMRY6wZaiRMZZADYCczi5ZYCguNvY=; b=huDf8b+aLaAwBJ7DKuDJ59Vwm1
-	19+9oi5vjo7dFPLd5mGnzQQm5RV0Aqvg86anQ1268loTsXtFkPM+ZcWmHxTbJCzuhIuHcHlas1RbU
-	wK7f2pP97hEHjkjreqKRxFVFlwxo3zMpJ6RyU1MT+bioP2tS6YXEwlPi6PJqsJgjPMzEhW8oukYbR
-	G9k8jZU5jYLJ++aOk0gMcVOC1t6q7x8C1mqsLKQXSNpETlLWeDRgSry1ZxDlrWPMWyU3A6NtyRQ7P
-	H8/77NFiYLbkClEHbMgvkrdgktnwMI/5uBKdYU2tSAfp9pjwkJQw0UsL0b+Z5jFbWpxD+qU/47+6z
-	/NUjcsBg==;
+	bh=9nCNK53rTjLnVysfgXoglxvrQ8+xq11LiIZcoNznmu8=; b=hUiQQ3ekT2OJLRWVCvzJDBOyCJ
+	l3QV4RgkeQjhjbwLJWXivGZ15zASfjOkkmfEKTvcnBLL7gGXVXY8Hl6WEPgIA5z5fO2T2yAkP0G5I
+	NOf1DqpiPkPPTA6wbhaGr8X2IloD6UOaMPHUjsMjMVT/UKPNR1YxrWiNmbaWoowrrTr5nArBUGZKL
+	dcYWYjvcl7tpdHLUbU9e46aUk/m/hnhSaXg30Y80bZeLY7CB2wAmXDUMRZASAz8k1bCMrLPF74+Y1
+	/Vg5v7BctEPzd//CtZv/Xcjzzc2S9fXtFEHNmGzGwHxKumeRsI/lLpSRbyxuSwf34Xi2bUnnHEjtp
+	hgvu9rHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sGhbq-00000005jLe-2Y51;
-	Mon, 10 Jun 2024 16:11:02 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1sGhdb-00000005jgD-0bn6;
+	Mon, 10 Jun 2024 16:12:51 +0000
+Received: from mail-qv1-xf36.google.com ([2607:f8b0:4864:20::f36])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sGhbn-00000005jK8-0BMB;
-	Mon, 10 Jun 2024 16:11:00 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 3661D60AD7;
-	Mon, 10 Jun 2024 16:10:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4F670C2BBFC;
-	Mon, 10 Jun 2024 16:10:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1718035856;
-	bh=0SBQKxFziNtepULMRY6wZaiRMZZADYCczi5ZYCguNvY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=orCNGMkrY7i6t4PYencQGYpdjnGIA9KBkAbKFHIt0yx5f0KnKzEKb1TU9hkGBN9Nw
-	 6HzAGUWT0bz8ucq8NtfpivivHpm9ErRcayZeXWIjfT6YLHUQg6IZtESLw4FHwKqatz
-	 EohzaE3fkW21/EiHGpDJRGGvpWt0EyVa5yVMQ2dk8YH4R86BXsWCIZ+FDOu8qD37lZ
-	 8qx3fJFuf5TFm9UI4qWmNkPjJUZ17tAXb5tCsbDvNuJDOqXxgakDfpo9x4xVjz0Q8Z
-	 Wu8RaBDrRqE8n/WKZAHa2OY75zf+c9/FLbG2FxI2GRR5/mowL/zDx8r45cKHjAXQ5W
-	 qLeRD9ZcL1q+g==
-Date: Mon, 10 Jun 2024 17:10:51 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Julien Stephan <jstephan@baylibre.com>,
-	Louis Kuo <louis.kuo@mediatek.com>,
-	Phi-Bang Nguyen <pnguyen@baylibre.com>,
-	Andy Hsieh <andy.hsieh@mediatek.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
-	Florian Sylvestre <fsylvestre@baylibre.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Paul Elder <paul.elder@ideasonboard.com>,
-	Rob Herring <robh+dt@kernel.org>
-Subject: Re: [PATCH v4 1/5] dt-bindings: media: add mediatek ISP3.0 sensor
- interface
-Message-ID: <20240610-roping-ninja-56074ad61f77@spud>
-References: <20240110141443.364655-1-jstephan@baylibre.com>
- <20240110141443.364655-2-jstephan@baylibre.com>
- <e0bf8667-cbb8-49ba-bb44-3edf93b019b8@linaro.org>
- <CAEHHSvYt-aqFahi=B_si=duJH8xDgy_9nndgR-P0+U5THX69uw@mail.gmail.com>
- <20240607144154.GD18479@pendragon.ideasonboard.com>
- <cf49fbb3-9de6-4e57-bc38-d720f76118a7@linaro.org>
- <20240610085424.GH26663@pendragon.ideasonboard.com>
- <e9a44b0b-1930-42fa-ab5e-a7eac1470041@linaro.org>
+	id 1sGhdY-00000005jf7-0cHD
+	for linux-mediatek@lists.infradead.org;
+	Mon, 10 Jun 2024 16:12:49 +0000
+Received: by mail-qv1-xf36.google.com with SMTP id 6a1803df08f44-6a3652a732fso562336d6.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 10 Jun 2024 09:12:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20230601; t=1718035960; x=1718640760; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=9nCNK53rTjLnVysfgXoglxvrQ8+xq11LiIZcoNznmu8=;
+        b=JzLDm9B5MlhkRREkEPszhzTTE5IC+yvFjItMb5zfQbIS7LMJY6XFnK4ku2Iy7FHxjr
+         L8NsvfHdB4UzQZ/s/vaVSv1ia+XInK4W0EUuPzDlnlnvSqyMZwqngf+ngyG/bJgg0n9I
+         jNQJReUlwGSTL0nO3+h6ZQWLe8CxCxTcfYkL8OgRh5QU608yhGxi3hs06GYZ54inoXfT
+         aaVxi2UcE3kKoVK0RsqxEUFN0Lsjdgssy+8EwHzyEGphndVEMHmpqHm2QOtEHBKeYvvs
+         H0PAbQSzr0ZPbl8R0u6EDm1NhoBMB5Ou+ivTOMXD4wxblYXipOWzcGxMZdf3aSxkZdjM
+         wljw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1718035960; x=1718640760;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=9nCNK53rTjLnVysfgXoglxvrQ8+xq11LiIZcoNznmu8=;
+        b=fRaEHXjPV8EEWwzOZN3GI5gXpUioPwqHC4i6SCKrZ/7J3py6P3QQEu2SXFnI/S9RlC
+         dzIFJsr5VQ9LvzbhSZQ8QL7kd8ivNneq5vm+9s/tTPqQUyUDD/eBplP6q99dX+AJOf3L
+         Pb4QcGE6feRlZ5G8Q4c9qOVm0KfI+TGDELec9YVS73cyDc3qejfwMS1XtSwROXoMI6mU
+         TapA774DJJAfgDPQDHYtr5oZLht4HvFVpLkWwHg7/dFEyS2cyv6nyQAyblErIoHU0sFW
+         xT8KerZ/DV1sTtttCG1y/yhVVds81FREg64X9az0L4myvAXBVcmbzh1wzjfUaOf3VXUU
+         Fbcw==
+X-Forwarded-Encrypted: i=1; AJvYcCWmwcmlTxr4REoypb3pqZS+zwGAjsTdNSMTLNrW0xjd0EGCuhKitGpG0iI1eW/Ql2Nwi+lTXbYl1d8mJD+l8BeHKMvAhglZ24xJbbP8lxn1yjX0
+X-Gm-Message-State: AOJu0YxekqXdxG4Ej9qmxHclPTuDA2FKGssRv9Cr7BAivBgUdQfp4UEh
+	ckAbHatZ2DBEIulAGV9SY2sn2oQgTpBDMGNJ8BckSR7LL8Do0ykf0qpouKvQLCDIu1j3QMvI6ob
+	z2tbaRjIZnsVgt0iq57s1rDGp/Jrf370nArvD
+X-Google-Smtp-Source: AGHT+IE/aD6ZkBV1FswWsBDqg8wRi/7F2WLAtCMkHqq3t8Fa1Oct3M1hrEosflrAPoOwmBRuAeSAaP3oUTyhMdZeir0=
+X-Received: by 2002:a05:6214:5691:b0:6b0:86ab:fe98 with SMTP id
+ 6a1803df08f44-6b086ac0198mr11047746d6.64.1718035959939; Mon, 10 Jun 2024
+ 09:12:39 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="L5tzetz+W9OqfYBE"
-Content-Disposition: inline
-In-Reply-To: <e9a44b0b-1930-42fa-ab5e-a7eac1470041@linaro.org>
+References: <20240523112131.31437-1-mingyen.hsieh@mediatek.com>
+In-Reply-To: <20240523112131.31437-1-mingyen.hsieh@mediatek.com>
+From: David Ruth <druth@google.com>
+Date: Mon, 10 Jun 2024 12:12:02 -0400
+Message-ID: <CAKHmtrTo0OpsmeEcjOgZ40y_H_unxsYCU_Ym9Oc9Ut+gQgUCew@mail.gmail.com>
+Subject: Re: [PATCH v2] wifi: mt76: mt792x: fix scheduler interference in drv
+ own process
+To: Mingyen Hsieh <mingyen.hsieh@mediatek.com>
+Cc: nbd@nbd.name, lorenzo@kernel.org, deren.wu@mediatek.com, 
+	Sean.Wang@mediatek.com, Soul.Huang@mediatek.com, Leon.Yen@mediatek.com, 
+	Eric-SY.Chang@mediatek.com, km.lin@mediatek.com, robin.chiu@mediatek.com, 
+	ch.yeh@mediatek.com, posh.sun@mediatek.com, Quan.Zhou@mediatek.com, 
+	Ryder.Lee@mediatek.com, Shayne.Chen@mediatek.com, 
+	linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	Michael Lo <michael.lo@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240610_091059_236153_3D35BB4B 
-X-CRM114-Status: GOOD (  18.57  )
+X-CRM114-CacheID: sfid-20240610_091248_208410_9F795580 
+X-CRM114-Status: UNSURE (   4.91  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,44 +95,5 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
---L5tzetz+W9OqfYBE
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Mon, Jun 10, 2024 at 12:18:12PM +0200, Krzysztof Kozlowski wrote:
-> On 10/06/2024 10:54, Laurent Pinchart wrote:
-> >>
-> >>> There's also the camsv IP in the same series that needs a generic nam=
-e.
-> >>> I really don't know what to propose for it. Could you recommend
-> >>> something that would make you happy ?
-> >>
-> >> Sorry,that's almost half year old thread. Not present in my inbox.
-> >=20
-> > I remember someone presenting a talk titled "Beginner Linux kernel
-> > maintainer's toolbox" in Prague last year. The talk mentioned a tool
-> > call b4. I highly recommend it ;-)
->=20
-> Wouldn't solve it. I would need to download the thread and import to
-> mailbox (several clicks needed) or open in some other tool just to see
-> the email. Or find it on lore.kernel.org - anyway just not convenient.
-
-Apparently you can use b4 from within mutt to populate threads, but I am
-yet to figure out if it works with non-local maildirs:
-https://b4.docs.kernel.org/en/latest/maintainer/mbox.html#using-with-mutt
-
---L5tzetz+W9OqfYBE
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZmcliwAKCRB4tDGHoIJi
-0lW8AQCShzBBGaBieTe4A+ZSBNiyKUc5whM2VE7q1+SQrFQNTwD/SoFAQzB2ID9X
-XndVMh3NKULPW4s3q785mEtlFKVGrgI=
-=ihJA
------END PGP SIGNATURE-----
-
---L5tzetz+W9OqfYBE--
+Tested-by: David Ruth <druth@chromium.org>
 
