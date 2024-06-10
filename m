@@ -4,143 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FBA0C27C5E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jun 2024 07:54:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE57AC27C5E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jun 2024 08:01:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ynBzD6IDnomBAQa1qUjkFMCs1faPI4vdoJ0aRWuOqhM=; b=V/Red7baKO7AIteUBzVbKxNUFp
-	FX0wBvrxakv6ocxG7O26cLquTi/SN0xxRFOrQYQiZCeI+uHEEqAyrtN5LJFVc7V5ruzVAtrDrJkds
-	30/BzAW2UDxWuAUxHqmslBR5TfuSS2uabq+qwEEBNXREtKl1/V5DuyP8lqyZMe/ITaS4UpPW/gB+n
-	uOCigMjIe+zRF5u3RtIvlSL2e8WXlCJ54KdaRu10E65vWJZAypxuKhwtmy4hnMakpZgRgWesYJq82
-	eS8w0bLaYiag9mmaKYqwG7sini4uZEhgeQo5a784XoI5TcmMJ1PZYALyie8WgWVNs0U4oW4FX8aGe
-	4AefdHRg==;
+	bh=T7sOaOcLfwTXry5kN9eWXyqvbgt7HqMGLZVaHMxo0Fk=; b=kClm+X0NWzg9uoQ3mBjMGpDgfh
+	3L2GCtdbaHSmPdIM2rrMkw/TzV0QazC5cBD/G7LSoUVtNaaQJ0aEI3GctC6Y0zcIFRPyozGLrhjZ6
+	ejTGCXC3N3StNloWXdEjQtRiNZiwCEg/FJLjLOtpGO+ovZPXn7maE7wyppP/8kkTHBzfa5ZlgNWDu
+	fVqJkuAB7Vw8jcKM5maZww8XKAqxQ0jbNm4L5Xr45B1UHo3e/Y+3cbtGABHfh5SKZu0u3ZO2LA3FE
+	ipi91oWgkeabChC5p0MgbsUY5yXDGuo2SuOfVTQ5NAwlo78yKGPL0KxdewmPdibB+sYk5TPdBW9b0
+	pJWDn/sw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sGZr4-000000048mg-3tNR;
-	Mon, 10 Jun 2024 07:54:14 +0000
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+	id 1sGZxs-000000049Zf-11yC;
+	Mon, 10 Jun 2024 08:01:16 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sGZr0-000000048lA-1Fg4
-	for linux-mediatek@lists.infradead.org;
-	Mon, 10 Jun 2024 07:54:12 +0000
-Received: by mail-ej1-x629.google.com with SMTP id a640c23a62f3a-a6efacd25ecso105768066b.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 10 Jun 2024 00:54:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1718006046; x=1718610846; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
-         :from:references:cc:to:subject:user-agent:mime-version:date
-         :message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=ynBzD6IDnomBAQa1qUjkFMCs1faPI4vdoJ0aRWuOqhM=;
-        b=F+WiKykBlTTKn2HnFYWyQzmn6fZwMznf6QZJe5TQTAKpRsXGdZ0+yoc1qY2zfAIqvN
-         LNMKSqJXBN//CkjfZ+8QKCBrqslScPxz1Oh6V3PE3XtoFF3+aDpY4+aSXlikVTFw0yUd
-         Pv48SIFWgC0QkipzJgelFgfhpi5P93cfdHQ+AFCaVG9P5Ks+EpB5D14P1n31I/byNX4x
-         YhfbB0GgLyw+cL1L7paHSNWCtCmYaUZKnq8BJrT6nEOj7E6bI11ZZXWBzeQ4BdkzzTH9
-         m1FF3DSDczra/70eYkOhk0ol1Sq8c5sUbJz/Xa/qDPHTlCNbLlN0fQNjtPBIppBsFnnk
-         lgoA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1718006046; x=1718610846;
-        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
-         :from:references:cc:to:subject:user-agent:mime-version:date
-         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=ynBzD6IDnomBAQa1qUjkFMCs1faPI4vdoJ0aRWuOqhM=;
-        b=ZUOJ1QAzs6/UcHYBz240VfKEH8X5YzUBhga/yeFY38UKEAigct9JIblfa1vMy1IYP/
-         c/JMjI/fv8WhSo15wLIvrjyxM3X+xZk55ScuUMABp1hkhbzjfpo5siX3V3ZT73XPGf7H
-         UN6ahVCAn3yiWImWsTllUaZtrNfZ/a8XmWlhl0NOC4i76Jdasdn63LvGgD2O1ZCN2JOM
-         /WFJ0eBLJxTQUWCmHjdXzqGaUNYm8AYp5gKtGhbKf36x90raqQfHw4ULTHEpE6nMSAd0
-         ju3LgMRdxCW7Bf70CgPVLku7W4MMiXtlPYhp+OWCTita3GMW1wcgJmSGhWwrlmdF3kXM
-         u6xA==
-X-Forwarded-Encrypted: i=1; AJvYcCW5NJGjKby5xkFl1CxB9fnvq8aVpsYBJSKAe4Wuqfyj3ZXVczqA6WsE0dHW9NqJGPUBNoL8hrjyYlJf/UWqJs//0qY6Hf4GLJ2mmJPhyiIew0hw
-X-Gm-Message-State: AOJu0YwFXpJtau1vManC0u1CONj8LzgTOF0O6COrnth4t0gvn/koLFCu
-	RCGLWYXoKVgOgOiSmyItRL5/2lrVjGJxnEuUoy8MCvDd/V3eFHYzopPQgWZoQ4NB58ah8OD9YUw
-	8
-X-Google-Smtp-Source: AGHT+IHdRdyLJ6WsyrheYFHxIeRPB0oABICESCj9zuJtPpg8iBOyfbB7pnW2O0rRtS8oYHhFAWfpQA==
-X-Received: by 2002:a50:f60b:0:b0:57c:5874:4f5c with SMTP id 4fb4d7f45d1cf-57c5874587emr6584352a12.32.1718006045617;
-        Mon, 10 Jun 2024 00:54:05 -0700 (PDT)
-Received: from [192.168.1.20] ([178.197.219.137])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-57c71885170sm3350965a12.2.2024.06.10.00.54.04
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 10 Jun 2024 00:54:05 -0700 (PDT)
-Message-ID: <cf49fbb3-9de6-4e57-bc38-d720f76118a7@linaro.org>
-Date: Mon, 10 Jun 2024 09:54:03 +0200
+	id 1sGZxl-000000049V3-1kBe;
+	Mon, 10 Jun 2024 08:01:12 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1718006457;
+	bh=1qc8sEPJXgX5QVHao+W1jv64OvLM7kYZ9yU+Gf0Z1dI=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=E0dNFPWFdu9QwVQ4mckqkzCeoKk+njabiRFivBjbv15atGBo7I9qaQPBmaW7/n6Uc
+	 3X3nXznhVVgzRjDCKXiBHSrwf8uH9+5XcjX7PneBkrSZonZZ0bholbelAR5GMynrKP
+	 M1zLUkSI4x65uIz3V3SlFVXoGCfXab9tc3iZbFaIfwtSEhOCfsRL8D6EvAIiw577VJ
+	 NJsd6JIp7RTwYZNluGNt+1Z9n+ex0jMkaE7lYtqDIPp0/jlF1Qu1eEJTyPR6vM3MLs
+	 04o9wsTQ2sRbMYpQFf0QjwrMnspMkN2pVwlhjDRiofbx3NigwoeW9PLdWONe53j33Q
+	 Z8ATGX7jzsuIw==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id E996B3780575;
+	Mon, 10 Jun 2024 08:00:55 +0000 (UTC)
+Message-ID: <e71a38a9-7a92-4156-a7f0-52f71d461d61@collabora.com>
+Date: Mon, 10 Jun 2024 10:00:55 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 1/5] dt-bindings: media: add mediatek ISP3.0 sensor
- interface
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: Julien Stephan <jstephan@baylibre.com>, Louis Kuo
- <louis.kuo@mediatek.com>, Phi-Bang Nguyen <pnguyen@baylibre.com>,
- Andy Hsieh <andy.hsieh@mediatek.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
- Florian Sylvestre <fsylvestre@baylibre.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Paul Elder <paul.elder@ideasonboard.com>, Rob Herring <robh+dt@kernel.org>
-References: <20240110141443.364655-1-jstephan@baylibre.com>
- <20240110141443.364655-2-jstephan@baylibre.com>
- <e0bf8667-cbb8-49ba-bb44-3edf93b019b8@linaro.org>
- <CAEHHSvYt-aqFahi=B_si=duJH8xDgy_9nndgR-P0+U5THX69uw@mail.gmail.com>
- <20240607144154.GD18479@pendragon.ideasonboard.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: Re: [PATCH v2 1/5] dt-bindings: iio: adc: Add MediaTek MT6359 PMIC
+ AUXADC
+To: Rob Herring <robh@kernel.org>
+Cc: jic23@kernel.org, lars@metafoo.de, krzk+dt@kernel.org,
+ conor+dt@kernel.org, matthias.bgg@gmail.com, lee@kernel.org,
+ andy@kernel.org, nuno.sa@analog.com, bigunclemax@gmail.com,
+ dlechner@baylibre.com, marius.cristea@microchip.com,
+ marcelo.schmitt@analog.com, fr0st61te@gmail.com, mitrutzceclan@gmail.com,
+ mike.looijmans@topic.nl, marcus.folkesson@gmail.com,
+ linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, andy.shevchenko@gmail.com,
+ kernel@collabora.com
+References: <20240604123008.327424-1-angelogioacchino.delregno@collabora.com>
+ <20240604123008.327424-2-angelogioacchino.delregno@collabora.com>
+ <20240605235239.GA3455504-robh@kernel.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
- 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
- D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20240607144154.GD18479@pendragon.ideasonboard.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+In-Reply-To: <20240605235239.GA3455504-robh@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240610_005410_367753_56C7476D 
-X-CRM114-Status: GOOD (  15.97  )
+X-CRM114-CacheID: sfid-20240610_010109_812510_3638A094 
+X-CRM114-Status: GOOD (  16.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -155,48 +85,82 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 07/06/2024 16:41, Laurent Pinchart wrote:
-> Hi Krzysztof,
+Il 06/06/24 01:52, Rob Herring ha scritto:
+> On Tue, Jun 04, 2024 at 02:30:04PM +0200, AngeloGioacchino Del Regno wrote:
+>> Add a new binding for the MT6350 Series (MT6357/8/9) PMIC AUXADC,
+>> providing various ADC channels for both internal temperatures and
+>> voltages, audio accessory detection (hp/mic/hp+mic and buttons,
+>> usually on a 3.5mm jack) other than some basic battery statistics
+>> on boards where the battery is managed by this PMIC.
+>>
+>> Also add the necessary dt-binding headers for devicetree consumers.
+>>
+>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> ---
+>>   .../iio/adc/mediatek,mt6359-auxadc.yaml       | 33 +++++++++++++++++++
+>>   .../iio/adc/mediatek,mt6357-auxadc.h          | 21 ++++++++++++
+>>   .../iio/adc/mediatek,mt6358-auxadc.h          | 22 +++++++++++++
+>>   .../iio/adc/mediatek,mt6359-auxadc.h          | 22 +++++++++++++
+>>   4 files changed, 98 insertions(+)
+>>   create mode 100644 Documentation/devicetree/bindings/iio/adc/mediatek,mt6359-auxadc.yaml
+>>   create mode 100644 include/dt-bindings/iio/adc/mediatek,mt6357-auxadc.h
+>>   create mode 100644 include/dt-bindings/iio/adc/mediatek,mt6358-auxadc.h
+>>   create mode 100644 include/dt-bindings/iio/adc/mediatek,mt6359-auxadc.h
+>>
+>> diff --git a/Documentation/devicetree/bindings/iio/adc/mediatek,mt6359-auxadc.yaml b/Documentation/devicetree/bindings/iio/adc/mediatek,mt6359-auxadc.yaml
+>> new file mode 100644
+>> index 000000000000..6497c416094d
+>> --- /dev/null
+>> +++ b/Documentation/devicetree/bindings/iio/adc/mediatek,mt6359-auxadc.yaml
+>> @@ -0,0 +1,33 @@
+>> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+>> +%YAML 1.2
+>> +---
+>> +$id: http://devicetree.org/schemas/iio/adc/mediatek,mt6359-auxadc.yaml#
+>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+>> +
+>> +title: MediaTek MT6350 series PMIC AUXADC
+>> +
+>> +maintainers:
+>> +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> +
+>> +description:
+>> +  The Auxiliary Analog/Digital Converter (AUXADC) is an ADC found
+>> +  in some MediaTek PMICs, performing various PMIC related measurements
+>> +  such as battery and PMIC internal voltage regulators temperatures,
+>> +  accessory detection resistance (usually, for a 3.5mm audio jack)
+>> +  other than voltages for various PMIC internal components.
+>> +
+>> +properties:
+>> +  compatible:
+>> +    enum:
+>> +      - mediatek,mt6357-auxadc
+>> +      - mediatek,mt6358-auxadc
+>> +      - mediatek,mt6359-auxadc
+>> +
+>> +  "#io-channel-cells":
+>> +    const: 1
 > 
-> On Fri, Jun 07, 2024 at 10:52:33AM +0200, Julien Stephan wrote:
->> Le ven. 12 janv. 2024 à 08:32, Krzysztof Kozlowski a écrit :
->>> On 10/01/2024 15:14, Julien Stephan wrote:
-
-Eeeh? January?
-
-...
-
->>>
->>>> +
->>>> +          seninf: seninf@15040000 {
->>>
->>> Node names should be generic. See also an explanation and list of
->>> examples (not exhaustive) in DT specification:
->>> https://devicetree-specification.readthedocs.io/en/latest/chapter2-devicetree-basics.html#generic-names-recommendation
+> Why do you need a node here? Just add #io-channel-cells to the parent
+> node.
 > 
-> The seninf is (mostly) a set of MIPI CSI-2 receivers. Would you prefer
-> 'csi', 'mipi-csi', 'csi-2' or any other name ?
 
-csi@ works for me
+Because some boards will want to avoid probing the related driver, as that will
+trigger a reset and this may not play well with ECs (namely, some Chromebooks),
+which are reading the same AUXADC block.
 
-> 
-> There's also the camsv IP in the same series that needs a generic name.
-> I really don't know what to propose for it. Could you recommend
-> something that would make you happy ?
+If I avoid using a new node, instead of just using `status`, I'll have to add a
+"mediatek,disable-auxadc" property to the parent node, which isn't pretty...
 
-Sorry,that's almost half year old thread. Not present in my inbox.
+Cheers,
+Angelo
 
-> 
-> On a side note, that document lacks appropriate generic names for lots
-> of building blocks found in recent SoCs, it would be nice to get it
-> updated. You will eventually get better quality DT patches then :-)
+>> +
+>> +required:
+>> +  - compatible
+>> +  - "#io-channel-cells"
+>> +
+>> +additionalProperties: false
 
-
-The list grew recently, so just add something there. But it is okay if
-some name is not really generic, it's just recommendation.
-
-
-Best regards,
-Krzysztof
 
 
