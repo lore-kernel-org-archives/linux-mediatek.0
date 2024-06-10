@@ -4,88 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44E7FC27C5E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jun 2024 08:28:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51157C27C6E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jun 2024 08:39:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sjXlOHOI8iZ4Bcj7xFfEtqjPN9u8o/v4kuXJ9ZuWh40=; b=XInA3UjPHCQTMF4rpM+dcSFqiq
-	tRV5FtCqt0fHDwGXIBIs1RD2rv2NxRO4/cWeezYZc36GIW3bd20Fo1ENQr6dGL/77yhzbcItS2HCI
-	YNOYgIA/hBGjd1zPk/MM0OoM7eqYvrJKsWX08ZIa9qef+JVL/A08Rwa4um0pyGiiEiFq63aMDGfTn
-	xO70u57KZorPnLLeyDNtKBWL0UewL2g+GQyVOhhmxrSNp0EzVNKTVhhbib4MsWaDtLv2Dkaam8DFA
-	o0CJ2MODGlHVWTRhOEoH9viSVADf4Cf9lfQ7P0mRS+mVpphTzWpTg+6uhLlzQRPw04qn68WH/eij6
-	Snb5lDeg==;
+	bh=bmtMJiz782itspj2BjhhTVC8ch6fYt0zl8KppLuLKnw=; b=LF4BrPW0Q1kYi+Ysp//058j0hi
+	sRNdPpUPaHs4K1oZQWt+f8sedqibgWnFNStUgaYhW5s9UxYO7QNsqpRYB8HUVSz7XpD3IReNppTb2
+	Cbacvfrtz5kWmOumGwY21cT7oQsUoBnn2EGdSJ3zkELPpDQwSn6EZuz1/OowM5Kd4/dmvQ6RB/fXF
+	NzOXc57y4YZmttwNjST0FwIW1nV2prV4E0x/+O7mAmlo7MdvPYXQRhJp5IRZ6cOXFWw59mTRi7gpn
+	pj2eDlSQNLj4smpH5gLbmX2cWpuZJAYebaTbkdjqpEm1+C9asw+/uUtD5KWAtOFsKnMh6GTg6xnOZ
+	vLMFPQQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sGaO5-00000004FRM-2l0z;
-	Mon, 10 Jun 2024 08:28:21 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1sGaYY-00000004H7l-2x5H;
+	Mon, 10 Jun 2024 08:39:10 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sGaNv-00000004FNY-37A7;
-	Mon, 10 Jun 2024 08:28:18 +0000
+	id 1sGaYV-00000004H7A-11Tb;
+	Mon, 10 Jun 2024 08:39:09 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1718008090;
-	bh=77a5ilB2nTJ6IsP4JbR1r9Z3pyXjF+7OpvhGRP9P4bw=;
+	s=mail; t=1718008745;
+	bh=JfuTg9AWx/6iM2XhkYJvz5goUYOT/V3jlMgafxaU03A=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=I+ItxFrdkchDgmlZlRtLv/xLaQ7CLAayNIkW/mOtnGoxYS0CZrh426PEYYULDPALs
-	 v55PywnNZ6QkvkjIaf9nmCPgrLxtfRMunE3DpTKGmzUnBljvztIWICqEHx2Uu2cNrn
-	 Ro/Yk71+NpC/00y0uKsjz6TahYBYpEdtR6cJ+FALqUcDOMPFAwgo4psEqZmLkYgBcV
-	 w2OonlJkItmJmgCoftOGlOAARazgiAr8H3V+U2H8+EfbcIyAeALuBKzSGhwTwa84bI
-	 XfRQ5i7ufocQT1PkikkDhMQNKZrsecMaECAO2pu4tVXuk2fPfzeibtkaZftZ6ZZSgZ
-	 lPM4oiNUw8mUA==
+	b=xWpdOjmHA4qZzIZRZOvV6HK8X1qfG2n059NYDH3XsYJCm7uDJty2y7t45UmgzC23d
+	 4LC6fl3C9fc+t0CVjI1giDBiJKPsZvN9IcjQ+7jZTPH1tG0EmCI7954dHo3GELpsVN
+	 YBxrON/8NKYyzL66K8KHeFwaPMLRJbbaKRnHQoOCKROGPNZdghoncmsgiJVAKHHtvQ
+	 X1ITKJgrr+kCFGB64fO+33SgP+6+Bap4IhUmrXNGDng4J+u7EzaSDQU6EuYm62Z39O
+	 Iut8k1LmHFywPsuKY/YociPBMslENS/4LSwQxgQGR6hyNVb9PtMjlcPLEcTXrWP8nv
+	 JxsTylKNUPumg==
 Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id BF5EA3780626;
-	Mon, 10 Jun 2024 08:28:08 +0000 (UTC)
-Message-ID: <47f05439-815e-4ca1-b20d-8e427fef0a2a@collabora.com>
-Date: Mon, 10 Jun 2024 10:28:08 +0200
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id D8F33378148F;
+	Mon, 10 Jun 2024 08:39:03 +0000 (UTC)
+Message-ID: <c5a0223c-574e-481e-b64e-26353243ae08@collabora.com>
+Date: Mon, 10 Jun 2024 10:39:03 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 2/3] dt-bindings: arm: mediatek: mmsys: Add OF graph
- support for board path
-To: =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
- "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "wenst@chromium.org" <wenst@chromium.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "tzimmermann@suse.de" <tzimmermann@suse.de>,
- =?UTF-8?B?U2hhd24gU3VuZyAo5a6L5a2d6KyZKQ==?= <Shawn.Sung@mediatek.com>,
- "mripard@kernel.org" <mripard@kernel.org>,
- =?UTF-8?B?Sml0YW8gU2hpICjnn7PorrDmtpsp?= <jitao.shi@mediatek.com>,
- "daniel@ffwll.ch" <daniel@ffwll.ch>,
- "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
- "conor+dt@kernel.org" <conor+dt@kernel.org>,
- "maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
- "robh@kernel.org" <robh@kernel.org>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- "airlied@gmail.com" <airlied@gmail.com>,
- "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
- "kernel@collabora.com" <kernel@collabora.com>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- =?UTF-8?B?WXUtY2hhbmcgTGVlICjmnY7nprnnkosp?= <Yu-chang.Lee@mediatek.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "amergnat@baylibre.com" <amergnat@baylibre.com>
-References: <20240521075717.50330-1-angelogioacchino.delregno@collabora.com>
- <20240521075717.50330-3-angelogioacchino.delregno@collabora.com>
- <e7845300fa822413f6308cb6297222cde89c39e0.camel@mediatek.com>
- <0e0fe86c-92da-43f5-89d7-8084274a908a@collabora.com>
- <0f20214ab3a86f68669ad1392398b16228e699ee.camel@mediatek.com>
+Subject: Re: [PATCH v4 0/3] drm/mediatek: Add support for OF graphs
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
+Cc: chunkuang.hu@kernel.org, robh@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+ p.zabel@pengutronix.de, airlied@gmail.com, daniel@ffwll.ch,
+ maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de,
+ matthias.bgg@gmail.com, shawn.sung@mediatek.com, yu-chang.lee@mediatek.com,
+ ck.hu@mediatek.com, jitao.shi@mediatek.com, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ wenst@chromium.org, kernel@collabora.com
+References: <20240516081104.83458-1-angelogioacchino.delregno@collabora.com>
+ <1b23531d-0365-4163-a443-4ebece2c445e@notapiano>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <0f20214ab3a86f68669ad1392398b16228e699ee.camel@mediatek.com>
+In-Reply-To: <1b23531d-0365-4163-a443-4ebece2c445e@notapiano>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240610_012812_426857_1E801A38 
-X-CRM114-Status: GOOD (  33.54  )
+X-CRM114-CacheID: sfid-20240610_013907_600448_4AABC4C9 
+X-CRM114-Status: GOOD (  28.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,199 +82,198 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 06/06/24 07:29, CK Hu (胡俊光) ha scritto:
-> Hi, Angelo:
-> 
-> On Wed, 2024-06-05 at 13:15 +0200, AngeloGioacchino Del Regno wrote:
->> Il 05/06/24 03:38, CK Hu (胡俊光) ha scritto:
->>> Hi, Angelo:
->>>
->>> On Tue, 2024-05-21 at 09:57 +0200, AngeloGioacchino Del Regno wrote:
->>>> Document OF graph on MMSYS/VDOSYS: this supports up to three DDP paths
->>>> per HW instance (so potentially up to six displays for multi-vdo SoCs).
->>>>
->>>> The MMSYS or VDOSYS is always the first component in the DDP pipeline,
->>>> so it only supports an output port with multiple endpoints - where each
->>>> endpoint defines the starting point for one of the (currently three)
->>>> possible hardware paths.
->>>>
->>>> Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
->>>> Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
->>>> Tested-by: Alexandre Mergnat <amergnat@baylibre.com>
->>>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->>>> ---
->>>>    .../bindings/arm/mediatek/mediatek,mmsys.yaml | 28 +++++++++++++++++++
->>>>    1 file changed, 28 insertions(+)
->>>>
->>>> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
->>>> index b3c6888c1457..0ef67ca4122b 100644
->>>> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
->>>> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
->>>> @@ -93,6 +93,34 @@ properties:
->>>>      '#reset-cells':
->>>>        const: 1
->>>>    
->>>> +  port:
->>>> +    $ref: /schemas/graph.yaml#/properties/port
->>>> +    description:
->>>> +      Output port node. This port connects the MMSYS/VDOSYS output to
->>>> +      the first component of one display pipeline, for example one of
->>>> +      the available OVL or RDMA blocks.
->>>> +      Some MediaTek SoCs support multiple display outputs per MMSYS.
->>>
->>> This patch looks good to me. Just want to share another information for you.
->>> Here is an example that mmsys/vdosys could point to the display interface node.
->>>
->>> vdosys0: syscon@1c01a000 {
->>>             mmsys-display-interface = <&dsi0>, <&dsi1>, <&dp_intf0>;
->>> };
->>>    
->>> vdosys1: syscon@1c100000 {
->>>             mmsys-display-interface = <&dp_intf1>;
->>> };
->>>
->>> There is no conflict that mmsys/vdosys point to first component of one display pipeline or point to display interface.
->>> Both could co-exist.
->>>
+Il 07/06/24 01:25, Nícolas F. R. A. Prado ha scritto:
+> On Thu, May 16, 2024 at 10:11:01AM +0200, AngeloGioacchino Del Regno wrote:
+>> Changes in v4:
+>>   - Fixed a typo that caused pure OF graphs pipelines multiple
+>>     concurrent outputs to not get correctly parsed (port->id);
+>>   - Added OVL_ADAPTOR support for OF graph specified pipelines;
+>>   - Now tested with fully OF Graph specified pipelines on MT8195
+>>     Chromebooks and MT8395 boards;
+>>   - Rebased on next-20240516
 >>
->> Hey CK,
+>> Changes in v3:
+>>   - Rebased on next-20240502 because of renames in mediatek-drm
 >>
->> yes, this could be an alternative to the OF graphs, and I'm sure that it'd work,
->> even though this kind of solution would still require partial hardcoding of the
->> display paths up until mmsys-display-interface (so, up until DSI0, or DSI1, etc).
+>> Changes in v2:
+>>   - Fixed wrong `required` block indentation in commit [2/3]
 >>
->> The problem with a solution like this is that, well, even though it would work,
->> even if we ignore the suboptimal partial hardcoding, OF graphs are something
->> generic, while the mmsys-display-interface would be a MediaTek specific/custom
->> property.
 >>
->> In the end, reusing generic kernel apis/interfaces/etc is always preferred
->> compared to custom solutions, especially in this case, in which the generic
->> stuff is on-par (or actually, depending purely on personal opinions, superior).
+>> The display IPs in MediaTek SoCs are *VERY* flexible and those support
+>> being interconnected with different instances of DDP IPs (for example,
+>> merge0 or merge1) and/or with different DDP IPs (for example, rdma can
+>> be connected with either color, dpi, dsi, merge, etc), forming a full
+>> Display Data Path that ends with an actual display.
 >>
->> As for the two to co-exist, I'm not sure that this is actually needed, as the
->> OF graphs are already (at the end of the graph) pointing to the display interface.
+>> This series was born because of an issue that I've found while enabling
+>> support for MT8195/MT8395 boards with DSI output as main display: the
+>> current mtk_drm_route variations would not work as currently, the driver
+>> hardcodes a display path for Chromebooks, which have a DisplayPort panel
+>> with DSC support, instead of a DSI panel without DSC support.
 >>
->> In any case, just as a reminder: if there will be any need to add any custom
->> MediaTek specific properties later, it's ok and we can do that at any time.
+>> There are other reasons for which I wrote this series, and I find that
+>> hardcoding those paths - when a HW path is clearly board-specific - is
+>> highly suboptimal. Also, let's not forget about keeping this driver from
+>> becoming a huge list of paths for each combination of SoC->board->disp
+>> and... this and that.
+>>
+>> For more information, please look at the commit description for each of
+>> the commits included in this series.
+>>
+>> This series is essential to enable support for the MT8195/MT8395 EVK,
+>> Kontron i1200, Radxa NIO-12L and, mainly, for non-Chromebook boards
+>> and Chromebooks to co-exist without conflicts.
+>>
+>> Besides, this is also a valid option for MT8188 Chromebooks which might
+>> have different DSI-or-eDP displays depending on the model (as far as I
+>> can see from the mtk_drm_route attempt for this SoC that is already
+>> present in this driver).
+>>
+>> This series was tested on MT8195 Cherry Tomato and on MT8395 Radxa
+>> NIO-12L with both hardcoded paths, OF graph support and partially
+>> hardcoded paths, and pure OF graph support including pipelines that
+>> require OVL_ADAPTOR support.
+>>
+>> AngeloGioacchino Del Regno (3):
+>>    dt-bindings: display: mediatek: Add OF graph support for board path
+>>    dt-bindings: arm: mediatek: mmsys: Add OF graph support for board path
+>>    drm/mediatek: Implement OF graphs support for display paths
+>>
+>>   .../bindings/arm/mediatek/mediatek,mmsys.yaml |  28 ++
+>>   .../display/mediatek/mediatek,aal.yaml        |  40 +++
+>>   .../display/mediatek/mediatek,ccorr.yaml      |  21 ++
+>>   .../display/mediatek/mediatek,color.yaml      |  22 ++
+>>   .../display/mediatek/mediatek,dither.yaml     |  22 ++
+>>   .../display/mediatek/mediatek,dpi.yaml        |  25 +-
+>>   .../display/mediatek/mediatek,dsc.yaml        |  24 ++
+>>   .../display/mediatek/mediatek,dsi.yaml        |  27 +-
+>>   .../display/mediatek/mediatek,ethdr.yaml      |  22 ++
+>>   .../display/mediatek/mediatek,gamma.yaml      |  19 ++
+>>   .../display/mediatek/mediatek,merge.yaml      |  23 ++
+>>   .../display/mediatek/mediatek,od.yaml         |  22 ++
+>>   .../display/mediatek/mediatek,ovl-2l.yaml     |  22 ++
+>>   .../display/mediatek/mediatek,ovl.yaml        |  22 ++
+>>   .../display/mediatek/mediatek,postmask.yaml   |  21 ++
+>>   .../display/mediatek/mediatek,rdma.yaml       |  22 ++
+>>   .../display/mediatek/mediatek,ufoe.yaml       |  21 ++
+>>   drivers/gpu/drm/mediatek/mtk_disp_drv.h       |   1 +
+>>   .../gpu/drm/mediatek/mtk_disp_ovl_adaptor.c   |  40 ++-
+>>   drivers/gpu/drm/mediatek/mtk_dpi.c            |  16 +-
+>>   drivers/gpu/drm/mediatek/mtk_drm_drv.c        | 282 ++++++++++++++++--
+>>   drivers/gpu/drm/mediatek/mtk_drm_drv.h        |   2 +-
+>>   drivers/gpu/drm/mediatek/mtk_dsi.c            |  10 +-
+>>   23 files changed, 713 insertions(+), 41 deletions(-)
+>>
+>> -- 
+>> 2.45.0
+>>
 > 
-> The alternative solution is using OF graphs to point display interface and use MediaTek specific property to first component:
+> Hi Angelo,
 > 
-> vdosys0: syscon@1c01a000 {
->            ports {
->                     port@0 {
->                               endpoint {
->                                        remote-endpoint = <&dsi0_endpoint>;
->                               };
->                     };
->   
->                     port@1 {
->                               endpoint {
->                                        remote-endpoint = <&dsi1_endpoint>;
->                               };
->                     };
->   
->                     port@2 {
->                               endpoint {
->                                        remote-endpoint = <&dp_intf0_endpoint>;
->                               };
->                     };
->            };
->   
->            display-first-component = <&ovl0>;
-> };
-> 
-> And I agree to it's better to keep only OF graphs property, so it would be
-> 
-> vdosys0: syscon@1c01a000 {
->            ports {
->                     port@0 {
->                               endpoint {
->                                        remote-endpoint = <&dsi0_endpoint>;
->                    
->             };
->                     };
->   
->                     port@1 {
->                               endpoint {
->                                        remote-endpoint = <&dsi1_endpoint>;
->                            
->     };
->                     };
->   
->                     port@2 {
->                               endpoint {
->                                        remote-endpoint = <&dp_intf0_endpoint>;
->                               }
-> ;
->                     };
->            };
-> };
-> 
-> Maybe we could use OF graphs for both first component and display interface and drop using MediaTek specific property.
-> 
+> I'm seeing issues with this series on MT8195-Tomato running on next-20240606:
 
-We could, or we can simply walk through the OF Graph in the driver and get the
-display interface like that, as it's board-specific ;-)
+Thanks Nicolas - yes I've recently seen that too, I also had feedback for that
+something like 3 weeks ago.
 
-...but anyway, let's see that later: after getting this series upstreamed, I will
-convert all MediaTek boards (including Chromebooks) to use the graphs instead, and
-you'll see that, at least for the currently supported boards, there's no need for
-any custom property.
+I wanted to fix that but had no time to do the job as I had to care about some
+other stuff....
 
-Also, setting the DSI0/1/dpintf endpoint to VDO0 is technically wrong, as that is
-supposed to be the last one, and a graph is conceptually supposed to go from the
-first to the last in sequence.
+Anyway, I should be able to send a v5 with a fix for that issue tomorrow.
 
-*if* we will ever need (probably not) to get the VDO0 node to point directly to
-the last node for whatever reason, the right way would be the first one you said,
-so, mediatek,mmsys-display-interface = <&dsi0>, <&dsi1>, etc etc
-
-...or mediatek,mmsys-possible-displays = < ... phandles >
-
-...or anyway, many other solutions are possible - but again, I think this is not
-the right time to think about that. Knowing that there are eventual solutions for
-any need that might arise in the future is enough, IMO :-)
-
-Cheers,
+Thanks again!
 Angelo
 
-> Regards,
-> CK
 > 
->>
->> Cheers!
->> Angelo
->>
->>> Regards,
->>> CK
->>>
->>>> +    properties:
->>>> +      endpoint@0:
->>>> +        $ref: /schemas/graph.yaml#/properties/endpoint
->>>> +        description: Output to the primary display pipeline
->>>> +
->>>> +      endpoint@1:
->>>> +        $ref: /schemas/graph.yaml#/properties/endpoint
->>>> +        description: Output to the secondary display pipeline
->>>> +
->>>> +      endpoint@2:
->>>> +        $ref: /schemas/graph.yaml#/properties/endpoint
->>>> +        description: Output to the tertiary display pipeline
->>>> +
->>>> +    anyOf:
->>>> +      - required:
->>>> +          - endpoint@0
->>>> +      - required:
->>>> +          - endpoint@1
->>>> +      - required:
->>>> +          - endpoint@2
->>>> +
->>>>    required:
->>>>      - compatible
->>>>      - reg
->>
->>
+> [    4.770965] refcount_t: addition on 0; use-after-free.
+> [    4.770975] WARNING: CPU: 5 PID: 171 at lib/refcount.c:25 refcount_warn_saturate+0xa0/0x144
+> [    4.770983] Modules linked in: videobuf2_common rfkill(+) kfifo_buf onboard_usb_dev(+) mc hid_multitouch(+) cros_ec_chardev cros_kbd_led_backlight snd_sof_mt8195 elan_i2c mtk_adsp_common sbs_battery snd_soc_mt8195_afe snd_sof_xtensa_dsp pwm_bl lvts_thermal(+) mt6577_auxadc pcie_mediatek_gen3(+) snd_sof_of coreboot_table backlight mtk_scp mtk_rpmsg snd_sof mtk_svs snd_sof_utils mtk_scp_ipi mt8195_mt6359 ramoops reed_solomon
+> [    4.771000] CPU: 5 PID: 171 Comm: (udev-worker) Not tainted 6.10.0-rc2-next-20240606-00005-gf8e90366fe4b #472
+> [    4.771002] Hardware name: Acer Tomato (rev2) board (DT)
+> [    4.771003] pstate: 604000c9 (nZCv daIF +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+> [    4.771005] pc : refcount_warn_saturate+0xa0/0x144
+> [    4.771007] lr : refcount_warn_saturate+0xa0/0x144
+> [    4.771008] sp : ffff800080ce3950
+> [    4.771009] x29: ffff800080ce3950 x28: ffff800080ce3c70 x27: ffff800080ce3c70
+> [    4.771011] x26: 0000000000000000 x25: ffffaec95d6b53f0 x24: ffff5054d9468368
+> [    4.771012] x23: ffff5054c0a81968 x22: 0000000000000000 x21: 0000000000000000
+> [    4.771014] x20: ffff800080ce39d8 x19: ffff5054c0a81c68 x18: 0000000000000038
+> [    4.771015] x17: ffffa18b9ed32000 x16: ffff800080028000 x15: fffffffffffeab58
+> [    4.771017] x14: ffffaec95d181f48 x13: 00000000000006c6 x12: 0000000000000242
+> [    4.771018] x11: fffffffffffeab58 x10: ffffaec95d1d9f48 x9 : 00000000fffff000
+> [    4.771020] x8 : ffffaec95d181f48 x7 : ffffaec95d1d9f48 x6 : 0000000000000000
+> [    4.771021] x5 : 80000000fffff000 x4 : 000000000000aff5 x3 : 00000000ffffffff
+> [    4.771023] x2 : 0000000000000000 x1 : 0000000000000000 x0 : ffff5054d8af33c0
+> [    4.771024] Call trace:
+> [    4.771025]  refcount_warn_saturate+0xa0/0x144
+> [    4.771027]  klist_next+0x184/0x1a8
+> [    4.771030]  bus_for_each_dev+0x60/0xd4
+> [    4.771033]  driver_attach+0x24/0x30
+> [    4.771035]  bus_add_driver+0xe4/0x208
+> [    4.771037]  driver_register+0x60/0x128
+> [    4.771039]  __platform_driver_register+0x28/0x34
+> [    4.771041]  lvts_driver_init+0x20/0x1000 [lvts_thermal]
+> [    4.771046]  do_one_initcall+0x6c/0x1b0
+> [    4.771048]  do_init_module+0x60/0x1f0
+> [    4.771050]  load_module+0x191c/0x1b04
+> [    4.771052]  init_module_from_file+0x84/0xc0
+> [    4.771054]  __arm64_sys_finit_module+0x1b8/0x27c
+> [    4.771056]  invoke_syscall+0x48/0x118
+> [    4.771059]  el0_svc_common.constprop.0+0x40/0xe0
+> [    4.771061]  do_el0_svc+0x1c/0x28
+> [    4.771063]  el0_svc+0x34/0xdc
+> [    4.771065]  el0t_64_sync_handler+0xc0/0xc4
+> [    4.771067]  el0t_64_sync+0x190/0x194
+> 
+> 
+> [    4.837189] refcount_t: saturated; leaking memory.
+> [    4.837197] WARNING: CPU: 7 PID: 170 at lib/refcount.c:22 refcount_warn_saturate+0x74/0x144
+> [    4.837205] Modules linked in: phy_mtk_dp(+) videodev videobuf2_common rfkill kfifo_buf onboard_usb_dev(+) mc hid_multitouch(+) cros_ec_chardev cros_kbd_led_backlight snd_sof_mt8195 elan_i2c mtk_adsp_common sbs_battery snd_soc_mt8195_afe snd_sof_xtensa_dsp pwm_bl lvts_thermal mt6577_auxadc pcie_mediatek_gen3(+) snd_sof_of coreboot_table backlight mtk_scp mtk_rpmsg snd_sof mtk_svs snd_sof_utils mtk_scp_ipi mt8195_mt6359 ramoops reed_solomon
+> [    4.837221] CPU: 7 PID: 170 Comm: (udev-worker) Tainted: G        W          6.10.0-rc2-next-20240606-00005-gf8e90366fe4b #472
+> [    4.837224] Tainted: [W]=WARN
+> [    4.837224] Hardware name: Acer Tomato (rev2) board (DT)
+> [    4.837225] pstate: 604000c9 (nZCv daIF +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+> [    4.837227] pc : refcount_warn_saturate+0x74/0x144
+> [    4.837229] lr : refcount_warn_saturate+0x74/0x144
+> [    4.837230] sp : ffff800080cdb950
+> [    4.837231] x29: ffff800080cdb950 x28: ffff800080cdbc70 x27: ffff800080cdbc70
+> [    4.837232] x26: 0000000000000000 x25: ffffaec95d6b53f0 x24: ffff5054d66544e8
+> [    4.837234] x23: ffff5054c0a81968 x22: 0000000000000000 x21: 0000000000000000
+> [    4.837235] x20: ffff800080cdb9d8 x19: ffff5054c0a81c68 x18: 0000000000000030
+> [    4.837236] x17: 0000000000000000 x16: ffffaec95b03d998 x15: fffffffffffecb70
+> [    4.837238] x14: ffffaec95d181f48 x13: 0000000000000825 x12: 00000000000002b7
+> [    4.837239] x11: fffffffffffecb70 x10: ffffaec95d1d9f48 x9 : 00000000fffff000
+> [    4.837240] x8 : ffffaec95d181f48 x7 : ffffaec95d1d9f48 x6 : 0000000000000000
+> [    4.837242] x5 : 80000000fffff000 x4 : 000000000000aff5 x3 : 00000000ffffffff
+> [    4.837243] x2 : 0000000000000000 x1 : 0000000000000000 x0 : ffff5054d8af4500
+> [    4.837245] Call trace:
+> [    4.837246]  refcount_warn_saturate+0x74/0x144
+> [    4.837247]  klist_next+0x178/0x1a8
+> [    4.837250]  bus_for_each_dev+0x60/0xd4
+> [    4.837253]  driver_attach+0x24/0x30
+> [    4.837255]  bus_add_driver+0xe4/0x208
+> [    4.837257]  driver_register+0x60/0x128
+> [    4.837259]  __platform_driver_register+0x28/0x34
+> [    4.837260]  mtk_dp_phy_driver_init+0x20/0x1000 [phy_mtk_dp]
+> [    4.837263]  do_one_initcall+0x6c/0x1b0
+> [    4.837265]  do_init_module+0x60/0x1f0
+> [    4.837268]  load_module+0x191c/0x1b04
+> [    4.837269]  init_module_from_file+0x84/0xc0
+> [    4.837271]  __arm64_sys_finit_module+0x1b8/0x27c
+> [    4.837273]  invoke_syscall+0x48/0x118
+> [    4.837276]  el0_svc_common.constprop.0+0x40/0xe0
+> [    4.837277]  do_el0_svc+0x1c/0x28
+> [    4.837279]  el0_svc+0x34/0xdc
+> [    4.837282]  el0t_64_sync_handler+0xc0/0xc4
+> [    4.837284]  el0t_64_sync+0x190/0x194
+> 
+> 
+> and many more occurrences.
+> 
+> Config: http://0x0.st/XbqI.txt
+> Full kernel logs: http://0x0.st/Xbq6.txt
+> 
+> Thanks,
+> Nícolas
 
 
 
