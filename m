@@ -4,76 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9AC0DC27C5F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jun 2024 07:40:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FBA0C27C5E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jun 2024 07:54:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vMjwlRoB1zUBrxnoriQTxC4qGPUpj37/BX99GwdlmqQ=; b=HtzQ9H+Dw/vm8cMwAkC04ss/Xl
-	7sORH4N4JhefuWF9PKzAYusQ7deXaT2r0Jief8yQV42lk0ePIeHCVZ73O6QTXbqhzHq09B/FBLqQH
-	IvzZCJseXBm1JLKyEZNQhuc9euugmLgpnNJec6VO6yCO6vUPvryJ7lf4d1ieVy7HqABWPsTWlFoFg
-	ge4++LJ5f7M+0YH3ytq2oIStVsNguQ+4Hn+jLVUOzgfkUFiuZBjCJ9Yqz7c9YMs60cC1KQSsEj4PP
-	/UjxWkDz7iTCkuIlEj+vT/3/OogJ3YOCwPUELXb5RZsxj+XjqQsnLqCGRK14cNd1lnueLPjuRA9nF
-	/sVpJiYw==;
+	bh=ynBzD6IDnomBAQa1qUjkFMCs1faPI4vdoJ0aRWuOqhM=; b=V/Red7baKO7AIteUBzVbKxNUFp
+	FX0wBvrxakv6ocxG7O26cLquTi/SN0xxRFOrQYQiZCeI+uHEEqAyrtN5LJFVc7V5ruzVAtrDrJkds
+	30/BzAW2UDxWuAUxHqmslBR5TfuSS2uabq+qwEEBNXREtKl1/V5DuyP8lqyZMe/ITaS4UpPW/gB+n
+	uOCigMjIe+zRF5u3RtIvlSL2e8WXlCJ54KdaRu10E65vWJZAypxuKhwtmy4hnMakpZgRgWesYJq82
+	eS8w0bLaYiag9mmaKYqwG7sini4uZEhgeQo5a784XoI5TcmMJ1PZYALyie8WgWVNs0U4oW4FX8aGe
+	4AefdHRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sGZdP-0000000471l-2nuN;
-	Mon, 10 Jun 2024 07:40:07 +0000
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+	id 1sGZr4-000000048mg-3tNR;
+	Mon, 10 Jun 2024 07:54:14 +0000
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sGZdK-000000046xj-3DeT
+	id 1sGZr0-000000048lA-1Fg4
 	for linux-mediatek@lists.infradead.org;
-	Mon, 10 Jun 2024 07:40:05 +0000
-Received: by mail-wm1-x333.google.com with SMTP id 5b1f17b1804b1-4217c7eb6b4so10490395e9.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 10 Jun 2024 00:39:58 -0700 (PDT)
+	Mon, 10 Jun 2024 07:54:12 +0000
+Received: by mail-ej1-x629.google.com with SMTP id a640c23a62f3a-a6efacd25ecso105768066b.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 10 Jun 2024 00:54:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1718005197; x=1718609997; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1718006046; x=1718610846; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:content-language
          :from:references:cc:to:subject:user-agent:mime-version:date
          :message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=vMjwlRoB1zUBrxnoriQTxC4qGPUpj37/BX99GwdlmqQ=;
-        b=rDrDW9+Rnup5Vmd2uwkJMuS2CcribDNuGLw9WxpHN1diaTKvlK+rYHz1IczI5bHwIs
-         AFchP/LHB2MlFtBGQfiXPguy42/6fnKMNcJPBOhh2+QRi8kHGT8rSj9jgNHcC5myK0rd
-         GEUMzDqGEeMGXM3PK9DajpjFynxxrwZNJCyR6tb/itNsD6vlEIAG4SeN1qeBIjwxt/+M
-         j95818+oH3k16Tht/bbxjk4WUBLKQq1ii6oI0pHrhPyxZLsMAWPcLHBKSzZZKDsxgFkH
-         ysGMp69XfAsg79coeufCP/Vfy6i79g0ZwJq33d93ULTIviN/da07Eo5UxIthYOXWeT+L
-         A5aw==
+        bh=ynBzD6IDnomBAQa1qUjkFMCs1faPI4vdoJ0aRWuOqhM=;
+        b=F+WiKykBlTTKn2HnFYWyQzmn6fZwMznf6QZJe5TQTAKpRsXGdZ0+yoc1qY2zfAIqvN
+         LNMKSqJXBN//CkjfZ+8QKCBrqslScPxz1Oh6V3PE3XtoFF3+aDpY4+aSXlikVTFw0yUd
+         Pv48SIFWgC0QkipzJgelFgfhpi5P93cfdHQ+AFCaVG9P5Ks+EpB5D14P1n31I/byNX4x
+         YhfbB0GgLyw+cL1L7paHSNWCtCmYaUZKnq8BJrT6nEOj7E6bI11ZZXWBzeQ4BdkzzTH9
+         m1FF3DSDczra/70eYkOhk0ol1Sq8c5sUbJz/Xa/qDPHTlCNbLlN0fQNjtPBIppBsFnnk
+         lgoA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1718005197; x=1718609997;
+        d=1e100.net; s=20230601; t=1718006046; x=1718610846;
         h=content-transfer-encoding:in-reply-to:autocrypt:content-language
          :from:references:cc:to:subject:user-agent:mime-version:date
          :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=vMjwlRoB1zUBrxnoriQTxC4qGPUpj37/BX99GwdlmqQ=;
-        b=geF/VUuV4ffBBDIIayjny1pMDOgAGXPeoe4w67Z3N1nJSbroF+a0V9A8HujzJ1Fx8j
-         Y7LlhaDUrFSFJCs1b1+TWpsYwrTeaQqJvnOSG3Jm9A/6UWkGPzC2x0LuWO4Z8lyt89W/
-         nkR9KEyrXdLvUO2fXPPC5RMzzs7R3a/QXSbo+6OAtpIGSMnZhGzJ9cT9vqrOi5605Ccl
-         6YCpIwU1oDvKfSK2k0E/NHvEJC6IeHZsVMmBCDENKQvbPQp6ArNcQL7duerFQUM3dM4E
-         UYfEOCqcw/oJiMtJ3cokdaa6LOY5Pk381tJH7ynYuIFEI+P32jaTBTnEvy2+XATKuN13
-         4igQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWY5bnWE/4RFDNV+/npIzzMwW9AE7emL6sfIovRrcds6MKsQpm9sR8PDrFulWPRsgw8xjfZxWWknrgals3begyblQGxaFMOavLefeRF2K/OmIlL
-X-Gm-Message-State: AOJu0YyyKmVk60iF7xr85EMNUFk8DS9dtcSeeeAcMuEi09hfm2Mg0UL2
-	1jgTSzerYvcF36mjWbwKMPTIEcQlpeJd6zyM7F2X1w3eN9iUr6wGAKaGpCxvavg=
-X-Google-Smtp-Source: AGHT+IHMiLWtX71Xx57Du6Ke2BkcUOQRP6QZlXWDuZkcsDBndrQKFGzjYwkJnyZxt0sr/S5vnuNI5A==
-X-Received: by 2002:a05:600c:1d88:b0:421:7e76:b85c with SMTP id 5b1f17b1804b1-4217e76b8b1mr33386945e9.23.1718005197169;
-        Mon, 10 Jun 2024 00:39:57 -0700 (PDT)
+        bh=ynBzD6IDnomBAQa1qUjkFMCs1faPI4vdoJ0aRWuOqhM=;
+        b=ZUOJ1QAzs6/UcHYBz240VfKEH8X5YzUBhga/yeFY38UKEAigct9JIblfa1vMy1IYP/
+         c/JMjI/fv8WhSo15wLIvrjyxM3X+xZk55ScuUMABp1hkhbzjfpo5siX3V3ZT73XPGf7H
+         UN6ahVCAn3yiWImWsTllUaZtrNfZ/a8XmWlhl0NOC4i76Jdasdn63LvGgD2O1ZCN2JOM
+         /WFJ0eBLJxTQUWCmHjdXzqGaUNYm8AYp5gKtGhbKf36x90raqQfHw4ULTHEpE6nMSAd0
+         ju3LgMRdxCW7Bf70CgPVLku7W4MMiXtlPYhp+OWCTita3GMW1wcgJmSGhWwrlmdF3kXM
+         u6xA==
+X-Forwarded-Encrypted: i=1; AJvYcCW5NJGjKby5xkFl1CxB9fnvq8aVpsYBJSKAe4Wuqfyj3ZXVczqA6WsE0dHW9NqJGPUBNoL8hrjyYlJf/UWqJs//0qY6Hf4GLJ2mmJPhyiIew0hw
+X-Gm-Message-State: AOJu0YwFXpJtau1vManC0u1CONj8LzgTOF0O6COrnth4t0gvn/koLFCu
+	RCGLWYXoKVgOgOiSmyItRL5/2lrVjGJxnEuUoy8MCvDd/V3eFHYzopPQgWZoQ4NB58ah8OD9YUw
+	8
+X-Google-Smtp-Source: AGHT+IHdRdyLJ6WsyrheYFHxIeRPB0oABICESCj9zuJtPpg8iBOyfbB7pnW2O0rRtS8oYHhFAWfpQA==
+X-Received: by 2002:a50:f60b:0:b0:57c:5874:4f5c with SMTP id 4fb4d7f45d1cf-57c5874587emr6584352a12.32.1718006045617;
+        Mon, 10 Jun 2024 00:54:05 -0700 (PDT)
 Received: from [192.168.1.20] ([178.197.219.137])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-421dd8c3a9esm21868815e9.27.2024.06.10.00.39.55
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-57c71885170sm3350965a12.2.2024.06.10.00.54.04
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 10 Jun 2024 00:39:56 -0700 (PDT)
-Message-ID: <68c9bf8d-38c6-4f1b-b73d-a8ea03f8e1cd@linaro.org>
-Date: Mon, 10 Jun 2024 09:39:54 +0200
+        Mon, 10 Jun 2024 00:54:05 -0700 (PDT)
+Message-ID: <cf49fbb3-9de6-4e57-bc38-d720f76118a7@linaro.org>
+Date: Mon, 10 Jun 2024 09:54:03 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v4 1/5] dt-bindings: media: add mediatek ISP3.0 sensor
  interface
-To: Julien Stephan <jstephan@baylibre.com>
-Cc: Louis Kuo <louis.kuo@mediatek.com>, Phi-Bang Nguyen
- <pnguyen@baylibre.com>, Laurent Pinchart
- <laurent.pinchart@ideasonboard.com>, Andy Hsieh <andy.hsieh@mediatek.com>,
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: Julien Stephan <jstephan@baylibre.com>, Louis Kuo
+ <louis.kuo@mediatek.com>, Phi-Bang Nguyen <pnguyen@baylibre.com>,
+ Andy Hsieh <andy.hsieh@mediatek.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
  Florian Sylvestre <fsylvestre@baylibre.com>,
@@ -87,6 +88,7 @@ References: <20240110141443.364655-1-jstephan@baylibre.com>
  <20240110141443.364655-2-jstephan@baylibre.com>
  <e0bf8667-cbb8-49ba-bb44-3edf93b019b8@linaro.org>
  <CAEHHSvYt-aqFahi=B_si=duJH8xDgy_9nndgR-P0+U5THX69uw@mail.gmail.com>
+ <20240607144154.GD18479@pendragon.ideasonboard.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Content-Language: en-US
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
@@ -133,13 +135,12 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <CAEHHSvYt-aqFahi=B_si=duJH8xDgy_9nndgR-P0+U5THX69uw@mail.gmail.com>
+In-Reply-To: <20240607144154.GD18479@pendragon.ideasonboard.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240610_004003_146440_58A32E83 
-X-CRM114-Status: UNSURE (   9.05  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240610_005410_367753_56C7476D 
+X-CRM114-Status: GOOD (  15.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -154,45 +155,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 07/06/2024 10:52, Julien Stephan wrote:
-> Le ven. 12 janv. 2024 à 08:32, Krzysztof Kozlowski
-> <krzysztof.kozlowski@linaro.org> a écrit :
->>
->> On 10/01/2024 15:14, Julien Stephan wrote:
->>> From: Louis Kuo <louis.kuo@mediatek.com>
->>>
->>> This adds the bindings, for the mediatek ISP3.0 SENINF module embedded in
->>> some Mediatek SoC, such as the mt8365
->>>
->>
->> ...
->>
->>> +  clock-names:
->>> +    items:
->>> +      - const: camsys
->>> +      - const: top_mux
->>> +
->>> +  phys:
->>> +    minItems: 1
->>> +    maxItems: 4
->>> +    description:
->>> +      phandle to the PHYs connected to CSI0/A, CSI1, CSI2 and CSI0B
->>> +
->>> +  phy-names:
->>> +    minItems: 1
->>> +    items:
->>> +      - const: csi0
->>> +      - const: csi1
->>> +      - const: csi2
->>> +      - const: csi0b
->>
->> Why one hardware has flexible number of phys?
-> 
+On 07/06/2024 16:41, Laurent Pinchart wrote:
 > Hi Krzysztof,
 > 
-> seninf can have multiple port depending on the soc, each requiring its own phy
+> On Fri, Jun 07, 2024 at 10:52:33AM +0200, Julien Stephan wrote:
+>> Le ven. 12 janv. 2024 à 08:32, Krzysztof Kozlowski a écrit :
+>>> On 10/01/2024 15:14, Julien Stephan wrote:
 
-So it is fixed per soc? Then make it fixed per soc.
+Eeeh? January?
+
+...
+
+>>>
+>>>> +
+>>>> +          seninf: seninf@15040000 {
+>>>
+>>> Node names should be generic. See also an explanation and list of
+>>> examples (not exhaustive) in DT specification:
+>>> https://devicetree-specification.readthedocs.io/en/latest/chapter2-devicetree-basics.html#generic-names-recommendation
+> 
+> The seninf is (mostly) a set of MIPI CSI-2 receivers. Would you prefer
+> 'csi', 'mipi-csi', 'csi-2' or any other name ?
+
+csi@ works for me
+
+> 
+> There's also the camsv IP in the same series that needs a generic name.
+> I really don't know what to propose for it. Could you recommend
+> something that would make you happy ?
+
+Sorry,that's almost half year old thread. Not present in my inbox.
+
+> 
+> On a side note, that document lacks appropriate generic names for lots
+> of building blocks found in recent SoCs, it would be nice to get it
+> updated. You will eventually get better quality DT patches then :-)
+
+
+The list grew recently, so just add something there. But it is okay if
+some name is not really generic, it's just recommendation.
+
 
 Best regards,
 Krzysztof
