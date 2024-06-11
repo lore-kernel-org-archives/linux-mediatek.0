@@ -4,111 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D01AC27C55
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jun 2024 01:05:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B9EFC27C4F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jun 2024 02:22:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:CC:To:Message-ID:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=iEV+wtttF/HmiLFMR3m0w0YXhXQiADJkx45Bd3OvZMM=; b=WoLnyZe3oPjeOE1gCbIaXguaIz
-	ILxcDr/IOVUx72JoVZm3rEHutzgUlcXIdo7GMA1CSeTbcMPOc0edF+zduAkE5jCh+p2kPrXMOLkNw
-	5nP0mEEhRFQCPjt1KFGhCO5fptO4jaLKnQdDoNVm+TG9I4FoJlmOyOgCedIYoLLiVkW0XUhVsCkSR
-	Pl+F0YH6dnMgNhVsP07Goa9VVp7j6+EpSUJXkRHty2U7bqnlwC9HeURh0b/YF6KkxW/I5dbUHRrV9
-	5PLMRTSm3BOn1h3yXZ5iA0Wb6gntmGVDE0NSvaiqicl/b2Elhdn/hSdPtEaYdf/QwoVTN2APp1lt0
-	Nn1RY2uQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=rOWiDGoZ3cg9dnynIRWTsyteioX53Ouu76F3VV4WZDg=; b=BI21rz0Id28oiII3vZHkkV9cIv
+	NN/e6JEpfjxZLKrHB/tkt38az5Oef7ewEaJml3XbPyXrsiu20rj+ton94NMQT/gRZHUGUMk2WGXfQ
+	ogG7C1dFcns8PweKJ2MbGudZC3T3Iq8Ivz/3zxGwxqXpgOZZ4MvScRuUaRsL2PKUXT68xRCcBMP+m
+	+mwS+BaSUZDLT/kKtP1D53mcOBCcFuO1VJOz+ziY6f80OTWkcP+Dt53M23AVWvryIl+gMgLf9Ji1g
+	T+ZlN9yO6CskurWdSe0hX8tiASSpg/Hs0B6U1YnkqCXv1kvhWKP8XbXfeG5IsMlrMPH9JdiQjphfJ
+	0BxbiDqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sGpx5-000000072HE-1wjw;
-	Tue, 11 Jun 2024 01:05:31 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1sGr9t-000000078bB-2Tt6;
+	Tue, 11 Jun 2024 02:22:49 +0000
+Received: from mail-oi1-x22e.google.com ([2607:f8b0:4864:20::22e])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sGpx2-000000072GV-3fJa;
-	Tue, 11 Jun 2024 01:05:30 +0000
-Received: from pps.filterd (m0279871.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 45AEW8tl013033;
-	Tue, 11 Jun 2024 01:04:37 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
-	cc:content-transfer-encoding:content-type:date:from:message-id
-	:mime-version:subject:to; s=qcppdkim1; bh=iEV+wtttF/HmiLFMR3m0w0
-	YXhXQiADJkx45Bd3OvZMM=; b=KN7R0Nf2Nkwy+JOs8ywMg2sxvkJHA146TbSpTs
-	xwwDT0xOOTGlL0QuSvr1AkyiL/cXrr00VOMmo6p3qhYBtdXxrJRDYcHYZylKTzR1
-	F3AHj5MsR4fKFkt8gUek2dnQzn3MoWW4Ryom050PZ4/oNYou/N8UUgZx5NQyTJP1
-	YF+p9itbzUN+G0GKN/Pcisu1Jmwdcu8X8ieumTUzNVARyTU1NoE2OYvLMkzWQj++
-	DguTUW8oBk287O60nTIg8r5ZxQEZxyoUPvZTOYLmBB7dnXKqxP1+BIwLTCJ1kOEq
-	DgGwRt5Wot5LG12Exn8yKDm2RjnMotE97WMKPrQNSYJ+J5rw==
-Received: from nalasppmta02.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3ymevxd1b2-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Tue, 11 Jun 2024 01:04:37 +0000 (GMT)
-Received: from nalasex01a.na.qualcomm.com (nalasex01a.na.qualcomm.com [10.47.209.196])
-	by NALASPPMTA02.qualcomm.com (8.17.1.19/8.17.1.19) with ESMTPS id 45B14aYd001761
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Tue, 11 Jun 2024 01:04:36 GMT
-Received: from [169.254.0.1] (10.80.80.8) by nalasex01a.na.qualcomm.com
- (10.47.209.196) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.9; Mon, 10 Jun
- 2024 18:04:35 -0700
-From: Jeff Johnson <quic_jjohnson@quicinc.com>
-Date: Mon, 10 Jun 2024 18:04:34 -0700
-Subject: [PATCH] PCI: controller: add missing MODULE_DESCRIPTION() macros
+	id 1sGr9q-000000078aI-1I3R
+	for linux-mediatek@lists.infradead.org;
+	Tue, 11 Jun 2024 02:22:48 +0000
+Received: by mail-oi1-x22e.google.com with SMTP id 5614622812f47-3d21c4eec2dso339385b6e.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 10 Jun 2024 19:22:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=huaqin-corp-partner-google-com.20230601.gappssmtp.com; s=20230601; t=1718072562; x=1718677362; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=rOWiDGoZ3cg9dnynIRWTsyteioX53Ouu76F3VV4WZDg=;
+        b=lN/FFmb+g7CeFVufeZoD7kHB59S/L+B0wp+e8rwENLZCdWT5lAYU8TDjaIpe3is/ZJ
+         Q7ZdKQLaqZ+/sfdlvZ0SyYNE3I7iaweIcUG5kvSxY669rGabWsSzgmE/308v0MvvRd8M
+         dgoFqMOlZU60qjg9CI00ULufOcdLWfdbYGWP12Ir3l7zpmuxAF993laXZSn9v7vDE5PB
+         H4kbkGkOWU3JxPn3FAZY07L/5OFsCWwldgrrExb4fxOp5gmUdkIEx7pnFQhodrUY/rBq
+         c1xLFOkG1r2boWiYMd3qoZWOiFbdvXX41z9As7kLNV05XflMMtMIQZQsrdRM6aB9mnWv
+         6dXQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1718072562; x=1718677362;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=rOWiDGoZ3cg9dnynIRWTsyteioX53Ouu76F3VV4WZDg=;
+        b=C6peakcgTkOYCDhnhJj52OOH/0cGcl1idDCY1EtTkGVKUr9rvxqtRkLAUDhqP4eIwT
+         CiAOhiEj9X1B4Iydnovlnyr+Tc9dWNiFQGQq7VRvNIhp9spyAA/DbOlbRXrRP4zwJSI5
+         BwKMUmMZGbxmeec0CsOg9oApOmkxWM1IowKEWT59HSEKZxXcXFr9BlEnhaJGWcpK80m3
+         1nmNvOxqZWDvc1QZQrrUARHpjC4ehbORx5jv+cSe2Hgaxlf/SfW/Z3EnelnWlUWl9S+z
+         ZOKLqXdhYKU7SpzKGqqlnMGaX/w70C1PgdLq2SPb26IaCJcSWGITDYoLYGh5Lque/Z9h
+         ZCqA==
+X-Forwarded-Encrypted: i=1; AJvYcCVFH2BxtKRRcA1yJG+YEFumQn6pjlHgCPb2jb94WfJwHGv9qotJVDhRwA5PaMNklX5IkBt4GJfaZ4MUN3xOx11Am69cyfxPRZjk6jk0k1uhJKrK
+X-Gm-Message-State: AOJu0Yw+Gh/bnLA+vSwSsfRB0092V9LNIzW5NDxxjZ2Gx3QYcv1t5CxQ
+	GN/b2eDdYlvis4gVuv8O9yYGOf8TsjXoqASO70wVyhN5Vf8LcjEj0ffBV3Kq474=
+X-Google-Smtp-Source: AGHT+IH54UnImHOBfDjxg/a/aqysYcwTv7IDKcLuDx7VweoZ916Hrr9pYkdYYvKpgl1/Gy1pVhimIw==
+X-Received: by 2002:a05:6808:218f:b0:3d2:1f88:3e7a with SMTP id 5614622812f47-3d21f88464bmr9449264b6e.39.1718072562390;
+        Mon, 10 Jun 2024 19:22:42 -0700 (PDT)
+Received: from zhou.. ([101.78.151.194])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7042f5584e9sm3953561b3a.12.2024.06.10.19.22.39
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 10 Jun 2024 19:22:42 -0700 (PDT)
+From: Rui Zhou <zhourui@huaqin.corp-partner.google.com>
+To: lgirdwood@gmail.com,
+	broonie@kernel.org,
+	perex@perex.cz,
+	tiwai@suse.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	trevor.wu@mediatek.com,
+	allen-kh.cheng@mediatek.com,
+	kuninori.morimoto.gx@renesas.com
+Cc: maso.huang@mediatek.com,
+	linux-sound@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	Rui Zhou <zhourui@huaqin.corp-partner.google.com>
+Subject: [PATCH v1] ASoC:  support machine driver with TAS2781
+Date: Tue, 11 Jun 2024 10:22:27 +0800
+Message-Id: <20240611022227.2508354-1-zhourui@huaqin.corp-partner.google.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-ID: <20240610-md-drivers-pci-controller-v1-1-b998c242df55@quicinc.com>
-X-B4-Tracking: v=1; b=H4sIAKGiZ2YC/x3MTQqDMBBA4avIrDsQg5TYq5Qu8jOtAzGRGRVBv
- HvTLr/FeycoCZPCoztBaGflWhr6Wwdx8uVDyKkZrLGDufcG54RJeCdRXCJjrGWVmjMJukRuHJy
- 3YbTQ+kXozcf//Xw1B6+EQXyJ0++YuWwHzl5XEriuL6EYi92KAAAA
-To: Jingoo Han <jingoohan1@gmail.com>,
-        Lorenzo Pieralisi
-	<lpieralisi@kernel.org>,
-        =?utf-8?q?Krzysztof_Wilczy=C5=84ski?=
-	<kw@linux.com>,
-        Rob Herring <robh@kernel.org>, Bjorn Helgaas
-	<bhelgaas@google.com>,
-        Krzysztof Kozlowski <krzk@kernel.org>,
-        Alim Akhtar
-	<alim.akhtar@samsung.com>, Will Deacon <will@kernel.org>,
-        Joyce Ooi
-	<joyce.ooi@intel.com>,
-        Alyssa Rosenzweig <alyssa@rosenzweig.io>,
-        Marc Zyngier
-	<maz@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>,
-        Jianjun Wang
-	<jianjun.wang@mediatek.com>,
-        Sergio Paracuellos
-	<sergio.paracuellos@gmail.com>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        "Nirmal
- Patel" <nirmal.patel@linux.intel.com>,
-        Jonathan Derrick
-	<jonathan.derrick@linux.dev>
-CC: <linux-pci@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-        <linux-samsung-soc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-        <linux-mediatek@lists.infradead.org>,
-        <kernel-janitors@vger.kernel.org>,
-        "Jeff Johnson" <quic_jjohnson@quicinc.com>
-X-Mailer: b4 0.13.0
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
- nalasex01a.na.qualcomm.com (10.47.209.196)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-ORIG-GUID: 7EIM1q206qfKXhpTsEGhgPAi_KLGT2EI
-X-Proofpoint-GUID: 7EIM1q206qfKXhpTsEGhgPAi_KLGT2EI
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.28.16
- definitions=2024-06-10_08,2024-06-10_01,2024-05-17_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 mlxlogscore=999 mlxscore=0
- impostorscore=0 adultscore=0 phishscore=0 malwarescore=0 clxscore=1011
- suspectscore=0 priorityscore=1501 spamscore=0 bulkscore=0
- lowpriorityscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.19.0-2405170001 definitions=main-2406110006
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240610_180529_152774_A52AC444 
-X-CRM114-Status: GOOD (  15.80  )
+X-CRM114-CacheID: sfid-20240610_192246_494332_A2D2E592 
+X-CRM114-Status: UNSURE (   7.17  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,148 +102,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When ARCH=x86, make allmodconfig && make W=1 C=1 reports:
-WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pci/controller/dwc/pci-exynos.o
-WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pci/controller/pci-host-generic.o
-WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pci/controller/pcie-altera.o
-WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pci/controller/pcie-altera-msi.o
-WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pci/controller/pcie-mediatek.o
-WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pci/controller/pcie-mediatek-gen3.o
-WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pci/controller/vmd.o
-WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pci/controller/pcie-apple.o
-WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pci/controller/pcie-mt7621.o
+Support amp TAS2781 for mt8188 platform
 
-Add the missing invocations of the MODULE_DESCRIPTION() macro.
-
-Signed-off-by: Jeff Johnson <quic_jjohnson@quicinc.com>
+Signed-off-by: Rui Zhou <zhourui@huaqin.corp-partner.google.com>
 ---
-Corrections to these descriptions are welcomed. I'm not an expert in
-this code so in most cases I've taken these descriptions directly from
-code comments, Kconfig descriptions, or git logs.  History has shown
-that in some cases these are originally wrong due to cut-n-paste
-errors, and in other cases the drivers have evolved such that the
-original information is no longer accurate.
+ sound/soc/mediatek/Kconfig | 1 +
+ 1 file changed, 1 insertion(+)
 
-Also let me know if any individual changes need to be split into a
-separate patch to go through a separate maintainer tree.
----
- drivers/pci/controller/dwc/pci-exynos.c     | 1 +
- drivers/pci/controller/pci-host-common.c    | 1 +
- drivers/pci/controller/pci-host-generic.c   | 1 +
- drivers/pci/controller/pcie-altera-msi.c    | 1 +
- drivers/pci/controller/pcie-altera.c        | 1 +
- drivers/pci/controller/pcie-apple.c         | 1 +
- drivers/pci/controller/pcie-mediatek-gen3.c | 1 +
- drivers/pci/controller/pcie-mediatek.c      | 1 +
- drivers/pci/controller/pcie-mt7621.c        | 1 +
- drivers/pci/controller/vmd.c                | 1 +
- 10 files changed, 10 insertions(+)
-
-diff --git a/drivers/pci/controller/dwc/pci-exynos.c b/drivers/pci/controller/dwc/pci-exynos.c
-index a33fa98a252e..79d83fe85d3b 100644
---- a/drivers/pci/controller/dwc/pci-exynos.c
-+++ b/drivers/pci/controller/dwc/pci-exynos.c
-@@ -437,5 +437,6 @@ static struct platform_driver exynos_pcie_driver = {
- 	},
- };
- module_platform_driver(exynos_pcie_driver);
-+MODULE_DESCRIPTION("PCIe host controller driver for Samsung Exynos SoCs");
- MODULE_LICENSE("GPL v2");
- MODULE_DEVICE_TABLE(of, exynos_pcie_of_match);
-diff --git a/drivers/pci/controller/pci-host-common.c b/drivers/pci/controller/pci-host-common.c
-index 45b71806182d..60f5e328314e 100644
---- a/drivers/pci/controller/pci-host-common.c
-+++ b/drivers/pci/controller/pci-host-common.c
-@@ -96,4 +96,5 @@ void pci_host_common_remove(struct platform_device *pdev)
- }
- EXPORT_SYMBOL_GPL(pci_host_common_remove);
- 
-+MODULE_DESCRIPTION("Generic PCI host driver common code");
- MODULE_LICENSE("GPL v2");
-diff --git a/drivers/pci/controller/pci-host-generic.c b/drivers/pci/controller/pci-host-generic.c
-index 41cb6a057f6e..cb911863a3cb 100644
---- a/drivers/pci/controller/pci-host-generic.c
-+++ b/drivers/pci/controller/pci-host-generic.c
-@@ -86,4 +86,5 @@ static struct platform_driver gen_pci_driver = {
- };
- module_platform_driver(gen_pci_driver);
- 
-+MODULE_DESCRIPTION("Simple, generic PCI host controller driver");
- MODULE_LICENSE("GPL v2");
-diff --git a/drivers/pci/controller/pcie-altera-msi.c b/drivers/pci/controller/pcie-altera-msi.c
-index 6ad5427490b5..25ad1717f1d8 100644
---- a/drivers/pci/controller/pcie-altera-msi.c
-+++ b/drivers/pci/controller/pcie-altera-msi.c
-@@ -290,4 +290,5 @@ static void __exit altera_msi_exit(void)
- subsys_initcall(altera_msi_init);
- MODULE_DEVICE_TABLE(of, altera_msi_of_match);
- module_exit(altera_msi_exit);
-+MODULE_DESCRIPTION("Altera PCIe MSI support");
- MODULE_LICENSE("GPL v2");
-diff --git a/drivers/pci/controller/pcie-altera.c b/drivers/pci/controller/pcie-altera.c
-index a9536dc4bf96..ef73baefaeb9 100644
---- a/drivers/pci/controller/pcie-altera.c
-+++ b/drivers/pci/controller/pcie-altera.c
-@@ -826,4 +826,5 @@ static struct platform_driver altera_pcie_driver = {
- 
- MODULE_DEVICE_TABLE(of, altera_pcie_of_match);
- module_platform_driver(altera_pcie_driver);
-+MODULE_DESCRIPTION("Altera PCIe host controller driver");
- MODULE_LICENSE("GPL v2");
-diff --git a/drivers/pci/controller/pcie-apple.c b/drivers/pci/controller/pcie-apple.c
-index f7a248393a8f..5850bc84d58d 100644
---- a/drivers/pci/controller/pcie-apple.c
-+++ b/drivers/pci/controller/pcie-apple.c
-@@ -839,4 +839,5 @@ static struct platform_driver apple_pcie_driver = {
- };
- module_platform_driver(apple_pcie_driver);
- 
-+MODULE_DESCRIPTION("PCIe host bridge driver for Apple system-on-chips");
- MODULE_LICENSE("GPL v2");
-diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
-index 975b3024fb08..b7e8e24f6a40 100644
---- a/drivers/pci/controller/pcie-mediatek-gen3.c
-+++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-@@ -1091,4 +1091,5 @@ static struct platform_driver mtk_pcie_driver = {
- };
- 
- module_platform_driver(mtk_pcie_driver);
-+MODULE_DESCRIPTION("MediaTek Gen3 PCIe host controller driver");
- MODULE_LICENSE("GPL v2");
-diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-index 48372013f26d..7fc0d7709b7f 100644
---- a/drivers/pci/controller/pcie-mediatek.c
-+++ b/drivers/pci/controller/pcie-mediatek.c
-@@ -1252,4 +1252,5 @@ static struct platform_driver mtk_pcie_driver = {
- 	},
- };
- module_platform_driver(mtk_pcie_driver);
-+MODULE_DESCRIPTION("MediaTek PCIe host controller driver");
- MODULE_LICENSE("GPL v2");
-diff --git a/drivers/pci/controller/pcie-mt7621.c b/drivers/pci/controller/pcie-mt7621.c
-index d97b956e6e57..9989e5e614b9 100644
---- a/drivers/pci/controller/pcie-mt7621.c
-+++ b/drivers/pci/controller/pcie-mt7621.c
-@@ -549,4 +549,5 @@ static struct platform_driver mt7621_pcie_driver = {
- };
- builtin_platform_driver(mt7621_pcie_driver);
- 
-+MODULE_DESCRIPTION("MediaTek MT7621 PCIe controller");
- MODULE_LICENSE("GPL v2");
-diff --git a/drivers/pci/controller/vmd.c b/drivers/pci/controller/vmd.c
-index 87b7856f375a..e4d6ae7241fe 100644
---- a/drivers/pci/controller/vmd.c
-+++ b/drivers/pci/controller/vmd.c
-@@ -1128,5 +1128,6 @@ static struct pci_driver vmd_drv = {
- module_pci_driver(vmd_drv);
- 
- MODULE_AUTHOR("Intel Corporation");
-+MODULE_DESCRIPTION("Volume Management Device driver");
- MODULE_LICENSE("GPL v2");
- MODULE_VERSION("0.6");
-
----
-base-commit: 83a7eefedc9b56fe7bfeff13b6c7356688ffa670
-change-id: 20240610-md-drivers-pci-controller-8de8948a2b92
+diff --git a/sound/soc/mediatek/Kconfig b/sound/soc/mediatek/Kconfig
+index 5a8476e1ecca..07f67f96c889 100644
+--- a/sound/soc/mediatek/Kconfig
++++ b/sound/soc/mediatek/Kconfig
+@@ -233,6 +233,7 @@ config SND_SOC_MT8188_MT6359
+ 	select SND_SOC_HDMI_CODEC
+ 	select SND_SOC_DMIC
+ 	select SND_SOC_MAX98390
++	select SND_SOC_TAS2781_I2C
+ 	select SND_SOC_NAU8315
+ 	select SND_SOC_NAU8825
+ 	select SND_SOC_RT5682S
+-- 
+2.34.1
 
 
