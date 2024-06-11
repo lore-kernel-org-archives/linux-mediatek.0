@@ -4,69 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CBFBC27C5E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jun 2024 10:18:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05E2EC25B76
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jun 2024 10:27:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XtJLIL7jPMpbcm9Tef/+8eEhoO8iAr3puk5IcVpVt9I=; b=xMKu5bX9frW9fduWejZnfFv8XC
-	4B9xhpyjUu4ESUDJUYt2B2acRS6VYiRVUU6tJekqphaFQSfNDJu5ahQJOmtciKhFjD5gpp/eXwVrQ
-	FSAENfVgLD4+px6zxm6GDCmeod0cACs6chGqgnULjD5GGBn/21hocViYmZXG61xSrdpR6ZtFSJ/vT
-	2CkHSYQqlQ7osE8RF5oTxik+RTc92OZgFvfIOSwr0V5kixGRjTQOmOhXv2QIEsdeJrRtsK29fDBx2
-	g5q8S0nSbOOzYdcnTA5r4NR51xF4c9P9pnItrQ2haq6SKVaDt2VkBKUzlMaOqihD6Eb8SrQQM6Gw4
-	MS6CMVzQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=DUFnmZgSjbyGTvh/ZeQv0nxi/lfK+eX2NuIWKKZBPzA=; b=rIAZCy3wYo1DSmBPcra6LDP8QG
+	Yy5SLGg6ATu/+eS8Xps4lvVPvdthRCCYX7Jpr0QnlKI/+5mJkn0CR66WnyPKv0xEdq53kCPZGq4Js
+	Vo4mdMdVW+1fgWzw+BMyz1yI6jfrxfA65P/dcwtCvJpnlutYXl+lIJNTJ6ES2deUfkgr79UNAu4+x
+	TIn70Mw+Mfzvk2PtvzbXzko/EvfeQkw8TuD8Osfo+RxQl10Xqfe6OltDi53f2wF6N1Dx+ZckzD7eR
+	jumj7sWCKIcLvgjpfPcZhHw29lwTC2oZFj3qo2yJbQyODziffBESdwOKFq1Nv6XR7xAGZzJM7eUxP
+	ZaDeIz2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sGyaR-00000008QGM-3y7C;
-	Tue, 11 Jun 2024 10:18:43 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1sGyie-00000008RYU-2Aq7;
+	Tue, 11 Jun 2024 10:27:12 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sGya8-00000008QAy-0CQH;
-	Tue, 11 Jun 2024 10:18:32 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id E8C51CE1AA7;
-	Tue, 11 Jun 2024 10:18:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DE600C2BD10;
-	Tue, 11 Jun 2024 10:18:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1718101100;
-	bh=XtJLIL7jPMpbcm9Tef/+8eEhoO8iAr3puk5IcVpVt9I=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Ow67sxJ5/f2z53fjdF8sbUz9aNzfy7r0V3x4F2IkNEA9FxfG2I6YOxddj0CrEWB8q
-	 aIr8o7oPdXcMLmFf7l6LaYlnmWeD7C8MrGDLY4M0Aa/000N3VAX7c4KAXz792peW2C
-	 TuFLr9Vz/5ZBT7Iy6mN1tACvSxp+hhJFU6utVjZKgeDupSOxaq0Bl5tNuHrloZjLKb
-	 FnNuPnoHxQMLQusHz2HGgZWOmNyOYnczCtoJ6HNF4N8HBHLSHnwps1r9gBNle546Yl
-	 NNfVvRQWx7JiUvJdTzoJxfSHONR/6RJGi1uNJWR+Ta79j37/+tzclYAUmNRaJXHVN5
-	 N2+YF1B6acgjw==
-Date: Tue, 11 Jun 2024 11:17:41 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Hsin-Te Yuan <yuanhsinte@chromium.org>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>,
-	Takashi Iwai <tiwai@suse.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Alper Nebi Yasak <alpernebiyasak@gmail.com>,
-	linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH RFT] ASoC: mediatek: mt8183-da7219-max98357: Fix kcontrol
- name collision
-Message-ID: <ZmgkRWLmZpGnpv9A@finisterre.sirena.org.uk>
-References: <20240531-da7219-v1-1-ac3343f3ae6a@chromium.org>
- <171762153256.557520.12011428649748199502.b4-ty@kernel.org>
- <CAHc4DNJ3q=a8Wts_q12=R34eMbMq+d4PSEFe7YR+DDs=C_Og9g@mail.gmail.com>
+	id 1sGyia-00000008RXL-2w99;
+	Tue, 11 Jun 2024 10:27:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1718101626;
+	bh=YjCgBc+r+06nJ6IVpW13RFBeFFzWdG5LhXvUogE3Vjo=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=T1wzQjsnI/PhpuS+7t5fBwGZr6+q2ZAxBqLXqQMriXE7BFH57QT/sDcseACk0hDbf
+	 mHUK99ISk7TYaw9IvJz4Xm7/Msho3y10Pk6CMVUBQYEqCG+1Ej59FukA/UQ5wJFC8I
+	 oVoWIgnJte49b4dtn9P85C2PivUVwZocQfrRDJ97i8rroBx750ogE3mmEFdPUBqUjJ
+	 i/LBCZuyz+fTPYHH1Ff1dXDOYKvtyP418oMSiCapdk2sHf7eX/KpklshnpPfaOlRlU
+	 C8MdxapQvg9t/dnqMlIFQZwAoQOn2tna9za2GKGJjRbmIruV1oX/VQrIVf6Pc9G1yr
+	 T45pI9gg3cHSA==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id D799237804C6;
+	Tue, 11 Jun 2024 10:27:04 +0000 (UTC)
+Message-ID: <6d4173cd-ffe1-427d-ac04-bb9374b4b8d8@collabora.com>
+Date: Tue, 11 Jun 2024 12:27:04 +0200
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="bkH1k6DCw9W/Nv6X"
-Content-Disposition: inline
-In-Reply-To: <CAHc4DNJ3q=a8Wts_q12=R34eMbMq+d4PSEFe7YR+DDs=C_Og9g@mail.gmail.com>
-X-Cookie: Your love life will be... interesting.
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] PCI: controller: add missing MODULE_DESCRIPTION() macros
+To: Jeff Johnson <quic_jjohnson@quicinc.com>,
+ Jingoo Han <jingoohan1@gmail.com>, Lorenzo Pieralisi
+ <lpieralisi@kernel.org>, =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?=
+ <kw@linux.com>, Rob Herring <robh@kernel.org>,
+ Bjorn Helgaas <bhelgaas@google.com>, Krzysztof Kozlowski <krzk@kernel.org>,
+ Alim Akhtar <alim.akhtar@samsung.com>, Will Deacon <will@kernel.org>,
+ Joyce Ooi <joyce.ooi@intel.com>, Alyssa Rosenzweig <alyssa@rosenzweig.io>,
+ Marc Zyngier <maz@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>,
+ Jianjun Wang <jianjun.wang@mediatek.com>,
+ Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Nirmal Patel <nirmal.patel@linux.intel.com>,
+ Jonathan Derrick <jonathan.derrick@linux.dev>
+Cc: linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, kernel-janitors@vger.kernel.org
+References: <20240610-md-drivers-pci-controller-v1-1-b998c242df55@quicinc.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20240610-md-drivers-pci-controller-v1-1-b998c242df55@quicinc.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240611_031827_449318_2DD1603D 
-X-CRM114-Status: GOOD (  11.44  )
+X-CRM114-CacheID: sfid-20240611_032708_941711_7CF6B5A1 
+X-CRM114-Status: UNSURE (   5.73  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,33 +88,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Il 11/06/24 03:04, Jeff Johnson ha scritto:
+> When ARCH=x86, make allmodconfig && make W=1 C=1 reports:
+> WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pci/controller/dwc/pci-exynos.o
+> WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pci/controller/pci-host-generic.o
+> WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pci/controller/pcie-altera.o
+> WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pci/controller/pcie-altera-msi.o
+> WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pci/controller/pcie-mediatek.o
+> WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pci/controller/pcie-mediatek-gen3.o
+> WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pci/controller/vmd.o
+> WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pci/controller/pcie-apple.o
+> WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pci/controller/pcie-mt7621.o
+> 
+> Add the missing invocations of the MODULE_DESCRIPTION() macro.
+> 
+> Signed-off-by: Jeff Johnson <quic_jjohnson@quicinc.com>
 
---bkH1k6DCw9W/Nv6X
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+For MediaTek
 
-On Tue, Jun 11, 2024 at 04:02:08PM +0800, Hsin-Te Yuan wrote:
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-> I accidentally added a Change-Id field in the commit message. Can you
-> help remove it before sending it to Linus?
 
-Sorry, there's other commits on top of it now - one commit ID won't do
-any harm, it'll be fine.
-
---bkH1k6DCw9W/Nv6X
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmZoJEEACgkQJNaLcl1U
-h9Ci4gf/d/71SbUXpDvPRJoSpeImEZWIPsiA8SA2T5BH5zAUcOop4zMzkVAS9auB
-AU1R6pD56doyzyk70uaz9A2esxyo0UxEM806duF97+XI40l5cNBEVEYzKIzQNN2C
-e8wgdlu0DhOG611zGRq9YKhd9b4E2DKMnXDvpnM6iL18J1w2sc8DxYFj0t8zWUwY
-niVYdugY2ys8IyxX6mMEHVbp9m7OrtXjx7Jmzo62lWQUybJ/A6zKGoEzxclgLK5i
-nKA3a2toztPt2a4jTNHL9KdVdkk1AZwc0/15MyR8gsRveGNlr9bEaSDtjhCZ3mDp
-GNf8YUONs+MTlBtCtRyRrjXK/C8oPg==
-=uH5n
------END PGP SIGNATURE-----
-
---bkH1k6DCw9W/Nv6X--
 
