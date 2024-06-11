@@ -4,65 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8B91C25B76
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jun 2024 12:55:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 672FCC27C5E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jun 2024 12:56:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:CC:To:
-	Subject:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BaQnDgdRmUgQIb8cSYAxH7A9YfQyfxP/0bo6EX0JkrQ=; b=CMkoViMvXp2X5GhDculEsqZ6+/
-	HMrB7f0/SYu1kLPJWHVHwLQWWqx1/5Wc5UVyzQ/IlUSxEYJymUflE/deyVsML0p2qBjvzhFWhlFf0
-	CVrIasgRn+pzOb0jWu0/B9kO8C6xAxfYvXXYdFP4vA2Aq66ObDLNBphZ7JlzxFowaop8PJsf/D0GA
-	ElrLyRVa7/6VyJfFG+jSTM0V1HwAv9hfcLmQzYB01raQqfy39vHSs1Rx+WXSaTyuO49iKLbeSq4GX
-	Eay99ygqWonyPYx+h7ka8obbdgDQeHEhAUPGJxepDxer/Ocqiw0kz1vEmGTc9YmATEWj2huc3PI/v
-	2kY+mYhA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=gRBXuK79B6qtIkeZB4guCW1GEiypIyRuTLhk26GSAxw=; b=O8NBfEEadqHQzr
+	4eXD5wC1HebkFfzG7Vy5ZOUY3Ci2ucPrvPBY2NujMj3s7c87fKKpKyXEUDIaVIRVF/6Mtkrc9t7A6
+	3+gpGy19YDdlLaD06YQhU0eKorYfYMv92W2uYJS7Inu8fGmtdewV1MYvsbQieggCzJdlsFj5JSHJe
+	yV5NfvWw5l6ainDH7DYkdUIGnpY90l1M11bM/EKqm3ggQ3QsuLAJEnPxommMpJ9rsky+RjJMaIzoB
+	OOkEA3uiMPBylhElefDUTFR3u8BUrDnd7vh5XOOPhKOiAI4PWPpYbin8tFjTePW8iMP5GhMEP0foc
+	JGeLfqIzhEnocKYfTT9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sH120-00000008t7r-04tT;
-	Tue, 11 Jun 2024 12:55:20 +0000
-Received: from szxga02-in.huawei.com ([45.249.212.188])
+	id 1sH12y-00000008tJA-07Dt;
+	Tue, 11 Jun 2024 12:56:20 +0000
+Received: from relay5-d.mail.gandi.net ([217.70.183.197])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sH11v-00000008t5N-1yp6;
-	Tue, 11 Jun 2024 12:55:17 +0000
-Received: from mail.maildlp.com (unknown [172.19.163.174])
-	by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4Vz7n82Tb6zmZD4;
-	Tue, 11 Jun 2024 20:50:20 +0800 (CST)
-Received: from dggpemf200006.china.huawei.com (unknown [7.185.36.61])
-	by mail.maildlp.com (Postfix) with ESMTPS id C5926140156;
-	Tue, 11 Jun 2024 20:55:02 +0800 (CST)
-Received: from [10.69.30.204] (10.69.30.204) by dggpemf200006.china.huawei.com
- (7.185.36.61) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.11; Tue, 11 Jun
- 2024 20:55:02 +0800
-Subject: Re: [PATCH net-next v7 00/15] First try to replace page_frag with
- page_frag_cache
-To: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>, Alexander
- Duyck <alexander.duyck@gmail.com>
-CC: <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Alexei
- Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>, Jesper
- Dangaard Brouer <hawk@kernel.org>, John Fastabend <john.fastabend@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, <bpf@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-References: <20240607123819.40694-1-linyunsheng@huawei.com>
-From: Yunsheng Lin <linyunsheng@huawei.com>
-Message-ID: <e9b01c2c-5dbb-0c43-49bc-10d31545acda@huawei.com>
-Date: Tue, 11 Jun 2024 20:55:02 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101
- Thunderbird/52.2.0
+	id 1sH12u-00000008tHw-0j6k;
+	Tue, 11 Jun 2024 12:56:17 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 593C51C0005;
+	Tue, 11 Jun 2024 12:56:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
+	t=1718110573;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=gRBXuK79B6qtIkeZB4guCW1GEiypIyRuTLhk26GSAxw=;
+	b=dCLceSUsIr4URAOuKTFnqrPKGy1Ub/ZCASu+Oa83xf4VOOzZmJO3X7kZ7BoC83jXbSttO3
+	GrNLlVGK+4xXZF6+1mOasACZHEOnLVnCcRUf/dx2M28hqKwJWX8Y0kE4rSh80NrEknNu2b
+	YHO1065rVkqvffAvNZTq2yrDobqOlSzgr30E9/nSoAP2W6iZ4XhsCf0J06T5c4Ay4IOtdk
+	OUJPqAlNb5KveKsAYPSJG6bG2TCdqBd2sAf+xIUWxaIw62++ojG5UEJ0Dqjlm1bjIbq5mk
+	2A4fEar7cQma0LNGWIa9jyBnAuDjpKHwsTRH/S30FcgYH/D3f3Uw2wwm5n+ozQ==
+Message-ID: <16e9c06e-9908-455d-a387-614fefe5bcf8@arinc9.com>
+Date: Tue, 11 Jun 2024 15:56:08 +0300
 MIME-Version: 1.0
-In-Reply-To: <20240607123819.40694-1-linyunsheng@huawei.com>
-Content-Type: text/plain; charset="utf-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] arm64: dts: mt7622: fix switch probe on bananapi-r64
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Thorsten Leemhuis <regressions@leemhuis.info>, Rob Herring
+ <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+References: <20240516204847.171029-1-linux@fw-web.de>
+ <a29dd7d1-40a8-4c88-99aa-651a3305b640@arinc9.com>
+ <5AEE5668-0C8E-4EE4-A398-66CB99DF5650@public-files.de>
+ <43aacd9d-b851-4100-8ccc-878ac6ae10f8@leemhuis.info>
+ <698cf562-1ca9-4aa3-be7e-a1474b612c5b@leemhuis.info>
+ <0cba095c-3d55-416a-a7ad-b359129731cf@arinc9.com>
+ <714da201-654b-4183-8e5e-8ff0b64fe621@leemhuis.info>
+ <2cac4cf68304e81abffbd9ff0387ee100323c2b7.camel@redhat.com>
+ <b49c801c-6628-40a6-8294-0876d8871ba7@leemhuis.info>
+ <e92c3ca0-c9be-44ac-a4fc-57ca5ebedbc5@leemhuis.info>
+ <1807a142-1534-4fa4-ad4b-d1c03af014c2@arinc9.com>
+ <58d8ddea-71cc-427a-94cc-a95f6bce61d2@collabora.com>
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.69.30.204]
-X-ClientProxiedBy: dggems704-chm.china.huawei.com (10.3.19.181) To
- dggpemf200006.china.huawei.com (7.185.36.61)
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <58d8ddea-71cc-427a-94cc-a95f6bce61d2@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240611_055515_743283_6278ED57 
-X-CRM114-Status: GOOD (  16.01  )
+X-CRM114-CacheID: sfid-20240611_055616_502898_A8CAA494 
+X-CRM114-Status: GOOD (  28.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,59 +82,90 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Linux regressions mailing list <regressions@lists.linux.dev>, linux-kernel@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, linux-mediatek@lists.infradead.org, Frank Wunderlich <linux@fw-web.de>, Paolo Abeni <pabeni@redhat.com>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 11/06/2024 15:28, AngeloGioacchino Del Regno wrote:
+> Il 11/06/24 13:38, Arınç ÜNAL ha scritto:
+>> On 11/06/2024 14:30, Thorsten Leemhuis wrote:
+>>> On 07.06.24 16:15, Thorsten Leemhuis wrote:
+>>>> On 07.06.24 16:03, Paolo Abeni wrote:
+>>>>> On Thu, 2024-06-06 at 10:26 +0200, Thorsten Leemhuis wrote:
+>>>>>> On 31.05.24 08:10, Arınç ÜNAL wrote:
+>>>>>>> On 31/05/2024 08.40, Thorsten Leemhuis wrote:
+>>>>>>>> [adding Paolo, who committed the culprit]
+>>>>>>
+>>>>>> /me slowly wonders if the culprit should be reverted for now (see below)
+>>>>>> and should be reapplied later together with the matching changes from
+>>>>>> Arınç ÜNAL.
+>>>>>
+>>>>> FWIS I think a revert should be avoided, given that a fix is available
+>>>>> and nicely small.
+>>>>
+>>>> Yeah, on one hand I agree; but on the other it seems that the
+>>>> maintainers that would have to take care of the dt changes to fix this
+>>>> until now remained silent in this thread, apart from Rob who sent the
+>>>> mail regarding the warnings.
+>>>>
+>>>> I put those maintainers in the To: field of this mail, maybe that might
+>>>> lead to some reaction.
+>>>
+>>> Still no reply from the DRS folks or any other progress I noticed. Guess
+>>> that means I will soon have no other choice than to get Linus involved,
+>>> as this looks stuck. :-( #sigh
+>>
+>> Does it have to be Linus that needs to apply "[PATCH 0/2] Set PHY address
+>> of MT7531 switch to 0x1f on MediaTek arm64 boards"? Aren't there any other
+>> ARM maintainers that can apply the fix to their tree?
+>>
+>> Arınç
+> 
+> You have feedback from two people on the series that you mentioned, and noone
+> is going to apply something that needs to be fixed.
+> 
+> I'm giving you the possibility of addressing the comments in your patch, but
+> I don't want to see any mention of the driver previously ignoring this or that
+> as this is irrelevant for a hardware description. Devicetree only describes HW.
+> 
+> Adding up, in commit 868ff5f4944a ("net: dsa: mt7530-mdio: read PHY address of switch from device tree"),
+> you have created a regression.
+> 
+> Regressions should be fixed - as in - if the driver did work before with the old
+> devicetrees, it shall still work. You can't break ABI. Any changes that you do
+> to your driver must not break functionality with old devicetrees.
+> 
+> So...
+> 
+> ------> Fix the driver that you broke <------
 
-On 2024/6/7 20:38, Yunsheng Lin wrote:
+The device tree ABI before the change on the driver:
 
-...
+The reg value represents the PHY address of the switch.
+
+The device tree ABI after the change on the driver:
+
+The reg value represents the PHY address of the switch.
+
+I see no device tree ABI breakage. What I see instead is the driver
+starting enforcing the device tree ABI. No change had been made on the
+device tree ABI so any non-Linux driver that controls this switch continues
+to work.
+
+These old device tree source files in question did not abide by the device
+tree ABI in the first place, which is why they don't work anymore as the
+Linux driver now enforces the ABI. Device tree source files not conforming
+to the ABI is not something to maintain but to fix. The patch series that
+fixes them are already submitted.
 
 > 
-> CC: Alexander Duyck <alexander.duyck@gmail.com>
+> After you've fixed it - and I repeat - only after, *and* after someone (Frank?)
+> validates that the old devicetrees do work with the fixed driver, I will take
+> the device tree fixes for that MDIO address (as those are, again, fixing a
+> description of the hardware on those boards, so I agree that those must be fixed
+> AS WELL).
 
-Hi, Alexander & Networking Maintainers
-   Any suggestion or comment about this version?
-   Thanks.
+Sorry, this approach makes no sense to me.
 
-> 
-> 1. https://lore.kernel.org/all/20240228093013.8263-1-linyunsheng@huawei.com/
-> 
-> Change log:
-> V7: Fix doc build warning and error.
-> 
-> V6:
->    1. Fix some typo and compiler error for x86 pointed out by Jakub and
->       Simon.
->    2. Add two refactoring and optimization patches.
-> 
-> V5:
->    1. Add page_frag_alloc_pg() API for tls_device.c case and refactor
->       some implementation, update kernel bin size changing as bin size
->       is increased after that.
->    2. Add ack from Mat.
-> 
-> RFC v4:
->    1. Update doc according to Randy and Mat's suggestion.
->    2. Change probe API to "probe" for a specific amount  of available space,
->       rather than "nonzero" space according to Mat's suggestion.
->    3. Retest and update the test result.
-> 
-> v3:
->    1. Use new layout for 'struct page_frag_cache' as the discussion
->       with Alexander and other sugeestions from Alexander.
->    2. Add probe API to address Mat' comment about mptcp use case.
->    3. Some doc updating according to Bagas' suggestion.
-> 
-> v2:
->    1. reorder test module to patch 1.
->    2. split doc and maintainer updating to two patches.
->    3. refactor the page_frag before moving.
->    4. fix a type and 'static' warning in test module.
->    5. add a patch for xtensa arch to enable using get_order() in
->       BUILD_BUG_ON().
->    6. Add test case and performance data for the socket code.
-> 
-> 
-
+Arınç
 
