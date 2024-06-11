@@ -4,70 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68114C25B76
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jun 2024 11:30:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2E96C25B76
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jun 2024 11:33:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:To:From:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GvDhOl1G2Z707RGHPlxQe1Kar9gOS7R/lxC7nBW4SMc=; b=ZqHhruvY5RL0Fz
-	j3JtPRp0xLTlwREqxEfa87qnSUhgibwjtvU32Ovzdek3gTLd0NGgXIbFl3VEERh9GFuM5DTqhMdMC
-	oJDXXZjocR08wDAuI7PmFRASRH0pPgjSs/B9woxv0q3kwhM/GupXk6nHfofAYvSWctlB0d+VBTOLK
-	+8nRfa++1uHJoUoEeHpXMkHBhLCxjbAaE8GLoXlT18R7NWqHepRWgS7y2FnJxRHx60mXA0SLPurT+
-	tFxtWsjH+jKv3oYxK/rqel6nb5Q16if41hBGrTw+8JJY/oHGTMohEAEt2wJ7uHbDkjH2ITe7OUgWJ
-	D3PQJKdT43Jj5HnjrAAA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RfXxZqRO1iT2ixVp89TG5IOSKAmXlSsHm4PrhfIZCQc=; b=UbfIin8KkGBWTSdk8Tc8ygCiLX
+	mIFZr1a1pR1oQo9dV32StLdcQPJkGIMXioErNTNToWUocm4weDcOEf+aydK6platVLI664Spfp/KR
+	DKWRSpDpgdQ0kLwREFvDG+y6jNyJbxhFAShHIB8FLYIld8thRmXdXNyXSrOUoN1WGYw9h39hvOw2Z
+	olslA7zjKZHavAFQx0vQfParhbzDXbj9i4L2y2Buws/rAqfWCbgMtQ0m9m9/hnevMfXzjurmKbVOm
+	n1caN01vL/g805HsDE7jmwNa2BVADezrKf6FyJ2079Sm95koIXEOUi9g4tsBS/Y1mQ7u9c56g7qiv
+	zViwSWaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sGziB-00000008dwX-11wf;
-	Tue, 11 Jun 2024 11:30:47 +0000
-Received: from wp530.webpack.hosteurope.de ([80.237.130.52])
+	id 1sGzka-00000008eY5-10ID;
+	Tue, 11 Jun 2024 11:33:16 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sGzi5-00000008dte-3lNI;
-	Tue, 11 Jun 2024 11:30:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=leemhuis.info; s=he214686; h=Content-Transfer-Encoding:Content-Type:
-	In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:Message-ID:From:
-	Sender:Reply-To:Subject:Date:Message-ID:To:Cc:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:Content-ID:Content-Description:In-Reply-To:
-	References; bh=GvDhOl1G2Z707RGHPlxQe1Kar9gOS7R/lxC7nBW4SMc=; t=1718105441;
-	x=1718537441; b=lMZW0wokCmxuyHX8LvluTbNLniPBrAZ/NwBSbnJVXjqiYRri9rrVQQnxAyaS8
-	DsG6sOKhfFsQiH5UCYGaGU2iFk3l8qYYc67pJkAKjpcrdk+N+0ASAiXcV2Zy/7uRfYl7pRiI13g3b
-	FTjbm0P9ogdHEYZ1p0t2m9OIbUebUSA2o6UNOzSHYKB6UQaG68UgGFhlZfXK0pURJ2QDOQCRHlibD
-	lz2wcwl9XnJRq6+lyy85MXKwmmOxoZOHTowXCIaBEkUOxsbVGV0aqOojwbxkkW3sFJxtulBcWbmoj
-	4vw863F2fy+HgHAnghqjD9cfBBN1Vgm0oLy+g4i6PlqtxOdtIA==;
-Received: from [2a02:8108:8980:2478:8cde:aa2c:f324:937e]; authenticated
-	by wp530.webpack.hosteurope.de running ExIM with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
-	id 1sGzhu-0002Et-5s; Tue, 11 Jun 2024 13:30:30 +0200
-Message-ID: <e92c3ca0-c9be-44ac-a4fc-57ca5ebedbc5@leemhuis.info>
-Date: Tue, 11 Jun 2024 13:30:29 +0200
+	id 1sGzkT-00000008eUM-2eAr;
+	Tue, 11 Jun 2024 11:33:14 +0000
+X-UUID: 5d61e53e27e611efaf04eb0598667787-20240611
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=RfXxZqRO1iT2ixVp89TG5IOSKAmXlSsHm4PrhfIZCQc=;
+	b=sCGiROwRu5OuGKl9ieJJbZk1DoBKtd5UeqsD6lKSizrhD3+rWRpJg0YgAENSxmLtE4lr7zOqWDaAUE6/UluFJ9UNzzAwHUtGl/b6nPVRvvSADxqzGwa7SzBNwsAKqtF+MeuuzKTB0x4JCsejXJAELv7Q8l2a63NeNS5mOp8S+SE=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.39,REQID:56923743-11a4-43f5-a694-96dfafba7b1e,IP:0,U
+	RL:25,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:393d96e,CLOUDID:cab07144-4544-4d06-b2b2-d7e12813c598,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 5d61e53e27e611efaf04eb0598667787-20240611
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+	(envelope-from <zhi.mao@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 119852376; Tue, 11 Jun 2024 04:33:03 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Tue, 11 Jun 2024 19:33:00 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Tue, 11 Jun 2024 19:32:59 +0800
+From: Zhi Mao <zhi.mao@mediatek.com>
+To: <mchehab@kernel.org>, <robh+dt@kernel.org>,
+	<krzysztof.kozlowski+dt@linaro.org>, <sakari.ailus@linux.intel.com>
+CC: <laurent.pinchart@ideasonboard.com>, <shengnan.wang@mediatek.com>,
+	<yaya.chang@mediatek.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, <yunkec@chromium.org>,
+	<conor+dt@kernel.org>, <matthias.bgg@gmail.com>,
+	<angelogioacchino.delregno@collabora.com>, <jacopo.mondi@ideasonboard.com>,
+	<zhi.mao@mediatek.com>, <10572168@qq.com>, <hverkuil-cisco@xs4all.nl>,
+	<heiko@sntech.de>, <jernej.skrabec@gmail.com>, <macromorgan@hotmail.com>,
+	<linus.walleij@linaro.org>, <hdegoede@redhat.com>,
+	<tomi.valkeinen@ideasonboard.com>, <gerald.loacker@wolfvision.net>,
+	<andy.shevchenko@gmail.com>, <bingbu.cao@intel.com>,
+	<dan.scally@ideasonboard.com>, <linux-media@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH v6 1/3] media: dt-bindings: i2c: add GalaxyCore GC05A2 image sensor
+Date: Tue, 11 Jun 2024 19:32:34 +0800
+Message-ID: <20240611113236.16513-2-zhi.mao@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20240611113236.16513-1-zhi.mao@mediatek.com>
+References: <20240611113236.16513-1-zhi.mao@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: mt7622: fix switch probe on bananapi-r64
-From: Thorsten Leemhuis <regressions@leemhuis.info>
-To: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-References: <20240516204847.171029-1-linux@fw-web.de>
- <a29dd7d1-40a8-4c88-99aa-651a3305b640@arinc9.com>
- <5AEE5668-0C8E-4EE4-A398-66CB99DF5650@public-files.de>
- <43aacd9d-b851-4100-8ccc-878ac6ae10f8@leemhuis.info>
- <698cf562-1ca9-4aa3-be7e-a1474b612c5b@leemhuis.info>
- <0cba095c-3d55-416a-a7ad-b359129731cf@arinc9.com>
- <714da201-654b-4183-8e5e-8ff0b64fe621@leemhuis.info>
- <2cac4cf68304e81abffbd9ff0387ee100323c2b7.camel@redhat.com>
- <b49c801c-6628-40a6-8294-0876d8871ba7@leemhuis.info>
-Content-Language: en-US, de-DE
-In-Reply-To: <b49c801c-6628-40a6-8294-0876d8871ba7@leemhuis.info>
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-bounce-key: webpack.hosteurope.de;regressions@leemhuis.info;1718105441;519fbc12;
-X-HE-SMSGID: 1sGzhu-0002Et-5s
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240611_043042_351833_501F77BC 
-X-CRM114-Status: GOOD (  12.60  )
+X-CRM114-CacheID: sfid-20240611_043309_894661_3C9CE023 
+X-CRM114-Status: GOOD (  13.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,39 +94,139 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Linux regressions mailing list <regressions@lists.linux.dev>, =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, linux-kernel@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, linux-mediatek@lists.infradead.org, Frank Wunderlich <linux@fw-web.de>, Paolo Abeni <pabeni@redhat.com>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 07.06.24 16:15, Thorsten Leemhuis wrote:
-> On 07.06.24 16:03, Paolo Abeni wrote:
->> On Thu, 2024-06-06 at 10:26 +0200, Thorsten Leemhuis wrote:
->>> On 31.05.24 08:10, Arınç ÜNAL wrote:
->>>> On 31/05/2024 08.40, Thorsten Leemhuis wrote:
->>>>> [adding Paolo, who committed the culprit]
->>>
->>> /me slowly wonders if the culprit should be reverted for now (see below)
->>> and should be reapplied later together with the matching changes from
->>> Arınç ÜNAL.
->>
->> FWIS I think a revert should be avoided, given that a fix is available
->> and nicely small.
-> 
-> Yeah, on one hand I agree; but on the other it seems that the
-> maintainers that would have to take care of the dt changes to fix this
-> until now remained silent in this thread, apart from Rob who sent the
-> mail regarding the warnings.
-> 
-> I put those maintainers in the To: field of this mail, maybe that might
-> lead to some reaction.
+Add YAML device tree binding for GC05A2 CMOS image sensor,
+and the relevant MAINTAINERS entries.
 
-Still no reply from the DRS folks or any other progress I noticed. Guess
-that means I will soon have no other choice than to get Linus involved,
-as this looks stuck. :-( #sigh
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Signed-off-by: Zhi Mao <zhi.mao@mediatek.com>
+---
+ .../bindings/media/i2c/galaxycore,gc05a2.yaml | 112 ++++++++++++++++++
+ 1 file changed, 112 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/media/i2c/galaxycore,gc05a2.yaml
 
-Ciao, Thorsten (wearing his 'the Linux kernel's regression tracker' hat)
---
-Everything you wanna know about Linux kernel regression tracking:
-https://linux-regtracking.leemhuis.info/about/#tldr
-If I did something stupid, please tell me, as explained on that page.
+diff --git a/Documentation/devicetree/bindings/media/i2c/galaxycore,gc05a2.yaml b/Documentation/devicetree/bindings/media/i2c/galaxycore,gc05a2.yaml
+new file mode 100644
+index 000000000000..0e7a7b5ac89f
+--- /dev/null
++++ b/Documentation/devicetree/bindings/media/i2c/galaxycore,gc05a2.yaml
+@@ -0,0 +1,112 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++# Copyright (c) 2023 MediaTek Inc.
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/media/i2c/galaxycore,gc05a2.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: GalaxyCore gc05a2 1/5" 5M Pixel MIPI CSI-2 sensor
++
++maintainers:
++  - Zhi Mao <zhi.mao@mediatek.com>
++
++description:
++  The gc05a2 is a raw image sensor with an MIPI CSI-2 image data
++  interface and CCI (I2C compatible) control bus. The output format
++  is raw Bayer.
++
++properties:
++  compatible:
++    const: galaxycore,gc05a2
++
++  reg:
++    maxItems: 1
++
++  clocks:
++    maxItems: 1
++
++  dovdd-supply: true
++
++  avdd-supply: true
++
++  dvdd-supply: true
++
++  reset-gpios:
++    description: Reference to the GPIO connected to the RESETB pin.
++    maxItems: 1
++
++  port:
++    $ref: /schemas/graph.yaml#/$defs/port-base
++    additionalProperties: false
++    description:
++      Output port node, single endpoint describing the CSI-2 transmitter.
++
++    properties:
++      endpoint:
++        $ref: /schemas/media/video-interfaces.yaml#
++        unevaluatedProperties: false
++
++        properties:
++          data-lanes:
++            oneOf:
++              - items:
++                  - const: 1
++                  - const: 2
++                  - const: 3
++                  - const: 4
++              - items:
++                  - const: 1
++                  - const: 2
++
++          link-frequencies: true
++
++        required:
++          - data-lanes
++          - link-frequencies
++
++    required:
++      - endpoint
++
++required:
++  - compatible
++  - reg
++  - clocks
++  - dovdd-supply
++  - avdd-supply
++  - dvdd-supply
++  - reset-gpios
++  - port
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/gpio/gpio.h>
++
++    i2c {
++        #address-cells = <1>;
++        #size-cells = <0>;
++
++        sensor@37 {
++            compatible =  "galaxycore,gc05a2";
++            reg = <0x37>;
++
++            clocks = <&gc05a2_clk>;
++
++            reset-gpios = <&pio 21 GPIO_ACTIVE_LOW>;
++
++            avdd-supply = <&gc05a2_avdd>;
++            dovdd-supply = <&gc05a2_dovdd>;
++            dvdd-supply = <&gc05a2_dvdd>;
++
++            port {
++                sensor_out: endpoint {
++                    data-lanes = <1 2>;
++                    link-frequencies = /bits/ 64 <448000000 224000000>;
++                    remote-endpoint = <&seninf_csi_port_1_in>;
++                };
++            };
++        };
++    };
++
++...
+-- 
+2.25.1
+
 
