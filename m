@@ -4,90 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B9EFC27C4F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jun 2024 02:22:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30F4CC25B76
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jun 2024 06:23:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=rOWiDGoZ3cg9dnynIRWTsyteioX53Ouu76F3VV4WZDg=; b=BI21rz0Id28oiII3vZHkkV9cIv
-	NN/e6JEpfjxZLKrHB/tkt38az5Oef7ewEaJml3XbPyXrsiu20rj+ton94NMQT/gRZHUGUMk2WGXfQ
-	ogG7C1dFcns8PweKJ2MbGudZC3T3Iq8Ivz/3zxGwxqXpgOZZ4MvScRuUaRsL2PKUXT68xRCcBMP+m
-	+mwS+BaSUZDLT/kKtP1D53mcOBCcFuO1VJOz+ziY6f80OTWkcP+Dt53M23AVWvryIl+gMgLf9Ji1g
-	T+ZlN9yO6CskurWdSe0hX8tiASSpg/Hs0B6U1YnkqCXv1kvhWKP8XbXfeG5IsMlrMPH9JdiQjphfJ
-	0BxbiDqA==;
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=bwu883SfM/0WsE+oHlOP/+rRWsvAVxgU1/13gdyKygQ=; b=SVQqwHvy27xCGMFLBunHc9V6M1
+	nbsXZ2xVs3lXg+/sTxCPU3Y3T6Kjdh6nGz1MB87vG3RjleH8z63BW4J3TrgEM2Law09h6NDAibHli
+	ZSOEaHAADXifVWx7mKcaX2Q7V5gdl/WjaebM0s33r/ECH4qQbOBCwbiw6AuPlABfVSTD9BlAO4mtL
+	+GRVV3R8ub56mq5tegpONZsD/ydmwh4nR+lWVvwh/xxlX6aQxqKdsZBSgRSYtQr6YGs+cV42Skezj
+	v9/JhBhYiDNkZS8poeRkowm/hUXif0npNW1rmFmUKBm7Al1M4ln8rw9rSH0wthWlLbuYgWpBmu0x9
+	rmzgkqXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sGr9t-000000078bB-2Tt6;
-	Tue, 11 Jun 2024 02:22:49 +0000
-Received: from mail-oi1-x22e.google.com ([2607:f8b0:4864:20::22e])
+	id 1sGuvA-00000007fwm-0dNW;
+	Tue, 11 Jun 2024 06:23:52 +0000
+Received: from mail-oa1-x2d.google.com ([2001:4860:4864:20::2d])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sGr9q-000000078aI-1I3R
-	for linux-mediatek@lists.infradead.org;
-	Tue, 11 Jun 2024 02:22:48 +0000
-Received: by mail-oi1-x22e.google.com with SMTP id 5614622812f47-3d21c4eec2dso339385b6e.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 10 Jun 2024 19:22:43 -0700 (PDT)
+	id 1sGuv6-00000007fvb-0Jne;
+	Tue, 11 Jun 2024 06:23:49 +0000
+Received: by mail-oa1-x2d.google.com with SMTP id 586e51a60fabf-250c0555a63so324058fac.1;
+        Mon, 10 Jun 2024 23:23:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=huaqin-corp-partner-google-com.20230601.gappssmtp.com; s=20230601; t=1718072562; x=1718677362; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=rOWiDGoZ3cg9dnynIRWTsyteioX53Ouu76F3VV4WZDg=;
-        b=lN/FFmb+g7CeFVufeZoD7kHB59S/L+B0wp+e8rwENLZCdWT5lAYU8TDjaIpe3is/ZJ
-         Q7ZdKQLaqZ+/sfdlvZ0SyYNE3I7iaweIcUG5kvSxY669rGabWsSzgmE/308v0MvvRd8M
-         dgoFqMOlZU60qjg9CI00ULufOcdLWfdbYGWP12Ir3l7zpmuxAF993laXZSn9v7vDE5PB
-         H4kbkGkOWU3JxPn3FAZY07L/5OFsCWwldgrrExb4fxOp5gmUdkIEx7pnFQhodrUY/rBq
-         c1xLFOkG1r2boWiYMd3qoZWOiFbdvXX41z9As7kLNV05XflMMtMIQZQsrdRM6aB9mnWv
-         6dXQ==
+        d=gmail.com; s=20230601; t=1718087025; x=1718691825; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=bwu883SfM/0WsE+oHlOP/+rRWsvAVxgU1/13gdyKygQ=;
+        b=NcE5zuzWGkyXeOMk6vjdLw66TCvno8MIRkdzJlYE8nM+i2PM9tktyEjM2nf8gf2cZL
+         K+x/OuAqWwiESx50qNWa6w3oIUfVSxIYfpu5JkBzSTO5iRCHLNZh+4nRf0sbaOabiCvQ
+         ioOA8WPfvn0Z4Ex841KnzliL4ZuxY55QkWZwu5lUlLIVd7+irq8xd1va2pkhpa7Xc/KE
+         LbfRyCOBZKzmtUnNcYy1XII7aEUpQi5JlgrJXPCcbg3dvKpk+1Rfj89VnvQGfhgvXLPx
+         1znuo6/nS3jVAcbDvdQsTObymoAgnySNlg/vX+oTZM0wWMjBUs3BfA7wbwxA5fvHU8Un
+         3bjg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1718072562; x=1718677362;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=rOWiDGoZ3cg9dnynIRWTsyteioX53Ouu76F3VV4WZDg=;
-        b=C6peakcgTkOYCDhnhJj52OOH/0cGcl1idDCY1EtTkGVKUr9rvxqtRkLAUDhqP4eIwT
-         CiAOhiEj9X1B4Iydnovlnyr+Tc9dWNiFQGQq7VRvNIhp9spyAA/DbOlbRXrRP4zwJSI5
-         BwKMUmMZGbxmeec0CsOg9oApOmkxWM1IowKEWT59HSEKZxXcXFr9BlEnhaJGWcpK80m3
-         1nmNvOxqZWDvc1QZQrrUARHpjC4ehbORx5jv+cSe2Hgaxlf/SfW/Z3EnelnWlUWl9S+z
-         ZOKLqXdhYKU7SpzKGqqlnMGaX/w70C1PgdLq2SPb26IaCJcSWGITDYoLYGh5Lque/Z9h
-         ZCqA==
-X-Forwarded-Encrypted: i=1; AJvYcCVFH2BxtKRRcA1yJG+YEFumQn6pjlHgCPb2jb94WfJwHGv9qotJVDhRwA5PaMNklX5IkBt4GJfaZ4MUN3xOx11Am69cyfxPRZjk6jk0k1uhJKrK
-X-Gm-Message-State: AOJu0Yw+Gh/bnLA+vSwSsfRB0092V9LNIzW5NDxxjZ2Gx3QYcv1t5CxQ
-	GN/b2eDdYlvis4gVuv8O9yYGOf8TsjXoqASO70wVyhN5Vf8LcjEj0ffBV3Kq474=
-X-Google-Smtp-Source: AGHT+IH54UnImHOBfDjxg/a/aqysYcwTv7IDKcLuDx7VweoZ916Hrr9pYkdYYvKpgl1/Gy1pVhimIw==
-X-Received: by 2002:a05:6808:218f:b0:3d2:1f88:3e7a with SMTP id 5614622812f47-3d21f88464bmr9449264b6e.39.1718072562390;
-        Mon, 10 Jun 2024 19:22:42 -0700 (PDT)
-Received: from zhou.. ([101.78.151.194])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7042f5584e9sm3953561b3a.12.2024.06.10.19.22.39
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 10 Jun 2024 19:22:42 -0700 (PDT)
-From: Rui Zhou <zhourui@huaqin.corp-partner.google.com>
-To: lgirdwood@gmail.com,
-	broonie@kernel.org,
-	perex@perex.cz,
-	tiwai@suse.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	trevor.wu@mediatek.com,
-	allen-kh.cheng@mediatek.com,
-	kuninori.morimoto.gx@renesas.com
-Cc: maso.huang@mediatek.com,
-	linux-sound@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	Rui Zhou <zhourui@huaqin.corp-partner.google.com>
-Subject: [PATCH v1] ASoC:  support machine driver with TAS2781
-Date: Tue, 11 Jun 2024 10:22:27 +0800
-Message-Id: <20240611022227.2508354-1-zhourui@huaqin.corp-partner.google.com>
-X-Mailer: git-send-email 2.34.1
+        d=1e100.net; s=20230601; t=1718087025; x=1718691825;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=bwu883SfM/0WsE+oHlOP/+rRWsvAVxgU1/13gdyKygQ=;
+        b=Kp4umWLHjK/W13+5SBYNqfFqZBhf0r77HEOBscsd1FJSeE6p5EbVKsU4e0ITBgaBIz
+         Sc3d2KbvM/OcoNv6RqFmXz0L/aVg8EZa+H6pGU8rIClHrlBSBYT5xnVC0UDd+ZZ+U96H
+         4f66JOhvWv3uXt2GrI31UmXZ1+DhcLu/Szg1asshr69701oxnLRY7x5TkXPCDoGkTM0t
+         O9h8AP+IGpXT5Wy7t9geiTK/OxQcvsKdePfKwLUmRPHRiKED/z068sLv+zivGJmjN1Ag
+         XFdkBw/N0XEEiaG2b4OpWv25VB76XvI92m5hpRzWa/UftSIubO0ajwhYZ6E5UwIhroGt
+         vaAw==
+X-Forwarded-Encrypted: i=1; AJvYcCVJ/RCz3FhXAxs/ThhnzIEMG+AsCDQuojzo31t3rn1nsTMwDEJFtyP4+Fp6Ij3KC6zMozmzNPxbpndjLZYxC5ykC1t5K9WWnGkOyHzQoaCUQpjkWJr9n6PGMjZo3s6yWGMjCwQTyx+UBN1uF6FYIH7ks5XnvoPEic4=
+X-Gm-Message-State: AOJu0Yz5Th1bCPowLqePxlOj0Eg8Pj9VebZ6uob+0XgXcUAo6r6g+6tP
+	esj4MpNhhc2TOWRWY8fhYCPBzu9e91nj/pWbwIKJZBeabvvwH3SeEZBFnlwBS3sj3ZpXw0Q9gHN
+	ixkJosnfXzvrLVmexrRnJqX5Icvc=
+X-Google-Smtp-Source: AGHT+IG7GKYBdo2VQZhbz/IlnZW6BFSpt7hnt+JU/XtiKDIa2WhrA7tPm5LdNleABOooM/PxMePl1/qMK1HEmDC+JC8=
+X-Received: by 2002:a05:6870:1719:b0:254:c512:88c6 with SMTP id
+ 586e51a60fabf-254c5129526mr5243184fac.51.1718087024789; Mon, 10 Jun 2024
+ 23:23:44 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20240610-md-drivers-pci-controller-v1-1-b998c242df55@quicinc.com>
+In-Reply-To: <20240610-md-drivers-pci-controller-v1-1-b998c242df55@quicinc.com>
+From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+Date: Tue, 11 Jun 2024 08:23:33 +0200
+Message-ID: <CAMhs-H--0tbqhQzsA0sEzYKET4uJADZyLPNhRBHUL8BGFvjcSA@mail.gmail.com>
+Subject: Re: [PATCH] PCI: controller: add missing MODULE_DESCRIPTION() macros
+To: Jeff Johnson <quic_jjohnson@quicinc.com>
+Cc: Jingoo Han <jingoohan1@gmail.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+	=?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
+	Krzysztof Kozlowski <krzk@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, Will Deacon <will@kernel.org>, 
+	Joyce Ooi <joyce.ooi@intel.com>, Alyssa Rosenzweig <alyssa@rosenzweig.io>, 
+	Marc Zyngier <maz@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, 
+	Jianjun Wang <jianjun.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Nirmal Patel <nirmal.patel@linux.intel.com>, 
+	Jonathan Derrick <jonathan.derrick@linux.dev>, linux-pci@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	kernel-janitors@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240610_192246_494332_A2D2E592 
-X-CRM114-Status: UNSURE (   7.17  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240610_232348_202293_32BB09D9 
+X-CRM114-Status: GOOD (  12.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,26 +100,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Support amp TAS2781 for mt8188 platform
+Hi,
 
-Signed-off-by: Rui Zhou <zhourui@huaqin.corp-partner.google.com>
----
- sound/soc/mediatek/Kconfig | 1 +
- 1 file changed, 1 insertion(+)
+On Tue, Jun 11, 2024 at 3:04=E2=80=AFAM Jeff Johnson <quic_jjohnson@quicinc=
+.com> wrote:
+>
+> When ARCH=3Dx86, make allmodconfig && make W=3D1 C=3D1 reports:
 
-diff --git a/sound/soc/mediatek/Kconfig b/sound/soc/mediatek/Kconfig
-index 5a8476e1ecca..07f67f96c889 100644
---- a/sound/soc/mediatek/Kconfig
-+++ b/sound/soc/mediatek/Kconfig
-@@ -233,6 +233,7 @@ config SND_SOC_MT8188_MT6359
- 	select SND_SOC_HDMI_CODEC
- 	select SND_SOC_DMIC
- 	select SND_SOC_MAX98390
-+	select SND_SOC_TAS2781_I2C
- 	select SND_SOC_NAU8315
- 	select SND_SOC_NAU8825
- 	select SND_SOC_RT5682S
--- 
-2.34.1
+[snip]
 
+> WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pci/controller/=
+pcie-mt7621.o
+>
+> Add the missing invocations of the MODULE_DESCRIPTION() macro.
+>
+> Signed-off-by: Jeff Johnson <quic_jjohnson@quicinc.com>
+
+[snip]
+
+> diff --git a/drivers/pci/controller/pcie-mt7621.c b/drivers/pci/controlle=
+r/pcie-mt7621.c
+> index d97b956e6e57..9989e5e614b9 100644
+> --- a/drivers/pci/controller/pcie-mt7621.c
+> +++ b/drivers/pci/controller/pcie-mt7621.c
+> @@ -549,4 +549,5 @@ static struct platform_driver mt7621_pcie_driver =3D =
+{
+>  };
+>  builtin_platform_driver(mt7621_pcie_driver);
+>
+> +MODULE_DESCRIPTION("MediaTek MT7621 PCIe controller");
+>  MODULE_LICENSE("GPL v2");
+>
+
+Acked-by: Sergio Paracuellos <sergio.paracuellos@gmail.com> # MT7621
+
+Best regards,
+   Sergio Paracuellos
 
