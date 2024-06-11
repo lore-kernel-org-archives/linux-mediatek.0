@@ -4,66 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15CECC25B76
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jun 2024 13:19:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4BABC25B76
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jun 2024 13:45:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=W164saS/QevSx0SUPUjTgpmiTTJGBuxLG5IS5R3Y+SA=; b=F/T34ZY8oL7IBi0jN+3cX2QU1h
-	zWliovw6j3P9Qn41z8VbiAmovlEpcaCgH62FMAHJsj7oCBvGgpRZaIbz2GfAftgL+Fz2+eGZCJi8O
-	5fMydcQife5jCLX/U26a0eNfNhPeW73hWB2+bBNgQksbORCB+WrzZ/60VmHir7MLtQFkl8ey0kb49
-	3f4pXJjA6VzM8fUNLthvQhq5qvDVgFAda8gHWkY9vnYzCuO+uzrV7aZ72GwAUfKpZvCctmwv1juQ/
-	RY2McELwO4sfvLziV0a/kycTrOPM5reRgE8QfCqnQ90gC7AbvNmh6/UFjLmLNIgeBDWb/DAXSOvhH
-	qrNe0OPA==;
+	bh=oktI9QFhd6aQRpg/GpKjNemXNmatyMuVKnzDSS+RAdg=; b=OiJW+norGSmNFwKhOAcc3VL3AP
+	gYBtjDNG4+M1U/MwjvYMs6fTaoiaJR4D4BZ6GpeDs0pwNgkI+JCQesBAqn2RgUMPX7B7aOr60atjX
+	uCf5Ws5XauiQmfXoPPNTmjKcsfDo6g9O7+AstWy+RfJO6QrPWka80LmpBlD+SnLT/RVd/NjDLIJ3w
+	LhQPdogWk9jYj8IH06KAzTkVdqCSAwpyeB83OmurZWk5yRuSQQTtNuWYkdE6UCpIkJov58ocEOEpS
+	LzIB/jqhJzKz85numHAJ77ND6SiL/nLyk0T8MQxbRDTwMU+7MIJOskXC13w2pB5pDX5BysJ5N3qEt
+	fPex2JQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sH1PD-00000008x4N-1jZv;
-	Tue, 11 Jun 2024 13:19:19 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1sH1oD-000000092iw-0Bm9;
+	Tue, 11 Jun 2024 13:45:09 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sH1PA-00000008x33-12QU;
-	Tue, 11 Jun 2024 13:19:17 +0000
+	id 1sH1o6-000000092gB-0Vs0;
+	Tue, 11 Jun 2024 13:45:04 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 3533360C71;
-	Tue, 11 Jun 2024 13:19:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6D914C2BD10;
-	Tue, 11 Jun 2024 13:19:14 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 46B5FCE1BF4;
+	Tue, 11 Jun 2024 13:44:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4E358C2BD10;
+	Tue, 11 Jun 2024 13:44:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1718111954;
-	bh=J8yhVuHGe30lXX6K160M1LciDauZy7HN1wD2X9gUkcA=;
+	s=k20201202; t=1718113498;
+	bh=+V3Oa1gsFlcJcKL3fpyUbpzxEIi5YIU50iTixRyZAtM=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=iF2ogBzdTXnby9LDZhbj6ywrmVv5y4/40fTX7bT04jojCnB5hwI7vy1ibGcJ8/r88
-	 XYFw9P19hjgZoO+QtbYGCraSsJ4jQz8NSmVFD/UtW7QW3rV2RqX3mpo++bIky+LrpX
-	 jM3Ot4XwUy41z1nP+5IWc3fQBT7vvV1as9FrnOujEXlHY2H1e9c24le/Og2N7/pZMZ
-	 PXSIFplW3DEFzQsPk4R2zwpsm1+X/HlmNr94C9FRqMnjVTqn9U1LnE0faOxcOxTLeY
-	 a71HjU9vUmwHQXTj9+/oQjdmNzNod8sbirixKktKFZfUFJIIGXh2sqKN9GxzYWDNAP
-	 9fDFRuXW1K0sg==
-Date: Tue, 11 Jun 2024 14:19:11 +0100
-From: Mark Brown <broonie@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Rui Zhou <zhourui@huaqin.corp-partner.google.com>, lgirdwood@gmail.com,
-	perex@perex.cz, tiwai@suse.com, matthias.bgg@gmail.com,
-	trevor.wu@mediatek.com, allen-kh.cheng@mediatek.com,
-	kuninori.morimoto.gx@renesas.com, maso.huang@mediatek.com,
-	linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v1] ASoC: support machine driver with TAS2781
-Message-ID: <ZmhOz7BB8eJ38QVE@finisterre.sirena.org.uk>
-References: <20240611022227.2508354-1-zhourui@huaqin.corp-partner.google.com>
- <Zmgsfafmfedd9_MV@finisterre.sirena.org.uk>
- <d7d32ef3-8b2e-476c-a15e-7f829ea0d60a@collabora.com>
+	b=eFlICVcjHAwyBKduydyPkxT4CpHSZ+dfBULdoCplkcSnuf+ml+ggJawCs8fek9aOt
+	 aP64sr/6p+FnR3hq7lV3H0b5AWCleIQuI27OHCdnuhU/WxNufUcNc6b3ir6i5fHmr1
+	 SB2qvXLzonZYkyViAz+TDmktKT9C9BpObvrhKdpHCzqkhDCbboVLOd8PHhcAiUie1E
+	 fspJ4KbEhyKtC6Npd5obmLQwBvzxmQJ5O7d9iV3HnkPHSbPRLMDzKDln1LBvXhTDCv
+	 TrEA49SRrIn2BTp+mchPCityLVy1yPyYPxlzwejmLi3CvF/EyrUNK5cdB4JbUnYzpf
+	 d0fMLQiCoQ1/Q==
+Date: Tue, 11 Jun 2024 07:44:57 -0600
+From: Rob Herring <robh@kernel.org>
+To: =?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Lala Lin <lala.lin@mediatek.com>, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	=?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
+Subject: Re: [PATCH V2 1/2] dt-bindings: nvmem: mediatek: efuse: add support
+ for MT7981
+Message-ID: <20240611134457.GA1796783-robh@kernel.org>
+References: <20240514015154.11206-1-zajec5@gmail.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="L8C5DHVHxE1pZFLB"
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <d7d32ef3-8b2e-476c-a15e-7f829ea0d60a@collabora.com>
-X-Cookie: Your love life will be... interesting.
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20240514015154.11206-1-zajec5@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240611_061916_438096_F3F4FFC6 
-X-CRM114-Status: GOOD (  23.55  )
+X-CRM114-CacheID: sfid-20240611_064502_409536_FBB2367B 
+X-CRM114-Status: UNSURE (   9.95  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,70 +81,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Tue, May 14, 2024 at 03:51:53AM +0200, Rafał Miłecki wrote:
+> From: Rafał Miłecki <rafal@milecki.pl>
+> 
+> Add compatible for MT7981 SoC.
+> 
+> Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
+> ---
+> V2: Use new compatible instead of MT7986's one
+> 
+>  Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml | 1 +
+>  1 file changed, 1 insertion(+)
 
---L8C5DHVHxE1pZFLB
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Looks like this was missed, so I've applied it.
 
-On Tue, Jun 11, 2024 at 02:38:09PM +0200, AngeloGioacchino Del Regno wrote:
-> Il 11/06/24 12:52, Mark Brown ha scritto:
-> > On Tue, Jun 11, 2024 at 10:22:27AM +0800, Rui Zhou wrote:
-> > > Support amp TAS2781 for mt8188 platform
-
-> > > +++ b/sound/soc/mediatek/Kconfig
-> > > @@ -233,6 +233,7 @@ config SND_SOC_MT8188_MT6359
-> > >   	select SND_SOC_HDMI_CODEC
-> > >   	select SND_SOC_DMIC
-> > >   	select SND_SOC_MAX98390
-> > > +	select SND_SOC_TAS2781_I2C
-> > >   	select SND_SOC_NAU8315
-> > >   	select SND_SOC_NAU8825
-
-> > Ideally this would be sorted to avoid spurious merge conficts.  Also do
-> > we really have dependencies here or should these just be being enabled
-> > by users - these drivers are all pretty generic now?
-
-> The only dependency is on the MT6359 PMIC's audio related IPs and nothing else.
-
-> I'd even remove the other select statements for the other codecs, honestly,
-> as there's no reason why MT8188 wouldn't support a codec or the other, and
-> there is no reason why that SoC needs exactly those codecs, apart from some
-> board (Chromebooks) having one, or the other.
-
-Right, that's what I meant - the drivers are now so generic that they
-probably shouldn't be selecting everything they could possibly work
-with.
-
-> Instead of adding a select statement on MT8188_MT6359, adding the TAS2781_I2C
-> driver as a module in defconfig is a better idea..... at least, IMO.
-
-Yes.
-
-> >  Not that this
-> > change in itself makes a huge difference to the existing state.
-
-> I agree it doesn't make any huge difference, but I also don't see why users
-> can't simply enable (y/m) that in the kernel configuration :-)
-
-I think this is a result of the drivers originally being very specific
-to a particular setup and gradually getting made more generic, if the
-driver can only be used on a specific machine then the selects make
-sense but that's no longer the case for these drivers I think.
-
---L8C5DHVHxE1pZFLB
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmZoTs4ACgkQJNaLcl1U
-h9C5qQf9G5KuVznYWJOIxmrBhe90rR14xzXQ8iuN/dpwJrplNgIKiv/scP1621jG
-KMls3d3XffNozTDEjmE38BVH8H8kpa0pS2A88fKLp9Gv+4lvXMQXrw/XO/oKxkIZ
-b5sX+1YNLdebMbKyDzw16JmUenEkZHgSNpxc68bfmxFptlhtqo+0V3ZPkpGlsTCr
-i8uIMveI3ySIyxh+nRJHll9qfgqA5YvoHEadaflAnaRhQ6eI9beW9VtbBX3+P02n
-IYysSSakV433928mgTzoGvXGTgyJkc9ZV/uF7E5RRntPdqzU+/dEVlvt2wipweI2
-LyNOUbLuMhdQXn/GFYSUfFaJBROFdw==
-=JJl5
------END PGP SIGNATURE-----
-
---L8C5DHVHxE1pZFLB--
+Rob
 
