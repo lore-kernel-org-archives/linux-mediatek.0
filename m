@@ -4,96 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0B2BC27C5E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jun 2024 11:33:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE8C1C25B76
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jun 2024 11:39:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=odidsYKFNVPwoPZeuKLhmMjo6dD/t+Ya5VuaW/USSyw=; b=vZd6BrMhn7bCgvPE7X4PSaZKyr
-	HaefQoQuFdsY5IZ9Uj1d3LXcOge5gHaqb35ypma4DbPySyUEkpJtYyvSx+TNNJkNyyzpj1ikbbtjT
-	eYkrFVw4GjwIxlf63YcXp0KS2vO0rwINmDOdCnkcqZL7+etYV99Hb8osNeutRGuvFMsNg8OUvpnpj
-	/Y47CuAcCmlUr6iXWqPr2mhSQVXNJs4G9vV7CbtOPOxZiP/QQzPmvMr7MiLlpvTi/nZ0wWajtpoa9
-	MIOG2wNlh5k968AdAUcoLxPti0zpBg476+qnV8ht0pzrApfN4uOqQJPJMwJ4lmPZT38/dcEFL0Z9U
-	R5X576WA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=BV2L6/8bPOL7cOUoC1lbeRAI9Vo72rK02ENTNfh2Nps=; b=n9qsagpfzBXrHI
+	HjH8FVfatmTAUIfN053XDCjsAOlTleUm8pHTQ7X52oqBDC/Tfgd1/FB10Alji/KEd6N63Dq2ePULw
+	bXLQ0hq1OmE0N1eEDmcs+YOSKDmV848Mbj/Q8Od2Ezhf1urY+ItCZInJ+ZfoSQPlGg6vgvbj3gv49
+	1B098UTqi6wlE+z7aWRvEfkGLDUBMhLb6mnF9FGoBJTsuZ67o6ywP0MQx3SHc/aZGyeCCI2o1WWJW
+	rB/hqvLvOgAog2WM/r/2WEW/mV7c/nbwSHvNjR/hJr5+97uMxXJUURgcqivM2rzQ770BHjSQvze8B
+	MQ6vGDoMKl5gXkAJc87w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sGzl3-00000008ejq-1nCz;
-	Tue, 11 Jun 2024 11:33:45 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1sGzqH-00000008gDX-16J1;
+	Tue, 11 Jun 2024 11:39:09 +0000
+Received: from relay8-d.mail.gandi.net ([217.70.183.201])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sGzl0-00000008eiJ-2d0D;
-	Tue, 11 Jun 2024 11:33:43 +0000
-X-UUID: 71fc306227e611efba8bfb22b0451c12-20240611
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=odidsYKFNVPwoPZeuKLhmMjo6dD/t+Ya5VuaW/USSyw=;
-	b=K+Zj4GOgVQLKpM6/pYq5y53N/HdmAVVb5pu+ktRJsKfwpLL9LEwiptarObuurdY7Bsq264iX0/j8X3CsddiuN1dHbCOtZDKr/bNQgZEJiv+keYMUVDgVTSA1uFDtJG8IkFUPgxBn72/A6CxD4+pdkCic1MwWOSGmSl6f1j+Bs5Y=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.39,REQID:d115fda9-0d57-409a-ad9d-6c31ce4a4ae4,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:393d96e,CLOUDID:7933db93-e2c0-40b0-a8fe-7c7e47299109,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 71fc306227e611efba8bfb22b0451c12-20240611
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
-	(envelope-from <zhi.mao@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 963587058; Tue, 11 Jun 2024 04:33:38 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 11 Jun 2024 19:33:34 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 11 Jun 2024 19:33:33 +0800
-From: Zhi Mao <zhi.mao@mediatek.com>
-To: <mchehab@kernel.org>, <robh+dt@kernel.org>,
-	<krzysztof.kozlowski+dt@linaro.org>, <sakari.ailus@linux.intel.com>
-CC: <laurent.pinchart@ideasonboard.com>, <shengnan.wang@mediatek.com>,
-	<yaya.chang@mediatek.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, <yunkec@chromium.org>,
-	<conor+dt@kernel.org>, <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>, <jacopo.mondi@ideasonboard.com>,
-	<zhi.mao@mediatek.com>, <10572168@qq.com>, <hverkuil-cisco@xs4all.nl>,
-	<heiko@sntech.de>, <jernej.skrabec@gmail.com>, <macromorgan@hotmail.com>,
-	<linus.walleij@linaro.org>, <hdegoede@redhat.com>,
-	<tomi.valkeinen@ideasonboard.com>, <gerald.loacker@wolfvision.net>,
-	<andy.shevchenko@gmail.com>, <bingbu.cao@intel.com>,
-	<dan.scally@ideasonboard.com>, <linux-media@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v6 3/3] MAINTAINERS: Add entry for GC05A2 image sensor
-Date: Tue, 11 Jun 2024 19:32:36 +0800
-Message-ID: <20240611113236.16513-4-zhi.mao@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20240611113236.16513-1-zhi.mao@mediatek.com>
-References: <20240611113236.16513-1-zhi.mao@mediatek.com>
+	id 1sGzqB-00000008gAs-3Pbf;
+	Tue, 11 Jun 2024 11:39:06 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 1E1451BF204;
+	Tue, 11 Jun 2024 11:38:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
+	t=1718105938;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=BV2L6/8bPOL7cOUoC1lbeRAI9Vo72rK02ENTNfh2Nps=;
+	b=LVuCUskTc/h0Xz58HncRdqc4hXrgEo0ZCzMewq1unRwEoUAYEKDRyQSbu7BLzm7P2GOvsR
+	omItKbet19uhCDXXv47KrbxNffGpvVq+ykHd359A5ZqA/Tt0K6mCOyVuA+asbRVzczytb8
+	KhEJj4sGwftHFuuH/d1TbnyvxXDEwUrucAva0CRyiJdy4UAYdXft8hzqNvMvcvUOGycEX4
+	tC3yeJRDnwjt3lJrWMlBs/KMRJXJvy2OA+lL2ONLjM3R3F3QCCgHh/XAW49NBGlABl7B47
+	f3neQZguGFuRBAv1JiZW6WeOKDAZBeMJrqy6Od8R3tfBBBLNhYAIonv28+SqMw==
+Message-ID: <1807a142-1534-4fa4-ad4b-d1c03af014c2@arinc9.com>
+Date: Tue, 11 Jun 2024 14:38:53 +0300
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] arm64: dts: mt7622: fix switch probe on bananapi-r64
+To: Thorsten Leemhuis <regressions@leemhuis.info>,
+ Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+References: <20240516204847.171029-1-linux@fw-web.de>
+ <a29dd7d1-40a8-4c88-99aa-651a3305b640@arinc9.com>
+ <5AEE5668-0C8E-4EE4-A398-66CB99DF5650@public-files.de>
+ <43aacd9d-b851-4100-8ccc-878ac6ae10f8@leemhuis.info>
+ <698cf562-1ca9-4aa3-be7e-a1474b612c5b@leemhuis.info>
+ <0cba095c-3d55-416a-a7ad-b359129731cf@arinc9.com>
+ <714da201-654b-4183-8e5e-8ff0b64fe621@leemhuis.info>
+ <2cac4cf68304e81abffbd9ff0387ee100323c2b7.camel@redhat.com>
+ <b49c801c-6628-40a6-8294-0876d8871ba7@leemhuis.info>
+ <e92c3ca0-c9be-44ac-a4fc-57ca5ebedbc5@leemhuis.info>
+Content-Language: en-US
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <e92c3ca0-c9be-44ac-a4fc-57ca5ebedbc5@leemhuis.info>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--2.764800-8.000000
-X-TMASE-MatchedRID: tiRXYRqWr+sdj9vNGYhpkXQEQEU5OIefuLwbhNl9B5VGL0g1nVmkYRjS
-	B882BUr04vM1YF6AJbZhyT3WNjppUtAtbEEX0MxBxEHRux+uk8hxKpvEGAbTDnaEDltNXAnsGXk
-	LrB+QCm7jnpH1O45dt9GxjIkiEK4ZwKlgfBAw2Q0vVyYD5nMvFacRpB3EvrqB4YNztYRtwhMsSl
-	KSeKhiLBz+PhojlLUuev0YPTN868QBqq+/+aGCsUu0bcffALXE
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--2.764800-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 972F0991760AB7426964D2043339D7C12B4EC9A237A18656E5AA894AA95034802000:8
-X-MTK: N
+X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240611_043342_686827_3607D3D9 
-X-CRM114-Status: UNSURE (   8.75  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240611_043904_041293_96A6D5B9 
+X-CRM114-Status: GOOD (  11.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,35 +80,40 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Linux regressions mailing list <regressions@lists.linux.dev>, linux-kernel@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, linux-mediatek@lists.infradead.org, Frank Wunderlich <linux@fw-web.de>, Paolo Abeni <pabeni@redhat.com>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add maintain entry for GC05A2 image sensor
+On 11/06/2024 14:30, Thorsten Leemhuis wrote:
+> On 07.06.24 16:15, Thorsten Leemhuis wrote:
+>> On 07.06.24 16:03, Paolo Abeni wrote:
+>>> On Thu, 2024-06-06 at 10:26 +0200, Thorsten Leemhuis wrote:
+>>>> On 31.05.24 08:10, Arınç ÜNAL wrote:
+>>>>> On 31/05/2024 08.40, Thorsten Leemhuis wrote:
+>>>>>> [adding Paolo, who committed the culprit]
+>>>>
+>>>> /me slowly wonders if the culprit should be reverted for now (see below)
+>>>> and should be reapplied later together with the matching changes from
+>>>> Arınç ÜNAL.
+>>>
+>>> FWIS I think a revert should be avoided, given that a fix is available
+>>> and nicely small.
+>>
+>> Yeah, on one hand I agree; but on the other it seems that the
+>> maintainers that would have to take care of the dt changes to fix this
+>> until now remained silent in this thread, apart from Rob who sent the
+>> mail regarding the warnings.
+>>
+>> I put those maintainers in the To: field of this mail, maybe that might
+>> lead to some reaction.
+> 
+> Still no reply from the DRS folks or any other progress I noticed. Guess
+> that means I will soon have no other choice than to get Linus involved,
+> as this looks stuck. :-( #sigh
 
-Signed-off-by: Zhi Mao <zhi.mao@mediatek.com>
----
- MAINTAINERS | 7 +++++++
- 1 file changed, 7 insertions(+)
+Does it have to be Linus that needs to apply "[PATCH 0/2] Set PHY address
+of MT7531 switch to 0x1f on MediaTek arm64 boards"? Aren't there any other
+ARM maintainers that can apply the fix to their tree?
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 670b8201973b..81fb1dedb1bb 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -9123,6 +9123,13 @@ S:	Maintained
- F:	Documentation/devicetree/bindings/media/i2c/galaxycore,gc0308.yaml
- F:	drivers/media/i2c/gc0308.c
- 
-+GALAXYCORE GC05a2 CAMERA SENSOR DRIVER
-+M:	Zhi Mao <zhi.mao@mediatek.com>
-+L:	linux-media@vger.kernel.org
-+S:	Maintained
-+F:	Documentation/devicetree/bindings/media/i2c/galaxycore,gc05a2.yaml
-+F:	drivers/media/i2c/gc05a2.c
-+
- GALAXYCORE GC2145 SENSOR DRIVER
- M:	Alain Volmat <alain.volmat@foss.st.com>
- L:	linux-media@vger.kernel.org
--- 
-2.25.1
-
+Arınç
 
