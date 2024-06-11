@@ -4,87 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50044C25B76
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jun 2024 14:12:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 257EAC27C65
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jun 2024 17:22:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RGZsWMQxIR/8a9H8paH0XFiZvIlanvQPzCmlVbwusdU=; b=VXvxn8TC/VydjsPu54kQ5KKjcP
-	2K4lTigZpye3fXJhIRTb/iI7cYIlwew2zaw9BCFVJv0aLvT6cm1bNQwsbp/JGsp7FtKm6ZvX5Olhi
-	J6Yro6e8rv27B8Vgt9VSLvpxb49mv/9PSic/U7iSw+6MuO56iLd6ZGhB8TMZjjtwvdlS9MapTDAHn
-	nGvnfBkiFqV969C81WqQdPSzQW4iBvxPVgFXgOfPmRHHEdMCWOs83RjSRxvxzIQ8yJmCoDyu8fr8o
-	T5Vw2WDMxoZcJlN9hmXFGlChF9/Z+yBre7PVrYsN5XvtppTF/k6qX3/5zTYQvJ7wpOUdLF3NVCRY+
-	jplF8iTw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=jbzjBK29yPB8+QZYxG/DFsd36FLABiYwNRiHkKZQgK4=; b=KQm44PV49uBwLO
+	EXe1jY6wlhhZsXhZjp8GwwJZX2LEtUfREaUM6QHabRZBmR2OqCebYBzWwe1MqZUZNOVE082GcN936
+	aC7jkt1Goy9nkZ1IkZUbcjiY/2mB2m5BnMYx5moUNsCo3ZbRY9JSrEKdg+ebBSnrI8ynV03LvQhAZ
+	zI7ovxlk1MwjDab4c1aUJRWD7LpzrDYkQMO6LzfGsly1jPCJB7KbuVIeHgSQqx6eZNsErdHaK7LxM
+	nI72XkSaCtN4ei80EsSyzrxyQiqp0lo7WjC2DncoSfMFSMH5P/hu007+m87WUTncUuBtgN0uci3G/
+	n+b3SClPaMv45MwURu9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sH2F0-0000000970G-3zQf;
-	Tue, 11 Jun 2024 14:12:50 +0000
-Received: from mail-lj1-x236.google.com ([2a00:1450:4864:20::236])
+	id 1sH5C2-00000009ePG-3hlx;
+	Tue, 11 Jun 2024 17:21:58 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sH2Ex-000000096zP-2Bk1;
-	Tue, 11 Jun 2024 14:12:49 +0000
-Received: by mail-lj1-x236.google.com with SMTP id 38308e7fff4ca-2eaae2a6dc1so112571071fa.0;
-        Tue, 11 Jun 2024 07:12:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1718115165; x=1718719965; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=RGZsWMQxIR/8a9H8paH0XFiZvIlanvQPzCmlVbwusdU=;
-        b=XcmSrb5cem020o+EvztDW/7pX0CwXTQe+AM/JnOw9AMJToR2+WWvV5LvmA1P1Cx1HA
-         v6ymh+8rQqTv8zIM/UCdbCpNlFTMlNF0oVusAKDPQ0/XzTH75mvjFp7JLO7iB7KoDEDS
-         vPh0OKBY9UXm/9IqfIM9XfQz1qNmQlDapFQiT4XkYH4thROyh3/T6mCDGVDXJbcWm5aJ
-         +eg2TjCiycVL+918oTolITiEBgFv6VL93kHAirJKB96qMePfVNg35ZvQsGbfdLGFgsGp
-         g+XPqKyowWT4mGFyzBXm6ygFNdJ3Xx4xd1QLtMbKh7kcFFfSquRgCn2s1h14Dv2LVmpT
-         OJrg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1718115165; x=1718719965;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=RGZsWMQxIR/8a9H8paH0XFiZvIlanvQPzCmlVbwusdU=;
-        b=j1iZvUYz8nD4suPhqy102k550Zw31HlGJhEuVJwPIUfH1yhdjR8sQsIHnRRIDBj23y
-         mVHaaPpx8fkEbQkWkFrpBGJZ+OMz3IhBzpiySaQflGzUIJZdlS3l5GBvLa9FnCpucLQU
-         o1lbUpYtuq6kB625FfoBjtCl9LVbFXrcAWzJsd8v8jXI7DsRsdcUqbHYdbhSFcQ9JPBT
-         iPsCPOQHBjpBA9fHQAWxXcY4YzCJS6mNPgVJ9bLHCqmqE8y7EIj/NUH7uDezQVXItCMv
-         Xk12uo3o2PkKRYA6528q5asHFEarVFgN6o+/o8K3OvGViExTaMBOjgDcAaaOmbZEe7af
-         WsPg==
-X-Forwarded-Encrypted: i=1; AJvYcCWr6ppgni5hu5JYZlMKZFJQucuCEc4LpT/4zGBBNoMHMhBoHoCB5PrRF6sCTsZAQ7f9N9+owR8Sqb9SUCwsgif3kOB2dSv6/9o2zTdXXeSmOM6XdEvejivostUo2viuL5EevnQOxerulcUDnxg0Raiie9cYPeZSE0I=
-X-Gm-Message-State: AOJu0YxUQx2bDN3WNioBJddvlhonlvSOiu4I+dd5DvJiOsKlaZbW/ya/
-	R+rfs6g7s/nIVF8wLAuJA9jpDEwUDx/ZSqSU+11qwXG+N3aeDnPO
-X-Google-Smtp-Source: AGHT+IGuq4XXKdcSy2MRECTQb8OvnrexiaWWjJespHlYnvTZ0wLoCtN53WXIbcE0kkCOgg4nKbvssA==
-X-Received: by 2002:a2e:3612:0:b0:2eb:17fe:a144 with SMTP id 38308e7fff4ca-2eb17fea1c5mr62244931fa.34.1718115164779;
-        Tue, 11 Jun 2024 07:12:44 -0700 (PDT)
-Received: from ?IPV6:2a02:8389:41cf:e200:89c3:827b:2198:62f2? (2a02-8389-41cf-e200-89c3-827b-2198-62f2.cable.dynamic.v6.surfer.at. [2a02:8389:41cf:e200:89c3:827b:2198:62f2])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a6effb9cd7asm457716466b.208.2024.06.11.07.12.43
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 11 Jun 2024 07:12:44 -0700 (PDT)
-Message-ID: <233d56de-8d5d-4bad-a380-45321a2d86ac@gmail.com>
-Date: Tue, 11 Jun 2024 16:12:42 +0200
+	id 1sH5Bz-00000009eNV-1ete;
+	Tue, 11 Jun 2024 17:21:56 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 34B3761090;
+	Tue, 11 Jun 2024 17:21:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DAAB1C2BD10;
+	Tue, 11 Jun 2024 17:21:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1718126514;
+	bh=Al6HONR3WVVBrk0Upd3B3HzomVEKxemyrAHy7G9ejOA=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=Ca3NFRtd1Be+TG67Ym1YkrdBC58hIXQz0u6Ek04a2f3Qc9+Ft0yYHuDCFeHEZHjXN
+	 XTg4mtOTNpxNg6DO2x3oSwsBmoDl+Yq9n87/BL25urTqIGI68duEeKAOPDuul0b7cu
+	 M76+vU/rN6bWPVNvaAqZAsnbhnPS2DaeFyY+fZLjirdJUAdAv+D7bK2Mg2hBT0JSN6
+	 h5RUfeClfDIAi7MOJMY/AIqiv0zt3h7rNbxTOQe+XtTa6LksGo28+vHHsLTbYchuT0
+	 SCnrASccS4AzCUTIGPhwWfwaiK1JxfrFXgSYfmAYWiHJjs+WEbthHcqsD20gZw8g2j
+	 yt0dI+Oq1l8qg==
+Date: Tue, 11 Jun 2024 12:21:47 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Marc Zyngier <maz@kernel.org>
+Cc: Manivannan Sadhasivam <mani@kernel.org>,
+	Jianjun Wang <jianjun.wang@mediatek.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Ryder Lee <ryder.lee@mediatek.com>, linux-pci@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, jieyy.yang@mediatek.com,
+	chuanjia.liu@mediatek.com, qizhong.cheng@mediatek.com,
+	jian.yang@mediatek.com, jianguo.zhang@mediatek.com
+Subject: Re: [PATCH v2 1/3] PCI: mediatek: Allocate MSI address with
+ dmam_alloc_coherent()
+Message-ID: <20240611172147.GA990220@bhelgaas>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] leds: mt6360: fix memory leak in
- mt6360_init_isnk_properties()
-To: Markus Elfring <Markus.Elfring@web.de>, linux-leds@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- Angelo Gioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Lee Jones <lee@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Pavel Machek <pavel@ucw.cz>
-Cc: stable@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>,
- Jonathan Cameron <Jonathan.Cameron@huawei.com>
-References: <20240611-leds-mt6360-memleak-v1-1-93642eb5011e@gmail.com>
- <010b1c91-fbde-4b01-a92e-8c14751c7699@web.de>
-Content-Language: en-US, de-AT
-From: Javier Carrasco <javier.carrasco.cruz@gmail.com>
-In-Reply-To: <010b1c91-fbde-4b01-a92e-8c14751c7699@web.de>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <864ja2l2jd.wl-maz@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240611_071247_583354_CE83FAC5 
-X-CRM114-Status: GOOD (  11.72  )
+X-CRM114-CacheID: sfid-20240611_102155_499436_02F29152 
+X-CRM114-Status: GOOD (  17.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,31 +80,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11/06/2024 16:01, Markus Elfring wrote:
-> …
->> Add the missing calls to fwnode_handle_put(child) to avoid memory leaks
->> in the error paths.
+On Sun, Jun 09, 2024 at 01:32:38PM +0100, Marc Zyngier wrote:
+> On Sat, 08 Jun 2024 10:01:52 +0100,
+> Manivannan Sadhasivam <mani@kernel.org> wrote:
+> > 
+> > On Mon, Dec 11, 2023 at 04:52:54PM +0800, Jianjun Wang wrote:
+> > > Use dmam_alloc_coherent() to allocate the MSI address, instead of using
+> > > virt_to_phys().
+> > 
+> > What is the reason for this change? So now PCIE_MSI_VECTOR becomes unused?
 > 
-> I suggest to apply a goto chain for a while.
-> https://wiki.sei.cmu.edu/confluence/display/c/MEM12-C.+Consider+using+a+goto+chain+when+leaving+a+function+on+error+when+using+and+releasing+resources
+> More importantly, this is yet another example of the DW reference
+> driver nonsense, where memory is allocated for *MSI*, while the whole
+> point of MSIs is that it is a write that doesn't target memory, making
+> any form of RAM allocation absolutely pointless.
 > 
-> Will the application of scope-based resource management become feasible with another delay?
-> https://elixir.bootlin.com/linux/v6.10-rc3/source/include/linux/cleanup.h#L8
+> This silly approach has been cargo-culted for years, and while I
+> caught a few in my time, you can't beat copy-paste.
 > 
-> Regards,
-> Markus
+> IMO, this patch is only making things worse instead of fixing things.
 
-I considered that option too, but there is still no _scoped() variant of
-the loop. The scoped version of the _available_ variant is being
-discussed, though. Maybe that one could be used here if there is no need
-to iterate over unavailable nodes.
+Probably partly my fault.  I think there are two pieces here:
 
-We could not back port that solution anyway, so I would suggest this
-solution (or the one with a goto), and then a separate patch to used a
-scoped macro if preferred.
+  1) allocating the MSI address
+  2) computing the PCI bus address
 
-Best regards,
-Javier Carrasco
-
-
+I don't know how to do 1), but I do encourage people not to use
+virt_to_phys() for 2), since (in general) CPU physical addresses are
+not the same as PCI bus addresses.
 
