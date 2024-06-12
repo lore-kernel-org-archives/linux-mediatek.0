@@ -4,64 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9547CC27C53
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jun 2024 09:24:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B691BC27C75
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jun 2024 09:24:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=gTijVW/c0PheiETrLzEjcgWKlXvandGPfKwnTsYZzSY=; b=3/P2sk2CEvbtWuJZKOYtMJYuSK
-	hpxYJ4J1sifeH+q2Oia56kLIJFlmWRt/EOr+IsPCPIrR0nAkpsG8Q8SdwfdV4bxKG9TNY65cV8cGH
-	MQoQw+wMPPu7l1PLRjw/C6lake/JDED1wzsNcNZAD8rb6cKIed4KkzuNv6jYrAugeSwBZ52f3cDoI
-	MNJKhCi6V2v0hUx+1fewMR7wFrSbzNpy1cgPxHcpn0wiEGTQrBXnwk4k0Gi5TVY/SfJs+LBcprOFe
-	N85ErUam0gbXAC80HIU7o+hKXYh+vM+SOR8AhLedG4wGm3TlgN/Ien/mS7+8hniflVLEWb89GPoU5
-	2RSorbIA==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NVq/XPrdWmMMBpDrtjBL0lbuC27j39fwjqCGgq7/OIc=; b=W2/KieAoCjCWT1T2WTFNQjq6KR
+	uEkXGuSSHxkPccbhlmhhjKAuvb4Vf9Ja6IcXsJU+FKrC0MTEzlk0bNCFwt5AIe49V1avz9Py/ZAKM
+	iAPY8yOr+NT/gmOGdisqhtssvk28xEH3ZzcrOdPqAxY7CblF4OvJBwlq9sepJ3S4k5hbPiF3InSXu
+	jAM5eNVgVTNUN5HtnU/B4noF0oPg77vOPxCQePBTsU+jIhVVtbJkg5VjDSt/Jahv7vHqPoY58t9tp
+	kRGM7AD8hkU2j6cj/1jvWGMMIq36Pb6DHmZVPfxLsAL0522xfr64sS/yyAB+vL9ID0Y22wrhGszrL
+	VZtyLaPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sHKDX-0000000Bxik-1KCO;
-	Wed, 12 Jun 2024 09:24:31 +0000
+	id 1sHKDa-0000000BxkU-10jl;
+	Wed, 12 Jun 2024 09:24:34 +0000
 Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sHKDU-0000000Bxgn-1pfB
+	id 1sHKDV-0000000Bxh2-1Ivd
 	for linux-mediatek@lists.infradead.org;
-	Wed, 12 Jun 2024 09:24:30 +0000
-Received: by mail-lf1-x130.google.com with SMTP id 2adb3069b0e04-52bc274f438so2785618e87.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 12 Jun 2024 02:24:27 -0700 (PDT)
+	Wed, 12 Jun 2024 09:24:31 +0000
+Received: by mail-lf1-x130.google.com with SMTP id 2adb3069b0e04-52bc3130ae6so5081848e87.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 12 Jun 2024 02:24:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1718184266; x=1718789066; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=gTijVW/c0PheiETrLzEjcgWKlXvandGPfKwnTsYZzSY=;
-        b=zMtkyyguvnvr7W/p1hooR9a0qKfHIzKdAT26E7vu8etdFafvRut0ZQVa0mJyEqG3gs
-         psWc0jwxJgVWq5m/fDVeofVRwO0hOLQtMbkRje/8FPCZlrlLnmip8/pB5gqIY9IaWJsp
-         FdLfCguorgx72dOms6OosZylcVSell0wdofOX+nXLVkUptuTAgwvXgzj3syaJQgC/PqG
-         uUdOgQ/mnoC//C3cyI5yytSNjaFrT3ZqtL6qjtLDl3TUCRff6hPlslOTVmKLUNJRU3HI
-         ocR2fWxC0cpUwHxwsyd7OEYdoZnEd/kNKLWH6YzrgBno6nmymGoG+kNFy1inZERvNPX0
-         qQJw==
+        d=linaro.org; s=google; t=1718184268; x=1718789068; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=NVq/XPrdWmMMBpDrtjBL0lbuC27j39fwjqCGgq7/OIc=;
+        b=Ym+l2+XqIyK+mIrWR3N+tEnpq+rZsQ/AOheAGF6uthSIHSZ5RG+HcRtuBaud0VOlYW
+         s73/TeZhxy8BD5jtBRoUfERkXt+N6byodM8l5CflidyhnNBZn33e6jiwjqkK7Sl3zp47
+         xOBTqipmyOmZSxmF9/guxg8YjAOxMSIRXGuCotRKFaE7wonOv3AnSlt3hND9vsqI0GrG
+         AGdVEnSur+bDsuhfDk+i4xpYUxYES0TjFckTdJwIeKB7c1PNtaITZjG26MMERG90BnYD
+         zRcUyB/V34W7D2I5VMqyir/yLWSF+tI+WeqDb7WRN3oCwZw2iVuhEc1ksqI8xpnwOlTi
+         czKw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1718184266; x=1718789066;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=gTijVW/c0PheiETrLzEjcgWKlXvandGPfKwnTsYZzSY=;
-        b=fL/SwcN2wABP0eJtZ99u8cCnI2j3WeE4eWlIT8PnZ619Okrf1k2qrcZ3UR5sOCT0+C
-         +WWP9XlbqNLo4ZYq0JPvIbuyqdQn1gu1GQnD1BvUpaaQREgrW0X8JnC31D5QPLsI5TUu
-         XtM36AKEIsr7fmNIvtgTFu9Hz6PnkjVMmBg5aTX+Ms+jKgTX9uxFwtgNrB0womd1BYva
-         ecd8+YuZkPC+XCRPQrYoOPGhEAZ5aVE4OBZ7W1BHgA7lCjO+3163eVEwu0jyr6ytTVHZ
-         HCY14Tf+L1Emfogrc+e2G/n+YPYx4wCAt2U3lgDXSHIBrjzFPvKSeFtVuBb7lRSmklBh
-         0IIg==
-X-Forwarded-Encrypted: i=1; AJvYcCVCnX3uoYAvUCLt7rI4qGluzU8eIxAt6eWQKRcRxoRKai934K5hYbsKeuhKUypvWQvQ7MsOOGJqOabSI+F+O/oQMbVwZc0Sw2Dz5vPOvvZDTaDe
-X-Gm-Message-State: AOJu0YxzGFMjKAVWrwbzN9xhW6DFtQhFM03i/theECr9/R14Ca0WlljB
-	/5jj2SUypQswVZCwCsTnU9i+DHfzSfrX65AVdGB9Taiov0i/0docmbcwuplg01s=
-X-Google-Smtp-Source: AGHT+IFqaCEnIiWKhTWBfjOSEjjiN9fP7XZI9ln5o7b24/sAj4EADCaVdyrAYctm8l1H4IcbPLFHgg==
-X-Received: by 2002:a05:6512:1245:b0:52c:95d1:87ae with SMTP id 2adb3069b0e04-52c9a3b7bffmr1099334e87.12.1718184265932;
-        Wed, 12 Jun 2024 02:24:25 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1718184268; x=1718789068;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=NVq/XPrdWmMMBpDrtjBL0lbuC27j39fwjqCGgq7/OIc=;
+        b=cyT2qbnl//m0poJQiu6nd5t5jRygNiMi6raozipC5kk6SAl8CbtOP4CuU+D2Yx+kus
+         H+0GFdh1kXaqmKzJXSBBmfmFds0S+GX7L6ROwlrSj21vpY6IC95q+saVw6zHAA4lxDYe
+         C5xfQaWAo0/vwT7zpkgNlOFPtx5KVak06SY06NBV9Z/dHttjPwwkWgiWsU7KE0SrF6+C
+         POEV4QiSIIM7afOPH/zSwqwPA9dwAI6/7bZtWnFYOQ3UlADJGVqg9BpPGM0hPRjiF3mb
+         PVH81jejOJdDOUg2RDkHNE3bhkRkwKNA4SclXGMO26JqL8IqX8TRvGJHz6U9pskaljQ/
+         mDdg==
+X-Forwarded-Encrypted: i=1; AJvYcCUzjZSdlFnpukoouAciURkfEuHEHtjqv5e84VBHu/M3duZTH1qslFTfZsnLumyQAIV6q4h04ZITe+Ssqv2g7ZHkKlo0kLAEuNVFAh8Uf3cM9btt
+X-Gm-Message-State: AOJu0YwZvVOE+RIWax/S4uy4oSccmWz5Ahz7akoNIQ2HUQY/LKiVOm13
+	0reCziAqYDset1qChFes0v7K59D4jvsf1a3oFyK4Wu72IV7IjJDWKqGHakNDybw=
+X-Google-Smtp-Source: AGHT+IEfFP6e6pTW+1khTsjjkkVQ9dhYQOSP5hhhyY4gGwO6/jsKLIdG1CzNbeFE/N/FoWTmcrjwPw==
+X-Received: by 2002:a05:6512:401c:b0:52c:910b:9c87 with SMTP id 2adb3069b0e04-52c9a3df0f2mr896236e87.36.1718184267973;
+        Wed, 12 Jun 2024 02:24:27 -0700 (PDT)
 Received: from krzk-bin.. ([178.197.219.137])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-52c82faf1b7sm1623806e87.130.2024.06.12.02.24.23
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-52c82faf1b7sm1623806e87.130.2024.06.12.02.24.26
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 12 Jun 2024 02:24:25 -0700 (PDT)
+        Wed, 12 Jun 2024 02:24:27 -0700 (PDT)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 To: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -72,17 +73,19 @@ To: Rob Herring <robh@kernel.org>,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH v2 1/3] arm64: dts: mediatek: mt8365: drop incorrect power-domain-cells
-Date: Wed, 12 Jun 2024 11:24:19 +0200
-Message-ID: <20240612092421.52917-1-krzysztof.kozlowski@linaro.org>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Alexandre Mergnat <amergnat@baylibre.com>
+Subject: [PATCH v2 2/3] arm64: dts: mediatek: mt8365: use a specific SCPSYS compatible
+Date: Wed, 12 Jun 2024 11:24:20 +0200
+Message-ID: <20240612092421.52917-2-krzysztof.kozlowski@linaro.org>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20240612092421.52917-1-krzysztof.kozlowski@linaro.org>
+References: <20240612092421.52917-1-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240612_022428_507171_5C22547D 
-X-CRM114-Status: UNSURE (   9.18  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240612_022429_370803_0938E68E 
+X-CRM114-Status: GOOD (  11.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,31 +100,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The top SCPSYS node is not a power domain provider.  It's child
-"power-controller" is instead.
+SoCs should use dedicated compatibles for each of their syscon nodes to
+precisely describe the block.  Using an incorrect compatible does not
+allow to properly match/validate children of the syscon device.  Replace
+SYSCFG compatible, which does not have children, with a new dedicated
+one for SCPSYS block.
 
+Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
+Tested-by: Alexandre Mergnat <amergnat@baylibre.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 ---
 
 Changes in v2:
-1. Reverse patches.
+1. Tags
 ---
- arch/arm64/boot/dts/mediatek/mt8365.dtsi | 1 -
- 1 file changed, 1 deletion(-)
+ arch/arm64/boot/dts/mediatek/mt8365.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt8365.dtsi b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-index 24581f7410aa..455c2ae3b30a 100644
+index 455c2ae3b30a..eb449bfa8803 100644
 --- a/arch/arm64/boot/dts/mediatek/mt8365.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-@@ -302,7 +302,6 @@ syscfg_pctl: syscfg-pctl@10005000 {
+@@ -300,7 +300,7 @@ syscfg_pctl: syscfg-pctl@10005000 {
+ 		};
+ 
  		scpsys: syscon@10006000 {
- 			compatible = "mediatek,mt8365-syscfg", "syscon", "simple-mfd";
+-			compatible = "mediatek,mt8365-syscfg", "syscon", "simple-mfd";
++			compatible = "mediatek,mt8365-scpsys", "syscon", "simple-mfd";
  			reg = <0 0x10006000 0 0x1000>;
--			#power-domain-cells = <1>;
  
  			/* System Power Manager */
- 			spm: power-controller {
 -- 
 2.43.0
 
