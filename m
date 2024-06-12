@@ -4,83 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67F95C27C53
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jun 2024 06:57:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A7C6C27C53
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jun 2024 07:07:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gEv8hIv0jiN5KvpcvvZmNHTc/wxWXsC6DGskxm6q5rk=; b=mXaBgjDH1p1t3G8m2FHdWFn94u
-	1DBEgHHzBx7tIIFtDZbDZPqeE4ZbJQPQJouavQl+PAl2yBSicYuAyRsGuDkEZcrL7dd14wpxu3+2D
-	eZs+ORkDeozKV/m5vN97+U8n2YXPRpwT90I7y7UNyKh3Gp3F7zcUGdWV54P4mTkebbcZQkw7am4Nu
-	86f6K1n/xq1sh69dSOTr48RyUnQqDMG3rCksmXR7DYMjq5BWnoJYrsWYTyxb7Hhq0bBhcOR9getfK
-	fu2GdrB6uIP4urebtlEuX3vWMFVnAZPLqFI5jVAtFccn4+8Deq4gYLso328klPvjVBc7btlN0p+Tr
-	OpN4LTwQ==;
+	bh=M5VVD9ISfE/JT6T3Z/XnBrKRICtrkpW74WanhK/TTOw=; b=VBcxEL4jdpa6QYT8cUUsqFo5li
+	7C5qUuOEE/nZYFHTJyv63hguB80xrd3/j5STY6+vHUJ5uq9qftvULS1AsdEJXk1ek5bXyTFR97QUu
+	HU9igrRWeAFRoYP83pRTt6X4TfBOAlKA2e43lFkbsOnlxeGYmsvdPputRXxx/ucLNGmye0SXo5UIi
+	SrgWE3rXl5BjCWBuCklqSswflxeHg8kx0SEgtfRZSrK/l7v2YrCZlOKz1QFxtiL5QIXql8CaJ+099
+	rp+I3rrJWXKLUlHgXKdiYLjzIPgHsWD51xfJ7GpdbdLUawiEgWaU4whwUGe5f5Gyurt5qi65SAs1u
+	8d5CUjCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sHHul-0000000BKIU-43rv;
-	Wed, 12 Jun 2024 06:56:59 +0000
+	id 1sHI5J-0000000BMhz-1gQV;
+	Wed, 12 Jun 2024 07:07:53 +0000
 Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sHHuW-0000000BK90-27Ji;
-	Wed, 12 Jun 2024 06:56:46 +0000
+	id 1sHI5E-0000000BMfu-1NfV;
+	Wed, 12 Jun 2024 07:07:50 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1718175403;
-	bh=SkIftQirDdLlyxmCDt5htuLPjcMwEi5kzUdi13oBLd8=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=ceVuqgwRF7oGSa7XW+MN4G6MN4pNght+XEi/CkQSlF1A2sZD4OEqU2boimzM2eKFK
-	 pwDcKPN3p9B11f85R62mYHGmEUp+OBqDkAY/qUeshOx83UezDZO1tQVk/2z1utZpr1
-	 1rkH7MhJZXKQHOqOdy7E9a4PQIMcJ3Hqj47k7DYIoYgMquYJbPqRl+nGXTk919DEn8
-	 zlqxijDPpwGwH4zfmi2Yg7Yk8mpa0R/2pU0ge6u2xnhXxABjKKfUK8wUQQ4U4DiDtr
-	 GVkS+xuOiaowm3o4/Qoy/pRqnF5YEA3g1Mq1c1KgJAfdSiKmCQOViXsYXT9tBh5cLz
-	 qIlDAtoly7deg==
-Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	s=mail; t=1718176066;
+	bh=0FgsU6j7T4RtfSQxL6glhcvtiU7T8QVoGJB2s91r5tw=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=QqI6QVlxLv+L7Nq4DGysBlxuKtnkM9NyEjNvt6a3A4Ma35OYUrmlDir87kYqgM9IV
+	 kLAo9rkMWM21cae7H45qOu4Iah0Lcau7f8/GMZPrzNauQBGoCP7D/8CgCTUNLKaoYD
+	 o+3TAvEJOC68JZsobWQFAmC/TsmNssngNDwVFtA734TZlhTX2nOkcIeLA8GL2N6X/C
+	 QPQ06B7ipzSV20boeII+fxzwHqr4S9K2SzPl1rVZ6CX1lM2/u3/Spj4UlIk9c9Kvks
+	 +Sbdh1gIc2xL1ZV19aKOYner0i/8kP+ITUFTXynykTaSboEa9k0ErEW4usGxYReurP
+	 CxGu8Ku0hC+0w==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id DC148378219F;
-	Wed, 12 Jun 2024 06:56:41 +0000 (UTC)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: chunkuang.hu@kernel.org
-Cc: robh@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	conor+dt@kernel.org,
-	p.zabel@pengutronix.de,
-	airlied@gmail.com,
-	daniel@ffwll.ch,
-	maarten.lankhorst@linux.intel.com,
-	mripard@kernel.org,
-	tzimmermann@suse.de,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	shawn.sung@mediatek.com,
-	yu-chang.lee@mediatek.com,
-	ck.hu@mediatek.com,
-	jitao.shi@mediatek.com,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	wenst@chromium.org,
-	kernel@collabora.com,
-	sui.jinfeng@linux.dev,
-	michael@walle.cc,
-	Alexandre Mergnat <amergnat@baylibre.com>
-Subject: [PATCH v7 3/3] drm/mediatek: Implement OF graphs support for display paths
-Date: Wed, 12 Jun 2024 08:56:34 +0200
-Message-ID: <20240612065634.26569-4-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20240612065634.26569-1-angelogioacchino.delregno@collabora.com>
-References: <20240612065634.26569-1-angelogioacchino.delregno@collabora.com>
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id F33583780016;
+	Wed, 12 Jun 2024 07:07:44 +0000 (UTC)
+Message-ID: <7c71534f-9815-4ea3-969f-c04d249d35d2@collabora.com>
+Date: Wed, 12 Jun 2024 09:07:44 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 2/3] media: i2c: Add GT97xx VCM driver
+To: Zhi Mao <zhi.mao@mediatek.com>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
+ Heiko Stuebner <heiko@sntech.de>, Sakari Ailus
+ <sakari.ailus@linux.intel.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Hans de Goede <hdegoede@redhat.com>,
+ Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
+ Alain Volmat <alain.volmat@foss.st.com>,
+ Paul Elder <paul.elder@ideasonboard.com>,
+ Mehdi Djait <mehdi.djait@bootlin.com>,
+ Andy Shevchenko <andy.shevchenko@gmail.com>,
+ Bingbu Cao <bingbu.cao@intel.com>, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ shengnan.wang@mediatek.com, yaya.chang@mediatek.com, yunkec@chromium.org,
+ 10572168@qq.com
+References: <20240612012019.19078-1-zhi.mao@mediatek.com>
+ <20240612012019.19078-3-zhi.mao@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20240612012019.19078-3-zhi.mao@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240611_235644_847809_FDFA622E 
-X-CRM114-Status: GOOD (  38.74  )
+X-CRM114-CacheID: sfid-20240612_000748_783410_72C85F5A 
+X-CRM114-Status: GOOD (  30.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,551 +91,506 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-It is impossible to add each and every possible DDP path combination
-for each and every possible combination of SoC and board: right now,
-this driver hardcodes configuration for 10 SoCs and this is going to
-grow larger and larger, and with new hacks like the introduction of
-mtk_drm_route which is anyway not enough for all final routes as the
-DSI cannot be connected to MERGE if it's not a dual-DSI, or enabling
-DSC preventively doesn't work if the display doesn't support it, or
-others.
+Il 12/06/24 03:20, Zhi Mao ha scritto:
+> Add a V4L2 sub-device driver for Giantec GT97xx VCM.
+> 
+> Signed-off-by: Zhi Mao <zhi.mao@mediatek.com>
 
-Since practically all display IPs in MediaTek SoCs support being
-interconnected with different instances of other, or the same, IPs
-or with different IPs and in different combinations, the final DDP
-pipeline is effectively a board specific configuration.
+Hello Zhi,
 
-Implement OF graphs support to the mediatek-drm drivers, allowing to
-stop hardcoding the paths, and preventing this driver to get a huge
-amount of arrays for each board and SoC combination, also paving the
-way to share the same mtk_mmsys_driver_data between multiple SoCs,
-making it more straightforward to add support for new chips.
+I fail to see why would you need to upstream this new driver instead of
+simply adding the IC_INFO_REG to the already existing (and more featureful)
+dw9768 driver, which also seems to support the Giantec GT9769 VCM.
 
-Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
-Tested-by: Alexandre Mergnat <amergnat@baylibre.com>
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/gpu/drm/mediatek/mtk_disp_drv.h       |   1 +
- .../gpu/drm/mediatek/mtk_disp_ovl_adaptor.c   |  40 ++-
- drivers/gpu/drm/mediatek/mtk_dpi.c            |  21 +-
- drivers/gpu/drm/mediatek/mtk_drm_drv.c        | 301 ++++++++++++++++--
- drivers/gpu/drm/mediatek/mtk_drm_drv.h        |   2 +-
- drivers/gpu/drm/mediatek/mtk_dsi.c            |  14 +-
- 6 files changed, 341 insertions(+), 38 deletions(-)
+Cheers,
+Angelo
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-index 082ac18fe04a..94843974851f 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-@@ -108,6 +108,7 @@ size_t mtk_ovl_get_num_formats(struct device *dev);
- 
- void mtk_ovl_adaptor_add_comp(struct device *dev, struct mtk_mutex *mutex);
- void mtk_ovl_adaptor_remove_comp(struct device *dev, struct mtk_mutex *mutex);
-+bool mtk_ovl_adaptor_is_comp_present(struct device_node *node);
- void mtk_ovl_adaptor_connect(struct device *dev, struct device *mmsys_dev,
- 			     unsigned int next);
- void mtk_ovl_adaptor_disconnect(struct device *dev, struct device *mmsys_dev,
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
-index 02dd7dcdfedb..400519d1ca1f 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
-@@ -491,6 +491,38 @@ static int compare_of(struct device *dev, void *data)
- 	return dev->of_node == data;
- }
- 
-+static int ovl_adaptor_of_get_ddp_comp_type(struct device_node *node,
-+					    enum mtk_ovl_adaptor_comp_type *ctype)
-+{
-+	const struct of_device_id *of_id = of_match_node(mtk_ovl_adaptor_comp_dt_ids, node);
-+
-+	if (!of_id)
-+		return -EINVAL;
-+
-+	*ctype = (enum mtk_ovl_adaptor_comp_type)((uintptr_t)of_id->data);
-+
-+	return 0;
-+}
-+
-+bool mtk_ovl_adaptor_is_comp_present(struct device_node *node)
-+{
-+	enum mtk_ovl_adaptor_comp_type type;
-+	int ret;
-+
-+	ret = ovl_adaptor_of_get_ddp_comp_type(node, &type);
-+	if (ret)
-+		return false;
-+
-+	if (type >= OVL_ADAPTOR_TYPE_NUM)
-+		return false;
-+
-+	/*
-+	 * ETHDR and Padding are used exclusively in OVL Adaptor: if this
-+	 * component is not one of those, it's likely not an OVL Adaptor path.
-+	 */
-+	return type == OVL_ADAPTOR_TYPE_ETHDR || type == OVL_ADAPTOR_TYPE_PADDING;
-+}
-+
- static int ovl_adaptor_comp_init(struct device *dev, struct component_match **match)
- {
- 	struct mtk_disp_ovl_adaptor *priv = dev_get_drvdata(dev);
-@@ -500,12 +532,11 @@ static int ovl_adaptor_comp_init(struct device *dev, struct component_match **ma
- 	parent = dev->parent->parent->of_node->parent;
- 
- 	for_each_child_of_node(parent, node) {
--		const struct of_device_id *of_id;
- 		enum mtk_ovl_adaptor_comp_type type;
--		int id;
-+		int id, ret;
- 
--		of_id = of_match_node(mtk_ovl_adaptor_comp_dt_ids, node);
--		if (!of_id)
-+		ret = ovl_adaptor_of_get_ddp_comp_type(node, &type);
-+		if (ret)
- 			continue;
- 
- 		if (!of_device_is_available(node)) {
-@@ -514,7 +545,6 @@ static int ovl_adaptor_comp_init(struct device *dev, struct component_match **ma
- 			continue;
- 		}
- 
--		type = (enum mtk_ovl_adaptor_comp_type)(uintptr_t)of_id->data;
- 		id = ovl_adaptor_comp_get_id(dev, node, type);
- 		if (id < 0) {
- 			dev_warn(dev, "Skipping unknown component %pOF\n",
-diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-index bfe8653005db..966716ec26c8 100644
---- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-@@ -704,6 +704,20 @@ static int mtk_dpi_bridge_attach(struct drm_bridge *bridge,
- 				 enum drm_bridge_attach_flags flags)
- {
- 	struct mtk_dpi *dpi = bridge_to_dpi(bridge);
-+	int ret;
-+
-+	dpi->next_bridge = devm_drm_of_get_bridge(dpi->dev, dpi->dev->of_node, 1, -1);
-+	if (IS_ERR(dpi->next_bridge)) {
-+		ret = PTR_ERR(dpi->next_bridge);
-+		if (ret == -EPROBE_DEFER)
-+			return ret;
-+
-+		/* Old devicetree has only one endpoint */
-+		dpi->next_bridge = devm_drm_of_get_bridge(dpi->dev, dpi->dev->of_node, 0, 0);
-+		if (IS_ERR(dpi->next_bridge))
-+			return dev_err_probe(dpi->dev, PTR_ERR(dpi->next_bridge),
-+					     "Failed to get bridge\n");
-+	}
- 
- 	return drm_bridge_attach(bridge->encoder, dpi->next_bridge,
- 				 &dpi->bridge, flags);
-@@ -1055,13 +1069,6 @@ static int mtk_dpi_probe(struct platform_device *pdev)
- 	if (dpi->irq < 0)
- 		return dpi->irq;
- 
--	dpi->next_bridge = devm_drm_of_get_bridge(dev, dev->of_node, 0, 0);
--	if (IS_ERR(dpi->next_bridge))
--		return dev_err_probe(dev, PTR_ERR(dpi->next_bridge),
--				     "Failed to get bridge\n");
--
--	dev_info(dev, "Found bridge node: %pOF\n", dpi->next_bridge->of_node);
--
- 	platform_set_drvdata(pdev, dpi);
- 
- 	dpi->bridge.funcs = &mtk_dpi_bridge_funcs;
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index b5f605751b0a..ae148093fcdc 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -26,6 +26,7 @@
- 
- #include "mtk_crtc.h"
- #include "mtk_ddp_comp.h"
-+#include "mtk_disp_drv.h"
- #include "mtk_drm_drv.h"
- #include "mtk_gem.h"
- 
-@@ -798,12 +799,245 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
- 	{ }
- };
- 
-+static int mtk_drm_of_get_ddp_comp_type(struct device_node *node, enum mtk_ddp_comp_type *ctype)
-+{
-+	const struct of_device_id *of_id = of_match_node(mtk_ddp_comp_dt_ids, node);
-+
-+	if (!of_id)
-+		return -EINVAL;
-+
-+	*ctype = (enum mtk_ddp_comp_type)((uintptr_t)of_id->data);
-+
-+	return 0;
-+}
-+
-+static int mtk_drm_of_get_ddp_ep_cid(struct device_node *node,
-+				     int output_port, enum mtk_crtc_path crtc_path,
-+				     struct device_node **next, unsigned int *cid)
-+{
-+	struct device_node *ep_dev_node, *ep_out;
-+	enum mtk_ddp_comp_type comp_type;
-+	int ret;
-+
-+	ep_out = of_graph_get_endpoint_by_regs(node, output_port, crtc_path);
-+	if (!ep_out)
-+		return -ENOENT;
-+
-+	ep_dev_node = of_graph_get_remote_port_parent(ep_out);
-+	of_node_put(ep_out);
-+	if (!ep_dev_node)
-+		return -EINVAL;
-+
-+	/*
-+	 * Pass the next node pointer regardless of failures in the later code
-+	 * so that if this function is called in a loop it will walk through all
-+	 * of the subsequent endpoints anyway.
-+	 */
-+	*next = ep_dev_node;
-+
-+	if (!of_device_is_available(ep_dev_node))
-+		return -ENODEV;
-+
-+	ret = mtk_drm_of_get_ddp_comp_type(ep_dev_node, &comp_type);
-+	if (ret) {
-+		if (mtk_ovl_adaptor_is_comp_present(ep_dev_node)) {
-+			*cid = (unsigned int)DDP_COMPONENT_DRM_OVL_ADAPTOR;
-+			return 0;
-+		}
-+		return ret;
-+	}
-+
-+	ret = mtk_ddp_comp_get_id(ep_dev_node, comp_type);
-+	if (ret < 0)
-+		return ret;
-+
-+	/* All ok! Pass the Component ID to the caller. */
-+	*cid = (unsigned int)ret;
-+
-+	return 0;
-+}
-+
-+/**
-+ * mtk_drm_of_ddp_path_build_one - Build a Display HW Pipeline for a CRTC Path
-+ * @dev:          The mediatek-drm device
-+ * @cpath:        CRTC Path relative to a VDO or MMSYS
-+ * @out_path:     Pointer to an array that will contain the new pipeline
-+ * @out_path_len: Number of entries in the pipeline array
-+ *
-+ * MediaTek SoCs can use different DDP hardware pipelines (or paths) depending
-+ * on the board-specific desired display configuration; this function walks
-+ * through all of the output endpoints starting from a VDO or MMSYS hardware
-+ * instance and builds the right pipeline as specified in device trees.
-+ *
-+ * Return:
-+ * * %0       - Display HW Pipeline successfully built and validated
-+ * * %-ENOENT - Display pipeline was not specified in device tree
-+ * * %-EINVAL - Display pipeline built but validation failed
-+ * * %-ENOMEM - Failure to allocate pipeline array to pass to the caller
-+ */
-+static int mtk_drm_of_ddp_path_build_one(struct device *dev, enum mtk_crtc_path cpath,
-+					 const unsigned int **out_path,
-+					 unsigned int *out_path_len)
-+{
-+	struct device_node *next, *prev, *vdo = dev->parent->of_node;
-+	unsigned int temp_path[DDP_COMPONENT_DRM_ID_MAX] = { 0 };
-+	unsigned int *final_ddp_path;
-+	unsigned short int idx = 0;
-+	bool ovl_adaptor_comp_added = false;
-+	int ret;
-+
-+	/* Get the first entry for the temp_path array */
-+	ret = mtk_drm_of_get_ddp_ep_cid(vdo, 0, cpath, &next, &temp_path[idx]);
-+	if (ret) {
-+		if (next && temp_path[idx] == DDP_COMPONENT_DRM_OVL_ADAPTOR) {
-+			dev_err(dev, "Adding OVL Adaptor for %pOF\n", next);
-+			ovl_adaptor_comp_added = true;
-+		} else {
-+			if (next)
-+				dev_err(dev, "Invalid component %pOF\n", next);
-+			else
-+				dev_err(dev, "Cannot find first endpoint for path %d\n", cpath);
-+
-+			return ret;
-+		}
-+	}
-+	idx++;
-+
-+	/*
-+	 * Walk through port outputs until we reach the last valid mediatek-drm component.
-+	 * To be valid, this must end with an "invalid" component that is a display node.
-+	 */
-+	do {
-+		prev = next;
-+		ret = mtk_drm_of_get_ddp_ep_cid(next, 1, cpath, &next, &temp_path[idx]);
-+		of_node_put(prev);
-+		if (ret) {
-+			of_node_put(next);
-+			break;
-+		}
-+
-+		/*
-+		 * If this is an OVL adaptor exclusive component and one of those
-+		 * was already added, don't add another instance of the generic
-+		 * DDP_COMPONENT_OVL_ADAPTOR, as this is used only to decide whether
-+		 * to probe that component master driver of which only one instance
-+		 * is needed and possible.
-+		 */
-+		if (temp_path[idx] == DDP_COMPONENT_DRM_OVL_ADAPTOR) {
-+			if (!ovl_adaptor_comp_added)
-+				ovl_adaptor_comp_added = true;
-+			else
-+				idx--;
-+		}
-+	} while (++idx < DDP_COMPONENT_DRM_ID_MAX);
-+
-+	/*
-+	 * The device component might not be disabled: in that case, don't
-+	 * check the last entry and just report that the device is missing.
-+	 */
-+	if (ret == -ENODEV)
-+		return ret;
-+
-+	/* If the last entry is not a final display output, the configuration is wrong */
-+	switch (temp_path[idx - 1]) {
-+	case DDP_COMPONENT_DP_INTF0:
-+	case DDP_COMPONENT_DP_INTF1:
-+	case DDP_COMPONENT_DPI0:
-+	case DDP_COMPONENT_DPI1:
-+	case DDP_COMPONENT_DSI0:
-+	case DDP_COMPONENT_DSI1:
-+	case DDP_COMPONENT_DSI2:
-+	case DDP_COMPONENT_DSI3:
-+		break;
-+	default:
-+		dev_err(dev, "Invalid display hw pipeline. Last component: %d (ret=%d)\n",
-+			temp_path[idx - 1], ret);
-+		return -EINVAL;
-+	}
-+
-+	final_ddp_path = devm_kmemdup(dev, temp_path, idx * sizeof(temp_path[0]), GFP_KERNEL);
-+	if (!final_ddp_path)
-+		return -ENOMEM;
-+
-+	dev_dbg(dev, "Display HW Pipeline built with %d components.\n", idx);
-+
-+	/* Pipeline built! */
-+	*out_path = final_ddp_path;
-+	*out_path_len = idx;
-+
-+	return 0;
-+}
-+
-+static int mtk_drm_of_ddp_path_build(struct device *dev, struct device_node *node,
-+				     struct mtk_mmsys_driver_data *data)
-+{
-+	struct device_node *ep_node;
-+	struct of_endpoint of_ep;
-+	bool output_present[MAX_CRTC] = { false };
-+	bool valid_output_found = false;
-+	int ret;
-+
-+	for_each_endpoint_of_node(node, ep_node) {
-+		ret = of_graph_parse_endpoint(ep_node, &of_ep);
-+		if (ret) {
-+			dev_err_probe(dev, ret, "Cannot parse endpoint\n");
-+			break;
-+		}
-+
-+		if (of_ep.id >= MAX_CRTC) {
-+			ret = dev_err_probe(dev, -EINVAL,
-+					    "Invalid endpoint%u number\n", of_ep.port);
-+			break;
-+		}
-+
-+		output_present[of_ep.id] = true;
-+	}
-+
-+	if (ret) {
-+		of_node_put(ep_node);
-+		return ret;
-+	}
-+
-+	if (output_present[CRTC_MAIN]) {
-+		ret = mtk_drm_of_ddp_path_build_one(dev, CRTC_MAIN,
-+						    &data->main_path, &data->main_len);
-+		if (ret == 0)
-+			valid_output_found = true;
-+		else if (ret != -ENODEV)
-+			return ret;
-+	}
-+
-+	if (output_present[CRTC_EXT]) {
-+		ret = mtk_drm_of_ddp_path_build_one(dev, CRTC_EXT,
-+						    &data->ext_path, &data->ext_len);
-+		if (ret == 0)
-+			valid_output_found = true;
-+		else if (ret != -ENODEV)
-+			return ret;
-+	}
-+
-+	if (output_present[CRTC_THIRD]) {
-+		ret = mtk_drm_of_ddp_path_build_one(dev, CRTC_THIRD,
-+						    &data->third_path, &data->third_len);
-+		if (ret == 0)
-+			valid_output_found = true;
-+		else if (ret != -ENODEV)
-+			return ret;
-+	}
-+
-+	if (!valid_output_found)
-+		return -ENODEV;
-+
-+	return 0;
-+}
-+
- static int mtk_drm_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
- 	struct device_node *phandle = dev->parent->of_node;
- 	const struct of_device_id *of_id;
- 	struct mtk_drm_private *private;
-+	struct mtk_mmsys_driver_data *mtk_drm_data;
- 	struct device_node *node;
- 	struct component_match *match = NULL;
- 	struct platform_device *ovl_adaptor;
-@@ -824,7 +1058,31 @@ static int mtk_drm_probe(struct platform_device *pdev)
- 	if (!of_id)
- 		return -ENODEV;
- 
--	private->data = of_id->data;
-+	mtk_drm_data = (struct mtk_mmsys_driver_data *)of_id->data;
-+	if (!mtk_drm_data)
-+		return -EINVAL;
-+
-+	private->data = kmemdup(mtk_drm_data, sizeof(*mtk_drm_data), GFP_KERNEL);
-+	if (!private->data)
-+		return -ENOMEM;
-+
-+	/* Try to build the display pipeline from devicetree graphs */
-+	if (of_graph_is_present(phandle)) {
-+		dev_dbg(dev, "Building display pipeline for MMSYS %u\n",
-+			mtk_drm_data->mmsys_id);
-+		private->data = devm_kmemdup(dev, mtk_drm_data,
-+					     sizeof(*mtk_drm_data), GFP_KERNEL);
-+		if (!private->data)
-+			return -ENOMEM;
-+
-+		ret = mtk_drm_of_ddp_path_build(dev, phandle, private->data);
-+		if (ret)
-+			return ret;
-+	} else {
-+		/* No devicetree graphs support: go with hardcoded paths if present */
-+		dev_dbg(dev, "Using hardcoded paths for MMSYS %u\n", mtk_drm_data->mmsys_id);
-+		private->data = mtk_drm_data;
-+	};
- 
- 	private->all_drm_private = devm_kmalloc_array(dev, private->data->mmsys_dev_num,
- 						      sizeof(*private->all_drm_private),
-@@ -846,12 +1104,11 @@ static int mtk_drm_probe(struct platform_device *pdev)
- 
- 	/* Iterate over sibling DISP function blocks */
- 	for_each_child_of_node(phandle->parent, node) {
--		const struct of_device_id *of_id;
- 		enum mtk_ddp_comp_type comp_type;
- 		int comp_id;
- 
--		of_id = of_match_node(mtk_ddp_comp_dt_ids, node);
--		if (!of_id)
-+		ret = mtk_drm_of_get_ddp_comp_type(node, &comp_type);
-+		if (ret)
- 			continue;
- 
- 		if (!of_device_is_available(node)) {
-@@ -860,8 +1117,6 @@ static int mtk_drm_probe(struct platform_device *pdev)
- 			continue;
- 		}
- 
--		comp_type = (enum mtk_ddp_comp_type)(uintptr_t)of_id->data;
--
- 		if (comp_type == MTK_DISP_MUTEX) {
- 			int id;
- 
-@@ -890,22 +1145,24 @@ static int mtk_drm_probe(struct platform_device *pdev)
- 		 * blocks have separate component platform drivers and initialize their own
- 		 * DDP component structure. The others are initialized here.
- 		 */
--		if (comp_type == MTK_DISP_AAL ||
--		    comp_type == MTK_DISP_CCORR ||
--		    comp_type == MTK_DISP_COLOR ||
--		    comp_type == MTK_DISP_GAMMA ||
--		    comp_type == MTK_DISP_MERGE ||
--		    comp_type == MTK_DISP_OVL ||
--		    comp_type == MTK_DISP_OVL_2L ||
--		    comp_type == MTK_DISP_OVL_ADAPTOR ||
--		    comp_type == MTK_DISP_RDMA ||
--		    comp_type == MTK_DP_INTF ||
--		    comp_type == MTK_DPI ||
--		    comp_type == MTK_DSI) {
--			dev_info(dev, "Adding component match for %pOF\n",
--				 node);
--			drm_of_component_match_add(dev, &match, component_compare_of,
--						   node);
-+		switch (comp_type) {
-+		default:
-+			break;
-+		case MTK_DISP_AAL:
-+		case MTK_DISP_CCORR:
-+		case MTK_DISP_COLOR:
-+		case MTK_DISP_GAMMA:
-+		case MTK_DISP_MERGE:
-+		case MTK_DISP_OVL:
-+		case MTK_DISP_OVL_2L:
-+		case MTK_DISP_OVL_ADAPTOR:
-+		case MTK_DISP_RDMA:
-+		case MTK_DP_INTF:
-+		case MTK_DPI:
-+		case MTK_DSI:
-+			dev_info(dev, "Adding component match for %pOF\n", node);
-+			drm_of_component_match_add(dev, &match, component_compare_of, node);
-+			break;
- 		}
- 
- 		ret = mtk_ddp_comp_init(node, &private->ddp_comp[comp_id], comp_id);
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.h b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-index 78d698ede1bf..7e54d86e25a3 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-@@ -59,7 +59,7 @@ struct mtk_drm_private {
- 	struct device *mmsys_dev;
- 	struct device_node *comp_node[DDP_COMPONENT_DRM_ID_MAX];
- 	struct mtk_ddp_comp ddp_comp[DDP_COMPONENT_DRM_ID_MAX];
--	const struct mtk_mmsys_driver_data *data;
-+	struct mtk_mmsys_driver_data *data;
- 	struct drm_atomic_state *suspend_state;
- 	unsigned int mbox_index;
- 	struct mtk_drm_private **all_drm_private;
-diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index c255559cc56e..880ea37937da 100644
---- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -904,9 +904,17 @@ static int mtk_dsi_host_attach(struct mipi_dsi_host *host,
- 	dsi->lanes = device->lanes;
- 	dsi->format = device->format;
- 	dsi->mode_flags = device->mode_flags;
--	dsi->next_bridge = devm_drm_of_get_bridge(dev, dev->of_node, 0, 0);
--	if (IS_ERR(dsi->next_bridge))
--		return PTR_ERR(dsi->next_bridge);
-+	dsi->next_bridge = devm_drm_of_get_bridge(dev, dev->of_node, 1, 0);
-+	if (IS_ERR(dsi->next_bridge)) {
-+		ret = PTR_ERR(dsi->next_bridge);
-+		if (ret == -EPROBE_DEFER)
-+			return ret;
-+
-+		/* Old devicetree has only one endpoint */
-+		dsi->next_bridge = devm_drm_of_get_bridge(dev, dev->of_node, 0, 0);
-+		if (IS_ERR(dsi->next_bridge))
-+			return PTR_ERR(dsi->next_bridge);
-+	}
- 
- 	drm_bridge_add(&dsi->bridge);
- 
--- 
-2.45.2
+> ---
+>   drivers/media/i2c/Kconfig  |  13 ++
+>   drivers/media/i2c/Makefile |   1 +
+>   drivers/media/i2c/gt97xx.c | 436 +++++++++++++++++++++++++++++++++++++
+>   3 files changed, 450 insertions(+)
+>   create mode 100644 drivers/media/i2c/gt97xx.c
+> 
+> diff --git a/drivers/media/i2c/Kconfig b/drivers/media/i2c/Kconfig
+> index 5498128773c7..9976f02575a3 100644
+> --- a/drivers/media/i2c/Kconfig
+> +++ b/drivers/media/i2c/Kconfig
+> @@ -772,6 +772,19 @@ config VIDEO_DW9807_VCM
+>   	  capability. This is designed for linear control of
+>   	  voice coil motors, controlled via I2C serial interface.
+>   
+> +config VIDEO_GT97XX
+> +	tristate "GT97xx lens voice coil support"
+> +	depends on I2C && VIDEO_DEV
+> +	select MEDIA_CONTROLLER
+> +	select VIDEO_V4L2_SUBDEV_API
+> +	select V4L2_FWNODE
+> +	select V4L2_CCI_I2C
+> +	help
+> +	  This is a driver for the GT97xx camera lens voice coil.
+> +	  GT97xx is a 10 bit DAC with 100mA output current sink
+> +	  capability. It is designed for linear control of
+> +	  voice coil motors, controlled via I2C serial interface.
+> +
+>   endmenu
+>   
+>   menu "Flash devices"
+> diff --git a/drivers/media/i2c/Makefile b/drivers/media/i2c/Makefile
+> index d1403e3273ca..0009d3d6d6af 100644
+> --- a/drivers/media/i2c/Makefile
+> +++ b/drivers/media/i2c/Makefile
+> @@ -39,6 +39,7 @@ obj-$(CONFIG_VIDEO_DW9807_VCM) += dw9807-vcm.o
+>   obj-$(CONFIG_VIDEO_ET8EK8) += et8ek8/
+>   obj-$(CONFIG_VIDEO_GC0308) += gc0308.o
+>   obj-$(CONFIG_VIDEO_GC2145) += gc2145.o
+> +obj-$(CONFIG_VIDEO_GT97XX) += gt97xx.o
+>   obj-$(CONFIG_VIDEO_HI556) += hi556.o
+>   obj-$(CONFIG_VIDEO_HI846) += hi846.o
+>   obj-$(CONFIG_VIDEO_HI847) += hi847.o
+> diff --git a/drivers/media/i2c/gt97xx.c b/drivers/media/i2c/gt97xx.c
+> new file mode 100644
+> index 000000000000..ccae190ffba6
+> --- /dev/null
+> +++ b/drivers/media/i2c/gt97xx.c
+> @@ -0,0 +1,436 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Driver for Giantec gt97xx VCM lens device
+> + *
+> + * Copyright 2024 MediaTek
+> + *
+> + * Zhi Mao <zhi.mao@mediatek.com>
+> + */
+> +#include <linux/array_size.h>
+> +#include <linux/bits.h>
+> +#include <linux/clk.h>
+> +#include <linux/container_of.h>
+> +#include <linux/delay.h>
+> +#include <linux/device.h>
+> +#include <linux/err.h>
+> +#include <linux/gpio/consumer.h>
+> +#include <linux/mod_devicetable.h>
+> +#include <linux/pm_runtime.h>
+> +#include <linux/property.h>
+> +#include <linux/regulator/consumer.h>
+> +#include <linux/types.h>
+> +#include <linux/units.h>
+> +
+> +#include <media/v4l2-cci.h>
+> +#include <media/v4l2-ctrls.h>
+> +#include <media/v4l2-event.h>
+> +#include <media/v4l2-fwnode.h>
+> +#include <media/v4l2-subdev.h>
+> +
+> +/* gt97xx chip info register and name */
+> +#define GT97XX_IC_INFO_REG CCI_REG8(0x00)
+> +#define GT9768_ID 0xE9
+> +#define GT9769_ID 0xE1
+> +#define GT97XX_NAME "gt97xx"
+> +
+> +/*
+> + * Ring control and Power control register
+> + * Bit[1] RING_EN
+> + * 0: Direct mode
+> + * 1: AAC mode (ringing control mode)
+> + * Bit[0] PD
+> + * 0: Normal operation mode
+> + * 1: Power down mode
+> + * requires waiting time after PD reset takes place.
+> + */
+> +#define GT97XX_RING_PD_CONTROL_REG CCI_REG8(0x02)
+> +#define GT97XX_PD_MODE_OFF 0x00
+> +#define GT97XX_PD_MODE_EN BIT(0)
+> +#define GT97XX_AAC_MODE_EN BIT(1)
+> +
+> +/*
+> + * DAC is a 10bit address to control the VCM position.
+> + * DAC_MSB: D[9:8] (ADD: 0x03)
+> + * DAC_LSB: D[7:0] (ADD: 0x04)
+> + */
+> +#define GT97XX_DAC_ADDR_REG CCI_REG16(0x03)
+> +
+> +#define GT97XX_MOVE_STEPS 16
+> +#define GT97XX_MAX_FOCUS_POS (BIT(10) - 1)
+> +
+> +#define GT97XX_SLEEP_US (1 * USEC_PER_MSEC)
+> +
+> +enum vcm_giantec_reg_desc {
+> +	GT_IC_INFO_REG,
+> +	GT_RING_PD_CONTROL_REG,
+> +	GT_DAC_ADDR_REG,
+> +	GT_MAX_REG
+> +};
+> +
+> +struct vcm_giantec_of_data {
+> +	unsigned int id;
+> +	unsigned int regs[GT_MAX_REG];
+> +};
+> +
+> +static const char *const gt97xx_supply_names[] = {
+> +	"vin",
+> +	"vdd",
+> +};
+> +
+> +/* gt97xx device structure */
+> +struct gt97xx {
+> +	struct v4l2_subdev sd;
+> +
+> +	struct regulator_bulk_data supplies[ARRAY_SIZE(gt97xx_supply_names)];
+> +
+> +	struct v4l2_ctrl_handler ctrls;
+> +	struct v4l2_ctrl *focus;
+> +
+> +	struct regmap *regmap;
+> +
+> +	const struct vcm_giantec_of_data *chip;
+> +};
+> +
+> +static inline struct gt97xx *sd_to_gt97xx(struct v4l2_subdev *subdev)
+> +{
+> +	return container_of(subdev, struct gt97xx, sd);
+> +}
+> +
+> +struct regval_list {
+> +	u8 reg_num;
+> +	u8 value;
+> +};
+> +
+> +static int gt97xx_set_dac(struct gt97xx *gt97xx, u16 val)
+> +{
+> +	/* Write VCM position to registers */
+> +	return cci_write(gt97xx->regmap,
+> +			 gt97xx->chip->regs[GT_DAC_ADDR_REG], val, NULL);
+> +}
+> +
+> +static int gt97xx_identify_module(struct gt97xx *gt97xx)
+> +{
+> +	int ret;
+> +	u64 ic_id;
+> +	struct i2c_client *client = v4l2_get_subdevdata(&gt97xx->sd);
+> +
+> +	ret = cci_read(gt97xx->regmap, gt97xx->chip->regs[GT_IC_INFO_REG],
+> +		       &ic_id, NULL);
+> +	if (ret < 0)
+> +		return ret;
+> +
+> +	if (ic_id != gt97xx->chip->id) {
+> +		dev_err(&client->dev, "chip id mismatch: 0x%x!=0x%llx",
+> +			gt97xx->chip->id, ic_id);
+> +		return -1;
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static int gt97xx_init(struct gt97xx *gt97xx)
+> +{
+> +	int ret, val;
+> +
+> +	ret = gt97xx_identify_module(gt97xx);
+> +	if (ret < 0)
+> +		return ret;
+> +
+> +	/* Reset PD_CONTROL */
+> +	ret = cci_write(gt97xx->regmap,
+> +			gt97xx->chip->regs[GT_RING_PD_CONTROL_REG],
+> +			GT97XX_PD_MODE_OFF, NULL);
+> +	if (ret < 0)
+> +		return ret;
+> +
+> +	/* Need waiting delay time after PD reset */
+> +	fsleep(GT97XX_SLEEP_US);
+> +
+> +	/* Enable ACC mode */
+> +	ret = cci_write(gt97xx->regmap,
+> +			gt97xx->chip->regs[GT_RING_PD_CONTROL_REG],
+> +			GT97XX_AAC_MODE_EN, NULL);
+> +	if (ret < 0)
+> +		return ret;
+> +
+> +	for (val = gt97xx->focus->val % GT97XX_MOVE_STEPS;
+> +	     val <= gt97xx->focus->val; val += GT97XX_MOVE_STEPS) {
+> +		ret = gt97xx_set_dac(gt97xx, val);
+> +		if (ret)
+> +			return ret;
+> +
+> +		fsleep(GT97XX_SLEEP_US);
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static int gt97xx_release(struct gt97xx *gt97xx)
+> +{
+> +	int ret, val;
+> +
+> +	val = round_down(gt97xx->focus->val, GT97XX_MOVE_STEPS);
+> +	for (; val >= 0; val -= GT97XX_MOVE_STEPS) {
+> +		ret = gt97xx_set_dac(gt97xx, val);
+> +		if (ret)
+> +			return ret;
+> +
+> +		fsleep(GT97XX_SLEEP_US);
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static int gt97xx_power_on(struct device *dev)
+> +{
+> +	struct v4l2_subdev *sd = dev_get_drvdata(dev);
+> +	struct gt97xx *gt97xx = sd_to_gt97xx(sd);
+> +	int ret;
+> +
+> +	ret = regulator_bulk_enable(ARRAY_SIZE(gt97xx_supply_names),
+> +				    gt97xx->supplies);
+> +	if (ret < 0)
+> +		dev_err(dev, "failed to enable regulators\n");
+> +
+> +	return ret;
+> +}
+> +
+> +static int gt97xx_power_off(struct device *dev)
+> +{
+> +	struct v4l2_subdev *sd = dev_get_drvdata(dev);
+> +	struct gt97xx *gt97xx = sd_to_gt97xx(sd);
+> +	int ret;
+> +
+> +	ret = regulator_bulk_disable(ARRAY_SIZE(gt97xx_supply_names),
+> +				     gt97xx->supplies);
+> +	if (ret < 0)
+> +		dev_err(dev, "failed to disable regulators\n");
+> +
+> +	return ret;
+> +}
+> +
+> +static int gt97xx_runtime_suspend(struct device *dev)
+> +{
+> +	struct v4l2_subdev *sd = dev_get_drvdata(dev);
+> +	struct gt97xx *gt97xx = sd_to_gt97xx(sd);
+> +
+> +	gt97xx_release(gt97xx);
+> +	gt97xx_power_off(dev);
+> +
+> +	return 0;
+> +}
+> +
+> +static int gt97xx_runtime_resume(struct device *dev)
+> +{
+> +	struct v4l2_subdev *sd = dev_get_drvdata(dev);
+> +	struct gt97xx *gt97xx = sd_to_gt97xx(sd);
+> +	int ret;
+> +
+> +	ret = gt97xx_power_on(dev);
+> +	if (ret < 0) {
+> +		dev_err(dev, "failed to power_on\n");
+> +		return ret;
+> +	}
+> +
+> +	/* Need waited before sending I2C commands after power-up */
+> +	fsleep(GT97XX_SLEEP_US);
+> +
+> +	ret = gt97xx_init(gt97xx);
+> +	if (ret < 0)
+> +		goto disable_power;
+> +
+> +	return 0;
+> +
+> +disable_power:
+> +	gt97xx_power_off(dev);
+> +
+> +	return ret;
+> +}
+> +
+> +static int gt97xx_set_ctrl(struct v4l2_ctrl *ctrl)
+> +{
+> +	struct gt97xx *gt97xx =
+> +		container_of(ctrl->handler, struct gt97xx, ctrls);
+> +
+> +	if (ctrl->id == V4L2_CID_FOCUS_ABSOLUTE)
+> +		return gt97xx_set_dac(gt97xx, ctrl->val);
+> +
+> +	return 0;
+> +}
+> +
+> +static const struct v4l2_ctrl_ops gt97xx_ctrl_ops = {
+> +	.s_ctrl = gt97xx_set_ctrl,
+> +};
+> +
+> +static int gt97xx_open(struct v4l2_subdev *sd, struct v4l2_subdev_fh *fh)
+> +{
+> +	return pm_runtime_resume_and_get(sd->dev);
+> +}
+> +
+> +static int gt97xx_close(struct v4l2_subdev *sd, struct v4l2_subdev_fh *fh)
+> +{
+> +	return pm_runtime_put(sd->dev);
+> +}
+> +
+> +static const struct v4l2_subdev_internal_ops gt97xx_int_ops = {
+> +	.open = gt97xx_open,
+> +	.close = gt97xx_close,
+> +};
+> +
+> +static const struct v4l2_subdev_core_ops gt97xx_core_ops = {
+> +	.subscribe_event = v4l2_ctrl_subdev_subscribe_event,
+> +	.unsubscribe_event = v4l2_event_subdev_unsubscribe,
+> +};
+> +
+> +static const struct v4l2_subdev_ops gt97xx_ops = {
+> +	.core = &gt97xx_core_ops,
+> +};
+> +
+> +static int gt97xx_init_controls(struct gt97xx *gt97xx)
+> +{
+> +	struct v4l2_ctrl_handler *hdl = &gt97xx->ctrls;
+> +	const struct v4l2_ctrl_ops *ops = &gt97xx_ctrl_ops;
+> +
+> +	v4l2_ctrl_handler_init(hdl, 1);
+> +
+> +	gt97xx->focus = v4l2_ctrl_new_std(hdl, ops, V4L2_CID_FOCUS_ABSOLUTE, 0,
+> +					  GT97XX_MAX_FOCUS_POS,
+> +					  1, 0);
+> +
+> +	if (hdl->error)
+> +		return hdl->error;
+> +
+> +	gt97xx->sd.ctrl_handler = hdl;
+> +
+> +	return 0;
+> +}
+> +
+> +static int gt97xx_probe(struct i2c_client *client)
+> +{
+> +	struct device *dev = &client->dev;
+> +	struct gt97xx *gt97xx;
+> +	unsigned int i;
+> +	int ret;
+> +
+> +	gt97xx = devm_kzalloc(dev, sizeof(*gt97xx), GFP_KERNEL);
+> +	if (!gt97xx)
+> +		return -ENOMEM;
+> +
+> +	gt97xx->regmap = devm_cci_regmap_init_i2c(client, 8);
+> +	if (IS_ERR(gt97xx->regmap))
+> +		return dev_err_probe(dev, PTR_ERR(gt97xx->regmap),
+> +				     "failed to init CCI\n");
+> +
+> +	/* Initialize subdev */
+> +	v4l2_i2c_subdev_init(&gt97xx->sd, client, &gt97xx_ops);
+> +
+> +	gt97xx->chip = device_get_match_data(dev);
+> +
+> +	for (i = 0; i < ARRAY_SIZE(gt97xx_supply_names); i++)
+> +		gt97xx->supplies[i].supply = gt97xx_supply_names[i];
+> +
+> +	ret = devm_regulator_bulk_get(dev, ARRAY_SIZE(gt97xx_supply_names),
+> +				      gt97xx->supplies);
+> +	if (ret < 0)
+> +		return dev_err_probe(dev, ret,
+> +				     "failed to get regulators\n");
+> +
+> +	/* Initialize controls */
+> +	ret = gt97xx_init_controls(gt97xx);
+> +	if (ret)
+> +		goto err_free_handler;
+> +
+> +	/* Initialize subdev */
+> +	gt97xx->sd.flags |= V4L2_SUBDEV_FL_HAS_DEVNODE;
+> +	gt97xx->sd.internal_ops = &gt97xx_int_ops;
+> +	gt97xx->sd.entity.function = MEDIA_ENT_F_LENS;
+> +
+> +	ret = media_entity_pads_init(&gt97xx->sd.entity, 0, NULL);
+> +	if (ret < 0)
+> +		goto err_free_handler;
+> +
+> +	/* Power on and initialize hardware */
+> +	ret = gt97xx_runtime_resume(dev);
+> +	if (ret < 0) {
+> +		dev_err_probe(dev, ret, "failed to power on\n");
+> +		goto err_clean_entity;
+> +	}
+> +
+> +	pm_runtime_set_active(dev);
+> +	pm_runtime_enable(dev);
+> +	pm_runtime_set_autosuspend_delay(dev, 1000);
+> +	pm_runtime_use_autosuspend(dev);
+> +	pm_runtime_idle(dev);
+> +
+> +	ret = v4l2_async_register_subdev(&gt97xx->sd);
+> +	if (ret < 0) {
+> +		dev_err_probe(dev, ret, "failed to register V4L2 subdev\n");
+> +		goto err_power_off;
+> +	}
+> +
+> +	return 0;
+> +
+> +err_power_off:
+> +	pm_runtime_disable(dev);
+> +err_clean_entity:
+> +	media_entity_cleanup(&gt97xx->sd.entity);
+> +err_free_handler:
+> +	v4l2_ctrl_handler_free(&gt97xx->ctrls);
+> +
+> +	return ret;
+> +}
+> +
+> +static void gt97xx_remove(struct i2c_client *client)
+> +{
+> +	struct v4l2_subdev *sd = i2c_get_clientdata(client);
+> +	struct gt97xx *gt97xx = sd_to_gt97xx(sd);
+> +
+> +	v4l2_async_unregister_subdev(&gt97xx->sd);
+> +	v4l2_ctrl_handler_free(&gt97xx->ctrls);
+> +	media_entity_cleanup(&gt97xx->sd.entity);
+> +	pm_runtime_disable(&client->dev);
+> +	if (!pm_runtime_status_suspended(&client->dev))
+> +		gt97xx_runtime_suspend(&client->dev);
+> +	pm_runtime_set_suspended(&client->dev);
+> +}
+> +
+> +static DEFINE_RUNTIME_DEV_PM_OPS(gt97xx_pm_ops,
+> +				 gt97xx_runtime_suspend,
+> +				 gt97xx_runtime_resume,
+> +				 NULL);
+> +
+> +static const struct vcm_giantec_of_data gt9768_data = {
+> +	.id = GT9768_ID,
+> +	.regs[GT_IC_INFO_REG] = GT97XX_IC_INFO_REG,
+> +	.regs[GT_RING_PD_CONTROL_REG] = GT97XX_RING_PD_CONTROL_REG,
+> +	.regs[GT_DAC_ADDR_REG] = GT97XX_DAC_ADDR_REG,
+> +};
+> +
+> +static const struct vcm_giantec_of_data gt9769_data = {
+> +	.id = GT9769_ID,
+> +	.regs[GT_IC_INFO_REG] = GT97XX_IC_INFO_REG,
+> +	.regs[GT_RING_PD_CONTROL_REG] = GT97XX_RING_PD_CONTROL_REG,
+> +	.regs[GT_DAC_ADDR_REG] = GT97XX_DAC_ADDR_REG,
+> +};
+> +
+> +static const struct of_device_id gt97xx_of_table[] = {
+> +	{ .compatible = "giantec,gt9768", .data = &gt9768_data },
+> +	{ .compatible = "giantec,gt9769", .data = &gt9769_data },
+> +	{}
+> +};
+> +MODULE_DEVICE_TABLE(of, gt97xx_of_table);
+> +
+> +static struct i2c_driver gt97xx_i2c_driver = {
+> +	.driver = {
+> +		.name = GT97XX_NAME,
+> +		.pm = pm_ptr(&gt97xx_pm_ops),
+> +		.of_match_table = gt97xx_of_table,
+> +	},
+> +	.probe = gt97xx_probe,
+> +	.remove = gt97xx_remove,
+> +};
+> +module_i2c_driver(gt97xx_i2c_driver);
+> +
+> +MODULE_AUTHOR("Zhi Mao <zhi.mao@mediatek.com>");
+> +MODULE_DESCRIPTION("GT97xx VCM driver");
+> +MODULE_LICENSE("GPL");
+
+
 
 
