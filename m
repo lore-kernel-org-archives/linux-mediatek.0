@@ -4,91 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD90AC27C75
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jun 2024 05:22:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90438C27C53
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jun 2024 05:51:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dhTcYBsCM+Mbg92p9SQKrJMtUFN9/26AX/bqLUidx8Y=; b=B4IZPJ9xrR7bmvscn5eskOMbGn
-	YAPeOmD2SZ/TixGJ8aCT2XwQeuEWlLRVMLkQFMr/j9Kxs9sdCmdTuu9baPGFLH/pQK0N5jfjoR7WG
-	cDVkDvQ1lVsvSVRs0YUE6+ERG1zoyx94CsLkI8OX3mGTgtjKB78a/tCVis12fiU/R1SZpsCIPNHR9
-	w4LHMARJBB9I0OiUvAtbgChXA5vkUHWROAk4zUBSniGOM37Vcx/zb6C9Nj0g479S3AcC0Dw7bK0kp
-	hAeHrJQvDKzqqegFILnsD8e/hWPAUJHIlssS2l2wAomRBFk59oQHVd7tBisXjVwCB/T6wWIP/Tp94
-	HQF/cH0w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:CC:To:Message-ID:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Asvj8P9d0rg7S+Y9SuvlcxFTOWajvcFsS63XkgAaQcs=; b=lWgckPmxMiZX+2eS3l1mFjUEGr
+	uq2beK+fgHLGaEh8jYknCJcG4CsyJLlnmf3Pv2IgM03nO3tsV/ghudxErVUU/dfGSJ6M/zSoyQiXd
+	x75HTRbn7Wbcah7F5POt/SclIxz4bEL6DhHauhtDr/Z32weI3xOesBIXfAbQIkqekl6kkXe8kqohK
+	ghErmmn76GLhxBhU9P/vWPqFDeFevTSH5hYOuWe2ET+EUCSGvl/AZx1qhau0mv/x18GPK3FG1ohG9
+	OV8aq0eLVyZWVzUOZI5neu2Y8t4p3Bcohapv8VM3itmB2ulX5j+16Hsm0z3R5Blytan24GIexvaXn
+	ha4w68eA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sHGRi-0000000B8Wy-14QI;
-	Wed, 12 Jun 2024 05:22:54 +0000
-Received: from mail-yw1-x112f.google.com ([2607:f8b0:4864:20::112f])
+	id 1sHGtA-0000000BC8y-2VOh;
+	Wed, 12 Jun 2024 05:51:16 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sHGRf-0000000B8VI-22TU
-	for linux-mediatek@lists.infradead.org;
-	Wed, 12 Jun 2024 05:22:53 +0000
-Received: by mail-yw1-x112f.google.com with SMTP id 00721157ae682-627ebbefd85so74039897b3.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 11 Jun 2024 22:22:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1718169767; x=1718774567; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=dhTcYBsCM+Mbg92p9SQKrJMtUFN9/26AX/bqLUidx8Y=;
-        b=IdMuhju9Wt0wkG5x8byENMgaT+C4Z29ePIVCtf89/iJXq2v/TOYi2x1XzAzIPVqDEf
-         vKJhIB/R2lGdKPZ+Dqxd95zxXgQ4dA8xMWYkuLltZrySfuSHftWi1rl/m1OpeRqBoNoZ
-         iRm0epnp5kGvQPChf7TJcKxmFW7OoI0RPGAYM=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1718169767; x=1718774567;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=dhTcYBsCM+Mbg92p9SQKrJMtUFN9/26AX/bqLUidx8Y=;
-        b=MYxJ6u51fh5BdP/UCtBVY8I+AaQfKBIOtJ8qSwUn2Ht0m7i6EJx9fsMRSgAZLFf452
-         uVNFgwgCCkk8AMdg4X27C4U3j2JtbfTzfAuFfiO1ylUOMfQk/GbbjHDIyXTBLEnEo08u
-         yyhkOF9dUg2hl1EdNCqwi3U2n60RtwyFoC9Khh93zESpAnREd6XYnIingKxcyP5c6KV1
-         9QvUqRyvyqIj1SwQkBmpE+tmFX4pTnYZ61g0x+LMpwNEupFy79dXgcMaq5xuy1BV4Jdz
-         j1mA3yFWgZeo96dzOMdPo5MHgww3Si90fml6aNuB90FyxpzHZ4XltTlCbJGvnJdEUXiw
-         1KEQ==
-X-Forwarded-Encrypted: i=1; AJvYcCV1r2aUdaPbDRTvl6d0dtdSpQwHJqocgJL18XrMawfaCGarwaCmW4mAL597rxAcqfiE01OF8VhH7dDHvcDpBuyLFsPYSHoCu9+RM92nPdMxnOF8
-X-Gm-Message-State: AOJu0YzsR9iVhctvNOLPnp9whYeLSePd8MBjZe2RoYU4euZA2cbf2MSU
-	2ZdX/myhf9fLMYvAyYSuh0s5MeLpDDNKJrkBd/EDTC1MMd9b2k0IcndIf7EDv7Vvvu/yQraPSqR
-	rhg==
-X-Google-Smtp-Source: AGHT+IEppKCyK/JSHnKcsXHzDq3ew+qYkvjNGKJpUa5VhAjqTgQihMv3DtChdSvf6MwsluIQgolTGg==
-X-Received: by 2002:a05:690c:6612:b0:61b:14a8:7944 with SMTP id 00721157ae682-62fc9ebfa84mr8344767b3.39.1718169766976;
-        Tue, 11 Jun 2024 22:22:46 -0700 (PDT)
-Received: from chromium.org (174.71.80.34.bc.googleusercontent.com. [34.80.71.174])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-1f6ef51579csm76355645ad.112.2024.06.11.22.22.42
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 11 Jun 2024 22:22:46 -0700 (PDT)
-Date: Wed, 12 Jun 2024 14:22:40 +0900
-From: Tomasz Figa <tfiga@chromium.org>
-To: Yunfei Dong <yunfei.dong@mediatek.com>
-Cc: Jeffrey Kardatzke <jkardatzke@google.com>, 
-	=?utf-8?B?TsOtY29sYXMgRiAuIFIgLiBBIC4=?= Prado <nfraprado@collabora.com>, Nathan Hebert <nhebert@chromium.org>, 
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
-	Sebastian Fricke <sebastian.fricke@collabora.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
-	Marek Szyprowski <m.szyprowski@samsung.com>, Chen-Yu Tsai <wenst@chromium.org>, 
-	Yong Wu <yong.wu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, 
-	Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, 
-	Steve Cho <stevecho@chromium.org>, Sumit Semwal <sumit.semwal@linaro.org>, 
-	Brian Starkey <Brian.Starkey@arm.com>, John Stultz <jstultz@google.com>, 
-	"T . J . Mercier" <tjmercier@google.com>, Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, linux-media@vger.kernel.org, dri-devel@lists.freedesktop.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v6,12/24] media: mediatek: vcodec: add interface to
- allocate/free secure memory
-Message-ID: <4a5tf2cl744xzqslox4ddzmdpuvwksr54g3qk2jl4soatdts45@e6xmmm2ijmv6>
-References: <20240516122102.16379-1-yunfei.dong@mediatek.com>
- <20240516122102.16379-13-yunfei.dong@mediatek.com>
+	id 1sHGt6-0000000BC7j-1HKj;
+	Wed, 12 Jun 2024 05:51:13 +0000
+Received: from pps.filterd (m0279868.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 45BL0gJK013157;
+	Wed, 12 Jun 2024 05:51:03 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
+	cc:content-transfer-encoding:content-type:date:from:message-id
+	:mime-version:subject:to; s=qcppdkim1; bh=Asvj8P9d0rg7S+Y9Suvlcx
+	FTOWajvcFsS63XkgAaQcs=; b=gwnI6Xkm+yhcXJUattorbWIJEMMBxOKi+CSvuO
+	x9IxN8RMGhMVMoTy+pdArLvx09skrEfPLaV/khLAcA0zxRGmYMXnzhlkFzbbbTSD
+	zF53fxHQxYsiHstm7nN0M0lwb1gzxBaea5+dhs8zRaFaQNVkXXlbRq/LMG5ObX0F
+	VgGuvXMaSdHCGphTP8KhLnr287iS9cNOKmrdybzG2ycFeAY+U1l/XvBTRDkMCAMB
+	j24h8jdKbBouPDJ164OTN6f1Tz5QuHR8sE6ND5LvY2g1OvGdh7IlkE4LVzgHfp9b
+	bjgtoMQMrBydNNsTSf7ZXFjWGPMxYY0NARloKz0dV7NQrbDA==
+Received: from nalasppmta01.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3ypm45aj40-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 12 Jun 2024 05:51:02 +0000 (GMT)
+Received: from nalasex01a.na.qualcomm.com (nalasex01a.na.qualcomm.com [10.47.209.196])
+	by NALASPPMTA01.qualcomm.com (8.17.1.19/8.17.1.19) with ESMTPS id 45C5p1uH001793
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 12 Jun 2024 05:51:01 GMT
+Received: from [169.254.0.1] (10.49.16.6) by nalasex01a.na.qualcomm.com
+ (10.47.209.196) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.9; Tue, 11 Jun
+ 2024 22:51:00 -0700
+From: Jeff Johnson <quic_jjohnson@quicinc.com>
+Date: Tue, 11 Jun 2024 22:50:58 -0700
+Subject: [PATCH] soc: add missing MODULE_DESCRIPTION() macros
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240516122102.16379-13-yunfei.dong@mediatek.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-ID: <20240611-md-drivers-soc-v1-1-8f0fc9fff234@quicinc.com>
+X-B4-Tracking: v=1; b=H4sIAEE3aWYC/x3MTQ6CQAxA4auQrm0yHQmIVzEu5qdKExlMq4SEc
+ HdGl9/ivQ2MVdjg2mygvIjJXCro1EAaQ3kySq4G73zrOiKcMmaVhdXQ5oTUX1yk4Tx0vocavZU
+ fsv6Ht3t1DMYYNZQ0/jYvKd8Vp2AfVtj3A080wx5/AAAA
+To: Neil Armstrong <neil.armstrong@linaro.org>,
+        Kevin Hilman
+	<khilman@baylibre.com>,
+        Jerome Brunet <jbrunet@baylibre.com>,
+        "Martin
+ Blumenstingl" <martin.blumenstingl@googlemail.com>,
+        Shawn Guo
+	<shawnguo@kernel.org>,
+        Sascha Hauer <s.hauer@pengutronix.de>,
+        "Pengutronix
+ Kernel Team" <kernel@pengutronix.de>,
+        Fabio Estevam <festevam@gmail.com>, Linus Walleij <linusw@kernel.org>,
+        Imre Kaloz <kaloz@openwrt.org>,
+        "Matthias
+ Brugger" <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: <linux-arm-kernel@lists.infradead.org>,
+        <linux-amlogic@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+        <imx@lists.linux.dev>, <linux-mediatek@lists.infradead.org>,
+        <kernel-janitors@vger.kernel.org>,
+        Jeff Johnson <quic_jjohnson@quicinc.com>
+X-Mailer: b4 0.13.0
+X-Originating-IP: [10.49.16.6]
+X-ClientProxiedBy: nalasex01b.na.qualcomm.com (10.47.209.197) To
+ nalasex01a.na.qualcomm.com (10.47.209.196)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-GUID: hemcyYV9GAtAfb0bwsG1uX_Te_dWyefs
+X-Proofpoint-ORIG-GUID: hemcyYV9GAtAfb0bwsG1uX_Te_dWyefs
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.28.16
+ definitions=2024-06-12_02,2024-06-11_01,2024-05-17_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 lowpriorityscore=0
+ impostorscore=0 mlxlogscore=999 phishscore=0 malwarescore=0 suspectscore=0
+ bulkscore=0 spamscore=0 clxscore=1011 priorityscore=1501 adultscore=0
+ mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.19.0-2405170001 definitions=main-2406120040
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240611_222251_543085_8C77E488 
-X-CRM114-Status: GOOD (  31.01  )
+X-CRM114-CacheID: sfid-20240611_225112_606188_14878182 
+X-CRM114-Status: GOOD (  12.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,249 +115,83 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, May 16, 2024 at 08:20:50PM +0800, Yunfei Dong wrote:
-> Need to call dma heap interface to allocate/free secure memory when playing
-> secure video.
-> 
-> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-> ---
->  .../media/platform/mediatek/vcodec/Kconfig    |   1 +
->  .../mediatek/vcodec/common/mtk_vcodec_util.c  | 122 +++++++++++++++++-
->  .../mediatek/vcodec/common/mtk_vcodec_util.h  |   3 +
->  3 files changed, 123 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/media/platform/mediatek/vcodec/Kconfig b/drivers/media/platform/mediatek/vcodec/Kconfig
-> index bc8292232530..707865703e61 100644
-> --- a/drivers/media/platform/mediatek/vcodec/Kconfig
-> +++ b/drivers/media/platform/mediatek/vcodec/Kconfig
-> @@ -17,6 +17,7 @@ config VIDEO_MEDIATEK_VCODEC
->  	depends on VIDEO_MEDIATEK_VPU || !VIDEO_MEDIATEK_VPU
->  	depends on MTK_SCP || !MTK_SCP
->  	depends on MTK_SMI || (COMPILE_TEST && MTK_SMI=n)
-> +	depends on DMABUF_HEAPS
->  	select VIDEOBUF2_DMA_CONTIG
->  	select V4L2_MEM2MEM_DEV
->  	select VIDEO_MEDIATEK_VCODEC_VPU if VIDEO_MEDIATEK_VPU
-> diff --git a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_util.c b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_util.c
-> index c60e4c193b25..5958dcd7965a 100644
-> --- a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_util.c
-> +++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_util.c
-> @@ -5,9 +5,11 @@
->  *	Tiffany Lin <tiffany.lin@mediatek.com>
->  */
->  
-> +#include <linux/dma-heap.h>
->  #include <linux/module.h>
->  #include <linux/of.h>
->  #include <linux/regmap.h>
-> +#include <uapi/linux/dma-heap.h>
->  
->  #include "../decoder/mtk_vcodec_dec_drv.h"
->  #include "../encoder/mtk_vcodec_enc_drv.h"
-> @@ -45,7 +47,7 @@ int mtk_vcodec_write_vdecsys(struct mtk_vcodec_dec_ctx *ctx, unsigned int reg,
->  }
->  EXPORT_SYMBOL(mtk_vcodec_write_vdecsys);
->  
-> -int mtk_vcodec_mem_alloc(void *priv, struct mtk_vcodec_mem *mem)
-> +static int mtk_vcodec_mem_alloc_nor(void *priv, struct mtk_vcodec_mem *mem)
->  {
->  	enum mtk_instance_type inst_type = *((unsigned int *)priv);
->  	struct platform_device *plat_dev;
-> @@ -75,9 +77,71 @@ int mtk_vcodec_mem_alloc(void *priv, struct mtk_vcodec_mem *mem)
->  
->  	return 0;
->  }
-> -EXPORT_SYMBOL(mtk_vcodec_mem_alloc);
->  
-> -void mtk_vcodec_mem_free(void *priv, struct mtk_vcodec_mem *mem)
-> +static int mtk_vcodec_mem_alloc_sec(struct mtk_vcodec_dec_ctx *ctx, struct mtk_vcodec_mem *mem)
-> +{
-> +	struct device *dev = &ctx->dev->plat_dev->dev;
-> +	struct dma_buf *dma_buffer;
-> +	struct dma_heap *vdec_heap;
-> +	struct dma_buf_attachment *attach;
-> +	struct sg_table *sgt;
-> +	unsigned long size = mem->size;
-> +	int ret = 0;
-> +
-> +	if (!size)
-> +		return -EINVAL;
-> +
-> +	vdec_heap = dma_heap_find("restricted_mtk_cma");
-> +	if (!vdec_heap) {
-> +		mtk_v4l2_vdec_err(ctx, "dma heap find failed!");
-> +		return -EPERM;
-> +	}
+With ARCH=x86, make allmodconfig && make W=1 C=1 reports:
+WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/soc/imx/soc-imx8m.o
+WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/soc/ixp4xx/ixp4xx-qmgr.o
+WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/soc/ixp4xx/ixp4xx-npe.o
+WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/soc/mediatek/mtk-cmdq-helper.o
+WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/soc/amlogic/meson-clk-measure.o
 
-How is the heap name determined here? My recollection is that the heap
-name comes from the heap node in the DT, so it may vary depending on the
-board.
+Add the missing invocations of the MODULE_DESCRIPTION() macro.
 
-Is the heap name documented anywhere in the DT bindings?
+Signed-off-by: Jeff Johnson <quic_jjohnson@quicinc.com>
+---
+This is the last of the issues that I see in the soc directory
+---
+ drivers/soc/amlogic/meson-clk-measure.c | 1 +
+ drivers/soc/imx/soc-imx8m.c             | 1 +
+ drivers/soc/ixp4xx/ixp4xx-npe.c         | 1 +
+ drivers/soc/ixp4xx/ixp4xx-qmgr.c        | 1 +
+ drivers/soc/mediatek/mtk-cmdq-helper.c  | 1 +
+ 5 files changed, 5 insertions(+)
 
-Shouldn't we rather query DT for a phandle to the right heap?
+diff --git a/drivers/soc/amlogic/meson-clk-measure.c b/drivers/soc/amlogic/meson-clk-measure.c
+index 3f3039600357..a6453ffeb753 100644
+--- a/drivers/soc/amlogic/meson-clk-measure.c
++++ b/drivers/soc/amlogic/meson-clk-measure.c
+@@ -688,4 +688,5 @@ static struct platform_driver meson_msr_driver = {
+ 	},
+ };
+ module_platform_driver(meson_msr_driver);
++MODULE_DESCRIPTION("Amlogic Meson SoC Clock Measure driver");
+ MODULE_LICENSE("GPL v2");
+diff --git a/drivers/soc/imx/soc-imx8m.c b/drivers/soc/imx/soc-imx8m.c
+index ec87d9d878f3..fe111bae38c8 100644
+--- a/drivers/soc/imx/soc-imx8m.c
++++ b/drivers/soc/imx/soc-imx8m.c
+@@ -252,4 +252,5 @@ static int __init imx8_soc_init(void)
+ 	return ret;
+ }
+ device_initcall(imx8_soc_init);
++MODULE_DESCRIPTION("NXP i.MX8M SoC driver");
+ MODULE_LICENSE("GPL");
+diff --git a/drivers/soc/ixp4xx/ixp4xx-npe.c b/drivers/soc/ixp4xx/ixp4xx-npe.c
+index 35825ee95dff..34a6f187c220 100644
+--- a/drivers/soc/ixp4xx/ixp4xx-npe.c
++++ b/drivers/soc/ixp4xx/ixp4xx-npe.c
+@@ -764,6 +764,7 @@ static struct platform_driver ixp4xx_npe_driver = {
+ module_platform_driver(ixp4xx_npe_driver);
+ 
+ MODULE_AUTHOR("Krzysztof Halasa");
++MODULE_DESCRIPTION("Intel IXP4xx Network Processor Engine driver");
+ MODULE_LICENSE("GPL v2");
+ MODULE_FIRMWARE(NPE_A_FIRMWARE);
+ MODULE_FIRMWARE(NPE_B_FIRMWARE);
+diff --git a/drivers/soc/ixp4xx/ixp4xx-qmgr.c b/drivers/soc/ixp4xx/ixp4xx-qmgr.c
+index 244ad8d7e80b..cb112f3643e9 100644
+--- a/drivers/soc/ixp4xx/ixp4xx-qmgr.c
++++ b/drivers/soc/ixp4xx/ixp4xx-qmgr.c
+@@ -465,6 +465,7 @@ static struct platform_driver ixp4xx_qmgr_driver = {
+ };
+ module_platform_driver(ixp4xx_qmgr_driver);
+ 
++MODULE_DESCRIPTION("Intel IXP4xx Queue Manager driver");
+ MODULE_LICENSE("GPL v2");
+ MODULE_AUTHOR("Krzysztof Halasa");
+ 
+diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
+index 046522664dc1..dd70d4d2bed7 100644
+--- a/drivers/soc/mediatek/mtk-cmdq-helper.c
++++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
+@@ -526,4 +526,5 @@ int cmdq_pkt_finalize(struct cmdq_pkt *pkt)
+ }
+ EXPORT_SYMBOL(cmdq_pkt_finalize);
+ 
++MODULE_DESCRIPTION("MediaTek Command Queue (CMDQ) driver");
+ MODULE_LICENSE("GPL v2");
 
-> +
-> +	dma_buffer = dma_heap_buffer_alloc(vdec_heap, size, DMA_HEAP_VALID_FD_FLAGS,
-> +					   DMA_HEAP_VALID_HEAP_FLAGS);
-> +	if (IS_ERR_OR_NULL(dma_buffer)) {
-> +		mtk_v4l2_vdec_err(ctx, "dma heap alloc size=0x%lx failed!", size);
-> +		return PTR_ERR(dma_buffer);
+---
+base-commit: 83a7eefedc9b56fe7bfeff13b6c7356688ffa670
+change-id: 20240611-md-drivers-soc-1780b1939627
 
-This will be incorrect if NULL was returned, because the function will
-return 0. Does dma_heap_buffer_alloc() actually return NULL?
-
-> +	}
-> +
-> +	attach = dma_buf_attach(dma_buffer, dev);
-> +	if (IS_ERR_OR_NULL(attach)) {
-> +		mtk_v4l2_vdec_err(ctx, "dma attach size=0x%lx failed!", size);
-> +		ret = PTR_ERR(attach);
-
-Ditto.
-
-> +		goto err_attach;
-> +	}
-> +
-> +	sgt = dma_buf_map_attachment(attach, DMA_BIDIRECTIONAL);
-> +	if (IS_ERR_OR_NULL(sgt)) {
-> +		mtk_v4l2_vdec_err(ctx, "dma map attach size=0x%lx failed!", size);
-> +		ret = PTR_ERR(sgt);
-
-Ditto.
-
-> +		goto err_sgt;
-> +	}
-> +
-> +	mem->va = dma_buffer;
-
-Isn't this field supposed to point to the kernel mapping of the buffer
-itself? If we need to store the dma_buf pointer, we should probably add
-a separate field to avoid (potentially serious) bugs.
-
-> +	mem->dma_addr = (dma_addr_t)sg_dma_address((sgt)->sgl);
-
-Why is this type cast necessary here?
-
-> +
-> +	if (!mem->va || !mem->dma_addr) {
-
-I don't think any of these 2 conditions are possible, since we already
-checked for successful completion of the functions above. Also 0 is a
-valid DMA address, so it shouldn't be considered an error.
-
-> +		mtk_v4l2_vdec_err(ctx, "dma buffer size=0x%lx failed!", size);
-> +		ret = -EPERM;
-> +		goto err_addr;
-> +	}
-> +
-> +	mem->attach = attach;
-> +	mem->sgt = sgt;
-> +
-> +	return 0;
-> +err_addr:
-
-Please name the labels according to the clean-up step they perform
-first, because it will make it much easier to validate at the goto point
-whether it jumps to the right place.
-
-> +	dma_buf_unmap_attachment(attach, sgt, DMA_BIDIRECTIONAL);
-> +err_sgt:
-> +	dma_buf_detach(dma_buffer, attach);
-> +err_attach:
-> +	dma_buf_put(dma_buffer);
-> +
-> +	return ret;
-> +}
-> +
-> +static void mtk_vcodec_mem_free_nor(void *priv, struct mtk_vcodec_mem *mem)
->  {
->  	enum mtk_instance_type inst_type = *((unsigned int *)priv);
->  	struct platform_device *plat_dev;
-> @@ -110,6 +174,57 @@ void mtk_vcodec_mem_free(void *priv, struct mtk_vcodec_mem *mem)
->  	mem->dma_addr = 0;
->  	mem->size = 0;
->  }
-> +
-> +static void mtk_vcodec_mem_free_sec(struct mtk_vcodec_mem *mem)
-> +{
-> +	if (mem->sgt)
-> +		dma_buf_unmap_attachment(mem->attach, mem->sgt, DMA_BIDIRECTIONAL);
-> +	dma_buf_detach((struct dma_buf *)mem->va, mem->attach);
-> +	dma_buf_put((struct dma_buf *)mem->va);
-> +
-> +	mem->attach = NULL;
-> +	mem->sgt = NULL;
-> +	mem->va = NULL;
-> +	mem->dma_addr = 0;
-> +	mem->size = 0;
-> +}
-> +
-> +int mtk_vcodec_mem_alloc(void *priv, struct mtk_vcodec_mem *mem)
-> +{
-> +	enum mtk_instance_type inst_type = *((unsigned int *)priv);
-> +	int ret;
-> +
-> +	if (inst_type == MTK_INST_DECODER) {
-> +		struct mtk_vcodec_dec_ctx *dec_ctx = priv;
-> +
-> +		if (dec_ctx->is_secure_playback) {
-> +			ret = mtk_vcodec_mem_alloc_sec(dec_ctx, mem);
-> +			goto alloc_end;
-
-Why not just return here directly?
-
-Best regards,
-Tomasz
-
-> +		}
-> +	}
-> +
-> +	ret = mtk_vcodec_mem_alloc_nor(priv, mem);
-> +alloc_end:
-> +
-> +	return ret;
-> +}
-> +EXPORT_SYMBOL(mtk_vcodec_mem_alloc);
-> +
-> +void mtk_vcodec_mem_free(void *priv, struct mtk_vcodec_mem *mem)
-> +{
-> +	enum mtk_instance_type inst_type = *((unsigned int *)priv);
-> +
-> +	if (inst_type == MTK_INST_DECODER) {
-> +		struct mtk_vcodec_dec_ctx *dec_ctx = priv;
-> +
-> +		if (dec_ctx->is_secure_playback) {
-> +			mtk_vcodec_mem_free_sec(mem);
-> +			return;
-> +		}
-> +	}
-> +
-> +	mtk_vcodec_mem_free_nor(priv, mem);
-> +}
->  EXPORT_SYMBOL(mtk_vcodec_mem_free);
->  
->  void *mtk_vcodec_get_hw_dev(struct mtk_vcodec_dec_dev *dev, int hw_idx)
-> @@ -171,3 +286,4 @@ EXPORT_SYMBOL(mtk_vcodec_get_curr_ctx);
->  
->  MODULE_LICENSE("GPL v2");
->  MODULE_DESCRIPTION("Mediatek video codec driver");
-> +MODULE_IMPORT_NS(DMA_BUF);
-> diff --git a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_util.h b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_util.h
-> index 85f615cdd4d3..22078e757ed0 100644
-> --- a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_util.h
-> +++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_util.h
-> @@ -18,6 +18,9 @@ struct mtk_vcodec_mem {
->  	size_t size;
->  	void *va;
->  	dma_addr_t dma_addr;
-> +
-> +	struct dma_buf_attachment *attach;
-> +	struct sg_table *sgt;
->  };
->  
->  struct mtk_vcodec_fb {
-> -- 
-> 2.25.1
-> 
 
