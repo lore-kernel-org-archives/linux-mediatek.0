@@ -4,93 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B450C27C75
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jun 2024 09:44:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 742F9C27C75
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jun 2024 10:20:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pby+/hqkJE/CzcRR1xGYBA9igKHmA+L2OnFUaI9UPwc=; b=zSOaefN+Ap/GWWfWda0l/wnPvE
-	DTaC6K3xZtobGcuzM+AAwPyJOda10msr2CLyKYfQ6MtFzFB/TPxwhMGqeFR89PtULvJDV/aEQlHUU
-	devQceAY5DRaCa/bffzUe5m+riynjavBjwTniehZxgqQYfHhLAbwRp3BARsiGyjT3n2UZ0Vtmkc51
-	XWO2qNs0IUiPeRrYSnZ5+SYxWNDN1KOT0nevoO2pedUYi+cM4jl52nHIDbDcoJ2Ro2s5WShtfWIcw
-	qz0A/927PsHQ93ipsA4ZacJ5016K5zfRHt4KMdiMt2/8idoO0ZynaV5p7NeLrdA8wgPnwPg3Jtgz1
-	MHIyydGw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=j6xMy0PSx7RAK5KyLRoFGIY2S4TSiOFCk9JAjN+55oY=; b=M9juwAMTVBQe2J+4PA+4ZOmvQD
+	GxEZOrXphKvazrcc9qac6UuAWo7U5uvEdLZfKSr+SrgF0Sv0A37y4H3emF7/aAijkUinLAC+Cbuqi
+	Beh0UkQdOUOHiKEUDV2ks1Fk2pQ8CCyr30ziArB9o4zhnQtDCfTOx/vkxbuae0SZlKbUNkV1zQS+0
+	LNIZ7l+KKw66zMjf78pshoGis4shqk96LjRYRHTBD/dT1Vnb7fWwzzf5GoRkJvZhGjTtasC4Lt1Ln
+	K6w8oS2AWk1z4uzffLTEP8eoBBEETclPktVYaEOdEVScyoD0Xa70IyH1QSDHnBXdF18+3JiPEMQpx
+	0egXMTPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sHh0e-0000000G1L7-3kUp;
-	Thu, 13 Jun 2024 09:44:44 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1sHhYz-0000000G7O3-1jN2;
+	Thu, 13 Jun 2024 10:20:13 +0000
+Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sHh0c-0000000G1Kg-3dXz;
-	Thu, 13 Jun 2024 09:44:44 +0000
-X-UUID: 8de56382296911efba8bfb22b0451c12-20240613
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=pby+/hqkJE/CzcRR1xGYBA9igKHmA+L2OnFUaI9UPwc=;
-	b=BGYVVHWQjazqDywqnDvg1nHmn2DknRUSZ9HnhSh6cJx+jx+I5tFR8B/+Gsb29/BsCpE/J/foJ3LrRQtC2ICzcOmNkIjQvhVKQ+BTbAn2ERRqEY55vcPOqQk1WmDkmxMgejGPn93KoF29LarXUX+Ewwy86OMHYfXRrMzNivhB4PQ=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.39,REQID:de20791e-fc9c-475a-9b85-21cfa8c446ec,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:393d96e,CLOUDID:e2f7f193-e2c0-40b0-a8fe-7c7e47299109,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 8de56382296911efba8bfb22b0451c12-20240613
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <yunfei.dong@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1676751666; Thu, 13 Jun 2024 02:44:40 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 13 Jun 2024 17:34:02 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 13 Jun 2024 17:34:01 +0800
-From: Yunfei Dong <yunfei.dong@mediatek.com>
-To: =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
-	<nfraprado@collabora.com>, Sebastian Fricke <sebastian.fricke@collabora.com>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>, Hans Verkuil
-	<hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>, Nathan Hebert <nhebert@chromium.org>,
-	Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-CC: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
-	Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>, "Yunfei
- Dong" <yunfei.dong@mediatek.com>, <linux-media@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v2 2/3] media: mediatek: vcodec: fix vp8 stateless decoder smatch warning
-Date: Thu, 13 Jun 2024 17:33:56 +0800
-Message-ID: <20240613093357.583-3-yunfei.dong@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20240613093357.583-1-yunfei.dong@mediatek.com>
-References: <20240613093357.583-1-yunfei.dong@mediatek.com>
+	id 1sHhYv-0000000G7Ls-0PtI
+	for linux-mediatek@lists.infradead.org;
+	Thu, 13 Jun 2024 10:20:11 +0000
+Received: by mail-pf1-x429.google.com with SMTP id d2e1a72fcca58-705c739b878so1009733b3a.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 13 Jun 2024 03:20:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1718274004; x=1718878804; darn=lists.infradead.org;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=j6xMy0PSx7RAK5KyLRoFGIY2S4TSiOFCk9JAjN+55oY=;
+        b=GtAFkNWKd6ORPIi0RQs34NM6KiXSK+dYehB+riId6UzWjZGli6wIC/dX3BdCUZMBe1
+         2yql+urOXA3ymL+yikxdw2T8oNIfokBAgVM5BORS3pWI+biRbQYTSf+KaCSrrF84Ov1d
+         YpuUZDC6oYvPIKuEgA8es1LnqB6ALTFGlnK9k=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1718274004; x=1718878804;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=j6xMy0PSx7RAK5KyLRoFGIY2S4TSiOFCk9JAjN+55oY=;
+        b=XI+Cfsys9KiU8oBKOtSOyWHt+sgppn8VywQEwUGZKIFBXoNXZueUA3RwBMQhCSP5pb
+         2bFks0imSkyitsB2mDPFDKVU9tF5loXd1UIc29uml6pGKQBh4bwWiMR7hXr/2mAIvijs
+         0c5jAvRuxUcLDb8UnE+Ef6ANJ/vtvR+2AydhT1fnwkB+MgUrjKGfdn6EdXmmDQ2UIfPD
+         qduJSM94aJY5Etos1rIhmdZkHvQKt3gE8WB+CBoYHkFMQsCyfWozkpctpl0w1VYRDW/2
+         GqbpCYeYa4IN6mflx0U8UU2OsAz3MLTRaJbm/ftxzzSmwJCqLsX1DiwZNXTCUOWe4XHi
+         C0dA==
+X-Forwarded-Encrypted: i=1; AJvYcCXTBB4hAZNiQF0MHQqFm+/U2g3ZCbRXI1m8DK6d9XWna+pO55Ocn121w1bKvrt5kg0nAWAk3SQzzjy6wJfXwKAeKYRM1QPzj1slpmU4qC/dyFqv
+X-Gm-Message-State: AOJu0YyfmZmADeWUI+hcuC2SpY7AGWnJreieTrd0cD9iw3V7wySA7I40
+	nSYqqFaFZynzK6IEgNWzivhiQDLgzWveO20yEEmAtNtninA8GoHIBX25yRkY+Q==
+X-Google-Smtp-Source: AGHT+IGvGm28fk+okkNWjfFgYvPyFLTuWgmuTCIzXUdUG0qAQ/FS0ndUR84hPXLwOSrKkTwZkSzbEg==
+X-Received: by 2002:a05:6a20:daa8:b0:1a9:d27c:3151 with SMTP id adf61e73a8af0-1b8bf0c4483mr3508458637.23.1718274003916;
+        Thu, 13 Jun 2024 03:20:03 -0700 (PDT)
+Received: from yuanhsinte.c.googlers.com (60.252.199.104.bc.googleusercontent.com. [104.199.252.60])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-6fedcf36b9esm817047a12.19.2024.06.13.03.20.00
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 13 Jun 2024 03:20:03 -0700 (PDT)
+From: Hsin-Te Yuan <yuanhsinte@chromium.org>
+Date: Thu, 13 Jun 2024 10:19:58 +0000
+Subject: [PATCH] arm64: dts: Fix the value of `dlg,jack-det-rate` mismatch
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--6.149600-8.000000
-X-TMASE-MatchedRID: eyg11LmjlNWoft0ZW3r/iTCaEJt46PppPtDsRiRP0d9h2fnHe1cil/Rm
-	0kmqtH+DgHpD5xuuxKghg4hY1jreIwLz+AfRlRoHoprTEHvewACuiRuR9mCaujedlpL1W1muo8W
-	MkQWv6iXBcIE78YqRWvcUt5lc1lLgRktVxdpRt2LJJDKI2wSGPXZYf4I7zh9XRl1VuAE0tgNlVD
-	g+1TaX7p6oP1a0mRIj
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--6.149600-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 6904F484E0D17E05173576915F85BA6F6D22F5EB803B6C05D060F2EA5985B8F92000:8
-X-MTK: N
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20240613-jack-rate-v1-1-62ee0259e204@chromium.org>
+X-B4-Tracking: v=1; b=H4sIAM3HamYC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
+ vPSU3UzU4B8JSMDIxMDM0Nj3azE5GzdosSSVN1kE3OLtERzs+RUQ0sloPqCotS0zAqwWdGxtbU
+ An6aP6lsAAAA=
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, Hsin-Te Yuan <yuanhsinte@chromium.org>
+X-Mailer: b4 0.13.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240613_024442_922096_881F546D 
-X-CRM114-Status: GOOD (  10.79  )
+X-CRM114-CacheID: sfid-20240613_032009_148587_B702BF00 
+X-CRM114-Status: GOOD (  11.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,42 +95,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fix smatch static checker warning for vdec_vp8_req_if.c. Leading
-to kernel crash when fb is NULL.
+According to Documentation/devicetree/bindings/sound/dialog,da7219.yaml,
+the value of `dlg,jack-det-rate` property should be '32_64' instead of
+'32ms_64ms'.
 
-Fixes: 7a7ae26fd458 ("media: mediatek: vcodec: support stateless VP8 decoding")
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
 ---
- .../mediatek/vcodec/decoder/vdec/vdec_vp8_req_if.c     | 10 +++++++---
- 1 file changed, 7 insertions(+), 3 deletions(-)
+ arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-da7219.dtsi | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi                | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp8_req_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp8_req_if.c
-index e27e728f392e..232ef3bd246a 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp8_req_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp8_req_if.c
-@@ -334,14 +334,18 @@ static int vdec_vp8_slice_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
- 	src_buf_info = container_of(bs, struct mtk_video_dec_buf, bs_buffer);
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-da7219.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-da7219.dtsi
+index 8b57706ac814..586eee79c73c 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-da7219.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-da7219.dtsi
+@@ -27,7 +27,7 @@ da7219_aad {
+ 			dlg,btn-cfg = <50>;
+ 			dlg,mic-det-thr = <500>;
+ 			dlg,jack-ins-deb = <20>;
+-			dlg,jack-det-rate = "32ms_64ms";
++			dlg,jack-det-rate = "32_64";
+ 			dlg,jack-rem-deb = <1>;
  
- 	fb = inst->ctx->dev->vdec_pdata->get_cap_buffer(inst->ctx);
--	dst_buf_info = container_of(fb, struct mtk_video_dec_buf, frame_buffer);
-+	if (!fb) {
-+		mtk_vdec_err(inst->ctx, "fb buffer is NULL");
-+		return -ENOMEM;
-+	}
+ 			dlg,a-d-btn-thr = <0xa>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
+index 789fd0dcc88b..3cd63d1e8f15 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
+@@ -450,7 +450,7 @@ da7219_aad {
+ 			dlg,btn-cfg = <50>;
+ 			dlg,mic-det-thr = <500>;
+ 			dlg,jack-ins-deb = <20>;
+-			dlg,jack-det-rate = "32ms_64ms";
++			dlg,jack-det-rate = "32_64";
+ 			dlg,jack-rem-deb = <1>;
  
--	y_fb_dma = fb ? (u64)fb->base_y.dma_addr : 0;
-+	dst_buf_info = container_of(fb, struct mtk_video_dec_buf, frame_buffer);
-+	y_fb_dma = fb->base_y.dma_addr;
- 	if (inst->ctx->q_data[MTK_Q_DATA_DST].fmt->num_planes == 1)
- 		c_fb_dma = y_fb_dma +
- 			inst->ctx->picinfo.buf_w * inst->ctx->picinfo.buf_h;
- 	else
--		c_fb_dma = fb ? (u64)fb->base_c.dma_addr : 0;
-+		c_fb_dma = fb->base_c.dma_addr;
- 
- 	inst->vsi->dec.bs_dma = (u64)bs->dma_addr;
- 	inst->vsi->dec.bs_sz = bs->size;
+ 			dlg,a-d-btn-thr = <0xa>;
+
+---
+base-commit: cea2a26553ace13ee36b56dc09ad548b5e6907df
+change-id: 20240613-jack-rate-c478fa76ce19
+
+Best regards,
 -- 
-2.18.0
+Hsin-Te Yuan <yuanhsinte@chromium.org>
 
 
