@@ -4,68 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3502C27C4F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jun 2024 10:58:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08BF6C27C79
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jun 2024 11:59:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6QQ5va+aQlfb/vFalaHPg5H34Qi6y4ixcQX/yxfzk4Y=; b=sSaUUjBNfy4OaNXsxRSabtzvOE
-	2lplIrMv/FZ7Jr9c5KEo9zfxc32aMvrMyU3VIS/0EnCMWkB6dxV+2lm1iMPoemtsSGic6s/DQW0Dz
-	ryC5xFJZAZrTaYVpaD0u5FVttEJttZ2NmxF2X1vK5hsfAyvefqAJr6wQ8zF8rwaqVuOSxMdDirz7A
-	sfmNV74eZRyVx58wK3Vj5RxfG0Um/fmPIBzWJj4oC1Ec1Zo9HMfv/uzIIk5r5K/teihi0ghuk2Ic0
-	98FqUCpqdkMwj/7EsVuBUwD43UOUUFiB14yog1N0CHor2QzS72fM+NhVcQ09EMWkdhnGY5fMBrhbO
-	aoiXXbaQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=RUVmviAFFyRpV6wsk/iZMwYGlufLkdnnaJs4+woFVo8=; b=QbN3oX6rlILg+T
+	N420VuwbLiAZWl51Mc5vMVrqNolzKPXJ9Bi/UtHUzfTal+0KJW5Fa2mxGnDOsRRYGw/mMSIMdsgbI
+	sbr1yF2HyNiIUpEzltaysOuGVwbrVbSw4pr+lIUFoU5PZzjAzk0wXoCpKBdmEeu3jd7l+gp5opBZ+
+	PDWPPvtV88oQlzp4kVgwT7IRBn9GI5Jmjpe//qJjxQqb4gQLXp6QGNUu9zxFgrZ7jFxzG3tCXEceU
+	fNgNcM1IiPQWrg9W4I6U2MSrA7BmZ7fiL1KI1l5pIwmavUVXu+5FnZHN+mTI/7vZTrHTUgMnjUH/5
+	yHr+Nyvl8tqHFjxFEoqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sHiAM-0000000GFDf-0deN;
-	Thu, 13 Jun 2024 10:58:50 +0000
-Received: from jabberwock.ucw.cz ([46.255.230.98])
+	id 1sHj6h-0000000GPMf-16xy;
+	Thu, 13 Jun 2024 11:59:07 +0000
+Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sHiAI-0000000GFC7-0epa;
-	Thu, 13 Jun 2024 10:58:47 +0000
-Received: by jabberwock.ucw.cz (Postfix, from userid 1017)
-	id 3E1051C0082; Thu, 13 Jun 2024 12:58:37 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ucw.cz; s=gen1;
-	t=1718276317;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=6QQ5va+aQlfb/vFalaHPg5H34Qi6y4ixcQX/yxfzk4Y=;
-	b=UzwupdY/Ac2rvSWK4CcDb7IHw17P1YQfhSJeFe5Eiaf5ZQnXaNRH7FLMZMq4nUB4esdAa1
-	MdXvLUELmlq3RYK5tK03k0Oxba9oFa+to0qIHHQ4OMxwsVhOqHkw0+qZBpXenPrb/YRxzd
-	m1khVbAGHM8KN8XWo17biXMw9eDXRiE=
-Date: Thu, 13 Jun 2024 12:58:36 +0200
-From: Pavel Machek <pavel@ucw.cz>
-To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>
-Cc: Jassi Brar <jassisinghbrar@gmail.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Jason-ch Chen <jason-ch.chen@mediatek.com>,
-	Singo Chang <singo.chang@mediatek.com>,
-	Nancy Lin <nancy.lin@mediatek.com>,
-	Shawn Sung <shawn.sung@mediatek.com>, linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org,
-	Project_Global_Chrome_Upstream_Group@mediatek.com,
-	Jason-jh Lin <jason-jh.lin@mediatek.corp-partner.google.com>
-Subject: Re: [PATCH RESEND,v6 0/8] Add CMDQ secure driver for SVP
-Message-ID: <ZmrQ3NWxwy8719Vr@duo.ucw.cz>
-References: <20240526144443.14345-1-jason-jh.lin@mediatek.com>
+	id 1sHj6c-0000000GPJq-1RsK
+	for linux-mediatek@lists.infradead.org;
+	Thu, 13 Jun 2024 11:59:04 +0000
+Received: by mail-pj1-x1033.google.com with SMTP id 98e67ed59e1d1-2c3051aee3fso745790a91.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 13 Jun 2024 04:59:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1718279941; x=1718884741; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=RUVmviAFFyRpV6wsk/iZMwYGlufLkdnnaJs4+woFVo8=;
+        b=Er0CzBfy+tFcIUFoe3pCElGiR+jEf97j5XibnpvqROBd4ZZgEekjianFOuzIqov4JF
+         IleHZDlzqrMkswjgDHKY88EtvlcfybFmtl4vf+4bS0ew5Rr221ZYUhI5p2xJn3LPgl3l
+         sj2JN4r5yCIL9HExI4JNEHqN3K7mtwA0tpNfM=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1718279941; x=1718884741;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=RUVmviAFFyRpV6wsk/iZMwYGlufLkdnnaJs4+woFVo8=;
+        b=ZVyiAiOmghBFFbu+AlMjdQKDiFoVFnuiEXclzvi1/wcRY56wZf2XqCRUdWLgVbIK1c
+         m3UsuLU5U75mNc5yUerNzA3/3bDwjBj1xHf0LoDe3rpt0J+viB3OZcOMS3igySMOyO5s
+         IhEhvcVRqPZWG/LjCc2h6LaKlDKf/DUFfCUAM6y6lVcmrNB9FZUPjeKpyOq4q/0OL9J/
+         ATkD/G5nCi6A0080uksH5+F3KfQ+lHygucjkDghzesR1/OuoaWBcv+3KR+A14R/RlqOs
+         y759rlyUr8PtlmzXyIJmA0zm/icMPvTMRTVKCvr6uhsOr63ZPKorAJRBu4ljp+6ntJxe
+         PUbw==
+X-Forwarded-Encrypted: i=1; AJvYcCWtPEUneatwI3k3pF4O7QLRquxDXmQaV+bWcboM0VWa/zuL3da6GmLtnb69WLL502riv6NjlbzAaavyAvluoiBFGfzJibmaktDgK/6bf0O/dQsN
+X-Gm-Message-State: AOJu0Ywppm6mtfp778rTW4Ku6RfHkJsUUnKlevG4msG7FdedufFCSVlG
+	VkcvUo3Agm+A7yoFE92MR2AaoaWpqRpWlIRDtOmR5GNW3SqSfqr+RkT2vWPljg==
+X-Google-Smtp-Source: AGHT+IEHLpea+Zt5sKXcwFlof4YCHcKNSE0NrMfoPexcEsFoAXB4lMjoBLC+b8lATP0BTCtDNShiCg==
+X-Received: by 2002:a17:90a:6b07:b0:2c2:1d0f:3c6e with SMTP id 98e67ed59e1d1-2c4a76d3ac0mr4601923a91.37.1718279941007;
+        Thu, 13 Jun 2024 04:59:01 -0700 (PDT)
+Received: from yuanhsinte.c.googlers.com (60.252.199.104.bc.googleusercontent.com. [104.199.252.60])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2c4c466c3desm1453505a91.46.2024.06.13.04.58.57
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 13 Jun 2024 04:59:00 -0700 (PDT)
+From: Hsin-Te Yuan <yuanhsinte@chromium.org>
+Subject: [PATCH v2 0/2] arm64: dts: Fix the value of `dlg,jack-det-rate`
+ mismatch
+Date: Thu, 13 Jun 2024 11:58:53 +0000
+Message-Id: <20240613-jack-rate-v2-0-ebc5f9f37931@chromium.org>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="0ugZqD1PtgeGMHeh"
-Content-Disposition: inline
-In-Reply-To: <20240526144443.14345-1-jason-jh.lin@mediatek.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAP3eamYC/23MQQ7CIBCF4as0sxYDiNS68h6mC4LTMpoWM1Sia
+ bi72LXL/+XlWyEhEyY4NyswZkoU5xp614APbh5R0K02aKmNtOog7s4/BLsFhTftaXCt9ag6qP8
+ n40Dvzbr2tQOlJfJno7P6rf+UrIQSViNKfexQS3PxgeNEr2kfeYS+lPIFs/5GK6UAAAA=
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, Hsin-Te Yuan <yuanhsinte@chromium.org>
+X-Mailer: b4 0.13.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240613_035846_532947_8DD468FD 
-X-CRM114-Status: UNSURE (   8.99  )
+X-CRM114-CacheID: sfid-20240613_045902_451462_9C9A9B8C 
+X-CRM114-Status: UNSURE (   9.08  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -81,35 +97,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+According to Documentation/devicetree/bindings/sound/dialog,da7219.yaml,
+the value of `dlg,jack-det-rate` property should be like "32_64" instead
+of "32ms_64ms".
 
---0ugZqD1PtgeGMHeh
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
+---
+Changes in v2:
+- Split the changes to two seperateed commits
+- Link to v1: https://lore.kernel.org/r/20240613-jack-rate-v1-1-62ee0259e204@chromium.org
 
-On Sun 2024-05-26 22:44:35, Jason-JH.Lin wrote:
-> From: Jason-jh Lin <jason-jh.lin@mediatek.corp-partner.google.com>
->=20
-> For the Secure Video Path (SVP) feature, inculding the memory stored
-> secure video content, the registers of display HW pipeline and the
-> HW configure operations are required to execute in the secure world.
+---
+Hsin-Te Yuan (2):
+      arm64: dts: mediatek: mt8183-kukui: Fix the value of `dlg,jack-det-rate` mismatch
+      arm64: dts: rockchip: rk3399-gru: Fix the value of `dlg,jack-det-rate` mismatch
 
-This feature goes against interests of hardware users/owners. We
-should not merge this.
-								Pavel
-							=09
---=20
-People of Russia, stop Putin before his war on Ukraine escalates.
+ arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-da7219.dtsi | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi                | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+---
+base-commit: cea2a26553ace13ee36b56dc09ad548b5e6907df
+change-id: 20240613-jack-rate-c478fa76ce19
 
---0ugZqD1PtgeGMHeh
-Content-Type: application/pgp-signature; name="signature.asc"
+Best regards,
+-- 
+Hsin-Te Yuan <yuanhsinte@chromium.org>
 
------BEGIN PGP SIGNATURE-----
-
-iF0EABECAB0WIQRPfPO7r0eAhk010v0w5/Bqldv68gUCZmrQ3AAKCRAw5/Bqldv6
-8hagAJ91OcdTYdDnoCizlMOqRMmJHUnS9QCcDaoEoZdKMTlzCo9uoGaVA2KHcyI=
-=iTbB
------END PGP SIGNATURE-----
-
---0ugZqD1PtgeGMHeh--
 
