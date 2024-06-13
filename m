@@ -4,83 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0971EC27C53
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jun 2024 02:07:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B54CC27C6E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jun 2024 03:02:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=2crroThV307a6U2HBQxfAj7rvwYaNimPg3nw6UZQSko=; b=gHDGL+h0bug4tuAw7F6078TNKx
-	oQ+gldqM59QfaTIgRQhTcxdyIft0/SuSkLBawscNpQbX1ewo2JTzx5WwexRpSLNIFyF7soZLB05n6
-	oBuQqDdd2ZP4DLrF0vfteNIgcuXleW9SvkpGpc5+hp18aGav5mfcoPqbm4yfLg8KWymyavd3ykn/Q
-	3rMxzTyUOY1dcDa5Xe0UWcqIOuDl/YEQK4xOLtvK6cA7+44srTMcM0ktQhTEoO2+gBAeSzSAEm8g1
-	RCTl63sjSRmtKNgIKVSltZ4lQuBBSbwunVHue3KYYZO4tKrFgVyXp4LbSoSC+gRSJunvb3gsWjv+X
-	/09EgbDA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=wjwbybjfnlPDTGv5o9qP6JskFHBy1UjXTbEViuKqIyc=; b=BVvz7GNDOk1lbJ/QjWoBXbJer+
+	r114jdeE1gTYiucmubl9UyoyHFPkE+OEqQIl3ne6RgfWJp+NHPEEF1sKO+1bCGBOju4P1nlXhLdne
+	2zeFZZKZaEkjpf80SlCQjZSWyzif3rYfCGAidUdpw0Axx4UhWn8bE004b1ZkVg8LteasYm8F/Pmlo
+	b6vHON4DkaIuqUj/UUAH7xf+jsuH1kstpTWl8ckJvMhL1RIh+4+WhQSq/vCEU7v+8nKiGqALDthmn
+	FPMqpsHgCtahA3NgiKQvWfFYwA21Fdc3t+oqKFMfXjYvM1cp2K61VaLw/EJzQievzvYw6+ZRbkZop
+	4rV6oC4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sHZsM-0000000EntL-48ZE;
-	Thu, 13 Jun 2024 02:07:43 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1sHajl-0000000EvTp-1CyN;
+	Thu, 13 Jun 2024 03:02:53 +0000
+Received: from mail-oo1-f51.google.com ([209.85.161.51])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sHZsI-0000000Ensb-3llH;
-	Thu, 13 Jun 2024 02:07:41 +0000
-X-UUID: b2ca8500292911efaf04eb0598667787-20240612
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=2crroThV307a6U2HBQxfAj7rvwYaNimPg3nw6UZQSko=;
-	b=fGZSZb0TbzqTWlboQgHS0OUdEKgIdRjjtwWEO7e3LQN0LbngX+cL2FlZPjtigKaS4cgwZBgRcVJJlQCKVotYIPoMntZBp7BXCb34Wf/pBDGkro4kA6vqPg/MX11+IydM5DZ8LK5djVGz+shyBcUYN5rLrSfKeADbqc5bDAtjnE8=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.39,REQID:eb4914a9-ec1a-4c06-bbd7-feed78af3baa,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:393d96e,CLOUDID:cff38244-4544-4d06-b2b2-d7e12813c598,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: b2ca8500292911efaf04eb0598667787-20240612
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
-	(envelope-from <jiaxin.yu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 528386903; Wed, 12 Jun 2024 19:07:34 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 13 Jun 2024 10:07:28 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 13 Jun 2024 10:07:27 +0800
-From: Jiaxin Yu <jiaxin.yu@mediatek.com>
-To: <broonie@kernel.org>
-CC: <linux-sound@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<angelogioacchino.delregno@collabora.com>, Jiaxin Yu <jiaxin.yu@mediatek.com>
-Subject: [PATCH v2] ASoC: mediatek: mt6358: Add "Dmic Mode Switch" kcontrol for switch DMIC mode.
-Date: Thu, 13 Jun 2024 10:07:25 +0800
-Message-ID: <20240613020725.27874-1-jiaxin.yu@mediatek.com>
+	id 1sHaji-0000000EvSk-0T8T
+	for linux-mediatek@lists.infradead.org;
+	Thu, 13 Jun 2024 03:02:52 +0000
+Received: by mail-oo1-f51.google.com with SMTP id 006d021491bc7-5bad7941dcfso26242eaf.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 12 Jun 2024 20:02:47 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1718247766; x=1718852566;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=wjwbybjfnlPDTGv5o9qP6JskFHBy1UjXTbEViuKqIyc=;
+        b=uiXjDTUbZ+q2D8+OalummQ/EU/cGl8jR7AlnZuA7/JTJ+zxSksOFptNWXU5+zGRXwc
+         aekE7XY66CZdxDpPPk5WfbsV+7bXsqr+ACFV6MTEWcO5xmJq8dJ1KHI+BpG9gZGYtFB0
+         UN5RA/9RqLAvxDTfTGjlGMLN6CMIcrhvfgaaj6MR+2m5adkyiyHSxThRBj5CBvU9wPEL
+         2hvgq5c8sFJGGU4t3uNPcoIaILxZQY+/cbSqXTrjiyfpXuAM1MDrUM4MZWqwHrLl602Z
+         DzC5xpdtbvEWSgJRvOyVUq43gNtTuqT6GKZhW45T9JD20FBGO6JUeu+XXI95EFk7Eryu
+         lVOA==
+X-Forwarded-Encrypted: i=1; AJvYcCUo2FDOcbxDfxD02qajTb9YKo0COMa64DV0JySeKH2ZnagzzEoh295N8CE0b1fKucV3kE9xFoEjZGk617KB6A==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxRl7kA5YYNLDDjh0KwlzUqSIUxptRa+WnljJIqf+Qoa9uyLN1M
+	KPwDCkPAFVNfNUFfUrf0ZYYIXdhQ1fONZrzono0e22kqf1u+H/0k
+X-Google-Smtp-Source: AGHT+IER9+Uy+9LreQRT6aeUwKH/q1c4bW65weR/CmRHz5fIl/mNx4PfWXC2BSSQSFLZkz07u24dig==
+X-Received: by 2002:a4a:8552:0:b0:5ba:ca86:a025 with SMTP id 006d021491bc7-5bb3b7a9135mr3995097eaf.0.1718247766411;
+        Wed, 12 Jun 2024 20:02:46 -0700 (PDT)
+Received: from sean-ThinkPad-T450s.lan ([207.191.35.252])
+        by smtp.gmail.com with ESMTPSA id 006d021491bc7-5bd629263c5sm67685eaf.46.2024.06.12.20.02.45
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 12 Jun 2024 20:02:45 -0700 (PDT)
+From: sean.wang@kernel.org
+To: nbd@nbd.name,
+	lorenzo.bianconi@redhat.com
+Cc: sean.wang@mediatek.com,
+	deren.wu@mediatek.com,
+	mingyen.hsieh@mediatek.com,
+	linux-wireless@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH 00/47] Prerequisite Refactoring for Enabling MLO on MT7925
+Date: Wed, 12 Jun 2024 20:01:54 -0700
+Message-Id: <20240613030241.5771-1-sean.wang@kernel.org>
 X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--3.735100-8.000000
-X-TMASE-MatchedRID: 7/lA1c0rODlUeA157rRKD2h77jTUbA6yoA9Le8XJpbovM0Gdq0fzqaJQ
-	wY2eSfAKzQCEFcQpqpiD1p+T3PkHc6o+znd4MHO5KaMQ6tw7oDJUENBIMyKD0bKeTtOdjMy6F8G
-	YXulqwlo0AOwawpZRrJu74XJZgEpKHxPMjOKY7A8LbigRnpKlKTpcQTtiHDgWCGZVZ8EYI018t8
-	OiP4eDQIaxMeSCvXD3QXZ+RKpogWYFpx4IRdvLnIR5/Gw18G/B1f8mlpYseAs8jJT9O16z2i5IC
-	Jp2q1I34sOrsb4iT/K/bbEolHIgZUOc7GjOamnWv5a9cmIodEszD8HZ4XvJ2ZRMZUCEHkRt
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--3.735100-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 4799F9C4A4B70B3A0C2BF48F28D264815A81BBF9223A6F6C1EF8F65DEFDE680F2000:8
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240612_190738_976347_FD7A53B9 
-X-CRM114-Status: GOOD (  12.75  )
+X-CRM114-CacheID: sfid-20240612_200250_279850_284008E9 
+X-CRM114-Status: UNSURE (   9.26  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,89 +83,108 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-There are two hardware connection methods for DMICs on the MT6358. In cases
-where more than two DMICs are used, we need to time-multiplex these DMICs.
-Therefore, we need to dynamically switch the modes of these DMICs based on
-the actual usage scenarios.
+From: Sean Wang <sean.wang@mediatek.com>
 
-            ---- DMIC1
-AU_VIN0 ---
-            ---- DMIC2
+I'm submitting some patches that are essential preliminary steps for getting
+Multi-Link Operation (MLO) up and running smoothly on the MT7925 driver.
 
-AU_VIN2 --- ----DMIC3
+Before we can activate MLO, we need to do some necessary refactoring work.
+This involves adjusting how the driver handles certain commands and data to
+support per-link STA and per-BSS operations. It's like laying down a strong
+foundation so that MLO can seamlessly integrate with our existing setup.
 
-When we want to use DMIC1/2, configure it to one-wire mode. When we want to
-use DMIC1/3, configure it to two-wire mode.
+It's important to note that these patches focus solely on refactoring work.
+We're not changing any of the current functions or logic; we're just making
+sure everything is structured properly to support MLO when it's enabled.
 
-Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
----
- sound/soc/codecs/mt6358.c | 38 +++++++++++++++++++++++++++++++++++++-
- 1 file changed, 37 insertions(+), 1 deletion(-)
+I've tested these patches to make sure they're reliable and won't mess up
+anything that's already working. 
 
-diff --git a/sound/soc/codecs/mt6358.c b/sound/soc/codecs/mt6358.c
-index 0284e29c11d3..9247b90d1b99 100644
---- a/sound/soc/codecs/mt6358.c
-+++ b/sound/soc/codecs/mt6358.c
-@@ -96,7 +96,7 @@ struct mt6358_priv {
- 
- 	int wov_enabled;
- 
--	unsigned int dmic_one_wire_mode;
-+	int dmic_one_wire_mode;
- };
- 
- int mt6358_set_mtkaif_protocol(struct snd_soc_component *cmpnt,
-@@ -577,6 +577,39 @@ static int mt6358_put_wov(struct snd_kcontrol *kcontrol,
- 	return 0;
- }
- 
-+static int mt6358_dmic_mode_get(struct snd_kcontrol *kcontrol,
-+				struct snd_ctl_elem_value *ucontrol)
-+{
-+	struct snd_soc_component *c = snd_soc_kcontrol_component(kcontrol);
-+	struct mt6358_priv *priv = snd_soc_component_get_drvdata(c);
-+
-+	ucontrol->value.integer.value[0] = priv->dmic_one_wire_mode;
-+	dev_dbg(priv->dev, "%s() dmic_mode = %d", __func__, priv->dmic_one_wire_mode);
-+
-+	return 0;
-+}
-+
-+static int mt6358_dmic_mode_set(struct snd_kcontrol *kcontrol,
-+				struct snd_ctl_elem_value *ucontrol)
-+{
-+	struct snd_soc_component *c = snd_soc_kcontrol_component(kcontrol);
-+	struct mt6358_priv *priv = snd_soc_component_get_drvdata(c);
-+	int enabled = ucontrol->value.integer.value[0];
-+
-+	if (enabled < 0 || enabled > 1)
-+		return -EINVAL;
-+
-+	if (priv->dmic_one_wire_mode != enabled) {
-+		priv->dmic_one_wire_mode = enabled;
-+		dev_dbg(priv->dev, "%s() dmic_mode = %d", __func__, priv->dmic_one_wire_mode);
-+
-+		return 1;
-+	}
-+	dev_dbg(priv->dev, "%s() dmic_mode = %d", __func__, priv->dmic_one_wire_mode);
-+
-+	return 0;
-+}
-+
- static const DECLARE_TLV_DB_SCALE(playback_tlv, -1000, 100, 0);
- static const DECLARE_TLV_DB_SCALE(pga_tlv, 0, 600, 0);
- 
-@@ -599,6 +632,9 @@ static const struct snd_kcontrol_new mt6358_snd_controls[] = {
- 
- 	SOC_SINGLE_BOOL_EXT("Wake-on-Voice Phase2 Switch", 0,
- 			    mt6358_get_wov, mt6358_put_wov),
-+
-+	SOC_SINGLE_BOOL_EXT("Dmic Mode Switch", 0,
-+			    mt6358_dmic_mode_get, mt6358_dmic_mode_set),
- };
- 
- /* MUX */
+Deren Wu (5):
+  wifi: mt76: mt792x: add struct mt792x_bss_conf
+  wifi: mt76: mt792x: add struct mt792x_link_sta
+  wifi: mt76: mt792x: add struct mt792x_chanctx
+  wifi: mt76: mt7925: support for split bss_info_changed method
+  wifi: mt76: mt7925: extend mt7925_mcu_set_tx with for per-link BSS
+
+Sean Wang (42):
+  wifi: mt76: mt792x: extend mt76_connac_mcu_uni_add_dev for per-link
+    BSS
+  wifi: mt76: mt7925: extend mt7925_mcu_add_bss_info for per-link BSS
+  wifi: mt76: mt7925: extend mt7925_mcu_set_timing for per-link BSS
+  wifi: mt76: mt7925: extend mt7925_mcu_bss_ifs_tlv for per-link BSS
+  wifi: mt76: mt7925: extend mt7925_mcu_bss_color_tlv for per-link BSS
+  wifi: mt76: mt7925: extend mt7925_mcu_bss_he_tlv for per-link BSS
+  wifi: mt76: mt7925: extend mt7925_mcu_bss_qos_tlv for per-link BSS
+  wifi: mt76: mt7925: extend mt7925_mcu_bss_mld_tlv for per-link BSS
+  wifi: mt76: mt7925: extend mt7925_mcu_bss_bmc_tlv for per-link BSS
+  wifi: mt76: mt7925: remove unused parameters in mt7925_mcu_bss_bmc_tlv
+  wifi: mt76: mt7925: extend mt7925_mcu_bss_sec_tlv for per-link BSS
+  wifi: mt76: mt7925: extend mt7925_mcu_bss_basic_tlv for per-link BSS
+  wifi: mt76: mt7925: extend mt7925_mcu_set_bss_pm for per-link BSS
+  wifi: mt76: mt7925: extend mt7925_mcu_[abort, set]_roc for per-link
+    BSS
+  wifi: mt76: mt7925: extend mt7925_mcu_uni_bss_bcnft for per-link BSS
+  wifi: mt76: mt7925: extend mt7925_mcu_uni_bss_ps for per-link BSS
+  wifi: mt76: mt7925: add mt7925_mcu_bss_rlm_tlv to constitue the RLM
+    TLV
+  wifi: mt76: mt7925: mt7925_mcu_set_chctx rely on
+    mt7925_mcu_bss_rlm_tlv
+  wifi: mt76: mt7925: extend mt7925_mcu_sta_update for per-link STA
+  wifi: mt76: mt7925: extend mt7925_mcu_sta_state_v2_tlv for per-link
+    STA
+  wifi: mt76: mt7925: extend mt7925_mcu_sta_rate_ctrl_tlv with per-link
+    STA
+  wifi: mt76: mt7925: extend mt7925_mcu_sta_eht_tlv for per-link STA
+  wifi: mt76: mt7925: extend mt7925_mcu_sta_he_6g_tlv for per-link STA
+  wifi: mt76: mt7925: extend mt7925_mcu_sta_he_tlv for per-link STA
+  wifi: mt76: mt7925: extend mt7925_mcu_sta_amsdu_tlv for per-link STA
+  wifi: mt76: mt7925: extend mt7925_mcu_sta_vht_tlv for per-link STA
+  wifi: mt76: mt7925: extend mt7925_mcu_sta_ht_tlv for per-link STA
+  wifi: mt76: mt7925: extend mt7925_mcu_sta_phy_tlv for per-link STA
+  wifi: mt76: mt7925: extend mt7925_get_phy_mode_ext for per-link STA
+  wifi: mt76: mt7925: extend mt7925_get_phy_mode for per-link STA
+  wifi: mt76: mt792x: extend mt76_connac_get_phy_mode_v2 for per-link
+    STA
+  wifi: mt76: mt762x:  extend mt76_connac_mcu_sta_basic_tlv for per-link
+    STA
+  wifi: mt76: mt7925: extend mt7925_mcu_sta_hdr_trans_tlv for per-link
+    STA
+  wifi: mt76: mt7925: extend mt7925_mcu_add_bss_info for per-link STA
+  wifi: mt76: mt7925: extend mt7925_mcu_bss_mld_tlv for per-link STA
+  wifi: mt76: mt7925: extend mt7925_mcu_bss_basic_tlv for per-link STA
+  wifi: mt76: mt7925: add mt7925_mac_link_sta_add to create per-link STA
+  wifi: mt76: mt7925: add mt7925_mac_link_sta_assoc to associate
+    per-link STA
+  wifi: mt76: mt7925: add mt7925_mac_link_sta_remove to remove per-link
+    STA
+  wifi: mt76: mt7925: add mt7925_mac_link_bss_add to create per-link BSS
+  wifi: mt76: mt7925: add mt7925_mac_link_bss_remove to remove per-link
+    BSS
+  wifi: mt76: mt7925: simpify mt7925_mcu_sta_cmd logic by removing
+    fw_offload
+
+ .../net/wireless/mediatek/mt76/mt7615/mcu.c   |   8 +-
+ .../wireless/mediatek/mt76/mt76_connac_mcu.c  |  56 +-
+ .../wireless/mediatek/mt76/mt76_connac_mcu.h  |  19 +-
+ .../net/wireless/mediatek/mt76/mt7915/mcu.c   |   4 +-
+ .../net/wireless/mediatek/mt76/mt7921/mac.c   |  66 +--
+ .../net/wireless/mediatek/mt76/mt7921/main.c  | 143 +++--
+ .../net/wireless/mediatek/mt76/mt7921/mcu.c   |  46 +-
+ .../wireless/mediatek/mt76/mt7921/pci_mac.c   |   4 +-
+ .../net/wireless/mediatek/mt76/mt7925/mac.c   |  69 +--
+ .../net/wireless/mediatek/mt76/mt7925/main.c  | 452 +++++++++-------
+ .../net/wireless/mediatek/mt76/mt7925/mcu.c   | 500 ++++++++++--------
+ .../net/wireless/mediatek/mt76/mt7925/mcu.h   |  25 +-
+ .../wireless/mediatek/mt76/mt7925/mt7925.h    |  15 +-
+ .../wireless/mediatek/mt76/mt7925/pci_mac.c   |   4 +-
+ drivers/net/wireless/mediatek/mt76/mt792x.h   |  78 ++-
+ .../net/wireless/mediatek/mt76/mt792x_core.c  |  70 ++-
+ .../net/wireless/mediatek/mt76/mt792x_mac.c   |   8 +-
+ .../net/wireless/mediatek/mt76/mt7996/mcu.c   |   2 +-
+ 18 files changed, 896 insertions(+), 673 deletions(-)
+
 -- 
-2.25.1
+2.34.1
 
 
