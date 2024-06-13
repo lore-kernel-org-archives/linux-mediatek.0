@@ -4,63 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26223C27C4F
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BE89C27C79
 	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jun 2024 19:59:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=wXQkcMf7K3vGWL79rv8fwtNhHLraJL7yxtnHKTEIGkc=; b=xiyeIhTYjtaSfsxBL1bjHXKn6A
-	0QBGsIBj++ujz4ftmhxXILGgdgjNz/uPHltnUEBGFqCGdXCEcaG2bvkqfhARFQhHNPsx7uhwu0QQa
-	4rpq56izFS1AP/DZmfPbMi4sdZkhZ49YvVilIYktr0TyjHpNfr2LdxdjGshAkBPdfA9y7TyHRdm8C
-	45/5yZGXnUk4MZu3Ihfef3ooGMrifv+A6Q/crv7pAi0XqvaW8bZiqWVKOhLzOUkhL/No+r386N7+T
-	rHlxB0svwssYrNwFsQPsNBpGxE30X2yhQLb27Mea/Zjl/BBEImgzJSV6MyMftHg7wGCFqRppk7f0+
-	WXmKZ7EA==;
+	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OrKmU6eRMRuPqBLgOvID9Wsb8PYxyp8mNSsce2VFhn8=; b=ZauFF/mjLz7qx4nZW37oXk4tln
+	qWLGTvvVnrzWWMzvM+ZK/mecwetx6m8BYn80/jJqmxCnNCzHamT/YEJJjIKe42EWN7KiQ2pzvGZEh
+	TurMR59W20CYePZmrTXQ2Jfuz4VuYzI4G/r+1+j/nI8vmcZ+Ie3BtW/ihsEwXpO4IGuf/aDYVDKW2
+	KRKIh5pUWlS5iPNr96cg8GqKJrHXMRskc+tKfA1oeUIhpSBcNR9Gd3FOrrryrbU3YOTJ0FQqoDpV8
+	JtUnr/idsRc2012EmPW/RRjemq4FCmq91Z8RpdbtjnwuLQ3XHFF7LFytz+Q018zgAMI5vFnUbxHH2
+	4+9v6Atw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sHqbu-00000000Lse-1j6V;
-	Thu, 13 Jun 2024 19:59:50 +0000
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+	id 1sHqbv-00000000LtG-0XCy;
+	Thu, 13 Jun 2024 19:59:51 +0000
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sHqbq-00000000Lr1-1HtR;
+	id 1sHqbq-00000000Lr8-1X7y;
 	Thu, 13 Jun 2024 19:59:47 +0000
-Received: by mail-ej1-x62e.google.com with SMTP id a640c23a62f3a-a6f1c4800easo191295366b.3;
-        Thu, 13 Jun 2024 12:59:43 -0700 (PDT)
+Received: by mail-ej1-x634.google.com with SMTP id a640c23a62f3a-a6267778b3aso142783366b.3;
+        Thu, 13 Jun 2024 12:59:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1718308782; x=1718913582; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=wXQkcMf7K3vGWL79rv8fwtNhHLraJL7yxtnHKTEIGkc=;
-        b=DtP3LsMG4Ys0oAVCCyGH+8/SdqL/La0vNsHFYC/jnENUbwRYuZ+OttbBf6cKrCdMhX
-         vpCxbMjEg2aoVeHp14EGmcT7hzxOWQnxXtJRdDdXN7ttX3s6UAgaIYpO0aqsfxPJjyEh
-         fTmOvt8mIfms4chyLBMHsVKEbH6MaiOuyglZ8G+8FTqo1juQGFnuqroS/K/tKN7szJA4
-         t4OiC1cv43FE69TZHXuegYtUEBGDU+xQo1aLkOr/k33/KIqJtroar4af7SB4G3jwZzJB
-         ClcyWICvX7txBHrG0mvQ3GufCa5gicHx7IjjmVSVA8hM0QRRVS6DoYs1ZkpACvyuhL4h
-         ly+w==
+        d=gmail.com; s=20230601; t=1718308785; x=1718913585; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=OrKmU6eRMRuPqBLgOvID9Wsb8PYxyp8mNSsce2VFhn8=;
+        b=WWJzQ9+yRxJkdiXQfTW601mKPXXK46v4nuuwd7szpHjBWXKxSq1BUxMC5vkGgGc/L5
+         HGFWwgyfiTSTF+F2W4/5J3GOlLC5uA5nO+vwHiwk+gah2vXwU2K0hBPRtbz0pwGw/72b
+         EzOnhux0yzUb/NdTkm65vYul38Ihk/OapHD8n3DjJpvaHJCNmF3wC+ezmef/uhhaZ3wc
+         EGR4wLxyV7FtN0SDTxc868dkA7cT+KjBhMRewv9/NFJPvu3dOCYkJeggbQzyU6FjTnsp
+         EjIoJTC2xSIKehySbR/DvQOV0Iu2zyCYEkolXmwaRYj5yymX4YhbonayB2daD383z+8o
+         DviA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1718308782; x=1718913582;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=wXQkcMf7K3vGWL79rv8fwtNhHLraJL7yxtnHKTEIGkc=;
-        b=pKrF9zyPDNUuUNxMKbQ+KoVmAE6dfBJxxQ/aQgYURmi/EbOPSMQ5mlHemmNNvXgKoo
-         jFG89ZxrfAPP/aB6smCGRRr+eTLDerkOnDimb+/dzLYQnynqaPRYvw0YDRSvd1CVoaaG
-         xN5o0AKvvVavEzrO83FBUlflhgWQN2zlugctg75ZvE17kDAIokyq/i7V8CeXD4YafvUA
-         CJSAve81ewe9iT49Db0Z1bPi5SDyDXO9G2DlnKII10UDtzhnjzdcj+skP9Zctrf2kgl5
-         KoWCL72/tshKFlDFRw3cNs7AMWxH+8wlmmAtHfX7pF2Z+S095PfsKqJuzsoNSsBf+rch
-         2f9A==
-X-Forwarded-Encrypted: i=1; AJvYcCWeQp4ipoC1k+X1sYpMQZy0hk6Bnzi+6CCV7xZeP6iU5yObz6sSAMuhYRqH7nQNUoEkbGffWw7PMHx6MhSQzgD8Mk9HBYXVbxaNsP8VgkQTeqfj812dz7SqePokX6zkk0JxxnNqXhapbkdBJijNuwwioC9LfB8aamI=
-X-Gm-Message-State: AOJu0YyGvUxzn9E0JE8U8oFQKSXhLiRIXRbmEtnQ6/rfDtgl44pkj0wo
-	/4JhtxndTHbnmxaIgWuu7VFj6rn0yxzLWjVnt3ABFcNZqUj/K6pz
-X-Google-Smtp-Source: AGHT+IGbxi3EbzRk8sT09GB9OWN57JJRVnLDOjooOUhZQZIgX/n3AQVHTxSPIlOPZ+EnJIp4nwp3fw==
-X-Received: by 2002:a17:906:af08:b0:a6e:f91e:efd0 with SMTP id a640c23a62f3a-a6f60dc56d7mr45513366b.56.1718308782338;
-        Thu, 13 Jun 2024 12:59:42 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1718308785; x=1718913585;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=OrKmU6eRMRuPqBLgOvID9Wsb8PYxyp8mNSsce2VFhn8=;
+        b=JBhRSSB3Dh5uaHrLyS9y+P1RvjItxvjVUQWbXMcHEniwi4MTcuy1Fv9CfdZN2sG/KO
+         iGwj4gF0rVF4i87XF9I1ziWdd7u8QyeiFxS065gSjGbC54ujQ+Ybr5wj4cXRXXxhDbdb
+         4giEJqNPUvw4kZTEsoCJnKxbxhs6Uow8gLSXZUilrMIM2cgvh2HJkVvZJCnlsIbGPlTj
+         7iZhIltEkTWADifaMdoFJkZa31Lf5zS1UCf4y358gKKwPQW0kAXvYUZQiCLSjgTroKIU
+         P6Ci8OBOZZnTMJjGynnjl664yfai80xGhczX5gmUxsQoF1gMkQKfCK38rlZMlS3zkM0X
+         utYg==
+X-Forwarded-Encrypted: i=1; AJvYcCVhuS2anrH+INO6+QwTtd4WKY+h/nuWx0+poMTerLIdmZYMySLI6Ge+rXyDJPMIB934qaY+qdYx2cZSf0oCqTzWKYNIMkN9gMTcX/9X3+ROCKy6TjpTq3GS5eIAv9ZFTgJ0mkozv8byMmpV+wcpSCquGF7yFGNsBmo=
+X-Gm-Message-State: AOJu0Ywj2fagKADahsvEbkTqjAlUofSwL0FtfE2yBfydUh90ANm4ZTpr
+	Z72Z6PTWdSvamgAbwFsto1maD7c0GeCY5iAPkcnzlHXhBTKPq413
+X-Google-Smtp-Source: AGHT+IGDHbDv4ms/P9PrBJz0EAT3HdckMfVEcUXEXk7o27MmRrafM56asxH7zm3TtHDjNE3yVy061w==
+X-Received: by 2002:a17:906:1c55:b0:a6f:3210:ac1d with SMTP id a640c23a62f3a-a6f60de0e05mr47496966b.63.1718308784463;
+        Thu, 13 Jun 2024 12:59:44 -0700 (PDT)
 Received: from localhost.lan (031011218106.poznan.vectranet.pl. [31.11.218.106])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a6f56f9c858sm103092566b.206.2024.06.13.12.59.40
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a6f56f9c858sm103092566b.206.2024.06.13.12.59.43
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 13 Jun 2024 12:59:41 -0700 (PDT)
+        Thu, 13 Jun 2024 12:59:44 -0700 (PDT)
 From: =?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <zajec5@gmail.com>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
@@ -74,16 +75,18 @@ Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>
-Subject: [PATCH 1/2] dt-bindings: nvmem: mediatek: efuse: add support for MT7988
-Date: Thu, 13 Jun 2024 21:59:32 +0200
-Message-Id: <20240613195933.31089-1-zajec5@gmail.com>
+Subject: [PATCH 2/2] arm64: dts: mediatek: mt7988: add efuse block
+Date: Thu, 13 Jun 2024 21:59:33 +0200
+Message-Id: <20240613195933.31089-2-zajec5@gmail.com>
 X-Mailer: git-send-email 2.35.3
+In-Reply-To: <20240613195933.31089-1-zajec5@gmail.com>
+References: <20240613195933.31089-1-zajec5@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240613_125946_380308_43C3A693 
-X-CRM114-Status: UNSURE (   9.49  )
+X-CRM114-CacheID: sfid-20240613_125946_444088_23CCA88A 
+X-CRM114-Status: UNSURE (   9.68  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -101,25 +104,32 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Rafał Miłecki <rafal@milecki.pl>
 
-Add compatible for MT7988 SoC.
+MT7988 (AKA MediaTek Filogic 880) uses efuse for storing calibration
+data.
 
 Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
 ---
- Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml | 1 +
- 1 file changed, 1 insertion(+)
+ arch/arm64/boot/dts/mediatek/mt7988a.dtsi | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml b/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
-index a773101d8538..32b8c1eb4e80 100644
---- a/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
-+++ b/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
-@@ -30,6 +30,7 @@ properties:
-               - mediatek,mt7623-efuse
-               - mediatek,mt7981-efuse
-               - mediatek,mt7986-efuse
-+              - mediatek,mt7988-efuse
-               - mediatek,mt8173-efuse
-               - mediatek,mt8183-efuse
-               - mediatek,mt8186-efuse
+diff --git a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
+index 7690a83911af..c9649b815276 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
+@@ -231,6 +231,13 @@ clock-controller@11f40000 {
+ 			#clock-cells = <1>;
+ 		};
+ 
++		efuse@11f50000 {
++			compatible = "mediatek,mt7988-efuse", "mediatek,efuse";
++			reg = <0 0x11f50000 0 0x1000>;
++			#address-cells = <1>;
++			#size-cells = <1>;
++		};
++
+ 		clock-controller@15000000 {
+ 			compatible = "mediatek,mt7988-ethsys", "syscon";
+ 			reg = <0 0x15000000 0 0x1000>;
 -- 
 2.35.3
 
