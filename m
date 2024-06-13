@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E284C27C53
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jun 2024 03:03:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DABE1C27C53
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jun 2024 03:03:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=C4ipyO6QmN5fpxt1fsns5qX+Z2OCd3HAfhcBpiCjpsI=; b=3zjasmsuPcke2jJx+2EdE8KyG3
-	eU9/HSOlFz7CrAcLif74I8vXJMOS0O89xf7tRIc8JMoVdn3iI4VENk979qj9PQYUbIFrYLcB/QDOi
-	fBap1h4UvVXl1Md1vN/xl/bKWBbEt0xjRJ5rVDOQ//aO5AGj8ZPrNLKZpDOLVyjOXJjIkfaJKR42f
-	agGW8m2KwavFVX5RR9EIjyu8oy1KL0xwo967p2Rgmv8nct1aDijdkQUQVJIq2HEanDrvF2wLhkr7g
-	R4ZR14PrSeEROlbVZs34yALQ3Bdf163qEOtT2Z5yOdxdN1C147G1QhQosyZk1GIA6hLwd58Vue0TF
-	tDQSMPig==;
+	bh=i0dXcuhqd0lvvqm+NBo7m/RnwTDnBF6gybJXfOPI8oU=; b=YNKlBbnlW1rgwRgdO4qYFqAZMd
+	9ICJdUGrWSn6L3U+t0ra/Ld7jFt9TNj4rEP9FMFZ6ztDPRHmKd2DTdcVJOxzcyDUOt40bINhPsNCf
+	+3EHW4fSI2iASNBDF3OcGBCcZy/yhtc3C7HMIX6oRwvRefUT6/gsCoTe6RucVWjOiTBU3TaHOI3JM
+	GPpwUv1kLX5DTtetL17yLRbbDxahHvfO/IuL02WzDnV/V6AY+e40ZAuWfXEZJxc8mM28jOLl3YsBy
+	9S46jZZ+7x8hl/+h9H9lOgxraHtOjsvkRQE3CsAWok7BNV6KdSueLc3sEmBGrGxXbrGXrFi+xfCDx
+	61vt6hug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sHakL-0000000EvpB-3QDG;
-	Thu, 13 Jun 2024 03:03:29 +0000
-Received: from mail-oo1-f44.google.com ([209.85.161.44])
+	id 1sHakO-0000000Evqo-2EqU;
+	Thu, 13 Jun 2024 03:03:32 +0000
+Received: from mail-oa1-f49.google.com ([209.85.160.49])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sHakF-0000000Evkt-2kVZ
+	id 1sHakI-0000000Evml-1bTh
 	for linux-mediatek@lists.infradead.org;
-	Thu, 13 Jun 2024 03:03:27 +0000
-Received: by mail-oo1-f44.google.com with SMTP id 006d021491bc7-5b99ba97d89so25550eaf.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 12 Jun 2024 20:03:23 -0700 (PDT)
+	Thu, 13 Jun 2024 03:03:29 +0000
+Received: by mail-oa1-f49.google.com with SMTP id 586e51a60fabf-250aa23752dso56684fac.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 12 Jun 2024 20:03:25 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1718247802; x=1718852602;
+        d=1e100.net; s=20230601; t=1718247805; x=1718852605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=C4ipyO6QmN5fpxt1fsns5qX+Z2OCd3HAfhcBpiCjpsI=;
-        b=UHoiMdbFw6ekgUVihtL1a+Q2PU5q18sbsIo9cBoAHWZ63mloEGWz5610X4x/NnHLZz
-         o9zoEUsqCnYGAvFTTZ6eU4hYUJ4x9HpTuH5mq9zEjpVJcOzjnn8WeayWCveGp3TCNOrl
-         Qur5siOeHpcRjuh/MyuEuvEjhk7n8kI6XJKDz1s84r5UR/YlGX5dOZbvNjicKkqvAaT+
-         baAWGsOphp4tl6vrVQ5Ty3q7CW3xrrQCLbBTOrtN9Xx2GPbCBC+SsFFVMEzm5DOphtEd
-         tMK8AeTk7itLQSFVDkbp9NRnO/StmaRylM6GSsQtLrmV3T0dkHBiDX4PM5jAZSjXRIdP
-         kLvA==
-X-Forwarded-Encrypted: i=1; AJvYcCV8Xd6kpjZUUqxTfguuVwxHkNYZM3kEB4mbfCiXT8zclHrUbMgC7DRYUCcHeUkSdLaSd3Y1yqwe3Ovdac5bOg/fwvcToQiVTmtuUMs8p8HpyOK4
-X-Gm-Message-State: AOJu0Yw2rOWQiKxw+YKaDNnlrSKs7mFRNN/bzvnYMqocqeUkEMOk37TN
-	bw0o4ID1QoK5Xb7kA+ZY92QLIX5CxVwrM4+t2BMwuq4435Z1t1YO9wjByVY/Et4=
-X-Google-Smtp-Source: AGHT+IFhWFellQ8sEWpUCo0Tcq9fcIuLBFa3mmXqjo9a9JvDP51OBREHjytgdBFwum1XIR64B6bkUg==
-X-Received: by 2002:a05:6820:d88:b0:5ba:ead2:c742 with SMTP id 006d021491bc7-5bb3b7a3d2bmr3671460eaf.0.1718247802154;
-        Wed, 12 Jun 2024 20:03:22 -0700 (PDT)
+        bh=i0dXcuhqd0lvvqm+NBo7m/RnwTDnBF6gybJXfOPI8oU=;
+        b=BCEH3x5CH+Wp93a/KTALM9ffhCTQCCJ7tZ7NEj7Sd7eDYRa9MUHM/4mMDRc8gpGsBn
+         7ZK++wp7g5Iji0Fefv3vmLdY2T+oFNg92IUugGuar1HCfdcii5R7loCeFwUr1YxVgj02
+         bw0MxcrDMciTWNlmVNH2RhkBH3VqK0YdX7JZbtYr9YJzf53wSvoyJRASnioCdMlD4MjK
+         janTAk04STJFECzXy0MLZzlGaKwX4zKCZXyW+DCXT0faLvU+xY9cZE/fsUiegHCMlvTL
+         iHWiQPXJXyyGyNyyz3BGZ78q7Z5pE/l2sOzHmx5YUtiQ8FBn0b9+jwTrjVLppaxFQ+gF
+         jeNA==
+X-Forwarded-Encrypted: i=1; AJvYcCXCnYbV3lbzZzfDGdJT/dgTPIgelgbqtr6ce7C4JjAWi62D3Qt1ciqQOmfommd3c9Qr6IMvyNh6eLqjBwjh6A==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx14IhcO18U6sTNojfzTNkWfozg4OtzZpTFNdBjmXbkzMgJeCtL
+	G8xmeXc1VvpeUPuCtLg4Dkf+2YiBicAY774Yg+NXlIwXVEJsdYqt
+X-Google-Smtp-Source: AGHT+IHi7rQNTqoSwiFznMBjXn3k3B1PCO5vHCiG3wFDk2jnlRKV9q6PICtm0P8Y3Y5/9BSnjwQ0wQ==
+X-Received: by 2002:a05:6820:b0b:b0:5ba:c4ed:ee98 with SMTP id 006d021491bc7-5bb3b7a4c51mr3589757eaf.0.1718247805119;
+        Wed, 12 Jun 2024 20:03:25 -0700 (PDT)
 Received: from sean-ThinkPad-T450s.lan ([207.191.35.252])
-        by smtp.gmail.com with ESMTPSA id 006d021491bc7-5bd629263c5sm67685eaf.46.2024.06.12.20.03.20
+        by smtp.gmail.com with ESMTPSA id 006d021491bc7-5bd629263c5sm67685eaf.46.2024.06.12.20.03.24
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 12 Jun 2024 20:03:20 -0700 (PDT)
+        Wed, 12 Jun 2024 20:03:24 -0700 (PDT)
 From: sean.wang@kernel.org
 To: nbd@nbd.name,
 	lorenzo.bianconi@redhat.com
@@ -59,17 +59,17 @@ Cc: sean.wang@mediatek.com,
 	mingyen.hsieh@mediatek.com,
 	linux-wireless@vger.kernel.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH 16/47] wifi: mt76: mt7925: extend mt7925_mcu_bss_sec_tlv for per-link BSS
-Date: Wed, 12 Jun 2024 20:02:10 -0700
-Message-Id: <20240613030241.5771-17-sean.wang@kernel.org>
+Subject: [PATCH 18/47] wifi: mt76: mt7925: extend mt7925_mcu_set_bss_pm for per-link BSS
+Date: Wed, 12 Jun 2024 20:02:12 -0700
+Message-Id: <20240613030241.5771-19-sean.wang@kernel.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20240613030241.5771-1-sean.wang@kernel.org>
 References: <20240613030241.5771-1-sean.wang@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240612_200323_757073_BD4535C8 
-X-CRM114-Status: GOOD (  11.05  )
+X-CRM114-CacheID: sfid-20240612_200326_449524_33BE4E04 
+X-CRM114-Status: GOOD (  13.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,7 +86,7 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Sean Wang <sean.wang@mediatek.com>
 
-Extend mt7925_mcu_bss_sec_tlv with per-link BSS configuration.
+Extend mt7925_mcu_set_bss_pm with per-link BSS configuration.
 
 The patch we created is a prerequisite to enable the MLO function in the
 driver. It is purely a refactoring patch so the functionality should
@@ -96,36 +96,100 @@ Co-developed-by: Deren Wu <deren.wu@mediatek.com>
 Signed-off-by: Deren Wu <deren.wu@mediatek.com>
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7925/mcu.c | 8 +++++---
- 1 file changed, 5 insertions(+), 3 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7925/main.c  |  4 ++--
+ drivers/net/wireless/mediatek/mt76/mt7925/mcu.c   | 15 ++++++++-------
+ .../net/wireless/mediatek/mt76/mt7925/mt7925.h    |  3 ++-
+ 3 files changed, 12 insertions(+), 10 deletions(-)
 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+index 457e1fa2fde1..aeed2c777a20 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+@@ -1263,7 +1263,7 @@ mt7925_start_ap(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 	if (err)
+ 		goto out;
+ 
+-	err = mt7925_mcu_set_bss_pm(dev, vif, true);
++	err = mt7925_mcu_set_bss_pm(dev, link_conf, true);
+ 	if (err)
+ 		goto out;
+ 
+@@ -1285,7 +1285,7 @@ mt7925_stop_ap(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 
+ 	mt792x_mutex_acquire(dev);
+ 
+-	err = mt7925_mcu_set_bss_pm(dev, vif, false);
++	err = mt7925_mcu_set_bss_pm(dev, link_conf, false);
+ 	if (err)
+ 		goto out;
+ 
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-index 797d4c936fec..028c94d8c21f 100644
+index 18e19ffdbb7e..0350f0e34690 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-@@ -2132,9 +2132,11 @@ mt7925_mcu_bss_basic_tlv(struct sk_buff *skb,
+@@ -1319,10 +1319,11 @@ mt7925_mcu_uni_bss_bcnft(struct mt792x_dev *dev, struct ieee80211_vif *vif,
  }
  
- static void
--mt7925_mcu_bss_sec_tlv(struct sk_buff *skb, struct ieee80211_vif *vif)
-+mt7925_mcu_bss_sec_tlv(struct sk_buff *skb,
-+		       struct ieee80211_bss_conf *link_conf)
+ int
+-mt7925_mcu_set_bss_pm(struct mt792x_dev *dev, struct ieee80211_vif *vif,
++mt7925_mcu_set_bss_pm(struct mt792x_dev *dev,
++		      struct ieee80211_bss_conf *link_conf,
+ 		      bool enable)
  {
--	struct mt76_vif *mvif = (struct mt76_vif *)vif->drv_priv;
+-	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
 +	struct mt792x_bss_conf *mconf = mt792x_link_conf_to_mconf(link_conf);
-+	struct mt76_vif *mvif = &mconf->mt76;
- 	struct bss_sec_tlv {
- 		__le16 tag;
- 		__le16 len;
-@@ -2333,7 +2335,7 @@ int mt7925_mcu_add_bss_info(struct mt792x_phy *phy,
- 	/* bss_basic must be first */
- 	mt7925_mcu_bss_basic_tlv(skb, link_conf->vif, sta, ctx, phy->mt76,
- 				 mvif->sta.deflink.wcid.idx, enable);
--	mt7925_mcu_bss_sec_tlv(skb, link_conf->vif);
-+	mt7925_mcu_bss_sec_tlv(skb, link_conf);
+ 	struct {
+ 		struct {
+ 			u8 bss_idx;
+@@ -1339,13 +1340,13 @@ mt7925_mcu_set_bss_pm(struct mt792x_dev *dev, struct ieee80211_vif *vif,
+ 		} __packed enable;
+ 	} req = {
+ 		.hdr = {
+-			.bss_idx = mvif->bss_conf.mt76.idx,
++			.bss_idx = mconf->mt76.idx,
+ 		},
+ 		.enable = {
+ 			.tag = cpu_to_le16(UNI_BSS_INFO_BCNFT),
+ 			.len = cpu_to_le16(sizeof(struct bcnft_tlv)),
+-			.dtim_period = vif->bss_conf.dtim_period,
+-			.bcn_interval = cpu_to_le16(vif->bss_conf.beacon_int),
++			.dtim_period = link_conf->dtim_period,
++			.bcn_interval = cpu_to_le16(link_conf->beacon_int),
+ 		},
+ 	};
+ 	struct {
+@@ -1359,7 +1360,7 @@ mt7925_mcu_set_bss_pm(struct mt792x_dev *dev, struct ieee80211_vif *vif,
+ 		} __packed disable;
+ 	} req1 = {
+ 		.hdr = {
+-			.bss_idx = mvif->bss_conf.mt76.idx,
++			.bss_idx = mconf->mt76.idx,
+ 		},
+ 		.disable = {
+ 			.tag = cpu_to_le16(UNI_BSS_INFO_PM_DISABLE),
+@@ -1693,7 +1694,7 @@ int mt7925_mcu_set_beacon_filter(struct mt792x_dev *dev,
+ 					       MT_WF_RFCR_DROP_OTHER_BEACON);
+ 	}
  
- 	mt7925_mcu_bss_bmc_tlv(skb, phy, ctx, link_conf);
- 	mt7925_mcu_bss_qos_tlv(skb, link_conf);
+-	err = mt7925_mcu_set_bss_pm(dev, vif, false);
++	err = mt7925_mcu_set_bss_pm(dev, &vif->bss_conf, false);
+ 	if (err)
+ 		return err;
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h b/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
+index f689f7a359ea..07ea03195e4e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
+@@ -192,7 +192,8 @@ int __mt7925_start(struct mt792x_phy *phy);
+ int mt7925_register_device(struct mt792x_dev *dev);
+ void mt7925_unregister_device(struct mt792x_dev *dev);
+ int mt7925_run_firmware(struct mt792x_dev *dev);
+-int mt7925_mcu_set_bss_pm(struct mt792x_dev *dev, struct ieee80211_vif *vif,
++int mt7925_mcu_set_bss_pm(struct mt792x_dev *dev,
++			  struct ieee80211_bss_conf *link_conf,
+ 			  bool enable);
+ int mt7925_mcu_sta_update(struct mt792x_dev *dev, struct ieee80211_sta *sta,
+ 			  struct ieee80211_vif *vif, bool enable,
 -- 
 2.34.1
 
