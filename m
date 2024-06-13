@@ -4,82 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E797DC27C79
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jun 2024 07:57:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B28BDC27C75
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jun 2024 08:01:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oSRSSyNjG8B87P8wqMLA2MO1DUX1UNftaGvOimEvHaQ=; b=mbzzLg0zbUuJI21qO6la8FxEMy
-	4ln5vkzOYgXYRaPI9NyC4cJKfjpVEn1CLTkCDTXdsfDDkDM6lS+2gbYzNGp+Q2XdLVlleqlsOf/rx
-	TVSSyvJW7kwPel//YpamhGHpW+Z1eMKX6cf5+//An06CmrntUR++GAj3jHr89K9vMq2Rf2gLgqp/E
-	xRq1Rp/rou5YLRSqaFPfaJoUOtHxFsRcHQiGbCSry7PJgBB6TuXwx7mZjTn+hpFx8lw4loxws36zO
-	tAMh4E6N6l2U5UJRFgV7l7VihuXPT1DF8agPdNrqIf5PqTN2rw89GB41+8PCuiJMHNMZDQJD+I7iD
-	eEq4whDQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:To:
+	From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=HT3/lc2GngZz5E0TuG728E4qmHMo2b7YBCH4DcUIrB4=; b=pq33X1+xpLlIzBQPwTCBgM0ByO
+	k7W6q+u2AWryYMBVucD6ZessCXBMN/178Xz/d3Ec/dYZLJDQVkMc3P/ShVH1vhfwJPhtguwisvK/T
+	rBqymDeXlGLgnTundZ25ZQKk70M2icqWMmeuO543e8DtEXkIUso2qEG0x4iMU2DCwSnaPQKdxIrhg
+	ctQfWyCVsLXcQYGnywieGa5F5rIa/y1PSfHx0pk3OXO10YI+/4bGhb8Xydw/40TOS//5QVMJDh8mQ
+	c/BWIbvGyVDZB7shtaTLg8Ybdefge+l0Ussm0LArstG9C0P9MZkJ4rNP6nMbXP9MCD+XWpRaqETit
+	MOY5G3yQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sHfKa-0000000FaG0-1mLd;
-	Thu, 13 Jun 2024 07:57:12 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1sHfOg-0000000FbQp-0cSd;
+	Thu, 13 Jun 2024 08:01:26 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sHfKW-0000000FaEJ-3sdO;
-	Thu, 13 Jun 2024 07:57:10 +0000
-X-UUID: 86138378295a11efaf04eb0598667787-20240613
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=oSRSSyNjG8B87P8wqMLA2MO1DUX1UNftaGvOimEvHaQ=;
-	b=KRr0svgllOKPWabLV7LUB9/qd4PCAIzCgt5vjWmD/IlTxu2T5cK6+Bqqf2zU2Lg0axYwluVfW52dRRO9LgMYPNtPUTi/msfdfSBas5YZIxP57pSj59RbNgbt3q5gtI0sib2SGKOHCTJs8BPCeU3q3Cz1tBsbzLAQbYdwO9Q3BCE=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.39,REQID:ccc2f35f-c73c-43af-977c-293feaca94ab,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:393d96e,CLOUDID:ca098744-4544-4d06-b2b2-d7e12813c598,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 86138378295a11efaf04eb0598667787-20240613
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
-	(envelope-from <yunfei.dong@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2140268967; Thu, 13 Jun 2024 00:57:04 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 13 Jun 2024 15:56:30 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 13 Jun 2024 15:56:30 +0800
-From: Yunfei Dong <yunfei.dong@mediatek.com>
-To: =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
-	<nfraprado@collabora.com>, Sebastian Fricke <sebastian.fricke@collabora.com>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>, Hans Verkuil
-	<hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>, Nathan Hebert <nhebert@chromium.org>,
-	Daniel Almeida <daniel.almeida@collabora.com>
-CC: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
-	Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>, Yunfei
- Dong <yunfei.dong@mediatek.com>, <linux-media@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v3 5/7] media: mediatek: vcodec: store source vb2 buffer
-Date: Thu, 13 Jun 2024 15:55:30 +0800
-Message-ID: <20240613075532.32128-6-yunfei.dong@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20240613075532.32128-1-yunfei.dong@mediatek.com>
-References: <20240613075532.32128-1-yunfei.dong@mediatek.com>
+	id 1sHfOb-0000000FbOq-3ttF;
+	Thu, 13 Jun 2024 08:01:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1718265678;
+	bh=wbyJLiiccUCYB2zQ+xDgPMn5sJZiH3NYN8ymff9xip0=;
+	h=From:To:In-Reply-To:References:Subject:Date:From;
+	b=1gIWHpeX9ArQUPA+l2Bs5OXv0HqNko8JXsrMO8/bzJfar+d0DH5A7zwcVB3JokMqv
+	 sdTkr7oll0IM3wf3ZIdP1ErQmSwO2ABvI7u/7APCj7lONW+Gz3H9HG/RKjoXAGTjxi
+	 oFN0MELbxlKKDoJLrHdXl+eFJH3sz00dproVxAFswJLYEp/Vjsxp9O/9autAySlINV
+	 AOn5m9jsrqN5udj3R1SVt80t/c5eRorxrKo8HdRWvk+aEa40/xIdzYnloBZazvAC+m
+	 8+1CaBZd4cjFQ/MU6KEOrdKRTO1gXIak8LlqqU9uW1Lpu96jbGOGQ0iaweeAnaLQze
+	 un+j2pWwFwAtg==
+Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 22ECA3782158;
+	Thu, 13 Jun 2024 08:01:18 +0000 (UTC)
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20240612092421.52917-1-krzysztof.kozlowski@linaro.org>
+References: <20240612092421.52917-1-krzysztof.kozlowski@linaro.org>
+Subject: Re: [PATCH v2 1/3] arm64: dts: mediatek: mt8365: drop incorrect
+ power-domain-cells
+Message-Id: <171826567806.48354.15294674818509794534.b4-ty@collabora.com>
+Date: Thu, 13 Jun 2024 10:01:18 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.13.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240613_005709_000995_735CA91D 
-X-CRM114-Status: GOOD (  13.91  )
+X-CRM114-CacheID: sfid-20240613_010122_214141_AD2F52F1 
+X-CRM114-Status: UNSURE (   5.60  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,74 +78,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Store the current vb2 buffer when lat need to decode
-again. Then lat work can get the same vb2 buffer directly
-next time.
+On Wed, 12 Jun 2024 11:24:19 +0200, Krzysztof Kozlowski wrote:
+> The top SCPSYS node is not a power domain provider.  It's child
+> "power-controller" is instead.
+> 
+> 
 
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
----
- .../mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h      |  2 ++
- .../vcodec/decoder/mtk_vcodec_dec_stateless.c         | 11 ++++++++---
- 2 files changed, 10 insertions(+), 3 deletions(-)
+Applied to v6.10-next/dts64, thanks!
 
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
-index 1fabe8c5b7a4..0817be73f8e0 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
-@@ -155,6 +155,7 @@ struct mtk_vcodec_dec_pdata {
-  * @last_decoded_picinfo: pic information get from latest decode
-  * @empty_flush_buf: a fake size-0 capture buffer that indicates flush. Used
-  *		     for stateful decoder.
-+ * @last_vb2_v4l2_src: the backup of current source buffer.
-  * @is_flushing: set to true if flushing is in progress.
-  *
-  * @current_codec: current set input codec, in V4L2 pixel format
-@@ -201,6 +202,7 @@ struct mtk_vcodec_dec_ctx {
- 	struct work_struct decode_work;
- 	struct vdec_pic_info last_decoded_picinfo;
- 	struct v4l2_m2m_buffer empty_flush_buf;
-+	struct vb2_v4l2_buffer *last_vb2_v4l2_src;
- 	bool is_flushing;
- 
- 	u32 current_codec;
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
-index 2a7e4fe24ed3..8aa379872ddc 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
-@@ -320,7 +320,7 @@ static void mtk_vdec_worker(struct work_struct *work)
- 	struct mtk_vcodec_dec_ctx *ctx =
- 		container_of(work, struct mtk_vcodec_dec_ctx, decode_work);
- 	struct mtk_vcodec_dec_dev *dev = ctx->dev;
--	struct vb2_v4l2_buffer *vb2_v4l2_src;
-+	struct vb2_v4l2_buffer *vb2_v4l2_src = ctx->last_vb2_v4l2_src;
- 	struct vb2_buffer *vb2_src;
- 	struct mtk_vcodec_mem *bs_src;
- 	struct mtk_video_dec_buf *dec_buf_src;
-@@ -329,7 +329,7 @@ static void mtk_vdec_worker(struct work_struct *work)
- 	bool res_chg = false;
- 	int ret;
- 
--	vb2_v4l2_src = v4l2_m2m_next_src_buf(ctx->m2m_ctx);
-+	vb2_v4l2_src = vb2_v4l2_src ? vb2_v4l2_src : v4l2_m2m_next_src_buf(ctx->m2m_ctx);
- 	if (!vb2_v4l2_src) {
- 		v4l2_m2m_job_finish(dev->m2m_dev_dec, ctx->m2m_ctx);
- 		mtk_v4l2_vdec_dbg(1, ctx, "[%d] no available source buffer", ctx->id);
-@@ -383,8 +383,13 @@ static void mtk_vdec_worker(struct work_struct *work)
- 			v4l2_ctrl_request_complete(src_buf_req, &ctx->ctrl_hdl);
- 		v4l2_m2m_buf_done_and_job_finish(dev->m2m_dev_dec, ctx->m2m_ctx, state);
- 	} else {
--		if (ret != -EAGAIN)
-+		if (ret != -EAGAIN) {
- 			v4l2_m2m_src_buf_remove(ctx->m2m_ctx);
-+			ctx->last_vb2_v4l2_src = NULL;
-+		} else {
-+			ctx->last_vb2_v4l2_src = vb2_v4l2_src;
-+		}
-+
- 		v4l2_m2m_job_finish(dev->m2m_dev_dec, ctx->m2m_ctx);
- 	}
- }
--- 
-2.18.0
+[1/3] arm64: dts: mediatek: mt8365: drop incorrect power-domain-cells
+      commit: 24d29b58184973d328c3a17d007bb21e423ea414
+[2/3] arm64: dts: mediatek: mt8365: use a specific SCPSYS compatible
+      commit: 58adf8df342bbdd0e821750b103e7be6e5e2fd5f
+[3/3] arm64: dts: mediatek: mt8173-elm: drop PMIC's syscon node
+      commit: e7450bc4f8f187b87522d992c3e226dadeac3ba6
+
+Cheers,
+Angelo
+
 
 
