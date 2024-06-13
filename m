@@ -4,90 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BE89C27C79
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jun 2024 19:59:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D6E4C27C4F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jun 2024 20:59:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OrKmU6eRMRuPqBLgOvID9Wsb8PYxyp8mNSsce2VFhn8=; b=ZauFF/mjLz7qx4nZW37oXk4tln
-	qWLGTvvVnrzWWMzvM+ZK/mecwetx6m8BYn80/jJqmxCnNCzHamT/YEJJjIKe42EWN7KiQ2pzvGZEh
-	TurMR59W20CYePZmrTXQ2Jfuz4VuYzI4G/r+1+j/nI8vmcZ+Ie3BtW/ihsEwXpO4IGuf/aDYVDKW2
-	KRKIh5pUWlS5iPNr96cg8GqKJrHXMRskc+tKfA1oeUIhpSBcNR9Gd3FOrrryrbU3YOTJ0FQqoDpV8
-	JtUnr/idsRc2012EmPW/RRjemq4FCmq91Z8RpdbtjnwuLQ3XHFF7LFytz+Q018zgAMI5vFnUbxHH2
-	4+9v6Atw==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=vkHkCaWtDIfpH8ijSazjk6Jfhs+hqJsnwjns3+SaeCg=; b=vlQPg3qhh+iss2/XaMZk76kzXB
+	8OmD8ttWgP9MsymQGbYIC2t+aw+Vv4ZO5ejlEw2dhQPNAMIqUqymWsCpM1WHSQdu4w85ns3psgwBD
+	Re5x2uqJRIdDYcYqjOivA3biji5wDO3EfbIhtKjlahRRvBcUIkPrZErV8yGvk/3isWX4B7KQFQigF
+	sZUJ2HVz355qPThkOpUB2gBQxnI4yCwJQaxTh3SXJx2mhggzSZmBDWc6A5k4vXTvFQybw16iB+6ML
+	N4yO6nG2LPUW6jDVbW7Tv3kY+QMGVGI0heve1uzIoRGOQrYYGrLXYu2H95+4wMcAJwO7n6vg/tgf+
+	FmlnZJ5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sHqbv-00000000LtG-0XCy;
-	Thu, 13 Jun 2024 19:59:51 +0000
-Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
+	id 1sHrXg-00000000Tdg-339G;
+	Thu, 13 Jun 2024 20:59:32 +0000
+Received: from smtp-67.smtpout.orange.fr ([80.12.242.67] helo=msa.smtpout.orange.fr)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sHqbq-00000000Lr8-1X7y;
-	Thu, 13 Jun 2024 19:59:47 +0000
-Received: by mail-ej1-x634.google.com with SMTP id a640c23a62f3a-a6267778b3aso142783366b.3;
-        Thu, 13 Jun 2024 12:59:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1718308785; x=1718913585; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=OrKmU6eRMRuPqBLgOvID9Wsb8PYxyp8mNSsce2VFhn8=;
-        b=WWJzQ9+yRxJkdiXQfTW601mKPXXK46v4nuuwd7szpHjBWXKxSq1BUxMC5vkGgGc/L5
-         HGFWwgyfiTSTF+F2W4/5J3GOlLC5uA5nO+vwHiwk+gah2vXwU2K0hBPRtbz0pwGw/72b
-         EzOnhux0yzUb/NdTkm65vYul38Ihk/OapHD8n3DjJpvaHJCNmF3wC+ezmef/uhhaZ3wc
-         EGR4wLxyV7FtN0SDTxc868dkA7cT+KjBhMRewv9/NFJPvu3dOCYkJeggbQzyU6FjTnsp
-         EjIoJTC2xSIKehySbR/DvQOV0Iu2zyCYEkolXmwaRYj5yymX4YhbonayB2daD383z+8o
-         DviA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1718308785; x=1718913585;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=OrKmU6eRMRuPqBLgOvID9Wsb8PYxyp8mNSsce2VFhn8=;
-        b=JBhRSSB3Dh5uaHrLyS9y+P1RvjItxvjVUQWbXMcHEniwi4MTcuy1Fv9CfdZN2sG/KO
-         iGwj4gF0rVF4i87XF9I1ziWdd7u8QyeiFxS065gSjGbC54ujQ+Ybr5wj4cXRXXxhDbdb
-         4giEJqNPUvw4kZTEsoCJnKxbxhs6Uow8gLSXZUilrMIM2cgvh2HJkVvZJCnlsIbGPlTj
-         7iZhIltEkTWADifaMdoFJkZa31Lf5zS1UCf4y358gKKwPQW0kAXvYUZQiCLSjgTroKIU
-         P6Ci8OBOZZnTMJjGynnjl664yfai80xGhczX5gmUxsQoF1gMkQKfCK38rlZMlS3zkM0X
-         utYg==
-X-Forwarded-Encrypted: i=1; AJvYcCVhuS2anrH+INO6+QwTtd4WKY+h/nuWx0+poMTerLIdmZYMySLI6Ge+rXyDJPMIB934qaY+qdYx2cZSf0oCqTzWKYNIMkN9gMTcX/9X3+ROCKy6TjpTq3GS5eIAv9ZFTgJ0mkozv8byMmpV+wcpSCquGF7yFGNsBmo=
-X-Gm-Message-State: AOJu0Ywj2fagKADahsvEbkTqjAlUofSwL0FtfE2yBfydUh90ANm4ZTpr
-	Z72Z6PTWdSvamgAbwFsto1maD7c0GeCY5iAPkcnzlHXhBTKPq413
-X-Google-Smtp-Source: AGHT+IGDHbDv4ms/P9PrBJz0EAT3HdckMfVEcUXEXk7o27MmRrafM56asxH7zm3TtHDjNE3yVy061w==
-X-Received: by 2002:a17:906:1c55:b0:a6f:3210:ac1d with SMTP id a640c23a62f3a-a6f60de0e05mr47496966b.63.1718308784463;
-        Thu, 13 Jun 2024 12:59:44 -0700 (PDT)
-Received: from localhost.lan (031011218106.poznan.vectranet.pl. [31.11.218.106])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a6f56f9c858sm103092566b.206.2024.06.13.12.59.43
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 13 Jun 2024 12:59:44 -0700 (PDT)
-From: =?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <zajec5@gmail.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>
-Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
-	Lala Lin <lala.lin@mediatek.com>,
-	devicetree@vger.kernel.org,
+	id 1sHrXd-00000000TcN-2wtY;
+	Thu, 13 Jun 2024 20:59:31 +0000
+Received: from fedora.home ([86.243.222.230])
+	by smtp.orange.fr with ESMTPA
+	id HrXUsAUflNbytHrXUsgDhP; Thu, 13 Jun 2024 22:59:24 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wanadoo.fr;
+	s=t20230301; t=1718312364;
+	bh=vkHkCaWtDIfpH8ijSazjk6Jfhs+hqJsnwjns3+SaeCg=;
+	h=From:To:Subject:Date:Message-ID:MIME-Version;
+	b=g/xzsFh2MkamRdsQKDv53s+bAw6tPvjMHfmSFNRtrNOApkoOHKjv8Wc8/TdKeyfHC
+	 ipqv5H/DVpYWUGNABFHxxry+9ml49vL45+z9DUtryf5awGJe4IKtn91XOCKo/UcemF
+	 LWS2tvL39XMnecXlmQK76b+veHt/RUwr0gTF5p+XivJpqZkj0eHJgUnQ/9fSDXHckf
+	 uThafhO/uCu9jHd4W8CVwelQm+aXU/6hIARUdCqqg7nfteQd2ljfqKlUEW0D1JELkH
+	 X9SbpLIpyg4rCTrU/jJSvugjpRUz1PYc7WmD47W0TZjy0vTSrA+Bk0IZ7D6tVYxwxl
+	 kzn6hRUxIzbzg==
+X-ME-Helo: fedora.home
+X-ME-Auth: Y2hyaXN0b3BoZS5qYWlsbGV0QHdhbmFkb28uZnI=
+X-ME-Date: Thu, 13 Jun 2024 22:59:24 +0200
+X-ME-IP: 86.243.222.230
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
+	Bard Liao <yung-chuan.liao@linux.intel.com>,
+	Ranjani Sridharan <ranjani.sridharan@linux.intel.com>,
+	Daniel Baluta <daniel.baluta@nxp.com>,
+	Kai Vehmanen <kai.vehmanen@linux.intel.com>,
+	Mark Brown <broonie@kernel.org>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>
+Cc: linux-kernel@vger.kernel.org,
+	kernel-janitors@vger.kernel.org,
+	Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>
-Subject: [PATCH 2/2] arm64: dts: mediatek: mt7988: add efuse block
-Date: Thu, 13 Jun 2024 21:59:33 +0200
-Message-Id: <20240613195933.31089-2-zajec5@gmail.com>
-X-Mailer: git-send-email 2.35.3
-In-Reply-To: <20240613195933.31089-1-zajec5@gmail.com>
-References: <20240613195933.31089-1-zajec5@gmail.com>
+	sound-open-firmware@alsa-project.org,
+	linux-sound@vger.kernel.org
+Subject: [PATCH] ASoC: SOF: mediatek: Constify struct mtk_adsp_ipc_ops
+Date: Thu, 13 Jun 2024 22:59:09 +0200
+Message-ID: <a45d6b2b5ec040ea0fc78fca662c2dca3f13a49f.1718312321.git.christophe.jaillet@wanadoo.fr>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240613_125946_444088_23CCA88A 
-X-CRM114-Status: UNSURE (   9.68  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240613_135929_906625_E5AA675B 
+X-CRM114-Status: GOOD (  11.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,35 +86,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Rafał Miłecki <rafal@milecki.pl>
+'struct mtk_adsp_ipc_ops' is not modified in these drivers.
 
-MT7988 (AKA MediaTek Filogic 880) uses efuse for storing calibration
-data.
+Constifying this structure moves some data to a read-only section, so
+increase overall security.
 
-Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
+In order to do it, "struct mtk_adsp_ipc" also needs to be adjusted to this
+new const qualifier.
+
+On a x86_64, with allmodconfig:
+Before:
+======
+   text	   data	    bss	    dec	    hex	filename
+  15533	   2383	      0	  17916	   45fc	sound/soc/sof/mediatek/mt8195/mt8195.o
+
+After:
+=====
+   text	   data	    bss	    dec	    hex	filename
+  15557	   2367	      0	  17924	   4604	sound/soc/sof/mediatek/mt8195/mt8195.o
+
+Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
 ---
- arch/arm64/boot/dts/mediatek/mt7988a.dtsi | 7 +++++++
- 1 file changed, 7 insertions(+)
+ include/linux/firmware/mediatek/mtk-adsp-ipc.h | 2 +-
+ sound/soc/sof/mediatek/mt8186/mt8186.c         | 2 +-
+ sound/soc/sof/mediatek/mt8195/mt8195.c         | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
-index 7690a83911af..c9649b815276 100644
---- a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
-@@ -231,6 +231,13 @@ clock-controller@11f40000 {
- 			#clock-cells = <1>;
- 		};
+diff --git a/include/linux/firmware/mediatek/mtk-adsp-ipc.h b/include/linux/firmware/mediatek/mtk-adsp-ipc.h
+index 5b1d16fa3f56..6e86799a7dc4 100644
+--- a/include/linux/firmware/mediatek/mtk-adsp-ipc.h
++++ b/include/linux/firmware/mediatek/mtk-adsp-ipc.h
+@@ -40,7 +40,7 @@ struct mtk_adsp_chan {
+ struct mtk_adsp_ipc {
+ 	struct mtk_adsp_chan chans[MTK_ADSP_MBOX_NUM];
+ 	struct device *dev;
+-	struct mtk_adsp_ipc_ops *ops;
++	const struct mtk_adsp_ipc_ops *ops;
+ 	void *private_data;
+ };
  
-+		efuse@11f50000 {
-+			compatible = "mediatek,mt7988-efuse", "mediatek,efuse";
-+			reg = <0 0x11f50000 0 0x1000>;
-+			#address-cells = <1>;
-+			#size-cells = <1>;
-+		};
-+
- 		clock-controller@15000000 {
- 			compatible = "mediatek,mt7988-ethsys", "syscon";
- 			reg = <0 0x15000000 0 0x1000>;
+diff --git a/sound/soc/sof/mediatek/mt8186/mt8186.c b/sound/soc/sof/mediatek/mt8186/mt8186.c
+index bea1b9d9ca28..74522400207e 100644
+--- a/sound/soc/sof/mediatek/mt8186/mt8186.c
++++ b/sound/soc/sof/mediatek/mt8186/mt8186.c
+@@ -82,7 +82,7 @@ static void mt8186_dsp_handle_request(struct mtk_adsp_ipc *ipc)
+ 	}
+ }
+ 
+-static struct mtk_adsp_ipc_ops dsp_ops = {
++static const struct mtk_adsp_ipc_ops dsp_ops = {
+ 	.handle_reply		= mt8186_dsp_handle_reply,
+ 	.handle_request		= mt8186_dsp_handle_request,
+ };
+diff --git a/sound/soc/sof/mediatek/mt8195/mt8195.c b/sound/soc/sof/mediatek/mt8195/mt8195.c
+index 31dc98d1b1d8..24ae1d4959be 100644
+--- a/sound/soc/sof/mediatek/mt8195/mt8195.c
++++ b/sound/soc/sof/mediatek/mt8195/mt8195.c
+@@ -82,7 +82,7 @@ static void mt8195_dsp_handle_request(struct mtk_adsp_ipc *ipc)
+ 	}
+ }
+ 
+-static struct mtk_adsp_ipc_ops dsp_ops = {
++static const struct mtk_adsp_ipc_ops dsp_ops = {
+ 	.handle_reply		= mt8195_dsp_handle_reply,
+ 	.handle_request		= mt8195_dsp_handle_request,
+ };
 -- 
-2.35.3
+2.45.2
 
 
