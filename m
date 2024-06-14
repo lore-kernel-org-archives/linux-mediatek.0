@@ -4,88 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DC80C27C7B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jun 2024 07:30:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5386AC27C6E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jun 2024 07:31:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RotGzbqUHvqHDCuN+GP71eTRfv5/+PABGOxY4Zbxn4g=; b=PZXPvz69p/brB0TxbWp1aADK0z
-	qvbAehlGby/Yx/m9I+h+nRET4QDCkzl7TmU1K2maGpD3ovfwghBvL+IvgK43Oj6C38PA9lITPeE0M
-	TaV1VkZs2pZMxZ4WfOnBPerjOMYi0Vwvw4Zq8rPIObL7pV1ipKmU+GE5J7KOhFw9183a1hGAx/iWn
-	7hf8K1kcmqmRxU8Euro77b0FHI4tadcEG6ZAtNojlk5FroKJBAwAW9qKRzi9GtGYKxMyszpPnyQID
-	d4tu80VJ8uVNdzN9XwsH1xuzr6oThXTvAPGRYm1hXNgQkW6aB8Cfn3J77d9tSFEu7PnqxQmuBE37M
-	Vm8Ts9Kg==;
+	bh=+HA5hs8xf/jy+EOJ7+HP5joeg+9+VSnSpeoghvWaVeM=; b=HKLPSDD/kCx1l9R/BT0W3rWand
+	8CC0zZBRKYVXusPmZGlD4k7oCCM18jYC+381jDjiLQjyoOkoWUAqXhwdwbkP7FG4Cux0BY2SNywcb
+	8vQ7QF2qZZ/fWQW+hQo2X3UyT9uBdvSb7rauNrQsJ6bhjC29SLMcFJeaqz1R8UIis/UoqbkBUVzUy
+	KV/4rZ/sIdSCImCmZNiKZ7oPFhDON/2/mtLhOZtNK+BM6cOcSQ3xP5A1n3htNF9ys24rkwaBkYllh
+	rNiYwnef9lEVEEreY9xZLtMx/W8o9om1intvYa5BlNKNGWyx/yQVxTR3bKMlQsw4RK4AEBZ7DQUZ0
+	00NKeqBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sI1OW-00000001nIt-46II;
-	Fri, 14 Jun 2024 07:30:45 +0000
+	id 1sI1Ot-00000001nX4-0aTS;
+	Fri, 14 Jun 2024 07:31:07 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sI1MV-00000001mEF-1oNE
+	id 1sI1NW-00000001mlg-3aau
 	for linux-mediatek@bombadil.infradead.org;
-	Fri, 14 Jun 2024 07:28:39 +0000
+	Fri, 14 Jun 2024 07:29:43 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
 	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=RotGzbqUHvqHDCuN+GP71eTRfv5/+PABGOxY4Zbxn4g=; b=mLp3iZKwio5RGlr5Mw8rOAsc6l
-	sX/k5SP+eHSdVqp1rD7umInoLclxwY2STDUtfehmgdl+OCwp8ALAB7hePtZYua/kCIS5VHsjAwjOA
-	M+gAW8/sYnuw8+nRO5RFgsZj0vvUsMT6VVFxhgO+8y4TM8mu0/uARcdwTBP2q4HgMGdoh1afdNs+Z
-	37C4IEkP5waPX2tWGZY/42JS0W/tg8M1E3EX/UDjbNGfjG76R0yyKx/KwHszOykjSMq4dgxqTzr0l
-	2+qdoEA62GD3Y/1B8nhzGn7/OQ0muhPDUoH27pah4CqkwGPl/uXY12I1JGg7Fn7SwnRZZoFhqWzdd
-	8SUTR5hQ==;
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+	bh=+HA5hs8xf/jy+EOJ7+HP5joeg+9+VSnSpeoghvWaVeM=; b=rTD2oJdb4GQQGMPWA//JCX+BGW
+	vsIs23qu8HsQXvEJBVGEH0KqN4TIK934p9UmNUze9H0WBjwmmwqSUGhP0bXlQ25zReHuVmc96gnkS
+	JnM3svHY4LbQMp4Yw2qaz9nj4LjC5yX80HchVMD0mcAwG7ZqaRGb+uzhWrRucCBQxm1k/pA4ge44d
+	IUIzRi65UrSVhJ5+7u0JDH3Ch9PcYKB6kEzW1j3NbUIUOk/zdw1i8MY8XOE/LRmBmmJQIXZm6blZV
+	GYTT6uD/1jzx3yRXfXF1tGvWb6Hfw5AjKlAoHbleFUXDKcHqDDOs08kGYFxuRK0xF6kBYb3TU6zZ9
+	WNb2XCsQ==;
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
 	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sI1MB-00000004Adi-0ANg
+	id 1sI1ME-00000004Ady-4BxB
 	for linux-mediatek@lists.infradead.org;
-	Fri, 14 Jun 2024 07:28:32 +0000
-Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-42281d8cd2dso13333195e9.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 14 Jun 2024 00:28:15 -0700 (PDT)
+	Fri, 14 Jun 2024 07:29:15 +0000
+Received: by mail-wr1-x42a.google.com with SMTP id ffacd0b85a97d-35f1cb7a40fso1675840f8f.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 14 Jun 2024 00:28:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1718350094; x=1718954894; darn=lists.infradead.org;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1718350101; x=1718954901; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=RotGzbqUHvqHDCuN+GP71eTRfv5/+PABGOxY4Zbxn4g=;
-        b=B1yZiKKR0uUCK9YIwlMW8Br8HR2CaIL6jd4l/gW4S4xu6XrxpG8laOO7xkan4TCf7e
-         lzexdbq4BUA89hXrJjgswI2jGngCrLh8VEyeRRhUcnrCixdjFekI78OnS95DFue5BiyT
-         8VIYUIHwT6bi2v6DU/LSbPS2YEogx91zIKy1CD74ONvKufpblAUAcmNvP+66IA/j2a7V
-         ++Z2hIfSoQvwmN98zdYttf1f8UktWzdZsL7K3gLhEHyLBPUsrsxj4Wxab1jVNmWoa0+J
-         11jCAe++daLSVZY5G3iIirIcksTqOsmmslFcww8e/N9QatukVc/zitpSJMfr5Iol/Pny
-         /a7w==
+        bh=+HA5hs8xf/jy+EOJ7+HP5joeg+9+VSnSpeoghvWaVeM=;
+        b=YMDPQ2FBaWmn/YmyeJWrBkA0tEyEG4iycR1FeZ6iEKO07Y++M51BzxNjOCRy6DleTQ
+         D5MUY/ETp1wAu+aNX9cyvPvcXAAmM/nO68QFr6M93jVMuCWhplZWkOBMOQrsr9zKScWr
+         NjL6JBk3TcflcZivzybMfNEy5TmO98ZM3JihwOekgBE/el6KXnMlfyEvH6vmLlEBhLpL
+         MY09D9RKKr8599VugUOQusGHcTq9W6dyneBhQWjn4hqyogit+JOPnzCqq/RnqZcNd0ev
+         NJ2We1FA+Z6lE7ZUqJ09kgt0M8LDLZPrauDS57oBJ3McwbW0WaPlYttEG8Zt9zSonDTA
+         JBmg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1718350094; x=1718954894;
+        d=1e100.net; s=20230601; t=1718350101; x=1718954901;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=RotGzbqUHvqHDCuN+GP71eTRfv5/+PABGOxY4Zbxn4g=;
-        b=clCqA5a+eYgBx0BfkYXEBcqYAK0YXed68jprxtcNQkVGTlthJQK7kEYYX4dC0GEPSj
-         YpjK+7F8LMBlSB8PkkZ9WS9XlaNEg6TsQLGbvtALFQKsmhgRxnYKPyRNW+g7TS0C7Mug
-         D+3JmdtayAmNHZeNPfQiLf+WCyth3E0DKkU2RoAtNx/t9yn5GWm9IJz+GhJUGcxSaJQm
-         OAlatfakLTzBwJY0fremBlLt8RZoBxSAdnS0Vq4bi0TgzLeTVcBHpJvOjgTD2dJmFbWs
-         e2sC0dssEK29B/Wwf9EeTAtjpBmk8TpaPDJ7xp/a1MmUgEiF2LW4N4K6bVX/cEuCfI2z
-         8uSg==
-X-Forwarded-Encrypted: i=1; AJvYcCU4pM3yM4axLJtrLbP8cG5IL9khiVE+vsC/K4F9Rt7hlPrhSyQI3PEKVZUOGBwRTTaAfpIlL3w+1jPzjWXskbxlFnfZJSGq6xmZEEZWDtkOFxGy
-X-Gm-Message-State: AOJu0YyfP6/qpx3wl7UV1nQkxU6+KRA/FJAVodh6HqreQYoWYnuhqASE
-	lbwhNw7woBCU0XPGgb7j2wHj12o9xHlQOtaQM8keBj+vLBF9EphXbjjtmc6h07k=
-X-Google-Smtp-Source: AGHT+IE/tKw2kk9oMBT5yNTkLMw7LRn+P4g2VzAIzGpcSMnBnARsyrQ4PCfJiTwk5aQ1fAB4TiG8iA==
-X-Received: by 2002:a05:600c:45c7:b0:422:727c:70b1 with SMTP id 5b1f17b1804b1-4230481f0cbmr18287745e9.8.1718350094514;
-        Fri, 14 Jun 2024 00:28:14 -0700 (PDT)
+        bh=+HA5hs8xf/jy+EOJ7+HP5joeg+9+VSnSpeoghvWaVeM=;
+        b=FDDWoLtLiUOCZXww3H/rNQ3OTybIdKow5tLApX9YzDsUWFBWY/Nb8J548MA1GarDF8
+         psTqCrOm99Y3HyuetiOMFcKeLyTLaqjVDG1HiD47jSFM9rkj0n2LKwCqbd/DW6J7eLsl
+         3lH22OTjatm3Np9Wf1ELDZQLDCRHxb7hiSmzcnGNU2dtatlCBfVVQQoltJnNBO9zqv+i
+         9QQgrLmJY1/5A3hlYLkeJN8sWg5cXgza6bHfCdxuP7G7PMkT/SyIHuUddkxdk6YjRLcZ
+         wG/LUNVKr5jUjbEXne5/1hKiRKUyasDvMT34WQe+Rf3C1lkOMo6uF3JsoYATxgmtt7uc
+         Z+Mg==
+X-Forwarded-Encrypted: i=1; AJvYcCXY89zqf35CIKF2hOFm9awwrCCVgXAoCdMUs5U9Yo/1g3NemW0gYy9rEXj/7oDASTAgbETkATVfZKHEHQTYjMSmSM/JFxzUgB29MxmNc4n7V5jM
+X-Gm-Message-State: AOJu0YxDg5+1LHbB1oZFjXPkMXDvIztMMoLGVKcH9Rse1UudAj0IOlE2
+	K4KPQBkm87gvzaFZraRONQzsXV6eVTR6ObYQOfKN5qcG+Y/uwCfYT3k9HvFl7yk=
+X-Google-Smtp-Source: AGHT+IHpHTOl5QY00tqzxh9OhoCQurXEk9QIL2u7zQNMO52wgT/TSDNb/CU/N+DsMPE6NNLY7yq2jQ==
+X-Received: by 2002:a5d:58f1:0:b0:360:7a19:4bb with SMTP id ffacd0b85a97d-3607a78237cmr1161501f8f.51.1718350101288;
+        Fri, 14 Jun 2024 00:28:21 -0700 (PDT)
 Received: from [127.0.1.1] ([93.5.22.158])
-        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-36075104b2esm3535773f8f.101.2024.06.14.00.28.13
+        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-36075104b2esm3535773f8f.101.2024.06.14.00.28.19
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 14 Jun 2024 00:28:14 -0700 (PDT)
+        Fri, 14 Jun 2024 00:28:20 -0700 (PDT)
 From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Fri, 14 Jun 2024 09:27:52 +0200
-Subject: [PATCH RESEND v5 09/16] ASoC: mediatek: mt8365: Add PCM DAI
- support
+Date: Fri, 14 Jun 2024 09:27:56 +0200
+Subject: [PATCH RESEND v5 13/16] ASoC: mediatek: Add MT8365 support
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240226-audio-i350-v5-9-54827318b453@baylibre.com>
+Message-Id: <20240226-audio-i350-v5-13-54827318b453@baylibre.com>
 References: <20240226-audio-i350-v5-0-54827318b453@baylibre.com>
 In-Reply-To: <20240226-audio-i350-v5-0-54827318b453@baylibre.com>
 To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
@@ -106,24 +105,24 @@ Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
  dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org, 
  Alexandre Mergnat <amergnat@baylibre.com>
 X-Mailer: b4 0.12.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=8252; i=amergnat@baylibre.com;
- h=from:subject:message-id; bh=txa86VmZPoKRrts0NhHm2alf69zeqTA6ECXyv2H4sDU=;
- b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBma/D/ouIPzweFOD2UrYVdP93SbaWQdekXHP7sXy6T
- PE+4xmeJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZmvw/wAKCRArRkmdfjHURVJgD/
- 94bVgWW2k6YfJ0HdjF90/PrnnNsO3i8gQvFktnPTJ+YzlGHxVJy/7j9ed7+PUqe9nzmpXSf/iGxgfh
- IQyBpYXJ2oF6ziFuG17yzJxmIJfoKHlnyTFRtfY9rlCnyboHWk2xiRSxkqwbUsG+X3mgDYSkuHS86/
- C/samCgMJMjw7281JMlQBpMWmAs9lITsg/TvMgC3Mr+26thUOyFydZPkLIbKp2YY2BGuIscBHtGl41
- vvvyn7TmL4gUrSJaQRDOcfMoZTmf6HSBr+MTN64hutPA0mFnZhraGhUEaAkfKr+k/rjCVCzGrCFd4D
- QzWleauwn3d+029w+RoNAZVoQkIxJHJCpI1+0Sboiodwy22b7/Jxg+j+HgCvwU0KLz/f6s1KngMR7t
- ZpoXG7BwmoKO+VNGWmLOj26farKPEWOEtm2POjK+7k7mcq2DOqrNiYBnxJSsPBxfuCKNaa4r/RUTCx
- AHtN9CGxd2MZ26c/G1cqJZekuDywFTO97nGly5FrGPFtSrUwmRCsS8ltbEcEudXjl6cih04wWCQguh
- 7acd6UeXKVOZBklh4ZWm6sFZ8HcCXTJFT3o0JocUMxCoHcoBzX3m0gEqkAsV1quZogU7R29MohJ0g5
- +xHSz5gcmXLdbw2crZyb6KnYJfm7bJVF4tnlniyYpD9pdQlMhJiAy8xmP3sQ==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2430; i=amergnat@baylibre.com;
+ h=from:subject:message-id; bh=A2PASoilqpYSI/+vuK5IOoXc5LlU1gMN/yOVGVWPN5c=;
+ b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBma/D/PHaUW2bvmY9tCiVjihESjYpsC4I7oQKoqwB3
+ mHC8l7eJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZmvw/wAKCRArRkmdfjHURbUpEA
+ CqbFqWc7ZVeRe0gmWB+Yo6vl14789DYula2eT5S04/NlyciCaGMqNlxwJyxvuDRv1Hjl6NISBksh4c
+ pD9tKX6C1RlEy1NP+fsqXkUGXpLp1KJoyaDRhwGr7fo3Xdo8yo+AXmTydOnxaDqksESf92YAtgH8Vv
+ ag+9kzYhtIfZN9d3nO+MnJBNhCXET+Din9J8EWqe1Wc+phmLXUBF5CwpsBny9fw5+5JkdJ55iqnQ8l
+ NVJDLcmmDD2ErJWdZ7rDaoFLMWmuHfL3OuWvjsYl5j5K593cGaPhLRxCDfmKM3nqGM+mo4MOmDXlk6
+ orlvUwUehIxEo4pdlSU0oZ8VdoBLJ67jFlt7Hg+59Ziw1y6tdRlUg4DqmhzarAPMA9PvSCYG7ynbBf
+ Uys2U/0V6Qbiw1bmveh8ogCKlDV9lQyYgZQ14QqEgkCX2amkoq1GiIMvcBBoW3PZCvVuS/D8kT4zIW
+ 5yHt6P0LzRJNNT0REWz4Oq0rdlcsn5lRw/ciN+x/aR2hQQNmWWOSR58YhLGUOKn1dtyQDZm+wXraxs
+ j3wGYPF+M0fX3Ktlx77mRdkMeQcnhIcgUWcjjSrzlKKDzDwDBgIRcXPxhMNDHa+tqc1X8M0Qgm5p6a
+ qCe5OjUo70Shs8K1eV0v9l8cyyxv3wWJvSJSKo/J0MjWS8trl7OEMDIt4coA==
 X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
  fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240614_082824_268244_896418AD 
-X-CRM114-Status: GOOD (  17.12  )
+X-CRM114-CacheID: sfid-20240614_082828_789529_49049F90 
+X-CRM114-Status: GOOD (  15.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -138,313 +137,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add Pulse Code Modulation Device Audio Interface support for MT8365 SoC.
+- Add specific config to enable:
+  - MT8365 sound support
+  - MT6357 audio codec support
+- Add the mt8365 directory and all drivers under it.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 ---
- sound/soc/mediatek/mt8365/mt8365-dai-pcm.c | 293 +++++++++++++++++++++++++++++
- 1 file changed, 293 insertions(+)
+ sound/soc/mediatek/Kconfig         | 20 ++++++++++++++++++++
+ sound/soc/mediatek/Makefile        |  1 +
+ sound/soc/mediatek/mt8365/Makefile | 15 +++++++++++++++
+ 3 files changed, 36 insertions(+)
 
-diff --git a/sound/soc/mediatek/mt8365/mt8365-dai-pcm.c b/sound/soc/mediatek/mt8365/mt8365-dai-pcm.c
+diff --git a/sound/soc/mediatek/Kconfig b/sound/soc/mediatek/Kconfig
+index 5a8476e1ecca..c1c86ecc0601 100644
+--- a/sound/soc/mediatek/Kconfig
++++ b/sound/soc/mediatek/Kconfig
+@@ -298,3 +298,23 @@ config SND_SOC_MT8195_MT6359
+ 	  boards with the MT6359 and other I2S audio codecs.
+ 	  Select Y if you have such device.
+ 	  If unsure select "N".
++
++config SND_SOC_MT8365
++	tristate "ASoC support for Mediatek MT8365 chip"
++	depends on ARCH_MEDIATEK
++	select SND_SOC_MEDIATEK
++	help
++	  This adds ASoC platform driver support for Mediatek MT8365 chip
++	  that can be used with other codecs.
++	  Select Y if you have such device.
++	  If unsure select "N".
++
++config SND_SOC_MT8365_MT6357
++	tristate "ASoC Audio driver for MT8365 with MT6357 codec"
++	depends on SND_SOC_MT8365 && MTK_PMIC_WRAP
++	select SND_SOC_MT6357
++	help
++	  This adds support for ASoC machine driver for Mediatek MT8365
++	  boards with the MT6357 codec.
++	  Select Y if you have such device.
++	  If unsure select "N".
+diff --git a/sound/soc/mediatek/Makefile b/sound/soc/mediatek/Makefile
+index 3938e7f75c2e..4b55434f2168 100644
+--- a/sound/soc/mediatek/Makefile
++++ b/sound/soc/mediatek/Makefile
+@@ -9,3 +9,4 @@ obj-$(CONFIG_SND_SOC_MT8186) += mt8186/
+ obj-$(CONFIG_SND_SOC_MT8188) += mt8188/
+ obj-$(CONFIG_SND_SOC_MT8192) += mt8192/
+ obj-$(CONFIG_SND_SOC_MT8195) += mt8195/
++obj-$(CONFIG_SND_SOC_MT8365) += mt8365/
+diff --git a/sound/soc/mediatek/mt8365/Makefile b/sound/soc/mediatek/mt8365/Makefile
 new file mode 100644
-index 000000000000..6be991d53333
+index 000000000000..52ba45a8498a
 --- /dev/null
-+++ b/sound/soc/mediatek/mt8365/mt8365-dai-pcm.c
-@@ -0,0 +1,293 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Mediatek 8365 ALSA SoC Audio DAI PCM Control
-+ *
-+ * Copyright (c) 2024 MediaTek Inc.
-+ * Authors: Jia Zeng <jia.zeng@mediatek.com>
-+ *          Alexandre Mergnat <amergnat@baylibre.com>
-+ */
++++ b/sound/soc/mediatek/mt8365/Makefile
+@@ -0,0 +1,15 @@
++# SPDX-License-Identifier: GPL-2.0
 +
-+#include <linux/bitops.h>
-+#include <linux/regmap.h>
-+#include <sound/pcm_params.h>
-+#include "mt8365-afe-clk.h"
-+#include "mt8365-afe-common.h"
++# MTK Platform driver
++snd-soc-mt8365-pcm-objs := \
++	mt8365-afe-clk.o \
++	mt8365-afe-pcm.o \
++	mt8365-dai-adda.o \
++	mt8365-dai-dmic.o \
++	mt8365-dai-i2s.o \
++	mt8365-dai-pcm.o
 +
-+struct mt8365_pcm_intf_data {
-+	bool slave_mode;
-+	bool lrck_inv;
-+	bool bck_inv;
-+	unsigned int format;
-+};
++obj-$(CONFIG_SND_SOC_MT8365) += snd-soc-mt8365-pcm.o
 +
-+/* DAI Drivers */
-+
-+static void mt8365_dai_enable_pcm1(struct mtk_base_afe *afe)
-+{
-+	regmap_update_bits(afe->regmap, PCM_INTF_CON1,
-+			   PCM_INTF_CON1_EN, PCM_INTF_CON1_EN);
-+}
-+
-+static void mt8365_dai_disable_pcm1(struct mtk_base_afe *afe)
-+{
-+	regmap_update_bits(afe->regmap, PCM_INTF_CON1,
-+			   PCM_INTF_CON1_EN, 0x0);
-+}
-+
-+static int mt8365_dai_configure_pcm1(struct snd_pcm_substream *substream,
-+				     struct snd_soc_dai *dai)
-+{
-+	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
-+	struct mt8365_afe_private *afe_priv = afe->platform_priv;
-+	struct mt8365_pcm_intf_data *pcm_priv = afe_priv->dai_priv[MT8365_AFE_IO_PCM1];
-+	bool slave_mode = pcm_priv->slave_mode;
-+	bool lrck_inv = pcm_priv->lrck_inv;
-+	bool bck_inv = pcm_priv->bck_inv;
-+	unsigned int fmt = pcm_priv->format;
-+	unsigned int bit_width = dai->sample_bits;
-+	unsigned int val = 0;
-+
-+	if (!slave_mode) {
-+		val |= PCM_INTF_CON1_MASTER_MODE |
-+		       PCM_INTF_CON1_BYPASS_ASRC;
-+
-+		if (lrck_inv)
-+			val |= PCM_INTF_CON1_SYNC_OUT_INV;
-+		if (bck_inv)
-+			val |= PCM_INTF_CON1_BCLK_OUT_INV;
-+	} else {
-+		val |= PCM_INTF_CON1_SLAVE_MODE;
-+
-+		if (lrck_inv)
-+			val |= PCM_INTF_CON1_SYNC_IN_INV;
-+		if (bck_inv)
-+			val |= PCM_INTF_CON1_BCLK_IN_INV;
-+
-+		/* TODO: add asrc setting */
-+	}
-+
-+	val |= FIELD_PREP(PCM_INTF_CON1_FORMAT_MASK, fmt);
-+
-+	if (fmt == MT8365_PCM_FORMAT_PCMA ||
-+	    fmt == MT8365_PCM_FORMAT_PCMB)
-+		val |= PCM_INTF_CON1_SYNC_LEN(1);
-+	else
-+		val |= PCM_INTF_CON1_SYNC_LEN(bit_width);
-+
-+	switch (substream->runtime->rate) {
-+	case 48000:
-+		val |= PCM_INTF_CON1_FS_48K;
-+		break;
-+	case 32000:
-+		val |= PCM_INTF_CON1_FS_32K;
-+		break;
-+	case 16000:
-+		val |= PCM_INTF_CON1_FS_16K;
-+		break;
-+	case 8000:
-+		val |= PCM_INTF_CON1_FS_8K;
-+		break;
-+	default:
-+		return -EINVAL;
-+	}
-+
-+	if (bit_width > 16)
-+		val |= PCM_INTF_CON1_24BIT | PCM_INTF_CON1_64BCK;
-+	else
-+		val |= PCM_INTF_CON1_16BIT | PCM_INTF_CON1_32BCK;
-+
-+	val |= PCM_INTF_CON1_EXT_MODEM;
-+
-+	regmap_update_bits(afe->regmap, PCM_INTF_CON1,
-+			   PCM_INTF_CON1_CONFIG_MASK, val);
-+
-+	return 0;
-+}
-+
-+static int mt8365_dai_pcm1_startup(struct snd_pcm_substream *substream,
-+				   struct snd_soc_dai *dai)
-+{
-+	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
-+
-+	if (snd_soc_dai_active(dai))
-+		return 0;
-+
-+	mt8365_afe_enable_main_clk(afe);
-+
-+	return 0;
-+}
-+
-+static void mt8365_dai_pcm1_shutdown(struct snd_pcm_substream *substream,
-+				     struct snd_soc_dai *dai)
-+{
-+	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
-+
-+	if (snd_soc_dai_active(dai))
-+		return;
-+
-+	mt8365_dai_disable_pcm1(afe);
-+	mt8365_afe_disable_main_clk(afe);
-+}
-+
-+static int mt8365_dai_pcm1_prepare(struct snd_pcm_substream *substream,
-+				   struct snd_soc_dai *dai)
-+{
-+	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
-+	int ret;
-+
-+	if ((snd_soc_dai_stream_active_playback(dai) +
-+	    snd_soc_dai_stream_active_capture(dai)) > 1) {
-+		dev_info(afe->dev, "%s '%s' active(%u-%u) already\n",
-+			 __func__, snd_pcm_stream_str(substream),
-+			 snd_soc_dai_stream_active_playback(dai),
-+			 snd_soc_dai_stream_active_capture(dai));
-+		return 0;
-+	}
-+
-+	ret = mt8365_dai_configure_pcm1(substream, dai);
-+	if (ret)
-+		return ret;
-+
-+	mt8365_dai_enable_pcm1(afe);
-+
-+	return 0;
-+}
-+
-+static int mt8365_dai_pcm1_set_fmt(struct snd_soc_dai *dai, unsigned int fmt)
-+{
-+	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
-+	struct mt8365_afe_private *afe_priv = afe->platform_priv;
-+	struct mt8365_pcm_intf_data *pcm_priv = afe_priv->dai_priv[MT8365_AFE_IO_PCM1];
-+
-+	switch (fmt & SND_SOC_DAIFMT_FORMAT_MASK) {
-+	case SND_SOC_DAIFMT_I2S:
-+		pcm_priv->format = MT8365_PCM_FORMAT_I2S;
-+		break;
-+	default:
-+		return -EINVAL;
-+	}
-+
-+	switch (fmt & SND_SOC_DAIFMT_INV_MASK) {
-+	case SND_SOC_DAIFMT_NB_NF:
-+		pcm_priv->bck_inv = false;
-+		pcm_priv->lrck_inv = false;
-+		break;
-+	case SND_SOC_DAIFMT_NB_IF:
-+		pcm_priv->bck_inv = false;
-+		pcm_priv->lrck_inv = true;
-+		break;
-+	case SND_SOC_DAIFMT_IB_NF:
-+		pcm_priv->bck_inv = true;
-+		pcm_priv->lrck_inv = false;
-+		break;
-+	case SND_SOC_DAIFMT_IB_IF:
-+		pcm_priv->bck_inv = true;
-+		pcm_priv->lrck_inv = true;
-+		break;
-+	default:
-+		return -EINVAL;
-+	}
-+
-+	switch (fmt & SND_SOC_DAIFMT_MASTER_MASK) {
-+	case SND_SOC_DAIFMT_CBM_CFM:
-+		pcm_priv->slave_mode = true;
-+		break;
-+	case SND_SOC_DAIFMT_CBS_CFS:
-+		pcm_priv->slave_mode = false;
-+		break;
-+	default:
-+		return -EINVAL;
-+	}
-+
-+	return 0;
-+}
-+
-+static const struct snd_soc_dai_ops mt8365_dai_pcm1_ops = {
-+	.startup	= mt8365_dai_pcm1_startup,
-+	.shutdown	= mt8365_dai_pcm1_shutdown,
-+	.prepare	= mt8365_dai_pcm1_prepare,
-+	.set_fmt	= mt8365_dai_pcm1_set_fmt,
-+};
-+
-+static struct snd_soc_dai_driver mtk_dai_pcm_driver[] = {
-+	{
-+		.name = "PCM1",
-+		.id = MT8365_AFE_IO_PCM1,
-+		.playback = {
-+			.stream_name = "PCM1 Playback",
-+			.channels_min = 1,
-+			.channels_max = 2,
-+			.rates = SNDRV_PCM_RATE_8000 |
-+				 SNDRV_PCM_RATE_16000 |
-+				 SNDRV_PCM_RATE_32000 |
-+				 SNDRV_PCM_RATE_48000,
-+			.formats = SNDRV_PCM_FMTBIT_S16_LE |
-+				   SNDRV_PCM_FMTBIT_S32_LE,
-+		},
-+		.capture = {
-+			.stream_name = "PCM1 Capture",
-+			.channels_min = 1,
-+			.channels_max = 2,
-+			.rates = SNDRV_PCM_RATE_8000 |
-+				 SNDRV_PCM_RATE_16000 |
-+				 SNDRV_PCM_RATE_32000 |
-+				 SNDRV_PCM_RATE_48000,
-+			.formats = SNDRV_PCM_FMTBIT_S16_LE |
-+				   SNDRV_PCM_FMTBIT_S32_LE,
-+		},
-+		.ops = &mt8365_dai_pcm1_ops,
-+		.symmetric_rate = 1,
-+		.symmetric_sample_bits = 1,
-+	}
-+};
-+
-+/* DAI widget */
-+
-+static const struct snd_soc_dapm_widget mtk_dai_pcm_widgets[] = {
-+	SND_SOC_DAPM_OUTPUT("PCM1 Out"),
-+	SND_SOC_DAPM_INPUT("PCM1 In"),
-+};
-+
-+/* DAI route */
-+
-+static const struct snd_soc_dapm_route mtk_dai_pcm_routes[] = {
-+	{"PCM1 Playback", NULL, "O07"},
-+	{"PCM1 Playback", NULL, "O08"},
-+	{"PCM1 Out", NULL, "PCM1 Playback"},
-+
-+	{"I09", NULL, "PCM1 Capture"},
-+	{"I22", NULL, "PCM1 Capture"},
-+	{"PCM1 Capture", NULL, "PCM1 In"},
-+};
-+
-+static int init_pcmif_priv_data(struct mtk_base_afe *afe)
-+{
-+	struct mt8365_afe_private *afe_priv = afe->platform_priv;
-+	struct mt8365_pcm_intf_data *pcmif_priv;
-+
-+	pcmif_priv = devm_kzalloc(afe->dev, sizeof(struct mt8365_pcm_intf_data),
-+				  GFP_KERNEL);
-+	if (!pcmif_priv)
-+		return -ENOMEM;
-+
-+	afe_priv->dai_priv[MT8365_AFE_IO_PCM1] = pcmif_priv;
-+	return 0;
-+}
-+
-+int mt8365_dai_pcm_register(struct mtk_base_afe *afe)
-+{
-+	struct mtk_base_afe_dai *dai;
-+
-+	dai = devm_kzalloc(afe->dev, sizeof(*dai), GFP_KERNEL);
-+	if (!dai)
-+		return -ENOMEM;
-+
-+	list_add(&dai->list, &afe->sub_dais);
-+	dai->dai_drivers = mtk_dai_pcm_driver;
-+	dai->num_dai_drivers = ARRAY_SIZE(mtk_dai_pcm_driver);
-+	dai->dapm_widgets = mtk_dai_pcm_widgets;
-+	dai->num_dapm_widgets = ARRAY_SIZE(mtk_dai_pcm_widgets);
-+	dai->dapm_routes = mtk_dai_pcm_routes;
-+	dai->num_dapm_routes = ARRAY_SIZE(mtk_dai_pcm_routes);
-+	return init_pcmif_priv_data(afe);
-+}
++# Machine driver
++obj-$(CONFIG_SND_SOC_MT8365_MT6357) += mt8365-mt6357.o
 
 -- 
 2.25.1
