@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A7BEC27C77
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jun 2024 16:24:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C9EAC27C77
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jun 2024 16:56:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RhKzfP58rWE6W8OVFwQeegmpEXhGBYSlzJPx95Nyw0s=; b=rmX6543gSt/XZbouf96eL1QkKy
-	5wzb2sbWH0NNSIygP0ArkokfdwcxHolI6A3vZABglfK3ZZhh3eBhCzLNsYotchfQG+K0GW3RHB6eF
-	J5fQN4hMgRsvHuPwGBLEZ12OjJZEBZgUavPfVO0H3D0VzxUbQVcg22OHL3FwkbRBXon5tvROcYxa7
-	Swmvq5QGk91woegYx05O6rYTY570J++JtwzCJ3Q7daSO5+mWWM5TvOBdbRY81uvomcIO8ha4dNBxL
-	9LBjUH7RqyKwlijyfIUJnGceQ/kyuvsLa8iPzsLqZZuzVW9s4k+WevJuUEJwReNKuhVCQ6t8ziWd7
-	ouD51dZQ==;
+	bh=Evk83Uo2UXC5m3jrO09FdS47CclJP0CRe6xEL4J8Lqk=; b=QgJeYFbhfNwl08fd9QV7voASt0
+	jecL+tztcbivzDIYtVUsEX2k+Ewd/edvhPufQsadbsg6w/dIamEHX0pc1hC1MQ6k5Wj//40MQPB89
+	sX0dbJqG5DrxIWorqyUCAlGkwUgYhdXGU+BgWZtEMmpkDFCjrbXbTZ/As3HF3Sxoy36k10zll7AYz
+	uKb4SqLUnyrDk4+5yi4Fi98CGBQ7oP0f+AzAFajA1/sqxwaZ/gf1FWLqbrkPWKZFG0Zwo9Q4Wjvxi
+	uu0gDilRfTEHd9lIUUfU1cFpTGmZVDwuTxPnDoT/COLhkcSp8WQBVWpG/UBodymWHmyD5RMwCaHrQ
+	0r3k87Tw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sI9jL-00000003PB9-1LtY;
-	Fri, 14 Jun 2024 16:24:47 +0000
-Received: from mgamail.intel.com ([198.175.65.18])
+	id 1sIADs-00000003Xq7-25zN;
+	Fri, 14 Jun 2024 16:56:20 +0000
+Received: from mgamail.intel.com ([192.198.163.10])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sI9j5-00000003Ovi-0hlW;
-	Fri, 14 Jun 2024 16:24:40 +0000
+	id 1sIADn-00000003Xol-1Sxy;
+	Fri, 14 Jun 2024 16:56:17 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1718382271; x=1749918271;
+  t=1718384175; x=1749920175;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=QUjO/ewrv40kB8UQDqGi+mbyl2naOvjhfguK5EKbsQk=;
-  b=KEQdvAYDWQru4RQhjKf2A+nlSDbNKn/lFnBovKIrudEnqG2XqjMIY3Ee
-   7fv23xRm2zXOVYdAIY8vuoIsUHmkyq66Qe6BBCw7etRYrnjxvSPOltKZg
-   X6THUNrvHHXIZqD7qNZlxfPvXWmIeaiIpVebwYlb5dx0dgV9PScvKARVU
-   CMCHZjKjbhKbhhqqf/Ar67cqUjzECthrkSUdBiiJoMVQk9uVJNuBAjjzv
-   JDCnxbhPwkr2cSZymARhBOB6Dsr3vjrvkQPLI4x6rCB5rnJPP8OS7h7Jl
-   KQptOHPGrvNx4TorYi1QBj7IDLNV0jbM1zPuz3IjwQx9BiKqeuZTcRHvw
-   g==;
-X-CSE-ConnectionGUID: 9VfmQhQhTL6VZN0XQsfxxw==
-X-CSE-MsgGUID: q85+ljkoQ6Soi5rDBnEx0g==
-X-IronPort-AV: E=McAfee;i="6700,10204,11103"; a="15426467"
+  bh=4gxQJvtqrH/DDekyfR6KTtnrnWCAGodtYBUOPa1ceDI=;
+  b=VMMIS6HIffH4zgbIPRLepVINzvdkTmvmnpBuWb1KSEuqhjjaKqkCAZ1N
+   MtOJlY+glus4UBJ99AZ/0yhwCku5AlnexQ2NqBFm8DE/XNurq660xCR1s
+   hfoFyHpOT6+BpYw47J49vap1CfMMn2bGXpV9r5M0RxObvh2zz+o9KtfdJ
+   RaWrDyG1mpVloEjzP8QrC3enWmq3qy6sUJN2vXibOLO06ungyAvK9Adw4
+   oYEYXcfWQWxu/7bcJfN8KWWN26DdRHw8FyQmzKRtkL/zNEp8xho/zil7V
+   E3vz6bcrKBKxzLKhtrQEhUPtp4MqMD8IoK84F0NEMNWqbbERamqXltWLU
+   A==;
+X-CSE-ConnectionGUID: oC9Vt44iRJe3hL9scHELsQ==
+X-CSE-MsgGUID: RXR7bvsET8OnTqJ33uVwbg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11103"; a="26681681"
 X-IronPort-AV: E=Sophos;i="6.08,238,1712646000"; 
-   d="scan'208";a="15426467"
-Received: from orviesa001.jf.intel.com ([10.64.159.141])
-  by orvoesa110.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Jun 2024 09:24:13 -0700
-X-CSE-ConnectionGUID: E+D1AwzXQ+mwB8uP53wUow==
-X-CSE-MsgGUID: MG2teJ6HTcaSrBPFV7eESg==
+   d="scan'208";a="26681681"
+Received: from orviesa006.jf.intel.com ([10.64.159.146])
+  by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Jun 2024 09:56:14 -0700
+X-CSE-ConnectionGUID: KjuO4WNFRWOIUcasvxLnrg==
+X-CSE-MsgGUID: /9zugvV+SRiBk1eUsAZVAw==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.08,238,1712646000"; 
-   d="scan'208";a="78031221"
+   d="scan'208";a="41062118"
 Received: from lkp-server01.sh.intel.com (HELO 9e3ee4e9e062) ([10.239.97.150])
-  by orviesa001.jf.intel.com with ESMTP; 14 Jun 2024 09:24:08 -0700
+  by orviesa006.jf.intel.com with ESMTP; 14 Jun 2024 09:56:11 -0700
 Received: from kbuild by 9e3ee4e9e062 with local (Exim 4.96)
 	(envelope-from <lkp@intel.com>)
-	id 1sI9if-0001V7-2S;
-	Fri, 14 Jun 2024 16:24:05 +0000
-Date: Sat, 15 Jun 2024 00:23:46 +0800
+	id 1sIADh-0001YH-0k;
+	Fri, 14 Jun 2024 16:56:09 +0000
+Date: Sat, 15 Jun 2024 00:55:53 +0800
 From: kernel test robot <lkp@intel.com>
 To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
 	Jassi Brar <jassisinghbrar@gmail.com>,
 	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+Cc: oe-kbuild-all@lists.linux.dev,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	"Jason-JH . Lin" <jason-jh.lin@mediatek.com>,
 	Singo Chang <singo.chang@mediatek.com>,
@@ -72,15 +72,15 @@ Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
 	linux-mediatek@lists.infradead.org,
 	Project_Global_Chrome_Upstream_Group@mediatek.com
 Subject: Re: [PATCH 1/2] mailbox: Add power_get/power_put API to mbox_chan_ops
-Message-ID: <202406150022.LXLvvkeI-lkp@intel.com>
+Message-ID: <202406150041.QTui5Xgq-lkp@intel.com>
 References: <20240614040133.24967-2-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <20240614040133.24967-2-jason-jh.lin@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240614_092431_615027_1357E5F6 
-X-CRM114-Status: GOOD (  14.65  )
+X-CRM114-CacheID: sfid-20240614_095615_427035_4E9C8971 
+X-CRM114-Status: GOOD (  13.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,10 +97,10 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Hi Jason-JH.Lin,
 
-kernel test robot noticed the following build errors:
+kernel test robot noticed the following build warnings:
 
-[auto build test ERROR on linus/master]
-[also build test ERROR on v6.10-rc3 next-20240613]
+[auto build test WARNING on linus/master]
+[also build test WARNING on fujitsu-integration/mailbox-for-next v6.10-rc3 next-20240613]
 [If your patch is applied to the wrong git tree, kindly drop us a note.
 And when submitting patch, we suggest to use '--base' as documented in
 https://git-scm.com/docs/git-format-patch#_base_tree_information]
@@ -109,28 +109,27 @@ url:    https://github.com/intel-lab-lkp/linux/commits/Jason-JH-Lin/mailbox-Add-
 base:   linus/master
 patch link:    https://lore.kernel.org/r/20240614040133.24967-2-jason-jh.lin%40mediatek.com
 patch subject: [PATCH 1/2] mailbox: Add power_get/power_put API to mbox_chan_ops
-config: riscv-defconfig (https://download.01.org/0day-ci/archive/20240615/202406150022.LXLvvkeI-lkp@intel.com/config)
-compiler: clang version 19.0.0git (https://github.com/llvm/llvm-project 78ee473784e5ef6f0b19ce4cb111fb6e4d23c6b2)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240615/202406150022.LXLvvkeI-lkp@intel.com/reproduce)
+config: arc-randconfig-002-20240614 (https://download.01.org/0day-ci/archive/20240615/202406150041.QTui5Xgq-lkp@intel.com/config)
+compiler: arceb-elf-gcc (GCC) 13.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240615/202406150041.QTui5Xgq-lkp@intel.com/reproduce)
 
 If you fix the issue in a separate patch/commit (i.e. not just a new version of
 the same patch/commit), kindly add following tags
 | Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202406150022.LXLvvkeI-lkp@intel.com/
+| Closes: https://lore.kernel.org/oe-kbuild-all/202406150041.QTui5Xgq-lkp@intel.com/
 
-All errors (new ones prefixed by >>):
+All warnings (new ones prefixed by >>):
 
-   In file included from drivers/mailbox/mailbox.c:9:
-   In file included from include/linux/interrupt.h:21:
-   In file included from arch/riscv/include/asm/sections.h:9:
-   In file included from include/linux/mm.h:2253:
-   include/linux/vmstat.h:514:36: warning: arithmetic between different enumeration types ('enum node_stat_item' and 'enum lru_list') [-Wenum-enum-conversion]
-     514 |         return node_stat_name(NR_LRU_BASE + lru) + 3; // skip "nr_"
-         |                               ~~~~~~~~~~~ ^ ~~~
->> drivers/mailbox/mailbox.c:382:11: error: incompatible pointer to integer conversion returning 'void *' from a function with result type 'int' [-Wint-conversion]
+   drivers/mailbox/mailbox.c: In function '__mbox_bind_client':
+>> drivers/mailbox/mailbox.c:382:32: warning: returning 'void *' from a function with return type 'int' makes integer from pointer without a cast [-Wint-conversion]
      382 |                         return ERR_PTR(ret);
          |                                ^~~~~~~~~~~~
-   1 warning and 1 error generated.
+
+Kconfig warnings: (for reference only)
+   WARNING: unmet direct dependencies detected for REGMAP_SPI
+   Depends on [n]: SPI [=n]
+   Selected by [y]:
+   - AD9739A [=y] && IIO [=y] && (SPI [=n] || COMPILE_TEST [=y])
 
 
 vim +382 drivers/mailbox/mailbox.c
