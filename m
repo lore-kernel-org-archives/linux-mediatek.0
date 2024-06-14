@@ -4,80 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50417C27C7B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jun 2024 02:48:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95B5DC27C4F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jun 2024 02:48:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=l/o9K3vrdwxYHQkFOoOv4lDaI8xltdq3SzLh9rTzdiE=; b=aV3q3QGOgvLk0LrR0cHfktx9J0
-	SDU6el7Kd0U0Z1VGkQM+XyDhuzsx06EiyJXtBRfmb8av8KpwB2jnddHFSa9vjBOzVsNobNXeXpIBj
-	RkLWP9lH76Z/13r7p1WwRJbAapefGv9UtwLQp/Ts/Q2Ana0/dTJB03aenUMhNS+axexF6NGeD5ms5
-	S39CBgZjoMhVEn69hj/0zagTVyjcSzGTBpzni0wqHskUTdXoWISQVq4DE2i+8RhkPh8UoFKuYZBBR
-	qbupp3aCMxxET4bZW0ny3Wradw08vKtRPf67THO+OXNT1F0fRQxX/ZZ54kaork8ztnxvDnvrBALVr
-	Mg4YPFkw==;
+	bh=wdYlW6V7N1ZnqYspQYd1Bp4Lc0EvqUX5TVai0ZgIkI8=; b=oB/1+9z+Kxz1zWRPsgYWQwahcK
+	iruVBn8E3/SQo9zs9OHA1zPKT/M7WxDGVb7MWome8Uo1c1IdzYpUmJ52eswwsAo7iSaXFJeYz8r7x
+	eVhRV89w0N1BxOqqzYDW/uSZ8teGiaFP+fNHhKvvjxbCKMkYurh5fnQI6+iGGq6bvzq/t/D5k6pZb
+	NXahxSYTiUJnIwsw0qFMbA/8hR9LoaaeDS+F1bJnOXr8yM/w2qqtS549NthUYERo6SEmdzouACQ14
+	iRpnsxvtl624uZm8Ri7dFrltl+BQzxCVk57LlrTa2ya0We4vg1z9IVWJNALYlLvkzFOezZkelMwPU
+	vUjkbQfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sHwzA-00000001BS5-3mnU;
-	Fri, 14 Jun 2024 02:48:17 +0000
+	id 1sHwzC-00000001BTN-1s4l;
+	Fri, 14 Jun 2024 02:48:18 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sHwy1-00000001AQQ-3vMO;
-	Fri, 14 Jun 2024 02:47:14 +0000
-X-UUID: 60055a2829f811efaf04eb0598667787-20240613
+	id 1sHwy2-00000001ARF-48ue;
+	Fri, 14 Jun 2024 02:47:15 +0000
+X-UUID: 6067ed9629f811efaf04eb0598667787-20240613
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=l/o9K3vrdwxYHQkFOoOv4lDaI8xltdq3SzLh9rTzdiE=;
-	b=UoLiLvMkFGEm3oA4txwxIjyvtxjmrA2ztuyQxAZnjueB62lRMSUPlgEqrvDcqhFqeFKt2EUvrhTWhhif6CrIz9NUL+Fxt3rq6ES6Emt3iy3t/fxT1WQ97X9pq30AagIO0j3QPuU0IuJhxOvhbqzNKAld1GDIKm/TLmVgu8ex49s=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=wdYlW6V7N1ZnqYspQYd1Bp4Lc0EvqUX5TVai0ZgIkI8=;
+	b=NrmyakvYDCNEfSaQDt/eQIQ6KPPH9t+2LG82R2iPqxVEe6VDgU9yZrPKokOKXqEOGll5IYkt5WQgsCCSUqwowweyOTMIKVW6x8dZza0UjmkM0lpyK8rQnXVbB2A0EE82GoknhJsO4QbT7/de+BAPmta44NQYkHBitkhcn/3GiAc=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.39,REQID:cf9be802-9c9f-45d3-b985-e6147abc51d6,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:-30,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACT
-	ION:release,TS:-55
-X-CID-META: VersionHash:393d96e,CLOUDID:b7e19188-8d4f-477b-89d2-1e3bdbef96d1,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:2,IP:nil,UR
-	L:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,S
-	PR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-O-INFO: VERSION:1.1.39,REQID:0e00719a-96fb-4216-adde-8a4348a7ca4e,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:393d96e,CLOUDID:c53f8f44-4544-4d06-b2b2-d7e12813c598,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 60055a2829f811efaf04eb0598667787-20240613
+X-UUID: 6067ed9629f811efaf04eb0598667787-20240613
 Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
 	(envelope-from <shawn.sung@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 233953968; Thu, 13 Jun 2024 19:47:01 -0700
+	with ESMTP id 839217440; Thu, 13 Jun 2024 19:47:01 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 14 Jun 2024 10:46:23 +0800
+ 15.2.1118.26; Fri, 14 Jun 2024 10:46:24 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 14 Jun 2024 10:46:23 +0800
+ 15.2.1118.26 via Frontend Transport; Fri, 14 Jun 2024 10:46:24 +0800
 From: Shawn Sung <shawn.sung@mediatek.com>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Subject: [PATCH v9 09/21] drm/mediatek: Fix XRGB setting error in OVL
-Date: Fri, 14 Jun 2024 10:46:08 +0800
-Message-ID: <20240614024620.19011-10-shawn.sung@mediatek.com>
+Subject: [PATCH v9 16/21] drm/mediatek: Support "Pre-multiplied" blending in OVL
+Date: Fri, 14 Jun 2024 10:46:15 +0800
+Message-ID: <20240614024620.19011-17-shawn.sung@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20240614024620.19011-1-shawn.sung@mediatek.com>
 References: <20240614024620.19011-1-shawn.sung@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--10.300700-8.000000
-X-TMASE-MatchedRID: YlFttd9FXlxk8mKJ5urUT/SZ/2axrnPBMZpQS7dE0dbn3ZLCt3rRSU/3
-	ZkXeY1OAief1bXK4GioSqo3ZUfrHh25/NyTKlG69y7TSWcbz49aH7D1bP/FcOmI4wQ1Yq/d0ixZ
-	NU2JZ49sDpwq8Ju73uXQp8BZ5yX4A0gsu93e+95/uykw7cfAoIPpV/0XEKBthmyiLZetSf8mfop
-	0ytGwvXiq2rl3dzGQ1qdk2nO+ebu9cJj1z0Bi0+OOtQE7p5cguXENRtXAnSsoLfLq6W2rnbw==
+X-TM-AS-Result: No-10--7.881100-8.000000
+X-TMASE-MatchedRID: tzdmYTDShTnX3tqA7xZNm8ULzBBTAHAlG9Itfzsy8/XYgrGDwuFJdmb6
+	PphVtfZg2PMzbXOaAnoaTIVsbS1pG/QPRH4blNMc3fn7n/ZHGqaH7D1bP/FcOkJqedX9vt/ZUfo
+	Sav+4bRBhQDhAoaA0nWnhMuTEcViwrxpSystEXJIdxBAG5/hkW30tCKdnhB589yM15V5aWpj6C0
+	ePs7A07Xi4XEoPXecx9nksz8t8qUkZaNbuPmnonYrTzSDyjr5uR93lYgjwMSw=
 X-TM-AS-User-Approved-Sender: No
 X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--10.300700-8.000000
+X-TMASE-Result: 10--7.881100-8.000000
 X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 9207DF7928467F56B1EFB7B01E56E301FF6EA7079216B570293EEBCFCB9E80B62000:8
+X-TM-SNTS-SMTP: 97FD793FADBDEEF81A9FAB80CC259AADD20A2DBC9367500A0997AC349DD263AE2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240613_194706_209253_6B6CDEF1 
-X-CRM114-Status: GOOD (  11.53  )
+X-CRM114-CacheID: sfid-20240613_194707_291710_4CC8792A 
+X-CRM114-Status: GOOD (  12.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,62 +96,122 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Hsiao Chien Sung <shawn.sung@mediatek.com>
 
-CONST_BLD must be enabled for XRGB formats although the alpha channel
-can be ignored, or OVL will still read the value from memory.
-This error only affects CRC generation.
+Support "Pre-multiplied" alpha blending mode on in OVL.
+Before this patch, only the "coverage" mode is supported.
 
-Fixes: c410fa9b07c3 ("drm/mediatek: Add AFBC support to Mediatek DRM driver")
 Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 14 ++++++++++++--
- 1 file changed, 12 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 42 ++++++++++++++++++++-----
+ 1 file changed, 34 insertions(+), 8 deletions(-)
 
 diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-index 946b87ec48ca..fd390fb83d0e 100644
+index 6567806cf4e2..47d0b039a616 100644
 --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
 +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-@@ -38,6 +38,7 @@
- #define DISP_REG_OVL_PITCH_MSB(n)		(0x0040 + 0x20 * (n))
- #define OVL_PITCH_MSB_2ND_SUBBUF			BIT(16)
- #define DISP_REG_OVL_PITCH(n)			(0x0044 + 0x20 * (n))
-+#define OVL_CONST_BLEND					BIT(28)
- #define DISP_REG_OVL_RDMA_CTRL(n)		(0x00c0 + 0x20 * (n))
- #define DISP_REG_OVL_RDMA_GMC(n)		(0x00c8 + 0x20 * (n))
- #define DISP_REG_OVL_ADDR_MT2701		0x0040
-@@ -428,6 +429,7 @@ void mtk_ovl_layer_config(struct device *dev, unsigned int idx,
- 	unsigned int fmt = pending->format;
- 	unsigned int offset = (pending->y << 16) | pending->x;
- 	unsigned int src_size = (pending->height << 16) | pending->width;
-+	unsigned int ignore_pixel_alpha = 0;
- 	unsigned int con;
- 	bool is_afbc = pending->modifier != DRM_FORMAT_MOD_LINEAR;
- 	union overlay_pitch {
-@@ -449,6 +451,14 @@ void mtk_ovl_layer_config(struct device *dev, unsigned int idx,
- 	if (state->base.fb && state->base.fb->format->has_alpha)
- 		con |= OVL_CON_AEN | OVL_CON_ALPHA;
+@@ -52,8 +52,12 @@
+ #define GMC_THRESHOLD_HIGH	((1 << GMC_THRESHOLD_BITS) / 4)
+ #define GMC_THRESHOLD_LOW	((1 << GMC_THRESHOLD_BITS) / 8)
  
-+	/* CONST_BLD must be enabled for XRGB formats although the alpha channel
-+	 * can be ignored, or OVL will still read the value from memory.
-+	 * For RGB888 related formats, whether CONST_BLD is enabled or not won't
-+	 * affect the result. Therefore we use !has_alpha as the condition.
-+	 */
-+	if (state->base.fb && !state->base.fb->format->has_alpha)
-+		ignore_pixel_alpha = OVL_CONST_BLEND;
++#define OVL_CON_CLRFMT_MAN	BIT(23)
+ #define OVL_CON_BYTE_SWAP	BIT(24)
+-#define OVL_CON_MTX_YUV_TO_RGB	(6 << 16)
 +
- 	if (pending->rotation & DRM_MODE_REFLECT_Y) {
- 		con |= OVL_CON_VIRT_FLIP;
- 		addr += (pending->height - 1) * pending->pitch;
-@@ -464,8 +474,8 @@ void mtk_ovl_layer_config(struct device *dev, unsigned int idx,
++/* OVL_CON_RGB_SWAP works only if OVL_CON_CLRFMT_MAN is enabled */
++#define OVL_CON_RGB_SWAP	BIT(25)
++
+ #define OVL_CON_CLRFMT_RGB	(1 << 12)
+ #define OVL_CON_CLRFMT_ARGB8888	(2 << 12)
+ #define OVL_CON_CLRFMT_RGBA8888	(3 << 12)
+@@ -61,6 +65,11 @@
+ #define OVL_CON_CLRFMT_BGRA8888	(OVL_CON_CLRFMT_ARGB8888 | OVL_CON_BYTE_SWAP)
+ #define OVL_CON_CLRFMT_UYVY	(4 << 12)
+ #define OVL_CON_CLRFMT_YUYV	(5 << 12)
++#define OVL_CON_MTX_YUV_TO_RGB	(6 << 16)
++#define OVL_CON_CLRFMT_PARGB8888 ((3 << 12) | OVL_CON_CLRFMT_MAN)
++#define OVL_CON_CLRFMT_PABGR8888 (OVL_CON_CLRFMT_PARGB8888 | OVL_CON_RGB_SWAP)
++#define OVL_CON_CLRFMT_PBGRA8888 (OVL_CON_CLRFMT_PARGB8888 | OVL_CON_BYTE_SWAP)
++#define OVL_CON_CLRFMT_PRGBA8888 (OVL_CON_CLRFMT_PABGR8888 | OVL_CON_BYTE_SWAP)
+ #define OVL_CON_CLRFMT_RGB565(ovl)	((ovl)->data->fmt_rgb565_is_0 ? \
+ 					0 : OVL_CON_CLRFMT_RGB)
+ #define OVL_CON_CLRFMT_RGB888(ovl)	((ovl)->data->fmt_rgb565_is_0 ? \
+@@ -74,6 +83,8 @@
+ #define	OVL_CON_VIRT_FLIP	BIT(9)
+ #define	OVL_CON_HORZ_FLIP	BIT(10)
  
- 	mtk_ddp_write_relaxed(cmdq_pkt, con, &ovl->cmdq_reg, ovl->regs,
- 			      DISP_REG_OVL_CON(idx));
--	mtk_ddp_write_relaxed(cmdq_pkt, overlay_pitch.split_pitch.lsb, &ovl->cmdq_reg, ovl->regs,
--			      DISP_REG_OVL_PITCH(idx));
-+	mtk_ddp_write_relaxed(cmdq_pkt, overlay_pitch.split_pitch.lsb | ignore_pixel_alpha,
-+			      &ovl->cmdq_reg, ovl->regs, DISP_REG_OVL_PITCH(idx));
- 	mtk_ddp_write_relaxed(cmdq_pkt, src_size, &ovl->cmdq_reg, ovl->regs,
- 			      DISP_REG_OVL_SRC_SIZE(idx));
- 	mtk_ddp_write_relaxed(cmdq_pkt, offset, &ovl->cmdq_reg, ovl->regs,
++#define OVL_COLOR_ALPHA		GENMASK(31, 24)
++
+ static inline bool is_10bit_rgb(u32 fmt)
+ {
+ 	switch (fmt) {
+@@ -298,7 +309,13 @@ void mtk_ovl_config(struct device *dev, unsigned int w,
+ 	if (w != 0 && h != 0)
+ 		mtk_ddp_write_relaxed(cmdq_pkt, h << 16 | w, &ovl->cmdq_reg, ovl->regs,
+ 				      DISP_REG_OVL_ROI_SIZE);
+-	mtk_ddp_write_relaxed(cmdq_pkt, 0x0, &ovl->cmdq_reg, ovl->regs, DISP_REG_OVL_ROI_BGCLR);
++
++	/*
++	 * The background color must be opaque black (ARGB),
++	 * otherwise the alpha blending will have no effect
++	 */
++	mtk_ddp_write_relaxed(cmdq_pkt, OVL_COLOR_ALPHA, &ovl->cmdq_reg,
++			      ovl->regs, DISP_REG_OVL_ROI_BGCLR);
+ 
+ 	mtk_ddp_write(cmdq_pkt, 0x1, &ovl->cmdq_reg, ovl->regs, DISP_REG_OVL_RST);
+ 	mtk_ddp_write(cmdq_pkt, 0x0, &ovl->cmdq_reg, ovl->regs, DISP_REG_OVL_RST);
+@@ -374,7 +391,8 @@ void mtk_ovl_layer_off(struct device *dev, unsigned int idx,
+ 		      DISP_REG_OVL_RDMA_CTRL(idx));
+ }
+ 
+-static unsigned int ovl_fmt_convert(struct mtk_disp_ovl *ovl, unsigned int fmt)
++static unsigned int ovl_fmt_convert(struct mtk_disp_ovl *ovl, unsigned int fmt,
++				    unsigned int blend_mode)
+ {
+ 	/* The return value in switch "MEM_MODE_INPUT_FORMAT_XXX"
+ 	 * is defined in mediatek HW data sheet.
+@@ -395,22 +413,30 @@ static unsigned int ovl_fmt_convert(struct mtk_disp_ovl *ovl, unsigned int fmt)
+ 	case DRM_FORMAT_RGBA8888:
+ 	case DRM_FORMAT_RGBX1010102:
+ 	case DRM_FORMAT_RGBA1010102:
+-		return OVL_CON_CLRFMT_RGBA8888;
++		return blend_mode == DRM_MODE_BLEND_COVERAGE ?
++		       OVL_CON_CLRFMT_RGBA8888 :
++		       OVL_CON_CLRFMT_PRGBA8888;
+ 	case DRM_FORMAT_BGRX8888:
+ 	case DRM_FORMAT_BGRA8888:
+ 	case DRM_FORMAT_BGRX1010102:
+ 	case DRM_FORMAT_BGRA1010102:
+-		return OVL_CON_CLRFMT_BGRA8888;
++		return blend_mode == DRM_MODE_BLEND_COVERAGE ?
++		       OVL_CON_CLRFMT_BGRA8888 :
++		       OVL_CON_CLRFMT_PBGRA8888;
+ 	case DRM_FORMAT_XRGB8888:
+ 	case DRM_FORMAT_ARGB8888:
+ 	case DRM_FORMAT_XRGB2101010:
+ 	case DRM_FORMAT_ARGB2101010:
+-		return OVL_CON_CLRFMT_ARGB8888;
++		return blend_mode == DRM_MODE_BLEND_COVERAGE ?
++		       OVL_CON_CLRFMT_ARGB8888 :
++		       OVL_CON_CLRFMT_PARGB8888;
+ 	case DRM_FORMAT_XBGR8888:
+ 	case DRM_FORMAT_ABGR8888:
+ 	case DRM_FORMAT_XBGR2101010:
+ 	case DRM_FORMAT_ABGR2101010:
+-		return OVL_CON_CLRFMT_ABGR8888;
++		return blend_mode == DRM_MODE_BLEND_COVERAGE ?
++		       OVL_CON_CLRFMT_ABGR8888 :
++		       OVL_CON_CLRFMT_PABGR8888;
+ 	case DRM_FORMAT_UYVY:
+ 		return OVL_CON_CLRFMT_UYVY | OVL_CON_MTX_YUV_TO_RGB;
+ 	case DRM_FORMAT_YUYV:
+@@ -450,7 +476,7 @@ void mtk_ovl_layer_config(struct device *dev, unsigned int idx,
+ 		return;
+ 	}
+ 
+-	con = ovl_fmt_convert(ovl, fmt);
++	con = ovl_fmt_convert(ovl, fmt, blend_mode);
+ 	if (state->base.fb) {
+ 		con |= OVL_CON_AEN;
+ 		con |= state->base.alpha & OVL_CON_ALPHA;
 -- 
 2.18.0
 
