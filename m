@@ -4,75 +4,140 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 503B3C27C6E
-	for <linux-mediatek@archiver.kernel.org>; Sat, 15 Jun 2024 00:47:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51869C27C4F
+	for <linux-mediatek@archiver.kernel.org>; Sat, 15 Jun 2024 06:38:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=npkn03wP7YtFeRsTjC3TRY5Eg6h97deI9Z/3TwOzoes=; b=oGhvXZN4bKqd1wEPmg/eAc+4hu
-	ALyzqytXc5gyuzZNWQgymMkQwM1WBTn5IJDC9nTxPrcnVIQ/ZghfbwYh260sc5Ob2EI9xFSSQbHxf
-	MA5GpLqVpxdN1RThhPCmyunZd03hyW4luDJyzlFdiX+HDOt3MuPGC6L600Ch/VCSxaAESy5Lw11By
-	R7J+SaJ1gvyzYXzYExX93hMIHXQcpdpA9sY4aHDszKvOlW1Ns4Cn1UQC56DlzVoHNcS53zNkRUZr0
-	4S77/EgGYgbIMpLPlxq/9zgKqN8/HsPoXZ9jcZoqJwHT1Ae4Kr2kdbUKR5zYdKM5aDrjUIjvOLsAj
-	FpUAU6XA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:In-Reply-To:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vIwSYtTFXPS3sO38FNNQ6oJ71Y0bLvlrMHrlSuad46E=; b=hZfOffF3Zxi1dVEZjcXj5f8Pfe
+	1Uhq2vIcc6zSV3/yU/ze3mlluJPCpMivZ1HNVC4qCcQhWhleEENOJuiZFg2y308DFtBnS9wt1VJ8n
+	rgnOE5fksw/NadH37gaXc/xFFuLyOF5p3CPIE0G8bdYFR/2tYd11TW/SQt1WpcpivwqGgF+vAIVaB
+	HG9pZNDkAcDuyUgJEvG/AsSIy9uFbeytkZnkldGmtBUCkGmpX3DDEt3W3A+w+iTvx5b6TvIPk51Co
+	+nJtIh6noFZInxurQZfLDD0d8nkQD72VRBfcRKI2M4e8lg2EwmTjcW0lWDZkqKO4s3mu/rLgxAuVu
+	rxjQqbtg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sIHZw-00000004LsV-0lt4;
-	Sat, 15 Jun 2024 00:47:36 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1sIN3I-00000004odR-3X1W;
+	Sat, 15 Jun 2024 06:38:16 +0000
+Received: from mailout3.samsung.com ([203.254.224.33])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sIHZp-00000004LrZ-3DRN;
-	Sat, 15 Jun 2024 00:47:31 +0000
-Received: from pendragon.ideasonboard.com (81-175-209-231.bb.dnainternet.fi [81.175.209.231])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id D94EB2E3;
-	Sat, 15 Jun 2024 02:47:10 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1718412431;
-	bh=l2WovBwHTqQxC4PpmcBxNtwWoVXaTmRA9KrR94DqflM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=tpwoYvSaNG5y7cfKPtXOeK9c/WqWgJi3L8tX9ggrvnFGBO3K6eosuYM6S28IenDax
-	 ykIE86g/okNXN8/GY7mLQ7DyxukkqBLpnwEjkPMpgrqk+dU50DxnO8oXxx+XFl55xe
-	 2PjY/0RWUGvD0kMIJoqCmRAzLH72YH0kCjoIG2DY=
-Date: Sat, 15 Jun 2024 03:47:05 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Julien Stephan <jstephan@baylibre.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Louis Kuo <louis.kuo@mediatek.com>,
-	Phi-bang Nguyen <pnguyen@baylibre.com>,
-	Florian Sylvestre <fsylvestre@baylibre.com>,
-	Andy Hsieh <andy.hsieh@mediatek.com>,
-	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Paul Elder <paul.elder@ideasonboard.com>,
-	Rob Herring <robh+dt@kernel.org>
-Subject: Re: [PATCH v4 3/5] media: platform: mediatek: isp_30: add mediatek
- ISP3.0 sensor interface
-Message-ID: <20240615004705.GI9171@pendragon.ideasonboard.com>
-References: <20240110141443.364655-1-jstephan@baylibre.com>
- <20240110141443.364655-4-jstephan@baylibre.com>
- <3c2bee40-3792-409c-b42f-f8b013ff641c@collabora.com>
- <CAEHHSvaT_U+HNzWQUoK9EuqGuqEd11+Lu0CLz_rL7uQf0Q5isw@mail.gmail.com>
- <53838e76-bfa4-41f5-a015-a37472e98991@collabora.com>
- <CAEHHSvaRqZM9c8oD05WKkhOHdjKLBkR6tXp2Q1b8OMiDxDsDhQ@mail.gmail.com>
- <20240614123345.GN6019@pendragon.ideasonboard.com>
- <CAEHHSvaWO7m=n5_f0BM7gwuDMfh_GMX=x3DknG28PnmtZbrGQw@mail.gmail.com>
- <20240614144248.GA20136@pendragon.ideasonboard.com>
- <CAEHHSvZPATFV=w451KaaT+e__EK9u3Vc5ORPRQ-Gfa4rJ_o8hA@mail.gmail.com>
+	id 1sIN3D-00000004ocS-2rqb;
+	Sat, 15 Jun 2024 06:38:14 +0000
+Received: from epcas5p4.samsung.com (unknown [182.195.41.42])
+	by mailout3.samsung.com (KnoxPortal) with ESMTP id 20240615063802epoutp03937665879767c7bb38a494fd9922b629~ZGiW7zCER1672516725epoutp03U;
+	Sat, 15 Jun 2024 06:38:02 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout3.samsung.com 20240615063802epoutp03937665879767c7bb38a494fd9922b629~ZGiW7zCER1672516725epoutp03U
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+	s=mail20170921; t=1718433482;
+	bh=vIwSYtTFXPS3sO38FNNQ6oJ71Y0bLvlrMHrlSuad46E=;
+	h=From:To:Cc:In-Reply-To:Subject:Date:References:From;
+	b=ZqRx9WEWTrFB0xPY+AKKfrl5bDsclQ3TWzUHUdAxvTY441omquggL+KXasoOMm0vb
+	 TT+Pz6KIgcBpV+kxr0393uI0VDMBX9ZwbarTNJXaWh2vxCh9xsvWvGFQaMHx8xlyGI
+	 iz4oghNbkk5GDaB2b8OoCpIX7Wn+XVPM7Cal+B2Q=
+Received: from epsnrtp4.localdomain (unknown [182.195.42.165]) by
+	epcas5p1.samsung.com (KnoxPortal) with ESMTP id
+	20240615063801epcas5p14a1910659716b444f56195a7b2ec983b~ZGiWWyQ_Y0633306333epcas5p1F;
+	Sat, 15 Jun 2024 06:38:01 +0000 (GMT)
+Received: from epcpadp4 (unknown [182.195.40.18]) by epsnrtp4.localdomain
+	(Postfix) with ESMTP id 4W1RKj3gpKz4x9Px; Sat, 15 Jun 2024 06:38:01 +0000
+	(GMT)
+Received: from epsmtrp2.samsung.com (unknown [182.195.40.14]) by
+	epcas5p1.samsung.com (KnoxPortal) with ESMTPA id
+	20240614142920epcas5p15f5887136072ebf6c2e23275dd872861~Y5Uk66YwW0344703447epcas5p15;
+	Fri, 14 Jun 2024 14:29:20 +0000 (GMT)
+Received: from epsmgms1p2new.samsung.com (unknown [182.195.42.42]) by
+	epsmtrp2.samsung.com (KnoxPortal) with ESMTP id
+	20240614142920epsmtrp2e40951f54cedb283a63bd26a75890a5d~Y5Uk39wd62550925509epsmtrp2Y;
+	Fri, 14 Jun 2024 14:29:20 +0000 (GMT)
+X-AuditID: b6c32a2a-73fff70000004a71-de-666c53c04e95
+Received: from epsmtip1.samsung.com ( [182.195.34.30]) by
+	epsmgms1p2new.samsung.com (Symantec Messaging Gateway) with SMTP id
+	FD.07.19057.0C35C666; Fri, 14 Jun 2024 23:29:20 +0900 (KST)
+Received: from INBRO002756 (unknown [107.122.12.5]) by epsmtip1.samsung.com
+	(KnoxPortal) with ESMTPA id
+	20240614142913epsmtip17b1c18bda36c53de5d30099c1e4afd13~Y5UeC7Xu-3016230162epsmtip1U;
+	Fri, 14 Jun 2024 14:29:13 +0000 (GMT)
+From: "Alim Akhtar" <alim.akhtar@samsung.com>
+To: "'Krzysztof Kozlowski'" <krzysztof.kozlowski@linaro.org>, "'Daniel
+ Lezcano'" <daniel.lezcano@linaro.org>, "'Zhang Rui'" <rui.zhang@intel.com>,
+	"'Lukasz Luba'" <lukasz.luba@arm.com>, "'Rob Herring'" <robh@kernel.org>,
+	"'Conor Dooley'" <conor+dt@kernel.org>, "'Guillaume La Roque'"
+	<glaroque@baylibre.com>, "'Krzysztof Kozlowski'" <krzk+dt@kernel.org>,
+	"'Vasily Khoruzhick'" <anarsoul@gmail.com>, "'Chen-Yu Tsai'"
+	<wens@csie.org>, "'Jernej Skrabec'" <jernej.skrabec@gmail.com>, "'Samuel
+ Holland'" <samuel@sholland.org>, "'Shawn Guo'" <shawnguo@kernel.org>,
+	"'Sascha Hauer'" <s.hauer@pengutronix.de>, "'Pengutronix	Kernel Team'"
+	<kernel@pengutronix.de>, "'Fabio Estevam'" <festevam@gmail.com>, "'Anson
+ Huang'" <Anson.Huang@nxp.com>, "'Thierry Reding'"
+	<thierry.reding@gmail.com>, "'Jonathan Hunter'" <jonathanh@nvidia.com>,
+	"'Dmitry	Baryshkov'" <dmitry.baryshkov@linaro.org>, "'Amit Kucheria'"
+	<amitk@kernel.org>, =?utf-8?Q?'Niklas_S=C3=B6derlund'?=
+	<niklas.soderlund@ragnatech.se>, "'Heiko	Stuebner'" <heiko@sntech.de>,
+	"'Biju Das'" <biju.das.jz@bp.renesas.com>, "'Orson	Zhai'"
+	<orsonzhai@gmail.com>, "'Baolin Wang'" <baolin.wang@linux.alibaba.com>,
+	"'Chunyan Zhang'" <zhang.lyra@gmail.com>, "'Alexandre Torgue'"
+	<alexandre.torgue@foss.st.com>, "'Pascal Paillet'" <p.paillet@foss.st.com>,
+	"'Keerthy'" <j-keerthy@ti.com>, "'Broadcom internal kernel review list'"
+	<bcm-kernel-feedback-list@broadcom.com>, "'Florian Fainelli'"
+	<florian.fainelli@broadcom.com>, "'Scott Branden'" <sbranden@broadcom.com>,
+	"'zhanghongchen'" <zhanghongchen@loongson.cn>, "'Matthias Brugger'"
+	<matthias.bgg@gmail.com>, "'AngeloGioacchino Del Regno'"
+	<angelogioacchino.delregno@collabora.com>, "'Bjorn Andersson'"
+	<andersson@kernel.org>, "'Geert Uytterhoeven'" <geert+renesas@glider.be>
+Cc: <linux-pm@vger.kernel.org>, <linux-samsung-soc@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-amlogic@lists.infradead.org>,
+	<linux-sunxi@lists.linux.dev>, <imx@lists.linux.dev>,
+	<linux-tegra@vger.kernel.org>, <linux-arm-msm@vger.kernel.org>,
+	<linux-renesas-soc@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
+	<linux-stm32@st-md-mailman.stormreply.com>, "'Florian Fainelli'"
+	<f.fainelli@gmail.com>, <linux-rpi-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <cpgs@samsung.com>
+In-Reply-To: <20240614-dt-bindings-thermal-allof-v1-1-30b25a6ae24e@linaro.org>
+Subject: RE: [PATCH 01/22] dt-bindings: thermal: samsung,exynos: specify
+ cells
+Date: Fri, 14 Jun 2024 19:59:11 +0530
+Message-ID: <1891546521.01718433481489.JavaMail.epsvc@epcpadp4>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAEHHSvZPATFV=w451KaaT+e__EK9u3Vc5ORPRQ-Gfa4rJ_o8hA@mail.gmail.com>
+Content-Transfer-Encoding: quoted-printable
+X-Mailer: Microsoft Outlook 16.0
+Thread-Index: AQGhCdcVAXQc0tvKk5x9QOKQ/J0WewGh/L0BAiWHCW6yHH4lsA==
+Content-Language: en-us
+X-Brightmail-Tracker: H4sIAAAAAAAAA02SbUxTdxTG97+9vbfQ1ZSXyQUFTaPZgJXBNtlxGLLgy+6mEYxzyUwUGriC
+	jJbaikPjMuhaMmA4wAn2dhRQxgoUcDBoQd5Sist0QMTZzTgQkAJdE/BtaN2gA7otfPudc57n
+	OefD4XF89UQQ77jsJKOQSTJEhDfe3i8KEfcdzDgWWdPnAy5HGYL+ymzQXJtG0P7FDhipo8Ck
+	TQZ39zUEjUUDOOjNCxgYu4cwcFhCQf84GCqtQ1woGXYR8HzOSsLE7Xhoah/jQIWuFEH1+QoC
+	3JNOLmjHNARcN6kwmKlsQqBmL+FQf6EDBwc7RkC3s42EKh0fWu7bltN6B0m41fkNAbc+v4ng
+	cZEVQZtjDoNH424OlNy9QsLF4R4MCmxTXPi6p5OA/CcsAdUqNQkq9RvwY9k5LpQ/0CHos5/H
+	wd1lJmFq4hwBi6YWHGYm8wmYa5hCMPtDALg69Ti4LMMYfDfeScKCzcR55y3aqDciev43DUnX
+	zepImr03SNDm0RpEX5ls4NL2r9pIumRQTHewoyR9ucuB0S31+QT9u62LoDsmttOtNZ/Rs61a
+	ROeqLmEJQYe9d6QwGcdPMYrXYpO80yomj8ivCrK1PY2cHKTmFyAvHiV8kypW9RMr7Cu8iqie
+	waOe/gbq1++LSQ/7UXVLM8vsvayZRlRtccmqgRCKKfPlPGJl4C80rqOeOn9eLTjCP3Cqdc7A
+	9VgmEPW3NhdfsXgJ91P6R2pshf1WuHBqtY8Lt1JLzabVfQLhdupGo/Zf9qF+0no0HGE4Zb9j
+	/59rq50cz32bKZe9dnkZb/mMOCq3GfNIAijHgJUsRn7smiR2TRK7JoldY6lCeD0KZORKaapU
+	GSV/XcZ8EqGUSJVZstSI5ExpC1p94bAwM+qqfxBhQRgPWRDF44j8BWx1+jFfQYrk9BlGkZmo
+	yMpglBa0gYeLAgQLzqIUX2Gq5CTzMcPIGcV/U4znFZSDiQsTbvzlGnCM2y9aXnSx3dh6d7D6
+	thR921tqijm4N6r29FhDsnSbIeTILxttWXuHN/Gt9HO+7NShkS7/P63vvvrpfLugPjXOp9v8
+	5QvwbGuVMyx8PPSjs+u8AqufGD7Aoj8M7Y8/Ec8e2FnObrHmtRXMzHTwRfO2QEfMdHJ4+qH7
+	0YbBhUneotEwlLfNELm060xp2tMmjbJVoyPfbiu7uSt9T8zRVyLxu2HiskJL9Nl7vUEJUnq9
+	vfA6P1E8nXnBbizdnb14J5jYJHsWm4UnvfRQRJa35ry/f+dS/3ujMXHNcjIEP6yPzdVAxImR
+	Lfucs/LNOvW+AxUPX87anZS4MUOEK9MkUWEchVLyD7bfoqExBAAA
+X-CMS-MailID: 20240614142920epcas5p15f5887136072ebf6c2e23275dd872861
+X-Msg-Generator: CA
+Content-Type: text/plain; charset="utf-8"
+CMS-TYPE: 105P
+X-CPGSPASS: Y
+X-Hop-Count: 3
+X-CMS-RootMailID: 20240614094638epcas5p115d52130f45e130652b6f1d946358d19
+References: <20240614-dt-bindings-thermal-allof-v1-0-30b25a6ae24e@linaro.org>
+	<CGME20240614094638epcas5p115d52130f45e130652b6f1d946358d19@epcas5p1.samsung.com>
+	<20240614-dt-bindings-thermal-allof-v1-1-30b25a6ae24e@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240614_174729_977409_1B6A2EA8 
-X-CRM114-Status: GOOD (  48.28  )
+X-CRM114-CacheID: sfid-20240614_233812_414878_1317714C 
+X-CRM114-Status: GOOD (  17.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,142 +152,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jun 14, 2024 at 04:54:47PM +0200, Julien Stephan wrote:
-> Le ven. 14 juin 2024 à 16:43, Laurent Pinchart a écrit :
-> > On Fri, Jun 14, 2024 at 04:14:52PM +0200, Julien Stephan wrote:
-> > > Le ven. 14 juin 2024 à 14:34, Laurent Pinchart a écrit :
-> > > > On Fri, Jun 14, 2024 at 12:38:15PM +0200, Julien Stephan wrote:
-> > > > > Le mer. 12 juin 2024 à 10:06, AngeloGioacchino Del Regno a écrit :
-> > > > > >
-> > > > > > Il 10/06/24 16:39, Julien Stephan ha scritto:
-> > > > > [...]
-> > > > > > >>
-> > > > > > >>> +     writel(0x10001, input->base + SENINF_TG1_SEN_CK);
-> > > > > > >>
-> > > > > > >> Unroll this one... this is the TG1 sensor clock divider.
-> > > > > > >>
-> > > > > > >> CLKFL GENMASK(5, 0)
-> > > > > > >> CLKRS GENMASK(13, 8)
-> > > > > > >> CLKCNT GENMASK(21,16)
-> > > > > > >>
-> > > > > > >> Like this, I don't get what you're trying to set, because you're using a fixed
-> > > > > > >> sensor clock rate, meaning that only a handful of camera sensors will be usable.
-> > > > > > >>
-> > > > > > >> Is this 8Mhz? 16? 24? what? :-)
-> > > > > > >>
-> > > > > > >> Two hints:
-> > > > > > >>    - sensor_clk = clk_get_rate(isp_clk) / (tg1_sen_ck_clkcnt + 1);
-> > > > > > >>    - int mtk_seninf_set_sensor_clk(u8 rate_mhz);
-> > > > > > >>
-> > > > > > >> Please :-)
-> > > > > > >
-> > > > > > > Hi Angelo,
-> > > > > > >
-> > > > > > > I think I get your point about not hardcoding the sensor rate, but I
-> > > > > > > am not sure how to use
-> > > > > > > a mtk_seninf_set_sensor_clk(u8 rate_mhz); function.
-> > > > > > >
-> > > > > > > Where would it be called? How is it exposed to the user?
-> > > > > > >
-> > > > > >
-> > > > > > As for where: setup, streaming start, resolution change (which may be covered
-> > > > > > by streaming start anyway, as a change should be calling stop->start anyway).
-> > > > > >
-> > > > > > And for the how is it exposed to the user - well, depends what you mean for user,
-> > > > > > but it's all standard V4L2 API :-)
-> > > > > >
-> > > > > > Last but not least, I can give you another hint....
-> > > > > >
-> > > > > > struct media_entity *entity = (something_here);
-> > > > > > struct media_pad *mpad;
-> > > > > > struct v4l2_subdev *cam_subdev;
-> > > > > > struct v4l2_ctrl *ctl;
-> > > > > > s64 link_frequency, pixel_clock;
-> > > > > >
-> > > > > > if (entity->pads[0].flags & MEDIA_PAD_FL_SINK)
-> > > > > >     return -E_NOT_A_CAMERA_SENSOR_WE_IGNORE_THIS_ONE;
-> > > > > >
-> > > > > > pad = media_pad_remote_pad_first(&entity->pads[0]);
-> > > > > > if (!pad)
-> > > > > >    return -ENOENT;
-> > > > > >
-> > > > > > if (!is_media_entity_v4l2_subdev(pad->entity))
-> > > > > >    return -ENOENT;
-> > > > > >
-> > > > > > if (pad->entity->function != MEDIA_ENT_F_CAM_SENSOR)
-> > > > > >    return -ENOENT;
-> > > > > >
-> > > > >
-> > > > > Hi Angelo,
-> > > > >
-> > > > > Thank you for the detailed explanation :)
-> > > > > However, I can't make it work because in my case, seninf is connected
-> > > > > to an external ISP
-> > > > > so pad->entity->function == MEDIA_ENT_F_PROC_VIDEO_ISP.
-> > > > >
-> > > > > How can I get the pad corresponding to the sensor?
-> > > >
-> > > > You don't have to. You can drop that check, and get the link frequency
-> > > > of the source subdev with v4l2_get_link_freq(), whatever it is.
-> > > >
-> > > > > > cam_subdev = media_entity_to_v4l2_subdev(pad->entity);
-> > > > > > ctl = v4l2_ctrl_find(subdev->ctrl_handler, V4L2_CID_PIXEL_RATE);
-> > > > >
-> > > > > Is this mandatory to implement V4L2_CID_PIXEL_RATE ?
-> > > > > Should I return an error if not found?
-> > > >
-> > > > Does SENINF need to know both the pixel rate and link frequency ?
-> > > > V4L2_CID_PIXEL_RATE is very ill-defined, at the moment it only makes
-> > > > sense as a value relative to the sensor pixel array, and doesn't really
-> > > > apply further down in the pipeline. What information do you need to
-> > > > program the SENINF ?
-> > >
-> > > Hi Laurent,
-> > >
-> > > I need to know the clock divider for the sensor
-> >
-> > Could you provide some details on how the SENINF uses that divisor ?
-> > What does it control, and what are the constraints ?
-> 
-> According to the datasheet,  SENINF_TG1_SEN_CK[21:16] :CLKCNT : Sensor
-> master clock will be ISP_clock/(CLKCNT+1) where CLKCNT >= 1
+Hi Krzysztof,
 
-I'll need more information. My guess so far is that there's a FIFO
-somewhere in the SENINF, with the pixel bus clocked by the CSI-2 clock
-before the FIFO, and by the "Sensor master clock" after the FIFO. Is
-that right ? If so, the simplest approach would be to use the link
-frequency to compute the pixel clock before the FIFO, and make sure that
-the sensor master clock will be larger than or equal to that.
+> -----Original Message-----
+> From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> Sent: Friday, June 14, 2024 3:16 PM
+> To: Daniel Lezcano <daniel.lezcano@linaro.org
+.stormreply.com;
+> Subject: [PATCH 01/22] dt-bindings: thermal: samsung,exynos: specify cell=
+s
+>=20
+> All Samsung Exynos SoCs Thermal Management Units have only one sensor, so
+> make '#thermal-sensor-cells' fixed at 0.
+>=20
+This is not entirely true, there are SoCs which have multiple temp sensors.
+It is true that currently only one sensor support is added though.
 
-A better approach from a power consumption point of view would be to
-consider horizontal blanking. The FIFO can fill faster than it gets
-emptied during the active portion of the line and then drain during
-blanking. This allows for a slower clock on the output side. You will
-need to pick an output clock frequency that
+So we can leave this as is or you suggest to make it to support only one se=
+nsor
+(to match the current DT support), and later (in near future) change it aga=
+in to
+match what HW actually support?
 
-- on average is larger than the number of active pixels per line divided
-  by the line duration ; and
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> ---
+>  Documentation/devicetree/bindings/thermal/samsung,exynos-thermal.yaml | =
+3
+> ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/Documentation/devicetree/bindings/thermal/samsung,exynos-
+> thermal.yaml b/Documentation/devicetree/bindings/thermal/samsung,exynos-
+> thermal.yaml
+> index 1344df708e2d..29a08b0729ee 100644
+> --- a/Documentation/devicetree/bindings/thermal/samsung,exynos-
+> thermal.yaml
+> +++ b/Documentation/devicetree/bindings/thermal/samsung,exynos-thermal.y
+> +++ aml
+> @@ -61,7 +61,8 @@ properties:
+>            TRIMINFO at 0x10068000 contains data for TMU channel 2
+>      minItems: 1
+>=20
+> -  '#thermal-sensor-cells': true
+> +  '#thermal-sensor-cells':
+> +    const: 0
+>=20
+>    vtmu-supply:
+>      description: The regulator node supplying voltage to TMU.
+>=20
+> --
+> 2.43.0
 
-- ensures the FIFO never overflows during the active portion of the line,
-  for cases where the line length is larger than the FIFO size.
 
-> > > > > > /* multiplier is usually bits per pixel, divider is usually num of lanes */
-> > > > > > link_frequency = v4l2_get_link_freq(cam_subdev->ctrl_handler, multiplier, divider);
-> > > > > > pixel_clock = v4l2_ctrl_g_ctrl_int64(ctl);
-> > > > >
-> > > > > How to know the sensor clock given link_frequency and pixel_clock?
-> > > > > Can you point me to drivers doing something similar?
-> > > > >
-> > > > > >
-> > > > > > ....now you know what the sensor wants, set the seninf sensor clock accordingly.
-> > > > > >
-> > > > > > Cheers
-> > > > > > Angelo
-> > > > > >
-> > > > > [...]
 
--- 
-Regards,
-
-Laurent Pinchart
 
