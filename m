@@ -4,91 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D65AC27C75
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jun 2024 11:25:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1199C27C6E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jun 2024 11:35:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:Subject:References:Cc:To:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=u8iAIlbQi0tUJ3qu8xocmxzckhx265PFdpBlcy4mJCQ=; b=TERh4pWFttCzB/FVSUmIK6em+B
-	X1SXghP7cmboiBjrdIzR1TrnYE4XZAtbvDJFBf14fWFfgGFHLmK9wTI9UIl0LUJ+K9vw+68cdbltG
-	JB6SezApKmj1N+9lE2PJZn+5fnpylkc55HgvimjH7zBAkLLq+qOvqhza47OYzUZzfmQtlUDikSdEZ
-	iWnd3a8LsHiLkYeqjcQjd3p1z3qCvz5ksy4lLNOnE/9ZgzitqaYmf940bwVZXPHOA4WKeW0thwB0s
-	6J7+1dStVAhTUW/XGZqZA+CUwk5YxpemX+3E8w5qLJGgEn9vVkQKPfWHDvQYuYmo5SoBDJLl/HRQA
-	XaIwgWBw==;
+	bh=YcAax4mGY5XS6LXmltoAYPKWqdfE8AQ1OyYhEly7lVw=; b=2isoPikyFQG3ITt2owvwnmFDjs
+	po2hG1DZWKoxcRwqggM23QvUE96/mw1UTVplv0pR998b2pdIGGIzzaPLBi2fxJuYoIxBjSaqZYR2O
+	zqBIIm2/Izo8u1ad1jutniJJf/Msl7eE6UAKj9Vm4ZInWx6XlnHhfDEa5WiKEHRD+9KEEf3JtiahL
+	F0E45MC21jPW218MsV/RJ/gF/or+HvU0/qI/trD7XhkYjutNFBf84ZfMy0FvmFyHPgu3scVnx1AAY
+	nSfwb8DKNfd47yCwlArHXz96xt5mw/3b5M+3ovyEhrDYl4+N/orbd7kLGo7gUWbuC81aDnRDXdH9P
+	dJ9wm5Hg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sI53b-00000002aMx-2nPu;
-	Fri, 14 Jun 2024 11:25:23 +0000
-Received: from out30-111.freemail.mail.aliyun.com ([115.124.30.111])
+	id 1sI5Dl-00000002cYE-1ISx;
+	Fri, 14 Jun 2024 11:35:53 +0000
+Received: from mout.web.de ([212.227.17.12])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sI53W-00000002aL6-1kIy;
-	Fri, 14 Jun 2024 11:25:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=linux.alibaba.com; s=default;
-	t=1718364311; h=Message-ID:Date:MIME-Version:Subject:To:From:Content-Type;
-	bh=u8iAIlbQi0tUJ3qu8xocmxzckhx265PFdpBlcy4mJCQ=;
-	b=VAVR5Daaya/C1wbtIOzU2uV9oyLwqBqFp9/xinExr1CWuiHpI7PhSzU1kD5v6ZT2OhTMR0cIfYfQOCioROqJ7wvTbUIYTpMmI8IcSBJ2zlFM96XmOUQVFaldQASkM5aLoIrfOsXhyid1+3xZ1qLFdCFrPu9vgxYxLv3si6X3L2g=
-X-Alimail-AntiSpam: AC=PASS;BC=-1|-1;BR=01201311R151e4;CH=green;DM=||false|;DS=||;FP=0|-1|-1|-1|0|-1|-1|-1;HT=maildocker-contentspam033037067110;MF=baolin.wang@linux.alibaba.com;NM=1;PH=DS;RN=54;SR=0;TI=SMTPD_---0W8R3gfJ_1718364305;
-Received: from 192.168.0.106(mailfrom:baolin.wang@linux.alibaba.com fp:SMTPD_---0W8R3gfJ_1718364305)
-          by smtp.aliyun-inc.com;
-          Fri, 14 Jun 2024 19:25:07 +0800
-Message-ID: <f764133b-1aaf-4f4b-9a2e-d04ab35d660f@linux.alibaba.com>
-Date: Fri, 14 Jun 2024 19:25:04 +0800
+	id 1sI5Dh-00000002cX7-3ibI;
+	Fri, 14 Jun 2024 11:35:52 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
+	s=s29768273; t=1718364942; x=1718969742; i=markus.elfring@web.de;
+	bh=YcAax4mGY5XS6LXmltoAYPKWqdfE8AQ1OyYhEly7lVw=;
+	h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:To:Cc:References:
+	 Subject:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:
+	 cc:content-transfer-encoding:content-type:date:from:message-id:
+	 mime-version:reply-to:subject:to;
+	b=Kq+LteveHoSa87BACGK2tPOURM+bYwl+3Grz0UndoM3qJ5RioideGdKmfmy4OGrv
+	 hzSJUGHAQqpV8BUWuHfrijgOZ+2peQEEGhMsaTotfbqMfPLD+UPj5Lnrl/kk2sRTK
+	 MuRTS8PrBuHnh7TYsjoq1Pb0DbQDNkh/2+Pe4Z+5s2oTDiNtfZJgtD4eCPuMXPr63
+	 KLwKdu3aeGAk/TzOizo3r+a0Tx2RVWkkmJPzoOixO1CdJzrSw4PTVgGw/qzC614hb
+	 6lWczaZ5EhuXPTD3WXg5nXd9quedEquFLKgGcUDu0IMOFpewKPUmSA56lcFr8KYVR
+	 nTEhlt8vHyrT/WJcMg==
+X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
+Received: from [192.168.178.21] ([94.31.83.95]) by smtp.web.de (mrweb105
+ [213.165.67.124]) with ESMTPSA (Nemesis) id 1MbCDq-1spD6s0NsO-00mPh0; Fri, 14
+ Jun 2024 13:35:42 +0200
+Message-ID: <36c0231a-9916-4734-9042-7a07f4cb85f7@web.de>
+Date: Fri, 14 Jun 2024 13:35:36 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 17/22] dt-bindings: thermal: sprd: reference
- thermal-sensor schema
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Daniel Lezcano <daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>,
- Lukasz Luba <lukasz.luba@arm.com>, Rob Herring <robh@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>,
- Guillaume La Roque <glaroque@baylibre.com>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Vasily Khoruzhick <anarsoul@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Samuel Holland <samuel@sholland.org>, Shawn Guo <shawnguo@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, Anson Huang <Anson.Huang@nxp.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
- Amit Kucheria <amitk@kernel.org>,
- =?UTF-8?Q?Niklas_S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>,
- Heiko Stuebner <heiko@sntech.de>, Biju Das <biju.das.jz@bp.renesas.com>,
- Orson Zhai <orsonzhai@gmail.com>, Chunyan Zhang <zhang.lyra@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Pascal Paillet <p.paillet@foss.st.com>, Keerthy <j-keerthy@ti.com>,
- Broadcom internal kernel review list
- <bcm-kernel-feedback-list@broadcom.com>,
- Florian Fainelli <florian.fainelli@broadcom.com>,
- Scott Branden <sbranden@broadcom.com>,
- zhanghongchen <zhanghongchen@loongson.cn>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Bjorn Andersson <andersson@kernel.org>,
- Geert Uytterhoeven <geert+renesas@glider.be>
-Cc: linux-pm@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-amlogic@lists.infradead.org,
- linux-sunxi@lists.linux.dev, imx@lists.linux.dev,
- linux-tegra@vger.kernel.org, linux-arm-msm@vger.kernel.org,
- linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com,
- Florian Fainelli <f.fainelli@gmail.com>,
- linux-rpi-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20240614-dt-bindings-thermal-allof-v1-0-30b25a6ae24e@linaro.org>
- <20240614-dt-bindings-thermal-allof-v1-17-30b25a6ae24e@linaro.org>
-From: Baolin Wang <baolin.wang@linux.alibaba.com>
-In-Reply-To: <20240614-dt-bindings-thermal-allof-v1-17-30b25a6ae24e@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+To: jason-jh.lin@mediatek.com,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Angelo Gioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Jassi Brar <jassisinghbrar@gmail.com>
+Cc: LKML <linux-kernel@vger.kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Nancy Lin
+ <nancy.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>
+References: <20240614040133.24967-2-jason-jh.lin@mediatek.com>
+Subject: Re: [PATCH 1/2] mailbox: Add power_get/power_put API to mbox_chan_ops
+Content-Language: en-GB
+From: Markus Elfring <Markus.Elfring@web.de>
+In-Reply-To: <20240614040133.24967-2-jason-jh.lin@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:Eq0ooUkCsx0n+fQtzujpSvtI+YXXA7MuMYC9dd+eoYl1noa3q2u
+ 8aplDdEWCX2ZAE4jiJZST4bkHw1JoXUswCdqQiz/HQS4ZZauqaHXeXRAysp8ig2f1fVSINJ
+ OnZufXWHXdnUGucrm5vziAwqKpCjfnq+vaDcYCdoPY78q+x0EDg8I4exllvjjdUuJphu0wV
+ tHdvWKU/Zp2eG8HbNKfzQ==
+UI-OutboundReport: notjunk:1;M01:P0:q8ewVWtKAl4=;KGsuYjGac8cOmbgYY6kk9QAUTcG
+ A81i94SRhWcE4NPlJ+Ra0TI1oXf8LK1aK3EROqqN3xkxDWRaFnmdHBmkZrDg98XMT0OTPQfmE
+ 4dgHwShonqR50frrzl9SKUCJQxNqlESDSMkwc3QuPBafYTn1sv2eXr1nd/nrf9lJvT0av4HSS
+ FhW8ENUiPdabenuhOQR/crDe36117ZPJcoYn050Ij3+KiWxAModrxC++2iP1s7oP0p+Yr/2nT
+ ugoqGbOh4Y5hJW8mlPR3N3qsYr10Uc0eq2RhIwmR3IMf7fgf4Fz8MOp+sEIq0ZqEoUCow6UWO
+ yz3Co7hHe2uz8XwHzvbuSVaWbuLV7gpkE0Lw0B1z18hMZBu+OPwbtj5t+VJu3108kxKoqCf3d
+ w3mWn3K5TMMyiSKlMfZFP9REOamlJF+eDDll9P/SEkU5zDhM8DPEcUT89eE2x1Bjehc4Pfm3Q
+ nWZ10gR1E7wDAG82tgOl3sA7wbliCmkIV/HAtLeOuGK9nNcn3BBJHZrr0lwed+p3c/hSyvBzA
+ XNd1yz38vVGwR3+/j/PAm3eEhovgEJwuDLfQTmnJxLvnGLSOzR/Ml5zQLh6ewiPj/SuRciG9g
+ Lr9j2u7l/oQR/b3278IiDApzrFKJ5Rh/Rf7jlj7oF/3ppOfh0rUCG1sjVy1UDdx18HXxvS8nc
+ JQOB8dZ0OPScW/0tx/yduBzBksvJwvgVOyKypkNScEd+62VWR0jfBewKF+iBcE9fgE7ldxvu+
+ qGOrLa3LqRJOdkK4x3XsyFMqVxWN98Ya3QlRcIUK5x5JWtmsEPjG4BZFj17dFg4SoR6z1I4Hz
+ HQlEAjLuuKJ8tAXgFm5IG3OW7QEdR61mcdWNI4IKgzIq8=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240614_042519_065171_31074213 
-X-CRM114-Status: GOOD (  11.31  )
+X-CRM114-CacheID: sfid-20240614_043550_241210_0A3D3AB9 
+X-CRM114-Status: UNSURE (   5.17  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,47 +98,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+> To avoid pm_runtime APIs calling sleep in all the atomic context APIs
+
+           PM-runtime?
 
 
-On 2024/6/14 17:46, Krzysztof Kozlowski wrote:
-> Device is a thermal sensor and it requires '#thermal-sensor-cells', so
-> reference the thermal-sensor.yaml to simplify it and bring the
-> common definition of '#thermal-sensor-cells' property.
-> 
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> in mbox_chan_ops, we add power_get/power_put API to let the controllers
+> implement them with pm_runtime APIs outside the other atomic context API=
+s
+> in mbox_chan_ops.
 
-LGTM. Thanks.
-Reviewed-by: Baolin Wang <baolin.wang@linux.alibaba.com>
+* How do you think about to omit the word =E2=80=9Cwe=E2=80=9D from such a=
+ change description?
+  https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/=
+Documentation/process/submitting-patches.rst?h=3Dv6.10-rc3#n94
 
-> ---
->   Documentation/devicetree/bindings/thermal/sprd-thermal.yaml | 5 +++--
->   1 file changed, 3 insertions(+), 2 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/thermal/sprd-thermal.yaml b/Documentation/devicetree/bindings/thermal/sprd-thermal.yaml
-> index 76aaa004c8ac..f65076fc68f9 100644
-> --- a/Documentation/devicetree/bindings/thermal/sprd-thermal.yaml
-> +++ b/Documentation/devicetree/bindings/thermal/sprd-thermal.yaml
-> @@ -11,6 +11,8 @@ maintainers:
->     - Baolin Wang <baolin.wang7@gmail.com>
->     - Chunyan Zhang <zhang.lyra@gmail.com>
->   
-> +$ref: thermal-sensor.yaml#
-> +
->   properties:
->     compatible:
->       const: sprd,ums512-thermal
-> @@ -77,11 +79,10 @@ required:
->     - clock-names
->     - nvmem-cells
->     - nvmem-cell-names
-> -  - "#thermal-sensor-cells"
->     - "#address-cells"
->     - "#size-cells"
->   
-> -additionalProperties: false
-> +unevaluatedProperties: false
->   
->   examples:
->     - |
-> 
+* Would you like to improve any indications for adjustments of data struct=
+ures?
+
+
+> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+
+Does a dot really belong to the personal name
+(according to the Developer's Certificate of Origin)?
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Do=
+cumentation/process/submitting-patches.rst?h=3Dv6.10-rc3#n438
+
+Regards,
+Markus
 
