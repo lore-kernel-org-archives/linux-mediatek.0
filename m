@@ -4,88 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64934C27C79
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jun 2024 09:47:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93C1FC27C79
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jun 2024 09:47:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MKBoYa2/x1W/F2+Gsm9S8Q8Wa9Z25/AVKvuUTKGCttQ=; b=O1FO/ygkn5lqz9WTSI9fuS3mtL
-	L/LU8RssOaiidFrXsB84fj49jovf+S50rxEI8N/jyMj3e412m1LWwOi36vLe6GWI33g0ESUl2VV2J
-	qyNa8/dyJ0AEdkELc7E2z74ggivTVs82EXVsQMlm4EPaUa1jwkn1jv5NPwmLoxWF8XUO2CUgJ2DLT
-	MQUrGQ5MMb9CZCfCsPx5/ZX+rsg42PUIqU2qsq8Z+UCHpeghvzV7p0ljsn9pvGKpg7bNZz9qGXsxe
-	roDZt/8UIkCSC0MDvZvXlq+BIS1snJuVzR5znio1Cci9B35U1wfNmdfskvflBrnORH7zvmNl8NksI
-	PTAa0qwQ==;
+	bh=e3IU7+TXLvfDkHuXEh0I9tjkuQWX38Z7PszEGMh/894=; b=eGGEwRVCdseXlZrtRXWcsK0LXq
+	EoSAF7GoUyri8I7sbi/m93kFNIO9oN94RVcyEzrYE8vUON6TQb1QAohqMSs1iylqbVaY8Ybd+89UC
+	QFKu2xu7DAXKHZO2jip3op4sF4NJCRVOIXgdB4QZ3YP/1RUmGTp1epU00CDoY1SImvs8fxmzaFHwn
+	2qaQts0h7yzXvF/RT0FngSjbOIxrMrS6fiVCp7PCebsnEmSGU0oB3JHOjWCQXNL+5x4aPBL43I28P
+	tO7/I6N2LL8vLD5W1AtVvDlzvyVtO8N5jmBAGlxdtTdtJAm0dG2mSHLO6zOJZtgS0erCZ+tX8J3Ie
+	9Nza9KzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sI3X5-00000002Fyf-2TnO;
-	Fri, 14 Jun 2024 09:47:43 +0000
+	id 1sI3XE-00000002G6c-3Fej;
+	Fri, 14 Jun 2024 09:47:52 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sI3WH-00000002FH9-1ulG
+	id 1sI3WJ-00000002FJ9-3H01
 	for linux-mediatek@bombadil.infradead.org;
-	Fri, 14 Jun 2024 09:46:53 +0000
+	Fri, 14 Jun 2024 09:46:55 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
 	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=MKBoYa2/x1W/F2+Gsm9S8Q8Wa9Z25/AVKvuUTKGCttQ=; b=SQyyQLwPXF99z25qBc3e22mf+F
-	RugGBvZOhZxhjhKhno0q4Gc4Ne9eOjGoboeMRiJ8qi6Vs7Qms7ZYDZaSSwCpc2cR15+2/EoMbBZTR
-	gMgqJXqcwtSOHU+y+iR4jlE/mH2k7qFAjfx0o7O8UM7QPRECQr1uLzB1HOeh+pVmXxtSkJF1NtQBF
-	rMrZ/J/GLMfPl9VSKEDqmSSAW5ebHNfxdrZVftEhacNr1pKd2v18bDbl6G5S+jgjO24iJuYY1+hpp
-	cXN9IOQl5WV637kFxaRnmyWa+TInHD5Datj4ogE/cv901vgjT1iUbWAVhR33lcSWOAuOvQO+9odU4
-	P1KVgbQA==;
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
+	bh=e3IU7+TXLvfDkHuXEh0I9tjkuQWX38Z7PszEGMh/894=; b=EuPN9KvembQSvuZTfgdaIk/AKY
+	LM6lbKjJQxBZ8LZhXZRwieSddCZcVbHUMJuh1EKOMT1hzlu2gC8Xq5cR4VekEtH8rOCGh/6ZO7kvV
+	GKBXIqryxRtyXaNYaoPHyQkubH+bqHeVRrEmhv0LWAeXu1bE1qSMFbDyqKJFm65hdri6qgXi4kYVq
+	p2MHXdSfGBMl4QgjU1p7B8nr9mRE3tLhsylSwGobSA6qird6qDuVR2EM+H2bnj3pjWzXOQC1qcOLw
+	Gy/FilgVeaEM2c77fSlT3XXzNepQgMGoVDemAMebCYXP9nVgk09zVDIoLZAGk1kHbo+cVk5URySos
+	wjYIXx/A==;
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
 	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sI3WD-00000004F4x-3F9X
+	id 1sI3WF-00000004F60-27nZ
 	for linux-mediatek@lists.infradead.org;
-	Fri, 14 Jun 2024 09:46:51 +0000
-Received: by mail-ed1-x530.google.com with SMTP id 4fb4d7f45d1cf-57ca578ce8dso2253259a12.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 14 Jun 2024 02:46:49 -0700 (PDT)
+	Fri, 14 Jun 2024 09:46:53 +0000
+Received: by mail-ej1-x629.google.com with SMTP id a640c23a62f3a-a6f3efa1cc7so522553866b.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 14 Jun 2024 02:46:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1718358407; x=1718963207; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1718358410; x=1718963210; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=MKBoYa2/x1W/F2+Gsm9S8Q8Wa9Z25/AVKvuUTKGCttQ=;
-        b=RYiixyUi+tojVQ+gKFhspwF9hKdH0ygm3Zv3SSNX3NsnVKCoq/dbdH7mJchm0AM5jX
-         USBTkLsMTeQKwcOmHI4NGtkPjVKsnTOXpcFCaMsm8hNquCo3RtOM0+2DW1/0k3xFGAu/
-         z6/yLl+NmhILf9eX/Cyo2NVTsVPnMa4f1C5LBsmiXdpyjLH63O3flxGbRzZHdFFGoPpM
-         oE6Tip2hMLmPB/QJsf8KDpaMTXGh3FDw1BWC+T0paoCAKIF6/szuSSoHb4fiSY8Xsj1+
-         WzmDhHXQ3d9vNX25oRE3JrvWYTHk7sJTrd2bUxZcbWIL4zBV2DytPzXnEn6mbX06+z+e
-         yOGQ==
+        bh=e3IU7+TXLvfDkHuXEh0I9tjkuQWX38Z7PszEGMh/894=;
+        b=gVwujhCm2wTK8ONHQAFiqgv4+pyd5q2Y8jP8sF4zLoO+nwgBH6HBmM35TtAXxxtg1Y
+         DOoUCWx4qRo0fKOXSpjyTdVlCy1SxEx6MZ0czpEz3hrm4ARaoi/f9vCgXCdHodVexP4F
+         miZX3k2z9DvePhxE9PJuQxPdLo6VZMa6oxsA0NfSnlTa43imIvae9vGRdZZ6ylEjFNqY
+         +qPsrHD3EbZ0rkUKiw0nHR/C1UaXaKTjIAgZgsRmd1lKr3W5rbEDL+tmhvI3eZ3hzQic
+         fKm993wKGKCUMPzKt76SMI/yZ+mrRdY8JXWzlzLte2KD7iSUOndNqep5yqzgh6MASRt6
+         lydw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1718358407; x=1718963207;
+        d=1e100.net; s=20230601; t=1718358410; x=1718963210;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=MKBoYa2/x1W/F2+Gsm9S8Q8Wa9Z25/AVKvuUTKGCttQ=;
-        b=GdLdHAidDJIZ8XJ3yeYHlvCt8Ivov/cknxrpxgWCq4V3rgRAbZsjHTA5ItNux2iHqA
-         mX/OVXypd9SfbmFwrxnozIqgfJ/ecXzl5kvtnyAboVF1P37PvZNIsWConWJAXT1waccu
-         mMLnZXn+tx5AGrRkZ3BB+G4raHElWqAK6V/zIixKec5XkIUf9Dbd84VS1OiQmB0Pia+P
-         I5GexJYtTRfzKKg+uIulzrUJ/WYm6pC5wed50kDRd6GdMhH7gCq/8osub6A+SeRw8wuT
-         CursltKhd7WUDsdVmmjS1NHm8mwo3hvcrlB/zRmJL83LvC12G5HHEG5aS4mXapALUcQa
-         1C4g==
-X-Forwarded-Encrypted: i=1; AJvYcCXvQjm8h/BpA8yWp7o5J9v1m9FIn27TYTJVg+5JIbrxfU++zQ/2dzt0ED1hiq7C/ZmbnyKX+oCDbau5BndlDzGjAYreK8lCYBgMIcKSoM1SGmAM
-X-Gm-Message-State: AOJu0YzovDEW7u+PkR0vr94Yk+bzmOoG4CNMBJJNPbksvBve8AT/bw/2
-	2+s6htE/+NKLPYGuMV4LDy3XPfcSSu55H2UeSqxcRuZnQ8GvB+hXSXdJy1szTtM=
-X-Google-Smtp-Source: AGHT+IGNlFyay8kOem24vdynFYgywyyZVSux+W6+RqwMfDi8eHKZ4ApmtC0R5UYkH/YsJbtiKWjL8g==
-X-Received: by 2002:a17:906:c24c:b0:a6f:5c34:34e3 with SMTP id a640c23a62f3a-a6f60dc8a06mr152321866b.62.1718358407588;
-        Fri, 14 Jun 2024 02:46:47 -0700 (PDT)
+        bh=e3IU7+TXLvfDkHuXEh0I9tjkuQWX38Z7PszEGMh/894=;
+        b=mOrhly3poKY0EkvT8QoGgtGLyd4v57ZsFxrQfHnDDsmBvLz3/Iv70HrIxYexu+4kC/
+         cbz+Zexjar4AoxdISoVlkzn1F7JUQFMNutEEc4UuCF4U5JDf9M3N2vSg0Mlypyl/YinS
+         TO7AQ8pT7JSqfdQPo3pUj/p6hWKqf+9y/+ykloceejsylo9JJbSZS2AvTwzg8ry46MiH
+         QPkov/C0E+QgP0R0AtoESEnFsEhd+iyFhH90WKzq+FyxfDdUJ+Py+u24h6JDFrWvY4re
+         vppZj4A732Hgj/1oq4rEhZwje7oe68WzhDa3bSlXbVqD9D2ksDvlhlqOXAfkvElI3PR7
+         pIEw==
+X-Forwarded-Encrypted: i=1; AJvYcCVaD1VbgQ0mIqT4seR4FfueCY3r6DJ/gaF37WThPpVRb3r9SOiBKqHjkkWZeaQHeALuZZw3NhlXKc/cKqOd3wPUekGM/SEhKuYvGAEXdhd9RdrQ
+X-Gm-Message-State: AOJu0YzYEVL1d5OvQ8qp8hah4u3c7ArDpPmo9W2zqmIlKnJYyPUFPdgK
+	rOWDkAikehBVTmYeHpOfRS2mLSRd/ZxwcZi438s5CHhZyi4/4r0JPJnfD0vl6wA=
+X-Google-Smtp-Source: AGHT+IHzJUpHJvBzO1v5iLmWnz8CRAittbY6yI3kGFRmVAHwcqWiqXe7ztIdEf/PB4A+9kWWiM2SYA==
+X-Received: by 2002:a17:907:c302:b0:a6f:6337:1ad5 with SMTP id a640c23a62f3a-a6f63371be1mr141309566b.27.1718358410044;
+        Fri, 14 Jun 2024 02:46:50 -0700 (PDT)
 Received: from [127.0.1.1] ([78.10.206.163])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a6f56f9c84csm164966366b.222.2024.06.14.02.46.45
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a6f56f9c84csm164966366b.222.2024.06.14.02.46.47
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 14 Jun 2024 02:46:47 -0700 (PDT)
+        Fri, 14 Jun 2024 02:46:49 -0700 (PDT)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Date: Fri, 14 Jun 2024 11:46:06 +0200
-Subject: [PATCH 07/22] dt-bindings: thermal: nvidia,tegra186-bpmp:
+Date: Fri, 14 Jun 2024 11:46:07 +0200
+Subject: [PATCH 08/22] dt-bindings: thermal: nvidia,tegra30-tsensor:
  reference thermal-sensor schema
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240614-dt-bindings-thermal-allof-v1-7-30b25a6ae24e@linaro.org>
+Message-Id: <20240614-dt-bindings-thermal-allof-v1-8-30b25a6ae24e@linaro.org>
 References: <20240614-dt-bindings-thermal-allof-v1-0-30b25a6ae24e@linaro.org>
 In-Reply-To: <20240614-dt-bindings-thermal-allof-v1-0-30b25a6ae24e@linaro.org>
 To: Daniel Lezcano <daniel.lezcano@linaro.org>, 
@@ -130,26 +130,26 @@ Cc: linux-pm@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
  linux-rpi-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
  Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1550;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1169;
  i=krzysztof.kozlowski@linaro.org; h=from:subject:message-id;
- bh=fPJBLqgC7318fFf2Al8T2+5gAe2h9ujfD/RlTMTvaWw=;
- b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBmbBFmNf1yVZUqHe6ObrZYM4xsaIvMyiTnGv16X
- 8eLBmKrFhKJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZmwRZgAKCRDBN2bmhouD
- 10HqD/9YU2o2Db6RJtFXb6VGo0dUKqGzbKYA3Mdmk1MVN+dZ7Wy6EUb989MBdxWjjNljpO44Du2
- UknQbF1FcW19LKcDSAIX0ES2dU3P4VWocs8UO6zgFVOQBHWGUa26u9u68RmEyBP1ilQsqwVpjco
- kPJM7HbNEWxxbVMRrrx8TNpz9QGSWje4itnmiFUrw/wOWdqhi7fMij1Ru5a9Uw9SNRDmpiEExUE
- 8aFQ8gO/dkIQOxdGbdhTMQNBwhud8tdMaNjnplec9i2iO246I6sde5KAJGmMlCwj5FAYu1edvv7
- fGe9B97J/X2ZrqPYYGInyYquT4lmEwgS1aEBcff0AK3RXm7LqQrzMOSnCUvf4xIMWo/eS5kY37v
- yBHyqQ3+B96ONbFWpXUsCJc9xFQS2ECzvbW+v0HM+ieI5tN/TAOZUDbLK/cnM18QhISO5H8U92q
- ej2R0T1/+55GLp6ZgOPU5yX+RZgzFthAc3eRibixzjFvCldYJUGQXIDWcKVfq4aOI2YVugjpyVZ
- s7Dfk491xtZzep9zpwKR4UTrMcEHdjcIH0aiMy0zxq1SKo0H9+bXWE11SZgA1DD9Rp6OPdK60+I
- 09YqIgW6C799e75K2VYN6K/uDMmrQmys7pmrtJfEIJIdU3hcXV9mlxNLyPGUEEn7jEgq6ZpAvsg
- PTevguPNxftPhXw==
+ bh=VJPDXpI9a+tnKsAKTdkikW8im2YdBEsD1YQ0PHQTdfk=;
+ b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBmbBFm5f4tbEdT6Hj9kos4aHIzliPjW/NKGFDxx
+ Ipnt4UnJqyJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZmwRZgAKCRDBN2bmhouD
+ 108SD/9u2rmhmgwy0Iz1Y2lIEPUPCrVcvZT6yoWrfj0wgLw7Qozmtm5AmkEjCDpLjfJ0jn0Pqu3
+ KmauRx7VbqoERst4rURkBcYMHLAC0w3Zu9vxRa1RTy5YiVouiBUrD5PCMYATOck/MYTTtkVOfW4
+ OJ7LkFnf/Y+0CtVMtdYcN1F4/vdu9NG2saYtCHkAlaKJbb9WM5cdo/4HjDrgQXMAxGlSi23rsPs
+ RBU858AEvvdeIaDL/d/1h+dtmXG8FqdhOrknzLOj0AABWGmpZCrrVHw4XWVGlhcNHHRiZZy0GPR
+ YRWKGN3ptlFG2yMoUpM0bfupahX60O8m3ivmBzvk6QGKdF88dXCDP1YmPqyWRJQv1szVYj3d/WK
+ 9O6yKUknXbaNp/s0LvfthEag74z249rHMFB/5AdMPnlB1hKRY2PFRcOYBuL38lL7AfRgPesk5v2
+ m0doaOAEtBfIalCR5zavBZndHesTpQcRLybosB3oV0eEEp8d5H1+M8UImCyUIisdmO//fCQsnTK
+ gFveqBq94NauRZXVPD7mvqyNpoysTViIAQKDTKiw80/qqy6Wo8eHEd5VCfYXOEPNBjCDZY0PdhY
+ vFo+tFSggr4iLZ2hdbNMoK3U3rYVOTmozWqyyamilhIEZSgZ5tHcGmTmEEY8Xk/rEZefiRxoNIw
+ 6rrAEJr+a9MpxJA==
 X-Developer-Key: i=krzysztof.kozlowski@linaro.org; a=openpgp;
  fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240614_104650_092618_4CC4E45D 
-X-CRM114-Status: GOOD (  11.24  )
+X-CRM114-CacheID: sfid-20240614_104651_886561_C6DC8997 
+X-CRM114-Status: GOOD (  10.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -170,38 +170,33 @@ common definition of '#thermal-sensor-cells' property.
 
 Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
- .../bindings/thermal/nvidia,tegra186-bpmp-thermal.yaml       | 12 ++----------
- 1 file changed, 2 insertions(+), 10 deletions(-)
+ .../devicetree/bindings/thermal/nvidia,tegra30-tsensor.yaml          | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/thermal/nvidia,tegra186-bpmp-thermal.yaml b/Documentation/devicetree/bindings/thermal/nvidia,tegra186-bpmp-thermal.yaml
-index c91fd07e4061..978b9e6ab8a3 100644
---- a/Documentation/devicetree/bindings/thermal/nvidia,tegra186-bpmp-thermal.yaml
-+++ b/Documentation/devicetree/bindings/thermal/nvidia,tegra186-bpmp-thermal.yaml
-@@ -20,11 +20,7 @@ description: |
-   node. See ../firmware/nvidia,tegra186-bpmp.yaml for details of the
-   BPMP binding.
+diff --git a/Documentation/devicetree/bindings/thermal/nvidia,tegra30-tsensor.yaml b/Documentation/devicetree/bindings/thermal/nvidia,tegra30-tsensor.yaml
+index a35da257b070..972d608ddf95 100644
+--- a/Documentation/devicetree/bindings/thermal/nvidia,tegra30-tsensor.yaml
++++ b/Documentation/devicetree/bindings/thermal/nvidia,tegra30-tsensor.yaml
+@@ -27,6 +27,8 @@ description: |
  
--  This node represents a thermal sensor. See
--
--    Documentation/devicetree/bindings/thermal/thermal-sensor.yaml
--
--  for details of the core thermal binding.
+   TSENSOR has two channels which monitor two different spots of the SoC.
+ 
 +$ref: thermal-sensor.yaml#
- 
++
  properties:
    compatible:
-@@ -33,10 +29,6 @@ properties:
-       - nvidia,tegra194-bpmp-thermal
- 
-   '#thermal-sensor-cells':
--    $ref: /schemas/types.yaml#/definitions/uint32
--    description: Number of cells needed in the phandle specifier to
--      identify a given sensor. Must be 1 and the single cell specifies
--      the sensor index.
-     const: 1
+     const: nvidia,tegra30-tsensor
+@@ -56,9 +58,8 @@ required:
+   - clocks
+   - resets
+   - interrupts
+-  - "#thermal-sensor-cells"
  
 -additionalProperties: false
 +unevaluatedProperties: false
+ 
+ examples:
+   - |
 
 -- 
 2.43.0
