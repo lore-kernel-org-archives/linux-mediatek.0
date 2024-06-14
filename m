@@ -4,77 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6C2CC27C6E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jun 2024 09:32:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26604C27C6E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jun 2024 09:39:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Qx9kINsbUZxfUnYArWQOWl7VUFzR5Zg4oUMkrilgvkU=; b=tas4Wf30iYkkc5fxfM3yRBHhbe
-	6KVv2JP+Fyhrch1Wzh8iZyiErMRpVBTMXYa8GOdckSGmQnTwS9GEK3tOfH+E/QrXtpoSbzV53ybkr
-	q7yCLyjCw2lKSYYDOZbUN7H/wts64t+0C2/fsyHQfUvGkr1vhYajAci5PCA6IORJSSoXW+jVmUsak
-	yh7kcR7c4ViusReKTzvNVGyf9D4RUSArZYRD0dekboSJpTazJmYqurNdaZGgukRVnV0/R0k9qOn9S
-	vCiZAK5BbwqTsO6R1Hcmrb9b3mtrHWG5lAvKU2x5YWsej+xMskppenHkosaohSZH0zwMGioIbs4TC
-	qVinTLDg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=CnYCOeE6PniptcF7tA7N0tQfM5wEPUG2en8T2e4EWps=; b=sUFl7jF3JchbKB1IYkqsmJxQCC
+	1VmhB9YIx/CkL7jyVKDS8J56IvoN/nesA1CHtOFLFJDbuwN4lTmXy0tZF7Olgdz5p0kVa837HPIl1
+	xokVcZNTR2agyy0CUoSXMU59SKQykHWNtDu2RQSKmTzV+eB8MolUDq0HYlSmy/BUaE2MArfJKfqV1
+	ANBePkOowOpDeKPy3l4iguvDzetzjplDjibfn/him9vG4h83D9/j93CIGrY9X2ZMP9l/y6/x1oDuP
+	0paLk8Rkg3rMOwrFTteuGc3Q2/MUMMj65YewqTlljXeyTZ5Cx3YM72NqHSx2Dh6Yl1s5sdxmsSbZU
+	LDE3kQdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sI3I0-00000002CHw-1qv4;
-	Fri, 14 Jun 2024 09:32:08 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1sI3PM-00000002DcZ-0TaS;
+	Fri, 14 Jun 2024 09:39:44 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sI3Hv-00000002CGk-2NQ1;
-	Fri, 14 Jun 2024 09:32:05 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 5BC9061EE5;
-	Fri, 14 Jun 2024 09:32:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 75168C2BD10;
-	Fri, 14 Jun 2024 09:32:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1718357522;
-	bh=vq/hKXj8k3TXQ6CBXyolStxtljiu0fDBYD/cq4bFmRs=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=dowkx4Wli/K0fxQuXPa9Ov4p8jq4KCLXebXQhTLM5C+aiOubAYAqt6VKGvEfTd+is
-	 u1H5cT2n6PNIyOSwsRfQdqH8u3Ft3fyV9zHmquoyyb8BUFk+PERVN+tIV4ajqw8vsW
-	 7RY/uftugQcGLKrN6adOWRZRq7HYsGiNvsG/NHATdB9mbrBWreXhWtLEtiVV/8DM6O
-	 /vkRXKIZ9h/aVv+Tf83y0fRDuc/X49dFn9IxjzSMYU720OV2uuxRpCpBG/1DNhh+th
-	 z0C+Kh+7fItagFuiZgbzOIl7R01Bac1D8IAu15pqxJKVOASbc5i9MjozYRBusaqX82
-	 AGLEieEUdavxA==
-Date: Fri, 14 Jun 2024 10:31:58 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Alexandre Mergnat <amergnat@baylibre.com>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Lee Jones <lee@kernel.org>, Flora Fu <flora.fu@mediatek.com>,
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
-	Sumit Semwal <sumit.semwal@linaro.org>,
-	Christian =?iso-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>,
-	Catalin Marinas <catalin.marinas@arm.com>,
-	Will Deacon <will@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
-	dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Nicolas Belin <nbelin@baylibre.com>
-Subject: Re: [PATCH RESEND v5 00/16] Add audio support for the MediaTek Genio
- 350-evk board
-Message-ID: <ZmwODkYov79VHznK@finisterre.sirena.org.uk>
-References: <20240226-audio-i350-v5-0-54827318b453@baylibre.com>
+	id 1sI3PI-00000002Dbs-0hrN;
+	Fri, 14 Jun 2024 09:39:42 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1718357977;
+	bh=aHsuGDceh1SMMPY2DbZoInR++E/rZZ8+cC+vYKo1Eto=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=nHxVw/il4wiHGljkF3skTUS2640bGADQVrIwyi4YEwxJFl+T2L4BcEXEFhLO+V0oZ
+	 WakDFMqZ/uvmbqQqYzMEi4TrJZyJ5I2r/Hp8M60jbcMxuZfVcyQcMsScvaQZeZXFV2
+	 NHQtaqWmbvBvD8sewC3A04UiRa8t5mL+IDNKlhp5Di+R5sADY/tmHDeDCNbwH8h9Jh
+	 7Ht+YUmNxiHqISJSo3EgYOsFiJs2bgpflBb7qVmuKqi7jERZ8Ftpe2ARMBJZi26ARH
+	 GI5l/7xszBbuzJ50Fp4SjDB8/3O3UPFS77lkFuSLxeGkqy4ue9dSqdNcNqjHLkCW7q
+	 3PsFqN8EfcsEA==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 132C53782139;
+	Fri, 14 Jun 2024 09:39:36 +0000 (UTC)
+Message-ID: <b8026db3-6893-4609-8ead-b78f9b9eb40b@collabora.com>
+Date: Fri, 14 Jun 2024 11:39:35 +0200
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="SeMD/ZPP93d62FnM"
-Content-Disposition: inline
-In-Reply-To: <20240226-audio-i350-v5-0-54827318b453@baylibre.com>
-X-Cookie: Your love life will be... interesting.
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 0/7] MediaTek DVFSRC Bus Bandwidth and Regulator knobs
+To: Georgi Djakov <djakov@kernel.org>, broonie@kernel.org
+Cc: robh@kernel.org, krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+ matthias.bgg@gmail.com, lgirdwood@gmail.com, keescook@chromium.org,
+ gustavoars@kernel.org, henryc.chen@mediatek.com, linux-pm@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ kernel@collabora.com, wenst@chromium.org, amergnat@baylibre.com
+References: <20240610085735.147134-1-angelogioacchino.delregno@collabora.com>
+ <d5b593f6-1764-43f0-9697-78d586239c23@kernel.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <d5b593f6-1764-43f0-9697-78d586239c23@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240614_023203_694737_75580A25 
-X-CRM114-Status: GOOD (  11.52  )
+X-CRM114-CacheID: sfid-20240614_023940_530533_67F907FA 
+X-CRM114-Status: GOOD (  14.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,35 +79,83 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Il 13/06/24 14:38, Georgi Djakov ha scritto:
+> On 10.06.24 11:57, AngeloGioacchino Del Regno wrote:
+>> Changes in v6:
+>>   - Fixed build with clang (thanks Nathan!)
+>>   - Removed unused mtk_rmw() macro in mtk-dvfsrc.c
+>>   - Added MODULE_DESCRIPTION() to mtk-dvfsrc-regulator.c
+>>
+> [..]
+>>
+>> AngeloGioacchino Del Regno (7):
+>>    dt-bindings: regulator: Add bindings for MediaTek DVFSRC Regulators
+>>    dt-bindings: interconnect: Add MediaTek EMI Interconnect bindings
+>>    dt-bindings: soc: mediatek: Add DVFSRC bindings for MT8183 and MT8195
+>>    soc: mediatek: Add MediaTek DVFS Resource Collector (DVFSRC) driver
+>>    regulator: Remove mtk-dvfsrc-regulator.c
+>>    regulator: Add refactored mtk-dvfsrc-regulator driver
+>>    interconnect: mediatek: Add MediaTek MT8183/8195 EMI Interconnect
+>>      driver
+> 
+> Thanks Angelo! I have picked patches 2 and 7. Patch 2 is also available
+> in my icc-mtk stable branch. Feel free to pull it to resolve the schema
+> dependency for patch 3.
+> 
 
---SeMD/ZPP93d62FnM
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Thank you Georgi!
 
-On Fri, Jun 14, 2024 at 09:27:43AM +0200, Alexandre Mergnat wrote:
-> This serie aim to add the following audio support for the Genio 350-evk:
-> - Playback
->   - 2ch Headset Jack (Earphone)
->   - 1ch Line-out Jack (Speaker)
->   - 8ch HDMI Tx
+I have to wait until Mark takes the regulator bindings and commits, then I will
+be able to pick the soc bindings and driver. :-)
 
-I seem to remember you had review comments that needed addressing from
-AngeloGioacchino, why resend without addressing those?
+Cheers,
+Angelo
 
---SeMD/ZPP93d62FnM
-Content-Type: application/pgp-signature; name="signature.asc"
 
------BEGIN PGP SIGNATURE-----
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmZsDg4ACgkQJNaLcl1U
-h9AoDwf9Gw5El3fz0zRFzNFxxe/7UfRa8HACWErrPscsXGk4tslBOE3UwCx3bw4Q
-6VnbJ45siXspBD7/Zjhjhi9lvAZlz6ucKm2glWijqZHLg9xmSBrRyEDb2G98FWlI
-SMczNAxg5QXwBUnID0bua6y5ZOldZEAGl53t5KuXWRe0/Znwns2+gUpSt3MAoDp8
-rPfYqUv2whvlBzGYmg6XlbTskN/c/+qpODFdThrx57aGRjxRoVc82kAmN814Gbc/
-nqKrNhIYzQDYBwKB1cuDXatDavgYFA5FugzeuZ80Va5/ZiuMX7JLgMHeVGQJZrQq
-Jbv+xbpMJ+ow5S6rLO0D2CcOA91DsA==
-=TqJQ
------END PGP SIGNATURE-----
+> BR,
+> Georgi
+> 
+>>
+>>   .../interconnect/mediatek,mt8183-emi.yaml     |  51 ++
+>>   .../mediatek,mt6873-dvfsrc-regulator.yaml     |  43 ++
+>>   .../soc/mediatek/mediatek,mt8183-dvfsrc.yaml  |  83 +++
+>>   drivers/interconnect/Kconfig                  |   1 +
+>>   drivers/interconnect/Makefile                 |   1 +
+>>   drivers/interconnect/mediatek/Kconfig         |  29 +
+>>   drivers/interconnect/mediatek/Makefile        |   5 +
+>>   drivers/interconnect/mediatek/icc-emi.c       | 153 +++++
+>>   drivers/interconnect/mediatek/icc-emi.h       |  40 ++
+>>   drivers/interconnect/mediatek/mt8183.c        | 143 +++++
+>>   drivers/interconnect/mediatek/mt8195.c        | 339 +++++++++++
+>>   drivers/regulator/mtk-dvfsrc-regulator.c      | 248 ++++----
+>>   drivers/soc/mediatek/Kconfig                  |  11 +
+>>   drivers/soc/mediatek/Makefile                 |   1 +
+>>   drivers/soc/mediatek/mtk-dvfsrc.c             | 545 ++++++++++++++++++
+>>   .../interconnect/mediatek,mt8183.h            |  23 +
+>>   .../interconnect/mediatek,mt8195.h            |  44 ++
+>>   include/linux/soc/mediatek/dvfsrc.h           |  36 ++
+>>   include/linux/soc/mediatek/mtk_sip_svc.h      |   3 +
+>>   19 files changed, 1666 insertions(+), 133 deletions(-)
+>>   create mode 100644 
+>> Documentation/devicetree/bindings/interconnect/mediatek,mt8183-emi.yaml
+>>   create mode 100644 
+>> Documentation/devicetree/bindings/regulator/mediatek,mt6873-dvfsrc-regulator.yaml
+>>   create mode 100644 
+>> Documentation/devicetree/bindings/soc/mediatek/mediatek,mt8183-dvfsrc.yaml
+>>   create mode 100644 drivers/interconnect/mediatek/Kconfig
+>>   create mode 100644 drivers/interconnect/mediatek/Makefile
+>>   create mode 100644 drivers/interconnect/mediatek/icc-emi.c
+>>   create mode 100644 drivers/interconnect/mediatek/icc-emi.h
+>>   create mode 100644 drivers/interconnect/mediatek/mt8183.c
+>>   create mode 100644 drivers/interconnect/mediatek/mt8195.c
+>>   create mode 100644 drivers/soc/mediatek/mtk-dvfsrc.c
+>>   create mode 100644 include/dt-bindings/interconnect/mediatek,mt8183.h
+>>   create mode 100644 include/dt-bindings/interconnect/mediatek,mt8195.h
+>>   create mode 100644 include/linux/soc/mediatek/dvfsrc.h
+>>
+> 
 
---SeMD/ZPP93d62FnM--
+
+
 
