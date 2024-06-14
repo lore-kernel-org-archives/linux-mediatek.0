@@ -4,83 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E9FAC27C6E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jun 2024 18:52:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 764A7C27C6E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jun 2024 22:22:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PnbAMknd8D26kPVqolmwL5+Jfvb5G2WrrvpHPtDGM+M=; b=wnD7VtZ+Qa73SkshLMzR1n94s/
-	gqKzrIHeVuILDhM44cW9jctGrG59huVCwZnnfNaZ+Wh359ppQFqt9PSfvZq1L8akPH1TbX+4ovMaG
-	0UvvEkJcRMBcr2R8wwffHD2DNbRV0ceGAAhtGsmcz137HT3Wwzt/ZbgBrJYPmkCAoX6Q1Q79x8RVq
-	Lr+mJwdBBI0dfr7SFLIwCrHCekSgumf8FCEoSdr5cl9O76DVXrhj3gpx8NN0pCTZ8xUaSJAxdd9Kc
-	u5Q5rADrMuU0nGUH8taM6/mFczASlmPlfGTYq9YD5xy4A7TCi469VjERGGes19V73paWLnYpWHUiT
-	R04X4s1w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rgKv1nf2InzknbbhRxhqes0hIrFbLNhzNu3kfbETYm8=; b=SovAVoXmzzeOlFGWrE36KZJ+KH
+	/sJMqHAMsmY3H5jt49TuCT+aRhHi45GTeDRzbQVIfYFzw4Q8kEEZx6N/N33nNl3Ia8SsYjML9vNN9
+	z7HkBFP0z7UQvHQOkbSVOOu/URNV5END/cdIdTwty08Fa+ZL+lVV4OpS/6I6UwK+Hge2zLuHh/SaC
+	oQMZfgh+sl8/de6pg5CLsuH08DAe21fDn4m5R897oo7Hw2A/1KguO8sGwEjKsNph1saSPsrd5RwLW
+	5OZFHpfuCItSgSa4EDlxeVfYmbL6a5aQf/sf8leEI27Mb/KZ3z/HRAe3WMX6hfcnhNIOt+UlLd+IA
+	PFI6gW3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sIC2D-00000003oUW-3ols;
-	Fri, 14 Jun 2024 18:52:25 +0000
-Received: from mgamail.intel.com ([198.175.65.10])
+	id 1sIFJe-000000049SY-2Szt;
+	Fri, 14 Jun 2024 22:22:38 +0000
+Received: from orthanc.universe-factory.net ([2001:19f0:6c01:100::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sIC28-00000003oOd-1gte;
-	Fri, 14 Jun 2024 18:52:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1718391140; x=1749927140;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=i1/JajuCHgwTdekrpE3K1vL6mofCP5cR98PS+SfZc88=;
-  b=FmNv1v3AsLux2VJNtOWlpQU8Q5mz3WxaY/M+7s5EAft/rcyBkrOUzKln
-   211xk+pQbRkltgHcjClg/ykYn+fjPCHx0Zeo94mMADfS6ydMvmvxfjuX4
-   8jf5PZr0MNEQoXbk6N+k0jpQqpnqssHLZs5x5HiwhHD3WpFEWO6V5AXbP
-   FoQvVe0tz15N0/zzBz14KjPHQS8cYVng836efO8dfuaLNXMwcLucIS6fR
-   SFrmDGs41fowlKneLY8MJcOeH6yxQWmssKnYN4lm/ye6IcdeBUhxicaEA
-   ZmLvEFNrRBUrjMsPU+HuQjFLykU6YEdXgO2BXdujBzv/hSZ16QnePR2iU
-   A==;
-X-CSE-ConnectionGUID: JtnZQBDCQcC7wleYC5IrYg==
-X-CSE-MsgGUID: imLk4zXNSe2IaKZyNNumFA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11103"; a="32770696"
-X-IronPort-AV: E=Sophos;i="6.08,238,1712646000"; 
-   d="scan'208";a="32770696"
-Received: from fmviesa003.fm.intel.com ([10.60.135.143])
-  by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Jun 2024 11:52:19 -0700
-X-CSE-ConnectionGUID: 8BCAEC1eQ0iiBVgU7P+7Sw==
-X-CSE-MsgGUID: UHK9p5C2SaG4ROqDiYQuCg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.08,238,1712646000"; 
-   d="scan'208";a="44956943"
-Received: from lkp-server01.sh.intel.com (HELO 9e3ee4e9e062) ([10.239.97.150])
-  by fmviesa003.fm.intel.com with ESMTP; 14 Jun 2024 11:52:16 -0700
-Received: from kbuild by 9e3ee4e9e062 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1sIC22-0001fn-0j;
-	Fri, 14 Jun 2024 18:52:14 +0000
-Date: Sat, 15 Jun 2024 02:51:35 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
-	Jassi Brar <jassisinghbrar@gmail.com>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: oe-kbuild-all@lists.linux.dev,
+	id 1sIFJa-000000049RD-1DNG;
+	Fri, 14 Jun 2024 22:22:35 +0000
+Received: from avalon.fritz.box (unknown [IPv6:2001:19f0:6c01:100::2])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by orthanc.universe-factory.net (Postfix) with ESMTPSA id 1A8BF1FC32;
+	Sat, 15 Jun 2024 00:22:28 +0200 (CEST)
+From: Matthias Schiffer <mschiffer@universe-factory.net>
+To: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>
+Cc: Andrew Lunn <andrew@lunn.ch>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	"Jason-JH . Lin" <jason-jh.lin@mediatek.com>,
-	Singo Chang <singo.chang@mediatek.com>,
-	Nancy Lin <nancy.lin@mediatek.com>, linux-kernel@vger.kernel.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH 1/2] mailbox: Add power_get/power_put API to mbox_chan_ops
-Message-ID: <202406150214.pVxsbllC-lkp@intel.com>
-References: <20240614040133.24967-2-jason-jh.lin@mediatek.com>
+	Matthias Schiffer <mschiffer@universe-factory.net>
+Subject: [PATCH net-next 2/2] net: dsa: mt7530: add support for bridge port isolation
+Date: Sat, 15 Jun 2024 00:21:54 +0200
+Message-ID: <15263cb9bbc63d5cc66428e7438e0b5324306aa4.1718400508.git.mschiffer@universe-factory.net>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <378bc964b49f9e9954336e99009932ac22bfe172.1718400508.git.mschiffer@universe-factory.net>
+References: <378bc964b49f9e9954336e99009932ac22bfe172.1718400508.git.mschiffer@universe-factory.net>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240614040133.24967-2-jason-jh.lin@mediatek.com>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240614_115220_532559_AB2CA272 
-X-CRM114-Status: GOOD (  13.35  )
+X-CRM114-CacheID: sfid-20240614_152234_497740_4882677B 
+X-CRM114-Status: GOOD (  14.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,83 +76,88 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Jason-JH.Lin,
+Remove a pair of ports from the port matrix when both ports have the
+isolated flag set.
 
-kernel test robot noticed the following build warnings:
+Signed-off-by: Matthias Schiffer <mschiffer@universe-factory.net>
+---
+ drivers/net/dsa/mt7530.c | 21 ++++++++++++++++++---
+ drivers/net/dsa/mt7530.h |  1 +
+ 2 files changed, 19 insertions(+), 3 deletions(-)
 
-[auto build test WARNING on linus/master]
-[also build test WARNING on fujitsu-integration/mailbox-for-next v6.10-rc3 next-20240613]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/Jason-JH-Lin/mailbox-Add-power_get-power_put-API-to-mbox_chan_ops/20240614-120412
-base:   linus/master
-patch link:    https://lore.kernel.org/r/20240614040133.24967-2-jason-jh.lin%40mediatek.com
-patch subject: [PATCH 1/2] mailbox: Add power_get/power_put API to mbox_chan_ops
-config: i386-randconfig-062-20240614 (https://download.01.org/0day-ci/archive/20240615/202406150214.pVxsbllC-lkp@intel.com/config)
-compiler: gcc-13 (Ubuntu 13.2.0-4ubuntu3) 13.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240615/202406150214.pVxsbllC-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202406150214.pVxsbllC-lkp@intel.com/
-
-sparse warnings: (new ones prefixed by >>)
->> drivers/mailbox/mailbox.c:382:39: sparse: sparse: incorrect type in return expression (different base types) @@     expected int @@     got void * @@
-   drivers/mailbox/mailbox.c:382:39: sparse:     expected int
-   drivers/mailbox/mailbox.c:382:39: sparse:     got void *
-   drivers/mailbox/mailbox.c: note: in included file (through include/linux/smp.h, include/linux/alloc_tag.h, include/linux/percpu.h, ...):
-   include/linux/list.h:83:21: sparse: sparse: self-comparison always evaluates to true
-
-vim +382 drivers/mailbox/mailbox.c
-
-   355	
-   356	static int __mbox_bind_client(struct mbox_chan *chan, struct mbox_client *cl)
-   357	{
-   358		struct device *dev = cl->dev;
-   359		unsigned long flags;
-   360		int ret;
-   361	
-   362		if (chan->cl || !try_module_get(chan->mbox->dev->driver->owner)) {
-   363			dev_dbg(dev, "%s: mailbox not free\n", __func__);
-   364			return -EBUSY;
-   365		}
-   366	
-   367		spin_lock_irqsave(&chan->lock, flags);
-   368		chan->msg_free = 0;
-   369		chan->msg_count = 0;
-   370		chan->active_req = NULL;
-   371		chan->cl = cl;
-   372		init_completion(&chan->tx_complete);
-   373	
-   374		if (chan->txdone_method	== TXDONE_BY_POLL && cl->knows_txdone)
-   375			chan->txdone_method = TXDONE_BY_ACK;
-   376	
-   377		spin_unlock_irqrestore(&chan->lock, flags);
-   378	
-   379		if (chan->mbox->ops->power_get) {
-   380			ret = chan->mbox->ops->power_get(chan);
-   381			if (ret < 0)
- > 382				return ERR_PTR(ret);
-   383		}
-   384	
-   385		if (chan->mbox->ops->startup) {
-   386			ret = chan->mbox->ops->startup(chan);
-   387	
-   388			if (ret) {
-   389				dev_err(dev, "Unable to startup the chan (%d)\n", ret);
-   390				mbox_free_channel(chan);
-   391				return ret;
-   392			}
-   393		}
-   394	
-   395		return 0;
-   396	}
-   397	
-
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index ecacaefdd694..44939379aba8 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -1303,7 +1303,8 @@ mt7530_stp_state_set(struct dsa_switch *ds, int port, u8 state)
+ }
+ 
+ static void mt7530_update_port_member(struct mt7530_priv *priv, int port,
+-				      const struct net_device *bridge_dev, bool join)
++				      const struct net_device *bridge_dev,
++				      bool join)
+ 	__must_hold(&priv->reg_mutex)
+ {
+ 	struct dsa_port *dp = dsa_to_port(priv->ds, port), *other_dp;
+@@ -1311,6 +1312,7 @@ static void mt7530_update_port_member(struct mt7530_priv *priv, int port,
+ 	struct dsa_port *cpu_dp = dp->cpu_dp;
+ 	u32 port_bitmap = BIT(cpu_dp->index);
+ 	int other_port;
++	bool isolated;
+ 
+ 	dsa_switch_for_each_user_port(other_dp, priv->ds) {
+ 		other_port = other_dp->index;
+@@ -1327,7 +1329,9 @@ static void mt7530_update_port_member(struct mt7530_priv *priv, int port,
+ 		if (!dsa_port_offloads_bridge_dev(other_dp, bridge_dev))
+ 			continue;
+ 
+-		if (join) {
++		isolated = p->isolated && other_p->isolated;
++
++		if (join && !isolated) {
+ 			other_p->pm |= PCR_MATRIX(BIT(port));
+ 			port_bitmap |= BIT(other_port);
+ 		} else {
+@@ -1352,7 +1356,7 @@ mt7530_port_pre_bridge_flags(struct dsa_switch *ds, int port,
+ 			     struct netlink_ext_ack *extack)
+ {
+ 	if (flags.mask & ~(BR_LEARNING | BR_FLOOD | BR_MCAST_FLOOD |
+-			   BR_BCAST_FLOOD))
++			   BR_BCAST_FLOOD | BR_ISOLATED))
+ 		return -EINVAL;
+ 
+ 	return 0;
+@@ -1381,6 +1385,17 @@ mt7530_port_bridge_flags(struct dsa_switch *ds, int port,
+ 		mt7530_rmw(priv, MT753X_MFC, BC_FFP(BIT(port)),
+ 			   flags.val & BR_BCAST_FLOOD ? BC_FFP(BIT(port)) : 0);
+ 
++	if (flags.mask & BR_ISOLATED) {
++		struct dsa_port *dp = dsa_to_port(ds, port);
++		struct net_device *bridge_dev = dsa_port_bridge_dev_get(dp);
++
++		priv->ports[port].isolated = !!(flags.val & BR_ISOLATED);
++
++		mutex_lock(&priv->reg_mutex);
++		mt7530_update_port_member(priv, port, bridge_dev, true);
++		mutex_unlock(&priv->reg_mutex);
++	}
++
+ 	return 0;
+ }
+ 
+diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
+index 2ea4e24628c6..28592123070b 100644
+--- a/drivers/net/dsa/mt7530.h
++++ b/drivers/net/dsa/mt7530.h
+@@ -721,6 +721,7 @@ struct mt7530_fdb {
+  */
+ struct mt7530_port {
+ 	bool enable;
++	bool isolated;
+ 	u32 pm;
+ 	u16 pvid;
+ 	struct phylink_pcs *sgmii_pcs;
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.45.2
+
 
