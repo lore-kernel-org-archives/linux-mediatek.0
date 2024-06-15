@@ -4,62 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BF87C41513
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jun 2024 22:22:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 503B3C27C6E
+	for <linux-mediatek@archiver.kernel.org>; Sat, 15 Jun 2024 00:47:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ZYZis2XMVwVPPVMMMc8/iJ2Rd0WJw/FwEKDW3OP/a1A=; b=v3NGrY12LROC/idQOHfmpQx75G
-	0su6OM8QRnyIjr0Shhad0gnYdDP1BtcZe771SYqJ/4HhtJSLIna05vrYocQbJZMNPF3LioVdjoC4i
-	/r0U/Q57P9tIFshU0CCZnA5PWwoqxwuUl4a7q4rwaJ0i380gOY8TQDppoXjeZlB9KRDFAv5Hz5NX4
-	Hzp7jXP4tYrRuIiyVhhJIUtJa004OtYVFktVPdqY0sGLEMlN8wliuWJUVmH+Luy9bCJ+eSUVhXA/i
-	EDqSAcIYfAgBzRagjGoj9s8ot67SSZs6pI4aNlZHk8nCuk9KvL/FZ7DXYAN5GFLtBz1158pyYTutW
-	zNiFb+sA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=npkn03wP7YtFeRsTjC3TRY5Eg6h97deI9Z/3TwOzoes=; b=oGhvXZN4bKqd1wEPmg/eAc+4hu
+	ALyzqytXc5gyuzZNWQgymMkQwM1WBTn5IJDC9nTxPrcnVIQ/ZghfbwYh260sc5Ob2EI9xFSSQbHxf
+	MA5GpLqVpxdN1RThhPCmyunZd03hyW4luDJyzlFdiX+HDOt3MuPGC6L600Ch/VCSxaAESy5Lw11By
+	R7J+SaJ1gvyzYXzYExX93hMIHXQcpdpA9sY4aHDszKvOlW1Ns4Cn1UQC56DlzVoHNcS53zNkRUZr0
+	4S77/EgGYgbIMpLPlxq/9zgKqN8/HsPoXZ9jcZoqJwHT1Ae4Kr2kdbUKR5zYdKM5aDrjUIjvOLsAj
+	FpUAU6XA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sIFJe-000000049Sg-3lRn;
-	Fri, 14 Jun 2024 22:22:38 +0000
-Received: from orthanc.universe-factory.net ([104.238.176.138])
+	id 1sIHZw-00000004LsV-0lt4;
+	Sat, 15 Jun 2024 00:47:36 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sIFJa-000000049RE-1Rg3;
-	Fri, 14 Jun 2024 22:22:35 +0000
-Received: from avalon.fritz.box (unknown [IPv6:2001:19f0:6c01:100::2])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by orthanc.universe-factory.net (Postfix) with ESMTPSA id AF1C71F401;
-	Sat, 15 Jun 2024 00:22:27 +0200 (CEST)
-From: Matthias Schiffer <mschiffer@universe-factory.net>
-To: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>
-Cc: Andrew Lunn <andrew@lunn.ch>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
+	id 1sIHZp-00000004LrZ-3DRN;
+	Sat, 15 Jun 2024 00:47:31 +0000
+Received: from pendragon.ideasonboard.com (81-175-209-231.bb.dnainternet.fi [81.175.209.231])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id D94EB2E3;
+	Sat, 15 Jun 2024 02:47:10 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1718412431;
+	bh=l2WovBwHTqQxC4PpmcBxNtwWoVXaTmRA9KrR94DqflM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=tpwoYvSaNG5y7cfKPtXOeK9c/WqWgJi3L8tX9ggrvnFGBO3K6eosuYM6S28IenDax
+	 ykIE86g/okNXN8/GY7mLQ7DyxukkqBLpnwEjkPMpgrqk+dU50DxnO8oXxx+XFl55xe
+	 2PjY/0RWUGvD0kMIJoqCmRAzLH72YH0kCjoIG2DY=
+Date: Sat, 15 Jun 2024 03:47:05 +0300
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Julien Stephan <jstephan@baylibre.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Louis Kuo <louis.kuo@mediatek.com>,
+	Phi-bang Nguyen <pnguyen@baylibre.com>,
+	Florian Sylvestre <fsylvestre@baylibre.com>,
+	Andy Hsieh <andy.hsieh@mediatek.com>,
+	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Matthias Schiffer <mschiffer@universe-factory.net>
-Subject: [PATCH net-next 1/2] net: dsa: mt7530: factor out bridge join/leave logic
-Date: Sat, 15 Jun 2024 00:21:53 +0200
-Message-ID: <378bc964b49f9e9954336e99009932ac22bfe172.1718400508.git.mschiffer@universe-factory.net>
-X-Mailer: git-send-email 2.45.2
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Paul Elder <paul.elder@ideasonboard.com>,
+	Rob Herring <robh+dt@kernel.org>
+Subject: Re: [PATCH v4 3/5] media: platform: mediatek: isp_30: add mediatek
+ ISP3.0 sensor interface
+Message-ID: <20240615004705.GI9171@pendragon.ideasonboard.com>
+References: <20240110141443.364655-1-jstephan@baylibre.com>
+ <20240110141443.364655-4-jstephan@baylibre.com>
+ <3c2bee40-3792-409c-b42f-f8b013ff641c@collabora.com>
+ <CAEHHSvaT_U+HNzWQUoK9EuqGuqEd11+Lu0CLz_rL7uQf0Q5isw@mail.gmail.com>
+ <53838e76-bfa4-41f5-a015-a37472e98991@collabora.com>
+ <CAEHHSvaRqZM9c8oD05WKkhOHdjKLBkR6tXp2Q1b8OMiDxDsDhQ@mail.gmail.com>
+ <20240614123345.GN6019@pendragon.ideasonboard.com>
+ <CAEHHSvaWO7m=n5_f0BM7gwuDMfh_GMX=x3DknG28PnmtZbrGQw@mail.gmail.com>
+ <20240614144248.GA20136@pendragon.ideasonboard.com>
+ <CAEHHSvZPATFV=w451KaaT+e__EK9u3Vc5ORPRQ-Gfa4rJ_o8hA@mail.gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAEHHSvZPATFV=w451KaaT+e__EK9u3Vc5ORPRQ-Gfa4rJ_o8hA@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240614_152234_554116_CCF13D48 
-X-CRM114-Status: GOOD (  20.58  )
+X-CRM114-CacheID: sfid-20240614_174729_977409_1B6A2EA8 
+X-CRM114-Status: GOOD (  48.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,155 +87,142 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-As preparation for implementing bridge port isolation, move the logic to
-add and remove bits in the port matrix into a new helper
-mt7530_update_port_member(), which is called from
-mt7530_port_bridge_join() and mt7530_port_bridge_leave().
+On Fri, Jun 14, 2024 at 04:54:47PM +0200, Julien Stephan wrote:
+> Le ven. 14 juin 2024 à 16:43, Laurent Pinchart a écrit :
+> > On Fri, Jun 14, 2024 at 04:14:52PM +0200, Julien Stephan wrote:
+> > > Le ven. 14 juin 2024 à 14:34, Laurent Pinchart a écrit :
+> > > > On Fri, Jun 14, 2024 at 12:38:15PM +0200, Julien Stephan wrote:
+> > > > > Le mer. 12 juin 2024 à 10:06, AngeloGioacchino Del Regno a écrit :
+> > > > > >
+> > > > > > Il 10/06/24 16:39, Julien Stephan ha scritto:
+> > > > > [...]
+> > > > > > >>
+> > > > > > >>> +     writel(0x10001, input->base + SENINF_TG1_SEN_CK);
+> > > > > > >>
+> > > > > > >> Unroll this one... this is the TG1 sensor clock divider.
+> > > > > > >>
+> > > > > > >> CLKFL GENMASK(5, 0)
+> > > > > > >> CLKRS GENMASK(13, 8)
+> > > > > > >> CLKCNT GENMASK(21,16)
+> > > > > > >>
+> > > > > > >> Like this, I don't get what you're trying to set, because you're using a fixed
+> > > > > > >> sensor clock rate, meaning that only a handful of camera sensors will be usable.
+> > > > > > >>
+> > > > > > >> Is this 8Mhz? 16? 24? what? :-)
+> > > > > > >>
+> > > > > > >> Two hints:
+> > > > > > >>    - sensor_clk = clk_get_rate(isp_clk) / (tg1_sen_ck_clkcnt + 1);
+> > > > > > >>    - int mtk_seninf_set_sensor_clk(u8 rate_mhz);
+> > > > > > >>
+> > > > > > >> Please :-)
+> > > > > > >
+> > > > > > > Hi Angelo,
+> > > > > > >
+> > > > > > > I think I get your point about not hardcoding the sensor rate, but I
+> > > > > > > am not sure how to use
+> > > > > > > a mtk_seninf_set_sensor_clk(u8 rate_mhz); function.
+> > > > > > >
+> > > > > > > Where would it be called? How is it exposed to the user?
+> > > > > > >
+> > > > > >
+> > > > > > As for where: setup, streaming start, resolution change (which may be covered
+> > > > > > by streaming start anyway, as a change should be calling stop->start anyway).
+> > > > > >
+> > > > > > And for the how is it exposed to the user - well, depends what you mean for user,
+> > > > > > but it's all standard V4L2 API :-)
+> > > > > >
+> > > > > > Last but not least, I can give you another hint....
+> > > > > >
+> > > > > > struct media_entity *entity = (something_here);
+> > > > > > struct media_pad *mpad;
+> > > > > > struct v4l2_subdev *cam_subdev;
+> > > > > > struct v4l2_ctrl *ctl;
+> > > > > > s64 link_frequency, pixel_clock;
+> > > > > >
+> > > > > > if (entity->pads[0].flags & MEDIA_PAD_FL_SINK)
+> > > > > >     return -E_NOT_A_CAMERA_SENSOR_WE_IGNORE_THIS_ONE;
+> > > > > >
+> > > > > > pad = media_pad_remote_pad_first(&entity->pads[0]);
+> > > > > > if (!pad)
+> > > > > >    return -ENOENT;
+> > > > > >
+> > > > > > if (!is_media_entity_v4l2_subdev(pad->entity))
+> > > > > >    return -ENOENT;
+> > > > > >
+> > > > > > if (pad->entity->function != MEDIA_ENT_F_CAM_SENSOR)
+> > > > > >    return -ENOENT;
+> > > > > >
+> > > > >
+> > > > > Hi Angelo,
+> > > > >
+> > > > > Thank you for the detailed explanation :)
+> > > > > However, I can't make it work because in my case, seninf is connected
+> > > > > to an external ISP
+> > > > > so pad->entity->function == MEDIA_ENT_F_PROC_VIDEO_ISP.
+> > > > >
+> > > > > How can I get the pad corresponding to the sensor?
+> > > >
+> > > > You don't have to. You can drop that check, and get the link frequency
+> > > > of the source subdev with v4l2_get_link_freq(), whatever it is.
+> > > >
+> > > > > > cam_subdev = media_entity_to_v4l2_subdev(pad->entity);
+> > > > > > ctl = v4l2_ctrl_find(subdev->ctrl_handler, V4L2_CID_PIXEL_RATE);
+> > > > >
+> > > > > Is this mandatory to implement V4L2_CID_PIXEL_RATE ?
+> > > > > Should I return an error if not found?
+> > > >
+> > > > Does SENINF need to know both the pixel rate and link frequency ?
+> > > > V4L2_CID_PIXEL_RATE is very ill-defined, at the moment it only makes
+> > > > sense as a value relative to the sensor pixel array, and doesn't really
+> > > > apply further down in the pipeline. What information do you need to
+> > > > program the SENINF ?
+> > >
+> > > Hi Laurent,
+> > >
+> > > I need to know the clock divider for the sensor
+> >
+> > Could you provide some details on how the SENINF uses that divisor ?
+> > What does it control, and what are the constraints ?
+> 
+> According to the datasheet,  SENINF_TG1_SEN_CK[21:16] :CLKCNT : Sensor
+> master clock will be ISP_clock/(CLKCNT+1) where CLKCNT >= 1
 
-No functional change intended.
+I'll need more information. My guess so far is that there's a FIFO
+somewhere in the SENINF, with the pixel bus clocked by the CSI-2 clock
+before the FIFO, and by the "Sensor master clock" after the FIFO. Is
+that right ? If so, the simplest approach would be to use the link
+frequency to compute the pixel clock before the FIFO, and make sure that
+the sensor master clock will be larger than or equal to that.
 
-Signed-off-by: Matthias Schiffer <mschiffer@universe-factory.net>
----
- drivers/net/dsa/mt7530.c | 103 +++++++++++++++++----------------------
- 1 file changed, 46 insertions(+), 57 deletions(-)
+A better approach from a power consumption point of view would be to
+consider horizontal blanking. The FIFO can fill faster than it gets
+emptied during the active portion of the line and then drain during
+blanking. This allows for a slower clock on the output side. You will
+need to pick an output clock frequency that
 
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 598434d8d6e4..ecacaefdd694 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -1302,6 +1302,50 @@ mt7530_stp_state_set(struct dsa_switch *ds, int port, u8 state)
- 		   FID_PST(FID_BRIDGED, stp_state));
- }
- 
-+static void mt7530_update_port_member(struct mt7530_priv *priv, int port,
-+				      const struct net_device *bridge_dev, bool join)
-+	__must_hold(&priv->reg_mutex)
-+{
-+	struct dsa_port *dp = dsa_to_port(priv->ds, port), *other_dp;
-+	struct mt7530_port *p = &priv->ports[port], *other_p;
-+	struct dsa_port *cpu_dp = dp->cpu_dp;
-+	u32 port_bitmap = BIT(cpu_dp->index);
-+	int other_port;
-+
-+	dsa_switch_for_each_user_port(other_dp, priv->ds) {
-+		other_port = other_dp->index;
-+		other_p = &priv->ports[other_port];
-+
-+		if (dp == other_dp)
-+			continue;
-+
-+		/* Add/remove this port to/from the port matrix of the other
-+		 * ports in the same bridge. If the port is disabled, port
-+		 * matrix is kept and not being setup until the port becomes
-+		 * enabled.
-+		 */
-+		if (!dsa_port_offloads_bridge_dev(other_dp, bridge_dev))
-+			continue;
-+
-+		if (join) {
-+			other_p->pm |= PCR_MATRIX(BIT(port));
-+			port_bitmap |= BIT(other_port);
-+		} else {
-+			other_p->pm &= ~PCR_MATRIX(BIT(port));
-+		}
-+
-+		if (other_p->enable)
-+			mt7530_rmw(priv, MT7530_PCR_P(other_port),
-+				   PCR_MATRIX_MASK, other_p->pm);
-+	}
-+
-+	/* Add/remove the all other ports to this port matrix. */
-+	p->pm = PCR_MATRIX(port_bitmap);
-+	if (priv->ports[port].enable)
-+		mt7530_rmw(priv, MT7530_PCR_P(port),
-+			   PCR_MATRIX_MASK, p->pm);
-+}
-+
- static int
- mt7530_port_pre_bridge_flags(struct dsa_switch *ds, int port,
- 			     struct switchdev_brport_flags flags,
-@@ -1345,39 +1389,11 @@ mt7530_port_bridge_join(struct dsa_switch *ds, int port,
- 			struct dsa_bridge bridge, bool *tx_fwd_offload,
- 			struct netlink_ext_ack *extack)
- {
--	struct dsa_port *dp = dsa_to_port(ds, port), *other_dp;
--	struct dsa_port *cpu_dp = dp->cpu_dp;
--	u32 port_bitmap = BIT(cpu_dp->index);
- 	struct mt7530_priv *priv = ds->priv;
- 
- 	mutex_lock(&priv->reg_mutex);
- 
--	dsa_switch_for_each_user_port(other_dp, ds) {
--		int other_port = other_dp->index;
--
--		if (dp == other_dp)
--			continue;
--
--		/* Add this port to the port matrix of the other ports in the
--		 * same bridge. If the port is disabled, port matrix is kept
--		 * and not being setup until the port becomes enabled.
--		 */
--		if (!dsa_port_offloads_bridge(other_dp, &bridge))
--			continue;
--
--		if (priv->ports[other_port].enable)
--			mt7530_set(priv, MT7530_PCR_P(other_port),
--				   PCR_MATRIX(BIT(port)));
--		priv->ports[other_port].pm |= PCR_MATRIX(BIT(port));
--
--		port_bitmap |= BIT(other_port);
--	}
--
--	/* Add the all other ports to this port matrix. */
--	if (priv->ports[port].enable)
--		mt7530_rmw(priv, MT7530_PCR_P(port),
--			   PCR_MATRIX_MASK, PCR_MATRIX(port_bitmap));
--	priv->ports[port].pm |= PCR_MATRIX(port_bitmap);
-+	mt7530_update_port_member(priv, port, bridge.dev, true);
- 
- 	/* Set to fallback mode for independent VLAN learning */
- 	mt7530_rmw(priv, MT7530_PCR_P(port), PCR_PORT_VLAN_MASK,
-@@ -1478,38 +1494,11 @@ static void
- mt7530_port_bridge_leave(struct dsa_switch *ds, int port,
- 			 struct dsa_bridge bridge)
- {
--	struct dsa_port *dp = dsa_to_port(ds, port), *other_dp;
--	struct dsa_port *cpu_dp = dp->cpu_dp;
- 	struct mt7530_priv *priv = ds->priv;
- 
- 	mutex_lock(&priv->reg_mutex);
- 
--	dsa_switch_for_each_user_port(other_dp, ds) {
--		int other_port = other_dp->index;
--
--		if (dp == other_dp)
--			continue;
--
--		/* Remove this port from the port matrix of the other ports
--		 * in the same bridge. If the port is disabled, port matrix
--		 * is kept and not being setup until the port becomes enabled.
--		 */
--		if (!dsa_port_offloads_bridge(other_dp, &bridge))
--			continue;
--
--		if (priv->ports[other_port].enable)
--			mt7530_clear(priv, MT7530_PCR_P(other_port),
--				     PCR_MATRIX(BIT(port)));
--		priv->ports[other_port].pm &= ~PCR_MATRIX(BIT(port));
--	}
--
--	/* Set the cpu port to be the only one in the port matrix of
--	 * this port.
--	 */
--	if (priv->ports[port].enable)
--		mt7530_rmw(priv, MT7530_PCR_P(port), PCR_MATRIX_MASK,
--			   PCR_MATRIX(BIT(cpu_dp->index)));
--	priv->ports[port].pm = PCR_MATRIX(BIT(cpu_dp->index));
-+	mt7530_update_port_member(priv, port, bridge.dev, false);
- 
- 	/* When a port is removed from the bridge, the port would be set up
- 	 * back to the default as is at initial boot which is a VLAN-unaware
+- on average is larger than the number of active pixels per line divided
+  by the line duration ; and
+
+- ensures the FIFO never overflows during the active portion of the line,
+  for cases where the line length is larger than the FIFO size.
+
+> > > > > > /* multiplier is usually bits per pixel, divider is usually num of lanes */
+> > > > > > link_frequency = v4l2_get_link_freq(cam_subdev->ctrl_handler, multiplier, divider);
+> > > > > > pixel_clock = v4l2_ctrl_g_ctrl_int64(ctl);
+> > > > >
+> > > > > How to know the sensor clock given link_frequency and pixel_clock?
+> > > > > Can you point me to drivers doing something similar?
+> > > > >
+> > > > > >
+> > > > > > ....now you know what the sensor wants, set the seninf sensor clock accordingly.
+> > > > > >
+> > > > > > Cheers
+> > > > > > Angelo
+> > > > > >
+> > > > > [...]
+
 -- 
-2.45.2
+Regards,
 
+Laurent Pinchart
 
