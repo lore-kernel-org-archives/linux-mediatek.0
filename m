@@ -4,147 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00B35C27C4F
-	for <linux-mediatek@archiver.kernel.org>; Sat, 15 Jun 2024 09:39:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9B5EC27C77
+	for <linux-mediatek@archiver.kernel.org>; Sat, 15 Jun 2024 21:22:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yzFx8jzdK5dNmXwmGQGRSAmpcATI1xLvdLGTgrmc4nk=; b=LW1UZG2E0t2Rg5VUk4Em2yRgm0
-	/ZmMp/ifw5/GedZ/eqQn47hcUvrMhc5hDyJc+7objJ01rBCnl/IARFBQJHq9qLl7YMB7YgxZvpaNv
-	tGmQmGOO0HpvglAQxEgRMrePXpJWvwS3N0+XIChac/J/jAc+5os6QA0z6kAhubkfYmJ3QfuGgoVNN
-	KE5plztGlBUxqsPLS2icqgp0HTIUfAaoKlOzqjcgEm1GfiWNylY/gwBmRDaRBjW4N8k0hiZpgESCo
-	6E746W0jFK+YY7U90+p1GetCjBSujtOvr7oEfD1AAtPp7FxaYk+Vj0k/LMdJ24inFURSTIKyrQv7Q
-	YvxLLzxA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=YYapbQdbbhs2KCdfHRUsnOJW69H2p0sAphJeIJR4F0c=; b=Ut01nm7B8QUJAADy7wJ9/BaD6t
+	6pjsSpaFU3FS0cyk5+3dZsrjRd/i9kz66chQ0vkweBGIprjRW9jspkGOKEgHjtNamocTyGI/P7h+q
+	/Oujs1oPeps0Te3PlSHmSXh6Icv7BZJ2XPnatyiegpvJCPgI4AIpSg2hkXI6AcW0rS95EZjOkhBeD
+	6xAisTW6+JrhS4eLp5BhpoUvjlmr3BGxblXH5tjED/QtQqrL4UryHq2kdrC2zbpExeFSzQPEVb8y+
+	3JDtzfMU0gQbibeYdgINxoXfzg7MRYXxWZC9MurmnTxQ9Y+OfN7EdD1UrDAsesGkAW9HIWcVAjkjo
+	Xw6TJGcg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sIPsi-000000058uQ-2EcL;
-	Sat, 15 Jun 2024 09:39:32 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sIarO-000000068FJ-2laC;
+	Sat, 15 Jun 2024 21:22:54 +0000
+Received: from mgamail.intel.com ([198.175.65.18])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sIPsd-000000058td-2Lds;
-	Sat, 15 Jun 2024 09:39:28 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id B779460B6E;
-	Sat, 15 Jun 2024 09:39:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DD748C116B1;
-	Sat, 15 Jun 2024 09:39:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1718444366;
-	bh=VnEJAKlueI1gVsR28BDxfyG4IIsWQe276Q/5t4EIwiI=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=adP+eWpDAo3ogc3xH8HvRct3q4nGLVjHAQ+9XYoAyKbLksW+2M3hkGFxC97c9ABf1
-	 YmMoJtp2km315ipyKHOLATXYYZsYNXv0LBpLXx0CCbQp2pD2sNmjKGiOClSvLMlQxm
-	 3iHgUUw0llAYnMR09VjsZszMwB7dRh/oUrQgKtwqoB7JlvTdozUe8OqvlrJbzdzGpr
-	 jEbeTI+55alP5cIoJnqAMMMR4ZVknYcX9Vab0xQBRtKdksziTmG2fKYQ9cr9Nm0MHb
-	 EBscKmOnnmeNQe0XTINhhBy/c0EvSg205h7v4vgr62ka0KBIIJMbso2EvfR47SJHCb
-	 tidPZob6oHU1Q==
-Message-ID: <003b73f2-3b5d-40b7-a87c-2fc937e81bcd@kernel.org>
-Date: Sat, 15 Jun 2024 11:39:12 +0200
+	id 1sIarL-000000068ED-0jrx;
+	Sat, 15 Jun 2024 21:22:52 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1718486571; x=1750022571;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=UfERiNOX/+UQZkbWaRkYayw3suJxBxDKwYPfqdrImYY=;
+  b=KhoKFzq4+6OhPkaR/NEeIKZhub4T3cretjNzrtIGqnsl1SdnPqYaGJ1n
+   nlE3nIx/6zKtNveBbmY0xpbxP6EG6Nko2lvD/2WNxOHGtACBVIBR3RgI2
+   Pjug4HyOZWNHGt/j79Nw8E4w9pzJte7g/9rsPdyhdUVmeVoyY6mFV28e2
+   bNAWj/IxxqJW0t30lWyWZejoPaeYo0G/PFVbgTevH52CFtq+eXWX//fsf
+   juxXc4MBXRGjKT/whrIz4arcXXMjHJ6P+5DtJ3H/s7jDknU6VYFqvOr98
+   63mgUBAsfhUAKau3CPIhrPML3Hw+pQU5JlQoCZP8n7Ybd+vBMpZ7SoLvC
+   A==;
+X-CSE-ConnectionGUID: wwiefgH4QPOkEfVr6lQVjw==
+X-CSE-MsgGUID: XWqeZM9bSYqPbMOCgkYQCQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11104"; a="15505539"
+X-IronPort-AV: E=Sophos;i="6.08,241,1712646000"; 
+   d="scan'208";a="15505539"
+Received: from orviesa004.jf.intel.com ([10.64.159.144])
+  by orvoesa110.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Jun 2024 14:22:43 -0700
+X-CSE-ConnectionGUID: GFH+1WhZQjS5FX1JiXXyVA==
+X-CSE-MsgGUID: 8U6KGGlsRxqAZz3vLZfNsA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.08,241,1712646000"; 
+   d="scan'208";a="45940383"
+Received: from lkp-server01.sh.intel.com (HELO 68891e0c336b) ([10.239.97.150])
+  by orviesa004.jf.intel.com with ESMTP; 15 Jun 2024 14:22:40 -0700
+Received: from kbuild by 68891e0c336b with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1sIar7-0000WH-2R;
+	Sat, 15 Jun 2024 21:22:37 +0000
+Date: Sun, 16 Jun 2024 05:21:40 +0800
+From: kernel test robot <lkp@intel.com>
+To: Shawn Sung <shawn.sung@mediatek.com>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Subject: Re: [PATCH v8 14/16] drm/mediatek: Support CRC in display driver
+Message-ID: <202406160407.yfZ2cNh2-lkp@intel.com>
+References: <20240606092635.27981-15-shawn.sung@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 01/22] dt-bindings: thermal: samsung,exynos: specify cells
-To: Alim Akhtar <alim.akhtar@samsung.com>,
- 'Krzysztof Kozlowski' <krzysztof.kozlowski@linaro.org>,
- 'Daniel Lezcano' <daniel.lezcano@linaro.org>,
- 'Zhang Rui' <rui.zhang@intel.com>, 'Lukasz Luba' <lukasz.luba@arm.com>,
- 'Rob Herring' <robh@kernel.org>, 'Conor Dooley' <conor+dt@kernel.org>,
- 'Guillaume La Roque' <glaroque@baylibre.com>,
- 'Krzysztof Kozlowski' <krzk+dt@kernel.org>,
- 'Vasily Khoruzhick' <anarsoul@gmail.com>, 'Chen-Yu Tsai' <wens@csie.org>,
- 'Jernej Skrabec' <jernej.skrabec@gmail.com>,
- 'Samuel Holland' <samuel@sholland.org>, 'Shawn Guo' <shawnguo@kernel.org>,
- 'Sascha Hauer' <s.hauer@pengutronix.de>,
- 'Pengutronix Kernel Team' <kernel@pengutronix.de>,
- 'Fabio Estevam' <festevam@gmail.com>, 'Anson Huang' <Anson.Huang@nxp.com>,
- 'Thierry Reding' <thierry.reding@gmail.com>,
- 'Jonathan Hunter' <jonathanh@nvidia.com>,
- 'Dmitry Baryshkov' <dmitry.baryshkov@linaro.org>,
- 'Amit Kucheria' <amitk@kernel.org>,
- =?UTF-8?Q?=27Niklas_S=C3=B6derlund=27?= <niklas.soderlund@ragnatech.se>,
- 'Heiko Stuebner' <heiko@sntech.de>, 'Biju Das' <biju.das.jz@bp.renesas.com>,
- 'Orson Zhai' <orsonzhai@gmail.com>,
- 'Baolin Wang' <baolin.wang@linux.alibaba.com>,
- 'Chunyan Zhang' <zhang.lyra@gmail.com>,
- 'Alexandre Torgue' <alexandre.torgue@foss.st.com>,
- 'Pascal Paillet' <p.paillet@foss.st.com>, 'Keerthy' <j-keerthy@ti.com>,
- 'Broadcom internal kernel review list'
- <bcm-kernel-feedback-list@broadcom.com>,
- 'Florian Fainelli' <florian.fainelli@broadcom.com>,
- 'Scott Branden' <sbranden@broadcom.com>,
- 'zhanghongchen' <zhanghongchen@loongson.cn>,
- 'Matthias Brugger' <matthias.bgg@gmail.com>,
- 'AngeloGioacchino Del Regno' <angelogioacchino.delregno@collabora.com>,
- 'Bjorn Andersson' <andersson@kernel.org>,
- 'Geert Uytterhoeven' <geert+renesas@glider.be>
-Cc: linux-pm@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-amlogic@lists.infradead.org,
- linux-sunxi@lists.linux.dev, imx@lists.linux.dev,
- linux-tegra@vger.kernel.org, linux-arm-msm@vger.kernel.org,
- linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com,
- 'Florian Fainelli' <f.fainelli@gmail.com>,
- linux-rpi-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- cpgs@samsung.com
-References: <20240614-dt-bindings-thermal-allof-v1-0-30b25a6ae24e@linaro.org>
- <CGME20240614094638epcas5p115d52130f45e130652b6f1d946358d19@epcas5p1.samsung.com>
- <20240614-dt-bindings-thermal-allof-v1-1-30b25a6ae24e@linaro.org>
- <1891546521.01718433481489.JavaMail.epsvc@epcpadp4>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <1891546521.01718433481489.JavaMail.epsvc@epcpadp4>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240606092635.27981-15-shawn.sung@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240615_023927_844034_ED447123 
-X-CRM114-Status: UNSURE (   9.78  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240615_142251_323436_9767F2CD 
+X-CRM114-Status: GOOD (  18.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -156,34 +82,145 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Hsiao Chien Sung <shawn.sung@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, Sean Paul <sean@poorly.run>, Jason Chen <jason-ch.chen@mediatek.corp-partner.google.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, CK Hu <ck.hu@mediatek.com>, "Nancy . Lin" <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>, oe-kbuild-all@lists.linux.dev, Matthias Brugger <matthias.bgg@gmail.com>, Bibby Hsieh <bibby.hsieh@mediatek.com>, David Airlie <airlied@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 14/06/2024 16:29, Alim Akhtar wrote:
-> Hi Krzysztof,
-> 
->> -----Original Message-----
->> From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
->> Sent: Friday, June 14, 2024 3:16 PM
->> To: Daniel Lezcano <daniel.lezcano@linaro.org
-> .stormreply.com;
->> Subject: [PATCH 01/22] dt-bindings: thermal: samsung,exynos: specify cells
->>
->> All Samsung Exynos SoCs Thermal Management Units have only one sensor, so
->> make '#thermal-sensor-cells' fixed at 0.
->>
-> This is not entirely true, there are SoCs which have multiple temp sensors.
-> It is true that currently only one sensor support is added though.
+Hi Shawn,
 
-All supported by mainline. Others do not exist now :)
+kernel test robot noticed the following build warnings:
 
-> 
-> So we can leave this as is or you suggest to make it to support only one sensor
-> (to match the current DT support), and later (in near future) change it again to
-> match what HW actually support?
+[auto build test WARNING on v6.10-rc2]
+[also build test WARNING on linus/master next-20240613]
+[cannot apply to chrome-os/chromeos-6.1]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-Yes, different devices can have different value (and bindings).
-Best regards,
-Krzysztof
+url:    https://github.com/intel-lab-lkp/linux/commits/Shawn-Sung/soc-mediatek-Disable-9-bit-alpha-in-ETHDR/20240606-172904
+base:   v6.10-rc2
+patch link:    https://lore.kernel.org/r/20240606092635.27981-15-shawn.sung%40mediatek.com
+patch subject: [PATCH v8 14/16] drm/mediatek: Support CRC in display driver
+config: arm64-randconfig-r113-20240615 (https://download.01.org/0day-ci/archive/20240616/202406160407.yfZ2cNh2-lkp@intel.com/config)
+compiler: aarch64-linux-gcc (GCC) 13.2.0
+reproduce: (https://download.01.org/0day-ci/archive/20240616/202406160407.yfZ2cNh2-lkp@intel.com/reproduce)
 
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202406160407.yfZ2cNh2-lkp@intel.com/
+
+sparse warnings: (new ones prefixed by >>)
+>> drivers/gpu/drm/mediatek/mtk_crtc.c:1373:66: sparse: sparse: Using plain integer as NULL pointer
+   drivers/gpu/drm/mediatek/mtk_crtc.c:1377:65: sparse: sparse: Using plain integer as NULL pointer
+
+vim +1373 drivers/gpu/drm/mediatek/mtk_crtc.c
+
+  1286	
+  1287	#if IS_REACHABLE(CONFIG_MTK_CMDQ)
+  1288	/**
+  1289	 * mtk_crtc_create_crc_cmdq - Create a CMDQ thread for syncing the CRCs
+  1290	 * @dev: Kernel device node of the CRC provider
+  1291	 * @crc: Pointer of the CRC to init
+  1292	 *
+  1293	 * This function will create a looping thread on GCE (Global Command Engine) to
+  1294	 * keep the CRC up to date by monitoring the assigned event (usually the frame
+  1295	 * done event) of the CRC provider, and read the CRCs from the registers to a
+  1296	 * shared memory for the workqueue to read. To start/stop the looping thread,
+  1297	 * please call `mtk_crtc_start_crc_cmdq()` and `mtk_crtc_stop_crc_cmdq()`
+  1298	 * defined blow.
+  1299	 *
+  1300	 * The reason why we don't update the CRCs with CPU is that the front porch of
+  1301	 * 4K60 timing in CEA-861 is less than 60us, and register read/write speed is
+  1302	 * relatively unreliable comparing to GCE due to the bus design.
+  1303	 *
+  1304	 * We must create a new thread instead of using the original one for plane
+  1305	 * update is because:
+  1306	 * 1. We cannot add another wait-for-event command at the end of cmdq packet, or
+  1307	 *    the cmdq callback will delay for too long
+  1308	 * 2. Will get the CRC of the previous frame if using the existed wait-for-event
+  1309	 *    command which is at the beginning of the packet
+  1310	 */
+  1311	void mtk_crtc_create_crc_cmdq(struct device *dev, struct mtk_crtc_crc *crc)
+  1312	{
+  1313		int i;
+  1314	
+  1315		if (!crc->cnt) {
+  1316			dev_warn(dev, "%s: not support\n", __func__);
+  1317			goto cleanup;
+  1318		}
+  1319	
+  1320		if (!crc->ofs) {
+  1321			dev_warn(dev, "%s: not defined\n", __func__);
+  1322			goto cleanup;
+  1323		}
+  1324	
+  1325		crc->cmdq_client.client.dev = dev;
+  1326		crc->cmdq_client.client.tx_block = false;
+  1327		crc->cmdq_client.client.knows_txdone = true;
+  1328		crc->cmdq_client.client.rx_callback = NULL;
+  1329		crc->cmdq_client.chan = mbox_request_channel(&crc->cmdq_client.client, 0);
+  1330		if (IS_ERR(crc->cmdq_client.chan)) {
+  1331			dev_warn(dev, "%s: failed to create mailbox client\n", __func__);
+  1332			crc->cmdq_client.chan = NULL;
+  1333			goto cleanup;
+  1334		}
+  1335	
+  1336		if (mtk_drm_cmdq_pkt_create(&crc->cmdq_client, &crc->cmdq_handle, PAGE_SIZE)) {
+  1337			dev_warn(dev, "%s: failed to create cmdq packet\n", __func__);
+  1338			goto cleanup;
+  1339		}
+  1340	
+  1341		if (!crc->va) {
+  1342			dev_warn(dev, "%s: no memory\n", __func__);
+  1343			goto cleanup;
+  1344		}
+  1345	
+  1346		/* map the entry to get a dma address for cmdq to store the crc */
+  1347		crc->pa = dma_map_single(crc->cmdq_client.chan->mbox->dev,
+  1348					 crc->va, crc->cnt * sizeof(*crc->va),
+  1349					 DMA_FROM_DEVICE);
+  1350	
+  1351		if (dma_mapping_error(crc->cmdq_client.chan->mbox->dev, crc->pa)) {
+  1352			dev_err(dev, "%s: failed to map dma\n", __func__);
+  1353			goto cleanup;
+  1354		}
+  1355	
+  1356		if (crc->cmdq_event)
+  1357			cmdq_pkt_wfe(&crc->cmdq_handle, crc->cmdq_event, true);
+  1358	
+  1359		for (i = 0; i < crc->cnt; i++) {
+  1360			/* put crc to spr1 register */
+  1361			cmdq_pkt_read_s(&crc->cmdq_handle, crc->cmdq_reg->subsys,
+  1362					crc->cmdq_reg->offset + crc->ofs[i],
+  1363					CMDQ_THR_SPR_IDX1);
+  1364	
+  1365			/* copy spr1 register to physical address of the crc */
+  1366			cmdq_pkt_assign(&crc->cmdq_handle, CMDQ_THR_SPR_IDX0,
+  1367					CMDQ_ADDR_HIGH(crc->pa + i * sizeof(*crc->va)));
+  1368			cmdq_pkt_write_s(&crc->cmdq_handle, CMDQ_THR_SPR_IDX0,
+  1369					 CMDQ_ADDR_LOW(crc->pa + i * sizeof(*crc->va)),
+  1370					 CMDQ_THR_SPR_IDX1);
+  1371		}
+  1372		/* reset crc */
+> 1373		mtk_ddp_write_mask(&crc->cmdq_handle, ~0, crc->cmdq_reg, 0,
+  1374				   crc->rst_ofs, crc->rst_msk);
+  1375	
+  1376		/* clear reset bit */
+  1377		mtk_ddp_write_mask(&crc->cmdq_handle, 0, crc->cmdq_reg, 0,
+  1378				   crc->rst_ofs, crc->rst_msk);
+  1379	
+  1380		/* jump to head of the cmdq packet */
+  1381		cmdq_pkt_jump_abs(&crc->cmdq_handle, crc->cmdq_handle.pa_base,
+  1382				  cmdq_get_shift_pa(crc->cmdq_client.chan));
+  1383	
+  1384		return;
+  1385	cleanup:
+  1386		mtk_crtc_destroy_crc(crc);
+  1387	}
+  1388	
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
