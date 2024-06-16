@@ -4,71 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F99CC27C6E
-	for <linux-mediatek@archiver.kernel.org>; Sun, 16 Jun 2024 07:02:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2AABC27C77
+	for <linux-mediatek@archiver.kernel.org>; Sun, 16 Jun 2024 08:29:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
+	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
+	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VHz5wWhoZB1ZJeF9u59vMYelSxXRAN9/WTQXNh1hnWA=; b=x11AwjuINODYGrBy5kCW5c6wq8
-	nbJAc4VmqloS/crEasj+gJlsM6UClRA5gnvU/6/dwWBPUaUmsd3iJllOzAkFRpfCGuKiinDQi4DoM
-	RrjnqjyZC84p8yBOS/arR0DUkJTT7Hk0KBB4H2fMzi8ytN7vozvS2BZOHUx2DNVJHEw1NwKMbzeSC
-	bDMBD62QM2XM9HpW2CBZOZxmWPVNxC3sWvlTyOLstfRXGXL6zy1Vq/aw8ZVkW3c7ZZJQRbL8TCgM7
-	rDjHQSvcVoSp5YewUmzxRtn9tpSCm6hQ38PRpGzWBzwFxEZQDFJZcmQIqVbgg59QK3eW4oAiQRYh5
-	cmErPSmg==;
+	bh=4hYEgc6wX6WrljnlkvMPkSYoxqnzkqXXBOFwkko4/WY=; b=WY1znAqZ3prC07zokF/4aWC6iH
+	w7OjzlDLzRWwbs/f4uZCBNWtd1/rS/TTNt5bnX9G77xf34xnaESG71RwtYg2dOmRQ8l1nsGprbNUI
+	hAKftXwtd50B5Wik04mLzwr8WwNcY2X7AHzYE6/1PyWTTI5b5T3xU9xkTfttRxBzkJjovlKG16SIm
+	G1BJpbfnQMAN/Zy0kXShCo/zx7Cvkz6tNaQ/KxFGGmWFdsrTMHHOHPSsY0+4KcNdPJZwMon33t0qP
+	AD5TglapLWW5jJ+yNDljk9GrSwVuOvKDmnF/gn1g+LSoGPLr2Pzr7bsPkrZMtbBRm8x3deP+uqTFJ
+	pLxH9boQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sIjuB-00000006yj2-0I3w;
-	Sun, 16 Jun 2024 07:02:23 +0000
-Received: from relay9-d.mail.gandi.net ([2001:4b98:dc4:8::229])
+	id 1sIlGV-000000077sf-2S9L;
+	Sun, 16 Jun 2024 08:29:31 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sIju6-00000006yh6-1ii2;
-	Sun, 16 Jun 2024 07:02:20 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id D6199FF807;
-	Sun, 16 Jun 2024 07:02:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1718521334;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=VHz5wWhoZB1ZJeF9u59vMYelSxXRAN9/WTQXNh1hnWA=;
-	b=Fxl4nyA4ZCgqZk95/mvKKdJtM4ECl69KDa8YCAkBIloYtViECzDT0Qq2V1X7wGxEnyR/DE
-	ex4DX6U1UQVvrYTIPE9R0bCymIZx4EmTJFITn25L+e4Xqpdu+vsDcWzsrBGjaMi7tnNWmO
-	Ybjp2JtqunDz3byfF63exkXFkVjQj9muqhN1qkux+X8PMZED2rVctNRnUIf6CRvjNd0v2M
-	gEfMQhmoqXaoc4wT/sI1zphW+eqmzcopTWYuveFlg4ey00cWIXJ4uvO3/CP/OGUrScfnpK
-	W/wZFygCw77USSld8qXWNC7gWnkkkbHYeUU98CATAEMp76kVNl0JP2bewk+UEA==
-Message-ID: <6f70da58-b68b-4a93-b369-2cc86e9158d4@arinc9.com>
-Date: Sun, 16 Jun 2024 10:02:07 +0300
+	id 1sIlGH-000000077iN-172T;
+	Sun, 16 Jun 2024 08:29:21 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 7039E60BA5;
+	Sun, 16 Jun 2024 08:29:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id E73B2C4AF1C;
+	Sun, 16 Jun 2024 08:29:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1718526554;
+	bh=w4HhvErl0+9KBEyLNkAXO343a8rNSOMKg9ZlSA5XdCM=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
+	b=swlsQLbXrGn4m+8Wm0zCjzNViBZ2DUpjkfzvI1SSMoPp7nnaMRI0KplUAtIAXBbac
+	 pxXsnyBi7n2Im3KiZr+A0v5XvQiYqrTMBjHsy/rYP1vkQE3P5bFh8c4ngepOx/VskT
+	 Zg/4bjpiAxjNufkklMgFpQT4tkRMhMvL67dSC0ELq9mvsAxvLMjrjLLB2jE29U25c1
+	 XlPT1xtHnymRxtnaGVzy4es3UuzfLL/EOtuc95qwVFq1+x2N8ZivHpMrH3SZvLC9m1
+	 +FLZtCSXHrAfNxAZPxgNDN2w230KnIsgk1vwP3Jg2D2iVZTWTQGeuYYibKxhDv/R2m
+	 EwurrCpaIfDMg==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D5973C2BA16;
+	Sun, 16 Jun 2024 08:29:14 +0000 (UTC)
+From: Hsiao Chien Sung via B4 Relay <devnull+shawn.sung.mediatek.com@kernel.org>
+Date: Sun, 16 Jun 2024 16:29:12 +0800
+Subject: [PATCH 02/13] drm/mediatek: Add OVL compatible name for MT8195
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next 2/2] net: dsa: mt7530: add support for bridge
- port isolation
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-To: Matthias Schiffer <mschiffer@universe-factory.net>,
- Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>
-Cc: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
- Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <378bc964b49f9e9954336e99009932ac22bfe172.1718400508.git.mschiffer@universe-factory.net>
- <15263cb9bbc63d5cc66428e7438e0b5324306aa4.1718400508.git.mschiffer@universe-factory.net>
- <4eaf2bcb-4fad-4211-a48e-079a5c2a6767@arinc9.com>
-Content-Language: en-US
-In-Reply-To: <4eaf2bcb-4fad-4211-a48e-079a5c2a6767@arinc9.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-GND-Sasl: arinc.unal@arinc9.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20240616-mediatek-drm-next-v1-2-7e8f9cf785d8@mediatek.com>
+References: <20240616-mediatek-drm-next-v1-0-7e8f9cf785d8@mediatek.com>
+In-Reply-To: <20240616-mediatek-drm-next-v1-0-7e8f9cf785d8@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, 
+ Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ CK Hu <ck.hu@mediatek.com>, Bibby Hsieh <bibby.hsieh@mediatek.com>, 
+ Daniel Kurtz <djkurtz@chromium.org>, YT Shen <yt.shen@mediatek.com>, 
+ Mao Huang <littlecvr@chromium.org>, "Nancy.Lin" <nancy.lin@mediatek.com>
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ Hsiao Chien Sung <shawn.sung@mediatek.com>
+X-Mailer: b4 0.14.0
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1718526553; l=1050;
+ i=shawn.sung@mediatek.com; s=20240616; h=from:subject:message-id;
+ bh=BgdlkkD28fU8kVaiXpAjJEsbIm8CSiJsfkQTGRrkbL8=;
+ b=EwafnihtQo1NceoMulPvwo+G3mrLHtE3FpAhX/nodSUl+rH3kr3UHBTnd2O4spc5zZHP4HpVh
+ nZpiY49XaxJAwmU+24gkfIOA0MU9S0VkvSNAzw0hB3HrI+9gv37T3SC
+X-Developer-Key: i=shawn.sung@mediatek.com; a=ed25519;
+ pk=lq1w8BuWDINX+4JHjGHhhbAU5ICP+cL9VCj7wn+cEDA=
+X-Endpoint-Received: by B4 Relay for shawn.sung@mediatek.com/20240616 with
+ auth_id=172
+X-Original-From: Hsiao Chien Sung <shawn.sung@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240616_000218_757924_D84E51AE 
-X-CRM114-Status: GOOD (  17.89  )
+X-CRM114-CacheID: sfid-20240616_012917_639813_A8DA216E 
+X-CRM114-Status: UNSURE (   9.60  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,66 +89,38 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: shawn.sung@mediatek.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 16/06/2024 09:52, Arınç ÜNAL wrote:
-> On 15/06/2024 01:21, Matthias Schiffer wrote:
->> Remove a pair of ports from the port matrix when both ports have the
->> isolated flag set.
->>
->> Signed-off-by: Matthias Schiffer <mschiffer@universe-factory.net>
->> ---
->>   drivers/net/dsa/mt7530.c | 21 ++++++++++++++++++---
->>   drivers/net/dsa/mt7530.h |  1 +
->>   2 files changed, 19 insertions(+), 3 deletions(-)
->>
->> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
->> index ecacaefdd694..44939379aba8 100644
->> --- a/drivers/net/dsa/mt7530.c
->> +++ b/drivers/net/dsa/mt7530.c
->> @@ -1303,7 +1303,8 @@ mt7530_stp_state_set(struct dsa_switch *ds, int port, u8 state)
->>   }
->>   static void mt7530_update_port_member(struct mt7530_priv *priv, int port,
->> -                      const struct net_device *bridge_dev, bool join)
->> +                      const struct net_device *bridge_dev,
->> +                      bool join)
-> 
-> Run git clang-format on this patch as well please.
-> 
->>       __must_hold(&priv->reg_mutex)
->>   {
->>       struct dsa_port *dp = dsa_to_port(priv->ds, port), *other_dp;
->> @@ -1311,6 +1312,7 @@ static void mt7530_update_port_member(struct mt7530_priv *priv, int port,
->>       struct dsa_port *cpu_dp = dp->cpu_dp;
->>       u32 port_bitmap = BIT(cpu_dp->index);
->>       int other_port;
->> +    bool isolated;
->>       dsa_switch_for_each_user_port(other_dp, priv->ds) {
->>           other_port = other_dp->index;
->> @@ -1327,7 +1329,9 @@ static void mt7530_update_port_member(struct mt7530_priv *priv, int port,
->>           if (!dsa_port_offloads_bridge_dev(other_dp, bridge_dev))
->>               continue;
->> -        if (join) {
->> +        isolated = p->isolated && other_p->isolated;
->> +
->> +        if (join && !isolated) {
->>               other_p->pm |= PCR_MATRIX(BIT(port));
->>               port_bitmap |= BIT(other_port);
->>           } else {
-> 
-> Why must other_p->isolated be true as well? If I understand correctly, when
-> a user port is isolated, non isolated ports can't communicate with it
-> whilst the CPU port can. If I were to isolate a port which is the only
-> isolated one at the moment, the isolated flag would not be true. Therefore,
-> the isolated port would not be removed from the port matrix of other user
-> ports. Why not only check for p->isolated?
+From: Hsiao Chien Sung <shawn.sung@mediatek.com>
 
-The concept of port isolation is that the isolated port can only
-communicate with non-isolated ports so the current implementation looks ok.
+Add OVL compatible name for MT8195.
+Without this commit, DRM won't work after modifying the device tree.
 
-Which switch models did you test this on; MT7530, MT7531, MT7988 SoC
-switch? I will test it on MT7530 and MT7531 tomorrow evening.
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Arınç
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index b5f605751b0a..8e047043202b 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -743,6 +743,8 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
+ 	  .data = (void *)MTK_DISP_OVL },
+ 	{ .compatible = "mediatek,mt8192-disp-ovl",
+ 	  .data = (void *)MTK_DISP_OVL },
++	{ .compatible = "mediatek,mt8195-disp-ovl",
++	  .data = (void *)MTK_DISP_OVL },
+ 	{ .compatible = "mediatek,mt8183-disp-ovl-2l",
+ 	  .data = (void *)MTK_DISP_OVL_2L },
+ 	{ .compatible = "mediatek,mt8192-disp-ovl-2l",
+
+-- 
+Git-146)
+
+
 
