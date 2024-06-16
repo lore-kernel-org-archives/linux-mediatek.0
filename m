@@ -4,55 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38528C27C6E
-	for <linux-mediatek@archiver.kernel.org>; Sun, 16 Jun 2024 08:30:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B29D3C27C77
+	for <linux-mediatek@archiver.kernel.org>; Sun, 16 Jun 2024 08:30:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
-	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
-	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=phEdSG58a4tDK8ZeE+T6D1O5j/o6gRBYcbFI/0TtVmY=; b=iDC3p+08WezXJys0u4mN4HTRyF
-	WwA/HSYSXm+OVaoMDr5sQlrwu2dntT71RgJDgxl8trM5D166TednMlF8pe8+TByEn8f6RWXD3I6r5
-	f7SbLu2K649GupOwztBuvozdjum89TBInXRblTJMBZrv8W7vvOiGIV/7fysos05rOeXqS3naYQrME
-	dRKqVpgGa9EbkBLAh5xkpIYC5bevqaOac5cXJtoLUmzloyDeOTmZhr0uCQEth9mraQvdiTnQrZM3e
-	GdQTGdvbHugDVM7/uZMLlr0JW8A7xNtRlaet8NNmYQeZVVyF2aMfuQXjDqxcI2jOJaOaCJKQxH8yv
-	WwP5OoAg==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=zj1wH+nXF0pnVlGOTTSkx2r9Df3CPzJ+6HiBU8VXhcc=; b=z+6QEdLXS3Lz2+7locCU7/nE1k
+	G0+X0NQlL+VosVbW2HV0l0SbuGXT0cS9JDWMYa0KkpI8y9LsLMkj/S3XehuNIVIvAcWLxA0UT/gI8
+	oRmYesblguW+2UNQRhzh5ptFV4F/i/qY9utxJ/OutbVmuEcx8IDv9EQWjiyspYM0GcMPbiPakgQ2N
+	xruOdx6OVFxYkY1vpeOZCOeV9Q3Ug+qsJ/dxQO6cJGq0+qFVUAdCRvRSThU3eU60G8SqNhb1ptEeY
+	hfu7BSBnIjQzK1m8LgumHrRoieUyjHY3zLZzKV0w6Zsg0bZRFs3ZUhovRoJgp9jakaDudoaGUyOBG
+	nHfBlw/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sIlHC-000000078I3-1rOu;
-	Sun, 16 Jun 2024 08:30:14 +0000
+	id 1sIlHD-000000078JC-3foY;
+	Sun, 16 Jun 2024 08:30:15 +0000
 Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sIlGJ-000000077jI-2pJS;
-	Sun, 16 Jun 2024 08:29:24 +0000
+	id 1sIlGJ-000000077jA-2p8P;
+	Sun, 16 Jun 2024 08:29:23 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 1EB3FCE0B5E;
-	Sun, 16 Jun 2024 08:29:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 5B60FC4AF67;
-	Sun, 16 Jun 2024 08:29:15 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id CD6DECE0B4C;
+	Sun, 16 Jun 2024 08:29:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id C19DEC2BBFC;
+	Sun, 16 Jun 2024 08:29:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1718526555;
-	bh=yne2/aaB3faVebbBmbsIqfhYaOPrauuP52omRC1Y+Io=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=Yjh/KDEXnvQ6hj6k0pjzGZb2zxFF6iQpClrwMsRyspUBlaDqBYhnfSEqyWHBzukiK
-	 TTseUNYDLNnYCCtoflbEYe56QB2ROeRkZemAiOvqbFy7/T9upcxGVrB7u9AYwNyARq
-	 eNoaT2IqfjTbtWyTGcoLRIESTYDIplL/BVzbJdYZt6BPbQtJEr/hEfDFr4iD4obnBp
-	 2nH8K1V/uYEI5hqQbQEYSwtOHoq7Q+Ae6yLxn4wu9EZ/aAJd9763B2Lv6IKM9hrlN1
-	 qAwxjOioSS9/gpdJwIzTacygIUhuyjxwk+Vgj49FjB5rKefdE9h35hjklFPUc+bbXt
-	 O2aMLriucEZ4A==
+	s=k20201202; t=1718526554;
+	bh=r10waYEMGAymNOh3QIyIV85JK6+0pN1kGYW3MVMVAVg=;
+	h=From:Subject:Date:To:Cc:Reply-To:From;
+	b=JHhknxq0z6n0TCJmxlOa3vL7BhNIBTyulXx/ftmfPiZRB2t9ESD1JFIGqeXwFqRus
+	 d85HzY1IviXo802XZvDksLD+yLAeo/t9NFF3sHkT5aVXdO43OhUsXgPcexfuxgXmNf
+	 2Gy1r8Xrt8gMJTCy7F6lp7sJ4QPqGZ0Q+HM/RtdPItIx5RYuOZ0sW/C/TVUB290Y9J
+	 eibkwV8tx8DVMjDLmXcs3h6VW/yYl+qWVtvq/4Hqcxv/6sy9O1BCFphtsDVqfUo0Uz
+	 9il9Vne3rxX4j396JmfUKg2fy8Kmmpa2WYfKtF4mk1Ifb/ET8ezXaTW7M7A6cBrI5Q
+	 aavpwTuyYGFNQ==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 54215C2BA16;
-	Sun, 16 Jun 2024 08:29:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B3EA9C27C6E;
+	Sun, 16 Jun 2024 08:29:14 +0000 (UTC)
 From: Hsiao Chien Sung via B4 Relay <devnull+shawn.sung.mediatek.com@kernel.org>
-Date: Sun, 16 Jun 2024 16:29:20 +0800
-Subject: [PATCH 10/13] drm/mediatek: Fix XRGB setting error in Mixer
+Subject: [PATCH 00/13] Fix the errors of MediaTek display driver found by
+ IGT
+Date: Sun, 16 Jun 2024 16:29:10 +0800
+Message-Id: <20240616-mediatek-drm-next-v1-0-7e8f9cf785d8@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240616-mediatek-drm-next-v1-10-7e8f9cf785d8@mediatek.com>
-References: <20240616-mediatek-drm-next-v1-0-7e8f9cf785d8@mediatek.com>
-In-Reply-To: <20240616-mediatek-drm-next-v1-0-7e8f9cf785d8@mediatek.com>
+X-B4-Tracking: v=1; b=H4sIAFaibmYC/x3MTQqAIBBA4avIrBtQ+4G6SrSwnGoILTQiEO+et
+ PwW7yWIFJgiDCJBoIcjn75AVQKW3fiNkG0xaKkb2akWHVk2Nx1og0NP743GdlLNddOvuobSXYF
+ Wfv/nOOX8ASDqfQljAAAA
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
  Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, 
  Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, 
@@ -64,19 +66,20 @@ Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  Hsiao Chien Sung <shawn.sung@mediatek.com>
 X-Mailer: b4 0.14.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1718526553; l=1741;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1718526553; l=1639;
  i=shawn.sung@mediatek.com; s=20240616; h=from:subject:message-id;
- bh=bei5ueFJptA1ljKKIIOgwM3dwE+BvlsqMVvH9AZqfZQ=;
- b=5S1/9HBuMooxzvxMIzc7wYMGIbaJRlwdOqUH/E47s5q/auxCzzN+JqjCk79W6ybMuaKvDqajc
- 34dWaT4vuAZDwLuVk1P4baXDUoWffmNZBOcKoSDPkt9vqj36IHsykr8
+ bh=r10waYEMGAymNOh3QIyIV85JK6+0pN1kGYW3MVMVAVg=;
+ b=tingLMnjsTKtbIyzbXebc3jnQb0ioiL1lqGVFCw4e0VaknTStBGtN+rZoSzvDVFJUrNJ/nvBW
+ txWOmGBNVd5AWc8Num1/KDshCYgGD3L1Kwcf8Ys7mnaoMpLEmfUC+Sz
 X-Developer-Key: i=shawn.sung@mediatek.com; a=ed25519;
  pk=lq1w8BuWDINX+4JHjGHhhbAU5ICP+cL9VCj7wn+cEDA=
 X-Endpoint-Received: by B4 Relay for shawn.sung@mediatek.com/20240616 with
  auth_id=172
 X-Original-From: Hsiao Chien Sung <shawn.sung@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240616_012920_244471_FC4F11EB 
-X-CRM114-Status: GOOD (  11.54  )
+X-CRM114-CacheID: sfid-20240616_012920_199988_74A20621 
+X-CRM114-Status: UNSURE (   7.19  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,52 +95,41 @@ Reply-To: shawn.sung@mediatek.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Hsiao Chien Sung <shawn.sung@mediatek.com>
+This series fixes the errors of MediaTek display driver found by IGT.
 
-Although the alpha channel in XRGB formats can be ignored, ALPHA_CON
-must be configured accordingly when using XRGB formats or it will still
-affects CRC generation.
-
-Fixes: d886c0009bd0 ("drm/mediatek: Add ETHDR support for MT8195")
 Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_ethdr.c | 12 ++++++++++--
- 1 file changed, 10 insertions(+), 2 deletions(-)
+Hsiao Chien Sung (13):
+      soc: mediatek: Disable 9-bit alpha in ETHDR
+      drm/mediatek: Add OVL compatible name for MT8195
+      drm/mediatek: Add missing plane settings when async update
+      drm/mediatek: Add DRM_MODE_ROTATE_0 to rotation property
+      drm/mediatek: Set DRM mode configs accordingly
+      drm/mediatek: Turn off the layers with zero width or height
+      drm/mediatek: Support more 10bit formats in OVL
+      drm/mediatek: Support RGBA8888 and RGBX8888 in OVL on MT8195
+      drm/mediatek: Fix XRGB setting error in OVL
+      drm/mediatek: Fix XRGB setting error in Mixer
+      drm/mediatek: Add new color format MACROs in OVL
+      drm/mediatek: Support DRM plane alpha in OVL
+      drm/mediatek: Support DRM plane alpha in Mixer
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_ethdr.c b/drivers/gpu/drm/mediatek/mtk_ethdr.c
-index b5484a286060..a302b12aae3f 100644
---- a/drivers/gpu/drm/mediatek/mtk_ethdr.c
-+++ b/drivers/gpu/drm/mediatek/mtk_ethdr.c
-@@ -153,6 +153,7 @@ void mtk_ethdr_layer_config(struct device *dev, unsigned int idx,
- 	unsigned int offset = (pending->x & 1) << 31 | pending->y << 16 | pending->x;
- 	unsigned int align_width = ALIGN_DOWN(pending->width, 2);
- 	unsigned int alpha_con = 0;
-+	bool replace_src_a = false;
- 
- 	dev_dbg(dev, "%s+ idx:%d", __func__, idx);
- 
-@@ -172,8 +173,15 @@ void mtk_ethdr_layer_config(struct device *dev, unsigned int idx,
- 	if (state->base.fb && state->base.fb->format->has_alpha)
- 		alpha_con = MIXER_ALPHA_AEN | MIXER_ALPHA;
- 
--	mtk_mmsys_mixer_in_config(priv->mmsys_dev, idx + 1, alpha_con ? false : true,
--				  MIXER_ALPHA,
-+	if (state->base.fb && !state->base.fb->format->has_alpha) {
-+		/*
-+		 * Mixer doesn't support CONST_BLD mode,
-+		 * use a trick to make the output equivalent
-+		 */
-+		replace_src_a = true;
-+	}
-+
-+	mtk_mmsys_mixer_in_config(priv->mmsys_dev, idx + 1, replace_src_a, MIXER_ALPHA,
- 				  pending->x & 1 ? MIXER_INX_MODE_EVEN_EXTEND :
- 				  MIXER_INX_MODE_BYPASS, align_width / 2 - 1, cmdq_pkt);
- 
+ drivers/gpu/drm/mediatek/mtk_ddp_comp.h         |  6 +-
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c         | 85 +++++++++++++++++--------
+ drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c |  2 +-
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c          | 24 +++++++
+ drivers/gpu/drm/mediatek/mtk_drm_drv.h          |  4 ++
+ drivers/gpu/drm/mediatek/mtk_ethdr.c            | 26 ++++++--
+ drivers/gpu/drm/mediatek/mtk_plane.c            |  4 +-
+ drivers/soc/mediatek/mtk-mmsys.c                |  1 +
+ 8 files changed, 118 insertions(+), 34 deletions(-)
+---
+base-commit: 62fe4b067581d480e863191305f108bebffbc0e9
+change-id: 20240615-mediatek-drm-next-ad601b349f23
 
+Best regards,
 -- 
-Git-146)
+Hsiao Chien Sung <shawn.sung@mediatek.com>
 
 
 
