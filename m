@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B02DCC2BA15
-	for <linux-mediatek@archiver.kernel.org>; Sun, 16 Jun 2024 08:29:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDF5CC2BA16
+	for <linux-mediatek@archiver.kernel.org>; Sun, 16 Jun 2024 08:29:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
 	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
 	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=h3iVYmkTR3f9xK/fYUNKcyDiTI4eT1NCUpg2QLfCp6c=; b=vntvB7y07sv+dnruaQ8VgnmhgB
-	tjnjP6u+cnPa6udJfOglpI9wX25REhqXLNn01dkQltcSOzVIgz3qn/4HXUKf6IskZLrk+Jk6jaxQ/
-	En9Lig5EoHn1SK5GSpMsRUn2A4hj9xQa+mu6ixdzkL+zI6q83yb6Ck0VXGAke1EuIegTIbi9JNWYS
-	J/AsIMiOJ2ag9RKwR4dbP3P1JBsoLxMMi8avbHW+QY0vvvxaXL2tG3Wehf8+nWStEQ1xatQ5y4P1+
-	+Ppl9J4w/LXtVjOESzUSGDR+x9KOxQ2ddsAQE5JV/RgqDKxCNiFwc9vCFW5MRS7ScmvxdN7jr+9UF
-	sBtLqLEQ==;
+	bh=WALIioA/jOhgym+S/0yLkY12+PP1RpjmxCEzkQ3KxTw=; b=GHJmd5PZ6vuhntX0VaMGSOVIHD
+	yBq+ieJfd4cYdI8Aw8eayIMyfb3qZHMqU74wuy2eKBybHbIrCY08JZ2UBDF0tz2STkOU9WL/nHDt+
+	YFwKie/vCgrDIydF0aq00pCwbzDA/xNZRmfdaVrpDcgYIJVHC/ZKLO1JvbVVL1+KDe7QQEBdzA9HN
+	gaZwy4MdosHiM+57B04nZKG3W1+tf3ikjZZ4vRrpj2AtQqFERwbwdGg1Ndm2eB10XzECAtgz+T8Mm
+	Q534WVuXO2fxXk1irxD6l3p21+pjl3st7iRwHJ3iFNKIsS7ZsgfnT/ysPKuenkznGp+r4yRA+K+uQ
+	d9nnp5xw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sIlGU-000000077rx-48x6;
-	Sun, 16 Jun 2024 08:29:30 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1sIlGW-000000077tS-3Twq;
+	Sun, 16 Jun 2024 08:29:32 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sIlGH-000000077iP-16FI;
+	id 1sIlGH-000000077iT-45M9;
 	Sun, 16 Jun 2024 08:29:21 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id C2DD760C67;
+	by dfw.source.kernel.org (Postfix) with ESMTP id EFE4360C69;
 	Sun, 16 Jun 2024 08:29:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 0643DC4AF50;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 243E5C4AF54;
 	Sun, 16 Jun 2024 08:29:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1718526555;
-	bh=ooFwSoVJ9N3sXdcV4iug2DcGs+ehRHDEPEzbrAfyAEI=;
+	bh=u1Ec755SGAs2DOyCz8ZDHhB8uInkVMbjC8CrKq6pMlI=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=KpS3YKDP1ahe//Us3V7N1GqiG1otEZ4R6peB5lsLGldYx9UrZ+ykCyGuGoJ9rDU71
-	 Gg+QXFjoENRLVyc1ckyOdFT52tyvx7YFZjtEQKCyYpj0asi0tSCNk2t4kFJBYbgp+1
-	 13aS5FZ9iRdEUrYU6go5iSRMKrGd+DFTy/wyZr00mHeaFuU3c35cRUik/wQI5IlqgC
-	 1lzr8hWPVuFWHgNK1vG1vPIrV7Vw2XGpt5LFFvFZfXCg+GrvUwkuw23ocDml8qYEpr
-	 GuXR+VrrALUmgOZlUZrR6RuRfdaVAvra24/uaoyN4OkYRnHYFs2qDp92Rh0sfx3IVe
-	 ekDOJCgVlVRFA==
+	b=XTPSV1vhM1r24dixjMBsDQd+QjRgGkbSI22NSxdwVAoUS6dcjK01pdH17a7RT4fuk
+	 CAlFAi2fLJsrHYSeswFZzxFQaVzA296N6wqiwsZozWD9EmYCh04fmMwwp7MUr9BQ4P
+	 lFZR8lW8vICibl3caEUErusa59rCkQE/W1zEXRh/TcogplwSI0mnTDRudS6roddF2B
+	 WSDt29mizcplT+x86qaW2l9Is+v8sAhj96g7zgx4M94hTx8rSYQMHeeBnk4HomCQ3W
+	 Uo4vwSKg7IcefJ1xJIrirJOdEfTpoqumdNswleeq5FShCtFAzVe+InTm+mzwdiodzr
+	 DoLCCAAn5+HGA==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E5BFBC27C77;
-	Sun, 16 Jun 2024 08:29:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1A451C2BA16;
+	Sun, 16 Jun 2024 08:29:15 +0000 (UTC)
 From: Hsiao Chien Sung via B4 Relay <devnull+shawn.sung.mediatek.com@kernel.org>
-Date: Sun, 16 Jun 2024 16:29:13 +0800
-Subject: [PATCH 03/13] drm/mediatek: Add missing plane settings when async
- update
+Date: Sun, 16 Jun 2024 16:29:16 +0800
+Subject: [PATCH 06/13] drm/mediatek: Turn off the layers with zero width or
+ height
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240616-mediatek-drm-next-v1-3-7e8f9cf785d8@mediatek.com>
+Message-Id: <20240616-mediatek-drm-next-v1-6-7e8f9cf785d8@mediatek.com>
 References: <20240616-mediatek-drm-next-v1-0-7e8f9cf785d8@mediatek.com>
 In-Reply-To: <20240616-mediatek-drm-next-v1-0-7e8f9cf785d8@mediatek.com>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
@@ -65,20 +65,19 @@ Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  Hsiao Chien Sung <shawn.sung@mediatek.com>
 X-Mailer: b4 0.14.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1718526553; l=1082;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1718526553; l=2110;
  i=shawn.sung@mediatek.com; s=20240616; h=from:subject:message-id;
- bh=ADiZlSVJT5s2sH18XbsNK2Wsb8sGtAwURKhvCjHjtzc=;
- b=FVT/WCynaSSn97vJO73+EtVbiFHnpQke6j5kOKH+9CSpaY+pf3TzcrWiqOmEJYs+/GibTLH26
- PI8uVoDJsH9DfpE3reZyu3mXz7V5UXp64qRrbfhMf+MYlS5Y6DFcOsc
+ bh=dqX2wm5YHxb4PcQ3tQ95rP0OPaABSh/HZP+kCxZYb/s=;
+ b=rBv9L1sZHl5v2QITha1QsonEGs+CHt/5LjEOmGGhA4zq4fd/T5Fg2s86fr6o3Z8CqfcowF5og
+ L1lA6ShbPNCAVdkfnsbWbj5wJKWF+2uVdMbzAyhEAeIYjg5FRruVtj7
 X-Developer-Key: i=shawn.sung@mediatek.com; a=ed25519;
  pk=lq1w8BuWDINX+4JHjGHhhbAU5ICP+cL9VCj7wn+cEDA=
 X-Endpoint-Received: by B4 Relay for shawn.sung@mediatek.com/20240616 with
  auth_id=172
 X-Original-From: Hsiao Chien Sung <shawn.sung@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240616_012917_639110_F1795021 
-X-CRM114-Status: UNSURE (   8.50  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240616_012918_285374_95114A08 
+X-CRM114-Status: GOOD (  11.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,31 +95,51 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Hsiao Chien Sung <shawn.sung@mediatek.com>
 
-Fix an issue that plane coordinate was not saved when
-calling async update.
+We found that IGT (Intel GPU Tool) will try to commit layers with
+zero width or height and lead to undefined behaviors in hardware.
+Disable the layers in such a situation.
 
-Fixes: 920fffcc8912 ("drm/mediatek: update cursors by using async atomic update")
-
+Fixes: 453c3364632a ("drm/mediatek: Add ovl_adaptor support for MT8195")
+Fixes: d886c0009bd0 ("drm/mediatek: Add ETHDR support for MT8195")
 Reviewed-by: CK Hu <ck.hu@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_plane.c | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c | 2 +-
+ drivers/gpu/drm/mediatek/mtk_ethdr.c            | 7 ++++++-
+ 2 files changed, 7 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_plane.c b/drivers/gpu/drm/mediatek/mtk_plane.c
-index 4625deb21d40..a74b26d35985 100644
---- a/drivers/gpu/drm/mediatek/mtk_plane.c
-+++ b/drivers/gpu/drm/mediatek/mtk_plane.c
-@@ -227,6 +227,8 @@ static void mtk_plane_atomic_async_update(struct drm_plane *plane,
- 	plane->state->src_y = new_state->src_y;
- 	plane->state->src_h = new_state->src_h;
- 	plane->state->src_w = new_state->src_w;
-+	plane->state->dst.x1 = new_state->dst.x1;
-+	plane->state->dst.y1 = new_state->dst.y1;
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
+index 02dd7dcdfedb..2b62d6475918 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
+@@ -158,7 +158,7 @@ void mtk_ovl_adaptor_layer_config(struct device *dev, unsigned int idx,
+ 	merge = ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_MERGE0 + idx];
+ 	ethdr = ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_ETHDR0];
  
- 	mtk_plane_update_new_state(new_state, new_plane_state);
- 	swap(plane->state->fb, new_state->fb);
+-	if (!pending->enable) {
++	if (!pending->enable || !pending->width || !pending->height) {
+ 		mtk_merge_stop_cmdq(merge, cmdq_pkt);
+ 		mtk_mdp_rdma_stop(rdma_l, cmdq_pkt);
+ 		mtk_mdp_rdma_stop(rdma_r, cmdq_pkt);
+diff --git a/drivers/gpu/drm/mediatek/mtk_ethdr.c b/drivers/gpu/drm/mediatek/mtk_ethdr.c
+index d7d16482c947..b5484a286060 100644
+--- a/drivers/gpu/drm/mediatek/mtk_ethdr.c
++++ b/drivers/gpu/drm/mediatek/mtk_ethdr.c
+@@ -159,7 +159,12 @@ void mtk_ethdr_layer_config(struct device *dev, unsigned int idx,
+ 	if (idx >= 4)
+ 		return;
+ 
+-	if (!pending->enable) {
++	if (!pending->enable || !pending->width || !pending->height) {
++		/*
++		 * instead of disabling layer with MIX_SRC_CON directly
++		 * set the size to 0 to avoid screen shift due to mixer
++		 * mode switch (hardware behavior)
++		 */
+ 		mtk_ddp_write(cmdq_pkt, 0, &mixer->cmdq_base, mixer->regs, MIX_L_SRC_SIZE(idx));
+ 		return;
+ 	}
 
 -- 
 Git-146)
