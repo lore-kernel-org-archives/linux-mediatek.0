@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E534C2BA15
-	for <linux-mediatek@archiver.kernel.org>; Sun, 16 Jun 2024 13:20:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D8D9C2BA15
+	for <linux-mediatek@archiver.kernel.org>; Sun, 16 Jun 2024 13:20:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Zrd8K+qyBfVetpIrLm6qlKeNQKmHjz4ob0FFgn8jaII=; b=R3nQuqfp2QnmVOWVIV0sKA68UY
-	s2bHNXupxREImc9geT2qymt1tUjWraHmlKhOAjI4y1SUO2UVkvnnmq/V2LsrKEz3Ykw3aKo3MD1bt
-	4cH1MBoJkNn9+8BXgMano81enPye9fnn3ovMTp8nLNU/aFb66re9eSIi9Q2l7pkSO7iDr2PeXl72J
-	oh/A2iapCtUbEaR0BL9HWAEAukKDI2Jyy+aKw3cxiGj0kiKkp0YkA8n+WQnIz7nDQdUBMk64+ccro
-	b/stZM/LDnhQ9gPdYACOeUm+pIYvE4C0fiYZwHyP/EY1j54FeoY/1VLUtJGpBgAodgMu26LRZoPbM
-	PktlyGTg==;
+	bh=59XlO8N85CHKMZTE14dutfLqTOocIO6QaYNJIqLDR0E=; b=s2Ux+KCZvHtPYWGccdjcvOl8SZ
+	dzn4Etx6x7cvggvamTPaNJhMPze/6wAbbvKUvXOGGbVSCXB4X36/DTTgTd8peLRmsMBgku/wnWw6g
+	nOVZbxL9FIAxYV22fWSjDjhx9ZJoC0IBkXh44VVORCLLd1PQykevBJClNdRCYZ7YaRdNs5hOs6WoT
+	7vd/hNM2XoH+uwPs4ROhPrDodQiV+j6i2zGbEOXokU+RXM7B0Wu+l4d9MYKS/AFUbeUktHbWdt86S
+	wfjOTsNdDqRanKWctJcdvl7MjB87rmJWWASzx+KmdVwPaxf3rTmleesYidyo3K25nn9USb41ymjO5
+	wsS+49mQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sIpns-00000007aWz-0D4q;
-	Sun, 16 Jun 2024 13:20:16 +0000
-Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
+	id 1sIpoG-00000007akz-0AJM;
+	Sun, 16 Jun 2024 13:20:40 +0000
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sIpnM-00000007aBF-1bjM
+	id 1sIpnP-00000007aD8-2tpz
 	for linux-mediatek@lists.infradead.org;
-	Sun, 16 Jun 2024 13:19:46 +0000
-Received: by mail-ed1-x531.google.com with SMTP id 4fb4d7f45d1cf-57c75464e77so4223460a12.0
-        for <linux-mediatek@lists.infradead.org>; Sun, 16 Jun 2024 06:19:43 -0700 (PDT)
+	Sun, 16 Jun 2024 13:19:49 +0000
+Received: by mail-ed1-x52b.google.com with SMTP id 4fb4d7f45d1cf-57cad4475e0so6424562a12.1
+        for <linux-mediatek@lists.infradead.org>; Sun, 16 Jun 2024 06:19:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1718543982; x=1719148782; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1718543986; x=1719148786; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=Zrd8K+qyBfVetpIrLm6qlKeNQKmHjz4ob0FFgn8jaII=;
-        b=ogtNrhuLOgj2XoKjDLkGLXTc4MXngGgFBOqfdyHlWb926Ljdu7MBgrpObWTOIgh7yM
-         rbeCrTIv4UkS5oguzISQKef+oEFERrJsvfxuHCUU5+/3nEgW/WHKIp2wLc1cwNae0TJn
-         kMcPd9fqJvmPijQArJ3plEd3emc9npaVa4NuWZj0/YoaL5TnntcPtfUucoT6jg72WMeM
-         Ys8eWTWXfGQFaTY8n4iUGEK2s3xX7w5KkwRiNmZn6xnLky80Rq1femHm64RHKMdqKSAC
-         nRazcMjpL37p9PomYtSiq+sjgAbHwflOAeIGc4Rx6zBHTb2+apYSM+KNnPvCCaOU6wJt
-         IyZg==
+        bh=59XlO8N85CHKMZTE14dutfLqTOocIO6QaYNJIqLDR0E=;
+        b=deAiFh2UUWjXnjAHcx5RpDIxGjt0Lq1OArnatM7FTQXdOKKW3L4c5otsVC0C21fmOD
+         +yRpQP1IO3b2rSOV7Jicy8EtiZZ9h+Z9ELyUsyM80Qn73P/qVpOPSPC1kmJBxiLqddf1
+         rT01OQOZhkSqouwJ6cBGUw8LjDyJTk7gpYgk+Zg/fu24sAfOFvnJkFpLrF2xsZNspNAT
+         +7To2YIXRsAravYbTEsj+xTOjVuFUVnIRzKkgIxqAukW4/jVe0sKOu5+Rlq6xj+g+ovq
+         KOX2TsDEVE9aZQXajVIjgIzUlL+txJzJFsG2SlESY7oSLPHdHRqowC1lgFVGut+4jtzs
+         w7Jg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1718543982; x=1719148782;
+        d=1e100.net; s=20230601; t=1718543986; x=1719148786;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=Zrd8K+qyBfVetpIrLm6qlKeNQKmHjz4ob0FFgn8jaII=;
-        b=kBQpIs/pJFR44KqUsUI8SC9OWJ0AOWSjghidl1L96GNAF365fKWI4K0BfbQ4aSYs3j
-         a56fky1oZw+GnT5SbkIjbg3j7xHy9scWpd8aUaR+1q2HitgvLYYtdVuCXCI9HcZejQBX
-         OFmGwqeOxcj2xp1O3HMIbvrlIVX8pa/cfaUY9KWC5l4s754l8hYpFaPjyxbwg1TbsGnx
-         11m6LG6mr5vCX/ADBuNWgoriDo17suoYlfoa/vodUKuBl8Mz/3eRWZESSqU8dQT3XqEO
-         F2S29QhPRXNwE5wKpI/pkau8idc9+VCOMPcDGik9NI3bl673Q0PH55s666wE381Nx/ET
-         oz1g==
-X-Forwarded-Encrypted: i=1; AJvYcCXbqBlV3CFtMcyX6n9BZTdsx5Iv2Siwnp9ijus6t3ou3XqOk7p58MP+BjfX4CzW0agiddYA1o66vK/5ALv1S42YmqbVnpL4DZlDLdVN9E1Ih0c8
-X-Gm-Message-State: AOJu0YxlJyIbPrLVFG9Ljqv4THaf0aNdk9lBB/pKE88cWhh23CN4UA9q
-	Bp/ZMhentexQuWa51Hd9IjFRCXp4lBSwBP7w3QEPsVMNOriZ/nEdUJxqt42DTmw=
-X-Google-Smtp-Source: AGHT+IG1AznA+Lz8oKbRyPDepmptaEHOWEWQisNJz6RK9g8E/VHYfQMB1p5/XhswdG1VwZfzoBzPbA==
-X-Received: by 2002:a50:d742:0:b0:57c:75a1:2a14 with SMTP id 4fb4d7f45d1cf-57cbd681bbamr5002360a12.12.1718543982620;
-        Sun, 16 Jun 2024 06:19:42 -0700 (PDT)
+        bh=59XlO8N85CHKMZTE14dutfLqTOocIO6QaYNJIqLDR0E=;
+        b=r3No3J7/9+puhHM4SJzsew2/Zsv7zoSx5tuVlcdouFHgxuMlrWJdJJiXMj4aNl82nc
+         EbvvqR+mA8Tyf8F3MSRAdsXRaEZKE0+yn+HrmBuiADiyDlZLLdXAYUUMhJOAaysJlnmR
+         uhS4WJ26Mog9qdTXRL37MdaIjCTHCY+HNX8Ia5AzBoJn1jzx7/+xieB3Gk46B8sYrjQm
+         OUXrmJsekViRbSacj1DWHoFCpqi5XxLh76PtD/hXgjQJEkJiUqE6P/S6t+3BVbQsi7mQ
+         oCjF6C+1IXmlWRMePVUFL0irqpHS88LBDNBinKmRF8R4SEyg1P7BZ+Lhsz9M/9LVhjWe
+         El+Q==
+X-Forwarded-Encrypted: i=1; AJvYcCXK2k96rLhOmHlBc71DBUz7BgtIaPf7BBzyRsNdZJbFGKsqGs3WVOHrsd9zFYbtL05ONddMaaLQUoT4gf4mWECWT9vAT7qhzCPbrbgyS7wew53A
+X-Gm-Message-State: AOJu0Yxg8pI65G+vOsk7BP6ygoZF+e6rdKq6wj4Q5mP/U1LXzalfczS4
+	i9SIyY0wbE3asWzLYfX89+hWD1XvOp/ppH6QJ/AUPAdLV/ITjOkWqVgN1WSPh7haWzEXTJlLhU7
+	I
+X-Google-Smtp-Source: AGHT+IH9u76WeDG3eOiV7luLeppMMIooUwFkUFTuoY0slKOmXnYuhfgrO3dbY2fhWktwljJZ7lGNaw==
+X-Received: by 2002:a50:bac2:0:b0:57c:70b4:7ac with SMTP id 4fb4d7f45d1cf-57cbd8f1751mr5555044a12.15.1718543986242;
+        Sun, 16 Jun 2024 06:19:46 -0700 (PDT)
 Received: from [127.0.1.1] ([78.10.207.147])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-57cb7438815sm5099603a12.80.2024.06.16.06.19.41
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-57cb7438815sm5099603a12.80.2024.06.16.06.19.44
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 16 Jun 2024 06:19:41 -0700 (PDT)
+        Sun, 16 Jun 2024 06:19:45 -0700 (PDT)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Date: Sun, 16 Jun 2024 15:19:25 +0200
-Subject: [PATCH v2 5/7] dt-bindings: soc: ti: am654-serdes-ctrl: Move to
- dedicated schema
+Date: Sun, 16 Jun 2024 15:19:27 +0200
+Subject: [PATCH v2 7/7] dt-bindings: mfd: syscon: Add APM poweroff mailbox
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240616-dt-bindings-mfd-syscon-split-v2-5-571b5850174a@linaro.org>
+Message-Id: <20240616-dt-bindings-mfd-syscon-split-v2-7-571b5850174a@linaro.org>
 References: <20240616-dt-bindings-mfd-syscon-split-v2-0-571b5850174a@linaro.org>
 In-Reply-To: <20240616-dt-bindings-mfd-syscon-split-v2-0-571b5850174a@linaro.org>
 To: Orson Zhai <orsonzhai@gmail.com>, 
@@ -91,26 +91,27 @@ Cc: Jiaxun Yang <jiaxun.yang@flygoat.com>, devicetree@vger.kernel.org,
  linux-mediatek@lists.infradead.org, 
  Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2452;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1201;
  i=krzysztof.kozlowski@linaro.org; h=from:subject:message-id;
- bh=dA2BvNuDdbIFKkStpUlyQC5zc7XFrh1545e/AvgMWBA=;
- b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBmbuZhdw2OJqKWPIez7Bw4c+bpBIlOWqahFa6N3
- vt1eSNm7wCJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZm7mYQAKCRDBN2bmhouD
- 17EoD/94eOpZAXKoTf2ia7EdDFmk+pBWWwdfyOpIq7Ksp9V4d/pv7Di+qlNkb0wzLNuUQaEy9Jf
- 8Wxyaw9fXUuFVQMzoWdzGo+Og3ShTXhXZrLO1SGQHNKZzJnZM3ddfNRxLXkUBDKJw3d1S5z3kDB
- UcyIPeE+/O1JW3+GLJzjUyMK54R9oYMg5khXUqHfVAusjzWlw5CvND4FIy9zH02FxN9HEOVCGSR
- MlleH3QxqZn9eI4HwwfwiO3Wqpf6PKy63HbglbvAt6LvrBGZAjmuIRRJgbz3AMo7dq6xDMj63e+
- CarQdQv6dn+FjXjM9aqLJymAqTmNKroi/eX4qBQ2Mn0t/t+9n+FO9qjnFp+0r/QBffYNQqmIAKH
- JnWWakdxz6UEltnAqADc0XFQd4Hm6RSM+Mq9WsrVIcTRGMW7+nEAMQVonhxKEhT4ydv7Oyye0bm
- cvNU4CtmWlZuM3onCm0q61ypX3115EnlOVJMIv1UfCx6pfL1RPxP1fZjTX8RcSR14Fha0ZaVlSY
- IiYAYMPa8BTrJfUOOYGVGsfEvu7kfJR04H9w5JoAwIQudTPsNbW6hOS2/6etb2gVcy9bBWb3np3
- nzN0QIx9OsjmU7oM56jv4UUqp1/My72/sbBtb9FqVv+sZHre/B+VF1alm0BlhuC0UBS5b3nUF/R
- +UoL/+AQ81t75cw==
+ bh=lJ28Y3M24JoUrkT0kfRU9mVaVheUptQt841EFO3wEWg=;
+ b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBmbuZj4ZbHwKVi5k4X3fOKFTh6iG71Wc9FEkgu9
+ BVwcMkc0GWJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZm7mYwAKCRDBN2bmhouD
+ 16UkD/9aWHedSRSAu/MQBnkJNIZDzJAn/m8m53L7ouUBr4rLJafFHjvUX5yVm6vLUVtB5GQLg3d
+ dn71OMvDG03cQU+3OFAY62l9RxNsWeerDto6k9CPN8HkMubrdZDM8VTWHFuF7Let01WJxUSoLJa
+ YZxW2eIYh8K95Ob00fUJ5OpEz+aEsQOvgGggWETwYKVGiS/8gisoKurr/6UyGj8JxfNVeN3BB3s
+ z/hS3cRlZSlFaL9srRvkDpJyuiOH2WDXmnTNFwUJrdcMFntXSRk74KAJIN3ag1kgrHFBh3mSp1e
+ kKDyacV24jcCEl6Fxu5Ew+75NayxeLtu1z1fmpoa/AogjP/WmB0QhoqTc7K+LLtn5bxJDovSIxa
+ sUMmZXE0ZRchoUchtVnQR0m+qDgb165ljTWq/CrMTTRCjmEbzOrEYpDuMPylPwom226N7HHfCog
+ KWXYnGSEqF3URWvWDI+gL4y0Kki/AT0oKfMII4g+29hiupI18/gGVAKRv9vGUEuYFhFxP9Y/aYs
+ YCqUvaSABgbpvS3y3d3t25Yq74uLftYhdSPJghBkoyyG9Oa2pSGhfNsNhTHlx/A5Q2KjGPykuP8
+ B3Avj9TwacD7hDPnW2z1nJLTa+d12BpX1iVPlLVw6DJPPTrawfDID9A2UgYlcsGRQnE4yyAGmyb
+ jZdxnLBn7yOaevA==
 X-Developer-Key: i=krzysztof.kozlowski@linaro.org; a=openpgp;
  fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240616_061944_446265_4BEA0740 
-X-CRM114-Status: GOOD (  14.33  )
+X-CRM114-CacheID: sfid-20240616_061947_860191_0ADE4187 
+X-CRM114-Status: UNSURE (   7.78  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,81 +126,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-ti,am654-serdes-ctrl is not a simple syscon device - it has children -
-thus it should be fully documented in its own binding.
+Add compatible for an already used syscon poweroff/mailbox block in APM.
 
 Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
-
-Context might depend on patch in Lee's MFD tree:
-https://lore.kernel.org/all/171828959006.2643902.8308227314531523435.b4-ty@kernel.org/
-and also further patches here depend on this one.
----
- Documentation/devicetree/bindings/mfd/syscon.yaml  |  1 -
- .../bindings/soc/ti/ti,am654-serdes-ctrl.yaml      | 42 ++++++++++++++++++++++
- 2 files changed, 42 insertions(+), 1 deletion(-)
+ Documentation/devicetree/bindings/mfd/syscon.yaml | 4 ++++
+ 1 file changed, 4 insertions(+)
 
 diff --git a/Documentation/devicetree/bindings/mfd/syscon.yaml b/Documentation/devicetree/bindings/mfd/syscon.yaml
-index abd3debe5faf..d6fa58c9e4de 100644
+index d4e9533cf3fe..70e3a4465b4f 100644
 --- a/Documentation/devicetree/bindings/mfd/syscon.yaml
 +++ b/Documentation/devicetree/bindings/mfd/syscon.yaml
-@@ -117,7 +117,6 @@ properties:
-               - ti,am625-dss-oldi-io-ctrl
-               - ti,am62p-cpsw-mac-efuse
-               - ti,am654-dss-oldi-io-ctrl
--              - ti,am654-serdes-ctrl
-               - ti,j784s4-pcie-ctrl
-               - ti,keystone-pllctrl
- 
-diff --git a/Documentation/devicetree/bindings/soc/ti/ti,am654-serdes-ctrl.yaml b/Documentation/devicetree/bindings/soc/ti/ti,am654-serdes-ctrl.yaml
-new file mode 100644
-index 000000000000..a10a3b89ae05
---- /dev/null
-+++ b/Documentation/devicetree/bindings/soc/ti/ti,am654-serdes-ctrl.yaml
-@@ -0,0 +1,42 @@
-+# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/soc/ti/ti,am654-serdes-ctrl.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Texas Instruments AM654 Serdes Control Syscon
-+
-+maintainers:
-+  - Nishanth Menon <nm@ti.com>
-+
-+properties:
-+  compatible:
-+    items:
-+      - const: ti,am654-serdes-ctrl
-+      - const: syscon
-+
-+  reg:
-+    maxItems: 1
-+
-+  mux-controller:
-+    $ref: /schemas/mux/reg-mux.yaml#
-+
-+required:
-+  - compatible
-+  - reg
-+  - mux-controller
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    clock@4080 {
-+        compatible = "ti,am654-serdes-ctrl", "syscon";
-+        reg = <0x4080 0x4>;
-+
-+        mux-controller {
-+            compatible = "mmio-mux";
-+            #mux-control-cells = <1>;
-+            mux-reg-masks = <0x0 0x3>; /* lane select */
-+        };
-+    };
+@@ -41,6 +41,8 @@ select:
+           - amlogic,meson8b-analog-top
+           - amlogic,meson8-pmu
+           - amlogic,meson8b-pmu
++          - apm,merlin-poweroff-mailbox
++          - apm,mustang-poweroff-mailbox
+           - apm,xgene-csw
+           - apm,xgene-efuse
+           - apm,xgene-mcb
+@@ -133,6 +135,8 @@ properties:
+           - amlogic,meson8b-analog-top
+           - amlogic,meson8-pmu
+           - amlogic,meson8b-pmu
++          - apm,merlin-poweroff-mailbox
++          - apm,mustang-poweroff-mailbox
+           - apm,xgene-csw
+           - apm,xgene-efuse
+           - apm,xgene-mcb
 
 -- 
 2.43.0
