@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62BCAC27C79
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jun 2024 17:34:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 274FFC27C79
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jun 2024 17:35:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FcyoyUBj6t503ACN07VAgM92dVzlW4Vi2KPWoHf0jrk=; b=ZfaQybYWSwfJe9DfV5Jumkw8j5
-	vRSe5cef9sjN8C8z6GJtatB/r976+5gUCa7IUoknlpX0vjhqR0YSXP5efFLA0lEESH2mD6rIzGKxW
-	QP9bHKjX7I+uLAJztjfZd3K18Cjj6Shk7YISEP2u08LRMW6R4NGLNFSoE5Tu44uLgd783mjfbMhsO
-	y1uIi3PqXHBP29sZrO4icBebQ95wFTVy+YkFZe8PBIATtUS+U4XuNrxIbviHZeEcnQZNjqwLfCMGP
-	IqrXH5Vddx95wu6NaFvkZtpmZx2hOPmKRWuMJlTrKVhvbJSXW90Nc7N3da96OSzjq83vsbdxYT205
-	jBSG6JgA==;
+	bh=lYaM0laXOt5l3lyKjuT0sp+NAD83NQ/dnLMavgSV8Jo=; b=xB+9RhvUIek4EyZT1CO51xG72K
+	8bYlbJgbeH2VEvIdj1ytNtGLx0lFytdqbGhOQW3/m91vZPdzEojPfG9j+UbDFiyOcZb8cS5hIWCYr
+	giKuNQ5v3Xf/TJKBfkZP1FNRga7Gs8gYgunyKZU2hEm98k/PudzMdQteZp6rHB6g1KZynn/c3L1nK
+	NwpGMeb+l1A2y35y0qSCNdusCWCaBglz/d1cjfUlKV5Fki4xW5ibMB/s1g8mn16qqxMX8I5fbCvMD
+	bohIqU+fJOjbbUgqBnX247MD7YDLY8+xpi5ZCmv3fuVrXbAFMpwdGDOSEHbAJz/WjZfpi5t64UU8e
+	mVeOjE5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJGFL-0000000Bxpx-2v7o;
-	Mon, 17 Jun 2024 17:34:23 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1sJGGR-0000000By5o-3TtU;
+	Mon, 17 Jun 2024 17:35:31 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJGFA-0000000Bxko-3D4s;
-	Mon, 17 Jun 2024 17:34:20 +0000
+	id 1sJGGJ-0000000By4M-2lEu;
+	Mon, 17 Jun 2024 17:35:29 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 1421760EB8;
-	Mon, 17 Jun 2024 17:34:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BF8FDC2BD10;
-	Mon, 17 Jun 2024 17:33:56 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id EF91B61361;
+	Mon, 17 Jun 2024 17:35:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0645FC2BD10;
+	Mon, 17 Jun 2024 17:35:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1718645651;
-	bh=NRv3U2R3LJxqX4F/jGBJXWK96Mq2JY0f+Kl4Ugjxk8o=;
+	s=k20201202; t=1718645722;
+	bh=N+D9s0iQm1QFAZH8d1oDVC79oWtkLdBqUBlcc8U0MT4=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Zf46dFkNX+pSGPdK7wzf3wkuUXYGLO4wUR9ToHFlk51Har187NKu2//uchJA2DZ4y
-	 hlZ97xlpk5griBxFrMUdP7XxcOugdCmg9XdDNwmBNUKo7t+0rRxu3wYzZ0PrY7fPV8
-	 fgwbiqoML/ZMghk+QvuOdO8yOUFHXSOTH03ewSkDncGSERVBBFsNLVtmEjpdciHDTo
-	 gE2NpkAWzDA9tqBZ73i81iW1nzMjFDS5+EKBeOlq8SSjZbqAezUFzpF8A60qdsGuRF
-	 RyDNtKtblYUvhp1lWKIjAKQRkYf1nhstYT0d/UBpQVueD7Y63zatDFdCxhmV9KTr3s
-	 ol47N7jKMdmfQ==
-Message-ID: <0ea8ae6e-d841-4a5c-8a23-603ed9b4fa61@kernel.org>
-Date: Mon, 17 Jun 2024 19:33:49 +0200
+	b=JgmZL74yb/+v7OfZqVPbfnnkIfuVyOOqB1Sw2086sxHQqX2w4gGvfQMkV3Uqi15w5
+	 3Qvyft2og/8N0I5tSWqz7MlU0bLVQT0XWd6w1hAa4VaZeDVMTRrhvjXdjh/l/QBEtx
+	 BA8VrwRk/f9zlnUP7YXFN9Twx1rIN3t7G21Lhz2m9wKNlhP8TMR2akE40JbPPr5PEB
+	 jnsFgJUqRwwMB7tjHKC7hyLaKxGYz6dxGkdVXy2JuI7Sq6kzuwSI+/nWAuXsaLhsbO
+	 YGqloCEawvQszdNE+CcC5inYkgEfccsiwFHnT+6xBKPzoOsFowgBTMgQo17t/8s05b
+	 DkUS2FptIfBrQ==
+Message-ID: <237035a7-3b71-4245-863b-f905ba97cda1@kernel.org>
+Date: Mon, 17 Jun 2024 19:35:07 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v2 6/7] dt-bindings: mfd: syscon: Split and enforce
@@ -67,6 +67,7 @@ Cc: Orson Zhai <orsonzhai@gmail.com>,
 References: <20240616-dt-bindings-mfd-syscon-split-v2-0-571b5850174a@linaro.org>
  <20240616-dt-bindings-mfd-syscon-split-v2-6-571b5850174a@linaro.org>
  <20240617-zoology-silica-2c8c78363b32@spud>
+ <20240617-purge-family-c0c62b8e73d8@spud>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -112,12 +113,13 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20240617-zoology-silica-2c8c78363b32@spud>
+In-Reply-To: <20240617-purge-family-c0c62b8e73d8@spud>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240617_103413_027852_73961D60 
-X-CRM114-Status: GOOD (  16.90  )
+X-CRM114-CacheID: sfid-20240617_103523_823508_9FD0192E 
+X-CRM114-Status: UNSURE (   6.70  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -132,133 +134,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 17/06/2024 18:44, Conor Dooley wrote:
->> +$id: http://devicetree.org/schemas/mfd/syscon-common.yaml#
->> +$schema: http://devicetree.org/meta-schemas/core.yaml#
->> +
->> +title: System Controller Registers R/W Common Properties
->> +
->> +description: |
+On 17/06/2024 18:46, Conor Dooley wrote:
+>>>  
+>>> +# Need a select with all compatibles listed for compatibility with older
+>>> +# dtschema (<2024.02), so this will not be selected for other schemas having
+>>> +# syscon fallback.
+>>>  select:
+>>>    properties:
+>>>      compatible:
+>>>        contains:
+>>>          enum:
+>>> -          - syscon
+>>
+>> Wow, this is noisy. Is it not possible to achieve something similar by
+>> making the select check for not: compatible: contains: simple-mfd? Or
+>> did I misunderstand the intention here?
 > 
-> This | can go, right?
+> Ah, you'd match things then like the intel,lgm-syscon, right?
 
-Ack
-
-> 
->> +  System controller node represents a register region containing a set
->> +  of miscellaneous registers. The registers are not cohesive enough to
->> +  represent as any specific type of device. The typical use-case is
->> +  for some other node's driver, or platform-specific code, to acquire
->> +  a reference to the syscon node (e.g. by phandle, node path, or
->> +  search using a specific compatible value), interrogate the node (or
->> +  associated OS driver) to determine the location of the registers,
->> +  and access the registers directly.
->> +
->> +maintainers:
->> +  - Lee Jones <lee@kernel.org>
->> +
->> +select:
->> +  properties:
->> +    compatible:
->> +      contains:
->> +        enum:
-> 
-> And this can be const, given it's unlikely to grow?
-
-ack
-
-> 
->> +          - syscon
->> +
->> +  required:
->> +    - compatible
->> +
->> +properties:
->> +  compatible:
->> +    contains:
->> +      const: syscon
->> +    minItems: 2
->> +    maxItems: 5  # Should be enough
->> +
->> +  reg:
->> +    maxItems: 1
->> +
->> +  reg-io-width:
->> +    description: |
-> 
-> Same with this one.
-
-ack
-
-> 
->> +      The size (in bytes) of the IO accesses that should be performed
->> +      on the device.
->> +    enum: [1, 2, 4, 8]
->> +
->> +required:
->> +  - compatible
->> +  - reg
->> +
->> +allOf:
->> +  - if:
->> +      properties:
->> +        compatible:
->> +          contains:
->> +            const: simple-mfd
->> +    then:
->> +      properties:
->> +        compatible:
->> +          minItems: 3
->> +          maxItems: 5
->> +
->> +additionalProperties: true
->> +
->> +examples:
->> +  - |
->> +    syscon: syscon@1c00000 {
->> +        compatible = "allwinner,sun8i-h3-system-controller", "syscon";
->> +        reg = <0x01c00000 0x1000>;
->> +    };
->> +...
->> diff --git a/Documentation/devicetree/bindings/mfd/syscon.yaml b/Documentation/devicetree/bindings/mfd/syscon.yaml
->> index d6fa58c9e4de..d4e9533cf3fe 100644
->> --- a/Documentation/devicetree/bindings/mfd/syscon.yaml
->> +++ b/Documentation/devicetree/bindings/mfd/syscon.yaml
->> @@ -4,7 +4,7 @@
->>  $id: http://devicetree.org/schemas/mfd/syscon.yaml#
->>  $schema: http://devicetree.org/meta-schemas/core.yaml#
->>  
->> -title: System Controller Registers R/W
->> +title: System Controller Devices
->>  
->>  description: |
->>    System controller node represents a register region containing a set
->> @@ -19,123 +19,196 @@ description: |
->>  maintainers:
->>    - Lee Jones <lee@kernel.org>
->>  
->> +# Need a select with all compatibles listed for compatibility with older
->> +# dtschema (<2024.02), so this will not be selected for other schemas having
->> +# syscon fallback.
->>  select:
->>    properties:
->>      compatible:
->>        contains:
->>          enum:
->> -          - syscon
-> 
-> Wow, this is noisy. Is it not possible to achieve something similar by
-> making the select check for not: compatible: contains: simple-mfd? Or
-> did I misunderstand the intention here?
-
-See comment from Rob for v1. This is needed for older schema, although
-2024.02 worked fine in my tests. The point is to select all schemas, not
-by compatible property, because then we match this schema to anything
-having syscon.
-
-Kind of similar how it is woth arm,primecell.
-
-
+Yes.
 
 Best regards,
 Krzysztof
