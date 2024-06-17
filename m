@@ -4,44 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78002C27C79
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jun 2024 16:46:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CEE8C27C79
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jun 2024 16:47:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ChBl5eNiBK9EJiSVbmCrQYuegXEHWgvBMl/22wOKJII=; b=MdG/GRiK8IrFeVFc4ZlPQ2ImTZ
-	LFz+0mCxD9QH+lfmRB91ElOCsequrNRo/13onLihN4o60mYLDO0Td8y1q6r2QaLlzeK9IwD29FYme
-	qtSI/oHsY27EouhzyaNp4Qyth9UfqoZxyT9PvxA8ybGlngxU+0X9YzNmKPI7ceWW0SPGq7zhvf92u
-	rUW1ffHzNtq2sL/x+OTu2rkgSfn1P0Z/WK4Ato/ElD9WOIa6Hd1hDrx727d0+AotTtAMxX09jgHK/
-	45udXiPPF04/ylRO77dQ8sJq/K7x19MFR2uaOJyeKBRN2JRzFgS7KbUjUTN1hFtmhaN1jyqSU5GWf
-	YWYEVG7Q==;
+	bh=2JAWJpDzmpr0BQoqiQMfikwtE07tNC448jmHVaAC/oQ=; b=PajQdGcPrTQQLJVh6Frxvd2M2W
+	VPW55n4u+tgi+L/WslDdD52jM3ybKEPvr0z/5i0Klr6fo1XFa+cBzWJK/ySx9bZIAJWdD0Dl8pwVS
+	3mJn6p4zBD667ytSxDgzIna4K7Ylll8wJitpaxoi0Cz8MdyX9Rc/DmzAPO+KCbHVhN17sAyGTEGV2
+	lIs6k2B9Jd4h1x5BIhf2p5NK9qZB+TEggfJjSlSoD5S2LTMWxwio/h/jUpVhgayrtbcHAxO7EyhpE
+	uxMjp765LKtuRYm9IV0G5+Ix5dQQ/UR7iCX7qbXANrIKtR8U9DXjtMpTic7sc45YI7lcEMjfKn3Oc
+	XhXY5MyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJFVL-0000000Bnys-2ezw;
-	Mon, 17 Jun 2024 16:46:51 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1sJFVv-0000000BoHZ-3xPn;
+	Mon, 17 Jun 2024 16:47:27 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJFV7-0000000BnpU-0GJF;
-	Mon, 17 Jun 2024 16:46:47 +0000
+	id 1sJFVi-0000000BoAP-0Wa8;
+	Mon, 17 Jun 2024 16:47:14 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=2JAWJpDzmpr0BQoqiQMfikwtE07tNC448jmHVaAC/oQ=; b=qOGCHUbkvYO9pppcdn1y/G09Po
+	5fbFUBFi4h4/XFEJExgFL56bcK67+MbxNa2IJqY98jqWLlveqQ0uCuyg/1acMevnlNgUEeyHX2QBa
+	3ApQbhxrnb8cUw+ughnXxYk8o8Gdhsh+OulvrqF6BZGtN935NetNb7+uwK6leOhp8s68s4d6DEIHc
+	6bf/6ry55zFhjPJgxzwsasHxawPhfTsAcVMQlOSuPmXFEhcqoZ8gOVAoaqkodENn1PQTylr833aHM
+	3AwtcjfHGDar2OrZGfB9DEWlWDG1Y8hLr8V4zphDeBDFKVNoLx8LaZSX++/OCrMs3uCWFvfry6fnE
+	n7+DKucQ==;
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1sJFVe-00000006Wr7-2nUl;
+	Mon, 17 Jun 2024 16:47:12 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id EDD8ACE12BC;
-	Mon, 17 Jun 2024 16:46:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 76CADC4AF48;
-	Mon, 17 Jun 2024 16:46:29 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 4DD73CE125D;
+	Mon, 17 Jun 2024 16:47:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0D27DC3277B;
+	Mon, 17 Jun 2024 16:46:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1718642794;
-	bh=vd97vaQMsq53OVRgUZpwAbni9g8Y6CZ7AU9B12DalEI=;
+	s=k20201202; t=1718642824;
+	bh=2JAWJpDzmpr0BQoqiQMfikwtE07tNC448jmHVaAC/oQ=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Br9rhF+wxtiKOtp20GpJdDvnB1wXyvG2QyUfT94QGAyrN0CphiQ3WEkgixJML/GeH
-	 UyvMEbqji1JzhEGfjCNeW3NwPWLHouEUpbGAfBZ7tmIcew6U1At4lTJeFO+maKdG83
-	 NRLd9BMW8ztDkldVVTQ+yyq7mXEYQMLHrDGX+22ps26F7JfEpdREP9kCzlfscA89MJ
-	 S9/lcyOVqCHZCBrDMFJh4Ovse87r6MsVNGM/oHbiO/fshIHXv7uGQoNlW2YGfET/g+
-	 jQH7YGLsA6wsf6CweLor5w31IxFdKAb00pT2cViRf4lrfivPbfMTcC6EDgS7XB2v44
-	 QKg5ctIw7g6sQ==
-Date: Mon, 17 Jun 2024 17:46:27 +0100
+	b=j5/Gm9TB6EUMMm6OKz0GAexrMi9CBJz/6yDk0Efj0QokaqaljiXEjxphj8oEvAs/+
+	 OPHEf2j8A1hc1smGI8IfvBajWdOO1Efb5bLUTcd9uII4S4wpyQv23kYWXmjzhkwQ3h
+	 Vs9vHxWkOqupPmdHY33bavNvo+9tTxaG4Zr0ozGYze7Kdi3kunDVPgyHPZ7ABXfG3n
+	 bd8qAAny2AoQ7M1xg9Ej6xOCvwhX777+pNqfgNP8JNQAimanG5Fu5UE3kLzfsvdLXG
+	 b6ODKSxpIiW9gT+BdVgT7fyE3FYJL8xj7oadXWNNb16m0BCyVHFgzowliLKy7HSedR
+	 wI6wst5hHjQhQ==
+Date: Mon, 17 Jun 2024 17:46:57 +0100
 From: Conor Dooley <conor@kernel.org>
 To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Cc: Orson Zhai <orsonzhai@gmail.com>,
@@ -63,20 +77,20 @@ Cc: Orson Zhai <orsonzhai@gmail.com>,
 	Jiaxun Yang <jiaxun.yang@flygoat.com>, devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2 6/7] dt-bindings: mfd: syscon: Split and enforce
- documenting MFD children
-Message-ID: <20240617-purge-family-c0c62b8e73d8@spud>
+Subject: Re: [PATCH v2 3/7] dt-bindings: soc: intel: lgm-syscon: Move to
+ dedicated schema
+Message-ID: <20240617-multitude-referee-998504c2ca87@spud>
 References: <20240616-dt-bindings-mfd-syscon-split-v2-0-571b5850174a@linaro.org>
- <20240616-dt-bindings-mfd-syscon-split-v2-6-571b5850174a@linaro.org>
- <20240617-zoology-silica-2c8c78363b32@spud>
+ <20240616-dt-bindings-mfd-syscon-split-v2-3-571b5850174a@linaro.org>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="f3lcdY1GhHNaaFOV"
+	protocol="application/pgp-signature"; boundary="QRkbanEbbdMctthM"
 Content-Disposition: inline
-In-Reply-To: <20240617-zoology-silica-2c8c78363b32@spud>
+In-Reply-To: <20240616-dt-bindings-mfd-syscon-split-v2-3-571b5850174a@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240617_094637_750608_4F84A06B 
-X-CRM114-Status: GOOD (  33.52  )
+X-CRM114-CacheID: sfid-20240617_174711_110469_CD9DCF27 
+X-CRM114-Status: UNSURE (   9.63  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,179 +106,29 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---f3lcdY1GhHNaaFOV
+--QRkbanEbbdMctthM
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Mon, Jun 17, 2024 at 05:44:52PM +0100, Conor Dooley wrote:
-> On Sun, Jun 16, 2024 at 03:19:26PM +0200, Krzysztof Kozlowski wrote:
-> > Simple syscon nodes can be documented in common syscon.yaml, however
-> > devices with simple-mfd compatible, thus with some children, should have
-> > their own schema listing these children.  Such listing makes the binding
-> > specific, allows better validation (so the incorrect child would not
-> > appear in the simple-mfd node) and actually enforces repeated rule for
-> > simple-mfd devices:
-> >=20
-> >   "simple-mfd" is only for simple devices, where the children do not
-> >   depend on the parent.
-> >=20
-> > Currently the syscon+simple-mfd binding is quite broad and allows
-> > any child or property, thus above rule cannot be enforced.
-> >=20
-> > Split the syscon.yaml binding into:
-> > 1. Common syscon properties, used potentially by many bindings.
-> > 2. Simple syscon devices (NO simple-mfd!).
-> >=20
-> > Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> >=20
-> > ---
-> >=20
-> > Depends on:
-> > 1. Patch in MFD: https://lore.kernel.org/all/171828959006.2643902.83082=
-27314531523435.b4-ty@kernel.org/
-> > 2. Previous patches in the series.
-> > ---
-> >  .../devicetree/bindings/mfd/syscon-common.yaml     |  72 +++++
-> >  Documentation/devicetree/bindings/mfd/syscon.yaml  | 294 +++++++++++++=
---------
-> >  2 files changed, 251 insertions(+), 115 deletions(-)
-> >=20
-> > diff --git a/Documentation/devicetree/bindings/mfd/syscon-common.yaml b=
-/Documentation/devicetree/bindings/mfd/syscon-common.yaml
-> > new file mode 100644
-> > index 000000000000..c3ff3a7afce3
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/mfd/syscon-common.yaml
-> > @@ -0,0 +1,72 @@
-> > +# SPDX-License-Identifier: GPL-2.0
-> > +%YAML 1.2
-> > +---
-> > +$id: http://devicetree.org/schemas/mfd/syscon-common.yaml#
-> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > +
-> > +title: System Controller Registers R/W Common Properties
-> > +
-> > +description: |
+On Sun, Jun 16, 2024 at 03:19:23PM +0200, Krzysztof Kozlowski wrote:
+> intel,lgm-syscon is not a simple syscon device - it has children - thus
+> it should be fully documented in its own binding.
 >=20
-> This | can go, right?
->=20
-> > +  System controller node represents a register region containing a set
-> > +  of miscellaneous registers. The registers are not cohesive enough to
-> > +  represent as any specific type of device. The typical use-case is
-> > +  for some other node's driver, or platform-specific code, to acquire
-> > +  a reference to the syscon node (e.g. by phandle, node path, or
-> > +  search using a specific compatible value), interrogate the node (or
-> > +  associated OS driver) to determine the location of the registers,
-> > +  and access the registers directly.
-> > +
-> > +maintainers:
-> > +  - Lee Jones <lee@kernel.org>
-> > +
-> > +select:
-> > +  properties:
-> > +    compatible:
-> > +      contains:
-> > +        enum:
->=20
-> And this can be const, given it's unlikely to grow?
->=20
-> > +          - syscon
-> > +
-> > +  required:
-> > +    - compatible
-> > +
-> > +properties:
-> > +  compatible:
-> > +    contains:
-> > +      const: syscon
-> > +    minItems: 2
-> > +    maxItems: 5  # Should be enough
-> > +
-> > +  reg:
-> > +    maxItems: 1
-> > +
-> > +  reg-io-width:
-> > +    description: |
->=20
-> Same with this one.
->=20
-> > +      The size (in bytes) of the IO accesses that should be performed
-> > +      on the device.
-> > +    enum: [1, 2, 4, 8]
-> > +
-> > +required:
-> > +  - compatible
-> > +  - reg
-> > +
-> > +allOf:
-> > +  - if:
-> > +      properties:
-> > +        compatible:
-> > +          contains:
-> > +            const: simple-mfd
-> > +    then:
-> > +      properties:
-> > +        compatible:
-> > +          minItems: 3
-> > +          maxItems: 5
-> > +
-> > +additionalProperties: true
-> > +
-> > +examples:
-> > +  - |
-> > +    syscon: syscon@1c00000 {
-> > +        compatible =3D "allwinner,sun8i-h3-system-controller", "syscon=
-";
-> > +        reg =3D <0x01c00000 0x1000>;
-> > +    };
-> > +...
-> > diff --git a/Documentation/devicetree/bindings/mfd/syscon.yaml b/Docume=
-ntation/devicetree/bindings/mfd/syscon.yaml
-> > index d6fa58c9e4de..d4e9533cf3fe 100644
-> > --- a/Documentation/devicetree/bindings/mfd/syscon.yaml
-> > +++ b/Documentation/devicetree/bindings/mfd/syscon.yaml
-> > @@ -4,7 +4,7 @@
-> >  $id: http://devicetree.org/schemas/mfd/syscon.yaml#
-> >  $schema: http://devicetree.org/meta-schemas/core.yaml#
-> > =20
-> > -title: System Controller Registers R/W
-> > +title: System Controller Devices
-> > =20
-> >  description: |
-> >    System controller node represents a register region containing a set
-> > @@ -19,123 +19,196 @@ description: |
-> >  maintainers:
-> >    - Lee Jones <lee@kernel.org>
-> > =20
-> > +# Need a select with all compatibles listed for compatibility with old=
-er
-> > +# dtschema (<2024.02), so this will not be selected for other schemas =
-having
-> > +# syscon fallback.
-> >  select:
-> >    properties:
-> >      compatible:
-> >        contains:
-> >          enum:
-> > -          - syscon
->=20
-> Wow, this is noisy. Is it not possible to achieve something similar by
-> making the select check for not: compatible: contains: simple-mfd? Or
-> did I misunderstand the intention here?
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-Ah, you'd match things then like the intel,lgm-syscon, right?
+Reviewed-by: Conor Dooley <conor.dooley@microchip.com>
 
---f3lcdY1GhHNaaFOV
+--QRkbanEbbdMctthM
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZnBoYwAKCRB4tDGHoIJi
-0uYIAP9U0vg1Om+wI+Ea8a94/cOvSL1g+49lge2yhs2csIzjoQD+MDs+0h94sqXN
-B3YNAZJSO//xDpVCwRLiP51eOKZJCQU=
-=xOgQ
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZnBogQAKCRB4tDGHoIJi
+0ggiAP9We2auCjrUjnhLFnKXvxXv8sjQJRX/4KcNbM5fjg1MtwD7BiR7qMm2RWeU
+Tk9/riWUz3g8JSUboHqvq9hxmrc/Bg8=
+=rN+C
 -----END PGP SIGNATURE-----
 
---f3lcdY1GhHNaaFOV--
+--QRkbanEbbdMctthM--
 
