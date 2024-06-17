@@ -4,70 +4,120 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EE3FC27C79
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jun 2024 17:27:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62BCAC27C79
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jun 2024 17:34:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8STSviPtabOFvqQw/CJaV7Ko/R81y3RIOk20tLVZC3I=; b=JAUz64TN1I9wXvQ9vLqJ+kLf5n
-	Ioj8Tp7wJlsGi8JfxWN04i3CU+P+x7uDGNEbBwvJfJjxCoIKl3UEVZ5WRkSqicDc4rW0ItUPgmslZ
-	fLZSjU3O1eMHhTdRd9fN8yw7EoWZr3+jqIC4k1nN6Rjtl52tRzLons9DS6NCMoY9Jp/cK84avPdIp
-	0pTVIQjhWiwPUThNBNSRBxjB5NYxv4NuHmtCQceNvwx7bcOsnI2omR3Wtl6BsumlVhFklQtmT7+qO
-	PMSk6G2ScJnPWzebyEznvfftGwdp7soHNgYzDXkqd0HtGFrM82joJyErnR3C0kzv0tm7zb2hsGpnv
-	txLSiA0g==;
+	bh=FcyoyUBj6t503ACN07VAgM92dVzlW4Vi2KPWoHf0jrk=; b=ZfaQybYWSwfJe9DfV5Jumkw8j5
+	vRSe5cef9sjN8C8z6GJtatB/r976+5gUCa7IUoknlpX0vjhqR0YSXP5efFLA0lEESH2mD6rIzGKxW
+	QP9bHKjX7I+uLAJztjfZd3K18Cjj6Shk7YISEP2u08LRMW6R4NGLNFSoE5Tu44uLgd783mjfbMhsO
+	y1uIi3PqXHBP29sZrO4icBebQ95wFTVy+YkFZe8PBIATtUS+U4XuNrxIbviHZeEcnQZNjqwLfCMGP
+	IqrXH5Vddx95wu6NaFvkZtpmZx2hOPmKRWuMJlTrKVhvbJSXW90Nc7N3da96OSzjq83vsbdxYT205
+	jBSG6JgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJG8B-0000000BwSK-3Z86;
-	Mon, 17 Jun 2024 17:26:59 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1sJGFL-0000000Bxpx-2v7o;
+	Mon, 17 Jun 2024 17:34:23 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJG81-0000000BwOW-0Qyl;
-	Mon, 17 Jun 2024 17:26:57 +0000
+	id 1sJGFA-0000000Bxko-3D4s;
+	Mon, 17 Jun 2024 17:34:20 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 1E5D6CE1154;
-	Mon, 17 Jun 2024 17:26:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B61D5C4AF49;
-	Mon, 17 Jun 2024 17:26:41 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 1421760EB8;
+	Mon, 17 Jun 2024 17:34:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BF8FDC2BD10;
+	Mon, 17 Jun 2024 17:33:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1718645206;
-	bh=FBswpofNDhR2w+Ns2wjNtFSb1eY3Syl7BNKymUDMFHE=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=Z/SZP+YMKge+5VVdaq/KuGfnZutODrS+5+77su4siOcVqSbCJPowjJ4c2+kNfEbx9
-	 5/yV9rVw8Ru6v0fr/xs9yETL0wJRc+4HR98/9BFv+rkDDqtrgn7/M8FuUUJnHRqiJb
-	 GVkcPMgYhqRypbB4DCW+sx+V7vxUTNtbSzKOEFnxDLjsvebka0WEFsAsNl12Ri/YLO
-	 4iTUfXWOmti6UHSUCU7OlEeSTfMHiWC6dsX54YuVcjcBpItSdWokzEy4p2L1TR2MYa
-	 ohY40KJOphkP9qYwBpTzMX3UNffB0kBOezA5Dmd/2fGt6LWjW+mbIgqfjVyECjgsrB
-	 6u7sRg6hF9JUA==
-From: Mark Brown <broonie@kernel.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>, 
- Liam Girdwood <lgirdwood@gmail.com>, 
- Peter Ujfalusi <peter.ujfalusi@linux.intel.com>, 
- Bard Liao <yung-chuan.liao@linux.intel.com>, 
- Ranjani Sridharan <ranjani.sridharan@linux.intel.com>, 
- Daniel Baluta <daniel.baluta@nxp.com>, 
- Kai Vehmanen <kai.vehmanen@linux.intel.com>, 
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
- Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-Cc: linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- sound-open-firmware@alsa-project.org, linux-sound@vger.kernel.org
-In-Reply-To: <a45d6b2b5ec040ea0fc78fca662c2dca3f13a49f.1718312321.git.christophe.jaillet@wanadoo.fr>
-References: <a45d6b2b5ec040ea0fc78fca662c2dca3f13a49f.1718312321.git.christophe.jaillet@wanadoo.fr>
-Subject: Re: [PATCH] ASoC: SOF: mediatek: Constify struct mtk_adsp_ipc_ops
-Message-Id: <171864520134.209755.7325176074699665944.b4-ty@kernel.org>
-Date: Mon, 17 Jun 2024 18:26:41 +0100
+	s=k20201202; t=1718645651;
+	bh=NRv3U2R3LJxqX4F/jGBJXWK96Mq2JY0f+Kl4Ugjxk8o=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Zf46dFkNX+pSGPdK7wzf3wkuUXYGLO4wUR9ToHFlk51Har187NKu2//uchJA2DZ4y
+	 hlZ97xlpk5griBxFrMUdP7XxcOugdCmg9XdDNwmBNUKo7t+0rRxu3wYzZ0PrY7fPV8
+	 fgwbiqoML/ZMghk+QvuOdO8yOUFHXSOTH03ewSkDncGSERVBBFsNLVtmEjpdciHDTo
+	 gE2NpkAWzDA9tqBZ73i81iW1nzMjFDS5+EKBeOlq8SSjZbqAezUFzpF8A60qdsGuRF
+	 RyDNtKtblYUvhp1lWKIjAKQRkYf1nhstYT0d/UBpQVueD7Y63zatDFdCxhmV9KTr3s
+	 ol47N7jKMdmfQ==
+Message-ID: <0ea8ae6e-d841-4a5c-8a23-603ed9b4fa61@kernel.org>
+Date: Mon, 17 Jun 2024 19:33:49 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 6/7] dt-bindings: mfd: syscon: Split and enforce
+ documenting MFD children
+To: Conor Dooley <conor@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Orson Zhai <orsonzhai@gmail.com>,
+ Baolin Wang <baolin.wang@linux.alibaba.com>,
+ Chunyan Zhang <zhang.lyra@gmail.com>,
+ Vadivel Murugan <vadivel.muruganx.ramuthevar@linux.intel.com>,
+ Jacky Huang <ychuang3@nuvoton.com>, Shan-Chun Hung <schung@nuvoton.com>,
+ Khuong Dinh <khuong@os.amperecomputing.com>, Lee Jones <lee@kernel.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Lars Povlsen
+ <lars.povlsen@microchip.com>, Steen Hegelund <Steen.Hegelund@microchip.com>,
+ Daniel Machon <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com,
+ Nishanth Menon <nm@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20240616-dt-bindings-mfd-syscon-split-v2-0-571b5850174a@linaro.org>
+ <20240616-dt-bindings-mfd-syscon-split-v2-6-571b5850174a@linaro.org>
+ <20240617-zoology-silica-2c8c78363b32@spud>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <20240617-zoology-silica-2c8c78363b32@spud>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.14-dev-d4707
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240617_102649_370543_68C3F1D4 
-X-CRM114-Status: GOOD (  11.37  )
+X-CRM114-CacheID: sfid-20240617_103413_027852_73961D60 
+X-CRM114-Status: GOOD (  16.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,43 +132,135 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 13 Jun 2024 22:59:09 +0200, Christophe JAILLET wrote:
-> 'struct mtk_adsp_ipc_ops' is not modified in these drivers.
+On 17/06/2024 18:44, Conor Dooley wrote:
+>> +$id: http://devicetree.org/schemas/mfd/syscon-common.yaml#
+>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+>> +
+>> +title: System Controller Registers R/W Common Properties
+>> +
+>> +description: |
 > 
-> Constifying this structure moves some data to a read-only section, so
-> increase overall security.
+> This | can go, right?
+
+Ack
+
 > 
-> In order to do it, "struct mtk_adsp_ipc" also needs to be adjusted to this
-> new const qualifier.
+>> +  System controller node represents a register region containing a set
+>> +  of miscellaneous registers. The registers are not cohesive enough to
+>> +  represent as any specific type of device. The typical use-case is
+>> +  for some other node's driver, or platform-specific code, to acquire
+>> +  a reference to the syscon node (e.g. by phandle, node path, or
+>> +  search using a specific compatible value), interrogate the node (or
+>> +  associated OS driver) to determine the location of the registers,
+>> +  and access the registers directly.
+>> +
+>> +maintainers:
+>> +  - Lee Jones <lee@kernel.org>
+>> +
+>> +select:
+>> +  properties:
+>> +    compatible:
+>> +      contains:
+>> +        enum:
 > 
-> [...]
+> And this can be const, given it's unlikely to grow?
 
-Applied to
+ack
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+> 
+>> +          - syscon
+>> +
+>> +  required:
+>> +    - compatible
+>> +
+>> +properties:
+>> +  compatible:
+>> +    contains:
+>> +      const: syscon
+>> +    minItems: 2
+>> +    maxItems: 5  # Should be enough
+>> +
+>> +  reg:
+>> +    maxItems: 1
+>> +
+>> +  reg-io-width:
+>> +    description: |
+> 
+> Same with this one.
 
-Thanks!
+ack
 
-[1/1] ASoC: SOF: mediatek: Constify struct mtk_adsp_ipc_ops
-      commit: 1c75adb22d49ca9389333ca5e6939052a7203111
+> 
+>> +      The size (in bytes) of the IO accesses that should be performed
+>> +      on the device.
+>> +    enum: [1, 2, 4, 8]
+>> +
+>> +required:
+>> +  - compatible
+>> +  - reg
+>> +
+>> +allOf:
+>> +  - if:
+>> +      properties:
+>> +        compatible:
+>> +          contains:
+>> +            const: simple-mfd
+>> +    then:
+>> +      properties:
+>> +        compatible:
+>> +          minItems: 3
+>> +          maxItems: 5
+>> +
+>> +additionalProperties: true
+>> +
+>> +examples:
+>> +  - |
+>> +    syscon: syscon@1c00000 {
+>> +        compatible = "allwinner,sun8i-h3-system-controller", "syscon";
+>> +        reg = <0x01c00000 0x1000>;
+>> +    };
+>> +...
+>> diff --git a/Documentation/devicetree/bindings/mfd/syscon.yaml b/Documentation/devicetree/bindings/mfd/syscon.yaml
+>> index d6fa58c9e4de..d4e9533cf3fe 100644
+>> --- a/Documentation/devicetree/bindings/mfd/syscon.yaml
+>> +++ b/Documentation/devicetree/bindings/mfd/syscon.yaml
+>> @@ -4,7 +4,7 @@
+>>  $id: http://devicetree.org/schemas/mfd/syscon.yaml#
+>>  $schema: http://devicetree.org/meta-schemas/core.yaml#
+>>  
+>> -title: System Controller Registers R/W
+>> +title: System Controller Devices
+>>  
+>>  description: |
+>>    System controller node represents a register region containing a set
+>> @@ -19,123 +19,196 @@ description: |
+>>  maintainers:
+>>    - Lee Jones <lee@kernel.org>
+>>  
+>> +# Need a select with all compatibles listed for compatibility with older
+>> +# dtschema (<2024.02), so this will not be selected for other schemas having
+>> +# syscon fallback.
+>>  select:
+>>    properties:
+>>      compatible:
+>>        contains:
+>>          enum:
+>> -          - syscon
+> 
+> Wow, this is noisy. Is it not possible to achieve something similar by
+> making the select check for not: compatible: contains: simple-mfd? Or
+> did I misunderstand the intention here?
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
+See comment from Rob for v1. This is needed for older schema, although
+2024.02 worked fine in my tests. The point is to select all schemas, not
+by compatible property, because then we match this schema to anything
+having syscon.
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
+Kind of similar how it is woth arm,primecell.
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
 
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
 
-Thanks,
-Mark
+Best regards,
+Krzysztof
 
 
