@@ -4,77 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08FEEC27C7B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jun 2024 09:04:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FE4DC27C6E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jun 2024 09:22:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=q+3Vz3i2TsdrpjkC9PcCy29rOh22Klo7SY6unJ5sDoA=; b=nWYFL4iFshOiPy
-	EeWLHn+Gx1rzPPh92eFKYf+lk8GjGUohX3SBC/ikYuaC5p58gAURW7jWka2O0QGTopOQkMF5eUER1
-	8qEI6nyP/z2SrhQ0gaw+yR5ip5H7DHdv6fSWfLxsKeuktfLY97ODpkC40v0oN3E7DwETni3xTA95Z
-	KIwsONWWGY31im5kc2cyJOyqnKy8xWSLcH64kdKEhoBwPM1g6HZggmETzbIfZpkR0xsFs6fgdyTNR
-	D2Q6NMu2S9f48i7g1z5MSFxEuHlCyeS3XsBHU8mv5kMjMWwDwJ1CKtwDMH4i3ElA938cTJaYJ4Duz
-	uIX+tNcMKzz5vqNeCdTg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=eEUIpHnQGVoJgFUUtr6K5uLL6KfCGzBVgBBz+mc8EC8=; b=Huu+1ipRufBtyzGsiH+S2qD1Xn
+	9UPsgpNNjZjJDeXlZeEFh2eifg59MxeqDJ7nGiMpcuuPExNSpnGFPQjx9wd5qj0KpQBFQZx+qYNYI
+	KCUH6pYNNOANp0KNHNJpCHTYxUiPiXfiX/YPINl7N0qtRWRYqC+TRrHRBarNhyMBXgYCS/jwlqZnc
+	gYR3RCVfH3LtVHG+whBQwKqjmJ5tpv57re7Hyb3mwT3jF6hX4hTvLk9FkyWc3DWMDnpnPv4N3BZU1
+	pE3/L/6kVIdzy5Ssrh6K5dRuNozrNJ1yoSgbpS9qpJpFiVGgW5dzwYB918JS2eENpCblV9XwE3cyo
+	X0SkWCiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJ8I3-00000009wjN-32kj;
-	Mon, 17 Jun 2024 09:04:39 +0000
-Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
+	id 1sJ8ZR-0000000A1Pp-3NRd;
+	Mon, 17 Jun 2024 09:22:37 +0000
+Received: from mail-ed1-f50.google.com ([209.85.208.50])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJ8I0-00000009wiM-1jp3
-	for linux-mediatek@lists.infradead.org;
-	Mon, 17 Jun 2024 09:04:37 +0000
-Received: by mail-lf1-x12a.google.com with SMTP id 2adb3069b0e04-52c84a21b8cso3800290e87.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 17 Jun 2024 02:04:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1718615075; x=1719219875; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=q+3Vz3i2TsdrpjkC9PcCy29rOh22Klo7SY6unJ5sDoA=;
-        b=ce18+rsq7zcdnH/5oMzB0bF6i/x4u/2iKYGMOxdNKAjeRDBn7whVA6vspaxX9knQ6c
-         VvqFDuda3cBHgxzkDJWTv5ZtadMKAkiKc9iR9wU/DJzZTU7e51RrGLrRemv0KjVS4DTb
-         lvWPd/DfKWCKuNhuLwv21xo7Z5Ih4XyUZv5LEVQoQvoC9v9O3X8c1lvUPfEInJSE6MYH
-         khD1QEJudnSfsM9wEiITWR7zSguMMHR3R1F94etEtb3OJjCKP6VVmunPrqEcGFKvSbSY
-         2+wIxyxaYdxa15OWJBOVM2wzX2wIWCbShaH7b/bWzHMIWq48CdyEaaF77rEAv0s2qGVn
-         gtzw==
+	id 1sJ8ZN-0000000A1OF-2NTD;
+	Mon, 17 Jun 2024 09:22:35 +0000
+Received: by mail-ed1-f50.google.com with SMTP id 4fb4d7f45d1cf-57c76497cefso4825481a12.1;
+        Mon, 17 Jun 2024 02:22:31 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1718615075; x=1719219875;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=q+3Vz3i2TsdrpjkC9PcCy29rOh22Klo7SY6unJ5sDoA=;
-        b=JfyDVsDxJiLyriYd3+IRrv9pwgf9ctaa8IU5Lqci7MeFMwFciKMKHVg/y3Wuky3XXv
-         1Z8gkli4+57/R/wgFOLM2Qb5pDHsm+X4GP8tOlDVT/gbNzawHsypWZA7Ju0UucrKrUTS
-         G6WgNogSrJSQjZRff0XO20Pa3J7ZtBd4yPJ19gz1YT3wVFiz34G06+JYew73rK8E6IjD
-         eKN33J1UkrZ4qKOzFalVkUfdRI+SGCeToGeqIHw6HtCNBcLzQ1vpSzyEF/QjV1qTpVU9
-         w5xgEL2kfTgvbECrXuz1YN8ORQd4CE3U7MNteFC9lHVzRePIcxFObqsrdd2mS5h4xlUK
-         RlfA==
-X-Forwarded-Encrypted: i=1; AJvYcCWLrGDFFjZiIYhE8nFGHKmnYNdlj8VyY4ZTGznvxF6QX4j1+DvUx6F7xHzXYelmK1BI5b5K8oNVsLAf5Dn9EIqSaXYnMu9aqdjk6DwZXDSyaxda
-X-Gm-Message-State: AOJu0YwYiAJbk2CidumWawzXc6+x+JYrA8brvPrbEsInXEktnTgbNuN7
-	o+JffkBi1Okh7igD58VWj0KW/jSgEFENHrClGF7YFH4ePJv6mwgmIDirNmhMziVAH9z14UxGAjb
-	PgQfuM4UPtwSbzG2fdC7Y4VizefMvJnSHTUfqqw==
-X-Google-Smtp-Source: AGHT+IF+HJZcRpUbZaoti30eFGkz57My4se7oV+eTI19fCyAo/6voMtDXYoZMTNQnN/HrQtJfz8h91nbF6hk4mFYQKI=
-X-Received: by 2002:a05:6512:ba0:b0:52c:8dea:c56f with SMTP id
- 2adb3069b0e04-52ca6cc6e6bmr3777612e87.25.1718615072794; Mon, 17 Jun 2024
- 02:04:32 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1718616150; x=1719220950;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=eEUIpHnQGVoJgFUUtr6K5uLL6KfCGzBVgBBz+mc8EC8=;
+        b=lUQU7oh3uJDXTq3VREiodjbxVspyArsAGWZdOeiF3F8x4PNTtqA8zgA7opVEK5Nl1G
+         kF3EhLgv9FV9isGRF9btW8Xl7vCYo0cE0Wi92/mBo9tAPwUrMtXa4VANOXnHxdalD5kx
+         EDUqLJkBST1rb6ZDKZ6Frus9KTfoCUVbTkRuY8BKI1mWK3RPPBaZQCUi7hwWhTCCafCs
+         W5gtqrGJ4hvgWiGUoP5cB+0TKc3nQ0pxgrsQwaS2CO4y/ljjGGO8lpe+qy+1qDFitoxZ
+         Ub+ZHCMjv2BFl3dHtbZuvBE4rHJaN75n3xkuWfoEtVVMu58aFDWX/edGa4b38fK34SaZ
+         BsCQ==
+X-Forwarded-Encrypted: i=1; AJvYcCU0IZov8lg4bso5rmPMcljuWRSTizukSAscOi8HeqXYNKPlF+iH26MtfRQaCg6zPFJt7vbFPUoebcP175D1kDO+mYu7BrqkAixvy8pasfXeZknbefh+yqRPdBEPd+nW6Aq+Ey29+PA56UcYLULrW/P7xC1AFX8tIEw=
+X-Gm-Message-State: AOJu0YyhWS8M6/LIvjDSBErWAZyre0Zix/80oiSQP+opKWjvPLyfw7Ym
+	jhwyjUJ+Kwq5/GvKXc1ngCzbvgJ/s18vHljWMgxdW9FScNCmdvzLINQosA==
+X-Google-Smtp-Source: AGHT+IFOEUVidGPJxpO+GgKTTkPjj7sUIp7yTZvciRnrHQQDmvCrLJJ+SpiU6a/ssk+qbAl8zn9V3Q==
+X-Received: by 2002:a50:a693:0:b0:57c:6773:d9c1 with SMTP id 4fb4d7f45d1cf-57cbd6a5a0emr5821631a12.39.1718616149646;
+        Mon, 17 Jun 2024 02:22:29 -0700 (PDT)
+Received: from gmail.com (fwdproxy-lla-002.fbsv.net. [2a03:2880:30ff:2::face:b00c])
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-57ccc173673sm3466975a12.44.2024.06.17.02.22.28
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 17 Jun 2024 02:22:29 -0700 (PDT)
+Date: Mon, 17 Jun 2024 02:22:23 -0700
+From: Breno Leitao <leitao@debian.org>
+To: Kalle Valo <kvalo@kernel.org>
+Cc: linux-wireless@vger.kernel.org, Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	netdev@vger.kernel.org, horms@kernel.org, kees@kernel.org,
+	kuba@kernel.org, Bo Jiao <Bo.Jiao@mediatek.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Alexander Couzens <lynxis@fe80.eu>,
+	Deren Wu <deren.wu@mediatek.com>,
+	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>,
+	Leon Yen <leon.yen@mediatek.com>,
+	Quan Zhou <quan.zhou@mediatek.com>, Ingo Rohloff <lundril@gmx.de>,
+	Sujuan Chen <sujuan.chen@mediatek.com>,
+	StanleyYP Wang <StanleyYP.Wang@mediatek.com>,
+	Benjamin Lin <benjamin-jw.lin@mediatek.com>,
+	Peter Chiu <chui-hao.chiu@mediatek.com>,
+	"open list:ARM/Mediatek SoC support" <linux-kernel@vger.kernel.org>,
+	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH] wifi: mt76: un-embedd netdev from mt76_dev
+Message-ID: <ZnAAT/a3DKnTgUoz@gmail.com>
+References: <20240614115317.657700-1-leitao@debian.org>
+ <87cyogkkju.fsf@kernel.org>
 MIME-Version: 1.0
-References: <20240611102744.v2.1.I2b014f90afc4729b6ecc7b5ddd1f6dedcea4625b@changeid>
-In-Reply-To: <20240611102744.v2.1.I2b014f90afc4729b6ecc7b5ddd1f6dedcea4625b@changeid>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Mon, 17 Jun 2024 11:04:21 +0200
-Message-ID: <CACRpkda4KbfWnMwFyJAFKeyvJ3A32D1WuEQd=VQpQcg02-+32Q@mail.gmail.com>
-Subject: Re: [PATCH v2] drm/mediatek: Call drm_atomic_helper_shutdown() at
- shutdown time
-To: Douglas Anderson <dianders@chromium.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <87cyogkkju.fsf@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240617_020436_461333_3BA23D4A 
-X-CRM114-Status: GOOD (  16.32  )
+X-CRM114-CacheID: sfid-20240617_022233_808481_FC9FBDA9 
+X-CRM114-Status: GOOD (  17.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,36 +97,45 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Daniel Vetter <daniel@ffwll.ch>, Neil Armstrong <neil.armstrong@linaro.org>, linux-kernel@vger.kernel.org, Maxime Ripard <mripard@kernel.org>, linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, David Airlie <airlied@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jun 11, 2024 at 7:28=E2=80=AFPM Douglas Anderson <dianders@chromium=
-.org> wrote:
+Hello Kalle,
 
-> Based on grepping through the source code this driver appears to be
-> missing a call to drm_atomic_helper_shutdown() at system shutdown
-> time. Among other things, this means that if a panel is in use that it
-> won't be cleanly powered off at system shutdown time.
->
-> The fact that we should call drm_atomic_helper_shutdown() in the case
-> of OS shutdown/restart comes straight out of the kernel doc "driver
-> instance overview" in drm_drv.c.
->
-> This driver users the component model and shutdown happens in the base
-> driver. The "drvdata" for this driver will always be valid if
-> shutdown() is called and as of commit 2a073968289d
-> ("drm/atomic-helper: drm_atomic_helper_shutdown(NULL) should be a
-> noop") we don't need to confirm that "drm" is non-NULL.
->
-> Suggested-by: Maxime Ripard <mripard@kernel.org>
-> Reviewed-by: Maxime Ripard <mripard@kernel.org>
-> Reviewed-by: Fei Shao <fshao@chromium.org>
-> Tested-by: Fei Shao <fshao@chromium.org>
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+On Mon, Jun 17, 2024 at 12:03:49PM +0300, Kalle Valo wrote:
+> Breno Leitao <leitao@debian.org> writes:
+> 
+> > Embedding net_device into structures prohibits the usage of flexible
+> > arrays in the net_device structure. For more details, see the discussion
+> > at [1].
+> >
+> > Un-embed the net_devices from struct mt76_dev by converting them
+> > into pointers, and allocating them dynamically. Use the leverage
+> > alloc_netdev_dummy() to allocate the net_device object at
+> > mt76_dma_init().
+> >
+> > The free of the device occurs at mt76_dma_cleanup().
+> >
+> > Link: https://lore.kernel.org/all/20240229225910.79e224cf@kernel.org/ [1]
+> > Signed-off-by: Breno Leitao <leitao@debian.org>
+> > ---
+> >
+> > PS: Due to the lack of hardware, this patch was not tested on a real
+> > hardware, unfortunately.
+> >
+> > PS2: this is the last driver that is still using embedded netdevices.
+> 
+> Is this patch a dependency to other patches? I'm asking because it will
+> be _slow_ to get this patch to net-next via wireless trees. If there's
+> urgency then it's much better to take it directly to net-next (of course
+> with acks from Felix and Lorenzo).
 
-Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
+Since this is the last patch for the whole flexible netdev work, I would
+prefer to have it through net-next then, so, we finish the whole work
+sooner rather than later.
 
-Yours,
-Linus Walleij
+I will prepare a v2 with Simon's suggestion, and I can target net-next.
+I am just waiting a bit more to hear from Felix and Lorenzo.
+
+Thanks!
 
