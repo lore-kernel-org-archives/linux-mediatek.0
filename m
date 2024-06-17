@@ -4,88 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F415C2BA18
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jun 2024 13:17:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE0B1C27C79
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jun 2024 13:25:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:
+	Subject:To:From:Message-Id:Date:Content-Type:Reply-To:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZaeypUifvlp3XN1mazKa8mSJTLbjl39etYeASdGGp2o=; b=RZm3Pd9J+3e/dZuqdhkHtE7++B
-	eA2/R2IqnR0HTjp4alXP1BPqRZj98ZuP3f4i9vvIyaGhjcheWkx2TYJeME9VSBQSFEsOJESwG+hgD
-	fpHKNXegQOiSVRFnmK+ABzjXisoWd5iEfyFgM5l/VLeVDSRq7MCZw01fipw1oBYBmEcGaQRrW8RDX
-	reowSD6gZEC/Bv9ZFXPTWLsaZ/joTASg1jTvtny8FZ6Eghq+3URJPRnrydibXfxlt06YWUbfrGTfr
-	G7+IAW2Vw43LgTG+U7DtXyQcvhGLIJ8M86v+B5ml7N6qsdHKDXFr2EquFLS21HGFAqXD47Hsi6HmY
-	rgDAzSOA==;
+	bh=XGdpwMen/VgLH0fpEvgI0LtL3f1BjG5LVb+4IVUtO6g=; b=3LZR0eQQy4yTLh3vL6CpH0KLin
+	dt4RxAuBz2uwmv0vbxoPjWibdEsis0VC1jFgXk9gEAqs+7LwDIcRu3kkmzTnM7c5TOGlSpYO5mgrT
+	qcVeJSb5/aEKobkWlVuHFtsIXdnuL6FYZwJzCqJdQKipN9Emz6lItqgWW0uD91MnXA1lNw0l6DIc1
+	vSpdiBQmqX9DKGN+Qcwc0cw2q+RtogP8AX0hbGGljjIyxP/XegzaX4Qbf7IUxFwWFJA+0cPWg5jEr
+	LOnZXqyeKmkhAwl7zuwF7KFZfuiu+6sF1OPLfBOzpHL+oT9dXFetPePKYwNaBlAIpJwsZwrDdUUH/
+	N0kR5IYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJCF1-0000000AnZh-2pog;
-	Mon, 17 Jun 2024 13:17:47 +0000
-Received: from szxga08-in.huawei.com ([45.249.212.255])
+	id 1sJCM6-0000000ApnK-1N6c;
+	Mon, 17 Jun 2024 13:25:06 +0000
+Received: from 0001.3ffe.de ([2a01:4f8:c0c:9d57::1] helo=mail.3ffe.de)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJCEs-0000000AnSn-1WiS;
-	Mon, 17 Jun 2024 13:17:42 +0000
-Received: from mail.maildlp.com (unknown [172.19.163.48])
-	by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4W2r0s4hq7z1SC5t;
-	Mon, 17 Jun 2024 21:13:17 +0800 (CST)
-Received: from dggpemf200006.china.huawei.com (unknown [7.185.36.61])
-	by mail.maildlp.com (Postfix) with ESMTPS id 042F718007B;
-	Mon, 17 Jun 2024 21:17:30 +0800 (CST)
-Received: from localhost.localdomain (10.69.192.56) by
- dggpemf200006.china.huawei.com (7.185.36.61) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.11; Mon, 17 Jun 2024 21:17:29 +0800
-From: Yunsheng Lin <linyunsheng@huawei.com>
-To: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>
-CC: <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Yunsheng Lin
-	<linyunsheng@huawei.com>, Alexander Duyck <alexander.duyck@gmail.com>, Jeroen
- de Borst <jeroendb@google.com>, Praveen Kaligineedi
-	<pkaligineedi@google.com>, Shailend Chand <shailend@google.com>, Eric Dumazet
-	<edumazet@google.com>, Jesse Brandeburg <jesse.brandeburg@intel.com>, Tony
- Nguyen <anthony.l.nguyen@intel.com>, Sunil Goutham <sgoutham@marvell.com>,
-	Geetha sowjanya <gakula@marvell.com>, Subbaraya Sundeep
-	<sbhatta@marvell.com>, hariprasad <hkelam@marvell.com>, Felix Fietkau
-	<nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>, Mark Lee
-	<Mark-MC.Lee@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>, Matthias
- Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Keith Busch <kbusch@kernel.org>,
-	Jens Axboe <axboe@kernel.dk>, Christoph Hellwig <hch@lst.de>, Sagi Grimberg
-	<sagi@grimberg.me>, Chaitanya Kulkarni <kch@nvidia.com>, "Michael S. Tsirkin"
-	<mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
-	=?UTF-8?q?Eugenio=20P=C3=A9rez?= <eperezma@redhat.com>, Andrew Morton
-	<akpm@linux-foundation.org>, Alexei Starovoitov <ast@kernel.org>, Daniel
- Borkmann <daniel@iogearbox.net>, Jesper Dangaard Brouer <hawk@kernel.org>,
-	John Fastabend <john.fastabend@gmail.com>, Andrii Nakryiko
-	<andrii@kernel.org>, Martin KaFai Lau <martin.lau@linux.dev>, Eduard
- Zingerman <eddyz87@gmail.com>, Song Liu <song@kernel.org>, Yonghong Song
-	<yonghong.song@linux.dev>, KP Singh <kpsingh@kernel.org>, Stanislav Fomichev
-	<sdf@google.com>, Hao Luo <haoluo@google.com>, Jiri Olsa <jolsa@kernel.org>,
-	David Howells <dhowells@redhat.com>, Marc Dionne <marc.dionne@auristor.com>,
-	Chuck Lever <chuck.lever@oracle.com>, Jeff Layton <jlayton@kernel.org>, Neil
- Brown <neilb@suse.de>, Olga Kornievskaia <kolga@netapp.com>, Dai Ngo
-	<Dai.Ngo@oracle.com>, Tom Talpey <tom@talpey.com>, Trond Myklebust
-	<trondmy@kernel.org>, Anna Schumaker <anna@kernel.org>,
-	<intel-wired-lan@lists.osuosl.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-nvme@lists.infradead.org>,
-	<kvm@vger.kernel.org>, <virtualization@lists.linux.dev>,
-	<linux-mm@kvack.org>, <bpf@vger.kernel.org>, <linux-afs@lists.infradead.org>,
-	<linux-nfs@vger.kernel.org>
-Subject: [PATCH net-next v8 04/13] mm: page_frag: add '_va' suffix to page_frag API
-Date: Mon, 17 Jun 2024 21:14:03 +0800
-Message-ID: <20240617131413.25189-5-linyunsheng@huawei.com>
-X-Mailer: git-send-email 2.33.0
-In-Reply-To: <20240617131413.25189-1-linyunsheng@huawei.com>
-References: <20240617131413.25189-1-linyunsheng@huawei.com>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.69.192.56]
-X-ClientProxiedBy: dggems705-chm.china.huawei.com (10.3.19.182) To
- dggpemf200006.china.huawei.com (7.185.36.61)
+	id 1sJCM1-0000000Apid-3YTa;
+	Mon, 17 Jun 2024 13:25:03 +0000
+Received: from localhost (unknown [213.135.10.150])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mail.3ffe.de (Postfix) with ESMTPSA id 96978230;
+	Mon, 17 Jun 2024 15:24:50 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc; s=mail2022082101;
+	t=1718630690;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:content-type:content-type:in-reply-to:in-reply-to:
+	 references:references; bh=XGdpwMen/VgLH0fpEvgI0LtL3f1BjG5LVb+4IVUtO6g=;
+	b=Q7r8/ReFl6eYZ20WbkLEG4pnme+d5/YemdIP1r/VSRiuZSaXALnMwSvEQtfBQmGIeuKwli
+	7IgsDxezpqkFORBSDX/00zj6LMUQdhJ1w10ODWF1zincbDxWWJ3bVWuMJEnm3AfA99e0Ko
+	qk6C6Uz3D4jyGQHsxN4V7+zfscZia/PyhnxM5gAdkvqwrH8iGaG27oNv13rR14i6Dh717S
+	FDS+sXX/et9Mh92whUvH31TlnkcsyDREwLFoRXtKYwBWubvVpUXqlrAh9UUST/HEVkOwyZ
+	8UD4+YUy77ZcBJFWpYlTWmnXl2ERnMkHGXqoivpF0lvyD8hP+5Aw8VlG5ckeTQ==
+Content-Type: multipart/signed;
+ boundary=cd73275ec8ec08f02789c22d654dfdbdccd7e263beb5db59c37f41efc36e;
+ micalg=pgp-sha384; protocol="application/pgp-signature"
+Date: Mon, 17 Jun 2024 15:24:39 +0200
+Message-Id: <D22BQAOFJWVJ.2Y9FKAAR57BHK@walle.cc>
+From: "Michael Walle" <michael@walle.cc>
+To: "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>,
+ <chunkuang.hu@kernel.org>
+Subject: Re: [PATCH v7 3/3] drm/mediatek: Implement OF graphs support for
+ display paths
+Cc: <robh@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
+ <conor+dt@kernel.org>, <p.zabel@pengutronix.de>, <airlied@gmail.com>,
+ <daniel@ffwll.ch>, <maarten.lankhorst@linux.intel.com>,
+ <mripard@kernel.org>, <tzimmermann@suse.de>, <matthias.bgg@gmail.com>,
+ <shawn.sung@mediatek.com>, <yu-chang.lee@mediatek.com>,
+ <ck.hu@mediatek.com>, <jitao.shi@mediatek.com>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+ <linux-arm-kernel@lists.infradead.org>, <wenst@chromium.org>,
+ <kernel@collabora.com>, <sui.jinfeng@linux.dev>, "Alexandre Mergnat"
+ <amergnat@baylibre.com>
+X-Mailer: aerc 0.16.0
+References: <20240612065634.26569-1-angelogioacchino.delregno@collabora.com>
+ <20240612065634.26569-4-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20240612065634.26569-4-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240617_061738_897550_1E8820A3 
-X-CRM114-Status: GOOD (  16.72  )
+X-CRM114-CacheID: sfid-20240617_062502_263342_4002B930 
+X-CRM114-Status: GOOD (  24.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,563 +84,193 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Currently the page_frag API is returning 'virtual address'
-or 'va' when allocing and expecting 'virtual address' or
-'va' as input when freeing.
+--cd73275ec8ec08f02789c22d654dfdbdccd7e263beb5db59c37f41efc36e
+Mime-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
 
-As we are about to support new use cases that the caller
-need to deal with 'struct page' or need to deal with both
-'va' and 'struct page'. In order to differentiate the API
-handling between 'va' and 'struct page', add '_va' suffix
-to the corresponding API mirroring the page_pool_alloc_va()
-API of the page_pool. So that callers expecting to deal with
-va, page or both va and page may call page_frag_alloc_va*,
-page_frag_alloc_pg*, or page_frag_alloc* API accordingly.
+Hi Angelo,
 
-CC: Alexander Duyck <alexander.duyck@gmail.com>
-Signed-off-by: Yunsheng Lin <linyunsheng@huawei.com>
----
- drivers/net/ethernet/google/gve/gve_rx.c      |  4 ++--
- drivers/net/ethernet/intel/ice/ice_txrx.c     |  2 +-
- drivers/net/ethernet/intel/ice/ice_txrx.h     |  2 +-
- drivers/net/ethernet/intel/ice/ice_txrx_lib.c |  2 +-
- .../net/ethernet/intel/ixgbevf/ixgbevf_main.c |  4 ++--
- .../marvell/octeontx2/nic/otx2_common.c       |  2 +-
- drivers/net/ethernet/mediatek/mtk_wed_wo.c    |  4 ++--
- drivers/nvme/host/tcp.c                       |  8 +++----
- drivers/nvme/target/tcp.c                     | 22 +++++++++----------
- drivers/vhost/net.c                           |  6 ++---
- include/linux/page_frag_cache.h               | 21 +++++++++---------
- include/linux/skbuff.h                        |  2 +-
- kernel/bpf/cpumap.c                           |  2 +-
- mm/page_frag_cache.c                          | 12 +++++-----
- mm/page_frag_test.c                           | 13 ++++++-----
- net/core/skbuff.c                             | 18 +++++++--------
- net/core/xdp.c                                |  2 +-
- net/rxrpc/txbuf.c                             | 15 +++++++------
- net/sunrpc/svcsock.c                          |  6 ++---
- 19 files changed, 76 insertions(+), 71 deletions(-)
+> +/**
+> + * mtk_drm_of_ddp_path_build_one - Build a Display HW Pipeline for a CRT=
+C Path
+> + * @dev:          The mediatek-drm device
+> + * @cpath:        CRTC Path relative to a VDO or MMSYS
+> + * @out_path:     Pointer to an array that will contain the new pipeline
+> + * @out_path_len: Number of entries in the pipeline array
+> + *
+> + * MediaTek SoCs can use different DDP hardware pipelines (or paths) dep=
+ending
+> + * on the board-specific desired display configuration; this function wa=
+lks
+> + * through all of the output endpoints starting from a VDO or MMSYS hard=
+ware
+> + * instance and builds the right pipeline as specified in device trees.
+> + *
+> + * Return:
+> + * * %0       - Display HW Pipeline successfully built and validated
+> + * * %-ENOENT - Display pipeline was not specified in device tree
+> + * * %-EINVAL - Display pipeline built but validation failed
+> + * * %-ENOMEM - Failure to allocate pipeline array to pass to the caller
+> + */
+> +static int mtk_drm_of_ddp_path_build_one(struct device *dev, enum mtk_cr=
+tc_path cpath,
+> +					 const unsigned int **out_path,
+> +					 unsigned int *out_path_len)
+> +{
+> +	struct device_node *next, *prev, *vdo =3D dev->parent->of_node;
+> +	unsigned int temp_path[DDP_COMPONENT_DRM_ID_MAX] =3D { 0 };
+> +	unsigned int *final_ddp_path;
+> +	unsigned short int idx =3D 0;
+> +	bool ovl_adaptor_comp_added =3D false;
+> +	int ret;
+> +
+> +	/* Get the first entry for the temp_path array */
+> +	ret =3D mtk_drm_of_get_ddp_ep_cid(vdo, 0, cpath, &next, &temp_path[idx]=
+);
+> +	if (ret) {
+> +		if (next && temp_path[idx] =3D=3D DDP_COMPONENT_DRM_OVL_ADAPTOR) {
+> +			dev_err(dev, "Adding OVL Adaptor for %pOF\n", next);
+> +			ovl_adaptor_comp_added =3D true;
+> +		} else {
+> +			if (next)
+> +				dev_err(dev, "Invalid component %pOF\n", next);
+> +			else
+> +				dev_err(dev, "Cannot find first endpoint for path %d\n", cpath);
+> +
+> +			return ret;
+> +		}
+> +	}
+> +	idx++;
+> +
+> +	/*
+> +	 * Walk through port outputs until we reach the last valid mediatek-drm=
+ component.
+> +	 * To be valid, this must end with an "invalid" component that is a dis=
+play node.
+> +	 */
+> +	do {
+> +		prev =3D next;
+> +		ret =3D mtk_drm_of_get_ddp_ep_cid(next, 1, cpath, &next, &temp_path[id=
+x]);
+> +		of_node_put(prev);
+> +		if (ret) {
+> +			of_node_put(next);
+> +			break;
+> +		}
+> +
+> +		/*
+> +		 * If this is an OVL adaptor exclusive component and one of those
+> +		 * was already added, don't add another instance of the generic
+> +		 * DDP_COMPONENT_OVL_ADAPTOR, as this is used only to decide whether
+> +		 * to probe that component master driver of which only one instance
+> +		 * is needed and possible.
+> +		 */
+> +		if (temp_path[idx] =3D=3D DDP_COMPONENT_DRM_OVL_ADAPTOR) {
+> +			if (!ovl_adaptor_comp_added)
+> +				ovl_adaptor_comp_added =3D true;
+> +			else
+> +				idx--;
+> +		}
+> +	} while (++idx < DDP_COMPONENT_DRM_ID_MAX);
+> +
+> +	/*
+> +	 * The device component might not be disabled: in that case, don't
 
-diff --git a/drivers/net/ethernet/google/gve/gve_rx.c b/drivers/net/ethernet/google/gve/gve_rx.c
-index acb73d4d0de6..b6c10100e462 100644
---- a/drivers/net/ethernet/google/gve/gve_rx.c
-+++ b/drivers/net/ethernet/google/gve/gve_rx.c
-@@ -729,7 +729,7 @@ static int gve_xdp_redirect(struct net_device *dev, struct gve_rx_ring *rx,
- 
- 	total_len = headroom + SKB_DATA_ALIGN(len) +
- 		SKB_DATA_ALIGN(sizeof(struct skb_shared_info));
--	frame = page_frag_alloc(&rx->page_cache, total_len, GFP_ATOMIC);
-+	frame = page_frag_alloc_va(&rx->page_cache, total_len, GFP_ATOMIC);
- 	if (!frame) {
- 		u64_stats_update_begin(&rx->statss);
- 		rx->xdp_alloc_fails++;
-@@ -742,7 +742,7 @@ static int gve_xdp_redirect(struct net_device *dev, struct gve_rx_ring *rx,
- 
- 	err = xdp_do_redirect(dev, &new, xdp_prog);
- 	if (err)
--		page_frag_free(frame);
-+		page_frag_free_va(frame);
- 
- 	return err;
- }
-diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c b/drivers/net/ethernet/intel/ice/ice_txrx.c
-index 8bb743f78fcb..399b317c509d 100644
---- a/drivers/net/ethernet/intel/ice/ice_txrx.c
-+++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
-@@ -126,7 +126,7 @@ ice_unmap_and_free_tx_buf(struct ice_tx_ring *ring, struct ice_tx_buf *tx_buf)
- 		dev_kfree_skb_any(tx_buf->skb);
- 		break;
- 	case ICE_TX_BUF_XDP_TX:
--		page_frag_free(tx_buf->raw_buf);
-+		page_frag_free_va(tx_buf->raw_buf);
- 		break;
- 	case ICE_TX_BUF_XDP_XMIT:
- 		xdp_return_frame(tx_buf->xdpf);
-diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.h b/drivers/net/ethernet/intel/ice/ice_txrx.h
-index feba314a3fe4..6379f57d8228 100644
---- a/drivers/net/ethernet/intel/ice/ice_txrx.h
-+++ b/drivers/net/ethernet/intel/ice/ice_txrx.h
-@@ -148,7 +148,7 @@ static inline int ice_skb_pad(void)
-  * @ICE_TX_BUF_DUMMY: dummy Flow Director packet, unmap and kfree()
-  * @ICE_TX_BUF_FRAG: mapped skb OR &xdp_buff frag, only unmap DMA
-  * @ICE_TX_BUF_SKB: &sk_buff, unmap and consume_skb(), update stats
-- * @ICE_TX_BUF_XDP_TX: &xdp_buff, unmap and page_frag_free(), stats
-+ * @ICE_TX_BUF_XDP_TX: &xdp_buff, unmap and page_frag_free_va(), stats
-  * @ICE_TX_BUF_XDP_XMIT: &xdp_frame, unmap and xdp_return_frame(), stats
-  * @ICE_TX_BUF_XSK_TX: &xdp_buff on XSk queue, xsk_buff_free(), stats
-  */
-diff --git a/drivers/net/ethernet/intel/ice/ice_txrx_lib.c b/drivers/net/ethernet/intel/ice/ice_txrx_lib.c
-index 2719f0e20933..a1a41a14df0d 100644
---- a/drivers/net/ethernet/intel/ice/ice_txrx_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_txrx_lib.c
-@@ -250,7 +250,7 @@ ice_clean_xdp_tx_buf(struct device *dev, struct ice_tx_buf *tx_buf,
- 
- 	switch (tx_buf->type) {
- 	case ICE_TX_BUF_XDP_TX:
--		page_frag_free(tx_buf->raw_buf);
-+		page_frag_free_va(tx_buf->raw_buf);
- 		break;
- 	case ICE_TX_BUF_XDP_XMIT:
- 		xdp_return_frame_bulk(tx_buf->xdpf, bq);
-diff --git a/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c b/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
-index b938dc06045d..fcd1b149a45d 100644
---- a/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
-+++ b/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
-@@ -303,7 +303,7 @@ static bool ixgbevf_clean_tx_irq(struct ixgbevf_q_vector *q_vector,
- 
- 		/* free the skb */
- 		if (ring_is_xdp(tx_ring))
--			page_frag_free(tx_buffer->data);
-+			page_frag_free_va(tx_buffer->data);
- 		else
- 			napi_consume_skb(tx_buffer->skb, napi_budget);
- 
-@@ -2413,7 +2413,7 @@ static void ixgbevf_clean_tx_ring(struct ixgbevf_ring *tx_ring)
- 
- 		/* Free all the Tx ring sk_buffs */
- 		if (ring_is_xdp(tx_ring))
--			page_frag_free(tx_buffer->data);
-+			page_frag_free_va(tx_buffer->data);
- 		else
- 			dev_kfree_skb_any(tx_buffer->skb);
- 
-diff --git a/drivers/net/ethernet/marvell/octeontx2/nic/otx2_common.c b/drivers/net/ethernet/marvell/octeontx2/nic/otx2_common.c
-index a85ac039d779..8eb5820b8a70 100644
---- a/drivers/net/ethernet/marvell/octeontx2/nic/otx2_common.c
-+++ b/drivers/net/ethernet/marvell/octeontx2/nic/otx2_common.c
-@@ -553,7 +553,7 @@ static int __otx2_alloc_rbuf(struct otx2_nic *pfvf, struct otx2_pool *pool,
- 	*dma = dma_map_single_attrs(pfvf->dev, buf, pool->rbsize,
- 				    DMA_FROM_DEVICE, DMA_ATTR_SKIP_CPU_SYNC);
- 	if (unlikely(dma_mapping_error(pfvf->dev, *dma))) {
--		page_frag_free(buf);
-+		page_frag_free_va(buf);
- 		return -ENOMEM;
- 	}
- 
-diff --git a/drivers/net/ethernet/mediatek/mtk_wed_wo.c b/drivers/net/ethernet/mediatek/mtk_wed_wo.c
-index 7063c78bd35f..c4228719f8a4 100644
---- a/drivers/net/ethernet/mediatek/mtk_wed_wo.c
-+++ b/drivers/net/ethernet/mediatek/mtk_wed_wo.c
-@@ -142,8 +142,8 @@ mtk_wed_wo_queue_refill(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q,
- 		dma_addr_t addr;
- 		void *buf;
- 
--		buf = page_frag_alloc(&q->cache, q->buf_size,
--				      GFP_ATOMIC | GFP_DMA32);
-+		buf = page_frag_alloc_va(&q->cache, q->buf_size,
-+					 GFP_ATOMIC | GFP_DMA32);
- 		if (!buf)
- 			break;
- 
-diff --git a/drivers/nvme/host/tcp.c b/drivers/nvme/host/tcp.c
-index 8b5e4327fe83..4b7a897897fc 100644
---- a/drivers/nvme/host/tcp.c
-+++ b/drivers/nvme/host/tcp.c
-@@ -506,7 +506,7 @@ static void nvme_tcp_exit_request(struct blk_mq_tag_set *set,
- {
- 	struct nvme_tcp_request *req = blk_mq_rq_to_pdu(rq);
- 
--	page_frag_free(req->pdu);
-+	page_frag_free_va(req->pdu);
- }
- 
- static int nvme_tcp_init_request(struct blk_mq_tag_set *set,
-@@ -520,7 +520,7 @@ static int nvme_tcp_init_request(struct blk_mq_tag_set *set,
- 	struct nvme_tcp_queue *queue = &ctrl->queues[queue_idx];
- 	u8 hdgst = nvme_tcp_hdgst_len(queue);
- 
--	req->pdu = page_frag_alloc(&queue->pf_cache,
-+	req->pdu = page_frag_alloc_va(&queue->pf_cache,
- 		sizeof(struct nvme_tcp_cmd_pdu) + hdgst,
- 		GFP_KERNEL | __GFP_ZERO);
- 	if (!req->pdu)
-@@ -1337,7 +1337,7 @@ static void nvme_tcp_free_async_req(struct nvme_tcp_ctrl *ctrl)
- {
- 	struct nvme_tcp_request *async = &ctrl->async_req;
- 
--	page_frag_free(async->pdu);
-+	page_frag_free_va(async->pdu);
- }
- 
- static int nvme_tcp_alloc_async_req(struct nvme_tcp_ctrl *ctrl)
-@@ -1346,7 +1346,7 @@ static int nvme_tcp_alloc_async_req(struct nvme_tcp_ctrl *ctrl)
- 	struct nvme_tcp_request *async = &ctrl->async_req;
- 	u8 hdgst = nvme_tcp_hdgst_len(queue);
- 
--	async->pdu = page_frag_alloc(&queue->pf_cache,
-+	async->pdu = page_frag_alloc_va(&queue->pf_cache,
- 		sizeof(struct nvme_tcp_cmd_pdu) + hdgst,
- 		GFP_KERNEL | __GFP_ZERO);
- 	if (!async->pdu)
-diff --git a/drivers/nvme/target/tcp.c b/drivers/nvme/target/tcp.c
-index 380f22ee3ebb..bea3aa79ef43 100644
---- a/drivers/nvme/target/tcp.c
-+++ b/drivers/nvme/target/tcp.c
-@@ -1463,24 +1463,24 @@ static int nvmet_tcp_alloc_cmd(struct nvmet_tcp_queue *queue,
- 	c->queue = queue;
- 	c->req.port = queue->port->nport;
- 
--	c->cmd_pdu = page_frag_alloc(&queue->pf_cache,
-+	c->cmd_pdu = page_frag_alloc_va(&queue->pf_cache,
- 			sizeof(*c->cmd_pdu) + hdgst, GFP_KERNEL | __GFP_ZERO);
- 	if (!c->cmd_pdu)
- 		return -ENOMEM;
- 	c->req.cmd = &c->cmd_pdu->cmd;
- 
--	c->rsp_pdu = page_frag_alloc(&queue->pf_cache,
-+	c->rsp_pdu = page_frag_alloc_va(&queue->pf_cache,
- 			sizeof(*c->rsp_pdu) + hdgst, GFP_KERNEL | __GFP_ZERO);
- 	if (!c->rsp_pdu)
- 		goto out_free_cmd;
- 	c->req.cqe = &c->rsp_pdu->cqe;
- 
--	c->data_pdu = page_frag_alloc(&queue->pf_cache,
-+	c->data_pdu = page_frag_alloc_va(&queue->pf_cache,
- 			sizeof(*c->data_pdu) + hdgst, GFP_KERNEL | __GFP_ZERO);
- 	if (!c->data_pdu)
- 		goto out_free_rsp;
- 
--	c->r2t_pdu = page_frag_alloc(&queue->pf_cache,
-+	c->r2t_pdu = page_frag_alloc_va(&queue->pf_cache,
- 			sizeof(*c->r2t_pdu) + hdgst, GFP_KERNEL | __GFP_ZERO);
- 	if (!c->r2t_pdu)
- 		goto out_free_data;
-@@ -1495,20 +1495,20 @@ static int nvmet_tcp_alloc_cmd(struct nvmet_tcp_queue *queue,
- 
- 	return 0;
- out_free_data:
--	page_frag_free(c->data_pdu);
-+	page_frag_free_va(c->data_pdu);
- out_free_rsp:
--	page_frag_free(c->rsp_pdu);
-+	page_frag_free_va(c->rsp_pdu);
- out_free_cmd:
--	page_frag_free(c->cmd_pdu);
-+	page_frag_free_va(c->cmd_pdu);
- 	return -ENOMEM;
- }
- 
- static void nvmet_tcp_free_cmd(struct nvmet_tcp_cmd *c)
- {
--	page_frag_free(c->r2t_pdu);
--	page_frag_free(c->data_pdu);
--	page_frag_free(c->rsp_pdu);
--	page_frag_free(c->cmd_pdu);
-+	page_frag_free_va(c->r2t_pdu);
-+	page_frag_free_va(c->data_pdu);
-+	page_frag_free_va(c->rsp_pdu);
-+	page_frag_free_va(c->cmd_pdu);
- }
- 
- static int nvmet_tcp_alloc_cmds(struct nvmet_tcp_queue *queue)
-diff --git a/drivers/vhost/net.c b/drivers/vhost/net.c
-index f16279351db5..6691fac01e0d 100644
---- a/drivers/vhost/net.c
-+++ b/drivers/vhost/net.c
-@@ -686,8 +686,8 @@ static int vhost_net_build_xdp(struct vhost_net_virtqueue *nvq,
- 		return -ENOSPC;
- 
- 	buflen += SKB_DATA_ALIGN(len + pad);
--	buf = page_frag_alloc_align(&net->pf_cache, buflen, GFP_KERNEL,
--				    SMP_CACHE_BYTES);
-+	buf = page_frag_alloc_va_align(&net->pf_cache, buflen, GFP_KERNEL,
-+				       SMP_CACHE_BYTES);
- 	if (unlikely(!buf))
- 		return -ENOMEM;
- 
-@@ -734,7 +734,7 @@ static int vhost_net_build_xdp(struct vhost_net_virtqueue *nvq,
- 	return 0;
- 
- err:
--	page_frag_free(buf);
-+	page_frag_free_va(buf);
- 	return ret;
- }
- 
-diff --git a/include/linux/page_frag_cache.h b/include/linux/page_frag_cache.h
-index b9411f0db25a..c6fde197a6eb 100644
---- a/include/linux/page_frag_cache.h
-+++ b/include/linux/page_frag_cache.h
-@@ -25,23 +25,24 @@ struct page_frag_cache {
- 
- void page_frag_cache_drain(struct page_frag_cache *nc);
- void __page_frag_cache_drain(struct page *page, unsigned int count);
--void *__page_frag_alloc_align(struct page_frag_cache *nc, unsigned int fragsz,
--			      gfp_t gfp_mask, unsigned int align_mask);
-+void *__page_frag_alloc_va_align(struct page_frag_cache *nc,
-+				 unsigned int fragsz, gfp_t gfp_mask,
-+				 unsigned int align_mask);
- 
--static inline void *page_frag_alloc_align(struct page_frag_cache *nc,
--					  unsigned int fragsz, gfp_t gfp_mask,
--					  unsigned int align)
-+static inline void *page_frag_alloc_va_align(struct page_frag_cache *nc,
-+					     unsigned int fragsz,
-+					     gfp_t gfp_mask, unsigned int align)
- {
- 	WARN_ON_ONCE(!is_power_of_2(align) || align > PAGE_SIZE);
--	return __page_frag_alloc_align(nc, fragsz, gfp_mask, -align);
-+	return __page_frag_alloc_va_align(nc, fragsz, gfp_mask, -align);
- }
- 
--static inline void *page_frag_alloc(struct page_frag_cache *nc,
--				    unsigned int fragsz, gfp_t gfp_mask)
-+static inline void *page_frag_alloc_va(struct page_frag_cache *nc,
-+				       unsigned int fragsz, gfp_t gfp_mask)
- {
--	return __page_frag_alloc_align(nc, fragsz, gfp_mask, ~0u);
-+	return __page_frag_alloc_va_align(nc, fragsz, gfp_mask, ~0u);
- }
- 
--void page_frag_free(void *addr);
-+void page_frag_free_va(void *addr);
- 
- #endif
-diff --git a/include/linux/skbuff.h b/include/linux/skbuff.h
-index 7387d3d3b5af..82d342241e0c 100644
---- a/include/linux/skbuff.h
-+++ b/include/linux/skbuff.h
-@@ -3372,7 +3372,7 @@ static inline struct sk_buff *netdev_alloc_skb_ip_align(struct net_device *dev,
- 
- static inline void skb_free_frag(void *addr)
- {
--	page_frag_free(addr);
-+	page_frag_free_va(addr);
- }
- 
- void *__napi_alloc_frag_align(unsigned int fragsz, unsigned int align_mask);
-diff --git a/kernel/bpf/cpumap.c b/kernel/bpf/cpumap.c
-index a8e34416e960..3a6a237e7dd3 100644
---- a/kernel/bpf/cpumap.c
-+++ b/kernel/bpf/cpumap.c
-@@ -322,7 +322,7 @@ static int cpu_map_kthread_run(void *data)
- 
- 			/* Bring struct page memory area to curr CPU. Read by
- 			 * build_skb_around via page_is_pfmemalloc(), and when
--			 * freed written by page_frag_free call.
-+			 * freed written by page_frag_free_va call.
- 			 */
- 			prefetchw(page);
- 		}
-diff --git a/mm/page_frag_cache.c b/mm/page_frag_cache.c
-index da244851b8a4..dd640af5607a 100644
---- a/mm/page_frag_cache.c
-+++ b/mm/page_frag_cache.c
-@@ -58,9 +58,9 @@ void __page_frag_cache_drain(struct page *page, unsigned int count)
- }
- EXPORT_SYMBOL(__page_frag_cache_drain);
- 
--void *__page_frag_alloc_align(struct page_frag_cache *nc,
--			      unsigned int fragsz, gfp_t gfp_mask,
--			      unsigned int align_mask)
-+void *__page_frag_alloc_va_align(struct page_frag_cache *nc,
-+				 unsigned int fragsz, gfp_t gfp_mask,
-+				 unsigned int align_mask)
- {
- 	unsigned int size = PAGE_SIZE;
- 	struct page *page;
-@@ -125,16 +125,16 @@ void *__page_frag_alloc_align(struct page_frag_cache *nc,
- 
- 	return nc->va + offset;
- }
--EXPORT_SYMBOL(__page_frag_alloc_align);
-+EXPORT_SYMBOL(__page_frag_alloc_va_align);
- 
- /*
-  * Frees a page fragment allocated out of either a compound or order 0 page.
-  */
--void page_frag_free(void *addr)
-+void page_frag_free_va(void *addr)
- {
- 	struct page *page = virt_to_head_page(addr);
- 
- 	if (unlikely(put_page_testzero(page)))
- 		free_unref_page(page, compound_order(page));
- }
--EXPORT_SYMBOL(page_frag_free);
-+EXPORT_SYMBOL(page_frag_free_va);
-diff --git a/mm/page_frag_test.c b/mm/page_frag_test.c
-index 1349f6c6b521..c3cfce87fbbf 100644
---- a/mm/page_frag_test.c
-+++ b/mm/page_frag_test.c
-@@ -277,7 +277,7 @@ static int page_frag_pop_thread(void *arg)
- 
- 		if (obj) {
- 			nr--;
--			page_frag_free(obj);
-+			page_frag_free_va(obj);
- 		} else {
- 			cond_resched();
- 		}
-@@ -305,17 +305,20 @@ static int page_frag_push_thread(void *arg)
- 		int ret;
- 
- 		if (test_align)
--			va = page_frag_alloc_align(&test_frag, test_alloc_len,
--						   GFP_KERNEL, SMP_CACHE_BYTES);
-+			va = page_frag_alloc_va_align(&test_frag,
-+						      test_alloc_len,
-+						      GFP_KERNEL,
-+						      SMP_CACHE_BYTES);
- 		else
--			va = page_frag_alloc(&test_frag, test_alloc_len, GFP_KERNEL);
-+			va = page_frag_alloc_va(&test_frag, test_alloc_len,
-+						GFP_KERNEL);
- 
- 		if (!va)
- 			continue;
- 
- 		ret = objpool_push(va, pool);
- 		if (ret) {
--			page_frag_free(va);
-+			page_frag_free_va(va);
- 			cond_resched();
- 		} else {
- 			nr--;
-diff --git a/net/core/skbuff.c b/net/core/skbuff.c
-index c8ac79851cd6..6842fa6a71a5 100644
---- a/net/core/skbuff.c
-+++ b/net/core/skbuff.c
-@@ -309,8 +309,8 @@ void *__napi_alloc_frag_align(unsigned int fragsz, unsigned int align_mask)
- 
- 	fragsz = SKB_DATA_ALIGN(fragsz);
- 
--	return __page_frag_alloc_align(&nc->page, fragsz, GFP_ATOMIC,
--				       align_mask);
-+	return __page_frag_alloc_va_align(&nc->page, fragsz, GFP_ATOMIC,
-+					  align_mask);
- }
- EXPORT_SYMBOL(__napi_alloc_frag_align);
- 
-@@ -322,15 +322,15 @@ void *__netdev_alloc_frag_align(unsigned int fragsz, unsigned int align_mask)
- 	if (in_hardirq() || irqs_disabled()) {
- 		struct page_frag_cache *nc = this_cpu_ptr(&netdev_alloc_cache);
- 
--		data = __page_frag_alloc_align(nc, fragsz, GFP_ATOMIC,
--					       align_mask);
-+		data = __page_frag_alloc_va_align(nc, fragsz, GFP_ATOMIC,
-+						  align_mask);
- 	} else {
- 		struct napi_alloc_cache *nc;
- 
- 		local_bh_disable();
- 		nc = this_cpu_ptr(&napi_alloc_cache);
--		data = __page_frag_alloc_align(&nc->page, fragsz, GFP_ATOMIC,
--					       align_mask);
-+		data = __page_frag_alloc_va_align(&nc->page, fragsz, GFP_ATOMIC,
-+						  align_mask);
- 		local_bh_enable();
- 	}
- 	return data;
-@@ -740,12 +740,12 @@ struct sk_buff *__netdev_alloc_skb(struct net_device *dev, unsigned int len,
- 
- 	if (in_hardirq() || irqs_disabled()) {
- 		nc = this_cpu_ptr(&netdev_alloc_cache);
--		data = page_frag_alloc(nc, len, gfp_mask);
-+		data = page_frag_alloc_va(nc, len, gfp_mask);
- 		pfmemalloc = nc->pfmemalloc;
- 	} else {
- 		local_bh_disable();
- 		nc = this_cpu_ptr(&napi_alloc_cache.page);
--		data = page_frag_alloc(nc, len, gfp_mask);
-+		data = page_frag_alloc_va(nc, len, gfp_mask);
- 		pfmemalloc = nc->pfmemalloc;
- 		local_bh_enable();
- 	}
-@@ -833,7 +833,7 @@ struct sk_buff *napi_alloc_skb(struct napi_struct *napi, unsigned int len)
- 	} else {
- 		len = SKB_HEAD_ALIGN(len);
- 
--		data = page_frag_alloc(&nc->page, len, gfp_mask);
-+		data = page_frag_alloc_va(&nc->page, len, gfp_mask);
- 		pfmemalloc = nc->page.pfmemalloc;
- 	}
- 
-diff --git a/net/core/xdp.c b/net/core/xdp.c
-index 41693154e426..245a2d011aeb 100644
---- a/net/core/xdp.c
-+++ b/net/core/xdp.c
-@@ -391,7 +391,7 @@ void __xdp_return(void *data, struct xdp_mem_info *mem, bool napi_direct,
- 		page_pool_put_full_page(page->pp, page, napi_direct);
- 		break;
- 	case MEM_TYPE_PAGE_SHARED:
--		page_frag_free(data);
-+		page_frag_free_va(data);
- 		break;
- 	case MEM_TYPE_PAGE_ORDER0:
- 		page = virt_to_page(data); /* Assumes order0 page*/
-diff --git a/net/rxrpc/txbuf.c b/net/rxrpc/txbuf.c
-index c3913d8a50d3..dccb0353ee84 100644
---- a/net/rxrpc/txbuf.c
-+++ b/net/rxrpc/txbuf.c
-@@ -33,8 +33,8 @@ struct rxrpc_txbuf *rxrpc_alloc_data_txbuf(struct rxrpc_call *call, size_t data_
- 
- 	data_align = umax(data_align, L1_CACHE_BYTES);
- 	mutex_lock(&call->conn->tx_data_alloc_lock);
--	buf = page_frag_alloc_align(&call->conn->tx_data_alloc, total, gfp,
--				    data_align);
-+	buf = page_frag_alloc_va_align(&call->conn->tx_data_alloc, total, gfp,
-+				       data_align);
- 	mutex_unlock(&call->conn->tx_data_alloc_lock);
- 	if (!buf) {
- 		kfree(txb);
-@@ -96,17 +96,18 @@ struct rxrpc_txbuf *rxrpc_alloc_ack_txbuf(struct rxrpc_call *call, size_t sack_s
- 	if (!txb)
- 		return NULL;
- 
--	buf = page_frag_alloc(&call->local->tx_alloc,
--			      sizeof(*whdr) + sizeof(*ack) + 1 + 3 + sizeof(*trailer), gfp);
-+	buf = page_frag_alloc_va(&call->local->tx_alloc,
-+				 sizeof(*whdr) + sizeof(*ack) + 1 + 3 + sizeof(*trailer), gfp);
- 	if (!buf) {
- 		kfree(txb);
- 		return NULL;
- 	}
- 
- 	if (sack_size) {
--		buf2 = page_frag_alloc(&call->local->tx_alloc, sack_size, gfp);
-+		buf2 = page_frag_alloc_va(&call->local->tx_alloc, sack_size,
-+					  gfp);
- 		if (!buf2) {
--			page_frag_free(buf);
-+			page_frag_free_va(buf);
- 			kfree(txb);
- 			return NULL;
- 		}
-@@ -180,7 +181,7 @@ static void rxrpc_free_txbuf(struct rxrpc_txbuf *txb)
- 			  rxrpc_txbuf_free);
- 	for (i = 0; i < txb->nr_kvec; i++)
- 		if (txb->kvec[i].iov_base)
--			page_frag_free(txb->kvec[i].iov_base);
-+			page_frag_free_va(txb->kvec[i].iov_base);
- 	kfree(txb);
- 	atomic_dec(&rxrpc_nr_txbuf);
- }
-diff --git a/net/sunrpc/svcsock.c b/net/sunrpc/svcsock.c
-index 6b3f01beb294..42d20412c1c3 100644
---- a/net/sunrpc/svcsock.c
-+++ b/net/sunrpc/svcsock.c
-@@ -1222,8 +1222,8 @@ static int svc_tcp_sendmsg(struct svc_sock *svsk, struct svc_rqst *rqstp,
- 	/* The stream record marker is copied into a temporary page
- 	 * fragment buffer so that it can be included in rq_bvec.
- 	 */
--	buf = page_frag_alloc(&svsk->sk_frag_cache, sizeof(marker),
--			      GFP_KERNEL);
-+	buf = page_frag_alloc_va(&svsk->sk_frag_cache, sizeof(marker),
-+				 GFP_KERNEL);
- 	if (!buf)
- 		return -ENOMEM;
- 	memcpy(buf, &marker, sizeof(marker));
-@@ -1235,7 +1235,7 @@ static int svc_tcp_sendmsg(struct svc_sock *svsk, struct svc_rqst *rqstp,
- 	iov_iter_bvec(&msg.msg_iter, ITER_SOURCE, rqstp->rq_bvec,
- 		      1 + count, sizeof(marker) + rqstp->rq_res.len);
- 	ret = sock_sendmsg(svsk->sk_sock, &msg);
--	page_frag_free(buf);
-+	page_frag_free_va(buf);
- 	if (ret < 0)
- 		return ret;
- 	*sentp += ret;
--- 
-2.33.0
+Sorry there was a typo in my proposal, This should either be
+"not be enabled" or "be disabled".
 
+> +	 * check the last entry and just report that the device is missing.
+> +	 */
+> +	if (ret =3D=3D -ENODEV)
+> +		return ret;
+> +
+
+..
+
+> +static int mtk_drm_of_ddp_path_build(struct device *dev, struct device_n=
+ode *node,
+> +				     struct mtk_mmsys_driver_data *data)
+> +{
+> +	struct device_node *ep_node;
+> +	struct of_endpoint of_ep;
+> +	bool output_present[MAX_CRTC] =3D { false };
+> +	bool valid_output_found =3D false;
+> +	int ret;
+> +
+> +	for_each_endpoint_of_node(node, ep_node) {
+> +		ret =3D of_graph_parse_endpoint(ep_node, &of_ep);
+> +		if (ret) {
+> +			dev_err_probe(dev, ret, "Cannot parse endpoint\n");
+> +			break;
+> +		}
+> +
+> +		if (of_ep.id >=3D MAX_CRTC) {
+> +			ret =3D dev_err_probe(dev, -EINVAL,
+> +					    "Invalid endpoint%u number\n", of_ep.port);
+> +			break;
+> +		}
+> +
+> +		output_present[of_ep.id] =3D true;
+> +	}
+> +
+> +	if (ret) {
+> +		of_node_put(ep_node);
+> +		return ret;
+> +	}
+> +
+> +	if (output_present[CRTC_MAIN]) {
+> +		ret =3D mtk_drm_of_ddp_path_build_one(dev, CRTC_MAIN,
+> +						    &data->main_path, &data->main_len);
+> +		if (ret =3D=3D 0)
+> +			valid_output_found =3D true;
+> +		else if (ret !=3D -ENODEV)
+> +			return ret;
+> +	}
+> +
+> +	if (output_present[CRTC_EXT]) {
+> +		ret =3D mtk_drm_of_ddp_path_build_one(dev, CRTC_EXT,
+> +						    &data->ext_path, &data->ext_len);
+> +		if (ret =3D=3D 0)
+> +			valid_output_found =3D true;
+> +		else if (ret !=3D -ENODEV)
+> +			return ret;
+> +	}
+> +
+> +	if (output_present[CRTC_THIRD]) {
+> +		ret =3D mtk_drm_of_ddp_path_build_one(dev, CRTC_THIRD,
+> +						    &data->third_path, &data->third_len);
+> +		if (ret =3D=3D 0)
+> +			valid_output_found =3D true;
+> +		else if (ret !=3D -ENODEV)
+> +			return ret;
+> +	}
+> +
+> +	if (!valid_output_found)
+> +		return -ENODEV;
+
+This doesn't work. My proposal just ignored the ENODEV error. Now
+you'll return ENODEV if there is no output for a given mmsys. In my
+case, that is true for the first mmsys. Subsequent mmsys's doesn't
+get probed in that case, it seems.
+
+Anyway, you shouldn't return ENODEV here because disabled just
+means not available, i.e. it should be treated the same as
+"output_present[] =3D=3D false".
+
+-michael
+
+--cd73275ec8ec08f02789c22d654dfdbdccd7e263beb5db59c37f41efc36e
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iKcEABMJAC8WIQTIVZIcOo5wfU/AngkSJzzuPgIf+AUCZnA5GREcbWljaGFlbEB3
+YWxsZS5jYwAKCRASJzzuPgIf+ASJAYC5JN+RTspgt+HYGXjHGvvwdfLZI0lFGsC8
+Wfx4Gsm/0IQYKRPLKUPUGvw/uRVNvC8BgM5HLmpkNhLtPn53MJEf34RxT+WAajRa
+cRfle3/fAZq7yCb+dvJXI3q8ygyun07X5Q==
+=1Wb1
+-----END PGP SIGNATURE-----
+
+--cd73275ec8ec08f02789c22d654dfdbdccd7e263beb5db59c37f41efc36e--
 
