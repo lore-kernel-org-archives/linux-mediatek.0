@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CE3CC2BA1A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jun 2024 11:20:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD072C2BA18
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jun 2024 11:20:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=v/DERmto+fcPFGNXFc1rrjBtuUOhS0O8qorlL9Ztj+8=; b=Gk/ymvL03t+naT7QAUgamvxH6o
-	Yj/Dd/OIY66wosUFG2pnBXWRvHnyRneFqoePrzO4gnALqWXFQ8VcsG/Xu5+5d5Tn7I7OzJWFsBtlP
-	nrD5GPc0zHUxN4raTTcNeL2MBHRS9DU+oUtu+XhIXR27RNbP/aQUU4k5LiwPvYyjMjZnoPYpkJ62c
-	TriSNlyEDDLgeqVj/yqT4v0PyFS8B1YrkU1D/x1g7EaqBW531D61rw9GbP84p4u5YqyiS8UqDxxFp
-	7YJv86ZckB8e7CLF92LpXzfBc+ED/G5C0K226vZOCbAJvpOVS3uTIbbYYiR3kV55WBOWByjR1T8nD
-	fYdczmjw==;
+	bh=zdHE5Vs65UbtFZ89Nt4kUGqKnp5D+mcGEByfAFRS9XU=; b=Xj0pdOzGtkB7OPZUJw1icELK5g
+	2kfFBfE51IyKPYacnzFIVxmq0DWKEpJAcOX8myr3btznDD9eAhb9mhJ5aJLtZx/0g6lhjUFPILqCd
+	TJPI+exMqhwkwGj+PD7G81UW++TR3C2er4hrEbz5R8Xqtda1hezJocIDB2nYlhsd8NDbPk8Hsk+Z5
+	qZo4Z+J8Je5pbOcKD2i6vzPq+9dET9clZDIfKpZVZlUG8224I8129pwqpGu3aP2Gf9Vxx2WQT8rTI
+	vRKVgd9RpaQ9YdQO6uk0asl+mQEzsuhLpklxnZloTNX0b0W02FUjMWMtgPBl4UnADd+hREOm06nXK
+	VoYHedPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJAPc-0000000AS88-34NA;
-	Mon, 17 Jun 2024 11:20:36 +0000
+	id 1sJAPl-0000000ASCC-1n18;
+	Mon, 17 Jun 2024 11:20:45 +0000
 Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJAPZ-0000000AS71-1Net;
-	Mon, 17 Jun 2024 11:20:35 +0000
+	id 1sJAPg-0000000AS9D-2R0u;
+	Mon, 17 Jun 2024 11:20:41 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1718623231;
-	bh=7M44fCklyjADUfmcSUg+yVO0wqaTtVBvCoujFgimqAs=;
+	s=mail; t=1718623239;
+	bh=1SLWPyPglngWrx9xUgQjtGPeTxnAJOtM3yGToDlbRaw=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=4lO0CG6Se4dkykAfArUXVGlNnDV/A7e4FAzDN6L25u12j45kB8xyqSWOaZAToMAqR
-	 jwz0+ZHyFK/H5e/MVdIe+3usnQYO9eg3NMbrOwGonhn2fg8WF3MbflBBKHHscFv0Xe
-	 aRuQyP4qoosQZZc828QXK8vC38vccFWFTKlrjxzS0AKuZQhJHH/jLuLU5hMuZkFz0r
-	 j20oR/5MtYOyPXxTf3/yiXs3Tnk0AMpgXgrexwtLp6nmvj3L8heEYjVbTSWaldQYEp
-	 YChbMhPo4/BiyIPNglAJRwP+5ykSDNyd/B2T/S3rsu6WT/CmENHJYHGxGmYX6GO0/5
-	 2+xK/eOFIwA9w==
+	b=aOzotlzYGGJseL/4cjdfS+0ABT1h8Cxk7gQa5ff3AcuOmunZlHlf1FgYfET9Q0/4i
+	 8xCmNOAVy6LoAFljcQtnK9NtxDWXKWycgr/VAiKGFo+1oc5PpxwXvKEfGkvOB1s7Bi
+	 rTiZ2TbHD7Q8aebO5HZ8K3HJh9mB9do+OJkaGvG9k3FJkeGKSKBL/J1UY7cthCn15U
+	 QiSCxxObuU4L/b7XbQsjLIeikbDJVhCSJ9Wafb6INqlJxxAsVdCUYxNyzibNT7S9Zf
+	 zn/rhQz/u6ScOKSEpbuo4g9V6NvzW4anbW9M2wrHP3yWfFy781WjlX6K0sVRMpiCFK
+	 xB0f1RW+QhChg==
 Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 21A6537804C8;
-	Mon, 17 Jun 2024 11:20:30 +0000 (UTC)
-Message-ID: <670f3b3d-10ad-4ed4-bc36-317900bb5bb0@collabora.com>
-Date: Mon, 17 Jun 2024 13:20:29 +0200
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 797AA37804C8;
+	Mon, 17 Jun 2024 11:20:38 +0000 (UTC)
+Message-ID: <48bcaa6b-b814-41fd-b584-da664f02e3ba@collabora.com>
+Date: Mon, 17 Jun 2024 13:20:37 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 10/13] drm/mediatek: Fix XRGB setting error in Mixer
+Subject: Re: [PATCH 11/13] drm/mediatek: Add new color format MACROs in OVL
 To: shawn.sung@mediatek.com, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
  Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
  Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
@@ -57,15 +57,15 @@ To: shawn.sung@mediatek.com, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
 Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 References: <20240616-mediatek-drm-next-v1-0-7e8f9cf785d8@mediatek.com>
- <20240616-mediatek-drm-next-v1-10-7e8f9cf785d8@mediatek.com>
+ <20240616-mediatek-drm-next-v1-11-7e8f9cf785d8@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20240616-mediatek-drm-next-v1-10-7e8f9cf785d8@mediatek.com>
+In-Reply-To: <20240616-mediatek-drm-next-v1-11-7e8f9cf785d8@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240617_042033_657968_136E8524 
-X-CRM114-Status: UNSURE (   6.18  )
+X-CRM114-CacheID: sfid-20240617_042040_800490_9B2D3B4C 
+X-CRM114-Status: UNSURE (   6.29  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -84,11 +84,10 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Il 16/06/24 10:29, Hsiao Chien Sung via B4 Relay ha scritto:
 > From: Hsiao Chien Sung <shawn.sung@mediatek.com>
 > 
-> Although the alpha channel in XRGB formats can be ignored, ALPHA_CON
-> must be configured accordingly when using XRGB formats or it will still
-> affects CRC generation.
+> Define new color formats to hide the bit operation in the MACROs to make
+> the switch statement more concise.
+> Change the MACROs to align the naming rule in DRM.
 > 
-> Fixes: d886c0009bd0 ("drm/mediatek: Add ETHDR support for MT8195")
 > Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
 > Reviewed-by: CK Hu <ck.hu@mediatek.com>
 
