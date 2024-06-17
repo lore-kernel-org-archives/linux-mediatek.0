@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 274FFC27C79
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jun 2024 17:35:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1AF93C2BC81
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jun 2024 17:39:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lYaM0laXOt5l3lyKjuT0sp+NAD83NQ/dnLMavgSV8Jo=; b=xB+9RhvUIek4EyZT1CO51xG72K
-	8bYlbJgbeH2VEvIdj1ytNtGLx0lFytdqbGhOQW3/m91vZPdzEojPfG9j+UbDFiyOcZb8cS5hIWCYr
-	giKuNQ5v3Xf/TJKBfkZP1FNRga7Gs8gYgunyKZU2hEm98k/PudzMdQteZp6rHB6g1KZynn/c3L1nK
-	NwpGMeb+l1A2y35y0qSCNdusCWCaBglz/d1cjfUlKV5Fki4xW5ibMB/s1g8mn16qqxMX8I5fbCvMD
-	bohIqU+fJOjbbUgqBnX247MD7YDLY8+xpi5ZCmv3fuVrXbAFMpwdGDOSEHbAJz/WjZfpi5t64UU8e
-	mVeOjE5w==;
+	bh=g6lhCLEuUwe1xiB2wfAGUxtOhUwbdYVrbP8p2j5o9tk=; b=gFgaCXM9SINscmcV0841wPBtgo
+	KKTLTy65S7LXLYe5fLZJ/ytDuXkwjJQVud4WHnqPuoOADpqe+i4NMsM7PtD5dyZWoqMgq0xC7et3U
+	6yE4OLGFV09X6SKJRXmGGqGNCUnWtlu2JKHen9qpqSsCTDiFHq503IMXt37zBT+fD0KufvxY+QkGL
+	SIGNAshpfu3jsjM9VemAJTh0vLaHL3/uF3UCRU4wI5c7BjhJtdZQGBbYY9BPGmwefzXWlU+gsXuDQ
+	otl4IvgN45B3wCAJjZMevFod9DMgiUw5PWTthh//rgA6QMuoDFTA5JPY2T0kYnqIeyn+LuKvHUOkW
+	iQ2AN4AA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJGGR-0000000By5o-3TtU;
-	Mon, 17 Jun 2024 17:35:31 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sJGKU-0000000BypD-2Yic;
+	Mon, 17 Jun 2024 17:39:42 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJGGJ-0000000By4M-2lEu;
-	Mon, 17 Jun 2024 17:35:29 +0000
+	id 1sJGKL-0000000Bynh-14CG;
+	Mon, 17 Jun 2024 17:39:39 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id EF91B61361;
-	Mon, 17 Jun 2024 17:35:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0645FC2BD10;
-	Mon, 17 Jun 2024 17:35:10 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 1E0A7CE12E1;
+	Mon, 17 Jun 2024 17:39:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 175D3C2BD10;
+	Mon, 17 Jun 2024 17:39:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1718645722;
-	bh=N+D9s0iQm1QFAZH8d1oDVC79oWtkLdBqUBlcc8U0MT4=;
+	s=k20201202; t=1718645970;
+	bh=Q8qkiWJBtmK1MyDlDIjwSsSu+LKMyRARDQ+Insk0zmI=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=JgmZL74yb/+v7OfZqVPbfnnkIfuVyOOqB1Sw2086sxHQqX2w4gGvfQMkV3Uqi15w5
-	 3Qvyft2og/8N0I5tSWqz7MlU0bLVQT0XWd6w1hAa4VaZeDVMTRrhvjXdjh/l/QBEtx
-	 BA8VrwRk/f9zlnUP7YXFN9Twx1rIN3t7G21Lhz2m9wKNlhP8TMR2akE40JbPPr5PEB
-	 jnsFgJUqRwwMB7tjHKC7hyLaKxGYz6dxGkdVXy2JuI7Sq6kzuwSI+/nWAuXsaLhsbO
-	 YGqloCEawvQszdNE+CcC5inYkgEfccsiwFHnT+6xBKPzoOsFowgBTMgQo17t/8s05b
-	 DkUS2FptIfBrQ==
-Message-ID: <237035a7-3b71-4245-863b-f905ba97cda1@kernel.org>
-Date: Mon, 17 Jun 2024 19:35:07 +0200
+	b=jhvyb5Df2RYSlfkysBR+9kAtF0WLMZjRGs8fuOBRxjSKlveqWGNMVUoPrUcaEX/ye
+	 MbOcNvzHkLpn5DzMyyaihfv48LCF3GWChCidNteJr/8brbtcdXb13uA6OUBN+a35xG
+	 ifgh02odtBT2VwvTJ17hUafuVBdop2dLvcBXKQy0rDJ56Qf2/K/ISbqhvah52M2Jag
+	 WFEovGdis0VFRPtxgBR1wVTnVRUYr5hCkvSRQKjmXlkMucPxNy5TdsylhwCIvKZVCt
+	 qpiIS/zGm8MfB5dItu7FEOlQ+dK5QrMLVFEut3RbXCZo00677/EFILheXEydmr5gjl
+	 tR0duNzfkxyrA==
+Message-ID: <124fe875-f642-40c5-baba-0bc300d66994@kernel.org>
+Date: Mon, 17 Jun 2024 19:39:16 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 6/7] dt-bindings: mfd: syscon: Split and enforce
- documenting MFD children
+Subject: Re: [PATCH v2 3/7] dt-bindings: soc: intel: lgm-syscon: Move to
+ dedicated schema
 To: Conor Dooley <conor@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Cc: Orson Zhai <orsonzhai@gmail.com>,
@@ -65,9 +65,8 @@ Cc: Orson Zhai <orsonzhai@gmail.com>,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org
 References: <20240616-dt-bindings-mfd-syscon-split-v2-0-571b5850174a@linaro.org>
- <20240616-dt-bindings-mfd-syscon-split-v2-6-571b5850174a@linaro.org>
- <20240617-zoology-silica-2c8c78363b32@spud>
- <20240617-purge-family-c0c62b8e73d8@spud>
+ <20240616-dt-bindings-mfd-syscon-split-v2-3-571b5850174a@linaro.org>
+ <20240617-overnight-chevron-cd481dbc59ba@spud>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -113,12 +112,12 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20240617-purge-family-c0c62b8e73d8@spud>
+In-Reply-To: <20240617-overnight-chevron-cd481dbc59ba@spud>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240617_103523_823508_9FD0192E 
-X-CRM114-Status: UNSURE (   6.70  )
+X-CRM114-CacheID: sfid-20240617_103933_694577_F309BCC2 
+X-CRM114-Status: UNSURE (   5.84  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -134,25 +133,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 17/06/2024 18:46, Conor Dooley wrote:
->>>  
->>> +# Need a select with all compatibles listed for compatibility with older
->>> +# dtschema (<2024.02), so this will not be selected for other schemas having
->>> +# syscon fallback.
->>>  select:
->>>    properties:
->>>      compatible:
->>>        contains:
->>>          enum:
->>> -          - syscon
->>
->> Wow, this is noisy. Is it not possible to achieve something similar by
->> making the select check for not: compatible: contains: simple-mfd? Or
->> did I misunderstand the intention here?
+On 17/06/2024 18:47, Conor Dooley wrote:
+>> +---
+>> +$id: http://devicetree.org/schemas/soc/intel/intel,lgm-syscon.yaml#
+>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+>> +
+>> +title: Intel Lightning Mountain(LGM) Syscon
+>> +
+>> +maintainers:
+>> +  - Ramuthevar Vadivel Murugan <vadivel.muruganx.ramuthevar@linux.intel.com>
 > 
-> Ah, you'd match things then like the intel,lgm-syscon, right?
+> This email is bouncing FYI.
 
-Yes.
+
+Eh, indeed. I'll figure out something, but in general platform looks
+abandoned.
 
 Best regards,
 Krzysztof
