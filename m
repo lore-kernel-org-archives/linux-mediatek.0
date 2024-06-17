@@ -4,64 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BEB21C2BB85
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jun 2024 18:31:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76F0DC2BB85
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jun 2024 19:02:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IuXxr72q85K4TqE+LOlZJAFW2mi5aEYrwfveJpvngho=; b=SVXkAMHHO4HgPkkp93O5/ReOLG
-	i5XgQsve5WC8/Vnw4gemsJaSzTq2Kzpjeq0psUZnR5drcGGERrwp2XLaBCNkcgbU2cOCyVTi9UVBt
-	IKsZEtv80YPu/qsr4hzwLInSBd1KybgBscQBQ7cu0DLBZTkWsufW+JY34uMDcU5Ox0r5BYfpEZGJa
-	q0+Lc0+g2qGrOhcWXkzRIElrzs4Hh532rxh72k0GRLXNAPeU+Q67Gyv/q4QCz/bh4hpkU7fN6b1B2
-	urP+4gaV7MBPAq4+T6m08771KEYBy704XDURvFvzCMbkwuRi/HTWvAQ5DgwKoF/eFBxIIeK5lEY19
-	95JcwyhQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=l5lIlh24w/7FwO/6OIqNCbRFzX0ceZn2KO7/Zmyd8ug=; b=TxZvuG39dAizQU8Efx+LJroyTD
+	GKe51tYZsFjQZElRkubfBRMHFVQfQZbrlc7cAqFlY859oRZoCMxYdYVJVcE9Jhh1SMEI7VhhGvZDt
+	HdUwYFEQNanw45QtYq3CL0xev9gaW3Po/SIkrNk0gz4K9N5rc0n1SMleXCl4kBfdYTSZFofUFAbzI
+	MncTwalL29ORsMVfYLNv/mVvI/8sXqhH0524PMKMM/TtT56E6s0aic3wLxYfXSF8/aOW/zzpoU81M
+	pl2g84qyt8jJ0c9ErgTUalATQ5Pc1xx56FPDCDUi2cpXx2scAkk4ZjCGlijTTVgi9UHdLOcJp63VN
+	KgMmwUjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJH8B-0000000CBxh-3Yyh;
-	Mon, 17 Jun 2024 18:31:03 +0000
-Received: from orthanc.universe-factory.net ([2001:19f0:6c01:100::1])
+	id 1sJHcP-0000000CIfM-47za;
+	Mon, 17 Jun 2024 19:02:17 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJH7Y-0000000CBOQ-41MR;
-	Mon, 17 Jun 2024 18:30:33 +0000
-Received: from avalon.fritz.box (unknown [IPv6:2001:19f0:6c01:100::2])
+	id 1sJHcM-0000000CIe4-2eZs;
+	Mon, 17 Jun 2024 19:02:16 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1718650932;
+	bh=l5lIlh24w/7FwO/6OIqNCbRFzX0ceZn2KO7/Zmyd8ug=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=Tbujqd+d46Gq8FvOkcgagCQtfYodA49/eOrhDP+tU72lZVY3/EyCC8v0iU4IEl70P
+	 1UQ8cgmRVuWZ2Hrp3Zy5/z7PiEIliCWrpvdPDZi8ZMozcquKAKGfI/v+0RZZcq+Fx5
+	 ftEG4CnRYO6dNTXDB2+HeaNjeer/m7giujB4OyTHwWg1WO2NLBk5K0WuykL31bHGuQ
+	 FaaUy/v0Xq8xMFtLyLE5jB/eRwmE3GhF4St9+vPVta8FdRPMRdSgjN7ziZ8AUZmT7H
+	 275qt4CkmuYb45aW9b44MtA0PnQmyRct5rGK3tmIEyAQwvyHJxLr5ZLOP/R58Cs1Vf
+	 8QarUl26tyKqA==
+Received: from nicolas-tpx395.localdomain (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by orthanc.universe-factory.net (Postfix) with ESMTPSA id B056B1FC32;
-	Mon, 17 Jun 2024 20:30:20 +0200 (CEST)
-From: Matthias Schiffer <mschiffer@universe-factory.net>
-To: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>
-Cc: Andrew Lunn <andrew@lunn.ch>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Matthias Schiffer <mschiffer@universe-factory.net>
-Subject: [PATCH net-next v2 2/2] net: dsa: mt7530: add support for bridge port isolation
-Date: Mon, 17 Jun 2024 20:30:01 +0200
-Message-ID: <963190e5209cf42f62c4acfd1b497e3f0537ac0f.1718603656.git.mschiffer@universe-factory.net>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <378bc964b49f9e9954336e99009932ac22bfe172.1718603656.git.mschiffer@universe-factory.net>
-References: <378bc964b49f9e9954336e99009932ac22bfe172.1718603656.git.mschiffer@universe-factory.net>
+	(Authenticated sender: nicolas)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 3496F3780F7F;
+	Mon, 17 Jun 2024 19:02:08 +0000 (UTC)
+Message-ID: <7e4236cd59d1af009e23aabbd2c96735cbb379b3.camel@collabora.com>
+Subject: Re: [PATCH v6,04/24] v4l: add documentation for restricted memory
+ flag
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: Tomasz Figa <tfiga@chromium.org>, Yunfei Dong
+ <yunfei.dong@mediatek.com>,  Jeffrey Kardatzke <jkardatzke@google.com>,
+ =?ISO-8859-1?Q?N=EDcolas?= "F . R . A . Prado" <nfraprado@collabora.com>, 
+ Nathan Hebert <nhebert@chromium.org>, Hans Verkuil
+ <hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
+ <benjamin.gaignard@collabora.com>, Sebastian Fricke
+ <sebastian.fricke@collabora.com>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>,  Marek Szyprowski <m.szyprowski@samsung.com>, Chen-Yu
+ Tsai <wenst@chromium.org>, Yong Wu <yong.wu@mediatek.com>,  Hsin-Yi Wang
+ <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter
+ <daniel@ffwll.ch>,  Steve Cho <stevecho@chromium.org>, Sumit Semwal
+ <sumit.semwal@linaro.org>, Brian Starkey <Brian.Starkey@arm.com>, John
+ Stultz <jstultz@google.com>, "T . J . Mercier" <tjmercier@google.com>,
+ Christian =?ISO-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>, Matthias
+ Brugger <matthias.bgg@gmail.com>,  linux-media@vger.kernel.org,
+ dri-devel@lists.freedesktop.org,  linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,  linux-mediatek@lists.infradead.org, 
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+Date: Mon, 17 Jun 2024 15:02:05 -0400
+In-Reply-To: <20240612202507.GT28989@pendragon.ideasonboard.com>
+References: <20240516122102.16379-1-yunfei.dong@mediatek.com>
+	 <20240516122102.16379-5-yunfei.dong@mediatek.com>
+	 <20240522111622.GA31185@pendragon.ideasonboard.com>
+	 <bhgv5djcjc4yt75pyug2yirrymeucjyslthnvq6k2kpp7axfph@jzo5wpcbgwun>
+	 <33d38919f3f94b6e1848aaee20cf52ac9c1df606.camel@collabora.com>
+	 <20240612202507.GT28989@pendragon.ideasonboard.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.52.2 (3.52.2-1.fc40) 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240617_113025_351783_021BFC12 
-X-CRM114-Status: GOOD (  14.04  )
+X-CRM114-CacheID: sfid-20240617_120214_876565_5C844012 
+X-CRM114-Status: GOOD (  21.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,81 +96,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Remove a pair of ports from the port matrix when both ports have the
-isolated flag set.
+Le mercredi 12 juin 2024 =C3=A0 23:25 +0300, Laurent Pinchart a =C3=A9crit=
+=C2=A0:
+> On Wed, Jun 12, 2024 at 03:43:58PM -0400, Nicolas Dufresne wrote:
+> > Le mercredi 12 juin 2024 =C3=A0 13:37 +0900, Tomasz Figa a =C3=A9crit=
+=C2=A0:
+> > > > Why is this flag needed ? Given that the usage model requires the V=
+4L2
+> > > > device to be a dma buf importer, why would userspace set the
+> > > > V4L2_BUF_CAP_SUPPORTS_RESTRICTED_MEM flag and pass a non-restricted
+> > > > buffer to the device ?
+> > >=20
+> > > Given that the flag is specified at REQBUF / CREATE_BUFS time, it's
+> > > actually useful to tell the driver the queue is operating in restrict=
+ed
+> > > (aka secure) mode.
+> > >=20
+> > > I suppose we could handle that at the time of a first QBUF, but that
+> > > would make the driver initialization and validation quite a bit of pa=
+in.
+> > > So I'd say that the design being proposed here makes things simpler a=
+nd
+> > > more clear, even if it doesn't add any extra functionality.
+> >=20
+> > There is few more reasons I notice in previous series (haven't read the=
+ latest):
+> >=20
+> > - The driver needs to communicate through the OPTEE rather then SCP and=
+ some
+> > communication are needed just to figure-out things like supported profi=
+le/level
+> > resolutions etc.
+> > - The driver needs to allocate auxiliary buffers in secure heap too, al=
+location
+> > at runtime are not the best
+>=20
+> Will the same driver support both modes on the same system ?
 
-Signed-off-by: Matthias Schiffer <mschiffer@universe-factory.net>
----
+I believe so, yes.
 
-v2: removed unintended formatting change
-
- drivers/net/dsa/mt7530.c | 18 ++++++++++++++++--
- drivers/net/dsa/mt7530.h |  1 +
- 2 files changed, 17 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index ecacaefdd694..c5761e37f1d6 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -1311,6 +1311,7 @@ static void mt7530_update_port_member(struct mt7530_priv *priv, int port,
- 	struct dsa_port *cpu_dp = dp->cpu_dp;
- 	u32 port_bitmap = BIT(cpu_dp->index);
- 	int other_port;
-+	bool isolated;
- 
- 	dsa_switch_for_each_user_port(other_dp, priv->ds) {
- 		other_port = other_dp->index;
-@@ -1327,7 +1328,9 @@ static void mt7530_update_port_member(struct mt7530_priv *priv, int port,
- 		if (!dsa_port_offloads_bridge_dev(other_dp, bridge_dev))
- 			continue;
- 
--		if (join) {
-+		isolated = p->isolated && other_p->isolated;
-+
-+		if (join && !isolated) {
- 			other_p->pm |= PCR_MATRIX(BIT(port));
- 			port_bitmap |= BIT(other_port);
- 		} else {
-@@ -1352,7 +1355,7 @@ mt7530_port_pre_bridge_flags(struct dsa_switch *ds, int port,
- 			     struct netlink_ext_ack *extack)
- {
- 	if (flags.mask & ~(BR_LEARNING | BR_FLOOD | BR_MCAST_FLOOD |
--			   BR_BCAST_FLOOD))
-+			   BR_BCAST_FLOOD | BR_ISOLATED))
- 		return -EINVAL;
- 
- 	return 0;
-@@ -1381,6 +1384,17 @@ mt7530_port_bridge_flags(struct dsa_switch *ds, int port,
- 		mt7530_rmw(priv, MT753X_MFC, BC_FFP(BIT(port)),
- 			   flags.val & BR_BCAST_FLOOD ? BC_FFP(BIT(port)) : 0);
- 
-+	if (flags.mask & BR_ISOLATED) {
-+		struct dsa_port *dp = dsa_to_port(ds, port);
-+		struct net_device *bridge_dev = dsa_port_bridge_dev_get(dp);
-+
-+		priv->ports[port].isolated = !!(flags.val & BR_ISOLATED);
-+
-+		mutex_lock(&priv->reg_mutex);
-+		mt7530_update_port_member(priv, port, bridge_dev, true);
-+		mutex_unlock(&priv->reg_mutex);
-+	}
-+
- 	return 0;
- }
- 
-diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
-index 2ea4e24628c6..28592123070b 100644
---- a/drivers/net/dsa/mt7530.h
-+++ b/drivers/net/dsa/mt7530.h
-@@ -721,6 +721,7 @@ struct mt7530_fdb {
-  */
- struct mt7530_port {
- 	bool enable;
-+	bool isolated;
- 	u32 pm;
- 	u16 pvid;
- 	struct phylink_pcs *sgmii_pcs;
--- 
-2.45.2
+>=20
+> > Note that the discussion around this flag already took place in the ver=
+y first
+> > iteration of the serie, it was originally using a CID and that was a pr=
+oposed
+> > replacement from Hans.
+>=20
 
 
