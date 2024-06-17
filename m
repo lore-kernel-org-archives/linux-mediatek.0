@@ -4,67 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8635EC27C79
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jun 2024 14:59:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B03CEC27C79
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jun 2024 16:45:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZYgKTewbWFFfcvsQ1ekl5wQ9ScldGcNbBX9Tznn6ya4=; b=C7Ewro1SY2S4u1vqHG6utnB4EC
-	vUkPvuY7/1ssaNZbWX3jO+MyxO0xNJsIFhnChrAVFzgD1Xwc8h61uHkqcGd06EqmRT3rwvdNWNpWm
-	7vNr+TlcZg/byedcQT49HwwBxlDf4EEUkZpQKOLZLXZgm29tJ5YOy48hAVgCFs21+kWybXq9BljsU
-	zB9JGG1JjGGajWIhRJ2lv1h12lBy3LAAVCDArYWQAT51fkLNVFYvRZAvFu0w4WfVErnqkNBjHmmcE
-	9mBN+u93HO5uqGJ6x5G3kgZovIFOA5l8RJM/GiDTa4k+BzEEXIQY5j7DbF2DwMbqcqXZjsFP7inT2
-	Yv4rOTJg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zNOV5ELCuSH+ujIm1pGkgQAwZtNMbBltO6PuHKZQuZg=; b=Kx6Ig3imy4fsommjS55l36l9LW
+	sqgFPXN7h/itiZibq7Q6SvH5OHAdcC9CoS02wJWh/Rb05yRxO10BEAHBUoZmzSgnBbJWEoCgzCI0Z
+	OXyoUYTl2fsjRhR7CpS4LHIyuTkH+XqwUsXqiUz/7KS2e37JEqnyP9kWAVAxcEcbup1sP5yOJWQ3k
+	nybPTcqzhi2OVs5RXgKzinEWxGaGhafjx0A/ReZCCCZTTEvl2lcAvkI+xAmF2wZp4+5k/R48Jt41V
+	mjvTWT7vM1X++drk8+Y0EDBMINqq1EYvVwk8SSCPxONfi4E0exgeZjZuPywuzGhKM/9DdZvDFfnzc
+	UFSn1HuA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJDoy-0000000BJYB-1Pny;
-	Mon, 17 Jun 2024 14:59:00 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1sJFTf-0000000Bmyp-2xQU;
+	Mon, 17 Jun 2024 16:45:08 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJDov-0000000BJWZ-23cz;
-	Mon, 17 Jun 2024 14:58:58 +0000
+	id 1sJFTb-0000000Bmx6-2GbD;
+	Mon, 17 Jun 2024 16:45:05 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 044E060ED4;
-	Mon, 17 Jun 2024 14:58:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2737CC2BD10;
-	Mon, 17 Jun 2024 14:58:55 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 6EC08CE0EC2;
+	Mon, 17 Jun 2024 16:45:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D264FC2BD10;
+	Mon, 17 Jun 2024 16:44:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1718636335;
-	bh=ZYgKTewbWFFfcvsQ1ekl5wQ9ScldGcNbBX9Tznn6ya4=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=tICN7TiSxitxX2V6zbRUy739dgKwfqFNgNeI/8+s+oPFM1mLNHQ9tus6f/x7n1mvb
-	 6RaDQ9J7laaviwbzrCphuXO66XSBJo8LWCx4anlsV8RBh8i/rSl/tsnlIefoDgxXdr
-	 CiHWBPIHnoXpVKtl9pRxfEuv2+jcLVCxNv8533wBBxYqgu2ZPcwXhoLVRfw0ZctJzF
-	 6p1BED1Ijk6lIfR7BQa6MA+YbeBthMnWMUuiRyqp8ZIf50oh+1Ad4AMAjA5ux2vqYI
-	 JD1SzHksUa0KRLHGmsWituAuDtJ4n6JAJ4i2pzn6Zuxu1A5pk7Nko89jviO0/3f46t
-	 k3vdkADue+Puw==
-Date: Mon, 17 Jun 2024 07:58:54 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: Elad Yifee <eladwf@gmail.com>
-Cc: patchwork-bot+netdevbpf@kernel.org, daniel@makrotopia.org, nbd@nbd.name,
- sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com, lorenzo@kernel.org,
- davem@davemloft.net, edumazet@google.com, pabeni@redhat.com,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- linux@armlinux.org.uk, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next v6] net: ethernet: mtk_eth_soc: ppe: add
- support for multiple PPEs
-Message-ID: <20240617075854.29892c69@kernel.org>
-In-Reply-To: <CA+SN3sogd29XG7Sgz1EOqBqtxxcVzFkB_mFq10TW+eYGKtdDTQ@mail.gmail.com>
-References: <20240607082155.20021-1-eladwf@gmail.com>
-	<171824043128.29237.10490597706474690291.git-patchwork-notify@kernel.org>
-	<CA+SN3sogd29XG7Sgz1EOqBqtxxcVzFkB_mFq10TW+eYGKtdDTQ@mail.gmail.com>
+	s=k20201202; t=1718642699;
+	bh=emQds4Az4vlgUQ3QKW8TwIc7kwvGHiLk2C7AyCRuXrE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=BBZ2NdOpRwA8YessJ9R84Yok8kyvrymuj0txndaxbKtdcWxAUtwlnoidZ4t5fxR/I
+	 ecoD/OaQnYd4iaibs2JCkXzxGzyniGRCiPO5ZXBIEBJ7BdERMtLcZiLJEnjKK3MrY9
+	 jWl9bOO/mznn5RssWxGxQOq/Im+uT2ir8nrYbXF2oJqPxk4/4XHIEqgxWFLCBqV6BS
+	 3UkhMgywcTzZRuq+nMetDeErvj6PlOKNHfgIWTdxyNHyRXQpGQCNwRfwDtwnDihrh8
+	 QpH2U+k52JizlV+lkUdSv0HraLj08CxI841rV8FdER48qyBPqYBi4dY3QCp/vuTW7O
+	 heWsGf4xZQNLA==
+Date: Mon, 17 Jun 2024 17:44:52 +0100
+From: Conor Dooley <conor@kernel.org>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Orson Zhai <orsonzhai@gmail.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Vadivel Murugan <vadivel.muruganx.ramuthevar@linux.intel.com>,
+	Jacky Huang <ychuang3@nuvoton.com>,
+	Shan-Chun Hung <schung@nuvoton.com>,
+	Khuong Dinh <khuong@os.amperecomputing.com>,
+	Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Lars Povlsen <lars.povlsen@microchip.com>,
+	Steen Hegelund <Steen.Hegelund@microchip.com>,
+	Daniel Machon <daniel.machon@microchip.com>,
+	UNGLinuxDriver@microchip.com, Nishanth Menon <nm@ti.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v2 6/7] dt-bindings: mfd: syscon: Split and enforce
+ documenting MFD children
+Message-ID: <20240617-zoology-silica-2c8c78363b32@spud>
+References: <20240616-dt-bindings-mfd-syscon-split-v2-0-571b5850174a@linaro.org>
+ <20240616-dt-bindings-mfd-syscon-split-v2-6-571b5850174a@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="CXG+45ywyuUtHPCF"
+Content-Disposition: inline
+In-Reply-To: <20240616-dt-bindings-mfd-syscon-split-v2-6-571b5850174a@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240617_075857_667755_E487BE09 
-X-CRM114-Status: UNSURE (   6.97  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240617_094504_054936_A836A70B 
+X-CRM114-Status: GOOD (  27.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,12 +90,491 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, 16 Jun 2024 20:34:44 +0300 Elad Yifee wrote:
-> It appears that the current sanity check is insufficient. Should WED
-> be utilized, it will be necessary to find the appropriate PPE index
-> through an alternative method. Kindly revert the recent commit
-> temporarily until I come up with a solution
 
-Please send the revert as a patch, with the explanation in the commit
-message. That's our usual process.
+--CXG+45ywyuUtHPCF
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Sun, Jun 16, 2024 at 03:19:26PM +0200, Krzysztof Kozlowski wrote:
+> Simple syscon nodes can be documented in common syscon.yaml, however
+> devices with simple-mfd compatible, thus with some children, should have
+> their own schema listing these children.  Such listing makes the binding
+> specific, allows better validation (so the incorrect child would not
+> appear in the simple-mfd node) and actually enforces repeated rule for
+> simple-mfd devices:
+>=20
+>   "simple-mfd" is only for simple devices, where the children do not
+>   depend on the parent.
+>=20
+> Currently the syscon+simple-mfd binding is quite broad and allows
+> any child or property, thus above rule cannot be enforced.
+>=20
+> Split the syscon.yaml binding into:
+> 1. Common syscon properties, used potentially by many bindings.
+> 2. Simple syscon devices (NO simple-mfd!).
+>=20
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+>=20
+> ---
+>=20
+> Depends on:
+> 1. Patch in MFD: https://lore.kernel.org/all/171828959006.2643902.8308227=
+314531523435.b4-ty@kernel.org/
+> 2. Previous patches in the series.
+> ---
+>  .../devicetree/bindings/mfd/syscon-common.yaml     |  72 +++++
+>  Documentation/devicetree/bindings/mfd/syscon.yaml  | 294 +++++++++++++--=
+------
+>  2 files changed, 251 insertions(+), 115 deletions(-)
+>=20
+> diff --git a/Documentation/devicetree/bindings/mfd/syscon-common.yaml b/D=
+ocumentation/devicetree/bindings/mfd/syscon-common.yaml
+> new file mode 100644
+> index 000000000000..c3ff3a7afce3
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/mfd/syscon-common.yaml
+> @@ -0,0 +1,72 @@
+> +# SPDX-License-Identifier: GPL-2.0
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/mfd/syscon-common.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: System Controller Registers R/W Common Properties
+> +
+> +description: |
+
+This | can go, right?
+
+> +  System controller node represents a register region containing a set
+> +  of miscellaneous registers. The registers are not cohesive enough to
+> +  represent as any specific type of device. The typical use-case is
+> +  for some other node's driver, or platform-specific code, to acquire
+> +  a reference to the syscon node (e.g. by phandle, node path, or
+> +  search using a specific compatible value), interrogate the node (or
+> +  associated OS driver) to determine the location of the registers,
+> +  and access the registers directly.
+> +
+> +maintainers:
+> +  - Lee Jones <lee@kernel.org>
+> +
+> +select:
+> +  properties:
+> +    compatible:
+> +      contains:
+> +        enum:
+
+And this can be const, given it's unlikely to grow?
+
+> +          - syscon
+> +
+> +  required:
+> +    - compatible
+> +
+> +properties:
+> +  compatible:
+> +    contains:
+> +      const: syscon
+> +    minItems: 2
+> +    maxItems: 5  # Should be enough
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  reg-io-width:
+> +    description: |
+
+Same with this one.
+
+> +      The size (in bytes) of the IO accesses that should be performed
+> +      on the device.
+> +    enum: [1, 2, 4, 8]
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +
+> +allOf:
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            const: simple-mfd
+> +    then:
+> +      properties:
+> +        compatible:
+> +          minItems: 3
+> +          maxItems: 5
+> +
+> +additionalProperties: true
+> +
+> +examples:
+> +  - |
+> +    syscon: syscon@1c00000 {
+> +        compatible =3D "allwinner,sun8i-h3-system-controller", "syscon";
+> +        reg =3D <0x01c00000 0x1000>;
+> +    };
+> +...
+> diff --git a/Documentation/devicetree/bindings/mfd/syscon.yaml b/Document=
+ation/devicetree/bindings/mfd/syscon.yaml
+> index d6fa58c9e4de..d4e9533cf3fe 100644
+> --- a/Documentation/devicetree/bindings/mfd/syscon.yaml
+> +++ b/Documentation/devicetree/bindings/mfd/syscon.yaml
+> @@ -4,7 +4,7 @@
+>  $id: http://devicetree.org/schemas/mfd/syscon.yaml#
+>  $schema: http://devicetree.org/meta-schemas/core.yaml#
+> =20
+> -title: System Controller Registers R/W
+> +title: System Controller Devices
+> =20
+>  description: |
+>    System controller node represents a register region containing a set
+> @@ -19,123 +19,196 @@ description: |
+>  maintainers:
+>    - Lee Jones <lee@kernel.org>
+> =20
+> +# Need a select with all compatibles listed for compatibility with older
+> +# dtschema (<2024.02), so this will not be selected for other schemas ha=
+ving
+> +# syscon fallback.
+>  select:
+>    properties:
+>      compatible:
+>        contains:
+>          enum:
+> -          - syscon
+
+Wow, this is noisy. Is it not possible to achieve something similar by
+making the select check for not: compatible: contains: simple-mfd? Or
+did I misunderstand the intention here?
+
+Thanks,
+Conor.
+
+> -
+> +          - al,alpine-sysfabric-servic
+> +          - allwinner,sun8i-a83t-system-controller
+> +          - allwinner,sun8i-h3-system-controller
+> +          - allwinner,sun8i-v3s-system-controller
+> +          - allwinner,sun50i-a64-system-controller
+> +          - altr,l3regs
+> +          - altr,sdr-ctl
+> +          - amd,pensando-elba-syscon
+> +          - amlogic,meson-mx-assist
+> +          - amlogic,meson-mx-bootrom
+> +          - amlogic,meson8-analog-top
+> +          - amlogic,meson8b-analog-top
+> +          - amlogic,meson8-pmu
+> +          - amlogic,meson8b-pmu
+> +          - apm,xgene-csw
+> +          - apm,xgene-efuse
+> +          - apm,xgene-mcb
+> +          - apm,xgene-rb
+> +          - apm,xgene-scu
+> +          - atmel,sama5d2-sfrbu
+> +          - atmel,sama5d3-nfc-io
+> +          - atmel,sama5d3-sfrbu
+> +          - atmel,sama5d4-sfrbu
+> +          - axis,artpec6-syscon
+> +          - brcm,cru-clkset
+> +          - brcm,sr-cdru
+> +          - brcm,sr-mhb
+> +          - cirrus,ep7209-syscon1
+> +          - cirrus,ep7209-syscon2
+> +          - cirrus,ep7209-syscon3
+> +          - cnxt,cx92755-uc
+> +          - freecom,fsg-cs2-system-controller
+> +          - fsl,imx93-aonmix-ns-syscfg
+> +          - fsl,imx93-wakeupmix-syscfg
+> +          - fsl,ls1088a-reset
+> +          - fsl,vf610-anatop
+> +          - fsl,vf610-mscm-cpucfg
+> +          - hisilicon,dsa-subctrl
+> +          - hisilicon,hi6220-sramctrl
+> +          - hisilicon,hip04-ppe
+> +          - hisilicon,pcie-sas-subctrl
+> +          - hisilicon,peri-subctrl
+> +          - hpe,gxp-sysreg
+> +          - loongson,ls1b-syscon
+> +          - loongson,ls1c-syscon
+> +          - lsi,axxia-syscon
+> +          - marvell,armada-3700-cpu-misc
+> +          - marvell,armada-3700-nb-pm
+> +          - marvell,armada-3700-avs
+> +          - marvell,armada-3700-usb2-host-misc
+> +          - marvell,dove-global-config
+> +          - mediatek,mt2701-pctl-a-syscfg
+> +          - mediatek,mt2712-pctl-a-syscfg
+> +          - mediatek,mt6397-pctl-pmic-syscfg
+> +          - mediatek,mt8135-pctl-a-syscfg
+> +          - mediatek,mt8135-pctl-b-syscfg
+> +          - mediatek,mt8173-pctl-a-syscfg
+> +          - mediatek,mt8365-syscfg
+> +          - microchip,lan966x-cpu-syscon
+> +          - microchip,sam9x60-sfr
+> +          - microchip,sama7g5-ddr3phy
+> +          - mscc,ocelot-cpu-syscon
+> +          - mstar,msc313-pmsleep
+> +          - nuvoton,ma35d1-sys
+> +          - nuvoton,wpcm450-shm
+> +          - rockchip,px30-qos
+> +          - rockchip,rk3036-qos
+> +          - rockchip,rk3066-qos
+> +          - rockchip,rk3128-qos
+> +          - rockchip,rk3228-qos
+> +          - rockchip,rk3288-qos
+> +          - rockchip,rk3368-qos
+> +          - rockchip,rk3399-qos
+> +          - rockchip,rk3568-qos
+> +          - rockchip,rk3588-qos
+> +          - rockchip,rv1126-qos
+> +          - st,spear1340-misc
+> +          - stericsson,nomadik-pmu
+> +          - starfive,jh7100-sysmain
+> +          - ti,am62-usb-phy-ctrl
+> +          - ti,am625-dss-oldi-io-ctrl
+> +          - ti,am62p-cpsw-mac-efuse
+> +          - ti,am654-dss-oldi-io-ctrl
+> +          - ti,j784s4-pcie-ctrl
+> +          - ti,keystone-pllctrl
+>    required:
+>      - compatible
+> =20
+>  properties:
+>    compatible:
+> -    anyOf:
+> -      - items:
+> -          - enum:
+> -              - al,alpine-sysfabric-service
+> -              - allwinner,sun8i-a83t-system-controller
+> -              - allwinner,sun8i-h3-system-controller
+> -              - allwinner,sun8i-v3s-system-controller
+> -              - allwinner,sun50i-a64-system-controller
+> -              - altr,l3regs
+> -              - altr,sdr-ctl
+> -              - amd,pensando-elba-syscon
+> -              - amlogic,meson-mx-assist
+> -              - amlogic,meson-mx-bootrom
+> -              - amlogic,meson8-analog-top
+> -              - amlogic,meson8b-analog-top
+> -              - amlogic,meson8-pmu
+> -              - amlogic,meson8b-pmu
+> -              - apm,xgene-csw
+> -              - apm,xgene-efuse
+> -              - apm,xgene-mcb
+> -              - apm,xgene-rb
+> -              - apm,xgene-scu
+> -              - atmel,sama5d2-sfrbu
+> -              - atmel,sama5d3-nfc-io
+> -              - atmel,sama5d3-sfrbu
+> -              - atmel,sama5d4-sfrbu
+> -              - axis,artpec6-syscon
+> -              - brcm,cru-clkset
+> -              - brcm,sr-cdru
+> -              - brcm,sr-mhb
+> -              - cirrus,ep7209-syscon1
+> -              - cirrus,ep7209-syscon2
+> -              - cirrus,ep7209-syscon3
+> -              - cnxt,cx92755-uc
+> -              - freecom,fsg-cs2-system-controller
+> -              - fsl,imx93-aonmix-ns-syscfg
+> -              - fsl,imx93-wakeupmix-syscfg
+> -              - fsl,ls1088a-reset
+> -              - fsl,vf610-anatop
+> -              - fsl,vf610-mscm-cpucfg
+> -              - hisilicon,dsa-subctrl
+> -              - hisilicon,hi6220-sramctrl
+> -              - hisilicon,hip04-ppe
+> -              - hisilicon,pcie-sas-subctrl
+> -              - hisilicon,peri-subctrl
+> -              - hpe,gxp-sysreg
+> -              - loongson,ls1b-syscon
+> -              - loongson,ls1c-syscon
+> -              - lsi,axxia-syscon
+> -              - marvell,armada-3700-cpu-misc
+> -              - marvell,armada-3700-nb-pm
+> -              - marvell,armada-3700-avs
+> -              - marvell,armada-3700-usb2-host-misc
+> -              - marvell,dove-global-config
+> -              - mediatek,mt2701-pctl-a-syscfg
+> -              - mediatek,mt2712-pctl-a-syscfg
+> -              - mediatek,mt6397-pctl-pmic-syscfg
+> -              - mediatek,mt8135-pctl-a-syscfg
+> -              - mediatek,mt8135-pctl-b-syscfg
+> -              - mediatek,mt8173-pctl-a-syscfg
+> -              - mediatek,mt8365-syscfg
+> -              - microchip,lan966x-cpu-syscon
+> -              - microchip,sam9x60-sfr
+> -              - microchip,sama7g5-ddr3phy
+> -              - mscc,ocelot-cpu-syscon
+> -              - mstar,msc313-pmsleep
+> -              - nuvoton,ma35d1-sys
+> -              - nuvoton,wpcm450-shm
+> -              - rockchip,px30-qos
+> -              - rockchip,rk3036-qos
+> -              - rockchip,rk3066-qos
+> -              - rockchip,rk3128-qos
+> -              - rockchip,rk3228-qos
+> -              - rockchip,rk3288-qos
+> -              - rockchip,rk3368-qos
+> -              - rockchip,rk3399-qos
+> -              - rockchip,rk3568-qos
+> -              - rockchip,rk3588-qos
+> -              - rockchip,rv1126-qos
+> -              - st,spear1340-misc
+> -              - stericsson,nomadik-pmu
+> -              - starfive,jh7100-sysmain
+> -              - ti,am62-usb-phy-ctrl
+> -              - ti,am625-dss-oldi-io-ctrl
+> -              - ti,am62p-cpsw-mac-efuse
+> -              - ti,am654-dss-oldi-io-ctrl
+> -              - ti,j784s4-pcie-ctrl
+> -              - ti,keystone-pllctrl
+> -
+> -          - const: syscon
+> -
+> -      - contains:
+> -          const: syscon
+> -        minItems: 2
+> -        maxItems: 5  # Should be enough
+> +    items:
+> +      - enum:
+> +          - al,alpine-sysfabric-service
+> +          - allwinner,sun8i-a83t-system-controller
+> +          - allwinner,sun8i-h3-system-controller
+> +          - allwinner,sun8i-v3s-system-controller
+> +          - allwinner,sun50i-a64-system-controller
+> +          - altr,l3regs
+> +          - altr,sdr-ctl
+> +          - amd,pensando-elba-syscon
+> +          - amlogic,meson-mx-assist
+> +          - amlogic,meson-mx-bootrom
+> +          - amlogic,meson8-analog-top
+> +          - amlogic,meson8b-analog-top
+> +          - amlogic,meson8-pmu
+> +          - amlogic,meson8b-pmu
+> +          - apm,xgene-csw
+> +          - apm,xgene-efuse
+> +          - apm,xgene-mcb
+> +          - apm,xgene-rb
+> +          - apm,xgene-scu
+> +          - atmel,sama5d2-sfrbu
+> +          - atmel,sama5d3-nfc-io
+> +          - atmel,sama5d3-sfrbu
+> +          - atmel,sama5d4-sfrbu
+> +          - axis,artpec6-syscon
+> +          - brcm,cru-clkset
+> +          - brcm,sr-cdru
+> +          - brcm,sr-mhb
+> +          - cirrus,ep7209-syscon1
+> +          - cirrus,ep7209-syscon2
+> +          - cirrus,ep7209-syscon3
+> +          - cnxt,cx92755-uc
+> +          - freecom,fsg-cs2-system-controller
+> +          - fsl,imx93-aonmix-ns-syscfg
+> +          - fsl,imx93-wakeupmix-syscfg
+> +          - fsl,ls1088a-reset
+> +          - fsl,vf610-anatop
+> +          - fsl,vf610-mscm-cpucfg
+> +          - hisilicon,dsa-subctrl
+> +          - hisilicon,hi6220-sramctrl
+> +          - hisilicon,hip04-ppe
+> +          - hisilicon,pcie-sas-subctrl
+> +          - hisilicon,peri-subctrl
+> +          - hpe,gxp-sysreg
+> +          - loongson,ls1b-syscon
+> +          - loongson,ls1c-syscon
+> +          - lsi,axxia-syscon
+> +          - marvell,armada-3700-cpu-misc
+> +          - marvell,armada-3700-nb-pm
+> +          - marvell,armada-3700-avs
+> +          - marvell,armada-3700-usb2-host-misc
+> +          - marvell,dove-global-config
+> +          - mediatek,mt2701-pctl-a-syscfg
+> +          - mediatek,mt2712-pctl-a-syscfg
+> +          - mediatek,mt6397-pctl-pmic-syscfg
+> +          - mediatek,mt8135-pctl-a-syscfg
+> +          - mediatek,mt8135-pctl-b-syscfg
+> +          - mediatek,mt8173-pctl-a-syscfg
+> +          - mediatek,mt8365-syscfg
+> +          - microchip,lan966x-cpu-syscon
+> +          - microchip,sam9x60-sfr
+> +          - microchip,sama7g5-ddr3phy
+> +          - mscc,ocelot-cpu-syscon
+> +          - mstar,msc313-pmsleep
+> +          - nuvoton,ma35d1-sys
+> +          - nuvoton,wpcm450-shm
+> +          - rockchip,px30-qos
+> +          - rockchip,rk3036-qos
+> +          - rockchip,rk3066-qos
+> +          - rockchip,rk3128-qos
+> +          - rockchip,rk3228-qos
+> +          - rockchip,rk3288-qos
+> +          - rockchip,rk3368-qos
+> +          - rockchip,rk3399-qos
+> +          - rockchip,rk3568-qos
+> +          - rockchip,rk3588-qos
+> +          - rockchip,rv1126-qos
+> +          - st,spear1340-misc
+> +          - stericsson,nomadik-pmu
+> +          - starfive,jh7100-sysmain
+> +          - ti,am62-usb-phy-ctrl
+> +          - ti,am625-dss-oldi-io-ctrl
+> +          - ti,am62p-cpsw-mac-efuse
+> +          - ti,am654-dss-oldi-io-ctrl
+> +          - ti,j784s4-pcie-ctrl
+> +          - ti,keystone-pllctrl
+> +      - const: syscon
+> =20
+>    reg:
+>      maxItems: 1
+> =20
+> -  reg-io-width:
+> -    description: |
+> -      The size (in bytes) of the IO accesses that should be performed
+> -      on the device.
+> -    enum: [1, 2, 4, 8]
+> -
+>    resets:
+>      maxItems: 1
+> =20
+> @@ -144,18 +217,9 @@ required:
+>    - reg
+> =20
+>  allOf:
+> -  - if:
+> -      properties:
+> -        compatible:
+> -          contains:
+> -            const: simple-mfd
+> -    then:
+> -      properties:
+> -        compatible:
+> -          minItems: 3
+> -          maxItems: 5
+> +  - $ref: syscon-common.yaml#
+> =20
+> -additionalProperties: true
+> +unevaluatedProperties: false
+> =20
+>  examples:
+>    - |
+>=20
+> --=20
+> 2.43.0
+>=20
+
+--CXG+45ywyuUtHPCF
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZnBoBAAKCRB4tDGHoIJi
+0seNAP9PcJIAfsc/vsXxRXfOLox7rjOS6pkmfprZROch6c7uWQEA35aMGLQF3ywb
+TmXxwm/cSATJ2sqoryaGHZDfKAJmxgs=
+=dmFR
+-----END PGP SIGNATURE-----
+
+--CXG+45ywyuUtHPCF--
 
