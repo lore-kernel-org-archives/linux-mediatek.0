@@ -4,92 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EED7CC27C4F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Jun 2024 12:08:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8CF7C27C4F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Jun 2024 12:23:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yaKJZwFY6wd1XllaZI8jJVrOqSqeE2cUrM2G+oq1sR8=; b=NoIkvU2os/4yxx1t3LEo3nUNWF
-	Sm/LkCJ1mcCGXCHqZRtzBpQpv6jG8WV3lYqtuL/nNA7BkuekDStOvmaLEJWMNfdnoU6L6srvmQbXJ
-	3kOYvMvmmeK4/5Vpk5Pm3CcyNHwJlNJpi/7cRfiQvCnaQjsFm7tgMGxSQziJajZH7BWxr1o8UxrzQ
-	UPtICFHjwXhIb1tbaaMzIVqQYCz9ycvTd2iCd/663kJq+jRvURkfVuMZbQOp4E1v/H/j7RVdHxb9o
-	fkFUUcwtaMb9Hcw28g5gGOEH6QQQ53RxwV2YGJIbewAg2Eq7NGtBl4fBsxa8o4+P9DgZZB4+SGG8S
-	hAVyCfiQ==;
+	bh=izFUUMAjD6j6o/tA7co7skUBTE4TJ0jcLsgKVOCSfD8=; b=gBeEfla90s2tE7ziV4/zwJqtdf
+	1Pxw8OaXEC11IQ+/1jfUpHSlaL2MgOLhbmVAcvu0jlguo79RKm/JvO3BqKcPgaxcPmVg3Hi5Bzr5M
+	yU1WZ6sY7f1N1f9wrmdtF2BTXKM9lpiNZks7TJJvwal6uw/tE+hVXusxFzBt1s6kevJs5ZT3hjVlz
+	WGb7xUK80N32yIUYp8lvL/olE6ttHE4ffdO10tU3j0Hqo72QfyxThALIqtoTvH50Rgp6tvdR/32d+
+	z0/Am4+7LnCSvKoGqtNjtV+ZyVU5sX7F8tnDen3UOWg+ShZo7/N65bNhvS0lVYOykAjpfihm/AL7K
+	P6KrNNwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJXdk-0000000EnOI-2qy8;
-	Tue, 18 Jun 2024 12:08:44 +0000
-Received: from out-185.mta0.migadu.com ([91.218.175.185])
+	id 1sJXrw-0000000ErV1-0ZpI;
+	Tue, 18 Jun 2024 12:23:24 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJXdi-0000000EnLV-0GDp
-	for linux-mediatek@lists.infradead.org;
-	Tue, 18 Jun 2024 12:08:43 +0000
-X-Envelope-To: angelogioacchino.delregno@collabora.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
-	t=1718712516;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=yaKJZwFY6wd1XllaZI8jJVrOqSqeE2cUrM2G+oq1sR8=;
-	b=j/rTMOoDPWYTSlPp2VdJOuT37Q5uAFN8Tsg2EsV4sQIiUaqK5GIq+iAvEYNMRfLEBFuDbP
-	LlqVT/U0m+nFky/pdYKC+SbgxAKwWl3f41XmPGY67FTxWMB4Lu+6+7yUqjrK8WTXY4OUj3
-	UpgZf3YfifUlrEGqe1S6OLCQ/0McQeM=
-X-Envelope-To: chunkuang.hu@kernel.org
-X-Envelope-To: robh@kernel.org
-X-Envelope-To: krzysztof.kozlowski+dt@linaro.org
-X-Envelope-To: conor+dt@kernel.org
-X-Envelope-To: p.zabel@pengutronix.de
-X-Envelope-To: airlied@gmail.com
-X-Envelope-To: daniel@ffwll.ch
-X-Envelope-To: maarten.lankhorst@linux.intel.com
-X-Envelope-To: mripard@kernel.org
-X-Envelope-To: tzimmermann@suse.de
-X-Envelope-To: matthias.bgg@gmail.com
-X-Envelope-To: shawn.sung@mediatek.com
-X-Envelope-To: yu-chang.lee@mediatek.com
-X-Envelope-To: ck.hu@mediatek.com
-X-Envelope-To: jitao.shi@mediatek.com
-X-Envelope-To: devicetree@vger.kernel.org
-X-Envelope-To: linux-kernel@vger.kernel.org
-X-Envelope-To: dri-devel@lists.freedesktop.org
-X-Envelope-To: linux-mediatek@lists.infradead.org
-X-Envelope-To: linux-arm-kernel@lists.infradead.org
-X-Envelope-To: wenst@chromium.org
-X-Envelope-To: kernel@collabora.com
-X-Envelope-To: michael@walle.cc
-X-Envelope-To: amergnat@baylibre.com
-Message-ID: <dc1b40ed-0f8f-40c9-8c32-e35e296b37da@linux.dev>
-Date: Tue, 18 Jun 2024 20:08:25 +0800
+	id 1sJXro-0000000ErRb-27Vl;
+	Tue, 18 Jun 2024 12:23:18 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1718713394;
+	bh=sDNNMxHKly7zct6ZWmT2pOfsBogVmKdEYEa+jqhZDsM=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=LkPMKPiFHomCePvAx5JBn8CLyrLA7r0lAmXDi2iS8RF5He7N8yfqAFzuiiOZXAQEh
+	 UbMejr7mdgO6TPIuwV/mQjBLr/9Ez07BLH3in8TbV3ZyXTuPtIoohRq5bRLa8XF2rM
+	 nTYUPUs6HoRZ16QiDoOr9DE38UTVQ2H7ZqadAw4rohgYDCDuxWY7u1oEqpxCoZaG48
+	 //suJowzjz9mU0nukHVZSFaaVo+6Y7khz+fH7qi7c/DOP1z3QCJ7qDbhEPqoEA1Cb6
+	 Dlb0M9Zye08f+CLe/BMQ7rVUQlMD1nj2nLxVTQ6X8dnU81wucNDObONNuD9NTJrcgl
+	 SxgmR0CExI6jg==
+Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 06F3D3780BDB;
+	Tue, 18 Jun 2024 12:23:13 +0000 (UTC)
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, Heiko Stuebner <heiko@sntech.de>, 
+ Hsin-Te Yuan <yuanhsinte@chromium.org>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org
+In-Reply-To: <20240613-jack-rate-v2-0-ebc5f9f37931@chromium.org>
+References: <20240613-jack-rate-v2-0-ebc5f9f37931@chromium.org>
+Subject: Re: (subset) [PATCH v2 0/2] arm64: dts: Fix the value of
+ `dlg,jack-det-rate` mismatch
+Message-Id: <171871339394.163370.9266867043922843876.b4-ty@collabora.com>
+Date: Tue, 18 Jun 2024 14:23:13 +0200
 MIME-Version: 1.0
-Subject: Re: [PATCH v8 3/3] drm/mediatek: Implement OF graphs support for
- display paths
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- chunkuang.hu@kernel.org
-Cc: robh@kernel.org, krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
- p.zabel@pengutronix.de, airlied@gmail.com, daniel@ffwll.ch,
- maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de,
- matthias.bgg@gmail.com, shawn.sung@mediatek.com, yu-chang.lee@mediatek.com,
- ck.hu@mediatek.com, jitao.shi@mediatek.com, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- wenst@chromium.org, kernel@collabora.com, michael@walle.cc,
- Alexandre Mergnat <amergnat@baylibre.com>
-References: <20240618101726.110416-1-angelogioacchino.delregno@collabora.com>
- <20240618101726.110416-4-angelogioacchino.delregno@collabora.com>
-Content-Language: en-US, en-AU
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: Sui Jingfeng <sui.jingfeng@linux.dev>
-In-Reply-To: <20240618101726.110416-4-angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-Migadu-Flow: FLOW_OUT
+X-Mailer: b4 0.13.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240618_050842_433564_763F029C 
-X-CRM114-Status: GOOD (  12.14  )
+X-CRM114-CacheID: sfid-20240618_052316_708743_BA221575 
+X-CRM114-Status: UNSURE (   6.66  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,33 +79,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On Thu, 13 Jun 2024 11:58:53 +0000, Hsin-Te Yuan wrote:
+> According to Documentation/devicetree/bindings/sound/dialog,da7219.yaml,
+> the value of `dlg,jack-det-rate` property should be like "32_64" instead
+> of "32ms_64ms".
+> 
+> 
+
+Applied to v6.10-next/dts64, thanks!
+
+[1/2] arm64: dts: mediatek: mt8183-kukui: Fix the value of `dlg,jack-det-rate` mismatch
+      commit: 1b0c5a724d726e533ead9580de696bb705dd2e4e
+
+Cheers,
+Angelo
 
 
-On 6/18/24 18:17, AngeloGioacchino Del Regno wrote:
-> It is impossible to add each and every possible DDP path combination
-> for each and every possible combination of SoC and board: right now,
-> this driver hardcodes configuration for 10 SoCs and this is going to
-> grow larger and larger, and with new hacks like the introduction of
-> mtk_drm_route which is anyway not enough for all final routes as the
-> DSI cannot be connected to MERGE if it's not a dual-DSI, or enabling
-> DSC preventively doesn't work if the display doesn't support it, or
-> others.
-> 
-> Since practically all display IPs in MediaTek SoCs support being
-> interconnected with different instances of other, or the same, IPs
-> or with different IPs and in different combinations, the final DDP
-> pipeline is effectively a board specific configuration.
-> 
-> Implement OF graphs support to the mediatek-drm drivers, allowing to
-> stop hardcoding the paths, and preventing this driver to get a huge
-> amount of arrays for each board and SoC combination, also paving the
-> way to share the same mtk_mmsys_driver_data between multiple SoCs,
-> making it more straightforward to add support for new chips.
-> 
-> Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
-> Tested-by: Alexandre Mergnat <amergnat@baylibre.com>
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-Acked-by: Sui Jingfeng <sui.jingfeng@linux.dev>
 
