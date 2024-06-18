@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E29F9C2BA15
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Jun 2024 10:18:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A437BC27C4F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Jun 2024 10:18:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8knMWc9tYfm4SmAFr6F8PQXgCpbW7dgW/u6MlQ77bxs=; b=ssISM/XvpuUbDUSoPn4wlMzaLY
-	HQ2Y1BpY5+IOiazY+tMsD/4Qqim8aY7rd0dWhuA2cuoZDTfQfi5/1p5wQcd1nA6iv+EuuDCceVpAi
-	IpO+ksUAsm4+pNakkLymIDHAkPJEmBNGBhgVK30JgEMLzbTaXrSKrow7i8XPdQdoQUrcgoPIruEB5
-	CC8fObGBVZ7LyuAhs0LDDwmOJx7cjaKhtQB1Dw+fUY/60SnItU209IGmOQb0rTMPkB/3fbLR7p1O/
-	wJyyIQHG36Ieq5arbrkbBpSWIS6O9P9Bnss/tbJEXpUyNI0Ie8VvFg/QQ5jphPLpLIYLM6y9kOVf7
-	7agrwURQ==;
+	bh=eTyzVNN0a9wJpEUGdMGGHJDBc5xP4YjsHrSbuQqnrQg=; b=VJ6FJMAG5GPxjcq8XhAFkrHalv
+	VCcFV9tTKakXugQWwOzBVyQplCmUBd1vvB+6w12lWSYNDzW9Hra2D2eyoSDqSPtexGo0Src7h5R3y
+	hmi+RTt4CBlkBjWmqd2evc3ekL4/NjvhCf/3I5DhfBvsuuFGC1lhmKX+vdfVYJWRFauU9vergQgEt
+	kua5Zvb3kNCqtMPZ2f96ch780FInbOz1pamgPH7R0J37hhTPI8S/QfAMYFpZ16Q0aaZqQi1hAqYb3
+	i1aiOubUeoyMFam2t7Z+sGfE9BK+yRhd9QLzJL8W+dWm2Pcd6idhHien/GcCWHx/k1jt7mikiVLL7
+	+bcT18KA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJVup-0000000EJ1T-1egK;
-	Tue, 18 Jun 2024 10:18:15 +0000
+	id 1sJVuw-0000000EJ6Z-0yLd;
+	Tue, 18 Jun 2024 10:18:22 +0000
 Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJVuZ-0000000EIsm-1Iv2;
-	Tue, 18 Jun 2024 10:18:01 +0000
+	id 1sJVua-0000000EItP-3P9w;
+	Tue, 18 Jun 2024 10:18:02 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1718705877;
-	bh=z090XTQvQBYL0YPMD1iXI6s6bgkAm08NSDinEGPKJcI=;
+	s=mail; t=1718705879;
+	bh=Uin4HL8p/uMYwcu6R0/lMaoEXvWDsF3aIDdkjKb66fE=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=5dh9URi5zGzKwr3uaWrXi39t9AjbD6SkraRVFLG+BDAeuo+hvjhpsq/2yiUB8K1sC
-	 iSuoBoLGf5dED/daCvd0ReJuB/TdoXXoHaI3DlSU6IWWNx7y0wiCfjmAbAo3bdVFef
-	 7m3xRV6JpNDgiP44njLPV4bbMQkdhALxNCaoselEdVDvhGRi9yZvmD2x+U2CG1DvEQ
-	 Emmuv8H0+xO5OlAs2nNt0OejgUFly3jX27fFyxNmtyjGF7suIz13REEeYSAf8xQNKy
-	 klPda+1nDK+VjfTXMnbSVVXWYe87LsAaMzHVhhbRnJx6OA277NASIxv56IItTEM9Jd
-	 JQkrDdIcTHZvg==
+	b=XFxMhSu6Yw82hw+10ugYDYqvV+SaUanULxHCsz154q4wtH/pBFYZSEJ2uk+ZzTCDi
+	 87kaKBuLpf7liyKv+tur8D/WmX3OZVn8nnZkvTII6WSyX83GtCllCOpoyTS3s6cQzm
+	 IVma5UYRVhnxzcXIwD8wZMxcftGu48OzrW/SkR1dTtHQrNof+Z4wbzWfpPP7+si/Kj
+	 DgXhNczhUnEwbXD4LeILxR4i9uiArqcX0cYcaKls9z/3Q34b0/6Gh+pUQA0nZQLHF2
+	 OXGOTw7ZI9k2Vj3ABNjsWS6OaJNCMM+4QsC7GNkJh9kA9zOfPVG/Flm3qp5yBzE74m
+	 6iuxCaMHYqkLA==
 Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 3B5AB37809D0;
-	Tue, 18 Jun 2024 10:17:56 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 0718E3782186;
+	Tue, 18 Jun 2024 10:17:57 +0000 (UTC)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: chunkuang.hu@kernel.org
 Cc: robh@kernel.org,
@@ -70,17 +70,17 @@ Cc: robh@kernel.org,
 	sui.jingfeng@linux.dev,
 	michael@walle.cc,
 	Alexandre Mergnat <amergnat@baylibre.com>
-Subject: [PATCH v8 1/3] dt-bindings: display: mediatek: Add OF graph support for board path
-Date: Tue, 18 Jun 2024 12:17:24 +0200
-Message-ID: <20240618101726.110416-2-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v8 2/3] dt-bindings: arm: mediatek: mmsys: Add OF graph support for board path
+Date: Tue, 18 Jun 2024 12:17:25 +0200
+Message-ID: <20240618101726.110416-3-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20240618101726.110416-1-angelogioacchino.delregno@collabora.com>
 References: <20240618101726.110416-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240618_031759_646968_7CF437BD 
-X-CRM114-Status: GOOD (  16.30  )
+X-CRM114-CacheID: sfid-20240618_031801_032273_5809EE16 
+X-CRM114-Status: GOOD (  11.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,619 +95,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The display IPs in MediaTek SoCs support being interconnected with
-different instances of DDP IPs (for example, merge0 or merge1) and/or
-with different DDP IPs (for example, rdma can be connected with either
-color, dpi, dsi, merge, etc), forming a full Display Data Path that
-ends with an actual display.
+Document OF graph on MMSYS/VDOSYS: this supports up to three DDP paths
+per HW instance (so potentially up to six displays for multi-vdo SoCs).
 
-The final display pipeline is effectively board specific, as it does
-depend on the display that is attached to it, and eventually on the
-sensors supported by the board (for example, Adaptive Ambient Light
-would need an Ambient Light Sensor, otherwise it's pointless!), other
-than the output type.
-
-Add support for OF graphs to most of the MediaTek DDP (display) bindings
-to add flexibility to build custom hardware paths, hence enabling board
-specific configuration of the display pipeline and allowing to finally
-migrate away from using hardcoded paths.
+The MMSYS or VDOSYS is always the first component in the DDP pipeline,
+so it only supports an output port with multiple endpoints - where each
+endpoint defines the starting point for one of the (currently three)
+possible hardware paths.
 
 Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
 Tested-by: Alexandre Mergnat <amergnat@baylibre.com>
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../display/mediatek/mediatek,aal.yaml        | 40 +++++++++++++++++++
- .../display/mediatek/mediatek,ccorr.yaml      | 21 ++++++++++
- .../display/mediatek/mediatek,color.yaml      | 22 ++++++++++
- .../display/mediatek/mediatek,dither.yaml     | 22 ++++++++++
- .../display/mediatek/mediatek,dpi.yaml        | 25 +++++++++++-
- .../display/mediatek/mediatek,dsc.yaml        | 24 +++++++++++
- .../display/mediatek/mediatek,dsi.yaml        | 27 ++++++++++++-
- .../display/mediatek/mediatek,ethdr.yaml      | 22 ++++++++++
- .../display/mediatek/mediatek,gamma.yaml      | 19 +++++++++
- .../display/mediatek/mediatek,merge.yaml      | 23 +++++++++++
- .../display/mediatek/mediatek,od.yaml         | 22 ++++++++++
- .../display/mediatek/mediatek,ovl-2l.yaml     | 22 ++++++++++
- .../display/mediatek/mediatek,ovl.yaml        | 22 ++++++++++
- .../display/mediatek/mediatek,postmask.yaml   | 21 ++++++++++
- .../display/mediatek/mediatek,rdma.yaml       | 22 ++++++++++
- .../display/mediatek/mediatek,ufoe.yaml       | 21 ++++++++++
- 16 files changed, 372 insertions(+), 3 deletions(-)
+ .../bindings/arm/mediatek/mediatek,mmsys.yaml | 28 +++++++++++++++++++
+ 1 file changed, 28 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
-index b4c28e96dd55..623cf7e37fe3 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
-@@ -61,6 +61,27 @@ properties:
-     $ref: /schemas/types.yaml#/definitions/phandle-array
-     maxItems: 1
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+index b3c6888c1457..3f4262e93c78 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+@@ -93,6 +93,34 @@ properties:
+   '#reset-cells':
+     const: 1
  
-+  ports:
-+    $ref: /schemas/graph.yaml#/properties/ports
++  port:
++    $ref: /schemas/graph.yaml#/properties/port
 +    description:
-+      Input and output ports can have multiple endpoints, each of those
-+      connects to either the primary, secondary, etc, display pipeline.
-+
++      Output port node. This port connects the MMSYS/VDOSYS output to
++      the first component of one display pipeline, for example one of
++      the available OVL or RDMA blocks.
++      Some MediaTek SoCs support multiple display outputs per MMSYS.
 +    properties:
-+      port@0:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description: AAL input port
-+
-+      port@1:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description:
-+          AAL output to the next component's input, for example could be one
-+          of many gamma, overdrive or other blocks.
-+
-+    required:
-+      - port@0
-+      - port@1
-+
- required:
-   - compatible
-   - reg
-@@ -88,5 +109,24 @@ examples:
-            power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
-            clocks = <&mmsys CLK_MM_DISP_AAL>;
-            mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0x5000 0x1000>;
-+
-+           ports {
-+               #address-cells = <1>;
-+               #size-cells = <0>;
-+
-+               port@0 {
-+                   reg = <0>;
-+                   aal0_in: endpoint {
-+                       remote-endpoint = <&ccorr0_out>;
-+                   };
-+               };
-+
-+               port@1 {
-+                   reg = <1>;
-+                   aal0_out: endpoint {
-+                       remote-endpoint = <&gamma0_in>;
-+                   };
-+               };
-+           };
-        };
-     };
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
-index 8c2a737237f2..71ea277a5d8e 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
-@@ -54,6 +54,27 @@ properties:
-     $ref: /schemas/types.yaml#/definitions/phandle-array
-     maxItems: 1
- 
-+  ports:
-+    $ref: /schemas/graph.yaml#/properties/ports
-+    description:
-+      Input and output ports can have multiple endpoints, each of those
-+      connects to either the primary, secondary, etc, display pipeline.
-+
-+    properties:
-+      port@0:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description: CCORR input port
-+
-+      port@1:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description:
-+          CCORR output to the input of the next desired component in the
-+          display pipeline, usually only one of the available AAL blocks.
-+
-+    required:
-+      - port@0
-+      - port@1
-+
- required:
-   - compatible
-   - reg
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml
-index b886ca0d89ea..61d040a10c08 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml
-@@ -64,6 +64,28 @@ properties:
-     $ref: /schemas/types.yaml#/definitions/phandle-array
-     maxItems: 1
- 
-+  ports:
-+    $ref: /schemas/graph.yaml#/properties/ports
-+    description:
-+      Input and output ports can have multiple endpoints, each of those
-+      connects to either the primary, secondary, etc, display pipeline.
-+
-+    properties:
-+      port@0:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description: COLOR input port
-+
-+      port@1:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description:
-+          COLOR output to the input of the next desired component in the
-+          display pipeline, for example one of the available CCORR or AAL
-+          blocks.
-+
-+    required:
-+      - port@0
-+      - port@1
-+
- required:
-   - compatible
-   - reg
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml
-index 1588b3f7cec7..3d4ab3f86294 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml
-@@ -55,6 +55,28 @@ properties:
-     $ref: /schemas/types.yaml#/definitions/phandle-array
-     maxItems: 1
- 
-+  ports:
-+    $ref: /schemas/graph.yaml#/properties/ports
-+    description:
-+      Input and output ports can have multiple endpoints, each of those
-+      connects to either the primary, secondary, etc, display pipeline.
-+
-+    properties:
-+      port@0:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description: DITHER input, usually from a POSTMASK or GAMMA block.
-+
-+      port@1:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description:
-+          DITHER output to the input of the next desired component in the
-+          display pipeline, for example one of the available DSC compressors,
-+          DP_INTF, DSI, LVDS or others.
-+
-+    required:
-+      - port@0
-+      - port@1
-+
- required:
-   - compatible
-   - reg
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
-index 803c00f26206..6607cb1c6e0a 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
-@@ -64,13 +64,34 @@ properties:
-       Output port node. This port should be connected to the input port of an
-       attached HDMI, LVDS or DisplayPort encoder chip.
- 
-+  ports:
-+    $ref: /schemas/graph.yaml#/properties/ports
-+
-+    properties:
-+      port@0:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description: DPI input port
-+
-+      port@1:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description: DPI output to an HDMI, LVDS or DisplayPort encoder input
-+
-+    required:
-+      - port@0
-+      - port@1
-+
- required:
-   - compatible
-   - reg
-   - interrupts
-   - clocks
-   - clock-names
--  - port
-+
-+oneOf:
-+  - required:
-+      - port
-+  - required:
-+      - ports
- 
- additionalProperties: false
- 
-@@ -79,7 +100,7 @@ examples:
-     #include <dt-bindings/interrupt-controller/arm-gic.h>
-     #include <dt-bindings/clock/mt8173-clk.h>
- 
--    dpi0: dpi@1401d000 {
-+    dpi: dpi@1401d000 {
-         compatible = "mediatek,mt8173-dpi";
-         reg = <0x1401d000 0x1000>;
-         interrupts = <GIC_SPI 194 IRQ_TYPE_LEVEL_LOW>;
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dsc.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsc.yaml
-index 2cbdd9ee449d..846de6c17d93 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dsc.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsc.yaml
-@@ -49,6 +49,30 @@ properties:
-     $ref: /schemas/types.yaml#/definitions/phandle-array
-     maxItems: 1
- 
-+  ports:
-+    $ref: /schemas/graph.yaml#/properties/ports
-+    description:
-+      Input and output ports can have multiple endpoints, each of those
-+      connects to either the primary, secondary, etc, display pipeline.
-+
-+    properties:
-+      port@0:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description:
-+          Display Stream Compression input, usually from one of the DITHER
-+          or MERGE blocks.
-+
-+      port@1:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description:
-+          Display Stream Compression output to the input of the next desired
-+          component in the display pipeline, for example to MERGE, DP_INTF,
-+          DPI or DSI.
-+
-+    required:
-+      - port@0
-+      - port@1
-+
- required:
-   - compatible
-   - reg
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.yaml
-index 8611319bed2e..2e9d3d23cbc1 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.yaml
-@@ -76,6 +76,26 @@ properties:
-       Output port node. This port should be connected to the input
-       port of an attached DSI panel or DSI-to-eDP encoder chip.
- 
-+  ports:
-+    $ref: /schemas/graph.yaml#/properties/ports
-+    description:
-+      Input ports can have multiple endpoints, each of those connects
-+      to either the primary, secondary, etc, display pipeline.
-+
-+    properties:
-+      port@0:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description: DSI input port, usually from DITHER, DSC or MERGE
-+
-+      port@1:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description:
-+          DSI output to an attached DSI panel, or a DSI-to-X encoder chip
-+
-+    required:
-+      - port@0
-+      - port@1
-+
- required:
-   - compatible
-   - reg
-@@ -85,7 +105,12 @@ required:
-   - clock-names
-   - phys
-   - phy-names
--  - port
-+
-+oneOf:
-+  - required:
-+      - port
-+  - required:
-+      - ports
- 
- unevaluatedProperties: false
- 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,ethdr.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,ethdr.yaml
-index 677882348ede..98db47894eeb 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,ethdr.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ethdr.yaml
-@@ -110,6 +110,28 @@ properties:
-       include/dt-bindings/gce/<chip>-gce.h, mapping to the register of display
-       function block.
- 
-+  ports:
-+    $ref: /schemas/graph.yaml#/properties/ports
-+    description:
-+      Input and output ports can have multiple endpoints, each of those
-+      connects to either the primary, secondary, etc, display pipeline.
-+
-+    properties:
-+      port@0:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description: ETHDR input, usually from one of the MERGE blocks.
-+
-+      port@1:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description:
-+          ETHDR output to the input of the next desired component in the
-+          display pipeline, for example one of the available MERGE blocks,
-+          or others.
-+
-+    required:
-+      - port@0
-+      - port@1
-+
- required:
-   - compatible
-   - reg
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml
-index b8b8e83ebc3f..17f299abda11 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml
-@@ -64,6 +64,25 @@ properties:
-     $ref: /schemas/types.yaml#/definitions/phandle-array
-     maxItems: 1
- 
-+  ports:
-+    $ref: /schemas/graph.yaml#/properties/ports
-+
-+    properties:
-+      port@0:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description: GAMMA input, usually from one of the AAL blocks.
-+
-+      port@1:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description:
-+          GAMMA output to the input of the next desired component in the
-+          display pipeline, for example one of the available DITHER or
-+          POSTMASK blocks.
-+
-+    required:
-+      - port@0
-+      - port@1
-+
- required:
-   - compatible
-   - reg
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml
-index dae839279950..0de9f64f3f84 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml
-@@ -77,6 +77,29 @@ properties:
-     $ref: /schemas/types.yaml#/definitions/phandle-array
-     maxItems: 1
- 
-+  ports:
-+    $ref: /schemas/graph.yaml#/properties/ports
-+    description:
-+      Input and output ports can have multiple endpoints, each of those
-+      connects to either the primary, secondary, etc, display pipeline.
-+
-+    properties:
-+      port@0:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description:
-+          MERGE input port, usually from DITHER, DPI, DSC, DSI, MDP_RDMA,
-+          ETHDR or even from a different MERGE block
-+
-+      port@1:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description:
-+          MERGE output to a DSC, DPI, DP_INTF, DSI, ETHDR, Write DMA, or
-+          a different MERGE block, or others.
-+
-+    required:
-+      - port@0
-+      - port@1
-+
-   resets:
-     description: reset controller
-       See Documentation/devicetree/bindings/reset/reset.txt for details.
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,od.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,od.yaml
-index 831c653caffd..71534febd49c 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,od.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,od.yaml
-@@ -38,6 +38,28 @@ properties:
-     items:
-       - description: OD Clock
- 
-+  ports:
-+    $ref: /schemas/graph.yaml#/properties/ports
-+    description:
-+      Input and output ports can have multiple endpoints, each of those
-+      connects to either the primary, secondary, etc, display pipeline.
-+
-+    properties:
-+      port@0:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description: OD input port, usually from an AAL block
-+
-+      port@1:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description:
-+          OD output to the input of the next desired component in the
-+          display pipeline, for example one of the available RDMA or
-+          other blocks.
-+
-+    required:
-+      - port@0
-+      - port@1
-+
- required:
-   - compatible
-   - reg
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl-2l.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl-2l.yaml
-index c7dd0ef02dcf..bacdfe7d08a6 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl-2l.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl-2l.yaml
-@@ -57,6 +57,28 @@ properties:
-     $ref: /schemas/types.yaml#/definitions/phandle-array
-     maxItems: 1
- 
-+  ports:
-+    $ref: /schemas/graph.yaml#/properties/ports
-+    description:
-+      Input and output ports can have multiple endpoints, each of those
-+      connects to either the primary, secondary, etc, display pipeline.
-+
-+    properties:
-+      port@0:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description: OVL input port from MMSYS, VDOSYS or other OVLs
-+
-+      port@1:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description:
-+          OVL output to the input of the next desired component in the
-+          display pipeline, for example one of the available COLOR, RDMA
-+          or WDMA blocks.
-+
-+    required:
-+      - port@0
-+      - port@1
-+
- required:
-   - compatible
-   - reg
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
-index c471a181d125..e93f0247bdcc 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
-@@ -74,6 +74,28 @@ properties:
-     $ref: /schemas/types.yaml#/definitions/phandle-array
-     maxItems: 1
- 
-+  ports:
-+    $ref: /schemas/graph.yaml#/properties/ports
-+    description:
-+      Input and output ports can have multiple endpoints, each of those
-+      connects to either the primary, secondary, etc, display pipeline.
-+
-+    properties:
-+      port@0:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description: OVL input port from MMSYS or one of multiple VDOSYS
-+
-+      port@1:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description:
-+          OVL output to the input of the next desired component in the
-+          display pipeline, for example one of the available COLOR, RDMA
-+          or WDMA blocks.
-+
-+    required:
-+      - port@0
-+      - port@1
-+
- required:
-   - compatible
-   - reg
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,postmask.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,postmask.yaml
-index 11fe32e50a59..fb6fe4742624 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,postmask.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,postmask.yaml
-@@ -52,6 +52,27 @@ properties:
-     $ref: /schemas/types.yaml#/definitions/phandle-array
-     maxItems: 1
- 
-+  ports:
-+    $ref: /schemas/graph.yaml#/properties/ports
-+    description:
-+      Input and output ports can have multiple endpoints, each of those
-+      connects to either the primary, secondary, etc, display pipeline.
-+
-+    properties:
-+      port@0:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description: POSTMASK input port, usually from GAMMA
-+
-+      port@1:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description:
-+          POSTMASK output to the input of the next desired component in the
-+          display pipeline, for example one of the available DITHER blocks.
-+
-+    required:
-+      - port@0
-+      - port@1
-+
- required:
-   - compatible
-   - reg
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml
-index 39dbb5c8bcf8..edb8d3b67025 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml
-@@ -86,6 +86,28 @@ properties:
-     $ref: /schemas/types.yaml#/definitions/phandle-array
-     maxItems: 1
- 
-+  ports:
-+    $ref: /schemas/graph.yaml#/properties/ports
-+    description:
-+      Input and output ports can have multiple endpoints, each of those
-+      connects to either the primary, secondary, etc, display pipeline.
-+
-+    properties:
-+      port@0:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description: RDMA input port, usually from MMSYS, OD or OVL
-+
-+      port@1:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description:
-+          RDMA output to the input of the next desired component in the
-+          display pipeline, for example one of the available COLOR, DPI,
-+          DSI, MERGE or UFOE blocks.
-+
-+    required:
-+      - port@0
-+      - port@1
-+
- required:
-   - compatible
-   - reg
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,ufoe.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,ufoe.yaml
-index 39e3e2d4a0db..61a5e22effbf 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,ufoe.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ufoe.yaml
-@@ -43,6 +43,27 @@ properties:
-     items:
-       - description: UFOe Clock
- 
-+  ports:
-+    $ref: /schemas/graph.yaml#/properties/ports
-+    description:
-+      Input and output ports can have multiple endpoints, each of those
-+      connects to either the primary, secondary, etc, display pipeline.
-+
-+    properties:
-+      port@0:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description: UFOE input, usually from one of the RDMA blocks.
-+
-+      port@1:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description:
-+          UFOE output to the input of the next desired component in the
-+          display pipeline, usually one of the available DSI blocks.
-+
-+    required:
-+      - port@0
-+      - port@1
++      endpoint@0:
++        $ref: /schemas/graph.yaml#/properties/endpoint
++        description: Output to the primary display pipeline
++
++      endpoint@1:
++        $ref: /schemas/graph.yaml#/properties/endpoint
++        description: Output to the secondary display pipeline
++
++      endpoint@2:
++        $ref: /schemas/graph.yaml#/properties/endpoint
++        description: Output to the tertiary display pipeline
++
++    anyOf:
++      - required:
++          - endpoint@0
++      - required:
++          - endpoint@1
++      - required:
++          - endpoint@2
 +
  required:
    - compatible
