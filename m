@@ -4,62 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E5E0C41513
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Jun 2024 07:17:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5ABD5C27C4F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Jun 2024 07:23:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=b22k57dT5tDI24LCR1ffDJPNlayDlIOaB2Vqu7wmnLc=; b=xwWhlVEaL4Kl+CcYqMPIypDVRT
-	3PF7uesPDAa6O4iMfHu/yZrfxRLfF8T/m3DoUhZRt26sspPffEg3FtIknw95Tfv+rew9QtKnXesBC
-	HXG8Cw7LugkizzZrYKLGp31e5XUHjuJs55kEz8zqq6Ie094pBQvuHx5s0jpWpQd9i6MnaO7e83O8e
-	ohX7YZmgFJN7CWma9KBzXs1LWP0Uri/nZY3BtP2G7MyMNFHv+6DylqKai6Au6SEVep8ATQ6xT2l0x
-	F9em0rMBbd9BfNLKMHdiVIZcj/Y5G1+w9zRd41Ar3lGY45vQfHFsdHvrBo0jErEXsWgJbFLWu9sZZ
-	iUZr8Llw==;
+	Content-Type:In-Reply-To:From:Subject:References:Cc:To:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Bg3TIL3KzmjNs9lk8+SASEJZvZeUEBVqupiovsiTnss=; b=v3IfoMaw7sMnSzrhqzwHhhzXfq
+	jPJHJn6xrV/u+quAqxM05xsBDrObpcZ1tzPQR7RzBV+gW8c+zarP39f1SxUilrx7EqSFPciE5GIQ8
+	BjxIKG+F4rQ3CfBq2OjWxuJJuU/dMNZwYSZ4Twj40AIUiGq8OdHz0jnRzaZtn//wPS+MdT1gGg/pU
+	6RzAzrBbWPbndj0Z4BSBWEllKSWr04j0OjMd815wo6E91oYrQPIPg5W4Qpsbmmb9+wo/svQl/4ivB
+	uetpPOYXrujgJi14ujebFWoHQ5r2qif5zh2buAOLezgXYTuoZIRDfz+ltZc6OKeq9pRQyIeB9M3kl
+	QcR/8aZw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJT5z-0000000DvcW-3NE6;
-	Tue, 18 Jun 2024 07:17:35 +0000
-Received: from orthanc.universe-factory.net ([2001:19f0:6c01:100::1])
+	id 1sJTBH-0000000DwTn-1Ufq;
+	Tue, 18 Jun 2024 07:23:03 +0000
+Received: from mout.web.de ([212.227.15.3])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJT5t-0000000DvaR-1sKM;
-	Tue, 18 Jun 2024 07:17:31 +0000
-Received: from avalon.fritz.box (unknown [IPv6:2001:19f0:6c01:100::2])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by orthanc.universe-factory.net (Postfix) with ESMTPSA id EFA141F917;
-	Tue, 18 Jun 2024 09:17:25 +0200 (CEST)
-From: Matthias Schiffer <mschiffer@universe-factory.net>
-To: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>
-Cc: Andrew Lunn <andrew@lunn.ch>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Matthias Schiffer <mschiffer@universe-factory.net>
-Subject: [PATCH net-next v3 1/2] net: dsa: mt7530: factor out bridge join/leave logic
-Date: Tue, 18 Jun 2024 09:17:12 +0200
-Message-ID: <15c28e5ed5fa02ca7904c71540e254617d571eb8.1718694181.git.mschiffer@universe-factory.net>
-X-Mailer: git-send-email 2.45.2
+	id 1sJTBD-0000000DwSS-3i6k;
+	Tue, 18 Jun 2024 07:23:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
+	s=s29768273; t=1718695349; x=1719300149; i=markus.elfring@web.de;
+	bh=Bg3TIL3KzmjNs9lk8+SASEJZvZeUEBVqupiovsiTnss=;
+	h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:To:Cc:References:
+	 Subject:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:
+	 cc:content-transfer-encoding:content-type:date:from:message-id:
+	 mime-version:reply-to:subject:to;
+	b=ZAaxwRlrcDx0PCUvBtnXqrsiSNHNscYtnpXW3gtMAuUSGj7pQhStYq/XKutIVp56
+	 UaFzrLJLtCiY1/L81xaJ4vLb2HjBan605/HVBJBYM9pg6nSlIj3IxVmPOLj0ewt1r
+	 a8XLes3LhC9PEuCL+Fo4OKaN0q6+9jIIqhuiJw7XG70oVWcxB/cDGEk74bjQaHLnw
+	 gN0gS1F71wo6DWYzC9OrL7H5+IewSLK8mc338mARjN91R3JXgQqpkUqHgKjgN/8Fz
+	 rpGu+drIIOhV2cNX7JjNgi9tLPmUVTleoQmaUFKVJosUhyHWq7/4icxlisnYRJZA3
+	 9ccHftpWfRUSzN8f2A==
+X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
+Received: from [192.168.178.21] ([94.31.83.95]) by smtp.web.de (mrweb005
+ [213.165.67.108]) with ESMTPSA (Nemesis) id 1Mtgyp-1ser2g39mZ-010pwq; Tue, 18
+ Jun 2024 09:22:29 +0200
+Message-ID: <ad8716ac-cff3-4fe5-86e1-f5f188e8b6b1@web.de>
+Date: Tue, 18 Jun 2024 09:22:03 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+To: John Stultz <jstultz@google.com>, "T. J. Mercier" <tjmercier@google.com>,
+ Yong Wu <yong.wu@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ Angelo Gioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Jeffrey Kardatzke <jkardatzke@google.com>,
+ Marek Szyprowski <m.szyprowski@samsung.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Nathan Hebert <nhebert@chromium.org>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ Sebastian Fricke <sebastian.fricke@collabora.com>,
+ Tomasz Figa <tfiga@chromium.org>
+Cc: LKML <linux-kernel@vger.kernel.org>, Brian Starkey
+ <Brian.Starkey@arm.com>, Chen-Yu Tsai <wenst@chromium.org>,
+ =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>,
+ Daniel Vetter <daniel@ffwll.ch>, =?UTF-8?Q?Fritz_K=C3=B6nig?=
+ <frkoenig@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Simon Horman <horms@kernel.org>,
+ Steve Cho <stevecho@chromium.org>, Sumit Semwal <sumit.semwal@linaro.org>
+References: <20240516122102.16379-7-yunfei.dong@mediatek.com>
+Subject: Re: [PATCH v6 06/24] dma-heap: Add proper kref handling on dma-buf
+ heaps
+Content-Language: en-GB
+From: Markus Elfring <Markus.Elfring@web.de>
+In-Reply-To: <20240516122102.16379-7-yunfei.dong@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:/+1vL2hF7w7/U6j+yJ4izBj1AbDZAVu4X1KpoJgdg2qMKCHU9BN
+ Ifzm7y0IJZmLWnGCgmLUXzMukVIIELPS2EhhatKYzu6tegs4kxeySDupbDGTrWDASOQJbOg
+ w9mOFs8Z1DfRanYvPSUkCR/gV8N0LYIh/MMX5DaY5G2apsoDTwnw29KpsyxShh4kisbe83Z
+ 9Cw/fKtyKjptSRJf//RyA==
+UI-OutboundReport: notjunk:1;M01:P0:U8P0/GzVv8g=;JqrQtoY7YisOf6G5dLTpAxpmI8u
+ UFlogheq71vxQwctu+U17hGJGx1e0HgWjuqEj2EXCNpHlvCP8TBGwWMaQoHnE1mMJqYTmm7RO
+ Hhc94KlC1DelubZ5B+fXFdo+h/FkZpOUrd69UF8y2tCbPaV+zInRsxLq1UqQ358gU/EAHdehr
+ TjsysmHaHnK00+gSR7hSY5BYGSrzuZBrX6viwHhtKSUHGi4+L0l6Aozpec8jLoGYUcbkQeMm9
+ uhzGvk1yY8Av24P33qsqMjQwn01CAyTWSxyiuGuzMF4GtF38lOU8xjEug2UvzTDMRZNyVLhUT
+ U+I0ydY/tuZRz8NpxgoWlaNzkUw5uJSTFxzO5oxtKD78/hfpLtUBzE0qKH6hhYMYnZquucjI1
+ ghhamIqV+LBcwq2feNe1NOyfGfFX7aR8vS1H4jgAX09nYH2XXYg7tYqNsHmvZK2C86GhtVuKS
+ w1mocZ4vHdgG1L0fQxKce3KZ4p9Br4Ebys5u5+zT6y/bPJ2dzke/SE8f9vlhyBYJalm0Qhjk4
+ DXLfQt7zZFbLrK7DcoFO6CQ4X/ohCwOndeGEORneIy6/n8HBP+elbGyy7Y25+SoHccXmgbcuc
+ b3FNLH4GZWv9XmhHn1HiUwWAShJla3r/9Lawn065g0aNjsLCShH8yU3EPUM1aFIwHz4OrDOWa
+ I09c9SFF/tEcnNinSpKIT73FSejNr4NxRapyYFCYkYODb6rW62DeXWoR79XEvl9Q2KQpqGpLG
+ iMikMNBnwC3zVIuFmmy4OjMH0oyAP5JmcqLOy2OZxqFHk1S9JwKgbzYHNIFOgdGwd3+WDmEJc
+ Qxb+EpsaK7s31isNgGSIQIiL2vfV4oPG+DtW8o2JotqH0=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240618_001729_652381_68E54F85 
-X-CRM114-Status: GOOD (  26.58  )
+X-CRM114-CacheID: sfid-20240618_002300_220966_2BBC8D36 
+X-CRM114-Status: UNSURE (   6.20  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,184 +113,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-As preparation for implementing bridge port isolation, move the logic to
-add and remove bits in the port matrix into a new helper
-mt7530_update_port_member(), which is called from
-mt7530_port_bridge_join() and mt7530_port_bridge_leave().
+> Add proper refcounting on the dma_heap structure.
 
-Another part of the preparation is using dsa_port_offloads_bridge_dev()
-instead of dsa_port_offloads_bridge() to check for bridge membership, as
-we don't have a struct dsa_bridge in mt7530_port_bridge_flags().
+             reference counting?
 
-The port matrix setting is slightly streamlined, now always first setting
-the mt7530_port's pm field and then writing the port matrix from that
-field into the hardware register, instead of duplicating the bit
-manipulation for both the struct field and the register.
 
-mt7530_port_bridge_join() was previously using |= to update the port
-matrix with the port bitmap, which was unnecessary, as pm would only
-have the CPU port set before joining a bridge; a simple assignment can
-be used for both joining and leaving (and will also work when individual
-bits are added/removed in port_bitmap with regard to the previous port
-matrix, which is what happens with port isolation).
+> While existing heaps are built-in, we may eventually
+> have heaps loaded from modules, and we'll need to be
+> able to properly handle the references to the heaps
 
-No functional change intended.
+You may occasionally put more than 52 characters into text lines
+of such a change description.
 
-Signed-off-by: Matthias Schiffer <mschiffer@universe-factory.net>
----
 
-v2: no changes
-v3: addressed overlooked review comments:
-- Ran clang-format on the patch
-- Restored code comment
-- Extended commit message
+=E2=80=A6
+> +++ b/drivers/dma-buf/dma-heap.c
+=E2=80=A6
+> +static void dma_heap_release(struct kref *ref)
+> +{
+=E2=80=A6
+> +	mutex_lock(&heap_list_lock);
+> +	list_del(&heap->list);
+> +	mutex_unlock(&heap_list_lock);
+=E2=80=A6
 
-Thanks for the clang-format pointer - last time I tried that on kernel
-code (years ago), it was rather underwhelming, but it seems it has
-improved a lot.
+Would you become interested to apply a statement like =E2=80=9Cguard(mutex=
+)(&heap_list_lock);=E2=80=9D?
+https://elixir.bootlin.com/linux/v6.10-rc4/source/include/linux/mutex.h#L1=
+96
 
- drivers/net/dsa/mt7530.c | 105 ++++++++++++++++++---------------------
- 1 file changed, 48 insertions(+), 57 deletions(-)
-
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 598434d8d6e4..9ce27ce07d77 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -1302,6 +1302,52 @@ mt7530_stp_state_set(struct dsa_switch *ds, int port, u8 state)
- 		   FID_PST(FID_BRIDGED, stp_state));
- }
- 
-+static void mt7530_update_port_member(struct mt7530_priv *priv, int port,
-+				      const struct net_device *bridge_dev,
-+				      bool join) __must_hold(&priv->reg_mutex)
-+{
-+	struct dsa_port *dp = dsa_to_port(priv->ds, port), *other_dp;
-+	struct mt7530_port *p = &priv->ports[port], *other_p;
-+	struct dsa_port *cpu_dp = dp->cpu_dp;
-+	u32 port_bitmap = BIT(cpu_dp->index);
-+	int other_port;
-+
-+	dsa_switch_for_each_user_port(other_dp, priv->ds) {
-+		other_port = other_dp->index;
-+		other_p = &priv->ports[other_port];
-+
-+		if (dp == other_dp)
-+			continue;
-+
-+		/* Add/remove this port to/from the port matrix of the other
-+		 * ports in the same bridge. If the port is disabled, port
-+		 * matrix is kept and not being setup until the port becomes
-+		 * enabled.
-+		 */
-+		if (!dsa_port_offloads_bridge_dev(other_dp, bridge_dev))
-+			continue;
-+
-+		if (join) {
-+			other_p->pm |= PCR_MATRIX(BIT(port));
-+			port_bitmap |= BIT(other_port);
-+		} else {
-+			other_p->pm &= ~PCR_MATRIX(BIT(port));
-+		}
-+
-+		if (other_p->enable)
-+			mt7530_rmw(priv, MT7530_PCR_P(other_port),
-+				   PCR_MATRIX_MASK, other_p->pm);
-+	}
-+
-+	/* Add/remove the all other ports to this port matrix. For !join
-+	 * (leaving the bridge), only the CPU port will remain in the port matrix
-+	 * of this port.
-+	 */
-+	p->pm = PCR_MATRIX(port_bitmap);
-+	if (priv->ports[port].enable)
-+		mt7530_rmw(priv, MT7530_PCR_P(port), PCR_MATRIX_MASK, p->pm);
-+}
-+
- static int
- mt7530_port_pre_bridge_flags(struct dsa_switch *ds, int port,
- 			     struct switchdev_brport_flags flags,
-@@ -1345,39 +1391,11 @@ mt7530_port_bridge_join(struct dsa_switch *ds, int port,
- 			struct dsa_bridge bridge, bool *tx_fwd_offload,
- 			struct netlink_ext_ack *extack)
- {
--	struct dsa_port *dp = dsa_to_port(ds, port), *other_dp;
--	struct dsa_port *cpu_dp = dp->cpu_dp;
--	u32 port_bitmap = BIT(cpu_dp->index);
- 	struct mt7530_priv *priv = ds->priv;
- 
- 	mutex_lock(&priv->reg_mutex);
- 
--	dsa_switch_for_each_user_port(other_dp, ds) {
--		int other_port = other_dp->index;
--
--		if (dp == other_dp)
--			continue;
--
--		/* Add this port to the port matrix of the other ports in the
--		 * same bridge. If the port is disabled, port matrix is kept
--		 * and not being setup until the port becomes enabled.
--		 */
--		if (!dsa_port_offloads_bridge(other_dp, &bridge))
--			continue;
--
--		if (priv->ports[other_port].enable)
--			mt7530_set(priv, MT7530_PCR_P(other_port),
--				   PCR_MATRIX(BIT(port)));
--		priv->ports[other_port].pm |= PCR_MATRIX(BIT(port));
--
--		port_bitmap |= BIT(other_port);
--	}
--
--	/* Add the all other ports to this port matrix. */
--	if (priv->ports[port].enable)
--		mt7530_rmw(priv, MT7530_PCR_P(port),
--			   PCR_MATRIX_MASK, PCR_MATRIX(port_bitmap));
--	priv->ports[port].pm |= PCR_MATRIX(port_bitmap);
-+	mt7530_update_port_member(priv, port, bridge.dev, true);
- 
- 	/* Set to fallback mode for independent VLAN learning */
- 	mt7530_rmw(priv, MT7530_PCR_P(port), PCR_PORT_VLAN_MASK,
-@@ -1478,38 +1496,11 @@ static void
- mt7530_port_bridge_leave(struct dsa_switch *ds, int port,
- 			 struct dsa_bridge bridge)
- {
--	struct dsa_port *dp = dsa_to_port(ds, port), *other_dp;
--	struct dsa_port *cpu_dp = dp->cpu_dp;
- 	struct mt7530_priv *priv = ds->priv;
- 
- 	mutex_lock(&priv->reg_mutex);
- 
--	dsa_switch_for_each_user_port(other_dp, ds) {
--		int other_port = other_dp->index;
--
--		if (dp == other_dp)
--			continue;
--
--		/* Remove this port from the port matrix of the other ports
--		 * in the same bridge. If the port is disabled, port matrix
--		 * is kept and not being setup until the port becomes enabled.
--		 */
--		if (!dsa_port_offloads_bridge(other_dp, &bridge))
--			continue;
--
--		if (priv->ports[other_port].enable)
--			mt7530_clear(priv, MT7530_PCR_P(other_port),
--				     PCR_MATRIX(BIT(port)));
--		priv->ports[other_port].pm &= ~PCR_MATRIX(BIT(port));
--	}
--
--	/* Set the cpu port to be the only one in the port matrix of
--	 * this port.
--	 */
--	if (priv->ports[port].enable)
--		mt7530_rmw(priv, MT7530_PCR_P(port), PCR_MATRIX_MASK,
--			   PCR_MATRIX(BIT(cpu_dp->index)));
--	priv->ports[port].pm = PCR_MATRIX(BIT(cpu_dp->index));
-+	mt7530_update_port_member(priv, port, bridge.dev, false);
- 
- 	/* When a port is removed from the bridge, the port would be set up
- 	 * back to the default as is at initial boot which is a VLAN-unaware
--- 
-2.45.2
-
+Regards,
+Markus
 
