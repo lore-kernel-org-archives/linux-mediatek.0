@@ -4,97 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 916ACC2BA18
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Jun 2024 13:19:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D6C2C27C4F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Jun 2024 13:22:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:
 	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ALM4LMMWzcq11QGqu7OiSdjiZT8glGCxdWKSmz/J8kk=; b=PmZDmOCYMkzKJsTqmEzMLHzbNw
-	OmlwZIR9zMXRvoMuPggdKI7zhjRqdyG431JYgP9uu98JmSM40cpTKm4jZ8Ox6UGLaJ20vonwocyjv
-	/6cimHIAP6DTOazIyP4BbLz5v+H72aCmwPSZVer4YEtYnpUiMp2nY4wzlyL64Z/srfCUBRpHmB1n+
-	m/AAiIxnfSLMufnCbdbs7BtaZoCRur45duVOraYfcptdfag7F+Ljo9y86xKBDzBR97eCI4WbDAnTB
-	ESzpGvvDKXjiZ92dWAC14uz8z48DbDlsaDdQvp+GfYP//bbKF+9jjAY8U/+FQDQk3j1juNnssSPbu
-	Fd4gNgLg==;
+	bh=VheRVCghEW52bPVUUxMownlCDyvT22eAxF5wyb6VrgY=; b=oZ3ATm0p1YXUSHz5i8iF8ZDEIA
+	cuPDxOLQQu2x3yVCddPhItyjq0Cw07ww4cv172TzPw3J+wR6u4Bmwv0EY8Ir+ZROvwmaLzZG57BEb
+	wAaJM0uzWW0vCbZrkCP0L4fd1+4ClPFOUxoxoi8TnYm0qB2L05LDCplKaJqfmapWND9CIgukI2PdZ
+	LjWJFgcPwaW4zdHYUHTBKpNS1BpAeoMSmr1cV6kDJAOWJ2kBLql+HTdFOQZ6cFeHPEGmKQxanntjV
+	0DuCFEFMJSlSORTt0yF3rAbwBUljn1eUnVidodbFRA7XuZCcphLgHVF+d+5+4YMZpqaAiqmWqbNW1
+	y2JU1PoQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJYkY-0000000F5CF-2ZpO;
-	Tue, 18 Jun 2024 13:19:50 +0000
-Received: from mgamail.intel.com ([192.198.163.7])
+	id 1sJYnU-0000000F5zS-3Qdk;
+	Tue, 18 Jun 2024 13:22:52 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJYkV-0000000F5As-2K1m;
-	Tue, 18 Jun 2024 13:19:49 +0000
+	id 1sJYnJ-0000000F5w5-3mjg;
+	Tue, 18 Jun 2024 13:22:50 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=MIME-Version:Content-Transfer-Encoding
+	:Content-Type:In-Reply-To:From:References:CC:To:Subject:Date:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=VheRVCghEW52bPVUUxMownlCDyvT22eAxF5wyb6VrgY=; b=AqDAhMZIgXZMjYOBQxdar+oDqN
+	hpbZvcwCVM2xT3H45sXTco4Y0mso1nLIPt6nlMFYnQxIvFKY9xhzCvTu7NSqUBsWCfuDt6YzEOc75
+	O4MehTPntyoTCRi2ITjzHvgt7xmmgecT93TIjls4ICVBShOZCaTvRZk77OT4WiazZ7JG0ml5vAxQb
+	AZi2sjiVkpsWpPtphPskWrlx8SZ0/rCuorkCOLtx08Ik78nktsZ4QxFqJkFrRkfeTk9//MFcIM5lf
+	2G0inqrpSgROaj2g/PkvGwmm+nqZO1Dn0s16w6BWJBJCtDyLUHb0KagjMcLJWeIiiCo2V6psWcv6e
+	L3XCwkTg==;
+Received: from [192.198.163.7] (helo=mgamail.intel.com)
+	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1sJYiX-000000078PJ-0wva;
+	Tue, 18 Jun 2024 13:22:33 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1718716787; x=1750252787;
+  t=1718716665; x=1750252665;
   h=message-id:date:subject:to:cc:references:from:
    in-reply-to:content-transfer-encoding:mime-version;
-  bh=mlytnvxZUIcNVXRUG8PB8CFxoug4Xk/wQgp7aogSuno=;
-  b=kgk5kZ8zdy7rqDxFL3rcOQDbRLFrxC8DcHQ3e9hogbrzuMBRQn6Vb/2H
-   sZA7HgLJUtuZ/uxNk1KX/feDbF8vY741BaMU6/Hpr/7CQ0m8UZnWE/mH3
-   1R7O6y3dcZZXJl0wuaDdI2CZB6eXlB9UdpMMEsptHqZ7engtIcMekXEFD
-   h3rpnQsQRBUFhuUmoVrX1TBt/C82iD3fsLVcASJ90fxgbcb16eoyuMPcE
-   fTuv0pPLGG5yZESnZ6hUWOx8R2IdZEXPMaSuhVYHalOfS8bUdv42WFqqR
-   HB8bHvbMa+k3zg35iTheeZEAPLhYwJ56sBI4XP0Toaf0pM4yJet2I+qRT
-   w==;
-X-CSE-ConnectionGUID: G1zx6Wk1TMCw82YPyNzHbQ==
-X-CSE-MsgGUID: XGdFw4U/TvObNzARNn8MWw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11107"; a="41001500"
+  bh=j/v1pYjGax3LjLb9ZoB4xcIHEL3LyzsZKVSNWyAPrnw=;
+  b=WW0WNwdJf9+BsHW9CWdKkg5Cz69ePxQDpkyIKKtvO3fyZAOXISi1TNET
+   GiINb1Z+gjKxdzAkwoCDHUpDSxxfUnze+HsoJjxYOAKbyrvogWD6TlybK
+   DwihKhDeukhQC7uRNeA3SlQt/9qInssuQLMoPTajU6wA1A71kBK8lWzPq
+   +unZ7fDaDX4mCsnewDGaGQwQNC70UDYLMx+AVqZpfXBDYdIBvoH7LtN8N
+   foANayKIC6v4e+OrsFWIec+y6V7iiWCA7VBgZV9Oe+4zCaQ73K4tG6tRK
+   el8vnMgaXTWohJd8dRM8BBYgNZGQPZWo2OaPxYXJRFxqE8KD+v3ZZjL/q
+   g==;
+X-CSE-ConnectionGUID: JLHHv0dxS62x7DE9yC0SRw==
+X-CSE-MsgGUID: mT4LuohTRC21Rx6W2VjyRw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11107"; a="41001103"
 X-IronPort-AV: E=Sophos;i="6.08,247,1712646000"; 
-   d="scan'208";a="41001500"
-Received: from fmviesa008.fm.intel.com ([10.60.135.148])
-  by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Jun 2024 06:18:55 -0700
-X-CSE-ConnectionGUID: J90bLrssSmamzZ/Tq7G2xQ==
-X-CSE-MsgGUID: AbDJY6OVRC2IyhSZGWBRfA==
+   d="scan'208";a="41001103"
+Received: from fmviesa005.fm.intel.com ([10.60.135.145])
+  by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Jun 2024 06:16:41 -0700
+X-CSE-ConnectionGUID: 2+MMLBttT3mQL0j/40Gj6g==
+X-CSE-MsgGUID: jT15bDxXRtqEH9ImGJLCBg==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.08,247,1712646000"; 
-   d="scan'208";a="41500282"
-Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
-  by fmviesa008.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384; 18 Jun 2024 06:18:55 -0700
-Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+   d="scan'208";a="46011076"
+Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
+  by fmviesa005.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384; 18 Jun 2024 06:16:40 -0700
+Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39; Tue, 18 Jun 2024 06:18:54 -0700
-Received: from fmsmsx603.amr.corp.intel.com (10.18.126.83) by
- fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ 15.1.2507.39; Tue, 18 Jun 2024 06:16:40 -0700
+Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
+ orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39; Tue, 18 Jun 2024 06:18:54 -0700
-Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
- fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39 via Frontend Transport; Tue, 18 Jun 2024 06:18:54 -0700
-Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.169)
- by edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
+ 15.1.2507.39 via Frontend Transport; Tue, 18 Jun 2024 06:16:40 -0700
+Received: from NAM11-BN8-obe.outbound.protection.outlook.com (104.47.58.177)
+ by edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Tue, 18 Jun 2024 06:18:54 -0700
+ 15.1.2507.39; Tue, 18 Jun 2024 06:16:39 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=lqFLg3MWOtMC96StTFyF9GD0O/gBPYZuwVqfMd3w6E/1HRQzlib0N1b4IpUOclL9X77x5u/U5UxEWgV4yg27tD3MWUX6/awAugCVeehclBPKYTdRZYb7oHgQMKUV2NKiL2ClRhzCvvjG483bdEm9yGBbn7UxU56lfgog4RfXehLrJlYWUXh/wMCGK3wTEjJd3LoakqoJqlN3W0UoKy6JwbQfn3TQlRhOdAdT2g+XYubRjMCEo//FZtUBZLeWtQTnFUcnvvt1P+MNF9hVmxCPc7OOG/4QwL+wrnoIupAVJwUpCRiCM004Yiw4fGW9SMNplHxBs+NofcBQrqwadh2ytQ==
+ b=lW3RdNBayZljsVcSL4dtfI4TDdFSFyPwQuA1cYg9As++1TQ1NU2+FBe6eVH+np/zoqrAE0Z2a25dCDwQHG4Xq/WIJ0+kJY9t2jdvBKKPCBDCLTsXCpHLhpj7LJwTLL/51XD7XOfP+IfcwWudVs1y45Fa3Z6wmlBBp5Om+39hICbcQOCdRSXfOpk8bgcyfSbieyc4bBun0/y5WXenPuRRtG7P83rMlC06NIik4vNPo5C47TV7i4+tdLjdkxOQWwb9KLNMjdx4e/5gj6SbuM6T4bWghWJtNwqeAwyNcr+3/Zvm0Ph/1QsaiBwrHhKb3KL+W6zr8uq8QmLZYsz43RTlYg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=ALM4LMMWzcq11QGqu7OiSdjiZT8glGCxdWKSmz/J8kk=;
- b=aovRct/KEMIPj7R6rw9n2OAlU0i0RUsqYqV7MGrpEZlmBJxCYNDezd2ADF3q3wr7xHPdUvzHlSgNRxLXZKVAbinQjTjrZNQ9JSicTCOuL/SfZ6al/q0wbhoK57soy3bzgpxmfOyA80ZQyQv/RPm4KLqlLq/2jaR3x8EIuorrN5JJnxm9/aJqRvNkPgvAvdQcG8Ns/i7SWaisC1eQBT7aZ24aWpihKIoi+keBOOdwoLlzkXslaLpN6qWQhRUsSgOfsdQwgsv7yYn9nStCpGO9vA9mi7CJ4wz3NZEg69JluD5qfXqq/awFb7ZlyQhJpdT3IzJns1inTgyIdNneCQWrEA==
+ bh=VheRVCghEW52bPVUUxMownlCDyvT22eAxF5wyb6VrgY=;
+ b=UGPSgGW+A26JiH9Qfj8YtLb1owO25aucJZUTo2nQxXxP1T6XSFzC/fpU6G7HedBd9eLCP5xRz6KJln9OslgzUd4jTB0oBDZHMXet8Vf927vuyo4QEO9lVDB9HLlmUPebqoxxUMbwV89fyzyBzTdEk9fYIu+s8z7PyzgqQL5dOLL030ysjHrLybWQ/A2TV51I00duDuj88vpJaVms6YXeMxRo5za2xHvpgYmZ+G+22v8WIjd+mHa61/LIet88flC22+MUR/ZSNSEqShwSY3/K/ZjaxqavgU9AcexZreyWM+N2avQssU8Cv5iDyizMzdEM9BI7Vc2IhcX9JSI52R13/w==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
 Received: from MW4PR11MB5776.namprd11.prod.outlook.com (2603:10b6:303:183::9)
- by SJ2PR11MB8513.namprd11.prod.outlook.com (2603:10b6:a03:56e::11) with
+ by MN2PR11MB4581.namprd11.prod.outlook.com (2603:10b6:208:26c::22) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7677.30; Tue, 18 Jun
- 2024 13:18:47 +0000
+ 2024 13:16:35 +0000
 Received: from MW4PR11MB5776.namprd11.prod.outlook.com
  ([fe80::4bea:b8f6:b86f:6942]) by MW4PR11MB5776.namprd11.prod.outlook.com
  ([fe80::4bea:b8f6:b86f:6942%5]) with mapi id 15.20.7677.030; Tue, 18 Jun 2024
- 13:18:47 +0000
-Message-ID: <a86c1fcd-6d00-4c31-9d15-5a801fd6c7f4@intel.com>
-Date: Tue, 18 Jun 2024 15:18:38 +0200
+ 13:16:35 +0000
+Message-ID: <246aa990-3e94-4372-ba49-7b2620240f2a@intel.com>
+Date: Tue, 18 Jun 2024 15:16:26 +0200
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next v3 2/2] net: dsa: mt7530: add support for bridge
- port isolation
+Subject: Re: [PATCH net-next v3 1/2] net: dsa: mt7530: factor out bridge
+ join/leave logic
 To: Matthias Schiffer <mschiffer@universe-factory.net>,
 	=?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, Daniel Golle
 	<daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, Sean Wang
@@ -107,104 +117,103 @@ CC: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
 	<netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
 References: <15c28e5ed5fa02ca7904c71540e254617d571eb8.1718694181.git.mschiffer@universe-factory.net>
- <499be699382f8b674d19516b6a365b2265de2151.1718694181.git.mschiffer@universe-factory.net>
 Content-Language: en-US
 From: Wojciech Drewek <wojciech.drewek@intel.com>
-In-Reply-To: <499be699382f8b674d19516b6a365b2265de2151.1718694181.git.mschiffer@universe-factory.net>
+In-Reply-To: <15c28e5ed5fa02ca7904c71540e254617d571eb8.1718694181.git.mschiffer@universe-factory.net>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: ZR0P278CA0116.CHEP278.PROD.OUTLOOK.COM
- (2603:10a6:910:20::13) To MW4PR11MB5776.namprd11.prod.outlook.com
+X-ClientProxiedBy: VI1P195CA0080.EURP195.PROD.OUTLOOK.COM
+ (2603:10a6:802:59::33) To MW4PR11MB5776.namprd11.prod.outlook.com
  (2603:10b6:303:183::9)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: MW4PR11MB5776:EE_|SJ2PR11MB8513:EE_
-X-MS-Office365-Filtering-Correlation-Id: 8a7ff48c-ae51-404a-8f74-08dc8f992fc3
+X-MS-TrafficTypeDiagnostic: MW4PR11MB5776:EE_|MN2PR11MB4581:EE_
+X-MS-Office365-Filtering-Correlation-Id: e69b947c-78c0-40c1-80eb-08dc8f98e0f9
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;ARA:13230037|366013|7416011|376011|1800799021;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?cGt4amQ5T3hXMk95WlhaZURmS2VZVC9TZnVJVlhXb3JacWxYVUhxL3NIcE1z?=
- =?utf-8?B?WWVUMGhnbVFXRkdieWRKdVVpZ1RBZzRaYlA3M1VPc2R6UjNIeHhqaDZZS3VN?=
- =?utf-8?B?dDdDelBaOFE3N01mWWhGOEpuOFpUM1drVjFvNi9vZVIvN29NN2Y3SU9EUWs5?=
- =?utf-8?B?cjRITk5BUThiVjkzY1B4d2Zuc01qMExseTdobFlTeVFXZVZkM1pldTRmdFda?=
- =?utf-8?B?ZjFnM0E0amFwRlhHdDdSM09LMUtzUHNNMEE2NzA3WS91RFdpOVYzK3FOR2g5?=
- =?utf-8?B?WS9PZEdhTlZZbXBHZ1FHaXdjaFZHZkVvQXRBL3QyV1NIaGZSQTRPSUJkbWxL?=
- =?utf-8?B?QnIrSXZWcEM2VFZjVERCb1hFbXVsY0E2YUZCWitvbEdmNmgvTzFuQ1V5WEJL?=
- =?utf-8?B?RGEvcmt0MkFYcEE3cXdtUlFWUUhlSkErTEh4eFFSMllNd1kvWnlwMlp1M1NV?=
- =?utf-8?B?YS9XSUFBbmhLbFFXNjZqYjBVUTN4TVFrbk9OdUM0RG5abkRBT3B1T3VPTkx3?=
- =?utf-8?B?TmNWeUFocFNDbUtoYVpCV0tlVHNjamJuVUNEOWJLSU1hNHByUU5FUUljVTRj?=
- =?utf-8?B?Q1hlVVlOdVFPL3NHeU1COGkxaXB5NkJURkpBdTRmdHhQWlorMDJodWgxZG0x?=
- =?utf-8?B?eUtIeVk1bkhLQzlJNFNCYnY1L21WR1NoQzlCS3JRUUhoY0Z3TWNaZVh3Rk5n?=
- =?utf-8?B?YnlNU2JQN1JXNzM1Smh2Y2g0dU1WWk1ITG0zN08yZjFRODhOb2wvUk9RSXVX?=
- =?utf-8?B?UE1VelNCeUhDZXY4SFdNWmJFOE4yaHRjeC83Zlh4SlQrdzBYV0QxUzEwV0t5?=
- =?utf-8?B?M1RzSmhuU1RPOUNqcHhkNXFMeEJ6TkJDVXQ5UDZ4bGJ3dDhyZDl2T25jc0sx?=
- =?utf-8?B?aklhRklmOEo3b3FRTDZUSU1FNVNsVnNBTXc5akpObmlvNjJHZkJISitJN3hE?=
- =?utf-8?B?VDdVMzB1elJlMUo3a05lN1JrN3pBZ1pHcE1yb3krTXpKWVRDQTZmV2VqdFFh?=
- =?utf-8?B?S0duSVBNblV1SnpqeEpKN2hFTXVvcTluMVIveExOYyt3d0FvWURkbVZrN1ZZ?=
- =?utf-8?B?ZFBjeEtIcVB2WWZtK2RLQ1J5aytpT1U4YWxJWjBFamdML2YwNCtlWXRxZ3hp?=
- =?utf-8?B?dER2aW5abHZMa2ZEa2plVS8rMC9Rd2xFZjhxZ290UCtRU29maldNSWxkRGpq?=
- =?utf-8?B?Qnd2ZmZiRHpEbllMSkMybzQrcWcyMlZaUlRTZnF0QlVGeno1K1VUVGlsazdL?=
- =?utf-8?B?cUxSZkUzUHhPQ3dISnZHSk1lZjNGaStTSFJYWm56ajU0T0tkZ291djd1VHAr?=
- =?utf-8?B?T3lveDZJRyt0WFRIQS9EVHB6ZVY4MVF0enhIV3YrL0d0SEsrRlRpeVUraGVt?=
- =?utf-8?B?TkIzUVV3S1ZaaVhjcVVrdHRCbGtDNU5XNy9jRHBMNHFPcWJSd3EzcHBpN0Ry?=
- =?utf-8?B?NEMzazlFUmRyUjRUZjh1YW00ZUlGbkR4cWNDbllKR1A0SkpzaTVKRGQ0T1l4?=
- =?utf-8?B?b2Y3RXh1M1h3T3pLTy8yY29aK2dmWCtoMG1wTGJxRkhOWFQzOXB5dkZtR0g0?=
- =?utf-8?B?cmdGTTYzQmRBOUFkaVBQc1ppcTJmbmFpRk1xZHorTE10cGpRbjF2b1c0MWpa?=
- =?utf-8?B?ZE5GcXR2ZTJkbnVpRk1vWCtwL01RYVZ0bkd2R1NYcTVkeW9VSUUyaGhhVFNy?=
- =?utf-8?B?Z0p0bmE0NlFMTEM5VGp4eUt0S2ZVUlZCUklPNzU4RnpGYVJ4eGI1bzVuNXQx?=
- =?utf-8?Q?9N/3A7ywCHeVQFc7IKQmr28EN2TIgEWlE4XD4/b?=
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?TkNaMzJnQVVidlpZS29tQlVUVjlmRGxhZDV1SzFGSWRWOWtJbXlmNkRCdmJX?=
+ =?utf-8?B?YXFRdlZOQUt6ZlRSMGxsZTNiWXNsb1EyOWR6YmxJWGFnUHdNV3FsSGVGOHJt?=
+ =?utf-8?B?QXRXZU9MSUV3WE9hTlVEdytYTElMNWFWMC9wMmJHZVNqMnE5d3l4WlFtU1RE?=
+ =?utf-8?B?bU5iWm0xVGdGdnFBSy9jOHdaSVY2TnFKMkJSWlBsd3BxY2ovZENsK2JzVE91?=
+ =?utf-8?B?eHc4alZ3VTlRRGhVYUg4NlZ4cXRTYllGelhpUWs4eStJVWh5aHpmT2dqSEdW?=
+ =?utf-8?B?NnI0cFVxdjhydGs4M3E3Vml3bFIvNEcrRDl4L0hsb2ZJM0hrVVIrVS96U0ZB?=
+ =?utf-8?B?eUF4MGQ1VjhVSUZlTk9rMHQ4alppSk1xMDJadThlc0JWdjRpcENDcjhmTkZi?=
+ =?utf-8?B?WFR2V3NZNldWanQySUlYUHp6SVhtVWtrdFpNWjRqRlNOYlhCS0dKOGhKR1Zo?=
+ =?utf-8?B?aStXQXYwVnh2Tk9YaFdwSlVSeFhRelk1RU5BL3E2ZTdMTm5HSzFCS3Vub0to?=
+ =?utf-8?B?UUZhMG9MMFY2M091cXAvQmpxcnVzaGkxTmlVTElaVGJUM0pIc21Yd0ZqeEg4?=
+ =?utf-8?B?d3RqTEw2M1hqMzQ4MXFHT0N3SGovWENiak5DcXE1RjZ1RlhYMlBFL0VtRmZw?=
+ =?utf-8?B?S2dSZVVpVnhXVWxheVI0Wk1HOUNEdFNkVDFYMWptRFBUdkU5clh2ZXVkTGd5?=
+ =?utf-8?B?d2lNclVjN2hXZjlxTGw0Y0lJOCt1bHdUWlNSKzZ3eFp0MTFaa2NIMGphUzBs?=
+ =?utf-8?B?ajVyWWhJbFJURHhLcnVjaHAxSVRaeFB3akNySVFMV000cjhNRk5MTDNTNVp6?=
+ =?utf-8?B?OHhaaHYvRHdRVExMQVJlbVJnWE5KenRQeHZaN3lzdmtGZXRCOExmVUdjN0cv?=
+ =?utf-8?B?ZVJqb0lubnhlS3NkOUhUbnZZdi91MkZZMlNLUWVuNnRxZUF2eGNLVVpCV29u?=
+ =?utf-8?B?UGxRVFcyMi9uTytJbnZHdEw2RFhQNVRRMysvT20zWjRRcjBqTGFTQWZLdGNu?=
+ =?utf-8?B?S0RMVUFLM3BKUDBoUFBXZWlPWkpSTjJXNGdTNjRuYURnYnplYTNiR01NUEIz?=
+ =?utf-8?B?WW41aExTQ3dCWUtVaytrS3VyREJ0TkUxU240Q29RNnIreE42SkY2U3cxSnFV?=
+ =?utf-8?B?aGF1eG1ucGN0NlkxMG0xT2p2Q0VDUUtnT3lhWWNrd2pibjZpZFBnRS9XTVNz?=
+ =?utf-8?B?WVBkMnE1V21rNmVsckhsKzZDenlKbG9TUzBFWUtjeHJZTmhZQi8rZW5RRDNx?=
+ =?utf-8?B?VmVheUN3UHltWjQ4TFBqZHRiOE5QNkVsdmhZa0lVYlp1dXNOYjJ0VnkwYmZQ?=
+ =?utf-8?B?dzVXOSswWVNsMjlmbnBWRC9IaTd5RG5udlJwMHBFWElzU2hQVFgrRmp1SVE3?=
+ =?utf-8?B?VGRaSFR2UkhkL3NQeHFGVnRaWnhEZllXYnlSWlJ4NDk0U0F1dzMzbXNlaStD?=
+ =?utf-8?B?L1JHc1BmeDJnNjdhT0lTOGkzMDhlb1dWZkdJMFFjL2svZmhTK0I3TnRXeFNF?=
+ =?utf-8?B?Y2NodWZ1NTVhekFMd1N0bWVMK2hHbVVrY0JWNDZXQ29yWnhBaVIvZDZERlFk?=
+ =?utf-8?B?TWlTdGJrM3JWaFdIU3gya2lianFKaHBJMGtYa3gvcW5oK1ArdkZyME9aYUl4?=
+ =?utf-8?B?d0ZKeGJXcHJlZ0tCREdDcm9hZ25lZG9Gbmdyd1lFUERLaTZXSGRJRE5ZaDJj?=
+ =?utf-8?B?ck9IYWJZNWM1Q3NTYnFHeHFkOC8xU0d5RWplRjJxaW42MG9wQS8wckJLblFy?=
+ =?utf-8?Q?t3xNPo5U7OTnOsKoriPjAl1BNvTdSX4kM2sVmUN?=
 X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MW4PR11MB5776.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230037)(366013)(7416011)(376011)(1800799021);DIR:OUT;SFP:1101;
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?V094cjFMK1B6WmFFZWJrNDE4aTl5Qk5BbGZaRkVUcjBTYUJrRWZXNWtINCtE?=
- =?utf-8?B?TmdBeGRVR3BCcWxIL2FGY2w0SjRkRHN0Q1B3RldJbk0wQ0Y4WHgwY0ZkZEcz?=
- =?utf-8?B?OUhhL3BxYVFadktxY2U3NWpLc2t0N05sRzJzQ0k5NE9VRUFZc2E4Nms1TXE2?=
- =?utf-8?B?R2hmam0rTFUvSHdWS1ZBaWl3Q2dzSTIvZm9WREZwM1A1MUV0bm5wMFJMcVNF?=
- =?utf-8?B?aEZQcnpPM2NJdEJPVmNzOU5SK0N1elJMVzR1Y3VmakswZ2ZYaHRtMmU5dlU3?=
- =?utf-8?B?SURnKzRBank3ZTBNL2QzVGRYNDdYeE8yeW9ZOUJub2YyQkEvdkV1M2szT2hE?=
- =?utf-8?B?QktKakgrSzBZbGR6WjYycWxnRXlFU0lWMnlyWjVBcnhYWUp3ZldueUgvbDl6?=
- =?utf-8?B?VWlIODhRbTBOS2F0aFpyU0QwOFFHRjdjeVNYajljeGhORnQxTkxLeGlBQUs5?=
- =?utf-8?B?dGhacWtzSVoxQ0ttSHNiQlVQT01za3h5bzlqQUNETWFUbW0rd1lrdDdxMUZt?=
- =?utf-8?B?S3MzM2tMZGdTY2ozRllFYjBnWEpIQ2pUQ2Erd2V5bHB3ai9kMmJyWVB3N3Vj?=
- =?utf-8?B?YTZ0Y0x6TWlYdVFvdWExaHgvc3ZvTjVnMDArbklVWDJLNjM5YmNtNGZIS1Rp?=
- =?utf-8?B?M2F5Z2hZNXhaVmM2dHc4N1pXYlF0cm5TWHFrR3FYMFR5c003bzhMUWVlMUFq?=
- =?utf-8?B?Skx3a1J5NDFwaWlZbmFVM3lFbHZwN3lkOHYrYXZZRkdrUml0OGJ5VUFRb1k2?=
- =?utf-8?B?Rk9tWWNRTDdDTUlKdW5QdFdaYnkyUlM4RkplWFBCb0VSVFp1N1ZxY0tBczFr?=
- =?utf-8?B?c0hQbEQycWlGd2tsenRBVXNrbmMyN2ExZ0FET3ZiYldKOHFucmtXNTMzT0dB?=
- =?utf-8?B?YjJPU1dvUmpEcDFHaWFpWStXQm1XZGZyVGgrNVFNUkowZ2lYUnpBcG9rSEI4?=
- =?utf-8?B?YTFrYVFzZ0NscnMvanYyd2l1Zk5BWk05bmlRVGpOUStwS2lJMnZhZ0srZnFQ?=
- =?utf-8?B?RHpjSk16VnF4UGV0Rll2blVTY2NNS0dDZjRJMmtqMHVPVkE3ODdqV0FtaStz?=
- =?utf-8?B?NXJMeFNzamw3Um5QSTVSZ1lhWUhBV3RBeW9GbkRMeTBCM0poejBiZ1QvMDNZ?=
- =?utf-8?B?cnJyK0YzYk9HL3lUUU9TbWNYNEhHSDVSMVdkVWllNktwaUdxQ294YUJFaFNM?=
- =?utf-8?B?c0w4MFV1dEp2RGlzb1U3bVgrZ1IzMVJxTVZBWU9TVW8rS3lESmJKRVE2Vnhr?=
- =?utf-8?B?ajdnbU1LKzNLZzJUbWpqVGx6OUVNMTRQZmZDbUtVaWl6M1hsNzhBN053dzlW?=
- =?utf-8?B?dStlbDcyeDFYSTU4ZFIvZzExTlBCYllkQkdhNTdXZ200elhDTG04VkVybDRI?=
- =?utf-8?B?ZEpuOHd4alVyelMyS0Jab3dVMU5mOGJBemZtQlIzQys4ZmdKT2NndUR5SmVy?=
- =?utf-8?B?WW1QTjJxNEMvUlY1RVhtL0NqNmxyNjk4cjBvZVlEVk5oWHF2cXZ1bVRFSkww?=
- =?utf-8?B?STE3alZ1cTl5VmNQVi82OS9UcUZQZmwvd1FBbGFaSmF1TVRTd3QrTTZrMDlt?=
- =?utf-8?B?ZENNRTRRRlhvUkpyelpyeHhsNnp4LzhHa3VvM1c3UzNmR0FiWGd0WWVzN1U2?=
- =?utf-8?B?TzZUUkhtR3ZFZXhXN2QxL0h1T1J5dzExK3RiTzZtLzBzYis1czRxSjZIVUdv?=
- =?utf-8?B?Z0VYeEwvMVZsMFkwVXBOWUhIQTBtdW9wOFk0TmM3MnhXc1ZCSzV3cmZ1d2I3?=
- =?utf-8?B?VENDNmpqZDdZOW45K1NKa0t6RS9wVmwvYUZIM1BZZHNWQnVBdVNTVEh2L2xm?=
- =?utf-8?B?dFRTdzNVYW5hTlN6Wjg5RWpwREUvb3Vld2JuK2VXdnpKaUZybCtqUDJLWjB2?=
- =?utf-8?B?bnAzVjlQd1JTNjFmNjBwQVF3UG90MVdaeVZUUTgyMTFnUmVGMGlaaTdmSU43?=
- =?utf-8?B?NFhzNy9OcEVESHhvT21pSVhOWHlHcHo3NUZ0RjFMUENRcExkT2kyaW1UYU9Y?=
- =?utf-8?B?WUtaUHJ0NDhiZDlpbWVlMSt0R25DR3duNWxxSmRJRThXSXJtelU1d3hVU1ho?=
- =?utf-8?B?eTF0R1N2aHhEN3ZkeHZjamlzbVN6bTN6MkdEdWtCWnlyUWpIQ0FXSXBydktt?=
- =?utf-8?Q?R1XcUCqRo9B+Ph8YupLsk27bC?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 8a7ff48c-ae51-404a-8f74-08dc8f992fc3
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?L0Mzc3RydlFDRjBQTDBzT1gveVNKMkxUYmtoZXpuT0lyQXRTUGFVaTc5dFM2?=
+ =?utf-8?B?T3RwcUUzWmd0dWMxcEZ2Y0Q1ckQzcWZzcEdSSXA1R0lOUlQrSmpSR0xyMjUv?=
+ =?utf-8?B?eDhkNmJwelFBY2ZvSmN2U1o0VzJ1VWUzYzltOWJRZ3pxWnFhdlpxTmFHUG12?=
+ =?utf-8?B?d0JjTHA4VnR3bGxsUEFDdzFsWHozeW5IOUh4NERmc29KNmVkcSt2dmgxb2xI?=
+ =?utf-8?B?ZlVwdHo5Q2hQU0pobnM1YVFaS3IzNzJRZjJYS2VNZDVYb3pJSElUU2tkWGRK?=
+ =?utf-8?B?T1E2YXp3ZFdpSDFBbkhDQ0Y3NTZ4Q3RmZHpCUm5mYUpiUWpSTEwzWlkySDRX?=
+ =?utf-8?B?VUJSQXl1S0dQVGpnOGNXSVVlZExzZGdDYnBvK0VLTDZyeDROYTVRY2tDZkxn?=
+ =?utf-8?B?TWJjcHNtN05nV2J6Y2lhZWErWVJWbVhtYzIwbVVXN2VqbklLcVJvaFcrTDUv?=
+ =?utf-8?B?ZURpNTBsZHdQRk9kaExuQk1lckNjU2ZWWDRRZWFqTEwydHhoWWpRcWRJblRQ?=
+ =?utf-8?B?dmZMdzBldVRRaTlKVDZpaGxKZitlaXZpbWIrZ1pWZlRUajVYTGF6TjUzQWhB?=
+ =?utf-8?B?YUJaVTdITWc5OEVBQThPNG9BcVpESVdla1J3OG1iWWVMVlJIRnYwbDVYdnFv?=
+ =?utf-8?B?WE5jMitYZjA5SWxpSGlPaFBUTlF1WDYwN1JkWGxFY2lBbnRod1NnZFZFZmZY?=
+ =?utf-8?B?SEJuOXNlMXBZYWI3S0ZjWGx3Q2JDaGJqcmdVWk1uNytpUFVmd0FNWTdIVjU4?=
+ =?utf-8?B?TnBRQzVXY2Q0NEJPOFIzL29DSDQ4aWw1dzY5U3RibTYvMUg4M3hBZUtjUDFW?=
+ =?utf-8?B?OXNXWGZXNEtVc2FMSE1Iak5aMk56NjZFVVUzdjVrN1lVcmpsMTRWOGxpVDBa?=
+ =?utf-8?B?ZnVHaVNFTWRxNXRBVnZkUHhlcnV0UEYrY1ZZM3lxVkdlM01taTI0ZzFLT1hk?=
+ =?utf-8?B?WUdIVmY1YlRkdVpzc0FoSUdraWZMTGNUQVhOdEFiT1JFL1dvVWpxK2xZKzVN?=
+ =?utf-8?B?ajdYUStsS0o0SVFsOWdYY2ZMM3oyN2pXVC9jL2RYV3ZiZW5UR0VFZGttQUhK?=
+ =?utf-8?B?Qit0QUhid0t0ajhYSGZYWUZUczdTNm5tUlZ2dE1WNDlVaFdIUkp6aFdYUEtq?=
+ =?utf-8?B?QmZ5TzJYNEFuNWYwTHFwb3QzcU1ONm4rYlNiSE5qbEQ2alpLeEYranhaQTRF?=
+ =?utf-8?B?V2t0UTRCcHBrcHUxWjlOSW1DcW0zNUFUSjE2WFErK0hLdzYveEpFT2JIdFZR?=
+ =?utf-8?B?QnhHSVZpNVJOK1A4UkR3dEwxanU1MnJudWl6Zm1HRkZOY0dpL1RROEgxNjl2?=
+ =?utf-8?B?dDFMTjFHTDlMNjZiT0NZR3dlR0xML1J3TUpGWVZlQnZqOXZwTXlsOW9HTVJm?=
+ =?utf-8?B?aWZyODFDNFhZZWhJcGJsaWp2OFNMc0VkbEJhNm5Md3YxTFFnbFpPMzBTWThk?=
+ =?utf-8?B?VllVZGlSNFFQOUZiQ1ZZMXErNjVnOUtKOUlScXlONHZGU0Y1N2NIS3NnVElq?=
+ =?utf-8?B?cnI0RXpzSStMSWVTWk9tUE5nMXJsa2U4NFRxSTNHTWFHT3paMnNBeitjRURP?=
+ =?utf-8?B?bmY1czk0akloYTRMcmpQOEoxbkdOU2VadVcxZ1llcVM4bEUrWGhPbFk5NVg0?=
+ =?utf-8?B?RmNGcU1vL3BFeEJoS1ZhdTc2c3IzNUZXU0VXZ1ZKcFloWXRPWStyZmNNcjNv?=
+ =?utf-8?B?cW1TV2JnWFM4RytOUG0vUndhM0ZXZ2hFRjQyWU9Oc2UweEVzUjJhUkgxOXJl?=
+ =?utf-8?B?TWo0TklYbnRjY0cwRTVva0x4aGp0KzdrWVNLSzUvVDhuWGF1YzZlN0RGTnd6?=
+ =?utf-8?B?Z05JRTBBSTNXdC8wMHBOQ0ZEWWRFSE12N0RDaVpuNWo3RGMwc1BWSGNOTXFP?=
+ =?utf-8?B?YnpzakVPT1ZnaElKOERBcnAyY2hMUXNCOGZZbjV5dEQ3T3dKeUlyenBlWWVy?=
+ =?utf-8?B?ZitqVXVuWUU2V0hOa05kR0xCZ3lvUXpIOEhDNnZZUXRDTkJNYWJRSXNRanM4?=
+ =?utf-8?B?T09tbTJ2NHUwdWFPTGd5UmhrRi9kRFFtdXJCSFRoRkpEWVR6d1IrUzE2Nmxw?=
+ =?utf-8?B?Z29Pc1VPRFFVeXprWEtmaTE4TUFxYW5WVjdOakpESUloOG9ocXord0pSM1Bx?=
+ =?utf-8?Q?28V55nUWO2j7fM6llfYenlZs2?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: e69b947c-78c0-40c1-80eb-08dc8f98e0f9
 X-MS-Exchange-CrossTenant-AuthSource: MW4PR11MB5776.namprd11.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 Jun 2024 13:18:47.6252
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 Jun 2024 13:16:35.4387
  (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: BHqIjPEeDJCMUfPznZJUldTNgTcbDpP3gvW5TSFoEFx1oK2x4xPslOVDyUd2BbLdo3p6pF4/4kQvbabIhj2f+XWiccc3kOFeFPPIl8TrcZ0=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ2PR11MB8513
+X-MS-Exchange-CrossTenant-UserPrincipalName: KHQIyV3scvCgFK63qNEAaP9oncJEnMmi8ZwxtPY3wI1pqw+OedcJFcgdaBZonVu+WC0JzSfRKQs/BMVy3MRrTLsAG9sn/FwXLch6awODwBw=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR11MB4581
 X-OriginatorOrg: intel.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240618_061947_684494_8E5A584B 
-X-CRM114-Status: GOOD (  18.13  )
+X-CRM114-CacheID: sfid-20240618_142010_116445_2E0BCC91 
+X-CRM114-Status: GOOD (  32.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -222,82 +231,185 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 On 18.06.2024 09:17, Matthias Schiffer wrote:
-> Remove a pair of ports from the port matrix when both ports have the
-> isolated flag set.
+> As preparation for implementing bridge port isolation, move the logic to
+> add and remove bits in the port matrix into a new helper
+> mt7530_update_port_member(), which is called from
+> mt7530_port_bridge_join() and mt7530_port_bridge_leave().
+> 
+> Another part of the preparation is using dsa_port_offloads_bridge_dev()
+> instead of dsa_port_offloads_bridge() to check for bridge membership, as
+> we don't have a struct dsa_bridge in mt7530_port_bridge_flags().
+> 
+> The port matrix setting is slightly streamlined, now always first setting
+> the mt7530_port's pm field and then writing the port matrix from that
+> field into the hardware register, instead of duplicating the bit
+> manipulation for both the struct field and the register.
+> 
+> mt7530_port_bridge_join() was previously using |= to update the port
+> matrix with the port bitmap, which was unnecessary, as pm would only
+> have the CPU port set before joining a bridge; a simple assignment can
+> be used for both joining and leaving (and will also work when individual
+> bits are added/removed in port_bitmap with regard to the previous port
+> matrix, which is what happens with port isolation).
+> 
+> No functional change intended.
 > 
 > Signed-off-by: Matthias Schiffer <mschiffer@universe-factory.net>
 > ---
 
+Nice cleanup :)
 Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
 
 > 
-> v2: removed unintended formatting change
-> v3: no changes
+> v2: no changes
+> v3: addressed overlooked review comments:
+> - Ran clang-format on the patch
+> - Restored code comment
+> - Extended commit message
 > 
->  drivers/net/dsa/mt7530.c | 18 ++++++++++++++++--
->  drivers/net/dsa/mt7530.h |  1 +
->  2 files changed, 17 insertions(+), 2 deletions(-)
+> Thanks for the clang-format pointer - last time I tried that on kernel
+> code (years ago), it was rather underwhelming, but it seems it has
+> improved a lot.
+> 
+>  drivers/net/dsa/mt7530.c | 105 ++++++++++++++++++---------------------
+>  1 file changed, 48 insertions(+), 57 deletions(-)
 > 
 > diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-> index 9ce27ce07d77..ec18e68bf3a8 100644
+> index 598434d8d6e4..9ce27ce07d77 100644
 > --- a/drivers/net/dsa/mt7530.c
 > +++ b/drivers/net/dsa/mt7530.c
-> @@ -1311,6 +1311,7 @@ static void mt7530_update_port_member(struct mt7530_priv *priv, int port,
->  	struct dsa_port *cpu_dp = dp->cpu_dp;
->  	u32 port_bitmap = BIT(cpu_dp->index);
->  	int other_port;
-> +	bool isolated;
->  
->  	dsa_switch_for_each_user_port(other_dp, priv->ds) {
->  		other_port = other_dp->index;
-> @@ -1327,7 +1328,9 @@ static void mt7530_update_port_member(struct mt7530_priv *priv, int port,
->  		if (!dsa_port_offloads_bridge_dev(other_dp, bridge_dev))
->  			continue;
->  
-> -		if (join) {
-> +		isolated = p->isolated && other_p->isolated;
-> +
-> +		if (join && !isolated) {
->  			other_p->pm |= PCR_MATRIX(BIT(port));
->  			port_bitmap |= BIT(other_port);
->  		} else {
-> @@ -1354,7 +1357,7 @@ mt7530_port_pre_bridge_flags(struct dsa_switch *ds, int port,
->  			     struct netlink_ext_ack *extack)
->  {
->  	if (flags.mask & ~(BR_LEARNING | BR_FLOOD | BR_MCAST_FLOOD |
-> -			   BR_BCAST_FLOOD))
-> +			   BR_BCAST_FLOOD | BR_ISOLATED))
->  		return -EINVAL;
->  
->  	return 0;
-> @@ -1383,6 +1386,17 @@ mt7530_port_bridge_flags(struct dsa_switch *ds, int port,
->  		mt7530_rmw(priv, MT753X_MFC, BC_FFP(BIT(port)),
->  			   flags.val & BR_BCAST_FLOOD ? BC_FFP(BIT(port)) : 0);
->  
-> +	if (flags.mask & BR_ISOLATED) {
-> +		struct dsa_port *dp = dsa_to_port(ds, port);
-> +		struct net_device *bridge_dev = dsa_port_bridge_dev_get(dp);
-> +
-> +		priv->ports[port].isolated = !!(flags.val & BR_ISOLATED);
-> +
-> +		mutex_lock(&priv->reg_mutex);
-> +		mt7530_update_port_member(priv, port, bridge_dev, true);
-> +		mutex_unlock(&priv->reg_mutex);
-> +	}
-> +
->  	return 0;
+> @@ -1302,6 +1302,52 @@ mt7530_stp_state_set(struct dsa_switch *ds, int port, u8 state)
+>  		   FID_PST(FID_BRIDGED, stp_state));
 >  }
 >  
-> diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
-> index 2ea4e24628c6..28592123070b 100644
-> --- a/drivers/net/dsa/mt7530.h
-> +++ b/drivers/net/dsa/mt7530.h
-> @@ -721,6 +721,7 @@ struct mt7530_fdb {
->   */
->  struct mt7530_port {
->  	bool enable;
-> +	bool isolated;
->  	u32 pm;
->  	u16 pvid;
->  	struct phylink_pcs *sgmii_pcs;
+> +static void mt7530_update_port_member(struct mt7530_priv *priv, int port,
+> +				      const struct net_device *bridge_dev,
+> +				      bool join) __must_hold(&priv->reg_mutex)
+> +{
+> +	struct dsa_port *dp = dsa_to_port(priv->ds, port), *other_dp;
+> +	struct mt7530_port *p = &priv->ports[port], *other_p;
+> +	struct dsa_port *cpu_dp = dp->cpu_dp;
+> +	u32 port_bitmap = BIT(cpu_dp->index);
+> +	int other_port;
+> +
+> +	dsa_switch_for_each_user_port(other_dp, priv->ds) {
+> +		other_port = other_dp->index;
+> +		other_p = &priv->ports[other_port];
+> +
+> +		if (dp == other_dp)
+> +			continue;
+> +
+> +		/* Add/remove this port to/from the port matrix of the other
+> +		 * ports in the same bridge. If the port is disabled, port
+> +		 * matrix is kept and not being setup until the port becomes
+> +		 * enabled.
+> +		 */
+> +		if (!dsa_port_offloads_bridge_dev(other_dp, bridge_dev))
+> +			continue;
+> +
+> +		if (join) {
+> +			other_p->pm |= PCR_MATRIX(BIT(port));
+> +			port_bitmap |= BIT(other_port);
+> +		} else {
+> +			other_p->pm &= ~PCR_MATRIX(BIT(port));
+> +		}
+> +
+> +		if (other_p->enable)
+> +			mt7530_rmw(priv, MT7530_PCR_P(other_port),
+> +				   PCR_MATRIX_MASK, other_p->pm);
+> +	}
+> +
+> +	/* Add/remove the all other ports to this port matrix. For !join
+> +	 * (leaving the bridge), only the CPU port will remain in the port matrix
+> +	 * of this port.
+> +	 */
+> +	p->pm = PCR_MATRIX(port_bitmap);
+> +	if (priv->ports[port].enable)
+> +		mt7530_rmw(priv, MT7530_PCR_P(port), PCR_MATRIX_MASK, p->pm);
+> +}
+> +
+>  static int
+>  mt7530_port_pre_bridge_flags(struct dsa_switch *ds, int port,
+>  			     struct switchdev_brport_flags flags,
+> @@ -1345,39 +1391,11 @@ mt7530_port_bridge_join(struct dsa_switch *ds, int port,
+>  			struct dsa_bridge bridge, bool *tx_fwd_offload,
+>  			struct netlink_ext_ack *extack)
+>  {
+> -	struct dsa_port *dp = dsa_to_port(ds, port), *other_dp;
+> -	struct dsa_port *cpu_dp = dp->cpu_dp;
+> -	u32 port_bitmap = BIT(cpu_dp->index);
+>  	struct mt7530_priv *priv = ds->priv;
+>  
+>  	mutex_lock(&priv->reg_mutex);
+>  
+> -	dsa_switch_for_each_user_port(other_dp, ds) {
+> -		int other_port = other_dp->index;
+> -
+> -		if (dp == other_dp)
+> -			continue;
+> -
+> -		/* Add this port to the port matrix of the other ports in the
+> -		 * same bridge. If the port is disabled, port matrix is kept
+> -		 * and not being setup until the port becomes enabled.
+> -		 */
+> -		if (!dsa_port_offloads_bridge(other_dp, &bridge))
+> -			continue;
+> -
+> -		if (priv->ports[other_port].enable)
+> -			mt7530_set(priv, MT7530_PCR_P(other_port),
+> -				   PCR_MATRIX(BIT(port)));
+> -		priv->ports[other_port].pm |= PCR_MATRIX(BIT(port));
+> -
+> -		port_bitmap |= BIT(other_port);
+> -	}
+> -
+> -	/* Add the all other ports to this port matrix. */
+> -	if (priv->ports[port].enable)
+> -		mt7530_rmw(priv, MT7530_PCR_P(port),
+> -			   PCR_MATRIX_MASK, PCR_MATRIX(port_bitmap));
+> -	priv->ports[port].pm |= PCR_MATRIX(port_bitmap);
+> +	mt7530_update_port_member(priv, port, bridge.dev, true);
+>  
+>  	/* Set to fallback mode for independent VLAN learning */
+>  	mt7530_rmw(priv, MT7530_PCR_P(port), PCR_PORT_VLAN_MASK,
+> @@ -1478,38 +1496,11 @@ static void
+>  mt7530_port_bridge_leave(struct dsa_switch *ds, int port,
+>  			 struct dsa_bridge bridge)
+>  {
+> -	struct dsa_port *dp = dsa_to_port(ds, port), *other_dp;
+> -	struct dsa_port *cpu_dp = dp->cpu_dp;
+>  	struct mt7530_priv *priv = ds->priv;
+>  
+>  	mutex_lock(&priv->reg_mutex);
+>  
+> -	dsa_switch_for_each_user_port(other_dp, ds) {
+> -		int other_port = other_dp->index;
+> -
+> -		if (dp == other_dp)
+> -			continue;
+> -
+> -		/* Remove this port from the port matrix of the other ports
+> -		 * in the same bridge. If the port is disabled, port matrix
+> -		 * is kept and not being setup until the port becomes enabled.
+> -		 */
+> -		if (!dsa_port_offloads_bridge(other_dp, &bridge))
+> -			continue;
+> -
+> -		if (priv->ports[other_port].enable)
+> -			mt7530_clear(priv, MT7530_PCR_P(other_port),
+> -				     PCR_MATRIX(BIT(port)));
+> -		priv->ports[other_port].pm &= ~PCR_MATRIX(BIT(port));
+> -	}
+> -
+> -	/* Set the cpu port to be the only one in the port matrix of
+> -	 * this port.
+> -	 */
+> -	if (priv->ports[port].enable)
+> -		mt7530_rmw(priv, MT7530_PCR_P(port), PCR_MATRIX_MASK,
+> -			   PCR_MATRIX(BIT(cpu_dp->index)));
+> -	priv->ports[port].pm = PCR_MATRIX(BIT(cpu_dp->index));
+> +	mt7530_update_port_member(priv, port, bridge.dev, false);
+>  
+>  	/* When a port is removed from the bridge, the port would be set up
+>  	 * back to the default as is at initial boot which is a VLAN-unaware
 
