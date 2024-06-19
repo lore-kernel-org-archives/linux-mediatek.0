@@ -4,79 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45A7AC41513
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jun 2024 17:27:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37634C27C53
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jun 2024 17:27:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
-	From:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=kov7UTVE+51spkfAzeSifZpx2lK+1zQTx8F22CGOlC0=; b=i7d2x4Cq3pU4ORgcnOL50rtzBf
-	3/YG7hoWqi4FYd0mMdhSKGoM3edJvGUiF4QohY7mz23gO5McbA/+sj2LdFrJUfVWTs4czjwf1YOep
-	fjSz2OQBnF8mBFoF+ysHVAW90g8oAFEIjnpYFcvQw543CMxU/zBdVOom4PJXfcgSO4mj49FakUXr4
-	0QzRxbUOVKzh6Hs1LimXumU0k8yDtxFTSFmD0ek9O3pEzmBYITF4O31x1IdwB2e7xT+evYCw5dxfR
-	FG0sXumxVemAwTA/mlPNEmQ+d8hI8bloex3pzgL0ZBxmfGv3yz2Q1xVeRKmvP9AJDKhWgSC/axrry
-	mdyxUVKg==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
+	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
+	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+2+nrsNFCLHASpmdNgpkByM9gHpyo/PFLJ+kzH8U7Cg=; b=pEHInqaTKiimJQbfh0247E+XNE
+	iojL3t+ELsa1RbJ5P7YBPTN55dhYdiBfLDKtWQxWR9Tb4zt4qx4fl8OInCy1XbHCnPFnDPh3CoTfo
+	bZVjMwwvDxfWcJxyVD6DKy921T52ldQwozuGPp1PsqqftX8q62LwyQ9tBeI7bqdlwTWgo+8NKc8zA
+	wrIi2AQC+2f6Tqgmr85nXHyMSARhowadatOv1uMirj+8zCefdbc3E1xgqeFltHjTn7Y/jiIbl2gpe
+	F612t4wXhBUNu90suamYEU9cjh+zTX7CWurX4/LfL/evPo8D7uSKLtS8pCy+AmYqTk4pWx9GDFgDE
+	Q5bQU9/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJz5l-00000002D8T-3QcU;
-	Wed, 19 Jun 2024 17:27:29 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sJz61-00000002DLP-15aR;
+	Wed, 19 Jun 2024 17:27:45 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJz5V-00000002CwK-0afB;
-	Wed, 19 Jun 2024 17:27:15 +0000
+	id 1sJz5Y-00000002Cxc-0MHt;
+	Wed, 19 Jun 2024 17:27:18 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 7D12D61EAF;
-	Wed, 19 Jun 2024 17:27:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 24545C2BBFC;
+	by sin.source.kernel.org (Postfix) with ESMTP id 5F8BFCE211B;
+	Wed, 19 Jun 2024 17:27:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 506BFC4AF0A;
 	Wed, 19 Jun 2024 17:27:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1718818032;
-	bh=ffa9QQcOJtyAVtiNDqxJ1WmYeHKO0blFbInuddhMTh8=;
-	h=From:Subject:Date:To:Cc:Reply-To:From;
-	b=A8S4pCndRUUKF92doaVSqCWx3oxLR9/ACVPt0WBE4qI9L9+/z7kSPUhYITiv/WZxG
-	 dkn02Do3Qgc6M8RXBwGOUgWrbdXUnbNm/4DtNXFJz2VQEx0+4SfNmdg53sa20PKUxv
-	 A8vMhHk+Xi+MSWxgqSmBnfdNPl2oKI7wxkXwHuyedn/0dcMngDd7Vreg2jpZExd/nh
-	 svYxo4FxfHyFiuEjnQ7JEP+HvhqIVCTiRWpM6OGed9pxxVzPa+EoUUPD/9nM87e+bH
-	 R/aneBMvgNY3NWp0V6fMqQLR5bUZ1RudINcrKCQq3I+EXxXWRAbDaY21NUn6GMN/r1
-	 ZyNX1T1mjX0oA==
+	bh=PmY3gJDFSS+M4IZmgfiRwP+hDg2XPx2rJkkufnFkkdM=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
+	b=QT1+ZpmP7KFIZYRmbhKiuhviN0ayIBSyLBJSEfzZEcp1WO0jTQJOatYOj3xZSsS1u
+	 w/gWPVurNcaRP5HpDHI9ODu6DIi1CpaznSIZpabs1grc7DAL2MHEr0o0Fdjijhc4kz
+	 CWTd1lO/9wFBmr3KLtM1CfzrH1ibZvT5ZBRMvl5oaxSUiTUfW0EqcUPi2KDBcWB+tr
+	 E5YotfWYHBOuLBv/qXQ92+4P/zKZPftH+P717uHepQ7EZuLrorq1biTIuskiOER0gJ
+	 jjoRLw1c07R9XYmkxGiBtNeCC8ASSewhy0758IR1sD0HkQxJpM9hyCcHi5bgWv7i2y
+	 wV6nuOMnx60qA==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0C621C27C53;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 418ADC27C79;
 	Wed, 19 Jun 2024 17:27:12 +0000 (UTC)
 From: Hsiao Chien Sung via B4 Relay <devnull+shawn.sung.mediatek.com@kernel.org>
-Subject: [PATCH 0/5] Support alpha blending in MTK display driver
-Date: Thu, 20 Jun 2024 01:27:05 +0800
-Message-Id: <20240620-blend-v1-0-72670072ca20@mediatek.com>
+Date: Thu, 20 Jun 2024 01:27:08 +0800
+Subject: [PATCH 3/5] drm/mediatek: Support "Pre-multiplied" blending in OVL
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAOoUc2YC/02OywqDMBBFf0Vm3cAk0Rj9leIij0kbWrVNrAjiv
- zfUTZfncjmcHTKlSBn6aodEa8xxngrwSwXubqYbsegLg0BRoxLI7JMmzzoU0khsnA0tlO8rUYj
- bz3MdTk70/hTdco5gTSbm5nGMS18pEai2qNpGc19rJK0k73gRBo7akg3BOqQO/jP66ozgDRvJR
- 7PQg/k0som2hRmvkFtZd0HIfpUwHMcX91ar6NwAAAA=
+Message-Id: <20240620-blend-v1-3-72670072ca20@mediatek.com>
+References: <20240620-blend-v1-0-72670072ca20@mediatek.com>
+In-Reply-To: <20240620-blend-v1-0-72670072ca20@mediatek.com>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
  Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, 
  Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, 
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- Hsiao Chien Sung <shawn.sung@mediatek.com>, CK Hu <ck.hu@mediatek.com>
+ Hsiao Chien Sung <shawn.sung@mediatek.com>
 X-Mailer: b4 0.14.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1718818030; l=1980;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1718818030; l=3803;
  i=shawn.sung@mediatek.com; s=20240616; h=from:subject:message-id;
- bh=ffa9QQcOJtyAVtiNDqxJ1WmYeHKO0blFbInuddhMTh8=;
- b=Em29vUs75c5lfJAEUFMC1hTlqcCcSmdGQzeYIvo6/AGBCkZ8m4TWer36zaThJfIeZeITw0f32
- v0Vfbb67LuDADyMxoePAZ3AVo1rlmHkOhPrxcUign/xyHGac4mrdNMa
+ bh=DavUw+j//lvUyWdRkM3M0/+G2/7MZYehRHdjvtF7ATk=;
+ b=LWKW/d54b/ZZpO3h6Oc9lmFwK+Sj/dMDs9p4n5yrceZyxoQXxu7Vmqo5SS9TRU4A8O/+iB/O8
+ hkVn5RoFM4qCwDoqN+s79jfBYu++QIQQR9Lz5012yQOSsvofVtspTlb
 X-Developer-Key: i=shawn.sung@mediatek.com; a=ed25519;
  pk=lq1w8BuWDINX+4JHjGHhhbAU5ICP+cL9VCj7wn+cEDA=
 X-Endpoint-Received: by B4 Relay for shawn.sung@mediatek.com/20240616 with
  auth_id=172
 X-Original-From: Hsiao Chien Sung <shawn.sung@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240619_102713_382227_F2E49EEA 
-X-CRM114-Status: UNSURE (   6.23  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240619_102716_725370_6CEDCAA6 
+X-CRM114-Status: GOOD (  11.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,45 +89,103 @@ Reply-To: shawn.sung@mediatek.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Support "Pre-multiplied" and "None" blend mode on MediaTek's chips by
-adding correct blend mode property when the planes init.
-Before this patch, only the "Coverage" mode (default) is supported.
+From: Hsiao Chien Sung <shawn.sung@mediatek.com>
+
+Support "Pre-multiplied" alpha blending mode on in OVL.
+Before this patch, only the "coverage" mode is supported.
 
 Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
 ---
-Hsiao Chien Sung (5):
-      drm/mediatek: Support "None" blending in OVL
-      drm/mediatek: Support "None" blending in Mixer
-      drm/mediatek: Support "Pre-multiplied" blending in OVL
-      drm/mediatek: Support "Pre-multiplied" blending in Mixer
-      drm/mediatek: Support alpha blending in display driver
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 32 +++++++++++++++++++++++++-------
+ 1 file changed, 25 insertions(+), 7 deletions(-)
 
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 36 +++++++++++++++++++++++++--------
- drivers/gpu/drm/mediatek/mtk_ethdr.c    | 14 ++++++++++---
- drivers/gpu/drm/mediatek/mtk_plane.c    | 11 ++++++++++
- 3 files changed, 50 insertions(+), 11 deletions(-)
----
-base-commit: 62fe4b067581d480e863191305f108bebffbc0e9
-change-id: 20240620-blend-9023a305cbf7
-prerequisite-change-id: 20240615-mediatek-drm-next-ad601b349f23:v3
-prerequisite-patch-id: fdd0efbeca41c69c6fa93a5e49a2f16b3d2e8ef7
-prerequisite-patch-id: 24bfda7b207bf9698ab88c7233d9168187aa54bb
-prerequisite-patch-id: f2ab4804bbe54091a89b310c2ecd4b65fe031137
-prerequisite-patch-id: 26bfe746bda376c070c23c72fcc25949e396d952
-prerequisite-patch-id: b0b1589f88a9067b93a1e439e1db9abbde96e9e8
-prerequisite-patch-id: 14603755fd2d5b6f0ef8a7843e118d0e8d27f57d
-prerequisite-patch-id: 86f89ad0a06705cd2ad2867e9409da5610c9d228
-prerequisite-patch-id: bd0b091709980bc6e993055d78573f3979139662
-prerequisite-patch-id: 2f4da7b628f9d1f03e045b4c8f04b53eeb133a03
-prerequisite-patch-id: 9ee1d1b3c69dc6ca828c21fae9180d2e9b5cd4d5
-prerequisite-patch-id: 5c1f57bc1bd2d56061c2b927c9efbc9dad36ab68
-prerequisite-patch-id: 05443d9f227599f0784da4006c4c983513654087
-prerequisite-patch-id: 694abac72844a2b9753453aa514f9485a47a8f32
-prerequisite-patch-id: 99f314c9dc697cb78c57d1311dfe055204b9e7b8
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+index ad9228fc4dd9..8e9aae36a289 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+@@ -52,8 +52,12 @@
+ #define GMC_THRESHOLD_HIGH	((1 << GMC_THRESHOLD_BITS) / 4)
+ #define GMC_THRESHOLD_LOW	((1 << GMC_THRESHOLD_BITS) / 8)
+ 
++#define OVL_CON_CLRFMT_MAN	BIT(23)
+ #define OVL_CON_BYTE_SWAP	BIT(24)
+-#define OVL_CON_MTX_YUV_TO_RGB	(6 << 16)
++
++/* OVL_CON_RGB_SWAP works only if OVL_CON_CLRFMT_MAN is enabled */
++#define OVL_CON_RGB_SWAP	BIT(25)
++
+ #define OVL_CON_CLRFMT_RGB	(1 << 12)
+ #define OVL_CON_CLRFMT_ARGB8888	(2 << 12)
+ #define OVL_CON_CLRFMT_RGBA8888	(3 << 12)
+@@ -61,6 +65,11 @@
+ #define OVL_CON_CLRFMT_BGRA8888	(OVL_CON_CLRFMT_ARGB8888 | OVL_CON_BYTE_SWAP)
+ #define OVL_CON_CLRFMT_UYVY	(4 << 12)
+ #define OVL_CON_CLRFMT_YUYV	(5 << 12)
++#define OVL_CON_MTX_YUV_TO_RGB	(6 << 16)
++#define OVL_CON_CLRFMT_PARGB8888 ((3 << 12) | OVL_CON_CLRFMT_MAN)
++#define OVL_CON_CLRFMT_PABGR8888 (OVL_CON_CLRFMT_PARGB8888 | OVL_CON_RGB_SWAP)
++#define OVL_CON_CLRFMT_PBGRA8888 (OVL_CON_CLRFMT_PARGB8888 | OVL_CON_BYTE_SWAP)
++#define OVL_CON_CLRFMT_PRGBA8888 (OVL_CON_CLRFMT_PABGR8888 | OVL_CON_BYTE_SWAP)
+ #define OVL_CON_CLRFMT_RGB565(ovl)	((ovl)->data->fmt_rgb565_is_0 ? \
+ 					0 : OVL_CON_CLRFMT_RGB)
+ #define OVL_CON_CLRFMT_RGB888(ovl)	((ovl)->data->fmt_rgb565_is_0 ? \
+@@ -382,7 +391,8 @@ void mtk_ovl_layer_off(struct device *dev, unsigned int idx,
+ 		      DISP_REG_OVL_RDMA_CTRL(idx));
+ }
+ 
+-static unsigned int ovl_fmt_convert(struct mtk_disp_ovl *ovl, unsigned int fmt)
++static unsigned int ovl_fmt_convert(struct mtk_disp_ovl *ovl, unsigned int fmt,
++				    unsigned int blend_mode)
+ {
+ 	/* The return value in switch "MEM_MODE_INPUT_FORMAT_XXX"
+ 	 * is defined in mediatek HW data sheet.
+@@ -403,22 +413,30 @@ static unsigned int ovl_fmt_convert(struct mtk_disp_ovl *ovl, unsigned int fmt)
+ 	case DRM_FORMAT_RGBA8888:
+ 	case DRM_FORMAT_RGBX1010102:
+ 	case DRM_FORMAT_RGBA1010102:
+-		return OVL_CON_CLRFMT_RGBA8888;
++		return blend_mode == DRM_MODE_BLEND_COVERAGE ?
++		       OVL_CON_CLRFMT_RGBA8888 :
++		       OVL_CON_CLRFMT_PRGBA8888;
+ 	case DRM_FORMAT_BGRX8888:
+ 	case DRM_FORMAT_BGRA8888:
+ 	case DRM_FORMAT_BGRX1010102:
+ 	case DRM_FORMAT_BGRA1010102:
+-		return OVL_CON_CLRFMT_BGRA8888;
++		return blend_mode == DRM_MODE_BLEND_COVERAGE ?
++		       OVL_CON_CLRFMT_BGRA8888 :
++		       OVL_CON_CLRFMT_PBGRA8888;
+ 	case DRM_FORMAT_XRGB8888:
+ 	case DRM_FORMAT_ARGB8888:
+ 	case DRM_FORMAT_XRGB2101010:
+ 	case DRM_FORMAT_ARGB2101010:
+-		return OVL_CON_CLRFMT_ARGB8888;
++		return blend_mode == DRM_MODE_BLEND_COVERAGE ?
++		       OVL_CON_CLRFMT_ARGB8888 :
++		       OVL_CON_CLRFMT_PARGB8888;
+ 	case DRM_FORMAT_XBGR8888:
+ 	case DRM_FORMAT_ABGR8888:
+ 	case DRM_FORMAT_XBGR2101010:
+ 	case DRM_FORMAT_ABGR2101010:
+-		return OVL_CON_CLRFMT_ABGR8888;
++		return blend_mode == DRM_MODE_BLEND_COVERAGE ?
++		       OVL_CON_CLRFMT_ABGR8888 :
++		       OVL_CON_CLRFMT_PABGR8888;
+ 	case DRM_FORMAT_UYVY:
+ 		return OVL_CON_CLRFMT_UYVY | OVL_CON_MTX_YUV_TO_RGB;
+ 	case DRM_FORMAT_YUYV:
+@@ -458,7 +476,7 @@ void mtk_ovl_layer_config(struct device *dev, unsigned int idx,
+ 		return;
+ 	}
+ 
+-	con = ovl_fmt_convert(ovl, fmt);
++	con = ovl_fmt_convert(ovl, fmt, blend_mode);
+ 	if (state->base.fb) {
+ 		con |= OVL_CON_AEN;
+ 		con |= state->base.alpha & OVL_CON_ALPHA;
 
-Best regards,
 -- 
-Hsiao Chien Sung <shawn.sung@mediatek.com>
+Git-146)
 
 
 
