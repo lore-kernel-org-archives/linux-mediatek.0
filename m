@@ -4,91 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 313D9C27C53
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jun 2024 10:53:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD1EAC27C53
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jun 2024 10:56:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=aRytunszZ2d4/jmfqMXzXaoXNtfg13+bV4d+9oWIJLg=; b=zWD+REg6GDo+HgK+otyT/Ug5sH
-	GpVSwoETM0piwWYvic2uUhdTZ4Btd+eJ0lH3cM+LJkEluVOTyzbYD9cR8iwN4p3kFe2IIFasdVby+
-	LHJGvjrHrxHgbqRDHUFZDFPOyCMR0fZqRkPWFY0RgJSmTGlJMXZuPCv6pHY5J1IyMyQgUy4vtCnWq
-	RnQLTtJEo/PIqQmUTo+0XJ2I7oslKmaOyYQ1CC+gs0GBtjpHrHgxGg7R0AlPomcHCFgGx3sBWgiQB
-	lcHUqP9Rmmzw/bQ9s2dxnwd4AkE8mKrHHCulqoxB/lWnf5qXPip+rmEFZVn9C0/wDB8vcqVfNbHR1
-	2+L6Ea+g==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=tc0h7dwC8c61Rht9UQ2semWG9VWFfrPae0eHidR8GyU=; b=LzsPeZpuekyrbn/friybioJA7s
+	6CXeDaF9HZQZE+Bll9ekGSozXUz1oju+Nvs2KYpGh6a3KLG/4dEzSS3YRyJM6YCrUMWNwMmMeqxYn
+	yBrHU8G8723b3GCTogyMNwKmhN4ecQxnHoJFQuC5imN5SCXMLu99WjojrQGykQifZQe9LolvqeHKQ
+	eFEp2Bk+Ot8lC/mt3JHMRnSUv5Qp+HxlUNKt1x/i/j57HQsfOgJmKifaqUS76Jg6+kAliKCEldYFO
+	BXrfuOh0YUBcnKTYJMeieBtq1UyFJdYhK3d78lzm69MTxKiDrewFfLlsCcT5egBvCSdQaK25hvNem
+	Pr3RvL3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJswT-00000000reE-0pyI;
-	Wed, 19 Jun 2024 10:53:29 +0000
-Received: from mail-ed1-f46.google.com ([209.85.208.46])
+	id 1sJszY-00000000sQE-3RMg;
+	Wed, 19 Jun 2024 10:56:40 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJswO-00000000rcJ-2hbp;
-	Wed, 19 Jun 2024 10:53:26 +0000
-Received: by mail-ed1-f46.google.com with SMTP id 4fb4d7f45d1cf-57cce3bc8c6so5173441a12.3;
-        Wed, 19 Jun 2024 03:53:23 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1718794402; x=1719399202;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=aRytunszZ2d4/jmfqMXzXaoXNtfg13+bV4d+9oWIJLg=;
-        b=h9J/3CziCmNbtgrL7nlSQGrDym9nyjkZGX6FQD6t+5NZbP/SBCi8WlOtTO5a941W98
-         zEZBqxU8nI4W9s0y/EPWFZNV7GyfgEjvyxeSWjJdPQfWpJHJzeYJpcaRxy2BBzG5sR6O
-         j6MApimtLDfJw8n3yRps0aLnIFbZ6/2V0nPLpJuQ62v8XDDk8KruA1X4ipRSgXdu5Puq
-         JtNSaP56jTGkshJJ8L0nhvpSoMLvJC+xXEweraCb0Qm3dJ022xyZ1ZrCFo9OHsz6O8FT
-         eM4S/udTMGfRXOKh6DoZ5j3jKSLzYF9A8wKuXRgvwDUQFuZnqKuPJ2R0j19JcgAirM1j
-         EQLA==
-X-Forwarded-Encrypted: i=1; AJvYcCVhjceQr9RiJKJkKEujmPBHc3JnfvbprF8AHfKZ97145XKRpxa8fTkSrLMYRx67sS/Nl+iYGK0auXA9hcgtlpnMcmo+eEJcR+BSOD1uYDnwKDwOZkyNZpQkjtTxNn3cvDZg+PoGUyGhEe4/Pk+CZXAsAR2U5G/oWx8=
-X-Gm-Message-State: AOJu0Yzv3Mi7XsjN2+lDokQWyuPdVzV9aUnQWd5Oi6bW1GXbdR2K8z1l
-	AinoL4bUq11aUBTGj/7RPzqatlMgovYfsvM6biJqMPL6ZKAsCwtT
-X-Google-Smtp-Source: AGHT+IGs40e0v0xwiZKkwqArbTtU8Vs/CA9z1vpO8BTcKH7zsIqXHWbf+9UbaMtSUbwYUeDkQq3Mpg==
-X-Received: by 2002:a50:8d14:0:b0:57c:78fb:1a32 with SMTP id 4fb4d7f45d1cf-57d07e82ab3mr1131409a12.19.1718794401920;
-        Wed, 19 Jun 2024 03:53:21 -0700 (PDT)
-Received: from localhost (fwdproxy-lla-006.fbsv.net. [2a03:2880:30ff:6::face:b00c])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-57cd26b423asm5013118a12.76.2024.06.19.03.53.21
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 19 Jun 2024 03:53:21 -0700 (PDT)
-From: Breno Leitao <leitao@debian.org>
-To: kvalo@kernel.org,
-	linux-wireless@vger.kernel.org,
-	davem@davemloft.net,
-	edumazet@google.com,
-	pabeni@redhat.com,
-	Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: netdev@vger.kernel.org,
-	horms@kernel.org,
-	kees@kernel.org,
-	Bo Jiao <Bo.Jiao@mediatek.com>,
-	Alexander Couzens <lynxis@fe80.eu>,
-	Deren Wu <deren.wu@mediatek.com>,
-	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>,
-	Leon Yen <leon.yen@mediatek.com>,
-	Quan Zhou <quan.zhou@mediatek.com>,
-	Ingo Rohloff <lundril@gmx.de>,
-	Sujuan Chen <sujuan.chen@mediatek.com>,
-	Peter Chiu <chui-hao.chiu@mediatek.com>,
-	StanleyYP Wang <StanleyYP.Wang@mediatek.com>,
-	Benjamin Lin <benjamin-jw.lin@mediatek.com>,
-	linux-kernel@vger.kernel.org (open list:ARM/Mediatek SoC support),
-	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
-	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
-Subject: [PATCH net-next v2] wifi: mt76: un-embedd netdev from mt76_dev
-Date: Wed, 19 Jun 2024 03:52:36 -0700
-Message-ID: <20240619105311.3144908-1-leitao@debian.org>
-X-Mailer: git-send-email 2.43.0
+	id 1sJszU-00000000sPG-1BDn;
+	Wed, 19 Jun 2024 10:56:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1718794593;
+	bh=Xs+IoUmCHkrbUPVcTPFyMVvFlsz/PvUiyG+Mm2us5yE=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=OjWFkZ7mN1biP7dmTvTmyanD28Eh5Q/mwJiF/Tuf7kzwLZPI46opR0TRqI/UPlQ8/
+	 Y7zAy9T4MNo8Cucbh4OEyOximcOmUxQDHJbUxC4HPpLulpyib5XRNjXoKX4BS6uPch
+	 T2REpbSRsYwNz98M6kn0E0lIrsXC7B7LQsL3z6qieCDQjRwB8KwD0xGCXltj5GTo5x
+	 7c83ZJD1JBlFivcUvqDhlYZeU8rVrWqeYRAPFPfD/rO+2oAE5MJeShyVAjEd8FtOUe
+	 I303CUW2tO9vq1rHyBbdaZdfhVC6nenH3ywzJupxcCOXtozaIundCfoZljmBoDNdDF
+	 uBDmgLeU36i+Q==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 82CFB37820CD;
+	Wed, 19 Jun 2024 10:56:31 +0000 (UTC)
+Message-ID: <d84f1469-e82a-42de-94a0-8ee0da0cba02@collabora.com>
+Date: Wed, 19 Jun 2024 12:56:30 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v8 0/3] drm/mediatek: Add support for OF graphs
+To: chunkuang.hu@kernel.org, ck.hu@mediatek.com
+Cc: robh@kernel.org, krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+ p.zabel@pengutronix.de, airlied@gmail.com, daniel@ffwll.ch,
+ maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de,
+ matthias.bgg@gmail.com, shawn.sung@mediatek.com, yu-chang.lee@mediatek.com,
+ jitao.shi@mediatek.com, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ wenst@chromium.org, kernel@collabora.com, sui.jingfeng@linux.dev,
+ michael@walle.cc
+References: <20240618101726.110416-1-angelogioacchino.delregno@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20240618101726.110416-1-angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240619_035324_717631_3DA08A3E 
-X-CRM114-Status: GOOD (  16.34  )
+X-CRM114-CacheID: sfid-20240619_035636_523565_9414AD80 
+X-CRM114-Status: GOOD (  31.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,284 +81,131 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Embedding net_device into structures prohibits the usage of flexible
-arrays in the net_device structure. For more details, see the discussion
-at [1].
+Il 18/06/24 12:17, AngeloGioacchino Del Regno ha scritto:
+> Changes in v8:
+>   - Rebased on next-20240617
+>   - Changed to allow probing a VDO with no available display outputs
+> 
 
-Un-embed the net_devices from struct mt76_dev by converting them
-into pointers, and allocating them dynamically. Use the leverage
-alloc_netdev_dummy() to allocate the net_device object at
-mt76_dma_init().
+Hello CK,
 
-The free of the device occurs at mt76_dma_cleanup().
+At the time of writing, this series was well reviewed and tested by multiple people
+on multiple SoCs and boards.
 
-Link: https://lore.kernel.org/all/20240229225910.79e224cf@kernel.org/ [1]
-Reviewed-by: Simon Horman <horms@kernel.org>
-Signed-off-by: Breno Leitao <leitao@debian.org>
----
+We've got a bunch of series that are waiting for this to get upstreamed, including
+the addition of support for MT8365-EVK (already on mailing lists), MT8395 Radxa
+NIO 12L, MT8395 Kontron SBC i1200 (not on mailing lists yet, waiting for this to
+get merged), other than some other conversion commits for other MediaTek DTs from
+myself.
 
-Changelog:
- * v2:
-	- Renamed mt76_from_netdev() to mt76_priv(), and returns a
-	  void pointer instead of struct mt76_dev, avoiding the cast
-	  later, as suggested by Simon Horman.
+As for the MT8195/NIO12L commits, I'm planning to send them on the lists tomorrow,
+along with some code to properly support devicetree overlays (DTBO) generation for
+MediaTek boards.
 
- drivers/net/wireless/mediatek/mt76/debugfs.c  |  6 ++--
- drivers/net/wireless/mediatek/mt76/dma.c      | 31 +++++++++++++++----
- drivers/net/wireless/mediatek/mt76/dma.h      |  9 ++++++
- drivers/net/wireless/mediatek/mt76/mt76.h     |  4 +--
- .../net/wireless/mediatek/mt76/mt7603/dma.c   |  2 +-
- .../net/wireless/mediatek/mt76/mt7615/dma.c   |  6 ++--
- .../net/wireless/mediatek/mt76/mt76x02_mmio.c |  2 +-
- .../net/wireless/mediatek/mt76/mt7915/dma.c   |  2 +-
- .../net/wireless/mediatek/mt76/mt7921/pci.c   |  2 +-
- .../net/wireless/mediatek/mt76/mt7925/pci.c   |  2 +-
- .../net/wireless/mediatek/mt76/mt792x_dma.c   |  2 +-
- .../net/wireless/mediatek/mt76/mt7996/dma.c   |  2 +-
- 12 files changed, 49 insertions(+), 21 deletions(-)
+Alexandre tested it on MT8365-EVK;
+Michael tested on Kontron SBC-i1200;
+I tested on Radxa NIO-12L, Cherry Tomato Chromebook, MT6795 Sony Xperia
+M5 (dsi video panel) smartphone and MT8192 Asurada Chromebook.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/debugfs.c b/drivers/net/wireless/mediatek/mt76/debugfs.c
-index ae83be572b94..b6a2746c187d 100644
---- a/drivers/net/wireless/mediatek/mt76/debugfs.c
-+++ b/drivers/net/wireless/mediatek/mt76/debugfs.c
-@@ -33,8 +33,8 @@ mt76_napi_threaded_set(void *data, u64 val)
- 	if (!mt76_is_mmio(dev))
- 		return -EOPNOTSUPP;
- 
--	if (dev->napi_dev.threaded != val)
--		return dev_set_threaded(&dev->napi_dev, val);
-+	if (dev->napi_dev->threaded != val)
-+		return dev_set_threaded(dev->napi_dev, val);
- 
- 	return 0;
- }
-@@ -44,7 +44,7 @@ mt76_napi_threaded_get(void *data, u64 *val)
- {
- 	struct mt76_dev *dev = data;
- 
--	*val = dev->napi_dev.threaded;
-+	*val = dev->napi_dev->threaded;
- 	return 0;
- }
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/dma.c b/drivers/net/wireless/mediatek/mt76/dma.c
-index f4f88c444e21..5f46d6daeaa7 100644
---- a/drivers/net/wireless/mediatek/mt76/dma.c
-+++ b/drivers/net/wireless/mediatek/mt76/dma.c
-@@ -916,7 +916,7 @@ int mt76_dma_rx_poll(struct napi_struct *napi, int budget)
- 	struct mt76_dev *dev;
- 	int qid, done = 0, cur;
- 
--	dev = container_of(napi->dev, struct mt76_dev, napi_dev);
-+	dev = mt76_priv(napi->dev);
- 	qid = napi - dev->napi;
- 
- 	rcu_read_lock();
-@@ -940,18 +940,35 @@ static int
- mt76_dma_init(struct mt76_dev *dev,
- 	      int (*poll)(struct napi_struct *napi, int budget))
- {
-+	struct mt76_dev **priv;
- 	int i;
- 
--	init_dummy_netdev(&dev->napi_dev);
--	init_dummy_netdev(&dev->tx_napi_dev);
--	snprintf(dev->napi_dev.name, sizeof(dev->napi_dev.name), "%s",
-+	dev->napi_dev = alloc_netdev_dummy(sizeof(struct mt76_dev *));
-+	if (!dev->napi_dev)
-+		return -ENOMEM;
-+
-+	/* napi_dev private data points to mt76_dev parent, so, mt76_dev
-+	 * can be retrieved given napi_dev
-+	 */
-+	priv = netdev_priv(dev->napi_dev);
-+	*priv = dev;
-+
-+	dev->tx_napi_dev = alloc_netdev_dummy(sizeof(struct mt76_dev *));
-+	if (!dev->tx_napi_dev) {
-+		free_netdev(dev->napi_dev);
-+		return -ENOMEM;
-+	}
-+	priv = netdev_priv(dev->tx_napi_dev);
-+	*priv = dev;
-+
-+	snprintf(dev->napi_dev->name, sizeof(dev->napi_dev->name), "%s",
- 		 wiphy_name(dev->hw->wiphy));
--	dev->napi_dev.threaded = 1;
-+	dev->napi_dev->threaded = 1;
- 	init_completion(&dev->mmio.wed_reset);
- 	init_completion(&dev->mmio.wed_reset_complete);
- 
- 	mt76_for_each_q_rx(dev, i) {
--		netif_napi_add(&dev->napi_dev, &dev->napi[i], poll);
-+		netif_napi_add(dev->napi_dev, &dev->napi[i], poll);
- 		mt76_dma_rx_fill(dev, &dev->q_rx[i], false);
- 		napi_enable(&dev->napi[i]);
- 	}
-@@ -1019,5 +1036,7 @@ void mt76_dma_cleanup(struct mt76_dev *dev)
- 
- 	mt76_free_pending_txwi(dev);
- 	mt76_free_pending_rxwi(dev);
-+	free_netdev(dev->napi_dev);
-+	free_netdev(dev->tx_napi_dev);
- }
- EXPORT_SYMBOL_GPL(mt76_dma_cleanup);
-diff --git a/drivers/net/wireless/mediatek/mt76/dma.h b/drivers/net/wireless/mediatek/mt76/dma.h
-index 1de5a2b20f74..e3ddc7a83757 100644
---- a/drivers/net/wireless/mediatek/mt76/dma.h
-+++ b/drivers/net/wireless/mediatek/mt76/dma.h
-@@ -116,4 +116,13 @@ mt76_dma_should_drop_buf(bool *drop, u32 ctrl, u32 buf1, u32 info)
- 	}
- }
- 
-+static inline void *mt76_priv(struct net_device *dev)
-+{
-+	struct mt76_dev **priv;
-+
-+	priv = netdev_priv(dev);
-+
-+	return *priv;
-+}
-+
- #endif
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-index 11b9f22ca7f3..15f83b5adac7 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-@@ -831,8 +831,8 @@ struct mt76_dev {
- 
- 	struct mt76_mcu mcu;
- 
--	struct net_device napi_dev;
--	struct net_device tx_napi_dev;
-+	struct net_device *napi_dev;
-+	struct net_device *tx_napi_dev;
- 	spinlock_t rx_lock;
- 	struct napi_struct napi[__MT_RXQ_MAX];
- 	struct sk_buff_head rx_skb[__MT_RXQ_MAX];
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/dma.c b/drivers/net/wireless/mediatek/mt76/mt7603/dma.c
-index 14304b063715..ea017f22fff2 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7603/dma.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7603/dma.c
-@@ -242,7 +242,7 @@ int mt7603_dma_init(struct mt7603_dev *dev)
- 	if (ret)
- 		return ret;
- 
--	netif_napi_add_tx(&dev->mt76.tx_napi_dev, &dev->mt76.tx_napi,
-+	netif_napi_add_tx(dev->mt76.tx_napi_dev, &dev->mt76.tx_napi,
- 			  mt7603_poll_tx);
- 	napi_enable(&dev->mt76.tx_napi);
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/dma.c b/drivers/net/wireless/mediatek/mt76/mt7615/dma.c
-index e7135b2f1742..bcf7864312d7 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/dma.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/dma.c
-@@ -67,7 +67,7 @@ static int mt7615_poll_tx(struct napi_struct *napi, int budget)
- {
- 	struct mt7615_dev *dev;
- 
--	dev = container_of(napi, struct mt7615_dev, mt76.tx_napi);
-+	dev = mt76_priv(napi->dev);
- 	if (!mt76_connac_pm_ref(&dev->mphy, &dev->pm)) {
- 		napi_complete(napi);
- 		queue_work(dev->mt76.wq, &dev->pm.wake_work);
-@@ -89,7 +89,7 @@ static int mt7615_poll_rx(struct napi_struct *napi, int budget)
- 	struct mt7615_dev *dev;
- 	int done;
- 
--	dev = container_of(napi->dev, struct mt7615_dev, mt76.napi_dev);
-+	dev = mt76_priv(napi->dev);
- 
- 	if (!mt76_connac_pm_ref(&dev->mphy, &dev->pm)) {
- 		napi_complete(napi);
-@@ -282,7 +282,7 @@ int mt7615_dma_init(struct mt7615_dev *dev)
- 	if (ret < 0)
- 		return ret;
- 
--	netif_napi_add_tx(&dev->mt76.tx_napi_dev, &dev->mt76.tx_napi,
-+	netif_napi_add_tx(dev->mt76.tx_napi_dev, &dev->mt76.tx_napi,
- 			  mt7615_poll_tx);
- 	napi_enable(&dev->mt76.tx_napi);
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_mmio.c b/drivers/net/wireless/mediatek/mt76/mt76x02_mmio.c
-index e5ad635d3c56..35b7ebc2c9c6 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x02_mmio.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x02_mmio.c
-@@ -239,7 +239,7 @@ int mt76x02_dma_init(struct mt76x02_dev *dev)
- 	if (ret)
- 		return ret;
- 
--	netif_napi_add_tx(&dev->mt76.tx_napi_dev, &dev->mt76.tx_napi,
-+	netif_napi_add_tx(dev->mt76.tx_napi_dev, &dev->mt76.tx_napi,
- 			  mt76x02_poll_tx);
- 	napi_enable(&dev->mt76.tx_napi);
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/dma.c b/drivers/net/wireless/mediatek/mt76/mt7915/dma.c
-index 0baa82c8df5a..0c62272fe7d0 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/dma.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/dma.c
-@@ -578,7 +578,7 @@ int mt7915_dma_init(struct mt7915_dev *dev, struct mt7915_phy *phy2)
- 	if (ret < 0)
- 		return ret;
- 
--	netif_napi_add_tx(&dev->mt76.tx_napi_dev, &dev->mt76.tx_napi,
-+	netif_napi_add_tx(dev->mt76.tx_napi_dev, &dev->mt76.tx_napi,
- 			  mt7915_poll_tx);
- 	napi_enable(&dev->mt76.tx_napi);
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-index f768e9389ac6..e75e7b6d3aaf 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-@@ -219,7 +219,7 @@ static int mt7921_dma_init(struct mt792x_dev *dev)
- 	if (ret < 0)
- 		return ret;
- 
--	netif_napi_add_tx(&dev->mt76.tx_napi_dev, &dev->mt76.tx_napi,
-+	netif_napi_add_tx(dev->mt76.tx_napi_dev, &dev->mt76.tx_napi,
- 			  mt792x_poll_tx);
- 	napi_enable(&dev->mt76.tx_napi);
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-index 07b74d492ce1..577574fb7a1e 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-@@ -254,7 +254,7 @@ static int mt7925_dma_init(struct mt792x_dev *dev)
- 	if (ret < 0)
- 		return ret;
- 
--	netif_napi_add_tx(&dev->mt76.tx_napi_dev, &dev->mt76.tx_napi,
-+	netif_napi_add_tx(dev->mt76.tx_napi_dev, &dev->mt76.tx_napi,
- 			  mt792x_poll_tx);
- 	napi_enable(&dev->mt76.tx_napi);
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_dma.c b/drivers/net/wireless/mediatek/mt76/mt792x_dma.c
-index 5cc2d59b774a..6f9db782338e 100644
---- a/drivers/net/wireless/mediatek/mt76/mt792x_dma.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt792x_dma.c
-@@ -340,7 +340,7 @@ int mt792x_poll_rx(struct napi_struct *napi, int budget)
- 	struct mt792x_dev *dev;
- 	int done;
- 
--	dev = container_of(napi->dev, struct mt792x_dev, mt76.napi_dev);
-+	dev = mt76_priv(napi->dev);
- 
- 	if (!mt76_connac_pm_ref(&dev->mphy, &dev->pm)) {
- 		napi_complete(napi);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/dma.c b/drivers/net/wireless/mediatek/mt76/mt7996/dma.c
-index 73e633d0d700..69a7d9b2e38b 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/dma.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/dma.c
-@@ -641,7 +641,7 @@ int mt7996_dma_init(struct mt7996_dev *dev)
- 	if (ret < 0)
- 		return ret;
- 
--	netif_napi_add_tx(&dev->mt76.tx_napi_dev, &dev->mt76.tx_napi,
-+	netif_napi_add_tx(dev->mt76.tx_napi_dev, &dev->mt76.tx_napi,
- 			  mt7996_poll_tx);
- 	napi_enable(&dev->mt76.tx_napi);
- 
--- 
-2.43.0
+So, is there anything else to address on this, or can we proceed?
+
+Many thanks,
+Angelo
+
+> Changes in v7:
+>   - Fix typo in patch 3/3
+> 
+> Changes in v6:
+>   - Added EPROBE_DEFER check to fix dsi/dpi false positive DT fallback case
+>   - Dropped refcount of ep_out in mtk_drm_of_get_ddp_ep_cid()
+>   - Fixed double refcount drop during path building
+>   - Removed failure upon finding a DT-disabled path as requested
+>   - Tested again on MT8195, MT8395 boards
+> 
+> Changes in v5:
+>   - Fixed commit [2/3], changed allOf -> anyOf to get the
+>     intended allowance in the binding
+> 
+> Changes in v4:
+>   - Fixed a typo that caused pure OF graphs pipelines multiple
+>     concurrent outputs to not get correctly parsed (port->id);
+>   - Added OVL_ADAPTOR support for OF graph specified pipelines;
+>   - Now tested with fully OF Graph specified pipelines on MT8195
+>     Chromebooks and MT8395 boards;
+>   - Rebased on next-20240516
+> 
+> Changes in v3:
+>   - Rebased on next-20240502 because of renames in mediatek-drm
+> 
+> Changes in v2:
+>   - Fixed wrong `required` block indentation in commit [2/3]
+> 
+> 
+> The display IPs in MediaTek SoCs are *VERY* flexible and those support
+> being interconnected with different instances of DDP IPs (for example,
+> merge0 or merge1) and/or with different DDP IPs (for example, rdma can
+> be connected with either color, dpi, dsi, merge, etc), forming a full
+> Display Data Path that ends with an actual display.
+> 
+> This series was born because of an issue that I've found while enabling
+> support for MT8195/MT8395 boards with DSI output as main display: the
+> current mtk_drm_route variations would not work as currently, the driver
+> hardcodes a display path for Chromebooks, which have a DisplayPort panel
+> with DSC support, instead of a DSI panel without DSC support.
+> 
+> There are other reasons for which I wrote this series, and I find that
+> hardcoding those paths - when a HW path is clearly board-specific - is
+> highly suboptimal. Also, let's not forget about keeping this driver from
+> becoming a huge list of paths for each combination of SoC->board->disp
+> and... this and that.
+> 
+> For more information, please look at the commit description for each of
+> the commits included in this series.
+> 
+> This series is essential to enable support for the MT8195/MT8395 EVK,
+> Kontron i1200, Radxa NIO-12L and, mainly, for non-Chromebook boards
+> and Chromebooks to co-exist without conflicts.
+> 
+> Besides, this is also a valid option for MT8188 Chromebooks which might
+> have different DSI-or-eDP displays depending on the model (as far as I
+> can see from the mtk_drm_route attempt for this SoC that is already
+> present in this driver).
+> 
+> This series was tested on MT8195 Cherry Tomato and on MT8395 Radxa
+> NIO-12L with both hardcoded paths, OF graph support and partially
+> hardcoded paths, and pure OF graph support including pipelines that
+> require OVL_ADAPTOR support.
+> 
+> AngeloGioacchino Del Regno (3):
+>    dt-bindings: display: mediatek: Add OF graph support for board path
+>    dt-bindings: arm: mediatek: mmsys: Add OF graph support for board path
+>    drm/mediatek: Implement OF graphs support for display paths
+> 
+>   .../bindings/arm/mediatek/mediatek,mmsys.yaml |  28 ++
+>   .../display/mediatek/mediatek,aal.yaml        |  40 +++
+>   .../display/mediatek/mediatek,ccorr.yaml      |  21 ++
+>   .../display/mediatek/mediatek,color.yaml      |  22 ++
+>   .../display/mediatek/mediatek,dither.yaml     |  22 ++
+>   .../display/mediatek/mediatek,dpi.yaml        |  25 +-
+>   .../display/mediatek/mediatek,dsc.yaml        |  24 ++
+>   .../display/mediatek/mediatek,dsi.yaml        |  27 +-
+>   .../display/mediatek/mediatek,ethdr.yaml      |  22 ++
+>   .../display/mediatek/mediatek,gamma.yaml      |  19 ++
+>   .../display/mediatek/mediatek,merge.yaml      |  23 ++
+>   .../display/mediatek/mediatek,od.yaml         |  22 ++
+>   .../display/mediatek/mediatek,ovl-2l.yaml     |  22 ++
+>   .../display/mediatek/mediatek,ovl.yaml        |  22 ++
+>   .../display/mediatek/mediatek,postmask.yaml   |  21 ++
+>   .../display/mediatek/mediatek,rdma.yaml       |  22 ++
+>   .../display/mediatek/mediatek,ufoe.yaml       |  21 ++
+>   drivers/gpu/drm/mediatek/mtk_disp_drv.h       |   1 +
+>   .../gpu/drm/mediatek/mtk_disp_ovl_adaptor.c   |  40 ++-
+>   drivers/gpu/drm/mediatek/mtk_dpi.c            |  21 +-
+>   drivers/gpu/drm/mediatek/mtk_drm_drv.c        | 291 ++++++++++++++++--
+>   drivers/gpu/drm/mediatek/mtk_drm_drv.h        |   2 +-
+>   drivers/gpu/drm/mediatek/mtk_dsi.c            |  14 +-
+>   23 files changed, 731 insertions(+), 41 deletions(-)
+> 
+
 
 
