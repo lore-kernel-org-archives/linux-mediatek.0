@@ -4,93 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96401C27C53
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jun 2024 10:18:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E302C27C53
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jun 2024 10:27:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KE8h2jNNZ6vFW2z7uotyBC53nGYQN5vB31WOkuARonw=; b=ybsuw16TLvvg0DAoH3Rq+YUdtK
-	pQI11ZBYjRAjzlJdnv0xHZmd8kzE48VP14s2n7sFDYXaIHk+BwituQTgZJScWKKyxDv3azfxbKZHv
-	BBMPFy18RztaD8ebmoGVirtCw5NveLOCAnlyGEMhXxG/Nq0ZoYxsl0GqUeWu8+g/58NXqUJTznkTH
-	Yu+/9KsnJRaaPYmpRzF3NJLXQcGSkWSCveKo2++v6b8fHRefgKqrOgV3mC2sj2HUgSx0JJ7ZosXuZ
-	3SUA1eljUrNwHzlVxOcsgLFLl4mACn0w/pfITaGjJjXm/ZIKTyHbeNz4iI8a3/lzS/Am1RiWLQ0Wg
-	VQVu/wPw==;
+	bh=KNXOfJ0Sk+d6RapZSvtX+uRsExHzOwzIjWgDrU7EdWI=; b=yDaHBp3xoG4etKIuf2wz3HHOLp
+	vU8k1QiNirDzTDjP1EofEtv4yqdnVDd5YavJBaR0kvLJLQalDLo+/N3BjHlcQYaF7KkeUTpNYGzzU
+	v7dN9IfW60f99fRQp1MygW1ZFyDIIqbBZd5tmNorrJz5GCvYmF/EgnTVd68Ri0SrMi+Gl2uywR35q
+	xeUf6EZxANdbU+ozLh09H4Voqs4IhRgHp1ucun/2oQTzWPVWobbam8vThwR7uNZbx+5u1gpEJyiwC
+	vuXANoZnvf+VFhFHNwv7clsz+p1hyxU8ATeCeQv0Tf+I9CeXWGqwg5o9WuiMRYVXC+h/5vk7Z2D7s
+	iyrLJ+jQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJsOo-00000000lmf-0tCd;
-	Wed, 19 Jun 2024 10:18:42 +0000
-Received: from mail-oi1-x234.google.com ([2607:f8b0:4864:20::234])
+	id 1sJsXS-00000000nGa-3CAL;
+	Wed, 19 Jun 2024 10:27:38 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJsOl-00000000llk-2gET
-	for linux-mediatek@lists.infradead.org;
-	Wed, 19 Jun 2024 10:18:40 +0000
-Received: by mail-oi1-x234.google.com with SMTP id 5614622812f47-3d516d3f0b2so807002b6e.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 19 Jun 2024 03:18:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1718792318; x=1719397118; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=KE8h2jNNZ6vFW2z7uotyBC53nGYQN5vB31WOkuARonw=;
-        b=FKkAjh9kDE3J1W7IU56kePd8A5gMlakyJTDYZCaEyh5MX7nRb2FOzcM2XV2127fp+0
-         stwEaO5DwS21FW55OOUDo6dTLx+CSd7kCr3OnUwt3LTMljSocBiDykzvVpqxGQ7ZTNrs
-         zP6SkU4JKv1ljlsVDVckt5tUtaC2sVMZX+1vc=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1718792318; x=1719397118;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=KE8h2jNNZ6vFW2z7uotyBC53nGYQN5vB31WOkuARonw=;
-        b=IAu8RtAezowjOsgJ1jFqhmZjkxmoloJWz0bnw0CAzCNd2GGPRnBeXzTDbO4UW45pad
-         tCiuVj93BuHHPfF/YBEn3MoreXhk4ZV+CmEBIEDXSxzCjUc5TMNsd4SqPd4ZHXbSm6Zp
-         kGlFdmUkTjw4jUi5g+RWU6UdGkdTIsz7W6MgS1FPwqzRzdkKIoMGlWQsLty6dib/Lgy5
-         NTzXjXQ2npFH59UB3WcrAbg8FNXlvOwJYFQIou5cXaOG2lewfD0tRyAgpJXDdjU/d7fX
-         52qdKE33L2x2orCHY11sga+kxWmvF8WWAcIeTW1vEji80kNnhkf+a5RgbD+eK419UTZ6
-         PjUQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXWYgaVQrhbhreBmDi7SccWeci/dtr7yynENv0jldNLMmDlfyIODPwO8sqH99vunnPNFC1yCs6g8+O6PgrSIDh/3MuQ1zN1xd2kMH6YNaZjxwaL
-X-Gm-Message-State: AOJu0YwMyWGpNuf4qXUOPn4gPg5oeWlTZMqpzTd45T9OFanaZoB0p9I4
-	j9T6xnuKYBp/1I+DTkoTT9lPYS0TsyPN7C9kHEUlKCF44iRhIf7MpM/DJ2hxomfOgG9ChJvB3+Y
-	=
-X-Google-Smtp-Source: AGHT+IG1/mP6550+FG464tLNDn8liCYA1Hxmu8lCpt3FLV/GtSJNjVCv4JGOLdM1+Npku36B+/6OYA==
-X-Received: by 2002:a05:6870:6124:b0:254:cbaf:1216 with SMTP id 586e51a60fabf-25c94b040c0mr2853439fac.27.1718792317856;
-        Wed, 19 Jun 2024 03:18:37 -0700 (PDT)
-Received: from mail-oo1-f42.google.com (mail-oo1-f42.google.com. [209.85.161.42])
-        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-259847c97ccsm705836fac.51.2024.06.19.03.18.37
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 19 Jun 2024 03:18:37 -0700 (PDT)
-Received: by mail-oo1-f42.google.com with SMTP id 006d021491bc7-5b970e90ab8so3654006eaf.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 19 Jun 2024 03:18:37 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCWBiQUb49q4OigjVKrv77+q+D7A2BbxQ5strbdv7POPajhmCV+UfcOzSJDLKN4vLu/FGA7Or8547s8W9s6emzxujcaQXuCsTlgHh7iO1MUGp9eH
-X-Received: by 2002:a05:6122:250e:b0:4d3:45a2:ae53 with SMTP id
- 71dfb90a1353d-4ef27845548mr2420871e0c.16.1718792011586; Wed, 19 Jun 2024
- 03:13:31 -0700 (PDT)
+	id 1sJsXM-00000000nEU-41fP;
+	Wed, 19 Jun 2024 10:27:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1718792850;
+	bh=Po6rLiiLYmVB2a4i9yoEDHQtVf1CvljI6wljwScnm/Y=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=kq8EXNUEhE6G5wgiCNTojlxDD0ITutYp3eNUlwYNjNrYROuZrSQn83dvBAwhSa5KF
+	 nGsT2K20V+mL9JeixZ2gcpIdxgXGf8va3gsMwv46qFMC43VjzzJuZLP1aBH63+dima
+	 u8zyjfnsuUmO5Kfsj8o8DyBayOE1IHEaNHvwTs8dl7nn2UddiLIDPlx/hJpXdygng7
+	 Va9lvIFRRLz1RDpWUN3THDw4x5lOvwjM24PSq97K40nXIWbnay1zgnko1L9g9F1scU
+	 y+J6boAX5/19xL/Ur5N8i11AJjCsnnjrarBPsmBcKu2FwcKjIkcUQUwkFFzuHQPd2t
+	 WXDrIZpiGbJGQ==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id B54A93780F7F;
+	Wed, 19 Jun 2024 10:27:29 +0000 (UTC)
+Message-ID: <c8ec67c6-a486-4665-b5ce-ea858116a8a2@collabora.com>
+Date: Wed, 19 Jun 2024 12:27:29 +0200
 MIME-Version: 1.0
-References: <20240322092845.381313-1-angelogioacchino.delregno@collabora.com> <20240322092845.381313-5-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20240322092845.381313-5-angelogioacchino.delregno@collabora.com>
-From: Fei Shao <fshao@chromium.org>
-Date: Wed, 19 Jun 2024 18:12:55 +0800
-X-Gmail-Original-Message-ID: <CAC=S1niC5ZePFFbEM6Fhr4q7kNqv45uSQNnTp1U8pesfe5f_Aw@mail.gmail.com>
-Message-ID: <CAC=S1niC5ZePFFbEM6Fhr4q7kNqv45uSQNnTp1U8pesfe5f_Aw@mail.gmail.com>
-Subject: Re: [PATCH 4/4] media: platform: mtk-mdp3: Add support for MT8188
- MDP3 components
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-media@vger.kernel.org, mchehab@kernel.org, robh@kernel.org, 
-	krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org, 
-	matthias.bgg@gmail.com, amergnat@baylibre.com, moudy.ho@mediatek.com, 
-	hverkuil-cisco@xs4all.nl, sebastian.fricke@collabora.com, 
-	u.kleine-koenig@pengutronix.de, chunkuang.hu@kernel.org, 
-	p.zabel@pengutronix.de, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, kernel@collabora.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/4] soc: mediatek: mtk-mutex: Add support for MT8188
+ VPPSYS
+To: Fei Shao <fshao@chromium.org>
+Cc: linux-media@vger.kernel.org, mchehab@kernel.org, robh@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+ matthias.bgg@gmail.com, amergnat@baylibre.com, moudy.ho@mediatek.com,
+ hverkuil-cisco@xs4all.nl, sebastian.fricke@collabora.com,
+ u.kleine-koenig@pengutronix.de, chunkuang.hu@kernel.org,
+ p.zabel@pengutronix.de, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, kernel@collabora.com
+References: <20240322092845.381313-1-angelogioacchino.delregno@collabora.com>
+ <20240322092845.381313-3-angelogioacchino.delregno@collabora.com>
+ <CAC=S1niaYZ=NNTwfSrJPdj79uG_hmqGm=cz_Sis3Zrf9octsnw@mail.gmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <CAC=S1niaYZ=NNTwfSrJPdj79uG_hmqGm=cz_Sis3Zrf9octsnw@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240619_031839_693035_174FC559 
-X-CRM114-Status: GOOD (  12.59  )
+X-CRM114-CacheID: sfid-20240619_032733_218078_7F4B21F6 
+X-CRM114-Status: GOOD (  18.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,30 +83,110 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Angelo,
+Il 19/06/24 12:09, Fei Shao ha scritto:
+> Hi Angelo,
+> 
+> On Fri, Mar 22, 2024 at 5:29 PM AngeloGioacchino Del Regno
+> <angelogioacchino.delregno@collabora.com> wrote:
+>>
+>> Add MT8188 VPPSYS0 and VPPSYS1 mutex info to driver data
+>>
+>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> ---
+>>   drivers/soc/mediatek/mtk-mutex.c | 41 ++++++++++++++++++++++++++++++++
+>>   1 file changed, 41 insertions(+)
+>>
+>> diff --git a/drivers/soc/mediatek/mtk-mutex.c b/drivers/soc/mediatek/mtk-mutex.c
+>> index 73c256d3950b..b5af1fb5847e 100644
+>> --- a/drivers/soc/mediatek/mtk-mutex.c
+>> +++ b/drivers/soc/mediatek/mtk-mutex.c
+>> @@ -496,6 +496,39 @@ static const unsigned int mt8188_mutex_mod[DDP_COMPONENT_ID_MAX] = {
+>>          [DDP_COMPONENT_MERGE5] = MT8188_MUTEX_MOD_DISP1_VPP_MERGE4,
+>>   };
+>>
+>> +static const unsigned int mt8188_mdp_mutex_table_mod[MUTEX_MOD_IDX_MAX] = {
+>> +       [MUTEX_MOD_IDX_MDP_RDMA0] = MT8195_MUTEX_MOD_MDP_RDMA0,
+>> +       [MUTEX_MOD_IDX_MDP_RDMA2] = MT8195_MUTEX_MOD_MDP_RDMA2,
+>> +       [MUTEX_MOD_IDX_MDP_RDMA3] = MT8195_MUTEX_MOD_MDP_RDMA3,
+>> +       [MUTEX_MOD_IDX_MDP_FG0] = MT8195_MUTEX_MOD_MDP_FG0,
+>> +       [MUTEX_MOD_IDX_MDP_FG2] = MT8195_MUTEX_MOD_MDP_FG2,
+>> +       [MUTEX_MOD_IDX_MDP_FG3] = MT8195_MUTEX_MOD_MDP_FG3,
+>> +       [MUTEX_MOD_IDX_MDP_HDR0] = MT8195_MUTEX_MOD_MDP_HDR0,
+>> +       [MUTEX_MOD_IDX_MDP_HDR2] = MT8195_MUTEX_MOD_MDP_HDR2,
+>> +       [MUTEX_MOD_IDX_MDP_HDR3] = MT8195_MUTEX_MOD_MDP_HDR3,
+>> +       [MUTEX_MOD_IDX_MDP_AAL0] = MT8195_MUTEX_MOD_MDP_AAL0,
+>> +       [MUTEX_MOD_IDX_MDP_AAL2] = MT8195_MUTEX_MOD_MDP_AAL2,
+>> +       [MUTEX_MOD_IDX_MDP_AAL3] = MT8195_MUTEX_MOD_MDP_AAL3,
+>> +       [MUTEX_MOD_IDX_MDP_RSZ0] = MT8195_MUTEX_MOD_MDP_RSZ0,
+>> +       [MUTEX_MOD_IDX_MDP_RSZ2] = MT8195_MUTEX_MOD_MDP_RSZ2,
+>> +       [MUTEX_MOD_IDX_MDP_RSZ3] = MT8195_MUTEX_MOD_MDP_RSZ3,
+>> +       [MUTEX_MOD_IDX_MDP_MERGE2] = MT8195_MUTEX_MOD_MDP_MERGE2,
+>> +       [MUTEX_MOD_IDX_MDP_MERGE3] = MT8195_MUTEX_MOD_MDP_MERGE3,
+>> +       [MUTEX_MOD_IDX_MDP_TDSHP0] = MT8195_MUTEX_MOD_MDP_TDSHP0,
+>> +       [MUTEX_MOD_IDX_MDP_TDSHP2] = MT8195_MUTEX_MOD_MDP_TDSHP2,
+>> +       [MUTEX_MOD_IDX_MDP_TDSHP3] = MT8195_MUTEX_MOD_MDP_TDSHP3,
+>> +       [MUTEX_MOD_IDX_MDP_COLOR0] = MT8195_MUTEX_MOD_MDP_COLOR0,
+>> +       [MUTEX_MOD_IDX_MDP_COLOR2] = MT8195_MUTEX_MOD_MDP_COLOR2,
+>> +       [MUTEX_MOD_IDX_MDP_COLOR3] = MT8195_MUTEX_MOD_MDP_COLOR3,
+>> +       [MUTEX_MOD_IDX_MDP_OVL0] = MT8195_MUTEX_MOD_MDP_OVL0,
+>> +       [MUTEX_MOD_IDX_MDP_PAD0] = MT8195_MUTEX_MOD_MDP_PAD0,
+>> +       [MUTEX_MOD_IDX_MDP_PAD2] = MT8195_MUTEX_MOD_MDP_PAD2,
+>> +       [MUTEX_MOD_IDX_MDP_PAD3] = MT8195_MUTEX_MOD_MDP_PAD3,
+> 
+> I know it's too late since this is in the tree already, but I noticed
+> that MDP_COMP_TCC0 is added in the 4th patch but not here.
+> Is that expected?
+> 
 
-On Fri, Mar 22, 2024 at 5:29=E2=80=AFPM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> MT8195 and MT8188 share a similar MDP3 macro-block, with minor
-> differences - as in, the latter supports a subset of the number
-> of components supported by the former, but are otherwise handled
-> in the same way.
->
-> Add driver data for MT8188, reusing the already present MT8195
-> data where possible.
->
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
-abora.com>
-> ---
->  .../platform/mediatek/mdp3/mdp_cfg_data.c     | 280 ++++++++++++++++++
->  .../platform/mediatek/mdp3/mtk-img-ipi.h      |   1 +
->  .../platform/mediatek/mdp3/mtk-mdp3-cfg.h     |   1 +
->  .../platform/mediatek/mdp3/mtk-mdp3-core.c    |   3 +
->  4 files changed, 285 insertions(+)
+Many, many, many thanks for that. I missed TCC0 for real in the mutex mod
+list for MT8188, even though it's present at bit 10.
 
-Reviewed-by: Fei Shao <fshao@chromium.org>
+I'll send a Fixes commit adding that bit in a jiffy.
 
-Regards,
-Fei
+Cheers,
+Angelo
+
+> Everything else looks nice, so just a record in the mailing list:
+> Reviewed-by: Fei Shao <fshao@chromium.org>
+> 
+> Regards,
+> Fei
+> 
+> 
+>> +       [MUTEX_MOD_IDX_MDP_WROT0] = MT8195_MUTEX_MOD_MDP_WROT0,
+>> +       [MUTEX_MOD_IDX_MDP_WROT2] = MT8195_MUTEX_MOD_MDP_WROT2,
+>> +       [MUTEX_MOD_IDX_MDP_WROT3] = MT8195_MUTEX_MOD_MDP_WROT3,
+>> +};
+>> +
+>>   static const unsigned int mt8192_mutex_mod[DDP_COMPONENT_ID_MAX] = {
+>>          [DDP_COMPONENT_AAL0] = MT8192_MUTEX_MOD_DISP_AAL0,
+>>          [DDP_COMPONENT_CCORR] = MT8192_MUTEX_MOD_DISP_CCORR0,
+>> @@ -735,6 +768,13 @@ static const struct mtk_mutex_data mt8188_mutex_driver_data = {
+>>          .mutex_sof_reg = MT8183_MUTEX0_SOF0,
+>>   };
+>>
+>> +static const struct mtk_mutex_data mt8188_vpp_mutex_driver_data = {
+>> +       .mutex_sof = mt8188_mutex_sof,
+>> +       .mutex_mod_reg = MT8183_MUTEX0_MOD0,
+>> +       .mutex_sof_reg = MT8183_MUTEX0_SOF0,
+>> +       .mutex_table_mod = mt8188_mdp_mutex_table_mod,
+>> +};
+>> +
+>>   static const struct mtk_mutex_data mt8192_mutex_driver_data = {
+>>          .mutex_mod = mt8192_mutex_mod,
+>>          .mutex_sof = mt8183_mutex_sof,
+>> @@ -1089,6 +1129,7 @@ static const struct of_device_id mutex_driver_dt_match[] = {
+>>          { .compatible = "mediatek,mt8186-disp-mutex", .data = &mt8186_mutex_driver_data },
+>>          { .compatible = "mediatek,mt8186-mdp3-mutex", .data = &mt8186_mdp_mutex_driver_data },
+>>          { .compatible = "mediatek,mt8188-disp-mutex", .data = &mt8188_mutex_driver_data },
+>> +       { .compatible = "mediatek,mt8188-vpp-mutex",  .data = &mt8188_vpp_mutex_driver_data },
+>>          { .compatible = "mediatek,mt8192-disp-mutex", .data = &mt8192_mutex_driver_data },
+>>          { .compatible = "mediatek,mt8195-disp-mutex", .data = &mt8195_mutex_driver_data },
+>>          { .compatible = "mediatek,mt8195-vpp-mutex",  .data = &mt8195_vpp_mutex_driver_data },
+>> --
+>> 2.44.0
+>>
+>>
+
+
 
