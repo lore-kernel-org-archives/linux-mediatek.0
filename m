@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 131EAC27C53
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99B1FC2BA15
 	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jun 2024 14:34:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
@@ -12,45 +12,46 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
 	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DAUnq4J6P5LAcdi4tGHOcxlxdSGDXSO63d6EYLV16E4=; b=dtz7OcS9TZDcD5Lq93eeJNWgE0
-	m6v5t6YiYCEhta1EP/IbDWvdynPEgDYOXGtGGPyyKv8u1p659tFv6JqPV3a98NtYjJDxVlo3q+wut
-	nSYu8jYSL9IB/wtWYYifDOkiIAaC2F5gHqzNqHw3ZnFh0b/vORGh6nTilWmopNXOXS6X3Vp6L25q9
-	DKTPLiMHsxeqIWLj5vrJegS2lPUD1M8seaoWPru/ESr7cbHq+hquhT15p4XBTQE3Pf0SLFtn9fyL3
-	SJOce/LVs8ZJ8PFiEJifPVpou4c8F6YIUk4Zmx/ZOk//S7BWxmXwNPHYrAcQMiKg9zdudT58woT8U
-	YVujYYZQ==;
+	bh=h4UCeazmHfixPnZqGMTsBUCNCsNpRffFmMMZ7aTOOKw=; b=gS/GzqS+4OHXYVhpBMWY89BjmZ
+	EwChT4bogQ8POsnNnieGvR8gCtD6ouqHXVHDf0bA9uoPEktdHXGWZ9ZkHIbXHN7cDjK3tcm2JjhGB
+	plBCynQVk7nt/kmghS8ue2f1/GGaTDiqqHYpdkIoVIKoaTQBZ8J630RP3ECU7szGJmfPDTrbmi8eK
+	CMo9q665hcDE1nExZUhEMf14BPF7In1ZztPSvpPokl3NhL121UCKprYX6ah9ncQQ98cdYD8oe9gp/
+	mCsYlJGdockISSjQ4zPCZjTIIQNgJO9i/Ux1/ZzTIqIozpiULHGMdICOyfDryaoLfdIGMp0rlMGXw
+	JsHsSPKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJwNv-00000001ZKF-1lKR;
-	Wed, 19 Jun 2024 14:34:03 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1sJwNw-00000001ZKj-0Xbh;
+	Wed, 19 Jun 2024 14:34:04 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJwMO-00000001YIg-1qlB;
-	Wed, 19 Jun 2024 14:32:34 +0000
+	id 1sJwMN-00000001YIh-2WJn;
+	Wed, 19 Jun 2024 14:32:33 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 99B67CE1FCA;
-	Wed, 19 Jun 2024 14:32:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id CC655C4AF13;
+	by dfw.source.kernel.org (Postfix) with ESMTP id 1516B61E59;
+	Wed, 19 Jun 2024 14:32:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id F2512C4AF17;
 	Wed, 19 Jun 2024 14:32:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1718807534;
-	bh=WzX7iZz9NtnoD6KfRAFjbOWCri2OoSCND0g7q5cZSKQ=;
+	s=k20201202; t=1718807535;
+	bh=bC3Si/6VjKUhWZGnhO1+v4RCNXyIdUIMDytgGFUCEeI=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=Tni5zSU3Nvq28wRzPX6ZFXNgno1FgHm8SzDCXrB+oLel6X0Z2GNGBtcGNZ2jVYKqZ
-	 OlkHEeWMaYumlo5yvYweBo+8m/gZH/299qUgwxMMr1J8sN3zKVkLH7BBB9Nq7feJ8g
-	 0iBLbVwrq7ba9cvwxrXoICy7wQe66LyIYgzfZcR6aRjGZnWXDmiGc70juumrAICG+n
-	 85t+dL4MeQM3JsdCpdE71r79fBnTEIyOxLoCMoJDJ+5d6tsFRNGgiyERb4GxRYqg6/
-	 3yA8zvUNRoQzi2FOWZMT7iBxntf0k2XtHoJR5VnEEO5nfCFe8UyOnYnBDudCjLPXlK
-	 qTQPRfUFl33Fg==
+	b=LMFTBPV1mkQReAs2Y7JRnpH+i1/6Jdh4qXzFjvnNoLxBLzzoJDrmaIySOFimXunCi
+	 GQ6MoJP9iZ0Zbuz+ivx5uSIaARq4UCCJCnn44l05w4haQS08HAp7mrPaEjzZIDQGZ4
+	 3RaGMWZLYMSiI2p1/HirRaZKPeTVHjPI/23sBd6ZLi+hslUXlcGKlsiZCv+bAO4G8+
+	 vuvX8ma7WYi3ZC8rozqz7/EhIOOwgQOIvDkv38Se6muViVg+mHW5W7n56+8OZGGV8b
+	 aqjT1cIJJwXpVHqId+iXTnBnZ5ZqeLeTprkOmhS3WKRebkXlRckTCzpXS9EmuZKyI3
+	 j45otqXdmSbkA==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C58D1C27C79;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E8B57C27C79;
 	Wed, 19 Jun 2024 14:32:14 +0000 (UTC)
 From: Hsiao Chien Sung via B4 Relay <devnull+shawn.sung.mediatek.com@kernel.org>
-Date: Wed, 19 Jun 2024 22:30:50 +0800
-Subject: [PATCH v2 09/14] drm/mediatek: Set DRM mode configs accordingly
+Date: Wed, 19 Jun 2024 22:30:52 +0800
+Subject: [PATCH v2 11/14] drm/mediatek: Support RGBA8888 and RGBX8888 in
+ OVL on MT8195
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240619-mediatek-drm-next-v2-9-abf68f46f8d2@mediatek.com>
+Message-Id: <20240619-mediatek-drm-next-v2-11-abf68f46f8d2@mediatek.com>
 References: <20240619-mediatek-drm-next-v2-0-abf68f46f8d2@mediatek.com>
 In-Reply-To: <20240619-mediatek-drm-next-v2-0-abf68f46f8d2@mediatek.com>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
@@ -64,19 +65,20 @@ Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  Hsiao Chien Sung <shawn.sung@mediatek.com>
 X-Mailer: b4 0.14.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1718807531; l=3538;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1718807531; l=841;
  i=shawn.sung@mediatek.com; s=20240616; h=from:subject:message-id;
- bh=rS4Xgj0LEBxL5IBSK6SfigvQYUwjVgXB9N8a+kyhjQ0=;
- b=Fp9AGslx+lI67r6rismPXijrPNV9pFijNLIzOFu3BRWE8mAciFgSXIpAswNVyRzNxbrwPu8AR
- DjN5b5VtzDBAKBc6UGiYaOQxEtfq3GLca1s9p8+AdNY94AONyYSulbh
+ bh=UFfbnC0Pk+UyDIilXA9CBuArzD2VEBaxjen+ZQRfSQA=;
+ b=PSTLyTlCrPco9xY23+obmFFokEvg7Hv7ZDW/+98AnpFtFaL1N2wbvIJpIUrm41sonE2UBa7Wp
+ 39Ay5MhUleDCvuEHdepP3AugZ4dlViRy1hq7lnDwbtUfaLoZ1Qc+EsM
 X-Developer-Key: i=shawn.sung@mediatek.com; a=ed25519;
  pk=lq1w8BuWDINX+4JHjGHhhbAU5ICP+cL9VCj7wn+cEDA=
 X-Endpoint-Received: by B4 Relay for shawn.sung@mediatek.com/20240616 with
  auth_id=172
 X-Original-From: Hsiao Chien Sung <shawn.sung@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240619_073229_458916_71AABEEB 
-X-CRM114-Status: GOOD (  14.25  )
+X-CRM114-CacheID: sfid-20240619_073228_216882_C0A99357 
+X-CRM114-Status: UNSURE (   8.59  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,100 +96,28 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Hsiao Chien Sung <shawn.sung@mediatek.com>
 
-Set DRM mode configs limitation according to the hardware capabilities
-and pass the IGT checks as below:
-
-- The test "graphics.IgtKms.kms_plane" requires a frame buffer with
-  width of 4512 pixels (> 4096).
-- The test "graphics.IgtKms.kms_cursor_crc" checks if the cursor size is
-  defined, and run the test with cursor size from 1x1 to 512x512.
-
-Please notice that the test conditions may change as IGT is updated.
+Support RGBA8888 and RGBX8888 formats in OVL on MT8195.
 
 Reviewed-by: CK Hu <ck.hu@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_drm_drv.c | 22 ++++++++++++++++++++++
- drivers/gpu/drm/mediatek/mtk_drm_drv.h |  4 ++++
- 2 files changed, 26 insertions(+)
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index 8e047043202b..c9cad3a82737 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -294,6 +294,9 @@ static const struct mtk_mmsys_driver_data mt8188_vdosys0_driver_data = {
- 	.conn_routes = mt8188_mtk_ddp_main_routes,
- 	.num_conn_routes = ARRAY_SIZE(mt8188_mtk_ddp_main_routes),
- 	.mmsys_dev_num = 2,
-+	.max_width = 8191,
-+	.min_width = 1,
-+	.min_height = 1,
- };
- 
- static const struct mtk_mmsys_driver_data mt8192_mmsys_driver_data = {
-@@ -308,6 +311,9 @@ static const struct mtk_mmsys_driver_data mt8195_vdosys0_driver_data = {
- 	.main_path = mt8195_mtk_ddp_main,
- 	.main_len = ARRAY_SIZE(mt8195_mtk_ddp_main),
- 	.mmsys_dev_num = 2,
-+	.max_width = 8191,
-+	.min_width = 1,
-+	.min_height = 1,
- };
- 
- static const struct mtk_mmsys_driver_data mt8195_vdosys1_driver_data = {
-@@ -315,6 +321,9 @@ static const struct mtk_mmsys_driver_data mt8195_vdosys1_driver_data = {
- 	.ext_len = ARRAY_SIZE(mt8195_mtk_ddp_ext),
- 	.mmsys_id = 1,
- 	.mmsys_dev_num = 2,
-+	.max_width = 8191,
-+	.min_width = 2, /* 2-pixel align when ethdr is bypassed */
-+	.min_height = 1,
- };
- 
- static const struct of_device_id mtk_drm_of_ids[] = {
-@@ -493,6 +502,15 @@ static int mtk_drm_kms_init(struct drm_device *drm)
- 		for (j = 0; j < private->data->mmsys_dev_num; j++) {
- 			priv_n = private->all_drm_private[j];
- 
-+			if (priv_n->data->max_width)
-+				drm->mode_config.max_width = priv_n->data->max_width;
-+
-+			if (priv_n->data->min_width)
-+				drm->mode_config.min_width = priv_n->data->min_width;
-+
-+			if (priv_n->data->min_height)
-+				drm->mode_config.min_height = priv_n->data->min_height;
-+
- 			if (i == CRTC_MAIN && priv_n->data->main_len) {
- 				ret = mtk_crtc_create(drm, priv_n->data->main_path,
- 						      priv_n->data->main_len, j,
-@@ -520,6 +538,10 @@ static int mtk_drm_kms_init(struct drm_device *drm)
- 		}
- 	}
- 
-+	/* IGT will check if the cursor size is configured */
-+	drm->mode_config.cursor_width = drm->mode_config.max_width;
-+	drm->mode_config.cursor_height = drm->mode_config.max_height;
-+
- 	/* Use OVL device for all DMA memory allocations */
- 	crtc = drm_crtc_from_index(drm, 0);
- 	if (crtc)
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.h b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-index 78d698ede1bf..ce897984de51 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-@@ -46,6 +46,10 @@ struct mtk_mmsys_driver_data {
- 	bool shadow_register;
- 	unsigned int mmsys_id;
- 	unsigned int mmsys_dev_num;
-+
-+	u16 max_width;
-+	u16 min_width;
-+	u16 min_height;
- };
- 
- struct mtk_drm_private {
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+index 671b1258d9c8..33b58da15ba4 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+@@ -117,6 +117,8 @@ static const u32 mt8195_formats[] = {
+ 	DRM_FORMAT_XBGR8888,
+ 	DRM_FORMAT_XBGR2101010,
+ 	DRM_FORMAT_ABGR2101010,
++	DRM_FORMAT_RGBX8888,
++	DRM_FORMAT_RGBA8888,
+ 	DRM_FORMAT_RGBX1010102,
+ 	DRM_FORMAT_RGBA1010102,
+ 	DRM_FORMAT_RGB888,
 
 -- 
 Git-146)
