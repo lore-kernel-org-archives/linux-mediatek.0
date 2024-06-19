@@ -4,76 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B06FC27C53
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jun 2024 12:37:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5DBAC27C53
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jun 2024 14:32:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:In-Reply-To:Date:References:Subject:Cc:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=v3IOS6/j5rdFN7/On/W71/5AoNIm8epZjjtjGssvkjY=; b=emRG+RRtFCVDyz0FdoM4xnY8y2
-	JjCstVPvDfTJ1Sj8O8Sv6ESwx5HI5KBSSTArPfLd47SB/G74+fEbaKyGmTiFOh8TlSudTe/+q9w3f
-	8QimDGJbAfRwrCQXYNHiZImWqaurzeuFChudB47Q6Pv9B5wlTWi6tEI0XgyLhwc8VhErhugY+2G8N
-	680kEmBKJz4c0Iea/TvtiQoLM+j7mzt7afvOkRw9n6FqhKLqS2vArLlkuWPgAEpLo0iZksfQ0HAOy
-	s+wgZsUNoFEtyDcmkZRGCJWn2PTw8WPRtMVebLW9tndjNrQSkeTPjlngPazz2iNOxxdiqmBEjCu2H
-	LqWRQpkA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
+	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
+	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Rh7OGK5aXT+I1cV0WgqJbnwnjHKXx1fr2EQQDHLb3OQ=; b=ZR1TIdrHImeKy3nDk7GOHvhD8k
+	aEkVndXWI0yQ0hS6atW+6C66wefO9SXw+Jv03puRgy3okp3jrpH10OBvR6ju3Wghj8CdPrRvTW2bT
+	cKJqR0ywVMiEQDK9huG3WXsqNUVzC57AITvqdh90JpPMCT/Mtcn/nOXZ3c6awzQxuvZ6hoeGPwCIQ
+	+JqeYZwujIDAbnZlgqvElsz1/tUyJopSvK208XnbMTTf0TibdnVRfh5mPggaLRfNFcZSln3KmNVyK
+	2H32XmBUnGYh+fwDq3nDTAi0PNRtMOmfzFJ0FFUlkSu9IKkxCkVcKNDlDbrf2PxDV+m/bT6Wcp0QS
+	J4pDf6Fw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJuYo-00000001CNj-2IKd;
-	Wed, 19 Jun 2024 12:37:10 +0000
+	id 1sJwMY-00000001YS5-0T8T;
+	Wed, 19 Jun 2024 14:32:38 +0000
 Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJuYl-00000001CN4-0Bkz;
-	Wed, 19 Jun 2024 12:37:08 +0000
+	id 1sJwMF-00000001YDT-1fOT;
+	Wed, 19 Jun 2024 14:32:26 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 91DE1CE1E53;
-	Wed, 19 Jun 2024 12:37:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1316EC32786;
-	Wed, 19 Jun 2024 12:36:57 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 70EBDCE1FC7;
+	Wed, 19 Jun 2024 14:32:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 66706C4AF0B;
+	Wed, 19 Jun 2024 14:32:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1718800623;
-	bh=G/1QD6sxX4K16RM7mh/Kh/CPatatOc0PRN9T+Q9l3ho=;
-	h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
-	b=p9Ny1vBfTquUva0eyQD4qFh1bVMBzMXb7Txe93yOkDr19G9vFfBwKs1TNXuwXpg4q
-	 JGByEOYw+S4FBLwq5auCFg/tMpjH6+HyvAiwAV7jes41arn7P4T/iQmg4Q4qa9WHhJ
-	 NNuY9ctilj+0MC415cdJcimeVh2KHjkCPtRgZfhyGIVb0M+wlsz6lIkbZaTOO3E89Q
-	 XjXWHyDwwg7ihGkZ+dVc0Habiw607B3Q1pd3uWnUrXSELSdm9ZrTup5UolBvt6ECoA
-	 FQBNB6JNJeZyp0j4tbOnZiwLpwc+dJpui2Aqmgu+sDGeneREUEVUrO74tiTHcJx2+h
-	 a8+bKJb7A8jcA==
-From: Kalle Valo <kvalo@kernel.org>
-To: Breno Leitao <leitao@debian.org>
-Cc: linux-wireless@vger.kernel.org,  davem@davemloft.net,
-  edumazet@google.com,  pabeni@redhat.com,  Felix Fietkau <nbd@nbd.name>,
-  Lorenzo Bianconi <lorenzo@kernel.org>,  Ryder Lee
- <ryder.lee@mediatek.com>,  Shayne Chen <shayne.chen@mediatek.com>,  Sean
- Wang <sean.wang@mediatek.com>,  Matthias Brugger <matthias.bgg@gmail.com>,
-  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-  netdev@vger.kernel.org,  horms@kernel.org,  kees@kernel.org,  Bo Jiao
- <Bo.Jiao@mediatek.com>,  Alexander Couzens <lynxis@fe80.eu>,  Deren Wu
- <deren.wu@mediatek.com>,  Ming Yen Hsieh <mingyen.hsieh@mediatek.com>,
-  Leon Yen <leon.yen@mediatek.com>,  Quan Zhou <quan.zhou@mediatek.com>,
-  Ingo Rohloff <lundril@gmx.de>,  Sujuan Chen <sujuan.chen@mediatek.com>,
-  Peter Chiu <chui-hao.chiu@mediatek.com>,  StanleyYP Wang
- <StanleyYP.Wang@mediatek.com>,  Benjamin Lin
- <benjamin-jw.lin@mediatek.com>,  linux-kernel@vger.kernel.org (open
- list:ARM/Mediatek SoC support),  linux-arm-kernel@lists.infradead.org
- (moderated list:ARM/Mediatek SoC support),
-  linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC
- support)
-Subject: Re: [PATCH net-next v2] wifi: mt76: un-embedd netdev from mt76_dev
-References: <20240619105311.3144908-1-leitao@debian.org>
-Date: Wed, 19 Jun 2024 15:36:56 +0300
-In-Reply-To: <20240619105311.3144908-1-leitao@debian.org> (Breno Leitao's
-	message of "Wed, 19 Jun 2024 03:52:36 -0700")
-Message-ID: <87o77xkt1z.fsf@kernel.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
+	s=k20201202; t=1718807534;
+	bh=xSG4ggt1RhnwKCcON3d27r3nTFdYl7HIbvQnOx2vw8k=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
+	b=WVRZVFYIxv0xJ8hL4m6bjZNR6TVmK6ROMXs2LNq8bFQ4qWcrP67raxQZ1Xt9Z48FB
+	 Ppa6q6uWFYrZymrBL/Q5/5x6Q+b0sAcd3zhQBjWUTpf2/3X4Ox5RoiVPU/xgIYgCGt
+	 MSrKwezeKRTIrCAJaMdvOiU7cQ8JDrY9BCbD+LDqLOjosFXByCM4L1RzOv6H6wJKXy
+	 a06J4nrjkSuKqeY/YD1E1tbrxccTaqhVP8lw1kFKKAFzDTNtGmSv5aB2o/aXo0BDq0
+	 ATA8uR5SCcjsZZxoGziHMCPy4mVsXOBrYVOC//Mn6sPCyTeKpoQ0MjWBPsPiuhmXEf
+	 gsyjpINDQlZLQ==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4D037C27C79;
+	Wed, 19 Jun 2024 14:32:14 +0000 (UTC)
+From: Hsiao Chien Sung via B4 Relay <devnull+shawn.sung.mediatek.com@kernel.org>
+Date: Wed, 19 Jun 2024 22:30:44 +0800
+Subject: [PATCH v2 03/14] drm/mediatek: Fix XRGB setting error in OVL
 MIME-Version: 1.0
-Content-Type: text/plain
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240619_053707_285908_2DA16AAF 
-X-CRM114-Status: UNSURE (   9.74  )
-X-CRM114-Notice: Please train this message.
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20240619-mediatek-drm-next-v2-3-abf68f46f8d2@mediatek.com>
+References: <20240619-mediatek-drm-next-v2-0-abf68f46f8d2@mediatek.com>
+In-Reply-To: <20240619-mediatek-drm-next-v2-0-abf68f46f8d2@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, 
+ Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ CK Hu <ck.hu@mediatek.com>, Bibby Hsieh <bibby.hsieh@mediatek.com>, 
+ Daniel Kurtz <djkurtz@chromium.org>, YT Shen <yt.shen@mediatek.com>, 
+ Mao Huang <littlecvr@chromium.org>, "Nancy.Lin" <nancy.lin@mediatek.com>
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ Hsiao Chien Sung <shawn.sung@mediatek.com>
+X-Mailer: b4 0.14.0
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1718807531; l=2960;
+ i=shawn.sung@mediatek.com; s=20240616; h=from:subject:message-id;
+ bh=tCYJPhSGMKi5TJvgnmhbxfJqIw69++3CeCs9woVV0N0=;
+ b=pUAHlvinKKjzgS181sqboo/x/W3xdQvnPjuGlVgWHaQXIl3b1l0MFVjYkBQ6dEIXlYUTsumct
+ Ru7FgzaieZ1Bc2NNdp5Pd2WieXj/v2PR5ncTSQk7LYc0HllQe+cc1as
+X-Developer-Key: i=shawn.sung@mediatek.com; a=ed25519;
+ pk=lq1w8BuWDINX+4JHjGHhhbAU5ICP+cL9VCj7wn+cEDA=
+X-Endpoint-Received: by B4 Relay for shawn.sung@mediatek.com/20240616 with
+ auth_id=172
+X-Original-From: Hsiao Chien Sung <shawn.sung@mediatek.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,33 +85,73 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: shawn.sung@mediatek.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Breno Leitao <leitao@debian.org> writes:
+From: Hsiao Chien Sung <shawn.sung@mediatek.com>
 
-> Embedding net_device into structures prohibits the usage of flexible
-> arrays in the net_device structure. For more details, see the discussion
-> at [1].
->
-> Un-embed the net_devices from struct mt76_dev by converting them
-> into pointers, and allocating them dynamically. Use the leverage
-> alloc_netdev_dummy() to allocate the net_device object at
-> mt76_dma_init().
->
-> The free of the device occurs at mt76_dma_cleanup().
->
-> Link: https://lore.kernel.org/all/20240229225910.79e224cf@kernel.org/ [1]
-> Reviewed-by: Simon Horman <horms@kernel.org>
-> Signed-off-by: Breno Leitao <leitao@debian.org>
+CONST_BLD must be enabled for XRGB formats although the alpha channel
+can be ignored, or OVL will still read the value from memory.
+This error only affects CRC generation.
 
-As discussed in v1, feel free to take this to net-next to speed things
-up:
+Fixes: 119f5173628a ("drm/mediatek: Add DRM Driver for Mediatek SoC MT8173.")
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 14 ++++++++++++--
+ 1 file changed, 12 insertions(+), 2 deletions(-)
 
-Acked-by: Kalle Valo <kvalo@kernel.org>
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+index b552a02d7eae..bd00e5e85deb 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+@@ -38,6 +38,7 @@
+ #define DISP_REG_OVL_PITCH_MSB(n)		(0x0040 + 0x20 * (n))
+ #define OVL_PITCH_MSB_2ND_SUBBUF			BIT(16)
+ #define DISP_REG_OVL_PITCH(n)			(0x0044 + 0x20 * (n))
++#define OVL_CONST_BLEND					BIT(28)
+ #define DISP_REG_OVL_RDMA_CTRL(n)		(0x00c0 + 0x20 * (n))
+ #define DISP_REG_OVL_RDMA_GMC(n)		(0x00c8 + 0x20 * (n))
+ #define DISP_REG_OVL_ADDR_MT2701		0x0040
+@@ -407,6 +408,7 @@ void mtk_ovl_layer_config(struct device *dev, unsigned int idx,
+ 	unsigned int fmt = pending->format;
+ 	unsigned int offset = (pending->y << 16) | pending->x;
+ 	unsigned int src_size = (pending->height << 16) | pending->width;
++	unsigned int ignore_pixel_alpha = 0;
+ 	unsigned int con;
+ 	bool is_afbc = pending->modifier != DRM_FORMAT_MOD_LINEAR;
+ 	union overlay_pitch {
+@@ -428,6 +430,14 @@ void mtk_ovl_layer_config(struct device *dev, unsigned int idx,
+ 	if (state->base.fb && state->base.fb->format->has_alpha)
+ 		con |= OVL_CON_AEN | OVL_CON_ALPHA;
+ 
++	/* CONST_BLD must be enabled for XRGB formats although the alpha channel
++	 * can be ignored, or OVL will still read the value from memory.
++	 * For RGB888 related formats, whether CONST_BLD is enabled or not won't
++	 * affect the result. Therefore we use !has_alpha as the condition.
++	 */
++	if (state->base.fb && !state->base.fb->format->has_alpha)
++		ignore_pixel_alpha = OVL_CONST_BLEND;
++
+ 	if (pending->rotation & DRM_MODE_REFLECT_Y) {
+ 		con |= OVL_CON_VIRT_FLIP;
+ 		addr += (pending->height - 1) * pending->pitch;
+@@ -443,8 +453,8 @@ void mtk_ovl_layer_config(struct device *dev, unsigned int idx,
+ 
+ 	mtk_ddp_write_relaxed(cmdq_pkt, con, &ovl->cmdq_reg, ovl->regs,
+ 			      DISP_REG_OVL_CON(idx));
+-	mtk_ddp_write_relaxed(cmdq_pkt, overlay_pitch.split_pitch.lsb, &ovl->cmdq_reg, ovl->regs,
+-			      DISP_REG_OVL_PITCH(idx));
++	mtk_ddp_write_relaxed(cmdq_pkt, overlay_pitch.split_pitch.lsb | ignore_pixel_alpha,
++			      &ovl->cmdq_reg, ovl->regs, DISP_REG_OVL_PITCH(idx));
+ 	mtk_ddp_write_relaxed(cmdq_pkt, src_size, &ovl->cmdq_reg, ovl->regs,
+ 			      DISP_REG_OVL_SRC_SIZE(idx));
+ 	mtk_ddp_write_relaxed(cmdq_pkt, offset, &ovl->cmdq_reg, ovl->regs,
 
 -- 
-https://patchwork.kernel.org/project/linux-wireless/list/
+Git-146)
 
-https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
+
 
