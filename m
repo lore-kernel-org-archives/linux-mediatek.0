@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DC9AC27C53
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jun 2024 17:50:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA013C27C53
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jun 2024 17:51:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XfJQw2fdbIN/qOkY82eaO88otpSglt73f8sE54N3SDI=; b=osPsQPXxTqvxNLSLA6Ldnn+HVL
-	4QXrYyq/Z/rGWkWzoxDp0liGqIW2BHh5IyC84EkJd2d8C7nZS49TiACZ7thQPEHm93vCWSNHraD9T
-	bPSSf7UNCpHbZLwtgZ+Cw819nwgL2WeRkB3Bg1cmLaEPDUOW/qR+1lhXRFUI0J/2FFqCCjMr7rsZ8
-	UMdGOswzoDL+Wjw++M7etjlsG2GJZM9LzwI+K1cePfZtulYIeiLLo52k9rdau7j4Y4x/1pwQAAX+5
-	ATjR2764mE8PR2SsFhJ2WKAVRsgz3+wtlZSpAhW9zEmI0pf3qf6hGxbQ5QLcY7vvK53yZ8VqtebLo
-	kCH+Ozvg==;
+	bh=lnBtZ7Sd6MAJnyQFfVV4G49sUMQYjiSa7hqrQHpozik=; b=lb/RKAX3raeqJ9B2exMo6T8HlG
+	X2bQzmzM2AK9g2oNC2MrYzCA7NO/g8LI4YNfGGAMsTavAnwgJJBofGoYHp7vmCK/guLFzNs902WIG
+	cTkxEol1B8H/7XAXYKG+X2cukD4Um6oex47m6C1poHES5qbJvVWV204hkTQp14sU67feF2ydBN0pZ
+	pcXV96cmMa4wYfKeWtPBTPCJKeBnC1ybyQDYvit3qpp6FMFbEHIfsMY0eS3AmseDYLit40XVvXAFY
+	bLdCtMhrOcVoDU6G9OCB1kNByPNgjUnrNfTvBopmYCIE9j/ucpKdGBVrVgekzHNwcbwpBNAAFzrBM
+	nFgGM0YQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJzRe-00000002HM1-01jX;
-	Wed, 19 Jun 2024 17:50:06 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1sJzT6-00000002HZq-1e9P;
+	Wed, 19 Jun 2024 17:51:36 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJzRa-00000002HKz-05rv;
-	Wed, 19 Jun 2024 17:50:03 +0000
+	id 1sJzSv-00000002HXP-0C9q;
+	Wed, 19 Jun 2024 17:51:33 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id A8DD361DC9;
-	Wed, 19 Jun 2024 17:49:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B2542C2BBFC;
-	Wed, 19 Jun 2024 17:49:55 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id A95BDCE216B;
+	Wed, 19 Jun 2024 17:51:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5F058C2BBFC;
+	Wed, 19 Jun 2024 17:51:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1718819399;
-	bh=kfvIYYYXhENfQB2lgd26zgh9v3EDCNJsSZYFyuR+SBs=;
+	s=k20201202; t=1718819482;
+	bh=lnBtZ7Sd6MAJnyQFfVV4G49sUMQYjiSa7hqrQHpozik=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Lq75alNZQe0ZVzjGWgF9iCE3BtO2VXcDoyEYBDRjg74Hv+mLSeaHQDUDCE9Y/8Pnt
-	 ukJfIhxMLSEVfsIKELp6ElCVKI44Fdv7p2jhEqAFiHy2QTYsvSRcNo49LCizREWu0B
-	 DCXZG3/ICRNoynOhWCl+OfCvBwcIHEtiku1elw7dtdX4TKTwqNapHzPuWAfsf882Rr
-	 pdP/03Hj6f+mlTudw1BgBtxCaPACZOA7WCGsXwUFc++eHnp4T1MSMFMXgrDGBYQU1l
-	 A++L7ZmMVLgsNd9hpztW68SWwh3vyCRCsVsTEcBvg5E2zRvnfVGOcy6kxSLfebk3P/
-	 VLRy2kM2lO2dw==
-Date: Wed, 19 Jun 2024 18:49:53 +0100
+	b=lIxHs/puxWQlhx0vGCPX0jMsqNTna5ryyot4e/mMfGWARfRYK1u1/D5GfF/0hkYMa
+	 g7b8Jv9JllTD/xOjeSlcRYgvFuGGXp2RHweFE7QsaJHB3NxCVjQqcaYsSlWMZmRpIW
+	 i/+tEOIz1xrDxXFokhXu2sL9XI/PXMBSF1fGrxV5B7N4dFYx3oh1eW32faPNCHt0Hd
+	 cTKE+iT26YQSAI9CC9R0moo1cppquWnjPIxL9qremBtctx4/bieF3Sr1VzOC5YNPhg
+	 +d53uD+QV0CLRz4wKGpP99wp9SuiHEGCl1BYwvtxD1NKULErhVL0c9W+UkQp9rDdZl
+	 5WO1jsP9RwfXw==
+Date: Wed, 19 Jun 2024 18:51:16 +0100
 From: Conor Dooley <conor@kernel.org>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: krzk+dt@kernel.org, mturquette@baylibre.com, sboyd@kernel.org,
@@ -52,19 +52,20 @@ Cc: krzk+dt@kernel.org, mturquette@baylibre.com, sboyd@kernel.org,
 	linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, kernel@collabora.com
-Subject: Re: [PATCH 3/3] dt-bindings: mailbox: mediatek: Avoid clock-names on
- MT8188 GCE
-Message-ID: <20240619-sleeve-citable-a3dc10e5cd4f@spud>
+Subject: Re: [PATCH 2/3] dt-bindings: clock: mediatek: Document reset cells
+ for MT8188 sys
+Message-ID: <20240619-retold-wolf-c9222edd647f@spud>
 References: <20240619085322.66716-1-angelogioacchino.delregno@collabora.com>
- <20240619085322.66716-3-angelogioacchino.delregno@collabora.com>
+ <20240619085322.66716-2-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="cyPzD5ebqalhMMLd"
+	protocol="application/pgp-signature"; boundary="eh3REyk7zO/679gG"
 Content-Disposition: inline
-In-Reply-To: <20240619085322.66716-3-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20240619085322.66716-2-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240619_105002_535533_B0941B64 
-X-CRM114-Status: GOOD (  15.63  )
+X-CRM114-CacheID: sfid-20240619_105132_778633_395E6E44 
+X-CRM114-Status: UNSURE (   9.47  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,58 +81,31 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---cyPzD5ebqalhMMLd
+--eh3REyk7zO/679gG
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Wed, Jun 19, 2024 at 10:53:22AM +0200, AngeloGioacchino Del Regno wrote:
-> Add mediatek,mt8188-gce to the list of compatibles for which the
-> clock-names property is not required.
-
-Because, I assume, it has some internal clock? Why do either of these
-things have no clock? Doesn't the internal logic require one?
-
+On Wed, Jun 19, 2024 at 10:53:21AM +0200, AngeloGioacchino Del Regno wrote:
+> The MT8188 sys clocks embed a reset controller: add #reset-cells
+> to the binding to allow using resets.
 >=20
-> Fixes: f2b53c295620 ("dt-bindings: mailbox: mediatek,gce-mailbox: add mt8=
-188 compatible name")
+> Fixes: 1086a5310f9c ("dt-bindings: clock: mediatek: Add new MT8188 clock")
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
 abora.com>
-> ---
->  .../devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml     | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
->=20
-> diff --git a/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailb=
-ox.yaml b/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.ya=
-ml
-> index cef9d7601398..55d4c34aa4b4 100644
-> --- a/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
-> +++ b/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
-> @@ -62,7 +62,9 @@ allOf:
->          properties:
->            compatible:
->              contains:
-> -              const: mediatek,mt8195-gce
-> +              enum:
-> +                - mediatek,mt8188-gce
-> +                - mediatek,mt8195-gce
->      then:
->        required:
->          - clock-names
-> --=20
-> 2.45.2
->=20
 
---cyPzD5ebqalhMMLd
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
+
+--eh3REyk7zO/679gG
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZnMaQQAKCRB4tDGHoIJi
-0qzoAQCbPlRk5egc83ziM5jXYPCmJMaADhzH2l5S9aOOvAPhAQEA/qWFFnhAnsFU
-k4cpnxAR7PDqgTBWGHNsR9LvHRcEywg=
-=/di+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZnMalAAKCRB4tDGHoIJi
+0gMaAP4gkosxEKLci6rWeKRSAJLtmgO4bDoFaFXCBri5e1osWAD/UmS3HtF1x/5F
+UtPqDbZIQqUAV+7Oxtp+N/SWGIUWlwc=
+=+3YS
 -----END PGP SIGNATURE-----
 
---cyPzD5ebqalhMMLd--
+--eh3REyk7zO/679gG--
 
