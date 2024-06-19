@@ -4,53 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BEC7BC2BC81
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jun 2024 16:39:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBE89C27C79
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jun 2024 16:39:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
 	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
 	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sY5WshLFRorsbka8SSD+rFk5o1/+s5iqv2PA3gXjE1k=; b=XZVA7Z5mgYQp9jyGnnYilCjYRJ
-	mbVMMBfa9/G/ayzE7GhVQcM5wzGCkSIP+mWSAKeslPRvNgPquFVSIbqpmEGVZI2d8gyknliuitxs0
-	WY+HDpRzB9/PsCXnok2LMd8He5WuLiw14LAy02p75A33TT8gs1SW0rvv4GaZFYnknzw2erXNHypwW
-	j7vJByXdzYQfAI1G20XEdoxBGZ3gciBAQea7gLrXTmRFjPEDjhUemH3ivLwO+uQH0Et8r4mvcsbNV
-	7rw5UmZlthg0QjbjFjLgaMZ8dlRc+ODdQ5bOhPhwV58cEyIghJ2G8InvsN03gMPgoI4xOhKE3Rx6Q
-	TAwW0xtg==;
+	bh=Mxa0bmGCmNKwKz/w+gKi3h/m7+sCqbHnmAUL9poHsHc=; b=OV9FYWr+7/McPkbEY3VJ64SCiQ
+	oKisk+QU6iEmDM5RwGmp2mgDw8nUiCWHqnDrFKAnq5gr6zzxFUQhyHsXqTz9dGZr6TKt3SaLSdtq9
+	hWnb43/5obKkUr3ToJSDKcxwY7KQtjZpn/HlJYex2cyAzeLSRO5n48fSc5Y8A5+nfez+d2TZXBzlL
+	oOnYrA3YbEM/b1BHNppCItb3zCHVBAuKIdqi82Xe/axxJkgjHU8eAx9BFPlQByZciOukz6l9zWFfS
+	MEOGpkP9BvLjTWlIzdFvXl6z+sa2ezW6nUTFIeQC/vXRbxT52TTKkkrKSzKkaVFOUKHQnvBj7ssNT
+	zePFNiig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJyKp-0000000247q-0mx4;
-	Wed, 19 Jun 2024 16:38:59 +0000
+	id 1sJyKw-000000024F2-3mAe;
+	Wed, 19 Jun 2024 16:39:07 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sJyKc-000000023xC-2yLr;
-	Wed, 19 Jun 2024 16:38:49 +0000
+	id 1sJyKc-000000023wp-2y0n;
+	Wed, 19 Jun 2024 16:38:50 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 8E3F361EAA;
+	by dfw.source.kernel.org (Postfix) with ESMTP id 4061261EA7;
 	Wed, 19 Jun 2024 16:38:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 0BB96C4AF0B;
-	Wed, 19 Jun 2024 16:38:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id DFFD4C4AF07;
+	Wed, 19 Jun 2024 16:38:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1718815125;
-	bh=GMUTsruzzAYn0n7hmwAGt8zwytpi3KhL2H6cMAMOTwM=;
+	s=k20201202; t=1718815124;
+	bh=uJgeqwP/exRsycFcCMLfCia6ha45FbjhfAs5Cm1rATQ=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=o9I6UWARKhdQAarnE3m6YUch84ybDp4BeEm27PI45HX+rqb3jBMMzIH8Jhmb/9N40
-	 TMn9s/1qGLUVAT2iJqPDthvSqAWKpL/bwDsWlEIiz4GYSo7bzxbaCpx9FTwJfmbznI
-	 RXOdGE/jQhdQ4etIjuATVNnA/8hpz4Z9ca0sAwgXm009zp8i7VQLoXM19wJSwR+RmE
-	 4p0gfvPmsYDh1VrFvf4uEqtjIqYjlE1n7HRzl4ck0cuhEGSzHr4qfhz1K35ANGe9jr
-	 aW+Ub066hVO1sz8xnZbtX6awgpNObVsowN9+Hc5Uvo4Y9uyG1UkUH14xeV4dM68pCP
-	 L4gFKOOVOTApw==
+	b=WHmnph4amcaY3GfLeDR1eUYN4FOFsPdlSYYI5hal8Is3/aCkVW7cuW5a4bYjwHard
+	 mrhglBL4dxpwBc5dwuYAoW9GYTjhxyUffC20uNUmhJ9sqi0tYki+fAyeTUIwMWD2yx
+	 33PHuKtmvH2cIoEpqQK9JXW2usRXuMaEv8EVF+V5GdaZwrryXCH3afYyBlKs3ICxre
+	 y0/9ASkPo5aC1Fp1Z0RGvCNSPEvh9uV7ygtRn6irSkBi/wKLsV9NZhr7CGKE73eGzH
+	 71WpJa/zGdw6tTPpOvhS8XSHny5l2tyXXVjsCdqgzyFbiwlL2s7uTShTtCW4fPl263
+	 +T0NKpyBEx1bw==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 01532C27C53;
-	Wed, 19 Jun 2024 16:38:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C6946C2BA15;
+	Wed, 19 Jun 2024 16:38:44 +0000 (UTC)
 From: Hsiao Chien Sung via B4 Relay <devnull+shawn.sung.mediatek.com@kernel.org>
-Date: Thu, 20 Jun 2024 00:38:44 +0800
-Subject: [PATCH v3 04/14] drm/mediatek: Fix XRGB setting error in Mixer
+Date: Thu, 20 Jun 2024 00:38:41 +0800
+Subject: [PATCH v3 01/14] drm/mediatek: Add missing plane settings when
+ async update
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240620-igt-v3-4-a9d62d2e2c7e@mediatek.com>
+Message-Id: <20240620-igt-v3-1-a9d62d2e2c7e@mediatek.com>
 References: <20240620-igt-v3-0-a9d62d2e2c7e@mediatek.com>
 In-Reply-To: <20240620-igt-v3-0-a9d62d2e2c7e@mediatek.com>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
@@ -65,19 +66,20 @@ Cc: YT Shen <yt.shen@mediatek.com>, dri-devel@lists.freedesktop.org,
  linux-arm-kernel@lists.infradead.org, 
  Hsiao Chien Sung <shawn.sung@mediatek.com>
 X-Mailer: b4 0.14.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1718815123; l=1806;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1718815123; l=1161;
  i=shawn.sung@mediatek.com; s=20240616; h=from:subject:message-id;
- bh=iVCN8PnNVHs904I6AJ55kOr+V0K7XkkYFUBoVjBPemw=;
- b=YGUI6RWS0nP5fpjX4gax+ewcdTiGdFlfVwGr3KMmRMoWefuqd/Ov64zpSE37WmTC6fSVlfMee
- Ual5RWvPhOuAj9ENdQSkMcZOMniEGfqK685rChC26tStrwq1vx0UuNA
+ bh=oPP96bMpAu5gtyCGtIUYUgi5lQMG+4ahEDxfcNXlQWw=;
+ b=aMX6/BSIN7JysnkjWbvbGbARLC0zI6CsR4P/4GAqmooXFrLDIkTnz7LfJexu6dNKd54tnNod6
+ p2L3pPUYAEtBOPm5E9BonxPxZX8LBHmEQDSAJEBM0vDB2NrCIM6tHyl
 X-Developer-Key: i=shawn.sung@mediatek.com; a=ed25519;
  pk=lq1w8BuWDINX+4JHjGHhhbAU5ICP+cL9VCj7wn+cEDA=
 X-Endpoint-Received: by B4 Relay for shawn.sung@mediatek.com/20240616 with
  auth_id=172
 X-Original-From: Hsiao Chien Sung <shawn.sung@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240619_093847_029872_F547272F 
-X-CRM114-Status: GOOD (  11.58  )
+X-CRM114-CacheID: sfid-20240619_093847_158213_43104D74 
+X-CRM114-Status: UNSURE (   9.00  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,47 +97,32 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Hsiao Chien Sung <shawn.sung@mediatek.com>
 
-Although the alpha channel in XRGB formats can be ignored, ALPHA_CON
-must be configured accordingly when using XRGB formats or it will still
-affects CRC generation.
+Fix an issue that plane coordinate was not saved when
+calling async update.
 
-Fixes: d886c0009bd0 ("drm/mediatek: Add ETHDR support for MT8195")
+Fixes: 920fffcc8912 ("drm/mediatek: update cursors by using async atomic update")
+
 Reviewed-by: CK Hu <ck.hu@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Fixes: 119f5173628a ("drm/mediatek: Add DRM Driver for Mediatek SoC MT8173.")
 Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_ethdr.c | 11 ++++++++++-
- 1 file changed, 10 insertions(+), 1 deletion(-)
+ drivers/gpu/drm/mediatek/mtk_plane.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_ethdr.c b/drivers/gpu/drm/mediatek/mtk_ethdr.c
-index d7d16482c947..5c52e514ae30 100644
---- a/drivers/gpu/drm/mediatek/mtk_ethdr.c
-+++ b/drivers/gpu/drm/mediatek/mtk_ethdr.c
-@@ -153,6 +153,7 @@ void mtk_ethdr_layer_config(struct device *dev, unsigned int idx,
- 	unsigned int offset = (pending->x & 1) << 31 | pending->y << 16 | pending->x;
- 	unsigned int align_width = ALIGN_DOWN(pending->width, 2);
- 	unsigned int alpha_con = 0;
-+	bool replace_src_a = false;
+diff --git a/drivers/gpu/drm/mediatek/mtk_plane.c b/drivers/gpu/drm/mediatek/mtk_plane.c
+index 4625deb21d40..a74b26d35985 100644
+--- a/drivers/gpu/drm/mediatek/mtk_plane.c
++++ b/drivers/gpu/drm/mediatek/mtk_plane.c
+@@ -227,6 +227,8 @@ static void mtk_plane_atomic_async_update(struct drm_plane *plane,
+ 	plane->state->src_y = new_state->src_y;
+ 	plane->state->src_h = new_state->src_h;
+ 	plane->state->src_w = new_state->src_w;
++	plane->state->dst.x1 = new_state->dst.x1;
++	plane->state->dst.y1 = new_state->dst.y1;
  
- 	dev_dbg(dev, "%s+ idx:%d", __func__, idx);
- 
-@@ -167,7 +168,15 @@ void mtk_ethdr_layer_config(struct device *dev, unsigned int idx,
- 	if (state->base.fb && state->base.fb->format->has_alpha)
- 		alpha_con = MIXER_ALPHA_AEN | MIXER_ALPHA;
- 
--	mtk_mmsys_mixer_in_config(priv->mmsys_dev, idx + 1, alpha_con ? false : true,
-+	if (state->base.fb && !state->base.fb->format->has_alpha) {
-+		/*
-+		 * Mixer doesn't support CONST_BLD mode,
-+		 * use a trick to make the output equivalent
-+		 */
-+		replace_src_a = true;
-+	}
-+
-+	mtk_mmsys_mixer_in_config(priv->mmsys_dev, idx + 1, replace_src_a,
- 				  MIXER_ALPHA,
- 				  pending->x & 1 ? MIXER_INX_MODE_EVEN_EXTEND :
- 				  MIXER_INX_MODE_BYPASS, align_width / 2 - 1, cmdq_pkt);
+ 	mtk_plane_update_new_state(new_state, new_plane_state);
+ 	swap(plane->state->fb, new_state->fb);
 
 -- 
 Git-146)
