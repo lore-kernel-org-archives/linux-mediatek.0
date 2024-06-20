@@ -4,67 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 396C9C27C79
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Jun 2024 16:13:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F08B1C27C79
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Jun 2024 16:17:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YqBhLTOLW8MUbiqZNQWOeWTIc465x/TqSH+bJSl78C8=; b=xlFDNF1oMIVbP5yizONXKa92No
-	xS/Xu7LeV9NDy6VLa3mwwXN2+k2qpk9tcSCE0ZeFHkOnTFPXJpquLyIW1Q8GIufjLAqT/GORpqrEc
-	dGxQmaQHjXhAAziylopTdFVFIrv7uh+lslcnHnF+EfWAYfdDvwE1wWcRxaH5fUUjKgeE3r+V9YqzD
-	AzMBWubtG8avcJGjPPDJgktEXh/IAm0yvfJZe8Z62hPlOg+y/57YYC/Vfx3CmAmVmBD9DjIrBOxfk
-	xlPGzLrrP0O3I2X2ayqzdydkiI5W8KlwT29YIqXmLa+FACAMAsIokO2Q+Oq0yZiAyxW1DW2z1xJnY
-	t3ZrPG2g==;
+	bh=MlmWkVEKzTwzyTEHRJjRJM3FETRdl85oGzHJ0HQkxVg=; b=zEsaMAdO4TXjDcMj3F8jKX19eX
+	exYU5/Nt3ZZxPlHORA5cU/kUdhl/8niNbGERsn7Xm4hXH365fu1s4InBCvwleuVdaJpZzaH7EjJWE
+	8FxlNBXrITkuo7uwJjvwZDWWIOPAv1PTy17nR1nH7wnz1Aqi0oh8V+vNGa7rY//fwyAFz4R2GuDbX
+	bfflBi4kFFcdyQKI8/yrofL1c2f57Ia10AaavT7a2at06qnp3sF/MpaRE3dDTmOCiRxE8V5ISiIDb
+	Th/MzpjcKEb8haZxkdos9TVKzdqE0M2vwF7Un6IKbKBqStPJor6n58H4YSAo9xc8lqD8du2hlk4VK
+	4Yu2cczA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKKPg-00000005mg9-2iRa;
-	Thu, 20 Jun 2024 16:13:28 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1sKKT8-00000005nQX-1ZQI;
+	Thu, 20 Jun 2024 16:17:02 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKKPd-00000005me4-1qb0;
-	Thu, 20 Jun 2024 16:13:26 +0000
+	id 1sKKSw-00000005nIz-3mZK;
+	Thu, 20 Jun 2024 16:16:52 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 7726DCE1CA4;
-	Thu, 20 Jun 2024 16:13:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 21210C2BD10;
-	Thu, 20 Jun 2024 16:13:19 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 67CC7CE26FF;
+	Thu, 20 Jun 2024 16:16:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 37BA7C4AF07;
+	Thu, 20 Jun 2024 16:16:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1718900002;
-	bh=Y2XnVc5qprGNwRa8U74XufU+zrX/nQbjQ00bUMaI/Ik=;
+	s=k20201202; t=1718900206;
+	bh=MlmWkVEKzTwzyTEHRJjRJM3FETRdl85oGzHJ0HQkxVg=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=DECYDU5g7HGl0Xeb0KT+2RpfdCI2jlWeh+BcSYQdHfRlfdxqYRmvMCNXCuX9XH0vr
-	 tONblMXzE9iJ+HEHPE4wCYKd7rMTxjOByAxmoFW3LVje+8Xt1axxVXR7ixLCwIhbEO
-	 +Et+svjtyWp9tQ1Sg17cZ8wMgQw7j+LWfRhSrsimAHS8sFjdjLZMQj3JOa5Uawy/Qq
-	 bd3ZZE9uUqwrt+8qNZNZfncTNxxUa5oj9GQraLcx2qiMEmbo3RINcOZNRWQRxerRVJ
-	 /CJg/rN3cYrZSzTtD85SmbyO12BrdgTWn5Ft2dF9WWJYcSeWeuVF2ZgungBhP68nes
-	 D4KNfglXAuf4g==
-Date: Thu, 20 Jun 2024 17:13:18 +0100
+	b=ZFr5LJbskoDfbvpN0PmNGIwnRLrx6lgUgzxwXrODA0+ngJDKTh6hyTFYU3x4Vn7Z0
+	 g/QrWGCMv8hC7MYVpJfI+fJHWQaohBTaSXsEcavDwrfkIvinxEy3NIBwI/XLYg40Hr
+	 u0qCsGjaUYtXt3ywzot+3gPptjbi5c6Uoy7d5YCQsoiLAdzco5WyuKtMYJUCi+sTfz
+	 3OPp9gZRQaEsRaco717MH4O/smJ+3Gi1fJJu9RRUfru2hjczI1PfvOLQ5hl/IUTEqp
+	 Lbd3/rkNlX16ixSzxH2gAmm+MBReO+ulBNh37fGfsilU5kM5nq+mqZIStbaWZgpHiO
+	 X/OvA3s/0b+Pw==
+Date: Thu, 20 Jun 2024 17:16:40 +0100
 From: Conor Dooley <conor@kernel.org>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Mark Brown <broonie@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>,
-	devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 2/3] dt-bindings: arm: mediatek: Add MT8186 Voltorb
- Chromebooks
-Message-ID: <20240620-outcome-circulate-40a2971f53b9@spud>
-References: <20240620094746.2404753-1-wenst@chromium.org>
- <20240620094746.2404753-3-wenst@chromium.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Conor Dooley <conor.dooley@microchip.com>, krzk+dt@kernel.org,
+	mturquette@baylibre.com, sboyd@kernel.org, robh@kernel.org,
+	conor+dt@kernel.org, matthias.bgg@gmail.com,
+	jassisinghbrar@gmail.com, garmin.chang@mediatek.com,
+	houlong.wei@mediatek.com, Jason-ch.Chen@mediatek.com,
+	amergnat@baylibre.com, Elvis.Wang@mediatek.com,
+	linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, kernel@collabora.com
+Subject: Re: [PATCH 3/3] dt-bindings: mailbox: mediatek: Avoid clock-names on
+ MT8188 GCE
+Message-ID: <20240620-prize-cavalier-01460bf50050@spud>
+References: <20240619085322.66716-1-angelogioacchino.delregno@collabora.com>
+ <20240619085322.66716-3-angelogioacchino.delregno@collabora.com>
+ <20240619-sleeve-citable-a3dc10e5cd4f@spud>
+ <a7317981-8690-4d45-81b6-cc6a63c459e0@collabora.com>
+ <20240620-district-bullring-c028e0183925@wendy>
+ <c154527b-90c3-4834-a4a0-cff4524de5f1@collabora.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="1QLSocapFcYqXwwD"
+	protocol="application/pgp-signature"; boundary="jbOS/vXohNu3Z1I1"
 Content-Disposition: inline
-In-Reply-To: <20240620094746.2404753-3-wenst@chromium.org>
+In-Reply-To: <c154527b-90c3-4834-a4a0-cff4524de5f1@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240620_091325_701420_FDDB088E 
-X-CRM114-Status: GOOD (  15.31  )
+X-CRM114-CacheID: sfid-20240620_091651_454508_80A46B5A 
+X-CRM114-Status: GOOD (  28.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,58 +85,91 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---1QLSocapFcYqXwwD
+--jbOS/vXohNu3Z1I1
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Thu, Jun 20, 2024 at 05:47:37PM +0800, Chen-Yu Tsai wrote:
-> Add an entry for the MT8186 based Voltorb Chromebooks, also known as the
-> Acer Chromebook 311 (C723/C723T). The device is a clamshell style laptop
-> with an optional touchscreen.
+On Thu, Jun 20, 2024 at 10:32:36AM +0200, AngeloGioacchino Del Regno wrote:
+> Il 20/06/24 10:22, Conor Dooley ha scritto:
+> > On Thu, Jun 20, 2024 at 10:01:18AM +0200, AngeloGioacchino Del Regno wr=
+ote:
+> > > Il 19/06/24 19:49, Conor Dooley ha scritto:
+> > > > On Wed, Jun 19, 2024 at 10:53:22AM +0200, AngeloGioacchino Del Regn=
+o wrote:
+> > > > > Add mediatek,mt8188-gce to the list of compatibles for which the
+> > > > > clock-names property is not required.
+> > > >=20
+> > > > Because, I assume, it has some internal clock? Why do either of the=
+se
+> > > > things have no clock? Doesn't the internal logic require one?
+> > > >=20
+> > >=20
+> > > Because there's no gce0/gce1 clock, there's only an infracfg_AO clock=
+ that is
+> > > for one GCE instance, hence there's no need to require clock-names.
+> >=20
+> > clock-names, d'oh. I misread that completely yesterday.
+> >=20
+> > > I can't remove the clock-names requirement from the older compatibles=
+ though,
+> > > because the (sorry about this word) driver (eh..) gets the clock by n=
+ame for
+> > > the single GCE SoCs...
+> > >=20
+> > > ...and here comes a self-NACK for this commit, I have to fix the driv=
+er and
+> > > then stop requiring clock-names on all compatibles, instead of having=
+ this
+> > > ugly nonsense.
+> >=20
+> > Is it not worth keeping the clock names, even if ugly or w/e, because
+> > things have been done that way for a while?
 >=20
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> ---
->  Documentation/devicetree/bindings/arm/mediatek.yaml | 7 +++++++
->  1 file changed, 7 insertions(+)
+> It's worth allowing clock-names, but *requiring* that is unnecessary beca=
+use
+> there is, and there will always be, only one clock...!
+
+Right, dunno if I misread you earlier or misunderstood. Fighting fires
+at work and replying to mails mid bisection is what I am going to blame
+;)
+
+> > Also, what does U-Boot do on these systems to get the clocks?
+> >=20
 >=20
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Docume=
-ntation/devicetree/bindings/arm/mediatek.yaml
-> index b1b09db0bd65..e7746afeb0b3 100644
-> --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
-> +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
-> @@ -301,6 +301,13 @@ properties:
->            - const: google,tentacruel-sku327683
->            - const: google,tentacruel
->            - const: mediatek,mt8186
-> +      - description: Google Voltorb (Acer Chromebook 311 C723/C732T)
-> +        items:
-> +          - enum:
-> +              - google,voltorb-sku589824
-> +              - google,voltorb-sku589825
+> U-Boot doesn't support GCE at all (no driver - at least upstream)...!
 
-This looks rather sane for a chromebook!
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
+Running LIFO through my mailbox today, seeing this after the other
+mail..
 
-> +          - const: google,voltorb
-> +          - const: mediatek,mt8186
->        - items:
->            - enum:
->                - mediatek,mt8186-evb
-> --=20
-> 2.45.2.741.gdbec12cfda-goog
+>=20
+> > > Self-note: gce0/gce1 clocks lookup was implemented in the driver but =
+never
+> > > used and never added to the binding - luckily.
+> > >=20
+> > > Sorry Conor, I just acknowledged that there's a better way of doing t=
+hat.
+> > >=20
+> > > Thank you for making me re-read this stuff, I'll send the proper chan=
+ges
+> > > later today, driver change + binding change in a separate series.
+> > >=20
+> > > As for the other two commits in this series, completely unrelated to =
+GCE,
+> > > those are still fine, and are fixing dtbs_check warnings.
+>=20
 >=20
 
---1QLSocapFcYqXwwD
+--jbOS/vXohNu3Z1I1
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZnRVHQAKCRB4tDGHoIJi
-0nSmAP0fzR6YRVaWBfPAYCkbmRn75YJnVlZy3QoKZreurhO/JQEAtAzyzrZC6E2N
-6sGU4LQJxLJ7f9cZmwI1swMhTaqjsQU=
-=KWZj
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZnRV6AAKCRB4tDGHoIJi
+0iPkAP9KYQ34Wxhe6bOZwHhYtdnsKdrRh0kI6IDFCx77qgbTEAD+OG9IT9Zrd+R1
+2LwxBUbA8JNIZOP3VtParnm8vK8h6wM=
+=QiGH
 -----END PGP SIGNATURE-----
 
---1QLSocapFcYqXwwD--
+--jbOS/vXohNu3Z1I1--
 
