@@ -4,78 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 053D6C27C79
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Jun 2024 08:50:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D986C27C79
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Jun 2024 09:23:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0oRTqaQV+LstrjwZixpKFYUALXmKtaF0Ow0RUXHlll0=; b=rXBXcXDwQ455aBz0eJCATM7GMO
-	MgbPEJg0HuOo9ENomlPjXU5tJbNbQRACzv7k2Lcfiz7FtqOqa/UISEjAO5dJ7VOSrezxqRClcsPVL
-	1ejamOE1re0bUl3qXX9hppKLy6hDXk1UxqQz6avUeNw3hJThxyuVCgmmHic2ub/IGALydDfTNdSu0
-	JpXQkKEHt0ZhmVHnQ2+fKF9X0hfFTwW4WOeyod4S5gzOiXTgrzl+FTDblS32GAQ+u0Itt2NlSq3vN
-	5Zrpb2tjB5ihJt0nmysC+eSghsTQj7wECj2vbAS2rrmVUL6S0AQV6qKOiAkFetq0TpSVj0/rDbXWO
-	oAcGLRTQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=MTOvxtIiI/1rSVsnyqK5ede7Xf3BGz8mkXjO1sfkrcE=; b=qGPgJC4ByQYM8v
+	bAooRjorp/4OfmIg+6e0Dp6JRXcDkzjmj7cDuzbCiTNJk17OPIaRwuurz/XwDwPo9O1mDA0U9OHyO
+	fzq0M674syPrxxrL4lc8E8BxpQx+xRQoJdbvzz++XgKUsAMeG6OiKmPQKvigjFXP+bMMKnDUkWs7l
+	ZmqvzWl8cERkM3L9Lyx2qSMHwH9B1pgaLd3RZp9hFraT3/MI/cyKfLdy93VJZO0yxmJ0yviZIYR9V
+	FVND2LFvlwqQNiVw6gCKLbmb1FXnXd3oTX3+KrVKgpRdbpOS7fETHhJcqQAv0lOAuX2SuptdGT985
+	Hjlbx1qZjTXgo7Vc/cPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKDUj-00000004FtJ-1ulM;
-	Thu, 20 Jun 2024 08:50:13 +0000
-Received: from mail-lj1-x231.google.com ([2a00:1450:4864:20::231])
+	id 1sKE0j-00000004MUf-440w;
+	Thu, 20 Jun 2024 09:23:17 +0000
+Received: from mail-oa1-x34.google.com ([2001:4860:4864:20::34])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKDUg-00000004Frp-2yRq
+	id 1sKE0g-00000004MTw-2BqI
 	for linux-mediatek@lists.infradead.org;
-	Thu, 20 Jun 2024 08:50:12 +0000
-Received: by mail-lj1-x231.google.com with SMTP id 38308e7fff4ca-2e724bc466fso6599121fa.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 20 Jun 2024 01:50:10 -0700 (PDT)
+	Thu, 20 Jun 2024 09:23:15 +0000
+Received: by mail-oa1-x34.google.com with SMTP id 586e51a60fabf-2598a57b2c1so327365fac.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 20 Jun 2024 02:23:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1718873409; x=1719478209; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=0oRTqaQV+LstrjwZixpKFYUALXmKtaF0Ow0RUXHlll0=;
-        b=FWcLod8S4ZXTGw+9jayP1vw2gajHk6uMUBrjDQzWmjFB3aSyJAbEtY+PVu+VTwtiAL
-         m+FO552rgllkSrPbgm8FZOXPVgJ5Dr/KN3FWLb/8V+stU64LxfV6Cii+2Z8yRpV69Wao
-         0+oZO/6GUUv9q+89LfUkKsEl86Q+TGbbvy87k=
+        d=chromium.org; s=google; t=1718875392; x=1719480192; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=MTOvxtIiI/1rSVsnyqK5ede7Xf3BGz8mkXjO1sfkrcE=;
+        b=ejkZg93voxGXjvbanK0NouEuel4JgWsK2WD5vAmAgCz+a7ltBBE0f7XwxnsAfg7VU5
+         G/EJ35ud9rx88XLv1EDJ8gq9L2l2fX1kaKvJ21d/OcwMcYvpzz8fXULfzgdZdhF//7hA
+         /k/9os/hl7KqXNNGPhoWPqnFbbr5MprJZSzt8=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1718873409; x=1719478209;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=0oRTqaQV+LstrjwZixpKFYUALXmKtaF0Ow0RUXHlll0=;
-        b=t3R751X2IWywXxknxJuqYwnH6axAgSlVc+siMFPGgTBuN4+sa3ayGVtotuzLhtGQkp
-         lb2jonKbpv1lSkdowYvB43xkb8O5DzmoTHDK4+47L+wN2HYhyBBOV4Qt3jQwdSh66bOm
-         Ko3uwI4fyKTp0Sk5mntHAuxJKaAohq0gUrFVSRx85ddhwoPilGdeXNMDu6e4rjVdee6I
-         +vUrtKHNtEm8bxSCUsUyMecUBcRFxkciOatXG9M6gD64mkw35yT/gihenjdIu5Qq2fmp
-         tIS75LL6o+dztGkFwqZe6ryvu6EDzflMuU1fx2ZPLZ1wzjdzNVcjGoDaBSETcq73nFqA
-         PVrw==
-X-Forwarded-Encrypted: i=1; AJvYcCWGFbXkLXZ+CiSebV7eXK5NzEL9AyrdfpXXtRRnV3vZeZETO9impuG0rR+q83WodxWkmVOePmteocrukCFNXX8IqhMa0PgyZc+PdL2DUZlYrbAp
-X-Gm-Message-State: AOJu0YxbcrpQsycl4bCy1+qmaV8/Sv8uU441PnJCmVKrlsznSBiWwJZy
-	a9rfl+3fFq8HS4aw5BvNRQCRZ8VMww2X74uKbZzuEKIUs1p8yM5dwnslZjIQMGHk2Tka92iLkjS
-	N10vnPb2aFmLHyMf3ECZcDK3bjw1/v6Ro6HI4
-X-Google-Smtp-Source: AGHT+IHcXpqJLWmBKdXeI91LoMKrVXewns1BNu07e4js70I9FeW6r0+Qp26QuOLQHYvE8hHnxAzWJBo7v4Fc1y9Nr0o=
-X-Received: by 2002:a2e:2416:0:b0:2eb:e137:6584 with SMTP id
- 38308e7fff4ca-2ec3ce940bamr36303391fa.20.1718873408841; Thu, 20 Jun 2024
- 01:50:08 -0700 (PDT)
-MIME-Version: 1.0
-References: <20240620054708.2230665-1-wenst@chromium.org> <743577a0-ef60-4731-8901-daf1ae4f7f7f@suse.de>
-In-Reply-To: <743577a0-ef60-4731-8901-daf1ae4f7f7f@suse.de>
+        d=1e100.net; s=20230601; t=1718875392; x=1719480192;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=MTOvxtIiI/1rSVsnyqK5ede7Xf3BGz8mkXjO1sfkrcE=;
+        b=JGb08zwnsBq8zrNH459uV4Cu4OnkphihZ+XBzcw8fjjWiIrQi3Rbl4g9jXaTreW5UO
+         ZXYc9MGAzNziI1S6ThEvX4v2VOirxmRwHCIfN1kGqNrbvAiBgHTIiTK+bSN3vk160k/A
+         SvVmWL0Q/Pf7OHveMtcfHtl5ZObB/8pNH38SpR6abMVHXmJPJ8Md2gYUY9yKYcSqrlHL
+         +12dON5c4nSFLv9C1PuBHHJXCf72RkYPe3/U3wAoz9K64d9rok8y75y5wTDizkIclx3P
+         iCqDDDDxziUT50xs5ontWn6y+rOuBjuP+XkMWrzRcxvCqyjhm8QjSCQSKtMRGM3gLmPp
+         z6/w==
+X-Forwarded-Encrypted: i=1; AJvYcCXnhj6jAFAlPe8WrZ1/6TbkRqdjejaE71ZJ/hostAWMaBnjxjKPo9bRDF3Lg4S2W/3bkVnQL6Xw3mIxIGy56LnOs7IZWTTXzWHj5jqjC7MVVBT7
+X-Gm-Message-State: AOJu0Yyb1ACcC2gToJv/2eo2/9ru0PsLNfSChMZOoNP06yENJ6FyHeLw
+	9+q0LbwSZQS8pJ2Q8Eg8MmJ7ofqAdtWCyKl78jStNWYXtHiPAIjagN8A5zNY6w==
+X-Google-Smtp-Source: AGHT+IHG1Qywf1NHXqmplHsfBSGZmQpZMD312c+7WzkDmSDb1JUiu8ehCBtziKheqH469mAnY8PkLQ==
+X-Received: by 2002:a05:6871:586:b0:25c:be22:8ae2 with SMTP id 586e51a60fabf-25cbe2290eamr1168729fac.33.1718875392592;
+        Thu, 20 Jun 2024 02:23:12 -0700 (PDT)
+Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:c53a:5326:7f72:759f])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-705cc96aee8sm11950339b3a.73.2024.06.20.02.23.09
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 20 Jun 2024 02:23:12 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Thu, 20 Jun 2024 16:49:57 +0800
-Message-ID: <CAGXv+5G8sC0JAWg_1k-x6+XeqMSMHQDuHfhOJkJYe1OzHkdH-g@mail.gmail.com>
-Subject: Re: [PATCH] drm/mediatek: select DRM_GEM_DMA_HELPER if DRM_FBDEV_EMULATION=y
-To: Thomas Zimmermann <tzimmermann@suse.de>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, 
+To: "Rafael J. Wysocki" <rafael@kernel.org>,
+	Daniel Lezcano <daniel.lezcano@linaro.org>,
+	Zhang Rui <rui.zhang@intel.com>,
+	Lukasz Luba <lukasz.luba@arm.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Subject: [PATCH] thermal/drivers/mediatek/lvts_thermal: Provide default calibration data
+Date: Thu, 20 Jun 2024 17:23:03 +0800
+Message-ID: <20240620092306.2352606-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.45.2.741.gdbec12cfda-goog
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240620_015010_772127_8C0B80C0 
-X-CRM114-Status: GOOD (  21.77  )
+X-CRM114-CacheID: sfid-20240620_022314_615065_7196B301 
+X-CRM114-Status: GOOD (  15.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,70 +85,143 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>, Alexandre Mergnat <amergnat@baylibre.com>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, Nicolas Pitre <npitre@baylibre.com>, linux-mediatek@lists.infradead.org, Chen-Yu Tsai <wenst@chromium.org>, Julien Panis <jpanis@baylibre.com>, Balsam CHIHI <bchihi@baylibre.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jun 20, 2024 at 2:37=E2=80=AFPM Thomas Zimmermann <tzimmermann@suse=
-.de> wrote:
->
-> Hi
->
-> Am 20.06.24 um 07:47 schrieb Chen-Yu Tsai:
-> > With the recent switch from fbdev-generic to fbdev-dma, the driver now
-> > requires the DRM GEM DMA helpers. This dependency is missing, and will
-> > cause a link failure if fbdev emulation is enabled.
-> >
-> > Add the missing dependency.
-> >
-> > Fixes: 0992284b4fe4 ("drm/mediatek: Use fbdev-dma")
-> > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
->
-> Reviewed-by: Thomas Zimmermann <tzimmermann@suse.de>
->
-> Apart from this problem, would it make sense to convert the driver's
-> management to GEM's DMA helpers? It appears there's some code
-> duplication in mtk_gem.c and these helpers.
+On some pre-production hardware, the SoCs do not contain calibration
+data for the thermal sensors. The downstream drivers provide default
+values that sort of work, instead of having the thermal sensors not
+work at all.
 
-It seems at least import_sg_table could be converted. I don't have
-the bandwidth to do a more in-depth review though.
+Port the default values to the upstream driver. These values are from
+the ChromeOS kernels, which sadly do not cover the MT7988.
 
-Thanks
-ChenYu
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+---
+ drivers/thermal/mediatek/lvts_thermal.c | 34 +++++++++++++++++++------
+ 1 file changed, 26 insertions(+), 8 deletions(-)
 
+diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
+index 73148bd8da1f..1997e91bb3be 100644
+--- a/drivers/thermal/mediatek/lvts_thermal.c
++++ b/drivers/thermal/mediatek/lvts_thermal.c
+@@ -128,6 +128,7 @@ struct lvts_data {
+ 	int temp_factor;
+ 	int temp_offset;
+ 	int gt_calib_bit_offset;
++	unsigned int def_calibration;
+ };
+ 
+ struct lvts_sensor {
+@@ -689,6 +690,10 @@ static int lvts_calibration_init(struct device *dev, struct lvts_ctrl *lvts_ctrl
+ 					size_t calib_len)
+ {
+ 	int i;
++	u32 gt;
++
++	/* A zero value for gt means that device has invalid efuse data */
++	gt = (((u32 *)efuse_calibration)[0] >> lvts_ctrl->lvts_data->gt_calib_bit_offset) & 0xff;
+ 
+ 	lvts_for_each_valid_sensor(i, lvts_ctrl_data) {
+ 		const struct lvts_sensor_data *sensor =
+@@ -699,10 +704,17 @@ static int lvts_calibration_init(struct device *dev, struct lvts_ctrl *lvts_ctrl
+ 		    sensor->cal_offsets[2] >= calib_len)
+ 			return -EINVAL;
+ 
+-		lvts_ctrl->calibration[i] =
+-			(efuse_calibration[sensor->cal_offsets[0]] << 0) +
+-			(efuse_calibration[sensor->cal_offsets[1]] << 8) +
+-			(efuse_calibration[sensor->cal_offsets[2]] << 16);
++		if (gt) {
++			lvts_ctrl->calibration[i] =
++				(efuse_calibration[sensor->cal_offsets[0]] << 0) +
++				(efuse_calibration[sensor->cal_offsets[1]] << 8) +
++				(efuse_calibration[sensor->cal_offsets[2]] << 16);
++		} else if (lvts_ctrl->lvts_data->def_calibration) {
++			lvts_ctrl->calibration[i] = lvts_ctrl->lvts_data->def_calibration;
++		} else {
++			dev_err(dev, "efuse contains invalid calibration data and no default given.\n");
++			return -ENODATA;
++		}
+ 	}
+ 
+ 	return 0;
+@@ -770,14 +782,13 @@ static int lvts_golden_temp_init(struct device *dev, u8 *calib,
+ 	gt = (((u32 *)calib)[0] >> lvts_data->gt_calib_bit_offset) & 0xff;
+ 
+ 	/* A zero value for gt means that device has invalid efuse data */
+-	if (!gt)
+-		return -ENODATA;
+-
+-	if (gt < LVTS_GOLDEN_TEMP_MAX)
++	if (gt && gt < LVTS_GOLDEN_TEMP_MAX)
+ 		golden_temp = gt;
+ 
+ 	golden_temp_offset = golden_temp * 500 + lvts_data->temp_offset;
+ 
++	dev_info(dev, "%sgolden temp=%d\n", gt ? "" : "fake ", golden_temp);
++
+ 	return 0;
+ }
+ 
+@@ -1701,6 +1712,7 @@ static const struct lvts_data mt8186_lvts_data = {
+ 	.temp_factor	= LVTS_COEFF_A_MT7988,
+ 	.temp_offset	= LVTS_COEFF_B_MT7988,
+ 	.gt_calib_bit_offset = 24,
++	.def_calibration = 19000,
+ };
+ 
+ static const struct lvts_data mt8188_lvts_mcu_data = {
+@@ -1709,6 +1721,7 @@ static const struct lvts_data mt8188_lvts_mcu_data = {
+ 	.temp_factor	= LVTS_COEFF_A_MT8195,
+ 	.temp_offset	= LVTS_COEFF_B_MT8195,
+ 	.gt_calib_bit_offset = 20,
++	.def_calibration = 35000,
+ };
+ 
+ static const struct lvts_data mt8188_lvts_ap_data = {
+@@ -1717,6 +1730,7 @@ static const struct lvts_data mt8188_lvts_ap_data = {
+ 	.temp_factor	= LVTS_COEFF_A_MT8195,
+ 	.temp_offset	= LVTS_COEFF_B_MT8195,
+ 	.gt_calib_bit_offset = 20,
++	.def_calibration = 35000,
+ };
+ 
+ static const struct lvts_data mt8192_lvts_mcu_data = {
+@@ -1725,6 +1739,7 @@ static const struct lvts_data mt8192_lvts_mcu_data = {
+ 	.temp_factor	= LVTS_COEFF_A_MT8195,
+ 	.temp_offset	= LVTS_COEFF_B_MT8195,
+ 	.gt_calib_bit_offset = 24,
++	.def_calibration = 35000,
+ };
+ 
+ static const struct lvts_data mt8192_lvts_ap_data = {
+@@ -1733,6 +1748,7 @@ static const struct lvts_data mt8192_lvts_ap_data = {
+ 	.temp_factor	= LVTS_COEFF_A_MT8195,
+ 	.temp_offset	= LVTS_COEFF_B_MT8195,
+ 	.gt_calib_bit_offset = 24,
++	.def_calibration = 35000,
+ };
+ 
+ static const struct lvts_data mt8195_lvts_mcu_data = {
+@@ -1741,6 +1757,7 @@ static const struct lvts_data mt8195_lvts_mcu_data = {
+ 	.temp_factor	= LVTS_COEFF_A_MT8195,
+ 	.temp_offset	= LVTS_COEFF_B_MT8195,
+ 	.gt_calib_bit_offset = 24,
++	.def_calibration = 35000,
+ };
+ 
+ static const struct lvts_data mt8195_lvts_ap_data = {
+@@ -1749,6 +1766,7 @@ static const struct lvts_data mt8195_lvts_ap_data = {
+ 	.temp_factor	= LVTS_COEFF_A_MT8195,
+ 	.temp_offset	= LVTS_COEFF_B_MT8195,
+ 	.gt_calib_bit_offset = 24,
++	.def_calibration = 35000,
+ };
+ 
+ static const struct of_device_id lvts_of_match[] = {
+-- 
+2.45.2.741.gdbec12cfda-goog
 
-> Best regards
-> Thomas
->
-> > ---
-> > The commit this patch fixes is in drm-misc-next. Ideally this patch
-> > should be applied on top of it directly.
-> >
-> > CK, could you give your ack for it?
-> >
-> >   drivers/gpu/drm/mediatek/Kconfig | 1 +
-> >   1 file changed, 1 insertion(+)
-> >
-> > diff --git a/drivers/gpu/drm/mediatek/Kconfig b/drivers/gpu/drm/mediate=
-k/Kconfig
-> > index 96cbe020f493..d6449ebae838 100644
-> > --- a/drivers/gpu/drm/mediatek/Kconfig
-> > +++ b/drivers/gpu/drm/mediatek/Kconfig
-> > @@ -7,6 +7,7 @@ config DRM_MEDIATEK
-> >       depends on HAVE_ARM_SMCCC
-> >       depends on OF
-> >       depends on MTK_MMSYS
-> > +     select DRM_GEM_DMA_HELPER if DRM_FBDEV_EMULATION
-> >       select DRM_KMS_HELPER
-> >       select DRM_MIPI_DSI
-> >       select DRM_PANEL
->
-> --
-> --
-> Thomas Zimmermann
-> Graphics Driver Developer
-> SUSE Software Solutions Germany GmbH
-> Frankenstrasse 146, 90461 Nuernberg, Germany
-> GF: Ivo Totev, Andrew Myers, Andrew McDonald, Boudien Moerman
-> HRB 36809 (AG Nuernberg)
->
 
