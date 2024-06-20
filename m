@@ -4,79 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00A41C27C79
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Jun 2024 09:25:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7391C27C79
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Jun 2024 09:46:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=rDZlI2yZ4wi+UH3k0wT+hmOJJKg/VzbaB//Srify4c8=; b=T4BnOS0cL97K1U5SEijvbBcwRU
-	G2gc4UERVqXn/X0JCbYrPPSAb+5Uf+T1IsDndFzI+Ye2gnEyIuD+Y062k14dj0Mo5Xh1z6Cic7VzK
-	XpyHxi3ntIjKwUfh7/APE8POUpXmK3lug77tPYLuhjM0jHgViIPGANtdxt+X0iPkturOr6/u26laz
-	bTLsCUlDibzOGN6ojEFAumCGHg/6nQ8P7J5vzdkAU1dUDlYgXn4y9D+cRyjR+qIpvBnxCDuEWT2OU
-	YR8EmB2JcplUpReUWWmbtVT/GmQ/9xdXCy774SEw9bb/Nb7qO7Wgxshrw7mD/4F1rMxLZs/F7zGxK
-	NePTMydg==;
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=1C8Ju8XWmp5T/a5fTSJkVEbGY+u2Y8Oaw2wvJKVqwcw=; b=gXdpWuAarxbWwlBFdWyLoPm0Wr
+	WXREpIPxLh2VymYtJpoo/ADMIR2EUIjBbTRK6MF3VAYgYkzQLFcGD/D10enpspOtiFBqv8Hnt0qvL
+	uq9lxITUy+dkf99dTXk6QX7qxVDrdIjkKt2jy+nlp7Xnk7+R4IrWRG9gQg5h+R7NKR3ukUPkGYd/1
+	ldtJ9W4Jm16t87pj4RTUtQm4vA9zEDTqkF9IT9mfWwd4bYESp0vmrPKSNk+Hs8Rmr1rSDFxIvLBsi
+	hNSBJW2CToj3nczK6K0VykxBVBclgfTXGs5XReRYoSzthoX2o+5rj79J862ER/k5+z9mjK9NzzX0i
+	MZ5np1Hg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKE2w-00000004MsX-2fC5;
-	Thu, 20 Jun 2024 09:25:34 +0000
-Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
+	id 1sKENO-00000004RZ7-25IA;
+	Thu, 20 Jun 2024 09:46:42 +0000
+Received: from mail-lj1-x22f.google.com ([2a00:1450:4864:20::22f])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKE2u-00000004MsB-2Ndv
+	id 1sKENL-00000004RXq-3v9q
 	for linux-mediatek@lists.infradead.org;
-	Thu, 20 Jun 2024 09:25:34 +0000
-Received: by mail-pf1-x42d.google.com with SMTP id d2e1a72fcca58-70435f4c330so645288b3a.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 20 Jun 2024 02:25:31 -0700 (PDT)
+	Thu, 20 Jun 2024 09:46:41 +0000
+Received: by mail-lj1-x22f.google.com with SMTP id 38308e7fff4ca-2e95a75a90eso6278021fa.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 20 Jun 2024 02:46:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1718875531; x=1719480331; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=rDZlI2yZ4wi+UH3k0wT+hmOJJKg/VzbaB//Srify4c8=;
-        b=BiiCUTDozsB2I0WSOYwInIukKovufC1DdhF2NCPQCUjh9nKf5aBrR6o8yuilxe+VmR
-         UekYgob7vMMp6X6t5yULa/pNVAq2UZbe5KbSoeGx9PeEiQLh29Y+rsQ4ed8028+v7/EL
-         qAGVqM3gJoBM8MbQ+x75rPdCoce6M5QI/nmEo=
+        d=chromium.org; s=google; t=1718876798; x=1719481598; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=1C8Ju8XWmp5T/a5fTSJkVEbGY+u2Y8Oaw2wvJKVqwcw=;
+        b=k9HJB18pu8b2DNqWo1DxDXVWxhNO2IYZxKG77k3UQeNV4A+nurmGnhkurwkD/J00WQ
+         1KK3vCnXhVkvlShMHhqjmnHCvy6O+LUMrsJ2/TveJO2jHh2RFYNbIcYrLUGZEsJP1id2
+         vbS6fZrqS9nJ5BUK/mZyskTTH4bVnOHv3BezA=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1718875531; x=1719480331;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=rDZlI2yZ4wi+UH3k0wT+hmOJJKg/VzbaB//Srify4c8=;
-        b=LTXJmMvkhpqn5ySeoFycVrlWWRKSTyd2Cv6ON5NU0cOy54ul17kPgKD0vgxVKhrZVa
-         32wUdXzczN7jpdXBJyHvjoWpYPkO7mwxio4lrTf0KWQaCyme6Pgvm1K5QgohlFFfzKv/
-         LpnIcjh7Rls1ucNcMp6Cl7rmnyoVZ6dNMFy9+ivBQ7l6DSQ3A091nj0Vs4L+/hHNiM0O
-         o/gCx/bGZHVoZZVw5uPLXhQgtyE7FVcDflP5/cyE3DFcGsoVDVnFJLr/cT2ec5wQq3/Y
-         lulKA0sLM69jDMSueabvXu6YZqYW3eyCxygtFoFW2kTl3nPXWv62XUFveOPx/UGEDr6B
-         sU4g==
-X-Forwarded-Encrypted: i=1; AJvYcCUOlOt/g+eQCQmJIGQ5BO99la81D+x5PRrvKjfsvFHB694MhkE8zSkuMirAQUVS2XjmB2DL9jF0RKyScEgRi7iD+qvKQ3XSu4AEQzu+dYabZe+1
-X-Gm-Message-State: AOJu0YygRXwh1B73e7Chvlafi2mW3JHdNJXlAuiqoiY9K/+BpM4DKud1
-	VwlWmz/Ch/f//7VoamDHGxjcC/QzArqtNR2a2kYCt78WZujnc8M9IIVntf8nAg==
-X-Google-Smtp-Source: AGHT+IFjLrlNvst0OTexBZLhq72UApS8umR+VI7cUlAbt/0YeIqLW8EGKxs24IIss6Yf64ZG7G1XCw==
-X-Received: by 2002:a62:f90e:0:b0:705:964e:d9f3 with SMTP id d2e1a72fcca58-70629c34f80mr4334277b3a.11.1718875530972;
-        Thu, 20 Jun 2024 02:25:30 -0700 (PDT)
-Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:c53a:5326:7f72:759f])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-705ce168be0sm11866412b3a.28.2024.06.20.02.25.29
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 20 Jun 2024 02:25:30 -0700 (PDT)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Mark Brown <broonie@kernel.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
-	Trevor Wu <trevor.wu@mediatek.com>,
-	linux-sound@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH] ASoC: mediatek: mt8195: Re-add codec entry for ETDM1_OUT_BE dai link
-Date: Thu, 20 Jun 2024 17:25:24 +0800
-Message-ID: <20240620092526.2353537-1-wenst@chromium.org>
-X-Mailer: git-send-email 2.45.2.741.gdbec12cfda-goog
+        d=1e100.net; s=20230601; t=1718876798; x=1719481598;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=1C8Ju8XWmp5T/a5fTSJkVEbGY+u2Y8Oaw2wvJKVqwcw=;
+        b=YtcphN5PInrjTjUU7gQEq0h8FeCw4Z1H0CuUHRnKqXuOYvWrScOKcyR04GlIXKMbTm
+         0rT41w+03v3Xt90tx3PNDmMyHd9ivWFdOlf2azqIbiqbcgKmTFm2RSLXKQgIr2Y4hBTG
+         mlbY53MbnaSL3zJQJzrUedA+AmmFCMRttZnzoL5XGH1H2pKf9qeraymnZ4zgUnj9fWsT
+         hTR3NcClebEnjGZEuQ345mKJFLf41F9EXgkwRagejwVeS3oUxXbzgLjl2xunL3R/lGP6
+         /xsPxSIJNY9V5FVrM/z8B4wVrs3fwFpuGk1mHlg7ulhOZw/zTld9yoEgjGDgiGunBZRq
+         C5bw==
+X-Forwarded-Encrypted: i=1; AJvYcCXY0fJlXaOQ3u/kHx2s8VK8PQde1Z7yg/KiNpNAx+bXA+0v6vw4eocyShh26ZDusfmjA/0/2/ErpXRYAw/TnzP8iJwykDXa3au36p58G0ErF+hS
+X-Gm-Message-State: AOJu0YyZxB5pkhrZVo5NcFVAYqeSJa/USkgBBFvJAOPGPQ5aKZkmS5X0
+	ryx8KWWR/MEvA3e9X8JRQI8RK8Le9dya5gYAiaKfODqduYjDTDHoAnzsT+VMRWCIKL5Jq1748hV
+	B0IBjUmogwo3Im9fnCOjiTSQdexVDsxuRvoKh
+X-Google-Smtp-Source: AGHT+IEAch4d9DfYlt6svj7uQiDMS/kkFeiPt+x05ruz/JwQ3l7QJT/Zf3fr43/NzPnYxwZicSzj+aUa/F91bwpokys=
+X-Received: by 2002:a2e:2281:0:b0:2ec:3f29:a0fe with SMTP id
+ 38308e7fff4ca-2ec3f29a240mr23325101fa.38.1718876797983; Thu, 20 Jun 2024
+ 02:46:37 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20240529-mtk-thermal-mt818x-dtsi-v6-0-0c71478a9c37@baylibre.com>
+ <20240529-mtk-thermal-mt818x-dtsi-v6-4-0c71478a9c37@baylibre.com>
+ <75826085-fd59-466a-b1de-b4c323c801c1@collabora.com> <CAGXv+5FPG4ob3mTU0Utm8Wgk0_ZLw=NLPbfFerWh4OUeAz7UHw@mail.gmail.com>
+ <808db317-4cee-426b-a840-013a5e03098d@baylibre.com> <ad047631-16b8-42ce-8a8d-1429e6af4517@collabora.com>
+ <940eec49-91d8-4d38-a3d8-e1b7e090b905@baylibre.com>
+In-Reply-To: <940eec49-91d8-4d38-a3d8-e1b7e090b905@baylibre.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Thu, 20 Jun 2024 17:46:26 +0800
+Message-ID: <CAGXv+5HpRvsYz3ZJ_hNM=RhDHbnEZA73Xwm1YgjuWWPXhymT9w@mail.gmail.com>
+Subject: Re: [PATCH v6 4/6] arm64: dts: mediatek: mt8186: add default thermal zones
+To: Julien Panis <jpanis@baylibre.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	Daniel Lezcano <daniel.lezcano@linaro.org>, Nicolas Pitre <npitre@baylibre.com>, 
+	"Rafael J. Wysocki" <rafael@kernel.org>, Zhang Rui <rui.zhang@intel.com>, 
+	Lukasz Luba <lukasz.luba@arm.com>, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, 
+	Krzysztof Kozlowski <krzk@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240620_022532_631675_B52338B6 
-X-CRM114-Status: UNSURE (   9.33  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240620_024640_063752_4FDA2814 
+X-CRM114-Status: GOOD (  36.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,46 +98,141 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This partially reverts commit e70b8dd26711704b1ff1f1b4eb3d048ba69e29da.
+Hi,
 
-Said commit removes the codec entry for the ETDM1_OUT_BE dai link for
-some reason. This does not have the intended effect, as the remaining
-DAILINK_COMP_ARRAY(COMP_EMPTY()) platform entry becomes the codec
-entry, and the platform entry is completely gone.
+On Mon, Jun 3, 2024 at 3:58=E2=80=AFPM Julien Panis <jpanis@baylibre.com> w=
+rote:
+>
+> On 5/29/24 14:06, AngeloGioacchino Del Regno wrote:
+> > Il 29/05/24 11:12, Julien Panis ha scritto:
+> >> On 5/29/24 10:33, Chen-Yu Tsai wrote:
+> >>> On Wed, May 29, 2024 at 4:17=E2=80=AFPM AngeloGioacchino Del Regno
+> >>> <angelogioacchino.delregno@collabora.com> wrote:
+> >>>> Il 29/05/24 07:57, Julien Panis ha scritto:
+> >>>>> From: Nicolas Pitre <npitre@baylibre.com>
+> >>>>>
+> >>>>> Inspired by the vendor kernel but adapted to the upstream thermal
+> >>>>> driver version.
+> >>>>>
+> >>>>> Signed-off-by: Nicolas Pitre <npitre@baylibre.com>
+> >>>>> Signed-off-by: Julien Panis <jpanis@baylibre.com>
+> >>>> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@c=
+ollabora.com>
+> >>> I'm getting some crazy readings which would cause the machine to
+> >>> immediately shutdown during boot. Anyone else see this? Or maybe
+> >>> my device has bad calibration data?
+> >>>
+> >>> gpu_thermal-virtual-0
+> >>> Adapter: Virtual device
+> >>> temp1:       +229.7 C
+> >>>
+> >>> nna_thermal-virtual-0
+> >>> Adapter: Virtual device
+> >>> temp1:       +229.7 C
+> >>>
+> >>> cpu_big0_thermal-virtual-0
+> >>> Adapter: Virtual device
+> >>> temp1:         -7.2 C
+> >>>
+> >>> cpu_little2_thermal-virtual-0
+> >>> Adapter: Virtual device
+> >>> temp1:       +157.2 C
+> >>>
+> >>> cpu_little0_thermal-virtual-0
+> >>> Adapter: Virtual device
+> >>> temp1:       -277.1 C
+> >>>
+> >>> adsp_thermal-virtual-0
+> >>> Adapter: Virtual device
+> >>> temp1:       +229.7 C
+> >>>
+> >>> cpu_big1_thermal-virtual-0
+> >>> Adapter: Virtual device
+> >>> temp1:       +229.7 C
+> >>>
+> >>> cam_thermal-virtual-0
+> >>> Adapter: Virtual device
+> >>> temp1:        +45.4 C
+> >>>
+> >>> cpu_little1_thermal-virtual-0
+> >>> Adapter: Virtual device
+> >>> temp1:       -241.8 C
+> >>
+> >> It's likely that your device has bad calibration data indeed. We obser=
+ved the same
+> >> behavior on the mt8186 device we used (a Corsola) and finally realized=
+ that the
+> >> golden temperature was 0 (device not properly calibrated).
+> >>
+> >> To make a comparison, we run chromiumos v5.15 and dmesg output was:
+> >> 'This sample is not calibrated, fake !!'
+> >> Additional debugging revealed that the golden temp was actually 0. As =
+a result,
+> >> chromiumos v5.15 does not use the calibration data. It uses some defau=
+lt values
+> >> instead. That's why you can observe good temperatures with chromiumos =
+v5.15
+> >> even with a device that is not calibrated.
+> >>
+> >> This feature is not implemented in the driver upstream, so you need a =
+device
+> >> properly calibrated to get good temperatures with it. When we forced t=
+his
+> >> driver using the default values used by chromiumos v5.15 instead of re=
+al calib
+> >> data (temporarily, just for testing), the temperatures were good.
+> >>
+> >> Please make sure your device is properly calibrated: 0 < golden temp <=
+ 62.
+> >>
+> >
+> > Wait wait wait wait.
+> >
+> > What's up with that calibration data stuff?
+> >
+> > If there's any device that cannot use the calibration data, we need a w=
+ay to
+> > recognize whether the provided data (read from efuse, of course) is val=
+id,
+> > otherwise we're creating an important regression here.
+> >
+> > "This device is unlucky" is not a good reason to have this kind of regr=
+ession.
+> >
+> > Since - as far as I understand - downstream can recognize that, upstrea=
+m should
+> > do the same.
+> > I'd be okay with refusing to even probe this driver on such devices for=
+ the
+> > moment being, as those are things that could be eventually handled on a=
+ second
+> > part series, even though I would prefer a kind of on-the-fly calibratio=
+n or
+> > anyway something that would still make the unlucky ones to actually hav=
+e good
+> > readings *right now*.
+> >
+> > Though, the fact that you assert that you observed this behavior on one=
+ of your
+> > devices and *still decided to send that upstream* is, in my opinion, un=
+acceptable.
+> >
+> > Regards,
+> > Angelo
+>
+> I've been trying to find some more information about the criteria
+> "device calibrated VS device not calibrated" because there's a
+> confusing comment in downstream code (the comment does not
+> match what I observe on my device). I'll send a separate patch
+> to add this feature over the next few days, when I get additional
+> information from MTK about this criteria.
 
-This causes in a KASAN out-of-bounds warning in mtk_soundcard_common_probe()
-in sound/soc/mediatek/common/mtk-soundcard-driver.c:
+I couldn't wait and sent a patch to provide default calibration data,
+based on the values and code from the ChromeOS kernels. It seems to
+work OK-ish. I get 4x degrees C on my MT8186 device.
 
-	for_each_card_prelinks(card, i, dai_link) {
-		if (adsp_node && !strncmp(dai_link->name, "AFE_SOF", strlen("AFE_SOF")))
-			dai_link->platforms->of_node = adsp_node;
-		else if (!dai_link->platforms->name && !dai_link->platforms->of_node)
-			dai_link->platforms->of_node = platform_node;
-	}
+Also, your previous patch blocking invalid efuse data has landed. So
+I think this series can be relanded. What do you think, Angelo?
 
-where the code expects the platforms array to have space for at least one entry.
-
-Re-add the entry so that dai_link->platforms has space.
-
-Fixes: e70b8dd26711 ("ASoC: mediatek: mt8195: Remove afe-dai component and rework codec link")
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
----
- sound/soc/mediatek/mt8195/mt8195-mt6359.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/sound/soc/mediatek/mt8195/mt8195-mt6359.c b/sound/soc/mediatek/mt8195/mt8195-mt6359.c
-index ca8751190520..2832ef78eaed 100644
---- a/sound/soc/mediatek/mt8195/mt8195-mt6359.c
-+++ b/sound/soc/mediatek/mt8195/mt8195-mt6359.c
-@@ -827,6 +827,7 @@ SND_SOC_DAILINK_DEFS(ETDM2_IN_BE,
- 
- SND_SOC_DAILINK_DEFS(ETDM1_OUT_BE,
- 		     DAILINK_COMP_ARRAY(COMP_CPU("ETDM1_OUT")),
-+		     DAILINK_COMP_ARRAY(COMP_EMPTY()),
- 		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
- 
- SND_SOC_DAILINK_DEFS(ETDM2_OUT_BE,
--- 
-2.45.2.741.gdbec12cfda-goog
-
+ChenYu
 
