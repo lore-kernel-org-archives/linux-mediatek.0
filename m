@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5251BC41513
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B688C27C79
 	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Jun 2024 10:08:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hZpY1O6ObrCWzPE53y30c4iuVMHGe0upfn5Eh4ECaOA=; b=GW5BUgKtL4af/31ljc9wgMATgj
-	GOmkKl9t29Z4rZicK1awCIp4CVn7VRsnuHZdEDc/2c+gcO2ggUAiKC+2lVoaYrHjinbT9eT8KNfsM
-	g5JUKHiurr1R10LCSbeuUE4r4ZMeGfswnNnT4HAiz69oir7X2Lhj3NjLjUyGQ1eBpcWlhicUUumtn
-	0H36jNO5gqutQ8AOFf+0s0Pj+xCrnCQLrtWjTXjolGIIEYNl7ceWc7cBFEYVmEcdfJ3WoM1VcG7lU
-	g1FPXTp9xVn58x8Xny+OTMz7riU/N3hxom+2gAhYaUvPuTkgrrshJKA4jpaWcoo2Iy+QQqg9a2X48
-	H/PxkmiQ==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=9b9o2FIBC6CHU9KLscRhkfHduCG2chUR0QcdzSqhhlo=; b=PLRoXvdUMjRR9g4lrFmpJdLf35
+	UznyuugG9i7UiFYcFZ13Gjah0emd78t7krDzRPuLUU2lmXDslggDm05d3paHPk+xmgKljG5VmdBA1
+	TmeaicKvukG9W6m9eGVkbPW1VSXtbgJC7UfErKMEonRPlv7y0+Qb7ugKeLzO80p3RBgMPhKOpEk92
+	KufxDYf91nN5ktDJKssVwb8ircA9fPI9rLrQKlL8nW7UI45sir4AElpnH1x45GtaPwbLzaQ3RZOUD
+	rmBADGtAoSXowsG+IzurMVmvQ/4cCYvg//Hp2OzHZ4TPJr2L0QD/6zNDXPWeGf6hzSWb0pII8RzXc
+	BtGORbqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKEiE-00000004VNu-33jI;
+	id 1sKEiE-00000004VNR-0ry3;
 	Thu, 20 Jun 2024 10:08:14 +0000
 Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKEi8-00000004VJi-21mF;
+	id 1sKEi8-00000004VJh-21h2;
 	Thu, 20 Jun 2024 10:08:10 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1718878085;
-	bh=uPSc/aFYOBicJU5ByMPn/EfmfsVERpR9NIo+Kp9Kuaw=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=FQMd+sGaS9mWBAyggmubXUNDCT5UwAkXnXEqZhteD8k10mWqw27ky2hY4eoJ6d0H3
-	 X9n5Kj0sN4A2YFJywWr8RPm0r/GD5+7MJ06SxpTZc1Ndh+915udFvdVMCs+Iv6ZuQa
-	 eEH5XWMa5yAyAVleCj9AvYcCZ56OEHWBavdbV6RD9/6CYSRlganxtXct8zQEJ14xLu
-	 drQLdqQuDKIWh/hc3OKVXD8ecBvOV7TcGUbhlLw5jeaxGuPG2VjRPmM80VjPJGFv+a
-	 rjvncXjkQj78TKTBlWYbuIAWoI5dEEty5Vks3T8H2XZod8vnYCQXce4vfbftDjSrdM
-	 +bTAJ9m5QYj8g==
+	s=mail; t=1718878084;
+	bh=fcT31yM+NshgIhzfWXghtZi7e3NaZVSVWS2eQeAyGkY=;
+	h=From:To:Cc:Subject:Date:From;
+	b=Kz+Cx5hNFgkqzab9aIBWCYtNRS2+Xat5GTL+bNOLeAqN8o/EJljq7PWQ3i+vE6qbm
+	 sUmpW4mCOu9FM4+9loKTixn9/r9e2VNxyWpTCPoLOyweOJ9dXXi/kxz87gP+Q7LuXU
+	 xo3MMk0769nV23qyhizW94PH0R8YiJoWrE/xIFr1Lx0zxLarvBEhndesWYxWqPKdh6
+	 sYSmRf39xMo5Yjvya641afNrx3EIL8mVY0abFiO57CS7z7mafVprdrvtIMAjFb0JBe
+	 FSGJFYp26zWxNeZ8M55400UOqbgMTDx1mlr+EaEer4VRC6+VJO82IyIfzI9aKdysqN
+	 nLU7R+gHLgkyA==
 Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 1DB2137821AA;
-	Thu, 20 Jun 2024 10:08:05 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 213C6378143B;
+	Thu, 20 Jun 2024 10:08:04 +0000 (UTC)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: jassisinghbrar@gmail.com
 Cc: robh@kernel.org,
@@ -55,17 +55,16 @@ Cc: robh@kernel.org,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH 1/4] mailbox: mtk-cmdq: Stop requiring name for GCE clock
-Date: Thu, 20 Jun 2024 12:07:47 +0200
-Message-ID: <20240620100750.1075790-2-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 0/4] MediaTek CMDQ - drop clock-names and refactor clock probe
+Date: Thu, 20 Jun 2024 12:07:46 +0200
+Message-ID: <20240620100750.1075790-1-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20240620100750.1075790-1-angelogioacchino.delregno@collabora.com>
-References: <20240620100750.1075790-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240620_030808_727972_8B708C82 
-X-CRM114-Status: GOOD (  10.41  )
+X-CRM114-CacheID: sfid-20240620_030808_729185_802691BD 
+X-CRM114-Status: UNSURE (   5.84  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,29 +79,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The Global Command Engine mailbox has only one clock hence
-requiring clock-names is useless.
+All CMDQ Mailboxes have only one GCE clock per hardware instance:
+remove the clock-names requirement and, while at it, also partially
+refactor the clock probe code to improve both readability and its
+flexibility.
 
-Get the first (and only) clock instead, without name checks.
+This was tested on MT8192, MT8195 Chromebooks, MT8395 Radxa NIO 12L
+and on the MT6795 Xperia M5 smartphone.
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/mailbox/mtk-cmdq-mailbox.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+AngeloGioacchino Del Regno (4):
+  mailbox: mtk-cmdq: Stop requiring name for GCE clock
+  mailbox: mtk-cmdq: Move and partially refactor clocks probe
+  mailbox: mtk-cmdq: Dynamically allocate clk_bulk_data structure
+  dt-bindings: mailbox: mediatek,gce-mailbox: Stop requiring clock-names
 
-diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
-index 4aa394e91109..66dbc8e846d8 100644
---- a/drivers/mailbox/mtk-cmdq-mailbox.c
-+++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-@@ -629,7 +629,7 @@ static int cmdq_probe(struct platform_device *pdev)
- 		}
- 	} else {
- 		cmdq->clocks[alias_id].id = clk_name;
--		cmdq->clocks[alias_id].clk = devm_clk_get(&pdev->dev, clk_name);
-+		cmdq->clocks[alias_id].clk = devm_clk_get(&pdev->dev, NULL);
- 		if (IS_ERR(cmdq->clocks[alias_id].clk)) {
- 			return dev_err_probe(dev, PTR_ERR(cmdq->clocks[alias_id].clk),
- 					     "failed to get gce clk\n");
+ .../mailbox/mediatek,gce-mailbox.yaml         | 11 ---
+ drivers/mailbox/mtk-cmdq-mailbox.c            | 87 ++++++++++++-------
+ 2 files changed, 57 insertions(+), 41 deletions(-)
+
 -- 
 2.45.2
 
