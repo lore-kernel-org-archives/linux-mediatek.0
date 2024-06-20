@@ -4,61 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A912C2BA18
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Jun 2024 09:47:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 103D5C2BA18
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Jun 2024 09:48:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=JbS6t0OdeyDit4R19wkIMr1rdbV1YFpFh7032Z/OFdw=; b=Nq1RCyFRlQq5gw9lkwQdu61V4Q
-	2B+w6ho+AAWTPCNn+kCcyTe7D+opdi1xjZ/GaF5aPMMY9McnfsJ2sOab6UnlWK2gpXa1ZT9b+v8/Q
-	amf+c+ewurbI5hBl1TwrUQOcwjJlHFz1witO4vN+y37TaA0CPoVSYxtfHaNa+1D3i1Lh9C2iAilMq
-	WrlTTZnJhVXCH4uqRwdsdkvPtF0TCQINMOV2unOzFh5STkRVdknv7ZdwumEeipxQaeZYKPIz0PJOe
-	XUr/ww/CW3Gxx3ZKR9XL1KjYwBh6ol9C6txRicsRm05Uyquct7MxrdC3koarqz1UR0Xq/oz2BS9mY
-	oE9mVn/g==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7KB2vnbw+59r77dIT1XqZt8Bq4nLOyd8kq/y1e23jiU=; b=BiyHNPehx7Sn74+sPdbRas7/y2
+	PcXt/uww6/cvzUBkxBBJ32f4reM3LGwy4VVbT2h4T11TJP90ra38fjuPJnFt/dM1vH+JiqZGIrCuE
+	rmUfAOSGCz0P5W29FMpVRvVirVLWqHmMsjV65clhzY1blquFrGrSKpjS3OPH83G+jNJtkD7LQD2Y5
+	FXzL5zBa/X5w1HtGyqb/3SJQsxZIm8rl8Tr3sKQBQ8WURjZBUVcbm8mMEeEmg5wfYc9JSXqc7RAYx
+	DohpU+F03/uD/k60fjjbG4MXdjoCIR37xcFj+lAxrIIBfpcNZ/dJraASVHDlvN++5UZgitEG8rrUu
+	lqMk0zoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKEOb-00000004RqX-3IJc;
-	Thu, 20 Jun 2024 09:47:57 +0000
-Received: from mail-oo1-xc2a.google.com ([2607:f8b0:4864:20::c2a])
+	id 1sKEOl-00000004Rw7-2phj;
+	Thu, 20 Jun 2024 09:48:07 +0000
+Received: from mail-pg1-x52c.google.com ([2607:f8b0:4864:20::52c])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKEOY-00000004Rp6-2I4r
+	id 1sKEOb-00000004Rpn-00FW
 	for linux-mediatek@lists.infradead.org;
-	Thu, 20 Jun 2024 09:47:56 +0000
-Received: by mail-oo1-xc2a.google.com with SMTP id 006d021491bc7-5ba33b08550so275719eaf.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 20 Jun 2024 02:47:53 -0700 (PDT)
+	Thu, 20 Jun 2024 09:47:58 +0000
+Received: by mail-pg1-x52c.google.com with SMTP id 41be03b00d2f7-6e4e6230f42so502667a12.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 20 Jun 2024 02:47:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1718876873; x=1719481673; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=JbS6t0OdeyDit4R19wkIMr1rdbV1YFpFh7032Z/OFdw=;
-        b=f8bJWJx+ZGX8fZ05nLwsmmTQ486jHgUo7lz6qOu9xx1hAFIlmt5Pud2JJz052whBdg
-         zdwpFHaaiXamvxpPND1YiwaT+aw/GdEICdiPT2J+ytvdx/0cnQemiTyxsHgUJXkRH0MD
-         6nkBTxsOzYol4vWnzeaHn6lwrT8ovMrmZlM28=
+        d=chromium.org; s=google; t=1718876876; x=1719481676; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=7KB2vnbw+59r77dIT1XqZt8Bq4nLOyd8kq/y1e23jiU=;
+        b=FKb/H/TBQvZ0vCr6kVFelXutxTj7sPclU4lDM1gdCqGu9kBEBcJNtd/b9JCWXqhZi9
+         4sGr5Fj1GdJomO8LJ75kZx3Rum369YW+ufs8XqRKBuJRtIVaiOhPwCRM1u6YNN2vlLmL
+         vyr1PNo+hAkoFMCzNQuwrxMYDt3bTq2zo0Uqs=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1718876873; x=1719481673;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=JbS6t0OdeyDit4R19wkIMr1rdbV1YFpFh7032Z/OFdw=;
-        b=LzD7UmTLW9W8rAo7vfvxJl4jby2zNQoRA1UpjN8cQ1nGGwUFyck5AG47jF1dAMVbgR
-         QRN/TI5ur6kVSBRk4F3Nj1DNAzjpAZCXEcF5v5+Ap/V4CHiUYGpTPGA1k3JYJS0mbsDP
-         KjtwN7S9RrQamuYKUbl17ZPitRkCQINmhyruzXyu+1XB4TEe8l59zDhALbRRgUkDUdqv
-         HVg99b9aY5pxOWrOHqtVYShSoTCI9uIcNSDFxs+drrK+tydYWJaLA7OlWPSNBaIM1D32
-         sgJWnRcLV+yDzjKdTXg3cptuhXLWno3qQ5mzxpLU/DrWy8YwKbF0iV0iFbcVzcZ9kdRm
-         QpLw==
-X-Forwarded-Encrypted: i=1; AJvYcCWzAuqTus2WGxdnx6kxkRG2nGcmd3LMwrhP6rqdDmbbDmfrxX+Vkn0laILuJZcOONrvEuhXRXF3KQa09w+6JB6aHuEjliwFGzttiOZ8Mi0j/++a
-X-Gm-Message-State: AOJu0YwrkMDy1ULIMskK1ONxAlCUcP8edH5znNATazgZc/IJyqC699G0
-	ZCvOiPWt1G2KpHiYZrlBF6fOClh1rU89BHuD3UDSY7jclUSpdH1Du9yqCRpBog==
-X-Google-Smtp-Source: AGHT+IFjs9uCv20/yMoZbU/Ftof/qYHTbGsf6GsGiZo5ajKpwKplyAlUwHWHGLe5nJe1VzJUareDMQ==
-X-Received: by 2002:a05:6358:6f12:b0:19f:6172:54ce with SMTP id e5c5f4694b2df-1a1fd45a713mr577519155d.17.1718876873177;
-        Thu, 20 Jun 2024 02:47:53 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1718876876; x=1719481676;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=7KB2vnbw+59r77dIT1XqZt8Bq4nLOyd8kq/y1e23jiU=;
+        b=OiAB+110kAdxIeF9xpVKeTefoNfuHrUf5m/6MyYQZ9wJ4dkA1lHkCtzkJwiX/zlKA4
+         JspyJ1pYAcWOZQ3Tqmq9O2j2WJbZupMcaCSfRc5d1RnJaB9RbjxT7X3W6S90xLhKqPan
+         rUT8tV/YkIgEHKupVPBOsJ19HAb9burzPGsV/bOzRPxZANmUzYvfYOio8YEy1HA0I91K
+         EWvglCqI//bVLKu0CDhq7N47SfUCDXXNlMRH4YBZMPo41dwrXevjOHFvhVA2g2SEnIGi
+         lhyZ4rOSvxOb1eCrjqj58jOOXrWUqGHGyL9uM5TncXOpxha7kD1f0wgk0AqfOmxeGlrB
+         QQqw==
+X-Forwarded-Encrypted: i=1; AJvYcCWu85ppJRLFNdqqPlDUL66Jp4oUmlHP9HQOoS/qsbU13r/J6w2D56Enxvq26DEVig/OjEeZaI37xKwHO2m4OPxgEB4Hpd6z/c5t0uNyIL5fEQR0
+X-Gm-Message-State: AOJu0YxkGJ9ObTeW43sdgxG4a8p7oK439L19lEpITVUPv6OmgvFVPCvu
+	8wkFzZy4PNXUt1P8SvbmKm8yoFloUvw+nieedF8DPeEcZnYXc1OH9Zl+414JsA==
+X-Google-Smtp-Source: AGHT+IHlxHx3IJjM2Bl6bnv0ofbMIfZvrxY8EfKGaCgMXMCFaU6DcjSHdYJKb67N3HSA7r0ZPxljnw==
+X-Received: by 2002:a17:90a:af8f:b0:2c8:62f:de2c with SMTP id 98e67ed59e1d1-2c8062fdf10mr170000a91.15.1718876875679;
+        Thu, 20 Jun 2024 02:47:55 -0700 (PDT)
 Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:c53a:5326:7f72:759f])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-70dbae52920sm4164469a12.42.2024.06.20.02.47.50
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-70dbae52920sm4164469a12.42.2024.06.20.02.47.53
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 20 Jun 2024 02:47:52 -0700 (PDT)
+        Thu, 20 Jun 2024 02:47:55 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Mark Brown <broonie@kernel.org>,
 	Rob Herring <robh@kernel.org>,
@@ -72,15 +73,17 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH 0/3] arm64: dts: mediatek: Add MT8186 Voltorb Chromebooks
-Date: Thu, 20 Jun 2024 17:47:35 +0800
-Message-ID: <20240620094746.2404753-1-wenst@chromium.org>
+Subject: [PATCH 1/3] dt-bindings: regulator: mt6315: Document MT6319 PMIC
+Date: Thu, 20 Jun 2024 17:47:36 +0800
+Message-ID: <20240620094746.2404753-2-wenst@chromium.org>
 X-Mailer: git-send-email 2.45.2.741.gdbec12cfda-goog
+In-Reply-To: <20240620094746.2404753-1-wenst@chromium.org>
+References: <20240620094746.2404753-1-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240620_024754_655459_03B2504B 
-X-CRM114-Status: GOOD (  15.01  )
+X-CRM114-CacheID: sfid-20240620_024757_191965_BC7CA28A 
+X-CRM114-Status: GOOD (  11.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,46 +98,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi folks,
+The MT6319 is a pin-compatible drop-in replacement for MT6315 with
+slightly better electrical characteristics.
 
-This series adds support for the MT8186 Voltorb Chromebooks. This is yet
-another product based on the Corsola reference design. This particular
-version features a higher end spec-ed SoC, necessitating a beefier
-regulator for the big core cluster.
+It's unclear whether there are any differences, since the downstream
+implementation doesn't describe the MT6319 separately. Neither does the
+implementation check chip IDs, even though those are available.
 
-Patch 1 adds an entry for a new regulator IC. How this differs from
-the previous iteration is not totally clear.
+Add a new compatible for the MT6319 just in case differences are
+discovered later and fall back to the MT6315 compatible.
 
-Patch 2 adds an entry for the Voltorb devices.
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+---
+ .../devicetree/bindings/regulator/mt6315-regulator.yaml     | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
-Patch 3 adds the device trees for the new devices.
-
-
-Please have a look. I expect either all three patches to go through the
-MediaTek tree; or the first can go through the regulator tree, and the
-other two through the MediaTek tree.
-
-
-Thanks
-ChenYu
-
-
-Chen-Yu Tsai (3):
-  dt-bindings: regulator: mt6315: Document MT6319 PMIC
-  dt-bindings: arm: mediatek: Add MT8186 Voltorb Chromebooks
-  arm64: dts: mediatek: Add MT8186 Voltorb Chromebooks
-
- .../devicetree/bindings/arm/mediatek.yaml     |   7 ++
- .../bindings/regulator/mt6315-regulator.yaml  |   6 +-
- arch/arm64/boot/dts/mediatek/Makefile         |   2 +
- .../mt8186-corsola-voltorb-sku589824.dts      |  13 +++
- .../mt8186-corsola-voltorb-sku589825.dts      |  25 +++++
- .../dts/mediatek/mt8186-corsola-voltorb.dtsi  | 103 ++++++++++++++++++
- 6 files changed, 155 insertions(+), 1 deletion(-)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-voltorb-sku589824.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-voltorb-sku589825.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-voltorb.dtsi
-
+diff --git a/Documentation/devicetree/bindings/regulator/mt6315-regulator.yaml b/Documentation/devicetree/bindings/regulator/mt6315-regulator.yaml
+index 6317daf76d1f..cd4aa27218a1 100644
+--- a/Documentation/devicetree/bindings/regulator/mt6315-regulator.yaml
++++ b/Documentation/devicetree/bindings/regulator/mt6315-regulator.yaml
+@@ -16,7 +16,11 @@ description: |
+ 
+ properties:
+   compatible:
+-    const: mediatek,mt6315-regulator
++    oneOf:
++      - items:
++          - const: mediatek,mt6319-regulator
++          - const: mediatek,mt6315-regulator
++      - const: mediatek,mt6315-regulator
+ 
+   reg:
+     maxItems: 1
 -- 
 2.45.2.741.gdbec12cfda-goog
 
