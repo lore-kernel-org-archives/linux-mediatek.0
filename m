@@ -4,113 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEB63C27C4F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Jun 2024 05:06:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66DC8C27C4F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Jun 2024 06:18:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Duz+R7OD5yozyO0xOdsWZmjZsXtc7sydmF+n4fo7yxk=; b=ud9ssb//vl8RmW+UDCmsrWSn9M
-	0baIoJ4maXztnzh81nMsQ9Xa80IAFoNTpphCVuOEdW7PKwhouYJuriqn6NZ3EOQ2XgSSWKsd3CRAn
-	bAJLOX6b2IQbO6nQn72uAnh4qsf9oX8oI78txx0YyIAPB9Jk62BnD5OajSLxCqUApE8hLEbTI3Krq
-	VurNNSFf2gUmwG+Wi3mGdYoYlBZWead3fSy5BR3nuwhfpXiveN1v8LkCCbtihbFUMSt1Zjp8DygSq
-	5iET26yl/jXo8o1oqIBCzCtthj8AcZNlKlE3Btqi1vPPxq5noGWRcQRFmo6H8kTLPetj64bb0Nt4o
-	Uk3/LFGg==;
+	bh=HYqfWWrei0iPzIJrEyTnIBhjsFgGf9hoiPEtzQnSzo4=; b=WRavC256Swv0+owrR9GRNOekVr
+	vCniyGA4Ry6YLuSp5ToZ3OfR+X4mAeGrdnVJSO+y7W39UynrTAnYpbKkfWbr7KRF0uL4reR694PuI
+	BnetuBqpP/xcGv8GKGY7o+ODwyoW4UBJaU7n9Nx7eF//H/ugdRURZbmdnCah6Qil42OBk4Hs5LPAd
+	fMzTZ4S9lT2D0O4O6dbwzeZPEm+qBoRwCIbXQ4n+jmpjmZCkXzXER0SWYH1ubw62/+tPoh0hPcekP
+	Xk00h4loDxQKPOZdcJIr/K36Rv9Vfl9uGRvTWrW3viVSA1alxoclA7DH9FkHDEQLyASlAq0oq9FB/
+	+2B8P2Tg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKWTV-00000007iW2-0qlJ;
-	Fri, 21 Jun 2024 05:06:13 +0000
-Received: from mail-oo1-xc2b.google.com ([2607:f8b0:4864:20::c2b])
+	id 1sKXbI-00000007utA-11pZ;
+	Fri, 21 Jun 2024 06:18:20 +0000
+Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKWTQ-00000007iTi-2s9d;
-	Fri, 21 Jun 2024 05:06:10 +0000
-Received: by mail-oo1-xc2b.google.com with SMTP id 006d021491bc7-5b96a781b63so648645eaf.1;
-        Thu, 20 Jun 2024 22:06:08 -0700 (PDT)
+	id 1sKXb3-00000007ulh-3F5R
+	for linux-mediatek@lists.infradead.org;
+	Fri, 21 Jun 2024 06:18:07 +0000
+Received: by mail-lf1-x12d.google.com with SMTP id 2adb3069b0e04-52cd717ec07so266165e87.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 20 Jun 2024 23:18:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1718946367; x=1719551167; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+        d=linaro.org; s=google; t=1718950683; x=1719555483; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:date:message-id:subject
+         :references:in-reply-to:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=Duz+R7OD5yozyO0xOdsWZmjZsXtc7sydmF+n4fo7yxk=;
-        b=XghAlN3y6anRBtClPLcDBIMASirBHbCBZHd69qgyGh/gnGglq1XEDBUy1kXMepTwAw
-         3me/ChNrg7u2X1wRX4gmLxK6TeQ6ZQIJ0UIHjYoKwF6ykbb48hM+9LRal3gMT/fTDFmD
-         q6NbzUING1LYb1JIWtziDgwz1WSss+ouMAp1OaRMPgnMkmFUzok3aVy7XQmcbabiYrs6
-         xmaBHiUmU1X9R+xrPABOwuGcs3sSBXxYZR+H22UrDXSWsGu6blIgJyraddFLNz4hmlZ8
-         ngTeHQ8kh9ZoGmltUiVso7vXAmd72TiutjSDI2cqA8cmkAoVrmVa8GIRdOWErWAgr2En
-         On/w==
+        bh=HYqfWWrei0iPzIJrEyTnIBhjsFgGf9hoiPEtzQnSzo4=;
+        b=VflJAJTnJpXUehFIynM5SxqNgicIcoSFQs6hDIc5tyr3D4ePoDrGoBwmxWV1HpJ7gs
+         BfwtIKfcVVWa3ZeS0hhhte77wZq4ZKSFqyFJfB0UFPNM3uOzDcwx4xgUooPi/fc48jiI
+         FneNLm96ROStNr1ES2kZcIyZz27v0O5lC8p0InbNT1fKHyaFtifMVvuTFNj0WIbRPkZO
+         /05ulmbATJ7RtzW7+TQ6zbylC3PF3dq32m98NfSwtyjkIFPe6epEsnTC26S5DurgwqxE
+         1NIqMMOW3ncrfxsP1NJB8NcryAJhhbHxn6sY6eHFkLKStGtaMuKTcN+B1swHGo7rpiKR
+         bSFQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1718946367; x=1719551167;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+        d=1e100.net; s=20230601; t=1718950683; x=1719555483;
+        h=content-transfer-encoding:mime-version:date:message-id:subject
+         :references:in-reply-to:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=Duz+R7OD5yozyO0xOdsWZmjZsXtc7sydmF+n4fo7yxk=;
-        b=hEVP2Ra3mw0nDRWqPTmE8H2xIiTRWtXRf2NPoTkHFfcHLXP2nqvIHXIYv7MVWVE8AT
-         nmYrZx63lc6L4XZNLT3EMcmiqg8KcCtFwCISH7OX8lmrz7lda823+OSn1ceTcbIxFWqD
-         4QacLPPFsosGj35q5/Jl3CrvyD1aJVE9tCnNjbNmTu5K9WXxllpAo1R0jn9y2EyNmztd
-         U1zKwUfFPb2+8gSw9O6YTjeYC+6t6SQ7euYC9hedDt5iObT9j9XV/zQN/EPr/GO3Rgyg
-         ScKSMmkJmgKNpFHYpIHKq9NApeKd7mmye+qpWHFAvx5aQxuYwonp+xjEhaMXgUh4s6LH
-         0PNg==
-X-Forwarded-Encrypted: i=1; AJvYcCXuYOrfSLy+x8hm5PTt8bfb7uzVB8b3JG4nJBRUFJRLHtp3acspcAzizc5FmAsYzM9SOJPlw4LiOll5yGa3KUDahJg0RmCuLPu/XxjQCCplyew2/PeG9HkkH00OXWsAbWiPb1nqv9CAgCynz4BpI23ZY/q606hWvX8=
-X-Gm-Message-State: AOJu0YyZgXr+kPA+mG6mEui2O8H1Cc3n7Jdwo8RqSOF01RRVGXifnFfe
-	tCzWH78SSm6JXFoEfeTNkQGpOKJL2JX84Xa4zfOG89sJ71F0+FA3
-X-Google-Smtp-Source: AGHT+IGT9uXfh3BNKu1qNO8/2xY3x6EuWChfPz49EjQAep0tUJhHE+dOOG2sFET4fGBrowHmzjImpA==
-X-Received: by 2002:a05:6870:16:b0:23c:1f34:730 with SMTP id 586e51a60fabf-25c94d7278cmr6774170fac.49.1718946367326;
-        Thu, 20 Jun 2024 22:06:07 -0700 (PDT)
-Received: from apais-devbox.. ([2001:569:766d:6500:fb4e:6cf3:3ec6:9292])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-716c950d71asm371308a12.62.2024.06.20.22.06.06
+        bh=HYqfWWrei0iPzIJrEyTnIBhjsFgGf9hoiPEtzQnSzo4=;
+        b=Kd+pkOJON8uTIQQsLSLp/Es5rQscmSk7vnmX+1pesLQTv3ueEFkehMHmgncTsq/syH
+         qEbo3zHEgjtV8zL7mbNJkj4lq2nMyElII6UOm37kgw5k1K42TIivoTgC9sSGzFLhYNbV
+         p42MjnsafU92FAEqVVROv57yuFPqKRogh0LnmWYlMXwTqmN2FfpDGYN0YqPIaNs8Q3sp
+         zAaPJ3vsw2Tj6vyAaWP/LanhyOhFo8Ei8qF6ZTZamxKH4gOjCqfq0MMQHtqMxnA6Q8ND
+         DSFTwypeOm2PHvKvSIHjcFVg+0ioiIzCo6Sqo9CTDWMjophXzrAX4rmuegAx6pnDt2h1
+         5UZw==
+X-Forwarded-Encrypted: i=1; AJvYcCVE19wJXo2Ub7q6JuvQkL0wQBFi5V9hYm7bQqC1XhQ1wIByeR0wt8x5MvY/ugAK4/ud3+THhRjLxphbZ5KHCp1wVvSl4cxcUDfzgQOxKiwWPQHo
+X-Gm-Message-State: AOJu0YwZBiZgU3xRWxf/hB90Hjy4dmywlEn7OFLWy5PEt4I7S5Z5htBB
+	U/sCQAHtoeX2FoZOTACxiHYKnufj4jIzV//SxFkJ5v0SzkB0in7opCFaRHrp7Lo=
+X-Google-Smtp-Source: AGHT+IHSUvrRscBpYllGrv5HkTVUXqHP3JrGdwPNsMjrWntLYW8YioRdDg4QeGt9fNrzghzXbkF5eQ==
+X-Received: by 2002:a05:6512:2154:b0:52c:8786:8aee with SMTP id 2adb3069b0e04-52ccaaa21b9mr3850160e87.56.1718950683538;
+        Thu, 20 Jun 2024 23:18:03 -0700 (PDT)
+Received: from [192.168.1.195] ([5.133.47.210])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-42481910fc9sm14075635e9.33.2024.06.20.23.18.02
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 20 Jun 2024 22:06:06 -0700 (PDT)
-From: Allen Pais <allen.lkml@gmail.com>
-To: kuba@kernel.org,
-	Felix Fietkau <nbd@nbd.name>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: jes@trained-monkey.org,
-	kda@linux-powerpc.org,
-	cai.huoqing@linux.dev,
-	dougmill@linux.ibm.com,
-	npiggin@gmail.com,
-	christophe.leroy@csgroup.eu,
-	aneesh.kumar@kernel.org,
-	naveen.n.rao@linux.ibm.com,
-	nnac123@linux.ibm.com,
-	tlfalcon@linux.ibm.com,
-	cooldavid@cooldavid.org,
-	marcin.s.wojtas@gmail.com,
-	mlindner@marvell.com,
-	stephen@networkplumber.org,
-	borisp@nvidia.com,
-	bryan.whitehead@microchip.com,
-	UNGLinuxDriver@microchip.com,
-	louis.peens@corigine.com,
-	richardcochran@gmail.com,
-	linux-rdma@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-acenic@sunsite.dk,
-	linux-net-drivers@amd.com,
-	Allen Pais <allen.lkml@gmail.com>,
-	netdev@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH 15/15] net: mtk-wed: Convert tasklet API to new bottom half workqueue mechanism
-Date: Thu, 20 Jun 2024 22:05:25 -0700
-Message-Id: <20240621050525.3720069-16-allen.lkml@gmail.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240621050525.3720069-1-allen.lkml@gmail.com>
-References: <20240621050525.3720069-1-allen.lkml@gmail.com>
+        Thu, 20 Jun 2024 23:18:02 -0700 (PDT)
+From: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ =?utf-8?q?Rafa=C5=82_Mi=C5=82ecki?= <zajec5@gmail.com>
+Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>, 
+ Lala Lin <lala.lin@mediatek.com>, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ =?utf-8?q?Rafa=C5=82_Mi=C5=82ecki?= <rafal@milecki.pl>
+In-Reply-To: <20240613195933.31089-1-zajec5@gmail.com>
+References: <20240613195933.31089-1-zajec5@gmail.com>
+Subject: Re: (subset) [PATCH 1/2] dt-bindings: nvmem: mediatek: efuse: add
+ support for MT7988
+Message-Id: <171895068129.13708.1096581925080498060.b4-ty@linaro.org>
+Date: Fri, 21 Jun 2024 07:18:01 +0100
 MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
+X-Mailer: b4 0.12.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240620_220608_750905_5324D915 
-X-CRM114-Status: GOOD (  12.67  )
+X-CRM114-CacheID: sfid-20240620_231805_852121_3A333B98 
+X-CRM114-Status: UNSURE (   5.34  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,88 +101,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Migrate tasklet APIs to the new bottom half workqueue mechanism. It
-replaces all occurrences of tasklet usage with the appropriate workqueue
-APIs throughout the mtk-wed driver. This transition ensures compatibility
-with the latest design and enhances performance.
 
-Signed-off-by: Allen Pais <allen.lkml@gmail.com>
----
- drivers/net/ethernet/mediatek/mtk_wed_wo.c | 12 ++++++------
- drivers/net/ethernet/mediatek/mtk_wed_wo.h |  3 ++-
- 2 files changed, 8 insertions(+), 7 deletions(-)
+On Thu, 13 Jun 2024 21:59:32 +0200, Rafał Miłecki wrote:
+> Add compatible for MT7988 SoC.
+> 
+> 
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_wed_wo.c b/drivers/net/ethernet/mediatek/mtk_wed_wo.c
-index 7063c78bd35f..acca9ec67fcf 100644
---- a/drivers/net/ethernet/mediatek/mtk_wed_wo.c
-+++ b/drivers/net/ethernet/mediatek/mtk_wed_wo.c
-@@ -71,7 +71,7 @@ static void
- mtk_wed_wo_irq_enable(struct mtk_wed_wo *wo, u32 mask)
- {
- 	mtk_wed_wo_set_isr_mask(wo, 0, mask, false);
--	tasklet_schedule(&wo->mmio.irq_tasklet);
-+	queue_work(system_bh_wq, &wo->mmio.irq_bh_work);
- }
- 
- static void
-@@ -227,14 +227,14 @@ mtk_wed_wo_irq_handler(int irq, void *data)
- 	struct mtk_wed_wo *wo = data;
- 
- 	mtk_wed_wo_set_isr(wo, 0);
--	tasklet_schedule(&wo->mmio.irq_tasklet);
-+	queue_work(system_bh_wq, &wo->mmio.irq_bh_work);
- 
- 	return IRQ_HANDLED;
- }
- 
--static void mtk_wed_wo_irq_tasklet(struct tasklet_struct *t)
-+static void mtk_wed_wo_irq_bh_work(struct work_struct *work)
- {
--	struct mtk_wed_wo *wo = from_tasklet(wo, t, mmio.irq_tasklet);
-+	struct mtk_wed_wo *wo = from_work(wo, work, mmio.irq_bh_work);
- 	u32 intr, mask;
- 
- 	/* disable interrupts */
-@@ -395,7 +395,7 @@ mtk_wed_wo_hardware_init(struct mtk_wed_wo *wo)
- 	wo->mmio.irq = irq_of_parse_and_map(np, 0);
- 	wo->mmio.irq_mask = MTK_WED_WO_ALL_INT_MASK;
- 	spin_lock_init(&wo->mmio.lock);
--	tasklet_setup(&wo->mmio.irq_tasklet, mtk_wed_wo_irq_tasklet);
-+	INIT_WORK(&wo->mmio.irq_bh_work, mtk_wed_wo_irq_bh_work);
- 
- 	ret = devm_request_irq(wo->hw->dev, wo->mmio.irq,
- 			       mtk_wed_wo_irq_handler, IRQF_TRIGGER_HIGH,
-@@ -449,7 +449,7 @@ mtk_wed_wo_hw_deinit(struct mtk_wed_wo *wo)
- 	/* disable interrupts */
- 	mtk_wed_wo_set_isr(wo, 0);
- 
--	tasklet_disable(&wo->mmio.irq_tasklet);
-+	disable_work_sync(&wo->mmio.irq_bh_work);
- 
- 	disable_irq(wo->mmio.irq);
- 	devm_free_irq(wo->hw->dev, wo->mmio.irq, wo);
-diff --git a/drivers/net/ethernet/mediatek/mtk_wed_wo.h b/drivers/net/ethernet/mediatek/mtk_wed_wo.h
-index 87a67fa3868d..50d619fa213a 100644
---- a/drivers/net/ethernet/mediatek/mtk_wed_wo.h
-+++ b/drivers/net/ethernet/mediatek/mtk_wed_wo.h
-@@ -6,6 +6,7 @@
- 
- #include <linux/skbuff.h>
- #include <linux/netdevice.h>
-+#include <linux/workqueue.h>
- 
- struct mtk_wed_hw;
- 
-@@ -247,7 +248,7 @@ struct mtk_wed_wo {
- 		struct regmap *regs;
- 
- 		spinlock_t lock;
--		struct tasklet_struct irq_tasklet;
-+		struct work_struct irq_bh_work;
- 		int irq;
- 		u32 irq_mask;
- 	} mmio;
+Applied, thanks!
+
+[1/2] dt-bindings: nvmem: mediatek: efuse: add support for MT7988
+      commit: 35636e92643ecface9655eefa50370df77f73e17
+
+Best regards,
 -- 
-2.34.1
+Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
 
 
