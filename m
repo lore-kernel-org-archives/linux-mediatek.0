@@ -4,143 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E880C27C4F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Jun 2024 15:01:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BDE0C2BB85
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Jun 2024 15:10:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eGlFN7nlxbUXBg3c7X1S+q3Q+PHtbyntGbbiW5UXmC4=; b=Kxyn89eZ+LBYvhcDon+ZXnTBRk
-	VR9aNC9aynyxrmNNVybdqTi51p13eiQilfD14OVmaLgqJrAjLfjk1Rgqm4AphNrH14Frf3808Z5HF
-	xzeuxsVZn2KcIOFrCnqeEpk2eYkYtsFFdfJliVEkWBDTI9xUfcK7JKSIBaWoeqih5aJ154dX7nr/l
-	qijtfbRxpJxqZR9MGXBHu+JCcLiUSHHjMfM51oIuD+BrtRQzVI3pvdaHQxljuVmKAVwDF3RlYFv8J
-	pf8OJ0B/EmLOSA3HzYLfd1P2/LZG3iiXdKMRUx5X1lkIaOGbaGlQH1sv5TYSx8/7617NAoKq3vDM5
-	AogJUEFA==;
+	bh=ZQqlQw/uK0Fx2j4TLa09boR+rscMZtWiagS3Uu/7LQY=; b=KaQovzdpZkbzI21fCNbiAHjz/5
+	SKi/81qcioMx9BIfKUmiYyha4t1iUlp+LlskF13+h7oUwQbCLKuewPs+XYpfFtiSYBOQKaMQZ7kN8
+	xcf6ifCeM9CEaiV77gNsR/guvyR+HujJPcNWucpZOhgwp34CUFn9MzVcDJe4lfcK6Ovo6r0kTXUZ0
+	9i8AC4AdfivZbG/vWJm6z4YN5rqwCFyn4AuevVNwCtvrXXcnEO/x3thH/ZAdj+G2o7VacE6aiwBqO
+	9oYxHzbcBDwG5el62zaWQj3jVXuYrygpxBDiMvowivan84h0kzcWkw2MkMDRlyd856phXSQr/SgeF
+	OoYTm1CQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKflJ-00000009e00-2But;
-	Fri, 21 Jun 2024 15:01:13 +0000
-Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
+	id 1sKfuA-00000009g8Z-34dZ;
+	Fri, 21 Jun 2024 15:10:22 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKfkz-00000009dsT-1WKP
-	for linux-mediatek@lists.infradead.org;
-	Fri, 21 Jun 2024 15:01:07 +0000
-Received: by mail-lf1-x12f.google.com with SMTP id 2adb3069b0e04-52cc14815c3so2226719e87.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 21 Jun 2024 08:00:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1718982051; x=1719586851; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
-         :from:references:cc:to:subject:user-agent:mime-version:date
-         :message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=eGlFN7nlxbUXBg3c7X1S+q3Q+PHtbyntGbbiW5UXmC4=;
-        b=REEySfBTLu/jXiHk5qAO5tHZSANk/x8wFmBOGWZNSfzdc/F0oWZNDhdZcO/w3XmClm
-         bCnEkFCpfv0j/Wdend5wDQ2C+GNcwGKrZuX4WiFTFrSLbmCtv8XP+KyQYteV07xTiKJC
-         AwjKljyVy7AtKtWAsQ5m/lSmeNewOzURxOPhdXEVwA2Q/eGmLl8uV8hgnvYXoj5JvAQm
-         LbJ2gR/kznb7t7uXHQmdACNpWJ/LpIkjvpBBmpFX+xq0K7EBD5orot+vPils7Ho3scHy
-         P7mlEHQOSZXpJu1uhjAlMkqhDmtVfrqbTs14RTN+pahV5bT7KDaBQCWIFrd+iAf1pLc2
-         gRQg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1718982051; x=1719586851;
-        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
-         :from:references:cc:to:subject:user-agent:mime-version:date
-         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=eGlFN7nlxbUXBg3c7X1S+q3Q+PHtbyntGbbiW5UXmC4=;
-        b=nKviGD+MOIthvHvHIx8yoxUeHDqp3ziGhGx8/GkEuJD0AhaZwfDySp4ctMHixQ1Wu6
-         Texh1LF9mAd/pmq3E0BAUag3eVLcJ7tMdgsA+1NIPAmRpO+BQTyP1pDWsGffoj6gmPZ+
-         cWJ9uoAk35YBphYMd+RPJXr70KyVRJVP2jQq5qp1NQoDvAbxYykOIgxCb6SjUWPz3ILj
-         Uiixa9a4MEcBsaK61aHLynf2R3VCtHV03OH59gTJcshU0x16fWVWRWQALw/HOjiswWu/
-         hwB5kxfrMee/6d0iX5LgH9lZG+mqylrwHzMZspmag63XmPEm+Bpal+u06HA7Ky4dSENT
-         VI0w==
-X-Forwarded-Encrypted: i=1; AJvYcCUwEu2qAv+f38k6uUycWyqNJZ13NAx8EJF+GSnB+5sEKTlEwKiKaggjk6PQGMfC05A2iVymEnf5Y/q8Q7R8t+Rx3rY9CstjHQO73FdRSqXDExJN
-X-Gm-Message-State: AOJu0YyN/ra3wnKB+wO0nUSX5nXv/9coocAtpuSuiyblQHWB/n6/w5M1
-	lZX+Qv/7B2unICAsSXkU804jH0PetZDzAEno/nt6Nx2yA5X3cM0Ui+B5XwwYyc0=
-X-Google-Smtp-Source: AGHT+IEoOrvU821swGSjxdzf8p74w1HuPp4DjRYiSzze658L9jgqK8dDrRvaQhK4PVhPEXpg1IK0Yw==
-X-Received: by 2002:ac2:4c0c:0:b0:52c:8158:3d7f with SMTP id 2adb3069b0e04-52ccaa33ef4mr4956844e87.28.1718982051109;
-        Fri, 21 Jun 2024 08:00:51 -0700 (PDT)
-Received: from [192.168.1.20] ([178.197.219.137])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-52cd63bcf14sm222984e87.83.2024.06.21.08.00.48
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 21 Jun 2024 08:00:50 -0700 (PDT)
-Message-ID: <cd190d35-1658-43d8-9606-5e73257bbf3a@linaro.org>
-Date: Fri, 21 Jun 2024 17:00:47 +0200
+	id 1sKfu5-00000009g7E-0o5M;
+	Fri, 21 Jun 2024 15:10:18 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 677F7626A9;
+	Fri, 21 Jun 2024 15:10:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 16215C3277B;
+	Fri, 21 Jun 2024 15:10:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1718982615;
+	bh=iQEwxLn6QIG/MkdhhWiNcsV9/fo3VpAg6CAxSi6yeTw=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=r53N5aYq9bMISOM9Z8jqS6gNw8mqhwaOtJUwiUiWPg7/Gc0tYEK89Z0mFayJAsRm0
+	 QxToqdrG+j1YBgz2BwI7/ellh2Rp8y7o6d2Co8uHTfq3QurDtWcvBYNR3wdjJjhtSK
+	 9SuFj+vSWRviLCFl0yI2yqiQTSAn0m+NpyeRVeWdiCNz294m82+ERyflg4v7ZC61UP
+	 Bv38hwCXemtGG4joqifpJRGXKroK8EcXxU1xTIQKuzubHAwA3N1+zEXj6yF8f5cSBR
+	 RrO548PhjkHhd3gKIIGxBcLO4aSoU7D9/oBgIOb0s3Te4OSDsCQLRnq98Q6IjxP8lk
+	 fNQLWBbiUe3Ow==
+Received: by mail-pl1-f169.google.com with SMTP id d9443c01a7336-1f47f07aceaso17166635ad.0;
+        Fri, 21 Jun 2024 08:10:15 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCU9KgEd+jC4nSEIJuC//s0YvxmllLruzFHRcw4GRgoXNXurxZaG9oa7P+OLranseI4ytj4CiFJB/3ik5a3O71oCJD+BctU8aGLf2anHp0MZzTEayMHFW5YXkxDH+G3M7Sm4VGd132auLPrJTbX7gdhZmGtZDXWZ7hU=
+X-Gm-Message-State: AOJu0YyrIWiJC/7H+o8rqSm9rDIFLEtxYPvg217he6XcK1QxJuOC4GKe
+	2WWTszM6gN4YtXEjyP0+VWFCKN0CeRDV6g5y8S9faoL5D5ze1aHtbYyZN8Kqvs3BJ8o9ySoKYbc
+	gEoGFrNjpipouu1m7x0UJ7GICiw==
+X-Google-Smtp-Source: AGHT+IF2PuJp1a6SMbW/SdQNvApziWiiOJt+0KEve4Q/7ExVqLow2RhqAS5x8tGBSiZlziTGDOzHeXpmGi8gvfXWw+Q=
+X-Received: by 2002:a17:90a:d42:b0:2c8:655:87eb with SMTP id
+ 98e67ed59e1d1-2c806558914mr4058671a91.9.1718982614665; Fri, 21 Jun 2024
+ 08:10:14 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 03/16] dt-bindings: mfd: mediatek: Add codec property
- for MT6357 PMIC
-To: Alexandre Mergnat <amergnat@baylibre.com>,
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Lee Jones <lee@kernel.org>, Flora Fu <flora.fu@mediatek.com>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
- Sumit Semwal <sumit.semwal@linaro.org>,
- =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>,
- Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>
-Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org
-References: <20240226-audio-i350-v6-0-f754ec1a7634@baylibre.com>
- <20240226-audio-i350-v6-3-f754ec1a7634@baylibre.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Content-Language: en-US
-Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
- 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
- D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20240226-audio-i350-v6-3-f754ec1a7634@baylibre.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+References: <20231023-display-support-v4-0-ed82eb168fb1@baylibre.com> <20231023-display-support-v4-6-ed82eb168fb1@baylibre.com>
+In-Reply-To: <20231023-display-support-v4-6-ed82eb168fb1@baylibre.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Fri, 21 Jun 2024 23:10:20 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_-sk1aoXdG=Wq_fMAtCxqA=VC+GVOMURhaDadXnBqm_kQ@mail.gmail.com>
+Message-ID: <CAAOTY_-sk1aoXdG=Wq_fMAtCxqA=VC+GVOMURhaDadXnBqm_kQ@mail.gmail.com>
+Subject: Re: [PATCH v4 06/15] dt-bindings: display: mediatek: dpi: add
+ power-domains property
+To: amergnat@baylibre.com
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Jitao Shi <jitao.shi@mediatek.com>, CK Hu <ck.hu@mediatek.com>, 
+	Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, 
+	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, Fabien Parent <fparent@baylibre.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240621_080053_809885_4AE8D65F 
-X-CRM114-Status: GOOD (  15.91  )
+X-CRM114-CacheID: sfid-20240621_081017_378971_728F07D7 
+X-CRM114-Status: GOOD (  15.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -155,39 +91,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 19/06/2024 16:46, Alexandre Mergnat wrote:
-> Add the audio codec sub-device. This sub-device is used to set the
-> optional voltage values according to the hardware.
-> The properties are:
->   - Setup of microphone bias voltage.
->   - Setup of the speaker pin pull-down.
-> 
-> Also, add the audio power supply property which is dedicated for
-> the audio codec sub-device.
-> 
+Hi, Alexandre:
+
+<amergnat@baylibre.com> =E6=96=BC 2024=E5=B9=B45=E6=9C=8823=E6=97=A5 =E9=80=
+=B1=E5=9B=9B =E4=B8=8B=E5=8D=888:49=E5=AF=AB=E9=81=93=EF=BC=9A
+>
+> From: Fabien Parent <fparent@baylibre.com>
+>
+> DPI is part of the display / multimedia block in MediaTek SoCs, and
+> always have a power-domain (at least in the upstream device-trees).
+> Add the power-domains property to the binding documentation.
+
+I've tired to apply this patch but has conflict. Please rebase this
+patch onto latest mainline kernel.
+Other binding patches in this series is applied to mediatek-drm-next [1].
+
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/=
+log/?h=3Dmediatek-drm-next
+
+Regards,
+Chun-Kuang.
+
+>
+> Fixes: 9273cf7d3942 ("dt-bindings: display: mediatek: convert the dpi bin=
+dings to yaml")
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
+ora.com>
+> Acked-by: Rob Herring (Arm) <robh@kernel.org>
 > Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 > ---
->  .../devicetree/bindings/mfd/mediatek,mt6357.yaml   | 33 ++++++++++++++++++++++
->  1 file changed, 33 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml b/Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml
-> index 37423c2e0fdf..d95307393e75 100644
-> --- a/Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml
-> +++ b/Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml
-> @@ -37,6 +37,32 @@ properties:
->    "#interrupt-cells":
->      const: 2
->  
-> +  vaud28-supply:
-> +    description: 2.8 volt supply phandle for the audio codec
+>  Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml | 5=
+ +++++
+>  1 file changed, 5 insertions(+)
+>
+> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,=
+dpi.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.=
+yaml
+> index 6607cb1c6e0a..169d054d81ff 100644
+> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yam=
+l
+> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yam=
+l
+> @@ -80,6 +80,9 @@ properties:
+>        - port@0
+>        - port@1
+>
+> +  power-domains:
+> +    maxItems: 1
 > +
-> +  audio-codec:
-> +    type: object
-
-Still not much improved. You do not have any resources there, so these
-should go to the parent node.
-
-Best regards,
-Krzysztof
-
+>  required:
+>    - compatible
+>    - reg
+> @@ -99,11 +102,13 @@ examples:
+>    - |
+>      #include <dt-bindings/interrupt-controller/arm-gic.h>
+>      #include <dt-bindings/clock/mt8173-clk.h>
+> +    #include <dt-bindings/power/mt8173-power.h>
+>
+>      dpi: dpi@1401d000 {
+>          compatible =3D "mediatek,mt8173-dpi";
+>          reg =3D <0x1401d000 0x1000>;
+>          interrupts =3D <GIC_SPI 194 IRQ_TYPE_LEVEL_LOW>;
+> +        power-domains =3D <&spm MT8173_POWER_DOMAIN_MM>;
+>          clocks =3D <&mmsys CLK_MM_DPI_PIXEL>,
+>               <&mmsys CLK_MM_DPI_ENGINE>,
+>               <&apmixedsys CLK_APMIXED_TVDPLL>;
+>
+> --
+> 2.25.1
+>
 
