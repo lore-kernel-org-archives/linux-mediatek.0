@@ -4,76 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32582C27C4F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Jun 2024 12:44:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A786EC2BA1A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Jun 2024 12:44:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SgnGd0H8XNXO4QTpQq/hjcAGl8+vyyeL6r2nX4n2X04=; b=ra6HiVfe+GTCoPSWBxtTKxPMuu
-	RsTOCdFQolSzQHSZoL9UOOIVf5wGz0BD8pEvUilbKFEZAd2tIsdTW4gdR+N0mlLUgj4J3Tq9/+RXn
-	/FY7FbMJTJOYN2LqITCiGoZPs59wuYGEYGSHP3M4GW0L0+dpPzgH1G7o/O+4Z9Zd2tJs04blieQn8
-	ets5gMWKqzRpEfAw81d6ifsn7J2TbgycmYIpWwS9swrWguvZLGT8ggbPTsfQfEOz3lOMY7qtmTZk4
-	neGDMTZtXdIgAqUbV2Ej2q4FCyb+OMynTkx+83tpxVCyIFJ5p20c2mw5wtHJIHI/WBKjInNQpm8TU
-	CXjLYgPQ==;
+	bh=ASE2ff45mfI6yNO/aB24qN2kLFL28P2tFrAH7hx3tcw=; b=iWp5rOwHeDP8Qe53R8DhgCNIj7
+	wkxKLJJAHxilsiCVD4PJlVpf3qa0FpgyugGAOQcNdmWsscAPIolwA/tYn6odUFaAJam2Oy6THim/R
+	umdWxE6+VGRIJ4kvelMkICp4HZuyDCISzTdcGa15PakSoOOgrEvuepbbPjOSva3CvkLwRSnS64Vat
+	VKbQAyWoht9VibhVjgChvZud5zuLo6BacuxNOQXEXdx0NfLdB73nT5J0tOvpw3IJ0wD24q7i80jff
+	RCXbto9b4cl2vBYhUMS+1+IXJptQqlloh6P+c8ALWoGQsAoaFisy4+9giAEN5lFmcA5xWGCw+Vzdd
+	DlQOuQtw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKdd5-00000009CWp-1zlj;
-	Fri, 21 Jun 2024 12:44:35 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sKddO-00000009Cgk-06nP;
+	Fri, 21 Jun 2024 12:44:54 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKdcz-00000009CTM-3hfw;
-	Fri, 21 Jun 2024 12:44:31 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 8D73162612;
-	Fri, 21 Jun 2024 12:44:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4569EC2BBFC;
-	Fri, 21 Jun 2024 12:44:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1718973868;
-	bh=bwqf13fJbLJEoJ55Fq8cVIZa/qvXiPcZ4TMFf7szj6I=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=l8IKh8rPJ6LhZPucaRVWP/8fVx7Xxn6rv2vU7HIlfwyi9Q96L78zxrZ3zhmjtudB0
-	 J3tju9CVfyLjhlAOJWMauyHtWsdLjK3txtaalshO/dngDUizd1XzDP6LMIUbZBXavB
-	 +8KE0WLENQ6jEdfgeJYwijdzrlgFvpOTR2HFnkBrAc0rdcKAXPoTkZLV4bV/cTusbH
-	 OBtLDjkQPYR3wotR+Wn7W5zr040SNYXGr1ZQRN8QKzEvEtgTV8xggmtD7my/kpv1qT
-	 wLn6blkh/cY091zWPbqahLn59Luh3YNHrKn/lEiz3fKB1cxWABQ/Sb62GAvK/7RrdJ
-	 tIK9yeZk6HlDg==
-Date: Fri, 21 Jun 2024 13:44:20 +0100
-From: Mark Brown <broonie@kernel.org>
-To: amergnat@baylibre.com
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
+	id 1sKddG-00000009Ccz-1OlF;
+	Fri, 21 Jun 2024 12:44:47 +0000
+X-UUID: 06e870fe2fcc11ef9daba96ee3f3cc8c-20240621
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=ASE2ff45mfI6yNO/aB24qN2kLFL28P2tFrAH7hx3tcw=;
+	b=GKuzOmtFHcRkK8rg4uPH66Y29y5isi6sjgKFdjDRdy3xnjHvwfgDB5JgkIw3pqaY3Gn60XDXMlpUuU9QMLKXSS2yQHHHqLOzR8+XjY2Q41dJ5+6JF89Hd+Arog7S7Lp/Hknhhdc9k/CEkEbZSGnH0loQNTvTNjDkrvMjUNfd3zo=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.39,REQID:665ba48f-1f71-4778-9871-17a6445a7854,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:393d96e,CLOUDID:65dedf88-8d4f-477b-89d2-1e3bdbef96d1,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 06e870fe2fcc11ef9daba96ee3f3cc8c-20240621
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <skylake.huang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 961594178; Fri, 21 Jun 2024 05:44:40 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Fri, 21 Jun 2024 05:24:37 -0700
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 21 Jun 2024 20:24:37 +0800
+From: Sky Huang <SkyLake.Huang@mediatek.com>
+To: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>, "David S. Miller"
+	<davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub Kicinski
+	<kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Daniel Golle
+	<daniel@makrotopia.org>, Qingfang Deng <dqfext@gmail.com>, SkyLake Huang
+	<SkyLake.Huang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Lee Jones <lee@kernel.org>, Flora Fu <flora.fu@mediatek.com>,
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
-	Sumit Semwal <sumit.semwal@linaro.org>,
-	Christian =?iso-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>,
-	Catalin Marinas <catalin.marinas@arm.com>,
-	Will Deacon <will@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
-	dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org,
-	Nicolas Belin <nbelin@baylibre.com>
-Subject: Re: [PATCH v6 12/16] ASoC: codecs: add MT6357 support
-Message-ID: <1ca27c79-a83a-42a7-9e9b-766da0064c73@sirena.org.uk>
-References: <20240226-audio-i350-v6-0-f754ec1a7634@baylibre.com>
- <20240226-audio-i350-v6-12-f754ec1a7634@baylibre.com>
+	<linux-kernel@vger.kernel.org>, <netdev@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+CC: Steven Liu <Steven.Liu@mediatek.com>, SkyLake.Huang
+	<skylake.huang@mediatek.com>
+Subject: [PATCH net-next v8 06/13] net: phy: mediatek: Hook LED helper functions in mtk-ge.c
+Date: Fri, 21 Jun 2024 20:20:38 +0800
+Message-ID: <20240621122045.30732-7-SkyLake.Huang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20240621122045.30732-1-SkyLake.Huang@mediatek.com>
+References: <20240621122045.30732-1-SkyLake.Huang@mediatek.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="Y31DJCgxhlUXFcNQ"
-Content-Disposition: inline
-In-Reply-To: <20240226-audio-i350-v6-12-f754ec1a7634@baylibre.com>
-X-Cookie: Androphobia:
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240621_054430_028204_F75F8AB4 
-X-CRM114-Status: GOOD (  16.26  )
+X-CRM114-CacheID: sfid-20240621_054446_403947_C0B64870 
+X-CRM114-Status: GOOD (  16.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,86 +91,156 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: "SkyLake.Huang" <skylake.huang@mediatek.com>
 
---Y31DJCgxhlUXFcNQ
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+We have mtk-phy-lib.c now so that we can use LED helper functions in
+mtk-ge.c(mt7531 part). It also means that mt7531/mt7981/mt7988's
+Giga ethernet phys share almost the same HW LED controller design.
+Also, add probe function for mt7531 so that it can initialize LED state.
 
-On Wed, Jun 19, 2024 at 04:46:48PM +0200, amergnat@baylibre.com wrote:
+Signed-off-by: SkyLake.Huang <skylake.huang@mediatek.com>
+---
+ drivers/net/phy/mediatek/mtk-ge.c | 105 ++++++++++++++++++++++++++++++
+ 1 file changed, 105 insertions(+)
 
-> +	/* gain default values*/
-> +	regmap_update_bits(priv->regmap, MT6357_AUDENC_ANA_CON0, MT6357_AUDPREAMPLGAIN_MASK,
-> +			   UL_GAIN_0DB << MT6357_AUDPREAMPLGAIN_SFT);
-> +	regmap_update_bits(priv->regmap, MT6357_AUDENC_ANA_CON1, MT6357_AUDPREAMPRGAIN_MASK,
-> +			   UL_GAIN_0DB << MT6357_AUDPREAMPRGAIN_SFT);
-> +
-> +	regmap_update_bits(priv->regmap, MT6357_ZCD_CON1,
-> +			   MT6357_AUD_LOL_GAIN_MASK |
-> +			   MT6357_AUD_LOR_GAIN_MASK,
-> +			   DL_GAIN_0DB << MT6357_AUD_LOL_GAIN_SFT |
-> +			   DL_GAIN_0DB << MT6357_AUD_LOR_GAIN_SFT);
-> +
-> +	regmap_update_bits(priv->regmap, MT6357_ZCD_CON2,
-> +			   MT6357_AUD_HPL_GAIN_MASK |
-> +			   MT6357_AUD_HPR_GAIN_MASK,
-> +			   DL_GAIN_0DB << MT6357_AUD_HPL_GAIN_SFT |
-> +			   DL_GAIN_0DB << MT6357_AUD_HPR_GAIN_SFT);
-> +
-> +	regmap_update_bits(priv->regmap, MT6357_ZCD_CON3,
-> +			   MT6357_AUD_HS_GAIN_MASK, DL_GAIN_0DB);
+diff --git a/drivers/net/phy/mediatek/mtk-ge.c b/drivers/net/phy/mediatek/mtk-ge.c
+index 9122899..c338bba 100644
+--- a/drivers/net/phy/mediatek/mtk-ge.c
++++ b/drivers/net/phy/mediatek/mtk-ge.c
+@@ -13,6 +13,10 @@
+ #define MTK_PHY_PAGE_EXTENDED_2A30	0x2a30
+ #define MTK_PHY_PAGE_EXTENDED_52B5	0x52b5
+ 
++struct mtk_gephy_priv {
++	unsigned long		led_state;
++};
++
+ static void mtk_gephy_config_init(struct phy_device *phydev)
+ {
+ 	/* Enable HW auto downshift */
+@@ -57,6 +61,101 @@ static int mt7531_phy_config_init(struct phy_device *phydev)
+ 	return 0;
+ }
+ 
++static int mt7531_phy_probe(struct phy_device *phydev)
++{
++	struct mtk_gephy_priv *priv;
++
++	priv = devm_kzalloc(&phydev->mdio.dev, sizeof(struct mtk_gephy_priv),
++			    GFP_KERNEL);
++	if (!priv)
++		return -ENOMEM;
++
++	phydev->priv = priv;
++
++	mtk_phy_leds_state_init(phydev);
++
++	return 0;
++}
++
++static int mt753x_phy_led_blink_set(struct phy_device *phydev, u8 index,
++				    unsigned long *delay_on,
++				    unsigned long *delay_off)
++{
++	struct mtk_gephy_priv *priv = phydev->priv;
++	bool blinking = false;
++	int err = 0;
++
++	if (index > 1)
++		return -EINVAL;
++
++	if (delay_on && delay_off && (*delay_on > 0) && (*delay_off > 0)) {
++		blinking = true;
++		*delay_on = 50;
++		*delay_off = 50;
++	}
++
++	err = mtk_phy_hw_led_blink_set(phydev, index, &priv->led_state,
++				       blinking);
++	if (err)
++		return err;
++
++	return mtk_phy_hw_led_on_set(phydev, index, &priv->led_state,
++				     MTK_GPHY_LED_ON_MASK, false);
++}
++
++static int mt753x_phy_led_brightness_set(struct phy_device *phydev,
++					 u8 index, enum led_brightness value)
++{
++	struct mtk_gephy_priv *priv = phydev->priv;
++	int err;
++
++	err = mtk_phy_hw_led_blink_set(phydev, index, &priv->led_state, false);
++	if (err)
++		return err;
++
++	return mtk_phy_hw_led_on_set(phydev, index, &priv->led_state,
++				     MTK_GPHY_LED_ON_MASK, (value != LED_OFF));
++}
++
++static const unsigned long supported_triggers =
++	(BIT(TRIGGER_NETDEV_FULL_DUPLEX) |
++	 BIT(TRIGGER_NETDEV_HALF_DUPLEX) |
++	 BIT(TRIGGER_NETDEV_LINK)        |
++	 BIT(TRIGGER_NETDEV_LINK_10)     |
++	 BIT(TRIGGER_NETDEV_LINK_100)    |
++	 BIT(TRIGGER_NETDEV_LINK_1000)   |
++	 BIT(TRIGGER_NETDEV_RX)          |
++	 BIT(TRIGGER_NETDEV_TX));
++
++static int mt753x_phy_led_hw_is_supported(struct phy_device *phydev, u8 index,
++					  unsigned long rules)
++{
++	return mtk_phy_led_hw_is_supported(phydev, index, rules,
++					   supported_triggers);
++}
++
++static int mt753x_phy_led_hw_control_get(struct phy_device *phydev, u8 index,
++					 unsigned long *rules)
++{
++	struct mtk_gephy_priv *priv = phydev->priv;
++
++	return mtk_phy_led_hw_ctrl_get(phydev, index, rules, &priv->led_state,
++				       MTK_GPHY_LED_ON_SET,
++				       MTK_GPHY_LED_RX_BLINK_SET,
++				       MTK_GPHY_LED_TX_BLINK_SET);
++};
++
++static int mt753x_phy_led_hw_control_set(struct phy_device *phydev, u8 index,
++					 unsigned long rules)
++{
++	struct mtk_gephy_priv *priv = phydev->priv;
++
++	return mtk_phy_led_hw_ctrl_set(phydev, index, rules, &priv->led_state,
++				       MTK_GPHY_LED_ON_SET,
++				       MTK_GPHY_LED_RX_BLINK_SET,
++				       MTK_GPHY_LED_TX_BLINK_SET);
++};
++
+ static struct phy_driver mtk_gephy_driver[] = {
+ 	{
+ 		PHY_ID_MATCH_EXACT(0x03a29412),
+@@ -75,6 +174,7 @@ static struct phy_driver mtk_gephy_driver[] = {
+ 	{
+ 		PHY_ID_MATCH_EXACT(0x03a29441),
+ 		.name		= "MediaTek MT7531 PHY",
++		.probe		= mt7531_phy_probe,
+ 		.config_init	= mt7531_phy_config_init,
+ 		/* Interrupts are handled by the switch, not the PHY
+ 		 * itself.
+@@ -85,6 +185,11 @@ static struct phy_driver mtk_gephy_driver[] = {
+ 		.resume		= genphy_resume,
+ 		.read_page	= mtk_phy_read_page,
+ 		.write_page	= mtk_phy_write_page,
++		.led_blink_set	= mt753x_phy_led_blink_set,
++		.led_brightness_set = mt753x_phy_led_brightness_set,
++		.led_hw_is_supported = mt753x_phy_led_hw_is_supported,
++		.led_hw_control_set = mt753x_phy_led_hw_control_set,
++		.led_hw_control_get = mt753x_phy_led_hw_control_get,
+ 	},
+ };
+ 
+-- 
+2.34.1
 
-We generally leave everything at chip defaults, why is this different?
-
-> +static int mt6357_codec_probe(struct snd_soc_component *codec)
-> +{
-> +	struct mt6357_priv *priv = snd_soc_component_get_drvdata(codec);
-> +
-> +	mt6357_codec_init(priv);
-> +	return 0;
-> +}
-
-Why not just inline mt6357_codec_init() into the one user?
-
-> +static unsigned int mt6357_read(struct snd_soc_component *codec, unsigned int reg)
-> +{
-> +	struct mt6357_priv *priv = snd_soc_component_get_drvdata(codec);
-> +	unsigned int val;
-> +
-> +	regmap_read(priv->regmap, reg, &val);
-> +	return val;
-> +}
-> +
-> +static int mt6357_write(struct snd_soc_component *codec, unsigned int reg, unsigned int value)
-> +{
-> +	struct mt6357_priv *priv = snd_soc_component_get_drvdata(codec);
-> +
-> +	return regmap_update_bits(priv->regmap, reg, 0xffff, value);
-> +}
-
-Why open code these, the core has standard adaptors for regmap?
-
-> +static const u32 micbias_values[MT6357_MICBIAS_ARRAY_SIZE] = {
-> +	1700000, 1800000, 1900000, 2000000,
-> +	2100000, 2500000, 2600000, 2700000
-> +};
-
-Just use ARRAY_SIZE() for the size then the number can't be out of sync.
-
-
---Y31DJCgxhlUXFcNQ
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmZ1daMACgkQJNaLcl1U
-h9DFewf+M/CBa2qN5RnVF8Zc5QWTvxC4SKpFwRma8NGXYRkdIuRXOhTpxRG85BYY
-w0ndJAb81OyrS1X3S8EpFu0cTQdBB7po6aGY3/n1tnY0JIkQ820QI+XDGlduderG
-aPJ1LFil592z/y4CEYhDWzOsFWLLyJKyRI490d6BuyRNdljzSLS1QmJ2HrpnPI/S
-D63ThavR4gijP3ePCZ6Bajond76rmR5CDUo3/LtUBAliMvLcIpwdKqcEjjdpMm7G
-BuKS/CUvpRgJ5D+hyi9xFWRSBajwhFVLHJ1R/jtOLU/DQiYH/x78dMej8JApEp6X
-Gohk7DuuhbfZflRiEj17qKTMYvMWvA==
-=P5mN
------END PGP SIGNATURE-----
-
---Y31DJCgxhlUXFcNQ--
 
