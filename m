@@ -4,85 +4,121 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A0CFC27C53
-	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Jun 2024 10:44:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A036EC27C53
+	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Jun 2024 11:24:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0fzUt45MrMqbhQMl8Gn07LjHhsuv8Ddxhoxq1w6fqRU=; b=fppISQ/ArQhTpwvXQUb3cLIM+l
-	Eyy/Iu20zyCYgbsiL/SpGHW7OXlVyu/5L9RmnmKviFnCNzbhvHwxRk6J04PKkqvwLuM3VZHpAK6aP
-	Se5z8pmsTB+AEYXdXnpYS45PUSwj3nZtgLFNAaoTI9vZNTQ1Sw92w8jB5Iuum3trCiPAHUmHxdOjM
-	dbgr1MyxL5+C8mX8WzDcweJ5xVpQl82C04Uprpd3aaWp1ZALA5+O87/3WkqxXSqifYUme+XVXGdyj
-	aKjJy0wrHhj/j/6GqtyBhEsUiM3IWERuiCUCET7LzOn1KUpPy0Jy3xvL81p+qYgZ08md2NfEyFkxb
-	07TVecQg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=+1Ou3XU/r2FCL/064EuYVlzcKrl8jpJs3XlGf4f1DTg=; b=JO5Ooh/FRc390fSnvopyvgnH23
+	j+tbU9avjZe/+jOfHPFwrwlBR/nFgR+0z8c4o3iCyeTAiyXhbpS/LWhFTLma6Mn2ikNDndfisc5TD
+	kwaNGcOXR+OacEnOPYBX0xcpihKjAF7+KE3cLOz9BeAjYvqt1QeXZFQDcC4gQYXTnErqC1Ek60UPH
+	dvTET/+IEI6bel/gT5YaJECDe90nUfreW67VErthhIlYZZ80Fr60WOhrL6O3x4eliMwuqK0KHWXru
+	ApN/xfTY68FFPox7wOV4x/QBO3QkVunovTJDHpGTSbol7IBenHg5DY+OW/6c4IbEsME1wG9H186OF
+	u3SnC/gw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKyE1-0000000BtCS-0Af5;
-	Sat, 22 Jun 2024 10:44:05 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1sKyrQ-0000000BxjN-0Rke;
+	Sat, 22 Jun 2024 11:24:48 +0000
+Received: from mail-tycjpn01olkn20800.outbound.protection.outlook.com ([2a01:111:f403:2814::800] helo=JPN01-TYC-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sKyDw-0000000BtBS-3Rmg;
-	Sat, 22 Jun 2024 10:44:02 +0000
-X-UUID: 525b37ca308411efb2966dae1f787272-20240622
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=0fzUt45MrMqbhQMl8Gn07LjHhsuv8Ddxhoxq1w6fqRU=;
-	b=QRazcajbTPBD1x4FVDPKYyi2DAL8zdfqbR747nGgSAIHn5DWCoH0WiuV1lESwrVX74Ol/irj+jPS7vRcMO5hZegT5A7tdJCLXTBHcNHQ9gKQli7ElyH7moygevxKrTFsJbiUv0dnaWj+xgd1uYEag0KPH1qwel64CXMKCiPeqEA=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.39,REQID:7b8f9b8d-f138-4b18-93d5-98a06e0aa18d,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:393d96e,CLOUDID:2575e344-4544-4d06-b2b2-d7e12813c598,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 525b37ca308411efb2966dae1f787272-20240622
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <irui.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1243073773; Sat, 22 Jun 2024 03:43:54 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Sat, 22 Jun 2024 18:23:50 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Sat, 22 Jun 2024 18:23:49 +0800
-From: Irui Wang <irui.wang@mediatek.com>
-To: <linux-firmware@kernel.org>
-CC: <linux-mediatek@lists.infradead.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-media@vger.kernel.org>,
-	<irui.wang@mediatek.com>, <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH] linux-firmware: mediatek: Update MT8173 VPU firmware to v1.2.0
-Date: Sat, 22 Jun 2024 18:23:47 +0800
-Message-ID: <20240622102347.7004-2-irui.wang@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20240622102347.7004-1-irui.wang@mediatek.com>
-References: <20240622102347.7004-1-irui.wang@mediatek.com>
-MIME-Version: 1.0
+	id 1sKyrK-0000000BxfK-0CM7;
+	Sat, 22 Jun 2024 11:24:43 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=SNtgPP6sDotfjJ8fLOuy2dnEc1lBdJgqCCOs2/zKKrREe21PVQwQdMuLttlKRG8x/V2jB2IMAq8/qZ5YgUP/nnYoU4vDSUYzF8tmdBgboR8FX0+07/DqFAVzSC43EEneu/rTt7C32BHlix2etf3jvUV/Sp8hQPsgCZG7Z8vrlXweqPetyc6Fx9ezSvAxzHh7cJgbc2JLbmJJNqY1XR6v5MAqt+aPAqvnKJBgTl5WxFSTjUK4hXEMOdVQ+zPzfBh8u7yMHk/e+lqm+lwsTuzg1OOddP5X+84H5f7KyEo9fOMySDKk6ad/kqfyc0Y3FZHl7VLBiqPOaf/7AESwPs2gig==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=+1Ou3XU/r2FCL/064EuYVlzcKrl8jpJs3XlGf4f1DTg=;
+ b=ixpKD2IdEDGXcv9ozCaiaMM6h6rNKNcwDHXiCjfj7Y4SzwbQLlqin+oBQmwhhwxtj6oCoOGrF2pdl55J9m0raVvP01Gcp5nrvXtay9/oQn/C128ticzD+rYpy82Ghd7nLnobWYAFfr6a4iDETCpbwRnrMnT/nfMXO6kLw0/38Q4SSS0npwN1UuT0lmXR/hb/2No8A5Svro4n/fto97Unyd9CLfCWwMx9i+RfpxvCuIw9srprICGSVPyHfqvYpa8sd6/fEkVrzG0Lv2WRlGKs5J4WofLvghVA4myRK+43onbacZonx+GcQ8DINJKHcwdDKA0KD2L8ym1+F2W/DDEvxA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=outlook.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=+1Ou3XU/r2FCL/064EuYVlzcKrl8jpJs3XlGf4f1DTg=;
+ b=G7cpXO/nagEk79AqmbUVhEnT0OBIaToHf+pjwRcpDHRbW70+AL+Aq+w8i0GinGKAZWIQM+0TBd5QV2p2gyTh+sUzXrbHb07m6ksrnzSkkHq5TgbQU9giFZsYfnA9AkRTqEiyMn5IC/jN2ZfVe6NBht9LwK0MgN/tfNub/DtsdayVgZ5PepZjor0WCF6T4vI3AoI6r3jvTywTavADh2s1bi2dpD/7pejkGb0+cKH8zwKPSOpROlXCxcwwVKgnvn4y2E5MguHU3dad4j1NjPEpRU2OKa2X4Inpk1KBcCFwQmVwUTPUfEhx/wfRUSAd4Z2fH5+1HVI6tiHsZomjgyngbw==
+Received: from TY3P286MB2611.JPNP286.PROD.OUTLOOK.COM (2603:1096:400:23e::10)
+ by TYWP286MB2732.JPNP286.PROD.OUTLOOK.COM (2603:1096:400:24f::14) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7698.21; Sat, 22 Jun
+ 2024 11:24:22 +0000
+Received: from TY3P286MB2611.JPNP286.PROD.OUTLOOK.COM
+ ([fe80::85b8:3d49:3d3e:2b3]) by TY3P286MB2611.JPNP286.PROD.OUTLOOK.COM
+ ([fe80::85b8:3d49:3d3e:2b3%5]) with mapi id 15.20.7698.020; Sat, 22 Jun 2024
+ 11:24:22 +0000
+From: Shengyu Qu <wiagn233@outlook.com>
+To: nbd@nbd.name,
+	sean.wang@mediatek.com,
+	Mark-MC.Lee@mediatek.com,
+	lorenzo@kernel.org,
+	davem@davemloft.net,
+	edumazet@google.com,
+	kuba@kernel.org,
+	pabeni@redhat.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Cc: Shengyu Qu <wiagn233@outlook.com>,
+	Elad Yifee <eladwf@gmail.com>
+Subject: [PATCH RFC v1] net: ethernet: mtk_ppe: Change PPE entries number to 32K
+Date: Sat, 22 Jun 2024 19:23:35 +0800
+Message-ID: <TY3P286MB2611CC17BC0A189DB15620EA98CA2@TY3P286MB2611.JPNP286.PROD.OUTLOOK.COM>
+X-Mailer: git-send-email 2.34.1
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--1.669000-8.000000
-X-TMASE-MatchedRID: wYKjk3ae4OLuHXE92Wk6HBn0UD4GU5IqSjyMfjCRfaPfUZT83lbkEDtJ
-	rqfEN3+5Z71U+LGak4oDsZVQkxRZovWzx4I556JgL9hNDj2bBwd9LQinZ4QefJOK2Na/r7MIF70
-	JBot7Y8/3FLeZXNZS4CiM3WUt6LtFp1ZPf4GFkIzfTc81a+kOdGBbFccaCtlC3vTPUohQJLlQOh
-	VbxuDcqo0sb82d9qK0E5gwvIyfLggxWfhuF2AQwQBKCPb31CFrHP4+GiOUtS56/Rg9M3zrxAGqr
-	7/5oYKxS7Rtx98AtcQ=
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--1.669000-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 6B481A3084A40AF9988749B39C7AA47F348243FDB4EEF4E2C507B6CD4BF03BE62000:8
-X-MTK: N
+X-TMN: [jqsQlCcneTcWQQbAMU0D17XP0S32gX8/]
+X-ClientProxiedBy: SGAP274CA0001.SGPP274.PROD.OUTLOOK.COM (2603:1096:4:b6::13)
+ To TY3P286MB2611.JPNP286.PROD.OUTLOOK.COM (2603:1096:400:23e::10)
+X-Microsoft-Original-Message-ID: <20240622112335.11582-1-wiagn233@outlook.com>
+MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: TY3P286MB2611:EE_|TYWP286MB2732:EE_
+X-MS-Office365-Filtering-Correlation-Id: c5a09f81-49d5-4107-4061-08dc92addd31
+X-Microsoft-Antispam: BCL:0;ARA:14566002|461199025|3412199022|440099025|1710799023;
+X-Microsoft-Antispam-Message-Info: z2ZidqDgfbnMKDg9rVByfWA5bR4EJN5BDQ3xliZCdhP2WdkZHfhWVHoRK8eDkcKgunrQgBmBXuymuC1DXtto7dwzoxYAzls5G2YTf1uG7PEAGq6ZZtHjDaBsV0MshJSdPGOK8XHZNDF/WLa/Hen4UV7oqfpqTpA1SYF6Fgug6IzM/uhkNztxP310pgTrXvOZgPQ/ZRKhvE6q9b9lA72GSW4ImPY8hVpBONmfapMqG7THA34Z5yrPxs1kqkfJrgAxosCdNgZ26fTuDSuz0gzUCpbKjmKXjeTEP+FadNS1NUlJs7krNESrovRpan0keDdRcGaOswyQE/fztux2rTpZ0rjMvUl4kiRpYPintuMvNKH6pmCyzNDKzSydrg35NO86oXOZzcU+roZVuiM5yiEQJMsIRZaRAb3oriakKq8GliBRWNavoFAmkipXTIddFJVDKMBV/FceAVXNxAt0H3/zPmI9j1aLPVACrzHTcEoeLUvmHn70BTV8sftkDeDvjpcfDpFJ8NDwbG47RwG1y8VXPI+K9/DAwiAJ8hC15eKlyK4I/8BujXnIBu4du+N3/w4RvIg7zGTpXF2/Ax9OUBzczgBSbzgeDsRX5nHfKAZUmIg=
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?HLthdH5EwZLSqYFRJmeLW8r76+hpZSAz31VNU39ZlC0FbGJQpPApYjOaIhC5?=
+ =?us-ascii?Q?NzCUrFDzlal3C1aZGgp4LnpgxK0syeWz9pLU2V+5kjns2lXhPjDeY+Tth/5X?=
+ =?us-ascii?Q?bmi9Y7CrmMlDnyhicSk0pyiM4UZ4j2MNnkgQzBZSdoOvTwtmawHCwxNFlvCz?=
+ =?us-ascii?Q?hMqwiO5cG/u1MdfOrvqCmrpV1lUPwef62oezZtE5ITWmy+VatlknC/jnY0ML?=
+ =?us-ascii?Q?AwHTPPT8M8ptKQHClCaEcCmg+It10f7Xqfx9tCuF9/5t9D38qDSALnNVRiHG?=
+ =?us-ascii?Q?oLkFgEWztogqDXeV5ISqa6BjJbtd/gvXaFBFTTr5QDW5ROPGhx/pwZXl8EWe?=
+ =?us-ascii?Q?efT6C7kUrlV/5jy9YPtHIqhfRoenCEeDDoTQ/2bqNYVti2XNyeGHdqyh6U8q?=
+ =?us-ascii?Q?3DcWkzGKdlVFIqdyGlJgexgGjtKSoJPgSflhFv3KXumWHslTuE7yABT3FJ1D?=
+ =?us-ascii?Q?I6zJ0rvyJgrK/pNkWNp1SzGCilfJUoZT2foySP59FIoCupjowu9X3kR2K+EF?=
+ =?us-ascii?Q?4rSSrLabsWTVibVi4ephuH5JT3W07nUesZZCOF+2agAgi9LPwl0yudWmEWGw?=
+ =?us-ascii?Q?uvVsB9sxp4bq8iZvYUa1gN0eBwVALm0wKJUqSkKGvn0dCNZUDeg5WbAdtzTk?=
+ =?us-ascii?Q?PQN016Ffvi0k/9iHsYiguILmEoAiYoxb+f7IWHAxAEnBbowuA6ZMjzlFLa3h?=
+ =?us-ascii?Q?kRmIHM/+kA/dMh1BnhJ7jcb8ItsLsoJW3ulGANbJ1xReRlvpgU3E1pHDRreq?=
+ =?us-ascii?Q?oDGydtQr/ubO3TamDyxUFLYqNUu9s/G++pT4BGf2PGAYA+xTIiRND+aIwH+W?=
+ =?us-ascii?Q?rfeujsVKWdFrOoagU9U+b+ad4F6h34txe1M9zyT9rxs/n2ZpakZb+PH+Vjnl?=
+ =?us-ascii?Q?gyZkTWShuETxAHOA+FY30+2laP7+t5o0MMdiDsx0S7RcFTnUg2vYeNfwgLlq?=
+ =?us-ascii?Q?7oWpcBIN3ksMHxJfUXn4kgFrKdVwhz6JVNTXG0/iUoGzlFdTDnw2INIPMqkT?=
+ =?us-ascii?Q?Lc+DehzLkc8T9rkEUcjvIyp5MhMm8CRxJHNI+g9BSqje3lepCWmaiCeoHsIk?=
+ =?us-ascii?Q?WWoN6ol1az9ps7GN0mV0Ss2Fs8FLQMshJOlejn+I2nJ8jaoAQsmNEndXNV4B?=
+ =?us-ascii?Q?A9qPKTRjhzfibq7i0N1vNlSaYekWZO9mR+r0iq+K1wvgo4iArgzLkCq6eGC6?=
+ =?us-ascii?Q?xjfEeEg1FyzNkVbtqA0DORmwUZQAhdcae7W46tUzV24ukOISwwpTeBDNfeM?=
+ =?us-ascii?Q?=3D?=
+X-OriginatorOrg: outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: c5a09f81-49d5-4107-4061-08dc92addd31
+X-MS-Exchange-CrossTenant-AuthSource: TY3P286MB2611.JPNP286.PROD.OUTLOOK.COM
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Jun 2024 11:24:22.1290
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYWP286MB2732
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240622_034400_988410_5D770730 
-X-CRM114-Status: UNSURE (   8.90  )
+X-CRM114-CacheID: sfid-20240622_042442_094546_8F02B90F 
+X-CRM114-Status: UNSURE (   9.95  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -98,68 +134,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-[h264 decoder]
-check if the h264 decoder instance allocation is successful before use.
+MT7981,7986 and 7988 all supports 32768 PPE entries, but only set to
+8192 entries in driver. So incrase max entries to 12768 instead.
 
-Release Version: 1.2.0
-
-Signed-off-by: Irui Wang <irui.wang@mediatek.com>
+Signed-off-by: Elad Yifee <eladwf@gmail.com>
+Signed-off-by: Shengyu Qu <wiagn233@outlook.com>
 ---
- mediatek/mt8173/vpu_d.bin | Bin 2977184 -> 2977184 bytes
- mediatek/mt8173/vpu_p.bin | Bin 131380 -> 131380 bytes
- 2 files changed, 0 insertions(+), 0 deletions(-)
+This patch is set to RFC because I cannot find any documentation for
+earlier devices like MT7621 that describes their max entries, and need
+more information or testing to find out whether this patch would work on
+those devices.
+---
+ drivers/net/ethernet/mediatek/mtk_ppe.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/mediatek/mt8173/vpu_d.bin b/mediatek/mt8173/vpu_d.bin
-index a9e832a1db1908a1b91da72cf64746d56283c4c9..20382f3f148c3db18e4184692620f6edb819053c 100644
-GIT binary patch
-delta 200
-zcmWN=w+R9P002PVH|Lyl&WIa)Z72Lh7Ovq4HsUZY;~m`V_X%FU?@@R?UmkJvjHAGW
-zp-EGw&6qW3-hxF-maSN|X5EHOTej`kwP)XfLr0FCICbXSg-chi-MDq<-h;<)9Gz~*
-EKf@6|9RL6T
-
-delta 200
-zcmWN=w+R9P002PVH|Lyl&R}WzwVm)2S-6HH*oecpjCXLa-zRwazDMEZe0{{xGmZii
-zh9*s!He=SDc?%XTS+-);nspmCZP~VC*PeX`4jnmm;?$XQ7cO17cH`Eadk-GJadf&J
-E|H$7yB>(^b
-
-diff --git a/mediatek/mt8173/vpu_p.bin b/mediatek/mt8173/vpu_p.bin
-index d753236ec0791d8ba1ba16d01d0dacc64e6189b0..e5bbb7337f72df7c9647258aea47097da8a289c1 100644
-GIT binary patch
-delta 858
-zcmYL{eQZln7{<@jb=@hu?(VcxHtVb!BqS4p5KBdoQXgZ<_`_I4&G!}(5?`m?SbdW_
-zyNUQ`IJt(<Wwje5WJD?=F(26$5jLY)f@ETnu`j0xf4zB6&hxzQ?>Q$LqR|kI+;pSA
-zA>y8pDN38?%pKG>Z0?g`S4O1~=G$6(>B>BP>Iy5Zy&b$3Q&096nHJgAcz+&B)KLR#
-z5LC+twoJ0cc^7TvNBCuai!)~@uk?X9vs22B`KpJA+{*0|aD*#1)jT-GL}hi_U<oSK
-zbAz5kvzVj8-WrMV_MW(Vm_IO+<N!oguGC2&ah*9IcEveJ&TD3~(t_(To>5xV*r799
-z6K~=9_dI&3y0@;SZjdp>N;^0qN?FL4Jknx>r|<fhY9=yiTr8QUxWc(ad1a;+Lgawg
-zB{k_ujTXY3s(;Aq?cgk$LWYwz_i+DA{i46B+v@L~bbbkuH`R@nOr%`TZ7b4Cb(0X_
-z$$_lL1J3L+(!n>@W~3ghU8uJVW2E8f&;}rC<N^21uxZ`N@WG?aw&1SP1Bv?c^m%%L
-z{+lhLSyIraFhzRFKL|MCnm}e+I)zJ!W>B0Q*|SH_$U#}VZG|5AD>GUs3e1RT6D4d%
-z#Hf+53^Y?@%bbc?`#b`9|2kv5j7}3g22DqKlE~cHXUBUJyjrmXOTdh)4y+YIjgCPj
-zmH&89qk0S~fM(5+g$079I168ZLc^bpIcDtD!nr8NdhKT}#-i77xbVn|e&g+Aq_3)B
-zc!zGSoneE}dxJP2%pU~db2NYBfx-l3B|pnc3O$zJv{cqyA>6=j?L`Q4MM<kbD|Q=Q
-z75ECQHeMgbd=aRYU4`YscSjX69Eml*bA>YJOHO1Ei2flL!Ck1rPH{IijHzOHei(}s
-z!4yc$`k!u17*4TMV;G<CM!R?vKg5^|$It}4F^W%MsYx7PKZR$a>_3edY=-v?z9fx{
-oW=fqrCjMd%Kkf(VoB!P1ZDG^vb!7d0xRupdm&mxG8o_P902Cu8NB{r;
-
-delta 823
-zcmYLHTS!z<6g_Lajd!v;<F#>`%$!n&6bi-?3Mw1P9#d9Yf(Sh@YkJ$ApZqDfj)qhA
-zl52A%{800BlcWsIOBR$x_#=h+F%nUlW<n2&j3#__rlh_Wd$adid#!WY{d~KhZ@uHh
-zr?yt-k_8O<-B&tM)OKXtg7_|5ERj9O8m`~W($aHHe8c^+Tcygyi2}n<t1>d-f~d@!
-zEJU^9n>?DvjnGj(M1!=6-lMW(h*o$&97)mAc~8wWv4m*600gPXDcsaDL)fgWm?}bz
-za&^kRf4OWgj}Nti42%)W)6r%&Xss1*g2;|;IzkVvB#Uf^O?)>kYANU#)Vk;?CG(+d
-zb!)v;7WwAN<~Q=7)9(=_6F+M%A<=rEz4-kcj#x;?7QwizIN(**O&6|-A#!_64oG88
-z$Z5(+*RE~#eMR$!G@cMkpntwFNb@wGc1YuyE}oxB?3r{V^~OjfOFP)m_IkP)Xwu!l
-zBMw~92oGH979$>r!w~o!mzJgFX#lZ^^{Ooz<Dw)AeRP;cO#Ep}YBG-$wzQGQ#ks?!
-znr#uJ0c)=2omtaIc;s=YS62x*fqMOhfbHNDSQxTH98)LEaQ&<F3=4(~aOw6q_@Y>v
-zdR08$8IYlt*s&Fo-f71kKvL}qsNl_iIl_8V0?L8MYHA`jFf%2I_zYz0yOXe*!(p{H
-z89wByvs17Tqk3uzo|*7T|FRTuyQ=GBgEHP?Kpl`#%qX(UaE9?eDTBxU_&fFHM~qg`
-zYFd=<HvTajHmfOq+{OX*r5|e<#Fit31Nvw=z5$!{S7))FMXDxMVh7_bsf5iQx%3AW
-z!?L4~5(@}e{gjH5T33maY<5ln=}bH`fK6i9EO;YY{{s#N;9xg(1n?0(YU4TlVls8-
-z(FOGAdoN&{fwfyM;RS=!m(dMQ&%T1sQHz@v2t%}6lO1EUihYpr^}WuoMmgiIhQyh-
-P+gXEsk(k?RP<H$`@2?=S
-
+diff --git a/drivers/net/ethernet/mediatek/mtk_ppe.h b/drivers/net/ethernet/mediatek/mtk_ppe.h
+index 691806bca372..6db85d897fa9 100644
+--- a/drivers/net/ethernet/mediatek/mtk_ppe.h
++++ b/drivers/net/ethernet/mediatek/mtk_ppe.h
+@@ -8,7 +8,7 @@
+ #include <linux/bitfield.h>
+ #include <linux/rhashtable.h>
+ 
+-#define MTK_PPE_ENTRIES_SHIFT		3
++#define MTK_PPE_ENTRIES_SHIFT		5
+ #define MTK_PPE_ENTRIES			(1024 << MTK_PPE_ENTRIES_SHIFT)
+ #define MTK_PPE_HASH_MASK		(MTK_PPE_ENTRIES - 1)
+ #define MTK_PPE_WAIT_TIMEOUT_US		1000000
 -- 
-2.25.1
+2.34.1
 
 
