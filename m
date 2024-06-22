@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 244ADC27C53
-	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Jun 2024 17:20:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57502C27C53
+	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Jun 2024 17:30:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YXD2wMwEUuYlPl09QSsdSMQVJ6NNgeICzcUR3ZE6Znk=; b=A2a8Zk4XYrgdo8mVQ+kRFb/bx6
-	pwfKmmR/g01+LoyiA6KWipnAqRvFWHnaLbZLp39PXyP9t+Dg1LEyUB5Y4dqF3IwufC/jv8ro74IOB
-	5oUuYOpSEqEX2viv13GYKFhkkvJisgHjGsd4dEFj2kfUfiMqrJl0qlMr2raIAQmHBLnQiTYrBMadj
-	v0kXo/Ami3+RZYrq/cIGwS7X6UsOoT6CT3eKL354FN7FZQPBBUrSA3FM78QPoRlhgojGB8nQxnOXv
-	EnAh/vh3OJmnjTu10pql8L0XicG/OaOW5GaN7fuaA57+zB2afxudxQ+KHITwCsNkgnscNIAG6UXQf
-	dSWOM7vg==;
+	bh=ZK35UKRjoOKYFhurJCkNTHut1SmtzsCztmANaZj1AbM=; b=XFELmAV+xanAGtvJQ5VtiwKTp5
+	voHIofSP5Loc0B7qub/WfSxTjeJVhqoDJYeVGar8DwrxtIqL9BO+MO7SbeGDZagr7J6bjk60DZZnn
+	ixsm0OR2KI7LFBDnW5wus2mooEf1qftI/tZVOGyQXzKkNsCqmOiIxL5HeMQagBe8J8LrusfrGtQBA
+	3bxuigHuC69nfcSzZ7Ynw/w+nWua4O1TrSsl0f+B88mWffrVVOK3dGrgRKmdwowOufSihPvSDFGMa
+	MVaFL7PM5fpF++ac10GB6aI9yjjdq5qHkwSI+EIt5YMpaeCJKClSrJD6TJtxDb1OKkn/lTCClKgQM
+	8PqrjYjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sL4Q3-0000000CUkf-2UXt;
-	Sat, 22 Jun 2024 17:20:55 +0000
+	id 1sL4Yy-0000000CVeS-2vZo;
+	Sat, 22 Jun 2024 17:30:08 +0000
 Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sL4Py-0000000CUjz-2npi;
-	Sat, 22 Jun 2024 17:20:52 +0000
+	id 1sL4Yu-0000000CVdJ-1GO9;
+	Sat, 22 Jun 2024 17:30:05 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
 	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
 	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
 	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=YXD2wMwEUuYlPl09QSsdSMQVJ6NNgeICzcUR3ZE6Znk=; b=XH+6xX5HohM87kQ/r0OTytDmu8
-	h1v24hAOQOLEw7EvBUtApLavbNrQzHfJx8ECRm2VM4c/5kgL/uNghhiSxWk+2zfev2DlVTO18BSlF
-	8YpNF2cAOdqqCkg5iJPUBT/qjRGGetgz8iTrQH3ARuORB4Bd7OnL3aakf5woyARhR24Q=;
+	bh=ZK35UKRjoOKYFhurJCkNTHut1SmtzsCztmANaZj1AbM=; b=wrAds5SADLPr0Os1vmzBTGmoOi
+	FxMvcYrCrTyie1niDYeLmFq1ZQs9kmr1NaiMt4PfQPUzvqv5EuGB3fLPPGfdr+aRUyuC7ghH5gWCd
+	tXRhQD7YqIaO9hrQnjJ14fiZmW+9hPdTw+eng3HC4H4GRe68cRpJ44XXX4QsueO8WosQ=;
 Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
 	(envelope-from <andrew@lunn.ch>)
-	id 1sL4Pj-000jyr-7v; Sat, 22 Jun 2024 19:20:35 +0200
-Date: Sat, 22 Jun 2024 19:20:35 +0200
+	id 1sL4Yb-000k1P-BW; Sat, 22 Jun 2024 19:29:45 +0200
+Date: Sat, 22 Jun 2024 19:29:45 +0200
 From: Andrew Lunn <andrew@lunn.ch>
 To: Sky Huang <SkyLake.Huang@mediatek.com>
 Cc: Heiner Kallweit <hkallweit1@gmail.com>,
@@ -53,19 +53,18 @@ Cc: Heiner Kallweit <hkallweit1@gmail.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	Steven Liu <Steven.Liu@mediatek.com>
-Subject: Re: [PATCH net-next v8 05/13] net: phy: mediatek: Integrate
- read/write page helper functions
-Message-ID: <f361e137-ef94-4e27-bbee-1669c150cab6@lunn.ch>
+Subject: Re: [PATCH net-next v8 06/13] net: phy: mediatek: Hook LED helper
+ functions in mtk-ge.c
+Message-ID: <e1ed191f-7c70-4c34-ad1f-40aaae18582b@lunn.ch>
 References: <20240621122045.30732-1-SkyLake.Huang@mediatek.com>
- <20240621122045.30732-6-SkyLake.Huang@mediatek.com>
+ <20240621122045.30732-7-SkyLake.Huang@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240621122045.30732-6-SkyLake.Huang@mediatek.com>
+In-Reply-To: <20240621122045.30732-7-SkyLake.Huang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240622_102050_827050_80CCA974 
-X-CRM114-Status: UNSURE (   7.21  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240622_103004_364659_2E9DFB2D 
+X-CRM114-Status: GOOD (  12.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,15 +79,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jun 21, 2024 at 08:20:37PM +0800, Sky Huang wrote:
-> From: "SkyLake.Huang" <skylake.huang@mediatek.com>
-> 
-> This patch integrates read/write page helper functions as MTK phy lib.
-> They are basically the same in mtk-ge.c & mtk-ge-soc.c.
-> 
-> Signed-off-by: SkyLake.Huang <skylake.huang@mediatek.com>
+> +static int mt753x_phy_led_blink_set(struct phy_device *phydev, u8 index,
+> +				    unsigned long *delay_on,
+> +				    unsigned long *delay_off)
+> +{
+> +	struct mtk_gephy_priv *priv = phydev->priv;
+> +	bool blinking = false;
+> +	int err = 0;
+> +
+> +	if (index > 1)
+> +		return -EINVAL;
+> +
 
-Reviewed-by: Andrew Lunn <andrew@lunn.ch>
+It looks like this test could be moved into the common code. It seems
+like all variants have a single LED.
+
+> +	if (delay_on && delay_off && (*delay_on > 0) && (*delay_off > 0)) {
+> +		blinking = true;
+> +		*delay_on = 50;
+> +		*delay_off = 50;
+> +	}
+
+Do the different hardware variants have different blink speeds? If
+not, maybe also move this into the common code. Otherwise maybe add a
+comment in the commit message explaining the differences between the
+hardware variants.
 
     Andrew
+
+---
+pw-bot: cr
 
