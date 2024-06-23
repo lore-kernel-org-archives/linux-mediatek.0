@@ -4,67 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EE35C27C4F
-	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Jun 2024 09:31:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30661C2BBCA
+	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Jun 2024 13:44:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qkArihAEJ4b4rR8xWKbFhl0UPZ8wwhhP00om3WZbZ0g=; b=OsuJmVGD86aEIU6c8dWlkZuyL3
-	DzAupw+Wp44Nsl9i3GP3RgGZxaFbP5ZXRpMs6LuY+YE97+lUbHhVeD7dhtMQIkMlJOLx2/f3nq1b5
-	Ur+A8I2ukRHAoFDjHK1m82V2F/3BPTiEPIZkKGsv2lX9CkYFaeXhHXllcDnpeYVgoyyIilatMQKSS
-	nmC7mhKflSkinMjnS8kTXj9/nu4sW/AurgugCygG+U4olNWU/pKLrs73tpHmwn/FV01pCo+DcaNTA
-	YFXthkXrHzmXSvm/Ds0Jj4AZNoMj7GmhYgvV9+t++qphWD0i8BOab34riCoaM8Z9m42PIkXd1RHNy
-	7MwEz0Pg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=7lTTD8KPV543PLRJ1YfZReWkqcQFgefvm1JO7l/TpBw=; b=vYRlHqhjh8ZtYm
+	L1k1NZLsh8Vc5Bc7jzPUyP51RG6dZ1o13/cLc16RhF8d+XF1pCvhE+TlysMJGi6btgPsLBbQb2y+K
+	+XqHrjBGmu3TaR8tLk5VGuy4xvbu3QNWkxZ6xl46/P2INoKXTHLhLLpCbnWL8xHd4489z6VIzsrtD
+	pUECnp6Q9MyZx1oVafpAc6pYheNticxl5wtnY/y9FXAtR6fmd3EgFZ99p0162aEPKpvCvrEHuJGpf
+	6C/p0ryK1Gu/jY29EaVn3H7qLe+pSw9b4a1SrS4yrFYX0vHmElu63w3jR9ViyD/oLQKr4dfVkDBLH
+	Z48cdudMpKXHluZLcIpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLJZb-0000000DhoZ-1SXR;
-	Sun, 23 Jun 2024 09:31:47 +0000
+	id 1sLNWU-0000000E5KU-02Fy;
+	Sun, 23 Jun 2024 13:44:50 +0000
 Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLJZW-0000000DhmO-0Eo2;
-	Sun, 23 Jun 2024 09:31:43 +0000
+	id 1sLNWJ-0000000E5CT-0kAt;
+	Sun, 23 Jun 2024 13:44:41 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 4395ACE0025;
-	Sun, 23 Jun 2024 09:31:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 144BAC2BD10;
-	Sun, 23 Jun 2024 09:31:35 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 77B59CE0EB3;
+	Sun, 23 Jun 2024 13:44:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C383BC4AF0A;
+	Sun, 23 Jun 2024 13:44:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1719135096;
-	bh=mmkFqQCWNWhI9vMGLTThsVmNtKKLibTwrxANXk3fnLs=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=gSk0Jcf0ZmSdEdzC9y2jzm4UfWnBwEVmUJA1s9qbCCGCpaHX62uNp9LcAN1Empo3w
-	 2h3Zy6S1Fvv4OJftNEBmG7kvQb1OmcIiyJDNi874ISwu0rmLhtQnY3CzME0TY9ik8p
-	 wMZpwejzkWvDCxsATVljcrKzaoyg44Z3cP67EV596U4en/Vxt/caop8qMiH4pwTPTx
-	 XQ/1WJgzokRw0FnqecQwAutSwfmCNGSlz+cBq9pF82vNAEqBrokcwXG+tGRNGMSBLY
-	 g54QTHtZf3xRBNT+o+cLOmUjbfRouMfu6bACDgTV5zV5BrVH/Jq1dxFj45pexVELJq
-	 gN6DV0kxmP5jw==
-Date: Sun, 23 Jun 2024 11:31:32 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Conor Dooley <conor@kernel.org>
-Cc: linux-pci@vger.kernel.org, ryder.lee@mediatek.com,
-	lpieralisi@kernel.org, kw@linux.com, robh@kernel.org,
-	bhelgaas@google.com, linux-mediatek@lists.infradead.org,
-	lorenzo.bianconi83@gmail.com, linux-arm-kernel@lists.infradead.org,
-	krzysztof.kozlowski+dt@linaro.org, devicetree@vger.kernel.org,
-	nbd@nbd.name, dd@embedd.com, upstream@airoha.com,
-	angelogioacchino.delregno@collabora.com
-Subject: Re: [PATCH 1/4] dt-bindings: PCI: mediatek-gen3: add support for
- Airoha EN7581
-Message-ID: <ZnfrdF8Q7kRUudq1@lore-desk>
-References: <cover.1718980864.git.lorenzo@kernel.org>
- <a215d6d8a91fccdbd1a28dd3262a3e5db1b728fd.1718980864.git.lorenzo@kernel.org>
- <20240622-ripple-skylight-cdf172afde61@spud>
+	s=k20201202; t=1719150275;
+	bh=1iEt7pWGYS2hyN5GpFzmy5TaSS/4n7EjJ6M5ocC9fBM=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=ERvrcfIBKr2hjPW6yvLt1ujHozicSc7NQRJn2fMaHK1EmtGaR49Euwh+nFpXNnP0k
+	 7nSfGpwO4bu01BPwW+RYOApXpoYJ9q8OJu/P+GZ49WOGeBCet7xGsNS9LpXrXQl+nK
+	 bbkiCxgjtHvqaBoM5/TICsgBZGu3Rsb0AaXLv88cJ8VrBHik4TsGmCBYwJAjpjud/m
+	 G1javHZUXHcKkxJPrkSCiYUwZPOfzYPjjCG0l+Iy+B9Nhi3+QBWGZ0OGO1/oEZHnb6
+	 9SPl7JOwm805gU+ZRWs59y5tonBXzsB+0NbAoL1ar9RwpDWq7pObtQdELt/gnNPhRC
+	 jYfmMXK4/Rf5w==
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Subject: [PATCH AUTOSEL 6.9 17/21] drm/mediatek: Call drm_atomic_helper_shutdown() at shutdown time
+Date: Sun, 23 Jun 2024 09:43:50 -0400
+Message-ID: <20240623134405.809025-17-sashal@kernel.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20240623134405.809025-1-sashal@kernel.org>
+References: <20240623134405.809025-1-sashal@kernel.org>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="74VzLLej2lJJYR4f"
-Content-Disposition: inline
-In-Reply-To: <20240622-ripple-skylight-cdf172afde61@spud>
+X-stable: review
+X-Patchwork-Hint: Ignore
+X-stable-base: Linux 6.9.6
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240623_023142_482903_4C042C3F 
-X-CRM114-Status: GOOD (  17.59  )
+X-CRM114-CacheID: sfid-20240623_064439_616546_FC9348D7 
+X-CRM114-Status: GOOD (  16.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,115 +69,68 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Sasha Levin <sashal@kernel.org>, chunkuang.hu@kernel.org, daniel@ffwll.ch, Douglas Anderson <dianders@chromium.org>, Maxime Ripard <mripard@kernel.org>, linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, p.zabel@pengutronix.de, matthias.bgg@gmail.com, airlied@gmail.com, linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: Douglas Anderson <dianders@chromium.org>
 
---74VzLLej2lJJYR4f
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+[ Upstream commit c38896ca6318c2df20bbe6c8e3f633e071fda910 ]
 
-> On Fri, Jun 21, 2024 at 04:48:47PM +0200, Lorenzo Bianconi wrote:
-> > Introduce Airoha EN7581 entry in mediatek-gen3 PCIe controller binding
-> >=20
-> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> > ---
-> >  .../bindings/pci/mediatek-pcie-gen3.yaml      | 25 +++++++++++++++----
-> >  1 file changed, 20 insertions(+), 5 deletions(-)
-> >=20
-> > diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.y=
-aml b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-> > index 76d742051f73..0f35cf49de63 100644
-> > --- a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-> > +++ b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-> > @@ -53,6 +53,7 @@ properties:
-> >                - mediatek,mt8195-pcie
-> >            - const: mediatek,mt8192-pcie
-> >        - const: mediatek,mt8192-pcie
-> > +      - const: airoha,en7581-pcie
-> > =20
-> >    reg:
-> >      maxItems: 1
-> > @@ -76,20 +77,20 @@ properties:
-> > =20
-> >    resets:
-> >      minItems: 1
-> > -    maxItems: 2
-> > +    maxItems: 3
-> > =20
-> >    reset-names:
-> >      minItems: 1
-> > -    maxItems: 2
-> > +    maxItems: 3
-> >      items:
-> > -      enum: [ phy, mac ]
-> > +      enum: [ phy, mac, phy-lane0, phy-lane1, phy-lane2 ]
-> > =20
-> >    clocks:
-> > -    minItems: 4
-> > +    minItems: 1
-> >      maxItems: 6
-> > =20
-> >    clock-names:
-> > -    minItems: 4
-> > +    minItems: 1
->=20
-> You've now relaxed the clock requirements for all devices,
-> and permitted an extra reset on the existing platforms. You'll need to
-> add some per-device min/maxItems constraints to solve that.
+Based on grepping through the source code this driver appears to be
+missing a call to drm_atomic_helper_shutdown() at system shutdown
+time. Among other things, this means that if a panel is in use that it
+won't be cleanly powered off at system shutdown time.
 
-ack, I will fix it in v2.
+The fact that we should call drm_atomic_helper_shutdown() in the case
+of OS shutdown/restart comes straight out of the kernel doc "driver
+instance overview" in drm_drv.c.
 
-Regards,
-Lorenzo
+This driver users the component model and shutdown happens in the base
+driver. The "drvdata" for this driver will always be valid if
+shutdown() is called and as of commit 2a073968289d
+("drm/atomic-helper: drm_atomic_helper_shutdown(NULL) should be a
+noop") we don't need to confirm that "drm" is non-NULL.
 
->=20
-> Thanks,
-> Conor.
->=20
->=20
-> >      maxItems: 6
-> > =20
-> >    assigned-clocks:
-> > @@ -186,6 +187,20 @@ allOf:
-> >              - const: tl_26m
-> >              - const: peri_26m
-> >              - const: top_133m
-> > +  - if:
-> > +      properties:
-> > +        compatible:
-> > +          const: airoha,en7581-pcie
-> > +    then:
-> > +      properties:
-> > +        clock-names:
-> > +          items:
-> > +            - const: sys_ck
-> > +        reset-names:
-> > +          items:
-> > +            - const: phy-lane0
-> > +            - const: phy-lane1
-> > +            - const: phy-lane2
-> > =20
-> >  unevaluatedProperties: false
-> > =20
-> > --=20
-> > 2.45.2
-> >=20
-> >=20
+Suggested-by: Maxime Ripard <mripard@kernel.org>
+Reviewed-by: Maxime Ripard <mripard@kernel.org>
+Reviewed-by: Fei Shao <fshao@chromium.org>
+Tested-by: Fei Shao <fshao@chromium.org>
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
+Signed-off-by: Maxime Ripard <mripard@kernel.org>
+Link: https://patchwork.freedesktop.org/patch/msgid/20240611102744.v2.1.I2b014f90afc4729b6ecc7b5ddd1f6dedcea4625b@changeid
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index 74832c2130921..0b570e194079a 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -950,6 +950,13 @@ static void mtk_drm_remove(struct platform_device *pdev)
+ 		of_node_put(private->comp_node[i]);
+ }
+ 
++static void mtk_drm_shutdown(struct platform_device *pdev)
++{
++	struct mtk_drm_private *private = platform_get_drvdata(pdev);
++
++	drm_atomic_helper_shutdown(private->drm);
++}
++
+ static int mtk_drm_sys_prepare(struct device *dev)
+ {
+ 	struct mtk_drm_private *private = dev_get_drvdata(dev);
+@@ -981,6 +988,7 @@ static const struct dev_pm_ops mtk_drm_pm_ops = {
+ static struct platform_driver mtk_drm_platform_driver = {
+ 	.probe	= mtk_drm_probe,
+ 	.remove_new = mtk_drm_remove,
++	.shutdown = mtk_drm_shutdown,
+ 	.driver	= {
+ 		.name	= "mediatek-drm",
+ 		.pm     = &mtk_drm_pm_ops,
+-- 
+2.43.0
 
-
---74VzLLej2lJJYR4f
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZnfrdAAKCRA6cBh0uS2t
-rOkIAQCVSXTV3xENYTEyf+1j+ekpZaKsAp4R8xyTSgF2apueWAEA4MkUFvZFd35T
-MsWFBfAu26UqJSHFbAHsudq/K+3O0gI=
-=W1o1
------END PGP SIGNATURE-----
-
---74VzLLej2lJJYR4f--
 
