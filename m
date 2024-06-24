@@ -4,77 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 473B9C2BD09
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jun 2024 18:02:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39805C2BD09
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jun 2024 19:03:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BlHsZBG0ubyVPIWpEZLCYm37S4hYQYc13Mho9GhdGSQ=; b=otJOf2ZPkkHVJlJ+vslVYT//In
-	GzVVsqhfZzDmb1EWOGyPMCUin6RDBngGAhg3CaO+KwlhxE5RQTUqbOR571rdi5Wzlbu59lZ7WWM0I
-	nADZTTpFavdaF0/f8NMM+hWWCd2xYGUt0w57igd0knrXJlxfx3I4iTt4fwdGdneyVbT4g0oiTU5QT
-	AaH2WrADS76UNEBWQGr0vgPlHlSHIQrS/OPgxEbPzLwR13TL8/IgnesOxDgv9nwdtkdmqBrR8jWdi
-	xgmneEbm+7SMWEhBgluP/i7JXmWOHL506I1HS0MESOVUfDcMssx3cQKe5Nqab5XI0YbT4ojvUWwbN
-	YLVnq/mQ==;
+	bh=Q74uyUcwtRDpcu2Zgpqe2KqUuJaFev3sdVMOm6XlEk8=; b=ULvdkn8I/ln9xkqeNrDNCAiyzO
+	WPHnnIlsjktE+LHRWrO003t7+wOgTx+fJScufACmUzIWhc8pbQzmfbF7Dye4fkPssW4V30x7NUJMR
+	v/GJ4k/ra8ID9Ih9qH/yCHeC/20S+JFd20CZRqZff+ttc7gGXkLY0oiVkVYurCTHjM9RqbZoB0e3X
+	G8likYtP3UIquhKtqwn3R+WTVD20pLiCTOsV51FwZ0T1b2Ro/A4KBi/C5eef8pGq6RO9c/oSgeyl6
+	2LfWbwu8PD5UHY4VKMBh2/7bJ8wNhwKNErLlYgVLmS3xmEn/00dkA9gGNrNZifU+XO7gBJyYimAM9
+	O+2L5UZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLo15-00000000DM3-420k;
-	Mon, 24 Jun 2024 18:02:11 +0000
-Received: from 008.lax.mailroute.net ([199.89.1.11])
+	id 1sLoyN-00000000N01-0nso;
+	Mon, 24 Jun 2024 19:03:27 +0000
+Received: from nbd.name ([46.4.11.11])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLo12-00000000DLA-2WnK
+	id 1sLoyK-00000000MyQ-0FIV
 	for linux-mediatek@lists.infradead.org;
-	Mon, 24 Jun 2024 18:02:10 +0000
-Received: from localhost (localhost [127.0.0.1])
-	by 008.lax.mailroute.net (Postfix) with ESMTP id 4W7G4v208Jz6Cnk8y;
-	Mon, 24 Jun 2024 18:02:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
-	content-transfer-encoding:content-type:content-type:in-reply-to
-	:from:from:content-language:references:subject:subject
-	:user-agent:mime-version:date:date:message-id:received:received;
-	 s=mr01; t=1719252117; x=1721844118; bh=BlHsZBG0ubyVPIWpEZLCYm37
-	S4hYQYc13Mho9GhdGSQ=; b=Ce/EeXgveArhIBuWatIbDFKbvMh2nLuAHE97TUfi
-	o8tlrOjTqhJXjH0D00qXh638iWW92PZznoyHr2pvsh1hcUX8yANtT9PmI8K+Ll5A
-	lWmmwje2qbVYT3ygZUSHZJuN7FcxWd0hh34LJybHyMKqw+bonDVaaGExMM9cPvte
-	Oe1QUTvebyGkJEUa7q9W1oVsVd454N6U7g7+xUPv5jG1XIthK6bCqzhzWMYAD6Zb
-	oEt0c4Q+O9qDQmP/auCUa6QkmG/w1hNSaRPIwC34g+r1jeW3cAouF39hx1V/MHbF
-	j6qgdSdICLy99IIbynbkOVrde9aKC5IL/mg3Nj4EZaIH+Q==
-X-Virus-Scanned: by MailRoute
-Received: from 008.lax.mailroute.net ([127.0.0.1])
- by localhost (008.lax [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
- id aDG0ypCUIWgA; Mon, 24 Jun 2024 18:01:57 +0000 (UTC)
-Received: from [100.96.154.26] (unknown [104.132.0.90])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: bvanassche@acm.org)
-	by 008.lax.mailroute.net (Postfix) with ESMTPSA id 4W7G4b5xckz6Cnk8t;
-	Mon, 24 Jun 2024 18:01:51 +0000 (UTC)
-Message-ID: <eec48c95-aa1c-4f07-a1f3-fdc3e124f30e@acm.org>
-Date: Mon, 24 Jun 2024 11:01:49 -0700
+	Mon, 24 Jun 2024 19:03:25 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
+	s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:References:
+	Cc:To:From:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+	List-Post:List-Owner:List-Archive;
+	bh=Q74uyUcwtRDpcu2Zgpqe2KqUuJaFev3sdVMOm6XlEk8=; b=mmrdHLaDBaewrUYO22AwvAhp5r
+	iifeg5y9wQjUtqT1ho55eyuPUTwNnZfs9PBTJrbuVaCqDtPHQr57fH03AqTwD1xCO58GSyG7h3xNL
+	KRolRxX6MNSDBPbrKMz7YkG+llCBWUWKAQCZaGdUFBP7qzbR+NQfh5VdAcTpSp7ykMCY=;
+Received: from p4ff13dca.dip0.t-ipconnect.de ([79.241.61.202] helo=nf.local)
+	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+	(Exim 4.96)
+	(envelope-from <nbd@nbd.name>)
+	id 1sLoyB-00GidT-02;
+	Mon, 24 Jun 2024 21:03:15 +0200
+Message-ID: <4c02983e-2377-4c26-bcd6-3100eea19aeb@nbd.name>
+Date: Mon, 24 Jun 2024 21:03:14 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] ufs: core: fix ufshcd_abort_all racing issue
-To: peter.wang@mediatek.com, linux-scsi@vger.kernel.org,
- martin.petersen@oracle.com, avri.altman@wdc.com, quic_nguyenb@quicinc.com,
- alim.akhtar@samsung.com, jejb@linux.ibm.com
-Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
- chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
- chaotian.jing@mediatek.com, jiajie.hao@mediatek.com, powen.kao@mediatek.com,
- qilin.tan@mediatek.com, lin.gui@mediatek.com, tun-yu.yu@mediatek.com,
- eddie.huang@mediatek.com, naomi.chu@mediatek.com, chu.stanley@gmail.com,
- stable@vger.kernel.org
-References: <20240624121158.21354-1-peter.wang@mediatek.com>
+Subject: Re: [PATCH 37/47] wifi: mt76: mt762x: extend
+ mt76_connac_mcu_sta_basic_tlv for per-link STA
+From: Felix Fietkau <nbd@nbd.name>
+To: sean.wang@kernel.org, lorenzo.bianconi@redhat.com
+Cc: sean.wang@mediatek.com, deren.wu@mediatek.com,
+ mingyen.hsieh@mediatek.com, linux-wireless@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+References: <20240613030241.5771-1-sean.wang@kernel.org>
+ <20240613030241.5771-38-sean.wang@kernel.org>
+ <94abc74b-dcd5-47b2-9364-cfd5d3f28846@nbd.name>
 Content-Language: en-US
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <20240624121158.21354-1-peter.wang@mediatek.com>
+Autocrypt: addr=nbd@nbd.name; keydata=
+ xsDiBEah5CcRBADIY7pu4LIv3jBlyQ/2u87iIZGe6f0f8pyB4UjzfJNXhJb8JylYYRzIOSxh
+ ExKsdLCnJqsG1PY1mqTtoG8sONpwsHr2oJ4itjcGHfn5NJSUGTbtbbxLro13tHkGFCoCr4Z5
+ Pv+XRgiANSpYlIigiMbOkide6wbggQK32tC20QxUIwCg4k6dtV/4kwEeiOUfErq00TVqIiEE
+ AKcUi4taOuh/PQWx/Ujjl/P1LfJXqLKRPa8PwD4j2yjoc9l+7LptSxJThL9KSu6gtXQjcoR2
+ vCK0OeYJhgO4kYMI78h1TSaxmtImEAnjFPYJYVsxrhay92jisYc7z5R/76AaELfF6RCjjGeP
+ wdalulG+erWju710Bif7E1yjYVWeA/9Wd1lsOmx6uwwYgNqoFtcAunDaMKi9xVQW18FsUusM
+ TdRvTZLBpoUAy+MajAL+R73TwLq3LnKpIcCwftyQXK5pEDKq57OhxJVv1Q8XkA9Dn1SBOjNB
+ l25vJDFAT9ntp9THeDD2fv15yk4EKpWhu4H00/YX8KkhFsrtUs69+vZQwc0cRmVsaXggRmll
+ dGthdSA8bmJkQG5iZC5uYW1lPsJgBBMRAgAgBQJGoeQnAhsjBgsJCAcDAgQVAggDBBYCAwEC
+ HgECF4AACgkQ130UHQKnbvXsvgCgjsAIIOsY7xZ8VcSm7NABpi91yTMAniMMmH7FRenEAYMa
+ VrwYTIThkTlQzsFNBEah5FQQCACMIep/hTzgPZ9HbCTKm9xN4bZX0JjrqjFem1Nxf3MBM5vN
+ CYGBn8F4sGIzPmLhl4xFeq3k5irVg/YvxSDbQN6NJv8o+tP6zsMeWX2JjtV0P4aDIN1pK2/w
+ VxcicArw0VYdv2ZCarccFBgH2a6GjswqlCqVM3gNIMI8ikzenKcso8YErGGiKYeMEZLwHaxE
+ Y7mTPuOTrWL8uWWRL5mVjhZEVvDez6em/OYvzBwbkhImrryF29e3Po2cfY2n7EKjjr3/141K
+ DHBBdgXlPNfDwROnA5ugjjEBjwkwBQqPpDA7AYPvpHh5vLbZnVGu5CwG7NAsrb2isRmjYoqk
+ wu++3117AAMFB/9S0Sj7qFFQcD4laADVsabTpNNpaV4wAgVTRHKV/kC9luItzwDnUcsZUPdQ
+ f3MueRJ3jIHU0UmRBG3uQftqbZJj3ikhnfvyLmkCNe+/hXhPu9sGvXyi2D4vszICvc1KL4RD
+ aLSrOsROx22eZ26KqcW4ny7+va2FnvjsZgI8h4sDmaLzKczVRIiLITiMpLFEU/VoSv0m1F4B
+ FtRgoiyjFzigWG0MsTdAN6FJzGh4mWWGIlE7o5JraNhnTd+yTUIPtw3ym6l8P+gbvfoZida0
+ TspgwBWLnXQvP5EDvlZnNaKa/3oBes6z0QdaSOwZCRA3QSLHBwtgUsrT6RxRSweLrcabwkkE
+ GBECAAkFAkah5FQCGwwACgkQ130UHQKnbvW2GgCeMncXpbbWNT2AtoAYICrKyX5R3iMAoMhw
+ cL98efvrjdstUfTCP2pfetyN
+In-Reply-To: <94abc74b-dcd5-47b2-9364-cfd5d3f28846@nbd.name>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240624_110208_715761_E5634E3E 
-X-CRM114-Status: GOOD (  14.15  )
+X-CRM114-CacheID: sfid-20240624_120324_130908_9B582B99 
+X-CRM114-Status: UNSURE (   9.63  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,41 +101,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 6/24/24 5:11 AM, peter.wang@mediatek.com wrote:
- > [ ... ]
-In this patch there are two call traces, two fixes tags and two code
-changes. Please split this patch into two patches with each one call
-trace, one Fixes: tag and one code change. Additionally, please include
-a changelog when posting a second or later version.
+On 24.06.24 19:44, Felix Fietkau wrote:
+> On 13.06.24 05:02, sean.wang@kernel.org wrote:
+>> From: Sean Wang <sean.wang@mediatek.com>
+>> 
+>> Extend mt76_connac_mcu_sta_basic_tlv with the per-link STA configuration.
+>> 
+>> The patch we created is a prerequisite to enable the MLO function in the
+>> driver. It is purely a refactoring patch so the functionality should
+>> remain unchanged.
+>> 
+>> Co-developed-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+>> Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+>> Co-developed-by: Deren Wu <deren.wu@mediatek.com>
+>> Signed-off-by: Deren Wu <deren.wu@mediatek.com>
+>> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> 
+> This patch is broken on non-mt762x drivers, because the functions that
+> call mt76_connac_mcu_sta_basic_tlv may be called with sta == NULL.
+> 
+> I've seen it crash on mt7996 because of that, but mt7915 and mt7615 are
+> likely equally affected.
 
-> diff --git a/drivers/ufs/core/ufs-mcq.c b/drivers/ufs/core/ufs-mcq.c
-> index 8944548c30fa..3b2e5bcb08a7 100644
-> --- a/drivers/ufs/core/ufs-mcq.c
-> +++ b/drivers/ufs/core/ufs-mcq.c
-> @@ -512,8 +512,9 @@ int ufshcd_mcq_sq_cleanup(struct ufs_hba *hba, int task_tag)
->   		return -ETIMEDOUT;
->   
->   	if (task_tag != hba->nutrs - UFSHCD_NUM_RESERVED) {
-> -		if (!cmd)
-> -			return -EINVAL;
-> +		/* Should return 0 if cmd is already complete by irq */
-> +		if (!cmd || !ufshcd_cmd_inflight(cmd))
-> +			return 0;
->   		hwq = ufshcd_mcq_req_to_hwq(hba, scsi_cmd_to_rq(cmd));
->   	} else {
->   		hwq = hba->dev_cmd_queue;
-
-Does the call trace show that blk_mq_unique_tag() tries to dereference 
-address 0x194? If so, how is this possible? There are
-only two lrbp->cmd assignments in the UFS driver. These assignments
-either assign a valid SCSI command pointer or NULL. Even after a SCSI
-command has been completed, the SCSI command pointer remains valid. So
-how can an invalid pointer be passed to blk_mq_unique_tag()? Please
-root-cause this issue instead of posting a code change that reduces a
-race window without closing the race window completely.
+I've pushed a fixed version to my tree. Please check if it looks correct 
+to you.
 
 Thanks,
 
-Bart.
+- Felix
 
 
