@@ -4,93 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B751BC2BD09
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jun 2024 16:10:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDBAAC2BD09
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jun 2024 16:30:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:CC:To:Message-ID:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=u9tROGslymKxtNVU+9GyZdD8twmkqpbfDW7yWUEQuu4=; b=PUiWkbRo5pnDZF1hBdlWGWHtMg
-	PGUBmYBVulw8NGM5Iw2oAlgK3uiVn76pQXvEhQYnBaKssUQDwEyd9v3k+YSrNQmsTMIB2wl3hBvzp
-	lNkGubdiwTB7hxPLnJaYWwGhB6YmQ7y6lIVWFJFhCgqks8Jjm0ZAqNhpzNuiVZL+h/OOvWzTQrXLN
-	ztIaRawJSzHfmtP2Kd9d2FCU8b5IJXGqHCGoBbJ14nzbCsEv8q+eubRe78UYb6NMQf2Uk96kI6LVB
-	mIW09Ut8h8CM5yY5SDMxd1qelOHNXOqlzTmHG8uDsF8wtvMmlojtGMh7cFi4HJaYiiP7j9G/gGKny
-	btIe27Ow==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=kAhk3iOU9aBDJQvIXVevY2MnIL44WAuvPQJArLJz0SQ=; b=qEr73VhrqnGpxOnWXob0l7OACN
+	ueHCWLbvBQQkGx3Q77WoOhytR00fO2y2weyqij/YWV9wzkY99Udc572Exhh4AZYb1ErRjVdf59liz
+	dc8kl4QUtHsVav23xSFZtDv9H8Whf70psvnXTl00WGskC6RQ7C8D/LCfa16Nn/+RtDnrH5QvpT5gN
+	PzM6HsbbCwedmi4WjPVfe2zKYuIGeUktwGtPu3Tub5ceKUsKrsyD5IL8swiP9jjh1mDgtJXEXqDvF
+	go/kHeyllcC13+xP+efL8ePbrzXgNObEB4Zgm+SvJCqQwANVEA8Uwcb3mMxKARfoy3kKesmYQD1z1
+	5sx592Ug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLmGp-0000000HQyA-1A0U;
-	Mon, 24 Jun 2024 16:10:19 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1sLmZu-0000000HWMG-0yOL;
+	Mon, 24 Jun 2024 16:30:02 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLmGh-0000000HQuZ-0Tuo;
-	Mon, 24 Jun 2024 16:10:13 +0000
-Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 45O8YwJa023758;
-	Mon, 24 Jun 2024 16:10:08 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
-	cc:content-transfer-encoding:content-type:date:from:message-id
-	:mime-version:subject:to; s=qcppdkim1; bh=u9tROGslymKxtNVU+9GyZd
-	D8twmkqpbfDW7yWUEQuu4=; b=lFgXYdowhcY0+1kJL4jAXIh7GfAErMfFoE1GkX
-	XnnDnpSWOE86m63Wxjxs+pYrxFX4VtmEqpD8tZzT4PMzw250fTACiOaR5U+XoipY
-	PFw2CyHbCOLnCI9hh5aooLIp4QDoQKbHNtsputXH4xw/fdePrawDGk1LEqwdizrq
-	PR6FxXcylGDZbFmO4SHOuAlB60d6gVPwv16NWOrE72uvO2hcGvJT9XO2NOIkPT06
-	K7Czi6clvccLFkDhUo4mHwijvzrzy209pNp1h+Bv2t/7t7DC80HKpPw6+ldEVef1
-	+90N1h60g4KSsUtSZWdMII45m5/0WHkSi3OR2MfNwR9Wb8Rw==
-Received: from nalasppmta03.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3ywqshm3cf-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 24 Jun 2024 16:10:07 +0000 (GMT)
-Received: from nalasex01a.na.qualcomm.com (nalasex01a.na.qualcomm.com [10.47.209.196])
-	by NALASPPMTA03.qualcomm.com (8.17.1.19/8.17.1.19) with ESMTPS id 45OGA6K6011895
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 24 Jun 2024 16:10:06 GMT
-Received: from [169.254.0.1] (10.49.16.6) by nalasex01a.na.qualcomm.com
- (10.47.209.196) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.9; Mon, 24 Jun
- 2024 09:10:05 -0700
-From: Jeff Johnson <quic_jjohnson@quicinc.com>
-Date: Mon, 24 Jun 2024 09:09:48 -0700
-Subject: [PATCH v2] mailbox: mtk-cmdq: add missing MODULE_DESCRIPTION()
- macro
+	id 1sLmZn-0000000HWKJ-1cTB;
+	Mon, 24 Jun 2024 16:29:57 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id B6C70CE1307;
+	Mon, 24 Jun 2024 16:29:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9FBFAC2BBFC;
+	Mon, 24 Jun 2024 16:29:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1719246591;
+	bh=X/rMjN+CKsJhOirRD2eijjnLJTdEH19Dqw1djQrGiEA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=bKfKKjQKErKRle4L4qZor2AIEwUXmTDEr/XT+Nt3HoFf/jajYbs+kP7onhqYWhHfX
+	 T2BpJca6IBS5fdXH3eykDKUk4gMaVcnQs3RJGyyg+1gan81rxIfK5hFzTCHBNaf20x
+	 448cE14YBNpeUpTx2Usxh/lvTFIMpSs185vMVDeH5TtpVi79pYKVjV4S+Sw9galRNg
+	 OXflTR15kaxYhc99jCC9aw0wXkbpllKn9u7JyFm14UZ/nIg+jRKsFoZ5YoGTohHsbT
+	 5oDFrkB8OIj3Rn5NdogLI5Tr171ZT40Ux60xjuKeVr0ruojfF2F0XRZVH+/i5qkiaH
+	 hAonwZL7bW9sQ==
+Date: Mon, 24 Jun 2024 17:29:45 +0100
+From: Conor Dooley <conor@kernel.org>
+To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+Cc: Chris Packham <chris.packham@alliedtelesis.co.nz>, andrew@lunn.ch,
+	f.fainelli@gmail.com, olteanv@gmail.com, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Daniel Golle <daniel@makrotopia.org>
+Subject: Re: [PATCH] dt-bindings: net: dsa: mediatek,mt7530: Minor grammar
+ fixes
+Message-ID: <20240624-radiance-untracked-29369921c468@spud>
+References: <20240624025812.1729229-1-chris.packham@alliedtelesis.co.nz>
+ <704f4b95-2aed-4b76-87cb-83002698471c@arinc9.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-ID: <20240624-md-drivers-mailbox-v2-1-e5a428d52224@quicinc.com>
-X-B4-Tracking: v=1; b=H4sIAEuaeWYC/32OQQ6DIBREr2JYl0bQkrar3qNxAZ9P/YlCC0psj
- HcveoAuXzJvZlaWMBImdq9WFjFTouALyFPFoNf+hZxsYSZr2daqvvLRchspY0x81DSYsPAGbCO
- cddAaxYr4juhoOUqfXWGjE3ITtYd+rxrIz0uR04Rxj/eUphC/x4UsdunvWhZccAV4scrdZKvt4
- zMTkIczhJF127b9ACDjWXrVAAAA
-To: Jassi Brar <jassisinghbrar@gmail.com>,
-        Matthias Brugger
-	<matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-        <linux-mediatek@lists.infradead.org>,
-        <kernel-janitors@vger.kernel.org>,
-        "Jeff Johnson" <quic_jjohnson@quicinc.com>
-X-Mailer: b4 0.14.0
-X-Originating-IP: [10.49.16.6]
-X-ClientProxiedBy: nalasex01c.na.qualcomm.com (10.47.97.35) To
- nalasex01a.na.qualcomm.com (10.47.209.196)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-ORIG-GUID: zViXkquq1yXb_H-FG68IXmzoHqE1WmqC
-X-Proofpoint-GUID: zViXkquq1yXb_H-FG68IXmzoHqE1WmqC
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.28.16
- definitions=2024-06-24_13,2024-06-24_01,2024-05-17_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 spamscore=0 clxscore=1015
- bulkscore=0 phishscore=0 suspectscore=0 lowpriorityscore=0 malwarescore=0
- mlxscore=0 impostorscore=0 mlxlogscore=999 priorityscore=1501 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.19.0-2406140001
- definitions=main-2406240129
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="5G+CYpX+s72EcPeQ"
+Content-Disposition: inline
+In-Reply-To: <704f4b95-2aed-4b76-87cb-83002698471c@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240624_091011_658088_84721036 
-X-CRM114-Status: UNSURE (   9.51  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240624_092955_873870_DA738430 
+X-CRM114-Status: GOOD (  26.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,35 +88,80 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-make allmodconfig && make W=1 C=1 reports:
-WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/mailbox/mtk-cmdq-mailbox.o
 
-Add the missing invocation of the MODULE_DESCRIPTION() macro.
+--5G+CYpX+s72EcPeQ
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Jeff Johnson <quic_jjohnson@quicinc.com>
----
-Changes in v2:
-- Updated description per AngeloGioacchino Del Regno and propaged the
-  Reviewed-by tag
-- Link to v1: https://lore.kernel.org/r/20240608-md-drivers-mailbox-v1-1-6ce5d6f924ad@quicinc.com
----
- drivers/mailbox/mtk-cmdq-mailbox.c | 1 +
- 1 file changed, 1 insertion(+)
+On Mon, Jun 24, 2024 at 10:00:25AM +0300, Ar=C4=B1n=C3=A7 =C3=9CNAL wrote:
+> On 24/06/2024 05.58, Chris Packham wrote:
+> > Update the mt7530 binding with some minor updates that make the document
+> > easier to read.
+> >=20
+> > Signed-off-by: Chris Packham <chris.packham@alliedtelesis.co.nz>
+> > ---
+> >=20
+> > Notes:
+> >      I was referring to this dt binding and found a couple of places wh=
+ere
+> >      the wording could be improved. I'm not exactly a techical writer b=
+ut
+> >      hopefully I've made things a bit better.
+> >=20
+> >   .../devicetree/bindings/net/dsa/mediatek,mt7530.yaml        | 6 +++---
+> >   1 file changed, 3 insertions(+), 3 deletions(-)
+> >=20
+> > diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.=
+yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+> > index 1c2444121e60..6c0abb020631 100644
+> > --- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+> > +++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+> > @@ -22,16 +22,16 @@ description: |
+> >     The MT7988 SoC comes with a built-in switch similar to MT7531 as we=
+ll as four
+> >     Gigabit Ethernet PHYs. The switch registers are directly mapped int=
+o the SoC's
+> > -  memory map rather than using MDIO. The switch got an internally conn=
+ected 10G
+> > +  memory map rather than using MDIO. The switch has an internally conn=
+ected 10G
+> >     CPU port and 4 user ports connected to the built-in Gigabit Etherne=
+t PHYs.
+> > -  MT7530 in MT7620AN, MT7620DA, MT7620DAN and MT7620NN SoCs has got 10=
+/100 PHYs
+> > +  MT7530 in MT7620AN, MT7620DA, MT7620DAN and MT7620NN SoCs have 10/10=
+0 PHYs
+>=20
+> MT7530 is singular, the sentence is correct as it is.
 
-diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
-index 4aa394e91109..71eb78c3d6ce 100644
---- a/drivers/mailbox/mtk-cmdq-mailbox.c
-+++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-@@ -790,4 +790,5 @@ static void __exit cmdq_drv_exit(void)
- subsys_initcall(cmdq_drv_init);
- module_exit(cmdq_drv_exit);
- 
-+MODULE_DESCRIPTION("Mediatek Command Queue(CMDQ) Mailbox driver");
- MODULE_LICENSE("GPL v2");
+Actually, the sentence is missing a definite article, so is not correct
+as-is.
 
----
-base-commit: 19ca0d8a433ff37018f9429f7e7739e9f3d3d2b4
-change-id: 20240608-md-drivers-mailbox-3cd31fdfc4b6
+>=20
+> >     and the switch registers are directly mapped into SoC's memory map =
+rather than
+> >     using MDIO. The DSA driver currently doesn't support MT7620 variant=
+s.
+> >     There is only the standalone version of MT7531.
+> > -  Port 5 on MT7530 has got various ways of configuration:
+> > +  Port 5 on MT7530 supports various configurations:
+>=20
+> This is a rewrite, not a grammar fix.
 
+In both cases "has got" is clumsy wording, "supports" is an improvement
+to readability, even if it might not qualify as a grammar fix.
+
+--5G+CYpX+s72EcPeQ
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZnme+QAKCRB4tDGHoIJi
+0jayAP9QYPuQa14ospqghSRwh8Za6YGTODSI60an4wYfh+2zYAD/ccgLUsq74wfN
+kltsgO7yuo3NMEZPJMLGAg5ZqlyWlQc=
+=6noq
+-----END PGP SIGNATURE-----
+
+--5G+CYpX+s72EcPeQ--
 
