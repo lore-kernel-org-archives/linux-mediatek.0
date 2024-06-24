@@ -4,76 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 648EFC2BD09
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jun 2024 20:34:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFF5EC2D0D1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jun 2024 21:19:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aiChBHg1P9D7NyUJ3efflm1pCT0nEeDegjyVvv0Nqh8=; b=tD5cB8Jcxyry+MwhcMfSq+j1TU
-	OA+J3k9fTOJPnk4uzeTy7QxBlHKr5nbsKnVefgur2e2pjOLlH8RbL2TX/yqF3XOHLPJtZRSPpvjcd
-	4i+W5Vifn9grOeiZEU2oMh2TFHKa+JDuNE62TT53dJa7wR22pxj9Rq3tqf4I4oi5XcjNPYLrKCMAw
-	weMgah2k2NcIn8Zrajqec1K+M6ylEWTAFVaIl1rZJJZTuRCtawBXjDUiPvCsANI8tqPSWg3G58Csc
-	RzDxMe7i6PfRk18zMZwRwW3FmoxE/Y8pR24aFNLGZFmR40pNITDC5C8WVeTCmXHvxU/RGVRaMcpEJ
-	SjmQyKCQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=sAZ4MdXH+h/nieLep2o7unhilYOwx9E3ZFeLERPASYE=; b=DlOExyGC7HqXwUf6s201Z16au9
+	2zmuuY7eeMBNLgdHDBMEaf3IStCq/oVaooeTRrrPn1uXAmefQks0NsfOq5NzMpiIGKI38ibB6QkI8
+	GfFJ2y5tBIcam6JN3R1sLORY/sK+TsYa3f2fDSdffvC7Kvtjhfi4WYgQ1dzUjwiODwIwFzf0pbS/B
+	mZ/tlDAjYoqsdHPEmSNaUDC9ZckYkXvBHr5pUff0lPPwQwhLwVlBIA712IWCjV302lZHJjsmixQkx
+	yJeutGCYwKK88ROC8YZSJZb6gtvi0U4nrlZMHalCfmvxARFlus+niZh7GlyScFjrwByDf+gKxcPVk
+	YCdi0Cjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLqOl-00000000arY-3Uz6;
-	Mon, 24 Jun 2024 20:34:47 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1sLr5h-00000000gJi-0moh;
+	Mon, 24 Jun 2024 21:19:09 +0000
+Received: from gate2.alliedtelesis.co.nz ([2001:df5:b000:5::4])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLqOg-00000000apw-0MIu;
-	Mon, 24 Jun 2024 20:34:43 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 9DD756108A;
-	Mon, 24 Jun 2024 20:34:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0985FC2BBFC;
-	Mon, 24 Jun 2024 20:34:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1719261280;
-	bh=fnYnt1cm4H5OJFjouGeyQRwAXFsct3WiYlfwxAclM7M=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ioCSjRgPVmkWKAYfMEnQcKe2/Nw1+gJNjjLMabDjfApiT5h25BtImV/0c+b2S74sk
-	 oGZKI2CPMFm9e7d+xNuB1iQlMlvxZg5gbQWchcAwiZBwh9ix7+Yz0PC2SCCbF7T/CR
-	 DSTk8ZYyI3v6h27WbV3p6FkqkoJz59JF72kem1iGXRY6e9CnUAQfSPK1qedsunc/j0
-	 pZUjufoWbx/gWXDcl8nqogJAgkW/ibbVxYU5mmNJBvz79ZrPmw+EX/i9sKH6tr9UUc
-	 ARldhrSFACNmx0YyJ8Ka+UlDGMwu9AUJCJh8wjjafgADmQaqViA6Sdp74krJhShOHy
-	 6sqlgIdo+tGMA==
-Date: Mon, 24 Jun 2024 14:34:38 -0600
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Orson Zhai <orsonzhai@gmail.com>, linux-arm-kernel@lists.infradead.org,
-	Lee Jones <lee@kernel.org>, Nishanth Menon <nm@ti.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Vadivel Murugan <vadivel.muruganx.ramuthevar@linux.intel.com>,
+	id 1sLr5e-00000000gIg-0hO0
+	for linux-mediatek@lists.infradead.org;
+	Mon, 24 Jun 2024 21:19:08 +0000
+Received: from svr-chch-seg1.atlnz.lc (mmarshal3.atlnz.lc [10.32.18.43])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(Client did not present a certificate)
+	by gate2.alliedtelesis.co.nz (Postfix) with ESMTPS id D3BCC2C0372;
+	Tue, 25 Jun 2024 09:19:00 +1200 (NZST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=alliedtelesis.co.nz;
+	s=mail181024; t=1719263940;
+	bh=sAZ4MdXH+h/nieLep2o7unhilYOwx9E3ZFeLERPASYE=;
+	h=From:To:Cc:Subject:Date:From;
+	b=neTbh1IPTgIvBOYmvWBxHw9DKrpSox4my7sJ0vmhDgvtdU5SvdH84kCR3gZS/+N/o
+	 H2d9NN+zpiTuaouCeDmqW/SKcQPbh6VJxypE3NoAJVmBkVOCSI7wXTXLhEqf+hCi89
+	 BoorX7IJOaV96yE2SkWbFBkRSusyR+YPUKefxRkEqh3dumJJh1qtzaprS5jVPN4ny5
+	 lPQiIJRwk4yf0LDdv4JlLS/qS4a48OE4/lds+dcB+rtlFvVrJtt1BEyAJ7kuwmGnAb
+	 xkRIUEFgu0m24Vq7v9v0kTQoWlmJRA8e3dPX/6n5XOOXfrb3aSH2nTBz5VHZHB0L1k
+	 khkcC5We3KAwA==
+Received: from pat.atlnz.lc (Not Verified[10.32.16.33]) by svr-chch-seg1.atlnz.lc with Trustwave SEG (v8,2,6,11305)
+	id <B6679e2c40000>; Tue, 25 Jun 2024 09:19:00 +1200
+Received: from chrisp-dl.ws.atlnz.lc (chrisp-dl.ws.atlnz.lc [10.33.22.30])
+	by pat.atlnz.lc (Postfix) with ESMTP id 9634713ED5B;
+	Tue, 25 Jun 2024 09:19:00 +1200 (NZST)
+Received: by chrisp-dl.ws.atlnz.lc (Postfix, from userid 1030)
+	id 9027B280ADD; Tue, 25 Jun 2024 09:19:00 +1200 (NZST)
+From: Chris Packham <chris.packham@alliedtelesis.co.nz>
+To: andrew@lunn.ch,
+	f.fainelli@gmail.com,
+	olteanv@gmail.com
+Cc: netdev@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Chris Packham <chris.packham@alliedtelesis.co.nz>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Shan-Chun Hung <schung@nuvoton.com>,
-	Lars Povlsen <lars.povlsen@microchip.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
 	Conor Dooley <conor+dt@kernel.org>,
-	Jiaxun Yang <jiaxun.yang@flygoat.com>,
-	Khuong Dinh <khuong@os.amperecomputing.com>,
-	Steen Hegelund <Steen.Hegelund@microchip.com>,
-	linux-kernel@vger.kernel.org, UNGLinuxDriver@microchip.com,
-	Jacky Huang <ychuang3@nuvoton.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Daniel Machon <daniel.machon@microchip.com>,
-	devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2 3/7] dt-bindings: soc: intel: lgm-syscon: Move to
- dedicated schema
-Message-ID: <171926127659.368668.12236897236768555715.robh@kernel.org>
-References: <20240616-dt-bindings-mfd-syscon-split-v2-0-571b5850174a@linaro.org>
- <20240616-dt-bindings-mfd-syscon-split-v2-3-571b5850174a@linaro.org>
+	=?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Daniel Golle <daniel@makrotopia.org>
+Subject: [PATCH v2] dt-bindings: net: dsa: mediatek,mt7530: Minor wording fixes
+Date: Tue, 25 Jun 2024 09:18:57 +1200
+Message-ID: <20240624211858.1990601-1-chris.packham@alliedtelesis.co.nz>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240616-dt-bindings-mfd-syscon-split-v2-3-571b5850174a@linaro.org>
+Content-Transfer-Encoding: quoted-printable
+X-SEG-SpamProfiler-Analysis: v=2.4 cv=CvQccW4D c=1 sm=1 tr=0 ts=6679e2c4 a=KLBiSEs5mFS1a/PbTCJxuA==:117 a=T1WGqf2p2xoA:10 a=Mc0CNVgLlbBwIVVfR90A:9 a=3ZKOabzyN94A:10
+X-SEG-SpamProfiler-Score: 0
+x-atlnz-ls: pat
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240624_133442_212532_CBA010F2 
-X-CRM114-Status: GOOD (  11.81  )
+X-CRM114-CacheID: sfid-20240624_141906_710724_1E35C6B6 
+X-CRM114-Status: GOOD (  12.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,24 +100,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Update the mt7530 binding with some minor updates that make the document
+easier to read.
 
-On Sun, 16 Jun 2024 15:19:23 +0200, Krzysztof Kozlowski wrote:
-> intel,lgm-syscon is not a simple syscon device - it has children - thus
-> it should be fully documented in its own binding.
-> 
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> 
-> ---
-> 
-> Context might depend on patch in Lee's MFD tree:
-> https://lore.kernel.org/all/171828959006.2643902.8308227314531523435.b4-ty@kernel.org/
-> and also further patches here depend on this one.
-> ---
->  Documentation/devicetree/bindings/mfd/syscon.yaml  |  1 -
->  .../bindings/soc/intel/intel,lgm-syscon.yaml       | 56 ++++++++++++++++++++++
->  2 files changed, 56 insertions(+), 1 deletion(-)
-> 
+Signed-off-by: Chris Packham <chris.packham@alliedtelesis.co.nz>
+---
 
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+Notes:
+    I was referring to this dt binding and found a couple of places where
+    the wording could be improved. I'm not exactly a techical writer but
+    hopefully I've made things a bit better.
+   =20
+    Changes in v2:
+    - Update title, this is not just fixing grammar
+    - Add missing The instead of changing has to have
+
+ .../devicetree/bindings/net/dsa/mediatek,mt7530.yaml        | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.ya=
+ml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+index 1c2444121e60..7e405ad96eb2 100644
+--- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
++++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+@@ -22,16 +22,16 @@ description: |
+=20
+   The MT7988 SoC comes with a built-in switch similar to MT7531 as well =
+as four
+   Gigabit Ethernet PHYs. The switch registers are directly mapped into t=
+he SoC's
+-  memory map rather than using MDIO. The switch got an internally connec=
+ted 10G
++  memory map rather than using MDIO. The switch has an internally connec=
+ted 10G
+   CPU port and 4 user ports connected to the built-in Gigabit Ethernet P=
+HYs.
+=20
+-  MT7530 in MT7620AN, MT7620DA, MT7620DAN and MT7620NN SoCs has got 10/1=
+00 PHYs
++  The MT7530 in MT7620AN, MT7620DA, MT7620DAN and MT7620NN SoCs has 10/1=
+00 PHYs
+   and the switch registers are directly mapped into SoC's memory map rat=
+her than
+   using MDIO. The DSA driver currently doesn't support MT7620 variants.
+=20
+   There is only the standalone version of MT7531.
+=20
+-  Port 5 on MT7530 has got various ways of configuration:
++  Port 5 on MT7530 supports various configurations:
+=20
+     - Port 5 can be used as a CPU port.
+=20
+--=20
+2.45.2
 
 
