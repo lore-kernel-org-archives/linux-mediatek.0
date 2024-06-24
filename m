@@ -4,78 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07885C2BD05
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jun 2024 06:13:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85B40C2BD05
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jun 2024 07:00:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=4N2wMnACbjcCz14LY0USvKoVXrjwARwQKVYyLGYLpXg=; b=d9z+/LN+3g1coJDgJBSArF3Tpu
-	rOKAR+kLA1Z/2Z4/fkb0tNP4t5pqH42rXsKM45Q9oEfDiRwXzQYJLT+iYon1DM4gTbRCsOfop/IoV
-	Rq7DkFQbtl/Q0CGahi7SGX2LqUv+8pTcfwERvFnfIH9tSiQDkrZr0NRmnR4E7jtSd83LPQ2tkz52H
-	LI5FmovzOxjSFCl6mtknYB6FoGRVkooGpBqmO23UndOD2p4TAw6VlJgnTMjy0OolAXeNJ9buDGieJ
-	SIrAu237QetQQWke9vboCQHfoSW+DxPC7fTFuAbd37oliburwWhdFgVXRxaQGPrX8s9fIEe/kqnQU
-	jtx5sOUg==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=b19k+/foFyMzoSDxq1RThplVOtb1XjVmJDOSBecBwtA=; b=hrM1MjtukocYHlVYjS5yVQhXUJ
+	HIGzKXHoNAL3rOdhuQDqbxRHFCF19D7SZ+uCpgjLU/Zj5w+zBMVU2/AwwtAPZCX5yAL7Fy4jfsjBu
+	bUgKwGnJLun/780BI4LWxqno0zMqWcH0AM5U9BvHPXHHNlOfO3PmPjMfjD85X9zJJAyRm2vILYmkv
+	7oS68iU34y7vxJWgJ43NW5siYLdEqCmxryJ91WaqMuh7ykTVjHl/JXoR8etmVCTuHoA8Qf+wwGJB4
+	QyCseoviPOZ4nH1OfYdc/+PB4RAv89G0DjmLcFK+M8xPQEfOZcI2zoGeXpJ7U8dCdBmtwWOwiTkPd
+	VTb+TfVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLcws-0000000Fh8d-2LIx;
-	Mon, 24 Jun 2024 06:13:06 +0000
-Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
+	id 1sLdh0-0000000FnrH-3DCf;
+	Mon, 24 Jun 2024 07:00:46 +0000
+Received: from relay2-d.mail.gandi.net ([2001:4b98:dc4:8::222])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLcwp-0000000Fh84-1gnM
-	for linux-mediatek@lists.infradead.org;
-	Mon, 24 Jun 2024 06:13:04 +0000
-Received: by mail-pf1-x436.google.com with SMTP id d2e1a72fcca58-7067108f2cdso939018b3a.1
-        for <linux-mediatek@lists.infradead.org>; Sun, 23 Jun 2024 23:13:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1719209582; x=1719814382; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=4N2wMnACbjcCz14LY0USvKoVXrjwARwQKVYyLGYLpXg=;
-        b=cvel5lyE8vGipLdaGto9jlokeWIV/0BjTLAxo/R21X+DIz9zXP3aUKAY5nABrmWmFq
-         DqZm7jhEKbVhpwyOs2hBdOKxUiCwrNZ+H2PJOBZdPHcCbjSL67bn7+zVmI9I358KocjH
-         FM1lTGxb1ZqddczfsksrFZNwEunFP3oK+tImU=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1719209582; x=1719814382;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=4N2wMnACbjcCz14LY0USvKoVXrjwARwQKVYyLGYLpXg=;
-        b=n9Q83TSQr5QbivisJDs2POb86LVVHFwAYOkuXd7+377+bZ+TM6QJtt0ETod6qfYGDE
-         bQiW5qjN94wZcgUY26YOQNY+VM+T1JiqdYXWmuM0yASpANx+ZwCPGcrfRJVVPWCO+9Rl
-         N76kQB6Z2hNjkJ1nvF9qOsk6kYEK32n2ZdNqmrcu1dGBWuuhsnc9CYak99ONMbejsfEP
-         D4JwsnjeFL/uaZFBZ/GINY/iQ0cB2dVT+UAu6522TE1xymlFfh+KUJZ3I+rJOYeBdmHT
-         cPQU1nV+3JPtPqHcVtMk083Vpohi34m4ptP/CyHvUxDTeBCQdtXSzT0ykz9qGQu/g8/0
-         6XOw==
-X-Forwarded-Encrypted: i=1; AJvYcCWkkMSXHFyxFsz6h4Ek/1MDybWFqYPuEBvwtXd7fanGRgj6cyT/G2TJ4gc4KoFJkMRee7R6E8X+iCH//ICvl4HPv2LouuQyRXKbtkNdN6nRH+cI
-X-Gm-Message-State: AOJu0Yx/nyT7e41QB702vdEGUsnyjcljF3ylq5rntDvnisn4Aj2xK+NX
-	XCDivvrxYcxhjODzrR5OhG3Xl1ObQZln68I0bcgxUeoG0nx8hjCq/MlE73YA4g==
-X-Google-Smtp-Source: AGHT+IH+UlRR3GoF9E4C1DBHIOVlzoOCBHgWIsZ6epuQKT65Zpk0Nz9eUaoHFwng5u7QIXrd2vEFwg==
-X-Received: by 2002:a05:6a20:c120:b0:1b6:cd8e:4a5 with SMTP id adf61e73a8af0-1bcf4479e51mr4136921637.19.1719209581937;
-        Sun, 23 Jun 2024 23:13:01 -0700 (PDT)
-Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:62a6:1858:61eb:37a2])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-1f9eb5e5629sm54687965ad.220.2024.06.23.23.13.00
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 23 Jun 2024 23:13:01 -0700 (PDT)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Mark Brown <broonie@kernel.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
-	Trevor Wu <trevor.wu@mediatek.com>,
-	linux-sound@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH v2] ASoC: mediatek: mt8195: Add platform entry for ETDM1_OUT_BE dai link
-Date: Mon, 24 Jun 2024 14:12:56 +0800
-Message-ID: <20240624061257.3115467-1-wenst@chromium.org>
-X-Mailer: git-send-email 2.45.2.741.gdbec12cfda-goog
+	id 1sLdgv-0000000Fnq1-0fpp;
+	Mon, 24 Jun 2024 07:00:43 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id B9A0640009;
+	Mon, 24 Jun 2024 07:00:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
+	t=1719212432;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=b19k+/foFyMzoSDxq1RThplVOtb1XjVmJDOSBecBwtA=;
+	b=k5U//jmsb7SQzA1xVwp91Vdb/6n0HBtyxVKJJnfrQ9T5e34PnwanYqHLLOLusY1LuDX9BI
+	OBLtqjiyTLcxOXQNcHrNBuEWxFHgtGpN70z15/U6jRWZWqHpb1RhcoZYOBuHKiblzH/8e7
+	pxTA0hZxYbN5TvTDvvrb42iG5Isdbu5eI6X63Ff6lBKdVZgNCkf/N71Y7IvgUt2Y5+WE/s
+	yFI5aDKXeqoWnhMl69rXx6SqxejVebzQHOewlxSnw/yQFHyYNT8rEY+ZluEfZmZ/01NZQ3
+	UCewzl47uimWeqszuqbL4ZGbyIHABNGZKQaXyzSxC3CmAY4W9DtTJkdSw5208Q==
+Message-ID: <704f4b95-2aed-4b76-87cb-83002698471c@arinc9.com>
+Date: Mon, 24 Jun 2024 10:00:25 +0300
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] dt-bindings: net: dsa: mediatek,mt7530: Minor grammar
+ fixes
+To: Chris Packham <chris.packham@alliedtelesis.co.nz>, andrew@lunn.ch,
+ f.fainelli@gmail.com, olteanv@gmail.com
+Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>, Daniel Golle <daniel@makrotopia.org>
+References: <20240624025812.1729229-1-chris.packham@alliedtelesis.co.nz>
+Content-Language: en-US
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <20240624025812.1729229-1-chris.packham@alliedtelesis.co.nz>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
+X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240623_231303_628471_C6507962 
-X-CRM114-Status: GOOD (  10.31  )
+X-CRM114-CacheID: sfid-20240624_000041_515668_E8C1DAC3 
+X-CRM114-Status: GOOD (  19.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,52 +82,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Commit e70b8dd26711 ("ASoC: mediatek: mt8195: Remove afe-dai component
-and rework codec link") removed the codec entry for the ETDM1_OUT_BE
-dai link entirely instead of replacing it with COMP_EMPTY(). This worked
-by accident as the remaining COMP_EMPTY() platform entry became the codec
-entry, and the platform entry became completely empty, effectively the
-same as COMP_DUMMY() since snd_soc_fill_dummy_dai() doesn't do anything
-for platform entries.
+On 24/06/2024 05.58, Chris Packham wrote:
+> Update the mt7530 binding with some minor updates that make the document
+> easier to read.
+> 
+> Signed-off-by: Chris Packham <chris.packham@alliedtelesis.co.nz>
+> ---
+> 
+> Notes:
+>      I was referring to this dt binding and found a couple of places where
+>      the wording could be improved. I'm not exactly a techical writer but
+>      hopefully I've made things a bit better.
+> 
+>   .../devicetree/bindings/net/dsa/mediatek,mt7530.yaml        | 6 +++---
+>   1 file changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+> index 1c2444121e60..6c0abb020631 100644
+> --- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+> +++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+> @@ -22,16 +22,16 @@ description: |
+>   
+>     The MT7988 SoC comes with a built-in switch similar to MT7531 as well as four
+>     Gigabit Ethernet PHYs. The switch registers are directly mapped into the SoC's
+> -  memory map rather than using MDIO. The switch got an internally connected 10G
+> +  memory map rather than using MDIO. The switch has an internally connected 10G
+>     CPU port and 4 user ports connected to the built-in Gigabit Ethernet PHYs.
+>   
+> -  MT7530 in MT7620AN, MT7620DA, MT7620DAN and MT7620NN SoCs has got 10/100 PHYs
+> +  MT7530 in MT7620AN, MT7620DA, MT7620DAN and MT7620NN SoCs have 10/100 PHYs
 
-This causes a KASAN out-of-bounds warning in mtk_soundcard_common_probe()
-in sound/soc/mediatek/common/mtk-soundcard-driver.c:
+MT7530 is singular, the sentence is correct as it is.
 
-	for_each_card_prelinks(card, i, dai_link) {
-		if (adsp_node && !strncmp(dai_link->name, "AFE_SOF", strlen("AFE_SOF")))
-			dai_link->platforms->of_node = adsp_node;
-		else if (!dai_link->platforms->name && !dai_link->platforms->of_node)
-			dai_link->platforms->of_node = platform_node;
-	}
+>     and the switch registers are directly mapped into SoC's memory map rather than
+>     using MDIO. The DSA driver currently doesn't support MT7620 variants.
+>   
+>     There is only the standalone version of MT7531.
+>   
+> -  Port 5 on MT7530 has got various ways of configuration:
+> +  Port 5 on MT7530 supports various configurations:
 
-where the code expects the platforms array to have space for at least one entry.
+This is a rewrite, not a grammar fix.
 
-Add an COMP_EMPTY() entry so that dai_link->platforms has space.
-
-Fixes: e70b8dd26711 ("ASoC: mediatek: mt8195: Remove afe-dai component and rework codec link")
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-
----
-Changes since v1:
-- Reword commit message with more details on how the original commit
-  got things wrong, and what this commit adds and fixes
----
- sound/soc/mediatek/mt8195/mt8195-mt6359.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/sound/soc/mediatek/mt8195/mt8195-mt6359.c b/sound/soc/mediatek/mt8195/mt8195-mt6359.c
-index ca8751190520..2832ef78eaed 100644
---- a/sound/soc/mediatek/mt8195/mt8195-mt6359.c
-+++ b/sound/soc/mediatek/mt8195/mt8195-mt6359.c
-@@ -827,6 +827,7 @@ SND_SOC_DAILINK_DEFS(ETDM2_IN_BE,
- 
- SND_SOC_DAILINK_DEFS(ETDM1_OUT_BE,
- 		     DAILINK_COMP_ARRAY(COMP_CPU("ETDM1_OUT")),
-+		     DAILINK_COMP_ARRAY(COMP_EMPTY()),
- 		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
- 
- SND_SOC_DAILINK_DEFS(ETDM2_OUT_BE,
--- 
-2.45.2.741.gdbec12cfda-goog
-
+Arınç
 
