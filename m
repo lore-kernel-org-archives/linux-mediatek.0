@@ -4,90 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00015C27C4F
-	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Jun 2024 17:51:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2BBCC27C4F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jun 2024 02:58:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=kdcreUxt3em3AD6YvcpNiMBlzrbyIyl8nuxvmtGXEdY=; b=Z3eL+Tp5r4Fjf/aV8zm9w18ZMG
-	8gL3XcGWapIwHPLASAVQAYHKGt9FQjfOrimAHgDjoIJw06lKYGPXkTrNlqxCiypFw8PlGT3t6KVee
-	X3miN/T269o6BkyGVBDp4XQhf5QmXG87fefF+f1afeS0aKSm6Yk1mIfcUdmLUNloK3290kyPnr56x
-	8w41HTjW8UqDU61UpmZIb+i/seGA707tuJIc9HyheVn13XSiNOBdhVkLyXaitE3zFrSubYasDVZri
-	yopKjZsqe2Kd9PE/1mu48GMnmr79ymi4YFIcwwsQnwFnQejTzrz2PN5GPFDsVmg+loTVT65LbdXgq
-	KFtkDH4A==;
+	bh=b4PPIWnSntGbucOj7Qa3cqUKyDG1tJZ+G6Ih4WCPC9Q=; b=H1e101wETcQS5FszEoSVZ+ehlE
+	+iKkl7kkpjKpT0V0c62AfWOkhKDXwnnhW35uMnMxmMNtchQOjzaxTeJxkcc/gN2ZFp8xuAv2iZ4LM
+	Lcbt0XgjO+ZLk/yrw+j+oAYtcC9rB2/TNvS7uf65Sa2pIaOu0e5MArBBYxu4ZEnO1pj7Co4/iXl15
+	fdbe7R81fn28HyiqLVwOmsKBlYDblp++Zr/beH1DutOu0V82DZJ5U4pj/ld4WnhXUbDtMT4H04msn
+	2phHvqrbKlWCLMvBo1ItTXxbAhojbqAzJgIfd6QEd5ZSnqDiSb14Nn/Py8VUk29h7B7VBRGljWe4x
+	752533Sg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLRNP-0000000EVYP-2Txb;
-	Sun, 23 Jun 2024 17:51:43 +0000
-Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
+	id 1sLZuT-0000000FKzA-3HRc;
+	Mon, 24 Jun 2024 02:58:25 +0000
+Received: from gate2.alliedtelesis.co.nz ([2001:df5:b000:5::4])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLRNJ-0000000EVXA-0wOw;
-	Sun, 23 Jun 2024 17:51:38 +0000
-Received: by mail-lf1-x129.google.com with SMTP id 2adb3069b0e04-52cdf579dd2so1079068e87.3;
-        Sun, 23 Jun 2024 10:51:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1719165095; x=1719769895; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=kdcreUxt3em3AD6YvcpNiMBlzrbyIyl8nuxvmtGXEdY=;
-        b=H1EfdUmUYh3v4ztMXzqaQmy1KS+qEhMqPIFMShofDxXl1gPpzlXoiFEboU8RRILFY7
-         m3tX4rtYaCCdfAPN/6RbXU87jHk0eCfPbAc5GQgKJn9FGmM6j45f8MjPjjyhtn074DQV
-         tpJJNaVQu6jVKNaIO7yrByDY3hyq0ZU0Tb2C6OBd0lBGc2yjfg1XDSrSZXHEDnKH5RqC
-         +azMSIleWcgowgLlKExFg+JFm+Mk0t87c2A9ubCai9RNLgI0216rEkvtHKBqd0Qvp3Cp
-         ePeT5ZvM4g0bHzyU/7VnQnqh0MAczjh5KjFu65/By3MnWQgf/Fx9baBqZ/AYaapbHxYZ
-         xgzA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1719165095; x=1719769895;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=kdcreUxt3em3AD6YvcpNiMBlzrbyIyl8nuxvmtGXEdY=;
-        b=ubmZzmMqaEG9EqGhhoo1jQJ94rl3YnAlnk1Pay+G0quZhoSBEQr+ohxfeA5ulBvRuC
-         QHcuYQ9H460dGQyfCyXDgNuNi5rAuyaM3ubbL+GhfGPjPFHEOg4PubgFm73YrAGWvVSx
-         dm52LadFAnWBPgC3vIzNPxpJS5SrUWGWm430gvrscVjoIfKXoBuPlMapOjSgFQBtA1rH
-         r16XloTZKCHWHZpPZiDUEGWcpEZp5q93TzecIrh25SWSSda1j0oxYEsuB0N9aDDnCla9
-         JcK8f5Lvw+PbmIFh2St2SvdOqDOlW4rWOlCadbskPSD3n8P+RWsk3oZXntwNoxxYft0Y
-         IKcA==
-X-Forwarded-Encrypted: i=1; AJvYcCUIuNOfSZVq7BMUE9W7Q6vYitf+5z8D+OaeFeFuPLEDeXoNzYo8XGsWGocEBmax+s9fGvdgIZhTel+QgSQwKFDs2WdUTAl9tzPejwQi8TH+laFlpxrzzjAxgNQMRlqbP0t3TRFNCvzRZtlsmSOY30dpTAMX2+sZQJ8=
-X-Gm-Message-State: AOJu0YxrihK9SxbUOrxi8srFrB3VQXhRdYKou7cDShYZmxMor0OJEiuf
-	sqxQ60ffhYuiVDhlxXBBOtMW5RVQd1CLZeE4r6OLsPYGRB/7cDvs
-X-Google-Smtp-Source: AGHT+IEDs9kn2GAQdZwBasIOD1+F5HhqKnWQ7Vdp3GVBS7E9o1Z9R3kZ5rqtaCh9WMX65Fh4ViDg4g==
-X-Received: by 2002:a05:6512:2147:b0:52b:bee3:dcc6 with SMTP id 2adb3069b0e04-52cdf820929mr2018737e87.51.1719165094428;
-        Sun, 23 Jun 2024 10:51:34 -0700 (PDT)
-Received: from yifee.lan (IGLD-84-229-253-201.inter.net.il. [84.229.253.201])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-424817a9667sm106010095e9.15.2024.06.23.10.51.32
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 23 Jun 2024 10:51:34 -0700 (PDT)
-From: Elad Yifee <eladwf@gmail.com>
-To: 
-Cc: eladwf@gmail.com,
-	daniel@makrotopia.org,
-	Felix Fietkau <nbd@nbd.name>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
+	id 1sLZuO-0000000FKxm-00nT
+	for linux-mediatek@lists.infradead.org;
+	Mon, 24 Jun 2024 02:58:22 +0000
+Received: from svr-chch-seg1.atlnz.lc (mmarshal3.atlnz.lc [10.32.18.43])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(Client did not present a certificate)
+	by gate2.alliedtelesis.co.nz (Postfix) with ESMTPS id 5B07C2C044B;
+	Mon, 24 Jun 2024 14:58:16 +1200 (NZST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=alliedtelesis.co.nz;
+	s=mail181024; t=1719197896;
+	bh=b4PPIWnSntGbucOj7Qa3cqUKyDG1tJZ+G6Ih4WCPC9Q=;
+	h=From:To:Cc:Subject:Date:From;
+	b=Dsy541IrOR2d7+JHSboOJseQcChjXtH3AMCiKMq/ThI06AZChRzDre90/ueGy6KEG
+	 nsOn7SRhoHvUxK93974Deux6kurnivArLz4klNMtvcLV4WPdr4u71BcDP2U/gOb7Aj
+	 rM8eM5tSI3XKwjZ/HlvlDgYO1GQhdqLIImm346mFCtbymD4i3h2RKOwMGZfrlV2keb
+	 ztf+57xL7DMaQPrpQg1Nvy35UGvbldS7RLsSewP5zVXr58G6D+tOBNdr4SIp7bur6s
+	 hB1dPqg6KXosTFLvORaImFOoA1fCvoo+ljQ3/Iqm7EtXVhVx2hEhUcf4YJWZWdjryq
+	 cOq312Bfe3BDQ==
+Received: from pat.atlnz.lc (Not Verified[10.32.16.33]) by svr-chch-seg1.atlnz.lc with Trustwave SEG (v8,2,6,11305)
+	id <B6678e0c80000>; Mon, 24 Jun 2024 14:58:16 +1200
+Received: from chrisp-dl.ws.atlnz.lc (chrisp-dl.ws.atlnz.lc [10.33.22.30])
+	by pat.atlnz.lc (Postfix) with ESMTP id 2856013ED63;
+	Mon, 24 Jun 2024 14:58:16 +1200 (NZST)
+Received: by chrisp-dl.ws.atlnz.lc (Postfix, from userid 1030)
+	id 228A9280AE5; Mon, 24 Jun 2024 14:58:16 +1200 (NZST)
+From: Chris Packham <chris.packham@alliedtelesis.co.nz>
+To: andrew@lunn.ch,
+	f.fainelli@gmail.com,
+	olteanv@gmail.com
+Cc: netdev@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Chris Packham <chris.packham@alliedtelesis.co.nz>,
 	"David S. Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
 	Jakub Kicinski <kuba@kernel.org>,
 	Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH net-next] net: ethernet: mtk_eth_soc: ppe: prevent ppe update for non-mtk devices
-Date: Sun, 23 Jun 2024 20:51:09 +0300
-Message-ID: <20240623175113.24437-1-eladwf@gmail.com>
-X-Mailer: git-send-email 2.45.1
+	=?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Daniel Golle <daniel@makrotopia.org>
+Subject: [PATCH] dt-bindings: net: dsa: mediatek,mt7530: Minor grammar fixes
+Date: Mon, 24 Jun 2024 14:58:11 +1200
+Message-ID: <20240624025812.1729229-1-chris.packham@alliedtelesis.co.nz>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: quoted-printable
+X-SEG-SpamProfiler-Analysis: v=2.4 cv=CvQccW4D c=1 sm=1 tr=0 ts=6678e0c8 a=KLBiSEs5mFS1a/PbTCJxuA==:117 a=T1WGqf2p2xoA:10 a=Mc0CNVgLlbBwIVVfR90A:9 a=3ZKOabzyN94A:10
+X-SEG-SpamProfiler-Score: 0
+x-atlnz-ls: pat
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240623_105137_285964_0CE53F3E 
-X-CRM114-Status: GOOD (  11.78  )
+X-CRM114-CacheID: sfid-20240623_195820_806979_D53AF456 
+X-CRM114-Status: GOOD (  11.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,31 +100,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce an additional validation to ensure that the PPE index
-is modified exclusively for mtk_eth ingress devices.
-This primarily addresses the issue related
-to WED operation with multiple PPEs.
+Update the mt7530 binding with some minor updates that make the document
+easier to read.
 
-Fixes: dee4dd10c79a ("net: ethernet: mtk_eth_soc: ppe: add support for multiple PPEs")
-Signed-off-by: Elad Yifee <eladwf@gmail.com>
+Signed-off-by: Chris Packham <chris.packham@alliedtelesis.co.nz>
 ---
- drivers/net/ethernet/mediatek/mtk_ppe_offload.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-index f80af73d0a1b..f20bb390df3a 100644
---- a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-+++ b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-@@ -266,7 +266,7 @@ mtk_flow_offload_replace(struct mtk_eth *eth, struct flow_cls_offload *f,
- 		flow_rule_match_meta(rule, &match);
- 		if (mtk_is_netsys_v2_or_greater(eth)) {
- 			idev = __dev_get_by_index(&init_net, match.key->ingress_ifindex);
--			if (idev) {
-+			if (idev && idev->netdev_ops == eth->netdev[0]->netdev_ops) {
- 				struct mtk_mac *mac = netdev_priv(idev);
- 
- 				if (WARN_ON(mac->ppe_idx >= eth->soc->ppe_num))
--- 
-2.45.1
+Notes:
+    I was referring to this dt binding and found a couple of places where
+    the wording could be improved. I'm not exactly a techical writer but
+    hopefully I've made things a bit better.
+
+ .../devicetree/bindings/net/dsa/mediatek,mt7530.yaml        | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.ya=
+ml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+index 1c2444121e60..6c0abb020631 100644
+--- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
++++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+@@ -22,16 +22,16 @@ description: |
+=20
+   The MT7988 SoC comes with a built-in switch similar to MT7531 as well =
+as four
+   Gigabit Ethernet PHYs. The switch registers are directly mapped into t=
+he SoC's
+-  memory map rather than using MDIO. The switch got an internally connec=
+ted 10G
++  memory map rather than using MDIO. The switch has an internally connec=
+ted 10G
+   CPU port and 4 user ports connected to the built-in Gigabit Ethernet P=
+HYs.
+=20
+-  MT7530 in MT7620AN, MT7620DA, MT7620DAN and MT7620NN SoCs has got 10/1=
+00 PHYs
++  MT7530 in MT7620AN, MT7620DA, MT7620DAN and MT7620NN SoCs have 10/100 =
+PHYs
+   and the switch registers are directly mapped into SoC's memory map rat=
+her than
+   using MDIO. The DSA driver currently doesn't support MT7620 variants.
+=20
+   There is only the standalone version of MT7531.
+=20
+-  Port 5 on MT7530 has got various ways of configuration:
++  Port 5 on MT7530 supports various configurations:
+=20
+     - Port 5 can be used as a CPU port.
+=20
+--=20
+2.45.2
 
 
