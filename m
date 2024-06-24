@@ -4,68 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F16E5C2BD09
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jun 2024 10:47:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B833C2BD05
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jun 2024 10:52:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MfvECMuClkdd2xYhGiO4NC/HKlapaUmfmo0JJt3dr6M=; b=IfKu/EOU1ZAOz4EOn33osoe3ob
-	x1YDZ6FgDresaEaQiEgH/CwsNESydhoOvAF8euDsLyUX/zllrHySX5Zcf8gTL/2paa3dOkfs5Qpi+
-	PXBqz3/2Ww0a7YiFTVGPeGFCq+32JI9uv/s4rJVM+M0AQCDKoArZyPmYc3/qYC+/JhVKGg66hJbBp
-	cgmhVBn8kfy3GPuAc6Qcyez0La8q83xI80ufxNCetdvyBAFH1BIpb+iuNn+2+1/BobeLE3WXe+yWB
-	VGARqgnhNp8L4aUA1TqeCJazK48TuS2bk3OrcHJyKLgSSFSGNn/7dZYGo1vaVCrbHSGKGWdD0PMY/
-	eOppOp4w==;
+	bh=RHvRf15elSFaiTbxNQyuBSkD1wPWTNFLk05m9oxJ58c=; b=1ma7BmY5bS6Tb9GpcDBX66eRcX
+	HjxbgvPvs0BzXSDayqod/5+HWLUrMoroVlSiLNurswdVAYuzS/4Yf2FObkGykZoHLMtHWS5IV2WY6
+	4a8rGHcMinPm01ygZJmt4mUlRoRn3Ny/MnuUHB6+r0eXd5r5qsAnUb07IJVLlKPaG4yevzxY2JiVe
+	qJkV0GeRB1SZyWkbtoA5a1dGYYooi3T0iYzHmFAUs6bJy6arrVdkztRvYPUGHZpDo1qGo5ItHPEOm
+	dS5WGJCbtsn6HpkXE6mLjU0ovdHmlo3h9k7UF+pM3yTEiC99wssmdeRdVfWrimWNup+huUVuSZ4eT
+	KuwNiD3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLhE5-0000000GU43-207i;
-	Mon, 24 Jun 2024 10:47:09 +0000
+	id 1sLhIm-0000000GUqr-48BX;
+	Mon, 24 Jun 2024 10:52:00 +0000
 Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLhDw-0000000GTwX-0Ry0;
-	Mon, 24 Jun 2024 10:47:02 +0000
+	id 1sLhIg-0000000GUpw-2vwa;
+	Mon, 24 Jun 2024 10:51:56 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1719226018;
-	bh=N7etgN4r7YuHpbryZAGdUzymvIiOw4YteMinJ/UaOK4=;
+	s=mail; t=1719226313;
+	bh=zECgMKM9yykTAXEDbgcRVzxyKGAZ3Ejp9Ilu/XnL06Y=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=3VUGTKELcesK7vW3Vfh9zckFAGkd1lPhlvMXAzyUaUP2SpDveHFMeXilidTM6mXux
-	 YlCDs1eIqQCfD3+Q9a8T0FB/n7ayVJ4Vf/j7JNmAXJ1M/1u27jWiFCrWGgy0iCfcPK
-	 TJotqDfSaL8F1zuzbf6T7iVgBj6EbC4CSQ7Q1w4mzLHjkRqcdSPW3ytbdPdaYNYQ8T
-	 gPvTlrbbqmsa/wpSbIt0VkgydO49vXCw9BQmEkl5zJCCRWNFOO1HLm6J9Nvwfqe187
-	 TaAyMu+na7LRWI3kXWMoMnrazYAaGLjugbgi6cAe5xBc4gJIHewb7jieqmhkiaP80o
-	 d+vsdCy46/nQQ==
+	b=Mb0qeF7XFYa8RwDEaUB8FWTMJ5TbhRK3XhkatDPTh3raAj+ayHZTQ8GfuWE16zErP
+	 LHDCvWGqTiLFMlcLJMNk0z/zGn7swRQ5gWTK4y66/PE6xnPl7UZ0w2U/NIkXW3b35i
+	 Qsbe/igmKuCG152SXAp1HgCrqivpg1AfuCeUK3X/Eh1J2VwLl5nYWyzAfUU2bFMuQh
+	 95ZRcbnZUZ/vE4pYpZCTmtbmYU9lRyJorOHFG6hj/CmPwxrpefTkpiMILgQqpCO/jk
+	 lLvhgihXYx4hoLM1HadeTXbBhJ2uSy/M5I6E5/c05qNNF4XvWOjA2MzPUG6+2cgLX5
+	 OsRJgCTtC+pww==
 Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 2D54C37804C6;
-	Mon, 24 Jun 2024 10:46:57 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id A6DE437804C6;
+	Mon, 24 Jun 2024 10:51:52 +0000 (UTC)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: krzk+dt@kernel.org, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: mturquette@baylibre.com, sboyd@kernel.org, robh@kernel.org, 
- conor+dt@kernel.org, matthias.bgg@gmail.com, jassisinghbrar@gmail.com, 
- garmin.chang@mediatek.com, houlong.wei@mediatek.com, 
- Jason-ch.Chen@mediatek.com, amergnat@baylibre.com, Elvis.Wang@mediatek.com, 
- linux-clk@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, kernel@collabora.com
-In-Reply-To: <20240619085322.66716-1-angelogioacchino.delregno@collabora.com>
-References: <20240619085322.66716-1-angelogioacchino.delregno@collabora.com>
-Subject: Re: (subset) [PATCH 1/3] arm64: dts: mediatek: mt8188: Fix
- VPPSYS0/1 node name/compatibles
-Message-Id: <171922601711.121709.12074465182183603791.b4-ty@collabora.com>
-Date: Mon, 24 Jun 2024 12:46:57 +0200
+To: Mark Brown <broonie@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>, 
+ Chen-Yu Tsai <wenst@chromium.org>
+Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+In-Reply-To: <20240620094746.2404753-1-wenst@chromium.org>
+References: <20240620094746.2404753-1-wenst@chromium.org>
+Subject: Re: (subset) [PATCH 0/3] arm64: dts: mediatek: Add MT8186 Voltorb
+ Chromebooks
+Message-Id: <171922631260.124275.13611191482374063756.b4-ty@collabora.com>
+Date: Mon, 24 Jun 2024 12:51:52 +0200
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
 X-Mailer: b4 0.13.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240624_034700_591194_8C17FF10 
-X-CRM114-Status: UNSURE (   5.71  )
+X-CRM114-CacheID: sfid-20240624_035154_912523_4479FC66 
+X-CRM114-Status: UNSURE (   9.15  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -81,18 +80,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 19 Jun 2024 10:53:20 +0200, AngeloGioacchino Del Regno wrote:
-> Like VDOSYS0/1, the VPPSYS0 and VPPSYS1 are syscon nodes, as
-> described by the mediatek,mmsys binding: fix the node name to
-> be syscon@address and add "syscon" to the list of compatible
-> strings for both VPPSYS0 and VPPSYS1.
+On Thu, 20 Jun 2024 17:47:35 +0800, Chen-Yu Tsai wrote:
+> This series adds support for the MT8186 Voltorb Chromebooks. This is yet
+> another product based on the Corsola reference design. This particular
+> version features a higher end spec-ed SoC, necessitating a beefier
+> regulator for the big core cluster.
 > 
+> Patch 1 adds an entry for a new regulator IC. How this differs from
+> the previous iteration is not totally clear.
 > 
+> [...]
 
-Applied to for-next, thanks!
+Applied to v6.10-next/dts64, thanks!
 
-[1/3] arm64: dts: mediatek: mt8188: Fix VPPSYS0/1 node name/compatibles
-      commit: 013b7ab4080af0dccae16c6ea8a1e88ad530114c
+[2/3] dt-bindings: arm: mediatek: Add MT8186 Voltorb Chromebooks
+      commit: 52225f8c1347328168f113cc2c089bf81e6714d6
+[3/3] arm64: dts: mediatek: Add MT8186 Voltorb Chromebooks
+      commit: e612fe2dfd7833ae06e7418eba39d7fbddb36799
 
 Cheers,
 Angelo
