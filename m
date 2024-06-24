@@ -4,89 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39805C2BD09
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jun 2024 19:03:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D76A3C2BD09
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jun 2024 19:32:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Mime-Version:References:In-Reply-To:Message-Id:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Q74uyUcwtRDpcu2Zgpqe2KqUuJaFev3sdVMOm6XlEk8=; b=ULvdkn8I/ln9xkqeNrDNCAiyzO
-	WPHnnIlsjktE+LHRWrO003t7+wOgTx+fJScufACmUzIWhc8pbQzmfbF7Dye4fkPssW4V30x7NUJMR
-	v/GJ4k/ra8ID9Ih9qH/yCHeC/20S+JFd20CZRqZff+ttc7gGXkLY0oiVkVYurCTHjM9RqbZoB0e3X
-	G8likYtP3UIquhKtqwn3R+WTVD20pLiCTOsV51FwZ0T1b2Ro/A4KBi/C5eef8pGq6RO9c/oSgeyl6
-	2LfWbwu8PD5UHY4VKMBh2/7bJ8wNhwKNErLlYgVLmS3xmEn/00dkA9gGNrNZifU+XO7gBJyYimAM9
-	O+2L5UZQ==;
+	bh=IpF2fYAilGhMjyfSOvf19Qk9YyqYnBqRDnhMTosne6k=; b=NLV6fvpAShRWISF4k/q7cGXEJM
+	AFErOAD5/opAU5zgTzmStVLT17OHLnB/VwkKqmc3lYlufwJ2H+kzuuCa+2QIUVxmS0jmYPZ82ImsV
+	uxjW5bEULAVTNWPcwqM7LW/HqJ7vGkg+D5iLs/Y8JFWlyqxyWbn3g7JRZuxh6k8T2p4Ae4i+Lt6xC
+	H1NhZmLeT3mWCJJtTXTG5uAUtOrvpyghiZp293HubQ7SoOdj2a19wFobT5U5Zt53tijES8fkKk2gZ
+	YP/6TuCvOqhqhtkIUUGQQKIVtagLwTlAhLCtn64x2M1QmHDjmWzIj2ZlHQIYmYTRxJnIzDH3bDvfY
+	ojQc0koQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLoyN-00000000N01-0nso;
-	Mon, 24 Jun 2024 19:03:27 +0000
-Received: from nbd.name ([46.4.11.11])
+	id 1sLpQ4-00000000R7o-0myS;
+	Mon, 24 Jun 2024 19:32:04 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLoyK-00000000MyQ-0FIV
-	for linux-mediatek@lists.infradead.org;
-	Mon, 24 Jun 2024 19:03:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
-	s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:References:
-	Cc:To:From:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
-	List-Post:List-Owner:List-Archive;
-	bh=Q74uyUcwtRDpcu2Zgpqe2KqUuJaFev3sdVMOm6XlEk8=; b=mmrdHLaDBaewrUYO22AwvAhp5r
-	iifeg5y9wQjUtqT1ho55eyuPUTwNnZfs9PBTJrbuVaCqDtPHQr57fH03AqTwD1xCO58GSyG7h3xNL
-	KRolRxX6MNSDBPbrKMz7YkG+llCBWUWKAQCZaGdUFBP7qzbR+NQfh5VdAcTpSp7ykMCY=;
-Received: from p4ff13dca.dip0.t-ipconnect.de ([79.241.61.202] helo=nf.local)
-	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-	(Exim 4.96)
-	(envelope-from <nbd@nbd.name>)
-	id 1sLoyB-00GidT-02;
-	Mon, 24 Jun 2024 21:03:15 +0200
-Message-ID: <4c02983e-2377-4c26-bcd6-3100eea19aeb@nbd.name>
-Date: Mon, 24 Jun 2024 21:03:14 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 37/47] wifi: mt76: mt762x: extend
- mt76_connac_mcu_sta_basic_tlv for per-link STA
-From: Felix Fietkau <nbd@nbd.name>
-To: sean.wang@kernel.org, lorenzo.bianconi@redhat.com
-Cc: sean.wang@mediatek.com, deren.wu@mediatek.com,
- mingyen.hsieh@mediatek.com, linux-wireless@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-References: <20240613030241.5771-1-sean.wang@kernel.org>
- <20240613030241.5771-38-sean.wang@kernel.org>
- <94abc74b-dcd5-47b2-9364-cfd5d3f28846@nbd.name>
-Content-Language: en-US
-Autocrypt: addr=nbd@nbd.name; keydata=
- xsDiBEah5CcRBADIY7pu4LIv3jBlyQ/2u87iIZGe6f0f8pyB4UjzfJNXhJb8JylYYRzIOSxh
- ExKsdLCnJqsG1PY1mqTtoG8sONpwsHr2oJ4itjcGHfn5NJSUGTbtbbxLro13tHkGFCoCr4Z5
- Pv+XRgiANSpYlIigiMbOkide6wbggQK32tC20QxUIwCg4k6dtV/4kwEeiOUfErq00TVqIiEE
- AKcUi4taOuh/PQWx/Ujjl/P1LfJXqLKRPa8PwD4j2yjoc9l+7LptSxJThL9KSu6gtXQjcoR2
- vCK0OeYJhgO4kYMI78h1TSaxmtImEAnjFPYJYVsxrhay92jisYc7z5R/76AaELfF6RCjjGeP
- wdalulG+erWju710Bif7E1yjYVWeA/9Wd1lsOmx6uwwYgNqoFtcAunDaMKi9xVQW18FsUusM
- TdRvTZLBpoUAy+MajAL+R73TwLq3LnKpIcCwftyQXK5pEDKq57OhxJVv1Q8XkA9Dn1SBOjNB
- l25vJDFAT9ntp9THeDD2fv15yk4EKpWhu4H00/YX8KkhFsrtUs69+vZQwc0cRmVsaXggRmll
- dGthdSA8bmJkQG5iZC5uYW1lPsJgBBMRAgAgBQJGoeQnAhsjBgsJCAcDAgQVAggDBBYCAwEC
- HgECF4AACgkQ130UHQKnbvXsvgCgjsAIIOsY7xZ8VcSm7NABpi91yTMAniMMmH7FRenEAYMa
- VrwYTIThkTlQzsFNBEah5FQQCACMIep/hTzgPZ9HbCTKm9xN4bZX0JjrqjFem1Nxf3MBM5vN
- CYGBn8F4sGIzPmLhl4xFeq3k5irVg/YvxSDbQN6NJv8o+tP6zsMeWX2JjtV0P4aDIN1pK2/w
- VxcicArw0VYdv2ZCarccFBgH2a6GjswqlCqVM3gNIMI8ikzenKcso8YErGGiKYeMEZLwHaxE
- Y7mTPuOTrWL8uWWRL5mVjhZEVvDez6em/OYvzBwbkhImrryF29e3Po2cfY2n7EKjjr3/141K
- DHBBdgXlPNfDwROnA5ugjjEBjwkwBQqPpDA7AYPvpHh5vLbZnVGu5CwG7NAsrb2isRmjYoqk
- wu++3117AAMFB/9S0Sj7qFFQcD4laADVsabTpNNpaV4wAgVTRHKV/kC9luItzwDnUcsZUPdQ
- f3MueRJ3jIHU0UmRBG3uQftqbZJj3ikhnfvyLmkCNe+/hXhPu9sGvXyi2D4vszICvc1KL4RD
- aLSrOsROx22eZ26KqcW4ny7+va2FnvjsZgI8h4sDmaLzKczVRIiLITiMpLFEU/VoSv0m1F4B
- FtRgoiyjFzigWG0MsTdAN6FJzGh4mWWGIlE7o5JraNhnTd+yTUIPtw3ym6l8P+gbvfoZida0
- TspgwBWLnXQvP5EDvlZnNaKa/3oBes6z0QdaSOwZCRA3QSLHBwtgUsrT6RxRSweLrcabwkkE
- GBECAAkFAkah5FQCGwwACgkQ130UHQKnbvW2GgCeMncXpbbWNT2AtoAYICrKyX5R3iMAoMhw
- cL98efvrjdstUfTCP2pfetyN
-In-Reply-To: <94abc74b-dcd5-47b2-9364-cfd5d3f28846@nbd.name>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+	id 1sLpPx-00000000R54-14VC;
+	Mon, 24 Jun 2024 19:31:59 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id E3B5261088;
+	Mon, 24 Jun 2024 19:31:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2F22EC2BBFC;
+	Mon, 24 Jun 2024 19:31:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linux-foundation.org;
+	s=korg; t=1719257515;
+	bh=WO5bItYsgm4x9pwloWwGJ++ymNZPqAykTIN55gh+o5Q=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=f2mQW5BI1BXSMdaSW0V2Eg2aSozyjzN8w5GvF3HdsotTv/seex9KXpqX7pSSkiX6Z
+	 gJ6urvSNN9CsZd1fS3AXc/JIbrrRicuswhDOGtkBkdqAmy4NteCbmm0KqgjQn3CyyA
+	 6cywjTV53TQt5Q+7hM/QEsbSNjWjDSYqgoXyhPq4=
+Date: Mon, 24 Jun 2024 12:31:54 -0700
+From: Andrew Morton <akpm@linux-foundation.org>
+To: kernel test robot <lkp@intel.com>
+Cc: Linux Memory Management List <linux-mm@kvack.org>,
+ amd-gfx@lists.freedesktop.org, imx@lists.linux.dev,
+ intel-xe@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-input@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-mtd@lists.infradead.org,
+ linux-trace-kernel@vger.kernel.org, netdev@vger.kernel.org, Mark Brown
+ <broonie@kernel.org>, Baolin Wang <baolin.wang@linux.alibaba.com>
+Subject: Re: [linux-next:master] BUILD REGRESSION
+ f76698bd9a8ca01d3581236082d786e9a6b72bb7
+Message-Id: <20240624123154.4c3125c3093636de35b407dd@linux-foundation.org>
+In-Reply-To: <202406230716.DQbMBKh0-lkp@intel.com>
+References: <202406230716.DQbMBKh0-lkp@intel.com>
+X-Mailer: Sylpheed 3.8.0beta1 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240624_120324_130908_9B582B99 
-X-CRM114-Status: UNSURE (   9.63  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240624_123157_441289_EB099E3C 
+X-CRM114-Status: GOOD (  13.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,33 +74,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 24.06.24 19:44, Felix Fietkau wrote:
-> On 13.06.24 05:02, sean.wang@kernel.org wrote:
->> From: Sean Wang <sean.wang@mediatek.com>
->> 
->> Extend mt76_connac_mcu_sta_basic_tlv with the per-link STA configuration.
->> 
->> The patch we created is a prerequisite to enable the MLO function in the
->> driver. It is purely a refactoring patch so the functionality should
->> remain unchanged.
->> 
->> Co-developed-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
->> Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
->> Co-developed-by: Deren Wu <deren.wu@mediatek.com>
->> Signed-off-by: Deren Wu <deren.wu@mediatek.com>
->> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+On Sun, 23 Jun 2024 07:11:24 +0800 kernel test robot <lkp@intel.com> wrote:
+
+> tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git master
+> branch HEAD: f76698bd9a8ca01d3581236082d786e9a6b72bb7  Add linux-next specific files for 20240621
 > 
-> This patch is broken on non-mt762x drivers, because the functions that
-> call mt76_connac_mcu_sta_basic_tlv may be called with sta == NULL.
+> Error/Warning reports:
 > 
-> I've seen it crash on mt7996 because of that, but mt7915 and mt7615 are
-> likely equally affected.
+> https://lore.kernel.org/oe-kbuild-all/202406220536.JnAncjqz-lkp@intel.com
+> https://lore.kernel.org/oe-kbuild-all/202406220754.evK8Hrjw-lkp@intel.com
+> 
+> Error/Warning: (recently discovered and may have been fixed)
+> 
+> drivers/soc/qcom/smsm.c:(.text.qcom_smsm_remove+0x70): undefined reference to `mbox_free_channel'
+> 
+> Unverified Error/Warning (likely false positive, please contact us if interested):
+> 
+> include/linux/container_of.h:20:54: error: invalid use of undefined type 'struct thpsize'
+> include/linux/list.h:645:25: error: invalid use of undefined type 'struct thpsize'
+> include/linux/stddef.h:16:33: error: invalid use of undefined type 'struct thpsize'
+> mm/huge_memory.c:455:21: error: implicit declaration of function 'to_thpsize'; did you mean 'thp_size'? [-Werror=implicit-function-declaration]
+> mm/huge_memory.c:455:37: error: invalid type argument of '->' (have 'int')
+> mm/huge_memory.c:558:35: error: 'MTHP_STAT_FILE_ALLOC' undeclared (first use in this function); did you mean 'THP_FILE_ALLOC'?
+> mm/huge_memory.c:559:38: error: 'MTHP_STAT_FILE_FALLBACK' undeclared (first use in this function); did you mean 'THP_FILE_FALLBACK'?
+> mm/huge_memory.c:560:45: error: 'MTHP_STAT_FILE_FALLBACK_CHARGE' undeclared (first use in this function); did you mean 'THP_FILE_FALLBACK_CHARGE'?
+> mm/huge_memory.c:579:17: warning: assignment to 'struct thpsize *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+> mm/huge_memory.c:579:33: error: invalid application of 'sizeof' to incomplete type 'struct thpsize'
+> mm/huge_memory.c:583:44: error: invalid use of undefined type 'struct thpsize'
+> mm/huge_memory.c:608:15: warning: passing argument 1 of 'kfree' makes pointer from integer without a cast [-Wint-conversion]
+> 
+>
+> ...
+>
+>
+> |-- x86_64-randconfig-014-20240202
+> |   |-- include-linux-container_of.h:error:invalid-use-of-undefined-type-struct-thpsize
+> |   |-- include-linux-list.h:error:invalid-use-of-undefined-type-struct-thpsize
+> |   |-- include-linux-stddef.h:error:invalid-use-of-undefined-type-struct-thpsize
+> |   |-- mm-huge_memory.c:error:MTHP_STAT_FILE_ALLOC-undeclared-(first-use-in-this-function)
+> |   |-- mm-huge_memory.c:error:MTHP_STAT_FILE_FALLBACK-undeclared-(first-use-in-this-function)
+> |   |-- mm-huge_memory.c:error:MTHP_STAT_FILE_FALLBACK_CHARGE-undeclared-(first-use-in-this-function)
+> |   |-- mm-huge_memory.c:error:implicit-declaration-of-function-to_thpsize
+> |   |-- mm-huge_memory.c:error:invalid-application-of-sizeof-to-incomplete-type-struct-thpsize
+> |   |-- mm-huge_memory.c:error:invalid-type-argument-of-(have-int-)
+> |   |-- mm-huge_memory.c:error:invalid-use-of-undefined-type-struct-thpsize
+> |   |-- mm-huge_memory.c:warning:assignment-to-struct-thpsize-from-int-makes-pointer-from-integer-without-a-cast
+> |   `-- mm-huge_memory.c:warning:passing-argument-of-kfree-makes-pointer-from-integer-without-a-cast
 
-I've pushed a fixed version to my tree. Please check if it looks correct 
-to you.
+Is there a way for us to obtain that config file?
 
-Thanks,
+"mm: shmem: add multi-size THP sysfs interface for anonymous shmem"
+moved things into mm_tytpes.h but didn't include it so perhaps this
+will fix:
 
-- Felix
+--- a/mm/huge_memory.c~mm-shmem-add-multi-size-thp-sysfs-interface-for-anonymous-shmem-fix-4
++++ a/mm/huge_memory.c
+@@ -20,6 +20,7 @@
+ #include <linux/swapops.h>
+ #include <linux/backing-dev.h>
+ #include <linux/dax.h>
++#include <linux/mm_types.h>
+ #include <linux/khugepaged.h>
+ #include <linux/freezer.h>
+ #include <linux/pfn_t.h>
+_
 
 
