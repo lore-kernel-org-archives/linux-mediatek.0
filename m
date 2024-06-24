@@ -4,50 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 731D9C2BD05
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jun 2024 07:57:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7898C2BD05
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jun 2024 08:01:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=e9o/s5GBz3Bk0lu4dj+SGgPoF7POFTxFoymgAJ3zmhM=; b=kkbFLd8Ee5TxNccyhkU1Nw8GsB
-	OQsuWnpAtjSx0L8K2GK2DNSTSUHE4idOgd9xIkRIQf81kmC7yqiOz0QvQJfGtw1AMSrSt4anSmg6O
-	GWMt4cQ+1TVTfNmH1xklyEKDefJVtwL6DFem+V45556VrdH2R6kEEdKRBdMN+dvSjrYpZYeUoAJIi
-	VkqZZHmmt4wbr5xFV3oxaiBHNbGpin6A/ji+apoWdAlrzyk14yXkSpSeSDXOFNfpwwF9msXE0yzAj
-	tXkON8iRBuf0v0GFAzt+ypl8h3UPSdwp97VBxOEOUHZ9CiRMF/7qKZPyyeoLTEoEY25a7lvKQxXWB
-	BF9N83nA==;
+	bh=35w0yn+Mdu0tEwEfQupe4DkFwOEm8zqOcq9b0vzUj0U=; b=XvCkYxqiRgTtrTcxvmJiuOmrXw
+	2lapSGlbMvT6hbGDq4J0chA4RzMpRK4tAEwiw+Hh7vQ8bHFz6Kqik/0nXZZdCNBiqcwSa/8TZMrHd
+	AYB2LMTEUcO8vgXq3ZNCz20MuneqsjUfLljCihafwlb+dG41vcUbCyp0DAE6Fp3L8q40QF/4PYvn+
+	Nr84/2iKoaY46ZciN9oRdz1JSCGSlLjfVZrHAVFAAFJI4Ec9bfsKGUOx4ozc9Jbyk0X7W+zCFnPLZ
+	JPDSSB+01G4xcZ+pQ9TRMa2FEQRpDthY2CgcNN8xN3n/yLHrGKD3vhJIJgUERNUrVJBkO+QOEsI1S
+	YmN+4tLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLeZc-0000000Fwn2-00Tu;
-	Mon, 24 Jun 2024 07:57:12 +0000
+	id 1sLeds-0000000FxdM-0wkP;
+	Mon, 24 Jun 2024 08:01:36 +0000
 Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLeZV-0000000Fwla-2R4u;
-	Mon, 24 Jun 2024 07:57:07 +0000
+	id 1sLedm-0000000Fxbn-1Czz;
+	Mon, 24 Jun 2024 08:01:31 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1719215823;
-	bh=KlmMThD71Ri51F5dZcgy1vSyJkP6qPTbsfnWV9hwHVg=;
+	s=mail; t=1719216088;
+	bh=kHRWpyF7NJn1bOOBzeg2G8XXsr8NWFrJX5UZ5Xuq2b0=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=R19dKTyZiZnzEISb1VEFACE6BLXvcseT8hqDlsIm7Q09tmbQtZYQ53hCkbmXTJWfd
-	 pQBQemxsZCk2U0D9El6g1I8zA9zffG/XyhyomsfRZX4r+FfohHVrcF1VdUOQAUhl/3
-	 6C0ko3+o4OOuz+2POk9I79VCo9MrAEOUoHBYG3PlximWZKpHAq+XPKxo8ucze7dXiA
-	 PQXjpfOvAePaX+uGSukrWcbHjj1StTeIPAHFwK2BfEOe9CZvjNvOeD+B66jvDH/O7n
-	 ghKEwMbw7amd7+rzR1qEH24BHdPIzaabt/M/rO+tCCrSLDK+L+X43gvcDUqFCtEvgm
-	 sHE5KiAn+HxUg==
+	b=oI+18wCFOeHvFSOaqzR6LTIEK9rPoCJ2lHoL1XI15Q/qmPdogSOzPqcPDyew9YeOe
+	 V3dMyO1DUCmPG70vH7yElqt1Jm248rPtYw8FXM/Z36NsbqtQekR3XWShStgdehv8Is
+	 GrvgPV2btNkZOx2yIhi/pB4mvFoUIVuFQl6QOAANfjrUvfkdJd8RKSPvY+goMH2ck6
+	 dBF6Mky0QQdxDbbEqMd8bFFXj7oVRfvSgDj3wbAZO51vOTwcKDgk8Ry3KiccegKddm
+	 0WrnMPqYezykG1uvKfxMpOzbrIrrEzB9IJUCpEUXBYU4kvFU75iGfJ8hXlbelnNM63
+	 1T2xUf7WCZg2g==
 Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 4F5EE378216B;
-	Mon, 24 Jun 2024 07:57:02 +0000 (UTC)
-Message-ID: <c63ed7fc-f568-48b1-ad5d-a37b4b475016@collabora.com>
-Date: Mon, 24 Jun 2024 09:57:01 +0200
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 69F403781022;
+	Mon, 24 Jun 2024 08:01:27 +0000 (UTC)
+Message-ID: <ee7ef59d-a698-41ba-a3a6-1e9e32313e2d@collabora.com>
+Date: Mon, 24 Jun 2024 10:01:26 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/4] PCI: mediatek-gen3: Add mtk_pcie_soc data structure
+Subject: Re: [PATCH 3/4] PCI: mediatek-gen3: rely on reset_bulk APIs for phy
+ reset lines
 To: Lorenzo Bianconi <lorenzo@kernel.org>, linux-pci@vger.kernel.org
 Cc: ryder.lee@mediatek.com, lpieralisi@kernel.org, kw@linux.com,
  robh@kernel.org, bhelgaas@google.com, linux-mediatek@lists.infradead.org,
@@ -55,15 +56,15 @@ Cc: ryder.lee@mediatek.com, lpieralisi@kernel.org, kw@linux.com,
  krzysztof.kozlowski+dt@linaro.org, devicetree@vger.kernel.org, nbd@nbd.name,
  dd@embedd.com, upstream@airoha.com
 References: <cover.1718980864.git.lorenzo@kernel.org>
- <a49a36c4ca336dee909e16865d6fec0dd83b3f38.1718980864.git.lorenzo@kernel.org>
+ <e8ab615a56759a4832833211257d83f56bf64303.1718980864.git.lorenzo@kernel.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <a49a36c4ca336dee909e16865d6fec0dd83b3f38.1718980864.git.lorenzo@kernel.org>
+In-Reply-To: <e8ab615a56759a4832833211257d83f56bf64303.1718980864.git.lorenzo@kernel.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240624_005705_795516_1548CA32 
-X-CRM114-Status: GOOD (  17.02  )
+X-CRM114-CacheID: sfid-20240624_010130_508892_A774E2B4 
+X-CRM114-Status: GOOD (  23.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,75 +80,167 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 21/06/24 16:48, Lorenzo Bianconi ha scritto:
-> Introduce mtk_pcie_soc data structure in order to define multiple
-> callbacks for each supported SoC. This is a preliminary patch to
-> introduce EN7581 pcie support.
+> Use reset_bulk APIs to manage phy reset lines. This is a preliminary
+> patch in order to add Airoha EN7581 pcie support.
 > 
 > Tested-by: Zhengping Zhang <zhengping.zhang@airoha.com>
 > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 > ---
->   drivers/pci/controller/pcie-mediatek-gen3.c | 24 ++++++++++++++++++---
->   1 file changed, 21 insertions(+), 3 deletions(-)
+>   drivers/pci/controller/pcie-mediatek-gen3.c | 49 ++++++++++++++++-----
+>   1 file changed, 37 insertions(+), 12 deletions(-)
 > 
 > diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
-> index 975b3024fb08..4859bd875bc4 100644
+> index 4859bd875bc4..9842617795a9 100644
 > --- a/drivers/pci/controller/pcie-mediatek-gen3.c
 > +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-> @@ -100,6 +100,16 @@
+> @@ -100,14 +100,21 @@
 >   #define PCIE_ATR_TLP_TYPE_MEM		PCIE_ATR_TLP_TYPE(0)
 >   #define PCIE_ATR_TLP_TYPE_IO		PCIE_ATR_TLP_TYPE(2)
 >   
-> +struct mtk_gen3_pcie;
+> +#define MAX_NUM_PHY_RSTS		1
 > +
-> +/**
-> + * struct mtk_pcie_soc - differentiate between host generations
-
-mtk_gen3_pcie_pdata ?
-
-> + * @power_up: pcie power_up callback
-> + */
-> +struct mtk_pcie_soc {
-> +	int (*power_up)(struct mtk_gen3_pcie *pcie);
-> +};
-> +
+>   struct mtk_gen3_pcie;
+>   
 >   /**
->    * struct mtk_msi_set - MSI information for each set
->    * @base: IO mapped register base
-> @@ -131,6 +141,7 @@ struct mtk_msi_set {
->    * @msi_sets: MSI sets information
->    * @lock: lock protecting IRQ bit map
->    * @msi_irq_in_use: bit map for assigned MSI IRQ
-> + * @soc: pointer to SoC-dependent operations
+>    * struct mtk_pcie_soc - differentiate between host generations
+>    * @power_up: pcie power_up callback
+> + * @phy_resets: phy reset lines SoC data.
 >    */
->   struct mtk_gen3_pcie {
->   	struct device *dev;
-> @@ -151,6 +162,8 @@ struct mtk_gen3_pcie {
->   	struct mtk_msi_set msi_sets[PCIE_MSI_SET_NUM];
->   	struct mutex lock;
->   	DECLARE_BITMAP(msi_irq_in_use, PCIE_MSI_IRQS_NUM);
-> +
-> +	const struct mtk_pcie_soc *soc;
+>   struct mtk_pcie_soc {
+>   	int (*power_up)(struct mtk_gen3_pcie *pcie);
+> +	struct {
+> +		const char *id[MAX_NUM_PHY_RSTS];
+> +		int num_rsts;
+
+Well, it's just two chars after all, so "num_resets" looks better imo.
+
+> +	} phy_resets;
 >   };
 >   
->   /* LTSSM state in PCIE_LTSSM_STATUS_REG bit[28:24] */
-> @@ -904,7 +917,7 @@ static int mtk_pcie_setup(struct mtk_gen3_pcie *pcie)
->   	usleep_range(10, 20);
+>   /**
+> @@ -128,7 +135,7 @@ struct mtk_msi_set {
+>    * @base: IO mapped register base
+>    * @reg_base: physical register base
+>    * @mac_reset: MAC reset control
+> - * @phy_reset: PHY reset control
+> + * @phy_resets: PHY reset controllers
+>    * @phy: PHY controller block
+>    * @clks: PCIe clocks
+>    * @num_clks: PCIe clocks count for this port
+> @@ -148,7 +155,7 @@ struct mtk_gen3_pcie {
+>   	void __iomem *base;
+>   	phys_addr_t reg_base;
+>   	struct reset_control *mac_reset;
+> -	struct reset_control *phy_reset;
+> +	struct reset_control_bulk_data phy_resets[MAX_NUM_PHY_RSTS];
+>   	struct phy *phy;
+>   	struct clk_bulk_data *clks;
+>   	int num_clks;
+> @@ -790,8 +797,8 @@ static int mtk_pcie_parse_port(struct mtk_gen3_pcie *pcie)
+>   {
+>   	struct device *dev = pcie->dev;
+>   	struct platform_device *pdev = to_platform_device(dev);
+> +	int i, ret, num_rsts = pcie->soc->phy_resets.num_rsts; >   	struct resource *regs;
+> -	int ret;
 >   
->   	/* Don't touch the hardware registers before power up */
-> -	err = mtk_pcie_power_up(pcie);
-> +	err = pcie->soc->power_up(pcie);
->   	if (err)
->   		return err;
+>   	regs = platform_get_resource_byname(pdev, IORESOURCE_MEM, "pcie-mac");
+>   	if (!regs)
+> @@ -804,12 +811,13 @@ static int mtk_pcie_parse_port(struct mtk_gen3_pcie *pcie)
 >   
-> @@ -939,6 +952,7 @@ static int mtk_pcie_probe(struct platform_device *pdev)
->   	pcie = pci_host_bridge_priv(host);
+>   	pcie->reg_base = regs->start;
 >   
->   	pcie->dev = dev;
-> +	pcie->soc = of_device_get_match_data(dev);
+> -	pcie->phy_reset = devm_reset_control_get_optional_exclusive(dev, "phy");
+> -	if (IS_ERR(pcie->phy_reset)) {
+> -		ret = PTR_ERR(pcie->phy_reset);
+> -		if (ret != -EPROBE_DEFER)
+> -			dev_err(dev, "failed to get PHY reset\n");
+> +	for (i = 0; i < num_rsts; i++)
+> +		pcie->phy_resets[i].id = pcie->soc->phy_resets.id[i];
+>   
+> +	ret = devm_reset_control_bulk_get_optional_shared(dev, num_rsts,
+> +							  pcie->phy_resets);
 
-device_get_match_data() can also be used here :-)
+92 columns is ok, you can use one line for that.
+
+> +	if (ret) {
+> +		dev_err(dev, "failed to get PHY bulk reset\n");
+>   		return ret;
+>   	}
+>   
+> @@ -846,7 +854,12 @@ static int mtk_pcie_power_up(struct mtk_gen3_pcie *pcie)
+>   	int err;
+>   
+>   	/* PHY power on and enable pipe clock */
+> -	reset_control_deassert(pcie->phy_reset);
+> +	err = reset_control_bulk_deassert(pcie->soc->phy_resets.num_rsts,
+> +					  pcie->phy_resets);
+> +	if (err) {
+> +		dev_err(dev, "failed to deassert PHYs\n");
+> +		return err;
+> +	}
+>   
+>   	err = phy_init(pcie->phy);
+>   	if (err) {
+> @@ -882,7 +895,8 @@ static int mtk_pcie_power_up(struct mtk_gen3_pcie *pcie)
+>   err_phy_on:
+>   	phy_exit(pcie->phy);
+>   err_phy_init:
+> -	reset_control_assert(pcie->phy_reset);
+> +	reset_control_bulk_assert(pcie->soc->phy_resets.num_rsts,
+> +				  pcie->phy_resets);
+
+same here
+
+>   
+>   	return err;
+>   }
+> @@ -897,7 +911,8 @@ static void mtk_pcie_power_down(struct mtk_gen3_pcie *pcie)
+>   
+>   	phy_power_off(pcie->phy);
+>   	phy_exit(pcie->phy);
+> -	reset_control_assert(pcie->phy_reset);
+> +	reset_control_bulk_assert(pcie->soc->phy_resets.num_rsts,
+> +				  pcie->phy_resets);
+
+ditto
+
+>   }
+>   
+>   static int mtk_pcie_setup(struct mtk_gen3_pcie *pcie)
+> @@ -912,7 +927,13 @@ static int mtk_pcie_setup(struct mtk_gen3_pcie *pcie)
+>   	 * The controller may have been left out of reset by the bootloader
+>   	 * so make sure that we get a clean start by asserting resets here.
+>   	 */
+> -	reset_control_assert(pcie->phy_reset);
+> +	reset_control_bulk_deassert(pcie->soc->phy_resets.num_rsts,
+> +				    pcie->phy_resets);
+
+and again...
+
+> +	usleep_range(5000, 10000);
+> +	reset_control_bulk_assert(pcie->soc->phy_resets.num_rsts,
+> +				  pcie->phy_resets);
+
+.... :-)
 
 Cheers,
 Angelo
+
+> +	msleep(100);
+> +
+>   	reset_control_assert(pcie->mac_reset);
+>   	usleep_range(10, 20);
+>   
+> @@ -1090,6 +1111,10 @@ static const struct dev_pm_ops mtk_pcie_pm_ops = {
+>   
+>   static const struct mtk_pcie_soc mtk_pcie_soc_mt8192 = {
+>   	.power_up = mtk_pcie_power_up,
+> +	.phy_resets = {
+> +		.id[0] = "phy",
+> +		.num_rsts = 1,
+> +	},
+>   };
+>   
+>   static const struct of_device_id mtk_pcie_of_match[] = {
 
 
