@@ -4,72 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1975C3064D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jun 2024 16:44:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32B2EC3064D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jun 2024 16:44:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8kHPT/Sbn+YowQq/I8VGD+WkhOqD5j84bm9SVl0pb1A=; b=gWevtq0eVXg2Ix0jBKtOhiLVsW
-	JceNxhPLGfJhM7gLLD9SZbfLJCEpn90+1b3ML7mFjcJgUNSDVW2Wtjc0oXXehVECyuEqvLMHAdgww
-	Pcd3VUpw202V0coniapCnpdycaypPz3rBiz9sdBmCSyVFAPPOjad+xT100sB3ybxk7jK66w5CcsiT
-	yG9S8gtQpKHaqQ33RuiCe4qY5IYoxwtRLgWEK+mY6Jz24g67k2B3XMyxVA6/eJbtgxpsFxhijr84l
-	URGujAL7+zbxpYwjrBMkx52FB3rjAy8Nd3iW5t5+q4E0XGxCiRIExECY10HnRQluI4+DF/vykxVZD
-	D1I/eYHA==;
+	bh=uw74zf66DQORFJn85kqFB7s36On7KUi5ywYxV+PBn+Q=; b=Xln2lVWJaS5KIgcrZ+BrpUybKA
+	dnO4eg/wlKvNRU+kiHD8yS3z2+xukIqyIhSNH7Xd7kB6fgOQYnVqqobS8jjWAsOYYrgmIW2194Swv
+	3TPOIAil8c33KaodTJXfVoxBpiJK+7oaMSasImwQs5y8eo27/WmAf30CAVM5B3dcxtR+6IdW+vwKz
+	cjL7zReigdpysQEqZn459K4SR5sHz8vCtzIzQ0mJY6Lynyh/ibtgo15gUPMgg3F3qcuGiJBXxMqHq
+	NDOOXSK/xnLVZZSENqjzacrKko1eiW5YLSPcAouRv8sNDRinv1RDo5KtqQzWfemms6ybzMH6/dzRv
+	QjUOshFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLmnd-0000000HZNg-0obt;
-	Mon, 24 Jun 2024 16:44:13 +0000
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+	id 1sLmnf-0000000HZPF-3Ce4;
+	Mon, 24 Jun 2024 16:44:15 +0000
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLmnW-0000000HZJr-0yFX;
-	Mon, 24 Jun 2024 16:44:08 +0000
-Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-4217d451f69so38840125e9.0;
-        Mon, 24 Jun 2024 09:44:05 -0700 (PDT)
+	id 1sLmnY-0000000HZKU-0hSu;
+	Mon, 24 Jun 2024 16:44:09 +0000
+Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-4218180a122so34877045e9.1;
+        Mon, 24 Jun 2024 09:44:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1719247445; x=1719852245; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1719247446; x=1719852246; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=8kHPT/Sbn+YowQq/I8VGD+WkhOqD5j84bm9SVl0pb1A=;
-        b=gszrIUL9V66iX21uVcU+KLg6FuEEjO1n8N043yAEvvP0iXyYmIxWsKDbkSzuKjGSH9
-         g9j9u/hCgC6rPLzLAFQfeoYFvG5ivyCODNHfbje+zOKLjiKOZZn2f3T8BMPhxp5BE2V2
-         bxQyyt64j+Jyp3mCJPGX3dNIPvfXmbzX2yMQCmDP/LJq2NpenW5zUSlF6UIUrkqiy4he
-         cr7hRyLx8yYUkYo3nT2c/eJepvYwF33ab5gLcXSVfGVtMtlJyhD2aPnVJIE7mDBm24KB
-         bPoeS6/n+PP7Uy38htgqVDdANiQd+Uy+i3PiUU3U1b9HkiNPaqeEYgxW1dSlJpSJmvsv
-         kkrQ==
+        bh=uw74zf66DQORFJn85kqFB7s36On7KUi5ywYxV+PBn+Q=;
+        b=E+RzWzMNXvg08HL4QTjwEhj4vKkDTx/sEyRzN6UZF7vAeA+fcMsCwOLMC8JmVLHDT5
+         pl6PPsTzvpOXntaZKVxyG6G43wb+ijrnI+IlN6Qfj2quzThHujxRFIPIoujwsYKG3ygH
+         k9zH8qn+XIZBN8ewTrgnD8/UJ4L0EdDM4XzpcBSm3I9n038wLs7+qxSrH+5Hut8us3g9
+         fUhfKHcjJcShRe+ibmdwDOJORwRtHWRC5JP5tiWM8NdHF9y4ztkJLve3Z+MQ16P9+LOf
+         MK9STY72bPphfXg2sB/7Ja6YiwQPnofd6c/YjT+Mc1hcXSHXQIqn0S2i2yDLLRkZC2bY
+         eKVA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1719247445; x=1719852245;
+        d=1e100.net; s=20230601; t=1719247446; x=1719852246;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=8kHPT/Sbn+YowQq/I8VGD+WkhOqD5j84bm9SVl0pb1A=;
-        b=L7EknULGUzBZ+urwoVkEflvg9mOMeCEQ1zuBrqNiUYeH1yYSgLA9wzY26E5rUqdhVc
-         33yQRP0U8mNYa3XRXkFPTkEGc8Pqm3DLklvmTZjPY3Q1QX04TGI6MQXkUoBiJJuOCELE
-         1jJWHq3HNsXGqODlRrSBYIEpZFx8StVeIhGQpu6yBOOgGTumW5FXrzNIxUb+gRG8R/p+
-         IdQAgqG97RhKR9aH7UB8zt5n2N1EeB2c+Ci+v+S2714RorNpA8/vKoOMArX5lXbA3fWa
-         /HQgyEHvwyYBys7TG2wMgQP+1xeg2CpxuE5ZUY66pRAZl+p4ArbaTwsGeLdXfSn+BKiy
-         XPAQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVvlewuQDxYeX6G243o7MsPM9hPFcvgVHM978AmeeEs15ja8hpQYApSJDJlmXFsezKbOkx5sAJndII0NlvKNRJbwYHwuLQULLEBy9kZCm8jDiwZRBDJCO+83FHUr+ADvLN3vZ3A9XpkVoLpmvh6JISVftjgm2hg1VU=
-X-Gm-Message-State: AOJu0YwbICwoiUMoRhhMCbcRVKDdKTTY+CuxuDgHzjiBmmaMZpOv4DC7
-	GbM9I06mNxpZa2/wzVCDBbmhajJngolV1rKgvrT9dNo3mZ2AAJay
-X-Google-Smtp-Source: AGHT+IH+MF/1j+d+mvD3UvJmt7w30GJxIqwd74Gd3nbm7skLi+nadm6az73r+6Ot9QMhLZdiwI26aQ==
-X-Received: by 2002:a05:600c:450d:b0:421:7198:3d76 with SMTP id 5b1f17b1804b1-4248cc58b99mr34106605e9.28.1719247444697;
-        Mon, 24 Jun 2024 09:44:04 -0700 (PDT)
+        bh=uw74zf66DQORFJn85kqFB7s36On7KUi5ywYxV+PBn+Q=;
+        b=EvJLfWJBjO4tzu2P3hOTN7xI8W5jp8LYgAQc04Ln1WNBJg3agJaUmoFBbdObijGS9H
+         gZ6nKKklQ7SpqVD0WOB1z6pGFkD4u30Z62fBai15VWtoVhYOgMuT3Qd6F94mZA4o5NcN
+         MYaWGKLssk5ZdxtXTZ9MGqv3/xg7SkRSOx6tsZjYKMsFbaEt/1InFjajEMHDZDlBmPGl
+         hrq2C0dvKjM+ZFCZTBN4NTLCsWP2Sbiw98Hi0Zysg0FoXMEBnkXZ/ZVOBgZS8+B47TP+
+         O8nsuRkdvPmE6hn3NmfwdBldrJ83Pfkl9EpxgKvBpvMHzPIUly8p264rioL+blyKk/jc
+         immA==
+X-Forwarded-Encrypted: i=1; AJvYcCV/xr17LdyGYaczAAjqPhTlSQg2T2yB0DSuU+kCiyoj/DHV4dmrbZ+UaC3O0CP3tLdWl/UUUZL0zUBVULw2SoQKrBdnawZuAZ2SFWSOoDbZCK3jBhKwVD+DoLN/mbAEghX//Mg1nQ9DKyB2Wkoibuhtk7H4IWBntMU=
+X-Gm-Message-State: AOJu0YwNIKMd+AdIScYjf/z6xFz/qPFfZZEKYb6vElxdSRXuII0xfLLw
+	igD+6qjvyiKoppP0RgBZQs1AGZEbZJuccI5N8vtF+qKTFy1y0lvt
+X-Google-Smtp-Source: AGHT+IFJgazm2qcBXOO1WWxGq23AutwedIYScGjsNMAPrLSl9grCFKoRB3d22V6hGWsVj6fq6F18nQ==
+X-Received: by 2002:a05:600c:6ca:b0:424:8dc4:ee43 with SMTP id 5b1f17b1804b1-4248dc4ef8cmr40224005e9.6.1719247446267;
+        Mon, 24 Jun 2024 09:44:06 -0700 (PDT)
 Received: from [127.0.1.1] (84-115-213-103.cable.dynamic.surfer.at. [84.115.213.103])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-42484fc0aecsm126090365e9.12.2024.06.24.09.44.03
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-42484fc0aecsm126090365e9.12.2024.06.24.09.44.04
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 24 Jun 2024 09:44:04 -0700 (PDT)
+        Mon, 24 Jun 2024 09:44:05 -0700 (PDT)
 From: Javier Carrasco <javier.carrasco.cruz@gmail.com>
-Date: Mon, 24 Jun 2024 18:43:46 +0200
-Subject: [PATCH 1/3] drm/mediatek: ovl_adaptor: drop unused mtk_crtc.h
- header
+Date: Mon, 24 Jun 2024 18:43:47 +0200
+Subject: [PATCH 2/3] drm/mediatek: ovl_adaptor: add missing of_node_put()
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240624-mtk_disp_ovl_adaptor_scoped-v1-1-9fa1e074d881@gmail.com>
+Message-Id: <20240624-mtk_disp_ovl_adaptor_scoped-v1-2-9fa1e074d881@gmail.com>
 References: <20240624-mtk_disp_ovl_adaptor_scoped-v1-0-9fa1e074d881@gmail.com>
 In-Reply-To: <20240624-mtk_disp_ovl_adaptor_scoped-v1-0-9fa1e074d881@gmail.com>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
@@ -79,19 +78,18 @@ To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
  "Nancy.Lin" <nancy.lin@mediatek.com>
 Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- Javier Carrasco <javier.carrasco.cruz@gmail.com>
+ Javier Carrasco <javier.carrasco.cruz@gmail.com>, stable@vger.kernel.org
 X-Mailer: b4 0.14-dev
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1719247441; l=718;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1719247441; l=1042;
  i=javier.carrasco.cruz@gmail.com; s=20240312; h=from:subject:message-id;
- bh=j/Zhl07/mGungCEQOMBPhb09WEiiiTeekEFTk2ivabw=;
- b=nsHPwkldRVFX0qaLEQCcbPwptfpdpZshqISZVJXbL07KghajM9UUXAa/ztlPZoq/H7lrAeLum
- wFs+M1/owgeDqHH9yoZFm/ngRVpRlYSYb9NOtW91UJ8iIKqf8x5MLG9
+ bh=Y2BB2weXpa+LoCNHgaMdua1IE8aKDXJvx8s/YfYa6MI=;
+ b=RAqXlU9Qx0xyXFz5ElRIdZf5wbyhqD1m5J/GrWFrXfBbUzgeeyRE+ciEsRkz6rmFpz1gue41A
+ vrubTA59EmVC63CZJ8zl+7GhwXzFo2s4l6d2Ty9wnfS3yvCWNVBinoH
 X-Developer-Key: i=javier.carrasco.cruz@gmail.com; a=ed25519;
  pk=lzSIvIzMz0JhJrzLXI0HAdPwsNPSSmEn6RbS+PTS9aQ=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240624_094406_899549_F210DFB5 
-X-CRM114-Status: UNSURE (   9.51  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240624_094408_271548_CE6CD5D9 
+X-CRM114-Status: GOOD (  11.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,25 +104,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-None of the elements from that header is used in this file.
+Error paths that exit for_each_child_of_node() need to call
+of_node_put() to decerement the child refcount and avoid memory leaks.
 
+Add the missing of_node_put().
+
+Cc: stable@vger.kernel.org
+Fixes: 453c3364632a ("drm/mediatek: Add ovl_adaptor support for MT8195")
 Signed-off-by: Javier Carrasco <javier.carrasco.cruz@gmail.com>
 ---
- drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c | 1 -
- 1 file changed, 1 deletion(-)
+ drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
-index 02dd7dcdfedb..1418992311c4 100644
+index 1418992311c4..3faf26a55e77 100644
 --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
 +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
-@@ -17,7 +17,6 @@
- #include <linux/soc/mediatek/mtk-mmsys.h>
- #include <linux/soc/mediatek/mtk-mutex.h>
+@@ -522,8 +522,10 @@ static int ovl_adaptor_comp_init(struct device *dev, struct component_match **ma
+ 		}
  
--#include "mtk_crtc.h"
- #include "mtk_ddp_comp.h"
- #include "mtk_disp_drv.h"
- #include "mtk_drm_drv.h"
+ 		comp_pdev = of_find_device_by_node(node);
+-		if (!comp_pdev)
++		if (!comp_pdev) {
++			of_node_put(node);
+ 			return -EPROBE_DEFER;
++		}
+ 
+ 		priv->ovl_adaptor_comp[id] = &comp_pdev->dev;
+ 
 
 -- 
 2.40.1
