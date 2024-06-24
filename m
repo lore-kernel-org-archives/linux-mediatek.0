@@ -4,90 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20D4BC2BD09
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jun 2024 17:46:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 473B9C2BD09
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jun 2024 18:02:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sZYo2+ECZA8zTSTbRF5VYWEcTe4tY+q+w5/GiTenvpA=; b=mNF029bWDgDdzyjQU+iuV4IoX2
-	42/UrT32nRHAiuMYZYaIS3X/hdozV8bUL9hieZUjmYkjogl7lwSwdWX4m36vyY0ha08zefJBJF8Gf
-	/RpSIT6ox3ouEkAdtQdVT145btW2867EBLoAMwRiAr4zuhS7sDnD9HR8sfM9w4Nncczzv2IcCb7TN
-	V1P/D2SKNt6gQ4fxLDsFkQwXEUjeyJmYPV91QxuDHV5oWlPbXVesN86uhN16QTWjgFKosRJaCmXmi
-	weVMzg6d+/29yLv5hu5VamTsndvtSUBCNGfdbMPsRgz9A1nOXZMCn1yBIh21uYm2ypUo0itP3w4/Q
-	6j+MNPSg==;
+	bh=BlHsZBG0ubyVPIWpEZLCYm37S4hYQYc13Mho9GhdGSQ=; b=otJOf2ZPkkHVJlJ+vslVYT//In
+	GzVVsqhfZzDmb1EWOGyPMCUin6RDBngGAhg3CaO+KwlhxE5RQTUqbOR571rdi5Wzlbu59lZ7WWM0I
+	nADZTTpFavdaF0/f8NMM+hWWCd2xYGUt0w57igd0knrXJlxfx3I4iTt4fwdGdneyVbT4g0oiTU5QT
+	AaH2WrADS76UNEBWQGr0vgPlHlSHIQrS/OPgxEbPzLwR13TL8/IgnesOxDgv9nwdtkdmqBrR8jWdi
+	xgmneEbm+7SMWEhBgluP/i7JXmWOHL506I1HS0MESOVUfDcMssx3cQKe5Nqab5XI0YbT4ojvUWwbN
+	YLVnq/mQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLnlS-000000008mQ-2aVt;
-	Mon, 24 Jun 2024 17:46:02 +0000
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
+	id 1sLo15-00000000DM3-420k;
+	Mon, 24 Jun 2024 18:02:11 +0000
+Received: from 008.lax.mailroute.net ([199.89.1.11])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLnlP-000000008ke-2miG;
-	Mon, 24 Jun 2024 17:46:01 +0000
-Received: by mail-ed1-x529.google.com with SMTP id 4fb4d7f45d1cf-57cb9efd8d1so9120099a12.0;
-        Mon, 24 Jun 2024 10:45:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1719251157; x=1719855957; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=sZYo2+ECZA8zTSTbRF5VYWEcTe4tY+q+w5/GiTenvpA=;
-        b=QOWWfFIp9/o/A8x3k79Mu+xyRKn3FxjwJA0/iTIm/9Cm9wEVSsYxM3VSzM8Mgwyw7T
-         /ssmg3WLaKyUL+AFVBtRj16bpgqeTeYzEUlfo/x/0EuKdpgDquC5vH1M3XNKPYK/yVe6
-         ycL9BCF8zC92FHrWDTuZkW4lBWi3oGcEkt0+r4il7d6mjQvCE4+gAFGRee9x7W+2ktBT
-         CL/pmsdG/uNIp2Rj0EVcgyyyTb0qBiEZCjSDirj3Ax/N3qZgQttIvhOeB7zXEUH596/u
-         +8zdN5IDWxuUDC0NSkO7IsiskLtw+LUn7q07y/9E64PqiOOTNLWtv00q44R6l2xqVQXZ
-         LLpg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1719251157; x=1719855957;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=sZYo2+ECZA8zTSTbRF5VYWEcTe4tY+q+w5/GiTenvpA=;
-        b=L+/X+0RWvtasZxFr1angUvnvz54fFjLliHkrTmceJ906+w/H6FTKRFGuSsxzRTByDT
-         g2dUhkYB19PME+xdTCAVJ9q9FjXwh5I1/F8gvmyHmlvxSx3x5EJurgcDAXhgcv70dcoB
-         4YBYc672Go0EmIGac7jQtgptfsveMA4xaI64OV3NtkWGmgI4Cxp0MvM4NeyoS2Qvaxxn
-         MehYHAPLoQ5wJzTcW+2rmaB1lI7Uor2ZYrDkc8fAqMwXKG22M0kCiZTR1szTgAZ01laM
-         cLop+0pUizivjpndIb2x4+gyLtftCL7fsUc0LCFbhOzPinxdbFa7/fT1sKvCToAoOI85
-         qGiQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUDCgc9us/GU+GEFUa4qkz/3y9Jk5Ejup/ZIlTXDzgpGj3z3+BmoMbr163tjueldZ4Yo/+y6FidIzanl5Q6jYFGZ+nipwhBbRfrHILI4LoLxOIY3lranZ51j8Np8cx5XCHWQqoaVp+SyIqOQtQZXQb4KRwoqcUy7/M=
-X-Gm-Message-State: AOJu0Ywsui+N3Yq4X8O9AKUOfZ6N+CuOjig0P6t/6HYq/e+TPvKbMH3D
-	lsf3qwE4SPPtvjbnqgXTroKNPGPoeNSR7Bj0Lfr92d72nZa8HGTIxBQ64HJEotQ73M9RbNQEcTS
-	WWCqQ1Rl3/jwRUjyA2yItN4PZvZc=
-X-Google-Smtp-Source: AGHT+IEK2tK6rYzn4sB+7rfr1nwSQOK4Jcvm8x3U7EK8lUjz2q4DDHHncsAyU5rn5neLiJRN/nDaFSTXyuOY9lpfqgk=
-X-Received: by 2002:a17:906:abd2:b0:a6f:e2f1:537b with SMTP id
- a640c23a62f3a-a700e706f07mr511078566b.28.1719251156998; Mon, 24 Jun 2024
- 10:45:56 -0700 (PDT)
+	id 1sLo12-00000000DLA-2WnK
+	for linux-mediatek@lists.infradead.org;
+	Mon, 24 Jun 2024 18:02:10 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by 008.lax.mailroute.net (Postfix) with ESMTP id 4W7G4v208Jz6Cnk8y;
+	Mon, 24 Jun 2024 18:02:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
+	content-transfer-encoding:content-type:content-type:in-reply-to
+	:from:from:content-language:references:subject:subject
+	:user-agent:mime-version:date:date:message-id:received:received;
+	 s=mr01; t=1719252117; x=1721844118; bh=BlHsZBG0ubyVPIWpEZLCYm37
+	S4hYQYc13Mho9GhdGSQ=; b=Ce/EeXgveArhIBuWatIbDFKbvMh2nLuAHE97TUfi
+	o8tlrOjTqhJXjH0D00qXh638iWW92PZznoyHr2pvsh1hcUX8yANtT9PmI8K+Ll5A
+	lWmmwje2qbVYT3ygZUSHZJuN7FcxWd0hh34LJybHyMKqw+bonDVaaGExMM9cPvte
+	Oe1QUTvebyGkJEUa7q9W1oVsVd454N6U7g7+xUPv5jG1XIthK6bCqzhzWMYAD6Zb
+	oEt0c4Q+O9qDQmP/auCUa6QkmG/w1hNSaRPIwC34g+r1jeW3cAouF39hx1V/MHbF
+	j6qgdSdICLy99IIbynbkOVrde9aKC5IL/mg3Nj4EZaIH+Q==
+X-Virus-Scanned: by MailRoute
+Received: from 008.lax.mailroute.net ([127.0.0.1])
+ by localhost (008.lax [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
+ id aDG0ypCUIWgA; Mon, 24 Jun 2024 18:01:57 +0000 (UTC)
+Received: from [100.96.154.26] (unknown [104.132.0.90])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: bvanassche@acm.org)
+	by 008.lax.mailroute.net (Postfix) with ESMTPSA id 4W7G4b5xckz6Cnk8t;
+	Mon, 24 Jun 2024 18:01:51 +0000 (UTC)
+Message-ID: <eec48c95-aa1c-4f07-a1f3-fdc3e124f30e@acm.org>
+Date: Mon, 24 Jun 2024 11:01:49 -0700
 MIME-Version: 1.0
-References: <20240614040133.24967-1-jason-jh.lin@mediatek.com>
- <20240614040133.24967-3-jason-jh.lin@mediatek.com> <CABb+yY2bwj2BcdJLGe1ZYwCrnXL3LtcePMb=wQPaBKorBSs2yA@mail.gmail.com>
- <fc92d51cc6e55301c081ea2d589e1ba6cdd295ee.camel@mediatek.com>
- <CABb+yY1L+YGjf6O9UgPYkS2gWAdo=7QoojSAUNWC_8o7XtZQSg@mail.gmail.com>
- <1f815ff8-2b7a-48de-8b47-0bc9b3cb67ab@collabora.com> <CABb+yY1Yy8o3ofAiC-uV+gDrO3QDTWz3_XTUMai_2uyrnj-VrQ@mail.gmail.com>
- <b7ebc021d391452eaf2149976ea2d53fba3d89fc.camel@mediatek.com>
- <CABb+yY3+pnuXDK_jZMDYOAzahdSZ5iig51VqzM=FFHrFpK+9LA@mail.gmail.com> <4e5d4362-4940-4ba0-95aa-627b82e21e41@collabora.com>
-In-Reply-To: <4e5d4362-4940-4ba0-95aa-627b82e21e41@collabora.com>
-From: Jassi Brar <jassisinghbrar@gmail.com>
-Date: Mon, 24 Jun 2024 12:45:45 -0500
-Message-ID: <CABb+yY3eXvJRUq7MOqB8QZ9N4aiuogaUCTfP7MerKdNbAbLkvw@mail.gmail.com>
-Subject: Re: [PATCH 2/2] mailbox: mtk-cmdq: Move pm_runimte_get and put to
- mbox_chan_ops API
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>, 
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
-	=?UTF-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>, 
-	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>, =?UTF-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>, 
-	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>, 
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] ufs: core: fix ufshcd_abort_all racing issue
+To: peter.wang@mediatek.com, linux-scsi@vger.kernel.org,
+ martin.petersen@oracle.com, avri.altman@wdc.com, quic_nguyenb@quicinc.com,
+ alim.akhtar@samsung.com, jejb@linux.ibm.com
+Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
+ chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
+ chaotian.jing@mediatek.com, jiajie.hao@mediatek.com, powen.kao@mediatek.com,
+ qilin.tan@mediatek.com, lin.gui@mediatek.com, tun-yu.yu@mediatek.com,
+ eddie.huang@mediatek.com, naomi.chu@mediatek.com, chu.stanley@gmail.com,
+ stable@vger.kernel.org
+References: <20240624121158.21354-1-peter.wang@mediatek.com>
+Content-Language: en-US
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <20240624121158.21354-1-peter.wang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240624_104559_867985_BBEE0430 
-X-CRM114-Status: GOOD (  35.41  )
+X-CRM114-CacheID: sfid-20240624_110208_715761_E5634E3E 
+X-CRM114-Status: GOOD (  14.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,110 +89,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jun 24, 2024 at 6:29=E2=80=AFAM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> Il 20/06/24 16:39, Jassi Brar ha scritto:
-> > On Thu, Jun 20, 2024 at 1:33=E2=80=AFAM Jason-JH Lin (=E6=9E=97=E7=9D=
-=BF=E7=A5=A5)
-> > <Jason-JH.Lin@mediatek.com> wrote:
-> >>
-> >> On Wed, 2024-06-19 at 10:38 -0500, Jassi Brar wrote:
-> >>>
-> >>> External email : Please do not click links or open attachments until
-> >>> you have verified the sender or the content.
-> >>>   On Wed, Jun 19, 2024 at 3:18=E2=80=AFAM AngeloGioacchino Del Regno
-> >>> <angelogioacchino.delregno@collabora.com> wrote:
-> >>>> Il 18/06/24 17:59, Jassi Brar ha scritto:
-> >>> .....
-> >>>
-> >>>> For example, when static content is displayed on screen, the CMDQ
-> >>> mailbox never
-> >>>> gets shut down, but no communication happens for a relatively long
-> >>> time; the
-> >>>> overhead of actually shutting down the mailbox and setting it back
-> >>> up would be
-> >>>> increasing latency in an unacceptable manner.
-> >>>>
-> >>> Hmm...  in your driver,  startup() is _empty_   and  shutdown() is
-> >>> all
-> >>> under a spin-lock with irqs disabled, so that too shouldn't be
-> >>> expensive. Right?
-> >>> Then what causes unacceptable latencies?
-> >>>
-> >>
-> >> I found that the BUG report only occurred when opening the camera APP.
-> >> Maybe something in imgsys_cmdq_sendtask() is too expensive or somewher=
-e
-> >> else in imgsys driver.
-> >>
-> > If you move anything from submit() into startup(), which is once per
-> > lifetime of a channel, it will only make imgsys_cmdq_sendtask()
-> > cheaper.
-> > Btw, the imgsys code is not public, I don't know how it looks.
-> >
-> >
-> >> I'm wondering why this BUG report is not occurred in display use case
-> >> which is more frequent than imgsys use case.
-> >> Does this mean sleep() is not always called in pm_runtime_get_sync()
-> >> and if we can guarantee this sleep() won't be called, then using
-> >> pm_runtime_get_sync() in atomic context is OK?
-> >>
-> > Instead of hacking around, maybe try using startup() and shutdown()
-> > which is for such uses? Maybe request/release channel as part of RPM
-> > in your client driver if you are worried about the noise?
-> >
-> >
-> >>>> This is why I opted for autosuspend - it's only bringing down
-> >>> certain clocks for
-> >>>> the CMDQ HW, adding up a bit of power saving to the mix which, for
-> >>> some use cases
-> >>>> such as mobile devices with relatively small batteries, is
-> >>> definitely important.
-> >>>>
-> >>>> I'll also briefly (and only briefly) mention that 120Hz displays
-> >>> are already a
-> >>>> common thing and in this case the gap between TX and ACK is ~8.33ms
-> >>> instead, let
-> >>>> alone that displays with a framerate of more than 120Hz also do
-> >>> exist even though
-> >>>> they're less common.
-> >>>>
-> >>> I don't know how even busier channels help your point.
-> >>>
-> >>>> All of the above describes a few of the reasons why autosuspend is
-> >>> a good choice
-> >>>> here, instead of a shutdown->startup flow.
-> >>>> And again - I can place some bets that PM would also be applicable
-> >>> to SoCs from
-> >>>> other vendors as well, with most probably different benefits (but
-> >>> still with some
-> >>>> power related benefits!) compared to MediaTek.
-> >>
-> >> I agree with Angelo's point!
-> >>
-> > Ok, but you or Angelo still don't explain "unacceptable latencies"
-> > when your startup() and shutdown() are empty. You just want api
-> > changed, which we can but at least do you part and tell me where the
-> > bottleneck (unexpected latency) comes from.
-> >
->
-> "I want numbers" is a sensible request, honestly I would do the same so I=
- totally
-> understand that.
->
-> Jason, can you please perform latency measurements on 60Hz and *especiall=
-y* ISP/cam
-> cases while "continuously" calling startup() and shutdown() for every pow=
-er saving
-> operation?
->
-To be clear, do with the mailbox channel that you do with the clocks
-now, because your startup() is literally and shutdown() is practically
-empty.
-Call shutdown() when no request has come in for a while, so you know
-the client has quiesced likely. So try putting request/release in
-higher level RPM with autosuspend.
+On 6/24/24 5:11 AM, peter.wang@mediatek.com wrote:
+ > [ ... ]
+In this patch there are two call traces, two fixes tags and two code
+changes. Please split this patch into two patches with each one call
+trace, one Fixes: tag and one code change. Additionally, please include
+a changelog when posting a second or later version.
 
-thanks
+> diff --git a/drivers/ufs/core/ufs-mcq.c b/drivers/ufs/core/ufs-mcq.c
+> index 8944548c30fa..3b2e5bcb08a7 100644
+> --- a/drivers/ufs/core/ufs-mcq.c
+> +++ b/drivers/ufs/core/ufs-mcq.c
+> @@ -512,8 +512,9 @@ int ufshcd_mcq_sq_cleanup(struct ufs_hba *hba, int task_tag)
+>   		return -ETIMEDOUT;
+>   
+>   	if (task_tag != hba->nutrs - UFSHCD_NUM_RESERVED) {
+> -		if (!cmd)
+> -			return -EINVAL;
+> +		/* Should return 0 if cmd is already complete by irq */
+> +		if (!cmd || !ufshcd_cmd_inflight(cmd))
+> +			return 0;
+>   		hwq = ufshcd_mcq_req_to_hwq(hba, scsi_cmd_to_rq(cmd));
+>   	} else {
+>   		hwq = hba->dev_cmd_queue;
+
+Does the call trace show that blk_mq_unique_tag() tries to dereference 
+address 0x194? If so, how is this possible? There are
+only two lrbp->cmd assignments in the UFS driver. These assignments
+either assign a valid SCSI command pointer or NULL. Even after a SCSI
+command has been completed, the SCSI command pointer remains valid. So
+how can an invalid pointer be passed to blk_mq_unique_tag()? Please
+root-cause this issue instead of posting a code change that reduces a
+race window without closing the race window completely.
+
+Thanks,
+
+Bart.
+
 
