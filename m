@@ -4,62 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D76A3C2BD09
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jun 2024 19:32:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46096C2D0D1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jun 2024 20:28:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Mime-Version:References:In-Reply-To:Message-Id:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IpF2fYAilGhMjyfSOvf19Qk9YyqYnBqRDnhMTosne6k=; b=NLV6fvpAShRWISF4k/q7cGXEJM
-	AFErOAD5/opAU5zgTzmStVLT17OHLnB/VwkKqmc3lYlufwJ2H+kzuuCa+2QIUVxmS0jmYPZ82ImsV
-	uxjW5bEULAVTNWPcwqM7LW/HqJ7vGkg+D5iLs/Y8JFWlyqxyWbn3g7JRZuxh6k8T2p4Ae4i+Lt6xC
-	H1NhZmLeT3mWCJJtTXTG5uAUtOrvpyghiZp293HubQ7SoOdj2a19wFobT5U5Zt53tijES8fkKk2gZ
-	YP/6TuCvOqhqhtkIUUGQQKIVtagLwTlAhLCtn64x2M1QmHDjmWzIj2ZlHQIYmYTRxJnIzDH3bDvfY
-	ojQc0koQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yBd7ofEnRHUsBAQyAE0mG8eQuTNaQZxeYg9B1t2vuq4=; b=byXqycDtnKZo15LMxohWVSQc90
+	kBhU5lfnhWBU3ixnULFA6OsZdvq+CmdqMQvawhHYYcOVgh2llP3VL5ycDCMS+IHpoCSKjUtNIldmn
+	KaAAN/44qAF6chcaFy0rnXLKk49oU9WkeKlkN+E/+iuiQmaM4pIbnuGtAkSwqTopW4vfCx6bIymE3
+	1vx+Lq/WDHs4z16rIPugX8b3bXO8KcHTH0KHcwCi4sdsLu/3rZdT+YOmL6Zja93+QTKqPF5UN21JI
+	5Z2dCZrXBnpNOohxzu9o+rcI25fQqseqXDEKH82j2uw1fW+ya9NbGZUwI3oihAhoCbRXUly9qdbCg
+	WRSbtbWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLpQ4-00000000R7o-0myS;
-	Mon, 24 Jun 2024 19:32:04 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sLqIo-00000000ZlH-1SoS;
+	Mon, 24 Jun 2024 20:28:38 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLpPx-00000000R54-14VC;
-	Mon, 24 Jun 2024 19:31:59 +0000
+	id 1sLqIh-00000000Zj6-2zAj;
+	Mon, 24 Jun 2024 20:28:33 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id E3B5261088;
-	Mon, 24 Jun 2024 19:31:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2F22EC2BBFC;
-	Mon, 24 Jun 2024 19:31:55 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linux-foundation.org;
-	s=korg; t=1719257515;
-	bh=WO5bItYsgm4x9pwloWwGJ++ymNZPqAykTIN55gh+o5Q=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=f2mQW5BI1BXSMdaSW0V2Eg2aSozyjzN8w5GvF3HdsotTv/seex9KXpqX7pSSkiX6Z
-	 gJ6urvSNN9CsZd1fS3AXc/JIbrrRicuswhDOGtkBkdqAmy4NteCbmm0KqgjQn3CyyA
-	 6cywjTV53TQt5Q+7hM/QEsbSNjWjDSYqgoXyhPq4=
-Date: Mon, 24 Jun 2024 12:31:54 -0700
-From: Andrew Morton <akpm@linux-foundation.org>
-To: kernel test robot <lkp@intel.com>
-Cc: Linux Memory Management List <linux-mm@kvack.org>,
- amd-gfx@lists.freedesktop.org, imx@lists.linux.dev,
- intel-xe@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-input@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-mtd@lists.infradead.org,
- linux-trace-kernel@vger.kernel.org, netdev@vger.kernel.org, Mark Brown
- <broonie@kernel.org>, Baolin Wang <baolin.wang@linux.alibaba.com>
-Subject: Re: [linux-next:master] BUILD REGRESSION
- f76698bd9a8ca01d3581236082d786e9a6b72bb7
-Message-Id: <20240624123154.4c3125c3093636de35b407dd@linux-foundation.org>
-In-Reply-To: <202406230716.DQbMBKh0-lkp@intel.com>
-References: <202406230716.DQbMBKh0-lkp@intel.com>
-X-Mailer: Sylpheed 3.8.0beta1 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
-Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+	by sin.source.kernel.org (Postfix) with ESMTP id CA180CE13CF;
+	Mon, 24 Jun 2024 20:28:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EA6A5C2BBFC;
+	Mon, 24 Jun 2024 20:28:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1719260907;
+	bh=HL7UJ/iRbKbk7kdt37fx7w1eCbakq9KlVaHHm4Ee8YU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=ZkXsulp9syLWY+sZw//zcuqYiWdoQaPOADpd4MwIteCIaoOP0sY9A33y6x3hqYO+K
+	 t2kdQ42rzbZdSAypc21O/Afbgu69nRYjwyiGxJ0d9T4MnWiGVpYu3RPulzFnJVjHaF
+	 X0xoGKs3Quz3DD2cOKmLYGaCnDd0oYBALak/NfDTDoP4myaqSSFlNl3zYRZyN8F+4q
+	 /JdEhATIuiYjypfPK/10zC4yVUg6C0qpN6Ez7QN70UDxCX4UXbqgs/0isgm9V0KZbF
+	 zQCp8Ik8aRov4QvKl4pArXh01s/iSpwE4/nneuZNEzms17LnuAw4VMNwcSMnai4acN
+	 SdVJnkIRuD7ig==
+Date: Mon, 24 Jun 2024 14:28:25 -0600
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: linux-mediatek@lists.infradead.org, Conor Dooley <conor+dt@kernel.org>,
+	linux-kernel@vger.kernel.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Shan-Chun Hung <schung@nuvoton.com>,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Vadivel Murugan <vadivel.muruganx.ramuthevar@linux.intel.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	UNGLinuxDriver@microchip.com,
+	Steen Hegelund <Steen.Hegelund@microchip.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Khuong Dinh <khuong@os.amperecomputing.com>,
+	linux-arm-kernel@lists.infradead.org,
+	Lars Povlsen <lars.povlsen@microchip.com>,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>, Lee Jones <lee@kernel.org>,
+	Daniel Machon <daniel.machon@microchip.com>,
+	Nishanth Menon <nm@ti.com>, Jacky Huang <ychuang3@nuvoton.com>,
+	devicetree@vger.kernel.org,
+	Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v2 6/7] dt-bindings: mfd: syscon: Split and enforce
+ documenting MFD children
+Message-ID: <171926090377.354722.8861218849398833034.robh@kernel.org>
+References: <20240616-dt-bindings-mfd-syscon-split-v2-0-571b5850174a@linaro.org>
+ <20240616-dt-bindings-mfd-syscon-split-v2-6-571b5850174a@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240616-dt-bindings-mfd-syscon-split-v2-6-571b5850174a@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240624_123157_441289_EB099E3C 
-X-CRM114-Status: GOOD (  13.96  )
+X-CRM114-CacheID: sfid-20240624_132831_955919_4EB2502E 
+X-CRM114-Status: GOOD (  12.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,69 +89,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, 23 Jun 2024 07:11:24 +0800 kernel test robot <lkp@intel.com> wrote:
 
-> tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git master
-> branch HEAD: f76698bd9a8ca01d3581236082d786e9a6b72bb7  Add linux-next specific files for 20240621
+On Sun, 16 Jun 2024 15:19:26 +0200, Krzysztof Kozlowski wrote:
+> Simple syscon nodes can be documented in common syscon.yaml, however
+> devices with simple-mfd compatible, thus with some children, should have
+> their own schema listing these children.  Such listing makes the binding
+> specific, allows better validation (so the incorrect child would not
+> appear in the simple-mfd node) and actually enforces repeated rule for
+> simple-mfd devices:
 > 
-> Error/Warning reports:
+>   "simple-mfd" is only for simple devices, where the children do not
+>   depend on the parent.
 > 
-> https://lore.kernel.org/oe-kbuild-all/202406220536.JnAncjqz-lkp@intel.com
-> https://lore.kernel.org/oe-kbuild-all/202406220754.evK8Hrjw-lkp@intel.com
+> Currently the syscon+simple-mfd binding is quite broad and allows
+> any child or property, thus above rule cannot be enforced.
 > 
-> Error/Warning: (recently discovered and may have been fixed)
+> Split the syscon.yaml binding into:
+> 1. Common syscon properties, used potentially by many bindings.
+> 2. Simple syscon devices (NO simple-mfd!).
 > 
-> drivers/soc/qcom/smsm.c:(.text.qcom_smsm_remove+0x70): undefined reference to `mbox_free_channel'
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 > 
-> Unverified Error/Warning (likely false positive, please contact us if interested):
+> ---
 > 
-> include/linux/container_of.h:20:54: error: invalid use of undefined type 'struct thpsize'
-> include/linux/list.h:645:25: error: invalid use of undefined type 'struct thpsize'
-> include/linux/stddef.h:16:33: error: invalid use of undefined type 'struct thpsize'
-> mm/huge_memory.c:455:21: error: implicit declaration of function 'to_thpsize'; did you mean 'thp_size'? [-Werror=implicit-function-declaration]
-> mm/huge_memory.c:455:37: error: invalid type argument of '->' (have 'int')
-> mm/huge_memory.c:558:35: error: 'MTHP_STAT_FILE_ALLOC' undeclared (first use in this function); did you mean 'THP_FILE_ALLOC'?
-> mm/huge_memory.c:559:38: error: 'MTHP_STAT_FILE_FALLBACK' undeclared (first use in this function); did you mean 'THP_FILE_FALLBACK'?
-> mm/huge_memory.c:560:45: error: 'MTHP_STAT_FILE_FALLBACK_CHARGE' undeclared (first use in this function); did you mean 'THP_FILE_FALLBACK_CHARGE'?
-> mm/huge_memory.c:579:17: warning: assignment to 'struct thpsize *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
-> mm/huge_memory.c:579:33: error: invalid application of 'sizeof' to incomplete type 'struct thpsize'
-> mm/huge_memory.c:583:44: error: invalid use of undefined type 'struct thpsize'
-> mm/huge_memory.c:608:15: warning: passing argument 1 of 'kfree' makes pointer from integer without a cast [-Wint-conversion]
+> Depends on:
+> 1. Patch in MFD: https://lore.kernel.org/all/171828959006.2643902.8308227314531523435.b4-ty@kernel.org/
+> 2. Previous patches in the series.
+> ---
+>  .../devicetree/bindings/mfd/syscon-common.yaml     |  72 +++++
+>  Documentation/devicetree/bindings/mfd/syscon.yaml  | 294 +++++++++++++--------
+>  2 files changed, 251 insertions(+), 115 deletions(-)
 > 
->
-> ...
->
->
-> |-- x86_64-randconfig-014-20240202
-> |   |-- include-linux-container_of.h:error:invalid-use-of-undefined-type-struct-thpsize
-> |   |-- include-linux-list.h:error:invalid-use-of-undefined-type-struct-thpsize
-> |   |-- include-linux-stddef.h:error:invalid-use-of-undefined-type-struct-thpsize
-> |   |-- mm-huge_memory.c:error:MTHP_STAT_FILE_ALLOC-undeclared-(first-use-in-this-function)
-> |   |-- mm-huge_memory.c:error:MTHP_STAT_FILE_FALLBACK-undeclared-(first-use-in-this-function)
-> |   |-- mm-huge_memory.c:error:MTHP_STAT_FILE_FALLBACK_CHARGE-undeclared-(first-use-in-this-function)
-> |   |-- mm-huge_memory.c:error:implicit-declaration-of-function-to_thpsize
-> |   |-- mm-huge_memory.c:error:invalid-application-of-sizeof-to-incomplete-type-struct-thpsize
-> |   |-- mm-huge_memory.c:error:invalid-type-argument-of-(have-int-)
-> |   |-- mm-huge_memory.c:error:invalid-use-of-undefined-type-struct-thpsize
-> |   |-- mm-huge_memory.c:warning:assignment-to-struct-thpsize-from-int-makes-pointer-from-integer-without-a-cast
-> |   `-- mm-huge_memory.c:warning:passing-argument-of-kfree-makes-pointer-from-integer-without-a-cast
 
-Is there a way for us to obtain that config file?
-
-"mm: shmem: add multi-size THP sysfs interface for anonymous shmem"
-moved things into mm_tytpes.h but didn't include it so perhaps this
-will fix:
-
---- a/mm/huge_memory.c~mm-shmem-add-multi-size-thp-sysfs-interface-for-anonymous-shmem-fix-4
-+++ a/mm/huge_memory.c
-@@ -20,6 +20,7 @@
- #include <linux/swapops.h>
- #include <linux/backing-dev.h>
- #include <linux/dax.h>
-+#include <linux/mm_types.h>
- #include <linux/khugepaged.h>
- #include <linux/freezer.h>
- #include <linux/pfn_t.h>
-_
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 
 
