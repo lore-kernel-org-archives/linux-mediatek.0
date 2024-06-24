@@ -4,64 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A006C2BD05
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jun 2024 07:39:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36E27C2BD05
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jun 2024 07:45:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3jZydkKc9i7xAJsPNdcAdxjR7hb5g+ubUG2CQkh9stA=; b=lxTGlec2mwHF7Jn2beyMsVgMZX
-	1rdwbvd6YH1aVEavr6km9eZdW3v6F520GdAKUg1yxXvxEyinyW29ITivN+MeJnaPDOvlKe/0yHTAt
-	q06l4jvt+O72iQ/8Le3Edf0fBhSVmBg+ymZxu5WBrdBX1VvwoowCdukjxhgrKwcy85cIN7cE3hZ0e
-	nO/PR91A7eATNFn1fm2oJ4De321C3rNa9cgR69B3jlJxLNdpHwJ0iedIDoWMGyr1WbOE0lmrxkNXR
-	LQNDH7ahisV7U5WswgbNMo6Y9lg/Fz6o85jlqE9OEhr0W/AF8cqpjba+fEh1nlpEFg/kgyi8vJamP
-	sS28Xqow==;
+	bh=fFj7WMECrZQvXPBur3IZuEGzsvTsWvv9LoTaf7/abfI=; b=UJRKMJ+y3Fjl+2sZaLkO6E1s/Q
+	zMp4HEihIffkYe3ZgUaNnuAuCtfV73Du6NY4r85uO48rttFftmd+sFk27yNLuePrWlMLedn5LgW6e
+	c/JqssovUEthm0aElbU+EEtnAVfjHwVzpPZOwPl/PMfcvAtL+DOV2nPn3pomv17IRFAZkeJ+fcK0a
+	WcKZKtXdg7rwgkM0UOmfmEe4wxn+mGWIFQAMQDk2nMk/SnjNUxQvCghLeHOYjxYWB84rdCE2HDFcb
+	vOP5kN0oI0VqKszN0xcmHbGIM3bOCceu00IaIxARvAmZVTbORmQ/I46kd2pCndwF2MzxptXP6lsQi
+	UwIL6Edw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLeIR-0000000Fui4-0EaS;
-	Mon, 24 Jun 2024 07:39:27 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1sLeOD-0000000FvMa-2ppn;
+	Mon, 24 Jun 2024 07:45:25 +0000
+Received: from mail-lj1-x22c.google.com ([2a00:1450:4864:20::22c])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLeIM-0000000FugK-2mmd
+	id 1sLeOA-0000000FvLT-2olu
 	for linux-mediatek@lists.infradead.org;
-	Mon, 24 Jun 2024 07:39:24 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1719214758;
-	bh=V+/MuvOB5oRpHrUXIua2jOm8NVL5toa1d2l3vx43fvc=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=kppcXub/wGYVKDXZW9lsyJvZlE+MHw94Ab2zNNosm0jdkPczLSeXIa1mX4CnB0TH3
-	 Yb4E0vqO3PjC9VKzOt94QYra2asAz1mEXL6qdPrzeUV6k0kfkfIAGNjjidmDutXjkx
-	 jsSsLzOtK/Ei0/dHmSjjlfMHlGaNxutpfeWUPXqGmg70DzoOe7p/L/gO5rcfofNGCh
-	 UzEFxUwjQIZ9Xr2d5UaBFjQ0XqYnx37U/cIJpHRFV5DMamkEVIJW4boJpkbktShAqi
-	 j78oPgSc40mkbwC6rOjvnJXUWGPueXDg5W3arSGPIQptFoOFBh/14pPeR9ZJ4u2DAC
-	 PqUdQOigkcQHA==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 950BA378216B;
-	Mon, 24 Jun 2024 07:39:17 +0000 (UTC)
-Message-ID: <aefe76a3-5712-4e34-8990-0463a5036324@collabora.com>
-Date: Mon, 24 Jun 2024 09:39:16 +0200
+	Mon, 24 Jun 2024 07:45:24 +0000
+Received: by mail-lj1-x22c.google.com with SMTP id 38308e7fff4ca-2eaafda3b5cso43035081fa.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 24 Jun 2024 00:45:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1719215120; x=1719819920; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=fFj7WMECrZQvXPBur3IZuEGzsvTsWvv9LoTaf7/abfI=;
+        b=fk1pND+ix6PDCv8Xkh4L7+WUpqXedByEdWxJtc18yXn4w3MU+OIoXAInawRrLFnXVE
+         UkJMMiOhwGfHqWaCksR3/CNrEFGt2VBDR9eWxqfj+1QOyR8GoBrXb7LvN2CSuH75v8Ka
+         jZ/WW1PljAxEAt13KZSWr1DyQEhL29k4ngm8c=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1719215120; x=1719819920;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=fFj7WMECrZQvXPBur3IZuEGzsvTsWvv9LoTaf7/abfI=;
+        b=tTd3A/bGAujvycnEFPSeioNilDjlmYliNc33jg1IAteLMzKBPp+YzZKdAHrzRZuz+G
+         xv2oBj6/g6vef/+7mlMhDEpTKLvKtdU/tC50djdYM+sF6VxM2yCGQT0wPhvLWeZ/+aMC
+         fk8iAkrL08tO+WFf8XlibHpxuELHIYnnHaPnjDivBwPsMBEws5LeC9QPc6x30DYrLfn5
+         MjE9IK0gWQJamjU+Rt8duqey4ZalwkF8Lj5dnp3jrzhzBbjA8jBUkaoeemj+FdfYLJN5
+         OziIJfwRM0oiDr2mxB7BH+r9GVIb/ghmM4G5qS2hGAgQty+sIQNhmkYmeC3lKvmBLLqz
+         fViA==
+X-Forwarded-Encrypted: i=1; AJvYcCXl+X94pZ0iB4rywf7ehXd1Af3aQNXAcBbUssmMEZUH9sce4HUbjC7rQf/U/UjJbk/8UBSAkDE+iZIAYHvAuNwtp2pXQ74s8NC8d4lwbK86oIaE
+X-Gm-Message-State: AOJu0YxgQW04W24YVJrswZrkYTep/I7E9R6222bP9dz4GT4fdoilQ0tT
+	p0zaheohQ3z95z1JmrD5OaGoLsNpwDLGskm+syrClXBDwGDCr/4ce0mHcTG4scFn142duJUb5Wn
+	IDEod9eLu2USWeTEPKSoPBNv95phAOR9HMvK9nAfFl7vmY7guzQ==
+X-Google-Smtp-Source: AGHT+IEbhqe0mQnb2PixzzonBLpTKQYKoC3EopeCBCB9riM06jvOadKH8w8jJMjv/sLheepUTJFeBYE8ulRIzGzE7xw=
+X-Received: by 2002:a2e:7812:0:b0:2ec:4d8d:375f with SMTP id
+ 38308e7fff4ca-2ec593d8c1cmr28622491fa.16.1719215120082; Mon, 24 Jun 2024
+ 00:45:20 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] ASoC: mediatek: mt8195: Add platform entry for
- ETDM1_OUT_BE dai link
-To: Chen-Yu Tsai <wenst@chromium.org>, Mark Brown <broonie@kernel.org>
-Cc: Trevor Wu <trevor.wu@mediatek.com>, linux-sound@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <20240624061257.3115467-1-wenst@chromium.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20240624061257.3115467-1-wenst@chromium.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20240620094746.2404753-1-wenst@chromium.org> <20240620094746.2404753-3-wenst@chromium.org>
+ <20240620-outcome-circulate-40a2971f53b9@spud>
+In-Reply-To: <20240620-outcome-circulate-40a2971f53b9@spud>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Mon, 24 Jun 2024 15:45:08 +0800
+Message-ID: <CAGXv+5E1g3tba1iXtrXrdGwUCiUY39q5pvugsfnXXSDFLMGEZA@mail.gmail.com>
+Subject: Re: [PATCH 2/3] dt-bindings: arm: mediatek: Add MT8186 Voltorb Chromebooks
+To: Conor Dooley <conor@kernel.org>
+Cc: Mark Brown <broonie@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>, devicetree@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240624_003922_883681_4CA701B6 
-X-CRM114-Status: GOOD (  15.46  )
+X-CRM114-CacheID: sfid-20240624_004523_018155_8EAFB4F0 
+X-CRM114-Status: GOOD (  17.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,55 +93,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 24/06/24 08:12, Chen-Yu Tsai ha scritto:
-> Commit e70b8dd26711 ("ASoC: mediatek: mt8195: Remove afe-dai component
-> and rework codec link") removed the codec entry for the ETDM1_OUT_BE
-> dai link entirely instead of replacing it with COMP_EMPTY(). This worked
-> by accident as the remaining COMP_EMPTY() platform entry became the codec
-> entry, and the platform entry became completely empty, effectively the
-> same as COMP_DUMMY() since snd_soc_fill_dummy_dai() doesn't do anything
-> for platform entries.
-> 
-> This causes a KASAN out-of-bounds warning in mtk_soundcard_common_probe()
-> in sound/soc/mediatek/common/mtk-soundcard-driver.c:
-> 
-> 	for_each_card_prelinks(card, i, dai_link) {
-> 		if (adsp_node && !strncmp(dai_link->name, "AFE_SOF", strlen("AFE_SOF")))
-> 			dai_link->platforms->of_node = adsp_node;
-> 		else if (!dai_link->platforms->name && !dai_link->platforms->of_node)
-> 			dai_link->platforms->of_node = platform_node;
-> 	}
-> 
-> where the code expects the platforms array to have space for at least one entry.
-> 
-> Add an COMP_EMPTY() entry so that dai_link->platforms has space.
-> 
-> Fixes: e70b8dd26711 ("ASoC: mediatek: mt8195: Remove afe-dai component and rework codec link")
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+On Fri, Jun 21, 2024 at 12:13=E2=80=AFAM Conor Dooley <conor@kernel.org> wr=
+ote:
+>
+> On Thu, Jun 20, 2024 at 05:47:37PM +0800, Chen-Yu Tsai wrote:
+> > Add an entry for the MT8186 based Voltorb Chromebooks, also known as th=
+e
+> > Acer Chromebook 311 (C723/C723T). The device is a clamshell style lapto=
+p
+> > with an optional touchscreen.
+> >
+> > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> > ---
+> >  Documentation/devicetree/bindings/arm/mediatek.yaml | 7 +++++++
+> >  1 file changed, 7 insertions(+)
+> >
+> > diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Docu=
+mentation/devicetree/bindings/arm/mediatek.yaml
+> > index b1b09db0bd65..e7746afeb0b3 100644
+> > --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
+> > +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
+> > @@ -301,6 +301,13 @@ properties:
+> >            - const: google,tentacruel-sku327683
+> >            - const: google,tentacruel
+> >            - const: mediatek,mt8186
+> > +      - description: Google Voltorb (Acer Chromebook 311 C723/C732T)
+> > +        items:
+> > +          - enum:
+> > +              - google,voltorb-sku589824
+> > +              - google,voltorb-sku589825
+>
+> This looks rather sane for a chromebook!
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+It really depends on the OEM/ODM for how many combinations they end up
+producing...
 
-> 
-> ---
-> Changes since v1:
-> - Reword commit message with more details on how the original commit
->    got things wrong, and what this commit adds and fixes
-> ---
->   sound/soc/mediatek/mt8195/mt8195-mt6359.c | 1 +
->   1 file changed, 1 insertion(+)
-> 
-> diff --git a/sound/soc/mediatek/mt8195/mt8195-mt6359.c b/sound/soc/mediatek/mt8195/mt8195-mt6359.c
-> index ca8751190520..2832ef78eaed 100644
-> --- a/sound/soc/mediatek/mt8195/mt8195-mt6359.c
-> +++ b/sound/soc/mediatek/mt8195/mt8195-mt6359.c
-> @@ -827,6 +827,7 @@ SND_SOC_DAILINK_DEFS(ETDM2_IN_BE,
->   
->   SND_SOC_DAILINK_DEFS(ETDM1_OUT_BE,
->   		     DAILINK_COMP_ARRAY(COMP_CPU("ETDM1_OUT")),
-> +		     DAILINK_COMP_ARRAY(COMP_EMPTY()),
->   		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
->   
->   SND_SOC_DAILINK_DEFS(ETDM2_OUT_BE,
+> Acked-by: Conor Dooley <conor.dooley@microchip.com>
 
+Thanks!
 
+> > +          - const: google,voltorb
+> > +          - const: mediatek,mt8186
+> >        - items:
+> >            - enum:
+> >                - mediatek,mt8186-evb
+> > --
+> > 2.45.2.741.gdbec12cfda-goog
+> >
 
