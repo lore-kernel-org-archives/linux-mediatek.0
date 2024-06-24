@@ -4,95 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A2F5C2BD09
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jun 2024 07:22:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A006C2BD05
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jun 2024 07:39:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=P49JDi1xXPAYpLbhrU13RiWekT68KiQTL8uhFa+r3Dc=; b=lLUF2lM8AvSyIfyBkuOGwJHwaf
-	2ORDjTMaPQtfB/1VLlhHiansvdC4LVdKdL8CuVTZvYH9Y8U7jmN5IXM/qaJoWtnXCPgaHMCu+oCGU
-	/c6cJg+sOCIAHqU5jUXGU9b1zzNjbEuVfR96RJcIAJEsGg9efdAL8YLYEV16RUvTrDZmC54sgGQtG
-	x8lxlL8KvnTu5g/bDfUenGbxJgAWh3FliU75HIpMLPYibFJCjsxXmA8IUV3nStolSO7xv97P/dV2b
-	I4qccJvOYriGQ9pZYAyqAItgIYLdjEQoY+tIm3kCB7d7uiz76EHQUWQj89fpVdGLABKQ4qt7Xr+nS
-	NX22cBTQ==;
+	bh=3jZydkKc9i7xAJsPNdcAdxjR7hb5g+ubUG2CQkh9stA=; b=lxTGlec2mwHF7Jn2beyMsVgMZX
+	1rdwbvd6YH1aVEavr6km9eZdW3v6F520GdAKUg1yxXvxEyinyW29ITivN+MeJnaPDOvlKe/0yHTAt
+	q06l4jvt+O72iQ/8Le3Edf0fBhSVmBg+ymZxu5WBrdBX1VvwoowCdukjxhgrKwcy85cIN7cE3hZ0e
+	nO/PR91A7eATNFn1fm2oJ4De321C3rNa9cgR69B3jlJxLNdpHwJ0iedIDoWMGyr1WbOE0lmrxkNXR
+	LQNDH7ahisV7U5WswgbNMo6Y9lg/Fz6o85jlqE9OEhr0W/AF8cqpjba+fEh1nlpEFg/kgyi8vJamP
+	sS28Xqow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLe2I-0000000Frv8-2PXD;
-	Mon, 24 Jun 2024 07:22:46 +0000
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
+	id 1sLeIR-0000000Fui4-0EaS;
+	Mon, 24 Jun 2024 07:39:27 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLe2F-0000000Frtt-1wj2
+	id 1sLeIM-0000000FugK-2mmd
 	for linux-mediatek@lists.infradead.org;
-	Mon, 24 Jun 2024 07:22:44 +0000
-Received: by mail-ed1-x529.google.com with SMTP id 4fb4d7f45d1cf-57d15b85a34so4050135a12.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 24 Jun 2024 00:22:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1719213759; x=1719818559; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=P49JDi1xXPAYpLbhrU13RiWekT68KiQTL8uhFa+r3Dc=;
-        b=ypaJYvzhYhf4Uq9oT9ZUNFV3jnobdRVCjEWPtr1mcQesMfI+/VWV1IfYp4E6VdGIEo
-         q8rjvUo3zNrXaTwHbwSm+dQMLfRsFGp7ZoJAoE5CJn/06n5BcNAHUXgSrup0EQTthCNQ
-         hDSsJ/slxckSSRtgGTL71i1fx2cry4ar20Iabt/DVpZezFIpC1yfKuyNdrUSYO5R2Ld2
-         DLEQLj9Gc1ISqV39EVve/KpFFWqEvCRQUiNwKOjzT9LtGB9NkBKjvN/A+FA8zVDJ8enX
-         ZPHNmroMYWzSFzyemgltDCJ1iuotwaH2BJehQi9bQWvFva7v3CSXihUBNNRfqDmoAr5t
-         c+Iw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1719213759; x=1719818559;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=P49JDi1xXPAYpLbhrU13RiWekT68KiQTL8uhFa+r3Dc=;
-        b=mYnh8Lngme5133dx/YL4vwPmOwx/eKEkcx5PMyo5YVZCYJCpSYYImcptRAZeTYL/TU
-         7OW1ajOuYp5UZX+lTUoBvT95XokGZaBStys6Y7QBJ3sfs1O4EeyzwLLrR3CV1/z0y33d
-         gVq426AAxq9NURkn3NHDTVgWTuzYFQ1IQjGIeWyKTu9BJnCLdCG1M3YcTipCT7/oS+8j
-         mFiqO5jbxeKxxAU+yUQJ6tHyLk/AXoUAzAfRmzAEUEAnahYOA8VGk9GyPVyXeftEmVa0
-         gFaQSCASUEbwyqwe8P9n0ZZDqEfCLClpAxCHCJU+LhXl/mcqHQI+ogBHAsYuCM1QOmnK
-         jvNQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXy1eelCpn3BX4/MXdfAlBFQGIdkLgk2XEnkuGbAlK/YSlFAy5VESJZCHjR3DDiJwoQ6p9pDbGA+twdLbhNC7P45eUDuxYZo9XfHoXZ+seujXp9
-X-Gm-Message-State: AOJu0YwJI7X7oNYzjyYjwGIXkgVPNb1czhlDAXTC/qGvEWr8l9hdfRsi
-	af69XApa+eZKvknk81zNGmXUJ5D1BTsm/Gk8hAjzH9qKx+EhIu+Att0KvQifmCI=
-X-Google-Smtp-Source: AGHT+IEMa8s/IzqM0+yHmNkv5YbQAah63TcfDGwvHHxW+U4X+runaXjbqEZ9o5SWB9bNGeVYIuUvmA==
-X-Received: by 2002:a17:906:9c96:b0:a72:5598:f03d with SMTP id a640c23a62f3a-a725598f1dfmr116904766b.59.1719213759525;
-        Mon, 24 Jun 2024 00:22:39 -0700 (PDT)
-Received: from [192.168.1.172] ([93.5.22.158])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a710595adedsm238162166b.214.2024.06.24.00.22.38
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 24 Jun 2024 00:22:39 -0700 (PDT)
-Message-ID: <cc50cb9e-cbae-43dc-8845-da11a6fb7074@baylibre.com>
-Date: Mon, 24 Jun 2024 09:22:38 +0200
+	Mon, 24 Jun 2024 07:39:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1719214758;
+	bh=V+/MuvOB5oRpHrUXIua2jOm8NVL5toa1d2l3vx43fvc=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=kppcXub/wGYVKDXZW9lsyJvZlE+MHw94Ab2zNNosm0jdkPczLSeXIa1mX4CnB0TH3
+	 Yb4E0vqO3PjC9VKzOt94QYra2asAz1mEXL6qdPrzeUV6k0kfkfIAGNjjidmDutXjkx
+	 jsSsLzOtK/Ei0/dHmSjjlfMHlGaNxutpfeWUPXqGmg70DzoOe7p/L/gO5rcfofNGCh
+	 UzEFxUwjQIZ9Xr2d5UaBFjQ0XqYnx37U/cIJpHRFV5DMamkEVIJW4boJpkbktShAqi
+	 j78oPgSc40mkbwC6rOjvnJXUWGPueXDg5W3arSGPIQptFoOFBh/14pPeR9ZJ4u2DAC
+	 PqUdQOigkcQHA==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 950BA378216B;
+	Mon, 24 Jun 2024 07:39:17 +0000 (UTC)
+Message-ID: <aefe76a3-5712-4e34-8990-0463a5036324@collabora.com>
+Date: Mon, 24 Jun 2024 09:39:16 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 12/15] drm/mediatek: add MT8365 SoC support
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Jitao Shi <jitao.shi@mediatek.com>, CK Hu <ck.hu@mediatek.com>,
- Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, Fabien Parent <fparent@baylibre.com>
-References: <20231023-display-support-v4-0-ed82eb168fb1@baylibre.com>
- <20231023-display-support-v4-12-ed82eb168fb1@baylibre.com>
- <CAAOTY__ZLjuJHnGsVLvGkFK0WhJJ6r=miqewRHsPCJhqO=8qoA@mail.gmail.com>
+Subject: Re: [PATCH v2] ASoC: mediatek: mt8195: Add platform entry for
+ ETDM1_OUT_BE dai link
+To: Chen-Yu Tsai <wenst@chromium.org>, Mark Brown <broonie@kernel.org>
+Cc: Trevor Wu <trevor.wu@mediatek.com>, linux-sound@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+References: <20240624061257.3115467-1-wenst@chromium.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <CAAOTY__ZLjuJHnGsVLvGkFK0WhJJ6r=miqewRHsPCJhqO=8qoA@mail.gmail.com>
+In-Reply-To: <20240624061257.3115467-1-wenst@chromium.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240624_002243_529214_D545595D 
-X-CRM114-Status: GOOD (  11.49  )
+X-CRM114-CacheID: sfid-20240624_003922_883681_4CA701B6 
+X-CRM114-Status: GOOD (  15.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,45 +76,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 21/06/2024 17:24, Chun-Kuang Hu wrote:
-> Hi, Alexandre:
+Il 24/06/24 08:12, Chen-Yu Tsai ha scritto:
+> Commit e70b8dd26711 ("ASoC: mediatek: mt8195: Remove afe-dai component
+> and rework codec link") removed the codec entry for the ETDM1_OUT_BE
+> dai link entirely instead of replacing it with COMP_EMPTY(). This worked
+> by accident as the remaining COMP_EMPTY() platform entry became the codec
+> entry, and the platform entry became completely empty, effectively the
+> same as COMP_DUMMY() since snd_soc_fill_dummy_dai() doesn't do anything
+> for platform entries.
 > 
-> <amergnat@baylibre.com>  於 2024年5月23日 週四 下午8:49寫道：
->> From: Fabien Parent<fparent@baylibre.com>
->>
->> Add DRM support for MT8365 SoC.
->>
->> Signed-off-by: Fabien Parent<fparent@baylibre.com>
->> Reviewed-by: AngeloGioacchino Del Regno<angelogioacchino.delregno@collabora.com>
->> Signed-off-by: Alexandre Mergnat<amergnat@baylibre.com>
->> ---
->>   drivers/gpu/drm/mediatek/mtk_drm_drv.c | 8 ++++++++
->>   1 file changed, 8 insertions(+)
->>
->> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
->> index ce8f3cc6e853..e1c3281651ae 100644
->> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
->> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
->> @@ -318,6 +318,10 @@ static const struct mtk_mmsys_driver_data mt8195_vdosys1_driver_data = {
->>          .mmsys_dev_num = 2,
->>   };
->>
->> +static const struct mtk_mmsys_driver_data mt8365_mmsys_driver_data = {
->> +       .mmsys_dev_num = 1,
-> You do not describe the pipeline information here. I think display
-> function would not work.
+> This causes a KASAN out-of-bounds warning in mtk_soundcard_common_probe()
+> in sound/soc/mediatek/common/mtk-soundcard-driver.c:
+> 
+> 	for_each_card_prelinks(card, i, dai_link) {
+> 		if (adsp_node && !strncmp(dai_link->name, "AFE_SOF", strlen("AFE_SOF")))
+> 			dai_link->platforms->of_node = adsp_node;
+> 		else if (!dai_link->platforms->name && !dai_link->platforms->of_node)
+> 			dai_link->platforms->of_node = platform_node;
+> 	}
+> 
+> where the code expects the platforms array to have space for at least one entry.
+> 
+> Add an COMP_EMPTY() entry so that dai_link->platforms has space.
+> 
+> Fixes: e70b8dd26711 ("ASoC: mediatek: mt8195: Remove afe-dai component and rework codec link")
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 
-Hi Chun-Kuang,
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-I don't describe the pipeline information here because I do it
-in the DTS thanks to the OF graphs Angelo's serie [1].
-I've tested DSI and DPI display, they work correctly ;)
+> 
+> ---
+> Changes since v1:
+> - Reword commit message with more details on how the original commit
+>    got things wrong, and what this commit adds and fixes
+> ---
+>   sound/soc/mediatek/mt8195/mt8195-mt6359.c | 1 +
+>   1 file changed, 1 insertion(+)
+> 
+> diff --git a/sound/soc/mediatek/mt8195/mt8195-mt6359.c b/sound/soc/mediatek/mt8195/mt8195-mt6359.c
+> index ca8751190520..2832ef78eaed 100644
+> --- a/sound/soc/mediatek/mt8195/mt8195-mt6359.c
+> +++ b/sound/soc/mediatek/mt8195/mt8195-mt6359.c
+> @@ -827,6 +827,7 @@ SND_SOC_DAILINK_DEFS(ETDM2_IN_BE,
+>   
+>   SND_SOC_DAILINK_DEFS(ETDM1_OUT_BE,
+>   		     DAILINK_COMP_ARRAY(COMP_CPU("ETDM1_OUT")),
+> +		     DAILINK_COMP_ARRAY(COMP_EMPTY()),
+>   		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
+>   
+>   SND_SOC_DAILINK_DEFS(ETDM2_OUT_BE,
 
-[1] https://lore.kernel.org/all/20240618101726.110416-1-angelogioacchino.delregno@collabora.com/
 
--- 
-Regards,
-Alexandre
 
