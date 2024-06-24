@@ -4,80 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9D5CC2BD05
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jun 2024 11:29:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3087C2BD05
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jun 2024 11:34:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lJfms8bBWpPvpzkfegQLdg1YyZRcV9AsM7OlSghDxgs=; b=A1jw20GrIURgnBLXA2LPPp/5UA
-	ANZUl0o0Gky9AIabwUqfNKj1/e2MdG/ONqE9b72lHqyakuWViJymhU5qVIXsXm5JBoBCGTwNPjcsJ
-	q0LJZ05KvccP5YnN5+4KGQZ0VhVTI+Xm2iXxBkV5/r6DDv3MiMGuWhvcn7PT1qL+V2/mfVMpwYL5c
-	4dgIskPsSuOAu/hw+eanboEzra4YIojrUcGg/R6+Cs7GGCFCLJghMX6tP0JRfIo1gHFpG9YRmLADX
-	M5Nm18iRRL7fKbjKyUZHDnsbelKm+Wyx2cBbUakJo1NYd9MNwXZcgT8wct7XW7bm4jZURCqRnMCRS
-	UwWLkFeg==;
+	bh=rI9nc12Dtl6fT48tRwNbwVy6dpdXAX6/GLUfyLFIgPI=; b=A/kHrRMQlLfuzkteb5ZKF7f8Qw
+	3ir2M28Khe9SCmK5Jp3QijGkWAPQoJkFabKvqetRZ5z94uzUwRkR4Y34F97mybLJJ4FYQViObQriz
+	lCkJjSYpB92fb5oI3WOcqQ9dCkEuYw6EJBZJPsYFTqDDCCR9DHB9h6ZJuUNZR6eL8zxO5gZg+11Vb
+	dEM4Qj0MCmBNE8+G6SfCIPJS5KUhfjo+o71BFacLF8pNMHncORNXnjCX4cHJKjaq/DxsmrwvpGkH7
+	iIAijEqYy2Qlw0YT7+OFiGpo8ktbvYF7qyOIBgb4nO29X88Qtg+/SHukiwFjyGGqOXROKXj90MKXn
+	Kkxlj/gg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLhsv-0000000GbUw-1OKI;
-	Mon, 24 Jun 2024 11:29:21 +0000
+	id 1sLhy3-0000000GcyN-03qu;
+	Mon, 24 Jun 2024 11:34:39 +0000
 Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLhsq-0000000GbSz-1umL;
-	Mon, 24 Jun 2024 11:29:17 +0000
+	id 1sLhxw-0000000GcvS-1ZCO;
+	Mon, 24 Jun 2024 11:34:34 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1719228554;
-	bh=hTxLy8mO7Anc77JfGNkN5gSzBb+4yPjURLOhsckT0Vc=;
+	s=mail; t=1719228871;
+	bh=YLhTWK6igYJuPvZyPGLIMWGPCfN4vQMIvMus5EY3xto=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=V+3exPVo3fN28ivEtBAzZHG6zdNKfQzCR16LvupCem+0C9ynGEJ5dJ6Dn3/J9ekX9
-	 bYhYB5oim5Yx7yL1CO+Tse7c7WK97VjoiOkXnY9zfrRHrl/gMMA+4+IMNL1jzTzLC2
-	 YCi1Byh5ng8vkHKnsBHoAypLduDwNWasR20qs5pTmnZJu0U8pt8PbjaVcH0zzpGUoD
-	 gc/ECsw934Tv+8/XMRANn7oAP2YPcLTNSJD4QbVeu3jXUV0GaxpR2FOuxEWwD3iy0O
-	 sHD9UIi9PX1700bRnkFYgTWrsh7Ydym2zmmiQVZLhFE52sT3JDHUlvvD25QzvHt/GY
-	 9QdSp7Dv1DD4A==
+	b=cbfG0/9OvAfM0klxsGM6D/6s7rhg2rwR4bxDE2ioVTZxtCrPkBdS8olFDK7/n2l2Y
+	 5/+V+LDSkOvfUWs5X1Qf76/KyO+fVQk1TuLGLMw7G7ub+GafZtKnDKThb4Qy5NmSrt
+	 cICuYf61w9t22Tx2xqs01glNX3mIyXIMsotyV8NIt23aS+cm5TaIuu0lHksqSRZptQ
+	 ov/96GNysovLsUnMgpjOdMtBLKS2ervVFiBwmsCg4WW41AFsxcCYhMr6vMeXQW5vcc
+	 ulbZjeU7LU/n15eAavqaEelm+znFmvRpnBN4R2zEKsZp1djp0IG+iyUGaNGsLdWUVm
+	 biDXYud5GoVRA==
 Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 3870C37804C6;
-	Mon, 24 Jun 2024 11:29:14 +0000 (UTC)
-Message-ID: <4e5d4362-4940-4ba0-95aa-627b82e21e41@collabora.com>
-Date: Mon, 24 Jun 2024 13:29:13 +0200
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 8857437804C6;
+	Mon, 24 Jun 2024 11:34:30 +0000 (UTC)
+Message-ID: <05841850-aeb6-47b6-916b-f4889d971d5c@collabora.com>
+Date: Mon, 24 Jun 2024 13:34:29 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] mailbox: mtk-cmdq: Move pm_runimte_get and put to
- mbox_chan_ops API
-To: Jassi Brar <jassisinghbrar@gmail.com>,
- =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- =?UTF-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>,
- "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
- =?UTF-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>,
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>
-References: <20240614040133.24967-1-jason-jh.lin@mediatek.com>
- <20240614040133.24967-3-jason-jh.lin@mediatek.com>
- <CABb+yY2bwj2BcdJLGe1ZYwCrnXL3LtcePMb=wQPaBKorBSs2yA@mail.gmail.com>
- <fc92d51cc6e55301c081ea2d589e1ba6cdd295ee.camel@mediatek.com>
- <CABb+yY1L+YGjf6O9UgPYkS2gWAdo=7QoojSAUNWC_8o7XtZQSg@mail.gmail.com>
- <1f815ff8-2b7a-48de-8b47-0bc9b3cb67ab@collabora.com>
- <CABb+yY1Yy8o3ofAiC-uV+gDrO3QDTWz3_XTUMai_2uyrnj-VrQ@mail.gmail.com>
- <b7ebc021d391452eaf2149976ea2d53fba3d89fc.camel@mediatek.com>
- <CABb+yY3+pnuXDK_jZMDYOAzahdSZ5iig51VqzM=FFHrFpK+9LA@mail.gmail.com>
+Subject: Re: [PATCH] mailbox: mtk-cmdq: add missing MODULE_DESCRIPTION() macro
+To: Jeff Johnson <quic_jjohnson@quicinc.com>,
+ Jassi Brar <jassisinghbrar@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, kernel-janitors@vger.kernel.org
+References: <20240608-md-drivers-mailbox-v1-1-6ce5d6f924ad@quicinc.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <CABb+yY3+pnuXDK_jZMDYOAzahdSZ5iig51VqzM=FFHrFpK+9LA@mail.gmail.com>
+In-Reply-To: <20240608-md-drivers-mailbox-v1-1-6ce5d6f924ad@quicinc.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240624_042916_651901_7457F2ED 
-X-CRM114-Status: GOOD (  21.03  )
+X-CRM114-CacheID: sfid-20240624_043432_582592_397039B0 
+X-CRM114-Status: GOOD (  10.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,97 +76,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 20/06/24 16:39, Jassi Brar ha scritto:
-> On Thu, Jun 20, 2024 at 1:33 AM Jason-JH Lin (林睿祥)
-> <Jason-JH.Lin@mediatek.com> wrote:
->>
->> On Wed, 2024-06-19 at 10:38 -0500, Jassi Brar wrote:
->>>
->>> External email : Please do not click links or open attachments until
->>> you have verified the sender or the content.
->>>   On Wed, Jun 19, 2024 at 3:18 AM AngeloGioacchino Del Regno
->>> <angelogioacchino.delregno@collabora.com> wrote:
->>>> Il 18/06/24 17:59, Jassi Brar ha scritto:
->>> .....
->>>
->>>> For example, when static content is displayed on screen, the CMDQ
->>> mailbox never
->>>> gets shut down, but no communication happens for a relatively long
->>> time; the
->>>> overhead of actually shutting down the mailbox and setting it back
->>> up would be
->>>> increasing latency in an unacceptable manner.
->>>>
->>> Hmm...  in your driver,  startup() is _empty_   and  shutdown() is
->>> all
->>> under a spin-lock with irqs disabled, so that too shouldn't be
->>> expensive. Right?
->>> Then what causes unacceptable latencies?
->>>
->>
->> I found that the BUG report only occurred when opening the camera APP.
->> Maybe something in imgsys_cmdq_sendtask() is too expensive or somewhere
->> else in imgsys driver.
->>
-> If you move anything from submit() into startup(), which is once per
-> lifetime of a channel, it will only make imgsys_cmdq_sendtask()
-> cheaper.
-> Btw, the imgsys code is not public, I don't know how it looks.
+Il 08/06/24 18:31, Jeff Johnson ha scritto:
+> make allmodconfig && make W=1 C=1 reports:
+> WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/mailbox/mtk-cmdq-mailbox.o
 > 
+> Add the missing invocation of the MODULE_DESCRIPTION() macro.
 > 
->> I'm wondering why this BUG report is not occurred in display use case
->> which is more frequent than imgsys use case.
->> Does this mean sleep() is not always called in pm_runtime_get_sync()
->> and if we can guarantee this sleep() won't be called, then using
->> pm_runtime_get_sync() in atomic context is OK?
->>
-> Instead of hacking around, maybe try using startup() and shutdown()
-> which is for such uses? Maybe request/release channel as part of RPM
-> in your client driver if you are worried about the noise?
+> Signed-off-by: Jeff Johnson <quic_jjohnson@quicinc.com>
+> ---
+>   drivers/mailbox/mtk-cmdq-mailbox.c | 1 +
+>   1 file changed, 1 insertion(+)
 > 
-> 
->>>> This is why I opted for autosuspend - it's only bringing down
->>> certain clocks for
->>>> the CMDQ HW, adding up a bit of power saving to the mix which, for
->>> some use cases
->>>> such as mobile devices with relatively small batteries, is
->>> definitely important.
->>>>
->>>> I'll also briefly (and only briefly) mention that 120Hz displays
->>> are already a
->>>> common thing and in this case the gap between TX and ACK is ~8.33ms
->>> instead, let
->>>> alone that displays with a framerate of more than 120Hz also do
->>> exist even though
->>>> they're less common.
->>>>
->>> I don't know how even busier channels help your point.
->>>
->>>> All of the above describes a few of the reasons why autosuspend is
->>> a good choice
->>>> here, instead of a shutdown->startup flow.
->>>> And again - I can place some bets that PM would also be applicable
->>> to SoCs from
->>>> other vendors as well, with most probably different benefits (but
->>> still with some
->>>> power related benefits!) compared to MediaTek.
->>
->> I agree with Angelo's point!
->>
-> Ok, but you or Angelo still don't explain "unacceptable latencies"
-> when your startup() and shutdown() are empty. You just want api
-> changed, which we can but at least do you part and tell me where the
-> bottleneck (unexpected latency) comes from.
-> 
+> diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
+> index 4aa394e91109..8247584bcbeb 100644
+> --- a/drivers/mailbox/mtk-cmdq-mailbox.c
+> +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+> @@ -790,4 +790,5 @@ static void __exit cmdq_drv_exit(void)
+>   subsys_initcall(cmdq_drv_init);
+>   module_exit(cmdq_drv_exit);
+>   
+> +MODULE_DESCRIPTION("Mediatek Command Queue(CMDQ) driver");
 
-"I want numbers" is a sensible request, honestly I would do the same so I totally
-understand that.
+MODULE_DESCRIPTION("MediaTek Command Queue (CMDQ) Mailbox driver");
 
-Jason, can you please perform latency measurements on 60Hz and *especially* ISP/cam
-cases while "continuously" calling startup() and shutdown() for every power saving
-operation?
+After which,
+
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
-Thanks,
-Angelo
 
