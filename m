@@ -4,96 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E33BC30653
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jun 2024 07:15:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1425BC30653
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jun 2024 07:42:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JySqkATRPlYLkNhd+lYESHv1lkNC/LIuMH3yqfbsSJ0=; b=gdwm9XJTSe6HXSMqxPhVRsIDXe
-	92kKiPxkPtiZO9IjoUOTBMK2QX5eVur52gdMA9y57rlJs6jXKmBf5o0U0eoVyKBg7+SqNg/MEjHZA
-	5vz+ngO8VkQe5f0dKSVBMtmq2YKP3Hi/RzR3srHly81K0eMiMQtWGOveB1eocavaUyY5DFIwz/YOE
-	2ywYinXaCuFsr5MVolFnIhCQfVfSmavTJ+TB+0Jjn/G8CwfNt4z3bGHazgLgQSBzjd4IvCACn/XEW
-	t5Jl0RIZ7NgWdh7pfJS8aasfSEhNZq0fh6WN4TmydP+wwUTRbNb4E9sB0dyfxxhYBDVZVwXFmlJj0
-	aixZMBng==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=InDLoF2m/XCmvuHDWKNuyQZpnjOo0ppbvToi7Mp9PHw=; b=QOnD3faT3B3BeyhzvKa4+GshLw
+	+VLsDMJXrojW04jQOQbF+3sxjRD5y035kwytQ5f4xF0jNvyfpODPAdwNBxf9ealK76AycKkeR4A8N
+	BCkV1JSDfykr4hrSjBf5O7tp5X4WssgmFJHJNnWvPU0YaS7LefUe4HzIMNsA/FQuaP4jBo19cvUTe
+	kHZoYYJCkkA+K//nXXusEq1OL1AZdwjnHVol2UsDHcEUtom05BGhoIn+Ah/0m7BaofUgY3X6Kpccb
+	JMjK2JcKAN4t9gjP9dcER4OiTLtvvU1FJ0CYvnzvOh5XZG6RkJHHvdOO1nXZHc0kocMVitLGTuYQQ
+	8lFqPeWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sM0Og-00000001vRw-05w1;
-	Tue, 25 Jun 2024 07:15:22 +0000
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+	id 1sM0oa-00000001ztm-2cmb;
+	Tue, 25 Jun 2024 07:42:08 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sM0OZ-00000001vQ9-1bar;
-	Tue, 25 Jun 2024 07:15:16 +0000
-Received: by mail-wr1-x42a.google.com with SMTP id ffacd0b85a97d-364b2f92388so3764118f8f.2;
-        Tue, 25 Jun 2024 00:15:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1719299713; x=1719904513; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=JySqkATRPlYLkNhd+lYESHv1lkNC/LIuMH3yqfbsSJ0=;
-        b=RZVn6vdTIYdvuMj9cVzwgEAvwHtC3dajPZDaxK9bWb43Lja5SucHmfPw/ef08IMZK1
-         M1d+5Jrnbw7X8OA9SRuCeTegFSxSDOwdI7wtx0K0OCtwur+fopfKpxhCW+oGPpoijoQh
-         /zO3kNats2hRcamECn3BIl8/+0JB7z5t9PYg68VJMucGksAdO8oOAQ+AM3FX6gPcqHeu
-         BtOtvaGjHOhJo1U9Cn4xnwkZpZnfZlbcgP5OsxhX2p6g0TU7mMdVxhrUNh+m6jOgvect
-         ANAXy4SUodHB6bMftRPAoANbHVkvTbrDhxp6OOnk1aQFsjBztq0IUpfY9w5QyM+rH5mD
-         IH9Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1719299713; x=1719904513;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=JySqkATRPlYLkNhd+lYESHv1lkNC/LIuMH3yqfbsSJ0=;
-        b=BCQspXE9b3ttu8qXOVexDusDWmcZVglNifzAPowmJIILRMahu6R1nJa2aeGiREyZtB
-         +3uQrvwclndA/dvY7MjEc7FMP9fDF3YnO5JPlTdj7yBh4XJNXGpp8Dx1qSMLW1PDRzzo
-         PT7AwTf09HvCDZe3ldoVBTnw1iDONDU1dTtyZTFQTcfuvdhMUcaxcH2tdMc03vKOxvIP
-         Toh/DVPvSQvWZenlmwmY4kgbpQr2LXsMWwe9P9ASx7PEmUSgMqrjsd/IVipo/zyDtWLj
-         4DqDZNxGctjR8le7drmz/czTVBrRHUJIaiL/3CpSunA4OnXNn5NacG79YrK+siCSNLQR
-         uNQQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUbaDpHXQUQCR99luYOJwCaIz66mxNFU8tZsmWbbudq2l2lxALTJ2oAju+wb9FwsVAmnM52G4AjB0iyFVUPGyMa6GEjLRrwv1qvOo1MTYRhK4RpuTS98dH5jYZ5dZv4ryti8It9jN7Dp42oX/GcMMgCWIqCM0yU3jw=
-X-Gm-Message-State: AOJu0Yz1VYcFqliD8bnYZgI9UXzXHGy4/8SPL3mUTkgmfODN6WQPwBlp
-	YQd2tUuXi4O763BZX39jxJsh4XBYMvWWfb+/C4xHP9V5Iiq5AQhc
-X-Google-Smtp-Source: AGHT+IEEbVK4uKqf4sQIA/jL4J3G03Si2HpSOHfkFWkWR7fwfWJ3/XR56egnedWU+oaQoTsc42xjlQ==
-X-Received: by 2002:adf:e649:0:b0:35f:119a:14c7 with SMTP id ffacd0b85a97d-366e965ff49mr4161102f8f.69.1719299712727;
-        Tue, 25 Jun 2024 00:15:12 -0700 (PDT)
-Received: from skbuf ([188.25.55.166])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3663ada128dsm12110656f8f.117.2024.06.25.00.15.10
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 25 Jun 2024 00:15:11 -0700 (PDT)
-Date: Tue, 25 Jun 2024 10:15:09 +0300
-From: Vladimir Oltean <olteanv@gmail.com>
-To: Chris Packham <chris.packham@alliedtelesis.co.nz>
-Cc: andrew@lunn.ch, f.fainelli@gmail.com, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	=?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Daniel Golle <daniel@makrotopia.org>
-Subject: Re: [PATCH v2] dt-bindings: net: dsa: mediatek,mt7530: Minor wording
- fixes
-Message-ID: <20240625071509.pwo4qmnvlf4ooqez@skbuf>
-References: <20240624211858.1990601-1-chris.packham@alliedtelesis.co.nz>
- <20240624211858.1990601-1-chris.packham@alliedtelesis.co.nz>
+	id 1sM0oT-00000001zs0-3daA;
+	Tue, 25 Jun 2024 07:42:03 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1719301318;
+	bh=fTwKzgDAtpJ7fS3y7s9o/r1cT4erRfQd8eIF/4pTaM8=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=z/7tCTKMxE5Tifq9HPtAVVlG40A6lcXzeY1tS/lPtujX3nCTC0AO+EYXvxtFjJV9d
+	 ITh9rvkjXCVdH1T+gjaWifWQsWZp13jO61gkqNEDVbx+4NLEVnfgI2aD2U6Nw3mqsi
+	 V19UoLzDZP0Tuy+1SfEcagDiCnBDNwFz5kdMwTCZlBlkuzv+EugVGzd28SBesTTZ7q
+	 ybKjOKFX+GMAKQYwJO2cUIY5+e46FJQW/CT8WZqlMUQl+NDLl+Q1d0l335f3XfrLxo
+	 RHGrVHw8+JUeiYyTGJPyu4w0Gq3GLUotTloXSy5jH+IcDvfOSyub0g8TPgLtAEYD3r
+	 rR/KpHcGql7DA==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 3325C378216A;
+	Tue, 25 Jun 2024 07:41:58 +0000 (UTC)
+Message-ID: <8f3d6c71-4c4d-4f56-94ba-f61ae5b61dd1@collabora.com>
+Date: Tue, 25 Jun 2024 09:41:57 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240624211858.1990601-1-chris.packham@alliedtelesis.co.nz>
- <20240624211858.1990601-1-chris.packham@alliedtelesis.co.nz>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] drm/mediatek: Fix bit depth overwritten for mtk_ovl_set
+ bit_depth()
+To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ Jason-ch Chen <jason-ch.chen@mediatek.com>,
+ Singo Chang <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>
+References: <20240624095726.18818-1-jason-jh.lin@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20240624095726.18818-1-jason-jh.lin@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240625_001515_442882_82812CFE 
-X-CRM114-Status: GOOD (  10.18  )
+X-CRM114-CacheID: sfid-20240625_004202_304398_2ADCF593 
+X-CRM114-Status: UNSURE (   5.84  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,12 +79,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jun 25, 2024 at 09:18:57AM +1200, Chris Packham wrote:
-> Update the mt7530 binding with some minor updates that make the document
-> easier to read.
+Il 24/06/24 11:57, Jason-JH.Lin ha scritto:
+> Refine the value and mask define of bit depth for mtk_ovl_set bit_depth().
+> Use cmdq_pkt_write_mask() instead of cmdq_pkt_write() to avoid bit depth
+> settings being overwritten.
 > 
-> Signed-off-by: Chris Packham <chris.packham@alliedtelesis.co.nz>
-> ---
+> Fixes: fb36c5020c9c ("drm/mediatek: Add support for AR30 and BA30 overlays")
+> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
 
-Reviewed-by: Vladimir Oltean <olteanv@gmail.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+
 
