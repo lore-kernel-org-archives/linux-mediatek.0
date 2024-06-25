@@ -4,92 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A340BC2BBCA
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jun 2024 04:21:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67A12C3064D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jun 2024 05:56:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mu1LnZogWHoCyLFUWKpiivrgVlmD+xznk1rmZJOyHgA=; b=PDAMggzSZGt9r7GQLplQewtTwT
-	b/JAFEWGcnS197sKnXCTD/CK8RC4l/PTXCHHdzoytzJfubz1+2BsVoO9Dm/hSf5VAHeBIcy2m41pv
-	TFm4SJUsUndNVGG9SxaRv834plT9bVJKyI6QzMu3LuxyStFczYSOplzFXjobyTEXEumaaPxJldW7s
-	yWWM+5ofdKgg9G6zcvaKxG1/c65GkwVSbee8aK+PIaV+CIRg0JnKH06TJidxRcY34T7MmMfrdekmM
-	ffqwRbla0SpWoPJ30k/zrJk98Ed7VLxXmRcICmzCE0cRuMGsNecMWoZcrThO7ULfUIJoe7l4zPlQ2
-	jNu6bcww==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:Reply-To:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Fi0PpkRAy7VQ2C54ZJo6BAKncB41h/I16eVpJYJGK3U=; b=AHZhpezAMCYLV/jL0AfMfvUbON
+	1WADvT1wGl7qS3GX9cME5Yj6GKwBRR/+5ivtHkz5e4QHStJS4mZUhCTwYmVTLyrGCSykG54Z309lE
+	dJDmQQh7FBhlL3JEyUvB91OUC6CJDLlsLzoXtQ/X4luTjfOAHAbqdEowTltBcHDNiIcgvQPwNwmH9
+	Ja58Y7jQHhiHgksN+FqZwf0RwRnwtChMcWp+ulSsms6WdVMEBM+yaGAG36LpQnusSFpH4ABsDi/B9
+	fGqHCGGcDJDUp0UwtjquCeD+SjPt7/f3MAIQik4ZM3/JrYED3qepT8VQuThNd/FXaNzIsAUbCIo5x
+	5DIJtxgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLxgd-00000001Y1z-0XWu;
-	Tue, 25 Jun 2024 04:21:43 +0000
-Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
+	id 1sLzAi-00000001jzN-2Exl;
+	Tue, 25 Jun 2024 05:56:52 +0000
+Received: from wp530.webpack.hosteurope.de ([80.237.130.52])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLxgZ-00000001Y1N-2q1O;
-	Tue, 25 Jun 2024 04:21:41 +0000
-Received: by mail-lf1-x12f.google.com with SMTP id 2adb3069b0e04-52cdb0d8107so4292688e87.1;
-        Mon, 24 Jun 2024 21:21:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1719289298; x=1719894098; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=mu1LnZogWHoCyLFUWKpiivrgVlmD+xznk1rmZJOyHgA=;
-        b=X+mTUnswG5o5rdhj6LgEwyDSZQGZBtD4TpEeVIYJpdEiRANnyRQ+0MQWwfUNg4QwmI
-         rMSDpTzHvGXg4OPLdQePE+7YipbroPIr/rM8NuWaq5h9vvuV6YMhKW3lHKUaw3xT7eTb
-         FS51S/95pza3qwdzuVc0lfhnU4m8qwHwtQII66NVc3P9uI2le7js7dGAuk0oJ3V0M+aE
-         dZIVD4Vd6ZjqQf3jZz7mS1jwa2epTq4ZDGtEtorjKu7f3EwkD/mWwCOmNRwe/lhCDDT3
-         yO6hm2N8UBmDL1eOUKgJxMS8UZG2416BPCI0FKhLQUZzr5xnU1t3jRvsrhkpDH4E1bow
-         g5KQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1719289298; x=1719894098;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=mu1LnZogWHoCyLFUWKpiivrgVlmD+xznk1rmZJOyHgA=;
-        b=qboX42gqJmWkhcy/OKdb+G91Q3pjmX3n8dHlPAVh6x8Nfw5aP6UG4PkUlZ5YDyVdBt
-         s+WveVL0gqWfkC82LWPMxTpuKza8DVP/Pwbspno+h449ysttCVkOY1qbC7EiSmy3smoM
-         IOfACjEyLYUNkG2nurkYEgHncUszcN+JNUdzMyGvT0r+J7TXNNkLQ3/2Mug+QEOgLBns
-         viFjXo9W4QKeHfIcRK9Wcqt+bdR5EM0Mk6nXebz7HYmW2Gx53fYcB4+Ao5dmW4hk44PV
-         NZ3R1dXQ+dGD25ilsPZcPayoj4WsFBAMgboaU0hLwlvDGuWKwUy3o4W0CZl2AkxBoyp5
-         rmZw==
-X-Forwarded-Encrypted: i=1; AJvYcCUZmLoYOFDtAzDzyvCHAw+l0sI12+DNPnTOo+JQ3+h0kuslOQLVHYar7ZaeRVcnELOZQZ3uUtx5kG8cvo5wcFzj2+7FspTPwlJMNeptB6YbWdXnpIwxi+M6nfOBTwpz7/AWxLzJX8d/iG97b1fDVcq2YSNuHjR+avk=
-X-Gm-Message-State: AOJu0YxLGX3PiDJNz2MHXxCzdJ0WWH0hHve7d1lyln1A7sjqPeMr9T4n
-	8UlUtOxBYypcPaJ++AcOB0pazw1S1AqZj+HloYvxCfdgjVwrLZ1P0aR+iQep4kHrcBP/CAi18IZ
-	KS7nfTVFBhGAC//Gi3UsEFuy5JXw=
-X-Google-Smtp-Source: AGHT+IFwN1NXNL6jfb2rrTRGo5ey7OVdTIF03YPWsbWXLa4+X3VRioA2aHnl6BcksHM0XT5qt3KrFvsTAkTa+cpIGRE=
-X-Received: by 2002:ac2:43ce:0:b0:52c:da39:e40d with SMTP id
- 2adb3069b0e04-52cdf7f1581mr4202983e87.26.1719289297244; Mon, 24 Jun 2024
- 21:21:37 -0700 (PDT)
+	id 1sLzAb-00000001jyA-1QDI;
+	Tue, 25 Jun 2024 05:56:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=leemhuis.info; s=he214686; h=Content-Transfer-Encoding:Content-Type:
+	In-Reply-To:Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:From:Sender:Reply-To:Subject:Date:Message-ID:To:Cc:MIME-Version:
+	Content-Type:Content-Transfer-Encoding:Content-ID:Content-Description:
+	In-Reply-To:References; bh=Fi0PpkRAy7VQ2C54ZJo6BAKncB41h/I16eVpJYJGK3U=;
+	t=1719295005; x=1719727005; b=ZJCniJmr9LKeyEOKduuZOpNZpdX+Zn2c5TubqiJShvbWhYT
+	ynwaJMtb+tYcUzjMgzy9yr7M2FSWHsrsxfP+3/5QZspgqRG9Nixh2UiPrxVGp8aOXw5cbuVfb5Dc7
+	ZYYi68qwIqaLONbutyiABE0UOO0eqRM5skOKXGH6O1xuCmZEFxDKPKepZTtVDb7DTASsoYECvv5m3
+	uT2WPHTlVCqgI1sKglvJKrUqlPEvCDtIJ57rLmrmJuDPQAK4hWNbkq1cukgJMhkq1mwutZG4yXdQ5
+	ZzRYyN126fqfG4pTG+niscaCtf/3E7scJ27vLYA53/uAEIpVEaX+HVQgiL7vaCaw==;
+Received: from [2a02:8108:8980:2478:8cde:aa2c:f324:937e]; authenticated
+	by wp530.webpack.hosteurope.de running ExIM with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
+	id 1sLzAM-0002GH-6n; Tue, 25 Jun 2024 07:56:30 +0200
+Message-ID: <750a60a6-4585-4bd2-97be-cf944e51fbdb@leemhuis.info>
+Date: Tue, 25 Jun 2024 07:56:29 +0200
 MIME-Version: 1.0
-References: <20240614040133.24967-1-jason-jh.lin@mediatek.com>
- <20240614040133.24967-3-jason-jh.lin@mediatek.com> <CABb+yY2bwj2BcdJLGe1ZYwCrnXL3LtcePMb=wQPaBKorBSs2yA@mail.gmail.com>
- <fc92d51cc6e55301c081ea2d589e1ba6cdd295ee.camel@mediatek.com>
- <CABb+yY1L+YGjf6O9UgPYkS2gWAdo=7QoojSAUNWC_8o7XtZQSg@mail.gmail.com>
- <1f815ff8-2b7a-48de-8b47-0bc9b3cb67ab@collabora.com> <CABb+yY1Yy8o3ofAiC-uV+gDrO3QDTWz3_XTUMai_2uyrnj-VrQ@mail.gmail.com>
- <b7ebc021d391452eaf2149976ea2d53fba3d89fc.camel@mediatek.com>
- <CABb+yY3+pnuXDK_jZMDYOAzahdSZ5iig51VqzM=FFHrFpK+9LA@mail.gmail.com>
- <4e5d4362-4940-4ba0-95aa-627b82e21e41@collabora.com> <CABb+yY3eXvJRUq7MOqB8QZ9N4aiuogaUCTfP7MerKdNbAbLkvw@mail.gmail.com>
- <895af04e45d286c38d01f48b29ad41598b7dadb7.camel@mediatek.com>
-In-Reply-To: <895af04e45d286c38d01f48b29ad41598b7dadb7.camel@mediatek.com>
-From: Jassi Brar <jassisinghbrar@gmail.com>
-Date: Mon, 24 Jun 2024 23:21:25 -0500
-Message-ID: <CABb+yY1EZOsKUR7WUX0Ni0Ukbqz0+yRHswiu07tNXtY1A1gNUQ@mail.gmail.com>
-Subject: Re: [PATCH 2/2] mailbox: mtk-cmdq: Move pm_runimte_get and put to
- mbox_chan_ops API
-To: =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>
-Cc: "angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>, 
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
-	=?UTF-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>, 
-	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>, =?UTF-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>, 
-	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>, 
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] arm64: dts: mt7622: fix switch probe on bananapi-r64
+To: Paolo Abeni <pabeni@redhat.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+References: <20240516204847.171029-1-linux@fw-web.de>
+ <a29dd7d1-40a8-4c88-99aa-651a3305b640@arinc9.com>
+ <5AEE5668-0C8E-4EE4-A398-66CB99DF5650@public-files.de>
+ <43aacd9d-b851-4100-8ccc-878ac6ae10f8@leemhuis.info>
+ <698cf562-1ca9-4aa3-be7e-a1474b612c5b@leemhuis.info>
+ <0cba095c-3d55-416a-a7ad-b359129731cf@arinc9.com>
+ <714da201-654b-4183-8e5e-8ff0b64fe621@leemhuis.info>
+ <2cac4cf68304e81abffbd9ff0387ee100323c2b7.camel@redhat.com>
+ <b49c801c-6628-40a6-8294-0876d8871ba7@leemhuis.info>
+ <e92c3ca0-c9be-44ac-a4fc-57ca5ebedbc5@leemhuis.info>
+ <1807a142-1534-4fa4-ad4b-d1c03af014c2@arinc9.com>
+ <58d8ddea-71cc-427a-94cc-a95f6bce61d2@collabora.com>
+ <16e9c06e-9908-455d-a387-614fefe5bcf8@arinc9.com>
+ <5e87d31c-b059-4f9a-93f7-dc87465ed14a@collabora.com>
+ <4416ef22-78cc-4ce5-b61d-69ff0903811e@arinc9.com>
+ <bd6b6929-d34d-4bd5-9cb0-bc8fe850ee46@leemhuis.info>
+ <af561268-9793-4b5d-aa0f-d09698fd6fb0@arinc9.com>
+From: "Linux regression tracking (Thorsten Leemhuis)"
+ <regressions@leemhuis.info>
+Content-Language: en-US, de-DE
+In-Reply-To: <af561268-9793-4b5d-aa0f-d09698fd6fb0@arinc9.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-bounce-key: webpack.hosteurope.de;regressions@leemhuis.info;1719295005;f09ca3c7;
+X-HE-SMSGID: 1sLzAM-0002GH-6n
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240624_212139_850254_91F1D9D1 
-X-CRM114-Status: GOOD (  56.67  )
+X-CRM114-CacheID: sfid-20240624_225645_555170_652154C9 
+X-CRM114-Status: GOOD (  18.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,273 +86,54 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: Linux regressions mailing list <regressions@lists.linux.dev>
+Cc: devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Linux regressions mailing list <regressions@lists.linux.dev>, =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, linux-kernel@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Frank Wunderlich <linux@fw-web.de>, Rob Herring <robh@kernel.org>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jun 24, 2024 at 10:41=E2=80=AFPM Jason-JH Lin (=E6=9E=97=E7=9D=BF=
-=E7=A5=A5)
-<Jason-JH.Lin@mediatek.com> wrote:
->
-> On Mon, 2024-06-24 at 12:45 -0500, Jassi Brar wrote:
-> >
-> > External email : Please do not click links or open attachments until
-> > you have verified the sender or the content.
-> >  On Mon, Jun 24, 2024 at 6:29=E2=80=AFAM AngeloGioacchino Del Regno
-> > <angelogioacchino.delregno@collabora.com> wrote:
-> > >
-> > > Il 20/06/24 16:39, Jassi Brar ha scritto:
-> > > > On Thu, Jun 20, 2024 at 1:33=E2=80=AFAM Jason-JH Lin (=E6=9E=97=E7=
-=9D=BF=E7=A5=A5)
-> > > > <Jason-JH.Lin@mediatek.com> wrote:
-> > > >>
-> > > >> On Wed, 2024-06-19 at 10:38 -0500, Jassi Brar wrote:
-> > > >>>
-> > > >>> External email : Please do not click links or open attachments
-> > until
-> > > >>> you have verified the sender or the content.
-> > > >>>   On Wed, Jun 19, 2024 at 3:18=E2=80=AFAM AngeloGioacchino Del Re=
-gno
-> > > >>> <angelogioacchino.delregno@collabora.com> wrote:
-> > > >>>> Il 18/06/24 17:59, Jassi Brar ha scritto:
-> > > >>> .....
-> > > >>>
-> > > >>>> For example, when static content is displayed on screen, the
-> > CMDQ
-> > > >>> mailbox never
-> > > >>>> gets shut down, but no communication happens for a relatively
-> > long
-> > > >>> time; the
-> > > >>>> overhead of actually shutting down the mailbox and setting it
-> > back
-> > > >>> up would be
-> > > >>>> increasing latency in an unacceptable manner.
-> > > >>>>
-> > > >>> Hmm...  in your driver,  startup() is _empty_   and  shutdown()
-> > is
-> > > >>> all
-> > > >>> under a spin-lock with irqs disabled, so that too shouldn't be
-> > > >>> expensive. Right?
-> > > >>> Then what causes unacceptable latencies?
-> > > >>>
-> > > >>
-> > > >> I found that the BUG report only occurred when opening the
-> > camera APP.
-> > > >> Maybe something in imgsys_cmdq_sendtask() is too expensive or
-> > somewhere
-> > > >> else in imgsys driver.
-> > > >>
-> > > > If you move anything from submit() into startup(), which is once
-> > per
-> > > > lifetime of a channel, it will only make imgsys_cmdq_sendtask()
-> > > > cheaper.
-> > > > Btw, the imgsys code is not public, I don't know how it looks.
-> > > >
->
-> It'll be upstreamed in the future, so I can only test it locally to
-> find the information we want.
->
-> > > >
-> > > >> I'm wondering why this BUG report is not occurred in display use
-> > case
-> > > >> which is more frequent than imgsys use case.
-> > > >> Does this mean sleep() is not always called in
-> > pm_runtime_get_sync()
-> > > >> and if we can guarantee this sleep() won't be called, then using
-> > > >> pm_runtime_get_sync() in atomic context is OK?
-> > > >>
-> > > > Instead of hacking around, maybe try using startup() and
-> > shutdown()
-> > > > which is for such uses? Maybe request/release channel as part of
-> > RPM
-> > > > in your client driver if you are worried about the noise?
-> > > >
-> > > >
-> > > >>>> This is why I opted for autosuspend - it's only bringing down
-> > > >>> certain clocks for
-> > > >>>> the CMDQ HW, adding up a bit of power saving to the mix which,
-> > for
-> > > >>> some use cases
-> > > >>>> such as mobile devices with relatively small batteries, is
-> > > >>> definitely important.
-> > > >>>>
-> > > >>>> I'll also briefly (and only briefly) mention that 120Hz
-> > displays
-> > > >>> are already a
-> > > >>>> common thing and in this case the gap between TX and ACK is
-> > ~8.33ms
-> > > >>> instead, let
-> > > >>>> alone that displays with a framerate of more than 120Hz also
-> > do
-> > > >>> exist even though
-> > > >>>> they're less common.
-> > > >>>>
-> > > >>> I don't know how even busier channels help your point.
-> > > >>>
-> > > >>>> All of the above describes a few of the reasons why
-> > autosuspend is
-> > > >>> a good choice
-> > > >>>> here, instead of a shutdown->startup flow.
-> > > >>>> And again - I can place some bets that PM would also be
-> > applicable
-> > > >>> to SoCs from
-> > > >>>> other vendors as well, with most probably different benefits
-> > (but
-> > > >>> still with some
-> > > >>>> power related benefits!) compared to MediaTek.
-> > > >>
-> > > >> I agree with Angelo's point!
-> > > >>
-> > > > Ok, but you or Angelo still don't explain "unacceptable
-> > latencies"
-> > > > when your startup() and shutdown() are empty. You just want api
-> > > > changed, which we can but at least do you part and tell me where
-> > the
-> > > > bottleneck (unexpected latency) comes from.
-> > > >
-> > >
-> > > "I want numbers" is a sensible request, honestly I would do the
-> > same so I totally
-> > > understand that.
-> > >
-> > > Jason, can you please perform latency measurements on 60Hz and
-> > *especially* ISP/cam
-> > > cases while "continuously" calling startup() and shutdown() for
-> > every power saving
-> > > operation?
->
-> You mean moving clk_builk_enable() and clk_bulk_disable() to startup()
-> and shutdown(), and then calling startup() in cmdq_runtime_resume() and
-> calling shutdown() in cmdq_runtime_suspend()?
-> If we do that, I think GCE clocks will never be closed because
-> mbox_request_channel() and mbox_free_channel() will call startup() and
-> shutdown() already.
->
-> I found that display thread:0 will call mbox_send_message() every 16ms
-> when I moving UI continuously:
-> [   61.503604] thread_id:0, send_diff:16 ms
-> [   61.520266] thread_id:0, send_diff:16 ms
-> [   61.537143] thread_id:0, send_diff:16 ms
-> [   61.553609] thread_id:0, send_diff:16 ms
-> [   61.570811] thread_id:0, send_diff:17 ms
-> [   61.587075] thread_id:0, send_diff:16 ms
-> [   61.603527] thread_id:0, send_diff:16 ms
-> [   61.620082] thread_id:0, send_diff:16 ms
-> [   61.637496] thread_id:0, send_diff:17 ms
-> [   61.653876] thread_id:0, send_diff:16 ms
-> [   61.670162] thread_id:0, send_diff:16 ms
-> [   61.687318] thread_id:0, send_diff:17 ms
-> [   61.703747] thread_id:0, send_diff:16 ms
-> [   61.720656] thread_id:0, send_diff:16 ms
-> If I didn't do anything to UI, I won't see any mbox_send_message()
-> logs.
->
-> It means mbox_send_message() will only be called when the display is
-> updated:
-> [  782.777205] thread_id:0, send_diff:20072 ms
-> [  820.296738] thread_id:0, send_diff:37519 ms
-> [  863.034270] thread_id:0, send_diff:42737 ms
-> [  880.297759] thread_id:0, send_diff:17263 ms
-> [  917.795432] thread_id:0, send_diff:37497 ms
->
->
-> When opening camera APP, it seems to become 30fps:
-> [  120.551778] BUG: sleeping function called from invalid context at
-> drivers/base/power/runtime.c:1164
-> [  120.560844] in_atomic(): 1, irqs_disabled(): 128, non_block: 0, pid:
-> 201, name: kworker/u17:1
-> [  120.569363] preempt_count: 1, expected: 0
-> [  120.573367] RCU nest depth: 0, expected: 0
-> [  120.577457] INFO: lockdep is turned off.
-> [  120.581372] irq event stamp: 0
-> [  120.584420] hardirqs last  enabled at (0): [<0000000000000000>] 0x0
-> [  120.590687] hardirqs last disabled at (0): [<ffffffd3624a86e0>]
-> copy_process+0x578/0xf10
-> [  120.598780] softirqs last  enabled at (0): [<ffffffd3624a86ec>]
-> copy_process+0x584/0xf10
-> [  120.606865] softirqs last disabled at (0): [<0000000000000000>] 0x0
-> [  120.613128] CPU: 0 PID: 201 Comm: kworker/u17:1 Not tainted 6.1.92-
-> lockdep-14419-g8c5f20e56598-dirty #1
-> e971112e83e796239a41e46e8747794c737fb18c
-> [  120.626073] Hardware name: Google Ciri sku0/unprovisioned board (DT)
-> [  120.632420] Workqueue: imgsys_runner imgsys_runner_func
-> [  120.637647] Call trace:
-> [  120.640086]  dump_backtrace+0x100/0x120
-> [  120.643919]  show_stack+0x20/0x2c
-> [  120.647230]  dump_stack_lvl+0x84/0xb4
-> [  120.650891]  dump_stack+0x18/0x44
-> [  120.654203]  __might_resched+0x204/0x214
-> [  120.658123]  __might_sleep+0x50/0x80
-> [  120.661692]  __pm_runtime_resume+0x48/0xbc
-> [  120.665786]  cmdq_mbox_send_data+0x8c/0x434
-> [  120.669966]  msg_submit+0x84/0x104
-> [  120.673362]  mbox_send_message+0xb8/0x124
-> [  120.677365]  imgsys_cmdq_sendtask+0x688/0x928
-> [  120.681717]  imgsys_runner_func+0x44/0x78
-> [  120.685722]  process_one_work+0x274/0x574
-> [  120.689731]  worker_thread+0x240/0x3f0
-> [  120.693475]  kthread+0xfc/0x11c
-> [  120.696612]  ret_from_fork+0x10/0x20
-> [  120.710570] mtk-cam raw 16030000.cam-raw-a: [SOF] frame done reading
-> lost frames. req(7),ts(120697780083)
-> [  120.720352] mtk-cam raw 16030000.cam-raw-a: [SOF] SCQ_DELAY state:4
-> ts:120697780083
-> [  120.990091] thread_id:0, send_diff:1470 ms
-> [  121.007210] thread_id:0, send_diff:17 ms
-> [  121.016484] thread_id:0, send_diff:9 ms
-> [  121.032652] thread_id:0, send_diff:16 ms
-> [  121.049366] thread_id:0, send_diff:16 ms
-> [  121.066880] thread_id:0, send_diff:17 ms
-> [  121.087023] thread_id:0, send_diff:20 ms
-> [  121.099325] thread_id:0, send_diff:12 ms
-> [  121.135286] thread_id:0, send_diff:35 ms
-> [  121.149349] thread_id:0, send_diff:14 ms
-> [  121.179259] thread_id:0, send_diff:29 ms
-> [  121.203183] thread_id:0, send_diff:23 ms
-> [  121.242234] thread_id:0, send_diff:39 ms
-> [  121.280645] thread_id:0, send_diff:38 ms
-> [  121.318651] thread_id:0, send_diff:38 ms
-> [  121.356366] thread_id:0, send_diff:37 ms
-> [  121.394484] thread_id:0, send_diff:38 ms
->
-> The cmdq_runtime_suspend() will only be called when I disabled camera
-> APP:
-> [  468.137530] pm_on ts:465259, pm_off ts:4681375, diff:2877 ms
-> and the diff is the duration from opening the camera APP to closing the
-> camera APP.
->
-> From booting to seeing the UI and any operation of UI, I didn't see
-> any cmdq_runtime_suspend() logs from display mbox channel.
-> So cmdq_runtime_resume() and cmdq_runtime_suspend() are never called by
-> display mbox channel.
-> This can tell why only opening the camera APP can see this BUG report.
->
-> > >
-> > To be clear, do with the mailbox channel that you do with the clocks
-> > now, because your startup() is literally and shutdown() is
-> > practically
-> > empty.
-> > Call shutdown() when no request has come in for a while, so you know
-> > the client has quiesced likely. So try putting request/release in
-> > higher level RPM with autosuspend.
->
-> I'm not quit sure how to modify this from current usage.
-> Do you mean:
-> 1. Move pm_runtime_get_sync() from cmdq_mbox_semd_data() to startup()
-> and keep pm_runtime_put_autosuspend() in cmdq_mbox_semd_data()?
->
-> 2. Call shutdown() in cmdq_runtime_suspend()?
->
-No shutdown() is called from channel release. Maybe release the
-channel from suspend() of user driver (imgsys).
+On 17.06.24 13:08, Arınç ÜNAL wrote:
+> On 17/06/2024 11:33, Linux regression tracking (Thorsten Leemhuis) wrote:
+> [...]
+> I've submitted a patch series that fixes the regression. Angelo argued
+> against the way the regression is fixed. I've very clearly argued back why
+> I find Angelo's approach wrong. There's been no response back. I don't
+> understand why reverting the patch is the likely outcome
 
-The idea is that
-1) If the gap between transfers on a busy channel is ~10ms or more.  And ..
-2) The silence on the mailbox channel is multiple of 100ms. And ...
-3) startup() and shutdown() are empty (as in your driver)
-  ... then you could afford to release/suspend and resume/request
-during the silence period because the _api_ cost of request/release
-should not even be 1ms. Your stack may be designed to make doing that
-difficult but numbers wise it should work.
+Long story short: because that how things like that are handled in the
+Linux kernel project, as Linus wants it like that. See some of the
+quotes from https://docs.kernel.org/process/handling-regressions.html
+for details.
 
-Thanks
+> whilst the
+> standing argument points towards applying the said patch series. If a
+> revert happens before this discussion with Angelo finalises, this will set
+> a precedent that will tell maintainers that they can have their way by just
+> not replying to the ongoing discussions.
+> 
+> That said, the decision of resolving the regression by either reverting the
+> patch or applying the patch series shall not depend on whether or not
+> Angelo is pleased but rather there're no counter-arguments left on the
+> points brought, meaning the decision shall be made depending on the
+> argument that stands.
+> 
+> Therefore, I suggest that unless Angelo responds back with a
+> counter-argument in the window of a week or two, as you've described, my
+> patch series shall be applied.
+
+It looks more and more like we are stuck here (or was there progress and
+I just missed it?) while the 6.10 final is slowly getting closer. Hence:
+
+AngeloGioacchino, should we ask the net maintainers to revert
+868ff5f4944aa9 ("net: dsa: mt7530-mdio: read PHY address of switch from
+device tree") for now to resolve this regression? Reminder, there is
+nothing wrong with that commit per se afaik, it just exposes a problem
+that needs to be fixed first before it can be reapplied.
+
+Ciao, Thorsten (wearing his 'the Linux kernel's regression tracker' hat)
+--
+Everything you wanna know about Linux kernel regression tracking:
+https://linux-regtracking.leemhuis.info/about/#tldr
+If I did something stupid, please tell me, as explained on that page.
+
+#regzbot poke
 
