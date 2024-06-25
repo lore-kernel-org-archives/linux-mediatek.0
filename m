@@ -4,61 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17733C2BBCA
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jun 2024 11:34:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BE04C30653
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jun 2024 11:34:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=H2VtGJ+3Jg0aXeWx8u4/3zC3zTZMRl9bZxgbFJl+qrI=; b=47FIDYINkmxhAYp32Do25ILk6V
-	a4+8INz7VFDEzBlpIodKuG4EF+aX2pGRICcv2ICAWnhIVyIWT+uUH3FmSSgpD3Jo/oa/sZX5vno3A
-	W3apTu7Duhw2kPmd/f89aDYIsDSGvnJ3aK1qXwsy4m5Ay2zt5w0NiIW+HX7nd0ynv9Dm/DDF8WwLA
-	KGvX9l1FZU9FkG6oQl+wD8UhhJuSYcGoUFyajxQfuXbxKdwXqqGXb6QXLw9I6fJYGiJ5/X1ykKFhh
-	rwunyrhvCE/I9TU/oiUt6M5IWBtx+wa++nNVcz063d9r81mqplNpDkZAt6ExPEcSND6jyilWTGkW7
-	Ys7/UWtQ==;
+	bh=V+aviNRkqeX7JS/mEc2U0zWlglVdSVXY2q1re2NPCc4=; b=3RObkO7dmSuhLReXar+iPiBgDK
+	1BseQ6UXSeoGbJuhBT5/JdYh1rNl18lSisXGpRk6QN2D7nkd5i1iMf5YbWCNE1bNgic5100MHiHBL
+	LqSaj6JxihKirM65S7uN0ugK+Fh5fNXWyDoULWXQJlJWrZrkz/rNvpLzA+Tgdf+4yIO3t8YktH9Sx
+	hzar13fFtNGNFr9FZH0k9KfR4kcFyf/jlKvFWS9FsXZwIt28+C45TOxe55CVsk0tXhXhCJPhKUBXo
+	E9OyX7TmmmBmJFoJ5YOyrbD+qLM2yYLZOxj8Q+uL4vp59bH/e4ZYrog1LnvmcOsH/duVY7hw5f8CP
+	HrkA0fCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sM4Qx-00000002Ydn-3avj;
-	Tue, 25 Jun 2024 11:33:59 +0000
+	id 1sM4R1-00000002Yfl-2X4T;
+	Tue, 25 Jun 2024 11:34:03 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sM4Qq-00000002YaW-4BJN;
-	Tue, 25 Jun 2024 11:33:54 +0000
+	id 1sM4Qy-00000002Ydq-18ey
+	for linux-mediatek@lists.infradead.org;
+	Tue, 25 Jun 2024 11:34:02 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id E33EE612D7;
-	Tue, 25 Jun 2024 11:33:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 61E1AC32781;
-	Tue, 25 Jun 2024 11:33:50 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id A49D961356;
+	Tue, 25 Jun 2024 11:33:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4387DC32781;
+	Tue, 25 Jun 2024 11:33:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1719315231;
-	bh=NqJdMjPT9r805HO+jweg1g1ihBCkWTI4j4kjDfQkDEs=;
+	s=k20201202; t=1719315239;
+	bh=POLNQtzyiFdfDZHg+15z+oQL9f1wyzLbbFrSGtcTas8=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=k7LB9nl9SPm9p8yq0UhgCUR7+bcQ2vC25wnADZiANHdw/FVB5qEUdBC8IbJbQCOT1
-	 BLEEZKSC49WA0vTxYItoAqXfj2sqUj8nNQS4Boy4O2+gTssCZs5zttp/JKX0E/m1Qf
-	 Vhxh5oOW9C36dE3IXhfV/XxJoiYN2b7ssTX7cJUmQJV64C56HXcGXIEkhhBhpKFaka
-	 8kun7jFHzecU7wm6KpbiXDIIQ3GKEqdzIHqFg1iejFNdYe13loKLOfqac1dyiOFvs6
-	 fo3ZvMXOvaiC/6UhhfYyPrmWMAfrDuPMbcJ0o0SnzfDvBo//IccR6rR5fC0pt+U8/7
-	 NHtse6bPnwYuw==
+	b=oROhn3xk6yl2yx3SWMZlu+wq2wf1jN9UjC/ac/ON/5I9jvMfhlJeiYrzhIGsjWyPi
+	 27gsYWOjuiSZecuL1SnY7ToEtAkOJOLiMJS5ofAiDxazmczz9Ekz9Ls1PZQEVsv9vC
+	 YchB2yMBu7/yIuzQvwrVWn2eFVLOolOdVGD1j/H+FFjqE6XORawNUwvvutTGCI3I+U
+	 NN2WDyHHP8diGj4+UOs31O8gGlByJ91MbX1c05XHM7iuPb2JJxBmbRBuHBW3nXZsXM
+	 96LAPF2wkfPsDFaJKy4gGG5uUztE6yDskTcuTroVu+yrbVS5kip3zbeEXykg71FFBD
+	 EcUi6Hm9x7a8g==
 From: Mark Brown <broonie@kernel.org>
-To: Jiaxin Yu <jiaxin.yu@mediatek.com>
-Cc: linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- angelogioacchino.delregno@collabora.com
-In-Reply-To: <20240613020725.27874-1-jiaxin.yu@mediatek.com>
-References: <20240613020725.27874-1-jiaxin.yu@mediatek.com>
-Subject: Re: [PATCH v2] ASoC: mediatek: mt6358: Add "Dmic Mode Switch"
- kcontrol for switch DMIC mode.
-Message-Id: <171931523011.64144.683590179914133512.b4-ty@kernel.org>
-Date: Tue, 25 Jun 2024 12:33:50 +0100
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Chen-Yu Tsai <wenst@chromium.org>
+Cc: Trevor Wu <trevor.wu@mediatek.com>, linux-sound@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+In-Reply-To: <20240624061257.3115467-1-wenst@chromium.org>
+References: <20240624061257.3115467-1-wenst@chromium.org>
+Subject: Re: [PATCH v2] ASoC: mediatek: mt8195: Add platform entry for
+ ETDM1_OUT_BE dai link
+Message-Id: <171931523799.64144.6880619543186232885.b4-ty@kernel.org>
+Date: Tue, 25 Jun 2024 12:33:57 +0100
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
 X-Mailer: b4 0.14-dev-d4707
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240625_043353_148110_EEB4F624 
-X-CRM114-Status: GOOD (  12.01  )
+X-CRM114-CacheID: sfid-20240625_043400_440682_E409B2B1 
+X-CRM114-Status: GOOD (  11.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,15 +74,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 13 Jun 2024 10:07:25 +0800, Jiaxin Yu wrote:
-> There are two hardware connection methods for DMICs on the MT6358. In cases
-> where more than two DMICs are used, we need to time-multiplex these DMICs.
-> Therefore, we need to dynamically switch the modes of these DMICs based on
-> the actual usage scenarios.
-> 
->             ---- DMIC1
-> AU_VIN0 ---
->             ---- DMIC2
+On Mon, 24 Jun 2024 14:12:56 +0800, Chen-Yu Tsai wrote:
+> Commit e70b8dd26711 ("ASoC: mediatek: mt8195: Remove afe-dai component
+> and rework codec link") removed the codec entry for the ETDM1_OUT_BE
+> dai link entirely instead of replacing it with COMP_EMPTY(). This worked
+> by accident as the remaining COMP_EMPTY() platform entry became the codec
+> entry, and the platform entry became completely empty, effectively the
+> same as COMP_DUMMY() since snd_soc_fill_dummy_dai() doesn't do anything
+> for platform entries.
 > 
 > [...]
 
@@ -91,8 +91,8 @@ Applied to
 
 Thanks!
 
-[1/1] ASoC: mediatek: mt6358: Add "Dmic Mode Switch" kcontrol for switch DMIC mode.
-      commit: 4ae814dabcdae3e434820c64396e15ccb33cc0ce
+[1/1] ASoC: mediatek: mt8195: Add platform entry for ETDM1_OUT_BE dai link
+      commit: 282a4482e198e03781c152c88aac8aa382ef9a55
 
 All being well this means that it will be integrated into the linux-next
 tree (usually sometime in the next 24 hours) and sent to Linus during
