@@ -4,78 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9528C2BBCA
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jun 2024 10:22:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF952C2BBCA
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jun 2024 10:24:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=+VjACVZoPp7eN7kJksXj5MfvnAImL5JxKUjwBijavO4=; b=BX0eW7gK2DwsVGHSEGPx9flOAw
-	MW09vEc1FCHRpu8QNWHswc+M7qSJRhSbpR83RR8jbdWXELRMLXW4E1lANTldhKy5c8aTVdmScbEQq
-	EpiIwlLfrp0G2ACHlaZrrgCAwfdgtrKHhf6w6cHKMWiaF8A5p+dd0XnNHZIauyGxXxvSJJgOErQ0O
-	T1ARa7NN80tvnVDpPMN5ByDCX7YSGaMuJy8Fd1QxoRq7E9g9QrUNNiME3TLckFk14J56/86RGXgGs
-	r0EIvzE7ZhGXJPkru5bR6UBf5L+wmvfQk/vurc9P9Cam4XlKCMdAy8joNlsXxdSypgwc6YuEaaPIM
-	AyNCRxeQ==;
+	Content-Type:MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=JR/qDwFwlkXIJZghu8zx201/DRc5yzK2jHUrWR5u18s=; b=r2HUkysabqbTrWISnAr6LGHFuB
+	XAkvxPOctpTDcvp/C5nG6Av5upNkWFiV5vPiQRvdoPSSL/UmTXgrRAQVLUHPUWezdyLz+h3j0ubkU
+	3oYc2yexZZr21fnXbqFX6rOZHoQQMB+UJBrCjXHApahSC2/rKAd8eVhQ1obJhMUi0XTYytUD2IDlS
+	h9a0CMsKRbbnl8mlaH1WGuos8U19JAjtCOjCgLw8Y9o8XmtDo+VectRzucWRD/zPkROjyZN0Pz1aT
+	7OyQaL1nb4q7wOZlSuS33dOTpORe8DTwALriNgxkp4Ct0zdYhn4lQPi9w3DNUrl00IqDu8Qi7Cni0
+	Oc0p17Lg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sM3JH-00000002OJA-1qHJ;
-	Tue, 25 Jun 2024 10:21:59 +0000
-Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644])
+	id 1sM3La-00000002Oav-42wh;
+	Tue, 25 Jun 2024 10:24:22 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sM3JE-00000002OIc-1iJM
+	id 1sM3LX-00000002OZH-3SUV
 	for linux-mediatek@lists.infradead.org;
-	Tue, 25 Jun 2024 10:21:58 +0000
-Received: by mail-pl1-x644.google.com with SMTP id d9443c01a7336-1f6fabe9da3so43175025ad.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 25 Jun 2024 03:21:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1719310915; x=1719915715; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=+VjACVZoPp7eN7kJksXj5MfvnAImL5JxKUjwBijavO4=;
-        b=bT/KirDiQ4cAx+pa2HAqIVksT1/F9s1HCmXfKwZ2lk27AU+R3IiQ/JmJbtU4d4117s
-         rPhTICOxh6DpotJNjOVw6iR/xNK7nh2ljf2NrKbV9QpV1pOLe2VRH9e0omGli/vrDbbi
-         GuFF2RtkHnYhKt0JNODd8KBuUBQwfSUnPoAHY=
+	Tue, 25 Jun 2024 10:24:21 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1719311057;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=JR/qDwFwlkXIJZghu8zx201/DRc5yzK2jHUrWR5u18s=;
+	b=DiGBeVNpWv1i0xlm3rKO86XbTw+Mm7T/6X+gnRhT17nfjV/wzeRwomL0HV7oqQ1+0/tElH
+	bkds+c5rNuH+siTCQKfBjDnA6/BrGMiN4Nyj3QQBlNJJgSaXOkkGy1pHF3bOmkXNms9seB
+	iIqa+O8Vh6lpLcCwa0PZMEi8aT15Hqo=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-417-pX7r5LMjO0u4cIXv4r9b8g-1; Tue, 25 Jun 2024 06:24:15 -0400
+X-MC-Unique: pX7r5LMjO0u4cIXv4r9b8g-1
+Received: by mail-wr1-f71.google.com with SMTP id ffacd0b85a97d-362a1e80424so571551f8f.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 25 Jun 2024 03:24:15 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1719310915; x=1719915715;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=+VjACVZoPp7eN7kJksXj5MfvnAImL5JxKUjwBijavO4=;
-        b=tjoCt1IfDX551Ac7l5Pn0a8SjIoceG08usXGn69flq+Ah+Shhp4IirfrHivk9p5O5c
-         HEEfHnPO4hZxKobn/e09y21rikJKOM+mNUsV/u10ZZkJw/yMt9w04mYIxM4BbgbnKWXk
-         NE/RllN0xf95iAREapDrWRmERrP0rAR3UaKn4t+/60y/oR+cpu8UGcCcokXJIqPj6DGu
-         jEk23OgusTMiZ4V+z7KIUYpMfn1HRtoQQsRS63OTM5c4OnDh/X+DnkNvx9c5d+rhSRan
-         8LUiARnVwbHPNg2t4uroxxXCcQH9OmVmQboFzq+H0hgxd/W6GU1oUAI4iLkVAcYlNSFx
-         sZNQ==
-X-Forwarded-Encrypted: i=1; AJvYcCV7vXH2if4OqDET9J19UqAzAAg4//c8cfVv21WqHUMFTYv7ngkN4TacWYQEh1b49Exb/Afg75MG2nJRiFjqd/Xhb8x45HGUJe8OsDkDCNtpJqKh
-X-Gm-Message-State: AOJu0YwZxJcmVz49MHapnwcfHDc8rNj9yKX99hwShZKnqS3ZnfVCZeNP
-	nZFK0KlCqO4owOdMCLbIY3mPyCvnIw0+jZz0WbrNzXG4EHGcI9nlNDYiv6nOHw==
-X-Google-Smtp-Source: AGHT+IGncBwvYK00pVmw01gvxPmXxXQ/V/u6BoVJ3vRhjdCIb8ngRmdVTYU+9aqp9QEJNIvJV3icOw==
-X-Received: by 2002:a17:902:d50b:b0:1f7:4ff:d03 with SMTP id d9443c01a7336-1fa23f4a0e0mr73386365ad.67.1719310915385;
-        Tue, 25 Jun 2024 03:21:55 -0700 (PDT)
-Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:ea5a:67dd:bd1e:edef])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-1f9eb328f57sm77590855ad.110.2024.06.25.03.21.53
+        d=1e100.net; s=20230601; t=1719311055; x=1719915855;
+        h=mime-version:user-agent:content-transfer-encoding:autocrypt
+         :references:in-reply-to:date:cc:to:from:subject:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=JR/qDwFwlkXIJZghu8zx201/DRc5yzK2jHUrWR5u18s=;
+        b=AjdzZY29VRUFqVcQkCl1gEcwBxpwlVgfhT3otyPDZaDcYJSZogQj4t2tvrU9Iwf6a2
+         7JumpWnsdDHRB76wVXlYglJmihNk6HoQE3jAHT092ri6C1qSQpdO92Uu2wcmK3bLapIO
+         c/IEImHkOJ6H+IG+GWhta7O2GZxPcr1MUaEEHdAREn72eCyin61WWl3xmhdrOoult9Jq
+         jdYdtb2Cf3N+Bzs97nymMFHjoR8C6goG4o9uiuCL21hCXM7QyQ0AaFmQ74K/1tnK5PKB
+         6PQ2DonV5A9/w0Jeb+PRGBbWqJHBM9d5KDVJGKbzD1vuIocLkptdv041kQP5xHsEQoWZ
+         NuwA==
+X-Forwarded-Encrypted: i=1; AJvYcCWYbQcJgzmBgV3tUTzu0sPRToySqSMLDKsS2Dkkt7YsG7gsywcEmWBgkeO+PTiCcy5hW6VDJVDXtMhJaTgLVnPUheVbfoSPbsJx8VYyatkzZH9C
+X-Gm-Message-State: AOJu0YzZt210dGUmCeTzukBzpA/lbhir+GpunwNo5AaPzbSnOlYGHFm+
+	Iw2xoA3XzCQzxfCYLQgLsMXz3xBbn3A59D+iQq+BqhtsMZqcN0bU79Cgp7EspkeSZBqDnLLlJOa
+	lfFJMxF0dXI+S8ATi181lFct6xEToc7JO3uVWkln6dxy+2ul2EDxxOFZZXm1HfR0OHSl0gQ==
+X-Received: by 2002:a05:6000:2a7:b0:366:eb60:bd0c with SMTP id ffacd0b85a97d-366eb60be9cmr4976181f8f.3.1719311054711;
+        Tue, 25 Jun 2024 03:24:14 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFFGevlCkloEHTqSBSRezIkGXdcTB1lUzncXGf4ZXsiNyRjOLYu1nNT1wb+bRsvcdRCxDUwdA==
+X-Received: by 2002:a05:6000:2a7:b0:366:eb60:bd0c with SMTP id ffacd0b85a97d-366eb60be9cmr4976145f8f.3.1719311054291;
+        Tue, 25 Jun 2024 03:24:14 -0700 (PDT)
+Received: from gerbillo.redhat.com ([2a0d:3341:b0ae:da10::f71])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4247d208e4dsm206415575e9.33.2024.06.25.03.24.12
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 25 Jun 2024 03:21:54 -0700 (PDT)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Marcel Holtmann <marcel@holtmann.org>,
-	Luiz Augusto von Dentz <luiz.dentz@gmail.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
-	linux-bluetooth@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Sean Wang <sean.wang@kernel.org>
-Subject: [PATCH] Bluetooth: btmtksdio: Lookup device node only as fallback
-Date: Tue, 25 Jun 2024 18:21:45 +0800
-Message-ID: <20240625102147.3496597-1-wenst@chromium.org>
-X-Mailer: git-send-email 2.45.2.741.gdbec12cfda-goog
+        Tue, 25 Jun 2024 03:24:13 -0700 (PDT)
+Message-ID: <ac1789693e62aa47b527294fd402718306e43afd.camel@redhat.com>
+Subject: Re: [PATCH 00/15] ethernet: Convert from tasklet to BH workqueue
+From: Paolo Abeni <pabeni@redhat.com>
+To: Allen Pais <allen.lkml@gmail.com>, kuba@kernel.org, Matthias Brugger
+	 <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	 <angelogioacchino.delregno@collabora.com>
+Cc: jes@trained-monkey.org, davem@davemloft.net, edumazet@google.com, 
+ kda@linux-powerpc.org, cai.huoqing@linux.dev, dougmill@linux.ibm.com, 
+ npiggin@gmail.com, christophe.leroy@csgroup.eu, aneesh.kumar@kernel.org, 
+ naveen.n.rao@linux.ibm.com, nnac123@linux.ibm.com, tlfalcon@linux.ibm.com, 
+ cooldavid@cooldavid.org, marcin.s.wojtas@gmail.com, mlindner@marvell.com, 
+ stephen@networkplumber.org, nbd@nbd.name, sean.wang@mediatek.com, 
+ Mark-MC.Lee@mediatek.com, lorenzo@kernel.org, borisp@nvidia.com, 
+ bryan.whitehead@microchip.com, UNGLinuxDriver@microchip.com, 
+ louis.peens@corigine.com, richardcochran@gmail.com,
+ linux-rdma@vger.kernel.org,  linux-kernel@vger.kernel.org,
+ linux-acenic@sunsite.dk, linux-net-drivers@amd.com, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Date: Tue, 25 Jun 2024 12:24:11 +0200
+In-Reply-To: <20240621050525.3720069-1-allen.lkml@gmail.com>
+References: <20240621050525.3720069-1-allen.lkml@gmail.com>
+Autocrypt: addr=pabeni@redhat.com; prefer-encrypt=mutual; keydata=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
+User-Agent: Evolution 3.50.4 (3.50.4-1.fc39)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240625_032156_507754_A8FD85C0 
-X-CRM114-Status: GOOD (  13.41  )
+X-CRM114-CacheID: sfid-20240625_032419_980697_CCFF1A19 
+X-CRM114-Status: GOOD (  14.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,65 +117,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-If the device tree is properly written, the SDIO function device node
-should be correctly defined, and the mmc core in Linux should correctly
-tie it to the device being probed.
+On Thu, 2024-06-20 at 22:05 -0700, Allen Pais wrote:
+> The only generic interface to execute asynchronously in the BH context is
+> tasklet; however, it's marked deprecated and has some design flaws. To
+> replace tasklets, BH workqueue support was recently added. A BH workqueue
+> behaves similarly to regular workqueues except that the queued work items
+> are executed in the BH context.
+>=20
+> This patch converts a few drivers in drivers/ethernet/* from tasklet
+> to BH workqueue. The next set will be sent out after the next -rc is
+> out.
+>=20
+> This series is based on=20
+> commit a6ec08beec9e ("Merge git://git.kernel.org/pub/scm/linux/kernel/git=
+/netdev/net")
+>=20
+> First version converting all the drivers can be found at:
+> https://lore.kernel.org/all/20240507190111.16710
+> -2-apais@linux.microsoft.com/
 
-Only fall back to searching for the device node by compatible if the
-original device node tied to the device is incorrect, as seen in older
-device trees.
+The above link was mangled.
 
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
----
-This follows up on the MT7921S bluetooth binding and DT fixup patches [1].
-This should not be backported.
+I guess you will have to re-submit to cope at least with Andrew's
+feedback, but it think it's better to wait a little longer for the next
+version, to give the vendors more time to actually test this.
 
-[1] https://lore.kernel.org/linux-bluetooth/20240412073046.1192744-1-wenst@chromium.org/
+When you will re-submit you can retain the already collected ack.
 
- drivers/bluetooth/btmtksdio.c | 17 +++++++++++++++--
- 1 file changed, 15 insertions(+), 2 deletions(-)
+Please include the target tree ('net-next') in the subj title and a
+revision counter ('v3'). The whole subj should be:
 
-diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
-index b4e560a17aa6..d81fa8dacb4e 100644
---- a/drivers/bluetooth/btmtksdio.c
-+++ b/drivers/bluetooth/btmtksdio.c
-@@ -1330,6 +1330,8 @@ static int btmtksdio_probe(struct sdio_func *func,
- {
- 	struct btmtksdio_dev *bdev;
- 	struct hci_dev *hdev;
-+	struct device_node *old_node;
-+	bool restore_node;
- 	int err;
- 
- 	bdev = devm_kzalloc(&func->dev, sizeof(*bdev), GFP_KERNEL);
-@@ -1413,13 +1415,24 @@ static int btmtksdio_probe(struct sdio_func *func,
- 	if (err)
- 		bt_dev_err(hdev, "failed to initialize device wakeup");
- 
--	bdev->dev->of_node = of_find_compatible_node(NULL, NULL,
--						     "mediatek,mt7921s-bluetooth");
-+	restore_node = false;
-+	if (!of_device_is_compatible(bdev->dev->of_node, "mediatek,mt7921s-bluetooth")) {
-+		restore_node = true;
-+		old_node = bdev->dev->of_node;
-+		bdev->dev->of_node = of_find_compatible_node(NULL, NULL,
-+							     "mediatek,mt7921s-bluetooth");
-+	}
-+
- 	bdev->reset = devm_gpiod_get_optional(bdev->dev, "reset",
- 					      GPIOD_OUT_LOW);
- 	if (IS_ERR(bdev->reset))
- 		err = PTR_ERR(bdev->reset);
- 
-+	if (restore_node) {
-+		of_node_put(bdev->dev->of_node);
-+		bdev->dev->of_node = old_node;
-+	}
-+
- 	return err;
- }
- 
--- 
-2.45.2.741.gdbec12cfda-goog
+[PATCH net-next v3 00/15] ethernet: Convert from tasklet to BH workqueue
+
+Thanks,
+
+Paolo
+
+
+
 
 
