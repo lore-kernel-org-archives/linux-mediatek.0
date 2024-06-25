@@ -4,70 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF607C2BBCA
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jun 2024 06:04:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1BDFC3064D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jun 2024 06:17:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JQhW0YrsoS77fHFLhKP51Iz2UDrcYungvJwShyjCUiQ=; b=CS7SY95c7/ZZLExZ96C7G93TK2
-	kROb5vqPSedESLvJfXzapllnla9kZW+LIH9bXbcFqEA9hUf5acsVa0Jg+9KeJvbbDpMllbn0sgoBf
-	mk6YWhEu/xoAsxM/YdRQ+wlNqVsO/fTKGlIlqp48regjRYd0PSHJy5CicHTZdMyZN2UifztifdTJ7
-	OTB9XY3tt25q/MdJUnedBZ7/HtZcFv1mCYpGC8D75nNGU1zgLWhb1ILdszJlZoMVlwgzY2LDIbKlV
-	n9hHZNQhHVzv2dAo1180yv890dOaQIAyiruM4JleUyjNQbcoVapIGzFH278ZRgakPVGP++94j3nHK
-	oGNQh1yQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=lUfaaGjmkEsv8TO+/zIvt/jIaH/4czGbfBiNdDpBPnU=; b=Yj6T0iD2NTolax
+	OUVlwBBp1k1n9klqj5/aXLlJlV21iLqHkalyjsoYZUBFcZOuQegTK2Abdiqp2Nb6wcYz+jRc7+kkB
+	H4Ni8ELJINnQNROOJUNg9ZdXKgARdW4r36XFrr7rZxYUzg0Jhc3M6dwX04ZmXZ9EVgpGIlM2EbEiE
+	lzAYWRBxIAEn+NQ7Ayl+MnmZ1ABRuiYhu0vHq4ZNXBaBNbFODWCYdMoY9o1ETZPL56nTKmdejSqxI
+	0wZ872fxGt6oxU57Cny30Fn8I3urpFHfsZ0tP23vZKL8TrCVIlazVVg//m8RqshhAhin0mzSpPawM
+	o4V40vakD00/hfjRWGpw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLzI8-00000001koH-107T;
-	Tue, 25 Jun 2024 06:04:32 +0000
-Received: from relay7-d.mail.gandi.net ([2001:4b98:dc4:8::227])
+	id 1sLzUY-00000001mFP-0SwN;
+	Tue, 25 Jun 2024 06:17:22 +0000
+Received: from relay4-d.mail.gandi.net ([217.70.183.196])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sLzHz-00000001knI-3cVM;
-	Tue, 25 Jun 2024 06:04:26 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 8D1D420004;
-	Tue, 25 Jun 2024 06:04:11 +0000 (UTC)
+	id 1sLzUS-00000001mDS-1dAP;
+	Tue, 25 Jun 2024 06:17:18 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 1EFA3E0007;
+	Tue, 25 Jun 2024 06:17:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1719295459;
+	t=1719296234;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=JQhW0YrsoS77fHFLhKP51Iz2UDrcYungvJwShyjCUiQ=;
-	b=D7jplpiD1B0DcMM2VYZqchOGz0Q0UqY0bDaMVhb1DwIIQTATvsKp1HGovIAb0rWGNAwlA5
-	vYvy0yW/M30pH24fan4wJzMQbjxeKHMQZV+uowidLojsXsV7gaWd3F0c6ehCMIhfkvJnAW
-	ofxrMXnQr3EineuiPcwD2/T7PdrQDXDhQ8ETuiIguzGR6/bQGUXVQvrOXHQuIUe3NvTcyj
-	jyW8CbF+9Ux6NwaDZupxNfQ2GXm109g1Vy31TsO3k5ajuZ+/TfztCuiwQawOjGYHgYwryE
-	ws1Y/MgWFk/jSrqZ6goskxyNjlOuPVc+fGgldn3+yp6Dc9d5S55Z1jGO24kWSA==
-Message-ID: <3f487664-e2dd-4283-8731-4f17d408511b@arinc9.com>
-Date: Tue, 25 Jun 2024 09:04:10 +0300
+	bh=lUfaaGjmkEsv8TO+/zIvt/jIaH/4czGbfBiNdDpBPnU=;
+	b=gottfuXyiDMseBTnGspopuXIw9529/9Sg8tVXkB/CfX+qkFNzuNLD3y0yeBtuhKxNBAkNe
+	ZK5m650lLIhx+QPEZIDBbbwDMsqsxTiecOt3ksKVFyPts+2z8TiWsCmNQYVWFzymGIRTaX
+	ahbVGJDQ3Z0cpMZg7en5CRA6laI8pgztW5RsyUdeskY58RAjMeGiQiKEYyXhwLFPen/f7k
+	T6LiwaW6m4tAC7Xm2gazxlRsD3SV+CqggSC1Nt/R3OC2k1RNfvPbuPZtBUOY8WtllyfGri
+	7Zkj2qEE5eYrmT8yZ1HWrJwS53nlyKa5iXgjb9IGSyDoZrV83rr0CioXdd9y1A==
+Message-ID: <7a2ea06b-ae4e-4374-82c2-4de4184e06c3@arinc9.com>
+Date: Tue, 25 Jun 2024 09:17:09 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] dt-bindings: net: dsa: mediatek,mt7530: Minor wording
- fixes
-To: Chris Packham <chris.packham@alliedtelesis.co.nz>, andrew@lunn.ch,
- f.fainelli@gmail.com, olteanv@gmail.com
-Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>, Daniel Golle <daniel@makrotopia.org>
-References: <20240624211858.1990601-1-chris.packham@alliedtelesis.co.nz>
+Subject: Re: [PATCH] arm64: dts: mt7622: fix switch probe on bananapi-r64
+To: Linux regressions mailing list <regressions@lists.linux.dev>,
+ Paolo Abeni <pabeni@redhat.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+References: <20240516204847.171029-1-linux@fw-web.de>
+ <a29dd7d1-40a8-4c88-99aa-651a3305b640@arinc9.com>
+ <5AEE5668-0C8E-4EE4-A398-66CB99DF5650@public-files.de>
+ <43aacd9d-b851-4100-8ccc-878ac6ae10f8@leemhuis.info>
+ <698cf562-1ca9-4aa3-be7e-a1474b612c5b@leemhuis.info>
+ <0cba095c-3d55-416a-a7ad-b359129731cf@arinc9.com>
+ <714da201-654b-4183-8e5e-8ff0b64fe621@leemhuis.info>
+ <2cac4cf68304e81abffbd9ff0387ee100323c2b7.camel@redhat.com>
+ <b49c801c-6628-40a6-8294-0876d8871ba7@leemhuis.info>
+ <e92c3ca0-c9be-44ac-a4fc-57ca5ebedbc5@leemhuis.info>
+ <1807a142-1534-4fa4-ad4b-d1c03af014c2@arinc9.com>
+ <58d8ddea-71cc-427a-94cc-a95f6bce61d2@collabora.com>
+ <16e9c06e-9908-455d-a387-614fefe5bcf8@arinc9.com>
+ <5e87d31c-b059-4f9a-93f7-dc87465ed14a@collabora.com>
+ <4416ef22-78cc-4ce5-b61d-69ff0903811e@arinc9.com>
+ <bd6b6929-d34d-4bd5-9cb0-bc8fe850ee46@leemhuis.info>
+ <af561268-9793-4b5d-aa0f-d09698fd6fb0@arinc9.com>
+ <750a60a6-4585-4bd2-97be-cf944e51fbdb@leemhuis.info>
 Content-Language: en-US
 From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <20240624211858.1990601-1-chris.packham@alliedtelesis.co.nz>
+In-Reply-To: <750a60a6-4585-4bd2-97be-cf944e51fbdb@leemhuis.info>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240624_230424_079881_2D715E6D 
-X-CRM114-Status: GOOD (  11.43  )
+X-CRM114-CacheID: sfid-20240624_231716_710987_C2100F3A 
+X-CRM114-Status: GOOD (  22.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,26 +86,63 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Frank Wunderlich <linux@fw-web.de>, Rob Herring <robh@kernel.org>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 25/06/2024 00.18, Chris Packham wrote:
-> Update the mt7530 binding with some minor updates that make the document
-> easier to read.
+On 25/06/2024 08.56, Linux regression tracking (Thorsten Leemhuis) wrote:
+> On 17.06.24 13:08, Arınç ÜNAL wrote:
+>> On 17/06/2024 11:33, Linux regression tracking (Thorsten Leemhuis) wrote:
+>> [...]
+>> I've submitted a patch series that fixes the regression. Angelo argued
+>> against the way the regression is fixed. I've very clearly argued back why
+>> I find Angelo's approach wrong. There's been no response back. I don't
+>> understand why reverting the patch is the likely outcome
 > 
-> Signed-off-by: Chris Packham <chris.packham@alliedtelesis.co.nz>
-> ---
+> Long story short: because that how things like that are handled in the
+> Linux kernel project, as Linus wants it like that. See some of the
+> quotes from https://docs.kernel.org/process/handling-regressions.html
+> for details.
 > 
-> Notes:
->      I was referring to this dt binding and found a couple of places where
->      the wording could be improved. I'm not exactly a techical writer but
->      hopefully I've made things a bit better.
->      
->      Changes in v2:
->      - Update title, this is not just fixing grammar
->      - Add missing The instead of changing has to have
+>> whilst the
+>> standing argument points towards applying the said patch series. If a
+>> revert happens before this discussion with Angelo finalises, this will set
+>> a precedent that will tell maintainers that they can have their way by just
+>> not replying to the ongoing discussions.
+>>
+>> That said, the decision of resolving the regression by either reverting the
+>> patch or applying the patch series shall not depend on whether or not
+>> Angelo is pleased but rather there're no counter-arguments left on the
+>> points brought, meaning the decision shall be made depending on the
+>> argument that stands.
+>>
+>> Therefore, I suggest that unless Angelo responds back with a
+>> counter-argument in the window of a week or two, as you've described, my
+>> patch series shall be applied.
+> 
+> It looks more and more like we are stuck here (or was there progress and
+> I just missed it?) while the 6.10 final is slowly getting closer. Hence:
 
-Acked-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+There hasn't been progress at all. I believe I have clearly described the
+way out of this issue.
+
+> 
+> AngeloGioacchino, should we ask the net maintainers to revert
+> 868ff5f4944aa9 ("net: dsa: mt7530-mdio: read PHY address of switch from
+> device tree") for now to resolve this regression? Reminder, there is
+> nothing wrong with that commit per se afaik, it just exposes a problem
+> that needs to be fixed first before it can be reapplied.
+
+Are you suggesting the patch shall be reverted first, then the DT patch
+applied, then the reverted patch applied back? If only one of the first two
+steps were done, it would fix the regression so I don't understand why go
+through this tedious process when we can quite simply apply the DT patch to
+resolve the regression.
+
+Keep in mind that I maintain the MT7530 DSA subdriver and the company I
+work with has got boards that uses the functionality the commit
+868ff5f4944aa9 ("net: dsa: mt7530-mdio: read PHY address of switch from
+device tree") brings.
 
 Arınç
 
