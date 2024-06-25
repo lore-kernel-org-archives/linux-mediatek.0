@@ -4,99 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F610C30653
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jun 2024 09:23:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00BB9C30653
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jun 2024 09:54:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:Subject:From:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LlRhdkp6kAFepHjID66aLvJv1DZVnaI5n6pLIDvUVYM=; b=h15Lvsod7p/Xl+Ga0xqlXeAyyL
-	+OBBP3lkIkbzt+GXZxiL/+yDiqJbiLMX5EX7BvzVHOj9w6JE6wZ7JsbN4I9xM8XjH9DUa232F3fIs
-	H/q/Z1V47ttsUi5cZLDXRyXhPwDZy/WYR6jytqGiLsCyRXVUgEm5fHL9mbSYYSkYKGIE6J7S4bsuq
-	Wpda9OjvsjdmiDDmZDIMuGKOZAAcVUramhANV7KgAKtpg7frEwz+y8EQQ4NMISbfmnNd9fCer4gPx
-	lsjigEYchrLNUdJVGKEoebGvJmr5YObchyGwxUx1XblxmZtktFZlbExIZB7Y0UJU8emU5Q352vHht
-	GoEERnTA==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=QckC6gjfMonIYwuSOvK7TGa+d6/Qqazmh3+ZmkkxyWM=; b=BBtnt/vY8qJa07PQR309uy5SqB
+	CZAIQB4xZ+cbv/30FmaNaNoQ+UoTlnJurvgB+ZDkjUMzdEt9Q4rKG1AqgicfowMiDIHz1VwgGCOR+
+	vCIPhNBnnJ+xu3AUyscWWsoFndXl15JzPjpmpKF49EizbqUrNeoY4u+O4CAAb0DeAGEnyln3uYLnR
+	onRWYmNvauKZzd0GTInLyN7ZMwDapVK6A+GNOVfQu00Wgd+vgU3uJwOyW/VbKqequeYnHZfmfDA/+
+	eL86nHP74mPIzjNa0wRv2ZLMflVpLHgXNGqUBwKh+6bQZV7iJSUElSE3+K7ZhYcxjAs552hO8GjW5
+	dOKrHUVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sM2OQ-00000002G4p-2eO5;
-	Tue, 25 Jun 2024 09:23:14 +0000
-Received: from mail-lj1-x235.google.com ([2a00:1450:4864:20::235])
+	id 1sM2t7-00000002KK7-1YLA;
+	Tue, 25 Jun 2024 09:54:57 +0000
+Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sM2OJ-00000002G1j-0xOk
+	id 1sM2t1-00000002KIc-1Mup
 	for linux-mediatek@lists.infradead.org;
-	Tue, 25 Jun 2024 09:23:09 +0000
-Received: by mail-lj1-x235.google.com with SMTP id 38308e7fff4ca-2ec52fbb50cso30558311fa.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 25 Jun 2024 02:23:06 -0700 (PDT)
+	Tue, 25 Jun 2024 09:54:53 +0000
+Received: by mail-pf1-x435.google.com with SMTP id d2e1a72fcca58-70677422857so1463894b3a.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 25 Jun 2024 02:54:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1719307385; x=1719912185; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:subject:from:user-agent:mime-version:date:message-id:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=LlRhdkp6kAFepHjID66aLvJv1DZVnaI5n6pLIDvUVYM=;
-        b=SPaZZFpCjlsZtQRhiL5PRiUj4GktaN0rD7wyk8ZHRSGh4+mik863w8EGGmEzSx47ZS
-         J2NjuSKANTtjElSNJHaeENJ1mei7GMAMEGWsEnjHlI0CtTKi/277zHTgC310j/SacqeL
-         m+nQM/FdYJwG5Wm7pJrC+r2gmSznuDXYK/PbKbBDoTzxoauclqR3xz6iSGhkfDRTZ36G
-         ytF0bAZAuKt8SPhUWJVQRL/Imc2jEE2xe4NlV9tRwVLeT53xhzKm124CWFIcAqvtRpgm
-         jPbANi7VAj/yi4WAiAKTe0rBCQf2fZdQWuoiEYlejmXnAP1DgBQnMSL6aLYV1OvQYsz6
-         oGdg==
+        d=chromium.org; s=google; t=1719309286; x=1719914086; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=QckC6gjfMonIYwuSOvK7TGa+d6/Qqazmh3+ZmkkxyWM=;
+        b=EDZOOEc0VAU7oDsbG9dX/MVwY0UsktMqeUGMLiiWrmxo5W7KFsTVaeC9Js04VZ5IBv
+         mFEAGemx4tVOYIvcrMBbD27cRSZ7xuaDh636DuPJabx/i3RtWCKf9x0Ezj41fzCIa0CK
+         MHkD9NFvKljlJDFNL/m0pF5NGXWzQXiD2CQ1k=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1719307385; x=1719912185;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:subject:from:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=LlRhdkp6kAFepHjID66aLvJv1DZVnaI5n6pLIDvUVYM=;
-        b=j6LQoWOOMvjjQy4/oQVzDgxXpQTaOREBC6YecUHzpDnUyCI7vtP+atoTR8ZAU9xXbS
-         9LoNP6J8u3QmSZl5eSw/2VYd6j//4Wi3nSBJAVu79EfKBcFeReEX0Z5qlVcFO3L7WCiI
-         Z6qcA/EYqUj2DeSz1nzhJtJUI1tohw9dS9AeqrLbCCElkzixqwmWmuOSj1++qYyOXXT/
-         7jM9ml0E2IAArLANrIFVLnqb05oZEdbJl62o/tBinmt9GE8trDhmhBLIH0+UT1mth8+3
-         WTZOFkPB3fvxexm1X4IhqdrjArLyZhgRGrXQQ9PEjCycp7xpoZQXLa7t6ERoZsWzXmU/
-         wXTw==
-X-Forwarded-Encrypted: i=1; AJvYcCXWgR8Df1IaCfM/tEl00ydJZpwm9GBnC3y08XBNFcejOQ7jK0bVWhnQLdUqW8p5j5tRnrM4h80VSEd2XCRUcZTSPs/QHZkEFP8/aW8Pbh39I0Te
-X-Gm-Message-State: AOJu0YzNzzAwA53WULSWYrkXb5Hxnxa/4uHEhR4lUsuQQ9sjj26AkbRe
-	oOktONUVpW9B1HKmqYhtiXT2CAdbFSl5yLEpzdvC/XVcYA3VUSVIgt7a9S+meQc=
-X-Google-Smtp-Source: AGHT+IETSGc5PC+/KSXGB7oMPpuYoRZNE+bp/p6Mqr9WgOryoy8prGpDjhg+IZxxEgRRH3Pn20MxJA==
-X-Received: by 2002:a05:6512:3e24:b0:52c:dff5:8087 with SMTP id 2adb3069b0e04-52ce185f998mr5011614e87.51.1719307384919;
-        Tue, 25 Jun 2024 02:23:04 -0700 (PDT)
-Received: from [192.168.1.172] ([93.5.22.158])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-366f624cdacsm4476317f8f.70.2024.06.25.02.23.03
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 25 Jun 2024 02:23:04 -0700 (PDT)
-Message-ID: <95bab90f-b196-4e79-bb88-7fd534cca721@baylibre.com>
-Date: Tue, 25 Jun 2024 11:23:02 +0200
+        d=1e100.net; s=20230601; t=1719309286; x=1719914086;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=QckC6gjfMonIYwuSOvK7TGa+d6/Qqazmh3+ZmkkxyWM=;
+        b=bpT2xgLJnCWRbwXD70HMX4K6LilKbp5QoW/OvWCW6dZKRbZbIb52A02k5O/VKsfNc0
+         0hS4xr7tuI7zBZCU8lQjDX6q2L0C39+aIKXagrUBjliyf5YQFy6OVEbEc1GMNAdcGYci
+         vYLaroy8DSxUMeNApew5JQzFKWqseLT+KVKMTDxP2vZ5d8CkoAklQjUyF79gCxIoJXDk
+         I1EN3bH9ze/TttVf0/I7jLfWmK3y53qnnYB3hv+Bw7N2Ql0phT9KVDItxd79w9sIj6O9
+         sAozIVNXE/epHR3zXPi+w+90r7we85i8O6Ha6FQ3qhbq0XgWgpmg248rgn9CdVP1B0Ma
+         MLbA==
+X-Forwarded-Encrypted: i=1; AJvYcCXTkYA7syWajcdw1gbEi7BPEP23njGfWl9M5nqaJOrFfs/AHfU3Wz3aemSYI2JLYMDDbJ5hGCNA83usjyrEeAsAA7iGHGVZOjZXBIVGSmGE+vy4
+X-Gm-Message-State: AOJu0Yz3/1v05KF/g3293eMOyI0lkl5/TWPEOf9E295Oam46ZWOkDKkJ
+	BRH6Nk8OvLbiiy2EgNjvl/5apRxjpx/oKRpnnDykZPNkyPIhdgBHhCFNZe6Adw==
+X-Google-Smtp-Source: AGHT+IFKN9C95q1Ki5Q76MKs7sOPj07I0lD5UA8cTwdJwE3Zz3ZT22U72tlalk92pRM7lhXvwJPtPg==
+X-Received: by 2002:aa7:92c2:0:b0:705:c029:c9a7 with SMTP id d2e1a72fcca58-706745b6d61mr6257366b3a.15.1719309286177;
+        Tue, 25 Jun 2024 02:54:46 -0700 (PDT)
+Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:ea5a:67dd:bd1e:edef])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-70691ef0c7bsm1747683b3a.4.2024.06.25.02.54.44
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 25 Jun 2024 02:54:45 -0700 (PDT)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] arm64: dts: mt8183-kukui: clean up regulator tree
+Date: Tue, 25 Jun 2024 17:54:38 +0800
+Message-ID: <20240625095441.3474194-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.45.2.741.gdbec12cfda-goog
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-From: Alexandre Mergnat <amergnat@baylibre.com>
-Subject: Re: [PATCH v6 03/16] dt-bindings: mfd: mediatek: Add codec property
- for MT6357 PMIC
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Lee Jones <lee@kernel.org>, Flora Fu <flora.fu@mediatek.com>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
- Sumit Semwal <sumit.semwal@linaro.org>,
- =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>,
- Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>
-Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org
-References: <20240226-audio-i350-v6-0-f754ec1a7634@baylibre.com>
- <20240226-audio-i350-v6-3-f754ec1a7634@baylibre.com>
- <cd190d35-1658-43d8-9606-5e73257bbf3a@linaro.org>
-Content-Language: en-US
-In-Reply-To: <cd190d35-1658-43d8-9606-5e73257bbf3a@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240625_022307_293803_37D870A6 
-X-CRM114-Status: GOOD (  17.46  )
+X-CRM114-CacheID: sfid-20240625_025451_397175_D1E30B4B 
+X-CRM114-Status: GOOD (  11.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,64 +93,96 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Some regulators in the kukui device tree are modeled incorrectly. Some
+are missing supplies and some switches are incorrectly modeled as
+voltage regulators. A pass-through was incorrectly modeled as a
+regulator.
 
+Add supplies where missing, remove voltage constraints for "switches",
+and drop the "bl_pp5000" pass-through.
 
-On 21/06/2024 17:00, Krzysztof Kozlowski wrote:
-> On 19/06/2024 16:46, Alexandre Mergnat wrote:
->> Add the audio codec sub-device. This sub-device is used to set the
->> optional voltage values according to the hardware.
->> The properties are:
->>    - Setup of microphone bias voltage.
->>    - Setup of the speaker pin pull-down.
->>
->> Also, add the audio power supply property which is dedicated for
->> the audio codec sub-device.
->>
->> Signed-off-by: Alexandre Mergnat<amergnat@baylibre.com>
->> ---
->>   .../devicetree/bindings/mfd/mediatek,mt6357.yaml   | 33 ++++++++++++++++++++++
->>   1 file changed, 33 insertions(+)
->>
->> diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml b/Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml
->> index 37423c2e0fdf..d95307393e75 100644
->> --- a/Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml
->> +++ b/Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml
->> @@ -37,6 +37,32 @@ properties:
->>     "#interrupt-cells":
->>       const: 2
->>   
->> +  vaud28-supply:
->> +    description: 2.8 volt supply phandle for the audio codec
->> +
->> +  audio-codec:
->> +    type: object
-> Still not much improved. You do not have any resources there, so these
-> should go to the parent node.
+This depends on commit 2a99858c172e ("arm64: dts: mediatek: mt8183-kukui:
+Add PMIC regulator supplies") for reg_vsys.
 
-Hi Krzysztof,
+Fixes: cd894e274b74 ("arm64: dts: mt8183: Add krane-sku176 board")
+Fixes: f15722c0fef0 ("arm64: dts: mt8183: Add pwm and backlight node")
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+---
+ .../arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 22 +++++--------------
+ 1 file changed, 6 insertions(+), 16 deletions(-)
 
-vaud28-supply seems to be a mistake that I forward port.
-In the V4, AFAII, your feedback [1] suggested me to move the vaud28-supply from the "audio-codec" 
-sub-node to the parent node, which for me is the "pmic" (mfd), because the property is considered as 
-power-supply.
-
-     pwrap {
-         pmic {
-             ...
-             audio-codec {
-                 ...
-
-Hardware side, vaud28-supply is the output of PMIC-regulator subsystem, and AVDD28 is the input of 
-PMIC-audio-codec subsystem. Then:
-- The property name is wrong and must be change to AVDD28, which is a consumer (power input), not a 
-power-supply. => description: 2.8 volt power input for microphones (AU_VIN0, AU_VIN1, AU_VIN2)
-- IMHO, move this property to the next parent (pwrap) isn't consistent. It should be moved back to 
-Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml (Done in the V4) into audio-codec 
-substystem, beside mediatek,micbias0-microvolt
-
-Does this sound good to you ?
-
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+index 64b3389028e9..57d962e94af7 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+@@ -24,7 +24,7 @@ chosen {
+ 	backlight_lcd0: backlight_lcd0 {
+ 		compatible = "pwm-backlight";
+ 		pwms = <&pwm0 0 500000>;
+-		power-supply = <&bl_pp5000>;
++		power-supply = <&reg_vsys>;
+ 		enable-gpios = <&pio 176 0>;
+ 		brightness-levels = <0 1023>;
+ 		num-interpolated-steps = <1023>;
+@@ -47,10 +47,9 @@ clk32k: oscillator1 {
+ 	it6505_pp18_reg: regulator0 {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "it6505_pp18";
+-		regulator-min-microvolt = <1800000>;
+-		regulator-max-microvolt = <1800000>;
+ 		gpio = <&pio 178 0>;
+ 		enable-active-high;
++		vin-supply = <&pp1800_alw>;
+ 	};
+ 
+ 	lcd_pp3300: regulator1 {
+@@ -62,27 +61,16 @@ lcd_pp3300: regulator1 {
+ 		regulator-boot-on;
+ 	};
+ 
+-	bl_pp5000: regulator2 {
+-		compatible = "regulator-fixed";
+-		regulator-name = "bl_pp5000";
+-		regulator-min-microvolt = <5000000>;
+-		regulator-max-microvolt = <5000000>;
+-		regulator-always-on;
+-		regulator-boot-on;
+-	};
+-
+ 	mmc1_fixed_power: regulator3 {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "mmc1_power";
+-		regulator-min-microvolt = <3300000>;
+-		regulator-max-microvolt = <3300000>;
++		vin-supply = <&pp3300_alw>;
+ 	};
+ 
+ 	mmc1_fixed_io: regulator4 {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "mmc1_io";
+-		regulator-min-microvolt = <1800000>;
+-		regulator-max-microvolt = <1800000>;
++		vin-supply = <&pp1800_alw>;
+ 	};
+ 
+ 	pp1800_alw: regulator5 {
+@@ -92,6 +80,7 @@ pp1800_alw: regulator5 {
+ 		regulator-boot-on;
+ 		regulator-min-microvolt = <1800000>;
+ 		regulator-max-microvolt = <1800000>;
++		vin-supply = <&reg_vsys>;
+ 	};
+ 
+ 	pp3300_alw: regulator6 {
+@@ -101,6 +90,7 @@ pp3300_alw: regulator6 {
+ 		regulator-boot-on;
+ 		regulator-min-microvolt = <3300000>;
+ 		regulator-max-microvolt = <3300000>;
++		vin-supply = <&reg_vsys>;
+ 	};
+ 
+ 	/* system wide semi-regulated power rail from charger */
 -- 
-Regards,
-Alexandre
+2.45.2.741.gdbec12cfda-goog
+
 
