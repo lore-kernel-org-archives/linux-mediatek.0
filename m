@@ -4,109 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02027C30653
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Jun 2024 10:40:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E12BC27C4F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Jun 2024 10:45:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KHbQKOiYe+Ibua4xAi15PJl+V4d0EJrIgF7ce4mlbFQ=; b=2VQR43vwQAPamK9HhDZD2IpX8h
-	klU/w7PzXWI5LG2Xy6WUs4aCj7BOSVEP1Ilkrzq9Tf02h0m2NVXv7CMy2j2sKHS6xekpVtGhLx3yV
-	+M1z21JbokSo0gFO9EsJRSlxZLu/y4Nf+jBOKPNEiIfTqxKWw78/XeLD+Ry1JWA+AmC2Vs3VDDtWJ
-	Cxr5ggBQY5Y27YvfrTq4p6OndLGKl9BPAgS2pFcEKKrPgyil8FChinDx4ojnjJ92MQIn3CU48udCt
-	KqAoyFTeapFsr+oBg+AmTnFSdQ+27oMOQ+1SxHrsX94SxYgSk7PrgM3HQzSJmirKS+vhRlIp5Y0k/
-	wngpMrzA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=U7wgL9k+NEbgMRRnOKduPVpJ0+5pGNok+aStXLGf6K0=; b=pZ5aPvPxLbW4B+86QfpVv/u/4J
+	sx2FvJbWt7Q/VheSdLegpORVj2hkLb1oZLPIcJOpj510E/EGJLbWdDweCqzE1FeO+fGb4/V1J+x76
+	f0Pw0pbbNlrBjRqM1uQTmbgEBeaJWGXzpYVUyKw3NkC9dOI+dXQy6bhXvdIEh6CtTZr7EHx13HW/L
+	0rVkiuZODS+E71izMInI4pbj1eZPGEU06LSEVkEPQ1T6ZHV9OKtaD+lswhH/WKn1hAchhGd7gEddB
+	ih4uPNdS9ffS9wLR6n82DaceBfIiR36VdJblS63EofqhOz2D8DGeXTfGtgC51Yul2Fl0h+VE0eHj0
+	l9cszCeQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMQ5C-00000006Ngn-2FvU;
-	Wed, 26 Jun 2024 10:40:58 +0000
-Received: from mail-yb1-xb2c.google.com ([2607:f8b0:4864:20::b2c])
+	id 1sMQ9j-00000006Ova-2cnv;
+	Wed, 26 Jun 2024 10:45:39 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMQ55-00000006Ndy-2owz
-	for linux-mediatek@lists.infradead.org;
-	Wed, 26 Jun 2024 10:40:55 +0000
-Received: by mail-yb1-xb2c.google.com with SMTP id 3f1490d57ef6-e02c4983bfaso6508648276.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 26 Jun 2024 03:40:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1719398451; x=1720003251; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=KHbQKOiYe+Ibua4xAi15PJl+V4d0EJrIgF7ce4mlbFQ=;
-        b=wATRUmnSALzCnyzXDRw78IYMtccWBCWvs3qe80V/PQFTkoQEch2xmgJIl4UPAFSIR1
-         PGzTvl9QTC6FPoFWcFRjpTH0JuIyKNeb0LLPN4WyjJCkmL+TOBLQV1b9Pcfuq+GlisEv
-         qZQTn1GzuN3pjsuBYavwjWm3gsBb0aThuAb6nlPpwuCmEa1VBgksFjtAnyNc0Byzw/RA
-         85xkU9SxFUygo9yktHu/FMOBYrgHcqjL084xGDc4INc3Rx3XVQByH6mCbSZcFLheV2Wt
-         jnbdZYg5WkwSZA28F70fGgFpIYp89KxwPfolo6KvW4cV0nGNyS8aXdUHp82N4wgpjinY
-         MTzw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1719398451; x=1720003251;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=KHbQKOiYe+Ibua4xAi15PJl+V4d0EJrIgF7ce4mlbFQ=;
-        b=Vh7OJt20lazOfVTU0DJADpwmvYFqxoRhJdXMTkNbcKRoD6heq+oXkE/ICB473Dl7E7
-         Q2zQsUgD/3ailJM3W/dP29ghwEIh1QdIjQXQbf91X7i3QEQV7qBRyRp4w2MEDosqmClP
-         /YtbKVwz+hHJo8c104dKPELskZNwpd5exUlc3h6Qf/E6sRnbNr+AHs/jTkuZBwRz5oa/
-         hL89UaWL972mhkwzlPIRQYrrVPph99d5+gIxGbnwlvbE7SqlH75KUqe4mWLMhrv6OCuf
-         0H+5wwm5TlVVkzb3M7r2b61K1QuRRz33bBpT8eHNk5mb0lhZA+gA5+y7wIOV79+hvXGP
-         Ws8Q==
-X-Forwarded-Encrypted: i=1; AJvYcCW3pZJwCVF9nz7qw28sFFak4pM+O2IyzvPea+4sOPYfyHEYfPkVUCqS8REoHl8MuyJpuMBzIblnwZ8tGGockc6ZQCnnFI3dvRu14Bp9QoXt+/AZ
-X-Gm-Message-State: AOJu0YybvlQYBAJI1WZH8GCSfoX22Jr9T8hCGbrIoaPhOli986mIYhHb
-	RdoTqYggN0RdkJlsMA/LDxy2WjxVTCbW564b5wcsydp9r7ZKbBUocHpuamvDUQewhMwd272bpFD
-	eZjA1v3l4BEbu1uxWaPopRnDDULvKcuFU+GFRlQ==
-X-Google-Smtp-Source: AGHT+IGAQdQECALwFQiRgkrKA/rZBEJOAnkCpPbedoTQq7/jt7W9vOb6wQcj2qKoWUKoPCAEcM15HUQq3HQFJjgWzyA=
-X-Received: by 2002:a25:c553:0:b0:dfa:6e39:95b0 with SMTP id
- 3f1490d57ef6-e030107f616mr10069878276.49.1719398450656; Wed, 26 Jun 2024
- 03:40:50 -0700 (PDT)
+	id 1sMQ9d-00000006OtP-3JwI;
+	Wed, 26 Jun 2024 10:45:35 +0000
+X-UUID: 33def36833a911efb2966dae1f787272-20240626
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=U7wgL9k+NEbgMRRnOKduPVpJ0+5pGNok+aStXLGf6K0=;
+	b=s/IosJKgW169rMDOoDNKeYE8ZGSmCZsosX9NeP3Gv1jnbLgpJLNgshiaQUvk+h9Y7ruWt1tWYjiYbzmAYRMQp4QuiJ5OiN8fcH3iXjifSie169bkSsQe/hX00LVGtq/pUVs/oEaqEnQrAMuWnQ1itjpZfRg6EuLRK06G5Ow5Bqo=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.39,REQID:e0d28b15-c2fb-451b-920f-9dc377d333e2,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:393d96e,CLOUDID:7e430c45-4544-4d06-b2b2-d7e12813c598,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 33def36833a911efb2966dae1f787272-20240626
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
+	(envelope-from <skylake.huang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1003087871; Wed, 26 Jun 2024 03:45:28 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 26 Jun 2024 18:45:24 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 26 Jun 2024 18:45:24 +0800
+From: Sky Huang <SkyLake.Huang@mediatek.com>
+To: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>, "David S. Miller"
+	<davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub Kicinski
+	<kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Daniel Golle
+	<daniel@makrotopia.org>, Qingfang Deng <dqfext@gmail.com>, SkyLake Huang
+	<SkyLake.Huang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	<linux-kernel@vger.kernel.org>, <netdev@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+CC: Steven Liu <Steven.Liu@mediatek.com>, SkyLake.Huang
+	<skylake.huang@mediatek.com>
+Subject: [PATCH net-next v9 00/13] net: phy: mediatek: Introduce mtk-phy-lib and add 2.5Gphy support
+Date: Wed, 26 Jun 2024 18:43:16 +0800
+Message-ID: <20240626104329.11426-1-SkyLake.Huang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-References: <20240504-pinctrl-cleanup-v2-0-26c5f2dc1181@nxp.com>
- <20240504-pinctrl-cleanup-v2-20-26c5f2dc1181@nxp.com> <171939733731.25849.13373950874840419376.b4-ty@linaro.org>
-In-Reply-To: <171939733731.25849.13373950874840419376.b4-ty@linaro.org>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Wed, 26 Jun 2024 12:40:36 +0200
-Message-ID: <CACRpkdastCME_0BWjcaNc0Fw8qsLAGgoQUMi7g8sEP+xT=T_tQ@mail.gmail.com>
-Subject: Re: (subset) [PATCH v2 20/20] pinctrl: samsung: Use scope based
- of_node_put() cleanups
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
-	Dvorkin Dmitry <dvorkin@tibbo.com>, Wells Lu <wellslutw@gmail.com>, 
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
-	Emil Renner Berthing <kernel@esmil.dk>, Jianlong Huang <jianlong.huang@starfivetech.com>, 
-	Hal Feng <hal.feng@starfivetech.com>, Orson Zhai <orsonzhai@gmail.com>, 
-	Baolin Wang <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>, 
-	Viresh Kumar <vireshk@kernel.org>, Shiraz Hashim <shiraz.linux.kernel@gmail.com>, soc@kernel.org, 
-	Krzysztof Kozlowski <krzk@kernel.org>, Sylwester Nawrocki <s.nawrocki@samsung.com>, 
-	Alim Akhtar <alim.akhtar@samsung.com>, Geert Uytterhoeven <geert+renesas@glider.be>, 
-	Patrice Chotard <patrice.chotard@foss.st.com>, Heiko Stuebner <heiko@sntech.de>, 
-	Damien Le Moal <dlemoal@kernel.org>, Ludovic Desroches <ludovic.desroches@microchip.com>, 
-	Nicolas Ferre <nicolas.ferre@microchip.com>, 
-	Alexandre Belloni <alexandre.belloni@bootlin.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
-	Dong Aisheng <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>, 
-	Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, Chester Lin <chester62515@gmail.com>, 
-	Matthias Brugger <mbrugger@suse.com>, Ghennadi Procopciuc <ghennadi.procopciuc@oss.nxp.com>, 
-	Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Andrew Jeffery <andrew@codeconstruct.com.au>, 
-	Joel Stanley <joel@jms.id.au>, Dan Carpenter <dan.carpenter@linaro.org>, 
-	Tony Lindgren <tony@atomide.com>, Stephen Warren <swarren@wwwdotorg.org>, 
-	"Peng Fan (OSS)" <peng.fan@oss.nxp.com>, linux-gpio@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-tegra@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, 
-	linux-stm32@st-md-mailman.stormreply.com, linux-samsung-soc@vger.kernel.org, 
-	linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-riscv@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	imx@lists.linux.dev, linux-aspeed@lists.ozlabs.org, openbmc@lists.ozlabs.org, 
-	Peng Fan <peng.fan@nxp.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--7.503700-8.000000
+X-TMASE-MatchedRID: 8a5GscZDmcmGeTbGWdRz1qUebN0FQAbYvtVce6w5+K9xUZeguPBDQcbK
+	+pu0ZYwR6NJ1g8TkaiY/4sXBdVnb/U2VnXMRzIBj4bl1FkKDELchotH7bEpEMmecrqZc3vabN1L
+	b3d91KD/symnxq9L1AixzufF6vmDubw8f/jlV5scdxBAG5/hkW1sChor7BLiN10wPNIuvyi/Akt
+	gDJtZ0AmMl2fVuI+54nGl+g77/qoc/REwOA9OGte7KTDtx8CggLE3mrqeLTCsOUs4CTUgKy0MHU
+	R1yMHZ62JwKrFIIzlEaMs2ZphvTvQRCoiooUu1OlGudLLtRO1uJR25cPm3I2yBQRBOQhaJiQyYn
+	p0aZIjKglrWLVUWNV6kAshsx79osHVikQ9YmLLMflhDI6DvVltw5uxG2+x0y0RLUQNQYFYGjxYy
+	RBa/qJft6/2HgfIgDVymkLM+r7VSyO81X3yak8zzH295euJK5gzG6FPkPkKEz9y1J1R1kLGhi9J
+	qYMiRJVER/uV3ZvYp+3BndfXUhXQ==
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--7.503700-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 96DAC8B96506A1F85AA3D0DC32C2A736D6938AF73E61E5C196FBCBC54C6F34122000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240626_034051_842056_D9985DE4 
-X-CRM114-Status: UNSURE (   9.01  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240626_034533_868766_580319C9 
+X-CRM114-Status: GOOD (  16.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,21 +104,157 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 26, 2024 at 12:22=E2=80=AFPM Krzysztof Kozlowski
-<krzysztof.kozlowski@linaro.org> wrote:
-> On Sat, 04 May 2024 21:20:18 +0800, Peng Fan (OSS) wrote:
-> > Use scope based of_node_put() cleanup to simplify code.
-> >
-> >
->
-> Applied, thanks!
->
-> [20/20] pinctrl: samsung: Use scope based of_node_put() cleanups
->         https://git.kernel.org/pinctrl/samsung/c/707807f4c1128e39442519e8=
-49e4ce0b7c29b110
+From: "SkyLake.Huang" <skylake.huang@mediatek.com>
 
-OK I dropped it from my queue!
+This patch series integrate MediaTek's built-in Ethernet PHY helper functions
+into mtk-phy-lib and add more functions into it. Also, add support for 2.5Gphy
+on MT7988 SoC.
 
-Yours,
-Linus Walleij
+Signed-off-by: SkyLake.Huang <skylake.huang@mediatek.com>
+---
+Changes in v2:
+- Apply correct PATCH tag.
+- Break LED/Token ring/Extend-link-pulse-time features into 3 patches.
+- Fix contents according to v1 comments.
+
+Changes in v3:
+- Rebase code and now this patch series can apply to net-next tree.
+[PATCH 4/5]
+Refactor mtk_gphy_cl22_read_status() with genphy_read_status().
+[PATCH 5/5]
+1. Add range check for firmware.
+2. Fix c45_ids.mmds_present in probe function.
+3. Still use genphy_update_link() in read_status because
+genphy_c45_read_link() can't correct detect link on this phy.
+
+Changes in v4:
+[PATCH 4/5]
+1. Change extend_an_new_lp_cnt_limit()'s return type and all return values
+2. Refactor comments in extend_an_new_lp_cnt_limit()
+[PATCH 5/5]
+1. Move firmware loading function to mt798x_2p5ge_phy_load_fw()
+2. Add AN disable warning in mt798x_2p5ge_phy_config_aneg()
+3. Clarify the HDX comments in mt798x_2p5ge_phy_get_features()
+
+Changes in v5:
+- Fix syntax errors of comments in drivers/net/phy/mediatek/*
+[PATCH 1/5]
+- Change MEDIATEK_GE_SOC_PHY from bool back to tristate.
+[PATCH 5/5]
+1. Move md32_en_cfg_base & pmb_addr to local variables to achieve
+symmetric code.
+2. Print out firmware date code & version.
+3. Don't return error if LED pinctrl switching fails. Also, add
+comments to this unusual operations.
+4. Return -EOPNOTSUPP for AN off case in config_aneg().
+
+Changes in v6:
+- Re-arrange patch and changes description in cover letter.
+- Contraint code inside 80 columns wide.
+[PATCH 4/5]
+1. Add LP_DETECTED so extend_an_new_lp_cnt_limit() won't be called every
+time we poll the PHY for its status. It'll be called only when cable is
+plugged in and 1G training starts.
+2. Call phy_read_paged() instead of calling phy_select_page() &
+phy_restore_page() pair.
+[PATCH 5/5]
+1. Force casting (fw->data + MT7988_2P5GE_PMB_SIZE - 8) with __be16.
+2. Remove parens on RHS of "phydev->c45_ids.mmds_present |=".
+3. Add PHY_INTERFACE_MODE_INTERNAL check in
+mt798x_2p5ge_phy_get_rate_matching()
+4. Arrange local variables in reverse Xmas tree order.
+
+Changes in v7:
+[PATCH 5/5]
+1. Add phy mode check(PHY_INTERFACE_MODE_INTERNAL) in config_init().
+2. Always return RATE_MATCH_PAUSE in get_rate_matching().
+
+Changes in v8:
+- Make sure that each variables in drivers/net/phy/mediatek/* follows reverse
+Xmas tree order.
+- Split v7 patches in this way:
+[PATCH net-next v7 1/5] net: phy: mediatek: Re-organize MediaTek ethernet phy drivers
+  -> [PATCH net-next v8 01/13] net: phy: mediatek: Re-organize MediaTek ethernet phy drivers
+  -> [PATCH net-next v8 02/13] net: phy: mediatek: Fix spelling errors and rearrange variables
+[PATCH net-next v7 2/5] net: phy: mediatek: Move LED and read/write page helper functions into mtk phy lib
+  -> [PATCH net-next v8 03/13] net: phy: mediatek: Move LED helper functions into mtk phy lib
+  -> [PATCH net-next v8 04/13] net: phy: mediatek: Improve readability of mtk-phy-lib.c's mtk_phy_led_hw_ctrl_set()
+  -> [PATCH net-next v8 05/13] net: phy: mediatek: Integrate read/write page helper functions
+  -> [PATCH net-next v8 06/13] net: phy: mediatek: Hook LED helper functions in mtk-ge.c
+  -> [PATCH net-next v8 07/13] net: phy: mediatek: add MT7530 & MT7531's PHY ID macros
+  -> [PATCH net-next v8 08/13] net: phy: mediatek: Change mtk-ge-soc.c line wrapping
+[PATCH net-next v7 3/5] net: phy: mediatek: Add token ring access helper functions in mtk-phy-lib
+  -> [PATCH net-next v8 09/13] net: phy: mediatek: Add token ring access helper functions in mtk-phy-lib
+[PATCH net-next v7 4/5] net: phy: mediatek: Extend 1G TX/RX link pulse time
+  -> [PATCH net-next v8 10/13] net: phy: mediatek: Extend 1G TX/RX link pulse time
+[PATCH net-next v7 5/5] net: phy: add driver for built-in 2.5G ethernet PHY on MT7988
+  -> [PATCH net-next v8 11/13] net: phy: add driver for built-in 2.5G ethernet PHY on MT7988
+- Create another 2 patches to:
+  - fix alignment in callback functions declarations in mtk-ge.c & mtk-ge-soc.c
+  - Remove unnecessary outer parens of "supported_triggers" var
+- Replace token ring API, tr* & __tr* with mtk_tr* & __mtk_tr* and fix
+alignment.
+
+Changes in v9:
+[PATCH 03/13][PATCH 06/13][PATCH 11/13]
+- Add mtk_phy_led_num_dly_cfg helper function to check led number & set
+  delay on/off time.
+[PATCH 07/13][PATCH 12/13]
+- Remove "mt753x_phy_led_hw_is_supported," callback function hook in MT7530
+  part of mtk-ge.c
+[PATCH 09/13]
+- Replace EEE1000_SELECT_SIGNEL_DETECTION_FROM_DFE with
+  EEE1000_SELECT_SIGNAL_DETECTION_FROM_DFE. (SIGNEL->SIGNAL.)
+[PATCH 11/13]
+- Add MODULE_FIRMARE()
+- Replace "MT7988_2P5GE_PMB" with "MT7988_2P5GE_PMB_FW" so we can recognize
+  it literally.
+- Remove unused macro names:
+  1. BASE100T_STATUS_EXTEND
+  2. BASE1000T_STATUS_EXTEND
+  3. EXTEND_CTRL_AND_STATUS
+  4. PHY_AUX_DPX_MASK
+---
+SkyLake.Huang (13):
+  net: phy: mediatek: Re-organize MediaTek ethernet phy drivers
+  net: phy: mediatek: Fix spelling errors and rearrange variables
+  net: phy: mediatek: Move LED helper functions into mtk phy lib
+  net: phy: mediatek: Improve readability of mtk-phy-lib.c's
+    mtk_phy_led_hw_ctrl_set()
+  net: phy: mediatek: Integrate read/write page helper functions
+  net: phy: mediatek: Hook LED helper functions in mtk-ge.c
+  net: phy: mediatek: add MT7530 & MT7531's PHY ID macros
+  net: phy: mediatek: Change mtk-ge-soc.c line wrapping
+  net: phy: mediatek: Add token ring access helper functions in
+    mtk-phy-lib
+  net: phy: mediatek: Extend 1G TX/RX link pulse time
+  net: phy: add driver for built-in 2.5G ethernet PHY on MT7988
+  net: phy: mediatek: Fix alignment in callback functions' hook
+  net: phy: mediatek: Remove unnecessary outer parens of
+    "supported_triggers" var
+
+ MAINTAINERS                                   |   7 +-
+ drivers/net/phy/Kconfig                       |  17 +-
+ drivers/net/phy/Makefile                      |   3 +-
+ drivers/net/phy/mediatek-ge.c                 | 111 ---
+ drivers/net/phy/mediatek/Kconfig              |  38 +
+ drivers/net/phy/mediatek/Makefile             |   5 +
+ drivers/net/phy/mediatek/mtk-2p5ge.c          | 431 +++++++++++
+ .../mtk-ge-soc.c}                             | 693 ++++++++----------
+ drivers/net/phy/mediatek/mtk-ge.c             | 243 ++++++
+ drivers/net/phy/mediatek/mtk-phy-lib.c        | 450 ++++++++++++
+ drivers/net/phy/mediatek/mtk.h                | 119 +++
+ 11 files changed, 1585 insertions(+), 532 deletions(-)
+ delete mode 100644 drivers/net/phy/mediatek-ge.c
+ create mode 100644 drivers/net/phy/mediatek/Kconfig
+ create mode 100644 drivers/net/phy/mediatek/Makefile
+ create mode 100644 drivers/net/phy/mediatek/mtk-2p5ge.c
+ rename drivers/net/phy/{mediatek-ge-soc.c => mediatek/mtk-ge-soc.c} (73%)
+ create mode 100644 drivers/net/phy/mediatek/mtk-ge.c
+ create mode 100644 drivers/net/phy/mediatek/mtk-phy-lib.c
+ create mode 100644 drivers/net/phy/mediatek/mtk.h
+
+-- 
+2.18.0
+
 
