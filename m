@@ -4,78 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11CF8C27C4F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Jun 2024 06:37:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B21ACC27C4F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Jun 2024 07:38:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sCHdJxQ4oC2ts4y76NGgpAIUHQqpky7E3Iqo+x2BgZM=; b=zxcSPotAcb9tj2qnZHC3iCCyra
-	2DopPxFzLrBqjPD+ujByikvSZOYciS1E+sGLx3jW/YipPJt+Ewq7NCCCcqYCwVWFxjN5cCjyiWe0l
-	Zo9vmHJgWw5ez8y9UtBlRUOHn2RQvxDjo5j5kNyncnWpslf75GxPvQbZeO/G+STHZy5FUBviv9rXf
-	k7KKJnUg15ffGJHhL2PBplimTOlxBENkaWAmWqtslcvpZ5LLP7+uswyQem2sza5zpVQ7f8zQOgqEy
-	2ho/KmBEUZjmH61bCWlZMuLsBwH9oLmH2G0O8BRVu+9QUGJKAe7CBpU8X5F99wN6Jb4ofQTZdsqIS
-	ezj7TOdA==;
+	bh=UFRc7ttscW7yjJvDWYO36HBDgTJ1RAsVrcIYpIeKfLo=; b=ReDmAAU/OfM1LVtnqMni+iRdo+
+	Vafnf+Vau4XL4h2TbUMaLL6zbPUQDl9gJPyZEYut5X+WFVbCB11Rqp9dyqDI0L+pIgYH1xPtAMMoP
+	lefhBXYTuL13ZtN1gF1NiLDRY1IVumzMH06RWvj38CTWDGjUGdEOdMtjivQIEw/VP0pTMvtamLn+o
+	jGEA78U20LKet1xPJ/UAxTLl5VV09MXiLgAOObDg1/clmESM43KvJOLgp0sZJPtxVLXWktGZd4/nw
+	8vX/rgcOXr1+a6hjbUEhJOddozr+PCKEle5zsPi+o2pAAe+hucTNa0MvszJzaqo+bGLNBWkCkS1je
+	MkEuFTBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMMHi-00000005cdc-3ii8;
-	Wed, 26 Jun 2024 06:37:38 +0000
-Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
+	id 1sMNEq-00000005llS-1zDT;
+	Wed, 26 Jun 2024 07:38:44 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMMHf-00000005ccU-2JOn
-	for linux-mediatek@lists.infradead.org;
-	Wed, 26 Jun 2024 06:37:37 +0000
-Received: by mail-lf1-x130.google.com with SMTP id 2adb3069b0e04-52cdbc20faeso5515094e87.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 25 Jun 2024 23:37:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1719383854; x=1719988654; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=sCHdJxQ4oC2ts4y76NGgpAIUHQqpky7E3Iqo+x2BgZM=;
-        b=bExDQUfFARq+vOSUMru3xGyGbfaJx3BVYlYRV+UMPr7nE0EYIQ0iGsMn9d4IRu2mKI
-         GOzCv9dxOWO0U1F5LymJbVPuaMWBIvbVp2zi8QYG75nDjf5Shd+WU8Dip7yCZD9kmIwg
-         MAPXYrRZnXMPJ4kfREOj6vgIQrgrnjdUwkIfs=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1719383854; x=1719988654;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=sCHdJxQ4oC2ts4y76NGgpAIUHQqpky7E3Iqo+x2BgZM=;
-        b=ill4vndiJe4/DPUCVBH66nFtJSwgFt0C/H1qSmmvecgDh9cWJsbrCUBI7ZKcVgztsP
-         14v6aQVP/hIk9ELUpoRU5Iafb7uoCuQgqwKo575czIjOWndBocZUQ1YtFXzWFRy8AXWq
-         yfOLXTDE6deKPkCqvgXPAa2AzxfM9SwJqPelz1ssXlmaSQUpLVWWJAOTbz342G0pdcSA
-         m+wby0zQh7i7eNkewWISklKQDpGXI43k3bnsubrkJykPHuwPDwQN3p93E+BVVQCKxBky
-         h13NBFMUL9x0suqyyIxIRw2PTmfFdJIKPdiOGu2K2mnhmbxocaQgoT4vkwiFgf2H8ufv
-         YWhg==
-X-Forwarded-Encrypted: i=1; AJvYcCXF7jzm+qg6pVzGIJNJ2bJ5POUzIF6dCtEu35O+ACCArl+/ldkgSZxPEP67GtdJzh8DAIyHwpFzGcAygSydtGgpj1l2q5+vHl7d7sjJ+tUMCJ+3
-X-Gm-Message-State: AOJu0YwirRGwyt+aalhdZq3viWuueEioICRKRKZtY7kiEefkPtJTrIFU
-	MowlCYTIeo9MzE6PQ4Gu3Iu13/aLBhhno/M2kLx46YxjkAQaM0Tri7P4DPwwLV+liya3E3EYuJP
-	iXWUh4lbCVI5W0H560YzqQ34Ka1EdTG6Gf6pk
-X-Google-Smtp-Source: AGHT+IGXqfaK3Lp76aXfYjIzKpRey4MNxVqRhxxMs8nwcgXn/YAU0hTJQfa4vETDGz2L4s7B3bv6pwtt1mZk4jfCHBU=
-X-Received: by 2002:a05:6512:39c8:b0:52c:e4cf:4f31 with SMTP id
- 2adb3069b0e04-52ce4cf502dmr7041057e87.49.1719383853555; Tue, 25 Jun 2024
- 23:37:33 -0700 (PDT)
+	id 1sMNEh-00000005ljR-1xRZ;
+	Wed, 26 Jun 2024 07:38:37 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 77370CE1FFD;
+	Wed, 26 Jun 2024 07:38:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 28679C2BD10;
+	Wed, 26 Jun 2024 07:38:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1719387512;
+	bh=JNBOnj4uAS3UltBRLVJm4v/SvBP7W6Kd+PdEmIgMzTg=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=rZwfq4xZKu/euAceNj9yiiH+cbZ366dRCK2LSpBeZllYSzwZRt+8CukhY+AswUh19
+	 2648grrAetJiizJtEN0lOtOSxYrgq90jufJJFXCzR4/c+xQC74FAd6iMSoC+xtVKij
+	 rnMZn4ckTsFkhHg9nuHu1vUDEs0NVPRzMbuf89l2JoJSAm0C8M78Yid41gTUhXvysV
+	 e9eCaTvwGutiExrnCHHJyEZq6f7+2RqPH0+ef4KdB2l6nqREdt6uDt6s05h8Yo3SdT
+	 y/191RIzQQNOv8erYKP/TcycjVQjUji0YC7Jr55hz0zXnzF3pNDo38ISYxaF2OnzmP
+	 xAGxCF0tddlWw==
+Message-ID: <13e294dd-27e9-4464-b9ed-2b319e757849@kernel.org>
+Date: Wed, 26 Jun 2024 09:38:22 +0200
 MIME-Version: 1.0
-References: <20240620054708.2230665-1-wenst@chromium.org> <CAAOTY_9tLUAcw+C5D78SNwrV6kHds7JhtAoFYFmxxfAH9vtkDQ@mail.gmail.com>
-In-Reply-To: <CAAOTY_9tLUAcw+C5D78SNwrV6kHds7JhtAoFYFmxxfAH9vtkDQ@mail.gmail.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Wed, 26 Jun 2024 14:37:22 +0800
-Message-ID: <CAGXv+5FQaJFuouB4feS4KEK+KqSZaJ=en8d9700gkqpQLOBr5g@mail.gmail.com>
-Subject: Re: [PATCH] drm/mediatek: select DRM_GEM_DMA_HELPER if DRM_FBDEV_EMULATION=y
-To: Thomas Zimmermann <tzimmermann@suse.de>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] dt-bindings: net: dsa: mediatek,mt7530: Minor wording
+ fixes
+To: Conor Dooley <conor@kernel.org>,
+ Chris Packham <chris.packham@alliedtelesis.co.nz>
+Cc: andrew@lunn.ch, f.fainelli@gmail.com, olteanv@gmail.com,
+ netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
+ Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>, Daniel Golle <daniel@makrotopia.org>
+References: <20240624211858.1990601-1-chris.packham@alliedtelesis.co.nz>
+ <20240625-battle-easiness-7ac3e81c2d6a@spud>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <20240625-battle-easiness-7ac3e81c2d6a@spud>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240625_233735_866120_AC4AD713 
-X-CRM114-Status: GOOD (  19.23  )
+X-CRM114-CacheID: sfid-20240626_003836_727992_85968FC2 
+X-CRM114-Status: GOOD (  16.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,55 +128,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Thomas,
+On 25/06/2024 18:00, Conor Dooley wrote:
+> On Tue, Jun 25, 2024 at 09:18:57AM +1200, Chris Packham wrote:
+>> Update the mt7530 binding with some minor updates that make the document
+>> easier to read.
+>>
+>> Signed-off-by: Chris Packham <chris.packham@alliedtelesis.co.nz>
+>> ---
+>>
+>> Notes:
+>>     I was referring to this dt binding and found a couple of places where
+>>     the wording could be improved. I'm not exactly a techical writer but
+>>     hopefully I've made things a bit better.
+>>     
+>>     Changes in v2:
+>>     - Update title, this is not just fixing grammar
+>>     - Add missing The instead of changing has to have
+>>
+> 
+> I don't really want to ack this, a 4th ack for some wording that has
+> no impact on the binding itself just seems so utterly silly to me...
+> Instead I've spent more time writing how silly I think it is than
+> hitting the ack macro would take :)
 
-On Thu, Jun 20, 2024 at 10:20=E2=80=AFPM Chun-Kuang Hu <chunkuang.hu@kernel=
-.org> wrote:
->
-> Hi, Chen-Yu:
->
-> Chen-Yu Tsai <wenst@chromium.org> =E6=96=BC 2024=E5=B9=B46=E6=9C=8820=E6=
-=97=A5 =E9=80=B1=E5=9B=9B =E4=B8=8B=E5=8D=881:47=E5=AF=AB=E9=81=93=EF=BC=9A
-> >
-> > With the recent switch from fbdev-generic to fbdev-dma, the driver now
-> > requires the DRM GEM DMA helpers. This dependency is missing, and will
-> > cause a link failure if fbdev emulation is enabled.
-> >
-> > Add the missing dependency.
->
-> Acked-by: Chun-Kuang Hu <chunkuang.hu@mediatek.com>
+But look how many reviews/acks it got :). If you acked this, the patch
+would have like 4 tags!
 
-Could you help merge this?
+If only complex patches get so much attention... :)
 
-Thanks
-ChenYu
+Best regards,
+Krzysztof
 
-> >
-> > Fixes: 0992284b4fe4 ("drm/mediatek: Use fbdev-dma")
-> > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> > ---
-> > The commit this patch fixes is in drm-misc-next. Ideally this patch
-> > should be applied on top of it directly.
-> >
-> > CK, could you give your ack for it?
-> >
-> >  drivers/gpu/drm/mediatek/Kconfig | 1 +
-> >  1 file changed, 1 insertion(+)
-> >
-> > diff --git a/drivers/gpu/drm/mediatek/Kconfig b/drivers/gpu/drm/mediate=
-k/Kconfig
-> > index 96cbe020f493..d6449ebae838 100644
-> > --- a/drivers/gpu/drm/mediatek/Kconfig
-> > +++ b/drivers/gpu/drm/mediatek/Kconfig
-> > @@ -7,6 +7,7 @@ config DRM_MEDIATEK
-> >         depends on HAVE_ARM_SMCCC
-> >         depends on OF
-> >         depends on MTK_MMSYS
-> > +       select DRM_GEM_DMA_HELPER if DRM_FBDEV_EMULATION
-> >         select DRM_KMS_HELPER
-> >         select DRM_MIPI_DSI
-> >         select DRM_PANEL
-> > --
-> > 2.45.2.741.gdbec12cfda-goog
-> >
 
