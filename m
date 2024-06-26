@@ -4,75 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B87CAC2BBCA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Jun 2024 02:54:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB37EC2BBCA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Jun 2024 03:07:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1pg50Z21D382cflC7s7mJFtAX9a2Z4zxZIaRJVZoK9k=; b=1G5LhiJQ++L7UEWovO9yQNw4JE
-	FEk9q0zWJbnPdRLvTn4wmvjxWo1h3Wdqxp/jeUsv7gSsJd9YdkHLyd9hnYI6AziqWB+GEuOsfmOOc
-	zfz5vnGj8R3gK55j6tea2KlKI0FPEtRAmK+mdzDCnzM7sc7+fRObIDPGFo13AO0u9LISXMRa+Y8lO
-	Gu45r5th99hJ7cr/14ak/c6XriKQ0cko7/4BVHRI1hWTLk9okxDvvhJfPFPyyFWUqM9KHvcFwCFk8
-	Ljhv5XYBfdxhJSkHE3LArVnxuo3lsPolF7kIqMAUnnAlTR4Kq1JdlIz8kq/Wjyo+6KTQ1hD33rcHi
-	zQEb6JOA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=1qDoIFqHWKLMrP+v9EU5xxxCReh4uHlGU6sBI8d0nIE=; b=e278SMxv1g6YBj
+	6MjBxVY3CsUfOJL/ZUpzvDFCpfa7gW6cKfpxLwrwZYuFiqgZMBoVtm2aegaJN674tGeFO61XKCq6E
+	fxDHIltZavsmYBcxfmoviuzcVrS5DH79rusFDaUkV/5fZ1t1Z/BuQAY49j6TtdNQ8W8Me/Q8ASQB+
+	rR0MVyp2i0I30vTK6dMEI+BlFPiV5hADn2vssBG8MRKWBqqPh+FpyBpMwCewpwVksNHQeW9eof9MW
+	CWCtzfAAxnpPQGjb1e64jzDqmlW8KkSu/r5Vwc+lEcPtE1Z67GQ/bQT8aWBylAL8ijE9EiYURkXIx
+	bvj4orVJZnpHyXv4Sflg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMInt-00000005A1f-2Pcj;
-	Wed, 26 Jun 2024 02:54:37 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1sMJ0H-00000005BPG-0XM6;
+	Wed, 26 Jun 2024 03:07:25 +0000
+Received: from relay2-d.mail.gandi.net ([2001:4b98:dc4:8::222])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMInh-000000059wf-1pVl
-	for linux-mediatek@lists.infradead.org;
-	Wed, 26 Jun 2024 02:54:28 +0000
-X-UUID: 63145a16336711ef9daba96ee3f3cc8c-20240625
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=1pg50Z21D382cflC7s7mJFtAX9a2Z4zxZIaRJVZoK9k=;
-	b=ostUY/FOYbQbC17nD6mCZzPxhHBD6dFC5IrroMT4B2g3cvalg5m0Soga/P1wXlRz2OZ59379rrENHNOQ/RHJVVTaWKKnY3EjrhAPW6NeSO7ZehA8t0vDnHKFbusLsQtpyOinhy4qseZWpXmp3veBDEPFN6ijaFY5SmiqTfJZIHs=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.39,REQID:22a37ea1-fa55-4e13-b26e-d3f72f788eba,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:393d96e,CLOUDID:478b7094-e2c0-40b0-a8fe-7c7e47299109,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 63145a16336711ef9daba96ee3f3cc8c-20240625
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
-	(envelope-from <chris.lu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 532303745; Tue, 25 Jun 2024 19:54:20 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 26 Jun 2024 10:53:47 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 26 Jun 2024 10:53:47 +0800
-From: Chris Lu <chris.lu@mediatek.com>
-To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
-	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
-CC: Sean Wang <sean.wang@mediatek.com>, Aaron Hou <aaron.hou@mediatek.com>,
-	Steve Lee <steve.lee@mediatek.com>, linux-bluetooth
-	<linux-bluetooth@vger.kernel.org>, linux-kernel
-	<linux-kernel@vger.kernel.org>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Chris Lu <chris.lu@mediatek.com>
-Subject: [PATCH v5 5/8] Bluetooth: btmtk: move btusb_mtk_hci_wmt_sync to btmtk.c
-Date: Wed, 26 Jun 2024 10:53:26 +0800
-Message-ID: <20240626025329.26424-6-chris.lu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20240626025329.26424-1-chris.lu@mediatek.com>
-References: <20240626025329.26424-1-chris.lu@mediatek.com>
+	id 1sMJ08-00000005BKa-0oaR;
+	Wed, 26 Jun 2024 03:07:18 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id B935840003;
+	Wed, 26 Jun 2024 03:07:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
+	t=1719371229;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=1qDoIFqHWKLMrP+v9EU5xxxCReh4uHlGU6sBI8d0nIE=;
+	b=etL4M3jCTeRri7CqNc5cuJFVBzbxOz4bNo+wAbG9rnjM+a5VKbUknpdd/Y7j1KX/icVYyC
+	SGko0OAFYO+1BY2SUnuORbFbFM8zzNEpAxnEjwkjKsSuRzBJrMMg6K3QIxSat9MvxGbvMR
+	KZFuYK5fx0DCs0Vy4ljMGQu0u25iCqN5kszjsclzRkrkxwtsu3pi9E5L06qdzHFeDmaKeW
+	ftwFi3x8/WIaDEnh6CEo5Yh6SVcZ+bznL1oZiKfvp+688t4jvwznLLmxSMGFMtnyfKqf95
+	b7H0B242ywlr2ZvSdzFTekPQ6y+Hy0TnFDF6WJpZ8Xqv9laeALLhpBGyRg6+CA==
+Message-ID: <d4009f46-618c-46c3-8f35-a8db9150862e@arinc9.com>
+Date: Wed, 26 Jun 2024 06:07:04 +0300
 MIME-Version: 1.0
-Content-Type: text/plain
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] arm64: dts: mt7622: fix switch probe on bananapi-r64
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Linux regressions mailing list <regressions@lists.linux.dev>,
+ Paolo Abeni <pabeni@redhat.com>
+References: <20240516204847.171029-1-linux@fw-web.de>
+ <698cf562-1ca9-4aa3-be7e-a1474b612c5b@leemhuis.info>
+ <0cba095c-3d55-416a-a7ad-b359129731cf@arinc9.com>
+ <714da201-654b-4183-8e5e-8ff0b64fe621@leemhuis.info>
+ <2cac4cf68304e81abffbd9ff0387ee100323c2b7.camel@redhat.com>
+ <b49c801c-6628-40a6-8294-0876d8871ba7@leemhuis.info>
+ <e92c3ca0-c9be-44ac-a4fc-57ca5ebedbc5@leemhuis.info>
+ <1807a142-1534-4fa4-ad4b-d1c03af014c2@arinc9.com>
+ <58d8ddea-71cc-427a-94cc-a95f6bce61d2@collabora.com>
+ <16e9c06e-9908-455d-a387-614fefe5bcf8@arinc9.com>
+ <5e87d31c-b059-4f9a-93f7-dc87465ed14a@collabora.com>
+ <4416ef22-78cc-4ce5-b61d-69ff0903811e@arinc9.com>
+ <bd6b6929-d34d-4bd5-9cb0-bc8fe850ee46@leemhuis.info>
+ <af561268-9793-4b5d-aa0f-d09698fd6fb0@arinc9.com>
+ <750a60a6-4585-4bd2-97be-cf944e51fbdb@leemhuis.info>
+ <7a2ea06b-ae4e-4374-82c2-4de4184e06c3@arinc9.com>
+ <40035548-c76b-4b0d-915f-c513eaadbc5d@leemhuis.info>
+ <bb7e9cae-d627-4f38-9da2-b40fb3c349fe@arinc9.com>
+ <4647181b-e5a0-4f6e-9aba-1bcde763d678@collabora.com>
+Content-Language: en-US
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <4647181b-e5a0-4f6e-9aba-1bcde763d678@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240625_195425_537360_44177CD1 
-X-CRM114-Status: GOOD (  28.66  )
+X-CRM114-CacheID: sfid-20240625_200716_561540_CEE93A83 
+X-CRM114-Status: GOOD (  32.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,726 +87,107 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Frank Wunderlich <linux@fw-web.de>, Rob Herring <robh@kernel.org>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Move btusb_mtk_hci_wmt_sync from btusb.c to btmtk.c which holds
-vendor specific stuff and would make btusb.c clean.
+On 25/06/2024 11.49, AngeloGioacchino Del Regno wrote:
+> Il 25/06/24 10:17, Arınç ÜNAL ha scritto:
+>> On 25/06/2024 09.57, Linux regression tracking (Thorsten Leemhuis) wrote:
+>>> On 25.06.24 08:17, Arınç ÜNAL wrote:
+>>>> On 25/06/2024 08.56, Linux regression tracking (Thorsten Leemhuis) wrote:
+>>>>> On 17.06.24 13:08, Arınç ÜNAL wrote:
+>>>>>> On 17/06/2024 11:33, Linux regression tracking (Thorsten Leemhuis)
+>>>>>> wrote:
+>>>>>> [...]
+>>>>>> I've submitted a patch series that fixes the regression. Angelo argued
+>>>>>> against the way the regression is fixed. I've very clearly argued
+>>>>>> back why
+>>>>>> I find Angelo's approach wrong. There's been no response back. I don't
+>>>>>> understand why reverting the patch is the likely outcome
+>>>>>
+>>>>> Long story short: because that how things like that are handled in the
+>>>>> Linux kernel project, as Linus wants it like that. See some of the
+>>>>> quotes from https://docs.kernel.org/process/handling-regressions.html
+>>>>> for details.
+>>>>>
+>>>>>> whilst the
+>>>>>> standing argument points towards applying the said patch series. If a
+>>>>>> revert happens before this discussion with Angelo finalises, this
+>>>>>> will set
+>>>>>> a precedent that will tell maintainers that they can have their way
+>>>>>> by just
+>>>>>> not replying to the ongoing discussions.
+>>>>>>
+>>>>>> That said, the decision of resolving the regression by either
+>>>>>> reverting the
+>>>>>> patch or applying the patch series shall not depend on whether or not
+>>>>>> Angelo is pleased but rather there're no counter-arguments left on the
+>>>>>> points brought, meaning the decision shall be made depending on the
+>>>>>> argument that stands.
+>>>>>>
+>>>>>> Therefore, I suggest that unless Angelo responds back with a
+>>>>>> counter-argument in the window of a week or two, as you've described, my
+>>>>>> patch series shall be applied.
+>>>>>
+>>>>> It looks more and more like we are stuck here (or was there progress and
+>>>>> I just missed it?) while the 6.10 final is slowly getting closer. Hence:
+>>>>
+>>>> There hasn't been progress at all. I believe I have clearly described the
+>>>> way out of this issue.
+>>>>
+>>>>> AngeloGioacchino, should we ask the net maintainers to revert
+>>>>> 868ff5f4944aa9 ("net: dsa: mt7530-mdio: read PHY address of switch from
+>>>>> device tree") for now to resolve this regression? Reminder, there is
+>>>>> nothing wrong with that commit per se afaik, it just exposes a problem
+>>>>> that needs to be fixed first before it can be reapplied.
+>>>>
+>>>> Are you suggesting the patch shall be reverted first, then the DT patch
+>>>> applied, then the reverted patch applied back?
+>>>
+>>> Yeah.
+>>>
+> 
+> Sorry, I've lost your reply in the long stack of emails that I get every day.
+> 
+> I'm not suggesting to revert the patch, but to fix it such that it does not
+> break devices using old devicetrees, as it was the case before.
+> 
+> Even though, in a way, when you update the kernel, you do also update the
+> devicetrees with it just because it's almost effortless to do so, doing that
+> is not mandatory.
+> 
+> ...and that's why the driver, which was - in a way - faulty before, getting
+> the switch to work even though the devicetree node was wrong, must still be
+> compatible.
+> 
+> I do want to apply the devicetree fix, but I also do *not* want to see *driver*
+> changes that go against the backward compatibility rule of devicetree when this
+> is not strictly necessary (when it is - it's okay to make an exception)...
+> 
+> ...and this is not one of the cases in which it's strictly necessary.
 
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-Signed-off-by: Chris Lu <chris.lu@mediatek.com>
----
- drivers/bluetooth/btmtk.c | 264 ++++++++++++++++++++++++++++++++++
- drivers/bluetooth/btmtk.h |  33 +++++
- drivers/bluetooth/btusb.c | 290 +-------------------------------------
- 3 files changed, 304 insertions(+), 283 deletions(-)
+I understand that you receive emails often. It seems you've not read my
+point of view in the previous emails because of it, so it is preventing us
+from having a proper discussion to come to a mutual agreement. I don't
+intend to repeat myself for it to be lost in your inbox again.
 
-diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
-index 6489e4a63fb6..d9b4e636f0d1 100644
---- a/drivers/bluetooth/btmtk.c
-+++ b/drivers/bluetooth/btmtk.c
-@@ -431,6 +431,270 @@ int btmtk_process_coredump(struct hci_dev *hdev, struct sk_buff *skb)
- }
- EXPORT_SYMBOL_GPL(btmtk_process_coredump);
- 
-+static void btmtk_usb_wmt_recv(struct urb *urb)
-+{
-+	struct hci_dev *hdev = urb->context;
-+	struct btmtk_data *data = hci_get_priv(hdev);
-+	struct sk_buff *skb;
-+	int err;
-+
-+	if (urb->status == 0 && urb->actual_length > 0) {
-+		hdev->stat.byte_rx += urb->actual_length;
-+
-+		/* WMT event shouldn't be fragmented and the size should be
-+		 * less than HCI_WMT_MAX_EVENT_SIZE.
-+		 */
-+		skb = bt_skb_alloc(HCI_WMT_MAX_EVENT_SIZE, GFP_ATOMIC);
-+		if (!skb) {
-+			hdev->stat.err_rx++;
-+			kfree(urb->setup_packet);
-+			return;
-+		}
-+
-+		hci_skb_pkt_type(skb) = HCI_EVENT_PKT;
-+		skb_put_data(skb, urb->transfer_buffer, urb->actual_length);
-+
-+		/* When someone waits for the WMT event, the skb is being cloned
-+		 * and being processed the events from there then.
-+		 */
-+		if (test_bit(BTMTK_TX_WAIT_VND_EVT, &data->flags)) {
-+			data->evt_skb = skb_clone(skb, GFP_ATOMIC);
-+			if (!data->evt_skb) {
-+				kfree_skb(skb);
-+				kfree(urb->setup_packet);
-+				return;
-+			}
-+		}
-+
-+		err = hci_recv_frame(hdev, skb);
-+		if (err < 0) {
-+			kfree_skb(data->evt_skb);
-+			data->evt_skb = NULL;
-+			kfree(urb->setup_packet);
-+			return;
-+		}
-+
-+		if (test_and_clear_bit(BTMTK_TX_WAIT_VND_EVT,
-+				       &data->flags)) {
-+			/* Barrier to sync with other CPUs */
-+			smp_mb__after_atomic();
-+			wake_up_bit(&data->flags,
-+				    BTMTK_TX_WAIT_VND_EVT);
-+		}
-+		kfree(urb->setup_packet);
-+		return;
-+	} else if (urb->status == -ENOENT) {
-+		/* Avoid suspend failed when usb_kill_urb */
-+		return;
-+	}
-+
-+	usb_mark_last_busy(data->udev);
-+
-+	/* The URB complete handler is still called with urb->actual_length = 0
-+	 * when the event is not available, so we should keep re-submitting
-+	 * URB until WMT event returns, Also, It's necessary to wait some time
-+	 * between the two consecutive control URBs to relax the target device
-+	 * to generate the event. Otherwise, the WMT event cannot return from
-+	 * the device successfully.
-+	 */
-+	udelay(500);
-+
-+	usb_anchor_urb(urb, data->ctrl_anchor);
-+	err = usb_submit_urb(urb, GFP_ATOMIC);
-+	if (err < 0) {
-+		kfree(urb->setup_packet);
-+		/* -EPERM: urb is being killed;
-+		 * -ENODEV: device got disconnected
-+		 */
-+		if (err != -EPERM && err != -ENODEV)
-+			bt_dev_err(hdev, "urb %p failed to resubmit (%d)",
-+				   urb, -err);
-+		usb_unanchor_urb(urb);
-+	}
-+}
-+
-+static int btmtk_usb_submit_wmt_recv_urb(struct hci_dev *hdev)
-+{
-+	struct btmtk_data *data = hci_get_priv(hdev);
-+	struct usb_ctrlrequest *dr;
-+	unsigned char *buf;
-+	int err, size = 64;
-+	unsigned int pipe;
-+	struct urb *urb;
-+
-+	urb = usb_alloc_urb(0, GFP_KERNEL);
-+	if (!urb)
-+		return -ENOMEM;
-+
-+	dr = kmalloc(sizeof(*dr), GFP_KERNEL);
-+	if (!dr) {
-+		usb_free_urb(urb);
-+		return -ENOMEM;
-+	}
-+
-+	dr->bRequestType = USB_TYPE_VENDOR | USB_DIR_IN;
-+	dr->bRequest     = 1;
-+	dr->wIndex       = cpu_to_le16(0);
-+	dr->wValue       = cpu_to_le16(48);
-+	dr->wLength      = cpu_to_le16(size);
-+
-+	buf = kmalloc(size, GFP_KERNEL);
-+	if (!buf) {
-+		kfree(dr);
-+		usb_free_urb(urb);
-+		return -ENOMEM;
-+	}
-+
-+	pipe = usb_rcvctrlpipe(data->udev, 0);
-+
-+	usb_fill_control_urb(urb, data->udev, pipe, (void *)dr,
-+			     buf, size, btmtk_usb_wmt_recv, hdev);
-+
-+	urb->transfer_flags |= URB_FREE_BUFFER;
-+
-+	usb_anchor_urb(urb, data->ctrl_anchor);
-+	err = usb_submit_urb(urb, GFP_KERNEL);
-+	if (err < 0) {
-+		if (err != -EPERM && err != -ENODEV)
-+			bt_dev_err(hdev, "urb %p submission failed (%d)",
-+				   urb, -err);
-+		usb_unanchor_urb(urb);
-+	}
-+
-+	usb_free_urb(urb);
-+
-+	return err;
-+}
-+
-+int btmtk_usb_hci_wmt_sync(struct hci_dev *hdev,
-+			   struct btmtk_hci_wmt_params *wmt_params)
-+{
-+	struct btmtk_data *data = hci_get_priv(hdev);
-+	struct btmtk_hci_wmt_evt_funcc *wmt_evt_funcc;
-+	u32 hlen, status = BTMTK_WMT_INVALID;
-+	struct btmtk_hci_wmt_evt *wmt_evt;
-+	struct btmtk_hci_wmt_cmd *wc;
-+	struct btmtk_wmt_hdr *hdr;
-+	int err;
-+
-+	/* Send the WMT command and wait until the WMT event returns */
-+	hlen = sizeof(*hdr) + wmt_params->dlen;
-+	if (hlen > 255)
-+		return -EINVAL;
-+
-+	wc = kzalloc(hlen, GFP_KERNEL);
-+	if (!wc)
-+		return -ENOMEM;
-+
-+	hdr = &wc->hdr;
-+	hdr->dir = 1;
-+	hdr->op = wmt_params->op;
-+	hdr->dlen = cpu_to_le16(wmt_params->dlen + 1);
-+	hdr->flag = wmt_params->flag;
-+	memcpy(wc->data, wmt_params->data, wmt_params->dlen);
-+
-+	set_bit(BTMTK_TX_WAIT_VND_EVT, &data->flags);
-+
-+	/* WMT cmd/event doesn't follow up the generic HCI cmd/event handling,
-+	 * it needs constantly polling control pipe until the host received the
-+	 * WMT event, thus, we should require to specifically acquire PM counter
-+	 * on the USB to prevent the interface from entering auto suspended
-+	 * while WMT cmd/event in progress.
-+	 */
-+	err = usb_autopm_get_interface(data->intf);
-+	if (err < 0)
-+		goto err_free_wc;
-+
-+	err = __hci_cmd_send(hdev, 0xfc6f, hlen, wc);
-+
-+	if (err < 0) {
-+		clear_bit(BTMTK_TX_WAIT_VND_EVT, &data->flags);
-+		usb_autopm_put_interface(data->intf);
-+		goto err_free_wc;
-+	}
-+
-+	/* Submit control IN URB on demand to process the WMT event */
-+	err = btmtk_usb_submit_wmt_recv_urb(hdev);
-+
-+	usb_autopm_put_interface(data->intf);
-+
-+	if (err < 0)
-+		goto err_free_wc;
-+
-+	/* The vendor specific WMT commands are all answered by a vendor
-+	 * specific event and will have the Command Status or Command
-+	 * Complete as with usual HCI command flow control.
-+	 *
-+	 * After sending the command, wait for BTUSB_TX_WAIT_VND_EVT
-+	 * state to be cleared. The driver specific event receive routine
-+	 * will clear that state and with that indicate completion of the
-+	 * WMT command.
-+	 */
-+	err = wait_on_bit_timeout(&data->flags, BTMTK_TX_WAIT_VND_EVT,
-+				  TASK_INTERRUPTIBLE, HCI_INIT_TIMEOUT);
-+	if (err == -EINTR) {
-+		bt_dev_err(hdev, "Execution of wmt command interrupted");
-+		clear_bit(BTMTK_TX_WAIT_VND_EVT, &data->flags);
-+		goto err_free_wc;
-+	}
-+
-+	if (err) {
-+		bt_dev_err(hdev, "Execution of wmt command timed out");
-+		clear_bit(BTMTK_TX_WAIT_VND_EVT, &data->flags);
-+		err = -ETIMEDOUT;
-+		goto err_free_wc;
-+	}
-+
-+	if (data->evt_skb == NULL)
-+		goto err_free_wc;
-+
-+	/* Parse and handle the return WMT event */
-+	wmt_evt = (struct btmtk_hci_wmt_evt *)data->evt_skb->data;
-+	if (wmt_evt->whdr.op != hdr->op) {
-+		bt_dev_err(hdev, "Wrong op received %d expected %d",
-+			   wmt_evt->whdr.op, hdr->op);
-+		err = -EIO;
-+		goto err_free_skb;
-+	}
-+
-+	switch (wmt_evt->whdr.op) {
-+	case BTMTK_WMT_SEMAPHORE:
-+		if (wmt_evt->whdr.flag == 2)
-+			status = BTMTK_WMT_PATCH_UNDONE;
-+		else
-+			status = BTMTK_WMT_PATCH_DONE;
-+		break;
-+	case BTMTK_WMT_FUNC_CTRL:
-+		wmt_evt_funcc = (struct btmtk_hci_wmt_evt_funcc *)wmt_evt;
-+		if (be16_to_cpu(wmt_evt_funcc->status) == 0x404)
-+			status = BTMTK_WMT_ON_DONE;
-+		else if (be16_to_cpu(wmt_evt_funcc->status) == 0x420)
-+			status = BTMTK_WMT_ON_PROGRESS;
-+		else
-+			status = BTMTK_WMT_ON_UNDONE;
-+		break;
-+	case BTMTK_WMT_PATCH_DWNLD:
-+		if (wmt_evt->whdr.flag == 2)
-+			status = BTMTK_WMT_PATCH_DONE;
-+		else if (wmt_evt->whdr.flag == 1)
-+			status = BTMTK_WMT_PATCH_PROGRESS;
-+		else
-+			status = BTMTK_WMT_PATCH_UNDONE;
-+		break;
-+	}
-+
-+	if (wmt_params->status)
-+		*wmt_params->status = status;
-+
-+err_free_skb:
-+	kfree_skb(data->evt_skb);
-+	data->evt_skb = NULL;
-+err_free_wc:
-+	kfree(wc);
-+	return err;
-+}
-+EXPORT_SYMBOL_GPL(btmtk_usb_hci_wmt_sync);
-+
- MODULE_AUTHOR("Sean Wang <sean.wang@mediatek.com>");
- MODULE_AUTHOR("Mark Chen <mark-yw.chen@mediatek.com>");
- MODULE_DESCRIPTION("Bluetooth support for MediaTek devices ver " VERSION);
-diff --git a/drivers/bluetooth/btmtk.h b/drivers/bluetooth/btmtk.h
-index dde6fbdeb2b3..c9717630e55d 100644
---- a/drivers/bluetooth/btmtk.h
-+++ b/drivers/bluetooth/btmtk.h
-@@ -1,6 +1,8 @@
- /* SPDX-License-Identifier: ISC */
- /* Copyright (C) 2021 MediaTek Inc. */
- 
-+#include <linux/usb.h>
-+
- #define FIRMWARE_MT7622		"mediatek/mt7622pr2h.bin"
- #define FIRMWARE_MT7663		"mediatek/mt7663pr2h.bin"
- #define FIRMWARE_MT7668		"mediatek/mt7668pr2h.bin"
-@@ -28,6 +30,18 @@
- #define MTK_COREDUMP_END_LEN		(sizeof(MTK_COREDUMP_END))
- #define MTK_COREDUMP_NUM		255
- 
-+/* UHW CR mapping */
-+#define MTK_BT_MISC		0x70002510
-+#define MTK_BT_SUBSYS_RST	0x70002610
-+#define MTK_UDMA_INT_STA_BT	0x74000024
-+#define MTK_UDMA_INT_STA_BT1	0x74000308
-+#define MTK_BT_WDT_STATUS	0x740003A0
-+#define MTK_EP_RST_OPT		0x74011890
-+#define MTK_EP_RST_IN_OUT_OPT	0x00010001
-+#define MTK_BT_RST_DONE		0x00000100
-+#define MTK_BT_RESET_REG_CONNV3	0x70028610
-+#define MTK_BT_READ_DEV_ID	0x70010200
-+
- enum {
- 	BTMTK_WMT_PATCH_DWNLD = 0x1,
- 	BTMTK_WMT_TEST = 0x2,
-@@ -126,6 +140,10 @@ struct btmtk_hci_wmt_params {
- 	u32 *status;
- };
- 
-+enum {
-+	BTMTK_TX_WAIT_VND_EVT,
-+};
-+
- typedef int (*btmtk_reset_sync_func_t)(struct hci_dev *, void *);
- 
- struct btmtk_coredump_info {
-@@ -136,9 +154,15 @@ struct btmtk_coredump_info {
- };
- 
- struct btmtk_data {
-+	unsigned long flags;
- 	u32 dev_id;
- 	btmtk_reset_sync_func_t reset_sync;
- 	struct btmtk_coredump_info cd_info;
-+
-+	struct usb_device *udev;
-+	struct usb_interface *intf;
-+	struct usb_anchor *ctrl_anchor;
-+	struct sk_buff *evt_skb;
- };
- 
- typedef int (*wmt_cmd_sync_func_t)(struct hci_dev *,
-@@ -163,6 +187,9 @@ int btmtk_process_coredump(struct hci_dev *hdev, struct sk_buff *skb);
- 
- void btmtk_fw_get_filename(char *buf, size_t size, u32 dev_id, u32 fw_ver,
- 			   u32 fw_flavor);
-+
-+int btmtk_usb_hci_wmt_sync(struct hci_dev *hdev,
-+			   struct btmtk_hci_wmt_params *wmt_params);
- #else
- 
- static inline int btmtk_set_bdaddr(struct hci_dev *hdev,
-@@ -202,4 +229,10 @@ static void btmtk_fw_get_filename(char *buf, size_t size, u32 dev_id,
- 				  u32 fw_ver, u32 fw_flavor)
- {
- }
-+
-+static int btmtk_usb_hci_wmt_sync(struct hci_dev *hdev,
-+				  struct btmtk_hci_wmt_params *wmt_params)
-+{
-+	return -EOPNOTSUPP;
-+}
- #endif
-diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index 4ec18b58dc68..660e528fdd94 100644
---- a/drivers/bluetooth/btusb.c
-+++ b/drivers/bluetooth/btusb.c
-@@ -2641,282 +2641,6 @@ static int btusb_recv_event_realtek(struct hci_dev *hdev, struct sk_buff *skb)
- 	return hci_recv_frame(hdev, skb);
- }
- 
--/* UHW CR mapping */
--#define MTK_BT_MISC		0x70002510
--#define MTK_BT_SUBSYS_RST	0x70002610
--#define MTK_UDMA_INT_STA_BT	0x74000024
--#define MTK_UDMA_INT_STA_BT1	0x74000308
--#define MTK_BT_WDT_STATUS	0x740003A0
--#define MTK_EP_RST_OPT		0x74011890
--#define MTK_EP_RST_IN_OUT_OPT	0x00010001
--#define MTK_BT_RST_DONE		0x00000100
--#define MTK_BT_RESET_REG_CONNV3	0x70028610
--#define MTK_BT_READ_DEV_ID	0x70010200
--
--
--static void btusb_mtk_wmt_recv(struct urb *urb)
--{
--	struct hci_dev *hdev = urb->context;
--	struct btusb_data *data = hci_get_drvdata(hdev);
--	struct sk_buff *skb;
--	int err;
--
--	if (urb->status == 0 && urb->actual_length > 0) {
--		hdev->stat.byte_rx += urb->actual_length;
--
--		/* WMT event shouldn't be fragmented and the size should be
--		 * less than HCI_WMT_MAX_EVENT_SIZE.
--		 */
--		skb = bt_skb_alloc(HCI_WMT_MAX_EVENT_SIZE, GFP_ATOMIC);
--		if (!skb) {
--			hdev->stat.err_rx++;
--			kfree(urb->setup_packet);
--			return;
--		}
--
--		hci_skb_pkt_type(skb) = HCI_EVENT_PKT;
--		skb_put_data(skb, urb->transfer_buffer, urb->actual_length);
--
--		/* When someone waits for the WMT event, the skb is being cloned
--		 * and being processed the events from there then.
--		 */
--		if (test_bit(BTUSB_TX_WAIT_VND_EVT, &data->flags)) {
--			data->evt_skb = skb_clone(skb, GFP_ATOMIC);
--			if (!data->evt_skb) {
--				kfree_skb(skb);
--				kfree(urb->setup_packet);
--				return;
--			}
--		}
--
--		err = hci_recv_frame(hdev, skb);
--		if (err < 0) {
--			kfree_skb(data->evt_skb);
--			data->evt_skb = NULL;
--			kfree(urb->setup_packet);
--			return;
--		}
--
--		if (test_and_clear_bit(BTUSB_TX_WAIT_VND_EVT,
--				       &data->flags)) {
--			/* Barrier to sync with other CPUs */
--			smp_mb__after_atomic();
--			wake_up_bit(&data->flags,
--				    BTUSB_TX_WAIT_VND_EVT);
--		}
--		kfree(urb->setup_packet);
--		return;
--	} else if (urb->status == -ENOENT) {
--		/* Avoid suspend failed when usb_kill_urb */
--		return;
--	}
--
--	usb_mark_last_busy(data->udev);
--
--	/* The URB complete handler is still called with urb->actual_length = 0
--	 * when the event is not available, so we should keep re-submitting
--	 * URB until WMT event returns, Also, It's necessary to wait some time
--	 * between the two consecutive control URBs to relax the target device
--	 * to generate the event. Otherwise, the WMT event cannot return from
--	 * the device successfully.
--	 */
--	udelay(500);
--
--	usb_anchor_urb(urb, &data->ctrl_anchor);
--	err = usb_submit_urb(urb, GFP_ATOMIC);
--	if (err < 0) {
--		kfree(urb->setup_packet);
--		/* -EPERM: urb is being killed;
--		 * -ENODEV: device got disconnected
--		 */
--		if (err != -EPERM && err != -ENODEV)
--			bt_dev_err(hdev, "urb %p failed to resubmit (%d)",
--				   urb, -err);
--		usb_unanchor_urb(urb);
--	}
--}
--
--static int btusb_mtk_submit_wmt_recv_urb(struct hci_dev *hdev)
--{
--	struct btusb_data *data = hci_get_drvdata(hdev);
--	struct usb_ctrlrequest *dr;
--	unsigned char *buf;
--	int err, size = 64;
--	unsigned int pipe;
--	struct urb *urb;
--
--	urb = usb_alloc_urb(0, GFP_KERNEL);
--	if (!urb)
--		return -ENOMEM;
--
--	dr = kmalloc(sizeof(*dr), GFP_KERNEL);
--	if (!dr) {
--		usb_free_urb(urb);
--		return -ENOMEM;
--	}
--
--	dr->bRequestType = USB_TYPE_VENDOR | USB_DIR_IN;
--	dr->bRequest     = 1;
--	dr->wIndex       = cpu_to_le16(0);
--	dr->wValue       = cpu_to_le16(48);
--	dr->wLength      = cpu_to_le16(size);
--
--	buf = kmalloc(size, GFP_KERNEL);
--	if (!buf) {
--		kfree(dr);
--		usb_free_urb(urb);
--		return -ENOMEM;
--	}
--
--	pipe = usb_rcvctrlpipe(data->udev, 0);
--
--	usb_fill_control_urb(urb, data->udev, pipe, (void *)dr,
--			     buf, size, btusb_mtk_wmt_recv, hdev);
--
--	urb->transfer_flags |= URB_FREE_BUFFER;
--
--	usb_anchor_urb(urb, &data->ctrl_anchor);
--	err = usb_submit_urb(urb, GFP_KERNEL);
--	if (err < 0) {
--		if (err != -EPERM && err != -ENODEV)
--			bt_dev_err(hdev, "urb %p submission failed (%d)",
--				   urb, -err);
--		usb_unanchor_urb(urb);
--	}
--
--	usb_free_urb(urb);
--
--	return err;
--}
--
--static int btusb_mtk_hci_wmt_sync(struct hci_dev *hdev,
--				  struct btmtk_hci_wmt_params *wmt_params)
--{
--	struct btusb_data *data = hci_get_drvdata(hdev);
--	struct btmtk_hci_wmt_evt_funcc *wmt_evt_funcc;
--	u32 hlen, status = BTMTK_WMT_INVALID;
--	struct btmtk_hci_wmt_evt *wmt_evt;
--	struct btmtk_hci_wmt_cmd *wc;
--	struct btmtk_wmt_hdr *hdr;
--	int err;
--
--	/* Send the WMT command and wait until the WMT event returns */
--	hlen = sizeof(*hdr) + wmt_params->dlen;
--	if (hlen > 255)
--		return -EINVAL;
--
--	wc = kzalloc(hlen, GFP_KERNEL);
--	if (!wc)
--		return -ENOMEM;
--
--	hdr = &wc->hdr;
--	hdr->dir = 1;
--	hdr->op = wmt_params->op;
--	hdr->dlen = cpu_to_le16(wmt_params->dlen + 1);
--	hdr->flag = wmt_params->flag;
--	memcpy(wc->data, wmt_params->data, wmt_params->dlen);
--
--	set_bit(BTUSB_TX_WAIT_VND_EVT, &data->flags);
--
--	/* WMT cmd/event doesn't follow up the generic HCI cmd/event handling,
--	 * it needs constantly polling control pipe until the host received the
--	 * WMT event, thus, we should require to specifically acquire PM counter
--	 * on the USB to prevent the interface from entering auto suspended
--	 * while WMT cmd/event in progress.
--	 */
--	err = usb_autopm_get_interface(data->intf);
--	if (err < 0)
--		goto err_free_wc;
--
--	err = __hci_cmd_send(hdev, 0xfc6f, hlen, wc);
--
--	if (err < 0) {
--		clear_bit(BTUSB_TX_WAIT_VND_EVT, &data->flags);
--		usb_autopm_put_interface(data->intf);
--		goto err_free_wc;
--	}
--
--	/* Submit control IN URB on demand to process the WMT event */
--	err = btusb_mtk_submit_wmt_recv_urb(hdev);
--
--	usb_autopm_put_interface(data->intf);
--
--	if (err < 0)
--		goto err_free_wc;
--
--	/* The vendor specific WMT commands are all answered by a vendor
--	 * specific event and will have the Command Status or Command
--	 * Complete as with usual HCI command flow control.
--	 *
--	 * After sending the command, wait for BTUSB_TX_WAIT_VND_EVT
--	 * state to be cleared. The driver specific event receive routine
--	 * will clear that state and with that indicate completion of the
--	 * WMT command.
--	 */
--	err = wait_on_bit_timeout(&data->flags, BTUSB_TX_WAIT_VND_EVT,
--				  TASK_INTERRUPTIBLE, HCI_INIT_TIMEOUT);
--	if (err == -EINTR) {
--		bt_dev_err(hdev, "Execution of wmt command interrupted");
--		clear_bit(BTUSB_TX_WAIT_VND_EVT, &data->flags);
--		goto err_free_wc;
--	}
--
--	if (err) {
--		bt_dev_err(hdev, "Execution of wmt command timed out");
--		clear_bit(BTUSB_TX_WAIT_VND_EVT, &data->flags);
--		err = -ETIMEDOUT;
--		goto err_free_wc;
--	}
--
--	if (data->evt_skb == NULL)
--		goto err_free_wc;
--
--	/* Parse and handle the return WMT event */
--	wmt_evt = (struct btmtk_hci_wmt_evt *)data->evt_skb->data;
--	if (wmt_evt->whdr.op != hdr->op) {
--		bt_dev_err(hdev, "Wrong op received %d expected %d",
--			   wmt_evt->whdr.op, hdr->op);
--		err = -EIO;
--		goto err_free_skb;
--	}
--
--	switch (wmt_evt->whdr.op) {
--	case BTMTK_WMT_SEMAPHORE:
--		if (wmt_evt->whdr.flag == 2)
--			status = BTMTK_WMT_PATCH_UNDONE;
--		else
--			status = BTMTK_WMT_PATCH_DONE;
--		break;
--	case BTMTK_WMT_FUNC_CTRL:
--		wmt_evt_funcc = (struct btmtk_hci_wmt_evt_funcc *)wmt_evt;
--		if (be16_to_cpu(wmt_evt_funcc->status) == 0x404)
--			status = BTMTK_WMT_ON_DONE;
--		else if (be16_to_cpu(wmt_evt_funcc->status) == 0x420)
--			status = BTMTK_WMT_ON_PROGRESS;
--		else
--			status = BTMTK_WMT_ON_UNDONE;
--		break;
--	case BTMTK_WMT_PATCH_DWNLD:
--		if (wmt_evt->whdr.flag == 2)
--			status = BTMTK_WMT_PATCH_DONE;
--		else if (wmt_evt->whdr.flag == 1)
--			status = BTMTK_WMT_PATCH_PROGRESS;
--		else
--			status = BTMTK_WMT_PATCH_UNDONE;
--		break;
--	}
--
--	if (wmt_params->status)
--		*wmt_params->status = status;
--
--err_free_skb:
--	kfree_skb(data->evt_skb);
--	data->evt_skb = NULL;
--err_free_wc:
--	kfree(wc);
--	return err;
--}
--
- static int btusb_mtk_func_query(struct hci_dev *hdev)
- {
- 	struct btmtk_hci_wmt_params wmt_params;
-@@ -2930,7 +2654,7 @@ static int btusb_mtk_func_query(struct hci_dev *hdev)
- 	wmt_params.data = &param;
- 	wmt_params.status = &status;
- 
--	err = btusb_mtk_hci_wmt_sync(hdev, &wmt_params);
-+	err = btmtk_usb_hci_wmt_sync(hdev, &wmt_params);
- 	if (err < 0) {
- 		bt_dev_err(hdev, "Failed to query function status (%d)", err);
- 		return err;
-@@ -3251,7 +2975,7 @@ static int btusb_mtk_setup(struct hci_dev *hdev)
- 				      fw_version, fw_flavor);
- 
- 		err = btmtk_setup_firmware_79xx(hdev, fw_bin_name,
--						btusb_mtk_hci_wmt_sync);
-+						btmtk_usb_hci_wmt_sync);
- 		if (err < 0) {
- 			bt_dev_err(hdev, "Failed to set up firmware (%d)", err);
- 			clear_bit(BTUSB_FIRMWARE_LOADED, &data->flags);
-@@ -3271,7 +2995,7 @@ static int btusb_mtk_setup(struct hci_dev *hdev)
- 		wmt_params.data = &param;
- 		wmt_params.status = NULL;
- 
--		err = btusb_mtk_hci_wmt_sync(hdev, &wmt_params);
-+		err = btmtk_usb_hci_wmt_sync(hdev, &wmt_params);
- 		if (err < 0) {
- 			bt_dev_err(hdev, "Failed to send wmt func ctrl (%d)", err);
- 			return err;
-@@ -3293,7 +3017,7 @@ static int btusb_mtk_setup(struct hci_dev *hdev)
- 	wmt_params.data = NULL;
- 	wmt_params.status = &status;
- 
--	err = btusb_mtk_hci_wmt_sync(hdev, &wmt_params);
-+	err = btmtk_usb_hci_wmt_sync(hdev, &wmt_params);
- 	if (err < 0) {
- 		bt_dev_err(hdev, "Failed to query firmware status (%d)", err);
- 		return err;
-@@ -3306,7 +3030,7 @@ static int btusb_mtk_setup(struct hci_dev *hdev)
- 
- 	/* Setup a firmware which the device definitely requires */
- 	err = btmtk_setup_firmware(hdev, fwname,
--				   btusb_mtk_hci_wmt_sync);
-+				   btmtk_usb_hci_wmt_sync);
- 	if (err < 0)
- 		return err;
- 
-@@ -3335,7 +3059,7 @@ static int btusb_mtk_setup(struct hci_dev *hdev)
- 	wmt_params.data = &param;
- 	wmt_params.status = NULL;
- 
--	err = btusb_mtk_hci_wmt_sync(hdev, &wmt_params);
-+	err = btmtk_usb_hci_wmt_sync(hdev, &wmt_params);
- 	if (err < 0) {
- 		bt_dev_err(hdev, "Failed to send wmt func ctrl (%d)", err);
- 		return err;
-@@ -3381,7 +3105,7 @@ static int btusb_mtk_shutdown(struct hci_dev *hdev)
- 	wmt_params.data = &param;
- 	wmt_params.status = NULL;
- 
--	err = btusb_mtk_hci_wmt_sync(hdev, &wmt_params);
-+	err = btmtk_usb_hci_wmt_sync(hdev, &wmt_params);
- 	if (err < 0) {
- 		bt_dev_err(hdev, "Failed to send wmt func ctrl (%d)", err);
- 		return err;
--- 
-2.18.0
+I'm hoping that you manage to read this; Daniel has been working on a patch
+[1] to make old device trees not hosted on the Linux repository with PHY
+address wrongfully described as "0" work.
 
+As I see the extend of the reported regression is limited to the BPI-R64
+board, fixing the device tree source file for it - and mt7622-rfb1.dts as
+the only remaining DTS file with wrong PHY address described in the Linux
+repository - is enough to resolve the regression. Then Daniel's patch can
+come in to address the device tree source files I've described above.
+Although I don't find that patch necessary, I won't stand against it.
+
+So I suggest to apply my DT patch series [2] without taking any other steps
+to resolve the reported regression.
+
+[1] https://lore.kernel.org/all/11f5f127d0350e72569c36f9060b6e642dfaddbb.1714514208.git.daniel@makrotopia.org/
+[2] https://lore.kernel.org/all/20240314-for-mediatek-mt7531-phy-address-v1-0-52f58db01acd@arinc9.com/
+
+Arınç
 
