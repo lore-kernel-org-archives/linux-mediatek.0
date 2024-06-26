@@ -4,90 +4,129 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C47F1C27C4F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Jun 2024 11:02:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58DABC27C4F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Jun 2024 11:32:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YDAYvV/XFqqbwzkucvvhD6M3ybBfweUzERktggMsxRA=; b=tESrUuecrgcq8WdLjjXLtlH6u/
-	r2g/+mOBnTgCvOtvy/UYIrp35TBlV6c7e22iEJ/gx0cPa7bYOoh6xaDY5XuTWjMbXfxkk9IRHZY3u
-	NYoI2cO3C5i+GQQUWx9ETKwifRS9D8LW6oRxuQoSu2C5PFmrWqRWPFJBLgbUYYP2uY4zwmIWPO/75
-	8nkYuexlV9vYGzralb2zfYiWnOeDNkYZZSiDUgU552tXNHrb9uoxfdMVp4FotPwpNutFtU+oQCVwZ
-	VpPTtWa9TTUrWo0yqr328TOR06suw+JXFBOoeRjtqy5KqA+dpXJZqUrpHigomXURTDeUp0zm1AvfO
-	LAg+SO+A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=aUV0B2evRba8OLOBqBc0gogv5ZUUOB3nvC4R4bxgD7c=; b=U260nD2+U4iYVYVxACqnSpKlWl
+	4c9BAEucZuAHesUpegBuIMLghMLw8AYDSTovvWEopvseRsrT5AUXvm5XB0kdrQzVTdcXNEzP3npzW
+	gW3OPzxcgE7dVBNSUPWRYyzmlIf+iP/U3Cm8WsOl6uJqKgZTLiT++NV9yGexcsb7f7bdoC81NH3zH
+	T2rfkoCJbOEZwDeLuZ640Xpxf0YvTlLsiJPrPgISRx5Zl3DpIXZckvMuFazw/dnLIojL98z4/uGFn
+	M8QW9jWn6v20MwEW63d3i0J4orvfluBXNQrRFc4XhhR/s+UbF6jZKx8YoooUHUpnEhSArapkNcP4y
+	/Jud8xdQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMQQL-00000006TSL-0MJo;
-	Wed, 26 Jun 2024 11:02:49 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1sMQtJ-00000006Ys6-28tw;
+	Wed, 26 Jun 2024 11:32:45 +0000
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMQQI-00000006TRS-3Hlh;
-	Wed, 26 Jun 2024 11:02:48 +0000
-X-UUID: 9cea0ee033ab11efb2966dae1f787272-20240626
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=YDAYvV/XFqqbwzkucvvhD6M3ybBfweUzERktggMsxRA=;
-	b=tO8Miky4uAoQOdRPNs+hAFjDJ1+DOOSK1C4lsKqYywqERT8D0i9OY18npkc2Nr+jM4YTtZV3r5xajNkeZBK5Kp6pXHV+Jf2ZY83LoPXaKl0n3wcxgnp2m8gjr1yuHu2geMVUZtB2+tPsD94St3TEjpPU5hRand0//DOKhccb8jA=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.39,REQID:fe2dc1aa-4a93-459d-b009-32026e31a56d,IP:0,U
-	RL:0,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-20
-X-CID-META: VersionHash:393d96e,CLOUDID:96077694-e2c0-40b0-a8fe-7c7e47299109,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:1,EDM:-3,IP:nil,U
-	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 9cea0ee033ab11efb2966dae1f787272-20240626
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <skylake.huang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 128762619; Wed, 26 Jun 2024 04:02:43 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 26 Jun 2024 18:52:39 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 26 Jun 2024 18:52:39 +0800
-From: Sky Huang <SkyLake.Huang@mediatek.com>
-To: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>, "David S. Miller"
-	<davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub Kicinski
-	<kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Daniel Golle
-	<daniel@makrotopia.org>, Qingfang Deng <dqfext@gmail.com>, SkyLake Huang
-	<SkyLake.Huang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	<linux-kernel@vger.kernel.org>, <netdev@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-CC: Steven Liu <Steven.Liu@mediatek.com>, SkyLake.Huang
-	<skylake.huang@mediatek.com>
-Subject: [PATCH net-next v9 13/13] net: phy: mediatek: Remove unnecessary outer parens of "supported_triggers" var
-Date: Wed, 26 Jun 2024 18:43:29 +0800
-Message-ID: <20240626104329.11426-14-SkyLake.Huang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20240626104329.11426-1-SkyLake.Huang@mediatek.com>
-References: <20240626104329.11426-1-SkyLake.Huang@mediatek.com>
+	id 1sMQtE-00000006Yql-2K4P
+	for linux-mediatek@lists.infradead.org;
+	Wed, 26 Jun 2024 11:32:43 +0000
+Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-421bb51d81aso53249165e9.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 26 Jun 2024 04:32:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1719401559; x=1720006359; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+         :from:references:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=aUV0B2evRba8OLOBqBc0gogv5ZUUOB3nvC4R4bxgD7c=;
+        b=O29dGRnX7ZD4az3ViGs7Yz9x/Mv42hZ+7GV2A7W3of2kRX9C+Ejbp/ggjseFHc8uc2
+         zX7GKehx7YvCiudC9IO+cis0Uu4pS3Aa5Nqd6cmb+hqBd61jMuQ9e7GfI/2RbupWNDE8
+         o0InLpO0QkLR52hoKYvqk3+yK6TJZRNgGMMZsf7EAOq/kMdpmAyfqPjSBfcdWGeyl1ij
+         6gwCyIARIjZ4juyz1ykAv5v1he5JSt2vNMnq5lrpa+7daPiAZq2K27hi9vfZeGIY/4tw
+         BSdK+o4hZHOZGBbxOA1ARmQiMmkXGpZu8BjyLIqF4ZWwSJKUnPli+8xM5Z+A/MOaz630
+         abnw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1719401559; x=1720006359;
+        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+         :from:references:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=aUV0B2evRba8OLOBqBc0gogv5ZUUOB3nvC4R4bxgD7c=;
+        b=o/iFe661+qtqBbON3y3CD+b3HVSQRFvpA7TCmHSIym07o6l9pZjnyONm+BHLXxKGm8
+         W1teXC/Y92GXLD/jAXg9ZuV+PC12KsL7PVzKmyI4gyZXO4TaxEA3VG3zFuEDW4KNXeyl
+         TSCDEbfDTac4XpHzZr+3Tf2i9R28efxXYqEb7WaWQKfc7NK7B/hF5i0wdmCBLqY0r3D+
+         6A7mEBkaU1oUJTFmsL6jGTRWdCx8pw2oaXJHmwvn+LNNg480koXWeP5uUzu4j1L5dyIJ
+         BoTAxA1KhZRKdFg2YYMtRH9FwsIp1OwqxH8hX1gfGbUUv1RqMI//l6If/Kf00AoA6sp2
+         WNtQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVBpmhC9eaYid3PSVkAfvYFFS1a5lwe6JD50z3x4056OjnFYADxY/Ky7PZepaGj2O2B2RMkzWo0ZKXGFtWQgWsR7fp/Y/Ne3r8dpAZePgXAPA7L
+X-Gm-Message-State: AOJu0YyKz/cvIbEhm26coGuiuSxmrJ0ehQ39394Rnh5G+uDeY2NAlJjr
+	hUfkO12pX111AyPVgBIpIquqLUga9ksqSSuS6y2zlQsNPR/NEm+kr5xlcVgDL0w=
+X-Google-Smtp-Source: AGHT+IHK0mpDhVKNwOxESEg68fC+6c0gzgt3Lbu44P9FAbzspjfJJ8HDEIg2m7fZxubKvuK4CunOQw==
+X-Received: by 2002:a05:600c:35c6:b0:421:eed3:5991 with SMTP id 5b1f17b1804b1-4248cc593f5mr77892025e9.32.1719401558835;
+        Wed, 26 Jun 2024 04:32:38 -0700 (PDT)
+Received: from [192.168.1.20] ([178.197.219.137])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3663a2f696csm15537815f8f.82.2024.06.26.04.32.37
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 26 Jun 2024 04:32:38 -0700 (PDT)
+Message-ID: <1b1e0922-30df-4aee-aaec-22fc674bfb28@linaro.org>
+Date: Wed, 26 Jun 2024 13:32:37 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--3.009600-8.000000
-X-TMASE-MatchedRID: BIV06Js6OJN00I3rWKbGqx+WEMjoO9WWTJDl9FKHbrkKogmGusPLbx8+
-	XHETeZCzky2SP4enkne5cURAloITPh8TzIzimOwPC24oEZ6SpSmb4wHqRpnaDic8CJM0GmQ5RHg
-	qdyMQoaGMdMDWzIU2SbY/pOXB9c6UPJCjmiSVfxvh8KGVTfNHVHPx3vy+AFy6CufKYQ8uaEouT9
-	8QLmnDW0ma3zYT97IFAYfQIAUhBayZvmCbKVb49sZL6x5U/HridGByp+zdaDg=
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--3.009600-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 0BDA4BC6CCBC2266010878D2C0ACC8CA026B3F044D6E861DD73D69AB949564242000:8
-X-MTK: N
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] MAINTAINERS: ARM: airoha: add entry to cover Airoha SoC
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Arnd Bergmann <arnd@arndb.de>, Olof Johansson <olof@lixom.net>
+References: <20240613133840.6949-1-krzysztof.kozlowski@linaro.org>
+ <25c8432c-7e2c-4d32-bf5a-225aeaaa809a@collabora.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Content-Language: en-US
+Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
+ 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
+ D2GYIS41Kv4Isx2dEFh+/Q==
+In-Reply-To: <25c8432c-7e2c-4d32-bf5a-225aeaaa809a@collabora.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240626_040246_849567_5ACE8CE5 
-X-CRM114-Status: UNSURE (   9.48  )
+X-CRM114-CacheID: sfid-20240626_043240_662217_0F1206BB 
+X-CRM114-Status: UNSURE (   7.99  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -103,72 +142,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "SkyLake.Huang" <skylake.huang@mediatek.com>
+On 13/06/2024 15:57, AngeloGioacchino Del Regno wrote:
+> Il 13/06/24 15:38, Krzysztof Kozlowski ha scritto:
+>> Airoha SoC is not covered by any maintainer entry so relevant patches
+>> can be missed.  It seems Mediatek SoC maintainers were covering some
+>> parts of Airoha and Airoha itself is subsidiary of Mediatek, so assign
+>> the Airoha maintenance to Matthias and AngeloGioacchino.
+>>
+>> Cc: Matthias Brugger <matthias.bgg@gmail.com>
+>> Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>>
+>> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> 
+> 
+> Acked-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-This patch removes unnecessary outer parens of "supported_triggers" vars
-in mtk-ge.c & mtk-ge-soc.c to improve readability.
+My intention was that this is a patch for Mediatek.
+Matthias/AngeloGioacchino, can you pick it up?
 
-Signed-off-by: SkyLake.Huang <skylake.huang@mediatek.com>
----
- drivers/net/phy/mediatek/mtk-ge-soc.c | 16 ++++++++--------
- drivers/net/phy/mediatek/mtk-ge.c     | 16 ++++++++--------
- 2 files changed, 16 insertions(+), 16 deletions(-)
-
-diff --git a/drivers/net/phy/mediatek/mtk-ge-soc.c b/drivers/net/phy/mediatek/mtk-ge-soc.c
-index 6d95e7d..6fc989d 100644
---- a/drivers/net/phy/mediatek/mtk-ge-soc.c
-+++ b/drivers/net/phy/mediatek/mtk-ge-soc.c
-@@ -1224,14 +1224,14 @@ static int mt798x_phy_led_brightness_set(struct phy_device *phydev,
- }
- 
- static const unsigned long supported_triggers =
--	(BIT(TRIGGER_NETDEV_FULL_DUPLEX) |
--	 BIT(TRIGGER_NETDEV_HALF_DUPLEX) |
--	 BIT(TRIGGER_NETDEV_LINK)        |
--	 BIT(TRIGGER_NETDEV_LINK_10)     |
--	 BIT(TRIGGER_NETDEV_LINK_100)    |
--	 BIT(TRIGGER_NETDEV_LINK_1000)   |
--	 BIT(TRIGGER_NETDEV_RX)          |
--	 BIT(TRIGGER_NETDEV_TX));
-+	BIT(TRIGGER_NETDEV_FULL_DUPLEX) |
-+	BIT(TRIGGER_NETDEV_HALF_DUPLEX) |
-+	BIT(TRIGGER_NETDEV_LINK)        |
-+	BIT(TRIGGER_NETDEV_LINK_10)     |
-+	BIT(TRIGGER_NETDEV_LINK_100)    |
-+	BIT(TRIGGER_NETDEV_LINK_1000)   |
-+	BIT(TRIGGER_NETDEV_RX)          |
-+	BIT(TRIGGER_NETDEV_TX);
- 
- static int mt798x_phy_led_hw_is_supported(struct phy_device *phydev, u8 index,
- 					  unsigned long rules)
-diff --git a/drivers/net/phy/mediatek/mtk-ge.c b/drivers/net/phy/mediatek/mtk-ge.c
-index 90f3990..050a4f7 100644
---- a/drivers/net/phy/mediatek/mtk-ge.c
-+++ b/drivers/net/phy/mediatek/mtk-ge.c
-@@ -152,14 +152,14 @@ static int mt753x_phy_led_brightness_set(struct phy_device *phydev,
- }
- 
- static const unsigned long supported_triggers =
--	(BIT(TRIGGER_NETDEV_FULL_DUPLEX) |
--	 BIT(TRIGGER_NETDEV_HALF_DUPLEX) |
--	 BIT(TRIGGER_NETDEV_LINK)        |
--	 BIT(TRIGGER_NETDEV_LINK_10)     |
--	 BIT(TRIGGER_NETDEV_LINK_100)    |
--	 BIT(TRIGGER_NETDEV_LINK_1000)   |
--	 BIT(TRIGGER_NETDEV_RX)          |
--	 BIT(TRIGGER_NETDEV_TX));
-+	BIT(TRIGGER_NETDEV_FULL_DUPLEX) |
-+	BIT(TRIGGER_NETDEV_HALF_DUPLEX) |
-+	BIT(TRIGGER_NETDEV_LINK)        |
-+	BIT(TRIGGER_NETDEV_LINK_10)     |
-+	BIT(TRIGGER_NETDEV_LINK_100)    |
-+	BIT(TRIGGER_NETDEV_LINK_1000)   |
-+	BIT(TRIGGER_NETDEV_RX)          |
-+	BIT(TRIGGER_NETDEV_TX);
- 
- static int mt753x_phy_led_hw_is_supported(struct phy_device *phydev, u8 index,
- 					  unsigned long rules)
--- 
-2.18.0
+Best regards,
+Krzysztof
 
 
