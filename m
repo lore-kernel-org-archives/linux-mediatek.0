@@ -4,116 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B21ACC27C4F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Jun 2024 07:38:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53052C27C4F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Jun 2024 07:43:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UFRc7ttscW7yjJvDWYO36HBDgTJ1RAsVrcIYpIeKfLo=; b=ReDmAAU/OfM1LVtnqMni+iRdo+
-	Vafnf+Vau4XL4h2TbUMaLL6zbPUQDl9gJPyZEYut5X+WFVbCB11Rqp9dyqDI0L+pIgYH1xPtAMMoP
-	lefhBXYTuL13ZtN1gF1NiLDRY1IVumzMH06RWvj38CTWDGjUGdEOdMtjivQIEw/VP0pTMvtamLn+o
-	jGEA78U20LKet1xPJ/UAxTLl5VV09MXiLgAOObDg1/clmESM43KvJOLgp0sZJPtxVLXWktGZd4/nw
-	8vX/rgcOXr1+a6hjbUEhJOddozr+PCKEle5zsPi+o2pAAe+hucTNa0MvszJzaqo+bGLNBWkCkS1je
-	MkEuFTBA==;
+	bh=EHFOfbCRzI142my6Sqkyyx0K+jU8Bmzgfa23LdSQ3+k=; b=OeuHZF13xxPhlxSBCHE0+bn5pB
+	6UPKogZFFnEixTqsvWL824ofwMB4Cj0qsvekNo6Me/J2ysllEpAJA1RPjUPhCIHNUeM1rWP85qm+O
+	nNOPD45o+HML4aCdSvqUVqR8y2MBg/8Ij9SwyYu2beVP3XQ376zTy0LMOJEff9hhvPNGW1HJUplda
+	XeHW0GHJqt3XrE04Mj8dBXFmpWAzUsqfCFZdLFvimTSSViOrJN7LEmy+7yceeCB5QxVyfwrePJtoG
+	we2NOygQLQRzocN7uCnSy0rJ19aVIAfI71kTo7W0kng28oulrs844//rTtg403020FV3BYTNC73+P
+	YOurvfaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMNEq-00000005llS-1zDT;
-	Wed, 26 Jun 2024 07:38:44 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1sMNJn-00000005n14-3QUH;
+	Wed, 26 Jun 2024 07:43:51 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMNEh-00000005ljR-1xRZ;
-	Wed, 26 Jun 2024 07:38:37 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 77370CE1FFD;
-	Wed, 26 Jun 2024 07:38:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 28679C2BD10;
-	Wed, 26 Jun 2024 07:38:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1719387512;
-	bh=JNBOnj4uAS3UltBRLVJm4v/SvBP7W6Kd+PdEmIgMzTg=;
+	id 1sMNJf-00000005n07-32KE;
+	Wed, 26 Jun 2024 07:43:45 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1719387818;
+	bh=QVwwwwWJMC02wU6Kl7A1QxNTL8rAbcV54YrqF8y2+Iw=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=rZwfq4xZKu/euAceNj9yiiH+cbZ366dRCK2LSpBeZllYSzwZRt+8CukhY+AswUh19
-	 2648grrAetJiizJtEN0lOtOSxYrgq90jufJJFXCzR4/c+xQC74FAd6iMSoC+xtVKij
-	 rnMZn4ckTsFkhHg9nuHu1vUDEs0NVPRzMbuf89l2JoJSAm0C8M78Yid41gTUhXvysV
-	 e9eCaTvwGutiExrnCHHJyEZq6f7+2RqPH0+ef4KdB2l6nqREdt6uDt6s05h8Yo3SdT
-	 y/191RIzQQNOv8erYKP/TcycjVQjUji0YC7Jr55hz0zXnzF3pNDo38ISYxaF2OnzmP
-	 xAGxCF0tddlWw==
-Message-ID: <13e294dd-27e9-4464-b9ed-2b319e757849@kernel.org>
-Date: Wed, 26 Jun 2024 09:38:22 +0200
+	b=PFzJch1vLYzrVQ7JPoyPNhbYxtzjzkfkQTYjt7iZJcbUYagAeEd+Jcz+mRS4N4k+C
+	 7K44jeaYtTEURxDJMY+W9T2/97ED6LuC6VwGz30ZoH/oLS0ZmalwssH275HWYqMFUn
+	 Fef+DZbZCzxpstdzVXYzJxq0IitWai9W+kgOLXK5hFLR4ZGmq5py6Os7DkmP//VEdL
+	 039i81SnuMfSn3i/64BU46IYb2OSMqdRrhkDpxWlcnJbEPJnuD5HlS4GwlJ23IYTZL
+	 XBgBQ0/nDEEe9QBAKzNoyiJb0DeHS+0eIOQvEmmAwd2jLYFkEC3gt0pVh5v37tcJHw
+	 U20c01voSopKw==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 571C137821B7;
+	Wed, 26 Jun 2024 07:43:37 +0000 (UTC)
+Message-ID: <4541415f-0e6d-438f-a7b3-0c29c196e432@collabora.com>
+Date: Wed, 26 Jun 2024 09:43:36 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] dt-bindings: net: dsa: mediatek,mt7530: Minor wording
- fixes
-To: Conor Dooley <conor@kernel.org>,
- Chris Packham <chris.packham@alliedtelesis.co.nz>
-Cc: andrew@lunn.ch, f.fainelli@gmail.com, olteanv@gmail.com,
- netdev@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
- Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>, Daniel Golle <daniel@makrotopia.org>
-References: <20240624211858.1990601-1-chris.packham@alliedtelesis.co.nz>
- <20240625-battle-easiness-7ac3e81c2d6a@spud>
-From: Krzysztof Kozlowski <krzk@kernel.org>
+Subject: Re: (subset) [PATCH v6 0/7] MediaTek DVFSRC Bus Bandwidth and
+ Regulator knobs
+To: Mark Brown <broonie@kernel.org>, djakov@kernel.org
+Cc: robh@kernel.org, krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+ matthias.bgg@gmail.com, lgirdwood@gmail.com, gustavoars@kernel.org,
+ henryc.chen@mediatek.com, linux-pm@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ kernel@collabora.com, wenst@chromium.org, amergnat@baylibre.com,
+ Kees Cook <kees@kernel.org>
+References: <20240610085735.147134-1-angelogioacchino.delregno@collabora.com>
+ <171934124556.1173981.12014605377517424760.b4-ty@kernel.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <20240625-battle-easiness-7ac3e81c2d6a@spud>
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <171934124556.1173981.12014605377517424760.b4-ty@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240626_003836_727992_85968FC2 
-X-CRM114-Status: GOOD (  16.13  )
+X-CRM114-CacheID: sfid-20240626_004344_179058_BAD999A2 
+X-CRM114-Status: GOOD (  17.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -128,35 +81,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 25/06/2024 18:00, Conor Dooley wrote:
-> On Tue, Jun 25, 2024 at 09:18:57AM +1200, Chris Packham wrote:
->> Update the mt7530 binding with some minor updates that make the document
->> easier to read.
+Il 25/06/24 20:47, Mark Brown ha scritto:
+> On Mon, 10 Jun 2024 10:57:28 +0200, AngeloGioacchino Del Regno wrote:
+>> Changes in v6:
+>>   - Fixed build with clang (thanks Nathan!)
+>>   - Removed unused mtk_rmw() macro in mtk-dvfsrc.c
+>>   - Added MODULE_DESCRIPTION() to mtk-dvfsrc-regulator.c
 >>
->> Signed-off-by: Chris Packham <chris.packham@alliedtelesis.co.nz>
->> ---
+>> Changes in v5:
+>>   - Fixed Kconfig dependencies in interconnect
+>>   - Fixed module build for dvfsrc and interconnect
 >>
->> Notes:
->>     I was referring to this dt binding and found a couple of places where
->>     the wording could be improved. I'm not exactly a techical writer but
->>     hopefully I've made things a bit better.
->>     
->>     Changes in v2:
->>     - Update title, this is not just fixing grammar
->>     - Add missing The instead of changing has to have
->>
+>> [...]
 > 
-> I don't really want to ack this, a 4th ack for some wording that has
-> no impact on the binding itself just seems so utterly silly to me...
-> Instead I've spent more time writing how silly I think it is than
-> hitting the ack macro would take :)
+> Applied to
+> 
 
-But look how many reviews/acks it got :). If you acked this, the patch
-would have like 4 tags!
+Thanks Mark, appreciated :-)
 
-If only complex patches get so much attention... :)
+Cheers
 
-Best regards,
-Krzysztof
+>     https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-next
+> 
+> Thanks!
+> 
+> [1/7] dt-bindings: regulator: Add bindings for MediaTek DVFSRC Regulators
+>        commit: b147ae7ae5141cb10c520d372ecabb2c520210c4
+> [5/7] regulator: Remove mtk-dvfsrc-regulator.c
+>        commit: cd102850e32c145661c6a0640dc6c5feba11af72
+> [6/7] regulator: Add refactored mtk-dvfsrc-regulator driver
+>        commit: d2ea920a4092b3c0a6a004b93ce198ca37455d90
+> 
+> All being well this means that it will be integrated into the linux-next
+> tree (usually sometime in the next 24 hours) and sent to Linus during
+> the next merge window (or sooner if it is a bug fix), however if
+> problems are discovered then the patch may be dropped or reverted.
+> 
+> You may get further e-mails resulting from automated or manual testing
+> and review of the tree, please engage with people reporting problems and
+> send followup patches addressing any issues that are reported if needed.
+> 
+> If any updates are required or you are submitting further changes they
+> should be sent as incremental updates against current git, existing
+> patches will not be replaced.
+> 
+> Please add any relevant lists and maintainers to the CCs when replying
+> to this mail.
+> 
+> Thanks,
+> Mark
+> 
+
+
 
 
