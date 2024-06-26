@@ -4,115 +4,118 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 686ABC27C4F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Jun 2024 10:02:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5BD9C27C4F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Jun 2024 10:09:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UIal9mSNuB7WVuajAQysXy9I34dokLqqKQSl/SD8Ip0=; b=kmUOU1h2Ksk3gysh/UPtJQW3WE
-	+p4F7btQbmot9nKh0+JSndsLIbYUIqjV8dpFX6bQJosSQdor3o7vpO/UdQFrEdjPw2tUDeDYp1RKp
-	HFok2HA5tDV5SW46HP97DaYimizKmv9a94aaL5Fd9qaY1dJ+TNBduIZ6sA2b1nZ2TsNjMUIu7GeVX
-	VMWOY1sMMeJVC8QjC3UbnEjHpaa4NpnAuErzc1iHgnJUvqj1cX9wSnuxTCALCxZn3DQnFD1pRMuw5
-	zqy25VuxGcR009U72ocg8wbny/HrAN+tOrkw+hLrqZIKolOm9zeXtiBcGgglxOpoD2LzJwtC52kQ6
-	AjxU35Aw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=9Gly2EJcNPyMI+Zs26/l+uL8LDm6luZq6AxL3zJnFgo=; b=UasGqLFUAALvsj
+	SexcnkeXu26u48GqICClfSJ2Az5Cvn8MBqHfyWSjbXNhe0u1pnHx1ZiXRnaMneG/jkCd/r/l310nK
+	cvLolsPv45aVDVva0M+isQ+xBHapepxZi0fdWwVnnPZgA8o1z0fIwaWTu0TYRWHL4PAGm5QiApgHX
+	mg0N7OnLcklQJ5mrFNQvzWdGPaOfcncY47UmWaWbqehb2Y/H7bnvAzCbEJ1nQmhmn58yp7Mqtpy42
+	V6oRzjSApmNaDPi117v3xRWJ+JRIKlIHlk3OiPjsOURD+47zj8GQZIEeNRlznMwBr4I0eAzFwVsb1
+	CduQ0qWjeazcZ1fQUGYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMPTu-00000006E97-3qxc;
-	Wed, 26 Jun 2024 10:02:26 +0000
-Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
+	id 1sMPas-00000006FDw-1CXv;
+	Wed, 26 Jun 2024 10:09:38 +0000
+Received: from mail-io1-xd30.google.com ([2607:f8b0:4864:20::d30])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMPTr-00000006E6Z-1zpA
+	id 1sMPao-00000006FD5-2yN1
 	for linux-mediatek@lists.infradead.org;
-	Wed, 26 Jun 2024 10:02:25 +0000
-Received: by mail-lf1-x136.google.com with SMTP id 2adb3069b0e04-52caebc6137so6171842e87.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 26 Jun 2024 03:02:22 -0700 (PDT)
+	Wed, 26 Jun 2024 10:09:36 +0000
+Received: by mail-io1-xd30.google.com with SMTP id ca18e2360f4ac-7f3ca6869d1so45529339f.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 26 Jun 2024 03:09:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1719396141; x=1720000941; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=UIal9mSNuB7WVuajAQysXy9I34dokLqqKQSl/SD8Ip0=;
-        b=qNqesiAC1X7e1EkVCSz62k+JFehhes2NlVG/hHoy85saQmO8K7zhG02Me767JypiZM
-         sc6fPACY2nQGAdHO+awWUXeFR/hIr/tCF/DkCRuVGqx88Q8OLHb9q0h++sGlaao7cas0
-         vqFBQ37EZrIYiUFIVJDvM3iDeg/1uuxC39itKAEYrMVoY42tjTSXD1GV++QA93n8EUqr
-         iAT5L0VEmo+AG+Da1/Ro/gVI4DngXS+Dx7BIXusa564HZ25KuevWOwMThRRRqxjhry8E
-         T20q05XDjwmdspCK1LBWN2UbwKpFySrj7g/cwGAoWjAh8cnRKCA+y2OecBg4IyV4J2oU
-         SN2A==
+        d=linaro.org; s=google; t=1719396573; x=1720001373; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=9Gly2EJcNPyMI+Zs26/l+uL8LDm6luZq6AxL3zJnFgo=;
+        b=ECXReLw69LsR/Guf9asH4GUVyjb00gX+cLGOhfr7jXjpitgP5rmwc2JHoN1Gk9twSW
+         /aZGRcB52QW8DBjzU2HOjIAppYxfuWe6CTOx8AjH6xEGiekf1CHuGa4nifP7C/Hrtey7
+         PbrNAjd3gpyZUE0ngUCnf32Es1K/rZNC+2qRumkto6dimdcsbo60Yy0ccBwLq/HKzWOJ
+         Gl9JkZ9GFrfv+KbZ/cQBszSVXIKymWiifHJMxa1P4IvE3o4x6a2vyvNMGuBTAFay4MIf
+         w4jGf/NCzITENW68OigVfDMnZ4gcHhpn8fGvfID9PIdWFOdrl/d5c4nFzfnoZz26bmJ6
+         xYlg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1719396141; x=1720000941;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=UIal9mSNuB7WVuajAQysXy9I34dokLqqKQSl/SD8Ip0=;
-        b=eQjmvf5T2D7YQ0JSi2L79qgj62vSA+dM+rMfeycoYnqM7iP/x8pNkLOImr+cIpijtZ
-         elEbCzNK3jzHz58/OtTwZ9So7JXyeURbrYJ0umOaYMnQ/43nXQG4Yn8SHVHhgCTQE0sj
-         DeI5yusGdvgKrIInmChO/32FS9MLfPN//8ekGUmpmJpZzHkAHuSzHy9+ibX/eFv3VuB9
-         VS+k70vfbkxdesKj0StaJYHi/E9KNVlPnkSvIm7zNMq/jyGl0qcNKViFCiJlgWwXLgni
-         gnQG4jVIWhV+2zsvoyLwk7swVZIISy8ty6Bpn57AVC9ZGIlpkxHh+Lu2z4/BG2sYozUK
-         CUDA==
-X-Forwarded-Encrypted: i=1; AJvYcCU7I8gMvM9sgQZBM5TF4sdqKMaXhq0C9niwpXUw2Jog4jMlVUP8LiGPNc3KFo/fK8OPNeBtdhuR5J95lfDe3W5SjKJ8yuq8+hp5GIrRWx5GDqss
-X-Gm-Message-State: AOJu0YxUvX1zdDDp7KiIUoNfulCawy/Upw1e9+oY5oeuBUorIQGobNU2
-	1NfUB6CyUTepnGyW+uYXRjCTKMShitGZdedxO5XFf/X1+vG8R0zCcAkdpT68udLy/eEQgvtMp35
-	sm9k1EHFnCOJ52hFL75Qz5OnL2tviqTxKAR4YCg==
-X-Google-Smtp-Source: AGHT+IEEH1F7Tv7LomODsunYV84Dtc4zLrPpgRRnnl78k+rzuBYmNhragIOzGe8Zi41e1oTPofFlhnZh4uvVT5y70J8=
-X-Received: by 2002:a05:6512:2254:b0:52c:8fd7:2252 with SMTP id
- 2adb3069b0e04-52ce18324cdmr7591081e87.11.1719396141307; Wed, 26 Jun 2024
- 03:02:21 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1719396573; x=1720001373;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=9Gly2EJcNPyMI+Zs26/l+uL8LDm6luZq6AxL3zJnFgo=;
+        b=rT8PCs3fELLrDhR1KGbK/Qw4nCgLG1CPKRv8qOunaCW1j+8h03RaZcFYYQUVjFpBEf
+         yTr00IypB0j67PswBwvJeA1N3IYninuJX6omHwilx9QgQpZypt+/CwzPDM7fmU9f+ZFy
+         spk9YP5fEwp+YRwTrem2kZmIFe+GlGI8/PDUbGrCC7OqhU8NXVxBjbX8U8G5l0a+q5MK
+         9g96XBWyYt4H9jobZNEShlFkGWhJW0/BkrdMdajJSzkNL1p5/CDoB7i7VyK1ENC3QR39
+         PPaI8aOxE5xUW/7/+loJ7ie/9mvWliBMrJboVD1GAPeuBhhrFLi8vccTgwv9OFydnoMk
+         c4JQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXCVzhbfTaTVKzM1y2zrc2tW8ywhFQmz60HRw6BDNbriAYiohJsQwngue4gA2nGr3M2es3nQsB4pUqN8GytQUrAyQAQzhrU9hfqW+J2fMwBtmsr
+X-Gm-Message-State: AOJu0YzdX+8eBxsrfcLaANqULyXB99j2QLr1iEpapF0k0WCVSKwwnXtP
+	sWKmFkQMOZXP9uu25db7luxRc+/u0xL+ZymyWP4WghrJLTvsXazUJLlsfBuHDq0=
+X-Google-Smtp-Source: AGHT+IFY5MjA30Nyok2zslby/rOF5Fn6zOokJk2qbpya4vJQlT82lPIryncWawRYzwNxqwvaD7SSIw==
+X-Received: by 2002:a05:6602:6b86:b0:7e1:e022:9e46 with SMTP id ca18e2360f4ac-7f3a75faec7mr1165335739f.21.1719396572843;
+        Wed, 26 Jun 2024 03:09:32 -0700 (PDT)
+Received: from [127.0.1.1] ([178.197.219.137])
+        by smtp.gmail.com with ESMTPSA id 8926c6da1cb9f-4b9d121859csm3079108173.137.2024.06.26.03.09.24
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 26 Jun 2024 03:09:32 -0700 (PDT)
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH v3 0/7] dt-bindings: mfd: syscon: Document more compatibles
+ and require simpe-mfd description
+Date: Wed, 26 Jun 2024 12:09:09 +0200
+Message-Id: <20240626-dt-bindings-mfd-syscon-split-v3-0-3409903bb99b@linaro.org>
 MIME-Version: 1.0
-References: <20240504-pinctrl-cleanup-v2-0-26c5f2dc1181@nxp.com> <AM6PR04MB594163BAB898D8689A94056F88CE2@AM6PR04MB5941.eurprd04.prod.outlook.com>
-In-Reply-To: <AM6PR04MB594163BAB898D8689A94056F88CE2@AM6PR04MB5941.eurprd04.prod.outlook.com>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Wed, 26 Jun 2024 12:02:09 +0200
-Message-ID: <CACRpkdb17buPQVupCRDthvAgMKpvKvRWEN5GbA7pyF9NxymGEg@mail.gmail.com>
-Subject: Re: [PATCH v2 00/20] pinctrl: Use scope based of_node_put() cleanups
-To: Peng Fan <peng.fan@nxp.com>
-Cc: "Peng Fan (OSS)" <peng.fan@oss.nxp.com>, Thierry Reding <thierry.reding@gmail.com>, 
-	Jonathan Hunter <jonathanh@nvidia.com>, Dvorkin Dmitry <dvorkin@tibbo.com>, Wells Lu <wellslutw@gmail.com>, 
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
-	Emil Renner Berthing <kernel@esmil.dk>, Jianlong Huang <jianlong.huang@starfivetech.com>, 
-	Hal Feng <hal.feng@starfivetech.com>, Orson Zhai <orsonzhai@gmail.com>, 
-	Baolin Wang <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>, 
-	Viresh Kumar <vireshk@kernel.org>, Shiraz Hashim <shiraz.linux.kernel@gmail.com>, 
-	"soc@kernel.org" <soc@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, 
-	Sylwester Nawrocki <s.nawrocki@samsung.com>, Alim Akhtar <alim.akhtar@samsung.com>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, Patrice Chotard <patrice.chotard@foss.st.com>, 
-	Heiko Stuebner <heiko@sntech.de>, Damien Le Moal <dlemoal@kernel.org>, 
-	Ludovic Desroches <ludovic.desroches@microchip.com>, 
-	Nicolas Ferre <nicolas.ferre@microchip.com>, 
-	Alexandre Belloni <alexandre.belloni@bootlin.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
-	Aisheng Dong <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>, 
-	Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, Chester Lin <chester62515@gmail.com>, 
-	Matthias Brugger <mbrugger@suse.com>, 
-	"Ghennadi Procopciuc (OSS)" <ghennadi.procopciuc@oss.nxp.com>, Sean Wang <sean.wang@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Andrew Jeffery <andrew@codeconstruct.com.au>, 
-	Joel Stanley <joel@jms.id.au>, Dan Carpenter <dan.carpenter@linaro.org>, 
-	Tony Lindgren <tony@atomide.com>, Stephen Warren <swarren@wwwdotorg.org>, 
-	"linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, 
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
-	"linux-tegra@vger.kernel.org" <linux-tegra@vger.kernel.org>, 
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
-	"linux-stm32@st-md-mailman.stormreply.com" <linux-stm32@st-md-mailman.stormreply.com>, 
-	"linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>, 
-	"linux-renesas-soc@vger.kernel.org" <linux-renesas-soc@vger.kernel.org>, 
-	"linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, 
-	"linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>, 
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
-	"imx@lists.linux.dev" <imx@lists.linux.dev>, 
-	"linux-aspeed@lists.ozlabs.org" <linux-aspeed@lists.ozlabs.org>, 
-	"openbmc@lists.ozlabs.org" <openbmc@lists.ozlabs.org>, 
-	Emil Renner Berthing <emil.renner.berthing@canonical.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAMXoe2YC/4XNSw6CMBSF4a2Yjr2mD0rFkfswDgotcBNsSUsaC
+ WHvFhJjnOjwP4PvLCTagDaSy2EhwSaM6F0OcTyQpteus4AmN+GUF1QyBWaCGp1B10V4tAbiHBv
+ vII4DTiCU5aKqSsmFIZkYg23xufO3e+4e4+TDvL8ltq1vuPoNJwYUtG6znR+Y0NcBnQ7+5ENHN
+ jnxj1ay8o/GsyYVq+VZUqaKb21d1xdXI0/XFwEAAA==
+To: Orson Zhai <orsonzhai@gmail.com>, 
+ Baolin Wang <baolin.wang@linux.alibaba.com>, 
+ Chunyan Zhang <zhang.lyra@gmail.com>, Jacky Huang <ychuang3@nuvoton.com>, 
+ Shan-Chun Hung <schung@nuvoton.com>, 
+ Khuong Dinh <khuong@os.amperecomputing.com>, Lee Jones <lee@kernel.org>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Chuanhua Lei <lchuanhua@maxlinear.com>, 
+ Rahul Tanwar <rtanwar@maxlinear.com>, 
+ Lars Povlsen <lars.povlsen@microchip.com>, 
+ Steen Hegelund <Steen.Hegelund@microchip.com>, 
+ Daniel Machon <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com, 
+ Nishanth Menon <nm@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Jiaxun Yang <jiaxun.yang@flygoat.com>, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
+ Conor Dooley <conor.dooley@microchip.com>, 
+ Rahul Tanwar <rahul.tanwar@linux.intel.com>, 
+ Amireddy Mallikarjuna reddy <mallikarjunax.reddy@intel.com>, 
+ "Zhu, Yi Xin" <Yixin.zhu@intel.com>, Maxime Ripard <mripard@kernel.org>
+X-Mailer: b4 0.14.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3730;
+ i=krzysztof.kozlowski@linaro.org; h=from:subject:message-id;
+ bh=/+SdbAB8tNyIXJJMDFjZw6Vl+/DTTF3+zBwTN7W75TM=;
+ b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBme+jKR9bIVyuhO37T4BNBrIQsJHrqRHZKjWwzG
+ GgxpFshv4qJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZnvoygAKCRDBN2bmhouD
+ 1xSJD/9t9refEMFFgJOHkfZlT0WLV2gc0cFrk5vgxGWc+pwHCkl/YxVaTDvtfs1s7Xiljgqml1j
+ C9biNJW9bluKEDJt8YUrcKgUB2Y6tpUDDeT/a1RQreIHeSTI0VY54GtxsMt8SSCo0GPB4foPgIf
+ pG00jWL3lY6ZE+e0fQPEmrNI2G6/vkSIwFGmIHLNGWAMkyfu764gqCdW2JwJYDyGOfgJsYImw/h
+ Nz53aWq0whLq/Veou50dM7JIhnu1Hg7NFy9hMxJxvDrSQ2kKxgcjwmyTcBwDpO3eefr6hvmbwrk
+ rxb9VNMBXv+EDYeSOiJrhP8kwqI3MqWKEFSlnKfdUEA7HBvCeB7sD7VtTi+noXA6wbk2pEnNk4x
+ V+0LXtp3en2qemFU3174cs7071ItbLfr87yrWYssC9SLpSIi7x0wOVg0qFpZhCB+R81NtkLPobb
+ q+5IBsxrU4g3GDDyRFKjuzHYTJxvD2jgCJrEYL9DeNS08aEksyIoi6rIR/1DgOrTWF6frMddmpZ
+ kNt/4Gr7BPxGBRkRdAsvj9OCgkSw9dvQUtlPM/P5WoLtRSPX8SY677XKfC6lsg4IXM051divZTo
+ aCqpAIdIIJTmbpYko0NFHUZgR68E77UwUaFJLl5bjhnZ94BCFJ8oTYrCSsLCUUkgCIty5l3V8O/
+ F79UEfZArgJzRiA==
+X-Developer-Key: i=krzysztof.kozlowski@linaro.org; a=openpgp;
+ fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240626_030223_594841_65A27E4C 
-X-CRM114-Status: UNSURE (   9.87  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240626_030934_812449_7386775B 
+X-CRM114-Status: GOOD (  11.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,37 +130,100 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jun 18, 2024 at 1:52=E2=80=AFPM Peng Fan <peng.fan@nxp.com> wrote:
+Hi,
 
-> > Subject: [PATCH v2 00/20] pinctrl: Use scope based of_node_put()
-> > cleanups
->
-> st/stm32/renesas patches are picked. Would you handle the remaining
-> ones?
+Dependency
+==========
+Rebased on Lee's MFD tree, because dependency is there already:
+https://lore.kernel.org/all/171828959006.2643902.8308227314531523435.b4-ty@kernel.org/
 
-Hm right, I applied all that apply cleanly:
-971c8b4c08e7 (HEAD -> devel) pinctrl: samsung: Use scope based
-of_node_put() cleanups
-3a882554a3bb pinctrl: k210: Use scope based of_node_put() cleanups
-7f500f2011c0 pinctrl: freescale: mxs: Fix refcount of child
-d7f5120a944a pinctrl: pinconf-generic: Use scope based of_node_put() cleanu=
-ps
-240c5f238d59 pinctrl: bcm: bcm63xx: Use scope based of_node_put() cleanups
-3a0278cfb448 pinctrl: mediatek: Use scope based of_node_put() cleanups
-c957ae7e7e68 pinctrl: nomadik: Use scope based of_node_put() cleanups
-3dcc01b36f18 pinctrl: s32cc: Use scope based of_node_put() cleanups
-7c2aabb56f92 pinctrl: at91: Use scope based of_node_put() cleanups
-56c42f6c7b2c pinctrl: rockchip: Use scope based of_node_put() cleanups
-8c5dc2a5b3a7 pinctrl: spear: Use scope based of_node_put() cleanups
-794e5dc533b0 pinctrl: sprd: Use scope based of_node_put() cleanups
-8fa99c00351c pinctrl: starfive: Use scope based of_node_put() cleanups
-11eefc0ac884 pinctrl: tegra: Use scope based of_node_put() cleanups
+Merging
+=======
+Preferrably everything via MFD tree (file/context dependencies).
 
-Can you look into rebasing the remaining ones?
+Changes in v3
+=============
+- Add tags
+- intel,lgm-syscon: change maintainers (email bounce)
+- syscon/Split: drop unneeded |, use const instead of enum in select:
+- Link to v2: https://lore.kernel.org/r/20240616-dt-bindings-mfd-syscon-split-v2-0-571b5850174a@linaro.org
 
-I am a bit unsure about Samsung, Krzysztof usually pick these, but no big
-deal I guess, if he objects I can just take it out again.
+Changes in v2
+=============
+- Add acks
+- lgm-syscon: add ranges to binding and example
+- syscon.yaml: add big select with all compatibles for older dtschema
+- Link to v1: https://lore.kernel.org/r/20240519-dt-bindings-mfd-syscon-split-v1-0-aaf996e2313a@linaro.org
 
-Yours,
-Linus Walleij
+Description/problem
+===================
+Simple syscon nodes can be documented in common syscon.yaml, however
+devices with simple-mfd compatible, thus some children, should have
+their own schema listing these children.  Such listing makes the binding
+specific, allows better validation (so the incorrect child would not
+appear in the simple-mfd node) and actually enforces repeated rule for
+simple-mfd devices:
+
+  "simple-mfd" is only for simple devices, where the children do not
+  depend on the parent.
+
+Currently the syscon+simple-mfd binding is quite broad and allows
+any child or property, thus above rule cannot be enforced.
+
+Solution
+========
+1. Split the syscon.yaml binding into common syscon properties, used
+   potentially by many bindings, and only simple syscon devices (NO
+   simple-mfd!).
+2. Move some known simple-mfd bindings from syscon.yaml to dedicated
+   files.
+
+This patchset might introduce new dtbs_check warnings for devices having
+simple-mfd and being part of syscon.yaml previously. I fixed some of
+them, but probably not all.
+
+Best regards,
+Krzysztof
+
+To: Lee Jones <lee@kernel.org>
+To: Rob Herring <robh@kernel.org>
+To: Krzysztof Kozlowski <krzk+dt@kernel.org>
+To: Conor Dooley <conor+dt@kernel.org>
+To: Lars Povlsen <lars.povlsen@microchip.com>
+To: Steen Hegelund <Steen.Hegelund@microchip.com>
+To: Daniel Machon <daniel.machon@microchip.com>
+To: UNGLinuxDriver@microchip.com
+To: Nishanth Menon <nm@ti.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: devicetree@vger.kernel.org
+Cc: linux-kernel@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-mediatek@lists.infradead.org
+
+---
+Krzysztof Kozlowski (7):
+      dt-bindings: mfd: syscon: Drop hwlocks
+      dt-bindings: soc: sprd: sc9863a-glbregs: Document SC9863A syscon
+      dt-bindings: soc: intel: lgm-syscon: Move to dedicated schema
+      dt-bindings: soc: microchip: sparx5-cpu-syscon: Move to dedicated schema
+      dt-bindings: soc: ti: am654-serdes-ctrl: Move to dedicated schema
+      dt-bindings: mfd: syscon: Split and enforce documenting MFD children
+      dt-bindings: mfd: syscon: Add APM poweroff mailbox
+
+ .../devicetree/bindings/mfd/syscon-common.yaml     |  71 +++++
+ Documentation/devicetree/bindings/mfd/syscon.yaml  | 306 ++++++++++++---------
+ .../bindings/soc/intel/intel,lgm-syscon.yaml       |  57 ++++
+ .../soc/microchip/microchip,sparx5-cpu-syscon.yaml |  49 ++++
+ .../bindings/soc/sprd/sprd,sc9863a-glbregs.yaml    |  55 ++++
+ .../bindings/soc/ti/ti,am654-serdes-ctrl.yaml      |  42 +++
+ 6 files changed, 457 insertions(+), 123 deletions(-)
+---
+base-commit: 8dc7c29f608649f3d9eca826e9d4fe4b8a32c472
+change-id: 20240517-dt-bindings-mfd-syscon-split-37e23996523d
+
+Best regards,
+-- 
+Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+
 
