@@ -4,78 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB37EC2BBCA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Jun 2024 03:07:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BDACC3064D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Jun 2024 03:13:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1qDoIFqHWKLMrP+v9EU5xxxCReh4uHlGU6sBI8d0nIE=; b=e278SMxv1g6YBj
-	6MjBxVY3CsUfOJL/ZUpzvDFCpfa7gW6cKfpxLwrwZYuFiqgZMBoVtm2aegaJN674tGeFO61XKCq6E
-	fxDHIltZavsmYBcxfmoviuzcVrS5DH79rusFDaUkV/5fZ1t1Z/BuQAY49j6TtdNQ8W8Me/Q8ASQB+
-	rR0MVyp2i0I30vTK6dMEI+BlFPiV5hADn2vssBG8MRKWBqqPh+FpyBpMwCewpwVksNHQeW9eof9MW
-	CWCtzfAAxnpPQGjb1e64jzDqmlW8KkSu/r5Vwc+lEcPtE1Z67GQ/bQT8aWBylAL8ijE9EiYURkXIx
-	bvj4orVJZnpHyXv4Sflg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=bVodKyRsOcT/STMe2Z91D8J6McJz8ssQ55PR5jZhylM=; b=4TGjoPBfqkdpLHL6U5wOaKHmnt
+	U87Zq6MCZsIi66zJVtA2lElgfk0JJ1/M6UopbPsNER9r+0GjEf0WbQyYg2KUHh0Px6/tMHkZGbFtv
+	pZa5L7rsvCMmODFPq4Gc1tMVDGDlRpxrHcIrynV6ded/WJACiGH8c9ILv64kJ7xJBN9JIHRmk8fLm
+	usUD6NTafeNiXJ6zvYGxbm7HUHR2ukgBzdPTiDYm53ZdqgtVp+q2Bw6O1DduyNTrjxnNwxiVa9rNg
+	1AlCUygBQDh6JhQoBSQqwy6UHV4DW+yuHtLM5EFbHl/KeEvOgp4uQ6AhVb5Fydaadcsn221F5q0Qv
+	E5Gkcn6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMJ0H-00000005BPG-0XM6;
-	Wed, 26 Jun 2024 03:07:25 +0000
-Received: from relay2-d.mail.gandi.net ([2001:4b98:dc4:8::222])
+	id 1sMJ6Z-00000005CFN-17R5;
+	Wed, 26 Jun 2024 03:13:55 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMJ08-00000005BKa-0oaR;
-	Wed, 26 Jun 2024 03:07:18 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id B935840003;
-	Wed, 26 Jun 2024 03:07:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1719371229;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=1qDoIFqHWKLMrP+v9EU5xxxCReh4uHlGU6sBI8d0nIE=;
-	b=etL4M3jCTeRri7CqNc5cuJFVBzbxOz4bNo+wAbG9rnjM+a5VKbUknpdd/Y7j1KX/icVYyC
-	SGko0OAFYO+1BY2SUnuORbFbFM8zzNEpAxnEjwkjKsSuRzBJrMMg6K3QIxSat9MvxGbvMR
-	KZFuYK5fx0DCs0Vy4ljMGQu0u25iCqN5kszjsclzRkrkxwtsu3pi9E5L06qdzHFeDmaKeW
-	ftwFi3x8/WIaDEnh6CEo5Yh6SVcZ+bznL1oZiKfvp+688t4jvwznLLmxSMGFMtnyfKqf95
-	b7H0B242ywlr2ZvSdzFTekPQ6y+Hy0TnFDF6WJpZ8Xqv9laeALLhpBGyRg6+CA==
-Message-ID: <d4009f46-618c-46c3-8f35-a8db9150862e@arinc9.com>
-Date: Wed, 26 Jun 2024 06:07:04 +0300
+	id 1sMJ6W-00000005CET-1qwY
+	for linux-mediatek@lists.infradead.org;
+	Wed, 26 Jun 2024 03:13:53 +0000
+X-UUID: 1955b304336a11efb2966dae1f787272-20240625
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=bVodKyRsOcT/STMe2Z91D8J6McJz8ssQ55PR5jZhylM=;
+	b=d9LkElT6MpKLuwNnuN9l3llSCtaR9nXNl1Tk5boJglKZLzseBkZit/BigcC3hjw3pOyNm5RB+MNW/yLJ+bXr1iGEtgMFl4aVTI0sB/PXlSxtzIZ14/smRt+WJuX9vFMDT4hbb5ZMZzY1zI2eEBVysezQGJimXML8CCak4HIeTb0=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.39,REQID:bcdf81f2-3568-4e6f-a45a-de3f55868aff,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:393d96e,CLOUDID:28f38985-4f93-4875-95e7-8c66ea833d57,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 1955b304336a11efb2966dae1f787272-20240625
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <chris.lu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1286963621; Tue, 25 Jun 2024 20:13:45 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 26 Jun 2024 10:53:42 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 26 Jun 2024 10:53:42 +0800
+From: Chris Lu <chris.lu@mediatek.com>
+To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
+	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
+CC: Sean Wang <sean.wang@mediatek.com>, Aaron Hou <aaron.hou@mediatek.com>,
+	Steve Lee <steve.lee@mediatek.com>, linux-bluetooth
+	<linux-bluetooth@vger.kernel.org>, linux-kernel
+	<linux-kernel@vger.kernel.org>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Chris Lu <chris.lu@mediatek.com>
+Subject: [PATCH v5 3/8] Bluetooth: btmtk: rename btmediatek_data
+Date: Wed, 26 Jun 2024 10:53:24 +0800
+Message-ID: <20240626025329.26424-4-chris.lu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20240626025329.26424-1-chris.lu@mediatek.com>
+References: <20240626025329.26424-1-chris.lu@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: mt7622: fix switch probe on bananapi-r64
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Linux regressions mailing list <regressions@lists.linux.dev>,
- Paolo Abeni <pabeni@redhat.com>
-References: <20240516204847.171029-1-linux@fw-web.de>
- <698cf562-1ca9-4aa3-be7e-a1474b612c5b@leemhuis.info>
- <0cba095c-3d55-416a-a7ad-b359129731cf@arinc9.com>
- <714da201-654b-4183-8e5e-8ff0b64fe621@leemhuis.info>
- <2cac4cf68304e81abffbd9ff0387ee100323c2b7.camel@redhat.com>
- <b49c801c-6628-40a6-8294-0876d8871ba7@leemhuis.info>
- <e92c3ca0-c9be-44ac-a4fc-57ca5ebedbc5@leemhuis.info>
- <1807a142-1534-4fa4-ad4b-d1c03af014c2@arinc9.com>
- <58d8ddea-71cc-427a-94cc-a95f6bce61d2@collabora.com>
- <16e9c06e-9908-455d-a387-614fefe5bcf8@arinc9.com>
- <5e87d31c-b059-4f9a-93f7-dc87465ed14a@collabora.com>
- <4416ef22-78cc-4ce5-b61d-69ff0903811e@arinc9.com>
- <bd6b6929-d34d-4bd5-9cb0-bc8fe850ee46@leemhuis.info>
- <af561268-9793-4b5d-aa0f-d09698fd6fb0@arinc9.com>
- <750a60a6-4585-4bd2-97be-cf944e51fbdb@leemhuis.info>
- <7a2ea06b-ae4e-4374-82c2-4de4184e06c3@arinc9.com>
- <40035548-c76b-4b0d-915f-c513eaadbc5d@leemhuis.info>
- <bb7e9cae-d627-4f38-9da2-b40fb3c349fe@arinc9.com>
- <4647181b-e5a0-4f6e-9aba-1bcde763d678@collabora.com>
-Content-Language: en-US
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <4647181b-e5a0-4f6e-9aba-1bcde763d678@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-GND-Sasl: arinc.unal@arinc9.com
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--9.330500-8.000000
+X-TMASE-MatchedRID: xmxiBNXCzGYJjMBl75E2Dm3NvezwBrVmgDRlwc+wR6fADa2OEam+xnB4
+	4IkzjfYyThbvLLI8RvPS5T3gQEi/FFVju37PDEAuHcQQBuf4ZFvq0SQ1Mgx5CMSiwizsgluQ17y
+	gTjX1DW8ybDSrJJxJgiKdpy+2RQAX6EovbiVesMnPmshbRFtLmJKLNrbpy/A0w01zN1c0miKCjh
+	4HUudaCB+LGgER62NbSZnPb0iDSC5I5aNiVPKgsR5GbmCaemIUJ/I0ITC6MIWbKItl61J/yZ+in
+	TK0bC9eKrauXd3MZDUiXFDPMIaZGLc4+dW4JMQIqi8P0rY7CxseaZccRBusvZ9q2KbmHVphwL6S
+	xPpr1/I=
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--9.330500-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 3A288EDE23E3A33BA102261F916D04CD90550997B47ED96DF02FCD26484336082000:8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240625_200716_561540_CEE93A83 
-X-CRM114-Status: GOOD (  32.64  )
+X-CRM114-CacheID: sfid-20240625_201352_588324_7FF0BF2A 
+X-CRM114-Status: GOOD (  14.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,107 +97,124 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Frank Wunderlich <linux@fw-web.de>, Rob Herring <robh@kernel.org>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 25/06/2024 11.49, AngeloGioacchino Del Regno wrote:
-> Il 25/06/24 10:17, Arınç ÜNAL ha scritto:
->> On 25/06/2024 09.57, Linux regression tracking (Thorsten Leemhuis) wrote:
->>> On 25.06.24 08:17, Arınç ÜNAL wrote:
->>>> On 25/06/2024 08.56, Linux regression tracking (Thorsten Leemhuis) wrote:
->>>>> On 17.06.24 13:08, Arınç ÜNAL wrote:
->>>>>> On 17/06/2024 11:33, Linux regression tracking (Thorsten Leemhuis)
->>>>>> wrote:
->>>>>> [...]
->>>>>> I've submitted a patch series that fixes the regression. Angelo argued
->>>>>> against the way the regression is fixed. I've very clearly argued
->>>>>> back why
->>>>>> I find Angelo's approach wrong. There's been no response back. I don't
->>>>>> understand why reverting the patch is the likely outcome
->>>>>
->>>>> Long story short: because that how things like that are handled in the
->>>>> Linux kernel project, as Linus wants it like that. See some of the
->>>>> quotes from https://docs.kernel.org/process/handling-regressions.html
->>>>> for details.
->>>>>
->>>>>> whilst the
->>>>>> standing argument points towards applying the said patch series. If a
->>>>>> revert happens before this discussion with Angelo finalises, this
->>>>>> will set
->>>>>> a precedent that will tell maintainers that they can have their way
->>>>>> by just
->>>>>> not replying to the ongoing discussions.
->>>>>>
->>>>>> That said, the decision of resolving the regression by either
->>>>>> reverting the
->>>>>> patch or applying the patch series shall not depend on whether or not
->>>>>> Angelo is pleased but rather there're no counter-arguments left on the
->>>>>> points brought, meaning the decision shall be made depending on the
->>>>>> argument that stands.
->>>>>>
->>>>>> Therefore, I suggest that unless Angelo responds back with a
->>>>>> counter-argument in the window of a week or two, as you've described, my
->>>>>> patch series shall be applied.
->>>>>
->>>>> It looks more and more like we are stuck here (or was there progress and
->>>>> I just missed it?) while the 6.10 final is slowly getting closer. Hence:
->>>>
->>>> There hasn't been progress at all. I believe I have clearly described the
->>>> way out of this issue.
->>>>
->>>>> AngeloGioacchino, should we ask the net maintainers to revert
->>>>> 868ff5f4944aa9 ("net: dsa: mt7530-mdio: read PHY address of switch from
->>>>> device tree") for now to resolve this regression? Reminder, there is
->>>>> nothing wrong with that commit per se afaik, it just exposes a problem
->>>>> that needs to be fixed first before it can be reapplied.
->>>>
->>>> Are you suggesting the patch shall be reverted first, then the DT patch
->>>> applied, then the reverted patch applied back?
->>>
->>> Yeah.
->>>
-> 
-> Sorry, I've lost your reply in the long stack of emails that I get every day.
-> 
-> I'm not suggesting to revert the patch, but to fix it such that it does not
-> break devices using old devicetrees, as it was the case before.
-> 
-> Even though, in a way, when you update the kernel, you do also update the
-> devicetrees with it just because it's almost effortless to do so, doing that
-> is not mandatory.
-> 
-> ...and that's why the driver, which was - in a way - faulty before, getting
-> the switch to work even though the devicetree node was wrong, must still be
-> compatible.
-> 
-> I do want to apply the devicetree fix, but I also do *not* want to see *driver*
-> changes that go against the backward compatibility rule of devicetree when this
-> is not strictly necessary (when it is - it's okay to make an exception)...
-> 
-> ...and this is not one of the cases in which it's strictly necessary.
+Rename btmediatek_data to have a consistent prefix throughout the driver.
 
-I understand that you receive emails often. It seems you've not read my
-point of view in the previous emails because of it, so it is preventing us
-from having a proper discussion to come to a mutual agreement. I don't
-intend to repeat myself for it to be lost in your inbox again.
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Signed-off-by: Chris Lu <chris.lu@mediatek.com>
+---
+ drivers/bluetooth/btmtk.c | 10 +++++-----
+ drivers/bluetooth/btmtk.h |  2 +-
+ drivers/bluetooth/btusb.c |  9 ++++-----
+ 3 files changed, 10 insertions(+), 11 deletions(-)
 
-I'm hoping that you manage to read this; Daniel has been working on a patch
-[1] to make old device trees not hosted on the Linux repository with PHY
-address wrongfully described as "0" work.
+diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
+index a27c251bf56e..6489e4a63fb6 100644
+--- a/drivers/bluetooth/btmtk.c
++++ b/drivers/bluetooth/btmtk.c
+@@ -64,7 +64,7 @@ static void btmtk_coredump(struct hci_dev *hdev)
+ 
+ static void btmtk_coredump_hdr(struct hci_dev *hdev, struct sk_buff *skb)
+ {
+-	struct btmediatek_data *data = hci_get_priv(hdev);
++	struct btmtk_data *data = hci_get_priv(hdev);
+ 	char buf[80];
+ 
+ 	snprintf(buf, sizeof(buf), "Controller Name: 0x%X\n",
+@@ -85,7 +85,7 @@ static void btmtk_coredump_hdr(struct hci_dev *hdev, struct sk_buff *skb)
+ 
+ static void btmtk_coredump_notify(struct hci_dev *hdev, int state)
+ {
+-	struct btmediatek_data *data = hci_get_priv(hdev);
++	struct btmtk_data *data = hci_get_priv(hdev);
+ 
+ 	switch (state) {
+ 	case HCI_DEVCOREDUMP_IDLE:
+@@ -355,7 +355,7 @@ EXPORT_SYMBOL_GPL(btmtk_set_bdaddr);
+ 
+ void btmtk_reset_sync(struct hci_dev *hdev)
+ {
+-	struct btmediatek_data *reset_work = hci_get_priv(hdev);
++	struct btmtk_data *reset_work = hci_get_priv(hdev);
+ 	int err;
+ 
+ 	hci_dev_lock(hdev);
+@@ -371,7 +371,7 @@ EXPORT_SYMBOL_GPL(btmtk_reset_sync);
+ int btmtk_register_coredump(struct hci_dev *hdev, const char *name,
+ 			    u32 fw_version)
+ {
+-	struct btmediatek_data *data = hci_get_priv(hdev);
++	struct btmtk_data *data = hci_get_priv(hdev);
+ 
+ 	if (!IS_ENABLED(CONFIG_DEV_COREDUMP))
+ 		return -EOPNOTSUPP;
+@@ -387,7 +387,7 @@ EXPORT_SYMBOL_GPL(btmtk_register_coredump);
+ 
+ int btmtk_process_coredump(struct hci_dev *hdev, struct sk_buff *skb)
+ {
+-	struct btmediatek_data *data = hci_get_priv(hdev);
++	struct btmtk_data *data = hci_get_priv(hdev);
+ 	int err;
+ 
+ 	if (!IS_ENABLED(CONFIG_DEV_COREDUMP)) {
+diff --git a/drivers/bluetooth/btmtk.h b/drivers/bluetooth/btmtk.h
+index e76b8a358be8..dde6fbdeb2b3 100644
+--- a/drivers/bluetooth/btmtk.h
++++ b/drivers/bluetooth/btmtk.h
+@@ -135,7 +135,7 @@ struct btmtk_coredump_info {
+ 	int state;
+ };
+ 
+-struct btmediatek_data {
++struct btmtk_data {
+ 	u32 dev_id;
+ 	btmtk_reset_sync_func_t reset_sync;
+ 	struct btmtk_coredump_info cd_info;
+diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+index 8239d9c891e6..7612f10f9d39 100644
+--- a/drivers/bluetooth/btusb.c
++++ b/drivers/bluetooth/btusb.c
+@@ -3152,7 +3152,7 @@ static int btusb_mtk_subsys_reset(struct hci_dev *hdev, u32 dev_id)
+ static int btusb_mtk_reset(struct hci_dev *hdev, void *rst_data)
+ {
+ 	struct btusb_data *data = hci_get_drvdata(hdev);
+-	struct btmediatek_data *mtk_data;
++	struct btmtk_data *btmtk_data = hci_get_priv(hdev);
+ 	int err;
+ 
+ 	/* It's MediaTek specific bluetooth reset mechanism via USB */
+@@ -3167,9 +3167,8 @@ static int btusb_mtk_reset(struct hci_dev *hdev, void *rst_data)
+ 
+ 	btusb_stop_traffic(data);
+ 	usb_kill_anchored_urbs(&data->tx_anchor);
+-	mtk_data = hci_get_priv(hdev);
+ 
+-	err = btusb_mtk_subsys_reset(hdev, mtk_data->dev_id);
++	err = btusb_mtk_subsys_reset(hdev, btmtk_data->dev_id);
+ 
+ 	usb_queue_reset_device(data->intf);
+ 	clear_bit(BTUSB_HW_RESET_ACTIVE, &data->flags);
+@@ -3191,7 +3190,7 @@ static int btusb_mtk_setup(struct hci_dev *hdev)
+ 	char fw_bin_name[64];
+ 	u32 fw_version = 0, fw_flavor = 0;
+ 	u8 param;
+-	struct btmediatek_data *mediatek;
++	struct btmtk_data *mediatek;
+ 
+ 	calltime = ktime_get();
+ 
+@@ -4419,7 +4418,7 @@ static int btusb_probe(struct usb_interface *intf,
+ 		data->recv_event = btusb_recv_event_realtek;
+ 	} else if (id->driver_info & BTUSB_MEDIATEK) {
+ 		/* Allocate extra space for Mediatek device */
+-		priv_size += sizeof(struct btmediatek_data);
++		priv_size += sizeof(struct btmtk_data);
+ 	}
+ 
+ 	data->recv_acl = hci_recv_frame;
+-- 
+2.18.0
 
-As I see the extend of the reported regression is limited to the BPI-R64
-board, fixing the device tree source file for it - and mt7622-rfb1.dts as
-the only remaining DTS file with wrong PHY address described in the Linux
-repository - is enough to resolve the regression. Then Daniel's patch can
-come in to address the device tree source files I've described above.
-Although I don't find that patch necessary, I won't stand against it.
-
-So I suggest to apply my DT patch series [2] without taking any other steps
-to resolve the reported regression.
-
-[1] https://lore.kernel.org/all/11f5f127d0350e72569c36f9060b6e642dfaddbb.1714514208.git.daniel@makrotopia.org/
-[2] https://lore.kernel.org/all/20240314-for-mediatek-mt7531-phy-address-v1-0-52f58db01acd@arinc9.com/
-
-Arınç
 
