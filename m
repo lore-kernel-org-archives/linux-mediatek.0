@@ -4,72 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0058BC2BD09
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jun 2024 10:46:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DDEDC2BD09
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jun 2024 10:55:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EnIXfWHwMOPCMEIUv0p4Fk8t608NCXedGC1rIROU+3c=; b=zBWe2PdYpfIgHCDRqJ70NPaqle
-	XUA0Ed/LfO2DeqlDu58PJx9FfmH8ZoCMJ5wKK0rl7uqQ5LbkN71CCxJTtipHi/N6ufloICUHJbRAL
-	spaqJsVRym9ZjuPqwqNncT4begnijfpsz9DQwX3MnFYkaQuoqbpqSPtn/IuKgB7VI/ALR5Kwl9ZnB
-	dm7BpCcYHPkATKoNv7hKD+T5/IobizVEXt/Cgdc6mydGXnfhsJcp1cUl2Hbl0TfcwTAELiVtbp7i1
-	+vwaU3KBrtLGmZsU/nV28DDCHB+bohIi/QbZVgw0DpSpA5IpaL9/f26UAAC6k8YnN+8rEOalZj0+l
-	C7rxq77w==;
+	bh=Mz8kvkLt6iojfXsnNGmCxAPcC//lJWlqlDThNogFsL8=; b=qknapdnEpJutQtqKJ5H9T1Zz2e
+	868/ozmZHXynXaG1Rta7Ro5wKFNplGAVLmdfEqupAuh5xvjHEgwGwVmi8Xv0Oq00HLmgJQTh7jBWJ
+	2NfKeQ9Zxz+i65m+cAX63Q+UE/wAvU/X8+0d/DczhPMyMaZVMEzjqzayWQoCBWXdcVnkYZ7zbth8X
+	xhuXSj0sClTvYuTl3Xsr6plTogTjUY4PrUz0JM1sM45Gtj11G45w41wBdNOHwqe19KzeZnie7ivM+
+	A89UQeqFwnaFjgER+Cy395CPbVOl4XHDOxu1XjPaUREAXc4a2RNBQTom9ynW3LUoVnfpkRNJbB3DJ
+	CtvGiGYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMme3-0000000A1rL-0xim;
-	Thu, 27 Jun 2024 10:46:27 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1sMmn9-0000000A3Wh-45ew;
+	Thu, 27 Jun 2024 10:55:52 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMkcw-00000009mkc-0Zyq;
-	Thu, 27 Jun 2024 08:37:12 +0000
+	id 1sMmn1-0000000A3U6-0M1F;
+	Thu, 27 Jun 2024 10:55:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=Mz8kvkLt6iojfXsnNGmCxAPcC//lJWlqlDThNogFsL8=; b=Lou6RB471VMACgf8siUSojqi9Z
+	VZsRcFu2EfB15X5PIyWf7Th3Q5la7HatZ1BXPShc87KG1rE87IHpP8T3Q+kxFgMA9PPVgJW5Ssb/Z
+	TU8Ju8ec5RGaXNP8NzzBjVkXNv124YbkSTpDahDVsPsL00g+rbhmCd/FBADMecl6jrKjE0e8KNLaS
+	jQPhfDAjl3Gf9ZJNhzJnvu7R3MM9vTB36Sgy4og2d+isSsogUefePVW6QpUJMEJIPsG5516zBOubO
+	THIIiao3Qc4eeD2XZOPirAbX/oAEmjnuRPAMC9oRz43mXjU+MZA35W7X8dE6m4xQcOYG44WfaGpcH
+	5C0ETdpQ==;
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1sMlcp-00000008oMb-39Za;
+	Thu, 27 Jun 2024 09:42:13 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1719477425;
-	bh=XREYqkvCwbtnY/wTDk2oBMANkBPSKjKF3TFWthonUGA=;
+	s=mail; t=1719481207;
+	bh=sPv2gjPKrEsO6IWBmkkAWYYhbPMP+ICh+j0TbkMyX3s=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=f4sQNpySpezWwtUlEczADnMWiKwsxMhyPdXapEZq0VoLPmutf2cJeMw9wtQfdGaYB
-	 cHEqweDX1YFIJkZimqnOZC5LyTlgTX+uygBFFZ7nbDrHRZQyFxGLgbFsJRHws9Ix8a
-	 VQxgGsFYbyeJcAZNlPUyqf5jIWwVHSzEQt4oE/PKzqJMqA10S2Ku+fBZCJPCeVJ/nX
-	 2fnJ11lzRk6irZIL9Kq5wi3+uN2Ok2FXZrgGnIGrlfBoZW+10cnmn3swpLHfBRc1Ep
-	 nzWm2QuBjscLmHodCrScrQA9bYMB8TRyT9aADw07nCMsJzjit599SB41UMJvKgZxic
-	 7NDGEp7U76DuA==
+	b=HfDwFd+zHoT5Jj8ZGgmgoHp1v3hfIQ8/KX9qu9PyumVNC/JV0Sdv7jiOSGSuqWcXC
+	 q8GIKLy6Q3ZwF+yNQtEUQgZN1gXaH5Mao5Whl4E/yPv+WXjwFgBhZUI1NNA/KG2VvU
+	 1h8+DOrvkSRcIJdG5wMdDZu+F4A81x2Sd2DO6dEkG6V0xOu239uYgMwCdoFRwIyYf9
+	 4swknVx3jWW+tVQTUHnVAP+Y+7eaZ/D1gXrtaEvJDLXSvkCQgQ1VPG4vPLBEdVurKJ
+	 MgGwikfbhA6L7pdWbzlECR8EC0w73k6uOsyBTfsYrM3I3ID52UKb7lpuFVS8gGn1Hp
+	 uqkUbCy2dU5Ug==
 Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 940C83780626;
-	Thu, 27 Jun 2024 08:37:04 +0000 (UTC)
-Message-ID: <96b436c1-50c3-4091-9577-c00187518779@collabora.com>
-Date: Thu, 27 Jun 2024 10:37:03 +0200
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 95D4A37810CD;
+	Thu, 27 Jun 2024 09:40:06 +0000 (UTC)
+Message-ID: <f97c7ebc-4aad-4125-90df-21cd8a63c68d@collabora.com>
+Date: Thu, 27 Jun 2024 11:40:06 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 1/2] dt-bindings: clock: Add MediaTek MT6735 clock and
- reset bindings
-To: Yassine Oudjana <yassine.oudjana@gmail.com>, Rob Herring
- <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
- <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, Daniel Golle
- <daniel@makrotopia.org>, jason-ch chen <Jason-ch.Chen@mediatek.com>,
- Sam Shih <sam.shih@mediatek.com>, Bartosz Golaszewski <brgl@bgdev.pl>
-Cc: Yassine Oudjana <y.oudjana@protonmail.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
-References: <20240626202406.846961-1-y.oudjana@protonmail.com>
- <20240626202406.846961-2-y.oudjana@protonmail.com>
+Subject: Re: [PATCH v2 4/4] PCI: mediatek-gen3: Add Airoha EN7581 support
+To: Lorenzo Bianconi <lorenzo@kernel.org>, linux-pci@vger.kernel.org
+Cc: ryder.lee@mediatek.com, jianjun.wang@mediatek.com, lpieralisi@kernel.org,
+ kw@linux.com, robh@kernel.org, bhelgaas@google.com,
+ linux-mediatek@lists.infradead.org, lorenzo.bianconi83@gmail.com,
+ linux-arm-kernel@lists.infradead.org, krzysztof.kozlowski+dt@linaro.org,
+ devicetree@vger.kernel.org, nbd@nbd.name, dd@embedd.com, upstream@airoha.com
+References: <cover.1719475568.git.lorenzo@kernel.org>
+ <b2c794b21e15ec85a57de144006db9582ce0c949.1719475568.git.lorenzo@kernel.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20240626202406.846961-2-y.oudjana@protonmail.com>
+In-Reply-To: <b2c794b21e15ec85a57de144006db9582ce0c949.1719475568.git.lorenzo@kernel.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240627_013710_764154_B265A428 
-X-CRM114-Status: GOOD (  17.78  )
+X-CRM114-CacheID: sfid-20240627_104113_491082_6E756155 
+X-CRM114-Status: GOOD (  13.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,247 +92,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 26/06/24 22:24, Yassine Oudjana ha scritto:
-> From: Yassine Oudjana <y.oudjana@protonmail.com>
+Il 27/06/24 10:12, Lorenzo Bianconi ha scritto:
+> Introduce support for Airoha EN7581 PCIe controller to mediatek-gen3
+> PCIe controller driver.
 > 
-> Add DT bindings for for the main clock and reset controllers of MT6735
-> (apmixedsys, topckgen, infracfg and pericfg).
-> 
-> Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
-
-This commit needs just one small nit to be fixed before being ready to be picked,
-check below...
-
+> Tested-by: Zhengping Zhang <zhengping.zhang@airoha.com>
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 > ---
->   .../arm/mediatek/mediatek,infracfg.yaml       |  8 +-
->   .../arm/mediatek/mediatek,pericfg.yaml        |  1 +
->   .../bindings/clock/mediatek,apmixedsys.yaml   |  4 +-
->   .../bindings/clock/mediatek,topckgen.yaml     |  4 +-
->   MAINTAINERS                                   | 12 +++
->   .../clock/mediatek,mt6735-apmixedsys.h        | 16 ++++
->   .../clock/mediatek,mt6735-infracfg.h          | 25 ++++++
->   .../clock/mediatek,mt6735-pericfg.h           | 37 +++++++++
->   .../clock/mediatek,mt6735-topckgen.h          | 79 +++++++++++++++++++
->   .../reset/mediatek,mt6735-infracfg.h          | 31 ++++++++
->   .../reset/mediatek,mt6735-pericfg.h           | 31 ++++++++
->   11 files changed, 243 insertions(+), 5 deletions(-)
->   create mode 100644 include/dt-bindings/clock/mediatek,mt6735-apmixedsys.h
->   create mode 100644 include/dt-bindings/clock/mediatek,mt6735-infracfg.h
->   create mode 100644 include/dt-bindings/clock/mediatek,mt6735-pericfg.h
->   create mode 100644 include/dt-bindings/clock/mediatek,mt6735-topckgen.h
->   create mode 100644 include/dt-bindings/reset/mediatek,mt6735-infracfg.h
->   create mode 100644 include/dt-bindings/reset/mediatek,mt6735-pericfg.h
+>   drivers/pci/controller/Kconfig              |  2 +-
+>   drivers/pci/controller/pcie-mediatek-gen3.c | 96 ++++++++++++++++++++-
+>   2 files changed, 96 insertions(+), 2 deletions(-)
 > 
-
-..snip..
-
-> diff --git a/include/dt-bindings/clock/mediatek,mt6735-apmixedsys.h b/include/dt-bindings/clock/mediatek,mt6735-apmixedsys.h
-> new file mode 100644
-> index 0000000000000..3dda719fd5d53
-> --- /dev/null
-> +++ b/include/dt-bindings/clock/mediatek,mt6735-apmixedsys.h
-> @@ -0,0 +1,16 @@
-> +/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
-> +
-> +#ifndef _DT_BINDINGS_CLK_MT6735_APMIXEDSYS_H
-> +#define _DT_BINDINGS_CLK_MT6735_APMIXEDSYS_H
-> +
-> +#define ARMPLL				0
-
-All of the definitions inside of the clock bindings for MediaTek have a specific
-format and, for consistency, you *shall* follow that.
-
-#define CLK_(ip-name)_(clock)    x
-
-For example,
-
-#define CLK_APMIXED_ARMPLL	0
-#define CLK_APMIXED_MAINPLL	1
-... etc
-
-> +#define MAINPLL				1
-> +#define UNIVPLL				2
-> +#define MMPLL				3
-> +#define MSDCPLL				4
-> +#define VENCPLL				5
-> +#define TVDPLL				6
-> +#define APLL1				7
-> +#define APLL2				8
-> +
-> +#endif
-> diff --git a/include/dt-bindings/clock/mediatek,mt6735-infracfg.h b/include/dt-bindings/clock/mediatek,mt6735-infracfg.h
-> new file mode 100644
-> index 0000000000000..a42be76c778d1
-> --- /dev/null
-> +++ b/include/dt-bindings/clock/mediatek,mt6735-infracfg.h
-> @@ -0,0 +1,25 @@
-> +/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
-> +
-> +#ifndef _DT_BINDINGS_CLK_MT6735_INFRACFG_H
-> +#define _DT_BINDINGS_CLK_MT6735_INFRACFG_H
-> +
-> +#define CLK_DBG				0
-
-#define CLK_INFRA_DBG	0
-#define CLK_INFRA_GCE	1
-.....etc
-
-> +#define CLK_GCE				1
-> +#define CLK_TRBG			2
-> +#define CLK_CPUM			3
-> +#define CLK_DEVAPC			4
-> +#define CLK_AUDIO			5
-> +#define CLK_GCPU			6
-> +#define CLK_L2C_SRAM			7
-> +#define CLK_M4U				8
-> +#define CLK_CLDMA			9
-> +#define CLK_CONNMCU_BUS			10
-> +#define CLK_KP				11
-> +#define CLK_APXGPT			12
-> +#define CLK_SEJ				13
-> +#define CLK_CCIF0_AP			14
-> +#define CLK_CCIF1_AP			15
-> +#define CLK_PMIC_SPI			16
-> +#define CLK_PMIC_WRAP			17
-> +
-> +#endif
-> diff --git a/include/dt-bindings/clock/mediatek,mt6735-pericfg.h b/include/dt-bindings/clock/mediatek,mt6735-pericfg.h
-> new file mode 100644
-> index 0000000000000..72401f009176a
-> --- /dev/null
-> +++ b/include/dt-bindings/clock/mediatek,mt6735-pericfg.h
-> @@ -0,0 +1,37 @@
-> +/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
-> +
-> +#ifndef _DT_BINDINGS_CLK_MT6735_PERICFG_H
-> +#define _DT_BINDINGS_CLK_MT6735_PERICFG_H
-> +
-> +#define CLK_DISP_PWM			0
-
-#define CLK_PERI_DISP_PWM
-#define CLK_PERI_THERM
-....etc
-
-> +#define CLK_THERM			1
-> +#define CLK_PWM1			2
+> diff --git a/drivers/pci/controller/Kconfig b/drivers/pci/controller/Kconfig
+> index e534c02ee34f..3bd6c9430010 100644
+> --- a/drivers/pci/controller/Kconfig
+> +++ b/drivers/pci/controller/Kconfig
+> @@ -196,7 +196,7 @@ config PCIE_MEDIATEK
+>   
+>   config PCIE_MEDIATEK_GEN3
+>   	tristate "MediaTek Gen3 PCIe controller"
+> -	depends on ARCH_MEDIATEK || COMPILE_TEST
+> +	depends on ARCH_AIROHA || ARCH_MEDIATEK || COMPILE_TEST
+>   	depends on PCI_MSI
+>   	help
+>   	  Adds support for PCIe Gen3 MAC controller for MediaTek SoCs.
+> diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
+> index 438a5222d986..af567b4355fa 100644
+> --- a/drivers/pci/controller/pcie-mediatek-gen3.c
+> +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
 
 ..snip..
 
 > +
-> +#endif
-> diff --git a/include/dt-bindings/clock/mediatek,mt6735-topckgen.h b/include/dt-bindings/clock/mediatek,mt6735-topckgen.h
-> new file mode 100644
-> index 0000000000000..a771910a4b8a6
-> --- /dev/null
-> +++ b/include/dt-bindings/clock/mediatek,mt6735-topckgen.h
-> @@ -0,0 +1,79 @@
-> +/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
-> +
-> +#ifndef _DT_BINDINGS_CLK_MT6735_TOPCKGEN_H
-> +#define _DT_BINDINGS_CLK_MT6735_TOPCKGEN_H
-> +
-> +#define AD_SYS_26M_CK			0
+>   static const struct of_device_id mtk_pcie_of_match[] = {
+>   	{ .compatible = "mediatek,mt8192-pcie", .data = &mtk_pcie_soc_mt8192 },
+> +	{ .compatible = "airoha,en7581-pcie", .data = &mtk_pcie_soc_en7581 },
 
-#define CLK_TOP_AD_SYS_26M_CK
-#define CLK_TOP_CLKPH_MCK_O
-#define CLK_TOP_DMPLL
+My bad, in the last review I didn't notice that the ordering here is not good.
 
-....etc
+A ... iroha comes before
+M ... ediatek :-)
 
-> +#define CLKPH_MCK_O			1
-> +#define DMPLL				2
+Please put the airoha entry before the mediatek one, after which:
 
-..snip...
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-> +
-> +#endif
-> diff --git a/include/dt-bindings/reset/mediatek,mt6735-infracfg.h b/include/dt-bindings/reset/mediatek,mt6735-infracfg.h
-> new file mode 100644
-> index 0000000000000..5d24c7a1317f8
-> --- /dev/null
-> +++ b/include/dt-bindings/reset/mediatek,mt6735-infracfg.h
-> @@ -0,0 +1,31 @@
-> +/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
-> +
-> +#ifndef _DT_BINDINGS_RESET_MT6735_INFRACFG_H
-> +#define _DT_BINDINGS_RESET_MT6735_INFRACFG_H
-> +
-
-For resets, the names are, instead...
-
-#define (socmodel)_(ip-name)_(instance)_(reset-name)
-
-so, for example...
-
-#define MT6735_INFRA_RST0_EMI_REG	0
-#define MT6735_INFRA_RST0_DRAMC0_AO	1
-
-and no holes are permitted, so:
-
-#define MT6735_INFRA_RST0_AP_CIRQ_EINT	2
-
-...this means that, unless you know what is at 2, you have to define
-a .rst_idx_map which will effectively map the binding to the actual
-real reset bit in the reset register.
-
-In the driver:
-
-#define RST_NR_PER_BANK		32
-
-static u16 infra_idx_map[] = {
-	[MT6735_INFRA_RST0_EMI_REG] = 0 * RST_NR_PER_BANK + 0
-	......
-	[MT7635_INFRA_RST0_AP_CIRQ_EINT] = 0 * RST_NR_PER_BANK + 3
-	... etc
-};
-
-> +#define RST_EMI_REG			0
-> +#define RST_DRAMC0_AO			1
-> +#define RST_AP_CIRQ_EINT		3
-> +#define RST_APXGPT			4
-> +#define RST_SCPSYS			5
-> +#define RST_KP				6
-> +#define RST_PMIC_WRAP			7
-> +#define RST_CLDMA_AO_TOP		8
-> +#define RST_EMI				16
-> +#define RST_CCIF			17
-> +#define RST_DRAMC0			18
-> +#define RST_EMI_AO_REG			19
-> +#define RST_CCIF_AO			20
-> +#define RST_TRNG			21
-> +#define RST_SYS_CIRQ			22
-> +#define RST_GCE				23
-> +#define RST_M4U				24
-> +#define RST_CCIF1			25
-> +#define RST_CLDMA_TOP_PD		26
-> +#define RST_CBIP_P2P_MFG		27
-> +#define RST_CBIP_P2P_APMIXED		28
-> +#define RST_CBIP_P2P_CKSYS		29
-> +#define RST_CBIP_P2P_MIPI		30
-> +#define RST_CBIP_P2P_DDRPHY		31
-> +
-> +#endif
-> diff --git a/include/dt-bindings/reset/mediatek,mt6735-pericfg.h b/include/dt-bindings/reset/mediatek,mt6735-pericfg.h
-> new file mode 100644
-> index 0000000000000..90ee8ed8923fd
-> --- /dev/null
-> +++ b/include/dt-bindings/reset/mediatek,mt6735-pericfg.h
-> @@ -0,0 +1,31 @@
-> +/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
-> +
-> +#ifndef _DT_BINDINGS_RESET_MT6735_PERICFG_H
-> +#define _DT_BINDINGS_RESET_MT6735_PERICFG_H
-> +
-> +#define RST_UART0			0
-
-#define MT6735_PERI_RST0_UART0 ......etc
-
-
-You're almost there, getting this stuff upstream is just one small effort ahead.
-Keep it up!
-
-Cheers,
-Angelo
-
+>   	{},
+>   };
+>   MODULE_DEVICE_TABLE(of, mtk_pcie_of_match);
 
 
