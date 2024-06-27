@@ -4,67 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AF03C2BD09
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jun 2024 20:05:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70A5EC2BD09
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jun 2024 20:13:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=78r12OoBM4UWi382FFwcHcIC1FEZtJRx8b5B9X2haFE=; b=Emff5HGoUM+v1ZjvRirAy/Fi49
-	5lzb3e5AfYznYiGCv6DCdMkvNLzHvrKSuzoVm9XMRO+/6BiZsns+S5JRugM+BnWxAlCjRIxEMbOt5
-	cwpekUJtUgHZ4DvsTGwqrwjA9jw2L3tv9qWqnNHenFrET52vhva05vxpb5guqGC+ETpwXfrnTu5dc
-	Y24+HCY6nvtnhKf5Krf3iMMSBXPzE+xyqmrj6iiRVWFODZrctoUT5KCw8GkafYGM3dt90lzqCOjkg
-	chsW9j+rXo5HEzup0LiywtQqnDY99r7m23kaZXBAeuIeGtXttC0vQfP4FSMTi4gOe3YDwi0MdF+2b
-	bBKHSWQg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=mqZoJqzWOVqvKJTvVoqplSMRxZgZJeY21a7owxjLVCQ=; b=l0TZznBpHu7Gh/9O+dFy9l3hem
+	oyLRA/GGmkKI/Dsmhhar12B4Mm1mX3Luccix4dxxmg+NTvIDP9bHdVCJ5tCAQ0+IbWzzhPEXNiJuJ
+	aDzD9qPazoV250nfSjLp3sNItQWJfVk6HNseCzejmxdu4itgjCY/UbAO/BAazH+wlQMJr5z4BRcmT
+	XKMfzUyh7aaaI9bA7ibF0FEQBitiQU0CtGXOTo0CrEkgwdOU1YMzNG8IuGhIBDdqLFC2fMXkWOd5K
+	fzG1FeDrCxzbir3HKFoq96v9xQzzRRvOl+D1CzelpSuxZBPBgjxDX6zbhVb/E4TTnQ0G/7S2K+XX0
+	rMFbAKxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMvNT-0000000BZyk-3m4T;
-	Thu, 27 Jun 2024 20:05:55 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sMvV3-0000000Bazi-43xc;
+	Thu, 27 Jun 2024 20:13:45 +0000
+Received: from 009.lax.mailroute.net ([199.89.1.12])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMvNJ-0000000BZwr-3lpg;
-	Thu, 27 Jun 2024 20:05:47 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 34E2C61E6F;
-	Thu, 27 Jun 2024 20:05:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 94157C2BBFC;
-	Thu, 27 Jun 2024 20:05:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1719518744;
-	bh=FE5LwB4HXBRsoGB9+h+mvR30T3AMRQyyiUCPx6AJibA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Tec+vNI4sG/7Ti1RLprvNypZGPCnZzbOElovxV8ey0vBaoA25bDO8+Sdev08E7LqF
-	 tulhYfqmL4+QD3GGENY2J4+RtUiB67WaEDA/CKwNNJp7lwlU7kmdS19OcHnt3DhJn2
-	 Ir2osxCYd/WoCsLCXfHVxSBYA1UKb+v45IlR5XQsMbSm4slNgKPjgtNd0J0L1GS51v
-	 CJAzCQjQhGrs9f3RQPcfqpLIaCEBQQ0eg9uiflzHCiuDezYQrRCgpaeUv0RM6+D1N+
-	 rsxH6wTx0oaKBrCmHtZuXDkbHJJcmN11Isfvs/gjCqegEA0JwxBWB2kEbw88wyfEeQ
-	 clzt1q3VRAhPw==
-Date: Thu, 27 Jun 2024 14:05:43 -0600
-From: Rob Herring <robh@kernel.org>
-To: Kartik Agarwala <agarwala.kartik@gmail.com>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Lee Jones <lee@kernel.org>, linux-sound@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2 3/3] dt-bindings: mfd: mt6397: Add reference for
- mediatek,mt6358-sound
-Message-ID: <20240627200543.GA439514-robh@kernel.org>
-References: <20240617-mt6358-v2-0-5d9f0e99941e@gmail.com>
- <20240617-mt6358-v2-3-5d9f0e99941e@gmail.com>
+	id 1sMvV1-0000000Bay1-0SeH
+	for linux-mediatek@lists.infradead.org;
+	Thu, 27 Jun 2024 20:13:44 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by 009.lax.mailroute.net (Postfix) with ESMTP id 4W98sG10gQzll9bp;
+	Thu, 27 Jun 2024 20:13:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
+	content-transfer-encoding:content-type:content-type:in-reply-to
+	:from:from:content-language:references:subject:subject
+	:user-agent:mime-version:date:date:message-id:received:received;
+	 s=mr01; t=1719519210; x=1722111211; bh=mqZoJqzWOVqvKJTvVoqplSMR
+	xZgZJeY21a7owxjLVCQ=; b=KVcWNFoVDLJpmL/62VRSuBGg380beoeeuBPkTGNH
+	MAXXNIjk/et8UWPS3rgK+XuvrslNyXfy6ZuW3ReuMo4ZGVJTPtEwS8xb+nTVYvca
+	bnIRmPTKcRiWVPtOKbqvV+eBsWsup6xZ72sEv2nBEUMORzNnPIokS4KWgG1MNsjL
+	J2Qhp6pRTgIvnHri5vTjkSKNtr7Y1uKmS7Gwj4lJdGNu8iXfA9ZVFzgIRimqA8ZB
+	QsTU0tTIPrX5uuhVuQd/7rMu2XjPZqehPKC67LLb5JJSGBf/+/fG38dUYc3a8u0/
+	DTmhDCEaH0XUW0xeQQ2HkiPZF2+m94R2LWgt5vcTkFAocQ==
+X-Virus-Scanned: by MailRoute
+Received: from 009.lax.mailroute.net ([127.0.0.1])
+ by localhost (009.lax [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
+ id nPRA6YbUERSR; Thu, 27 Jun 2024 20:13:30 +0000 (UTC)
+Received: from [100.96.154.26] (unknown [104.132.0.90])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: bvanassche@acm.org)
+	by 009.lax.mailroute.net (Postfix) with ESMTPSA id 4W98s0515XzllBch;
+	Thu, 27 Jun 2024 20:13:24 +0000 (UTC)
+Message-ID: <a34bcb63-6cad-4b77-bd07-afcc2c75b2f2@acm.org>
+Date: Thu, 27 Jun 2024 13:13:22 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240617-mt6358-v2-3-5d9f0e99941e@gmail.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] ufs: core: fix ufshcd_abort_all racing issue
+To: =?UTF-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>,
+ "quic_nguyenb@quicinc.com" <quic_nguyenb@quicinc.com>,
+ "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
+ "avri.altman@wdc.com" <avri.altman@wdc.com>,
+ "martin.petersen@oracle.com" <martin.petersen@oracle.com>,
+ "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
+ "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
+ "haowenchao22@gmail.com" <haowenchao22@gmail.com>
+Cc: "linux-mediatek@lists.infradead.org"
+ <linux-mediatek@lists.infradead.org>,
+ =?UTF-8?B?SmlhamllIEhhbyAo6YOd5Yqg6IqCKQ==?= <jiajie.hao@mediatek.com>,
+ =?UTF-8?B?Q0MgQ2hvdSAo5ZGo5b+X5p2wKQ==?= <cc.chou@mediatek.com>,
+ =?UTF-8?B?RWRkaWUgSHVhbmcgKOm7g+aZuuWCkSk=?= <eddie.huang@mediatek.com>,
+ =?UTF-8?B?QWxpY2UgQ2hhbyAo6LaZ54+u5Z2HKQ==?= <Alice.Chao@mediatek.com>,
+ wsd_upstream <wsd_upstream@mediatek.com>,
+ "stable@vger.kernel.org" <stable@vger.kernel.org>,
+ =?UTF-8?B?TGluIEd1aSAo5qGC5p6XKQ==?= <Lin.Gui@mediatek.com>,
+ =?UTF-8?B?Q2h1bi1IdW5nIFd1ICjlt6vpp7/lro8p?= <Chun-hung.Wu@mediatek.com>,
+ =?UTF-8?B?VHVuLXl1IFl1ICjmuLjmlabogb8p?= <Tun-yu.Yu@mediatek.com>,
+ "chu.stanley@gmail.com" <chu.stanley@gmail.com>,
+ =?UTF-8?B?Q2hhb3RpYW4gSmluZyAo5LqV5pyd5aSpKQ==?=
+ <Chaotian.Jing@mediatek.com>, =?UTF-8?B?UG93ZW4gS2FvICjpq5jkvK/mlocp?=
+ <Powen.Kao@mediatek.com>, =?UTF-8?B?TmFvbWkgQ2h1ICjmnLHoqaDnlLAp?=
+ <Naomi.Chu@mediatek.com>, =?UTF-8?B?UWlsaW4gVGFuICjosK3pupLpup8p?=
+ <Qilin.Tan@mediatek.com>
+References: <20240624121158.21354-1-peter.wang@mediatek.com>
+ <eec48c95-aa1c-4f07-a1f3-fdc3e124f30e@acm.org>
+ <4c4d10aae216e0b6925445b0317e55a3dd0ce629.camel@mediatek.com>
+ <795a89bb-12eb-4ac8-93df-6ec5173fb679@acm.org>
+ <0e1e0c0a4303f53a50a95aa0672311015ddeaee2.camel@mediatek.com>
+ <b5ee63bb-4db9-47fc-9b09-1fde0447f6f8@acm.org>
+ <54f5df88-ca0a-40dd-92ef-3f64c170ba55@gmail.com>
+ <9284fe608d6a2c35e1db50b0f7dc69d8951be5fe.camel@mediatek.com>
+Content-Language: en-US
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <9284fe608d6a2c35e1db50b0f7dc69d8951be5fe.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240627_130546_012671_0FA5A427 
-X-CRM114-Status: GOOD (  13.90  )
+X-CRM114-CacheID: sfid-20240627_131343_184378_84D74C58 
+X-CRM114-Status: GOOD (  13.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,23 +112,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jun 17, 2024 at 05:58:26PM +0530, Kartik Agarwala wrote:
-> Add reference for mediatek,mt6358-sound
-> ---
->  Documentation/devicetree/bindings/mfd/mt6397.txt | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/mfd/mt6397.txt b/Documentation/devicetree/bindings/mfd/mt6397.txt
-> index 10540aa7a..cf7fcc402 100644
-> --- a/Documentation/devicetree/bindings/mfd/mt6397.txt
-> +++ b/Documentation/devicetree/bindings/mfd/mt6397.txt
-> @@ -48,6 +48,7 @@ Optional subnodes:
->  - codec
->  	Required properties:
->  		- compatible: "mediatek,mt6397-codec" or "mediatek,mt6358-sound"
-> +	see ../sound/mediatek,mt6358.yaml
+On 6/27/24 3:59 AM, Peter Wang (=E7=8E=8B=E4=BF=A1=E5=8F=8B) wrote:
+> This is a chicken-and-egg problem. We need to acquire a lock to know=20
+> which hwq it is, but we need to know which hwq it is to acquire the
+> lock. Therefore, to resolve this dilemma, perhaps we should just take
+> all the hwq locks indiscriminately?
+How about the (untested) patch below?
 
-No point in adding this as this file should get converted.
+Thanks,
 
-Rob
+Bart.
+
+diff --git a/drivers/ufs/core/ufs-mcq.c b/drivers/ufs/core/ufs-mcq.c
+index aa119746ee92..c5d327ba253f 100644
+--- a/drivers/ufs/core/ufs-mcq.c
++++ b/drivers/ufs/core/ufs-mcq.c
+@@ -105,16 +105,15 @@ EXPORT_SYMBOL_GPL(ufshcd_mcq_config_mac);
+   * @hba: per adapter instance
+   * @req: pointer to the request to be issued
+   *
+- * Return: the hardware queue instance on which the request would
+- * be queued.
++ * Return: the hardware queue instance on which the request will be or=20
+has been
++ * queued. %NULL if the request has already been freed.
+   */
+  struct ufs_hw_queue *ufshcd_mcq_req_to_hwq(struct ufs_hba *hba,
+  					 struct request *req)
+  {
+-	u32 utag =3D blk_mq_unique_tag(req);
+-	u32 hwq =3D blk_mq_unique_tag_to_hwq(utag);
++	struct blk_mq_hw_ctx *hctx =3D READ_ONCE(rq->mq_hctx);
+
+-	return &hba->uhq[hwq];
++	return hctx ? &hba->uhq[hctx->queue_num] : NULL;
+  }
+
+  /**
+@@ -547,6 +546,8 @@ int ufshcd_mcq_sq_cleanup(struct ufs_hba *hba, int=20
+task_tag)
+  		if (!cmd)
+  			return -EINVAL;
+  		hwq =3D ufshcd_mcq_req_to_hwq(hba, scsi_cmd_to_rq(cmd));
++		if (!hwq)
++			return -EINVAL;
+  	} else {
+  		hwq =3D hba->dev_cmd_queue;
+  	}
+
 
