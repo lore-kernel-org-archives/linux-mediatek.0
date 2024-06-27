@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07987C2BD09
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jun 2024 08:13:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B8B4C2BD09
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jun 2024 08:13:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QNCya/c+0BFXBan7y5Y3p7n9l/VP6umAREK/NYpBecg=; b=pqovPVg1GLgSnXwbxYRGwcwZeZ
-	elh4wEg+52Er8nb9OtN5dujlmfB3uSx2QKdVqJJqve/cOal0hhM3CD+Os2PQQgjjd8FjDIYSB5sOG
-	CU2+5IyKhpp0onO5oqsHdXcBTUkQr9SckMCqLSLVzUSbK/KLQZQ430uwfHfEO0SFSDM7ON3LiXQVy
-	3/IQNlc0nXVHV9bElyP9y+ywgvD3l4EU1JiL5yxAV47UZlYjP6D0KaTlzZt5fA8aUKqDZId2fVoTP
-	gZHe2JRL+iyhv+6w4ldOd2oTey4ztpMYLEAV9xAu/06N/wAZ5Pfp/WcLXgKHjw/qDe/F2iJ5gFiGZ
-	dNAQW2qg==;
+	bh=FprofXqTliFEOdwIZyeDG4g1mHPEoLpaW1YrYWDTBNU=; b=P1TDwf8TmjECiUqZnYHt6u/ByS
+	snfVYBFg0F19ZJ1FcsKFPWz4B2FjIN63hevGv/iuTZ/wlUod7GHg7U8b6sMukigVicCOT+UE/O7fZ
+	h0qI0EHGSjS/q6sWDM2p6bNe8JoVDxp78sYmx5DRdaVQjm+qRl2aQ1ZcWOBP/7nw9f7ChBi6w8I5c
+	fNMn8eY0/VDHg7sMtmmBsogUL7nGgIqwY+YF+WEwl5wQpMAfC0/DaPlX3cPyilfajIEPW1mhaKY8R
+	lmV3KNopwo791qxohHx/rhyFxsq0+8MduP64loV2ieTfUdh0M171KOuVHhZe4yf//QJFzfdFSIO6S
+	El8FFOig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMkFv-00000009hD7-2577;
-	Thu, 27 Jun 2024 08:13:23 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sMkGB-00000009hMh-2KJy;
+	Thu, 27 Jun 2024 08:13:39 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMkFa-00000009h1j-0Zbb;
-	Thu, 27 Jun 2024 08:13:04 +0000
+	id 1sMkFg-00000009h52-3aei;
+	Thu, 27 Jun 2024 08:13:10 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id EA6EB61C22;
-	Thu, 27 Jun 2024 08:13:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 16475C2BBFC;
-	Thu, 27 Jun 2024 08:12:59 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 47A18CE2D7E;
+	Thu, 27 Jun 2024 08:13:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E13FAC2BBFC;
+	Thu, 27 Jun 2024 08:13:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1719475980;
-	bh=AdH9yMFml0qHN75VLNxdrAIygg5nHmecEEHRnjfXV20=;
+	s=k20201202; t=1719475984;
+	bh=3Hj2ISV4US+V2PRLoUb/bQ4f1LIP8icCQKxs67VPFw8=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=bDP7mXAma8rxtaNvsn4u+7/dPFGY/QWdQbO/qH+ZfVV/Ag4dylUyo+/mvGQUFsr0g
-	 +aReros4qIQ1A4dJwUu6ZM/aIPEZVpbyYJ4euIS5ORy4if15EOu6J90Us6kEVxQoDO
-	 xmxfNShl7tZjBE36cHb9C0Z1dndOmgyKws4wpErxzEk1c5YtI82w7ng+ulZnf56PTT
-	 d1X0jOk17SZhO6QFiZW2ODdSxh6s2sdPUe2opmc+Ww0nbtIEE9EG2j7yWKYAyx9neV
-	 ah2yWG3NTf7b0rwcYJlLOO2E9Gos2vIsezG1YiLDx38tRXTzBH4aW3ajQQb4EIhWlV
-	 MHAdCk2THg65w==
+	b=WvhADSzqh2C3NBcnJCoI04uk7m57ZwjmqpYSzJPAQR1dNSgbVI+AUt3Ljnv+WpH7P
+	 1DA32v5NBrRRvAGKFC2VjBS6iN6FI2+oeTS2iR8U82VXXcBYW6u32T6LLqNIKa/zpw
+	 Ojze5eNOBz30Uc+TJK5veeM11Zvn6yZLqW/G2HruJDwhDRojnpg5RW16mmi1eg+3KO
+	 Yiry5IaKJgSCQTGGWfP28go6UdSipLVqD9iGvteBFvPcvyMO8UYtThMdJgCKjC8To/
+	 qHgtL14rW5kwbbXsMawxgf0dv9F6l69njVbUSCsB3+L7E0X1NCyePnumgV48fiQXLp
+	 LAzus2rz4RXew==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: linux-pci@vger.kernel.org
 Cc: ryder.lee@mediatek.com,
@@ -58,18 +58,17 @@ Cc: ryder.lee@mediatek.com,
 	dd@embedd.com,
 	upstream@airoha.com,
 	angelogioacchino.delregno@collabora.com
-Subject: [PATCH v2 1/4] dt-bindings: PCI: mediatek-gen3: add support for Airoha EN7581
-Date: Thu, 27 Jun 2024 10:12:11 +0200
-Message-ID: <c11a40dbe3e1d1e4847ceee8715c1f670fd1887b.1719475568.git.lorenzo@kernel.org>
+Subject: [PATCH v2 2/4] PCI: mediatek-gen3: Add mtk_gen3_pcie_pdata data structure
+Date: Thu, 27 Jun 2024 10:12:12 +0200
+Message-ID: <62c00de24f702260ba0da93008277e95f471a2ab.1719475568.git.lorenzo@kernel.org>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <cover.1719475568.git.lorenzo@kernel.org>
 References: <cover.1719475568.git.lorenzo@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240627_011302_497170_C0EE82B4 
-X-CRM114-Status: UNSURE (   8.26  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240627_011309_306173_2C3621C8 
+X-CRM114-Status: GOOD (  14.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,150 +83,94 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce Airoha EN7581 entry in mediatek-gen3 PCIe controller binding
+Introduce mtk_gen3_pcie_pdata data structure in order to define
+multiple callbacks for each supported SoC. This is a preliminary
+patch to introduce EN7581 PCIe support.
 
+Tested-by: Zhengping Zhang <zhengping.zhang@airoha.com>
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- .../bindings/pci/mediatek-pcie-gen3.yaml      | 68 +++++++++++++++++--
- 1 file changed, 63 insertions(+), 5 deletions(-)
+ drivers/pci/controller/pcie-mediatek-gen3.c | 24 ++++++++++++++++++---
+ 1 file changed, 21 insertions(+), 3 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-index 76d742051f73..59112adc9ba1 100644
---- a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-+++ b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-@@ -53,6 +53,7 @@ properties:
-               - mediatek,mt8195-pcie
-           - const: mediatek,mt8192-pcie
-       - const: mediatek,mt8192-pcie
-+      - const: airoha,en7581-pcie
+diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
+index 975b3024fb08..db0210803731 100644
+--- a/drivers/pci/controller/pcie-mediatek-gen3.c
++++ b/drivers/pci/controller/pcie-mediatek-gen3.c
+@@ -100,6 +100,16 @@
+ #define PCIE_ATR_TLP_TYPE_MEM		PCIE_ATR_TLP_TYPE(0)
+ #define PCIE_ATR_TLP_TYPE_IO		PCIE_ATR_TLP_TYPE(2)
  
-   reg:
-     maxItems: 1
-@@ -76,20 +77,20 @@ properties:
++struct mtk_gen3_pcie;
++
++/**
++ * struct mtk_gen3_pcie_pdata - differentiate between host generations
++ * @power_up: pcie power_up callback
++ */
++struct mtk_gen3_pcie_pdata {
++	int (*power_up)(struct mtk_gen3_pcie *pcie);
++};
++
+ /**
+  * struct mtk_msi_set - MSI information for each set
+  * @base: IO mapped register base
+@@ -131,6 +141,7 @@ struct mtk_msi_set {
+  * @msi_sets: MSI sets information
+  * @lock: lock protecting IRQ bit map
+  * @msi_irq_in_use: bit map for assigned MSI IRQ
++ * @soc: pointer to SoC-dependent operations
+  */
+ struct mtk_gen3_pcie {
+ 	struct device *dev;
+@@ -151,6 +162,8 @@ struct mtk_gen3_pcie {
+ 	struct mtk_msi_set msi_sets[PCIE_MSI_SET_NUM];
+ 	struct mutex lock;
+ 	DECLARE_BITMAP(msi_irq_in_use, PCIE_MSI_IRQS_NUM);
++
++	const struct mtk_gen3_pcie_pdata *soc;
+ };
  
-   resets:
-     minItems: 1
--    maxItems: 2
-+    maxItems: 3
+ /* LTSSM state in PCIE_LTSSM_STATUS_REG bit[28:24] */
+@@ -904,7 +917,7 @@ static int mtk_pcie_setup(struct mtk_gen3_pcie *pcie)
+ 	usleep_range(10, 20);
  
-   reset-names:
-     minItems: 1
--    maxItems: 2
-+    maxItems: 3
-     items:
--      enum: [ phy, mac ]
-+      enum: [ phy, mac, phy-lane0, phy-lane1, phy-lane2 ]
+ 	/* Don't touch the hardware registers before power up */
+-	err = mtk_pcie_power_up(pcie);
++	err = pcie->soc->power_up(pcie);
+ 	if (err)
+ 		return err;
  
-   clocks:
--    minItems: 4
-+    minItems: 1
-     maxItems: 6
+@@ -939,6 +952,7 @@ static int mtk_pcie_probe(struct platform_device *pdev)
+ 	pcie = pci_host_bridge_priv(host);
  
-   clock-names:
--    minItems: 4
-+    minItems: 1
-     maxItems: 6
+ 	pcie->dev = dev;
++	pcie->soc = device_get_match_data(dev);
+ 	platform_set_drvdata(pdev, pcie);
  
-   assigned-clocks:
-@@ -147,6 +148,9 @@ allOf:
-           const: mediatek,mt8192-pcie
-     then:
-       properties:
-+        clocks:
-+          maxItems: 6
-+
-         clock-names:
-           items:
-             - const: pl_250m
-@@ -155,6 +159,15 @@ allOf:
-             - const: tl_32k
-             - const: peri_26m
-             - const: top_133m
-+
-+        resets:
-+          minItems: 1
-+          maxItems: 2
-+
-+        reset-names:
-+          minItems: 1
-+          maxItems: 2
-+
-   - if:
-       properties:
-         compatible:
-@@ -164,6 +177,9 @@ allOf:
-               - mediatek,mt8195-pcie
-     then:
-       properties:
-+        clocks:
-+          maxItems: 6
-+
-         clock-names:
-           items:
-             - const: pl_250m
-@@ -172,6 +188,15 @@ allOf:
-             - const: tl_32k
-             - const: peri_26m
-             - const: peri_mem
-+
-+        resets:
-+          minItems: 1
-+          maxItems: 2
-+
-+        reset-names:
-+          minItems: 1
-+          maxItems: 2
-+
-   - if:
-       properties:
-         compatible:
-@@ -180,6 +205,9 @@ allOf:
-               - mediatek,mt7986-pcie
-     then:
-       properties:
-+        clocks:
-+          maxItems: 4
-+
-         clock-names:
-           items:
-             - const: pl_250m
-@@ -187,6 +215,36 @@ allOf:
-             - const: peri_26m
-             - const: top_133m
+ 	err = mtk_pcie_setup(pcie);
+@@ -1054,7 +1068,7 @@ static int mtk_pcie_resume_noirq(struct device *dev)
+ 	struct mtk_gen3_pcie *pcie = dev_get_drvdata(dev);
+ 	int err;
  
-+        resets:
-+          minItems: 1
-+          maxItems: 2
-+
-+        reset-names:
-+          minItems: 1
-+          maxItems: 2
-+
-+  - if:
-+      properties:
-+        compatible:
-+          const: airoha,en7581-pcie
-+    then:
-+      properties:
-+        clocks:
-+          maxItems: 1
-+
-+        clock-names:
-+          items:
-+            - const: sys-ck
-+
-+        resets:
-+          maxItems: 3
-+
-+        reset-names:
-+          items:
-+            - const: phy-lane0
-+            - const: phy-lane1
-+            - const: phy-lane2
-+
- unevaluatedProperties: false
+-	err = mtk_pcie_power_up(pcie);
++	err = pcie->soc->power_up(pcie);
+ 	if (err)
+ 		return err;
  
- examples:
+@@ -1074,8 +1088,12 @@ static const struct dev_pm_ops mtk_pcie_pm_ops = {
+ 				  mtk_pcie_resume_noirq)
+ };
+ 
++static const struct mtk_gen3_pcie_pdata mtk_pcie_soc_mt8192 = {
++	.power_up = mtk_pcie_power_up,
++};
++
+ static const struct of_device_id mtk_pcie_of_match[] = {
+-	{ .compatible = "mediatek,mt8192-pcie" },
++	{ .compatible = "mediatek,mt8192-pcie", .data = &mtk_pcie_soc_mt8192 },
+ 	{},
+ };
+ MODULE_DEVICE_TABLE(of, mtk_pcie_of_match);
 -- 
 2.45.2
 
