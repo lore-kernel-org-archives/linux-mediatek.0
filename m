@@ -4,69 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FC50C2BD09
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jun 2024 19:58:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AF03C2BD09
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jun 2024 20:05:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ut0oPWXTKpEpNIQRDljHD/ZN9Y0rHdvRQJ9Vf8dXwRM=; b=M/03ds1kizHrzIUfYkD7bYBoEC
-	rJov98oSYTO0fnwQnvRWPna2iGQ8TD13SgM+BiN+pH75Vq8771U3dlzE225QeU+WY3BHlivn4Xbem
-	LwHDqucTzOq20eHM2oaI2cAkLJC7ZmcOEJSyrFJmMnLhToia/ZhvAlLszRSShX/SVocD5MNit5mMQ
-	/5rJD6u1HqyzlkV+YCOo14g7pQGONcPLI+MIDHesEvzfyU4yti4QDdn3JjPQuLEYNCo1igC1Otei4
-	is/GSk2bEsNhQ67eN7WLswxtXwbei+wtfPJxYryjClgCKaQBkE4VNOUmYUDg/HlBRUqwL23s07drB
-	EnlO+53w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=78r12OoBM4UWi382FFwcHcIC1FEZtJRx8b5B9X2haFE=; b=Emff5HGoUM+v1ZjvRirAy/Fi49
+	5lzb3e5AfYznYiGCv6DCdMkvNLzHvrKSuzoVm9XMRO+/6BiZsns+S5JRugM+BnWxAlCjRIxEMbOt5
+	cwpekUJtUgHZ4DvsTGwqrwjA9jw2L3tv9qWqnNHenFrET52vhva05vxpb5guqGC+ETpwXfrnTu5dc
+	Y24+HCY6nvtnhKf5Krf3iMMSBXPzE+xyqmrj6iiRVWFODZrctoUT5KCw8GkafYGM3dt90lzqCOjkg
+	chsW9j+rXo5HEzup0LiywtQqnDY99r7m23kaZXBAeuIeGtXttC0vQfP4FSMTi4gOe3YDwi0MdF+2b
+	bBKHSWQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMvGZ-0000000BZ13-0Tbp;
-	Thu, 27 Jun 2024 19:58:47 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1sMvNT-0000000BZyk-3m4T;
+	Thu, 27 Jun 2024 20:05:55 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMvGO-0000000BYyY-42e3;
-	Thu, 27 Jun 2024 19:58:38 +0000
+	id 1sMvNJ-0000000BZwr-3lpg;
+	Thu, 27 Jun 2024 20:05:47 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 21C2661FA1;
-	Thu, 27 Jun 2024 19:58:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0EA1EC2BD10;
-	Thu, 27 Jun 2024 19:58:35 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 34E2C61E6F;
+	Thu, 27 Jun 2024 20:05:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 94157C2BBFC;
+	Thu, 27 Jun 2024 20:05:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1719518315;
-	bh=S4yuJH7snXMiR4H/OcoIVrpDAluEUXsb8UuS8mgZbNo=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=AuvNfyC27xGCkLMmOnO0yt9tJuiixh4rKugekJ+ThS6gcDQNfPcQRzhmp0F9BK1F0
-	 rqj/6KRf6AS8VV3xBsOVApfvH75zl3vTkJOY6j6CkLSSWet95WhHAPM1bxoyU4u9Je
-	 8ARUNDWR/yLx4LkCq0rp2htOfOrUc9JNKo58FK6Jq2KozjWgpJtkjiTT3eOkxR8exd
-	 WPfrhddRAX5A6FIV7udHiXBsjY/ctUlOHGU2/Sml8EgcBWcgJgykaUgpZnqXmGPDhN
-	 +nTNHezL7DnzdHFaQOWZFOLh0eZPtGkRNBgiPfMtUqTO1gTwDd6D8mGTBTroX43mq/
-	 i1p17HNpqZEjA==
-Date: Thu, 27 Jun 2024 12:58:34 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: Yunsheng Lin <linyunsheng@huawei.com>
-Cc: Andrew Lunn <andrew@lunn.ch>, <davem@davemloft.net>,
- <pabeni@redhat.com>, <netdev@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, Alexander Duyck
- <alexander.duyck@gmail.com>, Alexei Starovoitov <ast@kernel.org>, Daniel
- Borkmann <daniel@iogearbox.net>, Jesper Dangaard Brouer <hawk@kernel.org>,
- John Fastabend <john.fastabend@gmail.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, <bpf@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH net-next v9 00/13] First try to replace page_frag with
- page_frag_cache
-Message-ID: <20240627125834.3007120c@kernel.org>
-In-Reply-To: <a051a277-a901-2cdb-72d0-716002593019@huawei.com>
-References: <20240625135216.47007-1-linyunsheng@huawei.com>
-	<d2601a34-7519-41b6-89c6-b4aad483602b@lunn.ch>
-	<a051a277-a901-2cdb-72d0-716002593019@huawei.com>
+	s=k20201202; t=1719518744;
+	bh=FE5LwB4HXBRsoGB9+h+mvR30T3AMRQyyiUCPx6AJibA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Tec+vNI4sG/7Ti1RLprvNypZGPCnZzbOElovxV8ey0vBaoA25bDO8+Sdev08E7LqF
+	 tulhYfqmL4+QD3GGENY2J4+RtUiB67WaEDA/CKwNNJp7lwlU7kmdS19OcHnt3DhJn2
+	 Ir2osxCYd/WoCsLCXfHVxSBYA1UKb+v45IlR5XQsMbSm4slNgKPjgtNd0J0L1GS51v
+	 CJAzCQjQhGrs9f3RQPcfqpLIaCEBQQ0eg9uiflzHCiuDezYQrRCgpaeUv0RM6+D1N+
+	 rsxH6wTx0oaKBrCmHtZuXDkbHJJcmN11Isfvs/gjCqegEA0JwxBWB2kEbw88wyfEeQ
+	 clzt1q3VRAhPw==
+Date: Thu, 27 Jun 2024 14:05:43 -0600
+From: Rob Herring <robh@kernel.org>
+To: Kartik Agarwala <agarwala.kartik@gmail.com>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Lee Jones <lee@kernel.org>, linux-sound@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v2 3/3] dt-bindings: mfd: mt6397: Add reference for
+ mediatek,mt6358-sound
+Message-ID: <20240627200543.GA439514-robh@kernel.org>
+References: <20240617-mt6358-v2-0-5d9f0e99941e@gmail.com>
+ <20240617-mt6358-v2-3-5d9f0e99941e@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240617-mt6358-v2-3-5d9f0e99941e@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240627_125837_124522_619A8914 
-X-CRM114-Status: GOOD (  11.99  )
+X-CRM114-CacheID: sfid-20240627_130546_012671_0FA5A427 
+X-CRM114-Status: GOOD (  13.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,16 +79,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 27 Jun 2024 19:16:22 +0800 Yunsheng Lin wrote:
-> On 2024/6/27 1:12, Andrew Lunn wrote:
-> > Silly nitpick, but maybe for the next version you change the Subject:
-> > to Tenth try to replace page_frag with page_frag.... :-)  
+On Mon, Jun 17, 2024 at 05:58:26PM +0530, Kartik Agarwala wrote:
+> Add reference for mediatek,mt6358-sound
+> ---
+>  Documentation/devicetree/bindings/mfd/mt6397.txt | 1 +
+>  1 file changed, 1 insertion(+)
 > 
-> Yes, it is somewhat confusing for the 'First try' part.
-> I guess I can change it to highlight the effort and commitment behind
-> the trying:-)
+> diff --git a/Documentation/devicetree/bindings/mfd/mt6397.txt b/Documentation/devicetree/bindings/mfd/mt6397.txt
+> index 10540aa7a..cf7fcc402 100644
+> --- a/Documentation/devicetree/bindings/mfd/mt6397.txt
+> +++ b/Documentation/devicetree/bindings/mfd/mt6397.txt
+> @@ -48,6 +48,7 @@ Optional subnodes:
+>  - codec
+>  	Required properties:
+>  		- compatible: "mediatek,mt6397-codec" or "mediatek,mt6358-sound"
+> +	see ../sound/mediatek,mt6358.yaml
 
-Sorry to ruin the slightly whimsical mood but if you do change it -
-please don't include the version at all. Some automation matches
-versions of patch sets together based on the title of the cover letter.
+No point in adding this as this file should get converted.
+
+Rob
 
