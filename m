@@ -4,84 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BB10C2BD09
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jun 2024 07:09:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BBA8C3064D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jun 2024 07:59:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=kLAc7E9Oi9Jrs8uorhGYEdcPB60PfHSdbCCEjUS0hco=; b=kcSJ9CkmkujL7ImcITySo87j9b
-	fSpCq6vHyw7Z0aQdJRUcxmd2lsTItuUXYgzpJiDfXXKje4iet3oVlKpPvquvW7hdeswCwgT7yvP+K
-	IOSglXa1Lr4ryL90/97QMV9BZ311uCjDLey16q7xbOsr77Xnst6s0zk5JL56xCIvs32E9dhQ5wKzP
-	q3J4YNeFfkO/HYEZGnW4081pTwdc9DW3kzVGXwujeKTycBHwCI1dxW8qZiSXTXwbbQw2LYIX6Jmfe
-	/T7LKbKFY57Y2rTcpStHfIm33sXJg08ZFQ7+pJs7ky9JXhLj26Dwr14akOCxMS0ai2ULoe05dsB/V
-	mSWEHrcQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=oMPFt7qCcKlt4bBRLNTpr5RAJLhjvUZf1lQJM4mr6kc=; b=UN1urpztlCMTH4SS6PHXIlWvUI
+	nDRKUb264d+LiPEEFFdqtLHkJOwN8tePTCa9rHfHjOHABgjxlax6N0uj6N7kg6jY1rFDDRsQtxpQD
+	uo1nLjmTf3DmIwgaZhkkBbtp36RY51pbUe6ns0FvUZLcGLtg7SD8UaNIfbKOiZqwlQ0gz+bqfvpt8
+	EnJPJOoYN6nY183b3vzXmWcgUV8B8uu1/Hy34ncokk3mAr59/UDRXuIutakTkvRxbVPlJQk1LQ0/3
+	XlCh9W3fWedHMIQwrGOAz14LI0HIsV1kYzL2F8oinMHiYMAnAQo+hdXJ7cQGhDjUdeTzS+CJArDZv
+	oTbeZdoQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMjG9-00000009VFr-2fss;
-	Thu, 27 Jun 2024 07:09:33 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1sMk2H-00000009eje-0aTo;
+	Thu, 27 Jun 2024 07:59:17 +0000
+Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMjG4-00000009VCb-13fX;
-	Thu, 27 Jun 2024 07:09:31 +0000
-X-UUID: 2b0b68ce345411ef9daba96ee3f3cc8c-20240627
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=kLAc7E9Oi9Jrs8uorhGYEdcPB60PfHSdbCCEjUS0hco=;
-	b=ahRApsXLtRoQ3DgnnuEjaHjBU6veYpU/9ZFDX3f8x4kGyP5kIm5sWoqvkuZAksG4lpz567cWtKcBXIl7t4pl6uX/Lr/3UMF1Q9kL/QFyvhC80jn/f3KLwFFQgAZGipR+ypUeChpOYYR5Tx7GPSPuMh4jmMCelYq/tiBKdt1ZalQ=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.39,REQID:611523d0-7117-47e2-978d-8c000d08bde7,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:393d96e,CLOUDID:a40e7f94-e2c0-40b0-a8fe-7c7e47299109,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 2b0b68ce345411ef9daba96ee3f3cc8c-20240627
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <mark-pk.tsai@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1338424509; Thu, 27 Jun 2024 00:09:17 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS14N2.mediatek.inc (172.21.101.76) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 27 Jun 2024 14:59:12 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 27 Jun 2024 14:59:12 +0800
-From: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
-To: Jens Wiklander <jens.wiklander@linaro.org>, Sumit Garg
-	<sumit.garg@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-CC: <yj.chiang@mediatek.com>, Mark-PK Tsai <mark-pk.tsai@mediatek.com>,
-	"ming-jen . chang" <ming-jen.chang@mediatek.com>,
-	<op-tee@lists.trustedfirmware.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v2] tee: optee: ffa: Fix missing-field-initializers warning
-Date: Thu, 27 Jun 2024 14:59:09 +0800
-Message-ID: <20240627065911.4157-1-mark-pk.tsai@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1sMk2E-00000009ehl-20Hd
+	for linux-mediatek@lists.infradead.org;
+	Thu, 27 Jun 2024 07:59:15 +0000
+Received: by mail-pl1-x62c.google.com with SMTP id d9443c01a7336-1f65a3abd01so60972725ad.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 27 Jun 2024 00:59:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1719475153; x=1720079953; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=oMPFt7qCcKlt4bBRLNTpr5RAJLhjvUZf1lQJM4mr6kc=;
+        b=G26B0SZXsi0zA1TXXwqFaauL7Fsl3zOnUxlT08wcdWBmk+zJ8EmN2LHGjYJWNmHlrP
+         w158nxW/gbhyudEzvJGSZJUf39vpusbXn1NkipDU5ZqqACQm5m/gS+QrZwhs0X50iSXj
+         PJrNWRGacTcKmNxhZ3oSiiU80lhZ/R8Qs0EdwsxsTvRlJ8AxgdoTiEalg+Dp5Pe0TSKV
+         0rO/TIsYDd/80DqMrnpSgojGg7m1oA44HlPX5d9qvk2y4GLxtykEgyzBzQox85hExW8T
+         SrPn1vCF4hPRY8FdVV25+SbkV6gMb/MOQeVYCkUynMfJeoMQleHMRN+72i2fONbgtu6Y
+         pwSQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1719475153; x=1720079953;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=oMPFt7qCcKlt4bBRLNTpr5RAJLhjvUZf1lQJM4mr6kc=;
+        b=rVfmAO9xWbbuMCiASfTUNN2GQu//X+cQA37Ud2oMkDmbmAStAyOzR5xnXJ+kJgXUed
+         Lf003VgTeL5/D3oVhkkm8Xl8d6wCsN9K6hnw8hihJYo3PnagyOsaqxfwiK2xgwgOFwP7
+         XjAN2rLOi2XDRdlDvc1D7z7+CWI+ZAb2isRi5APw1vGF1oF4EktTjZtO16ahEsyocz+S
+         PuPCQNkAQZlfU7UaKaBZ9keNRqooIueFKPlx08H9wFvIH1/XD6bkpN/DN52K5qupPicn
+         P5UutJ2m9gbh67a0kNam3tfpkRaA8zcNoF5qxPRWcpSX3p5QfbL8FNSgJlJvD4afzyV1
+         A/ag==
+X-Gm-Message-State: AOJu0Yyl4g8ec+BHopzXDr73dwlB6v7WNn+Xsrt7oz+ayewAwlCe8J6g
+	BJyo8zisFAlTax5qNK+iBPUkAp223SOIwoLq9l3Y092MBOnQdHUe
+X-Google-Smtp-Source: AGHT+IGAVQN2fy7d8glYzpm7iBHWvHCXJiWGTnics/V2+00uZxGRrbWBL+pefWqwcgKthF3qW/xaSw==
+X-Received: by 2002:a17:902:ea08:b0:1f9:e3e8:456f with SMTP id d9443c01a7336-1fa23ec2d5cmr150310595ad.15.1719475152792;
+        Thu, 27 Jun 2024 00:59:12 -0700 (PDT)
+Received: from [0.0.0.0] (97.64.23.41.16clouds.com. [97.64.23.41])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-1faac998bb2sm7157915ad.196.2024.06.27.00.59.07
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 27 Jun 2024 00:59:12 -0700 (PDT)
+Message-ID: <58505ca5-5822-47f5-a77d-a517eda0c508@gmail.com>
+Date: Thu, 27 Jun 2024 15:59:00 +0800
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--7.322900-8.000000
-X-TMASE-MatchedRID: CYZljv4C7xqE9zgVMk3pXrMjW/sniEQK+qTrCpYSyMKwLFgnUb4vDwXG
-	B3tb8aAxThbvLLI8RvPxY0WGgfScA89tfSEZlKTRjtK7dC6UBnmOhEhoAl74KJsoi2XrUn/J8m+
-	hzBStansfRoCwBzgRYnnN0DN7HnFmbmilSA2tkYg+1mgAmqXE1jZ3zgTLWwJKqtShzPE1t2E21o
-	KvI31ATpRMZUCEHkRt
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--7.322900-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: B4B92C5369CD79974B00915F190C831DEEF3D86B376C1856D39F0358C2F1402B2000:8
-X-MTK: N
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] ufs: core: fix ufshcd_abort_all racing issue
+Content-Language: en-US
+To: =?UTF-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>,
+ "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
+ "bvanassche@acm.org" <bvanassche@acm.org>,
+ "avri.altman@wdc.com" <avri.altman@wdc.com>,
+ "quic_nguyenb@quicinc.com" <quic_nguyenb@quicinc.com>,
+ "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
+ "martin.petersen@oracle.com" <martin.petersen@oracle.com>,
+ "jejb@linux.ibm.com" <jejb@linux.ibm.com>
+Cc: "linux-mediatek@lists.infradead.org"
+ <linux-mediatek@lists.infradead.org>,
+ =?UTF-8?B?SmlhamllIEhhbyAo6YOd5Yqg6IqCKQ==?= <jiajie.hao@mediatek.com>,
+ =?UTF-8?B?Q0MgQ2hvdSAo5ZGo5b+X5p2wKQ==?= <cc.chou@mediatek.com>,
+ =?UTF-8?B?RWRkaWUgSHVhbmcgKOm7g+aZuuWCkSk=?= <eddie.huang@mediatek.com>,
+ =?UTF-8?B?QWxpY2UgQ2hhbyAo6LaZ54+u5Z2HKQ==?= <Alice.Chao@mediatek.com>,
+ wsd_upstream <wsd_upstream@mediatek.com>,
+ "stable@vger.kernel.org" <stable@vger.kernel.org>,
+ =?UTF-8?B?TGluIEd1aSAo5qGC5p6XKQ==?= <Lin.Gui@mediatek.com>,
+ =?UTF-8?B?Q2h1bi1IdW5nIFd1ICjlt6vpp7/lro8p?= <Chun-hung.Wu@mediatek.com>,
+ =?UTF-8?B?VHVuLXl1IFl1ICjmuLjmlabogb8p?= <Tun-yu.Yu@mediatek.com>,
+ "chu.stanley@gmail.com" <chu.stanley@gmail.com>,
+ =?UTF-8?B?Q2hhb3RpYW4gSmluZyAo5LqV5pyd5aSpKQ==?=
+ <Chaotian.Jing@mediatek.com>, =?UTF-8?B?UG93ZW4gS2FvICjpq5jkvK/mlocp?=
+ <Powen.Kao@mediatek.com>, =?UTF-8?B?TmFvbWkgQ2h1ICjmnLHoqaDnlLAp?=
+ <Naomi.Chu@mediatek.com>, =?UTF-8?B?UWlsaW4gVGFuICjosK3pupLpup8p?=
+ <Qilin.Tan@mediatek.com>
+References: <20240624121158.21354-1-peter.wang@mediatek.com>
+ <eec48c95-aa1c-4f07-a1f3-fdc3e124f30e@acm.org>
+ <4c4d10aae216e0b6925445b0317e55a3dd0ce629.camel@mediatek.com>
+ <795a89bb-12eb-4ac8-93df-6ec5173fb679@acm.org>
+ <0e1e0c0a4303f53a50a95aa0672311015ddeaee2.camel@mediatek.com>
+From: Wenchao Hao <haowenchao22@gmail.com>
+In-Reply-To: <0e1e0c0a4303f53a50a95aa0672311015ddeaee2.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240627_000928_326432_EA20E8E4 
-X-CRM114-Status: GOOD (  10.61  )
+X-CRM114-CacheID: sfid-20240627_005914_571455_E25A87AB 
+X-CRM114-Status: GOOD (  18.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,56 +119,86 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The 'missing-field-initializers' warning was reported
-when building with W=2.
-This patch use designated initializers for
-'struct ffa_send_direct_data' to suppress the warning
-and clarify the initialization intent.
+On 2024/6/26 11:56, Peter Wang (王信友) wrote:
+> On Tue, 2024-06-25 at 09:42 -0700, Bart Van Assche wrote:
+>>
+>>
+>> Please include a full root cause analysis when reposting fixes for
+>> the
+>> reported crashes. It is not clear to me how it is possible that an
+>> invalid pointer is passed to blk_mq_unique_tag() (0x194). As I
+>> mentioned
+>> in my previous email, freeing a request does not modify the request
+>> pointer and does not modify the SCSI command pointer either. As one
+>> can
+>> derive from the blk_mq_alloc_rqs() call stack, memory for struct
+>> request
+>> and struct scsi_cmnd is allocated at request queue allocation time
+>> and
+>> is not freed until the request queue is freed. Hence, for a given
+>> tag,
+>> neither the request pointer nor the SCSI command pointer changes as
+>> long
+>> as a request queue exists. Hence my request for an explanation how it
+>> is
+>> possible that an invalid pointer was passed to blk_mq_unique_tag().
+>>
+>> Thanks,
+>>
+>> Bart.
+>>
+> 
+> Hi Bart,
+> 
+> Sorry I have not explain root-cause clearly.
+> I will add more clear root-cause analyze next version.
+> 
+> And it is not an invalid pointer is passed to blk_mq_unique_tag(),
+> I means blk_mq_unique_tag function try access null pointer.
+> It is differnt and cause misunderstanding.
+> 
+> The null pinter blk_mq_unique_tag try access is:
+> rq->mq_hctx(NULL)->queue_num.
+> 
 
-Signed-off-by: ming-jen.chang <ming-jen.chang@mediatek.com>
-Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
----
- drivers/tee/optee/ffa_abi.c | 12 +++++++++---
- 1 file changed, 9 insertions(+), 3 deletions(-)
+Hi Peter, 
 
-diff --git a/drivers/tee/optee/ffa_abi.c b/drivers/tee/optee/ffa_abi.c
-index 3235e1c719e8..3e73efa51bba 100644
---- a/drivers/tee/optee/ffa_abi.c
-+++ b/drivers/tee/optee/ffa_abi.c
-@@ -660,7 +660,9 @@ static bool optee_ffa_api_is_compatbile(struct ffa_device *ffa_dev,
- 					const struct ffa_ops *ops)
- {
- 	const struct ffa_msg_ops *msg_ops = ops->msg_ops;
--	struct ffa_send_direct_data data = { OPTEE_FFA_GET_API_VERSION };
-+	struct ffa_send_direct_data data = {
-+		.data0 = OPTEE_FFA_GET_API_VERSION,
-+	};
- 	int rc;
- 
- 	msg_ops->mode_32bit_set(ffa_dev);
-@@ -677,7 +679,9 @@ static bool optee_ffa_api_is_compatbile(struct ffa_device *ffa_dev,
- 		return false;
- 	}
- 
--	data = (struct ffa_send_direct_data){ OPTEE_FFA_GET_OS_VERSION };
-+	data = (struct ffa_send_direct_data){
-+		.data0 = OPTEE_FFA_GET_OS_VERSION,
-+	};
- 	rc = msg_ops->sync_send_receive(ffa_dev, &data);
- 	if (rc) {
- 		pr_err("Unexpected error %d\n", rc);
-@@ -698,7 +702,9 @@ static bool optee_ffa_exchange_caps(struct ffa_device *ffa_dev,
- 				    unsigned int *rpc_param_count,
- 				    unsigned int *max_notif_value)
- {
--	struct ffa_send_direct_data data = { OPTEE_FFA_EXCHANGE_CAPABILITIES };
-+	struct ffa_send_direct_data data = {
-+		.data0 = OPTEE_FFA_EXCHANGE_CAPABILITIES,
-+	};
- 	int rc;
- 
- 	rc = ops->msg_ops->sync_send_receive(ffa_dev, &data);
--- 
-2.18.0
+What is queue_num's offset of blk_mq_hw_ctx in your machine?
+
+gdb vmlinux
+
+(gdb) print /x (int)&((struct blk_mq_hw_ctx *)0)->queue_num
+$5 = 0x164
+
+I read your descriptions and wondered a same race flow as you described
+following. But I found the offset mismatch, if the racing flow is correct,
+then the address accessed in blk_mq_unique_tag() should be 0x164, not 0x194.
+Maybe the offset is different between our machine?
+
+What's more, if the racing flow is correct, I did not get how your changes
+can address this racing flow.
+
+> The racing flow is:
+> 
+> Thread A
+> ufshcd_err_handler					step 1
+> 	ufshcd_cmd_inflight(true)			step 3
+> 	ufshcd_mcq_req_to_hwq
+> 		blk_mq_unique_tag
+> 			rq->mq_hctx->queue_num		step 5
+> 
+> Thread B				
+> ufs_mtk_mcq_intr(cq complete ISR)			step 2
+> 	scsi_done						
+> 		...
+> 		__blk_mq_free_request
+> 			rq->mq_hctx = NULL;		step 4
+> 
+> Thanks.
+> Peter
+> 
+> 
+> 
+> 
 
 
