@@ -4,81 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06345C2BD09
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jun 2024 12:52:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A826BC2BD09
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jun 2024 14:02:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4ryvr8s3n24BsAODCzxgbGJ2w9hKSHLd//YXsMR2ZNo=; b=Nt0ushZJCQmiHTmfY8Gblskijl
-	YdL7MTB/hq/d07dnSnc91IGVjm+n3CzuIfL4/rjV9xPJh7WAotgqV5tzTRSQe848RSti0gceLpQfp
-	7cagPU2OClz3NCbm9JvyUUlUZYTrr9/UwK5mzgilZvDWshiZskjBgA9PrQ51H75sr9woLykNPug6Z
-	AE5OOg97CU1rJS+Eq4igBBEiQOEMdY/W9S8tTaHLfY0/RakRiwIPk1NK/uXA50rzuS4IKqRarDXUN
-	4qZ38JI0GzOiD6+Uufb4GZ2sotQuTNFAUAf7fTxg7ZaPzNm277W/bIdFnjScMIg1kVFwiyqoLHGXZ
-	+iu0n4Hw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=+MN72FiSm1l877kcDA+FSwFlukw5OFpZ5dI2/3fbGW4=; b=4YqP0hiPnKAGbR
+	HaBW9epI7TElWzl2GEgGtqVuaW1y2cNrHAMF9wfBCm65Vc7awTFpIpyuW9ugPmIR0HjUNWxj9MbnE
+	+5tZAuL7Ft+8kCsNe7e+rHbpn/JDD4XWYXLl8pk+pToFoctLnD15HqcFp/+N+D4h9rQlR2L8JMVFG
+	pFeP7pssUBUjH22zYEsOEO/o0g7yUorBfW3gFW7l6D+USv9iUkn0vdEGaWAaomHFPeCqrcqcf0bBf
+	TmBCgU/cqwSAY5Erc2oVC225A2cTsCd54zgfJ39oTsvnxcc4Bvm/fPG9nTaV+ku14rkzX6dqGMDJI
+	v4su2W3xJsOYtUvYq1ug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMocJ-0000000ANhJ-2Wdx;
-	Thu, 27 Jun 2024 12:52:47 +0000
-Received: from mail-ot1-x335.google.com ([2607:f8b0:4864:20::335])
+	id 1sMpi4-0000000AYil-2Z79;
+	Thu, 27 Jun 2024 14:02:48 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMobq-0000000ANYB-2jSe
-	for linux-mediatek@lists.infradead.org;
-	Thu, 27 Jun 2024 12:52:37 +0000
-Received: by mail-ot1-x335.google.com with SMTP id 46e09a7af769-6f9398390fcso2647207a34.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 27 Jun 2024 05:52:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1719492736; x=1720097536; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=4ryvr8s3n24BsAODCzxgbGJ2w9hKSHLd//YXsMR2ZNo=;
-        b=yc1UHVrCg49YyXhMW+vsdW2sxhrmayLmCenldiRs27wbHlf+I8rEW2nASbIUOQ9htg
-         dVLBx316ywHOm0WGUwk9Jhd4NsAvbzm/1m1RlN+TdMecBIMBBU87jx/+8w4j7Vj1CRJD
-         0biChG2FMZQd60bYVSs0HmnhRU4g0FSLtB3euVQeozzkiQRFjW/AgI1syzn8w9G3wApR
-         bg2gtUJwuNnbyf0CuqrTWzp5IJrOcrF+gK13D6kD/Qv+nHC9gPpIdmth9k1S9m3aq00p
-         r70ol+FjbnA/NUgyRTKpdRtO7wknlymggmGtrK0pqcbDXOpdVHqrQdOoXCxZe2zOg7sN
-         GfBg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1719492736; x=1720097536;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=4ryvr8s3n24BsAODCzxgbGJ2w9hKSHLd//YXsMR2ZNo=;
-        b=T01JKcrrWwU7fi+AjP4V/tktz58ACf5nDtZoRPA9WXYuvpJOk1P30FFGxe4/n7LGTe
-         weFMr4HF3x0h55QPF5eq69QYkMVds/6O8tLwYVilsMWXKBOxehg/Xok2CEZWjHXw+h6f
-         x5K/TpDXRgjpJjWAsdVNMk67gsqjCEtksEaRWY84yFPxza/f0O6bR4gbSR1TsUlIwdSB
-         5H8gFoRsx6VSSVw0D/nk8DpyKXbLMEfVQFUum2Kz6ReyzMDjavALwxGVpypcKZOTvnsa
-         74xAJyZqonSR+qLd+rpHA0b2dNedWnGvaVWikA0rARXIXsbsYXSojCB5LCfZvWBvTamq
-         hqXg==
-X-Forwarded-Encrypted: i=1; AJvYcCUpYnYsYEfxLTZB4NlEaNbAZi499StoJyQcWRMelvbesfw3BsDNFj1TaiNfZjrbWDLKf/wEud0Meaxp0zb0zjcJFh3eMaP4rGCAFDHYy94a1MPq
-X-Gm-Message-State: AOJu0YzUxSaCXqSQo44ymoyjdlTU0P/fe0rnsHIL01/Qn86iWMIKrbIW
-	AsePpTBACuJFV0CXf9TY2AVGZQlbCnL0r+dPC37uWp9iDcUMIWwVbzaHuSDD2127O8dYj5fGBR4
-	G2SBrjYm49gutXE5JjX+rP/gUOEcuEsQFIamDgA==
-X-Google-Smtp-Source: AGHT+IElPGgAHLr98QdJ64fPCzoCXcPRTlPI4/hq2ibEtctDV0vse/UXE4eyXhOsEJFVtJIcPQHhEMKweS4CMOEnALI=
-X-Received: by 2002:a9d:6499:0:b0:6f8:fb33:baac with SMTP id
- 46e09a7af769-700b11b2c34mr14344557a34.13.1719492736273; Thu, 27 Jun 2024
- 05:52:16 -0700 (PDT)
+	id 1sMphk-0000000AYcn-49hL;
+	Thu, 27 Jun 2024 14:02:40 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 5FDCCCE2C2A;
+	Thu, 27 Jun 2024 14:02:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 42067C2BBFC;
+	Thu, 27 Jun 2024 14:02:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1719496942;
+	bh=haqyinA5O0jrPvPaCY+hTYShEe3D4xzEGz+XqJKudOE=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=tDsWygWPG1UvEl1yw4KL3p/fKQSq64X/uqzYplsAs9Esq0Mw45Dzza291RqO0N/85
+	 GWM6bXdxmjIAoW9nbMVNTJE3+wXTInsHSNsW8su78Tvf1mc1g6wn1Wk6iDDZPJXNVa
+	 3i4MHufhu/EpzNi2b6LeOL16/6Mgb3FP5fDCFXKLO8Z2bbPJGiBAe9qSMDqNRuZfHK
+	 7i9K3Ha1627W+KrPkqq+PEN+G3vFNHp5rwKLbsL83myrFcYO3l76cF79/Iad4lUva7
+	 AHc9Rh559yc09gfr7JEV/jjaqebG2kIBLArT/bQDxpzGfLcsUkn+1YgPji9isbIjon
+	 LXh4xJKnrbaqw==
+Received: by mail-pg1-f182.google.com with SMTP id 41be03b00d2f7-71910dfb8c0so3667273a12.3;
+        Thu, 27 Jun 2024 07:02:22 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCVGIMc2vPb4ODZEet6EG3fOb7dKNzNoN4pv6fb+Xrfx8CVa6A4fTWITbRwbWnh6wQ1cwpV+z3YHc65zCzbz3u8PmRtNfWWUQGOVW/xCG7NWE3V+0QXcwxzkxI3p59fp7sLPVeBfsTbQ6WZcBjyuIhuQ4sEf4XkJgbg=
+X-Gm-Message-State: AOJu0Yynlznbw6PfOvHAtRbkfibTKLtl1UHp1YDWCXraLflwfL+1HEKQ
+	NFeNDT52zRyqTtWH/HrNQjYhWiOJeQVzyav4mIlvrdn/a3wMHCresYeeESyQ0XjVbfI/bpiQasT
+	2rA0hHYbalslw6wUA79c7Ha2caw==
+X-Google-Smtp-Source: AGHT+IEjPuF+8KUmWpQykLG9Tjg3oIhhxWtBXJcsgAy4abavUazUPTIucmfl5lTNX0+gcaeiTabgHFx4AqJjfR1buSs=
+X-Received: by 2002:a17:90b:1d12:b0:2c8:1e54:4d39 with SMTP id
+ 98e67ed59e1d1-2c8582dbfa4mr11861140a91.48.1719496941350; Thu, 27 Jun 2024
+ 07:02:21 -0700 (PDT)
 MIME-Version: 1.0
-References: <20240627065911.4157-1-mark-pk.tsai@mediatek.com>
-In-Reply-To: <20240627065911.4157-1-mark-pk.tsai@mediatek.com>
-From: Jens Wiklander <jens.wiklander@linaro.org>
-Date: Thu, 27 Jun 2024 14:52:03 +0200
-Message-ID: <CAHUa44GuctLUKPgGxLd3BU7GA1wTf2ir_BwJuWHbcQD_TOU5=w@mail.gmail.com>
-Subject: Re: [PATCH v2] tee: optee: ffa: Fix missing-field-initializers warning
-To: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
-Cc: Sumit Garg <sumit.garg@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, yj.chiang@mediatek.com, 
-	"ming-jen . chang" <ming-jen.chang@mediatek.com>, op-tee@lists.trustedfirmware.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
+References: <20240611102744.v2.1.I2b014f90afc4729b6ecc7b5ddd1f6dedcea4625b@changeid>
+In-Reply-To: <20240611102744.v2.1.I2b014f90afc4729b6ecc7b5ddd1f6dedcea4625b@changeid>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Thu, 27 Jun 2024 22:02:27 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_8pSGOhuRt=swb7o8zm6swnuXqyzPeASRppGCfi032xbQ@mail.gmail.com>
+Message-ID: <CAAOTY_8pSGOhuRt=swb7o8zm6swnuXqyzPeASRppGCfi032xbQ@mail.gmail.com>
+Subject: Re: [PATCH v2] drm/mediatek: Call drm_atomic_helper_shutdown() at
+ shutdown time
+To: Douglas Anderson <dianders@chromium.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240627_055218_869168_B1710DDA 
-X-CRM114-Status: GOOD (  10.53  )
+X-CRM114-CacheID: sfid-20240627_070237_587404_78F1BA9F 
+X-CRM114-Status: GOOD (  31.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,26 +77,94 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Daniel Vetter <daniel@ffwll.ch>, Linus Walleij <linus.walleij@linaro.org>, Neil Armstrong <neil.armstrong@linaro.org>, linux-kernel@vger.kernel.org, Maxime Ripard <mripard@kernel.org>, linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, David Airlie <airlied@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jun 27, 2024 at 8:59=E2=80=AFAM Mark-PK Tsai <mark-pk.tsai@mediatek=
-.com> wrote:
+Hi, Douglas
+
+Douglas Anderson <dianders@chromium.org> =E6=96=BC 2024=E5=B9=B46=E6=9C=881=
+2=E6=97=A5 =E9=80=B1=E4=B8=89 =E4=B8=8A=E5=8D=881:28=E5=AF=AB=E9=81=93=EF=
+=BC=9A
 >
-> The 'missing-field-initializers' warning was reported
-> when building with W=3D2.
-> This patch use designated initializers for
-> 'struct ffa_send_direct_data' to suppress the warning
-> and clarify the initialization intent.
+> Based on grepping through the source code this driver appears to be
+> missing a call to drm_atomic_helper_shutdown() at system shutdown
+> time. Among other things, this means that if a panel is in use that it
+> won't be cleanly powered off at system shutdown time.
 >
-> Signed-off-by: ming-jen.chang <ming-jen.chang@mediatek.com>
-> Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+> The fact that we should call drm_atomic_helper_shutdown() in the case
+> of OS shutdown/restart comes straight out of the kernel doc "driver
+> instance overview" in drm_drv.c.
+>
+> This driver users the component model and shutdown happens in the base
+> driver. The "drvdata" for this driver will always be valid if
+> shutdown() is called and as of commit 2a073968289d
+> ("drm/atomic-helper: drm_atomic_helper_shutdown(NULL) should be a
+> noop") we don't need to confirm that "drm" is non-NULL.
+
+Applied to mediatek-drm-next [1], thanks.
+
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/=
+log/?h=3Dmediatek-drm-next
+
+>
+> Suggested-by: Maxime Ripard <mripard@kernel.org>
+> Reviewed-by: Maxime Ripard <mripard@kernel.org>
+> Reviewed-by: Fei Shao <fshao@chromium.org>
+> Tested-by: Fei Shao <fshao@chromium.org>
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
 > ---
->  drivers/tee/optee/ffa_abi.c | 12 +++++++++---
->  1 file changed, 9 insertions(+), 3 deletions(-)
-
-I'm picking up this.
-
-Thanks,
-Jens
+> v1 of this patch was part of a series [1]. It got tested and reviewed
+> but never landed. Reposting separately in the hopes that Mediatek DRM
+> folks will land it. If, instead, Mediatek DRM folks want to Ack it I'm
+> happy to land through drm-misc.
+>
+> I noticed that this was missing when I failed to add "mediatek" to my
+> patch series IDing which DRM modeset drivers did this properly [2].
+> Assuming my patch lands, that means that Mediatek devices will start
+> getting more warnings printed.
+>
+> [1] https://lore.kernel.org/r/20230901164111.RFT.5.I2b014f90afc4729b6ecc7=
+b5ddd1f6dedcea4625b@changeid
+> [2] https://lore.kernel.org/r/20240611074846.1.Ieb287c2c3ee3f6d3b0d5f49b2=
+9f746b93621749c@changeid
+>
+> Changes in v2:
+> - Removed NULL check since it's not needed since 6.7
+> - Rebased on ToT.
+>
+>  drivers/gpu/drm/mediatek/mtk_drm_drv.c | 8 ++++++++
+>  1 file changed, 8 insertions(+)
+>
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/med=
+iatek/mtk_drm_drv.c
+> index b5f605751b0a..de811e2265da 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> @@ -952,6 +952,13 @@ static void mtk_drm_remove(struct platform_device *p=
+dev)
+>                 of_node_put(private->comp_node[i]);
+>  }
+>
+> +static void mtk_drm_shutdown(struct platform_device *pdev)
+> +{
+> +       struct mtk_drm_private *private =3D platform_get_drvdata(pdev);
+> +
+> +       drm_atomic_helper_shutdown(private->drm);
+> +}
+> +
+>  static int mtk_drm_sys_prepare(struct device *dev)
+>  {
+>         struct mtk_drm_private *private =3D dev_get_drvdata(dev);
+> @@ -983,6 +990,7 @@ static const struct dev_pm_ops mtk_drm_pm_ops =3D {
+>  static struct platform_driver mtk_drm_platform_driver =3D {
+>         .probe  =3D mtk_drm_probe,
+>         .remove_new =3D mtk_drm_remove,
+> +       .shutdown =3D mtk_drm_shutdown,
+>         .driver =3D {
+>                 .name   =3D "mediatek-drm",
+>                 .pm     =3D &mtk_drm_pm_ops,
+> --
+> 2.45.2.505.gda0bf45e8d-goog
+>
 
