@@ -4,83 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84E33C3064D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jun 2024 18:25:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8EECC3064D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jun 2024 18:25:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tx7jh0B58cxFxmVHCLdBqlLQSjDYtx8+afXP5fcmOT0=; b=T2PhVODhwp/gpKz+QzwMFWh5cu
-	UunTMxBjV5Cy34K2Yb+udz0C2O6kTbYnOpf64RN9Bd0IbzwxLbdpXwpWfazv9oNax2YY5FWriRuZU
-	cpLaY5TisExEy5Pb64fK+8eg6DNjhcwED5DLktp5WTSLKejow2RZIp6P5HdoLBPxwblSvvu8Bmwnn
-	luiE+QtOaGcCEFnvuopHK9A0wF2AcIIOZzz0VOp3WJsbsjWlsc4flLy/CVw5i+dI5M87o0n29HifB
-	ph8eVTcAiFnl44Tdxtl0CkJ3GqcrHIbACoLJQj3kgtuaZXzFKwOuW6Ke+Bo1Nh8rQDxHnzSE+VC5l
-	06vctqsQ==;
+	bh=RMkxoLc1aSqbhPiXoGqqRV9YQkxxBDLdzv5oSMIGv8o=; b=jRgZ1aR8vDL8VKaXRaFWQDyLT6
+	dWCpGME6daFXnMuna0fTyLT9D/B80SrrXZdidj75jVaNZZFTN79seD4KJsUxRT9Dy2+VdztiTlccM
+	TSrNsTakjtqxPrVKv9FzIvJQYtMuYDpUqN8OHYLXR3dCGvCD477GGLUavHuSLh+dOnDQZOl0MgXYR
+	2xsmeiwh3IEx15y1LKYyv6TOdOIcHQsI22zACfIYQBjCFF9mc0YE5a7m9QrNzWcwrtZD3jWqc7mZl
+	R2DuuKULGvGP33NJWErhB5UUzt4DqehN3n5kGkgSakxlJI3S5iZ3NSNz5YZnL1NGTKtVnXZDoXzWc
+	7ejy1fSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMto9-0000000BNq8-1cbl;
-	Thu, 27 Jun 2024 18:25:21 +0000
-Received: from mgamail.intel.com ([198.175.65.20])
+	id 1sMtoH-0000000BNtZ-1ZE6;
+	Thu, 27 Jun 2024 18:25:29 +0000
+Received: from mgamail.intel.com ([192.198.163.18])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMto5-0000000BNnb-028a
-	for linux-mediatek@lists.infradead.org;
-	Thu, 27 Jun 2024 18:25:19 +0000
+	id 1sMto6-0000000BNoI-0Ird;
+	Thu, 27 Jun 2024 18:25:20 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1719512717; x=1751048717;
+  t=1719512718; x=1751048718;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=1Ajy1en2qPpu1h+fHYclENO/17vYGHDO6/UafbA2Eyw=;
-  b=BzBoSDOEpvos7v85ndADrRPvx7TcjYyKcqKwCsFxakpbhNRdqw3BeTLa
-   qW3fyUa6gpuIG4zWp51XV8/D5tmsMwyFy45LuyvUqiAczNTtekxuK225B
-   2ZpZhSHPQ3CtyOtZ3HM7Q+26gGwf5d2KkvHvjiKM5jQUzse6YKvl3Mg1I
-   UKZ2HZQcCJO+Kopjw57OzjpugtengKJbnSdoAiUjserqGWvAE2OmfKC5/
-   VfdsNkYcy8vYVAig3Q+C+cPTSZOZpbKoI5B+jKiJfhApksxMcsHQCf+UO
-   J0zUJbEvsHTgPNegLuMApMinGMOVMuWixkjEcUhEECJxK3Lbgo9g82lBK
-   w==;
-X-CSE-ConnectionGUID: Z/KgtpkWT/CUAH4q8IcaMA==
-X-CSE-MsgGUID: 6n6+oXDgS4yXRls+Lvtonw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11116"; a="16488370"
+  bh=hkbH3h5i6uGsXa8uzjWtbfxWSJess7YTCGvakbQvPXY=;
+  b=lFU8II/xSunAAy1OHa/W80Ve9O7bz+BK7qcjSzH/7UNK1nurkCTDu0Zq
+   FmLKp4tBm4KwjxtOH7OK0Hfzr6uzqhTBbXfuHmUDWGsE7+/vE+X3xSEdb
+   kSsbJcEijbXzklINkMJrTiR9MqOQ+4hsmA3FaCygllmfTpsAuYHHZD78n
+   T+W5r5f2Nj4D8yvNCWHIlm1bvIKnll1E8rNwx44tT6yu/NBU9fdXc4PzN
+   vI9+sL4CRPk14qhD6VZFFxUu+dRWIrSlZkJPdfU30EQQNKp+jN+Nj/pI5
+   pnBT8vnHMey3W4AKUbUJ6EE2DZjoOPuUZtqwBjZfrvZHcRMB7nNWiUOPk
+   A==;
+X-CSE-ConnectionGUID: 4hk7ehvpSFK2bhYXEFz70w==
+X-CSE-MsgGUID: 6Lqwf+MWQwaKSSEOVtlWCg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11116"; a="16345770"
 X-IronPort-AV: E=Sophos;i="6.09,166,1716274800"; 
-   d="scan'208";a="16488370"
-Received: from fmviesa006.fm.intel.com ([10.60.135.146])
-  by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Jun 2024 11:25:15 -0700
-X-CSE-ConnectionGUID: ahlKCS5gSKyDs0rBA+MtJg==
-X-CSE-MsgGUID: ivEELg1lQLe/k2fFRQLdeg==
+   d="scan'208";a="16345770"
+Received: from fmviesa003.fm.intel.com ([10.60.135.143])
+  by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Jun 2024 11:25:17 -0700
+X-CSE-ConnectionGUID: Ee3EDbM+Tpuq9RV7L2Kj0w==
+X-CSE-MsgGUID: DPfCvDUHTxeU4kbEH+bqdw==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.09,166,1716274800"; 
-   d="scan'208";a="44303023"
+   d="scan'208";a="48808509"
 Received: from lkp-server01.sh.intel.com (HELO 68891e0c336b) ([10.239.97.150])
-  by fmviesa006.fm.intel.com with ESMTP; 27 Jun 2024 11:25:13 -0700
+  by fmviesa003.fm.intel.com with ESMTP; 27 Jun 2024 11:25:13 -0700
 Received: from kbuild by 68891e0c336b with local (Exim 4.96)
 	(envelope-from <lkp@intel.com>)
-	id 1sMtny-000GQA-36;
-	Thu, 27 Jun 2024 18:25:10 +0000
-Date: Fri, 28 Jun 2024 02:25:06 +0800
+	id 1sMtny-000GQC-3D;
+	Thu, 27 Jun 2024 18:25:11 +0000
+Date: Fri, 28 Jun 2024 02:25:05 +0800
 From: kernel test robot <lkp@intel.com>
-To: Chris Lu <chris.lu@mediatek.com>, Marcel Holtmann <marcel@holtmann.org>,
-	Johan Hedberg <johan.hedberg@gmail.com>,
-	Luiz Von Dentz <luiz.dentz@gmail.com>
-Cc: oe-kbuild-all@lists.linux.dev, Sean Wang <sean.wang@mediatek.com>,
-	Aaron Hou <aaron.hou@mediatek.com>,
-	Steve Lee <steve.lee@mediatek.com>,
-	linux-bluetooth <linux-bluetooth@vger.kernel.org>,
-	linux-kernel <linux-kernel@vger.kernel.org>,
-	linux-mediatek <linux-mediatek@lists.infradead.org>,
-	Chris Lu <chris.lu@mediatek.com>
-Subject: Re: [PATCH v5 8/8] Bluetooth: btusb: mediatek: add ISO data
- transmission functions
-Message-ID: <202406280211.EtaVcgeY-lkp@intel.com>
-References: <20240626025329.26424-9-chris.lu@mediatek.com>
+To: "Rob Herring (Arm)" <robh@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+	Jose Abreu <joabreu@synopsys.com>
+Cc: oe-kbuild-all@lists.linux.dev, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net-next] dt-bindings: net: Define properties at top-level
+Message-ID: <202406280202.IRKWOMQk-lkp@intel.com>
+References: <20240625215442.190557-2-robh@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240626025329.26424-9-chris.lu@mediatek.com>
+In-Reply-To: <20240625215442.190557-2-robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240627_112517_172442_1360DCC9 
-X-CRM114-Status: GOOD (  13.06  )
+X-CRM114-CacheID: sfid-20240627_112518_201626_F565156D 
+X-CRM114-Status: GOOD (  10.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,74 +99,158 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Chris,
+Hi Rob,
 
 kernel test robot noticed the following build warnings:
 
-[auto build test WARNING on bluetooth-next/master]
-[also build test WARNING on next-20240626]
-[cannot apply to bluetooth/master linus/master v6.10-rc5]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+[auto build test WARNING on net-next/main]
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Chris-Lu/Bluetooth-btusb-mediatek-remove-the-unnecessary-goto-tag/20240626-114003
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/bluetooth/bluetooth-next.git master
-patch link:    https://lore.kernel.org/r/20240626025329.26424-9-chris.lu%40mediatek.com
-patch subject: [PATCH v5 8/8] Bluetooth: btusb: mediatek: add ISO data transmission functions
-config: mips-lemote2f_defconfig (https://download.01.org/0day-ci/archive/20240628/202406280211.EtaVcgeY-lkp@intel.com/config)
-compiler: mips64el-linux-gcc (GCC) 13.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240628/202406280211.EtaVcgeY-lkp@intel.com/reproduce)
+url:    https://github.com/intel-lab-lkp/linux/commits/Rob-Herring-Arm/dt-bindings-net-Define-properties-at-top-level/20240626-091748
+base:   net-next/main
+patch link:    https://lore.kernel.org/r/20240625215442.190557-2-robh%40kernel.org
+patch subject: [PATCH net-next] dt-bindings: net: Define properties at top-level
+config: arc-randconfig-051-20240628 (https://download.01.org/0day-ci/archive/20240628/202406280202.IRKWOMQk-lkp@intel.com/config)
+compiler: arceb-elf-gcc (GCC) 13.2.0
+dtschema version: 2024.6.dev2+g3b69bad
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240628/202406280202.IRKWOMQk-lkp@intel.com/reproduce)
 
 If you fix the issue in a separate patch/commit (i.e. not just a new version of
 the same patch/commit), kindly add following tags
 | Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202406280211.EtaVcgeY-lkp@intel.com/
+| Closes: https://lore.kernel.org/oe-kbuild-all/202406280202.IRKWOMQk-lkp@intel.com/
 
-All warnings (new ones prefixed by >>):
-
-   In file included from drivers/bluetooth/btusb.c:28:
-   drivers/bluetooth/btmtk.h: In function 'alloc_mtk_intr_urb':
->> drivers/bluetooth/btmtk.h:274:24: warning: passing argument 1 of 'PTR_ERR' makes pointer from integer without a cast [-Wint-conversion]
-     274 |         return PTR_ERR(-EOPNOTSUPP);
-   In file included from include/linux/kernfs.h:9,
-                    from include/linux/sysfs.h:16,
-                    from include/linux/kobject.h:20,
-                    from include/linux/dmi.h:6,
-                    from drivers/bluetooth/btusb.c:9:
-   include/linux/err.h:49:61: note: expected 'const void *' but argument is of type 'int'
-      49 | static inline long __must_check PTR_ERR(__force const void *ptr)
-         |                                                 ~~~~~~~~~~~~^~~
->> drivers/bluetooth/btmtk.h:274:16: warning: returning 'long int' from a function with return type 'struct urb *' makes pointer from integer without a cast [-Wint-conversion]
-     274 |         return PTR_ERR(-EOPNOTSUPP);
-         |                ^~~~~~~~~~~~~~~~~~~~
-   drivers/bluetooth/btmtk.h: At top level:
-   drivers/bluetooth/btmtk.h:256:13: warning: 'btmtk_fw_get_filename' defined but not used [-Wunused-function]
-     256 | static void btmtk_fw_get_filename(char *buf, size_t size, u32 dev_id,
-         |             ^~~~~~~~~~~~~~~~~~~~~
-   drivers/bluetooth/btmtk.h:251:12: warning: 'btmtk_process_coredump' defined but not used [-Wunused-function]
-     251 | static int btmtk_process_coredump(struct hci_dev *hdev, struct sk_buff *skb)
-         |            ^~~~~~~~~~~~~~~~~~~~~~
-   drivers/bluetooth/btmtk.h:245:12: warning: 'btmtk_register_coredump' defined but not used [-Wunused-function]
-     245 | static int btmtk_register_coredump(struct hci_dev *hdev, const char *name,
-         |            ^~~~~~~~~~~~~~~~~~~~~~~
-   drivers/bluetooth/btmtk.h:235:12: warning: 'btmtk_setup_firmware' defined but not used [-Wunused-function]
-     235 | static int btmtk_setup_firmware(struct hci_dev *hdev, const char *fwname,
-         |            ^~~~~~~~~~~~~~~~~~~~
-   drivers/bluetooth/btmtk.h:229:12: warning: 'btmtk_setup_firmware_79xx' defined but not used [-Wunused-function]
-     229 | static int btmtk_setup_firmware_79xx(struct hci_dev *hdev, const char *fwname,
-         |            ^~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-vim +/PTR_ERR +274 drivers/bluetooth/btmtk.h
-
-   270	
-   271	static struct urb *alloc_mtk_intr_urb(struct hci_dev *hdev, struct sk_buff *skb,
-   272					      usb_complete_t tx_complete)
-   273	{
- > 274		return PTR_ERR(-EOPNOTSUPP);
-   275	}
-   276	
+dtcheck warnings: (new ones prefixed by >>)
+   arch/arc/boot/dts/axs101.dtb: axs10x_mb: connector: 'ranges' is a required property
+   	from schema $id: http://devicetree.org/schemas/simple-bus.yaml#
+   arch/arc/boot/dts/axs101.dtb: axs10x_mb: clocks: 'ranges' is a required property
+   	from schema $id: http://devicetree.org/schemas/simple-bus.yaml#
+   arch/arc/boot/dts/axs101.dtb: axs10x_mb: sound_playback: 'ranges' is a required property
+   	from schema $id: http://devicetree.org/schemas/simple-bus.yaml#
+   arch/arc/boot/dts/axs101.dtb: /axs10x_mb/i2sclk@100a0: failed to match any schema with compatible: ['snps,axs10x-i2s-pll-clock']
+   arch/arc/boot/dts/axs101.dtb: i2cclk: clock-frequency:0:0: 50000000 is greater than the maximum of 5000000
+   	from schema $id: http://devicetree.org/schemas/i2c/i2c-controller.yaml#
+   arch/arc/boot/dts/axs101.dtb: /axs10x_mb/pguclk@10080: failed to match any schema with compatible: ['snps,axs10x-pgu-pll-clock']
+>> arch/arc/boot/dts/axs101.dtb: ethernet@18000: snps,pbl: False schema does not allow [[32]]
+   	from schema $id: http://devicetree.org/schemas/net/snps,dwmac.yaml#
+   arch/arc/boot/dts/axs101.dtb: uart@20000: $nodename:0: 'uart@20000' does not match '^serial(@.*)?$'
+   	from schema $id: http://devicetree.org/schemas/serial/snps-dw-apb-uart.yaml#
+   arch/arc/boot/dts/axs101.dtb: uart@20000: Unevaluated properties are not allowed ('baud' was unexpected)
+   	from schema $id: http://devicetree.org/schemas/serial/snps-dw-apb-uart.yaml#
+   arch/arc/boot/dts/axs101.dtb: uart@21000: $nodename:0: 'uart@21000' does not match '^serial(@.*)?$'
+   	from schema $id: http://devicetree.org/schemas/serial/snps-dw-apb-uart.yaml#
+   arch/arc/boot/dts/axs101.dtb: uart@21000: Unevaluated properties are not allowed ('baud' was unexpected)
+   	from schema $id: http://devicetree.org/schemas/serial/snps-dw-apb-uart.yaml#
+   arch/arc/boot/dts/axs101.dtb: uart@22000: $nodename:0: 'uart@22000' does not match '^serial(@.*)?$'
+--
+   	from schema $id: http://devicetree.org/schemas/serial/snps-dw-apb-uart.yaml#
+   arch/arc/boot/dts/axs103.dtb: /cpu_card/pct: failed to match any schema with compatible: ['snps,archs-pct']
+   arch/arc/boot/dts/axs103.dtb: axs10x_mb: $nodename:0: 'axs10x_mb' does not match '^([a-z][a-z0-9\\-]+-bus|bus|localbus|soc|axi|ahb|apb)(@.+)?$'
+   	from schema $id: http://devicetree.org/schemas/simple-bus.yaml#
+   arch/arc/boot/dts/axs103.dtb: axs10x_mb: connector: 'ranges' is a required property
+   	from schema $id: http://devicetree.org/schemas/simple-bus.yaml#
+   arch/arc/boot/dts/axs103.dtb: axs10x_mb: clocks: 'ranges' is a required property
+   	from schema $id: http://devicetree.org/schemas/simple-bus.yaml#
+   arch/arc/boot/dts/axs103.dtb: axs10x_mb: sound_playback: 'ranges' is a required property
+   	from schema $id: http://devicetree.org/schemas/simple-bus.yaml#
+>> arch/arc/boot/dts/axs103.dtb: ethernet@18000: snps,pbl: False schema does not allow [[32]]
+   	from schema $id: http://devicetree.org/schemas/net/snps,dwmac.yaml#
+   arch/arc/boot/dts/axs103.dtb: usb@40000: Unevaluated properties are not allowed ('dma-coherent' was unexpected)
+   	from schema $id: http://devicetree.org/schemas/usb/generic-ehci.yaml#
+   arch/arc/boot/dts/axs103.dtb: usb@60000: Unevaluated properties are not allowed ('dma-coherent' was unexpected)
+   	from schema $id: http://devicetree.org/schemas/usb/generic-ohci.yaml#
+   arch/arc/boot/dts/axs103.dtb: mmc@15000: Unevaluated properties are not allowed ('dma-coherent' was unexpected)
+   	from schema $id: http://devicetree.org/schemas/mmc/synopsys-dw-mshc.yaml#
+   arch/arc/boot/dts/axs103.dtb: /axs10x_mb/i2sclk@100a0: failed to match any schema with compatible: ['snps,axs10x-i2s-pll-clock']
+   arch/arc/boot/dts/axs103.dtb: i2cclk: clock-frequency:0:0: 50000000 is greater than the maximum of 5000000
+   	from schema $id: http://devicetree.org/schemas/i2c/i2c-controller.yaml#
+--
+   	from schema $id: http://devicetree.org/schemas/serial/snps-dw-apb-uart.yaml#
+   arch/arc/boot/dts/axs103_idu.dtb: /cpu_card/pct: failed to match any schema with compatible: ['snps,archs-pct']
+   arch/arc/boot/dts/axs103_idu.dtb: axs10x_mb: $nodename:0: 'axs10x_mb' does not match '^([a-z][a-z0-9\\-]+-bus|bus|localbus|soc|axi|ahb|apb)(@.+)?$'
+   	from schema $id: http://devicetree.org/schemas/simple-bus.yaml#
+   arch/arc/boot/dts/axs103_idu.dtb: axs10x_mb: connector: 'ranges' is a required property
+   	from schema $id: http://devicetree.org/schemas/simple-bus.yaml#
+   arch/arc/boot/dts/axs103_idu.dtb: axs10x_mb: clocks: 'ranges' is a required property
+   	from schema $id: http://devicetree.org/schemas/simple-bus.yaml#
+   arch/arc/boot/dts/axs103_idu.dtb: axs10x_mb: sound_playback: 'ranges' is a required property
+   	from schema $id: http://devicetree.org/schemas/simple-bus.yaml#
+>> arch/arc/boot/dts/axs103_idu.dtb: ethernet@18000: snps,pbl: False schema does not allow [[32]]
+   	from schema $id: http://devicetree.org/schemas/net/snps,dwmac.yaml#
+   arch/arc/boot/dts/axs103_idu.dtb: usb@40000: Unevaluated properties are not allowed ('dma-coherent' was unexpected)
+   	from schema $id: http://devicetree.org/schemas/usb/generic-ehci.yaml#
+   arch/arc/boot/dts/axs103_idu.dtb: usb@60000: Unevaluated properties are not allowed ('dma-coherent' was unexpected)
+   	from schema $id: http://devicetree.org/schemas/usb/generic-ohci.yaml#
+   arch/arc/boot/dts/axs103_idu.dtb: mmc@15000: Unevaluated properties are not allowed ('dma-coherent' was unexpected)
+   	from schema $id: http://devicetree.org/schemas/mmc/synopsys-dw-mshc.yaml#
+   arch/arc/boot/dts/axs103_idu.dtb: /axs10x_mb/i2sclk@100a0: failed to match any schema with compatible: ['snps,axs10x-i2s-pll-clock']
+   arch/arc/boot/dts/axs103_idu.dtb: i2cclk: clock-frequency:0:0: 50000000 is greater than the maximum of 5000000
+   	from schema $id: http://devicetree.org/schemas/i2c/i2c-controller.yaml#
+--
+   arch/arc/boot/dts/hsdk.dtb: soc: gpu-core-clk: 'ranges' is a required property
+   	from schema $id: http://devicetree.org/schemas/simple-bus.yaml#
+   arch/arc/boot/dts/hsdk.dtb: soc: mmcclk-biu: 'ranges' is a required property
+   	from schema $id: http://devicetree.org/schemas/simple-bus.yaml#
+   arch/arc/boot/dts/hsdk.dtb: soc: gpu-cfg-clk: 'ranges' is a required property
+   	from schema $id: http://devicetree.org/schemas/simple-bus.yaml#
+   arch/arc/boot/dts/hsdk.dtb: /soc/reset-controller@8a0: failed to match any schema with compatible: ['snps,hsdk-reset']
+   arch/arc/boot/dts/hsdk.dtb: /soc/core-clk@0: failed to match any schema with compatible: ['snps,hsdk-core-pll-clock']
+   arch/arc/boot/dts/hsdk.dtb: serial@5000: Unevaluated properties are not allowed ('baud' was unexpected)
+   	from schema $id: http://devicetree.org/schemas/serial/snps-dw-apb-uart.yaml#
+>> arch/arc/boot/dts/hsdk.dtb: ethernet@8000: snps,pbl: False schema does not allow [[32]]
+   	from schema $id: http://devicetree.org/schemas/net/snps,dwmac.yaml#
+   arch/arc/boot/dts/hsdk.dtb: usb@60000: Unevaluated properties are not allowed ('dma-coherent' was unexpected)
+   	from schema $id: http://devicetree.org/schemas/usb/generic-ohci.yaml#
+   arch/arc/boot/dts/hsdk.dtb: usb@40000: Unevaluated properties are not allowed ('dma-coherent' was unexpected)
+   	from schema $id: http://devicetree.org/schemas/usb/generic-ehci.yaml#
+   arch/arc/boot/dts/hsdk.dtb: mmc@a000: Unevaluated properties are not allowed ('dma-coherent', 'num-slots' were unexpected)
+   	from schema $id: http://devicetree.org/schemas/mmc/synopsys-dw-mshc.yaml#
+   arch/arc/boot/dts/hsdk.dtb: /soc/gpio@14b0: failed to match any schema with compatible: ['snps,creg-gpio-hsdk']
+   arch/arc/boot/dts/hsdk.dtb: dmac@80000: '#dma-cells' is a required property
+   	from schema $id: http://devicetree.org/schemas/dma/snps,dw-axi-dmac.yaml#
+--
+   arch/arc/boot/dts/vdk_hs38.dtb: /cpu_card/archs-intc@cpu: failed to match any schema with compatible: ['snps,archs-intc']
+   arch/arc/boot/dts/vdk_hs38.dtb: dw-apb-uart@5000: $nodename:0: 'dw-apb-uart@5000' does not match '^serial(@.*)?$'
+   	from schema $id: http://devicetree.org/schemas/serial/snps-dw-apb-uart.yaml#
+   arch/arc/boot/dts/vdk_hs38.dtb: dw-apb-uart@5000: Unevaluated properties are not allowed ('baud' was unexpected)
+   	from schema $id: http://devicetree.org/schemas/serial/snps-dw-apb-uart.yaml#
+   arch/arc/boot/dts/vdk_hs38.dtb: /interrupt-controller@e0012000: failed to match any schema with compatible: ['snps,dw-apb-ictl']
+   arch/arc/boot/dts/vdk_hs38.dtb: axs10x_mb_vdk: $nodename:0: 'axs10x_mb_vdk' does not match '^([a-z][a-z0-9\\-]+-bus|bus|localbus|soc|axi|ahb|apb)(@.+)?$'
+   	from schema $id: http://devicetree.org/schemas/simple-bus.yaml#
+   arch/arc/boot/dts/vdk_hs38.dtb: axs10x_mb_vdk: clocks: 'ranges' is a required property
+   	from schema $id: http://devicetree.org/schemas/simple-bus.yaml#
+>> arch/arc/boot/dts/vdk_hs38.dtb: ethernet@18000: snps,pbl: False schema does not allow [[32]]
+   	from schema $id: http://devicetree.org/schemas/net/snps,dwmac.yaml#
+   arch/arc/boot/dts/vdk_hs38.dtb: uart@20000: $nodename:0: 'uart@20000' does not match '^serial(@.*)?$'
+   	from schema $id: http://devicetree.org/schemas/serial/snps-dw-apb-uart.yaml#
+   arch/arc/boot/dts/vdk_hs38.dtb: uart@20000: Unevaluated properties are not allowed ('baud' was unexpected)
+   	from schema $id: http://devicetree.org/schemas/serial/snps-dw-apb-uart.yaml#
+   arch/arc/boot/dts/vdk_hs38.dtb: uart@21000: $nodename:0: 'uart@21000' does not match '^serial(@.*)?$'
+   	from schema $id: http://devicetree.org/schemas/serial/snps-dw-apb-uart.yaml#
+   arch/arc/boot/dts/vdk_hs38.dtb: uart@21000: Unevaluated properties are not allowed ('baud' was unexpected)
+   	from schema $id: http://devicetree.org/schemas/serial/snps-dw-apb-uart.yaml#
+   arch/arc/boot/dts/vdk_hs38.dtb: uart@22000: $nodename:0: 'uart@22000' does not match '^serial(@.*)?$'
+--
+   arch/arc/boot/dts/vdk_hs38_smp.dtb: /cpu_card/idu-interrupt-controller: failed to match any schema with compatible: ['snps,archs-idu-intc']
+   arch/arc/boot/dts/vdk_hs38_smp.dtb: dw-apb-uart@5000: $nodename:0: 'dw-apb-uart@5000' does not match '^serial(@.*)?$'
+   	from schema $id: http://devicetree.org/schemas/serial/snps-dw-apb-uart.yaml#
+   arch/arc/boot/dts/vdk_hs38_smp.dtb: dw-apb-uart@5000: Unevaluated properties are not allowed ('baud' was unexpected)
+   	from schema $id: http://devicetree.org/schemas/serial/snps-dw-apb-uart.yaml#
+   arch/arc/boot/dts/vdk_hs38_smp.dtb: /interrupt-controller@e0012000: failed to match any schema with compatible: ['snps,dw-apb-ictl']
+   arch/arc/boot/dts/vdk_hs38_smp.dtb: axs10x_mb_vdk: $nodename:0: 'axs10x_mb_vdk' does not match '^([a-z][a-z0-9\\-]+-bus|bus|localbus|soc|axi|ahb|apb)(@.+)?$'
+   	from schema $id: http://devicetree.org/schemas/simple-bus.yaml#
+   arch/arc/boot/dts/vdk_hs38_smp.dtb: axs10x_mb_vdk: clocks: 'ranges' is a required property
+   	from schema $id: http://devicetree.org/schemas/simple-bus.yaml#
+>> arch/arc/boot/dts/vdk_hs38_smp.dtb: ethernet@18000: snps,pbl: False schema does not allow [[32]]
+   	from schema $id: http://devicetree.org/schemas/net/snps,dwmac.yaml#
+   arch/arc/boot/dts/vdk_hs38_smp.dtb: uart@20000: $nodename:0: 'uart@20000' does not match '^serial(@.*)?$'
+   	from schema $id: http://devicetree.org/schemas/serial/snps-dw-apb-uart.yaml#
+   arch/arc/boot/dts/vdk_hs38_smp.dtb: uart@20000: Unevaluated properties are not allowed ('baud' was unexpected)
+   	from schema $id: http://devicetree.org/schemas/serial/snps-dw-apb-uart.yaml#
+   arch/arc/boot/dts/vdk_hs38_smp.dtb: uart@21000: $nodename:0: 'uart@21000' does not match '^serial(@.*)?$'
+   	from schema $id: http://devicetree.org/schemas/serial/snps-dw-apb-uart.yaml#
+   arch/arc/boot/dts/vdk_hs38_smp.dtb: uart@21000: Unevaluated properties are not allowed ('baud' was unexpected)
+   	from schema $id: http://devicetree.org/schemas/serial/snps-dw-apb-uart.yaml#
+   arch/arc/boot/dts/vdk_hs38_smp.dtb: uart@22000: $nodename:0: 'uart@22000' does not match '^serial(@.*)?$'
 
 -- 
 0-DAY CI Kernel Test Service
