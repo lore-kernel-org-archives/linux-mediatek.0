@@ -4,64 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17E0EC2BD09
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jun 2024 07:59:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF207C2BD09
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jun 2024 08:00:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=YhATdO6KrQ7DGf5zFpJNQOGA3ipHEvfK6RNPhriw9Wk=; b=RDJ3Fkt2Tknt3PbpJb56AeqYSE
-	dTj0seFKOEOMO2e1Y8ObKLA4DIx02+GxUeqc1Q7or2HLAdw52iDhxRt87gA/cqIziXIxtgonHmuFT
-	IxM4rsxgBlWIJoYGVc/1OlkvfSasGC+GrjobiYqaLdjUD1CtbqWYg/fBe7cwvse7QenvGRjfN3lQ/
-	/pgFFJS70mag+c4GEL3Gnj00hc689K/zqIpiaTU3ko6CPthxxK0In+OU1TTESqG8ivu8kI+06H+ut
-	gaiSBAvy7Kbykqx/Zc6pzljiCVMeIDF4StDqBbuhD6L25bjACz9t8FR4EOQ7lKpJxUvKWr0W6t1OM
-	Qo/7wTJg==;
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BkBpPkBgBA3ODAja8zGIcwpt50GSoIUtolN0QhQXZcQ=; b=AWHApiVDKGiq5QCiwFbqiZpDG9
+	QwNRyeXabagXBnXEg3qKWqQT+cuLJ7jcKQNLpNBtDVLltl+LDXsfWtMvSTo9bUQzGgS09jFFyu69W
+	5FF9vquiiBfLzndlDJOhIJtt9F3q/mo+27S1Qs0IpYhE+dVDFaaXGyhmbCBsIshaK0zeyc+jOWwDj
+	zqSZeCZZsPkAFStrjqel0bfgxZqGjnSXKkjmi++p6GN7KejWPDqu2QvjRf9tAPZCV7+MiBvBb57qp
+	sSsTKfiCsrGT/5bBWHxwcvZxU3QyWZJcnsb9G2vGaop7d9FtYWO2jL0MvVfPP9mVZRm54lki5hUi5
+	5aFgrL8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMk2U-00000009enp-31Px;
-	Thu, 27 Jun 2024 07:59:30 +0000
-Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
+	id 1sMk2y-00000009eu8-2LM3;
+	Thu, 27 Jun 2024 08:00:00 +0000
+Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMk2M-00000009eky-0cAc
+	id 1sMk2f-00000009epk-1bW3
 	for linux-mediatek@lists.infradead.org;
-	Thu, 27 Jun 2024 07:59:24 +0000
-Received: by mail-pl1-x629.google.com with SMTP id d9443c01a7336-1f9d9b57b90so51608425ad.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 27 Jun 2024 00:59:21 -0700 (PDT)
+	Thu, 27 Jun 2024 07:59:52 +0000
+Received: by mail-pg1-x52d.google.com with SMTP id 41be03b00d2f7-711b1512aeaso5924882a12.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 27 Jun 2024 00:59:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=bade.nz; s=google; t=1719475160; x=1720079960; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=YhATdO6KrQ7DGf5zFpJNQOGA3ipHEvfK6RNPhriw9Wk=;
-        b=bh3UJb2th8eopWIG+fpG4S6mnrZRac1w3AetMRA2ihtts2MLk4cDMXMSDFFEBGyyV5
-         DJYLKW79x+rexfDvIA3v8aSDni0Ta3pPvXM/Zm86bQLAnM+U0kzp3s9MlYMLBqb8aNV8
-         ep2HsVfbASrwEseg9HnbiA1xPpfikACNec023hcSiKXHs7z79Sr2Vyu8jInZFDqMi0pQ
-         r91tieM18tEqsWUF8NYEAour2B5WOpQpF6mEW6frrirJZeB1JmfEm7dYNoz0rGa42FIZ
-         zWTP8WUPt3SuUArrG9NW2r6HpH8xsjJNmM8aklPKjUl4ySPtmvDww/g0fu5U+PahOsI0
-         tQdQ==
+        d=bade.nz; s=google; t=1719475180; x=1720079980; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=BkBpPkBgBA3ODAja8zGIcwpt50GSoIUtolN0QhQXZcQ=;
+        b=cSkM3OqX5+tCsQWTgXqKv9xVMv/c8Vt33Z0kkgiy+pHLLC+cgKHaqk6iQToyGG/0o2
+         1Uj7Hq1f44DTSt8BGl63shuMbLDJN84w/g+pe1oXKnKloz1G5JPR9Gemj6n3lL7Bsn/P
+         YGxybvcpcKVKUpr1JraGFH35x8pRvRKLsD7gLIVmyLl0jIhgtJYUCkjlrMSnuG9+hZvz
+         0PyYON+ct5cmDG1lGIQwJeuSjNWkFuhj8fJxNSH0WhSyJTbS2mr95vF3u+enWIooiMjv
+         j9VdY3FM3pnzgfBqWDK/IwiCmYGndfWQHVMh/8FYHedw6V3gggjAnOpoELm7bqAqNfEq
+         E/vw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1719475160; x=1720079960;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=YhATdO6KrQ7DGf5zFpJNQOGA3ipHEvfK6RNPhriw9Wk=;
-        b=ap97sfUBcKe1PtSjSdTW0OKbYes0SyJl6+s0JplPsDhcsUKt7BMsCzeBP1RcklctFK
-         FjNFvswVzWEchcBGrQYeENEEsKyJ7uTlqpzQ+zaZ1FqkdK/hcwuw7gBzWJYrhQZOhP/W
-         py9vR2Vwgh8QKkXn31OazwoD7NBFL1olB1vO5HnOpkYqVqF5sRBVFBxi+h7niFKkEom1
-         39kIV7Ew0sWIhhnS84wXe0Oi4+j1dujqezdTT/UyIkQ89k1wq+sW3D0dVVymLwMWEz2a
-         70gaAx8g8h3DBLqQaCTqx/xn+ybJMFlZ2fLCS3Vf9sRZy3qEpOyKFUTcHJXbW0TZ5X7X
-         O5Jw==
-X-Forwarded-Encrypted: i=1; AJvYcCUx9a9XkE6ZVagYGPBAt41C+3WBUL7fN7g2bpWZklc6GWmZKgpJl6u09/HiXjlNEczaB7ZBjL6aiyFD+7lJl0S6gJ6KjjzRGmNNgDKSvq2rYL74
-X-Gm-Message-State: AOJu0YzxvyyvlbBva15yJcYBBS96az9R7Y3oQD7I1biQD4u6VrWTxDl9
-	DqFuxhnblm0sMxepeUTgLsWbP74QNYiZtY/ihXd0QPGkMLaa3IU789GRMxT1Ww==
-X-Google-Smtp-Source: AGHT+IEId4xAhY5agqBpTrDO4fZhNU4HUM0EUNs593ufRli/awKIB75mg7lSCq/noyD1uiLh3lObQw==
-X-Received: by 2002:a17:902:cf10:b0:1fa:9ea1:bc85 with SMTP id d9443c01a7336-1fa9ea1bd8cmr33387115ad.56.1719475160587;
-        Thu, 27 Jun 2024 00:59:20 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1719475180; x=1720079980;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=BkBpPkBgBA3ODAja8zGIcwpt50GSoIUtolN0QhQXZcQ=;
+        b=O49WSvytWY6s1JphzOEfCbLywJw8zIexqVGzs+n2+0s3dWJUyuA5T6g7xlElpE/n0Q
+         145D1FeUEC3wEQZiEuLSGJOTN66ppoAPm1MgLgvohTGBKsYZ2y5/QgO7JQIz56bFUNFw
+         W1OuwRwkRzGDP5/nUZcO4noEtw4r/zU7dhcKm1305UTv0AWM3PyLh8CP4lgkUzSnjEKj
+         qQpw+lPFedNXA/u7flxyOuu9O9JowCwniz/c4vdF20/LJGMPWXe5Ov2wVoyO4Svtsj28
+         1BSihr1oTOBiCH/EtenYi6ZLvcnc7BihWoS+KQGGUOWfc3ygNZojNXsku+W1Pl+Cl4r6
+         U3DA==
+X-Forwarded-Encrypted: i=1; AJvYcCVq738WPRSA3ESilIKz5Quh/6+mLgvGGf5VGfIlOAjVHHRMYhEQLPEczqQ68Eam+FriavCD+x7xLMilWE9ayFpgiMlBBYkSjrch/Dm5lmIrBgSE
+X-Gm-Message-State: AOJu0YzrJsWZvf71iCxA9sVa+X2XDKAAtopEhcrGf4y1uGWoMoMBuyzk
+	CRHlpJnP5FWQXefaMQ6mxGxo3cJA8OdGH8UyDBeFTvMRMdVVHTTFYi0WiN03Qw==
+X-Google-Smtp-Source: AGHT+IEXToHGxpVGoEz8ifOQW7GTguBEcp/knYddtQGBeIRtKWqgX5quU9fqgATZlNifTQih+UOzCA==
+X-Received: by 2002:a05:6a20:b2a9:b0:1be:c2af:5626 with SMTP id adf61e73a8af0-1bec2af566dmr2984750637.4.1719475179932;
+        Thu, 27 Jun 2024 00:59:39 -0700 (PDT)
 Received: from localhost.localdomain ([2403:5816:cd6c:0:6d45:ae2f:1ead:bd58])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-1faac9c4cf4sm7181895ad.290.2024.06.27.00.59.16
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-1faac9c4cf4sm7181895ad.290.2024.06.27.00.59.36
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 27 Jun 2024 00:59:20 -0700 (PDT)
+        Thu, 27 Jun 2024 00:59:39 -0700 (PDT)
 From: Leith Bade <leith@bade.nz>
 To: robh@kernel.org,
 	krzk+dt@kernel.org,
@@ -72,16 +73,19 @@ To: robh@kernel.org,
 Cc: devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	didi.debian@cknow.org
-Subject: [PATCH 0/4] fix up pin definitions for BPI-R3 board
-Date: Thu, 27 Jun 2024 17:58:52 +1000
-Message-Id: <20240627075856.2314804-1-leith@bade.nz>
+	didi.debian@cknow.org,
+	Leith Bade <leith@bade.nz>
+Subject: [PATCH 1/4] arm64: dts: mediatek: mt7986: fix the switch reset line on BPI-R3
+Date: Thu, 27 Jun 2024 17:58:53 +1000
+Message-Id: <20240627075856.2314804-2-leith@bade.nz>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20240627075856.2314804-1-leith@bade.nz>
+References: <20240627075856.2314804-1-leith@bade.nz>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240627_005922_523773_F8C9BCA0 
-X-CRM114-Status: GOOD (  13.44  )
+X-CRM114-CacheID: sfid-20240627_005945_896811_B6AE2EB3 
+X-CRM114-Status: GOOD (  11.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,28 +100,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This is my first patch submission to Linux so I apologise in advance for
-any mistakes.
+The current GPIO definition for the MT7531 switch reset line incorrectly
+specifies a pin GPIO_0 (GPIO5) that is connected to the boot mode
+selection DIP switch (SW1).
 
-These changes were motivated by a pin conflict with the PCIe M.2 connector
-and the push buttons. As a result I decided go work through all 100 GPIO
-pins using the public board schematics. As I need to acquire a M.2 SSD to
-test the PCIe pin change that patch is not included in this series yet.
+In the public schematic for the BPI-R3 (titled "BPI-R3-MT7986A",
+revision "V1.1", sheet 4), the SPI1_CS (GPIO32) pin of the MT7986 (U1E)
+is connected to the GbE_RESET net.
 
-Working though the pins I noticed a bug with with the MT7531 chip's reset
-line which was on the wrong GPIO. Since it was conflicting with the boot
-mode switch input GPIO pins I looked into ways to document the use of
-those pins with the switch. I ended up choosing a gpio-hog, but please
-let me know if there is a better alternative.
+Frank Wunderlich has told me, via the Banana Pi forum, that this GbE_RESET
+net connects to the MT7531 reset line in the private part of the shematic
+he has a copy of.
 
-I also added some missing pin groups for some of the built-in SoC devices
-to clearly document the use of those GPIO pins.
+Signed-off-by: Leith Bade <leith@bade.nz>
+---
+ arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-I have actually written up a gpio-line-names list give all the pins        
-names to match their usage on this board. If there is interest in this     
-I can submit this as an additional patch. I see only some MT8xxx devices   
-in the mediatek directory have a gpio-line-names so I wasn't sure if I     
-should add it.
-
+diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
+index ed79ad1ae871..951612ea1e66 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
++++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
+@@ -206,7 +206,7 @@ switch: switch@31 {
+ 		interrupt-controller;
+ 		#interrupt-cells = <1>;
+ 		interrupts-extended = <&pio 66 IRQ_TYPE_LEVEL_HIGH>;
+-		reset-gpios = <&pio 5 GPIO_ACTIVE_HIGH>;
++		reset-gpios = <&pio 32 GPIO_ACTIVE_HIGH>;
+ 	};
+ };
+ 
+-- 
+2.25.1
 
 
