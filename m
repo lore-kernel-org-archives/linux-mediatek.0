@@ -4,99 +4,146 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E7CDC3064D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jun 2024 10:12:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71E74C2BD09
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jun 2024 10:24:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+jkUzQWCr91w/D1JMMa42/2bvxwW/Ne0IySbwHeSQXk=; b=hJf80MXw2UbavuofPHGR/phlhK
-	n6d1GHwO9/bfHU05sMMNP/ozesbi3auQKxhx3JFobpJotCdS0d1MVfc+VdF/pLDZWPZLQjbWWvktI
-	1MHHf02MPX2JG8Bk1GjnOi4oeumhVu6xyvP6i1ZtWmcFHFFtC55yfVpk44g8i20zGuEh9yDOtHizl
-	4H+MBn7LM45XkalTllyfBEe6KukBQwL3eORWr2k4TpO1RYePLW6Te5WyvTIVio5/JgO4DYxfCy6NA
-	ORa9rRyg+zjCSrW96g5iIikjgHAteK+m1FodS1UPgh089FMPWkjDyWlrTks+DR51r00T6rQR4ddfm
-	sGEV8sdg==;
+	bh=HrHWBfM8Gz62vxt+DbqISSl1Mr1EVk+bFajDRx+3iAE=; b=pWd75o0b62pdwX2Y9kvlS3/lsY
+	xq4g8FxrdcZQ+nhAzsDRmpo2MhwIvuxTWuON3li3zacSKsi5BvsXeEULEye2JKcggd73KB2q8oAR3
+	rP3tff9gHLY1dZ2qvyg9xpxK7fI2oyqmyswkJYcJK79PWMdpq8hDZfZV1J0SiB8fBfFs874sRvg46
+	1WL92D3SN5pK6+I29dBmSNJ3CDkFLtLXJcdQJOpOe0EIeIl+RkzugZQ+aePOZ3dVWl2Iv3LD9zfIG
+	cYlhO1QOBOejQwBUSN1kWwPs15Wu+K8R2o2zxztz36qb25EED5aEsXmck/ZG3mQyPcfQonA6YxjBz
+	a46Cyyow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMm7B-00000009tx3-3Tdf;
-	Thu, 27 Jun 2024 10:12:29 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1sMmJB-00000009vdm-3j6Y;
+	Thu, 27 Jun 2024 10:24:53 +0000
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMm6q-00000009toA-0Xd7
+	id 1sMmIx-00000009var-2AcT
 	for linux-mediatek@lists.infradead.org;
-	Thu, 27 Jun 2024 10:12:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1719483124;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=+jkUzQWCr91w/D1JMMa42/2bvxwW/Ne0IySbwHeSQXk=;
-	b=f4pqRJxDlY1ETiIhEYfqk12kTrjOQP0p4xQvHcI75ueN+Aw4bcvsdyrE891OD2NXhB5JT9
-	iANDwu9dwxfdQsoNOTHPo2CpHrhj3/k3yCjwjYyh2vslt11Bx44vAX5I0vybnJAfNBSSik
-	8grV8Qgf/z9Zvx/WkMw3v6FtKxwPCgo=
-Received: from mail-lj1-f197.google.com (mail-lj1-f197.google.com
- [209.85.208.197]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-18-Hk2dHtLXO4S7BlJuLFzp6g-1; Thu, 27 Jun 2024 06:12:03 -0400
-X-MC-Unique: Hk2dHtLXO4S7BlJuLFzp6g-1
-Received: by mail-lj1-f197.google.com with SMTP id 38308e7fff4ca-2ec53241b78so3995801fa.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 27 Jun 2024 03:12:02 -0700 (PDT)
+	Thu, 27 Jun 2024 10:24:42 +0000
+Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-4255fa23f7bso11662795e9.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 27 Jun 2024 03:24:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1719483875; x=1720088675; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=HrHWBfM8Gz62vxt+DbqISSl1Mr1EVk+bFajDRx+3iAE=;
+        b=mPAlQe5RruZBUu8w4YAjYLrJTypMMAp2JcyiI4sxlQswNJdJt0Zn12Bfrxr09jLuzy
+         NWp7ss45Cit7Lwiz2p+ciEZjbLizTwL6CQ5r+FbqAFvEYFbdZxa62teTSoUnh1ZwkXp6
+         C48CSWg4mgGNSG6GAyTDqnyrnx5F7VTla/H0JJ1QI47jpC6EAw6utm8KAiH/eBPeXCPU
+         rK7QtlihF3wtEy+ca4Pj5hATK7GEyHnS6jZ5W7nG2N9LHyep38/Kbj+V84nZBp7HAw1y
+         5isRDD9ymvzxa45CR2jpq5cQiD03Zpx308vwIyKTU+dSisJFxr0H7+HQDKq4qiQ2IfpN
+         eLBw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1719483121; x=1720087921;
-        h=mime-version:user-agent:content-transfer-encoding:autocrypt
-         :references:in-reply-to:date:cc:to:from:subject:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=+jkUzQWCr91w/D1JMMa42/2bvxwW/Ne0IySbwHeSQXk=;
-        b=kp4suvSbhvoLAtPlbixWYK0JyrEX4EHExovbPF9a7+6oRK4GSR/hNndLZUs+xGB3Nc
-         sIdxn8eeLGd2vKrFhQp26/Uer8JmFu5rF7JiTz6tgcbSqy43A9soBMoCgP3dK508P5e8
-         Fpww57naDvDcD3IlII3kvv/pG/A7WB9UwFCv+3i5cSFDS8pL2H9M/fF7HCKRRkV36pHq
-         mwKC7mTCpT4zsI7XuW07DciIV4PzLHODTL6SHvd4DasKRbydbweKuU29quvlpt4ka1Gm
-         jiGBVndmFVA3vB5nZXMsz4HYgJdAsUXRxLZ8FaibVzayKWkexSzRzMwWiilRUhbBRm7q
-         4LBw==
-X-Forwarded-Encrypted: i=1; AJvYcCX5MxEruH1nx3YNFAD5ctMYzPBDbLKPUg+GVLAjk/rAqol0jJAfDJXKOOz1IX6eLrFJJkPuSNvCZmsLcKfpWd0EndS7eWRewUTkCVrfmDMva1C4
-X-Gm-Message-State: AOJu0YxfjahrPYrsIH24LYKFvHSwdwe00iECw5XBYvAIv8+uEpadLYFD
-	mcMO5zyvXIuBftbHHs66Ljah5EVi1U7+ATyX08xVliU3eFkOsPYUq80OeAGvzZE8xgG/Eo7qq3o
-	AZjGON4yM/g7lGwfVWCOatHQHKIOuZcqfGyo7ieFYFUIIABHz3EC9UC68AczcxDDlla4F2g==
-X-Received: by 2002:a2e:a401:0:b0:2ec:44f9:56ab with SMTP id 38308e7fff4ca-2ec55fecb95mr85414821fa.0.1719483121520;
-        Thu, 27 Jun 2024 03:12:01 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEo5S3Jhjza/wrXHJ0Uatja128khuxI8XwWUTiv9omWH1H0vmmW0D4yREGdZHj4cTZR/1xMsA==
-X-Received: by 2002:a2e:a401:0:b0:2ec:44f9:56ab with SMTP id 38308e7fff4ca-2ec55fecb95mr85414631fa.0.1719483121117;
-        Thu, 27 Jun 2024 03:12:01 -0700 (PDT)
-Received: from gerbillo.redhat.com ([2a0d:3344:2716:2d10:663:1c83:b66f:72fc])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-367435850e0sm1330800f8f.50.2024.06.27.03.11.59
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 27 Jun 2024 03:12:00 -0700 (PDT)
-Message-ID: <d4c8577a996320bc161c045970d56eeaca5c7159.camel@redhat.com>
-Subject: Re: [PATCH v2] net: ethernet: mtk_ppe: Change PPE entries number to
- 16K
-From: Paolo Abeni <pabeni@redhat.com>
-To: Shengyu Qu <wiagn233@outlook.com>, nbd@nbd.name, sean.wang@mediatek.com,
-  Mark-MC.Lee@mediatek.com, lorenzo@kernel.org, davem@davemloft.net, 
- edumazet@google.com, kuba@kernel.org, matthias.bgg@gmail.com, 
- angelogioacchino.delregno@collabora.com, pablo@netfilter.org, 
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Cc: stable@vger.kernel.org, Elad Yifee <eladwf@gmail.com>
-Date: Thu, 27 Jun 2024 12:11:58 +0200
-In-Reply-To: <TY3P286MB2611AD036755E0BC411847FC98D52@TY3P286MB2611.JPNP286.PROD.OUTLOOK.COM>
-References: <TY3P286MB2611AD036755E0BC411847FC98D52@TY3P286MB2611.JPNP286.PROD.OUTLOOK.COM>
-Autocrypt: addr=pabeni@redhat.com; prefer-encrypt=mutual; keydata=mQINBGISiDUBEAC5uMdJicjm3ZlWQJG4u2EU1EhWUSx8IZLUTmEE8zmjPJFSYDcjtfGcbzLPb63BvX7FADmTOkO7gwtDgm501XnQaZgBUnCOUT8qv5MkKsFH20h1XJyqjPeGM55YFAXc+a4WD0YyO5M0+KhDeRLoildeRna1ey944VlZ6Inf67zMYw9vfE5XozBtytFIrRyGEWkQwkjaYhr1cGM8ia24QQVQid3P7SPkR78kJmrT32sGk+TdR4YnZzBvVaojX4AroZrrAQVdOLQWR+w4w1mONfJvahNdjq73tKv51nIpu4SAC1Zmnm3x4u9r22mbMDr0uWqDqwhsvkanYmn4umDKc1ZkBnDIbbumd40x9CKgG6ogVlLYeJa9WyfVMOHDF6f0wRjFjxVoPO6p/ZDkuEa67KCpJnXNYipLJ3MYhdKWBZw0xc3LKiKc+nMfQlo76T/qHMDfRMaMhk+L8gWc3ZlRQFG0/Pd1pdQEiRuvfM5DUXDo/YOZLV0NfRFU9SmtIPhbdm9cV8Hf8mUwubihiJB/9zPvVq8xfiVbdT0sPzBtxW0fXwrbFxYAOFvT0UC2MjlIsukjmXOUJtdZqBE3v3Jf7VnjNVj9P58+MOx9iYo8jl3fNd7biyQWdPDfYk9ncK8km4skfZQIoUVqrWqGDJjHO1W9CQLAxkfOeHrmG29PK9tHIwARAQABtB9QYW9sbyBBYmVuaSA8cGFiZW5pQHJlZGhhdC5jb20+iQJSBBMBCAA8FiEEg1AjqC77wbdLX2LbKSR5jcyPE6QFAmISiDUCGwMFCwkIBwIDIgIBBhUKCQgLAgQWAgMBAh4HAheAAAoJECkkeY3MjxOkJSYQAJcc6MTsuFxYdYZkeWjW//zbD3ApRHzpNlHLVSuJqHr9/aDS+tyszgS8jj9MiqALzgq4iZbg
- 7ZxN9ZsDL38qVIuFkSpgMZCiUHdxBC11J8nbBSLlpnc924UAyr5XrGA99 6Wl5I4Km3128GY6iAkH54pZpOmpoUyBjcxbJWHstzmvyiXrjA2sMzYjt3Xkqp0cJfIEekOi75wnNPofEEJg28XPcFrpkMUFFvB4Aqrdc2yyR8Y36rbw18sIX3dJdomIP3dL7LoJi9mfUKOnr86Z0xltgcLPGYoCiUZMlXyWgB2IPmmcMP2jLJrusICjZxLYJJLofEjznAJSUEwB/3rlvFrSYvkKkVmfnfro5XEr5nStVTECxfy7RTtltwih85LlZEHP8eJWMUDj3P4Q9CWNgz2pWr1t68QuPHWaA+PrXyasDlcRpRXHZCOcvsKhAaCOG8TzCrutOZ5NxdfXTe3f1jVIEab7lNgr+7HiNVS+UPRzmvBc73DAyToKQBn9kC4jh9HoWyYTepjdcxnio0crmara+/HEyRZDQeOzSexf85I4dwxcdPKXv0fmLtxrN57Ae82bHuRlfeTuDG3x3vl/Bjx4O7Lb+oN2BLTmgpYq7V1WJPUwikZg8M+nvDNcsOoWGbU417PbHHn3N7yS0lLGoCCWyrK1OY0QM4EVsL3TjOfUtCNQYW9sbyBBYmVuaSA8cGFvbG8uYWJlbmlAZ21haWwuY29tPokCUgQTAQgAPBYhBINQI6gu+8G3S19i2ykkeY3MjxOkBQJiEoitAhsDBQsJCAcCAyICAQYVCgkICwIEFgIDAQIeBwIXgAAKCRApJHmNzI8TpBzHD/45pUctaCnhee1vkQnmStAYvHmwrWwIEH1lzDMDCpJQHTUQOOJWDAZOFnE/67bxSS81Wie0OKW2jvg1ylmpBA0gPpnzIExQmfP72cQ1TBoeVColVT6Io35BINn+ymM7c0Bn8RvngSEpr3jBtqvvWXjvtnJ5/HbOVQCg62NC6ewosoKJPWpGXMJ9SKsVIOUHsmoWK60spzeiJoSmAwm3zTJQnM5kRh2q
- iWjoCy8L35zPqR5TV+f5WR5hTVCqmLHSgm1jxwKhPg9L+GfuE4d0SWd84y GeOB3sSxlhWsuTj1K6K3MO9srD9hr0puqjO9sAizd0BJP8ucf/AACfrgmzIqZXCfVS7jJ/M+0ic+j1Si3yY8wYPEi3dvbVC0zsoGj9n1R7B7L9c3g1pZ4L9ui428vnPiMnDN3jh9OsdaXeWLvSvTylYvw9q0DEXVQTv4/OkcoMrfEkfbXbtZ3PRlAiddSZA5BDEkkm6P9KA2YAuooi1OD9d4MW8LFAeEicvHG+TPO6jtKTacdXDRe611EfRwTjBs19HmabSUfFcumL6BlVyceIoSqXFe5jOfGpbBevTZtg4kTSHqymGb6ra6sKs+/9aJiONs5NXY7iacZ55qG3Ib1cpQTps9bQILnqpwL2VTaH9TPGWwMY3Nc2VEc08zsLrXnA/yZKqZ1YzSY9MGXWYLkCDQRiEog1ARAAyXMKL+x1lDvLZVQjSUIVlaWswc0nV5y2EzBdbdZZCP3ysGC+s+n7xtq0o1wOvSvaG9h5q7sYZs+AKbuUbeZPu0bPWKoO02i00yVoSgWnEqDbyNeiSW+vI+VdiXITV83lG6pS+pAoTZlRROkpb5xo0gQ5ZeYok8MrkEmJbsPjdoKUJDBFTwrRnaDOfb+Qx1D22PlAZpdKiNtwbNZWiwEQFm6mHkIVSTUe2zSemoqYX4QQRvbmuMyPIbwbdNWlItukjHsffuPivLF/XsI1gDV67S1cVnQbBgrpFDxN62USwewXkNl+ndwa+15wgJFyq4Sd+RSMTPDzDQPFovyDfA/jxN2SK1Lizam6o+LBmvhIxwZOfdYH8bdYCoSpqcKLJVG3qVcTwbhGJr3kpRcBRz39Ml6iZhJyI3pEoX3bJTlR5Pr1Kjpx13qGydSMos94CIYWAKhegI06aTdvvuiigBwjngo/Rk5S+iEGR5KmTqGyp27o6YxZy6D4NIc6PKUzhIUxfvuHNvfu
- sD2W1U7eyLdm/jCgticGDsRtweytsgCSYfbz0gdgUuL3EBYN3JLbAU+UZpy v/fyD4cHDWaizNy/KmOI6FFjvVh4LRCpGTGDVPHsQXaqvzUybaMb7HSfmBBzZqqfVbq9n5FqPjAgD2lJ0rkzb9XnVXHgr6bmMRlaTlBMAEQEAAYkCNgQYAQgAIBYhBINQI6gu+8G3S19i2ykkeY3MjxOkBQJiEog1AhsMAAoJECkkeY3MjxOkY1YQAKdGjHyIdOWSjM8DPLdGJaPgJdugHZowaoyCxffilMGXqc8axBtmYjUIoXurpl+f+a7S0tQhXjGUt09zKlNXxGcebL5TEPFqgJTHN/77ayLslMTtZVYHE2FiIxkvW48yDjZUlefmphGpfpoXe4nRBNto1mMB9Pb9vR47EjNBZCtWWbwJTIEUwHP2Z5fV9nMx9Zw2BhwrfnODnzI8xRWVqk7/5R+FJvl7s3nY4F+svKGD9QHYmxfd8Gx42PZc/qkeCjUORaOf1fsYyChTtJI4iNm6iWbD9HK5LTMzwl0n0lL7CEsBsCJ97i2swm1DQiY1ZJ95G2Nz5PjNRSiymIw9/neTvUT8VJJhzRl3Nb/EmO/qeahfiG7zTpqSn2dEl+AwbcwQrbAhTPzuHIcoLZYV0xDWzAibUnn7pSrQKja+b8kHD9WF+m7dPlRVY7soqEYXylyCOXr5516upH8vVBmqweCIxXSWqPAhQq8d3hB/Ww2A0H0PBTN1REVw8pRLNApEA7C2nX6RW0XmA53PIQvAP0EAakWsqHoKZ5WdpeOcH9iVlUQhRgemQSkhfNaP9LqR1XKujlTuUTpoyT3xwAzkmSxN1nABoutHEO/N87fpIbpbZaIdinF7b9srwUvDOKsywfs5HMiUZhLKoZzCcU/AEFjQsPTATACGsWf3JYPnWxL9
-User-Agent: Evolution 3.50.4 (3.50.4-1.fc39)
+        d=1e100.net; s=20230601; t=1719483875; x=1720088675;
+        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=HrHWBfM8Gz62vxt+DbqISSl1Mr1EVk+bFajDRx+3iAE=;
+        b=lP9YbZwQWSczHlvlezPj9Ba79pw8FpadyxejpwPXJkfHBRjTfRH6xN9oVhy+TO7LLs
+         A3MZVvE+PBkTRo//bsFUbYm6nEp5qlBCkaBj1kHXppaY4HVR4Q1m1I602aMat4l7B6pL
+         YdqXEVRDbIp8kW8alNtv9h8X5jGSqJon+KXmC/jx/okk3t8R06XI8x7eTqaROA6q+zni
+         1YZ4c3R79Uj0VvlEeISxxUQ4I6M8TvvDB6Ij/EyzxtebwEmDePO3chy40577v7Ky56Ka
+         eTlPaW+mYrroYJspher0FugRUdqhCwfpfUEmY6dYoStWFIn9J5HY8lCQECwT2QoXQ4Mc
+         U/Ag==
+X-Forwarded-Encrypted: i=1; AJvYcCWZ3rYtyC/MbvIVspYudC1lkzULhZdHtezvYggnBj/f/6q58xE1vkfLR4MMW7jKh3dMTzz6a3vH9oMaKIKHheMQui9XslRbfzPlG6Hec9/J3MBl
+X-Gm-Message-State: AOJu0Yz5iC1NclfM1LudANGrYM9SVGoLFR88L9d+6CVURdAw8t4qi07b
+	2r/cu5f05mn0T8VUHbI2HeZwTmMjeRKt5RIyq5h5ZkCgzm1sX3KuE4zwCgrjLso=
+X-Google-Smtp-Source: AGHT+IF2cIA0cRyZgTPo7KIFW4Ep61Ur5pRkr06EGL2BkduhkLMb1vRc6DFigVeKlzcmeV43lu5xDg==
+X-Received: by 2002:a05:600c:470d:b0:424:7dae:7d79 with SMTP id 5b1f17b1804b1-4248cc177b2mr80264235e9.7.1719483874921;
+        Thu, 27 Jun 2024 03:24:34 -0700 (PDT)
+Received: from [192.168.1.20] ([178.197.219.137])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-424c8245e7csm59444105e9.3.2024.06.27.03.24.33
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 27 Jun 2024 03:24:34 -0700 (PDT)
+Message-ID: <58d1e88c-b2cd-49c7-b250-84104e82ed67@linaro.org>
+Date: Thu, 27 Jun 2024 12:24:31 +0200
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 0/7] dt-bindings: mfd: syscon: Document more
+ compatibles and require simpe-mfd description
+To: Lee Jones <lee@kernel.org>
+Cc: Orson Zhai <orsonzhai@gmail.com>,
+ Baolin Wang <baolin.wang@linux.alibaba.com>,
+ Chunyan Zhang <zhang.lyra@gmail.com>, Jacky Huang <ychuang3@nuvoton.com>,
+ Shan-Chun Hung <schung@nuvoton.com>,
+ Khuong Dinh <khuong@os.amperecomputing.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Chuanhua Lei <lchuanhua@maxlinear.com>,
+ Rahul Tanwar <rtanwar@maxlinear.com>,
+ Lars Povlsen <lars.povlsen@microchip.com>,
+ Steen Hegelund <Steen.Hegelund@microchip.com>,
+ Daniel Machon <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com,
+ Nishanth Menon <nm@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Conor Dooley
+ <conor.dooley@microchip.com>, Rahul Tanwar <rahul.tanwar@linux.intel.com>,
+ Amireddy Mallikarjuna reddy <mallikarjunax.reddy@intel.com>,
+ "Zhu, Yi Xin" <Yixin.zhu@intel.com>, Maxime Ripard <mripard@kernel.org>
+References: <20240626-dt-bindings-mfd-syscon-split-v3-0-3409903bb99b@linaro.org>
+ <20240627081853.GF2532839@google.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Content-Language: en-US
+Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
+ 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
+ D2GYIS41Kv4Isx2dEFh+/Q==
+In-Reply-To: <20240627081853.GF2532839@google.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240627_031208_456112_62CD4821 
-X-CRM114-Status: UNSURE (   8.55  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240627_032440_331929_A0987420 
+X-CRM114-Status: GOOD (  17.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,26 +158,110 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2024-06-25 at 19:16 +0800, Shengyu Qu wrote:
-> MT7981,7986 and 7988 all supports 32768 PPE entries, and MT7621/MT7620
-> supports 16384 PPE entries, but only set to 8192 entries in driver. So
-> incrase max entries to 16384 instead.
->=20
-> Cc: stable@vger.kernel.org
-> Signed-off-by: Elad Yifee <eladwf@gmail.com>
-> Signed-off-by: Shengyu Qu <wiagn233@outlook.com>
-> Fixes: ba37b7caf1ed ("net: ethernet: mtk_eth_soc: add support for initial=
-izing the PPE")
-> ---
-> Changes since V1:
->  - Reduced max entries from 32768 to 16384 to keep compatible with MT7620=
-/21 devices.
->  - Add fixes tag
+On 27/06/2024 10:18, Lee Jones wrote:
+> On Wed, 26 Jun 2024, Krzysztof Kozlowski wrote:
+> 
+>> Hi,
+>>
+>> Dependency
+>> ==========
+>> Rebased on Lee's MFD tree, because dependency is there already:
+>> https://lore.kernel.org/all/171828959006.2643902.8308227314531523435.b4-ty@kernel.org/
+>>
+>> Merging
+>> =======
+>> Preferrably everything via MFD tree (file/context dependencies).
+>>
+>> Changes in v3
+>> =============
+>> - Add tags
+>> - intel,lgm-syscon: change maintainers (email bounce)
+>> - syscon/Split: drop unneeded |, use const instead of enum in select:
+>> - Link to v2: https://lore.kernel.org/r/20240616-dt-bindings-mfd-syscon-split-v2-0-571b5850174a@linaro.org
+>>
+>> Changes in v2
+>> =============
+>> - Add acks
+>> - lgm-syscon: add ranges to binding and example
+>> - syscon.yaml: add big select with all compatibles for older dtschema
+>> - Link to v1: https://lore.kernel.org/r/20240519-dt-bindings-mfd-syscon-split-v1-0-aaf996e2313a@linaro.org
+>>
+>> Description/problem
+>> ===================
+>> Simple syscon nodes can be documented in common syscon.yaml, however
+>> devices with simple-mfd compatible, thus some children, should have
+>> their own schema listing these children.  Such listing makes the binding
+>> specific, allows better validation (so the incorrect child would not
+>> appear in the simple-mfd node) and actually enforces repeated rule for
+>> simple-mfd devices:
+>>
+>>   "simple-mfd" is only for simple devices, where the children do not
+>>   depend on the parent.
+>>
+>> Currently the syscon+simple-mfd binding is quite broad and allows
+>> any child or property, thus above rule cannot be enforced.
+>>
+>> Solution
+>> ========
+>> 1. Split the syscon.yaml binding into common syscon properties, used
+>>    potentially by many bindings, and only simple syscon devices (NO
+>>    simple-mfd!).
+>> 2. Move some known simple-mfd bindings from syscon.yaml to dedicated
+>>    files.
+>>
+>> This patchset might introduce new dtbs_check warnings for devices having
+>> simple-mfd and being part of syscon.yaml previously. I fixed some of
+>> them, but probably not all.
+>>
+>> Best regards,
+>> Krzysztof
+>>
+>> To: Lee Jones <lee@kernel.org>
+>> To: Rob Herring <robh@kernel.org>
+>> To: Krzysztof Kozlowski <krzk+dt@kernel.org>
+>> To: Conor Dooley <conor+dt@kernel.org>
+>> To: Lars Povlsen <lars.povlsen@microchip.com>
+>> To: Steen Hegelund <Steen.Hegelund@microchip.com>
+>> To: Daniel Machon <daniel.machon@microchip.com>
+>> To: UNGLinuxDriver@microchip.com
+>> To: Nishanth Menon <nm@ti.com>
+>> To: Matthias Brugger <matthias.bgg@gmail.com>
+>> To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> Cc: devicetree@vger.kernel.org
+>> Cc: linux-kernel@vger.kernel.org
+>> Cc: linux-arm-kernel@lists.infradead.org
+>> Cc: linux-mediatek@lists.infradead.org
+>>
+>> ---
+>> Krzysztof Kozlowski (7):
+>>       dt-bindings: mfd: syscon: Drop hwlocks
+>>       dt-bindings: soc: sprd: sc9863a-glbregs: Document SC9863A syscon
+>>       dt-bindings: soc: intel: lgm-syscon: Move to dedicated schema
+>>       dt-bindings: soc: microchip: sparx5-cpu-syscon: Move to dedicated schema
+>>       dt-bindings: soc: ti: am654-serdes-ctrl: Move to dedicated schema
+>>       dt-bindings: mfd: syscon: Split and enforce documenting MFD children
+>>       dt-bindings: mfd: syscon: Add APM poweroff mailbox
+>>
+>>  .../devicetree/bindings/mfd/syscon-common.yaml     |  71 +++++
+>>  Documentation/devicetree/bindings/mfd/syscon.yaml  | 306 ++++++++++++---------
+>>  .../bindings/soc/intel/intel,lgm-syscon.yaml       |  57 ++++
+>>  .../soc/microchip/microchip,sparx5-cpu-syscon.yaml |  49 ++++
+>>  .../bindings/soc/sprd/sprd,sc9863a-glbregs.yaml    |  55 ++++
+>>  .../bindings/soc/ti/ti,am654-serdes-ctrl.yaml      |  42 +++
+>>  6 files changed, 457 insertions(+), 123 deletions(-)
+>> ---
+>> base-commit: 8dc7c29f608649f3d9eca826e9d4fe4b8a32c472
+>> change-id: 20240517-dt-bindings-mfd-syscon-split-37e23996523d
+> 
+> Okay, I tried to apply these whilst fixing up all the conflicts, but
+> lost the will to live.  Please rebase and [RESEND].
 
-@Sean, @Mark, @Lorenzo or @Felix, can any of you actually test this?
+This was based on your for-next 8dc7c29f608649f3d9ec "mfd: lm3533: Move
+to new GPIO descriptor-based APIs". I'll rebase.
 
-Thanks!
+> 
 
-Paolo
+Best regards,
+Krzysztof
 
 
