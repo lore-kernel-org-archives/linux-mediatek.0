@@ -4,100 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70A5EC2BD09
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jun 2024 20:13:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB1D7C2BD09
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jun 2024 20:53:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mqZoJqzWOVqvKJTvVoqplSMRxZgZJeY21a7owxjLVCQ=; b=l0TZznBpHu7Gh/9O+dFy9l3hem
-	oyLRA/GGmkKI/Dsmhhar12B4Mm1mX3Luccix4dxxmg+NTvIDP9bHdVCJ5tCAQ0+IbWzzhPEXNiJuJ
-	aDzD9qPazoV250nfSjLp3sNItQWJfVk6HNseCzejmxdu4itgjCY/UbAO/BAazH+wlQMJr5z4BRcmT
-	XKMfzUyh7aaaI9bA7ibF0FEQBitiQU0CtGXOTo0CrEkgwdOU1YMzNG8IuGhIBDdqLFC2fMXkWOd5K
-	fzG1FeDrCxzbir3HKFoq96v9xQzzRRvOl+D1CzelpSuxZBPBgjxDX6zbhVb/E4TTnQ0G/7S2K+XX0
-	rMFbAKxw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Xfb8qh56GtYXoD9jZvOPRH85DxPa0JeSyiOdHUBDC38=; b=qVi2YfbxW/H6DO
+	EuRZWvovzPwrCSsYKldY7X+As+Dgbi1QD9ampjU9KXd6KERcwvx8cMqTv1bZynF78rgApqeTZUtdp
+	wV8zIdu5NQcQlZVcP4PkbfCeJ3j/4ceAOeo+Z1g3kL3D5XHz/ZmXfD+1kN1v6RrCYg1dntZBvUjvF
+	Dia/oaNRUnSFGa69xX6FHE2N5V7oyEkhKpyeodhA64dk4xlk55hGpq1j0l1MTRAZI4vCIszmoOQd3
+	+tdM/tPWN+qK8soUYnQoXF1hhH79cYpnIWGeaPIouU8fIsgAmMwBt4QohWRTmNQRVSB2WrHWBxwlu
+	Eu8b6jOmedsuKlFRCoMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMvV3-0000000Bazi-43xc;
-	Thu, 27 Jun 2024 20:13:45 +0000
-Received: from 009.lax.mailroute.net ([199.89.1.12])
+	id 1sMw7O-0000000Bh5x-1i25;
+	Thu, 27 Jun 2024 20:53:22 +0000
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMvV1-0000000Bay1-0SeH
-	for linux-mediatek@lists.infradead.org;
-	Thu, 27 Jun 2024 20:13:44 +0000
-Received: from localhost (localhost [127.0.0.1])
-	by 009.lax.mailroute.net (Postfix) with ESMTP id 4W98sG10gQzll9bp;
-	Thu, 27 Jun 2024 20:13:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
-	content-transfer-encoding:content-type:content-type:in-reply-to
-	:from:from:content-language:references:subject:subject
-	:user-agent:mime-version:date:date:message-id:received:received;
-	 s=mr01; t=1719519210; x=1722111211; bh=mqZoJqzWOVqvKJTvVoqplSMR
-	xZgZJeY21a7owxjLVCQ=; b=KVcWNFoVDLJpmL/62VRSuBGg380beoeeuBPkTGNH
-	MAXXNIjk/et8UWPS3rgK+XuvrslNyXfy6ZuW3ReuMo4ZGVJTPtEwS8xb+nTVYvca
-	bnIRmPTKcRiWVPtOKbqvV+eBsWsup6xZ72sEv2nBEUMORzNnPIokS4KWgG1MNsjL
-	J2Qhp6pRTgIvnHri5vTjkSKNtr7Y1uKmS7Gwj4lJdGNu8iXfA9ZVFzgIRimqA8ZB
-	QsTU0tTIPrX5uuhVuQd/7rMu2XjPZqehPKC67LLb5JJSGBf/+/fG38dUYc3a8u0/
-	DTmhDCEaH0XUW0xeQQ2HkiPZF2+m94R2LWgt5vcTkFAocQ==
-X-Virus-Scanned: by MailRoute
-Received: from 009.lax.mailroute.net ([127.0.0.1])
- by localhost (009.lax [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
- id nPRA6YbUERSR; Thu, 27 Jun 2024 20:13:30 +0000 (UTC)
-Received: from [100.96.154.26] (unknown [104.132.0.90])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: bvanassche@acm.org)
-	by 009.lax.mailroute.net (Postfix) with ESMTPSA id 4W98s0515XzllBch;
-	Thu, 27 Jun 2024 20:13:24 +0000 (UTC)
-Message-ID: <a34bcb63-6cad-4b77-bd07-afcc2c75b2f2@acm.org>
-Date: Thu, 27 Jun 2024 13:13:22 -0700
+	id 1sMw7E-0000000Bh4J-3v70;
+	Thu, 27 Jun 2024 20:53:14 +0000
+Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-4256742f67fso7549515e9.3;
+        Thu, 27 Jun 2024 13:53:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1719521591; x=1720126391; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=Xfb8qh56GtYXoD9jZvOPRH85DxPa0JeSyiOdHUBDC38=;
+        b=SBWBXyS14IbMU9aEThuza8rVc2p7/EfkkXFwxVpcoMbPf5t/tXKjQY5uEBxg8/c3vy
+         muCVoe4HhIrnwEcjFLTiqunRq4Hvr6X/KyUE6a/r/0VCcd3grER/SLmOCIkXIOPuZtR5
+         uJbG3hJ1yh+/Km1PPDdWHrMb5So7LKo04Lh9jXuagnWB4r3HYi24pS0nu23KLMKyp3DH
+         u+0sMeRLHsFB53xkX+RD1LAUUzC0eHuXf1AC7yY2eDl12GIBtvhUWDK7U0zjpB7FJnB6
+         ho612iimkXawCgILAJaRWznyHCTkhfcSRz5XvDIy7ipmYvY5cCwmFg1oOUiIMVBEaybk
+         nGqg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1719521591; x=1720126391;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=Xfb8qh56GtYXoD9jZvOPRH85DxPa0JeSyiOdHUBDC38=;
+        b=u5hw3Mw5kHEhH5qDtTjBscbN8Gm4deTPRpoATJ3CnrxXz6/I8HM2MpIwQqvoe/9WMf
+         8bvdii0xB4MZQLwrCn2xrlYwXweJGJa6G7XDRgqQpkmxYOAL4bTiaduAKIoMuxbJzXOm
+         lnvTm+mWK4WcExYwIm+6uDsliuaRGZNlHQTkSaXl3GH6Z/ZMgeG7G0GjyXCZLoy4be0a
+         DEOhY32QzEf/uUcFBFrAumBPHrt8FLJV9o+z9/qdANd3fAoC5jFUPfDWvzpy8XdDWWlP
+         wPEe/4np//q988fwBADp4CmxVWTKBS+JgLxLx69hXQaz6/lCPIdlDd7u0+6SicSHs/ve
+         gscw==
+X-Forwarded-Encrypted: i=1; AJvYcCUp1EwgPQt0tYtuuhMBlLL0wxy20Fzpx3ntvxDynTbfSxq9n1/dJx0VFFA8HVy37sAWZBbI+x1AJUaU/jdoRpE0v9UAWOMLPrbTbDIC/OsOuBGZAIbMzz0LGAHLbVqW7R6lqB2P0sAmNiVxERSenPbIS/KvDm5mQOc=
+X-Gm-Message-State: AOJu0YzgswBNPEeVWJ0/R4cT6PoRMJyyVIykSrcs+TuZuOg+h8QJR1hq
+	pOgHK0KtICK2bPy0MA6QqrM2KZhXlHy7rop1c9KGQvzbfsFCZ40e
+X-Google-Smtp-Source: AGHT+IEyFGnUG+ZaEsbZSSMkgKHiw+IpNLv9h1YAzb4VBZz9c2j4FW3QknMf/JcEiIHOYQfbwlYHow==
+X-Received: by 2002:a05:600c:6a98:b0:425:5f86:41bf with SMTP id 5b1f17b1804b1-42564571f40mr24797395e9.30.1719521590820;
+        Thu, 27 Jun 2024 13:53:10 -0700 (PDT)
+Received: from localhost.localdomain (93-34-90-105.ip49.fastwebnet.it. [93.34.90.105])
+        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-4256b068e93sm7216935e9.24.2024.06.27.13.53.09
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 27 Jun 2024 13:53:10 -0700 (PDT)
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>,
+	linux-clk@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH 1/2] arm64: dts: mediatek: mt7622: readd syscon to pciesys node
+Date: Thu, 27 Jun 2024 22:52:56 +0200
+Message-ID: <20240627205309.28742-1-ansuelsmth@gmail.com>
+X-Mailer: git-send-email 2.45.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] ufs: core: fix ufshcd_abort_all racing issue
-To: =?UTF-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>,
- "quic_nguyenb@quicinc.com" <quic_nguyenb@quicinc.com>,
- "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
- "avri.altman@wdc.com" <avri.altman@wdc.com>,
- "martin.petersen@oracle.com" <martin.petersen@oracle.com>,
- "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
- "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
- "haowenchao22@gmail.com" <haowenchao22@gmail.com>
-Cc: "linux-mediatek@lists.infradead.org"
- <linux-mediatek@lists.infradead.org>,
- =?UTF-8?B?SmlhamllIEhhbyAo6YOd5Yqg6IqCKQ==?= <jiajie.hao@mediatek.com>,
- =?UTF-8?B?Q0MgQ2hvdSAo5ZGo5b+X5p2wKQ==?= <cc.chou@mediatek.com>,
- =?UTF-8?B?RWRkaWUgSHVhbmcgKOm7g+aZuuWCkSk=?= <eddie.huang@mediatek.com>,
- =?UTF-8?B?QWxpY2UgQ2hhbyAo6LaZ54+u5Z2HKQ==?= <Alice.Chao@mediatek.com>,
- wsd_upstream <wsd_upstream@mediatek.com>,
- "stable@vger.kernel.org" <stable@vger.kernel.org>,
- =?UTF-8?B?TGluIEd1aSAo5qGC5p6XKQ==?= <Lin.Gui@mediatek.com>,
- =?UTF-8?B?Q2h1bi1IdW5nIFd1ICjlt6vpp7/lro8p?= <Chun-hung.Wu@mediatek.com>,
- =?UTF-8?B?VHVuLXl1IFl1ICjmuLjmlabogb8p?= <Tun-yu.Yu@mediatek.com>,
- "chu.stanley@gmail.com" <chu.stanley@gmail.com>,
- =?UTF-8?B?Q2hhb3RpYW4gSmluZyAo5LqV5pyd5aSpKQ==?=
- <Chaotian.Jing@mediatek.com>, =?UTF-8?B?UG93ZW4gS2FvICjpq5jkvK/mlocp?=
- <Powen.Kao@mediatek.com>, =?UTF-8?B?TmFvbWkgQ2h1ICjmnLHoqaDnlLAp?=
- <Naomi.Chu@mediatek.com>, =?UTF-8?B?UWlsaW4gVGFuICjosK3pupLpup8p?=
- <Qilin.Tan@mediatek.com>
-References: <20240624121158.21354-1-peter.wang@mediatek.com>
- <eec48c95-aa1c-4f07-a1f3-fdc3e124f30e@acm.org>
- <4c4d10aae216e0b6925445b0317e55a3dd0ce629.camel@mediatek.com>
- <795a89bb-12eb-4ac8-93df-6ec5173fb679@acm.org>
- <0e1e0c0a4303f53a50a95aa0672311015ddeaee2.camel@mediatek.com>
- <b5ee63bb-4db9-47fc-9b09-1fde0447f6f8@acm.org>
- <54f5df88-ca0a-40dd-92ef-3f64c170ba55@gmail.com>
- <9284fe608d6a2c35e1db50b0f7dc69d8951be5fe.camel@mediatek.com>
-Content-Language: en-US
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <9284fe608d6a2c35e1db50b0f7dc69d8951be5fe.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240627_131343_184378_84D74C58 
-X-CRM114-Status: GOOD (  13.06  )
+X-CRM114-CacheID: sfid-20240627_135312_997535_8D0ABE64 
+X-CRM114-Status: GOOD (  12.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,55 +95,40 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Christian Marangi <ansuelsmth@gmail.com>, stable@vger.kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 6/27/24 3:59 AM, Peter Wang (=E7=8E=8B=E4=BF=A1=E5=8F=8B) wrote:
-> This is a chicken-and-egg problem. We need to acquire a lock to know=20
-> which hwq it is, but we need to know which hwq it is to acquire the
-> lock. Therefore, to resolve this dilemma, perhaps we should just take
-> all the hwq locks indiscriminately?
-How about the (untested) patch below?
+Sata node reference the pciesys with the property mediatek,phy-node
+and that is used as a syscon to access the pciesys regs.
 
-Thanks,
+Readd the syscon compatible to pciesys node to restore correct
+functionality of the SATA interface.
 
-Bart.
+Fixes: 3ba5a6159434 ("arm64: dts: mediatek: mt7622: fix clock controllers")
+Reported-by: Frank Wunderlich <frank-w@public-files.de>
+Co-developed-by: Frank Wunderlich <frank-w@public-files.de>
+Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+Cc: stable@vger.kernel.org
+---
+ arch/arm64/boot/dts/mediatek/mt7622.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/ufs/core/ufs-mcq.c b/drivers/ufs/core/ufs-mcq.c
-index aa119746ee92..c5d327ba253f 100644
---- a/drivers/ufs/core/ufs-mcq.c
-+++ b/drivers/ufs/core/ufs-mcq.c
-@@ -105,16 +105,15 @@ EXPORT_SYMBOL_GPL(ufshcd_mcq_config_mac);
-   * @hba: per adapter instance
-   * @req: pointer to the request to be issued
-   *
-- * Return: the hardware queue instance on which the request would
-- * be queued.
-+ * Return: the hardware queue instance on which the request will be or=20
-has been
-+ * queued. %NULL if the request has already been freed.
-   */
-  struct ufs_hw_queue *ufshcd_mcq_req_to_hwq(struct ufs_hba *hba,
-  					 struct request *req)
-  {
--	u32 utag =3D blk_mq_unique_tag(req);
--	u32 hwq =3D blk_mq_unique_tag_to_hwq(utag);
-+	struct blk_mq_hw_ctx *hctx =3D READ_ONCE(rq->mq_hctx);
-
--	return &hba->uhq[hwq];
-+	return hctx ? &hba->uhq[hctx->queue_num] : NULL;
-  }
-
-  /**
-@@ -547,6 +546,8 @@ int ufshcd_mcq_sq_cleanup(struct ufs_hba *hba, int=20
-task_tag)
-  		if (!cmd)
-  			return -EINVAL;
-  		hwq =3D ufshcd_mcq_req_to_hwq(hba, scsi_cmd_to_rq(cmd));
-+		if (!hwq)
-+			return -EINVAL;
-  	} else {
-  		hwq =3D hba->dev_cmd_queue;
-  	}
+diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+index 917fa39a74f8..bb0ec1edbe5b 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+@@ -790,7 +790,7 @@ u2port1: usb-phy@1a0c5000 {
+ 	};
+ 
+ 	pciesys: clock-controller@1a100800 {
+-		compatible = "mediatek,mt7622-pciesys";
++		compatible = "mediatek,mt7622-pciesys", "syscon";
+ 		reg = <0 0x1a100800 0 0x1000>;
+ 		#clock-cells = <1>;
+ 		#reset-cells = <1>;
+-- 
+2.45.1
 
 
