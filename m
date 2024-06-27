@@ -4,113 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3F4FC2BD09
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jun 2024 10:34:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B386C2BD09
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jun 2024 10:36:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=m+6/jw2l8WbHbxp3JGZOU8peyFUqkM87CC9BxxmyKfM=; b=bLNTT3SCvnYUWDePaPPpMj0D/m
-	wOKVFPPxtIzH/ZTeqrt7x5QMcSdrw8WQY0Nh1s/40wGYgZp2ANRjQCJD0R1g0JNtVngv5OpcV+/Ya
-	EqM5yBeidrQQu1ueBwPzrfIDvctRiAI+jKTt6ew3B/7uAxWb3zpK8wCFNSpRX8zG3kgEgc9RIDrsY
-	kQxQ1dT6aqcrJA4oQG6f7iUieWPhJAXh3fPyo8FM1QBzOcbOURYiq7So0SA+Vubn22tT/i2F5q7uX
-	fcoqeUTX5Eb3YAuawMOaj18LvJU02rp+5b/Wi+ojGaLGty/7xKVjDH+xlWbKl6e4V4mTWlq0ySA9E
-	xMzb0DxA==;
+	bh=vx9i0bD7SSs9uEyO7fpFzfhtRLDkDTesKuRvIvpOtME=; b=e4Q/2cGdBOZws9syvZCHFjAWYt
+	TZczOy9n9b64OMfvM5cNEt6u5a8GeOQ9f4O1ebG9MeOVRcjgKkmzitPo6oMdiL0Pf+tmUgm+Uwntu
+	S7V74LAuCP3r4B2DlA76zsaoaH+NFC+cckUmlqDeBfWEZMpkmerYmeAyl3piDxn6nDyH9G69bWuFB
+	MSBLuccblLF1fJMptzxRnfOx69i28uRVEL52gOT2cKtuwj+zJOZ084Ic6XUV6ihFYnzUeqFl6NqpY
+	pOx2MtcwRH4bTNsSAxVtV/X+k70AlE9T7syIWx9M/cMOkbrnMWtxsIQ3QOFT01veL52GW9dB5snTM
+	p3BPznJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMmSR-00000009xyQ-2Yco;
-	Thu, 27 Jun 2024 10:34:28 +0000
-Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
+	id 1sMmU3-00000009yhN-3i7O;
+	Thu, 27 Jun 2024 10:36:07 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMmQt-00000009xFJ-0AOH
-	for linux-mediatek@lists.infradead.org;
-	Thu, 27 Jun 2024 10:33:09 +0000
-Received: by mail-lf1-x135.google.com with SMTP id 2adb3069b0e04-52ce6c8db7bso6029113e87.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 27 Jun 2024 03:32:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1719484366; x=1720089166; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=m+6/jw2l8WbHbxp3JGZOU8peyFUqkM87CC9BxxmyKfM=;
-        b=Rmv5vyFvfQ5tVtJoXYcluHTLZbxD94rFV5HATeUQMbYwKmPKYjYLrVMmc+NDEbkoGL
-         JBd9ZSzlaVvpAFiTS1cmkqy8IJCDndphkEA7OoxnsYxjDnICV5BzU9KhKBOt+wTqsSf6
-         qJG6VzC04feCrwfn0XqpSVKTMr4hysAS8pYkfxtZ2jJF9BDLXzVUqb60Jq2QA8PPi8hZ
-         3Fde/bVFu+bXAtV7qK8qbK7w/2bxM19dfRb2ptJ/pL5P+MqCJbJRE7wcunmrIkg5ToTX
-         EWwuop58RBRUkmp03Znk2iKLhbA1CUNP6Rum8Xw3Ti4BG2Xz+RbhB+wh//EB6da2paB5
-         o80g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1719484366; x=1720089166;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=m+6/jw2l8WbHbxp3JGZOU8peyFUqkM87CC9BxxmyKfM=;
-        b=c8YVHPljK9le7q28GlSNf7nNK7om9PvA/VPehntxfobgg4ouL4U6Ew9bLo0VEqehZN
-         DYomDHAoHmEehB3mk2ZHs7ofLeR3uTuME5ETdNR9oiwIEuk49gBf4WK3Bq8vBr3CGbj1
-         vp/x4LOKVJ2U5k6ZT6EEc/gN/JGKxNVghPJVKM15mqGgk/oeUIPM+M37ag4ESdNjUuHW
-         p6P1ynKvc28ws4Oc7V+SFiyvgMB1v5WMbIOeyTRtteeQ8ngjV+bsGhe3WIbU9v9d/ge3
-         AGOpow71UKHLfJibeP1bxx8Iesr3r7Y94S5AXo02qNM597SJlqD/R+rIv+crCimAyhZR
-         X0bg==
-X-Forwarded-Encrypted: i=1; AJvYcCWCccn9HZrItRzTKwdRxSmScOWkXoB6VstQ/skKj1duC7J4Zs0UV1ElsuKyYwQr7xm2bNwNuYo9ZM4v35fCI/6T50ZDOmv4DvIdg04rgD41QyVD
-X-Gm-Message-State: AOJu0Yz7jxVyljJdTfUwaYTmjk3dAR7F6oRXOC07XGkl1P10aYjeeY6C
-	Jq6MJIZeGx5XpI+YnAyMiJSHF8VqE6R3o5JltjGjRqYvZthkcCf5XF8UYoyOaxY=
-X-Google-Smtp-Source: AGHT+IEoS3M9/3U4NjfBgJrciMQw7opzkhWp4q6gkv+HvLfxXQBP/1gIhzOQ1/YNBvMXx8utt1dJpw==
-X-Received: by 2002:a05:6512:e95:b0:52c:8a3a:fe2c with SMTP id 2adb3069b0e04-52ce185d049mr9830460e87.45.1719484366212;
-        Thu, 27 Jun 2024 03:32:46 -0700 (PDT)
-Received: from [127.0.1.1] ([178.197.219.137])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-367435852afsm1384352f8f.53.2024.06.27.03.32.44
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 27 Jun 2024 03:32:45 -0700 (PDT)
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Date: Thu, 27 Jun 2024 12:32:21 +0200
-Subject: [PATCH v4 5/7] dt-bindings: soc: ti: am654-serdes-ctrl: Move to
- dedicated schema
+	id 1sMmTY-00000009yVg-14QD;
+	Thu, 27 Jun 2024 10:35:36 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=vx9i0bD7SSs9uEyO7fpFzfhtRLDkDTesKuRvIvpOtME=; b=KgkiOyk9UYT4L1ry5QKXt2rmRP
+	7Q8OTxRclrikff7bwgAtAznuvk/Y9BlDCVGzIH8FHgla/fwuMJSwrrNchp71WsZtBleKwNv+IKAll
+	JuJsbsBO4gM/8kRKKpsX6+qyhJhpUSwWKmpoOBFaT7a4JpL99zKB7Q7rgaSo2gvMNriiAqc9S/mbS
+	esV44F/pi93lR1s6kHf0Gykyeu1KjLzc1u5nE//PQpoN7zJcErGCaHhsbRyqFYbBNtVjJeKtMN8em
+	dSOI/BMGtf00GUI2RhFfLROS8oC3ilxZVl7Cx5+izTgK+wAfF3KsVY/AAq1gocRybxsa/A1pGrCcb
+	dKwFn/Aw==;
+Received: from madrid.collaboradmins.com ([46.235.227.194])
+	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1sMldr-00000008oRU-0kU3;
+	Thu, 27 Jun 2024 09:42:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1719481326;
+	bh=SHwLopLsuJIvSoRHrncD2LhBaww5jF0LXUvXBdkPh1U=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=3E0lvpcuKE3e8QWwPBbxCTgvq4PKGcEBnxcp5hOp+6ajKdBlRNPdDaoS3hHrqhDQ7
+	 nzW/fNe8tpWt/LIzd6UbZ1XNDoA69KO+gO/J9V67FivqK1L36aWuw3VQeRNFRd5dAZ
+	 p8NIH49Zi2UUhYPUSIKOTQtlHvxvrFLeFqHry0gBriPY+9tQKcNEjWoYL2q277JNgA
+	 vDMTW+dkhAS+McRw/WDHQA5VJme406aOrY74HP6hC+Xoxtr9ZA/1Mb8rpIm9Pjlfbo
+	 fTYi4vMa+0Es7GH9cZZsfZkvnn14hBXyPB7ayfQCtoJLLlLNUPedma4V+iNOUp3gs9
+	 X3VFPzVcRWnhg==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 12E3E37821B3;
+	Thu, 27 Jun 2024 09:42:06 +0000 (UTC)
+Message-ID: <512e50d7-50ae-411c-bccd-656a74d740a3@collabora.com>
+Date: Thu, 27 Jun 2024 11:42:05 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 2/4] PCI: mediatek-gen3: Add mtk_gen3_pcie_pdata data
+ structure
+To: Lorenzo Bianconi <lorenzo@kernel.org>, linux-pci@vger.kernel.org
+Cc: ryder.lee@mediatek.com, jianjun.wang@mediatek.com, lpieralisi@kernel.org,
+ kw@linux.com, robh@kernel.org, bhelgaas@google.com,
+ linux-mediatek@lists.infradead.org, lorenzo.bianconi83@gmail.com,
+ linux-arm-kernel@lists.infradead.org, krzysztof.kozlowski+dt@linaro.org,
+ devicetree@vger.kernel.org, nbd@nbd.name, dd@embedd.com, upstream@airoha.com
+References: <cover.1719475568.git.lorenzo@kernel.org>
+ <62c00de24f702260ba0da93008277e95f471a2ab.1719475568.git.lorenzo@kernel.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <62c00de24f702260ba0da93008277e95f471a2ab.1719475568.git.lorenzo@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240627-dt-bindings-mfd-syscon-split-v4-5-dc6699a9f3e4@linaro.org>
-References: <20240627-dt-bindings-mfd-syscon-split-v4-0-dc6699a9f3e4@linaro.org>
-In-Reply-To: <20240627-dt-bindings-mfd-syscon-split-v4-0-dc6699a9f3e4@linaro.org>
-To: Orson Zhai <orsonzhai@gmail.com>, 
- Baolin Wang <baolin.wang@linux.alibaba.com>, 
- Chunyan Zhang <zhang.lyra@gmail.com>, Jacky Huang <ychuang3@nuvoton.com>, 
- Shan-Chun Hung <schung@nuvoton.com>, 
- Khuong Dinh <khuong@os.amperecomputing.com>, Lee Jones <lee@kernel.org>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Chuanhua Lei <lchuanhua@maxlinear.com>, 
- Rahul Tanwar <rtanwar@maxlinear.com>, 
- Lars Povlsen <lars.povlsen@microchip.com>, 
- Steen Hegelund <Steen.Hegelund@microchip.com>, 
- Daniel Machon <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com, 
- Nishanth Menon <nm@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Jiaxun Yang <jiaxun.yang@flygoat.com>, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, 
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-X-Mailer: b4 0.14.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2452;
- i=krzysztof.kozlowski@linaro.org; h=from:subject:message-id;
- bh=8MLHDWyReLz5qqD7wVSiIOMBs4CdtSdIOqFJ3Bu/4Os=;
- b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBmfT++cwdCKsMdwI34XqMjKV+VEq2ZPnBb8whmj
- V0GmiqiL/WJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZn0/vgAKCRDBN2bmhouD
- 1xqZD/9sRU1DY0+8YUNfIxhuMHDSblSlLWagDywLBIZGUHc2JGkTM3ZDq8UMCH3TCob9i4hHvDs
- caEBDFAV6jT3db5RF7euDLG5eaKkRkxBYFaEG6Z3frqUvm0q+Lf9ORvceA7+cDwkoQDfcRd5+3D
- YTY0UI1NShe72ad9B2k6wnNyZ51kKke/SXW31dwWvtktsF7JIZQcTjM8jvvCWxdJaUURfi/kWtc
- cwbFf8mjHy4bgob7jgWSeYeUoBt6Qh6FzqvEYmJOX4Ub7CqL5cVWgUAd20eDFNJJujyBW3iBCq2
- bJ7fsTQRUlTDJCjW76Z6tL+X+rtKDiTYlU+a9yHfKiC8fcsEt/lCBcDaiwCuuIkVUedG2CtmKhE
- mNHw1jspPphCtsc/nkJmcX2UaPliRHOtUwWpXtQCxCV54G8gU3OKN9HNbI/oYDRzh+MUpxCLQR3
- u1IVGZNOUZFIkTQWa4MW4taT4GFe71Dgk3aFqB1X+NZUEB/DiNHKiYEbDetjNhLk3obLiKt8YtU
- zP4tFl8gMuqnhOmXHHXYalIh5ou1abuXnuxiFi474eOf3xs0qm3UYEFUZk6+pZT4QtZj19Psfql
- P+464fNd8jx+MH0wKWB4CIqPjUnbRkXfFKTusvVRevwlWpwdOQfq3pRw5WyY9O0xLBV0NodRwcH
- wclR31GK76zyBrw==
-X-Developer-Key: i=krzysztof.kozlowski@linaro.org; a=openpgp;
- fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240627_033303_048946_34838B2F 
-X-CRM114-Status: GOOD (  14.46  )
+X-CRM114-CacheID: sfid-20240627_104226_705848_CC37D5CC 
+X-CRM114-Status: UNSURE (   4.84  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,83 +94,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-ti,am654-serdes-ctrl is not a simple syscon device - it has children -
-thus it should be fully documented in its own binding.
+Il 27/06/24 10:12, Lorenzo Bianconi ha scritto:
+> Introduce mtk_gen3_pcie_pdata data structure in order to define
+> multiple callbacks for each supported SoC. This is a preliminary
+> patch to introduce EN7581 PCIe support.
+> 
+> Tested-by: Zhengping Zhang <zhengping.zhang@airoha.com>
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
-Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
----
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Context might depend on patch in Lee's MFD tree:
-https://lore.kernel.org/all/171828959006.2643902.8308227314531523435.b4-ty@kernel.org/
-and also further patches here depend on this one.
----
- Documentation/devicetree/bindings/mfd/syscon.yaml  |  1 -
- .../bindings/soc/ti/ti,am654-serdes-ctrl.yaml      | 42 ++++++++++++++++++++++
- 2 files changed, 42 insertions(+), 1 deletion(-)
-
-diff --git a/Documentation/devicetree/bindings/mfd/syscon.yaml b/Documentation/devicetree/bindings/mfd/syscon.yaml
-index 49bf85e8f220..0f6fd1a41dd8 100644
---- a/Documentation/devicetree/bindings/mfd/syscon.yaml
-+++ b/Documentation/devicetree/bindings/mfd/syscon.yaml
-@@ -118,7 +118,6 @@ properties:
-               - ti,am625-dss-oldi-io-ctrl
-               - ti,am62p-cpsw-mac-efuse
-               - ti,am654-dss-oldi-io-ctrl
--              - ti,am654-serdes-ctrl
-               - ti,j784s4-pcie-ctrl
-               - ti,keystone-pllctrl
- 
-diff --git a/Documentation/devicetree/bindings/soc/ti/ti,am654-serdes-ctrl.yaml b/Documentation/devicetree/bindings/soc/ti/ti,am654-serdes-ctrl.yaml
-new file mode 100644
-index 000000000000..a10a3b89ae05
---- /dev/null
-+++ b/Documentation/devicetree/bindings/soc/ti/ti,am654-serdes-ctrl.yaml
-@@ -0,0 +1,42 @@
-+# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/soc/ti/ti,am654-serdes-ctrl.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Texas Instruments AM654 Serdes Control Syscon
-+
-+maintainers:
-+  - Nishanth Menon <nm@ti.com>
-+
-+properties:
-+  compatible:
-+    items:
-+      - const: ti,am654-serdes-ctrl
-+      - const: syscon
-+
-+  reg:
-+    maxItems: 1
-+
-+  mux-controller:
-+    $ref: /schemas/mux/reg-mux.yaml#
-+
-+required:
-+  - compatible
-+  - reg
-+  - mux-controller
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    clock@4080 {
-+        compatible = "ti,am654-serdes-ctrl", "syscon";
-+        reg = <0x4080 0x4>;
-+
-+        mux-controller {
-+            compatible = "mmio-mux";
-+            #mux-control-cells = <1>;
-+            mux-reg-masks = <0x0 0x3>; /* lane select */
-+        };
-+    };
-
--- 
-2.43.0
 
 
