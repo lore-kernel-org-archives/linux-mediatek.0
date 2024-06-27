@@ -4,85 +4,118 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2F5FC3064D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jun 2024 10:29:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81FF2C3064D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jun 2024 10:32:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
-	In-Reply-To:Subject:CC:To:From:Date:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=D5NGZ7FBqBdRj1CxmbyFuu09/ZpTa0X+w9fUYiQA4SQ=; b=AXKDrEsi1U7uoT
-	HNMiBstOQs9+75JjdO/PdxdOGpWJ4m7nwc/bDnMxKQHEqvacL1DDIV3Gy91IjRLlub25qrgApBsRA
-	3sH/v7RpwvlX8H1m63gVzLYGeRpP1xvAcFbK1K3elLUZTThu4G0666wJ8rgjKwN4Ab0vtg3LEz2eQ
-	dyb7gZHOu4kP6UwvUfmeE5ZyXLq0WD6yl3vo110IzIBVMEhehF+U3J/nXnDLxEIEq5WkM7o4ujaSS
-	dGhACtS64w70iAhOWLlYDiKwKpV9LesYwXliFM511FTBMXM9ATpEVFu0LreB9QrO/JyS9/3NCV0Ga
-	UtBXQ8EG/Fu4kWNWvHow==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=tc3OCxrbI5f3b0tGJOHFzaZIm8KYLF8iYniM50kiY4o=; b=mumZqDj9UDofHA
+	5ECFo172bxGKxkzIwsKm6JeeDpETw4khIdDk9t8kluIiEaeTXiyxxR4JwwCDEv7F5A9w1FFkMkx3f
+	l3lybJauL3MzMz6wtvU82KPjOROYoTc2Cg/XqYzRSpU+xVgq5z+MTzPyWNhSRIatcK00LI7UBaYh5
+	XWEe0JutlM9nE90SIge1Yv8uZ1Jh6h3RUVpdeW0mFoUSg3/WQskiR4KgsgJ/9M86sJtM/0VuXntnT
+	bFG6Emq4vY5BSUxotCLkBYb8dCh7Q62BygC9WjDhw02HKQXljbVMWAXF+DKtXV3vUOsXcU2shdKLU
+	ReSUos4YWEdqkEFNZTqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMmNm-00000009wTv-4B45;
-	Thu, 27 Jun 2024 10:29:39 +0000
-Received: from mout.gmx.net ([212.227.15.15])
+	id 1sMmQk-00000009xCr-11mD;
+	Thu, 27 Jun 2024 10:32:42 +0000
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMmNE-00000009wMX-17tk;
-	Thu, 27 Jun 2024 10:29:07 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
-	s=s31663417; t=1719484137; x=1720088937; i=frank-w@public-files.de;
-	bh=D5NGZ7FBqBdRj1CxmbyFuu09/ZpTa0X+w9fUYiQA4SQ=;
-	h=X-UI-Sender-Class:Date:From:To:CC:Subject:Reply-to:In-Reply-To:
-	 References:Message-ID:MIME-Version:Content-Type:
-	 Content-Transfer-Encoding:cc:content-transfer-encoding:
-	 content-type:date:from:message-id:mime-version:reply-to:subject:
-	 to;
-	b=n9G7MSQ4uPHWwI+yEE9Pz5PFTD2oI/SBdgyhok0S9hkRLC4Le0GJnGrLmlPHyg1H
-	 sThQYQb0HCBHZxETLN8z4vwIJzQbWmtKRCuqVzpo2vnY6w/YvPlgTtLFENLaFve0O
-	 7/AXviXqldaRqZSsF6S7hgucpefFWIcxb12la8V01XhA2MkGiNvZqRm+f6NlELsn/
-	 +lu7EvZ5K30+nuMjKV1f7hPv+aumVxItPk22W0IvP1CXOauFFNfHasqPd+UFZaP7n
-	 xtybmIPqyhkvW8hGwjsBL2loNWruC+slMPXfwuR9Y7Rv9MXqGriC2A+KwRTNF8cxf
-	 dshYBf+IKP4hfa3zHQ==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [IPv6:::1] ([80.187.71.1]) by mail.gmx.net (mrgmx004
- [212.227.17.190]) with ESMTPSA (Nemesis) id 1MaJ7v-1rqcUn3xm1-00Vo5B; Thu, 27
- Jun 2024 12:28:57 +0200
-Date: Thu, 27 Jun 2024 12:28:54 +0200
-From: Frank Wunderlich <frank-w@public-files.de>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>
-CC: Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- Daniel Golle <daniel@makrotopia.org>, Rob Herring <robh+dt@kernel.org>,
- Frank Wunderlich <linux@fw-web.de>
-Subject: =?US-ASCII?Q?Re=3A_Aw=3A_=5BPATCH_v3_1/2=5D_arm64=3A_dts=3A_mt7986=3A?=
- =?US-ASCII?Q?_add_dtbs_with_applied_overlays_for_bpi-r3?=
-User-Agent: K-9 Mail for Android
-In-Reply-To: <726f2ed3-675f-45e8-94f0-d392181e7f92@collabora.com>
-References: <20240608080530.9436-1-linux@fw-web.de> <20240608080530.9436-2-linux@fw-web.de> <trinity-82c94d49-2a78-4470-83cd-3c6747e01849-1719434738199@3c-app-gmx-bs52> <726f2ed3-675f-45e8-94f0-d392181e7f92@collabora.com>
-Message-ID: <951E802C-1B53-45C4-B3E6-4A3400F47214@public-files.de>
+	id 1sMmQf-00000009x9R-22Wa
+	for linux-mediatek@lists.infradead.org;
+	Thu, 27 Jun 2024 10:32:39 +0000
+Received: by mail-wr1-x42e.google.com with SMTP id ffacd0b85a97d-36703b0f914so1063837f8f.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 27 Jun 2024 03:32:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1719484356; x=1720089156; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=tc3OCxrbI5f3b0tGJOHFzaZIm8KYLF8iYniM50kiY4o=;
+        b=nzdsL/ONsme6704+mb+caFCX6tr/ejTkYbmoGNECxvjigVlXVEr5s4x2gCbSzvKomI
+         BjdNOL06uV/O6DiKE0X6hz0gHzfj9YwleCxC9l8zrtOY80k3kzBm3w1besVNLT4sP54g
+         wtIqEG8YUZ868+DbiXSX/98tuYNM4AOjCd3ui64mMlKr0Si9JTHONAg8cqki7PjHr6j6
+         Lagv2GKn6v7wCt4atAQ67zTW5mdJM7s1656lgK54k6A6LJL1K5cnGnh7BtFlfcfJd5pE
+         QrSsIr7mCSiDZfKjjYfzw3Xbc0ezVjpT9etX1+7gg/T1Zma6oFoxMYJuFMrYIoYE4FFx
+         /whA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1719484356; x=1720089156;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=tc3OCxrbI5f3b0tGJOHFzaZIm8KYLF8iYniM50kiY4o=;
+        b=K4z2KgypQCNMxGwhCGqRpAaRDt7vj8UU9+No/adXDXShZ4ovwVCiBSNnpFyMwEYI7R
+         l1MdSiNk0DwFj+3rh2pOuh1xqgSF0BVExQVxQS6YBq9R2DHdOVM4W6hyYggUun5VFP+e
+         zMP1mhY/y+jpLnsmwBxSmp/RxiCyXKL363BYd08+Rdne0DLDgOb0YWk6pF/e4mQuYQJc
+         TOKWpk45eyyeT8I/axDf/O65zb5ITNG9l2LWDUBgNrrCcZWY0hxZw3w1ESqzYUxQNvgz
+         I0nwSAO6A/PeVVB6vZriZvrM/F3xZ3hcqeDC9hs6sqeTKqo8JHSWHoImXOSkMA7uGDJW
+         4ngg==
+X-Forwarded-Encrypted: i=1; AJvYcCV7eHIfmrF2BEY7S6BJPM42itEOhXynzmDrC/VV6tbjlzc6rFvU1GpvtjxKZnbbOpID9+qziEqdT5X/HSQS5KaqprCFFksIYyBJtf5wgu4Bbjvn
+X-Gm-Message-State: AOJu0Yz11+w1scFZWw4Ddc+qN8VcCi/YCvGob3bqYGbxtYmXvsAeFo7g
+	oou5YEAXp2hP8orZSyLKGTWVH8ieNQjs9+h3zYO4uRjNng7wmU+66NFscv69824=
+X-Google-Smtp-Source: AGHT+IEUJg6zL1JLCvRaZYeqIRIS/dTo1xAqeSnR21HNYqFdNpYbAaRT/L9YMral9TrFx0zx5QA63g==
+X-Received: by 2002:adf:fe46:0:b0:362:7b95:172c with SMTP id ffacd0b85a97d-3673cc55808mr2218753f8f.8.1719484355683;
+        Thu, 27 Jun 2024 03:32:35 -0700 (PDT)
+Received: from [127.0.1.1] ([178.197.219.137])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-367435852afsm1384352f8f.53.2024.06.27.03.32.33
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 27 Jun 2024 03:32:35 -0700 (PDT)
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH v4 0/7] dt-bindings: mfd: syscon: Document more compatibles
+ and require simpe-mfd description
+Date: Thu, 27 Jun 2024 12:32:16 +0200
+Message-Id: <20240627-dt-bindings-mfd-syscon-split-v4-0-dc6699a9f3e4@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:GQ81Q1zMBThpI//1P+HkTAUBlpTlOxo+qxvTc9TAMiOK9giLFEo
- h3YILAMhlW6igT41eOkAQu5PFe/3tORpWonl/JeUV46oIc4ucqt7Gt3e4lREBAA3+fg+Ef/
- 3Kp8dlsKQwlO/ccpitJ7zNC37XnxutY0VPXEMSPkJSL5X1cUeyLpxBVnORhSF8R46/sM+DF
- z3drwJueoPBukzSRyDleA==
-UI-OutboundReport: notjunk:1;M01:P0:Zt1rFlEjGSc=;DqDpGYepkvNHUBa8OktHl8cu696
- hNNHFYR4v9cr/X9qvsueO0bEhAelCWcntlu9hUUZlaAwFTuIwlaQQwG5qSk7TSte0l+LLaFxe
- aMvED9wnNU02QiWakFEVKtCAuoSRv6Zey8Xgqzn6KJPhqdbAV/gqI6bJ4IDQeoEZw+qaRmLNR
- KUtn5+rr+dmY1ZvZY14l7n54t17hSI0sXzfDeU7w5wwGzqoBmHaMi+1NRtIjJWhRBLdOnj144
- pTO74Hh7pbGRPYhWqsu68/d5DMGvSRcgIvqsHXYoWJMAX5Xs0eny8heGOEa7n80BZi069wNKz
- rkv8HTrk27LX5vqRn5mNPhO27o6qMo48wqc27sjtSi38vP0Bjr6lVF79I8aNJwqG/VyvFoa5/
- UGDONGw9u2xS9Q+liZh+dqmshGGzVCwDOCwoZrJIg5UM2VJy5E5XK23AMGGnRTe3WTkGXXF4v
- O3B9KJXuJMmmJrVBn0BqXChr+wIqGsj0i6GF7QTEYz/R7SkFqheD0jfX03JIdzg8GnTRVVFr3
- VG7FzMJpiNAPOwUP9DWXXYRCyMicXHmKCFz1wotVQjsna5a5/Zh8ctb17O/1VZXK5Yfal/jB4
- oNO/LIGhg7VdM044uaA81TfFxeoG+w8If74ISzMN700u6yh+FJjlat7WYsEsO6kzUKjI6/jR/
- 7Zpg+nzgelZoe+j3dgChRZBqUWwXmL2U+g/jimhnDcQLPh/1zNpc3IqGxZS1mZv5y3QHnp+Rp
- miYqSClYnyLF7B3GJxJbdDmGwREJXPied0/Ql6qXi5HsAk03UrJswtw+aizT93Dqzb+6DEXQE
- /+g5erp4o0fxOaSnuvKLl4GbW07evTXILBh7kGG6C4430=
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIALA/fWYC/4XNSwrCMBSF4a2UjL2SR9MaR+5DHCQmrRdqUpJSL
+ KV7NxVERdDhfwbfmUlyEV0i+2Im0Y2YMPgc5aYg54v2rQO0uQmnvKSS1WAHMOgt+jbBtbGQpnQ
+ OHlLf4QCidlwoVUkuLMlEH12Dtwd/POW+YBpCnB5vI1vXJ6x+wyMDClo32c4PTOhDh17HsA2xJ
+ as88pdWseqPxrMma2bkTlJWl9+aeNP4P01kTZRUKSqMUcp8aMuy3AFZA7rnZQEAAA==
+To: Orson Zhai <orsonzhai@gmail.com>, 
+ Baolin Wang <baolin.wang@linux.alibaba.com>, 
+ Chunyan Zhang <zhang.lyra@gmail.com>, Jacky Huang <ychuang3@nuvoton.com>, 
+ Shan-Chun Hung <schung@nuvoton.com>, 
+ Khuong Dinh <khuong@os.amperecomputing.com>, Lee Jones <lee@kernel.org>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Chuanhua Lei <lchuanhua@maxlinear.com>, 
+ Rahul Tanwar <rtanwar@maxlinear.com>, 
+ Lars Povlsen <lars.povlsen@microchip.com>, 
+ Steen Hegelund <Steen.Hegelund@microchip.com>, 
+ Daniel Machon <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com, 
+ Nishanth Menon <nm@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Jiaxun Yang <jiaxun.yang@flygoat.com>, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
+ Conor Dooley <conor.dooley@microchip.com>, 
+ Rahul Tanwar <rahul.tanwar@linux.intel.com>, 
+ Amireddy Mallikarjuna reddy <mallikarjunax.reddy@intel.com>, 
+ "Zhu, Yi Xin" <Yixin.zhu@intel.com>, Maxime Ripard <mripard@kernel.org>
+X-Mailer: b4 0.14.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3937;
+ i=krzysztof.kozlowski@linaro.org; h=from:subject:message-id;
+ bh=ocq1F8+mwQSJgldcFPAEXtsLkh5F0fMdp5IKXEFxNPI=;
+ b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBmfT+3jsUV94j6aEl8yja5D8RbpsihEg4Epk3mN
+ o28m5XTCEaJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZn0/twAKCRDBN2bmhouD
+ 1ywYD/oDS1OoY0D/nh6c2L4x0KHLdU/A6FBO4WfGKDEb/isjXWwjpIA5xQv67WEO+7IbEFENabm
+ UhFLMQ0tzk/lF326adThJxQNoqoTyNFIVA4PlIOFpoxBA3ZM2ruKCHDNM79kge4SwXjbLdKBn5W
+ wi5rUdibrSHu+JqHyRhM2djnCBiIZi175nJW6WMXZ3Q/itVYuiJ39903Iticd5mSG7+Uu0jx4Xe
+ FzmB8xyZ2ob37N12uVElR27MlzoMKQt13Ih7BKqAhaW61pN6ZQYG92m05q4GHO1v3X00Rvv7Occ
+ /BhrSrKgDVTY2GNPlvGoY4O7rcwqnZSB18KKlNJOzXdHYKgcqFMyOMlWBNmokk/qUiX/81yVizQ
+ rid9FtlaUwaJyHLVzE1RhncqwvFZISeBb/e1tb2ydIlwIG1gDBIkLBaYN1zfcp3+w7u2LF5XEtO
+ DPQ1ouNT7ToQl5kQNijebjXlBMhOtq39++6cIY2FDmG8k7OEm7hmivYpUIP1iawFoLzcxiRLKWv
+ LOJs1w3uLM5jR1mzy+vI8bUv0bwxgiPau4YSM54mwmWet1xMJNHD7+6nXAAQAkwBmaxuEtVKAHE
+ k3LxaajgoE7qX+VelkacisKjf2DjaUBqQ/D/om64qPUuu2UZFpa6AJ8mRZp2ZMp8/MZ3uPPnOaC
+ QHvnDiLNSkwYVtw==
+X-Developer-Key: i=krzysztof.kozlowski@linaro.org; a=openpgp;
+ fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240627_032904_846539_BF285162 
-X-CRM114-Status: GOOD (  14.55  )
+X-CRM114-CacheID: sfid-20240627_033237_610031_088C8233 
+X-CRM114-Status: GOOD (  11.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,120 +127,108 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: frank-w@public-files.de
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am 27=2E Juni 2024 12:10:17 MESZ schrieb AngeloGioacchino Del Regno <angelo=
-gioacchino=2Edelregno@collabora=2Ecom>:
->Il 26/06/24 22:45, Frank Wunderlich ha scritto:
->> any suggestions? hoping it does no laying around so long as v2
->>=20
->
->So you're trying to just test that the overlay is valid and can actually =
-be
->overlaid to the base dts?
->
->I'm not sure that this is the right/best way=2E=2E=2E and I honestly have=
- no time
->to check that *exactly right now*, even though that should be=2E
->
->I have to be convinced of what I'm doing before applying patches, and I k=
-now
->that this was sent a bit of time ago, but I really didn't have any time t=
-o
->dig into that=2E=2E=2E let's see if for some miracle I can do that for th=
-is cycle
->otherwise it's going to be the next one=2E
->
->I mean no disrespect to Rob who suggested this change, but I still want t=
-o
->check that on my own before picking it=2E
->
+Hi,
 
->>=20
->>=20
->>> Gesendet: Samstag, 08=2E Juni 2024 um 10:05 Uhr
->>> Von: "Frank Wunderlich" <linux@fw-web=2Ede>
+Dependency
+==========
+Rebased on Lee's MFD tree, because dependency is there already:
+https://lore.kernel.org/all/171828959006.2643902.8308227314531523435.b4-ty@kernel.org/
 
->>> Betreff: [PATCH v3 1/2] arm64: dts: mt7986: add dtbs with applied over=
-lays for bpi-r3
->>>=20
->>> From: Frank Wunderlich <frank-w@public-files=2Ede>
->>>=20
->>> Build devicetree binaries for testing overlays and providing users
->>> full dtb without using overlays=2E
->>>=20
->>> Suggested-by: Rob Herring <robh+dt@kernel=2Eorg>
- https://lore=2Ekernel=2Eorg/all/CAL_JsqK_3xxD0DFwipXO85P=3Dq=3DEYjUdjE1_8=
-g1MKtvw3vVzx5A@mail=2Egmail=2Ecom/
->>> https://lore=2Ekernel=2Eorg/all/CAL_JsqJSi=3DkJSix=3Df3787ULZnaCy_Y26P=
-hdhy5y9fat_vkDuUw@mail=2Egmail=2Ecom/
->>>=20
->>> v2:
->>> make full dtbs multiline for better readability
->>> ---
->>>   arch/arm64/boot/dts/mediatek/Makefile | 21 +++++++++++++++++++++
->>>   1 file changed, 21 insertions(+)
->>>=20
->>> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/d=
-ts/mediatek/Makefile
->>> index 37b4ca3a87c9=2E=2E0ec5b904d35d 100644
->>> --- a/arch/arm64/boot/dts/mediatek/Makefile
->>> +++ b/arch/arm64/boot/dts/mediatek/Makefile
->>> @@ -15,6 +15,27 @@ dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-b=
-pi-r3-emmc=2Edtbo
->>>   dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-nand=2Edtbo
->>>   dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-nor=2Edtbo
->>>   dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-sd=2Edtbo
->>> +mt7986a-bananapi-bpi-r3-emmc-nand-dtbs :=3D \
->>> +	mt7986a-bananapi-bpi-r3=2Edtb \
->>> +	mt7986a-bananapi-bpi-r3-emmc=2Edtbo \
->>> +	mt7986a-bananapi-bpi-r3-nand=2Edtbo
->>> +dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-emmc-nand=2E=
-dtb
->>> +mt7986a-bananapi-bpi-r3-emmc-nor-dtbs :=3D \
->>> +	mt7986a-bananapi-bpi-r3=2Edtb \
->>> +	mt7986a-bananapi-bpi-r3-emmc=2Edtbo \
->>> +	mt7986a-bananapi-bpi-r3-nor=2Edtbo
->>> +dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-emmc-nor=2Ed=
-tb
->>> +mt7986a-bananapi-bpi-r3-sd-nand-dtbs :=3D \
->>> +	mt7986a-bananapi-bpi-r3=2Edtb \
->>> +	mt7986a-bananapi-bpi-r3-sd=2Edtbo \
->>> +	mt7986a-bananapi-bpi-r3-nand=2Edtbo
->>> +dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-sd-nand=2Edt=
-b
->>> +mt7986a-bananapi-bpi-r3-sd-nor-dtbs :=3D \
->>> +	mt7986a-bananapi-bpi-r3=2Edtb \
->>> +	mt7986a-bananapi-bpi-r3-sd=2Edtbo \
->>> +	mt7986a-bananapi-bpi-r3-nor=2Edtbo
->>> +dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-sd-nor=2Edtb
->>> +
->>>   dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-rfb=2Edtb
->>>   dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986b-rfb=2Edtb
->>>   dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7988a-bananapi-bpi-r4=2Edtb
->>> --
->>> 2=2E34=2E1
->>>=20
->>>=20
->
+Merging
+=======
+Preferrably everything via MFD tree (file/context dependencies).
 
-Yes, 1st reason is to check if overlay can be applied to base dts (the par=
-t rob was requested)=2E The second thing that was solved is that some users=
- wanting a "full" dtb without the need to handle overlays in bootloader=2E =
-Due to hardware design of the board there are 4 "full" dtb's=2E
+Changes in v4
+=============
+- Rebase - syscon.yaml got new compatible ti,am62-opp-efuse-table
+- Link to v3: https://lore.kernel.org/r/20240626-dt-bindings-mfd-syscon-split-v3-0-3409903bb99b@linaro.org
 
-So i adressed both in one Patch=2E I myself (and openwrt) still use the ov=
-erlays and apply them after probing hardware in uboot=2E=2E=2Eso for me it =
-is not needed but requested from others=2E Current state was defined as bro=
-ken by rob and for future additions (like mt7988/bpi-r4) we want to have a =
-blueprint=2E
+Changes in v3
+=============
+- Add tags
+- intel,lgm-syscon: change maintainers (email bounce)
+- syscon/Split: drop unneeded |, use const instead of enum in select:
+- Link to v2: https://lore.kernel.org/r/20240616-dt-bindings-mfd-syscon-split-v2-0-571b5850174a@linaro.org
 
-I hope you find time to look into it to have it solved soon and avoid disc=
-ussions like the 2 links from commit message in future=2E=2E=2Ethen we have=
- a reference for similar situations=2E
+Changes in v2
+=============
+- Add acks
+- lgm-syscon: add ranges to binding and example
+- syscon.yaml: add big select with all compatibles for older dtschema
+- Link to v1: https://lore.kernel.org/r/20240519-dt-bindings-mfd-syscon-split-v1-0-aaf996e2313a@linaro.org
 
+Description/problem
+===================
+Simple syscon nodes can be documented in common syscon.yaml, however
+devices with simple-mfd compatible, thus some children, should have
+their own schema listing these children.  Such listing makes the binding
+specific, allows better validation (so the incorrect child would not
+appear in the simple-mfd node) and actually enforces repeated rule for
+simple-mfd devices:
 
-regards Frank
+  "simple-mfd" is only for simple devices, where the children do not
+  depend on the parent.
+
+Currently the syscon+simple-mfd binding is quite broad and allows
+any child or property, thus above rule cannot be enforced.
+
+Solution
+========
+1. Split the syscon.yaml binding into common syscon properties, used
+   potentially by many bindings, and only simple syscon devices (NO
+   simple-mfd!).
+2. Move some known simple-mfd bindings from syscon.yaml to dedicated
+   files.
+
+This patchset might introduce new dtbs_check warnings for devices having
+simple-mfd and being part of syscon.yaml previously. I fixed some of
+them, but probably not all.
+
+Best regards,
+Krzysztof
+
+To: Lee Jones <lee@kernel.org>
+To: Rob Herring <robh@kernel.org>
+To: Krzysztof Kozlowski <krzk+dt@kernel.org>
+To: Conor Dooley <conor+dt@kernel.org>
+To: Lars Povlsen <lars.povlsen@microchip.com>
+To: Steen Hegelund <Steen.Hegelund@microchip.com>
+To: Daniel Machon <daniel.machon@microchip.com>
+To: UNGLinuxDriver@microchip.com
+To: Nishanth Menon <nm@ti.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: devicetree@vger.kernel.org
+Cc: linux-kernel@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-mediatek@lists.infradead.org
+
+---
+Krzysztof Kozlowski (7):
+      dt-bindings: mfd: syscon: Drop hwlocks
+      dt-bindings: soc: sprd: sc9863a-glbregs: Document SC9863A syscon
+      dt-bindings: soc: intel: lgm-syscon: Move to dedicated schema
+      dt-bindings: soc: microchip: sparx5-cpu-syscon: Move to dedicated schema
+      dt-bindings: soc: ti: am654-serdes-ctrl: Move to dedicated schema
+      dt-bindings: mfd: syscon: Split and enforce documenting MFD children
+      dt-bindings: mfd: syscon: Add APM poweroff mailbox
+
+ .../devicetree/bindings/mfd/syscon-common.yaml     |  71 +++++
+ Documentation/devicetree/bindings/mfd/syscon.yaml  | 309 ++++++++++++---------
+ .../bindings/soc/intel/intel,lgm-syscon.yaml       |  57 ++++
+ .../soc/microchip/microchip,sparx5-cpu-syscon.yaml |  49 ++++
+ .../bindings/soc/sprd/sprd,sc9863a-glbregs.yaml    |  55 ++++
+ .../bindings/soc/ti/ti,am654-serdes-ctrl.yaml      |  42 +++
+ 6 files changed, 459 insertions(+), 124 deletions(-)
+---
+base-commit: c41503b65ef7b85189c39f6a6038feb7c93eac2f
+change-id: 20240517-dt-bindings-mfd-syscon-split-37e23996523d
+
+Best regards,
+-- 
+Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+
 
