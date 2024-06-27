@@ -4,148 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE378C2BD09
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jun 2024 10:27:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2F5FC3064D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jun 2024 10:29:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kkiib5uXUKfAV0KZC0BOS/LLie42Hi3enUGI15yO3lg=; b=euMZ/4O+Kd7EGmHYpoUO2pIHzL
-	oyAbKwRN7LcxbXh2Q1Pz/YFHMV1ipc7rO0XZfc1Sgt0SquO/Wyb8NeGJDIY0+PdDNPowiwVRAh4LQ
-	ND1TsSOJEdMe/FBzH2pWt8I0Ai+lqvfsACYu6ldHC4bUsRKqWe75+sBdCF0x6AUFk1qpBowfRgary
-	8Jmzcy3eOB7k7jL4XLa8E4PA2QiaECKaXuIc2B5WoQiFUcNl8naOCcoUrndGhgBpWj535lfBBSQgW
-	ONXEKeRV0LtneQ2SpwdEjvVpLdLsq5JGD5ZG+SySTF7Y1BIP9b8yH/nnGzZ504mHuY5pXAmzsdT+K
-	75P+mvZg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
+	In-Reply-To:Subject:CC:To:From:Date:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=D5NGZ7FBqBdRj1CxmbyFuu09/ZpTa0X+w9fUYiQA4SQ=; b=AXKDrEsi1U7uoT
+	HNMiBstOQs9+75JjdO/PdxdOGpWJ4m7nwc/bDnMxKQHEqvacL1DDIV3Gy91IjRLlub25qrgApBsRA
+	3sH/v7RpwvlX8H1m63gVzLYGeRpP1xvAcFbK1K3elLUZTThu4G0666wJ8rgjKwN4Ab0vtg3LEz2eQ
+	dyb7gZHOu4kP6UwvUfmeE5ZyXLq0WD6yl3vo110IzIBVMEhehF+U3J/nXnDLxEIEq5WkM7o4ujaSS
+	dGhACtS64w70iAhOWLlYDiKwKpV9LesYwXliFM511FTBMXM9ATpEVFu0LreB9QrO/JyS9/3NCV0Ga
+	UtBXQ8EG/Fu4kWNWvHow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMmLN-00000009vyb-0Xo1;
-	Thu, 27 Jun 2024 10:27:09 +0000
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+	id 1sMmNm-00000009wTv-4B45;
+	Thu, 27 Jun 2024 10:29:39 +0000
+Received: from mout.gmx.net ([212.227.15.15])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMmLI-00000009vsK-4253
-	for linux-mediatek@lists.infradead.org;
-	Thu, 27 Jun 2024 10:27:07 +0000
-Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-42562fde108so8415535e9.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 27 Jun 2024 03:26:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1719483991; x=1720088791; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
-         :references:cc:to:from:subject:user-agent:mime-version:date
-         :message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=kkiib5uXUKfAV0KZC0BOS/LLie42Hi3enUGI15yO3lg=;
-        b=oOA7iiOT3fBeZ5bpm3naGIaJnMVcUZRXAo/QZcByqek2faetcbaU8DseQwg53LD5iq
-         mvJ0nru7KgTxybwypAiXW5+Z/V9GtyB54EONAmovgFEM/CbO1JV7NSSDuex5SqUIwzBs
-         dtMfE/VkmOISKsEny+yXmeVBqspAzlTbvwATqUKZCWfUbVPBKAW27lE+i9Sn7rSi6AnP
-         BiNgxONvJYmm/AKmAacMfqOYX5jzLXL7v4kYvtjYymf23NJIBgNRu+RNk1FBCn0AOr4B
-         yRWAsDiZEZ+GEbL7/DfhVgl4Und6AIEko+XXT8QM5BJLsetWnw424GceFZuXMHu2VnaI
-         8EmA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1719483991; x=1720088791;
-        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
-         :references:cc:to:from:subject:user-agent:mime-version:date
-         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=kkiib5uXUKfAV0KZC0BOS/LLie42Hi3enUGI15yO3lg=;
-        b=m/lhPGT6f6x0lrorKJQloemQWbYSJiy2RCRS9b24qIM9TKbIzL6A6qWPohvllxSHom
-         Btj18WR3KAqRq2gYSQ/ZHvwtTibCwBfOOH63lWGveOSUGAfQMs/xaH6iGeCCh9iZIH0C
-         ZKcQe18EK20MTK+ntdSSxGGh4yqs/QQlss43FJq0Ho31sTIeejnVim0kY8UUUxNtacl4
-         qc/enD0kDYx5H7JPy9u/njFWH85taTGWjTSLROqcMM1QqJlw67Wo5tTRXigQJmsuj+6q
-         TFLZfFAhJBsbY+rZ7X8YNQGDUP6TRedUeo3Wnyf+Iu5z7NMESQwaUj7WifR1qsgws585
-         +BYg==
-X-Forwarded-Encrypted: i=1; AJvYcCXOEt19JlcEo24NdNrbF60ogvD87A6zDFFfeU2yJV7wZq6lR3/WNvWBij+kcBF/PuQtIf46Qoek5oBXnSXVgHoe+dLqH27+S8RzesQQvdhcE/w6
-X-Gm-Message-State: AOJu0YyI1JM6MzaeHZTDP9oR04aL0Dc7qA+MYG4k+rwuCGBo7LlQMlvR
-	CQP55Q6beBX8UgyFLKrRhBo9HV1FKpIg4McpQ0vQnboLw2DruFUu7HjwRoIxnF0=
-X-Google-Smtp-Source: AGHT+IFuC5s3wiSW8VkamLlRdNW2xEIi0ktoj3jQfj2TJK9ZIRcRaQQZXUFi9lGKO8Puy6iYf7kyXg==
-X-Received: by 2002:a05:600c:47c7:b0:425:632b:b929 with SMTP id 5b1f17b1804b1-425632bba79mr13819525e9.1.1719483991359;
-        Thu, 27 Jun 2024 03:26:31 -0700 (PDT)
-Received: from [192.168.1.20] ([178.197.219.137])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-42564bc60f9sm19587705e9.46.2024.06.27.03.26.29
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 27 Jun 2024 03:26:30 -0700 (PDT)
-Message-ID: <8a30fc06-4152-4489-b991-184c8e816254@linaro.org>
-Date: Thu, 27 Jun 2024 12:26:28 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 0/7] dt-bindings: mfd: syscon: Document more
- compatibles and require simpe-mfd description
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-To: Lee Jones <lee@kernel.org>
-Cc: Orson Zhai <orsonzhai@gmail.com>,
- Baolin Wang <baolin.wang@linux.alibaba.com>,
- Chunyan Zhang <zhang.lyra@gmail.com>, Jacky Huang <ychuang3@nuvoton.com>,
- Shan-Chun Hung <schung@nuvoton.com>,
- Khuong Dinh <khuong@os.amperecomputing.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Chuanhua Lei <lchuanhua@maxlinear.com>,
- Rahul Tanwar <rtanwar@maxlinear.com>,
- Lars Povlsen <lars.povlsen@microchip.com>,
- Steen Hegelund <Steen.Hegelund@microchip.com>,
- Daniel Machon <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com,
- Nishanth Menon <nm@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, devicetree@vger.kernel.org,
+	id 1sMmNE-00000009wMX-17tk;
+	Thu, 27 Jun 2024 10:29:07 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
+	s=s31663417; t=1719484137; x=1720088937; i=frank-w@public-files.de;
+	bh=D5NGZ7FBqBdRj1CxmbyFuu09/ZpTa0X+w9fUYiQA4SQ=;
+	h=X-UI-Sender-Class:Date:From:To:CC:Subject:Reply-to:In-Reply-To:
+	 References:Message-ID:MIME-Version:Content-Type:
+	 Content-Transfer-Encoding:cc:content-transfer-encoding:
+	 content-type:date:from:message-id:mime-version:reply-to:subject:
+	 to;
+	b=n9G7MSQ4uPHWwI+yEE9Pz5PFTD2oI/SBdgyhok0S9hkRLC4Le0GJnGrLmlPHyg1H
+	 sThQYQb0HCBHZxETLN8z4vwIJzQbWmtKRCuqVzpo2vnY6w/YvPlgTtLFENLaFve0O
+	 7/AXviXqldaRqZSsF6S7hgucpefFWIcxb12la8V01XhA2MkGiNvZqRm+f6NlELsn/
+	 +lu7EvZ5K30+nuMjKV1f7hPv+aumVxItPk22W0IvP1CXOauFFNfHasqPd+UFZaP7n
+	 xtybmIPqyhkvW8hGwjsBL2loNWruC+slMPXfwuR9Y7Rv9MXqGriC2A+KwRTNF8cxf
+	 dshYBf+IKP4hfa3zHQ==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [IPv6:::1] ([80.187.71.1]) by mail.gmx.net (mrgmx004
+ [212.227.17.190]) with ESMTPSA (Nemesis) id 1MaJ7v-1rqcUn3xm1-00Vo5B; Thu, 27
+ Jun 2024 12:28:57 +0200
+Date: Thu, 27 Jun 2024 12:28:54 +0200
+From: Frank Wunderlich <frank-w@public-files.de>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>
+CC: Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Conor Dooley
- <conor.dooley@microchip.com>, Rahul Tanwar <rahul.tanwar@linux.intel.com>,
- Amireddy Mallikarjuna reddy <mallikarjunax.reddy@intel.com>,
- "Zhu, Yi Xin" <Yixin.zhu@intel.com>, Maxime Ripard <mripard@kernel.org>
-References: <20240626-dt-bindings-mfd-syscon-split-v3-0-3409903bb99b@linaro.org>
- <20240627081853.GF2532839@google.com>
- <58d1e88c-b2cd-49c7-b250-84104e82ed67@linaro.org>
-Content-Language: en-US
-Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
- 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
- D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <58d1e88c-b2cd-49c7-b250-84104e82ed67@linaro.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+ Daniel Golle <daniel@makrotopia.org>, Rob Herring <robh+dt@kernel.org>,
+ Frank Wunderlich <linux@fw-web.de>
+Subject: =?US-ASCII?Q?Re=3A_Aw=3A_=5BPATCH_v3_1/2=5D_arm64=3A_dts=3A_mt7986=3A?=
+ =?US-ASCII?Q?_add_dtbs_with_applied_overlays_for_bpi-r3?=
+User-Agent: K-9 Mail for Android
+In-Reply-To: <726f2ed3-675f-45e8-94f0-d392181e7f92@collabora.com>
+References: <20240608080530.9436-1-linux@fw-web.de> <20240608080530.9436-2-linux@fw-web.de> <trinity-82c94d49-2a78-4470-83cd-3c6747e01849-1719434738199@3c-app-gmx-bs52> <726f2ed3-675f-45e8-94f0-d392181e7f92@collabora.com>
+Message-ID: <951E802C-1B53-45C4-B3E6-4A3400F47214@public-files.de>
+MIME-Version: 1.0
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:GQ81Q1zMBThpI//1P+HkTAUBlpTlOxo+qxvTc9TAMiOK9giLFEo
+ h3YILAMhlW6igT41eOkAQu5PFe/3tORpWonl/JeUV46oIc4ucqt7Gt3e4lREBAA3+fg+Ef/
+ 3Kp8dlsKQwlO/ccpitJ7zNC37XnxutY0VPXEMSPkJSL5X1cUeyLpxBVnORhSF8R46/sM+DF
+ z3drwJueoPBukzSRyDleA==
+UI-OutboundReport: notjunk:1;M01:P0:Zt1rFlEjGSc=;DqDpGYepkvNHUBa8OktHl8cu696
+ hNNHFYR4v9cr/X9qvsueO0bEhAelCWcntlu9hUUZlaAwFTuIwlaQQwG5qSk7TSte0l+LLaFxe
+ aMvED9wnNU02QiWakFEVKtCAuoSRv6Zey8Xgqzn6KJPhqdbAV/gqI6bJ4IDQeoEZw+qaRmLNR
+ KUtn5+rr+dmY1ZvZY14l7n54t17hSI0sXzfDeU7w5wwGzqoBmHaMi+1NRtIjJWhRBLdOnj144
+ pTO74Hh7pbGRPYhWqsu68/d5DMGvSRcgIvqsHXYoWJMAX5Xs0eny8heGOEa7n80BZi069wNKz
+ rkv8HTrk27LX5vqRn5mNPhO27o6qMo48wqc27sjtSi38vP0Bjr6lVF79I8aNJwqG/VyvFoa5/
+ UGDONGw9u2xS9Q+liZh+dqmshGGzVCwDOCwoZrJIg5UM2VJy5E5XK23AMGGnRTe3WTkGXXF4v
+ O3B9KJXuJMmmJrVBn0BqXChr+wIqGsj0i6GF7QTEYz/R7SkFqheD0jfX03JIdzg8GnTRVVFr3
+ VG7FzMJpiNAPOwUP9DWXXYRCyMicXHmKCFz1wotVQjsna5a5/Zh8ctb17O/1VZXK5Yfal/jB4
+ oNO/LIGhg7VdM044uaA81TfFxeoG+w8If74ISzMN700u6yh+FJjlat7WYsEsO6kzUKjI6/jR/
+ 7Zpg+nzgelZoe+j3dgChRZBqUWwXmL2U+g/jimhnDcQLPh/1zNpc3IqGxZS1mZv5y3QHnp+Rp
+ miYqSClYnyLF7B3GJxJbdDmGwREJXPied0/Ql6qXi5HsAk03UrJswtw+aizT93Dqzb+6DEXQE
+ /+g5erp4o0fxOaSnuvKLl4GbW07evTXILBh7kGG6C4430=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240627_032705_116316_9AC60A90 
-X-CRM114-Status: UNSURE (   8.83  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240627_032904_846539_BF285162 
+X-CRM114-Status: GOOD (  14.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -157,31 +94,120 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: frank-w@public-files.de
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 27/06/2024 12:24, Krzysztof Kozlowski wrote:
->>>  .../devicetree/bindings/mfd/syscon-common.yaml     |  71 +++++
->>>  Documentation/devicetree/bindings/mfd/syscon.yaml  | 306 ++++++++++++---------
->>>  .../bindings/soc/intel/intel,lgm-syscon.yaml       |  57 ++++
->>>  .../soc/microchip/microchip,sparx5-cpu-syscon.yaml |  49 ++++
->>>  .../bindings/soc/sprd/sprd,sc9863a-glbregs.yaml    |  55 ++++
->>>  .../bindings/soc/ti/ti,am654-serdes-ctrl.yaml      |  42 +++
->>>  6 files changed, 457 insertions(+), 123 deletions(-)
+Am 27=2E Juni 2024 12:10:17 MESZ schrieb AngeloGioacchino Del Regno <angelo=
+gioacchino=2Edelregno@collabora=2Ecom>:
+>Il 26/06/24 22:45, Frank Wunderlich ha scritto:
+>> any suggestions? hoping it does no laying around so long as v2
+>>=20
+>
+>So you're trying to just test that the overlay is valid and can actually =
+be
+>overlaid to the base dts?
+>
+>I'm not sure that this is the right/best way=2E=2E=2E and I honestly have=
+ no time
+>to check that *exactly right now*, even though that should be=2E
+>
+>I have to be convinced of what I'm doing before applying patches, and I k=
+now
+>that this was sent a bit of time ago, but I really didn't have any time t=
+o
+>dig into that=2E=2E=2E let's see if for some miracle I can do that for th=
+is cycle
+>otherwise it's going to be the next one=2E
+>
+>I mean no disrespect to Rob who suggested this change, but I still want t=
+o
+>check that on my own before picking it=2E
+>
+
+>>=20
+>>=20
+>>> Gesendet: Samstag, 08=2E Juni 2024 um 10:05 Uhr
+>>> Von: "Frank Wunderlich" <linux@fw-web=2Ede>
+
+>>> Betreff: [PATCH v3 1/2] arm64: dts: mt7986: add dtbs with applied over=
+lays for bpi-r3
+>>>=20
+>>> From: Frank Wunderlich <frank-w@public-files=2Ede>
+>>>=20
+>>> Build devicetree binaries for testing overlays and providing users
+>>> full dtb without using overlays=2E
+>>>=20
+>>> Suggested-by: Rob Herring <robh+dt@kernel=2Eorg>
+ https://lore=2Ekernel=2Eorg/all/CAL_JsqK_3xxD0DFwipXO85P=3Dq=3DEYjUdjE1_8=
+g1MKtvw3vVzx5A@mail=2Egmail=2Ecom/
+>>> https://lore=2Ekernel=2Eorg/all/CAL_JsqJSi=3DkJSix=3Df3787ULZnaCy_Y26P=
+hdhy5y9fat_vkDuUw@mail=2Egmail=2Ecom/
+>>>=20
+>>> v2:
+>>> make full dtbs multiline for better readability
 >>> ---
->>> base-commit: 8dc7c29f608649f3d9eca826e9d4fe4b8a32c472
->>> change-id: 20240517-dt-bindings-mfd-syscon-split-37e23996523d
->>
->> Okay, I tried to apply these whilst fixing up all the conflicts, but
->> lost the will to live.  Please rebase and [RESEND].
-> 
-> This was based on your for-next 8dc7c29f608649f3d9ec "mfd: lm3533: Move
-> to new GPIO descriptor-based APIs". I'll rebase.
+>>>   arch/arm64/boot/dts/mediatek/Makefile | 21 +++++++++++++++++++++
+>>>   1 file changed, 21 insertions(+)
+>>>=20
+>>> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/d=
+ts/mediatek/Makefile
+>>> index 37b4ca3a87c9=2E=2E0ec5b904d35d 100644
+>>> --- a/arch/arm64/boot/dts/mediatek/Makefile
+>>> +++ b/arch/arm64/boot/dts/mediatek/Makefile
+>>> @@ -15,6 +15,27 @@ dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-b=
+pi-r3-emmc=2Edtbo
+>>>   dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-nand=2Edtbo
+>>>   dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-nor=2Edtbo
+>>>   dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-sd=2Edtbo
+>>> +mt7986a-bananapi-bpi-r3-emmc-nand-dtbs :=3D \
+>>> +	mt7986a-bananapi-bpi-r3=2Edtb \
+>>> +	mt7986a-bananapi-bpi-r3-emmc=2Edtbo \
+>>> +	mt7986a-bananapi-bpi-r3-nand=2Edtbo
+>>> +dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-emmc-nand=2E=
+dtb
+>>> +mt7986a-bananapi-bpi-r3-emmc-nor-dtbs :=3D \
+>>> +	mt7986a-bananapi-bpi-r3=2Edtb \
+>>> +	mt7986a-bananapi-bpi-r3-emmc=2Edtbo \
+>>> +	mt7986a-bananapi-bpi-r3-nor=2Edtbo
+>>> +dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-emmc-nor=2Ed=
+tb
+>>> +mt7986a-bananapi-bpi-r3-sd-nand-dtbs :=3D \
+>>> +	mt7986a-bananapi-bpi-r3=2Edtb \
+>>> +	mt7986a-bananapi-bpi-r3-sd=2Edtbo \
+>>> +	mt7986a-bananapi-bpi-r3-nand=2Edtbo
+>>> +dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-sd-nand=2Edt=
+b
+>>> +mt7986a-bananapi-bpi-r3-sd-nor-dtbs :=3D \
+>>> +	mt7986a-bananapi-bpi-r3=2Edtb \
+>>> +	mt7986a-bananapi-bpi-r3-sd=2Edtbo \
+>>> +	mt7986a-bananapi-bpi-r3-nor=2Edtbo
+>>> +dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-sd-nor=2Edtb
+>>> +
+>>>   dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-rfb=2Edtb
+>>>   dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986b-rfb=2Edtb
+>>>   dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7988a-bananapi-bpi-r4=2Edtb
+>>> --
+>>> 2=2E34=2E1
+>>>=20
+>>>=20
+>
 
-Ah, I see now in your tree Bryan's "dt-bindings: mfd: syscon: Add TI's
-opp table compatible" which will conflict in tricky way.
+Yes, 1st reason is to check if overlay can be applied to base dts (the par=
+t rob was requested)=2E The second thing that was solved is that some users=
+ wanting a "full" dtb without the need to handle overlays in bootloader=2E =
+Due to hardware design of the board there are 4 "full" dtb's=2E
 
-Best regards,
-Krzysztof
+So i adressed both in one Patch=2E I myself (and openwrt) still use the ov=
+erlays and apply them after probing hardware in uboot=2E=2E=2Eso for me it =
+is not needed but requested from others=2E Current state was defined as bro=
+ken by rob and for future additions (like mt7988/bpi-r4) we want to have a =
+blueprint=2E
 
+I hope you find time to look into it to have it solved soon and avoid disc=
+ussions like the 2 links from commit message in future=2E=2E=2Ethen we have=
+ a reference for similar situations=2E
+
+
+regards Frank
 
