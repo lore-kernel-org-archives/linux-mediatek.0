@@ -4,82 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81971C3064D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jun 2024 10:09:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC8C6C2BD09
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jun 2024 10:10:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VwL3V2d4rsj9qoM6ANFILNJZQSM2ASsms3/6ZWl24mc=; b=j8cFj/Y3uTRobUFa5/3bTm7Rii
-	gEbR/nk6/TKctspfGtIaNrVxINGJ98D3wnkil5zwvXHLkXbOWkHtdUsn8z6QFom1U4UC4mLnRm9by
-	jbzjjQppyWTj1ysVzqR9+hfdg4NIMv11n9kx2bASp9mnrzt76RpMqh79Xy4KhNQUNG9HzTyahDFgg
-	qObbJmV2pq58fqJE0l5e1YalKDc0nXYeLk0YWeykyGo4xgpt5uhIozXZOnWdhN6Nx32Jmn6xTQJXL
-	t1u8QJYzMo2wGsoFsHskqWKiLTWEwxPTI+vQaZUYrCq4F5ZYjm765lU5xyzMu7hpEzNdMjrNL+irb
-	BrzFsvYQ==;
+	bh=fQc5reA6FUuJdvqXUDZyB3DAHmoPQ/5z2zaxHoIZM5g=; b=ssXeW7lrA/o7/KllA4dYpUgkeW
+	0mqM2B5rPopvk7VST6wmZMB9iLnB8jHilc4R3zy96LwdXn+KYwUo5BiWrxNSW78NORmbbgVay+Ziy
+	taraNy4wIxIJ2rKRQgnZUTjAl2fkOZ0u2YwjFq1wtS2beU5M6T+ERLy6IWbXjtyq5flJtUzRvMJSw
+	WWKHK3pJPWLgJyYZZS9KQIIXd96buIq0mUXWSo/iFJbwIpiVLYaSSiVvmZtul02BaEY6hCgvE1ttC
+	Re0JmDrgC9Gul1Z2EwRVgxVMUT7WZ9oLw/D/I4libGH+enRXiz4e6aRa5LknNZPJAuy3Gkv9b3QYx
+	fjISh/EQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMm3q-00000009spi-2q4u;
-	Thu, 27 Jun 2024 10:09:02 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
-	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMm3a-00000009smx-2Gib;
-	Thu, 27 Jun 2024 10:08:46 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:Content-Type:
-	In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender
-	:Reply-To:Content-ID:Content-Description;
-	bh=VwL3V2d4rsj9qoM6ANFILNJZQSM2ASsms3/6ZWl24mc=; b=plSSKIjlnZsbshuV1jCYrjlllM
-	rj4ykEed4sGpcrkaI6Yhvm6CZ24DDJ8a2anriLp3xGJCiah35549OZRLhoWc05tp8nwdMHfPPlDtN
-	GA2flW4wrPtaGx30jSIRtGgsjGUAQO1UOcv3kzmcy3D5vMJEhs821HCORBEApHk2tAIyt1RSaeZnS
-	QuQMNB8JcxKhilMod3qgDt/rhHFwhkfZtHD7VxZNeH3DlPYMf0NoQD0zBRhJ82BgWM0xjIUS+Atsj
-	dQ/rP22csTaLrGqWdySsmZHki3U0sxLuzwNxP6Oy1X6n0VGc0VK+Fk72foj/8BQ1jgay7GXcRiSE3
-	TeltPIXg==;
+	id 1sMm5F-00000009tAF-3WqS;
+	Thu, 27 Jun 2024 10:10:30 +0000
 Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
-	by casper.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMle7-0000000DOgR-2uRy;
-	Thu, 27 Jun 2024 09:42:29 +0000
+	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1sMm56-00000009t6t-2xri;
+	Thu, 27 Jun 2024 10:10:22 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1719481324;
-	bh=tZr32JHQklyrO/9FeqwAvSJq70aIA76d1jSLaHhjQuE=;
+	s=mail; t=1719483018;
+	bh=YKvSjQO0kBriuXHtpM5S2HDjrcI9aj+U9VFh4zoTZMg=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=JpnRge+RBdRcIE+ZfC/9DC81jJry0CQlpqbFofktI2uNRxO4UW1PJkPiFUPcqOQmZ
-	 oegpF5/O9EWQKd+FvIR1xzpQI1oE2K3Sm2bMh+u+iiUFgE4SBM8ouyb7VXe+oaH3p9
-	 OZZbFj14roY0AQLrgealstIWkFROOJhKKuBBo2YThOjyjQs+yHE6aDqt/mAK6O8Ota
-	 QxN2lVrYJ2ke8YJzImgdUyHvMpNHGCY71sA7V3G198mrOXbhZ8DijhGRM19WdQaBQj
-	 1nafRFnDnTlAGdcw/YY2dgUvjUk/uelixm88ooiLF3RIqxNAqDDEJC5HxSlrr9LKIU
-	 opPQfkWF4QHoQ==
+	b=CScKeZZ9hJayTeQlGW/3Ok8Jm4GshJujZzcM6rXvkfujk1wULJ31eu/DM6dXCEV+c
+	 9Y8tFxvckIKBqnI3OBLFAsYpkUvnDXVZNYInGxb6E0MLL23CfrHvUzjiygG5HsOr7N
+	 Oj6cKI5BerncV4nnf38QoDXaU663019BIcIrXrOQbiUIEHLhnGrd3x8kX6Iegb0Zpm
+	 HDE/Ndh/ZzCPTogp+Gss7PAJxvmIKHinrwj6Y/iSZ1Dhs6wkXhwCjwJrKVb26IFZFo
+	 ytE9nyNJ2Uo7bLy77wrQD/AF1yjKiWsmfJuSwepAqnqcGml/wQMhh75SUmQayfts5L
+	 GcXTqREx2+Yww==
 Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id E5BB0378211B;
-	Thu, 27 Jun 2024 09:42:03 +0000 (UTC)
-Message-ID: <f6f0a4d4-3455-49a3-8e61-8e11ba186ac1@collabora.com>
-Date: Thu, 27 Jun 2024 11:42:03 +0200
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 123B537810CD;
+	Thu, 27 Jun 2024 10:10:18 +0000 (UTC)
+Message-ID: <726f2ed3-675f-45e8-94f0-d392181e7f92@collabora.com>
+Date: Thu, 27 Jun 2024 12:10:17 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 3/4] PCI: mediatek-gen3: Rely on reset_bulk APIs for
- PHY reset lines
-To: Lorenzo Bianconi <lorenzo@kernel.org>, linux-pci@vger.kernel.org
-Cc: ryder.lee@mediatek.com, jianjun.wang@mediatek.com, lpieralisi@kernel.org,
- kw@linux.com, robh@kernel.org, bhelgaas@google.com,
- linux-mediatek@lists.infradead.org, lorenzo.bianconi83@gmail.com,
- linux-arm-kernel@lists.infradead.org, krzysztof.kozlowski+dt@linaro.org,
- devicetree@vger.kernel.org, nbd@nbd.name, dd@embedd.com, upstream@airoha.com
-References: <cover.1719475568.git.lorenzo@kernel.org>
- <b4603cb7c259d94de5a69508dd2aea46b25e385b.1719475568.git.lorenzo@kernel.org>
+Subject: Re: Aw: [PATCH v3 1/2] arm64: dts: mt7986: add dtbs with applied
+ overlays for bpi-r3
+To: Frank Wunderlich <frank-w@public-files.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>
+Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>,
+ Rob Herring <robh+dt@kernel.org>, Frank Wunderlich <linux@fw-web.de>
+References: <20240608080530.9436-1-linux@fw-web.de>
+ <20240608080530.9436-2-linux@fw-web.de>
+ <trinity-82c94d49-2a78-4470-83cd-3c6747e01849-1719434738199@3c-app-gmx-bs52>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <b4603cb7c259d94de5a69508dd2aea46b25e385b.1719475568.git.lorenzo@kernel.org>
+In-Reply-To: <trinity-82c94d49-2a78-4470-83cd-3c6747e01849-1719434738199@3c-app-gmx-bs52>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240627_104227_754832_0A63DA69 
-X-CRM114-Status: UNSURE (   4.28  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240627_031020_915403_B2471015 
+X-CRM114-Status: GOOD (  15.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,14 +81,91 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 27/06/24 10:12, Lorenzo Bianconi ha scritto:
-> Use reset_bulk APIs to manage PHY reset lines. This is a preliminary
-> patch in order to add Airoha EN7581 PCIe support.
+Il 26/06/24 22:45, Frank Wunderlich ha scritto:
+> any suggestions? hoping it does no laying around so long as v2
 > 
-> Tested-by: Zhengping Zhang <zhengping.zhang@airoha.com>
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+So you're trying to just test that the overlay is valid and can actually be
+overlaid to the base dts?
 
+I'm not sure that this is the right/best way... and I honestly have no time
+to check that *exactly right now*, even though that should be.
+
+I have to be convinced of what I'm doing before applying patches, and I know
+that this was sent a bit of time ago, but I really didn't have any time to
+dig into that... let's see if for some miracle I can do that for this cycle
+otherwise it's going to be the next one.
+
+I mean no disrespect to Rob who suggested this change, but I still want to
+check that on my own before picking it.
+
+Sorry about the delays
+
+Cheers,
+Angelo
+
+
+> regards Frank
+> 
+> 
+>> Gesendet: Samstag, 08. Juni 2024 um 10:05 Uhr
+>> Von: "Frank Wunderlich" <linux@fw-web.de>
+>> An: "Matthias Brugger" <matthias.bgg@gmail.com>, "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>, "Rob Herring" <robh@kernel.org>, "Krzysztof Kozlowski" <krzk+dt@kernel.org>, "Conor Dooley" <conor+dt@kernel.org>
+>> Cc: "Frank Wunderlich" <frank-w@public-files.de>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, "Daniel Golle" <daniel@makrotopia.org>, "Rob Herring" <robh+dt@kernel.org>
+>> Betreff: [PATCH v3 1/2] arm64: dts: mt7986: add dtbs with applied overlays for bpi-r3
+>>
+>> From: Frank Wunderlich <frank-w@public-files.de>
+>>
+>> Build devicetree binaries for testing overlays and providing users
+>> full dtb without using overlays.
+>>
+>> Suggested-by: Rob Herring <robh+dt@kernel.org>
+>> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+>> ---
+>> https://lore.kernel.org/all/CAL_JsqK_3xxD0DFwipXO85P=q=EYjUdjE1_8g1MKtvw3vVzx5A@mail.gmail.com/
+>> https://lore.kernel.org/all/CAL_JsqJSi=kJSix=f3787ULZnaCy_Y26Phdhy5y9fat_vkDuUw@mail.gmail.com/
+>>
+>> v2:
+>> make full dtbs multiline for better readability
+>> ---
+>>   arch/arm64/boot/dts/mediatek/Makefile | 21 +++++++++++++++++++++
+>>   1 file changed, 21 insertions(+)
+>>
+>> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
+>> index 37b4ca3a87c9..0ec5b904d35d 100644
+>> --- a/arch/arm64/boot/dts/mediatek/Makefile
+>> +++ b/arch/arm64/boot/dts/mediatek/Makefile
+>> @@ -15,6 +15,27 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-emmc.dtbo
+>>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-nand.dtbo
+>>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-nor.dtbo
+>>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-sd.dtbo
+>> +mt7986a-bananapi-bpi-r3-emmc-nand-dtbs := \
+>> +	mt7986a-bananapi-bpi-r3.dtb \
+>> +	mt7986a-bananapi-bpi-r3-emmc.dtbo \
+>> +	mt7986a-bananapi-bpi-r3-nand.dtbo
+>> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-emmc-nand.dtb
+>> +mt7986a-bananapi-bpi-r3-emmc-nor-dtbs := \
+>> +	mt7986a-bananapi-bpi-r3.dtb \
+>> +	mt7986a-bananapi-bpi-r3-emmc.dtbo \
+>> +	mt7986a-bananapi-bpi-r3-nor.dtbo
+>> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-emmc-nor.dtb
+>> +mt7986a-bananapi-bpi-r3-sd-nand-dtbs := \
+>> +	mt7986a-bananapi-bpi-r3.dtb \
+>> +	mt7986a-bananapi-bpi-r3-sd.dtbo \
+>> +	mt7986a-bananapi-bpi-r3-nand.dtbo
+>> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-sd-nand.dtb
+>> +mt7986a-bananapi-bpi-r3-sd-nor-dtbs := \
+>> +	mt7986a-bananapi-bpi-r3.dtb \
+>> +	mt7986a-bananapi-bpi-r3-sd.dtbo \
+>> +	mt7986a-bananapi-bpi-r3-nor.dtbo
+>> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-sd-nor.dtb
+>> +
+>>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-rfb.dtb
+>>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986b-rfb.dtb
+>>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7988a-bananapi-bpi-r4.dtb
+>> --
+>> 2.34.1
+>>
+>>
 
 
