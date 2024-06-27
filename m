@@ -4,71 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E99CC2BD09
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jun 2024 08:14:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19018C2BD09
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jun 2024 08:19:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xqDy56TPlvUI1OQOvZWVTp2JgrRKVA7+j8e6pz4qc+k=; b=H+VVZbm8IL8e1x6+eToYU0LIOp
-	NF0ZqfVZdUJ7hQX+ctXq1m+8Abpar73fZ4K9hR6zF4x0mpChJcG/4oTcK6+d9aln9y1MAa+b3wg43
-	7Yu7xyyAYA+cSy1m/9dYGk2HgfGPBvFj/mOzxVHhxXZLyEN5KoGt1xsHeR7NGVB09fO4/a29Gn5YI
-	xl/i3NM/JpSVY16slZD3sSkTojLTh4BkHSuDdMsEnNzIm3icGE7cktUlIxuhU/m+d7bgUWxZ2Nx+F
-	9E0inQW7Z8WKlsFapXyoCMnTo+V+s4KO9iRPkb60kD2dKntm7c5xSLIrepVP361XrM3BN6dOejiSI
-	8Q1CTYCw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=B76JdKJP7NL62N7NLYXXU7XuQuEkVTh37ZqW5zb3YTg=; b=Cv2QQEvk3JG5icVFzIBiR5YJbO
+	uRQ4TVVStYiLH47qhE9+Q/26mVeLfFIegPeAsMRFKZqgAPu423m80BvdsLZEh6uHE5fQ715/h6g0Y
+	tF4b/ks+Td5eA39Fs1UBRzCJtt3RLOmxGHZUNi2BSSTgiCezkzmjR3PzH0X2puHcbX8CnlTxAv1Pk
+	O58pXPqBPVEjPX8NI+O6Ma5G5Izuqkn8kExIM+8Y8ydAboOz540QyXBhlVqUMnIshu2XhLq0zflnH
+	uAV594fWH24wUVDA//cZd7RXEtVN8dAb4VOLeXaFbF9w3USMjuETkDMe9l3I6s8DqEjmuGquXu4Lz
+	9TGByl9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMkGY-00000009hVc-29pu;
-	Thu, 27 Jun 2024 08:14:02 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1sMkLd-00000009iZv-0BQc;
+	Thu, 27 Jun 2024 08:19:17 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sMkFn-00000009h80-1Mgp;
-	Thu, 27 Jun 2024 08:13:17 +0000
+	id 1sMkLT-00000009iWz-1vDo;
+	Thu, 27 Jun 2024 08:19:09 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id D0AE4CE2D67;
-	Thu, 27 Jun 2024 08:13:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8F29BC2BD10;
-	Thu, 27 Jun 2024 08:13:11 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id B9A21CE20D9;
+	Thu, 27 Jun 2024 08:19:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B81ACC2BBFC;
+	Thu, 27 Jun 2024 08:18:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1719475991;
-	bh=bctJ5X8cViosGAXVyA5Plj7UDdWbweJa/szjoCURJkc=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=F45GtDt1c7heeSvsahoIETmRGmlMdWJktstJhuW3WBxpyvRsXCWiUmD3jhlGtA7fX
-	 ph6PQ//jQ1AT5d2gYr4bxYHQ0FloVvCKPFxKkJ3nenknHUl3QllAleK41rGgvm7Aw6
-	 NJJ08UnhDuapOm3u2Lx9+uMc0pxA+7mLYcst5AZ+TP1YNSFGAn1DZCreXmCTlMeRgG
-	 aXRuCXr1WH2GvZe6OIAr+1naFL4HTpufXPWnUCCeKURR8VMew5Q8A1Ieq5Kl/Jc4rF
-	 mNCsvr6sSgeKD6zIFAnBiYGCcNRsB58dDaF5J43L79B6Wah1917GCgFeDcuQEHb+vO
-	 NO0RXO98xPWOw==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: linux-pci@vger.kernel.org
-Cc: ryder.lee@mediatek.com,
-	jianjun.wang@mediatek.com,
-	lpieralisi@kernel.org,
-	kw@linux.com,
-	robh@kernel.org,
-	bhelgaas@google.com,
+	s=k20201202; t=1719476341;
+	bh=iVl5R4+HXbf/5A+fy4DPGQQgVODrP+GEinz+6PySv8k=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Hyj8fE5QZpbW9ucDN27Qui9TvgPDrMEcdEC0Ax958ZvsoFqDYu6yUwBvGdBfdNtOT
+	 uZfMGMTqS/xKoEveEaocX2IfvAGwL62tEoRA1uV4e3ilcBKui2tGU1+hrwK95b0sL9
+	 xg6LTHPZjhS9AyRYRz4h16Hf5RCoYncgGhbsMufJU0yN0Hklajo/TeRa/TK7h7jQC2
+	 FDOrt0GSx65j2k2Kx/zbOqOM0ox/XMQOSWs8l/0Fnb5G17x0pBO3Fqcwigt3rAg8e3
+	 dNBCHB/iDYsYYY0BLsc1OKY54R+jwAE5IsyKcW5BHL48cU9lxLvSNESSHHDluPwM5H
+	 D/l0CGwT9LfHQ==
+Date: Thu, 27 Jun 2024 09:18:53 +0100
+From: Lee Jones <lee@kernel.org>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Orson Zhai <orsonzhai@gmail.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Jacky Huang <ychuang3@nuvoton.com>,
+	Shan-Chun Hung <schung@nuvoton.com>,
+	Khuong Dinh <khuong@os.amperecomputing.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Chuanhua Lei <lchuanhua@maxlinear.com>,
+	Rahul Tanwar <rtanwar@maxlinear.com>,
+	Lars Povlsen <lars.povlsen@microchip.com>,
+	Steen Hegelund <Steen.Hegelund@microchip.com>,
+	Daniel Machon <daniel.machon@microchip.com>,
+	UNGLinuxDriver@microchip.com, Nishanth Menon <nm@ti.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	lorenzo.bianconi83@gmail.com,
-	linux-arm-kernel@lists.infradead.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	devicetree@vger.kernel.org,
-	nbd@nbd.name,
-	dd@embedd.com,
-	upstream@airoha.com,
-	angelogioacchino.delregno@collabora.com
-Subject: [PATCH v2 4/4] PCI: mediatek-gen3: Add Airoha EN7581 support
-Date: Thu, 27 Jun 2024 10:12:14 +0200
-Message-ID: <b2c794b21e15ec85a57de144006db9582ce0c949.1719475568.git.lorenzo@kernel.org>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <cover.1719475568.git.lorenzo@kernel.org>
-References: <cover.1719475568.git.lorenzo@kernel.org>
+	Conor Dooley <conor.dooley@microchip.com>,
+	Rahul Tanwar <rahul.tanwar@linux.intel.com>,
+	Amireddy Mallikarjuna reddy <mallikarjunax.reddy@intel.com>,
+	"Zhu, Yi Xin" <Yixin.zhu@intel.com>,
+	Maxime Ripard <mripard@kernel.org>
+Subject: Re: [PATCH v3 0/7] dt-bindings: mfd: syscon: Document more
+ compatibles and require simpe-mfd description
+Message-ID: <20240627081853.GF2532839@google.com>
+References: <20240626-dt-bindings-mfd-syscon-split-v3-0-3409903bb99b@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <20240626-dt-bindings-mfd-syscon-split-v3-0-3409903bb99b@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240627_011315_853638_C29241D7 
-X-CRM114-Status: GOOD (  16.75  )
+X-CRM114-CacheID: sfid-20240627_011907_905711_60DA8CAF 
+X-CRM114-Status: GOOD (  22.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,181 +95,103 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce support for Airoha EN7581 PCIe controller to mediatek-gen3
-PCIe controller driver.
+On Wed, 26 Jun 2024, Krzysztof Kozlowski wrote:
 
-Tested-by: Zhengping Zhang <zhengping.zhang@airoha.com>
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/pci/controller/Kconfig              |  2 +-
- drivers/pci/controller/pcie-mediatek-gen3.c | 96 ++++++++++++++++++++-
- 2 files changed, 96 insertions(+), 2 deletions(-)
+> Hi,
+> 
+> Dependency
+> ==========
+> Rebased on Lee's MFD tree, because dependency is there already:
+> https://lore.kernel.org/all/171828959006.2643902.8308227314531523435.b4-ty@kernel.org/
+> 
+> Merging
+> =======
+> Preferrably everything via MFD tree (file/context dependencies).
+> 
+> Changes in v3
+> =============
+> - Add tags
+> - intel,lgm-syscon: change maintainers (email bounce)
+> - syscon/Split: drop unneeded |, use const instead of enum in select:
+> - Link to v2: https://lore.kernel.org/r/20240616-dt-bindings-mfd-syscon-split-v2-0-571b5850174a@linaro.org
+> 
+> Changes in v2
+> =============
+> - Add acks
+> - lgm-syscon: add ranges to binding and example
+> - syscon.yaml: add big select with all compatibles for older dtschema
+> - Link to v1: https://lore.kernel.org/r/20240519-dt-bindings-mfd-syscon-split-v1-0-aaf996e2313a@linaro.org
+> 
+> Description/problem
+> ===================
+> Simple syscon nodes can be documented in common syscon.yaml, however
+> devices with simple-mfd compatible, thus some children, should have
+> their own schema listing these children.  Such listing makes the binding
+> specific, allows better validation (so the incorrect child would not
+> appear in the simple-mfd node) and actually enforces repeated rule for
+> simple-mfd devices:
+> 
+>   "simple-mfd" is only for simple devices, where the children do not
+>   depend on the parent.
+> 
+> Currently the syscon+simple-mfd binding is quite broad and allows
+> any child or property, thus above rule cannot be enforced.
+> 
+> Solution
+> ========
+> 1. Split the syscon.yaml binding into common syscon properties, used
+>    potentially by many bindings, and only simple syscon devices (NO
+>    simple-mfd!).
+> 2. Move some known simple-mfd bindings from syscon.yaml to dedicated
+>    files.
+> 
+> This patchset might introduce new dtbs_check warnings for devices having
+> simple-mfd and being part of syscon.yaml previously. I fixed some of
+> them, but probably not all.
+> 
+> Best regards,
+> Krzysztof
+> 
+> To: Lee Jones <lee@kernel.org>
+> To: Rob Herring <robh@kernel.org>
+> To: Krzysztof Kozlowski <krzk+dt@kernel.org>
+> To: Conor Dooley <conor+dt@kernel.org>
+> To: Lars Povlsen <lars.povlsen@microchip.com>
+> To: Steen Hegelund <Steen.Hegelund@microchip.com>
+> To: Daniel Machon <daniel.machon@microchip.com>
+> To: UNGLinuxDriver@microchip.com
+> To: Nishanth Menon <nm@ti.com>
+> To: Matthias Brugger <matthias.bgg@gmail.com>
+> To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Cc: devicetree@vger.kernel.org
+> Cc: linux-kernel@vger.kernel.org
+> Cc: linux-arm-kernel@lists.infradead.org
+> Cc: linux-mediatek@lists.infradead.org
+> 
+> ---
+> Krzysztof Kozlowski (7):
+>       dt-bindings: mfd: syscon: Drop hwlocks
+>       dt-bindings: soc: sprd: sc9863a-glbregs: Document SC9863A syscon
+>       dt-bindings: soc: intel: lgm-syscon: Move to dedicated schema
+>       dt-bindings: soc: microchip: sparx5-cpu-syscon: Move to dedicated schema
+>       dt-bindings: soc: ti: am654-serdes-ctrl: Move to dedicated schema
+>       dt-bindings: mfd: syscon: Split and enforce documenting MFD children
+>       dt-bindings: mfd: syscon: Add APM poweroff mailbox
+> 
+>  .../devicetree/bindings/mfd/syscon-common.yaml     |  71 +++++
+>  Documentation/devicetree/bindings/mfd/syscon.yaml  | 306 ++++++++++++---------
+>  .../bindings/soc/intel/intel,lgm-syscon.yaml       |  57 ++++
+>  .../soc/microchip/microchip,sparx5-cpu-syscon.yaml |  49 ++++
+>  .../bindings/soc/sprd/sprd,sc9863a-glbregs.yaml    |  55 ++++
+>  .../bindings/soc/ti/ti,am654-serdes-ctrl.yaml      |  42 +++
+>  6 files changed, 457 insertions(+), 123 deletions(-)
+> ---
+> base-commit: 8dc7c29f608649f3d9eca826e9d4fe4b8a32c472
+> change-id: 20240517-dt-bindings-mfd-syscon-split-37e23996523d
 
-diff --git a/drivers/pci/controller/Kconfig b/drivers/pci/controller/Kconfig
-index e534c02ee34f..3bd6c9430010 100644
---- a/drivers/pci/controller/Kconfig
-+++ b/drivers/pci/controller/Kconfig
-@@ -196,7 +196,7 @@ config PCIE_MEDIATEK
- 
- config PCIE_MEDIATEK_GEN3
- 	tristate "MediaTek Gen3 PCIe controller"
--	depends on ARCH_MEDIATEK || COMPILE_TEST
-+	depends on ARCH_AIROHA || ARCH_MEDIATEK || COMPILE_TEST
- 	depends on PCI_MSI
- 	help
- 	  Adds support for PCIe Gen3 MAC controller for MediaTek SoCs.
-diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
-index 438a5222d986..af567b4355fa 100644
---- a/drivers/pci/controller/pcie-mediatek-gen3.c
-+++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-@@ -7,6 +7,7 @@
-  */
- 
- #include <linux/clk.h>
-+#include <linux/clk-provider.h>
- #include <linux/delay.h>
- #include <linux/iopoll.h>
- #include <linux/irq.h>
-@@ -15,6 +16,8 @@
- #include <linux/kernel.h>
- #include <linux/module.h>
- #include <linux/msi.h>
-+#include <linux/of_device.h>
-+#include <linux/of_pci.h>
- #include <linux/pci.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
-@@ -29,6 +32,7 @@
- #define PCI_CLASS(class)		(class << 8)
- #define PCIE_RC_MODE			BIT(0)
- 
-+#define PCIE_EQ_PRESET_01_REF		0x100
- #define PCIE_CFGNUM_REG			0x140
- #define PCIE_CFG_DEVFN(devfn)		((devfn) & GENMASK(7, 0))
- #define PCIE_CFG_BUS(bus)		(((bus) << 8) & GENMASK(15, 8))
-@@ -68,6 +72,7 @@
- #define PCIE_MSI_SET_ENABLE_REG		0x190
- #define PCIE_MSI_SET_ENABLE		GENMASK(PCIE_MSI_SET_NUM - 1, 0)
- 
-+#define PCIE_PIPE4_PIE8_REG		0x338
- #define PCIE_MSI_SET_BASE_REG		0xc00
- #define PCIE_MSI_SET_OFFSET		0x10
- #define PCIE_MSI_SET_STATUS_OFFSET	0x04
-@@ -100,7 +105,17 @@
- #define PCIE_ATR_TLP_TYPE_MEM		PCIE_ATR_TLP_TYPE(0)
- #define PCIE_ATR_TLP_TYPE_IO		PCIE_ATR_TLP_TYPE(2)
- 
--#define MAX_NUM_PHY_RESETS		1
-+/* EN7581 */
-+#define PCIE_PEXTP_DIG_GLB44_P0_REG	0x10044
-+#define PCIE_PEXTP_DIG_LN_RX30_P0_REG	0x15030
-+#define PCIE_PEXTP_DIG_LN_RX30_P1_REG	0x15130
-+
-+/* PCIe-PHY initialization delay in ms */
-+#define PHY_INIT_TIME_MS		30
-+/* PCIe reset line delay in ms */
-+#define PCIE_RESET_TIME_MS		100
-+
-+#define MAX_NUM_PHY_RESETS		3
- 
- struct mtk_gen3_pcie;
- 
-@@ -847,6 +862,74 @@ static int mtk_pcie_parse_port(struct mtk_gen3_pcie *pcie)
- 	return 0;
- }
- 
-+static int mtk_pcie_en7581_power_up(struct mtk_gen3_pcie *pcie)
-+{
-+	struct device *dev = pcie->dev;
-+	int err;
-+
-+	/* Wait for bulk assert completion in mtk_pcie_setup */
-+	mdelay(PCIE_RESET_TIME_MS);
-+
-+	/* Setup Tx-Rx detect time */
-+	writel_relaxed(0x23020133, pcie->base + PCIE_PEXTP_DIG_GLB44_P0_REG);
-+	/* Setup Rx AEQ training time */
-+	writel_relaxed(0x50500032, pcie->base + PCIE_PEXTP_DIG_LN_RX30_P0_REG);
-+	writel_relaxed(0x50500032, pcie->base + PCIE_PEXTP_DIG_LN_RX30_P1_REG);
-+
-+	err = phy_init(pcie->phy);
-+	if (err) {
-+		dev_err(dev, "failed to initialize PHY\n");
-+		return err;
-+	}
-+	mdelay(PHY_INIT_TIME_MS);
-+
-+	err = phy_power_on(pcie->phy);
-+	if (err) {
-+		dev_err(dev, "failed to power on PHY\n");
-+		goto err_phy_on;
-+	}
-+
-+	err = reset_control_bulk_deassert(pcie->soc->phy_resets.num_resets, pcie->phy_resets);
-+	if (err) {
-+		dev_err(dev, "failed to deassert PHYs\n");
-+		goto err_phy_deassert;
-+	}
-+	mdelay(PCIE_RESET_TIME_MS);
-+
-+	pm_runtime_enable(dev);
-+	pm_runtime_get_sync(dev);
-+
-+	err = clk_bulk_prepare(pcie->num_clks, pcie->clks);
-+	if (err) {
-+		dev_err(dev, "failed to prepare clock\n");
-+		goto err_clk_prepare;
-+	}
-+
-+	writel_relaxed(0x41474147, pcie->base + PCIE_EQ_PRESET_01_REF);
-+	writel_relaxed(0x1018020f, pcie->base + PCIE_PIPE4_PIE8_REG);
-+
-+	err = clk_bulk_enable(pcie->num_clks, pcie->clks);
-+	if (err) {
-+		dev_err(dev, "failed to prepare clock\n");
-+		goto err_clk_enable;
-+	}
-+
-+	return 0;
-+
-+err_clk_enable:
-+	clk_bulk_unprepare(pcie->num_clks, pcie->clks);
-+err_clk_prepare:
-+	pm_runtime_put_sync(dev);
-+	pm_runtime_disable(dev);
-+	reset_control_bulk_assert(pcie->soc->phy_resets.num_resets, pcie->phy_resets);
-+err_phy_deassert:
-+	phy_power_off(pcie->phy);
-+err_phy_on:
-+	phy_exit(pcie->phy);
-+
-+	return err;
-+}
-+
- static int mtk_pcie_power_up(struct mtk_gen3_pcie *pcie)
- {
- 	struct device *dev = pcie->dev;
-@@ -1113,8 +1196,19 @@ static const struct mtk_gen3_pcie_pdata mtk_pcie_soc_mt8192 = {
- 	},
- };
- 
-+static const struct mtk_gen3_pcie_pdata mtk_pcie_soc_en7581 = {
-+	.power_up = mtk_pcie_en7581_power_up,
-+	.phy_resets = {
-+		.id[0] = "phy-lane0",
-+		.id[1] = "phy-lane1",
-+		.id[2] = "phy-lane2",
-+		.num_resets = 3,
-+	},
-+};
-+
- static const struct of_device_id mtk_pcie_of_match[] = {
- 	{ .compatible = "mediatek,mt8192-pcie", .data = &mtk_pcie_soc_mt8192 },
-+	{ .compatible = "airoha,en7581-pcie", .data = &mtk_pcie_soc_en7581 },
- 	{},
- };
- MODULE_DEVICE_TABLE(of, mtk_pcie_of_match);
+Okay, I tried to apply these whilst fixing up all the conflicts, but
+lost the will to live.  Please rebase and [RESEND].
+
 -- 
-2.45.2
-
+Lee Jones [李琼斯]
 
