@@ -4,92 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D44FC2BBCA
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jun 2024 05:47:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0336C2BBCA
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jun 2024 07:00:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=J82aso9srCTwQ13NgHA3QiH1Y/m1v0Plo0MRWgzcEWw=; b=Tpmrn5p1bSOyvI4kMijyy2SUlw
-	M/CNvE10RZPBLUPcfUL7CN7e7Y8F1EdcVemeMlQ1P+9aG9gcD0gt6czNQ4lQYC+BSM22RAo//phWJ
-	ry5ompJh13QpctAjVsx+y9wP4cpJ7rIITV7isd2gmnMJJLYoqu4FdNicqJ1ExWxuWdTjCb8LLghSu
-	UL2GTlbPD+/Euxk0PzE7p+Au70xjSkHhDRvHYkyQ9UU2VDc4TJfLrJtZ8jFLoJoWkrtWzbR0Sm2CQ
-	3pefOv6UNZNsZGpy9jdShMvwZRBdRk8tYMNfW/WGExZlapsHI0Gm+7oYCt26H8GWtmEWnenXavo0/
-	jzYZduZA==;
+	bh=irLaHCX2zHKTSIkKOfcy2lIsUrR7jXGz603EzNUAFxo=; b=qy554fUg4LI2C+6fHpCNm/knHU
+	4LF4v9nTuW1CrzzaHwMOlj+em+mWIYBKrCAkjBAEhz28RYPUnhhcEqNPMilvtQ+6ppOj4wiKaWy+I
+	g4gOhJ+QtbyYrjBWJLAAud7i+WToiLd7Y0JM5Nw9qRKa+hnXXuSuLVn75+Q+JukSGYoAsD+gwl117
+	bGQsQ9+1YQ1mqMglMFguFh1E56fWaCMnq0QeUhLfIEe6MlTZLbGlevFcTi92VPoHBfpdc61FYwtz4
+	fylAoHITpJ09/07e4Vr8cXkzv7xKS7wfw47MGgA4+LaEtFQzqoXisS8Go4hLeSxmR810K3dbuW5dp
+	hIBwnJHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sN4S7-0000000Cer5-35Sj;
-	Fri, 28 Jun 2024 05:47:19 +0000
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
+	id 1sN5b8-0000000CptH-2wC9;
+	Fri, 28 Jun 2024 07:00:42 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sN4Ry-0000000Ceov-1Caj;
-	Fri, 28 Jun 2024 05:47:11 +0000
-Received: by mail-ej1-x62c.google.com with SMTP id a640c23a62f3a-a72420e84feso28361466b.0;
-        Thu, 27 Jun 2024 22:47:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1719553628; x=1720158428; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=J82aso9srCTwQ13NgHA3QiH1Y/m1v0Plo0MRWgzcEWw=;
-        b=Dy+p5XpE8D72K0fFYcliFi6g2JmgUPQQVPNOeGn+Ln6Y+HoNM2GWAFXCMrA/t3dI1c
-         r4NBJmql1/8ehcz3/sc0UbVLxbXESHsz3u4DlO37zbzUUqjsAermPiLVOaipGP1/I/wr
-         CpU5NjGefhV9CVPqsmoS3vBSRIPcS4TyGqCqCiQVq+e9EZVpLQDTDFONRzNcE36aGu4h
-         Ce57+jHm5kKXl2gfuPAeLJisb8addyE+BxeJP3qEG/2b/A1gqOyc4bQOCsCIgDxdne1/
-         w5ZhPrsl8D64KHuvXhV8bE6qXgLKM2/gKYH9yWoin4VUrQm7eIta83ZFd9D7yU7/49mf
-         8aeg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1719553628; x=1720158428;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=J82aso9srCTwQ13NgHA3QiH1Y/m1v0Plo0MRWgzcEWw=;
-        b=HgJU5mJoTxh8i2ThmhQ64BiUQZvpgtVvx4hjwp1i7HhVWf4dq+cRuIsHhj8fgNkdev
-         8ASzyqIsj/HPZJac+Zy4EjaoHidqTcGqcspFBwqEqLSnGVJOJOeW3n2h64MXmRXOQmNP
-         WzU0WbnI10s4W8JAqjenvzog9rCNO5qB4mpN81EAFp+sK6aLnHLryknRmoXiwd6NnFoh
-         ktURaW5X683kODa86JxMUhlljHPObwu5af5hSHmmLyZvtPNZgHJpZyjXQRuHsPxOvi5w
-         9PRC6qXXHrethqaNkfPOJyl9XXA7LxOvtjApTVtOhcoJcu33T36HD6ZM6dgFGoYDCmR3
-         zFXg==
-X-Forwarded-Encrypted: i=1; AJvYcCXFX2Qli1VYzmPOgk+AnySNr33xhwVloGTDEVWI9n3HF8tkdFeiNGt4DHNuh2aPJbl+MZ+C/3Q2shxJxOLTot4Fw7nXyJ0WJxpwV6uHxNNKuQtyVF4Jvf5y5lOE53zvVaspDyEmPwbP1H2BCEDCJXf7VwBmcPJLFRk=
-X-Gm-Message-State: AOJu0Yz0Zba7JaEeyQR4rc0zRE726ZG5TWzLgKDmHK0df1Y8S8iDVueI
-	LTHGpGUvehyBsgy8WKL6X9t2+zCbz5j1aYnzy1nwivS5EdKH4AIwip3S1Q==
-X-Google-Smtp-Source: AGHT+IESZihvr0VfgF8QpueLxCMpYeBNN0yaK4ft/bU3+rHkwKNn0h5UqOyBqhd7yd/NxLcWzXzC+Q==
-X-Received: by 2002:a17:906:a847:b0:a6f:6721:b065 with SMTP id a640c23a62f3a-a7245bb25e6mr1136984566b.32.1719553627433;
-        Thu, 27 Jun 2024 22:47:07 -0700 (PDT)
-Received: from localhost.lan (031011218106.poznan.vectranet.pl. [31.11.218.106])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a72ab0651a8sm41665766b.128.2024.06.27.22.47.05
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 27 Jun 2024 22:47:06 -0700 (PDT)
-From: =?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <zajec5@gmail.com>
-To: "David S . Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>
-Cc: Marcel Holtmann <marcel@holtmann.org>,
-	Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	linux-bluetooth@vger.kernel.org,
-	netdev@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>
-Subject: [PATCH V2] dt-bindings: net: bluetooth: convert MT7622 Bluetooth to the json-schema
-Date: Fri, 28 Jun 2024 07:46:35 +0200
-Message-Id: <20240628054635.3154-1-zajec5@gmail.com>
-X-Mailer: git-send-email 2.35.3
+	id 1sN5b5-0000000CpsX-2ibk
+	for linux-mediatek@lists.infradead.org;
+	Fri, 28 Jun 2024 07:00:41 +0000
+X-UUID: 1edf0010351c11efb2966dae1f787272-20240628
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=irLaHCX2zHKTSIkKOfcy2lIsUrR7jXGz603EzNUAFxo=;
+	b=gESS++xTlkNxY1r8WydCSW3b7XjbGuDnjAm2YgjqhUObQ42Td5Qw1C7B+9VVoce6Ma+8GE1y1fk894AY/K7VjNjqA52R/v39hcfEjn5ascisqCm0qArrXpleQYR7R5vCW9HxmJbe2wJCkRfGmplQjBV/4uMaQCq9zjiSP8p5Oeg=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.39,REQID:c1c90dc3-6fb9-4a33-a17f-3115b8a4c523,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:393d96e,CLOUDID:42ecd8d0-436f-4604-ad9d-558fa44a3bbe,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 1edf0010351c11efb2966dae1f787272-20240628
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <peter.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1615277638; Fri, 28 Jun 2024 00:00:36 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Fri, 28 Jun 2024 15:00:31 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 28 Jun 2024 15:00:31 +0800
+From: <peter.wang@mediatek.com>
+To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
+	<avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
+CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
+	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
+	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
+	<powen.kao@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>,
+	<tun-yu.yu@mediatek.com>, <eddie.huang@mediatek.com>,
+	<naomi.chu@mediatek.com>, <chu.stanley@gmail.com>
+Subject: [PATCH v3 0/2] ufs: core: fix ufshcd_abort_all racing issue
+Date: Fri, 28 Jun 2024 15:00:28 +0800
+Message-ID: <20240628070030.30929-1-peter.wang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--7.428700-8.000000
+X-TMASE-MatchedRID: lR9wedxBitsMQLXc2MGSbBes/RxhysDbFJFr2qlKix+7qpOHKudqc5as
+	fA8Y/RCFiI8t/Y95trJix2NkmtuoxShlmALF5LHIjNvYZHpO13dKPIx+MJF9o5soi2XrUn/J8m+
+	hzBStant2jkpctwKLBQtuKBGekqUpI/NGWt0UYPBkV0ySDuBhe6atgnJszNdSNvttFIXy+pKzdl
+	k4phIsUlncShV1VSIi
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--7.428700-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 07A7C2201B6794F2E8F3CC91F6D157BECF181419B27292004DFDF86857F7DD2C2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240627_224710_383490_5E3345BA 
-X-CRM114-Status: GOOD (  17.81  )
+X-CRM114-CacheID: sfid-20240628_000039_719587_9B4AB893 
+X-CRM114-Status: UNSURE (   6.63  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,123 +100,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Rafał Miłecki <rafal@milecki.pl>
+From: Peter Wang <peter.wang@mediatek.com>
 
-This helps validating DTS files. Introduced changes:
-1. Dropped serial details from example
-2. Added required example include
+This series fixes race condition KE in ufshcd_err_handler, which call 
+ufshcd_abort_all abort an already completed request by ISR in MCQ mode.
 
-Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
----
-V2: Simplify example
+V3:
+ - Modify ufshcd_mcq_req_to_hwq to distinguish cmd is completed or not
+ - Split two patches and add more race description.
 
- .../bluetooth/mediatek,mt7622-bluetooth.yaml  | 51 +++++++++++++++++++
- .../bindings/net/mediatek-bluetooth.txt       | 36 -------------
- 2 files changed, 51 insertions(+), 36 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/net/bluetooth/mediatek,mt7622-bluetooth.yaml
+V2:
+ - Change patch description and add Fixes/Cc tag
 
-diff --git a/Documentation/devicetree/bindings/net/bluetooth/mediatek,mt7622-bluetooth.yaml b/Documentation/devicetree/bindings/net/bluetooth/mediatek,mt7622-bluetooth.yaml
-new file mode 100644
-index 000000000000..3f9e69208127
---- /dev/null
-+++ b/Documentation/devicetree/bindings/net/bluetooth/mediatek,mt7622-bluetooth.yaml
-@@ -0,0 +1,51 @@
-+# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/net/bluetooth/mediatek,mt7622-bluetooth.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: MediaTek SoC built-in Bluetooth
-+
-+description:
-+  This device is a serial attached device to BTIF device and thus it must be a
-+  child node of the serial node with BTIF. The dt-bindings details for BTIF
-+  device can be known via Documentation/devicetree/bindings/serial/8250.yaml.
-+
-+maintainers:
-+  - Sean Wang <sean.wang@mediatek.com>
-+
-+allOf:
-+  - $ref: bluetooth-controller.yaml#
-+
-+properties:
-+  compatible:
-+    const: mediatek,mt7622-bluetooth
-+
-+  clocks:
-+    maxItems: 1
-+
-+  clock-names:
-+    const: ref
-+
-+  power-domains:
-+    maxItems: 1
-+
-+required:
-+  - clocks
-+  - clock-names
-+  - power-domains
-+
-+unevaluatedProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/power/mt7622-power.h>
-+
-+    serial {
-+        bluetooth {
-+            compatible = "mediatek,mt7622-bluetooth";
-+            power-domains = <&scpsys MT7622_POWER_DOMAIN_WB>;
-+            clocks = <&clk25m>;
-+            clock-names = "ref";
-+        };
-+    };
-diff --git a/Documentation/devicetree/bindings/net/mediatek-bluetooth.txt b/Documentation/devicetree/bindings/net/mediatek-bluetooth.txt
-index 9ef5bacda8c1..988c72685cbf 100644
---- a/Documentation/devicetree/bindings/net/mediatek-bluetooth.txt
-+++ b/Documentation/devicetree/bindings/net/mediatek-bluetooth.txt
-@@ -1,39 +1,3 @@
--MediaTek SoC built-in Bluetooth Devices
--==================================
--
--This device is a serial attached device to BTIF device and thus it must be a
--child node of the serial node with BTIF. The dt-bindings details for BTIF
--device can be known via Documentation/devicetree/bindings/serial/8250.yaml.
--
--Required properties:
--
--- compatible:	Must be
--		  "mediatek,mt7622-bluetooth": for MT7622 SoC
--- clocks:	Should be the clock specifiers corresponding to the entry in
--		clock-names property.
--- clock-names:	Should contain "ref" entries.
--- power-domains: Phandle to the power domain that the device is part of
--
--Example:
--
--	btif: serial@1100c000 {
--		compatible = "mediatek,mt7622-btif",
--			     "mediatek,mtk-btif";
--		reg = <0 0x1100c000 0 0x1000>;
--		interrupts = <GIC_SPI 90 IRQ_TYPE_LEVEL_LOW>;
--		clocks = <&pericfg CLK_PERI_BTIF_PD>;
--		clock-names = "main";
--		reg-shift = <2>;
--		reg-io-width = <4>;
--
--		bluetooth {
--			compatible = "mediatek,mt7622-bluetooth";
--			power-domains = <&scpsys MT7622_POWER_DOMAIN_WB>;
--			clocks = <&clk25m>;
--			clock-names = "ref";
--		};
--	};
--
- MediaTek UART based Bluetooth Devices
- ==================================
- 
+Peter Wang (2):
+  ufs: core: fix ufshcd_clear_cmd racing issue
+  ufs: core: fix ufshcd_abort_one racing issue
+
+ drivers/ufs/core/ufs-mcq.c | 11 ++++++-----
+ drivers/ufs/core/ufshcd.c  |  2 ++
+ 2 files changed, 8 insertions(+), 5 deletions(-)
+
 -- 
-2.35.3
+2.18.0
 
 
