@@ -4,68 +4,123 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA89FC2BD09
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jun 2024 19:48:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07E4AC3065A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jun 2024 20:17:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=zBX3hAIQjLcOjmk2fTsZlzOlj6Qxo24lmH7dnAO0cr4=; b=1NVGWQ382KHzUjRAQhm5DskEGU
-	fdJuEJ+EjffbNW0u7H5GsnOZ5ic8chXNhmvSTKXFm6gHgU29bx4tM6vfoKpHPdU/VhqIa3KNdRHg5
-	oUUhouljcuMolx1QHuL9HgYplM2D0nIKE5NwTcq+cMQ4wCU4WfFQX9uej3RujLhK7cnsfIr9VLbhL
-	8mmYubuplH/O3ZxhHK0qPQaGK1GZxshSmGpVEuOlJpEW6fHJsCHs45ABn8/UgYw4vc4uWsUjG+cRz
-	NPf5iQHa2jHzwMq0zmV/jDVU1Uj1BFdhOPt+rGZgs4AtwUkpUie0GQbZZIKZmfnT3XAdbEIsRgWye
-	zebVaF9g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=m2vvGH+Z5PRv9C1/1Kg2WLGJOBKFCREheDNXNwXq490=; b=crrvCm8+3PPdp31yoVEy+rHRiC
+	9ql7CTDon/r5CLhDflZGpoRiLhkvNEU9gTgngziuNE/6cGDv4KLXd1In+Qt2aMiYnv+G8qFhVfjrm
+	umB00XrMTerJzCnTJUnfF+7l3Rm/Eqzq0MIgOp7VxKcjiGb5zeP0Qb6syhI2Fv/hVNoJN/Dshd8uQ
+	4khlqRpDhRUX+oxtm76gsg6n9+cgiDHeGJWaj3gQ+KpJ8gXxS5kWxouuOKoKVcyPzAeI8gsxIOgBn
+	yhPhRAwFBXJBeWv3GZFaFlNUTb1najTyAsSPYwhl1BPeAWGYnmWyU8GTJ39LPQgs4DNrC+DGozhS+
+	XPbYCH0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sNHaN-0000000En1f-24Ov;
-	Fri, 28 Jun 2024 19:48:43 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1sNI1m-0000000Eqez-28k4;
+	Fri, 28 Jun 2024 20:17:02 +0000
+Received: from mail-yw1-x1129.google.com ([2607:f8b0:4864:20::1129])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sNHaD-0000000En0M-2Zqq;
-	Fri, 28 Jun 2024 19:48:35 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1719604111;
-	bh=paO3Q85MhNCJaXdzxnipweZ72m9WbwKAh6xyx8Yrj2k=;
-	h=From:Date:Subject:To:Cc:From;
-	b=VdelCPIu23TTul7DOTm/ObQnaDsLxrwtLUVnUecVFnTMw5MGFAapqd4180iLJkYVz
-	 DfY8bCjNYRsxSgw+71MAZSoDxMBhcYv7foDLTIMckQJq2kCk4HCugpc8lPyx7c9dMY
-	 n8ft00UMEOsFmwU7U7qrAAHxfZ0BI4+Zqn7oTxxksN05HylSlEpIWGqWvcrhllwBQu
-	 p+pPsRp80ygruO/hDwASjbV5ciCCI+wxRca00g4ovQtbVYJDAtsNAAwcH1VJuLvyYm
-	 Z0j0B1cDweXmA4hsq54tSlqoNnJ/7N/NLL0GX0mjpuRD0NKIFN7XbdK1WLD404EwGI
-	 sjJpSDjzDi78Q==
-Received: from [192.168.1.175] (zone.collabora.co.uk [167.235.23.81])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id A0F37378219E;
-	Fri, 28 Jun 2024 19:48:29 +0000 (UTC)
-From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Date: Fri, 28 Jun 2024 15:48:23 -0400
-Subject: [PATCH] cpufreq: mediatek: Use dev_err_probe in every error path
- in probe
+	id 1sNI1j-0000000Eqck-1VWe
+	for linux-mediatek@lists.infradead.org;
+	Fri, 28 Jun 2024 20:17:01 +0000
+Received: by mail-yw1-x1129.google.com with SMTP id 00721157ae682-64a6bf15db9so10004237b3.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 28 Jun 2024 13:16:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1719605818; x=1720210618; darn=lists.infradead.org;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=m2vvGH+Z5PRv9C1/1Kg2WLGJOBKFCREheDNXNwXq490=;
+        b=FpdajtecRAPnjWSFEL1hB99hsVcbsKH/4r69TkfIoE/InGm5Yqwf1NIyq5X/p8VBvn
+         7W0KxWbhD78Y7B2B0n+IlB7nikPQZ/9p5Ai5U2dbh45xGYgsFdPrcKaiy/MM/h/c9LsO
+         ueqo9QV9YDHV+6uzgBaSYD5PObKBpVtTh3FtPnmHgdoEfKI47Hzpbr6tbwV3GnFX98UG
+         kpeaxU38KMClxlYl297DKvg2Ndxh1tGwM9VVHXduw7S6+gTaPjFb5oiIVC7kzsDV5E1h
+         33Mv+nY5APefvc/FvrZwQ7CrRqQoSN0A7n7dnaEBv4fjSJNILSEqBQIhYhYEkFaXHlHK
+         9UJA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1719605818; x=1720210618;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=m2vvGH+Z5PRv9C1/1Kg2WLGJOBKFCREheDNXNwXq490=;
+        b=fXMv+jHgoaz2bKQC/t43JshEYf3c9cOR6Y77Eaid43/daEez+SuyfzALRu6LRO/kut
+         UwGghG3iHqaQXMx8vHl82u0XjKT76eQ6Fz1W2ET7c6a88lZoiYSGEC+gJLwytq1s+RbA
+         1wlwTkKo7MXZvoATVRCY3W/Cx3dTfnixPpXOsAp3KZCSkbpmkQ80T+oX3gIEiID5N9Xr
+         BsKqUlDtPUWVoDaV6YtT8CiOb7+cdKi1T3qiTqJmFiNES3/wNni5D0SfBvLPLCFnNOvC
+         0PVSiBOLOV9U5bP3k9QZeMMuJgoMqQjXehvRycvFct0SR8TCsfV2/CXeN8ClrX6nPrjb
+         Ap9Q==
+X-Forwarded-Encrypted: i=1; AJvYcCVwaeMw8qbt7y+ZTVni7JFytbWZWP4daWgsPenNuS3G9UrbpZU9eHxGILdGZTvgZFYJsVs70oEiF91u6tKDEn/TT+SESquZ5aJ5EGY75OynbyKE
+X-Gm-Message-State: AOJu0Yx93UzyeSuaMRJdFUFdI96ZRKGmSFuSLk2vCjPYAQG+OESGAamK
+	XPMtsNGKjveQs+uivybyb8uT9wHh/9Vg16OyBUlyDowuzYSHNdhlwocbuikZ4ak=
+X-Google-Smtp-Source: AGHT+IHH8GNlM8rKewH+h4ANugMUQbUwWJEtQ5rC13yHwJFh9UDtqPw7nNyJ2Z5wwDX2U220J+AoVg==
+X-Received: by 2002:a05:690c:95d:b0:647:e079:da73 with SMTP id 00721157ae682-647e079db0bmr101713777b3.10.1719605817658;
+        Fri, 28 Jun 2024 13:16:57 -0700 (PDT)
+Received: from nicolas-tpx395.mtl.collabora.ca (mtl.collabora.ca. [66.171.169.34])
+        by smtp.gmail.com with ESMTPSA id 00721157ae682-64a9c4fdb78sm4445677b3.145.2024.06.28.13.16.55
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 28 Jun 2024 13:16:57 -0700 (PDT)
+Message-ID: <183f2ae09c2dbcf687e69cd13a9d258fd24fd80c.camel@ndufresne.ca>
+Subject: Re: [PATCH v5 2/9] scatterlist: Add a flag for the restricted memory
+From: Nicolas Dufresne <nicolas@ndufresne.ca>
+To: Christian =?ISO-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>, 
+ Jason-JH Lin =?UTF-8?Q?=28=E6=9E=97=E7=9D=BF=E7=A5=A5=29?=
+	 <Jason-JH.Lin@mediatek.com>, "daniel@ffwll.ch" <daniel@ffwll.ch>
+Cc: "quic_vjitta@quicinc.com" <quic_vjitta@quicinc.com>, 
+ "angelogioacchino.delregno@collabora.com"
+ <angelogioacchino.delregno@collabora.com>, "sumit.semwal@linaro.org"
+ <sumit.semwal@linaro.org>, "conor+dt@kernel.org" <conor+dt@kernel.org>, 
+ "jkardatzke@google.com" <jkardatzke@google.com>,
+ "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
+ "joakim.bech@linaro.org" <joakim.bech@linaro.org>, Youlin Pei
+ =?UTF-8?Q?=28=E8=A3=B4=E5=8F=8B=E6=9E=97=29?= <youlin.pei@mediatek.com>,
+ "logang@deltatee.com" <logang@deltatee.com>, 
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ Kuohong Wang =?UTF-8?Q?=28=E7=8E=8B=E5=9C=8B=E9=B4=BB=29?=
+ <kuohong.wang@mediatek.com>, Jianjiao Zeng
+ =?UTF-8?Q?=28=E6=9B=BE=E5=81=A5=E5=A7=A3=29?= <Jianjiao.Zeng@mediatek.com>,
+ "contact@emersion.fr" <contact@emersion.fr>, 
+ "benjamin.gaignard@collabora.com" <benjamin.gaignard@collabora.com>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "linaro-mm-sig@lists.linaro.org" <linaro-mm-sig@lists.linaro.org>,
+ "willy@infradead.org" <willy@infradead.org>,  "pavel@ucw.cz"
+ <pavel@ucw.cz>, "akpm@linux-foundation.org" <akpm@linux-foundation.org>, 
+ "Brian.Starkey@arm.com" <Brian.Starkey@arm.com>, "robh+dt@kernel.org"
+ <robh+dt@kernel.org>,  "linux-media@vger.kernel.org"
+ <linux-media@vger.kernel.org>, "devicetree@vger.kernel.org"
+ <devicetree@vger.kernel.org>, "tjmercier@google.com"
+ <tjmercier@google.com>,  "jstultz@google.com" <jstultz@google.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>, "mripard@kernel.org"
+ <mripard@kernel.org>, "robin.murphy@arm.com" <robin.murphy@arm.com>, Yong
+ Wu =?UTF-8?Q?=28=E5=90=B4=E5=8B=87=29?= <Yong.Wu@mediatek.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "ppaalanen@gmail.com" <ppaalanen@gmail.com>
+Date: Fri, 28 Jun 2024 16:16:55 -0400
+In-Reply-To: <5739abdb-0234-412a-9f25-49219411bbc6@amd.com>
+References: <20240515112308.10171-1-yong.wu@mediatek.com>
+	 <20240515112308.10171-3-yong.wu@mediatek.com>
+	 <98721904-003d-4d0d-8cfe-1cecdd59ce01@amd.com>
+	 <779ce30a657754ff945ebd32b66e1c644635e84d.camel@mediatek.com>
+	 <cef8f87d-edab-41d8-8b95-f3fc39ad7f74@amd.com>
+	 <1050c44512374031d1349b5dced228d0efc3fbde.camel@mediatek.com>
+	 <3104b765-5666-44e4-8788-f1b1b296fe17@amd.com>
+	 <98c11bad7f40bcc79ed7a2039ddb3a46f99908f5.camel@mediatek.com>
+	 <75dc1136-7751-4772-9fa7-dd9124684cd2@amd.com>
+	 <ZnxWWtdShekGSUif@phenom.ffwll.local>
+	 <ae73a0203d6acf2878c9e3ae2d7554816b9c66ad.camel@mediatek.com>
+	 <5739abdb-0234-412a-9f25-49219411bbc6@amd.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.52.2 (3.52.2-1.fc40) 
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20240628-mtk-cpufreq-dvfs-fail-init-err-v1-1-19c55db23011@collabora.com>
-X-B4-Tracking: v=1; b=H4sIAIYTf2YC/x3NQQqDMBBA0avIrB2IgyTQq4iLkEzaoW3UiQZBv
- HtDl2/z/wWFVbjAo7tAuUqRJTcMfQfh5fOTUWIzkKHRWHL43d8Y1iMpbxhrKpi8fFCy7MiqaLy
- 1FLyjyAQtsionOf+Dab7vHxN1UZdwAAAA
-To: "Rafael J. Wysocki" <rafael@kernel.org>, 
- Viresh Kumar <viresh.kumar@linaro.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: kernel@collabora.com, linux-pm@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, 
- =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-X-Mailer: b4 0.13.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240628_124833_829322_36A9F1A2 
-X-CRM114-Status: GOOD (  14.86  )
+X-CRM114-CacheID: sfid-20240628_131659_650932_DB3CBBB5 
+X-CRM114-Status: GOOD (  50.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,201 +135,168 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use the dev_err_probe() helper to log the errors on every error path in
-the probe function and its sub-functions. This includes
-* adding error messages where there was none
-* converting over dev_err/dev_warn
-* removing the top-level error message after mtk_cpu_dvfs_info_init() is
-  called, since every error path inside that function already logs the
-  error reason. This gets rid of the misleading error message when probe
-  is deferred:
+Hi Christian,
 
-    mtk-cpufreq mtk-cpufreq: failed to initialize dvfs info for cpu0
+Le jeudi 27 juin 2024 =C3=A0 08:57 +0200, Christian K=C3=B6nig a =C3=A9crit=
+=C2=A0:
+> Am 27.06.24 um 05:21 schrieb Jason-JH Lin (=E6=9E=97=E7=9D=BF=E7=A5=A5):
+> >=20
+> > On Wed, 2024-06-26 at 19:56 +0200, Daniel Vetter wrote:
+> > >  =20
+> > > External email : Please do not click links or open attachments until
+> > > you have verified the sender or the content.
+> > >  On Wed, Jun 26, 2024 at 12:49:02PM +0200, Christian K=C3=B6nig wrote=
+:
+> > > > Am 26.06.24 um 10:05 schrieb Jason-JH Lin (=E6=9E=97=E7=9D=BF=E7=A5=
+=A5):
+> > > > > > > I think I have the same problem as the ECC_FLAG mention in:
+> > > > > > > > >=20
+> > > https://lore.kernel.org/linux-media/20240515-dma-buf-ecc-heap-v1-0-54=
+cbbd049511@kernel.org/
+> > > > > > > > > I think it would be better to have the user configurable
+> > > private
+> > > > > > > information in dma-buf, so all the drivers who have the same
+> > > > > > > requirement can get their private information from dma-buf
+> > > directly
+> > > > > > > and
+> > > > > > > no need to change or add the interface.
+> > > > > > > > > What's your opinion in this point?
+> > > > > >  > Well of hand I don't see the need for that.
+> > > > > > > What happens if you get a non-secure buffer imported in your
+> > > secure
+> > > > > > device?
+> > > > >=20
+> > > > > We use the same mediatek-drm driver for secure and non-secure
+> > > buffer.
+> > > > > If non-secure buffer imported to mediatek-drm driver, it's go to
+> > > the
+> > > > > normal flow with normal hardware settings.
+> > > > >=20
+> > > > > We use different configurations to make hardware have different
+> > > > > permission to access the buffer it should access.
+> > > > >=20
+> > > > > So if we can't get the information of "the buffer is allocated
+> > > from
+> > > > > restricted_mtk_cma" when importing the buffer into the driver, we
+> > > won't
+> > > > > be able to configure the hardware correctly.
+> > > >=20
+> > > > Why can't you get this information from userspace?
+> > >=20
+> > > Same reason amd and i915/xe also pass this around internally in the
+> > > kernel, it's just that for those gpus the render and kms node are the
+> > > same
+> > > driver so this is easy.
+> > >=20
+>=20
+> The reason I ask is that encryption here looks just like another=20
+> parameter for the buffer, e.g. like format, stride, tilling etc..
 
-Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
----
- drivers/cpufreq/mediatek-cpufreq.c | 66 ++++++++++++++++++--------------------
- 1 file changed, 31 insertions(+), 35 deletions(-)
+I'm mostly a reader of the thread here, but I'd like to avoid basic mistake=
+s.
+The buffer in question are "protected", meaning that the CPU HW does not ha=
+ve
+access to the underlying pages (or zone in the case of Meditatek).
 
-diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
-index 518606adf14e..b21425bb83be 100644
---- a/drivers/cpufreq/mediatek-cpufreq.c
-+++ b/drivers/cpufreq/mediatek-cpufreq.c
-@@ -390,28 +390,23 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
- 	int ret;
- 
- 	cpu_dev = get_cpu_device(cpu);
--	if (!cpu_dev) {
--		dev_err(cpu_dev, "failed to get cpu%d device\n", cpu);
--		return -ENODEV;
--	}
-+	if (!cpu_dev)
-+		return dev_err_probe(cpu_dev, -ENODEV, "failed to get cpu%d device\n", cpu);
- 	info->cpu_dev = cpu_dev;
- 
- 	info->ccifreq_bound = false;
- 	if (info->soc_data->ccifreq_supported) {
- 		info->cci_dev = of_get_cci(info->cpu_dev);
--		if (IS_ERR(info->cci_dev)) {
--			ret = PTR_ERR(info->cci_dev);
--			dev_err(cpu_dev, "cpu%d: failed to get cci device\n", cpu);
--			return -ENODEV;
--		}
-+		if (IS_ERR(info->cci_dev))
-+			return dev_err_probe(cpu_dev, PTR_ERR(info->cci_dev),
-+					     "cpu%d: failed to get cci device\n",
-+					     cpu);
- 	}
- 
- 	info->cpu_clk = clk_get(cpu_dev, "cpu");
--	if (IS_ERR(info->cpu_clk)) {
--		ret = PTR_ERR(info->cpu_clk);
--		return dev_err_probe(cpu_dev, ret,
-+	if (IS_ERR(info->cpu_clk))
-+		return dev_err_probe(cpu_dev, PTR_ERR(info->cpu_clk),
- 				     "cpu%d: failed to get cpu clk\n", cpu);
--	}
- 
- 	info->inter_clk = clk_get(cpu_dev, "intermediate");
- 	if (IS_ERR(info->inter_clk)) {
-@@ -431,7 +426,7 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
- 
- 	ret = regulator_enable(info->proc_reg);
- 	if (ret) {
--		dev_warn(cpu_dev, "cpu%d: failed to enable vproc\n", cpu);
-+		dev_err_probe(cpu_dev, ret, "cpu%d: failed to enable vproc\n", cpu);
- 		goto out_free_proc_reg;
- 	}
- 
-@@ -439,14 +434,17 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
- 	info->sram_reg = regulator_get_optional(cpu_dev, "sram");
- 	if (IS_ERR(info->sram_reg)) {
- 		ret = PTR_ERR(info->sram_reg);
--		if (ret == -EPROBE_DEFER)
-+		if (ret == -EPROBE_DEFER) {
-+			dev_err_probe(cpu_dev, ret,
-+				      "cpu%d: Failed to get sram regulator\n", cpu);
- 			goto out_disable_proc_reg;
-+		}
- 
- 		info->sram_reg = NULL;
- 	} else {
- 		ret = regulator_enable(info->sram_reg);
- 		if (ret) {
--			dev_warn(cpu_dev, "cpu%d: failed to enable vsram\n", cpu);
-+			dev_err_probe(cpu_dev, ret, "cpu%d: failed to enable vsram\n", cpu);
- 			goto out_free_sram_reg;
- 		}
- 	}
-@@ -454,31 +452,34 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
- 	/* Get OPP-sharing information from "operating-points-v2" bindings */
- 	ret = dev_pm_opp_of_get_sharing_cpus(cpu_dev, &info->cpus);
- 	if (ret) {
--		dev_err(cpu_dev,
-+		dev_err_probe(cpu_dev, ret,
- 			"cpu%d: failed to get OPP-sharing information\n", cpu);
- 		goto out_disable_sram_reg;
- 	}
- 
- 	ret = dev_pm_opp_of_cpumask_add_table(&info->cpus);
- 	if (ret) {
--		dev_warn(cpu_dev, "cpu%d: no OPP table\n", cpu);
-+		dev_err_probe(cpu_dev, ret, "cpu%d: no OPP table\n", cpu);
- 		goto out_disable_sram_reg;
- 	}
- 
- 	ret = clk_prepare_enable(info->cpu_clk);
--	if (ret)
-+	if (ret) {
-+		dev_err_probe(cpu_dev, ret, "cpu%d: failed to enable cpu clk\n", cpu);
- 		goto out_free_opp_table;
-+	}
- 
- 	ret = clk_prepare_enable(info->inter_clk);
--	if (ret)
-+	if (ret) {
-+		dev_err_probe(cpu_dev, ret, "cpu%d: failed to enable inter clk\n", cpu);
- 		goto out_disable_mux_clock;
-+	}
- 
- 	if (info->soc_data->ccifreq_supported) {
- 		info->vproc_on_boot = regulator_get_voltage(info->proc_reg);
- 		if (info->vproc_on_boot < 0) {
- 			ret = info->vproc_on_boot;
--			dev_err(info->cpu_dev,
--				"invalid Vproc value: %d\n", info->vproc_on_boot);
-+			dev_err_probe(info->cpu_dev, ret, "invalid Vproc value\n");
- 			goto out_disable_inter_clock;
- 		}
- 	}
-@@ -487,7 +488,7 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
- 	rate = clk_get_rate(info->inter_clk);
- 	opp = dev_pm_opp_find_freq_ceil(cpu_dev, &rate);
- 	if (IS_ERR(opp)) {
--		dev_err(cpu_dev, "cpu%d: failed to get intermediate opp\n", cpu);
-+		dev_err_probe(cpu_dev, ret, "cpu%d: failed to get intermediate opp\n", cpu);
- 		ret = PTR_ERR(opp);
- 		goto out_disable_inter_clock;
- 	}
-@@ -501,7 +502,7 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
- 	info->opp_nb.notifier_call = mtk_cpufreq_opp_notifier;
- 	ret = dev_pm_opp_register_notifier(cpu_dev, &info->opp_nb);
- 	if (ret) {
--		dev_err(cpu_dev, "cpu%d: failed to register opp notifier\n", cpu);
-+		dev_err_probe(cpu_dev, ret, "cpu%d: failed to register opp notifier\n", cpu);
- 		goto out_disable_inter_clock;
- 	}
- 
-@@ -629,11 +630,9 @@ static int mtk_cpufreq_probe(struct platform_device *pdev)
- 	int cpu, ret;
- 
- 	data = dev_get_platdata(&pdev->dev);
--	if (!data) {
--		dev_err(&pdev->dev,
--			"failed to get mtk cpufreq platform data\n");
--		return -ENODEV;
--	}
-+	if (!data)
-+		return dev_err_probe(&pdev->dev, -ENODEV,
-+				     "failed to get mtk cpufreq platform data\n");
- 
- 	for_each_possible_cpu(cpu) {
- 		info = mtk_cpu_dvfs_info_lookup(cpu);
-@@ -643,24 +642,21 @@ static int mtk_cpufreq_probe(struct platform_device *pdev)
- 		info = devm_kzalloc(&pdev->dev, sizeof(*info), GFP_KERNEL);
- 		if (!info) {
- 			ret = -ENOMEM;
-+			dev_err_probe(&pdev->dev, ret, "Failed to allocate dvfs_info\n");
- 			goto release_dvfs_info_list;
- 		}
- 
- 		info->soc_data = data;
- 		ret = mtk_cpu_dvfs_info_init(info, cpu);
--		if (ret) {
--			dev_err(&pdev->dev,
--				"failed to initialize dvfs info for cpu%d\n",
--				cpu);
-+		if (ret)
- 			goto release_dvfs_info_list;
--		}
- 
- 		list_add(&info->list_head, &dvfs_info_list);
- 	}
- 
- 	ret = cpufreq_register_driver(&mtk_cpufreq_driver);
- 	if (ret) {
--		dev_err(&pdev->dev, "failed to register mtk cpufreq driver\n");
-+		dev_err_probe(&pdev->dev, ret, "failed to register mtk cpufreq driver\n");
- 		goto release_dvfs_info_list;
- 	}
- 
+This is different from encrypted buffers, which don't need this level of
+protection, as without the security key to decrypt them, their content is c=
+lose
+to random data.
 
----
-base-commit: 0fc4bfab2cd45f9acb86c4f04b5191e114e901ed
-change-id: 20240627-mtk-cpufreq-dvfs-fail-init-err-0a662ca72de2
+>=20
+> So instead of this during buffer import:
+>=20
+> mtk_gem->secure =3D (!strncmp(attach->dmabuf->exp_name, "restricted", 10)=
+);
+> mtk_gem->dma_addr =3D sg_dma_address(sg->sgl);
+> mtk_gem->size =3D attach->dmabuf->size;
+> mtk_gem->sg =3D sg;
+>=20
+> You can trivially say during use hey this buffer is encrypted.
+>=20
+> At least that's my 10 mile high view, maybe I'm missing some extensive=
+=20
+> key exchange or something like that.
 
-Best regards,
--- 
-Nícolas F. R. A. Prado <nfraprado@collabora.com>
+If we take secure video path as an example, in the context of digital right
+management, the handling of user session, retrieval of the device specific =
+"key"
+is entirely something for userspace to handle and the kernel have no busine=
+ss
+into that. As long as the data is encrypted, its safe to carry around like =
+any
+other buffers.
+
+It is only once decryption (usally done by a TF-A) that restricted memory s=
+tart
+being used. Initially in the form of a compressed video stream, and eventua=
+lly
+in the format of raw images.
+
+> >  =20
+> > > But on arm you have split designs everywhere and dma-buf
+> > > import/export, so
+> > > something else is needed. And neither current kms uapi nor
+> > > protocols/extensions have provisions for this (afaik) because it
+> > > works on
+> > > the big gpus, and on android it's just hacked up with backchannels.
+> > >=20
+> > > So yeah essentially I think we probably need something like this, as
+> > > much
+> > > as it sucks. I see it somewhat similar to handling pcip2pdma
+> > > limitations
+> > > in the kernel too.
+> > >=20
+> > > Not sure where/how it should be handled though, and maybe I've missed
+> > > something around protocols, in which case I guess we should add some
+> > > secure buffer flags to the ADDFB2 ioctl.
+> >=20
+> > Thanks for your hint, I'll try to add the secure flag to the ADDFB2
+> > ioctl. If it works, I'll send the patch.
+>=20
+> Yeah, exactly what I would suggest as well.
+>=20
+> I'm not an expert for that part, but as far as I know we already have=20
+> bunch of device specific tilling flags in there.
+>=20
+> Adding an MTK_ENCRYPTED flag should be trivial.
+
+Just to be clear, my comment was just a concept correction, I also think it=
+s
+nice to give a ADDFB2 flag a try, from my userspace experience, this is an =
+easy
+place to provide this type of information. Also, the V4L2 proposal for the =
+same
+endup with a flag at during buffer queue configuration, which is pretty clo=
+se.
+
+Nicolas
+
+>=20
+> Regards,
+> Christian.
+>=20
+> >=20
+> > Regards,
+> > Jason-JH.Lin
+> >=20
+> > > -Sima
+> >=20
+> > ************* MEDIATEK Confidentiality Notice ********************
+> > The information contained in this e-mail message (including any
+> > attachments) may be confidential, proprietary, privileged, or otherwise
+> > exempt from disclosure under applicable laws. It is intended to be
+> > conveyed only to the designated recipient(s). Any use, dissemination,
+> > distribution, printing, retaining or copying of this e-mail (including =
+its
+> > attachments) by unintended recipient(s) is strictly prohibited and may
+> > be unlawful. If you are not an intended recipient of this e-mail, or be=
+lieve
+> > that you have received this e-mail in error, please notify the sender
+> > immediately (by replying to this e-mail), delete any and all copies of
+> > this e-mail (including any attachments) from your system, and do not
+> > disclose the content of this e-mail to any other person. Thank you!
+>=20
+>=20
 
 
