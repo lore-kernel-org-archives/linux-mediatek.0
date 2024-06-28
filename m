@@ -4,90 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6DACC2BBCA
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jun 2024 11:18:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E485C2BBCA
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jun 2024 11:30:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jGjvAzjDwlAq0rCpEO+mGer2SS+9hXiF0BPt0Wfq6d0=; b=0ngJgoRZT8wpGWRMvTz/zmx20M
-	D5RtE2Yq6UBV07Nh4RMSzPjNtNu45c2g8qRrIv/0F3bKwfNUNQF79BRgfcC5pVeph76rMA2zwf/S5
-	lyU5PJoTX6klpVerZev63Igq6tgkyOgnKTOBEOka6vYxU3QzDezcTIkEpwEdSREkSPmtoabmi6QPj
-	45GWPTW6waIIc0O6mD/EVE9km1fYVB9M9JOSckPNc1sWT+d/77DJubXcnl1O0Vp/uF+tBgEFaMA/H
-	8p3qTGfJba8tkk1VdHkCsqk2AgHMTrCQZfh/jYEkCqmDx9axPxbb90kRwgl7j53rSx4mnVMLj8kv4
-	KNYyABfw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=+danxBg72kkVWhHZ7NufVUsP5WdRg7pgzK5U7q+oXYY=; b=tBUpYxUMKY6Q0H2k1oioJgzBPX
+	icVzBK7GyoqM+ZZd/tVAn6CoLffE9+jVzmtbt8ln7nffGfb0DJbNHarTTH6v/FSBXmPppSKuEhSab
+	vDqdCKomC1uiNal20PQ/BJM51r/5PuRVGqGBpYNMMfM7iRlHhvGKsdcw24aeYaGyYNgxvnanN0Rcn
+	rx/+3b3wX23DIGoQNs6nLv4eG+NNP5xwDeAteJzRGlSY4yDfjPVTJX1JhKslZ63QR+Cena6N8KokN
+	I4HUildy9Xn8eQNSakvpZB53WUAsg05yliMoMCZLIQq+YJ0aYHhVNEbWWtB3Ryzt5KdJ6r3YxEySo
+	9Kc4ad4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sN9cc-0000000DW4K-2a0M;
-	Fri, 28 Jun 2024 11:18:30 +0000
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+	id 1sN9o9-0000000DXGr-1VsX;
+	Fri, 28 Jun 2024 11:30:25 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sN9cO-0000000DW0r-0dgc;
-	Fri, 28 Jun 2024 11:18:17 +0000
-Received: by mail-wr1-x42d.google.com with SMTP id ffacd0b85a97d-3674e1931b7so386256f8f.2;
-        Fri, 28 Jun 2024 04:18:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1719573494; x=1720178294; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=jGjvAzjDwlAq0rCpEO+mGer2SS+9hXiF0BPt0Wfq6d0=;
-        b=KP2PCYxhFsGxPWzxYG5LsLuu9zVax4nJMf3hDhRXzshYlvqOKzx+ZOscFcLy/+qjSs
-         0w5C5PBSS9LGlnKCE0qDkprkVZGH+iqs/LsbD6lwl0OY+fsa/oqyrwumdL/vRnO2bx4e
-         2DfArRZhYwlL4BhnztMOqXKSAs3hcarlHV2Dp1Sxtu+/XUvCZzwlvmt6jiKZVkPP6/Ly
-         3p+/cf5Xd8sM635xFsT6FTA67nPfGDotyzOV2LnM8fo/+rgn6QzIzV5xl2QG/yKJXItC
-         aX8c3ZHsFvIYCU5uEyaIq+2xpB1wS0xE8HQxylqRlsoXnYaLiNpI5+D5Lgxu1UKc30z/
-         Ht8g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1719573494; x=1720178294;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=jGjvAzjDwlAq0rCpEO+mGer2SS+9hXiF0BPt0Wfq6d0=;
-        b=kK4Ch44UmjxiIdiQhkNMdhWYSkOZ0HkAxt+6w41JT/+NGJzoSW2BPKuREr5swxSm/u
-         gNgo79HpmZO2MODulUWS1/bbxknnpL+6i9vzu6zibjZ1yy/InkMFGxJdA6lZDRquDV5Z
-         DtKKkXesrjeMKj9Nd1HcEVT2YPBEsJFKpWVnyVaL2H7X/bd6ASVGv6EeuQZ7QzGk4UMz
-         WOULQQApg0eQAOlPD7KjiprvP7qHzU82Mc7NFPJS0akdUpKbUdUwZWQxwWnzp9HDVlvJ
-         6YX79wdVC60/iMiHNjbQDC5LgmiXfi2aLs27lrB9NBcclq6cWZkcs2kzNa8l1hE6OMrC
-         yQIQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWO4D2mpvpmIkExkqjg9MBzVTqaTErFLeRvnQ2yzwrwLQx9M/rIlFj+BTau1STr9944KKLi3nk+PCPtoANrwSIFSHutCvSdIH8OLgBX3kH5a8YQ1XmzqlIisbYz2InwF5jhl0YRxBsRtgWcfSrTGu1RvoRVoFLawCA=
-X-Gm-Message-State: AOJu0YwSFocFWbsR/svfjVdX5X2w0t2LqWT3ykyREOWcDwijZd4u1zrl
-	M/IVkreCLpPb65sRmhdWv2P546qFH/V3I2xausjAOqq3U5LZYa8z
-X-Google-Smtp-Source: AGHT+IGpmgVVWhDU6L0Eg9bKaM5Un6mfYJKGEM6lzS/aXInSUCuH83Z2b5aWXKfw/hIZ/mcUBgHX5w==
-X-Received: by 2002:adf:e507:0:b0:367:4165:ad4 with SMTP id ffacd0b85a97d-36741650be0mr3754348f8f.16.1719573494282;
-        Fri, 28 Jun 2024 04:18:14 -0700 (PDT)
-Received: from localhost.localdomain (93-34-90-105.ip49.fastwebnet.it. [93.34.90.105])
-        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-3675a1055b9sm1979495f8f.95.2024.06.28.04.18.13
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 28 Jun 2024 04:18:13 -0700 (PDT)
-From: Christian Marangi <ansuelsmth@gmail.com>
-To: Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>,
-	linux-clk@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: Christian Marangi <ansuelsmth@gmail.com>
-Subject: [PATCH v2 2/2] dt-bindings: clock: mediatek: add syscon compatible for mt7622 pciesys
-Date: Fri, 28 Jun 2024 12:55:41 +0200
-Message-ID: <20240628105542.5456-2-ansuelsmth@gmail.com>
-X-Mailer: git-send-email 2.45.1
-In-Reply-To: <20240628105542.5456-1-ansuelsmth@gmail.com>
-References: <20240628105542.5456-1-ansuelsmth@gmail.com>
+	id 1sN9o6-0000000DXGQ-1lLa;
+	Fri, 28 Jun 2024 11:30:23 +0000
+X-UUID: cb4aa7d0354111efb2966dae1f787272-20240628
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=+danxBg72kkVWhHZ7NufVUsP5WdRg7pgzK5U7q+oXYY=;
+	b=Vw3h66IcM7Ih/RuLuPAitnpVkOahLYiB1KN0xW0o3rMhMSliiACVhdHUAuNOxVrC/YwAY6B6TEm0/hRokSClEqcj2xLXvwyb/mFIWjvOQAawRaXBqW6CisTgdn+RDpKKIHu4R+L5eS/GgGXJVpMg0mg7u9XA44WxDZgaJHvUPBQ=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.40,REQID:6cc62855-6391-40f5-b3a4-9b413916ac4a,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:ba885a6,CLOUDID:b647ad44-a117-4f46-a956-71ffeac67bfa,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: cb4aa7d0354111efb2966dae1f787272-20240628
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+	(envelope-from <mark-pk.tsai@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 332438798; Fri, 28 Jun 2024 04:30:17 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Fri, 28 Jun 2024 19:30:13 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 28 Jun 2024 19:30:13 +0800
+From: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>, "Robin
+ Murphy" <robin.murphy@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+CC: <yj.chiang@mediatek.com>, Mark-PK Tsai <mark-pk.tsai@mediatek.com>,
+	<iommu@lists.linux.dev>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+Subject: [PATCH] iommu: Remove iommu_sva_unbind_gpasid
+Date: Fri, 28 Jun 2024 19:30:04 +0800
+Message-ID: <20240628113011.3535-1-mark-pk.tsai@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--1.239400-8.000000
+X-TMASE-MatchedRID: S6zgMyN4g9KGsPek1xLHVnH7HV/mO4UTT9kSL7SwB1hq1Zuz1uJuCNn7
+	b/+Y15IvMm6uZ1zccZcQCEi5k+nQxB8TzIzimOwP0C1sQRfQzEHEQdG7H66TyHEqm8QYBtMOvwY
+	XYCR6VwgLQgZ3u/DVwAgsD3ZCYFN1JDDLO9wvb7dnPqKjSU9SXe7o5tZbWcdZRvCkNdMmYoFxsN
+	4zhBrsExsXRXHy1IH0eZUpm6wun3ba/06NhYDa4wyzCDjlUx89djekYOaiKTo=
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--1.239400-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 9C659BD85D1E1F99FDEC3C8CB47448B2FD5AFBB33DCB9AD1BC9FAA614F21077D2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240628_041816_217686_02152929 
-X-CRM114-Status: GOOD (  11.36  )
+X-CRM114-CacheID: sfid-20240628_043022_489559_9F34C7CB 
+X-CRM114-Status: UNSURE (   8.28  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,46 +96,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add required syscon compatible for mt7622 pciesys. This is required for
-SATA interface as the regs are shared.
+This is a left over of commit 0c9f17877891
+("iommu: Remove guest pasid related interfaces and definitions")
 
-Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
 ---
-Changes v2:
-- Fix broken schema example
+ include/linux/iommu.h | 2 --
+ 1 file changed, 2 deletions(-)
 
- .../bindings/clock/mediatek,mt7622-pciesys.yaml        | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
-
-diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt7622-pciesys.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt7622-pciesys.yaml
-index c77111d10f90..9c3913f9092c 100644
---- a/Documentation/devicetree/bindings/clock/mediatek,mt7622-pciesys.yaml
-+++ b/Documentation/devicetree/bindings/clock/mediatek,mt7622-pciesys.yaml
-@@ -14,9 +14,11 @@ maintainers:
- 
- properties:
-   compatible:
--    enum:
--      - mediatek,mt7622-pciesys
--      - mediatek,mt7629-pciesys
-+    oneOf:
-+      - items:
-+          - const: mediatek,mt7622-pciesys
-+          - const: syscon
-+      - const: mediatek,mt7629-pciesys
- 
-   reg:
-     maxItems: 1
-@@ -38,7 +40,7 @@ additionalProperties: false
- examples:
-   - |
-     clock-controller@1a100800 {
--        compatible = "mediatek,mt7622-pciesys";
-+        compatible = "mediatek,mt7622-pciesys", "syscon";
-         reg = <0x1a100800 0x1000>;
-         #clock-cells = <1>;
-         #reset-cells = <1>;
+diff --git a/include/linux/iommu.h b/include/linux/iommu.h
+index 17b3f36ad843..225403cfe614 100644
+--- a/include/linux/iommu.h
++++ b/include/linux/iommu.h
+@@ -785,8 +785,6 @@ extern int iommu_attach_device(struct iommu_domain *domain,
+ 			       struct device *dev);
+ extern void iommu_detach_device(struct iommu_domain *domain,
+ 				struct device *dev);
+-extern int iommu_sva_unbind_gpasid(struct iommu_domain *domain,
+-				   struct device *dev, ioasid_t pasid);
+ extern struct iommu_domain *iommu_get_domain_for_dev(struct device *dev);
+ extern struct iommu_domain *iommu_get_dma_domain(struct device *dev);
+ extern int iommu_map(struct iommu_domain *domain, unsigned long iova,
 -- 
-2.45.1
+2.18.0
 
 
