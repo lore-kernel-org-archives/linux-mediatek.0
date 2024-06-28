@@ -4,85 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0355FC3064D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jun 2024 13:40:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D37AC3064D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jun 2024 13:46:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UWPWV5xOWPvWRohvXp3jsd5OyLdElhEyWkgsMgthC0s=; b=Hw/PW7JKIzZkBuiNoHfI8/Onjd
-	fnZa6SGxBUn1Rx1SenmNZB8DkeEOP90hnoKeteVIjvaYsN3Fz9B41yX3aNC8RUJhMXu8foUOnU51X
-	Q+v3EFm/SL63GZOdQL4H0q+BXaSOJXuxbjUayGzP6USy8MvOtYqZLgtOy2pavNDth9BpaCgXweTz1
-	Yjj15B0vUbU+PYLmzcNmi1bloagb7WVRtbMSHKm4nl1zpXqVQQ14+p3s6p3us+NaJG7yCkyJK7Fgv
-	o061mkabFVIe5tbCGLBr5f8SMjuB5NSRvy5NkUvO7mlpm9ST2g9nZ//lDVcH5mHbigIC5btxPGlC8
-	dBQMiLsA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=HevE95StZjq/QgU8N/2fOLW78c6GM2UNKZD1BiRpqWk=; b=U7EpnXrpoT+FhJJ7XBsTzpii96
+	uziLZKzcRwlf1JmWWJEdog6T1f4/m0XGljiO7Sf8TCfHM+tmnophlypStz22LgPC+6FcIPJbj32yW
+	NI4X9KOFf1tjl6oG2LWlZ8KVWBkk99KnjL4M/USqt+ZMhYNub2Og5GzTdSv+9aD5f9Q5vbqAmlO+B
+	Ux4LiLL6C9LSzB6a0ECq2mT7MMeTc25JlWfWSRSYpfYVcAbs1smgvfI4ojFVTnNqikdcen7YH0EgD
+	ZzmLUEt8RNn9y4oXwgfuc2dWblX+I3fxaYoJW7LtsvTE2cJN+kDdQWCgYb5shdNPtYPwYmvfb5cn6
+	21IIxAfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sNBqB-0000000Dqiu-3k5W;
-	Fri, 28 Jun 2024 13:40:39 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1sNBw6-0000000DrMp-39QW;
+	Fri, 28 Jun 2024 13:46:46 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sNBq0-0000000Dqet-2q9T;
-	Fri, 28 Jun 2024 13:40:30 +0000
+	id 1sNBw3-0000000DrMK-1cRN
+	for linux-mediatek@lists.infradead.org;
+	Fri, 28 Jun 2024 13:46:45 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id D365F60C3D;
-	Fri, 28 Jun 2024 13:40:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 08C32C116B1;
-	Fri, 28 Jun 2024 13:40:25 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 80470CE3B5E;
+	Fri, 28 Jun 2024 13:46:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0F05CC2BBFC;
+	Fri, 28 Jun 2024 13:46:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1719582025;
-	bh=UWPWV5xOWPvWRohvXp3jsd5OyLdElhEyWkgsMgthC0s=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=qaAwq6zcOXnpgYUwN0NVIO0yqpZ0Zb5n2YZUgJX5BmAQYP2Cluav1xiJq0hZ1F060
-	 swoFvPvWsQ7X032KHtT6ExmTb2egebRNSVrf4Be3qEMXEjjOWdH0RacwDbG/wbJ/IL
-	 Lr5X0sHIKotDF4a8APUYV/YhbMEi97yJeuTM4Ndsjf4JMs3/HwJanR6v9/QibvkRsl
-	 44QEsuf0ytcePzl2v7ab0R9CGcp6eTRGf74VnAJH2ag50Yux/d5x/xrGpW/74HHWh3
-	 x7UXvQscwRb5ZzQo/H0341550qV2Cd13sb0hgnEiICw+icYbkcsRrPH5hsfSsGqiQB
-	 YLRRLIPVBVGow==
-Date: Fri, 28 Jun 2024 15:40:22 +0200
-From: "mripard@kernel.org" <mripard@kernel.org>
-To: Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>
-Cc: Jason-JH Lin =?utf-8?B?KOael+edv+elpSk=?= <Jason-JH.Lin@mediatek.com>, 
-	"daniel@ffwll.ch" <daniel@ffwll.ch>, "quic_vjitta@quicinc.com" <quic_vjitta@quicinc.com>, 
-	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>, "sumit.semwal@linaro.org" <sumit.semwal@linaro.org>, 
-	"conor+dt@kernel.org" <conor+dt@kernel.org>, "jkardatzke@google.com" <jkardatzke@google.com>, 
-	"krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>, "joakim.bech@linaro.org" <joakim.bech@linaro.org>, 
-	Youlin Pei =?utf-8?B?KOijtOWPi+aelyk=?= <youlin.pei@mediatek.com>, "logang@deltatee.com" <logang@deltatee.com>, 
-	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, 
-	Kuohong Wang =?utf-8?B?KOeOi+Wci+m0uyk=?= <kuohong.wang@mediatek.com>, 
-	Jianjiao Zeng =?utf-8?B?KOabvuWBpeWnoyk=?= <Jianjiao.Zeng@mediatek.com>, "contact@emersion.fr" <contact@emersion.fr>, 
-	"benjamin.gaignard@collabora.com" <benjamin.gaignard@collabora.com>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, 
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
-	"linaro-mm-sig@lists.linaro.org" <linaro-mm-sig@lists.linaro.org>, "willy@infradead.org" <willy@infradead.org>, 
-	"pavel@ucw.cz" <pavel@ucw.cz>, "akpm@linux-foundation.org" <akpm@linux-foundation.org>, 
-	"Brian.Starkey@arm.com" <Brian.Starkey@arm.com>, "robh+dt@kernel.org" <robh+dt@kernel.org>, 
-	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, 
-	"tjmercier@google.com" <tjmercier@google.com>, "jstultz@google.com" <jstultz@google.com>, 
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "robin.murphy@arm.com" <robin.murphy@arm.com>, 
-	Yong Wu =?utf-8?B?KOWQtOWLhyk=?= <Yong.Wu@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
-	"ppaalanen@gmail.com" <ppaalanen@gmail.com>
-Subject: Re: [PATCH v5 2/9] scatterlist: Add a flag for the restricted memory
-Message-ID: <20240628-cuddly-brave-squid-e1cb22@houat>
-References: <cef8f87d-edab-41d8-8b95-f3fc39ad7f74@amd.com>
- <1050c44512374031d1349b5dced228d0efc3fbde.camel@mediatek.com>
- <3104b765-5666-44e4-8788-f1b1b296fe17@amd.com>
- <98c11bad7f40bcc79ed7a2039ddb3a46f99908f5.camel@mediatek.com>
- <75dc1136-7751-4772-9fa7-dd9124684cd2@amd.com>
- <ZnxWWtdShekGSUif@phenom.ffwll.local>
- <ae73a0203d6acf2878c9e3ae2d7554816b9c66ad.camel@mediatek.com>
- <5739abdb-0234-412a-9f25-49219411bbc6@amd.com>
- <20240627-impetuous-aboriginal-cougar-cdcbbf@houat>
- <304c9faa-5a9c-4520-a3d8-0818f76dd7c9@amd.com>
+	s=k20201202; t=1719582399;
+	bh=ONpr2j1g6b+nAqVM44FbiXV9HgLhJNk2TcpV20rk6Iw=;
+	h=From:To:Cc:Subject:Date:From;
+	b=reBAeG/hSYCgfhcC/jq/ZmYsEibBp5P/Dv8GuGC+Q31KtRMcZXPSr6FtMJTERX2Jg
+	 9I4dmUz6vc2boyfz5vWa/xOSEI+msGvoMaIXM03n/pGJHSNJG+7AZ22z/ix0mWP5mG
+	 sPZL66CYywktCWhHvA2IxAxxfavZxJVvKLPKiLCAoocqV6J7vtRH/H0lDVTjUmVa6+
+	 tsIaFvEv46JfVOtOU7k71KN/Z747sE1RCnRNZEh5j3gFSgSTgzssogs+WqvFdLMm9X
+	 bxTXPkhczBij+m39uAfEplaR7nbYR8PLtWjRGod2LNewqKKoHvROIBNJkBfluUBazx
+	 S3J9vYZVhSavQ==
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+To: David Airlie <airlied@linux.ie>,
+	Daniel Vetter <daniel@ffwll.ch>,
+	dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org
+Cc: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+	Sam Ravnborg <sam@ravnborg.org>,
+	Hsiao Chien Sung <shawn.sung@mediatek.com>,
+	Alexandre Mergnat <amergnat@baylibre.com>,
+	"Jason-JH . Lin" <jason-jh.lin@mediatek.com>,
+	Douglas Anderson <dianders@chromium.org>,
+	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?= <nfraprado@collabora.com>,
+	Michael Walle <mwalle@kernel.org>
+Subject: [GIT PULL] mediatek drm next for 6.11
+Date: Fri, 28 Jun 2024 13:46:32 +0000
+Message-Id: <20240628134632.28672-1-chunkuang.hu@kernel.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="wmmpztlpkqqsn5hy"
-Content-Disposition: inline
-In-Reply-To: <304c9faa-5a9c-4520-a3d8-0818f76dd7c9@amd.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240628_064028_858144_DF3064C1 
-X-CRM114-Status: GOOD (  34.54  )
+X-CRM114-CacheID: sfid-20240628_064643_833770_C82B105B 
+X-CRM114-Status: UNSURE (   9.87  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,92 +80,128 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi, Dave & Daniel:
 
---wmmpztlpkqqsn5hy
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+This includes:
 
-On Fri, Jun 28, 2024 at 01:42:27PM GMT, Christian K=F6nig wrote:
-> Am 27.06.24 um 16:40 schrieb mripard@kernel.org:
-> > [SNIP]
-> > > > > > > > Why can't you get this information from userspace?
-> > > > > > Same reason amd and i915/xe also pass this around internally in=
- the
-> > > > > kernel, it's just that for those gpus the render and kms node are=
- the
-> > > > > same
-> > > > > driver so this is easy.
-> > > > >=20
-> > > The reason I ask is that encryption here looks just like another para=
-meter
-> > > for the buffer, e.g. like format, stride, tilling etc..
-> > >=20
-> > > So instead of this during buffer import:
-> > >=20
-> > > mtk_gem->secure =3D (!strncmp(attach->dmabuf->exp_name, "restricted",=
- 10));
-> > > mtk_gem->dma_addr =3D sg_dma_address(sg->sgl);
-> > > mtk_gem->size =3D attach->dmabuf->size;
-> > > mtk_gem->sg =3D sg;
-> > >=20
-> > > You can trivially say during use hey this buffer is encrypted.
-> > >=20
-> > > At least that's my 10 mile high view, maybe I'm missing some extensiv=
-e key
-> > > exchange or something like that.
-> > That doesn't work in all cases, unfortunately.
-> >=20
-> > If you're doing secure video playback, the firmware is typically in
-> > charge of the frame decryption/decoding, and you'd get dma-buf back that
-> > aren't accessible by the CPU (or at least, not at the execution level
-> > Linux runs with).
->=20
-> Yeah, that's perfectly fine. At least the AMD encryption solution
-> works exactly like that as well.
+1. Convert to platform remove callback returning void
+2. Drop chain_mode_fixup call in mode_valid()
+3. Fixes the errors of MediaTek display driver found by IGT.
+4. Add display support for the MT8365-EVK board
+5. Fix bit depth overwritten for mtk_ovl_set bit_depth()
+6. Remove less-than-zero comparison of an unsigned value
+7. Call drm_atomic_helper_shutdown() at shutdown time
+8. Log errors in probe with dev_err_probe()
+9. Fix possible_crtcs calculation
+10. Fix spurious kfree()
 
-> > So nobody can map that buffer, and the firmware driver is the one who
-> > knows that this buffer cannot be accessed by anyone.
->=20
-> On most hw I know you can actually map that buffer, it's just that the
-> CPU sees only garbage in it because you don't have the necessary
-> decryption keys around.
+Regards,
+Chun-Kuang.
 
-So you can always map and access the buffer, but only if you're in the
-right "context" the content would be correct?
+The following changes since commit 1613e604df0cd359cf2a7fbd9be7a0bcfacfabd0:
 
-I think that part is pretty different than what ARM SoCs are doing,
-where they would typically prevent any CPU access and fault on access.
+  Linux 6.10-rc1 (2024-05-26 15:20:12 -0700)
 
-> > Putting this on the userspace to know would be pretty weird, and
-> > wouldn't solve the case where the kernel would try to map it.
->=20
-> But that's exactly how all other implementations work as far as I know. I
-> mean what do you do if the kernel maps the encrypted buffer?
->=20
-> On AMD we also block userspace and kernel CPU accesses, but that is only
-> done to make it easier to find bugs not for correctness.
->=20
-> And userspace absolutely needs to be aware that a buffer is encrypted, ca=
-use
-> otherwise it could potentially try to access it with the CPU.
+are available in the Git repository at:
 
-I absolutely agree. I guess our discussion is whether it's something
-that should be implicit and understood by applications, or if it should
-be explicit and discoverable.
+  https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git tags/mediatek-drm-next-6.11
 
-Maxime
+for you to fetch changes up to 8ad49a92cff4bab13eb2f2725243f5f31eff3f3b:
 
---wmmpztlpkqqsn5hy
-Content-Type: application/pgp-signature; name="signature.asc"
+  drm/mediatek/dp: Fix spurious kfree() (2024-06-28 13:01:43 +0000)
 
------BEGIN PGP SIGNATURE-----
+----------------------------------------------------------------
+Mediatek DRM Next for Linux 6.11
 
-iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCZn69RgAKCRDj7w1vZxhR
-xW5vAQD0vblFH/q1MbM1OY/GsWrJEN+h1Zy8F/ROqZxXJoSP4wEA7MhRTaakqRAd
-6+tOX4+3tzAEZ0WOa+EHzLr+lzLYvQ0=
-=ivoa
------END PGP SIGNATURE-----
+1. Convert to platform remove callback returning void
+2. Drop chain_mode_fixup call in mode_valid()
+3. Fixes the errors of MediaTek display driver found by IGT.
+4. Add display support for the MT8365-EVK board
+5. Fix bit depth overwritten for mtk_ovl_set bit_depth()
+6. Remove less-than-zero comparison of an unsigned value
+7. Call drm_atomic_helper_shutdown() at shutdown time
+8. Log errors in probe with dev_err_probe()
+9. Fix possible_crtcs calculation
+10. Fix spurious kfree()
 
---wmmpztlpkqqsn5hy--
+----------------------------------------------------------------
+Alexandre Mergnat (9):
+      dt-bindings: display: mediatek: aal: add compatible for MT8365 SoC
+      dt-bindings: display: mediatek: ccorr: add compatible for MT8365 SoC
+      dt-bindings: display: mediatek: color: add compatible for MT8365 SoC
+      dt-bindings: display: mediatek: dither: add compatible for MT8365 SoC
+      dt-bindings: display: mediatek: dsi: add compatible for MT8365 SoC
+      dt-bindings: display: mediatek: dpi: add compatible for MT8365
+      dt-bindings: display: mediatek: gamma: add compatible for MT8365 SoC
+      dt-bindings: display: mediatek: ovl: add compatible for MT8365 SoC
+      dt-bindings: display: mediatek: rdma: add compatible for MT8365 SoC
+
+Douglas Anderson (1):
+      drm/mediatek: Call drm_atomic_helper_shutdown() at shutdown time
+
+Hsiao Chien Sung (15):
+      drm/mediatek: Add missing plane settings when async update
+      drm/mediatek: Use 8-bit alpha in ETHDR
+      drm/mediatek: Fix XRGB setting error in OVL
+      drm/mediatek: Fix XRGB setting error in Mixer
+      drm/mediatek: Fix destination alpha error in OVL
+      drm/mediatek: Turn off the layers with zero width or height
+      drm/mediatek: Add OVL compatible name for MT8195
+      drm/mediatek: Add DRM_MODE_ROTATE_0 to rotation property
+      drm/mediatek: Add new color format MACROs in OVL
+      drm/mediatek: Set DRM mode configs accordingly
+      drm/mediatek: Support more 10bit formats in OVL
+      drm/mediatek: Support RGBA8888 and RGBX8888 in OVL on MT8195
+      drm/mediatek: Support DRM plane alpha in OVL
+      drm/mediatek: Support DRM plane alpha in Mixer
+      drm/mediatek: Remove less-than-zero comparison of an unsigned value
+
+Jason-JH.Lin (1):
+      drm/mediatek: Fix bit depth overwritten for mtk_ovl_set bit_depth()
+
+Michael Walle (2):
+      drm/mediatek: dpi/dsi: Fix possible_crtcs calculation
+      drm/mediatek/dp: Fix spurious kfree()
+
+Nícolas F. R. A. Prado (1):
+      drm/mediatek: Log errors in probe with dev_err_probe()
+
+Sam Ravnborg (1):
+      drm/mediatek: Drop chain_mode_fixup call in mode_valid()
+
+Uwe Kleine-König (1):
+      drm/mediatek: Convert to platform remove callback returning void
+
+ .../bindings/display/mediatek/mediatek,aal.yaml    |   1 +
+ .../bindings/display/mediatek/mediatek,ccorr.yaml  |   3 +
+ .../bindings/display/mediatek/mediatek,color.yaml  |   1 +
+ .../bindings/display/mediatek/mediatek,dither.yaml |   1 +
+ .../bindings/display/mediatek/mediatek,dpi.yaml    |   4 +
+ .../bindings/display/mediatek/mediatek,dsi.yaml    |   1 +
+ .../bindings/display/mediatek/mediatek,gamma.yaml  |   1 +
+ .../bindings/display/mediatek/mediatek,ovl.yaml    |   1 +
+ .../bindings/display/mediatek/mediatek,rdma.yaml   |   1 +
+ drivers/gpu/drm/mediatek/mtk_cec.c                 |  28 ++---
+ drivers/gpu/drm/mediatek/mtk_ddp_comp.c            | 109 ++++++++++------
+ drivers/gpu/drm/mediatek/mtk_ddp_comp.h            |   8 +-
+ drivers/gpu/drm/mediatek/mtk_disp_aal.c            |  18 ++-
+ drivers/gpu/drm/mediatek/mtk_disp_ccorr.c          |  18 ++-
+ drivers/gpu/drm/mediatek/mtk_disp_color.c          |  18 ++-
+ drivers/gpu/drm/mediatek/mtk_disp_gamma.c          |  18 ++-
+ drivers/gpu/drm/mediatek/mtk_disp_merge.c          |  25 ++--
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c            | 140 +++++++++++++--------
+ drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c    |   6 +-
+ drivers/gpu/drm/mediatek/mtk_disp_rdma.c           |  31 ++---
+ drivers/gpu/drm/mediatek/mtk_dp.c                  |  18 +--
+ drivers/gpu/drm/mediatek/mtk_dpi.c                 |   5 +-
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c             |  32 +++++
+ drivers/gpu/drm/mediatek/mtk_drm_drv.h             |   4 +
+ drivers/gpu/drm/mediatek/mtk_dsi.c                 |   5 +-
+ drivers/gpu/drm/mediatek/mtk_ethdr.c               |  46 ++++---
+ drivers/gpu/drm/mediatek/mtk_hdmi.c                |  42 ++-----
+ drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c            |  21 ++--
+ drivers/gpu/drm/mediatek/mtk_mdp_rdma.c            |  18 ++-
+ drivers/gpu/drm/mediatek/mtk_padding.c             |  25 ++--
+ drivers/gpu/drm/mediatek/mtk_plane.c               |   4 +-
+ 31 files changed, 373 insertions(+), 280 deletions(-)
 
