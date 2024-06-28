@@ -4,79 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BCF7C2BD09
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jun 2024 14:31:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B753C3064D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jun 2024 16:05:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sVapD3fdE9/p6cPskUrbWArvT+oJWT0YKUQ9ipPCQMc=; b=wXeR1mxdsv0PxNcXkKFE6FworE
-	1idksGo0mKVRUwsqTaDKJtROh+5nKjD0st+iSJv5FHxBpJymAqGserbPtPfPIjkkdwJHZPuwY9s5K
-	NuAdBCjSxXAlrNkUQzEBBUJPbAyhbNbo8+MiI2vXlIsyP8K89DDKf6Ur/sVZXi1AB0sf5ShzQGGJc
-	MXzh/ufnWIeuHzcHvamf5fCxGmeCoZp4tZ/eKV8P7MoDg5ocfBeUOTIxry8Eul8tM5I0zz3WuTPYj
-	Rld/0mt2UckpCFuKUynGPfYTHEiAWDdB16Ix62a34LnTtcU9ogXoDOl7wiiL96cKjz/vyIFGMBuR4
-	+6D17aCw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=kLzM9/030cAER8BTD3NcNMTjqO5oML/8R1yU28wqQaU=; b=RzvKhTTpwCVCUCQKxGFqAJhMsa
+	/V57SkYiKcAL1u5WIRrctsvfnCFEhhMlJz8afEkmC2lvi/b9t5yZCtr3oGOJOvp7m5wUEqTkdtBes
+	Z3K8tuebl3hOv85KNThCHWuGEv7Owk8fxfNOvgkPgOwLUoLn9SRq8xDrRXZQ8+6aMg8i24Glipo65
+	OZRmb+4kOv9a+cTEaOYvq3vmuHb9b9SjwcVvq8kUnQ+IY0iccSQSyIa2cE3T5jPLV4b+KMgolZFIX
+	sa3GMChu5Cv5k50OBpWrI4A/UbjzlmHrHdXow1x/XK1OVrsvObApHBMOo2h/olRXQUdNn4tafNzj+
+	mzuWe9DQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sNCcz-0000000E1Rz-05qj;
-	Fri, 28 Jun 2024 14:31:05 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1sNE69-0000000EIDl-2DdP;
+	Fri, 28 Jun 2024 16:05:17 +0000
+Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sNCcl-0000000E1Lh-03kt;
-	Fri, 28 Jun 2024 14:30:53 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 29FA6CE3C5B;
-	Fri, 28 Jun 2024 14:30:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1CD37C32786;
-	Fri, 28 Jun 2024 14:30:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1719585048;
-	bh=G/YKMmh5ynJkRfR1KCNhOSc5Vr29OJN/VYhFGy2/5yQ=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=ZXHgSbuyQK14CZx0u1ouwH0oc+IQtz6DNsl1/PFhPv5aVfinNltzKc1+6dOLsgmJo
-	 viXW1oEz7FVtkDrlC+YgYMnSogTcWsQSwW0V6yURaqbpBbvesMmEmvj90wZ5xVPJII
-	 ibMwE6iHckikog8reA3RROgXnzDl62uRz6B0TDeMgXPY1IsNJy6jDwzNTRw+85tR63
-	 LHXLasCoTIaDIi/mgv4xkt/AG05wPnXwZdvnGbs8CyWk+iU9v7C4c6eZf5dNptyJx0
-	 vTkNrTnwYrHisxE3o5C4J4CR1SptGx51+oibmkXlvb5FTC9prrCBvmch7ytWlTF7Ww
-	 bbp/iOCDFmXFw==
-From: Lee Jones <lee@kernel.org>
-To: Orson Zhai <orsonzhai@gmail.com>, 
- Baolin Wang <baolin.wang@linux.alibaba.com>, 
- Chunyan Zhang <zhang.lyra@gmail.com>, Jacky Huang <ychuang3@nuvoton.com>, 
- Shan-Chun Hung <schung@nuvoton.com>, 
- Khuong Dinh <khuong@os.amperecomputing.com>, Lee Jones <lee@kernel.org>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Chuanhua Lei <lchuanhua@maxlinear.com>, 
- Rahul Tanwar <rtanwar@maxlinear.com>, 
- Lars Povlsen <lars.povlsen@microchip.com>, 
- Steen Hegelund <Steen.Hegelund@microchip.com>, 
- Daniel Machon <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com, 
- Nishanth Menon <nm@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Jiaxun Yang <jiaxun.yang@flygoat.com>, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, 
- Conor Dooley <conor.dooley@microchip.com>, 
- Rahul Tanwar <rahul.tanwar@linux.intel.com>, 
- Amireddy Mallikarjuna reddy <mallikarjunax.reddy@intel.com>, 
- "Zhu, Yi Xin" <Yixin.zhu@intel.com>, Maxime Ripard <mripard@kernel.org>
-In-Reply-To: <20240627-dt-bindings-mfd-syscon-split-v4-0-dc6699a9f3e4@linaro.org>
-References: <20240627-dt-bindings-mfd-syscon-split-v4-0-dc6699a9f3e4@linaro.org>
-Subject: Re: [PATCH v4 0/7] dt-bindings: mfd: syscon: Document more
- compatibles and require simpe-mfd description
-Message-Id: <171958504286.3306667.1828808107260619095.b4-ty@kernel.org>
-Date: Fri, 28 Jun 2024 15:30:42 +0100
+	id 1sNE5z-0000000EI7r-0ALy;
+	Fri, 28 Jun 2024 16:05:08 +0000
+Received: by mail-lf1-x12e.google.com with SMTP id 2adb3069b0e04-52cdbc20faeso1108868e87.1;
+        Fri, 28 Jun 2024 09:05:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1719590704; x=1720195504; darn=lists.infradead.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=kLzM9/030cAER8BTD3NcNMTjqO5oML/8R1yU28wqQaU=;
+        b=DU0x+oAHN22rDpMAIuKlqsQD7d3gEucdxyquct/4V+jRA2HY/KMq83MQPp2o0d5aWS
+         7niYARun8DgWcaeLCrQSLvEYk38M6BQu8FhrCer3IQVTPXDB7tStw7cGHFzMuHTHoOjQ
+         cSd6acRFiDxA+0PLeQLxC4Ij24wRvV1HCO/VNHZ5f4RUNEwRS3He6b9UTw4o/nMV3mh3
+         Kfm9wmSCUFr4DAb5vBEVKlOS4/G1Q4+RKFWI88qXnnCb9yca8C0UZrgtT2i9/dBUXr+M
+         5rAV9a5xHsKbjo6BzXfSZ8F+T6uNBawrptq3H1ajFnYJW4HsMMAK/yR+2WlH1NfkXfXr
+         QxVQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1719590704; x=1720195504;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=kLzM9/030cAER8BTD3NcNMTjqO5oML/8R1yU28wqQaU=;
+        b=NGDkrTnuxJy8nhcYRdssc6x7FNpsea1y2Ys/2mKhSadJCS1QYFFu25Ez5XBy55XFc+
+         VgMwCTXA1bwLqFoHavZoMJoiCReaxj2osNAjJqZidWRALBYj5nZ32MEWvv6UR62aT1BM
+         52dgpBG17rZX8iEY1yuIuQ7/qOPVIjNXmHPrko5SAZhsE2kNl8vW4Mg5f7Gz/xoYi341
+         sPIS5+Zo2ZEU2rCZQPmNSefOADzmTdZ2QSOqH7b6ZsvcgDkrklvUMWBMYIQP4/voOqlY
+         MFK5vHYe9endr8DL9dyJaFmlMpvdpOMspq4IhyKCVARbz2ODWGaP0jxS2OJjBWlqZMKN
+         KYQw==
+X-Forwarded-Encrypted: i=1; AJvYcCU4ucSBpVLuYJHIjDp6A0H8uENh2l7rIprqZDG7W+QhWLJ0hA4piPUoN3EiHowALxf7Iyvnq6OnIYUUoXLkDU6vqwgpitrnIyMmeBprayWAvRmp02gy5jor313laNyi6DtYejlsdKbIY9yM+TTL3Sp7cj07JE1qCGA=
+X-Gm-Message-State: AOJu0YxxNQhVeWU9fFcb6iAAax81CkCsEfP/en9KTvFNPNcwQJ946AaA
+	p8alhM6VwrXymy8rUAG50uCEIU9dVO7aWPqAMipKuHgqxPrZnmGF
+X-Google-Smtp-Source: AGHT+IF4B20Xs61JY2WDdTljN5tsITuP6RpEAeKzP4VISYuoULX3SqB9Os9Bd+hpX4ErLC3PU0Crfg==
+X-Received: by 2002:a05:6512:304b:b0:52c:ec24:e3ea with SMTP id 2adb3069b0e04-52cec24e4f4mr10337474e87.10.1719590703368;
+        Fri, 28 Jun 2024 09:05:03 -0700 (PDT)
+Received: from mobilestation ([213.79.110.82])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-52e7ab3b2e4sm309663e87.272.2024.06.28.09.05.02
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 28 Jun 2024 09:05:02 -0700 (PDT)
+Date: Fri, 28 Jun 2024 19:05:00 +0300
+From: Serge Semin <fancer.lancer@gmail.com>
+To: Rob Herring <robh@kernel.org>
+Cc: "David S. Miller" <davem@davemloft.net>, 
+	Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, 
+	Paolo Abeni <pabeni@redhat.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Lorenzo Bianconi <lorenzo@kernel.org>, 
+	Felix Fietkau <nbd@nbd.name>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+	Giuseppe Cavallaro <peppe.cavallaro@st.com>, Jose Abreu <joabreu@synopsys.com>, netdev@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net-next] dt-bindings: net: Define properties at top-level
+Message-ID: <v55chwj4xl7t6qfgmahtc2yi2c3zc3fqavuj2px4njv4oz3kwk@zbfo47rlaq4z>
+References: <20240625215442.190557-2-robh@kernel.org>
+ <gr7rgy7cptnpj2rkeufhgqkve4ytqddpts6gdekeszoq7znwf2@ivyjpaiyxruk>
+ <CAL_JsqLYHbr=Wqg-S0t_hK3uDATe9KKob9chFGFnoTcyt2ttyg@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-Mailer: b4 0.13.0
+In-Reply-To: <CAL_JsqLYHbr=Wqg-S0t_hK3uDATe9KKob9chFGFnoTcyt2ttyg@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240628_073051_506329_C60581EB 
-X-CRM114-Status: UNSURE (   6.50  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240628_090507_104709_ACA0B985 
+X-CRM114-Status: GOOD (  23.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,36 +101,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 27 Jun 2024 12:32:16 +0200, Krzysztof Kozlowski wrote:
-> Dependency
-> ==========
-> Rebased on Lee's MFD tree, because dependency is there already:
-> https://lore.kernel.org/all/171828959006.2643902.8308227314531523435.b4-ty@kernel.org/
+On Thu, Jun 27, 2024 at 01:03:01PM -0600, Rob Herring wrote:
+> On Wed, Jun 26, 2024 at 9:05 AM Serge Semin <fancer.lancer@gmail.com> wrote:
+> >
+> > Hi Rob
+> >
+> > On Tue, Jun 25, 2024 at 03:54:41PM -0600, Rob Herring (Arm) wrote:
+> > > Convention is DT schemas should define all properties at the top-level
+> > > and not inside of if/then schemas. That minimizes the if/then schemas
+> > > and is more future proof.
+> > >
+> > > Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
+> > > ---
+> > >  .../devicetree/bindings/net/mediatek,net.yaml |  28 +--
+> >
+> > >  .../devicetree/bindings/net/snps,dwmac.yaml   | 167 +++++++++---------
+> >
+> > For Synopsys DW MACs you can just move the PBL-properties constraints to
+> > the top-level schema part with no compatible-based conditional
+> > validation left. It's because the DMA PBL settings are available on all the
+> > DW MAC IP-cores (DW MAC, DW GMAC, DW QoS Eth, DW XGMAC, DW XLGMAC).
+> > Moreover the STMMAC driver responsible for the DW MAC device handling
+> > parses the pbl* properties for all IP-cores irrespective from the
+> > device compatible string.
 > 
-> Merging
-> =======
-> Preferrably everything via MFD tree (file/context dependencies).
+> That's definitely better.
+
+> Will still need the TSO flag part though,
+> really, who cares if someone wants to set that on h/w without TSO...
+
+Besides the TSO property description is wrong in describing the
+semantics of the DT-property and MAC HW-capability. The description
+says that the property enables the TSO feature "otherwise it will be
+managed by MAC HW capability register." So it means that the
+"snps,tso" property was supposed to be utilized for force-enabling the
+TSO feature irrelevant of the MAC HW-capability register data. Instead
+the STMMAC driver enables the TSO engine only if both "snps,tso"
+DT-property is specified and the TSO-feature has been detected via the
+MAC HW capability. 
+
 > 
-> [...]
+> >
+> > Alternatively you can just merge in the attached patch, which BTW you
+> > have already reviewed sometime ago.
+> 
+> Can you send that to the list since it changed from the last version.
 
-Applied, thanks!
+Ok. Please find the submitted patch here:
+https://lore.kernel.org/netdev/20240628154515.8783-1-fancer.lancer@gmail.com
 
-[1/7] dt-bindings: mfd: syscon: Drop hwlocks
-      commit: 9e1d9c508ad657b8ca01d5faa5ad6412b5ed6848
-[2/7] dt-bindings: soc: sprd: sc9863a-glbregs: Document SC9863A syscon
-      commit: 375f375ce42f8700ebafb2271a826deb37355b9d
-[3/7] dt-bindings: soc: intel: lgm-syscon: Move to dedicated schema
-      commit: 473c6ff312f9cc7d69791843de42f090e84e0555
-[4/7] dt-bindings: soc: microchip: sparx5-cpu-syscon: Move to dedicated schema
-      commit: 4a3b558d40d18dbad4c6a58093e80b137ffec5ed
-[5/7] dt-bindings: soc: ti: am654-serdes-ctrl: Move to dedicated schema
-      commit: 662ffb5b0edcbc902bb3185512aa972e6b9e905b
-[6/7] dt-bindings: mfd: syscon: Split and enforce documenting MFD children
-      commit: 91d5927467b5dc7b87c0283721b3e0e64ed84a77
-[7/7] dt-bindings: mfd: syscon: Add APM poweroff mailbox
-      commit: 33c0e553c8c3cee355ea7bcd358d653b0f022b2d
+-Serge(y)
 
---
-Lee Jones [李琼斯]
-
+> 
+> Rob
 
