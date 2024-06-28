@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CCC7C2BBCA
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jun 2024 09:38:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD22CC3064D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jun 2024 09:38:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7ULp93nyLmCNiiU858JBh+ewZFxYho3FWRYejW3x38c=; b=4rFXgk5sM75esZUQkR4AgTWMcx
-	Bm2nPINFAp9CvyM5HNJgW8yFNXvitCE+g6J1qcqRbp5g0MMm6zjWr6bCdYt8Ujio5MF/YO/fkTmVP
-	6EZFzuNA+rnevqGvPvGF8TBg4WDZD3fuvDm1V5/Y7t7jkeEkiVC1T9agXa4hAb+tsmx7300RtnBk/
-	TBHiCsjpwd0zlw+irrbxrHTQiVwj/isLHEgmtJy1kiSZNkGDVuABZkuBJCbAOYqahAdp5gGHq8iJW
-	1esmGZ8piWvZJw0Rfgg3OkkiBdXgCpfHimNwhlSFZ20/4tpZQFJfQSzCK+U5uva/PbPYm7c7QUpxI
-	HqrV0D3w==;
+	bh=BLfnEVaumEL6Gwm7Mu7iExkjcxWUf+36uznipLh6Mvg=; b=GWXRi2TGkaw7G5VVmh8Q90BJp0
+	aVnUVm3mNlw1+d6MOIq/6cvYuEIUTAIDEDcVMaUY9Foeu2nI565bf2nJpzLjsZcuO0bgUl8L9uJ7M
+	S2xtuWYGQFcvUed0wk1SgjwuIm50y7woa8BvsEQcMmYpcg/pOHlUJGah5/+6kGzQXuG6/bglIbkPi
+	MNA9az3ZeAN5yCQ7fUbA3X0PgZjvd4IeLMFxwkospdvDIwDxSSPOdRH9pPQBGTegTI+EV6vdFGnD5
+	2quXzBwi8H2gmkyIsK4u0V8KZPTo9MRoJ3HnZa6K9zl5bvQdhPVBCYDqjFmQ9Ca1PnauQ0JeN6zFs
+	8Njf7MaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sN83f-0000000DHbB-4AbI;
-	Fri, 28 Jun 2024 09:38:19 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1sN83o-0000000DHgJ-11JH;
+	Fri, 28 Jun 2024 09:38:28 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sN83S-0000000DHT1-2WaU;
+	id 1sN83T-0000000DHSH-2IbM;
 	Fri, 28 Jun 2024 09:38:09 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1719567485;
-	bh=gwCQ0evIwYjqKaT2ejjuFQ7K02f2CL1hfwcnELPQuiA=;
+	s=mail; t=1719567484;
+	bh=HWXWQGMN6XK1cULlsC0zviWvUKjRyKwx7itg8l1XpCs=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Z+qtk3K0+X7F2daaBP5WcpXwsfeN9G+Rg4fgHMSi++y1JRJuSajDAFMyeXyW6OUsY
-	 IOXQMwdwVVYLIxvK1lDJ0P33an+zAoyMtiHag8JErMa5muAkR/4k5ZhLQxG2w3E7Nc
-	 9ejiZyOLAwT2lZytJwdbRA+8teZH5D5urF07EXkPONJ5INnCxp4zvGnWnbbZ3m9MBR
-	 S8S4I1SogdaCfTSBBjYJrcCJE88wNTlREpthDYjJ3+EYT5+4EHTycNS+8CD6G63h0G
-	 2pmRWG6TMqbplQ+HXxtzUtIF4TPDGtdH/bJgiYRDtcKJWpkqx3ybM6OKNc/saUvhCa
-	 /U0bIFZuW8whg==
+	b=e5HL0fSN3Q3NPEajOCDv3cjG5Dru58dgb0P/Yk7IA76JRT6UrG9o80+bvdEgN0Lkx
+	 73J3J36A+MfFAon1UR0Oyo42xDfvSvadrbhHAvSIWgAbIionlBEbA6hr1z7R3L9ePm
+	 ZBQmuJ54UnYiyZi9ZOHyWMmdQ5aQicu0Dsyt6fCET4SKFtXqmlkKt3NHzf8nxdpAwl
+	 RztzGO2aGo0th0d+dhozDCojGqlF5l59JvKUhuS60+pqW6FntlBqc/DoMjNlNntNhC
+	 /roA33HDEve7pkex4ZgfSMAXID0A4R8BQnm4yJXKzYltDT+f7Wm7rbYgpcbp+RRQfo
+	 LBN1hdGGHEDdg==
 Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 03C1837821F9;
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 0F5E837821F6;
 	Fri, 28 Jun 2024 09:38:04 +0000 (UTC)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: arm-soc <arm@kernel.org>,
 	soc <soc@kernel.org>
 Cc: linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [GIT,PULL,3/3] MediaTek driver updates for v6.11
-Date: Fri, 28 Jun 2024 11:37:59 +0200
-Message-ID: <20240628093801.126013-3-angelogioacchino.delregno@collabora.com>
+Subject: [GIT,PULL,2/3] MediaTek ARM32 DTS updates for v6.11
+Date: Fri, 28 Jun 2024 11:37:58 +0200
+Message-ID: <20240628093801.126013-2-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20240628093801.126013-1-angelogioacchino.delregno@collabora.com>
 References: <20240628093801.126013-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240628_023806_841659_179E6D2D 
-X-CRM114-Status: UNSURE (   8.03  )
+X-CRM114-CacheID: sfid-20240628_023807_990791_D0F9A937 
+X-CRM114-Status: UNSURE (   6.43  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -80,36 +80,25 @@ The following changes since commit 1613e604df0cd359cf2a7fbd9be7a0bcfacfabd0:
 
 are available in the Git repository at:
 
-  https://git.kernel.org/pub/scm/linux/kernel/git/mediatek/linux.git tags/mtk-soc-for-v6.11
+  https://git.kernel.org/pub/scm/linux/kernel/git/mediatek/linux.git tags/mtk-dts32-for-v6.11
 
-for you to fetch changes up to 58de63ddd0ecc84548b8fd24c72deb3739365c78:
+for you to fetch changes up to c04774af7ae392322e204dd20117e6c5162e0fe4:
 
-  soc: mtk-cmdq: Add cmdq_pkt_logic_command to support math operation (2024-06-27 12:41:51 +0200)
+  arm: dts: mediatek: Declare drive-strength numerically (2024-06-24 12:49:30 +0200)
 
 ----------------------------------------------------------------
-MediaTek driver updates for v6.11
+MediaTek ARM32 DTS updates for v6.11
 
-This adds the previously missed Tone Curve Conversion (TCC)
-MuteX bit to enable the same in MDP3 on the the MT8188 SoC,
-disables 9-bit Alpha for display HDR support in MT8195 and
-adds math operation support in the Global Command Engine for
-all MediaTek SoCs, which will be used in the near future in
-the ISP driver.
+This adds a single commit that cleans up the drive-strength
+value assignment on all devicetrees using the deprecated
+MTK_DRIVE_(x)mA definition.
 
 ----------------------------------------------------------------
 AngeloGioacchino Del Regno (1):
-      soc: mediatek: mtk-mutex: Add MDP_TCC0 mod to MT8188 mutex table
+      arm: dts: mediatek: Declare drive-strength numerically
 
-Hsiao Chien Sung (1):
-      soc: mediatek: Disable 9-bit alpha in ETHDR
-
-Jason-JH.Lin (1):
-      soc: mtk-cmdq: Add cmdq_pkt_logic_command to support math operation
-
- drivers/soc/mediatek/mtk-cmdq-helper.c | 34 ++++++++++++++++++++++++++++++++++
- drivers/soc/mediatek/mtk-mmsys.c       |  1 +
- drivers/soc/mediatek/mtk-mutex.c       |  1 +
- include/linux/soc/mediatek/mtk-cmdq.h  | 42 ++++++++++++++++++++++++++++++++++++++++++
- 4 files changed, 78 insertions(+)
+ arch/arm/boot/dts/mediatek/mt2701-evb.dts |  2 +-
+ arch/arm/boot/dts/mediatek/mt7623.dtsi    | 18 +++++++++---------
+ 2 files changed, 10 insertions(+), 10 deletions(-)
 
 
