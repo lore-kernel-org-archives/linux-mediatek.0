@@ -4,85 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5D4FC2BD09
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jun 2024 14:13:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40868C3064D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jun 2024 14:30:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Aq9SouLfDkAq2b4kiLL/vjr3Qpha12g+yMURW/ZzG/E=; b=iXWIUTP2jKaS3X6ZPSTXLDLvUy
-	jK0c/w9feJ3a7gf167qt+tAbn0DZtix64s28AAkGTQDkl+JRKVpMm4olyTdLtaFIHXMrpeQuZ73Qe
-	QeUQ7hb82e/Zarla0MJ2hkQ0X/jFgdtKcoQ8Ha2sdcaihwPL39tzPp2cn0X5ZobArRpN+xl3q8Ucu
-	qTw+xwPA33nK1Xqp6FC50KBvoAQWfopIDR+v+VAtHZE0ynteamFIkzBDsZ1vzE4OX1lqHsPq9IcLG
-	x7FDPxASwxdC9C6mZkvwAJaVOvraORxa7jmRUiti2HAM7usHHclH90zqd2Kde7FSgVmMIvb1q/73L
-	a/n0qIRQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=81mUkYiykWWQQPyI87vNeQndr4PAnfQ/DFgOBM9dxes=; b=L1au5GIzCpb2loF+RbOertim7I
+	qrmgUJhqB8h6A35dtvtgG3+lM3qCSjBM0gFp+rKUvC0y3P0LYbdWt6U3XYommGscURqE/r/iNSXi3
+	QRV6UNzs7/tN54dsvCg8sZjy9YDjcmkBMZcvQ8ZVgQo13UfXvBr7ziTej+FIJzZ4ha5pxefqYGPrP
+	g1ACvyJS5uNJzjq9l2vqkgB1rvDln0MWr+7SOXlGM9cuWwbC3WzaNIPZR9vpIzf8VTUZ9edOfJO1E
+	qV8OSrahJ48TS9J/utJCJPTwj30JIINmANEtABoSMRAn5RXtqipCNq2nYrI650c7cWCabKuCQ2qAG
+	iSorMIiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sNCMR-0000000DyNx-07KH;
-	Fri, 28 Jun 2024 14:13:59 +0000
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+	id 1sNCcr-0000000E1Oi-3NAs;
+	Fri, 28 Jun 2024 14:30:57 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sNCMN-0000000DyMd-1mJu
-	for linux-mediatek@lists.infradead.org;
-	Fri, 28 Jun 2024 14:13:57 +0000
-Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-425624255f3so4419175e9.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 28 Jun 2024 07:13:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1719584034; x=1720188834; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=Aq9SouLfDkAq2b4kiLL/vjr3Qpha12g+yMURW/ZzG/E=;
-        b=Dr5+k3iSlFAfVzQ/geC+ZkOl0ZHzI+a0u0Gk514DNaSwFLmu9TaH7VU8yo6wzNwgik
-         Nsan5PDSltaxbP082dNrepyshmAbIvJQn83csYl7icWdx36tFKZTuUVUslbosFYbMdGp
-         kAUCojmTnElmTve6prlh+M68mBwNdODS2ECwKa63OGuj3gPfeJaDJgtagkvW43xEZY3Y
-         jnRtD7aIFiNA4Yf0E1j25zP+eF2ogVQ3N/Greshko2BfjCMQ/PHSd78y/9ZpGhe0aBOs
-         GsKCuRykkn4v3ClEpLLWyUKhuWwYqgsajh/MBXL2MJKJRIwqk3kEyg3Qt7L09l7iU6JZ
-         XLtA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1719584034; x=1720188834;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Aq9SouLfDkAq2b4kiLL/vjr3Qpha12g+yMURW/ZzG/E=;
-        b=tVNQTR1kmGMPK6bMnbayq7nungLaQ+8OZatfDQPw+uxhOjnfC0+goaTgio6SOk7ARH
-         6OxQUPAimkHEz9P+0QDEicepDg0uQBEGoHKKCwr/FUhjbJjLrx1M3OhqOnlothudrX99
-         Nr/gx0Ppw571soS5KzlGFzCTpyKJp9hJzv9QjYjFzadPl0btxtenQufafiyTMKhQWnlA
-         +TWqKGg5F9cNg6UwLyPnhXxCEZIMpo4M1HM7tr09z+M0d8U8YiX5yxAIttdYJQ22AXCB
-         LiizJQc3WT0fDPG9EPuU7lpus2r4Ac3H7c+9J5LfyeVPtAYF2qE1DeylGlQWKuIgj+zR
-         GlyQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXrg4XpkPVrkrHIkAe1ZhfTPgtm1ykC1d/qMOltL+5rhXB5x7hNq53a2T5jxD/5oAUvugmjp27/eLndjjtIth9Jknp6jlVZtHS1ZBRmJdjQm6TL
-X-Gm-Message-State: AOJu0YwmUYk/cF1vmSBuyej4fIvlZqQlYmOlzJa8nDZBiTLCo4M4hFAo
-	wHTOOuW6tHe8VF9cQ1FegpM264TCrdC9upKQ/E4BhmttFtV6+nuXlxn1xGEAUxw=
-X-Google-Smtp-Source: AGHT+IE0BlUwhF204AB9g4b6OLsdn4teKyk6Fag2Qv65HRVh4aDPpq9NzuY0p47pWCuW2XMrGGe9CA==
-X-Received: by 2002:a05:600c:4645:b0:425:6424:5f97 with SMTP id 5b1f17b1804b1-4256d4e579cmr18385955e9.5.1719584033689;
-        Fri, 28 Jun 2024 07:13:53 -0700 (PDT)
-Received: from localhost (p50915e7b.dip0.t-ipconnect.de. [80.145.94.123])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4256b098426sm36633245e9.32.2024.06.28.07.13.53
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 28 Jun 2024 07:13:53 -0700 (PDT)
-Date: Fri, 28 Jun 2024 16:13:52 +0200
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Cc: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, 
-	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
-	Sam Ravnborg <sam@ravnborg.org>, Hsiao Chien Sung <shawn.sung@mediatek.com>, 
-	Alexandre Mergnat <amergnat@baylibre.com>, "Jason-JH . Lin" <jason-jh.lin@mediatek.com>, 
-	Douglas Anderson <dianders@chromium.org>, 
-	=?utf-8?B?TsOtY29sYXMgRiAuIFIgLiBBIC4=?= Prado <nfraprado@collabora.com>, Michael Walle <mwalle@kernel.org>, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: Re: [GIT PULL] mediatek drm next for 6.11
-Message-ID: <idb7c2ogmvecxetkuqo52sqkih7iflba4x22fgfcdt7c4l4rnp@tjysd6nkha4s>
-References: <20240628134632.28672-1-chunkuang.hu@kernel.org>
+	id 1sNCci-0000000E1Kv-0chi;
+	Fri, 28 Jun 2024 14:30:49 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 8230BCE2099;
+	Fri, 28 Jun 2024 14:30:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6FA49C116B1;
+	Fri, 28 Jun 2024 14:30:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1719585042;
+	bh=/WL5WbmLDaPp407+RLqwWYRH8m1SF1h+OQOP9m79KB4=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=DEm0dkE+IVL8XZqwhVZKkgj452jQQ2dECaYEWhMBWPpi2OZr35sYM4PD36/NzuSmp
+	 0yGXa01DVFPklSoZpVWclyBcLG6f/AZlUwZFY5qfisr1/E6MSOQiv2Iu+n6OBT/g58
+	 qboa/caSMXgXO3LNJsk+pHriJU0TPRPYHoJOVI6HVPGaL7gl5XwK+Zws+CH35SkZ6S
+	 mHg6kSmwLJeNBcp7JxhUIcgcbE1ZdkmabBE7t8qdvonQ0VbJTZC37h0nc9XbOn45nb
+	 vkD5jXc7ytZOgV9soLlR9WP2mWltpH00uCkrovYi+zsl3D+3M7gMGIqR2w30b/e8n9
+	 UPDLPJ1bN3G6g==
+From: Lee Jones <lee@kernel.org>
+To: Orson Zhai <orsonzhai@gmail.com>, 
+ Baolin Wang <baolin.wang@linux.alibaba.com>, 
+ Chunyan Zhang <zhang.lyra@gmail.com>, Jacky Huang <ychuang3@nuvoton.com>, 
+ Shan-Chun Hung <schung@nuvoton.com>, 
+ Khuong Dinh <khuong@os.amperecomputing.com>, Lee Jones <lee@kernel.org>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Chuanhua Lei <lchuanhua@maxlinear.com>, 
+ Rahul Tanwar <rtanwar@maxlinear.com>, 
+ Lars Povlsen <lars.povlsen@microchip.com>, 
+ Steen Hegelund <Steen.Hegelund@microchip.com>, 
+ Daniel Machon <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com, 
+ Nishanth Menon <nm@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Jiaxun Yang <jiaxun.yang@flygoat.com>, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, 
+ Conor Dooley <conor.dooley@microchip.com>, 
+ Rahul Tanwar <rahul.tanwar@linux.intel.com>, 
+ Amireddy Mallikarjuna reddy <mallikarjunax.reddy@intel.com>, 
+ "Zhu, Yi Xin" <Yixin.zhu@intel.com>, Maxime Ripard <mripard@kernel.org>
+In-Reply-To: <20240626-dt-bindings-mfd-syscon-split-v3-0-3409903bb99b@linaro.org>
+References: <20240626-dt-bindings-mfd-syscon-split-v3-0-3409903bb99b@linaro.org>
+Subject: Re: [PATCH v3 0/7] dt-bindings: mfd: syscon: Document more
+ compatibles and require simpe-mfd description
+Message-Id: <171958503719.3306667.9209937406996217499.b4-ty@kernel.org>
+Date: Fri, 28 Jun 2024 15:30:37 +0100
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="dchb2smjqohke7fi"
-Content-Disposition: inline
-In-Reply-To: <20240628134632.28672-1-chunkuang.hu@kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-Mailer: b4 0.13.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240628_071355_681132_AC2C75A2 
-X-CRM114-Status: GOOD (  10.45  )
+X-CRM114-CacheID: sfid-20240628_073048_388775_52EB46D7 
+X-CRM114-Status: UNSURE (   6.07  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,48 +91,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Wed, 26 Jun 2024 12:09:09 +0200, Krzysztof Kozlowski wrote:
+> Dependency
+> ==========
+> Rebased on Lee's MFD tree, because dependency is there already:
+> https://lore.kernel.org/all/171828959006.2643902.8308227314531523435.b4-ty@kernel.org/
+> 
+> Merging
+> =======
+> Preferrably everything via MFD tree (file/context dependencies).
+> 
+> [...]
 
---dchb2smjqohke7fi
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Applied, thanks!
 
-Hello,
+[1/7] dt-bindings: mfd: syscon: Drop hwlocks
+      commit: 9e1d9c508ad657b8ca01d5faa5ad6412b5ed6848
+[2/7] dt-bindings: soc: sprd: sc9863a-glbregs: Document SC9863A syscon
+      commit: 375f375ce42f8700ebafb2271a826deb37355b9d
+[3/7] dt-bindings: soc: intel: lgm-syscon: Move to dedicated schema
+      commit: 473c6ff312f9cc7d69791843de42f090e84e0555
+[4/7] dt-bindings: soc: microchip: sparx5-cpu-syscon: Move to dedicated schema
+      commit: 4a3b558d40d18dbad4c6a58093e80b137ffec5ed
+[5/7] dt-bindings: soc: ti: am654-serdes-ctrl: Move to dedicated schema
+      commit: 662ffb5b0edcbc902bb3185512aa972e6b9e905b
+[6/7] dt-bindings: mfd: syscon: Split and enforce documenting MFD children
+      commit: 91d5927467b5dc7b87c0283721b3e0e64ed84a77
+[7/7] dt-bindings: mfd: syscon: Add APM poweroff mailbox
+      commit: 33c0e553c8c3cee355ea7bcd358d653b0f022b2d
 
-On Fri, Jun 28, 2024 at 01:46:32PM +0000, Chun-Kuang Hu wrote:
-> Hi, Dave & Daniel:
->=20
-> This includes:
->=20
-> 1. Convert to platform remove callback returning void
+--
+Lee Jones [李琼斯]
 
-Note that this change (commit f5d5759d29e93fa76466204ad34169b3900a36c6)
-is already in next (as commit 573a39d05053cb234a9ac3c7b0b359fb3258bd76)
-via
-
-	git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git drive=
-r-core-next
-
-=2E A quick test doesn't show any problems, your branch merges fine into
-next. Still I thought I'd let you know.
-
-Best regards
-Uwe
-
---dchb2smjqohke7fi
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmZ+xR0ACgkQj4D7WH0S
-/k4cEAf/S6QnpqRwzYlwKHcPhnbzcx1y0kL8li82wdsXH5v18xQvthvSeToiduB+
-0IQHWhoLOH1ZsRVxXBWDIKQ3buKXOIljwJzjxuqbOog5zyCLgJ2JHlBDDxK1TXSe
-YPdqV6D2/+g7JX7jLo+d2houzoJKB6ZPVmmmKOqbfr9uMvlfeT/TZeVWkQTPiI/W
-p1X0omkCzRZVebN8WV2Cwf0PSmPM2i72TmkUcwHILXqQ3wpqhtkdMh3xAG/3UjKm
-O+95C/M0306/FAagcja/jgWQHxKoYMZ0IIR1a0FhCqtLw4CxSHmeR/RecdY77juF
-c2piaGs6UTb1c5PIbh6YM1N5vkzJXw==
-=A9h2
------END PGP SIGNATURE-----
-
---dchb2smjqohke7fi--
 
