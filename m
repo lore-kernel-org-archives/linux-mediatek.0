@@ -4,93 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1D8FC2BBCA
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jun 2024 03:40:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D44FC2BBCA
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jun 2024 05:47:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OS9xqoZMcwoei5o8ahNVSTlTxVXDSb1SnPAKATTACBA=; b=YV8O08bcrNmgWNeJ2q/SmnU4GE
-	q6rgS1E5xST8imQL/sS3R9cEm2bg6uN4pOGso+M1Y9DYzq8VLrhBj2osui5CeTPH0Gz6tUnu9sHUO
-	XAIvzqkJl6qY9ctt4YL2icXqvFp4TMcNZR9J4hT+z/Tn6eXn/DYn0BuWF43Bi5dd6rYO/yvHH7Inq
-	Cm20VXv2i++N9aOYRTWgfw9fn9zjDThFucOfa8L+O7i4ITgH1rKigOyX9zZlgEZiDlFracbMtg+dG
-	Knp1OCVuzh7v+vm0tx7rY2JcG0Cs/yg57CKfzj+6Gq54L3M8hxAMY4xzGT2FuIZ21K3Bby7mgILQF
-	AckrpYUA==;
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=J82aso9srCTwQ13NgHA3QiH1Y/m1v0Plo0MRWgzcEWw=; b=Tpmrn5p1bSOyvI4kMijyy2SUlw
+	M/CNvE10RZPBLUPcfUL7CN7e7Y8F1EdcVemeMlQ1P+9aG9gcD0gt6czNQ4lQYC+BSM22RAo//phWJ
+	ry5ompJh13QpctAjVsx+y9wP4cpJ7rIITV7isd2gmnMJJLYoqu4FdNicqJ1ExWxuWdTjCb8LLghSu
+	UL2GTlbPD+/Euxk0PzE7p+Au70xjSkHhDRvHYkyQ9UU2VDc4TJfLrJtZ8jFLoJoWkrtWzbR0Sm2CQ
+	3pefOv6UNZNsZGpy9jdShMvwZRBdRk8tYMNfW/WGExZlapsHI0Gm+7oYCt26H8GWtmEWnenXavo0/
+	jzYZduZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sN2TH-0000000CSvX-3gvJ;
-	Fri, 28 Jun 2024 03:40:23 +0000
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+	id 1sN4S7-0000000Cer5-35Sj;
+	Fri, 28 Jun 2024 05:47:19 +0000
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sN2TE-0000000CSut-1nTm;
-	Fri, 28 Jun 2024 03:40:21 +0000
-Received: by mail-ej1-x629.google.com with SMTP id a640c23a62f3a-a689ad8d1f6so15057266b.2;
-        Thu, 27 Jun 2024 20:40:19 -0700 (PDT)
+	id 1sN4Ry-0000000Ceov-1Caj;
+	Fri, 28 Jun 2024 05:47:11 +0000
+Received: by mail-ej1-x62c.google.com with SMTP id a640c23a62f3a-a72420e84feso28361466b.0;
+        Thu, 27 Jun 2024 22:47:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1719546018; x=1720150818; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=OS9xqoZMcwoei5o8ahNVSTlTxVXDSb1SnPAKATTACBA=;
-        b=IoYGP0yDUGFDPukattwGwVeannrZWUMRQlkOwJ8zLcxgH9lTKLSJADB7hVQ75ipz1W
-         cKUASotD1Z/RRt3wS+y/AzeIg+Bq2P6BjDLcOEWBR9Mz0N9MBx3HhJs6mT/SNepzGM6C
-         EHx9ltpQFH75+96X3xw3IV25/+Kfqgd2Cus5tyejezIOzwJbISxUrPhBJvge3m/wiHlR
-         LiBo69LaNNPKEZkCxbW0PtHbu3lzonNZ+9svVaGCyWCtwZK/u6k5er9T5al/RhtjIVmn
-         wc+ZnY3tPwubWB/9apD5Hj/9OskxwzZviaQQGdzwaZ5cCZfBNavEEJVml5RC4eW0nOsw
-         gxUQ==
+        d=gmail.com; s=20230601; t=1719553628; x=1720158428; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=J82aso9srCTwQ13NgHA3QiH1Y/m1v0Plo0MRWgzcEWw=;
+        b=Dy+p5XpE8D72K0fFYcliFi6g2JmgUPQQVPNOeGn+Ln6Y+HoNM2GWAFXCMrA/t3dI1c
+         r4NBJmql1/8ehcz3/sc0UbVLxbXESHsz3u4DlO37zbzUUqjsAermPiLVOaipGP1/I/wr
+         CpU5NjGefhV9CVPqsmoS3vBSRIPcS4TyGqCqCiQVq+e9EZVpLQDTDFONRzNcE36aGu4h
+         Ce57+jHm5kKXl2gfuPAeLJisb8addyE+BxeJP3qEG/2b/A1gqOyc4bQOCsCIgDxdne1/
+         w5ZhPrsl8D64KHuvXhV8bE6qXgLKM2/gKYH9yWoin4VUrQm7eIta83ZFd9D7yU7/49mf
+         8aeg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1719546018; x=1720150818;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=OS9xqoZMcwoei5o8ahNVSTlTxVXDSb1SnPAKATTACBA=;
-        b=I4/43CgeLbntmat2CkRyUAxntwJo9OLyMWloyZQD/jYm/IfkDhNxSYAllwN1Il2n65
-         /7isnC/n6clkbiY1qP+W57BLuJvHswDo4gGI0Wdwx2Annvcdp+cAKQtq2OlvRD6Bsryu
-         zznCPld5nIN+iNJpnuz21FRYznurTk+YRp8IKWpUoiQozJjKFpZvB+Fm/525wU9XPU3v
-         RaaXNeGxAyMPAX/Zgv7ASPjAxnUGk0id21Y4cfbb4irdVsNlfaODP7OTTS/Qri+FaFxu
-         Gqtlyu8DwYFTyc+1SFsRvcKUbKKRRii3JdwkFhQFUeJGy8r5bBEbnSaVX0KKJiS5uLgE
-         WjPg==
-X-Forwarded-Encrypted: i=1; AJvYcCWAOIAYAcu+HgNCXpG2t9R44rlOpIlqmKOtSoHrpz42vGIYGun8Z5pkGvn2z6PaZyXfRgzskXsXD3BaieHbQNT7glVqhMOkTxbiPy6hSxXkCWg5hTeTzdRDpNJ/YuIOnlLxfJ7VV+9i7ZWyx+fPWAYM+O375PL1iSQ=
-X-Gm-Message-State: AOJu0YyPtmP4qyiIwmtyAcRIFWNaXmMe/u30kQxQFjBB+ByUgC4cPTgX
-	aNOoxWM4+rq31sVMgJQyxDQu8jXpFVMzsMmlopUmYYSmX9ZSPqwNpWv2rtg7fn8AB8+kXHL3m6H
-	rsCPsM4fkVUuXdBsx33N/l+5KoiQ=
-X-Google-Smtp-Source: AGHT+IEd4MYYyTGYgkdpW1lBusF7xMCqtMtDwYx3Q7a/fEbXrt6+jDUrcup32wPvlQ319IyI0k41m3aS8JS63hLYlkY=
-X-Received: by 2002:a17:906:2a5b:b0:a6f:1785:d18 with SMTP id
- a640c23a62f3a-a7245cf2ee7mr928568166b.44.1719546017566; Thu, 27 Jun 2024
- 20:40:17 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1719553628; x=1720158428;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=J82aso9srCTwQ13NgHA3QiH1Y/m1v0Plo0MRWgzcEWw=;
+        b=HgJU5mJoTxh8i2ThmhQ64BiUQZvpgtVvx4hjwp1i7HhVWf4dq+cRuIsHhj8fgNkdev
+         8ASzyqIsj/HPZJac+Zy4EjaoHidqTcGqcspFBwqEqLSnGVJOJOeW3n2h64MXmRXOQmNP
+         WzU0WbnI10s4W8JAqjenvzog9rCNO5qB4mpN81EAFp+sK6aLnHLryknRmoXiwd6NnFoh
+         ktURaW5X683kODa86JxMUhlljHPObwu5af5hSHmmLyZvtPNZgHJpZyjXQRuHsPxOvi5w
+         9PRC6qXXHrethqaNkfPOJyl9XXA7LxOvtjApTVtOhcoJcu33T36HD6ZM6dgFGoYDCmR3
+         zFXg==
+X-Forwarded-Encrypted: i=1; AJvYcCXFX2Qli1VYzmPOgk+AnySNr33xhwVloGTDEVWI9n3HF8tkdFeiNGt4DHNuh2aPJbl+MZ+C/3Q2shxJxOLTot4Fw7nXyJ0WJxpwV6uHxNNKuQtyVF4Jvf5y5lOE53zvVaspDyEmPwbP1H2BCEDCJXf7VwBmcPJLFRk=
+X-Gm-Message-State: AOJu0Yz0Zba7JaEeyQR4rc0zRE726ZG5TWzLgKDmHK0df1Y8S8iDVueI
+	LTHGpGUvehyBsgy8WKL6X9t2+zCbz5j1aYnzy1nwivS5EdKH4AIwip3S1Q==
+X-Google-Smtp-Source: AGHT+IESZihvr0VfgF8QpueLxCMpYeBNN0yaK4ft/bU3+rHkwKNn0h5UqOyBqhd7yd/NxLcWzXzC+Q==
+X-Received: by 2002:a17:906:a847:b0:a6f:6721:b065 with SMTP id a640c23a62f3a-a7245bb25e6mr1136984566b.32.1719553627433;
+        Thu, 27 Jun 2024 22:47:07 -0700 (PDT)
+Received: from localhost.lan (031011218106.poznan.vectranet.pl. [31.11.218.106])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a72ab0651a8sm41665766b.128.2024.06.27.22.47.05
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 27 Jun 2024 22:47:06 -0700 (PDT)
+From: =?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <zajec5@gmail.com>
+To: "David S . Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>
+Cc: Marcel Holtmann <marcel@holtmann.org>,
+	Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	linux-bluetooth@vger.kernel.org,
+	netdev@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>
+Subject: [PATCH V2] dt-bindings: net: bluetooth: convert MT7622 Bluetooth to the json-schema
+Date: Fri, 28 Jun 2024 07:46:35 +0200
+Message-Id: <20240628054635.3154-1-zajec5@gmail.com>
+X-Mailer: git-send-email 2.35.3
 MIME-Version: 1.0
-References: <20240614040133.24967-1-jason-jh.lin@mediatek.com>
- <20240614040133.24967-3-jason-jh.lin@mediatek.com> <CABb+yY2bwj2BcdJLGe1ZYwCrnXL3LtcePMb=wQPaBKorBSs2yA@mail.gmail.com>
- <fc92d51cc6e55301c081ea2d589e1ba6cdd295ee.camel@mediatek.com>
- <CABb+yY1L+YGjf6O9UgPYkS2gWAdo=7QoojSAUNWC_8o7XtZQSg@mail.gmail.com>
- <1f815ff8-2b7a-48de-8b47-0bc9b3cb67ab@collabora.com> <CABb+yY1Yy8o3ofAiC-uV+gDrO3QDTWz3_XTUMai_2uyrnj-VrQ@mail.gmail.com>
- <b7ebc021d391452eaf2149976ea2d53fba3d89fc.camel@mediatek.com>
- <CABb+yY3+pnuXDK_jZMDYOAzahdSZ5iig51VqzM=FFHrFpK+9LA@mail.gmail.com>
- <4e5d4362-4940-4ba0-95aa-627b82e21e41@collabora.com> <CABb+yY3eXvJRUq7MOqB8QZ9N4aiuogaUCTfP7MerKdNbAbLkvw@mail.gmail.com>
- <895af04e45d286c38d01f48b29ad41598b7dadb7.camel@mediatek.com>
- <CABb+yY1EZOsKUR7WUX0Ni0Ukbqz0+yRHswiu07tNXtY1A1gNUQ@mail.gmail.com> <d6f0e7072ec0e89e573e5720fb2b9c621eb9154c.camel@mediatek.com>
-In-Reply-To: <d6f0e7072ec0e89e573e5720fb2b9c621eb9154c.camel@mediatek.com>
-From: Jassi Brar <jassisinghbrar@gmail.com>
-Date: Thu, 27 Jun 2024 22:40:06 -0500
-Message-ID: <CABb+yY0+fFw7Bg578DFEdrigVFgf4-v3qo2JVruEa3ExtvRsMg@mail.gmail.com>
-Subject: Re: [PATCH 2/2] mailbox: mtk-cmdq: Move pm_runimte_get and put to
- mbox_chan_ops API
-To: =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
-	=?UTF-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>, 
-	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>, =?UTF-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>, 
-	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>, 
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, 
-	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240627_204020_496744_EF08DDFF 
-X-CRM114-Status: GOOD (  24.02  )
+X-CRM114-CacheID: sfid-20240627_224710_383490_5E3345BA 
+X-CRM114-Status: GOOD (  17.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,48 +104,123 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 26, 2024 at 4:32=E2=80=AFAM Jason-JH Lin (=E6=9E=97=E7=9D=BF=E7=
-=A5=A5)
-<Jason-JH.Lin@mediatek.com> wrote:
-> >
-> > The idea is that
-> > 1) If the gap between transfers on a busy channel is ~10ms or
-> > more.  And ..
-> > 2) The silence on the mailbox channel is multiple of 100ms. And ...
->
-> The mailbox channel would not be always busy and the gap is not
-> consistent as well.
-> For example, display driver calls mbox_send_message() every ~16ms while
-> UI is updating in 60fps.
-> If UI dose not update, display driver won't call mbox_send_message(),
-> so user may not has the gap and the silence like this.
->
-From your logs, send_diff only increases from 16ms if the UI is not
-updating. Which makes it more prudent to release the channel.
+From: Rafał Miłecki <rafal@milecki.pl>
 
-The user needs the channel for mbox_send_message, while actual power
-saving comes from cmdq_runtime_suspend/resume.
-So for your target usage pattern, trace mbox_send_message() ,
-cmdq_runtime_resume() and cmdq_runtime_suspend() and compare the
-timestamped logs with and without this patchset.
+This helps validating DTS files. Introduced changes:
+1. Dropped serial details from example
+2. Added required example include
 
-> > 3) startup() and shutdown() are empty (as in your driver)
-> >   ... then you could afford to release/suspend and resume/request
-> > during the silence period because the _api_ cost of request/release
-> > should not even be 1ms. Your stack may be designed to make doing that
-> > difficult but numbers wise it should work.
->
-> Yes, that's true, but I think we can not achieve the goal during the
-> suspend/resume stage.
->
-> Currently, we use the pm_runtime_get_sync() and
-> pm_runtime_auto_suspend() to achieve this.
-> So I think adding the PM function hook in mailbox driver is much better
-> for users driver and also more flexible for the controller driver.
->
-> Please correct me if there is something I misunderstood :)
->
-I have a gut feeling the logs above will make it clear :)
+Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
+---
+V2: Simplify example
 
-Cheers!
+ .../bluetooth/mediatek,mt7622-bluetooth.yaml  | 51 +++++++++++++++++++
+ .../bindings/net/mediatek-bluetooth.txt       | 36 -------------
+ 2 files changed, 51 insertions(+), 36 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/net/bluetooth/mediatek,mt7622-bluetooth.yaml
+
+diff --git a/Documentation/devicetree/bindings/net/bluetooth/mediatek,mt7622-bluetooth.yaml b/Documentation/devicetree/bindings/net/bluetooth/mediatek,mt7622-bluetooth.yaml
+new file mode 100644
+index 000000000000..3f9e69208127
+--- /dev/null
++++ b/Documentation/devicetree/bindings/net/bluetooth/mediatek,mt7622-bluetooth.yaml
+@@ -0,0 +1,51 @@
++# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/net/bluetooth/mediatek,mt7622-bluetooth.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek SoC built-in Bluetooth
++
++description:
++  This device is a serial attached device to BTIF device and thus it must be a
++  child node of the serial node with BTIF. The dt-bindings details for BTIF
++  device can be known via Documentation/devicetree/bindings/serial/8250.yaml.
++
++maintainers:
++  - Sean Wang <sean.wang@mediatek.com>
++
++allOf:
++  - $ref: bluetooth-controller.yaml#
++
++properties:
++  compatible:
++    const: mediatek,mt7622-bluetooth
++
++  clocks:
++    maxItems: 1
++
++  clock-names:
++    const: ref
++
++  power-domains:
++    maxItems: 1
++
++required:
++  - clocks
++  - clock-names
++  - power-domains
++
++unevaluatedProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/power/mt7622-power.h>
++
++    serial {
++        bluetooth {
++            compatible = "mediatek,mt7622-bluetooth";
++            power-domains = <&scpsys MT7622_POWER_DOMAIN_WB>;
++            clocks = <&clk25m>;
++            clock-names = "ref";
++        };
++    };
+diff --git a/Documentation/devicetree/bindings/net/mediatek-bluetooth.txt b/Documentation/devicetree/bindings/net/mediatek-bluetooth.txt
+index 9ef5bacda8c1..988c72685cbf 100644
+--- a/Documentation/devicetree/bindings/net/mediatek-bluetooth.txt
++++ b/Documentation/devicetree/bindings/net/mediatek-bluetooth.txt
+@@ -1,39 +1,3 @@
+-MediaTek SoC built-in Bluetooth Devices
+-==================================
+-
+-This device is a serial attached device to BTIF device and thus it must be a
+-child node of the serial node with BTIF. The dt-bindings details for BTIF
+-device can be known via Documentation/devicetree/bindings/serial/8250.yaml.
+-
+-Required properties:
+-
+-- compatible:	Must be
+-		  "mediatek,mt7622-bluetooth": for MT7622 SoC
+-- clocks:	Should be the clock specifiers corresponding to the entry in
+-		clock-names property.
+-- clock-names:	Should contain "ref" entries.
+-- power-domains: Phandle to the power domain that the device is part of
+-
+-Example:
+-
+-	btif: serial@1100c000 {
+-		compatible = "mediatek,mt7622-btif",
+-			     "mediatek,mtk-btif";
+-		reg = <0 0x1100c000 0 0x1000>;
+-		interrupts = <GIC_SPI 90 IRQ_TYPE_LEVEL_LOW>;
+-		clocks = <&pericfg CLK_PERI_BTIF_PD>;
+-		clock-names = "main";
+-		reg-shift = <2>;
+-		reg-io-width = <4>;
+-
+-		bluetooth {
+-			compatible = "mediatek,mt7622-bluetooth";
+-			power-domains = <&scpsys MT7622_POWER_DOMAIN_WB>;
+-			clocks = <&clk25m>;
+-			clock-names = "ref";
+-		};
+-	};
+-
+ MediaTek UART based Bluetooth Devices
+ ==================================
+ 
+-- 
+2.35.3
+
 
