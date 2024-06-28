@@ -4,49 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D90EDC2BD09
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jun 2024 13:22:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0355FC3064D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jun 2024 13:40:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BTwoP6PxEo/nJFOswKuPAFt6lg/7ghRcVWvPL8BUIkI=; b=tb0+uatc6oNxM4kmnRv5zOedAe
-	xZZb9iFyo5dEM0AmKN4GOZlPIvDf1aJ5jQEWgDggBVL+pcwzsz2HsWS7vUtoVxlp8zmnbrmUs9Imv
-	nPtmOO5IfmOq3PBY28nBzAff/4cf/rOUMJgQljV+YCHZrOsMi4g5LLZT3FcrLxxWO0Zlm6SLpv93W
-	GmBbPXWrnDLfv9qydwvUwNs2LtijPFLD6PYcw/rdvmzarCErYLYUoDAWZZsX7/e5bW4xsYqgASmg4
-	qaKDq3J8l340D6+opCMU6tJEf82aqcfppBramXmuZ92mR5mivNNuhv+pwrOeAD4Dw8dfhv2x1skGF
-	8kLapFlA==;
+	bh=UWPWV5xOWPvWRohvXp3jsd5OyLdElhEyWkgsMgthC0s=; b=Hw/PW7JKIzZkBuiNoHfI8/Onjd
+	fnZa6SGxBUn1Rx1SenmNZB8DkeEOP90hnoKeteVIjvaYsN3Fz9B41yX3aNC8RUJhMXu8foUOnU51X
+	Q+v3EFm/SL63GZOdQL4H0q+BXaSOJXuxbjUayGzP6USy8MvOtYqZLgtOy2pavNDth9BpaCgXweTz1
+	Yjj15B0vUbU+PYLmzcNmi1bloagb7WVRtbMSHKm4nl1zpXqVQQ14+p3s6p3us+NaJG7yCkyJK7Fgv
+	o061mkabFVIe5tbCGLBr5f8SMjuB5NSRvy5NkUvO7mlpm9ST2g9nZ//lDVcH5mHbigIC5btxPGlC8
+	dBQMiLsA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sNBYJ-0000000Dnsk-2JMQ;
-	Fri, 28 Jun 2024 13:22:11 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1sNBqB-0000000Dqiu-3k5W;
+	Fri, 28 Jun 2024 13:40:39 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sNBY6-0000000DnpY-2q5Q;
-	Fri, 28 Jun 2024 13:22:00 +0000
+	id 1sNBq0-0000000Dqet-2q9T;
+	Fri, 28 Jun 2024 13:40:30 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 90AE0CE3C54;
-	Fri, 28 Jun 2024 13:21:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4BDA6C116B1;
-	Fri, 28 Jun 2024 13:21:54 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id D365F60C3D;
+	Fri, 28 Jun 2024 13:40:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 08C32C116B1;
+	Fri, 28 Jun 2024 13:40:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1719580914;
-	bh=PPl0qxtYFvi1BmoXCUmoLgHNajqluO7nw7b/m1VEMhw=;
+	s=k20201202; t=1719582025;
+	bh=UWPWV5xOWPvWRohvXp3jsd5OyLdElhEyWkgsMgthC0s=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=upOUmcoBY6HixvNf2J84E7Mzxhmxq//WOg+fdrACsPr91wNZCGWDTzKVwz7B0hL1f
-	 rLFshPsxlg5POkZOPQDTwM2/gAjBwCGdZIQomWzaUDaUY6QZbUY/8w0ub5h+O1Za/m
-	 uBMzJj1tepDHR/bRBJa2DyjBxMMxitkgPMxWfpN4ddMQu487ln9cNHKoeEFGDB52ZD
-	 mmpHgtFuEhO+TTgvVZvvDfiNyqoBArb5LOcvPWQaop8ucWM6lPWhkXelAuwBwv61eJ
-	 bAQngL6QEfxxC1qkFI7qUEx2XrNBKD2MvD+jI7gSXmWKXRstflr6cvFrAkhN6X5TMl
-	 GuLOk96PymQ9A==
-Date: Fri, 28 Jun 2024 15:21:51 +0200
+	b=qaAwq6zcOXnpgYUwN0NVIO0yqpZ0Zb5n2YZUgJX5BmAQYP2Cluav1xiJq0hZ1F060
+	 swoFvPvWsQ7X032KHtT6ExmTb2egebRNSVrf4Be3qEMXEjjOWdH0RacwDbG/wbJ/IL
+	 Lr5X0sHIKotDF4a8APUYV/YhbMEi97yJeuTM4Ndsjf4JMs3/HwJanR6v9/QibvkRsl
+	 44QEsuf0ytcePzl2v7ab0R9CGcp6eTRGf74VnAJH2ag50Yux/d5x/xrGpW/74HHWh3
+	 x7UXvQscwRb5ZzQo/H0341550qV2Cd13sb0hgnEiICw+icYbkcsRrPH5hsfSsGqiQB
+	 YLRRLIPVBVGow==
+Date: Fri, 28 Jun 2024 15:40:22 +0200
 From: "mripard@kernel.org" <mripard@kernel.org>
-To: Thierry Reding <thierry.reding@gmail.com>
-Cc: Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>, 
-	Jason-JH Lin =?utf-8?B?KOael+edv+elpSk=?= <Jason-JH.Lin@mediatek.com>, "daniel@ffwll.ch" <daniel@ffwll.ch>, 
-	"quic_vjitta@quicinc.com" <quic_vjitta@quicinc.com>, 
+To: Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>
+Cc: Jason-JH Lin =?utf-8?B?KOael+edv+elpSk=?= <Jason-JH.Lin@mediatek.com>, 
+	"daniel@ffwll.ch" <daniel@ffwll.ch>, "quic_vjitta@quicinc.com" <quic_vjitta@quicinc.com>, 
 	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>, "sumit.semwal@linaro.org" <sumit.semwal@linaro.org>, 
 	"conor+dt@kernel.org" <conor+dt@kernel.org>, "jkardatzke@google.com" <jkardatzke@google.com>, 
 	"krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>, "joakim.bech@linaro.org" <joakim.bech@linaro.org>, 
@@ -65,7 +64,7 @@ Cc: Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>,
 	Yong Wu =?utf-8?B?KOWQtOWLhyk=?= <Yong.Wu@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
 	"ppaalanen@gmail.com" <ppaalanen@gmail.com>
 Subject: Re: [PATCH v5 2/9] scatterlist: Add a flag for the restricted memory
-Message-ID: <20240628-hypnotic-kagu-of-hurricane-5fbc82@houat>
+Message-ID: <20240628-cuddly-brave-squid-e1cb22@houat>
 References: <cef8f87d-edab-41d8-8b95-f3fc39ad7f74@amd.com>
  <1050c44512374031d1349b5dced228d0efc3fbde.camel@mediatek.com>
  <3104b765-5666-44e4-8788-f1b1b296fe17@amd.com>
@@ -75,15 +74,15 @@ References: <cef8f87d-edab-41d8-8b95-f3fc39ad7f74@amd.com>
  <ae73a0203d6acf2878c9e3ae2d7554816b9c66ad.camel@mediatek.com>
  <5739abdb-0234-412a-9f25-49219411bbc6@amd.com>
  <20240627-impetuous-aboriginal-cougar-cdcbbf@houat>
- <w3xcvakoytubud6dw4wxr6ntbe6uvfrldihnd26vai6uyyto6j@vcq7gizxolag>
+ <304c9faa-5a9c-4520-a3d8-0818f76dd7c9@amd.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="ir35auanf2qnd4wc"
+	protocol="application/pgp-signature"; boundary="wmmpztlpkqqsn5hy"
 Content-Disposition: inline
-In-Reply-To: <w3xcvakoytubud6dw4wxr6ntbe6uvfrldihnd26vai6uyyto6j@vcq7gizxolag>
+In-Reply-To: <304c9faa-5a9c-4520-a3d8-0818f76dd7c9@amd.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240628_062159_104980_FC5544F8 
-X-CRM114-Status: GOOD (  58.38  )
+X-CRM114-CacheID: sfid-20240628_064028_858144_DF3064C1 
+X-CRM114-Status: GOOD (  34.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,61 +98,14 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---ir35auanf2qnd4wc
-Content-Type: text/plain; charset=utf-8
+--wmmpztlpkqqsn5hy
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Fri, Jun 28, 2024 at 01:47:01PM GMT, Thierry Reding wrote:
-> On Thu, Jun 27, 2024 at 04:40:02PM GMT, mripard@kernel.org wrote:
-> > On Thu, Jun 27, 2024 at 08:57:40AM GMT, Christian K=C3=B6nig wrote:
-> > > Am 27.06.24 um 05:21 schrieb Jason-JH Lin (=E6=9E=97=E7=9D=BF=E7=A5=
-=A5):
-> > > >=20
-> > > > On Wed, 2024-06-26 at 19:56 +0200, Daniel Vetter wrote:
-> > > > >   > External email : Please do not click links or open attachments
-> > > > until
-> > > > > you have verified the sender or the content.
-> > > > >  On Wed, Jun 26, 2024 at 12:49:02PM +0200, Christian K=C3=B6nig w=
-rote:
-> > > > > > Am 26.06.24 um 10:05 schrieb Jason-JH Lin (=E6=9E=97=E7=9D=BF=
-=E7=A5=A5):
-> > > > > > > > > I think I have the same problem as the ECC_FLAG mention i=
-n:
-> > > > > > > > > > > > https://lore.kernel.org/linux-media/20240515-dma-bu=
-f-ecc-heap-v1-0-54cbbd049511@kernel.org/
-> > > > > > > > > > > I think it would be better to have the user configura=
-ble
-> > > > > private
-> > > > > > > > > information in dma-buf, so all the drivers who have the s=
-ame
-> > > > > > > > > requirement can get their private information from dma-buf
-> > > > > directly
-> > > > > > > > > and
-> > > > > > > > > no need to change or add the interface.
-> > > > > > > > > > > What's your opinion in this point?
-> > > > > > > >  > Well of hand I don't see the need for that.
-> > > > > > > > > What happens if you get a non-secure buffer imported in y=
-our
-> > > > > secure
-> > > > > > > > device?
-> > > > > > > > > > We use the same mediatek-drm driver for secure and
-> > > > non-secure
-> > > > > buffer.
-> > > > > > > If non-secure buffer imported to mediatek-drm driver, it's go=
- to
-> > > > > the
-> > > > > > > normal flow with normal hardware settings.
-> > > > > > > > > > We use different configurations to make hardware have
-> > > > different
-> > > > > > > permission to access the buffer it should access.
-> > > > > > > > > > So if we can't get the information of "the buffer is
-> > > > allocated
-> > > > > from
-> > > > > > > restricted_mtk_cma" when importing the buffer into the driver=
-, we
-> > > > > won't
-> > > > > > > be able to configure the hardware correctly.
+On Fri, Jun 28, 2024 at 01:42:27PM GMT, Christian K=F6nig wrote:
+> Am 27.06.24 um 16:40 schrieb mripard@kernel.org:
+> > [SNIP]
 > > > > > > > > Why can't you get this information from userspace?
 > > > > > > Same reason amd and i915/xe also pass this around internally in=
  the
@@ -161,8 +113,7 @@ our
  the
 > > > > > same
 > > > > > driver so this is easy.
-> > > > >
-> > >=20
+> > > > >=20
 > > > The reason I ask is that encryption here looks just like another para=
 meter
 > > > for the buffer, e.g. like format, stride, tilling etc..
@@ -180,7 +131,6 @@ meter
 > > > At least that's my 10 mile high view, maybe I'm missing some extensiv=
 e key
 > > > exchange or something like that.
-> >=20
 > > That doesn't work in all cases, unfortunately.
 > >=20
 > > If you're doing secure video playback, the firmware is typically in
@@ -188,67 +138,51 @@ e key
 > > aren't accessible by the CPU (or at least, not at the execution level
 > > Linux runs with).
 >=20
-> Can you clarify which firmware you're talking about? Is this secure
-> firmware, or firmware running on the video decoding hardware?
-
-Secure firmware
+> Yeah, that's perfectly fine. At least the AMD encryption solution
+> works exactly like that as well.
 
 > > So nobody can map that buffer, and the firmware driver is the one who
-> > knows that this buffer cannot be accessed by anyone. Putting this on the
-> > userspace to know would be pretty weird, and wouldn't solve the case
-> > where the kernel would try to map it.
+> > knows that this buffer cannot be accessed by anyone.
 >=20
-> Doesn't userspace need to know from the start whether it's trying to do
-> secure playback or not?
+> On most hw I know you can actually map that buffer, it's just that the
+> CPU sees only garbage in it because you don't have the necessary
+> decryption keys around.
 
-It does, but it won't know the capabilities of the buffer it gets back
-=66rom the secure firmware.
+So you can always map and access the buffer, but only if you're in the
+right "context" the content would be correct?
 
-> Typically this involves more than just the decoding part. You'd
-> typically set up things like HDCP as part of the process, so userspace
-> probably already does know that the buffers being passed around are
-> protected.
+I think that part is pretty different than what ARM SoCs are doing,
+where they would typically prevent any CPU access and fault on access.
+
+> > Putting this on the userspace to know would be pretty weird, and
+> > wouldn't solve the case where the kernel would try to map it.
 >=20
-> Also, the kernel shouldn't really be mapping these buffers unless
-> explicitly told to. In most cases you also wouldn't want the kernel to
-> map these kinds of buffers, right? Are there any specific cases where
-> you expect the kernel to need to map these?
+> But that's exactly how all other implementations work as far as I know. I
+> mean what do you do if the kernel maps the encrypted buffer?
 >=20
-> I've been looking at this on the Tegra side recently and the way it
-> works on these chips is that you basically get an opaque carveout region
-> that has been locked down by secure firmware or early bootloaders, so
-> only certain hardware blocks can access it. We can allocate from that
-> carveout and then pass the buffers around.
+> On AMD we also block userspace and kernel CPU accesses, but that is only
+> done to make it easier to find bugs not for correctness.
+>=20
+> And userspace absolutely needs to be aware that a buffer is encrypted, ca=
+use
+> otherwise it could potentially try to access it with the CPU.
 
-So you allocate both the input and output buffers (and from different
-regions) from the application, and pass both to the secure firmware?
-
-Yeah, I guess that would work then.
-
-> It may be possible to use these protected carveout regions exclusively
-> from the DRM/KMS driver and share them with multimedia engines via DMA-
-> BUF, but I've also been looking into perhaps using DMA-BUF heaps to
-> expose the carveout, which would make this a bit more flexible and allow
-> either userspace to allocate the buffers or have multiple kernel drivers
-> share the carveout via the DMA-BUF heap. Though the latter would require
-> that there be in-kernel APIs for heaps, so not too sure about that yet.
-
-What would be the advantage of using a heap compared to having all these
-devices in DT use the reserved-memory property and point to that
-carveout? It should already work today.
+I absolutely agree. I guess our discussion is whether it's something
+that should be implicit and understood by applications, or if it should
+be explicit and discoverable.
 
 Maxime
 
---ir35auanf2qnd4wc
+--wmmpztlpkqqsn5hy
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCZn647wAKCRDj7w1vZxhR
-xdb0AP4vIewUWNvNfN0kmPcRToWWU+m8Q7VUsfaTb0aPJ7P/HgD/QFS8YEBbSA39
-ja86zyiJ8N2BhGtMRLQtNEa2iN4nDgE=
-=Mqor
+iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCZn69RgAKCRDj7w1vZxhR
+xW5vAQD0vblFH/q1MbM1OY/GsWrJEN+h1Zy8F/ROqZxXJoSP4wEA7MhRTaakqRAd
+6+tOX4+3tzAEZ0WOa+EHzLr+lzLYvQ0=
+=ivoa
 -----END PGP SIGNATURE-----
 
---ir35auanf2qnd4wc--
+--wmmpztlpkqqsn5hy--
 
