@@ -4,72 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07E4AC3065A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jun 2024 20:17:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BD4AC3065A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jun 2024 20:23:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
 	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
 	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=m2vvGH+Z5PRv9C1/1Kg2WLGJOBKFCREheDNXNwXq490=; b=crrvCm8+3PPdp31yoVEy+rHRiC
-	9ql7CTDon/r5CLhDflZGpoRiLhkvNEU9gTgngziuNE/6cGDv4KLXd1In+Qt2aMiYnv+G8qFhVfjrm
-	umB00XrMTerJzCnTJUnfF+7l3Rm/Eqzq0MIgOp7VxKcjiGb5zeP0Qb6syhI2Fv/hVNoJN/Dshd8uQ
-	4khlqRpDhRUX+oxtm76gsg6n9+cgiDHeGJWaj3gQ+KpJ8gXxS5kWxouuOKoKVcyPzAeI8gsxIOgBn
-	yhPhRAwFBXJBeWv3GZFaFlNUTb1najTyAsSPYwhl1BPeAWGYnmWyU8GTJ39LPQgs4DNrC+DGozhS+
-	XPbYCH0g==;
+	bh=meF+jxyCw4OoAYyu1gwMI5pGdbLesBvTuciMbHzTey8=; b=ciDU/WFEH3c2W4i6rGLLkO/StU
+	G4YnVoJIfnfUzMGAQVNHcbgwXIZPPdfpUVYrmtPGI2UNmVphHRQh3TVzs+WyZRM0XLb+L9DvM1Vv6
+	MWMkJeXf6xJD/EJLmoquQoEcfMybiRhAbvH45KwjM/qPEXivGrcClZa/Mb+V9wKTANURpU8TZRlN6
+	f8MKkc3Z5midTXMFdbQ0nL2gPDB9O4sHFhaQ5btqFjmOfWsxmceS+HyykUFZD9oaQyXk1xmbQz0+g
+	LLnsO9RA39muytmpnEOu4wLfRrysXAFZIUXLa0pcb2gO01eQ6IpvAsa327h7jCdj0jpQnCWtuHPXK
+	ayo6r76g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sNI1m-0000000Eqez-28k4;
-	Fri, 28 Jun 2024 20:17:02 +0000
-Received: from mail-yw1-x1129.google.com ([2607:f8b0:4864:20::1129])
+	id 1sNI83-0000000ErP5-2mrw;
+	Fri, 28 Jun 2024 20:23:31 +0000
+Received: from mail-qv1-xf2c.google.com ([2607:f8b0:4864:20::f2c])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sNI1j-0000000Eqck-1VWe
+	id 1sNI80-0000000ErO5-43Xk
 	for linux-mediatek@lists.infradead.org;
-	Fri, 28 Jun 2024 20:17:01 +0000
-Received: by mail-yw1-x1129.google.com with SMTP id 00721157ae682-64a6bf15db9so10004237b3.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 28 Jun 2024 13:16:58 -0700 (PDT)
+	Fri, 28 Jun 2024 20:23:30 +0000
+Received: by mail-qv1-xf2c.google.com with SMTP id 6a1803df08f44-6b4febddfd3so5507816d6.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 28 Jun 2024 13:23:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1719605818; x=1720210618; darn=lists.infradead.org;
+        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1719606207; x=1720211007; darn=lists.infradead.org;
         h=mime-version:user-agent:content-transfer-encoding:references
          :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
          :date:message-id:reply-to;
-        bh=m2vvGH+Z5PRv9C1/1Kg2WLGJOBKFCREheDNXNwXq490=;
-        b=FpdajtecRAPnjWSFEL1hB99hsVcbsKH/4r69TkfIoE/InGm5Yqwf1NIyq5X/p8VBvn
-         7W0KxWbhD78Y7B2B0n+IlB7nikPQZ/9p5Ai5U2dbh45xGYgsFdPrcKaiy/MM/h/c9LsO
-         ueqo9QV9YDHV+6uzgBaSYD5PObKBpVtTh3FtPnmHgdoEfKI47Hzpbr6tbwV3GnFX98UG
-         kpeaxU38KMClxlYl297DKvg2Ndxh1tGwM9VVHXduw7S6+gTaPjFb5oiIVC7kzsDV5E1h
-         33Mv+nY5APefvc/FvrZwQ7CrRqQoSN0A7n7dnaEBv4fjSJNILSEqBQIhYhYEkFaXHlHK
-         9UJA==
+        bh=meF+jxyCw4OoAYyu1gwMI5pGdbLesBvTuciMbHzTey8=;
+        b=aK3Di7Gh2lp/04OFeaOOpDWlQAzbODk2ThNsu+tPE95mRNrZSyOMUfH8J3vdZifiUz
+         70Zb9fsfLtV/HYf34esnRPipHK3bu3V206wU2CeqYUGZWKw/AV+/TRxMFQKS3FEZM6NZ
+         dPXGF69c6hlkGR0f3qgLTX+Lf3axDpbLfR8eP1lSfgojQMlsoPm5b1Daq+Dof1ukvpSY
+         HC340C+T9ALJb7gcArIVqf6kdAgT8sUFVKUL95irdcP8lWS9IZI2w6tM9KSKrH/oOcI5
+         qqCvOlfFCMhgKxGO7VmKWjOk54k4rfDeJznVQLxrunZgKoYEd05tiGQS3o7afYaGikEw
+         pDbQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1719605818; x=1720210618;
+        d=1e100.net; s=20230601; t=1719606207; x=1720211007;
         h=mime-version:user-agent:content-transfer-encoding:references
          :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=m2vvGH+Z5PRv9C1/1Kg2WLGJOBKFCREheDNXNwXq490=;
-        b=fXMv+jHgoaz2bKQC/t43JshEYf3c9cOR6Y77Eaid43/daEez+SuyfzALRu6LRO/kut
-         UwGghG3iHqaQXMx8vHl82u0XjKT76eQ6Fz1W2ET7c6a88lZoiYSGEC+gJLwytq1s+RbA
-         1wlwTkKo7MXZvoATVRCY3W/Cx3dTfnixPpXOsAp3KZCSkbpmkQ80T+oX3gIEiID5N9Xr
-         BsKqUlDtPUWVoDaV6YtT8CiOb7+cdKi1T3qiTqJmFiNES3/wNni5D0SfBvLPLCFnNOvC
-         0PVSiBOLOV9U5bP3k9QZeMMuJgoMqQjXehvRycvFct0SR8TCsfV2/CXeN8ClrX6nPrjb
-         Ap9Q==
-X-Forwarded-Encrypted: i=1; AJvYcCVwaeMw8qbt7y+ZTVni7JFytbWZWP4daWgsPenNuS3G9UrbpZU9eHxGILdGZTvgZFYJsVs70oEiF91u6tKDEn/TT+SESquZ5aJ5EGY75OynbyKE
-X-Gm-Message-State: AOJu0Yx93UzyeSuaMRJdFUFdI96ZRKGmSFuSLk2vCjPYAQG+OESGAamK
-	XPMtsNGKjveQs+uivybyb8uT9wHh/9Vg16OyBUlyDowuzYSHNdhlwocbuikZ4ak=
-X-Google-Smtp-Source: AGHT+IHH8GNlM8rKewH+h4ANugMUQbUwWJEtQ5rC13yHwJFh9UDtqPw7nNyJ2Z5wwDX2U220J+AoVg==
-X-Received: by 2002:a05:690c:95d:b0:647:e079:da73 with SMTP id 00721157ae682-647e079db0bmr101713777b3.10.1719605817658;
-        Fri, 28 Jun 2024 13:16:57 -0700 (PDT)
+        bh=meF+jxyCw4OoAYyu1gwMI5pGdbLesBvTuciMbHzTey8=;
+        b=GM4yB619JZ8LIiBJVibbCjkDrIXlTU6HGaEuE1WFzclXziOorTO/NeaGFOEbnsBpzU
+         8dFmCythGlDmQlihXXogeRU0VLSR5MzJ5QaPXj+szRZOsJP+m2v+kUkL7dFg72xFRk08
+         qMY+T5UVFRE5QqXpUU3B4+1xPE+kNiRcM/cX7/bRWOp3M9onAsCy8Rt0H4tuqgMNzCS8
+         9IswPKX4CKnUmy7hCWOUKxM/yhaxqVhzczVxsz8F0vYdp3uiemb7iBFEVRxV/Q+CeQtD
+         AE/vJ3+QQJHWny4RUFH7vWON4yJK1aeyAVfB4y/mrvz99BI5toxEVr0ARBRrdTYjFgQu
+         TL3w==
+X-Forwarded-Encrypted: i=1; AJvYcCXyWJ9h16wnjvTNRrAJSc2SLPzHknmcw78fZBxDG7wXlpJOtZfjLrYFcEOD2gQKh7SnIimZ0+FyScgcarvs25DADkUM+gZMFSLBHtrOwRL3fh7r
+X-Gm-Message-State: AOJu0YzAEAYst9imN3kf6OeEG91D9laeYdddfz1TOnvCraSXq2ww7hua
+	u44sZIh9fD7GChlMTacMYnMSxfulj8hNj4ukwPv5UUAlYLdeZgrdKES+leUuscs=
+X-Google-Smtp-Source: AGHT+IHtfw7Xq3Cf0WFYd9L6i5fVpDUyYC/Xic5L6R5XMrTyAZAROOc6sOeuO8nND/pHTXuCm/Q3Pg==
+X-Received: by 2002:a05:6214:27e9:b0:6b5:98aa:8b1b with SMTP id 6a1803df08f44-6b598aa8c3amr67210986d6.50.1719606207610;
+        Fri, 28 Jun 2024 13:23:27 -0700 (PDT)
 Received: from nicolas-tpx395.mtl.collabora.ca (mtl.collabora.ca. [66.171.169.34])
-        by smtp.gmail.com with ESMTPSA id 00721157ae682-64a9c4fdb78sm4445677b3.145.2024.06.28.13.16.55
+        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-6b59e6146bcsm10736956d6.120.2024.06.28.13.23.25
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 28 Jun 2024 13:16:57 -0700 (PDT)
-Message-ID: <183f2ae09c2dbcf687e69cd13a9d258fd24fd80c.camel@ndufresne.ca>
+        Fri, 28 Jun 2024 13:23:27 -0700 (PDT)
+Message-ID: <ee405147d5e9826f1b2ad7d7c3bdb2fb745de420.camel@ndufresne.ca>
 Subject: Re: [PATCH v5 2/9] scatterlist: Add a flag for the restricted memory
 From: Nicolas Dufresne <nicolas@ndufresne.ca>
-To: Christian =?ISO-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>, 
- Jason-JH Lin =?UTF-8?Q?=28=E6=9E=97=E7=9D=BF=E7=A5=A5=29?=
-	 <Jason-JH.Lin@mediatek.com>, "daniel@ffwll.ch" <daniel@ffwll.ch>
-Cc: "quic_vjitta@quicinc.com" <quic_vjitta@quicinc.com>, 
+To: "mripard@kernel.org" <mripard@kernel.org>, Christian
+ =?ISO-8859-1?Q?K=F6nig?=
+	 <christian.koenig@amd.com>
+Cc: Jason-JH Lin =?UTF-8?Q?=28=E6=9E=97=E7=9D=BF=E7=A5=A5=29?=
+ <Jason-JH.Lin@mediatek.com>, "daniel@ffwll.ch" <daniel@ffwll.ch>, 
+ "quic_vjitta@quicinc.com" <quic_vjitta@quicinc.com>,
  "angelogioacchino.delregno@collabora.com"
  <angelogioacchino.delregno@collabora.com>, "sumit.semwal@linaro.org"
  <sumit.semwal@linaro.org>, "conor+dt@kernel.org" <conor+dt@kernel.org>, 
@@ -95,16 +97,13 @@ Cc: "quic_vjitta@quicinc.com" <quic_vjitta@quicinc.com>,
  <devicetree@vger.kernel.org>, "tjmercier@google.com"
  <tjmercier@google.com>,  "jstultz@google.com" <jstultz@google.com>,
  "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>, "mripard@kernel.org"
- <mripard@kernel.org>, "robin.murphy@arm.com" <robin.murphy@arm.com>, Yong
- Wu =?UTF-8?Q?=28=E5=90=B4=E5=8B=87=29?= <Yong.Wu@mediatek.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "ppaalanen@gmail.com" <ppaalanen@gmail.com>
-Date: Fri, 28 Jun 2024 16:16:55 -0400
-In-Reply-To: <5739abdb-0234-412a-9f25-49219411bbc6@amd.com>
-References: <20240515112308.10171-1-yong.wu@mediatek.com>
-	 <20240515112308.10171-3-yong.wu@mediatek.com>
-	 <98721904-003d-4d0d-8cfe-1cecdd59ce01@amd.com>
+ <linux-arm-kernel@lists.infradead.org>, "robin.murphy@arm.com"
+ <robin.murphy@arm.com>, Yong Wu =?UTF-8?Q?=28=E5=90=B4=E5=8B=87=29?=
+ <Yong.Wu@mediatek.com>, "linux-kernel@vger.kernel.org"
+ <linux-kernel@vger.kernel.org>, "ppaalanen@gmail.com" <ppaalanen@gmail.com>
+Date: Fri, 28 Jun 2024 16:23:25 -0400
+In-Reply-To: <20240627-impetuous-aboriginal-cougar-cdcbbf@houat>
+References: <98721904-003d-4d0d-8cfe-1cecdd59ce01@amd.com>
 	 <779ce30a657754ff945ebd32b66e1c644635e84d.camel@mediatek.com>
 	 <cef8f87d-edab-41d8-8b95-f3fc39ad7f74@amd.com>
 	 <1050c44512374031d1349b5dced228d0efc3fbde.camel@mediatek.com>
@@ -114,13 +113,14 @@ References: <20240515112308.10171-1-yong.wu@mediatek.com>
 	 <ZnxWWtdShekGSUif@phenom.ffwll.local>
 	 <ae73a0203d6acf2878c9e3ae2d7554816b9c66ad.camel@mediatek.com>
 	 <5739abdb-0234-412a-9f25-49219411bbc6@amd.com>
+	 <20240627-impetuous-aboriginal-cougar-cdcbbf@houat>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 User-Agent: Evolution 3.52.2 (3.52.2-1.fc40) 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240628_131659_650932_DB3CBBB5 
-X-CRM114-Status: GOOD (  50.85  )
+X-CRM114-CacheID: sfid-20240628_132329_034408_432A781E 
+X-CRM114-Status: GOOD (  17.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -135,168 +135,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Christian,
+Hi,
 
-Le jeudi 27 juin 2024 =C3=A0 08:57 +0200, Christian K=C3=B6nig a =C3=A9crit=
+Le jeudi 27 juin 2024 =C3=A0 16:40 +0200, mripard@kernel.org a =C3=A9crit=
 =C2=A0:
-> Am 27.06.24 um 05:21 schrieb Jason-JH Lin (=E6=9E=97=E7=9D=BF=E7=A5=A5):
+> > You can trivially say during use hey this buffer is encrypted.
 > >=20
-> > On Wed, 2024-06-26 at 19:56 +0200, Daniel Vetter wrote:
-> > >  =20
-> > > External email : Please do not click links or open attachments until
-> > > you have verified the sender or the content.
-> > >  On Wed, Jun 26, 2024 at 12:49:02PM +0200, Christian K=C3=B6nig wrote=
-:
-> > > > Am 26.06.24 um 10:05 schrieb Jason-JH Lin (=E6=9E=97=E7=9D=BF=E7=A5=
-=A5):
-> > > > > > > I think I have the same problem as the ECC_FLAG mention in:
-> > > > > > > > >=20
-> > > https://lore.kernel.org/linux-media/20240515-dma-buf-ecc-heap-v1-0-54=
-cbbd049511@kernel.org/
-> > > > > > > > > I think it would be better to have the user configurable
-> > > private
-> > > > > > > information in dma-buf, so all the drivers who have the same
-> > > > > > > requirement can get their private information from dma-buf
-> > > directly
-> > > > > > > and
-> > > > > > > no need to change or add the interface.
-> > > > > > > > > What's your opinion in this point?
-> > > > > >  > Well of hand I don't see the need for that.
-> > > > > > > What happens if you get a non-secure buffer imported in your
-> > > secure
-> > > > > > device?
-> > > > >=20
-> > > > > We use the same mediatek-drm driver for secure and non-secure
-> > > buffer.
-> > > > > If non-secure buffer imported to mediatek-drm driver, it's go to
-> > > the
-> > > > > normal flow with normal hardware settings.
-> > > > >=20
-> > > > > We use different configurations to make hardware have different
-> > > > > permission to access the buffer it should access.
-> > > > >=20
-> > > > > So if we can't get the information of "the buffer is allocated
-> > > from
-> > > > > restricted_mtk_cma" when importing the buffer into the driver, we
-> > > won't
-> > > > > be able to configure the hardware correctly.
-> > > >=20
-> > > > Why can't you get this information from userspace?
-> > >=20
-> > > Same reason amd and i915/xe also pass this around internally in the
-> > > kernel, it's just that for those gpus the render and kms node are the
-> > > same
-> > > driver so this is easy.
-> > >=20
+> > At least that's my 10 mile high view, maybe I'm missing some extensive =
+key
+> > exchange or something like that.
 >=20
-> The reason I ask is that encryption here looks just like another=20
-> parameter for the buffer, e.g. like format, stride, tilling etc..
+> That doesn't work in all cases, unfortunately.
+>=20
+> If you're doing secure video playback, the firmware is typically in
+> charge of the frame decryption/decoding, and you'd get dma-buf back that
+> aren't accessible by the CPU (or at least, not at the execution level
+> Linux runs with).
+>=20
+> So nobody can map that buffer, and the firmware driver is the one who
+> knows that this buffer cannot be accessed by anyone. Putting this on the
+> userspace to know would be pretty weird, and wouldn't solve the case
+> where the kernel would try to map it.
 
-I'm mostly a reader of the thread here, but I'd like to avoid basic mistake=
-s.
-The buffer in question are "protected", meaning that the CPU HW does not ha=
-ve
-access to the underlying pages (or zone in the case of Meditatek).
+Userspace will be the one calling into the CDM TF-A to get the bitstream bu=
+ffer
+to be decrypted, not the firmware. The encrypted buffers are not using
+restricted memory. Userspace is also responsible for calling into the MTK
+restricted heap to allocate the destination buffer (on other platform it co=
+uld
+be CMA heaps + TF-A call to restrict the allocated memory, I've seen some
+discussions related to this, but its not possible on Mediatek HW).
 
-This is different from encrypted buffers, which don't need this level of
-protection, as without the security key to decrypt them, their content is c=
-lose
-to random data.
-
->=20
-> So instead of this during buffer import:
->=20
-> mtk_gem->secure =3D (!strncmp(attach->dmabuf->exp_name, "restricted", 10)=
-);
-> mtk_gem->dma_addr =3D sg_dma_address(sg->sgl);
-> mtk_gem->size =3D attach->dmabuf->size;
-> mtk_gem->sg =3D sg;
->=20
-> You can trivially say during use hey this buffer is encrypted.
->=20
-> At least that's my 10 mile high view, maybe I'm missing some extensive=
-=20
-> key exchange or something like that.
-
-If we take secure video path as an example, in the context of digital right
-management, the handling of user session, retrieval of the device specific =
-"key"
-is entirely something for userspace to handle and the kernel have no busine=
-ss
-into that. As long as the data is encrypted, its safe to carry around like =
-any
-other buffers.
-
-It is only once decryption (usally done by a TF-A) that restricted memory s=
-tart
-being used. Initially in the form of a compressed video stream, and eventua=
-lly
-in the format of raw images.
-
-> >  =20
-> > > But on arm you have split designs everywhere and dma-buf
-> > > import/export, so
-> > > something else is needed. And neither current kms uapi nor
-> > > protocols/extensions have provisions for this (afaik) because it
-> > > works on
-> > > the big gpus, and on android it's just hacked up with backchannels.
-> > >=20
-> > > So yeah essentially I think we probably need something like this, as
-> > > much
-> > > as it sucks. I see it somewhat similar to handling pcip2pdma
-> > > limitations
-> > > in the kernel too.
-> > >=20
-> > > Not sure where/how it should be handled though, and maybe I've missed
-> > > something around protocols, in which case I guess we should add some
-> > > secure buffer flags to the ADDFB2 ioctl.
-> >=20
-> > Thanks for your hint, I'll try to add the secure flag to the ADDFB2
-> > ioctl. If it works, I'll send the patch.
->=20
-> Yeah, exactly what I would suggest as well.
->=20
-> I'm not an expert for that part, but as far as I know we already have=20
-> bunch of device specific tilling flags in there.
->=20
-> Adding an MTK_ENCRYPTED flag should be trivial.
-
-Just to be clear, my comment was just a concept correction, I also think it=
-s
-nice to give a ADDFB2 flag a try, from my userspace experience, this is an =
-easy
-place to provide this type of information. Also, the V4L2 proposal for the =
-same
-endup with a flag at during buffer queue configuration, which is pretty clo=
-se.
+I think its fair to assume that userspace always know which buffers are
+restricted or not in the SVP process.
 
 Nicolas
-
->=20
-> Regards,
-> Christian.
->=20
-> >=20
-> > Regards,
-> > Jason-JH.Lin
-> >=20
-> > > -Sima
-> >=20
-> > ************* MEDIATEK Confidentiality Notice ********************
-> > The information contained in this e-mail message (including any
-> > attachments) may be confidential, proprietary, privileged, or otherwise
-> > exempt from disclosure under applicable laws. It is intended to be
-> > conveyed only to the designated recipient(s). Any use, dissemination,
-> > distribution, printing, retaining or copying of this e-mail (including =
-its
-> > attachments) by unintended recipient(s) is strictly prohibited and may
-> > be unlawful. If you are not an intended recipient of this e-mail, or be=
-lieve
-> > that you have received this e-mail in error, please notify the sender
-> > immediately (by replying to this e-mail), delete any and all copies of
-> > this e-mail (including any attachments) from your system, and do not
-> > disclose the content of this e-mail to any other person. Thank you!
->=20
->=20
-
 
