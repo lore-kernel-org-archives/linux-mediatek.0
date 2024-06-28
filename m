@@ -4,79 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C54BFC30658
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jun 2024 19:27:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA89FC2BD09
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jun 2024 19:48:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=485Fk9bkb6KlofxU+R4jbvQ87vsY7/owh8sq1O1xVG0=; b=E6pq0mLvaF6dA4DtLF1yLIbXS6
-	0vLnwXI+I00dIa8wf9LREvfIg/43vCB5RibNX3UQvstoWnUFmX1kZWnfP4+cDd3yTQK0sb0BrGCN9
-	9wStQBt7wLmWEwaJLRTK/+9AMCzCMy+n0YV+rLKGhsEud0ERNU9Nth7JGT1RgqT7y3LNQ18PBhly3
-	Jv2B7iVye/xiNckjWCRrTdhhLuhnXhOsMEEeqtXiZ5TAf62bJlyB5edUV0t1HwsSnM/Onh6GV1RYk
-	EdEZeFp+lDWMuAcoxHhy3s2TxxYZJZXzD6nvGH2jt1ue9AA2Gwgd4vdpoYnNJ+5Pdd9y3ENIYohm6
-	xz02RwSw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=zBX3hAIQjLcOjmk2fTsZlzOlj6Qxo24lmH7dnAO0cr4=; b=1NVGWQ382KHzUjRAQhm5DskEGU
+	fdJuEJ+EjffbNW0u7H5GsnOZ5ic8chXNhmvSTKXFm6gHgU29bx4tM6vfoKpHPdU/VhqIa3KNdRHg5
+	oUUhouljcuMolx1QHuL9HgYplM2D0nIKE5NwTcq+cMQ4wCU4WfFQX9uej3RujLhK7cnsfIr9VLbhL
+	8mmYubuplH/O3ZxhHK0qPQaGK1GZxshSmGpVEuOlJpEW6fHJsCHs45ABn8/UgYw4vc4uWsUjG+cRz
+	NPf5iQHa2jHzwMq0zmV/jDVU1Uj1BFdhOPt+rGZgs4AtwUkpUie0GQbZZIKZmfnT3XAdbEIsRgWye
+	zebVaF9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sNHFQ-0000000Ek0i-24He;
-	Fri, 28 Jun 2024 19:27:04 +0000
-Received: from 009.lax.mailroute.net ([199.89.1.12])
+	id 1sNHaN-0000000En1f-24Ov;
+	Fri, 28 Jun 2024 19:48:43 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sNHFO-0000000Ejzv-16FP
-	for linux-mediatek@lists.infradead.org;
-	Fri, 28 Jun 2024 19:27:03 +0000
-Received: from localhost (localhost [127.0.0.1])
-	by 009.lax.mailroute.net (Postfix) with ESMTP id 4W9ln13zVjzlnNry;
-	Fri, 28 Jun 2024 19:27:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
-	content-transfer-encoding:content-type:content-type:in-reply-to
-	:from:from:content-language:references:subject:subject
-	:user-agent:mime-version:date:date:message-id:received:received;
-	 s=mr01; t=1719602816; x=1722194817; bh=485Fk9bkb6KlofxU+R4jbvQ8
-	7vsY7/owh8sq1O1xVG0=; b=CSw6V+FnF1T9nPtu9cz4hErzJc5YB86TJltQ3YOL
-	QepTaCdpERfk51mQKuWpzkI0Yhn3mGlTQIZITvY7vvyWhIue38OmdBJZVKEGbatz
-	k5sUxj4AEaOB15PNMRmWx+aRoPqUOq4f3qa0o/l/CSRkU8Oz2ZqNwYzpiotZKE4+
-	TDFjXaEFGcSZOrtgJ74fShgu9+50xxxVkRQMyysIqSJnN/Ah3y8wYosi7uoEaFuf
-	PgbKKYBsKtzC/V/bgYh6xRp8d0Sx2uhNKoMbbLz8u5zEu/MawqFWQb3oq6ndI+KH
-	6A61toxxEz/VrIek/4KPGykWsm2fge2q90ZeNJoxBowGRA==
-X-Virus-Scanned: by MailRoute
-Received: from 009.lax.mailroute.net ([127.0.0.1])
- by localhost (009.lax [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
- id qVxaLc59fd0F; Fri, 28 Jun 2024 19:26:56 +0000 (UTC)
-Received: from [192.168.50.14] (c-73-231-117-72.hsd1.ca.comcast.net [73.231.117.72])
+	id 1sNHaD-0000000En0M-2Zqq;
+	Fri, 28 Jun 2024 19:48:35 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1719604111;
+	bh=paO3Q85MhNCJaXdzxnipweZ72m9WbwKAh6xyx8Yrj2k=;
+	h=From:Date:Subject:To:Cc:From;
+	b=VdelCPIu23TTul7DOTm/ObQnaDsLxrwtLUVnUecVFnTMw5MGFAapqd4180iLJkYVz
+	 DfY8bCjNYRsxSgw+71MAZSoDxMBhcYv7foDLTIMckQJq2kCk4HCugpc8lPyx7c9dMY
+	 n8ft00UMEOsFmwU7U7qrAAHxfZ0BI4+Zqn7oTxxksN05HylSlEpIWGqWvcrhllwBQu
+	 p+pPsRp80ygruO/hDwASjbV5ciCCI+wxRca00g4ovQtbVYJDAtsNAAwcH1VJuLvyYm
+	 Z0j0B1cDweXmA4hsq54tSlqoNnJ/7N/NLL0GX0mjpuRD0NKIFN7XbdK1WLD404EwGI
+	 sjJpSDjzDi78Q==
+Received: from [192.168.1.175] (zone.collabora.co.uk [167.235.23.81])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: bvanassche@acm.org)
-	by 009.lax.mailroute.net (Postfix) with ESMTPSA id 4W9lmp29p4zlnQjf;
-	Fri, 28 Jun 2024 19:26:49 +0000 (UTC)
-Message-ID: <292a598b-6cc8-48b5-bf1f-17a27ba8c57a@acm.org>
-Date: Fri, 28 Jun 2024 12:26:47 -0700
+	(Authenticated sender: nfraprado)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id A0F37378219E;
+	Fri, 28 Jun 2024 19:48:29 +0000 (UTC)
+From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+Date: Fri, 28 Jun 2024 15:48:23 -0400
+Subject: [PATCH] cpufreq: mediatek: Use dev_err_probe in every error path
+ in probe
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 2/2] ufs: core: fix ufshcd_abort_one racing issue
-To: peter.wang@mediatek.com, linux-scsi@vger.kernel.org,
- martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com,
- jejb@linux.ibm.com
-Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
- chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
- chaotian.jing@mediatek.com, jiajie.hao@mediatek.com, powen.kao@mediatek.com,
- qilin.tan@mediatek.com, lin.gui@mediatek.com, tun-yu.yu@mediatek.com,
- eddie.huang@mediatek.com, naomi.chu@mediatek.com, chu.stanley@gmail.com,
- stable@vger.kernel.org
-References: <20240628070030.30929-1-peter.wang@mediatek.com>
- <20240628070030.30929-3-peter.wang@mediatek.com>
-Content-Language: en-US
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <20240628070030.30929-3-peter.wang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Message-Id: <20240628-mtk-cpufreq-dvfs-fail-init-err-v1-1-19c55db23011@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAIYTf2YC/x3NQQqDMBBA0avIrB2IgyTQq4iLkEzaoW3UiQZBv
+ HtDl2/z/wWFVbjAo7tAuUqRJTcMfQfh5fOTUWIzkKHRWHL43d8Y1iMpbxhrKpi8fFCy7MiqaLy
+ 1FLyjyAQtsionOf+Dab7vHxN1UZdwAAAA
+To: "Rafael J. Wysocki" <rafael@kernel.org>, 
+ Viresh Kumar <viresh.kumar@linaro.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: kernel@collabora.com, linux-pm@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, 
+ =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+X-Mailer: b4 0.13.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240628_122702_343336_84A586D9 
-X-CRM114-Status: UNSURE (   5.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240628_124833_829322_36A9F1A2 
+X-CRM114-Status: GOOD (  14.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,14 +80,201 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 6/28/24 12:00 AM, peter.wang@mediatek.com wrote:
-> When ufshcd_abort_one racing with complete ISR,
-> the completed tag of request's mq_hctx pointer will set NULL by ISR.
-> Same as previous patch race condition.
-> Return success when request is completed by ISR beacuse ufshcd_abort_one
-> dose't need do anything.
+Use the dev_err_probe() helper to log the errors on every error path in
+the probe function and its sub-functions. This includes
+* adding error messages where there was none
+* converting over dev_err/dev_warn
+* removing the top-level error message after mtk_cpu_dvfs_info_init() is
+  called, since every error path inside that function already logs the
+  error reason. This gets rid of the misleading error message when probe
+  is deferred:
 
-dose't -> doesn't. Anyway:
+    mtk-cpufreq mtk-cpufreq: failed to initialize dvfs info for cpu0
 
-Reviewed-by: Bart Van Assche <bvanassche@acm.org>
+Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+---
+ drivers/cpufreq/mediatek-cpufreq.c | 66 ++++++++++++++++++--------------------
+ 1 file changed, 31 insertions(+), 35 deletions(-)
+
+diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
+index 518606adf14e..b21425bb83be 100644
+--- a/drivers/cpufreq/mediatek-cpufreq.c
++++ b/drivers/cpufreq/mediatek-cpufreq.c
+@@ -390,28 +390,23 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
+ 	int ret;
+ 
+ 	cpu_dev = get_cpu_device(cpu);
+-	if (!cpu_dev) {
+-		dev_err(cpu_dev, "failed to get cpu%d device\n", cpu);
+-		return -ENODEV;
+-	}
++	if (!cpu_dev)
++		return dev_err_probe(cpu_dev, -ENODEV, "failed to get cpu%d device\n", cpu);
+ 	info->cpu_dev = cpu_dev;
+ 
+ 	info->ccifreq_bound = false;
+ 	if (info->soc_data->ccifreq_supported) {
+ 		info->cci_dev = of_get_cci(info->cpu_dev);
+-		if (IS_ERR(info->cci_dev)) {
+-			ret = PTR_ERR(info->cci_dev);
+-			dev_err(cpu_dev, "cpu%d: failed to get cci device\n", cpu);
+-			return -ENODEV;
+-		}
++		if (IS_ERR(info->cci_dev))
++			return dev_err_probe(cpu_dev, PTR_ERR(info->cci_dev),
++					     "cpu%d: failed to get cci device\n",
++					     cpu);
+ 	}
+ 
+ 	info->cpu_clk = clk_get(cpu_dev, "cpu");
+-	if (IS_ERR(info->cpu_clk)) {
+-		ret = PTR_ERR(info->cpu_clk);
+-		return dev_err_probe(cpu_dev, ret,
++	if (IS_ERR(info->cpu_clk))
++		return dev_err_probe(cpu_dev, PTR_ERR(info->cpu_clk),
+ 				     "cpu%d: failed to get cpu clk\n", cpu);
+-	}
+ 
+ 	info->inter_clk = clk_get(cpu_dev, "intermediate");
+ 	if (IS_ERR(info->inter_clk)) {
+@@ -431,7 +426,7 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
+ 
+ 	ret = regulator_enable(info->proc_reg);
+ 	if (ret) {
+-		dev_warn(cpu_dev, "cpu%d: failed to enable vproc\n", cpu);
++		dev_err_probe(cpu_dev, ret, "cpu%d: failed to enable vproc\n", cpu);
+ 		goto out_free_proc_reg;
+ 	}
+ 
+@@ -439,14 +434,17 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
+ 	info->sram_reg = regulator_get_optional(cpu_dev, "sram");
+ 	if (IS_ERR(info->sram_reg)) {
+ 		ret = PTR_ERR(info->sram_reg);
+-		if (ret == -EPROBE_DEFER)
++		if (ret == -EPROBE_DEFER) {
++			dev_err_probe(cpu_dev, ret,
++				      "cpu%d: Failed to get sram regulator\n", cpu);
+ 			goto out_disable_proc_reg;
++		}
+ 
+ 		info->sram_reg = NULL;
+ 	} else {
+ 		ret = regulator_enable(info->sram_reg);
+ 		if (ret) {
+-			dev_warn(cpu_dev, "cpu%d: failed to enable vsram\n", cpu);
++			dev_err_probe(cpu_dev, ret, "cpu%d: failed to enable vsram\n", cpu);
+ 			goto out_free_sram_reg;
+ 		}
+ 	}
+@@ -454,31 +452,34 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
+ 	/* Get OPP-sharing information from "operating-points-v2" bindings */
+ 	ret = dev_pm_opp_of_get_sharing_cpus(cpu_dev, &info->cpus);
+ 	if (ret) {
+-		dev_err(cpu_dev,
++		dev_err_probe(cpu_dev, ret,
+ 			"cpu%d: failed to get OPP-sharing information\n", cpu);
+ 		goto out_disable_sram_reg;
+ 	}
+ 
+ 	ret = dev_pm_opp_of_cpumask_add_table(&info->cpus);
+ 	if (ret) {
+-		dev_warn(cpu_dev, "cpu%d: no OPP table\n", cpu);
++		dev_err_probe(cpu_dev, ret, "cpu%d: no OPP table\n", cpu);
+ 		goto out_disable_sram_reg;
+ 	}
+ 
+ 	ret = clk_prepare_enable(info->cpu_clk);
+-	if (ret)
++	if (ret) {
++		dev_err_probe(cpu_dev, ret, "cpu%d: failed to enable cpu clk\n", cpu);
+ 		goto out_free_opp_table;
++	}
+ 
+ 	ret = clk_prepare_enable(info->inter_clk);
+-	if (ret)
++	if (ret) {
++		dev_err_probe(cpu_dev, ret, "cpu%d: failed to enable inter clk\n", cpu);
+ 		goto out_disable_mux_clock;
++	}
+ 
+ 	if (info->soc_data->ccifreq_supported) {
+ 		info->vproc_on_boot = regulator_get_voltage(info->proc_reg);
+ 		if (info->vproc_on_boot < 0) {
+ 			ret = info->vproc_on_boot;
+-			dev_err(info->cpu_dev,
+-				"invalid Vproc value: %d\n", info->vproc_on_boot);
++			dev_err_probe(info->cpu_dev, ret, "invalid Vproc value\n");
+ 			goto out_disable_inter_clock;
+ 		}
+ 	}
+@@ -487,7 +488,7 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
+ 	rate = clk_get_rate(info->inter_clk);
+ 	opp = dev_pm_opp_find_freq_ceil(cpu_dev, &rate);
+ 	if (IS_ERR(opp)) {
+-		dev_err(cpu_dev, "cpu%d: failed to get intermediate opp\n", cpu);
++		dev_err_probe(cpu_dev, ret, "cpu%d: failed to get intermediate opp\n", cpu);
+ 		ret = PTR_ERR(opp);
+ 		goto out_disable_inter_clock;
+ 	}
+@@ -501,7 +502,7 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
+ 	info->opp_nb.notifier_call = mtk_cpufreq_opp_notifier;
+ 	ret = dev_pm_opp_register_notifier(cpu_dev, &info->opp_nb);
+ 	if (ret) {
+-		dev_err(cpu_dev, "cpu%d: failed to register opp notifier\n", cpu);
++		dev_err_probe(cpu_dev, ret, "cpu%d: failed to register opp notifier\n", cpu);
+ 		goto out_disable_inter_clock;
+ 	}
+ 
+@@ -629,11 +630,9 @@ static int mtk_cpufreq_probe(struct platform_device *pdev)
+ 	int cpu, ret;
+ 
+ 	data = dev_get_platdata(&pdev->dev);
+-	if (!data) {
+-		dev_err(&pdev->dev,
+-			"failed to get mtk cpufreq platform data\n");
+-		return -ENODEV;
+-	}
++	if (!data)
++		return dev_err_probe(&pdev->dev, -ENODEV,
++				     "failed to get mtk cpufreq platform data\n");
+ 
+ 	for_each_possible_cpu(cpu) {
+ 		info = mtk_cpu_dvfs_info_lookup(cpu);
+@@ -643,24 +642,21 @@ static int mtk_cpufreq_probe(struct platform_device *pdev)
+ 		info = devm_kzalloc(&pdev->dev, sizeof(*info), GFP_KERNEL);
+ 		if (!info) {
+ 			ret = -ENOMEM;
++			dev_err_probe(&pdev->dev, ret, "Failed to allocate dvfs_info\n");
+ 			goto release_dvfs_info_list;
+ 		}
+ 
+ 		info->soc_data = data;
+ 		ret = mtk_cpu_dvfs_info_init(info, cpu);
+-		if (ret) {
+-			dev_err(&pdev->dev,
+-				"failed to initialize dvfs info for cpu%d\n",
+-				cpu);
++		if (ret)
+ 			goto release_dvfs_info_list;
+-		}
+ 
+ 		list_add(&info->list_head, &dvfs_info_list);
+ 	}
+ 
+ 	ret = cpufreq_register_driver(&mtk_cpufreq_driver);
+ 	if (ret) {
+-		dev_err(&pdev->dev, "failed to register mtk cpufreq driver\n");
++		dev_err_probe(&pdev->dev, ret, "failed to register mtk cpufreq driver\n");
+ 		goto release_dvfs_info_list;
+ 	}
+ 
+
+---
+base-commit: 0fc4bfab2cd45f9acb86c4f04b5191e114e901ed
+change-id: 20240627-mtk-cpufreq-dvfs-fail-init-err-0a662ca72de2
+
+Best regards,
+-- 
+Nícolas F. R. A. Prado <nfraprado@collabora.com>
+
 
