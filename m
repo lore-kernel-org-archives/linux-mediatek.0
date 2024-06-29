@@ -4,68 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37720C30658
-	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Jun 2024 09:20:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9171EC27C4F
+	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Jun 2024 11:15:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:CC:To:
+	Subject:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SbC8eskPoxKJ+eN2Qq7W2GaCgbxx29oD7K2szf1j0QE=; b=2B9Q1zr8VVDriqzD5pt6dNqY3k
-	8dyvDNFDBZWoheMam7AqDvjd8XRHG5mmW5+fuEZviDz9COLKBk3BELpHJ2JFlafZJuuulF8t42i0R
-	TT/YUIDTBnZRpMOPkktVfklBeDYEUap3pwAH0kZWptIhCegdrlGRxPaROqsmFYXcDcdSkhSq/2Bfc
-	baEsRmOwVOK7sIuxNCxG05KHfXBWG2I4d+wqmyLkSUg7RvYKcHkT7XEG3dEconUDX6LhRXCZQotQE
-	Y7EjrFkuu0shKLHp7IlDwHlExIcRVO0PIAGTXq40MDWaCWIKtR3DijkSxxyyCRv7U+0vyYyhG7JSN
-	tdvPya0A==;
+	bh=+sv3eYTFvLhM6WYmpZ3emyPvlQz95+zOc5ZZkftn2YM=; b=APMkLbqa1aSs0hNUBr30KPP3U/
+	0MQRZXfrA7nkRLoB19lcmChJuNzGO3Wg1FwXIX7c3AZuyKABlHqYYeGVj80U4OjdRFNb0eIRy3pQs
+	z/qrrtMQaL4CMddR6ScgubxnM+aZzTPpzrxrDOgD9aByCfiMxyJgc/R4ORRoSqs6+YiqUsIUwQMkZ
+	KSCmfyVeWtcuAovrZzsKX8uRVPaZm/HlwSBEvmPnn+8JFGEpaWTafjvBQH8v8P4umPOpvzBT2nD20
+	2PcnbqDdOOYMBOs9i2Iq6kB39uU+YmfO8FoYm+ryPIroNKVkd+Z3/D6MxGtiMCMF+j1/lFEPUZ6Vy
+	wDA2O6Ag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sNUFo-0000000GB2O-3Pd2;
-	Sat, 29 Jun 2024 09:20:20 +0000
-Received: from smtp-14.smtpout.orange.fr ([80.12.242.14] helo=smtp.smtpout.orange.fr)
+	id 1sNW31-0000000GJ05-0qWr;
+	Sat, 29 Jun 2024 11:15:15 +0000
+Received: from szxga08-in.huawei.com ([45.249.212.255])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sNUFG-0000000GAmV-2KTN
-	for linux-mediatek@lists.infradead.org;
-	Sat, 29 Jun 2024 09:19:49 +0000
-Received: from fedora.home ([86.243.222.230])
-	by smtp.orange.fr with ESMTPA
-	id NUF6sgiHDa7etNUFFs5cqZ; Sat, 29 Jun 2024 11:19:45 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wanadoo.fr;
-	s=t20230301; t=1719652785;
-	bh=SbC8eskPoxKJ+eN2Qq7W2GaCgbxx29oD7K2szf1j0QE=;
-	h=From:To:Subject:Date:Message-ID:MIME-Version;
-	b=GLm2aW9jAdL1vITOmoKJ22fGy+4A6bXXIupEbaVhXFBjWbK4tAcN7p6wrh9akuhCi
-	 9DIgF6Sgqyauc36H8w9LgJ3GDogS4OEERhmEcl6Bj9ASurrX+/k0Y+ZKl8xWSmXVB4
-	 dMI678AoM5hbZYzDdRewj11b8KefFRB5pCdE0cI8KUmt++9xIN1XHYdpPdoY6uTVJH
-	 tCGxCg6XRMKq6KoO1Wtw+H2uuPax70nAM/klCzp2ru/6xNMiIStjHNvJlbaURU7gd2
-	 oE9Kt1a+VQlPW/1VBalZD1kANRAfeafe7iFBxr9hR3hEFQuO73Zx2A2C0XiJGBiRYH
-	 Nk80KScPP8b9A==
-X-ME-Helo: fedora.home
-X-ME-Auth: Y2hyaXN0b3BoZS5qYWlsbGV0QHdhbmFkb28uZnI=
-X-ME-Date: Sat, 29 Jun 2024 11:19:45 +0200
-X-ME-IP: 86.243.222.230
-From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-To: matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	fparent@baylibre.com,
-	fchiby@baylibre.com,
-	s.hauer@pengutronix.de
-Cc: linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	kernel-janitors@vger.kernel.org,
-	Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-Subject: [PATCH 4/4] soc: mediatek: pwrap: Simplify some error messages
-Date: Sat, 29 Jun 2024 11:19:33 +0200
-Message-ID: <7e6f7dcded577091061e2bc3f86d6ec5f6c4be7d.1719652155.git.christophe.jaillet@wanadoo.fr>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <cover.1719652155.git.christophe.jaillet@wanadoo.fr>
-References: <cover.1719652155.git.christophe.jaillet@wanadoo.fr>
+	id 1sNW2q-0000000GIwL-26KD;
+	Sat, 29 Jun 2024 11:15:06 +0000
+Received: from mail.maildlp.com (unknown [172.19.163.48])
+	by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4WB8jW1PQlz1T4NC;
+	Sat, 29 Jun 2024 19:10:23 +0800 (CST)
+Received: from dggpemf200006.china.huawei.com (unknown [7.185.36.61])
+	by mail.maildlp.com (Postfix) with ESMTPS id 46160180089;
+	Sat, 29 Jun 2024 19:14:51 +0800 (CST)
+Received: from [10.69.30.204] (10.69.30.204) by dggpemf200006.china.huawei.com
+ (7.185.36.61) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.11; Sat, 29 Jun
+ 2024 19:14:51 +0800
+Subject: Re: [PATCH net-next v9 00/13] First try to replace page_frag with
+ page_frag_cache
+To: Jakub Kicinski <kuba@kernel.org>
+CC: Andrew Lunn <andrew@lunn.ch>, <davem@davemloft.net>, <pabeni@redhat.com>,
+	<netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Alexander Duyck
+	<alexander.duyck@gmail.com>, Alexei Starovoitov <ast@kernel.org>, Daniel
+ Borkmann <daniel@iogearbox.net>, Jesper Dangaard Brouer <hawk@kernel.org>,
+	John Fastabend <john.fastabend@gmail.com>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, <bpf@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+References: <20240625135216.47007-1-linyunsheng@huawei.com>
+ <d2601a34-7519-41b6-89c6-b4aad483602b@lunn.ch>
+ <a051a277-a901-2cdb-72d0-716002593019@huawei.com>
+ <20240627125834.3007120c@kernel.org>
+From: Yunsheng Lin <linyunsheng@huawei.com>
+Message-ID: <b200a609-2f30-ec37-39b6-f37ed8092f41@huawei.com>
+Date: Sat, 29 Jun 2024 19:14:50 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101
+ Thunderbird/52.2.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+In-Reply-To: <20240627125834.3007120c@kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.69.30.204]
+X-ClientProxiedBy: dggems701-chm.china.huawei.com (10.3.19.178) To
+ dggpemf200006.china.huawei.com (7.185.36.61)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240629_021946_840627_848C025D 
-X-CRM114-Status: GOOD (  10.65  )
+X-CRM114-CacheID: sfid-20240629_041504_799563_2BF1FF45 
+X-CRM114-Status: GOOD (  14.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,46 +81,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-dev_err_probe() already display the error code in a human readable form,
-there is no need to add it explicitly to the message.
+On 2024/6/28 3:58, Jakub Kicinski wrote:
+> On Thu, 27 Jun 2024 19:16:22 +0800 Yunsheng Lin wrote:
+>> On 2024/6/27 1:12, Andrew Lunn wrote:
+>>> Silly nitpick, but maybe for the next version you change the Subject:
+>>> to Tenth try to replace page_frag with page_frag.... :-)  
+>>
+>> Yes, it is somewhat confusing for the 'First try' part.
+>> I guess I can change it to highlight the effort and commitment behind
+>> the trying:-)
+> 
+> Sorry to ruin the slightly whimsical mood but if you do change it -
+> please don't include the version at all. Some automation matches
+> versions of patch sets together based on the title of the cover letter.
 
-While at it, remove some useless {}.
+Ok, perhaps it is more appropriate to change it to something like below:
 
-Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
----
-Compile tested-only
----
- drivers/soc/mediatek/mtk-pmic-wrap.c | 12 ++++--------
- 1 file changed, 4 insertions(+), 8 deletions(-)
+Replace page_frag with page_frag_cache for sk_page_frag()
 
-diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-index 6981d6a1ab93..c55f4061b8ef 100644
---- a/drivers/soc/mediatek/mtk-pmic-wrap.c
-+++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-@@ -2533,18 +2533,14 @@ static int pwrap_probe(struct platform_device *pdev)
- 	}
- 
- 	clk = devm_clk_get_optional_enabled(wrp->dev, "sys");
--	if (IS_ERR(clk)) {
-+	if (IS_ERR(clk))
- 		return dev_err_probe(wrp->dev, PTR_ERR(clk),
--				     "failed to get clock: %pe\n",
--				     clk);
--	}
-+				     "failed to get sys clock\n");
- 
- 	clk = devm_clk_get_optional_enabled(wrp->dev, "tmr");
--	if (IS_ERR(clk)) {
-+	if (IS_ERR(clk))
- 		return dev_err_probe(wrp->dev, PTR_ERR(clk),
--				     "failed to get clock: %pe\n",
--				     clk);
--	}
-+				     "failed to get tmr clock\n");
- 
- 	/* Enable internal dynamic clock */
- 	if (HAS_CAP(wrp->master->caps, PWRAP_CAP_DCM)) {
--- 
-2.45.2
+As this patchset is large enough that replacing is only done
+for sk_page_frag(), there are still other places using page_frag that
+can be replaced by page_frag_cache.
 
+> .
+> 
 
