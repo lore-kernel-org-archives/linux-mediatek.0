@@ -4,88 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B47EC27C4F
-	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Jun 2024 17:35:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05CD3C27C4F
+	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Jun 2024 17:58:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:Subject:From:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tsJg2UT0g/WSTAeN0OossZ9r+TgWqAkhMXJOZv5nhmg=; b=oaQ5+1v4OJMnjEmSUtkegtn9wG
-	PbnYOkIzMxix6WTtiDFgMcb4fU81GQEx4ag3pPnuCAkn0Cejukk/1QbNleQ3/+fver5FNap/V/caP
-	HiX3iy0yGd9yPm4/gqPH4z8MUBeEfioYjof0/PO5bTcPceXMQBXqzNRUar63+xK9bg5kkCED4bjog
-	4oX1SqrJBtkz1Uv4R//gLlB7xREO8NcrxZQnxGCx2ItrEXa6QuHAIlVRfwVi+t4j4uSaIb0/bXuHX
-	ePn9D2BbbKYUAOYOBDJcfb225jQffgPhGRRx6vgmK5u9P1VrE6CGfZhgIuHu4ZTsNSMVylIivRU3y
-	FG09Ovug==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
+	In-Reply-To:Subject:CC:To:From:Date:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=aLrT4oOnpymwjd8DVpGHvZEJrdv2DOdEX0kQWZpJWRA=; b=T3u0KehGRaNEFl
+	JnARo7POHGjnBpEWqGOgzQ+AGrrQQPjwTW1Ta+yMOiMZ7BApyo48V/u4P0Va+S0P5VL4zqDL6UnWo
+	Wact0P3MTNqK3evFrBSDg0iD2itNLirOtnPkbnpvlmWzr1ocbcl/tApwFzlTXbPmGHv1KN0JxTLaU
+	ZrjLxlXHd5ze7VkBeWY8N6wA0jDIIUF18FCyQyzrCIDn5/niT2/F5NGQjH4o6PD4c3dz55Qd+17cW
+	fz905UGRlL3g2ChfM2tFu+ZbtOHQHW6AZmouIdL0VARjJRIzz9QWUJKnHm+WG/a5IgaV8CCwp65kL
+	R0ToStxmWrJ5conkkwkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sNbzD-0000000Gifh-0dMb;
-	Sat, 29 Jun 2024 17:35:43 +0000
-Received: from mout.web.de ([217.72.192.78])
+	id 1sNcLb-0000000GkgC-02gn;
+	Sat, 29 Jun 2024 17:58:51 +0000
+Received: from mout.gmx.net ([212.227.15.15])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sNbz2-0000000GieU-39Kl;
-	Sat, 29 Jun 2024 17:35:34 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
-	s=s29768273; t=1719682519; x=1720287319; i=markus.elfring@web.de;
-	bh=tsJg2UT0g/WSTAeN0OossZ9r+TgWqAkhMXJOZv5nhmg=;
-	h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:From:Subject:To:
-	 Cc:References:In-Reply-To:Content-Type:Content-Transfer-Encoding:
-	 cc:content-transfer-encoding:content-type:date:from:message-id:
-	 mime-version:reply-to:subject:to;
-	b=B+epOElVMYgXswpTdA5mRf6qTcC2Gx0fzEhcDHw5s5nkT5d5aMTz1ZhQZFi5hU02
-	 3X/+HskmAxZVytDvl8MBVFp/SkcieaiYOLld8ODp0Cz2+uldK966Kxqji29REhhgN
-	 P3IJRkiOE989iEhMRrWduoE0JMXAf40AH8KWzoxvv+oaoA8eC8OXyIA+u9Bf6L/HI
-	 uEygyCcJJ5k1x1qb/vLVNbJUZ2INU6EoqGAK/1HYiwuB9puvZZGFXKmreMopvroJq
-	 JyktWO2a8OYUGJ9PIuHBjyOD6ORUwwopCZa335gyyn3nBu9D+CsZd814Bn3nYBiHL
-	 Q1TCBVGSfCwj0LODZg==
-X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
-Received: from [192.168.178.21] ([94.31.82.95]) by smtp.web.de (mrweb105
- [213.165.67.124]) with ESMTPSA (Nemesis) id 1N4N9I-1sGYvR0bQ6-00zBAC; Sat, 29
- Jun 2024 19:35:19 +0200
-Message-ID: <9f67af8b-9c8c-4ad6-88c3-03d9fd9673d2@web.de>
-Date: Sat, 29 Jun 2024 19:35:01 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-From: Markus Elfring <Markus.Elfring@web.de>
-Subject: Re: [PATCH v2 1/2] arm64: dts: mediatek: mt7622: readd syscon to
- pciesys node
-To: Christian Marangi <ansuelsmth@gmail.com>,
- Frank Wunderlich <frank-w@public-files.de>,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- devicetree@vger.kernel.org, linux-clk@vger.kernel.org,
+	id 1sNcLX-0000000GkfQ-09uo;
+	Sat, 29 Jun 2024 17:58:48 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
+	s=s31663417; t=1719683920; x=1720288720; i=frank-w@public-files.de;
+	bh=aLrT4oOnpymwjd8DVpGHvZEJrdv2DOdEX0kQWZpJWRA=;
+	h=X-UI-Sender-Class:Date:From:To:CC:Subject:Reply-to:In-Reply-To:
+	 References:Message-ID:MIME-Version:Content-Type:
+	 Content-Transfer-Encoding:cc:content-transfer-encoding:
+	 content-type:date:from:message-id:mime-version:reply-to:subject:
+	 to;
+	b=HyvcYbt8SJ7A8KWkB1a032mAMta423UnsOZPh6Z/cAD08ObBFIif9W+6xAiEx7Uf
+	 gUfW9YnxAseq0SsQcg3bajeU4DOPvCoIuBT3R3Jv4Yfr/ernWvBFi1nOrWefPcfnt
+	 cdEpjSH7YbYC0HjHdcDXKnEk2nAPkXzOhBkuFXOEeZJzyLEa586GF8a+mhRUtKJAz
+	 YZv1dWrI8V6YJdXqzwmXV+r/y3n+MWj1TPcrs8yWhGtvnZnmmdwFLnvI+gBq+pYto
+	 Rmu0qsOA1Pg1oEKjhG/uhcG7Jqvb5qg7u6TCKVTcsPqOZddt8rBDmdaICck4uYEGW
+	 aJ6nwhBUZfIRNW6CYQ==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [127.0.0.1] ([80.245.77.57]) by mail.gmx.net (mrgmx004
+ [212.227.17.190]) with ESMTPSA (Nemesis) id 1M6Ue3-1sUV2E3kxl-008jaY; Sat, 29
+ Jun 2024 19:58:40 +0200
+Date: Sat, 29 Jun 2024 19:58:38 +0200
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Markus Elfring <Markus.Elfring@web.de>,
+ Christian Marangi <ansuelsmth@gmail.com>, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-clk@vger.kernel.org,
  Angelo Gioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Conor Dooley <conor+dt@kernel.org>, Krzysztof Kozlowski
- <krzk+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Michael Turquette <mturquette@baylibre.com>, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?=
- <rafal@milecki.pl>, Rob Herring <robh@kernel.org>,
- Stephen Boyd <sboyd@kernel.org>
-Cc: stable@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>
-References: <20240628105542.5456-1-ansuelsmth@gmail.com>
-Content-Language: en-GB
-In-Reply-To: <20240628105542.5456-1-ansuelsmth@gmail.com>
-Content-Type: text/plain; charset=UTF-8
+ Conor Dooley <conor+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Michael Turquette <mturquette@baylibre.com>,
+ =?UTF-8?Q?Rafa=C5=82_Mi=C5=82ecki?= <rafal@milecki.pl>,
+ Rob Herring <robh@kernel.org>, Stephen Boyd <sboyd@kernel.org>
+CC: stable@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v2_1/2=5D_arm64=3A_dts=3A_mediate?=
+ =?US-ASCII?Q?k=3A_mt7622=3A_readd_syscon_to_pciesys_node?=
+User-Agent: K-9 Mail for Android
+In-Reply-To: <9f67af8b-9c8c-4ad6-88c3-03d9fd9673d2@web.de>
+References: <20240628105542.5456-1-ansuelsmth@gmail.com> <9f67af8b-9c8c-4ad6-88c3-03d9fd9673d2@web.de>
+Message-ID: <7B85B9EF-589B-4025-9933-847C6BDCF284@public-files.de>
+MIME-Version: 1.0
+Content-Type: text/plain;
+ charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:v8gBJ2lGpjG9X3tIzafMhs3tI5PY4M5B34TedERy2La5e4vj+id
- 4Fp2ViEGYUwJKeWuxBkYDYwAPlaXtJbpgWSDpucxZjT/bLtrEKyJTo15qU2ZypHtriQukLW
- 95oWGGQ3uQYixiAlYFNCzpWAjQO2zOVBi7bjeNSXeblGoeIzE1zqhHnMeGS8zL6eMII02Pt
- mdRjaCFcl1hGsqIWnC0+A==
-UI-OutboundReport: notjunk:1;M01:P0:MNZwi5QpEBs=;rNwPC0lM5Jg4hhO2G++/jY1PrJy
- 3Vqy/ghHNt3QkFVS1+2qNdMETT7EQEs7epsyP5HuXtx57kvvHufS6PIhuduEV7cyXaZH/kWAg
- gxBhyraJWmtilolZpQctgb1byPcCG/GDN2vAz43As+2mOY7SBdAsyo0sGLrc3fFTbPXg4PZ2q
- iUkl//5A8u0HwULkvavPY3hHIRIgEZH9dQDT5CaEp4X+OO3oaboYuRdcaiVbOfJaItSR20j5N
- t6YRVBR17nGhJMcSB20gYZMZxcT7daciEpT6cacM3f/e4rF4aPoO0DYWcjIDPeaG/nbW0LAlG
- P8/NHTE9X8kaqTqlKo0G4F3u2S4cutR7LodNRAD1gdZxDZnd8yNwF7iZcOuzQmJX0Hd25gwS2
- izz+qS2MMRXs+w2WK6mO8t4E0OxK7OmH2LNthYD9LYPrgOUVT/RwIo87UUSMXFuaVSnRQf2G/
- A0NQSIzC1D5bkpSrI++2YaAQ0AnX+dsX8pI0H+dYkqGo5tISw/2PlJq4QvVYm6/AUCUOGkHlb
- 077XAl00o7Q7eMh0zJizKkWLnHwIRzur/A20acj/mmg/MD1wCD+NBsO0K1QoCOly9VXqVJQIq
- 9I8ehgJqqNtUWf3g/5E6Ego03gPIp8u8kcAiJZtA0arS99Dii3nDLpqaaDb6UIzQjCDzR7qR+
- jC7bPSbTvohs4ZrhUE48kDQIzCeI1cROuMTTegjfpo7D5S5XxiJOPURMvWTcRnQXBVLRxRKJo
- ux6xXoYfBPgftPf0oh68r207mIaX8dg99ZS90PIjpiQfRJ31O3xjv1xQr4gGWZS1qaQsOhOKb
- bAmELv+sp/7Fqp3miBHR9miIl4tiDouSz/u7Ix+3wTJdQ=
+X-Provags-ID: V03:K1:/XeJwdnckIOl1ojd6eCqyn4n7VHLmaLRB1MmDzcRq4iP+LgaqM9
+ aoGV8ocSw5XCK4SmmZ1AbuTshcCrdsRGiL+8VJHOJ1BlVgb4RS0Rd85iUeJ2E7Mg0xQbLRM
+ pR5Ahj6teUQXjEAd/oS/GXWScw0jHEKyEElJ3x6U02BecSyNGKNtGAs0Rx3ZO2Qs+NeqDgk
+ trX5YINi4Ej7VdcpAZinA==
+UI-OutboundReport: notjunk:1;M01:P0:aXtMXo6gijc=;daTEpV3dzaZ3Xfnp2LUT3IOkcIi
+ ITveyJxrT/X8ytrJYBRNKr/x95owVeX/C9T7qBD/Kmtd2U3QUSPqpXFR5E4dUzjgE7g35amDP
+ /zkpkeIHV8ipLjst1NnPEG0iarLJVo9Hs1Ijkzop02rQMhBEb4Bx3j4S3YB5ZvNL3n7M8oKGw
+ fPdMJJduhdtG1ToRI1EpPWczgVYycNv0UBfi8yMKzwy/o6t6eEkxPNmaMrunHK8yERfyvEVEX
+ NnK6zUkDwaqLEmqE7LAuNpseuRZgRFff9npL2cK5HC+PXDh3vvidymtN7GJ/UZcG5RZ7zwSdg
+ RKSNV0JH1wux420g3qhWF5ovJHiOyOmOrDAaIe4nbVy37B7vgoeuXEv5tiE5BQV55XeHd+Rng
+ KIS0JcpFyh6lAhixklb/llgvBEmo8SQfY1VoEYL+bYItPnghx70X4TDQNYYNN9QvsEfsF1VcG
+ Eo4vsgx9MFWnawBrIMyYvil9UDpNE+MUc8ABhnF357XiVNMp1E4Wwjjctq4cRRnA0UeZrSZmc
+ gKlG7PmI90ODmiecKDgsE9nOftb/zbBChNgGNKbQC5Zv88CKepaAES6A2a432Yi7nSmmPY8RV
+ RMJwXhhS5xfd3x7uAaSucm1K3FZrAjsVZl3Fky+eWGhMHtOfabaTj6x3hyJsHcknYhjwotnsj
+ Upg+TXk6bxPGRRIJ4uCZSbLO27nl5eZAI2VS4WODbF6RO4NgVcFBvIxu6nJv8irTJ1mnOFhAu
+ G/a62lLZuVX8YJDT689FohWgNFXt92hDEOC+lz36w6rptZkal8xiTnIkhTMeLRpJIXZnRSQ98
+ 1vgJich+5VizoOGmB27nJlslGE7vaoitXvpEbb+5sOhuY=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240629_103533_180073_A5DE8D8A 
-X-CRM114-Status: UNSURE (   6.79  )
+X-CRM114-CacheID: sfid-20240629_105847_462453_20C6F659 
+X-CRM114-Status: UNSURE (   9.14  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -98,20 +99,32 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: frank-w@public-files.de
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> Sata node reference the pciesys with the property mediatek,phy-node
-> and that is used as a syscon to access the pciesys regs.
+Am 29=2E Juni 2024 19:35:01 MESZ schrieb Markus Elfring <Markus=2EElfring@w=
+eb=2Ede>:
+>> Sata node reference the pciesys with the property mediatek,phy-node
+>> and that is used as a syscon to access the pciesys regs=2E
+>>
+>> Readd the syscon compatible to pciesys node to restore correct
+>> functionality of the SATA interface=2E
+>=E2=80=A6
+>> Reported-by: Frank Wunderlich =E2=80=A6
 >
-> Readd the syscon compatible to pciesys node to restore correct
-> functionality of the SATA interface.
-=E2=80=A6
-> Reported-by: Frank Wunderlich =E2=80=A6
+>Was any related information published?
+>
+>Regards,
+>Markus
+>
 
-Was any related information published?
+Hi,
 
-Regards,
-Markus
+I found this while changing uboot to of_upstream and fixed it there (not y=
+et send to mailinglist)=2E As of_upstream uses linux dts,i rechecked if it =
+is broken there too and yes it is=2E
 
+But i have not sent issue to mailinglist because we fixed it before :)
+regards Frank
 
