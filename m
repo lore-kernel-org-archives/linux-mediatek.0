@@ -4,67 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87073C3065A
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Jul 2024 18:41:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0946AC2BD09
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Jul 2024 19:28:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AdNMm9P0hulJ72BR3Z+Yw/nhilcfGjN3Yz6kQOBvxQw=; b=wvrjJBr7QNmUDIAo3VbIs0VH/L
-	8FbKjDndhrUdrIu/A+MOdY1ecOjhpYqfhnAkxKrGmzEjUZtrq2Fq/5kk9oEtacK9Ovy3kIlk76Rbg
-	zh7//jhT5mt++MBKXHCz5bGMZV3tHylWNzVnqBPNfuWePR6kf1aFk9dvDW/thk78wx/0gbXSYfGq/
-	J0RXIjnPCtvFXPHbD3WAvpBMHtEd0lOOf+7cd+NCB5RN+QZ+wH0fyPujum6TL/JeSFktHuZU0vr+5
-	nYV7+geZBueiV2UhQFf3JYbGtWG9F1Eveiy622zwF/sZAsvWpaN2f6oi4yFVvTuJBIPQlOLUpRHKS
-	WIKsTdEw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Cf0Vb6MZM08TNq/yHs0gXjxczxlVuicMRLJoRZkec7o=; b=bMfU8DvI0IiqiQVrgUi08m6pEU
+	c6nu9CPDZfGkRQeOx/zUc6xBe4O5GAee8wg5fu3LPyeLrAhVeniTtY9B4n1ndElYXV33Hf63vyR+X
+	nS0hYCFLprteqqMsuyHc26z52AACcA9kd4cmIoFrMY8fK1MfA7wwAe2DA5x688LETGjoxrmbFYivc
+	tNSOYiM1jl/zBGPE5DIjbrenMpSzU4kz263nycGrG7ZHzlrX25bPH9n5rQ83wpEOzolnooexGxogq
+	4Adopssu5z3UksylTMqyOQdTATmz0ZOMsm4ZsxBAOK5/LvWhsopnhBab/b1faAu1hkqJ7zByK3Svp
+	SMgTg8eg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sOLxi-00000004VJL-32xK;
-	Mon, 01 Jul 2024 18:41:14 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sOMhn-00000004dlu-2Tqk;
+	Mon, 01 Jul 2024 19:28:51 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sOLxX-00000004VGD-2BS7;
-	Mon, 01 Jul 2024 18:41:04 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 7F8EE6175D;
-	Mon,  1 Jul 2024 18:41:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DD09FC116B1;
-	Mon,  1 Jul 2024 18:40:55 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1719859262;
-	bh=b9t315kB2irXXTEOqh+BPq5CDd3WoseJBjsx1O8vZSo=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=fX88dpFKO878qmBPMIG3r5lwS2ifsBgzlaZduktbIrYVmU/6VJf1obFf44anDXWnj
-	 bq0pX6Znv9d8lZ+NGsuUm5BcO84WNxJJcJ9bCoIn1Ff8k3OwVsKVH9l9rh0jZlaXSo
-	 vQurBqp789lZAI3w2Prz3qDD+ugCN4NNqdadOYg56BrSmXNUM8obZxOPuCnFH8pFpq
-	 WMzSrEvPR0mE+sikN668ATSUPsi1XKeRDgp098UAHSba52z7o0CxoDcwq8JtnG65pV
-	 sXIR9fHY/CRLXtW5Q46XxpjDFu5SLP2RMYjdgCFRC0GnlSra41TnX3p67DVB9ycr+u
-	 MwZYgw0UmUCOA==
-Date: Mon, 1 Jul 2024 19:40:52 +0100
-From: Jonathan Cameron <jic23@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: lars@metafoo.de, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, matthias.bgg@gmail.com, lee@kernel.org,
- andy@kernel.org, nuno.sa@analog.com, bigunclemax@gmail.com,
- dlechner@baylibre.com, marius.cristea@microchip.com,
- marcelo.schmitt@analog.com, fr0st61te@gmail.com, mitrutzceclan@gmail.com,
- mike.looijmans@topic.nl, marcus.folkesson@gmail.com,
- linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, andy.shevchenko@gmail.com,
- kernel@collabora.com
-Subject: Re: [PATCH v2 0/5] MediaTek MT6357/8/9 PMIC Auxiliary ADC support
-Message-ID: <20240701194052.2702a3da@jic23-huawei>
-In-Reply-To: <20240604123008.327424-1-angelogioacchino.delregno@collabora.com>
-References: <20240604123008.327424-1-angelogioacchino.delregno@collabora.com>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-pc-linux-gnu)
+	id 1sOMhW-00000004df8-3HuO;
+	Mon, 01 Jul 2024 19:28:36 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.97.1)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1sOMhJ-000000000Vo-1Tfb;
+	Mon, 01 Jul 2024 19:28:21 +0000
+Date: Mon, 1 Jul 2024 20:28:14 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Elad Yifee <eladwf@gmail.com>, netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH net-next] net: ethernet: mediatek: Allow gaps in MAC
+ allocation
+Message-ID: <379ae584cea112db60f4ada79c7e5ba4f3364a64.1719862038.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240701_114103_713457_BB3CC9C7 
-X-CRM114-Status: GOOD (  13.78  )
+X-CRM114-CacheID: sfid-20240701_122834_841858_0ED7DC0C 
+X-CRM114-Status: GOOD (  13.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,54 +68,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue,  4 Jun 2024 14:30:03 +0200
-AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> wrote:
+Some devices with MediaTek SoCs don't use the first but only the second
+MAC in the chip. Especially with MT7981 which got a built-in 1GE PHY
+connected to the second MAC this is quite common.
+Make sure to reset and enable PSE also in those cases by skipping gaps
+using 'continue' instead of aborting the loop using 'break'.
 
-> Changes in v2:
->  - Dropped 'mfd: mt6397-core: Add support for AUXADCs on MT6357/58/59 PMICs'
->    as Lee J already applied it;
->  - Added patch to describe the ADC subnode in the MT6357 MFD binding
->    and moved the example node from mediatek,mt6359-auxadc.yaml to
->    mediatek,mt6357.yaml
->  - Added 8-bits {s8,u8}_fract to math.h
->  - Addressed reviewer comments on mt6359-auxadc driver
+Fixes: dee4dd10c79a ("net: ethernet: mtk_eth_soc: ppe: add support for multiple PPEs")
+Suggested-by: Elad Yifee <eladwf@gmail.com>
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+---
+Note that this should go to 'net-next' because the commit being fixed
+isn't yet part of the 'net' tree.
 
-Applied 1,3,4 to the IIO tree. I'm assuming the mfd dt binding update
-will got via mfd and the dts via appropriate SoC tree.
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Given time is tight I'll gamble a bit and push directly out as togreg
-rather than normal exposure to 0-day first.
-
-Thanks,
-
-Jonathan
-
-> 
-> AngeloGioacchino Del Regno (5):
->   dt-bindings: iio: adc: Add MediaTek MT6359 PMIC AUXADC
->   dt-bindings: mfd: mediatek,mt6357: Describe Auxiliary ADC subdev
->   math.h: Add unsigned 8 bits fractional numbers type
->   iio: adc: Add support for MediaTek MT6357/8/9 Auxiliary ADC
->   arm64: dts: mediatek: Add ADC node on MT6357, MT6358, MT6359 PMICs
-> 
->  .../iio/adc/mediatek,mt6359-auxadc.yaml       |  33 +
->  .../bindings/mfd/mediatek,mt6357.yaml         |  10 +
->  arch/arm64/boot/dts/mediatek/mt6357.dtsi      |   5 +
->  arch/arm64/boot/dts/mediatek/mt6358.dtsi      |   5 +
->  arch/arm64/boot/dts/mediatek/mt6359.dtsi      |   5 +
->  drivers/iio/adc/Kconfig                       |  12 +
->  drivers/iio/adc/Makefile                      |   1 +
->  drivers/iio/adc/mt6359-auxadc.c               | 606 ++++++++++++++++++
->  .../iio/adc/mediatek,mt6357-auxadc.h          |  21 +
->  .../iio/adc/mediatek,mt6358-auxadc.h          |  22 +
->  .../iio/adc/mediatek,mt6359-auxadc.h          |  22 +
->  include/linux/math.h                          |   2 +
->  12 files changed, 744 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/iio/adc/mediatek,mt6359-auxadc.yaml
->  create mode 100644 drivers/iio/adc/mt6359-auxadc.c
->  create mode 100644 include/dt-bindings/iio/adc/mediatek,mt6357-auxadc.h
->  create mode 100644 include/dt-bindings/iio/adc/mediatek,mt6358-auxadc.h
->  create mode 100644 include/dt-bindings/iio/adc/mediatek,mt6359-auxadc.h
-> 
-
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index 13d78d9b3197..2529b5b607c8 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -3396,7 +3396,7 @@ static int mtk_open(struct net_device *dev)
+ 
+ 		for (i = 0; i < MTK_MAX_DEVS; i++) {
+ 			if (!eth->netdev[i])
+-				break;
++				continue;
+ 
+ 			target_mac = netdev_priv(eth->netdev[i]);
+ 			if (!soc->offload_version) {
+-- 
+2.45.2
 
