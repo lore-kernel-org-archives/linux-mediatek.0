@@ -4,56 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F8DDC3065A
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Jul 2024 06:17:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7EEDC2BD09
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Jul 2024 07:02:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:Reply-To:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fXyGQ5yDjGp7ZJaBVw0haYA/oXbMVh7sNoBQsxpRsYs=; b=PwNl641KT34ZzEekQbwgTov9xt
-	23+lZxOOXD//L+q318+hrO0hIQ0l1/9Zt4HhGsVc6yZAk6zwVJavMWvERNqVV8yM+W+G/ibMf4Z/E
-	DLTNg0krVgvygFzCEdVm5cPII9w1aiRGS/1LfUn/ZarOU2OQG7XXG6atsAPmo15bqWIqCCLgGxDFZ
-	vxBWf+2GmXeM5N/4Y037HvrhQoE4KAMTJnxKtpXG5jUimGkNTQ2tlyHhj8BzzK88K4PaCPXoHNhqM
-	uNJ4cuimePhBOgDEe0hSKoKqQkE0unLVxJ8BUNYIToWW0IpG5Oam1OWydEzXx7kVr0mXY2IhHYNOA
-	BuEiadbw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7yktUN/gStqRPZN7+y3ofWazn0UWTgeoET7Zwx12TTg=; b=jRt4UOtvzv7JyH4WNG8x+7chq7
+	ql+qtdXn4/BLtnkXJF1k4vnIP/zWDBKfUaSxUCtcFPzgPwEoEMputt3CZdS9Nff/4EIIWhsNXeXhL
+	eMd07f7zTaUJ8WXT8bM4+qUwidULj0Gq/eauxBO8nfFO9tsG2FGmMnfRZQaLGg1QykmfcyMKGUBN2
+	E+naRcaEWaBmCyFaNm9hUZZKcSTKGVJotsUvLQaErU9th4FSdQRjdN4lXdUtUyjJ9QBVC2bSPWdX7
+	l/L8JgPElYQ0/aobP7XGORyaItxo9q5Sw1i/EG/nCWofQpQ02uVizPQ7osmDhdDnQS9f9ef8bCar3
+	9tPRKGyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sOALU-00000001qn0-16xq;
-	Mon, 01 Jul 2024 06:17:00 +0000
-Received: from wp530.webpack.hosteurope.de ([80.237.130.52])
+	id 1sOB3I-00000001wj1-49tv;
+	Mon, 01 Jul 2024 07:02:16 +0000
+Received: from mout.gmx.net ([212.227.17.22])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sOALI-00000001qhl-0I1f;
-	Mon, 01 Jul 2024 06:16:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=leemhuis.info; s=he214686; h=Content-Transfer-Encoding:Content-Type:
-	In-Reply-To:Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:From:Sender:Reply-To:Subject:Date:Message-ID:To:Cc:MIME-Version:
-	Content-Type:Content-Transfer-Encoding:Content-ID:Content-Description:
-	In-Reply-To:References; bh=fXyGQ5yDjGp7ZJaBVw0haYA/oXbMVh7sNoBQsxpRsYs=;
-	t=1719814608; x=1720246608; b=ymabvI5u7tc1eVtvjro2WyrqbNJyuhF+EsOCe3Rfk1dF+qG
-	MoB0gNr2nryWy8JLMs1KJAFZ9dv+ntUSRqKtTswkwCZKfBQTALRdPIRqwLRYsK7GZbCT1zZUwQ675
-	jKjiz9eET3P5apn+Ii0HIif0KVasEJUqrL152a/EmUNJf1xyu2Pgv8FfTzb80MBtqxFH5vRO03Sdi
-	fiP98ce1BfyBlj+1wu+SNMimb90rmWreTMncT9H8rCBD9BuitiCNDawJ7SGtMRjKToKd1sbh/rpeg
-	Qi+sl/TXAPD/eJmBMcuyfwWf/FOZthvKnh6CaNOo48nqUzEBED4IvPqSDr++3s6A==;
-Received: from [2a02:8108:8980:2478:8cde:aa2c:f324:937e]; authenticated
-	by wp530.webpack.hosteurope.de running ExIM with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
-	id 1sOAL4-00045O-IX; Mon, 01 Jul 2024 08:16:34 +0200
-Message-ID: <cebb10b8-b0bf-4cb7-bba4-c3f941ba2b82@leemhuis.info>
-Date: Mon, 1 Jul 2024 08:16:33 +0200
+	id 1sOB3E-00000001wiJ-3laW;
+	Mon, 01 Jul 2024 07:02:14 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
+	s=s31663417; t=1719817320; x=1720422120; i=frank-w@public-files.de;
+	bh=7yktUN/gStqRPZN7+y3ofWazn0UWTgeoET7Zwx12TTg=;
+	h=X-UI-Sender-Class:MIME-Version:Message-ID:From:To:Cc:Subject:
+	 Content-Type:Date:In-Reply-To:References:
+	 Content-Transfer-Encoding:cc:content-transfer-encoding:
+	 content-type:date:from:message-id:mime-version:reply-to:subject:
+	 to;
+	b=A1U6ZGQ//VDcVnLCnj99gRSn1/RH0ykxvaX4PgnWzoAQJ9TUXeFCTMPtEREF3cpC
+	 l2IUXgVxGDUuEFo4XO763sQXZKAEBlrolIM+JbSl2vk/HWDawRJaGwqT2BcaW4tvB
+	 chbOTy4f8kppxOR04f+EfAHh283jRbzl0ktT6gTU7TCP4uTY3lk7XhzketFFdbcmb
+	 VLhgRWGi1J0P2dzvJgubyMEaYQ2tHsGXAlLywlUFSiZUPrNvDKhDDQzWDPRDGqqNN
+	 UWFi8jVqGpEuaIP+p2Gj1oqps4sv5kC6cHf6K0ysJf5+v0d/dNxy1pRbX8O0YXAhE
+	 F6yc13/VTRfl7y1MSQ==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [217.61.148.41] ([217.61.148.41]) by web-mail.gmx.net
+ (3c-app-gmx-bap25.server.lan [172.19.172.95]) (via HTTP); Mon, 1 Jul 2024
+ 09:02:00 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: mt7622: fix switch probe on bananapi-r64
-To: Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Jakub Kicinski <kuba@kernel.org>
+Message-ID: <trinity-4bc16904-d2f8-4932-8ec9-2973560f1dde-1719817320042@3c-app-gmx-bap25>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: regressions@lists.linux.dev
+Cc: Paolo Abeni <pabeni@redhat.com>, "David S. Miller"
+ <davem@davemloft.net>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Jakub Kicinski
+ <kuba@kernel.org>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Daniel Golle <daniel@makrotopia.org>,
+ Frank Wunderlich <linux@fw-web.de>, =?UTF-8?Q?Ar=C4=B1n=C3=A7_=C3=9CNAL?=
+ <arinc.unal@arinc9.com>, Rob Herring <robh@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Matthias
+ Brugger <matthias.bgg@gmail.com>, Linux regressions mailing list
+ <regressions@lists.linux.dev>
+Subject: Aw: Re: [PATCH] arm64: dts: mt7622: fix switch probe on
+ bananapi-r64
+Content-Type: text/plain; charset=UTF-8
+Date: Mon, 1 Jul 2024 09:02:00 +0200
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <cebb10b8-b0bf-4cb7-bba4-c3f941ba2b82@leemhuis.info>
 References: <20240516204847.171029-1-linux@fw-web.de>
- <a29dd7d1-40a8-4c88-99aa-651a3305b640@arinc9.com>
- <5AEE5668-0C8E-4EE4-A398-66CB99DF5650@public-files.de>
- <43aacd9d-b851-4100-8ccc-878ac6ae10f8@leemhuis.info>
- <698cf562-1ca9-4aa3-be7e-a1474b612c5b@leemhuis.info>
- <0cba095c-3d55-416a-a7ad-b359129731cf@arinc9.com>
  <714da201-654b-4183-8e5e-8ff0b64fe621@leemhuis.info>
  <2cac4cf68304e81abffbd9ff0387ee100323c2b7.camel@redhat.com>
  <b49c801c-6628-40a6-8294-0876d8871ba7@leemhuis.info>
@@ -67,17 +80,29 @@ References: <20240516204847.171029-1-linux@fw-web.de>
  <af561268-9793-4b5d-aa0f-d09698fd6fb0@arinc9.com>
  <750a60a6-4585-4bd2-97be-cf944e51fbdb@leemhuis.info>
  <9c498e37-df8b-469e-818a-9b1c9f2b1a3c@collabora.com>
-From: "Linux regression tracking (Thorsten Leemhuis)"
- <regressions@leemhuis.info>
-Content-Language: en-US, de-DE
-In-Reply-To: <9c498e37-df8b-469e-818a-9b1c9f2b1a3c@collabora.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-bounce-key: webpack.hosteurope.de;regressions@leemhuis.info;1719814608;cf262ae2;
-X-HE-SMSGID: 1sOAL4-00045O-IX
+ <cebb10b8-b0bf-4cb7-bba4-c3f941ba2b82@leemhuis.info>
+Content-Transfer-Encoding: quoted-printable
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:iSzNiwwEGm+X9Sk/waPaMhv+3missYA8VAXRSbGHCV+HKBSTSrTEZxICirIavHnwicFi9
+ 2srm4ZrjCYSwJ1GlRhIvaheYakXtMAyZRQ2H7TXkUrFo2gDZ1vGImR9OQUSUqjTrzHaZpfFtlcyX
+ qCFHGcVuA9dNudxieUc08D5y02DNqdADfpT2+y0BqeascmO1QbZSDhed5WvfIMYguEvqwW3rxCys
+ wsKoON+aZlWXBRR926oMZQT7S9jj6ti+qsgQU+wrxYSPGL4lSymwuT4Hsr5cGnXQT8kyse1wY6kh
+ W0=
+UI-OutboundReport: notjunk:1;M01:P0:TFqw0JB/3K4=;HFFRgvoA1Z6/Iqd3nHpxa9dft/I
+ JzIG7BujbzaBNJHe6yIPS+fOp1Tf6fBi5hrwRM+ldiLXXK6NpOnWxMUsxzm/Vn4TL/4d9NrPN
+ Li62NNQz3UYCSmsDwN6apWd7AROrSW3KOcqNwFcXqbZgrfqLnoSPADq6ha7PnsNfjnHbyD8ef
+ D9qSlIzE4GKDTqJzQCsTwRxACO0FX1O5NMrTQ1NYlGEpYODBr/Ah2o/UGQGn1IXV+IObXJ6Ru
+ h+mpqfBRH0O/RUEdMGukKfst435YgjuR2OkwgGuf6FX+ABCXtsmUQEju4wEHUCEnNxvv617ei
+ qdR3WCdcJHrvCRUte02QMiOip0563rfBUR6VmTq5LVB8mr2Krhrd5j3qA1NJ7M6ToSDTxgrCJ
+ Fwqfp+/nckb2HfyJXc1ajs2xOdfn4GvXsomUd24z7o9iT7AjcBOW34zx8r+8uwU7NzCkRDfXr
+ Y976xfry+f24JhklN/mvDwElK3QgfHx3r6q7zoRK1VV6ggbFdYiDDLzyS/IJDbWFyg6itVnui
+ U3o3KjF5oWi0TSGICHtMil/jixrS6/2qMcM0T4eXm/kb1qNwMbjQfP4+yc5cyiICiBWRk5trt
+ NFcWrTc1aL9M+i8ycJe+sONMDaUGFMS8r1fDBZIhltL5z8joBDF+3iPGSa18hTK1tQ0mXK/b2
+ +8kp9jb3a+hnmiYkinzBsCB53g3OEjbwuu2saeIwO2xCOh9ny/qhK6HnnZNa028=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240630_231648_281886_BD41C151 
-X-CRM114-Status: GOOD (  16.78  )
+X-CRM114-CacheID: sfid-20240701_000213_332027_56609CBD 
+X-CRM114-Status: GOOD (  25.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,52 +114,87 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: Linux regressions mailing list <regressions@lists.linux.dev>
-Cc: devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Linux regressions mailing list <regressions@lists.linux.dev>, =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, linux-kernel@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Frank Wunderlich <linux@fw-web.de>, Rob Herring <robh@kernel.org>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-[CCing the other net maintainers]
+Hi,
 
-On 25.06.24 10:51, AngeloGioacchino Del Regno wrote:
-> Il 25/06/24 07:56, Linux regression tracking (Thorsten Leemhuis) ha
-> scritto:
->> On 17.06.24 13:08, Arınç ÜNAL wrote:
->>> On 17/06/2024 11:33, Linux regression tracking (Thorsten Leemhuis)
->>> wrote:
->>> [...]
->> It looks more and more like we are stuck here (or was there progress and
->> I just missed it?) while the 6.10 final is slowly getting closer. Hence:
->>
->> AngeloGioacchino, should we ask the net maintainers to revert
->> 868ff5f4944aa9 ("net: dsa: mt7530-mdio: read PHY address of switch from
->> device tree") for now to resolve this regression? Reminder, there is
->> nothing wrong with that commit per se afaik, it just exposes a problem
->> that needs to be fixed first before it can be reapplied.
-> 
-> To be clear on this: I asked for the commit to be fixed such that it
-> guarantees
-> backwards compatibility with older device trees.
-> 
-> If no fix comes,
+i can confirm that daniels patch pointed by arinc fixes driver for the wro=
+ng devicetree on BPI-R64=2E
 
-I haven't see any since that mail, did you? If not, I think...
+but there are concerns from the netdev/dsa maintainers in its current stat=
+e
 
-> then I guess that we should ask them to revert this commit
-> until a fix is available.
+https://patchwork=2Ekernel=2Eorg/project/linux-mediatek/patch/11f5f127d035=
+0e72569c36f9060b6e642dfaddbb=2E1714514208=2Egit=2Edaniel@makrotopia=2Eorg/
 
-...it's time to ask them for the revert to resolve this for -rc7 (and
-avoid a last minute revert), or what do you think?
+regards Frank
 
-> I don't like this situation, either, btw.
 
-I guess none of us does. :-/
-
-Ciao, Thorsten (wearing his 'the Linux kernel's regression tracker' hat)
---
-Everything you wanna know about Linux kernel regression tracking:
-https://linux-regtracking.leemhuis.info/about/#tldr
-If I did something stupid, please tell me, as explained on that page.
-
-#regzbot poke
+> Gesendet: Montag, 01=2E Juli 2024 um 08:16 Uhr
+> Von: "Linux regression tracking (Thorsten Leemhuis)" <regressions@leemhu=
+is=2Einfo>
+> An: "Paolo Abeni" <pabeni@redhat=2Ecom>, "David S=2E Miller" <davem@dave=
+mloft=2Enet>, "AngeloGioacchino Del Regno" <angelogioacchino=2Edelregno@col=
+labora=2Ecom>, "Jakub Kicinski" <kuba@kernel=2Eorg>
+> Cc: devicetree@vger=2Ekernel=2Eorg, linux-kernel@vger=2Ekernel=2Eorg, li=
+nux-arm-kernel@lists=2Einfradead=2Eorg, linux-mediatek@lists=2Einfradead=2E=
+org, "Daniel Golle" <daniel@makrotopia=2Eorg>, frank-w@public-files=2Ede, "=
+Frank Wunderlich" <linux@fw-web=2Ede>, "Ar=C4=B1n=C3=A7 =C3=9CNAL" <arinc=
+=2Eunal@arinc9=2Ecom>, "Rob Herring" <robh@kernel=2Eorg>, "Conor Dooley" <c=
+onor+dt@kernel=2Eorg>, "Krzysztof Kozlowski" <krzk+dt@kernel=2Eorg>, "Matth=
+ias Brugger" <matthias=2Ebgg@gmail=2Ecom>, "Linux regressions mailing list"=
+ <regressions@lists=2Elinux=2Edev>
+> Betreff: Re: [PATCH] arm64: dts: mt7622: fix switch probe on bananapi-r6=
+4
+>
+> [CCing the other net maintainers]
+>=20
+> On 25=2E06=2E24 10:51, AngeloGioacchino Del Regno wrote:
+> > Il 25/06/24 07:56, Linux regression tracking (Thorsten Leemhuis) ha
+> > scritto:
+> >> On 17=2E06=2E24 13:08, Ar=C4=B1n=C3=A7 =C3=9CNAL wrote:
+> >>> On 17/06/2024 11:33, Linux regression tracking (Thorsten Leemhuis)
+> >>> wrote:
+> >>> [=2E=2E=2E]
+> >> It looks more and more like we are stuck here (or was there progress =
+and
+> >> I just missed it?) while the 6=2E10 final is slowly getting closer=2E=
+ Hence:
+> >>
+> >> AngeloGioacchino, should we ask the net maintainers to revert
+> >> 868ff5f4944aa9 ("net: dsa: mt7530-mdio: read PHY address of switch fr=
+om
+> >> device tree") for now to resolve this regression? Reminder, there is
+> >> nothing wrong with that commit per se afaik, it just exposes a proble=
+m
+> >> that needs to be fixed first before it can be reapplied=2E
+> >=20
+> > To be clear on this: I asked for the commit to be fixed such that it
+> > guarantees
+> > backwards compatibility with older device trees=2E
+> >=20
+> > If no fix comes,
+>=20
+> I haven't see any since that mail, did you? If not, I think=2E=2E=2E
+>=20
+> > then I guess that we should ask them to revert this commit
+> > until a fix is available=2E
+>=20
+> =2E=2E=2Eit's time to ask them for the revert to resolve this for -rc7 (=
+and
+> avoid a last minute revert), or what do you think?
+>=20
+> > I don't like this situation, either, btw=2E
+>=20
+> I guess none of us does=2E :-/
+>=20
+> Ciao, Thorsten (wearing his 'the Linux kernel's regression tracker' hat)
+> --
+> Everything you wanna know about Linux kernel regression tracking:
+> https://linux-regtracking=2Eleemhuis=2Einfo/about/#tldr
+> If I did something stupid, please tell me, as explained on that page=2E
+>=20
+> #regzbot poke
+>
 
