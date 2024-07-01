@@ -4,68 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D18AC2BD09
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Jul 2024 17:30:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87073C3065A
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Jul 2024 18:41:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=U5OVZ1J75PSqabwjcSWrHCaHuo+I/FiKSeSIiY1suTQ=; b=PuRSTedzGFBPtXqYtrTqvOKhZW
-	0CSKPf09IDG5svhpEI6QfpeUqY6vRIYCiOnuSZgiOS1bGmlbimlXRtFFDSSvsoE6qSD6xgHXyUGmv
-	Q44ZwXqNH0FAh2tAdaQPl4DgL/Y58Ei3g1g7CW0/guPGiCK9IkR61CPHYKNq63SgqEavm0cvPSO23
-	T2roGs0rNwvZ3o2ZoQSD7WVQaqRdqM06Qb8UJpocOW4thnKFSkTAH8xPZRqIpf6nSCf0kHZA0j7IC
-	L1JnwHlaGznVagbdqEyxEHqLF3KnY+lQUAf0Nw85Okz8kkqhV1XpwerAtk6CWzclzss0FB17bMJwS
-	LoOTgFlQ==;
+	bh=AdNMm9P0hulJ72BR3Z+Yw/nhilcfGjN3Yz6kQOBvxQw=; b=wvrjJBr7QNmUDIAo3VbIs0VH/L
+	8FbKjDndhrUdrIu/A+MOdY1ecOjhpYqfhnAkxKrGmzEjUZtrq2Fq/5kk9oEtacK9Ovy3kIlk76Rbg
+	zh7//jhT5mt++MBKXHCz5bGMZV3tHylWNzVnqBPNfuWePR6kf1aFk9dvDW/thk78wx/0gbXSYfGq/
+	J0RXIjnPCtvFXPHbD3WAvpBMHtEd0lOOf+7cd+NCB5RN+QZ+wH0fyPujum6TL/JeSFktHuZU0vr+5
+	nYV7+geZBueiV2UhQFf3JYbGtWG9F1Eveiy622zwF/sZAsvWpaN2f6oi4yFVvTuJBIPQlOLUpRHKS
+	WIKsTdEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sOKrS-00000004Jjn-3u4W;
-	Mon, 01 Jul 2024 17:30:42 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1sOLxi-00000004VJL-32xK;
+	Mon, 01 Jul 2024 18:41:14 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sOKrH-00000004Jfy-0owx;
-	Mon, 01 Jul 2024 17:30:32 +0000
+	id 1sOLxX-00000004VGD-2BS7;
+	Mon, 01 Jul 2024 18:41:04 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id B2170614D1;
-	Mon,  1 Jul 2024 17:30:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 5A042C2BD10;
-	Mon,  1 Jul 2024 17:30:28 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 7F8EE6175D;
+	Mon,  1 Jul 2024 18:41:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DD09FC116B1;
+	Mon,  1 Jul 2024 18:40:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1719855028;
-	bh=/40oz/s8RXfS81mQyn18qyWYU+aDlAPyeqR/p4JT5tA=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=gqYrYuRzf3NTkTOhhAV4lwmrklGgFS2fdxAoSTBNzjCwicWeIvVvNqiPYR6vIx+x2
-	 T3679jsW4MacnvnNlqZQRGiCI4EpeBbmP87c+cSMak7Pt9pHoOSKZkVXUaHR3/9C7E
-	 q2UVT56Yu8KG8vZjJdQ9xXxQXX6tiHrue5w3egCyixEoUtStHP8yi8X+0S1Kh+BiDn
-	 Y9U3cTrdyv4r3i6c85NZfog+bPqOkoFFSCyF4FnY/P2sxUcFdgBuB1fcfIXwW57COt
-	 RClLO8zIwpw585IT3HFgt5fELKOk2KUkpXSN1q+U08/EDIwTHsmHTcVh2f3X0GPLOb
-	 +uTAjeSBeH0Yw==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 42775C43468;
-	Mon,  1 Jul 2024 17:30:28 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	s=k20201202; t=1719859262;
+	bh=b9t315kB2irXXTEOqh+BPq5CDd3WoseJBjsx1O8vZSo=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=fX88dpFKO878qmBPMIG3r5lwS2ifsBgzlaZduktbIrYVmU/6VJf1obFf44anDXWnj
+	 bq0pX6Znv9d8lZ+NGsuUm5BcO84WNxJJcJ9bCoIn1Ff8k3OwVsKVH9l9rh0jZlaXSo
+	 vQurBqp789lZAI3w2Prz3qDD+ugCN4NNqdadOYg56BrSmXNUM8obZxOPuCnFH8pFpq
+	 WMzSrEvPR0mE+sikN668ATSUPsi1XKeRDgp098UAHSba52z7o0CxoDcwq8JtnG65pV
+	 sXIR9fHY/CRLXtW5Q46XxpjDFu5SLP2RMYjdgCFRC0GnlSra41TnX3p67DVB9ycr+u
+	 MwZYgw0UmUCOA==
+Date: Mon, 1 Jul 2024 19:40:52 +0100
+From: Jonathan Cameron <jic23@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: lars@metafoo.de, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, matthias.bgg@gmail.com, lee@kernel.org,
+ andy@kernel.org, nuno.sa@analog.com, bigunclemax@gmail.com,
+ dlechner@baylibre.com, marius.cristea@microchip.com,
+ marcelo.schmitt@analog.com, fr0st61te@gmail.com, mitrutzceclan@gmail.com,
+ mike.looijmans@topic.nl, marcus.folkesson@gmail.com,
+ linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, andy.shevchenko@gmail.com,
+ kernel@collabora.com
+Subject: Re: [PATCH v2 0/5] MediaTek MT6357/8/9 PMIC Auxiliary ADC support
+Message-ID: <20240701194052.2702a3da@jic23-huawei>
+In-Reply-To: <20240604123008.327424-1-angelogioacchino.delregno@collabora.com>
+References: <20240604123008.327424-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH V2] dt-bindings: net: bluetooth: convert MT7622 Bluetooth to
- the json-schema
-From: patchwork-bot+bluetooth@kernel.org
-Message-Id: <171985502826.17789.16520261156550841642.git-patchwork-notify@kernel.org>
-Date: Mon, 01 Jul 2024 17:30:28 +0000
-References: <20240628054635.3154-1-zajec5@gmail.com>
-In-Reply-To: <20240628054635.3154-1-zajec5@gmail.com>
-To: =?utf-8?b?UmFmYcWCIE1pxYJlY2tpIDx6YWplYzVAZ21haWwuY29tPg==?=@ci.codeaurora.org
-Cc: davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
- pabeni@redhat.com, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- marcel@holtmann.org, luiz.dentz@gmail.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, sean.wang@mediatek.com,
- linux-bluetooth@vger.kernel.org, netdev@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, rafal@milecki.pl
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240701_103031_321044_4F3D51AF 
-X-CRM114-Status: UNSURE (   7.96  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240701_114103_713457_BB3CC9C7 
+X-CRM114-Status: GOOD (  13.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,30 +79,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+On Tue,  4 Jun 2024 14:30:03 +0200
+AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> wrote:
 
-This patch was applied to bluetooth/bluetooth-next.git (master)
-by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
+> Changes in v2:
+>  - Dropped 'mfd: mt6397-core: Add support for AUXADCs on MT6357/58/59 PMICs'
+>    as Lee J already applied it;
+>  - Added patch to describe the ADC subnode in the MT6357 MFD binding
+>    and moved the example node from mediatek,mt6359-auxadc.yaml to
+>    mediatek,mt6357.yaml
+>  - Added 8-bits {s8,u8}_fract to math.h
+>  - Addressed reviewer comments on mt6359-auxadc driver
 
-On Fri, 28 Jun 2024 07:46:35 +0200 you wrote:
-> From: Rafał Miłecki <rafal@milecki.pl>
+Applied 1,3,4 to the IIO tree. I'm assuming the mfd dt binding update
+will got via mfd and the dts via appropriate SoC tree.
+
+Given time is tight I'll gamble a bit and push directly out as togreg
+rather than normal exposure to 0-day first.
+
+Thanks,
+
+Jonathan
+
 > 
-> This helps validating DTS files. Introduced changes:
-> 1. Dropped serial details from example
-> 2. Added required example include
+> AngeloGioacchino Del Regno (5):
+>   dt-bindings: iio: adc: Add MediaTek MT6359 PMIC AUXADC
+>   dt-bindings: mfd: mediatek,mt6357: Describe Auxiliary ADC subdev
+>   math.h: Add unsigned 8 bits fractional numbers type
+>   iio: adc: Add support for MediaTek MT6357/8/9 Auxiliary ADC
+>   arm64: dts: mediatek: Add ADC node on MT6357, MT6358, MT6359 PMICs
 > 
-> Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
+>  .../iio/adc/mediatek,mt6359-auxadc.yaml       |  33 +
+>  .../bindings/mfd/mediatek,mt6357.yaml         |  10 +
+>  arch/arm64/boot/dts/mediatek/mt6357.dtsi      |   5 +
+>  arch/arm64/boot/dts/mediatek/mt6358.dtsi      |   5 +
+>  arch/arm64/boot/dts/mediatek/mt6359.dtsi      |   5 +
+>  drivers/iio/adc/Kconfig                       |  12 +
+>  drivers/iio/adc/Makefile                      |   1 +
+>  drivers/iio/adc/mt6359-auxadc.c               | 606 ++++++++++++++++++
+>  .../iio/adc/mediatek,mt6357-auxadc.h          |  21 +
+>  .../iio/adc/mediatek,mt6358-auxadc.h          |  22 +
+>  .../iio/adc/mediatek,mt6359-auxadc.h          |  22 +
+>  include/linux/math.h                          |   2 +
+>  12 files changed, 744 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/iio/adc/mediatek,mt6359-auxadc.yaml
+>  create mode 100644 drivers/iio/adc/mt6359-auxadc.c
+>  create mode 100644 include/dt-bindings/iio/adc/mediatek,mt6357-auxadc.h
+>  create mode 100644 include/dt-bindings/iio/adc/mediatek,mt6358-auxadc.h
+>  create mode 100644 include/dt-bindings/iio/adc/mediatek,mt6359-auxadc.h
 > 
-> [...]
-
-Here is the summary with links:
-  - [V2] dt-bindings: net: bluetooth: convert MT7622 Bluetooth to the json-schema
-    https://git.kernel.org/bluetooth/bluetooth-next/c/31cdab2ae178
-
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
 
 
