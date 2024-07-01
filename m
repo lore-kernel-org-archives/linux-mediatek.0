@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30757C30653
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Jul 2024 11:00:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D065DC30653
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Jul 2024 11:00:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rAq9XzpdisPpDBk5/DMxrduMQjsCq4IU/LeBF//Pbc4=; b=MCLkmWDKnoyROgqrVphZbmKIbT
-	F2dPyctvmqOqEaykK82K/L007OngMYLzjGJTb1EklksJqpEntrwFjUjgqpqydrHwncHfNOyqGikyI
-	CalQII3aXm9HNyOMh4jIpegEF7hcnmrnzrtj20q/pj520ynVFUFJp/Kp35kF/WefRJquNvy+jUiV3
-	bMWGa7tqhWrasUjhEUr9vd3xdXnvb1K3UDFCTY2Lww/xPUe9Z2TiJQsMYQqU6MmPZS/3+auBvrjl0
-	uPHoUW/hoySZ4gtqh7UHbJFOHPGEE5j8ViIwqt+5Lky9nj+36To51nKB6MyCLUrKKOWQwTBnDFkeS
-	yo2ahZKw==;
+	bh=YDAYvV/XFqqbwzkucvvhD6M3ybBfweUzERktggMsxRA=; b=iNODKuxNvPjd7NVKCGsmhpBS+Y
+	CFiRe0Y8l4t1l7Uk0UJR24aIpfkjNFNWsnEFRATDST6arV4radTZIgbLne3IZeGPO7r+0PUvA1f8X
+	vWeR4QdWvdVhaUwbIJK83RkR0EjgVjKNGrfa0cVDwCGTgG1hEncxz47zoXmHUKy81UFXpTIdMy1p0
+	SRithsP1XKOOm9HR/DlA2TphokEuCVX4cUGKdtO5xyGR02G1TbeUXK3x+sGqSlxFh8YPHea6DuVx7
+	0pFyAa3Vu27S/PAswJUDPZ4ffPf3fY13Hmv3+kIUvCjAH71AEtegWYM8WrhuwJwSTE3+9ke1lAZ+s
+	9JdHfuew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sOElR-00000002oYC-3WUm;
-	Mon, 01 Jul 2024 11:00:05 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1sOEm7-00000002ooM-17G7;
+	Mon, 01 Jul 2024 11:00:47 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sOElN-00000002oVI-4Bxv;
-	Mon, 01 Jul 2024 11:00:03 +0000
-X-UUID: 0d07f930379911efb2966dae1f787272-20240701
+	id 1sOEm5-00000002onF-1iDm;
+	Mon, 01 Jul 2024 11:00:46 +0000
+X-UUID: 274f7e44379911ef9daba96ee3f3cc8c-20240701
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=rAq9XzpdisPpDBk5/DMxrduMQjsCq4IU/LeBF//Pbc4=;
-	b=D4M8W/YBUIg3LcyvYzp54YpxvDdxBPX5u/7wa0uGc/IrZ8GyotaM9MCXLn/i8ZvjdUocebJ7lxJg8F8w3qyKzpqppxirb9+6kEWf5SxZXNniNzi00XMroQReK6LMcVgEa8ZoIA3kW+uPNTWW0+9xC+3W6tjns2uchJdHCzvOGBU=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=YDAYvV/XFqqbwzkucvvhD6M3ybBfweUzERktggMsxRA=;
+	b=dtCSGZkBqLKB72sfkUL/kWzMjRW6iZefrLocvjTeA29GQUAvyRAeaAEuhXPFcANW8DFAjBuIWOtii/j/hur3K4dhPzs7rcabOJ7Vc5OStmqc5pQhlLC7njfKXRsUWBYc+ZDJC9SHmil6WbphO47mQW1saQ5kl1lsQ0ylOfm+dkU=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.40,REQID:92bc8347-047b-4b46-8653-823c6a6c31b1,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:ba885a6,CLOUDID:da9bf3d0-436f-4604-ad9d-558fa44a3bbe,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-O-INFO: VERSION:1.1.40,REQID:1dbe68e3-68c2-4278-bdac-9e3526bf794b,IP:0,U
+	RL:0,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-20
+X-CID-META: VersionHash:ba885a6,CLOUDID:cf83ed0c-46b0-425a-97d3-4623fe284021,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:1,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 0d07f930379911efb2966dae1f787272-20240701
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 274f7e44379911ef9daba96ee3f3cc8c-20240701
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
 	(envelope-from <skylake.huang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 910474170; Mon, 01 Jul 2024 03:59:55 -0700
+	with ESMTP id 2066809858; Mon, 01 Jul 2024 04:00:40 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 1 Jul 2024 18:59:20 +0800
+ 15.2.1118.26; Mon, 1 Jul 2024 19:00:37 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 1 Jul 2024 18:59:20 +0800
+ 15.2.1118.26 via Frontend Transport; Mon, 1 Jul 2024 19:00:37 +0800
 From: Sky Huang <SkyLake.Huang@mediatek.com>
 To: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
 	Russell King <linux@armlinux.org.uk>, "David S. Miller"
@@ -65,9 +65,9 @@ To: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
 CC: Steven Liu <Steven.Liu@mediatek.com>, SkyLake.Huang
 	<skylake.huang@mediatek.com>
-Subject: [PATCH net-next v10 11/13] net: phy: add driver for built-in 2.5G ethernet PHY on MT7988
-Date: Mon, 1 Jul 2024 18:54:15 +0800
-Message-ID: <20240701105417.19941-12-SkyLake.Huang@mediatek.com>
+Subject: [PATCH net-next v10 13/13] net: phy: mediatek: Remove unnecessary outer parens of "supported_triggers" var
+Date: Mon, 1 Jul 2024 18:54:17 +0800
+Message-ID: <20240701105417.19941-14-SkyLake.Huang@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20240701105417.19941-1-SkyLake.Huang@mediatek.com>
 References: <20240701105417.19941-1-SkyLake.Huang@mediatek.com>
@@ -75,8 +75,9 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240701_040002_107189_1AA6C66D 
-X-CRM114-Status: GOOD (  27.56  )
+X-CRM114-CacheID: sfid-20240701_040045_480481_682A6282 
+X-CRM114-Status: UNSURE (   9.91  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,497 +94,69 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: "SkyLake.Huang" <skylake.huang@mediatek.com>
 
-Add support for internal 2.5Gphy on MT7988. This driver will load
-necessary firmware, add appropriate time delay and figure out LED.
-Also, certain control registers will be set to fix link-up issues.
+This patch removes unnecessary outer parens of "supported_triggers" vars
+in mtk-ge.c & mtk-ge-soc.c to improve readability.
 
 Signed-off-by: SkyLake.Huang <skylake.huang@mediatek.com>
 ---
- MAINTAINERS                          |   1 +
- drivers/net/phy/mediatek/Kconfig     |  11 +
- drivers/net/phy/mediatek/Makefile    |   1 +
- drivers/net/phy/mediatek/mtk-2p5ge.c | 432 +++++++++++++++++++++++++++
- 4 files changed, 445 insertions(+)
- create mode 100644 drivers/net/phy/mediatek/mtk-2p5ge.c
+ drivers/net/phy/mediatek/mtk-ge-soc.c | 16 ++++++++--------
+ drivers/net/phy/mediatek/mtk-ge.c     | 16 ++++++++--------
+ 2 files changed, 16 insertions(+), 16 deletions(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index e58e05c..fe380f2 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -13793,6 +13793,7 @@ M:	Qingfang Deng <dqfext@gmail.com>
- M:	SkyLake Huang <SkyLake.Huang@mediatek.com>
- L:	netdev@vger.kernel.org
- S:	Maintained
-+F:	drivers/net/phy/mediatek/mtk-2p5ge.c
- F:	drivers/net/phy/mediatek/mtk-ge-soc.c
- F:	drivers/net/phy/mediatek/mtk-phy-lib.c
- F:	drivers/net/phy/mediatek/mtk-ge.c
-diff --git a/drivers/net/phy/mediatek/Kconfig b/drivers/net/phy/mediatek/Kconfig
-index 448bc20..1490352 100644
---- a/drivers/net/phy/mediatek/Kconfig
-+++ b/drivers/net/phy/mediatek/Kconfig
-@@ -25,3 +25,14 @@ config MEDIATEK_GE_SOC_PHY
- 	  the MT7981 and MT7988 SoCs. These PHYs need calibration data
- 	  present in the SoCs efuse and will dynamically calibrate VCM
- 	  (common-mode voltage) during startup.
-+
-+config MEDIATEK_2P5GE_PHY
-+	tristate "MediaTek 2.5Gb Ethernet PHYs"
-+	depends on (ARM64 && ARCH_MEDIATEK) || COMPILE_TEST
-+	select MTK_NET_PHYLIB
-+	help
-+	  Supports MediaTek SoC built-in 2.5Gb Ethernet PHYs.
-+
-+	  This will load necessary firmware and add appropriate time delay.
-+	  Accelerate this procedure through internal pbus instead of MDIO
-+	  bus. Certain link-up issues will also be fixed here.
-diff --git a/drivers/net/phy/mediatek/Makefile b/drivers/net/phy/mediatek/Makefile
-index 814879d..c6db8ab 100644
---- a/drivers/net/phy/mediatek/Makefile
-+++ b/drivers/net/phy/mediatek/Makefile
-@@ -2,3 +2,4 @@
- obj-$(CONFIG_MTK_NET_PHYLIB)		+= mtk-phy-lib.o
- obj-$(CONFIG_MEDIATEK_GE_PHY)		+= mtk-ge.o
- obj-$(CONFIG_MEDIATEK_GE_SOC_PHY)	+= mtk-ge-soc.o
-+obj-$(CONFIG_MEDIATEK_2P5GE_PHY)	+= mtk-2p5ge.o
-diff --git a/drivers/net/phy/mediatek/mtk-2p5ge.c b/drivers/net/phy/mediatek/mtk-2p5ge.c
-new file mode 100644
-index 0000000..b55065f
---- /dev/null
-+++ b/drivers/net/phy/mediatek/mtk-2p5ge.c
-@@ -0,0 +1,432 @@
-+// SPDX-License-Identifier: GPL-2.0+
-+#include <linux/bitfield.h>
-+#include <linux/firmware.h>
-+#include <linux/module.h>
-+#include <linux/nvmem-consumer.h>
-+#include <linux/of_address.h>
-+#include <linux/of_platform.h>
-+#include <linux/pinctrl/consumer.h>
-+#include <linux/phy.h>
-+#include <linux/pm_domain.h>
-+#include <linux/pm_runtime.h>
-+
-+#include "mtk.h"
-+
-+#define MTK_2P5GPHY_ID_MT7988	(0x00339c11)
-+
-+#define MT7988_2P5GE_PMB_FW		"mediatek/mt7988/i2p5ge-phy-pmb.bin"
-+#define MT7988_2P5GE_PMB_FW_SIZE	(0x20000)
-+#define MT7988_2P5GE_PMB_FW_BASE	(0x0f100000)
-+#define MT7988_2P5GE_PMB_FW_LEN		(0x20000)
-+#define MT7988_2P5GE_MD32_EN_CFG_BASE	(0x0f0f0018)
-+#define MT7988_2P5GE_MD32_EN_CFG_LEN	(0x20)
-+#define   MD32_EN			BIT(0)
-+
-+#define BASE100T_STATUS_EXTEND		(0x10)
-+#define BASE1000T_STATUS_EXTEND		(0x11)
-+#define EXTEND_CTRL_AND_STATUS		(0x16)
-+
-+#define PHY_AUX_CTRL_STATUS		(0x1d)
-+#define   PHY_AUX_DPX_MASK		GENMASK(5, 5)
-+#define   PHY_AUX_SPEED_MASK		GENMASK(4, 2)
-+
-+#define MTK_PHY_LPI_PCS_DSP_CTRL		(0x121)
-+#define   MTK_PHY_LPI_SIG_EN_LO_THRESH100_MASK	GENMASK(12, 8)
-+
-+/* Registers on Token Ring debug nodes */
-+/* ch_addr = 0x0, node_addr = 0xf, data_addr = 0x3c */
-+#define AUTO_NP_10XEN				BIT(6)
-+
-+struct mtk_i2p5ge_phy_priv {
-+	bool fw_loaded;
-+	unsigned long led_state;
-+};
-+
-+enum {
-+	PHY_AUX_SPD_10 = 0,
-+	PHY_AUX_SPD_100,
-+	PHY_AUX_SPD_1000,
-+	PHY_AUX_SPD_2500,
-+};
-+
-+static int mt798x_2p5ge_phy_load_fw(struct phy_device *phydev)
-+{
-+	struct mtk_i2p5ge_phy_priv *priv = phydev->priv;
-+	void __iomem *md32_en_cfg_base, *pmb_addr;
-+	struct device *dev = &phydev->mdio.dev;
-+	const struct firmware *fw;
-+	int ret, i;
-+	u16 reg;
-+
-+	if (priv->fw_loaded)
-+		return 0;
-+
-+	pmb_addr = ioremap(MT7988_2P5GE_PMB_FW_BASE, MT7988_2P5GE_PMB_FW_LEN);
-+	if (!pmb_addr)
-+		return -ENOMEM;
-+	md32_en_cfg_base = ioremap(MT7988_2P5GE_MD32_EN_CFG_BASE,
-+				   MT7988_2P5GE_MD32_EN_CFG_LEN);
-+	if (!md32_en_cfg_base) {
-+		ret = -ENOMEM;
-+		goto free_pmb;
-+	}
-+
-+	ret = request_firmware(&fw, MT7988_2P5GE_PMB_FW, dev);
-+	if (ret) {
-+		dev_err(dev, "failed to load firmware: %s, ret: %d\n",
-+			MT7988_2P5GE_PMB_FW, ret);
-+		goto free;
-+	}
-+
-+	if (fw->size != MT7988_2P5GE_PMB_FW_SIZE) {
-+		dev_err(dev, "Firmware size 0x%zx != 0x%x\n",
-+			fw->size, MT7988_2P5GE_PMB_FW_SIZE);
-+		ret = -EINVAL;
-+		goto release_fw;
-+	}
-+
-+	reg = readw(md32_en_cfg_base);
-+	if (reg & MD32_EN) {
-+		phy_set_bits(phydev, MII_BMCR, BMCR_RESET);
-+		usleep_range(10000, 11000);
-+	}
-+	phy_set_bits(phydev, MII_BMCR, BMCR_PDOWN);
-+
-+	/* Write magic number to safely stall MCU */
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x800e, 0x1100);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x800f, 0x00df);
-+
-+	for (i = 0; i < MT7988_2P5GE_PMB_FW_SIZE - 1; i += 4)
-+		writel(*((uint32_t *)(fw->data + i)), pmb_addr + i);
-+	dev_info(dev, "Firmware date code: %x/%x/%x, version: %x.%x\n",
-+		 be16_to_cpu(*((__be16 *)(fw->data +
-+					  MT7988_2P5GE_PMB_FW_SIZE - 8))),
-+		 *(fw->data + MT7988_2P5GE_PMB_FW_SIZE - 6),
-+		 *(fw->data + MT7988_2P5GE_PMB_FW_SIZE - 5),
-+		 *(fw->data + MT7988_2P5GE_PMB_FW_SIZE - 2),
-+		 *(fw->data + MT7988_2P5GE_PMB_FW_SIZE - 1));
-+
-+	writew(reg & ~MD32_EN, md32_en_cfg_base);
-+	writew(reg | MD32_EN, md32_en_cfg_base);
-+	phy_set_bits(phydev, MII_BMCR, BMCR_RESET);
-+	/* We need a delay here to stabilize initialization of MCU */
-+	usleep_range(7000, 8000);
-+	dev_info(dev, "Firmware loading/trigger ok.\n");
-+
-+	priv->fw_loaded = true;
-+
-+release_fw:
-+	release_firmware(fw);
-+free:
-+	iounmap(md32_en_cfg_base);
-+free_pmb:
-+	iounmap(pmb_addr);
-+
-+	return ret;
-+}
-+
-+static int mt798x_2p5ge_phy_config_init(struct phy_device *phydev)
-+{
-+	struct pinctrl *pinctrl;
-+	int ret;
-+
-+	/* Check if PHY interface type is compatible */
-+	if (phydev->interface != PHY_INTERFACE_MODE_INTERNAL)
-+		return -ENODEV;
-+
-+	ret = mt798x_2p5ge_phy_load_fw(phydev);
-+	if (ret < 0)
-+		return ret;
-+
-+	/* Setup LED */
-+	phy_set_bits_mmd(phydev, MDIO_MMD_VEND2, MTK_PHY_LED0_ON_CTRL,
-+			 MTK_PHY_LED_ON_POLARITY | MTK_PHY_LED_ON_LINK10 |
-+			 MTK_PHY_LED_ON_LINK100 | MTK_PHY_LED_ON_LINK1000 |
-+			 MTK_PHY_LED_ON_LINK2500);
-+	phy_set_bits_mmd(phydev, MDIO_MMD_VEND2, MTK_PHY_LED1_ON_CTRL,
-+			 MTK_PHY_LED_ON_FDX | MTK_PHY_LED_ON_HDX);
-+
-+	/* Switch pinctrl after setting polarity to avoid bogus blinking */
-+	pinctrl = devm_pinctrl_get_select(&phydev->mdio.dev, "i2p5gbe-led");
-+	if (IS_ERR(pinctrl))
-+		dev_err(&phydev->mdio.dev, "Fail to set LED pins!\n");
-+
-+	phy_modify_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_LPI_PCS_DSP_CTRL,
-+		       MTK_PHY_LPI_SIG_EN_LO_THRESH100_MASK, 0);
-+
-+	/* Enable 16-bit next page exchange bit if 1000-BT isn't advertising */
-+	mtk_tr_modify(phydev, 0x0, 0xf, 0x3c, AUTO_NP_10XEN,
-+		      FIELD_PREP(AUTO_NP_10XEN, 0x1));
-+
-+	/* Enable HW auto downshift */
-+	phy_modify_paged(phydev, MTK_PHY_PAGE_EXTENDED_1,
-+			 MTK_PHY_AUX_CTRL_AND_STATUS,
-+			 0, MTK_PHY_ENABLE_DOWNSHIFT);
-+
-+	return 0;
-+}
-+
-+static int mt798x_2p5ge_phy_config_aneg(struct phy_device *phydev)
-+{
-+	bool changed = false;
-+	u32 adv;
-+	int ret;
-+
-+	/* In fact, if we disable autoneg, we can't link up correctly:
-+	 * 2.5G/1G: Need AN to exchange master/slave information.
-+	 * 100M/10M: Without AN, link starts at half duplex (According to
-+	 *           IEEE 802.3-2018), which this phy doesn't support.
-+	 */
-+	if (phydev->autoneg == AUTONEG_DISABLE)
-+		return -EOPNOTSUPP;
-+
-+	ret = genphy_c45_an_config_aneg(phydev);
-+	if (ret < 0)
-+		return ret;
-+	if (ret > 0)
-+		changed = true;
-+
-+	/* Clause 45 doesn't define 1000BaseT support. Use Clause 22 instead in
-+	 * our design.
-+	 */
-+	adv = linkmode_adv_to_mii_ctrl1000_t(phydev->advertising);
-+	ret = phy_modify_changed(phydev, MII_CTRL1000, ADVERTISE_1000FULL, adv);
-+	if (ret < 0)
-+		return ret;
-+	if (ret > 0)
-+		changed = true;
-+
-+	return genphy_c45_check_and_restart_aneg(phydev, changed);
-+}
-+
-+static int mt798x_2p5ge_phy_get_features(struct phy_device *phydev)
-+{
-+	int ret;
-+
-+	ret = genphy_c45_pma_read_abilities(phydev);
-+	if (ret)
-+		return ret;
-+
-+	/* This phy can't handle collision, and neither can (XFI)MAC it's
-+	 * connected to. Although it can do HDX handshake, it doesn't support
-+	 * CSMA/CD that HDX requires.
-+	 */
-+	linkmode_clear_bit(ETHTOOL_LINK_MODE_100baseT_Half_BIT,
-+			   phydev->supported);
-+
-+	return 0;
-+}
-+
-+static int mt798x_2p5ge_phy_read_status(struct phy_device *phydev)
-+{
-+	int ret;
-+
-+	/* When MDIO_STAT1_LSTATUS is raised genphy_c45_read_link(), this phy
-+	 * actually hasn't finished AN. So use CL22's link update function
-+	 * instead.
-+	 */
-+	ret = genphy_update_link(phydev);
-+	if (ret)
-+		return ret;
-+
-+	phydev->speed = SPEED_UNKNOWN;
-+	phydev->duplex = DUPLEX_UNKNOWN;
-+	phydev->pause = 0;
-+	phydev->asym_pause = 0;
-+
-+	/* We'll read link speed through vendor specific registers down below.
-+	 * So remove phy_resolve_aneg_linkmode (AN on) & genphy_c45_read_pma
-+	 * (AN off).
-+	 */
-+	if (phydev->autoneg == AUTONEG_ENABLE && phydev->autoneg_complete) {
-+		ret = genphy_c45_read_lpa(phydev);
-+		if (ret < 0)
-+			return ret;
-+
-+		/* Clause 45 doesn't define 1000BaseT support. Read the link
-+		 * partner's 1G advertisement via Clause 22.
-+		 */
-+		ret = phy_read(phydev, MII_STAT1000);
-+		if (ret < 0)
-+			return ret;
-+		mii_stat1000_mod_linkmode_lpa_t(phydev->lp_advertising, ret);
-+	} else if (phydev->autoneg == AUTONEG_DISABLE) {
-+		linkmode_zero(phydev->lp_advertising);
-+	}
-+
-+	if (phydev->link) {
-+		ret = phy_read(phydev, PHY_AUX_CTRL_STATUS);
-+		if (ret < 0)
-+			return ret;
-+
-+		switch (FIELD_GET(PHY_AUX_SPEED_MASK, ret)) {
-+		case PHY_AUX_SPD_10:
-+			phydev->speed = SPEED_10;
-+			break;
-+		case PHY_AUX_SPD_100:
-+			phydev->speed = SPEED_100;
-+			break;
-+		case PHY_AUX_SPD_1000:
-+			phydev->speed = SPEED_1000;
-+			break;
-+		case PHY_AUX_SPD_2500:
-+			phydev->speed = SPEED_2500;
-+			break;
-+		}
-+
-+		phydev->duplex = DUPLEX_FULL;
-+		/* FIXME:
-+		 * The current firmware always enables rate adaptation mode.
-+		 */
-+		phydev->rate_matching = RATE_MATCH_PAUSE;
-+	}
-+
-+	return 0;
-+}
-+
-+static int mt798x_2p5ge_phy_get_rate_matching(struct phy_device *phydev,
-+					      phy_interface_t iface)
-+{
-+	return RATE_MATCH_PAUSE;
-+}
-+
-+static const unsigned long supported_triggers =
+diff --git a/drivers/net/phy/mediatek/mtk-ge-soc.c b/drivers/net/phy/mediatek/mtk-ge-soc.c
+index 6d95e7d..6fc989d 100644
+--- a/drivers/net/phy/mediatek/mtk-ge-soc.c
++++ b/drivers/net/phy/mediatek/mtk-ge-soc.c
+@@ -1224,14 +1224,14 @@ static int mt798x_phy_led_brightness_set(struct phy_device *phydev,
+ }
+ 
+ static const unsigned long supported_triggers =
+-	(BIT(TRIGGER_NETDEV_FULL_DUPLEX) |
+-	 BIT(TRIGGER_NETDEV_HALF_DUPLEX) |
+-	 BIT(TRIGGER_NETDEV_LINK)        |
+-	 BIT(TRIGGER_NETDEV_LINK_10)     |
+-	 BIT(TRIGGER_NETDEV_LINK_100)    |
+-	 BIT(TRIGGER_NETDEV_LINK_1000)   |
+-	 BIT(TRIGGER_NETDEV_RX)          |
+-	 BIT(TRIGGER_NETDEV_TX));
 +	BIT(TRIGGER_NETDEV_FULL_DUPLEX) |
++	BIT(TRIGGER_NETDEV_HALF_DUPLEX) |
 +	BIT(TRIGGER_NETDEV_LINK)        |
 +	BIT(TRIGGER_NETDEV_LINK_10)     |
 +	BIT(TRIGGER_NETDEV_LINK_100)    |
 +	BIT(TRIGGER_NETDEV_LINK_1000)   |
-+	BIT(TRIGGER_NETDEV_LINK_2500)   |
 +	BIT(TRIGGER_NETDEV_RX)          |
 +	BIT(TRIGGER_NETDEV_TX);
-+
-+static int mt798x_2p5ge_phy_led_blink_set(struct phy_device *phydev, u8 index,
-+					  unsigned long *delay_on,
-+					  unsigned long *delay_off)
-+{
-+	struct mtk_i2p5ge_phy_priv *priv = phydev->priv;
-+	bool blinking = false;
-+	int err = 0;
-+
-+	err = mtk_phy_led_num_dly_cfg(index, delay_on, delay_off, &blinking);
-+	if (err < 0)
-+		return err;
-+
-+	err = mtk_phy_hw_led_blink_set(phydev, index, &priv->led_state,
-+				       blinking);
-+	if (err)
-+		return err;
-+
-+	return mtk_phy_hw_led_on_set(phydev, index, &priv->led_state,
-+				     MTK_2P5GPHY_LED_ON_MASK, false);
-+}
-+
-+static int mt798x_2p5ge_phy_led_brightness_set(struct phy_device *phydev,
-+					       u8 index,
-+					       enum led_brightness value)
-+{
-+	struct mtk_i2p5ge_phy_priv *priv = phydev->priv;
-+	int err;
-+
-+	err = mtk_phy_hw_led_blink_set(phydev, index, &priv->led_state, false);
-+	if (err)
-+		return err;
-+
-+	return mtk_phy_hw_led_on_set(phydev, index, &priv->led_state,
-+				     MTK_2P5GPHY_LED_ON_MASK,
-+				     (value != LED_OFF));
-+}
-+
-+static int mt798x_2p5ge_phy_led_hw_is_supported(struct phy_device *phydev,
-+						u8 index, unsigned long rules)
-+{
-+	return mtk_phy_led_hw_is_supported(phydev, index, rules,
-+					   supported_triggers);
-+}
-+
-+static int mt798x_2p5ge_phy_led_hw_control_get(struct phy_device *phydev,
-+					       u8 index, unsigned long *rules)
-+{
-+	struct mtk_i2p5ge_phy_priv *priv = phydev->priv;
-+
-+	return mtk_phy_led_hw_ctrl_get(phydev, index, rules, &priv->led_state,
-+				       MTK_2P5GPHY_LED_ON_SET,
-+				       MTK_2P5GPHY_LED_RX_BLINK_SET,
-+				       MTK_2P5GPHY_LED_TX_BLINK_SET);
-+};
-+
-+static int mt798x_2p5ge_phy_led_hw_control_set(struct phy_device *phydev,
-+					       u8 index, unsigned long rules)
-+{
-+	struct mtk_i2p5ge_phy_priv *priv = phydev->priv;
-+
-+	return mtk_phy_led_hw_ctrl_set(phydev, index, rules, &priv->led_state,
-+				       MTK_2P5GPHY_LED_ON_SET,
-+				       MTK_2P5GPHY_LED_RX_BLINK_SET,
-+				       MTK_2P5GPHY_LED_TX_BLINK_SET);
-+};
-+
-+static int mt798x_2p5ge_phy_probe(struct phy_device *phydev)
-+{
-+	struct mtk_i2p5ge_phy_priv *priv;
-+
-+	priv = devm_kzalloc(&phydev->mdio.dev,
-+			    sizeof(struct mtk_i2p5ge_phy_priv), GFP_KERNEL);
-+	if (!priv)
-+		return -ENOMEM;
-+
-+	switch (phydev->drv->phy_id) {
-+	case MTK_2P5GPHY_ID_MT7988:
-+		/* The original hardware only sets MDIO_DEVS_PMAPMD */
-+		phydev->c45_ids.mmds_present |= MDIO_DEVS_PCS |
-+						MDIO_DEVS_AN |
-+						MDIO_DEVS_VEND1 |
-+						MDIO_DEVS_VEND2;
-+		break;
-+	default:
-+		return -EINVAL;
-+	}
-+
-+	priv->fw_loaded = false;
-+	phydev->priv = priv;
-+
-+	mtk_phy_leds_state_init(phydev);
-+
-+	return 0;
-+}
-+
-+static struct phy_driver mtk_2p5gephy_driver[] = {
-+	{
-+		PHY_ID_MATCH_MODEL(MTK_2P5GPHY_ID_MT7988),
-+		.name = "MediaTek MT7988 2.5GbE PHY",
-+		.probe = mt798x_2p5ge_phy_probe,
-+		.config_init = mt798x_2p5ge_phy_config_init,
-+		.config_aneg = mt798x_2p5ge_phy_config_aneg,
-+		.get_features = mt798x_2p5ge_phy_get_features,
-+		.read_status = mt798x_2p5ge_phy_read_status,
-+		.get_rate_matching = mt798x_2p5ge_phy_get_rate_matching,
-+		.suspend = genphy_suspend,
-+		.resume = genphy_resume,
-+		.read_page = mtk_phy_read_page,
-+		.write_page = mtk_phy_write_page,
-+		.led_blink_set = mt798x_2p5ge_phy_led_blink_set,
-+		.led_brightness_set = mt798x_2p5ge_phy_led_brightness_set,
-+		.led_hw_is_supported = mt798x_2p5ge_phy_led_hw_is_supported,
-+		.led_hw_control_get = mt798x_2p5ge_phy_led_hw_control_get,
-+		.led_hw_control_set = mt798x_2p5ge_phy_led_hw_control_set,
-+	},
-+};
-+
-+module_phy_driver(mtk_2p5gephy_driver);
-+
-+static struct mdio_device_id __maybe_unused mtk_2p5ge_phy_tbl[] = {
-+	{ PHY_ID_MATCH_VENDOR(0x00339c00) },
-+	{ }
-+};
-+
-+MODULE_DESCRIPTION("MediaTek 2.5Gb Ethernet PHY driver");
-+MODULE_AUTHOR("SkyLake Huang <SkyLake.Huang@mediatek.com>");
-+MODULE_LICENSE("GPL");
-+
-+MODULE_DEVICE_TABLE(mdio, mtk_2p5ge_phy_tbl);
-+MODULE_FIRMWARE(MT7988_2P5GE_PMB_FW);
+ 
+ static int mt798x_phy_led_hw_is_supported(struct phy_device *phydev, u8 index,
+ 					  unsigned long rules)
+diff --git a/drivers/net/phy/mediatek/mtk-ge.c b/drivers/net/phy/mediatek/mtk-ge.c
+index 90f3990..050a4f7 100644
+--- a/drivers/net/phy/mediatek/mtk-ge.c
++++ b/drivers/net/phy/mediatek/mtk-ge.c
+@@ -152,14 +152,14 @@ static int mt753x_phy_led_brightness_set(struct phy_device *phydev,
+ }
+ 
+ static const unsigned long supported_triggers =
+-	(BIT(TRIGGER_NETDEV_FULL_DUPLEX) |
+-	 BIT(TRIGGER_NETDEV_HALF_DUPLEX) |
+-	 BIT(TRIGGER_NETDEV_LINK)        |
+-	 BIT(TRIGGER_NETDEV_LINK_10)     |
+-	 BIT(TRIGGER_NETDEV_LINK_100)    |
+-	 BIT(TRIGGER_NETDEV_LINK_1000)   |
+-	 BIT(TRIGGER_NETDEV_RX)          |
+-	 BIT(TRIGGER_NETDEV_TX));
++	BIT(TRIGGER_NETDEV_FULL_DUPLEX) |
++	BIT(TRIGGER_NETDEV_HALF_DUPLEX) |
++	BIT(TRIGGER_NETDEV_LINK)        |
++	BIT(TRIGGER_NETDEV_LINK_10)     |
++	BIT(TRIGGER_NETDEV_LINK_100)    |
++	BIT(TRIGGER_NETDEV_LINK_1000)   |
++	BIT(TRIGGER_NETDEV_RX)          |
++	BIT(TRIGGER_NETDEV_TX);
+ 
+ static int mt753x_phy_led_hw_is_supported(struct phy_device *phydev, u8 index,
+ 					  unsigned long rules)
 -- 
 2.18.0
 
