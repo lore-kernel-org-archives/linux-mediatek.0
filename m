@@ -4,83 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14812C30658
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jul 2024 22:45:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8378DC3065C
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jul 2024 23:45:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=bXH6yqUDqi7Vg0v0Joj//hsGD033jE+cineD1J82zNA=; b=u6oeq94Utg/oP+IsWcnyfSHLGK
-	qKkSYgDuVrpjHw5SA6GWFrQQfmZIxdnit8cXLdzTyyAEBifUi6GV/OrIvynOAFh2NFzPugktzdwXZ
-	MhzOOcdBtfGxyEy6T7oE1DPkWZKxHSM0tK/A8hQjPcTSCXm+IProyzxolWNNQt0ZUJdu1yZYcR7YR
-	RLYGiA/N22Lz9tIiHiJ2NK2gJN7cV4ZfOntmL6bIWx3XUiQ7HwW0gsbwovXeWXTaP8GPcct2gSDZ6
-	QMvHRVoDAMBBNXVAWTnDwEQH9i4yzOrpkUtjbrhfW4btmgmdfkNkleRLiMR3TMx5mMnwifsF6Wpms
-	/rK3Lg9g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=7rHbeOieAaMo7WgpABNNHG68Jyd88eEbHI7ahuoRi/Y=; b=pD6yc1U//nOw7M3FQTXqtgmPq/
+	YgtkJKmKvFcqsF3VK1qrt0Y5v0D+84aSQFVg3kmiHQHsOpmREo6twWwlQSWWytl3ryzlLwcJZIbEU
+	wioj7RTwO3Q1oPkqrLk2J0L+gF8+F5G0yNAvIf0CpJIp5aQIaUThtwQLXHLNwbrVSyZA+u79MJcmg
+	APBF7a5R4k73BdnppNE4yPGdnM51OryRhfuWbl+K0beUdBbxftbNp6pWnor7Cv137arUrvULPz5sF
+	SjqjsAGQ9nuKyNlxj4w1fBi8k1ArmvAR3DdDj2j1TpmKcphKtIfVOyeLA/1SQmEllqCNhmgDwDaBE
+	OiRqax9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sOmFR-00000008EZs-1cXg;
-	Tue, 02 Jul 2024 22:45:17 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1sOnBJ-00000008KI9-0Y2V;
+	Tue, 02 Jul 2024 23:45:05 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sOmFE-00000008ESv-1Aei;
-	Tue, 02 Jul 2024 22:45:06 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id B86EACE0EA0;
-	Tue,  2 Jul 2024 22:45:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E5A56C116B1;
-	Tue,  2 Jul 2024 22:44:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1719960300;
-	bh=N9gkNN597b9sR0qa3FEqcM+w+j2TQMy5ad+/Ia1JOuA=;
-	h=From:Date:Subject:To:Cc:From;
-	b=fHxIllVLyhXeUzrrqgBSxZaqdLY4X/Ny3uM6gnugxlqFmhRRW+L6yAtk4aSb/jusO
-	 sUEOi3jp4fSqxFEm/7DSadrIGxOva0mgShM2tGwFNIjqs1rN519+FSx/TAuOAD6hCh
-	 +MO9xXKwOOm3+meX6HGfNkTkmRHty+Ya9yu5hbkStr1kUL3EmjE70fgOUd26hoyZOw
-	 Oq6KnwDL4N3etWPQ9Uyf6y3ngGQ6yMybAvJgjiHMRlw2KE+zUEwped5FXWqNy0i37r
-	 YSt8feEeKdibzUVJNEIFRHgCgvoYHIaywre0ZO/J57PdPF77eCWPXAnOaF2LKVwTAo
-	 qbPR3xWaR6QTQ==
-From: Jeff Layton <jlayton@kernel.org>
-Date: Tue, 02 Jul 2024 18:44:48 -0400
-Subject: [PATCH] filelock: fix potential use-after-free in posix_lock_inode
+	id 1sOnB6-00000008KCy-060i;
+	Tue, 02 Jul 2024 23:44:53 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.97.1)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1sOnAq-000000006lM-23eU;
+	Tue, 02 Jul 2024 23:44:36 +0000
+Date: Wed, 3 Jul 2024 00:44:28 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	Frank Wunderlich <linux@fw-web.de>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, regressions@lists.linux.dev
+Subject: [PATCH net v3] net: dsa: mt7530: fix impossible MDIO address and
+ issue warning
+Message-ID: <7e3fed489c0bbca84a386b1077c61589030ff4ab.1719963228.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20240702-filelock-6-10-v1-1-96e766aadc98@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAN+ChGYC/x3MQQqAIBBA0avIrBuY1Aq6SrQQG2soKhQiEO+et
- HyL/zMkjsIJRpUh8iNJrrOibRT4zZ0royzVoElbGkhjkIOPy+/YY0togiPyzgbuDNTmjhzk/X/
- TXMoH6WIooV8AAAA=
-To: Chuck Lever <chuck.lever@oracle.com>, 
- Alexander Aring <alex.aring@gmail.com>, 
- Alexander Viro <viro@zeniv.linux.org.uk>, 
- Christian Brauner <brauner@kernel.org>, Jan Kara <jack@suse.cz>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-fsdevel@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- =?utf-8?q?Light_Hsieh_=28=E8=AC=9D=E6=98=8E=E7=87=88=29?= <Light.Hsieh@mediatek.com>, 
- Jeff Layton <jlayton@kernel.org>
-X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1398; i=jlayton@kernel.org;
- h=from:subject:message-id; bh=N9gkNN597b9sR0qa3FEqcM+w+j2TQMy5ad+/Ia1JOuA=;
- b=owEBbQKS/ZANAwAIAQAOaEEZVoIVAcsmYgBmhILqZlQ+jSGuftugdfRgVXDYEoT/mrJY9prPk
- nxSHoES/ICJAjMEAAEIAB0WIQRLwNeyRHGyoYTq9dMADmhBGVaCFQUCZoSC6gAKCRAADmhBGVaC
- FU1sEACqh3qt+ZjTufAOay8j1Wmhc3HGHy7QZd/s81V9UE/vLuINRtRe3ZthoaMhHZP0VGkkqf8
- 7G0hyIjvJTRedRVBSSMdMRKzNq1QvsIlNWWP/KSRUAfF3jlUSlql5PzS3nC2FIpaP3KT9h+KWG6
- a65s+/AL1gWte8ADd6CBhU9lo6gOFh51KP3nwJa1+axZHtO4uTzMLBzY/1HUV8W/l3oxZmzKU5J
- hqwaNIGlv64CDr/pY7XGqDYjFN0e16D6q9lNeBI6UdKk1zj9HLtRKKeFXyFXnmfiBCd/iwrudeJ
- PLtHACyGDG5oohrdXFut5zDhJBiYb0oNITnpBkcf/lj+7zwdxQG7zXEDb/7fIOYHs/CFXFENI0o
- QvXQ3CYbSaEjXICClQ26OFW4M4KTD31DlMosoLUz/e9JAlwFkBGJuKt4UbUbLIBu9htT4SOU3Mh
- tmCeDN9cAW8BMxvI9L5JJ/nTx6m0GyAG5qUexbAdpWvCke4rD8oc+0ToE5zi2DpoFmAB7U0fff6
- Ek4/rqJCyoLfDoC0/ArjRuErm3mVJtDS4pDixLbkjtY+NJLno3hbCHGuya2OiQfQnsMMm4Fxca6
- FdHNRQlYxkQqefOPO/ZhKUcStv/BcDBm2aCKAOuE3bSiW1w1e3VrGAezwgHvPXgMdDdzgFpE5hf
- pffpExgn/VgI2ng==
-X-Developer-Key: i=jlayton@kernel.org; a=openpgp;
- fpr=4BC0D7B24471B2A184EAF5D3000E684119568215
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240702_154504_693516_3105D16C 
-X-CRM114-Status: GOOD (  11.15  )
+X-CRM114-CacheID: sfid-20240702_164452_092190_EC798463 
+X-CRM114-Status: GOOD (  24.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,44 +73,164 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Light Hsieh reported a KASAN UAF warning in trace_posix_lock_inode().
-The request pointer had been changed earlier to point to a lock entry
-that was added to the inode's list. However, before the tracepoint could
-fire, another task raced in and freed that lock.
+The MDIO address of the MT7530 and MT7531 switch ICs can be configured
+using bootstrap pins. However, there are only 4 possible options for the
+switch itself: 7, 15, 23 and 31. As in MediaTek's SDK the address of the
+switch is wrongly stated in the device tree as 0 (while in reality it is
+31), warn the user about such broken device tree and make a good guess
+what was actually intended.
 
-Fix this by moving the tracepoint inside the spinlock, which should
-ensure that this doesn't happen.
+This is imporant also to not break compatibility with older Device Trees
+as with commit 868ff5f4944a ("net: dsa: mt7530-mdio: read PHY address of
+switch from device tree") the address in device tree will be taken into
+account, while before it was hard-coded to 0x1f.
 
-Fixes: 74f6f5912693 ("locks: fix KASAN: use-after-free in trace_event_raw_event_filelock_lock")
-Link: https://lore.kernel.org/linux-fsdevel/724ffb0a2962e912ea62bb0515deadf39c325112.camel@kernel.org/
-Reported-by: Light Hsieh (謝明燈) <Light.Hsieh@mediatek.com>
-Signed-off-by: Jeff Layton <jlayton@kernel.org>
+Fixes: b8f126a8d543 ("net-next: dsa: add dsa support for Mediatek MT7530 switch")
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 ---
- fs/locks.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Only tested on BPi-R3 (with various deliberately broken DT) for now!
 
-diff --git a/fs/locks.c b/fs/locks.c
-index c360d1992d21..bdd94c32256f 100644
---- a/fs/locks.c
-+++ b/fs/locks.c
-@@ -1367,9 +1367,9 @@ static int posix_lock_inode(struct inode *inode, struct file_lock *request,
- 		locks_wake_up_blocks(&left->c);
- 	}
-  out:
-+	trace_posix_lock_inode(inode, request, error);
- 	spin_unlock(&ctx->flc_lock);
- 	percpu_up_read(&file_rwsem);
--	trace_posix_lock_inode(inode, request, error);
- 	/*
- 	 * Free any unused locks.
- 	 */
+Changes since v2 [2]:
+ - use macros instead of magic numbers
+ - introduce helper functions
+ - register new device on MDIO bus instead of messing with the address
+   and schedule delayed_work to unregister the "wrong" device.
+   This is a slightly different approach than suggested by Russell, but
+   imho makes things much easier than keeping the "wrong" device and
+   having to deal with keeping the removal of both devices linked.
+ - improve comments
 
----
-base-commit: e9d22f7a6655941fc8b2b942ed354ec780936b3e
-change-id: 20240702-filelock-6-10-3fa00ca4fe53
+Changes since v1 [1]:
+ - use FW_WARN as suggested.
+ - fix build on net tree which doesn't have 'mdiodev' as member of the
+   priv struct. Imho including this patch as fix makes sense to warn
+   users about broken firmware, even if the change introducing the
+   actual breakage is only present in net-next for now.
 
-Best regards,
+[1]: https://patchwork.kernel.org/project/netdevbpf/patch/e615351aefba25e990215845e4812e6cb8153b28.1714433716.git.daniel@makrotopia.org/
+[2]: https://patchwork.kernel.org/project/netdevbpf/patch/11f5f127d0350e72569c36f9060b6e642dfaddbb.1714514208.git.daniel@makrotopia.org/
+
+ drivers/net/dsa/mt7530-mdio.c | 92 +++++++++++++++++++++++++++++++++++
+ 1 file changed, 92 insertions(+)
+
+diff --git a/drivers/net/dsa/mt7530-mdio.c b/drivers/net/dsa/mt7530-mdio.c
+index 51df42ccdbe6..b5049ec2d84d 100644
+--- a/drivers/net/dsa/mt7530-mdio.c
++++ b/drivers/net/dsa/mt7530-mdio.c
+@@ -11,6 +11,7 @@
+ #include <linux/regmap.h>
+ #include <linux/reset.h>
+ #include <linux/regulator/consumer.h>
++#include <linux/workqueue.h>
+ #include <net/dsa.h>
+ 
+ #include "mt7530.h"
+@@ -136,6 +137,93 @@ static const struct of_device_id mt7530_of_match[] = {
+ };
+ MODULE_DEVICE_TABLE(of, mt7530_of_match);
+ 
++static int
++mt7530_correct_addr(int phy_addr)
++{
++	/* The corrected address is calculated as stated below:
++	 * 0~6   -> 31
++	 * 8~14  -> 7
++	 * 16~22 -> 15
++	 * 24~30 -> 23
++	 */
++return ((((phy_addr - MT7530_NUM_PORTS) & ~MT7530_NUM_PORTS) % PHY_MAX_ADDR) +
++	MT7530_NUM_PORTS) & (PHY_MAX_ADDR - 1);
++}
++
++static bool
++mt7530_is_invalid_addr(int phy_addr)
++{
++	/* Only MDIO bus addresses 7, 15, 23, and 31 are valid options,
++	 * which all have the least significant three bits set. Check
++	 * for this.
++	 */
++	return (phy_addr & MT7530_NUM_PORTS) != MT7530_NUM_PORTS;
++}
++
++struct remove_impossible_priv {
++	struct delayed_work remove_impossible_work;
++	struct mdio_device *mdiodev;
++};
++
++static void
++mt7530_remove_impossible(struct work_struct *work)
++{
++	struct remove_impossible_priv *priv = container_of(work, struct remove_impossible_priv,
++							   remove_impossible_work.work);
++	struct mdio_device *mdiodev = priv->mdiodev;
++
++	mdio_device_remove(mdiodev);
++	mdio_device_free(mdiodev);
++	kfree(priv);
++}
++
++static int
++mt7530_reregister(struct mdio_device *mdiodev)
++{
++	/* If the address in DT must be wrong, make a good guess about
++	 * the most likely intention, issue a warning, register a new
++	 * MDIO device at the correct address and schedule the removal
++	 * of the device having an impossible address.
++	 */
++	struct fwnode_handle *fwnode = dev_fwnode(&mdiodev->dev);
++	int corrected_addr = mt7530_correct_addr(mdiodev->addr);
++	struct remove_impossible_priv *rem_priv;
++	struct mdio_device *new_mdiodev;
++	int ret;
++
++	rem_priv = kmalloc(sizeof(*rem_priv), GFP_KERNEL);
++	if (!rem_priv)
++		return -ENOMEM;
++
++	new_mdiodev = mdio_device_create(mdiodev->bus, corrected_addr);
++	if (IS_ERR(new_mdiodev)) {
++		ret = PTR_ERR(new_mdiodev);
++		goto out_free_work;
++	}
++	device_set_node(&new_mdiodev->dev, fwnode);
++
++	ret = mdio_device_register(new_mdiodev);
++	if (WARN_ON(ret))
++		goto out_free_dev;
++
++	dev_warn(&mdiodev->dev, FW_WARN
++		 "impossible switch MDIO address in device tree, assuming %d\n",
++		 corrected_addr);
++
++	/* schedule impossible device for removal from mdio bus */
++	rem_priv->mdiodev = mdiodev;
++	INIT_DELAYED_WORK(&rem_priv->remove_impossible_work, mt7530_remove_impossible);
++	schedule_delayed_work(&rem_priv->remove_impossible_work, 0);
++
++	return -EFAULT;
++
++out_free_dev:
++	mdio_device_free(new_mdiodev);
++out_free_work:
++	kfree(rem_priv);
++	return ret;
++}
++
+ static int
+ mt7530_probe(struct mdio_device *mdiodev)
+ {
+@@ -144,6 +232,10 @@ mt7530_probe(struct mdio_device *mdiodev)
+ 	struct device_node *dn;
+ 	int ret;
+ 
++	/* Check and if needed correct the MDIO address of the switch */
++	if (mt7530_is_invalid_addr(mdiodev->addr))
++		return mt7530_reregister(mdiodev);
++
+ 	dn = mdiodev->dev.of_node;
+ 
+ 	priv = devm_kzalloc(&mdiodev->dev, sizeof(*priv), GFP_KERNEL);
 -- 
-Jeff Layton <jlayton@kernel.org>
+2.45.2
 
 
