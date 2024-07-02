@@ -4,67 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAE08C3064D
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jul 2024 05:48:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 297ABC30658
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jul 2024 05:57:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xIGoN7Aor9G17LWovttEF9lgok/itZwGOx9FUjFJCW8=; b=Yj+tXjKRvmNpRawzs8FWwt+PXx
-	yw2Z6i8lRWh3bsJIvpfY3IOq2mY+U8k6elRlZG8QCMNJ++SwW4HE+86/7EumQBhRORoKczW0l7Zvk
-	w93oUM2z14QNMXme+XO+Xci2BbJXpVd0hIXa2LczJfo1LEzvxASr7vtXwRkIxGGTtEMjPCzFfqGIq
-	xXOwHNvwWcbRfGUpOXIOtm9V9JD268M7MHVSdxB65RQVF3x/7STdyD5A+X+UyKwanZBUK9xl59h5k
-	imDV36nu78dvPMLL7FmGE0dY2MF9DeedWJxAuFJYk0KEVrFodfxdB3JdaiKHL9nG23U44JQaTVTHu
-	VKTym2cQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=I5rG7724QFwFDpF6Kn0xpJ+NJU0J1nnnGMkvWaoZGyc=; b=Xdgb1QUPIM+np7CFj4O8wHiOqR
+	h+Nqwa/AjQN5v7eWJINvKY2lwRwpFfmaNWrV+3NdwuUkaxtpc1DRa5tliG+mYDkJ7yt6L9e92x4t9
+	9ceWJL9gvd6a6aX/fQj9UkENjCBqZ2p/HZP2zjotuozuaci74Gr7VpiB2X5aolCYZncTrDu7wX60z
+	lk+7/uECJJsk8UlVvnk8AHN82e22uAKBnKbMRuRCBANHlE1h3rA0k4dNigqE7kxmN+WMaOstfYmP7
+	eWSXrLfAdGVqUfD/U62UU/S5YxuZDk1EMdPmZOH35vvusdRo8qRWFLtHBu4zR/cI4NxLGQekYkcTK
+	bZuDPIUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sOWN7-00000005cus-23yr;
-	Tue, 02 Jul 2024 05:48:09 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1sOWVq-00000005ezy-1kZA;
+	Tue, 02 Jul 2024 05:57:10 +0000
+Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sOWMw-00000005ctf-160A;
-	Tue, 02 Jul 2024 05:47:59 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1719899277;
-	bh=Bn3wG4lA+xxGiSruiHBol9oYVeiEnMeIGUNym8g/cIo=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=4L1OOc1CMaqgg0QIXjgIFNkXfJ0CecvLU2J0BI6d5vzQBkZQhz0yY2bR9K+YU0sor
-	 GOHqzqFBN8NXvkwF3Sz8yft2ORq6G7wDqct3gu0wYmVY4dIE+L3xnuuEC/09vpcrrq
-	 SPwsLiB437/77bdi6yDbrI/hFopyJI4vey7asWFl/y3ENpqKVhlY2hQQ73Vnm2P7Z/
-	 IGvoEhoSJqsL6GVHjqKsg7mQMDZOqCHJG7OxmcPujOYn4GB+B4Xdb0lNApvmJ3xQpk
-	 SOD5S+yyLGZiwY2MAUUuRdeSKuxmV63nRzZF8HmtlI3sWs+trb/wyHuyvk7/hVEg8N
-	 PEEFRuxcTIidg==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 81F9837811EB;
-	Tue,  2 Jul 2024 05:47:56 +0000 (UTC)
-Message-ID: <70b31b71-750b-4de0-9102-0852fef7d623@collabora.com>
-Date: Tue, 2 Jul 2024 07:47:55 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+	id 1sOWVm-00000005ez8-40L5
+	for linux-mediatek@lists.infradead.org;
+	Tue, 02 Jul 2024 05:57:08 +0000
+Received: by mail-pl1-x62f.google.com with SMTP id d9443c01a7336-1f9de13d6baso22748615ad.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 01 Jul 2024 22:57:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1719899826; x=1720504626; darn=lists.infradead.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=I5rG7724QFwFDpF6Kn0xpJ+NJU0J1nnnGMkvWaoZGyc=;
+        b=LyRcj9gFXREkwyjhCFxEWWdLUNj7yj6RoLc/avyEm86gpfFUzpApn63iCjgpOvkjy0
+         KhJjK1MyPkzP6mGsB9c36NNNX80SPz3dK0yZhC5d9iVw6arIclUZCPjOfIctemNfODB4
+         6kfiYEjDi46bHItG12YRj6R0YiAktvCA5toDJomdI4uCJjG/srMlB900PIwFGuIhqw2s
+         SaMT+V7GPv+gPy80ospFeNb8ZeuSMIjSRnJY9DpKqPUmP1nuK40us8BoUL0cumVGstac
+         r1OrFhkXrKziTsCKvF825mXdTKAlTqrBd/WeihcD1ix424YYhEu2+/XZC3DsMAX8GDg+
+         S3IQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1719899826; x=1720504626;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=I5rG7724QFwFDpF6Kn0xpJ+NJU0J1nnnGMkvWaoZGyc=;
+        b=rcKqkHgx1sMHwgnif1H4sen3z9CQN5nxnYtIYJr+2vLhJHbzM4YpBnSwLSnHoRyeMb
+         ZJ+nX8LPrFL51ypSQ2gQhzhp8ylQ7nyMcaB6q3nr95abuSt13zdZ9HEyHcYAjPDoPSZ8
+         HiRAqoTc9C+UT/rYa9In0qsB6806DkygiaVI919DN4FmCpqEAyyNSwsBAtJGwDaZZrBd
+         G5NR72+0srBjrchdL1yYcW4DclFK7ZtUuJChROgc3rhs9In6Jv1fhFsyYUDEXsfZ1KWY
+         amB8NicboLxEtm+Dgh8JdWUP3CeB3GgE/S54SUDq4XtXPAAxL6/J7zEcdReZRu+O8cxg
+         OpQg==
+X-Forwarded-Encrypted: i=1; AJvYcCV7WnvuytxrOOZRFhomoC2iHPQh307FhJrXHDwlSZ8UM5IQw22VIL9KspIuQGCchWkVTOvEYkSjIsemcT/2kkOaqLSgaLLN6Wo5+Z6ehaNxba9b
+X-Gm-Message-State: AOJu0Yyw2Ag18FhqB8YS+MsZ1qHrLQ37AmSo9F/tVJN6dMUxiBYcVbId
+	EPQiehbwEJ7kOnCkrO1S/bHcdmck29sQEbCg2aI2Tgf9hpC+//PkIAgyZVyWOGA=
+X-Google-Smtp-Source: AGHT+IHCa/XZ44PQvOPHK1Yiee37rkwXi6KHLsgAh7cZkOVdJcrPdLHRisJCUzRqNJuStcv8fmZSkw==
+X-Received: by 2002:a17:903:2446:b0:1fa:d1df:d41e with SMTP id d9443c01a7336-1fadbcf4690mr46300745ad.58.1719899826024;
+        Mon, 01 Jul 2024 22:57:06 -0700 (PDT)
+Received: from localhost ([122.172.82.13])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-1fad067031fsm66279735ad.259.2024.07.01.22.57.05
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 01 Jul 2024 22:57:05 -0700 (PDT)
+Date: Tue, 2 Jul 2024 11:27:03 +0530
+From: Viresh Kumar <viresh.kumar@linaro.org>
+To: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+Cc: "Rafael J. Wysocki" <rafael@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	kernel@collabora.com, linux-pm@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
 Subject: Re: [PATCH] cpufreq: mediatek: Use dev_err_probe in every error path
  in probe
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- "Rafael J. Wysocki" <rafael@kernel.org>,
- Viresh Kumar <viresh.kumar@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: kernel@collabora.com, linux-pm@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
+Message-ID: <20240702055703.obendyy2ykbbutrz@vireshk-i7>
 References: <20240628-mtk-cpufreq-dvfs-fail-init-err-v1-1-19c55db23011@collabora.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20240628-mtk-cpufreq-dvfs-fail-init-err-v1-1-19c55db23011@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+MIME-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <20240628-mtk-cpufreq-dvfs-fail-init-err-v1-1-19c55db23011@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240701_224758_454729_07F4E2AA 
-X-CRM114-Status: GOOD (  18.07  )
+X-CRM114-CacheID: sfid-20240701_225707_320142_89609BB1 
+X-CRM114-Status: GOOD (  12.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,61 +98,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 28/06/24 21:48, Nícolas F. R. A. Prado ha scritto:
-> Use the dev_err_probe() helper to log the errors on every error path in
-> the probe function and its sub-functions. This includes
-> * adding error messages where there was none
-> * converting over dev_err/dev_warn
-> * removing the top-level error message after mtk_cpu_dvfs_info_init() is
->    called, since every error path inside that function already logs the
->    error reason. This gets rid of the misleading error message when probe
->    is deferred:
-> 
->      mtk-cpufreq mtk-cpufreq: failed to initialize dvfs info for cpu0
-> 
-> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-> ---
->   drivers/cpufreq/mediatek-cpufreq.c | 66 ++++++++++++++++++--------------------
->   1 file changed, 31 insertions(+), 35 deletions(-)
-> 
+On 28-06-24, 15:48, N�colas F. R. A. Prado wrote:
 > diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
-> index 518606adf14e..b21425bb83be 100644
-> --- a/drivers/cpufreq/mediatek-cpufreq.c
-> +++ b/drivers/cpufreq/mediatek-cpufreq.c
-
-..snip..
-
-> @@ -487,7 +488,7 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
->   	rate = clk_get_rate(info->inter_clk);
->   	opp = dev_pm_opp_find_freq_ceil(cpu_dev, &rate);
->   	if (IS_ERR(opp)) {
-> -		dev_err(cpu_dev, "cpu%d: failed to get intermediate opp\n", cpu);
-> +		dev_err_probe(cpu_dev, ret, "cpu%d: failed to get intermediate opp\n", cpu);
->   		ret = PTR_ERR(opp);
-
-I believe you want to first assign ret, and then use it in dev_err_probe() :-P
-
-Please fix. After which:
-
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-Cheers!
-
->   		goto out_disable_inter_clock;
->   	}
-> @@ -501,7 +502,7 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
->   	info->opp_nb.notifier_call = mtk_cpufreq_opp_notifier;
->   	ret = dev_pm_opp_register_notifier(cpu_dev, &info->opp_nb);
->   	if (ret) {
-> -		dev_err(cpu_dev, "cpu%d: failed to register opp notifier\n", cpu);
-> +		dev_err_probe(cpu_dev, ret, "cpu%d: failed to register opp notifier\n", cpu);
->   		goto out_disable_inter_clock;
->   	}
->   
 > @@ -629,11 +630,9 @@ static int mtk_cpufreq_probe(struct platform_device *pdev)
->   	int cpu, ret;
->   
->   	data = dev_get_platdata(&pdev->dev);
+>  	int cpu, ret;
+>  
+>  	data = dev_get_platdata(&pdev->dev);
 > -	if (!data) {
 > -		dev_err(&pdev->dev,
 > -			"failed to get mtk cpufreq platform data\n");
@@ -141,44 +111,22 @@ Cheers!
 > -	}
 > +	if (!data)
 > +		return dev_err_probe(&pdev->dev, -ENODEV,
+
+What's the point of calling dev_err_probe() when we know for sure that
+the error isn't EPROBE_DEFER ?
+
 > +				     "failed to get mtk cpufreq platform data\n");
->   
->   	for_each_possible_cpu(cpu) {
->   		info = mtk_cpu_dvfs_info_lookup(cpu);
+>  
+>  	for_each_possible_cpu(cpu) {
+>  		info = mtk_cpu_dvfs_info_lookup(cpu);
 > @@ -643,24 +642,21 @@ static int mtk_cpufreq_probe(struct platform_device *pdev)
->   		info = devm_kzalloc(&pdev->dev, sizeof(*info), GFP_KERNEL);
->   		if (!info) {
->   			ret = -ENOMEM;
+>  		info = devm_kzalloc(&pdev->dev, sizeof(*info), GFP_KERNEL);
+>  		if (!info) {
+>  			ret = -ENOMEM;
 > +			dev_err_probe(&pdev->dev, ret, "Failed to allocate dvfs_info\n");
->   			goto release_dvfs_info_list;
->   		}
->   
->   		info->soc_data = data;
->   		ret = mtk_cpu_dvfs_info_init(info, cpu);
-> -		if (ret) {
-> -			dev_err(&pdev->dev,
-> -				"failed to initialize dvfs info for cpu%d\n",
-> -				cpu);
-> +		if (ret)
->   			goto release_dvfs_info_list;
-> -		}
->   
->   		list_add(&info->list_head, &dvfs_info_list);
->   	}
->   
->   	ret = cpufreq_register_driver(&mtk_cpufreq_driver);
->   	if (ret) {
-> -		dev_err(&pdev->dev, "failed to register mtk cpufreq driver\n");
-> +		dev_err_probe(&pdev->dev, ret, "failed to register mtk cpufreq driver\n");
->   		goto release_dvfs_info_list;
->   	}
->   
-> 
-> ---
-> base-commit: 0fc4bfab2cd45f9acb86c4f04b5191e114e901ed
-> change-id: 20240627-mtk-cpufreq-dvfs-fail-init-err-0a662ca72de2
-> 
-> Best regards,
 
+Same here.
 
+-- 
+viresh
 
