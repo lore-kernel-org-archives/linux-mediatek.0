@@ -4,97 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70FB5C30658
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jul 2024 21:06:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14812C30658
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jul 2024 22:45:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cCiqvH0nHSNG8qdgU9rhpWGnnBxhVlL8oWUmKfH6NSM=; b=ZIsSkcMBlxVN85tlt1PFbLRi1k
-	lN4pwVnY5JL2V2XHM6C2Wuxtl3BZEADZk6thNAerYFCt0it5CniZNEGcrgkmdSHVmkS9ONFCQ+7Am
-	khxbGZhT46OFu1iMtsLFCYFAKyGyOa76zFfhf5NFm0YBvPTrclcjsqgXVT0h9ztdY/vbt6h/jf5Z+
-	MJy8hidozdNmu4IibcQCXNE9FdR2O7g1u6tEaRZeX8zLBrB+KgFZSQZ2V07ShzsX+mCXYoJAovM49
-	2B3OlI+u6LAXC8FywuJrmajXWgQmmDJkqVWR8EOhKb9WRtTqBjkVHMFPg/KzNwfoFdNNu4Xrs5SuZ
-	cFA44elw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=bXH6yqUDqi7Vg0v0Joj//hsGD033jE+cineD1J82zNA=; b=u6oeq94Utg/oP+IsWcnyfSHLGK
+	qKkSYgDuVrpjHw5SA6GWFrQQfmZIxdnit8cXLdzTyyAEBifUi6GV/OrIvynOAFh2NFzPugktzdwXZ
+	MhzOOcdBtfGxyEy6T7oE1DPkWZKxHSM0tK/A8hQjPcTSCXm+IProyzxolWNNQt0ZUJdu1yZYcR7YR
+	RLYGiA/N22Lz9tIiHiJ2NK2gJN7cV4ZfOntmL6bIWx3XUiQ7HwW0gsbwovXeWXTaP8GPcct2gSDZ6
+	QMvHRVoDAMBBNXVAWTnDwEQH9i4yzOrpkUtjbrhfW4btmgmdfkNkleRLiMR3TMx5mMnwifsF6Wpms
+	/rK3Lg9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sOkhl-00000007yS1-1Iyk;
-	Tue, 02 Jul 2024 21:06:25 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1sOmFR-00000008EZs-1cXg;
+	Tue, 02 Jul 2024 22:45:17 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sOkhi-00000007yQN-1oJJ
-	for linux-mediatek@lists.infradead.org;
-	Tue, 02 Jul 2024 21:06:24 +0000
+	id 1sOmFE-00000008ESv-1Aei;
+	Tue, 02 Jul 2024 22:45:06 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id C53A0CE21B4
-	for <linux-mediatek@lists.infradead.org>; Tue,  2 Jul 2024 21:06:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D5C96C4AF11
-	for <linux-mediatek@lists.infradead.org>; Tue,  2 Jul 2024 21:06:19 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id B86EACE0EA0;
+	Tue,  2 Jul 2024 22:45:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E5A56C116B1;
+	Tue,  2 Jul 2024 22:44:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1719954379;
-	bh=NyzwM0fsXKf4dXOAJKkuMhvtpscp3UAXzQ88ePFkdHg=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=T0jF5n0XmYOBWCFsIhEiFwCW709AF2iNAJBXPHQDhZ3ouUIflhHJtwIPSeAQkemwl
-	 uvh5nDRj8MsScENuyxikrGs7trBmvGpceQ90A9jThyM6OwHTK1hSB47GteIED0mkfp
-	 yIXfQgx1XVTTfS14P6B441+5oNJT53fpMKqRINxMzkGSKAywbiMtggfLmF/5MhXRyE
-	 MR2OEIi2KWdc0w+AofhLDxqqtYNvgWMUcCMzmTV90XllmcI+M2rs3uGRjmGpiIo+bY
-	 S7E4wTeW1JLVmvZdlftDTuGLXlMEsznlapdBUQq2P/lZic0fAeIbHo/yvEPyuqkLW8
-	 0fIXzDl9OJV+g==
-Received: by mail-lj1-f180.google.com with SMTP id 38308e7fff4ca-2ebec2f11b7so53162431fa.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 02 Jul 2024 14:06:19 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCUkM+sQSWe966BvHe3b6B9MdeE0pdFXuGWflgEiEQPDWDvi1eTSMPSyTPIlBqyXqVcQWuNd9O9LgQZbrvR9YzznjPj8h9npsZngBeExAVOe1+oh
-X-Gm-Message-State: AOJu0Yx+oHhq/GVU61vshGcPcND9PKTlsi/MAMotonPwSQyDWTm1oCkn
-	Qk6wjG8lbrUniJtjm6hcJP75miteHRnEBY0ehC8uKbAvz95+rZMeEAZByRzdOFnGmfUgYEpKy6M
-	AXTbHqyLvqeLUjvRZxjBgx6FDEjEdPuBbHZ3KHQ==
-X-Google-Smtp-Source: AGHT+IGUxDpnfmOI+j4i7sET5B6iGTwPCxoZxCFPXJYFFkWMGwCKQTKuc3id2P0lUND+5DiDyxhNNJ4MNomLGxiA7Lo=
-X-Received: by 2002:a17:906:f185:b0:a72:b1b1:eb3a with SMTP id
- a640c23a62f3a-a751447b093mr634755766b.19.1719954357446; Tue, 02 Jul 2024
- 14:05:57 -0700 (PDT)
+	s=k20201202; t=1719960300;
+	bh=N9gkNN597b9sR0qa3FEqcM+w+j2TQMy5ad+/Ia1JOuA=;
+	h=From:Date:Subject:To:Cc:From;
+	b=fHxIllVLyhXeUzrrqgBSxZaqdLY4X/Ny3uM6gnugxlqFmhRRW+L6yAtk4aSb/jusO
+	 sUEOi3jp4fSqxFEm/7DSadrIGxOva0mgShM2tGwFNIjqs1rN519+FSx/TAuOAD6hCh
+	 +MO9xXKwOOm3+meX6HGfNkTkmRHty+Ya9yu5hbkStr1kUL3EmjE70fgOUd26hoyZOw
+	 Oq6KnwDL4N3etWPQ9Uyf6y3ngGQ6yMybAvJgjiHMRlw2KE+zUEwped5FXWqNy0i37r
+	 YSt8feEeKdibzUVJNEIFRHgCgvoYHIaywre0ZO/J57PdPF77eCWPXAnOaF2LKVwTAo
+	 qbPR3xWaR6QTQ==
+From: Jeff Layton <jlayton@kernel.org>
+Date: Tue, 02 Jul 2024 18:44:48 -0400
+Subject: [PATCH] filelock: fix potential use-after-free in posix_lock_inode
 MIME-Version: 1.0
-References: <20240614-dt-bindings-thermal-allof-v1-0-30b25a6ae24e@linaro.org> <20240614-dt-bindings-thermal-allof-v1-11-30b25a6ae24e@linaro.org>
-In-Reply-To: <20240614-dt-bindings-thermal-allof-v1-11-30b25a6ae24e@linaro.org>
-From: Amit Kucheria <amitk@kernel.org>
-Date: Wed, 3 Jul 2024 02:35:45 +0530
-X-Gmail-Original-Message-ID: <CAHLCerMuG92Sf8+BdqPLqh+x3YxBjD6YdYF2k+AxQcwCqerxzw@mail.gmail.com>
-Message-ID: <CAHLCerMuG92Sf8+BdqPLqh+x3YxBjD6YdYF2k+AxQcwCqerxzw@mail.gmail.com>
-Subject: Re: [PATCH 11/22] dt-bindings: thermal: qcom-tsens: reference
- thermal-sensor schema
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Daniel Lezcano <daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>, 
-	Lukasz Luba <lukasz.luba@arm.com>, Rob Herring <robh@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
-	Guillaume La Roque <glaroque@baylibre.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Vasily Khoruzhick <anarsoul@gmail.com>, Chen-Yu Tsai <wens@csie.org>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
-	Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
-	Anson Huang <Anson.Huang@nxp.com>, Thierry Reding <thierry.reding@gmail.com>, 
-	Jonathan Hunter <jonathanh@nvidia.com>, Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, 
-	=?UTF-8?Q?Niklas_S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>, 
-	Heiko Stuebner <heiko@sntech.de>, Biju Das <biju.das.jz@bp.renesas.com>, 
-	Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang@linux.alibaba.com>, 
-	Chunyan Zhang <zhang.lyra@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
-	Pascal Paillet <p.paillet@foss.st.com>, Keerthy <j-keerthy@ti.com>, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
-	Florian Fainelli <florian.fainelli@broadcom.com>, Scott Branden <sbranden@broadcom.com>, 
-	zhanghongchen <zhanghongchen@loongson.cn>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Bjorn Andersson <andersson@kernel.org>, Geert Uytterhoeven <geert+renesas@glider.be>, linux-pm@vger.kernel.org, 
-	linux-samsung-soc@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-amlogic@lists.infradead.org, linux-sunxi@lists.linux.dev, 
-	imx@lists.linux.dev, linux-tegra@vger.kernel.org, 
-	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, 
-	Florian Fainelli <f.fainelli@gmail.com>, linux-rpi-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Message-Id: <20240702-filelock-6-10-v1-1-96e766aadc98@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAN+ChGYC/x3MQQqAIBBA0avIrBuY1Aq6SrQQG2soKhQiEO+et
+ HyL/zMkjsIJRpUh8iNJrrOibRT4zZ0royzVoElbGkhjkIOPy+/YY0togiPyzgbuDNTmjhzk/X/
+ TXMoH6WIooV8AAAA=
+To: Chuck Lever <chuck.lever@oracle.com>, 
+ Alexander Aring <alex.aring@gmail.com>, 
+ Alexander Viro <viro@zeniv.linux.org.uk>, 
+ Christian Brauner <brauner@kernel.org>, Jan Kara <jack@suse.cz>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-fsdevel@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ =?utf-8?q?Light_Hsieh_=28=E8=AC=9D=E6=98=8E=E7=87=88=29?= <Light.Hsieh@mediatek.com>, 
+ Jeff Layton <jlayton@kernel.org>
+X-Mailer: b4 0.13.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1398; i=jlayton@kernel.org;
+ h=from:subject:message-id; bh=N9gkNN597b9sR0qa3FEqcM+w+j2TQMy5ad+/Ia1JOuA=;
+ b=owEBbQKS/ZANAwAIAQAOaEEZVoIVAcsmYgBmhILqZlQ+jSGuftugdfRgVXDYEoT/mrJY9prPk
+ nxSHoES/ICJAjMEAAEIAB0WIQRLwNeyRHGyoYTq9dMADmhBGVaCFQUCZoSC6gAKCRAADmhBGVaC
+ FU1sEACqh3qt+ZjTufAOay8j1Wmhc3HGHy7QZd/s81V9UE/vLuINRtRe3ZthoaMhHZP0VGkkqf8
+ 7G0hyIjvJTRedRVBSSMdMRKzNq1QvsIlNWWP/KSRUAfF3jlUSlql5PzS3nC2FIpaP3KT9h+KWG6
+ a65s+/AL1gWte8ADd6CBhU9lo6gOFh51KP3nwJa1+axZHtO4uTzMLBzY/1HUV8W/l3oxZmzKU5J
+ hqwaNIGlv64CDr/pY7XGqDYjFN0e16D6q9lNeBI6UdKk1zj9HLtRKKeFXyFXnmfiBCd/iwrudeJ
+ PLtHACyGDG5oohrdXFut5zDhJBiYb0oNITnpBkcf/lj+7zwdxQG7zXEDb/7fIOYHs/CFXFENI0o
+ QvXQ3CYbSaEjXICClQ26OFW4M4KTD31DlMosoLUz/e9JAlwFkBGJuKt4UbUbLIBu9htT4SOU3Mh
+ tmCeDN9cAW8BMxvI9L5JJ/nTx6m0GyAG5qUexbAdpWvCke4rD8oc+0ToE5zi2DpoFmAB7U0fff6
+ Ek4/rqJCyoLfDoC0/ArjRuErm3mVJtDS4pDixLbkjtY+NJLno3hbCHGuya2OiQfQnsMMm4Fxca6
+ FdHNRQlYxkQqefOPO/ZhKUcStv/BcDBm2aCKAOuE3bSiW1w1e3VrGAezwgHvPXgMdDdzgFpE5hf
+ pffpExgn/VgI2ng==
+X-Developer-Key: i=jlayton@kernel.org; a=openpgp;
+ fpr=4BC0D7B24471B2A184EAF5D3000E684119568215
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240702_140622_851873_87566B0F 
-X-CRM114-Status: GOOD (  17.49  )
+X-CRM114-CacheID: sfid-20240702_154504_693516_3105D16C 
+X-CRM114-Status: GOOD (  11.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,59 +95,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jun 14, 2024 at 3:17=E2=80=AFPM Krzysztof Kozlowski
-<krzysztof.kozlowski@linaro.org> wrote:
->
-> Device is a thermal sensor and it requires '#thermal-sensor-cells', so
-> reference the thermal-sensor.yaml to simplify it and bring the
-> common definition of '#thermal-sensor-cells' property.
->
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Light Hsieh reported a KASAN UAF warning in trace_posix_lock_inode().
+The request pointer had been changed earlier to point to a lock entry
+that was added to the inode's list. However, before the tracepoint could
+fire, another task raced in and freed that lock.
 
-Reviewed-by: Amit Kucheria <amitk@kernel.org>
+Fix this by moving the tracepoint inside the spinlock, which should
+ensure that this doesn't happen.
 
-> ---
->  Documentation/devicetree/bindings/thermal/qcom-tsens.yaml | 8 +++-----
->  1 file changed, 3 insertions(+), 5 deletions(-)
->
-> diff --git a/Documentation/devicetree/bindings/thermal/qcom-tsens.yaml b/=
-Documentation/devicetree/bindings/thermal/qcom-tsens.yaml
-> index 99d9c526c0b6..cce6624228c7 100644
-> --- a/Documentation/devicetree/bindings/thermal/qcom-tsens.yaml
-> +++ b/Documentation/devicetree/bindings/thermal/qcom-tsens.yaml
-> @@ -217,18 +217,16 @@ properties:
->
->    "#thermal-sensor-cells":
->      const: 1
-> -    description:
-> -      Number of cells required to uniquely identify the thermal sensors.=
- Since
-> -      we have multiple sensors this is set to 1
->
->  required:
->    - compatible
->    - interrupts
->    - interrupt-names
-> -  - "#thermal-sensor-cells"
->    - "#qcom,sensors"
->
->  allOf:
-> +  - $ref: thermal-sensor.yaml#
-> +
->    - if:
->        properties:
->          compatible:
-> @@ -292,7 +290,7 @@ allOf:
->        required:
->          - reg
->
-> -additionalProperties: false
-> +unevaluatedProperties: false
->
->  examples:
->    - |
->
-> --
-> 2.43.0
->
+Fixes: 74f6f5912693 ("locks: fix KASAN: use-after-free in trace_event_raw_event_filelock_lock")
+Link: https://lore.kernel.org/linux-fsdevel/724ffb0a2962e912ea62bb0515deadf39c325112.camel@kernel.org/
+Reported-by: Light Hsieh (謝明燈) <Light.Hsieh@mediatek.com>
+Signed-off-by: Jeff Layton <jlayton@kernel.org>
+---
+ fs/locks.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/fs/locks.c b/fs/locks.c
+index c360d1992d21..bdd94c32256f 100644
+--- a/fs/locks.c
++++ b/fs/locks.c
+@@ -1367,9 +1367,9 @@ static int posix_lock_inode(struct inode *inode, struct file_lock *request,
+ 		locks_wake_up_blocks(&left->c);
+ 	}
+  out:
++	trace_posix_lock_inode(inode, request, error);
+ 	spin_unlock(&ctx->flc_lock);
+ 	percpu_up_read(&file_rwsem);
+-	trace_posix_lock_inode(inode, request, error);
+ 	/*
+ 	 * Free any unused locks.
+ 	 */
+
+---
+base-commit: e9d22f7a6655941fc8b2b942ed354ec780936b3e
+change-id: 20240702-filelock-6-10-3fa00ca4fe53
+
+Best regards,
+-- 
+Jeff Layton <jlayton@kernel.org>
+
 
