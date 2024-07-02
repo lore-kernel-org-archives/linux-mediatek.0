@@ -4,70 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0B70C30658
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jul 2024 12:12:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56AE4C3064D
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jul 2024 14:51:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GNmW4/MQ36N4a/JMwqemvcpbcKNRr6KaJ2e8NUyALoM=; b=Wc9p4DVY1hnBKZpGG6ydBTyoNx
-	LoPb/9xFDsISFVn2Pp/LI4Ss4JQof1JsZv2cEzggWuAYD/jOa0kefb+ICRy/ZhnjKzq/3BYi+4TCG
-	zf54v/nWlurpVLEbKmR3DiV77WckrPCfuCytxIYEO+kMyd7ls+K1t+tMnm00FiW59HUkK31U5yHU7
-	HwMJIzIDZlwlj3bHH2KHKWtn04hekCehE8gOMf4rN48Qz3XukQY6C7tv/V5gZnP/Ap/Gi8fgzcQ85
-	6ZBHAMcvnSLhf/bMGqq/38GO/xAts48uQ6PEBWM3THYgQeq2pCdxNh1B6rrh9VUMeGF763/gR8nT3
-	vFFw8SFQ==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=eKlUNbymqJaT0kOcCn3vFHLPBM9nCKu+xgIgCZM/a5U=; b=roOCyj7ATZS8BBaIRwMa705ftA
+	cJMHECXQaekf+c/sPcVNRicalMlCNNUdShQkH2euYZRyxcvZusDkGOIdDjgReSFZIJkJWFiXD6jiw
+	MdlAmf14HjpNQv9UFJjUa6qTmHYVH0iVrsv6tP7sbb3J8qQdmfwelYrBolY24ZHEeLAuBSHNyQmqz
+	uj22TQpsNACvYmfrwcVeC3kYIi/k/yoXU3sTc9JxBNQshtwoP1I9rYIyxgG5qh6i3XfUTLDV6kJlL
+	hdt8OH5ph5zHoXYCKekVH6fz1pcNoGeiVkFXvGebnE79pn8Bk9792BlgXPGMQIeF51jl4fwpZyYYA
+	jQeSjkHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sOcNP-00000006d4R-2Pl5;
-	Tue, 02 Jul 2024 12:12:51 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1sOeql-000000075V0-1jdA;
+	Tue, 02 Jul 2024 14:51:19 +0000
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sOcND-00000006d1A-0Uub;
-	Tue, 02 Jul 2024 12:12:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1719922357;
-	bh=qecD3oTzye18Eqo4/G5hS4HY/xXuOOD8C5cYy7HghNA=;
-	h=Date:Subject:To:References:From:In-Reply-To:From;
-	b=TAv7+JpLRE7MMNaDnPSmHii+WoswkDSLhkBMlxDh7Uqx56u8cycBkDYOI9aq3UqxW
-	 nGfDHHWKzjywaZzOvVvjUhfijzb+pqqEHV8bvNdaty05ORG7gocih8UW8Sp75wZ/0o
-	 xbZ7fpRhMVXmiilQHP3n2pIqeH3bKhDezVTIDdaecmSE7Ck91N9iOTSN15Nrdsvi1V
-	 Eed2dpEqQqkIc22ramtqJMk7lLx53Eyd1FTPT+dE6lW1NUw8SX6AMlLYucBwrkE3iS
-	 KwFPGpMPUv1nzzJs9kOSZqPYj3XiyrWJslAHyaYKIiHqFTZLdwK1/WC2wiyLZy81Rg
-	 YAP860Njs5HdQ==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id DA23B37820A7;
-	Tue,  2 Jul 2024 12:12:36 +0000 (UTC)
-Message-ID: <ae8f3014-0260-4e22-91e1-77d61e2c2d09@collabora.com>
-Date: Tue, 2 Jul 2024 14:12:36 +0200
+	id 1sOeqZ-000000075RB-2HJU
+	for linux-mediatek@lists.infradead.org;
+	Tue, 02 Jul 2024 14:51:10 +0000
+Received: by mail-wr1-x429.google.com with SMTP id ffacd0b85a97d-36743a79dceso3106086f8f.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 02 Jul 2024 07:51:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1719931865; x=1720536665; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=eKlUNbymqJaT0kOcCn3vFHLPBM9nCKu+xgIgCZM/a5U=;
+        b=oP5hYx3KVvLwe+7FqN0bYteW2tnacJM36qv42A0zt6aM4t5CkYbVIVxCBTvoeoTiQt
+         e0WcQ6KHTIlRPteJNoslRkpIwuprzWrJTbnHsz3/tnt4UEqahu/BlpOj9jKwp/fgL8M+
+         3Sqwy8ExdVW50m0/3XGqnuFz/YpfAnVWFm6frxktEbmy6fYLiQ65H3N9WWYx24kFzCXx
+         0ZVYNZOQvdo/6ydOrGU2AwTF/M4/kNGAWRVrxpBIm913obZqgZWpWPN85UZpL1+rcw2F
+         608gL1zOYOWl9x8rEhcS3jub4NtUHi3EmDYc9HRpB8bJsQDcCLqVgW9TtAwU//hCWBe/
+         8+fA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1719931865; x=1720536665;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=eKlUNbymqJaT0kOcCn3vFHLPBM9nCKu+xgIgCZM/a5U=;
+        b=YnQ2sfY/FnghDjdxPy2dICRpWvHNMLepusHJIPqNX1/Ln8VT6NcEog1xgoMFWoJul4
+         d0LkZj73g23XDX20jgyN8Wm6G1IsFAaVFX5FAuzJDql0lqZe/+bZRqKdn5It5n36635q
+         spWDlN1j47yAFvIQgrUt/C5qB3Rr+FGJiWHQ9eI6q2Ed1oYm4MaoZsD1khJ1qEyAqwzI
+         8UaSF1KDnG1AeFldvnVuBUbypvFU9scXEDS4X2igbEryjkz+EmeiHFFmlsJ385wj6lGB
+         Mmkp1uWk3bsugIePOcx3jGB23jizZXsriNlE0IE622gWU6GMBtlqTd2z5waLwC2KMW6K
+         dmmg==
+X-Forwarded-Encrypted: i=1; AJvYcCXRp1EdQtWEpWSfoUXG+Xy1ZEn8ZgEC1rBxQuXlIk3UK1oQ2emUMlfdkJHeGk4tntjXwt6nxg7lhD1xXASWTKIoGafr545e1ZtIsrNTh9y0NPDL
+X-Gm-Message-State: AOJu0YwRuwqGgfpbdABfM8k6JRRTx9bB08YGEJJ+ysvKc6awRT/oua4C
+	j4kOeqH8kygUGlr2Y8oci0arBoloIyDZSGOpvDBavYgC+eTyXzgVXhVLSYfZ6Es=
+X-Google-Smtp-Source: AGHT+IE92eVX4dmFvFo8dRtaK3wOWUlw/jSZDiMOkwzi1Kl0xeslgoHpkVbmw79Rots/plOCZ/47Rg==
+X-Received: by 2002:a5d:6d8c:0:b0:363:337a:3e0 with SMTP id ffacd0b85a97d-36760a62ecemr12678404f8f.1.1719931865524;
+        Tue, 02 Jul 2024 07:51:05 -0700 (PDT)
+Received: from krzk-bin.. ([178.197.219.137])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4256af3cf90sm199618855e9.5.2024.07.02.07.51.04
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 02 Jul 2024 07:51:05 -0700 (PDT)
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH] arm64: dts: mediatek: mt8183-kukui: align thermal node names with bindings
+Date: Tue,  2 Jul 2024 16:51:02 +0200
+Message-ID: <20240702145102.46953-1-krzysztof.kozlowski@linaro.org>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: Duplicated bindings for mediatek,mt8173-scpsys
-To: =?UTF-8?B?VGluZ0hhbiBTaGVuICjmsojlu7fnv7Ap?= <TingHan.Shen@mediatek.com>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- Sean Wang <Sean.Wang@mediatek.com>, "zajec5@gmail.com" <zajec5@gmail.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- =?UTF-8?B?WXUtY2hhbmcgTGVlICjmnY7nprnnkosp?= <Yu-chang.Lee@mediatek.com>,
- =?UTF-8?B?RmFuIENoZW4gKOmZs+WHoSk=?= <fan.chen@mediatek.com>,
- "s.hauer@pengutronix.de" <s.hauer@pengutronix.de>
-References: <7614ed44-7613-4912-9b4b-62c92abbc9bd@gmail.com>
- <faa4a9a8a3f0416f3e2ebe5ecf3b3afff5f490d1.camel@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <faa4a9a8a3f0416f3e2ebe5ecf3b3afff5f490d1.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240702_051239_330825_58A143F9 
-X-CRM114-Status: GOOD (  13.28  )
+X-CRM114-CacheID: sfid-20240702_075107_610167_126B31B1 
+X-CRM114-Status: GOOD (  12.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,63 +96,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 02/07/24 03:58, TingHan Shen (沈廷翰) ha scritto:
-> On Fri, 2024-06-28 at 09:57 +0200, Rafał Miłecki wrote:
->> I noticed that "mediatek,mt8173-scpsys" compatible is specified in two
->> places:
->> Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
->> Documentation/devicetree/bindings/mfd/mediatek,mt8195-scpsys.yaml
->>
->> The first one seems to be "real" hardware block. It also has a Linux
->> driver at drivers/pmdomain/mediatek/mtk-scpsys.c . It also seems that
->> scpsys.txt was first added explicitly for MT8173.
->>
->> The later one seems to be "just" an MFD with no real driver but it
->> seems to be actually used in arch/arm64/boot/dts/mediatek/mt8173.dtsi .
->>
->> Can I ask for some assistance sorting this out?
->>
->> Relevant kernel commits:
->>
->> commit 26331d261f49949bff6477fc9c844b17076fa245
->> Author: Tinghan Shen <tinghan.shen@mediatek.com>
->> Date:   Thu Aug 11 10:57:59 2022 +0800
->>
->>       dt-bindings: mfd: mt8195: Add bindings for MediaTek SCPSYS
->>
->> commit c84e358718a66f76ac0de1681d15d8d0c68fcdab
->> Author: Sascha Hauer <s.hauer@pengutronix.de>
->> Date:   Wed Jun 24 08:17:04 2015 +0200
->>
->>       soc: Mediatek: Add SCPSYS power domain driver
->>
->> commit 859e42800bcfc4db9cefaa2c24d6e3a203fe961d
->> Author: Sascha Hauer <s.hauer@pengutronix.de>
->> Date:   Wed Jun 24 08:17:03 2015 +0200
->>
->>       dt-bindings: soc: Add documentation for the MediaTek SCPSYS unit
-> 
-> Loop MTK members.
-> 
+Bindings expect thermal zones node name to follow certain pattern.
+This fixes dtbs_check warning:
 
-Rafał, I suggest "out with the old, in with the new".
+  mt8183-kukui-jacuzzi-burnet.dtb: thermal-zones: 'tboard1', 'tboard2'
+    do not match any of the regexes: '^[a-zA-Z][a-zA-Z0-9\\-]{1,10}-thermal$', 'pinctrl-[0-9]+'
 
-The old binding was referring to the mtk-scpsys power domain driver, which MT8173
-has been migrated away from (years ago), as it now uses mtk-pm-domains instead.
+Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+---
+ arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-I'd be happy if you could also actually remove the MT8173 support from the
-mtk-scpsys.c driver too, as that has been, again, unused for more than 2 years now.
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+index 6345e969efae..3aea2643f21c 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+@@ -974,13 +974,13 @@ &ssusb {
+ };
+ 
+ &thermal_zones {
+-	tboard1 {
++	tboard1-thermal {
+ 		polling-delay = <1000>; /* milliseconds */
+ 		polling-delay-passive = <0>; /* milliseconds */
+ 		thermal-sensors = <&tboard_thermistor1>;
+ 	};
+ 
+-	tboard2 {
++	tboard2-thermal {
+ 		polling-delay = <1000>; /* milliseconds */
+ 		polling-delay-passive = <0>; /* milliseconds */
+ 		thermal-sensors = <&tboard_thermistor2>;
+-- 
+2.43.0
 
-Honestly, I'd be even happier if we could even move MT27xx, 6797, 7622/23a from
-mtk-scpsys to mtk-pm-domains, but I don't have any HW with any of these, I don't
-expect you to have any either, so there's no way we can remove the old driver
-entirely.
-
-So....
-
-Please go on and remove MT8173 from mtk-scpsys.c; you'll be able to resolve the
-duplicated bindings accordingly to that change.
-
-Cheers,
-Angelo
 
