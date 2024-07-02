@@ -4,63 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A567BC3065C
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jul 2024 16:34:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BA36C30658
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jul 2024 17:17:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=w3Xrz0lXD4LhEmE8Ad69YD1BMJkeyWe14o+sv6e0a9g=; b=laHo+Ii8hM3wNj
-	PZoz9P0FKcnimwbct0EkDuFt5ZlN5K5BSgWEJd3wiwaHmtbELjYPd3B6VGk1AaJoiSG/5FWDc0uZj
-	5ooZH2Bwtk3fNdaKqcRRQGe2w6afjbtxnN1jdNqJm9aesww8kpcNGuk4zeqReJYqK0/b9/NxMQQu4
-	XDQA8Z+1B1BJHixeBEEk9Fnx/kwLu/OhU/ZLLVnR1zSMcAUsOgCyuWWmBmgPCosDLVTsZRBX7zy8B
-	vj235Ku6I1piuCqCmussZL/hd3vv8o2kaoDNnvRFbsSNlLH4aSCCd7i3Y5Gj6Cq1o4UUI/5KZPNkx
-	/wFRBCw6osE0o4J2XysQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=eMxjNF73xEehfmLmhKwg3pjkqI+cYmjdSdGZcjJzAQY=; b=rj35AJvFzpnYn/
+	WivXfRGBfqB0vnVW7OT0dmCmJ3oJnpvPfnOKUHsJgzZ8hk4G/OGUdzB6QGLu/ti8eu151Ct9tFfoC
+	6QQtkXRirJi3onvToSXM7Say9jelzkcrNFoPzQ9Mys/8mnbSd3NTBqZWIfgd5MK+2rC9OeIBHK0Xm
+	HOZhCxx1ex8Ny0HAFQXZsP6U5gVpb6z31RGeJF561nKDqEjJpq+4qRbVW2sYNfAwJGHkIlZCUmCw4
+	USGF0ahN2QJRWRncITe5G5tSwUvqV76b9mr9rlolyUllzcUNhiAGP3lujApDDKcVeoBSNs2yHLeu2
+	Xadyfd/L5K+PMKE9I2jg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sOgT3-00000007OEq-3wjy;
-	Tue, 02 Jul 2024 16:34:57 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1sOh7m-00000007UAu-2Etq;
+	Tue, 02 Jul 2024 17:17:02 +0000
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sOgSr-00000007OCZ-25yP;
-	Tue, 02 Jul 2024 16:34:47 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 3FE4BCE1911;
-	Tue,  2 Jul 2024 16:34:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 00A5DC116B1;
-	Tue,  2 Jul 2024 16:34:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1719938082;
-	bh=khiZR101rp5P36Em7z0sEdIWe+tz1ChCcX6aGVTw7R8=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=FC26Fg4Gd9lQlTIDmJQO798iX3AYRLV1N3K+ubVnJUNOnyiMRgamzwaviQih2uMar
-	 2eqA7yr6mEPkDQlTrC1gC4buih5/fNvkxdcsF8mVQRaLwMcmLjvggJx40ehgTvt8NZ
-	 kAwOeVPjqvK1+IHsKBTYaAUhgI4Xn5zOR7OYBzwmbztl1AbshcIK5glMCU1Wrct7SN
-	 z/cUg/GPjp46Y204PlCk7RdylWDvknYjyx0P9fQJbigEsEu1bz5e6oDHaPutmh3oFz
-	 KsXv99kGH+I+pAb6t5BDEifiP1VJ6igQ/mQLOJMIYdtxRLPSAMcUIRQL8iyZ5mzF4+
-	 3r20PudmQeWWQ==
-Date: Tue, 2 Jul 2024 11:34:39 -0500
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: linux-pci@vger.kernel.org, ryder.lee@mediatek.com,
-	jianjun.wang@mediatek.com, lpieralisi@kernel.org, kw@linux.com,
-	robh@kernel.org, bhelgaas@google.com,
-	linux-mediatek@lists.infradead.org, lorenzo.bianconi83@gmail.com,
-	linux-arm-kernel@lists.infradead.org,
-	krzysztof.kozlowski+dt@linaro.org, devicetree@vger.kernel.org,
-	nbd@nbd.name, dd@embedd.com, upstream@airoha.com,
-	angelogioacchino.delregno@collabora.com
-Subject: Re: [PATCH v3 4/4] PCI: mediatek-gen3: Add Airoha EN7581 support
-Message-ID: <20240702163439.GA24344@bhelgaas>
+	id 1sOh7k-00000007U9d-1rGC
+	for linux-mediatek@lists.infradead.org;
+	Tue, 02 Jul 2024 17:17:01 +0000
+Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-42565697036so33223575e9.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 02 Jul 2024 10:16:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1719940617; x=1720545417; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=eMxjNF73xEehfmLmhKwg3pjkqI+cYmjdSdGZcjJzAQY=;
+        b=KeNa6LlEkKoWg7F7czR1dbc58n8NRsLk3Ri1lSdWne8nP1ShbzMw+DHFklbSPJu8x5
+         xXI/p/PGc7i0n63S9kWzvRQHX5qSxRC6vUyQxnIXTZMfJO8VW12MR1m1mUa1wyeN05wf
+         qd/NZeha8pjXVjUtHpHulok00jvnkRQJGJ7HPEfTK7+0zeEC6gG+zyQ3VMQfnpeElDSc
+         u2c65fbxsPQIxByQI1EWCpxhViTWe4z1YkB40pLE6l6sV1cVOQSqFuvfRLehYA6aXRpR
+         bgGnA+vzAGnRKYfQd4p5ooEX0w0tWc6NAKw5ykrw8yjCAnLef7InBjRC+YhPDfF1xpbq
+         BbBQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1719940617; x=1720545417;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=eMxjNF73xEehfmLmhKwg3pjkqI+cYmjdSdGZcjJzAQY=;
+        b=S5NVdS/1ZX6eQsYhy5fhdfadyPnxUM4ZmwLZx12K6LmqeCOOCrmW5z/sxYffoeu11k
+         o/4BRJy1RzluV84urr+U+yFIMgNelEJ2lah4910y2gSSx1hMP+AuT0zmtHa5RK3pzwaC
+         1jOjdV3mTZYBNMP/YF6FYkIb6x8MAamxmH20ZSEibEEH0oSD13aUUfMsPtQMAMjooAae
+         e65lDFHrcHK+9uaw76N1PxVFERRR6YAz3Yn1YvIKXx4ywEV504MdzXXs/RAuMS4jWXem
+         50XuFdjL2RRubVmLtjGa5+qfvKSxLZQvDdIFq9dluUexHptT4zvAfZrv2Kj8yKIxtFhn
+         nfzA==
+X-Forwarded-Encrypted: i=1; AJvYcCVVa7AjlwAgwDc1N37rJUhxKKC+iMU9prJuljO2CiDv9a9wufFqNY0jGV38yD91iH4Lwu6owy/SJ0Wn+WI+5lXnYDOq3E5FWK7ngYpGUXw4rkzN
+X-Gm-Message-State: AOJu0YzvBPWHBiWlDUxRFIpt0yacimoPNJAbLYMGoxQd8tm79KoKA7UD
+	fMBob8aRfW+XZ0DaYGyOGWhueLzm0/HKoHpaUUdSeOSFaDuee9Oz+i2ylmDmU5g=
+X-Google-Smtp-Source: AGHT+IHt/P0ua15wXj9zZu7YMLDV20uxy+PQFqpcA+vAHPimqKTS72Y/7YzGoy4cdhn7YTh0hbVksQ==
+X-Received: by 2002:a5d:5983:0:b0:35f:314a:229c with SMTP id ffacd0b85a97d-36774f899ffmr9542381f8f.28.1719940617271;
+        Tue, 02 Jul 2024 10:16:57 -0700 (PDT)
+Received: from ?IPV6:2a05:6e02:1041:c10:c49e:e1a5:3210:b8c0? ([2a05:6e02:1041:c10:c49e:e1a5:3210:b8c0])
+        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-36789fd7a0esm2004822f8f.104.2024.07.02.10.16.56
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 02 Jul 2024 10:16:56 -0700 (PDT)
+Message-ID: <7a198549-df42-4fb1-97cd-116e1bd96903@linaro.org>
+Date: Tue, 2 Jul 2024 19:16:56 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ZoPEdU0Eg-f-mbgC@lore-rh-laptop>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] thermal/drivers/mediatek/lvts_thermal: Provide default
+ calibration data
+To: Chen-Yu Tsai <wenst@chromium.org>, "Rafael J. Wysocki"
+ <rafael@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
+ Lukasz Luba <lukasz.luba@arm.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+References: <20240620092306.2352606-1-wenst@chromium.org>
+Content-Language: en-US
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+In-Reply-To: <20240620092306.2352606-1-wenst@chromium.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240702_093445_741291_41DAE16B 
-X-CRM114-Status: GOOD (  20.05  )
+X-CRM114-CacheID: sfid-20240702_101700_671110_8AB7E924 
+X-CRM114-Status: GOOD (  10.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,28 +93,29 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>, linux-pm@vger.kernel.org, Alexandre Mergnat <amergnat@baylibre.com>, linux-kernel@vger.kernel.org, Nicolas Pitre <npitre@baylibre.com>, linux-mediatek@lists.infradead.org, Julien Panis <jpanis@baylibre.com>, Balsam CHIHI <bchihi@baylibre.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 02, 2024 at 11:12:21AM +0200, Lorenzo Bianconi wrote:
-> > On Sat, Jun 29, 2024 at 03:51:54PM +0200, Lorenzo Bianconi wrote:
-> > > Introduce support for Airoha EN7581 PCIe controller to mediatek-gen3
-> > > PCIe controller driver.
-> > 
-> > > +/* PCIe reset line delay in ms */
-> > > +#define PCIE_RESET_TIME_MS		100
-> > 
-> > Is this something required by the PCIe base spec, or is it specific to
-> > EN7581?  Either way it would be nice to have a citation to the spec
-> > (revision and section number).  If it's generic to PCIe, it should be
-> > in drivers/pci/pci.h so other drivers can use the same thing.
+On 20/06/2024 11:23, Chen-Yu Tsai wrote:
+> On some pre-production hardware, the SoCs do not contain calibration
+> data for the thermal sensors. The downstream drivers provide default
+> values that sort of work, instead of having the thermal sensors not
+> work at all.
 > 
-> It is just the time needed by the EN7581 reset controller to
-> complete the operation, it is not something PCIe generic (it is
-> something just related to EN7581 SoC).  Do you think we should move
-> it in EN7581 reset controller codebase?
+> Port the default values to the upstream driver. These values are from
+> the ChromeOS kernels, which sadly do not cover the MT7988.
+> 
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> ---
 
-I have no opinion about moving it.  But it sounds like maybe it should
-have a less generic name so it doesn't look like a generic PCIe thing.
-And also a spec citation would be helpful for future maintenance.
+Applied, thanks
+
+-- 
+<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
+
 
