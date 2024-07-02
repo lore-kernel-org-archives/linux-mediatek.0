@@ -4,88 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F258C3064D
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jul 2024 08:43:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59956C30658
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jul 2024 09:05:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vQ8zplKEvkyqs0AhE9LwFp0KDkZC+KF7mrGUufJk6Ng=; b=rymKLTzB3lqPLs3C7VucWbEpko
-	ILEuiSjNyyl+Eu68yJ9U+bRBxvzCHI/oGRariPPE9lBH9ljjP/sAZdjZqZAT/FeWN7RdNtcMUd6RQ
-	d/Kj0a3x7tz4jreXsbxpyV2Xlp3vdN6P2jO78hILd+2BokBeQiUX2h4uFmb+48/vbbzmJZy6afEYg
-	8W/yCatFdp15cPd9ayN/hsS1FfMThHQNYw7AMRh34WQ1w8lWdoiOMpjCl/OQhsHcKNQc+Mio83jGf
-	XEXOHTEU6ERg9RaUUhLlicdgPAy9jlSKbDbBuuBaJnxRcUdh2sizBMsuO2DNhqkT9tHMqh2L9eLAs
-	sjJTua6Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:References:In-Reply-To:Subject:CC:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=TSMC+c4D+91oQ/aFTj4qOoq5RazmFV0oKchLh0O2OvE=; b=GHPB3eygTd8RRa87crK2kE16LN
+	q6NAjvw3541D+yqLtzQZK633SmwBJaAyhWTGsxDnX2ZLjuqsQo8vHnyGsQ0IIRgGJesAYWo7d6940
+	dOVgFpKZUZffGyLTALxzFiujfMsrHIFSc6A2FFwRIdmdBjw1LpyVQghsfFaMhMNtGspq5Df0S+0aB
+	NDACB4+UrxXbBFJxGQ6EoeOGmYiUU5muPMJHNSQeFBb3P3RE8RSTxqlxlkB4xGYDb+Qoi7JYYewLA
+	cCQbocFfLDhqgkF8tKIanYAR1WGhJfzQ+OYuF6ltzUkM77Aa8p853tE0HAmyptIruE9JOsz9Mqgdy
+	2OjUp8UA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sOZ6X-000000060qZ-2p9Z;
-	Tue, 02 Jul 2024 08:43:13 +0000
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
+	id 1sOZSG-000000064jh-2w35;
+	Tue, 02 Jul 2024 09:05:40 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sOZ6V-000000060po-0JKl
-	for linux-mediatek@lists.infradead.org;
-	Tue, 02 Jul 2024 08:43:12 +0000
-Received: by mail-pl1-x62b.google.com with SMTP id d9443c01a7336-1f480624d10so29574815ad.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 02 Jul 2024 01:43:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1719909790; x=1720514590; darn=lists.infradead.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=vQ8zplKEvkyqs0AhE9LwFp0KDkZC+KF7mrGUufJk6Ng=;
-        b=QZSceWsdAz3dogEWLr6d3ctjpeM6qK4MWPs4QL0fSX15kxVmWO4Rw6BZJ97xA+/s0n
-         9HXq4xI78LBGg+S7ODaEzUI+O8Lj5b+q0Ew23iT+mPNJy57FSioXRiKeb/D3h5z3oSns
-         llT0MH8DWUEwZ+u7KQ6o6OEN5Sw4tQpuylXlohY+hESs4VAYAVX2HzCaK7WQYwjUVMrY
-         oTTR2bmHnCbJKbSR41ui6j1q8vgpwR+8jDF6EHCtc1UyCMKDm+IiqDrfNaab1eeKqzKm
-         6XpUNKT/XWIEDzQ1nwaPHpcUSPSJ/xj6Y0zimJn6NSe3LsDDZXDTi+LGDSyZVJnqC+4I
-         ZXSQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1719909790; x=1720514590;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=vQ8zplKEvkyqs0AhE9LwFp0KDkZC+KF7mrGUufJk6Ng=;
-        b=pjRW7pfCzkCf2hhDLAFa1bYIkmS7i8FBg4aWqVN2jgQS6ZewQURVGn49A+yC9i+laS
-         cmGNRBYgJDf02C5j8/AxEu9G1NDsHXR+haTuwpM4tfT8lDAh4on/a6A9nUcywueyRjCZ
-         uO7ZyAQ9CoO/yLUqOgfKHAxtL2Nmt7zUXSmzUEtkoS23EFJl/cUbUE5iVPbWmBeh+D+f
-         jBLoqLCH1hvsps5pBfiAz/IGHva6qKu+5gjZ9MfWsaJxibfNGZ0xugrThNCBz0v2Nzuw
-         ljXl7dnhDUEAQQRIAEWJCT8uipsouqgfvS2MTnvDihiLaVOQB+fJdr+tBq37G7GU+P8t
-         9QXQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUJTz3BXQDp45fT0atm+OpQ7nBfjbdaDV5MRW1pD7bpeY3L1Yk8I2mrs8ay/XUsE3ah8oyszg1WDcayMlpq2lScwoMXkrxtLmJJ6X4u3mv/bjsc
-X-Gm-Message-State: AOJu0YwIKx3p3A+3SAizzQ7n19CxsiEo/A8xvG1RJYduaIy1KI1t7m+d
-	nxys9Izt12I4j4ckSAyApd4/ImaSNDJbWKY4/o9qCHAqovrz2Z/ThSIuLAZ4TQk=
-X-Google-Smtp-Source: AGHT+IEmIv2vGdHXLm2ZvbXST6X7Il1ZBsG0xUxf3z1Ipxyow451EWanRYVGWaC0ZCem1Pikt0Jlng==
-X-Received: by 2002:a17:902:d488:b0:1fa:a68:47a8 with SMTP id d9443c01a7336-1fadbca042dmr72974405ad.28.1719909789985;
-        Tue, 02 Jul 2024 01:43:09 -0700 (PDT)
-Received: from localhost ([122.172.82.13])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-1fac156957fsm78805885ad.228.2024.07.02.01.43.08
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 02 Jul 2024 01:43:09 -0700 (PDT)
-Date: Tue, 2 Jul 2024 14:13:07 +0530
-From: Viresh Kumar <viresh.kumar@linaro.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, kernel@collabora.com,
-	linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] cpufreq: mediatek: Use dev_err_probe in every error path
- in probe
-Message-ID: <20240702084307.wwvl5dchxa4frif3@vireshk-i7>
-References: <20240628-mtk-cpufreq-dvfs-fail-init-err-v1-1-19c55db23011@collabora.com>
- <20240702055703.obendyy2ykbbutrz@vireshk-i7>
- <aa6e93bd-aba2-4e4d-bce9-04e818ac25ed@collabora.com>
+	id 1sOZSD-000000064j0-0gCb;
+	Tue, 02 Jul 2024 09:05:38 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_128_GCM_SHA256:128)
+	 (Exim 4.97.1)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1sOZS4-00000000346-1GZX;
+	Tue, 02 Jul 2024 09:05:28 +0000
+Date: Tue, 02 Jul 2024 09:05:19 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: linux-mediatek@lists.infradead.org,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Elad Yifee <eladwf@gmail.com>
+CC: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
+ Mark Lee <Mark-MC.Lee@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_net-next=5D_net=3A_ethernet=3A_m?=
+ =?US-ASCII?Q?ediatek=3A_Allow_gaps_in_MAC_allocation?=
+User-Agent: K-9 Mail for Android
+In-Reply-To: <3bda121b-f11d-44d1-a761-15195f8a418c@intel.com>
+References: <379ae584cea112db60f4ada79c7e5ba4f3364a64.1719862038.git.daniel@makrotopia.org> <3bda121b-f11d-44d1-a761-15195f8a418c@intel.com>
+Message-ID: <C24C4687-1C00-434D-8C37-BDB85E39456C@makrotopia.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <aa6e93bd-aba2-4e4d-bce9-04e818ac25ed@collabora.com>
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240702_014311_151631_AE6A75F1 
-X-CRM114-Status: GOOD (  19.26  )
+X-CRM114-CacheID: sfid-20240702_020537_223367_1A3BBFB2 
+X-CRM114-Status: GOOD (  13.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,50 +72,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 02-07-24, 10:26, AngeloGioacchino Del Regno wrote:
-> Il 02/07/24 07:57, Viresh Kumar ha scritto:
-> > On 28-06-24, 15:48, Nícolas F. R. A. Prado wrote:
-> > > diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
-> > > @@ -629,11 +630,9 @@ static int mtk_cpufreq_probe(struct platform_device *pdev)
-> > >   	int cpu, ret;
-> > >   	data = dev_get_platdata(&pdev->dev);
-> > > -	if (!data) {
-> > > -		dev_err(&pdev->dev,
-> > > -			"failed to get mtk cpufreq platform data\n");
-> > > -		return -ENODEV;
-> > > -	}
-> > > +	if (!data)
-> > > +		return dev_err_probe(&pdev->dev, -ENODEV,
-> > 
-> > What's the point of calling dev_err_probe() when we know for sure that
-> > the error isn't EPROBE_DEFER ?
-> > 
-> 
-> Logging consistency, that's all; the alternative would be to rewrite the dev_err()
-> messages to be consistent with what dev_err_probe() says, so that'd be
-> dev_err("error %pe: (message)");
 
-That would be better I guess. There is no point adding inefficient
-code.
 
-> > > +				     "failed to get mtk cpufreq platform data\n");
-> > >   	for_each_possible_cpu(cpu) {
-> > >   		info = mtk_cpu_dvfs_info_lookup(cpu);
-> > > @@ -643,24 +642,21 @@ static int mtk_cpufreq_probe(struct platform_device *pdev)
-> > >   		info = devm_kzalloc(&pdev->dev, sizeof(*info), GFP_KERNEL);
-> > >   		if (!info) {
-> > >   			ret = -ENOMEM;
-> > > +			dev_err_probe(&pdev->dev, ret, "Failed to allocate dvfs_info\n");
-> > 
-> 
-> By the way, forgot to point that out in my former review: to make it shorter,
-> instead of "ret = -ENOMEM; dev_err_probe()" you can write it as...
-> 
-> ret = dev_err_probe(&pdev->dev, -ENOMEM, ".... message");
+On 2 July 2024 06:58:22 UTC, Przemek Kitszel <przemyslaw=2Ekitszel@intel=
+=2Ecom> wrote:
+>On 7/1/24 21:28, Daniel Golle wrote:
+>> Some devices with MediaTek SoCs don't use the first but only the second
+>> MAC in the chip=2E Especially with MT7981 which got a built-in 1GE PHY
+>> connected to the second MAC this is quite common=2E
+>> Make sure to reset and enable PSE also in those cases by skipping gaps
+>> using 'continue' instead of aborting the loop using 'break'=2E
+>>=20
+>> Fixes: dee4dd10c79a ("net: ethernet: mtk_eth_soc: ppe: add support for =
+multiple PPEs")
+>> Suggested-by: Elad Yifee <eladwf@gmail=2Ecom>
+>> Signed-off-by: Daniel Golle <daniel@makrotopia=2Eorg>
+>> ---
+>> Note that this should go to 'net-next' because the commit being fixed
+>> isn't yet part of the 'net' tree=2E
+>
+>makes sense, and the fix is correct, so:
+>Reviewed-by: Przemek Kitszel <przemyslaw=2Ekitszel@intel=2Ecom>
 
-`ret` will be  be used I guess with the `goto` statement to return
-error and so the change was like this.
+Thank you the fast review!
 
--- 
-viresh
+>what about:
+>4733=E2=94=82 static int mtk_sgmii_init(struct mtk_eth *eth)
+>4734=E2=94=82 {
+>4735=E2=94=82         struct device_node *np;
+>4736=E2=94=82         struct regmap *regmap;
+>4737=E2=94=82         u32 flags;
+>4738=E2=94=82         int i;
+>4739=E2=94=82
+>4740=E2=94=82         for (i =3D 0; i < MTK_MAX_DEVS; i++) {
+>4741=E2=94=82                 np =3D of_parse_phandle(eth->dev->of_node, =
+"mediatek,sgmiisys", i);
+>4742=E2=94=82                 if (!np)
+>4743=E2=94=82                         break;
+>
+>should we also continue here?
+
+Good point=2E As sgmiisys is defined in dtsi it's not so relevant in pract=
+ise though, as the SoC components are of course always present even if we d=
+on't use them=2E Probably it is still better to not be overly strict on the=
+ presence of things we may not even use, not even emit an error message and=
+ silently break something else, so yes, worth fixing imho=2E
+
+>
+>4744=E2=94=82
+>4745=E2=94=82                 regmap =3D syscon_node_to_regmap(np);
+>4746=E2=94=82                 flags =3D 0;
+>4747=E2=94=82                 if (of_property_read_bool(np, "mediatek,pns=
+wap"))
+>4748=E2=94=82                         flags |=3D MTK_SGMII_FLAG_PN_SWAP;
+>4749=E2=94=82
+>4750=E2=94=82                 of_node_put(np);
+>4751=E2=94=82
+>4752=E2=94=82                 if (IS_ERR(regmap))
+>4753=E2=94=82                         return PTR_ERR(regmap);
+>4754=E2=94=82
+>4755=E2=94=82                 eth->sgmii_pcs[i] =3D mtk_pcs_lynxi_create(=
+eth->dev, regmap,
+>4756=E2=94=82 eth->soc->ana_rgc3,
+>4757=E2=94=82                                                          fl=
+ags);
+>4758=E2=94=82         }
+>4759=E2=94=82
+>4760=E2=94=82         return 0;
+>4761=E2=94=82 }
+>
+>
 
