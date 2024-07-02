@@ -4,64 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40852C3064D
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jul 2024 12:12:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0B70C30658
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Jul 2024 12:12:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ZQScXcZF71HJsNRq99/ymNdr46r/DkQ4jURaGLM+JYA=; b=CPVZCtvhHQSEfBkQk69afESg0F
-	apu4u+pEqLaHWti846stBh2WUD8JPc5x4Srhp0O2/+zeAQ3qqGlpRN6vVKEmGHBENKDMFZnb+Aeii
-	rMaIy0+meAwNAdCQ8xM2m9zesZjSR1dS61n9X2YazHxIRKyCLPwO6naRw10b7DEMvAd5kOAenh5GV
-	cA4RSFbNVgt3XJuyJBy4PzFDEmHfrSzHLs9cVOOducOlIJq1YS3NsV94xLzHvmfticICH3UO/muSG
-	8HqC5i27yCg/YOOfLDdLyqEUMiOYMC3F1inQDaCeenf/ybAyPlkWz3VWif+5il+XGsbFMLVptEo/P
-	Gjteo5kg==;
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=GNmW4/MQ36N4a/JMwqemvcpbcKNRr6KaJ2e8NUyALoM=; b=Wc9p4DVY1hnBKZpGG6ydBTyoNx
+	LoPb/9xFDsISFVn2Pp/LI4Ss4JQof1JsZv2cEzggWuAYD/jOa0kefb+ICRy/ZhnjKzq/3BYi+4TCG
+	zf54v/nWlurpVLEbKmR3DiV77WckrPCfuCytxIYEO+kMyd7ls+K1t+tMnm00FiW59HUkK31U5yHU7
+	HwMJIzIDZlwlj3bHH2KHKWtn04hekCehE8gOMf4rN48Qz3XukQY6C7tv/V5gZnP/Ap/Gi8fgzcQ85
+	6ZBHAMcvnSLhf/bMGqq/38GO/xAts48uQ6PEBWM3THYgQeq2pCdxNh1B6rrh9VUMeGF763/gR8nT3
+	vFFw8SFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sOcMp-00000006cuM-2pLf;
-	Tue, 02 Jul 2024 12:12:15 +0000
-Received: from cmccmta6.chinamobile.com ([111.22.67.139] helo=cmccmta2.chinamobile.com)
-	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sOcMb-00000006ctN-3KKR;
-	Tue, 02 Jul 2024 12:12:04 +0000
-X-RM-TagInfo: emlType=0                                       
-X-RM-SPAM-FLAG: 00000000
-Received: from spf.mail.chinamobile.com (unknown[10.188.0.87])
-	by rmmx-syy-dmz-app05-12005 (RichMail) with SMTP id 2ee56683ec4adc0-b9686;
-	Tue, 02 Jul 2024 20:02:20 +0800 (CST)
-X-RM-TRANSID: 2ee56683ec4adc0-b9686
-X-RM-TagInfo: emlType=0                                       
-X-RM-SPAM-FLAG: 00000000
-Received: from localhost.localdomain (unknown[223.108.79.99])
-	by rmsmtp-syy-appsvr10-12010 (RichMail) with SMTP id 2eea6683ec4be50-965e6;
-	Tue, 02 Jul 2024 20:02:20 +0800 (CST)
-X-RM-TRANSID: 2eea6683ec4be50-965e6
-From: Liu Jing <liujing@cmss.chinamobile.com>
-To: lgirdwood@gmail.com,
-	broonie@kernel.org,
-	perex@perex.cz,
-	tiwai@suse.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	kuninori.morimoto.gx@renesas.com,
-	bartosz.golaszewski@linaro.org,
-	linus.walleij@linaro.org
-Cc: linux-sound@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	liujing@cmss.chinamobile.com
-Subject: [PATCH] ASoC: mediatek: mt2701-cs42448: Optimize redundant code in mt2701_cs42448_machine_probe
-Date: Tue,  2 Jul 2024 12:36:56 +0800
-Message-Id: <20240702043656.11278-1-liujing@cmss.chinamobile.com>
-X-Mailer: git-send-email 2.33.0
+	id 1sOcNP-00000006d4R-2Pl5;
+	Tue, 02 Jul 2024 12:12:51 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
+	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1sOcND-00000006d1A-0Uub;
+	Tue, 02 Jul 2024 12:12:40 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1719922357;
+	bh=qecD3oTzye18Eqo4/G5hS4HY/xXuOOD8C5cYy7HghNA=;
+	h=Date:Subject:To:References:From:In-Reply-To:From;
+	b=TAv7+JpLRE7MMNaDnPSmHii+WoswkDSLhkBMlxDh7Uqx56u8cycBkDYOI9aq3UqxW
+	 nGfDHHWKzjywaZzOvVvjUhfijzb+pqqEHV8bvNdaty05ORG7gocih8UW8Sp75wZ/0o
+	 xbZ7fpRhMVXmiilQHP3n2pIqeH3bKhDezVTIDdaecmSE7Ck91N9iOTSN15Nrdsvi1V
+	 Eed2dpEqQqkIc22ramtqJMk7lLx53Eyd1FTPT+dE6lW1NUw8SX6AMlLYucBwrkE3iS
+	 KwFPGpMPUv1nzzJs9kOSZqPYj3XiyrWJslAHyaYKIiHqFTZLdwK1/WC2wiyLZy81Rg
+	 YAP860Njs5HdQ==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id DA23B37820A7;
+	Tue,  2 Jul 2024 12:12:36 +0000 (UTC)
+Message-ID: <ae8f3014-0260-4e22-91e1-77d61e2c2d09@collabora.com>
+Date: Tue, 2 Jul 2024 14:12:36 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: Duplicated bindings for mediatek,mt8173-scpsys
+To: =?UTF-8?B?VGluZ0hhbiBTaGVuICjmsojlu7fnv7Ap?= <TingHan.Shen@mediatek.com>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ Sean Wang <Sean.Wang@mediatek.com>, "zajec5@gmail.com" <zajec5@gmail.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ =?UTF-8?B?WXUtY2hhbmcgTGVlICjmnY7nprnnkosp?= <Yu-chang.Lee@mediatek.com>,
+ =?UTF-8?B?RmFuIENoZW4gKOmZs+WHoSk=?= <fan.chen@mediatek.com>,
+ "s.hauer@pengutronix.de" <s.hauer@pengutronix.de>
+References: <7614ed44-7613-4912-9b4b-62c92abbc9bd@gmail.com>
+ <faa4a9a8a3f0416f3e2ebe5ecf3b3afff5f490d1.camel@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <faa4a9a8a3f0416f3e2ebe5ecf3b3afff5f490d1.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240702_051203_101973_B035D217 
-X-CRM114-Status: GOOD (  10.13  )
+X-CRM114-CacheID: sfid-20240702_051239_330825_58A143F9 
+X-CRM114-Status: GOOD (  13.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,82 +82,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Utilize the defined parameter 'dev' to make the code cleaner.
+Il 02/07/24 03:58, TingHan Shen (沈廷翰) ha scritto:
+> On Fri, 2024-06-28 at 09:57 +0200, Rafał Miłecki wrote:
+>> I noticed that "mediatek,mt8173-scpsys" compatible is specified in two
+>> places:
+>> Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
+>> Documentation/devicetree/bindings/mfd/mediatek,mt8195-scpsys.yaml
+>>
+>> The first one seems to be "real" hardware block. It also has a Linux
+>> driver at drivers/pmdomain/mediatek/mtk-scpsys.c . It also seems that
+>> scpsys.txt was first added explicitly for MT8173.
+>>
+>> The later one seems to be "just" an MFD with no real driver but it
+>> seems to be actually used in arch/arm64/boot/dts/mediatek/mt8173.dtsi .
+>>
+>> Can I ask for some assistance sorting this out?
+>>
+>> Relevant kernel commits:
+>>
+>> commit 26331d261f49949bff6477fc9c844b17076fa245
+>> Author: Tinghan Shen <tinghan.shen@mediatek.com>
+>> Date:   Thu Aug 11 10:57:59 2022 +0800
+>>
+>>       dt-bindings: mfd: mt8195: Add bindings for MediaTek SCPSYS
+>>
+>> commit c84e358718a66f76ac0de1681d15d8d0c68fcdab
+>> Author: Sascha Hauer <s.hauer@pengutronix.de>
+>> Date:   Wed Jun 24 08:17:04 2015 +0200
+>>
+>>       soc: Mediatek: Add SCPSYS power domain driver
+>>
+>> commit 859e42800bcfc4db9cefaa2c24d6e3a203fe961d
+>> Author: Sascha Hauer <s.hauer@pengutronix.de>
+>> Date:   Wed Jun 24 08:17:03 2015 +0200
+>>
+>>       dt-bindings: soc: Add documentation for the MediaTek SCPSYS unit
+> 
+> Loop MTK members.
+> 
 
-Signed-off-by: Liu Jing <liujing@cmss.chinamobile.com>
----
- sound/soc/mediatek/mt2701/mt2701-cs42448.c | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
+Rafał, I suggest "out with the old, in with the new".
 
-diff --git a/sound/soc/mediatek/mt2701/mt2701-cs42448.c b/sound/soc/mediatek/mt2701/mt2701-cs42448.c
-index 1262e8a1bc9a..4974b0536b7b 100644
---- a/sound/soc/mediatek/mt2701/mt2701-cs42448.c
-+++ b/sound/soc/mediatek/mt2701/mt2701-cs42448.c
-@@ -329,10 +329,10 @@ static int mt2701_cs42448_machine_probe(struct platform_device *pdev)
- 	int ret;
- 	int i;
- 	struct device_node *platform_node, *codec_node, *codec_node_bt_mrg;
-+	struct device *dev = &pdev->dev;
- 	struct mt2701_cs42448_private *priv =
--		devm_kzalloc(&pdev->dev, sizeof(struct mt2701_cs42448_private),
-+		devm_kzalloc(dev, sizeof(struct mt2701_cs42448_private),
- 			     GFP_KERNEL);
--	struct device *dev = &pdev->dev;
- 	struct snd_soc_dai_link *dai_link;
- 
- 	if (!priv)
-@@ -341,7 +341,7 @@ static int mt2701_cs42448_machine_probe(struct platform_device *pdev)
- 	platform_node = of_parse_phandle(pdev->dev.of_node,
- 					 "mediatek,platform", 0);
- 	if (!platform_node) {
--		dev_err(&pdev->dev, "Property 'platform' missing or invalid\n");
-+		dev_err(dev, "Property 'platform' missing or invalid\n");
- 		return -EINVAL;
- 	}
- 	for_each_card_prelinks(card, i, dai_link) {
-@@ -355,7 +355,7 @@ static int mt2701_cs42448_machine_probe(struct platform_device *pdev)
- 	codec_node = of_parse_phandle(pdev->dev.of_node,
- 				      "mediatek,audio-codec", 0);
- 	if (!codec_node) {
--		dev_err(&pdev->dev,
-+		dev_err(dev,
- 			"Property 'audio-codec' missing or invalid\n");
- 		return -EINVAL;
- 	}
-@@ -368,7 +368,7 @@ static int mt2701_cs42448_machine_probe(struct platform_device *pdev)
- 	codec_node_bt_mrg = of_parse_phandle(pdev->dev.of_node,
- 					     "mediatek,audio-codec-bt-mrg", 0);
- 	if (!codec_node_bt_mrg) {
--		dev_err(&pdev->dev,
-+		dev_err(dev,
- 			"Property 'audio-codec-bt-mrg' missing or invalid\n");
- 		return -EINVAL;
- 	}
-@@ -377,7 +377,7 @@ static int mt2701_cs42448_machine_probe(struct platform_device *pdev)
- 
- 	ret = snd_soc_of_parse_audio_routing(card, "audio-routing");
- 	if (ret) {
--		dev_err(&pdev->dev, "failed to parse audio-routing: %d\n", ret);
-+		dev_err(dev, "failed to parse audio-routing: %d\n", ret);
- 		return ret;
- 	}
- 
-@@ -395,10 +395,10 @@ static int mt2701_cs42448_machine_probe(struct platform_device *pdev)
- 
- 	snd_soc_card_set_drvdata(card, priv);
- 
--	ret = devm_snd_soc_register_card(&pdev->dev, card);
-+	ret = devm_snd_soc_register_card(dev, card);
- 
- 	if (ret)
--		dev_err(&pdev->dev, "%s snd_soc_register_card fail %d\n",
-+		dev_err(dev, "%s snd_soc_register_card fail %d\n",
- 			__func__, ret);
- 	return ret;
- }
--- 
-2.33.0
+The old binding was referring to the mtk-scpsys power domain driver, which MT8173
+has been migrated away from (years ago), as it now uses mtk-pm-domains instead.
 
+I'd be happy if you could also actually remove the MT8173 support from the
+mtk-scpsys.c driver too, as that has been, again, unused for more than 2 years now.
 
+Honestly, I'd be even happier if we could even move MT27xx, 6797, 7622/23a from
+mtk-scpsys to mtk-pm-domains, but I don't have any HW with any of these, I don't
+expect you to have any either, so there's no way we can remove the old driver
+entirely.
 
+So....
+
+Please go on and remove MT8173 from mtk-scpsys.c; you'll be able to resolve the
+duplicated bindings accordingly to that change.
+
+Cheers,
+Angelo
 
