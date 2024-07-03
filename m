@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FDD4C2BD09
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jul 2024 21:43:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40838C3271E
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jul 2024 21:43:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jnnFcNIlRLu9h3/UZWU/y9qWihK6R2k0jAbg00BAKDs=; b=eqk2BgOffhu+I2Uu1TU2/ZB6pg
-	4ViEo6X3V1B6uiR8gMMczvWoknfQUXSHgLHno/+SD06oo0m7ZqgXQhIqAXKLM3t88fCC3Bj4d7PHK
-	37Yhtwy1tCXJXPx4hqpOq1yQ46J6vjEJe3UhvVfNnXsoEGY3qwMQ3sugrVR/8qN/kHIs0qRrEubQ6
-	6vUZMF8FvolUyuiW7WCSJIWqxw5x4pfJWwP8uEqgLHKQ29FhEU6X4AFeGkSAUN2GuPA6cjfR/xFHg
-	rP+r1cRle4biGa+FyT8kkvry+DlTdVJ8YH7ayoWuvjEVy3ce+wStCKkosDxrFVUMoTcLQNvDqmt8n
-	6C/Z+q6Q==;
+	bh=9TOWM2avYXo/xP6pN6yETRbPs1gdrDHvtIHr+R1SQlw=; b=ngecG5TEEIBqcVzSqED6ipXlxh
+	HaMOGr2g4X9WdNIM+zWlWLbpNmXicA0HRFaf4skgOjFul19e7MkpQlZpbwwSr42f6mY/Niwn9recm
+	+fYBooM35edmmUBsE9ip/LR47p1gW69mFuuxpl6a74cnh/UvYxIQWJ3vTyqiatiO0JPirC7fI61Tb
+	iq+dt6FR9WdYg1GMdQ8u5kYy7n7tXXoTbIDEiuAdQQTAUrPUSoh/HVmKJX2ATxjLeVihy/bIwR3bA
+	B9RIf04CetnDlVDbR4sdwywXXoVZ7diCjfUwjBzo2w1vQ4j1hQJ/0HaiZZQq7zXBTtEpPbobVftpt
+	67txpv8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sP7kr-0000000BX4l-0TmW;
-	Wed, 03 Jul 2024 21:43:09 +0000
-Received: from mail-ot1-f47.google.com ([209.85.210.47])
+	id 1sP7ks-0000000BX64-42QI;
+	Wed, 03 Jul 2024 21:43:10 +0000
+Received: from mail-ot1-f54.google.com ([209.85.210.54])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sP7ko-0000000BX2m-2Fv4
+	id 1sP7kq-0000000BX48-1yOp
 	for linux-mediatek@lists.infradead.org;
-	Wed, 03 Jul 2024 21:43:08 +0000
-Received: by mail-ot1-f47.google.com with SMTP id 46e09a7af769-700caf4cc3bso113616a34.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 03 Jul 2024 14:43:06 -0700 (PDT)
+	Wed, 03 Jul 2024 21:43:09 +0000
+Received: by mail-ot1-f54.google.com with SMTP id 46e09a7af769-700cf03febfso89118a34.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 03 Jul 2024 14:43:08 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1720042985; x=1720647785;
+        d=1e100.net; s=20230601; t=1720042987; x=1720647787;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=jnnFcNIlRLu9h3/UZWU/y9qWihK6R2k0jAbg00BAKDs=;
-        b=bg1EaT6ytagvTJlgxaZJq+50Icdb53NxLrM0ZpdRBn87mBtgEZT6QX+ZuII1ofa2eX
-         Yu7pIA+RUq1Y6rPIXR326dzPHu8824x22kE/pt6z+Allp15bcXSqF5xZIoOPKwaUHkmg
-         2zw2/CmvNp5APPzbtWBQ2XLxz9cQaxr5QcV4yf8+i1At07dsYCQJ2a+Qfytzpcz85DOQ
-         qzg2aQgbH6BxWkCLIcYylP7sAwhQVxKD66zHp2ZcjuLd6iUmA77OVOFG4lTakt5GpExo
-         K2SHnSd0oSYHM8NmKCneVnaKXDg1has0ReZYXw+bPEeb7uKbvjf8uPvvqEHUrkDreVnq
-         Tp1Q==
-X-Forwarded-Encrypted: i=1; AJvYcCUmAnrF2JgXrLSsonGKU0hyWgAHdNyAC9yTZD1jg8ei+bff+sH9EnD3Az8Q0ljzs+1GqRuqRvoM/j3ji6evXcIi6DrdkhHsA9lDoYSNwVRXYyjJ
-X-Gm-Message-State: AOJu0Yx2fBaDxNonZ9lMAUPdUi28mKOauBVow/d+sbsgql5XWEHngI/n
-	q632+6bOQvMOCcKviLomH7ngeNeHExWdiuxjqIWD1hY57fSEoS7g
-X-Google-Smtp-Source: AGHT+IFRSikQVc8FWQX6gO02PCmAbad71auZ/8T91RgSglqwFXC1GLz5+48snIR2vtKUFVtZ8rW8MQ==
-X-Received: by 2002:a9d:7e8a:0:b0:700:e0e8:5e2 with SMTP id 46e09a7af769-70207560e89mr12824234a34.0.1720042984959;
-        Wed, 03 Jul 2024 14:43:04 -0700 (PDT)
+        bh=9TOWM2avYXo/xP6pN6yETRbPs1gdrDHvtIHr+R1SQlw=;
+        b=gY6KG+wSSl2qNTReClWoQQBsuoujA+4J78OBUSYvRYTc0Sfk364z53SmiaP/YjwwOg
+         7OvfVJcFFV5jUSbqAf+mNJBqtA8QP+RcVb24Mjovbpy52+jyi6up1MkIq58IfR3tNJvI
+         TXR0SnBA6rAKNYoc5VwQeOI4WwkRsKHgMkGiE8JbVTTQr00808QqitoMxsxq0Hv/kgwt
+         91IFuXdDv7Ee1qVc+Utia11i1Dk0a9fQZS0RrqP8nnLwOhhrmFk91hIC46x7l674b/vL
+         PhbFVTkSq82MVfequ0GlCrLnzs5KtS8QIXYO5XccMFw23C6q3bs8X4BcoUzFNuxTvUlf
+         gH0A==
+X-Forwarded-Encrypted: i=1; AJvYcCUr7+wkMh5GMsd+E+SjSEnqlY5ya27a4wkj/T8dDs5Z9FmIRle4q77XsgudNiYiyq3HA5ED0uz5EkvlxCUCOM3qlh5LxbdcALrd/nTCKwsub6az
+X-Gm-Message-State: AOJu0YyiorAX/9sxR17WsoeC2M2IpxcMCW+LTwoBJ5yapMy/fNNO7CIj
+	le5HKvAhAb3+yRE6TkGl9ksAlxw4PihRcJY/SwLqmPJV7jgGjOnwNuRB3Syb
+X-Google-Smtp-Source: AGHT+IHB+8D92ICxDGrelbsO6+AY0q19flJoPxzsqBAYCuqHkQXeoHpWCeXCgy/9CJA3vEU2E60bXg==
+X-Received: by 2002:a05:6830:2007:b0:700:d1c1:e12d with SMTP id 46e09a7af769-7020775bef2mr12607744a34.3.1720042987444;
+        Wed, 03 Jul 2024 14:43:07 -0700 (PDT)
 Received: from sean-ThinkPad-T450s.lan ([207.191.35.252])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-701f7b20953sm2111417a34.54.2024.07.03.14.43.02
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-701f7b20953sm2111417a34.54.2024.07.03.14.43.05
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 03 Jul 2024 14:43:03 -0700 (PDT)
+        Wed, 03 Jul 2024 14:43:05 -0700 (PDT)
 From: sean.wang@kernel.org
 To: nbd@nbd.name,
 	lorenzo.bianconi@redhat.com
@@ -59,17 +59,17 @@ Cc: sean.wang@mediatek.com,
 	mingyen.hsieh@mediatek.com,
 	linux-wireless@vger.kernel.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH 07/29] wifi: mt76: mt7925: add mt7925_change_vif_links
-Date: Wed,  3 Jul 2024 14:42:12 -0700
-Message-Id: <a7afe39007465a4fec617556e90ccb5449d59aff.1720042294.git.sean.wang@kernel.org>
+Subject: [PATCH 08/29] wifi: mt76: mt7925: add mt7925_change_sta_links
+Date: Wed,  3 Jul 2024 14:42:13 -0700
+Message-Id: <8003cfbdec2c1357fb9d7ac8ba93af5fd0b4ec5d.1720042294.git.sean.wang@kernel.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <cover.1720042294.git.sean.wang@kernel.org>
 References: <cover.1720042294.git.sean.wang@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240703_144306_652773_07D5B315 
-X-CRM114-Status: GOOD (  22.02  )
+X-CRM114-CacheID: sfid-20240703_144308_538411_6BD9B370 
+X-CRM114-Status: GOOD (  17.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,7 +86,7 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Sean Wang <sean.wang@mediatek.com>
 
-Add mt7925_change_vif_links to change the valid links on an interface,
+add mt7925_change_sta_links to change the valid links of a station,
 supporting the MLO-enabled firmware.
 
 Co-developed-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
@@ -95,153 +95,174 @@ Co-developed-by: Deren Wu <deren.wu@mediatek.com>
 Signed-off-by: Deren Wu <deren.wu@mediatek.com>
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- .../net/wireless/mediatek/mt76/mt7925/main.c  | 130 ++++++++++++++++++
- .../net/wireless/mediatek/mt76/mt7925/mcu.c   | 117 +++++++++++++---
- .../net/wireless/mediatek/mt76/mt7925/mcu.h   |  20 +++
- .../wireless/mediatek/mt76/mt7925/mt7925.h    |   6 +
- drivers/net/wireless/mediatek/mt76/mt792x.h   |   5 +
- .../net/wireless/mediatek/mt76/mt792x_core.c  |  23 +++-
- 6 files changed, 275 insertions(+), 26 deletions(-)
+ .../net/wireless/mediatek/mt76/mt7925/main.c  | 142 +++++++++++++++++-
+ drivers/net/wireless/mediatek/mt76/mt792x.h   |   7 +
+ 2 files changed, 145 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-index 264517fd3bf7..c9119a222427 100644
+index c9119a222427..0e554b21692e 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-@@ -472,6 +472,33 @@ static int mt7925_set_roc(struct mt792x_phy *phy,
- 	return err;
- }
+@@ -811,16 +811,79 @@ static int mt7925_mac_link_sta_add(struct mt76_dev *mdev,
+ 					link_conf, link_sta, false);
+ 	}
  
-+static int mt7925_set_mlo_roc(struct mt792x_phy *phy,
-+			      struct mt792x_bss_conf *mconf,
-+			      u16 sel_links)
-+{
-+	int err;
+-	ret = mt7925_mcu_sta_update(dev, link_sta, vif, true,
+-				    MT76_STA_INFO_STATE_NONE);
+-	if (ret)
+-		return ret;
++	if (ieee80211_vif_is_mld(vif) &&
++	    link_sta == mlink->pri_link) {
++		ret = mt7925_mcu_sta_update(dev, link_sta, vif, true,
++					    MT76_STA_INFO_STATE_NONE);
++		if (ret)
++			return ret;
++	} else if (ieee80211_vif_is_mld(vif) &&
++		   link_sta != mlink->pri_link) {
++		ret = mt7925_mcu_sta_update(dev, mlink->pri_link, vif,
++					    true, MT76_STA_INFO_STATE_ASSOC);
++		if (ret)
++			return ret;
 +
-+	if (WARN_ON_ONCE(test_and_set_bit(MT76_STATE_ROC, &phy->mt76->state)))
-+		return -EBUSY;
-+
-+	phy->roc_grant = false;
-+
-+	err = mt7925_mcu_set_mlo_roc(mconf, sel_links, 5, ++phy->roc_token_id);
-+	if (err < 0) {
-+		clear_bit(MT76_STATE_ROC, &phy->mt76->state);
-+		goto out;
++		ret = mt7925_mcu_sta_update(dev, link_sta, vif, true,
++					    MT76_STA_INFO_STATE_ASSOC);
++		if (ret)
++			return ret;
++	} else {
++		ret = mt7925_mcu_sta_update(dev, link_sta, vif, true,
++					    MT76_STA_INFO_STATE_NONE);
++		if (ret)
++			return ret;
 +	}
-+
-+	if (!wait_event_timeout(phy->roc_wait, phy->roc_grant, 4 * HZ)) {
-+		mt7925_mcu_abort_roc(phy, mconf, phy->roc_token_id);
-+		clear_bit(MT76_STATE_ROC, &phy->mt76->state);
-+		err = -ETIMEDOUT;
-+	}
-+
-+out:
-+	return err;
-+}
-+
- static int mt7925_remain_on_channel(struct ieee80211_hw *hw,
- 				    struct ieee80211_vif *vif,
- 				    struct ieee80211_channel *chan,
-@@ -1521,6 +1548,108 @@ static void mt7925_link_info_changed(struct ieee80211_hw *hw,
- 	mt792x_mutex_release(dev);
+ 
+ 	mt76_connac_power_save_sched(&dev->mphy, &dev->pm);
+ 
+ 	return 0;
  }
  
 +static int
-+mt7925_change_vif_links(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
-+			u16 old_links, u16 new_links,
-+			struct ieee80211_bss_conf *old[IEEE80211_MLD_MAX_NUM_LINKS])
++mt7925_mac_sta_add_links(struct mt792x_dev *dev, struct ieee80211_vif *vif,
++			 struct ieee80211_sta *sta, unsigned long new_links)
 +{
-+	struct mt792x_bss_conf *mconfs[IEEE80211_MLD_MAX_NUM_LINKS] = {}, *mconf;
-+	struct mt792x_link_sta *mlinks[IEEE80211_MLD_MAX_NUM_LINKS] = {}, *mlink;
-+	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
++	struct mt792x_sta *msta = (struct mt792x_sta *)sta->drv_priv;
++	struct mt76_wcid *wcid;
++	unsigned int link_id;
++	int err = 0;
++
++	for_each_set_bit(link_id, &new_links, IEEE80211_MLD_MAX_NUM_LINKS) {
++		struct ieee80211_link_sta *link_sta;
++		struct mt792x_link_sta *mlink;
++
++		if (msta->deflink_id == IEEE80211_LINK_UNSPECIFIED) {
++			mlink = &msta->deflink;
++			msta->deflink_id = link_id;
++		} else {
++			mlink = devm_kzalloc(dev->mt76.dev, sizeof(*mlink), GFP_KERNEL);
++			if (!mlink) {
++				err = -ENOMEM;
++				break;
++			}
++
++			wcid = &mlink->wcid;
++			ewma_signal_init(&wcid->rssi);
++			rcu_assign_pointer(dev->mt76.wcid[wcid->idx], wcid);
++			mt76_wcid_init(wcid);
++			ewma_avg_signal_init(&mlink->avg_ack_signal);
++			memset(mlink->airtime_ac, 0,
++			       sizeof(msta->deflink.airtime_ac));
++		}
++
++		msta->valid_links |= BIT(link_id);
++		rcu_assign_pointer(msta->link[link_id], mlink);
++		mlink->sta = msta;
++		mlink->pri_link = &sta->deflink;
++
++		link_sta = mt792x_sta_to_link_sta(vif, sta, link_id);
++		mt7925_mac_link_sta_add(&dev->mt76, vif, link_sta);
++	}
++
++	return err;
++}
++
+ int mt7925_mac_sta_add(struct mt76_dev *mdev, struct ieee80211_vif *vif,
+ 		       struct ieee80211_sta *sta)
+ {
+@@ -915,6 +978,48 @@ static void mt7925_mac_link_sta_remove(struct mt76_dev *mdev,
+ 	mt76_connac_power_save_sched(&dev->mphy, &dev->pm);
+ }
+ 
++static int
++mt7925_mac_sta_remove_links(struct mt792x_dev *dev, struct ieee80211_vif *vif,
++			    struct ieee80211_sta *sta, unsigned long old_links)
++{
++	struct mt792x_sta *msta = (struct mt792x_sta *)sta->drv_priv;
++	struct mt76_dev *mdev = &dev->mt76;
++	struct mt76_wcid *wcid;
++	unsigned int link_id;
++
++	for_each_set_bit(link_id, &old_links, IEEE80211_MLD_MAX_NUM_LINKS) {
++		struct ieee80211_link_sta *link_sta;
++		struct mt792x_link_sta *mlink;
++
++		link_sta = mt792x_sta_to_link_sta(vif, sta, link_id);
++		if (!link_sta)
++			continue;
++
++		mlink = mt792x_sta_to_link(msta, link_id);
++		if (!mlink)
++			continue;
++
++		mt7925_mac_link_sta_remove(&dev->mt76, vif, link_sta);
++
++		wcid = &mlink->wcid;
++		rcu_assign_pointer(msta->link[link_id], NULL);
++		msta->valid_links &= ~BIT(link_id);
++		mlink->sta = NULL;
++		mlink->pri_link = NULL;
++
++		if (link_sta != mlink->pri_link) {
++			mt76_wcid_cleanup(mdev, wcid);
++			mt76_wcid_mask_clear(mdev->wcid_mask, wcid->idx);
++			mt76_wcid_mask_clear(mdev->wcid_phy_mask, wcid->idx);
++		}
++
++		if (msta->deflink_id == link_id)
++			msta->deflink_id = IEEE80211_LINK_UNSPECIFIED;
++	}
++
++	return 0;
++}
++
+ void mt7925_mac_sta_remove(struct mt76_dev *mdev, struct ieee80211_vif *vif,
+ 			   struct ieee80211_sta *sta)
+ {
+@@ -1650,6 +1755,34 @@ mt7925_change_vif_links(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 	return err;
+ }
+ 
++static int
++mt7925_change_sta_links(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
++			struct ieee80211_sta *sta, u16 old_links, u16 new_links)
++{
 +	unsigned long add = new_links & ~old_links;
 +	unsigned long rem = old_links & ~new_links;
 +	struct mt792x_dev *dev = mt792x_hw_dev(hw);
-+	struct mt792x_phy *phy = mt792x_hw_phy(hw);
-+	struct ieee80211_bss_conf *link_conf;
-+	unsigned int link_id;
-+	int err;
++	int err = 0;
 +
 +	if (old_links == new_links)
 +		return 0;
 +
 +	mt792x_mutex_acquire(dev);
 +
-+	for_each_set_bit(link_id, &rem, IEEE80211_MLD_MAX_NUM_LINKS) {
-+		mconf = mt792x_vif_to_link(mvif, link_id);
-+		mlink = mt792x_sta_to_link(&mvif->sta, link_id);
++	err = mt7925_mac_sta_remove_links(dev, vif, sta, rem);
++	if (err < 0)
++		goto out;
 +
-+		if (!mconf || !mlink)
-+			continue;
++	err = mt7925_mac_sta_add_links(dev, vif, sta, add);
++	if (err < 0)
++		goto out;
 +
-+		if (mconf != &mvif->bss_conf) {
-+			mt792x_mac_link_bss_remove(dev, mconf, mlink);
-+			devm_kfree(dev->mt76.dev, mconf);
-+			devm_kfree(dev->mt76.dev, mlink);
-+		}
-+
-+		rcu_assign_pointer(mvif->link_conf[link_id], NULL);
-+		rcu_assign_pointer(mvif->sta.link[link_id], NULL);
-+	}
-+
-+	for_each_set_bit(link_id, &add, IEEE80211_MLD_MAX_NUM_LINKS) {
-+		if (!old_links) {
-+			mconf = &mvif->bss_conf;
-+			mlink = &mvif->sta.deflink;
-+		} else {
-+			mconf = devm_kzalloc(dev->mt76.dev, sizeof(*mconf),
-+					     GFP_KERNEL);
-+			mlink = devm_kzalloc(dev->mt76.dev, sizeof(*mlink),
-+					     GFP_KERNEL);
-+		}
-+
-+		mconfs[link_id] = mconf;
-+		mlinks[link_id] = mlink;
-+		mconf->link_id = link_id;
-+		mconf->vif = mvif;
-+		mlink->wcid.link_id = link_id;
-+	}
-+
-+	if (hweight16(mvif->valid_links) == 0)
-+		mt792x_mac_link_bss_remove(dev, &mvif->bss_conf,
-+					   &mvif->sta.deflink);
-+
-+	for_each_set_bit(link_id, &add, IEEE80211_MLD_MAX_NUM_LINKS) {
-+		mconf = mconfs[link_id];
-+		mlink = mlinks[link_id];
-+		link_conf = mt792x_vif_to_bss_conf(vif, link_id);
-+
-+		rcu_assign_pointer(mvif->link_conf[link_id], mconf);
-+		rcu_assign_pointer(mvif->sta.link[link_id], mlink);
-+
-+		err = mt7925_mac_link_bss_add(dev, link_conf, mlink);
-+		if (err < 0)
-+			goto free;
-+
-+		if (mconf != &mvif->bss_conf) {
-+			err = mt7925_set_mlo_roc(phy, &mvif->bss_conf,
-+						 vif->active_links);
-+			if (err < 0)
-+				goto free;
-+		}
-+	}
-+
-+	mvif->valid_links = new_links;
-+
-+	mt792x_mutex_release(dev);
-+
-+	return 0;
-+
-+free:
-+	for_each_set_bit(link_id, &add, IEEE80211_MLD_MAX_NUM_LINKS) {
-+		rcu_assign_pointer(mvif->link_conf[link_id], NULL);
-+		rcu_assign_pointer(mvif->sta.link[link_id], NULL);
-+
-+		if (mconf != &mvif->bss_conf)
-+			devm_kfree(dev->mt76.dev, mconfs[link_id]);
-+		if (mlink != &mvif->sta.deflink)
-+			devm_kfree(dev->mt76.dev, mlinks[link_id]);
-+	}
-+
++out:
 +	mt792x_mutex_release(dev);
 +
 +	return err;
@@ -250,305 +271,39 @@ index 264517fd3bf7..c9119a222427 100644
  const struct ieee80211_ops mt7925_ops = {
  	.tx = mt792x_tx,
  	.start = mt7925_start,
-@@ -1579,6 +1708,7 @@ const struct ieee80211_ops mt7925_ops = {
- 	.mgd_complete_tx = mt7925_mgd_complete_tx,
+@@ -1709,6 +1842,7 @@ const struct ieee80211_ops mt7925_ops = {
  	.vif_cfg_changed = mt7925_vif_cfg_changed,
  	.link_info_changed = mt7925_link_info_changed,
-+	.change_vif_links = mt7925_change_vif_links,
+ 	.change_vif_links = mt7925_change_vif_links,
++	.change_sta_links = mt7925_change_sta_links,
  };
  EXPORT_SYMBOL_GPL(mt7925_ops);
  
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-index 5693c21bfb4a..b62153671350 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-@@ -307,6 +307,9 @@ mt7925_mcu_roc_iter(void *priv, u8 *mac, struct ieee80211_vif *vif)
- 	struct mt76_vif *mvif = (struct mt76_vif *)vif->drv_priv;
- 	struct mt7925_roc_grant_tlv *grant = priv;
- 
-+	if (ieee80211_vif_is_mld(vif) && vif->type == NL80211_IFTYPE_STATION)
-+		return;
-+
- 	if (mvif->idx != grant->bss_idx)
- 		return;
- 
-@@ -1079,6 +1082,100 @@ int mt7925_mcu_add_key(struct mt76_dev *dev, struct ieee80211_vif *vif,
- 	return mt76_mcu_skb_send_msg(dev, skb, mcu_cmd, true);
- }
- 
-+int mt7925_mcu_set_mlo_roc(struct mt792x_bss_conf *mconf, u16 sel_links,
-+			   int duration, u8 token_id)
-+{
-+	struct mt792x_vif *mvif = mconf->vif;
-+	struct ieee80211_vif *vif = container_of((void *)mvif,
-+						 struct ieee80211_vif, drv_priv);
-+	struct ieee80211_bss_conf *link_conf;
-+	struct ieee80211_channel *chan;
-+	const u8 ch_band[] = {
-+		[NL80211_BAND_2GHZ] = 1,
-+		[NL80211_BAND_5GHZ] = 2,
-+		[NL80211_BAND_6GHZ] = 3,
-+	};
-+	enum mt7925_roc_req type;
-+	int center_ch, i = 0;
-+	bool is_AG_band = false;
-+	struct {
-+		u8 id;
-+		u8 bss_idx;
-+		u16 tag;
-+		struct mt792x_bss_conf *mconf;
-+		struct ieee80211_channel *chan;
-+	} links[2];
-+
-+	struct {
-+		struct {
-+			u8 rsv[4];
-+		} __packed hdr;
-+		struct roc_acquire_tlv roc[2];
-+	} __packed req;
-+
-+	if (!mconf || hweight16(vif->valid_links) < 2 ||
-+	    hweight16(sel_links) != 2)
-+		return -EPERM;
-+
-+	for (i = 0; i < ARRAY_SIZE(links); i++) {
-+		links[i].id = i ? __ffs(~BIT(mconf->link_id) & sel_links) :
-+				 mconf->link_id;
-+		link_conf = mt792x_vif_to_bss_conf(vif, links[i].id);
-+		if (WARN_ON_ONCE(!link_conf))
-+			return -EPERM;
-+
-+		links[i].chan = link_conf->chanreq.oper.chan;
-+		if (WARN_ON_ONCE(!links[i].chan))
-+			return -EPERM;
-+
-+		links[i].mconf = mt792x_vif_to_link(mvif, links[i].id);
-+		links[i].tag = links[i].id == mconf->link_id ?
-+			       UNI_ROC_ACQUIRE : UNI_ROC_SUB_LINK;
-+
-+		is_AG_band |= links[i].chan->band == NL80211_BAND_2GHZ;
-+	}
-+
-+	if (vif->cfg.eml_cap & IEEE80211_EML_CAP_EMLSR_SUPP)
-+		type = is_AG_band ? MT7925_ROC_REQ_MLSR_AG :
-+				    MT7925_ROC_REQ_MLSR_AA;
-+	else
-+		type = MT7925_ROC_REQ_JOIN;
-+
-+	for (i = 0; i < ARRAY_SIZE(links) && i < hweight16(vif->active_links); i++) {
-+		if (WARN_ON_ONCE(!links[i].mconf || !links[i].chan))
-+			continue;
-+
-+		chan = links[i].chan;
-+		center_ch = ieee80211_frequency_to_channel(chan->center_freq);
-+		req.roc[i].len = cpu_to_le16(sizeof(struct roc_acquire_tlv));
-+		req.roc[i].tag = cpu_to_le16(links[i].tag);
-+		req.roc[i].tokenid = token_id;
-+		req.roc[i].reqtype = type;
-+		req.roc[i].maxinterval = cpu_to_le32(duration);
-+		req.roc[i].bss_idx = links[i].mconf->mt76.idx;
-+		req.roc[i].control_channel = chan->hw_value;
-+		req.roc[i].bw = CMD_CBW_20MHZ;
-+		req.roc[i].bw_from_ap = CMD_CBW_20MHZ;
-+		req.roc[i].center_chan = center_ch;
-+		req.roc[i].center_chan_from_ap = center_ch;
-+
-+		/* STR : 0xfe indicates BAND_ALL with enabling DBDC
-+		 * EMLSR : 0xff indicates (BAND_AUTO) without DBDC
-+		 */
-+		req.roc[i].dbdcband = type == MT7925_ROC_REQ_JOIN ? 0xfe : 0xff;
-+
-+		if (chan->hw_value < center_ch)
-+			req.roc[i].sco = 1; /* SCA */
-+		else if (chan->hw_value > center_ch)
-+			req.roc[i].sco = 3; /* SCB */
-+
-+		req.roc[i].band = ch_band[chan->band];
-+	}
-+
-+	return mt76_mcu_send_msg(&mvif->phy->dev->mt76, MCU_UNI_CMD(ROC),
-+				 &req, sizeof(req), false);
-+}
-+
- int mt7925_mcu_set_roc(struct mt792x_phy *phy, struct mt792x_bss_conf *mconf,
- 		       struct ieee80211_channel *chan, int duration,
- 		       enum mt7925_roc_req type, u8 token_id)
-@@ -1089,25 +1186,7 @@ int mt7925_mcu_set_roc(struct mt792x_phy *phy, struct mt792x_bss_conf *mconf,
- 		struct {
- 			u8 rsv[4];
- 		} __packed hdr;
--		struct roc_acquire_tlv {
--			__le16 tag;
--			__le16 len;
--			u8 bss_idx;
--			u8 tokenid;
--			u8 control_channel;
--			u8 sco;
--			u8 band;
--			u8 bw;
--			u8 center_chan;
--			u8 center_chan2;
--			u8 bw_from_ap;
--			u8 center_chan_from_ap;
--			u8 center_chan2_from_ap;
--			u8 reqtype;
--			__le32 maxinterval;
--			u8 dbdcband;
--			u8 rsv[3];
--		} __packed roc;
-+		struct roc_acquire_tlv roc;
- 	} __packed req = {
- 		.roc = {
- 			.tag = cpu_to_le16(UNI_ROC_ACQUIRE),
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h
-index da4e84f468d2..fefb6ab384bb 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h
-@@ -554,6 +554,26 @@ struct mt7925_wow_pattern_tlv {
- 	u8 rsv[7];
- } __packed;
- 
-+struct roc_acquire_tlv {
-+	__le16 tag;
-+	__le16 len;
-+	u8 bss_idx;
-+	u8 tokenid;
-+	u8 control_channel;
-+	u8 sco;
-+	u8 band;
-+	u8 bw;
-+	u8 center_chan;
-+	u8 center_chan2;
-+	u8 bw_from_ap;
-+	u8 center_chan_from_ap;
-+	u8 center_chan2_from_ap;
-+	u8 reqtype;
-+	__le32 maxinterval;
-+	u8 dbdcband;
-+	u8 rsv[3];
-+} __packed;
-+
- static inline enum connac3_mcu_cipher_type
- mt7925_mcu_get_cipher(int cipher)
- {
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h b/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
-index 2de1e38689e7..54693624b182 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
-@@ -30,12 +30,16 @@
- enum {
- 	UNI_ROC_ACQUIRE,
- 	UNI_ROC_ABORT,
-+	UNI_ROC_SUB_LINK = 3,
- 	UNI_ROC_NUM
- };
- 
- enum mt7925_roc_req {
- 	MT7925_ROC_REQ_JOIN,
- 	MT7925_ROC_REQ_ROC,
-+	MT7925_ROC_REQ_SUB_LINK,
-+	MT7925_ROC_REQ_MLSR_AG = 10,
-+	MT7925_ROC_REQ_MLSR_AA,
- 	MT7925_ROC_REQ_NUM
- };
- 
-@@ -295,6 +299,8 @@ int mt7925_set_tx_sar_pwr(struct ieee80211_hw *hw,
- int mt7925_mcu_regval(struct mt792x_dev *dev, u32 regidx, u32 *val, bool set);
- int mt7925_mcu_set_clc(struct mt792x_dev *dev, u8 *alpha2,
- 		       enum environment_cap env_cap);
-+int mt7925_mcu_set_mlo_roc(struct mt792x_bss_conf *mconf, u16 sel_links,
-+			   int duration, u8 token_id);
- int mt7925_mcu_set_roc(struct mt792x_phy *phy, struct mt792x_bss_conf *mconf,
- 		       struct ieee80211_channel *chan, int duration,
- 		       enum mt7925_roc_req type, u8 token_id);
 diff --git a/drivers/net/wireless/mediatek/mt76/mt792x.h b/drivers/net/wireless/mediatek/mt76/mt792x.h
-index fe5a6c932705..9a7443a8a951 100644
+index 9a7443a8a951..af9a103dc7f4 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt792x.h
 +++ b/drivers/net/wireless/mediatek/mt76/mt792x.h
-@@ -112,6 +112,7 @@ struct mt792x_bss_conf {
+@@ -92,6 +92,10 @@ struct mt792x_link_sta {
+ 	unsigned long last_txs;
+ 
+ 	struct mt76_connac_sta_key_conf bip;
++
++	struct mt792x_sta *sta;
++
++	struct ieee80211_link_sta *pri_link;
+ };
+ 
+ struct mt792x_sta {
+@@ -99,6 +103,9 @@ struct mt792x_sta {
+ 	struct mt792x_link_sta __rcu *link[IEEE80211_MLD_MAX_NUM_LINKS];
+ 
  	struct mt792x_vif *vif;
- 	struct ewma_rssi rssi;
- 	struct ieee80211_tx_queue_params queue_params[IEEE80211_NUM_ACS];
-+	unsigned int link_id;
- };
- 
- struct mt792x_vif {
-@@ -122,6 +123,7 @@ struct mt792x_vif {
- 	struct mt792x_sta *wep_sta;
- 
- 	struct mt792x_phy *phy;
++
 +	u16 valid_links;
++	u8 deflink_id;
  };
  
- struct mt792x_phy {
-@@ -398,6 +400,9 @@ mt792x_get_mac80211_ops(struct device *dev,
- int mt792x_init_wcid(struct mt792x_dev *dev);
- int mt792x_mcu_drv_pmctrl(struct mt792x_dev *dev);
- int mt792x_mcu_fw_pmctrl(struct mt792x_dev *dev);
-+void mt792x_mac_link_bss_remove(struct mt792x_dev *dev,
-+				struct mt792x_bss_conf *mconf,
-+				struct mt792x_link_sta *mlink);
- 
- static inline char *mt792x_ram_name(struct mt792x_dev *dev)
- {
-diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_core.c b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
-index 813296fad0ed..62f471b5498f 100644
---- a/drivers/net/wireless/mediatek/mt76/mt792x_core.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
-@@ -113,14 +113,17 @@ void mt792x_stop(struct ieee80211_hw *hw, bool suspend)
- }
- EXPORT_SYMBOL_GPL(mt792x_stop);
- 
--static void mt792x_mac_link_bss_remove(struct mt792x_dev *dev,
--				       struct ieee80211_bss_conf *link_conf,
--				       struct mt792x_link_sta *mlink)
-+void mt792x_mac_link_bss_remove(struct mt792x_dev *dev,
-+				struct mt792x_bss_conf *mconf,
-+				struct mt792x_link_sta *mlink)
- {
--	struct mt792x_bss_conf *mconf = mt792x_link_conf_to_mconf(link_conf);
-+	struct ieee80211_vif *vif = container_of((void *)mconf->vif,
-+						 struct ieee80211_vif, drv_priv);
-+	struct ieee80211_bss_conf *link_conf;
- 	int idx = mlink->wcid.idx;
- 
--	mt792x_mutex_acquire(dev);
-+	link_conf = mt792x_vif_to_bss_conf(vif, mconf->link_id);
-+
- 	mt76_connac_free_pending_tx_skbs(&dev->pm, &mlink->wcid);
- 	mt76_connac_mcu_uni_add_dev(&dev->mphy, link_conf, &mlink->wcid, false);
- 
-@@ -128,7 +131,6 @@ static void mt792x_mac_link_bss_remove(struct mt792x_dev *dev,
- 
- 	dev->mt76.vif_mask &= ~BIT_ULL(mconf->mt76.idx);
- 	mconf->vif->phy->omac_mask &= ~BIT_ULL(mconf->mt76.omac_idx);
--	mt792x_mutex_release(dev);
- 
- 	spin_lock_bh(&dev->mt76.sta_poll_lock);
- 	if (!list_empty(&mlink->wcid.poll_list))
-@@ -137,14 +139,21 @@ static void mt792x_mac_link_bss_remove(struct mt792x_dev *dev,
- 
- 	mt76_wcid_cleanup(&dev->mt76, &mlink->wcid);
- }
-+EXPORT_SYMBOL_GPL(mt792x_mac_link_bss_remove);
- 
- void mt792x_remove_interface(struct ieee80211_hw *hw,
- 			     struct ieee80211_vif *vif)
- {
- 	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
- 	struct mt792x_dev *dev = mt792x_hw_dev(hw);
-+	struct mt792x_bss_conf *mconf;
- 
--	mt792x_mac_link_bss_remove(dev, &vif->bss_conf, &mvif->sta.deflink);
-+	mt792x_mutex_acquire(dev);
-+
-+	mconf = mt792x_link_conf_to_mconf(&vif->bss_conf);
-+	mt792x_mac_link_bss_remove(dev, mconf, &mvif->sta.deflink);
-+
-+	mt792x_mutex_release(dev);
- }
- EXPORT_SYMBOL_GPL(mt792x_remove_interface);
- 
+ DECLARE_EWMA(rssi, 10, 8);
 -- 
 2.25.1
 
