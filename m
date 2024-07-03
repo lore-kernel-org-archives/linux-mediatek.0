@@ -4,72 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C292C2BD09
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jul 2024 21:43:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B23AEC31D97
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jul 2024 23:34:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=I/n7VZ7fj0o/3ai4SZ3SKcdBS97sLOgxIRvgNtfo2Zc=; b=bHWBGdlvxeyKkxtfECTD6TCopQ
-	7b7ZesmNMiVYdjBQtPV7jZIrk26mqWotRwep1w61SPcVAIeKCgla8oN+cC1a1i46OalKpzsad4iCo
-	pj9F0M8DETDj9immxRpVo14J8+pRFMi9MVtcFicxRwm4JN1LOXLDbiUtHVbcQst+RWLm+HZanoMr0
-	7GAIIrJceIi7K8/T4FpHl2uDNaTovZ0klWxNt4FSuCFwboab+/gnfa2anIuv7ulmhELHNwCdcu9HC
-	nQvG8MwGflIdPwZZfvvgMyUaH6YyZFeG/X3fiIWZItWExm10nr++qaFei3iW9n6rRDJ2qiqdO1yS9
-	uhPCpr1Q==;
+	bh=9ChJsKd9nUrCCIHOcicgHlKupltI6o7lz0YIiqLHyiQ=; b=hwhDMMWpekOAzk5uYlaZ4VpmbC
+	KJfiO/KDue52+maN9ua6nV00DmxphZFwqustSEdBCSYeI25qEo+ttyyo4+kSv0BhtGm2celB856Ax
+	9CDW8kyatWjBF9g3onzkBUVqzXM0eRz6W1N1jYGEzAKb0II8Tn0FdvYb9EMEFni1G9jwoyaaZBTmM
+	1j4KGw07Bb/zOp3Iq6KE6wk9/2F7MW3E1LBADj+99ZScTnodI6ADfr0GSXJWBvMBJCv7n75ZKx1eU
+	Nmu7CSgYtdS2J0CftabSVPj3mXApdpoFq0xZuiI60b/4+mrzSqLiAOS9Uix1s2h3dBbuLB5CEAZ5z
+	DxCWLRIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sP7la-0000000BXWK-0DJA;
-	Wed, 03 Jul 2024 21:43:54 +0000
-Received: from mail-oi1-f179.google.com ([209.85.167.179])
+	id 1sP9Ub-0000000BkFq-3QUy;
+	Wed, 03 Jul 2024 23:34:29 +0000
+Received: from mail-oo1-xc30.google.com ([2607:f8b0:4864:20::c30])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sP7lX-0000000BXUb-1xVQ
+	id 1sP9UN-0000000BkCO-2UP5
 	for linux-mediatek@lists.infradead.org;
-	Wed, 03 Jul 2024 21:43:52 +0000
-Received: by mail-oi1-f179.google.com with SMTP id 5614622812f47-3d565b869d9so8229b6e.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 03 Jul 2024 14:43:51 -0700 (PDT)
+	Wed, 03 Jul 2024 23:34:17 +0000
+Received: by mail-oo1-xc30.google.com with SMTP id 006d021491bc7-5c25ebf6380so51066eaf.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 03 Jul 2024 16:34:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=bade.nz; s=google; t=1720049653; x=1720654453; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=9ChJsKd9nUrCCIHOcicgHlKupltI6o7lz0YIiqLHyiQ=;
+        b=AScVjfHDAaZIHDGc4cqf61rDmwIC6N8IGzqejpVXTUzaib3fWE7GkCRmoowKQMJI1u
+         V0PmR8+qqZlbxsdLvAe4W44s7A9Zch6kscOevhw7RpdJZx9NeTykKTDmkSPNIu6sveA/
+         ZjU68MddD3SQVEmo9EUKKqR1JMhXpdqKLDm1XwuugdnEoV7MV63Zvj0bNnrrd3C8bw23
+         uaHVZeh+AFdRJ+3SJ1szQypgP3nhol54B0cIHB6+Pz7rohUD0sqJyJp/HJN/yI8HzoJr
+         h27A7eKS3UNqHS8LsF+j2bOefEQ9kn1FXx7P4EgaENwWZhkpd2GkXEFxbi6m7SBwe6pk
+         m6Tw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1720043030; x=1720647830;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+        d=1e100.net; s=20230601; t=1720049653; x=1720654453;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=I/n7VZ7fj0o/3ai4SZ3SKcdBS97sLOgxIRvgNtfo2Zc=;
-        b=j0z4EHp+/nhemO+Qz2wFE4uRguM8+xQwE5m2Ettry/irbK7D1bqcL8/bFNgMymEvaW
-         MK/5J4PYZxWQv2J5jA0e1ShYxrb4vkHVzTBjkp4v2XGNEnu9PG6m4C8CZg0KsOYi/2pZ
-         a/maKN41kzlxJBtdWNHkKnlFMZNz0z+Zitjrpyx38S6FZ00a2sH7x8O29yhd2sVktTA1
-         1v1W0LeQ4guhmTjJgS/y7lzoc4TDeJSBZDEyny/kxKL3l7akNpu+voNt+FnjS5y4aBQg
-         MwajSu7HYeSjw8mw9QeQ6cM44M+bSexVWPS5kwfEbSUq+yuez9qS85l8SxMHUc4AnxS7
-         DhuQ==
-X-Forwarded-Encrypted: i=1; AJvYcCX6WSKjoZaOrkQU2S2UlA+geXhE0FXcJhnrDtn2wToOumkg+VGz4JftGm16WPnxvUrYqX4PFWWfEXF2GP2yIJZi+pkUsUUl8jjRUdcpwVI8HMRc
-X-Gm-Message-State: AOJu0YzAQ8I+wfFIjdJubK8nPS7F240dkkjKQ+i2pDUUX5/17UNVlo7+
-	51ESTFuKLedPmtrEYc46rCtTm6Jt2NCNhWZLb6p8eWlbw7UtdtiGtEcMVq7X
-X-Google-Smtp-Source: AGHT+IE4LsxQwXh0EZDYiJMTt6PW30ChD/EOSWZ2xrYLO5k/bhg54hR3h6oqAdq7s9sb9spqCpytDg==
-X-Received: by 2002:a9d:65c5:0:b0:700:ca13:30bc with SMTP id 46e09a7af769-70207763b58mr13703746a34.2.1720043030407;
-        Wed, 03 Jul 2024 14:43:50 -0700 (PDT)
-Received: from sean-ThinkPad-T450s.lan ([207.191.35.252])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-701f7b20953sm2111417a34.54.2024.07.03.14.43.48
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 03 Jul 2024 14:43:48 -0700 (PDT)
-From: sean.wang@kernel.org
-To: nbd@nbd.name,
-	lorenzo.bianconi@redhat.com
-Cc: sean.wang@mediatek.com,
-	deren.wu@mediatek.com,
-	mingyen.hsieh@mediatek.com,
-	linux-wireless@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH 29/29] wifi: mt76: mt7925: enabling MLO when the firmware supports it
-Date: Wed,  3 Jul 2024 14:42:34 -0700
-Message-Id: <fb549a3b3a20995c64d227fb3db75a2fe6f318b1.1720042294.git.sean.wang@kernel.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <cover.1720042294.git.sean.wang@kernel.org>
-References: <cover.1720042294.git.sean.wang@kernel.org>
+        bh=9ChJsKd9nUrCCIHOcicgHlKupltI6o7lz0YIiqLHyiQ=;
+        b=bkgB7CvWm+eotT4jlAxOsdGGbFLLVjQYrZqZuWpJpPyEOCeMvaKMcu7BBLeTFhlyBY
+         /1deqbtg7dKgatrD74raB9IJbrE1LK+yFU46qWAYSrsveN1GvIiCasgjzPlY7Zl8W1XQ
+         wE3oRzSYxrDmb8UJO/cPZP56XzkhMZTw2kuQrLAcvcTwhmEcEz+voUxs8hM+zlQXoMZn
+         7ZKakSXkIwZ/uu/N3p0a/VrgWqcdfAkwoIlB5WR81i6MkwOrz6cdQdY7TMSgG0ekN15j
+         KL0IGYmFk0wZq3E6lVaOw6SW5PMM+adapG6BeaIkcPOu0PPLDDNvSwl0jxVMyiCgU2bm
+         SoRw==
+X-Forwarded-Encrypted: i=1; AJvYcCWyPlOFWvTnHx80s3atuENMKKs2mIyJjyuTCcN4l92uW6SrnDpZKwR8bPaQIz8Dqt6lZv0MB7xmyB+w83KYkLKpQqLMSM5OwB30SUUhwNOsUGpM
+X-Gm-Message-State: AOJu0YwfXroonXBRYiTXTvfHWxu0c+bOv+jnPtk7yKEuJ50IX2xtyrhw
+	QufPzqh2FwV2cxZ+Ruqgq3j6LzoH+4fF9a1bQDANzOaxPb6fGnpsK0ShyybkX/CVZ4XSwy4KIVT
+	Qac4L4D6b5nT0ZGa+aFSec8wzjcwFGPh7wm6w
+X-Google-Smtp-Source: AGHT+IGKlQ2pI7mo0VbCXTl1zMtiImR+Q3bkZ5aDzc2+PetUeMf8KI9s1d1gy4XqYnABgmOWCY4KaVO4ZAo/Zk+wakQ=
+X-Received: by 2002:a05:6870:718f:b0:25c:9bf2:cc18 with SMTP id
+ 586e51a60fabf-25e10337e4emr1508238fac.7.1720049653415; Wed, 03 Jul 2024
+ 16:34:13 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20240608080530.9436-1-linux@fw-web.de> <20240608080530.9436-2-linux@fw-web.de>
+ <trinity-82c94d49-2a78-4470-83cd-3c6747e01849-1719434738199@3c-app-gmx-bs52>
+ <726f2ed3-675f-45e8-94f0-d392181e7f92@collabora.com> <951E802C-1B53-45C4-B3E6-4A3400F47214@public-files.de>
+In-Reply-To: <951E802C-1B53-45C4-B3E6-4A3400F47214@public-files.de>
+From: Leith Bade <leith@bade.nz>
+Date: Thu, 4 Jul 2024 09:34:02 +1000
+Message-ID: <CAPDEroWUeR3iUFnjVr6WFLg3=dkML+5cbRPph9bj64F=zc1UWA@mail.gmail.com>
+Subject: Re: Aw: [PATCH v3 1/2] arm64: dts: mt7986: add dtbs with applied
+ overlays for bpi-r3
+To: frank-w@public-files.de
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	devicetree@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, 
+	Rob Herring <robh+dt@kernel.org>, Frank Wunderlich <linux@fw-web.de>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240703_144351_536145_51F1E78B 
-X-CRM114-Status: GOOD (  15.40  )
+X-CRM114-CacheID: sfid-20240703_163415_837296_312C9113 
+X-CRM114-Status: UNSURE (   7.56  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,164 +98,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+> Yes, 1st reason is to check if overlay can be applied to base dts (the pa=
+rt rob was requested). The second thing that was solved is that some users =
+wanting a "full" dtb without the need to handle overlays in bootloader. Due=
+ to hardware design of the board there are 4 "full" dtb's.
 
-Register MLD capability for the firmware supporting MLO.
+I have been looking at using the "u-boot-update" package in Debian to
+generate an extlinux.conf file so I can use the U-boot standard/distro
+boot. This script seems to currently assume that you pick a single
+.dtb file for the board, and then the user can put additional .dtbo
+files in /boot/dtbo/ for any additional hardware the user has plugged
+in.
 
-Co-developed-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
-Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
-Co-developed-by: Deren Wu <deren.wu@mediatek.com>
-Signed-off-by: Deren Wu <deren.wu@mediatek.com>
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
----
- .../wireless/mediatek/mt76/mt76_connac_mcu.h  |  1 +
- .../net/wireless/mediatek/mt76/mt7925/init.c  |  6 ++++
- .../net/wireless/mediatek/mt76/mt7925/main.c  | 29 +++++++++++++++++++
- .../net/wireless/mediatek/mt76/mt7925/mcu.c   | 20 +++++++++++++
- .../wireless/mediatek/mt76/mt7925/mt7925.h    |  1 +
- drivers/net/wireless/mediatek/mt76/mt792x.h   |  2 ++
- 6 files changed, 59 insertions(+)
+So having a series of "merged" base files would be useful for this use case=
+.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-index d6882c9fd6bc..4242d436de26 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-@@ -1402,6 +1402,7 @@ enum {
- 	MT_NIC_CAP_WFDMA_REALLOC,
- 	MT_NIC_CAP_6G,
- 	MT_NIC_CAP_CHIP_CAP = 0x20,
-+	MT_NIC_CAP_EML_CAP = 0x22,
- };
- 
- #define UNI_WOW_DETECT_TYPE_MAGIC		BIT(0)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/init.c b/drivers/net/wireless/mediatek/mt76/mt7925/init.c
-index c4cbc8976046..039949b344b9 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/init.c
-@@ -179,6 +179,12 @@ static void mt7925_init_work(struct work_struct *work)
- 	mt76_set_stream_caps(&dev->mphy, true);
- 	mt7925_set_stream_he_eht_caps(&dev->phy);
- 
-+	ret = mt7925_init_mlo_caps(&dev->phy);
-+	if (ret) {
-+		dev_err(dev->mt76.dev, "MLO init failed\n");
-+		return;
-+	}
-+
- 	ret = mt76_register_device(&dev->mt76, true, mt76_rates,
- 				   ARRAY_SIZE(mt76_rates));
- 	if (ret) {
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-index 13b40032cd72..213331a92166 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-@@ -236,6 +236,35 @@ mt7925_init_eht_caps(struct mt792x_phy *phy, enum nl80211_band band,
- 	eht_nss->bw._160.rx_tx_mcs13_max_nss = val;
- }
- 
-+int mt7925_init_mlo_caps(struct mt792x_phy *phy)
-+{
-+	struct wiphy *wiphy = phy->mt76->hw->wiphy;
-+	static const u8 ext_capa_sta[] = {
-+		[7] = WLAN_EXT_CAPA8_OPMODE_NOTIF,
-+	};
-+	static struct wiphy_iftype_ext_capab ext_capab[] = {
-+		{
-+			.iftype = NL80211_IFTYPE_STATION,
-+			.extended_capabilities = ext_capa_sta,
-+			.extended_capabilities_mask = ext_capa_sta,
-+			.extended_capabilities_len = sizeof(ext_capa_sta),
-+		},
-+	};
-+
-+	if (!(phy->chip_cap & MT792x_CHIP_CAP_MLO_EVT_EN))
-+		return 0;
-+
-+	ext_capab[0].eml_capabilities = phy->eml_cap;
-+	ext_capab[0].mld_capa_and_ops =
-+		u16_encode_bits(1, IEEE80211_MLD_CAP_OP_MAX_SIMUL_LINKS);
-+
-+	wiphy->flags |= WIPHY_FLAG_SUPPORTS_MLO;
-+	wiphy->iftype_ext_capab = ext_capab;
-+	wiphy->num_iftype_ext_capab = ARRAY_SIZE(ext_capab);
-+
-+	return 0;
-+}
-+
- static void
- __mt7925_set_stream_he_eht_caps(struct mt792x_phy *phy,
- 				struct ieee80211_supported_band *sband,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-index 829d87d4eb95..d4b020b50be1 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-@@ -749,6 +749,20 @@ mt7925_mcu_parse_phy_cap(struct mt792x_dev *dev, char *data)
- 	dev->has_eht = cap->eht;
- }
- 
-+static void
-+mt7925_mcu_parse_eml_cap(struct mt792x_dev *dev, char *data)
-+{
-+	struct mt7925_mcu_eml_cap {
-+		u8 rsv[4];
-+		__le16 eml_cap;
-+		u8 rsv2[6];
-+	} __packed * cap;
-+
-+	cap = (struct mt7925_mcu_eml_cap *)data;
-+
-+	dev->phy.eml_cap = le16_to_cpu(cap->eml_cap);
-+}
-+
- static int
- mt7925_mcu_get_nic_capability(struct mt792x_dev *dev)
- {
-@@ -803,6 +817,12 @@ mt7925_mcu_get_nic_capability(struct mt792x_dev *dev)
- 		case MT_NIC_CAP_PHY:
- 			mt7925_mcu_parse_phy_cap(dev, tlv->data);
- 			break;
-+		case MT_NIC_CAP_CHIP_CAP:
-+			memcpy(&dev->phy.chip_cap, (void *)skb->data, sizeof(u64));
-+			break;
-+		case MT_NIC_CAP_EML_CAP:
-+			mt7925_mcu_parse_eml_cap(dev, tlv->data);
-+			break;
- 		default:
- 			break;
- 		}
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h b/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
-index 4c0ecae8e49b..d51cc8a02b9e 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
-@@ -235,6 +235,7 @@ void mt7925_queue_rx_skb(struct mt76_dev *mdev, enum mt76_rxq_id q,
- 			 struct sk_buff *skb, u32 *info);
- void mt7925_stats_work(struct work_struct *work);
- void mt7925_set_stream_he_eht_caps(struct mt792x_phy *phy);
-+int mt7925_init_mlo_caps(struct mt792x_phy *phy);
- int mt7925_init_debugfs(struct mt792x_dev *dev);
- 
- int mt7925_mcu_set_beacon_filter(struct mt792x_dev *dev,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt792x.h b/drivers/net/wireless/mediatek/mt76/mt792x.h
-index 5ede24116748..30635aeba363 100644
---- a/drivers/net/wireless/mediatek/mt76/mt792x.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt792x.h
-@@ -27,6 +27,7 @@
- 
- #define MT792x_CHIP_CAP_CLC_EVT_EN BIT(0)
- #define MT792x_CHIP_CAP_RSSI_NOTIFY_EVT_EN BIT(1)
-+#define MT792x_CHIP_CAP_MLO_EVT_EN BIT(2)
- 
- /* NOTE: used to map mt76_rates. idx may change if firmware expands table */
- #define MT792x_BASIC_RATES_TBL	11
-@@ -163,6 +164,7 @@ struct mt792x_phy {
- #endif
- 	void *clc[MT792x_CLC_MAX_NUM];
- 	u64 chip_cap;
-+	u16 eml_cap;
- 
- 	struct work_struct roc_work;
- 	struct timer_list roc_timer;
--- 
-2.25.1
-
+Thanks,
+Leith Bade
 
