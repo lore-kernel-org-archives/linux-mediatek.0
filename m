@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47387C2BD09
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jul 2024 16:13:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01C28C2BD09
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jul 2024 16:13:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=l/S05PTONsUDXQH/53Ay+iMTzYpn16xDxy7lh5wY6T0=; b=yst9XaMbH1eu8S4MiJbu6c1gzg
-	CDte/EjGnEl4L3x2eYS1mZ2lAw8TDvdQLwC+023ZaD3HMek/b2qLGvYBq506wQZiQPZzU8k3ZTOEl
-	YNC64ikETsXC/uNu+DbSMnDtueBwVn7rbm3xxBhfx5Pjy+mnCxWPx9LmfjN4Hrj9Zhu0xpY8O5bfQ
-	CLOrZIZfq/CKeoPBsmNxdlZ6gNp01qZMRPDliUThs7THiqH1RWqDyaZM6Di7pkTgBM+s3uBvB2lDC
-	mTXuT1Yt8r/4SrS5NiRao6d8xZtGoBiVV0wMsriVpw/Pqpzaj2PgFJqQ9hOT1k+URvk8hMY16Z+MY
-	cFeANA2w==;
+	bh=lp4cV0wF7G6iplSiVUzq3eLwyxAaToweS70lyDk/r5A=; b=UKKzRSl4efYBX5oVwHVCLvOkMU
+	Rrx820wL6KvFzfjaGCfKIPNmkZwcLaLUNqyC/Br5waBWZajxFdBwpwqWV5KdhO0wNLtxu1Kqa/9rU
+	dN++FgoS4sg9Z2FXMg5yz96PxJV53ic0eEayWGgRawSEnLLXywDWoHYP+YGXVjkWfvY2cOb6ZxwC3
+	tq/jWTAS3+6Bft55TLNqR2v30W9n4ZZS2TRXQBDU2RfV70XM4XTXZ5NV0v6uLCKoL87nSrK/c+gri
+	eu/khASHKJnToSnYZ2yUbx/akyhxCBK/RqPoXiJIT8tuKevvXeo+duxVHqa6XL2b4umRaFgo1Gt2J
+	84GgUBbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sP2c4-0000000AogZ-3dd5;
-	Wed, 03 Jul 2024 16:13:44 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sP2cG-0000000Aola-2gYO;
+	Wed, 03 Jul 2024 16:13:56 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sP2bf-0000000AoUt-0pLh;
-	Wed, 03 Jul 2024 16:13:21 +0000
+	id 1sP2bl-0000000AoXH-0vI9;
+	Wed, 03 Jul 2024 16:13:26 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 8EFDC6231E;
-	Wed,  3 Jul 2024 16:13:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C3F63C2BD10;
-	Wed,  3 Jul 2024 16:13:17 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 7CA7CCE2DAF;
+	Wed,  3 Jul 2024 16:13:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3407AC4AF0F;
+	Wed,  3 Jul 2024 16:13:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1720023198;
-	bh=OgKWE5raRMdQzYYFIeI9oRWJDLJrgr/vHR/+EGZ8/l4=;
+	s=k20201202; t=1720023202;
+	bh=ls/SqHqY4sxV0pnIchGY0YEezbSz8kVL0vfy29uohco=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=CM5Sp7VS4JHQPMl34jmwBebrlTfbmNF/sxRFKNCLpCyfiPPTa0GJ0N+39ehNTJ6Ka
-	 pK3JEvhgZWeg/kOj9FDm+R3ODmKFeTjGcOXSeLMgSLComuuXkmvWTzvk/hbNFan/hP
-	 XsGzOGb2LQeYGarYFUg3lh6jZWhYwIO43QM+3ntd0gH9NwqeWWvydzSijJ1FmTatop
-	 u8xqnorZHslzqg+JE4trupmXi5rMMsg1IHW/Z8YADdMKLUcjHo3UKz8FHEc++iGiA6
-	 6vAfryIgRTx6yUVnHdhJD5HPwhtW+Y2DtEyy+qGggkB4scs2WXn6Bo8aXuKi3iSsfw
-	 FA/tHw4tHYqng==
+	b=PLbLlPWkzZ/kZ7xAkLl6OzqxVRm9p4zb3AzFmwM6w6Sn9HDgA/Wwc9UB4aGnWb5sC
+	 Ui6DJ7oQEEZ96A4QSih2CWIqf2La6+YsUncXPyvRfkIcUFLHcanpQ6WKx5AIB2RUZ/
+	 i/4JXMrxaq+nWr4q5lsS9wmFL3yAQdIqrZMTrZ2aDu4Z3DGI+N8VJkTPl3pQX2GdFH
+	 fIWlnyD4TOdznNav9un6vWafI7srYN5dZ2+ATKpfOpJH1f+z9lJFDyf5YYIu3Sm6Ye
+	 HMGnQ6X1mWy8eTa2AzVbvpBwZvrFCiiJMPpjbLyWfvC7sFQ9261OYFXQR9SSaNqAZe
+	 4qrXdCrV17OEQ==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: linux-pci@vger.kernel.org
 Cc: ryder.lee@mediatek.com,
@@ -58,17 +58,17 @@ Cc: ryder.lee@mediatek.com,
 	dd@embedd.com,
 	upstream@airoha.com,
 	angelogioacchino.delregno@collabora.com
-Subject: [PATCH v4 2/4] PCI: mediatek-gen3: Add mtk_gen3_pcie_pdata data structure
-Date: Wed,  3 Jul 2024 18:12:42 +0200
-Message-ID: <c193d1a87505d045e2e0ef33317bce17012ee095.1720022580.git.lorenzo@kernel.org>
+Subject: [PATCH v4 3/4] PCI: mediatek-gen3: Rely on reset_bulk APIs for PHY reset lines
+Date: Wed,  3 Jul 2024 18:12:43 +0200
+Message-ID: <3ceb83bc0defbcf868521f8df4b9100e55ec2614.1720022580.git.lorenzo@kernel.org>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <cover.1720022580.git.lorenzo@kernel.org>
 References: <cover.1720022580.git.lorenzo@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240703_091319_357885_8893ABF5 
-X-CRM114-Status: GOOD (  14.61  )
+X-CRM114-CacheID: sfid-20240703_091325_725113_435BD4EA 
+X-CRM114-Status: GOOD (  18.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,95 +83,151 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce mtk_gen3_pcie_pdata data structure in order to define
-multiple callbacks for each supported SoC. This is a preliminary
-patch to introduce EN7581 PCIe support.
+Use reset_bulk APIs to manage PHY reset lines. This is a preliminary
+patch in order to add Airoha EN7581 PCIe support.
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Tested-by: Zhengping Zhang <zhengping.zhang@airoha.com>
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- drivers/pci/controller/pcie-mediatek-gen3.c | 24 ++++++++++++++++++---
- 1 file changed, 21 insertions(+), 3 deletions(-)
+ drivers/pci/controller/pcie-mediatek-gen3.c | 45 +++++++++++++++------
+ 1 file changed, 33 insertions(+), 12 deletions(-)
 
 diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
-index 975b3024fb08..db0210803731 100644
+index db0210803731..438a5222d986 100644
 --- a/drivers/pci/controller/pcie-mediatek-gen3.c
 +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-@@ -100,6 +100,16 @@
+@@ -100,14 +100,21 @@
  #define PCIE_ATR_TLP_TYPE_MEM		PCIE_ATR_TLP_TYPE(0)
  #define PCIE_ATR_TLP_TYPE_IO		PCIE_ATR_TLP_TYPE(2)
  
-+struct mtk_gen3_pcie;
++#define MAX_NUM_PHY_RESETS		1
 +
-+/**
-+ * struct mtk_gen3_pcie_pdata - differentiate between host generations
-+ * @power_up: pcie power_up callback
-+ */
-+struct mtk_gen3_pcie_pdata {
-+	int (*power_up)(struct mtk_gen3_pcie *pcie);
-+};
-+
+ struct mtk_gen3_pcie;
+ 
  /**
-  * struct mtk_msi_set - MSI information for each set
-  * @base: IO mapped register base
-@@ -131,6 +141,7 @@ struct mtk_msi_set {
-  * @msi_sets: MSI sets information
-  * @lock: lock protecting IRQ bit map
-  * @msi_irq_in_use: bit map for assigned MSI IRQ
-+ * @soc: pointer to SoC-dependent operations
+  * struct mtk_gen3_pcie_pdata - differentiate between host generations
+  * @power_up: pcie power_up callback
++ * @phy_resets: phy reset lines SoC data.
   */
- struct mtk_gen3_pcie {
- 	struct device *dev;
-@@ -151,6 +162,8 @@ struct mtk_gen3_pcie {
- 	struct mtk_msi_set msi_sets[PCIE_MSI_SET_NUM];
- 	struct mutex lock;
- 	DECLARE_BITMAP(msi_irq_in_use, PCIE_MSI_IRQS_NUM);
-+
-+	const struct mtk_gen3_pcie_pdata *soc;
+ struct mtk_gen3_pcie_pdata {
+ 	int (*power_up)(struct mtk_gen3_pcie *pcie);
++	struct {
++		const char *id[MAX_NUM_PHY_RESETS];
++		int num_resets;
++	} phy_resets;
  };
  
- /* LTSSM state in PCIE_LTSSM_STATUS_REG bit[28:24] */
-@@ -904,7 +917,7 @@ static int mtk_pcie_setup(struct mtk_gen3_pcie *pcie)
- 	usleep_range(10, 20);
+ /**
+@@ -128,7 +135,7 @@ struct mtk_msi_set {
+  * @base: IO mapped register base
+  * @reg_base: physical register base
+  * @mac_reset: MAC reset control
+- * @phy_reset: PHY reset control
++ * @phy_resets: PHY reset controllers
+  * @phy: PHY controller block
+  * @clks: PCIe clocks
+  * @num_clks: PCIe clocks count for this port
+@@ -148,7 +155,7 @@ struct mtk_gen3_pcie {
+ 	void __iomem *base;
+ 	phys_addr_t reg_base;
+ 	struct reset_control *mac_reset;
+-	struct reset_control *phy_reset;
++	struct reset_control_bulk_data phy_resets[MAX_NUM_PHY_RESETS];
+ 	struct phy *phy;
+ 	struct clk_bulk_data *clks;
+ 	int num_clks;
+@@ -788,10 +795,10 @@ static int mtk_pcie_setup_irq(struct mtk_gen3_pcie *pcie)
  
- 	/* Don't touch the hardware registers before power up */
--	err = mtk_pcie_power_up(pcie);
-+	err = pcie->soc->power_up(pcie);
- 	if (err)
- 		return err;
+ static int mtk_pcie_parse_port(struct mtk_gen3_pcie *pcie)
+ {
++	int i, ret, num_resets = pcie->soc->phy_resets.num_resets;
+ 	struct device *dev = pcie->dev;
+ 	struct platform_device *pdev = to_platform_device(dev);
+ 	struct resource *regs;
+-	int ret;
  
-@@ -939,6 +952,7 @@ static int mtk_pcie_probe(struct platform_device *pdev)
- 	pcie = pci_host_bridge_priv(host);
+ 	regs = platform_get_resource_byname(pdev, IORESOURCE_MEM, "pcie-mac");
+ 	if (!regs)
+@@ -804,12 +811,12 @@ static int mtk_pcie_parse_port(struct mtk_gen3_pcie *pcie)
  
- 	pcie->dev = dev;
-+	pcie->soc = device_get_match_data(dev);
- 	platform_set_drvdata(pdev, pcie);
+ 	pcie->reg_base = regs->start;
  
- 	err = mtk_pcie_setup(pcie);
-@@ -1054,7 +1068,7 @@ static int mtk_pcie_resume_noirq(struct device *dev)
- 	struct mtk_gen3_pcie *pcie = dev_get_drvdata(dev);
+-	pcie->phy_reset = devm_reset_control_get_optional_exclusive(dev, "phy");
+-	if (IS_ERR(pcie->phy_reset)) {
+-		ret = PTR_ERR(pcie->phy_reset);
+-		if (ret != -EPROBE_DEFER)
+-			dev_err(dev, "failed to get PHY reset\n");
++	for (i = 0; i < num_resets; i++)
++		pcie->phy_resets[i].id = pcie->soc->phy_resets.id[i];
+ 
++	ret = devm_reset_control_bulk_get_optional_shared(dev, num_resets, pcie->phy_resets);
++	if (ret) {
++		dev_err(dev, "failed to get PHY bulk reset\n");
+ 		return ret;
+ 	}
+ 
+@@ -846,7 +853,11 @@ static int mtk_pcie_power_up(struct mtk_gen3_pcie *pcie)
  	int err;
  
--	err = mtk_pcie_power_up(pcie);
-+	err = pcie->soc->power_up(pcie);
+ 	/* PHY power on and enable pipe clock */
+-	reset_control_deassert(pcie->phy_reset);
++	err = reset_control_bulk_deassert(pcie->soc->phy_resets.num_resets, pcie->phy_resets);
++	if (err) {
++		dev_err(dev, "failed to deassert PHYs\n");
++		return err;
++	}
+ 
+ 	err = phy_init(pcie->phy);
+ 	if (err) {
+@@ -882,7 +893,7 @@ static int mtk_pcie_power_up(struct mtk_gen3_pcie *pcie)
+ err_phy_on:
+ 	phy_exit(pcie->phy);
+ err_phy_init:
+-	reset_control_assert(pcie->phy_reset);
++	reset_control_bulk_assert(pcie->soc->phy_resets.num_resets, pcie->phy_resets);
+ 
+ 	return err;
+ }
+@@ -897,7 +908,7 @@ static void mtk_pcie_power_down(struct mtk_gen3_pcie *pcie)
+ 
+ 	phy_power_off(pcie->phy);
+ 	phy_exit(pcie->phy);
+-	reset_control_assert(pcie->phy_reset);
++	reset_control_bulk_assert(pcie->soc->phy_resets.num_resets, pcie->phy_resets);
+ }
+ 
+ static int mtk_pcie_setup(struct mtk_gen3_pcie *pcie)
+@@ -908,11 +919,17 @@ static int mtk_pcie_setup(struct mtk_gen3_pcie *pcie)
  	if (err)
  		return err;
  
-@@ -1074,8 +1088,12 @@ static const struct dev_pm_ops mtk_pcie_pm_ops = {
- 				  mtk_pcie_resume_noirq)
++	/*
++	 * Deassert the line in order to avoid unbalance in deassert_count
++	 * counter since the bulk is shared.
++	 */
++	reset_control_bulk_deassert(pcie->soc->phy_resets.num_resets, pcie->phy_resets);
+ 	/*
+ 	 * The controller may have been left out of reset by the bootloader
+ 	 * so make sure that we get a clean start by asserting resets here.
+ 	 */
+-	reset_control_assert(pcie->phy_reset);
++	reset_control_bulk_assert(pcie->soc->phy_resets.num_resets, pcie->phy_resets);
++
+ 	reset_control_assert(pcie->mac_reset);
+ 	usleep_range(10, 20);
+ 
+@@ -1090,6 +1107,10 @@ static const struct dev_pm_ops mtk_pcie_pm_ops = {
+ 
+ static const struct mtk_gen3_pcie_pdata mtk_pcie_soc_mt8192 = {
+ 	.power_up = mtk_pcie_power_up,
++	.phy_resets = {
++		.id[0] = "phy",
++		.num_resets = 1,
++	},
  };
  
-+static const struct mtk_gen3_pcie_pdata mtk_pcie_soc_mt8192 = {
-+	.power_up = mtk_pcie_power_up,
-+};
-+
  static const struct of_device_id mtk_pcie_of_match[] = {
--	{ .compatible = "mediatek,mt8192-pcie" },
-+	{ .compatible = "mediatek,mt8192-pcie", .data = &mtk_pcie_soc_mt8192 },
- 	{},
- };
- MODULE_DEVICE_TABLE(of, mtk_pcie_of_match);
 -- 
 2.45.2
 
