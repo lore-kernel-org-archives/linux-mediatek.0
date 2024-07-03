@@ -4,97 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FD9DC2BD09
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jul 2024 06:19:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9C10C2BD09
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jul 2024 07:03:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=U6QOa4p5DGjIW7VT0FAxsBUw54TL3D22ZXc+mN72UUw=; b=1ZYOP4PRCNUGRht1Fdw2A23194
-	l3IR2esCBCJuDDlq3a4+Kj7UKmkfBARmH1nG+/TEFzpgCyeTDQtvYsO8O4W5AWpK35RDGnMJxYhqT
-	FgWy7+3r/tUPzqgDw0rcGamBit1VXXpzUZReQMe89YEL/ZsQYjNcQE0pa8HIBOFgLz2dUMvA0M3De
-	/NU9oNVOLUoP4XzYp+jwB2NVGrGZeP9+ckatessnrJSRpmSBlLoUokjXIrDdW0sddkbGwVWPBWwuT
-	6wag4MFUF5O98YoI4oHnBHLLDRAGITdAZRothO5rQgn5yT7BjE8VT7oqEqHKzAmxjHB+vE/7HkDJ1
-	Z03QCtTg==;
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=SBX2/MGaOS1ZkS0ejeTXdSBLBk8fKts4uFWqlOjCCxY=; b=A0CPv5Z7MfWgmyacami2BnbLHc
+	yLzvtzl3pIJi6HEUbjrmJFv1Ap9gKIG0DCw8/7WuBwk2wjBBCdUsgy1dgli7Yej3SUb/l5U8Mb3C9
+	kxFOAFnG1vGCm3vNgdfIVm2H5N2bpR78q8ZponOw/KvHsQX/Gvwzjsifa4wpqWaTmtS6TSjXLvHzu
+	hXux9C2xUlA3dQFQYJTqn7lPqmRJhwqBlcbOgG6CgMP1NbIczbnNEdAz1vIcRBMFGgLbLn9uTNppt
+	lhL3ZBoB6aDwfgJRz52wp6MQYpPTS8s6kwmVRnFwaFmcfbU/sZzM9Ny1unbqlkQiGoe2ORGBcM4O8
+	PurS+tfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sOtKb-00000009CKj-2QT1;
-	Wed, 03 Jul 2024 06:19:05 +0000
-Received: from smtp-relay-internal-1.canonical.com ([185.125.188.123])
+	id 1sOu1b-00000009HUf-1ExG;
+	Wed, 03 Jul 2024 07:03:31 +0000
+Received: from relay2-d.mail.gandi.net ([217.70.183.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sOtKO-00000009CIC-2cYs
-	for linux-mediatek@lists.infradead.org;
-	Wed, 03 Jul 2024 06:18:55 +0000
-Received: from mail-pf1-f199.google.com (mail-pf1-f199.google.com [209.85.210.199])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by smtp-relay-internal-1.canonical.com (Postfix) with ESMTPS id A16F33F671
-	for <linux-mediatek@lists.infradead.org>; Wed,  3 Jul 2024 06:18:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
-	s=20210705; t=1719987528;
-	bh=U6QOa4p5DGjIW7VT0FAxsBUw54TL3D22ZXc+mN72UUw=;
-	h=From:To:Subject:Date:Message-ID:MIME-Version;
-	b=DCiz2QrryBqhpqOrWh7z7BD0yAbYE5dpTEewgAefp3+LAYX6nBkT29sh5jFKe20s0
-	 XsQTMezvtA3Sasx430tUZOBynuWydwxsks78YTNilncKmRsd29ARwo9c5uXyvkRmsy
-	 Sor0o8mM4y8zd0Q3z5D0dt9ozcHwgnnzZLWNoblUKooAulTnN2r46tg9a6Xj7WEa8i
-	 jr3XM57PtRAtF2QAz1/rY0rriPxaQ3MyZFcBo1cXZdcYKYwyAst7XvQPflKV4RchND
-	 3DxabVYYeYTDedqBye1srDRWOfXuHEsnMpXy5yTzpLPEuBPEKvzWpyjd8+BEFDVIZE
-	 rISup4QBbKI1A==
-Received: by mail-pf1-f199.google.com with SMTP id d2e1a72fcca58-707fd74da03so5280379b3a.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 02 Jul 2024 23:18:48 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1719987526; x=1720592326;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:to
-         :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=U6QOa4p5DGjIW7VT0FAxsBUw54TL3D22ZXc+mN72UUw=;
-        b=mTuf3uFs3knbWuivbk78FLruHncY2VMmwI8h3P8uz3n0idLe9RGz02ASQLCOjnRFcj
-         VX2hh7ftsCmFH9prN+pNE/HMJ3LVUBVe2Xr8vuBrtUNMNY5S82RG96SnL/otXoObFE1y
-         eaaOibu1SPSLbmIlHKEHfZh9vFoVaJD1HTLdFoQSNd0n+iaXe+uYRHLZO04CIAhcqYzM
-         NrK0S0cbqZ5sirLXiZywtKDLrSIGCIldarPEhQ4xFRE/Z6OJXNAmsEBBeKtXzc7pAgJx
-         hepZt1T/arJa9+tSJLpifuHuPg+WJ8ze5wMPddPR1jQP4L8yVq6OlYn2aGN4VWeyDfUS
-         a8gw==
-X-Forwarded-Encrypted: i=1; AJvYcCUVJEDnlKZj9eUFge9heQVn+kVzzJNYq0mpcHKSIlP0LTz6dKf2p+U28oTkHpcDLW0di3KfNDsrYOY/wYZKJb1YSV9OByNFXGZhYymt6dJX+Dz4
-X-Gm-Message-State: AOJu0YxhGOVUSXxkybnYK2w/om9Y0mVykiTSlHAa4ad+9+Sd7QesXc1B
-	xV33sFYE3J5K7VWaV2TlVAkUKzgGWSQnHgar9At8fywTVKkjG3XwTBs41DGdy3/H+BIA5HfEScm
-	Tv+fjw3ZreJcrEa8RsanbNm9rUxw8rBrK3NwMA6WlMU2ON/ci1LARD7m7+OtR4YiFLDh1Nm0wsX
-	rdZaz4VyfssA==
-X-Received: by 2002:a05:6a00:179e:b0:706:8e4:56a1 with SMTP id d2e1a72fcca58-70aaad608b0mr14664491b3a.18.1719987526085;
-        Tue, 02 Jul 2024 23:18:46 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGQC6QeXQUsDBKRVwGsKjexDIZNaCLw402fvTZemCMLNU+hjyxfH1ynCl3eSRp1HOz8hh3wqQ==
-X-Received: by 2002:a05:6a00:179e:b0:706:8e4:56a1 with SMTP id d2e1a72fcca58-70aaad608b0mr14664465b3a.18.1719987525589;
-        Tue, 02 Jul 2024 23:18:45 -0700 (PDT)
-Received: from solution.. (125-228-254-191.hinet-ip.hinet.net. [125.228.254.191])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7080205ebbcsm9581936b3a.40.2024.07.02.23.18.42
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 02 Jul 2024 23:18:45 -0700 (PDT)
-From: Jian Hui Lee <jianhui.lee@canonical.com>
-To: Felix Fietkau <nbd@nbd.name>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [RESEND PATCH net] net: ethernet: mtk-star-emac: set mac_managed_pm when probing
-Date: Wed,  3 Jul 2024 14:18:40 +0800
-Message-ID: <20240703061840.3137496-1-jianhui.lee@canonical.com>
-X-Mailer: git-send-email 2.43.0
+	id 1sOu1P-00000009HQZ-01Am;
+	Wed, 03 Jul 2024 07:03:20 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 4E3A940008;
+	Wed,  3 Jul 2024 07:03:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
+	t=1719990194;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=SBX2/MGaOS1ZkS0ejeTXdSBLBk8fKts4uFWqlOjCCxY=;
+	b=QLU8n0pp4oKXT2jnEnw/2NUh5RoMDi+EnE/qwfSgtYP3e49V46R183fl57FUe4yyrtm2j0
+	xZ3gX54HYsBb5ZzK4KQIjQl6nNayGvWhOEVqUFuzPEadVNSwnxrpIaTBH6AVevCOmz+GQa
+	DRNh3Veg72O7SnHljex3H2G5ECbKNiB/+yzP+D1P0HOsqPN/gW2kYu+V8+WvdUWRSXaMzZ
+	Ca+3mlMJlQdMl/xD/nB3dd9csjM45OJwqEhrfkxFIo4vhkAjJXzDsqw/Xf92vL6k1BV9EP
+	obgXugHip14iaC35LvDWSSWkvlveobMkbIa2EDaOX2WjsAprOPsenCl3TiWmlQ==
+Message-ID: <d3ac5584-8e52-46e0-b690-ad5faa1ede61@arinc9.com>
+Date: Wed, 3 Jul 2024 10:03:09 +0300
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net v3] net: dsa: mt7530: fix impossible MDIO address and
+ issue warning
+To: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
+ Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
+ <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Landen Chao <Landen.Chao@mediatek.com>, Frank Wunderlich <linux@fw-web.de>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ regressions@lists.linux.dev
+References: <7e3fed489c0bbca84a386b1077c61589030ff4ab.1719963228.git.daniel@makrotopia.org>
+Content-Language: en-US
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <7e3fed489c0bbca84a386b1077c61589030ff4ab.1719963228.git.daniel@makrotopia.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
+X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240702_231853_011954_AC4875AE 
-X-CRM114-Status: GOOD (  11.45  )
+X-CRM114-CacheID: sfid-20240703_000319_348076_BB231324 
+X-CRM114-Status: GOOD (  20.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,48 +82,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The below commit introduced a warning message when phy state is not in
-the states: PHY_HALTED, PHY_READY, and PHY_UP.
-commit 744d23c71af3 ("net: phy: Warn about incorrect mdio_bus_phy_resume() state")
+On 03/07/2024 02:44, Daniel Golle wrote:
+> The MDIO address of the MT7530 and MT7531 switch ICs can be configured
+> using bootstrap pins. However, there are only 4 possible options for the
+> switch itself: 7, 15, 23 and 31. As in MediaTek's SDK the address of the
+> switch is wrongly stated in the device tree as 0 (while in reality it is
+> 31), warn the user about such broken device tree and make a good guess
+> what was actually intended.
+> 
+> This is imporant also to not break compatibility with older Device Trees
+> as with commit 868ff5f4944a ("net: dsa: mt7530-mdio: read PHY address of
+> switch from device tree") the address in device tree will be taken into
+> account, while before it was hard-coded to 0x1f.
+> 
+> Fixes: b8f126a8d543 ("net-next: dsa: add dsa support for Mediatek MT7530 switch")
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> ---
+> Only tested on BPi-R3 (with various deliberately broken DT) for now!
+> 
+> Changes since v2 [2]:
+>   - use macros instead of magic numbers
+>   - introduce helper functions
+>   - register new device on MDIO bus instead of messing with the address
+>     and schedule delayed_work to unregister the "wrong" device.
+>     This is a slightly different approach than suggested by Russell, but
+>     imho makes things much easier than keeping the "wrong" device and
+>     having to deal with keeping the removal of both devices linked.
+>   - improve comments
+> 
+> Changes since v1 [1]:
+>   - use FW_WARN as suggested.
+>   - fix build on net tree which doesn't have 'mdiodev' as member of the
+>     priv struct. Imho including this patch as fix makes sense to warn
+>     users about broken firmware, even if the change introducing the
+>     actual breakage is only present in net-next for now.
+> 
+> [1]: https://patchwork.kernel.org/project/netdevbpf/patch/e615351aefba25e990215845e4812e6cb8153b28.1714433716.git.daniel@makrotopia.org/
+> [2]: https://patchwork.kernel.org/project/netdevbpf/patch/11f5f127d0350e72569c36f9060b6e642dfaddbb.1714514208.git.daniel@makrotopia.org/
 
-mtk-star-emac doesn't need mdiobus suspend/resume. To fix the warning
-message during resume, indicate the phy resume/suspend is managed by the
-mac when probing.
+Works on standalone MT7530, MT7621's MCM MT7530, and MT7531. From MT7621's
+MCM MT7530:
 
-Fixes: 744d23c71af3 ("net: phy: Warn about incorrect mdio_bus_phy_resume() state")
-Signed-off-by: Jian Hui Lee <jianhui.lee@canonical.com>
----
-resending to add the mailing list recipient
+[    1.357287] mt7530-mdio mdio-bus:1f: MT7530 adapts as multi-chip module
+[    1.364065] mt7530-mdio mdio-bus:00: [Firmware Warn]: impossible switch MDIO address in device tree, assuming 31
+[    1.374303] mt7530-mdio mdio-bus:00: probe with driver mt7530-mdio failed with error -14
+[...]
+[    1.448370] mt7530-mdio mdio-bus:1f: MT7530 adapts as multi-chip module
+[    1.477676] mt7530-mdio mdio-bus:1f: configuring for fixed/rgmii link mode
+[    1.485687] mt7530-mdio mdio-bus:1f: Link is Up - 1Gbps/Full - flow control rx/tx
+[    1.493480] mt7530-mdio mdio-bus:1f: configuring for fixed/trgmii link mode
+[    1.502680] mt7530-mdio mdio-bus:1f lan1 (uninitialized): PHY [mt7530-0:00] driver [MediaTek MT7530 PHY] (irq=17)
+[    1.513620] mt7530-mdio mdio-bus:1f: Link is Up - 1Gbps/Full - flow control rx/tx
+[    1.519671] mt7530-mdio mdio-bus:1f lan2 (uninitialized): PHY [mt7530-0:01] driver [MediaTek MT7530 PHY] (irq=18)
+[    1.533072] mt7530-mdio mdio-bus:1f lan3 (uninitialized): PHY [mt7530-0:02] driver [MediaTek MT7530 PHY] (irq=19)
+[    1.545042] mt7530-mdio mdio-bus:1f lan4 (uninitialized): PHY [mt7530-0:03] driver [MediaTek MT7530 PHY] (irq=20)
+[    1.557031] mt7530-mdio mdio-bus:1f wan (uninitialized): PHY [mt7530-0:04] driver [MediaTek MT7530 PHY] (irq=21)
 
- drivers/net/ethernet/mediatek/mtk_star_emac.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+I'm not fond of the use of the non-standard term, MDIO address, instead of
+"PHY Address" as described in 22.2.4.5.5 of IEEE Std 802.3-2022.
+Regardless:
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_star_emac.c b/drivers/net/ethernet/mediatek/mtk_star_emac.c
-index 31aebeb2e285..79f8a8b72c27 100644
---- a/drivers/net/ethernet/mediatek/mtk_star_emac.c
-+++ b/drivers/net/ethernet/mediatek/mtk_star_emac.c
-@@ -1525,6 +1525,7 @@ static int mtk_star_probe(struct platform_device *pdev)
- 	struct device_node *of_node;
- 	struct mtk_star_priv *priv;
- 	struct net_device *ndev;
-+	struct phy_device *phydev;
- 	struct device *dev;
- 	void __iomem *base;
- 	int ret, i;
-@@ -1649,6 +1650,12 @@ static int mtk_star_probe(struct platform_device *pdev)
- 	netif_napi_add(ndev, &priv->rx_napi, mtk_star_rx_poll);
- 	netif_napi_add_tx(ndev, &priv->tx_napi, mtk_star_tx_poll);
- 
-+	phydev = of_phy_find_device(priv->phy_node);
-+	if (phydev) {
-+		phydev->mac_managed_pm = true;
-+		put_device(&phydev->mdio.dev);
-+	}
-+
- 	return devm_register_netdev(dev, ndev);
- }
- 
--- 
-2.43.0
+Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+Reviewed-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 
+Arınç
 
