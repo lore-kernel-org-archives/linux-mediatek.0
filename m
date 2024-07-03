@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A54D1C2BD09
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jul 2024 13:02:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BFA1C2BD09
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jul 2024 13:02:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=t41696Co/4Aqay9lh3cy0Z97c8p28xz1Kmsph/kFogE=; b=gAKXEWm22afkEUZa0mZWG4W5Am
-	Ci66X2Eq5BP4QEUOq2sY2nBmqUcWK7UHFVCL0wHIdxMuRJBU9YWHQJpMtdNxR1B3rs2x82F8/1Jp1
-	szxyM0bhxNYuowGe61yFYpcLMfOBO09KO1wCLQhljpK4P8JkOY3bgvv99FA9sYSJsHloMgPYIQLsU
-	r+ulwKxB/M71LAS8JC3QELNw/JpqxOR826CqwhX5f+1WbhIuJ+aJc6nYnGWDKLNLETK2yFoqo6Kam
-	V1+aqjiJbJGsbCpX1pwALA46eTZEsMO8Pg4KBPA+rjNuK+mZKq8ySEwXspJ14zt94XJcjxq1EjZ/I
-	cnMN4opg==;
+	bh=hHdSisvHcUJwFR6nPI10cGPUHSK1wYGDPBJsZkPdGEE=; b=bsydhPPWNE5LqSR+Eiyt4H062b
+	0J+h19qcsIQJrBpnyRWRYgnTEn7+E26y0ekAbFKCmVN02VRkzQaCrf8Lnul3YSws+Eb4Akb/Nd2AM
+	vuQO4pJpcndBEVIDnSXuLdpUrMApfNLR7EvTWt1ndJxdtlL+mWND5WLGP2WlUiFZUrFrg/Xdfc5K7
+	5cRI45zjyUwNn8b6BUmzInP93hmpzkzBxZSBh9IAf1Z5AKwKbAhKvZsIuR0pk3+38f91ssztdN/RX
+	uv4jr48H6vbO/VpKMl3BKK9EkN0smrn8VC54GBKwX6DQYZbipPOXwgaaPUVDXMPbHxDFlKB6NZJwG
+	0lzWrLGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sOzd5-0000000AF2c-0w2d;
-	Wed, 03 Jul 2024 13:02:35 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1sOzdF-0000000AF7E-0PyT;
+	Wed, 03 Jul 2024 13:02:45 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sOzcp-0000000AEx3-3Ysp;
-	Wed, 03 Jul 2024 13:02:21 +0000
+	id 1sOzcq-0000000AExD-40VG;
+	Wed, 03 Jul 2024 13:02:22 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1720011738;
-	bh=U7o86Tzjl5rNpCoW+Rril6FhOJHsZrYDpqqOuEg+aL8=;
+	s=mail; t=1720011739;
+	bh=+M9F+vfRgYjR1PTmjDTzGuhYqKbDAqfPRpyWcUy5ijE=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=VabEia4WzYXeIl+dydiNkvL7svyzEy6Kvg26UTjdNAD9lXvGZtbFsPX0NCzCERqDp
-	 0H7CYL8ft1eyBkmxtcMzpF0bqvo0OYHlfA+jAnDtiEzO6XovgmiO2Q4ceuuNTMZuG4
-	 6id5pHEIg6UjAw6ODPThkMw/cm2iebkxSehoOpNcOokB4l3HMrHqHsXXNkKBePpZ2c
-	 a/n7zTyzTysGIx9Co7F7D7cUo2/Hu9LCQxD3Fk9zsk1o0ZrZwOeqhc2kjRNtB3N9aY
-	 V3jXVYhwONBmxs7e/PUb54NRM9XAnc8yEciFwc8KehIZjSZrHiVO7GWbIWQb++SkQe
-	 FbqblFX7cIIxg==
+	b=AZVK1BI1q5Tlke9vsKCXWn1a/Q8FYm05+J+Ctu2qKMtSf5R4mF8cw6zM4+0TwTNpP
+	 GFhKc+E+2IXyP9gCCCGPzxJTIhHEkKn1vf1lduVyPYFj/nU0cT5vyNZEZ88IFE7g4b
+	 +JqJKNu7ibsbruibslyRHUZtIt+8XEGqSg6Zx4tZGxML4flykmcCbQlXug2g6kpDzz
+	 xiuNZ6JFATtrfN7tTLmwxKe/NKN8pOkqjSJeoTxoibGaznwXBIKVgPAUuTpuPtC9Od
+	 6tuXTwdFFYYdgbQhB6q/aVpgnp8I/XohqpzqzXur0zAaXnI+rPfugaWQjtyzTzzLI6
+	 TG88tDjFpPgdg==
 Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id ACBBE3782194;
-	Wed,  3 Jul 2024 13:02:17 +0000 (UTC)
-Message-ID: <c85ed66d-6a9f-43e3-9ab3-740551f34f7c@collabora.com>
-Date: Wed, 3 Jul 2024 15:02:17 +0200
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 0AC0037821CD;
+	Wed,  3 Jul 2024 13:02:18 +0000 (UTC)
+Message-ID: <65b422fe-ecc1-4f57-bb72-f2fef3a5af28@collabora.com>
+Date: Wed, 3 Jul 2024 15:02:18 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/4] soc: mediatek: pwrap: Constify struct
- pmic_wrapper_type
+Subject: Re: [PATCH 3/4] soc: mediatek: pwrap: Use
+ devm_clk_get_[optional_]enabled()
 To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
  matthias.bgg@gmail.com, fparent@baylibre.com, fchiby@baylibre.com,
  s.hauer@pengutronix.de
 Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org
 References: <cover.1719652155.git.christophe.jaillet@wanadoo.fr>
- <ee3160978ac6564663d044815f24cf79e2e0744e.1719652155.git.christophe.jaillet@wanadoo.fr>
+ <07b3745819c8ba818d4508ed12e93f14f29b80a2.1719652155.git.christophe.jaillet@wanadoo.fr>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <ee3160978ac6564663d044815f24cf79e2e0744e.1719652155.git.christophe.jaillet@wanadoo.fr>
+In-Reply-To: <07b3745819c8ba818d4508ed12e93f14f29b80a2.1719652155.git.christophe.jaillet@wanadoo.fr>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240703_060220_058259_4F82D525 
-X-CRM114-Status: GOOD (  14.74  )
+X-CRM114-CacheID: sfid-20240703_060221_166781_C471E396 
+X-CRM114-Status: GOOD (  26.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,63 +79,195 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 29/06/24 11:19, Christophe JAILLET ha scritto:
-> 'struct pmic_wrapper_type' is not modified in this driver.
+> Use devm_clk_get_enabled() and devm_clk_get_optional_enabled() to simplify
+> the code and to make sure that clk_disable_unprepare() is called if the
+> driver is unloaded.
 > 
-> Constifying this structure moves some data to a read-only section, so
-> increase overall security.
-> 
-> On a x86_64, with allmodconfig, as an example:
-> Before:
-> ======
->     text	   data	    bss	    dec	    hex	filename
->    45336	   8724	     16	  54076	   d33c	drivers/soc/mediatek/mtk-pmic-wrap.o
-> 
-> After:
-> =====
->     text	   data	    bss	    dec	    hex	filename
->    45528	   8532	     16	  54076	   d33c	drivers/soc/mediatek/mtk-pmic-wrap.o
-> 
+> Fixes: 55924157da8c ("soc: mediatek: pwrap: add support for sys & tmr clocks")
+> Fixes: 1f022d84bd19 ("soc: mediatek: Add PMIC wrapper for MT8135 and MT8173 SoCs")
 > Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
 > ---
 > Compile tested-only
 > ---
->   drivers/soc/mediatek/mtk-pmic-wrap.c | 6 +++---
->   1 file changed, 3 insertions(+), 3 deletions(-)
+>   drivers/soc/mediatek/mtk-pmic-wrap.c | 85 ++++++++--------------------
+>   1 file changed, 25 insertions(+), 60 deletions(-)
 > 
 > diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-> index efd9cae212dc..0da0cdec5050 100644
+> index d57553486383..6981d6a1ab93 100644
 > --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
 > +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-> @@ -2397,7 +2397,7 @@ static const struct pmic_wrapper_type pwrap_mt8183 = {
->   	.init_soc_specific = pwrap_mt8183_init_soc_specific,
->   };
+> @@ -1366,10 +1366,6 @@ struct pmic_wrapper {
+>   	struct regmap *regmap;
+>   	const struct pmic_wrapper_type *master;
+>   	const struct pwrap_slv_type *slave;
+> -	struct clk *clk_spi;
+> -	struct clk *clk_wrap;
+> -	struct clk *clk_sys;
+> -	struct clk *clk_tmr;
+>   	struct reset_control *rstc;
 >   
-> -static struct pmic_wrapper_type pwrap_mt8195 = {
-> +static const struct pmic_wrapper_type pwrap_mt8195 = {
->   	.regs = mt8195_regs,
->   	.type = PWRAP_MT8195,
->   	.arb_en_all = 0x777f, /* NEED CONFIRM */
-> @@ -2423,7 +2423,7 @@ static const struct pmic_wrapper_type pwrap_mt8365 = {
->   	.init_soc_specific = NULL,
->   };
+>   	struct reset_control *rstc_bridge;
+> @@ -2471,6 +2467,7 @@ static int pwrap_probe(struct platform_device *pdev)
+>   {
+>   	int ret, irq;
+>   	u32 mask_done;
+> +	struct clk *clk;
+>   	struct pmic_wrapper *wrp;
+>   	struct device_node *np = pdev->dev.of_node;
+>   	const struct of_device_id *of_slave_id = NULL;
+> @@ -2521,50 +2518,34 @@ static int pwrap_probe(struct platform_device *pdev)
+>   		}
+>   	}
 >   
-> -static struct pmic_wrapper_type pwrap_mt8516 = {
-> +static const struct pmic_wrapper_type pwrap_mt8516 = {
->   	.regs = mt8516_regs,
->   	.type = PWRAP_MT8516,
->   	.arb_en_all = 0xff,
-> @@ -2435,7 +2435,7 @@ static struct pmic_wrapper_type pwrap_mt8516 = {
->   	.init_soc_specific = NULL,
->   };
+> -	wrp->clk_spi = devm_clk_get(wrp->dev, "spi");
+> -	if (IS_ERR(wrp->clk_spi)) {
+> +	clk = devm_clk_get_enabled(wrp->dev, "spi");
+
+Uhm... in this case, it might be worth using devm_clk_bulk_get_all_enable()
+instead... as anyway we're never turning off those clocks during operation.
+
+I checked the devicetrees and the clocks are ordered the right way, but then
+we can also consider the fact that the bindings are enforcing the clock order
+so that's.. golden.
+
+Practically, by using devm_clk_bulk_get_all_enable(), you're removing even
+more lines from this driver, as those four clocks (and four times error checking)
+will be reduced to just one call.....!
+
+Thanks for cleaning up this driver, btw!
+
+Cheers,
+Angelo
+
+
+> +	if (IS_ERR(clk)) {
+>   		dev_dbg(wrp->dev, "failed to get clock: %ld\n",
+> -			PTR_ERR(wrp->clk_spi));
+> -		return PTR_ERR(wrp->clk_spi);
+> +			PTR_ERR(clk));
+> +		return PTR_ERR(clk);
+>   	}
 >   
-> -static struct pmic_wrapper_type pwrap_mt8186 = {
-> +static const struct pmic_wrapper_type pwrap_mt8186 = {
->   	.regs = mt8186_regs,
->   	.type = PWRAP_MT8186,
->   	.arb_en_all = 0xfb27f,
+> -	wrp->clk_wrap = devm_clk_get(wrp->dev, "wrap");
+> -	if (IS_ERR(wrp->clk_wrap)) {
+> +	clk = devm_clk_get_enabled(wrp->dev, "wrap");
+> +	if (IS_ERR(clk)) {
+>   		dev_dbg(wrp->dev, "failed to get clock: %ld\n",
+> -			PTR_ERR(wrp->clk_wrap));
+> -		return PTR_ERR(wrp->clk_wrap);
+> +			PTR_ERR(clk));
+> +		return PTR_ERR(clk);
+>   	}
+>   
+> -	wrp->clk_sys = devm_clk_get_optional(wrp->dev, "sys");
+> -	if (IS_ERR(wrp->clk_sys)) {
+> -		return dev_err_probe(wrp->dev, PTR_ERR(wrp->clk_sys),
+> +	clk = devm_clk_get_optional_enabled(wrp->dev, "sys");
+> +	if (IS_ERR(clk)) {
+> +		return dev_err_probe(wrp->dev, PTR_ERR(clk),
+>   				     "failed to get clock: %pe\n",
+> -				     wrp->clk_sys);
+> +				     clk);
+>   	}
+>   
+> -	wrp->clk_tmr = devm_clk_get_optional(wrp->dev, "tmr");
+> -	if (IS_ERR(wrp->clk_tmr)) {
+> -		return dev_err_probe(wrp->dev, PTR_ERR(wrp->clk_tmr),
+> +	clk = devm_clk_get_optional_enabled(wrp->dev, "tmr");
+> +	if (IS_ERR(clk)) {
+> +		return dev_err_probe(wrp->dev, PTR_ERR(clk),
+>   				     "failed to get clock: %pe\n",
+> -				     wrp->clk_tmr);
+> +				     clk);
+>   	}
+>   
+> -	ret = clk_prepare_enable(wrp->clk_spi);
+> -	if (ret)
+> -		return ret;
+> -
+> -	ret = clk_prepare_enable(wrp->clk_wrap);
+> -	if (ret)
+> -		goto err_out1;
+> -
+> -	ret = clk_prepare_enable(wrp->clk_sys);
+> -	if (ret)
+> -		goto err_out2;
+> -
+> -	ret = clk_prepare_enable(wrp->clk_tmr);
+> -	if (ret)
+> -		goto err_out3;
+> -
+>   	/* Enable internal dynamic clock */
+>   	if (HAS_CAP(wrp->master->caps, PWRAP_CAP_DCM)) {
+>   		pwrap_writel(wrp, 1, PWRAP_DCM_EN);
+> @@ -2579,7 +2560,7 @@ static int pwrap_probe(struct platform_device *pdev)
+>   		ret = pwrap_init(wrp);
+>   		if (ret) {
+>   			dev_dbg(wrp->dev, "init failed with %d\n", ret);
+> -			goto err_out4;
+> +			return ret;
+>   		}
+>   	}
+>   
+> @@ -2592,8 +2573,7 @@ static int pwrap_probe(struct platform_device *pdev)
+>   
+>   	if (!(pwrap_readl(wrp, PWRAP_WACS2_RDATA) & mask_done)) {
+>   		dev_dbg(wrp->dev, "initialization isn't finished\n");
+> -		ret = -ENODEV;
+> -		goto err_out4;
+> +		return -ENODEV;
+>   	}
+>   
+>   	/* Initialize watchdog, may not be done by the bootloader */
+> @@ -2622,42 +2602,27 @@ static int pwrap_probe(struct platform_device *pdev)
+>   		pwrap_writel(wrp, wrp->master->int1_en_all, PWRAP_INT1_EN);
+>   
+>   	irq = platform_get_irq(pdev, 0);
+> -	if (irq < 0) {
+> -		ret = irq;
+> -		goto err_out2;
+> -	}
+> +	if (irq < 0)
+> +		return irq;
+>   
+>   	ret = devm_request_irq(wrp->dev, irq, pwrap_interrupt,
+>   			       IRQF_TRIGGER_HIGH,
+>   			       "mt-pmic-pwrap", wrp);
+>   	if (ret)
+> -		goto err_out4;
+> +		return ret;
+>   
+>   	wrp->regmap = devm_regmap_init(wrp->dev, NULL, wrp, wrp->slave->regops->regmap);
+> -	if (IS_ERR(wrp->regmap)) {
+> -		ret = PTR_ERR(wrp->regmap);
+> -		goto err_out2;
+> -	}
+> +	if (IS_ERR(wrp->regmap))
+> +		return PTR_ERR(wrp->regmap);
+>   
+>   	ret = of_platform_populate(np, NULL, NULL, wrp->dev);
+>   	if (ret) {
+>   		dev_dbg(wrp->dev, "failed to create child devices at %pOF\n",
+>   				np);
+> -		goto err_out4;
+> +		return ret;
+>   	}
+>   
+>   	return 0;
+> -
+> -err_out4:
+> -	clk_disable_unprepare(wrp->clk_tmr);
+> -err_out3:
+> -	clk_disable_unprepare(wrp->clk_sys);
+> -err_out2:
+> -	clk_disable_unprepare(wrp->clk_wrap);
+> -err_out1:
+> -	clk_disable_unprepare(wrp->clk_spi);
+> -
+> -	return ret;
+>   }
+>   
+>   static struct platform_driver pwrap_drv = {
 
 
 
