@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44549C2BD09
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jul 2024 21:43:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FA2AC2BD09
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jul 2024 21:43:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ffWOmyzGdQmn/1ElFIgBjJf1v30KLPcOBR1pd24Nq7I=; b=A0WpAoSuGh9mrVuoB/H8+NSTOC
-	ZDctrYsgwyzGEbiOcbbM+VTBCz0SB5PAej2Eu3pw2Z/iY5kTSSl3kNWXA00VB90X7WRpzjmjaBuYc
-	RZ7bF8/8G0W5c7PVtLVbXFAoXOtCh8jxOY8TG/FzcUpubLIViN3FaUMgi5T5grXUPRMBNuVaTTQ3t
-	2aQX0UTt56xNK6ECsJUsVUgYB8yZcsYYYOiGp2tCXC7n+/0V+CWcdKvPYN8NDG3mJ6dHehI927iWC
-	BYnIQfklJ2CqqvZvlwH1qOb7vTrx1jSCPcGo9w3Qc/6U66pq8ph6QhNSSf6DMtVVCAUw2rt664PZq
-	4AuTl4ng==;
+	bh=RxSmN3RyGqtOMcnaemjIRPhc3UORadWI0djDIJjxFRQ=; b=LlK369TuYsuipVKJL326YbQgwW
+	Ayssx5AJRiuiY4xPdu9mvqYCLxPeLF3Fvwjo7fi5XDr+KjI4t50AD1Mol7fDjChT6fd++G3TZ0VhP
+	/BfSJzp1yZftVm2BLVvf+jL7qlYj7EG1d+4S3uHIWmBLBtkxtXDYCQyXnArYIDndZX/5jIh5g9UKW
+	CGvJPLcYpGaIHsVPRYWp+34dTYl15empUNzJE1pnTdRImxs5t8Je9OJ5xqZJxscN1GRtzZMxJdAXw
+	HSazh7q1PX1j/jTcVsRf+Jgm99HBckYuHUikqBHmI7WXKcL5blFFtZGch4yWkzYjmmboxcIZMvnB2
+	OkiMj1fQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sP7lF-0000000BXK9-3tKS;
-	Wed, 03 Jul 2024 21:43:33 +0000
-Received: from mail-oa1-f49.google.com ([209.85.160.49])
+	id 1sP7lI-0000000BXM1-3VrI;
+	Wed, 03 Jul 2024 21:43:36 +0000
+Received: from mail-ot1-f43.google.com ([209.85.210.43])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sP7lD-0000000BXIE-24UN
+	id 1sP7lF-0000000BXJ8-022K
 	for linux-mediatek@lists.infradead.org;
-	Wed, 03 Jul 2024 21:43:32 +0000
-Received: by mail-oa1-f49.google.com with SMTP id 586e51a60fabf-25d0f8d79ebso8178fac.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 03 Jul 2024 14:43:31 -0700 (PDT)
+	Wed, 03 Jul 2024 21:43:34 +0000
+Received: by mail-ot1-f43.google.com with SMTP id 46e09a7af769-700d29f33a0so89050a34.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 03 Jul 2024 14:43:32 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1720043010; x=1720647810;
+        d=1e100.net; s=20230601; t=1720043012; x=1720647812;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=ffWOmyzGdQmn/1ElFIgBjJf1v30KLPcOBR1pd24Nq7I=;
-        b=a3I0r1mf6uNyM+mR57UOkjEJ1+7LzrS4FXxzFuQIClVwSPqMVZQ7u+tyXJ7gSUJDgc
-         2m7yNnnWODwqkFLqkKtUoJzRGp3lTOb/X/BKGPiPgz453JRN8ARuSnemiT7opbnO7w7m
-         wtEbJpmbCebqKbDwuRl69Q1cCwPOtUKGJ9bd6zULiq8BaKMV70Uc2/OU96oB0Ho4Z2iL
-         LTK9g7nVOBYniBeZGfxRFASwxNgU7uz06a5n221pF9PUWhGLLDVQtvR6Oqy4wHrgDEIA
-         dG60RUFi8SNfgF5ZoQE7phOBbRdAvpyla3XbcZ5JIdZA+cA4eEh/SQ/uwxS8jBSvpB+Z
-         6MiA==
-X-Forwarded-Encrypted: i=1; AJvYcCW+QNRPO9fcOMkH4yL8iN/HRSkYJJAVDLudeV+U8nIczrAgIn6Mly98wBcKftz9vUyvB5Z8vhliuNuPZpjHLRtlXhGAHyJaASSo7StFMszJqvFb
-X-Gm-Message-State: AOJu0YyrxO0lWC//z3gceslxxvGm1DRMJLxijY2GYM/hkLwIvPXVbZEq
-	MO2x02upHtglYVsGMIlZ4PrMV/dzJmxxt3P72S/1xsmkXz7aAeLV
-X-Google-Smtp-Source: AGHT+IEg9up3tNNH6BCf3a0LDbIZh3GhmduGK33TP3hQf2RrI2NvFjW6FtNxtHICn/l6idPmrPoZVw==
-X-Received: by 2002:a05:6830:8c5:b0:6f9:7373:9421 with SMTP id 46e09a7af769-7020774aa24mr11940398a34.3.1720043010569;
-        Wed, 03 Jul 2024 14:43:30 -0700 (PDT)
+        bh=RxSmN3RyGqtOMcnaemjIRPhc3UORadWI0djDIJjxFRQ=;
+        b=eWZJvYcNCPF8GPm9Ty2BmvMM+pxZ3jCow0XiKwDH9gBbGSa5yh1lDMnahVwSgOuCzh
+         Ep900b5TbnD4QcXnWndIWgNp8yUfu7ezgeyDCVg6cwfYfFq1rdTT39suAGpkQ6lCctEy
+         JThW+wIFWb3O2fnTjwULDSV9dgVtG3Mj7KXVXCmYOphtiIPc0+4R2Hw69hUsUUttEA2d
+         MQUk5Lsnb93RKs0dJNog6JMOZisHUhUvJ1SOXs3eTX0s0QpGohaKsIwFMAv+WG4Soguj
+         kc9tEGFp/1/AtrJvKiPxvER6KELfjto5nYkHDdYZHv4gtLIuoxgDz2a6NLgK3x1XVb05
+         TH4A==
+X-Forwarded-Encrypted: i=1; AJvYcCV6sVpWmJKYbjvppGc23c0af/innhvL+ygZFC8vXnWYrqkQ9adCEsTY0ROoB7NNI4buQ5bX2EpBxQkYZL4CMz1kn27FFY98768wuEYqZ871Zmlr
+X-Gm-Message-State: AOJu0YyAhd82TlzvedGNfkE2ehVvwHtvSisbYkBbHrBW3RwcRNB/aptx
+	nHWdeyuF0gRES5SqOYKJdP4QK7Pdr0lW8lex6GrKHTdhcsgPsRUp
+X-Google-Smtp-Source: AGHT+IF/LGon8YWCTWFG30B8KA0KF181GSiy3MGe5Zpy91+M/CxwYtnXKl8o1WBcM0358pYIOT8lnw==
+X-Received: by 2002:a9d:7e8a:0:b0:700:e0e8:5e2 with SMTP id 46e09a7af769-70207560e89mr12825062a34.0.1720043012083;
+        Wed, 03 Jul 2024 14:43:32 -0700 (PDT)
 Received: from sean-ThinkPad-T450s.lan ([207.191.35.252])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-701f7b20953sm2111417a34.54.2024.07.03.14.43.29
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-701f7b20953sm2111417a34.54.2024.07.03.14.43.30
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 03 Jul 2024 14:43:29 -0700 (PDT)
+        Wed, 03 Jul 2024 14:43:31 -0700 (PDT)
 From: sean.wang@kernel.org
 To: nbd@nbd.name,
 	lorenzo.bianconi@redhat.com
@@ -59,17 +59,17 @@ Cc: sean.wang@mediatek.com,
 	mingyen.hsieh@mediatek.com,
 	linux-wireless@vger.kernel.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH 20/29] wifi: mt76: mt7925: report link information in rx status
-Date: Wed,  3 Jul 2024 14:42:25 -0700
-Message-Id: <b3322836779900612adf2e4ffb409c62ac25c627.1720042294.git.sean.wang@kernel.org>
+Subject: [PATCH 21/29] wifi: mt76: add def_wcid to struct mt76_wcid
+Date: Wed,  3 Jul 2024 14:42:26 -0700
+Message-Id: <c453d6b0045ce09fded4e255dc4673defa0dc2ec.1720042294.git.sean.wang@kernel.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <cover.1720042294.git.sean.wang@kernel.org>
 References: <cover.1720042294.git.sean.wang@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240703_144331_573620_5B0D1AAC 
-X-CRM114-Status: GOOD (  10.86  )
+X-CRM114-CacheID: sfid-20240703_144333_074423_ED5EC653 
+X-CRM114-Status: GOOD (  10.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,7 +86,8 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Sean Wang <sean.wang@mediatek.com>
 
-report link information in rx status
+add def_wcid to struct mt76_wcid to allow per-link wcid to retrieve the
+struct ieee80211_sta structure.
 
 Co-developed-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
 Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
@@ -94,56 +95,50 @@ Co-developed-by: Deren Wu <deren.wu@mediatek.com>
 Signed-off-by: Deren Wu <deren.wu@mediatek.com>
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mac80211.c    | 5 +++++
- drivers/net/wireless/mediatek/mt76/mt76.h        | 1 +
+ drivers/net/wireless/mediatek/mt76/mt76.h        | 5 +++++
  drivers/net/wireless/mediatek/mt76/mt7925/main.c | 2 ++
- 3 files changed, 8 insertions(+)
+ 2 files changed, 7 insertions(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mac80211.c b/drivers/net/wireless/mediatek/mt76/mac80211.c
-index e8ba2e4e8484..bb291fe314fb 100644
---- a/drivers/net/wireless/mediatek/mt76/mac80211.c
-+++ b/drivers/net/wireless/mediatek/mt76/mac80211.c
-@@ -1125,6 +1125,11 @@ mt76_rx_convert(struct mt76_dev *dev, struct sk_buff *skb,
- 	memcpy(status->chain_signal, mstat.chain_signal,
- 	       sizeof(mstat.chain_signal));
- 
-+	if (mstat.wcid) {
-+		status->link_valid = mstat.wcid->link_valid;
-+		status->link_id = mstat.wcid->link_id;
-+	}
-+
- 	*sta = wcid_to_sta(mstat.wcid);
- 	*hw = mt76_phy_hw(dev, mstat.phy_idx);
- }
 diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-index 01646538087a..c0e529d0b3ef 100644
+index c0e529d0b3ef..f8431b889c78 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt76.h
 +++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-@@ -350,6 +350,7 @@ struct mt76_wcid {
- 	u8 amsdu:1;
- 	u8 phy_idx:2;
- 	u8 link_id:4;
-+	bool link_valid;
+@@ -368,6 +368,8 @@ struct mt76_wcid {
+ 	struct mt76_sta_stats stats;
  
- 	u8 rx_check_pn;
- 	u8 rx_key_pn[IEEE80211_NUM_TIDS + 1][6];
+ 	struct list_head poll_list;
++
++	struct mt76_wcid *def_wcid;
+ };
+ 
+ struct mt76_txq {
+@@ -1258,6 +1260,9 @@ wcid_to_sta(struct mt76_wcid *wcid)
+ 	if (!wcid || !wcid->sta)
+ 		return NULL;
+ 
++	if (wcid->def_wcid)
++		ptr = wcid->def_wcid;
++
+ 	return container_of(ptr, struct ieee80211_sta, drv_priv);
+ }
+ 
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-index 173934ec1e71..c3ce57d36168 100644
+index c3ce57d36168..339888086076 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-@@ -809,6 +809,7 @@ static int mt7925_mac_link_sta_add(struct mt76_dev *mdev,
- 	mlink->wcid.tx_info |= MT_WCID_TX_INFO_SET;
- 	mlink->last_txs = jiffies;
- 	mlink->wcid.link_id = link_sta->link_id;
-+	mlink->wcid.link_valid = !!link_sta->sta->valid_links;
+@@ -894,6 +894,7 @@ mt7925_mac_sta_add_links(struct mt792x_dev *dev, struct ieee80211_vif *vif,
+ 		rcu_assign_pointer(msta->link[link_id], mlink);
+ 		mlink->sta = msta;
+ 		mlink->pri_link = &sta->deflink;
++		mlink->wcid.def_wcid = &msta->deflink.wcid;
  
- 	ret = mt76_connac_pm_wake(&dev->mphy, &dev->pm);
- 	if (ret)
-@@ -1865,6 +1866,7 @@ mt7925_change_vif_links(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 		mconf->link_id = link_id;
+ 		link_sta = mt792x_sta_to_link_sta(vif, sta, link_id);
+ 		mt7925_mac_link_sta_add(&dev->mt76, vif, link_sta);
+@@ -1867,6 +1868,7 @@ mt7925_change_vif_links(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
  		mconf->vif = mvif;
  		mlink->wcid.link_id = link_id;
-+		mlink->wcid.link_valid = !!vif->valid_links;
+ 		mlink->wcid.link_valid = !!vif->valid_links;
++		mlink->wcid.def_wcid = &mvif->sta.deflink.wcid;
  	}
  
  	if (hweight16(mvif->valid_links) == 0)
