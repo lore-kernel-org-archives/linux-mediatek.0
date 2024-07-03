@@ -4,95 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CF76C30653
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jul 2024 19:07:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD2CAC2BD09
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jul 2024 19:59:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rzqLcYmNlhaEa9iw+jtKoQZyVNKKD3jdk0VbO2iS/r8=; b=WWtCnekGYf6D+yT1xd72RTixEr
-	FPmpaLJKpGz0Yma6X+iUNrS+sQeX6taMYMMLpPfgw1pHnKeZImOcJJWhfvprrt7N9/sCDyONmoGwo
-	i+lXxrDVvid8BacuIJITruf7JSvT3C6rr5hYkbPZjtZ/+8Z+ieLaCTM0YRmHrDirHf5ImCJ/fxg0f
-	njX8D4X7SXaTfjFFk3X27oSDXPBQVge3pXZCiKO+V4Df9VDv20XV54vMkDdofZnU3OGCTy/cCI+Rc
-	jK6LtgoyVAvR0kFSdzP5PsMq7ZCGjIME1GXkrBdFzvehkSBGWtAjP39JarNx9/APZSQzbT0KGgpvM
-	ULIIJLEw==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ipEnmO5Qfegbo4/C3BJUy8OhfM3nXNhQBx9SBvb45Ok=; b=Tera87KmEgGQatUJtp9fz43slq
+	lbWs5nNqZC95xlD6eNRbC7y3o0HIU6LUD5mLHrCpElQ/L0uLUsecs61f3lgvOVveKDlFuDfrjSAAh
+	lUC6hBrZHEjhUjfa8UBV2p0v90j/UoQumdmvGp6/80SHgBOebykwfSDypOvJtK4tIWhJYHqwycoTz
+	yKxMJxLOPIyztHzJIgfEGm/5+vQ+OVEcpN1t1YA0xH5xn7wMIGmglCBq/HGPj/UrAeS4UMOlz8UxW
+	ROGF4RSM5/YqQyzXOC4gq/koEva/VnwkfIFCTTbwkzAXO7cc5sFUpwKKAghGBlCwH8/UL2FJoSBAR
+	W2+zl0Gg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sP5Jz-0000000BEoD-0VLJ;
-	Wed, 03 Jul 2024 19:07:15 +0000
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
+	id 1sP68B-0000000BJvz-0TNJ;
+	Wed, 03 Jul 2024 19:59:07 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sP5Jw-0000000BEnd-0muu;
-	Wed, 03 Jul 2024 19:07:14 +0000
-Received: by mail-ed1-x530.google.com with SMTP id 4fb4d7f45d1cf-57ccd1111aeso4466966a12.0;
-        Wed, 03 Jul 2024 12:07:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1720033629; x=1720638429; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=rzqLcYmNlhaEa9iw+jtKoQZyVNKKD3jdk0VbO2iS/r8=;
-        b=ajNoW9+vuFWoFRatveyhFtJvtOR3+ffgrPbJWYNEkqLXvnOLrCo+K3NWDRBRM2PTvs
-         2ET5zYet8gUQhn5WnhGR8X/kEqQLmXy/R0Gic7nSC2t2iM/SYJoEPM1Mduhur4JUKNhB
-         vWLDt78LJp90SILcaRpa30GAsvZf0QfvN0CnR1ofMeIMJNjD080Kmo0Q9Fs2T3eesM8z
-         +D5Zous8X4fj+/CerWmsiv07SNmNTFvSKpN2lZNMQ/m3xtNlXha7z3wv4sHVZqslNJHX
-         vxVPpU3QI6odEHDkocizXUKVZCu3tL1cDlcGW2sVrLT1ABPu4BWXWveKWBeS6ztnCVum
-         MjVg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1720033629; x=1720638429;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=rzqLcYmNlhaEa9iw+jtKoQZyVNKKD3jdk0VbO2iS/r8=;
-        b=RBiE6p9jPgyEJzOjea+eRcW8mDlPnNBB8Zeo9NVXBuywRBURM1XBPJYeh9/yYDdpg2
-         bIU5d+e2wzsYOLHhRj+KOKbwoqd3P7J4106JxReZyVzRowFZR1ALhNQgOgCJi8IXIk+e
-         VoaAA+3SowrzRTVzLKZnZaDWFLqaYVuCN99jFbdkW8YYh0CifC0tRmtITx56ndwVTF2V
-         PoL5Hal4EG2clQKGRbZidFn7dezZ9daWTdk4RPy9r/3PIns4nAW95Sfw4/qDOEuEqUO/
-         xQbsWgkyigGaD/orMQbuWRIspf6LbcTfyD2Go2OHILIQaC8luw8Koycd3o5Rxj3F/GyN
-         RlpA==
-X-Forwarded-Encrypted: i=1; AJvYcCURI4nsy5urYkQCIfk2HXq0Iyp+4ZGndn0/c+FWXmOzypLOMF0lyjjCnRUmUVhjjzt/O7aVzT+vNGKhRBnK6k+5Dn8T3KBN1aeEWjSi/XWTklDQfgZo7MzC8GFltzf8Tgonpqpi6ysxn7eN7wpKhnGm3ftqb+JYyyE=
-X-Gm-Message-State: AOJu0YzTtHDrFtPi/ceMRbHHNPo2vzlHUztTS1L3kyirlWOcfH0zN6YV
-	xeGe/MpibCoVWfDIaXIeULA0KLlC/b70ZWj2He9Ks/OiwDXXnAT0MVCpqNEUXYdD9QcUF0zQQej
-	LUcNp+kCoyb/9mGadBr00BcsyhXs=
-X-Google-Smtp-Source: AGHT+IFTvqGKg+d2P1MX6zFoO20UuDNnBH0NZJoGdJm/F+Ghp9HnoLsYjQOjQhwonC/vbbujybApLnU1klWdkMuzG50=
-X-Received: by 2002:a17:906:fccc:b0:a72:548a:6f42 with SMTP id
- a640c23a62f3a-a751445451dmr802270766b.18.1720033629247; Wed, 03 Jul 2024
- 12:07:09 -0700 (PDT)
+	id 1sP67x-0000000BJsf-2Nnk;
+	Wed, 03 Jul 2024 19:58:54 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id EE1FD61690;
+	Wed,  3 Jul 2024 19:58:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7E276C4AF07;
+	Wed,  3 Jul 2024 19:58:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1720036730;
+	bh=jMJnkRb4oAbcEF6UDuF481F0b14sL/CeDqqFPHZQpbc=;
+	h=From:To:Cc:Subject:Date:From;
+	b=DeeUZ5Hf/ZZFOToqGRzWhPdPj/tTYlbd89HA98bdDtjDzCSawRfPqf1WdWIJ4/CFQ
+	 3nEMSjFYZFaDmoPZZgY15DNz3MY1fjnPz6095XmlRKXTvrwIg+NOC1ggl6eKEW/yzB
+	 gPiUH220sseRUHucISNSrUhSz7OiV4wrDJi6lGAWeD618sGs0jDJU3+7oM0UJN5XK/
+	 /jttjlYYB3xbOsMB7QtW42DcgHgHZbM86ecH9Ul/nxGJLIRvFGVckd5XO8E/TMKfUF
+	 P3xg4O300+Ks7/M7NeHfMq2Rb9O2+0UkKQa/LU8qXyvyThOenBQXw4zEF/vjP2ZDvi
+	 uEzk/iKYlPqAQ==
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Serge Semin <fancer.lancer@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Felix Fietkau <nbd@nbd.name>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+	Jose Abreu <joabreu@synopsys.com>
+Cc: netdev@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH v2] dt-bindings: net: Define properties at top-level
+Date: Wed,  3 Jul 2024 13:58:27 -0600
+Message-ID: <20240703195827.1670594-2-robh@kernel.org>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-References: <20240614040133.24967-1-jason-jh.lin@mediatek.com>
- <20240614040133.24967-3-jason-jh.lin@mediatek.com> <CABb+yY2bwj2BcdJLGe1ZYwCrnXL3LtcePMb=wQPaBKorBSs2yA@mail.gmail.com>
- <fc92d51cc6e55301c081ea2d589e1ba6cdd295ee.camel@mediatek.com>
- <CABb+yY1L+YGjf6O9UgPYkS2gWAdo=7QoojSAUNWC_8o7XtZQSg@mail.gmail.com>
- <1f815ff8-2b7a-48de-8b47-0bc9b3cb67ab@collabora.com> <CABb+yY1Yy8o3ofAiC-uV+gDrO3QDTWz3_XTUMai_2uyrnj-VrQ@mail.gmail.com>
- <b7ebc021d391452eaf2149976ea2d53fba3d89fc.camel@mediatek.com>
- <CABb+yY3+pnuXDK_jZMDYOAzahdSZ5iig51VqzM=FFHrFpK+9LA@mail.gmail.com>
- <4e5d4362-4940-4ba0-95aa-627b82e21e41@collabora.com> <CABb+yY3eXvJRUq7MOqB8QZ9N4aiuogaUCTfP7MerKdNbAbLkvw@mail.gmail.com>
- <895af04e45d286c38d01f48b29ad41598b7dadb7.camel@mediatek.com>
- <CABb+yY1EZOsKUR7WUX0Ni0Ukbqz0+yRHswiu07tNXtY1A1gNUQ@mail.gmail.com>
- <d6f0e7072ec0e89e573e5720fb2b9c621eb9154c.camel@mediatek.com>
- <CABb+yY0+fFw7Bg578DFEdrigVFgf4-v3qo2JVruEa3ExtvRsMg@mail.gmail.com> <092d917b4cae2762317a8739c874855554ae913f.camel@mediatek.com>
-In-Reply-To: <092d917b4cae2762317a8739c874855554ae913f.camel@mediatek.com>
-From: Jassi Brar <jassisinghbrar@gmail.com>
-Date: Wed, 3 Jul 2024 14:06:57 -0500
-Message-ID: <CABb+yY2-KWYORo_-ZWafyM0VJnh8-2wefvCpeDsK204qB0TchQ@mail.gmail.com>
-Subject: Re: [PATCH 2/2] mailbox: mtk-cmdq: Move pm_runimte_get and put to
- mbox_chan_ops API
-To: =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
-	=?UTF-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>, 
-	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>, =?UTF-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>, 
-	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>, 
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, 
-	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240703_120712_252405_9F0CD8CC 
-X-CRM114-Status: GOOD (  25.56  )
+X-CRM114-CacheID: sfid-20240703_125853_712338_E23BA938 
+X-CRM114-Status: GOOD (  10.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,87 +84,165 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 3, 2024 at 11:41=E2=80=AFAM Jason-JH Lin (=E6=9E=97=E7=9D=BF=E7=
-=A5=A5)
-<Jason-JH.Lin@mediatek.com> wrote:
->
-> On Thu, 2024-06-27 at 22:40 -0500, Jassi Brar wrote:
-> >
-> > External email : Please do not click links or open attachments until
-> > you have verified the sender or the content.
-> >  On Wed, Jun 26, 2024 at 4:32=E2=80=AFAM Jason-JH Lin (=E6=9E=97=E7=9D=
-=BF=E7=A5=A5)
-> > <Jason-JH.Lin@mediatek.com> wrote:
-> > > >
-> > > > The idea is that
-> > > > 1) If the gap between transfers on a busy channel is ~10ms or
-> > > > more.  And ..
-> > > > 2) The silence on the mailbox channel is multiple of 100ms. And
-> > ...
-> > >
-> > > The mailbox channel would not be always busy and the gap is not
-> > > consistent as well.
-> > > For example, display driver calls mbox_send_message() every ~16ms
-> > while
-> > > UI is updating in 60fps.
-> > > If UI dose not update, display driver won't call
-> > mbox_send_message(),
-> > > so user may not has the gap and the silence like this.
-> > >
-> > From your logs, send_diff only increases from 16ms if the UI is not
-> > updating. Which makes it more prudent to release the channel.
-> >
-> > The user needs the channel for mbox_send_message, while actual power
-> > saving comes from cmdq_runtime_suspend/resume.
-> > So for your target usage pattern, trace mbox_send_message() ,
-> > cmdq_runtime_resume() and cmdq_runtime_suspend() and compare the
-> > timestamped logs with and without this patchset.
-> >
-> [snip]
->
-> I realized that we have 2 cmdq drivers:
-> display uses 10320000.mailbox and imgsys uses 10330000.mailbox
->
-You may disable one to make it easy to capture.
-Make sure your kernel prints have timestamps.
-Over your patchset, apply the following diff and execute your usecase.
-Then share
- $ dmesg | grep Jason
+Convention is DT schemas should define all properties at the top-level
+and not inside of if/then schemas. That minimizes the if/then schemas
+and is more future proof.
 
-diff --git a/drivers/mailbox/mailbox.c b/drivers/mailbox/mailbox.c
-index bafcc7b0c0b8d..90c0620c0ae63 100644
---- a/drivers/mailbox/mailbox.c
-+++ b/drivers/mailbox/mailbox.c
-@@ -284,6 +284,7 @@ int mbox_send_message(struct mbox_chan *chan, void *mss=
-g)
- {
-  int t;
+Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
+---
+v2:
+ - Drop the parts already applied from Serge
+---
+ .../devicetree/bindings/net/mediatek,net.yaml | 28 +++++---
+ .../devicetree/bindings/net/snps,dwmac.yaml   | 67 ++++++++++---------
+ 2 files changed, 52 insertions(+), 43 deletions(-)
 
-+ printk("Jason %s: %p\n", __func__, (void *)chan);
-  if (!chan || !chan->cl)
-  return -EINVAL;
+diff --git a/Documentation/devicetree/bindings/net/mediatek,net.yaml b/Documentation/devicetree/bindings/net/mediatek,net.yaml
+index 3202dc7967c5..686b5c2fae40 100644
+--- a/Documentation/devicetree/bindings/net/mediatek,net.yaml
++++ b/Documentation/devicetree/bindings/net/mediatek,net.yaml
+@@ -68,6 +68,17 @@ properties:
+       Phandle to the syscon node that handles the path from GMAC to
+       PHY variants.
+ 
++  mediatek,pcie-mirror:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description:
++      Phandle to the mediatek pcie-mirror controller.
++
++  mediatek,pctl:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description:
++      Phandle to the syscon node that handles the ports slew rate and
++      driver current.
++
+   mediatek,sgmiisys:
+     $ref: /schemas/types.yaml#/definitions/phandle-array
+     minItems: 1
+@@ -131,15 +142,12 @@ allOf:
+ 
+         mediatek,infracfg: false
+ 
+-        mediatek,pctl:
+-          $ref: /schemas/types.yaml#/definitions/phandle
+-          description:
+-            Phandle to the syscon node that handles the ports slew rate and
+-            driver current.
+-
+         mediatek,wed: false
+ 
+         mediatek,wed-pcie: false
++    else:
++      properties:
++        mediatek,pctl: false
+ 
+   - if:
+       properties:
+@@ -201,12 +209,10 @@ allOf:
+           minItems: 1
+           maxItems: 1
+ 
+-        mediatek,pcie-mirror:
+-          $ref: /schemas/types.yaml#/definitions/phandle
+-          description:
+-            Phandle to the mediatek pcie-mirror controller.
+-
+         mediatek,wed-pcie: false
++    else:
++      properties:
++        mediatek,pcie-mirror: false
+ 
+   - if:
+       properties:
+diff --git a/Documentation/devicetree/bindings/net/snps,dwmac.yaml b/Documentation/devicetree/bindings/net/snps,dwmac.yaml
+index 0ab124324eec..3eb65e63fdae 100644
+--- a/Documentation/devicetree/bindings/net/snps,dwmac.yaml
++++ b/Documentation/devicetree/bindings/net/snps,dwmac.yaml
+@@ -512,6 +512,12 @@ properties:
+     description:
+       Frequency division factor for MDC clock.
+ 
++  snps,tso:
++    $ref: /schemas/types.yaml#/definitions/flag
++    description:
++      Enables the TSO feature otherwise it will be managed by MAC HW capability
++      register.
++
+   mdio:
+     $ref: mdio.yaml#
+     unevaluatedProperties: false
+@@ -595,41 +601,38 @@ allOf:
+   - if:
+       properties:
+         compatible:
+-          contains:
+-            enum:
+-              - allwinner,sun7i-a20-gmac
+-              - allwinner,sun8i-a83t-emac
+-              - allwinner,sun8i-h3-emac
+-              - allwinner,sun8i-r40-gmac
+-              - allwinner,sun8i-v3s-emac
+-              - allwinner,sun50i-a64-emac
+-              - loongson,ls2k-dwmac
+-              - loongson,ls7a-dwmac
+-              - ingenic,jz4775-mac
+-              - ingenic,x1000-mac
+-              - ingenic,x1600-mac
+-              - ingenic,x1830-mac
+-              - ingenic,x2000-mac
+-              - qcom,qcs404-ethqos
+-              - qcom,sa8775p-ethqos
+-              - qcom,sc8280xp-ethqos
+-              - qcom,sm8150-ethqos
+-              - snps,dwmac-4.00
+-              - snps,dwmac-4.10a
+-              - snps,dwmac-4.20a
+-              - snps,dwmac-5.10a
+-              - snps,dwmac-5.20
+-              - snps,dwxgmac
+-              - snps,dwxgmac-2.10
+-              - st,spear600-gmac
++          not:
++            contains:
++              enum:
++                - allwinner,sun7i-a20-gmac
++                - allwinner,sun8i-a83t-emac
++                - allwinner,sun8i-h3-emac
++                - allwinner,sun8i-r40-gmac
++                - allwinner,sun8i-v3s-emac
++                - allwinner,sun50i-a64-emac
++                - loongson,ls2k-dwmac
++                - loongson,ls7a-dwmac
++                - ingenic,jz4775-mac
++                - ingenic,x1000-mac
++                - ingenic,x1600-mac
++                - ingenic,x1830-mac
++                - ingenic,x2000-mac
++                - qcom,qcs404-ethqos
++                - qcom,sa8775p-ethqos
++                - qcom,sc8280xp-ethqos
++                - qcom,sm8150-ethqos
++                - snps,dwmac-4.00
++                - snps,dwmac-4.10a
++                - snps,dwmac-4.20a
++                - snps,dwmac-5.10a
++                - snps,dwmac-5.20
++                - snps,dwxgmac
++                - snps,dwxgmac-2.10
++                - st,spear600-gmac
+ 
+     then:
+       properties:
+-        snps,tso:
+-          $ref: /schemas/types.yaml#/definitions/flag
+-          description:
+-            Enables the TSO feature otherwise it will be managed by
+-            MAC HW capability register.
++        snps,tso: false
+ 
+ additionalProperties: true
+ 
+-- 
+2.43.0
 
-diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c
-b/drivers/mailbox/mtk-cmdq-mailbox.c
-index 02cef3eee35a5..6436e1b22f353 100644
---- a/drivers/mailbox/mtk-cmdq-mailbox.c
-+++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-@@ -317,6 +317,7 @@ static int cmdq_runtime_resume(struct device *dev)
- {
-  struct cmdq *cmdq =3D dev_get_drvdata(dev);
-
-+ printk("Jason %s: %p\n", __func__, (void *)dev);
-  return clk_bulk_enable(cmdq->pdata->gce_num, cmdq->clocks);
- }
-
-@@ -324,6 +325,7 @@ static int cmdq_runtime_suspend(struct device *dev)
- {
-  struct cmdq *cmdq =3D dev_get_drvdata(dev);
-
-+ printk("Jason %s: %p\n", __func__, (void *)dev);
-  clk_bulk_disable(cmdq->pdata->gce_num, cmdq->clocks);
-  return 0;
- }
-
-Thanks
 
