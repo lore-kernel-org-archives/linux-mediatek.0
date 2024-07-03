@@ -4,90 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A110EC2BD09
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jul 2024 11:53:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE958C30653
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jul 2024 12:44:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=75FkGdUKgt+Z9hXJnJSQngHwHaha+5GUkIFIvukvpH4=; b=WRQvK1GyRDYW/hHXGHdWfcCEJM
-	lZwVz6Ejqm8Ja2zqtqq4tLzD04+sSj7xE1UtwTas6YoiQCoDRM/cl/evlvj2865it2TgpkdZcZzWD
-	rg7QzfzbPhNtGd3qO6FmKeOMXB9iuvDgKucuZIXh9sUAjNZj/KuAKW9J9cVgl5KuXFUcpbpc8aLZp
-	bdcrek9ecpKA1PnfShPj6n18QAd9M+L+UrU86EeoCRSqhM/GeMAuNpZZtxKs8OPxDBPsaeGw72JgW
-	nNvAlfArqvBPdF26UGfQUFofAVY6INAse4TB3IoxNZxTn/gGnroXM64nr9dFKgL0q85elFx1IJhJx
-	Ch/DpFjg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OCGoEdd5omc642DKDIVq1MlDV8lFkeoM8Q3cj5Uhtos=; b=MJK+3mXzy9ZYhLS/k8l3VE62Nk
+	vIrsJyPMNiE5twYLx8li/FWkH/l6Ndv0JTwdYM2k5diQm6Gr9To7Ky6IdajyirrwIJ/Sbt/0BJxqy
+	uliphisWE7+D5vfZWXz3LKrBk3p8oem91aY2PAi9L2ykSuUbJRsCGWdj/XMLU81C0GrTSAsX76878
+	KUQrOFCP7NQmFo7bFfdhn63vz3f37LHRB1HxrvfsnM773HHOVpLjGI38ePJQWtsUxFQTgnjP1u2yA
+	KgHJ0HJfrlJBsjiceWSbae3FPS66cRu/hMU+NuCMAW009XaZOO+gkgejnBbk0OPDTG1R2Qijv0fyR
+	/AYzd1WA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sOyYI-0000000A4Rf-0ujU;
-	Wed, 03 Jul 2024 11:53:34 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1sOzLD-0000000ACPT-1N9d;
+	Wed, 03 Jul 2024 12:44:07 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sOyY7-0000000A4PV-291B;
-	Wed, 03 Jul 2024 11:53:25 +0000
-X-UUID: d6236562393211ef9daba96ee3f3cc8c-20240703
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=75FkGdUKgt+Z9hXJnJSQngHwHaha+5GUkIFIvukvpH4=;
-	b=NKaGM0vzZOZyrtlEqFXiDOsmDOeKz0DSeoyHprO9wvNf7oiKmYwsWEwgUh4rFiIdjGwBY2nLltQfXuQqFMrAPTm1DcjbgBfT8XpGHI0Xi4IdSSi78jrV2CHCJJvWXBux11Hkb6xJ4g0B3L4bamYW0NaVONsXTbIx9xqpZlSDPwQ=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.40,REQID:42b08f0c-2029-4214-a280-23b500d16e45,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:ba885a6,CLOUDID:dfffdc44-a117-4f46-a956-71ffeac67bfa,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: d6236562393211ef9daba96ee3f3cc8c-20240703
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
-	(envelope-from <shun-yi.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 688864684; Wed, 03 Jul 2024 04:53:17 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 3 Jul 2024 19:53:13 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 3 Jul 2024 19:53:13 +0800
-From: Shun-yi Wang <shun-yi.wang@mediatek.com>
-To: Bjorn Andersson <andersson@kernel.org>, Mathieu Poirier
-	<mathieu.poirier@linaro.org>
-CC: Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>,
-	<linux-remoteproc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<jason-ch.chen@mediatek.com>, <yaya.chang@mediatek.com>,
-	<teddy.chen@mediatek.com>, <olivia.wen@mediatek.com>, shun-yi.wang
-	<shun-yi.wang@mediatek.com>
-Subject: [PATCH 1/1] remoteproc: mediatek: Support multiple reserved memory regions
-Date: Wed, 3 Jul 2024 19:53:08 +0800
-Message-ID: <20240703115308.17436-2-shun-yi.wang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20240703115308.17436-1-shun-yi.wang@mediatek.com>
-References: <20240703115308.17436-1-shun-yi.wang@mediatek.com>
+	id 1sOzKz-0000000ACM4-1AWF;
+	Wed, 03 Jul 2024 12:43:55 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1720010628;
+	bh=0hT2eBMLYcPqqROd/WvlLs1uHHji+IItZ+Y2HiWD7EM=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=vpyTAyzVvZcXrUQDu55aZ5lWuhGpW4uijv+sbPSaeqbGMwwYeACv6KaoKv44HEczt
+	 tKg9kZqp9at06MUQRiA7+7+nUPD9AwqNmxuswUc68pbX8U/1TiTupFCy71pNaj945s
+	 5GjaYwEd8wespQXynvZIK4dWHkvo1v5Cj0++oeqzzIaQzk++MRJyY3rlhsvrv7PIrE
+	 5fSDUkn02A6mpQlSpq8iYjEkM8xlHXkPzY4eoNwfoZ1yKpt8oTiz/eSz8mftCURTyZ
+	 bfdsV21R+sU1G2WDiCshZ2HM3OuwAYyNJ8UVHU37P3AhNuEZxhYznhSnkePA9o2oEA
+	 RzKGz4GXBe9KQ==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 532DA3782194;
+	Wed,  3 Jul 2024 12:43:48 +0000 (UTC)
+Message-ID: <d6994f56-57dc-4a66-ad7d-1daa04788b22@collabora.com>
+Date: Wed, 3 Jul 2024 14:43:47 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--4.883000-8.000000
-X-TMASE-MatchedRID: Ei0WBMmFdJjleW6zTRN7wAPZZctd3P4B6tEkNTIMeQjEosIs7IJbkCpJ
-	3T68EJKPg/N7mdNXD1c8RLY2vU8PD4/opKiQWjqUdXu122+iJtp6zDxGcFEbChL6MU7t349bxsr
-	6m7RljBHftLFtxOSbQ4Ay6p60ZV62fJ5/bZ6npdjKayT/BQTiGlIc3O7Mj/yCMO7Fp3VK5MEhmu
-	FTYDf84D50unEEcwa99dfwm9WweGYZ3afb2GJc48A9F3ly54VehHNYhwwtQTza6j4tja6OgKCjN
-	WMcfCKKdATQdtPksR+3/JiWOe6GXXSWgQ2GpXdZhztLVWA1eE9DDKa3G4nrLQ==
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--4.883000-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: E45F84B53C2F9FE0E27731A6831DB9EC31E41B727B72E08D8A7DF8CAA7380CC92000:8
-X-MTK: N
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] cpufreq: mediatek: Use dev_err_probe in every error path
+ in probe
+To: Viresh Kumar <viresh.kumar@linaro.org>
+Cc: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ "Rafael J. Wysocki" <rafael@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, kernel@collabora.com,
+ linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20240628-mtk-cpufreq-dvfs-fail-init-err-v1-1-19c55db23011@collabora.com>
+ <20240702055703.obendyy2ykbbutrz@vireshk-i7>
+ <aa6e93bd-aba2-4e4d-bce9-04e818ac25ed@collabora.com>
+ <20240702084307.wwvl5dchxa4frif3@vireshk-i7>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20240702084307.wwvl5dchxa4frif3@vireshk-i7>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240703_045323_589847_841132C7 
-X-CRM114-Status: GOOD (  13.72  )
+X-CRM114-CacheID: sfid-20240703_054353_508652_9CEE77B0 
+X-CRM114-Status: GOOD (  14.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,61 +81,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "shun-yi.wang" <shun-yi.wang@mediatek.com>
+Il 02/07/24 10:43, Viresh Kumar ha scritto:
+> On 02-07-24, 10:26, AngeloGioacchino Del Regno wrote:
+>> Il 02/07/24 07:57, Viresh Kumar ha scritto:
+>>> On 28-06-24, 15:48, Nícolas F. R. A. Prado wrote:
+>>>> diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
+>>>> @@ -629,11 +630,9 @@ static int mtk_cpufreq_probe(struct platform_device *pdev)
+>>>>    	int cpu, ret;
+>>>>    	data = dev_get_platdata(&pdev->dev);
+>>>> -	if (!data) {
+>>>> -		dev_err(&pdev->dev,
+>>>> -			"failed to get mtk cpufreq platform data\n");
+>>>> -		return -ENODEV;
+>>>> -	}
+>>>> +	if (!data)
+>>>> +		return dev_err_probe(&pdev->dev, -ENODEV,
+>>>
+>>> What's the point of calling dev_err_probe() when we know for sure that
+>>> the error isn't EPROBE_DEFER ?
+>>>
+>>
+>> Logging consistency, that's all; the alternative would be to rewrite the dev_err()
+>> messages to be consistent with what dev_err_probe() says, so that'd be
+>> dev_err("error %pe: (message)");
+> 
+> That would be better I guess. There is no point adding inefficient
+> code.
+> 
+>>>> +				     "failed to get mtk cpufreq platform data\n");
+>>>>    	for_each_possible_cpu(cpu) {
+>>>>    		info = mtk_cpu_dvfs_info_lookup(cpu);
+>>>> @@ -643,24 +642,21 @@ static int mtk_cpufreq_probe(struct platform_device *pdev)
+>>>>    		info = devm_kzalloc(&pdev->dev, sizeof(*info), GFP_KERNEL);
+>>>>    		if (!info) {
+>>>>    			ret = -ENOMEM;
+>>>> +			dev_err_probe(&pdev->dev, ret, "Failed to allocate dvfs_info\n");
+>>>
+>>
+>> By the way, forgot to point that out in my former review: to make it shorter,
+>> instead of "ret = -ENOMEM; dev_err_probe()" you can write it as...
+>>
+>> ret = dev_err_probe(&pdev->dev, -ENOMEM, ".... message");
+> 
+> `ret` will be  be used I guess with the `goto` statement to return
+> error and so the change was like this.
+> 
 
-SCP supports multiple reserved memory regions, intended for
-specific hardwards.
+Yes it will, but `ret = dev_err_probe(dev, -ENOMEM, "...")` is still kind of a
+shortcut, as that will effectively assign -ENOMEM to ret, so that the error is
+still returned like before ;-)
 
-Signed-off-by: shun-yi.wang <shun-yi.wang@mediatek.com>
----
- drivers/remoteproc/mtk_scp.c | 25 +++++++++++++++++--------
- 1 file changed, 17 insertions(+), 8 deletions(-)
-
-diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-index 9ecd5ea04b5f3..1902826cea0af 100644
---- a/drivers/remoteproc/mtk_scp.c
-+++ b/drivers/remoteproc/mtk_scp.c
-@@ -1006,22 +1006,31 @@ EXPORT_SYMBOL_GPL(scp_mapping_dm_addr);
- 
- static int scp_map_memory_region(struct mtk_scp *scp)
- {
--	int ret;
-+	int ret, i, err;
- 	const struct mtk_scp_sizes_data *scp_sizes;
-+	struct device_node *node = scp->dev->of_node;
-+	struct of_phandle_iterator it;
-+
-+	i = 0;
-+	of_for_each_phandle(&it, err, node, "memory-region", NULL, 0) {
-+		ret = of_reserved_mem_device_init_by_idx(scp->dev, node, i);
-+
-+		if (ret) {
-+			dev_err(scp->dev, "failed to assign memory-region: %s\n",
-+				it.node->name);
-+			of_node_put(it.node);
-+			return -ENOMEM;
-+		}
- 
--	ret = of_reserved_mem_device_init(scp->dev);
-+		i++;
-+	}
- 
- 	/* reserved memory is optional. */
--	if (ret == -ENODEV) {
-+	if (!i) {
- 		dev_info(scp->dev, "skipping reserved memory initialization.");
- 		return 0;
- 	}
- 
--	if (ret) {
--		dev_err(scp->dev, "failed to assign memory-region: %d\n", ret);
--		return -ENOMEM;
--	}
--
- 	/* Reserved SCP code size */
- 	scp_sizes = scp->data->scp_sizes;
- 	scp->cpu_addr = dma_alloc_coherent(scp->dev, scp_sizes->max_dram_size,
--- 
-2.18.0
-
+Cheers
 
