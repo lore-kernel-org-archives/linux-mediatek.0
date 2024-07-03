@@ -4,60 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB533C30653
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jul 2024 10:21:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C966C2BD09
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Jul 2024 10:43:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=A4X3RVWF4rjn4rp6pZS1mnQHtxJgZ3taz/52O8AUygM=; b=J3psFy3+zvlNTdJxgVzpRW5rAz
-	PT2CgptYFUladmMfacS80zsaNDYQMOChuhi9FXc8dR7KFqTQ1ER5zgg5cO9QgvDq2yFbU2zxdWyRZ
-	GTiWZlbOdaNswxAfedPsPFjxsxMpPj4ddPoowRC3Ab49G1TA2RIGqoecC6iPr9KCJYoJGYtvrs2yN
-	n5BbqzaqjksAJKgW7Ah2p536Hfl9/Arc9cW+8tvUk8Gc6J58ZLiPq8Y9Q8B7+fPYYnpgzp0mpLQ+b
-	rA6f/4XLjFzJmRjQDKjjwFp3FW3oEhHQLSO/92j6dYjrDwykGIMPXLptcH2lvJCZorF0WjBhf06c4
-	P7ToD1Ug==;
+	bh=iQeVTtzgmCg1R84emw3yEtPy2VOguvtZOSyCu6KYw3k=; b=O/o+nXbIkOvaNFWTS4iipyrYR8
+	0meh6EwZUi7k7ZqrF+taenGodqfcUm2npajHscmzThlj1qnQuUo1W7uJI1azJ9yQg+1Yka0XU3jbk
+	3LMOTce9KGkHcx1HloMfvhv+FisboGsUcHjbfejwDTvgQ2pvBwJnwMsO79t5grj8u/Xfkq86F6BNn
+	pDWID0YOQeusDvIxtBJ7PckgzEp2u8sBARx6gxYkuxwCCwoub31BpddiJos0rhML3HIOc7T5VzsID
+	fCs5xQA7l5TuLFm4ldVv3g7n7OJzvzA2Pw9DnOcW38EkqNBTW6Z/MmIxEtk2KOdXgXDzJbbhqFFeV
+	c0WFLxIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sOx7H-00000009jUD-3aEL;
-	Wed, 03 Jul 2024 10:21:35 +0000
-Received: from smtpbgau1.qq.com ([54.206.16.166])
+	id 1sOxSW-00000009rFk-3M97;
+	Wed, 03 Jul 2024 10:43:32 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sOx73-00000009jLq-18KJ;
-	Wed, 03 Jul 2024 10:21:23 +0000
-X-QQ-mid: bizesmtpsz4t1720002040t6vk97a
-X-QQ-Originating-IP: n6zjRwGAKCMFCZ6mbmsgCHh7bIUV/Bm23uhF1VR3xxQ=
-Received: from localhost.localdomain ( [113.57.152.160])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Wed, 03 Jul 2024 18:20:38 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 1
-X-BIZMAIL-ID: 3367246597831120100
-From: WangYuli <wangyuli@uniontech.com>
-To: kuba@kernel.org,
-	kvalo@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	guanwentao@uniontech.com,
-	sergio.it.consultant@gmail.com
-Cc: linux-wireless@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	WangYuli <wangyuli@uniontech.com>
-Subject: [PATCH] drivers/mediatek: Fix some mt7601u vendor could not connect
-Date: Wed,  3 Jul 2024 18:20:31 +0800
-Message-ID: <E552B9CD8228F9A9+20240703102031.74932-1-wangyuli@uniontech.com>
-X-Mailer: git-send-email 2.43.4
+	id 1sOxSJ-00000009rBR-1VRQ;
+	Wed, 03 Jul 2024 10:43:20 +0000
+X-UUID: 0bf6c2e2392911efb2966dae1f787272-20240703
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=iQeVTtzgmCg1R84emw3yEtPy2VOguvtZOSyCu6KYw3k=;
+	b=jlRa9r4LK6NO99wen73Bb47Bc6UmIr3rg1havqcFyP+22nVlO3nxtRpef9jHSllAQZe7kriAKJMnAoZVn5TlwQoCzimXBQoyH20SRS6F/oktefvq6ofxYYObcShJheMCFk2thJf4tdgxV7wlsF/VaNH/qTRexMHlBtP1ohEppgI=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.40,REQID:5d60d012-05b7-4783-97bf-3dad58db964a,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:ba885a6,CLOUDID:3079dc44-a117-4f46-a956-71ffeac67bfa,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 0bf6c2e2392911efb2966dae1f787272-20240703
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
+	(envelope-from <jason-jh.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 362844833; Wed, 03 Jul 2024 03:43:12 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 3 Jul 2024 18:33:09 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 3 Jul 2024 18:33:09 +0800
+From: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	"Jason-JH . Lin" <jason-jh.lin@mediatek.com>, Singo Chang
+	<singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Jeffrey Kardatzke
+	<jkardatzke@google.com>
+Subject: [PATCH] drm/mediatek: Fix missing configuration flags in mtk_crtc_ddp_config()
+Date: Wed, 3 Jul 2024 18:33:08 +0800
+Message-ID: <20240703103308.10198-1-jason-jh.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-QQ-SENDSIZE: 520
-Feedback-ID: bizesmtpsz:uniontech.com:qybglogicsvrgz:qybglogicsvrgz8a-1
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240703_032121_758315_113BBAA0 
-X-CRM114-Status: UNSURE (   8.66  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240703_034319_544120_422E06EB 
+X-CRM114-Status: GOOD (  13.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,57 +86,83 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Some mt7601 devices cannot establish a connection properly.
-This patch fixes the issue.
-We do not know why, but it just works.
+In mtk_crtc_ddp_config(), mtk_crtc will use some configuration flags to
+generate instructions to cmdq_handle, such as:
+  state->pending_config
+  mtk_crtc->pending_planes
+  plane_state->pending.config
+  mtk_crtc->pending_async_planes
+  plane_state->pending.async_config
 
-Link: https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1716301/comments/52
-Link: https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1716301/comments/53
-Link: https://github.com/kuba-moo/mt7601u/issues/64
-Link: https://www.mediatek.com/products/broadband-wifi/mt7601u
-Signed-off-by: Wentao Guan <guanwentao@uniontech.com>
-Signed-off-by: WangYuli <wangyuli@uniontech.com>
+These configuration flags may be set to false when a GCE IRQ comes calling
+ddp_cmdq_cb(). This may result in missing prepare instructions,
+especially if mtk_crtc_update_config() with the flase need_vblank (no need
+to wait for vblank) cases.
+
+Therefore, use the mtk_crtc->config_updating flag set at the beginning of
+mtk_crtc_update_config() to ensure that these configuration flags won't be
+changed when the mtk_crtc_ddp_config() is preparing instructions.
+
+Fixes: 7f82d9c43879 ("drm/mediatek: Clear pending flag when cmdq packet is done")
+Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt7601u/mcu.c | 1 -
- drivers/net/wireless/mediatek/mt7601u/phy.c | 5 -----
- 2 files changed, 6 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_crtc.c | 34 +++++++++++++++--------------
+ 1 file changed, 18 insertions(+), 16 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt7601u/mcu.c b/drivers/net/wireless/mediatek/mt7601u/mcu.c
-index 1b5cc271a9e1..15751d11b4dc 100644
---- a/drivers/net/wireless/mediatek/mt7601u/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt7601u/mcu.c
-@@ -446,7 +446,6 @@ static int mt7601u_load_firmware(struct mt7601u_dev *dev)
- 	mt7601u_wr(dev, 0x94c, 0);
- 	mt7601u_wr(dev, MT_FCE_PSE_CTRL, 0);
+diff --git a/drivers/gpu/drm/mediatek/mtk_crtc.c b/drivers/gpu/drm/mediatek/mtk_crtc.c
+index 6f34f573e127..bc3bf0c3edd9 100644
+--- a/drivers/gpu/drm/mediatek/mtk_crtc.c
++++ b/drivers/gpu/drm/mediatek/mtk_crtc.c
+@@ -314,30 +314,32 @@ static void ddp_cmdq_cb(struct mbox_client *cl, void *mssg)
  
--	mt7601u_vendor_reset(dev);
- 	msleep(5);
+ 	state = to_mtk_crtc_state(mtk_crtc->base.state);
  
- 	mt7601u_wr(dev, 0xa44, 0);
-diff --git a/drivers/net/wireless/mediatek/mt7601u/phy.c b/drivers/net/wireless/mediatek/mt7601u/phy.c
-index d4cd2215aba9..f3c14a1552df 100644
---- a/drivers/net/wireless/mediatek/mt7601u/phy.c
-+++ b/drivers/net/wireless/mediatek/mt7601u/phy.c
-@@ -589,8 +589,6 @@ void mt7601u_phy_recalibrate_after_assoc(struct mt7601u_dev *dev)
- 	if (test_bit(MT7601U_STATE_REMOVED, &dev->state))
- 		return;
+-	state->pending_config = false;
++	if (!mtk_crtc->config_updating) {
++		state->pending_config = false;
  
--	mt7601u_mcu_calibrate(dev, MCU_CAL_DPD, dev->curr_temp);
--
- 	mt7601u_rxdc_cal(dev);
- }
+-	if (mtk_crtc->pending_planes) {
+-		for (i = 0; i < mtk_crtc->layer_nr; i++) {
+-			struct drm_plane *plane = &mtk_crtc->planes[i];
+-			struct mtk_plane_state *plane_state;
++		if (mtk_crtc->pending_planes) {
++			for (i = 0; i < mtk_crtc->layer_nr; i++) {
++				struct drm_plane *plane = &mtk_crtc->planes[i];
++				struct mtk_plane_state *plane_state;
  
-@@ -1160,9 +1158,6 @@ static int mt7601u_init_cal(struct mt7601u_dev *dev)
- 	if (ret)
- 		return ret;
- 	ret = mt7601u_mcu_calibrate(dev, MCU_CAL_RXIQ, 0);
--	if (ret)
--		return ret;
--	ret = mt7601u_mcu_calibrate(dev, MCU_CAL_DPD, dev->dpd_temp);
- 	if (ret)
- 		return ret;
+-			plane_state = to_mtk_plane_state(plane->state);
++				plane_state = to_mtk_plane_state(plane->state);
  
+-			plane_state->pending.config = false;
++				plane_state->pending.config = false;
++			}
++			mtk_crtc->pending_planes = false;
+ 		}
+-		mtk_crtc->pending_planes = false;
+-	}
+ 
+-	if (mtk_crtc->pending_async_planes) {
+-		for (i = 0; i < mtk_crtc->layer_nr; i++) {
+-			struct drm_plane *plane = &mtk_crtc->planes[i];
+-			struct mtk_plane_state *plane_state;
++		if (mtk_crtc->pending_async_planes) {
++			for (i = 0; i < mtk_crtc->layer_nr; i++) {
++				struct drm_plane *plane = &mtk_crtc->planes[i];
++				struct mtk_plane_state *plane_state;
+ 
+-			plane_state = to_mtk_plane_state(plane->state);
++				plane_state = to_mtk_plane_state(plane->state);
+ 
+-			plane_state->pending.async_config = false;
++				plane_state->pending.async_config = false;
++			}
++			mtk_crtc->pending_async_planes = false;
+ 		}
+-		mtk_crtc->pending_async_planes = false;
+ 	}
+ 
+ 	mtk_crtc->cmdq_vblank_cnt = 0;
 -- 
-2.43.4
+2.18.0
 
 
