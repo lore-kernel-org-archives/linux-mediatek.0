@@ -4,183 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1421C30653
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jul 2024 11:56:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53DBBC30653
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jul 2024 12:02:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9Nj8ylJiAK4PaC05sjG/G9aUfCyDoaMH5FJUWNxbC9E=; b=BYf2bSwISNhCLYWaMTjM0fgJfk
-	1D9LvRdX0UXWOidJpyGb0yahMXtsTnfdWEMoih0WTamJd7MiosUQLkLvi6PVCrhz90PCV6fT3KYKO
-	NduZxlxnJ5c1FaQKdY9T58CcBmojlkpWW+ifyvXlCa4Q6nuZHG3uaHc94L1ZnK6nzSBPIXVfDjVWa
-	5HorQIWEaveikaaO1rOI+S+hZHD9vimaBeePWoly+mgNKftjZUfp6DNX+/ZMZVu9Kt40vlZx+sgAx
-	ol4VHMXxa736+vTydGJ6Jbm98M3Glx4FgAyidzSWZrS8K6ThF4Khzd7DOeybDbZscXO78JzlJGUWU
-	wLRQuC2Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=pTigXYFeY2NP/b63foLCDFuNciH9946ncIu95tA/M4A=; b=p/r363NmWcVIGYwtXybRCfi1OS
+	TdSE5SH9+T7/1bGPWhTV+mRy1YPjUtGwwuSDXKEv+qANO2x8lW4lXwl12I11eqVIX8qKCfSdJ+Mf2
+	dSUJWBCWo63e03S8aMjv2FS+N9qbHNBlhF94NEaAIRfKd38vCs05xIEvsG0JFBfUbWE6Pkw8yzOek
+	Ndk/QPUIfxtsG9mXKDY4PqTUQRr7EmFFugSgYd5G3+qXV6UspQdLg0gT2d40/yZVypJY+dmaCOn9g
+	2ebGpqBLf6l5n0IxNWbO42FJZFjfqy6eslHAWTCFF5M67BL4o9iBo84uFUol0HtsA21cvlxK8FSBD
+	55AacD9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPL50-0000000D54O-1FJQ;
-	Thu, 04 Jul 2024 11:56:50 +0000
-Received: from mail-dm6nam10on20602.outbound.protection.outlook.com ([2a01:111:f400:7e88::602] helo=NAM10-DM6-obe.outbound.protection.outlook.com)
+	id 1sPLAa-0000000D5Xn-2mSi;
+	Thu, 04 Jul 2024 12:02:36 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPL4m-0000000D537-3o0s;
-	Thu, 04 Jul 2024 11:56:38 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=jSclwcWa+yOL+Y7f0spuxT6G6ffqWYpJ5dz1bOaDvNxJd/vmL3kPp81tWNx5U7IuOuLR4zi0Zi3ps1E3d/vVWRQq/m5Ir9UcniZSujFGdmvMYPH6CVIQe36p/4xvHHTGifEc7OoXRRwDkucFlGS4FXvCroY/MPKroo4sw1hp3rZwij6Oj/OidCNH/WGqEklWsntPkZ5/jmP77QlLluR2k0AY0pcdKGbEGGXGRsUp+HP/toIxn1ISxMhjzgpM5wpfke27d0Mo515txg22jtyaBPeSSF4bUuk+GTcS6YNWjK/jk5pDnt46VIri3xYfIKpfg8aI4t6Vhk2AePOfsf+SLw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=9Nj8ylJiAK4PaC05sjG/G9aUfCyDoaMH5FJUWNxbC9E=;
- b=Fk0IH1V8QXV+LQus2q/t7vSKPkK72+ApXlcw5nwq8ivX12r5hecorDyxYokZEYFaZ1AYN/IvvCev6Me/IDq3zNsLR8Nx0StWMJkkxDu1ouVFPtx5MVa3smxDufMbm/TMToSCdFLVtnITZY/5A0obVrwapvxXSlTimoGngHrFHKwbriGy2AvBMPpS8jYCR4kJqDkLfhWmAnG6YadLjiRnC/QSPy1uZhtRrV3/G628zlpx8os5F0X4I/W+3Cv6rE/cwYrkH8XOdxMFzYw3q6jvd1YSvxa3qzZjGdajMmfll8OEhWmltplU59S34dTGmo0yR/P8W068NpmEqLTMorBPXA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
- header.d=amd.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=9Nj8ylJiAK4PaC05sjG/G9aUfCyDoaMH5FJUWNxbC9E=;
- b=kpWo+L2TJh6yg5jtsSiZjJOem9P1wVZqlonZuu7TI4hee+jslJFts1FZC3Pac8bsUxzn90zDWaoTblWPPrfPgQ/jrz0AEIcutZTc4ppjmXDSLGCvM1IvQI+TZA0KAK6cv9+kkuNN+TDNElMhzyQEv8QOTVXs5YGrwaZ272CKTnc=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=amd.com;
-Received: from MN0PR12MB6101.namprd12.prod.outlook.com (2603:10b6:208:3cb::10)
- by DM4PR12MB8523.namprd12.prod.outlook.com (2603:10b6:8:18e::13) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7741.26; Thu, 4 Jul
- 2024 11:56:29 +0000
-Received: from MN0PR12MB6101.namprd12.prod.outlook.com
- ([fe80::37ee:a763:6d04:81ca]) by MN0PR12MB6101.namprd12.prod.outlook.com
- ([fe80::37ee:a763:6d04:81ca%6]) with mapi id 15.20.7719.029; Thu, 4 Jul 2024
- 11:56:29 +0000
-Message-ID: <11b57ff8-91a9-42d8-acbb-ea618157d655@amd.com>
-Date: Thu, 4 Jul 2024 06:56:25 -0500
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 4/4] cpufreq: Make cpufreq_driver->exit() return void
-To: Viresh Kumar <viresh.kumar@linaro.org>,
- "Rafael J. Wysocki" <rafael@kernel.org>, Huang Rui <ray.huang@amd.com>,
- "Gautham R. Shenoy" <gautham.shenoy@amd.com>, Perry Yuan
- <perry.yuan@amd.com>, Hector Martin <marcan@marcan.st>,
- Sven Peter <sven@svenpeter.dev>, Alyssa Rosenzweig <alyssa@rosenzweig.io>,
- Markus Mayer <mmayer@broadcom.com>,
- Broadcom internal kernel review list
- <bcm-kernel-feedback-list@broadcom.com>,
- Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>,
- Len Brown <lenb@kernel.org>, Kevin Hilman <khilman@kernel.org>,
- Michael Ellerman <mpe@ellerman.id.au>, Nicholas Piggin <npiggin@gmail.com>,
- Christophe Leroy <christophe.leroy@csgroup.eu>,
- "Naveen N. Rao" <naveen.n.rao@linux.ibm.com>,
- Sudeep Holla <sudeep.holla@arm.com>,
- Cristian Marussi <cristian.marussi@arm.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-pm@vger.kernel.org, Vincent Guittot <vincent.guittot@linaro.org>,
- Lizhe <sensor1010@163.com>, linux-kernel@vger.kernel.org,
- asahi@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
- linux-omap@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
- linux-arm-msm@vger.kernel.org, linux-tegra@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-References: <cover.1720075640.git.viresh.kumar@linaro.org>
- <3f73fda736818128558b61ad5fe2bed5dce3ddc4.1720075640.git.viresh.kumar@linaro.org>
-Content-Language: en-US
-From: Mario Limonciello <mario.limonciello@amd.com>
-In-Reply-To: <3f73fda736818128558b61ad5fe2bed5dce3ddc4.1720075640.git.viresh.kumar@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: SA0PR11CA0087.namprd11.prod.outlook.com
- (2603:10b6:806:d2::32) To MN0PR12MB6101.namprd12.prod.outlook.com
- (2603:10b6:208:3cb::10)
+	id 1sPLAM-0000000D5Vx-0nzg;
+	Thu, 04 Jul 2024 12:02:23 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id A3805626B0;
+	Thu,  4 Jul 2024 12:02:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0A194C4AF11;
+	Thu,  4 Jul 2024 12:02:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1720094540;
+	bh=Sy6IDYHgPf8XKe3WtHb2MUaaZ8EMExF1AN4pG9iz1S8=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=iNCv11qt9ePmqAuMW8uUfuzNzF6tsSDb6lAXurGr9AJmo8z8m90621twv6pX8WwUH
+	 Ve+1dTdxgRe79dgI2nUWm+esEeb+bXoNgN7s2je7hDrTuMuwhQZ3N+CzuLTcJGoz9J
+	 Rnws+IMhP7Sb0PXo/W1nwmwqr6k9L5mb0frp0FfYRfie2uuB1zmITD6g2wMk4gE46e
+	 L7W3Y8faWoENSgK3lRPBS+GJNE7NpnJ017UioXGVkgjebrpXm+h92NGOWAAWDIystH
+	 Du7G8n0R+6mgfoM6vpHVeWjCzgzrDNr6bZwR+2uH6eHNoPt/RcNi53Yr6dOgHRKD2l
+	 DdKIJOC2JLS7w==
+Received: by mail-oo1-f49.google.com with SMTP id 006d021491bc7-5c4101f2388so13192eaf.0;
+        Thu, 04 Jul 2024 05:02:19 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCX/vsjq1MPt02pYigsvNy9gYzDfrRFwbSIzXPDw4cDEz0I6glHUdyu9O8k6Ach7y+CGzfOdKO4PTWAWxkXFnPmWUpgPYbmiLaDqWAM+NK61aFophsENmcAlzUKqc5NmG7xZ4uM9HVnLfwimInqwI+Ee215YvbVqBOQ=
+X-Gm-Message-State: AOJu0YzjILXeZNtc6ZZTyv3wVAtovGZTlHnchJLxTyjKzDZ1r1OpqfpM
+	vQFi7nSoeRYNum8gsK7ZMxze3WaOKjR8hxkxV9jhF+Huk3nqITxvaey3MnbCTLlCgAilTSaQWxL
+	W1wkPRp5sRTBgqLOZkF3kw91Oku8=
+X-Google-Smtp-Source: AGHT+IEfXE0YhC0CadkHrUUKROvpyKyoONSuJxCmj7JBStJTkzTzhM7c6J8p1w9Caa82QdMwYxDdg2XwqcNfaJBeOS0=
+X-Received: by 2002:a05:6820:2c07:b0:5c4:5cbf:a255 with SMTP id
+ 006d021491bc7-5c646a9379emr1242627eaf.0.1720094539244; Thu, 04 Jul 2024
+ 05:02:19 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: MN0PR12MB6101:EE_|DM4PR12MB8523:EE_
-X-MS-Office365-Filtering-Correlation-Id: 1d45e0ab-be42-48ff-49de-08dc9c205719
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|366016|1800799024|921020;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?UzYvTUFQWDhuaEtwOG9lRnB5UEl4UHowaVNNZzR6UlQwaHpUWkluNkE0RVZI?=
- =?utf-8?B?TFRFMlp1c2NHaXRBZy96UzlId1VsYWV1M1hqRlRSdC8rS01JSHhEYlJWTGd5?=
- =?utf-8?B?L1FDYUtCYmkyR3YrQmJEZ1F2VnNRQjVIWStnaDF4dWthMkluR2EycGZYVnFX?=
- =?utf-8?B?MFA4OTFyZms2WVB6NnhkdWdsOTJiWWMzUDhRQ3JRcG4xKzRxZjdjQUdrS0lG?=
- =?utf-8?B?RlR0Rzd6aER0TExmWVI3aDlVWTljblF6T3hBZ1kyT1FnOG92UHF1bkR2eGVy?=
- =?utf-8?B?VjJGSHlrRFFLSHh4T0RzTnZpNCtIVW8rQWl5M0JGTTYyNmc3SHVtUkFDUVBE?=
- =?utf-8?B?b2k3QWJlZGxPa0hoTVJVbkRNNjN5RlV1RDBCNmxYUkZoOUlmb1JGS2xLUlBS?=
- =?utf-8?B?Q0dmL2hzRWxRaXRJWXhpOXZEeEgwbDVRakMzeEE1WEpsUVRENmtvenBPM2Y1?=
- =?utf-8?B?VjVqQWU2ZkZveEZUOUxvMHJSTGVtS0FmMlZEcVB6YXE3YjNIdHEyY1dLL1dQ?=
- =?utf-8?B?OW9yWHlZTHlqcUdnU3B6UlN5bWxzZVFRZzV4dG9GY3VCc2RWUGU0bUNGNndk?=
- =?utf-8?B?Z0pORVhxS044STQrUTRxMEtteXMySkhTcTFEYmw1LzZrRU53clgxR3g1VEZP?=
- =?utf-8?B?ODRucjlHWXg5azAySXVZV1l5VUMzOG41akhtb3A4eWN4cDRMSlRxclBPOXZt?=
- =?utf-8?B?R1ZhYVlQVFhGcjlUc24zU2plUnhWekh3RVdKYU1neDBmZ0pWRTkzOTJhY2da?=
- =?utf-8?B?VzlVNDBjUUpoWERYZmpDRmFuWTV3bzhpVG5DOCswTjFuUmZEMjd5TGFQdFhJ?=
- =?utf-8?B?S0FWREpDRXNzanF0S0JpcjFoU3BJVlpySCtEQzk1eHhLb3FBaGxkMloyU093?=
- =?utf-8?B?N2FpM0FFa0NBU3NpeUFtUCtod1RWNDlZREVOY01nNU9qVm9VYmR6NTlBa1lH?=
- =?utf-8?B?RTFPRENNWXNodDVJcTl0VjU3dWdwR091c1VKY1AzRGcxM2hIWWh3dHk1Nkpp?=
- =?utf-8?B?ODJBMHlVOGNiZ1plL0pENmd3VkJPa1ZUMjlFa3hkeVl3VWVUejF5cUlYR1cz?=
- =?utf-8?B?aUsvOWRjSUYzdUNhWnQvZVluN0lYaXkyQ3pQNG5vbU1ydFRSam5QbTdtRitB?=
- =?utf-8?B?ak5uU1dlazEyQ2trL3NMMWdZSTFGaTZLT3hCNnU2R1RzRWtSbXFNT3RCWkYy?=
- =?utf-8?B?bjNrMS9oYldXeDd1RVBrQWNkTSs5K3pLRGUxckp1Q05KNWNZeklKRERFOVJi?=
- =?utf-8?B?M3dZUFM3YXVOK1JDWTlEckI2WTNPZ3J2NTNwbUYwR2VwUU5Fckt3MUJVNGJp?=
- =?utf-8?B?UWRBdWRTSUNtOFFrTlRsczcrRGU5TlBzNEEvSHh6NHhQWjZDSjE2U3puNDA0?=
- =?utf-8?B?TzRWc25CU2lZcHRlTVhrZmhPS25TVStCenZVUUxqdHZIZ3NVS2tKbmh6TXJk?=
- =?utf-8?B?U2g2OEg3Mk1UdEtVMHEwTG8reHNOYzRraE5kRVJrWk1waCtncU04WnNSZ1pn?=
- =?utf-8?B?SDVHby9wejNlV2F4NFU0anhVdkV5cDhQbDFGQmtqQ09sVmFFTHdLOWU1K21R?=
- =?utf-8?B?NloyWTcrRFFDcUVUalQzNjVldVFxZUVBcFcyRlYrbzU2SUlrNjFmaGZQMVZp?=
- =?utf-8?B?cHFSQ1JqLzZnODQ0V0V6L3V0bW5zOVBVa0lHVWhGTWZ5YWJEYnJyY2hsNVE2?=
- =?utf-8?B?NzdXa3JlNGRoWm5qbi9hdUhiL215NjdSQ3p3cWs3MGkwVExyNXV5dEhFaEJO?=
- =?utf-8?B?djAyUDBwcURGTVdPSHdxb3VEQXRxTlN2R1RGMHpDODg3TEFIVmhTZDkrRi9n?=
- =?utf-8?B?eDRaalc2cVFlbDR0Sjk2UHpMR082MWJpRnQwWUdnTzN1TUtWWDc4VWt3MlEw?=
- =?utf-8?Q?l15JoDHqahDdw?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MN0PR12MB6101.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(7416014)(366016)(1800799024)(921020);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?Z2p1ckFwVEsvcE12QUFTMERCS3JoYjY1K0lkWEErcDIzS2tVTDdQY3VnbmU1?=
- =?utf-8?B?cEFIcDdoV3pPVVZncUdvdXNKaHRicWxxR0tQdkVOdTZUczJJK1k1UDR4OW9K?=
- =?utf-8?B?RGIrakFLMUhhRWoyNEJ3UGRic0FVeHF3L2FpdlpJampQcHNXV1gwWW1lT0Jm?=
- =?utf-8?B?SnlocExsRzVnN2FINFdrM2tOV2VTT2oyYUdNSjZvT1c5d2JrNEFvdG1jSlRs?=
- =?utf-8?B?elB3UG12bnA1S0VTdElEcFovekdLbHhmZWdqMFZ5R2MzOUh6SXcrbEtWbDh4?=
- =?utf-8?B?SkZiRVVLRTU2TDQ4d3pZaVBmVTl5ZHI2eW9EaDhKU044aGoySzZSeVF4WXAw?=
- =?utf-8?B?WisvWG5RaHFtcGFTTjJDTnlhVCswQU1OUk8rQTllU2srWVJwZUZRQzgyUm83?=
- =?utf-8?B?TkgxM2hjckdXZGRWRXdNRTZxV2J0U0owU0R4bHhNTkE0MzVwZ0YzY3o1WU9L?=
- =?utf-8?B?U0R5eFAxaVFOV0NKc3QwUEMrNGlPRk9kZVZHMXhuYlZZdnV3TTlOKzM3aFFx?=
- =?utf-8?B?bnVabUFFWlRDZWpMZDhHU1R5RjdGdUQ4Tlo1RmFZSzRaMjZsbFBCY0kxbVdT?=
- =?utf-8?B?YUVBQ2NuQWRQZXQ5bVhlU2hlQkdXclBMdklrUmRlS05KRng5dUVlUjJJNFdD?=
- =?utf-8?B?U0Z0VHBnU1hzV2N2STJWcGp6U0VVa3BwdDVhbHJjQ1pncFI3MVRXaG5JWFBv?=
- =?utf-8?B?bmVXd2NEczhjM1N3TW5kV3NDdHdBZzhOV1hsQTdCVFZuWjlTbUJza0cvYlJq?=
- =?utf-8?B?QitLSjNnVWloU0JzTURnZE9LakFuMFNYdG1kNzUxdXRReGFOSXBoZjZpSUZ6?=
- =?utf-8?B?NU1JMnBaL1puUTFtQk52MXVPSEEyOHd2RnRaR21EcFE4RmphSDNRZWc5RFVU?=
- =?utf-8?B?SFhDSGVMNjdCY2IrVDVHOVAzbEFJOEgvN1RLMU5FU1daeDJ1MUpxMmtlbktz?=
- =?utf-8?B?Rmh0VlV1Vllqd3J5ZEt3aDdES2pHUjRtTzBRN3RUKzhoV3pySXcrMTBIU3Q0?=
- =?utf-8?B?bjVQNVc4SWxoaS96MUlqVkVONk5zNTM3OXhVU2J6bTB1R1JxVnNsTWNSSSs4?=
- =?utf-8?B?cDRCUE9LQXp1T21pcHZqbVM4M2VyV1EvamltLzBhdEhPRWxKQzN6Yi9memNH?=
- =?utf-8?B?S1E3eUhuWEpwamdnb2VyNVRBcGMyUkJ3SXpjdm1yaEZxV1QvVVRLRTFEb1py?=
- =?utf-8?B?UmRRSnJhdE9TcDZROXp4MzkrUHpybTE0VUZ3eUlmWS96eEQwNG1QOTVEcHRy?=
- =?utf-8?B?Uk03RWNPQWc0Y2tyL0VScjk0b2FyMDZ6NHZqSzJVSVRXUkRFOXhTSUR5bFFa?=
- =?utf-8?B?ZDV0MkN6ekh3WnVkcllXOXFoZVFpc2lnRHpCemJtbmxqMDAwN00wWnIxL0Y0?=
- =?utf-8?B?c04zNFRpSmhmUWRBVHlVODJMalpTR2NkYXRSMzhIYkQyQTN5YXlrYTdQSlNw?=
- =?utf-8?B?TkFXazVKU2NPVDVNaWtSZ2VmcXZxeERBRVJsL3FFdzNwQ3QyWVo3Nkc4Uklw?=
- =?utf-8?B?M3FhWnZDOFNxbmJwNEN3TldOdjVTSlZoLzZIQVdkbnRydkRlc0JhWTZyb3Y2?=
- =?utf-8?B?WmJaVVBDb2lFQ1ZJMVVlTVlBNnpkVHQzaHlCdyt2SDhiK2JNS1BST0JpM29B?=
- =?utf-8?B?VFRmVUNtT3lOaThvMXdwYUZuclplclVwVU9sYng5ZGFGT29uZWlad2k1VHdI?=
- =?utf-8?B?cW9jM3NnREQ1S2dqRDllSXFmTVU3R3M5TUp6TzNTS0QweVZRK2wxbDlUbjly?=
- =?utf-8?B?bGpXSGdPcjhMOEZQNDJvTS9uQ2NkRXY5WWo1dEcvRzZ2dnVaTHkybVFxcWVZ?=
- =?utf-8?B?RVRSZ0FPNk4wMU9ZenJtU0VNT1M2WWpqQ0d0OTN5eUZBU1pueFVLMnlqWE9k?=
- =?utf-8?B?K3hYR0ZJTjV5SkJFQWhXYm9PNURwZ1hiLzB3b09sNjF3cFFieEdoQzVQS0Zh?=
- =?utf-8?B?WFcvcVErdTNrZmp6K0xnN0tLb0JwNktld3E2L0JQdzhIQ0dONnZvNHViV1lS?=
- =?utf-8?B?YklOT3NvUUEzQm4vWi9hcGJ5c2t5YmkraE9Uc3I2VjhMMzJ3clRUQ2dBQTZG?=
- =?utf-8?B?OWVHYzhZTTNlZ3pyODhlb0l1Z3VqVFVPYVV1UFk3SkhiVGJmc1BLVEhTcHdQ?=
- =?utf-8?Q?FYxajcg53TcY7zbB42KbjizF/?=
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 1d45e0ab-be42-48ff-49de-08dc9c205719
-X-MS-Exchange-CrossTenant-AuthSource: MN0PR12MB6101.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Jul 2024 11:56:29.5669
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: niRj7KYRpM3UUg+fcmUQe8DDJAewM+qvNSVarbAZ/vqCNPSpDUIO0a/OHBI44NAqN+TPLAS1dUZenEWSxU1kTA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR12MB8523
+References: <cover.1720075640.git.viresh.kumar@linaro.org>
+In-Reply-To: <cover.1720075640.git.viresh.kumar@linaro.org>
+From: "Rafael J. Wysocki" <rafael@kernel.org>
+Date: Thu, 4 Jul 2024 14:02:07 +0200
+X-Gmail-Original-Message-ID: <CAJZ5v0hvA3WvhXgKB0qAL_vXy1sJxeRJid=yfTcgePYGqX8uyg@mail.gmail.com>
+Message-ID: <CAJZ5v0hvA3WvhXgKB0qAL_vXy1sJxeRJid=yfTcgePYGqX8uyg@mail.gmail.com>
+Subject: Re: [PATCH 0/4] cpufreq: Make cpufreq_driver->exit() return void
+To: Viresh Kumar <viresh.kumar@linaro.org>
+Cc: "Rafael J. Wysocki" <rafael@kernel.org>, Alyssa Rosenzweig <alyssa@rosenzweig.io>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
+	Christophe Leroy <christophe.leroy@csgroup.eu>, Cristian Marussi <cristian.marussi@arm.com>, 
+	"Gautham R. Shenoy" <gautham.shenoy@amd.com>, Hector Martin <marcan@marcan.st>, Huang Rui <ray.huang@amd.com>, 
+	Jiaxun Yang <jiaxun.yang@flygoat.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
+	Kevin Hilman <khilman@kernel.org>, Len Brown <lenb@kernel.org>, 
+	Mario Limonciello <mario.limonciello@amd.com>, Markus Mayer <mmayer@broadcom.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Michael Ellerman <mpe@ellerman.id.au>, 
+	"Naveen N. Rao" <naveen.n.rao@linux.ibm.com>, Nicholas Piggin <npiggin@gmail.com>, 
+	Perry Yuan <perry.yuan@amd.com>, 
+	Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>, Sudeep Holla <sudeep.holla@arm.com>, 
+	Sven Peter <sven@svenpeter.dev>, Thierry Reding <thierry.reding@gmail.com>, linux-pm@vger.kernel.org, 
+	Vincent Guittot <vincent.guittot@linaro.org>, asahi@lists.linux.dev, 
+	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-mips@vger.kernel.org, linux-omap@vger.kernel.org, 
+	linuxppc-dev@lists.ozlabs.org, linux-tegra@vger.kernel.org, 
+	Lizhe <sensor1010@163.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240704_045637_485979_31F358A1 
-X-CRM114-Status: GOOD (  11.66  )
+X-CRM114-CacheID: sfid-20240704_050222_353939_3D6D15ED 
+X-CRM114-Status: GOOD (  10.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -195,49 +98,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7/4/2024 1:53, Viresh Kumar wrote:
-> From: Lizhe <sensor1010@163.com>
-> 
-> The cpufreq core doesn't check the return type of the exit() callback
-> and there is not much the core can do on failures at that point. Just
-> drop the returned value and make it return void.
-> 
-> Signed-off-by: Lizhe <sensor1010@163.com>
-> [ Viresh: Reworked the patches to fix all missing changes together. ]
-> Signed-off-by: Viresh Kumar <viresh.kumar@linaro.org>
-> ---
->   drivers/cpufreq/acpi-cpufreq.c         |  4 +---
->   drivers/cpufreq/amd-pstate.c           |  7 ++-----
->   drivers/cpufreq/apple-soc-cpufreq.c    |  4 +---
->   drivers/cpufreq/bmips-cpufreq.c        |  4 +---
->   drivers/cpufreq/cppc_cpufreq.c         |  3 +--
->   drivers/cpufreq/cpufreq-dt.c           |  3 +--
->   drivers/cpufreq/e_powersaver.c         |  3 +--
->   drivers/cpufreq/intel_pstate.c         |  8 +++-----
->   drivers/cpufreq/mediatek-cpufreq-hw.c  |  4 +---
->   drivers/cpufreq/mediatek-cpufreq.c     |  4 +---
->   drivers/cpufreq/omap-cpufreq.c         |  3 +--
->   drivers/cpufreq/pasemi-cpufreq.c       |  6 ++----
->   drivers/cpufreq/powernow-k6.c          |  5 ++---
->   drivers/cpufreq/powernow-k7.c          |  3 +--
->   drivers/cpufreq/powernow-k8.c          |  6 ++----
->   drivers/cpufreq/powernv-cpufreq.c      |  4 +---
->   drivers/cpufreq/ppc_cbe_cpufreq.c      |  3 +--
->   drivers/cpufreq/qcom-cpufreq-hw.c      |  4 +---
->   drivers/cpufreq/qoriq-cpufreq.c        |  4 +---
->   drivers/cpufreq/scmi-cpufreq.c         |  4 +---
->   drivers/cpufreq/scpi-cpufreq.c         |  4 +---
->   drivers/cpufreq/sh-cpufreq.c           |  4 +---
->   drivers/cpufreq/sparc-us2e-cpufreq.c   |  3 +--
->   drivers/cpufreq/sparc-us3-cpufreq.c    |  3 +--
->   drivers/cpufreq/speedstep-centrino.c   | 10 +++-------
->   drivers/cpufreq/tegra194-cpufreq.c     |  4 +---
->   drivers/cpufreq/vexpress-spc-cpufreq.c |  5 ++---
->   include/linux/cpufreq.h                |  2 +-
->   28 files changed, 37 insertions(+), 84 deletions(-)
+On Thu, Jul 4, 2024 at 8:54=E2=80=AFAM Viresh Kumar <viresh.kumar@linaro.or=
+g> wrote:
+>
+> Make exit() return void, since it isn't used by the core.
+>
+> Based on initial patches sent by Lizhe [1].
+>
+> Rafael, I will take this through my tree for 6.11.
 
-Acked-by: Mario Limonciello <mario.limonciello@amd.com> # 
-drivers/cpufreq/amd-pstate.c
+Sure.
 
+Acked-by: Rafael J. Wysocki <rafael@kernel.org>
 
+for the series.
+
+Thanks!
+
+> --
+> Viresh
+>
+> [1] https://lore.kernel.org/all/20240410132132.3526-1-sensor1010@163.com/
+>
+> Lizhe (1):
+>   cpufreq: Make cpufreq_driver->exit() return void
+>
+> Viresh Kumar (3):
+>   cpufreq: nforce2: Remove empty exit() callback
+>   cpufreq: loongson2: Remove empty exit() callback
+>   cpufreq: pcc: Remove empty exit() callback
+>
+>  drivers/cpufreq/acpi-cpufreq.c         |  4 +---
+>  drivers/cpufreq/amd-pstate.c           |  7 ++-----
+>  drivers/cpufreq/apple-soc-cpufreq.c    |  4 +---
+>  drivers/cpufreq/bmips-cpufreq.c        |  4 +---
+>  drivers/cpufreq/cppc_cpufreq.c         |  3 +--
+>  drivers/cpufreq/cpufreq-dt.c           |  3 +--
+>  drivers/cpufreq/cpufreq-nforce2.c      |  6 ------
+>  drivers/cpufreq/e_powersaver.c         |  3 +--
+>  drivers/cpufreq/intel_pstate.c         |  8 +++-----
+>  drivers/cpufreq/loongson2_cpufreq.c    |  6 ------
+>  drivers/cpufreq/mediatek-cpufreq-hw.c  |  4 +---
+>  drivers/cpufreq/mediatek-cpufreq.c     |  4 +---
+>  drivers/cpufreq/omap-cpufreq.c         |  3 +--
+>  drivers/cpufreq/pasemi-cpufreq.c       |  6 ++----
+>  drivers/cpufreq/pcc-cpufreq.c          |  6 ------
+>  drivers/cpufreq/powernow-k6.c          |  5 ++---
+>  drivers/cpufreq/powernow-k7.c          |  3 +--
+>  drivers/cpufreq/powernow-k8.c          |  6 ++----
+>  drivers/cpufreq/powernv-cpufreq.c      |  4 +---
+>  drivers/cpufreq/ppc_cbe_cpufreq.c      |  3 +--
+>  drivers/cpufreq/qcom-cpufreq-hw.c      |  4 +---
+>  drivers/cpufreq/qoriq-cpufreq.c        |  4 +---
+>  drivers/cpufreq/scmi-cpufreq.c         |  4 +---
+>  drivers/cpufreq/scpi-cpufreq.c         |  4 +---
+>  drivers/cpufreq/sh-cpufreq.c           |  4 +---
+>  drivers/cpufreq/sparc-us2e-cpufreq.c   |  3 +--
+>  drivers/cpufreq/sparc-us3-cpufreq.c    |  3 +--
+>  drivers/cpufreq/speedstep-centrino.c   | 10 +++-------
+>  drivers/cpufreq/tegra194-cpufreq.c     |  4 +---
+>  drivers/cpufreq/vexpress-spc-cpufreq.c |  5 ++---
+>  include/linux/cpufreq.h                |  2 +-
+>  31 files changed, 37 insertions(+), 102 deletions(-)
+>
+> --
+> 2.31.1.272.g89b43f80a514
+>
+>
 
