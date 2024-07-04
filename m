@@ -4,122 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7E37C30653
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jul 2024 17:28:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB420C30653
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jul 2024 17:49:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:Message-ID:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=kwtbvqBATPkfC3LN2Cd5baBxjOBJ9G7HT0Q+oeeJlvA=; b=bKJuy+WH/E8E/ua4jww9IHbo8C
-	e5NEKIzHRWivd18KK02FRi0VCeacF5jyKosG7IT1BriC9ARSlVydpcqcXsLUA9yPf38yAjpUgzyGP
-	4PZZC+vK5y470RQAQ1EZLpimdfsa4LY9xQamJcE2Ml7o8yKcUOMeMVLS/PpUYNGWAMSUtRMNjrR3h
-	MmHb2RuB4ZPzQXQCnadQkTkAaGI22XblhfeRzYSGrAf9ew+LLzkMO89E3e3keBLy8Dgom+g/e+fK/
-	CAOssLNf+HMHXhyUL/gPi+e7lVzUe/VCscAtHxoL7NlLut9OkJlmhUbjzNK4QovkbkAi0sCWI03N9
-	90l6aHrA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=4ou1M28u1XlzE76PDWG8emIb/GMKwICtJleOWsLxvQE=; b=T4n5Q+ug1hGVqV5cficOWr6sE/
+	yWVWWHu8wWqE3i33FrHI3Jdpk7S+ECvZgUdCdkMMdyeoIkZLOmAAv8O+A5HnLr0clmnENFzAvSfkM
+	PG56lQt0cBwANGIJK4AurzR8V0fQzLVEYdy/KqlGHHoTMHF4bPPPQ1V/TFXbV2w1zxHjo9cg57JbG
+	dSmuP06+mC+jJuMHPBL+Zf4EF5eGezVKMH3+Sb+A2YByl0eh/kqU5+z/flKGzzL2VyHK5Td3KeusE
+	5kv2tQFm4hwlDIXtKsn+WAMsAhrDO7vgpCPV29D8MyKZeKGQq8LfX3L2A/lCQgSsX4PeEOHqrqYur
+	iqzKlOiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPQG5-0000000E0l4-02bv;
-	Thu, 04 Jul 2024 17:28:37 +0000
-Received: from mail-japaneastazolkn190110001.outbound.protection.outlook.com ([2a01:111:f403:d405::1] helo=TYVP286CU001.outbound.protection.outlook.com)
+	id 1sPQZs-0000000E4UI-1is1;
+	Thu, 04 Jul 2024 17:49:04 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPQF5-0000000E0G6-2p0o;
-	Thu, 04 Jul 2024 17:27:37 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=flot+wDE5IwvzgaDcXRJLULxI0+qonSpZ4Hg4AtvQ8lgxVG4B7Szb6gF291SDH0i4iWWFaJd+fVQPqn3OViqpkKcCle4MN2Sjp9Nmq7RlBfKjc2CX/koN4I4ymMk2ZqcsgZ2v+d+c+kBohd8s7NA6t3wl63ukivJ7Q9uzVZvE420SPp6UClMZm10FS40y/MjmtX/MCfUkdN+zYBvlRJTUhwCfkn0TBhYdYpJLn+n4sLlHr2JBqZ6j6M9cCeu38WCMBAyjrS0BYfOPx9coYERxWxVf8Js6TcTy+kp+oJLwpAFGAbS6Uq4iNh7oMNqEnDuY5J8r32WHQEj92ZKR0GiEA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=kwtbvqBATPkfC3LN2Cd5baBxjOBJ9G7HT0Q+oeeJlvA=;
- b=dxggL/nTKiLWmbqGPvPMCzqIDvRWcH7irNKZnJ/b1upP4HnK1+XhUJMx19gl/MwPDBjCBtDn3oTVrB7+8fxLktRLqunou0FSyn3XIr6OfLZG35yJDKWDjB3FwBHWbA0WPcvfr6mxOJOTMq7vMRWmgkujJT6F7TSqpw9v2LL20phQm7cE4nLiL5qncumNuN2wHWKp0Pa+EHwZrMa4gkxR/1lrumwXTl0Ysn1JMIjfp6J02aG+aBUKr0XoTUj3ZtCAppU+lFKXwTV8yBJ0UIunlLoBt6awQE9oKAlgYAJoMcnRlCCa9nKz2w0u8XYUHgemOOQWHdX8Df9O8YwVByOBIA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=outlook.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=kwtbvqBATPkfC3LN2Cd5baBxjOBJ9G7HT0Q+oeeJlvA=;
- b=AtCfyTbx9jQ1EEDtbESQ6awuuLKrqhRJjpkxuWQo2bhGqQ0Lv9PpxM3mmdhdDoWfNhH7N0eBoS0fwYxAICfvzmU+7AW4X1prf35P9/zYIVnTWV37gdgdnAqPVEt/K4jTVcTZ0jzkEP3lDGUtifOHkuPvUxTN8gCpBeX7xQESczXWmFvUM/QgsBqupSeSnhPCOSg4HcEgBFNy3TE1XZvV4Du+2anG70f2T+o3f0BIxa/w/IKzA9VPbAQaWEb4RJFdVpH0LUV8FlWV9Q2x3d4ExrtHti5nevY3ToViZXz9tsXb7gGCNUW+9xrAgycV8vIAkxVKiD6pHqvPrWKyxLcJ6A==
-Received: from TY3P286MB2611.JPNP286.PROD.OUTLOOK.COM (2603:1096:400:23e::10)
- by TYWP286MB3666.JPNP286.PROD.OUTLOOK.COM (2603:1096:400:3f6::12) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7741.30; Thu, 4 Jul
- 2024 17:27:14 +0000
-Received: from TY3P286MB2611.JPNP286.PROD.OUTLOOK.COM
- ([fe80::85b8:3d49:3d3e:2b3]) by TY3P286MB2611.JPNP286.PROD.OUTLOOK.COM
- ([fe80::85b8:3d49:3d3e:2b3%5]) with mapi id 15.20.7719.029; Thu, 4 Jul 2024
- 17:27:14 +0000
-From: Shengyu Qu <wiagn233@outlook.com>
-To: nbd@nbd.name,
-	sean.wang@mediatek.com,
-	Mark-MC.Lee@mediatek.com,
-	lorenzo@kernel.org,
-	davem@davemloft.net,
-	edumazet@google.com,
-	kuba@kernel.org,
-	pabeni@redhat.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	id 1sPQZd-0000000E4T2-3ZAw;
+	Thu, 04 Jul 2024 17:48:52 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.97.1)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1sPQZS-000000001WV-0D7e;
+	Thu, 04 Jul 2024 17:48:38 +0000
+Date: Thu, 4 Jul 2024 18:48:33 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: Vladimir Oltean <olteanv@gmail.com>
+Cc: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Landen Chao <Landen.Chao@mediatek.com>, netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Cc: Shengyu Qu <wiagn233@outlook.com>,
-	Elad Yifee <eladwf@gmail.com>
-Subject: [PATCH v3] net: ethernet: mtk_ppe: Change PPE entries number to 16K
-Date: Fri,  5 Jul 2024 01:26:26 +0800
-Message-ID: <TY3P286MB261103F937DE4EEB0F88437D98DE2@TY3P286MB2611.JPNP286.PROD.OUTLOOK.COM>
-X-Mailer: git-send-email 2.34.1
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-TMN: [94TgD1qXQdtUVP5ZiV+qK02L3VN9AH/U]
-X-ClientProxiedBy: SG2PR02CA0006.apcprd02.prod.outlook.com
- (2603:1096:3:17::18) To TY3P286MB2611.JPNP286.PROD.OUTLOOK.COM
- (2603:1096:400:23e::10)
-X-Microsoft-Original-Message-ID: <20240704172626.73719-1-wiagn233@outlook.com>
+Subject: Re: [PATCH net v4] net: dsa: mt7530: fix impossible MDIO address and
+ issue warning
+Message-ID: <ZobgcXm9-am7xX6f@makrotopia.org>
+References: <1c378be54d0fb76117f6d72dadd4a43a9950f0dc.1720105125.git.daniel@makrotopia.org>
+ <20240704171604.3ownsxasch5hokty@skbuf>
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: TY3P286MB2611:EE_|TYWP286MB3666:EE_
-X-MS-Office365-Filtering-Correlation-Id: 7e20f607-5cf6-4a01-9154-08dc9c4e8b4b
-X-Microsoft-Antispam: BCL:0;ARA:14566002|461199028|8060799006|3412199025|440099028|1710799026;
-X-Microsoft-Antispam-Message-Info: 8a48axsqjnDYRXv3Shfh+xVB89zkIsP5XG4K8+TbiRV5ouqgc9sfBdN3VE8IBQQsHGDYazTFSd6NPxq7gk5ulME5c7Zd6t8Z7xs4Mmmb2k/jyLyYcP5tVqJOtpzw48v5fLQxkm2RLjoOu7jawSVDQhTRaRuTRKLHy1I7sZXj6h4EiKPNIdy3ro5eQVxTRtvscv462cRZfmomZ6SLtk1G0yqJ1g1xjwuIiqVe+JScnpKn/5Mt76t4LkAtEmpDc0d+WoTFNxzg7AiLphrp8uoBrRxWGSlwZoe3vuXG70wAJA+zO+3+HGFf698B0k+uqtDNTMtUkoXbuGllxDZkzW/ehl5dgAllDI7sovcAKgq5D3lWBJYawj084UGXcvzRWQ3Jnygp3+AE4xtvpGTSlL+xhBR4mXjpmCXEWZYx417VgYHrMoTETKc8KAjVShTXeIhpzt88Rf7J8lN6hlR9xecK8XNIoAPVA1asp3JuRh67xFrvhRJv1QIOlXpk643ySsQLmJId7sC2jJ2hKH1IupQEdDF9f1b2E9fyu1R3Gg59q3Y8Ibjt4ztpfPE5o7qZnR+sn6pORFknbxldgbX3/JBolUvAhsw/PM3dYmHf50klrvNGAuRzMZQ2t28nJxWgp2E9WGoFjPap0Dl25QU0TeqkSw==
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?3JMX0oqDHZn7nBE3/lhvK71D7LV4766n4WFjaHrdZ4yemTGhoE6RjSFhaaeN?=
- =?us-ascii?Q?L8+JtDLtpXhg3iW96R4L3o5l5eX7Enk4cHMGi65LOMidzypRSCcr9pg5nKQB?=
- =?us-ascii?Q?KrEd5hRl5PviE0kF9YKJhY6WVDmvazRgsxz8JTSaICNt3kfRWf5hARgRnFXs?=
- =?us-ascii?Q?Knmpdz6nkh3VSsoY7pPjMrABW5BjRD8F7lo5tv0EocWVdpnAfyZtcSoXAOVH?=
- =?us-ascii?Q?1+lGZViDKabPqmm3OwGmZ9147jI/zXpXvUNm1sPQ/cJWh8rzdFwcXeisEqiM?=
- =?us-ascii?Q?aCJOb6/PErlZEqTLqMHdu6WVV6pXEvHRbV2TDO7I2TubnOzeTg8S6jzrhRQB?=
- =?us-ascii?Q?RQmd52I9NkXWwKgfUO9ewIJWFrs/bVO1Ut8qeMm7lnjblb+uNFr6Jb6lnxIa?=
- =?us-ascii?Q?fXOCQfr9SbefIQM9rT7WiYRfFZZcRwyO8mOJGgUSCaowbjVQwLEWt7HWWRwp?=
- =?us-ascii?Q?yyY7YYRidJn+q49SKH394tonEUID/DuEwiMRyd4ph9+wdwSN/bTf0Sbh4EjC?=
- =?us-ascii?Q?YGAMEMlCBdZWZq5UNSJ1QgFBNbSWJrPot18vlI8FEcqes1IhyUg/mjBjWD2D?=
- =?us-ascii?Q?f/Bcshg5qIjK/R1jhu+S5wgyX6MeRFSqIAOtYtG70I4mltUGMQt72YmbJuE4?=
- =?us-ascii?Q?stuH4KUICYGWYa+aAXbmOCe2eieILScScOVrmoyTG8Ct5BgU3pcPlsN1AxQX?=
- =?us-ascii?Q?BrrfG8nbvqzBA6ON3UCU/nRjpaaEHmUx329xX0/t8tboCF05IO578hWHz0Ep?=
- =?us-ascii?Q?PuscNRFZWi/I7ZF/iAB5nDImqbYIzlk/btvGZXC8yCZeNS2yvZqacAqDQ+hM?=
- =?us-ascii?Q?uFfrta1AKeEzCof2369O1eMUPDlnjQhbP3epKjiwVvOACiGW2hhEg2cfmbze?=
- =?us-ascii?Q?8Z7ZNVF8alzSnJoBzKoL0cLkQbry+nrg/baWkt7Wr0cAWt/ARnee8e9JzaZe?=
- =?us-ascii?Q?eFeGHaelKzMat6PITcSh00XNrv7zkjUVpCMjPCkPwHw+cL4DgK9NOBxXCxLe?=
- =?us-ascii?Q?MW23BBmcGQZEe12ZLSiZ3+SgLuMnWNt02uz3B1Zj5CIENu3MDPvcoRR0yTBf?=
- =?us-ascii?Q?4ek5YuXpcWozXiOgvlrSdzKU1tw4tH/G4plH/H01koaRfYaqOqcJxdkwG56y?=
- =?us-ascii?Q?F0uVW577igqHOqb1gOK5zUgl1V5WLSTjg2n65ljals0lWQRCVhU3WJjTmeWS?=
- =?us-ascii?Q?P114b0Ssi2qIrLHT/D6oWIpWVlK7OgbGslkIcqOcskXhky1b7RFK7BDd2Ck?=
- =?us-ascii?Q?=3D?=
-X-OriginatorOrg: outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7e20f607-5cf6-4a01-9154-08dc9c4e8b4b
-X-MS-Exchange-CrossTenant-AuthSource: TY3P286MB2611.JPNP286.PROD.OUTLOOK.COM
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Jul 2024 17:27:14.0953
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
-X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYWP286MB3666
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20240704171604.3ownsxasch5hokty@skbuf>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240704_102735_746458_B3C9B5BE 
-X-CRM114-Status: GOOD (  10.54  )
+X-CRM114-CacheID: sfid-20240704_104850_065548_86FFD805 
+X-CRM114-Status: GOOD (  52.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -134,37 +74,220 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MT7981,7986 and 7988 all supports 32768 PPE entries, and MT7621/MT7620
-supports 16384 PPE entries, but only set to 8192 entries in driver. So
-incrase max entries to 16384 instead.
+Hi Vladimir,
 
-Signed-off-by: Elad Yifee <eladwf@gmail.com>
-Signed-off-by: Shengyu Qu <wiagn233@outlook.com>
----
-Changes since V1:
- - Reduced max entries from 32768 to 16384 to keep compatible with MT7620/21 devices.
- - Add fixes tag
+On Thu, Jul 04, 2024 at 08:16:04PM +0300, Vladimir Oltean wrote:
+> On Thu, Jul 04, 2024 at 04:08:22PM +0100, Daniel Golle wrote:
+> > The MDIO address of the MT7530 and MT7531 switch ICs can be configured
+> > using bootstrap pins. However, there are only 4 possible options for the
+> > switch itself: 7, 15, 23 and 31. As in MediaTek's SDK the address of the
+> > switch is wrongly stated in the device tree as 0 (while in reality it is
+> > 31), warn the user about such broken device tree and make a good guess
+> > what was actually intended.
+> 
+> Zero is the MDIO broadcast address. Doesn't the switch respond to it, or
+> what's exactly the problem?
 
-Changes since V2:
- - Remove fixes tag (Thanks to Jakub)
----
- drivers/net/ethernet/mediatek/mtk_ppe.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+No, MT7530 main device (ie. the switch itself, not the built-in PHYs
+which on MT7530 can also be exposed on the same bus) only responds to
+address 31 (default), 7, 15 or 23 (the latter 3 via non-default
+bootstrap configuration).
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_ppe.h b/drivers/net/ethernet/mediatek/mtk_ppe.h
-index 691806bca372..223f709e2704 100644
---- a/drivers/net/ethernet/mediatek/mtk_ppe.h
-+++ b/drivers/net/ethernet/mediatek/mtk_ppe.h
-@@ -8,7 +8,7 @@
- #include <linux/bitfield.h>
- #include <linux/rhashtable.h>
- 
--#define MTK_PPE_ENTRIES_SHIFT		3
-+#define MTK_PPE_ENTRIES_SHIFT		4
- #define MTK_PPE_ENTRIES			(1024 << MTK_PPE_ENTRIES_SHIFT)
- #define MTK_PPE_HASH_MASK		(MTK_PPE_ENTRIES - 1)
- #define MTK_PPE_WAIT_TIMEOUT_US		1000000
--- 
-2.34.1
+MT7531 always uses address 31 by default and also doesn't respond on
+address 0.
 
+See also https://lkml.org/lkml/2024/5/31/236
+
+> 
+> > 
+> > This is imporant also to not break compatibility with older Device Trees
+> 
+> important
+
+Well spotted, will fix.
+
+> 
+> > as with commit 868ff5f4944a ("net: dsa: mt7530-mdio: read PHY address of
+> > switch from device tree") the address in device tree will be taken into
+> > account, while before it was hard-coded to 0x1f.
+> > 
+> > Fixes: b8f126a8d543 ("net-next: dsa: add dsa support for Mediatek MT7530 switch")
+> 
+> I fail to understand the logic behind blaming this commit. There was no
+> observable issue prior to 868ff5f4944a ("net: dsa: mt7530-mdio: read PHY
+> address of switch from device tree"), was there?
+
+Please see the lengthy debate here:
+
+https://lore.kernel.org/linux-arm-kernel/af561268-9793-4b5d-aa0f-d09698fd6fb0@arinc9.com/T/#mc967f795a062f6aaedea7375a3be104266e88cc4
+
+I should have provided a reference to that in the commit message or
+cover letter.
+
+> That's what 'git bisect' with a broken device tree would point towards?
+
+Yes, exactly.
+
+> 
+> > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> > Reviewed-by: Andrew Lunn <andrew@lunn.ch>
+> > Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+> > Reviewed-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+> > ---
+> > Changes since v3 [3]:
+> >  - simplify calculation of correct address
+> > 
+> > Changes since v2 [2]:
+> >  - use macros instead of magic numbers
+> >  - introduce helper functions
+> >  - register new device on MDIO bus instead of messing with the address
+> >    and schedule delayed_work to unregister the "wrong" device.
+> >    This is a slightly different approach than suggested by Russell, but
+> >    imho makes things much easier than keeping the "wrong" device and
+> >    having to deal with keeping the removal of both devices linked.
+> >  - improve comments
+> > 
+> > Changes since v1 [1]:
+> >  - use FW_WARN as suggested.
+> >  - fix build on net tree which doesn't have 'mdiodev' as member of the
+> >    priv struct. Imho including this patch as fix makes sense to warn
+> >    users about broken firmware, even if the change introducing the
+> >    actual breakage is only present in net-next for now.
+> > 
+> > [1]: https://patchwork.kernel.org/project/netdevbpf/patch/e615351aefba25e990215845e4812e6cb8153b28.1714433716.git.daniel@makrotopia.org/
+> > [2]: https://patchwork.kernel.org/project/netdevbpf/patch/11f5f127d0350e72569c36f9060b6e642dfaddbb.1714514208.git.daniel@makrotopia.org/
+> > [3]: https://patchwork.kernel.org/project/netdevbpf/patch/7e3fed489c0bbca84a386b1077c61589030ff4ab.1719963228.git.daniel@makrotopia.org/
+> > 
+> >  drivers/net/dsa/mt7530-mdio.c | 91 +++++++++++++++++++++++++++++++++++
+> >  1 file changed, 91 insertions(+)
+> > 
+> > diff --git a/drivers/net/dsa/mt7530-mdio.c b/drivers/net/dsa/mt7530-mdio.c
+> > index 51df42ccdbe6..2037ed944801 100644
+> > --- a/drivers/net/dsa/mt7530-mdio.c
+> > +++ b/drivers/net/dsa/mt7530-mdio.c
+> > @@ -11,6 +11,7 @@
+> >  #include <linux/regmap.h>
+> >  #include <linux/reset.h>
+> >  #include <linux/regulator/consumer.h>
+> > +#include <linux/workqueue.h>
+> >  #include <net/dsa.h>
+> >  
+> >  #include "mt7530.h"
+> > @@ -136,6 +137,92 @@ static const struct of_device_id mt7530_of_match[] = {
+> >  };
+> >  MODULE_DEVICE_TABLE(of, mt7530_of_match);
+> >  
+> > +static int
+> > +mt7530_correct_addr(int phy_addr)
+> 
+> The prototype fits onto a single line.
+> 
+> > +{
+> > +	/* The corrected address is calculated as stated below:
+> > +	 * 0~6, 31 -> 31
+> > +	 * 7~14    -> 7
+> > +	 * 15~22   -> 15
+> > +	 * 23~30   -> 23
+> > +	 */
+> > +return (phy_addr - MT7530_NUM_PORTS & ~MT7530_NUM_PORTS) + MT7530_NUM_PORTS & PHY_MAX_ADDR - 1;
+> 
+> In addition to being weirdly indented and having difficult to follow
+> logic.. Why not opt for the simple, self-documenting variant below?
+> 
+> 	switch (phy_addr) {
+> 	case 0 ... 6:
+> 	case 31:
+> 		return 31;
+> 	case 7 ... 14:
+> 		return 7;
+> 	case 15 ... 22:
+> 		return 15;
+> 	case 23 ... 30:
+> 		return 23;
+> 	default:
+> 		return -EINVAL ???
+> 	}
+> 
+> > +}
+> > +
+> > +static bool
+> > +mt7530_is_invalid_addr(int phy_addr)
+> > +{
+> > +	/* Only MDIO bus addresses 7, 15, 23, and 31 are valid options,
+> > +	 * which all have the least significant three bits set. Check
+> > +	 * for this.
+> > +	 */
+> > +	return (phy_addr & MT7530_NUM_PORTS) != MT7530_NUM_PORTS;
+> 
+> Why not implement this in terms of phy_addr != mt7530_correct_addr(phy_addr)?
+> 
+> > +}
+> > +
+> > +struct remove_impossible_priv {
+> > +	struct delayed_work remove_impossible_work;
+> > +	struct mdio_device *mdiodev;
+> > +};
+> > +
+> > +static void
+> > +mt7530_remove_impossible(struct work_struct *work)
+> 
+> Fits onto a single line.
+> 
+> > +{
+> > +	struct remove_impossible_priv *priv = container_of(work, struct remove_impossible_priv,
+> > +							   remove_impossible_work.work);
+> > +	struct mdio_device *mdiodev = priv->mdiodev;
+> > +
+> > +	mdio_device_remove(mdiodev);
+> > +	mdio_device_free(mdiodev);
+> > +	kfree(priv);
+> > +}
+> > +
+> > +static int
+> > +mt7530_reregister(struct mdio_device *mdiodev)
+> > +{
+> > +	/* If the address in DT must be wrong, make a good guess about
+> > +	 * the most likely intention, issue a warning, register a new
+> > +	 * MDIO device at the correct address and schedule the removal
+> > +	 * of the device having an impossible address.
+> > +	 */
+> > +	struct fwnode_handle *fwnode = dev_fwnode(&mdiodev->dev);
+> > +	int corrected_addr = mt7530_correct_addr(mdiodev->addr);
+> > +	struct remove_impossible_priv *rem_priv;
+> > +	struct mdio_device *new_mdiodev;
+> > +	int ret;
+> > +
+> > +	rem_priv = kmalloc(sizeof(*rem_priv), GFP_KERNEL);
+> > +	if (!rem_priv)
+> > +		return -ENOMEM;
+> > +
+> > +	new_mdiodev = mdio_device_create(mdiodev->bus, corrected_addr);
+> > +	if (IS_ERR(new_mdiodev)) {
+> > +		ret = PTR_ERR(new_mdiodev);
+> > +		goto out_free_work;
+> > +	}
+> > +	device_set_node(&new_mdiodev->dev, fwnode);
+> > +
+> > +	ret = mdio_device_register(new_mdiodev);
+> > +	if (WARN_ON(ret))
+> > +		goto out_free_dev;
+> > +
+> > +	dev_warn(&mdiodev->dev, FW_WARN
+> > +		 "impossible switch MDIO address in device tree, assuming %d\n",
+> > +		 corrected_addr);
+> > +
+> > +	/* schedule impossible device for removal from mdio bus */
+> > +	rem_priv->mdiodev = mdiodev;
+> > +	INIT_DELAYED_WORK(&rem_priv->remove_impossible_work, mt7530_remove_impossible);
+> > +	schedule_delayed_work(&rem_priv->remove_impossible_work, 0);
+> 
+> What makes it so that mt7530_remove_impossible() is actually guaranteed
+> to run after the probing of the mdio_device @ the incorrect address
+> _finishes_? mdio_device_remove() will not work on a device which has
+> probing in progress, will it?
+> 
+> There's also the more straightforward option of fixing up priv->mdiodev->addr
+> in mt7530.c to be something like priv->switch_base, which is derived
+> from priv->mdiodev->addr, with a fallback to 0x1f if the latter is zero,
+> and a FW_WARN().
 
