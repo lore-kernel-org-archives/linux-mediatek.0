@@ -4,75 +4,114 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DA60C30653
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jul 2024 06:21:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1D65C30653
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jul 2024 06:29:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=npNmNo0BoyjRmO6v1zsuYJaAE02bLfWLc/1D8IVD5Do=; b=zZcaPfDrD/54jQZD3NQPlH3aUU
-	JeWyjoRhPG/UmV1r1KPtslWgZ+kr6u3ImZh+B4tgeO+cQjvKjIJrVcTYWvDcMbW8N613SQ/OrJAa8
-	vLb07ioCfqu60cYSjGvW94m8xR42YPXeGNrG4IU7gU6w0raApNcq2O8WQQ5Q3KtqFFeZkmBZpAThK
-	W8j24gIphFBLBndOvUyW7ZKRtnjwi/u/C4loDEnZCtT1I2glZXGOC0G3iKeoYN56feJBPGlkbi/bO
-	U37DUAx1LiLgvUcUNBJKTD5Qc148Sndfc8meNakmzz9oEmtxRMxOVOlnw4/TSU9Vaq9d/lk1GDvvP
-	B3/qxYPg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2svqaslvrf5EbkXHncxG6Vuz0u5A+T6W3KGVaS/1Ti8=; b=RnIEfeZu+ufUyOv1vxzom/9A4s
+	2GSTZBu2onPk9Jv+HH4x2ShkasoisjpapUqjS+Cj1LOfRtaolCr1/+apVHkYGqjoWQN/ufkh4VpT9
+	bKz/hdSR7DXgVGHY4IZVXlXasB6GwH/mkgNLAMm+NnbSDC5pSRk1Gn7iHy+YJAiO4nusAgrvIltX4
+	siLwc1jyZRYpMZOesiURz1qVGvKBVxWIYv4HZ0qORD1BpX/XJSSg8VDgCujH0VdU23iktXkLVZkzA
+	y0Owu46lGtx+RLCC1p2hTP8DSNVN0aKQETRaK1DdMIZ+K91Tr6AWTLkQz3v0FgNwpoCg8ke3RcQjH
+	LGMestxQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPFqX-0000000CJfs-1TUJ;
-	Thu, 04 Jul 2024 06:21:33 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1sPFyT-0000000CKuB-1e1k;
+	Thu, 04 Jul 2024 06:29:45 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPFqU-0000000CJeU-0aJR
-	for linux-mediatek@lists.infradead.org;
-	Thu, 04 Jul 2024 06:21:31 +0000
-X-UUID: a24f227639cd11ef9daba96ee3f3cc8c-20240703
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=npNmNo0BoyjRmO6v1zsuYJaAE02bLfWLc/1D8IVD5Do=;
-	b=mBOrxVV/PZYGdeuXvQryKXdWvnuGR0QyRwRZXsY2gIDTgC8srrC5pjPfAXxTdUtAkegrPS9OSLTUYui0Pcw+/VR2iprPj8jYrJxK8vJCECKC9yKZKFk4vUJTxGFJ1HHacf1v/zIBX5FYvYWJJ+7mDqtIFtwLs0fwehFlTaEA0sU=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.40,REQID:c9086d02-22c9-475d-9e47-4b2fdf061e44,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:ba885a6,CLOUDID:5fa2f0d4-0d68-4615-a20f-01d7bd41f0bb,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: a24f227639cd11ef9daba96ee3f3cc8c-20240703
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <chris.lu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 974678950; Wed, 03 Jul 2024 23:21:22 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 4 Jul 2024 14:01:19 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 4 Jul 2024 14:01:19 +0800
-From: Chris Lu <chris.lu@mediatek.com>
-To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
-	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
-CC: Sean Wang <sean.wang@mediatek.com>, Aaron Hou <aaron.hou@mediatek.com>,
-	Steve Lee <steve.lee@mediatek.com>, linux-bluetooth
-	<linux-bluetooth@vger.kernel.org>, linux-kernel
-	<linux-kernel@vger.kernel.org>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Chris Lu <chris.lu@mediatek.com>
-Subject: [PATCH v7 4/8] Bluetooth: btusb: add callback function in btusb suspend/resume
-Date: Thu, 4 Jul 2024 14:01:12 +0800
-Message-ID: <20240704060116.16600-5-chris.lu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20240704060116.16600-1-chris.lu@mediatek.com>
-References: <20240704060116.16600-1-chris.lu@mediatek.com>
+	id 1sPFyF-0000000CKqk-2OSK;
+	Thu, 04 Jul 2024 06:29:33 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id C56AE62512;
+	Thu,  4 Jul 2024 06:29:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7B2FBC3277B;
+	Thu,  4 Jul 2024 06:29:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1720074570;
+	bh=oi4vYFefgWoHU6xqUG6fjqaCl/WzuHlY267qdKyZTSc=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=DnnXzXxY2TL2pd/PnNcZfLTnjsw4QZgYW1zRkhnu5q3GRicIjw0hG7xnLebbXof/w
+	 2wLcb3fCW6vhxU35pQvH1aeoPpPwViNy3ZdeiqiQNu9+o3m1ieNwNnOQTMlmUjOYPh
+	 dDVmUjoMjf2ROI+T0+2/zJHAalZ0PENhtaW/DOy+0D1LbkV2gecxvJDNydPM2gOhsx
+	 2bNkrSAND28ifA1kBtx4oFbuxULg+5Gyanz4RhV2S5RkNE22bvrFAD96lldk8AKZty
+	 owFNbASuW0k2RHVN6CbbyoNJwtTc1HSVm630M+T478Cxj6oUHiNVkoHmHjAxAx4Wjr
+	 XDkpC36zGdMjw==
+Message-ID: <1326b277-9084-4750-acc9-e6f4bccc0425@kernel.org>
+Date: Thu, 4 Jul 2024 08:29:21 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] dt-bindings: net: Define properties at top-level
+To: "Rob Herring (Arm)" <robh@kernel.org>,
+ Serge Semin <fancer.lancer@gmail.com>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+ Jose Abreu <joabreu@synopsys.com>
+Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20240703195827.1670594-2-robh@kernel.org>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <20240703195827.1670594-2-robh@kernel.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240703_232130_190843_D102B94C 
-X-CRM114-Status: UNSURE (   9.83  )
+X-CRM114-CacheID: sfid-20240703_232931_777144_FC8DD766 
+X-CRM114-Status: UNSURE (   8.09  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -88,52 +127,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add suspend/resum callback function in btusb_data which are reserved
-for vendor specific usage during suspend/resume. hdev->suspend will be
-added before stop traffic in btusb_suspend and hdev-> resume will be
-added after resubmit urb in btusb_resume.
+On 03/07/2024 21:58, Rob Herring (Arm) wrote:
+> Convention is DT schemas should define all properties at the top-level
+> and not inside of if/then schemas. That minimizes the if/then schemas
+> and is more future proof.
+> 
+> Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
+> ---
+> v2:
+>  - Drop the parts already applied from Serge
 
-Signed-off-by: Chris Lu <chris.lu@mediatek.com>
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
----
- drivers/bluetooth/btusb.c | 9 +++++++++
- 1 file changed, 9 insertions(+)
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index 7612f10f9d39..4ec18b58dc68 100644
---- a/drivers/bluetooth/btusb.c
-+++ b/drivers/bluetooth/btusb.c
-@@ -891,6 +891,9 @@ struct btusb_data {
- 
- 	int (*setup_on_usb)(struct hci_dev *hdev);
- 
-+	int (*suspend)(struct hci_dev *hdev);
-+	int (*resume)(struct hci_dev *hdev);
-+
- 	int oob_wake_irq;   /* irq for out-of-band wake-on-bt */
- 	unsigned cmd_timeout_cnt;
- 
-@@ -4765,6 +4768,9 @@ static int btusb_suspend(struct usb_interface *intf, pm_message_t message)
- 
- 	cancel_work_sync(&data->work);
- 
-+	if (data->suspend)
-+		data->suspend(data->hdev);
-+
- 	btusb_stop_traffic(data);
- 	usb_kill_anchored_urbs(&data->tx_anchor);
- 
-@@ -4868,6 +4874,9 @@ static int btusb_resume(struct usb_interface *intf)
- 			btusb_submit_isoc_urb(hdev, GFP_NOIO);
- 	}
- 
-+	if (data->resume)
-+		data->resume(hdev);
-+
- 	spin_lock_irq(&data->txlock);
- 	play_deferred(data);
- 	clear_bit(BTUSB_SUSPENDING, &data->flags);
--- 
-2.18.0
+Best regards,
+Krzysztof
 
 
