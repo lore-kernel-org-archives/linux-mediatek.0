@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80E5EC30653
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jul 2024 06:21:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DA60C30653
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jul 2024 06:21:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bVodKyRsOcT/STMe2Z91D8J6McJz8ssQ55PR5jZhylM=; b=2tMibXBTkuQmeQkt+IlhVW+UOB
-	yKOC2ND/wVWiggxfB6cDdxbMY2uAyVcZNXZ8qsvNI3EKjiNbQaiGL0EmBD7KDubGXF5w1IE38zVoO
-	bx4Rr4v7+6I2f0KaRYsGMF7o6zRo0vJ0CuO29VnXpRMr41eb3fUdFfAj3feLCzJPtUEf3lhXR/m/k
-	BZHJrAX9VdrAS2AR/GO/3+/GWD0g3+/l3uRCZuSVN+AWGA7mcUl6BJ0s0DuyDySOKcFWuaDkUeGR7
-	qTSqYIabME7/Wr7uyHKGwakmQRSMNegDNjXacYKdTbQV693Kjknbqt1ZTbHiysFrb5XNyQapMtw86
-	fWsZCJAw==;
+	bh=npNmNo0BoyjRmO6v1zsuYJaAE02bLfWLc/1D8IVD5Do=; b=zZcaPfDrD/54jQZD3NQPlH3aUU
+	JeWyjoRhPG/UmV1r1KPtslWgZ+kr6u3ImZh+B4tgeO+cQjvKjIJrVcTYWvDcMbW8N613SQ/OrJAa8
+	vLb07ioCfqu60cYSjGvW94m8xR42YPXeGNrG4IU7gU6w0raApNcq2O8WQQ5Q3KtqFFeZkmBZpAThK
+	W8j24gIphFBLBndOvUyW7ZKRtnjwi/u/C4loDEnZCtT1I2glZXGOC0G3iKeoYN56feJBPGlkbi/bO
+	U37DUAx1LiLgvUcUNBJKTD5Qc148Sndfc8meNakmzz9oEmtxRMxOVOlnw4/TSU9Vaq9d/lk1GDvvP
+	B3/qxYPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPFqS-0000000CJeO-3hMo;
-	Thu, 04 Jul 2024 06:21:28 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1sPFqX-0000000CJfs-1TUJ;
+	Thu, 04 Jul 2024 06:21:33 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPFqQ-0000000CJcl-07vn
+	id 1sPFqU-0000000CJeU-0aJR
 	for linux-mediatek@lists.infradead.org;
-	Thu, 04 Jul 2024 06:21:27 +0000
-X-UUID: a266d08839cd11efb2966dae1f787272-20240703
+	Thu, 04 Jul 2024 06:21:31 +0000
+X-UUID: a24f227639cd11ef9daba96ee3f3cc8c-20240703
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=bVodKyRsOcT/STMe2Z91D8J6McJz8ssQ55PR5jZhylM=;
-	b=L0QRFxTT5gMgy9NwIyxVeqKt2D7rQkrUGFuY36kgkzVJPuawoqQrdZBcPH3j5/8+Mj4FGgZRSNBaNAl6uQJ7zLR/0j2ZdVTnq5yv5uGlSuhX57M9fvvkGvI0er+P/iu4iDlt0m5W4/aMdMTaPz9lp03iFP29YrHQEoEYGasXfZE=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=npNmNo0BoyjRmO6v1zsuYJaAE02bLfWLc/1D8IVD5Do=;
+	b=mBOrxVV/PZYGdeuXvQryKXdWvnuGR0QyRwRZXsY2gIDTgC8srrC5pjPfAXxTdUtAkegrPS9OSLTUYui0Pcw+/VR2iprPj8jYrJxK8vJCECKC9yKZKFk4vUJTxGFJ1HHacf1v/zIBX5FYvYWJJ+7mDqtIFtwLs0fwehFlTaEA0sU=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.40,REQID:31aed279-14c3-41d8-9eed-63e22beb81f9,IP:0,U
+X-CID-O-INFO: VERSION:1.1.40,REQID:c9086d02-22c9-475d-9e47-4b2fdf061e44,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:ba885a6,CLOUDID:12ae13d1-436f-4604-ad9d-558fa44a3bbe,B
+X-CID-META: VersionHash:ba885a6,CLOUDID:5fa2f0d4-0d68-4615-a20f-01d7bd41f0bb,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
 	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_ULN,TF_CID_SPAM_SNR
-X-UUID: a266d08839cd11efb2966dae1f787272-20240703
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: a24f227639cd11ef9daba96ee3f3cc8c-20240703
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <chris.lu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 732025325; Wed, 03 Jul 2024 23:21:22 -0700
+	with ESMTP id 974678950; Wed, 03 Jul 2024 23:21:22 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 4 Jul 2024 14:01:18 +0800
+ 15.2.1118.26; Thu, 4 Jul 2024 14:01:19 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 4 Jul 2024 14:01:18 +0800
+ 15.2.1118.26 via Frontend Transport; Thu, 4 Jul 2024 14:01:19 +0800
 From: Chris Lu <chris.lu@mediatek.com>
 To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
 	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
@@ -62,30 +62,18 @@ CC: Sean Wang <sean.wang@mediatek.com>, Aaron Hou <aaron.hou@mediatek.com>,
 	<linux-bluetooth@vger.kernel.org>, linux-kernel
 	<linux-kernel@vger.kernel.org>, linux-mediatek
 	<linux-mediatek@lists.infradead.org>, Chris Lu <chris.lu@mediatek.com>
-Subject: [PATCH v7 3/8] Bluetooth: btmtk: rename btmediatek_data
-Date: Thu, 4 Jul 2024 14:01:11 +0800
-Message-ID: <20240704060116.16600-4-chris.lu@mediatek.com>
+Subject: [PATCH v7 4/8] Bluetooth: btusb: add callback function in btusb suspend/resume
+Date: Thu, 4 Jul 2024 14:01:12 +0800
+Message-ID: <20240704060116.16600-5-chris.lu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20240704060116.16600-1-chris.lu@mediatek.com>
 References: <20240704060116.16600-1-chris.lu@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--9.330500-8.000000
-X-TMASE-MatchedRID: xmxiBNXCzGYJjMBl75E2Dm3NvezwBrVmgDRlwc+wR6fADa2OEam+xnB4
-	4IkzjfYyThbvLLI8RvPS5T3gQEi/FFVju37PDEAuHcQQBuf4ZFvq0SQ1Mgx5CMSiwizsgluQ17y
-	gTjX1DW8ybDSrJJxJgiKdpy+2RQAX6EovbiVesMnPmshbRFtLmJKLNrbpy/A0w01zN1c0miKCjh
-	4HUudaCB+LGgER62NbSZnPb0iDSC5I5aNiVPKgsR5GbmCaemIUJ/I0ITC6MIWbKItl61J/yZ+in
-	TK0bC9eKrauXd3MZDUiXFDPMIaZGLc4+dW4JMQIqi8P0rY7CxseaZccRBusvZ9q2KbmHVphwL6S
-	xPpr1/I=
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--9.330500-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 2B416677F6A7ACE3C2DDE2D3DC78A66F1F94EF380257591D191292F3729535C42000:8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240703_232126_083715_7EFCEE3A 
-X-CRM114-Status: GOOD (  14.20  )
+X-CRM114-CacheID: sfid-20240703_232130_190843_D102B94C 
+X-CRM114-Status: UNSURE (   9.83  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,120 +88,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Rename btmediatek_data to have a consistent prefix throughout the driver.
+Add suspend/resum callback function in btusb_data which are reserved
+for vendor specific usage during suspend/resume. hdev->suspend will be
+added before stop traffic in btusb_suspend and hdev-> resume will be
+added after resubmit urb in btusb_resume.
 
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 Signed-off-by: Chris Lu <chris.lu@mediatek.com>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- drivers/bluetooth/btmtk.c | 10 +++++-----
- drivers/bluetooth/btmtk.h |  2 +-
- drivers/bluetooth/btusb.c |  9 ++++-----
- 3 files changed, 10 insertions(+), 11 deletions(-)
+ drivers/bluetooth/btusb.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
-diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
-index a27c251bf56e..6489e4a63fb6 100644
---- a/drivers/bluetooth/btmtk.c
-+++ b/drivers/bluetooth/btmtk.c
-@@ -64,7 +64,7 @@ static void btmtk_coredump(struct hci_dev *hdev)
- 
- static void btmtk_coredump_hdr(struct hci_dev *hdev, struct sk_buff *skb)
- {
--	struct btmediatek_data *data = hci_get_priv(hdev);
-+	struct btmtk_data *data = hci_get_priv(hdev);
- 	char buf[80];
- 
- 	snprintf(buf, sizeof(buf), "Controller Name: 0x%X\n",
-@@ -85,7 +85,7 @@ static void btmtk_coredump_hdr(struct hci_dev *hdev, struct sk_buff *skb)
- 
- static void btmtk_coredump_notify(struct hci_dev *hdev, int state)
- {
--	struct btmediatek_data *data = hci_get_priv(hdev);
-+	struct btmtk_data *data = hci_get_priv(hdev);
- 
- 	switch (state) {
- 	case HCI_DEVCOREDUMP_IDLE:
-@@ -355,7 +355,7 @@ EXPORT_SYMBOL_GPL(btmtk_set_bdaddr);
- 
- void btmtk_reset_sync(struct hci_dev *hdev)
- {
--	struct btmediatek_data *reset_work = hci_get_priv(hdev);
-+	struct btmtk_data *reset_work = hci_get_priv(hdev);
- 	int err;
- 
- 	hci_dev_lock(hdev);
-@@ -371,7 +371,7 @@ EXPORT_SYMBOL_GPL(btmtk_reset_sync);
- int btmtk_register_coredump(struct hci_dev *hdev, const char *name,
- 			    u32 fw_version)
- {
--	struct btmediatek_data *data = hci_get_priv(hdev);
-+	struct btmtk_data *data = hci_get_priv(hdev);
- 
- 	if (!IS_ENABLED(CONFIG_DEV_COREDUMP))
- 		return -EOPNOTSUPP;
-@@ -387,7 +387,7 @@ EXPORT_SYMBOL_GPL(btmtk_register_coredump);
- 
- int btmtk_process_coredump(struct hci_dev *hdev, struct sk_buff *skb)
- {
--	struct btmediatek_data *data = hci_get_priv(hdev);
-+	struct btmtk_data *data = hci_get_priv(hdev);
- 	int err;
- 
- 	if (!IS_ENABLED(CONFIG_DEV_COREDUMP)) {
-diff --git a/drivers/bluetooth/btmtk.h b/drivers/bluetooth/btmtk.h
-index e76b8a358be8..dde6fbdeb2b3 100644
---- a/drivers/bluetooth/btmtk.h
-+++ b/drivers/bluetooth/btmtk.h
-@@ -135,7 +135,7 @@ struct btmtk_coredump_info {
- 	int state;
- };
- 
--struct btmediatek_data {
-+struct btmtk_data {
- 	u32 dev_id;
- 	btmtk_reset_sync_func_t reset_sync;
- 	struct btmtk_coredump_info cd_info;
 diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index 8239d9c891e6..7612f10f9d39 100644
+index 7612f10f9d39..4ec18b58dc68 100644
 --- a/drivers/bluetooth/btusb.c
 +++ b/drivers/bluetooth/btusb.c
-@@ -3152,7 +3152,7 @@ static int btusb_mtk_subsys_reset(struct hci_dev *hdev, u32 dev_id)
- static int btusb_mtk_reset(struct hci_dev *hdev, void *rst_data)
- {
- 	struct btusb_data *data = hci_get_drvdata(hdev);
--	struct btmediatek_data *mtk_data;
-+	struct btmtk_data *btmtk_data = hci_get_priv(hdev);
- 	int err;
+@@ -891,6 +891,9 @@ struct btusb_data {
  
- 	/* It's MediaTek specific bluetooth reset mechanism via USB */
-@@ -3167,9 +3167,8 @@ static int btusb_mtk_reset(struct hci_dev *hdev, void *rst_data)
+ 	int (*setup_on_usb)(struct hci_dev *hdev);
  
++	int (*suspend)(struct hci_dev *hdev);
++	int (*resume)(struct hci_dev *hdev);
++
+ 	int oob_wake_irq;   /* irq for out-of-band wake-on-bt */
+ 	unsigned cmd_timeout_cnt;
+ 
+@@ -4765,6 +4768,9 @@ static int btusb_suspend(struct usb_interface *intf, pm_message_t message)
+ 
+ 	cancel_work_sync(&data->work);
+ 
++	if (data->suspend)
++		data->suspend(data->hdev);
++
  	btusb_stop_traffic(data);
  	usb_kill_anchored_urbs(&data->tx_anchor);
--	mtk_data = hci_get_priv(hdev);
  
--	err = btusb_mtk_subsys_reset(hdev, mtk_data->dev_id);
-+	err = btusb_mtk_subsys_reset(hdev, btmtk_data->dev_id);
- 
- 	usb_queue_reset_device(data->intf);
- 	clear_bit(BTUSB_HW_RESET_ACTIVE, &data->flags);
-@@ -3191,7 +3190,7 @@ static int btusb_mtk_setup(struct hci_dev *hdev)
- 	char fw_bin_name[64];
- 	u32 fw_version = 0, fw_flavor = 0;
- 	u8 param;
--	struct btmediatek_data *mediatek;
-+	struct btmtk_data *mediatek;
- 
- 	calltime = ktime_get();
- 
-@@ -4419,7 +4418,7 @@ static int btusb_probe(struct usb_interface *intf,
- 		data->recv_event = btusb_recv_event_realtek;
- 	} else if (id->driver_info & BTUSB_MEDIATEK) {
- 		/* Allocate extra space for Mediatek device */
--		priv_size += sizeof(struct btmediatek_data);
-+		priv_size += sizeof(struct btmtk_data);
+@@ -4868,6 +4874,9 @@ static int btusb_resume(struct usb_interface *intf)
+ 			btusb_submit_isoc_urb(hdev, GFP_NOIO);
  	}
  
- 	data->recv_acl = hci_recv_frame;
++	if (data->resume)
++		data->resume(hdev);
++
+ 	spin_lock_irq(&data->txlock);
+ 	play_deferred(data);
+ 	clear_bit(BTUSB_SUSPENDING, &data->flags);
 -- 
 2.18.0
 
