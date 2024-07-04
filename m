@@ -4,83 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2F48C3271F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jul 2024 17:52:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4AD43C30653
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jul 2024 18:19:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=q9ZGDkNDaH5zEMSc1zQxlXWMpC2ttmRI/VlhJHn6Lgk=; b=DvUvGqg2XnBqp5FrpZQp5E8S1y
-	2khPxEVb9b79Mo/YMtC5SzVixKp/4IoJeUp/hd8dbLQhB0r1Tjrszdw0W0QXqONyW+lp5BuFDZAmO
-	qOT0DhPhKVZyo3L36qbGQa6xTwvlB+Kj9mRhCp080eqUEBrYG65E+5iQrq+yYslbUR+0/LlmlY2pU
-	xVV4esiUg3LijnJFlZ8bbXl4pEVWiXHgv9kEvFOELy9uUJZwik1qEf4nzsLhFq0cRZLhc8e1vjFB4
-	W8xhe3QajgrzOEvohixhDTNCsMvJe6s6Oj0UAO/+5qosqZhnqEuVhOQ//49IoSfoXPwnb4424C9mj
-	FzsLZ8Xg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=5ehU1NmAgichp4m8MzuZQfqjkE5PpzEKSy+xvBxKSSM=; b=K2WleXjJHjIUGK0t4n+PVex3ng
+	sF5xuFfxcfnGmgYmQrif/SMbqC8XBhr8+hF2cadMMVgmyURmVALMqMUEM8C14CwMvi493NJuDqRU9
+	VRbIilPyEfyTYaKsN3Noi2zWUDgJBowXZzdLClgq0GNpgZ6Z0oQQrVGxR+qiUnyZGvwzOCAZSY3FW
+	OdDh1W0A1ikmhIqbVPdlHu3z8GTFQ51KnhbVM5vFBOtYyMgqBIPmBlZlJIo7itFDTSWJtEkXSNkFW
+	sIL6yct5jA0wf6ka8CmDVVa7GVRd0CBGHBHVj+/wvqQAfXIge4EVjg1+jETmnAqdErNQ87n4chyWt
+	L8r38N+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPQcv-0000000E509-2cgx;
-	Thu, 04 Jul 2024 17:52:13 +0000
-Received: from mail-yw1-x1131.google.com ([2607:f8b0:4864:20::1131])
+	id 1sPR3h-0000000E8Lp-2xOM;
+	Thu, 04 Jul 2024 18:19:53 +0000
+Received: from relay7-d.mail.gandi.net ([217.70.183.200])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPQcg-0000000E4wV-3ur7;
-	Thu, 04 Jul 2024 17:52:00 +0000
-Received: by mail-yw1-x1131.google.com with SMTP id 00721157ae682-6515b824117so7822367b3.3;
-        Thu, 04 Jul 2024 10:51:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1720115517; x=1720720317; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=q9ZGDkNDaH5zEMSc1zQxlXWMpC2ttmRI/VlhJHn6Lgk=;
-        b=XxNz7VqW6mP51Y/l3fc63ShGhjGfFt4kHd0KypdC7StF/IddIsnXIGI2kndkVAlQfv
-         ZIRJ6iBgLQj/I3tW4CEctRPlS4Z4d7aSk4HHPIPpZwaht2EGLJ8p4BSRKlU3relZ6cmj
-         yNbMeA7R6MVHVSy71UN9iP2WOJtE9u/OOWZbyLozpvgd7uzaNMlHbHwf7kIWzw6dL8xu
-         FyzoJSTrbA10Q8jbYAYB11POHeHkCr8c40HyqHqw8iQm32thsYlnSm4nL+BN9EUlw47H
-         2RPe6xdgdlFwowqXGjuWzWhKcoYWXORfdm8fg30SSS88Jru7nJNzaCW1eUMypKqAnIQp
-         legw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1720115517; x=1720720317;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=q9ZGDkNDaH5zEMSc1zQxlXWMpC2ttmRI/VlhJHn6Lgk=;
-        b=UiczsUt4OM0ZfVOkH2+PyLP7ko5PO+I22s06OvG3PQeV9msfmPaBQUQmNzSo045BC4
-         MDfDKa+7Ffg7TqAiFtCGWy3zOGYDAfcDI3kIb5zqBLptCcJm4ynNBUadP8jCt7y3W4Fg
-         PbLRhm5K1WNkeyTWMdOLuJhRVJfkcJI0QvIdwFQNniF17HPGxXTrmtbn43otwYIQVxNK
-         sKk7pCnEL16K6umMpfzAr1ovhdFIbgZhgWhhqMlcCQDKfgbQ8Cebhwm4uoAK6hYV5CVG
-         aCktFHUUOpoU0MxisGoq/vHLG+/D0B3dCVRx+e3XiQgW2zl6SXoWeiH5xiasZBJzTIar
-         zKhw==
-X-Forwarded-Encrypted: i=1; AJvYcCVV+I5zkKQzXVqG6nH/+jvy2uLmZQWFqwjqVqX/4uX/34OD+4I936fgTs9729rBWRizRAChqq1/QeR8vw4+AkQQJLqOhzS8OvCF3WZ32OI83HZmXvI+LF6wsF1gey0JCEaDad+zYI41UdOrDM3OmgiSx5iny7G2MbQ=
-X-Gm-Message-State: AOJu0Ywty2AODuBOKrr8KW+2bngIEf+jjlQS7po59REGMwLnW5OdD/jH
-	+7V/qc2d5Y1Qf28Rf//Th3gHNEJVWvmSN3ojgTbnVvx3pUYpQw7ICpayC28amx2aSanR5DrimcY
-	/t/vm9zfLyZFzclRs1ubHnwtHJg==
-X-Google-Smtp-Source: AGHT+IFIAR8Jj6Yu1jYElOsdEpuLchqpXnHbG4ciCJ1Ndo9m2ANXqdWA7wPkeW8bfWX8rdNtiNiUj8+kRAEvcRzjLr4=
-X-Received: by 2002:a05:690c:4513:b0:646:53ce:b365 with SMTP id
- 00721157ae682-652d8039562mr27222577b3.42.1720115517284; Thu, 04 Jul 2024
- 10:51:57 -0700 (PDT)
+	id 1sPR3S-0000000E8I5-35IO;
+	Thu, 04 Jul 2024 18:19:40 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id D6AC420007;
+	Thu,  4 Jul 2024 18:19:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
+	t=1720117173;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=5ehU1NmAgichp4m8MzuZQfqjkE5PpzEKSy+xvBxKSSM=;
+	b=GIyWfvOsTGUSv1/hsEaQVUE21GVQxnlG9LLyOmGhlOs7w1X1KeauR8lrmiY2n2Pl/kDnxu
+	SL8ZpoW2YP8tfX/vRHE1nn/qME2Xq17RjKRxcdk1LLZDf1s36vtnQbPg/4Rv3q+G6Epf+t
+	b+rGBRLglsMjoBRhBcguxOkpLIWgsmc6oetK4kfpzzOwHCA0PiknZDyQtvvpz9US6lRADC
+	jp1RSOpkOW04ZsNt2EbLJntTgjVy6rqMrSPjA3gD0aH1TLh+QelkOB/RIFyLQtfCLQiAqE
+	W3ktQqovAEuhBgpIyksbbXE1mCkv/x+ZjhB089n3IDS2eOj4/fSpt7FgEQQwtQ==
+Message-ID: <a57dd43e-0798-4dab-853f-da84a19ee153@arinc9.com>
+Date: Thu, 4 Jul 2024 21:19:28 +0300
 MIME-Version: 1.0
-References: <e3ece47323444631d6cb479f32af0dfd6d145be0.1720088047.git.daniel@makrotopia.org>
-In-Reply-To: <e3ece47323444631d6cb479f32af0dfd6d145be0.1720088047.git.daniel@makrotopia.org>
-From: Rui Salvaterra <rsalvaterra@gmail.com>
-Date: Thu, 4 Jul 2024 18:51:46 +0100
-Message-ID: <CALjTZvYxwte8yO57V_rxZdh-=J2cvf38xHx-7NcQzE6nVG+Y-w@mail.gmail.com>
-Subject: Re: [PATCH net-next] net: ethernet: mtk_eth_soc: implement
- .{get,set}_pauseparam ethtool ops
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>, 
-	Mark Lee <Mark-MC.Lee@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>, 
-	"David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Russell King <linux@armlinux.org.uk>, netdev@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net v3] net: dsa: mt7530: fix impossible MDIO address and
+ issue warning
+To: Vladimir Oltean <olteanv@gmail.com>
+Cc: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Landen Chao <Landen.Chao@mediatek.com>, Frank Wunderlich <linux@fw-web.de>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ regressions@lists.linux.dev
+References: <7e3fed489c0bbca84a386b1077c61589030ff4ab.1719963228.git.daniel@makrotopia.org>
+ <d3ac5584-8e52-46e0-b690-ad5faa1ede61@arinc9.com>
+ <20240704172154.opqyrv2mfgbxj7ce@skbuf>
+Content-Language: en-US
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <20240704172154.opqyrv2mfgbxj7ce@skbuf>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240704_105158_993336_C01A57F3 
-X-CRM114-Status: UNSURE (   8.65  )
+X-CRM114-CacheID: sfid-20240704_111939_069150_E1E16727 
+X-CRM114-Status: UNSURE (   7.53  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -96,23 +86,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Daniel,
+On 04/07/2024 20:21, Vladimir Oltean wrote:
+> On Wed, Jul 03, 2024 at 10:03:09AM +0300, Arınç ÜNAL wrote:
+>> Works on standalone MT7530, MT7621's MCM MT7530, and MT7531. From MT7621's
+>> MCM MT7530:
+>>
+>> [    1.357287] mt7530-mdio mdio-bus:1f: MT7530 adapts as multi-chip module
+> 
+> Why is the device corresponding to the first print located at address 1f,
+> then 0?
 
+Because mdio_device_register() in mt7530_reregister() runs with new_mdiodev
+after dev_warn() runs with mdiodev.
 
-On Thu, 4 Jul 2024 at 11:14, Daniel Golle <daniel@makrotopia.org> wrote:
->
-> Implement operations to get and set flow-control link parameters.
-> Both is done by simply calling phylink_ethtool_{get,set}_pauseparam().
-> Fix whitespace in mtk_ethtool_ops while at it.
+> 
+>> [    1.364065] mt7530-mdio mdio-bus:00: [Firmware Warn]: impossible switch MDIO address in device tree, assuming 31
+>> [    1.374303] mt7530-mdio mdio-bus:00: probe with driver mt7530-mdio failed with error -14
+>> [...]
+>> [    1.448370] mt7530-mdio mdio-bus:1f: MT7530 adapts as multi-chip module
+>> [    1.477676] mt7530-mdio mdio-bus:1f: configuring for fixed/rgmii link mode
+>> [    1.485687] mt7530-mdio mdio-bus:1f: Link is Up - 1Gbps/Full - flow control rx/tx
+>> [    1.493480] mt7530-mdio mdio-bus:1f: configuring for fixed/trgmii link mode
+>> [    1.502680] mt7530-mdio mdio-bus:1f lan1 (uninitialized): PHY [mt7530-0:00] driver [MediaTek MT7530 PHY] (irq=17)
+>> [    1.513620] mt7530-mdio mdio-bus:1f: Link is Up - 1Gbps/Full - flow control rx/tx
+>> [    1.519671] mt7530-mdio mdio-bus:1f lan2 (uninitialized): PHY [mt7530-0:01] driver [MediaTek MT7530 PHY] (irq=18)
+>> [    1.533072] mt7530-mdio mdio-bus:1f lan3 (uninitialized): PHY [mt7530-0:02] driver [MediaTek MT7530 PHY] (irq=19)
+>> [    1.545042] mt7530-mdio mdio-bus:1f lan4 (uninitialized): PHY [mt7530-0:03] driver [MediaTek MT7530 PHY] (irq=20)
+>> [    1.557031] mt7530-mdio mdio-bus:1f wan (uninitialized): PHY [mt7530-0:04] driver [MediaTek MT7530 PHY] (irq=21)
 
-[patch snipped]
-
-Working flawlessly on my Redmi AC2100. This is thus
-
-Tested-by: Rui Salvaterra <rsalvaterra@gmail.com>
-
-
-Thanks,
-
-Rui
+Arınç
 
