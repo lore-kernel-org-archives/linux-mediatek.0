@@ -4,76 +4,183 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 477BCC3271E
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jul 2024 11:41:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1421C30653
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jul 2024 11:56:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=l7kIOQ7U9whmVzcXksdbQ0HHHC/NbDC/JzmH/l2qmpo=; b=PVMKDu1d+387x3rFmo8XkZ2mbs
-	BT6OJEfRFvktagqOWhgu+H7CGmRUwua79pt7bjFmgyNNUTUD8UH/+gUwO6GK+5q21woNIrs5u+71K
-	M0RI5P6HKzULon5E5P6HccZYtiH9dNcZDFS4+hPGHc/6LbKr92XhDNQd4IzCanC535rGvG9FtU2ar
-	/xDPGE0+7W+hEfP2KfzJ7MFMTjdn+A1f8UuQWiq+MZFAJ5G1WB3bSn8heL564aKOjAFWMUgsUcEHW
-	6VpjJLff3uZ/1O9PBNjjm5n23ZPTOfu9XvJyfVE0ykzKULRlQhf4zk8AFB5yUL5Y++a4KaHk9vavu
-	z4xr6n0w==;
+	bh=9Nj8ylJiAK4PaC05sjG/G9aUfCyDoaMH5FJUWNxbC9E=; b=BYf2bSwISNhCLYWaMTjM0fgJfk
+	1D9LvRdX0UXWOidJpyGb0yahMXtsTnfdWEMoih0WTamJd7MiosUQLkLvi6PVCrhz90PCV6fT3KYKO
+	NduZxlxnJ5c1FaQKdY9T58CcBmojlkpWW+ifyvXlCa4Q6nuZHG3uaHc94L1ZnK6nzSBPIXVfDjVWa
+	5HorQIWEaveikaaO1rOI+S+hZHD9vimaBeePWoly+mgNKftjZUfp6DNX+/ZMZVu9Kt40vlZx+sgAx
+	ol4VHMXxa736+vTydGJ6Jbm98M3Glx4FgAyidzSWZrS8K6ThF4Khzd7DOeybDbZscXO78JzlJGUWU
+	wLRQuC2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPKpo-0000000D30z-4AH1;
-	Thu, 04 Jul 2024 11:41:08 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1sPL50-0000000D54O-1FJQ;
+	Thu, 04 Jul 2024 11:56:50 +0000
+Received: from mail-dm6nam10on20602.outbound.protection.outlook.com ([2a01:111:f400:7e88::602] helo=NAM10-DM6-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPKpa-0000000D2xJ-2BqU;
-	Thu, 04 Jul 2024 11:40:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=l7kIOQ7U9whmVzcXksdbQ0HHHC/NbDC/JzmH/l2qmpo=; b=Ni8own68G3SfOJUosPZiMSNYT4
-	57ezfWIGYC9RZKmNJ0ToBoz6m4GI1oTOERfcE9TQXMLAM27DEmIIHxsWQmPSpf3yC9W0Q9ZckyQRa
-	EdtnLb3JF3Pqol2nhoH/RU3P/SYnGrqe3StL+TVByWMPHPEd8vXdwisjZz0+8bm5CdYfLsK6oOKpJ
-	GYFMDIowvI4+Ywz3LbRxRL/f1qdw5tdXOfbp18phpxMJeocAiFcu7uyD/QQ3LwqKa2RNAfAta5CKd
-	av5NbGmT8dDaH2lRGM5LGvOtj7w0g1L+QnnKfAUmqvaofx5VbhtU7jsyF1bTImdmfGo9GUQ70SaeU
-	qt7HqohA==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:60514)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1sPKpD-0006ps-0P;
-	Thu, 04 Jul 2024 12:40:31 +0100
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1sPKpB-0003ta-2v; Thu, 04 Jul 2024 12:40:29 +0100
-Date: Thu, 4 Jul 2024 12:40:28 +0100
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: John Crispin <john@phrozen.org>, Felix Fietkau <nbd@nbd.name>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next] net: ethernet: mtk_eth_soc: implement
- .{get,set}_pauseparam ethtool ops
-Message-ID: <ZoaKLKl9cFkhmJKU@shell.armlinux.org.uk>
-References: <e3ece47323444631d6cb479f32af0dfd6d145be0.1720088047.git.daniel@makrotopia.org>
+	id 1sPL4m-0000000D537-3o0s;
+	Thu, 04 Jul 2024 11:56:38 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=jSclwcWa+yOL+Y7f0spuxT6G6ffqWYpJ5dz1bOaDvNxJd/vmL3kPp81tWNx5U7IuOuLR4zi0Zi3ps1E3d/vVWRQq/m5Ir9UcniZSujFGdmvMYPH6CVIQe36p/4xvHHTGifEc7OoXRRwDkucFlGS4FXvCroY/MPKroo4sw1hp3rZwij6Oj/OidCNH/WGqEklWsntPkZ5/jmP77QlLluR2k0AY0pcdKGbEGGXGRsUp+HP/toIxn1ISxMhjzgpM5wpfke27d0Mo515txg22jtyaBPeSSF4bUuk+GTcS6YNWjK/jk5pDnt46VIri3xYfIKpfg8aI4t6Vhk2AePOfsf+SLw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=9Nj8ylJiAK4PaC05sjG/G9aUfCyDoaMH5FJUWNxbC9E=;
+ b=Fk0IH1V8QXV+LQus2q/t7vSKPkK72+ApXlcw5nwq8ivX12r5hecorDyxYokZEYFaZ1AYN/IvvCev6Me/IDq3zNsLR8Nx0StWMJkkxDu1ouVFPtx5MVa3smxDufMbm/TMToSCdFLVtnITZY/5A0obVrwapvxXSlTimoGngHrFHKwbriGy2AvBMPpS8jYCR4kJqDkLfhWmAnG6YadLjiRnC/QSPy1uZhtRrV3/G628zlpx8os5F0X4I/W+3Cv6rE/cwYrkH8XOdxMFzYw3q6jvd1YSvxa3qzZjGdajMmfll8OEhWmltplU59S34dTGmo0yR/P8W068NpmEqLTMorBPXA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
+ header.d=amd.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=9Nj8ylJiAK4PaC05sjG/G9aUfCyDoaMH5FJUWNxbC9E=;
+ b=kpWo+L2TJh6yg5jtsSiZjJOem9P1wVZqlonZuu7TI4hee+jslJFts1FZC3Pac8bsUxzn90zDWaoTblWPPrfPgQ/jrz0AEIcutZTc4ppjmXDSLGCvM1IvQI+TZA0KAK6cv9+kkuNN+TDNElMhzyQEv8QOTVXs5YGrwaZ272CKTnc=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=amd.com;
+Received: from MN0PR12MB6101.namprd12.prod.outlook.com (2603:10b6:208:3cb::10)
+ by DM4PR12MB8523.namprd12.prod.outlook.com (2603:10b6:8:18e::13) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7741.26; Thu, 4 Jul
+ 2024 11:56:29 +0000
+Received: from MN0PR12MB6101.namprd12.prod.outlook.com
+ ([fe80::37ee:a763:6d04:81ca]) by MN0PR12MB6101.namprd12.prod.outlook.com
+ ([fe80::37ee:a763:6d04:81ca%6]) with mapi id 15.20.7719.029; Thu, 4 Jul 2024
+ 11:56:29 +0000
+Message-ID: <11b57ff8-91a9-42d8-acbb-ea618157d655@amd.com>
+Date: Thu, 4 Jul 2024 06:56:25 -0500
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 4/4] cpufreq: Make cpufreq_driver->exit() return void
+To: Viresh Kumar <viresh.kumar@linaro.org>,
+ "Rafael J. Wysocki" <rafael@kernel.org>, Huang Rui <ray.huang@amd.com>,
+ "Gautham R. Shenoy" <gautham.shenoy@amd.com>, Perry Yuan
+ <perry.yuan@amd.com>, Hector Martin <marcan@marcan.st>,
+ Sven Peter <sven@svenpeter.dev>, Alyssa Rosenzweig <alyssa@rosenzweig.io>,
+ Markus Mayer <mmayer@broadcom.com>,
+ Broadcom internal kernel review list
+ <bcm-kernel-feedback-list@broadcom.com>,
+ Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>,
+ Len Brown <lenb@kernel.org>, Kevin Hilman <khilman@kernel.org>,
+ Michael Ellerman <mpe@ellerman.id.au>, Nicholas Piggin <npiggin@gmail.com>,
+ Christophe Leroy <christophe.leroy@csgroup.eu>,
+ "Naveen N. Rao" <naveen.n.rao@linux.ibm.com>,
+ Sudeep Holla <sudeep.holla@arm.com>,
+ Cristian Marussi <cristian.marussi@arm.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-pm@vger.kernel.org, Vincent Guittot <vincent.guittot@linaro.org>,
+ Lizhe <sensor1010@163.com>, linux-kernel@vger.kernel.org,
+ asahi@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
+ linux-omap@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
+ linux-arm-msm@vger.kernel.org, linux-tegra@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+References: <cover.1720075640.git.viresh.kumar@linaro.org>
+ <3f73fda736818128558b61ad5fe2bed5dce3ddc4.1720075640.git.viresh.kumar@linaro.org>
+Content-Language: en-US
+From: Mario Limonciello <mario.limonciello@amd.com>
+In-Reply-To: <3f73fda736818128558b61ad5fe2bed5dce3ddc4.1720075640.git.viresh.kumar@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: SA0PR11CA0087.namprd11.prod.outlook.com
+ (2603:10b6:806:d2::32) To MN0PR12MB6101.namprd12.prod.outlook.com
+ (2603:10b6:208:3cb::10)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <e3ece47323444631d6cb479f32af0dfd6d145be0.1720088047.git.daniel@makrotopia.org>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: MN0PR12MB6101:EE_|DM4PR12MB8523:EE_
+X-MS-Office365-Filtering-Correlation-Id: 1d45e0ab-be42-48ff-49de-08dc9c205719
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|366016|1800799024|921020;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?UzYvTUFQWDhuaEtwOG9lRnB5UEl4UHowaVNNZzR6UlQwaHpUWkluNkE0RVZI?=
+ =?utf-8?B?TFRFMlp1c2NHaXRBZy96UzlId1VsYWV1M1hqRlRSdC8rS01JSHhEYlJWTGd5?=
+ =?utf-8?B?L1FDYUtCYmkyR3YrQmJEZ1F2VnNRQjVIWStnaDF4dWthMkluR2EycGZYVnFX?=
+ =?utf-8?B?MFA4OTFyZms2WVB6NnhkdWdsOTJiWWMzUDhRQ3JRcG4xKzRxZjdjQUdrS0lG?=
+ =?utf-8?B?RlR0Rzd6aER0TExmWVI3aDlVWTljblF6T3hBZ1kyT1FnOG92UHF1bkR2eGVy?=
+ =?utf-8?B?VjJGSHlrRFFLSHh4T0RzTnZpNCtIVW8rQWl5M0JGTTYyNmc3SHVtUkFDUVBE?=
+ =?utf-8?B?b2k3QWJlZGxPa0hoTVJVbkRNNjN5RlV1RDBCNmxYUkZoOUlmb1JGS2xLUlBS?=
+ =?utf-8?B?Q0dmL2hzRWxRaXRJWXhpOXZEeEgwbDVRakMzeEE1WEpsUVRENmtvenBPM2Y1?=
+ =?utf-8?B?VjVqQWU2ZkZveEZUOUxvMHJSTGVtS0FmMlZEcVB6YXE3YjNIdHEyY1dLL1dQ?=
+ =?utf-8?B?OW9yWHlZTHlqcUdnU3B6UlN5bWxzZVFRZzV4dG9GY3VCc2RWUGU0bUNGNndk?=
+ =?utf-8?B?Z0pORVhxS044STQrUTRxMEtteXMySkhTcTFEYmw1LzZrRU53clgxR3g1VEZP?=
+ =?utf-8?B?ODRucjlHWXg5azAySXVZV1l5VUMzOG41akhtb3A4eWN4cDRMSlRxclBPOXZt?=
+ =?utf-8?B?R1ZhYVlQVFhGcjlUc24zU2plUnhWekh3RVdKYU1neDBmZ0pWRTkzOTJhY2da?=
+ =?utf-8?B?VzlVNDBjUUpoWERYZmpDRmFuWTV3bzhpVG5DOCswTjFuUmZEMjd5TGFQdFhJ?=
+ =?utf-8?B?S0FWREpDRXNzanF0S0JpcjFoU3BJVlpySCtEQzk1eHhLb3FBaGxkMloyU093?=
+ =?utf-8?B?N2FpM0FFa0NBU3NpeUFtUCtod1RWNDlZREVOY01nNU9qVm9VYmR6NTlBa1lH?=
+ =?utf-8?B?RTFPRENNWXNodDVJcTl0VjU3dWdwR091c1VKY1AzRGcxM2hIWWh3dHk1Nkpp?=
+ =?utf-8?B?ODJBMHlVOGNiZ1plL0pENmd3VkJPa1ZUMjlFa3hkeVl3VWVUejF5cUlYR1cz?=
+ =?utf-8?B?aUsvOWRjSUYzdUNhWnQvZVluN0lYaXkyQ3pQNG5vbU1ydFRSam5QbTdtRitB?=
+ =?utf-8?B?ak5uU1dlazEyQ2trL3NMMWdZSTFGaTZLT3hCNnU2R1RzRWtSbXFNT3RCWkYy?=
+ =?utf-8?B?bjNrMS9oYldXeDd1RVBrQWNkTSs5K3pLRGUxckp1Q05KNWNZeklKRERFOVJi?=
+ =?utf-8?B?M3dZUFM3YXVOK1JDWTlEckI2WTNPZ3J2NTNwbUYwR2VwUU5Fckt3MUJVNGJp?=
+ =?utf-8?B?UWRBdWRTSUNtOFFrTlRsczcrRGU5TlBzNEEvSHh6NHhQWjZDSjE2U3puNDA0?=
+ =?utf-8?B?TzRWc25CU2lZcHRlTVhrZmhPS25TVStCenZVUUxqdHZIZ3NVS2tKbmh6TXJk?=
+ =?utf-8?B?U2g2OEg3Mk1UdEtVMHEwTG8reHNOYzRraE5kRVJrWk1waCtncU04WnNSZ1pn?=
+ =?utf-8?B?SDVHby9wejNlV2F4NFU0anhVdkV5cDhQbDFGQmtqQ09sVmFFTHdLOWU1K21R?=
+ =?utf-8?B?NloyWTcrRFFDcUVUalQzNjVldVFxZUVBcFcyRlYrbzU2SUlrNjFmaGZQMVZp?=
+ =?utf-8?B?cHFSQ1JqLzZnODQ0V0V6L3V0bW5zOVBVa0lHVWhGTWZ5YWJEYnJyY2hsNVE2?=
+ =?utf-8?B?NzdXa3JlNGRoWm5qbi9hdUhiL215NjdSQ3p3cWs3MGkwVExyNXV5dEhFaEJO?=
+ =?utf-8?B?djAyUDBwcURGTVdPSHdxb3VEQXRxTlN2R1RGMHpDODg3TEFIVmhTZDkrRi9n?=
+ =?utf-8?B?eDRaalc2cVFlbDR0Sjk2UHpMR082MWJpRnQwWUdnTzN1TUtWWDc4VWt3MlEw?=
+ =?utf-8?Q?l15JoDHqahDdw?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MN0PR12MB6101.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(7416014)(366016)(1800799024)(921020);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?Z2p1ckFwVEsvcE12QUFTMERCS3JoYjY1K0lkWEErcDIzS2tVTDdQY3VnbmU1?=
+ =?utf-8?B?cEFIcDdoV3pPVVZncUdvdXNKaHRicWxxR0tQdkVOdTZUczJJK1k1UDR4OW9K?=
+ =?utf-8?B?RGIrakFLMUhhRWoyNEJ3UGRic0FVeHF3L2FpdlpJampQcHNXV1gwWW1lT0Jm?=
+ =?utf-8?B?SnlocExsRzVnN2FINFdrM2tOV2VTT2oyYUdNSjZvT1c5d2JrNEFvdG1jSlRs?=
+ =?utf-8?B?elB3UG12bnA1S0VTdElEcFovekdLbHhmZWdqMFZ5R2MzOUh6SXcrbEtWbDh4?=
+ =?utf-8?B?SkZiRVVLRTU2TDQ4d3pZaVBmVTl5ZHI2eW9EaDhKU044aGoySzZSeVF4WXAw?=
+ =?utf-8?B?WisvWG5RaHFtcGFTTjJDTnlhVCswQU1OUk8rQTllU2srWVJwZUZRQzgyUm83?=
+ =?utf-8?B?TkgxM2hjckdXZGRWRXdNRTZxV2J0U0owU0R4bHhNTkE0MzVwZ0YzY3o1WU9L?=
+ =?utf-8?B?U0R5eFAxaVFOV0NKc3QwUEMrNGlPRk9kZVZHMXhuYlZZdnV3TTlOKzM3aFFx?=
+ =?utf-8?B?bnVabUFFWlRDZWpMZDhHU1R5RjdGdUQ4Tlo1RmFZSzRaMjZsbFBCY0kxbVdT?=
+ =?utf-8?B?YUVBQ2NuQWRQZXQ5bVhlU2hlQkdXclBMdklrUmRlS05KRng5dUVlUjJJNFdD?=
+ =?utf-8?B?U0Z0VHBnU1hzV2N2STJWcGp6U0VVa3BwdDVhbHJjQ1pncFI3MVRXaG5JWFBv?=
+ =?utf-8?B?bmVXd2NEczhjM1N3TW5kV3NDdHdBZzhOV1hsQTdCVFZuWjlTbUJza0cvYlJq?=
+ =?utf-8?B?QitLSjNnVWloU0JzTURnZE9LakFuMFNYdG1kNzUxdXRReGFOSXBoZjZpSUZ6?=
+ =?utf-8?B?NU1JMnBaL1puUTFtQk52MXVPSEEyOHd2RnRaR21EcFE4RmphSDNRZWc5RFVU?=
+ =?utf-8?B?SFhDSGVMNjdCY2IrVDVHOVAzbEFJOEgvN1RLMU5FU1daeDJ1MUpxMmtlbktz?=
+ =?utf-8?B?Rmh0VlV1Vllqd3J5ZEt3aDdES2pHUjRtTzBRN3RUKzhoV3pySXcrMTBIU3Q0?=
+ =?utf-8?B?bjVQNVc4SWxoaS96MUlqVkVONk5zNTM3OXhVU2J6bTB1R1JxVnNsTWNSSSs4?=
+ =?utf-8?B?cDRCUE9LQXp1T21pcHZqbVM4M2VyV1EvamltLzBhdEhPRWxKQzN6Yi9memNH?=
+ =?utf-8?B?S1E3eUhuWEpwamdnb2VyNVRBcGMyUkJ3SXpjdm1yaEZxV1QvVVRLRTFEb1py?=
+ =?utf-8?B?UmRRSnJhdE9TcDZROXp4MzkrUHpybTE0VUZ3eUlmWS96eEQwNG1QOTVEcHRy?=
+ =?utf-8?B?Uk03RWNPQWc0Y2tyL0VScjk0b2FyMDZ6NHZqSzJVSVRXUkRFOXhTSUR5bFFa?=
+ =?utf-8?B?ZDV0MkN6ekh3WnVkcllXOXFoZVFpc2lnRHpCemJtbmxqMDAwN00wWnIxL0Y0?=
+ =?utf-8?B?c04zNFRpSmhmUWRBVHlVODJMalpTR2NkYXRSMzhIYkQyQTN5YXlrYTdQSlNw?=
+ =?utf-8?B?TkFXazVKU2NPVDVNaWtSZ2VmcXZxeERBRVJsL3FFdzNwQ3QyWVo3Nkc4Uklw?=
+ =?utf-8?B?M3FhWnZDOFNxbmJwNEN3TldOdjVTSlZoLzZIQVdkbnRydkRlc0JhWTZyb3Y2?=
+ =?utf-8?B?WmJaVVBDb2lFQ1ZJMVVlTVlBNnpkVHQzaHlCdyt2SDhiK2JNS1BST0JpM29B?=
+ =?utf-8?B?VFRmVUNtT3lOaThvMXdwYUZuclplclVwVU9sYng5ZGFGT29uZWlad2k1VHdI?=
+ =?utf-8?B?cW9jM3NnREQ1S2dqRDllSXFmTVU3R3M5TUp6TzNTS0QweVZRK2wxbDlUbjly?=
+ =?utf-8?B?bGpXSGdPcjhMOEZQNDJvTS9uQ2NkRXY5WWo1dEcvRzZ2dnVaTHkybVFxcWVZ?=
+ =?utf-8?B?RVRSZ0FPNk4wMU9ZenJtU0VNT1M2WWpqQ0d0OTN5eUZBU1pueFVLMnlqWE9k?=
+ =?utf-8?B?K3hYR0ZJTjV5SkJFQWhXYm9PNURwZ1hiLzB3b09sNjF3cFFieEdoQzVQS0Zh?=
+ =?utf-8?B?WFcvcVErdTNrZmp6K0xnN0tLb0JwNktld3E2L0JQdzhIQ0dONnZvNHViV1lS?=
+ =?utf-8?B?YklOT3NvUUEzQm4vWi9hcGJ5c2t5YmkraE9Uc3I2VjhMMzJ3clRUQ2dBQTZG?=
+ =?utf-8?B?OWVHYzhZTTNlZ3pyODhlb0l1Z3VqVFVPYVV1UFk3SkhiVGJmc1BLVEhTcHdQ?=
+ =?utf-8?Q?FYxajcg53TcY7zbB42KbjizF/?=
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 1d45e0ab-be42-48ff-49de-08dc9c205719
+X-MS-Exchange-CrossTenant-AuthSource: MN0PR12MB6101.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Jul 2024 11:56:29.5669
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: niRj7KYRpM3UUg+fcmUQe8DDJAewM+qvNSVarbAZ/vqCNPSpDUIO0a/OHBI44NAqN+TPLAS1dUZenEWSxU1kTA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR12MB8523
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240704_044054_594049_54958B00 
-X-CRM114-Status: UNSURE (   9.53  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240704_045637_485979_31F358A1 
+X-CRM114-Status: GOOD (  11.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,18 +195,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 04, 2024 at 11:14:55AM +0100, Daniel Golle wrote:
-> Implement operations to get and set flow-control link parameters.
-> Both is done by simply calling phylink_ethtool_{get,set}_pauseparam().
-> Fix whitespace in mtk_ethtool_ops while at it.
+On 7/4/2024 1:53, Viresh Kumar wrote:
+> From: Lizhe <sensor1010@163.com>
 > 
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> The cpufreq core doesn't check the return type of the exit() callback
+> and there is not much the core can do on failures at that point. Just
+> drop the returned value and make it return void.
+> 
+> Signed-off-by: Lizhe <sensor1010@163.com>
+> [ Viresh: Reworked the patches to fix all missing changes together. ]
+> Signed-off-by: Viresh Kumar <viresh.kumar@linaro.org>
+> ---
+>   drivers/cpufreq/acpi-cpufreq.c         |  4 +---
+>   drivers/cpufreq/amd-pstate.c           |  7 ++-----
+>   drivers/cpufreq/apple-soc-cpufreq.c    |  4 +---
+>   drivers/cpufreq/bmips-cpufreq.c        |  4 +---
+>   drivers/cpufreq/cppc_cpufreq.c         |  3 +--
+>   drivers/cpufreq/cpufreq-dt.c           |  3 +--
+>   drivers/cpufreq/e_powersaver.c         |  3 +--
+>   drivers/cpufreq/intel_pstate.c         |  8 +++-----
+>   drivers/cpufreq/mediatek-cpufreq-hw.c  |  4 +---
+>   drivers/cpufreq/mediatek-cpufreq.c     |  4 +---
+>   drivers/cpufreq/omap-cpufreq.c         |  3 +--
+>   drivers/cpufreq/pasemi-cpufreq.c       |  6 ++----
+>   drivers/cpufreq/powernow-k6.c          |  5 ++---
+>   drivers/cpufreq/powernow-k7.c          |  3 +--
+>   drivers/cpufreq/powernow-k8.c          |  6 ++----
+>   drivers/cpufreq/powernv-cpufreq.c      |  4 +---
+>   drivers/cpufreq/ppc_cbe_cpufreq.c      |  3 +--
+>   drivers/cpufreq/qcom-cpufreq-hw.c      |  4 +---
+>   drivers/cpufreq/qoriq-cpufreq.c        |  4 +---
+>   drivers/cpufreq/scmi-cpufreq.c         |  4 +---
+>   drivers/cpufreq/scpi-cpufreq.c         |  4 +---
+>   drivers/cpufreq/sh-cpufreq.c           |  4 +---
+>   drivers/cpufreq/sparc-us2e-cpufreq.c   |  3 +--
+>   drivers/cpufreq/sparc-us3-cpufreq.c    |  3 +--
+>   drivers/cpufreq/speedstep-centrino.c   | 10 +++-------
+>   drivers/cpufreq/tegra194-cpufreq.c     |  4 +---
+>   drivers/cpufreq/vexpress-spc-cpufreq.c |  5 ++---
+>   include/linux/cpufreq.h                |  2 +-
+>   28 files changed, 37 insertions(+), 84 deletions(-)
 
-Reviewed-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+Acked-by: Mario Limonciello <mario.limonciello@amd.com> # 
+drivers/cpufreq/amd-pstate.c
 
-Thanks!
 
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
 
