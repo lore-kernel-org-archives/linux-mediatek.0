@@ -4,89 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98F82C31D97
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jul 2024 03:10:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0362C3271F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jul 2024 06:01:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=25KnsUopkysIBr2uTdSPXmQMFBU4Udb2z4yjgTYdwpg=; b=ygE0Bf7vr6yqHV5Cqt2aEQegAN
-	ll41l4p1hfr//HayhdS/xPEcEtFoQtTLq/HRzESp11+RggddLHb3N96nRGthHEeapukpyWFLxEZKk
-	8SmcCmsozFX8oPIIVjDCtAAJdJmwQpHKuq9x/0QFleyhrDNNKBGxQMSeTcZlCijVHVlYfeH8LXoYs
-	Q9I0tP3fhGN+fOEP8S1bZe/h8NioiOE64agPnoK2GU0Mja+bsqtb/6OdlzVi5oul2s9wswm5/yljO
-	lhww7KOd6iQ2srKUfl/XxTWRI1/kZ8QsV5G4jkDgkAfvkx7VI6O3ko6Xkhe46G2UFpHhY6VqYrGt7
-	dtHYhQ7Q==;
+	bh=FWnyYNQ5wR95Rp+oqiCiXRCwx+R4allhZp/0A/Rh0ww=; b=rmrmAQbnSOgn+Btgp/3a9SdjTC
+	DC035r/gqq4MHVgo6jN8QM+5Cy3kyrD/+87PJhsD3PUto9uJuKswZv+3tuBS7faFWS8pVMrpQqGlr
+	Rg0vGvKCwPm9dOzgUdGzdU1jco3IG5UdRl7mhPbyIKKvojuTh/mCllobspt+jUjzWsIPvnrnuU60g
+	vpf65tZUG+MawbEdTJyEdVOtIKRxEIykCnX0nSKSwRPaVC3FR45ll3uHDmsfK/6C0ma9tv9Qk17Vr
+	N/m6HPx2EOsfKUphhFQv79yIqOIMfpk36+IaBRez61tepfkrpVQwKHblKtO29a9cBuy5CAOir2boY
+	vvNS1V1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPCrR-0000000C08O-2CVy;
-	Thu, 04 Jul 2024 03:10:17 +0000
-Received: from mail-oi1-x230.google.com ([2607:f8b0:4864:20::230])
+	id 1sPFXA-0000000CHK7-1Q3N;
+	Thu, 04 Jul 2024 06:01:32 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPCrD-0000000C06A-3Vfd
+	id 1sPFX6-0000000CHIc-30mg
 	for linux-mediatek@lists.infradead.org;
-	Thu, 04 Jul 2024 03:10:05 +0000
-Received: by mail-oi1-x230.google.com with SMTP id 5614622812f47-3d55ec570a7so128583b6e.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 03 Jul 2024 20:10:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1720062602; x=1720667402; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=25KnsUopkysIBr2uTdSPXmQMFBU4Udb2z4yjgTYdwpg=;
-        b=JkjJAPH2FLOgpTwAHUvnPQcPT/vNJclnczPq7Z+YZ17Ig2rBA+KK73dg7oPnhyU9Yc
-         WJEdOKlwzZMY2EmNmrPtC1/qHb/qBykt/2hqQPiyZltWbZJwl8HiGTPdKvlhAwPhslA1
-         e0YGC1bQjblrSpEh0JvX7yS8SHSicIiVCt3jLP8Izc3xO0KEKXCFzV0qf7iBjifF2p8J
-         Vz43Vf9fMduBDuTgkPRY9twpKxX8Gwt2J6XdNuF2EOi7Up9bdn85OXJMeTkGTHDzs0su
-         dq+Xmjg8lB4F0a1wxlgcnahQy0Erfu3ecrw8YtM59heRc1vXYuiZeLo+XFPIUzpWdyMF
-         SsYA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1720062602; x=1720667402;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=25KnsUopkysIBr2uTdSPXmQMFBU4Udb2z4yjgTYdwpg=;
-        b=RN3Z5d8i9rX98DPX7QuciqTZGBlFF8az3V1jJ+p5o+HgL1aAhBvdN6yEIixhkWtiGf
-         BS0KFs+kzZIy3bggSdPiLM3v3mN7YT+q1YS6dKx5/wo10NEzN6DcNQFl86eQpJyHKn4n
-         8SY/U0CDO1jtTNVtSrwwyaj83AJOVzXr7zhC6lZUmwlth8FdpHgXGmoebKlX0lWApGXw
-         sMF22n5/Vhn+1v18ruERCvSBZqM2XiB8Dr+aiVrqt4OxcWeVeYieJcpaJ2uc5ryuuI5j
-         1Awi+dH8HuCGyGIDcqZZoKtAOKMgGcvCbpkntJ8Ibcoqy1bJdR8jQdG5u1Y+RYBIqqWI
-         WCUw==
-X-Forwarded-Encrypted: i=1; AJvYcCVJgWt0nXRlr+L3zTPx7l3ANCR94WWAAucUR9cbL5fZ4S2TjcKJlFyXIRtfmg7mc0P4rnXw4XTEiyK/TGJOhdmnNKij9Ur4DCdVmOv6CJxStNMV
-X-Gm-Message-State: AOJu0Yw4ELFjzbg2fWni0+qMRVQP634mrRHYGWgHwiN/gN1th4ZrZ8Ko
-	LUeHtKUuZk8/E6gxXR0P5cqdYNkgFKBkI0CuI57DNlyO/DEr6PkeHWjmuhwpddg=
-X-Google-Smtp-Source: AGHT+IEihQyj4XFSMtMz5vsZU/RQnANpLyNp++2hhEn7OAX/jkTUQw8/zL/gyOLuMPNkWsj4ueRh5w==
-X-Received: by 2002:a54:4888:0:b0:3d5:5bd4:75f6 with SMTP id 5614622812f47-3d914eb1089mr411097b6e.55.1720062601232;
-        Wed, 03 Jul 2024 20:10:01 -0700 (PDT)
-Received: from localhost ([122.172.82.13])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-72c6d41655fsm8773138a12.92.2024.07.03.20.09.59
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 03 Jul 2024 20:10:00 -0700 (PDT)
-Date: Thu, 4 Jul 2024 08:39:58 +0530
-From: Viresh Kumar <viresh.kumar@linaro.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, kernel@collabora.com,
-	linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] cpufreq: mediatek: Use dev_err_probe in every error path
- in probe
-Message-ID: <20240704030958.h2m4t7qgk3sp33tn@vireshk-i7>
-References: <20240628-mtk-cpufreq-dvfs-fail-init-err-v1-1-19c55db23011@collabora.com>
- <20240702055703.obendyy2ykbbutrz@vireshk-i7>
- <aa6e93bd-aba2-4e4d-bce9-04e818ac25ed@collabora.com>
- <20240702084307.wwvl5dchxa4frif3@vireshk-i7>
- <d6994f56-57dc-4a66-ad7d-1daa04788b22@collabora.com>
+	Thu, 04 Jul 2024 06:01:30 +0000
+X-UUID: d725390c39ca11efb2966dae1f787272-20240703
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=FWnyYNQ5wR95Rp+oqiCiXRCwx+R4allhZp/0A/Rh0ww=;
+	b=E2ICisZCB81HqI7cpewObgInZxrsaZLk1UNSCjt4E0aq2RR0SCvzDnfCxMmQx7k74REPc41s1pdzajDrtdMe4pd8VfbZL48kmr9oOcbJyGg0YvO9Bdh4Tm4CMBwviWbwcqaxNor982f1W6PRp4h20R1n60ipCI9ZDtPWV7tBRA8=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.40,REQID:addc2e88-6802-43fa-a75b-ce66fae6ab5c,IP:0,U
+	RL:0,TC:0,Content:0,EDM:-25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:ba885a6,CLOUDID:3c6e13d1-436f-4604-ad9d-558fa44a3bbe,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:1,IP:nil,UR
+	L:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:
+	1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: d725390c39ca11efb2966dae1f787272-20240703
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
+	(envelope-from <chris.lu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1761189147; Wed, 03 Jul 2024 23:01:22 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Thu, 4 Jul 2024 14:01:20 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Thu, 4 Jul 2024 14:01:20 +0800
+From: Chris Lu <chris.lu@mediatek.com>
+To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
+	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
+CC: Sean Wang <sean.wang@mediatek.com>, Aaron Hou <aaron.hou@mediatek.com>,
+	Steve Lee <steve.lee@mediatek.com>, linux-bluetooth
+	<linux-bluetooth@vger.kernel.org>, linux-kernel
+	<linux-kernel@vger.kernel.org>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Chris Lu <chris.lu@mediatek.com>
+Subject: [PATCH v7 7/8] Bluetooth: btmtk: move btusb_recv_acl_mtk to btmtk.c
+Date: Thu, 4 Jul 2024 14:01:15 +0800
+Message-ID: <20240704060116.16600-8-chris.lu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20240704060116.16600-1-chris.lu@mediatek.com>
+References: <20240704060116.16600-1-chris.lu@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <d6994f56-57dc-4a66-ad7d-1daa04788b22@collabora.com>
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240703_201003_908095_EA4171B1 
-X-CRM114-Status: UNSURE (   7.59  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240703_230128_784620_110532E0 
+X-CRM114-Status: GOOD (  17.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,13 +87,139 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 03-07-24, 14:43, AngeloGioacchino Del Regno wrote:
-> Yes it will, but `ret = dev_err_probe(dev, -ENOMEM, "...")` is still kind of a
-> shortcut, as that will effectively assign -ENOMEM to ret, so that the error is
-> still returned like before ;-)
+Move btusb_recv_acl_mtk from btusb.c to btmtk.c which holds
+vendor specific stuff and would make btusb.c clean.
 
-Ahh, my bad. I missed that you are assigning `ret` again.
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Signed-off-by: Chris Lu <chris.lu@mediatek.com>
+---
+ drivers/bluetooth/btmtk.c | 33 +++++++++++++++++++++++++++++++++
+ drivers/bluetooth/btmtk.h |  7 +++++++
+ drivers/bluetooth/btusb.c | 34 +---------------------------------
+ 3 files changed, 41 insertions(+), 33 deletions(-)
 
+diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
+index f5ecb8227d3b..fe3b892f6c6e 100644
+--- a/drivers/bluetooth/btmtk.c
++++ b/drivers/bluetooth/btmtk.c
+@@ -930,6 +930,39 @@ int btmtk_usb_subsys_reset(struct hci_dev *hdev, u32 dev_id)
+ }
+ EXPORT_SYMBOL_GPL(btmtk_usb_subsys_reset);
+ 
++int btmtk_usb_recv_acl(struct hci_dev *hdev, struct sk_buff *skb)
++{
++	struct btmtk_data *data = hci_get_priv(hdev);
++	u16 handle = le16_to_cpu(hci_acl_hdr(skb)->handle);
++
++	switch (handle) {
++	case 0xfc6f:		/* Firmware dump from device */
++		/* When the firmware hangs, the device can no longer
++		 * suspend and thus disable auto-suspend.
++		 */
++		usb_disable_autosuspend(data->udev);
++
++		/* We need to forward the diagnostic packet to userspace daemon
++		 * for backward compatibility, so we have to clone the packet
++		 * extraly for the in-kernel coredump support.
++		 */
++		if (IS_ENABLED(CONFIG_DEV_COREDUMP)) {
++			struct sk_buff *skb_cd = skb_clone(skb, GFP_ATOMIC);
++
++			if (skb_cd)
++				btmtk_process_coredump(hdev, skb_cd);
++		}
++
++		fallthrough;
++	case 0x05ff:		/* Firmware debug logging 1 */
++	case 0x05fe:		/* Firmware debug logging 2 */
++		return hci_recv_diag(hdev, skb);
++	}
++
++	return hci_recv_frame(hdev, skb);
++}
++EXPORT_SYMBOL_GPL(btmtk_usb_recv_acl);
++
+ int btmtk_usb_setup(struct hci_dev *hdev)
+ {
+ 	struct btmtk_data *btmtk_data = hci_get_priv(hdev);
+diff --git a/drivers/bluetooth/btmtk.h b/drivers/bluetooth/btmtk.h
+index fe41528ae509..47193b867b9f 100644
+--- a/drivers/bluetooth/btmtk.h
++++ b/drivers/bluetooth/btmtk.h
+@@ -191,6 +191,8 @@ void btmtk_fw_get_filename(char *buf, size_t size, u32 dev_id, u32 fw_ver,
+ 
+ int btmtk_usb_subsys_reset(struct hci_dev *hdev, u32 dev_id);
+ 
++int btmtk_usb_recv_acl(struct hci_dev *hdev, struct sk_buff *skb);
++
+ int btmtk_usb_setup(struct hci_dev *hdev);
+ 
+ int btmtk_usb_shutdown(struct hci_dev *hdev);
+@@ -239,6 +241,11 @@ static int btmtk_usb_subsys_reset(struct hci_dev *hdev, u32 dev_id)
+ 	return -EOPNOTSUPP;
+ }
+ 
++static int btmtk_usb_recv_acl(struct hci_dev *hdev, struct sk_buff *skb)
++{
++	return -EOPNOTSUPP;
++}
++
+ static int btmtk_usb_setup(struct hci_dev *hdev)
+ {
+ 	return -EOPNOTSUPP;
+diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+index d61a1d02e3e3..5de50c835964 100644
+--- a/drivers/bluetooth/btusb.c
++++ b/drivers/bluetooth/btusb.c
+@@ -2690,38 +2690,6 @@ static int btusb_mtk_shutdown(struct hci_dev *hdev)
+ 	return btmtk_usb_shutdown(hdev);
+ }
+ 
+-static int btusb_recv_acl_mtk(struct hci_dev *hdev, struct sk_buff *skb)
+-{
+-	struct btusb_data *data = hci_get_drvdata(hdev);
+-	u16 handle = le16_to_cpu(hci_acl_hdr(skb)->handle);
+-
+-	switch (handle) {
+-	case 0xfc6f:		/* Firmware dump from device */
+-		/* When the firmware hangs, the device can no longer
+-		 * suspend and thus disable auto-suspend.
+-		 */
+-		usb_disable_autosuspend(data->udev);
+-
+-		/* We need to forward the diagnostic packet to userspace daemon
+-		 * for backward compatibility, so we have to clone the packet
+-		 * extraly for the in-kernel coredump support.
+-		 */
+-		if (IS_ENABLED(CONFIG_DEV_COREDUMP)) {
+-			struct sk_buff *skb_cd = skb_clone(skb, GFP_ATOMIC);
+-
+-			if (skb_cd)
+-				btmtk_process_coredump(hdev, skb_cd);
+-		}
+-
+-		fallthrough;
+-	case 0x05ff:		/* Firmware debug logging 1 */
+-	case 0x05fe:		/* Firmware debug logging 2 */
+-		return hci_recv_diag(hdev, skb);
+-	}
+-
+-	return hci_recv_frame(hdev, skb);
+-}
+-
+ #ifdef CONFIG_PM
+ /* Configure an out-of-band gpio as wake-up pin, if specified in device tree */
+ static int marvell_config_oob_wake(struct hci_dev *hdev)
+@@ -3827,7 +3795,7 @@ static int btusb_probe(struct usb_interface *intf,
+ 		hdev->set_bdaddr = btmtk_set_bdaddr;
+ 		set_bit(HCI_QUIRK_BROKEN_ENHANCED_SETUP_SYNC_CONN, &hdev->quirks);
+ 		set_bit(HCI_QUIRK_NON_PERSISTENT_SETUP, &hdev->quirks);
+-		data->recv_acl = btusb_recv_acl_mtk;
++		data->recv_acl = btmtk_usb_recv_acl;
+ 	}
+ 
+ 	if (id->driver_info & BTUSB_SWAVE) {
 -- 
-viresh
+2.18.0
+
 
