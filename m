@@ -4,67 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9486C41513
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jul 2024 08:24:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16572C3065C
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Jul 2024 08:28:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CM0MGGn4S5QVMwJTZutjGYDfYbBwo96NoQ73LlbcWB0=; b=0PCVnq6jo8SoF5FyEEAXvMbT9+
-	pkygVkPgxeHgXXkJXsD86+qVAMObVpTq9/Y5jpWjp7jrwdD9Gxrgo88ZtnxBgVLVTgeJyW2W7IgqI
-	kVVyQ0V+ztM4mkBYWT1u9UI70CvICSsMZ5eN4FyjPpP5SDsSherL4EV68lMhnDOGM+yTvH6gZUXav
-	JuOShLI2HhPL72rj3Jeevx3HjMolOF+gADzuGEcPSSfmB7yFU6kg6lkZ+H1DmJwVIE/jsfeYL8zSO
-	TVQtlGiRDLeGVJ98kIaWDoODvyNbWyLThwM3GV3fVj1rLDMhW0MFIWXgUwulGaHp2mccnJ0fNonnu
-	HVsNdi7A==;
+	bh=azDBjHhKUye4cN0crYH5QFIFk02261yjwRDufuvps3w=; b=RXt7Jeho6onr2cDF5Q3W3QF2mI
+	0OWoojlRdebPWgKbpZtA9URm1gt2RvSa2BwfDKoyzkHUb6ch0v+d/uqmKQi/3UF2Ex0fq6ACYtLxP
+	8aMeEcwa+8WYubjGErQGhGLlHEP64pQdHCG6DS9L9NPKS/7w6Pu6xwPy9PIr9tDOtGgqHMBk/4k+8
+	FLJSpTRrOcCEDhATuLz5yCYVkaiGUp5Wm2zrgCfmZufIIYQdw2dotgAwbngjcR6hvtvovldcp70Pi
+	zNo7ptQAXp1/zpy0/I0vGq5jakwR4SJShRNIVp70T60TbqualLgbgIDAvaEgX5+rge5T3aXRKYaMg
+	YXtLPVFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPHl3-0000000Ca2o-23NJ;
-	Thu, 04 Jul 2024 08:24:01 +0000
+	id 1sPHpB-0000000CaUu-3KaE;
+	Thu, 04 Jul 2024 08:28:17 +0000
 Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPHkq-0000000Ca0r-1wGn;
-	Thu, 04 Jul 2024 08:23:50 +0000
+	id 1sPHox-0000000CaTB-2D7T;
+	Thu, 04 Jul 2024 08:28:05 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1720081423;
-	bh=esn5rcvEb3vNv/CngWyv8T7Sc4+TxLPVDrRzXw12GD0=;
+	s=mail; t=1720081682;
+	bh=wVc3mDrD8ZHGcxEpI3RL80GBUfv7tqc7amf82VOOdic=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=wQzwXGsYKsDAeR+5zdRKqJFfOZ1j08lGsYYbpNc4+PmBucADurA1et4EaDLqcHCW8
-	 gyk8yAf5nNYyj2DVvcb447GCIdesTFC1kp0Lan59RGR+fHV026WFK375cPaPzN67mx
-	 P0jFACM+wiwsiK+OG8/RZax1r0xlsZ4Igv0syUPS6x6rQBjDhmV3IgfdzVy/b+yE6U
-	 mSBUy/1LnGArEh9m3rQ3WsUP/1/10bR31lwgxS+3gho/e43/u70YOKWzp/zH3w3swQ
-	 iaftYYJYzpvt1p0l6xR7A6uTTHeKM5BRQWqmv9/aM7rNDBRa7u9axQtKITfIV7h9+P
-	 fCGpLiIDLgE1w==
+	b=I9wSr5qndJJgZNK1GxM3ELWQWxcNRB0+T2ztlEssHpreWLW1x0yx/AW8C8CjFao7q
+	 6tunopOnUy9YaYgE6BhE8LLp/MMeFR9xq5+hu8qRwq2dq2N8b0o1AgcmIv6XOPXExI
+	 SOB6RiEioW7sWw7YaHcV26LEQmTVgkOOV4rxnUhjZgaURn/sxkqmInVgzBi8Nf9xg1
+	 zzQ9MyIkkaBIfpaMD9nANIAFKME2+NH9lhW1iXLwdr6zGpV3HpHBtRCVS2ghQJvc20
+	 P/hQHND/IWN5dEj8pOdBPWdb3hp7Ua4Cb94yo8VbN2Y5tV+kQX5JNm5YDoFQ3+qQZy
+	 DQ1/PpgNHDFeA==
 Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id A9445378216A;
-	Thu,  4 Jul 2024 08:23:42 +0000 (UTC)
-Message-ID: <90342fc9-19ed-4976-8125-f8fccc8d4970@collabora.com>
-Date: Thu, 4 Jul 2024 10:23:42 +0200
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id E651C37821A0;
+	Thu,  4 Jul 2024 08:27:59 +0000 (UTC)
+Message-ID: <2a1e25ad-c9d2-44f1-b52e-74f12b437381@collabora.com>
+Date: Thu, 4 Jul 2024 10:27:59 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 1/4] dt-bindings: PCI: mediatek-gen3: add support for
- Airoha EN7581
-To: Lorenzo Bianconi <lorenzo@kernel.org>, linux-pci@vger.kernel.org
-Cc: ryder.lee@mediatek.com, jianjun.wang@mediatek.com, lpieralisi@kernel.org,
- kw@linux.com, robh@kernel.org, bhelgaas@google.com,
- linux-mediatek@lists.infradead.org, lorenzo.bianconi83@gmail.com,
- linux-arm-kernel@lists.infradead.org, krzysztof.kozlowski+dt@linaro.org,
- devicetree@vger.kernel.org, nbd@nbd.name, dd@embedd.com, upstream@airoha.com
-References: <cover.1720022580.git.lorenzo@kernel.org>
- <138d65a140c3dcf2a6aefecc33ba6ba3ca300a23.1720022580.git.lorenzo@kernel.org>
+Subject: Re: [PATCH 4/4] cpufreq: Make cpufreq_driver->exit() return void
+To: Viresh Kumar <viresh.kumar@linaro.org>,
+ "Rafael J. Wysocki" <rafael@kernel.org>, Huang Rui <ray.huang@amd.com>,
+ "Gautham R. Shenoy" <gautham.shenoy@amd.com>,
+ Mario Limonciello <mario.limonciello@amd.com>,
+ Perry Yuan <perry.yuan@amd.com>, Hector Martin <marcan@marcan.st>,
+ Sven Peter <sven@svenpeter.dev>, Alyssa Rosenzweig <alyssa@rosenzweig.io>,
+ Markus Mayer <mmayer@broadcom.com>,
+ Broadcom internal kernel review list
+ <bcm-kernel-feedback-list@broadcom.com>,
+ Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>,
+ Len Brown <lenb@kernel.org>, Kevin Hilman <khilman@kernel.org>,
+ Michael Ellerman <mpe@ellerman.id.au>, Nicholas Piggin <npiggin@gmail.com>,
+ Christophe Leroy <christophe.leroy@csgroup.eu>,
+ "Naveen N. Rao" <naveen.n.rao@linux.ibm.com>,
+ Sudeep Holla <sudeep.holla@arm.com>,
+ Cristian Marussi <cristian.marussi@arm.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-pm@vger.kernel.org, Vincent Guittot <vincent.guittot@linaro.org>,
+ Lizhe <sensor1010@163.com>, linux-kernel@vger.kernel.org,
+ asahi@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
+ linux-omap@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
+ linux-arm-msm@vger.kernel.org, linux-tegra@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+References: <cover.1720075640.git.viresh.kumar@linaro.org>
+ <3f73fda736818128558b61ad5fe2bed5dce3ddc4.1720075640.git.viresh.kumar@linaro.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <138d65a140c3dcf2a6aefecc33ba6ba3ca300a23.1720022580.git.lorenzo@kernel.org>
+In-Reply-To: <3f73fda736818128558b61ad5fe2bed5dce3ddc4.1720075640.git.viresh.kumar@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240704_012348_836321_17A138DC 
-X-CRM114-Status: UNSURE (   4.51  )
+X-CRM114-CacheID: sfid-20240704_012803_729853_A94A8EEC 
+X-CRM114-Status: UNSURE (   7.88  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -80,11 +98,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 03/07/24 18:12, Lorenzo Bianconi ha scritto:
-> Introduce Airoha EN7581 entry in mediatek-gen3 PCIe controller binding
+Il 04/07/24 08:53, Viresh Kumar ha scritto:
+> From: Lizhe <sensor1010@163.com>
 > 
-> Reviewed-by: Conor Dooley <conor.dooley@microchip.com>
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> The cpufreq core doesn't check the return type of the exit() callback
+> and there is not much the core can do on failures at that point. Just
+> drop the returned value and make it return void.
+> 
+> Signed-off-by: Lizhe <sensor1010@163.com>
+> [ Viresh: Reworked the patches to fix all missing changes together. ]
+> Signed-off-by: Viresh Kumar <viresh.kumar@linaro.org>
+
+For MediaTek:
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
