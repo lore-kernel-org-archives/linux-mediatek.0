@@ -4,85 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BCB8C30658
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jul 2024 07:51:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F16BC3271F
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jul 2024 07:56:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lCVjbUVohH3p2wf5gVftnpB2o8+RU21ET/afoPI30m8=; b=OIVvl1kjPLJl0smhbKIae79pnO
-	ZNkXWSXAcZsaFzcr9ygy+fzQw/YlpWVmH0EHF4lTrk85jPjWA0Wjbl4r6czsoA8ktoouH65AdIRVk
-	D2nSieX6l0LQQcLsyc64tKVJTqIlmQLwl7grN92veerIRBmSkv6sqoAQc5r8KwB454xntzt8G05S3
-	1KeCHzMlBg6TBiZxgKpWnsPSZkCyjYIsgr8sv3hOm3wo5lJGf0yk/sRwMFXAqkD1wl7C1tE7ENqnL
-	ZblDcGuPhG4bfLrYkRo6IGGzkrP7QYE2eTVSZMBTFxLezdyQBHdQkkw+3O2SgQ857j3Tdufg5Y8tO
-	w1yGfIAA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=e2ch6CN6/2ILQFX9s+8Go6wgcVOVLzjEhdIrftGsDFs=; b=QUlwHtJc+V2RNepxkxEh+ZpRE2
+	oyk8/WyldvvHQOf9NCnAUgOsOcG0mulxV6Iby8tnPZanQSgzjAH94NWMcYZmOKPQsP6iNFIB/V9T7
+	r/EX5/z74x4LM95XIA10oxZk0K/VkiJerQaYvwYVKBdjo4DwF+WqEGU7O0YEezSNhLJ/JAiyiVMt9
+	CMlKaOpPtpkxcv3V63DeLujva24VnnL075CMF5/d87Vlns70+X9ejBKrpjfJt3EKPtsrVueb7SSMa
+	vB5oBNjo9B5csAACKj+L6C/s5K8efCtcdvgQVHO9dlfq9ctwKFcKsNPU0vgO0RjNXVP58NBvt7zMR
+	cERhUYng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPdiv-0000000FC0z-07p5;
-	Fri, 05 Jul 2024 07:51:17 +0000
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
+	id 1sPdo3-0000000FCyL-3IM3;
+	Fri, 05 Jul 2024 07:56:35 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPdiq-0000000FByr-3nlL
-	for linux-mediatek@lists.infradead.org;
-	Fri, 05 Jul 2024 07:51:15 +0000
-Received: by mail-ej1-x62c.google.com with SMTP id a640c23a62f3a-a77baa87743so149134466b.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 05 Jul 2024 00:51:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1720165871; x=1720770671; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=lCVjbUVohH3p2wf5gVftnpB2o8+RU21ET/afoPI30m8=;
-        b=Uil6AGPE7Pm8JsHE9lswRRyvMyO8LbXbjSQ92ex/fXb1w4GveJI+QZktbdLKgGXENp
-         v4vC1W3WtJ9c4rN7l48H6UJOolFrUdZ50c7sAXSR/UOUVml5EA+STiyiXAMtTW8GTIw2
-         ROobzC75eo7a/GB8WRmq/7Fb6o3pc9DQ1CiVZkpBYszdxP4Q+65YmYR8T79bcOEGhHC3
-         lwQE1Qpt9qsrm5h+G8oH9QO49E3e+QeYH7RwDFekhmgPaKXbYA9oY38As04gOVgGUL88
-         X+ibYizF0c0j5CeG78Vs/l3+kMhHVOk0ApHKFffO3ChcYO38HMxx2jr8gPVsbRc7HJsA
-         fjUA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1720165871; x=1720770671;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=lCVjbUVohH3p2wf5gVftnpB2o8+RU21ET/afoPI30m8=;
-        b=KpQQSGAYWyWmzGt5HXXejGuR47otTEJ0ghraMp1M0Zw/g9Gqrz7SqQnGPAlByksw1d
-         l7UWO++P5PmiXO+xFuWMQX1U92uqyJqeGyRrUTrfPRcxsAMigkdSPrJj2jxtONmwgiFB
-         vdp8ktg660wtol1APmAxL/kwFhm92jjwzQWYNErHj0YVTwXFzF/cj1ETX23WxayvriPI
-         iU+y3yX9SEILR9KO0apyCCPi8VIDMQAq4WZAzhqfDyBVj3G6EM3Q6lXK63SFs0apFtaB
-         LbM0BHtp8N1FH2V4En4y09dSraffZsye2bOfnR7UI/y1bKH5a8hIc3aNngDvnQPM8aRj
-         zZAA==
-X-Forwarded-Encrypted: i=1; AJvYcCVz4lmfjVggwjSbOY+wvRyOiyEqKul3pOkEzMOCj/UF1heXmhFakctqx2uAx8i9Hqogt9JswANkIVPKTQiOx1UNO8rMgkFJmbr4Jt3G4kVqVCZI
-X-Gm-Message-State: AOJu0YyJMJAD9E1xAPi80H9esPmotqwn2Z92xHlhOrWfRsO8Moy/0LC7
-	g3KwueUkYv7LyXfvcIg2P5pWLtAa1+/FPjpJam+kHjEyAqclFiRlSogwLjzAXlk3hOK9GQOa5c/
-	ICGlWjptn/ScAN6nMs14GrB6veV+FSICcUYdhfQ==
-X-Google-Smtp-Source: AGHT+IGiaxqLW45+/BQEWvALCzSarefavKbKnT7hrlfo4M8H4kt8dKuBoLog/WCakFxhFLqIDWrDmp7QDFKEUN7e2xw=
-X-Received: by 2002:a17:906:40d0:b0:a70:c02f:8a7e with SMTP id
- a640c23a62f3a-a77ba70c75dmr276948066b.54.1720165870596; Fri, 05 Jul 2024
- 00:51:10 -0700 (PDT)
+	id 1sPdo1-0000000FCx0-3IHZ;
+	Fri, 05 Jul 2024 07:56:35 +0000
+X-UUID: 1516d14c3aa411ef9daba96ee3f3cc8c-20240705
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=e2ch6CN6/2ILQFX9s+8Go6wgcVOVLzjEhdIrftGsDFs=;
+	b=PZCxoNrgopqO0OEo+W6tMrAnRZ+AuqpbidZmuFsKTnMg/5EKUjDPW6oP59+3EIE0Lz9A3oXgCAcZIwJJfT50ZEsjko3q/E230dh6/SzMlQzWHeGWGgxoLfrqTB276eyWg1Y/+w3fvIpDVHtkZ/AvvY3M6t3fqBT5p0Kv+FkYj54=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.40,REQID:f5d17d95-63f1-4259-b6ee-ab2c8d2fab5f,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:ba885a6,CLOUDID:76061a0d-46b0-425a-97d3-4623fe284021,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 1516d14c3aa411ef9daba96ee3f3cc8c-20240705
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	(envelope-from <boy.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 445394176; Fri, 05 Jul 2024 00:56:27 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Fri, 5 Jul 2024 15:55:51 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 5 Jul 2024 15:55:51 +0800
+From: boy.wu <boy.wu@mediatek.com>
+To: Tejun Heo <tj@kernel.org>, Josef Bacik <josef@toxicpanda.com>, Jens Axboe
+	<axboe@kernel.dk>
+CC: Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Boris Burkov <boris@bur.io>,
+	<cgroups@vger.kernel.org>, <linux-block@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <iverlin.wang@mediatek.com>, Boy Wu
+	<boy.wu@mediatek.com>
+Subject: [PATCH] blk-cgroup: add spin_lock for u64_stats_update
+Date: Fri, 5 Jul 2024 15:55:44 +0800
+Message-ID: <20240705075544.11315-1-boy.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-References: <20240704-add-mtk-isp-3-0-support-v5-0-bfccccc5ec21@baylibre.com>
- <20240704-add-mtk-isp-3-0-support-v5-1-bfccccc5ec21@baylibre.com> <20240704-catcall-stubbly-9258b056e42e@spud>
-In-Reply-To: <20240704-catcall-stubbly-9258b056e42e@spud>
-From: Julien Stephan <jstephan@baylibre.com>
-Date: Fri, 5 Jul 2024 09:50:59 +0200
-Message-ID: <CAEHHSvb6Y8g_KCmu0bK__EP2TyPhf8i-ctMNfOGdyMUUGoKQVw@mail.gmail.com>
-Subject: Re: [PATCH v5 1/5] dt-bindings: media: add mediatek ISP3.0 sensor interface
-To: Conor Dooley <conor@kernel.org>
-Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Andy Hsieh <andy.hsieh@mediatek.com>, 
-	Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-media@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	Louis Kuo <louis.kuo@mediatek.com>, Phi-Bang Nguyen <pnguyen@baylibre.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240705_005113_202838_ABC69381 
-X-CRM114-Status: GOOD (  29.60  )
+X-CRM114-CacheID: sfid-20240705_005633_830578_77E24751 
+X-CRM114-Status: GOOD (  10.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,290 +86,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Le jeu. 4 juil. 2024 =C3=A0 18:27, Conor Dooley <conor@kernel.org> a =C3=A9=
-crit :
->
-> On Thu, Jul 04, 2024 at 03:36:40PM +0200, Julien Stephan wrote:
-> > From: Louis Kuo <louis.kuo@mediatek.com>
-> >
-> > This adds the bindings, for the mediatek ISP3.0 SENINF module embedded =
-in
-> > some Mediatek SoC, such as the mt8365
-> >
-> > Signed-off-by: Louis Kuo <louis.kuo@mediatek.com>
-> > Signed-off-by: Phi-Bang Nguyen <pnguyen@baylibre.com>
-> > Link: https://lore.kernel.org/r/20230807094940.329165-2-jstephan@baylib=
-re.com
-> > Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> > Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> > Signed-off-by: Julien Stephan <jstephan@baylibre.com>
->
-> I'm really confused by the link tag here. At first glance this looked
-> like you were sending out something that had been applied by Laurent,
-> given the Link, Rb and SoB from him. Why does he have a SoB on this
-> patch? What did Phi-Bang Nguyen do with this patch, and should they have
-> a Co-developed-by tag?
+From: Boy Wu <boy.wu@mediatek.com>
 
-Hi Conor,
+In 32bit SMP systems, if the system is stressed on the sys node
+by processes, it may cause blkcg_fill_root_iostats to have a concurrent
+problem on the seqlock in u64_stats_update, which will cause a deadlock 
+on u64_stats_fetch_begin in blkcg_print_one_stat.
 
-I was not using b4 for the previous revisions of this series, so maybe
-I messed something up here :(
+To prevent this problem, add spin_locks.
 
-About Phi-Bang, this series has been in our internal tree for a long
-time, and Phi-Bang has his SoB on it, so I kept it.
+Fixes: ef45fe470e1e ("blk-cgroup: show global disk stats in root cgroup io.stat")
+Signed-off-by: Boy Wu <boy.wu@mediatek.com>
+---
+ block/blk-cgroup.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-About Laurent's tags, they were already on v4. But maybe it was an
-error ? Should I remove them?
+diff --git a/block/blk-cgroup.c b/block/blk-cgroup.c
+index 37e6cc91d576..a633b7431e91 100644
+--- a/block/blk-cgroup.c
++++ b/block/blk-cgroup.c
+@@ -1134,9 +1134,15 @@ static void blkcg_fill_root_iostats(void)
+ 				cpu_dkstats->sectors[STAT_DISCARD] << 9;
+ 		}
+ 
++#if BITS_PER_LONG == 32
++		spin_lock_irq(&blkg->q->queue_lock);
++#endif
+ 		flags = u64_stats_update_begin_irqsave(&blkg->iostat.sync);
+ 		blkg_iostat_set(&blkg->iostat.cur, &tmp);
+ 		u64_stats_update_end_irqrestore(&blkg->iostat.sync, flags);
++#if BITS_PER_LONG == 32
++		spin_unlock_irq(&blkg->q->queue_lock);
++#endif
+ 	}
+ }
+ 
+-- 
+2.18.0
 
->
-> > ---
-> >  .../bindings/media/mediatek,mt8365-seninf.yaml     | 275 +++++++++++++=
-++++++++
-> >  MAINTAINERS                                        |   7 +
-> >  2 files changed, 282 insertions(+)
-> >
-> > diff --git a/Documentation/devicetree/bindings/media/mediatek,mt8365-se=
-ninf.yaml b/Documentation/devicetree/bindings/media/mediatek,mt8365-seninf.=
-yaml
-> > new file mode 100644
-> > index 000000000000..aeabea9f956a
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/media/mediatek,mt8365-seninf.ya=
-ml
-> > @@ -0,0 +1,275 @@
-> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> > +# Copyright (c) 2023 MediaTek, BayLibre
-> > +%YAML 1.2
-> > +---
-> > +$id: http://devicetree.org/schemas/media/mediatek,mt8365-seninf.yaml#
-> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > +
-> > +title: MediaTek Sensor Interface 3.0
-> > +
-> > +maintainers:
-> > +  - Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> > +  - Julien Stephan <jstephan@baylibre.com>
-> > +  - Andy Hsieh <andy.hsieh@mediatek.com>
-> > +
-> > +description:
-> > +  The ISP3.0 SENINF is the CSI-2 and parallel camera sensor interface =
-found in
-> > +  multiple MediaTek SoCs. It can support up to three physical CSI-2 in=
-put ports,
-> > +  configured in DPHY (2 or 4 data lanes) or CPHY depending on the SoC.
-> > +  On the output side, SENINF can be connected either to CAMSV instance=
- or
-> > +  to the internal ISP. CAMSV is used to bypass the internal ISP proces=
-sing
-> > +  in order to connect either an external ISP, or a sensor (RAW, YUV).
-> > +
-> > +properties:
-> > +  compatible:
-> > +    const: mediatek,mt8365-seninf
-> > +
-> > +  reg:
-> > +    maxItems: 1
-> > +
-> > +  interrupts:
-> > +    maxItems: 1
-> > +
-> > +  power-domains:
-> > +    maxItems: 1
-> > +
-> > +  clocks:
-> > +    items:
-> > +      - description: Seninf camsys clock
-> > +      - description: Seninf top mux clock
-> > +
-> > +  clock-names:
-> > +    items:
-> > +      - const: camsys
-> > +      - const: top_mux
-> > +
-> > +  phys: true
-> > +
-> > +  phy-names: true
-> > +
-> > +  ports:
-> > +    $ref: /schemas/graph.yaml#/properties/ports
-> > +
-> > +    properties:
-> > +      port@0:
-> > +        $ref: /schemas/graph.yaml#/$defs/port-base
-> > +        unevaluatedProperties: false
-> > +        description: CSI0 or CSI0A port
-> > +
-> > +        properties:
-> > +          endpoint:
-> > +            $ref: video-interfaces.yaml#
-> > +            unevaluatedProperties: false
-> > +
-> > +            properties:
-> > +              clock-lanes:
-> > +                maxItems: 1
-> > +              data-lanes:
-> > +                minItems: 1
-> > +                maxItems: 4
-> > +
-> > +      port@1:
-> > +        $ref: /schemas/graph.yaml#/$defs/port-base
-> > +        unevaluatedProperties: false
-> > +        description: CSI1 port
-> > +
-> > +        properties:
-> > +          endpoint:
-> > +            $ref: video-interfaces.yaml#
-> > +            unevaluatedProperties: false
-> > +
-> > +            properties:
-> > +              clock-lanes:
-> > +                maxItems: 1
-> > +              data-lanes:
-> > +                minItems: 1
-> > +                maxItems: 4
-> > +
-> > +      port@2:
-> > +        $ref: /schemas/graph.yaml#/$defs/port-base
-> > +        unevaluatedProperties: false
-> > +        description: CSI2 port
-> > +
-> > +        properties:
-> > +          endpoint:
-> > +            $ref: video-interfaces.yaml#
-> > +            unevaluatedProperties: false
-> > +
-> > +            properties:
-> > +              clock-lanes:
-> > +                maxItems: 1
-> > +              data-lanes:
-> > +                minItems: 1
-> > +                maxItems: 4
-> > +
-> > +      port@3:
-> > +        $ref: /schemas/graph.yaml#/$defs/port-base
-> > +        unevaluatedProperties: false
-> > +        description: CSI0B port
-> > +
-> > +        properties:
-> > +          endpoint:
-> > +            $ref: video-interfaces.yaml#
-> > +            unevaluatedProperties: false
-> > +
-> > +            properties:
-> > +              clock-lanes:
-> > +                maxItems: 1
-> > +              data-lanes:
-> > +                minItems: 1
-> > +                maxItems: 2
-> > +
-> > +      port@4:
-> > +        $ref: /schemas/graph.yaml#/properties/port
-> > +        description: connection point for cam0
-> > +
-> > +      port@5:
-> > +        $ref: /schemas/graph.yaml#/properties/port
-> > +        description: connection point for cam1
-> > +
-> > +      port@6:
-> > +        $ref: /schemas/graph.yaml#/properties/port
-> > +        description: connection point for camsv0
-> > +
-> > +      port@7:
-> > +        $ref: /schemas/graph.yaml#/properties/port
-> > +        description: connection point for camsv1
-> > +
-> > +      port@8:
-> > +        $ref: /schemas/graph.yaml#/properties/port
-> > +        description: connection point for camsv2
-> > +
-> > +      port@9:
-> > +        $ref: /schemas/graph.yaml#/properties/port
-> > +        description: connection point for camsv3
-> > +
-> > +    required:
-> > +      - port@0
-> > +      - port@1
-> > +      - port@2
-> > +      - port@3
-> > +      - port@4
-> > +      - port@5
-> > +      - port@6
-> > +      - port@7
-> > +      - port@8
-> > +      - port@9
-> > +
-> > +required:
-> > +  - compatible
-> > +  - interrupts
-> > +  - clocks
-> > +  - clock-names
-> > +  - power-domains
-> > +  - ports
-> > +
-> > +additionalProperties: false
-> > +
-> > +if:
-> > +  properties:
-> > +    compatible:
-> > +      contains:
-> > +        const: mediatek,mt8365-seninf
->
-> The binding supports only a single compatible, why is this complexity
-> required? I don't see other devices being added in this series.
-
-Right. The idea is that the number of PHYs depends on the SoC. In the
-previous revision of the series,
-the number of PHYs was not fixed, and Krzysztof asked me to fix it by
-SoC. So I wanted to make it clear
-that the number of PHYs depends on SoC but maybe I don't need that
-complexity for that?
-
-Is something like the following enough? And if complexity is added
-later if some other SoC are added?
-    phys:
-      minItems: 2
-      maxItems: 2
-      description:
-        phandle to the PHYs connected to CSI0/A, CSI1, CSI0B
-
-    phy-names:
-      description:
-        list of PHYs names
-      minItems: 2
-      maxItems: 2
-      items:
-        type: string
-        enum:
-          - csi0
-          - csi1
-          - csi0b
-      uniqueItems: true
-
-Cheers
-Julien
-
->
-> Cheers,
-> Conor.
->
-> > +then:
-> > +  properties:
-> > +    phys:
-> > +      minItems: 2
-> > +      maxItems: 2
-> > +      description:
-> > +        phandle to the PHYs connected to CSI0/A, CSI1, CSI0B
-> > +
-> > +    phy-names:
-> > +      description:
-> > +        list of PHYs names
-> > +      minItems: 2
-> > +      maxItems: 2
-> > +      items:
-> > +        type: string
-> > +        enum:
-> > +          - csi0
-> > +          - csi1
-> > +          - csi0b
-> > +      uniqueItems: true
 
