@@ -4,63 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71318C30658
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jul 2024 08:30:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58A66C3271F
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jul 2024 08:36:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=c43VHi95UXs4P2UXWevu2PAmgfr0NQoWYxYVTNBlZhc=; b=mQqJngKaJ70J0w5NBnhvRzeYkx
-	iPqrt3HZAzTOqLWncKq7GzJMgOqwCxzwECXCIJ+FVlcwQ2nMpwSzvaO0nxEd47hrGQM+AUIKJkCfV
-	PkOswaMx3Xiac2HzSBL3yW1rTaDP5lVgaASSbaiZ2ujj2767bxqf90gqz/gQWiJmPsQGA3zSj8ep6
-	CR9zj6gqMDKoa/ttpN70SWTJcd8W/mVi//ERGDdfgmSHmlUW8w2h0beXkhn02Ud6sA7INzKf+7Gyk
-	2QB1eRQMFScw5bn0ScIADFau+Jwmmb72VaqmPQiHgFWhvZubAxBz3PwteCrO65ljh9XQrJ3ScB63/
-	ePoo5IWA==;
+	bh=ZZIVXbqZi3ZHgfaRzGyOphJYrcbrReZoLRIv/2BQTzQ=; b=2bUbL3w7UwxYJ2KbR5786ajEn9
+	wdKhC5QEq9BD4BHAYnsxAX/xjj/W774wGoouQGXL6HjUX0AETeFtuHtZcBpxZoVjrBb8mDfTVjuHC
+	Pa7hYJgLP+GPmC8wWv+vigYUNcjQdpf7TcDXozZkVh9T4dgKir+SxpKlOUfC5I5/mvrw5KJC/z47A
+	sJ320+psvs2gm1l3kyMyPG4QgnHZcuTnzdv9kRW/cd3e/nQEQntewXxq4ijn32KZGUaNVAWBaJiVX
+	5TqHyecBsGVc/oqffC5zUZcYbX/SwYRE3YUSlKN+8dsTVSFHjzOuJt3JYdEBkd+jW0a7Dy3jbWsbT
+	Fo0Ginzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPeLL-0000000FHZE-03hF;
-	Fri, 05 Jul 2024 08:30:59 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1sPeQO-0000000FIBh-3mxY;
+	Fri, 05 Jul 2024 08:36:12 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPeL6-0000000FHYE-04SQ;
-	Fri, 05 Jul 2024 08:30:45 +0000
+	id 1sPeQA-0000000FI6t-14pD;
+	Fri, 05 Jul 2024 08:36:00 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 3BC6862A91;
-	Fri,  5 Jul 2024 08:30:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 69FA6C116B1;
-	Fri,  5 Jul 2024 08:30:42 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 86EADCE3CE3;
+	Fri,  5 Jul 2024 08:35:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B5B3BC116B1;
+	Fri,  5 Jul 2024 08:35:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1720168242;
-	bh=9hcUZs/A+MJEANUcuyHjoQ2lOAGFVvVsvuftLkazFuU=;
+	s=k20201202; t=1720168555;
+	bh=IKRkgE7HTYushKsvXZ0tIGrzlUvI+jppSG/Bsv6Ha14=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=TtoBmJAgZle8hB/hOKsIGYYoOP97hqjfxkLz+qZjM76ygraVyo/3qJQqPasr+PaGS
-	 vTSiJIUl6/SmV35RD0qK2MwVnCMA43p8kHwjJyYZUhATcSgaWYFE6cOMwBAVtk7Dmt
-	 WbJL1/B2YUakB5jtSjf7TwO1/HNr2IQreb3zDYexqc+qyTPpJxfaFll5WZViRBtPk5
-	 6Znte+ZGGzWO5gWWAFT9aGpWspvFk1S6RRSI9z86OlAU2fSr4+JG4tFarSuNFZQ24i
-	 hwfbb1OfWYTw8LZY4yW9jpprrlOo7bsXRz4ljVr1qVWkZ0aHxkvrI4vc2YsrkFN5Oy
-	 fRf0s6ho6fO9w==
-Date: Fri, 5 Jul 2024 10:30:39 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-i2c@vger.kernel.org, sr@denx.de, andi.shyti@kernel.org,
-	matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, lorenzo.bianconi83@gmail.com,
-	upstream@airoha.com, benjamin.larsson@genexis.eu
-Subject: Re: [PATCH 2/2] i2c: mt7621: make device_reset optional
-Message-ID: <ZoevL9XaIWn2AvFm@lore-desk>
-References: <cover.1720130844.git.lorenzo@kernel.org>
- <3ea697be239c450cbc622f3e2e9dff8bf17515c0.1720130844.git.lorenzo@kernel.org>
- <b402896c-6b91-4973-9e4f-8d1f7128afdc@collabora.com>
+	b=Z9CEFwbvNY1VeOJO4phfFGSsKZeKz1UzMzRM6XtE8TzIqWqkMEe8sIy79ew1CNc52
+	 g5eRRAAjoOr5FhHD5xpM9BDkYlx30Z2dUm67U3EgjO1j/dsYgBUTw8Yp3LsDL0eZTB
+	 /oTaloP1ZtVdqZgEggE7izBV4C3X6khLu/DH+d9otJHoll3N98/r/5kkAxnDomxp7H
+	 ib28Lcaas6FCajN3GcaFxhQQHHikdoxDnd+kZfSkiPMwT0XUaxYEXO00E8eL7om4M/
+	 uuVRg75gbmbei8oT9HVGVL0jid7W0k1MtzGLSK/+fnezaJD4WkRdgxs6gW2Kqf2cYX
+	 Z4syNyv0EDk5g==
+Date: Fri, 5 Jul 2024 09:35:50 +0100
+From: Simon Horman <horms@kernel.org>
+To: Shengyu Qu <wiagn233@outlook.com>
+Cc: nbd@nbd.name, sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
+	lorenzo@kernel.org, davem@davemloft.net, edumazet@google.com,
+	kuba@kernel.org, pabeni@redhat.com, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com, netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, Elad Yifee <eladwf@gmail.com>
+Subject: Re: [PATCH v3] net: ethernet: mtk_ppe: Change PPE entries number to
+ 16K
+Message-ID: <20240705083550.GA1095183@kernel.org>
+References: <TY3P286MB261103F937DE4EEB0F88437D98DE2@TY3P286MB2611.JPNP286.PROD.OUTLOOK.COM>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="qWGuLQzavc0AqsjT"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <b402896c-6b91-4973-9e4f-8d1f7128afdc@collabora.com>
+In-Reply-To: <TY3P286MB261103F937DE4EEB0F88437D98DE2@TY3P286MB2611.JPNP286.PROD.OUTLOOK.COM>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240705_013044_212767_F0F7DD47 
-X-CRM114-Status: GOOD (  27.03  )
+X-CRM114-CacheID: sfid-20240705_013558_491360_25E3FD88 
+X-CRM114-Status: UNSURE (   9.42  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,100 +76,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Fri, Jul 05, 2024 at 01:26:26AM +0800, Shengyu Qu wrote:
+> MT7981,7986 and 7988 all supports 32768 PPE entries, and MT7621/MT7620
+> supports 16384 PPE entries, but only set to 8192 entries in driver. So
+> incrase max entries to 16384 instead.
+> 
+> Signed-off-by: Elad Yifee <eladwf@gmail.com>
+> Signed-off-by: Shengyu Qu <wiagn233@outlook.com>
+> ---
+> Changes since V1:
+>  - Reduced max entries from 32768 to 16384 to keep compatible with MT7620/21 devices.
+>  - Add fixes tag
+> 
+> Changes since V2:
+>  - Remove fixes tag (Thanks to Jakub)
 
---qWGuLQzavc0AqsjT
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Reviewed-by: Simon Horman <horms@kernel.org>
 
-> Il 05/07/24 00:16, Lorenzo Bianconi ha scritto:
-> > Rely on device_reset_optional() instead of device_reset() in
-> > mtk_i2c_reset routine since Airoha EN7581 reset controller does not
-> > implement the reset callback and device reset is not mandatory on this
->=20
-> Not mandatory means that the reset line for I2C exists, but you don't want
-> to use it? If so, that's not right.
-
-ack, it was not so clear, sorry for that. What I mean with "not mandatory" =
-is
-the mt7621 i2c controller works on EN7581 SoC even w/o this reset configura=
-tion.
-
->=20
-> On the other hand, if there is an issue with using that reset line and you
-> want to avoid using it for a good reason, please describe it into the com=
-mit
-> description and - in that case, you'll have to add a EN7581 compatible and
-> code to avoid calling device_reset() on that SoC.
-
-what I mean is device_reset() will call .reset() callback of reset APIs. EN=
-7581
-reset driver does not implemetn this callback, just .assert() and .deassert=
-()
-(I think the hw does not support the reset line automatic re-arm) so the ca=
-ll to
-device_reset() will always fails. Maybe a possible approach would be adding
-in the reset driver something like:
-
-en7581_reset() {
-    en7581_assert();
-    msleep(x);
-    en7581_deassert();
-    msleep(x);
-}
-
-What do you think? It seems a bit hacky to me and I am not sure what would =
-be the
-right delay in this case.
-
-Regards,
-Lorenzo
-
->=20
-> What you're doing here is removing an error log on SoCs that do *need* th=
-at
-> reset line to be in place, so, hiding a problem that could be causing oth=
-er
-> issues on peripherals connected to the I2C bus of those other SoCs.
->=20
-> Cheers,
-> Angelo
->=20
-> > SoC. This will remove the following log:
-> >=20
-> > i2c-mt7621 1fbf8000.i2c0: I2C reset failed!
-> >=20
-> > Tested-by: Ray Liu <ray.liu@airoha.com>
-> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> > ---
-> >   drivers/i2c/busses/i2c-mt7621.c | 2 +-
-> >   1 file changed, 1 insertion(+), 1 deletion(-)
-> >=20
-> > diff --git a/drivers/i2c/busses/i2c-mt7621.c b/drivers/i2c/busses/i2c-m=
-t7621.c
-> > index 81d46169bc1f..8cd89a2f59df 100644
-> > --- a/drivers/i2c/busses/i2c-mt7621.c
-> > +++ b/drivers/i2c/busses/i2c-mt7621.c
-> > @@ -85,7 +85,7 @@ static void mtk_i2c_reset(struct mtk_i2c *i2c)
-> >   {
-> >   	int ret;
-> > -	ret =3D device_reset(i2c->adap.dev.parent);
-> > +	ret =3D device_reset_optional(i2c->adap.dev.parent);
-> >   	if (ret)
-> >   		dev_err(i2c->dev, "I2C reset failed!\n");
->=20
->=20
-
---qWGuLQzavc0AqsjT
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZoevLwAKCRA6cBh0uS2t
-rFLKAPoCcGjfQ2AxTtEEvP+EYpVE0hRg/zDrFjdXREan8uuMTgD/UCpZqMHpwHLg
-KjnmRGoc2Y1UOrlEbDiGtHzrLQY2yAA=
-=xgRt
------END PGP SIGNATURE-----
-
---qWGuLQzavc0AqsjT--
 
