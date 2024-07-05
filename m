@@ -4,63 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4FDFC41513
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jul 2024 11:24:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 344E7C30658
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jul 2024 12:27:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1Rm7sueqxojm9JNpe+lV9lCDU26xLCvtonjU/f9MC04=; b=P7PCokxrW5rmamG0TljqyH24SS
-	a8JKiEVdg+OC2VFVpv/i+FdbN2yvopaSeRnTCL2KmJTHbAGf7DADxfXWAqVVdO9icCQGWW/EZkyzH
-	3jTUOTBcVLgdflqxnCm5KQogZ7rgy8+ITNFT94NbPxax5xfocOQXjhmr/oOS4+dmytm/Ow/UFPy+/
-	qZbbBtLMKso6CugdbzVl8b4xp17Jk6Rk/lyCbiTCccea4yVKHnKZWLMAZXJXLrGMdM4ZTrZIwNL30
-	w/6mAGQ7U7twvWz5jg3xwTYDkmMmjHV/hQo5/slWIjnuOxpNJOPgnEr17P/vBkad1ijpm+4U5Ki2O
-	HSOr2j9g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QrFw5Lik5O3blKsw57AYQOVhdr+mQJkrP9zFc2yUWc4=; b=vFmhcY6KhUncVGZZ/DUICKLdFj
+	7a36RivxqKgjWInnRJuNYzPGD4lzX1LPssYkum7YjWG6Jzs+uZYo6t7hUxRUnf9kYNn591jlLKrnS
+	3Fi11Ax8yKC747UMl1mpbi3gg+CqDnJnlU4yFMXYww3QgVEoi4tTb5bIi7XGJ7bca2QelS5GSToj9
+	bLdsM5/WWOsvS0DD5PSQjUf885QgcjQNCh95rTFvLyuJwLw9GzbhF4YzN3JAtpfBo5osAUecJoC2W
+	04QVrOh23wyhMq4HMITESTqegxYKPX0VFw/4l63MtckZfEn3Bv5QURlycKw1V2NsAplfCRHTTecR6
+	b1kK18FA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPh3F-0000000FmyW-49W0;
-	Fri, 05 Jul 2024 11:24:29 +0000
-Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
+	id 1sPi2R-0000000FuXN-1F2g;
+	Fri, 05 Jul 2024 12:27:43 +0000
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPh3C-0000000Fmwl-2vMu;
-	Fri, 05 Jul 2024 11:24:28 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.97.1)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1sPh37-00000000572-213d;
-	Fri, 05 Jul 2024 11:24:21 +0000
-Date: Fri, 5 Jul 2024 12:24:18 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: linux-mediatek@lists.infradead.org,
-	Przemek Kitszel <przemyslaw.kitszel@intel.com>,
-	Elad Yifee <eladwf@gmail.com>
-Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH net-next] net: ethernet: mediatek: Allow gaps in MAC
- allocation
-Message-ID: <ZofX4qfGf93Q8jys@makrotopia.org>
-References: <379ae584cea112db60f4ada79c7e5ba4f3364a64.1719862038.git.daniel@makrotopia.org>
- <3bda121b-f11d-44d1-a761-15195f8a418c@intel.com>
- <C24C4687-1C00-434D-8C37-BDB85E39456C@makrotopia.org>
+	id 1sPi2C-0000000FuQX-1w2Q;
+	Fri, 05 Jul 2024 12:27:29 +0000
+Received: by mail-ej1-x62f.google.com with SMTP id a640c23a62f3a-a77c9d3e593so80643766b.0;
+        Fri, 05 Jul 2024 05:27:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1720182446; x=1720787246; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=QrFw5Lik5O3blKsw57AYQOVhdr+mQJkrP9zFc2yUWc4=;
+        b=bCnyoa3sUDXdUunYMwsR47Az/g3HlVVrJGwmq2E5jDaDCOXOghTjhOnMi3X69UGy2m
+         TOnax6k1NMZs99UkPr/flYLvN6pz5By/BNSUVf32xtBd553xrpB75+C8UYvySqD7JMZI
+         +UOIK5ZNuwBmQIEb5XqGzAevP3UcTqkCDWjxvcLHiFH6rTJrrUvc5Le3QtRxxonOtiKg
+         QhkP84/v62IPAgdHvUR9PFomm88X2LUYxA8XeX2nT+rHquUR4S/eGO7YBIyxpWLBLr/g
+         9jDFvlqu7IEMH4bkABLqH+nqsDJxR4A3iTxJY8mQzXDjgo3cO0vf/0SA0pzmOkD4AdCf
+         MyKQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1720182446; x=1720787246;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=QrFw5Lik5O3blKsw57AYQOVhdr+mQJkrP9zFc2yUWc4=;
+        b=n7e85SOWHqw7/exYpgf5iiNOsDVWoBwMebkCKI2rulmWQTQ5XvYAZlLHixs7LNVdP4
+         DBJq+CjoBdXZa50xLO5Rd5LTxiByeITrgzyQfwgapsYU9oZF0WYr4jQk29n1NV/KDIQ+
+         +sAc/fBFOd+C0DujN0WhWREMIJ2z7QazPcll647f85eJrzgaXCAAKZEAvOtovHEoYNYz
+         8KJsb+PjgXFIInmCmc/0giOQ3eJ102/uIQIAIc7MNJMmFBnbIMhGW5K/BR4/daJLzpHM
+         Qsv+v9lZqHZh+mZnfVYKzTmPOUJIjDO0YsYYuL+26umLGfHTiGj3m/LGOauVNbelb0CY
+         5LBA==
+X-Forwarded-Encrypted: i=1; AJvYcCU4CEZeUvIdRPHqEcd6Fk4W+hVjguhh+uaXJOYP30bdceu6Bq9ouJfRYJdPSGurzf26z3NribTTiWDnmcoXFlAmEl4Nla2ikcLPPqpHJvkiYc0aNWQv273BtivTjyuSMQIe6sB1mgPz0qQAG+XB77HbbCQnCf60Mtg=
+X-Gm-Message-State: AOJu0Yw7AdaxRxuq6nT8TonXhwCcHwEGqDdRsg9gAvQCtjuxDLEQLy9e
+	p29sXfNlprRvVSomDdpVfjLoenH+83XR3Z3kiPK452/qJSv9k3ZcU4EDlqsnmduYIFQsmJC65bI
+	cib8UQbjvUr/LKdG9uXt5TXbaack=
+X-Google-Smtp-Source: AGHT+IE/fmdXPB3EONv2sJvLDs8SLrR9Aygswq6SzO7JApr9zCVnZCFzQptSkhO23Z0bgNjdwrXPh75o4PlNnmmf7yY=
+X-Received: by 2002:a17:906:2dc5:b0:a77:d52c:c431 with SMTP id
+ a640c23a62f3a-a77d52cc489mr79643966b.22.1720182445705; Fri, 05 Jul 2024
+ 05:27:25 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <C24C4687-1C00-434D-8C37-BDB85E39456C@makrotopia.org>
+References: <20240705081642.12032-1-ed.tsai@mediatek.com>
+In-Reply-To: <20240705081642.12032-1-ed.tsai@mediatek.com>
+From: Amir Goldstein <amir73il@gmail.com>
+Date: Fri, 5 Jul 2024 15:27:12 +0300
+Message-ID: <CAOQ4uxitFgaO4D5pg54b0xj3Hnt61a+3BAHnEd_t3T9yzpXptg@mail.gmail.com>
+Subject: Re: [PATCH 1/1] backing-file: covert to using fops->splice_write
+To: ed.tsai@mediatek.com
+Cc: Miklos Szeredi <miklos@szeredi.hu>, Alexander Viro <viro@zeniv.linux.org.uk>, 
+	Christian Brauner <brauner@kernel.org>, Jan Kara <jack@suse.cz>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, wsd_upstream@mediatek.com, 
+	chun-hung.wu@mediatek.com, casper.li@mediatek.com, 
+	linux-fsdevel@vger.kernel.org, linux-unionfs@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240705_042426_757333_EBE58D2C 
-X-CRM114-Status: GOOD (  21.19  )
+X-CRM114-CacheID: sfid-20240705_052728_526526_56451E69 
+X-CRM114-Status: GOOD (  17.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,61 +95,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi netdev maintainers,
+On Fri, Jul 5, 2024 at 11:17=E2=80=AFAM <ed.tsai@mediatek.com> wrote:
+>
+> From: Ed Tsai <ed.tsai@mediatek.com>
+>
+> Filesystems may define their own splice write. Therefore, use file
+> fops instead of invoking iter_file_splice_write() directly.
 
-On Tue, Jul 02, 2024 at 09:05:19AM +0000, Daniel Golle wrote:
-> >what about:
-> >4733│ static int mtk_sgmii_init(struct mtk_eth *eth)
-> >4734│ {
-> >4735│         struct device_node *np;
-> >4736│         struct regmap *regmap;
-> >4737│         u32 flags;
-> >4738│         int i;
-> >4739│
-> >4740│         for (i = 0; i < MTK_MAX_DEVS; i++) {
-> >4741│                 np = of_parse_phandle(eth->dev->of_node, "mediatek,sgmiisys", i);
-> >4742│                 if (!np)
-> >4743│                         break;
-> >
-> >should we also continue here?
-> 
-> Good point. As sgmiisys is defined in dtsi it's not so relevant in
-> practise though, as the SoC components are of course always present even
-> if we don't use them. Probably it is still better to not be overly
-> strict on the presence of things we may not even use, not even emit an
-> error message and silently break something else, so yes, worth fixing
-> imho.
-> 
+This looks sane, but can you share the scenario where you ran into this?
+or did you find this via code audit?
 
-I've noticed that this patch was marked as "Changes Requested" on patchwork
-despite having received a positive review.
+I can think of these cases:
+1. overlayfs with fuse (virtiofs) upper
+2. fuse passthrough over fuse
+3. fuse passthrough over overlayfs
+4. fuse passthrough over gfs2 or some out of tree fs
 
-I'm afraid this is possibly due to a misunderstanding:
+The first two will not cause any harm,
+In case #3, according to the comment above ovl_splice_write()
+the current code could even deadlock.
 
-The (unrelated and rather exotic) similar issue pointed to by Przemek
-Kitszel should not be fixed in the same commit. It is unrelated, and if
-at all, should be sent to 'net' tree rather than 'net-next'.
+So do you have a reproduction?
 
-Looking at it more closely I would not consider it an issue as we
-currently in the bindings we **require** the correct number of sgmiisys phandles to be
-present for each SoC supporting SGMII:
+Thanks,
+Amir.
 
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/net/mediatek,net.yaml#n200
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/net/mediatek,net.yaml#n245
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/net/mediatek,net.yaml#n287
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/net/mediatek,net.yaml#n325
-
-Hence there aren't ever any gaps, also because the sgmiisys phandles are
-defined in the SoC-specific DTSI **even for boards not making any use of
-them**.
-
-I hence would like this very patch to be merged (or at least discussed)
-as-is, and if there is really a need to address the issue mentioned by
-Przemek Kitszel, then deal with it in a separate commit.
-
-
-Cheers
-
-
-Daniel
+>
+> Signed-off-by: Ed Tsai <ed.tsai@mediatek.com>
+> ---
+>  fs/backing-file.c | 5 ++++-
+>  1 file changed, 4 insertions(+), 1 deletion(-)
+>
+> diff --git a/fs/backing-file.c b/fs/backing-file.c
+> index 740185198db3..687a7fae7d25 100644
+> --- a/fs/backing-file.c
+> +++ b/fs/backing-file.c
+> @@ -280,13 +280,16 @@ ssize_t backing_file_splice_write(struct pipe_inode=
+_info *pipe,
+>         if (WARN_ON_ONCE(!(out->f_mode & FMODE_BACKING)))
+>                 return -EIO;
+>
+> +       if (out->f_op->splice_write)
+> +               return -EINVAL;
+> +
+>         ret =3D file_remove_privs(ctx->user_file);
+>         if (ret)
+>                 return ret;
+>
+>         old_cred =3D override_creds(ctx->cred);
+>         file_start_write(out);
+> -       ret =3D iter_file_splice_write(pipe, out, ppos, len, flags);
+> +       ret =3D out->f_op->splice_write(pipe, out, ppos, len, flags);
+>         file_end_write(out);
+>         revert_creds(old_cred);
+>
+> --
+> 2.18.0
+>
 
