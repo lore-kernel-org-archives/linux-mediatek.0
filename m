@@ -4,83 +4,204 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 344E7C30658
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jul 2024 12:27:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB464C30658
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jul 2024 12:56:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QrFw5Lik5O3blKsw57AYQOVhdr+mQJkrP9zFc2yUWc4=; b=vFmhcY6KhUncVGZZ/DUICKLdFj
-	7a36RivxqKgjWInnRJuNYzPGD4lzX1LPssYkum7YjWG6Jzs+uZYo6t7hUxRUnf9kYNn591jlLKrnS
-	3Fi11Ax8yKC747UMl1mpbi3gg+CqDnJnlU4yFMXYww3QgVEoi4tTb5bIi7XGJ7bca2QelS5GSToj9
-	bLdsM5/WWOsvS0DD5PSQjUf885QgcjQNCh95rTFvLyuJwLw9GzbhF4YzN3JAtpfBo5osAUecJoC2W
-	04QVrOh23wyhMq4HMITESTqegxYKPX0VFw/4l63MtckZfEn3Bv5QURlycKw1V2NsAplfCRHTTecR6
-	b1kK18FA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=mJw9OhB/9ue+T6SdZAJSNJtoWA2Ac1figmekbxyX+wA=; b=zQ5TyjGxVQsNrmJnZHKYT6jo6h
+	tWKnQscjjC1/y6XtmXiP09AprQTf2rY706vfq5R14q37FAb7D9Mawx7tY/bajeidvEITO4OFBO0sL
+	vjgBMXvWouzIieimuG5Z+B5b/QVNhyLJ+zNmt6MptL+a4eFTVl8Y1Epp2XF4gJ3f+J0T/t6yXQUB/
+	RwThyL7VsRcMb7ts2cmss5Rr08InqDwwjBX2slSpx8cETmN7WIAI9OjmN2zJD+QwfDJPlv2bRA44j
+	1ERLvCONLIwsXkiaBIO0rqzkjThvQVlJxKtCqjKI1CemKxTogn6xGV7JlL/JwYSJdO5yywUsCw9nU
+	BcZvnOdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPi2R-0000000FuXN-1F2g;
-	Fri, 05 Jul 2024 12:27:43 +0000
-Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
+	id 1sPiTw-0000000FyLF-2o9U;
+	Fri, 05 Jul 2024 12:56:08 +0000
+Received: from mgamail.intel.com ([198.175.65.13])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPi2C-0000000FuQX-1w2Q;
-	Fri, 05 Jul 2024 12:27:29 +0000
-Received: by mail-ej1-x62f.google.com with SMTP id a640c23a62f3a-a77c9d3e593so80643766b.0;
-        Fri, 05 Jul 2024 05:27:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1720182446; x=1720787246; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=QrFw5Lik5O3blKsw57AYQOVhdr+mQJkrP9zFc2yUWc4=;
-        b=bCnyoa3sUDXdUunYMwsR47Az/g3HlVVrJGwmq2E5jDaDCOXOghTjhOnMi3X69UGy2m
-         TOnax6k1NMZs99UkPr/flYLvN6pz5By/BNSUVf32xtBd553xrpB75+C8UYvySqD7JMZI
-         +UOIK5ZNuwBmQIEb5XqGzAevP3UcTqkCDWjxvcLHiFH6rTJrrUvc5Le3QtRxxonOtiKg
-         QhkP84/v62IPAgdHvUR9PFomm88X2LUYxA8XeX2nT+rHquUR4S/eGO7YBIyxpWLBLr/g
-         9jDFvlqu7IEMH4bkABLqH+nqsDJxR4A3iTxJY8mQzXDjgo3cO0vf/0SA0pzmOkD4AdCf
-         MyKQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1720182446; x=1720787246;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=QrFw5Lik5O3blKsw57AYQOVhdr+mQJkrP9zFc2yUWc4=;
-        b=n7e85SOWHqw7/exYpgf5iiNOsDVWoBwMebkCKI2rulmWQTQ5XvYAZlLHixs7LNVdP4
-         DBJq+CjoBdXZa50xLO5Rd5LTxiByeITrgzyQfwgapsYU9oZF0WYr4jQk29n1NV/KDIQ+
-         +sAc/fBFOd+C0DujN0WhWREMIJ2z7QazPcll647f85eJrzgaXCAAKZEAvOtovHEoYNYz
-         8KJsb+PjgXFIInmCmc/0giOQ3eJ102/uIQIAIc7MNJMmFBnbIMhGW5K/BR4/daJLzpHM
-         Qsv+v9lZqHZh+mZnfVYKzTmPOUJIjDO0YsYYuL+26umLGfHTiGj3m/LGOauVNbelb0CY
-         5LBA==
-X-Forwarded-Encrypted: i=1; AJvYcCU4CEZeUvIdRPHqEcd6Fk4W+hVjguhh+uaXJOYP30bdceu6Bq9ouJfRYJdPSGurzf26z3NribTTiWDnmcoXFlAmEl4Nla2ikcLPPqpHJvkiYc0aNWQv273BtivTjyuSMQIe6sB1mgPz0qQAG+XB77HbbCQnCf60Mtg=
-X-Gm-Message-State: AOJu0Yw7AdaxRxuq6nT8TonXhwCcHwEGqDdRsg9gAvQCtjuxDLEQLy9e
-	p29sXfNlprRvVSomDdpVfjLoenH+83XR3Z3kiPK452/qJSv9k3ZcU4EDlqsnmduYIFQsmJC65bI
-	cib8UQbjvUr/LKdG9uXt5TXbaack=
-X-Google-Smtp-Source: AGHT+IE/fmdXPB3EONv2sJvLDs8SLrR9Aygswq6SzO7JApr9zCVnZCFzQptSkhO23Z0bgNjdwrXPh75o4PlNnmmf7yY=
-X-Received: by 2002:a17:906:2dc5:b0:a77:d52c:c431 with SMTP id
- a640c23a62f3a-a77d52cc489mr79643966b.22.1720182445705; Fri, 05 Jul 2024
- 05:27:25 -0700 (PDT)
+	id 1sPiTg-0000000FyFG-3cuH;
+	Fri, 05 Jul 2024 12:55:54 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1720184153; x=1751720153;
+  h=message-id:date:subject:to:cc:references:from:
+   in-reply-to:content-transfer-encoding:mime-version;
+  bh=pVtAovohtVT6IQH3XBj9n4ApNLMf2WNs8qNfLr4TQvk=;
+  b=nzhjIw+ZI/gE6hW928yAzDgmzxdCnKfTI9ENgBP8sgk6cz/GIda36CfD
+   E6V6e4iYTuDNfuLWS/BWvsOZxxo4ZmCw1QQlYpW7itipO9z36ycs0pr/7
+   QEeSYpZo7xorftfD12/4WdTA/UW+rePb7jRqY6Q9OmZKF4Els5Ur42XmW
+   586hWvchnxnxcG0JJmDwDaSwPPGhXra0wzv4f/cjX61nS+QpB6z73m/4N
+   u/K5cuWfgo7q3s0UCdo5OUNCck8vK1Iq2qqdWvm4D/B9O4CE1rmCXT0++
+   fmgKKw6wchDKXUO26lBvxVFhuoVMMUT3SBlhG7O/ILCVFikNf2y86R97y
+   A==;
+X-CSE-ConnectionGUID: nbxIaO9GTpOtUaC9l7Y6ow==
+X-CSE-MsgGUID: k8GXC142Sl2RlKdTRW15YA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11123"; a="28630842"
+X-IronPort-AV: E=Sophos;i="6.09,184,1716274800"; 
+   d="scan'208";a="28630842"
+Received: from orviesa003.jf.intel.com ([10.64.159.143])
+  by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 05 Jul 2024 05:55:51 -0700
+X-CSE-ConnectionGUID: 3LAM6rAPS9yqgXzYQgqg5g==
+X-CSE-MsgGUID: sncYOCVuTWi8GsCDYkz1eQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.09,184,1716274800"; 
+   d="scan'208";a="51722880"
+Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
+  by orviesa003.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384; 05 Jul 2024 05:55:50 -0700
+Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39; Fri, 5 Jul 2024 05:55:49 -0700
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
+ orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39 via Frontend Transport; Fri, 5 Jul 2024 05:55:49 -0700
+Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.168)
+ by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Fri, 5 Jul 2024 05:55:49 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Ytggp1lfs3EfwgNT9Zt57L28maYuw0aJnuVmwmMU+SI24n4kOfrqUEQGswrKeVrKlL5Qe0JwaiVebQ+JN381KFw3j9N46mp6oisL4epxOXN6E32VqNNmgZMO/+fwi6IS+BdfO5kTKrzUNZXgHlYucVMO82QaEwb9k+NTHaD6WwQ4Xw3dgPYxd30TWlDSLhjwVqCBhtJ8t3YwahgYcjvMuh36/AxISrdYhpGbYF5N4vNMiSVMi+Ai7Lii7RRitsX2Uai6Q43Ip8lalpNhO/rZq/Vi2t6S7fJR3CCkTOWpP9i4FY4BYoxRWRHbXObXPD3cvsQWxFWCyHuKEpHCPc041w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=mJw9OhB/9ue+T6SdZAJSNJtoWA2Ac1figmekbxyX+wA=;
+ b=FhkgQQE3ue1AuRH/d7GbT0fJ/sb9qubEyL/ey4LR7I25HpicAb2MTLylSaEt+AylukDT4COByp7S/mpqPwPcmjwbLiYKUh/8l6vXVaDcPr6Uaf+0u0nBe9eLClAdWU133DdkcS+Lg08UFR1iPo675pZ9Xgwj6EiHbYnId13mz6ma5wyO/dppwSOpZ62TDDcT9+UKdNmt5pOJggEMZuLK3TgIW3ZDD03IC2VNbwldRZd7E9B+XtvynSvMP57Glirqau/opv0ISL854HPKQIZed+DwUwHHIWJJrlY4gwMMhe1FA7aIFw/qlaMcdZZ9WdR6OtRd+sjXmVr2t3Mcb5H4iw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Received: from MN6PR11MB8102.namprd11.prod.outlook.com (2603:10b6:208:46d::9)
+ by SJ0PR11MB5214.namprd11.prod.outlook.com (2603:10b6:a03:2df::22) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7719.33; Fri, 5 Jul
+ 2024 12:55:42 +0000
+Received: from MN6PR11MB8102.namprd11.prod.outlook.com
+ ([fe80::15b2:ee05:2ae7:cfd6]) by MN6PR11MB8102.namprd11.prod.outlook.com
+ ([fe80::15b2:ee05:2ae7:cfd6%7]) with mapi id 15.20.7741.017; Fri, 5 Jul 2024
+ 12:55:42 +0000
+Message-ID: <2e441889-cb53-4004-aeed-1268d20b54b7@intel.com>
+Date: Fri, 5 Jul 2024 14:55:35 +0200
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net-next] net: ethernet: mediatek: Allow gaps in MAC
+ allocation
+To: Daniel Golle <daniel@makrotopia.org>, Elad Yifee <eladwf@gmail.com>
+CC: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>, Mark Lee
+	<Mark-MC.Lee@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>, "David S.
+ Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, "Jakub
+ Kicinski" <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, <netdev@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>
+References: <379ae584cea112db60f4ada79c7e5ba4f3364a64.1719862038.git.daniel@makrotopia.org>
+ <3bda121b-f11d-44d1-a761-15195f8a418c@intel.com>
+ <C24C4687-1C00-434D-8C37-BDB85E39456C@makrotopia.org>
+ <ZofX4qfGf93Q8jys@makrotopia.org>
+From: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Content-Language: en-US
+In-Reply-To: <ZofX4qfGf93Q8jys@makrotopia.org>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+X-ClientProxiedBy: VI1PR0102CA0064.eurprd01.prod.exchangelabs.com
+ (2603:10a6:803::41) To MN6PR11MB8102.namprd11.prod.outlook.com
+ (2603:10b6:208:46d::9)
 MIME-Version: 1.0
-References: <20240705081642.12032-1-ed.tsai@mediatek.com>
-In-Reply-To: <20240705081642.12032-1-ed.tsai@mediatek.com>
-From: Amir Goldstein <amir73il@gmail.com>
-Date: Fri, 5 Jul 2024 15:27:12 +0300
-Message-ID: <CAOQ4uxitFgaO4D5pg54b0xj3Hnt61a+3BAHnEd_t3T9yzpXptg@mail.gmail.com>
-Subject: Re: [PATCH 1/1] backing-file: covert to using fops->splice_write
-To: ed.tsai@mediatek.com
-Cc: Miklos Szeredi <miklos@szeredi.hu>, Alexander Viro <viro@zeniv.linux.org.uk>, 
-	Christian Brauner <brauner@kernel.org>, Jan Kara <jack@suse.cz>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, wsd_upstream@mediatek.com, 
-	chun-hung.wu@mediatek.com, casper.li@mediatek.com, 
-	linux-fsdevel@vger.kernel.org, linux-unionfs@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: MN6PR11MB8102:EE_|SJ0PR11MB5214:EE_
+X-MS-Office365-Filtering-Correlation-Id: 2233f32c-2e04-49ed-fbd6-08dc9cf1c73d
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|1800799024|366016;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?WXpVQ2drWllHUnJpL2UrRU1zR3JLV0dQcW14d1o3VG45Ly9LcEtRNWFPVFMw?=
+ =?utf-8?B?TU1uc3V0N2pIcGJGOVVpNHhzWVh4OU9TS3ZXYzNPZ3VhVXc2aEh1S3BtOFlm?=
+ =?utf-8?B?U0ErWHBWZmU4SXk1SDcxYWlCT0RVYmtUb3Z1U2FEZyt5ZzMrQURjMGtnTDJy?=
+ =?utf-8?B?VGFFVXpLSDdwaUFucmc2UTBvd1gvU01tYnB5V3dTYVQxd1paeGdZbkE4TjE2?=
+ =?utf-8?B?ZmFhOVdrdlI4aHp6ZmZ6QWlxZTQ2ZG1VeVB3bHdaQ2xtbUhFb1Awb0RTQStQ?=
+ =?utf-8?B?K3hRUXN6NmtLMVNPR1Z1L2NENDQ0c29rckhlZVdqam1BbEhYaHdKQ1R5VXRl?=
+ =?utf-8?B?anZYMUd4eExlTEYvUUhMRFlyR2c4azE0WFFDUHFRTEtKUjNBQ2E1Z2Y3S1dI?=
+ =?utf-8?B?WHRtQlZYR2JyR0F5aStZVlF4Ry9zSEpaYVU2OWpmeU9UcmQ3a29COG9Qa21T?=
+ =?utf-8?B?ZWRlaGNPU24xSThlU1Nsa1p3MW1qQURsVTkxeEZVOGRsYlp1ekhkTW9aUWxQ?=
+ =?utf-8?B?NWRzcU9lMmdTOTlEby9BRzM3bEgxa1Jsa1MrOGRGdmRqYmI0ZGpINzlvTVFx?=
+ =?utf-8?B?Y2xveWRLc05Gd3hmK1NLQXVGL1VrMnZlZ1NjN3lSUVF6MEdSVS9vUGRLOE91?=
+ =?utf-8?B?Nk5xSzV6SFJuS3R0bDZqT2FWMjh2M2pFNjZ5dk53RURDTTFxbGEzOGZQS3Fh?=
+ =?utf-8?B?elRRZUhkR3M2WUFEL3NvNmVELytva3B6MHloMGp6WWJObXJOZG90OGR6c3dS?=
+ =?utf-8?B?aFoxYklLTkdLTE5KcUlqQ1c1akRFUHlLODVKZVdEd0p0dWlvSWZoOFNtMEY2?=
+ =?utf-8?B?WTdvQmRZV1Z2TXhZcU9xcUI4cElqVEZsUHAzeEliZllDL3VaZmZCR3hMZ0hT?=
+ =?utf-8?B?LzVMaTRoSHIzMzUyL1N1WDJZMEVSZVRaUGlQM0NrQ2RwWmlIUUlibmg3K2tK?=
+ =?utf-8?B?bkp0TCs4eEJxbm11TVJtdDdXQnNQL1Z0bktrR1NUOU9neFNKQmw1Qlk5VVBi?=
+ =?utf-8?B?RWZaQ2xlTFdNdWhpSi9kRGxiWHNEaFhzQ1pSbVEwNFdCS0xUTUZWZWJ6R1RU?=
+ =?utf-8?B?VVhnOUZ4djRNbzF1NHJ4VnJFa1U0NVk2aUhhQ3h2WGt4ZmxrOWJaRWdMS1RM?=
+ =?utf-8?B?VGczY1pVTXc1di91aWdjNFU5V21xM2ROeUhKU3B1T0x5WGRmT0JyK2UvT0NR?=
+ =?utf-8?B?SXNGdE92YTVLUEY1eVNLWVRlWkp4aWVmc1F3bFdaMW9oYllCLzJOd2QvOXR2?=
+ =?utf-8?B?em9NZmw1Wjc1Sng1Sm9LVkl1Q2dlSFpReGJIL3hmRmhSendHZ3hMOC94RE5P?=
+ =?utf-8?B?RnZJbHQ1cUI4M2VaMVg0V2lwanhHQkpudFI4WXlWT2dpTlFLcUhjc0NYOUZr?=
+ =?utf-8?B?QmVUSk1LVHhncStyYW9xTWhZZEZ5akpRUGszdDBIem1lTGxjczUrZGVONVcw?=
+ =?utf-8?B?d2hOYkFxU0VvdlJEbjBkbStoaXMyUWpNVFlxUzNmT1VNcDh1aDhMaDZQejU2?=
+ =?utf-8?B?ckErQldVdUxEdURCaWJ1aGtXMjM0N0E5Tzg0SEQwTzFEbHluZnQ1TWlJVzVQ?=
+ =?utf-8?B?bUQ2SlNaUGlaUkVITjlLUFN6UUQ2NkZBRlJxem9wZENhUlBHelMyYVJ3MnRO?=
+ =?utf-8?B?MVloSEgweEdUNXg1R2VJVCt6clhxQm44cUd4YXJyeWNtWFVKZ25nUENBdGx3?=
+ =?utf-8?B?OXVwNjBSNmNQTHpMNkFXYmFvZ1dmL2wySXZYVC9mSFBkZU9iOGt1L01GTWhR?=
+ =?utf-8?Q?AlDz+Ov3Q7EFTJW6mQVtSXpsWn4FvWl6cMyQHrl?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MN6PR11MB8102.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(7416014)(1800799024)(366016);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?cGR5ellJd09XcFhSTlhBS2VpTGk1TXA2TWgwY2hIMGlCQ1hFZ2JIYURvanp3?=
+ =?utf-8?B?RlgyTm9RVXY2RGNsanJEK2NaZ3ByU1h1ZVVoME0xUmUwMXZ1NlBBam5TbFVk?=
+ =?utf-8?B?VHoybnFmeW5PeEVrdEdyVkFZek1vRDZrd0tLTStkK2JuTlRYYndMaE5XRHM3?=
+ =?utf-8?B?NDhLVXFUVWk2V1Rhb21NM0Nnb0FtVG4vMzBFSVBUdnV1eHcwNjQ5dDNkaXlW?=
+ =?utf-8?B?SjQycENEYTREODhSeE45M2RwQmxkSm55Skh2R3ZUMWdLa3pUMy9JblIvbVpI?=
+ =?utf-8?B?UURPQXRiK0plcWNqSWtKMlE3dktGb3c5bVc4aHV1Ri9hckF4MnJieTNMV2Zo?=
+ =?utf-8?B?M0gvSXZJTWg3ZE04d2c0MWtzcnhzYURwNmdLWkJoWHE4Sm16eHk4U2hsRUxQ?=
+ =?utf-8?B?OFB0Wlc5cmhnamVvTGxUKy90WnMzb2FmWE1mQnU0NldReW5Cb2ZDaFBQQ1Bj?=
+ =?utf-8?B?SzBmc21vVW5FRkoycytVb3dMTkFjcnRPeG9SUFpzb2dkeStyK1NGVGNlUTk0?=
+ =?utf-8?B?Q0RWTzBpRFlkLzFPdmVvNnAvUTFWamhIMmYweGVmYWJlNFNRQlp2Uk9OekYy?=
+ =?utf-8?B?dEVCUldCR25zRVdvOWszbnE0LzBnSmNhL21RV2ZFRUwrQ2diblVGOGNlbzVL?=
+ =?utf-8?B?VFI1M0RweU9XUjJDZkd6dENZREloVVVlVWlqbEwvYlY3SDhzQ0N5Q2lneTE4?=
+ =?utf-8?B?T2IzU0JxOUw1RE1pOCtTZ3JqbmNzcDZvRGdGYTc5dW9vdndnWUhYcHhnZ2dy?=
+ =?utf-8?B?eHMyNURjTHp5NmNHajNvNjFueHpCSUttN2JsMzRSZ3VSejh4NTgxQ2ZLTktD?=
+ =?utf-8?B?dWZML0R4UHR4bERQM0NBS1N0dFdRK1BVWHFKVWxaNStzb210dzV5Wnp6cDgr?=
+ =?utf-8?B?dEljN3dvV0VPZGRzUXFaYmFFYUpCcnB0cEhaeStncUNVL0FFKy8rbStJMnJm?=
+ =?utf-8?B?UXRmdytEZjZOaHBURnFhaWc3a0RVSGY1OU5TSUpabWhiaSsrMzN4VkhOdFpw?=
+ =?utf-8?B?dVVwSHJLMVIxN3JTMzNzQ3JFM1duVDRDWVc2Tnd4VEZQajQ1cnhNNk5QUGp4?=
+ =?utf-8?B?aHNjUnRyU2M1WWMxR3IxQ2EwcnNlZzVQOWNXUklWNVl2R0luKytXTTVOSVlO?=
+ =?utf-8?B?VU5zT2xIQlh3aEtVaE5oS2NOYUFSRktiYlQyaldyU216cHQ4RTlPUFZhQnNN?=
+ =?utf-8?B?TldEQUlONHVPeVJEQzI2Qk1ITWNWTGlXdEhCL1JTMzNWZ3BqbmVXOTUyODEz?=
+ =?utf-8?B?UW8zU0JkV1BLdDNwV1FmSGgyb1cwWWtSa0toZ0dHSm5Wd1lpNS9sU3VpT1lz?=
+ =?utf-8?B?TWwxRXZLeUpFZk1WRE9mSVg3S1ZhVXVIMDFPcEVvcVRXbHpMNlV5NTNoSUhD?=
+ =?utf-8?B?V2NJTEJsZ2dzRFU1OC9sRzVlR3VsZ3U0V3Y2UmtpUEVKU2tnZ2F4WHIwR0h3?=
+ =?utf-8?B?RFNEMVpCVjgrV2JnNWczbmdHTVRQd3FNUE5Ucnd2aW5aRjRLejl3U3R0TWNt?=
+ =?utf-8?B?dkNDdFJNcWNSWmc5cFA3WVd0cGJ6dVFJc0pwUkcrdW9tVjhDZGlQRC94TlBa?=
+ =?utf-8?B?dVN2YmpLL3IzYXZSQ2h3V09mSjRYd0tVUGtPOWtOYUc3N0UrU2RzdXpvQ1FY?=
+ =?utf-8?B?alNFWmpncElmRW1WaFpXaW9vWE1manU0WVNER2l5N1YwZWxYRzB6NjY3cXlM?=
+ =?utf-8?B?Z1R5S1M4elFFLzY2R0Z6RFRpR280dFVzaTBHTEw1SitYUG80c0hQelFPTStx?=
+ =?utf-8?B?YTRUM2d0bjNvL0phRCtzL3haYThGUE0vN1FMOTA1dkxKTTl6V3A2MklvSWVO?=
+ =?utf-8?B?M1cwNjZ0SWxHdmRnU0xNRUtEaHNJS3I2TmRhSHhVaElaeVVCRHQrQ3VqYmFY?=
+ =?utf-8?B?YXJocDNSTkdjd09sTEE5eGZYUlhlTGVaQ0RhM1NrblAwSWJaUDhyVnhsZmpC?=
+ =?utf-8?B?MlI2ZkttMmYvRW5wdlJLY25JNDd2ak80TUdwZmVYZXZZVTMzYVVWcFM3U1dy?=
+ =?utf-8?B?SzY5cldUTkQ1KzNaSGJoanZTNmt4U3NhRk1nZktpMFU5ZGNjeXdvM21oa0lz?=
+ =?utf-8?B?dTI3SDNBVXNUUUVQU1RsWVFiMkZvN0VxZHlRbDZ3VDhVa2JrUGFpVjdGeXhQ?=
+ =?utf-8?B?Z3Q4MTBNZkcvRzNtdXhiSUd5cmY5b0NTNDVTSkxrbGc4TllpQ3FUY2RyZnlG?=
+ =?utf-8?B?MHc9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 2233f32c-2e04-49ed-fbd6-08dc9cf1c73d
+X-MS-Exchange-CrossTenant-AuthSource: MN6PR11MB8102.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 Jul 2024 12:55:42.5363
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: PccFh954wu7IINhIQEzS3PF5qYS6WbhOp0KVF+QgjA3Pc8MSGW9zHpkxsBryqAWofGe4hmGD1/+j1Qqt9vmNjUWSLOQQDA8gN2Uq7DSLrOc=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR11MB5214
+X-OriginatorOrg: intel.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240705_052728_526526_56451E69 
-X-CRM114-Status: GOOD (  17.77  )
+X-CRM114-CacheID: sfid-20240705_055553_074018_5B52B504 
+X-CRM114-Status: GOOD (  26.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,61 +216,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 5, 2024 at 11:17=E2=80=AFAM <ed.tsai@mediatek.com> wrote:
->
-> From: Ed Tsai <ed.tsai@mediatek.com>
->
-> Filesystems may define their own splice write. Therefore, use file
-> fops instead of invoking iter_file_splice_write() directly.
+On 7/5/24 13:24, Daniel Golle wrote:
+> Hi netdev maintainers,
+> 
 
-This looks sane, but can you share the scenario where you ran into this?
-or did you find this via code audit?
+TL;DR
+Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
 
-I can think of these cases:
-1. overlayfs with fuse (virtiofs) upper
-2. fuse passthrough over fuse
-3. fuse passthrough over overlayfs
-4. fuse passthrough over gfs2 or some out of tree fs
+and no-one provided feedback against merging this patch so far
 
-The first two will not cause any harm,
-In case #3, according to the comment above ovl_splice_write()
-the current code could even deadlock.
+> On Tue, Jul 02, 2024 at 09:05:19AM +0000, Daniel Golle wrote:
+>>> what about:
+>>> 4733│ static int mtk_sgmii_init(struct mtk_eth *eth)
+>>> 4734│ {
+>>> 4735│         struct device_node *np;
+>>> 4736│         struct regmap *regmap;
+>>> 4737│         u32 flags;
+>>> 4738│         int i;
+>>> 4739│
+>>> 4740│         for (i = 0; i < MTK_MAX_DEVS; i++) {
+>>> 4741│                 np = of_parse_phandle(eth->dev->of_node, "mediatek,sgmiisys", i);
+>>> 4742│                 if (!np)
+>>> 4743│                         break;
+>>>
+>>> should we also continue here?
+>>
+>> Good point. As sgmiisys is defined in dtsi it's not so relevant in
+>> practise though, as the SoC components are of course always present even
+>> if we don't use them. Probably it is still better to not be overly
+>> strict on the presence of things we may not even use, not even emit an
+>> error message and silently break something else, so yes, worth fixing
+>> imho.
+>>
+> 
+> I've noticed that this patch was marked as "Changes Requested" on patchwork
+> despite having received a positive review.
+> 
+> I'm afraid this is possibly due to a misunderstanding:
+> 
+> The (unrelated and rather exotic) similar issue pointed to by Przemek
+> Kitszel should not be fixed in the same commit. It is unrelated, and if
+> at all, should be sent to 'net' tree rather than 'net-next'.
+> 
+> Looking at it more closely I would not consider it an issue as we
+> currently in the bindings we **require** the correct number of sgmiisys phandles to be
+> present for each SoC supporting SGMII:
+> 
+> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/net/mediatek,net.yaml#n200
+> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/net/mediatek,net.yaml#n245
+> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/net/mediatek,net.yaml#n287
+> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/net/mediatek,net.yaml#n325
+> 
+> Hence there aren't ever any gaps, also because the sgmiisys phandles are
+> defined in the SoC-specific DTSI **even for boards not making any use of
+> them**.
+> 
+> I hence would like this very patch to be merged (or at least discussed)
+> as-is, and if there is really a need to address the issue mentioned by
+> Przemek Kitszel, then deal with it in a separate commit.
+> 
+> 
+> Cheers
+> 
+> 
+> Daniel
 
-So do you have a reproduction?
-
-Thanks,
-Amir.
-
->
-> Signed-off-by: Ed Tsai <ed.tsai@mediatek.com>
-> ---
->  fs/backing-file.c | 5 ++++-
->  1 file changed, 4 insertions(+), 1 deletion(-)
->
-> diff --git a/fs/backing-file.c b/fs/backing-file.c
-> index 740185198db3..687a7fae7d25 100644
-> --- a/fs/backing-file.c
-> +++ b/fs/backing-file.c
-> @@ -280,13 +280,16 @@ ssize_t backing_file_splice_write(struct pipe_inode=
-_info *pipe,
->         if (WARN_ON_ONCE(!(out->f_mode & FMODE_BACKING)))
->                 return -EIO;
->
-> +       if (out->f_op->splice_write)
-> +               return -EINVAL;
-> +
->         ret =3D file_remove_privs(ctx->user_file);
->         if (ret)
->                 return ret;
->
->         old_cred =3D override_creds(ctx->cred);
->         file_start_write(out);
-> -       ret =3D iter_file_splice_write(pipe, out, ppos, len, flags);
-> +       ret =3D out->f_op->splice_write(pipe, out, ppos, len, flags);
->         file_end_write(out);
->         revert_creds(old_cred);
->
-> --
-> 2.18.0
->
+you are right, I have even marked this specifically as Reviewed-by: $me,
+so I think is just a mistake to mark it as CR
+(without the RB tag, it will be wise to mark such comments as no-issue
+or similar, and I typically do so)
 
