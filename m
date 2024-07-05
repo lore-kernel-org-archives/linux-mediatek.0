@@ -4,92 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6261EC30658
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jul 2024 03:56:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCC88C3271F
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jul 2024 06:10:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fUkrBQmRDOAxIe2yUgO4lwZfbGY34jJ7VWOeUTA54mQ=; b=FyQgBdM39kAXvlk/2TU6JFVvui
-	ZAK056b3a0IcvlXWwMXmJx6zMCTb5iX7mn8tXuZ1kQ/tLAIWQazDtB8hhuX4ZUKvSNTcIk33pMYim
-	weA40EnaK0MbixwYJmnbfHZ18/TFueEcxgQNMQ0SN7o6RYFH6Z4Z1BHk5wG3dCrutJ3fxA5JQbBN9
-	eFNRfROHiWuYXnRi8opJeGgRN4RjO+JR+Ao4CXZoDUb9r6yoycUwe8tvx1P+3GSj7TMygRF9zKOMA
-	ryKD1FnKKIWYtDk3HVEPIej8mBwFdQLGus4xUqA+22lPuIw8ORJGq39WScKXx0L43R8u02p6mNGTy
-	Wvk30igg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=DR5hN2OQXapoHl3tTMTDpRqBQFK+zPTFjZYInKtu+tI=; b=eUMjtAZrWH1Hd6FfHUKMe7AUGf
+	6NA1HIzYQS0zfkc8mC1KsM4tbm81Akjp67cxLtQvTUBCrQD1GcxQ1IH2uwqIdZ1Ae2hcICA6GLTU/
+	/dMlJmFXBOHQ5k8hkXNUSQ34t+V7/6yGVcs6gp0gHxzDj1KV0kxyfdzmF1bxuC3FXtjtbnmjJsdvD
+	YfFHqFWmejTwoRhqERnNleOD7T/JfLQ+YPMDZNa2Ruyy29PG7IdPvvt+yUxalMGgrMoXSZRysEAra
+	4Eu1peldVUvOOOLT66XqD6DbOaTjwOdb4WTe84RBeNiFi9P9WXFNy78ZPmH5cTzBl3vcjO0p/2e/0
+	DnPPziwg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPa3x-0000000ErHD-1yGb;
-	Fri, 05 Jul 2024 03:56:45 +0000
-Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
+	id 1sPc96-0000000F0hP-3GeM;
+	Fri, 05 Jul 2024 06:10:12 +0000
+Received: from mgamail.intel.com ([198.175.65.18])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPa3s-0000000ErGj-3yIY
+	id 1sPc93-0000000F0gA-0oaO
 	for linux-mediatek@lists.infradead.org;
-	Fri, 05 Jul 2024 03:56:43 +0000
-Received: from pps.filterd (m0246632.ppops.net [127.0.0.1])
-	by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 464NHPuP010202;
-	Fri, 5 Jul 2024 03:56:37 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=
-	from:to:cc:subject:date:message-id:in-reply-to:references
-	:mime-version:content-type:content-transfer-encoding; s=
-	corp-2023-11-20; bh=fUkrBQmRDOAxIe2yUgO4lwZfbGY34jJ7VWOeUTA54mQ=; b=
-	WC4qxfY2Cee6pkjlZyzRAX2Ljv9q7/s0zIlpfXrG3BWU0OCrpybbuN7NCtqVX2q4
-	4kVAW81Nih0e09vhzO7/ELMeA9v5aFMAvoLDLH6R0sw58/XGJvQuVEK9Zod48PwQ
-	ftCbbOToc3ciJz+364FFFjPNen2hzWhJqvwme+BaFsZCb4OIYefgr8ElGALKL1k+
-	CH3v6haMhYo0PbjOvRBfhUHLE/+ZTj988y70KzQRdrZXyHhQINTqGtALiXsNx5tJ
-	vKYgVQtCTxaZKHZjp6490D5KN2PU++ikejnG+xeIFzkJvIHznne7s03CMNHNoN3T
-	vmDzfXPRDTG9qiQ4sSzWdQ==
-Received: from iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta03.appoci.oracle.com [130.35.103.27])
-	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 4029vstxrg-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Fri, 05 Jul 2024 03:56:37 +0000 (GMT)
-Received: from pps.filterd (iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
-	by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (8.17.1.19/8.17.1.19) with ESMTP id 4650564x021700;
-	Fri, 5 Jul 2024 03:56:36 GMT
-Received: from pps.reinject (localhost [127.0.0.1])
-	by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id 4028qh0kr8-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Fri, 05 Jul 2024 03:56:36 +0000
-Received: from iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 4653uZPS027535;
-	Fri, 5 Jul 2024 03:56:35 GMT
-Received: from ca-mkp2.ca.oracle.com.com (mpeterse-ol9.allregionaliads.osdevelopmeniad.oraclevcn.com [100.100.251.135])
-	by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTP id 4028qh0kqx-1;
-	Fri, 05 Jul 2024 03:56:35 +0000
-From: "Martin K. Petersen" <martin.petersen@oracle.com>
-To: linux-scsi@vger.kernel.org, avri.altman@wdc.com, alim.akhtar@samsung.com,
-        jejb@linux.ibm.com, peter.wang@mediatek.com
-Cc: "Martin K . Petersen" <martin.petersen@oracle.com>,
-        wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
-        chun-hung.wu@mediatek.com, alice.chao@mediatek.com,
-        cc.chou@mediatek.com, chaotian.jing@mediatek.com,
-        jiajie.hao@mediatek.com, powen.kao@mediatek.com,
-        qilin.tan@mediatek.com, lin.gui@mediatek.com, tun-yu.yu@mediatek.com,
-        eddie.huang@mediatek.com, naomi.chu@mediatek.com,
-        chu.stanley@gmail.com
-Subject: Re: [PATCH v3 0/2] ufs: core: fix ufshcd_abort_all racing issue
-Date: Thu,  4 Jul 2024 23:56:01 -0400
-Message-ID: <172015149442.1643711.2561274429120142425.b4-ty@oracle.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20240628070030.30929-1-peter.wang@mediatek.com>
-References: <20240628070030.30929-1-peter.wang@mediatek.com>
+	Fri, 05 Jul 2024 06:10:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1720159810; x=1751695810;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=2M0fguvjxnITBIXwZE83kBtpWTCgS/US+uG4BdqttDE=;
+  b=e7qMgmU0wBtYsCM3jHFqRgTDjLM/eX6tRtqRWHk3g90cZ0hIu3mI0o+t
+   acOsc1Qb5LabV3tD0X6wkOJpCZGyD9HpGGr7+D3scmbZleOHW54cjEXcU
+   Slu9Nr/rqDFSkpIYyYlWamhWbVsSP8YZue6K+81PZz4b/a96nnmS2ph6+
+   9SodQUGjPBDeZ3AGvTFfxFd3vvV3hFIpWySZ76INsGxGy9SjmMWsUKGrc
+   QtPQ9TvF7BJwAJJr7/8hl6Saj3g+LQxTkIqebQPe7rVDVUKx5jRlp1F4v
+   hcKXD4fqL/YzCk2shUWAULLgzgw8oFZ78F0Fjgu9aVPlFl4rwyz2soMTF
+   Q==;
+X-CSE-ConnectionGUID: s160lBovSN6qx/SL5VzyfQ==
+X-CSE-MsgGUID: bKeUS4JxRgmiuRNzmaBFAg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11123"; a="17587072"
+X-IronPort-AV: E=Sophos;i="6.09,184,1716274800"; 
+   d="scan'208";a="17587072"
+Received: from orviesa002.jf.intel.com ([10.64.159.142])
+  by orvoesa110.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Jul 2024 23:10:09 -0700
+X-CSE-ConnectionGUID: faNjunHSSmudEYsE/gcmUA==
+X-CSE-MsgGUID: K4hQdQ3qSj68keOXZfwe/Q==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.09,184,1716274800"; 
+   d="scan'208";a="77518698"
+Received: from lkp-server01.sh.intel.com (HELO 68891e0c336b) ([10.239.97.150])
+  by orviesa002.jf.intel.com with ESMTP; 04 Jul 2024 23:10:07 -0700
+Received: from kbuild by 68891e0c336b with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1sPc8x-000S0l-21;
+	Fri, 05 Jul 2024 06:10:03 +0000
+Date: Fri, 5 Jul 2024 14:09:38 +0800
+From: kernel test robot <lkp@intel.com>
+To: Chris Lu <chris.lu@mediatek.com>, Marcel Holtmann <marcel@holtmann.org>,
+	Johan Hedberg <johan.hedberg@gmail.com>,
+	Luiz Von Dentz <luiz.dentz@gmail.com>
+Cc: oe-kbuild-all@lists.linux.dev, Sean Wang <sean.wang@mediatek.com>,
+	Aaron Hou <aaron.hou@mediatek.com>,
+	Steve Lee <steve.lee@mediatek.com>,
+	linux-bluetooth <linux-bluetooth@vger.kernel.org>,
+	linux-kernel <linux-kernel@vger.kernel.org>,
+	linux-mediatek <linux-mediatek@lists.infradead.org>,
+	Chris Lu <chris.lu@mediatek.com>
+Subject: Re: [PATCH v7 5/8] Bluetooth: btmtk: move btusb_mtk_hci_wmt_sync to
+ btmtk.c
+Message-ID: <202407051325.i8Ac4Nz9-lkp@intel.com>
+References: <20240704060116.16600-6-chris.lu@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.28.16
- definitions=2024-07-04_21,2024-07-03_01,2024-05-17_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0 spamscore=0 mlxscore=0
- phishscore=0 malwarescore=0 suspectscore=0 mlxlogscore=999 bulkscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2406180000
- definitions=main-2407050027
-X-Proofpoint-GUID: vaoepKtEW_cWsHiA58dNHEx3LaZ-ZDIm
-X-Proofpoint-ORIG-GUID: vaoepKtEW_cWsHiA58dNHEx3LaZ-ZDIm
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240704060116.16600-6-chris.lu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240704_205641_377305_45A613A2 
-X-CRM114-Status: UNSURE (   9.39  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240704_231009_310361_DABE0467 
+X-CRM114-Status: GOOD (  10.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,24 +95,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 28 Jun 2024 15:00:28 +0800, peter.wang@mediatek.com wrote:
+Hi Chris,
 
-> This series fixes race condition KE in ufshcd_err_handler, which call
-> ufshcd_abort_all abort an already completed request by ISR in MCQ mode.
-> 
-> V3:
->  - Modify ufshcd_mcq_req_to_hwq to distinguish cmd is completed or not
->  - Split two patches and add more race description.
-> 
-> [...]
+kernel test robot noticed the following build errors:
 
-Applied to 6.10/scsi-fixes, thanks!
+[auto build test ERROR on bluetooth-next/master]
+[also build test ERROR on next-20240703]
+[cannot apply to bluetooth/master linus/master v6.10-rc6]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-[1/2] ufs: core: fix ufshcd_clear_cmd racing issue
-      https://git.kernel.org/mkp/scsi/c/9307a998cb98
-[2/2] ufs: core: fix ufshcd_abort_one racing issue
-      https://git.kernel.org/mkp/scsi/c/74736103fb41
+url:    https://github.com/intel-lab-lkp/linux/commits/Chris-Lu/Bluetooth-btusb-mediatek-remove-the-unnecessary-goto-tag/20240705-043833
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/bluetooth/bluetooth-next.git master
+patch link:    https://lore.kernel.org/r/20240704060116.16600-6-chris.lu%40mediatek.com
+patch subject: [PATCH v7 5/8] Bluetooth: btmtk: move btusb_mtk_hci_wmt_sync to btmtk.c
+config: i386-buildonly-randconfig-001-20240705 (https://download.01.org/0day-ci/archive/20240705/202407051325.i8Ac4Nz9-lkp@intel.com/config)
+compiler: gcc-13 (Ubuntu 13.2.0-4ubuntu3) 13.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240705/202407051325.i8Ac4Nz9-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202407051325.i8Ac4Nz9-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+   ld: drivers/bluetooth/btmtk.o: in function `btmtk_usb_submit_wmt_recv_urb':
+   btmtk.c:(.text+0x731): undefined reference to `usb_alloc_urb'
+>> ld: btmtk.c:(.text+0x7c5): undefined reference to `usb_anchor_urb'
+>> ld: btmtk.c:(.text+0x7d1): undefined reference to `usb_submit_urb'
+>> ld: btmtk.c:(.text+0x7de): undefined reference to `usb_free_urb'
+>> ld: btmtk.c:(.text+0x820): undefined reference to `usb_unanchor_urb'
+   ld: btmtk.c:(.text+0x829): undefined reference to `usb_free_urb'
+   ld: btmtk.c:(.text+0x83e): undefined reference to `usb_free_urb'
+   ld: drivers/bluetooth/btmtk.o: in function `btmtk_usb_hci_wmt_sync':
+   btmtk.c:(.text+0x8bd): undefined reference to `usb_autopm_get_interface'
+>> ld: btmtk.c:(.text+0x8f9): undefined reference to `usb_autopm_put_interface'
+   ld: btmtk.c:(.text+0x9bf): undefined reference to `usb_autopm_put_interface'
+   ld: drivers/bluetooth/btmtk.o: in function `btmtk_usb_wmt_recv':
+   btmtk.c:(.text+0xb67): undefined reference to `usb_anchor_urb'
+   ld: btmtk.c:(.text+0xb73): undefined reference to `usb_submit_urb'
+   ld: btmtk.c:(.text+0xc8e): undefined reference to `usb_unanchor_urb'
 
 -- 
-Martin K. Petersen	Oracle Linux Engineering
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
