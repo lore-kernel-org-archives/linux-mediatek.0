@@ -4,233 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EE01C3271F
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jul 2024 09:28:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56440C30658
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jul 2024 09:34:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jKwrsOMbhPrF9yxVatbsA4j/n1d7CW32qaJjg6UEUnM=; b=fWMdoPgRwZEpdoZ25X3IErLAr6
-	54CPI4y56q2UacfVMYI5lgjuRGtfNJxiCu2AYu3e2oJBhLd5MamOIIceDYkFMmusRNbcyD3axvHN5
-	9+/ehbB6P9mB0+VYyP8MlYSIwrZ/tjQSztxjoD5eWqoVSoKNh2JmMgDNvc6ZFSv2XqIsS6/VdhcRU
-	wQVYwNFNWZEnQ8l+4+PGKAsEo/CYhRmGtWmYO34O/3NSmLN//1wcVSn9vxOaB1PlX9uyp45oD/g6t
-	6u0IzKQJJpZgmstHaihakrMQ/UrhSHBehwXYivvnrKfN/52yOXJYxQ/aAIWaIPrP3NpWBAnlRM6rS
-	q0fXTC2Q==;
+	bh=1r67ASOAsMu6j0DS9TE3zU2XBjrt0Fqwlw2cWdryiEs=; b=Lm43askCcny9VoTOi1CQ5k45YF
+	gdtTdmsJpBfLIspdbLzZq+y0hKHIOx6RK5OKRkalbnyogNvrpk4rfCm9KnMsAf6fXXjGOITY2Q85p
+	kcLh5TvJzfQXXzOkN0xWa+DXkER80EIHbjZNch4lnj5CjVdPBlVxWssu/SqEaCUCC8e4gqCTuE6SZ
+	nkd/Yd1xfYPdsg20zmTyqdfjrTFgcRgCjdSIYDiFZHvUC+IecqmtfipLCYvOlYk1Y5iHDHB/tdPT6
+	X14k54Yz7m9dpBrNbn1xWaEPIza2Q4nUuHcE0HinXi+mu7SzsXjPSeK/gkbJGZJ578RtLRy2wiGsz
+	/vLXEDhw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPfF1-0000000FRY5-312Z;
-	Fri, 05 Jul 2024 09:28:31 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1sPfKS-0000000FSVN-3dhZ;
+	Fri, 05 Jul 2024 09:34:08 +0000
+Received: from mgamail.intel.com ([198.175.65.15])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPfEl-0000000FRUJ-26gQ;
-	Fri, 05 Jul 2024 09:28:17 +0000
-X-UUID: e4af75d83ab011ef9daba96ee3f3cc8c-20240705
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=jKwrsOMbhPrF9yxVatbsA4j/n1d7CW32qaJjg6UEUnM=;
-	b=FblsCrQSSHxKOM8JUnKT5nPI8g7zq/kN3/UFX5130dSKKtnt71G9rNLK+3VK09CfpO6ZTP4iI9/HSVCxgCwujaaNwo0YGczZyBmGs+jXpAqzp41/RsKqnLuhAG/navfxxDUNt2hYHXnwvW1a3BN/nq/6Rt46jo6ZLCYF3Y3Ctrc=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.40,REQID:41c3fa0f-fd15-4aa5-b1d8-8633cb7b6413,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:ba885a6,CLOUDID:723dfed4-0d68-4615-a20f-01d7bd41f0bb,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: e4af75d83ab011ef9daba96ee3f3cc8c-20240705
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <ck.hu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2022420898; Fri, 05 Jul 2024 02:28:09 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 5 Jul 2024 17:28:06 +0800
-Received: from APC01-SG2-obe.outbound.protection.outlook.com (172.21.101.237)
- by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 5 Jul 2024 17:28:06 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=nLP7zO+vZ2vwSO+osbuqUFwBJSk2eNUt+zQBg0UJBeLU1IEEHoj/7AIP0/6nHSRVxNgbtXfIa0WfebaKJZ3DfLzyRKpXBdLyO0lC6au9F+LqjOeoSx2Lk4Essd4CZ428ZmIyZzREOM/fBykfZmfrxW3p9eDt2lWJu2S2U4yH8SS3+i6YxDX5lH7H7dq4V6s3IYUn5R6aJsWGJOwxOdsNPrUBKzuzcTO5PluSNl5NGM942hfn3iJRAt+4dEBIrcBejsuXpyMAqs2KMxk61UA9ATMoGx2QoT8bOWh7XQgH4ig83EgczXBv9RyK0f0RnxRBnxWcglOJMdQUDKhLw/+36Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=jKwrsOMbhPrF9yxVatbsA4j/n1d7CW32qaJjg6UEUnM=;
- b=IOsshLKr0HAmVIUig2SIGbMHP99mwVvmaESV48UDLN0I8ylIyMmwFX+wQW781i5DhroPt+gjVgJ2p2wYG160AL+yCzd0IDuhdcPFmzi6mhrw5Vz4fEB2eIqnFcJ9GE8YVNVhLXBoQccLZaFOnv3UDSHXPOv4mnwIZxfq8XXfPW4YK9lihyGccpQDCVVwle3XhU2fqKA5QXd94q8Yq5ifTG+4l88EA/VBL/fWJzMNvjpDawKyhRQFp4WGkUNuhn+htZ7Z4BQWV2l0nfknR+u5iXcExH2i3YW6VMRLgziJpjjrMH0LcH2GviPxMavb7bq6dfknT44/ut/WxFXbK4JGYA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=jKwrsOMbhPrF9yxVatbsA4j/n1d7CW32qaJjg6UEUnM=;
- b=bW5W+ZoAgtEsGUKwDi2963jme8+88JBvtXDYQz2XAISHXfSSZ01xdqd030DhRac6o1n4ZX11SlucfwqPG29h6/Uq641CKtjXqq3bViK7yFk51sGo8Ku7CoN99e/I3Y4abeII1igT4AxKHD5WktplsIq2SJcvC4j/jmIpF3QGQBE=
-Received: from TYZPR03MB6624.apcprd03.prod.outlook.com (2603:1096:400:1f4::13)
- by SEYPR03MB7778.apcprd03.prod.outlook.com (2603:1096:101:13f::9) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7741.30; Fri, 5 Jul
- 2024 09:28:03 +0000
-Received: from TYZPR03MB6624.apcprd03.prod.outlook.com
- ([fe80::9ce6:1e85:c4a7:2a54]) by TYZPR03MB6624.apcprd03.prod.outlook.com
- ([fe80::9ce6:1e85:c4a7:2a54%6]) with mapi id 15.20.7719.029; Fri, 5 Jul 2024
- 09:28:03 +0000
-From: =?utf-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>
-To: "angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>, "chunkuang.hu@kernel.org"
-	<chunkuang.hu@kernel.org>
-CC: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"wenst@chromium.org" <wenst@chromium.org>, "devicetree@vger.kernel.org"
-	<devicetree@vger.kernel.org>, "tzimmermann@suse.de" <tzimmermann@suse.de>,
-	=?utf-8?B?U2hhd24gU3VuZyAo5a6L5a2d6KyZKQ==?= <Shawn.Sung@mediatek.com>,
-	"mripard@kernel.org" <mripard@kernel.org>,
-	=?utf-8?B?Sml0YW8gU2hpICjnn7PorrDmtpsp?= <jitao.shi@mediatek.com>,
-	"daniel@ffwll.ch" <daniel@ffwll.ch>, "p.zabel@pengutronix.de"
-	<p.zabel@pengutronix.de>, "conor+dt@kernel.org" <conor+dt@kernel.org>,
-	"maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
-	"robh@kernel.org" <robh@kernel.org>, "dri-devel@lists.freedesktop.org"
-	<dri-devel@lists.freedesktop.org>, "airlied@gmail.com" <airlied@gmail.com>,
-	"krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
-	"kernel@collabora.com" <kernel@collabora.com>, "matthias.bgg@gmail.com"
-	<matthias.bgg@gmail.com>, =?utf-8?B?WXUtY2hhbmcgTGVlICjmnY7nprnnkosp?=
-	<Yu-chang.Lee@mediatek.com>, "linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "amergnat@baylibre.com"
-	<amergnat@baylibre.com>
-Subject: Re: [PATCH v5 2/3] dt-bindings: arm: mediatek: mmsys: Add OF graph
- support for board path
-Thread-Topic: [PATCH v5 2/3] dt-bindings: arm: mediatek: mmsys: Add OF graph
- support for board path
-Thread-Index: AQHaq1SdB3VktOcCqkqfEslqsj0mTLG4e18AgAChMYCAATHigIAGeyMAgAF2fYCAAAGUAIAl4vQA
-Date: Fri, 5 Jul 2024 09:28:03 +0000
-Message-ID: <fbb00e4cc81d8e1e47fac01c3c9146148747fa55.camel@mediatek.com>
-References: <20240521075717.50330-1-angelogioacchino.delregno@collabora.com>
-	 <20240521075717.50330-3-angelogioacchino.delregno@collabora.com>
-	 <e7845300fa822413f6308cb6297222cde89c39e0.camel@mediatek.com>
-	 <0e0fe86c-92da-43f5-89d7-8084274a908a@collabora.com>
-	 <0f20214ab3a86f68669ad1392398b16228e699ee.camel@mediatek.com>
-	 <47f05439-815e-4ca1-b20d-8e427fef0a2a@collabora.com>
-	 <ee0209dac731b36ffe2ee20a2ff537ce7758b01f.camel@mediatek.com>
-	 <aa991aa4-7e9e-4cc6-b6ae-69539700691f@collabora.com>
-In-Reply-To: <aa991aa4-7e9e-4cc6-b6ae-69539700691f@collabora.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYZPR03MB6624:EE_|SEYPR03MB7778:EE_
-x-ms-office365-filtering-correlation-id: 1c4e8ee0-265e-44c8-6d74-08dc9cd4c553
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;ARA:13230040|376014|366016|1800799024|7416014|38070700018;
-x-microsoft-antispam-message-info: =?utf-8?B?UmNQdVVxZmV2aTdZR1Z1enhnWVFPeExCUkNwR0E0OFA2Q2MzSjkwVzd6WnZM?=
- =?utf-8?B?TERvejdrdHNqaW5NVWJIakxia2FRUmxqUGhneFRHSkt4dmFzSFpZakFRS2hK?=
- =?utf-8?B?eDNNTk9wWEtRNncxUTg2Wkw5RnhucVQ1Qk4vanl3c1ZBaXNXN1R4bTlLQll6?=
- =?utf-8?B?dm5FNW02aTczanQwZXoyc3d2OSt1VGUxS0FIaTZ2VHhQU0xUZWtPOFZsaGhF?=
- =?utf-8?B?RDhYVVArS0hFMU14c1hyY3ZGT3hqbEhpblMyc0dzSmJqdVJNZGtNVVhzSUNs?=
- =?utf-8?B?MENPQ2srZjJOVEdDdG1DT1BvS3ltVERGN1lTWmk3M1hLVFdlT3l6RWRTQ2RI?=
- =?utf-8?B?WkhqTDNOWVFLQXFOTXpNNE9WNDQwV3ZlN1lLTHZwbElUN1p0a25vVkZKcmFq?=
- =?utf-8?B?Q0xCU2UxOEYvV3hLWVE3K2Jtekl2Ni8vQTR6cU1kYUhVcHZsdlZhMGV6STBI?=
- =?utf-8?B?WVcwV09pNTcvK3BmUFB0VERQaTZoa1FVUngyQUR5b1RBbTdPZ3pwYkdwaXp2?=
- =?utf-8?B?ZDNDU29WSlVvd1RrSXg2djIyeGh3SENtdTlaYU05a0RLUHpuK2VIdDJUeVN5?=
- =?utf-8?B?QmVkekVCZks0WEp5Rmo1Y2laNXdmOUJheGIwS1Zmd1JES1I3ejRBNzdHaXFz?=
- =?utf-8?B?V3BWMHZmUlNlbUNYYWhuY3EwektIQk90S2ZGTWN2M09nRWdhUXgvMm03WjYr?=
- =?utf-8?B?b2lIT0xScGlyTEdGd2kzYU5rWVdFNFNRb0RSSm53QXZqVUZxbDQybi8yQUpa?=
- =?utf-8?B?MHJXY0lMUDFyMWNhaXg4VHNxemg3TzBhMWJpdHpseHpXbGgzQlVOeWhGc2xk?=
- =?utf-8?B?R1hnTTJmTXU4b2VTSlg1aG5KL0hWRlk2QmYraWhKazZyQnpaSzFOZVkyWDE5?=
- =?utf-8?B?WXllQ3JNUmlIS0NQcDFqbXE2Z09BdEY4bzg0WlFiRGV4Y2dxdTZxM1ZNYXlB?=
- =?utf-8?B?ekZQYUNIS2s2NlN6elZkNjJDWnN1d1MzM0ZKbmQrYVhZSHBaTThCeURZVU5M?=
- =?utf-8?B?Wmc1dTNEWXp1MHN6L0NqcGlyVkhxQUJFVVc4MDZZalBCSlNIQkRtRktpUVRt?=
- =?utf-8?B?U1pjU1pWRlc1V2g1dDFtN2Vmd1ozSGZPTTVvODhVTllBS3lCT0YxS0NhdmhT?=
- =?utf-8?B?VlJpUFd2RzlOem8xMjZncVRTc2VzK0Q3dWQ1TFdqczhRNVBuckp6VE9IbnZE?=
- =?utf-8?B?T2NlSGZmRmRJVWRQNlpSd3VsMlJxUkxNaE9JWTc0VGxlbmRaR1c1blpFUktC?=
- =?utf-8?B?MlBrYTMzMGQ5Y2NoTzJpYXo1NGlsU2V1Y1ZFSWI5UEtHcTlHSGx2UDFGMVdX?=
- =?utf-8?B?VVhOS1hRNnJ2ZkN0dWxONUFOR2dPOFpiejREYmdCY0dTdHhiOWNaUGR6aDdU?=
- =?utf-8?B?Y2o4UDJ5Y2VFRWZseE9za1ArZmNzeWxyMTdzdCt6TXVHV25BVnc3aEVBZzB4?=
- =?utf-8?B?d2tVZW9mbk5CZnA5Qmw1Nm1MZ0VJdGUvdFhXSExIVUIxdDRkWDVRNWVkS0xR?=
- =?utf-8?B?eGlIOExQVjJLdkRZdDVEcXpUUk1pSWM1TFhwb3Q0ZGRaUmhqek1LSEFyYjk3?=
- =?utf-8?B?TnkrNDRGQkJkRHROTEhtREU2MCtqdm5tcXpnSnJrZHZZMEpxUFVJSi9DalFu?=
- =?utf-8?B?UGw3aENpcEM1aDEyNXhLd2Y2MTVTOGJXVVpRSncyaXlBSmNpOHYxa1Zua2Rt?=
- =?utf-8?B?U1VJTGVmUnp1SXdLUEZ6OWNiZ1U1ZFRqVHVsNWUvVTh4Ykt1ekNJT0VOUTAy?=
- =?utf-8?B?RUpPNmdnOTU1SkFnckloRDJmU2VlZGhiTnhBTWEzR3BqdGtkNmlSZmQxaTdq?=
- =?utf-8?B?cDNTTjdlNnpjeEU0N2ZNbzZ5S3N4MmdWVU5KL016dzZHQWIyODYrQlJkUFZo?=
- =?utf-8?B?TldBamZMSHd3YzVpUmw5NGI0V2pWL1VUZSt0azVaRm1abmc9PQ==?=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB6624.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(366016)(1800799024)(7416014)(38070700018);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?MC9BV3VuaHJZc1BDd1VvV1ozWVlScUw0djFOOWVIMlExakhmczZSTldsVVRC?=
- =?utf-8?B?Ymp5N2lmNVJKVkZINFJEV09iWFg3WHlaaXpCSjlsQTNLaE1MaGcveUFOa0lY?=
- =?utf-8?B?RHdsYkFOZ0Z0QTNRMHFraVhJbHFjV1JDSDB2S1BvRkxNcDV1eGp6S21FWFVY?=
- =?utf-8?B?WnFldWQ0WE1vdzdiMHdDQm4wdmYyOHdQNHFsU2hsdFJna1lLYXBuMlBQT1VR?=
- =?utf-8?B?blJBWjNBMnhmQXc3dHBjSEJyMmJ6UGU1Nk1waEszT2o5dEJicXowZWN4a2V1?=
- =?utf-8?B?OEFBcHN1R1gzL0tkSkQrK1VMOWdNcXBIaGo2Mi9tQUxsWHg1cXMwUGNvRHJ6?=
- =?utf-8?B?Q3BtWkIwK05YMzh1Uml3SFhVMmhRR0ZZVXU4aHR3QVlGNzQxUnA3enBuL0xs?=
- =?utf-8?B?RndyTVpEUVQrK3ZQbE11aTUyczloSmlBeWNMN3RFWDNHNllWb1RaY3ZLc2Zr?=
- =?utf-8?B?TjZiS0Z5anVoWHRHcnhaa2pOYldiU0VJamUxd1JuK3lNdlZSTnRpWVFoeWtI?=
- =?utf-8?B?NmQzTjUyQVZ1L0IzdWNWZEthc0lEWHVTQkV0S0xUQno0bmw1TUgvRlJKQzN3?=
- =?utf-8?B?YUtkZHdaYWJqMVF4Q2lybW5LWFJxbGR0elBQNUduR1hVTGVwclorRFl1bzdK?=
- =?utf-8?B?N01TdDBEOERyMEtsYVhseWJBMDlZeXEzUytEWUIzdGFzbHFLWlVMRTZTd2g3?=
- =?utf-8?B?ZEI5UlVGWWY4aHI0bmdGSjJKWnlEYjQreml6L3FnbVZrUHFidGVvcVltcWJJ?=
- =?utf-8?B?QlJ2ZGJwRlBheUtiRWVCdlFwbzdhcmNPN2tnQWcxWEVuLzBwbWl4Zjk4U3RY?=
- =?utf-8?B?SnQ4S0wwTWR6RlBLRTMrOVdSdGJaWWs1ZEk1TUxFdGJOTy9KR3J1RklIOTFh?=
- =?utf-8?B?MDRtSW1zaVVBZllycXd2NUxPU2QvOUpVa1E4cjlqZzlVdjlJdWFGSGFvLzF1?=
- =?utf-8?B?UjJ4NWJVTEE3bGQydnVNY0VGdUFXWStFSHk2RHBsY2VtVGRIMlh2VWVzKytW?=
- =?utf-8?B?eFIxa2tCenljM0tSdkZlN3ZWWDlFSU42K1Ewelhha0lROHJqYjRLTXhtdzh0?=
- =?utf-8?B?TFdLd3lYTWFFY3RWN0VrRUNPdzhHQ1Y2YjVKUkJKdGxDR1d2WFROUDNybUNS?=
- =?utf-8?B?T1pRellST1hYZ3ZzVWFieE9aNGxBbnk3bTVNSlZyV1FyTUNVVGNSSWJ6QW1V?=
- =?utf-8?B?M0U1cUIvZGV5bFU4UHlOeXJkalBqSW5jSlpaL01wSGdUNGhlUnhvSnF0NytN?=
- =?utf-8?B?cmMvTUhvUFo1ZURNNnZkYm9lMlZaSW95aCtQU1FoSlZZWGpKVnE5K3pMQXhB?=
- =?utf-8?B?TUZhS0pEN0ZzRlJoZW1zMzV1dmRwd09lR2g3aS9RaDFyUDhKTVg2MVRuYW9N?=
- =?utf-8?B?RFN2YkRjK1NHdWNxQnN4NEd4VEFWaS9NenVaSzl2KzAxMHByM01BNXdWR1Vw?=
- =?utf-8?B?cld2NmVGaDZPQmRhUlptbGNIakl6eUZ4VTJIcTNtTlE4c2ppTXMrSnc5YmVF?=
- =?utf-8?B?YVhGYkJZaVJsSUlUdXhkTmJocWl0RU5sUE9OdE05OHFvZlR3NHI4YlhYUFZF?=
- =?utf-8?B?bHpWVzFpd0s1R1JqNFNaTi9tQ3FiZ1kybTVRa0FmQzJ1ckdhMk5SVUxyTita?=
- =?utf-8?B?VTNzdHdXTlpxNWE5disybjRwTjNyWDRVNjRQaEVjbzlXL3g0UTlGUjZIcjhC?=
- =?utf-8?B?b3FhZFlGUlMzWlFTRmlnd1ZsR2tNWTIzNkhoT2FTcTNZR2I5Q3c2ZHE5djJi?=
- =?utf-8?B?cnc2T3JUUWFSSUJ5bW9jMEpsZnRFNWQ0d0trelp6STRkZ2thaUtsQ2hiTnFK?=
- =?utf-8?B?OWxaM21oZURlNnFXVzRYR1FBK1dGeTNyMkxBZ3VMelRDUXFCd1JzMVBFR0lN?=
- =?utf-8?B?M1plT0NkRzh1WGVYVlI2UzVWZnZNbXF5TndwR1pKQTRzRzROclBZUFJ2Q0t2?=
- =?utf-8?B?clJvSXVRb1E5b0hXcWR3VVNZWUVqRG9Kc3EvRFNLa2ZLM2V5dVV3UWFqVmUy?=
- =?utf-8?B?RXhLanQwRnVtZFpFYjcvY0J4YU9vbjJsU1d1NGprS0tqVnYzbkEzTGxYSzhY?=
- =?utf-8?B?VmwvVVlMQ0kxdjJGaW9TR2NTSmJrM0loeThTZW5QdUNubGNmdGEwaDBmY3lT?=
- =?utf-8?Q?OsKoCZsidJGz9tp4d2UHUVL4G?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <850F88280D568446A630F313BF21B685@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+	id 1sPfKQ-0000000FSUs-0BEF
+	for linux-mediatek@lists.infradead.org;
+	Fri, 05 Jul 2024 09:34:07 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1720172046; x=1751708046;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=c+/9TaMyp6MyuX8Wr7bK7QL2QMpx1isbVHGUwpIW0ic=;
+  b=VxtQMEtkC82Po8DukXrO4OkJ63iMJi7ilsF+ZSPYUADtvq+EOt2u28hW
+   AF6/k1DDooZVt9TopNmj9XI4iAaa4xfz7pvDSejewPyD6D65bsFvQNeGd
+   aB/yXyF/U+XcWS3d0+LiCIUe9x9xQeu8BuQnVqYSP6sMy/DT45gg1Pgn+
+   +v27HPGVncl60ZDI0vhBy2ZKKawPsgjlTnP1I1e6N3P/IzV21rrjDGmel
+   XOBpsXTJSBopsHyJvWaQ0VizCOiVYnLcv7ELafuyg4+BZ7i+JfsAwNeQ/
+   o+a+mT/7KLrHEGE8Y8rYfynHvdUuXx1UPmqGQ7DAsn+FFHT3UYH6EMJKK
+   g==;
+X-CSE-ConnectionGUID: G0ZIBLx9TVOhRGQNnI1erA==
+X-CSE-MsgGUID: hyrIFgvaQX2vrspDZTmBRg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11123"; a="21224693"
+X-IronPort-AV: E=Sophos;i="6.09,184,1716274800"; 
+   d="scan'208";a="21224693"
+Received: from orviesa007.jf.intel.com ([10.64.159.147])
+  by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 05 Jul 2024 02:34:05 -0700
+X-CSE-ConnectionGUID: GhJ2rfenSPCXvTq4mxu6Ag==
+X-CSE-MsgGUID: zGEf5IsMTg20uHLTYraSSA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.09,184,1716274800"; 
+   d="scan'208";a="47475112"
+Received: from lkp-server01.sh.intel.com (HELO 68891e0c336b) ([10.239.97.150])
+  by orviesa007.jf.intel.com with ESMTP; 05 Jul 2024 02:34:02 -0700
+Received: from kbuild by 68891e0c336b with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1sPfKJ-000SC0-2g;
+	Fri, 05 Jul 2024 09:33:59 +0000
+Date: Fri, 5 Jul 2024 17:33:34 +0800
+From: kernel test robot <lkp@intel.com>
+To: Chris Lu <chris.lu@mediatek.com>, Marcel Holtmann <marcel@holtmann.org>,
+	Johan Hedberg <johan.hedberg@gmail.com>,
+	Luiz Von Dentz <luiz.dentz@gmail.com>
+Cc: oe-kbuild-all@lists.linux.dev, Sean Wang <sean.wang@mediatek.com>,
+	Aaron Hou <aaron.hou@mediatek.com>,
+	Steve Lee <steve.lee@mediatek.com>,
+	linux-bluetooth <linux-bluetooth@vger.kernel.org>,
+	linux-kernel <linux-kernel@vger.kernel.org>,
+	linux-mediatek <linux-mediatek@lists.infradead.org>,
+	Chris Lu <chris.lu@mediatek.com>
+Subject: Re: [PATCH v7 5/8] Bluetooth: btmtk: move btusb_mtk_hci_wmt_sync to
+ btmtk.c
+Message-ID: <202407051720.d1FTJg6H-lkp@intel.com>
+References: <20240704060116.16600-6-chris.lu@mediatek.com>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB6624.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 1c4e8ee0-265e-44c8-6d74-08dc9cd4c553
-X-MS-Exchange-CrossTenant-originalarrivaltime: 05 Jul 2024 09:28:03.7230
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: P/1zppz8jba9n7fXa7CQiefFCkpBZrXa7Gw/ShcM7UuJjAtJTfQZU97PzzrI4+mm6pYuNXf3fhbA3qMhaFj7wQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEYPR03MB7778
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--23.254900-8.000000
-X-TMASE-MatchedRID: nI1cAR4k0HYNtKv7cnNXnSa1MaKuob8PofZV/2Xa0cJauByPtDzndbmn
-	rGB/kwGMtq7wcCw4AGoHOdvowRYwKA+9QmShUWvCY1bQMCMvmn4wCmrLlx+Sdd9RlPzeVuQQl0B
-	rH8BQUYVul7/bdpACHmxKxpQo2DDFXtBWIrlQ/3CUa50su1E7W8nlJe2gk8vIWltirZ/iPP4C8g
-	kDxMuSmc4ZqNSq2iE6tNJKMhNbpDYItCgNwNY8YYDqq/69Hfgs0i/hFXziUdNtEzN0mAVDNgJjL
-	DMzzZnzQbROmirHzn6Xr8R8eISeabG8dzu2wTUiHcQQBuf4ZFskKs3LoBtQlVLFyalIP3pyZgt5
-	gnSc7QeRJ1uPRlLfN+kAXE+8HEbEhT738bImf5ttzb3s8Aa1ZpxfK35V7okVMBIR1uSlQM97PlV
-	pTaVSO8ugQSrxb8MEitqmw2mRWTPlW1X3S7HG14bBPrt55wnwgdhI7ndNtOAfwQ5+r4+IN5xcqy
-	imK04xu2hBKIBuS12Pms/RExaSr0+sh1YjwC0xhrs6JAEL1u7fSJ1kqMcqwY1eRh5mhJr6VSdAA
-	6mVeIayVuPO+vBdmUw3m0nPdhDkj2hRzH1UwuDSBVVc2BozSnJnzNw42kCxxEHRux+uk8jpP8tM
-	OyYmaA==
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--23.254900-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 50638552680115CAD674F184234368036ADEE3AE57601A4435170847E6025E142000:8
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240704060116.16600-6-chris.lu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240705_022815_593026_C317DF30 
-X-CRM114-Status: GOOD (  13.24  )
+X-CRM114-CacheID: sfid-20240705_023406_212893_675F6A3B 
+X-CRM114-Status: GOOD (  16.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -245,204 +95,245 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCAyMDI0LTA2LTExIGF0IDA4OjU0ICswMjAwLCBBbmdlbG9HaW9hY2NoaW5vIERlbCBS
-ZWdubyB3cm90ZToNCj4gSWwgMTEvMDYvMjQgMDg6NDgsIENLIEh1ICjog6Hkv4rlhYkpIGhhIHNj
-cml0dG86DQo+ID4gT24gTW9uLCAyMDI0LTA2LTEwIGF0IDEwOjI4ICswMjAwLCBBbmdlbG9HaW9h
-Y2NoaW5vIERlbCBSZWdubyB3cm90ZToNCj4gPiA+IElsIDA2LzA2LzI0IDA3OjI5LCBDSyBIdSAo
-6IOh5L+K5YWJKSBoYSBzY3JpdHRvOg0KPiA+ID4gPiBIaSwgQW5nZWxvOg0KPiA+ID4gPiANCj4g
-PiA+ID4gT24gV2VkLCAyMDI0LTA2LTA1IGF0IDEzOjE1ICswMjAwLCBBbmdlbG9HaW9hY2NoaW5v
-IERlbCBSZWdubyB3cm90ZToNCj4gPiA+ID4gPiBJbCAwNS8wNi8yNCAwMzozOCwgQ0sgSHUgKOiD
-oeS/iuWFiSkgaGEgc2NyaXR0bzoNCj4gPiA+ID4gPiA+IEhpLCBBbmdlbG86DQo+ID4gPiA+ID4g
-PiANCj4gPiA+ID4gPiA+IE9uIFR1ZSwgMjAyNC0wNS0yMSBhdCAwOTo1NyArMDIwMCwgQW5nZWxv
-R2lvYWNjaGlubyBEZWwgUmVnbm8gd3JvdGU6DQo+ID4gPiA+ID4gPiA+IERvY3VtZW50IE9GIGdy
-YXBoIG9uIE1NU1lTL1ZET1NZUzogdGhpcyBzdXBwb3J0cyB1cCB0byB0aHJlZSBERFAgcGF0aHMN
-Cj4gPiA+ID4gPiA+ID4gcGVyIEhXIGluc3RhbmNlIChzbyBwb3RlbnRpYWxseSB1cCB0byBzaXgg
-ZGlzcGxheXMgZm9yIG11bHRpLXZkbyBTb0NzKS4NCj4gPiA+ID4gPiA+ID4gDQo+ID4gPiA+ID4g
-PiA+IFRoZSBNTVNZUyBvciBWRE9TWVMgaXMgYWx3YXlzIHRoZSBmaXJzdCBjb21wb25lbnQgaW4g
-dGhlIEREUCBwaXBlbGluZSwNCj4gPiA+ID4gPiA+ID4gc28gaXQgb25seSBzdXBwb3J0cyBhbiBv
-dXRwdXQgcG9ydCB3aXRoIG11bHRpcGxlIGVuZHBvaW50cyAtIHdoZXJlIGVhY2gNCj4gPiA+ID4g
-PiA+ID4gZW5kcG9pbnQgZGVmaW5lcyB0aGUgc3RhcnRpbmcgcG9pbnQgZm9yIG9uZSBvZiB0aGUg
-KGN1cnJlbnRseSB0aHJlZSkNCj4gPiA+ID4gPiA+ID4gcG9zc2libGUgaGFyZHdhcmUgcGF0aHMu
-DQo+ID4gPiA+ID4gPiA+IA0KPiA+ID4gPiA+ID4gPiBSZXZpZXdlZC1ieTogUm9iIEhlcnJpbmcg
-KEFybSkgPHJvYmhAa2VybmVsLm9yZz4NCj4gPiA+ID4gPiA+ID4gUmV2aWV3ZWQtYnk6IEFsZXhh
-bmRyZSBNZXJnbmF0IDxhbWVyZ25hdEBiYXlsaWJyZS5jb20+DQo+ID4gPiA+ID4gPiA+IFRlc3Rl
-ZC1ieTogQWxleGFuZHJlIE1lcmduYXQgPGFtZXJnbmF0QGJheWxpYnJlLmNvbT4NCj4gPiA+ID4g
-PiA+ID4gU2lnbmVkLW9mZi1ieTogQW5nZWxvR2lvYWNjaGlubyBEZWwgUmVnbm8gPGFuZ2Vsb2dp
-b2FjY2hpbm8uZGVscmVnbm9AY29sbGFib3JhLmNvbT4NCj4gPiA+ID4gPiA+ID4gLS0tDQo+ID4g
-PiA+ID4gPiA+ICAgICAuLi4vYmluZGluZ3MvYXJtL21lZGlhdGVrL21lZGlhdGVrLG1tc3lzLnlh
-bWwgfCAyOCArKysrKysrKysrKysrKysrKysrDQo+ID4gPiA+ID4gPiA+ICAgICAxIGZpbGUgY2hh
-bmdlZCwgMjggaW5zZXJ0aW9ucygrKQ0KPiA+ID4gPiA+ID4gPiANCj4gPiA+ID4gPiA+ID4gZGlm
-ZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9hcm0vbWVkaWF0ZWsv
-bWVkaWF0ZWssbW1zeXMueWFtbCBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9h
-cm0vbWVkaWF0ZWsvbWVkaWF0ZWssbW1zeXMueWFtbA0KPiA+ID4gPiA+ID4gPiBpbmRleCBiM2M2
-ODg4YzE0NTcuLjBlZjY3Y2E0MTIyYiAxMDA2NDQNCj4gPiA+ID4gPiA+ID4gLS0tIGEvRG9jdW1l
-bnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2FybS9tZWRpYXRlay9tZWRpYXRlayxtbXN5cy55
-YW1sDQo+ID4gPiA+ID4gPiA+ICsrKyBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5n
-cy9hcm0vbWVkaWF0ZWsvbWVkaWF0ZWssbW1zeXMueWFtbA0KPiA+ID4gPiA+ID4gPiBAQCAtOTMs
-NiArOTMsMzQgQEAgcHJvcGVydGllczoNCj4gPiA+ID4gPiA+ID4gICAgICAgJyNyZXNldC1jZWxs
-cyc6DQo+ID4gPiA+ID4gPiA+ICAgICAgICAgY29uc3Q6IDENCj4gPiA+ID4gPiA+ID4gICAgIA0K
-PiA+ID4gPiA+ID4gPiArICBwb3J0Og0KPiA+ID4gPiA+ID4gPiArICAgICRyZWY6IC9zY2hlbWFz
-L2dyYXBoLnlhbWwjL3Byb3BlcnRpZXMvcG9ydA0KPiA+ID4gPiA+ID4gPiArICAgIGRlc2NyaXB0
-aW9uOg0KPiA+ID4gPiA+ID4gPiArICAgICAgT3V0cHV0IHBvcnQgbm9kZS4gVGhpcyBwb3J0IGNv
-bm5lY3RzIHRoZSBNTVNZUy9WRE9TWVMgb3V0cHV0IHRvDQo+ID4gPiA+ID4gPiA+ICsgICAgICB0
-aGUgZmlyc3QgY29tcG9uZW50IG9mIG9uZSBkaXNwbGF5IHBpcGVsaW5lLCBmb3IgZXhhbXBsZSBv
-bmUgb2YNCj4gPiA+ID4gPiA+ID4gKyAgICAgIHRoZSBhdmFpbGFibGUgT1ZMIG9yIFJETUEgYmxv
-Y2tzLg0KPiA+ID4gPiA+ID4gPiArICAgICAgU29tZSBNZWRpYVRlayBTb0NzIHN1cHBvcnQgbXVs
-dGlwbGUgZGlzcGxheSBvdXRwdXRzIHBlciBNTVNZUy4NCj4gPiA+ID4gPiA+IA0KPiA+ID4gPiA+
-ID4gVGhpcyBwYXRjaCBsb29rcyBnb29kIHRvIG1lLiBKdXN0IHdhbnQgdG8gc2hhcmUgYW5vdGhl
-ciBpbmZvcm1hdGlvbiBmb3IgeW91Lg0KPiA+ID4gPiA+ID4gSGVyZSBpcyBhbiBleGFtcGxlIHRo
-YXQgbW1zeXMvdmRvc3lzIGNvdWxkIHBvaW50IHRvIHRoZSBkaXNwbGF5IGludGVyZmFjZSBub2Rl
-Lg0KPiA+ID4gPiA+ID4gDQo+ID4gPiA+ID4gPiB2ZG9zeXMwOiBzeXNjb25AMWMwMWEwMDAgew0K
-PiA+ID4gPiA+ID4gICAgICAgICAgICAgIG1tc3lzLWRpc3BsYXktaW50ZXJmYWNlID0gPCZkc2kw
-PiwgPCZkc2kxPiwgPCZkcF9pbnRmMD47DQo+ID4gPiA+ID4gPiB9Ow0KPiA+ID4gPiA+ID4gICAg
-IA0KPiA+ID4gPiA+ID4gdmRvc3lzMTogc3lzY29uQDFjMTAwMDAwIHsNCj4gPiA+ID4gPiA+ICAg
-ICAgICAgICAgICBtbXN5cy1kaXNwbGF5LWludGVyZmFjZSA9IDwmZHBfaW50ZjE+Ow0KPiA+ID4g
-PiA+ID4gfTsNCj4gPiA+ID4gPiA+IA0KPiA+ID4gPiA+ID4gVGhlcmUgaXMgbm8gY29uZmxpY3Qg
-dGhhdCBtbXN5cy92ZG9zeXMgcG9pbnQgdG8gZmlyc3QgY29tcG9uZW50IG9mIG9uZSBkaXNwbGF5
-IHBpcGVsaW5lIG9yIHBvaW50IHRvIGRpc3BsYXkgaW50ZXJmYWNlLg0KPiA+ID4gPiA+ID4gQm90
-aCBjb3VsZCBjby1leGlzdC4NCj4gPiA+ID4gPiA+IA0KPiA+ID4gPiA+IA0KPiA+ID4gPiA+IEhl
-eSBDSywNCj4gPiA+ID4gPiANCj4gPiA+ID4gPiB5ZXMsIHRoaXMgY291bGQgYmUgYW4gYWx0ZXJu
-YXRpdmUgdG8gdGhlIE9GIGdyYXBocywgYW5kIEknbSBzdXJlIHRoYXQgaXQnZCB3b3JrLA0KPiA+
-ID4gPiA+IGV2ZW4gdGhvdWdoIHRoaXMga2luZCBvZiBzb2x1dGlvbiB3b3VsZCBzdGlsbCByZXF1
-aXJlIHBhcnRpYWwgaGFyZGNvZGluZyBvZiB0aGUNCj4gPiA+ID4gPiBkaXNwbGF5IHBhdGhzIHVw
-IHVudGlsIG1tc3lzLWRpc3BsYXktaW50ZXJmYWNlIChzbywgdXAgdW50aWwgRFNJMCwgb3IgRFNJ
-MSwgZXRjKS4NCj4gPiA+ID4gPiANCj4gPiA+ID4gPiBUaGUgcHJvYmxlbSB3aXRoIGEgc29sdXRp
-b24gbGlrZSB0aGlzIGlzIHRoYXQsIHdlbGwsIGV2ZW4gdGhvdWdoIGl0IHdvdWxkIHdvcmssDQo+
-ID4gPiA+ID4gZXZlbiBpZiB3ZSBpZ25vcmUgdGhlIHN1Ym9wdGltYWwgcGFydGlhbCBoYXJkY29k
-aW5nLCBPRiBncmFwaHMgYXJlIHNvbWV0aGluZw0KPiA+ID4gPiA+IGdlbmVyaWMsIHdoaWxlIHRo
-ZSBtbXN5cy1kaXNwbGF5LWludGVyZmFjZSB3b3VsZCBiZSBhIE1lZGlhVGVrIHNwZWNpZmljL2N1
-c3RvbQ0KPiA+ID4gPiA+IHByb3BlcnR5Lg0KPiA+ID4gPiA+IA0KPiA+ID4gPiA+IEluIHRoZSBl
-bmQsIHJldXNpbmcgZ2VuZXJpYyBrZXJuZWwgYXBpcy9pbnRlcmZhY2VzL2V0YyBpcyBhbHdheXMg
-cHJlZmVycmVkDQo+ID4gPiA+ID4gY29tcGFyZWQgdG8gY3VzdG9tIHNvbHV0aW9ucywgZXNwZWNp
-YWxseSBpbiB0aGlzIGNhc2UsIGluIHdoaWNoIHRoZSBnZW5lcmljDQo+ID4gPiA+ID4gc3R1ZmYg
-aXMgb24tcGFyIChvciBhY3R1YWxseSwgZGVwZW5kaW5nIHB1cmVseSBvbiBwZXJzb25hbCBvcGlu
-aW9ucywgc3VwZXJpb3IpLg0KPiA+ID4gPiA+IA0KPiA+ID4gPiA+IEFzIGZvciB0aGUgdHdvIHRv
-IGNvLWV4aXN0LCBJJ20gbm90IHN1cmUgdGhhdCB0aGlzIGlzIGFjdHVhbGx5IG5lZWRlZCwgYXMg
-dGhlDQo+ID4gPiA+ID4gT0YgZ3JhcGhzIGFyZSBhbHJlYWR5IChhdCB0aGUgZW5kIG9mIHRoZSBn
-cmFwaCkgcG9pbnRpbmcgdG8gdGhlIGRpc3BsYXkgaW50ZXJmYWNlLg0KPiA+ID4gPiA+IA0KPiA+
-ID4gPiA+IEluIGFueSBjYXNlLCBqdXN0IGFzIGEgcmVtaW5kZXI6IGlmIHRoZXJlIHdpbGwgYmUg
-YW55IG5lZWQgdG8gYWRkIGFueSBjdXN0b20NCj4gPiA+ID4gPiBNZWRpYVRlayBzcGVjaWZpYyBw
-cm9wZXJ0aWVzIGxhdGVyLCBpdCdzIG9rIGFuZCB3ZSBjYW4gZG8gdGhhdCBhdCBhbnkgdGltZS4N
-Cj4gPiA+ID4gDQo+ID4gPiA+IFRoZSBhbHRlcm5hdGl2ZSBzb2x1dGlvbiBpcyB1c2luZyBPRiBn
-cmFwaHMgdG8gcG9pbnQgZGlzcGxheSBpbnRlcmZhY2UgYW5kIHVzZSBNZWRpYVRlayBzcGVjaWZp
-YyBwcm9wZXJ0eSB0byBmaXJzdCBjb21wb25lbnQ6DQo+ID4gPiA+IA0KPiA+ID4gPiB2ZG9zeXMw
-OiBzeXNjb25AMWMwMWEwMDAgew0KPiA+ID4gPiAgICAgICAgICAgICBwb3J0cyB7DQo+ID4gPiA+
-ICAgICAgICAgICAgICAgICAgICAgIHBvcnRAMCB7DQo+ID4gPiA+ICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICBlbmRwb2ludCB7DQo+ID4gPiA+ICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICByZW1vdGUtZW5kcG9pbnQgPSA8JmRzaTBfZW5kcG9pbnQ+Ow0KPiA+
-ID4gPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfTsNCj4gPiA+ID4gICAgICAgICAg
-ICAgICAgICAgICAgfTsNCj4gPiA+ID4gICAgDQo+ID4gPiA+ICAgICAgICAgICAgICAgICAgICAg
-IHBvcnRAMSB7DQo+ID4gPiA+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBlbmRwb2lu
-dCB7DQo+ID4gPiA+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICByZW1v
-dGUtZW5kcG9pbnQgPSA8JmRzaTFfZW5kcG9pbnQ+Ow0KPiA+ID4gPiAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgfTsNCj4gPiA+ID4gICAgICAgICAgICAgICAgICAgICAgfTsNCj4gPiA+
-ID4gICAgDQo+ID4gPiA+ICAgICAgICAgICAgICAgICAgICAgIHBvcnRAMiB7DQo+ID4gPiA+ICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICBlbmRwb2ludCB7DQo+ID4gPiA+ICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICByZW1vdGUtZW5kcG9pbnQgPSA8JmRwX2lu
-dGYwX2VuZHBvaW50PjsNCj4gPiA+ID4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIH07
-DQo+ID4gPiA+ICAgICAgICAgICAgICAgICAgICAgIH07DQo+ID4gPiA+ICAgICAgICAgICAgIH07
-DQo+ID4gPiA+ICAgIA0KPiA+ID4gPiAgICAgICAgICAgICBkaXNwbGF5LWZpcnN0LWNvbXBvbmVu
-dCA9IDwmb3ZsMD47DQo+ID4gPiA+IH07DQo+ID4gPiA+IA0KPiA+ID4gPiBBbmQgSSBhZ3JlZSB0
-byBpdCdzIGJldHRlciB0byBrZWVwIG9ubHkgT0YgZ3JhcGhzIHByb3BlcnR5LCBzbyBpdCB3b3Vs
-ZCBiZQ0KPiA+ID4gPiANCj4gPiA+ID4gdmRvc3lzMDogc3lzY29uQDFjMDFhMDAwIHsNCj4gPiA+
-ID4gICAgICAgICAgICAgcG9ydHMgew0KPiA+ID4gPiAgICAgICAgICAgICAgICAgICAgICBwb3J0
-QDAgew0KPiA+ID4gPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgZW5kcG9pbnQgew0K
-PiA+ID4gPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgcmVtb3RlLWVu
-ZHBvaW50ID0gPCZkc2kwX2VuZHBvaW50PjsNCj4gPiA+ID4gICAgICAgICAgICAgICAgICAgICAN
-Cj4gPiA+ID4gICAgICAgICAgICAgIH07DQo+ID4gPiA+ICAgICAgICAgICAgICAgICAgICAgIH07
-DQo+ID4gPiA+ICAgIA0KPiA+ID4gPiAgICAgICAgICAgICAgICAgICAgICBwb3J0QDEgew0KPiA+
-ID4gPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgZW5kcG9pbnQgew0KPiA+ID4gPiAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgcmVtb3RlLWVuZHBvaW50ID0g
-PCZkc2kxX2VuZHBvaW50PjsNCj4gPiA+ID4gICAgICAgICAgICAgICAgICAgICAgICAgICAgIA0K
-PiA+ID4gPiAgICAgIH07DQo+ID4gPiA+ICAgICAgICAgICAgICAgICAgICAgIH07DQo+ID4gPiA+
-ICAgIA0KPiA+ID4gPiAgICAgICAgICAgICAgICAgICAgICBwb3J0QDIgew0KPiA+ID4gPiAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgZW5kcG9pbnQgew0KPiA+ID4gPiAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgcmVtb3RlLWVuZHBvaW50ID0gPCZkcF9pbnRm
-MF9lbmRwb2ludD47DQo+ID4gPiA+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB9DQo+
-ID4gPiA+IDsNCj4gPiA+ID4gICAgICAgICAgICAgICAgICAgICAgfTsNCj4gPiA+ID4gICAgICAg
-ICAgICAgfTsNCj4gPiA+ID4gfTsNCj4gPiA+ID4gDQo+ID4gPiA+IE1heWJlIHdlIGNvdWxkIHVz
-ZSBPRiBncmFwaHMgZm9yIGJvdGggZmlyc3QgY29tcG9uZW50IGFuZCBkaXNwbGF5IGludGVyZmFj
-ZSBhbmQgZHJvcCB1c2luZyBNZWRpYVRlayBzcGVjaWZpYyBwcm9wZXJ0eS4NCj4gPiA+ID4gDQo+
-ID4gPiANCj4gPiA+IFdlIGNvdWxkLCBvciB3ZSBjYW4gc2ltcGx5IHdhbGsgdGhyb3VnaCB0aGUg
-T0YgR3JhcGggaW4gdGhlIGRyaXZlciBhbmQgZ2V0IHRoZQ0KPiA+ID4gZGlzcGxheSBpbnRlcmZh
-Y2UgbGlrZSB0aGF0LCBhcyBpdCdzIGJvYXJkLXNwZWNpZmljIDstKQ0KPiA+ID4gDQo+ID4gPiAu
-Li5idXQgYW55d2F5LCBsZXQncyBzZWUgdGhhdCBsYXRlcjogYWZ0ZXIgZ2V0dGluZyB0aGlzIHNl
-cmllcyB1cHN0cmVhbWVkLCBJIHdpbGwNCj4gPiA+IGNvbnZlcnQgYWxsIE1lZGlhVGVrIGJvYXJk
-cyAoaW5jbHVkaW5nIENocm9tZWJvb2tzKSB0byB1c2UgdGhlIGdyYXBocyBpbnN0ZWFkLCBhbmQN
-Cj4gPiA+IHlvdSdsbCBzZWUgdGhhdCwgYXQgbGVhc3QgZm9yIHRoZSBjdXJyZW50bHkgc3VwcG9y
-dGVkIGJvYXJkcywgdGhlcmUncyBubyBuZWVkIGZvcg0KPiA+ID4gYW55IGN1c3RvbSBwcm9wZXJ0
-eS4NCj4gPiA+IA0KPiA+ID4gQWxzbywgc2V0dGluZyB0aGUgRFNJMC8xL2RwaW50ZiBlbmRwb2lu
-dCB0byBWRE8wIGlzIHRlY2huaWNhbGx5IHdyb25nLCBhcyB0aGF0IGlzDQo+ID4gPiBzdXBwb3Nl
-ZCB0byBiZSB0aGUgbGFzdCBvbmUsIGFuZCBhIGdyYXBoIGlzIGNvbmNlcHR1YWxseSBzdXBwb3Nl
-ZCB0byBnbyBmcm9tIHRoZQ0KPiA+ID4gZmlyc3QgdG8gdGhlIGxhc3QgaW4gc2VxdWVuY2UuDQo+
-ID4gPiANCj4gPiA+ICppZiogd2Ugd2lsbCBldmVyIG5lZWQgKHByb2JhYmx5IG5vdCkgdG8gZ2V0
-IHRoZSBWRE8wIG5vZGUgdG8gcG9pbnQgZGlyZWN0bHkgdG8NCj4gPiA+IHRoZSBsYXN0IG5vZGUg
-Zm9yIHdoYXRldmVyIHJlYXNvbiwgdGhlIHJpZ2h0IHdheSB3b3VsZCBiZSB0aGUgZmlyc3Qgb25l
-IHlvdSBzYWlkLA0KPiA+ID4gc28sIG1lZGlhdGVrLG1tc3lzLWRpc3BsYXktaW50ZXJmYWNlID0g
-PCZkc2kwPiwgPCZkc2kxPiwgZXRjIGV0Yw0KPiA+ID4gDQo+ID4gPiAuLi5vciBtZWRpYXRlayxt
-bXN5cy1wb3NzaWJsZS1kaXNwbGF5cyA9IDwgLi4uIHBoYW5kbGVzID4NCj4gPiA+IA0KPiA+ID4g
-Li4ub3IgYW55d2F5LCBtYW55IG90aGVyIHNvbHV0aW9ucyBhcmUgcG9zc2libGUgLSBidXQgYWdh
-aW4sIEkgdGhpbmsgdGhpcyBpcyBub3QNCj4gPiA+IHRoZSByaWdodCB0aW1lIHRvIHRoaW5rIGFi
-b3V0IHRoYXQuIEtub3dpbmcgdGhhdCB0aGVyZSBhcmUgZXZlbnR1YWwgc29sdXRpb25zIGZvcg0K
-PiA+ID4gYW55IG5lZWQgdGhhdCBtaWdodCBhcmlzZSBpbiB0aGUgZnV0dXJlIGlzIGVub3VnaCwg
-SU1PIDotKQ0KPiA+IA0KPiA+IFRoaXMgaXMgb25lIHJvdXRpbmcgb2YgZGlzcGxheSBwaXBlbGlu
-ZSBhbmQgdGhlIHJlbGF0aW9uIG9mIFZET1NZUzAgd2l0aCBkaXNwbGF5IHBpcGVsaW5lLg0KPiA+
-IA0KPiA+ICAgICAgICAgICAgICAgICArLS0gVkRPU1lTMCAtLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0rDQo+ID4gICAgICAgICAgICAgICAgIHwgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwNCj4gPiAgICAg
-ICAgICAgICAgICAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgfA0KPiA+IERSQU0gLT4gSU9NTVUgLS0tPiBPVkwwIC0+IFJETUEwIC0+IC4u
-LiAtPiBEU0MwIC0+IE1FUkdFMCAtPiBEUF9JTlRGMCAtLS0tPg0KPiA+ICAgICAgICAgICAgICAg
-ICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICB8DQo+ID4gICAgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgIHwNCj4gPiAgICAgICAgICAgICAgICAgKy0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tKw0KPiA+IA0K
-PiA+IFZpZGVvIGRhdGEgaXMgcmVhZCBieSBJT01NVSBmcm9tIERSQU0gYW5kIHNlbmQgdG8gZGlz
-cGxheSBwaXBlbGluZS4gVGhlbiB2aWRlbyBkYXRhIHRyYXZlbCB0aHJvdWdoIGZpcnN0IGNvbXBv
-bmVudCB0byBkaXNwbGF5IGludGVyZmFjZS4NCj4gPiBWRE9TWVMwIG1hbmFnZSBlYWNoIGNvbXBv
-bmVudCBpbiB0aGUgcGlwZWxpbmUgaW5jbHVkZSBmaXJzdCBjb21wb25lbnQgYW5kIGRpc3BsYXkg
-aW50ZXJmYWNlLg0KPiA+IFRoZSBtYW5hZ2VtZW50IGluY2x1ZGUgY2xvY2sgZ2F0aW5nLCByZXNl
-dCwgdmlkZW8gZGF0YSBpbnB1dC9vdXRwdXQgcm91dGluZy4NCj4gPiBUaGUgcmVsYXRpb25zaGlw
-IG9mIFZET1NZVFMwIHdpdGggZmlyc3QgY29tcG9uZW50IGlzIHRoZSBzYW1lIGFzIHRoZSByZWxh
-dGlvbnNoaXAgb2YgVkRPU1lTMCB3aXRoIGRpc3BsYXkgaW50ZXJmYWNlLg0KPiA+IElmIFZET1NZ
-UzAgaXMgbm90IHN1aXRhYmxlIHVzaW5nIE9GIGdyYXBoIHBvaW50IHRvIGRpc3BsYXkgaW50ZXJm
-YWNlLCBWRE9TWVMwIGlzIGFsc28gbm90IHN1aXRhYmxlIHVzaW5nIE9GIGdyYXBoIHBvaW50IHRv
-IGZpcnN0IGNvbXBvbmVudC4NCj4gDQo+IEluIHRoZSBjYXNlcyBpbiB3aGljaCBWRE8gZ29lcyBk
-aXJlY3RseSB0byB0aGUgZGlzcGxheSwgaXQgKmlzKiBwb3NzaWJsZSB0byBtYWtlIGl0DQo+IHBv
-aW50IGRpcmVjdGx5IHRvIHRoZSBkaXNwbGF5Lg0KPiANCj4gSW4gdGhlIGNhc2VzIGluIHdoaWNo
-IHRoZSBwaXBlbGluZSBpcyBsYXJnZXIsIFZETyBzdGlsbCBwb2ludHMgdG8gdGhlIGRpc3BsYXks
-IGJ1dA0KPiBvbmx5IGxhdGVyIGluIHRoZSBwaXBlbGluZS4NCg0KSSBtZWFuIFZET1NZUzAgaXMg
-bm90IHN1aXRhYmxlICd1c2luZyBPRiBncmFwaCcgdG8gcG9pbnQgdG8gYm90aCBkaXNwbGF5IGlu
-dGVyZmFjZSBhbmQgZmlyc3QgY29tcG9uZW50Lg0KU28gVkRPU1lTMCBzaG91bGQgdXNlIHNwZWNp
-ZmljIHByb3BlcnR5IHRvIHBvaW50IHRvIGJvdGggZGlzcGxheSBpbnRlcmZhY2UgYW5kIGZpcnN0
-IGNvbXBvbmVudC4NCk1heWJlDQoNCnZkb3N5czAgew0KCWRtYS1kZXZpY2UgPSA8b3ZsMD47DQoJ
-ZGlzcGxheS1pbnRlcmZhY2UgPSA8JmRzaTA+LCA8JmRzaTE+LCA8JmRwX2ludGYwPjsNCn07DQoN
-ClJlZ2FyZHMsDQpDSw0KDQo+IA0KPiA+IFRoZSBqb2Igb2YgdGhlIGNvbXBvbmVudCBpbiBkaXNw
-bGF5IHBpcGVsaW5lIGlzIHRvIHByb2Nlc3MgdGhlIHZpZGVvIGRhdGEsDQo+ID4gYnV0IHRoZSBq
-b2Igb2YgVkRPU1lTMCBpcyB0byBtYW5hZ2UgKGNsb2NrIGdhdGluZywgcmVzZXQsIHJvdXRpbmcp
-IHRoZSBwaXBlbGluZS4NCj4gPiBJZiB0aGUgT0YgZ3JhcGggaXMgdG8gc2hvdyB0aGUgdmlkZW8g
-ZGF0YSB0cmF2ZWwgcGF0aCwgVkRPU1lTMCBzaG91bGQgbm90IGV4aXN0IGluIHRoZSBPRiBncmFw
-aC4NCj4gPiANCj4gPiBSZWdhcmRzLA0KPiA+IENLDQo+ID4gDQo+ID4gPiANCj4gPiA+IENoZWVy
-cywNCj4gPiA+IEFuZ2Vsbw0KPiA+ID4gDQo+ID4gPiA+IFJlZ2FyZHMsDQo+ID4gPiA+IENLDQo+
-ID4gPiA+IA0KPiA+ID4gPiA+IA0KPiA+ID4gPiA+IENoZWVycyENCj4gPiA+ID4gPiBBbmdlbG8N
-Cj4gPiA+ID4gPiANCj4gPiA+ID4gPiA+IFJlZ2FyZHMsDQo+ID4gPiA+ID4gPiBDSw0KPiA+ID4g
-PiA+ID4gDQo+ID4gPiA+ID4gPiA+ICsgICAgcHJvcGVydGllczoNCj4gPiA+ID4gPiA+ID4gKyAg
-ICAgIGVuZHBvaW50QDA6DQo+ID4gPiA+ID4gPiA+ICsgICAgICAgICRyZWY6IC9zY2hlbWFzL2dy
-YXBoLnlhbWwjL3Byb3BlcnRpZXMvZW5kcG9pbnQNCj4gPiA+ID4gPiA+ID4gKyAgICAgICAgZGVz
-Y3JpcHRpb246IE91dHB1dCB0byB0aGUgcHJpbWFyeSBkaXNwbGF5IHBpcGVsaW5lDQo+ID4gPiA+
-ID4gPiA+ICsNCj4gPiA+ID4gPiA+ID4gKyAgICAgIGVuZHBvaW50QDE6DQo+ID4gPiA+ID4gPiA+
-ICsgICAgICAgICRyZWY6IC9zY2hlbWFzL2dyYXBoLnlhbWwjL3Byb3BlcnRpZXMvZW5kcG9pbnQN
-Cj4gPiA+ID4gPiA+ID4gKyAgICAgICAgZGVzY3JpcHRpb246IE91dHB1dCB0byB0aGUgc2Vjb25k
-YXJ5IGRpc3BsYXkgcGlwZWxpbmUNCj4gPiA+ID4gPiA+ID4gKw0KPiA+ID4gPiA+ID4gPiArICAg
-ICAgZW5kcG9pbnRAMjoNCj4gPiA+ID4gPiA+ID4gKyAgICAgICAgJHJlZjogL3NjaGVtYXMvZ3Jh
-cGgueWFtbCMvcHJvcGVydGllcy9lbmRwb2ludA0KPiA+ID4gPiA+ID4gPiArICAgICAgICBkZXNj
-cmlwdGlvbjogT3V0cHV0IHRvIHRoZSB0ZXJ0aWFyeSBkaXNwbGF5IHBpcGVsaW5lDQo+ID4gPiA+
-ID4gPiA+ICsNCj4gPiA+ID4gPiA+ID4gKyAgICBhbnlPZjoNCj4gPiA+ID4gPiA+ID4gKyAgICAg
-IC0gcmVxdWlyZWQ6DQo+ID4gPiA+ID4gPiA+ICsgICAgICAgICAgLSBlbmRwb2ludEAwDQo+ID4g
-PiA+ID4gPiA+ICsgICAgICAtIHJlcXVpcmVkOg0KPiA+ID4gPiA+ID4gPiArICAgICAgICAgIC0g
-ZW5kcG9pbnRAMQ0KPiA+ID4gPiA+ID4gPiArICAgICAgLSByZXF1aXJlZDoNCj4gPiA+ID4gPiA+
-ID4gKyAgICAgICAgICAtIGVuZHBvaW50QDINCj4gPiA+ID4gPiA+ID4gKw0KPiA+ID4gPiA+ID4g
-PiAgICAgcmVxdWlyZWQ6DQo+ID4gPiA+ID4gPiA+ICAgICAgIC0gY29tcGF0aWJsZQ0KPiA+ID4g
-PiA+ID4gPiAgICAgICAtIHJlZw0KPiA+ID4gPiA+IA0KPiA+ID4gPiA+IA0KPiA+ID4gDQo+ID4g
-PiANCj4gDQo+IA0KPiANCg==
+Hi Chris,
+
+kernel test robot noticed the following build errors:
+
+[auto build test ERROR on bluetooth-next/master]
+[also build test ERROR on next-20240703]
+[cannot apply to bluetooth/master linus/master v6.10-rc6]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Chris-Lu/Bluetooth-btusb-mediatek-remove-the-unnecessary-goto-tag/20240705-043833
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/bluetooth/bluetooth-next.git master
+patch link:    https://lore.kernel.org/r/20240704060116.16600-6-chris.lu%40mediatek.com
+patch subject: [PATCH v7 5/8] Bluetooth: btmtk: move btusb_mtk_hci_wmt_sync to btmtk.c
+config: x86_64-randconfig-161-20240705 (https://download.01.org/0day-ci/archive/20240705/202407051720.d1FTJg6H-lkp@intel.com/config)
+compiler: gcc-7 (Ubuntu 7.5.0-6ubuntu2) 7.5.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240705/202407051720.d1FTJg6H-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202407051720.d1FTJg6H-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+   ld: drivers/bluetooth/btmtk.o: in function `btmtk_usb_wmt_recv':
+   drivers/bluetooth/btmtk.c:503:(.text+0xacf): undefined reference to `usb_anchor_urb'
+   ld: drivers/bluetooth/btmtk.c:504:(.text+0xadc): undefined reference to `usb_submit_urb'
+   ld: drivers/bluetooth/btmtk.c:513:(.text+0xc61): undefined reference to `usb_unanchor_urb'
+   ld: drivers/bluetooth/btmtk.o: in function `btmtk_usb_hci_wmt_sync':
+   drivers/bluetooth/btmtk.c:605:(.text+0xda5): undefined reference to `usb_autopm_get_interface'
+   ld: drivers/bluetooth/btmtk.o: in function `btmtk_usb_submit_wmt_recv_urb':
+   drivers/bluetooth/btmtk.c:526:(.text+0xe04): undefined reference to `usb_alloc_urb'
+   ld: drivers/bluetooth/btmtk.c:556:(.text+0xefe): undefined reference to `usb_anchor_urb'
+   ld: drivers/bluetooth/btmtk.c:557:(.text+0xf0b): undefined reference to `usb_submit_urb'
+   ld: drivers/bluetooth/btmtk.c:565:(.text+0xf23): undefined reference to `usb_free_urb'
+   ld: drivers/bluetooth/btmtk.o: in function `btmtk_usb_hci_wmt_sync':
+>> drivers/bluetooth/btmtk.c:620:(.text+0xf2f): undefined reference to `usb_autopm_put_interface'
+   ld: drivers/bluetooth/btmtk.o: in function `btmtk_usb_submit_wmt_recv_urb':
+>> drivers/bluetooth/btmtk.c:562:(.text+0x1030): undefined reference to `usb_unanchor_urb'
+   ld: drivers/bluetooth/btmtk.c:565:(.text+0x1038): undefined reference to `usb_free_urb'
+   ld: drivers/bluetooth/btmtk.o: in function `btmtk_usb_hci_wmt_sync':
+   drivers/bluetooth/btmtk.c:620:(.text+0x1044): undefined reference to `usb_autopm_put_interface'
+   ld: drivers/bluetooth/btmtk.c:613:(.text+0x1062): undefined reference to `usb_autopm_put_interface'
+   ld: drivers/bluetooth/btmtk.c:620:(.text+0x11c6): undefined reference to `usb_autopm_put_interface'
+   ld: drivers/bluetooth/btmtk.o: in function `btmtk_usb_submit_wmt_recv_urb':
+>> drivers/bluetooth/btmtk.c:545:(.text+0x1288): undefined reference to `usb_free_urb'
+   ld: drivers/bluetooth/btmtk.o: in function `btmtk_usb_hci_wmt_sync':
+   drivers/bluetooth/btmtk.c:620:(.text+0x1294): undefined reference to `usb_autopm_put_interface'
+
+
+vim +620 drivers/bluetooth/btmtk.c
+
+   516	
+   517	static int btmtk_usb_submit_wmt_recv_urb(struct hci_dev *hdev)
+   518	{
+   519		struct btmtk_data *data = hci_get_priv(hdev);
+   520		struct usb_ctrlrequest *dr;
+   521		unsigned char *buf;
+   522		int err, size = 64;
+   523		unsigned int pipe;
+   524		struct urb *urb;
+   525	
+   526		urb = usb_alloc_urb(0, GFP_KERNEL);
+   527		if (!urb)
+   528			return -ENOMEM;
+   529	
+   530		dr = kmalloc(sizeof(*dr), GFP_KERNEL);
+   531		if (!dr) {
+   532			usb_free_urb(urb);
+   533			return -ENOMEM;
+   534		}
+   535	
+   536		dr->bRequestType = USB_TYPE_VENDOR | USB_DIR_IN;
+   537		dr->bRequest     = 1;
+   538		dr->wIndex       = cpu_to_le16(0);
+   539		dr->wValue       = cpu_to_le16(48);
+   540		dr->wLength      = cpu_to_le16(size);
+   541	
+   542		buf = kmalloc(size, GFP_KERNEL);
+   543		if (!buf) {
+   544			kfree(dr);
+ > 545			usb_free_urb(urb);
+   546			return -ENOMEM;
+   547		}
+   548	
+   549		pipe = usb_rcvctrlpipe(data->udev, 0);
+   550	
+   551		usb_fill_control_urb(urb, data->udev, pipe, (void *)dr,
+   552				     buf, size, btmtk_usb_wmt_recv, hdev);
+   553	
+   554		urb->transfer_flags |= URB_FREE_BUFFER;
+   555	
+   556		usb_anchor_urb(urb, data->ctrl_anchor);
+   557		err = usb_submit_urb(urb, GFP_KERNEL);
+   558		if (err < 0) {
+   559			if (err != -EPERM && err != -ENODEV)
+   560				bt_dev_err(hdev, "urb %p submission failed (%d)",
+   561					   urb, -err);
+ > 562			usb_unanchor_urb(urb);
+   563		}
+   564	
+   565		usb_free_urb(urb);
+   566	
+   567		return err;
+   568	}
+   569	
+   570	int btmtk_usb_hci_wmt_sync(struct hci_dev *hdev,
+   571				   struct btmtk_hci_wmt_params *wmt_params)
+   572	{
+   573		struct btmtk_data *data = hci_get_priv(hdev);
+   574		struct btmtk_hci_wmt_evt_funcc *wmt_evt_funcc;
+   575		u32 hlen, status = BTMTK_WMT_INVALID;
+   576		struct btmtk_hci_wmt_evt *wmt_evt;
+   577		struct btmtk_hci_wmt_cmd *wc;
+   578		struct btmtk_wmt_hdr *hdr;
+   579		int err;
+   580	
+   581		/* Send the WMT command and wait until the WMT event returns */
+   582		hlen = sizeof(*hdr) + wmt_params->dlen;
+   583		if (hlen > 255)
+   584			return -EINVAL;
+   585	
+   586		wc = kzalloc(hlen, GFP_KERNEL);
+   587		if (!wc)
+   588			return -ENOMEM;
+   589	
+   590		hdr = &wc->hdr;
+   591		hdr->dir = 1;
+   592		hdr->op = wmt_params->op;
+   593		hdr->dlen = cpu_to_le16(wmt_params->dlen + 1);
+   594		hdr->flag = wmt_params->flag;
+   595		memcpy(wc->data, wmt_params->data, wmt_params->dlen);
+   596	
+   597		set_bit(BTMTK_TX_WAIT_VND_EVT, &data->flags);
+   598	
+   599		/* WMT cmd/event doesn't follow up the generic HCI cmd/event handling,
+   600		 * it needs constantly polling control pipe until the host received the
+   601		 * WMT event, thus, we should require to specifically acquire PM counter
+   602		 * on the USB to prevent the interface from entering auto suspended
+   603		 * while WMT cmd/event in progress.
+   604		 */
+   605		err = usb_autopm_get_interface(data->intf);
+   606		if (err < 0)
+   607			goto err_free_wc;
+   608	
+   609		err = __hci_cmd_send(hdev, 0xfc6f, hlen, wc);
+   610	
+   611		if (err < 0) {
+   612			clear_bit(BTMTK_TX_WAIT_VND_EVT, &data->flags);
+   613			usb_autopm_put_interface(data->intf);
+   614			goto err_free_wc;
+   615		}
+   616	
+   617		/* Submit control IN URB on demand to process the WMT event */
+   618		err = btmtk_usb_submit_wmt_recv_urb(hdev);
+   619	
+ > 620		usb_autopm_put_interface(data->intf);
+   621	
+   622		if (err < 0)
+   623			goto err_free_wc;
+   624	
+   625		/* The vendor specific WMT commands are all answered by a vendor
+   626		 * specific event and will have the Command Status or Command
+   627		 * Complete as with usual HCI command flow control.
+   628		 *
+   629		 * After sending the command, wait for BTUSB_TX_WAIT_VND_EVT
+   630		 * state to be cleared. The driver specific event receive routine
+   631		 * will clear that state and with that indicate completion of the
+   632		 * WMT command.
+   633		 */
+   634		err = wait_on_bit_timeout(&data->flags, BTMTK_TX_WAIT_VND_EVT,
+   635					  TASK_INTERRUPTIBLE, HCI_INIT_TIMEOUT);
+   636		if (err == -EINTR) {
+   637			bt_dev_err(hdev, "Execution of wmt command interrupted");
+   638			clear_bit(BTMTK_TX_WAIT_VND_EVT, &data->flags);
+   639			goto err_free_wc;
+   640		}
+   641	
+   642		if (err) {
+   643			bt_dev_err(hdev, "Execution of wmt command timed out");
+   644			clear_bit(BTMTK_TX_WAIT_VND_EVT, &data->flags);
+   645			err = -ETIMEDOUT;
+   646			goto err_free_wc;
+   647		}
+   648	
+   649		if (data->evt_skb == NULL)
+   650			goto err_free_wc;
+   651	
+   652		/* Parse and handle the return WMT event */
+   653		wmt_evt = (struct btmtk_hci_wmt_evt *)data->evt_skb->data;
+   654		if (wmt_evt->whdr.op != hdr->op) {
+   655			bt_dev_err(hdev, "Wrong op received %d expected %d",
+   656				   wmt_evt->whdr.op, hdr->op);
+   657			err = -EIO;
+   658			goto err_free_skb;
+   659		}
+   660	
+   661		switch (wmt_evt->whdr.op) {
+   662		case BTMTK_WMT_SEMAPHORE:
+   663			if (wmt_evt->whdr.flag == 2)
+   664				status = BTMTK_WMT_PATCH_UNDONE;
+   665			else
+   666				status = BTMTK_WMT_PATCH_DONE;
+   667			break;
+   668		case BTMTK_WMT_FUNC_CTRL:
+   669			wmt_evt_funcc = (struct btmtk_hci_wmt_evt_funcc *)wmt_evt;
+   670			if (be16_to_cpu(wmt_evt_funcc->status) == 0x404)
+   671				status = BTMTK_WMT_ON_DONE;
+   672			else if (be16_to_cpu(wmt_evt_funcc->status) == 0x420)
+   673				status = BTMTK_WMT_ON_PROGRESS;
+   674			else
+   675				status = BTMTK_WMT_ON_UNDONE;
+   676			break;
+   677		case BTMTK_WMT_PATCH_DWNLD:
+   678			if (wmt_evt->whdr.flag == 2)
+   679				status = BTMTK_WMT_PATCH_DONE;
+   680			else if (wmt_evt->whdr.flag == 1)
+   681				status = BTMTK_WMT_PATCH_PROGRESS;
+   682			else
+   683				status = BTMTK_WMT_PATCH_UNDONE;
+   684			break;
+   685		}
+   686	
+   687		if (wmt_params->status)
+   688			*wmt_params->status = status;
+   689	
+   690	err_free_skb:
+   691		kfree_skb(data->evt_skb);
+   692		data->evt_skb = NULL;
+   693	err_free_wc:
+   694		kfree(wc);
+   695		return err;
+   696	}
+   697	EXPORT_SYMBOL_GPL(btmtk_usb_hci_wmt_sync);
+   698	
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
