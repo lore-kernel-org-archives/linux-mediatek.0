@@ -4,104 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7259C30658
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jul 2024 11:18:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4FDFC41513
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jul 2024 11:24:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OgGdrMJAOOlmaDA5n6UZ/NcHyTcSq/fRMMLBh3RpPPA=; b=BaIL+3kBGNQuuQfmH8QoO5mqkc
-	enFzAZwzwSy2GpcRd5rUK9lqJDyqx7p73ALKoH8SSoxB8Su5wqx5hF8ihk7Iw1KtpvgkEUqGz6nS1
-	h96Lf01jnV/yh2RcMc6HNgoJxNGAWzo8yRCAtfiqNEiyBRlbzRjCAeUIHL6tW7FA77c1TvcECfPmW
-	2wXHAwmuM8JMF7y7/NraI4UFMNd/o0oX1rOsnx8OSbovYhDtKPvCpa0p4GAj53BR8mQFFhdSmRh9j
-	xcJbcZxFJxKoaSyXWUIvWRwntiHWW2wr8iDLQxqYLeFEe/eGQsT412wqKcfuawsIdn8fviCPhWJ8y
-	txNZ17vA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=1Rm7sueqxojm9JNpe+lV9lCDU26xLCvtonjU/f9MC04=; b=P7PCokxrW5rmamG0TljqyH24SS
+	a8JKiEVdg+OC2VFVpv/i+FdbN2yvopaSeRnTCL2KmJTHbAGf7DADxfXWAqVVdO9icCQGWW/EZkyzH
+	3jTUOTBcVLgdflqxnCm5KQogZ7rgy8+ITNFT94NbPxax5xfocOQXjhmr/oOS4+dmytm/Ow/UFPy+/
+	qZbbBtLMKso6CugdbzVl8b4xp17Jk6Rk/lyCbiTCccea4yVKHnKZWLMAZXJXLrGMdM4ZTrZIwNL30
+	w/6mAGQ7U7twvWz5jg3xwTYDkmMmjHV/hQo5/slWIjnuOxpNJOPgnEr17P/vBkad1ijpm+4U5Ki2O
+	HSOr2j9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPgxX-0000000FlXC-0Qpj;
-	Fri, 05 Jul 2024 11:18:35 +0000
-Received: from mail-lj1-x231.google.com ([2a00:1450:4864:20::231])
+	id 1sPh3F-0000000FmyW-49W0;
+	Fri, 05 Jul 2024 11:24:29 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPgxT-0000000FlTi-0AYS
-	for linux-mediatek@lists.infradead.org;
-	Fri, 05 Jul 2024 11:18:33 +0000
-Received: by mail-lj1-x231.google.com with SMTP id 38308e7fff4ca-2ee910d6aaeso15095611fa.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 05 Jul 2024 04:18:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1720178309; x=1720783109; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=OgGdrMJAOOlmaDA5n6UZ/NcHyTcSq/fRMMLBh3RpPPA=;
-        b=WE4RZ5iog5RJavJG7+crNEyXkR4wGWblrcdJS2pFf1eR7CsYZN/uUhCFPteiCdTK8P
-         W6XLgG+8j+5zuPUOt+mh3QhDxxc3H+2/yIPBEwSsDjLUUos7n/T09zna8o5z5gXA57EC
-         iUyK/qqudAfDcLxewYL/YcyG6dfU/Vng+M4XqoAlxapYQjf89s2ytZkptinVC1fv65ef
-         sVUOGeqiJFg49kS6nmMzuC8TPpIWjUCvZ83ouWV5t/HHCMdJnt3y6qx+fhsvGVIkW6Nw
-         zf/gXWJrzFWrvTPJ/pmViLo41lJ069dBFTYyNC4prY1rGDpuhnQ/WsxhvOQ1NwTWScyR
-         I2lA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1720178309; x=1720783109;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=OgGdrMJAOOlmaDA5n6UZ/NcHyTcSq/fRMMLBh3RpPPA=;
-        b=F0/EuYTW+BtsM5Xlmynm6bSAq5tm+0oE+MvbtOjaaW7WQeusGZkS3n5C/Z43kQKRcL
-         iZTMXdFgRGiHsNRDnYSbbhlTfRkWHAD2YSk4fVCdhiCbW+ah0h93kcaJtnE6zLe/dPa2
-         OqR0azdG3Upt0w3yZSCKUA3RH+XaV+1G+06qmzFY8h0jq8cwtUrtDjRKLLs7LbXq21bo
-         Y12lyWub6Y5RuPU50WXNvFLOu9GkVzu8iZIHfrKsbM8AeTUmQ0wA5rAB0/9AeWCqlL9S
-         1SyG4U0rKyID8wMuIqhqyDXmzkC73i8BeqTe49UMDyf896NYGmJboBwoRltHdxHns7fk
-         zF9Q==
-X-Forwarded-Encrypted: i=1; AJvYcCV0Fz0EXTJo+zJxIaRY9T9blVFhYmhEk181zpOApeluVu5TcfH/RlsJX85DnUvdZXIc7zm4fisa0/Uhk5hcnD5UJGTAqBNxqX3GUi5GEtNGC9FN
-X-Gm-Message-State: AOJu0YyzP/TwToUjwCwImfSVpsGjskkpvBqef12njsJtozzoDmzgeJCI
-	G3MmqU8TicJseoYhitQoB0JVGWhRAdCUrh9f0H0U2F/iqJVfyQmlfBJcKWeBxzg=
-X-Google-Smtp-Source: AGHT+IHyMkgn3/gFNE4gv4OJO59bQCoHWgHlPXJAezaplNmRkJ1y1keb/pz2mmb4jwElkz5448BGKA==
-X-Received: by 2002:a2e:2e06:0:b0:2ee:8815:8b28 with SMTP id 38308e7fff4ca-2ee8edd3ec5mr24871001fa.33.1720178308668;
-        Fri, 05 Jul 2024 04:18:28 -0700 (PDT)
-Received: from ?IPV6:2a05:6e02:1041:c10:c49e:e1a5:3210:b8c0? ([2a05:6e02:1041:c10:c49e:e1a5:3210:b8c0])
-        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-3678fe13ef4sm7369352f8f.117.2024.07.05.04.18.27
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 05 Jul 2024 04:18:28 -0700 (PDT)
-Message-ID: <2aa71d0f-6e4a-4056-9deb-a46526b423a9@linaro.org>
-Date: Fri, 5 Jul 2024 13:18:27 +0200
+	id 1sPh3C-0000000Fmwl-2vMu;
+	Fri, 05 Jul 2024 11:24:28 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.97.1)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1sPh37-00000000572-213d;
+	Fri, 05 Jul 2024 11:24:21 +0000
+Date: Fri, 5 Jul 2024 12:24:18 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: linux-mediatek@lists.infradead.org,
+	Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+	Elad Yifee <eladwf@gmail.com>
+Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH net-next] net: ethernet: mediatek: Allow gaps in MAC
+ allocation
+Message-ID: <ZofX4qfGf93Q8jys@makrotopia.org>
+References: <379ae584cea112db60f4ada79c7e5ba4f3364a64.1719862038.git.daniel@makrotopia.org>
+ <3bda121b-f11d-44d1-a761-15195f8a418c@intel.com>
+ <C24C4687-1C00-434D-8C37-BDB85E39456C@makrotopia.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RESEND 00/22] dt-bindings: thermal: few cleanups
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Zhang Rui <rui.zhang@intel.com>, Rob Herring <robh@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>,
- Guillaume La Roque <glaroque@baylibre.com>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
- Fabio Estevam <festevam@gmail.com>
-Cc: linux-pm@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-amlogic@lists.infradead.org,
- linux-sunxi@lists.linux.dev, imx@lists.linux.dev,
- linux-tegra@vger.kernel.org, linux-arm-msm@vger.kernel.org,
- linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com,
- Florian Fainelli <f.fainelli@gmail.com>,
- linux-rpi-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Conor Dooley <conor.dooley@microchip.com>,
- Neil Armstrong <neil.armstrong@linaro.org>,
- Vasily Khoruzhick <anarsoul@gmail.com>,
- Florian Fainelli <florian.fainelli@broadcom.com>,
- Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
- Amit Kucheria <amitk@kernel.org>,
- =?UTF-8?Q?Niklas_S=C3=B6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
- Heiko Stuebner <heiko@sntech.de>, Biju Das <biju.das.jz@bp.renesas.com>,
- Baolin Wang <baolin.wang@linux.alibaba.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-References: <20240705-dt-bindings-thermal-allof-v1-0-554061b52fbc@linaro.org>
-Content-Language: en-US
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-In-Reply-To: <20240705-dt-bindings-thermal-allof-v1-0-554061b52fbc@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <C24C4687-1C00-434D-8C37-BDB85E39456C@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240705_041831_112969_730D935D 
-X-CRM114-Status: GOOD (  10.73  )
+X-CRM114-CacheID: sfid-20240705_042426_757333_EBE58D2C 
+X-CRM114-Status: GOOD (  21.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,87 +75,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 05/07/2024 11:51, Krzysztof Kozlowski wrote:
-> Hi,
-> 
-> Resending (with added tags) because patchset was still not applied.
-> Daniel, can you pick it up?
+Hi netdev maintainers,
 
-Yes
+On Tue, Jul 02, 2024 at 09:05:19AM +0000, Daniel Golle wrote:
+> >what about:
+> >4733│ static int mtk_sgmii_init(struct mtk_eth *eth)
+> >4734│ {
+> >4735│         struct device_node *np;
+> >4736│         struct regmap *regmap;
+> >4737│         u32 flags;
+> >4738│         int i;
+> >4739│
+> >4740│         for (i = 0; i < MTK_MAX_DEVS; i++) {
+> >4741│                 np = of_parse_phandle(eth->dev->of_node, "mediatek,sgmiisys", i);
+> >4742│                 if (!np)
+> >4743│                         break;
+> >
+> >should we also continue here?
+> 
+> Good point. As sgmiisys is defined in dtsi it's not so relevant in
+> practise though, as the SoC components are of course always present even
+> if we don't use them. Probably it is still better to not be overly
+> strict on the presence of things we may not even use, not even emit an
+> error message and silently break something else, so yes, worth fixing
+> imho.
+> 
 
-> Few cleanups witout practical impact, except maybe the Amlogic schema
-> (bringing required cells).
-> 
-> Link to v1: https://lore.kernel.org/r/20240614-dt-bindings-thermal-allof-v1-0-30b25a6ae24e@linaro.org
-> 
-> Best regards,
-> Krzysztof
-> 
-> ---
-> Krzysztof Kozlowski (22):
->        dt-bindings: thermal: samsung,exynos: specify cells
->        dt-bindings: thermal: amlogic: reference thermal-sensor schema
->        dt-bindings: thermal: allwinner,sun8i-a83t-ths: reference thermal-sensor schema
->        dt-bindings: thermal: brcm,avs-ro: reference thermal-sensor schema
->        dt-bindings: thermal: generic-adc: reference thermal-sensor schema
->        dt-bindings: thermal: imx8mm: reference thermal-sensor schema
->        dt-bindings: thermal: nvidia,tegra186-bpmp: reference thermal-sensor schema
->        dt-bindings: thermal: nvidia,tegra30-tsensor: reference thermal-sensor schema
->        dt-bindings: thermal: qcom-spmi-adc-tm-hc: reference thermal-sensor schema
->        dt-bindings: thermal: qcom-spmi-adc-tm5: reference thermal-sensor schema
->        dt-bindings: thermal: qcom-tsens: reference thermal-sensor schema
->        dt-bindings: thermal: qoriq: reference thermal-sensor schema
->        dt-bindings: thermal: rcar-gen3: reference thermal-sensor schema
->        dt-bindings: thermal: rockchip: reference thermal-sensor schema
->        dt-bindings: thermal: rzg2l: reference thermal-sensor schema
->        dt-bindings: thermal: socionext,uniphier: reference thermal-sensor schema
->        dt-bindings: thermal: sprd: reference thermal-sensor schema
->        dt-bindings: thermal: st,stm32: reference thermal-sensor schema
->        dt-bindings: thermal: ti,am654: reference thermal-sensor schema
->        dt-bindings: thermal: ti,j72xx: reference thermal-sensor schema
->        dt-bindings: thermal: simplify few bindings
->        dt-bindings: thermal: cleanup examples indentation
-> 
->   .../bindings/thermal/allwinner,sun8i-a83t-ths.yaml |  6 +-
->   .../bindings/thermal/amlogic,thermal.yaml          | 22 ++---
->   .../bindings/thermal/brcm,avs-ro-thermal.yaml      | 22 ++---
->   .../devicetree/bindings/thermal/brcm,avs-tmon.yaml | 17 ++--
->   .../bindings/thermal/brcm,bcm2835-thermal.yaml     |  1 -
->   .../bindings/thermal/fsl,scu-thermal.yaml          |  1 -
->   .../bindings/thermal/generic-adc-thermal.yaml      |  5 +-
->   .../bindings/thermal/imx8mm-thermal.yaml           |  5 +-
->   .../bindings/thermal/loongson,ls2k-thermal.yaml    |  1 -
->   .../bindings/thermal/mediatek,lvts-thermal.yaml    |  1 -
->   .../bindings/thermal/nvidia,tegra124-soctherm.yaml |  1 -
->   .../thermal/nvidia,tegra186-bpmp-thermal.yaml      | 12 +--
->   .../bindings/thermal/nvidia,tegra30-tsensor.yaml   |  9 +-
->   .../bindings/thermal/qcom,spmi-temp-alarm.yaml     |  1 -
->   .../bindings/thermal/qcom-spmi-adc-tm-hc.yaml      |  8 +-
->   .../bindings/thermal/qcom-spmi-adc-tm5.yaml        |  8 +-
->   .../devicetree/bindings/thermal/qcom-tsens.yaml    | 96 ++++++++++------------
->   .../devicetree/bindings/thermal/qoriq-thermal.yaml |  5 +-
->   .../bindings/thermal/rcar-gen3-thermal.yaml        | 69 ++++++++--------
->   .../devicetree/bindings/thermal/rcar-thermal.yaml  | 60 +++++++-------
->   .../bindings/thermal/rockchip-thermal.yaml         |  5 +-
->   .../devicetree/bindings/thermal/rzg2l-thermal.yaml | 41 ++++-----
->   .../bindings/thermal/samsung,exynos-thermal.yaml   |  3 +-
->   .../thermal/socionext,uniphier-thermal.yaml        |  5 +-
->   .../devicetree/bindings/thermal/sprd-thermal.yaml  | 47 +++++------
->   .../bindings/thermal/st,stm32-thermal.yaml         |  5 +-
->   .../bindings/thermal/ti,am654-thermal.yaml         | 15 ++--
->   .../bindings/thermal/ti,j72xx-thermal.yaml         |  5 +-
->   28 files changed, 230 insertions(+), 246 deletions(-)
-> ---
-> base-commit: 0b58e108042b0ed28a71cd7edf5175999955b233
-> change-id: 20240614-dt-bindings-thermal-allof-401c50e61ef2
-> 
-> Best regards,
+I've noticed that this patch was marked as "Changes Requested" on patchwork
+despite having received a positive review.
 
--- 
-<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+I'm afraid this is possibly due to a misunderstanding:
 
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
+The (unrelated and rather exotic) similar issue pointed to by Przemek
+Kitszel should not be fixed in the same commit. It is unrelated, and if
+at all, should be sent to 'net' tree rather than 'net-next'.
 
+Looking at it more closely I would not consider it an issue as we
+currently in the bindings we **require** the correct number of sgmiisys phandles to be
+present for each SoC supporting SGMII:
+
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/net/mediatek,net.yaml#n200
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/net/mediatek,net.yaml#n245
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/net/mediatek,net.yaml#n287
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/net/mediatek,net.yaml#n325
+
+Hence there aren't ever any gaps, also because the sgmiisys phandles are
+defined in the SoC-specific DTSI **even for boards not making any use of
+them**.
+
+I hence would like this very patch to be merged (or at least discussed)
+as-is, and if there is really a need to address the issue mentioned by
+Przemek Kitszel, then deal with it in a separate commit.
+
+
+Cheers
+
+
+Daniel
 
