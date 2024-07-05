@@ -4,97 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF4C2C38150
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jul 2024 16:44:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A535C3271E
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jul 2024 17:06:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:Subject:References:Cc:To:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZJenFuhYTgsk0Co2eVcbS7MuCtTS3fgyqVgRI/D0SG4=; b=y/dbd9F68DvoczQi7RU07TeYjA
-	gHgVy2CN+Cr1U49tAXYdr8g9hHSzJwj5/NICdeBT6WhKR98G9HB/4j8yo3Xc7gbg/rBB1svc4Me5/
-	sJ8jXZkUvCAD4xRTNqznZCqYvXEMW3hKbqaUmch5pTFqqfp2fFSXyCfd/w1rydLVbYMbvy97ePb5h
-	rfpLV3HKXRHKrO5hhgocJV/OhUH72PpNrDxqhJioY7dPglJCrCUDZdNUV39QKoZCL4hz89FTSLlrU
-	mpF9v0vvspz5vSlO4PIg5HJkSQMdBofLKSZ3jm4dGw6va+oW5JK4isfP7tQtV1+IQ7RcuaZDhQ+x1
-	XxokApWg==;
+	bh=u2RooQsdyisGBlzqbeOLqTi+HuxdjKBsH+GNi9Ka0GU=; b=am/gkq/zIjMEre5XIUqR+hj1Hf
+	wjwevY1GGA78Snjhbi8mTqX5LcIwZln7OFFm4YN2qdVjMyoX8R3KqhjGpXErV36Tqpexg/uGg+OCT
+	fXvTkRfvw5zlqLIbEdwolygtUJkKrWdVOsblX96jDj6tTV+znFWb+59jFZ2fUrjQ2rJukpw7x1ZqY
+	NyNtn7B+JRi0ndB9cSJo5rmK3zEHwk8+XQPSsUYdgj1YJWE/FrdWCJvby7Kfqrq5aLV/kEQ9M1h7c
+	c8yaugs/HXMnTNSCFSN+IhAwTM9UXkp04ZzqU/vanny6/Qi8SXKjyDzn6Ej7K6ok/JxVLghvttQ6V
+	XLRfW05Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPm2U-0000000GRRj-30D8;
-	Fri, 05 Jul 2024 16:44:02 +0000
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+	id 1sPmNl-0000000GUh8-2f12;
+	Fri, 05 Jul 2024 17:06:01 +0000
+Received: from mout.web.de ([217.72.192.78])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPm2R-0000000GRQo-346P;
-	Fri, 05 Jul 2024 16:44:01 +0000
-Received: by mail-ej1-x629.google.com with SMTP id a640c23a62f3a-a77d9217e6fso72018166b.2;
-        Fri, 05 Jul 2024 09:43:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1720197837; x=1720802637; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ZJenFuhYTgsk0Co2eVcbS7MuCtTS3fgyqVgRI/D0SG4=;
-        b=e9txbeo7H86j94Tns4teeldHSKvel5eXDsHZ8nvrnhkk5WDgNp0UVRHeA4y33DjPFK
-         fSqoD+h3pcp+NimkgGxpgbSDuGqEmxQY0lYOZHKrYg2aBb4vgW5s/myv1cpEzp6qKwai
-         f5DMueF8oYKcIy2z0c0iR/+fQHSWj+CxvsQMpSh2v3DnLh5ueZ6xDrya6gNN+Gvq1nfo
-         jo5xViU5bML7sVzaIR/Hy2FoWw6k0DnNvLqfz4wVhI9X4n0vLLGIfqc90udrU6B3+NkQ
-         +LsqoKfQ5f4UYm6atr7dYgGT+etnhwgf0x55+QOzYecFTkJ92pQoO1sJx5xr6EmcC/4j
-         QTkg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1720197837; x=1720802637;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=ZJenFuhYTgsk0Co2eVcbS7MuCtTS3fgyqVgRI/D0SG4=;
-        b=Xa3HDKw0H5Vx+n+Zo0crtox1EUm50ZeJ2e9lBQZ6wOI+SYMBQHGelrRAePCWvdyEjF
-         6WEZddxsPzzEq/itBj//wdCfkLJa5R2RrKAvfJxC4Qt0EyXjAPlnWXDTgKfZ3YomOmgo
-         HQV0uTA6rBASQHWlikNUrIXomgTMWQCLWmRXgKoconN5RyCoUVo198QwCFmQk34mTzkI
-         ozR6IKb7zzjsVCczfJ8eN7VvEEivUdYl0r2UhS+tsT7ygQN63qL8T3VU6g1XAoD+z3rI
-         OBQN2A/yVRevoUf3PUUa83vvDyQBjMwL10imE7PID86r5tPioWjokD126iLtA+dBBcps
-         AOMw==
-X-Forwarded-Encrypted: i=1; AJvYcCUh6Mc2LzGs561XDdJtwsQPGx/f7U9uztT1M7t97nWF/hiexMWZMKWUeTzI+temlTxM/5WgvDZ7ShetENV+yFkcuHGDST+0upZgOVeBGeh6QYkZzMF5dW9nZExqh9SPDd5g7/9QfYKqCW886bkMUOw1DqgPp26q7NQ=
-X-Gm-Message-State: AOJu0Ywc9WZ/VyGlEq5x03p8QoZGpkp0ov0xw5vE+ba2jrsVJfGeKj+M
-	HGnm8ssThUqSQaI09++lgXouApoIIe9RmzK6HyUHvYhwTkcGQqOenDEkUNqaApmwrzYYCANExTb
-	iYWJhfqzaOTHeb+hVgpAahRXqvbmcrm8n
-X-Google-Smtp-Source: AGHT+IGcaZiB45U0dGEbln18cDiJd3sDca+NpmXy0yPlfGtDlVRVgn7AC9FOVqrMmcrnP05WjpdOAvlQdl8HbklmSXc=
-X-Received: by 2002:a17:906:17c4:b0:a72:9963:eb8e with SMTP id
- a640c23a62f3a-a77ba46f9aamr317906466b.28.1720197836518; Fri, 05 Jul 2024
- 09:43:56 -0700 (PDT)
+	id 1sPmNh-0000000GUej-2QWG;
+	Fri, 05 Jul 2024 17:05:59 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
+	s=s29768273; t=1720199145; x=1720803945; i=markus.elfring@web.de;
+	bh=u2RooQsdyisGBlzqbeOLqTi+HuxdjKBsH+GNi9Ka0GU=;
+	h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:To:Cc:References:
+	 Subject:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:
+	 cc:content-transfer-encoding:content-type:date:from:message-id:
+	 mime-version:reply-to:subject:to;
+	b=YoHVPQsoBN3B/qcTdZFHrZgvbtHbAGusVseeGnXZtkTw8KYzrLYEVIdzI7ZXUaxp
+	 FiAPrRuV6K0p9VD7re9PAW7fdSdSpSgjQTMvtsGqMIhb6Ng3dyj8iTTatJ3PCOywI
+	 XYpRyhfL1QndX8DQ6c5kRTEFrW/Gh9cPsiB/hE7C2vob2soo9eaq5oDVrH1/9Qnrl
+	 2jS4YFSJkwh0TLx6Sd18RMC7v8N/942AtfkzC3tDICS2GOMy5rPiEO0gKrOc6oSa7
+	 0RhMP4eVBPV2v2ZXQK+DW0n8DOVWTehAiTRXASgaH3vxDfNpLlcFEehm7Q1xE9/Qr
+	 hwe9MPiGycmrqtrmig==
+X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
+Received: from [192.168.178.21] ([94.31.91.95]) by smtp.web.de (mrweb106
+ [213.165.67.124]) with ESMTPSA (Nemesis) id 1M7elj-1sTNHY1lML-00EUla; Fri, 05
+ Jul 2024 19:05:45 +0200
+Message-ID: <8f3765db-842d-4568-9ac5-1bd9cab9e952@web.de>
+Date: Fri, 5 Jul 2024 19:05:39 +0200
 MIME-Version: 1.0
-References: <20240614040133.24967-1-jason-jh.lin@mediatek.com>
- <20240614040133.24967-3-jason-jh.lin@mediatek.com> <CABb+yY2bwj2BcdJLGe1ZYwCrnXL3LtcePMb=wQPaBKorBSs2yA@mail.gmail.com>
- <fc92d51cc6e55301c081ea2d589e1ba6cdd295ee.camel@mediatek.com>
- <CABb+yY1L+YGjf6O9UgPYkS2gWAdo=7QoojSAUNWC_8o7XtZQSg@mail.gmail.com>
- <1f815ff8-2b7a-48de-8b47-0bc9b3cb67ab@collabora.com> <CABb+yY1Yy8o3ofAiC-uV+gDrO3QDTWz3_XTUMai_2uyrnj-VrQ@mail.gmail.com>
- <b7ebc021d391452eaf2149976ea2d53fba3d89fc.camel@mediatek.com>
- <CABb+yY3+pnuXDK_jZMDYOAzahdSZ5iig51VqzM=FFHrFpK+9LA@mail.gmail.com>
- <4e5d4362-4940-4ba0-95aa-627b82e21e41@collabora.com> <CABb+yY3eXvJRUq7MOqB8QZ9N4aiuogaUCTfP7MerKdNbAbLkvw@mail.gmail.com>
- <895af04e45d286c38d01f48b29ad41598b7dadb7.camel@mediatek.com>
- <CABb+yY1EZOsKUR7WUX0Ni0Ukbqz0+yRHswiu07tNXtY1A1gNUQ@mail.gmail.com>
- <d6f0e7072ec0e89e573e5720fb2b9c621eb9154c.camel@mediatek.com>
- <CABb+yY0+fFw7Bg578DFEdrigVFgf4-v3qo2JVruEa3ExtvRsMg@mail.gmail.com>
- <092d917b4cae2762317a8739c874855554ae913f.camel@mediatek.com>
- <CABb+yY2-KWYORo_-ZWafyM0VJnh8-2wefvCpeDsK204qB0TchQ@mail.gmail.com> <3f655bc4e1e60cd5e0dfc9baa018553fa8892826.camel@mediatek.com>
-In-Reply-To: <3f655bc4e1e60cd5e0dfc9baa018553fa8892826.camel@mediatek.com>
-From: Jassi Brar <jassisinghbrar@gmail.com>
-Date: Fri, 5 Jul 2024 11:43:45 -0500
-Message-ID: <CABb+yY2zBY_3nEYajdhRNfwb+bPMpFOvbXrqY+jM9rB6qbjJNQ@mail.gmail.com>
-Subject: Re: [PATCH 2/2] mailbox: mtk-cmdq: Move pm_runimte_get and put to
- mbox_chan_ops API
-To: =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
-	=?UTF-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>, 
-	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>, =?UTF-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>, 
-	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>, 
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, 
-	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla Thunderbird
+To: Boy Wu <boy.wu@mediatek.com>, cgroups@vger.kernel.org,
+ linux-block@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Jens Axboe <axboe@kernel.dk>,
+ Josef Bacik <josef@toxicpanda.com>, Tejun Heo <tj@kernel.org>
+Cc: LKML <linux-kernel@vger.kernel.org>,
+ Angelo Gioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Boris Burkov <boris@bur.io>, =?UTF-8?B?SXZlcmxpbiBXYW5nICjnjovoi7PpnJYp?=
+ <Iverlin.Wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>
+References: <20240705075544.11315-1-boy.wu@mediatek.com>
+Subject: Re: [PATCH] blk-cgroup: add spin_lock for u64_stats_update
+Content-Language: en-GB
+From: Markus Elfring <Markus.Elfring@web.de>
+In-Reply-To: <20240705075544.11315-1-boy.wu@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:Ayo5EbRwEqmDRRhHjbrfG+GdJmG5xslZvjTVpGIYlCSYDs2UzI0
+ 7tLAgu/BT63IofbURgzLmEiBsCmRrwDzc7tjNThfuJ4yKgonQDUpXhAZyX75iNzoeBqB18r
+ z24cVHK/zq5pC7HvnePynvxIwShUhjh7nulYiHE40cvYMBBLJd4TBgYfO4OjLpXojO7db0L
+ JAK+TppIqxNJ5E2OqwiLA==
+UI-OutboundReport: notjunk:1;M01:P0:q8o9wnhjwg8=;fuUncGxrazjlzlVcIbRUWBGnGZV
+ RroQTojOMj6YFd+0bsebNN68Dt2bjb7X/lNW1QETrdDyJlYI3jibXd+EvwRhxvI3hX4kSppgI
+ URytC5GEnf5cPQKEtT5cxJ+Z9Zalz7eqwIJ5YM8g7NIbSm54VFpT9h1T+r0N70cQu07yzfOC/
+ +jzL/dmlOFVXKB5yjJfhJVcwNSsRbRhJF2qdP3qVK703xlLBsLZL+NKgYrsom6fpaeW3Z8Otm
+ ysJ/n0jsF1savRAnCYYmrasdeOLBty8ZjP0rXoVU7H7nBBGX8mkw5qlwgFEd+cINjgeyF90Mi
+ dWak2869vcFk8CTs9eKcmci9tr4OindQoL9wQMnL7ZJARO7ES8gJEApVypfJqeCD61QQD1nbz
+ P8IKTYwRjYTa8kuK+bjEDjal9pp0OAtU8PC5O0+294PHON+Z9N8/yCaE2wWi2xOs/InE8Eclf
+ SUDqby7e11ILnu7rrbmWKZc2FMSAcdO+zW5vS28X6eAgqoAJBtdKvDGRuBaqqV0PMGsCTPvb6
+ l/tAuFVWWUhxpwBwQJ1kXVNNsju+exec+oYkmO8SKzzVfhNdYZQxCbpwaGRTPmSDiETeZ/X5Q
+ fb+M8KiBzpUFSwElStP0ca9CU0lRYZVx2chkSWxE5SdA0LK2y6vJIfqeC4TO510AvlE26gRxG
+ SEO4HKWrt602m/16cjY7HuQHacolS9uMikW4lQSNZP/CjV9OIx03NrkDwErc956jxMMGPnkyz
+ PIdLoScwDf/KFhFXJfCZS+NjdPgXNACWkNS256Izw7ojF42fN53wq3phhjjY2GjVG36y+uvNt
+ 69FIquVHwEABPeex/qoHnhsSpwNZ6yL1FaWF1JqM7mL/I=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240705_094359_793631_2E464694 
-X-CRM114-Status: GOOD (  16.70  )
+X-CRM114-CacheID: sfid-20240705_100557_937908_35EDC2BC 
+X-CRM114-Status: UNSURE (   9.14  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,80 +97,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 5, 2024 at 1:11=E2=80=AFAM Jason-JH Lin (=E6=9E=97=E7=9D=BF=E7=
-=A5=A5)
-<Jason-JH.Lin@mediatek.com> wrote:
->
-> [snip]
->
-> > You may disable one to make it easy to capture.
-> > Make sure your kernel prints have timestamps.
-> > Over your patchset, apply the following diff and execute your
-> > usecase.
-> > Then share
-> >  $ dmesg | grep Jason
-> >
-> > diff --git a/drivers/mailbox/mailbox.c b/drivers/mailbox/mailbox.c
-> > index bafcc7b0c0b8d..90c0620c0ae63 100644
-> > --- a/drivers/mailbox/mailbox.c
-> > +++ b/drivers/mailbox/mailbox.c
-> > @@ -284,6 +284,7 @@ int mbox_send_message(struct mbox_chan *chan,
-> > void *mssg)
-> >  {
-> >   int t;
-> >
-> > + printk("Jason %s: %p\n", __func__, (void *)chan);
-> >   if (!chan || !chan->cl)
-> >   return -EINVAL;
-> >
-> > diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c
-> > b/drivers/mailbox/mtk-cmdq-mailbox.c
-> > index 02cef3eee35a5..6436e1b22f353 100644
-> > --- a/drivers/mailbox/mtk-cmdq-mailbox.c
-> > +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-> > @@ -317,6 +317,7 @@ static int cmdq_runtime_resume(struct device
-> > *dev)
-> >  {
-> >   struct cmdq *cmdq =3D dev_get_drvdata(dev);
-> >
-> > + printk("Jason %s: %p\n", __func__, (void *)dev);
-> >   return clk_bulk_enable(cmdq->pdata->gce_num, cmdq->clocks);
-> >  }
-> >
-> > @@ -324,6 +325,7 @@ static int cmdq_runtime_suspend(struct device
-> > *dev)
-> >  {
-> >   struct cmdq *cmdq =3D dev_get_drvdata(dev);
-> >
-> > + printk("Jason %s: %p\n", __func__, (void *)dev);
-> >   clk_bulk_disable(cmdq->pdata->gce_num, cmdq->clocks);
-> >   return 0;
-> >  }
-> >
-> > Thanks
->
-> It seems CMDQ driver is not suspend over 100ms.
->
-here are the time deltas in milli-seconds
-10 6005 52 85 304 59 27 203 29 24 25 38 33 57 34 20 41 28 36 48 71 35
-21 45 51 22 30 46 46 23 16 16 16 16 16 17 17 31 16 19 31 16 16 17 16
-16 16 32 17 32 17 30 21 16 32 18 30 28 25 29 24 31 27 16 17 19 34 30
-15 33 16 35 35 29 18 31 16 16 16 16 17 33 35 33 39 20 21 14 34 49 22
-42 32 13 21 24 9 130 23 32 35 31 32 16 18 31 36 37 26 14 68 76 111 515
-452 64 484 487 497 501 507 161 336 516 486 495 504 495 504 501 500 495
-507 495 499 505 496 502 501 502 500 495 501 507 499 499 496 506 501
-498 507 490 504 496 501 506 413 28 207 31731 34550 3784 30 23
+> In 32bit SMP systems, if the system is stressed on the sys node
+> by processes, it may cause blkcg_fill_root_iostats to have a concurrent
+> problem on the seqlock in u64_stats_update, which will cause a deadlock
+> on u64_stats_fetch_begin in blkcg_print_one_stat.
 
-For detlas <100 we don't expect suspend because your set
-autosuspend_delay to 100ms.
-For deltas >100 you should have seen suspend. Apparently the changes
-you want in the api still don't help you.
+Would you like to mark any references to functions with parentheses?
 
-Also I see messages are being submitted on 4 channels, but only for
-the  '000000000a4d37b5' channel cmdq_mbox_send_data is ever called.
-Unless you selectively printk only for that channel, your driver has
-some even fundamental problems.  Maybe trace without your patch and
-with pm_runtime_xxx commented out (to avoid stack dump).
 
--jassi
+> To prevent this problem, add spin_locks.
+
+Another wording suggestion:
+  Thus use an additional spin lock.
+
+
+How do you think about to use a summary phrase like =E2=80=9CAdd a spin lo=
+ck for stats update
+in blkcg_fill_root_iostats()=E2=80=9D?
+
+
+=E2=80=A6
+> +++ b/block/blk-cgroup.c
+> @@ -1134,9 +1134,15 @@ static void blkcg_fill_root_iostats(void)
+>  				cpu_dkstats->sectors[STAT_DISCARD] << 9;
+>  		}
+>
+> +#if BITS_PER_LONG =3D=3D 32
+> +		spin_lock_irq(&blkg->q->queue_lock);
+> +#endif
+>  		flags =3D u64_stats_update_begin_irqsave(&blkg->iostat.sync);
+>  		blkg_iostat_set(&blkg->iostat.cur, &tmp);
+>  		u64_stats_update_end_irqrestore(&blkg->iostat.sync, flags);
+> +#if BITS_PER_LONG =3D=3D 32
+> +		spin_unlock_irq(&blkg->q->queue_lock);
+> +#endif
+=E2=80=A6
+
+Under which circumstances would you become interested to apply a statement
+like =E2=80=9Cguard(spinlock_irq)(&blkg->q->queue_lock);=E2=80=9D?
+https://elixir.bootlin.com/linux/v6.10-rc6/source/include/linux/spinlock.h=
+#L567
+
+Regards,
+Markus
 
