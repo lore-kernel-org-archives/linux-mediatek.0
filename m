@@ -4,60 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C0D1C30658
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jul 2024 10:49:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7259C30658
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jul 2024 11:18:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Subject:To:From:Date:Reply-To:Cc:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=VXaN0xofYqhx+dcHDj6YfGtNAcQif1hHD+UJnkTzIOE=; b=J1Xc0PY9VZVUMkiaE33zQSflqo
-	grtw+3/SfzWsX7aJYMTN1aY5NRklbXpFeJ1p8U7L8b9hizyJxqNBw9iSbXP6HT9fgxqCRE0T3al+n
-	k2yoGEsfVFz9lOv/PcH8q+j1KYCnVb18QXXBKP4rRgfJMa3CN5p33+1DKOm4dCUsHzxIx3kh5e0pp
-	3EBhCy8rrN6v7ZpAKEy9bqG0R0Ly6bV9N5Oei/yosr7hJyxZvEvptTQ0Neyj8l0FxsO3kD7YaM3Nq
-	5xLuMMf2Jt2/bahrJMEBu6b/a5/8XSB+PWjEaECUjPTxo+mPU8hQ2R/QarNf7/8YEKAxPudjPNgxg
-	u7490IJg==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OgGdrMJAOOlmaDA5n6UZ/NcHyTcSq/fRMMLBh3RpPPA=; b=BaIL+3kBGNQuuQfmH8QoO5mqkc
+	enFzAZwzwSy2GpcRd5rUK9lqJDyqx7p73ALKoH8SSoxB8Su5wqx5hF8ihk7Iw1KtpvgkEUqGz6nS1
+	h96Lf01jnV/yh2RcMc6HNgoJxNGAWzo8yRCAtfiqNEiyBRlbzRjCAeUIHL6tW7FA77c1TvcECfPmW
+	2wXHAwmuM8JMF7y7/NraI4UFMNd/o0oX1rOsnx8OSbovYhDtKPvCpa0p4GAj53BR8mQFFhdSmRh9j
+	xcJbcZxFJxKoaSyXWUIvWRwntiHWW2wr8iDLQxqYLeFEe/eGQsT412wqKcfuawsIdn8fviCPhWJ8y
+	txNZ17vA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPgVC-0000000Fh0E-0uR0;
-	Fri, 05 Jul 2024 10:49:18 +0000
-Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
+	id 1sPgxX-0000000FlXC-0Qpj;
+	Fri, 05 Jul 2024 11:18:35 +0000
+Received: from mail-lj1-x231.google.com ([2a00:1450:4864:20::231])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPgUx-0000000FgxG-0TtW;
-	Fri, 05 Jul 2024 10:49:04 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.97.1)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1sPgUe-000000004uj-3adT;
-	Fri, 05 Jul 2024 10:48:44 +0000
-Date: Fri, 5 Jul 2024 11:48:40 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Landen Chao <Landen.Chao@mediatek.com>, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH v5] net: dsa: mt7530: fix impossible MDIO address and issue
- warning
-Message-ID: <f485d1d4f7b34cc2ebf3d60030d1c67b4016af3c.1720107535.git.daniel@makrotopia.org>
+	id 1sPgxT-0000000FlTi-0AYS
+	for linux-mediatek@lists.infradead.org;
+	Fri, 05 Jul 2024 11:18:33 +0000
+Received: by mail-lj1-x231.google.com with SMTP id 38308e7fff4ca-2ee910d6aaeso15095611fa.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 05 Jul 2024 04:18:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1720178309; x=1720783109; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=OgGdrMJAOOlmaDA5n6UZ/NcHyTcSq/fRMMLBh3RpPPA=;
+        b=WE4RZ5iog5RJavJG7+crNEyXkR4wGWblrcdJS2pFf1eR7CsYZN/uUhCFPteiCdTK8P
+         W6XLgG+8j+5zuPUOt+mh3QhDxxc3H+2/yIPBEwSsDjLUUos7n/T09zna8o5z5gXA57EC
+         iUyK/qqudAfDcLxewYL/YcyG6dfU/Vng+M4XqoAlxapYQjf89s2ytZkptinVC1fv65ef
+         sVUOGeqiJFg49kS6nmMzuC8TPpIWjUCvZ83ouWV5t/HHCMdJnt3y6qx+fhsvGVIkW6Nw
+         zf/gXWJrzFWrvTPJ/pmViLo41lJ069dBFTYyNC4prY1rGDpuhnQ/WsxhvOQ1NwTWScyR
+         I2lA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1720178309; x=1720783109;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=OgGdrMJAOOlmaDA5n6UZ/NcHyTcSq/fRMMLBh3RpPPA=;
+        b=F0/EuYTW+BtsM5Xlmynm6bSAq5tm+0oE+MvbtOjaaW7WQeusGZkS3n5C/Z43kQKRcL
+         iZTMXdFgRGiHsNRDnYSbbhlTfRkWHAD2YSk4fVCdhiCbW+ah0h93kcaJtnE6zLe/dPa2
+         OqR0azdG3Upt0w3yZSCKUA3RH+XaV+1G+06qmzFY8h0jq8cwtUrtDjRKLLs7LbXq21bo
+         Y12lyWub6Y5RuPU50WXNvFLOu9GkVzu8iZIHfrKsbM8AeTUmQ0wA5rAB0/9AeWCqlL9S
+         1SyG4U0rKyID8wMuIqhqyDXmzkC73i8BeqTe49UMDyf896NYGmJboBwoRltHdxHns7fk
+         zF9Q==
+X-Forwarded-Encrypted: i=1; AJvYcCV0Fz0EXTJo+zJxIaRY9T9blVFhYmhEk181zpOApeluVu5TcfH/RlsJX85DnUvdZXIc7zm4fisa0/Uhk5hcnD5UJGTAqBNxqX3GUi5GEtNGC9FN
+X-Gm-Message-State: AOJu0YyzP/TwToUjwCwImfSVpsGjskkpvBqef12njsJtozzoDmzgeJCI
+	G3MmqU8TicJseoYhitQoB0JVGWhRAdCUrh9f0H0U2F/iqJVfyQmlfBJcKWeBxzg=
+X-Google-Smtp-Source: AGHT+IHyMkgn3/gFNE4gv4OJO59bQCoHWgHlPXJAezaplNmRkJ1y1keb/pz2mmb4jwElkz5448BGKA==
+X-Received: by 2002:a2e:2e06:0:b0:2ee:8815:8b28 with SMTP id 38308e7fff4ca-2ee8edd3ec5mr24871001fa.33.1720178308668;
+        Fri, 05 Jul 2024 04:18:28 -0700 (PDT)
+Received: from ?IPV6:2a05:6e02:1041:c10:c49e:e1a5:3210:b8c0? ([2a05:6e02:1041:c10:c49e:e1a5:3210:b8c0])
+        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-3678fe13ef4sm7369352f8f.117.2024.07.05.04.18.27
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 05 Jul 2024 04:18:28 -0700 (PDT)
+Message-ID: <2aa71d0f-6e4a-4056-9deb-a46526b423a9@linaro.org>
+Date: Fri, 5 Jul 2024 13:18:27 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH RESEND 00/22] dt-bindings: thermal: few cleanups
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Zhang Rui <rui.zhang@intel.com>, Rob Herring <robh@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>,
+ Guillaume La Roque <glaroque@baylibre.com>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
+ Fabio Estevam <festevam@gmail.com>
+Cc: linux-pm@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-amlogic@lists.infradead.org,
+ linux-sunxi@lists.linux.dev, imx@lists.linux.dev,
+ linux-tegra@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+ linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ linux-rpi-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Conor Dooley <conor.dooley@microchip.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>,
+ Vasily Khoruzhick <anarsoul@gmail.com>,
+ Florian Fainelli <florian.fainelli@broadcom.com>,
+ Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
+ Amit Kucheria <amitk@kernel.org>,
+ =?UTF-8?Q?Niklas_S=C3=B6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
+ Heiko Stuebner <heiko@sntech.de>, Biju Das <biju.das.jz@bp.renesas.com>,
+ Baolin Wang <baolin.wang@linux.alibaba.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+References: <20240705-dt-bindings-thermal-allof-v1-0-554061b52fbc@linaro.org>
+Content-Language: en-US
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+In-Reply-To: <20240705-dt-bindings-thermal-allof-v1-0-554061b52fbc@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240705_034903_179416_B3224F39 
-X-CRM114-Status: GOOD (  24.13  )
+X-CRM114-CacheID: sfid-20240705_041831_112969_730D935D 
+X-CRM114-Status: GOOD (  10.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,178 +116,87 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MDIO address of the MT7530 and MT7531 switch ICs can be configured
-using bootstrap pins. However, there are only 4 possible options for the
-switch itself: 7, 15, 23 and 31. As in MediaTek's SDK the address of the
-switch is wrongly stated in the device tree as 0 (while in reality it is
-31), warn the user about such broken device tree and make a good guess
-what was actually intended.
+On 05/07/2024 11:51, Krzysztof Kozlowski wrote:
+> Hi,
+> 
+> Resending (with added tags) because patchset was still not applied.
+> Daniel, can you pick it up?
 
-This is necessary to not break compatibility with existing Device Trees
-wrongly declaring the switch to be present at address 0 or 1, as with
-commit 868ff5f4944a ("net: dsa: mt7530-mdio: read PHY address of switch
-from device tree") the address in device tree will be taken into
-account, while before it was hard-coded in the driver to 0x1f
-independently of the value in Device Tree.
+Yes
 
-Fixes: b8f126a8d543 ("net-next: dsa: add dsa support for Mediatek MT7530 switch")
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-Reviewed-by: Andrew Lunn <andrew@lunn.ch>
-Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-Reviewed-by: Arınç ÜNAL <arinc.unal@arinc9.com>
----
-Changes since v4 [4]:
- - fix indentation
- - bring back parentheses to satisfy GCC
- - print warning before registering new device to avoid confusing
-   order of messages in kernel log
- - improve commit message
+> Few cleanups witout practical impact, except maybe the Amlogic schema
+> (bringing required cells).
+> 
+> Link to v1: https://lore.kernel.org/r/20240614-dt-bindings-thermal-allof-v1-0-30b25a6ae24e@linaro.org
+> 
+> Best regards,
+> Krzysztof
+> 
+> ---
+> Krzysztof Kozlowski (22):
+>        dt-bindings: thermal: samsung,exynos: specify cells
+>        dt-bindings: thermal: amlogic: reference thermal-sensor schema
+>        dt-bindings: thermal: allwinner,sun8i-a83t-ths: reference thermal-sensor schema
+>        dt-bindings: thermal: brcm,avs-ro: reference thermal-sensor schema
+>        dt-bindings: thermal: generic-adc: reference thermal-sensor schema
+>        dt-bindings: thermal: imx8mm: reference thermal-sensor schema
+>        dt-bindings: thermal: nvidia,tegra186-bpmp: reference thermal-sensor schema
+>        dt-bindings: thermal: nvidia,tegra30-tsensor: reference thermal-sensor schema
+>        dt-bindings: thermal: qcom-spmi-adc-tm-hc: reference thermal-sensor schema
+>        dt-bindings: thermal: qcom-spmi-adc-tm5: reference thermal-sensor schema
+>        dt-bindings: thermal: qcom-tsens: reference thermal-sensor schema
+>        dt-bindings: thermal: qoriq: reference thermal-sensor schema
+>        dt-bindings: thermal: rcar-gen3: reference thermal-sensor schema
+>        dt-bindings: thermal: rockchip: reference thermal-sensor schema
+>        dt-bindings: thermal: rzg2l: reference thermal-sensor schema
+>        dt-bindings: thermal: socionext,uniphier: reference thermal-sensor schema
+>        dt-bindings: thermal: sprd: reference thermal-sensor schema
+>        dt-bindings: thermal: st,stm32: reference thermal-sensor schema
+>        dt-bindings: thermal: ti,am654: reference thermal-sensor schema
+>        dt-bindings: thermal: ti,j72xx: reference thermal-sensor schema
+>        dt-bindings: thermal: simplify few bindings
+>        dt-bindings: thermal: cleanup examples indentation
+> 
+>   .../bindings/thermal/allwinner,sun8i-a83t-ths.yaml |  6 +-
+>   .../bindings/thermal/amlogic,thermal.yaml          | 22 ++---
+>   .../bindings/thermal/brcm,avs-ro-thermal.yaml      | 22 ++---
+>   .../devicetree/bindings/thermal/brcm,avs-tmon.yaml | 17 ++--
+>   .../bindings/thermal/brcm,bcm2835-thermal.yaml     |  1 -
+>   .../bindings/thermal/fsl,scu-thermal.yaml          |  1 -
+>   .../bindings/thermal/generic-adc-thermal.yaml      |  5 +-
+>   .../bindings/thermal/imx8mm-thermal.yaml           |  5 +-
+>   .../bindings/thermal/loongson,ls2k-thermal.yaml    |  1 -
+>   .../bindings/thermal/mediatek,lvts-thermal.yaml    |  1 -
+>   .../bindings/thermal/nvidia,tegra124-soctherm.yaml |  1 -
+>   .../thermal/nvidia,tegra186-bpmp-thermal.yaml      | 12 +--
+>   .../bindings/thermal/nvidia,tegra30-tsensor.yaml   |  9 +-
+>   .../bindings/thermal/qcom,spmi-temp-alarm.yaml     |  1 -
+>   .../bindings/thermal/qcom-spmi-adc-tm-hc.yaml      |  8 +-
+>   .../bindings/thermal/qcom-spmi-adc-tm5.yaml        |  8 +-
+>   .../devicetree/bindings/thermal/qcom-tsens.yaml    | 96 ++++++++++------------
+>   .../devicetree/bindings/thermal/qoriq-thermal.yaml |  5 +-
+>   .../bindings/thermal/rcar-gen3-thermal.yaml        | 69 ++++++++--------
+>   .../devicetree/bindings/thermal/rcar-thermal.yaml  | 60 +++++++-------
+>   .../bindings/thermal/rockchip-thermal.yaml         |  5 +-
+>   .../devicetree/bindings/thermal/rzg2l-thermal.yaml | 41 ++++-----
+>   .../bindings/thermal/samsung,exynos-thermal.yaml   |  3 +-
+>   .../thermal/socionext,uniphier-thermal.yaml        |  5 +-
+>   .../devicetree/bindings/thermal/sprd-thermal.yaml  | 47 +++++------
+>   .../bindings/thermal/st,stm32-thermal.yaml         |  5 +-
+>   .../bindings/thermal/ti,am654-thermal.yaml         | 15 ++--
+>   .../bindings/thermal/ti,j72xx-thermal.yaml         |  5 +-
+>   28 files changed, 230 insertions(+), 246 deletions(-)
+> ---
+> base-commit: 0b58e108042b0ed28a71cd7edf5175999955b233
+> change-id: 20240614-dt-bindings-thermal-allof-401c50e61ef2
+> 
+> Best regards,
 
-Changes since v3 [3]:
- - simplify calculation of correct address
-
-Changes since v2 [2]:
- - use macros instead of magic numbers
- - introduce helper functions
- - register new device on MDIO bus instead of messing with the address
-   and schedule delayed_work to unregister the "wrong" device.
-   This is a slightly different approach than suggested by Russell, but
-   imho makes things much easier than keeping the "wrong" device and
-   having to deal with keeping the removal of both devices linked.
- - improve comments
-
-Changes since v1 [1]:
- - use FW_WARN as suggested.
- - fix build on net tree which doesn't have 'mdiodev' as member of the
-   priv struct. Imho including this patch as fix makes sense to warn
-   users about broken firmware, even if the change introducing the
-   actual breakage is only present in net-next for now.
-
-[1]: https://patchwork.kernel.org/project/netdevbpf/patch/e615351aefba25e990215845e4812e6cb8153b28.1714433716.git.daniel@makrotopia.org/
-[2]: https://patchwork.kernel.org/project/netdevbpf/patch/11f5f127d0350e72569c36f9060b6e642dfaddbb.1714514208.git.daniel@makrotopia.org/
-[3]: https://patchwork.kernel.org/project/netdevbpf/patch/7e3fed489c0bbca84a386b1077c61589030ff4ab.1719963228.git.daniel@makrotopia.org/
-[4]: https://patchwork.kernel.org/project/netdevbpf/patch/1c378be54d0fb76117f6d72dadd4a43a9950f0dc.1720105125.git.daniel@makrotopia.org/
-
- drivers/net/dsa/mt7530-mdio.c | 92 +++++++++++++++++++++++++++++++++++
- 1 file changed, 92 insertions(+)
-
-diff --git a/drivers/net/dsa/mt7530-mdio.c b/drivers/net/dsa/mt7530-mdio.c
-index 51df42ccdbe6..c666edec6b9e 100644
---- a/drivers/net/dsa/mt7530-mdio.c
-+++ b/drivers/net/dsa/mt7530-mdio.c
-@@ -11,6 +11,7 @@
- #include <linux/regmap.h>
- #include <linux/reset.h>
- #include <linux/regulator/consumer.h>
-+#include <linux/workqueue.h>
- #include <net/dsa.h>
- 
- #include "mt7530.h"
-@@ -136,6 +137,93 @@ static const struct of_device_id mt7530_of_match[] = {
- };
- MODULE_DEVICE_TABLE(of, mt7530_of_match);
- 
-+static int
-+mt7530_correct_addr(int phy_addr)
-+{
-+	/* The corrected address is calculated as stated below:
-+	 *  0 ~  6, 31 -> 31
-+	 *  7 ~ 14     -> 7
-+	 * 15 ~ 22     -> 15
-+	 * 23 ~ 30     -> 23
-+	 */
-+	return (((phy_addr - MT7530_NUM_PORTS) & ~MT7530_NUM_PORTS) +
-+		MT7530_NUM_PORTS) & (PHY_MAX_ADDR - 1);
-+}
-+
-+static bool
-+mt7530_is_invalid_addr(int phy_addr)
-+{
-+	/* Only MDIO bus addresses 7, 15, 23, and 31 are valid options,
-+	 * which all have the least significant three bits set. Check
-+	 * for this.
-+	 */
-+	return (phy_addr & MT7530_NUM_PORTS) != MT7530_NUM_PORTS;
-+}
-+
-+struct remove_impossible_priv {
-+	struct delayed_work remove_impossible_work;
-+	struct mdio_device *mdiodev;
-+};
-+
-+static void
-+mt7530_remove_impossible(struct work_struct *work)
-+{
-+	struct remove_impossible_priv *priv = container_of(work, struct remove_impossible_priv,
-+							   remove_impossible_work.work);
-+	struct mdio_device *mdiodev = priv->mdiodev;
-+
-+	mdio_device_remove(mdiodev);
-+	mdio_device_free(mdiodev);
-+	kfree(priv);
-+}
-+
-+static int
-+mt7530_reregister(struct mdio_device *mdiodev)
-+{
-+	/* If the address in DT must be wrong, make a good guess about
-+	 * the most likely intention, issue a warning, register a new
-+	 * MDIO device at the correct address and schedule the removal
-+	 * of the device having an impossible address.
-+	 */
-+	struct fwnode_handle *fwnode = dev_fwnode(&mdiodev->dev);
-+	int corrected_addr = mt7530_correct_addr(mdiodev->addr);
-+	struct remove_impossible_priv *rem_priv;
-+	struct mdio_device *new_mdiodev;
-+	int ret;
-+
-+	dev_warn(&mdiodev->dev, FW_WARN
-+		 "impossible switch MDIO address in device tree, assuming %d\n",
-+		 corrected_addr);
-+
-+	rem_priv = kmalloc(sizeof(*rem_priv), GFP_KERNEL);
-+	if (!rem_priv)
-+		return -ENOMEM;
-+
-+	new_mdiodev = mdio_device_create(mdiodev->bus, corrected_addr);
-+	if (IS_ERR(new_mdiodev)) {
-+		ret = PTR_ERR(new_mdiodev);
-+		goto out_free_work;
-+	}
-+	device_set_node(&new_mdiodev->dev, fwnode);
-+
-+	ret = mdio_device_register(new_mdiodev);
-+	if (WARN_ON(ret))
-+		goto out_free_dev;
-+
-+	/* schedule impossible device for removal from mdio bus */
-+	rem_priv->mdiodev = mdiodev;
-+	INIT_DELAYED_WORK(&rem_priv->remove_impossible_work, mt7530_remove_impossible);
-+	schedule_delayed_work(&rem_priv->remove_impossible_work, 0);
-+
-+	return -EFAULT;
-+
-+out_free_dev:
-+	mdio_device_free(new_mdiodev);
-+out_free_work:
-+	kfree(rem_priv);
-+	return ret;
-+}
-+
- static int
- mt7530_probe(struct mdio_device *mdiodev)
- {
-@@ -144,6 +232,10 @@ mt7530_probe(struct mdio_device *mdiodev)
- 	struct device_node *dn;
- 	int ret;
- 
-+	/* Check and if needed correct the MDIO address of the switch */
-+	if (mt7530_is_invalid_addr(mdiodev->addr))
-+		return mt7530_reregister(mdiodev);
-+
- 	dn = mdiodev->dev.of_node;
- 
- 	priv = devm_kzalloc(&mdiodev->dev, sizeof(*priv), GFP_KERNEL);
 -- 
-2.45.2
+<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
+
 
