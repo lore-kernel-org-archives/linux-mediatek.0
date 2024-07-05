@@ -4,83 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33B6EC3271F
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jul 2024 09:12:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B12E5C30658
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jul 2024 09:24:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IEM6r5a/QuKqax601oEClJY5MN53ky+qfYQFe/bb0xw=; b=0VgSGFaTQiYANTfR/vfgRTHXS7
-	qs9ttXUmm1T+SZ+Gcppv1jfCRh9jDUwcQ27QL3b3xUs3u4EIGlkeRdg+RyUvCBQZJD+9HfKcxQskR
-	mRRCyFEKzSs1u4RwXLWM/7ylhzGu2DL6noVs28B4veqUphV63Y1411Sl/UarrTZdiABQYGV3Wu9fD
-	BTLBPYNZ9Xsqsz/X7NfyFMDO1qAGkxPt1tsyFtF5JhUDvsoOo2vaAgWhXlbonQzqVpLodcKwzrtyI
-	7dw24r1B1+ryxnaFiyFN3vnc2eHsNrILHn4Da4oTRiUwa3r5Ay9oAbGofG7KSuT4dlPtIY4XHISQn
-	iK2MvRaQ==;
+	bh=CsnKKfoqyK2A5HU8vBu354UlV5krTU6DfwXD+4cLA2U=; b=HsIV1ya17zOepk97J1/pS9+2aS
+	oUNHjgzo+JZDx0v9QnwFKGouaUIg0x6LIMpClnM8bf92HzFwpbY/K+uvVZHQ0awosp9RcUWsDT+Dl
+	m4PaDLQ2PD/KedDjMpGz3V+9eu7+IlA9wQRBO3+MftaFBgOxn+7JzScCGZktICcJy20Fmt1GZmy/s
+	LM8mATQc/yaud3vBAHlFgOr1ZTPmGC87ugkGnFhCj6LEbkSFH7pC/FGd5zVWtCBX9oEJY4CFjHwk0
+	zTjxdkk8n+vSU7ZktbYEN5Yu5m3+sjfR/uGccJQZNuU04ZBK66qu6DkktPjcoCrnC8JX6DV98wBR6
+	0YqGXSIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPez2-0000000FPXj-19lc;
-	Fri, 05 Jul 2024 09:12:00 +0000
-Received: from mgamail.intel.com ([192.198.163.13])
+	id 1sPfBY-0000000FR92-1GUL;
+	Fri, 05 Jul 2024 09:24:56 +0000
+Received: from esa.microchip.iphmx.com ([68.232.153.233])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPeyz-0000000FPWP-30gu
-	for linux-mediatek@lists.infradead.org;
-	Fri, 05 Jul 2024 09:11:59 +0000
+	id 1sPfBV-0000000FR8W-0UqV;
+	Fri, 05 Jul 2024 09:24:55 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1720170717; x=1751706717;
+  d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
+  t=1720171493; x=1751707493;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=CnlF5E4a5lr4vVeUZDKo/2jjL1AfhYBBcKFIy4jthv8=;
-  b=d6hSEYPVMyGYVo3jJ3Ra1ARqQzYRNZz02Re2vYCXcMLsExiaRtqk7+my
-   9y1Ts6oM0cZt1iJwkyCmwVRxsm1+ACwvb5HNRCojOKO6sijUD5eiVdlH2
-   p5rz3mtENk3dlcz2uR5JKdIZgRtxmc22AVoXjl5MJoDJpN8JH9F1q8K8s
-   jWoUm2trvZ9vMcZtYoWUt+4/xsXlcJsIVsDUc9UbfDloQuF1aGIxZgVC/
-   3yTLFaskLuSFTTryxWVVlIM5v89s18pP5OYmyqTGSTzEzwNpm0P3pg4i6
-   Iw/xPLKhcQ9KgOlsKKcJHQ0VeqxN1p+YnkbBSvRAFvxEVuG6egOO/mzAj
-   A==;
-X-CSE-ConnectionGUID: rWHCCNcWTxGwwTOK6RCgYw==
-X-CSE-MsgGUID: 3LWYitK9RQWPAvaC1lU+9g==
-X-IronPort-AV: E=McAfee;i="6700,10204,11123"; a="20362107"
+  bh=IpzYlcLyGZggZz37P8C2WpNn+1o1JR+g5xfz2xJPw88=;
+  b=YRpYZfYYA7h6UymUch26jwIOATaozbzGjAF+cd5NtsOhN7iqIZmSGtTE
+   UDQw393qselBbhO/cYkFuz8vUzUO4qhBO+cmhKO5k8sPBtbsOZ6tzXkbF
+   nEZfkQPo6SyXtZOraSQjksgqBtKCqADKRC6atvbnZ4fg2bnwsiayCAeqx
+   xXNs8/0mHrN5+JgUvroKKH6TuThLl43Nm6DnhF39rqSnRwHuqyxZzjvB9
+   JK785wzAp5lxtcJs8BPnU0XaJzA/efOjt+l/KUZN2nqnSut6lPivmdNmL
+   G7+pymZZZ2ZHYhb0MxJVNkkGjZq8hn2ppii6Nqxf4bqjZ25k1j2UM6Ied
+   Q==;
+X-CSE-ConnectionGUID: Yn65gHikT7axoCy5KcB3PQ==
+X-CSE-MsgGUID: 4/jZXMxxQ8uDQgruNOjggA==
 X-IronPort-AV: E=Sophos;i="6.09,184,1716274800"; 
-   d="scan'208";a="20362107"
-Received: from orviesa009.jf.intel.com ([10.64.159.149])
-  by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 05 Jul 2024 02:11:55 -0700
-X-CSE-ConnectionGUID: MUT4jryPTyesu5F/VdEC4A==
-X-CSE-MsgGUID: JQ705aqCRrSj5eeLcxr05g==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,184,1716274800"; 
-   d="scan'208";a="46937506"
-Received: from lkp-server01.sh.intel.com (HELO 68891e0c336b) ([10.239.97.150])
-  by orviesa009.jf.intel.com with ESMTP; 05 Jul 2024 02:11:52 -0700
-Received: from kbuild by 68891e0c336b with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1sPeyr-000SAm-1J;
-	Fri, 05 Jul 2024 09:11:49 +0000
-Date: Fri, 5 Jul 2024 17:11:11 +0800
-From: kernel test robot <lkp@intel.com>
-To: Chris Lu <chris.lu@mediatek.com>, Marcel Holtmann <marcel@holtmann.org>,
-	Johan Hedberg <johan.hedberg@gmail.com>,
-	Luiz Von Dentz <luiz.dentz@gmail.com>
-Cc: oe-kbuild-all@lists.linux.dev, Sean Wang <sean.wang@mediatek.com>,
-	Aaron Hou <aaron.hou@mediatek.com>,
-	Steve Lee <steve.lee@mediatek.com>,
-	linux-bluetooth <linux-bluetooth@vger.kernel.org>,
-	linux-kernel <linux-kernel@vger.kernel.org>,
-	linux-mediatek <linux-mediatek@lists.infradead.org>,
-	Chris Lu <chris.lu@mediatek.com>
-Subject: Re: [PATCH v7 8/8] Bluetooth: btusb: mediatek: add ISO data
- transmission functions
-Message-ID: <202407051652.C743BIjp-lkp@intel.com>
-References: <20240704060116.16600-9-chris.lu@mediatek.com>
+   d="asc'?scan'208";a="31512592"
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
+Received: from unknown (HELO email.microchip.com) ([170.129.1.10])
+  by esa1.microchip.iphmx.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256; 05 Jul 2024 02:24:48 -0700
+Received: from chn-vm-ex01.mchp-main.com (10.10.85.143) by
+ chn-vm-ex02.mchp-main.com (10.10.85.144) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35; Fri, 5 Jul 2024 02:24:15 -0700
+Received: from wendy (10.10.85.11) by chn-vm-ex01.mchp-main.com (10.10.85.143)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.35 via Frontend
+ Transport; Fri, 5 Jul 2024 02:24:13 -0700
+Date: Fri, 5 Jul 2024 10:23:52 +0100
+From: Conor Dooley <conor.dooley@microchip.com>
+To: Julien Stephan <jstephan@baylibre.com>
+CC: Conor Dooley <conor@kernel.org>, Laurent Pinchart
+	<laurent.pinchart@ideasonboard.com>, Andy Hsieh <andy.hsieh@mediatek.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, <linux-media@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	Louis Kuo <louis.kuo@mediatek.com>, Phi-Bang Nguyen <pnguyen@baylibre.com>
+Subject: Re: [PATCH v5 1/5] dt-bindings: media: add mediatek ISP3.0 sensor
+ interface
+Message-ID: <20240705-riding-overtime-642faba3dbbf@wendy>
+References: <20240704-add-mtk-isp-3-0-support-v5-0-bfccccc5ec21@baylibre.com>
+ <20240704-add-mtk-isp-3-0-support-v5-1-bfccccc5ec21@baylibre.com>
+ <20240704-catcall-stubbly-9258b056e42e@spud>
+ <CAEHHSvb6Y8g_KCmu0bK__EP2TyPhf8i-ctMNfOGdyMUUGoKQVw@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="PEGn/ECUutpW8XYs"
 Content-Disposition: inline
-In-Reply-To: <20240704060116.16600-9-chris.lu@mediatek.com>
+In-Reply-To: <CAEHHSvb6Y8g_KCmu0bK__EP2TyPhf8i-ctMNfOGdyMUUGoKQVw@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240705_021157_792731_DD224B13 
-X-CRM114-Status: GOOD (  10.14  )
+X-CRM114-CacheID: sfid-20240705_022453_262171_4AF44CC1 
+X-CRM114-Status: GOOD (  30.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,76 +96,108 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Chris,
+--PEGn/ECUutpW8XYs
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-kernel test robot noticed the following build errors:
+On Fri, Jul 05, 2024 at 09:50:59AM +0200, Julien Stephan wrote:
+> Le jeu. 4 juil. 2024 =E0 18:27, Conor Dooley <conor@kernel.org> a =E9crit=
+ :
+> >
+> > On Thu, Jul 04, 2024 at 03:36:40PM +0200, Julien Stephan wrote:
+> > > From: Louis Kuo <louis.kuo@mediatek.com>
+> > >
+> > > This adds the bindings, for the mediatek ISP3.0 SENINF module embedde=
+d in
+> > > some Mediatek SoC, such as the mt8365
+> > >
+> > > Signed-off-by: Louis Kuo <louis.kuo@mediatek.com>
+> > > Signed-off-by: Phi-Bang Nguyen <pnguyen@baylibre.com>
+> > > Link: https://lore.kernel.org/r/20230807094940.329165-2-jstephan@bayl=
+ibre.com
+> > > Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> > > Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> > > Signed-off-by: Julien Stephan <jstephan@baylibre.com>
+> >
+> > I'm really confused by the link tag here. At first glance this looked
+> > like you were sending out something that had been applied by Laurent,
+> > given the Link, Rb and SoB from him. Why does he have a SoB on this
+> > patch? What did Phi-Bang Nguyen do with this patch, and should they have
+> > a Co-developed-by tag?
+>=20
+> I was not using b4 for the previous revisions of this series, so maybe
+> I messed something up here :(
 
-[auto build test ERROR on bluetooth-next/master]
-[also build test ERROR on next-20240703]
-[cannot apply to bluetooth/master linus/master v6.10-rc6]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+b4 am has an option to add a link to a patch you apply from the mailing
+list (-l, --add-link) but you should not be using that as a contributor.
+In this case, that link provides no value and is just confusing.
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Chris-Lu/Bluetooth-btusb-mediatek-remove-the-unnecessary-goto-tag/20240705-043833
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/bluetooth/bluetooth-next.git master
-patch link:    https://lore.kernel.org/r/20240704060116.16600-9-chris.lu%40mediatek.com
-patch subject: [PATCH v7 8/8] Bluetooth: btusb: mediatek: add ISO data transmission functions
-config: i386-buildonly-randconfig-001-20240705 (https://download.01.org/0day-ci/archive/20240705/202407051652.C743BIjp-lkp@intel.com/config)
-compiler: gcc-13 (Ubuntu 13.2.0-4ubuntu3) 13.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240705/202407051652.C743BIjp-lkp@intel.com/reproduce)
+> About Phi-Bang, this series has been in our internal tree for a long
+> time, and Phi-Bang has his SoB on it, so I kept it.
+>=20
+> About Laurent's tags, they were already on v4. But maybe it was an
+> error ? Should I remove them?
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202407051652.C743BIjp-lkp@intel.com/
+They were also on v1. Did Laurent write part of these bindings, and
+should he have a Co-developed-by?
 
-All errors (new ones prefixed by >>):
+> > > +additionalProperties: false
+> > > +
+> > > +if:
+> > > +  properties:
+> > > +    compatible:
+> > > +      contains:
+> > > +        const: mediatek,mt8365-seninf
+> >
+> > The binding supports only a single compatible, why is this complexity
+> > required? I don't see other devices being added in this series.
+>=20
+> Right. The idea is that the number of PHYs depends on the SoC. In the
+> previous revision of the series,
+> the number of PHYs was not fixed, and Krzysztof asked me to fix it by
+> SoC. So I wanted to make it clear
+> that the number of PHYs depends on SoC but maybe I don't need that
+> complexity for that?
+>=20
+> Is something like the following enough? And if complexity is added
+> later if some other SoC are added?
 
-   ld: drivers/bluetooth/btmtk.o: in function `btmtk_usb_recv_acl':
-   btmtk.c:(.text+0x749): undefined reference to `usb_disable_autosuspend'
-   ld: drivers/bluetooth/btmtk.o: in function `btmtk_usb_submit_wmt_recv_urb':
-   btmtk.c:(.text+0x789): undefined reference to `usb_alloc_urb'
-   ld: btmtk.c:(.text+0x81d): undefined reference to `usb_anchor_urb'
-   ld: btmtk.c:(.text+0x829): undefined reference to `usb_submit_urb'
-   ld: btmtk.c:(.text+0x836): undefined reference to `usb_free_urb'
-   ld: btmtk.c:(.text+0x880): undefined reference to `usb_unanchor_urb'
-   ld: btmtk.c:(.text+0x889): undefined reference to `usb_free_urb'
-   ld: btmtk.c:(.text+0x89e): undefined reference to `usb_free_urb'
-   ld: drivers/bluetooth/btmtk.o: in function `btmtk_submit_intr_urb':
-   btmtk.c:(.text+0x8db): undefined reference to `usb_alloc_urb'
-   ld: btmtk.c:(.text+0x991): undefined reference to `usb_anchor_urb'
-   ld: btmtk.c:(.text+0x99a): undefined reference to `usb_submit_urb'
-   ld: btmtk.c:(.text+0x9a7): undefined reference to `usb_free_urb'
-   ld: btmtk.c:(.text+0xa18): undefined reference to `usb_unanchor_urb'
-   ld: btmtk.c:(.text+0xa28): undefined reference to `usb_free_urb'
-   ld: drivers/bluetooth/btmtk.o: in function `btmtk_usb_suspend':
-   btmtk.c:(.text+0xa92): undefined reference to `usb_kill_anchored_urbs'
-   ld: drivers/bluetooth/btmtk.o: in function `btmtk_usb_hci_wmt_sync':
-   btmtk.c:(.text+0xb15): undefined reference to `usb_autopm_get_interface'
-   ld: btmtk.c:(.text+0xb51): undefined reference to `usb_autopm_put_interface'
-   ld: btmtk.c:(.text+0xc0f): undefined reference to `usb_autopm_put_interface'
-   ld: drivers/bluetooth/btmtk.o: in function `btmtk_usb_isointf_init.constprop.0':
-   btmtk.c:(.text+0xefc): undefined reference to `usb_set_interface'
->> ld: btmtk.c:(.text+0x1063): undefined reference to `usb_kill_anchored_urbs'
-   ld: drivers/bluetooth/btmtk.o: in function `alloc_mtk_intr_urb':
-   btmtk.c:(.text+0x113c): undefined reference to `usb_alloc_urb'
-   ld: drivers/bluetooth/btmtk.o: in function `btmtk_usb_wmt_recv':
-   btmtk.c:(.text+0x12bb): undefined reference to `usb_anchor_urb'
-   ld: btmtk.c:(.text+0x12c7): undefined reference to `usb_submit_urb'
-   ld: btmtk.c:(.text+0x13e6): undefined reference to `usb_unanchor_urb'
-   ld: drivers/bluetooth/btmtk.o: in function `btmtk_usb_reg_read':
-   btmtk.c:(.text+0x14cb): undefined reference to `usb_control_msg'
-   ld: drivers/bluetooth/btmtk.o: in function `btmtk_usb_uhw_reg_write':
-   btmtk.c:(.text+0x1559): undefined reference to `usb_control_msg'
-   ld: drivers/bluetooth/btmtk.o: in function `btmtk_usb_uhw_reg_read':
-   btmtk.c:(.text+0x1609): undefined reference to `usb_control_msg'
-   ld: drivers/bluetooth/btmtk.o: in function `btmtk_intr_complete':
-   btmtk.c:(.text+0x170f): undefined reference to `usb_anchor_urb'
-   ld: btmtk.c:(.text+0x171b): undefined reference to `usb_submit_urb'
-   ld: btmtk.c:(.text+0x1779): undefined reference to `usb_unanchor_urb'
+Yes, that looks reasonable to me. Adding conditional stuff can be done
+iff another soc re-uses the binding.
 
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Thanks,
+Conor.
+
+>     phys:
+>       minItems: 2
+>       maxItems: 2
+>       description:
+>         phandle to the PHYs connected to CSI0/A, CSI1, CSI0B
+>=20
+>     phy-names:
+>       description:
+>         list of PHYs names
+>       minItems: 2
+>       maxItems: 2
+>       items:
+>         type: string
+>         enum:
+>           - csi0
+>           - csi1
+>           - csi0b
+>       uniqueItems: true
+
+--PEGn/ECUutpW8XYs
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZoe7qAAKCRB4tDGHoIJi
+0odFAQCqSuKOC6xxTTtCAhTTnqB1QzwpVY7IpRWZIyMf2ypITQEAhhOyvYTb2vfL
+J5TietI11/9desdP1qsxIOxlj8iUcwU=
+=Oeen
+-----END PGP SIGNATURE-----
+
+--PEGn/ECUutpW8XYs--
 
