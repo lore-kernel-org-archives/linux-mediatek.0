@@ -4,204 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB464C30658
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jul 2024 12:56:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AFCDC30658
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Jul 2024 13:03:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mJw9OhB/9ue+T6SdZAJSNJtoWA2Ac1figmekbxyX+wA=; b=zQ5TyjGxVQsNrmJnZHKYT6jo6h
-	tWKnQscjjC1/y6XtmXiP09AprQTf2rY706vfq5R14q37FAb7D9Mawx7tY/bajeidvEITO4OFBO0sL
-	vjgBMXvWouzIieimuG5Z+B5b/QVNhyLJ+zNmt6MptL+a4eFTVl8Y1Epp2XF4gJ3f+J0T/t6yXQUB/
-	RwThyL7VsRcMb7ts2cmss5Rr08InqDwwjBX2slSpx8cETmN7WIAI9OjmN2zJD+QwfDJPlv2bRA44j
-	1ERLvCONLIwsXkiaBIO0rqzkjThvQVlJxKtCqjKI1CemKxTogn6xGV7JlL/JwYSJdO5yywUsCw9nU
-	BcZvnOdw==;
+	bh=Dl50F8cARpJGlDLC5w8Vmb8KlD52QTaguOuYvFUSd1c=; b=y94i3sWuSg86bRKSmRk65nE6so
+	Q1w+08ic2/+Eo+0aF+kuIVIXQbu/ElCxCpJnPEkwilPC83FoKh3/2xKp2x3aVaXP9gJTmuRSAdFJr
+	YgbeC3M35QmdZqvBdaBIS8o/jr6KBjW5Y9zX0L9mS/OKSVONsHtEhCb3+n3KsD0y+Xui8qb6iVeEk
+	PvEyN8JBy3xnDWf5SfVlFi9HPUiXMXp7QqbpBe5NNwUV3W293wgAV1SAeym12NdqLOlgdngwbBx7Y
+	4FUrSP9OM0LeGaPFPINIiIXYg1zSjUGfw4Rc+kQ8GmC3Fg+bFWqN3jn8ZjiAmqqnc8SH/CYbw0beD
+	gyfyCf1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPiTw-0000000FyLF-2o9U;
-	Fri, 05 Jul 2024 12:56:08 +0000
-Received: from mgamail.intel.com ([198.175.65.13])
+	id 1sPibK-0000000FzIa-45Rc;
+	Fri, 05 Jul 2024 13:03:46 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPiTg-0000000FyFG-3cuH;
-	Fri, 05 Jul 2024 12:55:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1720184153; x=1751720153;
-  h=message-id:date:subject:to:cc:references:from:
-   in-reply-to:content-transfer-encoding:mime-version;
-  bh=pVtAovohtVT6IQH3XBj9n4ApNLMf2WNs8qNfLr4TQvk=;
-  b=nzhjIw+ZI/gE6hW928yAzDgmzxdCnKfTI9ENgBP8sgk6cz/GIda36CfD
-   E6V6e4iYTuDNfuLWS/BWvsOZxxo4ZmCw1QQlYpW7itipO9z36ycs0pr/7
-   QEeSYpZo7xorftfD12/4WdTA/UW+rePb7jRqY6Q9OmZKF4Els5Ur42XmW
-   586hWvchnxnxcG0JJmDwDaSwPPGhXra0wzv4f/cjX61nS+QpB6z73m/4N
-   u/K5cuWfgo7q3s0UCdo5OUNCck8vK1Iq2qqdWvm4D/B9O4CE1rmCXT0++
-   fmgKKw6wchDKXUO26lBvxVFhuoVMMUT3SBlhG7O/ILCVFikNf2y86R97y
-   A==;
-X-CSE-ConnectionGUID: nbxIaO9GTpOtUaC9l7Y6ow==
-X-CSE-MsgGUID: k8GXC142Sl2RlKdTRW15YA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11123"; a="28630842"
-X-IronPort-AV: E=Sophos;i="6.09,184,1716274800"; 
-   d="scan'208";a="28630842"
-Received: from orviesa003.jf.intel.com ([10.64.159.143])
-  by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 05 Jul 2024 05:55:51 -0700
-X-CSE-ConnectionGUID: 3LAM6rAPS9yqgXzYQgqg5g==
-X-CSE-MsgGUID: sncYOCVuTWi8GsCDYkz1eQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,184,1716274800"; 
-   d="scan'208";a="51722880"
-Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
-  by orviesa003.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384; 05 Jul 2024 05:55:50 -0700
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39; Fri, 5 Jul 2024 05:55:49 -0700
-Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
- orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39 via Frontend Transport; Fri, 5 Jul 2024 05:55:49 -0700
-Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.168)
- by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Fri, 5 Jul 2024 05:55:49 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Ytggp1lfs3EfwgNT9Zt57L28maYuw0aJnuVmwmMU+SI24n4kOfrqUEQGswrKeVrKlL5Qe0JwaiVebQ+JN381KFw3j9N46mp6oisL4epxOXN6E32VqNNmgZMO/+fwi6IS+BdfO5kTKrzUNZXgHlYucVMO82QaEwb9k+NTHaD6WwQ4Xw3dgPYxd30TWlDSLhjwVqCBhtJ8t3YwahgYcjvMuh36/AxISrdYhpGbYF5N4vNMiSVMi+Ai7Lii7RRitsX2Uai6Q43Ip8lalpNhO/rZq/Vi2t6S7fJR3CCkTOWpP9i4FY4BYoxRWRHbXObXPD3cvsQWxFWCyHuKEpHCPc041w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=mJw9OhB/9ue+T6SdZAJSNJtoWA2Ac1figmekbxyX+wA=;
- b=FhkgQQE3ue1AuRH/d7GbT0fJ/sb9qubEyL/ey4LR7I25HpicAb2MTLylSaEt+AylukDT4COByp7S/mpqPwPcmjwbLiYKUh/8l6vXVaDcPr6Uaf+0u0nBe9eLClAdWU133DdkcS+Lg08UFR1iPo675pZ9Xgwj6EiHbYnId13mz6ma5wyO/dppwSOpZ62TDDcT9+UKdNmt5pOJggEMZuLK3TgIW3ZDD03IC2VNbwldRZd7E9B+XtvynSvMP57Glirqau/opv0ISL854HPKQIZed+DwUwHHIWJJrlY4gwMMhe1FA7aIFw/qlaMcdZZ9WdR6OtRd+sjXmVr2t3Mcb5H4iw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Received: from MN6PR11MB8102.namprd11.prod.outlook.com (2603:10b6:208:46d::9)
- by SJ0PR11MB5214.namprd11.prod.outlook.com (2603:10b6:a03:2df::22) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7719.33; Fri, 5 Jul
- 2024 12:55:42 +0000
-Received: from MN6PR11MB8102.namprd11.prod.outlook.com
- ([fe80::15b2:ee05:2ae7:cfd6]) by MN6PR11MB8102.namprd11.prod.outlook.com
- ([fe80::15b2:ee05:2ae7:cfd6%7]) with mapi id 15.20.7741.017; Fri, 5 Jul 2024
- 12:55:42 +0000
-Message-ID: <2e441889-cb53-4004-aeed-1268d20b54b7@intel.com>
-Date: Fri, 5 Jul 2024 14:55:35 +0200
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next] net: ethernet: mediatek: Allow gaps in MAC
- allocation
-To: Daniel Golle <daniel@makrotopia.org>, Elad Yifee <eladwf@gmail.com>
-CC: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>, Mark Lee
-	<Mark-MC.Lee@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>, "David S.
- Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, "Jakub
- Kicinski" <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Matthias
- Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, <netdev@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>
-References: <379ae584cea112db60f4ada79c7e5ba4f3364a64.1719862038.git.daniel@makrotopia.org>
- <3bda121b-f11d-44d1-a761-15195f8a418c@intel.com>
- <C24C4687-1C00-434D-8C37-BDB85E39456C@makrotopia.org>
- <ZofX4qfGf93Q8jys@makrotopia.org>
-From: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Content-Language: en-US
-In-Reply-To: <ZofX4qfGf93Q8jys@makrotopia.org>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ClientProxiedBy: VI1PR0102CA0064.eurprd01.prod.exchangelabs.com
- (2603:10a6:803::41) To MN6PR11MB8102.namprd11.prod.outlook.com
- (2603:10b6:208:46d::9)
+	id 1sPib7-0000000FzFo-0DPW;
+	Fri, 05 Jul 2024 13:03:34 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.97.1)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1sPiaw-000000005ZP-0yGd;
+	Fri, 05 Jul 2024 13:03:22 +0000
+Date: Fri, 5 Jul 2024 14:03:18 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Landen Chao <Landen.Chao@mediatek.com>, netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v5] net: dsa: mt7530: fix impossible MDIO address and
+ issue warning
+Message-ID: <ZofvFnncBYgqobHF@makrotopia.org>
+References: <f485d1d4f7b34cc2ebf3d60030d1c67b4016af3c.1720107535.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: MN6PR11MB8102:EE_|SJ0PR11MB5214:EE_
-X-MS-Office365-Filtering-Correlation-Id: 2233f32c-2e04-49ed-fbd6-08dc9cf1c73d
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|1800799024|366016;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?WXpVQ2drWllHUnJpL2UrRU1zR3JLV0dQcW14d1o3VG45Ly9LcEtRNWFPVFMw?=
- =?utf-8?B?TU1uc3V0N2pIcGJGOVVpNHhzWVh4OU9TS3ZXYzNPZ3VhVXc2aEh1S3BtOFlm?=
- =?utf-8?B?U0ErWHBWZmU4SXk1SDcxYWlCT0RVYmtUb3Z1U2FEZyt5ZzMrQURjMGtnTDJy?=
- =?utf-8?B?VGFFVXpLSDdwaUFucmc2UTBvd1gvU01tYnB5V3dTYVQxd1paeGdZbkE4TjE2?=
- =?utf-8?B?ZmFhOVdrdlI4aHp6ZmZ6QWlxZTQ2ZG1VeVB3bHdaQ2xtbUhFb1Awb0RTQStQ?=
- =?utf-8?B?K3hRUXN6NmtLMVNPR1Z1L2NENDQ0c29rckhlZVdqam1BbEhYaHdKQ1R5VXRl?=
- =?utf-8?B?anZYMUd4eExlTEYvUUhMRFlyR2c4azE0WFFDUHFRTEtKUjNBQ2E1Z2Y3S1dI?=
- =?utf-8?B?WHRtQlZYR2JyR0F5aStZVlF4Ry9zSEpaYVU2OWpmeU9UcmQ3a29COG9Qa21T?=
- =?utf-8?B?ZWRlaGNPU24xSThlU1Nsa1p3MW1qQURsVTkxeEZVOGRsYlp1ekhkTW9aUWxQ?=
- =?utf-8?B?NWRzcU9lMmdTOTlEby9BRzM3bEgxa1Jsa1MrOGRGdmRqYmI0ZGpINzlvTVFx?=
- =?utf-8?B?Y2xveWRLc05Gd3hmK1NLQXVGL1VrMnZlZ1NjN3lSUVF6MEdSVS9vUGRLOE91?=
- =?utf-8?B?Nk5xSzV6SFJuS3R0bDZqT2FWMjh2M2pFNjZ5dk53RURDTTFxbGEzOGZQS3Fh?=
- =?utf-8?B?elRRZUhkR3M2WUFEL3NvNmVELytva3B6MHloMGp6WWJObXJOZG90OGR6c3dS?=
- =?utf-8?B?aFoxYklLTkdLTE5KcUlqQ1c1akRFUHlLODVKZVdEd0p0dWlvSWZoOFNtMEY2?=
- =?utf-8?B?WTdvQmRZV1Z2TXhZcU9xcUI4cElqVEZsUHAzeEliZllDL3VaZmZCR3hMZ0hT?=
- =?utf-8?B?LzVMaTRoSHIzMzUyL1N1WDJZMEVSZVRaUGlQM0NrQ2RwWmlIUUlibmg3K2tK?=
- =?utf-8?B?bkp0TCs4eEJxbm11TVJtdDdXQnNQL1Z0bktrR1NUOU9neFNKQmw1Qlk5VVBi?=
- =?utf-8?B?RWZaQ2xlTFdNdWhpSi9kRGxiWHNEaFhzQ1pSbVEwNFdCS0xUTUZWZWJ6R1RU?=
- =?utf-8?B?VVhnOUZ4djRNbzF1NHJ4VnJFa1U0NVk2aUhhQ3h2WGt4ZmxrOWJaRWdMS1RM?=
- =?utf-8?B?VGczY1pVTXc1di91aWdjNFU5V21xM2ROeUhKU3B1T0x5WGRmT0JyK2UvT0NR?=
- =?utf-8?B?SXNGdE92YTVLUEY1eVNLWVRlWkp4aWVmc1F3bFdaMW9oYllCLzJOd2QvOXR2?=
- =?utf-8?B?em9NZmw1Wjc1Sng1Sm9LVkl1Q2dlSFpReGJIL3hmRmhSendHZ3hMOC94RE5P?=
- =?utf-8?B?RnZJbHQ1cUI4M2VaMVg0V2lwanhHQkpudFI4WXlWT2dpTlFLcUhjc0NYOUZr?=
- =?utf-8?B?QmVUSk1LVHhncStyYW9xTWhZZEZ5akpRUGszdDBIem1lTGxjczUrZGVONVcw?=
- =?utf-8?B?d2hOYkFxU0VvdlJEbjBkbStoaXMyUWpNVFlxUzNmT1VNcDh1aDhMaDZQejU2?=
- =?utf-8?B?ckErQldVdUxEdURCaWJ1aGtXMjM0N0E5Tzg0SEQwTzFEbHluZnQ1TWlJVzVQ?=
- =?utf-8?B?bUQ2SlNaUGlaUkVITjlLUFN6UUQ2NkZBRlJxem9wZENhUlBHelMyYVJ3MnRO?=
- =?utf-8?B?MVloSEgweEdUNXg1R2VJVCt6clhxQm44cUd4YXJyeWNtWFVKZ25nUENBdGx3?=
- =?utf-8?B?OXVwNjBSNmNQTHpMNkFXYmFvZ1dmL2wySXZYVC9mSFBkZU9iOGt1L01GTWhR?=
- =?utf-8?Q?AlDz+Ov3Q7EFTJW6mQVtSXpsWn4FvWl6cMyQHrl?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MN6PR11MB8102.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(7416014)(1800799024)(366016);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?cGR5ellJd09XcFhSTlhBS2VpTGk1TXA2TWgwY2hIMGlCQ1hFZ2JIYURvanp3?=
- =?utf-8?B?RlgyTm9RVXY2RGNsanJEK2NaZ3ByU1h1ZVVoME0xUmUwMXZ1NlBBam5TbFVk?=
- =?utf-8?B?VHoybnFmeW5PeEVrdEdyVkFZek1vRDZrd0tLTStkK2JuTlRYYndMaE5XRHM3?=
- =?utf-8?B?NDhLVXFUVWk2V1Rhb21NM0Nnb0FtVG4vMzBFSVBUdnV1eHcwNjQ5dDNkaXlW?=
- =?utf-8?B?SjQycENEYTREODhSeE45M2RwQmxkSm55Skh2R3ZUMWdLa3pUMy9JblIvbVpI?=
- =?utf-8?B?UURPQXRiK0plcWNqSWtKMlE3dktGb3c5bVc4aHV1Ri9hckF4MnJieTNMV2Zo?=
- =?utf-8?B?M0gvSXZJTWg3ZE04d2c0MWtzcnhzYURwNmdLWkJoWHE4Sm16eHk4U2hsRUxQ?=
- =?utf-8?B?OFB0Wlc5cmhnamVvTGxUKy90WnMzb2FmWE1mQnU0NldReW5Cb2ZDaFBQQ1Bj?=
- =?utf-8?B?SzBmc21vVW5FRkoycytVb3dMTkFjcnRPeG9SUFpzb2dkeStyK1NGVGNlUTk0?=
- =?utf-8?B?Q0RWTzBpRFlkLzFPdmVvNnAvUTFWamhIMmYweGVmYWJlNFNRQlp2Uk9OekYy?=
- =?utf-8?B?dEVCUldCR25zRVdvOWszbnE0LzBnSmNhL21RV2ZFRUwrQ2diblVGOGNlbzVL?=
- =?utf-8?B?VFI1M0RweU9XUjJDZkd6dENZREloVVVlVWlqbEwvYlY3SDhzQ0N5Q2lneTE4?=
- =?utf-8?B?T2IzU0JxOUw1RE1pOCtTZ3JqbmNzcDZvRGdGYTc5dW9vdndnWUhYcHhnZ2dy?=
- =?utf-8?B?eHMyNURjTHp5NmNHajNvNjFueHpCSUttN2JsMzRSZ3VSejh4NTgxQ2ZLTktD?=
- =?utf-8?B?dWZML0R4UHR4bERQM0NBS1N0dFdRK1BVWHFKVWxaNStzb210dzV5Wnp6cDgr?=
- =?utf-8?B?dEljN3dvV0VPZGRzUXFaYmFFYUpCcnB0cEhaeStncUNVL0FFKy8rbStJMnJm?=
- =?utf-8?B?UXRmdytEZjZOaHBURnFhaWc3a0RVSGY1OU5TSUpabWhiaSsrMzN4VkhOdFpw?=
- =?utf-8?B?dVVwSHJLMVIxN3JTMzNzQ3JFM1duVDRDWVc2Tnd4VEZQajQ1cnhNNk5QUGp4?=
- =?utf-8?B?aHNjUnRyU2M1WWMxR3IxQ2EwcnNlZzVQOWNXUklWNVl2R0luKytXTTVOSVlO?=
- =?utf-8?B?VU5zT2xIQlh3aEtVaE5oS2NOYUFSRktiYlQyaldyU216cHQ4RTlPUFZhQnNN?=
- =?utf-8?B?TldEQUlONHVPeVJEQzI2Qk1ITWNWTGlXdEhCL1JTMzNWZ3BqbmVXOTUyODEz?=
- =?utf-8?B?UW8zU0JkV1BLdDNwV1FmSGgyb1cwWWtSa0toZ0dHSm5Wd1lpNS9sU3VpT1lz?=
- =?utf-8?B?TWwxRXZLeUpFZk1WRE9mSVg3S1ZhVXVIMDFPcEVvcVRXbHpMNlV5NTNoSUhD?=
- =?utf-8?B?V2NJTEJsZ2dzRFU1OC9sRzVlR3VsZ3U0V3Y2UmtpUEVKU2tnZ2F4WHIwR0h3?=
- =?utf-8?B?RFNEMVpCVjgrV2JnNWczbmdHTVRQd3FNUE5Ucnd2aW5aRjRLejl3U3R0TWNt?=
- =?utf-8?B?dkNDdFJNcWNSWmc5cFA3WVd0cGJ6dVFJc0pwUkcrdW9tVjhDZGlQRC94TlBa?=
- =?utf-8?B?dVN2YmpLL3IzYXZSQ2h3V09mSjRYd0tVUGtPOWtOYUc3N0UrU2RzdXpvQ1FY?=
- =?utf-8?B?alNFWmpncElmRW1WaFpXaW9vWE1manU0WVNER2l5N1YwZWxYRzB6NjY3cXlM?=
- =?utf-8?B?Z1R5S1M4elFFLzY2R0Z6RFRpR280dFVzaTBHTEw1SitYUG80c0hQelFPTStx?=
- =?utf-8?B?YTRUM2d0bjNvL0phRCtzL3haYThGUE0vN1FMOTA1dkxKTTl6V3A2MklvSWVO?=
- =?utf-8?B?M1cwNjZ0SWxHdmRnU0xNRUtEaHNJS3I2TmRhSHhVaElaeVVCRHQrQ3VqYmFY?=
- =?utf-8?B?YXJocDNSTkdjd09sTEE5eGZYUlhlTGVaQ0RhM1NrblAwSWJaUDhyVnhsZmpC?=
- =?utf-8?B?MlI2ZkttMmYvRW5wdlJLY25JNDd2ak80TUdwZmVYZXZZVTMzYVVWcFM3U1dy?=
- =?utf-8?B?SzY5cldUTkQ1KzNaSGJoanZTNmt4U3NhRk1nZktpMFU5ZGNjeXdvM21oa0lz?=
- =?utf-8?B?dTI3SDNBVXNUUUVQU1RsWVFiMkZvN0VxZHlRbDZ3VDhVa2JrUGFpVjdGeXhQ?=
- =?utf-8?B?Z3Q4MTBNZkcvRzNtdXhiSUd5cmY5b0NTNDVTSkxrbGc4TllpQ3FUY2RyZnlG?=
- =?utf-8?B?MHc9PQ==?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 2233f32c-2e04-49ed-fbd6-08dc9cf1c73d
-X-MS-Exchange-CrossTenant-AuthSource: MN6PR11MB8102.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 Jul 2024 12:55:42.5363
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: PccFh954wu7IINhIQEzS3PF5qYS6WbhOp0KVF+QgjA3Pc8MSGW9zHpkxsBryqAWofGe4hmGD1/+j1Qqt9vmNjUWSLOQQDA8gN2Uq7DSLrOc=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR11MB5214
-X-OriginatorOrg: intel.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <f485d1d4f7b34cc2ebf3d60030d1c67b4016af3c.1720107535.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240705_055553_074018_5B52B504 
-X-CRM114-Status: GOOD (  26.19  )
+X-CRM114-CacheID: sfid-20240705_060333_109775_E9F74CE2 
+X-CRM114-Status: UNSURE (   7.49  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -216,73 +73,6 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7/5/24 13:24, Daniel Golle wrote:
-> Hi netdev maintainers,
-> 
-
-TL;DR
-Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-
-and no-one provided feedback against merging this patch so far
-
-> On Tue, Jul 02, 2024 at 09:05:19AM +0000, Daniel Golle wrote:
->>> what about:
->>> 4733│ static int mtk_sgmii_init(struct mtk_eth *eth)
->>> 4734│ {
->>> 4735│         struct device_node *np;
->>> 4736│         struct regmap *regmap;
->>> 4737│         u32 flags;
->>> 4738│         int i;
->>> 4739│
->>> 4740│         for (i = 0; i < MTK_MAX_DEVS; i++) {
->>> 4741│                 np = of_parse_phandle(eth->dev->of_node, "mediatek,sgmiisys", i);
->>> 4742│                 if (!np)
->>> 4743│                         break;
->>>
->>> should we also continue here?
->>
->> Good point. As sgmiisys is defined in dtsi it's not so relevant in
->> practise though, as the SoC components are of course always present even
->> if we don't use them. Probably it is still better to not be overly
->> strict on the presence of things we may not even use, not even emit an
->> error message and silently break something else, so yes, worth fixing
->> imho.
->>
-> 
-> I've noticed that this patch was marked as "Changes Requested" on patchwork
-> despite having received a positive review.
-> 
-> I'm afraid this is possibly due to a misunderstanding:
-> 
-> The (unrelated and rather exotic) similar issue pointed to by Przemek
-> Kitszel should not be fixed in the same commit. It is unrelated, and if
-> at all, should be sent to 'net' tree rather than 'net-next'.
-> 
-> Looking at it more closely I would not consider it an issue as we
-> currently in the bindings we **require** the correct number of sgmiisys phandles to be
-> present for each SoC supporting SGMII:
-> 
-> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/net/mediatek,net.yaml#n200
-> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/net/mediatek,net.yaml#n245
-> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/net/mediatek,net.yaml#n287
-> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/net/mediatek,net.yaml#n325
-> 
-> Hence there aren't ever any gaps, also because the sgmiisys phandles are
-> defined in the SoC-specific DTSI **even for boards not making any use of
-> them**.
-> 
-> I hence would like this very patch to be merged (or at least discussed)
-> as-is, and if there is really a need to address the issue mentioned by
-> Przemek Kitszel, then deal with it in a separate commit.
-> 
-> 
-> Cheers
-> 
-> 
-> Daniel
-
-you are right, I have even marked this specifically as Reviewed-by: $me,
-so I think is just a mistake to mark it as CR
-(without the RB tag, it will be wise to mark such comments as no-issue
-or similar, and I typically do so)
+I've just noticed that I forgot to include the target tree name in the
+patch subject. Being a fix this is intended to be applied on 'net'.
 
