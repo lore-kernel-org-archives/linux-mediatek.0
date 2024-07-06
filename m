@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23AA4C3DA40
-	for <linux-mediatek@archiver.kernel.org>; Sat,  6 Jul 2024 08:28:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3516AC2BD09
+	for <linux-mediatek@archiver.kernel.org>; Sat,  6 Jul 2024 08:28:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=M0AqvqvX1XnawEbT1CZxbW1N0nw9RHpYcHRkl50qL/k=; b=Xnfop3VGcYm4tgK6J6Hkvf52uT
-	unstcY6uNovT4caDF3AovdBHU8GNFqr+fAtrU/29Cmv4XWRIehbFAtWIezrvOQdhR6ALjJmGx6tkT
-	NH1z3Gf07mUsIozDukw0zIACAbtbzSHEdbXhdwxEiVzii/h3CsKoJg2SEU8fIpLOnKnaWfYkUQeUB
-	ngy12pvV7GZzH+EPIWbw81Xkdj1Nkbaj3V1a6E6ymFk9avRZBj/zwLMGT4qHpXG/ugevKVUBac3Lp
-	KLt5o3l91jgRsTvACuwiKwa+m2QnPUkNhQrSGpDRQqMxmyHpTxQedAKyThTh88jPkBIAFkCty9tYo
-	g9KxFK8w==;
+	bh=fB1JYRMFZwVbYt+IuaFt8+viDBKhrduPeNh84EEGi48=; b=AJ4cU3aZ3QD7liAuYf1YBzVgKQ
+	1pXfiSD33jHwG4qYPibHMMSqn9CgaW/fKTWZGGrx1O2ku+2K+DmKUjfFznsbSyIqGfuRMZvN0XnRr
+	DeJbaCaJogfphERX/5lK3CNXvnvyGTAncnKYuMeSmeOh2JHvoZhgP/z0C9uqL93HMwmEKvRarOLzk
+	lyjYfcOtQ0KurGFNXzhNuU753N/PfS3n+AIqMxwl5YZk2NU6ACzNCmv2/SMFGFRUh9qK2yM2vhOrH
+	ZEkTCAVSAYDfaEBMFTP9EhcL8ng3qzN5FqTW26Q2jNoUzZQqz7fRjgEXKIN0m/V5wyV0257NWvEXd
+	1uBjvsJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sQ0mS-0000000HXgT-3MII;
-	Sat, 06 Jul 2024 08:28:28 +0000
+	id 1sQ0mV-0000000HXiV-2wG0;
+	Sat, 06 Jul 2024 08:28:31 +0000
 Received: from mail-oa1-f42.google.com ([209.85.160.42])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sQ0mP-0000000HXeT-1U96
+	id 1sQ0mS-0000000HXgK-3vFs
 	for linux-mediatek@lists.infradead.org;
-	Sat, 06 Jul 2024 08:28:26 +0000
-Received: by mail-oa1-f42.google.com with SMTP id 586e51a60fabf-25e19ad0050so386953fac.0
-        for <linux-mediatek@lists.infradead.org>; Sat, 06 Jul 2024 01:28:25 -0700 (PDT)
+	Sat, 06 Jul 2024 08:28:30 +0000
+Received: by mail-oa1-f42.google.com with SMTP id 586e51a60fabf-25cb5ee9d2dso294054fac.1
+        for <linux-mediatek@lists.infradead.org>; Sat, 06 Jul 2024 01:28:28 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1720254504; x=1720859304;
+        d=1e100.net; s=20230601; t=1720254508; x=1720859308;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=M0AqvqvX1XnawEbT1CZxbW1N0nw9RHpYcHRkl50qL/k=;
-        b=A/4nZiYLwIkCTyWSkGw0sO/ip/QtphHA++qAyUjkmFoYmSiz9XAzwD7VJr4RbtDh5f
-         +XxGWoK78WSnlCoYdrf4Z8MP1CfUlvt4zdOAIBB6TazuL5W7/at712LffQazWB7Xtn2A
-         xIXoMCYVMU3Hnn26lEYq4W7gZaHgTS5AGYgqcU2ydakvTJYV6iVV+7dObJpw6Yx0oJb3
-         8FQ/EnI0Nm7zQGXB8Flr+m8I7k+5NjhADpdYfBesJrG296v2Tnhi/6/ORQ0sz8v2Kmct
-         zQeffAz1f1VVshSV5m7NXsUY8XXAIczZX3mykCNz7vpDJKKIe9Nd04Lw3Ua9F5OsmZLU
-         pDSg==
-X-Forwarded-Encrypted: i=1; AJvYcCWaeRsbyv8hjTLriLzzSL3ouSJcHZrM5+/q0E3zsmuT6TCgvnohhErjUZLxr7gsxPMLISlduYdNcGCrGOdMijDKz/qVlogXcLG+VocXhupvN9bC
-X-Gm-Message-State: AOJu0YzwniW5qKStbSxInWIm67Z9Xjfa1R3bHGrToSJ1bYvfmzY05XWm
-	2j3OsmwTu4JaH9j9U1AOAakyInm4v5r3OI3I/ugdOU6ykXGuOApp
-X-Google-Smtp-Source: AGHT+IGNdZ/1sIor3R57hAlhxrzJbk4ui2gjH+E4YJ1N0eT/zRwXtj5JuC6ek9LLKjnf7JbaT/WYfg==
-X-Received: by 2002:a05:6870:eca3:b0:25e:c0b:82c5 with SMTP id 586e51a60fabf-25e2bf101admr6655751fac.3.1720254504111;
-        Sat, 06 Jul 2024 01:28:24 -0700 (PDT)
+        bh=fB1JYRMFZwVbYt+IuaFt8+viDBKhrduPeNh84EEGi48=;
+        b=WtqHxBLgwPbr9NRFWpcz5NYlut9Zb8LC4QBQ3wWjtZxwVhlGLdTtXBDDy6y5QnQlB4
+         q7OEr5Aw/2LEGB2agqcPRmlcyvK7YkUgt+3/D4VHs0AHjhQFkMUsLyKZIHVYUYwslxsU
+         2uKP7TiJ/YMaDQpdbGZ6bvvazAQA7mSSzoiNdno68XwdxZvB/n8uD07t3Kw1h1F5vyvC
+         +W5whqk2G0v+A0mlJpBad7IqmmCC8iZcb4Pe7POSM+hyayAYZX5jaZJbMeAR023PXr9U
+         yJVQ3CkMKBPn598uaQeElTsvsk1F/Beel+geMlaPnF8tIYW0CVbCje6Ghms94QbPwRWx
+         QRsQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUbyDYhgnZg5rN/Q4gNO8gb+KnEeN7aZ8+eJMs/bY8vAifV7865huV0xk7CsFJciMFTNsoTuRkOYs+mzcKl2zgGlEX82tljYZgqh2TZXyTjgOA9
+X-Gm-Message-State: AOJu0YyWmr13zhWkVUBputgEtS3b+s3gR6EJK5ahMvV8v0r5I9w1Vn3l
+	JJPdrjyM8apt5nY3zdqNUK2vrn1HEdzu9jYu7LJoupVCQmeDL4qc
+X-Google-Smtp-Source: AGHT+IEbBxEgHVC8/DnYcOIvLg50uKhSw9Uz87I6Wzgf6jIzs0QbwsclZn2PRIJzSzOKM0fnme89Qw==
+X-Received: by 2002:a05:6871:24d7:b0:24f:e599:9168 with SMTP id 586e51a60fabf-25e2b8d0139mr7037870fac.1.1720254508050;
+        Sat, 06 Jul 2024 01:28:28 -0700 (PDT)
 Received: from sean-ThinkPad-T450s.attlocal.net ([2600:1702:5083:7610:1e13:57ab:ecc5:1fd4])
-        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-25e71070ba1sm10744fac.34.2024.07.06.01.28.22
+        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-25e71070ba1sm10744fac.34.2024.07.06.01.28.26
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 06 Jul 2024 01:28:22 -0700 (PDT)
+        Sat, 06 Jul 2024 01:28:26 -0700 (PDT)
 From: sean.wang@kernel.org
 To: nbd@nbd.name,
 	lorenzo.bianconi@redhat.com
@@ -59,17 +59,17 @@ Cc: sean.wang@mediatek.com,
 	mingyen.hsieh@mediatek.com,
 	linux-wireless@vger.kernel.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 02/37] wifi: mt76: mt7925: update mt7925_mac_link_sta_[add, assoc, remove] for MLO
-Date: Sat,  6 Jul 2024 01:27:42 -0700
-Message-Id: <2410cc73eec3849c2185b5cfa613b7e903e68abb.1720248331.git.sean.wang@kernel.org>
+Subject: [PATCH v2 04/37] wifi: mt76: mt7925: set mt7925_mcu_sta_key_tlv according to link id
+Date: Sat,  6 Jul 2024 01:27:44 -0700
+Message-Id: <16d65aae010113f9be3c4e6e759b4226d396a1be.1720248331.git.sean.wang@kernel.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <cover.1720248331.git.sean.wang@kernel.org>
 References: <cover.1720248331.git.sean.wang@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240706_012825_422557_B9E1A308 
-X-CRM114-Status: GOOD (  11.97  )
+X-CRM114-CacheID: sfid-20240706_012829_041675_1FB5EE7B 
+X-CRM114-Status: GOOD (  14.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,9 +86,13 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Sean Wang <sean.wang@mediatek.com>
 
-[add, assoc, remove] the per-link STA from the corresponding to per-link
-BSS with the same link id. The change remains compatible with the non-MLO
-mode.
+configure mt7925_mcu_sta_key_tlv according to link id
+
+We created a link id field in the common structure mt76_wcid so that
+mt7925_mcu_sta_key_tlv can access per-link STA/BSS. Additionally,
+.link_id will be required when reporting the link information of Rx status
+to mac80211. We will submit the changes for reporting the Rx status in
+a separate patch.
 
 Co-developed-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
 Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
@@ -96,110 +100,98 @@ Co-developed-by: Deren Wu <deren.wu@mediatek.com>
 Signed-off-by: Deren Wu <deren.wu@mediatek.com>
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- .../net/wireless/mediatek/mt76/mt7925/main.c  | 32 ++++++++++++-------
- 1 file changed, 20 insertions(+), 12 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt76.h        |  1 +
+ drivers/net/wireless/mediatek/mt76/mt7925/main.c |  1 +
+ drivers/net/wireless/mediatek/mt76/mt7925/mcu.c  | 15 +++++++++++----
+ drivers/net/wireless/mediatek/mt76/mt792x.h      | 11 +++++++++++
+ 4 files changed, 24 insertions(+), 4 deletions(-)
 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index 15f83b5adac7..daf1e43e304e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -349,6 +349,7 @@ struct mt76_wcid {
+ 	u8 sta:1;
+ 	u8 amsdu:1;
+ 	u8 phy_idx:2;
++	u8 link_id:4;
+ 
+ 	u8 rx_check_pn;
+ 	u8 rx_key_pn[IEEE80211_NUM_TIDS + 1][6];
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-index 8b10b63bc98d..a043d93f3e1d 100644
+index da70c203d618..59b1e920bb4a 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-@@ -728,21 +728,24 @@ static int mt7925_mac_link_sta_add(struct mt76_dev *mdev,
- 	struct mt792x_dev *dev = container_of(mdev, struct mt792x_dev, mt76);
- 	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
- 	struct ieee80211_bss_conf *link_conf;
-+	struct mt792x_bss_conf *mconf;
-+	u8 link_id = link_sta->link_id;
- 	struct mt792x_link_sta *mlink;
- 	struct mt792x_sta *msta;
- 	int ret, idx;
- 
- 	msta = (struct mt792x_sta *)link_sta->sta->drv_priv;
--	mlink = mt792x_sta_to_link(msta, link_sta->link_id);
-+	mlink = mt792x_sta_to_link(msta, link_id);
- 
- 	idx = mt76_wcid_alloc(dev->mt76.wcid_mask, MT792x_WTBL_STA - 1);
- 	if (idx < 0)
- 		return -ENOSPC;
- 
-+	mconf = mt792x_vif_to_link(mvif, link_id);
- 	INIT_LIST_HEAD(&mlink->wcid.poll_list);
- 	mlink->wcid.sta = 1;
- 	mlink->wcid.idx = idx;
--	mlink->wcid.phy_idx = mvif->bss_conf.mt76.band_idx;
-+	mlink->wcid.phy_idx = mconf->mt76.band_idx;
+@@ -748,6 +748,7 @@ static int mt7925_mac_link_sta_add(struct mt76_dev *mdev,
+ 	mlink->wcid.phy_idx = mconf->mt76.band_idx;
  	mlink->wcid.tx_info |= MT_WCID_TX_INFO_SET;
  	mlink->last_txs = jiffies;
++	mlink->wcid.link_id = link_sta->link_id;
  
-@@ -753,11 +756,11 @@ static int mt7925_mac_link_sta_add(struct mt76_dev *mdev,
- 	mt7925_mac_wtbl_update(dev, idx,
- 			       MT_WTBL_UPDATE_ADM_COUNT_CLEAR);
+ 	ret = mt76_connac_pm_wake(&dev->mphy, &dev->pm);
+ 	if (ret)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+index a67d8dd6075f..ba91c8e37dff 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+@@ -967,6 +967,7 @@ mt7925_mcu_sta_key_tlv(struct mt76_wcid *wcid,
+ 	struct mt792x_sta *msta = container_of(mlink, struct mt792x_sta, deflink);
+ 	struct sta_rec_sec_uni *sec;
+ 	struct mt792x_vif *mvif = msta->vif;
++	struct mt792x_bss_conf *mconf = mt792x_vif_to_link(mvif, wcid->link_id);
+ 	struct ieee80211_sta *sta;
+ 	struct ieee80211_vif *vif;
+ 	struct tlv *tlv;
+@@ -978,17 +979,23 @@ mt7925_mcu_sta_key_tlv(struct mt76_wcid *wcid,
  
--	link_conf = mt792x_vif_to_bss_conf(vif, vif->bss_conf.link_id);
-+	link_conf = mt792x_vif_to_bss_conf(vif, link_id);
+ 	tlv = mt76_connac_mcu_add_tlv(skb, STA_REC_KEY_V3, sizeof(*sec));
+ 	sec = (struct sta_rec_sec_uni *)tlv;
+-	sec->bss_idx = mvif->bss_conf.mt76.idx;
++	sec->bss_idx = mconf->mt76.idx;
+ 	sec->is_authenticator = 0;
+-	sec->mgmt_prot = 0;
++	sec->mgmt_prot = 1; /* only used in MLO mode */
+ 	sec->wlan_idx = (u8)wcid->idx;
  
- 	/* should update bss info before STA add */
- 	if (vif->type == NL80211_IFTYPE_STATION && !link_sta->sta->tdls)
--		mt7925_mcu_add_bss_info(&dev->phy, mvif->bss_conf.mt76.ctx,
-+		mt7925_mcu_add_bss_info(&dev->phy, mconf->mt76.ctx,
- 					link_conf, link_sta, false);
- 
- 	ret = mt7925_mcu_sta_update(dev, link_sta, vif, true,
-@@ -790,7 +793,6 @@ static void mt7925_mac_link_sta_assoc(struct mt76_dev *mdev,
- 				      struct ieee80211_link_sta *link_sta)
- {
- 	struct mt792x_dev *dev = container_of(mdev, struct mt792x_dev, mt76);
--	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
- 	struct ieee80211_bss_conf *link_conf;
- 	struct mt792x_link_sta *mlink;
- 	struct mt792x_sta *msta;
-@@ -802,9 +804,13 @@ static void mt7925_mac_link_sta_assoc(struct mt76_dev *mdev,
- 
- 	link_conf = mt792x_vif_to_bss_conf(vif, vif->bss_conf.link_id);
- 
--	if (vif->type == NL80211_IFTYPE_STATION && !link_sta->sta->tdls)
--		mt7925_mcu_add_bss_info(&dev->phy, mvif->bss_conf.mt76.ctx,
-+	if (vif->type == NL80211_IFTYPE_STATION && !link_sta->sta->tdls) {
-+		struct mt792x_bss_conf *mconf;
+ 	if (sta) {
++		struct ieee80211_link_sta *link_sta;
 +
-+		mconf = mt792x_link_conf_to_mconf(link_conf);
-+		mt7925_mcu_add_bss_info(&dev->phy, mconf->mt76.ctx,
- 					link_conf, link_sta, true);
-+	}
- 
- 	ewma_avg_signal_init(&mlink->avg_ack_signal);
- 
-@@ -830,11 +836,12 @@ static void mt7925_mac_link_sta_remove(struct mt76_dev *mdev,
- {
- 	struct mt792x_dev *dev = container_of(mdev, struct mt792x_dev, mt76);
- 	struct ieee80211_bss_conf *link_conf;
-+	u8 link_id = link_sta->link_id;
- 	struct mt792x_link_sta *mlink;
- 	struct mt792x_sta *msta;
- 
- 	msta = (struct mt792x_sta *)link_sta->sta->drv_priv;
--	mlink = mt792x_sta_to_link(msta, link_sta->link_id);
-+	mlink = mt792x_sta_to_link(msta, link_id);
- 
- 	mt76_connac_free_pending_tx_skbs(&dev->pm, &mlink->wcid);
- 	mt76_connac_pm_wake(&dev->mphy, &dev->pm);
-@@ -844,12 +851,13 @@ static void mt7925_mac_link_sta_remove(struct mt76_dev *mdev,
- 	mt7925_mac_wtbl_update(dev, mlink->wcid.idx,
- 			       MT_WTBL_UPDATE_ADM_COUNT_CLEAR);
- 
--	link_conf = mt792x_vif_to_bss_conf(vif, vif->bss_conf.link_id);
-+	link_conf = mt792x_vif_to_bss_conf(vif, link_id);
- 
- 	if (vif->type == NL80211_IFTYPE_STATION && !link_sta->sta->tdls) {
--		struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
--		mt7925_mcu_add_bss_info(&dev->phy,
--					mvif->bss_conf.mt76.ctx, link_conf,
-+		struct mt792x_bss_conf *mconf;
+ 		sec->tx_key = 1;
+ 		sec->key_type = 1;
+-		memcpy(sec->peer_addr, sta->addr, ETH_ALEN);
++		link_sta = mt792x_sta_to_link_sta(vif, sta, wcid->link_id);
++		memcpy(sec->peer_addr, link_sta->addr, ETH_ALEN);
+ 	} else {
+-		memcpy(sec->peer_addr, vif->bss_conf.bssid, ETH_ALEN);
++		struct ieee80211_bss_conf *link_conf;
 +
-+		mconf = mt792x_link_conf_to_mconf(link_conf);
-+		mt7925_mcu_add_bss_info(&dev->phy, mconf->mt76.ctx, link_conf,
- 					link_sta, false);
++		link_conf = mt792x_vif_to_bss_conf(vif, wcid->link_id);
++		memcpy(sec->peer_addr, link_conf->bssid, ETH_ALEN);
  	}
  
+ 	if (cmd == SET_KEY) {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt792x.h b/drivers/net/wireless/mediatek/mt76/mt792x.h
+index 69eb8dac0b70..fe5a6c932705 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt792x.h
++++ b/drivers/net/wireless/mediatek/mt76/mt792x.h
+@@ -273,6 +273,17 @@ mt792x_vif_to_bss_conf(struct ieee80211_vif *vif, unsigned int link_id)
+ 	return link_conf_dereference_protected(vif, link_id);
+ }
+ 
++static inline struct ieee80211_link_sta *
++mt792x_sta_to_link_sta(struct ieee80211_vif *vif, struct ieee80211_sta *sta,
++		       unsigned int link_id)
++{
++	if (!ieee80211_vif_is_mld(vif) ||
++	    link_id >= IEEE80211_LINK_UNSPECIFIED)
++		return &sta->deflink;
++
++	return link_sta_dereference_protected(sta, link_id);
++}
++
+ static inline struct mt792x_dev *
+ mt792x_hw_dev(struct ieee80211_hw *hw)
+ {
 -- 
 2.25.1
 
