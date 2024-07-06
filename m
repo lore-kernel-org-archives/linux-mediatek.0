@@ -4,72 +4,125 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FD18C3DA40
-	for <linux-mediatek@archiver.kernel.org>; Sat,  6 Jul 2024 08:29:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87C30C2BD09
+	for <linux-mediatek@archiver.kernel.org>; Sat,  6 Jul 2024 11:21:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OjLrFfQCCVnCNReIrv8FgOPJoGhFLKjOF2fw6M5UKFA=; b=QgaB8UynDIvSrQSHwwpgTSOVjV
-	c9V4g1A2sAr1idrtnj9xALMlJv5tAwFFbFD+kr4rx7if6lW57M8WKckYjTKH1Vp47lzgZOQTVAAkx
-	Sdmn/uqewP/D8HRZoXrE8zp0dwGTzAdu+JlDxhhzvrxf4eCstqL/SHVyS3n5p0C0kw0kHVw8wlCk/
-	hbr2eBOu6amSbfeRnWxQ4PkX/Bb7CvJS+Xxbxe6qvBF/LWFy214pFFYGtw3uPnjLfdNjnQ7gd+rXs
-	UCLbmOHiMcppR5lbyG6yo51P8GtXoYgMFWkY7/DhSH7KZFs9cPd8WB5KkjTluecUj2/CMbf/PJDcY
-	IbrPsG8A==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=4xGv2GdsCln4goc80LSZXUrBL6qxxalWNHk5CsLBJ1w=; b=c6POlBHwTntI+HW9XCYsFdCBSP
+	/c5qVd2td8RMXjsjiCU+B46r/TAh9wkFFzLV1eJZaAePrpEKcvKq8COXrAMmd5G2BeCxj61fAqrXn
+	DNsqVm0gGiWs/8JJPD9r3uTnR0ZX3HWGRyUKvqy5UHNbIbzCoeTZxF4W6UFdmt42c/yFWYfWDloMj
+	LeyrywPQS4no+dx4d65/AZ1xNTaiG+/tLn4c1eQVOTsp9zAogKVehGTyO/qI6JNcV63XUjUPUQu01
+	VSxp3bPZGCYx5nISVcgMvng3E6fT+eGuc3sx0KVWrfIHZkvLNuiR2Qkgl5F5PSJyeer2Nrz6G7HyT
+	foKrYNGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sQ0nQ-0000000HYMf-3Kla;
-	Sat, 06 Jul 2024 08:29:28 +0000
-Received: from mail-oa1-f52.google.com ([209.85.160.52])
+	id 1sQ3U0-000000007Pc-2Xr8;
+	Sat, 06 Jul 2024 11:21:36 +0000
+Received: from zeus03.de ([194.117.254.33] helo=mail.zeus03.de)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sQ0nO-0000000HYKx-0gkk
+	id 1sQ3Tv-000000007Np-36f7
 	for linux-mediatek@lists.infradead.org;
-	Sat, 06 Jul 2024 08:29:27 +0000
-Received: by mail-oa1-f52.google.com with SMTP id 586e51a60fabf-24c5ec50da1so284908fac.3
-        for <linux-mediatek@lists.infradead.org>; Sat, 06 Jul 2024 01:29:26 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1720254565; x=1720859365;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=OjLrFfQCCVnCNReIrv8FgOPJoGhFLKjOF2fw6M5UKFA=;
-        b=bTuabvz+EhWrEEmvVHIjWjWnXoSoTn+eggqj+wXMfiM68YwDKoVEmw/CezeKoo508/
-         KM7hHf9JrGSyghgqnHr/OvBZel8xVjYAkcBgDc2OTlMD8rAVGDbxeLU6aZC6E1N7WElK
-         Msfk7JbH87hEqwENGYszTqawlDTYfIz6WWRzKxjGz4fKjmL62BReD+HxHoZQlQa3DRdO
-         HJoCY0CgI77/rNciPWBNTGlLBbT5k7Cm6wSqminJnu6wyUKltTP0OVx8z4vdaW4pHAGQ
-         aE1h5jxvF4ZBY+YA8g0QFktnqEzshpIbj/PkLre+L8/UgI5h33Gi8yPye8JKhQJNdAf8
-         usbg==
-X-Forwarded-Encrypted: i=1; AJvYcCX9slS9IvaATDkDWFc0Dmf33677k2AlOS/OGbfmCA6ZPXxrukOQ/S2DM/ydUNw4bmLqb+d7F1vxMBGIhjURGswZLQ7z8CQ0YFwDbMt27LAyksiW
-X-Gm-Message-State: AOJu0YwcDMrUzUXn+ABGU65sCOywYnajllQznSdaUk3HwPfEJl4bR7Sm
-	Y9U6JXaiU7ojlojO7IsPjqVkCDZxz4C927fyzvM1h/yk9hu0JtotzuI6g8IA
-X-Google-Smtp-Source: AGHT+IEZYIH1kmad4nC0WoETgsT1zmYli5oIUph3ObeeImE7AAkcePYHQa7IFlYEjWurI4v3OK5eDg==
-X-Received: by 2002:a05:6870:a1a0:b0:254:7e18:7e1a with SMTP id 586e51a60fabf-25e2bff9792mr6813517fac.5.1720254565371;
-        Sat, 06 Jul 2024 01:29:25 -0700 (PDT)
-Received: from sean-ThinkPad-T450s.attlocal.net ([2600:1702:5083:7610:1e13:57ab:ecc5:1fd4])
-        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-25e71070ba1sm10744fac.34.2024.07.06.01.29.23
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 06 Jul 2024 01:29:24 -0700 (PDT)
-From: sean.wang@kernel.org
-To: nbd@nbd.name,
-	lorenzo.bianconi@redhat.com
-Cc: sean.wang@mediatek.com,
-	deren.wu@mediatek.com,
-	mingyen.hsieh@mediatek.com,
-	linux-wireless@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 37/37] wifi: mt76: mt7925: enabling MLO when the firmware supports it
-Date: Sat,  6 Jul 2024 01:28:17 -0700
-Message-Id: <49c796b101e792c84bc2c0d74753022b75fd3355.1720248331.git.sean.wang@kernel.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <cover.1720248331.git.sean.wang@kernel.org>
-References: <cover.1720248331.git.sean.wang@kernel.org>
+	Sat, 06 Jul 2024 11:21:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	sang-engineering.com; h=from:to:cc:subject:date:message-id
+	:mime-version:content-transfer-encoding; s=k1; bh=4xGv2GdsCln4go
+	c80LSZXUrBL6qxxalWNHk5CsLBJ1w=; b=CpjSu7bDPwZrTYB4DnXqHNJrzzOV0i
+	ll8uIcabyZjRJJv8IN4yPeOtXpO4cU3QOhP76TyKvJMMzxzWe7wr6Y8Gfi1EOJAl
+	eYaKXSKfSh434zAyHAlKzS3YiYx+9JKmXA5Z4dH8SJCoxnqURGaAyztFVBvyi1yd
+	2c/2c5x2P3YnhmZAJ159dGcqaiJS0bS6wqjht7xK0Bj8rjBLCVh+cZ/DSRHm9TfF
+	wR6Q+GUBV9AvnC5iTsch/LEkT1PCX7RbFkTTasFpYCXqwNoLS7gYY0t9kNWTlFrw
+	SSpGB+37KfH9i4bF3oug8fwFzqzeaLHCrle0xWnEiN2tyJJ+LMS5P9kQ==
+Received: (qmail 3809341 invoked from network); 6 Jul 2024 13:21:21 +0200
+Received: by mail.zeus03.de with ESMTPSA (TLS_AES_256_GCM_SHA384 encrypted, authenticated); 6 Jul 2024 13:21:21 +0200
+X-UD-Smtp-Session: l3s3148p1@BOAqYZIcotJQT+F6
+From: Wolfram Sang <wsa+renesas@sang-engineering.com>
+To: linux-i2c@vger.kernel.org
+Cc: Wolfram Sang <wsa+renesas@sang-engineering.com>,
+	Ajay Gupta <ajayg@nvidia.com>,
+	Alain Volmat <alain.volmat@foss.st.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Andi Shyti <andi.shyti@kernel.org>,
+	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>,
+	Andrew Lunn <andrew@lunn.ch>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	asahi@lists.linux.dev,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Bartosz Golaszewski <brgl@bgdev.pl>,
+	Baruch Siach <baruch@tkos.co.il>,
+	=?UTF-8?q?Bence=20Cs=C3=B3k=C3=A1s?= <bence98@sch.bme.hu>,
+	Benson Leung <bleung@chromium.org>,
+	Binbin Zhou <zhoubinbin@loongson.cn>,
+	Chen-Yu Tsai <wens@csie.org>,
+	Chris Brandt <chris.brandt@renesas.com>,
+	Chris Packham <chris.packham@alliedtelesis.co.nz>,
+	chrome-platform@lists.linux.dev,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Conghui Chen <conghui.chen@intel.com>,
+	Eddie James <eajames@linux.ibm.com>,
+	Fabrizio Castro <fabrizio.castro.jz@renesas.com>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Gregory CLEMENT <gregory.clement@bootlin.com>,
+	Guenter Roeck <linux@roeck-us.net>,
+	Hans de Goede <hdegoede@redhat.com>,
+	Hans Hu <hanshu@zhaoxin.com>,
+	Hector Martin <marcan@marcan.st>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Jean Delvare <jdelvare@suse.com>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Jochen Friedrich <jochen@scram.de>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Kamal Dasu <kamal.dasu@broadcom.com>,
+	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+	linux-actions@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-mips@vger.kernel.org,
+	linuxppc-dev@lists.ozlabs.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-rpi-kernel@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-sunxi@lists.linux.dev,
+	linux-tegra@vger.kernel.org,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Masami Hiramatsu <mhiramat@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Michael Ellerman <mpe@ellerman.id.au>,
+	Michael Shych <michaelsh@nvidia.com>,
+	openbmc@lists.ozlabs.org,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Patrice Chotard <patrice.chotard@foss.st.com>,
+	Paul Cercueil <paul@crapouillou.net>,
+	Peter Korsgaard <peter@korsgaard.com>,
+	Pierre-Yves MORDRET <pierre-yves.mordret@foss.st.com>,
+	Ray Jui <rjui@broadcom.com>,
+	Robert Richter <rric@kernel.org>,
+	Samuel Holland <samuel@sholland.org>,
+	Scott Branden <sbranden@broadcom.com>,
+	Stefan Roese <sr@denx.de>,
+	Sven Peter <sven@svenpeter.dev>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Thor Thayer <thor.thayer@linux.intel.com>,
+	Till Harbaum <till@harbaum.org>,
+	Vadim Pasternak <vadimp@nvidia.com>,
+	Viresh Kumar <viresh.kumar@linaro.org>,
+	virtualization@lists.linux.dev,
+	Vladimir Zapolskiy <vz@mleia.com>,
+	Yicong Yang <yangyicong@hisilicon.com>
+Subject: [PATCH v2 00/60] i2c: reword first drivers according to newest specification
+Date: Sat,  6 Jul 2024 13:20:00 +0200
+Message-ID: <20240706112116.24543-1-wsa+renesas@sang-engineering.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240706_012926_231562_0C7F9482 
-X-CRM114-Status: GOOD (  15.23  )
+X-CRM114-CacheID: sfid-20240706_042132_296885_25E10AD4 
+X-CRM114-Status: GOOD (  14.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,164 +137,175 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+Start changing the wording of the I2C main header wrt. the newest I2C
+v7 and SMBus 3.2 specifications and replace "master/slave" with more
+appropriate terms. This first step renames the members of struct
+i2c_algorithm. Once all in-tree users are converted, the anonymous union
+will go away again. All this work will also pave the way for finally
+seperating the monolithic header into more fine-grained headers like
+"i2c/clients.h" etc. So, this is not a simple renaming-excercise but
+also a chance to update the I2C core to recent Linux standards.
 
-Register MLD capability for the firmware supporting MLO.
+Changes since v1:
 
-Co-developed-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
-Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
-Co-developed-by: Deren Wu <deren.wu@mediatek.com>
-Signed-off-by: Deren Wu <deren.wu@mediatek.com>
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
----
- .../wireless/mediatek/mt76/mt76_connac_mcu.h  |  1 +
- .../net/wireless/mediatek/mt76/mt7925/init.c  |  6 ++++
- .../net/wireless/mediatek/mt76/mt7925/main.c  | 29 +++++++++++++++++++
- .../net/wireless/mediatek/mt76/mt7925/mcu.c   | 20 +++++++++++++
- .../wireless/mediatek/mt76/mt7925/mt7925.h    |  1 +
- drivers/net/wireless/mediatek/mt76/mt792x.h   |  2 ++
- 6 files changed, 59 insertions(+)
+* changed wording according to the terminology we agreed on and defined
+  upstream. That means consistent use of "controller/target", and no
+  more "host/client". I added "local/remote target" where necessary.
+* added tags which I kept despite some changes in wording. The approach
+  and code changes (if necessary) did not change.
+* rebased to Andi's for-next branch
+* this series only contains patches which convert the drivers fully. If
+  all goes well, no more updates for them are needed. The previous
+  series converted all users of "master_xfer". But to avoid tons of
+  incremental patches to one driver, I will incrementally improve i2c.h
+  and see which drivers can be fully converted step-by-step.
+* do not mention I3C specs in commit messages, not really relevant here
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-index d6882c9fd6bc..4242d436de26 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-@@ -1402,6 +1402,7 @@ enum {
- 	MT_NIC_CAP_WFDMA_REALLOC,
- 	MT_NIC_CAP_6G,
- 	MT_NIC_CAP_CHIP_CAP = 0x20,
-+	MT_NIC_CAP_EML_CAP = 0x22,
- };
- 
- #define UNI_WOW_DETECT_TYPE_MAGIC		BIT(0)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/init.c b/drivers/net/wireless/mediatek/mt76/mt7925/init.c
-index c4cbc8976046..039949b344b9 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/init.c
-@@ -179,6 +179,12 @@ static void mt7925_init_work(struct work_struct *work)
- 	mt76_set_stream_caps(&dev->mphy, true);
- 	mt7925_set_stream_he_eht_caps(&dev->phy);
- 
-+	ret = mt7925_init_mlo_caps(&dev->phy);
-+	if (ret) {
-+		dev_err(dev->mt76.dev, "MLO init failed\n");
-+		return;
-+	}
-+
- 	ret = mt76_register_device(&dev->mt76, true, mt76_rates,
- 				   ARRAY_SIZE(mt76_rates));
- 	if (ret) {
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-index 0c4e106ae735..b5dd4430f459 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-@@ -236,6 +236,35 @@ mt7925_init_eht_caps(struct mt792x_phy *phy, enum nl80211_band band,
- 	eht_nss->bw._160.rx_tx_mcs13_max_nss = val;
- }
- 
-+int mt7925_init_mlo_caps(struct mt792x_phy *phy)
-+{
-+	struct wiphy *wiphy = phy->mt76->hw->wiphy;
-+	static const u8 ext_capa_sta[] = {
-+		[7] = WLAN_EXT_CAPA8_OPMODE_NOTIF,
-+	};
-+	static struct wiphy_iftype_ext_capab ext_capab[] = {
-+		{
-+			.iftype = NL80211_IFTYPE_STATION,
-+			.extended_capabilities = ext_capa_sta,
-+			.extended_capabilities_mask = ext_capa_sta,
-+			.extended_capabilities_len = sizeof(ext_capa_sta),
-+		},
-+	};
-+
-+	if (!(phy->chip_cap & MT792x_CHIP_CAP_MLO_EVT_EN))
-+		return 0;
-+
-+	ext_capab[0].eml_capabilities = phy->eml_cap;
-+	ext_capab[0].mld_capa_and_ops =
-+		u16_encode_bits(1, IEEE80211_MLD_CAP_OP_MAX_SIMUL_LINKS);
-+
-+	wiphy->flags |= WIPHY_FLAG_SUPPORTS_MLO;
-+	wiphy->iftype_ext_capab = ext_capab;
-+	wiphy->num_iftype_ext_capab = ARRAY_SIZE(ext_capab);
-+
-+	return 0;
-+}
-+
- static void
- __mt7925_set_stream_he_eht_caps(struct mt792x_phy *phy,
- 				struct ieee80211_supported_band *sband,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-index cb5c607b9260..ccc66c42c16c 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-@@ -751,6 +751,20 @@ mt7925_mcu_parse_phy_cap(struct mt792x_dev *dev, char *data)
- 	dev->has_eht = cap->eht;
- }
- 
-+static void
-+mt7925_mcu_parse_eml_cap(struct mt792x_dev *dev, char *data)
-+{
-+	struct mt7925_mcu_eml_cap {
-+		u8 rsv[4];
-+		__le16 eml_cap;
-+		u8 rsv2[6];
-+	} __packed * cap;
-+
-+	cap = (struct mt7925_mcu_eml_cap *)data;
-+
-+	dev->phy.eml_cap = le16_to_cpu(cap->eml_cap);
-+}
-+
- static int
- mt7925_mcu_get_nic_capability(struct mt792x_dev *dev)
- {
-@@ -805,6 +819,12 @@ mt7925_mcu_get_nic_capability(struct mt792x_dev *dev)
- 		case MT_NIC_CAP_PHY:
- 			mt7925_mcu_parse_phy_cap(dev, tlv->data);
- 			break;
-+		case MT_NIC_CAP_CHIP_CAP:
-+			memcpy(&dev->phy.chip_cap, (void *)skb->data, sizeof(u64));
-+			break;
-+		case MT_NIC_CAP_EML_CAP:
-+			mt7925_mcu_parse_eml_cap(dev, tlv->data);
-+			break;
- 		default:
- 			break;
- 		}
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h b/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
-index 1ae66629e39f..669f3a079d04 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
-@@ -235,6 +235,7 @@ void mt7925_queue_rx_skb(struct mt76_dev *mdev, enum mt76_rxq_id q,
- 			 struct sk_buff *skb, u32 *info);
- void mt7925_stats_work(struct work_struct *work);
- void mt7925_set_stream_he_eht_caps(struct mt792x_phy *phy);
-+int mt7925_init_mlo_caps(struct mt792x_phy *phy);
- int mt7925_init_debugfs(struct mt792x_dev *dev);
- 
- int mt7925_mcu_set_beacon_filter(struct mt792x_dev *dev,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt792x.h b/drivers/net/wireless/mediatek/mt76/mt792x.h
-index 5ede24116748..30635aeba363 100644
---- a/drivers/net/wireless/mediatek/mt76/mt792x.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt792x.h
-@@ -27,6 +27,7 @@
- 
- #define MT792x_CHIP_CAP_CLC_EVT_EN BIT(0)
- #define MT792x_CHIP_CAP_RSSI_NOTIFY_EVT_EN BIT(1)
-+#define MT792x_CHIP_CAP_MLO_EVT_EN BIT(2)
- 
- /* NOTE: used to map mt76_rates. idx may change if firmware expands table */
- #define MT792x_BASIC_RATES_TBL	11
-@@ -163,6 +164,7 @@ struct mt792x_phy {
- #endif
- 	void *clc[MT792x_CLC_MAX_NUM];
- 	u64 chip_cap;
-+	u16 eml_cap;
- 
- 	struct work_struct roc_work;
- 	struct timer_list roc_timer;
+Please note that I am not super strict with the 80 char limit. And, as
+agreed, I did not convert occasions where old terminology is used in
+register names or bits etc. or in function names outside of the I2C
+realm.
+
+The outcome is that before this series 115 drivers use old terminology,
+after this only 54. Hooray.
+
+And a comment to all janitors: Do not convert I2C drivers outside of
+drivers/i2c yet. Let us first gain experience here and present the
+well-tested results of what we figured out to other maintainers then.
+This ensures they have to deal with way less patch revisions.
+
+Thanks and happy hacking!
+
+
+Wolfram Sang (60):
+  i2c: reword i2c_algorithm according to newest specification
+  i2c: ali15x3: reword according to newest specification
+  i2c: altera: reword according to newest specification
+  i2c: au1550: reword according to newest specification
+  i2c: bcm-kona: reword according to newest specification
+  i2c: bcm2835: reword according to newest specification
+  i2c: brcmstb: reword according to newest specification
+  i2c: cht-wc: reword according to newest specification
+  i2c: cp2615: reword according to newest specification
+  i2c: cros-ec-tunnel: reword according to newest specification
+  i2c: davinci: reword according to newest specification
+  i2c: digicolor: reword according to newest specification
+  i2c: diolan-u2c: reword according to newest specification
+  i2c: dln2: reword according to newest specification
+  i2c: fsi: reword according to newest specification
+  i2c: gpio: reword according to newest specification
+  i2c: highlander: reword according to newest specification
+  i2c: hisi: reword according to newest specification
+  i2c: hix5hd2: reword according to newest specification
+  i2c: i801: reword according to newest specification
+  i2c: ibm_iic: reword according to newest specification
+  i2c: iop3xx: reword according to newest specification
+  i2c: isch: reword according to newest specification
+  i2c: jz4780: reword according to newest specification
+  i2c: kempld: reword according to newest specification
+  i2c: ljca: reword according to newest specification
+  i2c: lpc2k: reword according to newest specification
+  i2c: ls2x: reword according to newest specification
+  i2c: mlxcpld: reword according to newest specification
+  i2c: mpc: reword according to newest specification
+  i2c: mt7621: reword according to newest specification
+  i2c: mv64xxx: reword according to newest specification
+  i2c: ocores: reword according to newest specification
+  i2c: octeon: reword according to newest specification
+  i2c: opal: reword according to newest specification
+  i2c: owl: reword according to newest specification
+  i2c: pasemi: reword according to newest specification
+  i2c: piix4: reword according to newest specification
+  i2c: powermac: reword according to newest specification
+  i2c: pxa-pci: reword according to newest specification
+  i2c: riic: reword according to newest specification
+  i2c: rk3x: reword according to newest specification
+  i2c: robotfuzz-osif: reword according to newest specification
+  i2c: rzv2m: reword according to newest specification
+  i2c: sis5595: reword according to newest specification
+  i2c: sprd: reword according to newest specification
+  i2c: stm32f4: reword according to newest specification
+  i2c: sun6i-p2wi: reword according to newest specification
+  i2c: taos-evm: reword according to newest specification
+  i2c: tegra-bpmp: reword according to newest specification
+  i2c: thunderx-pcidrv: reword according to newest specification
+  i2c: tiny-usb: reword according to newest specification
+  i2c: uniphier-f: reword according to newest specification
+  i2c: uniphier: reword according to newest specification
+  i2c: viperboard: reword according to newest specification
+  i2c: viai2c: reword according to newest specification
+  i2c: nvidia-gpu: reword according to newest specification
+  i2c: virtio: reword according to newest specification
+  i2c: cpm: reword according to newest specification
+  i2c: st: reword according to newest specification
+
+ drivers/i2c/busses/i2c-ali15x3.c         |  2 +-
+ drivers/i2c/busses/i2c-altera.c          |  4 +-
+ drivers/i2c/busses/i2c-au1550.c          | 15 +++----
+ drivers/i2c/busses/i2c-bcm-kona.c        | 13 +++---
+ drivers/i2c/busses/i2c-bcm2835.c         | 10 ++---
+ drivers/i2c/busses/i2c-brcmstb.c         | 11 +++--
+ drivers/i2c/busses/i2c-cht-wc.c          |  8 ++--
+ drivers/i2c/busses/i2c-cp2615.c          |  8 ++--
+ drivers/i2c/busses/i2c-cpm.c             |  4 +-
+ drivers/i2c/busses/i2c-cros-ec-tunnel.c  |  4 +-
+ drivers/i2c/busses/i2c-davinci.c         | 17 ++++---
+ drivers/i2c/busses/i2c-digicolor.c       |  6 +--
+ drivers/i2c/busses/i2c-diolan-u2c.c      |  2 +-
+ drivers/i2c/busses/i2c-dln2.c            |  4 +-
+ drivers/i2c/busses/i2c-fsi.c             | 56 ++++++++++++------------
+ drivers/i2c/busses/i2c-gpio.c            |  8 ++--
+ drivers/i2c/busses/i2c-highlander.c      |  2 +-
+ drivers/i2c/busses/i2c-hisi.c            |  8 ++--
+ drivers/i2c/busses/i2c-hix5hd2.c         |  6 +--
+ drivers/i2c/busses/i2c-i801.c            | 12 ++---
+ drivers/i2c/busses/i2c-ibm_iic.c         | 27 +++++-------
+ drivers/i2c/busses/i2c-iop3xx.c          | 15 +++----
+ drivers/i2c/busses/i2c-isch.c            |  2 +-
+ drivers/i2c/busses/i2c-jz4780.c          |  4 +-
+ drivers/i2c/busses/i2c-kempld.c          |  4 +-
+ drivers/i2c/busses/i2c-ljca.c            | 20 ++++-----
+ drivers/i2c/busses/i2c-lpc2k.c           | 10 ++---
+ drivers/i2c/busses/i2c-ls2x.c            | 11 +++--
+ drivers/i2c/busses/i2c-mlxcpld.c         | 14 +++---
+ drivers/i2c/busses/i2c-mpc.c             |  4 +-
+ drivers/i2c/busses/i2c-mt7621.c          | 26 +++++------
+ drivers/i2c/busses/i2c-mv64xxx.c         | 12 ++---
+ drivers/i2c/busses/i2c-nvidia-gpu.c      |  7 ++-
+ drivers/i2c/busses/i2c-ocores.c          |  8 ++--
+ drivers/i2c/busses/i2c-octeon-core.c     |  6 +--
+ drivers/i2c/busses/i2c-octeon-core.h     |  4 +-
+ drivers/i2c/busses/i2c-octeon-platdrv.c  |  2 +-
+ drivers/i2c/busses/i2c-opal.c            | 10 ++---
+ drivers/i2c/busses/i2c-owl.c             | 12 ++---
+ drivers/i2c/busses/i2c-pasemi-core.c     |  6 +--
+ drivers/i2c/busses/i2c-piix4.c           |  2 +-
+ drivers/i2c/busses/i2c-powermac.c        | 14 +++---
+ drivers/i2c/busses/i2c-pxa-pci.c         |  2 +-
+ drivers/i2c/busses/i2c-riic.c            |  8 ++--
+ drivers/i2c/busses/i2c-rk3x.c            | 20 ++++-----
+ drivers/i2c/busses/i2c-robotfuzz-osif.c  |  4 +-
+ drivers/i2c/busses/i2c-rzv2m.c           | 12 ++---
+ drivers/i2c/busses/i2c-sis5595.c         |  2 +-
+ drivers/i2c/busses/i2c-sprd.c            | 16 +++----
+ drivers/i2c/busses/i2c-st.c              |  8 ++--
+ drivers/i2c/busses/i2c-stm32f4.c         |  8 ++--
+ drivers/i2c/busses/i2c-sun6i-p2wi.c      | 20 ++++-----
+ drivers/i2c/busses/i2c-taos-evm.c        |  2 +-
+ drivers/i2c/busses/i2c-tegra-bpmp.c      |  4 +-
+ drivers/i2c/busses/i2c-thunderx-pcidrv.c |  2 +-
+ drivers/i2c/busses/i2c-tiny-usb.c        |  6 +--
+ drivers/i2c/busses/i2c-uniphier-f.c      | 26 +++++------
+ drivers/i2c/busses/i2c-uniphier.c        | 15 +++----
+ drivers/i2c/busses/i2c-viai2c-common.c   |  2 +-
+ drivers/i2c/busses/i2c-viai2c-wmt.c      |  8 ++--
+ drivers/i2c/busses/i2c-viai2c-zhaoxin.c  | 12 ++---
+ drivers/i2c/busses/i2c-viperboard.c      | 10 ++---
+ drivers/i2c/busses/i2c-virtio.c          |  2 +-
+ include/linux/i2c.h                      | 24 +++++++---
+ 64 files changed, 313 insertions(+), 320 deletions(-)
+
 -- 
-2.25.1
+2.43.0
 
 
