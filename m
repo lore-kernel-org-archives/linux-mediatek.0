@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD146C38150
-	for <linux-mediatek@archiver.kernel.org>; Sat,  6 Jul 2024 08:29:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FD18C3DA40
+	for <linux-mediatek@archiver.kernel.org>; Sat,  6 Jul 2024 08:29:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jPXD+qcLYIZlSplWWRhXiQpzkJn0MvNcUYDTnCW+WRA=; b=LYG6MGUhGhF2EgwwrIvNbkkU1A
-	rCR//oojQq1RWPAYknKasVJuwo2ywRRS0TC9ZdOyBRZBIGuXji+ZQWEM7Z9wYCMUZ8SRuUysZBhoa
-	g4HD9Z3hrJbBqJVgtUtOpum+L36zQzHH0WFoWFw+xN79WGBGJW8Kkj5ypreiRKKclhPRsAeRBWeJb
-	b3KlXkBaDMK2VXBBt46rs/c0VT3ODraO5Lrj9ZjQ8vVO13Undxk72jL0aG0+5Kig1mOD+GVpWf3ja
-	Ch9txM+gyWWnLwPCHHtu5BzZcb5BtE66sTobZyXub17epc10KrNKO/gbz4NBzmt2lbunWfG2Bs93x
-	Z2FUrtcg==;
+	bh=OjLrFfQCCVnCNReIrv8FgOPJoGhFLKjOF2fw6M5UKFA=; b=QgaB8UynDIvSrQSHwwpgTSOVjV
+	c9V4g1A2sAr1idrtnj9xALMlJv5tAwFFbFD+kr4rx7if6lW57M8WKckYjTKH1Vp47lzgZOQTVAAkx
+	Sdmn/uqewP/D8HRZoXrE8zp0dwGTzAdu+JlDxhhzvrxf4eCstqL/SHVyS3n5p0C0kw0kHVw8wlCk/
+	hbr2eBOu6amSbfeRnWxQ4PkX/Bb7CvJS+Xxbxe6qvBF/LWFy214pFFYGtw3uPnjLfdNjnQ7gd+rXs
+	UCLbmOHiMcppR5lbyG6yo51P8GtXoYgMFWkY7/DhSH7KZFs9cPd8WB5KkjTluecUj2/CMbf/PJDcY
+	IbrPsG8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sQ0nQ-0000000HYMH-1lSp;
+	id 1sQ0nQ-0000000HYMf-3Kla;
 	Sat, 06 Jul 2024 08:29:28 +0000
-Received: from mail-oa1-f54.google.com ([209.85.160.54])
+Received: from mail-oa1-f52.google.com ([209.85.160.52])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sQ0nM-0000000HYJa-2Hl7
+	id 1sQ0nO-0000000HYKx-0gkk
 	for linux-mediatek@lists.infradead.org;
-	Sat, 06 Jul 2024 08:29:25 +0000
-Received: by mail-oa1-f54.google.com with SMTP id 586e51a60fabf-254939503baso94617fac.0
-        for <linux-mediatek@lists.infradead.org>; Sat, 06 Jul 2024 01:29:24 -0700 (PDT)
+	Sat, 06 Jul 2024 08:29:27 +0000
+Received: by mail-oa1-f52.google.com with SMTP id 586e51a60fabf-24c5ec50da1so284908fac.3
+        for <linux-mediatek@lists.infradead.org>; Sat, 06 Jul 2024 01:29:26 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1720254563; x=1720859363;
+        d=1e100.net; s=20230601; t=1720254565; x=1720859365;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=jPXD+qcLYIZlSplWWRhXiQpzkJn0MvNcUYDTnCW+WRA=;
-        b=otk0ibmwhJ7XggQfFdqgz4/OnZpVZFO0mYBGIoQYN3r4okRroPYR48P07UpI/id3EF
-         HR5EzKLz6PyxMP4kbnHbMBCCLmJGutmYEFG4hmgB7jNx5Nr9eLOdxG0/yZaoVHWtRzDW
-         V0f0HnQsgoGeBpPxzEi2aCf5u9gExH3Kor6qDI60jKY5vZKGEzhH0JGJyg7nNf2l7oA9
-         iHbJKBO49PoGw8RBPlFwbK1glPE/at17yeyqsUPOb2G9490tkfdy7NcrVxCniLka30r5
-         6vvr28dNXKDqgBsDcsBUk4lrS4OUJAONt84mL/lxlyjzX/yWXbZyl4yEY4tEM3j8k0Nx
-         jfug==
-X-Forwarded-Encrypted: i=1; AJvYcCXu6GuxOWOvcQujbnefN+rH9EA9gWe2SpO90qCoZjE+SFP4msiVM3OQtKqCE8jPNOsonD+Uiu1XU4x9b/QUArkd9n4vgTS8uZA/G4rAJeCaC9pV
-X-Gm-Message-State: AOJu0YxyOQHADz2HhRxVjR8yc3n2cDgG3DexN7roDaFjbQ4wKXQ9lbvD
-	EZN/yDsM7Tqo7Hsg/wUnrqZsFkl8/JYn9KVYieDr6Y0v5azXoSSM
-X-Google-Smtp-Source: AGHT+IGSumjq8WH2euzBlt3u6CQIhacQboPCctwrhsnbLP+bFEVWpWgi5grP+bQyszbsoNsnemKBbw==
-X-Received: by 2002:a05:6871:24ca:b0:254:ecbd:1815 with SMTP id 586e51a60fabf-25e2bffce48mr6347097fac.5.1720254563614;
-        Sat, 06 Jul 2024 01:29:23 -0700 (PDT)
+        bh=OjLrFfQCCVnCNReIrv8FgOPJoGhFLKjOF2fw6M5UKFA=;
+        b=bTuabvz+EhWrEEmvVHIjWjWnXoSoTn+eggqj+wXMfiM68YwDKoVEmw/CezeKoo508/
+         KM7hHf9JrGSyghgqnHr/OvBZel8xVjYAkcBgDc2OTlMD8rAVGDbxeLU6aZC6E1N7WElK
+         Msfk7JbH87hEqwENGYszTqawlDTYfIz6WWRzKxjGz4fKjmL62BReD+HxHoZQlQa3DRdO
+         HJoCY0CgI77/rNciPWBNTGlLBbT5k7Cm6wSqminJnu6wyUKltTP0OVx8z4vdaW4pHAGQ
+         aE1h5jxvF4ZBY+YA8g0QFktnqEzshpIbj/PkLre+L8/UgI5h33Gi8yPye8JKhQJNdAf8
+         usbg==
+X-Forwarded-Encrypted: i=1; AJvYcCX9slS9IvaATDkDWFc0Dmf33677k2AlOS/OGbfmCA6ZPXxrukOQ/S2DM/ydUNw4bmLqb+d7F1vxMBGIhjURGswZLQ7z8CQ0YFwDbMt27LAyksiW
+X-Gm-Message-State: AOJu0YwcDMrUzUXn+ABGU65sCOywYnajllQznSdaUk3HwPfEJl4bR7Sm
+	Y9U6JXaiU7ojlojO7IsPjqVkCDZxz4C927fyzvM1h/yk9hu0JtotzuI6g8IA
+X-Google-Smtp-Source: AGHT+IEZYIH1kmad4nC0WoETgsT1zmYli5oIUph3ObeeImE7AAkcePYHQa7IFlYEjWurI4v3OK5eDg==
+X-Received: by 2002:a05:6870:a1a0:b0:254:7e18:7e1a with SMTP id 586e51a60fabf-25e2bff9792mr6813517fac.5.1720254565371;
+        Sat, 06 Jul 2024 01:29:25 -0700 (PDT)
 Received: from sean-ThinkPad-T450s.attlocal.net ([2600:1702:5083:7610:1e13:57ab:ecc5:1fd4])
-        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-25e71070ba1sm10744fac.34.2024.07.06.01.29.22
+        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-25e71070ba1sm10744fac.34.2024.07.06.01.29.23
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 06 Jul 2024 01:29:22 -0700 (PDT)
+        Sat, 06 Jul 2024 01:29:24 -0700 (PDT)
 From: sean.wang@kernel.org
 To: nbd@nbd.name,
 	lorenzo.bianconi@redhat.com
@@ -59,18 +59,17 @@ Cc: sean.wang@mediatek.com,
 	mingyen.hsieh@mediatek.com,
 	linux-wireless@vger.kernel.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 36/37] wifi: mt76: mt7925: remove the unused mt7925_mcu_set_chan_info
-Date: Sat,  6 Jul 2024 01:28:16 -0700
-Message-Id: <0aa0abe7fc661380ae812c6bc879a7705de401b2.1720248331.git.sean.wang@kernel.org>
+Subject: [PATCH v2 37/37] wifi: mt76: mt7925: enabling MLO when the firmware supports it
+Date: Sat,  6 Jul 2024 01:28:17 -0700
+Message-Id: <49c796b101e792c84bc2c0d74753022b75fd3355.1720248331.git.sean.wang@kernel.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <cover.1720248331.git.sean.wang@kernel.org>
 References: <cover.1720248331.git.sean.wang@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240706_012924_620587_9107185D 
-X-CRM114-Status: UNSURE (   9.77  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240706_012926_231562_0C7F9482 
+X-CRM114-Status: GOOD (  15.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,7 +86,7 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Sean Wang <sean.wang@mediatek.com>
 
-remove the unused function mt7925_mcu_set_chan_info
+Register MLD capability for the firmware supporting MLO.
 
 Co-developed-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
 Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
@@ -95,94 +94,153 @@ Co-developed-by: Deren Wu <deren.wu@mediatek.com>
 Signed-off-by: Deren Wu <deren.wu@mediatek.com>
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- .../net/wireless/mediatek/mt76/mt7925/mcu.c   | 74 -------------------
- 1 file changed, 74 deletions(-)
+ .../wireless/mediatek/mt76/mt76_connac_mcu.h  |  1 +
+ .../net/wireless/mediatek/mt76/mt7925/init.c  |  6 ++++
+ .../net/wireless/mediatek/mt76/mt7925/main.c  | 29 +++++++++++++++++++
+ .../net/wireless/mediatek/mt76/mt7925/mcu.c   | 20 +++++++++++++
+ .../wireless/mediatek/mt76/mt7925/mt7925.h    |  1 +
+ drivers/net/wireless/mediatek/mt76/mt792x.h   |  2 ++
+ 6 files changed, 59 insertions(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-index 5f2f866e3ce7..cb5c607b9260 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-@@ -1274,80 +1274,6 @@ int mt7925_mcu_abort_roc(struct mt792x_phy *phy, struct mt792x_bss_conf *mconf,
- 				 &req, sizeof(req), false);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+index d6882c9fd6bc..4242d436de26 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+@@ -1402,6 +1402,7 @@ enum {
+ 	MT_NIC_CAP_WFDMA_REALLOC,
+ 	MT_NIC_CAP_6G,
+ 	MT_NIC_CAP_CHIP_CAP = 0x20,
++	MT_NIC_CAP_EML_CAP = 0x22,
+ };
+ 
+ #define UNI_WOW_DETECT_TYPE_MAGIC		BIT(0)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/init.c b/drivers/net/wireless/mediatek/mt76/mt7925/init.c
+index c4cbc8976046..039949b344b9 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/init.c
+@@ -179,6 +179,12 @@ static void mt7925_init_work(struct work_struct *work)
+ 	mt76_set_stream_caps(&dev->mphy, true);
+ 	mt7925_set_stream_he_eht_caps(&dev->phy);
+ 
++	ret = mt7925_init_mlo_caps(&dev->phy);
++	if (ret) {
++		dev_err(dev->mt76.dev, "MLO init failed\n");
++		return;
++	}
++
+ 	ret = mt76_register_device(&dev->mt76, true, mt76_rates,
+ 				   ARRAY_SIZE(mt76_rates));
+ 	if (ret) {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+index 0c4e106ae735..b5dd4430f459 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+@@ -236,6 +236,35 @@ mt7925_init_eht_caps(struct mt792x_phy *phy, enum nl80211_band band,
+ 	eht_nss->bw._160.rx_tx_mcs13_max_nss = val;
  }
  
--int mt7925_mcu_set_chan_info(struct mt792x_phy *phy, u16 tag)
--{
--	static const u8 ch_band[] = {
--		[NL80211_BAND_2GHZ] = 0,
--		[NL80211_BAND_5GHZ] = 1,
--		[NL80211_BAND_6GHZ] = 2,
--	};
--	struct mt792x_dev *dev = phy->dev;
--	struct cfg80211_chan_def *chandef = &phy->mt76->chandef;
--	int freq1 = chandef->center_freq1;
--	u8 band_idx = chandef->chan->band != NL80211_BAND_2GHZ;
--	struct {
--		/* fixed field */
--		u8 __rsv[4];
--
--		__le16 tag;
--		__le16 len;
--		u8 control_ch;
--		u8 center_ch;
--		u8 bw;
--		u8 tx_path_num;
--		u8 rx_path;	/* mask or num */
--		u8 switch_reason;
--		u8 band_idx;
--		u8 center_ch2;	/* for 80+80 only */
--		__le16 cac_case;
--		u8 channel_band;
--		u8 rsv0;
--		__le32 outband_freq;
--		u8 txpower_drop;
--		u8 ap_bw;
--		u8 ap_center_ch;
--		u8 rsv1[53];
--	} __packed req = {
--		.tag = cpu_to_le16(tag),
--		.len = cpu_to_le16(sizeof(req) - 4),
--		.control_ch = chandef->chan->hw_value,
--		.center_ch = ieee80211_frequency_to_channel(freq1),
--		.bw = mt76_connac_chan_bw(chandef),
--		.tx_path_num = hweight8(phy->mt76->antenna_mask),
--		.rx_path = phy->mt76->antenna_mask,
--		.band_idx = band_idx,
--		.channel_band = ch_band[chandef->chan->band],
--	};
--
--	if (chandef->chan->band == NL80211_BAND_6GHZ)
--		req.channel_band = 2;
--	else
--		req.channel_band = chandef->chan->band;
--
--	if (tag == UNI_CHANNEL_RX_PATH ||
--	    dev->mt76.hw->conf.flags & IEEE80211_CONF_MONITOR)
--		req.switch_reason = CH_SWITCH_NORMAL;
--	else if (phy->mt76->hw->conf.flags & IEEE80211_CONF_OFFCHANNEL)
--		req.switch_reason = CH_SWITCH_SCAN_BYPASS_DPD;
--	else if (!cfg80211_reg_can_beacon(phy->mt76->hw->wiphy, chandef,
--					  NL80211_IFTYPE_AP))
--		req.switch_reason = CH_SWITCH_DFS;
--	else
--		req.switch_reason = CH_SWITCH_NORMAL;
--
--	if (tag == UNI_CHANNEL_SWITCH)
--		req.rx_path = hweight8(req.rx_path);
--
--	if (chandef->width == NL80211_CHAN_WIDTH_80P80) {
--		int freq2 = chandef->center_freq2;
--
--		req.center_ch2 = ieee80211_frequency_to_channel(freq2);
--	}
--
--	return mt76_mcu_send_msg(&dev->mt76, MCU_UNI_CMD(CHANNEL_SWITCH),
--				 &req, sizeof(req), true);
--}
--
- int mt7925_mcu_set_eeprom(struct mt792x_dev *dev)
++int mt7925_init_mlo_caps(struct mt792x_phy *phy)
++{
++	struct wiphy *wiphy = phy->mt76->hw->wiphy;
++	static const u8 ext_capa_sta[] = {
++		[7] = WLAN_EXT_CAPA8_OPMODE_NOTIF,
++	};
++	static struct wiphy_iftype_ext_capab ext_capab[] = {
++		{
++			.iftype = NL80211_IFTYPE_STATION,
++			.extended_capabilities = ext_capa_sta,
++			.extended_capabilities_mask = ext_capa_sta,
++			.extended_capabilities_len = sizeof(ext_capa_sta),
++		},
++	};
++
++	if (!(phy->chip_cap & MT792x_CHIP_CAP_MLO_EVT_EN))
++		return 0;
++
++	ext_capab[0].eml_capabilities = phy->eml_cap;
++	ext_capab[0].mld_capa_and_ops =
++		u16_encode_bits(1, IEEE80211_MLD_CAP_OP_MAX_SIMUL_LINKS);
++
++	wiphy->flags |= WIPHY_FLAG_SUPPORTS_MLO;
++	wiphy->iftype_ext_capab = ext_capab;
++	wiphy->num_iftype_ext_capab = ARRAY_SIZE(ext_capab);
++
++	return 0;
++}
++
+ static void
+ __mt7925_set_stream_he_eht_caps(struct mt792x_phy *phy,
+ 				struct ieee80211_supported_band *sband,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+index cb5c607b9260..ccc66c42c16c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+@@ -751,6 +751,20 @@ mt7925_mcu_parse_phy_cap(struct mt792x_dev *dev, char *data)
+ 	dev->has_eht = cap->eht;
+ }
+ 
++static void
++mt7925_mcu_parse_eml_cap(struct mt792x_dev *dev, char *data)
++{
++	struct mt7925_mcu_eml_cap {
++		u8 rsv[4];
++		__le16 eml_cap;
++		u8 rsv2[6];
++	} __packed * cap;
++
++	cap = (struct mt7925_mcu_eml_cap *)data;
++
++	dev->phy.eml_cap = le16_to_cpu(cap->eml_cap);
++}
++
+ static int
+ mt7925_mcu_get_nic_capability(struct mt792x_dev *dev)
  {
- 	struct {
+@@ -805,6 +819,12 @@ mt7925_mcu_get_nic_capability(struct mt792x_dev *dev)
+ 		case MT_NIC_CAP_PHY:
+ 			mt7925_mcu_parse_phy_cap(dev, tlv->data);
+ 			break;
++		case MT_NIC_CAP_CHIP_CAP:
++			memcpy(&dev->phy.chip_cap, (void *)skb->data, sizeof(u64));
++			break;
++		case MT_NIC_CAP_EML_CAP:
++			mt7925_mcu_parse_eml_cap(dev, tlv->data);
++			break;
+ 		default:
+ 			break;
+ 		}
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h b/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
+index 1ae66629e39f..669f3a079d04 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
+@@ -235,6 +235,7 @@ void mt7925_queue_rx_skb(struct mt76_dev *mdev, enum mt76_rxq_id q,
+ 			 struct sk_buff *skb, u32 *info);
+ void mt7925_stats_work(struct work_struct *work);
+ void mt7925_set_stream_he_eht_caps(struct mt792x_phy *phy);
++int mt7925_init_mlo_caps(struct mt792x_phy *phy);
+ int mt7925_init_debugfs(struct mt792x_dev *dev);
+ 
+ int mt7925_mcu_set_beacon_filter(struct mt792x_dev *dev,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt792x.h b/drivers/net/wireless/mediatek/mt76/mt792x.h
+index 5ede24116748..30635aeba363 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt792x.h
++++ b/drivers/net/wireless/mediatek/mt76/mt792x.h
+@@ -27,6 +27,7 @@
+ 
+ #define MT792x_CHIP_CAP_CLC_EVT_EN BIT(0)
+ #define MT792x_CHIP_CAP_RSSI_NOTIFY_EVT_EN BIT(1)
++#define MT792x_CHIP_CAP_MLO_EVT_EN BIT(2)
+ 
+ /* NOTE: used to map mt76_rates. idx may change if firmware expands table */
+ #define MT792x_BASIC_RATES_TBL	11
+@@ -163,6 +164,7 @@ struct mt792x_phy {
+ #endif
+ 	void *clc[MT792x_CLC_MAX_NUM];
+ 	u64 chip_cap;
++	u16 eml_cap;
+ 
+ 	struct work_struct roc_work;
+ 	struct timer_list roc_timer;
 -- 
 2.25.1
 
