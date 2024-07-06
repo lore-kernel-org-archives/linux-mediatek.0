@@ -4,66 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00D90C3814E
-	for <linux-mediatek@archiver.kernel.org>; Sat,  6 Jul 2024 00:51:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF18DC3814E
+	for <linux-mediatek@archiver.kernel.org>; Sat,  6 Jul 2024 03:54:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mIrE9h3XuvM+V/JFI7S1heD4eYLxix3hTAcG/I5QFKA=; b=AKBQDToMTxtwpgIlWBBV4n9IjH
-	lIlKPwG3ea4MXqUhAYvxiJzlXJQ4xwFHyy4HYse+XWQ/hbW+6zvQ5zVzNRjjFajgUYWfzymJUmUHB
-	/apw4z8eEPzZJ9d/eLot1Xhi1eP0PTvVdAx6p9mbFtuiNKni+nfrf0DXoPTR0yzB2xIFmrw3HIZxE
-	qa6u1PX68Y+7KQRrwpOXDd6nzwx75na8cGZ6Qw/8vKAvq/s3EWfMDPhJRUyoHUb79nktB4AklN3IT
-	5BO39q/rPz1PCSFJAgLeNz3q/X9/2Fw1I9cgERPCAtXEDdk6MaQ/rRbFdrs2Me2KjuSvXGqXkSaei
-	izBQoyTQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=5D4tI0AD6TKB5f8V0gI1Ny//6YFM3x96o/cMbfklP+8=; b=b7JNyjJn2ZsNBWQXxDWXV4MKvG
+	e9GA2a/2t0L7euUsiFElH/mw6zm9oV/mTaSpH/hiO7ccvhflJDf1PpqEUZ6ruYQWBrkEiIJRW0+FS
+	bQnALwqK38L6bMLVgayuEQ+Tc+1sjXv4bIySLQjaW+qPeSxS51nhOgn4yOXT2iVhZdZY04XhYCliN
+	8ICKGbA26SYrf2lrLeXq+vKUXqOqsYZdejT0fwkkRe4R/vMP8Ziblgl2c1i7QqOCXhtpc3KR8oIDm
+	AjR3MFtDRknSaymAb5FLl9ff4Nnqdyh9ilI+3NwJq7DsuPgioFJOzewVxIDoU0jisxsCpRld6CPVZ
+	st3brqFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPtdr-0000000H4pK-2s4C;
-	Sat, 06 Jul 2024 00:51:07 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1sPwVN-0000000HGHl-2XfA;
+	Sat, 06 Jul 2024 03:54:33 +0000
+Received: from mail-il1-f177.google.com ([209.85.166.177])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sPtdJ-0000000H4XB-1DOK;
-	Sat, 06 Jul 2024 00:50:36 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id ED5B862CE4;
-	Sat,  6 Jul 2024 00:50:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 9A540C4AF0A;
-	Sat,  6 Jul 2024 00:50:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1720227031;
-	bh=HXI9F2ozN47lIoalS26/JYpw58LCH3Ts4N8MhjcGSRg=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=JQ13BSAyJAcj+HqE4VITbXvGp5bh5LKDp0SuXKBPhAf5zMn3jB4K8neJAnSfnLNL8
-	 q/7kb5fa/dDSTHVTt6WuUGDKJyDL2MR6OIZCX8McdSDURcnFx4hnAxA6m1KoU26uaa
-	 /hrHcuwPq13uD7NxXVUdDLJfzqLrJa+8dddVPNpcMdYRkxXAa3iV29eJ/CRtnUN8C8
-	 TK94jp6AvNt6dVUIXdQgR04W+cgg34bR1ie9XmNlP0ZZr7hLulTiyCLHQskDIN9+rO
-	 14grHr/lJ8AalelomHQfBOchspgmY4Z3FJJSse0x6mvLR4kduK8zf2Kg/dMgLZwYMX
-	 NXjkoBZcTzWYw==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 8E7E3C433A2;
-	Sat,  6 Jul 2024 00:50:31 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1sPwV8-0000000HGFa-1iGS;
+	Sat, 06 Jul 2024 03:54:20 +0000
+Received: by mail-il1-f177.google.com with SMTP id e9e14a558f8ab-37636c3872bso9138285ab.3;
+        Fri, 05 Jul 2024 20:54:18 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1720238057; x=1720842857;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=5D4tI0AD6TKB5f8V0gI1Ny//6YFM3x96o/cMbfklP+8=;
+        b=cp/1q6zHyxFRH6rVFdE7FO38CMl1Ky8iF9PlR/R0BKoJUko8TAh4zBkORpuR5GXhzH
+         rk5HKOhGI9LMiCW9w1EtwenpKKXeVBcyJw6C74EOGlNiMjo6N+pH+TwkdUyZdT5V6GbZ
+         dngvrtqNrwUCD63aPaYcSSQU6Smid9Z9mZWEq15eymVr4+CKM9ViYeLYsOmo4i3AUEoO
+         n89CGR521Z+2ojj0n/+epo7Y5Mcz8N1iqsmQ/M2dS3nK/penzvwAd7FTqlIkEMwcX4IL
+         vvPvvmy9pPOJlnDEy14BdPk5ashHRFeflE7UiPZem1Y2VKN6IShZDm3R1Ax45oc0CS0B
+         Am/w==
+X-Forwarded-Encrypted: i=1; AJvYcCWAwGpAoAdwCRXYRTBIdAZ8+S/Q5g2fjsysE9DogRuBdHjIE0Q+dH2CGI3IDXFQjWxYI2eGWvDrKmb+i+PTdtXeCfyt0w1C4EFXeMOqgO41Tu/Cq2znJKA9gunfyww5/YWYy1u7HlchfqeM4U0YmvynKaWxTdAscj4=
+X-Gm-Message-State: AOJu0YzFUcH1vibej/ydmlYf/zh7giEw/2KBznGBnbjB71e6xrj0y1mR
+	yjoekt6mcsG5Vgl8UutLjQaV4G8o9huTSQAR94/DkKxlT77XLWAH
+X-Google-Smtp-Source: AGHT+IFkmr6rOVVQ6tzIaz/yVRjICqptKhGOdC6MQB/5XVn5kCPoeWBDP61rz3vPYC4BMP0jc8MmoA==
+X-Received: by 2002:a05:6e02:1ca5:b0:381:40be:4ce6 with SMTP id e9e14a558f8ab-38398a01bcbmr78518675ab.11.1720238057336;
+        Fri, 05 Jul 2024 20:54:17 -0700 (PDT)
+Received: from localhost (fpd11144dd.ap.nuro.jp. [209.17.68.221])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-70b12e6712esm1565477b3a.25.2024.07.05.20.54.16
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 05 Jul 2024 20:54:16 -0700 (PDT)
+Date: Sat, 6 Jul 2024 12:54:15 +0900
+From: Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>
+To: Jeff Johnson <quic_jjohnson@quicinc.com>
+Cc: Jingoo Han <jingoohan1@gmail.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Will Deacon <will@kernel.org>, Joyce Ooi <joyce.ooi@intel.com>,
+	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
+	Marc Zyngier <maz@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>,
+	Jianjun Wang <jianjun.wang@mediatek.com>,
+	Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Nirmal Patel <nirmal.patel@linux.intel.com>,
+	Jonathan Derrick <jonathan.derrick@linux.dev>,
+	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, kernel-janitors@vger.kernel.org
+Subject: Re: [PATCH v2] PCI: controller: add missing MODULE_DESCRIPTION()
+ macros
+Message-ID: <20240706035415.GJ1195499@rocinante>
+References: <20240626-md-drivers-pci-controller-v2-1-94c811db7a51@quicinc.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net-next] net: ethernet: mtk_eth_soc: implement
- .{get,set}_pauseparam ethtool ops
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <172022703158.32390.5319141379722143709.git-patchwork-notify@kernel.org>
-Date: Sat, 06 Jul 2024 00:50:31 +0000
-References: <e3ece47323444631d6cb479f32af0dfd6d145be0.1720088047.git.daniel@makrotopia.org>
-In-Reply-To: <e3ece47323444631d6cb479f32af0dfd6d145be0.1720088047.git.daniel@makrotopia.org>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: john@phrozen.org, nbd@nbd.name, sean.wang@mediatek.com,
- Mark-MC.Lee@mediatek.com, lorenzo@kernel.org, davem@davemloft.net,
- edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- linux@armlinux.org.uk, netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240626-md-drivers-pci-controller-v2-1-94c811db7a51@quicinc.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240705_175034_642117_05386F85 
-X-CRM114-Status: GOOD (  10.08  )
+X-CRM114-CacheID: sfid-20240705_205418_471360_63C9C140 
+X-CRM114-Status: UNSURE (   6.88  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,29 +96,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+Hello,
 
-This patch was applied to netdev/net-next.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
-
-On Thu, 4 Jul 2024 11:14:55 +0100 you wrote:
-> Implement operations to get and set flow-control link parameters.
-> Both is done by simply calling phylink_ethtool_{get,set}_pauseparam().
-> Fix whitespace in mtk_ethtool_ops while at it.
+> When ARCH=x86, make allmodconfig && make W=1 C=1 reports:
+> WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pci/controller/dwc/pci-exynos.o
+> WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pci/controller/pci-host-generic.o
+> WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pci/controller/pcie-altera.o
+> WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pci/controller/pcie-altera-msi.o
+> WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pci/controller/pcie-mediatek.o
+> WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pci/controller/pcie-mediatek-gen3.o
+> WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pci/controller/vmd.o
+> WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pci/controller/pcie-apple.o
+> WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/pci/controller/pcie-mt7621.o
 > 
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> ---
->  drivers/net/ethernet/mediatek/mtk_eth_soc.c | 18 +++++++++++++++++-
->  1 file changed, 17 insertions(+), 1 deletion(-)
+> Add the missing invocations of the MODULE_DESCRIPTION() macro.
 
-Here is the summary with links:
-  - [net-next] net: ethernet: mtk_eth_soc: implement .{get,set}_pauseparam ethtool ops
-    https://git.kernel.org/netdev/net-next/c/064fbc4e9b5a
+Applied to misc, thank you!
 
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
+[1/1] PCI: controller: Add missing MODULE_DESCRIPTION() macros
+      https://git.kernel.org/pci/pci/c/df472e9b08e2
 
-
+	Krzysztof
 
