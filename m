@@ -4,62 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 824EDC38150
-	for <linux-mediatek@archiver.kernel.org>; Sat,  6 Jul 2024 11:22:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 665BFC2BD09
+	for <linux-mediatek@archiver.kernel.org>; Sat,  6 Jul 2024 12:30:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HQCk7DO6hU38Dyc/nf2rcEWHOg3LjU+USrXlQ2610Iw=; b=s9TDxREs81tCntpAuHZBM9Ce0/
-	P5cOx8VQrIvJSwPUX8d5g6gn2sTvSq07Aw+ke6W0LUlYlGi8ddHi0MdIg+r2VYH1Z4rsq+UYkZMbF
-	kmmj9/DfCBoZXENEk0HiU9GtZ8+H8cHxaNZHOsK7ridSLwj7TxYmKwZKoyy/dycCnRIwjs+4KRFwm
-	YFDd0DQPc4LY3ptgJEAAU7sgY50e2Fw6NGfPhLqasQGnVaO+RSF06dsQlUSgLfSocJGvBoFW74CMd
-	1mGLHaYWPBfWaQgItZfprrjpIKMNDu31GdHDpxFQy6QJmy7oVHO9P9AOVjIkgEnXu2EDWhHGtsexb
-	pmxwzSXw==;
+	bh=mfBkrHmKlL3MZz4wQcwT+94LoICapHD3DjOpZAwXYb0=; b=1YCG0SGfz7o5pdw1PlgjBfbCYu
+	u3tgljsjzFqc2obw1fQNtelacnSwy3UxVMwNiYs9KPYdD2CCeEOx7BLZfXRgMImYJGN+c7u5ATCCO
+	0OAXpQ1KgZtfq1CLp4XfcWL4Ia34A6tN5anMTMPC/Z4pbm+99ldKUIr3e8HheMAyZSXFV3QFOPh70
+	2kFxaXdrKxTmzhY6nTYI1pgAjogsp3W83lWcbb+Eod6jXT6wmYeI8URsGrfju1ATqO1ITn7/ME/l4
+	yz+2tbNjGVXFel5ukw3+PXHuW1UuHFuCKINYzUd/DwPNzfOWrJHTMwBjY4WvnWiXZpjoMw+dplFr4
+	xy2ze9rw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sQ3US-000000007aw-4Bht;
-	Sat, 06 Jul 2024 11:22:05 +0000
-Received: from zeus03.de ([194.117.254.33] helo=mail.zeus03.de)
+	id 1sQ4YZ-00000000CuB-3b0M;
+	Sat, 06 Jul 2024 12:30:23 +0000
+Received: from nbd.name ([46.4.11.11])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sQ3UO-000000007Xk-2cRV
+	id 1sQ4YX-00000000Cth-0RBT
 	for linux-mediatek@lists.infradead.org;
-	Sat, 06 Jul 2024 11:22:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	sang-engineering.com; h=from:to:cc:subject:date:message-id
-	:in-reply-to:references:mime-version:content-transfer-encoding;
-	 s=k1; bh=HQCk7DO6hU38Dyc/nf2rcEWHOg3LjU+USrXlQ2610Iw=; b=IRdBNq
-	vVaqq5+x1F4Fwoq8bPnJZkaAVU+exmIklp6gz5VJPCv/OmiqxMOvakbc7KAvm8m7
-	/sWl6hZrwAODvl3soec03CbMNG4kYdbtX1A83ESndh8dJLN5/TwEpg0EProD9LLl
-	V0DRabARUEbjKJBArVBNRlrgHgM4ys6HyDW17wJvdPo7y6QGzCymvERB15oYh+3L
-	BVrYMym6UIEGKTWVH7B8zSY3rj6Z8slj+Ua9XOyWPLrny/+6Ni7+Mb3NTvcHtG7o
-	dS4/BlQC2pVKYsov1ou6Lj2lQKj+VU/tB1aUWVoC80Yy2MADSc3O9oT8ZE20bNef
-	fzIgAfOnuW/9lc3A==
-Received: (qmail 3810389 invoked from network); 6 Jul 2024 13:21:44 +0200
-Received: by mail.zeus03.de with ESMTPSA (TLS_AES_256_GCM_SHA384 encrypted, authenticated); 6 Jul 2024 13:21:44 +0200
-X-UD-Smtp-Session: l3s3148p1@40qHYpIcgoZQT+F6
-From: Wolfram Sang <wsa+renesas@sang-engineering.com>
-To: linux-i2c@vger.kernel.org
-Cc: Wolfram Sang <wsa+renesas@sang-engineering.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Stefan Roese <sr@denx.de>,
-	Andi Shyti <andi.shyti@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 31/60] i2c: mt7621: reword according to newest specification
-Date: Sat,  6 Jul 2024 13:20:31 +0200
-Message-ID: <20240706112116.24543-32-wsa+renesas@sang-engineering.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240706112116.24543-1-wsa+renesas@sang-engineering.com>
-References: <20240706112116.24543-1-wsa+renesas@sang-engineering.com>
+	Sat, 06 Jul 2024 12:30:22 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
+	s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
+	References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=mfBkrHmKlL3MZz4wQcwT+94LoICapHD3DjOpZAwXYb0=; b=g/Dh/GdeRhV8Vm2SygUVlfyMD+
+	R3+vH4XSFiN6pCNJcBRpQ4fTD4yw58Xcse/cnD1NyFRLc27niohVBcDMVbGe/Iq8qDOi3d3aeeHAP
+	MJnTxXEFirgCCifmJWshKa3e7VXRK4naKF6+qvaNm2nBa4UkOP/IJtW7iRahenYVVHJk=;
+Received: from p54ae937c.dip0.t-ipconnect.de ([84.174.147.124] helo=nf.local)
+	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+	(Exim 4.96)
+	(envelope-from <nbd@nbd.name>)
+	id 1sQ4YE-003End-32;
+	Sat, 06 Jul 2024 14:30:03 +0200
+Message-ID: <e91f19b0-58e5-4203-b882-7aa676cd13c5@nbd.name>
+Date: Sat, 6 Jul 2024 14:30:02 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 01/37] wifi: mt76: mt7925: update
+ mt76_connac_mcu_uni_add_dev for MLO
+To: sean.wang@kernel.org, lorenzo.bianconi@redhat.com
+Cc: sean.wang@mediatek.com, deren.wu@mediatek.com,
+ mingyen.hsieh@mediatek.com, linux-wireless@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+References: <cover.1720248331.git.sean.wang@kernel.org>
+ <5c184808c54b4e71c6feec05828a9f1f5be9b14d.1720248331.git.sean.wang@kernel.org>
+From: Felix Fietkau <nbd@nbd.name>
+Content-Language: en-US
+Autocrypt: addr=nbd@nbd.name; keydata=
+ xsDiBEah5CcRBADIY7pu4LIv3jBlyQ/2u87iIZGe6f0f8pyB4UjzfJNXhJb8JylYYRzIOSxh
+ ExKsdLCnJqsG1PY1mqTtoG8sONpwsHr2oJ4itjcGHfn5NJSUGTbtbbxLro13tHkGFCoCr4Z5
+ Pv+XRgiANSpYlIigiMbOkide6wbggQK32tC20QxUIwCg4k6dtV/4kwEeiOUfErq00TVqIiEE
+ AKcUi4taOuh/PQWx/Ujjl/P1LfJXqLKRPa8PwD4j2yjoc9l+7LptSxJThL9KSu6gtXQjcoR2
+ vCK0OeYJhgO4kYMI78h1TSaxmtImEAnjFPYJYVsxrhay92jisYc7z5R/76AaELfF6RCjjGeP
+ wdalulG+erWju710Bif7E1yjYVWeA/9Wd1lsOmx6uwwYgNqoFtcAunDaMKi9xVQW18FsUusM
+ TdRvTZLBpoUAy+MajAL+R73TwLq3LnKpIcCwftyQXK5pEDKq57OhxJVv1Q8XkA9Dn1SBOjNB
+ l25vJDFAT9ntp9THeDD2fv15yk4EKpWhu4H00/YX8KkhFsrtUs69+vZQwc0cRmVsaXggRmll
+ dGthdSA8bmJkQG5iZC5uYW1lPsJgBBMRAgAgBQJGoeQnAhsjBgsJCAcDAgQVAggDBBYCAwEC
+ HgECF4AACgkQ130UHQKnbvXsvgCgjsAIIOsY7xZ8VcSm7NABpi91yTMAniMMmH7FRenEAYMa
+ VrwYTIThkTlQzsFNBEah5FQQCACMIep/hTzgPZ9HbCTKm9xN4bZX0JjrqjFem1Nxf3MBM5vN
+ CYGBn8F4sGIzPmLhl4xFeq3k5irVg/YvxSDbQN6NJv8o+tP6zsMeWX2JjtV0P4aDIN1pK2/w
+ VxcicArw0VYdv2ZCarccFBgH2a6GjswqlCqVM3gNIMI8ikzenKcso8YErGGiKYeMEZLwHaxE
+ Y7mTPuOTrWL8uWWRL5mVjhZEVvDez6em/OYvzBwbkhImrryF29e3Po2cfY2n7EKjjr3/141K
+ DHBBdgXlPNfDwROnA5ugjjEBjwkwBQqPpDA7AYPvpHh5vLbZnVGu5CwG7NAsrb2isRmjYoqk
+ wu++3117AAMFB/9S0Sj7qFFQcD4laADVsabTpNNpaV4wAgVTRHKV/kC9luItzwDnUcsZUPdQ
+ f3MueRJ3jIHU0UmRBG3uQftqbZJj3ikhnfvyLmkCNe+/hXhPu9sGvXyi2D4vszICvc1KL4RD
+ aLSrOsROx22eZ26KqcW4ny7+va2FnvjsZgI8h4sDmaLzKczVRIiLITiMpLFEU/VoSv0m1F4B
+ FtRgoiyjFzigWG0MsTdAN6FJzGh4mWWGIlE7o5JraNhnTd+yTUIPtw3ym6l8P+gbvfoZida0
+ TspgwBWLnXQvP5EDvlZnNaKa/3oBes6z0QdaSOwZCRA3QSLHBwtgUsrT6RxRSweLrcabwkkE
+ GBECAAkFAkah5FQCGwwACgkQ130UHQKnbvW2GgCeMncXpbbWNT2AtoAYICrKyX5R3iMAoMhw
+ cL98efvrjdstUfTCP2pfetyN
+In-Reply-To: <5c184808c54b4e71c6feec05828a9f1f5be9b14d.1720248331.git.sean.wang@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240706_042200_972106_0E69DB50 
-X-CRM114-Status: GOOD (  11.73  )
+X-CRM114-CacheID: sfid-20240706_053021_262845_E3EBB744 
+X-CRM114-Status: GOOD (  14.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,118 +99,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Change the wording of this driver wrt. the newest I2C v7 and SMBus 3.2
-specifications and replace "master/slave" with more appropriate terms.
+On 06.07.24 10:27, sean.wang@kernel.org wrote:
+> From: Sean Wang <sean.wang@mediatek.com>
+> 
+> Set OMAC address with the per-link BSS. The change remains compatible with
+> the non-MLO mode and the older firmware.
+> 
+> Co-developed-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+> Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+> Co-developed-by: Deren Wu <deren.wu@mediatek.com>
+> Signed-off-by: Deren Wu <deren.wu@mediatek.com>
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> ---
+>   drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c | 6 ++++--
+>   1 file changed, 4 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+> index 4e3c8af98fe7..18801aaf6764 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+> @@ -4,6 +4,7 @@
+>   #include <linux/firmware.h>
+>   #include "mt76_connac2_mac.h"
+>   #include "mt76_connac_mcu.h"
+> +#include "mt792x.h"
+>   
+>   int mt76_connac_mcu_start_firmware(struct mt76_dev *dev, u32 addr, u32 option)
+>   {
+> @@ -1141,7 +1142,8 @@ int mt76_connac_mcu_uni_add_dev(struct mt76_phy *phy,
+>   				struct mt76_wcid *wcid,
+>   				bool enable)
+>   {
+> -	struct mt76_vif *mvif = (struct mt76_vif *)bss_conf->vif->drv_priv;
+> +	struct mt792x_bss_conf *mconf = mt792x_link_conf_to_mconf(bss_conf);
+> +	struct mt76_vif *mvif = &mconf->mt76;
+>   	struct mt76_dev *dev = phy->dev;
+>   	struct {
+>   		struct {
 
-Signed-off-by: Wolfram Sang <wsa+renesas@sang-engineering.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Stefan Roese <sr@denx.de>
----
- drivers/i2c/busses/i2c-mt7621.c | 26 +++++++++++++-------------
- 1 file changed, 13 insertions(+), 13 deletions(-)
+mt76_connac must not rely on mt792x functions, since it is also used by 
+the mt7615 driver. I've reverted this patch to the old version and 
+applied the rest. Please find a different solution for this issue and 
+send a follow-up patch separately.
 
-diff --git a/drivers/i2c/busses/i2c-mt7621.c b/drivers/i2c/busses/i2c-mt7621.c
-index 81d46169bc1f..23d417ff5e71 100644
---- a/drivers/i2c/busses/i2c-mt7621.c
-+++ b/drivers/i2c/busses/i2c-mt7621.c
-@@ -117,27 +117,27 @@ static int mtk_i2c_check_ack(struct mtk_i2c *i2c, u32 expected)
- 	return ((ack & ack_expected) == ack_expected) ? 0 : -ENXIO;
- }
- 
--static int mtk_i2c_master_start(struct mtk_i2c *i2c)
-+static int mtk_i2c_start(struct mtk_i2c *i2c)
- {
- 	iowrite32(SM0CTL1_START | SM0CTL1_TRI, i2c->base + REG_SM0CTL1_REG);
- 	return mtk_i2c_wait_idle(i2c);
- }
- 
--static int mtk_i2c_master_stop(struct mtk_i2c *i2c)
-+static int mtk_i2c_stop(struct mtk_i2c *i2c)
- {
- 	iowrite32(SM0CTL1_STOP | SM0CTL1_TRI, i2c->base + REG_SM0CTL1_REG);
- 	return mtk_i2c_wait_idle(i2c);
- }
- 
--static int mtk_i2c_master_cmd(struct mtk_i2c *i2c, u32 cmd, int page_len)
-+static int mtk_i2c_cmd(struct mtk_i2c *i2c, u32 cmd, int page_len)
- {
- 	iowrite32(cmd | SM0CTL1_TRI | SM0CTL1_PGLEN(page_len),
- 		  i2c->base + REG_SM0CTL1_REG);
- 	return mtk_i2c_wait_idle(i2c);
- }
- 
--static int mtk_i2c_master_xfer(struct i2c_adapter *adap, struct i2c_msg *msgs,
--			       int num)
-+static int mtk_i2c_xfer(struct i2c_adapter *adap, struct i2c_msg *msgs,
-+			int num)
- {
- 	struct mtk_i2c *i2c;
- 	struct i2c_msg *pmsg;
-@@ -157,7 +157,7 @@ static int mtk_i2c_master_xfer(struct i2c_adapter *adap, struct i2c_msg *msgs,
- 			goto err_timeout;
- 
- 		/* start sequence */
--		ret = mtk_i2c_master_start(i2c);
-+		ret = mtk_i2c_start(i2c);
- 		if (ret)
- 			goto err_timeout;
- 
-@@ -169,14 +169,14 @@ static int mtk_i2c_master_xfer(struct i2c_adapter *adap, struct i2c_msg *msgs,
- 			if (pmsg->flags & I2C_M_RD)
- 				addr |= 1;
- 			iowrite32(addr, i2c->base + REG_SM0D0_REG);
--			ret = mtk_i2c_master_cmd(i2c, SM0CTL1_WRITE, 2);
-+			ret = mtk_i2c_cmd(i2c, SM0CTL1_WRITE, 2);
- 			if (ret)
- 				goto err_timeout;
- 		} else {
- 			/* 7 bits address */
- 			addr = i2c_8bit_addr_from_msg(pmsg);
- 			iowrite32(addr, i2c->base + REG_SM0D0_REG);
--			ret = mtk_i2c_master_cmd(i2c, SM0CTL1_WRITE, 1);
-+			ret = mtk_i2c_cmd(i2c, SM0CTL1_WRITE, 1);
- 			if (ret)
- 				goto err_timeout;
- 		}
-@@ -202,7 +202,7 @@ static int mtk_i2c_master_xfer(struct i2c_adapter *adap, struct i2c_msg *msgs,
- 				cmd = SM0CTL1_WRITE;
- 			}
- 
--			ret = mtk_i2c_master_cmd(i2c, cmd, page_len);
-+			ret = mtk_i2c_cmd(i2c, cmd, page_len);
- 			if (ret)
- 				goto err_timeout;
- 
-@@ -222,7 +222,7 @@ static int mtk_i2c_master_xfer(struct i2c_adapter *adap, struct i2c_msg *msgs,
- 		}
- 	}
- 
--	ret = mtk_i2c_master_stop(i2c);
-+	ret = mtk_i2c_stop(i2c);
- 	if (ret)
- 		goto err_timeout;
- 
-@@ -230,7 +230,7 @@ static int mtk_i2c_master_xfer(struct i2c_adapter *adap, struct i2c_msg *msgs,
- 	return i;
- 
- err_ack:
--	ret = mtk_i2c_master_stop(i2c);
-+	ret = mtk_i2c_stop(i2c);
- 	if (ret)
- 		goto err_timeout;
- 	return -ENXIO;
-@@ -247,8 +247,8 @@ static u32 mtk_i2c_func(struct i2c_adapter *a)
- }
- 
- static const struct i2c_algorithm mtk_i2c_algo = {
--	.master_xfer	= mtk_i2c_master_xfer,
--	.functionality	= mtk_i2c_func,
-+	.xfer = mtk_i2c_xfer,
-+	.functionality = mtk_i2c_func,
- };
- 
- static const struct of_device_id i2c_mtk_dt_ids[] = {
--- 
-2.43.0
-
+- Felix
 
