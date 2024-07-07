@@ -4,68 +4,127 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2633FC30653
-	for <linux-mediatek@archiver.kernel.org>; Sun,  7 Jul 2024 05:48:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06FD0C38150
+	for <linux-mediatek@archiver.kernel.org>; Sun,  7 Jul 2024 09:25:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FvLLOujG+sispkldk5d/JDkLg6rmUGJQxZZpGjk6N1k=; b=A6ZcTvXjth8iWNlEj2FO3lEzf3
-	7CnuR/CosvmTRse2cjctjHuaqGdjiv8uDLIro17+NHDf4va3eO9iNUvlOKqdmACxbasBG6uN+d7Da
-	5SyHWTZ/e+B4WfAuZbQz87B1kP1jxWzliM2yk6D9hCrDjSh58TWMhf2h+WLaBq9GN5r1ze2GcmSNs
-	K7LoygdXQee+df5Al+FDyqzMpzBeQEi9d3WdUjxSmtha66dwGoVd0CIAH9XQvRkn23e4auYUELBEw
-	KnlJulEcNJNjEVtRWQW4g4xnfGu57PFvi6YGOIw8//CeK1OqwHRILnrX/F0qzpquCmaVPd71hwVhY
-	x1klBDyA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=jan1ql/L29Rs8eZjF6mvbICM+pY33rdSiq3JuC7mv+8=; b=2J85GsVyNId45QZB+TvPUvLeIP
+	tLgY7pg7lVzjhx6e4eG76xyuwHPd6+FGHln66gFv81c7yg4pJpfwIkWG124901/M+hJry7Bjjhuc3
+	XiKCdFKe9+5SGr9y9TyysIAa4Y2BMG9eCNV9FiZYWLD1E0O08enJ+5FlCWdtnM/zYjw/NqKc6JXCf
+	GTrIlDGXC0wjeQ2Av2EQ4XopLrDdss6vvtR8ZlPkG298/wlyGIJHv7oUBQ8+03rSSmvjZBUOvbwZb
+	UwvnV5an8ki1qvNSIDSWOLddtowde96hcdzGG4fC6WWac5Ndd/fr5ocyLY9LHXlBTxstAmXeUnfic
+	V+ArV88w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sQKl0-00000001NiD-3WbI;
-	Sun, 07 Jul 2024 05:48:18 +0000
-Received: from smtp-16.smtpout.orange.fr ([80.12.242.16] helo=smtp.smtpout.orange.fr)
+	id 1sQO8s-00000001aOp-3ixn;
+	Sun, 07 Jul 2024 09:25:10 +0000
+Received: from mail-japaneastazolkn190100000.outbound.protection.outlook.com ([2a01:111:f403:d405::] helo=TY3P286CU002.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sQKke-00000001NaV-0TqA
-	for linux-mediatek@lists.infradead.org;
-	Sun, 07 Jul 2024 05:47:57 +0000
-Received: from fedora.home ([86.243.222.230])
-	by smtp.orange.fr with ESMTPA
-	id QKkEsyOxChEtDQKkbs8JM4; Sun, 07 Jul 2024 07:47:53 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wanadoo.fr;
-	s=t20230301; t=1720331273;
-	bh=FvLLOujG+sispkldk5d/JDkLg6rmUGJQxZZpGjk6N1k=;
-	h=From:To:Subject:Date:Message-ID:MIME-Version;
-	b=Arkbqk/rF+Qeh3EggStejlIIk3UciOU5fL6zikw24a2IdLk4qT25osFZD504bpcep
-	 2lkJqWweuMb4mBZuvA2HmcywNHtfO+B3q/CN+cYw4nLX/aYiPBLS4Y06xzxPjca5lN
-	 VyGVifdfCrycNyHKvTHmeVZkXGpwogetdPFAUKTyBw3r/OWoTZE9YSwURqlgrGv0IQ
-	 S+bNubKoxCX67GSF2UFLfazn7lj9Y0NNvPwI/2upmI0BNJrdeH8xlLGfmyWqRMQP7b
-	 faYxIn5wIPaZHJxv3JRX6Sl2+Saa92UVTbfKRMbgSTPwgxvetuR31bxZNmrmnvcQo/
-	 6OB0tKyPRfkCg==
-X-ME-Helo: fedora.home
-X-ME-Auth: Y2hyaXN0b3BoZS5qYWlsbGV0QHdhbmFkb28uZnI=
-X-ME-Date: Sun, 07 Jul 2024 07:47:53 +0200
-X-ME-IP: 86.243.222.230
-From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-To: matthias.bgg@gmail.com,
+	id 1sQO8g-00000001aJw-3WHq;
+	Sun, 07 Jul 2024 09:25:02 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=eWftMy3+FWEw5o1DsUAR51p8KRmXq1lBxnVFO4UnK3nXhpwHDiV4rx2J1J9pgCXNCbQLFXHu+9CnAC+Z6jKfF5M5duxyV4XzAuas64uKQxjBXuO7bp4le6nd9TmmQztEASRwZL6OQwGrRE6o0v8hWy/o+KXdYz/JI4GyugCNCbudqOy80gd/CveN4kfJwayiYmSigpt2V2o0o7JtpfcOuGRgApFw63Fso/HsPSDlbbliazxE5pgRo2U/Rk5sFq+WDjbw44ubhoQvtJhjDLoivcwvzbwVB4tkiVosunhjYm7ACqDaozX74eMalan40k1N4cvE/BwV8vQWY5ZXa75Pvw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=jan1ql/L29Rs8eZjF6mvbICM+pY33rdSiq3JuC7mv+8=;
+ b=DhH1RyGLP2uX92KTUFoRglyGvctgsXKIV5ObI24l6y5KHEzAjkv9UaTRy6XZ7zL8WtU+YqWH0IysuSbG4xVkWChR0l7ECF73apFQoNR7QUifGRkTKm3Yj4IFAUNoGUeKL0i7YkDv2SiUDMbCsqb41V6fTGutXkQlp/2sl6cUiNTPwqg3lAnNQRy90GFPMg3lr9gwi+ALMzs6swQ5CAXb6gzd9QRyFWKcuu3aIhrnAfffXFb6pWtPzteOPQ43eUhETmb6j0Sxm4qu1KUJaTbw8RvyrBr0gIdevk6s8HAoTni+1M3uz1ta2d5iqg3xOaoSvWMUhqXaOXn5+XafyDPQAQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=outlook.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=jan1ql/L29Rs8eZjF6mvbICM+pY33rdSiq3JuC7mv+8=;
+ b=ark0i0fb/he+Uz48RFDES+B5y2R2Eo4EgjWr03XiNsZC/qLojB5kAsFps54hvnWPjRDTp+L/1w83y/nfR+Z4pNHDheD/hPL1Nv11eMGQ0kz+MXf81NBOi9kgOOw8cwuiR1XczecdERXLug6bXeNdgVWmu8lRlcsWz/pZippI6ySs3frhP4qcjlKhMwB/UAZgQJI9QJKzLgIyNdoGsGoAtUyqK/yZg7+ecdUcLyXIU636ishCxcDypaLhCLFdv/tjmBunNYAfcLustLw1YlM/H3/78+EVaWg8ahxj+bETCdkRvv9oVl2XvHeaK3FxxlxMYwYiAU/Xc+Nry31cpAROkw==
+Received: from OS3P286MB2597.JPNP286.PROD.OUTLOOK.COM (2603:1096:604:1f3::10)
+ by OSZP286MB2346.JPNP286.PROD.OUTLOOK.COM (2603:1096:604:15a::10) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7741.34; Sun, 7 Jul
+ 2024 09:24:35 +0000
+Received: from OS3P286MB2597.JPNP286.PROD.OUTLOOK.COM
+ ([fe80::90af:3f0d:73f8:cfeb]) by OS3P286MB2597.JPNP286.PROD.OUTLOOK.COM
+ ([fe80::90af:3f0d:73f8:cfeb%6]) with mapi id 15.20.7741.033; Sun, 7 Jul 2024
+ 09:24:34 +0000
+From: Shengyu Qu <wiagn233@outlook.com>
+To: nbd@nbd.name,
+	lorenzo@kernel.org,
+	ryder.lee@mediatek.com,
+	shayne.chen@mediatek.com,
+	sean.wang@mediatek.com,
+	kvalo@kernel.org,
+	matthias.bgg@gmail.com,
 	angelogioacchino.delregno@collabora.com,
-	fchiby@baylibre.com,
-	fparent@baylibre.com,
-	s.hauer@pengutronix.de
-Cc: linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
+	greearb@candelatech.com,
+	chui-hao.chiu@mediatek.com,
+	rany_hany@riseup.net,
+	meichia.chiu@mediatek.com,
+	StanleyYP.Wang@mediatek.com,
+	allen.ye@mediatek.com,
+	linux-wireless@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
-	kernel-janitors@vger.kernel.org,
-	Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-Subject: [PATCH v2 3/3] soc: mediatek: pwrap: Use devm_clk_bulk_get_all_enable()
-Date: Sun,  7 Jul 2024 07:47:22 +0200
-Message-ID: <5b1114c538dd5230728592855f89942aec8ef83b.1720331018.git.christophe.jaillet@wanadoo.fr>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <cover.1720331018.git.christophe.jaillet@wanadoo.fr>
-References: <cover.1720331018.git.christophe.jaillet@wanadoo.fr>
-MIME-Version: 1.0
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Cc: Shengyu Qu <wiagn233@outlook.com>,
+	Sujuan Chen <sujuan.chen@mediatek.com>,
+	Bo Jiao <bo.jiao@mediatek.com>
+Subject: [PATCH v4] wifi: mt76: mt7915: add wds support when wed is enabled
+Date: Sun,  7 Jul 2024 17:22:55 +0800
+Message-ID: <OS3P286MB259748F6FA6BE628C3295D7498D92@OS3P286MB2597.JPNP286.PROD.OUTLOOK.COM>
+X-Mailer: git-send-email 2.34.1
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-TMN: [NLeiNRNhpp/5TQTOrK8RLXA1zsCU/w/m]
+X-ClientProxiedBy: SG2PR04CA0178.apcprd04.prod.outlook.com
+ (2603:1096:4:14::16) To OS3P286MB2597.JPNP286.PROD.OUTLOOK.COM
+ (2603:1096:604:1f3::10)
+X-Microsoft-Original-Message-ID: <20240707092255.14189-1-wiagn233@outlook.com>
+MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: OS3P286MB2597:EE_|OSZP286MB2346:EE_
+X-MS-Office365-Filtering-Correlation-Id: be804a5d-5583-4d71-347b-08dc9e669d6e
+X-Microsoft-Antispam: BCL:0;ARA:14566002|461199028|19110799003|8060799006|3412199025|440099028|1710799026;
+X-Microsoft-Antispam-Message-Info: 1UMAX6O9oXcKtekwUNWTrppbGCs3XJPz4w/fEptHOPwyubXMy7KRCkMFP32geG+40baz+JoegoVDFRHkGxCbZPKfEGYj1TkkgQlb5VUT75Xjc3XEY8MmIZGQ+MV85ooQcez2haNo8JjreJXstTgUxZcrkuBtW/1avnsNeLZAegilJwD8uN/etpUU/7LpLKdjktq0/ATOlygt/5Gx5lSA2nx1gAgT+tn67tuEPkQYD/2Y8V/WqC+V9itk5BciUgN45p5XZ/co0DX6n8xPlgzhWaVgOCfyZFm2my4DhtoWevNkc4dSYaZJs4Di7Q0rSwRBr1cLGX+zWb2r79W72YJE9sUT8BSG1KYiJ+uhOJz4iEuJzI2sohFTxA0pXdkgmVGRqHe3ZvW4VyImgqsAYVLhiKIZG8YQ4ab1dqeAJUNXZIdc1N0L19bCJIk3dp++o49RuLIkDCCdindrMIx9AertYCC4OCKG9k5qNpoPhDoBRoZzr95fOsEzfZw3UlEIMvUDe3LkWNA1U4C7m60eDUCCdheT3RqGhqqwTeOU3bvpBWgEauU49h+qwQ90qXFHyK7dIYVP8sla0JX5L52NkmOchsRFtzP8/2kqjsqs+S5c8KNvrwIyEGqCFrC7DKMJBPuYuvpRrXrqEFjKeMDozga01TlXK5fzOuBrGNrOJL0zCSlmOs8zRA9qCaE7F5pXYalm
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?YL6Ah+4/6nH1W8JPrtrs71t7YErUEz971b7LmEr3OJhe5kBOtQxh7bXU0KZC?=
+ =?us-ascii?Q?kM73IULUtT2ME9I5S79ZwKqxcI5snALVd+bZ09t4nfHDBu56gf99q1SQ3E6y?=
+ =?us-ascii?Q?duTCQbeL1KShEuCmYuKHjuXvKT+p8aX7LgRZ7QTdnydZUScYGP7q84sLWqFz?=
+ =?us-ascii?Q?iw2/csH7y9NTQggGAvoUWWao5X0xIx8jLUU6W6GRINWO7vp9bGOhG+49L7aX?=
+ =?us-ascii?Q?GeZTD6E8whjwpWLzDQHFTeW8ybKU5EN/puoU6VZ7PO6IzZzHCoLrLK0x8nMw?=
+ =?us-ascii?Q?CuKi4urkUYFJ46T04Hn5Hp9YU4hjYkr6f7dA3hH94wt4e5eLQ1pFBs/rYOD5?=
+ =?us-ascii?Q?v49a1N9OqKonIYps7LeUIVnDrA8WD7X+fzhmJRLrtu68xoWWjhiugCDaRoh4?=
+ =?us-ascii?Q?WFgy10BlIsBljHtHkKcq2TkDLoXED8p4oJfzqtl16hHx6jbkKwVvNzqoPozd?=
+ =?us-ascii?Q?raqJy3RNz69u2e+7DPV/Jq2mpoFB7bzG59ol0lEh5vhuspuldpnSuWPg7VX3?=
+ =?us-ascii?Q?RbeWttNo3/7zlEyJyez/UKpdlucyEjSGbAM1aelrQ44xg50RQDOXO3BOVThS?=
+ =?us-ascii?Q?X2FSP9TFtebdWuS2p9ozo3jLLvw4JM7MKboMU3IPAzaGNgWCdx29n208DX9I?=
+ =?us-ascii?Q?A4SIbq3EZgNMy5PmzfFBq0mWjFfg8U5uNaBmBF/sfB5GoF5OxBWQDXi7uGoU?=
+ =?us-ascii?Q?j/omEE7aHze5GkWbc9y08KMyQ4qIwFiD6wkW2eERlcOjlhHWwT6tND7fT2Y4?=
+ =?us-ascii?Q?nHgUmmjH/Agn7fXdj9nLqHr9FPGuEGYpmKf/w7N+Xh2A8wXhMnaUM68lUu93?=
+ =?us-ascii?Q?+EBOCLmkTssxNGqIcGD5vENyzbQS05SSp61coBTJz9qYosv58LnoqkIXB+X/?=
+ =?us-ascii?Q?gFMKTYj+vbZAPnjMRoKTASJJiQd6hBHjDllM4GE74sVxyr3ncRpLifcp8LG0?=
+ =?us-ascii?Q?tXtfaIwt6hdvliPjqEu5lFJVOZG1XAkGRgOicVg4JLB7shbaQQKVFf4g41/C?=
+ =?us-ascii?Q?ik3xtKnJaaNK2czFoJSMYE/C/uYAQOwjagPFLm2V4AYqAhlO7n5lmTp3hqEz?=
+ =?us-ascii?Q?EUuQoo/nMH1+PKXepT7FdnHQKRxbyK6BadBDK7fppfMA3lq3h9x7BhMyaWak?=
+ =?us-ascii?Q?JzTJlz03C3MzOsJEg0n0+SZOfpUs/y3S4uTmIEVw01Cak7VbL3wmVYgz8WzY?=
+ =?us-ascii?Q?hrm1NLnbTP6j+0UFkgLtjEE67J187eS0tNZtvoA8FO/bmxWwxCH6I900tRw?=
+ =?us-ascii?Q?=3D?=
+X-OriginatorOrg: outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: be804a5d-5583-4d71-347b-08dc9e669d6e
+X-MS-Exchange-CrossTenant-AuthSource: OS3P286MB2597.JPNP286.PROD.OUTLOOK.COM
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 Jul 2024 09:24:34.7739
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: OSZP286MB2346
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240706_224756_456282_060D3C83 
-X-CRM114-Status: GOOD (  18.06  )
+X-CRM114-CacheID: sfid-20240707_022459_000795_5A7BE4C3 
+X-CRM114-Status: GOOD (  20.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,171 +139,260 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use devm_clk_bulk_get_all_enable() to simplify the code and to make sure
-that clk_disable_unprepare() is called if the driver is unloaded.
+The current WED only supports 256 wcid, whereas mt7986 can support up to
+512 entries, so firmware provides a rule to get sta_info by DA when wcid
+is set to 0x3ff by txd. Also, WED provides a register to overwrite txd
+wcid, that is, wcid[9:8] can be overwritten by 0x3 and wcid[7:0] is set
+to 0xff by host driver.
 
-Fixes: 55924157da8c ("soc: mediatek: pwrap: add support for sys & tmr clocks")
-Fixes: 1f022d84bd19 ("soc: mediatek: Add PMIC wrapper for MT8135 and MT8173 SoCs")
-Suggested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+However, firmware is unable to get sta_info from DA as DA != RA for
+4addr cases, so firmware and wifi host driver both use wcid (256 - 271)
+and (768 ~ 783) for sync up to get correct sta_info.
+
+Tested-by: Sujuan Chen <sujuan.chen@mediatek.com>
+Co-developed-by: Bo Jiao <bo.jiao@mediatek.com>
+Signed-off-by: Bo Jiao <bo.jiao@mediatek.com>
+Signed-off-by: Sujuan Chen <sujuan.chen@mediatek.com>
+Signed-off-by: Shengyu Qu <wiagn233@outlook.com>
 ---
-Compile tested-only.
-I don't know this function, so I fully trust Angelo's analysis. :)
-
-Changes in v2:
-   - Add a Suggested-by tag
-   - Use devm_clk_bulk_get_all_enable()
-
-v1: https://lore.kernel.org/all/07b3745819c8ba818d4508ed12e93f14f29b80a2.1719652155.git.christophe.jaillet@wanadoo.fr/
+Changes since v1:
+ - Drop duplicate setting in mmio
+ - Reduce the patch size by redefining mt76_wcid_alloc
+Changes since v2:
+ - Rework wds wcid getting flow
+Changes since v3:
+ - Rebase to next-20240703
+ - Sync with downstream patch
 ---
- drivers/soc/mediatek/mtk-pmic-wrap.c | 82 ++++------------------------
- 1 file changed, 12 insertions(+), 70 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt76.h     |  9 +++++
+ .../net/wireless/mediatek/mt76/mt7915/main.c  | 32 ++++++++++++++--
+ .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 16 ++++++--
+ .../net/wireless/mediatek/mt76/mt7915/mcu.h   |  1 +
+ drivers/net/wireless/mediatek/mt76/util.c     | 37 +++++++++++++++++--
+ drivers/net/wireless/mediatek/mt76/util.h     |  7 +++-
+ 6 files changed, 91 insertions(+), 11 deletions(-)
 
-diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-index d57553486383..9fdc0ef79202 100644
---- a/drivers/soc/mediatek/mtk-pmic-wrap.c
-+++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-@@ -1366,10 +1366,6 @@ struct pmic_wrapper {
- 	struct regmap *regmap;
- 	const struct pmic_wrapper_type *master;
- 	const struct pwrap_slv_type *slave;
--	struct clk *clk_spi;
--	struct clk *clk_wrap;
--	struct clk *clk_sys;
--	struct clk *clk_tmr;
- 	struct reset_control *rstc;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index 15f83b5adac7..fd211f2cf13c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -28,6 +28,9 @@
  
- 	struct reset_control *rstc_bridge;
-@@ -2472,6 +2468,7 @@ static int pwrap_probe(struct platform_device *pdev)
- 	int ret, irq;
- 	u32 mask_done;
- 	struct pmic_wrapper *wrp;
-+	struct clk_bulk_data *clk;
- 	struct device_node *np = pdev->dev.of_node;
- 	const struct of_device_id *of_slave_id = NULL;
+ #define MT76_TOKEN_FREE_THR	64
  
-@@ -2521,49 +2518,10 @@ static int pwrap_probe(struct platform_device *pdev)
- 		}
- 	}
++#define MT76_WED_WDS_MIN    256
++#define MT76_WED_WDS_MAX    272
++
+ #define MT_QFLAG_WED_RING	GENMASK(1, 0)
+ #define MT_QFLAG_WED_TYPE	GENMASK(4, 2)
+ #define MT_QFLAG_WED		BIT(5)
+@@ -71,6 +74,12 @@ enum mt76_wed_type {
+ 	MT76_WED_RRO_Q_IND,
+ };
  
--	wrp->clk_spi = devm_clk_get(wrp->dev, "spi");
--	if (IS_ERR(wrp->clk_spi)) {
--		dev_dbg(wrp->dev, "failed to get clock: %ld\n",
--			PTR_ERR(wrp->clk_spi));
--		return PTR_ERR(wrp->clk_spi);
--	}
--
--	wrp->clk_wrap = devm_clk_get(wrp->dev, "wrap");
--	if (IS_ERR(wrp->clk_wrap)) {
--		dev_dbg(wrp->dev, "failed to get clock: %ld\n",
--			PTR_ERR(wrp->clk_wrap));
--		return PTR_ERR(wrp->clk_wrap);
--	}
--
--	wrp->clk_sys = devm_clk_get_optional(wrp->dev, "sys");
--	if (IS_ERR(wrp->clk_sys)) {
--		return dev_err_probe(wrp->dev, PTR_ERR(wrp->clk_sys),
--				     "failed to get clock: %pe\n",
--				     wrp->clk_sys);
--	}
--
--	wrp->clk_tmr = devm_clk_get_optional(wrp->dev, "tmr");
--	if (IS_ERR(wrp->clk_tmr)) {
--		return dev_err_probe(wrp->dev, PTR_ERR(wrp->clk_tmr),
--				     "failed to get clock: %pe\n",
--				     wrp->clk_tmr);
--	}
--
--	ret = clk_prepare_enable(wrp->clk_spi);
--	if (ret)
--		return ret;
--
--	ret = clk_prepare_enable(wrp->clk_wrap);
-+	ret = devm_clk_bulk_get_all_enable(wrp->dev, &clk);
- 	if (ret)
--		goto err_out1;
--
--	ret = clk_prepare_enable(wrp->clk_sys);
--	if (ret)
--		goto err_out2;
--
--	ret = clk_prepare_enable(wrp->clk_tmr);
--	if (ret)
--		goto err_out3;
-+		return dev_err_probe(wrp->dev, ret,
-+				     "failed to get clocks\n");
++enum mt76_wed_state {
++	MT76_WED_DEFAULT,
++	MT76_WED_ACTIVE,
++	MT76_WED_WDS_ACTIVE,
++};
++
+ struct mt76_bus_ops {
+ 	u32 (*rr)(struct mt76_dev *dev, u32 offset);
+ 	void (*wr)(struct mt76_dev *dev, u32 offset, u32 val);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/main.c b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
+index 049223df9beb..dc4d87e004a0 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
+@@ -745,8 +745,15 @@ int mt7915_mac_sta_add(struct mt76_dev *mdev, struct ieee80211_vif *vif,
+ 	bool ext_phy = mvif->phy != &dev->phy;
+ 	int ret, idx;
+ 	u32 addr;
++	u8 flags = MT76_WED_DEFAULT;
  
- 	/* Enable internal dynamic clock */
- 	if (HAS_CAP(wrp->master->caps, PWRAP_CAP_DCM)) {
-@@ -2579,7 +2537,7 @@ static int pwrap_probe(struct platform_device *pdev)
- 		ret = pwrap_init(wrp);
- 		if (ret) {
- 			dev_dbg(wrp->dev, "init failed with %d\n", ret);
--			goto err_out4;
-+			return ret;
- 		}
- 	}
+-	idx = mt76_wcid_alloc(dev->mt76.wcid_mask, MT7915_WTBL_STA);
++	if (mtk_wed_device_active(&dev->mt76.mmio.wed) &&
++	    !is_mt7915(&dev->mt76)) {
++		flags = test_bit(MT_WCID_FLAG_4ADDR, &msta->wcid.flags) ?
++		       MT76_WED_WDS_ACTIVE : MT76_WED_ACTIVE;
++	}
++
++	idx = __mt76_wcid_alloc(mdev->wcid_mask, MT7915_WTBL_STA, flags);
+ 	if (idx < 0)
+ 		return -ENOSPC;
  
-@@ -2592,8 +2550,7 @@ static int pwrap_probe(struct platform_device *pdev)
+@@ -1201,12 +1208,27 @@ static void mt7915_sta_set_4addr(struct ieee80211_hw *hw,
+ {
+ 	struct mt7915_dev *dev = mt7915_hw_dev(hw);
+ 	struct mt7915_sta *msta = (struct mt7915_sta *)sta->drv_priv;
++	int min = MT76_WED_WDS_MIN, max = MT76_WED_WDS_MAX;
  
- 	if (!(pwrap_readl(wrp, PWRAP_WACS2_RDATA) & mask_done)) {
- 		dev_dbg(wrp->dev, "initialization isn't finished\n");
--		ret = -ENODEV;
--		goto err_out4;
-+		return -ENODEV;
- 	}
+ 	if (enabled)
+ 		set_bit(MT_WCID_FLAG_4ADDR, &msta->wcid.flags);
+ 	else
+ 		clear_bit(MT_WCID_FLAG_4ADDR, &msta->wcid.flags);
  
- 	/* Initialize watchdog, may not be done by the bootloader */
-@@ -2622,42 +2579,27 @@ static int pwrap_probe(struct platform_device *pdev)
- 		pwrap_writel(wrp, wrp->master->int1_en_all, PWRAP_INT1_EN);
- 
- 	irq = platform_get_irq(pdev, 0);
--	if (irq < 0) {
--		ret = irq;
--		goto err_out2;
--	}
-+	if (irq < 0)
-+		return irq;
- 
- 	ret = devm_request_irq(wrp->dev, irq, pwrap_interrupt,
- 			       IRQF_TRIGGER_HIGH,
- 			       "mt-pmic-pwrap", wrp);
- 	if (ret)
--		goto err_out4;
-+		return ret;
- 
- 	wrp->regmap = devm_regmap_init(wrp->dev, NULL, wrp, wrp->slave->regops->regmap);
--	if (IS_ERR(wrp->regmap)) {
--		ret = PTR_ERR(wrp->regmap);
--		goto err_out2;
--	}
-+	if (IS_ERR(wrp->regmap))
-+		return PTR_ERR(wrp->regmap);
- 
- 	ret = of_platform_populate(np, NULL, NULL, wrp->dev);
- 	if (ret) {
- 		dev_dbg(wrp->dev, "failed to create child devices at %pOF\n",
- 				np);
--		goto err_out4;
-+		return ret;
- 	}
- 
- 	return 0;
--
--err_out4:
--	clk_disable_unprepare(wrp->clk_tmr);
--err_out3:
--	clk_disable_unprepare(wrp->clk_sys);
--err_out2:
--	clk_disable_unprepare(wrp->clk_wrap);
--err_out1:
--	clk_disable_unprepare(wrp->clk_spi);
--
--	return ret;
++	if (mtk_wed_device_active(&dev->mt76.mmio.wed) &&
++	    !is_mt7915(&dev->mt76) &&
++	    (msta->wcid.idx < min || msta->wcid.idx > max - 1)) {
++		struct ieee80211_sta *pre_sta;
++
++		pre_sta = kzalloc(sizeof(*sta) + sizeof(*msta), GFP_KERNEL);
++		mt76_sta_pre_rcu_remove(hw, vif, sta);
++		memmove(pre_sta, sta, sizeof(*sta) + sizeof(*msta));
++		mt7915_sta_add(hw, vif, sta);
++		synchronize_rcu();
++		mt7915_sta_remove(hw, vif, pre_sta);
++		kfree(pre_sta);
++	}
++
+ 	mt76_connac_mcu_wtbl_update_hdr_trans(&dev->mt76, vif, sta);
  }
  
- static struct platform_driver pwrap_drv = {
+@@ -1644,15 +1666,19 @@ mt7915_net_fill_forward_path(struct ieee80211_hw *hw,
+ 	if (!mtk_wed_device_active(wed))
+ 		return -ENODEV;
+ 
+-	if (msta->wcid.idx > 0xff)
++	if (msta->wcid.idx > MT7915_WTBL_STA)
+ 		return -EIO;
+ 
+ 	path->type = DEV_PATH_MTK_WDMA;
+ 	path->dev = ctx->dev;
+ 	path->mtk_wdma.wdma_idx = wed->wdma_idx;
+ 	path->mtk_wdma.bss = mvif->mt76.idx;
+-	path->mtk_wdma.wcid = is_mt7915(&dev->mt76) ? msta->wcid.idx : 0x3ff;
+ 	path->mtk_wdma.queue = phy != &dev->phy;
++	if (test_bit(MT_WCID_FLAG_4ADDR, &msta->wcid.flags) ||
++	    is_mt7915(&dev->mt76))
++		path->mtk_wdma.wcid = msta->wcid.idx;
++	else
++		path->mtk_wdma.wcid = 0x3ff;
+ 
+ 	ctx->dev = NULL;
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+index 9599adf104b1..c01d1b40eeef 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+@@ -2350,10 +2350,18 @@ int mt7915_mcu_init_firmware(struct mt7915_dev *dev)
+ 	if (ret)
+ 		return ret;
+ 
+-	if ((mtk_wed_device_active(&dev->mt76.mmio.wed) &&
+-	     is_mt7915(&dev->mt76)) ||
+-	    !mtk_wed_get_rx_capa(&dev->mt76.mmio.wed))
+-		mt7915_mcu_wa_cmd(dev, MCU_WA_PARAM_CMD(CAPABILITY), 0, 0, 0);
++	if (mtk_wed_device_active(&dev->mt76.mmio.wed)) {
++		if (is_mt7915(&dev->mt76) ||
++		    !mtk_wed_get_rx_capa(&dev->mt76.mmio.wed))
++			ret = mt7915_mcu_wa_cmd(dev, MCU_WA_PARAM_CMD(CAPABILITY),
++						0, 0, 0);
++		else
++			ret = mt7915_mcu_wa_cmd(dev, MCU_WA_PARAM_CMD(SET),
++						MCU_WA_PARAM_WED_VERSION,
++						dev->mt76.mmio.wed.rev_id, 0);
++		if (ret)
++			return ret;
++	}
+ 
+ 	ret = mt7915_mcu_set_mwds(dev, 1);
+ 	if (ret)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
+index b41ac4aaced7..b2bf5472b2d7 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
+@@ -279,6 +279,7 @@ enum {
+ 	MCU_WA_PARAM_CPU_UTIL = 0x0b,
+ 	MCU_WA_PARAM_RED = 0x0e,
+ 	MCU_WA_PARAM_RED_SETTING = 0x40,
++	MCU_WA_PARAM_WED_VERSION = 0x32,
+ };
+ 
+ enum mcu_mmps_mode {
+diff --git a/drivers/net/wireless/mediatek/mt76/util.c b/drivers/net/wireless/mediatek/mt76/util.c
+index d6c01a2dd198..461b74068fc3 100644
+--- a/drivers/net/wireless/mediatek/mt76/util.c
++++ b/drivers/net/wireless/mediatek/mt76/util.c
+@@ -42,9 +42,11 @@ bool ____mt76_poll_msec(struct mt76_dev *dev, u32 offset, u32 mask, u32 val,
+ }
+ EXPORT_SYMBOL_GPL(____mt76_poll_msec);
+ 
+-int mt76_wcid_alloc(u32 *mask, int size)
++int __mt76_wcid_alloc(u32 *mask, int size, u8 flag)
+ {
+ 	int i, idx = 0, cur;
++	int min = MT76_WED_WDS_MIN;
++	int max = MT76_WED_WDS_MAX;
+ 
+ 	for (i = 0; i < DIV_ROUND_UP(size, 32); i++) {
+ 		idx = ffs(~mask[i]);
+@@ -53,16 +55,45 @@ int mt76_wcid_alloc(u32 *mask, int size)
+ 
+ 		idx--;
+ 		cur = i * 32 + idx;
+-		if (cur >= size)
++
++		switch (flag) {
++		case MT76_WED_ACTIVE:
++			if (cur >= min && cur < max)
++				continue;
++
++			if (cur >= size) {
++				u32 end = max - min - 1;
++
++				i = min / 32;
++				idx = ffs(~mask[i] & GENMASK(end, 0));
++				if (!idx)
++					goto error;
++				idx--;
++				cur = min + idx;
++			}
++
+ 			break;
++		case MT76_WED_WDS_ACTIVE:
++			if (cur < min)
++				continue;
++			if (cur >= max)
++				goto error;
++
++			break;
++		default:
++			if (cur >= size)
++				goto error;
++			break;
++		}
+ 
+ 		mask[i] |= BIT(idx);
+ 		return cur;
+ 	}
+ 
++error:
+ 	return -1;
+ }
+-EXPORT_SYMBOL_GPL(mt76_wcid_alloc);
++EXPORT_SYMBOL_GPL(__mt76_wcid_alloc);
+ 
+ int mt76_get_min_avg_rssi(struct mt76_dev *dev, bool ext_phy)
+ {
+diff --git a/drivers/net/wireless/mediatek/mt76/util.h b/drivers/net/wireless/mediatek/mt76/util.h
+index 260965dde94c..99b7263c0a20 100644
+--- a/drivers/net/wireless/mediatek/mt76/util.h
++++ b/drivers/net/wireless/mediatek/mt76/util.h
+@@ -27,7 +27,12 @@ enum {
+ #define MT76_INCR(_var, _size) \
+ 	(_var = (((_var) + 1) % (_size)))
+ 
+-int mt76_wcid_alloc(u32 *mask, int size);
++int __mt76_wcid_alloc(u32 *mask, int size, u8 flags);
++
++static inline int mt76_wcid_alloc(u32 *mask, int size)
++{
++	return __mt76_wcid_alloc(mask, size, 0);
++}
+ 
+ static inline void
+ mt76_wcid_mask_set(u32 *mask, int idx)
 -- 
-2.45.2
+2.34.1
 
 
