@@ -4,87 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 665BFC2BD09
-	for <linux-mediatek@archiver.kernel.org>; Sat,  6 Jul 2024 12:30:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7FE8C30653
+	for <linux-mediatek@archiver.kernel.org>; Sun,  7 Jul 2024 05:47:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mfBkrHmKlL3MZz4wQcwT+94LoICapHD3DjOpZAwXYb0=; b=1YCG0SGfz7o5pdw1PlgjBfbCYu
-	u3tgljsjzFqc2obw1fQNtelacnSwy3UxVMwNiYs9KPYdD2CCeEOx7BLZfXRgMImYJGN+c7u5ATCCO
-	0OAXpQ1KgZtfq1CLp4XfcWL4Ia34A6tN5anMTMPC/Z4pbm+99ldKUIr3e8HheMAyZSXFV3QFOPh70
-	2kFxaXdrKxTmzhY6nTYI1pgAjogsp3W83lWcbb+Eod6jXT6wmYeI8URsGrfju1ATqO1ITn7/ME/l4
-	yz+2tbNjGVXFel5ukw3+PXHuW1UuHFuCKINYzUd/DwPNzfOWrJHTMwBjY4WvnWiXZpjoMw+dplFr4
-	xy2ze9rw==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=8pSTgdZnyG0WLlJB7fRFIXGVRIVCBFFXYFkuJxWni6Y=; b=iSiF5wyGyBFu5Bl+BtymGr5eqh
+	zSeY7PfajHXpVIzv57Qn9aCdhVE4hw5c4LoGmwysw/YHEunPrpKPBas6CBQ0f4+M83s6khKNK5DNs
+	avv2blF7fDTdpQ7uyIN//NBFg9zihzRQ+UBvs1S6UlCDplvtgkjJxPj9/z2n6Mt891gPTcIVkOYY+
+	YJGDgjk/YMOxmyvRrq+ryQe0lwRUWTzN/TMGNECcOoONbIwbeeBHlVRHrY/aey3QQTH3AgUxOvj3c
+	btO1VYrcukm6t6pdfDqf6CVWWuQJ/gdPee/mGDco3VbUTE1VQo1Eh7vjHp55PMWCPBvVdHzI4omv/
+	+fAtx+1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sQ4YZ-00000000CuB-3b0M;
-	Sat, 06 Jul 2024 12:30:23 +0000
-Received: from nbd.name ([46.4.11.11])
+	id 1sQKkc-00000001Nau-3Hto;
+	Sun, 07 Jul 2024 05:47:54 +0000
+Received: from smtp-15.smtpout.orange.fr ([80.12.242.15] helo=smtp.smtpout.orange.fr)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sQ4YX-00000000Cth-0RBT
+	id 1sQKkM-00000001NXh-3zLm
 	for linux-mediatek@lists.infradead.org;
-	Sat, 06 Jul 2024 12:30:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
-	s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
-	References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=mfBkrHmKlL3MZz4wQcwT+94LoICapHD3DjOpZAwXYb0=; b=g/Dh/GdeRhV8Vm2SygUVlfyMD+
-	R3+vH4XSFiN6pCNJcBRpQ4fTD4yw58Xcse/cnD1NyFRLc27niohVBcDMVbGe/Iq8qDOi3d3aeeHAP
-	MJnTxXEFirgCCifmJWshKa3e7VXRK4naKF6+qvaNm2nBa4UkOP/IJtW7iRahenYVVHJk=;
-Received: from p54ae937c.dip0.t-ipconnect.de ([84.174.147.124] helo=nf.local)
-	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-	(Exim 4.96)
-	(envelope-from <nbd@nbd.name>)
-	id 1sQ4YE-003End-32;
-	Sat, 06 Jul 2024 14:30:03 +0200
-Message-ID: <e91f19b0-58e5-4203-b882-7aa676cd13c5@nbd.name>
-Date: Sat, 6 Jul 2024 14:30:02 +0200
+	Sun, 07 Jul 2024 05:47:40 +0000
+Received: from fedora.home ([86.243.222.230])
+	by smtp.orange.fr with ESMTPA
+	id QKkEsyOxChEtDQKkEs8JGj; Sun, 07 Jul 2024 07:47:33 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wanadoo.fr;
+	s=t20230301; t=1720331253;
+	bh=8pSTgdZnyG0WLlJB7fRFIXGVRIVCBFFXYFkuJxWni6Y=;
+	h=From:To:Subject:Date:Message-ID:MIME-Version;
+	b=lIOVhAW+drTQMVfkDzgXljERlaxfwUOHWEUbsUAQdlUAg4+Ox8JCoD6OD6WNqHu9v
+	 F1k0nngx4C99rcgu3tGXM4m7qLPFua7HGlCqCfNBTkF+euLbbtuCl9t6IFlT/qrJo3
+	 b7pUGDfSn8rrhadTEwd6umJlYgJupUXhrukZ1NuvKpLyRkvMwxdGFc5c9N/Fi5BRxi
+	 44cFKv7OZGUs3Z3qfvnIcf2pGdbmOai/4FJ9m8LNw1PQwcbz4TLKqKq6AosD8ruEwO
+	 3erHBv4gG/2l3A7518DvuS9TCnnJIj1//yon6mFbRlXJe8YlXaNir/OSR6vnu4Wx6z
+	 Kvot4pAGhQ5zQ==
+X-ME-Helo: fedora.home
+X-ME-Auth: Y2hyaXN0b3BoZS5qYWlsbGV0QHdhbmFkb28uZnI=
+X-ME-Date: Sun, 07 Jul 2024 07:47:33 +0200
+X-ME-IP: 86.243.222.230
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+To: matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	fchiby@baylibre.com,
+	fparent@baylibre.com,
+	s.hauer@pengutronix.de
+Cc: linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	kernel-janitors@vger.kernel.org,
+	Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+Subject: [PATCH v2 0/3] soc: mediatek: pwrap: Constify some data and other improvements
+Date: Sun,  7 Jul 2024 07:47:19 +0200
+Message-ID: <cover.1720331018.git.christophe.jaillet@wanadoo.fr>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 01/37] wifi: mt76: mt7925: update
- mt76_connac_mcu_uni_add_dev for MLO
-To: sean.wang@kernel.org, lorenzo.bianconi@redhat.com
-Cc: sean.wang@mediatek.com, deren.wu@mediatek.com,
- mingyen.hsieh@mediatek.com, linux-wireless@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-References: <cover.1720248331.git.sean.wang@kernel.org>
- <5c184808c54b4e71c6feec05828a9f1f5be9b14d.1720248331.git.sean.wang@kernel.org>
-From: Felix Fietkau <nbd@nbd.name>
-Content-Language: en-US
-Autocrypt: addr=nbd@nbd.name; keydata=
- xsDiBEah5CcRBADIY7pu4LIv3jBlyQ/2u87iIZGe6f0f8pyB4UjzfJNXhJb8JylYYRzIOSxh
- ExKsdLCnJqsG1PY1mqTtoG8sONpwsHr2oJ4itjcGHfn5NJSUGTbtbbxLro13tHkGFCoCr4Z5
- Pv+XRgiANSpYlIigiMbOkide6wbggQK32tC20QxUIwCg4k6dtV/4kwEeiOUfErq00TVqIiEE
- AKcUi4taOuh/PQWx/Ujjl/P1LfJXqLKRPa8PwD4j2yjoc9l+7LptSxJThL9KSu6gtXQjcoR2
- vCK0OeYJhgO4kYMI78h1TSaxmtImEAnjFPYJYVsxrhay92jisYc7z5R/76AaELfF6RCjjGeP
- wdalulG+erWju710Bif7E1yjYVWeA/9Wd1lsOmx6uwwYgNqoFtcAunDaMKi9xVQW18FsUusM
- TdRvTZLBpoUAy+MajAL+R73TwLq3LnKpIcCwftyQXK5pEDKq57OhxJVv1Q8XkA9Dn1SBOjNB
- l25vJDFAT9ntp9THeDD2fv15yk4EKpWhu4H00/YX8KkhFsrtUs69+vZQwc0cRmVsaXggRmll
- dGthdSA8bmJkQG5iZC5uYW1lPsJgBBMRAgAgBQJGoeQnAhsjBgsJCAcDAgQVAggDBBYCAwEC
- HgECF4AACgkQ130UHQKnbvXsvgCgjsAIIOsY7xZ8VcSm7NABpi91yTMAniMMmH7FRenEAYMa
- VrwYTIThkTlQzsFNBEah5FQQCACMIep/hTzgPZ9HbCTKm9xN4bZX0JjrqjFem1Nxf3MBM5vN
- CYGBn8F4sGIzPmLhl4xFeq3k5irVg/YvxSDbQN6NJv8o+tP6zsMeWX2JjtV0P4aDIN1pK2/w
- VxcicArw0VYdv2ZCarccFBgH2a6GjswqlCqVM3gNIMI8ikzenKcso8YErGGiKYeMEZLwHaxE
- Y7mTPuOTrWL8uWWRL5mVjhZEVvDez6em/OYvzBwbkhImrryF29e3Po2cfY2n7EKjjr3/141K
- DHBBdgXlPNfDwROnA5ugjjEBjwkwBQqPpDA7AYPvpHh5vLbZnVGu5CwG7NAsrb2isRmjYoqk
- wu++3117AAMFB/9S0Sj7qFFQcD4laADVsabTpNNpaV4wAgVTRHKV/kC9luItzwDnUcsZUPdQ
- f3MueRJ3jIHU0UmRBG3uQftqbZJj3ikhnfvyLmkCNe+/hXhPu9sGvXyi2D4vszICvc1KL4RD
- aLSrOsROx22eZ26KqcW4ny7+va2FnvjsZgI8h4sDmaLzKczVRIiLITiMpLFEU/VoSv0m1F4B
- FtRgoiyjFzigWG0MsTdAN6FJzGh4mWWGIlE7o5JraNhnTd+yTUIPtw3ym6l8P+gbvfoZida0
- TspgwBWLnXQvP5EDvlZnNaKa/3oBes6z0QdaSOwZCRA3QSLHBwtgUsrT6RxRSweLrcabwkkE
- GBECAAkFAkah5FQCGwwACgkQ130UHQKnbvW2GgCeMncXpbbWNT2AtoAYICrKyX5R3iMAoMhw
- cL98efvrjdstUfTCP2pfetyN
-In-Reply-To: <5c184808c54b4e71c6feec05828a9f1f5be9b14d.1720248331.git.sean.wang@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240706_053021_262845_E3EBB744 
-X-CRM114-Status: GOOD (  14.32  )
+X-CRM114-CacheID: sfid-20240706_224739_149596_8C03197B 
+X-CRM114-Status: UNSURE (   7.71  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,48 +79,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 06.07.24 10:27, sean.wang@kernel.org wrote:
-> From: Sean Wang <sean.wang@mediatek.com>
-> 
-> Set OMAC address with the per-link BSS. The change remains compatible with
-> the non-MLO mode and the older firmware.
-> 
-> Co-developed-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
-> Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
-> Co-developed-by: Deren Wu <deren.wu@mediatek.com>
-> Signed-off-by: Deren Wu <deren.wu@mediatek.com>
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> ---
->   drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c | 6 ++++--
->   1 file changed, 4 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-> index 4e3c8af98fe7..18801aaf6764 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-> @@ -4,6 +4,7 @@
->   #include <linux/firmware.h>
->   #include "mt76_connac2_mac.h"
->   #include "mt76_connac_mcu.h"
-> +#include "mt792x.h"
->   
->   int mt76_connac_mcu_start_firmware(struct mt76_dev *dev, u32 addr, u32 option)
->   {
-> @@ -1141,7 +1142,8 @@ int mt76_connac_mcu_uni_add_dev(struct mt76_phy *phy,
->   				struct mt76_wcid *wcid,
->   				bool enable)
->   {
-> -	struct mt76_vif *mvif = (struct mt76_vif *)bss_conf->vif->drv_priv;
-> +	struct mt792x_bss_conf *mconf = mt792x_link_conf_to_mconf(bss_conf);
-> +	struct mt76_vif *mvif = &mconf->mt76;
->   	struct mt76_dev *dev = phy->dev;
->   	struct {
->   		struct {
+This series is motivated by patch 1. The 2 other patches are some
+additionnal goodies spotted while looking at the code.
 
-mt76_connac must not rely on mt792x functions, since it is also used by 
-the mt7615 driver. I've reverted this patch to the old version and 
-applied the rest. Please find a different solution for this issue and 
-send a follow-up patch separately.
+Patch 1 constifies struct pmic_wrapper_type to move some data to a
+read-only section, in order to increase safety.
 
-- Felix
+Patch 2 does the same for some int arrays. This helps move about 7 ko of
+data to a read-only section. Not that bad!
+
+Patch 3 simplifies code related to clk management. It also fixes an
+issue if the driver is unloaded.
+
+Christophe JAILLET (3):
+  soc: mediatek: pwrap: Constify struct pmic_wrapper_type
+  soc: mediatek: pwrap: Constify some struct int[]
+  soc: mediatek: pwrap: Use devm_clk_bulk_get_all_enable()
+
+ drivers/soc/mediatek/mtk-pmic-wrap.c | 118 +++++++--------------------
+ 1 file changed, 30 insertions(+), 88 deletions(-)
+
+-- 
+2.45.2
+
 
