@@ -4,91 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D2FEC3271E
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Jul 2024 06:43:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13A26C3271E
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Jul 2024 06:52:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1FcWtX9vaZBCwduln3dpe45i1fpCK57rnuMSwlu6aWA=; b=POJ/oddVFczcUgf6hmcBnEZuqV
-	8VKjxTSB3RCp946+Nn2kbaJ6csPvofPyOfhbJwL6hRr0Fkm8XxK3MjIKmQKK8VcG+y/GkTOLOo3q8
-	/kVk313EEWPRP3SOzkjjDX5IWGofvy5TVkFJTD9bqlSFly2irvPbrONSPK52qvgqz/1gFDzZ2uuX5
-	yv9JcRxxoiUkxGQWceyNZsBtWUrhHlWwb1SWD1nNkiJum7XZPYzX9H0vyeTAX1HZMUkCVwwLHHZCG
-	1C68iVDuVqcztfcibB8mRvQc8M9Koc40+7jq59qeY0+XYVPc/8z0wVp0QcGvoWWv2s3wOwASjpQ5E
-	oQvbCOkQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=HbzMAQQs0beQFPhhkJhPUz49qUwPsn+ZS8RIbID3OKs=; b=4mRheWmDkfQMW1yDp293buzI1+
+	tqx9+kpvDlEIEc8bPVebeduGgjooWN266u5EXJJvugGE6MEfNAYu32VdjFi8692NG28EfbWnNPzcr
+	tqPqZ9X3kQfpaaQew7d1koG0qa2qII4q3JqnRfwk2A3T/2cJ80N2YqpwavCXH/fqyg1IeawVOHZZz
+	Gbun74yy9eH98ri/bI4vznEQG4RnaF/Tqe7CEnvmWOGtqDt3Q6kW8NFWmwEx73+z2qgU3E5g4Jt1V
+	b0YKdNamHSozuu6K0lWpWg2H30l/SfXgNnoMOEwN1gPlWESwBX8SrEUEYhwxtTTWeU90Cr+YMaGpv
+	p69ithBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sQi5U-00000002unm-1qId;
-	Mon, 08 Jul 2024 06:43:00 +0000
-Received: from mail-oa1-x36.google.com ([2001:4860:4864:20::36])
+	id 1sQiEl-00000002wBz-3w9v;
+	Mon, 08 Jul 2024 06:52:35 +0000
+Received: from smtp-relay-internal-0.canonical.com ([185.125.188.122])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sQi5R-00000002un4-0MpV
+	id 1sQiEW-00000002w8A-0BbZ
 	for linux-mediatek@lists.infradead.org;
-	Mon, 08 Jul 2024 06:42:58 +0000
-Received: by mail-oa1-x36.google.com with SMTP id 586e51a60fabf-25e16380bc9so1754741fac.1
-        for <linux-mediatek@lists.infradead.org>; Sun, 07 Jul 2024 23:42:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1720420975; x=1721025775; darn=lists.infradead.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=1FcWtX9vaZBCwduln3dpe45i1fpCK57rnuMSwlu6aWA=;
-        b=y3TFWs6CyTiEj6fipEk3LXfuBEzE8jOWK0EFPy/YwW8yzjoFCYPwPnzi4AXckuN25k
-         MkjSyGMVuGS7rEkbrZZlFE/1plVrCIx9Xne7o+ktEQos2r9qZ4RLcUcaI5ygUuPliGS8
-         nwVAB8eWuH/crBo28BbmCof+koD14R5QoviBxWOEzYyTfcwl+lKgsbVpRQ6B+9feODvD
-         qt514eaCmaTRjXzM/a9qDO1pCKQxawJD9MS4xNscAPFQc1gWU2AJcbOiGvDecv4Qheup
-         taLfgT4dJMEdFlUKgKww0TNpkLjnjpoR3yDulj8551N2N/ceFYTpmHFCkLcIQRHsB1us
-         Unrw==
+	Mon, 08 Jul 2024 06:52:22 +0000
+Received: from mail-ot1-f72.google.com (mail-ot1-f72.google.com [209.85.210.72])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by smtp-relay-internal-0.canonical.com (Postfix) with ESMTPS id 7F6F53FD8B
+	for <linux-mediatek@lists.infradead.org>; Mon,  8 Jul 2024 06:52:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
+	s=20210705; t=1720421536;
+	bh=HbzMAQQs0beQFPhhkJhPUz49qUwPsn+ZS8RIbID3OKs=;
+	h=From:To:Subject:Date:Message-ID:MIME-Version;
+	b=GM4Y2HZW8SHC3Vm6rGPVn+HMAnkgWBk2iBeNy/xmVEfJEgrwDDIKX729NbkMzyWXy
+	 ZeisYI6Q08bXwH6oANqYaExVXpMfnlHY9onZJXqsuOkcGji1DrvAuUt11bUEvdoQF4
+	 YRoIJnzyYLhtaIc9dYzb5p/kTgyxgIf0JfTixGCScUUxT4t5JziicxhFENuoZuCFLa
+	 8/QevvnQ6fvLyIpHsym8e1snbZg91S0ZYfanx/xHo8SSJWt7VDMDlFY2DsHCIvq68j
+	 fxbL2XLt152SqyKd1tNqal8tWaCoc7oDknc4QC942+i00ZzgXlGsWWlL7gM5mbbK9r
+	 fxFrE3WbiAmaw==
+Received: by mail-ot1-f72.google.com with SMTP id 46e09a7af769-7035d9b8a65so1909839a34.3
+        for <linux-mediatek@lists.infradead.org>; Sun, 07 Jul 2024 23:52:16 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1720420975; x=1721025775;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=1FcWtX9vaZBCwduln3dpe45i1fpCK57rnuMSwlu6aWA=;
-        b=UO8+ALs6DWQ4SMFea+eqhTJHrr+Dqx8v2kb6d5M3un6ABhX6BsNfh3/rlcP+hkyZHp
-         5cYNQM2UCs3Joel3AbeFoOxldnuEESTtywfS2E965SPWs1lHOiW6twX5lSKbV5WVCci6
-         JRdqSJH4EkmaAkxN10bQ2w3UttT32zXMyoP+ea7BQNkrBOTK6CPLy5qS9+gzTrmp//Zh
-         4V0BUxJ4HXhIY+cbRWDQOLlkLSOuvnk4LyiFutpBOXJCAdO4+6jgursQQTK4subkOHJW
-         aNqiduoJhv03mCGv0C48TQ45mVdqc2s1djbkT9iz72+3jBKQeO8+YiA6HOXO1k5YPY5t
-         pJDg==
-X-Forwarded-Encrypted: i=1; AJvYcCXkx694772VjkJ7FY9w1IYAuDv8HJDBviOXKXFJO0qacTEm1qzpPGEt72gudI80GgLr82MjHDIcVF1W4wKDYmI7oMy5afyKjsnaoYj0wQTo6v2Q
-X-Gm-Message-State: AOJu0Ywa/CKAjw4Ap2PrA1i/fOiLvT9JPYVo+NaaAGlhxX+noD3ORBmw
-	iSHI4K7HqcWbDEEzrXn0lH9qDrodiJq5jwU1eJNlPeskDaVAjNQ8boaoAiQ0IiY=
-X-Google-Smtp-Source: AGHT+IEpqAis6dJIEMNcexBdNxU9+uzyMP+q55/0m9GwePwrj4Gs0P9PuuQDc9r/zZs34DMwLSdBrg==
-X-Received: by 2002:a05:6871:688:b0:25e:14f0:62c3 with SMTP id 586e51a60fabf-25e2bd878b7mr9528568fac.33.1720420974988;
-        Sun, 07 Jul 2024 23:42:54 -0700 (PDT)
-Received: from localhost ([122.172.84.129])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-70b116e43f0sm5260455b3a.101.2024.07.07.23.42.54
+        d=1e100.net; s=20230601; t=1720421535; x=1721026335;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=HbzMAQQs0beQFPhhkJhPUz49qUwPsn+ZS8RIbID3OKs=;
+        b=EC66c4AZmY0NS1+JoLSw8LQ68oMngnqALYSNOxiowQKxXflBg/LFufeIk4zg18SbYQ
+         YtA9icZto0Z9W+oRdMFecb6lszwUsiM1WcKuUpXgPmcj8Rl2SZpioZvgmiUVFj3Sc63P
+         iqfvoTEISSJxwwBx4M3hw5LScBk+LglWMWRqQuz8dyGIUPRTzzBy4yfJ8DRvfUI0ekHj
+         KON69iteffKiZBo/HlUSBDYUvJlSSaFaVBzE2uyE2qGae9t7UnhxMSD7s4OagbnCEAbB
+         qYFlJVGa/haKUySN0LT2Lkt6+Hh87ZG2wrYrFWSGpfnfh5TZVBXyT2X88GHOx0wkDJv+
+         Sutw==
+X-Forwarded-Encrypted: i=1; AJvYcCXqucUhZVUYNuSn30JkcF77XQD58jB5WAKp2JG6zy8kAu5+MniVfwmFc+NWAmEBfp8/hVM/jnCgtKjCNuJa6W18TknMXct+LagmQHheh/VC6WQN
+X-Gm-Message-State: AOJu0Yxc1UEdEnQwCVxmTMeSaavVz+HXt1V/W5sZ/jKYchm5Vdv4Gj8i
+	X43V4fU9C6LBJAQWwPcsftencCmr3fSIk8bQAhO0H6pFbhl94UC6UAe3bfFSddBAz+I8g6M3xt4
+	CNFWpgPQV5MF8eLsqEgBuErucOqBp3xM8tXBiC2VpKpd1Du1Lch1fbhd7Y4cVYPeN5A0mvDpbWD
+	vg99yYgxqZL4EusUhSDKzBJ3GI+w==
+X-Received: by 2002:a05:6830:4121:b0:703:5be9:7eb2 with SMTP id 46e09a7af769-7035be97fb1mr10205060a34.1.1720421535284;
+        Sun, 07 Jul 2024 23:52:15 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFDdcN3FhbXbJhL25LGgTT9SMrkYrFZRj+Qr84KVRq4ZsIxJ4/dnZO5KZecMBqaC8bwrBJVHA==
+X-Received: by 2002:a05:6830:4121:b0:703:5be9:7eb2 with SMTP id 46e09a7af769-7035be97fb1mr10205048a34.1.1720421534961;
+        Sun, 07 Jul 2024 23:52:14 -0700 (PDT)
+Received: from solution.. (125-228-254-191.hinet-ip.hinet.net. [125.228.254.191])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-70b15e0cefcsm4484195b3a.166.2024.07.07.23.52.12
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 07 Jul 2024 23:42:54 -0700 (PDT)
-Date: Mon, 8 Jul 2024 12:12:52 +0530
-From: Viresh Kumar <viresh.kumar@linaro.org>
-To: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, kernel@collabora.com,
-	linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+        Sun, 07 Jul 2024 23:52:14 -0700 (PDT)
+From: Jian Hui Lee <jianhui.lee@canonical.com>
+To: Felix Fietkau <nbd@nbd.name>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] cpufreq: mediatek: Use dev_err_probe in every error path
- in probe
-Message-ID: <20240708064252.sydvhfnmx3akafql@vireshk-i7>
-References: <20240628-mtk-cpufreq-dvfs-fail-init-err-v1-1-19c55db23011@collabora.com>
- <20240702055703.obendyy2ykbbutrz@vireshk-i7>
- <aa6e93bd-aba2-4e4d-bce9-04e818ac25ed@collabora.com>
- <20240702084307.wwvl5dchxa4frif3@vireshk-i7>
- <8602bf12-1b8d-4249-8814-52ecaa29d0ec@notapiano>
+Subject: [PATCH v2 net] net: ethernet: mtk-star-emac: set mac_managed_pm when probing
+Date: Mon,  8 Jul 2024 14:52:09 +0800
+Message-ID: <20240708065210.4178980-1-jianhui.lee@canonical.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <8602bf12-1b8d-4249-8814-52ecaa29d0ec@notapiano>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240707_234257_398766_A7237152 
-X-CRM114-Status: UNSURE (   8.52  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240707_235220_700822_87C8364B 
+X-CRM114-Status: GOOD (  11.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,14 +109,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 05-07-24, 11:13, Nícolas F. R. A. Prado wrote:
-> That would only run once during boot and only in the error path...
-> I'm confident in saying this won't amount to any real performance gain. So the
-> usage of dev_err_probe() everywhere for log and source code standardization is
-> well worth it.
+The below commit introduced a warning message when phy state is not in
+the states: PHY_HALTED, PHY_READY, and PHY_UP.
+commit 744d23c71af3 ("net: phy: Warn about incorrect mdio_bus_phy_resume() state")
 
-Hmm. Fair enough.
+mtk-star-emac doesn't need mdiobus suspend/resume. To fix the warning
+message during resume, indicate the phy resume/suspend is managed by the
+mac when probing.
 
+Fixes: 744d23c71af3 ("net: phy: Warn about incorrect mdio_bus_phy_resume() state")
+Signed-off-by: Jian Hui Lee <jianhui.lee@canonical.com>
+---
+v2: apply reverse x-mas tree order declaration
+
+v1: https://lore.kernel.org/netdev/20240703061840.3137496-1-jianhui.lee@canonical.com/
+
+ drivers/net/ethernet/mediatek/mtk_star_emac.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/drivers/net/ethernet/mediatek/mtk_star_emac.c b/drivers/net/ethernet/mediatek/mtk_star_emac.c
+index 31aebeb2e285..25989c79c92e 100644
+--- a/drivers/net/ethernet/mediatek/mtk_star_emac.c
++++ b/drivers/net/ethernet/mediatek/mtk_star_emac.c
+@@ -1524,6 +1524,7 @@ static int mtk_star_probe(struct platform_device *pdev)
+ {
+ 	struct device_node *of_node;
+ 	struct mtk_star_priv *priv;
++	struct phy_device *phydev;
+ 	struct net_device *ndev;
+ 	struct device *dev;
+ 	void __iomem *base;
+@@ -1649,6 +1650,12 @@ static int mtk_star_probe(struct platform_device *pdev)
+ 	netif_napi_add(ndev, &priv->rx_napi, mtk_star_rx_poll);
+ 	netif_napi_add_tx(ndev, &priv->tx_napi, mtk_star_tx_poll);
+ 
++	phydev = of_phy_find_device(priv->phy_node);
++	if (phydev) {
++		phydev->mac_managed_pm = true;
++		put_device(&phydev->mdio.dev);
++	}
++
+ 	return devm_register_netdev(dev, ndev);
+ }
+ 
 -- 
-viresh
+2.43.0
+
 
