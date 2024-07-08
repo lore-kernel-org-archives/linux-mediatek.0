@@ -4,94 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 351A2C3271E
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Jul 2024 13:43:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE376C3DA45
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Jul 2024 16:06:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=H/H78dV2CQyOKZtgy53vprQZIn/cmX0k21n4Wz6mxpk=; b=A8GAy3zgA7bDUnG0Odj1YMcxVf
-	F8V8Apk1pMqFv+OyQSQJSKzUIjyKzeD5eeAXbqTY9ETJ0BLmqfomINSfrXWR+k+J4MJKXs8HecYgD
-	SY1qNS2XBtQ3XSGbl1UEEJQVHS9SqcYJfM66NNTZg2W5PNLkp5gFOZP6X7lcuza3Gg1k5Tj8WSQPL
-	JlTnLI/pLqCgQMdQ/2Oi8VRHPCaDjbnOOzeC5w98uhq0fHNKhx0wFdqPd28L+vqpgqF5oYyIMDZlZ
-	5+RzL1e5F0jBgCD7m7WlvBIPEHKovWp5AG/KkFjhomNgsxJV5dG86CNm9yShjQnLT+EnBE+7Mx6b9
-	F+7HCtjw==;
+	bh=3yotOwh1dtE5DgMK4jrp0VM5GfIPbQCVEmdEcJAa+qI=; b=ZllXemwfA7iSUikLts+jiM3iBP
+	uDqsrq5sR03jhU49arsKAkCdQZ1fZ6drXB33JyIGY1e0I4RhJ3VMQjiqUY243APxqX8knl5/t1ctG
+	BmK15xe9Or3gw42+ktF8QWzmET0GkI983J32ZZ1Wl4I+cd5g3LwbFIdtGe/hjUd2dXtUmEEqMLfzW
+	jFTIHQj3I56IiaPuvtizzXPwCVckHyCBjqoP0Vne5T/xAQwrskXkZBnu950VRpumUvD/c2LekaF4g
+	kvgiuHrlkHoVSBg4zjR2vHLq2acKrCC44x9gELzRkCe48GQrHtRGnEmw90hEWVA8jxkt3EC2KhwaN
+	tzzyL4gQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sQoeq-00000003xX3-2sik;
-	Mon, 08 Jul 2024 13:43:56 +0000
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+	id 1sQqsg-00000004Mkp-40Zf;
+	Mon, 08 Jul 2024 16:06:22 +0000
+Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sQoeU-00000003xBA-2KVC;
-	Mon, 08 Jul 2024 13:43:37 +0000
-Received: by mail-wr1-x42a.google.com with SMTP id ffacd0b85a97d-367940c57ddso2551123f8f.3;
-        Mon, 08 Jul 2024 06:43:32 -0700 (PDT)
+	id 1sQqsQ-00000004Mfu-3UCr
+	for linux-mediatek@lists.infradead.org;
+	Mon, 08 Jul 2024 16:06:08 +0000
+Received: by mail-pf1-x42d.google.com with SMTP id d2e1a72fcca58-70b4267ccfcso233584b3a.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 08 Jul 2024 09:06:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1720446211; x=1721051011; darn=lists.infradead.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=H/H78dV2CQyOKZtgy53vprQZIn/cmX0k21n4Wz6mxpk=;
-        b=YeKNmMbeUuGjfGmFhB60tqRSuO8W5UnRZFEFB1APUBQJFru0xZDMPmP6guN1isHwuw
-         bB2Mj5iW5jHrbd6LpVLZKnxpXrsB3XgPXdMIS0nPYBCLC9TDfMfzvlXrfBTeeRIymOfy
-         D5niZm7CmLtB40zTPOv2cII2ISARZ2+/WhtusouTeF9TYque4glhqepltJmE+MCfmqMu
-         extrdt+pznQ0Yjt6zqr/t23t+Ftjuha9HhMEoOYSQXGPc3Y8IyZxQ2KyY/RJFaHvYLFe
-         xHZxrDNhUIM9OytegX0pH9fkpTPUCK8+DGRMF/rWOcl/qO4r1JXiVkgZei+Pc5t4m0t5
-         JpLg==
+        d=linaro.org; s=google; t=1720454765; x=1721059565; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=3yotOwh1dtE5DgMK4jrp0VM5GfIPbQCVEmdEcJAa+qI=;
+        b=VYQZd3WiTJAaWzIDw+hIJ55jXQNjI2QoPUxI7zjcDmkzD/zl2zyoLV4TIY0tZtjjgV
+         Nv8Vl4EEI+5pXE8MHcTZLlQEgen5MxtWekJDmNTN6qXuLaiEMYWcaxQvfZh78a/ORexh
+         Hm99wVmpMUBzmCUEj3O1Z+WFZI+bfj09IB1x5vsw0Ub67hwQuyIPDhoWBqKNw+TFY4Pz
+         7RHk4SjZ5vAzmPrt9cvAjDDslmsNZu4jD3185EVWrQsH239Aq3lUpZnXnY+VV0ZLMPTz
+         bPMGCojF2mPjOXozFZrpVSTnFEFKHcoxlHwiEgto2FBfAKAs6OvlTjzJCwbSoWIxZFPv
+         77Bg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1720446211; x=1721051011;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=H/H78dV2CQyOKZtgy53vprQZIn/cmX0k21n4Wz6mxpk=;
-        b=DHrvkMEGJHgyk24geLeNrUlJEoy8p8+tsKqP915o3998APTCHFt860/uEwxETqaouN
-         wrojAjzNilzMIeeAn2VMXOKCvhSTEWBBwE1WSSYogiTixe2kP/abroTgQxDVZ0C3D4Rv
-         Omi06MQIjyIyaomCzrsf8zvaAXkmWOgIrZZVSsj9OpNG6oXG4qHecHrkD5eFDhyTRTNV
-         tGESo0yT9ZAxtH9gCBv6XqNvTY0LobMupGucmU2iOy+koempDCCN435U8T5eCBXI98yb
-         CJavPkYxiOgz2tw97chzUfeoliKAe6p9pMCvljYy4bX0CqymyNIt4r9YRYZyEhlhcYST
-         uRBQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXwGF7Zaulzv+S0c499XfI51IDZEtoMmrtCuh5OiO0jZa8wjen70Zth9WPNLX6GGAUOoyoSTwPL1l8jzUE2ltantuh+iyEQ40MmpRe+MUjXFfS12B5+GQOoRzwdmTvpty9Q3nnV2B3ZzR6D2Yte6H4qXC16vxfb6jI=
-X-Gm-Message-State: AOJu0Yx+2WG1SJ0WKDSd18/DUsCSF56vWPv/FUs4hUEnuKdsObqwF90e
-	VmiSu1jPIx5HF4QXRrAtBb8m2c4i3Y8ZSBrqTFe83ZPFNn78Y0M2
-X-Google-Smtp-Source: AGHT+IGYrebj0t6Sz6CR6eFUr5wmQS1bM2olcs7f1zh32jh5ZLmrYMWuQY6AoOum12kv8PhheSWyNg==
-X-Received: by 2002:adf:f8cd:0:b0:367:9224:9623 with SMTP id ffacd0b85a97d-3679dd0d323mr6925452f8f.7.1720446211105;
-        Mon, 08 Jul 2024 06:43:31 -0700 (PDT)
-Received: from skbuf ([188.25.110.57])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-367963fa692sm13084965f8f.85.2024.07.08.06.43.29
+        d=1e100.net; s=20230601; t=1720454765; x=1721059565;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=3yotOwh1dtE5DgMK4jrp0VM5GfIPbQCVEmdEcJAa+qI=;
+        b=one8X45LPy5zUczKfF+8wICrKi/6HpD8qmFqCTKVwM91fHjwX7DMEcbxsL7cQgQgRI
+         ktXQnVlhsh2J2VSLUJksELKQJ8k/5guyT8tdZlKMOcvgtBwpDdZXyOKgq7oTBFaV3oc0
+         wKcDrrFxv9nEA7WJQCH+prlOMXfnDtvLVOk+8RkH86cdhh4/clZRo/HcHeRXuzZm5xNv
+         SDv22KJGdNcskO1upirj9kouhkrQYkwC/u386v6bhS9cdp9y/ncMs6Kt7C4XHZx3A9HN
+         /tdOpHIUa4XDa+yM6HJH/98fwH9rUnR5mx74jBcTGjFhFI7P38nCPksgL+8fADy4/OPu
+         Elvg==
+X-Forwarded-Encrypted: i=1; AJvYcCU6tOxGPOmTE3uQS9LtGzrHTjmSQrr/JCZdXUTC9rVNfs7cJYYcQ9LIIe9hG7sppSMRm6bHEBASfzArbMrZ+Wr0JqrW5h+uXBHVh11Z+jC5TLXU
+X-Gm-Message-State: AOJu0Yx0tl/FY3nEeA0QuP1ucx158vUjLdU1+PzUnKPiqpRKH2vYpjST
+	puTIjZXAHs0TpeXg+yCg7G3GLicKpL3yBHXOTfuqDFNqawroitd78zifXscKr7Y=
+X-Google-Smtp-Source: AGHT+IF4pL8APdY3c5DhYc7WskK7MW7W4Z9fYaj4VTZU8WRclPesMbXiUmaRA3FuKwavhdhGST/T1Q==
+X-Received: by 2002:a05:6a20:db0c:b0:1c2:8a36:29d with SMTP id adf61e73a8af0-1c28a3613d0mr2559231637.6.1720454765685;
+        Mon, 08 Jul 2024 09:06:05 -0700 (PDT)
+Received: from p14s ([2604:3d09:148c:c800:f189:baee:28ea:c31c])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-70b439b5585sm20701b3a.188.2024.07.08.09.06.03
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 08 Jul 2024 06:43:30 -0700 (PDT)
-Date: Mon, 8 Jul 2024 16:43:28 +0300
-From: Vladimir Oltean <olteanv@gmail.com>
-To: Daniel Golle <daniel@makrotopia.org>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>
-Cc: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+        Mon, 08 Jul 2024 09:06:05 -0700 (PDT)
+Date: Mon, 8 Jul 2024 10:06:01 -0600
+From: Mathieu Poirier <mathieu.poirier@linaro.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Jason Chen <Jason-ch.Chen@mediatek.com>,
+	Bjorn Andersson <andersson@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Landen Chao <Landen.Chao@mediatek.com>, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	Project_Global_Chrome_Upstream_Group@mediatek.com,
+	linux-remoteproc@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v5] net: dsa: mt7530: fix impossible MDIO address and
- issue warning
-Message-ID: <20240708134328.hgwthqwcif5pjaig@skbuf>
-References: <f485d1d4f7b34cc2ebf3d60030d1c67b4016af3c.1720107535.git.daniel@makrotopia.org>
- <20240708133359.rylvvmpcwlsxtrs5@skbuf>
+Subject: Re: [PATCH] remoteproc: mediatek: Increase MT8188/MT8195 SCP core0
+ DRAM size
+Message-ID: <ZowOaQ7Atf9D4uoM@p14s>
+References: <20240703034409.698-1-Jason-ch.Chen@mediatek.com>
+ <f9cbd088-c00c-455f-912b-cc119566e62c@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20240708133359.rylvvmpcwlsxtrs5@skbuf>
+In-Reply-To: <f9cbd088-c00c-455f-912b-cc119566e62c@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240708_064334_790496_CD0BFF16 
-X-CRM114-Status: GOOD (  28.92  )
+X-CRM114-CacheID: sfid-20240708_090606_899963_670346B4 
+X-CRM114-Status: GOOD (  10.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,42 +98,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 08, 2024 at 04:33:59PM +0300, Vladimir Oltean wrote:
-> On Fri, Jul 05, 2024 at 11:48:40AM +0100, Daniel Golle wrote:
-> > The MDIO address of the MT7530 and MT7531 switch ICs can be configured
-> > using bootstrap pins. However, there are only 4 possible options for the
-> > switch itself: 7, 15, 23 and 31. As in MediaTek's SDK the address of the
-> > switch is wrongly stated in the device tree as 0 (while in reality it is
-> > 31), warn the user about such broken device tree and make a good guess
-> > what was actually intended.
+On Wed, Jul 03, 2024 at 11:05:59AM +0200, AngeloGioacchino Del Regno wrote:
+> Il 03/07/24 05:44, Jason Chen ha scritto:
+> > The current DRAM size is insufficient for the HEVC feature, which
+> > requires more memory for proper functionality. This change ensures the
+> > feature has the necessary resources.
 > > 
-> > This is necessary to not break compatibility with existing Device Trees
-> > wrongly declaring the switch to be present at address 0 or 1, as with
-> > commit 868ff5f4944a ("net: dsa: mt7530-mdio: read PHY address of switch
-> > from device tree") the address in device tree will be taken into
-> > account, while before it was hard-coded in the driver to 0x1f
-> > independently of the value in Device Tree.
-> > 
-> > Fixes: b8f126a8d543 ("net-next: dsa: add dsa support for Mediatek MT7530 switch")
-> > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> > Reviewed-by: Andrew Lunn <andrew@lunn.ch>
-> > Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-> > Reviewed-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-> > ---
+> > Signed-off-by: Jason Chen <Jason-ch.Chen@mediatek.com>
 > 
-> Despite having commented on v3, I am not going to leave a review tag on
-> this patch. Its contents has nothing to do with DSA, so I have no
-> technical objections of my own, plus little authority for an ack.
-> It basically boils down to whether the phylib maintainers are okay with
-> this use of mdio_device_remove() API from mdio_device drivers
-> themselves.
-> 
-> I did have a technical concern in v3 about a race between the finishing
-> of probe() and the call to mdio_device_remove(), which Daniel did not
-> respond to, but I suspect that __device_driver_lock() from
-> drivers/base/dd.c will serialize those.
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>
 
-Having that said, I noticed that this particular patch revision is not
-entirely under their attention, so this is a heads up for them.
-https://lore.kernel.org/netdev/f485d1d4f7b34cc2ebf3d60030d1c67b4016af3c.1720107535.git.daniel@makrotopia.org/
+I have applied this patch.
+
+Thanks,
+Mathieu
+
+> 
 
