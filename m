@@ -4,43 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26E0CC3DA42
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD54CC3DA41
 	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Jul 2024 10:14:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=F8LbkaZZ5T6LHWP6MpgVpaTLNOg4FoESQlLvyA41iYg=; b=hVxqGlSXKdEK1r
-	efBS8zD0EpPgXkKGcXQNz6FBHlzcgsmQSW4cv+XBgacsGfKBaV+6CVDqSq4cor2BUZr2+lbnHeB1R
-	TF0behRQG1N2Sb29YAYQTk15rsyqR2gVOeTBUeD3PbMSNBVrH5jvLIZlrVKV3tjz6Lki8UzDZwuAF
-	B5ND4rpCvdEzSpRVab57SS9OPLIBUQHd1ziTEtCC8GuHlA87OkU6F8dBqopmoJ1KbF2S2JQAmbEID
-	FSat9XNT1DdOo4qMTTheBiPIX6xf+2dhP49WeWfRqSG4lU4DouWDyKh3gof5jSCRMGIa30QandGmq
-	XF/5C2Yq4v6K9XodjQDQ==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=A6xXij2X8BH/8d0tWoHxSFtMClwNOD6a+irryyVsrSg=; b=diC62LAToDgH8K
+	QadnapRA2pkar9Jai2d7tkyATKubQwkOkPjIGSMs6zIAg/nZOXUD9lcZftpBxryxSXKfRz3rSEZWz
+	ikrbCXsIctL+YsDtuXQ5NF5pj+FJnD95X9/uMEGNhwiXkMjjTlon6WIAw/AQYpRGTC45R1eCtMllV
+	zTiutN0+hzJ24FEu2W17EkL9CAt0IThqgPA1M5MnGfrTdReD/aBdphORIAnL69x/LZxC3x1iElirg
+	mNmB45djxcx3cGAAFNY8Q+NefXNAWaqACTnmmwlTZECe9o6cELXMOCcVP51Rz3G2BOzwEj9BSjVWp
+	cL+dQ+3CwA7gbUOL9CJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sR7rL-00000006lvY-3Pys;
-	Tue, 09 Jul 2024 10:14:07 +0000
+	id 1sR7rM-00000006lw8-0zGo;
+	Tue, 09 Jul 2024 10:14:08 +0000
 Received: from mxout1.routing.net ([2a03:2900:1:a::a])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sR7qr-00000006ll1-0GsY;
+	id 1sR7qr-00000006ll7-1KAS;
 	Tue, 09 Jul 2024 10:13:38 +0000
 Received: from mxbox2.masterlogin.de (unknown [192.168.10.89])
-	by mxout1.routing.net (Postfix) with ESMTP id C76C6419EB;
-	Tue,  9 Jul 2024 10:13:34 +0000 (UTC)
+	by mxout1.routing.net (Postfix) with ESMTP id AFEAF41A49;
+	Tue,  9 Jul 2024 10:13:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1720520014;
+	s=20200217; t=1720520015;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=F8LbkaZZ5T6LHWP6MpgVpaTLNOg4FoESQlLvyA41iYg=;
-	b=gM37yGtmYrRd0oPE/NhgKI4bYc+KF1mXFND4kfNJVpcN0S7smJX7LP1WSBoE6IprfVmK5g
-	PYBrvDkJErbQjnwqrsuGoAfi4Tz2wZosxR3h1HWSgmmc8KtdWQcDYuuKVxJoo9Fy8jBdo6
-	uAW1nH4xaj+/F1/BKtR2vyqo0tiTgQs=
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=A6xXij2X8BH/8d0tWoHxSFtMClwNOD6a+irryyVsrSg=;
+	b=YSJDkGCEzplhkljyu5qASGz7Wek4bD9njpCdk8J3AQwudP9J3ovswPumfGsxEZl6337EV2
+	Q+lMzjq8vOANYTii0QAYui28qGjoRQTVlzTDsGts4moPi9QuP8V81ANgtT/++a1ACisLoh
+	kGBy9qAEXNV/nbprGuUZ3XEnnlPQcWY=
 Received: from frank-u24.. (fttx-pool-217.61.149.221.bambit.de [217.61.149.221])
-	by mxbox2.masterlogin.de (Postfix) with ESMTPSA id 90D21100756;
-	Tue,  9 Jul 2024 10:13:33 +0000 (UTC)
+	by mxbox2.masterlogin.de (Postfix) with ESMTPSA id B87B410075A;
+	Tue,  9 Jul 2024 10:13:34 +0000 (UTC)
 From: Frank Wunderlich <linux@fw-web.de>
 To: Michael Turquette <mturquette@baylibre.com>,
 	Stephen Boyd <sboyd@kernel.org>,
@@ -51,16 +52,18 @@ To: Michael Turquette <mturquette@baylibre.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Wim Van Sebroeck <wim@linux-watchdog.org>,
 	Guenter Roeck <linux@roeck-us.net>
-Subject: [PATCH v1 0/4] add syscon requirement for mt7988
-Date: Tue,  9 Jul 2024 12:13:22 +0200
-Message-ID: <20240709101328.102969-1-linux@fw-web.de>
+Subject: [PATCH v1 1/4] dt-bindings: watchdog: mediatek,mtk-wdt: add MT7988 syscon requirement
+Date: Tue,  9 Jul 2024 12:13:23 +0200
+Message-ID: <20240709101328.102969-2-linux@fw-web.de>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20240709101328.102969-1-linux@fw-web.de>
+References: <20240709101328.102969-1-linux@fw-web.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Mail-ID: cc04bfa3-18a0-4142-97ac-21d0a30ec603
+X-Mail-ID: 3691708b-d2e9-40a6-b21e-134ff95be4e9
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240709_031337_281382_4D636F50 
-X-CRM114-Status: UNSURE (   7.32  )
+X-CRM114-CacheID: sfid-20240709_031337_525678_DFADC67D 
+X-CRM114-Status: UNSURE (   9.98  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -79,27 +82,36 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Frank Wunderlich <frank-w@public-files.de>
 
-Some nodes require the syscon fallback at least in u-boot when using
-OF_UPSTREAM.
+This is needed by u-boot-driver when using OF_UPSTREAM.
 
-This is because uboot driver uses syscon_node_to_regmap in mtk_eth.c for
-"mediatek,toprgu", "mediatek,xfi_pll" and reset pointing to watchdog-node.
+Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+---
+ .../devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml       | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-Frank Wunderlich (4):
-  dt-bindings: watchdog: mediatek,mtk-wdt: add MT7988 syscon requirement
-  dt-bindings: clock: mediatek: add syscon requirement for mt7988
-    xfi-pll
-  dt-bindings: clock: mediatek: add syscon requirement for mt7988
-    ethwarp
-  arm64: dts: mediatek: mt7988: add syscon for watchdog, xfi-pll and
-    ethwarp
-
- .../devicetree/bindings/clock/mediatek,mt7988-ethwarp.yaml | 6 ++++--
- .../devicetree/bindings/clock/mediatek,mt7988-xfi-pll.yaml | 7 +++++--
- .../devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml     | 5 ++++-
- arch/arm64/boot/dts/mediatek/mt7988a.dtsi                  | 6 +++---
- 4 files changed, 16 insertions(+), 8 deletions(-)
-
+diff --git a/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml b/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
+index 8d2520241e37..681df2ff9f2e 100644
+--- a/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
++++ b/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
+@@ -25,7 +25,6 @@ properties:
+           - mediatek,mt6735-wdt
+           - mediatek,mt6795-wdt
+           - mediatek,mt7986-wdt
+-          - mediatek,mt7988-wdt
+           - mediatek,mt8183-wdt
+           - mediatek,mt8186-wdt
+           - mediatek,mt8188-wdt
+@@ -43,6 +42,10 @@ properties:
+               - mediatek,mt8365-wdt
+               - mediatek,mt8516-wdt
+           - const: mediatek,mt6589-wdt
++      - items:
++          - enum:
++              - mediatek,mt7988-wdt
++          - const: syscon
+ 
+   reg:
+     maxItems: 1
 -- 
 2.43.0
 
