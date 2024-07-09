@@ -4,86 +4,160 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BBCEC3271E
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Jul 2024 00:24:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2481BC2BD09
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Jul 2024 04:24:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wlo3UWV9lkDtVHiC3tnceLIBeIIjDfMxY69ysONeH1A=; b=arlIttsUTyu3yCtdevjiIqGpqH
-	0U2QKS7634LcGb0pi0X4SPln1tUtlr2ZjfEAOY+ojtABquhVnDxvK8Q2hpWeDNfIvRXDfntkjlChW
-	A24N/bLXfAarC3qz1OffE9A857DJlgxfULbWIoc0yllUVB9yH9hJtJm40GSS6NMy07d8iU3cAwbsF
-	TpUsEJsgDbG5QN6BMEGsA5nwqp0E0xwxqISg1VQna1oyLwjT3UfLvvbbxFhR7XHGhM2cMHnpyW0Yu
-	R02On4XttmxVLDzeFr0tkfxILLfMJZo3lNs+uFaRceuuZuOOHaPXoXKTDxkEzbLnl7SO4cPrwA4gY
-	M4zEu6vA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=IjfStAl4X5APuJGdHfqLtnXkKQl7kdSwd8Ar5E4YipQ=; b=x8lKaDN7Z6W43VVB8BT/tsjyCM
+	eWKFo1kBxgtNEbS8hf8mgnMpu84DFr79DNyeQKOxON7OXKQUbspNng8se6Q+9NYQe8yPMZtJYLz2P
+	xndLSDqPZe2SzMedBfjlbhfkcGZahX4quZ7VUnLmY6qXji0CZ5p7d8mlXKM77C2HG13TD6AR4/iJq
+	IFbhc9Cz5LKLJeujXuCFywWWlhmDSc6ZLFdX5xSZw4Gjz3gOqtiGQMb3VTfeEWcb3J6z9n4GLW8s8
+	6z1B+j/BG5GmbgCKJ88xlSsQ72ffiEmZ/u5zyZgthrOq+jKKvBW/LI4p3BZPlddUNDnf3BKf1v8wX
+	7TpERKRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sQyex-00000005QuL-2Df3;
-	Tue, 09 Jul 2024 00:24:43 +0000
-Received: from mail-pl1-f173.google.com ([209.85.214.173])
+	id 1sR2P4-00000005qT3-3wyH;
+	Tue, 09 Jul 2024 04:24:34 +0000
+Received: from mail-sgaapc01on20701.outbound.protection.outlook.com ([2a01:111:f400:feab::701] helo=APC01-SG2-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sQyeh-00000005Qqv-12e5
-	for linux-mediatek@lists.infradead.org;
-	Tue, 09 Jul 2024 00:24:29 +0000
-Received: by mail-pl1-f173.google.com with SMTP id d9443c01a7336-1fb0d88fd25so29435985ad.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 08 Jul 2024 17:24:27 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1720484666; x=1721089466;
-        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
-         :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=wlo3UWV9lkDtVHiC3tnceLIBeIIjDfMxY69ysONeH1A=;
-        b=VjwGt8P5FiMo83g+YuydHe1hfBlxPov5E51hZrYiCn1KZNsJLjLkP2LmZOuaTOLgdI
-         f/GnQPoqSWh3cmbXUcLbdCOvEE9apPQwFy8SXG6Zf4BS/htjY06NxxincAYfv9/V3LOM
-         AA3VMoicV3Jgjcw1K5gKghoBl5PdP/OTlPxIyOyx3hEKJfI2tKa+g5x0YG+IujVx5wSi
-         scOH0c2HcOHW8A0EqSvQVMqYp9A+CWUPn80tnv15Q5VxDUHsgnMQqnh3D1Awzh9XWtHs
-         pV0j86MKoeLBsEdWiGQ80ZTB0ZCDLuTknmxRMD7QzxWjilMvWT9u+xikfHqab72S7hLX
-         txVw==
-X-Forwarded-Encrypted: i=1; AJvYcCXHeI1aSlZ7tdsVLEpqAiUkiZPEKTZfU8lZu5vzmQyWu6jTUsdjYchD8cGiXabErrCumW+zN15DGy9zD4tkFSEYT7/1+/cFN0J4VlHTSjgi81G8
-X-Gm-Message-State: AOJu0YzgSA8KEC2PYtd4avUGHwgZm5xXlKq7RyaupCxv9TG5iH+zJ2hU
-	EFh1G31D2JvW0r8JIIkKpu34RO+cQCtV7RX9h2DMgn9M52a3p1CLru/mAWC+LUI=
-X-Google-Smtp-Source: AGHT+IFdw3EaveRM2ZTHoRq8dYxA8E7q05nixOcYOGorj2dRL4w7J12n220WAjIf2IctJiJkVfxTEw==
-X-Received: by 2002:a17:902:db0e:b0:1f4:a04e:8713 with SMTP id d9443c01a7336-1fbb804725emr12528595ad.28.1720484666359;
-        Mon, 08 Jul 2024 17:24:26 -0700 (PDT)
-Received: from localhost (97-126-77-189.tukw.qwest.net. [97.126.77.189])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-1fbb6ab7d2dsm4321415ad.180.2024.07.08.17.24.25
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 08 Jul 2024 17:24:25 -0700 (PDT)
-From: Kevin Hilman <khilman@kernel.org>
-To: Viresh Kumar <viresh.kumar@linaro.org>, "Rafael J. Wysocki"
- <rafael@kernel.org>, Viresh Kumar <viresh.kumar@linaro.org>, Huang Rui
- <ray.huang@amd.com>, "Gautham R. Shenoy" <gautham.shenoy@amd.com>, Mario
- Limonciello <mario.limonciello@amd.com>, Perry Yuan <perry.yuan@amd.com>,
- Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>, Alyssa
- Rosenzweig <alyssa@rosenzweig.io>, Markus Mayer <mmayer@broadcom.com>,
- Broadcom internal kernel review list
- <bcm-kernel-feedback-list@broadcom.com>, Srinivas Pandruvada
- <srinivas.pandruvada@linux.intel.com>, Len Brown <lenb@kernel.org>,
- Michael Ellerman <mpe@ellerman.id.au>, Nicholas Piggin
- <npiggin@gmail.com>, Christophe Leroy <christophe.leroy@csgroup.eu>,
- "Naveen N. Rao" <naveen.n.rao@linux.ibm.com>, Sudeep Holla
- <sudeep.holla@arm.com>, Cristian Marussi <cristian.marussi@arm.com>,
- Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter
- <jonathanh@nvidia.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-pm@vger.kernel.org, Vincent Guittot <vincent.guittot@linaro.org>,
- Lizhe <sensor1010@163.com>, linux-kernel@vger.kernel.org,
- asahi@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
- linux-omap@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
- linux-arm-msm@vger.kernel.org, linux-tegra@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 4/4] cpufreq: Make cpufreq_driver->exit() return void
-In-Reply-To: <3f73fda736818128558b61ad5fe2bed5dce3ddc4.1720075640.git.viresh.kumar@linaro.org>
-References: <cover.1720075640.git.viresh.kumar@linaro.org>
- <3f73fda736818128558b61ad5fe2bed5dce3ddc4.1720075640.git.viresh.kumar@linaro.org>
-Date: Mon, 08 Jul 2024 17:24:25 -0700
-Message-ID: <7hplrn76py.fsf@baylibre.com>
-MIME-Version: 1.0
+	id 1sR2On-00000005qMm-2q8a;
+	Tue, 09 Jul 2024 04:24:19 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=G7qizMkdPpv799yRm7W+mFS7evQSE/8ZiP6d5Dk7jLXkVmTs15gySOnJHV68M+jROKEazYHOJ06I64IPJ94Xh3scUb2g4SaxeHPWPqU3ivpW/LEEKBpPWKiz8LXICM0xEdCvwG84aFjoDhbch59HhWEFva2HyHthBc++F5x1Cg11Ye0sHlppyYQKMc/SxK8pyNVPhWV/NVRaEWyQ/SjwtZRbVVwfhIsqv7O3cx4bU4LSHNMq/fQG/P2YQ1mUf+E27PK015CbFBvCTaD82Sh32U+MR6DYMfeFvuMLgmBRVpd7L1uxKxVrOCerGu7m0MwrfbZGIFy4wxBK1hzcm3YRhA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=IjfStAl4X5APuJGdHfqLtnXkKQl7kdSwd8Ar5E4YipQ=;
+ b=EwiTKGW5g3W6fgP86XDyWlU1Nhb21IHzqm5DHdeFewnDSxc9HYeZJPTTgg3oMQnLsxKdtrEJDx4kCA8WUp//eBLygW7SAdBUe45JTH4w/kBZ/3cO6dIlxWYQHDuLS3fu4gBbbhveCXjzUcFXtsF/2trm5c9NL9tZi7hMgjgyMYxOVoE4T3T/QAB4LubQGg2HOUbgf87eIGGbaxa5KMiU4VeYE6hxe2uAlOyLsUxb7P+ZxaeGQSo9gx3v7MsnS7Q5HouL903NhqgCzjGlwKhYsHb0+c501GZxnARLx3Y2Wf56r0cl57twZHd1ChreVS/VnxOjdPQzQ3rg5C7DyIyYFQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=fibocom.com; dmarc=pass action=none header.from=fibocom.com;
+ dkim=pass header.d=fibocom.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=fibocomcorp.onmicrosoft.com; s=selector1-fibocomcorp-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=IjfStAl4X5APuJGdHfqLtnXkKQl7kdSwd8Ar5E4YipQ=;
+ b=dVpPKi3oiybIbVPOw76WY3J0QjZUttLBtiEDvIHM/g3VA6Kex52aUMpzMWDpifL2B6xQnCN6AbzheztAIQCZJrLB7YO4Rq0+Ir17bCRWbrFwo8VXLcAEhbLZuulDq0qPRJFPcE4kGxTqnbbu3aGEUBDDDU6nuR940+W+mmX5COw=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=fibocom.com;
+Received: from TY0PR02MB5766.apcprd02.prod.outlook.com (2603:1096:400:1b5::6)
+ by SEZPR02MB7365.apcprd02.prod.outlook.com (2603:1096:101:1f6::14) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7741.34; Tue, 9 Jul
+ 2024 04:24:03 +0000
+Received: from TY0PR02MB5766.apcprd02.prod.outlook.com
+ ([fe80::f53d:47b:3b04:9a8b]) by TY0PR02MB5766.apcprd02.prod.outlook.com
+ ([fe80::f53d:47b:3b04:9a8b%7]) with mapi id 15.20.7741.033; Tue, 9 Jul 2024
+ 04:24:01 +0000
+From: Jinjian Song <jinjian.song@fibocom.com>
+To: chandrashekar.devegowda@intel.com,
+	chiranjeevi.rapolu@linux.intel.com,
+	haijun.liu@mediatek.com,
+	m.chetan.kumar@linux.intel.com,
+	ricardo.martinez@linux.intel.com,
+	loic.poulain@linaro.org,
+	ryazanov.s.a@gmail.com,
+	johannes@sipsolutions.net,
+	davem@davemloft.net,
+	edumazet@google.com,
+	kuba@kernel.org,
+	pabeni@redhat.com
+Cc: linux-kernel@vger.kernel.org,
+	netdev@vger.kernel.org,
+	inux-doc@vger.kernel.org,
+	angelogioacchino.delregno@collabora.com,
+	linux-arm-kernel@lists.infradead.org,
+	matthias.bgg@gmail.com,
+	corbet@lwn.net,
+	linux-mediatek@lists.infradead.org,
+	Jinjian Song <jinjian.song@fibocom.com>
+Subject: [net-next v4 RESEND 0/2] net: wwan: t7xx: Add t7xx debug port
+Date: Tue,  9 Jul 2024 12:23:39 +0800
+Message-Id: <20240709042341.23180-1-jinjian.song@fibocom.com>
+X-Mailer: git-send-email 2.34.1
+Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
+X-ClientProxiedBy: SGBP274CA0020.SGPP274.PROD.OUTLOOK.COM (2603:1096:4:b0::32)
+ To TY0PR02MB5766.apcprd02.prod.outlook.com (2603:1096:400:1b5::6)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: TY0PR02MB5766:EE_|SEZPR02MB7365:EE_
+X-MS-Office365-Filtering-Correlation-Id: 00e5575e-37de-4b86-d005-08dc9fcef52c
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|1800799024|7416014|52116014|366016|921020|38350700014;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?le9fhGFcZfRZnr+xEf0lN9QUmg6VBH4dI56gff96CZsnMXYY5CF4wQqz/dGt?=
+ =?us-ascii?Q?7ZcYdrOQBr2VD8mtZpxlxUZHBMWyHYEFDAumEwWPsRhGQVC78D/r9Kfs4qA2?=
+ =?us-ascii?Q?YIWtmqABvf1Yjj/OXQcBZt08zYWA6vvl8Lj8cCZHNHiOw41wSjS+5Sg6HIzb?=
+ =?us-ascii?Q?jN5iIQ+YlMswQRj2n7HeFc7npA0/+ZuAL5MmxIbx7oVsTcwsFtDsqdEdDBPx?=
+ =?us-ascii?Q?ern37dz5dF+yuhpCxFnq5NNAgZFrn96rVppe420ssgX3Qg5f7o4Uobwc6h3+?=
+ =?us-ascii?Q?m42BliiHZ1oKduh330qVrGG+SBLZwev9R72f2vmX3MtEkBCEX02xjn1/9cOq?=
+ =?us-ascii?Q?VzuymmujObytDWD42V8l62sOYkjaTGsWcdw9/7Gpp6GhCDQEPmUVsbrPobRp?=
+ =?us-ascii?Q?J6/aQtNLQpqBh1NLlVDUSKKLxYnVU/wWrRVVhNM1FCMIMTL3TXjwChpWlh2S?=
+ =?us-ascii?Q?DO/b7/dorImuL+jiNRHV4FsFz0rb1mJdmObboTwB0tC48T4ZPuoMCxk+4r72?=
+ =?us-ascii?Q?bEkBDhqY6+rs36dB+Sh1kVYZuQL+gJ0kejbbIFeL8r7XjA2g+HENbdutVPrd?=
+ =?us-ascii?Q?dMIgfCcAalZQPoZcb3PwH8LD6gDgZzLI70rl8O/8BGtc2mGop5sEP2ZTxUQ8?=
+ =?us-ascii?Q?6tJ208veiYuu7f05tmN20Tj/nloBxeiYhZBZc+3gUJTY5CoqQQDt4ndPVK5p?=
+ =?us-ascii?Q?OR3fqS8aZ8B84JKunXwH4WGXu+6lDr8R0YGQ/P+33qkVINb//7s3BLw3TfzQ?=
+ =?us-ascii?Q?eTQk4ae4SM9rZ/bjdkm6tv5MGozRkRL5+EWGkrw3dSLkjJtIoIMwNYaVCFwV?=
+ =?us-ascii?Q?xNooEfyMIaAoLK2LMYd68wFfmVzHJ3PFz25o12PEQMkuQqjIM9nrXqTbw/bZ?=
+ =?us-ascii?Q?ajQ9jAC1a6Ykigt53TWy9kPbxS1ewoyvdRiUL0Vsa0nBVGKKhgRAKvgzVTdd?=
+ =?us-ascii?Q?9mU//XqtcZzt6uiWscOGD8Y++hL6IbvzjPFBZBS+Wh749EZDDwKACV9oCYCs?=
+ =?us-ascii?Q?PC+k8V8i9A9neV/M6s9LH0LzJGULVwj5JRmB40//86F/YixYAEJeBgID1uWK?=
+ =?us-ascii?Q?MZ7Ax/GqCEO6Y3K+vlCnWV4kwGifcX7bbCpbW3I/wJp9bTc8tic60cvaFH3u?=
+ =?us-ascii?Q?U5iSJpPIjNRUxHLAU1zU+IuzBode3cX0eZOxePssgL4vwDxU+NxlhQ/zwErN?=
+ =?us-ascii?Q?GRRKgZQSrPnzKzYNCyK68uXaQagiaTpYi7yq+Z4GDXnznXfA964IVV08x2iS?=
+ =?us-ascii?Q?awJMBuEaRKbZ5cSGgAZlXP8aXqAGeLG6R8FB/xM7NQwcLLH59SMXkkDEPJUz?=
+ =?us-ascii?Q?Ree/9+ETKNxGiPoaerXEQySKNFzKSB15kvXkU2WJsFsY7HseqDyWDvVIeWJK?=
+ =?us-ascii?Q?Ocp1bK0VeZ/r+XXk0Q2zQjR4aoDahOh6f4VctBLcCx9ix2VM4HuQXf3Jeh3n?=
+ =?us-ascii?Q?w95faN/5mlk=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TY0PR02MB5766.apcprd02.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(1800799024)(7416014)(52116014)(366016)(921020)(38350700014);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?0t0H79WRg5sJqht/6VQUyEASZtYlTYpGqoHFMET1gapvKGMjDbYoKOcNhe5j?=
+ =?us-ascii?Q?Ieyp6L6O3fs/QSlCFGGXNob3q2p1ePiWIoGPiMYpxvKHlJsTBnbQKBM3W6xs?=
+ =?us-ascii?Q?JrSSTkL+x1JgWb1BkVF2Y9exUVf853frZtfaTliIH5WIW40lAJGMpFqrm5pQ?=
+ =?us-ascii?Q?weUJgP6hIIMduL761i97Ui73LZ6d6tGxrdSS2yZc8ZvY+/RNr70piYB5eyK3?=
+ =?us-ascii?Q?OAK/ktT/hXPQcIIQguAWxU9cIQXrqcLDv5U6qnffIN0sRdVY2Wa8wmwjR8d8?=
+ =?us-ascii?Q?tRrE8ObnM8RdtvwHZYClwhc7gp0QRWl/37yQpgMCjS7AbgUtXJ/vJe42wFqC?=
+ =?us-ascii?Q?3wVTxBeI0k15zUKJwv8GqHzGYpeLzZfozxu2Xzc5QwfYGwPc/i/WQURtfeoG?=
+ =?us-ascii?Q?5pQoKSpz+am2OD5A6loPXS8OyrL8S5+D32iiR2RRv7BbFmEBNfwrwNgkaW8J?=
+ =?us-ascii?Q?vtIrnrGiENiWa0ucNkDW68/bt7DMv/5Cps7tDDnttSe2bjl9igBYJLyCBe+s?=
+ =?us-ascii?Q?VBnqLo79o9zFS05F/r5IUWA36is1g0oXi6FbcJlAHWWl9H/axywby4rXixTY?=
+ =?us-ascii?Q?0RjCm8r4NgCyglsMVleG/8PeH3j4CbKGttHuV1/s0CcZiEye6wUz1IJs1vDl?=
+ =?us-ascii?Q?TEvIWPZPjGWINnCCJEK0aQork8rMCMxzeiFnZdhppDUOyxBsMYQlrCMZtdsN?=
+ =?us-ascii?Q?S2r71eaY87tztnnttzotaVqLZl24mckmXtSSxn7e7ha5Vpl1wdXuaqulkcCo?=
+ =?us-ascii?Q?NZkfselc6d9V0msBB2h9uSE8fiZXK9IKOOhPWKVxfwWLkO+2yfbnqR5f2QW7?=
+ =?us-ascii?Q?yMkuXwER9ruExiE+CenUxQjDcTbXaOEa/XHMnCHF8CfbqEmRQ8w+DrwxKbVl?=
+ =?us-ascii?Q?7PINkHAUHv2z+u0I7/AJcttPhE06NGd73bE4WQbF9F/FE2BQbrz66rCDoR0c?=
+ =?us-ascii?Q?2R0obAoij+9cvL24k500TP1lB9HhDEaNlAYXWQ9SMChQP0gCBoiVAxcj17FW?=
+ =?us-ascii?Q?dfRQ9fsGzdpvaF0cCxz7NeAbpd9xdLz2YlwRG3gS+YP1B93lcHZ20xtwSvfL?=
+ =?us-ascii?Q?LQCofJdXqfCvzCfSsq1IebzXhHto1m6PfPOeXdCbX8L1aQbr/5ylak6cn2Nj?=
+ =?us-ascii?Q?TtBN/NwgpOAGA2nGBIh7HK3BMRhOxrWcb8beE1sqGWGOFgLMtSlGHPGUeXt4?=
+ =?us-ascii?Q?lwtoQjLlLuQtw3PpktECZcA5fQobrqQpeOIGWJTGuFTD16Ot7Ygk9v2SGQ8t?=
+ =?us-ascii?Q?AOZWNeoiuHnEwRpYvy9v+YwTrquqir+tIOpRNPMhbqlQtFXcm3AMFjUXtisb?=
+ =?us-ascii?Q?kmtgTkci8dboUUJfLmiZBEHRV9JfKYwFxlTDxkO/W7qO1bCUBhTAD9UO+KCG?=
+ =?us-ascii?Q?MjTGMtSDl9vNObGOMFIMyIsUHKObht9OuLV+1SnCdopVxGd2x7fJLV/W1sat?=
+ =?us-ascii?Q?3DttJsQHZBkVS844IMQLOCRHsuH7GMsm5/EddCKqMMAcKaU/7qfK/Nqw4FtA?=
+ =?us-ascii?Q?/Lb25PGB3pJpiRW/nxpZgNBssb3iKJILO2iAp/yu16CkN+j3hbWF6PH2AHOI?=
+ =?us-ascii?Q?muhPE2MQT37XC1IqQl0u4DKfTMr2ybGQCybGxpoDI9RgEBrCyZtBEJcBraY4?=
+ =?us-ascii?Q?ZQ=3D=3D?=
+X-OriginatorOrg: fibocom.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 00e5575e-37de-4b86-d005-08dc9fcef52c
+X-MS-Exchange-CrossTenant-AuthSource: TY0PR02MB5766.apcprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 09 Jul 2024 04:24:00.9459
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 889bfe61-8c21-436b-bc07-3908050c8236
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: j3n05Dmj7KJ04K7grNXzcjGgJ7XGYCLGNaXyWhiyRkOICy6dZXwTigM1Ibzwbi/qSJjTTZb8h/HheT5dF/ECLgolhVQHirWZPFTuKX97o5Q=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEZPR02MB7365
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240708_172427_309475_A5D787B1 
-X-CRM114-Status: UNSURE (   9.45  )
+X-CRM114-CacheID: sfid-20240708_212417_751052_8B3E40D5 
+X-CRM114-Status: UNSURE (   6.76  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -99,24 +173,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Viresh Kumar <viresh.kumar@linaro.org> writes:
+Add support for t7xx WWAN device to debug by ADB (Android Debug Bridge)
+port and MTK MIPCi (Modem Information Process Center) port.
 
-> From: Lizhe <sensor1010@163.com>
->
-> The cpufreq core doesn't check the return type of the exit() callback
-> and there is not much the core can do on failures at that point. Just
-> drop the returned value and make it return void.
->
-> Signed-off-by: Lizhe <sensor1010@163.com>
-> [ Viresh: Reworked the patches to fix all missing changes together. ]
-> Signed-off-by: Viresh Kumar <viresh.kumar@linaro.org>
-> ---
+Application can use ADB (Android Debg Bridge) port to implement
+functions (shell, pull, push ...) by ADB protocol commands.
 
-[...]
+Application can use MIPC (Modem Information Process Center) port
+to debug antenna tunner or noise profiling through this MTK modem
+diagnostic interface.
 
->  drivers/cpufreq/omap-cpufreq.c         |  3 +--
+Jinjian Song (2):
+  wwan: core: Add WWAN ADB and MIPC port type
+  net: wwan: t7xx: Add debug port
 
-For OMAP:
+ .../networking/device_drivers/wwan/t7xx.rst   | 47 +++++++++++++
+ drivers/net/wwan/t7xx/t7xx_pci.c              | 67 +++++++++++++++++--
+ drivers/net/wwan/t7xx/t7xx_pci.h              |  7 ++
+ drivers/net/wwan/t7xx/t7xx_port.h             |  3 +
+ drivers/net/wwan/t7xx/t7xx_port_proxy.c       | 44 +++++++++++-
+ drivers/net/wwan/t7xx/t7xx_port_proxy.h       |  1 +
+ drivers/net/wwan/t7xx/t7xx_port_wwan.c        |  8 ++-
+ drivers/net/wwan/wwan_core.c                  |  8 +++
+ include/linux/wwan.h                          |  4 ++
+ 9 files changed, 179 insertions(+), 10 deletions(-)
 
-Acked-by: Kevin Hilman <khilman@baylibre.com>
+-- 
+2.34.1
+
 
