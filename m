@@ -4,88 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24CA5C3DA42
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jul 2024 15:56:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65EDAC3DA42
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jul 2024 16:22:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uBj2YmtSTrFPZPUbLzrldXTaT0nXgCHgIoklfp+Mzk8=; b=sNmQe4LTDM1hA8BzCTmwgEEyMY
-	tsHAYUff4z3BBWmvIYsznSmM3U7IZocB5vXoGf+c6fvvv2kFl/DPbY06+WKMWPI60qfmf+F0wptEZ
-	+srg+V5tNiCPFRW2sniCeCdFddNuxhcgkBQMDXLsMGi6+Vj7bbQHJ6gc03dNbuEd7wPlB43R+l9wh
-	UaghPNiwLs3c1CF7hugOVti82CLT1OTwcbEJKY8BCjmlVY9gqmS9OK9EGYELan7jZGltoYngX2BSF
-	G7E38FGlQNDUz4f/TmAQ+OIbgeDCCh+L1ZoG6IHoLAKe4dWuMytmfGFTk23H3PLauapiiAEMzBPzF
-	R9YIaobg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=s9iOTRxw5Qytoe+VupdvA/reAQiawx9dExWT989PAS0=; b=DojOI61hMH2zt4
+	bDvLXEdMOqifRvq6MmpScnR+dPjh4UqQlnf06qBwaRUc5+JYlSs0nvrFfRdTDALftW8o162HGJKon
+	DGeWKTaSN7ScGm6Bw3u3250lt/UuFZg/BP7Bf1Qu5Xdn8WyyDibm+5gAc37M3aDK3d7apoXzDs5s+
+	nLRvuI5j7Fk/EH2jBiqhir+qbDfqg/eudqnfHS5AUcsvsWrpInrIS+777P8d47JS+t140qr+hV7Ub
+	8u0wa7L+33xx4p0KzuAt4G9HgEq7WA1K14+pvtE+/ZFtRoQX2XeBxTAYuZ8LhktnwQSH2qdwry3vR
+	m1Wc+TeGatAsQqb7nO3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRZgN-0000000B2FY-259Q;
-	Wed, 10 Jul 2024 15:56:39 +0000
-Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
+	id 1sRa5N-0000000B81y-0Uyj;
+	Wed, 10 Jul 2024 16:22:29 +0000
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRZgK-0000000B2EW-1MkD
-	for linux-mediatek@lists.infradead.org;
-	Wed, 10 Jul 2024 15:56:37 +0000
-Received: by mail-pj1-x1033.google.com with SMTP id 98e67ed59e1d1-2c983d8bdc7so4822344a91.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 10 Jul 2024 08:56:35 -0700 (PDT)
+	id 1sRa5K-0000000B80g-1rBe;
+	Wed, 10 Jul 2024 16:22:27 +0000
+Received: by mail-ej1-x62b.google.com with SMTP id a640c23a62f3a-a77e7a6cfa7so439757866b.1;
+        Wed, 10 Jul 2024 09:22:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1720626995; x=1721231795; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=uBj2YmtSTrFPZPUbLzrldXTaT0nXgCHgIoklfp+Mzk8=;
-        b=IwikkgiejhZ73pXiE6cTdNW78FrAD0vjGAI6YdMOgTClIBhiVtS4GUradgw1s0T2Sb
-         DM14rqYuhm5CYeFN6zQDsw6v8eUpzhk+3+rT45QSFbuxcQvz+nybgoZowvVSbatLgxT4
-         yJreVkJ8L1RWbBrbbhjmPDApUCaiYFGcbK8lSNgxJ6OWoSkaaCBT8DbI0xZRpTwWcM5l
-         TNFQLw8UxWNFS7UOzRQ8X9C2VuMHCeo7TGMMMs13A/ltXkJk4kDGuLbmuxiTktDxpfRf
-         X0Wq3asEf3tkdm2p1qoMNul2Kfk5a9BDyyC00APItw51GNBvQoTCV36ryZTLqvsntTB2
-         EXUg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1720626995; x=1721231795;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+        d=gmail.com; s=20230601; t=1720628545; x=1721233345; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=uBj2YmtSTrFPZPUbLzrldXTaT0nXgCHgIoklfp+Mzk8=;
-        b=PctaL/NgDgERMOb2QFXUmw0wZllnq2HoCoV7ELsms6KdZdZD5MKBBQaU6dqPiZBxdM
-         gVInTlvjEqqvxf0Rp0Uz6V1Ov2ViMyRwX+uvgeMcJH34rppm0/RuuccN+1JwiJ3u5p3P
-         abx2mdzyXx5VYCfRO+7QWJC8tOJrjbQildExoAeBD31u6HJC7iiBef0nrfu/Jzt+3ZT1
-         UUa6tsa2o2QR3WbzvYWhddxlA+Ir7yl3eH8l1NUG9vuA94HCLzEAbobsDjGqb7Y5JG/G
-         NiQ0JT1iOCv6uoyx5zcL3woaZ8Fo1VtErBAGQG3V0Ox78R+6uSDmFHtqhsxbv3jJqUT0
-         Q41g==
-X-Forwarded-Encrypted: i=1; AJvYcCUT99/yZ2wW1VGjfytYvaEk5m7EJfiUkcLMPxWnfdPS4K5idbwOEu4YyCZXokZNYOSi+DAOB7nWC5K3IktiNgDu23R0ux+yAe7wN0vrd5Vw4d5V
-X-Gm-Message-State: AOJu0YxvKmr6q8I/sSBy893clB02wmKkmn0FjYOmY9ETm4laZp04gjXg
-	j2TzmewU1FyElHvymARD54Y9qaGJiSPqgyABiZLsYQTnEsZGIMtkfKv82IPcr9k=
-X-Google-Smtp-Source: AGHT+IER42wfBDvYrn5WVV2tIZB6J3uCihrTxDQpbbWz7C02veVVpbReOeakDmwhl/pQRtvuZYvxfA==
-X-Received: by 2002:a17:90a:c385:b0:2c9:66d3:4663 with SMTP id 98e67ed59e1d1-2ca35d58971mr4748875a91.43.1720626994926;
-        Wed, 10 Jul 2024 08:56:34 -0700 (PDT)
-Received: from p14s ([2604:3d09:148c:c800:8408:4ecd:288d:848b])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2ca34e6fc0csm3985584a91.21.2024.07.10.08.56.33
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 10 Jul 2024 08:56:34 -0700 (PDT)
-Date: Wed, 10 Jul 2024 09:56:32 -0600
-From: Mathieu Poirier <mathieu.poirier@linaro.org>
-To: Shun-yi Wang <shun-yi.wang@mediatek.com>
-Cc: Bjorn Andersson <andersson@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-remoteproc@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Project_Global_Chrome_Upstream_Group@mediatek.com,
-	jason-ch.chen@mediatek.com, yaya.chang@mediatek.com,
-	teddy.chen@mediatek.com, olivia.wen@mediatek.com
-Subject: Re: [PATCH 1/1] remoteproc: mediatek: Support multiple reserved
- memory regions
-Message-ID: <Zo6vMPaefxCaDe7D@p14s>
-References: <20240703115308.17436-1-shun-yi.wang@mediatek.com>
- <20240703115308.17436-2-shun-yi.wang@mediatek.com>
+        bh=s9iOTRxw5Qytoe+VupdvA/reAQiawx9dExWT989PAS0=;
+        b=RdD91lZymcfxNpwIput/f1s0NnGYSrS5U8jgNnR4TU3JbphXM6ShHqv0DFyu8SPBTN
+         w6ACNX20HsD3tjY/Fj80pqPlE3Totbi3DljkLQm2k343rSiQPSgZxv+oZn2iCv5+RYb7
+         vp/PLnr25sT9FkNtzJQK2ptfxu17EMcEoU1amBosYPsVql3ws3lCCXjSjB9CPegAlUnZ
+         qRFnSBgcEnKnpbPkvW+vJtumqewmCa/aOXsc7NTc9axvjEgvboc2EGM252U5u036EQyD
+         VHBNdLZdupQqwaaemxsHEDPk8mrNKVCpdNo/89PPP3UiaILmYZu4ZemYBFyLJzFHypaK
+         cgZw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1720628545; x=1721233345;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=s9iOTRxw5Qytoe+VupdvA/reAQiawx9dExWT989PAS0=;
+        b=CuGIbDYJ1vsk+BqWc16FHOZVS/BcqbJ2o2xVxqLNQKmCyyN8yrGQw4W93eOTR2YIQc
+         ZMjlyl+UYG3A/ZZcRVZZosapIHD8NWqh4XyJAO9W2KJ2w3Y7aO51k5Bi5bEZhXuqpuGB
+         KVqB3NJMdB0EV9FW3x57pE0SEVSEoMOCwRAXpiSo6bk/S9PHsFe00E9mk1x02rGx1AMz
+         jsFRk5oYlj7alw4ErRaLQ3m3INER6uq65C24hn+ZL9a8b7N9uZVtY6WFgZj4bqcKMj06
+         CucWgkjW0YJoVJ++rmHwquB9KLWpXNZLFS1lmOB7og6fkji2GL4VXMOKlY9MA90Zgd09
+         6Uvw==
+X-Forwarded-Encrypted: i=1; AJvYcCVQRsmRlTQaKS6dgAEGt7RqdxLlDClmoShz21bgytOsT/LdcIG7Yajvh3/RHAP+ZedTY15/A6lBbQPZdQMAMkURT438AdlsEOlvu3Oi3kQxC3qJI3tI3wvbS5zO6j+wPVcdffW0eVWTaeHTxLXwvneAoF3cMNtyiok=
+X-Gm-Message-State: AOJu0YxsZu2vKBRrSD7eLa8Wzraw+f1f6SDnQEi01DOtsCb/gCVmf1Zq
+	piGu002QpHxo1phf28fmZbAHNWG1lPRJ9N8vXyBmHyuu0kYgKQ5oKxVmSVvSzEzye8uOeSGrvqg
+	qejxdBDSQQV6VMAFL18wvEoXP5ac=
+X-Google-Smtp-Source: AGHT+IFNvET9t815HfmplLSrRTvXphreJ0MNbUuIvztk3gg9+0wgDIzf2fKBnSwvpmHDF9a0kWQlSc1e+i3iMabrSK0=
+X-Received: by 2002:a17:907:2d87:b0:a77:f5ca:f847 with SMTP id
+ a640c23a62f3a-a780b68a20emr471719666b.3.1720628544538; Wed, 10 Jul 2024
+ 09:22:24 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240703115308.17436-2-shun-yi.wang@mediatek.com>
+References: <20240124011459.12204-1-jason-jh.lin@mediatek.com>
+ <20240124011459.12204-2-jason-jh.lin@mediatek.com> <f91d3ac1-0a7d-4ca2-bf0f-c5e471c2f6bb@collabora.com>
+ <2a2a939c9cb56de0383ec3e42db9bcf8e8518775.camel@mediatek.com> <CABb+yY2_oJ_AC2w5AgHMBvqFDeyaUq9BLczqY8JhLFPDnfzY_Q@mail.gmail.com>
+In-Reply-To: <CABb+yY2_oJ_AC2w5AgHMBvqFDeyaUq9BLczqY8JhLFPDnfzY_Q@mail.gmail.com>
+From: Jassi Brar <jassisinghbrar@gmail.com>
+Date: Wed, 10 Jul 2024 11:22:13 -0500
+Message-ID: <CABb+yY3ddp6Ex50yh3hZn2aQcEULvmFfd99xb7ZNVnTPn7=mUg@mail.gmail.com>
+Subject: Re: [PATCH v4 1/3] dt-bindings: mailbox: Add mediatek,gce-props.yaml
+To: =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240710_085636_402364_180DD1C7 
-X-CRM114-Status: GOOD (  20.64  )
+X-CRM114-CacheID: sfid-20240710_092226_523003_98556606 
+X-CRM114-Status: GOOD (  11.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,72 +86,26 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>, "conor+dt@kernel.org" <conor+dt@kernel.org>, Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>, =?UTF-8?B?U2hhd24gU3VuZyAo5a6L5a2d6KyZKQ==?= <Shawn.Sung@mediatek.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, =?UTF-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "linaro-mm-sig@lists.linaro.org" <linaro-mm-sig@lists.linaro.org>, =?UTF-8?B?SmFzb24tY2ggQ2hlbiAo6Zmz5bu66LGqKQ==?= <Jason-ch.Chen@mediatek.com>, "robh+dt@kernel.org" <robh+dt@kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, =?UTF-8?B?Sm9obnNvbiBXYW5nICjnjovogZbpkasp?= <Johnson.Wang@mediatek.com>, =?UTF-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>, "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 03, 2024 at 07:53:08PM +0800, Shun-yi Wang wrote:
-> From: "shun-yi.wang" <shun-yi.wang@mediatek.com>
-> 
-> SCP supports multiple reserved memory regions, intended for
-> specific hardwards.
+On Wed, Jul 10, 2024 at 9:28=E2=80=AFAM Jassi Brar <jassisinghbrar@gmail.co=
+m> wrote:
 >
-> Signed-off-by: shun-yi.wang <shun-yi.wang@mediatek.com>
-> ---
->  drivers/remoteproc/mtk_scp.c | 25 +++++++++++++++++--------
->  1 file changed, 17 insertions(+), 8 deletions(-)
-> 
-> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-> index 9ecd5ea04b5f3..1902826cea0af 100644
-> --- a/drivers/remoteproc/mtk_scp.c
-> +++ b/drivers/remoteproc/mtk_scp.c
-> @@ -1006,22 +1006,31 @@ EXPORT_SYMBOL_GPL(scp_mapping_dm_addr);
->  
->  static int scp_map_memory_region(struct mtk_scp *scp)
->  {
-> -	int ret;
-> +	int ret, i, err;
->  	const struct mtk_scp_sizes_data *scp_sizes;
-> +	struct device_node *node = scp->dev->of_node;
-> +	struct of_phandle_iterator it;
-> +
-> +	i = 0;
-> +	of_for_each_phandle(&it, err, node, "memory-region", NULL, 0) {
-> +		ret = of_reserved_mem_device_init_by_idx(scp->dev, node, i);
-> +
-> +		if (ret) {
-> +			dev_err(scp->dev, "failed to assign memory-region: %s\n",
-> +				it.node->name);
-> +			of_node_put(it.node);
-> +			return -ENOMEM;
-> +		}
+> On Sun, May 26, 2024 at 10:04=E2=80=AFAM Jason-JH Lin (=E6=9E=97=E7=9D=BF=
+=E7=A5=A5)
+> <Jason-JH.Lin@mediatek.com> wrote:
+> >
+> > Hi Angelo, Jassi,
+> >
+> > Could you help me apply this series?
+> > Thanks!
+> >
+> Please get it reviewed by DT maintainers .... Rob or Krzysztof.
+>
+I see Conor Dooley listed as another maintainer, so I am picking it up.
+BTW, I was not CC'ed on the original patch.
 
-With this patch the code is out of sync with the bindings which are still
-specifying a maxItems of 1 - please address.
-
-Thanks,
-Mathieu
-
->  
-> -	ret = of_reserved_mem_device_init(scp->dev);
-> +		i++;
-> +	}
->  
->  	/* reserved memory is optional. */
-> -	if (ret == -ENODEV) {
-> +	if (!i) {
->  		dev_info(scp->dev, "skipping reserved memory initialization.");
->  		return 0;
->  	}
->  
-> -	if (ret) {
-> -		dev_err(scp->dev, "failed to assign memory-region: %d\n", ret);
-> -		return -ENOMEM;
-> -	}
-> -
->  	/* Reserved SCP code size */
->  	scp_sizes = scp->data->scp_sizes;
->  	scp->cpu_addr = dma_alloc_coherent(scp->dev, scp_sizes->max_dram_size,
-> -- 
-> 2.18.0
-> 
+-Jassi
 
