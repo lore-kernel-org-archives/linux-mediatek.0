@@ -4,73 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7B9BC3DA45
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jul 2024 09:26:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50456C3DA45
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jul 2024 09:31:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=5JQ5bL4uRYPelWxEtL/T3yFSFEnrFbUa7wxiQo1QJ1Q=; b=AFQuVZOsyjsU0Th6e9ZgF6Pue7
-	os3eHSMapb5aKmMO8ZzFQjBhf9dYuJ+tp+9YH36bQR81T92vpJE2ZQ0p1mLqZp5uhTleDwh8nmVqV
-	QGV5N1KDWhVashkxQT3iIufBwfooDj5znSd1DV5yfs/7/oLLDEHtdyS6p/rVCdYl7s32LliithqIi
-	uhYMfatt/TYq37S0d//icxvuy9fzWju+PK4Td7whLlLUK6drYBauAtnpSU5XKXhIj3gyz03nEMSxn
-	vRCsKhLK9iOXoPJHOWxLfZjYv/MHKeZy9S+E2G0v+oxXwe+pOrYAXOWhkHzIeG0QnWZ8mjKT9ICZp
-	Yy4LW0MA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XgwNTmrtVIB+Tx5qfeottxq3AwK1J/GvAZ9ipe9tjyE=; b=aksGiSB/NSPyY58feCg28uzzjk
+	opqZKaoZIwQnZ/gVjkuzMA4wYOIQ5srLdLv9BSaSwAk+ioKVDYKOLETuvmUoFfYwsjDqiRAKEGxvC
+	EI9yvACVKNuFlQfM5wNnEzFuYsQCcgXh/f4PM6C4byIcfSw8aLZSs7X2JNq8mmqY2GzFzLuEmWWXL
+	qJgYctU9qo6aRjT/AsC0BZynryxxYMsf6ByIJR2eQF4ZGgSibWTZCw+lTbLZLEGAA8TvM5FqMHw64
+	QsMKF/5HkPn4ppTGfzTYC6lwEZ2Lg+xkDHDPM4K1zcdxCEfiaAwsqXKhLgvrekhTemb8m1HZ6IpWt
+	dL7WSOxQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRTbC-0000000A3yN-3wrR;
-	Wed, 10 Jul 2024 09:26:54 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1sRTfi-0000000A4VO-03eI;
+	Wed, 10 Jul 2024 09:31:34 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRTbA-0000000A3xU-1Bj4
-	for linux-mediatek@lists.infradead.org;
-	Wed, 10 Jul 2024 09:26:53 +0000
-X-UUID: 886614d43e9e11efa6c87f6b4542ff6b-20240710
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=5JQ5bL4uRYPelWxEtL/T3yFSFEnrFbUa7wxiQo1QJ1Q=;
-	b=faewIItifotUUTQ87g8hRaU+6aNxhAB84yvqUfuRVWEJISzaFBCmgSjPUqvJ4JBTmfPRBeKIrRA5mQkRJq1gYM9DTG0Wv0H4RQvCst84KohsiXcQ/Fb2m3naq42TtgWu0Brsjx8/qyEU00xHgHzkzNWp3SEkTO2k+gwwpGphXYo=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.40,REQID:518898d9-7fff-49e4-bf2e-a8055944e11c,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:ba885a6,CLOUDID:be3b50d1-436f-4604-ad9d-558fa44a3bbe,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 886614d43e9e11efa6c87f6b4542ff6b-20240710
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
-	(envelope-from <chris.lu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2035731905; Wed, 10 Jul 2024 02:26:48 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 10 Jul 2024 02:26:15 -0700
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 10 Jul 2024 17:26:15 +0800
-From: Chris Lu <chris.lu@mediatek.com>
-To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
-	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
-CC: Sean Wang <sean.wang@mediatek.com>, Aaron Hou <aaron.hou@mediatek.com>,
-	Steve Lee <steve.lee@mediatek.com>, linux-bluetooth
-	<linux-bluetooth@vger.kernel.org>, linux-kernel
-	<linux-kernel@vger.kernel.org>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Chris Lu <chris.lu@mediatek.com>
-Subject: [PATCH v2] Bluetooth: btmtk: Fix btmtk.c undefined reference build error
-Date: Wed, 10 Jul 2024 17:26:14 +0800
-Message-ID: <20240710092614.7297-1-chris.lu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1sRTfP-0000000A4RS-2vsG;
+	Wed, 10 Jul 2024 09:31:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1720603872;
+	bh=IqVKXZ8bzrEAVXLR1bSuGmEfouFfD3UiPXeCKpXfUBM=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=1ZbfSaOoLHbue0Cip7tDl6DIVtZ5ZJLyzYri0l8yvRJQP2xLCSscp2fO7bJlP+45m
+	 8vLM2CZZb7wPppO2lUtZKUGx+PqppwYMuYNI9b9W5GOxvNqSdGsY5V5I6rdLzDk/Lb
+	 oYbln6lJ9eH9Vvojnvp1q4jkoAwZ4sLGGG/dudzLx0gcOjAhYo7FfqYYEYwqu8I+Oh
+	 yJj7vP60S4WblpgaKh9oGZCDy4TTwLuso6Qi9yGOHdrg22K1fcTmBmWbIyrgS88D1n
+	 oIIVSr6I+e5PfRTX3GaHVYM9rbGyqmFLrQHwGCWfyl8ckAmRt/W1kkhNx9JPe/ZCz/
+	 NPivhegOYtgBg==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 0407F3782192;
+	Wed, 10 Jul 2024 09:31:11 +0000 (UTC)
+Message-ID: <a1914f2b-93f2-4de4-9c4b-2e1f6b39cf3a@collabora.com>
+Date: Wed, 10 Jul 2024 11:31:11 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] nvmem: mtk-efuse: Only register socinfo device if
+ needed cells are there
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Chen-Yu Tsai <wenst@chromium.org>
+Cc: kernel@collabora.com, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20240708-mtk-socinfo-no-data-probe-err-v2-1-7ae252acbcc2@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20240708-mtk-socinfo-no-data-probe-err-v2-1-7ae252acbcc2@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240710_022652_335440_5357E224 
-X-CRM114-Status: GOOD (  10.36  )
+X-CRM114-CacheID: sfid-20240710_023116_051443_FA2C0325 
+X-CRM114-Status: GOOD (  25.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,90 +77,102 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MediaTek move some usb interface related function to btmtk.c which
-may cause build failed if BT USB Kconfig wasn't enabled.
-Fix undefined reference by adding config check.
+Il 08/07/24 21:43, Nícolas F. R. A. Prado ha scritto:
+> Not every efuse region has cells storing SoC information. Only register
+> an socinfo device if the required cells are present.
+> 
+> This prevents the pointless process of creating an socinfo device,
+> probing it with the socinfo driver only to ultimately error out like so
+> 
+>    mtk-socinfo mtk-socinfo.0.auto: error -ENOENT: Failed to get socinfo data
+>    mtk-socinfo mtk-socinfo.0.auto: probe with driver mtk-socinfo failed with error -2
+> 
+> This issue is observed on the mt8183-kukui-jacuzzi-juniper-sku16
+> platform, which has two efuse regions, but only one of them contains the
+> SoC data.
+> 
 
-btmtk.c:(.text+0x89c): undefined reference to `usb_alloc_urb'
-btmtk.c:(.text+0x8e3): undefined reference to `usb_free_urb'
-btmtk.c:(.text+0x956): undefined reference to `usb_free_urb'
-btmtk.c:(.text+0xa0e): undefined reference to `usb_anchor_urb'
-btmtk.c:(.text+0xb43): undefined reference to `usb_autopm_get_interface'
-btmtk.c:(.text+0xb7e): undefined reference to `usb_autopm_put_interface'
-btmtk.c:(.text+0xf70): undefined reference to `usb_disable_autosuspend'
-btmtk.c:(.text+0x133a): undefined reference to `usb_control_msg'
+I think that we should rather remove or disable the first eFuse region, as
+even though that is enabled:
 
-Fixes: 39a9e1c69e74 ("Bluetooth: btmtk: move btusb_mtk_hci_wmt_sync to btmtk.c")
-Reported-by: kernel test robot <lkp@intel.com>
-Closes: https://lore.kernel.org/oe-kbuild-all/202407091928.AH0aGZnx-lkp@intel.com/
-Co-developed-by: Sean Wang <sean.wang@mediatek.com>
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-Signed-off-by: Chris Lu <chris.lu@mediatek.com>
----
-Change from v1 to v2:
--fix and update commit message warning
----
- drivers/bluetooth/btmtk.c | 2 ++
- drivers/bluetooth/btmtk.h | 4 ++++
- 2 files changed, 6 insertions(+)
+  - This is the only SoC having two regions
+    - I'm not even sure that the region at 0x8000000 is really efuse
+    - Not even referenced in datasheets....
+  - It's unused, as in, it's not exposing any information and no declared cells
 
-diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
-index b7c348687a77..9789296ad4f6 100644
---- a/drivers/bluetooth/btmtk.c
-+++ b/drivers/bluetooth/btmtk.c
-@@ -437,6 +437,7 @@ int btmtk_process_coredump(struct hci_dev *hdev, struct sk_buff *skb)
- }
- EXPORT_SYMBOL_GPL(btmtk_process_coredump);
- 
-+#if IS_ENABLED(CONFIG_BT_HCIBTUSB_MTK)
- static void btmtk_usb_wmt_recv(struct urb *urb)
- {
- 	struct hci_dev *hdev = urb->context;
-@@ -1487,6 +1488,7 @@ int btmtk_usb_shutdown(struct hci_dev *hdev)
- 	return 0;
- }
- EXPORT_SYMBOL_GPL(btmtk_usb_shutdown);
-+#endif
- 
- MODULE_AUTHOR("Sean Wang <sean.wang@mediatek.com>");
- MODULE_AUTHOR("Mark Chen <mark-yw.chen@mediatek.com>");
-diff --git a/drivers/bluetooth/btmtk.h b/drivers/bluetooth/btmtk.h
-index 453ed5131a37..890dbe9beff8 100644
---- a/drivers/bluetooth/btmtk.h
-+++ b/drivers/bluetooth/btmtk.h
-@@ -165,6 +165,7 @@ struct btmtk_data {
- 	btmtk_reset_sync_func_t reset_sync;
- 	struct btmtk_coredump_info cd_info;
- 
-+#if IS_ENABLED(CONFIG_BT_HCIBTUSB_MTK)
- 	struct usb_device *udev;
- 	struct usb_interface *intf;
- 	struct usb_anchor *ctrl_anchor;
-@@ -177,6 +178,7 @@ struct btmtk_data {
- 
- 	/* spinlock for ISO data transmission */
- 	spinlock_t isorxlock;
-+#endif
- };
- 
- typedef int (*wmt_cmd_sync_func_t)(struct hci_dev *,
-@@ -202,6 +204,7 @@ int btmtk_process_coredump(struct hci_dev *hdev, struct sk_buff *skb);
- void btmtk_fw_get_filename(char *buf, size_t size, u32 dev_id, u32 fw_ver,
- 			   u32 fw_flavor);
- 
-+#if IS_ENABLED(CONFIG_BT_HCIBTUSB_MTK)
- int btmtk_usb_subsys_reset(struct hci_dev *hdev, u32 dev_id);
- 
- int btmtk_usb_recv_acl(struct hci_dev *hdev, struct sk_buff *skb);
-@@ -216,6 +219,7 @@ int btmtk_usb_suspend(struct hci_dev *hdev);
- int btmtk_usb_setup(struct hci_dev *hdev);
- 
- int btmtk_usb_shutdown(struct hci_dev *hdev);
-+#endif
- #else
- 
- static inline int btmtk_set_bdaddr(struct hci_dev *hdev,
--- 
-2.18.0
+Don't misunderstand me, this is not an invalid change, but I rather prefer
+to resolve this by disabling that (effectively unused!) node, avoiding to
+add more lines to this driver that would be useless after fixing that small
+single thing.
+
+Cheers,
+Angelo
+
+
+> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> ---
+> Changes in v2:
+> - Added missing include for of.h
+> - Link to v1: https://lore.kernel.org/r/20240708-mtk-socinfo-no-data-probe-err-v1-1-fb2acd3a47bf@collabora.com
+> ---
+>   drivers/nvmem/mtk-efuse.c | 18 ++++++++++++++----
+>   1 file changed, 14 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/nvmem/mtk-efuse.c b/drivers/nvmem/mtk-efuse.c
+> index 9caf04667341..74def409bc20 100644
+> --- a/drivers/nvmem/mtk-efuse.c
+> +++ b/drivers/nvmem/mtk-efuse.c
+> @@ -11,6 +11,7 @@
+>   #include <linux/nvmem-provider.h>
+>   #include <linux/platform_device.h>
+>   #include <linux/property.h>
+> +#include <linux/of.h>
+>   
+>   struct mtk_efuse_pdata {
+>   	bool uses_post_processing;
+> @@ -60,6 +61,8 @@ static void mtk_efuse_fixup_dt_cell_info(struct nvmem_device *nvmem,
+>   		cell->read_post_process = mtk_efuse_gpu_speedbin_pp;
+>   }
+>   
+> +static const char socinfo_data_first_name[] = "socinfo-data1";
+> +
+>   static int mtk_efuse_probe(struct platform_device *pdev)
+>   {
+>   	struct device *dev = &pdev->dev;
+> @@ -69,6 +72,7 @@ static int mtk_efuse_probe(struct platform_device *pdev)
+>   	struct mtk_efuse_priv *priv;
+>   	const struct mtk_efuse_pdata *pdata;
+>   	struct platform_device *socinfo;
+> +	struct device_node *np;
+>   
+>   	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
+>   	if (!priv)
+> @@ -92,10 +96,16 @@ static int mtk_efuse_probe(struct platform_device *pdev)
+>   	if (IS_ERR(nvmem))
+>   		return PTR_ERR(nvmem);
+>   
+> -	socinfo = platform_device_register_data(&pdev->dev, "mtk-socinfo",
+> -						PLATFORM_DEVID_AUTO, NULL, 0);
+> -	if (IS_ERR(socinfo))
+> -		dev_info(dev, "MediaTek SoC Information will be unavailable\n");
+> +	np = of_get_child_by_name(pdev->dev.of_node, socinfo_data_first_name);
+> +	if (np) {
+> +		of_node_put(np);
+> +		socinfo = platform_device_register_data(&pdev->dev, "mtk-socinfo",
+> +							PLATFORM_DEVID_AUTO, NULL, 0);
+> +		if (IS_ERR(socinfo))
+> +			dev_info(dev, "MediaTek SoC Information will be unavailable\n");
+> +	} else {
+> +		dev_info(dev, "Efuse region does not contain SoC information - skipping socinfo driver setup\n");
+> +	}
+>   
+>   	platform_set_drvdata(pdev, socinfo);
+>   	return 0;
+> 
+> ---
+> base-commit: 0b58e108042b0ed28a71cd7edf5175999955b233
+> change-id: 20240708-mtk-socinfo-no-data-probe-err-d7558343dc82
+> 
+> Best regards,
 
 
