@@ -4,68 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FB4EC3DA45
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jul 2024 12:03:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B95A9C3DA45
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jul 2024 12:20:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sLpi2Dp10gBJ/sXp5Br4LmsPwNth4eKV5Z3uC2rCs9g=; b=23jJaQMc/Tghp5u2yEBiqEKIff
-	Ch4PLc3+jcX/pKZcDwrjIoYX4wV8TSsTbOCsHhXtHjvctdWXmlG3ATs+A8H3/fBwlKFTQENkqnudO
-	ICtW3BgqWDG4h02lpiiYWV50PaK7FGepFO3J/jjguRFBIWCshYqQdNa4d95z7CGIfY2HFXGdMRpqk
-	BlAtfWs0HZYfCDfgqiuwTQPAGGt/rhQKNQy/TKz/0ejd5T7lP0AhBUw16H4xTFa6TArDRh0AnlhwF
-	TTAC6voQ2mtejo68s9EK/n2/CDz3Ie8gmaQ488et/0v3QeGqwyN64Qv1nyzBJRiJxxP0g5FUBuS/W
-	larWYUUg==;
+	bh=HvQpnoDjoDpI50LV+48+mtvnut3O6+hbvKZt5JaS7n4=; b=nhRHXgIax7gjCClicSEl1g8Feo
+	L/JWbJd+r/8FfRS1Q6Tq13+O/Y7YBrO1Yi51dsZMLmRISegcbLCC7WZXI5r2jCqRvdbwc7CvUWmNN
+	HokaBbOis+o/VkoYh6dJZGXUcgENpTabd+HgU/5GURvxnlqm0r14Prf1PojAlhaNHXcea+2rK+1Y1
+	glLDjcARbxe0InPxAK/agr8LhdONdGqqyyjryC1P7o7ntdP4u/XoG9B8mr0ipaFMAX/j28bOePb1v
+	72XX8nVYM3tRLqgk4zgcISlpJj+rE0HdqMXRDTZ2fI4G16urKsWzgtR2lmSgeJ32dowfc5uE2ew7N
+	2JJAB4yQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRW2r-0000000ARXd-31Q4;
-	Wed, 10 Jul 2024 12:03:37 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1sRWJI-0000000ATT1-0qF3;
+	Wed, 10 Jul 2024 12:20:36 +0000
+Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRW2b-0000000ARTf-0lyy;
-	Wed, 10 Jul 2024 12:03:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1720613000;
-	bh=d10p4L1E8b5F+cfdvkoHTqHYhe1n5q2q3q5jflV+NUM=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=da2E35dnLoh/D6dncK1MOF659gZtixJOF0zKQXs15kwnIAwifk87M+GGNp0+tRffN
-	 5rM5if0iTQZliIkZtLvmOzdGsbFDJBc798BJQv69hR3+Sa6czLdoXI5a+Kkp97GM4p
-	 O7kR30z3aBI8gUoHJGvFgCy8hW3/SD7MSU+HJ3uXYUBsbsHyPO8iEG50wtzXTFZHbK
-	 EMaNl/JPj+WIzvVVoXjYeLfj3P5+6OI9AZR4oxr9wfbx8upkikGC5ebl2wVzTvtr9T
-	 ti8AkJP0ljmzXr3OgX1wbEeZ5pxQIFRXx0TqJMycKxma+LXE7W3FHT5Za3UySyQCB3
-	 9NJAij73ezv7w==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 541F53781185;
-	Wed, 10 Jul 2024 12:03:19 +0000 (UTC)
-Message-ID: <147231f5-7732-4400-9feb-f563c07dbc91@collabora.com>
-Date: Wed, 10 Jul 2024 14:03:18 +0200
+	id 1sRWJF-0000000ATSb-1GQP
+	for linux-mediatek@lists.infradead.org;
+	Wed, 10 Jul 2024 12:20:34 +0000
+Received: by mail-pg1-x529.google.com with SMTP id 41be03b00d2f7-77d3f00778cso1562949a12.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 10 Jul 2024 05:20:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1720614032; x=1721218832; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=HvQpnoDjoDpI50LV+48+mtvnut3O6+hbvKZt5JaS7n4=;
+        b=UnwsgCfoHfU7hZoYWLelGE1depmeZ/YcuZ8x6yCXEJJ7/ZenfNRuf+MOygek4jyXqv
+         Ty4nRBT82RXJ1fBpwgWvmSRsgMocijF385SzxXGEp49Ml5q/hITkPEK9evWyJTQ0rWNT
+         HMAKl2zTaXoIrRmSnzpcTH1h+xoZwHI+xxf1UwLB4PTOVC6RP7ZNDmmaLV7EVJx38Vvh
+         Nk5TOC4pP9Lx3ndNbnj7hKBlPPMWfItCq8H5QpuVJFC8ULJa/kLAb5XQXJeOtRme2+4T
+         YzGpnawU917iTDSTo53Yf0pX63ds91ynV05jersffnNFlSxhRhJqTf3iba67wzmwLOIC
+         5W2g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1720614032; x=1721218832;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=HvQpnoDjoDpI50LV+48+mtvnut3O6+hbvKZt5JaS7n4=;
+        b=eICcRWehtflMvKMPEQ2LQfemRIkeW9hQ9Q5CvNXORLn1AHLBzkC78k82w3BUydXbRU
+         9nSuDrsCtBJYgwVcQOuI0CKWDgfsECc75bSRE2h7DTksPSF8eRG0vbii5MZ1OAxg0LUh
+         W8AFKt6+Fk1y2zWqj07ZrBNL7Md/FRjgOJQUCxD6UTlNP4nwKvNmzbezXd1aOoBZEcvQ
+         wcKw+BOW3Lg5pk88ijiLTqnL2p65DHT4JMlhOe1/puLFRffAqcRBlpJ+HXfCeBQBs181
+         xOIpIEba0tKVMnRBKpVldMqrTlWYxnW3Sh+QQOAU1IVdBdoJPwOpVi2E7b63cMVvGhxs
+         D5TQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUJZsEvxIAquRGGn5ALbA2c0aytrY0hlCOsfkk3D+IWX647KC6sybvJdKYbE/5QGpAfI0Sy7O4bnVSlHC6FlgnfgxT4BVxl7OKzh113ouIDsQbJ
+X-Gm-Message-State: AOJu0Yyi4zK50MUL4lrNG+9M7AtijWbwJRenNqGX/RBDu0hXclbG5ZUM
+	1x1272oSZozoIaNHsZfQDTShXKtrdxBR/XibV1GN2nMAY1hpYFGC6ZZOn7gsfBRU60Vg2P+kSan
+	ZraNKP6xLK9rsQkQssvaYqXQDUUY=
+X-Google-Smtp-Source: AGHT+IFGd8/NaTt8bBK3q51jUrH0J0reuzi+z80yAos5DxqdigxYXohUYHVvXxa+g72Kmjli7ngIw45bHloBrJGAaPc=
+X-Received: by 2002:a05:6a20:7fa4:b0:1c0:dd3d:ef3a with SMTP id
+ adf61e73a8af0-1c29824acaemr6326902637.29.1720614031912; Wed, 10 Jul 2024
+ 05:20:31 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 4/5] drm/mediatek: Support "Pre-multiplied" blending in
- Mixer
-To: shawn.sung@mediatek.com, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
- Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- Hsiao Chien Sung <shawn.sung@mediatek.corp-partner.google.com>
-References: <20240710-alpha-blending-v3-0-289c187f9c6f@mediatek.com>
- <20240710-alpha-blending-v3-4-289c187f9c6f@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20240710-alpha-blending-v3-4-289c187f9c6f@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20240710073832.4381-1-chris.lu@mediatek.com>
+In-Reply-To: <20240710073832.4381-1-chris.lu@mediatek.com>
+From: Luiz Augusto von Dentz <luiz.dentz@gmail.com>
+Date: Wed, 10 Jul 2024 08:20:17 -0400
+Message-ID: <CABBYNZLOn4pAnx70afymGWR=XRzeO4WshaX2Swew9GGp6CRnvw@mail.gmail.com>
+Subject: Re: [PATCH] Bluetooth: btmtk: Fix btmtk.c undefined reference build error
+To: Chris Lu <chris.lu@mediatek.com>
+Cc: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg <johan.hedberg@gmail.com>, 
+	Sean Wang <sean.wang@mediatek.com>, Aaron Hou <aaron.hou@mediatek.com>, 
+	Steve Lee <steve.lee@mediatek.com>, linux-bluetooth <linux-bluetooth@vger.kernel.org>, 
+	linux-kernel <linux-kernel@vger.kernel.org>, 
+	linux-mediatek <linux-mediatek@lists.infradead.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240710_050321_388778_F3E5E509 
-X-CRM114-Status: UNSURE (   8.58  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240710_052033_363582_B4D7A7C0 
+X-CRM114-Status: GOOD (  18.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,21 +93,96 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 10/07/24 10:52, Hsiao Chien Sung via B4 Relay ha scritto:
-> From: Hsiao Chien Sung <shawn.sung@mediatek.com>
-> 
-> Support "Pre-multiplied" alpha blending mode in Mixer.
-> Before this patch, only the coverage mode is supported.
-> 
-> To replace the default setting that is set in mtk_ethdr_config(),
-> we change mtk_ddp_write_mask() to mtk_ddp_write(), and this change will
-> also reset the NON_PREMULTI_SOURCE bit that was assigned in
-> mtk_ethdr_config(). Therefore, we must still set NON_PREMULTI_SOURCE bit
-> if the blend mode is not DRM_MODE_BLEND_PREMULTI.
-> 
-> Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
+Hi Chris,
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+On Wed, Jul 10, 2024 at 3:38=E2=80=AFAM Chris Lu <chris.lu@mediatek.com> wr=
+ote:
+>
+> MediaTek move some usb interface related function to btmtk.c which
+> may cause build failed if BT USB Kconfig wasn't enabled.
+> Fix undefined reference by adding config check.
+>
+> Fixes: 39a9e1c69e74 Bluetooth: btmtk: move btusb_mtk_hci_wmt_sync to btmt=
+k.c
+> Reported-by: kernel test robot <lkp@intel.com>
+> Closes: https://lore.kernel.org/oe-kbuild-all/202407091928.AH0aGZnx-lkp@i=
+ntel.com/
+> Signed-off-by: Chris Lu <chris.lu@mediatek.com>
+> ---
+>  drivers/bluetooth/btmtk.c | 2 ++
+>  drivers/bluetooth/btmtk.h | 4 ++++
+>  2 files changed, 6 insertions(+)
+>
+> diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
+> index b7c348687a77..9789296ad4f6 100644
+> --- a/drivers/bluetooth/btmtk.c
+> +++ b/drivers/bluetooth/btmtk.c
+> @@ -437,6 +437,7 @@ int btmtk_process_coredump(struct hci_dev *hdev, stru=
+ct sk_buff *skb)
+>  }
+>  EXPORT_SYMBOL_GPL(btmtk_process_coredump);
+>
+> +#if IS_ENABLED(CONFIG_BT_HCIBTUSB_MTK)
+>  static void btmtk_usb_wmt_recv(struct urb *urb)
+>  {
+>         struct hci_dev *hdev =3D urb->context;
+> @@ -1487,6 +1488,7 @@ int btmtk_usb_shutdown(struct hci_dev *hdev)
+>         return 0;
+>  }
+>  EXPORT_SYMBOL_GPL(btmtk_usb_shutdown);
+> +#endif
+>
+>  MODULE_AUTHOR("Sean Wang <sean.wang@mediatek.com>");
+>  MODULE_AUTHOR("Mark Chen <mark-yw.chen@mediatek.com>");
+> diff --git a/drivers/bluetooth/btmtk.h b/drivers/bluetooth/btmtk.h
+> index 453ed5131a37..890dbe9beff8 100644
+> --- a/drivers/bluetooth/btmtk.h
+> +++ b/drivers/bluetooth/btmtk.h
+> @@ -165,6 +165,7 @@ struct btmtk_data {
+>         btmtk_reset_sync_func_t reset_sync;
+>         struct btmtk_coredump_info cd_info;
+>
+> +#if IS_ENABLED(CONFIG_BT_HCIBTUSB_MTK)
+>         struct usb_device *udev;
+>         struct usb_interface *intf;
+>         struct usb_anchor *ctrl_anchor;
+> @@ -177,6 +178,7 @@ struct btmtk_data {
+>
+>         /* spinlock for ISO data transmission */
+>         spinlock_t isorxlock;
+> +#endif
+
+If I recall this correctly it is not a good practice to use #if inside
+structs as it would change its overall size, memory layout, etc, and
+it also makes it difficult to use if (IS_DEFINED) and let the compiler
+eliminate dead code instead of using the preprocessor like you doing.
+
+>  };
+>
+>  typedef int (*wmt_cmd_sync_func_t)(struct hci_dev *,
+> @@ -202,6 +204,7 @@ int btmtk_process_coredump(struct hci_dev *hdev, stru=
+ct sk_buff *skb);
+>  void btmtk_fw_get_filename(char *buf, size_t size, u32 dev_id, u32 fw_ve=
+r,
+>                            u32 fw_flavor);
+>
+> +#if IS_ENABLED(CONFIG_BT_HCIBTUSB_MTK)
+>  int btmtk_usb_subsys_reset(struct hci_dev *hdev, u32 dev_id);
+>
+>  int btmtk_usb_recv_acl(struct hci_dev *hdev, struct sk_buff *skb);
+> @@ -216,6 +219,7 @@ int btmtk_usb_suspend(struct hci_dev *hdev);
+>  int btmtk_usb_setup(struct hci_dev *hdev);
+>
+>  int btmtk_usb_shutdown(struct hci_dev *hdev);
+> +#endif
+>  #else
+>
+>  static inline int btmtk_set_bdaddr(struct hci_dev *hdev,
+> --
+> 2.18.0
+>
 
 
+--=20
+Luiz Augusto von Dentz
 
