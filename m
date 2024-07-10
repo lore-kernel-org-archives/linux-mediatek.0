@@ -4,74 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08059C3DA41
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jul 2024 17:56:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B91E2C3DA42
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jul 2024 19:16:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=pnIbYXtvrFzfOBrPJ+BSfnaUUdbrF5IVgVamegXf5A0=; b=ZCw72cdCcI5HFWTStiGcIgYVpT
-	8x7Oja7Xsh+Kpe9f45uShjQh/uzPg63Vvrj4ZqluED+2I0HvGK6XgakKCNyvAQgStVs8GDRhNSXCk
-	9Dkr3Tjt5XlF/3mFSkera5aps7MkBzizy2qk1ADZ1mgYZ48V17lWnDDjpdm1mFB7M4oERXy9uCMrJ
-	Eeh/N9km3uj4eLlvZWN6EILa0WA9/8tiYGBz7sz5A2dzUk/RALwoqpxV1FSophyh7mQ5GYrxI3fjY
-	EiEou0WjNT7DPiD1GuD9BarednuUklkQbiPZpHGzQ90gM9ZiPKqd4D5WFlAs9MW15UAT28A0oaJy3
-	joJ5ICBA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=gEbSr+p0f3OVfoF+U52II1mfKi+tj9bkA1wOAZejR7c=; b=GJrGTXc+lv7j5Ax6GMqTynmbkY
+	JK/23G3vXLxWwox7qZYYKNv42HKiiBQ5nSk8RwRbNmLhSNIIsQ4sVBnbnxV7DCW+YRQTuKPLdvtn6
+	vu0ml4dNoYJGY/Rby9TMfHKUPKBBtZ6r17iTOxLpQnXJoAZVJsmUi+SMfnLQQXZoYtsrRgdqCuDql
+	amYfSet8ihH2ahn+1jB2peSgndVY4w3Q6n2QWYrBiVwXN3IVtP65GTH5VgnUsZrO7HxoWiKubcr4i
+	YB+kHf0Ujqo/uyJlq3GyuT5GeWNfR3LAeEEsOVTS8uuWXyJhZY8A4hPK1tA14jNJm6V2mXeLxpfdw
+	6vPUUl0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRbYQ-0000000BMkw-3MUg;
-	Wed, 10 Jul 2024 17:56:34 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1sRcnL-0000000BW3w-2n43;
+	Wed, 10 Jul 2024 19:16:03 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRbYN-0000000BMkY-2gVI
-	for linux-mediatek@lists.infradead.org;
-	Wed, 10 Jul 2024 17:56:33 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 8135FCE1256;
-	Wed, 10 Jul 2024 17:56:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 39A1DC32781;
-	Wed, 10 Jul 2024 17:56:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1720634188;
-	bh=7Jdv/o1WI3up53D1I++jLFbC2bwz21I4CvTE533R1mE=;
-	h=From:Date:Subject:To:Cc:From;
-	b=dXJ70nQ71BDLThSgun7DBnJxUFXKAJ5jZZbFnNz+H/uTYP1qEPZsGa4/R04vNpNts
-	 kOfgtaOClX/RibAThmAqSWH3gSBlGqpjSqUZYL610X0NCN0wGAI5b3UUqqsKCxmKya
-	 8A2VMf1e3KX+MyYWtOekNU+Rl3OKKYH+ZXfB4rNupV/+Owfoyka4igtH7PITNN6ZRk
-	 uqmAYN9LaDjezmmootCZ4calGk5QgypH3ao1EDCyA4imkv8EKB74e2teWukvaUQzjM
-	 8IoFC1ozM7IU2A3zTUVKtDR3RO5CLEKjtjvBjK0rDrMdf/TP8LI7dcXVzb3bA3kK8s
-	 LzEIldCVY5PDA==
-From: Nathan Chancellor <nathan@kernel.org>
-Date: Wed, 10 Jul 2024 10:56:24 -0700
-Subject: [PATCH bluetooth-next] Bluetooth: btmtk: Mark all stub functions
- as inline
+	id 1sRcn3-0000000BW0q-1FFL;
+	Wed, 10 Jul 2024 19:15:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1720638939;
+	bh=XcRXiDRqA+ir3jqrK/0TX5hqWhgGqVuOsPns1Whd1o0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=zz9Kyvc8n8oCcnls3iEZbvezLgnMdf1CbKfrc+yJMK7zd9luGuMYw5A93UeUydrJW
+	 xXU7KD46J7LqS9jwBuwExwP1XPj+p+7FlwWFlF681L2se3YvzYaeL241EAZSYRMgyi
+	 CyjsUo3dvRw/KSyo4omFjJ42t1wKkt30FEbjUYFRCMHeKYzIpUNaKaqGkN8LrNsSmo
+	 Cx8eiTje1VZ+O7InF+MuPsNqQnCTYXZUB1TdoMwPXtsgyHVzmXdebUJZsSBnTmPmv6
+	 AICdiMttq8SN9pVvq3Sz0FhPZ3ahkBWCtNBngmYlFQ9Qj2fNjm2UTfFsVYW7rSfch8
+	 bdVLhuXzT4sfA==
+Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id E729C37810CD;
+	Wed, 10 Jul 2024 19:15:37 +0000 (UTC)
+Date: Wed, 10 Jul 2024 15:15:36 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, kernel@collabora.com,
+	Macpaul Lin <macpaul.lin@mediatek.com>,
+	Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Chen-Yu Tsai <wenst@chromium.org>
+Subject: Re: Probe failure of usb controller @11290000 on MT8195 after
+ next-20231221
+Message-ID: <375b2345-657a-4b8f-b5e3-dc16784ffde9@notapiano>
+References: <9fce9838-ef87-4d1b-b3df-63e1ddb0ec51@notapiano>
+ <064935d8-fbda-4eda-b013-8c8fc63b561c@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20240710-btmtk-add-missing-inline-to-stubs-v1-1-ba33143ee148@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAEfLjmYC/x3NwQqDMAyA4VeRnBeoOirsVcYOrY0apulo4hDEd
- 1/Z8bv8/wlKhUnh0ZxQ6MvKWSraWwPjEmQm5FQNnevubmgdRtvsjSEl3FiVZUaWlYXQMqrtUXH
- qfe/jmIIfCGrnU2ji4/94Qlx3spxtQaHD4HVdP+4a1uyDAAAA
-To: Marcel Holtmann <marcel@holtmann.org>, 
- Luiz Augusto von Dentz <luiz.dentz@gmail.com>
-Cc: Sean Wang <sean.wang@mediatek.com>, Chris Lu <chris.lu@mediatek.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- linux-bluetooth@vger.kernel.org, linux-mediatek@lists.infradead.org, 
- patches@lists.linux.dev, Nathan Chancellor <nathan@kernel.org>
-X-Mailer: b4 0.15-dev
-X-Developer-Signature: v=1; a=openpgp-sha256; l=5192; i=nathan@kernel.org;
- h=from:subject:message-id; bh=7Jdv/o1WI3up53D1I++jLFbC2bwz21I4CvTE533R1mE=;
- b=owGbwMvMwCUmm602sfCA1DTG02pJDGl9p32evL7lJLjSgvnK9dJfq3dMlFw/yWzTnzcc4usV8
- 5SfuL3b0VHKwiDGxSArpshS/Vj1uKHhnLOMN05NgpnDygQyhIGLUwAm0ifB8L/0usWCMCXB+cyi
- 9+8Jakx5u6/X6szpczZHlR+k+25TXnyOkaGda7Pu3E/z3/za8OXG+YhTGV8dygwND+5MDLskwrB
- 1SzADAA==
-X-Developer-Key: i=nathan@kernel.org; a=openpgp;
- fpr=2437CB76E544CB6AB3D9DFD399739260CB6CB716
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <064935d8-fbda-4eda-b013-8c8fc63b561c@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240710_105632_077486_D7FB137F 
-X-CRM114-Status: GOOD (  12.76  )
+X-CRM114-CacheID: sfid-20240710_121545_661205_86075D55 
+X-CRM114-Status: GOOD (  28.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,143 +79,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Several recent patches added static stubs to btmtk.h without the inline
-keyword, which causes instances of -Wunused-function when those stubs
-are not used anywhere in a file that includes the header:
+On Fri, Jan 19, 2024 at 10:12:07AM +0100, AngeloGioacchino Del Regno wrote:
+> Il 18/01/24 19:36, Nícolas F. R. A. Prado ha scritto:
+> > Hi,
+> > 
+> > KernelCI has identified a failure in the probe of one of the USB controllers on
+> > the MT8195-Tomato Chromebook [1]:
+> > 
+> > [   16.336840] xhci-mtk 11290000.usb: uwk - reg:0x400, version:104
+> > [   16.337081] xhci-mtk 11290000.usb: xHCI Host Controller
+> > [   16.337093] xhci-mtk 11290000.usb: new USB bus registered, assigned bus number 5
+> > [   16.357114] xhci-mtk 11290000.usb: clocks are not stable (0x1003d0f)
+> > [   16.357119] xhci-mtk 11290000.usb: can't setup: -110
+> > [   16.357128] xhci-mtk 11290000.usb: USB bus 5 deregistered
+> > [   16.359484] xhci-mtk: probe of 11290000.usb failed with error -110
+> > 
+> > A previous message [2] suggests that a force-mode phy property that has been
+> > merged might help with addressing the issue, however it's not clear to me how,
+> > given that the controller at 1129000 uses a USB2 phy and the phy driver patch
+> > only looks for the property on USB3 phys.
+> > 
+> > Worth noting that the issue doesn't always happen. For instance the test did
+> > pass for next-20240110 and then failed again on today's next [3]. But it does
+> > seem that the issue was introduced, or at least became much more likely, between
+> > next-20231221 and next-20240103, given that it never happened out of 10 runs
+> > before, and after that has happened 5 out of 7 times.
+> > 
+> > Note: On the Tomato Chromebook specifically this USB controller is not connected
+> > to anything.
+> > 
+> > [1] https://linux.kernelci.org/test/case/id/659ce3506673076a8c52a428/
+> > [2] https://lore.kernel.org/all/239def9b-437b-9211-7844-af4332651df0@mediatek.com/
+> > [3] https://linux.kernelci.org/test/case/id/65a8c66ee89acb56ac52a405/
+> > 
+> > Thanks,
+> > Nícolas
+> 
+> Hey Nícolas,
+> 
+> I wonder if this is happening because of async probe... I have seen those happening
+> once in a (long) while on MT8186 as well with the same kind of flakiness and I am
+> not even able to reproduce anymore.
+> 
+> For MT8195 Tomato, I guess we can simply disable that controller without any side
+> effects but, at the same time, I'm not sure that this would be the right thing to
+> do in this case.
+> 
+> Besides, the controller at 11290000 is the only one that doesn't live behind MTU3,
+> but I don't know if that can ring any bell....
 
-  In file included from drivers/bluetooth/btusb.c:28:
-  drivers/bluetooth/btmtk.h:254:13: warning: 'btmtk_fw_get_filename' defined but not used [-Wunused-function]
-    254 | static void btmtk_fw_get_filename(char *buf, size_t size, u32 dev_id,
-        |             ^~~~~~~~~~~~~~~~~~~~~
-  drivers/bluetooth/btmtk.h:249:12: warning: 'btmtk_process_coredump' defined but not used [-Wunused-function]
-    249 | static int btmtk_process_coredump(struct hci_dev *hdev, struct sk_buff *skb)
-        |            ^~~~~~~~~~~~~~~~~~~~~~
-  drivers/bluetooth/btmtk.h:243:12: warning: 'btmtk_register_coredump' defined but not used [-Wunused-function]
-    243 | static int btmtk_register_coredump(struct hci_dev *hdev, const char *name,
-        |            ^~~~~~~~~~~~~~~~~~~~~~~
-  drivers/bluetooth/btmtk.h:233:12: warning: 'btmtk_setup_firmware' defined but not used [-Wunused-function]
-    233 | static int btmtk_setup_firmware(struct hci_dev *hdev, const char *fwname,
-        |            ^~~~~~~~~~~~~~~~~~~~
-  drivers/bluetooth/btmtk.h:227:12: warning: 'btmtk_setup_firmware_79xx' defined but not used [-Wunused-function]
-    227 | static int btmtk_setup_firmware_79xx(struct hci_dev *hdev, const char *fwname,
-        |            ^~~~~~~~~~~~~~~~~~~~~~~~~
+An update on this issue: it looks like it only happens if "xhci-mtk
+11290000.usb" probes before "mtk-pcie-gen3 112f8000.pcie". What they have in
+common is that both of those nodes use phys that share the same t-phy block:
+pcie uses the usb3 phy while xhci uses the usb2 phy. So it seems that some of
+the initialization done by the pcie controller might be implicitly needed by the
+usb controller.
 
-Add inline to all the stubs in btmtk.h (even ones that do not currently
-have any warnings associated with them) to ensure there are never unused
-function warnings from these stubs, as is customary for the kernel.
+This should help to narrow down the issue and find a proper fix for it.
 
-Signed-off-by: Nathan Chancellor <nathan@kernel.org>
----
-I omitted a fixes tag because it seems like this was done over several
-changes and I think breaking this up is not really necessary but I am
-happy to do so if so desired.
----
- drivers/bluetooth/btmtk.h | 39 +++++++++++++++++++++------------------
- 1 file changed, 21 insertions(+), 18 deletions(-)
-
-diff --git a/drivers/bluetooth/btmtk.h b/drivers/bluetooth/btmtk.h
-index 453ed5131a37..5df7c3296624 100644
---- a/drivers/bluetooth/btmtk.h
-+++ b/drivers/bluetooth/btmtk.h
-@@ -224,70 +224,73 @@ static inline int btmtk_set_bdaddr(struct hci_dev *hdev,
- 	return -EOPNOTSUPP;
- }
- 
--static int btmtk_setup_firmware_79xx(struct hci_dev *hdev, const char *fwname,
--				     wmt_cmd_sync_func_t wmt_cmd_sync)
-+static inline int btmtk_setup_firmware_79xx(struct hci_dev *hdev,
-+					    const char *fwname,
-+					    wmt_cmd_sync_func_t wmt_cmd_sync)
- {
- 	return -EOPNOTSUPP;
- }
- 
--static int btmtk_setup_firmware(struct hci_dev *hdev, const char *fwname,
--				wmt_cmd_sync_func_t wmt_cmd_sync)
-+static inline int btmtk_setup_firmware(struct hci_dev *hdev, const char *fwname,
-+				       wmt_cmd_sync_func_t wmt_cmd_sync)
- {
- 	return -EOPNOTSUPP;
- }
- 
--static void btmtk_reset_sync(struct hci_dev *hdev)
-+static inline void btmtk_reset_sync(struct hci_dev *hdev)
- {
- }
- 
--static int btmtk_register_coredump(struct hci_dev *hdev, const char *name,
--				   u32 fw_version)
-+static inline int btmtk_register_coredump(struct hci_dev *hdev,
-+					  const char *name, u32 fw_version)
- {
- 	return -EOPNOTSUPP;
- }
- 
--static int btmtk_process_coredump(struct hci_dev *hdev, struct sk_buff *skb)
-+static inline int btmtk_process_coredump(struct hci_dev *hdev,
-+					 struct sk_buff *skb)
- {
- 	return -EOPNOTSUPP;
- }
- 
--static void btmtk_fw_get_filename(char *buf, size_t size, u32 dev_id,
--				  u32 fw_ver, u32 fw_flavor)
-+static inline void btmtk_fw_get_filename(char *buf, size_t size, u32 dev_id,
-+					 u32 fw_ver, u32 fw_flavor)
- {
- }
- 
--static int btmtk_usb_subsys_reset(struct hci_dev *hdev, u32 dev_id)
-+static inline int btmtk_usb_subsys_reset(struct hci_dev *hdev, u32 dev_id)
- {
- 	return -EOPNOTSUPP;
- }
- 
--static int btmtk_usb_recv_acl(struct hci_dev *hdev, struct sk_buff *skb)
-+static inline int btmtk_usb_recv_acl(struct hci_dev *hdev, struct sk_buff *skb)
- {
- 	return -EOPNOTSUPP;
- }
- 
--static struct urb *alloc_mtk_intr_urb(struct hci_dev *hdev, struct sk_buff *skb,
--				      usb_complete_t tx_complete)
-+static inline struct urb *alloc_mtk_intr_urb(struct hci_dev *hdev,
-+					     struct sk_buff *skb,
-+					     usb_complete_t tx_complete)
- {
- 	return ERR_PTR(-EOPNOTSUPP);
- }
- 
--static int btmtk_usb_resume(struct hci_dev *hdev)
-+static inline int btmtk_usb_resume(struct hci_dev *hdev)
- {
- 	return -EOPNOTSUPP;
- }
- 
--static int btmtk_usb_suspend(struct hci_dev *hdev)
-+static inline int btmtk_usb_suspend(struct hci_dev *hdev)
- {
- 	return -EOPNOTSUPP;
- }
- 
--static int btmtk_usb_setup(struct hci_dev *hdev)
-+static inline int btmtk_usb_setup(struct hci_dev *hdev)
- {
- 	return -EOPNOTSUPP;
- }
- 
--static int btmtk_usb_shutdown(struct hci_dev *hdev)
-+static inline int btmtk_usb_shutdown(struct hci_dev *hdev)
- {
- 	return -EOPNOTSUPP;
- }
-
----
-base-commit: c60d1a6e1dae1623169d0d97bfd3e50003072eae
-change-id: 20240710-btmtk-add-missing-inline-to-stubs-f3636bcda67e
-
-Best regards,
--- 
-Nathan Chancellor <nathan@kernel.org>
-
+Thanks,
+Nícolas
 
