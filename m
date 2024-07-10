@@ -4,65 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7FF1C3DA45
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jul 2024 10:46:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88D23C3DA42
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jul 2024 11:01:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RYCC4vF/U+sJMehsG/vXMVOMdq8EZc5erFSf8kKAx+0=; b=L7Dh/ziU8ccYg4
-	xX2GFgBxnuMwklGayegfLBmEqyFoQDZcZXuafkQuoR/aBeLQ8F48f48LBzrUAFIUsFiU1dKUbaVVV
-	L4VqYBOfUML9IdaUbYnm1gL2oEFBtYrO0tivjBBy85u1hPa3lqLjLFU6Nf23PI8pWGrEyLkSnwJx3
-	GiEsa/AEWW8n7ECilRsJF6meE2BSubN2PXzUsYIpApZ25EBmrKeR/l/40hLfXvRR2pLJ7rrB5DWd4
-	Y2aC/vsmuJGcE5RBFqxlIMW3tldpGJi02YjTXUl5sBJ7QMfyLpB0s5g7XhZyL4HXyxAkgtM0faIsN
-	fdUAxNj+nzORLqS4wdlw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=MuTEygCwbH+bjw+cF7aPM5ImbOxVYW6uwRSbeEoN/r0=; b=KK8E/E+sGHaSEfwDV1aGnkfiyf
+	uVkRI22hNXPO5ScfVsJeljzr7yTsJuZZ38fAC4dEtAs6a39rjJKZ5TfvKtuFUFLUG8AWsOWZOBjQ9
+	KSnekXVM2zs33NFXq5drlLJAcUiXMD1aSCNp6QKdw0y3yjktTZpQ5kLlOO54kzPsIslWSDkfPfjT9
+	LV8vsZb1ueqqMeo1004kM5N/WVh4qJUeFb3uwTyUzYM6WKtw5iyu+NFA0ZCDRIuljA0hIFx17C/jG
+	ExrxYMZLAzIFdP5lKsRF/TV+9iAXh8luQ/QJpkZkZecOnDNbsmW3c4YSwcBjCy1tNuVjN2Srzrrrp
+	7KECJhDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRUq8-0000000AFPF-1syN;
-	Wed, 10 Jul 2024 10:46:24 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1sRV4I-0000000AIgR-0vPJ;
+	Wed, 10 Jul 2024 11:01:06 +0000
+Received: from mx3.molgen.mpg.de ([141.14.17.11])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRUpm-0000000AFJ1-1CG4;
-	Wed, 10 Jul 2024 10:46:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1720608358;
-	bh=OT6YCCN0htNhieZjFLd6a0qp/JNFJI1m8IJPRRTsawA=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=oac1qC1tpy0MhlTjXLhqCoClYM4Gfwh164dGc8lvoNoEfoVWoLMHJE1CNxOogNBe5
-	 cBj81asvYLMdrBhlfKP8xFrICNZjnCEX3KGjqZqD6grjIRSCNC0YcQhcvWjrLqyl1p
-	 0iowSCdUXo07D16fndDYL9/5dtvEojPQvNy2T8Ly/o1LJ7wCCaBYxCT2J/EmDR+Li/
-	 wPK+8G4EWdmdsjWqH+NbKQIt/UKV+U2KvzMS1iwX8U2L/99CqtwMFa1ebF8NmNXe1q
-	 bSNu0lr7BXkvK8C6Vt0J9OfgYShVrFook4OciW1BZdflq2W+2wol84bck2AOcklO6O
-	 CqR8kWSpcvrsA==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	id 1sRV4D-0000000AIe1-1e5P
+	for linux-mediatek@lists.infradead.org;
+	Wed, 10 Jul 2024 11:01:00 +0000
+Received: from [141.14.220.45] (g45.guest.molgen.mpg.de [141.14.220.45])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id D67F437810CD;
-	Wed, 10 Jul 2024 10:45:57 +0000 (UTC)
-Message-ID: <126053ef-3bfb-47c2-aa17-eb1d26d99102@collabora.com>
-Date: Wed, 10 Jul 2024 12:45:57 +0200
+	(Authenticated sender: pmenzel)
+	by mx.molgen.mpg.de (Postfix) with ESMTPSA id 406A061E64862;
+	Wed, 10 Jul 2024 13:00:39 +0200 (CEST)
+Message-ID: <261d8aad-5188-4c08-8c3d-34c2e00db2e6@molgen.mpg.de>
+Date: Wed, 10 Jul 2024 13:00:38 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 0/4] add syscon requirement for mt7988
-To: Frank Wunderlich <linux@fw-web.de>,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
- <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>
-References: <20240709101328.102969-1-linux@fw-web.de>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v2] Bluetooth: btmtk: Fix btmtk.c undefined reference
+ build error
+To: Chris Lu <chris.lu@mediatek.com>
+Cc: Marcel Holtmann <marcel@holtmann.org>,
+ Johan Hedberg <johan.hedberg@gmail.com>,
+ Luiz Von Dentz <luiz.dentz@gmail.com>, Sean Wang <sean.wang@mediatek.com>,
+ Aaron Hou <aaron.hou@mediatek.com>, Steve Lee <steve.lee@mediatek.com>,
+ linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+References: <20240710092614.7297-1-chris.lu@mediatek.com>
 Content-Language: en-US
-In-Reply-To: <20240709101328.102969-1-linux@fw-web.de>
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <20240710092614.7297-1-chris.lu@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240710_034602_518661_7411F24A 
-X-CRM114-Status: GOOD (  11.94  )
+X-CRM114-CacheID: sfid-20240710_040057_618255_FD27E669 
+X-CRM114-Status: GOOD (  15.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,41 +67,107 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-watchdog@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 09/07/24 12:13, Frank Wunderlich ha scritto:
-> From: Frank Wunderlich <frank-w@public-files.de>
-> 
-> Some nodes require the syscon fallback at least in u-boot when using
-> OF_UPSTREAM.
-> 
-> This is because uboot driver uses syscon_node_to_regmap in mtk_eth.c for
-> "mediatek,toprgu", "mediatek,xfi_pll" and reset pointing to watchdog-node.
-> 
-
-I wonder what's the major blocker here to modify the u-boot driver to take
-the upstream devicetree as-is, instead of using syscon_node_to_regmap?
-
-Regards,
-Angelo
-
-> Frank Wunderlich (4):
->    dt-bindings: watchdog: mediatek,mtk-wdt: add MT7988 syscon requirement
->    dt-bindings: clock: mediatek: add syscon requirement for mt7988
->      xfi-pll
->    dt-bindings: clock: mediatek: add syscon requirement for mt7988
->      ethwarp
->    arm64: dts: mediatek: mt7988: add syscon for watchdog, xfi-pll and
->      ethwarp
-> 
->   .../devicetree/bindings/clock/mediatek,mt7988-ethwarp.yaml | 6 ++++--
->   .../devicetree/bindings/clock/mediatek,mt7988-xfi-pll.yaml | 7 +++++--
->   .../devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml     | 5 ++++-
->   arch/arm64/boot/dts/mediatek/mt7988a.dtsi                  | 6 +++---
->   4 files changed, 16 insertions(+), 8 deletions(-)
-> 
+Dear Chris,
 
 
+Am 10.07.24 um 11:26 schrieb Chris Lu:
+> MediaTek move some usb interface related function to btmtk.c which
+
+move*d*
+
+Maybe add … in commit XXX ("yyy") … in that sentence.
+
+> may cause build failed if BT USB Kconfig wasn't enabled.
+
+Is not enabling BT USB Kconfig when using btmtk a valid use-case?
+
+> Fix undefined reference by adding config check.
+> 
+> btmtk.c:(.text+0x89c): undefined reference to `usb_alloc_urb'
+> btmtk.c:(.text+0x8e3): undefined reference to `usb_free_urb'
+> btmtk.c:(.text+0x956): undefined reference to `usb_free_urb'
+> btmtk.c:(.text+0xa0e): undefined reference to `usb_anchor_urb'
+> btmtk.c:(.text+0xb43): undefined reference to `usb_autopm_get_interface'
+> btmtk.c:(.text+0xb7e): undefined reference to `usb_autopm_put_interface'
+> btmtk.c:(.text+0xf70): undefined reference to `usb_disable_autosuspend'
+> btmtk.c:(.text+0x133a): undefined reference to `usb_control_msg'
+> 
+> Fixes: 39a9e1c69e74 ("Bluetooth: btmtk: move btusb_mtk_hci_wmt_sync to btmtk.c")
+> Reported-by: kernel test robot <lkp@intel.com>
+> Closes: https://lore.kernel.org/oe-kbuild-all/202407091928.AH0aGZnx-lkp@intel.com/
+> Co-developed-by: Sean Wang <sean.wang@mediatek.com>
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> Signed-off-by: Chris Lu <chris.lu@mediatek.com>
+> ---
+> Change from v1 to v2:
+> -fix and update commit message warning
+> ---
+>   drivers/bluetooth/btmtk.c | 2 ++
+>   drivers/bluetooth/btmtk.h | 4 ++++
+>   2 files changed, 6 insertions(+)
+> 
+> diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
+> index b7c348687a77..9789296ad4f6 100644
+> --- a/drivers/bluetooth/btmtk.c
+> +++ b/drivers/bluetooth/btmtk.c
+> @@ -437,6 +437,7 @@ int btmtk_process_coredump(struct hci_dev *hdev, struct sk_buff *skb)
+>   }
+>   EXPORT_SYMBOL_GPL(btmtk_process_coredump);
+>   
+> +#if IS_ENABLED(CONFIG_BT_HCIBTUSB_MTK)
+>   static void btmtk_usb_wmt_recv(struct urb *urb)
+>   {
+>   	struct hci_dev *hdev = urb->context;
+> @@ -1487,6 +1488,7 @@ int btmtk_usb_shutdown(struct hci_dev *hdev)
+>   	return 0;
+>   }
+>   EXPORT_SYMBOL_GPL(btmtk_usb_shutdown);
+> +#endif
+>   
+>   MODULE_AUTHOR("Sean Wang <sean.wang@mediatek.com>");
+>   MODULE_AUTHOR("Mark Chen <mark-yw.chen@mediatek.com>");
+> diff --git a/drivers/bluetooth/btmtk.h b/drivers/bluetooth/btmtk.h
+> index 453ed5131a37..890dbe9beff8 100644
+> --- a/drivers/bluetooth/btmtk.h
+> +++ b/drivers/bluetooth/btmtk.h
+> @@ -165,6 +165,7 @@ struct btmtk_data {
+>   	btmtk_reset_sync_func_t reset_sync;
+>   	struct btmtk_coredump_info cd_info;
+>   
+> +#if IS_ENABLED(CONFIG_BT_HCIBTUSB_MTK)
+>   	struct usb_device *udev;
+>   	struct usb_interface *intf;
+>   	struct usb_anchor *ctrl_anchor;
+> @@ -177,6 +178,7 @@ struct btmtk_data {
+>   
+>   	/* spinlock for ISO data transmission */
+>   	spinlock_t isorxlock;
+> +#endif
+>   };
+>   
+>   typedef int (*wmt_cmd_sync_func_t)(struct hci_dev *,
+> @@ -202,6 +204,7 @@ int btmtk_process_coredump(struct hci_dev *hdev, struct sk_buff *skb);
+>   void btmtk_fw_get_filename(char *buf, size_t size, u32 dev_id, u32 fw_ver,
+>   			   u32 fw_flavor);
+>   
+> +#if IS_ENABLED(CONFIG_BT_HCIBTUSB_MTK)
+>   int btmtk_usb_subsys_reset(struct hci_dev *hdev, u32 dev_id);
+>   
+>   int btmtk_usb_recv_acl(struct hci_dev *hdev, struct sk_buff *skb);
+> @@ -216,6 +219,7 @@ int btmtk_usb_suspend(struct hci_dev *hdev);
+>   int btmtk_usb_setup(struct hci_dev *hdev);
+>   
+>   int btmtk_usb_shutdown(struct hci_dev *hdev);
+> +#endif
+>   #else
+>   
+>   static inline int btmtk_set_bdaddr(struct hci_dev *hdev,
+
+
+Kind regards,
+
+Paul
 
