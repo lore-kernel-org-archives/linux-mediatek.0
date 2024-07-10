@@ -4,77 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31883C3DA45
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jul 2024 08:39:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 174EDC3DA45
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jul 2024 08:43:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
-	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
-	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KsRc2n3oCfr6oqnbZzoEB49GV1kdxI9bRVHPnBndTcY=; b=IM75vu+/QXZn7+a7A4+GCEgOwn
-	zuZ+nB694zGwyPdxEDY8T7czcaHt26GKujMXhBUI5bygfNWtcry4GrMIzsK03TSeAeZTfIN5dQEiH
-	U+x+Em12FCr2PQzo6TzYG+z6ZNWutU/hLRbTolNG32pjpj16xPgF7ksoJyUpcd05dw/tbfClagiOS
-	t/3YWvznQfpGPH7kabGPGPytK9nriPOzB9WfFGgY4IbcVQNQoZPIEA2Bo38w9IgJ13348Fc/E9qDD
-	Jq8LciHwke1MYiaC4syE9tQWodi1vnRO0+X08C0Odav3HQB49qAnrK1Qxd2jeO1rzB6tPAXhSoIUH
-	wI6J2PjQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=MI5vuW1LnaMrn5kfyGwiG4y2NeFearCTZJahac3SH7k=; b=FfLwnZCFGuNZ09kuTrDaP6wwzZ
+	1v6OHZf1yIv4KiSnl2ane0fmw6xLvOFZqOxrYQO7P/SkqGR26Ae3xthEAAyM3hl8qsVLBr4nVkdYL
+	zv0A4YJUhTDm4eHuwMyA1MnuAVhHwMB0JkmCPFK+qeFe5aIC2BLYxKNhW81mWMYRuVG2ScNabMJlS
+	IFbTGZihDICbYdo6sAQa5Ok2q1D6cr9N8CXv7hOemtT5CM8eFqSJKi2Xb//3bSk6FsezbSpXoqFEn
+	0rjL1EDM4Y+v5mSnEqBH4aAVOxyw/Ki0QlUvPaKjQWTHFMTgUOleHXuVqdB8Z9aiXWmJOCm2oQefD
+	X6ahuC+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRSqr-00000009v5j-1bjI;
-	Wed, 10 Jul 2024 08:39:01 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1sRSuk-00000009vg5-1zb7;
+	Wed, 10 Jul 2024 08:43:02 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRSpK-00000009uKa-2NpW;
-	Wed, 10 Jul 2024 08:37:29 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 8A0E9CE1582;
-	Wed, 10 Jul 2024 08:37:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id B85ADC32786;
-	Wed, 10 Jul 2024 08:37:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1720600642;
-	bh=tfabwBvvONPi6G1imBOAg7bICWXSe8zF8QtpBuR5L0s=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=sxofKbwxJrcZPRM3OnpVr7hAH1vyRhNrYVD65gNKcDv9gSyh0+BN1+o6iLdgF17pm
-	 xneZcFH8HF2Nf6v+W0nK/nMA0+MlBDWs5WhkDuPtk196DgHcQWZj6MkoXZvD95RJZd
-	 gmqJsFuF1Wl8hpVkZJl6oUcA8/gGg6VRHSOEzEifgHYEaMkHxWgeTnoN2wxaj37/K+
-	 88/97uiA8k3oDdw+QelNaVKw94Q2SUkxBWOLe9amJHhY5tOhnj1F948mCtNyGKmrMC
-	 pUinrv1Rsj+rP8fFFUdl3q32UintvGzl5rWLnjHZFY57FAHy4AiXyY10JkNhIoLikA
-	 xiScfTC5ZJeew==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 985E5C3DA42;
-	Wed, 10 Jul 2024 08:37:22 +0000 (UTC)
-From: Hsiao Chien Sung via B4 Relay <devnull+shawn.sung.mediatek.com@kernel.org>
-Date: Wed, 10 Jul 2024 16:37:19 +0800
-Subject: [PATCH v2 1/5] drm/mediatek: Support "None" blending in OVL
+	id 1sRSuh-00000009vdy-3OVc;
+	Wed, 10 Jul 2024 08:43:01 +0000
+X-UUID: 653bc75c3e9811ef955bff358274dad2-20240710
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=MI5vuW1LnaMrn5kfyGwiG4y2NeFearCTZJahac3SH7k=;
+	b=ompqiySmZiA3qhIaRBMTtm88iyHrQCfQvUm9oMuyHo5wA7D6k2iyr6smZu/skmDgZIrmYddwO0ljVcFQk5exDk6XAEGURmS+5sb3EL37n/DE5x3yvHJdG19n8qvmwvlp08psuU57uyUBLx1mkIw2f9O54WZ/QrPi2ijE50hRuzk=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.40,REQID:32d82e5b-b95d-47f4-a7e7-a79b8b044655,IP:0,U
+	RL:0,TC:0,Content:0,EDM:-25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:ba885a6,CLOUDID:75062145-a117-4f46-a956-71ffeac67bfa,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:1,IP:nil,UR
+	L:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:
+	1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 653bc75c3e9811ef955bff358274dad2-20240710
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <shun-yi.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1569678481; Wed, 10 Jul 2024 01:42:52 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 10 Jul 2024 16:42:25 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 10 Jul 2024 16:42:25 +0800
+From: Shun-yi Wang <shun-yi.wang@mediatek.com>
+To: Bjorn Andersson <andersson@kernel.org>, Mathieu Poirier
+	<mathieu.poirier@linaro.org>
+CC: Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>,
+	<linux-remoteproc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<jason-ch.chen@mediatek.com>, <yaya.chang@mediatek.com>,
+	<teddy.chen@mediatek.com>, shun-yi.wang <shun-yi.wang@mediatek.com>
+Subject: [PATCH RFC 1/1] remoteproc: mediatek: Support reserved CMA regions
+Date: Wed, 10 Jul 2024 16:42:00 +0800
+Message-ID: <20240710084200.6561-2-shun-yi.wang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20240710084200.6561-1-shun-yi.wang@mediatek.com>
+References: <20240710084200.6561-1-shun-yi.wang@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20240710-alpha-blending-v2-1-d4b505e6980a@mediatek.com>
-References: <20240710-alpha-blending-v2-0-d4b505e6980a@mediatek.com>
-In-Reply-To: <20240710-alpha-blending-v2-0-d4b505e6980a@mediatek.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, 
- Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- Hsiao Chien Sung <shawn.sung@mediatek.corp-partner.google.com>, 
- CK Hu <ck.hu@mediatek.com>, Hsiao Chien Sung <shawn.sung@mediatek.com>
-X-Mailer: b4 0.12.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1720600641; l=1452;
- i=shawn.sung@mediatek.com; s=20240710; h=from:subject:message-id;
- bh=XPDvZ7xzyMMnOIwBspXj+lmld62ksCxAgrZn9GTIqIg=;
- b=GqcT87r4rRyr78YQwa4jrGqrbCdQkmHOav67BxTW5YqCT+5auldhvgktksMw2qCOf9cwLvSYQ
- nDSQsai+RpUB63G9x2WlWi9G7wZnlBUt3Yii8x5RGVzu7tZkp1ItpQT
-X-Developer-Key: i=shawn.sung@mediatek.com; a=ed25519;
- pk=VRlGZ3diQkQtpDd8fCL9/mx+TpZStm08pg8UPaG1NGc=
-X-Endpoint-Received: by B4 Relay for shawn.sung@mediatek.com/20240710 with
- auth_id=184
-X-Original-From: Hsiao Chien Sung <shawn.sung@mediatek.com>
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--2.598500-8.000000
+X-TMASE-MatchedRID: bPjU8R/NGeHeckYuh8C4OQ2IdVM+s7+jUAjrAJWsTe+CsBeCv8CM/az6
+	uKpF6xLxqyiNfoPmYnRH3qAy0ABMwKFx4PiqFtlGtw+xHnsmQjPt/okBLaEo+IeUNQK7Qj5cVSd
+	AA6mVeIaNy4aKfO9yVTl4fr3J7TtwnU4Y8605XzmTd7CJ8bYw01g3VqSTJ7SoyWCL+8tLbva+Un
+	f56ZSSHOLzNWBegCW2wgn7iDBesS1YF3qW3Je6+7hP13miKAO1q/QrR1KGx2yjSCc90prGUVkuj
+	HvdNL55pp1v2VcFzg/64xLte41bXiJAkpshrClmC2Elov3YnbR0/j0kEc2v0YCE5xpCtDRTUbJF
+	yh4XXyqYo/TPOlMB4bCh3zE4wqa8wIE77PEBbml+3BndfXUhXQ==
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--2.598500-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: DFD53FDEE7BA199199010BC5F6077F30E6E3A8A1681A402B60B81F5CCAB7F07D2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240710_013727_047987_3E4E0920 
-X-CRM114-Status: GOOD (  11.96  )
+X-CRM114-CacheID: sfid-20240710_014259_881087_C57D64E6 
+X-CRM114-Status: GOOD (  15.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,45 +99,85 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: shawn.sung@mediatek.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Hsiao Chien Sung <shawn.sung@mediatek.com>
+From: "shun-yi.wang" <shun-yi.wang@mediatek.com>
 
-Support "None" alpha blending mode on MediaTek's chips.
+In order to reserve specific Contiguous Memory Allocator (CMA) regions
+for hardware use. When the name of the reserved region contains "cma",
+then a corresponding CMA heap is added.
 
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
-Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
+Signed-off-by: shun-yi.wang <shun-yi.wang@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ drivers/remoteproc/mtk_scp.c | 38 ++++++++++++++++++++++++++++--------
+ 1 file changed, 30 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-index 9d6d9fd8342e..add671c38613 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-@@ -434,6 +434,7 @@ void mtk_ovl_layer_config(struct device *dev, unsigned int idx,
- 	unsigned int fmt = pending->format;
- 	unsigned int offset = (pending->y << 16) | pending->x;
- 	unsigned int src_size = (pending->height << 16) | pending->width;
-+	unsigned int blend_mode = state->base.pixel_blend_mode;
- 	unsigned int ignore_pixel_alpha = 0;
- 	unsigned int con;
- 	bool is_afbc = pending->modifier != DRM_FORMAT_MOD_LINEAR;
-@@ -463,7 +464,8 @@ void mtk_ovl_layer_config(struct device *dev, unsigned int idx,
- 	 * For RGB888 related formats, whether CONST_BLD is enabled or not won't
- 	 * affect the result. Therefore we use !has_alpha as the condition.
- 	 */
--	if (state->base.fb && !state->base.fb->format->has_alpha)
-+	if ((state->base.fb && !state->base.fb->format->has_alpha) ||
-+	    blend_mode == DRM_MODE_BLEND_PIXEL_NONE)
- 		ignore_pixel_alpha = OVL_CONST_BLEND;
+diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+index e744c07507ee..ca0a4a52ece9 100644
+--- a/drivers/remoteproc/mtk_scp.c
++++ b/drivers/remoteproc/mtk_scp.c
+@@ -4,6 +4,7 @@
  
- 	if (pending->rotation & DRM_MODE_REFLECT_Y) {
-
+ #include <asm/barrier.h>
+ #include <linux/clk.h>
++#include <linux/dma-heap.h>
+ #include <linux/dma-mapping.h>
+ #include <linux/err.h>
+ #include <linux/interrupt.h>
+@@ -1006,22 +1007,43 @@ EXPORT_SYMBOL_GPL(scp_mapping_dm_addr);
+ 
+ static int scp_map_memory_region(struct mtk_scp *scp)
+ {
+-	int ret;
++	int ret, i, err;
+ 	const struct mtk_scp_sizes_data *scp_sizes;
++	struct device_node *node = scp->dev->of_node;
++	struct of_phandle_iterator it;
++
++	i = 0;
++	of_for_each_phandle(&it, err, node, "memory-region", NULL, 0) {
++		ret = of_reserved_mem_device_init_by_idx(scp->dev, node, i);
++
++		if (ret) {
++			dev_err(scp->dev, "failed to assign memory-region: %s\n",
++				it.node->name);
++			of_node_put(it.node);
++			return -ENOMEM;
++		}
++
++#ifdef CONFIG_DMABUF_HEAPS_CMA
++		if (strstr(it.node->name, "cma")) {
++			/* Reserved cma memory region */
++			ret = dma_heap_add_cma(scp->dev);
++			if (ret) {
++				dev_err(scp->dev, "Failed to add reserved cma");
++				of_node_put(it.node);
++				return ret;
++			}
++		}
++#endif /* CONFIG_DMABUF_HEAPS_CMA */
+ 
+-	ret = of_reserved_mem_device_init(scp->dev);
++		i++;
++	}
+ 
+ 	/* reserved memory is optional. */
+-	if (ret == -ENODEV) {
++	if (!i) {
+ 		dev_info(scp->dev, "skipping reserved memory initialization.");
+ 		return 0;
+ 	}
+ 
+-	if (ret) {
+-		dev_err(scp->dev, "failed to assign memory-region: %d\n", ret);
+-		return -ENOMEM;
+-	}
+-
+ 	/* Reserved SCP code size */
+ 	scp_sizes = scp->data->scp_sizes;
+ 	scp->cpu_addr = dma_alloc_coherent(scp->dev, scp_sizes->max_dram_size,
 -- 
-2.43.0
-
+2.18.0
 
 
