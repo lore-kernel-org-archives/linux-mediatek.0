@@ -4,55 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9A14C3DA45
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jul 2024 08:53:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1354BC3DA42
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jul 2024 08:53:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
-	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
-	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KsRc2n3oCfr6oqnbZzoEB49GV1kdxI9bRVHPnBndTcY=; b=3tfOrkcjUsElCXJ26qjILc+Caa
-	s6zQqilAc4ptrzhlN7wIlu7R8pa5IusOp/HK4zRXsXIs2/CAdUTFdmO/p7iaZKOmKAFFcs3JtxBFx
-	EXD5Bq8gvR0zrrI1SD8RspCTu6qjgLPUDU4J1NFt7Mdulsc2xdHe2nk5UCxi868UsyZPpPemzcx81
-	JZmiTejlwfavR9Gb6PpoQVn3i0hE5mJU1W5T3ZE8YQMFDzl2H37oKDsS3JKGoz78bRobcnXDVzYyq
-	girplN/hauxDC5945D6G+V1r522Cmn4PgMH6PCzoALKtiVh5AxFAgMNza4IVIWrFPfIGi9oSt5q5G
-	HRf703eg==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=QW/oxVLzbpI7e2hTes/8OZU5hm6jkp/AMraA18UgH6g=; b=QWJUoA21uzOsceZdbZWxwveCOx
+	QSPVI29TclzBSMN4G0gkDAxPBF8WAcITouVZcmSbqWqAJ3ntS1qkCZeqLegC+V1xzwBFHcul2MZMk
+	vqaz/3w/42vdVaX5sCTSMBTdcmFwUJp/GJXeXqlFtmSKUYBGGtSptRLghcNP7HpsLe4ZsHXbBaAdp
+	AHxvc+eJtN7TXHBgLqJKq4IYa35BIwgmC9pFElLr7Vze4ph17YLrkKMSS4BGjUXDenYHb3XvX8hLo
+	d+B2pGGWEGWElhdVt98wX5YxJAAjJOAsojugMLsNXuf9QIeNy4lkg2EnWcabqVW0P/DFfN+fQm9Kl
+	ktAKGqNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRT4c-00000009xp2-0uaz;
-	Wed, 10 Jul 2024 08:53:14 +0000
+	id 1sRT4p-00000009xso-38aq;
+	Wed, 10 Jul 2024 08:53:27 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRT4J-00000009xfX-25SA;
+	id 1sRT4J-00000009xfW-1zl7;
 	Wed, 10 Jul 2024 08:52:57 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id DF3BF61831;
+	by dfw.source.kernel.org (Postfix) with ESMTP id CF7E761741;
 	Wed, 10 Jul 2024 08:52:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 91461C32786;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 818F6C32781;
 	Wed, 10 Jul 2024 08:52:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1720601574;
-	bh=tfabwBvvONPi6G1imBOAg7bICWXSe8zF8QtpBuR5L0s=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=fE8DpEo7oLB67fr9MBZkFR7jZWWurjdqEd2CnObxrdZLhQGrZmvDrNBa0w6lhpSlX
-	 XcD4l1+t3t0Rx8tFhk/YrsrXhG6jO+BhbaEd9sfy5j5qAwmPVw2TYrbp6zaF3xGc1H
-	 Wk6fKPlGcNp6+XfMe2P0wXAB7OJFberhsVZaOYZP6p8+SOq+XY96A1zjl8BpJEqDoW
-	 jsP1fK19Y6JGD7A2FOAXSzq9JIgRwgLRHXcUKjXH5S9uikH+DSw8dQ21G3lrEWJwKL
-	 QHrUOrwXJ6KYhYpIw3QfAi3LUvkuJLI4jePJK5uU5ovJkeD29AknHWms1pKcY/yXGY
-	 G7hrOke6BHopg==
+	bh=PhMCKB+xJTR+gWnIW4XNQs4NwAAVWihotq9v6lufwcc=;
+	h=From:Subject:Date:To:Cc:Reply-To:From;
+	b=mIVsdcf9Wq8E3d8aADG4+Ad/topqdU/CzpA38t5GjNHBmlgrzJ7vQPmrlq+1NNZ60
+	 5b64GvL5nk4XMFsyiQ3gIVvODP2fIWuRx1Niho4Y1gs9wEg/IYqgi5z4pvkF/tnIwP
+	 ux8eyIsDwT5fN74oki5yn5pTldkTGGlFLzDs4O2tI39uMw9cVQymbgHlmqfMlH9aNB
+	 d81d/dzO3Pbm6KdNvXnecazvXxfrkwnC5hQMBTMzvrhNy30aBdPOwHjNR+RSH5Hf/a
+	 CiRrE4VJu21uxO6COyZLhWcyTgLp18i0fJtXc9v/g03+F8v65/G7kFX9vOw4iu4h5s
+	 le0CBuq0+5+aQ==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 805B0C3DA45;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 71CFDC3DA42;
 	Wed, 10 Jul 2024 08:52:54 +0000 (UTC)
 From: Hsiao Chien Sung via B4 Relay <devnull+shawn.sung.mediatek.com@kernel.org>
-Date: Wed, 10 Jul 2024 16:52:51 +0800
-Subject: [PATCH v3 1/5] drm/mediatek: Support "None" blending in OVL
+Subject: [PATCH v3 0/5] Support alpha blending in MTK display driver
+Date: Wed, 10 Jul 2024 16:52:50 +0800
+Message-Id: <20240710-alpha-blending-v3-0-289c187f9c6f@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240710-alpha-blending-v3-1-289c187f9c6f@mediatek.com>
-References: <20240710-alpha-blending-v3-0-289c187f9c6f@mediatek.com>
-In-Reply-To: <20240710-alpha-blending-v3-0-289c187f9c6f@mediatek.com>
+X-B4-Tracking: v=1; b=H4sIAOJLjmYC/22OQQ6CMBREr2K6tubzgRZceQ/jotAvNEIhLTYaw
+ t0tsDAxLmeS92Zm5skZ8ux8mJmjYLwZbAzp8cDqVtmGuNExMwTMQCbAVTe2ilcdWW1sw0FILPN
+ cQiFSFqFKeeKVU7ZuI2afXRfL0dHdvLaV6y3m1vhpcO9tNCRru/sFwm7mIeHAJQoJILFWCJeet
+ FETPU710LNVEvAL/jkWMBp0VuWQkygLUD+GZVk+xAF9pv0AAAA=
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
  Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, 
  Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, 
@@ -62,19 +64,20 @@ Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
  Hsiao Chien Sung <shawn.sung@mediatek.corp-partner.google.com>, 
  CK Hu <ck.hu@mediatek.com>, Hsiao Chien Sung <shawn.sung@mediatek.com>
 X-Mailer: b4 0.14.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1720601573; l=1452;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1720601573; l=1352;
  i=shawn.sung@mediatek.com; s=20240710; h=from:subject:message-id;
- bh=XPDvZ7xzyMMnOIwBspXj+lmld62ksCxAgrZn9GTIqIg=;
- b=HsOsrqhmRFl9fOXtcJXMLvv7rJjJpW6kf0KLPrSnRxb0hCnapq32yLAZm87y5QwTs/neDBkI/
- RNVEsgjQwWGClW02cW487yVZf0rmheO51TuYbL+5AP8CYBueAfgYWIr
+ bh=PhMCKB+xJTR+gWnIW4XNQs4NwAAVWihotq9v6lufwcc=;
+ b=0Y6YJ9l6hxNTlX0eT4eoJURDFUA2bVcNpmPnbtUiNExoTDahpGjBRDE/4MJ2UbOapU7x5pPeU
+ EEEFzTpFXvMBWiv6eU0YelHHmhb3XA8smpTagNVshdUtYeK+kQZXD6S
 X-Developer-Key: i=shawn.sung@mediatek.com; a=ed25519;
  pk=VRlGZ3diQkQtpDd8fCL9/mx+TpZStm08pg8UPaG1NGc=
 X-Endpoint-Received: by B4 Relay for shawn.sung@mediatek.com/20240710 with
  auth_id=184
 X-Original-From: Hsiao Chien Sung <shawn.sung@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240710_015255_626521_273B4D5C 
-X-CRM114-Status: GOOD (  11.95  )
+X-CRM114-CacheID: sfid-20240710_015255_648372_380A8357 
+X-CRM114-Status: UNSURE (   7.55  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,41 +93,40 @@ Reply-To: shawn.sung@mediatek.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Hsiao Chien Sung <shawn.sung@mediatek.com>
+Support "Pre-multiplied" and "None" blend mode on MediaTek's chips by
+adding correct blend mode property when the planes init.
+Before this patch, only the "Coverage" mode (default) is supported.
 
-Support "None" alpha blending mode on MediaTek's chips.
-
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
-Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
+Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.corp-partner.google.com>
 ---
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+Changes in v3:
+- Remove the Change-Id
+- Link to v2: https://lore.kernel.org/r/20240710-alpha-blending-v2-0-d4b505e6980a@mediatek.com
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-index 9d6d9fd8342e..add671c38613 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-@@ -434,6 +434,7 @@ void mtk_ovl_layer_config(struct device *dev, unsigned int idx,
- 	unsigned int fmt = pending->format;
- 	unsigned int offset = (pending->y << 16) | pending->x;
- 	unsigned int src_size = (pending->height << 16) | pending->width;
-+	unsigned int blend_mode = state->base.pixel_blend_mode;
- 	unsigned int ignore_pixel_alpha = 0;
- 	unsigned int con;
- 	bool is_afbc = pending->modifier != DRM_FORMAT_MOD_LINEAR;
-@@ -463,7 +464,8 @@ void mtk_ovl_layer_config(struct device *dev, unsigned int idx,
- 	 * For RGB888 related formats, whether CONST_BLD is enabled or not won't
- 	 * affect the result. Therefore we use !has_alpha as the condition.
- 	 */
--	if (state->base.fb && !state->base.fb->format->has_alpha)
-+	if ((state->base.fb && !state->base.fb->format->has_alpha) ||
-+	    blend_mode == DRM_MODE_BLEND_PIXEL_NONE)
- 		ignore_pixel_alpha = OVL_CONST_BLEND;
- 
- 	if (pending->rotation & DRM_MODE_REFLECT_Y) {
+Changes in v2:
+- Remove unnecessary codes
+- Add more information to the commit message
+- Link to v1: https://lore.kernel.org/r/20240620-blend-v1-0-72670072ca20@mediatek.com
 
+---
+Hsiao Chien Sung (5):
+      drm/mediatek: Support "None" blending in OVL
+      drm/mediatek: Support "None" blending in Mixer
+      drm/mediatek: Support "Pre-multiplied" blending in OVL
+      drm/mediatek: Support "Pre-multiplied" blending in Mixer
+      drm/mediatek: Support alpha blending in display driver
+
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 36 +++++++++++++++++++++++++--------
+ drivers/gpu/drm/mediatek/mtk_ethdr.c    | 13 +++++++++---
+ drivers/gpu/drm/mediatek/mtk_plane.c    | 11 ++++++++++
+ 3 files changed, 49 insertions(+), 11 deletions(-)
+---
+base-commit: 8ad49a92cff4bab13eb2f2725243f5f31eff3f3b
+change-id: 20240710-alpha-blending-067295570863
+
+Best regards,
 -- 
-2.43.0
+Hsiao Chien Sung <shawn.sung@mediatek.com>
 
 
 
