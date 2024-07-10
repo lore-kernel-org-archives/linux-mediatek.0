@@ -4,54 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DEA7C3DA42
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jul 2024 08:38:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31883C3DA45
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Jul 2024 08:39:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
 	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
 	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yz+3E9rYlBUu3jSNqev7xkB5+m/TueXjdSJpzbhV2SM=; b=qO4B7Q/DpbiuPWBWhg8Vaed6bL
-	vaNUOjgVwiHox5K9okXozFvgbbffti53fY2WucXBmKyURaYYXruceKx+fmjIZhEEOUgEpAscDAm80
-	OjtGZWxCwSbjAxoBXEMA0k/PUw9ai6v1klpNNvJ2SMPo2JRj+haEFqLhPfD6Tek6AN+o2KcA/HC6m
-	DKe/LSHQF3lOpvhKc0RZx7R+aB9hNb/sObaGRuxu0jPchFqCrpEBSDIA9Q6lUYBjbd1+JcVdPEwki
-	slod9ThuyzKLqdOVEK/ud2tBiiELfnqtvL5Qxq9ZpJWyNlt1X+ZAKp+MYhrKj8gX1Td7auTAFRoul
-	Ie8KFmeA==;
+	bh=KsRc2n3oCfr6oqnbZzoEB49GV1kdxI9bRVHPnBndTcY=; b=IM75vu+/QXZn7+a7A4+GCEgOwn
+	zuZ+nB694zGwyPdxEDY8T7czcaHt26GKujMXhBUI5bygfNWtcry4GrMIzsK03TSeAeZTfIN5dQEiH
+	U+x+Em12FCr2PQzo6TzYG+z6ZNWutU/hLRbTolNG32pjpj16xPgF7ksoJyUpcd05dw/tbfClagiOS
+	t/3YWvznQfpGPH7kabGPGPytK9nriPOzB9WfFGgY4IbcVQNQoZPIEA2Bo38w9IgJ13348Fc/E9qDD
+	Jq8LciHwke1MYiaC4syE9tQWodi1vnRO0+X08C0Odav3HQB49qAnrK1Qxd2jeO1rzB6tPAXhSoIUH
+	wI6J2PjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRSqc-00000009uzv-3tSa;
-	Wed, 10 Jul 2024 08:38:46 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sRSqr-00000009v5j-1bjI;
+	Wed, 10 Jul 2024 08:39:01 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRSpI-00000009uIy-2Dpi;
-	Wed, 10 Jul 2024 08:37:28 +0000
+	id 1sRSpK-00000009uKa-2NpW;
+	Wed, 10 Jul 2024 08:37:29 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 4BCA661A01;
-	Wed, 10 Jul 2024 08:37:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 1F542C4AF07;
-	Wed, 10 Jul 2024 08:37:23 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 8A0E9CE1582;
+	Wed, 10 Jul 2024 08:37:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id B85ADC32786;
+	Wed, 10 Jul 2024 08:37:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1720600643;
-	bh=FrXpXFM8hU8nJEtAJsJHGV8jQY/M8JZ5BXMOtazVLvA=;
+	s=k20201202; t=1720600642;
+	bh=tfabwBvvONPi6G1imBOAg7bICWXSe8zF8QtpBuR5L0s=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=kEF+QMeT8WtCEAnfkrRKO2Nax7gTdNBjg/szekpejoYED4qnlC8B4XmgexsYhHPY1
-	 clDVN8dbhFk1v9F7B5Yq5R3yTAj5VuHidO6RVnL9Aisn5f1BW2UGjhmZbUNPMePdIH
-	 wcwapVY829+IAoxKs6UgS6bEp6213hCdeFLzhjk8e799F/ArqrSGROnlvIW7gn799b
-	 cGURoTW8cXDSvgrMdugmtUVtaVGs5Wcn9+wRGhDunGN91EirS49ttYArFxUCYREdOr
-	 w89lAHUDMorBob3hiArr5Njg6rUbugjLk288mzffLKz92ypbmSMA+WYQXdKyPWR0kb
-	 XhoeWI5B7LL7g==
+	b=sxofKbwxJrcZPRM3OnpVr7hAH1vyRhNrYVD65gNKcDv9gSyh0+BN1+o6iLdgF17pm
+	 xneZcFH8HF2Nf6v+W0nK/nMA0+MlBDWs5WhkDuPtk196DgHcQWZj6MkoXZvD95RJZd
+	 gmqJsFuF1Wl8hpVkZJl6oUcA8/gGg6VRHSOEzEifgHYEaMkHxWgeTnoN2wxaj37/K+
+	 88/97uiA8k3oDdw+QelNaVKw94Q2SUkxBWOLe9amJHhY5tOhnj1F948mCtNyGKmrMC
+	 pUinrv1Rsj+rP8fFFUdl3q32UintvGzl5rWLnjHZFY57FAHy4AiXyY10JkNhIoLikA
+	 xiScfTC5ZJeew==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0027BC3DA45;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 985E5C3DA42;
 	Wed, 10 Jul 2024 08:37:22 +0000 (UTC)
 From: Hsiao Chien Sung via B4 Relay <devnull+shawn.sung.mediatek.com@kernel.org>
-Date: Wed, 10 Jul 2024 16:37:22 +0800
-Subject: [PATCH v2 4/5] drm/mediatek: Support "Pre-multiplied" blending in
- Mixer
+Date: Wed, 10 Jul 2024 16:37:19 +0800
+Subject: [PATCH v2 1/5] drm/mediatek: Support "None" blending in OVL
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240710-alpha-blending-v2-4-d4b505e6980a@mediatek.com>
+Message-Id: <20240710-alpha-blending-v2-1-d4b505e6980a@mediatek.com>
 References: <20240710-alpha-blending-v2-0-d4b505e6980a@mediatek.com>
 In-Reply-To: <20240710-alpha-blending-v2-0-d4b505e6980a@mediatek.com>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
@@ -61,21 +60,21 @@ To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
 Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  Hsiao Chien Sung <shawn.sung@mediatek.corp-partner.google.com>, 
- Hsiao Chien Sung <shawn.sung@mediatek.com>
+ CK Hu <ck.hu@mediatek.com>, Hsiao Chien Sung <shawn.sung@mediatek.com>
 X-Mailer: b4 0.12.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1720600641; l=2211;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1720600641; l=1452;
  i=shawn.sung@mediatek.com; s=20240710; h=from:subject:message-id;
- bh=L3aSZMNI/5e4YMPf4nqEmkejhrP0vtCut0YLE0pQ+qs=;
- b=ar4ZvKNsZZFYYYRhlTblHJLqdhIfL3KbfOwFhbVhs5KkRPAiTvE1rR+Str+/zCYpkhyaY5p02
- Tl997s/5QS1DTNJ2iL/1yJNE2W14+DA0gH+3bn6P9S3mTbkZrknCaQD
+ bh=XPDvZ7xzyMMnOIwBspXj+lmld62ksCxAgrZn9GTIqIg=;
+ b=GqcT87r4rRyr78YQwa4jrGqrbCdQkmHOav67BxTW5YqCT+5auldhvgktksMw2qCOf9cwLvSYQ
+ nDSQsai+RpUB63G9x2WlWi9G7wZnlBUt3Yii8x5RGVzu7tZkp1ItpQT
 X-Developer-Key: i=shawn.sung@mediatek.com; a=ed25519;
  pk=VRlGZ3diQkQtpDd8fCL9/mx+TpZStm08pg8UPaG1NGc=
 X-Endpoint-Received: by B4 Relay for shawn.sung@mediatek.com/20240710 with
  auth_id=184
 X-Original-From: Hsiao Chien Sung <shawn.sung@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240710_013724_782025_17D19599 
-X-CRM114-Status: GOOD (  12.10  )
+X-CRM114-CacheID: sfid-20240710_013727_047987_3E4E0920 
+X-CRM114-Status: GOOD (  11.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,54 +92,36 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Hsiao Chien Sung <shawn.sung@mediatek.com>
 
-Support "Pre-multiplied" alpha blending mode in Mixer.
-Before this patch, only the coverage mode is supported.
+Support "None" alpha blending mode on MediaTek's chips.
 
-To replace the default setting that is set in mtk_ethdr_config(),
-we change mtk_ddp_write_mask() to mtk_ddp_write(), and this change will
-also reset the NON_PREMULTI_SOURCE bit that was assigned in
-mtk_ethdr_config(). Therefore, we must still set NON_PREMULTI_SOURCE bit
-if the blend mode is not DRM_MODE_BLEND_PREMULTI.
-
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
 Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_ethdr.c | 9 +++++++--
- 1 file changed, 7 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_ethdr.c b/drivers/gpu/drm/mediatek/mtk_ethdr.c
-index 80ccdad3741b..d1d9cf8b10e1 100644
---- a/drivers/gpu/drm/mediatek/mtk_ethdr.c
-+++ b/drivers/gpu/drm/mediatek/mtk_ethdr.c
-@@ -36,6 +36,7 @@
- #define MIX_SRC_L0_EN				BIT(0)
- #define MIX_L_SRC_CON(n)		(0x28 + 0x18 * (n))
- #define NON_PREMULTI_SOURCE			(2 << 12)
-+#define PREMULTI_SOURCE				(3 << 12)
- #define MIX_L_SRC_SIZE(n)		(0x30 + 0x18 * (n))
- #define MIX_L_SRC_OFFSET(n)		(0x34 + 0x18 * (n))
- #define MIX_FUNC_DCM0			0x120
-@@ -176,6 +177,11 @@ void mtk_ethdr_layer_config(struct device *dev, unsigned int idx,
- 		alpha_con |= state->base.alpha & MIXER_ALPHA;
- 	}
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+index 9d6d9fd8342e..add671c38613 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+@@ -434,6 +434,7 @@ void mtk_ovl_layer_config(struct device *dev, unsigned int idx,
+ 	unsigned int fmt = pending->format;
+ 	unsigned int offset = (pending->y << 16) | pending->x;
+ 	unsigned int src_size = (pending->height << 16) | pending->width;
++	unsigned int blend_mode = state->base.pixel_blend_mode;
+ 	unsigned int ignore_pixel_alpha = 0;
+ 	unsigned int con;
+ 	bool is_afbc = pending->modifier != DRM_FORMAT_MOD_LINEAR;
+@@ -463,7 +464,8 @@ void mtk_ovl_layer_config(struct device *dev, unsigned int idx,
+ 	 * For RGB888 related formats, whether CONST_BLD is enabled or not won't
+ 	 * affect the result. Therefore we use !has_alpha as the condition.
+ 	 */
+-	if (state->base.fb && !state->base.fb->format->has_alpha)
++	if ((state->base.fb && !state->base.fb->format->has_alpha) ||
++	    blend_mode == DRM_MODE_BLEND_PIXEL_NONE)
+ 		ignore_pixel_alpha = OVL_CONST_BLEND;
  
-+	if (state->base.pixel_blend_mode == DRM_MODE_BLEND_PREMULTI)
-+		alpha_con |= PREMULTI_SOURCE;
-+	else
-+		alpha_con |= NON_PREMULTI_SOURCE;
-+
- 	if ((state->base.fb && !state->base.fb->format->has_alpha) ||
- 	    state->base.pixel_blend_mode == DRM_MODE_BLEND_PIXEL_NONE) {
- 		/*
-@@ -193,8 +199,7 @@ void mtk_ethdr_layer_config(struct device *dev, unsigned int idx,
- 	mtk_ddp_write(cmdq_pkt, pending->height << 16 | align_width, &mixer->cmdq_base,
- 		      mixer->regs, MIX_L_SRC_SIZE(idx));
- 	mtk_ddp_write(cmdq_pkt, offset, &mixer->cmdq_base, mixer->regs, MIX_L_SRC_OFFSET(idx));
--	mtk_ddp_write_mask(cmdq_pkt, alpha_con, &mixer->cmdq_base, mixer->regs, MIX_L_SRC_CON(idx),
--			   0x1ff);
-+	mtk_ddp_write(cmdq_pkt, alpha_con, &mixer->cmdq_base, mixer->regs, MIX_L_SRC_CON(idx));
- 	mtk_ddp_write_mask(cmdq_pkt, BIT(idx), &mixer->cmdq_base, mixer->regs, MIX_SRC_CON,
- 			   BIT(idx));
- }
+ 	if (pending->rotation & DRM_MODE_REFLECT_Y) {
 
 -- 
 2.43.0
