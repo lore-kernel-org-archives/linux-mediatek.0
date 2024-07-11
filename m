@@ -4,71 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F278C3DA41
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jul 2024 09:21:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A19DEC3DA41
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jul 2024 09:24:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nbWRyQHdbZRGFzVDMgXq8UvaMtMnzRCnJkMmJq9icpY=; b=JNeWUAVK4Je376AqEQn0kIrL0s
-	SwuFAvO4d3FWoNuyld4n2ZY3a+dmDofdNiyVv7lSp10f+fvkA7sj2U9Lp75pvyVUAxSukln5A/7hS
-	jy7PFmLMwJIij0AAP9tlMMWfLPw/5Y6n6eIRMqiZDt6UX23klB+x05Kt6JbJ2pCT63BeOXSglYXHk
-	85ed+mEA+naL/Pwg2Sep4ExKp+Gg84ppCjLtRoiB14sArd2q+4CvFxR5i+AsIfwW5/kud5Y4LFTQT
-	/2YabKkS0Hzi+Cg4k6Q8xq5I0kwGy8ZEAbHHM9fuHsfX0OOWi3UprEdSi0DpWXwDBNe6PecHy/qUP
-	+4ZZb7uQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:From:
+	Cc:Subject:To:Message-Id:Date:Content-Type:Reply-To:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9NjQY4CFdRSSUMACoTljrQZ0Eu6KQjt/PB+PShVspRE=; b=UxPVGhdN7x1J5dD95JjDDK4rT7
+	KM5bnUKQFhixiNJzLdG/Uu2rePK9Ov3w8sIjAacCQgczMDCjCUa+PiFH8wKUXojLdfvgku1Pjl0dT
+	A1AqKK4FrI2AAn/GXT55SrzhaZDZBaCBLhsMqdGqWpWMBwFyiOSZuJwgCfiEW47PlWCd8GkI/dgEM
+	hDSPmz4g5uMaObrWXGVs0XXpnqi2CmtieJ966nEnAQ/kAqc48toXyw42RX8quBCl74HdQv0gAjtsY
+	lsVdiOq94OiOPm1J+Whu5v0fCN54YRwrJblfP+gY336XqFiSy9Z6fKvvfLtXueuA1f2OojC4HLPn6
+	Qzcj0Rqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRpzb-0000000DL3o-3gVV;
-	Thu, 11 Jul 2024 09:21:35 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1sRq2Y-0000000DLeH-1MX9;
+	Thu, 11 Jul 2024 09:24:38 +0000
+Received: from 0001.3ffe.de ([2a01:4f8:c0c:9d57::1] helo=mail.3ffe.de)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRpzJ-0000000DKz0-2eqO;
-	Thu, 11 Jul 2024 09:21:19 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1720689675;
-	bh=tQJG8NMkrg/xn3s3bUs1n5Z3qe5f9ytiiGMbVgyGTIM=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Xy8zeInqd48+wCBkc5QVrJawwT+52nNTL1C+MooVJlMxQKTd0rRFbRbL+kyaEyw0n
-	 dl8rOynHmRCEEjrS0uK/VWHdeKddAp6G5EFTD4fwKFSOYKmfKctAhffrvqIh/f28tw
-	 X4Kv4sQQylJ6LjB4kN6IsHSV8zNKiOUcscCdIbrJz71O/jksNPCedqTBVUzgXGtwFN
-	 aIYBOgEREZPdl9NFzOUQXR9E3NHaPdEbYo9wB0onL0+n/ysyXLxj/d7NsxWR+nhQ1u
-	 At6FwucdE0gYXcDuqvAcOhedrJ4Wduu83vB4IuBIUfSYoQjwzQOATADYqDv6vpahG7
-	 pnxxvUG6nKFSg==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	id 1sRq2F-0000000DLYl-42jY;
+	Thu, 11 Jul 2024 09:24:21 +0000
+Received: from localhost (unknown [213.135.10.150])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 0051137811F4;
-	Thu, 11 Jul 2024 09:21:14 +0000 (UTC)
-Message-ID: <2dba1638-f155-463b-8f87-421101b8f4f2@collabora.com>
-Date: Thu, 11 Jul 2024 11:21:14 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: Probe failure of usb controller @11290000 on MT8195 after
- next-20231221
-To: Macpaul Lin <macpaul.lin@mediatek.com>,
- =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, kernel@collabora.com,
- Chen-Yu Tsai <wenst@chromium.org>, Bear Wang <bear.wang@mediatek.com>,
- Pablo Sun <pablo.sun@mediatek.com>
-References: <9fce9838-ef87-4d1b-b3df-63e1ddb0ec51@notapiano>
- <064935d8-fbda-4eda-b013-8c8fc63b561c@collabora.com>
- <375b2345-657a-4b8f-b5e3-dc16784ffde9@notapiano>
- <da27d957-866f-f055-9e83-cdc362d98dc7@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <da27d957-866f-f055-9e83-cdc362d98dc7@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+	by mail.3ffe.de (Postfix) with ESMTPSA id EBB993B6D;
+	Thu, 11 Jul 2024 11:24:08 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc; s=mail2022082101;
+	t=1720689849;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:content-type:content-type:in-reply-to:in-reply-to:
+	 references:references; bh=9NjQY4CFdRSSUMACoTljrQZ0Eu6KQjt/PB+PShVspRE=;
+	b=ylW4lySgGjMOXcWA3D57Rlg3dbXLsLi6lD8Ujp4QTPKR3fGsa7gtjsmw8eqrWbYAJ48HgC
+	+GbmuDCeNgyCqRkhsRYQ8litN8fDDEM/99hNMyzOA3TNVMp/ppxC6XcOMDXJivVBYuLrOQ
+	E7N8boUaduoWml1xbC3bK2bPL0qZogEV2AfD5xg05036jXZ7ASzfsshNXTWAmg3W1anF/w
+	mF2eigXeK3ys5PkY/YoOIsCWoKvZ8FqFeY+jFWU6M9lgeedMWSxCh+lEzri4FF2kV0YFY2
+	bZ7Zj8nF/1j0J3vm+TP1jlg0TE8wKRxmP+/0S8f8MoS2g7KdZab2gOLsWYeMPw==
+Content-Type: multipart/signed;
+ boundary=bd03c224a37c17e60929764b4547fa19bcf92c44aa38a8278f30359b2966;
+ micalg=pgp-sha384; protocol="application/pgp-signature"
+Date: Thu, 11 Jul 2024 11:24:06 +0200
+Message-Id: <D2MLN7389BYY.1HZAQPLQNKU5T@walle.cc>
+To: "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>,
+ <chunkuang.hu@kernel.org>, <ck.hu@mediatek.com>
+Subject: Re: [PATCH v8 0/3] drm/mediatek: Add support for OF graphs
+Cc: <robh@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
+ <conor+dt@kernel.org>, <p.zabel@pengutronix.de>, <airlied@gmail.com>,
+ <daniel@ffwll.ch>, <maarten.lankhorst@linux.intel.com>,
+ <mripard@kernel.org>, <tzimmermann@suse.de>, <matthias.bgg@gmail.com>,
+ <shawn.sung@mediatek.com>, <yu-chang.lee@mediatek.com>,
+ <jitao.shi@mediatek.com>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
+ <linux-mediatek@lists.infradead.org>,
+ <linux-arm-kernel@lists.infradead.org>, <wenst@chromium.org>,
+ <kernel@collabora.com>, <sui.jingfeng@linux.dev>
+From: "Michael Walle" <michael@walle.cc>
+X-Mailer: aerc 0.16.0
+References: <20240618101726.110416-1-angelogioacchino.delregno@collabora.com> <d84f1469-e82a-42de-94a0-8ee0da0cba02@collabora.com> <eef10e9f-dac5-4a05-a79c-f8026f27f051@collabora.com>
+In-Reply-To: <eef10e9f-dac5-4a05-a79c-f8026f27f051@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240711_022117_830560_2893D7B1 
-X-CRM114-Status: GOOD (  28.05  )
+X-CRM114-CacheID: sfid-20240711_022420_159532_B0C57443 
+X-CRM114-Status: UNSURE (   8.25  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,103 +82,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 11/07/24 06:13, Macpaul Lin ha scritto:
-> 
-> 
-> On 7/11/24 03:15, Nícolas F. R. A. Prado wrote:
->> On Fri, Jan 19, 2024 at 10:12:07AM +0100, AngeloGioacchino Del Regno wrote:
->>> Il 18/01/24 19:36, Nícolas F. R. A. Prado ha scritto:
->>>> Hi,
->>>>
->>>> KernelCI has identified a failure in the probe of one of the USB controllers on
->>>> the MT8195-Tomato Chromebook [1]:
->>>>
->>>> [   16.336840] xhci-mtk 11290000.usb: uwk - reg:0x400, version:104
->>>> [   16.337081] xhci-mtk 11290000.usb: xHCI Host Controller
->>>> [   16.337093] xhci-mtk 11290000.usb: new USB bus registered, assigned bus 
->>>> number 5
->>>> [   16.357114] xhci-mtk 11290000.usb: clocks are not stable (0x1003d0f)
->>>> [   16.357119] xhci-mtk 11290000.usb: can't setup: -110
->>>> [   16.357128] xhci-mtk 11290000.usb: USB bus 5 deregistered
->>>> [   16.359484] xhci-mtk: probe of 11290000.usb failed with error -110
->>>>
->>>> A previous message [2] suggests that a force-mode phy property that has been
->>>> merged might help with addressing the issue, however it's not clear to me how,
->>>> given that the controller at 1129000 uses a USB2 phy and the phy driver patch
->>>> only looks for the property on USB3 phys.
->>>>
->>>> Worth noting that the issue doesn't always happen. For instance the test did
->>>> pass for next-20240110 and then failed again on today's next [3]. But it does
->>>> seem that the issue was introduced, or at least became much more likely, between
->>>> next-20231221 and next-20240103, given that it never happened out of 10 runs
->>>> before, and after that has happened 5 out of 7 times.
->>>>
->>>> Note: On the Tomato Chromebook specifically this USB controller is not connected
->>>> to anything.
->>>>
->>>> [1] 
->>>> https://urldefense.com/v3/__https://linux.kernelci.org/test/case/id/659ce3506673076a8c52a428/__;!!CTRNKA9wMg0ARbw!jtg5drII8WUPwTiL4sWZiSRPXN-EBN8ctTGI85sirqvkmaUbA5z-wrLqPPfxlZZkQ7NItOWDT97OSdENT5oGHKY$
->>>> [2] https://lore.kernel.org/all/239def9b-437b-9211-7844-af4332651df0@mediatek.com/
->>>> [3] 
->>>> https://urldefense.com/v3/__https://linux.kernelci.org/test/case/id/65a8c66ee89acb56ac52a405/__;!!CTRNKA9wMg0ARbw!jtg5drII8WUPwTiL4sWZiSRPXN-EBN8ctTGI85sirqvkmaUbA5z-wrLqPPfxlZZkQ7NItOWDT97OSdENi-d0sVc$
->>>>
->>>> Thanks,
->>>> Nícolas
->>>
->>> Hey Nícolas,
->>>
->>> I wonder if this is happening because of async probe... I have seen those happening
->>> once in a (long) while on MT8186 as well with the same kind of flakiness and I am
->>> not even able to reproduce anymore.
->>>
->>> For MT8195 Tomato, I guess we can simply disable that controller without any side
->>> effects but, at the same time, I'm not sure that this would be the right thing to
->>> do in this case.
->>>
->>> Besides, the controller at 11290000 is the only one that doesn't live behind MTU3,
->>> but I don't know if that can ring any bell....
->>
->> An update on this issue: it looks like it only happens if "xhci-mtk
->> 11290000.usb" probes before "mtk-pcie-gen3 112f8000.pcie". What they have in
->> common is that both of those nodes use phys that share the same t-phy block:
->> pcie uses the usb3 phy while xhci uses the usb2 phy. So it seems that some of
->> the initialization done by the pcie controller might be implicitly needed by the
->> usb controller.
->>
->> This should help to narrow down the issue and find a proper fix for it.
->>
->> Thanks,
->> Nícolas
-> 
-> 'force-mode' should only applied to the boards which require XHCI function instead 
-> of a PCIE port.
-> 
-> For example, mt8395-genio-1200-evk.dts requires property 'force-mode' to fix probe 
-> issue for USBC @11290000.
-> 
-> https://git.kernel.org/pub/scm/linux/kernel/git/mediatek/linux.git/commit/?h=v6.10-next/dts64&id=666e6f39faff05fe12bfc64c64aa9015135ce783
-> 
-> 'force-mode' should be no need for tomato boards and the behavior should be the 
-> same as before.
-> 
-> Another possibility is the firmware change on tomato boards. I'm not sure if there 
-> is any changes on tomato's recent firmware for tphy of this port, which could also 
-> be a reason causes this kind of failure.
-> I don't have tomato boards on hand.
-> 
+--bd03c224a37c17e60929764b4547fa19bcf92c44aa38a8278f30359b2966
+Mime-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
 
-Hello Macpaul,
+Hi,
 
-it's just about the usb node missing a power domain: as the PCIE_MAC_P1 domain
-seems to be shared between USB and PCIe, adding it to the USB node fixes the
-setup phase.
+> > We've got a bunch of series that are waiting for this to get upstreamed=
+, including
+> > the addition of support for MT8365-EVK (already on mailing lists), MT83=
+95 Radxa
+> > NIO 12L, MT8395 Kontron SBC i1200 (not on mailing lists yet, waiting fo=
+r this to
+> > get merged), other than some other conversion commits for other MediaTe=
+k DTs from
+> > myself.
 
-I'll send a devicetree fix soon.
+Yes this is the missing piece to finally get DisplayPort output
+working on our board.
 
-Cheers,
-Angelo
+-michael
 
-> Thanks
-> Macpaul Lin
+--bd03c224a37c17e60929764b4547fa19bcf92c44aa38a8278f30359b2966
+Content-Type: application/pgp-signature; name="signature.asc"
 
+-----BEGIN PGP SIGNATURE-----
+
+iKcEABMJAC8WIQTIVZIcOo5wfU/AngkSJzzuPgIf+AUCZo+ktxEcbWljaGFlbEB3
+YWxsZS5jYwAKCRASJzzuPgIf+IKuAX91bBhsZ9n70IFStgrv2BIU/wzvYey5zSMd
+wdN4kUkgilUQZFMEdQBBI9Rre4soOOABgKV3nro9rwqC5Qu3/YjtsfR4y9YZMmWS
+dVPja70ZNJ1cDuh4I+gD19+V0Q4xPsz6ZQ==
+=B681
+-----END PGP SIGNATURE-----
+
+--bd03c224a37c17e60929764b4547fa19bcf92c44aa38a8278f30359b2966--
 
