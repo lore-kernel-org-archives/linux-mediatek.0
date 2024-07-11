@@ -4,73 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1104C3DA49
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jul 2024 16:34:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F32E2C3DA45
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jul 2024 16:39:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fuI/HQEqiAlrEP2RkqGf/olbO4k5iqnNSYNZg9oeQNU=; b=Po7DrkTT7RLCv52tAGtmldYk3U
-	TI3lVvomtG1efgzS0FrlYlZjg7+m6AWpFtE4mWQTnnMNG4+hLz3WzzUXHdX4A4CDrg/c3zKnSCdxC
-	p8Z0Xu45pWryzTBcT2tRf0KPF9tcabi1rb7sKj3jDC6F3TYc1UylvA1WEkZg/UhUIlLlEQo0FkuCh
-	qk1Mo1fqLu2nkBymdWh4QIezT+owN2zn9bzSWEJ9MAnK1NYxc+4WTaXh88jGpyBbOmUmu2iiy/FPr
-	4eA1XfeipXCp30QA1lFoMhccXbTylydVTjFV9rhyO9hji7WKlGAv9n74d7FBi8f3Qulfq18007ZnH
-	E0lRAEaw==;
+	bh=gqv3Y7p5yvjU6uOgahC8zf9OgcwBTWBkfHyfKngTXqs=; b=UiTYCRj7SMOAnc+6Cgm8eyXrmQ
+	BGRLENWhdAZ/tysSZ2QQHQzGTV58C5uq8LJ5oXA4+ka2SeIaju1zNWNLzAFAvsFsmdPpi1O4PO+Ue
+	WACGGWMqsKBhwy8yzqcHnE4H/7p3X4mA7fFz4miBJalWqt1vYGqTgVoDLtxF3O5h/go91xYfgqNyU
+	NeVT3yW2013Em2q6QPSVHDAGjcB+8rOjBCzwGgcIJpGBm9PkRd96ZLgnZ2dmnTwlC369ot/bsSlEs
+	i21fPQCa/UaNSr/AoP9js6RxA+OZQY4NWlVTZrPH7EMUv1v/NHWAn8fOgCCK3GN6ZG+6DqJJW9RU1
+	/OkjWyCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRwkL-0000000Ehso-16Z6;
-	Thu, 11 Jul 2024 16:34:17 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1sRwpC-0000000Eiuy-2Axk;
+	Thu, 11 Jul 2024 16:39:18 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRwk2-0000000EhoU-14SP;
-	Thu, 11 Jul 2024 16:34:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1720715634;
-	bh=zNn+b1gpGkgoJRO/dIyT9eGNRhFkmKlz5P/syX7WOo4=;
+	id 1sRwot-0000000EiqR-0Cj7;
+	Thu, 11 Jul 2024 16:39:00 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id E31EFCE1929;
+	Thu, 11 Jul 2024 16:38:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DF90EC116B1;
+	Thu, 11 Jul 2024 16:38:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1720715936;
+	bh=UavMyNYF30mligF0aZsTuX6+8r35QoOCy1CLNriVcCY=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=jXJ52lc5kzEGKKmX7UgUeCeA92dHLFg4LHejBdhoTye3vvn1kxMI+1lQ0NjabzczG
-	 9vv8eJbiPPxevoCZ1zgV+Pu321WkvT+hmRjY9iSm28Evmhu8QOJ0gib14WE+QR2Sia
-	 Zc89eg9oRSctqLl1FOOwBpI8YHP4NRGWqv0k68ko+JtJPgEzOsLXFVrJ4UZ+sPvS6y
-	 QiNkv9ZRP0JkxmA7JG9mCDM40JHsBbneqt/qo+pWOQbLhnsKnd1YMex4cAIwEqxSab
-	 WMpN+K/5ovpqrIwra3bYYYEz+D+BUYnHcCgPa9EcsTwZLr3bQ5jr7dNVlRUa0rgJ4S
-	 YX2+6NXbqaS2g==
-Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id DE74737821DB;
-	Thu, 11 Jul 2024 16:33:51 +0000 (UTC)
-Date: Thu, 11 Jul 2024 12:33:49 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+	b=Bvhzre32EPArcVCo0Eotud0PYlBrGvFWmS7Mnyn9DEMnZSI4rRFdZaHaWG/I3EM2Q
+	 GHvtDsl8jMNtwbFaw2zRkN9IltKzUMMKJmHRcnr6NylGmUa1sEbEiXQKkpP/Zcmg5K
+	 aMwxW4hzbyWxC9pMJ4Fq2GdCgm1NBHQWnawmQeosZAEVjlwGIho2NSRXMjipkSZRDu
+	 TDKXVsBkETA832fccWdFXleBCy8hYramdv5EJY+mIF0jin8Qg+IrbNxthc0Df83Ieg
+	 cBAspqn3HecDX3XkBfQaUFPtNiusvJdcas3yZxm42DTJ3vkzB6hr7T04Tklx/mRoZO
+	 RoQgDqwtrlo6Q==
+Date: Thu, 11 Jul 2024 10:38:55 -0600
+From: Rob Herring <robh@kernel.org>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Macpaul Lin <macpaul.lin@mediatek.com>,
-	Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, kernel@collabora.com,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	Bear Wang <bear.wang@mediatek.com>,
-	Pablo Sun <pablo.sun@mediatek.com>
-Subject: Re: Probe failure of usb controller @11290000 on MT8195 after
- next-20231221
-Message-ID: <521df3a8-5bc2-4e81-a819-02b755c88d3a@notapiano>
-References: <9fce9838-ef87-4d1b-b3df-63e1ddb0ec51@notapiano>
- <064935d8-fbda-4eda-b013-8c8fc63b561c@collabora.com>
- <375b2345-657a-4b8f-b5e3-dc16784ffde9@notapiano>
- <da27d957-866f-f055-9e83-cdc362d98dc7@mediatek.com>
- <2dba1638-f155-463b-8f87-421101b8f4f2@collabora.com>
+Subject: Re: Aw: Re: [PATCH v1 0/4] add syscon requirement for mt7988
+Message-ID: <20240711163855.GA2369577-robh@kernel.org>
+References: <20240709101328.102969-1-linux@fw-web.de>
+ <126053ef-3bfb-47c2-aa17-eb1d26d99102@collabora.com>
+ <trinity-93a5ed81-b890-4d49-bfec-1bbb1219cb65-1720611282583@3c-app-gmx-bs04>
+ <23369ea1-12d2-4386-a8ac-431620b75e2e@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <2dba1638-f155-463b-8f87-421101b8f4f2@collabora.com>
+In-Reply-To: <23369ea1-12d2-4386-a8ac-431620b75e2e@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240711_093358_595144_B1380C89 
-X-CRM114-Status: GOOD (  50.47  )
+X-CRM114-CacheID: sfid-20240711_093859_470711_4229A3E2 
+X-CRM114-Status: GOOD (  29.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,119 +68,71 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, linux-watchdog@vger.kernel.org, Stephen Boyd <sboyd@kernel.org>, linux-kernel@vger.kernel.org, Michael Turquette <mturquette@baylibre.com>, Daniel Golle <daniel@makrotopia.org>, linux-clk@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Wim Van Sebroeck <wim@linux-watchdog.org>, Frank Wunderlich <linux@fw-web.de>, Guenter Roeck <linux@roeck-us.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 11, 2024 at 11:21:14AM +0200, AngeloGioacchino Del Regno wrote:
-> Il 11/07/24 06:13, Macpaul Lin ha scritto:
+On Wed, Jul 10, 2024 at 02:50:42PM +0200, AngeloGioacchino Del Regno wrote:
+> Il 10/07/24 13:34, Frank Wunderlich ha scritto:
+> > Hi
 > > 
-> > 
-> > On 7/11/24 03:15, Nícolas F. R. A. Prado wrote:
-> > > On Fri, Jan 19, 2024 at 10:12:07AM +0100, AngeloGioacchino Del Regno wrote:
-> > > > Il 18/01/24 19:36, Nícolas F. R. A. Prado ha scritto:
-> > > > > Hi,
-> > > > > 
-> > > > > KernelCI has identified a failure in the probe of one of the USB controllers on
-> > > > > the MT8195-Tomato Chromebook [1]:
-> > > > > 
-> > > > > [   16.336840] xhci-mtk 11290000.usb: uwk - reg:0x400, version:104
-> > > > > [   16.337081] xhci-mtk 11290000.usb: xHCI Host Controller
-> > > > > [   16.337093] xhci-mtk 11290000.usb: new USB bus
-> > > > > registered, assigned bus number 5
-> > > > > [   16.357114] xhci-mtk 11290000.usb: clocks are not stable (0x1003d0f)
-> > > > > [   16.357119] xhci-mtk 11290000.usb: can't setup: -110
-> > > > > [   16.357128] xhci-mtk 11290000.usb: USB bus 5 deregistered
-> > > > > [   16.359484] xhci-mtk: probe of 11290000.usb failed with error -110
-> > > > > 
-> > > > > A previous message [2] suggests that a force-mode phy property that has been
-> > > > > merged might help with addressing the issue, however it's not clear to me how,
-> > > > > given that the controller at 1129000 uses a USB2 phy and the phy driver patch
-> > > > > only looks for the property on USB3 phys.
-> > > > > 
-> > > > > Worth noting that the issue doesn't always happen. For instance the test did
-> > > > > pass for next-20240110 and then failed again on today's next [3]. But it does
-> > > > > seem that the issue was introduced, or at least became much more likely, between
-> > > > > next-20231221 and next-20240103, given that it never happened out of 10 runs
-> > > > > before, and after that has happened 5 out of 7 times.
-> > > > > 
-> > > > > Note: On the Tomato Chromebook specifically this USB controller is not connected
-> > > > > to anything.
-> > > > > 
-> > > > > [1] https://urldefense.com/v3/__https://linux.kernelci.org/test/case/id/659ce3506673076a8c52a428/__;!!CTRNKA9wMg0ARbw!jtg5drII8WUPwTiL4sWZiSRPXN-EBN8ctTGI85sirqvkmaUbA5z-wrLqPPfxlZZkQ7NItOWDT97OSdENT5oGHKY$
-> > > > > [2] https://lore.kernel.org/all/239def9b-437b-9211-7844-af4332651df0@mediatek.com/
-> > > > > [3] https://urldefense.com/v3/__https://linux.kernelci.org/test/case/id/65a8c66ee89acb56ac52a405/__;!!CTRNKA9wMg0ARbw!jtg5drII8WUPwTiL4sWZiSRPXN-EBN8ctTGI85sirqvkmaUbA5z-wrLqPPfxlZZkQ7NItOWDT97OSdENi-d0sVc$
-> > > > > 
-> > > > > Thanks,
-> > > > > Nícolas
-> > > > 
-> > > > Hey Nícolas,
-> > > > 
-> > > > I wonder if this is happening because of async probe... I have seen those happening
-> > > > once in a (long) while on MT8186 as well with the same kind of flakiness and I am
-> > > > not even able to reproduce anymore.
-> > > > 
-> > > > For MT8195 Tomato, I guess we can simply disable that controller without any side
-> > > > effects but, at the same time, I'm not sure that this would be the right thing to
-> > > > do in this case.
-> > > > 
-> > > > Besides, the controller at 11290000 is the only one that doesn't live behind MTU3,
-> > > > but I don't know if that can ring any bell....
+> > > Gesendet: Mittwoch, 10. Juli 2024 um 12:45 Uhr
+> > > Von: "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>
+> > > Betreff: Re: [PATCH v1 0/4] add syscon requirement for mt7988
 > > > 
-> > > An update on this issue: it looks like it only happens if "xhci-mtk
-> > > 11290000.usb" probes before "mtk-pcie-gen3 112f8000.pcie". What they have in
-> > > common is that both of those nodes use phys that share the same t-phy block:
-> > > pcie uses the usb3 phy while xhci uses the usb2 phy. So it seems that some of
-> > > the initialization done by the pcie controller might be implicitly needed by the
-> > > usb controller.
+> > > Il 09/07/24 12:13, Frank Wunderlich ha scritto:
+> > > > From: Frank Wunderlich <frank-w@public-files.de>
+> > > > 
+> > > > Some nodes require the syscon fallback at least in u-boot when using
+> > > > OF_UPSTREAM.
+> > > > 
+> > > > This is because uboot driver uses syscon_node_to_regmap in mtk_eth.c for
+> > > > "mediatek,toprgu", "mediatek,xfi_pll" and reset pointing to watchdog-node.
+> > > > 
 > > > 
-> > > This should help to narrow down the issue and find a proper fix for it.
-> > > 
-> > > Thanks,
-> > > Nícolas
+> > > I wonder what's the major blocker here to modify the u-boot driver to take
+> > > the upstream devicetree as-is, instead of using syscon_node_to_regmap?
 > > 
-> > 'force-mode' should only applied to the boards which require XHCI
-> > function instead of a PCIE port.
+> > in uboot there is no driver for all syscon and to handle parallel 
+> > access this is done with the syscon fallback.
 > > 
-> > For example, mt8395-genio-1200-evk.dts requires property 'force-mode' to
-> > fix probe issue for USBC @11290000.
+> > The syscon uclass is a small driver which is generic and only 
+> > handle the regmap in global context.
 > > 
-> > https://git.kernel.org/pub/scm/linux/kernel/git/mediatek/linux.git/commit/?h=v6.10-next/dts64&id=666e6f39faff05fe12bfc64c64aa9015135ce783
+> > In theory it could be possible that regmap is aquired twice when 
+> > used from 2+ other drivers...to prevent this without
+> > adding the syscon fallback each syscon needs a dedicated driver 
+> > like in linux which does only syscon stuff (code
+> > duplication at its best :) ).
 > > 
-> > 'force-mode' should be no need for tomato boards and the behavior should
-> > be the same as before.
+> > of course i can use regmap_init_mem in the uboot ethernet driver
 > > 
-> > Another possibility is the firmware change on tomato boards. I'm not
-> > sure if there is any changes on tomato's recent firmware for tphy of
-> > this port, which could also be a reason causes this kind of failure.
-> > I don't have tomato boards on hand.
+> > https://elixir.bootlin.com/u-boot/latest/source/drivers/core/regmap.c#L242
+> > 
+> > like it's done once for syscon-uclass.
+> > 
+> > but i will cause issues when a second device tries to access this 
+> > regmap. So it was be much easier (for me) to add this
+> > fallback and not writing 3 device-drivers in uboot doing the 
+> > exactly same as syscon.
+> > 
+> > if you have a better idea how to handle it, let me know :)
 > > 
 > 
-> Hello Macpaul,
+> I see. The problem is that, from your description, it looks like u-boot
+> uses that as a kind of workaround for concurrent access to MMIO...
 > 
-> it's just about the usb node missing a power domain: as the PCIE_MAC_P1 domain
-> seems to be shared between USB and PCIe, adding it to the USB node fixes the
-> setup phase.
+> ...looks like a good topic to discuss in the u-boot mailing lists.
 > 
-> I'll send a devicetree fix soon.
+> Definitely, the TOPRGU and the XFI PLL are not system controllers, so the actual
+> "syscon" definition would be wrong for these, that's it.
 
-Hi,
+While I'd prefer "syscon" never existed in the first place, I don't care 
+too much if it gets added here or not. U-boot's reasoning for wanting it 
+isn't really much better or worse than Linux's. Though if u-boot has 
+multiple drivers using it, seems like an abstraction is missing if Linux 
+doesn't need that.
 
-As I replied to that patch
-(https://lore.kernel.org/all/20240711093230.118534-1-angelogioacchino.delregno@collabora.com)
-it didn't fix the issue for me, but I have more updates:
+Rob
 
-I confirmed the pcie was doing some required setup since disabling the pcie1
-node made the issue always happen, and that also made it easier to test.
-
-I was able to track the issue down to the following clock:
-<&infracfg_ao CLK_INFRA_AO_PCIE_P1_TL_96M>
-
-Adding it to the clocks property of the xhci1 node fixed the issue.
-
-I'm just not sure from a DT perspective what's the right way to describe this
-clock. The node doesn't have the frmcnt_ck, is this that clock? Or is it
-another clock that currently isn't described in the dt-bindings and driver?
-
-Thanks,
-Nícolas
 
