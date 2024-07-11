@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D73EC3DA41
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jul 2024 02:35:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3958C3DA41
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jul 2024 02:36:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=60c8ldv8Gtq05aGi/r8oign4rTfAuTYPALNPyBHGn0k=; b=H+wBnzFHetvhF4EbNq5bJxxCWW
-	RB7mFXlnnN5yHS1j6GVSqYEXOQaL723Ux2yP1LqXeP+/cyG4xK5zOq4TnSXmnFAQ7zStTbZF/pGx5
-	jUNjtsbVQPnsCyNOZXk6HxWn3b+C0EbvyG55G/MH0QW8YUZ/ZXQGzOBACfBV2nWx1p+o3qq6LA1on
-	LV/nyqXg7lXwJLTYsHTekSHzr59iBQ/+7B7mGbIgzYZBe/6t4T1ue8eWpRfjriZWIqn7B4d6/s/w1
-	OoD5iUqnXbQTeVzyvFq4GCrPHiLAjbzwgFv88Dbt1uMzmufgeuUQ1+Fyv1aX3J+o7GtrhVC9qEwnR
-	HBQaQZqw==;
+	Content-Transfer-Encoding:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NZTIlXFBMXbsYpmoUNS0lZqscPH099e7SC//Jpl8ni4=; b=kfphpxhmSfeeKpIRY3jPqr+Vfw
+	bqMCwoy5lX3340I5cAFE5nWWGLwvOOiq001CH5oV06vbl6J25ej+fN/xQxI8R8f4rC3GwfFI5WVvn
+	tsdD+gHPTmoGx9lAq159luPNhcR/KoiChB26e8jdqOaRv8MZ5PqP08zQ7+rPM/vLV96PON9a6doA8
+	IMDXItFmNGKrsG5zk22rSzYWeZi2Al0NoQrydFvagII5yBSFdZmOtBvV+CBwfc16X5NBkzWCTGpup
+	UIJf4p43OF5xuaEOkPUINB44X0Gpt4H4hXL/4hdWVRPMbnUa3KezN31k8gHw/jj+qxKksPHuDA/Op
+	toFcuTLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRjf2-0000000CRtW-2JXp;
-	Thu, 11 Jul 2024 02:35:56 +0000
-Received: from mail-tyzapc01on20701.outbound.protection.outlook.com ([2a01:111:f403:2011::701] helo=APC01-TYZ-obe.outbound.protection.outlook.com)
+	id 1sRjfH-0000000CRzD-17oY;
+	Thu, 11 Jul 2024 02:36:11 +0000
+Received: from mail-psaapc01on2070b.outbound.protection.outlook.com ([2a01:111:f400:feae::70b] helo=APC01-PSA-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRjej-0000000CRmQ-2M6y;
-	Thu, 11 Jul 2024 02:35:38 +0000
+	id 1sRjej-0000000CRmP-28J8;
+	Thu, 11 Jul 2024 02:35:39 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=LkbS8WlFetkWyOxih4LCiCEjmKOmoMiV5MqvR7L0yiIK0DuXfO0Ac+z/Dv53k/Ifz7JtRbuUSfRz3M9jmioXPqUjxv8ZvU23okFd/P2JPgFh2CYC/1Y4iFO6PP+9DXWxmLHZi41WUm1uKA5aYuv3wXafJ61UjdN0W3505gSDhR4/Z6Bh6qxJkaH1M0/XnCotfg63IEXPwEmmujDhbmcmdQ+9F+BZLzFMl3QascMV1fBt+JDhm7QNXrfqh6SvZFcYebXb/EIWadHWDXvs79+9REK5Qz/KxUrFwMpWy7WOkz6zKcBct77QTusn0+yXhApPETjfkNOBUVTNevgKc1vyfA==
+ b=iUnSj59MwMykP2P9ipleZG3L3ErJIyVGVaeku9/VR0JeCEL9GA4PgM3K1k294YX16WT6tkNXarxzALTxEJPPRfcaou3tHldzFxvNHz2VZ2eeKVvD0cSRNX6wJqERC3/+fHcbgOKAWRY2IV72m1OpkoHT2Qsj7koDwkDJWNkgL7zVfig51dA1iFhdsoEefd38eX7er91BaazKrKkiZljJlunkobSzAtyMfuc1VD8r8Ahzk5V9vuzdbs/holWDCwvuTaq6QBmwrbrQNrkLtziBunMjBTREsAlLxPoM5M5YUWc6TcDeZqTTNojk1IxX43dSCkgc5SowWuE4Yl2bT6C6sA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=60c8ldv8Gtq05aGi/r8oign4rTfAuTYPALNPyBHGn0k=;
- b=bPo4fXsaZzxhWkylgVCm0qvJfwa0XCNlzhMllabAZSpzkMisWWoL9xAKhHmtb2mnKepgSID9eVYW34W2O6JCZtGsdK8B8sGzr61pt4Mk1Job3glFtndb1aRGzdzbRYRHulIaoBx4WY8cqwx6ImNgCBIQTD8/TnvSfHXy6PiXiE05wG3LZt/GWC9nZoK8Wwzwmym8y2FJAXoNXysw/cnRoWpInVbwtqXIXJyJeo2l1v4J3zSBhp8LFsP8lAk6rwaVTW0VP0a67kkbovkNjMEz4i+g6KSI90pIneDMYBDbYRJRFscZ+IjhCX8ucziXQXbjNDI9W2ApBAKb696CDRvoYA==
+ bh=NZTIlXFBMXbsYpmoUNS0lZqscPH099e7SC//Jpl8ni4=;
+ b=GUFegy+fn8nqWbnkus5iHJI7CW701IhsqL/gqoYz/JP6vNksqhevVVyf5xzRv7/Toau02q6EISR044BWuLcgWFjIrrXnryj/2jsWA6Zk8lHDS3+gHsOWuy+7Ok4IFL23ixak5JXMRYtR/4uu9DWetEV8GbCW8UXh+qS6xFpEnprhDoir9tH9edX953H4OVZxHt086n8l6clrMWdpy5IgAbpRhduMSdfr/wZTZ7SSs5ND67nAeIDY8Hx031t9Bv/UiE9vuRek2hLCITuRuwvgGgInkggXHASND7zYwWvKP8fXIppA1dlkSQFxoMSDI4VVje39BvDFQ8lGa79yqJUO9Q==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=fibocom.com; dmarc=pass action=none header.from=fibocom.com;
  dkim=pass header.d=fibocom.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=fibocomcorp.onmicrosoft.com; s=selector1-fibocomcorp-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=60c8ldv8Gtq05aGi/r8oign4rTfAuTYPALNPyBHGn0k=;
- b=uqWF7hIbroaPy05LnbZJ0NtAds261JGYZE1lu6Mhe+36k5xoRSqlRPPasBYGgCLszw8d8kLVUgLNRLjd7wjpJznnodmf4jE9J+KQ8uMu2An0ygOaHfEIllSCvceOPgDZhr5zaq4ihco/phq+1ylvG/kBx3rtY/tlA/J9D+ugmis=
+ bh=NZTIlXFBMXbsYpmoUNS0lZqscPH099e7SC//Jpl8ni4=;
+ b=p5SAVGSNW7f5wTUU2uQ86h3EAzs58Zt1oPe8B3XTkzTkyxLUSOnkE98xQ+YG1WVx0/AeJWVThgqwzz1hhtZ0/p+NRrRoHnhG2uP1SDq+p//N3YpC94Dzu/5rKRpzBgXVogIq16AFGKRVeFRVJhEbd+RyO+x08GCMIKeieb/f6WQ=
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=fibocom.com;
 Received: from TY0PR02MB5766.apcprd02.prod.outlook.com (2603:1096:400:1b5::6)
- by TYZPR02MB5713.apcprd02.prod.outlook.com (2603:1096:400:1c2::7) with
+ by KL1PR02MB7168.apcprd02.prod.outlook.com (2603:1096:820:116::7) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7741.35; Thu, 11 Jul
- 2024 02:35:16 +0000
+ 2024 02:35:24 +0000
 Received: from TY0PR02MB5766.apcprd02.prod.outlook.com
  ([fe80::f53d:47b:3b04:9a8b]) by TY0PR02MB5766.apcprd02.prod.outlook.com
  ([fe80::f53d:47b:3b04:9a8b%7]) with mapi id 15.20.7741.033; Thu, 11 Jul 2024
- 02:35:16 +0000
+ 02:35:23 +0000
 From: Jinjian Song <jinjian.song@fibocom.com>
 To: chandrashekar.devegowda@intel.com,
 	chiranjeevi.rapolu@linux.intel.com,
@@ -74,10 +74,12 @@ Cc: linux-kernel@vger.kernel.org,
 	corbet@lwn.net,
 	linux-mediatek@lists.infradead.org,
 	Jinjian Song <jinjian.song@fibocom.com>
-Subject: [net-next v5 0/2] net: wwan: t7xx: Add t7xx debug port 
-Date: Thu, 11 Jul 2024 10:34:58 +0800
-Message-Id: <20240711023500.6972-1-jinjian.song@fibocom.com>
+Subject: [net-next v5 2/2] net: wwan: t7xx: Add debug port
+Date: Thu, 11 Jul 2024 10:35:00 +0800
+Message-Id: <20240711023500.6972-3-jinjian.song@fibocom.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240711023500.6972-1-jinjian.song@fibocom.com>
+References: <20240711023500.6972-1-jinjian.song@fibocom.com>
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-ClientProxiedBy: TYAPR01CA0175.jpnprd01.prod.outlook.com
@@ -85,81 +87,79 @@ X-ClientProxiedBy: TYAPR01CA0175.jpnprd01.prod.outlook.com
  (2603:1096:400:1b5::6)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: TY0PR02MB5766:EE_|TYZPR02MB5713:EE_
-X-MS-Office365-Filtering-Correlation-Id: f0ffc7d9-7c56-4d40-bd82-08dca1521929
+X-MS-TrafficTypeDiagnostic: TY0PR02MB5766:EE_|KL1PR02MB7168:EE_
+X-MS-Office365-Filtering-Correlation-Id: ac7a1673-8408-447c-61f7-08dca1521db3
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|376014|52116014|366016|7416014|38350700014|921020;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?IANn1ypzf6L8ddVNyJVou0Em+ReHSM3YcgqPDN49kFcSfKTVchSn0b8pvuCA?=
- =?us-ascii?Q?P07AbqJdGQ+DxOxS1MWwP0BVEv2JWlYgbFeYfs9s0XKSzESnbtmM2A0mWukO?=
- =?us-ascii?Q?NfxI+2xbYVZil88wTPCGBXRWYQivpKbcmr4D4AIB/fn7GdTLFiR6z5cLZ4kL?=
- =?us-ascii?Q?4MgM9gQM5yROmkXnQZ7erIJthHmp6XVdVCO4ttbeFkIDCtLH/rD29iIf7jb+?=
- =?us-ascii?Q?0M2qESc2B/Y30DdWqhX8YUMUvY1YL/lh65mTSq+/ofF5kJQSEErBuIY7+c2n?=
- =?us-ascii?Q?n/wRRD5P0qkBNEeHWZ0/j7zPNTo1VfBXNs8eNiIH/6o9SQFkgQYDsi+DsWaD?=
- =?us-ascii?Q?ViB566LYued2FaslEdiJzLWxrvknCE5wSviK9Hpms5eiC5Y6YGejAOu2yG4P?=
- =?us-ascii?Q?eHhB2lWC5wmizRYHtQWDHdu8gqti36gDI+3EvRQj7XgwP0n1Xt7erjBlcxZB?=
- =?us-ascii?Q?wgKiVi/WL6ayo31FxJI1frZBul0RWtFPzKa7Teq0Yup8VmHZVslj8qCdaxD2?=
- =?us-ascii?Q?E7DrDajDevgKl0CUsrvDh2G4Rwy1kOBdzMToLo8D2lnmewn2eo/3L2aLp53E?=
- =?us-ascii?Q?D1a1/Y6OVXhWy8PXCc21YEOLnuukRJCCY8ncOzUmwXdehhXZZgxK2XEJrGVH?=
- =?us-ascii?Q?9epxxNq3SCa3EJyHrXqMPxnd20kQmKiKvd1AKpTrGXDYO4j45rxx4ctF71U3?=
- =?us-ascii?Q?FH4D0RuEcQvxzjGvrAyfZPY6IXpRB7pQe/aUDFUGDpcfZMrBiTk8lcmLYsh9?=
- =?us-ascii?Q?uV4m0Ol39QqiqwTD/KalsdxeUKE1kuB5QGiIWP6LJqUj9mPe+fy4+dpHiyb9?=
- =?us-ascii?Q?JFWak9yUDJT5+rpgKpc4oF+6ltcF8uajQjGt0wanz50+jcieWYnZWsYCg1+Q?=
- =?us-ascii?Q?JqXv3uzircyDkiCLjZeOaK72OHtvxsQrvGCm9H968jLeHuNyKCmeAGyZEPQl?=
- =?us-ascii?Q?4/8OqPa/kXg2HFoxS4j8qk0Xi3TkC4l5ggG0Zt3VV9gfYfWkwZvQlnywpuSl?=
- =?us-ascii?Q?JqKf4LSjjjHtBJZcvqwLSjzsKOryYSIiHUO38khUsHMa7oU35cGhkCfFmo8B?=
- =?us-ascii?Q?c+l31uIYkWa88HAUODYnGSEjMgHDSiFdlTs/wMISuRbFbD3OoWXTiKLw5lel?=
- =?us-ascii?Q?r5Qbs1q/7OgVTpclsM416CBMfmGnaPSx5GEoHdJUifjgCzYTBmIE2/YdCadH?=
- =?us-ascii?Q?aNV5zb6A1uDgY/XY+5RzWHnf2Aub1ZF0hITCIwnenqDuekl6+kOWwv49yf5I?=
- =?us-ascii?Q?VBAEFhq0myXdoGvNkcs6m8VsGPYsEMOTnh4NH8hJ4xxNM64nxeDC0KQYbesy?=
- =?us-ascii?Q?z/TfiMPAz4pujsW9AwxiMMajXLHZAl1YuOpzIhXW4Hm7uqStKdRo/E3eLXMA?=
- =?us-ascii?Q?IkModnjgVGNKMy/5/Kgto9Iy91BXFOzQFYAzo7oR7nDk4G8fP95ylvZOnZNa?=
- =?us-ascii?Q?6xmtuzn0f7k=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TY0PR02MB5766.apcprd02.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(376014)(52116014)(366016)(7416014)(38350700014)(921020);DIR:OUT;SFP:1102;
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|7416014|376014|1800799024|52116014|38350700014|921020;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?dWGRDgYkhk67Bw3pjQKgMVxy660v/kHzRVWNRlnVExJLlZXYiQcq5APxX2hw?=
+ =?us-ascii?Q?p5R38KNEEZlKQDJZ+89xhEzwZFJWwDHgWZOFFuoJ0g4rAgTX6dzwdsUQlU6I?=
+ =?us-ascii?Q?aQPxNba1o5kG9C7pKPMyarOtQBw3ulPw5jfmO5+K2pq+92pXmYbM92XoNoMG?=
+ =?us-ascii?Q?qbHRcTvWDMPkqdvElGVdaeGoAIvrGHkVGX3WQXOXtTMBEREdtTRg5J0M/EBh?=
+ =?us-ascii?Q?8tcBjixLBSX2PGPZ2dLSiylQGAdP/YW7xr4RMf3/TCfkcLRsYjM0A8zvuKgE?=
+ =?us-ascii?Q?Yuai4woHN0r+hbSHYv4MSDnqtrYaIYlHz2a16lKPbLEBajg3Nu8ZRp7PULdE?=
+ =?us-ascii?Q?uOC8uHdXSfk9AxpPBGAxCPxDVROcVXbU7W3VESLzbN/htgY/9KMoih9gU3lD?=
+ =?us-ascii?Q?Hv0NZw8bqktiAnioHGrK95Db2Jt3wIorv4Xpy3HEN8DwJz9iGswa8jyaKhWM?=
+ =?us-ascii?Q?Pt4imL71f7y/sQPRFZ1fHe3yxyfte1bnnZh1WbFfShajtqBTZc5Olx/eo8qH?=
+ =?us-ascii?Q?2vGxRPOmX5rt9zu15BxPmghuFrLzkDy6bRW5WPv4gciZkBDTqaFuk583pq0a?=
+ =?us-ascii?Q?5I6UtWPETiIgJYtSnJ/ghp3yxGZOITy3JKdjtAZ8F6A9F703RAR1hCxdh3LT?=
+ =?us-ascii?Q?5saMuxRa9EIfV6xenEvXzTJMGODKdzNjXR8+zQA11NmWEF0rMvAWRs67CF0E?=
+ =?us-ascii?Q?WJZvyJ/nQxe8HzUTNotfYai5YTokIpQ11b/KwZYy+JN9TZqO3ajTQckT08rN?=
+ =?us-ascii?Q?Cz/pADwpEMZvthsKTswfqNEbBe+CvEflOhcm85R2umWtcWRh7yvz8770ox5o?=
+ =?us-ascii?Q?sNlToSe0rafqCfO0I203WqxsaNvxBqYgr01X9+MLra0Jl2vEaR8P/aewf6QQ?=
+ =?us-ascii?Q?UMWAfcYBkhFDv2Np3j7tswmSbfyYtyujtSJm49vfTY8cagxw5CtLy7Tsk0ja?=
+ =?us-ascii?Q?RhEoa5/UuOSu8hgfVYBT08CachFkEcTyw3S/GC1dlYgQ01ILObXg8y9Ux/4Q?=
+ =?us-ascii?Q?w2apSSHBKgabnxDN35XhH5lFOIbPBY9m5sE0rQkbQXSfa1zlRdGIl3i2dFk2?=
+ =?us-ascii?Q?YQxavQ1g15s0+6u5q83hElY7bagEqx9qzPDu7maziF2gaWKTCLrvbk5EOc0I?=
+ =?us-ascii?Q?k2OkWolPF+gw/STSQT1SzwXemQja3lXzh7UR5z+C2zRaQI/lTDzG+Wd7lnRZ?=
+ =?us-ascii?Q?6A27zMuSaXr0o3eWQ8vhho0XMNHd1wLCr2rY1fn8Hsr5VqRQwsOr9jPFXDSe?=
+ =?us-ascii?Q?ENc29vUVdsssk5LaQn737RoquYMfVOCRp71YQAsKfDKgCWsb3fxy96WoAmn+?=
+ =?us-ascii?Q?pEaT5zjqSB0qZHIQJNCWzco0H1lgkc+LXum3f/Rha0HMmPuQWHCKGvzWgZsL?=
+ =?us-ascii?Q?GVc2pJQ=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TY0PR02MB5766.apcprd02.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(7416014)(376014)(1800799024)(52116014)(38350700014)(921020);DIR:OUT;SFP:1102;
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?b4kDI+jEDTw/pBnhMTI/ZGWoYv/vbTaJ+WB/a+t0vvvD4bo5jbcYC7Pbc0Cy?=
- =?us-ascii?Q?W32xqNG4ehKhRaea7/UoJWieh+3hex1DaqYTMa+lY1jSIpFD0R+v9DSrOfIt?=
- =?us-ascii?Q?tKUKlUuPKfbuFZexye2vT5HcvKgppB7bH7wdV4j7OcJjhRcCCEWDN5g1Hhk7?=
- =?us-ascii?Q?uTjGujM1fhOGSD3c6GkWMJJQOV/YdBTAdOfaHC3Jj7ssmewqSvLYTO7iau57?=
- =?us-ascii?Q?WLGdd20mu+LnNbRpIQyYOIMY1hfMJUbq19GhFaPSS2xCQIyMh+DaIHol8Rxj?=
- =?us-ascii?Q?OpCLAsgxTgLgqAQknKqobF7klJdRzPmgT66Ly/bCdm+TUZ0131UtHN9bNVBA?=
- =?us-ascii?Q?dEuHtbRi6az68y+ALVuhhQmJNhcSSvR6RuEqFt5jw+gf4GsTZl8veqNWxRTs?=
- =?us-ascii?Q?xQ4hhqABiAHNir0Uy1/MRbi2SEPWxGLtkSbcwJ9mrj6BW9K4CODpMweKyG9i?=
- =?us-ascii?Q?BiJvaeGlArVZYo3ziHHBmiQgZIXHbFcWZ6JYM6tfl+uUuKhAC9M8bLjfAfz3?=
- =?us-ascii?Q?0Be+P4oxKzsOlnlb5ekAeHu38NWFbxZcKly6MxcbFflT4pT15jFsA/eRIqj1?=
- =?us-ascii?Q?ks7jrL9YoSRD2lwK8h3miUB6sjEszCGY+oATI6eEj/wQSQhfOgGikJWhtrgE?=
- =?us-ascii?Q?JhU1tFdC3cfvGL7vR4Ag/nlGP5uSrLRkGUkQkyEjoTMKmvP5TNBiC8qqm+Uo?=
- =?us-ascii?Q?PKzGFeiX7mEkHW6XCUUJLD+H27idWvHKybC8HDUf5nzNdhUvZxsN2FaJnbMr?=
- =?us-ascii?Q?Qf/7RekcyBA4OfvNQVsywkY4hDfya847hQFyb/GdoCKHIfPwVYdF7S/lBcyN?=
- =?us-ascii?Q?U1bnaUNr6XIABhr1ViheW6vMqXe8fliS2s/wfQ+HJ+xaEb4c7hzhcDwbC9OE?=
- =?us-ascii?Q?xgdeTmMQj8y5nGhEL2KIb8QRcL882prF+OkTE+jKa/zZKjWBpXUYigOj6Gsn?=
- =?us-ascii?Q?TKKpJH2DqcRpSQavmJ6cgYezooJO/WWml4bAVE6vA7Jxd5EwF5QlJAjhthlc?=
- =?us-ascii?Q?6XRAS+lphj4h2OQN0NLqTY8dT75tmnZnIQQWC/kOgpACW6jTwMR6Cf91sVRj?=
- =?us-ascii?Q?B0yTWTz0oOVUJSrytrUkgWYQAMxxwzjtN2BtOZSD0Uk5qRrrVVTQIonp8/kx?=
- =?us-ascii?Q?oVW6PtzV3S2Snq4TI+CufVzuSXz8XjJxDLBp5Z6KYzNWUt3727UL60+U0nHg?=
- =?us-ascii?Q?GqgLrToY9u50PAMq5DDDtJzxBxP7zRKQ6/76GjIuWQNt08XpLcxkI5KJgBna?=
- =?us-ascii?Q?BFx0SYLRpPqqODgMgqB8jgKRuwdbfWHaFQ1wjmf+LiGZ/Iin1grGP5wlBqGw?=
- =?us-ascii?Q?icMxzWRvPwlRVx3l8PsHlw5eOobxi3xvpmaTZlVGaZe8ldKqSBetxRI3Paph?=
- =?us-ascii?Q?1wsLQu23qZfzOs057wCdbNAAArpz3Gxny3/dfgOMYkteVmssgX7oRipuSCjP?=
- =?us-ascii?Q?JhkiKdeZzhPzkiD7rwJTTaAD4LJewOIPBy7oLrvtAZK8F6a1SknhijFxXQOj?=
- =?us-ascii?Q?vCr8KlTbyFkAsssJptqev9BD6J9HNlYEZx99wJbwdfGm0TrArhcaiEL0o/cY?=
- =?us-ascii?Q?2y2Zdqy4KQzXQVZcwZG5eNg5MP7hZx3aIDQrXiYvgsl4wReu8mdZ1ZmcMEL5?=
- =?us-ascii?Q?gQ=3D=3D?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?S12Iky+oOuXtP4mAhyNb+nyx2V+X+FvN8awQYihVG0ne5YoSumTX8Q9JOPne?=
+ =?us-ascii?Q?4ed9BQLDWbPX8WaFFRvwGcdIs9rLr4UVguJuGUXgzXD3usf30TwhE/nrBsKv?=
+ =?us-ascii?Q?WwMVoC27EDbkM4+94CtwrvdK/5CleTTG+wV22f57OgdE4h/UdGYBp0fqpXAT?=
+ =?us-ascii?Q?4O3MjiItTBElXlG0UFWzH14RrpjvoP9WpR/1TjJN6qz0AL63aGx3DV4X2/XH?=
+ =?us-ascii?Q?Ee+vBiKxjTJTZiUGEWGInzhGjsogKNWxJNISt0qqY2Q1q+k8lbU5J2P4u4FZ?=
+ =?us-ascii?Q?Am7mJDnQn5+DQmMHqsFodCP4kOFey6pOUZGYzJZ5nVCkgwlgKrkPdmYRzT1O?=
+ =?us-ascii?Q?V9LjBfBusOlOq1+u5BZ6XTlKS8yh+J6fYpaHhYls/Qhl0pQ/WpA5AZbyrFsT?=
+ =?us-ascii?Q?o0qOZw/knl6EyaNx2uX0/oyoILklg5Js/UFcUR2nh+DhMPcrB3VIBCkJifcY?=
+ =?us-ascii?Q?EexTVNt/GQTuNkTlYdNIceL7hn5WvXi1U+u0fWbHiZRHYbhp4HG/wiUUFMB6?=
+ =?us-ascii?Q?pv04QSiV1a27bO66DEZoA6z/A4Ruh/Y+RCOmWF0i/ioHZTcoE/FxXVONU/Ig?=
+ =?us-ascii?Q?IREnJAfPJ9uXGOP0mHH29+pHyoDpmPVZt202gUdmSGq6tk4T8DuvkvIh373I?=
+ =?us-ascii?Q?hjSx0HqChWe3PbxwVhX2auerzVhJcrfTgl29n0sFrCZVg0arx+t0RPyjcs/Q?=
+ =?us-ascii?Q?WeYNeShcTdUZ/O/Vya5T57/WlDgdIgzgacHBD8G1MsCD6ZiEyk3Ci0aHVYoN?=
+ =?us-ascii?Q?VZGpVXotH/Ks/LFNInLUDgzKHOsywN4avun2i1g8crVST+UjE8PkPpCLwesJ?=
+ =?us-ascii?Q?u/ZxzgnBbxn32x/EiXByfMizy0ZcCkSRLcMlO/VXujhBiYOo7gXYlfrjK0ek?=
+ =?us-ascii?Q?H8pYFxQhvscXY0/devQAzAZp+1dw+/XtDcRp0wbN1XfVUX0ob5HAgUXWB63H?=
+ =?us-ascii?Q?/R4ZGkJ4Mto8EaV+Qx+PEpc8ROmgL+lfOZeZrE9nwwrQVBduqxsuOFoNEI3X?=
+ =?us-ascii?Q?mkLlXVC9n3lo8GYpiWd8ydl3l89F5B8U6w1Uhvu0gs1TUElaLs2s97zovVB7?=
+ =?us-ascii?Q?FRCf3pG8MnHtrkz60TN0KKcdujDh8sjwP/JCsY/Ul9byvbFmW4GJ/lDj0UgK?=
+ =?us-ascii?Q?GBmhQmSKOuGhdDUEH2bJU2u8CJXGpL8IF5mCc480lFh8Z1TzQqkdmqPwnZkt?=
+ =?us-ascii?Q?r0icLgxXIyR6KshmK2BFSarrI/H7BItgVRVWmsIhq2wjilgGMEpx7IZA5suW?=
+ =?us-ascii?Q?ohTAX6CV0IOKON8qfk3VpkHZPvqZrRIiIGULAUUaKZA+f5Np6xSWrLtJp3UA?=
+ =?us-ascii?Q?CTBnf/h3CKfmqNvA1pJzsHfyMzEbM2KhSLtrwRuGhQURiXSQ+YTvnEFXGzy3?=
+ =?us-ascii?Q?NZh7Lr1dA2qkpdwic4xknwZgYvmwoQtRXWfnu/ndTBml4EVXJBkVZpvResuJ?=
+ =?us-ascii?Q?Y69tmbl2Gie91TBuq2+ZI8vYkL+tzfX+SFdkg6DLZZZtLDJIKpXmgdg4iUit?=
+ =?us-ascii?Q?6f7OhuLz2QrsfJ+huh9hCj2sQnzMDinPWD3Yojw8yPfVUs+qADIFZf4eFmgW?=
+ =?us-ascii?Q?lOTRGL5XYAaOX5Wwj1gRKv3UefIla9V007OV6tTUuDJL8zKXQwqjO93P29SE?=
+ =?us-ascii?Q?Xw=3D=3D?=
 X-OriginatorOrg: fibocom.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: f0ffc7d9-7c56-4d40-bd82-08dca1521929
+X-MS-Exchange-CrossTenant-Network-Message-Id: ac7a1673-8408-447c-61f7-08dca1521db3
 X-MS-Exchange-CrossTenant-AuthSource: TY0PR02MB5766.apcprd02.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 11 Jul 2024 02:35:16.4018
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 11 Jul 2024 02:35:23.8306
  (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 889bfe61-8c21-436b-bc07-3908050c8236
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: L/Qhg8wA6Q7/6RMfA4YiFKRZGi8MZb5cbHYzDiRkFrB5N8A9X6iqfWcKjpw3RiKazhjkugyFGz/iLT3z5cA+9W0O1hSeFjctm5q0ohNS7e8=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR02MB5713
+X-MS-Exchange-CrossTenant-UserPrincipalName: 3U0gLyvSAwSSXU7GpAcrh+jh3Y+4hrJVtT9fVTje6DLXPhrnt5EmdejiaA0PFtyCRtqBrCIppAxlFtg6bBzh123Z2Dt1OBhF8bShWPbZhTY=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: KL1PR02MB7168
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240710_193537_611601_7634C2E0 
-X-CRM114-Status: UNSURE (   6.94  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240710_193537_987644_803E12EE 
+X-CRM114-Status: GOOD (  18.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -174,20 +174,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for t7xx WWAN device to debug by ADB (Android Debug Bridge)
-port and MTK MIPCi (Modem Information Process Center) port.
+Add support for userspace to switch on the debug port(ADB,MIPC).
+ - ADB port: /dev/wwan0adb0
+ - MIPC port: /dev/wwan0mipc0
 
 Application can use ADB (Android Debg Bridge) port to implement
 functions (shell, pull, push ...) by ADB protocol commands.
+E.g., ADB commands:
+ - A_OPEN: OPEN(local-id, 0, "destination")
+ - A_WRTE: WRITE(local-id, remote-id, "data")
+ - A_OKEY: READY(local-id, remote-id, "")
+ - A_CLSE: CLOSE(local-id, remote-id, "")
+
+Link: https://android.googlesource.com/platform/packages/modules/adb/+/refs/heads/main/README.md
 
 Application can use MIPC (Modem Information Process Center) port
 to debug antenna tunner or noise profiling through this MTK modem
 diagnostic interface.
 
-Jinjian Song (2):
-  wwan: core: Add WWAN ADB and MIPC port type
-  net: wwan: t7xx: Add debug port
+By default, debug ports are not exposed, so using the command
+to enable or disable debug ports.
 
+Switch on debug port:
+ - debug: 'echo debug > /sys/bus/pci/devices/${bdf}/t7xx_port_mode
+
+Switch off debug port:
+ - normal: 'echo normal > /sys/bus/pci/devices/${bdf}/t7xx_port_mode
+
+Signed-off-by: Jinjian Song <jinjian.song@fibocom.com>
+---
+v5:
+ * modify line length warning in t7xx_proxy_port_debug() 
+v4:
+ * modify commit message t7xx_mode to t7xx_port_mode
+v3:
+ * add sysfs interface t7xx_port_mode
+ * delete spin_lock_init in t7xx_proxy_port_debug()
+ * modify document t7xx.rst
+v2:
+ * add WWAN ADB and MIPC port
+---
  .../networking/device_drivers/wwan/t7xx.rst   | 47 +++++++++++++
  drivers/net/wwan/t7xx/t7xx_pci.c              | 67 +++++++++++++++++--
  drivers/net/wwan/t7xx/t7xx_pci.h              |  7 ++
@@ -195,10 +221,355 @@ Jinjian Song (2):
  drivers/net/wwan/t7xx/t7xx_port_proxy.c       | 45 ++++++++++++-
  drivers/net/wwan/t7xx/t7xx_port_proxy.h       |  1 +
  drivers/net/wwan/t7xx/t7xx_port_wwan.c        |  8 ++-
- drivers/net/wwan/wwan_core.c                  |  8 +++
- include/linux/wwan.h                          |  4 ++
- 9 files changed, 180 insertions(+), 10 deletions(-)
+ 7 files changed, 168 insertions(+), 10 deletions(-)
 
+diff --git a/Documentation/networking/device_drivers/wwan/t7xx.rst b/Documentation/networking/device_drivers/wwan/t7xx.rst
+index f346f5f85f15..02c8a47c2328 100644
+--- a/Documentation/networking/device_drivers/wwan/t7xx.rst
++++ b/Documentation/networking/device_drivers/wwan/t7xx.rst
+@@ -67,6 +67,28 @@ Write from userspace to set the device mode.
+ ::
+   $ echo fastboot_switching > /sys/bus/pci/devices/${bdf}/t7xx_mode
+ 
++t7xx_port_mode
++--------------
++The sysfs interface provides userspace with access to the port mode, this interface
++supports read and write operations.
++
++Port mode:
++
++- ``normal`` represents switching off debug ports
++- ``debug`` represents switching on debug ports
++
++Currently supported debug ports (ADB/MIPC).
++
++Read from userspace to get the current port mode.
++
++::
++  $ cat /sys/bus/pci/devices/${bdf}/t7xx_port_mode
++
++Write from userspace to set the port mode.
++
++::
++  $ echo debug > /sys/bus/pci/devices/${bdf}/t7xx_port_mode
++
+ Management application development
+ ==================================
+ The driver and userspace interfaces are described below. The MBIM protocol is
+@@ -139,6 +161,25 @@ Please note that driver needs to be reloaded to export /dev/wwan0fastboot0
+ port, because device needs a cold reset after enter ``fastboot_switching``
+ mode.
+ 
++ADB port userspace ABI
++----------------------
++
++/dev/wwan0adb0 character device
++~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++The driver exposes a ADB protocol interface by implementing ADB WWAN Port.
++The userspace end of the ADB channel pipe is a /dev/wwan0adb0 character device.
++Application shall use this interface for ADB protocol communication.
++
++MIPC port userspace ABI
++-----------------------
++
++/dev/wwan0mipc0 character device
++~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++The driver exposes a diagnostic interface by implementing MIPC (Modem
++Information Process Center) WWAN Port. The userspace end of the MIPC channel
++pipe is a /dev/wwan0mipc0 character device.
++Application shall use this interface for MTK modem diagnostic communication.
++
+ The MediaTek's T700 modem supports the 3GPP TS 27.007 [4] specification.
+ 
+ References
+@@ -164,3 +205,9 @@ speak the Mobile Interface Broadband Model (MBIM) protocol"*
+ [5] *fastboot "a mechanism for communicating with bootloaders"*
+ 
+ - https://android.googlesource.com/platform/system/core/+/refs/heads/main/fastboot/README.md
++
++[6] *ADB (Android Debug Bridge) "a mechanism to keep track of Android devices and
++emulators instances connected to or running on a given host developer machine with
++ADB protocol"*
++
++- https://android.googlesource.com/platform/packages/modules/adb/+/refs/heads/main/README.md
+diff --git a/drivers/net/wwan/t7xx/t7xx_pci.c b/drivers/net/wwan/t7xx/t7xx_pci.c
+index e0b1e7a616ca..b15c470acd3c 100644
+--- a/drivers/net/wwan/t7xx/t7xx_pci.c
++++ b/drivers/net/wwan/t7xx/t7xx_pci.c
+@@ -41,6 +41,7 @@
+ #include "t7xx_pcie_mac.h"
+ #include "t7xx_reg.h"
+ #include "t7xx_state_monitor.h"
++#include "t7xx_port_proxy.h"
+ 
+ #define T7XX_PCI_IREG_BASE		0
+ #define T7XX_PCI_EREG_BASE		2
+@@ -61,7 +62,13 @@ static const char * const t7xx_mode_names[] = {
+ 	[T7XX_FASTBOOT_DUMP] = "fastboot_dump",
+ };
+ 
++static const char * const t7xx_port_mode_names[] = {
++	[T7XX_DEBUG] = "debug",
++	[T7XX_NORMAL] = "normal",
++};
++
+ static_assert(ARRAY_SIZE(t7xx_mode_names) == T7XX_MODE_LAST);
++static_assert(ARRAY_SIZE(t7xx_port_mode_names) == T7XX_PORT_MODE_LAST);
+ 
+ static ssize_t t7xx_mode_store(struct device *dev,
+ 			       struct device_attribute *attr,
+@@ -109,13 +116,61 @@ static ssize_t t7xx_mode_show(struct device *dev,
+ 
+ static DEVICE_ATTR_RW(t7xx_mode);
+ 
+-static struct attribute *t7xx_mode_attr[] = {
++static ssize_t t7xx_port_mode_store(struct device *dev,
++				    struct device_attribute *attr,
++				    const char *buf, size_t count)
++{
++	struct t7xx_pci_dev *t7xx_dev;
++	struct pci_dev *pdev;
++	int index = 0;
++
++	pdev = to_pci_dev(dev);
++	t7xx_dev = pci_get_drvdata(pdev);
++	if (!t7xx_dev)
++		return -ENODEV;
++
++	index = sysfs_match_string(t7xx_port_mode_names, buf);
++	if (index == T7XX_DEBUG) {
++		t7xx_proxy_port_debug(t7xx_dev, true);
++		WRITE_ONCE(t7xx_dev->port_mode, T7XX_DEBUG);
++	} else if (index == T7XX_NORMAL) {
++		t7xx_proxy_port_debug(t7xx_dev, false);
++		WRITE_ONCE(t7xx_dev->port_mode, T7XX_NORMAL);
++	}
++
++	return count;
++};
++
++static ssize_t t7xx_port_mode_show(struct device *dev,
++				   struct device_attribute *attr,
++				   char *buf)
++{
++	enum t7xx_port_mode port_mode = T7XX_NORMAL;
++	struct t7xx_pci_dev *t7xx_dev;
++	struct pci_dev *pdev;
++
++	pdev = to_pci_dev(dev);
++	t7xx_dev = pci_get_drvdata(pdev);
++	if (!t7xx_dev)
++		return -ENODEV;
++
++	port_mode = READ_ONCE(t7xx_dev->port_mode);
++	if (port_mode < T7XX_PORT_MODE_LAST)
++		return sysfs_emit(buf, "%s\n", t7xx_port_mode_names[port_mode]);
++
++	return sysfs_emit(buf, "%s\n", t7xx_port_mode_names[T7XX_NORMAL]);
++}
++
++static DEVICE_ATTR_RW(t7xx_port_mode);
++
++static struct attribute *t7xx_attr[] = {
+ 	&dev_attr_t7xx_mode.attr,
++	&dev_attr_t7xx_port_mode.attr,
+ 	NULL
+ };
+ 
+-static const struct attribute_group t7xx_mode_attribute_group = {
+-	.attrs = t7xx_mode_attr,
++static const struct attribute_group t7xx_attribute_group = {
++	.attrs = t7xx_attr,
+ };
+ 
+ void t7xx_mode_update(struct t7xx_pci_dev *t7xx_dev, enum t7xx_mode mode)
+@@ -806,7 +861,7 @@ static int t7xx_pci_probe(struct pci_dev *pdev, const struct pci_device_id *id)
+ 	t7xx_pcie_mac_interrupts_dis(t7xx_dev);
+ 
+ 	ret = sysfs_create_group(&t7xx_dev->pdev->dev.kobj,
+-				 &t7xx_mode_attribute_group);
++				 &t7xx_attribute_group);
+ 	if (ret)
+ 		goto err_md_exit;
+ 
+@@ -822,7 +877,7 @@ static int t7xx_pci_probe(struct pci_dev *pdev, const struct pci_device_id *id)
+ 
+ err_remove_group:
+ 	sysfs_remove_group(&t7xx_dev->pdev->dev.kobj,
+-			   &t7xx_mode_attribute_group);
++			   &t7xx_attribute_group);
+ 
+ err_md_exit:
+ 	t7xx_md_exit(t7xx_dev);
+@@ -837,7 +892,7 @@ static void t7xx_pci_remove(struct pci_dev *pdev)
+ 	t7xx_dev = pci_get_drvdata(pdev);
+ 
+ 	sysfs_remove_group(&t7xx_dev->pdev->dev.kobj,
+-			   &t7xx_mode_attribute_group);
++			   &t7xx_attribute_group);
+ 	t7xx_md_exit(t7xx_dev);
+ 
+ 	for (i = 0; i < EXT_INT_NUM; i++) {
+diff --git a/drivers/net/wwan/t7xx/t7xx_pci.h b/drivers/net/wwan/t7xx/t7xx_pci.h
+index 49a11586d8d8..973d0f1f8f9a 100644
+--- a/drivers/net/wwan/t7xx/t7xx_pci.h
++++ b/drivers/net/wwan/t7xx/t7xx_pci.h
+@@ -53,6 +53,12 @@ enum t7xx_mode {
+ 	T7XX_MODE_LAST, /* must always be last */
+ };
+ 
++enum t7xx_port_mode {
++	T7XX_NORMAL,
++	T7XX_DEBUG,
++	T7XX_PORT_MODE_LAST, /* must always be last */
++};
++
+ /* struct t7xx_pci_dev - MTK device context structure
+  * @intr_handler: array of handler function for request_threaded_irq
+  * @intr_thread: array of thread_fn for request_threaded_irq
+@@ -94,6 +100,7 @@ struct t7xx_pci_dev {
+ 	struct dentry		*debugfs_dir;
+ #endif
+ 	u32			mode;
++	u32			port_mode;
+ };
+ 
+ enum t7xx_pm_id {
+diff --git a/drivers/net/wwan/t7xx/t7xx_port.h b/drivers/net/wwan/t7xx/t7xx_port.h
+index f74d3bab810d..9f5d6d288c97 100644
+--- a/drivers/net/wwan/t7xx/t7xx_port.h
++++ b/drivers/net/wwan/t7xx/t7xx_port.h
+@@ -42,6 +42,8 @@ enum port_ch {
+ 	/* to AP */
+ 	PORT_CH_AP_CONTROL_RX = 0x1000,
+ 	PORT_CH_AP_CONTROL_TX = 0x1001,
++	PORT_CH_AP_ADB_RX = 0x100a,
++	PORT_CH_AP_ADB_TX = 0x100b,
+ 
+ 	/* to MD */
+ 	PORT_CH_CONTROL_RX = 0x2000,
+@@ -100,6 +102,7 @@ struct t7xx_port_conf {
+ 	struct port_ops		*ops;
+ 	char			*name;
+ 	enum wwan_port_type	port_type;
++	bool			debug;
+ };
+ 
+ struct t7xx_port {
+diff --git a/drivers/net/wwan/t7xx/t7xx_port_proxy.c b/drivers/net/wwan/t7xx/t7xx_port_proxy.c
+index 7d6388bf1d7c..0b1640ceff71 100644
+--- a/drivers/net/wwan/t7xx/t7xx_port_proxy.c
++++ b/drivers/net/wwan/t7xx/t7xx_port_proxy.c
+@@ -39,6 +39,8 @@
+ 
+ #define Q_IDX_CTRL			0
+ #define Q_IDX_MBIM			2
++#define Q_IDX_MIPC			2
++#define Q_IDX_ADB			3
+ #define Q_IDX_AT_CMD			5
+ 
+ #define INVALID_SEQ_NUM			GENMASK(15, 0)
+@@ -100,7 +102,27 @@ static const struct t7xx_port_conf t7xx_port_conf[] = {
+ 		.path_id = CLDMA_ID_AP,
+ 		.ops = &ctl_port_ops,
+ 		.name = "t7xx_ap_ctrl",
+-	},
++	}, {
++		.tx_ch = PORT_CH_AP_ADB_TX,
++		.rx_ch = PORT_CH_AP_ADB_RX,
++		.txq_index = Q_IDX_ADB,
++		.rxq_index = Q_IDX_ADB,
++		.path_id = CLDMA_ID_AP,
++		.ops = &wwan_sub_port_ops,
++		.name = "adb",
++		.port_type = WWAN_PORT_ADB,
++		.debug = true,
++	}, {
++		.tx_ch = PORT_CH_MIPC_TX,
++		.rx_ch = PORT_CH_MIPC_RX,
++		.txq_index = Q_IDX_MIPC,
++		.rxq_index = Q_IDX_MIPC,
++		.path_id = CLDMA_ID_MD,
++		.ops = &wwan_sub_port_ops,
++		.name = "mipc",
++		.port_type = WWAN_PORT_MIPC,
++		.debug = true,
++	}
+ };
+ 
+ static const struct t7xx_port_conf t7xx_early_port_conf[] = {
+@@ -505,13 +527,32 @@ static void t7xx_proxy_init_all_ports(struct t7xx_modem *md)
+ 		spin_lock_init(&port->port_update_lock);
+ 		port->chan_enable = false;
+ 
+-		if (port_conf->ops && port_conf->ops->init)
++		if (!port_conf->debug && port_conf->ops && port_conf->ops->init)
+ 			port_conf->ops->init(port);
+ 	}
+ 
+ 	t7xx_proxy_setup_ch_mapping(port_prox);
+ }
+ 
++void t7xx_proxy_port_debug(struct t7xx_pci_dev *t7xx_dev, bool show)
++{
++	struct port_proxy *port_prox = t7xx_dev->md->port_prox;
++	struct t7xx_port *port;
++	int i;
++
++	for_each_proxy_port(i, port, port_prox) {
++		const struct t7xx_port_conf *port_conf = port->port_conf;
++
++		if (port_conf->debug &&
++		    port_conf->ops && port_conf->ops->init) {
++			if (show)
++				port_conf->ops->init(port);
++			else
++				port_conf->ops->uninit(port);
++		}
++	}
++}
++
+ void t7xx_port_proxy_set_cfg(struct t7xx_modem *md, enum port_cfg_id cfg_id)
+ {
+ 	struct port_proxy *port_prox = md->port_prox;
+diff --git a/drivers/net/wwan/t7xx/t7xx_port_proxy.h b/drivers/net/wwan/t7xx/t7xx_port_proxy.h
+index 7f5706811445..a9c19c1253e6 100644
+--- a/drivers/net/wwan/t7xx/t7xx_port_proxy.h
++++ b/drivers/net/wwan/t7xx/t7xx_port_proxy.h
+@@ -98,6 +98,7 @@ extern struct port_ops ctl_port_ops;
+ extern struct port_ops t7xx_trace_port_ops;
+ #endif
+ 
++void t7xx_proxy_port_debug(struct t7xx_pci_dev *t7xx_dev, bool show);
+ void t7xx_port_proxy_reset(struct port_proxy *port_prox);
+ void t7xx_port_proxy_uninit(struct port_proxy *port_prox);
+ int t7xx_port_proxy_init(struct t7xx_modem *md);
+diff --git a/drivers/net/wwan/t7xx/t7xx_port_wwan.c b/drivers/net/wwan/t7xx/t7xx_port_wwan.c
+index 4b23ba693f3f..7fc569565ff9 100644
+--- a/drivers/net/wwan/t7xx/t7xx_port_wwan.c
++++ b/drivers/net/wwan/t7xx/t7xx_port_wwan.c
+@@ -169,7 +169,9 @@ static int t7xx_port_wwan_init(struct t7xx_port *port)
+ {
+ 	const struct t7xx_port_conf *port_conf = port->port_conf;
+ 
+-	if (port_conf->port_type == WWAN_PORT_FASTBOOT)
++	if (port_conf->port_type == WWAN_PORT_FASTBOOT ||
++	    port_conf->port_type == WWAN_PORT_ADB ||
++	    port_conf->port_type == WWAN_PORT_MIPC)
+ 		t7xx_port_wwan_create(port);
+ 
+ 	port->rx_length_th = RX_QUEUE_MAXLEN;
+@@ -224,7 +226,9 @@ static void t7xx_port_wwan_md_state_notify(struct t7xx_port *port, unsigned int
+ {
+ 	const struct t7xx_port_conf *port_conf = port->port_conf;
+ 
+-	if (port_conf->port_type == WWAN_PORT_FASTBOOT)
++	if (port_conf->port_type == WWAN_PORT_FASTBOOT ||
++	    port_conf->port_type == WWAN_PORT_ADB ||
++	    port_conf->port_type == WWAN_PORT_MIPC)
+ 		return;
+ 
+ 	if (state != MD_STATE_READY)
 -- 
 2.34.1
 
