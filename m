@@ -4,164 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDEDBC3DA41
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jul 2024 02:36:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EA3CC3DA41
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jul 2024 03:47:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=duN7N9TURc9wnKlLcQJnw5LloNUvtgiA3EKnROioOoY=; b=AUHokzyKxQRu7/DeAWJW7EknF2
-	jdR22E0F3DqnyAmq/yJhwJ4xskVTwi+j1ZcTIKvT+5f+v1lrUdnOW5dmQQE3Z+mXfViabfxlX+Mpw
-	iq5Le6EpGCIaRBrcLedrYhF1T4v+FFvHvsawHLR54lyjwp1T2skldjfUOpxNoIihGpSGdsKCYuwV4
-	KZkJpzICTHyOSBnP3ebNexVtyTUbixGR2NMBq5W/Afudy0+mmip7N08BCntQY5A/jJxLm2jyFhxYy
-	saw30A+vgqyNshwMzjdB7eQ/9uWQEAdR7iurK/wEVwIt7joFRBPcV4Umi06s8Ps+KVspVSM2/j4w8
-	2ZHSr6Eg==;
+	bh=SpOmGWaPs+ZJZCC0I9Q/piIlH+/AVFYjnCcsvYrQiVE=; b=dUPN++GhtcW2EfAJmpgW2BsWgk
+	91N022lTmYL8O0E6YGWuIwEof3D5SDl9RQQC3Vp/WEKEm7ez7FJ/5psbv9VVfLuEiOKBeRT4EJJxx
+	Ov/k3imHGORFuVgbI+HHtSMfaGqJJE/ZBBI+dLK/64tE7OY+e3FTLRB0pl/I7qV+tbU6L7n9+QEYy
+	nX6ewqfr4Z7CUgNFzbReebURO7MLf0WSO9QC71wkydwyA9qr+4TW0dP/V2vqXfCQozvMN7xnulpTq
+	4XGiSN0ffwUNVbNhesCU8DccZzI2W2h9o8qy66ODz3Ko08FXg+YcLu9dpffqKmn5n0yNSQvzZ1oBx
+	O/Tfv66Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRjfY-0000000CS88-2mzB;
-	Thu, 11 Jul 2024 02:36:28 +0000
-Received: from mail-tyzapc01on20701.outbound.protection.outlook.com ([2a01:111:f403:2011::701] helo=APC01-TYZ-obe.outbound.protection.outlook.com)
+	id 1sRkmZ-0000000CbN8-3bNG;
+	Thu, 11 Jul 2024 03:47:47 +0000
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRjel-0000000CRmQ-0vXW;
-	Thu, 11 Jul 2024 02:35:41 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=JG8NT/m1VwWuRrn51nkNtIyCfpOaD6ApxRxMkYQ5T5KNF4BVP7ethK/+es/avLWyx2CavLlMiQBZ7mHGosqZaTTXqIKQHjgBuqGi+Pyh7SiO0W0DLiTiodxzQ1ziolHh15ezgGKVkvxnNfKkmDXl0Dcu810RBNkaoS+PkM9nrpakm+sc4CTkss1FP/gLr/N+6DkAc9jdHPr88Cf49AC1uUvAjZQxeYoUuQPKiLdrrk8HTyCw7RM/4lt7cZ0LUmUVj4E9IIf4zI1G4CQRfMosBJpRlcPweuZDjt108VPlh3tPFOktljNyqHmTIpaqvZGOod+JACJETewWfc67F60/Ew==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=duN7N9TURc9wnKlLcQJnw5LloNUvtgiA3EKnROioOoY=;
- b=OCxtlg45k0iPYZ/91Nxor8tKFfVYgJvobxyvPdgZKEQg6IoospXVpY4i46qlIHSerJm/cO2iOlWJdBQSRSLF59IVVijDxgn2UQweO1rt082vjXUYjExj7Bk+sF8Hfg4trT1C6P8zI/KkuyMm+kGellR/MvqJrlIHw+oUJBsxW64UU0+O3M/hio0R0eNj2Px0NO5Q45YAH9Jm0J10viPaHOxjPxPV4ucGVzy0oVSCluuANcJ05ExmLm3EhPzwqIPpS+s+jEtzP+UTdSDdfITDLelU8TfNYKVaiYP6xdniZmPp/0+Wqwst5POwJZV8sJKsrawhjNf7OQ9mCCfwlXBKWQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=fibocom.com; dmarc=pass action=none header.from=fibocom.com;
- dkim=pass header.d=fibocom.com; arc=none
+	id 1sRkmX-0000000CbMN-0GC0;
+	Thu, 11 Jul 2024 03:47:46 +0000
+Received: by mail-ej1-x62a.google.com with SMTP id a640c23a62f3a-a77e6dd7f72so46502366b.3;
+        Wed, 10 Jul 2024 20:47:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=fibocomcorp.onmicrosoft.com; s=selector1-fibocomcorp-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=duN7N9TURc9wnKlLcQJnw5LloNUvtgiA3EKnROioOoY=;
- b=Qt11Nua2/f9XTaZROnHG+FKxHukIavYPax8mOTKS6xGE/9uMK7c/UZLewxH6D6Yc0p3JEBy/tP6pIK3qiZ2See1zvVHhQOJtoVRY9PlaO9O+0Zu3/W5eZEEcrwEIcN9HOuYGuCHWAdClFKnkGa0FCrkRxPZZDi8eiYhnZF5fgQ0=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=fibocom.com;
-Received: from TY0PR02MB5766.apcprd02.prod.outlook.com (2603:1096:400:1b5::6)
- by TYZPR02MB5713.apcprd02.prod.outlook.com (2603:1096:400:1c2::7) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7741.35; Thu, 11 Jul
- 2024 02:35:20 +0000
-Received: from TY0PR02MB5766.apcprd02.prod.outlook.com
- ([fe80::f53d:47b:3b04:9a8b]) by TY0PR02MB5766.apcprd02.prod.outlook.com
- ([fe80::f53d:47b:3b04:9a8b%7]) with mapi id 15.20.7741.033; Thu, 11 Jul 2024
- 02:35:20 +0000
-From: Jinjian Song <jinjian.song@fibocom.com>
-To: chandrashekar.devegowda@intel.com,
-	chiranjeevi.rapolu@linux.intel.com,
-	haijun.liu@mediatek.com,
-	m.chetan.kumar@linux.intel.com,
-	ricardo.martinez@linux.intel.com,
-	loic.poulain@linaro.org,
-	ryazanov.s.a@gmail.com,
-	johannes@sipsolutions.net,
-	davem@davemloft.net,
-	edumazet@google.com,
-	kuba@kernel.org,
-	pabeni@redhat.com
-Cc: linux-kernel@vger.kernel.org,
-	netdev@vger.kernel.org,
-	linux-doc@vger.kernel.org,
-	angelogioacchino.delregno@collabora.com,
-	linux-arm-kernel@lists.infradead.org,
-	matthias.bgg@gmail.com,
-	corbet@lwn.net,
-	linux-mediatek@lists.infradead.org,
-	Jinjian Song <jinjian.song@fibocom.com>
-Subject: [net-next v5 1/2] wwan: core: Add WWAN ADB and MIPC port type
-Date: Thu, 11 Jul 2024 10:34:59 +0800
-Message-Id: <20240711023500.6972-2-jinjian.song@fibocom.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240711023500.6972-1-jinjian.song@fibocom.com>
-References: <20240711023500.6972-1-jinjian.song@fibocom.com>
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: TYAPR01CA0175.jpnprd01.prod.outlook.com
- (2603:1096:404:ba::19) To TY0PR02MB5766.apcprd02.prod.outlook.com
- (2603:1096:400:1b5::6)
+        d=gmail.com; s=20230601; t=1720669663; x=1721274463; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=SpOmGWaPs+ZJZCC0I9Q/piIlH+/AVFYjnCcsvYrQiVE=;
+        b=FcG6Ul4QgF+ncU1IdnfwM6WnByz5IS/E2IUYo44i32zJejE9jkHpWoX/Dwo4PSC3RF
+         1QiHQB1lIcmk4G8E3U7mFdwdkhFGlz06CmtBIMBsBdDQw92GCDZF2a0KMw0MN//4sHHr
+         A+YrQS4nCjauQlsbvsqCswsu7x7TJwGRjvtV6DgjCjtvDu84OQ395ce+quaFllwEuDiK
+         Icq9Afyf2j2zPHOqW3Xz2G97SZLY1DUlmqXcPOw3tS6Q62JKnNOK6geYHI7bcaAckXcD
+         Qp8vhZ1EjsS0uyDsuR2cxlOR1VECQ7UxeMe387Lv3Uu3OdyeqWdesTvFpnswA5CrXLLJ
+         o2DQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1720669663; x=1721274463;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=SpOmGWaPs+ZJZCC0I9Q/piIlH+/AVFYjnCcsvYrQiVE=;
+        b=jW/VXzaimqNbZ/f+8KeeKU1Tl2ohWqw+548QPSccb4k2yZ74ouFUBIsOsEbYygOiRD
+         h81AXqics2N+gVmz762bClf0x/zsPw8Z1a1uzFNV+QocGi8fQeU4FcrlYgtpnjmEZAZ9
+         7n2S7PpdUsxttfk/sbYMr72/9UCgBARVD2/aghwxQH1Bf4hjc1XCd8+nB/Z7hV0T/RqT
+         ibrPIzPRalJvYARboRhDTodPTxEOQh85y4IzVAwTfqxyFP9d0zeiIeZh4k4vUyOoLh7V
+         9tKuGrG6brMTl+RZJ2mnOp51rAuULvlKqhZz7Da39KVj13XXr8Ul6GDBetJi+NyGJIWG
+         y3dg==
+X-Forwarded-Encrypted: i=1; AJvYcCXK8jcPkt6zRcVNcJ6fV9iHtNAYt4uFWPeruzg3BqIudlceoOSZtMtomXrQ6op+RrylqSUkSyDfbzsuBCOGIQ7klHBdukIrHRQKix/6p6C0B0T1Zn5JWzimB5FbUAcJ2nbVx73/84ida5JP/v8xnJpT9K96uuXhsp4=
+X-Gm-Message-State: AOJu0YzdREYCxZZy91FRRNWkpv9sHQ028MV+3Sznic79B3iXGQdRlBYj
+	uwX6KRl42iuM+D/uh5PdrMDt5BSPchWlODtGMJsNzGH1m0KU4buPPsF19CLO+e7yWMZyhoa7e7+
+	njqB0IUQk7klC9kX71YkoyBj2s/4=
+X-Google-Smtp-Source: AGHT+IF5f5jDWbiu4aJ26+hkrJW6To96uJgmyGIL+WmqbDVbCZWbe++pKvx5M9RDu3QukliDRRQlxs3XRKIjVfg5Kn0=
+X-Received: by 2002:a17:906:a399:b0:a6f:b5cc:9190 with SMTP id
+ a640c23a62f3a-a780b6b18d7mr416400566b.28.1720669662677; Wed, 10 Jul 2024
+ 20:47:42 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: TY0PR02MB5766:EE_|TYZPR02MB5713:EE_
-X-MS-Office365-Filtering-Correlation-Id: e46f98dd-39b5-4c2c-9cce-08dca1521b48
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|376014|52116014|366016|7416014|38350700014|921020;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?uBspYi6uWrFVVWCQ5y/3RG1FqFgO6+OgthiQG2wWbe3tTKeO+nkbXa6gGVBV?=
- =?us-ascii?Q?FogMkJiITucwiacQqGct5ic4mYlUinZJxaODJo9jT/mEY6amBHzkA+fiShIB?=
- =?us-ascii?Q?DTS6ksc8C+7nHeW9W4F1oC7PnuQj8BAA4FjGSWsVLYQ70ZsmrXw0KKbgzfzu?=
- =?us-ascii?Q?mPVjmIslh7GFbChoIHkN6ITF7R1A7dr5FVkKxKiXjMZv7NkCGQ1phqkj3FXL?=
- =?us-ascii?Q?GY58jPQIRASV9VP6mGxz0DfqYXdDHXErfFRQcOlvtLCyVKEE7rmU6UTzOiQf?=
- =?us-ascii?Q?kEIuTXG69ZCTvwnA7C/+c7KhkAdG/5Um5sb1jQj8+nQbuQKPe2FiTjAy4Hsu?=
- =?us-ascii?Q?dkQXfdf/U0Uv5SkjDFo4vwQIPhHMfdzajiNFt3VbW/8G4HzGYy7N/g8L1P3I?=
- =?us-ascii?Q?uOLuVYE0kQRJT9sZy2LVTcqZVb3CBVbKikS9w6tOncokZTqzA0NVRfYHvnTW?=
- =?us-ascii?Q?H2S4kOz3iTitVegzfbq813T6nHTiSk0SZmsnM2fRIamkPD6QT0j5722N72ZU?=
- =?us-ascii?Q?daflvtA6JY9g0zbG2DWBjRpuF8uXX93DyxtRtRVRSpkOsdrUu35uoZwtk5Ja?=
- =?us-ascii?Q?rphqEoInX/7mb/PyeEHIhMNlgh6b1Li9dC8077rjZOZhniLN04OHWviRlTGU?=
- =?us-ascii?Q?n/VBNCX+2qIgv5VlMMu93zAeKh5nRpU2FhC2/3Fs+dHoZxGPQj+T/VdAdJHK?=
- =?us-ascii?Q?A2NNYy2/4uIazQmiNpLyQUC/pYHxQH1acMiMhUypLEQI6Pi5WX3S4AcHYYBZ?=
- =?us-ascii?Q?R+R+pMSXNKKj5WKYG5CMR0MrG+56Xn64kKnK2GMUhmvpc7LAhZsJdeqPWMSm?=
- =?us-ascii?Q?yAzF+oc/zAQXOOT/yfvEOZDh+ZJTDOz2YUvi3Yl4afYBIJxJNEM2Cxytdj6+?=
- =?us-ascii?Q?MR5JyCkA+OJHILxh7lgxFr80KeNk4mQ3BIGIBw2QiTQOSm40Qup8XVkKeEg+?=
- =?us-ascii?Q?micN7TcSSidiUn6t5zcl1sp7/MH2+2el48ttN33QE/eKe87wF9HLqkvWrkH+?=
- =?us-ascii?Q?A4dapIzwJFv+ybXQ5DodLSJlog7a1cjFQpCB5t4bRCLqjSjmPAOXI8KvWpKG?=
- =?us-ascii?Q?H7BTjJQbba77AmThFEBvi5ZHsbm49gsO9Y++u4N2mazdhPqYZZTmitSChAX4?=
- =?us-ascii?Q?XA2/lA3MJByWXE8FXLfD2l0oSvmtm+s4ewN2w9JZvWZPKAHPksJrFteTy2rr?=
- =?us-ascii?Q?WZqYA9u4/pN2VnLi5M7MaY3Kg0W5XRi11U/WmsMnf5R7BAtDm3eUzZi4366B?=
- =?us-ascii?Q?jsZAtxyOVbE5APy89mtEKdVb9aXwOgjPW8DnCswJ3djTHmAVmCqs++yd3kXC?=
- =?us-ascii?Q?tG8oZplsaWTA7UHZJGALyh242oyZ8mlwMr3J7MFy/aBXGi2bBOk0TIPXqnVG?=
- =?us-ascii?Q?JzcWbj6Yq7brvk8FIKH8BEnhXosaYrXeyQpNUaiKNFGh/QVH2ZaUUp6jiH3k?=
- =?us-ascii?Q?u4JN4b4iOq8=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TY0PR02MB5766.apcprd02.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(376014)(52116014)(366016)(7416014)(38350700014)(921020);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?I0S9Y0RiCeFLFbiFZCoIrWpuOVVxGmavmoVsNTnviY20bAVeMVWztDSX4QD1?=
- =?us-ascii?Q?s5nr2ohtXx520GQ2UIEyWi89eqD9jaS35wsu4T1hjTed1WwOrBLejGHgkYhl?=
- =?us-ascii?Q?ewY4kGI+yo21fN97VFhxvLj7kYUkvpzqieDmMJHx7NisWGamrjqb1yDQZsTO?=
- =?us-ascii?Q?QbeJCq3lL+YGjJ4HfEiBzve/ArN6/mnhOBA6jGIdbQrptoedTHO3NaJVldaO?=
- =?us-ascii?Q?ej9U55gj3+wB+C3ugg93IZ2vy/UCycoEnzyP0QTaTgTWDCLAiShIBwGYzOMM?=
- =?us-ascii?Q?0WifyvrnRPRNnAlaHjNliOONeZMAtegxMVhIZAthtap65ejCwiP981AFjDIt?=
- =?us-ascii?Q?OfBJn9hbrjvqozFXwGo7/lzuhZSehhJqT40I7Enovx3VyQCZGBQ1gAlo2B24?=
- =?us-ascii?Q?P/AL9YK7ej7FNgF6j8FZfUjcTdHMg6g9dRskb/sn0pDSgiJGDd4Q4vGynq9Z?=
- =?us-ascii?Q?VuA2ya78/ITVWwlJqEdCQTroFL+ZOrrWI9xy5EhHmAblHO/I7TceIS/n/Mm0?=
- =?us-ascii?Q?Gw01B+n3ajkjCu8E26UFYtDWewJy1CBBM8/Eqm9JL0WNX70GFpJO0yc7RIsS?=
- =?us-ascii?Q?ZUj3gM2DtvOVUD/zt/vDKfNc4pfuZRF2h6IVD0W9hbYxrWBkeNW5RawiPPA2?=
- =?us-ascii?Q?Ke2Qmt8g/CYGNfgT7q9l1OWTwHM0cKrM3IBzdmMPagscLv9FTZ0yHRGpeWSK?=
- =?us-ascii?Q?hVWROYeWOFS9V+rf1BGZYGe1ACZvX/rShe+XHHDyjWvzSiFj0rRr4OO9OL4R?=
- =?us-ascii?Q?jqywBbYK6siv4m9R/gRz1ABRQl47ObVHuaoHRYMbBEiCrUWHXS8NWGKuN2Ta?=
- =?us-ascii?Q?LJSmb0YIsUQQttBCJugoZ/lPeE49ibxr01ixHkXHRnGb8v9RC20TdtFFCVq8?=
- =?us-ascii?Q?VoPTYGJ/dKigNR61V2WvIjzSk2oiKwaG1z5JF/pBEyUAtkjVBMDDQXkxiRMv?=
- =?us-ascii?Q?hWRvMpn3rbs4jzYiSk1Vr8js11fExOnpXgLlv1q/ZjbriPIOGsY2JPqL7Mev?=
- =?us-ascii?Q?cTtH+3WlrPqVE75vG3IJ+9gKHlJJWfvHO+iMkRzlvJ7RaYBDFb7By422pF1C?=
- =?us-ascii?Q?Xct8WnL82GohxGKkBZlO5jMXbS9DkA3LENapWGtIDgqzOQDGW54Be31jp6zT?=
- =?us-ascii?Q?ITTT74Vp1x7w437Fx9Cal+EdeyGPa56MSliYuEhxEZumfqcyCu3MNuFR+T/o?=
- =?us-ascii?Q?pERxwvQasY7naAROYwZzDVQTO8E6PaHT2aHEyGL+HjG3MRQXdXeB5WbkKbRZ?=
- =?us-ascii?Q?0x1Mhw8dyaQ4IFqrGTIQCdsUeOBIc3MW4ih0c5xYJo8p85dqLLWQp2gj9LPs?=
- =?us-ascii?Q?LYVInqNJb9N/DcyComBIY6EIaTRUVXW1gFsZQ5z1aW3eChkI+iRnxMydq01r?=
- =?us-ascii?Q?jhC3Io96my6FAR+B00ebKbG071/UZYw+3sl7Q8qVAlu6rb4BmsXDrX8wDU/r?=
- =?us-ascii?Q?wLv2K8MxjipN9fQJntkCX9Wz4nrRoxiSRDA37qrpkb++qpjI+bPwP+aygr2k?=
- =?us-ascii?Q?o7dn6k7pc3sVDPJYBdS2BMQ/1hI14mG3DdT9XmdfX9QcLHolMgII47nH/nZf?=
- =?us-ascii?Q?JHDJn8uwODRVADpuLIAil/TMz+xuI5aAaFmbLmmuiOjkWr5FtkT3dqEJyTTY?=
- =?us-ascii?Q?qA=3D=3D?=
-X-OriginatorOrg: fibocom.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e46f98dd-39b5-4c2c-9cce-08dca1521b48
-X-MS-Exchange-CrossTenant-AuthSource: TY0PR02MB5766.apcprd02.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 11 Jul 2024 02:35:19.9249
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 889bfe61-8c21-436b-bc07-3908050c8236
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: oIwJnHREVZKxdK0co6+z18VJKoNp0wCgrlgW25Y2lNjCtm0qbEn0FnX/MCvP1dVt/dOSVhJJLm9qr4kcTq81tLyR9g5qMG0+5QkwBtw3klE=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR02MB5713
+References: <20240614040133.24967-1-jason-jh.lin@mediatek.com>
+ <20240614040133.24967-3-jason-jh.lin@mediatek.com> <CABb+yY2bwj2BcdJLGe1ZYwCrnXL3LtcePMb=wQPaBKorBSs2yA@mail.gmail.com>
+ <fc92d51cc6e55301c081ea2d589e1ba6cdd295ee.camel@mediatek.com>
+ <CABb+yY1L+YGjf6O9UgPYkS2gWAdo=7QoojSAUNWC_8o7XtZQSg@mail.gmail.com>
+ <1f815ff8-2b7a-48de-8b47-0bc9b3cb67ab@collabora.com> <CABb+yY1Yy8o3ofAiC-uV+gDrO3QDTWz3_XTUMai_2uyrnj-VrQ@mail.gmail.com>
+ <b7ebc021d391452eaf2149976ea2d53fba3d89fc.camel@mediatek.com>
+ <CABb+yY3+pnuXDK_jZMDYOAzahdSZ5iig51VqzM=FFHrFpK+9LA@mail.gmail.com>
+ <4e5d4362-4940-4ba0-95aa-627b82e21e41@collabora.com> <CABb+yY3eXvJRUq7MOqB8QZ9N4aiuogaUCTfP7MerKdNbAbLkvw@mail.gmail.com>
+ <895af04e45d286c38d01f48b29ad41598b7dadb7.camel@mediatek.com>
+ <CABb+yY1EZOsKUR7WUX0Ni0Ukbqz0+yRHswiu07tNXtY1A1gNUQ@mail.gmail.com>
+ <d6f0e7072ec0e89e573e5720fb2b9c621eb9154c.camel@mediatek.com>
+ <CABb+yY0+fFw7Bg578DFEdrigVFgf4-v3qo2JVruEa3ExtvRsMg@mail.gmail.com>
+ <092d917b4cae2762317a8739c874855554ae913f.camel@mediatek.com>
+ <CABb+yY2-KWYORo_-ZWafyM0VJnh8-2wefvCpeDsK204qB0TchQ@mail.gmail.com>
+ <3f655bc4e1e60cd5e0dfc9baa018553fa8892826.camel@mediatek.com>
+ <CABb+yY2zBY_3nEYajdhRNfwb+bPMpFOvbXrqY+jM9rB6qbjJNQ@mail.gmail.com> <e860d67f578f1963d785dcc0423936fe5de20547.camel@mediatek.com>
+In-Reply-To: <e860d67f578f1963d785dcc0423936fe5de20547.camel@mediatek.com>
+From: Jassi Brar <jassisinghbrar@gmail.com>
+Date: Wed, 10 Jul 2024 22:47:31 -0500
+Message-ID: <CABb+yY0mYrUyfpNLVKZt2aDdzZPf+VjawcwVSpMG8H_=pwKLbw@mail.gmail.com>
+Subject: Re: [PATCH 2/2] mailbox: mtk-cmdq: Move pm_runimte_get and put to
+ mbox_chan_ops API
+To: =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
+	=?UTF-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>, 
+	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>, =?UTF-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>, 
+	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>, 
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, 
+	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240710_193539_379499_EC7F3D23 
-X-CRM114-Status: UNSURE (   9.98  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240710_204745_128713_D09D3660 
+X-CRM114-Status: GOOD (  28.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -176,58 +111,102 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add new WWAN ports that connect to the device's ADB protocol interface and
-MTK MIPC diagnostic interface.
+On Wed, Jul 10, 2024 at 9:00=E2=80=AFPM Jason-JH Lin (=E6=9E=97=E7=9D=BF=E7=
+=A5=A5)
+<Jason-JH.Lin@mediatek.com> wrote:
+>
+> On Fri, 2024-07-05 at 11:43 -0500, Jassi Brar wrote:
+> >
+> > External email : Please do not click links or open attachments until
+> > you have verified the sender or the content.
+> >  On Fri, Jul 5, 2024 at 1:11=E2=80=AFAM Jason-JH Lin (=E6=9E=97=E7=9D=
+=BF=E7=A5=A5)
+> > <Jason-JH.Lin@mediatek.com> wrote:
+> > >
+> > > [snip]
+> > >
+> > > > You may disable one to make it easy to capture.
+> > > > Make sure your kernel prints have timestamps.
+> > > > Over your patchset, apply the following diff and execute your
+> > > > usecase.
+> > > > Then share
+> > > >  $ dmesg | grep Jason
+> > > >
+> > > > diff --git a/drivers/mailbox/mailbox.c
+> > b/drivers/mailbox/mailbox.c
+> > > > index bafcc7b0c0b8d..90c0620c0ae63 100644
+> > > > --- a/drivers/mailbox/mailbox.c
+> > > > +++ b/drivers/mailbox/mailbox.c
+> > > > @@ -284,6 +284,7 @@ int mbox_send_message(struct mbox_chan *chan,
+> > > > void *mssg)
+> > > >  {
+> > > >   int t;
+> > > >
+> > > > + printk("Jason %s: %p\n", __func__, (void *)chan);
+> > > >   if (!chan || !chan->cl)
+> > > >   return -EINVAL;
+> > > >
+> > > > diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c
+> > > > b/drivers/mailbox/mtk-cmdq-mailbox.c
+> > > > index 02cef3eee35a5..6436e1b22f353 100644
+> > > > --- a/drivers/mailbox/mtk-cmdq-mailbox.c
+> > > > +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+> > > > @@ -317,6 +317,7 @@ static int cmdq_runtime_resume(struct device
+> > > > *dev)
+> > > >  {
+> > > >   struct cmdq *cmdq =3D dev_get_drvdata(dev);
+> > > >
+> > > > + printk("Jason %s: %p\n", __func__, (void *)dev);
+> > > >   return clk_bulk_enable(cmdq->pdata->gce_num, cmdq->clocks);
+> > > >  }
+> > > >
+> > > > @@ -324,6 +325,7 @@ static int cmdq_runtime_suspend(struct device
+> > > > *dev)
+> > > >  {
+> > > >   struct cmdq *cmdq =3D dev_get_drvdata(dev);
+> > > >
+> > > > + printk("Jason %s: %p\n", __func__, (void *)dev);
+> > > >   clk_bulk_disable(cmdq->pdata->gce_num, cmdq->clocks);
+> > > >   return 0;
+> > > >  }
+> > > >
+> > > > Thanks
+> > >
+> > > It seems CMDQ driver is not suspend over 100ms.
+> > >
+> > here are the time deltas in milli-seconds
+> > 10 6005 52 85 304 59 27 203 29 24 25 38 33 57 34 20 41 28 36 48 71 35
+> > 21 45 51 22 30 46 46 23 16 16 16 16 16 17 17 31 16 19 31 16 16 17 16
+> > 16 16 32 17 32 17 30 21 16 32 18 30 28 25 29 24 31 27 16 17 19 34 30
+> > 15 33 16 35 35 29 18 31 16 16 16 16 17 33 35 33 39 20 21 14 34 49 22
+> > 42 32 13 21 24 9 130 23 32 35 31 32 16 18 31 36 37 26 14 68 76 111
+> > 515
+> > 452 64 484 487 497 501 507 161 336 516 486 495 504 495 504 501 500
+> > 495
+> > 507 495 499 505 496 502 501 502 500 495 501 507 499 499 496 506 501
+> > 498 507 490 504 496 501 506 413 28 207 31731 34550 3784 30 23
+> >
+> > For detlas <100 we don't expect suspend because your set
+> > autosuspend_delay to 100ms.
+> > For deltas >100 you should have seen suspend. Apparently the changes
+> > you want in the api still don't help you.
+>
+> I think "deltas > 100 ms not autosuspend" and "calling
+> pm_runtime_get_sync() in atomic context" are 2 different problems.
+>
+Fixing the first may avoid the need of the second on your platform.
 
-Signed-off-by: Jinjian Song <jinjian.song@fibocom.com>
-Reviewed-by: Sergey Ryazanov <ryazanov.s.a@gmail.com>
----
- drivers/net/wwan/wwan_core.c | 8 ++++++++
- include/linux/wwan.h         | 4 ++++
- 2 files changed, 12 insertions(+)
+> >
+> > Also I see messages are being submitted on 4 channels, but only for
+> > the  '000000000a4d37b5' channel cmdq_mbox_send_data is ever called.
+> > Unless you selectively printk only for that channel, your driver has
+> > some even fundamental problems.  Maybe trace without your patch and
+> > with pm_runtime_xxx commented out (to avoid stack dump).
+>
+> I've confirmed that autosuspend didn't work without these API patches.
+>
+You mean _with_ the api patches. right? Because I had suggested "Over
+your patchset, apply the following diff ..."
 
-diff --git a/drivers/net/wwan/wwan_core.c b/drivers/net/wwan/wwan_core.c
-index 17431f1b1a0c..5ffa70d5de85 100644
---- a/drivers/net/wwan/wwan_core.c
-+++ b/drivers/net/wwan/wwan_core.c
-@@ -334,6 +334,14 @@ static const struct {
- 		.name = "FASTBOOT",
- 		.devsuf = "fastboot",
- 	},
-+	[WWAN_PORT_ADB] = {
-+		.name = "ADB",
-+		.devsuf = "adb",
-+	},
-+	[WWAN_PORT_MIPC] = {
-+		.name = "MIPC",
-+		.devsuf = "mipc",
-+	},
- };
- 
- static ssize_t type_show(struct device *dev, struct device_attribute *attr,
-diff --git a/include/linux/wwan.h b/include/linux/wwan.h
-index 170fdee6339c..79c781875c09 100644
---- a/include/linux/wwan.h
-+++ b/include/linux/wwan.h
-@@ -17,6 +17,8 @@
-  * @WWAN_PORT_FIREHOSE: XML based command protocol
-  * @WWAN_PORT_XMMRPC: Control protocol for Intel XMM modems
-  * @WWAN_PORT_FASTBOOT: Fastboot protocol control
-+ * @WWAN_PORT_ADB: ADB protocol control
-+ * @WWAN_PORT_MIPC: MTK MIPC diagnostic interface
-  *
-  * @WWAN_PORT_MAX: Highest supported port types
-  * @WWAN_PORT_UNKNOWN: Special value to indicate an unknown port type
-@@ -30,6 +32,8 @@ enum wwan_port_type {
- 	WWAN_PORT_FIREHOSE,
- 	WWAN_PORT_XMMRPC,
- 	WWAN_PORT_FASTBOOT,
-+	WWAN_PORT_ADB,
-+	WWAN_PORT_MIPC,
- 
- 	/* Add new port types above this line */
- 
--- 
-2.34.1
-
+cheers.
 
