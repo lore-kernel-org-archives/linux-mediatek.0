@@ -4,81 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7E63C3271E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jul 2024 04:13:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A5F4C3271E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jul 2024 06:10:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tRvWdH2sgEWMYZdUksWGlEzG3jsHq5MNinuSGFz8Ric=; b=yUDwBeH6gmhem7rMA4kftS12Au
-	aCP5i01cGGeb6wT0MN4xzfjLtG19L5Rzsg4VwItDitx69xYArMFYKgNMRu3tUir7zOaCSZKkJSbwB
-	fTOKvayKPPtVg3/JpiLWq/PzOagVTaS/XYFXlbxHCDNhQGxnHTmvx0DaEGXAWFCAfoAiX5D+CwuCe
-	ea4v8K+EUbmCdQ6JmZuyPxpJN3UZY0/Imtuu46WYLFNaj15/hATt8AIOQnbt3QvejENe7CGUdw40l
-	KCLc4XOB9FEhZbsw4Y9Ks8e0PKoN6lZ/zgWxtiX2EIPOHnVX0nDni2cCxkpE5018QTEa+w7GGBe25
-	dvVdCevg==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=hbgeEFeW1rvJhEB4MfgZ6aOvwNGbhGVs1MY4OIv8ZiI=; b=kZDoWFFGnVxor7cq8Ygx3RJVJX
+	lboYPH+fdT7m7Yd2KQyKaoIxw5nuT/xSb3HO0pw6nkW+gvdLGsY1YTy3TT7tZGjS9XTbvajFOMvAu
+	LFPjJoWU6z4o3Oh1RbieIBv7eVpwABbUBG/Jn6gSVbzksEu10yPWrBGsm5RoSJL8aQq30YarOn/5B
+	LRFR26kTiYltJAtx9cL7s4ksiNT6A2fmjGhRmatrqLrh5e0qyLUFlxMkKW/euxJgW3kXO58mdcxwC
+	3t/2l6u7ZPFDnkQIqqEkzvcU5R9ee1SscJ4jDIwd17nvVYLcMKv64jBEFRj5z6p2URJKPi8AZA6ez
+	E6VbMl2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRlBM-0000000CeZN-1kXo;
-	Thu, 11 Jul 2024 04:13:24 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1sRn0s-0000000CrKW-42TE;
+	Thu, 11 Jul 2024 06:10:42 +0000
+Received: from mail-ot1-x332.google.com ([2607:f8b0:4864:20::332])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRlBJ-0000000CeYf-0n1y;
-	Thu, 11 Jul 2024 04:13:22 +0000
-X-UUID: e422554c3f3b11ef955bff358274dad2-20240710
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:Message-ID; bh=tRvWdH2sgEWMYZdUksWGlEzG3jsHq5MNinuSGFz8Ric=;
-	b=NpblMkigXzN5S9G2DSwzw1k0fGbyUVDauKYm3mULBHVA/wTpt41ErLPoFl1RDjk2RKRBKaXWIIVa4mFuoxhcQQJEith3L4/RQwu5f+kHVewph58v+0oj7MyddvoF+B0J/RAYofjq2MeN5a4TBhUSz9KUU0FtHRrcvYDYQ30iupk=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.40,REQID:a7cb309a-ab27-4be4-9d8e-14d51af62c5b,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:ba885a6,CLOUDID:cd19520d-46b0-425a-97d3-4623fe284021,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
-X-UUID: e422554c3f3b11ef955bff358274dad2-20240710
-Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw02.mediatek.com
-	(envelope-from <macpaul.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1274993414; Wed, 10 Jul 2024 21:13:13 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 11 Jul 2024 12:13:11 +0800
-Received: from [172.21.84.99] (172.21.84.99) by mtkmbs13n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.1118.26 via Frontend
- Transport; Thu, 11 Jul 2024 12:13:07 +0800
-Message-ID: <da27d957-866f-f055-9e83-cdc362d98dc7@mediatek.com>
-Date: Thu, 11 Jul 2024 12:13:04 +0800
+	id 1sRn0b-0000000CrDz-0fx7;
+	Thu, 11 Jul 2024 06:10:26 +0000
+Received: by mail-ot1-x332.google.com with SMTP id 46e09a7af769-703d5b29e06so226184a34.2;
+        Wed, 10 Jul 2024 23:10:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1720678224; x=1721283024; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=hbgeEFeW1rvJhEB4MfgZ6aOvwNGbhGVs1MY4OIv8ZiI=;
+        b=KDKc+wil77EBe8uYXY4mCEunOPQ+U471oQyp0lLvtRek7kJVSKTnQozSFgYVNvbBck
+         BK9YRimxXjRPxL5OoCMENHFxXjki19h3gap107jQ+U2PmIVrmu2cq25X9+Y3SYW00MtN
+         D5LBwxKgw0vy0Rs9mPisYys3/6kTIUlzcLFofYr5bgpAaS/quc7Zpk79EC2nTa3wOoNX
+         blQuVn1PT4J9p3kTnyMEuJh7jULFK1jLRlas9WHai3iskgvP+zUJ3PkRKGcHuutpSvi7
+         oPkM3i8WAhCzo0VtZPPBZPY8X41wjJtV8BfRjL17lU9E+Lx/asZvcB6BvCmVLbfYAX9t
+         0t6A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1720678224; x=1721283024;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=hbgeEFeW1rvJhEB4MfgZ6aOvwNGbhGVs1MY4OIv8ZiI=;
+        b=FkAHpXqM0vgDPYu3O1XKn12OAWZr9IXCkV8aofUzWiiD4tqOoPOileAaj94ua2d5c7
+         B0sQmgT30ZCFbhIx/bOTa8H7GhwH877plB+O8V16ElbamBmFT6ODOAtUrI/ebpcoBg45
+         YmLqqKzXIOn1fDS28XspAQx4vL9KNglE2n1Byb4HAPTpd1Q2JBJnnwY9GJ7yLHfManZT
+         gFwYNvl+6kYuIw8m23953wu9/XbdmN8oDblN6BmmHTD3Zbpm5k69vphdYT+FWgnjNJis
+         6j9OUUCfQQCZyLwuPA4jcDBtmJ4PZUDma7WEaqjSJkfUBywgUWLqHT1GbKE/qv0DPiIf
+         QgSw==
+X-Forwarded-Encrypted: i=1; AJvYcCVTZLryYiWRcwA9vH3cmj9RPB2BXoFrJbucCZ+Ei3HZfzi6L9XYSo5uyvriLM8oK2taua+mU2z1mdbZ3O+t0H1kf5HHdiEpGpDKlBo1PiKnZdgsdaIB528N/96jgijPUb03Gb9BtSW4+YRnsvpLKFiq7EivteH3ZFM=
+X-Gm-Message-State: AOJu0Ywd7LVhbDEfBb/LNTj7GLPrvQdbWlXkA2Z2iEB3yav3Cuz0JKfV
+	zq6N4+zF2i/2CK2rllBsCr466yb7DX9DHO+ZR+NMlLXtIsvQZ8hY
+X-Google-Smtp-Source: AGHT+IHn7/BN32F1Wd/dNunrw0sPOK/6A9cLFCDhJ6SjGFWn05IcdDp6Pq4LFVhKiBy2QShFZ2/XQg==
+X-Received: by 2002:a05:6830:5:b0:704:494e:fa1c with SMTP id 46e09a7af769-704494efaa6mr5108601a34.5.1720678223595;
+        Wed, 10 Jul 2024 23:10:23 -0700 (PDT)
+Received: from localhost ([2402:7500:477:cd01:80d2:d16c:b02e:82fd])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-77d66cb5359sm3165325a12.70.2024.07.10.23.10.22
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 10 Jul 2024 23:10:23 -0700 (PDT)
+From: wojackbb@gmail.com
+To: netdev@vger.kernel.org
+Cc: chandrashekar.devegowda@intel.com,
+	chiranjeevi.rapolu@linux.intel.com,
+	haijun.liu@mediatek.com,
+	m.chetan.kumar@linux.intel.com,
+	ricardo.martinez@linux.intel.com,
+	loic.poulain@linaro.org,
+	ryazanov.s.a@gmail.com,
+	johannes@sipsolutions.net,
+	davem@davemloft.net,
+	edumazet@google.com,
+	kuba@kernel.org,
+	pabeni@redhat.com,
+	linux-arm-kernel@lists.infradead.org,
+	angelogioacchino.delregno@collabora.com,
+	linux-mediatek@lists.infradead.org,
+	matthias.bgg@gmail.com,
+	jackbb_wu <wojackbb@gmail.com>
+Subject: [PATCH] [net,v2] net: wwan: t7xx: add support for Dell DW5933e
+Date: Thu, 11 Jul 2024 14:09:59 +0800
+Message-Id: <20240711060959.61908-1-wojackbb@gmail.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: Probe failure of usb controller @11290000 on MT8195 after
- next-20231221
-Content-Language: en-US
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Chunfeng Yun <chunfeng.yun@mediatek.com>
-CC: Matthias Brugger <matthias.bgg@gmail.com>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <kernel@collabora.com>, Chen-Yu Tsai
-	<wenst@chromium.org>, Bear Wang <bear.wang@mediatek.com>, Pablo Sun
-	<pablo.sun@mediatek.com>
-References: <9fce9838-ef87-4d1b-b3df-63e1ddb0ec51@notapiano>
- <064935d8-fbda-4eda-b013-8c8fc63b561c@collabora.com>
- <375b2345-657a-4b8f-b5e3-dc16784ffde9@notapiano>
-From: Macpaul Lin <macpaul.lin@mediatek.com>
-In-Reply-To: <375b2345-657a-4b8f-b5e3-dc16784ffde9@notapiano>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240710_211321_257439_591144BE 
-X-CRM114-Status: GOOD (  27.66  )
+X-CRM114-CacheID: sfid-20240710_231025_222428_DDA29AB0 
+X-CRM114-Status: UNSURE (   9.17  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,86 +104,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: jackbb_wu <wojackbb@gmail.com>
 
+add support for Dell DW5933e (0x14c0, 0x4d75)
 
-On 7/11/24 03:15, Nícolas F. R. A. Prado wrote:
-> On Fri, Jan 19, 2024 at 10:12:07AM +0100, AngeloGioacchino Del Regno wrote:
->> Il 18/01/24 19:36, Nícolas F. R. A. Prado ha scritto:
->>> Hi,
->>>
->>> KernelCI has identified a failure in the probe of one of the USB controllers on
->>> the MT8195-Tomato Chromebook [1]:
->>>
->>> [   16.336840] xhci-mtk 11290000.usb: uwk - reg:0x400, version:104
->>> [   16.337081] xhci-mtk 11290000.usb: xHCI Host Controller
->>> [   16.337093] xhci-mtk 11290000.usb: new USB bus registered, assigned bus number 5
->>> [   16.357114] xhci-mtk 11290000.usb: clocks are not stable (0x1003d0f)
->>> [   16.357119] xhci-mtk 11290000.usb: can't setup: -110
->>> [   16.357128] xhci-mtk 11290000.usb: USB bus 5 deregistered
->>> [   16.359484] xhci-mtk: probe of 11290000.usb failed with error -110
->>>
->>> A previous message [2] suggests that a force-mode phy property that has been
->>> merged might help with addressing the issue, however it's not clear to me how,
->>> given that the controller at 1129000 uses a USB2 phy and the phy driver patch
->>> only looks for the property on USB3 phys.
->>>
->>> Worth noting that the issue doesn't always happen. For instance the test did
->>> pass for next-20240110 and then failed again on today's next [3]. But it does
->>> seem that the issue was introduced, or at least became much more likely, between
->>> next-20231221 and next-20240103, given that it never happened out of 10 runs
->>> before, and after that has happened 5 out of 7 times.
->>>
->>> Note: On the Tomato Chromebook specifically this USB controller is not connected
->>> to anything.
->>>
->>> [1] https://urldefense.com/v3/__https://linux.kernelci.org/test/case/id/659ce3506673076a8c52a428/__;!!CTRNKA9wMg0ARbw!jtg5drII8WUPwTiL4sWZiSRPXN-EBN8ctTGI85sirqvkmaUbA5z-wrLqPPfxlZZkQ7NItOWDT97OSdENT5oGHKY$
->>> [2] https://lore.kernel.org/all/239def9b-437b-9211-7844-af4332651df0@mediatek.com/
->>> [3] https://urldefense.com/v3/__https://linux.kernelci.org/test/case/id/65a8c66ee89acb56ac52a405/__;!!CTRNKA9wMg0ARbw!jtg5drII8WUPwTiL4sWZiSRPXN-EBN8ctTGI85sirqvkmaUbA5z-wrLqPPfxlZZkQ7NItOWDT97OSdENi-d0sVc$
->>>
->>> Thanks,
->>> Nícolas
->>
->> Hey Nícolas,
->>
->> I wonder if this is happening because of async probe... I have seen those happening
->> once in a (long) while on MT8186 as well with the same kind of flakiness and I am
->> not even able to reproduce anymore.
->>
->> For MT8195 Tomato, I guess we can simply disable that controller without any side
->> effects but, at the same time, I'm not sure that this would be the right thing to
->> do in this case.
->>
->> Besides, the controller at 11290000 is the only one that doesn't live behind MTU3,
->> but I don't know if that can ring any bell....
-> 
-> An update on this issue: it looks like it only happens if "xhci-mtk
-> 11290000.usb" probes before "mtk-pcie-gen3 112f8000.pcie". What they have in
-> common is that both of those nodes use phys that share the same t-phy block:
-> pcie uses the usb3 phy while xhci uses the usb2 phy. So it seems that some of
-> the initialization done by the pcie controller might be implicitly needed by the
-> usb controller.
-> 
-> This should help to narrow down the issue and find a proper fix for it.
-> 
-> Thanks,
-> Nícolas
+Signed-off-by: Jack Wu <wojackbb@gmail.com>
+---
+ drivers/net/wwan/t7xx/t7xx_pci.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-'force-mode' should only applied to the boards which require XHCI 
-function instead of a PCIE port.
+diff --git a/drivers/net/wwan/t7xx/t7xx_pci.c b/drivers/net/wwan/t7xx/t7xx_pci.c
+index e0b1e7a616ca..10a8c1080b10 100644
+--- a/drivers/net/wwan/t7xx/t7xx_pci.c
++++ b/drivers/net/wwan/t7xx/t7xx_pci.c
+@@ -852,6 +852,7 @@ static void t7xx_pci_remove(struct pci_dev *pdev)
+ 
+ static const struct pci_device_id t7xx_pci_table[] = {
+ 	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x4d75) },
++	{ PCI_DEVICE(0x14c0, 0x4d75) }, // Dell DW5933e
+ 	{ }
+ };
+ MODULE_DEVICE_TABLE(pci, t7xx_pci_table);
+-- 
+2.34.1
 
-For example, mt8395-genio-1200-evk.dts requires property 'force-mode' to 
-fix probe issue for USBC @11290000.
-
-https://git.kernel.org/pub/scm/linux/kernel/git/mediatek/linux.git/commit/?h=v6.10-next/dts64&id=666e6f39faff05fe12bfc64c64aa9015135ce783
-
-'force-mode' should be no need for tomato boards and the behavior should 
-be the same as before.
-
-Another possibility is the firmware change on tomato boards. I'm not 
-sure if there is any changes on tomato's recent firmware for tphy of 
-this port, which could also be a reason causes this kind of failure.
-I don't have tomato boards on hand.
-
-Thanks
-Macpaul Lin
 
