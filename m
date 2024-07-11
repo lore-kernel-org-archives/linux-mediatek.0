@@ -4,99 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EA3CC3DA41
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jul 2024 03:47:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7E63C3271E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jul 2024 04:13:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SpOmGWaPs+ZJZCC0I9Q/piIlH+/AVFYjnCcsvYrQiVE=; b=dUPN++GhtcW2EfAJmpgW2BsWgk
-	91N022lTmYL8O0E6YGWuIwEof3D5SDl9RQQC3Vp/WEKEm7ez7FJ/5psbv9VVfLuEiOKBeRT4EJJxx
-	Ov/k3imHGORFuVgbI+HHtSMfaGqJJE/ZBBI+dLK/64tE7OY+e3FTLRB0pl/I7qV+tbU6L7n9+QEYy
-	nX6ewqfr4Z7CUgNFzbReebURO7MLf0WSO9QC71wkydwyA9qr+4TW0dP/V2vqXfCQozvMN7xnulpTq
-	4XGiSN0ffwUNVbNhesCU8DccZzI2W2h9o8qy66ODz3Ko08FXg+YcLu9dpffqKmn5n0yNSQvzZ1oBx
-	O/Tfv66Q==;
+	bh=tRvWdH2sgEWMYZdUksWGlEzG3jsHq5MNinuSGFz8Ric=; b=yUDwBeH6gmhem7rMA4kftS12Au
+	aCP5i01cGGeb6wT0MN4xzfjLtG19L5Rzsg4VwItDitx69xYArMFYKgNMRu3tUir7zOaCSZKkJSbwB
+	fTOKvayKPPtVg3/JpiLWq/PzOagVTaS/XYFXlbxHCDNhQGxnHTmvx0DaEGXAWFCAfoAiX5D+CwuCe
+	ea4v8K+EUbmCdQ6JmZuyPxpJN3UZY0/Imtuu46WYLFNaj15/hATt8AIOQnbt3QvejENe7CGUdw40l
+	KCLc4XOB9FEhZbsw4Y9Ks8e0PKoN6lZ/zgWxtiX2EIPOHnVX0nDni2cCxkpE5018QTEa+w7GGBe25
+	dvVdCevg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRkmZ-0000000CbN8-3bNG;
-	Thu, 11 Jul 2024 03:47:47 +0000
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
+	id 1sRlBM-0000000CeZN-1kXo;
+	Thu, 11 Jul 2024 04:13:24 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sRkmX-0000000CbMN-0GC0;
-	Thu, 11 Jul 2024 03:47:46 +0000
-Received: by mail-ej1-x62a.google.com with SMTP id a640c23a62f3a-a77e6dd7f72so46502366b.3;
-        Wed, 10 Jul 2024 20:47:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1720669663; x=1721274463; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=SpOmGWaPs+ZJZCC0I9Q/piIlH+/AVFYjnCcsvYrQiVE=;
-        b=FcG6Ul4QgF+ncU1IdnfwM6WnByz5IS/E2IUYo44i32zJejE9jkHpWoX/Dwo4PSC3RF
-         1QiHQB1lIcmk4G8E3U7mFdwdkhFGlz06CmtBIMBsBdDQw92GCDZF2a0KMw0MN//4sHHr
-         A+YrQS4nCjauQlsbvsqCswsu7x7TJwGRjvtV6DgjCjtvDu84OQ395ce+quaFllwEuDiK
-         Icq9Afyf2j2zPHOqW3Xz2G97SZLY1DUlmqXcPOw3tS6Q62JKnNOK6geYHI7bcaAckXcD
-         Qp8vhZ1EjsS0uyDsuR2cxlOR1VECQ7UxeMe387Lv3Uu3OdyeqWdesTvFpnswA5CrXLLJ
-         o2DQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1720669663; x=1721274463;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=SpOmGWaPs+ZJZCC0I9Q/piIlH+/AVFYjnCcsvYrQiVE=;
-        b=jW/VXzaimqNbZ/f+8KeeKU1Tl2ohWqw+548QPSccb4k2yZ74ouFUBIsOsEbYygOiRD
-         h81AXqics2N+gVmz762bClf0x/zsPw8Z1a1uzFNV+QocGi8fQeU4FcrlYgtpnjmEZAZ9
-         7n2S7PpdUsxttfk/sbYMr72/9UCgBARVD2/aghwxQH1Bf4hjc1XCd8+nB/Z7hV0T/RqT
-         ibrPIzPRalJvYARboRhDTodPTxEOQh85y4IzVAwTfqxyFP9d0zeiIeZh4k4vUyOoLh7V
-         9tKuGrG6brMTl+RZJ2mnOp51rAuULvlKqhZz7Da39KVj13XXr8Ul6GDBetJi+NyGJIWG
-         y3dg==
-X-Forwarded-Encrypted: i=1; AJvYcCXK8jcPkt6zRcVNcJ6fV9iHtNAYt4uFWPeruzg3BqIudlceoOSZtMtomXrQ6op+RrylqSUkSyDfbzsuBCOGIQ7klHBdukIrHRQKix/6p6C0B0T1Zn5JWzimB5FbUAcJ2nbVx73/84ida5JP/v8xnJpT9K96uuXhsp4=
-X-Gm-Message-State: AOJu0YzdREYCxZZy91FRRNWkpv9sHQ028MV+3Sznic79B3iXGQdRlBYj
-	uwX6KRl42iuM+D/uh5PdrMDt5BSPchWlODtGMJsNzGH1m0KU4buPPsF19CLO+e7yWMZyhoa7e7+
-	njqB0IUQk7klC9kX71YkoyBj2s/4=
-X-Google-Smtp-Source: AGHT+IF5f5jDWbiu4aJ26+hkrJW6To96uJgmyGIL+WmqbDVbCZWbe++pKvx5M9RDu3QukliDRRQlxs3XRKIjVfg5Kn0=
-X-Received: by 2002:a17:906:a399:b0:a6f:b5cc:9190 with SMTP id
- a640c23a62f3a-a780b6b18d7mr416400566b.28.1720669662677; Wed, 10 Jul 2024
- 20:47:42 -0700 (PDT)
+	id 1sRlBJ-0000000CeYf-0n1y;
+	Thu, 11 Jul 2024 04:13:22 +0000
+X-UUID: e422554c3f3b11ef955bff358274dad2-20240710
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:Message-ID; bh=tRvWdH2sgEWMYZdUksWGlEzG3jsHq5MNinuSGFz8Ric=;
+	b=NpblMkigXzN5S9G2DSwzw1k0fGbyUVDauKYm3mULBHVA/wTpt41ErLPoFl1RDjk2RKRBKaXWIIVa4mFuoxhcQQJEith3L4/RQwu5f+kHVewph58v+0oj7MyddvoF+B0J/RAYofjq2MeN5a4TBhUSz9KUU0FtHRrcvYDYQ30iupk=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.40,REQID:a7cb309a-ab27-4be4-9d8e-14d51af62c5b,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:ba885a6,CLOUDID:cd19520d-46b0-425a-97d3-4623fe284021,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-UUID: e422554c3f3b11ef955bff358274dad2-20240710
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw02.mediatek.com
+	(envelope-from <macpaul.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1274993414; Wed, 10 Jul 2024 21:13:13 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Thu, 11 Jul 2024 12:13:11 +0800
+Received: from [172.21.84.99] (172.21.84.99) by mtkmbs13n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.1118.26 via Frontend
+ Transport; Thu, 11 Jul 2024 12:13:07 +0800
+Message-ID: <da27d957-866f-f055-9e83-cdc362d98dc7@mediatek.com>
+Date: Thu, 11 Jul 2024 12:13:04 +0800
 MIME-Version: 1.0
-References: <20240614040133.24967-1-jason-jh.lin@mediatek.com>
- <20240614040133.24967-3-jason-jh.lin@mediatek.com> <CABb+yY2bwj2BcdJLGe1ZYwCrnXL3LtcePMb=wQPaBKorBSs2yA@mail.gmail.com>
- <fc92d51cc6e55301c081ea2d589e1ba6cdd295ee.camel@mediatek.com>
- <CABb+yY1L+YGjf6O9UgPYkS2gWAdo=7QoojSAUNWC_8o7XtZQSg@mail.gmail.com>
- <1f815ff8-2b7a-48de-8b47-0bc9b3cb67ab@collabora.com> <CABb+yY1Yy8o3ofAiC-uV+gDrO3QDTWz3_XTUMai_2uyrnj-VrQ@mail.gmail.com>
- <b7ebc021d391452eaf2149976ea2d53fba3d89fc.camel@mediatek.com>
- <CABb+yY3+pnuXDK_jZMDYOAzahdSZ5iig51VqzM=FFHrFpK+9LA@mail.gmail.com>
- <4e5d4362-4940-4ba0-95aa-627b82e21e41@collabora.com> <CABb+yY3eXvJRUq7MOqB8QZ9N4aiuogaUCTfP7MerKdNbAbLkvw@mail.gmail.com>
- <895af04e45d286c38d01f48b29ad41598b7dadb7.camel@mediatek.com>
- <CABb+yY1EZOsKUR7WUX0Ni0Ukbqz0+yRHswiu07tNXtY1A1gNUQ@mail.gmail.com>
- <d6f0e7072ec0e89e573e5720fb2b9c621eb9154c.camel@mediatek.com>
- <CABb+yY0+fFw7Bg578DFEdrigVFgf4-v3qo2JVruEa3ExtvRsMg@mail.gmail.com>
- <092d917b4cae2762317a8739c874855554ae913f.camel@mediatek.com>
- <CABb+yY2-KWYORo_-ZWafyM0VJnh8-2wefvCpeDsK204qB0TchQ@mail.gmail.com>
- <3f655bc4e1e60cd5e0dfc9baa018553fa8892826.camel@mediatek.com>
- <CABb+yY2zBY_3nEYajdhRNfwb+bPMpFOvbXrqY+jM9rB6qbjJNQ@mail.gmail.com> <e860d67f578f1963d785dcc0423936fe5de20547.camel@mediatek.com>
-In-Reply-To: <e860d67f578f1963d785dcc0423936fe5de20547.camel@mediatek.com>
-From: Jassi Brar <jassisinghbrar@gmail.com>
-Date: Wed, 10 Jul 2024 22:47:31 -0500
-Message-ID: <CABb+yY0mYrUyfpNLVKZt2aDdzZPf+VjawcwVSpMG8H_=pwKLbw@mail.gmail.com>
-Subject: Re: [PATCH 2/2] mailbox: mtk-cmdq: Move pm_runimte_get and put to
- mbox_chan_ops API
-To: =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
-	=?UTF-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>, 
-	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>, =?UTF-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>, 
-	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>, 
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, 
-	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.1
+Subject: Re: Probe failure of usb controller @11290000 on MT8195 after
+ next-20231221
+Content-Language: en-US
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Chunfeng Yun <chunfeng.yun@mediatek.com>
+CC: Matthias Brugger <matthias.bgg@gmail.com>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <kernel@collabora.com>, Chen-Yu Tsai
+	<wenst@chromium.org>, Bear Wang <bear.wang@mediatek.com>, Pablo Sun
+	<pablo.sun@mediatek.com>
+References: <9fce9838-ef87-4d1b-b3df-63e1ddb0ec51@notapiano>
+ <064935d8-fbda-4eda-b013-8c8fc63b561c@collabora.com>
+ <375b2345-657a-4b8f-b5e3-dc16784ffde9@notapiano>
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+In-Reply-To: <375b2345-657a-4b8f-b5e3-dc16784ffde9@notapiano>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240710_204745_128713_D09D3660 
-X-CRM114-Status: GOOD (  28.48  )
+X-CRM114-CacheID: sfid-20240710_211321_257439_591144BE 
+X-CRM114-Status: GOOD (  27.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,102 +93,86 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 10, 2024 at 9:00=E2=80=AFPM Jason-JH Lin (=E6=9E=97=E7=9D=BF=E7=
-=A5=A5)
-<Jason-JH.Lin@mediatek.com> wrote:
->
-> On Fri, 2024-07-05 at 11:43 -0500, Jassi Brar wrote:
-> >
-> > External email : Please do not click links or open attachments until
-> > you have verified the sender or the content.
-> >  On Fri, Jul 5, 2024 at 1:11=E2=80=AFAM Jason-JH Lin (=E6=9E=97=E7=9D=
-=BF=E7=A5=A5)
-> > <Jason-JH.Lin@mediatek.com> wrote:
-> > >
-> > > [snip]
-> > >
-> > > > You may disable one to make it easy to capture.
-> > > > Make sure your kernel prints have timestamps.
-> > > > Over your patchset, apply the following diff and execute your
-> > > > usecase.
-> > > > Then share
-> > > >  $ dmesg | grep Jason
-> > > >
-> > > > diff --git a/drivers/mailbox/mailbox.c
-> > b/drivers/mailbox/mailbox.c
-> > > > index bafcc7b0c0b8d..90c0620c0ae63 100644
-> > > > --- a/drivers/mailbox/mailbox.c
-> > > > +++ b/drivers/mailbox/mailbox.c
-> > > > @@ -284,6 +284,7 @@ int mbox_send_message(struct mbox_chan *chan,
-> > > > void *mssg)
-> > > >  {
-> > > >   int t;
-> > > >
-> > > > + printk("Jason %s: %p\n", __func__, (void *)chan);
-> > > >   if (!chan || !chan->cl)
-> > > >   return -EINVAL;
-> > > >
-> > > > diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c
-> > > > b/drivers/mailbox/mtk-cmdq-mailbox.c
-> > > > index 02cef3eee35a5..6436e1b22f353 100644
-> > > > --- a/drivers/mailbox/mtk-cmdq-mailbox.c
-> > > > +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-> > > > @@ -317,6 +317,7 @@ static int cmdq_runtime_resume(struct device
-> > > > *dev)
-> > > >  {
-> > > >   struct cmdq *cmdq =3D dev_get_drvdata(dev);
-> > > >
-> > > > + printk("Jason %s: %p\n", __func__, (void *)dev);
-> > > >   return clk_bulk_enable(cmdq->pdata->gce_num, cmdq->clocks);
-> > > >  }
-> > > >
-> > > > @@ -324,6 +325,7 @@ static int cmdq_runtime_suspend(struct device
-> > > > *dev)
-> > > >  {
-> > > >   struct cmdq *cmdq =3D dev_get_drvdata(dev);
-> > > >
-> > > > + printk("Jason %s: %p\n", __func__, (void *)dev);
-> > > >   clk_bulk_disable(cmdq->pdata->gce_num, cmdq->clocks);
-> > > >   return 0;
-> > > >  }
-> > > >
-> > > > Thanks
-> > >
-> > > It seems CMDQ driver is not suspend over 100ms.
-> > >
-> > here are the time deltas in milli-seconds
-> > 10 6005 52 85 304 59 27 203 29 24 25 38 33 57 34 20 41 28 36 48 71 35
-> > 21 45 51 22 30 46 46 23 16 16 16 16 16 17 17 31 16 19 31 16 16 17 16
-> > 16 16 32 17 32 17 30 21 16 32 18 30 28 25 29 24 31 27 16 17 19 34 30
-> > 15 33 16 35 35 29 18 31 16 16 16 16 17 33 35 33 39 20 21 14 34 49 22
-> > 42 32 13 21 24 9 130 23 32 35 31 32 16 18 31 36 37 26 14 68 76 111
-> > 515
-> > 452 64 484 487 497 501 507 161 336 516 486 495 504 495 504 501 500
-> > 495
-> > 507 495 499 505 496 502 501 502 500 495 501 507 499 499 496 506 501
-> > 498 507 490 504 496 501 506 413 28 207 31731 34550 3784 30 23
-> >
-> > For detlas <100 we don't expect suspend because your set
-> > autosuspend_delay to 100ms.
-> > For deltas >100 you should have seen suspend. Apparently the changes
-> > you want in the api still don't help you.
->
-> I think "deltas > 100 ms not autosuspend" and "calling
-> pm_runtime_get_sync() in atomic context" are 2 different problems.
->
-Fixing the first may avoid the need of the second on your platform.
 
-> >
-> > Also I see messages are being submitted on 4 channels, but only for
-> > the  '000000000a4d37b5' channel cmdq_mbox_send_data is ever called.
-> > Unless you selectively printk only for that channel, your driver has
-> > some even fundamental problems.  Maybe trace without your patch and
-> > with pm_runtime_xxx commented out (to avoid stack dump).
->
-> I've confirmed that autosuspend didn't work without these API patches.
->
-You mean _with_ the api patches. right? Because I had suggested "Over
-your patchset, apply the following diff ..."
 
-cheers.
+On 7/11/24 03:15, Nícolas F. R. A. Prado wrote:
+> On Fri, Jan 19, 2024 at 10:12:07AM +0100, AngeloGioacchino Del Regno wrote:
+>> Il 18/01/24 19:36, Nícolas F. R. A. Prado ha scritto:
+>>> Hi,
+>>>
+>>> KernelCI has identified a failure in the probe of one of the USB controllers on
+>>> the MT8195-Tomato Chromebook [1]:
+>>>
+>>> [   16.336840] xhci-mtk 11290000.usb: uwk - reg:0x400, version:104
+>>> [   16.337081] xhci-mtk 11290000.usb: xHCI Host Controller
+>>> [   16.337093] xhci-mtk 11290000.usb: new USB bus registered, assigned bus number 5
+>>> [   16.357114] xhci-mtk 11290000.usb: clocks are not stable (0x1003d0f)
+>>> [   16.357119] xhci-mtk 11290000.usb: can't setup: -110
+>>> [   16.357128] xhci-mtk 11290000.usb: USB bus 5 deregistered
+>>> [   16.359484] xhci-mtk: probe of 11290000.usb failed with error -110
+>>>
+>>> A previous message [2] suggests that a force-mode phy property that has been
+>>> merged might help with addressing the issue, however it's not clear to me how,
+>>> given that the controller at 1129000 uses a USB2 phy and the phy driver patch
+>>> only looks for the property on USB3 phys.
+>>>
+>>> Worth noting that the issue doesn't always happen. For instance the test did
+>>> pass for next-20240110 and then failed again on today's next [3]. But it does
+>>> seem that the issue was introduced, or at least became much more likely, between
+>>> next-20231221 and next-20240103, given that it never happened out of 10 runs
+>>> before, and after that has happened 5 out of 7 times.
+>>>
+>>> Note: On the Tomato Chromebook specifically this USB controller is not connected
+>>> to anything.
+>>>
+>>> [1] https://urldefense.com/v3/__https://linux.kernelci.org/test/case/id/659ce3506673076a8c52a428/__;!!CTRNKA9wMg0ARbw!jtg5drII8WUPwTiL4sWZiSRPXN-EBN8ctTGI85sirqvkmaUbA5z-wrLqPPfxlZZkQ7NItOWDT97OSdENT5oGHKY$
+>>> [2] https://lore.kernel.org/all/239def9b-437b-9211-7844-af4332651df0@mediatek.com/
+>>> [3] https://urldefense.com/v3/__https://linux.kernelci.org/test/case/id/65a8c66ee89acb56ac52a405/__;!!CTRNKA9wMg0ARbw!jtg5drII8WUPwTiL4sWZiSRPXN-EBN8ctTGI85sirqvkmaUbA5z-wrLqPPfxlZZkQ7NItOWDT97OSdENi-d0sVc$
+>>>
+>>> Thanks,
+>>> Nícolas
+>>
+>> Hey Nícolas,
+>>
+>> I wonder if this is happening because of async probe... I have seen those happening
+>> once in a (long) while on MT8186 as well with the same kind of flakiness and I am
+>> not even able to reproduce anymore.
+>>
+>> For MT8195 Tomato, I guess we can simply disable that controller without any side
+>> effects but, at the same time, I'm not sure that this would be the right thing to
+>> do in this case.
+>>
+>> Besides, the controller at 11290000 is the only one that doesn't live behind MTU3,
+>> but I don't know if that can ring any bell....
+> 
+> An update on this issue: it looks like it only happens if "xhci-mtk
+> 11290000.usb" probes before "mtk-pcie-gen3 112f8000.pcie". What they have in
+> common is that both of those nodes use phys that share the same t-phy block:
+> pcie uses the usb3 phy while xhci uses the usb2 phy. So it seems that some of
+> the initialization done by the pcie controller might be implicitly needed by the
+> usb controller.
+> 
+> This should help to narrow down the issue and find a proper fix for it.
+> 
+> Thanks,
+> Nícolas
+
+'force-mode' should only applied to the boards which require XHCI 
+function instead of a PCIE port.
+
+For example, mt8395-genio-1200-evk.dts requires property 'force-mode' to 
+fix probe issue for USBC @11290000.
+
+https://git.kernel.org/pub/scm/linux/kernel/git/mediatek/linux.git/commit/?h=v6.10-next/dts64&id=666e6f39faff05fe12bfc64c64aa9015135ce783
+
+'force-mode' should be no need for tomato boards and the behavior should 
+be the same as before.
+
+Another possibility is the firmware change on tomato boards. I'm not 
+sure if there is any changes on tomato's recent firmware for tphy of 
+this port, which could also be a reason causes this kind of failure.
+I don't have tomato boards on hand.
+
+Thanks
+Macpaul Lin
 
