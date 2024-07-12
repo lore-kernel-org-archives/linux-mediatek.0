@@ -4,71 +4,203 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA550C3DA4A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Jul 2024 23:40:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E839C3DA45
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jul 2024 01:40:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JBNzzyEeyTY/2ZQd3t6LzuAz+srKcLrBwuVWXBEAYlc=; b=GfKeC45da6GHhcmOJu+trngwv8
-	dVyLEL2AjsWdbBw57yJipStGVKov12vpU/ThDNHm4r3fTuLVxfgjR3NmDmGHcYz5T10uY8Hv/vNou
-	YTVbzr58Nk5caH1Qt+3voT8VrFVywyPzVlbBh5gittSQA8HDNn2vpwJ3sHuGGx2OqJT0Bi60PC01e
-	t7MsLpB5QWzNUE3NYUC+lRDaOKHCH0npLa/1qiHGMb5od+Ln2QlvZT7/bvOYjSTlDLXpc1PLQalA1
-	Y/ASFtSZHeR8qFc2XxWLs1ubwceDXon2vJsdWV3s+YUCJ95fxD57s4bv5LVNpBcZpDR873yAhYPie
-	I11P9apw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=eicvsSjeoobP+xiwboSkmxq2kIAFPswGtaFZzEfti1Y=; b=2uaVnGjTJxkfiLJBxYnWC9mzR6
+	XSuSggHsdgN5lgwgT7h4KJAGAPy6owBhvxMnDa/U/50OGlRtfsl/chYm6jWCGxNNI1xdLDtI7BQGZ
+	sAwX1K9HSEhqeczUxTDE1K/BLXWxKbw20T07dLL+R5uuqXZqKFka2tw1glp8kxwbp7dSqng/43M1c
+	dMRJKWEsAhv+UjlhfskQL6ESZ68NuB9KhLNt4kntU/qzbG6QeZkYL6RhxqifKob9V1FN3MQPp618j
+	GdevneBDSZSH5UwVTiQlLv5QTpnWEhWEaZKyVTnVagrbOy2kQeaIWYsRCRa5IRIHJTklRd0wC8BLs
+	8U6gm98w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sS3P5-0000000FqH7-1IKr;
-	Thu, 11 Jul 2024 23:40:47 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sS5Gm-0000000G44D-3e4j;
+	Fri, 12 Jul 2024 01:40:21 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sS3P0-0000000FqGZ-0auB
-	for linux-mediatek@lists.infradead.org;
-	Thu, 11 Jul 2024 23:40:45 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id EA36961F51
-	for <linux-mediatek@lists.infradead.org>; Thu, 11 Jul 2024 23:40:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8C059C32782
-	for <linux-mediatek@lists.infradead.org>; Thu, 11 Jul 2024 23:40:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1720741239;
-	bh=CBZgcipMMlZybeftYQs7NXfySUTeTYBlI0IpELGCypA=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=M2gsl6RVjJ9n2DWbrJym/OrTfA1KlnovmTu/SysQA+S1Zd8Ynb0iyDqP1N+BN82sc
-	 PIb9JoqWoF6inCV2M6VLukwb/iGKsftVKkoXrd8IpteXOAjhL4iEHlxgBKuPiP4Zoo
-	 jSADqqXMneMJDGvmvq8pD8AgfdAdkga2Nz2Gfc9390PMI7qN8m0NILn3MH8Z5mUNSp
-	 yngahswbyqpBpVe5iy4AD97eKfORliMPD3A81M0Nzy+IkHkg+U9FefcTe8xXcgi/DQ
-	 e0QDGJejBPO+7iB8SWxaVcYNShX6r1vikmpppYlDpJyuO2GanabMYCEaUC/AqRcOtR
-	 EUf7OLRZLDl5Q==
-Received: by mail-ed1-f49.google.com with SMTP id 4fb4d7f45d1cf-58c38bcd738so242233a12.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 11 Jul 2024 16:40:39 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCXSiiKSiluiZwjUH7qligq4YWkBexx95iZ6i5m0vO5KSXFumhLyQH8UwetkX0qtDGK/doh0Tu9Jk8lj+pKZQGeTov5NRiSaI9Cf39L2pYHD5Oll
-X-Gm-Message-State: AOJu0YznPFaTIr2+q32hvyQdn846QGyQOZi51YI3dTSCA/b4/JVy/LE5
-	aF4BGjXLobN4OOpZH40e6GN02cZ7FMsfZqw3GSVbkoI8QIs6jEJgq0qOpaR2/HiHLS08VvpNRPl
-	Ow7+hnE88/SyJW1jnLs0JsXS8DoU=
-X-Google-Smtp-Source: AGHT+IE8evi5+Efy8qv1M1G33XPdeuvyM927ds8XeC+G4PA35QTRG+kMvQnIHNW1xHulZHgmozuXfxUlRWT/iulbRJk=
-X-Received: by 2002:a17:906:8a62:b0:a79:7ec8:f406 with SMTP id
- a640c23a62f3a-a798b5117e5mr180875066b.3.1720741238002; Thu, 11 Jul 2024
- 16:40:38 -0700 (PDT)
+	id 1sS5GU-0000000G40D-3Mkp;
+	Fri, 12 Jul 2024 01:40:04 +0000
+X-UUID: a43a71803fef11ef955bff358274dad2-20240711
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=eicvsSjeoobP+xiwboSkmxq2kIAFPswGtaFZzEfti1Y=;
+	b=DNGkkQdmpqWly22fprIliv1Vm0XlU8IQTyXtCCX1xIjb7lJ+6935CSPBCDJgoutvfj/GPwm6hvlEkN+RcC9NKK6Ro5+30o0r+LuqY/KNx3iCtjvYV9y249imEHaPdhCicleusTYGk9Yr42AnGaO1ffb3Ojg+kEjc1VE5b9VhOz4=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.40,REQID:cb8d38ad-b3de-4131-a846-7ac0a4a8aff3,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:ba885a6,CLOUDID:22d93ed5-0d68-4615-a20f-01d7bd41f0bb,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: a43a71803fef11ef955bff358274dad2-20240711
+Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw02.mediatek.com
+	(envelope-from <boy.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1345712413; Thu, 11 Jul 2024 18:39:55 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Fri, 12 Jul 2024 09:39:53 +0800
+Received: from APC01-PSA-obe.outbound.protection.outlook.com (172.21.101.237)
+ by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 12 Jul 2024 09:39:53 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=RY2+YYgm05ugxNYSijedD9TI9FuYXV+B3rVzISzBrqmuih12/D3nmhGJYVgONUVTqjO6wVYUxx4CNjhf1SGoGi9vD7aNzum3bvac0p/mlgciwlneb+PrFWejLj60Ha/XRolL+T3wqnkDAxljSH0S9DQShnA3GVciPh0SwbKfmATALhG25EX4fA2Z7DGq9FfRtXidAf6ZPa29/JdDH0g+4XcGqkwKVr13KWnbusomOIuqgSL2vu5k0t8+Lp8ZYZzcTq2Z8jJWZgLPw9vQjV9vSMJ2h+5JA10lbC1ZPfwTIOiyFxbuhC0UgAhCbNfIfVUTC52I+08EQ11+aa8PiAd0IQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=eicvsSjeoobP+xiwboSkmxq2kIAFPswGtaFZzEfti1Y=;
+ b=c3cpmcmkaSAkLB4PewWFVDY2pjTsknaGPXwHJ6tj/fMpH/xgYQamx4Yolim74JbpbZCYn6cJNe8RsUwcmAOufhC5izL0xS79KR+cYtjNh7pkoocwlGKBbJcfglrwDza5kc3sRz4H52AWb/lwbTTt3cnApKe9YlufPnWyzQcAW0WwHfhPLTJQjoyB0+MYKBNp3fXFYWvxENSqOBLoS8RPTf7JqlO8Fm4k+j6cf7f6uIHEXzkS0mZ7AvcffRs1tz5TYAuLuFo/kD4BoUxoP4Vd2e2BztPdTmUksKRtgRsvy2IAbcJjWqLcnGUXfwLoYIAwNM/W0fou6nqakO0HJ6tRAQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=eicvsSjeoobP+xiwboSkmxq2kIAFPswGtaFZzEfti1Y=;
+ b=KO/d1RJpXnAiAC9/PEpCKOm/T36iryubntHY3SwrDnNswRutSvrnzCyHsnHNvTgz3OD+pJOf/gOA5zyXd4qS1EjfCSoyoxDyVn085ycvx0O+N+RkNHNXs8B+32RlazgaIrKlbADJp6hUaUlPk21R8bCZ6V6eWIpWSkzF9cJCeP4=
+Received: from TYZPR03MB7867.apcprd03.prod.outlook.com (2603:1096:400:465::7)
+ by SEYPR03MB8532.apcprd03.prod.outlook.com (2603:1096:101:1fd::6) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7762.21; Fri, 12 Jul
+ 2024 01:39:51 +0000
+Received: from TYZPR03MB7867.apcprd03.prod.outlook.com
+ ([fe80::f95:7de7:753d:4b9]) by TYZPR03MB7867.apcprd03.prod.outlook.com
+ ([fe80::f95:7de7:753d:4b9%6]) with mapi id 15.20.7762.020; Fri, 12 Jul 2024
+ 01:39:51 +0000
+From: =?utf-8?B?Qm95IFd1ICjlkLPli4Poqrwp?= <Boy.Wu@mediatek.com>
+To: "tj@kernel.org" <tj@kernel.org>
+CC: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"boris@bur.io" <boris@bur.io>, "linux-block@vger.kernel.org"
+	<linux-block@vger.kernel.org>, "linux-mediatek@lists.infradead.org"
+	<linux-mediatek@lists.infradead.org>, "cgroups@vger.kernel.org"
+	<cgroups@vger.kernel.org>, "axboe@kernel.dk" <axboe@kernel.dk>,
+	=?utf-8?B?SXZlcmxpbiBXYW5nICjnjovoi7PpnJYp?= <Iverlin.Wang@mediatek.com>,
+	"josef@toxicpanda.com" <josef@toxicpanda.com>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "matthias.bgg@gmail.com"
+	<matthias.bgg@gmail.com>, "angelogioacchino.delregno@collabora.com"
+	<angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v2] blk-cgroup: Replace u64_sync with blkg_stat_lock for
+ stats update
+Thread-Topic: [PATCH v2] blk-cgroup: Replace u64_sync with blkg_stat_lock for
+ stats update
+Thread-Index: AQHa0pBR30AINLT9pky6tv6t6Zyx7bHwh18AgABGsACAATg2gIAATVoA
+Date: Fri, 12 Jul 2024 01:39:51 +0000
+Message-ID: <70c37035f006de3a4fde895ceeee92826cd280e0.camel@mediatek.com>
+References: <20240710061334.1888-1-boy.wu@mediatek.com>
+	 <Zo8HTD2AD-b51q0C@slm.duckdns.org>
+	 <6114fbad7bce9b15806bb9fee25a1075ecb53dd1.camel@mediatek.com>
+	 <ZpBIfwThiVwstlXL@slm.duckdns.org>
+In-Reply-To: <ZpBIfwThiVwstlXL@slm.duckdns.org>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: TYZPR03MB7867:EE_|SEYPR03MB8532:EE_
+x-ms-office365-filtering-correlation-id: cc518121-a923-42f0-9669-08dca21385c9
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;ARA:13230040|376014|7416014|1800799024|366016|38070700018;
+x-microsoft-antispam-message-info: =?utf-8?B?OEtUR1hZaG92SURKci9vRWhrL2pFaTZaV09ZUU0zNUwyQm5wOWVFTk1IMkFm?=
+ =?utf-8?B?Rzd1OG9MVzd2TTYySDdabFhQQWtYZldUQWZSNm9XcUM1NDR4RElWZ0hkSjdK?=
+ =?utf-8?B?NVl2WE9Sa21xTytnRzVNWXN0OUtjb1FLcTRmeEVEVWY0TXVERHFtL2tBbmhK?=
+ =?utf-8?B?VzkxZDJUbVdiSCtIUzFqUlFHRDlId09FUDB1dFZCNGxxOEMzRE82TllBVVdY?=
+ =?utf-8?B?TDZnZDNtTzJmQ3RPcDhhdGtMWTNEdHlzSnhjNjBSdnF2bDZCYXRHQXQxd1dY?=
+ =?utf-8?B?TzdTY29xb0sxWG1wSlNkRk9Bc2RTa0xFWk9ISy9TNWhvRE9VbHdYV24xZmZZ?=
+ =?utf-8?B?OHI0b2ZUQ3dhYUJxMEpWMzUwQjJxeHFwcWhyQ1FEMTNBaGozMGJBYXBZeXlW?=
+ =?utf-8?B?MFFvZGlCSzg4SGhTcWVwcnh1SkRZK2RLTEtERlpQVHp4QVhoM2hhWWpnbjZM?=
+ =?utf-8?B?TUs5YkdkTENSTHAwcjVaSVg5cVNXRkt6a0R0N2E0bXNveXBFSTQ0bWEyY3A0?=
+ =?utf-8?B?OHlHbjNIMUdaZjVEN1pSbkI1ek5iR3NTeTVsUFl3SVRVV3hCb1JLTnF2Yzkx?=
+ =?utf-8?B?bzY0WUduZVhLS1pWWUE5eEFXdU5XTEhYaW0wL2xaWTJ5U1VyVk5tMWNpMWwy?=
+ =?utf-8?B?ZEhhbllHL3hua2lSLzNhTngzS3pQRWpOYmxBVlJIWkZkK2hoN1lwaGVYcUxw?=
+ =?utf-8?B?eEk3K2toeVQyS0lwNmk1dzNKcTBoU3BvVC90Y21IcEpTOVRZL05ESTVCSDlu?=
+ =?utf-8?B?OVB5cEJ0T3ZPNGh1ek81blZIcm1rdEx6ODlNSTZJQ2RSTU9GYjRzS2VoVTFw?=
+ =?utf-8?B?bzB6QWFjZEpFeHhRYWdIM0VPTDZ5T0ZoQUw0N2R5ZnR0RWhhOXZEQzRFN291?=
+ =?utf-8?B?MXBIalo0dHpRUDJSY2kxWXhFRVpBc3Z2b2t0cnRHZW5LemJrTDRtZDlLYjRa?=
+ =?utf-8?B?emJZUDhrbFRjTUhsRkQ4SFk5ZGF2RjVJQVh0ck1CaUhNZXJHV3loYVJFdldv?=
+ =?utf-8?B?OU15b0ZZampaSUJXVEVyRks1VnFuWVZwZWp5Ym50bCtOc1dpTDRkZ2lYR2Nh?=
+ =?utf-8?B?bUQwWnUwRHJZZkFjdVBJKzZMM1o0aURQS2U1Uk00cTF4aG9sZ0EzWEhkV3lY?=
+ =?utf-8?B?M2dqc3JXSVVGb3FieXU1T3NaVk1KUFRtYVBUUXZtdDI5b0xVaW8wa0J5eEJp?=
+ =?utf-8?B?ckdOTjJXcmxNV2dEbnMxMGJ5STNJUHlTRVY4REJVMUtMRDVHSXRKMVMvcVVo?=
+ =?utf-8?B?UmtCdSt0MnBSS0hVa2QxYzBYVVJwRE85TS9VdFFiTDV5Q2hMQWFzRnB1cEdz?=
+ =?utf-8?B?MW04cEJmTXpBeVdUM09FWG1nRmVTcGs1QTU2aTZIcGNPZlA3U1ovTjdXeVNS?=
+ =?utf-8?B?c0NTdFMvZkNZOS93SWlGZERIRm8wOVpvK20wRzMrSkozTE1jL3o5aVk2ZUx1?=
+ =?utf-8?B?bHFMbjYyUGw1dUF3RHRzTXdSeVFrRktncmNNSzhCdDIxSThKY05UNGJNZGFa?=
+ =?utf-8?B?QmxQV2FpVU95Vy9KUVdxdUtyYXB5WnNIMGRmOHJZVWhaNjdpcHZPYUprL1d3?=
+ =?utf-8?B?Q2pTOG9nNmVnU3pESWNaU1cyeVpVdmpoQVljWm5Qc0FwTksvbzF5V2NkUmZZ?=
+ =?utf-8?B?YTl6ZW5KQnl2a0tET3ZsODB4WEE2NjFWYkxMeTZGbzE1Ry9PMGRpRFpqT0RT?=
+ =?utf-8?B?ZmNBUnc2VXpVVXFEWlo4NDBkM2tybzdqdXRrbnpQNmlOb0lKSjBWZytmdUho?=
+ =?utf-8?B?V2Nsd0NCWTY3V3lrMldSUzFvZ2k3YjYySk9iQkpuMGVFOXFxaStkOHFHZzRp?=
+ =?utf-8?B?T0d6cmlrMnQ5Z09acUxhUU9KbjFaZVpXZCttU0JRZDJyckhMcU9vNHFNTFFr?=
+ =?utf-8?B?N1FHaTdlM2h2aU1QV2krWG5iQm1Cakp0VWJwdXBqa3hMWHc9PQ==?=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB7867.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(7416014)(1800799024)(366016)(38070700018);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?dld6aUN3NXVLaGIvN3VQTC9EZVJnaWc3NUk2U1BiQmVHbStVTzdqYmlzQTVy?=
+ =?utf-8?B?OFVzRlJkeW5EVDRQU3lKTmVHM3hpU09oeUNobTRqWTNoMkJJWEhLMm9pM2NG?=
+ =?utf-8?B?aFZ4ZUhvOHZ3K3U4SjN2UDZSakg4VlZPd05tK1FKM0Nyb1FYUU9tOExlTnEy?=
+ =?utf-8?B?aU44YUZacFBrYVFsemsrY3M0OGVOcUp0Q3VzN0xLNjIwZzVqTk9zSlNIMkl3?=
+ =?utf-8?B?QmR1bFhKMGlMM3d5VGJ0VmFBSmh3SHlRNkozUFRDcjhLUDU0V09Ed3EvTENE?=
+ =?utf-8?B?TnZMTk5pVlhLcXcwZU5BWGU2Nm44RVFyRk90S3NZMGYvSXlSSnJBdGdYTnhy?=
+ =?utf-8?B?elM1MlZXVHhBZEN2SWFqT0d0K2hsUTY5YmVvc21JaHdQVlF6WWUwSms2dnp1?=
+ =?utf-8?B?dmRxeFlKZUR5ajZPb3k3M016eGZXUHZxV3VKSGtFNnliVnc5SzdIUFdYQUNX?=
+ =?utf-8?B?UlZjTjhqMEFJdURsUzhhdTVKdTNHV1FzWkJkRUNrc1hycmk2WEg3RUpvck5U?=
+ =?utf-8?B?SjZRZUFjT2RtOEZsMXpCTS9YOWxNb2FvNWY3bFpPVEVPaTJSTFhTZSt2T1Rm?=
+ =?utf-8?B?RHRzby96RlEvdiswTWxxckZENDI1Ynd3endoWDJ1S2RMT0t3K3NvSnBxZ3li?=
+ =?utf-8?B?Y1k1SU9YNm1wcUlDUjFPOStVVmZGZlBHeFFmdlVWWGVEaWxoL2w2cEVjYWk0?=
+ =?utf-8?B?WVluYXZhSG8xaXFkZ0JCYmdNUjhva09qYUV5RTM0Z0ZPanNBT1pMT0RrSzRv?=
+ =?utf-8?B?RFdpNXFXSHhnZy85UWh0M2J1ZVVONnNqMTFURGsydEhFWXE5YW1tUTQxaDNM?=
+ =?utf-8?B?cDlwZFRGUS9EQ1RqSFE0Zk1jWGwwODQyZU84bFYxQUVrVTNtOEtremJheDQ3?=
+ =?utf-8?B?b3IvV0ZnMGM0VW9OT3VLdk9jNXRmTVpVdjJhMEFURFhKL3BQbDlrSGVqdFZF?=
+ =?utf-8?B?ZUlDWGlRa3YyMml1VXUyZ0hETG5KREtFUGhrSGR0aDRFVU5TM2llNWlWNlBB?=
+ =?utf-8?B?dWFrbVF5WndvSXBoZXM1aHVaKzlTdHIzUmdkM1dSNXIydFdSNDZreVJXR0Ns?=
+ =?utf-8?B?UWVsb3EzSmRnRmc1REpZVCtEbkdUdlRKUXdUdXZOTk54eEQ1ZW1Ndk8wQ01X?=
+ =?utf-8?B?UUw4S2VWcktoYksvK1RRTklNdFdvSjYwVGJlSVpQQmIxQi9GdkZ0VldKMjdy?=
+ =?utf-8?B?Smx5bnNlQXg5SjdmM2dQS0FSQ01Sdk5YL29wRWFXZ3ZIU3lhSjJ1NmhuYzUx?=
+ =?utf-8?B?UHN5dzRrTm1RamhCaE9lN0QxeWdERW9uR2RhdFpUWTZUamZ1dFBSWG5lNFlu?=
+ =?utf-8?B?QmtJVE4rYUQ4L1JjMHVPdUc4cXBlQlpYMG9iUU9mb3JsdERwUkZGa0hZZk10?=
+ =?utf-8?B?MDFRc1hlZTNwSS9jY2cwS0xHZndGbTNCQW8vQ3FCMUdBQTkxYVcyVnYxTmd4?=
+ =?utf-8?B?aFhmVWQyOGYrZ0J1bmY4ajhUL3ZaU1dIU2Vmc0tPZksvRVFCWUhrUDZkaEhT?=
+ =?utf-8?B?anMxSmEvaG9aRWs5TTcvbW16R0c0ZXd3WHFTR1hnUW0rRFdmalNiRkRHbU5C?=
+ =?utf-8?B?bWlKYTUxWnJXbU1JR2VrNXdpcVlQTk00c2Z0aFlwTWxvcGp3NzRyaTBhN3Vl?=
+ =?utf-8?B?SHpvWFFhalVod25lbWVKMmE3WUphSTJJcVltaFR6cXdUWEt3blhyd2xxTWpD?=
+ =?utf-8?B?SWFBdDlTSTI4UGxVN3FhOFNlbDlBUlN1ajVOblAvdHF1dWVzSDVFYWRDZUpC?=
+ =?utf-8?B?dXNjOGh6ZDFQWi9XR015eWdEdFIvN25Sdm1UaVZIakNTMEtsYWZGK3o2dVJr?=
+ =?utf-8?B?QllIUVZvdk1DYmJ4RTE1YVdLM2tET2lmd0d5SHJnOXBnY1N6Qk1GZStycDRK?=
+ =?utf-8?B?TzY1TUFHQjIwSjZaVmx3c3JWcEpDM05lN09sZTI2NDZUeUVZNG1BQjB3TC9W?=
+ =?utf-8?B?WGZPRlkzaXJQam1mS3laSElvMmRXWVFRVzUxbjlMaGN2K0hMWXNWblhSaWJm?=
+ =?utf-8?B?K3NNREFKOXZ3VHhvOVFkUUtxTE55UkFBWXVhbHlqWGNKc05pS3N0T3pmOHNh?=
+ =?utf-8?B?K0tDWU5NSjRHNWpSMXkzRld6Ry9XU1lRS2Z0THowRUcrR090d1FLbUpEZUhR?=
+ =?utf-8?Q?eF4F2TujBZEe/G9CC3+Ns5/AF?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <3A8C10CE13643F42877664B197E81119@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-References: <20240711175156.4465-1-spasswolf@web.de>
-In-Reply-To: <20240711175156.4465-1-spasswolf@web.de>
-From: Sean Wang <sean.wang@kernel.org>
-Date: Thu, 11 Jul 2024 18:40:24 -0500
-X-Gmail-Original-Message-ID: <CAGp9LzoXMoAW6dVZjTf-JcD_wiU4yXpGwkLaVyWXTkaV2MOKwg@mail.gmail.com>
-Message-ID: <CAGp9LzoXMoAW6dVZjTf-JcD_wiU4yXpGwkLaVyWXTkaV2MOKwg@mail.gmail.com>
-Subject: Re: patch 46/47 causes NULL pointer deref on mt7921
-To: Bert Karwatzki <spasswolf@web.de>
-Cc: deren.wu@mediatek.com, linux-mediatek@lists.infradead.org, 
-	linux-wireless@vger.kernel.org, lorenzo.bianconi@redhat.com, 
-	mingyen.hsieh@mediatek.com, nbd@nbd.name, sean.wang@mediatek.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB7867.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: cc518121-a923-42f0-9669-08dca21385c9
+X-MS-Exchange-CrossTenant-originalarrivaltime: 12 Jul 2024 01:39:51.2146
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: KQ2PHx41ZL9Aa07nxRLKpLWx+bG3tRZ62rXNUu6UPBcbD+d14MvQTVvTrLWREa2GAFO9RHW/UwEjpt4Rr5weKw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEYPR03MB8532
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240711_164043_937185_B8F7DF67 
-X-CRM114-Status: GOOD (  23.82  )
+X-CRM114-CacheID: sfid-20240711_184002_904724_9CA30594 
+X-CRM114-Status: GOOD (  19.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,388 +215,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Bert,
-
-Thanks for the detailed debug log. I've quickly made a change to fix
-the issue. Right now, I can't access the test environment, but I'll
-test it and send it out as soon as possible. Here's the patch.
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-index 2e6268cb06c0..1bab93d049df 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-@@ -303,6 +303,7 @@ mt7921_add_interface(struct ieee80211_hw *hw,
-struct ieee80211_vif *vif)
-
-        mvif->bss_conf.mt76.omac_idx =3D mvif->bss_conf.mt76.idx;
-        mvif->phy =3D phy;
-+       mvif->bss_conf.vif =3D mvif;
-        mvif->bss_conf.mt76.band_idx =3D 0;
-        mvif->bss_conf.mt76.wmm_idx =3D mvif->bss_conf.mt76.idx %
-MT76_CONNAC_MAX_WMM_SETS;
-
-On Thu, Jul 11, 2024 at 12:52=E2=80=AFPM Bert Karwatzki <spasswolf@web.de> =
-wrote:
->
-> Since linux-next-20240711 my linux system fails to start with a NULL poin=
-ter
-> error. Hardware: MSI Alpha 15 Laptop Ryzen 5800H with
-> 04:00.0 Network controller: MEDIATEK Corp. MT7921K (RZ608) Wi-Fi 6E 80MHz
->
-> [  T843] BUG: unable to handle page fault for address: ffffffffffffffa0
-> [  T843] #PF: supervisor read access in kernel mode
-> [  T843] #PF: error_code(0x0000) - not-present page
-> [  T843] PGD e5c81a067 P4D e5c81a067 PUD e5c81c067 PMD 0
-> [  T843] Oops: Oops: 0000 [#1] PREEMPT SMP NOPTI
-> [  T843] CPU: 2 UID: 0 PID: 843 Comm: NetworkManager Not tainted 6.10.0-r=
-c7-next-20240711-dirty #9
-> [  T843] Hardware name: Micro-Star International Co., Ltd. Alpha 15 B5EEK=
-/MS-158L, BIOS E158LAMS.107 11/10/2021
-> [  T843] RIP: 0010:mt792x_mac_link_bss_remove+0x24/0x110 [mt792x_lib]
-> [  T843] Code: 84 00 00 00 00 00 f3 0f 1e fa 41 56 41 55 41 54 49 89 f4 5=
-5 48 89 fd 53 48 8b 46 18 48 89 d3 44 0f b7 aa b8 00 00 00 8b 56 60 <66> 83=
- 78 a0 00 74 0f 83 fa 0e 77 0a 4c 8b b4 d0 28 ff ff ff eb 07
-> [  T843] RSP: 0018:ffffbc1b43b3b688 EFLAGS: 00010282
-> [  T843] RAX: 0000000000000000 RBX: ffff906ab80a9f00 RCX: 000fffffffe0000=
-0
-> [  T843] RDX: 0000000000000000 RSI: ffff906ab80a9e20 RDI: ffff9069c171200=
-0
-> [  T843] RBP: ffff9069c1712000 R08: ffff9069c0402018 R09: ffffffffab22672=
-0
-> [  T843] R10: 0000000000000000 R11: 0000000000000000 R12: ffff906ab80a9e2=
-0
-> [  T843] R13: 0000000000000013 R14: 0000000000000000 R15: ffff906ab80a999=
-0
-> [  T843] FS:  00007fb2edd7b500(0000) GS:ffff90786e680000(0000) knlGS:0000=
-000000000000
-> [  T843] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-> [  T843] CR2: ffffffffffffffa0 CR3: 000000010a104000 CR4: 0000000000750ef=
-0
-> [  T843] PKRU: 55555554
-> [  T843] Call Trace:
-> [  T843]  <TASK>
-> [  T843]  ? __die+0x1e/0x60
-> [  T843]  ? page_fault_oops+0x157/0x450
-> [  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
-> [  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
-> [  T843]  ? search_bpf_extables+0x5a/0x80
-> [  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
-> [  T843]  ? exc_page_fault+0x2bb/0x670
-> [  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
-> [  T843]  ? lock_timer_base+0x71/0x90
-> [  T843]  ? asm_exc_page_fault+0x26/0x30
-> [  T843]  ? mt792x_mac_link_bss_remove+0x24/0x110 [mt792x_lib]
-> [  T843]  ? mt792x_remove_interface+0x6e/0x90 [mt792x_lib]
-> [  T843]  ? ieee80211_do_stop+0x507/0x7e0 [mac80211]
-> [  T843]  ? ieee80211_stop+0x53/0x190 [mac80211]
-> [  T843]  ? __dev_close_many+0xa5/0x120
-> [  T843]  ? __dev_change_flags+0x18c/0x220
-> [  T843]  ? dev_change_flags+0x21/0x60
-> [  T843]  ? do_setlink+0xdf9/0x11d0
-> [  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
-> [  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
-> [  T843]  ? security_sock_rcv_skb+0x33/0x50
-> [  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
-> [  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
-> [  T843]  ? __nla_validate_parse+0x61/0xd10
-> [  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
-> [  T843]  ? genl_done+0x53/0x80
-> [  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
-> [  T843]  ? netlink_dump+0x357/0x410
-> [  T843]  ? __rtnl_newlink+0x5d6/0x980
-> [  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
-> [  T843]  ? genl_family_rcv_msg_dumpit+0xdf/0xf0
-> [  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
-> [  T843]  ? __kmalloc_cache_noprof+0x44/0x210
-> [  T843]  ? rtnl_newlink+0x42/0x60
-> [  T843]  ? rtnetlink_rcv_msg+0x152/0x3f0
-> [  T843]  ? mptcp_pm_nl_dump_addr+0x180/0x180
-> [  T843]  ? rtnl_calcit.isra.0+0x130/0x130
-> [  T843]  ? netlink_rcv_skb+0x56/0x100
-> [  T843]  ? netlink_unicast+0x199/0x290
-> [  T843]  ? netlink_sendmsg+0x21d/0x490
-> [  T843]  ? __sock_sendmsg+0x78/0x80
-> [  T843]  ? ____sys_sendmsg+0x23f/0x2e0
-> [  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
-> [  T843]  ? copy_msghdr_from_user+0x68/0xa0
-> [  T843]  ? ___sys_sendmsg+0x81/0xd0
-> [  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
-> [  T843]  ? crng_fast_key_erasure+0xbc/0xf0
-> [  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
-> [  T843]  ? get_random_bytes_user+0x126/0x140
-> [  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
-> [  T843]  ? __fdget+0xb1/0xe0
-> [  T843]  ? __sys_sendmsg+0x56/0xa0
-> [  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
-> [  T843]  ? do_syscall_64+0x5f/0x170
-> [  T843]  ? entry_SYSCALL_64_after_hwframe+0x55/0x5d
-> [  T843]  </TASK>
-> [  T843] Modules linked in: bnep nls_ascii nls_cp437 vfat fat snd_ctl_led=
- snd_hda_codec_realtek snd_hda_codec_generic snd_hda_scodec_component snd_h=
-da_codec_hdmi btusb btrtl btintel snd_hda_intel uvcvideo btbcm snd_intel_ds=
-pcfg btmtk snd_hda_codec snd_soc_dmic snd_acp3x_pdm_dma snd_acp3x_rn videob=
-uf2_vmalloc snd_hwdep uvc bluetooth videobuf2_memops snd_soc_core snd_hda_c=
-ore videobuf2_v4l2 snd_pcm_oss snd_mixer_oss videodev snd_pcm snd_rn_pci_ac=
-p3x videobuf2_common snd_acp_config snd_timer msi_wmi snd_soc_acpi ecdh_gen=
-eric amd_atl mc ecc sparse_keymap edac_mce_amd wmi_bmof snd ccp k10temp snd=
-_pci_acp3x soundcore ac battery button hid_sensor_prox hid_sensor_gyro_3d h=
-id_sensor_als hid_sensor_accel_3d hid_sensor_magn_3d hid_sensor_trigger ind=
-ustrialio_triggered_buffer joydev kfifo_buf industrialio amd_pmc hid_sensor=
-_iio_common evdev hid_multitouch serio_raw mt7921e mt7921_common mt792x_lib=
- mt76_connac_lib mt76 mac80211 libarc4 cfg80211 rfkill msr fuse nvme_fabric=
-s configfs efi_pstore efivarfs autofs4 ext4
-> [  T843]  crc32c_generic mbcache jbd2 usbhid amdgpu i2c_algo_bit drm_ttm_=
-helper xhci_pci ttm drm_exec drm_suballoc_helper xhci_hcd amdxcp drm_buddy =
-hid_sensor_hub usbcore nvme gpu_sched mfd_core hid_generic crc32c_intel psm=
-ouse drm_display_helper amd_sfh i2c_piix4 usb_common nvme_core crc16 r8169 =
-i2c_hid_acpi i2c_hid hid i2c_designware_platform i2c_designware_core
-> [  T843] CR2: ffffffffffffffa0
-> [  T843] ---[ end trace 0000000000000000 ]---
->
-> I bisected the error between linux-6.10-rc7 and linux-next-20240711 and t=
-he
-> first offending commit which showed a NULL pointer error was
-> https://lore.kernel.org/all/20240613030241.5771-47-sean.wang@kernel.org/
-> but the error is actually a different but most likely related NULL pointe=
-r error.
-> To debug this I added some printk to the offending commit:
->
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt792x.h b/drivers/net/wi=
-reless/mediatek/mt76/mt792x.h
-> index 69eb8dac0b70..c17195559b82 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt792x.h
-> +++ b/drivers/net/wireless/mediatek/mt76/mt792x.h
-> @@ -230,6 +230,7 @@ mt792x_vif_to_link(struct mt792x_vif *mvif, u8 link_i=
-d)
->         struct ieee80211_vif *vif;
->
->         vif =3D container_of((void *)mvif, struct ieee80211_vif, drv_priv=
-);
-> +       printk(KERN_INFO "%s %d: vif =3D %px\n", __func__, __LINE__, vif)=
-;
->
->         if (!ieee80211_vif_is_mld(vif) ||
->             link_id >=3D IEEE80211_LINK_UNSPECIFIED)
-> @@ -259,6 +260,7 @@ mt792x_link_conf_to_mconf(struct ieee80211_bss_conf *=
-link_conf)
->  {
->         struct ieee80211_vif *vif =3D link_conf->vif;
->         struct mt792x_vif *mvif =3D (struct mt792x_vif *)vif->drv_priv;
-> +       printk(KERN_INFO "%s %d: vif =3D %px mvif =3D %px\n", __func__, _=
-_LINE__, vif, mvif);
->
->         return mt792x_vif_to_link(mvif, link_conf->link_id);
->  }
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_core.c b/drivers/n=
-et/wireless/mediatek/mt76/mt792x_core.c
-> index 813296fad0ed..ff627f5986bd 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt792x_core.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
-> @@ -119,23 +119,34 @@ static void mt792x_mac_link_bss_remove(struct mt792=
-x_dev *dev,
->  {
->         struct mt792x_bss_conf *mconf =3D mt792x_link_conf_to_mconf(link_=
-conf);
->         int idx =3D mlink->wcid.idx;
-> +       printk(KERN_INFO "%s %d\n", __func__, __LINE__);
->
->         mt792x_mutex_acquire(dev);
-> +       printk(KERN_INFO "%s %d\n", __func__, __LINE__);
->         mt76_connac_free_pending_tx_skbs(&dev->pm, &mlink->wcid);
-> +       printk(KERN_INFO "%s %d\n", __func__, __LINE__);
->         mt76_connac_mcu_uni_add_dev(&dev->mphy, link_conf, &mlink->wcid, =
-false);
-> +       printk(KERN_INFO "%s %d\n", __func__, __LINE__);
->
->         rcu_assign_pointer(dev->mt76.wcid[idx], NULL);
-> +       printk(KERN_INFO "%s %d\n", __func__, __LINE__);
->
->         dev->mt76.vif_mask &=3D ~BIT_ULL(mconf->mt76.idx);
-> +       printk(KERN_INFO "%s %d: mconf->vif =3D %px\n", __func__, __LINE_=
-_, mconf->vif);
->         mconf->vif->phy->omac_mask &=3D ~BIT_ULL(mconf->mt76.omac_idx);
-> +       printk(KERN_INFO "%s %d\n", __func__, __LINE__);
->         mt792x_mutex_release(dev);
-> +       printk(KERN_INFO "%s %d\n", __func__, __LINE__);
->
->         spin_lock_bh(&dev->mt76.sta_poll_lock);
-> +       printk(KERN_INFO "%s %d\n", __func__, __LINE__);
->         if (!list_empty(&mlink->wcid.poll_list))
->                 list_del_init(&mlink->wcid.poll_list);
->         spin_unlock_bh(&dev->mt76.sta_poll_lock);
-> +       printk(KERN_INFO "%s %d\n", __func__, __LINE__);
->
->         mt76_wcid_cleanup(&dev->mt76, &mlink->wcid);
-> +       printk(KERN_INFO "%s %d\n", __func__, __LINE__);
->  }
->
->  void mt792x_remove_interface(struct ieee80211_hw *hw,
-> @@ -143,6 +154,8 @@ void mt792x_remove_interface(struct ieee80211_hw *hw,
->  {
->         struct mt792x_vif *mvif =3D (struct mt792x_vif *)vif->drv_priv;
->         struct mt792x_dev *dev =3D mt792x_hw_dev(hw);
-> +       printk(KERN_INFO "%s %d: hw =3D %px vif =3D %px mvif =3D %px dev =
-=3D %px\n",
-> +                       __func__, __LINE__, hw, vif, mvif, dev);
->
->         mt792x_mac_link_bss_remove(dev, &vif->bss_conf, &mvif->sta.deflin=
-k);
->  }
->
-> With these I get the following error message on startup:
->
-> [  T858] mt792x_remove_interface 157: hw =3D ffff92dc11560900 vif =3D fff=
-f92dbe072d970 mvif =3D ffff92dbe072de00 dev =3D ffff92dc11562000
-> [  T858] mt792x_link_conf_to_mconf 263: vif =3D ffff92dbe072d970 mvif =3D=
- ffff92dbe072de00
-> [  T858] mt792x_vif_to_link 233: vif =3D ffff92dbe072d970
-> [  T858] mt792x_mac_link_bss_remove 122
-> [  T858] mt792x_mac_link_bss_remove 125
-> [  T858] mt792x_mac_link_bss_remove 127
-> [  T858] mt792x_mac_link_bss_remove 129
-> [  T858] mt792x_mac_link_bss_remove 132
-> [  T858] mt792x_mac_link_bss_remove 135: mconf->vif =3D 0000000000000000
-> [  T858] BUG: kernel NULL pointer dereference, address: 00000000000004b8
-> [  T858] #PF: supervisor read access in kernel mode
-> [  T858] #PF: error_code(0x0000) - not-present page
-> [  T858] PGD 0 P4D 0
-> [  T858] Oops: Oops: 0000 [#1] PREEMPT SMP NOPTI
-> [  T858] CPU: 0 PID: 858 Comm: NetworkManager Not tainted 6.10.0-rc5-debu=
-g-01238-g1541d63c5fe2-dirty #30
-> [  T858] Hardware name: Micro-Star International Co., Ltd. Alpha 15 B5EEK=
-/MS-158L, BIOS E158LAMS.107 11/10/2021
-> [  T858] RIP: 0010:mt792x_remove_interface+0x1df/0x2e0 [mt792x_lib]
-> [  T858] Code: 85 f0 30 00 00 49 8b 4f 18 e8 5d 4f f0 f7 49 8b 47 18 41 0=
-f b6 4f 01 ba 89 00 00 00 48 c7 c6 90 24 05 c1 48 c7 c7 36 33 05 c1 <48> 8b=
- 80 b8 04 00 00 49 d3 e4 49 f7 d4 4c 21 a0 10 27 00 00 4c 8d
-> [  T858] RSP: 0018:ffff9fcf03db7698 EFLAGS: 00010246
-> [  T858] RAX: 0000000000000000 RBX: ffff92dbe072d970 RCX: 000000000000000=
-0
-> [  T858] RDX: 0000000000000089 RSI: ffffffffc1052490 RDI: ffffffffc105333=
-6
-> [  T858] RBP: ffff92dc11562000 R08: 0000000000000000 R09: 000000000000000=
-3
-> [  T858] R10: ffff9fcf03db7550 R11: ffffffffba099d28 R12: 000000000000000=
-1
-> [  T858] R13: ffff92dbe072ded8 R14: ffff92dc1156a150 R15: ffff92dbe072de0=
-0
-> [  T858] FS:  00007fa13c515500(0000) GS:ffff92ea6e600000(0000) knlGS:0000=
-000000000000
-> [  T858] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-> [  T858] CR2: 00000000000004b8 CR3: 00000001046a2000 CR4: 0000000000750ef=
-0
-> [  T858] PKRU: 55555554
-> [  T858] Call Trace:
-> [  T858]  <TASK>
-> [  T858]  ? __die+0x1e/0x60
-> [  T858]  ? page_fault_oops+0x157/0x450
-> [  T858]  ? _prb_read_valid+0x273/0x2e0
-> [  T858]  ? srso_alias_return_thunk+0x5/0xfbef5
-> [  T858]  ? exc_page_fault+0x331/0x670
-> [  T858]  ? srso_alias_return_thunk+0x5/0xfbef5
-> [  T858]  ? prb_read_valid+0x16/0x20
-> [  T858]  ? asm_exc_page_fault+0x26/0x30
-> [  T858]  ? mt792x_remove_interface+0x1df/0x2e0 [mt792x_lib]
-> [  T858]  ? mt792x_remove_interface+0x1c3/0x2e0 [mt792x_lib]
-> [  T858]  ? ieee80211_do_stop+0x507/0x7e0 [mac80211]
-> [  T858]  ? ieee80211_stop+0x53/0x190 [mac80211]
-> [  T858]  ? __dev_close_many+0xa5/0x120
-> [  T858]  ? __dev_change_flags+0x18c/0x220
-> [  T858]  ? dev_change_flags+0x21/0x60
-> [  T858]  ? do_setlink+0xdf9/0x11d0
-> [  T858]  ? srso_alias_return_thunk+0x5/0xfbef5
-> [  T858]  ? __kmalloc_large_node+0x7e/0xb0
-> [  T858]  ? srso_alias_return_thunk+0x5/0xfbef5
-> [  T858]  ? srso_alias_return_thunk+0x5/0xfbef5
-> [  T858]  ? security_sock_rcv_skb+0x33/0x50
-> [  T858]  ? srso_alias_return_thunk+0x5/0xfbef5
-> [  T858]  ? srso_alias_return_thunk+0x5/0xfbef5
-> [  T858]  ? __nla_validate_parse+0x61/0xd10
-> [  T858]  ? srso_alias_return_thunk+0x5/0xfbef5
-> [  T858]  ? genl_done+0x53/0x80
-> [  T858]  ? srso_alias_return_thunk+0x5/0xfbef5
-> [  T858]  ? netlink_dump+0x357/0x410
-> [  T858]  ? __rtnl_newlink+0x5d1/0x980
-> [  T858]  ? srso_alias_return_thunk+0x5/0xfbef5
-> [  T858]  ? genl_family_rcv_msg_dumpit+0xdf/0xf0
-> [  T858]  ? srso_alias_return_thunk+0x5/0xfbef5
-> [  T858]  ? kmalloc_trace_noprof+0x44/0x210
-> [  T858]  ? rtnl_newlink+0x42/0x60
-> [  T858]  ? rtnetlink_rcv_msg+0x14d/0x3f0
-> [  T858]  ? mptcp_pm_nl_dump_addr+0x180/0x180
-> [  T858]  ? rtnl_calcit.isra.0+0x130/0x130
-> [  T858]  ? netlink_rcv_skb+0x56/0x100
-> [  T858]  ? netlink_unicast+0x199/0x290
-> [  T858]  ? netlink_sendmsg+0x21d/0x490
-> [  T858]  ? __sock_sendmsg+0x78/0x80
-> [  T858]  ? ____sys_sendmsg+0x23f/0x2e0
-> [  T858]  ? srso_alias_return_thunk+0x5/0xfbef5
-> [  T858]  ? copy_msghdr_from_user+0x68/0xa0
-> [  T858]  ? ___sys_sendmsg+0x81/0xd0
-> [  T858]  ? srso_alias_return_thunk+0x5/0xfbef5
-> [  T858]  ? crng_fast_key_erasure+0xbc/0xf0
-> [  T858]  ? srso_alias_return_thunk+0x5/0xfbef5
-> [  T858]  ? get_random_bytes_user+0x126/0x140
-> [  T858]  ? srso_alias_return_thunk+0x5/0xfbef5
-> [  T858]  ? __fdget+0xb1/0xe0
-> [  T858]  ? __sys_sendmsg+0x56/0xa0
-> [  T858]  ? srso_alias_return_thunk+0x5/0xfbef5
-> [  T858]  ? do_syscall_64+0x5f/0x170
-> [  T858]  ? entry_SYSCALL_64_after_hwframe+0x55/0x5d
-> [  T858]  </TASK>
-> [  T858] Modules linked in: cmac bnep nls_ascii nls_cp437 vfat fat snd_ct=
-l_led snd_hda_codec_realtek snd_hda_codec_generic snd_hda_scodec_component =
-btusb snd_hda_codec_hdmi btrtl btintel btbcm btmtk snd_hda_intel amd_atl sn=
-d_intel_dspcfg bluetooth snd_acp3x_pdm_dma snd_soc_dmic snd_acp3x_rn snd_hd=
-a_codec uvcvideo snd_soc_core videobuf2_vmalloc uvc snd_hwdep videobuf2_mem=
-ops videobuf2_v4l2 snd_hda_core videodev snd_pcm_oss snd_mixer_oss snd_pcm =
-snd_rn_pci_acp3x snd_acp_config videobuf2_common snd_timer msi_wmi snd_soc_=
-acpi ecdh_generic ecc mc sparse_keymap edac_mce_amd snd wmi_bmof k10temp cc=
-p snd_pci_acp3x soundcore battery ac button joydev hid_sensor_magn_3d hid_s=
-ensor_gyro_3d hid_sensor_als hid_sensor_accel_3d hid_sensor_prox hid_sensor=
-_trigger industrialio_triggered_buffer kfifo_buf industrialio amd_pmc hid_s=
-ensor_iio_common evdev hid_multitouch serio_raw mt7921e mt7921_common mt792=
-x_lib mt76_connac_lib mt76 mac80211 libarc4 cfg80211 rfkill msr fuse nvme_f=
-abrics efi_pstore configfs efivarfs autofs4 ext4
-> [  T858]  crc32c_generic crc16 mbcache jbd2 usbhid amdgpu i2c_algo_bit xh=
-ci_pci drm_ttm_helper ttm xhci_hcd drm_exec drm_suballoc_helper amdxcp nvme=
- drm_buddy hid_sensor_hub usbcore gpu_sched nvme_core mfd_core hid_generic =
-crc32c_intel psmouse amd_sfh i2c_piix4 usb_common t10_pi drm_display_helper=
- r8169 i2c_hid_acpi i2c_hid hid i2c_designware_platform i2c_designware_core
-> [  T858] CR2: 00000000000004b8
-> [  T858] ---[ end trace 0000000000000000 ]---
->
-> So the problem is here that mconf->vif is still NULL probably because
-> on mt7921 nobody is bothering to set it.
->
-> I did a similar investigation for the error in linux-next-20240711
->
-> void mt792x_mac_link_bss_remove(struct mt792x_dev *dev,
->                                 struct mt792x_bss_conf *mconf,
->                                 struct mt792x_link_sta *mlink)
-> {
->         struct ieee80211_vif *vif =3D container_of((void *)mconf->vif,
->                                                  struct ieee80211_vif, dr=
-v_priv);
->         struct ieee80211_bss_conf *link_conf;
->         int idx =3D mlink->wcid.idx;
->
->         printk(KERN_INFO "%s %d: dev =3D %px mconf =3D %px mlink =3D %px =
-vif =3D %px\n",
->                         __func__, __LINE__, dev, mconf, mlink, vif);
->         link_conf =3D mt792x_vif_to_bss_conf(vif, mconf->link_id);
->
-> This leads to the following message on startup
->
-> [  T848] mt792x_mac_link_bss_remove 147: dev =3D ffff9403c1672000 mconf =
-=3D ffff9403c1a35e20 mlink =3D ffff9403c1a35f00 vif =3D fffffffffffffb70
-> [  T848] BUG: unable to handle page fault for address: ffffffffffffffa0
-> [  T848] #PF: supervisor read access in kernel mode
-> [  T848] #PF: error_code(0x0000) - not-present page
-> [skipped backtrace]
->
-> showing that vif is an invalid (though not NULL) pointer here, too.
->
-> Bert Karwatzki
+T24gVGh1LCAyMDI0LTA3LTExIGF0IDExOjAyIC0xMDAwLCB0akBrZXJuZWwub3JnIHdyb3RlOg0K
+PiAgCSANCj4gRXh0ZXJuYWwgZW1haWwgOiBQbGVhc2UgZG8gbm90IGNsaWNrIGxpbmtzIG9yIG9w
+ZW4gYXR0YWNobWVudHMgdW50aWwNCj4geW91IGhhdmUgdmVyaWZpZWQgdGhlIHNlbmRlciBvciB0
+aGUgY29udGVudC4NCj4gIEhlbGxvLA0KPiANCj4gT24gVGh1LCBKdWwgMTEsIDIwMjQgYXQgMDI6
+MjU6MjlBTSArMDAwMCwgQm95IFd1ICjlkLPli4PoqrwpIHdyb3RlOg0KPiAuLi4NCj4gPiBJIGNh
+biByZW1vdmUgdGhlIDMyYml0IG9ubHkgZGVmaW5lLCBidXQgSSB0aGluayB3ZSBuZWVkIHRvIGFk
+ZCBiYWNrDQo+IHRoZQ0KPiA+IHU2NCBzeW5jLCBiZWNhdXNlIHRoZSBzcGluIGxvY2sgYW5kIHRo
+ZSB1NjQgc3luYyBzZXJ2ZSBkaWZmZXJlbnQNCj4gPiBwdXJwb3Nlcy4gVGhlIHNwaW4gbG9jayBp
+cyBmb3IgaGFuZGxpbmcgY29uY3VycmVudCBwcm9ibGVtcyBmcm9tDQo+ID4gZGlmZmVyZW50IENQ
+VXMgdXBkYXRpbmcgc3RhdHMsIGFuZCB1NjQgc3luYyBpcyBmb3IgdXBkYXRpbmcgNjQgYml0cw0K
+PiA+IGRhdGEgYW5kIGZldGNoaW5nIDY0IGJpdHMgZGF0YSBmcm9tIGRpZmZlcmVudCBDUFVzIGlu
+IDMyYml0IFNNUA0KPiA+IHN5c3RlbXMuDQo+IA0KPiBIbW0uLi4gc28gd2hhdCBJJ20gc3VnZ2Vz
+dGluZyBpcyB1c2luZyB1NjRfc3luYyBmb3IgdGhlIHBlci1jcHUgc3RhdA0KPiBzdHJ1Y3R1cmUg
+YXMgdGhleSBhcmUgZ3VhcmFudGVlZCB0byBoYXZlIG9ubHkgb25lIHVwZGF0ZXIgd2l0aCBpcnEN
+Cj4gZGlzYWJsZWQNCj4gYW5kIHVzZSBhIHNwaW5sb2NrIGZvciB0aGUgc2hhcmVkIGlvc3RhdCB3
+aGljaCBjYW4gaGF2ZSBtdWx0aXBsZQ0KPiB1cGRhdGVycw0KPiBhbmQgaXNuJ3QgYWNjZXNzZWQg
+dGhhdCBmcmVxdWVudGx5Lg0KPiANCj4gVGhhbmtzLg0KPiANCj4gLS0gDQo+IHRlanVuDQoNCkkg
+YWdyZWUsIGJ1dCBmb3IgbXVsdGlwbGUgdXBkYXRlcnMsIHdlIG5vdCBvbmx5IG5lZWQgYSBzcGlu
+IGxvY2sgYnV0DQphbHNvIG5lZWQgdTY0X3N5bmMgZm9yIDMyYml0IFNNUCBzeXN0ZW1zIGJlY2F1
+c2UgdTY0X3N0YXRzX2ZldGNoIGlzIG5vdA0KcHJvdGVjdGVkIGJ5IHRoZSBzcGluIGxvY2sgYmxr
+Z19zdGF0X2xvY2suIElmIHJlbW92aW5nIHU2NCBzeW5jLCB0aGVuDQpvbmUgQ1BVIGZldGNoZXMg
+ZGF0YSB3aGlsZSBhbm90aGVyIENQVSBpcyB1cGRhdGluZywgbWF5IGdldCBhIDY0IGJpdHMNCmRh
+dGEgd2l0aCBvbmx5IDMyIGJpdHMgdXBkYXRlZCwgd2hpbGUgdGhlIG90aGVyIDMyIGJpdHMgYXJl
+IG5vdCB1cGRhdGVkDQp5ZXQuIFdlIGNhbiBzZWUgdGhhdCBibGtjZ19pb3N0YXRzX3VwZGF0ZSBp
+cyBwcm90ZWN0ZWQgYnkgYm90aCB1NjRfc3luYw0KYW5kIHRoZSBzcGluIGxvY2sgYmxrZ19zdGF0
+X2xvY2sgaW4gX19ibGtjZ19yc3RhdF9mbHVzaC4NClRodXMsIEkgdGhpbmsgd2Ugc2hvdWxkIGtl
+ZXAgdGhlIHU2NF9zeW5jIGFuZCBqdXN0IGFkZCB0aGUgc3Bpbg0KbG9jayBibGtnX3N0YXRfbG9j
+aywgbm90IHJlcGxhY2UgdTY0X3N5bmMgd2l0aCB0aGUgc3BpbiBsb2NrLg0KDQotLQ0KQm95Lld1
+DQo=
 
