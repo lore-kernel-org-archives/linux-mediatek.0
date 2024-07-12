@@ -4,76 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6FDFC2BD09
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jul 2024 09:55:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E208C3DA4A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jul 2024 09:58:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=rTcWd7Y+2uU+htlZ+Zs0y/k1MjeuEU+D5s5qrsCnvug=; b=c4gcE1zHtXtA3PqBXD9jyYsEKp
-	UCemIUA32/aTrMl6uQFTGCfyvEIC1dBjvS23Spv6iRg6CVglWPcobvkxE5fs7oeO2LTRPAHSn7qI9
-	uZ8es/yoqyc17LJp8pVwNe60r2ViZhYpIziFVdoG8Lg2catJym0yTiSUmKCAVTnjUv1n/MX4LQYp4
-	/jtZQwgUR0AgmRQJe7kaqEm9mX/knjHMGfIkwaeBJ5yVH4Bj7j2z/hh4hmiLoRxx3NJCNGMCcIIPK
-	LubQyZx/eGUMUgkJMfU2N2zHtXxNqz+m/CqObiETe5L7W2VpLiWAUr9r/r9piuQs/cD2QkUgZ8PrW
-	CzNTcJtw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yIVNhiC49pu3LQQuucdZLz/ASyKjQzHX04ThHbZ/y7U=; b=XO+XlmeUcb0jSLMHAICFu5BhN1
+	QJQCS4zovjzbLBx7eywAxYeO1JTdl+USRk/7vTyR287dg/KmYUl50pUM1Bfe8XEHmOlhqx1GP2c37
+	s3+oW016ykbTWdvIAIet2OBaIgoHKxnKwq10KzbKiShZd9x/v6FR+Wh4nFe/9SI8iNSk39L89b2cd
+	ZwAMTXe6uC+1q+E88lOQmxJP1i37zvA7S0jVTHmre81Jmf3AMp+mzwi5rx0wuOsUSBG1oYM5yIRjJ
+	v09pfApime4ZGxff+QnhPfo/rrmGGItRJmE1FAhD+/7oHs4F6lsitqQ7764sqPvulR6NDZiubCx6F
+	NwIPoHEA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sSD04-0000000HCLc-23St;
-	Fri, 12 Jul 2024 09:55:36 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1sSD3B-0000000HDFR-1OZK;
+	Fri, 12 Jul 2024 09:58:49 +0000
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sSCzm-0000000HCFq-1HSX
+	id 1sSD38-0000000HDDq-2PfV
 	for linux-mediatek@lists.infradead.org;
-	Fri, 12 Jul 2024 09:55:20 +0000
-X-UUID: d511c106403411efa6c87f6b4542ff6b-20240712
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=rTcWd7Y+2uU+htlZ+Zs0y/k1MjeuEU+D5s5qrsCnvug=;
-	b=DVn3TVNWgxFWZRxW+NZ19Gxv8ru2SoaMa8UvOuI/f7DgWye70LgJ1s1xcQpG3IA7IxJZZMrXJjQiJqF1DxQaNkHW5BffIn8oPBQTvY2UzSu+C3RbMgxp6nFumZoS2jdynBWIyC1iPvsZXWE7gQd5vUAFXSm4YpBJ2F2rhVNJoFw=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.40,REQID:c987eb1f-53e9-4c8e-9e66-f39ca2a72fbb,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:ba885a6,CLOUDID:44b167d1-436f-4604-ad9d-558fa44a3bbe,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: d511c106403411efa6c87f6b4542ff6b-20240712
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <peter.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 343081683; Fri, 12 Jul 2024 02:55:12 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 12 Jul 2024 17:45:09 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 12 Jul 2024 17:45:09 +0800
-From: <peter.wang@mediatek.com>
-To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
-	<avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
-CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
-	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
-	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
-	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
-	<powen.kao@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>,
-	<tun-yu.yu@mediatek.com>, <eddie.huang@mediatek.com>,
-	<naomi.chu@mediatek.com>, <chu.stanley@gmail.com>
-Subject: [PATCH v1] ufs: core: bypass quick recovery if need force reset
-Date: Fri, 12 Jul 2024 17:45:06 +0800
-Message-ID: <20240712094506.11284-1-peter.wang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	Fri, 12 Jul 2024 09:58:48 +0000
+Received: by mail-ed1-x52a.google.com with SMTP id 4fb4d7f45d1cf-58c947a6692so2432963a12.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 12 Jul 2024 02:58:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1720778324; x=1721383124; darn=lists.infradead.org;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=yIVNhiC49pu3LQQuucdZLz/ASyKjQzHX04ThHbZ/y7U=;
+        b=OlRgSz0LRTLTGz8aahgVbNDPbiSt3+kbgkuEQ2LmdPb0RlZjmB4FAmZbw2KrkoYlun
+         iwz3GX/vJBpnZhyGq8yQWRFwrJYF177pkQOecSAU4bFZhVwvkutLzwC5sDHLeIArt2LK
+         CwewWxEob4ZhMXgLw2Iqn+9sxByB/Kb4UsUjKWoXrQKI/KVmG4wJUJlsXacLr7ZXY8PN
+         YTLahrGky3VpiyPLXJTPmWkTfDlixb8usqVaLkAVLp5jT06avSHZi/sBZhulVi9W0hMA
+         WJMqoJJX8Wu9TPd/XG0RNNaamdJ5BhxrXdTtfm0hqWXcl/XW9QdHaT++/c9jcMUIM7F0
+         +QFw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1720778324; x=1721383124;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=yIVNhiC49pu3LQQuucdZLz/ASyKjQzHX04ThHbZ/y7U=;
+        b=T6Vl7+/JVS5eE6p+3/xVCOi6F8rHbGETsOuzGicyhXPS08wqOwAKC7eMEmuQPtbS+k
+         ttp+gRtldCnII9OLg8IFMI3Sgp8rLZDaIydGU6gbXFT79zdW//ofXbKAlp5K+5wJYlW/
+         W/ow2MVUq77w62Jz7DKqgYvVHHoFjdrh62zIzUsgSZlzIOkNOPYvIEJ3ZKV/Mh1gJbCh
+         3LTuY8qAFqoIelSGlcONOd0iIQBXC9vk5572eIKdNTZ87rRZA2s/eH5T3lWy2JwgDIdC
+         oA520gIUPFQg6pRHR0/mNsnhffMxOq2CuWnLfIdaBMtzwcWB63CZozMhFTRW5a/eK5Pd
+         AzjA==
+X-Forwarded-Encrypted: i=1; AJvYcCUGAGqAj2fjUGcvQww7dhdUzaJqTft8vh9k5rvFkZ44DcMrxxXi9sENTTNN0H1Qb+V52E7ecDzmy+HcrtJ5aIXhCd6c2Yr8tNo3AgUtq3o0CR+v
+X-Gm-Message-State: AOJu0Yz+jgbvU3onyHavjG0dfVnqbzekuHj3mholQk33G5LuatmXuizU
+	8mc8Y9iIl/lJdf9uzc9y+EFZNcRZOOT/sBJr+gBM7aEHUoAA9ZLu
+X-Google-Smtp-Source: AGHT+IEA4JLouBYbEof5XDgc9pdOPBBaJQGzudP9LKkHrWF5+7if+TPu0tYuBrZL/Pq9KIShzs66nA==
+X-Received: by 2002:a17:907:9809:b0:a77:c314:d621 with SMTP id a640c23a62f3a-a780b68a2f8mr961761866b.13.1720778324447;
+        Fri, 12 Jul 2024 02:58:44 -0700 (PDT)
+Received: from [10.176.235.56] ([137.201.254.41])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a780a7ff0b0sm328472966b.120.2024.07.12.02.58.42
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 12 Jul 2024 02:58:44 -0700 (PDT)
+Message-ID: <7d628f0aa3e5607fcea80085f65d9bfa6b94d563.camel@gmail.com>
+Subject: Re: [PATCH v1] ufs: core: bypass quick recovery if need force reset
+From: Bean Huo <huobean@gmail.com>
+To: peter.wang@mediatek.com, linux-scsi@vger.kernel.org, 
+	martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com, 
+	jejb@linux.ibm.com
+Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org, 
+ chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com, 
+ chaotian.jing@mediatek.com, jiajie.hao@mediatek.com,
+ powen.kao@mediatek.com,  qilin.tan@mediatek.com, lin.gui@mediatek.com,
+ tun-yu.yu@mediatek.com,  eddie.huang@mediatek.com, naomi.chu@mediatek.com,
+ chu.stanley@gmail.com
+Date: Fri, 12 Jul 2024 11:58:42 +0200
+In-Reply-To: <20240712094506.11284-1-peter.wang@mediatek.com>
+References: <20240712094506.11284-1-peter.wang@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.44.4-0ubuntu2 
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240712_025518_358224_3E340450 
-X-CRM114-Status: UNSURE (   9.83  )
+X-CRM114-CacheID: sfid-20240712_025846_634671_A0BBDBDA 
+X-CRM114-Status: UNSURE (   5.93  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -89,31 +100,10 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Peter Wang <peter.wang@mediatek.com>
-
-If force_reset is true, bypass quick recovery.
-This will shorten error recovery time.
-
-Signed-off-by: Peter Wang <peter.wang@mediatek.com>
----
- drivers/ufs/core/ufshcd.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index 46433ecf0c4d..357379ddd79a 100644
---- a/drivers/ufs/core/ufshcd.c
-+++ b/drivers/ufs/core/ufshcd.c
-@@ -6545,7 +6545,8 @@ static void ufshcd_err_handler(struct work_struct *work)
- 	if (ufshcd_err_handling_should_stop(hba))
- 		goto skip_err_handling;
- 
--	if (hba->dev_quirks & UFS_DEVICE_QUIRK_RECOVERY_FROM_DL_NAC_ERRORS) {
-+	if ((hba->dev_quirks & UFS_DEVICE_QUIRK_RECOVERY_FROM_DL_NAC_ERRORS) &&
-+	    !hba->force_reset) {
- 		bool ret;
- 
- 		spin_unlock_irqrestore(hba->host->host_lock, flags);
--- 
-2.18.0
-
+On Fri, 2024-07-12 at 17:45 +0800, peter.wang@mediatek.com wrote:
+> From: Peter Wang <peter.wang@mediatek.com>
+>=20
+> If force_reset is true, bypass quick recovery.
+> This will shorten error recovery time.
+Reviewed-by: Bean Huo <beanhuo@micron.com>
 
