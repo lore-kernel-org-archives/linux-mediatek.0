@@ -4,94 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B3A7C2BD09
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Jul 2024 18:39:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FA47C3DA42
+	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Jul 2024 10:22:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qiT8ueAJ+Ik9eGxQHnzcsayjjgwYfS8TKbVcB1sjgcI=; b=Vd0OLG2DKTkoDmn5OE4NbkYk03
-	qvJMZLuu1QfmQGwwCUylstoRqEkvoPhJTeficAKTomvBVaAcAOrN1ojxt4FROsUspBcWsQOin2N1C
-	QL6vEYxf8mE7Rchmoo2wKVk/8vCQjlP+yxPKkZXCD4DObvhKE9E3v4+TMPOCdHDpaEDqITMa4qaY9
-	5zH6jAOMuLe/NO2PFqoQ0u/ue8kJfjJbPYPd1YUS2sQtCvivVjFsxP2oceI5+pJD37p2hN534KNLH
-	u3h77laP/3Nes3+jyFrgkEOwk1ELzESn69ZIvCoqir4dIL9OZ9BqJ10iGkIsbse3ovPjbL3rWOSB6
-	9z/5PdqA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=bP/IYDKTpmKogQI1AfETGmmSWoVc3MJtK+AmrhpYQjI=; b=rtwcBokXB5bq+Q
+	vq9yy1oKrYdFlecGRVVunYxxBvHsCZwAvYojQJIf3/WP4u0wBLZNtzcS6WinEOYZDdM9mwgm87GV3
+	ec+6gMnVj0GvEa1BY+Q2dPav4/z9z06H0+88ITMhpszLJSjwpBjivIwjJ8EcK8Yd5yFlUl38gM82t
+	HhL43MBzhvQPKAxEIZMpe47joYgRUI4l25a9/hIotRxa/Dm8WnlnEegLNaFD/8c99rR0dFVWbdp3d
+	cMOOClUbX2TsGxLZptr/UmMM3eg85Sygfp17w4TYL9D14W35yqIJgUsVzQL3++xbzVBhD7YqaEptJ
+	Lt4JNTpz25h2foHFqHxQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sSLAZ-000000010If-1IUG;
-	Fri, 12 Jul 2024 18:38:59 +0000
-Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
+	id 1sSZtT-00000002Lb4-0FeO;
+	Sat, 13 Jul 2024 10:22:19 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sSLAX-000000010IA-0wRI;
-	Fri, 12 Jul 2024 18:38:58 +0000
-Received: by mail-pf1-x42a.google.com with SMTP id d2e1a72fcca58-70af5fbf0d5so1571647b3a.1;
-        Fri, 12 Jul 2024 11:38:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1720809536; x=1721414336; darn=lists.infradead.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:sender
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=qiT8ueAJ+Ik9eGxQHnzcsayjjgwYfS8TKbVcB1sjgcI=;
-        b=Cn98sg6dAgMfa/rSjFqdYFtQzHo0YuoXJ79o2KmSNefmLBd/ENT6B0JNeCFZBKzv6d
-         KwaVVE5wnX9qjbrZbqux3p61rJwXYLouH2Fncy/DmGtqfr/xsPlsipC6mqHUZxwr4wJC
-         kfNUbZ1Dj97+GzUhC4AsSDZLfFfVCuUNvo09lheicrhRwXEMUOl3LzmGEGtlt0eZcEul
-         hNr8pDIeTYQShEXR7CTvFXGd+Y2pniwez62fZ+RGllH81YTFnkmQD/44I6r4u4dddshQ
-         lGqbpn37XSvB6DEpalRa5KDiUTZRYtG9mklfDj6PzLhekY4PjjqDnhsDa43PavXXs/UJ
-         rppw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1720809536; x=1721414336;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:sender
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=qiT8ueAJ+Ik9eGxQHnzcsayjjgwYfS8TKbVcB1sjgcI=;
-        b=KOW8CWGCz6lbl/f4cj2reoT9jM2BPnKwR3KME0BjUKbkDs3vT+wd4Kosy9FBUobHXu
-         q/LyAuI8IeXK26zNa37DfIcr3u/D+flf6EalesqqIImHcprKLQhV6Kod4o3zePenYmYt
-         Mq8XRh10m2bZoHjZNrH7YLxW8XlNBxFRPHvuNWHKEiF9QI4hm9hepTKZfDesOdny3N/u
-         NOAZix8ZA195jlRYtEEGeFP6Z22U35rb7fkwnAggpbldgJKp9g2qxxHSAoTS9KpE/kQx
-         w8TYvt0GZv6BKVp0zkhkb3S9e24cvHG55atpo3DE+BpD+ykM0Kl9Hped8VHtdUDG++iF
-         t3gA==
-X-Forwarded-Encrypted: i=1; AJvYcCVY7OWDmSBj/dBqZ4VyMGS8kQfbeqQ6/Xtt6pF59rTcv1v4VYFyDyuYiCOrIYovYYBISeo7W1ODkoboGJtCHTI6hMUA/psX7WWbfyqxZmw7k+muWomHXwr1KMrQjTkQuCPIFnUKCKH+Ib/JJP9wpJYWIJ8y2UN6p6o=
-X-Gm-Message-State: AOJu0YxB6Rglf23urlH8aF8XQcr7GEQeOfijhRcuSxBCCYo0+g+kJRnz
-	ZfNBoMD6VyjuKjsBx4O1ZUzCCi+lSXoEzHTW1t7yuQuQ3HK6WCm0
-X-Google-Smtp-Source: AGHT+IFo66xx+y6LX4NUko0NsUUhq/bMv8PhKj0aFdyuHdHX7Sc3p1A2XaQYMv6PApWMzwZOr8BxNA==
-X-Received: by 2002:a05:6a00:1acc:b0:704:2516:8d17 with SMTP id d2e1a72fcca58-70b6c8b282emr6137659b3a.8.1720809535678;
-        Fri, 12 Jul 2024 11:38:55 -0700 (PDT)
-Received: from localhost (dhcp-141-239-149-160.hawaiiantel.net. [141.239.149.160])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-787089bc5f6sm2638479a12.92.2024.07.12.11.38.54
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 12 Jul 2024 11:38:55 -0700 (PDT)
-Date: Fri, 12 Jul 2024 08:38:53 -1000
-From: "tj@kernel.org" <tj@kernel.org>
-To: Boy Wu =?utf-8?B?KOWQs+WLg+iqvCk=?= <Boy.Wu@mediatek.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"boris@bur.io" <boris@bur.io>,
-	"linux-block@vger.kernel.org" <linux-block@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"cgroups@vger.kernel.org" <cgroups@vger.kernel.org>,
-	"axboe@kernel.dk" <axboe@kernel.dk>,
-	Iverlin Wang =?utf-8?B?KOeOi+iLs+mclik=?= <Iverlin.Wang@mediatek.com>,
-	"josef@toxicpanda.com" <josef@toxicpanda.com>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v2] blk-cgroup: Replace u64_sync with blkg_stat_lock for
- stats update
-Message-ID: <ZpF4Pfu83W9Wp_R9@slm.duckdns.org>
-References: <20240710061334.1888-1-boy.wu@mediatek.com>
- <Zo8HTD2AD-b51q0C@slm.duckdns.org>
- <6114fbad7bce9b15806bb9fee25a1075ecb53dd1.camel@mediatek.com>
- <ZpBIfwThiVwstlXL@slm.duckdns.org>
- <70c37035f006de3a4fde895ceeee92826cd280e0.camel@mediatek.com>
+	id 1sSZt8-00000002LXF-43Wf;
+	Sat, 13 Jul 2024 10:22:00 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id C2B26CE0025;
+	Sat, 13 Jul 2024 10:21:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 773EEC32781;
+	Sat, 13 Jul 2024 10:21:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1720866115;
+	bh=QExiL7wySDZOW3fc4Ocea97JXipxWSo22yFkl96PF5Q=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=lDqSH9wfXswOqftScP1XoonOIFcd+RO0KFuOzYRAi9bBuVFHUnuTfNf/o2FexNEGV
+	 czBGCf/xUurz6FkcA61hqEkhKjCJu7kFHGDqV2IjcVVDXjR+VFFrHHnsbgJaYftIek
+	 Ag2MiqRBTuQ9bpu25rpS/7gvt/ez0k0yV8wdvt3GIoc9XB6/UIYNjWDSZAtg5VzqCl
+	 ryqvsrF9bW5EbpM1vTC/OPxnehSlCxSKmM4qhfmPSFxXuT+RJ5rESLYwv5PIWWhvyz
+	 zCeIS/KiJm+EDksYGM+WmL0mjSqcEX/axrmeuK+2DbpPkJHLmb51+ZxwT2Uu0glPeH
+	 PxM0kUVLEGtrQ==
+Message-ID: <58cba30d-af53-47a6-9258-8b36eab6cbfb@kernel.org>
+Date: Sat, 13 Jul 2024 12:21:46 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <70c37035f006de3a4fde895ceeee92826cd280e0.camel@mediatek.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1 1/4] dt-bindings: watchdog: mediatek,mtk-wdt: add
+ MT7988 syscon requirement
+To: Frank Wunderlich <linux@fw-web.de>,
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+ <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>
+References: <20240709101328.102969-1-linux@fw-web.de>
+ <20240709101328.102969-2-linux@fw-web.de>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <20240709101328.102969-2-linux@fw-web.de>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240712_113857_284525_1B898E43 
-X-CRM114-Status: GOOD (  13.92  )
+X-CRM114-CacheID: sfid-20240713_032159_399612_7E634C39 
+X-CRM114-Status: UNSURE (   7.66  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,29 +119,26 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, linux-watchdog@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello, Boy.
+On 09/07/2024 12:13, Frank Wunderlich wrote:
+> From: Frank Wunderlich <frank-w@public-files.de>
+> 
+> This is needed by u-boot-driver when using OF_UPSTREAM.
 
-On Fri, Jul 12, 2024 at 01:39:51AM +0000, Boy Wu (吳勃誼) wrote:
-...
-> I agree, but for multiple updaters, we not only need a spin lock but
-> also need u64_sync for 32bit SMP systems because u64_stats_fetch is not
-> protected by the spin lock blkg_stat_lock. If removing u64 sync, then
-> one CPU fetches data while another CPU is updating, may get a 64 bits
-> data with only 32 bits updated, while the other 32 bits are not updated
-> yet. We can see that blkcg_iostats_update is protected by both u64_sync
-> and the spin lock blkg_stat_lock in __blkcg_rstat_flush.
-> Thus, I think we should keep the u64_sync and just add the spin
-> lock blkg_stat_lock, not replace u64_sync with the spin lock.
+Thanks for providing context. What we miss here still, is the
+description of the hardware and for what this syscon is used. Why this
+become system controller and before was not? Or this is just for regmap
+- then it does not work that way... You cannot have whatever driver
+poking all around then claim - I have crappy driver poking to every
+driver without implementing proper driver model, so I add syscon to
+bindings.
 
-I don't get it. The only reader of blkg->iostat is blkcg_print_one_stat().
-It can just grab the same spin lock that the updaters use, right? Why do we
-also need u64_sync for blkg->iostat?
 
-Thanks.
 
--- 
-tejun
+Best regards,
+Krzysztof
+
 
