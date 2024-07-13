@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FA47C3DA42
-	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Jul 2024 10:22:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25E26C3DA45
+	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Jul 2024 10:22:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
 	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bP/IYDKTpmKogQI1AfETGmmSWoVc3MJtK+AmrhpYQjI=; b=rtwcBokXB5bq+Q
-	vq9yy1oKrYdFlecGRVVunYxxBvHsCZwAvYojQJIf3/WP4u0wBLZNtzcS6WinEOYZDdM9mwgm87GV3
-	ec+6gMnVj0GvEa1BY+Q2dPav4/z9z06H0+88ITMhpszLJSjwpBjivIwjJ8EcK8Yd5yFlUl38gM82t
-	HhL43MBzhvQPKAxEIZMpe47joYgRUI4l25a9/hIotRxa/Dm8WnlnEegLNaFD/8c99rR0dFVWbdp3d
-	cMOOClUbX2TsGxLZptr/UmMM3eg85Sygfp17w4TYL9D14W35yqIJgUsVzQL3++xbzVBhD7YqaEptJ
-	Lt4JNTpz25h2foHFqHxQ==;
+	List-Owner; bh=+9ACNLUP2ujGHq4zRjAibr+kCGeGraQc1wjCLcs4o/c=; b=jc5ozkBfUSmsY7
+	EABrtPJxLn6SPsMHq8jVsWi5zMkohc2HRO/+XkWURwyTF7nRt5ja49Y/XDb7vDgVFb1L0Mr1GfTSu
+	fXN3A0DwBy9pseaCzlUvN/4p5fZ1HuMIVOToJP5VSxamLC7Qn1DRJKnPL1mdm9/oUT9yfOCqzdcek
+	ZCoynfTMc3DaxFCn9xYDmnyU2MkzCFVUB9v1iJAtY6AIl+sFQkq7YqhvQ2nIbK7sfUOMbfimi0toS
+	ntLecNQEJQHcVNuF0UehvLkz0OJqGj+xiSfqnhdfi/bh0t1Dw2uT5PG02GEXy5VK0rTzOr8aJ8bUS
+	9UIiY05xWqvMa/cvwVCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sSZtT-00000002Lb4-0FeO;
-	Sat, 13 Jul 2024 10:22:19 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1sSZtp-00000002Lk5-3KVt;
+	Sat, 13 Jul 2024 10:22:41 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sSZt8-00000002LXF-43Wf;
-	Sat, 13 Jul 2024 10:22:00 +0000
+	id 1sSZtU-00000002Lb2-0IJe;
+	Sat, 13 Jul 2024 10:22:21 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id C2B26CE0025;
-	Sat, 13 Jul 2024 10:21:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 773EEC32781;
-	Sat, 13 Jul 2024 10:21:49 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 15EA8CE0025;
+	Sat, 13 Jul 2024 10:22:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C3485C32781;
+	Sat, 13 Jul 2024 10:22:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1720866115;
-	bh=QExiL7wySDZOW3fc4Ocea97JXipxWSo22yFkl96PF5Q=;
+	s=k20201202; t=1720866137;
+	bh=8PaFxkIYfqRo/IX/3tegfBiE2Ol52YNznfEZPU0+b1Y=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=lDqSH9wfXswOqftScP1XoonOIFcd+RO0KFuOzYRAi9bBuVFHUnuTfNf/o2FexNEGV
-	 czBGCf/xUurz6FkcA61hqEkhKjCJu7kFHGDqV2IjcVVDXjR+VFFrHHnsbgJaYftIek
-	 Ag2MiqRBTuQ9bpu25rpS/7gvt/ez0k0yV8wdvt3GIoc9XB6/UIYNjWDSZAtg5VzqCl
-	 ryqvsrF9bW5EbpM1vTC/OPxnehSlCxSKmM4qhfmPSFxXuT+RJ5rESLYwv5PIWWhvyz
-	 zCeIS/KiJm+EDksYGM+WmL0mjSqcEX/axrmeuK+2DbpPkJHLmb51+ZxwT2Uu0glPeH
-	 PxM0kUVLEGtrQ==
-Message-ID: <58cba30d-af53-47a6-9258-8b36eab6cbfb@kernel.org>
-Date: Sat, 13 Jul 2024 12:21:46 +0200
+	b=ZUDrUqIDxiu+6o6uylzPMV0wIWj//FiytUM+YwI38Eg0irJYgT7Rx6egtURedxijv
+	 tFMjwktZWWWhe91n9CC6hLC9vRs1xr/snx88+bZUqCLMsdk4GsEXEmNfWhShwSqWi9
+	 Kufzpjy1BwMtXkeRhFCO3HMf0xgT96zdtKG3mR+rJBg/EEDb8CC+RzLoP76u4BrTLx
+	 aT/tauZoB5E21lOS7j8/JR2+UgMtmCOH7fVSwz4kdLUA2C+czG66g+b27CO+2hhMoz
+	 Hq0o5lS5OGpPBMKIJgqyQggKu/oqgYUmj0u/J3ZeyenX+y/f4P3L6oXEV9AfbHha2p
+	 QU5lwwOHUMaMA==
+Message-ID: <1f387b7c-689a-4a55-b23f-45bee301f747@kernel.org>
+Date: Sat, 13 Jul 2024 12:22:09 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 1/4] dt-bindings: watchdog: mediatek,mtk-wdt: add
- MT7988 syscon requirement
+Subject: Re: [PATCH v1 2/4] dt-bindings: clock: mediatek: add syscon
+ requirement for mt7988 xfi-pll
 To: Frank Wunderlich <linux@fw-web.de>,
  Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
  <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
@@ -55,7 +55,7 @@ To: Frank Wunderlich <linux@fw-web.de>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>
 References: <20240709101328.102969-1-linux@fw-web.de>
- <20240709101328.102969-2-linux@fw-web.de>
+ <20240709101328.102969-3-linux@fw-web.de>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -101,13 +101,12 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20240709101328.102969-2-linux@fw-web.de>
+In-Reply-To: <20240709101328.102969-3-linux@fw-web.de>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240713_032159_399612_7E634C39 
-X-CRM114-Status: UNSURE (   7.66  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240713_032220_488809_4252F3E4 
+X-CRM114-Status: GOOD (  12.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,16 +126,29 @@ On 09/07/2024 12:13, Frank Wunderlich wrote:
 > From: Frank Wunderlich <frank-w@public-files.de>
 > 
 > This is needed by u-boot-driver when using OF_UPSTREAM.
+> 
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> ---
+>  .../devicetree/bindings/clock/mediatek,mt7988-xfi-pll.yaml | 7 +++++--
+>  1 file changed, 5 insertions(+), 2 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt7988-xfi-pll.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt7988-xfi-pll.yaml
+> index 192f1451f0af..c3686712505a 100644
+> --- a/Documentation/devicetree/bindings/clock/mediatek,mt7988-xfi-pll.yaml
+> +++ b/Documentation/devicetree/bindings/clock/mediatek,mt7988-xfi-pll.yaml
+> @@ -15,7 +15,10 @@ description:
+>  
+>  properties:
+>    compatible:
+> -    const: mediatek,mt7988-xfi-pll
+> +    items:
+> +      - enum:
+> +          - mediatek,mt7988-xfi-pll
+> +      - const: syscon
 
-Thanks for providing context. What we miss here still, is the
-description of the hardware and for what this syscon is used. Why this
-become system controller and before was not? Or this is just for regmap
-- then it does not work that way... You cannot have whatever driver
-poking all around then claim - I have crappy driver poking to every
-driver without implementing proper driver model, so I add syscon to
-bindings.
+No.
 
-
+Crappy drivers which do not implement clock bindings do not get workaround.
 
 Best regards,
 Krzysztof
