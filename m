@@ -4,100 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB6D6C3DA42
-	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Jul 2024 20:17:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 013EFC3DA45
+	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Jul 2024 23:33:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lwxWyzAfdcoGBJ/UCy39/QZeuk7RCQ2GdHaRtr1hZgw=; b=T8XoWj/NCHytiYM4Vlpzhtd/4p
-	8RT9WCQ81fBbkE8I5Nckki9MbNOdGF0qkjxiyLbw3IuthmwsRB6dHhyxnlH7GtzlC+VAg2nj2tYf0
-	DoJ8WPu4suFiXuGxlj0cXzNM9fhyCBSJCB2cNiEOthZpk6EmNcTES8umUa6KwWyaVMTQD+fKLb7g6
-	7pv2Fp21BnYrG2ZvB6e+TWcjwGuXOVZxXIwSQh82YiB6AlyzaAoOvr5z2JX0vDQrWl4H3/Y0I3hwS
-	LIJzfdJgc9R15o2NERxkqBNvbVUc6Xb2qzhVft0GH2KUJyc8/nTvge0d9fcdHPSCNgcov9IH5d9L1
-	KeAQabRQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Lc4elSgg3x5cvmXgJTU3aBih+0xvob/bX1S1mp6OJcA=; b=UFZycxOxWefmhPhCZ2Ij/6VzKp
+	MK/M2+qDu23FMeDa04oiWIXXWTQBswECzMNZSN0S5tBkRyjwfIosJSRywTm/0zXzz0o776sT3miyA
+	GUssdaYOnwkEToHq8PN4pyT5/75KF2NykpZjKT3EOjrp+IgT97h6dnlMlKl4CaxnbV2em983ALUEE
+	j7g2lpwo3FXNXf0adtwvv4iy5YHcB9bOv+iFBwesSYT7Q4jrwETbGXHwE7LNGGgIP31FhS+N8gF58
+	Dhii+5fHd/PDQA4hIdkxUKIXYDQiDwB+b2vDH/xuroo8ArJ5vKHq+zY6qxBw17wNObESieTUREWde
+	91Fh608Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sSjBJ-0000000380S-3Bij;
-	Sat, 13 Jul 2024 20:17:21 +0000
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+	id 1sSmF4-00000003Oev-3hOC;
+	Sat, 13 Jul 2024 23:33:26 +0000
+Received: from mail-oa1-x30.google.com ([2001:4860:4864:20::30])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sSjBG-000000037zx-2bLQ
+	id 1sSmF2-00000003OeS-05Hm
 	for linux-mediatek@lists.infradead.org;
-	Sat, 13 Jul 2024 20:17:20 +0000
-Received: by mail-wm1-x333.google.com with SMTP id 5b1f17b1804b1-4266f3e0df8so21069775e9.2
-        for <linux-mediatek@lists.infradead.org>; Sat, 13 Jul 2024 13:17:17 -0700 (PDT)
+	Sat, 13 Jul 2024 23:33:25 +0000
+Received: by mail-oa1-x30.google.com with SMTP id 586e51a60fabf-25e0663de76so1422586fac.1
+        for <linux-mediatek@lists.infradead.org>; Sat, 13 Jul 2024 16:33:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1720901836; x=1721506636; darn=lists.infradead.org;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=lwxWyzAfdcoGBJ/UCy39/QZeuk7RCQ2GdHaRtr1hZgw=;
-        b=jAGS1q1tGMcFpzVwoloJHABPxGjXdE17rMxdM2BQA8n10DXiOcu+m601JwdZUmZb1e
-         RTpvrMecaLP8PTINRqc0l5glRKEEN/tVKLF9SJJJzY4OPlyQ8ZeCWxgdGt0rNAT+NJmx
-         Z/DAgz6qAXHKvzpsF40+ULK68tZIsag4KZXzE50GwuVc6fX+a4dQlfKQBn8S96J2h4fo
-         g7bN/33s3mgeQU93j96VrPTFABzNJz4WJz2nTS57hvETlgtCs4dNGZk3MBEEuQ9N9yYS
-         EOjlTFNY4fXZyd9Z6N3eNbmPRbA+OD6Ce20Q0OLtcfEChkHBp5dMxK4O0ebo0mlODZbs
-         YmTw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1720901836; x=1721506636;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
+        d=linaro.org; s=google; t=1720913603; x=1721518403; darn=lists.infradead.org;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=lwxWyzAfdcoGBJ/UCy39/QZeuk7RCQ2GdHaRtr1hZgw=;
-        b=QOZrvEfvtjfI1jG9+wQxmMF7LwbDmz8yA+im6iTgD65iZ8vb5hrlKXWbvRROkwW9b4
-         tnOKZGhHWZAKavpovtOml4o7FqIGC3Gj2MNuxyM1Kdv0mv1jDwKmOGL25uGUdsnuf+eY
-         C5zcjpEWGbXWTBgM2HsIJwGiG3wyx/3qjHnSJUspRn2Sb/ImAFeuKxtHbz5kRKmiH1aB
-         rLdWBpKG6Qs36F872VolyXdcY4cNMCuF5Gf8ymaqyh5p0PpajFbRiywAh8MjTLOqmKOQ
-         P8LFOm5ZcBOGJBGZlC6ADtGzbb4+19qgBssxv7DWKbZ+sv+CcA1j9go/JgU6tyScEHaf
-         5Hag==
-X-Forwarded-Encrypted: i=1; AJvYcCUlM9T9wG+MV9VLaoq3/nbJn5zkUndN+1rExGnWFZBUxs9xLBFW8ypqO3S2TXSElrerbecMogqYqQF4DMkKOY/hW4mDXSr6tfi5KmcOBLsdtFYo
-X-Gm-Message-State: AOJu0YxuRwyXd5TnU6TgeWk6FPNl6BHIek2cQCSNvQqXOCScQ22axg6y
-	AC3A1KySy4aDOnLeR54THfyfZo5e0NxCKg9Y+/kjxB6NVBS1VfeU
-X-Google-Smtp-Source: AGHT+IFLBhP1h22J99UGV67Li6bdAzuvqEcIujjr6lLKXMQgpX5ElANP8+exxtSUOtHMXwi3gvGQaw==
-X-Received: by 2002:adf:f990:0:b0:367:89fd:1e06 with SMTP id ffacd0b85a97d-367cea966f2mr9794804f8f.36.1720901836204;
-        Sat, 13 Jul 2024 13:17:16 -0700 (PDT)
-Received: from p200300c58740f79d67fdfc896b2e8c6c.dip0.t-ipconnect.de (p200300c58740f79d67fdfc896b2e8c6c.dip0.t-ipconnect.de. [2003:c5:8740:f79d:67fd:fc89:6b2e:8c6c])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-368111d3e7dsm1783521f8f.87.2024.07.13.13.17.14
+        bh=Lc4elSgg3x5cvmXgJTU3aBih+0xvob/bX1S1mp6OJcA=;
+        b=dhW5fqSXYo+nfyq7wbUQ0vcdFt4fJYqSzjAeThTFHgZTFakw1QVkCNRS410hiHj/7/
+         RkdAquNZ3Zrawj4vIjeY0HbLlNU7djHMyAcB1OFf8OLNe1mQY2AYmjPbZsH95YZW6mY/
+         T0LFkIC+ZL/zo5B43XpoGoVQQ1SXNPzrImKRadAMyzRxaJk6biOvLMbqnDZqut923u0B
+         E3PLK7QzO+0P45hC88hJivdLQ1ugqmWBic5fgbqRaz00z316kxS1Ni/TTv2ONqo8OqOs
+         f5VACtiODKs0WdOBtXt18ztPXiZYtF9ueXg7unP7zbe3JidVUPBqws0jKe6OZ89XeRBQ
+         Ytww==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1720913603; x=1721518403;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=Lc4elSgg3x5cvmXgJTU3aBih+0xvob/bX1S1mp6OJcA=;
+        b=gUw7CVRVt10HNJfWSEago/zSAVScqEJ9gMMT1E/JjPTs+ncZSKIN1tDkuciszgwFPH
+         pUaHuKP7ZgVNEE101c6I9LUGlzjb7EX2ahTY13BmVC6Tcb4pOD9vT4DXkj2VM+k5Ekub
+         UJVqbF1P+7xB1OpVek6NfvWuYZVA622xeamQVjOPJRNbY6c9eEAOh7R1tqanGUC+acwQ
+         1J/9AgXMQ7bX1abHEyUz+TDQXovBm9pmf5vqfPyR13db6mz79FV7olWM8vUYcN51TNOh
+         WmCuG4W0sDvXZGNBiAJCX1uFtUKMNgIiWwhRvnONCEbRzJATJToKB1Z7wm2P/85QEu9T
+         Kudw==
+X-Gm-Message-State: AOJu0Yxk7xm2dBkwbDD9t0pGZS55jz9AmBhYRnaYi0q1X+XO4yQcIzOP
+	XZ2MilyHzJQIefsZDefNhp44T06GJksDuTU59lObxR8X91IvsUlfy0G2Luoye90=
+X-Google-Smtp-Source: AGHT+IFdyJXZj5Iix/ERI3+L6X8Gbk9U4YpVmRqC4YFZ32Tq1TfBpAZvIHGXdzLbgMkkgEzYMK3OTQ==
+X-Received: by 2002:a05:6870:fb94:b0:25e:c7b:ca96 with SMTP id 586e51a60fabf-25eae756de6mr13628226fac.10.1720913602664;
+        Sat, 13 Jul 2024 16:33:22 -0700 (PDT)
+Received: from localhost ([2603:8080:b800:f700::1cb1])
+        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-260752a845bsm442522fac.42.2024.07.13.16.33.22
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 13 Jul 2024 13:17:15 -0700 (PDT)
-Message-ID: <2f9038932ec77ce37b18667a3bace06e88a547f4.camel@gmail.com>
-Subject: Re: [PATCH v1] ufs: core: fix deadlock when rtc update
-From: Bean Huo <huobean@gmail.com>
-To: Avri Altman <Avri.Altman@wdc.com>, "peter.wang@mediatek.com"
-	 <peter.wang@mediatek.com>, "linux-scsi@vger.kernel.org"
-	 <linux-scsi@vger.kernel.org>, "martin.petersen@oracle.com"
-	 <martin.petersen@oracle.com>, "alim.akhtar@samsung.com"
-	 <alim.akhtar@samsung.com>, "jejb@linux.ibm.com" <jejb@linux.ibm.com>
-Cc: "wsd_upstream@mediatek.com" <wsd_upstream@mediatek.com>, 
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "chun-hung.wu@mediatek.com" <chun-hung.wu@mediatek.com>,
- "alice.chao@mediatek.com" <alice.chao@mediatek.com>, 
- "cc.chou@mediatek.com" <cc.chou@mediatek.com>, "chaotian.jing@mediatek.com"
- <chaotian.jing@mediatek.com>, "jiajie.hao@mediatek.com"
- <jiajie.hao@mediatek.com>, "powen.kao@mediatek.com"
- <powen.kao@mediatek.com>,  "qilin.tan@mediatek.com"
- <qilin.tan@mediatek.com>, "lin.gui@mediatek.com" <lin.gui@mediatek.com>, 
- "tun-yu.yu@mediatek.com" <tun-yu.yu@mediatek.com>,
- "eddie.huang@mediatek.com" <eddie.huang@mediatek.com>, 
- "naomi.chu@mediatek.com" <naomi.chu@mediatek.com>, "chu.stanley@gmail.com"
- <chu.stanley@gmail.com>,  "beanhuo@micron.com" <beanhuo@micron.com>,
- "stable@vger.kernel.org" <stable@vger.kernel.org>
-Date: Sat, 13 Jul 2024 22:17:14 +0200
-In-Reply-To: <DM6PR04MB6575CF59300D4AB5E1BE1377FCA62@DM6PR04MB6575.namprd04.prod.outlook.com>
-References: <20240712094355.21572-1-peter.wang@mediatek.com>
-	 <DM6PR04MB6575B81B788F260A8C640684FCA62@DM6PR04MB6575.namprd04.prod.outlook.com>
-	 <edbedd4e992dd0adb93adbd45a74614c4c0f626d.camel@gmail.com>
-	 <DM6PR04MB6575CF59300D4AB5E1BE1377FCA62@DM6PR04MB6575.namprd04.prod.outlook.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.44.4-0ubuntu2 
+        Sat, 13 Jul 2024 16:33:22 -0700 (PDT)
+Date: Sat, 13 Jul 2024 18:33:20 -0500
+From: Dan Carpenter <dan.carpenter@linaro.org>
+To: Sean Wang <sean.wang@mediatek.com>
+Cc: linux-mediatek@lists.infradead.org
+Subject: [bug report] wifi: mt76: mt7925: add link handling in
+ mt7925_txwi_free
+Message-ID: <baf461ca-4259-44d1-a078-413c41957afd@stanley.mountain>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240713_131718_825888_26011BDE 
-X-CRM114-Status: UNSURE (   9.38  )
+X-CRM114-CacheID: sfid-20240713_163324_245264_9BE07085 
+X-CRM114-Status: UNSURE (   3.99  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -113,25 +88,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2024-07-12 at 12:31 +0000, Avri Altman wrote:
-> > > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 hba =3D cont=
-ainer_of(to_delayed_work(work), struct
-> > > > ufs_hba,
-> > > > ufs_rtc_update_work);
-> > > Will returning here If (!ufshcd_is_ufs_dev_active(hba)) works?
-> > > And remove it in the 2nd if clause?
-> >=20
-> > Avri,
-> >=20
-> > we need to reschedule next time work in the below code.=C2=A0 if return=
-,
-> > cannot.
-> >=20
-> > whatelse I missed?
-> a) If (!ufshcd_is_ufs_dev_active(hba)) - will not schedule ?
-> b) schedule on next __ufshcd_wl_resume?
+Hello Sean Wang,
 
-hba->pm_op_in_progress is true during __ufshcd_wl_resume(), will not
-schedule update work.
+This is a semi-automatic email about new static checker warnings.
 
+Commit 44eb173bdd4f ("wifi: mt76: mt7925: add link handling in
+mt7925_txwi_free") from Jul 6, 2024, leads to the following Smatch
+complaint:
+
+    drivers/net/wireless/mediatek/mt76/mt7925/mac.c:856 mt7925_tx_check_aggr()
+    warn: variable dereferenced before check 'sta' (see line 852)
+
+drivers/net/wireless/mediatek/mt76/mt7925/mac.c
+   851	
+   852		link_sta = rcu_dereference(sta->link[wcid->link_id]);
+                                           ^^^^^^^^^
+Unchecked dereference
+
+   853		if (!link_sta)
+   854			return;
+   855	
+   856		if (!sta || !(link_sta->ht_cap.ht_supported || link_sta->he_cap.has_he))
+                    ^^^^
+Checked too late
+
+   857			return;
+   858	
+
+regards,
+dan carpenter
 
