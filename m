@@ -4,76 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95CE0C3DA59
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jul 2024 20:19:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18710C3DA59
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jul 2024 22:36:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=maOS4ywDcz5IvC+hAViuZGO3E5ltb4jLPzs5aEw+NUY=; b=iVEBr+L+YQBBXw14AypfnZcGdy
-	xHEGRbCQgNewDB2xEAHRYZ1SiGHJWJwFpdvUBmfEHml/9fi5zA0WgiJdQOcWQjpVi5a9F2AvzjJbA
-	aSDUzt7gYu4XMYlNGe6qFvbPcX0fzC0QIiugaXpk3SOBKxqs9wyDj+XEs0lzQYiLIIrHqGkvrUF/p
-	O7smozi6FLefZky6m1pJ3yua4M0sslPueJ5fgzDXEEHrALLkS3r4T4G7kaw9UEf4vEM9qwlqf2jWJ
-	1gAKGW8BAVnb+JR4pkQrnwm6eEVchjbKdHMsdtUo7yo4ikBt11K0vQXW+VrS8p87gX7lzGdkQp9CE
-	IlBH8rvA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9yclTzOLrpS5DgMC6kQnU1Cslv60j3BeLELT0RGWtkY=; b=xoo2fP0y8J7OLI9SDsOx3eSVXT
+	Zb0cFGrrwgWocSJUqGFZprNoDFD8Rmi3wWvY6cwZ9z3GWFfgn2erwhDxRNiJWAJFV2aoNWvsHhOlc
+	NKOdQE0DRJp8liEKDMyf0r4QQtmuQcFx5P1u5xCP/0ppyWkliQsWrkmDZxOFrYDPNM81oboAOISWp
+	abuic0IvbdCfQpPHeexcHtcv7HBLgbrn6J2wDsu4HoogSlzmHkka+yk+PBOWMzwuY+FijjrZ1BxM4
+	7wRoI2kz81FNLxO6pXUqtaB5kFqpbZ6urVI/KS4z6axLneKW8DUlqacnqtavTBLnkqUIgSlogMPGB
+	8Qdh47Uw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sTSAS-00000008Gec-23w1;
-	Mon, 15 Jul 2024 20:19:28 +0000
-Received: from mail-ot1-x32b.google.com ([2607:f8b0:4864:20::32b])
+	id 1sTUIw-00000008bba-2SBU;
+	Mon, 15 Jul 2024 22:36:22 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sTSAP-00000008Gdv-3gQJ
+	id 1sTUIt-00000008bar-2FSz
 	for linux-mediatek@lists.infradead.org;
-	Mon, 15 Jul 2024 20:19:27 +0000
-Received: by mail-ot1-x32b.google.com with SMTP id 46e09a7af769-70365f905b6so2676374a34.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 15 Jul 2024 13:19:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1721074763; x=1721679563; darn=lists.infradead.org;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=maOS4ywDcz5IvC+hAViuZGO3E5ltb4jLPzs5aEw+NUY=;
-        b=YZQboEqWZjXKgiMh3LWWhIuQg50bhnnaHl6FcQps36N97PkCHz5f3qDQlJ1iCy7eDM
-         GGh4R7ZMNchEukoOoMwClm2pPMz4WWT1/dyze2I9HO6wCYhkA++ikEBLCRYSa8XhKSaA
-         6B9QFiu5R9vwLkY8EHPGwK73xAUUQqlELkJFghH9pHRvcs1tTtWshd+j0OtiZxVsm34T
-         wWN8xBYTRJdXt9PhTgDCtr2a2FTPqp0EpECyDuOb3a0bWJ0SdIRVRAiKZYgRZJW0qd2p
-         uE1x1OB2ZmQ91NoxHQKXiQzZM+8JX6GUez8VelS+Hlnd/G9rNczCYAWF2jTfF6F5jkeL
-         rL3Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1721074763; x=1721679563;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=maOS4ywDcz5IvC+hAViuZGO3E5ltb4jLPzs5aEw+NUY=;
-        b=UlZrp8f7DNeFMLx+4BxbHaZ3UZKVlS4w0Eb/hvvx04D81XDuV9OsNBpLARLkR8JRb4
-         +3lGb3b35KbYA7rGjHGQNijKAY88u3mtQkleYSasAnsDFyLJaVbDReEzlojuRZ0HiQSL
-         uA/8TVAGewEg1x3kMxKSXAQnk4Cp5uDBjakd2LDgQgpY6VDh6ruPUJ1//c5GSDxuvCRi
-         b//fPXIgvmUx0ac9aczrbtRrSGPsUD+ck+8QNF85Qp05DwpGhDiYk/bkHKfEeZ0MeWZW
-         lFvX0Cyt8/KcEqUCLNJwVMwdmLltMX2AukFQIPh3p20aSH5OZ6Obaco8Bfsi3blnaUda
-         pidg==
-X-Gm-Message-State: AOJu0YxwffEfdvPs5NURWsIbGQluM8bszVnyQcRgW+pApE+QCi6jmQIr
-	Cqt+Uofot9EK4P8cXrzdstmTHH03WXRq49gOAYAWf860YwFt7A+pJlMBxnF53Lw=
-X-Google-Smtp-Source: AGHT+IHNVYGe1Smcwc9yK0/5mEv4otm3vUzfR1CLvNE2S8tTqKDvSdCNGokr8chIYymtk1aMXadIVw==
-X-Received: by 2002:a05:6830:3107:b0:703:79c6:a9bb with SMTP id 46e09a7af769-708d9960a41mr236090a34.7.1721074763029;
-        Mon, 15 Jul 2024 13:19:23 -0700 (PDT)
-Received: from localhost ([2603:8080:b800:f700:750c:19a4:cf5:50a9])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-708c0d20d33sm1088578a34.71.2024.07.15.13.19.21
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 15 Jul 2024 13:19:22 -0700 (PDT)
-Date: Mon, 15 Jul 2024 15:19:19 -0500
-From: Dan Carpenter <dan.carpenter@linaro.org>
-To: Deren Wu <deren.wu@mediatek.com>
-Cc: linux-mediatek@lists.infradead.org
-Subject: [bug report] wifi: mt76: mt7925: add Mediatek Wi-Fi7 driver for
- mt7925 chips
-Message-ID: <23b68000-ffde-449c-b23d-9ae673165e78@stanley.mountain>
+	Mon, 15 Jul 2024 22:36:21 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1721082977;
+	bh=Vnaz3yR8oLknVJ+XnauozoyHYn9J9p7r/V81IkxSeO8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=hl7CHqnFLvh66/oOSs4T+0uC4aTSHMVhfSR1k9tWu0vuXBx+Jz3F11eZ2OeDm/W71
+	 rewIdIDvqxMTeYhrPl6OhyGSDEloGZeTF7r6HpvljeHA0YqiNEsETq5VXsSsPZuaL/
+	 0xJx3pR/2KLFh1ZVqmOrmp9FH1X/ikuH7+GtvnE0HBCcfuwvx8hb452tpNQw7S0rSl
+	 Jnjzqt3iweClprMni/Ui7WO1FdeAGYCWWsm9r+u/DcvXEDRF/YLPK7/D+wV91koZ/M
+	 7LO6cFncldcZzfECUIQd0AUitbtWicGdf+Mr5CukJ5bXY+XSBKbJ215M346IxKpHTt
+	 XrUSxCYOfWoDw==
+Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 54C973781144;
+	Mon, 15 Jul 2024 22:36:14 +0000 (UTC)
+Date: Mon, 15 Jul 2024 18:36:12 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Chris Lu <chris.lu@mediatek.com>
+Cc: Marcel Holtmann <marcel@holtmann.org>,
+	Johan Hedberg <johan.hedberg@gmail.com>,
+	Luiz Von Dentz <luiz.dentz@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Aaron Hou <aaron.hou@mediatek.com>,
+	Steve Lee <steve.lee@mediatek.com>,
+	linux-bluetooth <linux-bluetooth@vger.kernel.org>,
+	linux-kernel <linux-kernel@vger.kernel.org>,
+	linux-mediatek <linux-mediatek@lists.infradead.org>,
+	regressions@lists.linux.dev, kernelci@lists.linux.dev,
+	kernel@collabora.com
+Subject: Re: [PATCH v7 8/8] Bluetooth: btusb: mediatek: add ISO data
+ transmission functions
+Message-ID: <7851401b-e884-4ed4-998d-7651f427ad37@notapiano>
+References: <20240704060116.16600-1-chris.lu@mediatek.com>
+ <20240704060116.16600-9-chris.lu@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20240704060116.16600-9-chris.lu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240715_131925_962969_60A0642B 
-X-CRM114-Status: UNSURE (   7.14  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240715_153619_747653_FE294781 
+X-CRM114-Status: GOOD (  16.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,135 +85,126 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Deren Wu,
+On Thu, Jul 04, 2024 at 02:01:16PM +0800, Chris Lu wrote:
+> This patch implements functions for ISO data send and receive in btusb
+> driver for MediaTek's controller.
+> 
+> MediaTek defines a specific interrupt endpoint for ISO data transmissin
+> because the characteristics of interrupt endpoint are similar to the
+> application of ISO data which can support guaranteed transmissin
+> bandwidth, enough maximum data length and error checking mechanism.
+> 
+> Driver sets up ISO interface and endpoints in btusb_mtk_setup and clears
+> the setup in btusb_mtk_shutdown. These flow can't move to btmtk.c due to
+> btusb_driver is only defined in btusb.c when claiming/relaesing interface.
+> ISO packet anchor stops when driver suspending and resubmit interrupt urb
+> for ISO data when driver resuming.
+> 
+> Signed-off-by: Chris Lu <chris.lu@mediatek.com>
+> ---
 
-Commit c948b5da6bbe ("wifi: mt76: mt7925: add Mediatek Wi-Fi7 driver
-for mt7925 chips") from Sep 18, 2023 (linux-next), leads to the
-following Smatch static checker warning:
+Hi,
 
-	drivers/net/wireless/mediatek/mt76/mt7925/mac.c:810 mt7925_mac_write_txwi()
-	error: we previously assumed 'vif' could be null (see line 745)
+KernelCI has identified a boot regression originating from this patch. It
+affects the mt8195-cherry-tomato-r2 platform.
 
-drivers/net/wireless/mediatek/mt76/mt7925/mac.c
-   728  mt7925_mac_write_txwi(struct mt76_dev *dev, __le32 *txwi,
-   729                        struct sk_buff *skb, struct mt76_wcid *wcid,
-   730                        struct ieee80211_key_conf *key, int pid,
-   731                        enum mt76_txq_id qid, u32 changed)
-   732  {
-   733          struct ieee80211_tx_info *info = IEEE80211_SKB_CB(skb);
-   734          struct ieee80211_vif *vif = info->control.vif;
-   735          u8 p_fmt, q_idx, omac_idx = 0, wmm_idx = 0, band_idx = 0;
-   736          u32 val, sz_txd = mt76_is_mmio(dev) ? MT_TXD_SIZE : MT_SDIO_TXD_SIZE;
-   737          bool is_8023 = info->flags & IEEE80211_TX_CTL_HW_80211_ENCAP;
-   738          struct mt76_vif *mvif;
-   739          bool beacon = !!(changed & (BSS_CHANGED_BEACON |
-   740                                      BSS_CHANGED_BEACON_ENABLED));
-   741          bool inband_disc = !!(changed & (BSS_CHANGED_UNSOL_BCAST_PROBE_RESP |
-   742                                           BSS_CHANGED_FILS_DISCOVERY));
-   743          struct mt792x_bss_conf *mconf;
-   744  
-   745          mconf = vif ? mt792x_vif_to_link((struct mt792x_vif *)vif->drv_priv,
-                        ^^^
-This assumes vif can be NULL.
+Through additional runs I've determined that it only happens when the bluetooth
+firmware (BT_RAM_CODE_MT7961_1_2_hdr.bin) isn't present. I realize the firmware
+should be present to make proper use of the bluetooth driver, and I'll add it to
+our testing images. Still, a panic shouldn't happen when it's missing, hence
+this report.
 
-   746                                           wcid->link_id) : NULL;
-   747          mvif = mconf ? (struct mt76_vif *)&mconf->mt76 : NULL;
-   748  
-   749          if (mvif) {
-   750                  omac_idx = mvif->omac_idx;
-   751                  wmm_idx = mvif->wmm_idx;
-   752                  band_idx = mvif->band_idx;
-   753          }
-   754  
-   755          if (inband_disc) {
-   756                  p_fmt = MT_TX_TYPE_FW;
-   757                  q_idx = MT_LMAC_ALTX0;
-   758          } else if (beacon) {
-   759                  p_fmt = MT_TX_TYPE_FW;
-   760                  q_idx = MT_LMAC_BCN0;
-   761          } else if (qid >= MT_TXQ_PSD) {
-   762                  p_fmt = mt76_is_mmio(dev) ? MT_TX_TYPE_CT : MT_TX_TYPE_SF;
-   763                  q_idx = MT_LMAC_ALTX0;
-   764          } else {
-   765                  p_fmt = mt76_is_mmio(dev) ? MT_TX_TYPE_CT : MT_TX_TYPE_SF;
-   766                  q_idx = wmm_idx * MT76_CONNAC_MAX_WMM_SETS +
-   767                          mt76_connac_lmac_mapping(skb_get_queue_mapping(skb));
-   768  
-   769                  /* counting non-offloading skbs */
-   770                  wcid->stats.tx_bytes += skb->len;
-   771                  wcid->stats.tx_packets++;
-   772          }
-   773  
-   774          val = FIELD_PREP(MT_TXD0_TX_BYTES, skb->len + sz_txd) |
-   775                FIELD_PREP(MT_TXD0_PKT_FMT, p_fmt) |
-   776                FIELD_PREP(MT_TXD0_Q_IDX, q_idx);
-   777          txwi[0] = cpu_to_le32(val);
-   778  
-   779          val = FIELD_PREP(MT_TXD1_WLAN_IDX, wcid->idx) |
-   780                FIELD_PREP(MT_TXD1_OWN_MAC, omac_idx);
-   781  
-   782          if (band_idx)
-   783                  val |= FIELD_PREP(MT_TXD1_TGID, band_idx);
-   784  
-   785          txwi[1] = cpu_to_le32(val);
-   786          txwi[2] = 0;
-   787  
-   788          val = FIELD_PREP(MT_TXD3_REM_TX_COUNT, 15);
-   789  
-   790          if (key)
-   791                  val |= MT_TXD3_PROTECT_FRAME;
-   792          if (info->flags & IEEE80211_TX_CTL_NO_ACK)
-   793                  val |= MT_TXD3_NO_ACK;
-   794          if (wcid->amsdu)
-   795                  val |= MT_TXD3_HW_AMSDU;
-   796  
-   797          txwi[3] = cpu_to_le32(val);
-   798          txwi[4] = 0;
-   799  
-   800          val = FIELD_PREP(MT_TXD5_PID, pid);
-   801          if (pid >= MT_PACKET_ID_FIRST) {
-   802                  val |= MT_TXD5_TX_STATUS_HOST;
-   803                  txwi[3] |= cpu_to_le32(MT_TXD3_BA_DISABLE);
-   804                  txwi[3] &= ~cpu_to_le32(MT_TXD3_HW_AMSDU);
-   805          }
-   806  
-   807          txwi[5] = cpu_to_le32(val);
-   808  
-   809          val = MT_TXD6_DAS | FIELD_PREP(MT_TXD6_MSDU_CNT, 1);
-   810          if (!ieee80211_vif_is_mld(vif) ||
-                                          ^^^
-But here "vif" is dereferenced without checking
+Reverting this patch fixes the issue.
 
-   811              (q_idx >= MT_LMAC_ALTX0 && q_idx <= MT_LMAC_BCN0))
-   812                  val |= MT_TXD6_DIS_MAT;
-   813          txwi[6] = cpu_to_le32(val);
-   814          txwi[7] = 0;
-   815  
-   816          if (is_8023)
-   817                  mt7925_mac_write_txwi_8023(txwi, skb, wcid);
-   818          else
-   819                  mt7925_mac_write_txwi_80211(dev, txwi, skb, key);
-   820  
-   821          if (txwi[1] & cpu_to_le32(MT_TXD1_FIXED_RATE)) {
-   822                  struct ieee80211_hdr *hdr = (struct ieee80211_hdr *)skb->data;
-   823                  bool mcast = ieee80211_is_data(hdr->frame_control) &&
-   824                               is_multicast_ether_addr(hdr->addr1);
-   825                  u8 idx = MT792x_BASIC_RATES_TBL;
-   826  
-   827                  if (mvif) {
-   828                          if (mcast && mvif->mcast_rates_idx)
-   829                                  idx = mvif->mcast_rates_idx;
-   830                          else if (beacon && mvif->beacon_rates_idx)
-   831                                  idx = mvif->beacon_rates_idx;
-   832                          else
-   833                                  idx = mvif->basic_rates_idx;
-   834                  }
-   835  
-   836                  txwi[6] |= cpu_to_le32(FIELD_PREP(MT_TXD6_TX_RATE, idx));
-   837                  txwi[3] |= cpu_to_le32(MT_TXD3_BA_DISABLE);
-   838          }
-   839  }
+This is the traceback:
 
-regards,
-dan carpenter
+[    6.734214] BUG: spinlock bad magic on CPU#3, kworker/3:1/104
+[    6.740002]  lock: 0xffff2c7b8655f660, .magic: 00000000, .owner: <none>/-1, .owner_cpu: 0
+[    6.748207] CPU: 3 UID: 0 PID: 104 Comm: kworker/3:1 Not tainted 6.10.0-next-20240715 #1 35893202ca8f99b37129997821441a29d2b23f0a
+[    6.759874] Hardware name: Acer Tomato (rev2) board (DT)
+[    6.765195] Workqueue: pm pm_runtime_work
+[    6.769235] Call trace:
+[    6.771689]  dump_backtrace+0x9c/0x100
+[    6.775456]  show_stack+0x20/0x38
+[    6.778786]  dump_stack_lvl+0x80/0xf8
+[    6.782463]  dump_stack+0x18/0x28
+[    6.785791]  spin_bug+0x90/0xd8
+[    6.788950]  do_raw_spin_lock+0xf4/0x128
+[    6.792890]  _raw_spin_lock_irq+0x30/0x70
+[    6.796915]  usb_kill_anchored_urbs+0x48/0x1e0
+[    6.801378]  btmtk_usb_suspend+0x20/0x38 [btmtk 5f200a97badbdfda4266773fee49acfc8e0224d5]
+[    6.809578]  btusb_suspend+0xd0/0x210 [btusb 0bfbf19a87ff406c83b87268b87ce1e80e9a829b]
+[    6.817527]  usb_suspend_both+0x90/0x288
+[    6.821469]  usb_runtime_suspend+0x3c/0xa8
+[    6.825585]  __rpm_callback+0x50/0x1f0
+[    6.829351]  rpm_callback+0x70/0x88
+[    6.832856]  rpm_suspend+0xe4/0x5a0
+[    6.836361]  pm_runtime_work+0xd4/0xe0
+[    6.840126]  process_one_work+0x18c/0x440
+[    6.844156]  worker_thread+0x314/0x428
+[    6.847923]  kthread+0x128/0x138
+[    6.851167]  ret_from_fork+0x10/0x20
+[    6.854769] Unable to handle kernel paging request at virtual address ffffffffffffffd8
+[    6.862694] Mem abort info:
+[    6.865494]   ESR = 0x0000000096000006
+[    6.869249]   EC = 0x25: DABT (current EL), IL = 32 bits
+[    6.874571]   SET = 0, FnV = 0
+[    6.877632]   EA = 0, S1PTW = 0
+[    6.880780]   FSC = 0x06: level 2 translation fault
+[    6.885665] Data abort info:
+[    6.888553]   ISV = 0, ISS = 0x00000006, ISS2 = 0x00000000
+[    6.894044]   CM = 0, WnR = 0, TnD = 0, TagAccess = 0
+[    6.899103]   GCS = 0, Overlay = 0, DirtyBit = 0, Xs = 0
+[    6.904423] swapper pgtable: 4k pages, 48-bit VAs, pgdp=0000000042533000
+[    6.911134] [ffffffffffffffd8] pgd=0000000000000000, p4d=0000000042e94003, pud=0000000042e95003, pmd=0000000000000000
+lav[    6.921781] Internal error: Oops: 0000000096000006 [#1] PREEMPT SMP
+[    6.921794] Modules linked in: mt7921e mt7921_common mt792x_lib mt76_connac_lib mt76 mtk_vcodec_dec_hw mac80211 cros_ec_lid_angle cros_ec_sensors cros_ec_sensors_core industrialio_triggered_buffer cfg80211 kfifo_buf mtk_vcodec_dec mtk_jpeg v4l2_vp9 cros_ec_rpmsg mtk_vcodec_enc v4l2_h264 mtk_jpeg_enc_hw btusb mtk_vcodec_dbgfs mtk_jpeg_dec_hw mtk_dp mtk_vcodec_common btintel btbcm uvcvideo btmtk mtk_mdp3 videobuf2_vmalloc v4l2_mem2mem btrtl uvc joydev videobuf2_v4l2 videobuf2_dma_contig bluetooth elan_i2c videobuf2_memops ecdh_generic ecc videobuf2_common cros_ec_sensorhub cros_kbd_led_backlight mtk_scp snd_sof_mt8195 pcie_mediatek_gen3 mtk_rpmsg mtk_svs mtk_adsp_common snd_sof_xtensa_dsp rpmsg_core lvts_thermal snd_sof_of mtk_scp_ipi snd_soc_mt8195_afe snd_sof snd_sof_utils mtk_wdt mt6577_auxadc mt8195_mt6359
+[    6.922087] CPU: 3 UID: 0 PID: 104 Comm: kworker/3:1 Not tainted 6.10.0-next-20240715 #1 35893202ca8f99b37129997821441a29d2b23f0a
+[    6.922106] Hardware name: Acer Tomato (rev2) board (DT)
+[    6.922114] Workqueue: pm pm_runtime_work
+[    6.922132] pstate: 804000c9 (Nzcv daIF +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[    6.922147] pc : usb_kill_anchored_urbs+0x6c/0x1e0
+[    6.922164] lr : usb_kill_anchored_urbs+0x48/0x1e0
+[    6.922181] sp : ffff800080903b60
+[    6.922187] x29: ffff800080903b60 x28: ffff2c7b85c32b80 x27: ffff2c7bbb370930
+[    6.922211] x26: 00000000000f4240 x25: 00000000ffffffff x24: ffffd49ece2dcb48
+[    6.922233] x23: 0000000000000001 x22: ffff2c7b8655f660 x21: ffff2c7b8655f628
+[    6.922255] x20: ffffffffffffffd8 x19: 0000000000000000 x18: 0000000000000006
+[    6.922276] x17: 6531656337386238 x16: 3632373862333863 x15: ffff800080903480
+[    6.922297] x14: 0000000000000000 x13: 303278302f303178 x12: ffffd49ecf090e30
+[    6.922318] x11: 0000000000000001 x10: 0000000000000001 x9 : ffffd49ecd2c5bb4
+[    6.922339] x8 : c0000000ffffdfff x7 : ffffd49ecefe0db8 x6 : 00000000000affa8
+[    6.922360] x5 : ffff2c7bbb35dd48 x4 : 0000000000000000 x3 : 0000000000000000
+[    6.922379] x2 : 0000000000000000 x1 : 0000000000000003 x0 : ffffffffffffffd8
+[    6.922400] Call trace:
+[    6.922405]  usb_kill_anchored_urbs+0x6c/0x1e0
+[    6.922422]  btmtk_usb_suspend+0x20/0x38 [btmtk 5f200a97badbdfda4266773fee49acfc8e0224d5]
+[    6.922444]  btusb_suspend+0xd0/0x210 [btusb 0bfbf19a87ff406c83b87268b87ce1e80e9a829b]
+[    6.922469]  usb_suspend_both+0x90/0x288
+[    6.922487]  usb_runtime_suspend+0x3c/0xa8
+[    6.922507]  __rpm_callback+0x50/0x1f0
+[    6.922523]  rpm_callback+0x70/0x88
+[    6.922538]  rpm_suspend+0xe4/0x5a0
+[    6.922553]  pm_runtime_work+0xd4/0xe0
+[    6.922569]  process_one_work+0x18c/0x440
+[    6.922588]  worker_thread+0x314/0x428
+[    6.922606]  kthread+0x128/0x138
+[    6.922621]  ret_from_fork+0x10/0x20
+[    6.922644] Code: f100a274 54000520 d503201f d100a260 (b8370000)
+[    6.922654] ---[ end trace 0000000000000000 ]---
+a-148[    7.203910] Kernel panic - not syncing: Oops: Fatal exception
+[    7.209649] SMP: stopping secondary CPUs
+[    7.213713] Kernel Offset: 0x549e4c400000 from 0xffff800080000000
+[    7.219796] PHYS_OFFSET: 0xfff0d38580000000
+[    7.223969] CPU features: 0x04,0000000b,80140528,4200720b
+[    7.229360] Memory Limit: none
+
+Full kernel log: http://0x0.st/X9rx.txt
+Config: http://0x0.st/X9r2.txt
+
+#regzbot introduced: ee6bd4b95c66
+#regzbot title: usb_kill_anchored_urbs panic during boot on mt8195-cherry-tomato-r2
+
+Thanks,
+Nícolas
 
