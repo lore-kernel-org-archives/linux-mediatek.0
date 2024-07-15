@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDF0BC3DA4A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jul 2024 06:33:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D06EDC2BD09
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jul 2024 06:33:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7hD96SukkfsNyjNTVedgkKQiaViidlloIggj4cO+Fh4=; b=AN7kYTpOhIT/WIMaqBDGwhvrSL
-	/hwqGYhYCsyjCdbXgPabP/4B9MUQIJWYF0jatbQpBM5KhTAEvkWPlYcfQGrEuGnosSBx70InRO+5p
-	xPfd4EFM0kUCwdrDLG8BdSfyF523bFk9SHtOfBBbcNdC9e1BSvBuc/3pXzpk15sU24edn55ZDG0pH
-	AUHP/476ZyLJq+NtcRIf/+eH+OXcS9cRL4MCbQUFrnBV+19tEQ4bnLIxToBE80O1Xr+7fZRMnL18b
-	CkVJPJ5q/0SdCXqJnLE9ryvl3ap79a/VY4u9SzomPVyO0QND/qAmti5GbikUcx684PrtTKeEHy2MO
-	CTCaGE1A==;
+	bh=hbJUOmvW24quAtGM4HEWCKTnos6XbtfhPM+nK5+e2Tw=; b=kfy9PeiVDdky4bVTn8r3NRRY7E
+	5QcldxIi3/dEiDTe0xt+O5XcCpcmOlYTc2dEAW/f6+FS3UO6rKAJeVd9GSdGpqkK9SN0gulO91m7b
+	naodpeUcatN6PzWHVDLcc0auabRXOF4AovBqZmQB52+acCRaOCCtqjyY6iriSanzRUL+Fv/xqAsl9
+	8mvco+fR0or3Z1YHokU+Si75K5PPMOnu/SBWyZo3eJitSwaZpS8Tredh4BwJo/VsyGPdhGmy5+HOg
+	hEDXCdU08lD1Thcvoca0rmYmb237xAXxHWWFiq7sH8p+j4xYGAp2NTgxYYliByjKNyIOq0z4ggtxo
+	+N0bfpjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sTFHB-000000062eq-2Ri3;
-	Mon, 15 Jul 2024 06:33:33 +0000
-Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
+	id 1sTFHO-000000062qf-088D;
+	Mon, 15 Jul 2024 06:33:46 +0000
+Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sTFGw-000000062QO-0wcn
+	id 1sTFGx-000000062RN-0aXB
 	for linux-mediatek@lists.infradead.org;
-	Mon, 15 Jul 2024 06:33:22 +0000
-Received: by mail-lf1-x130.google.com with SMTP id 2adb3069b0e04-52e97e5a84bso5349187e87.2
-        for <linux-mediatek@lists.infradead.org>; Sun, 14 Jul 2024 23:33:17 -0700 (PDT)
+	Mon, 15 Jul 2024 06:33:23 +0000
+Received: by mail-lf1-x131.google.com with SMTP id 2adb3069b0e04-52ea0f18500so4021773e87.3
+        for <linux-mediatek@lists.infradead.org>; Sun, 14 Jul 2024 23:33:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1721025196; x=1721629996; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1721025197; x=1721629997; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=7hD96SukkfsNyjNTVedgkKQiaViidlloIggj4cO+Fh4=;
-        b=xPlhsy1t0zAuwXqCg46G6m6QX2H2/zWZoiWZQ3Pok3sDcqghvk/AaAL8eQiv9CLoBC
-         dLHRynwep9aciOwGw1OPLh/JwYg5RMZjfhi86V60V8qUe8uV8gKrfD0kHOIHM9tHrQpp
-         u3Fh32LK80YpglLa/mcmHo82U0LQ5MjpRiy6tydZ92EfgBcT2Trji2Dz0akYVXe7UwEE
-         VJGq5pvh9I11jr/zDIBcf1Ps2J7Bo5QPoXDwbkoPSHZpP9akLmijiXvfPFgNOsdSJm+J
-         ZeB4MiA07GD9gD+O4CcAv8MBNNfpGfaSbGZnhxcn+IrBKWsyHBmLOlAYaRQbFf8pUNcz
-         Rztg==
+        bh=hbJUOmvW24quAtGM4HEWCKTnos6XbtfhPM+nK5+e2Tw=;
+        b=nFf2SiAULzqa4KuU4LQDMwN4V+eZsgQYcYt75Sqlcye+U9YYIGs3IMfOO0H2acKq2D
+         hkUHIrCgDwuE+peMB3BHd3LSzMKt8qd987XvFgdp/lRZZPa0fPFMy5ZHtmmC2t/Uht7T
+         SjQXk9z8U+whGo/8peegE7HubwKcB2rS4t8oc6sSbWs2jmq76cR9NXWJTW4tFnDtkIOZ
+         m9Zx27i6sfTkETZmL0Bd2uTyP0furSwYvPoobl4VaePEaciAHY3b+Ntb1LhllqNvtbvQ
+         0IrGV5qDbKodTz5yedZFrl3PJNAK2J9g6Mkn0LZtWoLyeeSUMuUdNy9KSPQAWteMzhYp
+         kKAg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1721025196; x=1721629996;
+        d=1e100.net; s=20230601; t=1721025197; x=1721629997;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=7hD96SukkfsNyjNTVedgkKQiaViidlloIggj4cO+Fh4=;
-        b=G87FcMpezoc4QVcsqlbGJJ4FZE4bqUsD+R1kqvm/GQhYYU/5g/X5Uw9RyqVS36QFrJ
-         K9IOZdIIJi9N4C+bERuXCgJTrxGS7zkoTQjAQDEuVPUSsrVLaox9AeUgP2D/3ysJJif/
-         pEdEi79gupfCcqAT5FcanZnbp58WPxoDXI9mgq+44kChGXyB+ElXrQLeNzOZ72mE0PQ4
-         HFD9mHSc02XvUJYwLOeXFkRWvWHiBnuH4EGIlmRQScM5sJBlsCiYtefBgV+72l4xnDA8
-         EEEbSH+DO9e4JKI6CwDTZyh8QBlDIGWAwTNgPdNfrCUXJaiRdylR5tD5that5Egd4ifK
-         x7jw==
-X-Forwarded-Encrypted: i=1; AJvYcCVRvM/VZsIs7GZVVWdV4Lz1gjkPDv74kUF5+y8yYkYBLp45FJWgt+Z9av+c7AVJnKMNm8MfsQbtX+m90E30O+qmnT+0uu0VT/tJRKWG6KqZTk5z
-X-Gm-Message-State: AOJu0YzhWb04fu3A3S+NGYFgyqzVCg30xfbqT1e0VJbeGSAMzuk5gsu+
-	ylPheGx7nu8jynVrS+vg1i85FgtE33cI93BlpWhgHl40KTucRLJGRe59abzYw60=
-X-Google-Smtp-Source: AGHT+IFX0QH8GNKb6vSmUPAoENVWks4aXQTHoSfQhbwYfR/OvyXjXMYla/ZB9rPLdfgjOmPqGKpO/g==
-X-Received: by 2002:ac2:5544:0:b0:52e:751a:a172 with SMTP id 2adb3069b0e04-52eb99d288dmr13038205e87.49.1721025196342;
-        Sun, 14 Jul 2024 23:33:16 -0700 (PDT)
+        bh=hbJUOmvW24quAtGM4HEWCKTnos6XbtfhPM+nK5+e2Tw=;
+        b=qk7y/HVto50zHL/E8tZfcchwWKIMtrqG/5HNeSQu9LvT/dBhNLEWRSZGyJONJRhuGu
+         cA3cA5amrGGQ5jz5Y0HqEzp5UFSHoyg626HpPAyRRC8Oyv0RLh1uh92//oVp3+NVmnvp
+         D/H1ngEObtHoeI174AxWLoqpihYn2Bkg/3WLhqcRFzQeHrodtF0NlHgG5+ED8RD3PsLU
+         ho9uhaFHJ55v6EL4DykERpMjq++bGdh+4ycphzyo+KzQNhNSDhbqo3vUMNNP5Bmnwrc/
+         QTwJ47+mAkL4VmZXkA/ECmvdpmImWYDr2Mk+gS1yktBn+e3hK0wH9SFBgdRvSqwkarMW
+         Oexg==
+X-Forwarded-Encrypted: i=1; AJvYcCUlO0IswW0oDhD/G0KcHuPIkFhHMOKYwKHmmJhoRKqTfwFZOFbUUU+6bgPhvTMG6LsFGu/zwQiTGLRh9v5yvOI6drHhV+fDweMwMjQUfQpsgOPk
+X-Gm-Message-State: AOJu0YwiKe4lSWkG9fB0DTRc3G8jesUoMbs+Q628jgxhh32hMCfp8lOM
+	f10tezM47t1S5+gMSfkE4mRUr6qp7bqHfquPJV/RN4Wk9gRMfbTBXSemoRipPBA=
+X-Google-Smtp-Source: AGHT+IF+V86J6/2ZIQK/CmixClQVdJF7hjnWLmCjjdRBB6FFYX5j0s7A+kP4jnSIFrfgBCt8vnJuQA==
+X-Received: by 2002:a19:f706:0:b0:52c:c9d3:a30c with SMTP id 2adb3069b0e04-52eb99a0639mr9397218e87.29.1721025197267;
+        Sun, 14 Jul 2024 23:33:17 -0700 (PDT)
 Received: from umbar.lan ([192.130.178.91])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-52ed24e188esm743543e87.47.2024.07.14.23.33.15
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-52ed24e188esm743543e87.47.2024.07.14.23.33.16
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 14 Jul 2024 23:33:15 -0700 (PDT)
+        Sun, 14 Jul 2024 23:33:16 -0700 (PDT)
 From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Date: Mon, 15 Jul 2024 09:33:02 +0300
-Subject: [PATCH v4 2/5] drm/drm_property: require DRM_MODE_PROP_IMMUTABLE
- for single-value props
+Date: Mon, 15 Jul 2024 09:33:03 +0300
+Subject: [PATCH v4 3/5] drm/connector: automatically set immutable flag for
+ max_bpc property
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240715-drm-bridge-connector-fix-hdmi-reset-v4-2-61e6417cfd99@linaro.org>
+Message-Id: <20240715-drm-bridge-connector-fix-hdmi-reset-v4-3-61e6417cfd99@linaro.org>
 References: <20240715-drm-bridge-connector-fix-hdmi-reset-v4-0-61e6417cfd99@linaro.org>
 In-Reply-To: <20240715-drm-bridge-connector-fix-hdmi-reset-v4-0-61e6417cfd99@linaro.org>
 To: Andrzej Hajda <andrzej.hajda@intel.com>, 
@@ -116,21 +116,21 @@ Cc: Rob Clark <robdclark@gmail.com>,
  linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
  linux-tegra@vger.kernel.org
 X-Mailer: b4 0.14.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1070;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1164;
  i=dmitry.baryshkov@linaro.org; h=from:subject:message-id;
- bh=ElUTEfRFQUeTMBsWyzbhEyDMF5jl1RThHLUf4PWNs3U=;
- b=owEBbQGS/pANAwAKAYs8ij4CKSjVAcsmYgBmlMKovm5l+7A24sivlmJ0R0FXE9iAwNjDSrOKP
- WDSbfR6q0WJATMEAAEKAB0WIQRMcISVXLJjVvC4lX+LPIo+Aiko1QUCZpTCqAAKCRCLPIo+Aiko
- 1e+8CACEJovL304bl9alKdbKAOnfEF/R08MCNCfeoeQl2+qtgfzhmRdNpjupcxELHKcsWM+QIMF
- y5SHMmA5MDdtTOnk1pk9JWqRfeB2hUSWYs3LYMmYEQy7Tz+BYPrK4ScYeUHR6+qj0oCHUZHBpWe
- jB29sogURM+xEeh1n0770SS5O7ZxzrOm+Hxi3UAo62YKLxcXGsWm6Lyx/3MtlyAPTJKZzM3T3ko
- biVZKcN3GeHZhA4YojTOl5G8riLQxBO1BmRwBev3679IUvrG/ciHfbmLdysd4FqK1H0pZF5YX4Y
- mYOPUHKTFUgJ8Z2ftC0dD6tj00ePMiHdUlm/pBEnIMFwUVaU
+ bh=Ogj1qgSBFy5LiaMGrph8HSRVcootU6FeEO747BTFj9E=;
+ b=owGbwMvMwMXYbdNlx6SpcZXxtFoSQ9qUQysu/J/Xl5n/9o/EfmHLmdY1x3fJXa8q/t5631Izp
+ 6VP4f30TkZjFgZGLgZZMUUWn4KWqTGbksM+7JhaDzOIlQlkCgMXpwBMRPg8B8NKPS4j53+nGRhP
+ VBcpNN70edCVY/lnJcPcZSbfTc/NZDjqy6J4IKKOJ5lRyqf+pLljwNWcn8dbq5ta/jC3fL5Surt
+ 8VnHwiZ8ube0uSdOfHZtUofj4yj2FJZ909eR959nxx9g9rdtcmORwy69fzvGuf/mlJ9ITLxRdKU
+ /VyNt9e8HWnyJSNaJvsvvjVOZ/8xJcrea+Le6pdpiL04no7ZG5l+apXb1wf90jpyWPt1z035Z38
+ UmCspiUQ5HjJzXNXLbKp8oVKQ0yzQwbTWba5eanp9nPFBKUKtof79uV/nmO00QFK+krh9kFBW1Z
+ lM+2PipLcPhrUlgXZKBucDBt5ZLW8y+WpX08IzaNs3cFAA==
 X-Developer-Key: i=dmitry.baryshkov@linaro.org; a=openpgp;
  fpr=8F88381DD5C873E4AE487DA5199BF1243632046A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240714_233318_478547_37273FE4 
-X-CRM114-Status: GOOD (  10.42  )
+X-CRM114-CacheID: sfid-20240714_233319_476421_30C94B63 
+X-CRM114-Status: GOOD (  11.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -145,30 +145,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Document that DRM_MODE_PROP_IMMUTABLE must be set for the properties
-that are immutable by definition - e.g. ranges with min == max or enums
-with a single value. This matches the behaviour of the IGT tests, see
-kms_properties.c / validate_range_prop(), validate_enum_prop(),
-validate_bitmask_prop().
+With the introduction of the HDMI Connector framework the driver might
+end up creating the max_bpc property with min = max = 8. IGT insists
+that such properties carry the 'immutable' flag. Automatically set the
+flag if the driver asks for the max_bpc property with min == max.
 
+Fixes: aadb3e16b8f3 ("drm/connector: hdmi: Add output BPC to the connector state")
 Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
 ---
- include/drm/drm_property.h | 3 +++
- 1 file changed, 3 insertions(+)
+ drivers/gpu/drm/drm_connector.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
-diff --git a/include/drm/drm_property.h b/include/drm/drm_property.h
-index 082f29156b3e..d78ec42de42f 100644
---- a/include/drm/drm_property.h
-+++ b/include/drm/drm_property.h
-@@ -162,6 +162,9 @@ struct drm_property {
- 	 *     userspace, e.g. the EDID, or the connector path property on DP
- 	 *     MST sinks. Kernel can update the value of an immutable property
- 	 *     by calling drm_object_property_set_value().
-+	 *     This flag MUST be set for all properties that have only a
-+	 *     single value (e.g. min == max or if enum has only a single
-+	 *     value).
- 	 */
- 	uint32_t flags;
+diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_connector.c
+index ab6ab7ff7ea8..33847fd63628 100644
+--- a/drivers/gpu/drm/drm_connector.c
++++ b/drivers/gpu/drm/drm_connector.c
+@@ -2610,7 +2610,12 @@ int drm_connector_attach_max_bpc_property(struct drm_connector *connector,
+ 
+ 	prop = connector->max_bpc_property;
+ 	if (!prop) {
+-		prop = drm_property_create_range(dev, 0, "max bpc", min, max);
++		u32 flags = 0;
++
++		if (min == max)
++			flags |= DRM_MODE_PROP_IMMUTABLE;
++
++		prop = drm_property_create_range(dev, flags, "max bpc", min, max);
+ 		if (!prop)
+ 			return -ENOMEM;
  
 
 -- 
