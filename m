@@ -4,73 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D06EDC2BD09
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jul 2024 06:33:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BE31C3DA45
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jul 2024 06:33:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hbJUOmvW24quAtGM4HEWCKTnos6XbtfhPM+nK5+e2Tw=; b=kfy9PeiVDdky4bVTn8r3NRRY7E
-	5QcldxIi3/dEiDTe0xt+O5XcCpcmOlYTc2dEAW/f6+FS3UO6rKAJeVd9GSdGpqkK9SN0gulO91m7b
-	naodpeUcatN6PzWHVDLcc0auabRXOF4AovBqZmQB52+acCRaOCCtqjyY6iriSanzRUL+Fv/xqAsl9
-	8mvco+fR0or3Z1YHokU+Si75K5PPMOnu/SBWyZo3eJitSwaZpS8Tredh4BwJo/VsyGPdhGmy5+HOg
-	hEDXCdU08lD1Thcvoca0rmYmb237xAXxHWWFiq7sH8p+j4xYGAp2NTgxYYliByjKNyIOq0z4ggtxo
-	+N0bfpjA==;
+	bh=cowQ2MZs44p/k7+ocTvDEJFCYMvt/Fw411UD/yRIuZk=; b=UYAeEN3UvVTqtap928CX8UstkP
+	JZuDUsQYaedOO8f44iJ4K9C22AOAYiVzJyIeAOUyVTBXNv0VS6gqs1nTRlHysAQuprmcww97bvGL1
+	h31zVp/EESXiefhlhy80uAfXlRiOl52YLbLjQ9cCyD+i3vhEF1x2hbcpd7xt+Q6LqmXN74QcxUQ9I
+	vA/IwAUeTcmiJrJz1I+1tC3usQ/WD+YgxtFhTWlW0FyNUXas/5XkpRIXO4EUhq/32Iup6EadEiPTg
+	4X6xuK7eoQDoLFldCTalVZ+1AOCEYTJnc7MUw0HYhlodCk5hKfiSIp7IxtnqddMR94mKq5Bm5nHID
+	sx/J2Tkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sTFHO-000000062qf-088D;
-	Mon, 15 Jul 2024 06:33:46 +0000
-Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
+	id 1sTFHX-000000062xT-0N3L;
+	Mon, 15 Jul 2024 06:33:55 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sTFGx-000000062RN-0aXB
+	id 1sTFH7-000000062Zf-1tYm
+	for linux-mediatek@bombadil.infradead.org;
+	Mon, 15 Jul 2024 06:33:29 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=cowQ2MZs44p/k7+ocTvDEJFCYMvt/Fw411UD/yRIuZk=; b=GdkjIz5R6mzFb6RLkp2x3iV1Qz
+	XoG9F4+7jjo5kfea/iyT+E+alR9TM3f5ov93Ecd31Y5b0g1zev/RGPAHGhfdnA1nv0+4/jrDJ57it
+	QU6P3C2pAjNclCPCeB6flAFHc96DQcb4JgAR+NBLTHWzQGT2MBjgxS1y4dg6YrjLs5bLh6Z7z6lWJ
+	N1GARoZXsqOcUfYeMBKrRhhAOj+RmzZ94sy+2WCVG/ls963+gXfofHK5Q6rQwL/MRNwnmFQkFUtKf
+	E4WFg2s9vixnmzYTz4wWYKk5Fa1Ac4fdHmjkgppc8cAsQx9sTqi2QJ5am+1EmH34nNX4ZyDQZGPKn
+	9uPJR0NA==;
+Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
+	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1sTFH2-00000001kNP-0Osh
 	for linux-mediatek@lists.infradead.org;
-	Mon, 15 Jul 2024 06:33:23 +0000
-Received: by mail-lf1-x131.google.com with SMTP id 2adb3069b0e04-52ea0f18500so4021773e87.3
-        for <linux-mediatek@lists.infradead.org>; Sun, 14 Jul 2024 23:33:18 -0700 (PDT)
+	Mon, 15 Jul 2024 06:33:28 +0000
+Received: by mail-lf1-x136.google.com with SMTP id 2adb3069b0e04-52ea2f58448so5213067e87.1
+        for <linux-mediatek@lists.infradead.org>; Sun, 14 Jul 2024 23:33:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1721025197; x=1721629997; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1721025199; x=1721629999; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=hbJUOmvW24quAtGM4HEWCKTnos6XbtfhPM+nK5+e2Tw=;
-        b=nFf2SiAULzqa4KuU4LQDMwN4V+eZsgQYcYt75Sqlcye+U9YYIGs3IMfOO0H2acKq2D
-         hkUHIrCgDwuE+peMB3BHd3LSzMKt8qd987XvFgdp/lRZZPa0fPFMy5ZHtmmC2t/Uht7T
-         SjQXk9z8U+whGo/8peegE7HubwKcB2rS4t8oc6sSbWs2jmq76cR9NXWJTW4tFnDtkIOZ
-         m9Zx27i6sfTkETZmL0Bd2uTyP0furSwYvPoobl4VaePEaciAHY3b+Ntb1LhllqNvtbvQ
-         0IrGV5qDbKodTz5yedZFrl3PJNAK2J9g6Mkn0LZtWoLyeeSUMuUdNy9KSPQAWteMzhYp
-         kKAg==
+        bh=cowQ2MZs44p/k7+ocTvDEJFCYMvt/Fw411UD/yRIuZk=;
+        b=YFbDHi2bP/xqTJdmMqqyhyPh2AyZOMc1Lz+lbGVnE8A/iJoGkcdFq5uRfwltEIldjv
+         W/RFJ4cicUaKx9bc+aUeY6XNXto3heySX65HOzYMxOgqtBDXg/4i5r+FxcrmmXhva00v
+         JQYwiRbBtJHgSfPaHOgmvxrlSihEWxK+fbiKFvv+kRi1UYaJALA53r54OHqCjjfKBI4s
+         GojmqoYrfHEpgkZyIAXta2rw+IZZ/vkWezduPARemd3NLaEFnYnTJLap2F4QMhJy8Vii
+         wx8ye2ehYmFdGVMFh4BqTxRumnmWZzDp4ufGFItbj4gUihfTAbsZkdyEJOxfLQ9MbOqZ
+         7/ew==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1721025197; x=1721629997;
+        d=1e100.net; s=20230601; t=1721025199; x=1721629999;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=hbJUOmvW24quAtGM4HEWCKTnos6XbtfhPM+nK5+e2Tw=;
-        b=qk7y/HVto50zHL/E8tZfcchwWKIMtrqG/5HNeSQu9LvT/dBhNLEWRSZGyJONJRhuGu
-         cA3cA5amrGGQ5jz5Y0HqEzp5UFSHoyg626HpPAyRRC8Oyv0RLh1uh92//oVp3+NVmnvp
-         D/H1ngEObtHoeI174AxWLoqpihYn2Bkg/3WLhqcRFzQeHrodtF0NlHgG5+ED8RD3PsLU
-         ho9uhaFHJ55v6EL4DykERpMjq++bGdh+4ycphzyo+KzQNhNSDhbqo3vUMNNP5Bmnwrc/
-         QTwJ47+mAkL4VmZXkA/ECmvdpmImWYDr2Mk+gS1yktBn+e3hK0wH9SFBgdRvSqwkarMW
-         Oexg==
-X-Forwarded-Encrypted: i=1; AJvYcCUlO0IswW0oDhD/G0KcHuPIkFhHMOKYwKHmmJhoRKqTfwFZOFbUUU+6bgPhvTMG6LsFGu/zwQiTGLRh9v5yvOI6drHhV+fDweMwMjQUfQpsgOPk
-X-Gm-Message-State: AOJu0YwiKe4lSWkG9fB0DTRc3G8jesUoMbs+Q628jgxhh32hMCfp8lOM
-	f10tezM47t1S5+gMSfkE4mRUr6qp7bqHfquPJV/RN4Wk9gRMfbTBXSemoRipPBA=
-X-Google-Smtp-Source: AGHT+IF+V86J6/2ZIQK/CmixClQVdJF7hjnWLmCjjdRBB6FFYX5j0s7A+kP4jnSIFrfgBCt8vnJuQA==
-X-Received: by 2002:a19:f706:0:b0:52c:c9d3:a30c with SMTP id 2adb3069b0e04-52eb99a0639mr9397218e87.29.1721025197267;
-        Sun, 14 Jul 2024 23:33:17 -0700 (PDT)
+        bh=cowQ2MZs44p/k7+ocTvDEJFCYMvt/Fw411UD/yRIuZk=;
+        b=hyMUKNN/jlVw03J58cnHxARGhZxvvEe9dt1vVARaR8V7kw1Db9B4kB84K7sQkJbCVW
+         A8WsolBzz30RM6Q6HSHtCXRqWSTjIV1hz9NzJpS815lMgFUKPqMnXTuyIb/Gxc9AA0S8
+         Z6k+00lgD2UT6Mwurp8oyg7ESoIDE3Bp7hh8stB36Uhvq5/fkrFR8TKnNdtIeRNqjrLx
+         XL7JQrd0si/lbOkX86MEuFgL8aYpGfydaYd/rki7SZepug6IJtBEh59R4G2DI2GpmPr8
+         jBea3yLdM/GF6GPlivluo9OsPBO8OoKTd9lSYvhXFyy7YT8aXCJdjvrLtZNkVTKG2O+t
+         Niow==
+X-Forwarded-Encrypted: i=1; AJvYcCW4OwOzu3iYBXItz1eh9N33tORwFovQw9FkSnC9+OV2zpebkuatj9kghelOcaShYELQ9pd9Q6MJGxqlgM2R9LJwBpwu74MAYpVD+3a5KjQmARnj
+X-Gm-Message-State: AOJu0YzJgapxlU8RA7ka10/oqM+xEakk37qFh7Dt/+2YivPqRoP9pUMt
+	JnXKRiJz8yyWxtcmoDOJZJwhfA6fz8Yr3x+31rgjSunvCcMWrqaj2ikYnCOk3Ks=
+X-Google-Smtp-Source: AGHT+IHap4bfADCMMdp+9/m6hrqUOR1BGeplBSV1y4IBIjYw8gKprZmmugJo1TIVKbdLpOyzSTxWyQ==
+X-Received: by 2002:a05:6512:789:b0:52e:954d:3594 with SMTP id 2adb3069b0e04-52eb99cafa9mr9724397e87.52.1721025199105;
+        Sun, 14 Jul 2024 23:33:19 -0700 (PDT)
 Received: from umbar.lan ([192.130.178.91])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-52ed24e188esm743543e87.47.2024.07.14.23.33.16
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-52ed24e188esm743543e87.47.2024.07.14.23.33.18
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 14 Jul 2024 23:33:16 -0700 (PDT)
+        Sun, 14 Jul 2024 23:33:18 -0700 (PDT)
 From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Date: Mon, 15 Jul 2024 09:33:03 +0300
-Subject: [PATCH v4 3/5] drm/connector: automatically set immutable flag for
- max_bpc property
+Date: Mon, 15 Jul 2024 09:33:05 +0300
+Subject: [PATCH v4 5/5] drm/bridge-connector: reset the HDMI connector
+ state
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240715-drm-bridge-connector-fix-hdmi-reset-v4-3-61e6417cfd99@linaro.org>
+Message-Id: <20240715-drm-bridge-connector-fix-hdmi-reset-v4-5-61e6417cfd99@linaro.org>
 References: <20240715-drm-bridge-connector-fix-hdmi-reset-v4-0-61e6417cfd99@linaro.org>
 In-Reply-To: <20240715-drm-bridge-connector-fix-hdmi-reset-v4-0-61e6417cfd99@linaro.org>
 To: Andrzej Hajda <andrzej.hajda@intel.com>, 
@@ -116,21 +131,21 @@ Cc: Rob Clark <robdclark@gmail.com>,
  linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
  linux-tegra@vger.kernel.org
 X-Mailer: b4 0.14.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1164;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2305;
  i=dmitry.baryshkov@linaro.org; h=from:subject:message-id;
- bh=Ogj1qgSBFy5LiaMGrph8HSRVcootU6FeEO747BTFj9E=;
- b=owGbwMvMwMXYbdNlx6SpcZXxtFoSQ9qUQysu/J/Xl5n/9o/EfmHLmdY1x3fJXa8q/t5631Izp
- 6VP4f30TkZjFgZGLgZZMUUWn4KWqTGbksM+7JhaDzOIlQlkCgMXpwBMRPg8B8NKPS4j53+nGRhP
- VBcpNN70edCVY/lnJcPcZSbfTc/NZDjqy6J4IKKOJ5lRyqf+pLljwNWcn8dbq5ta/jC3fL5Surt
- 8VnHwiZ8ube0uSdOfHZtUofj4yj2FJZ909eR959nxx9g9rdtcmORwy69fzvGuf/mlJ9ITLxRdKU
- /VyNt9e8HWnyJSNaJvsvvjVOZ/8xJcrea+Le6pdpiL04no7ZG5l+apXb1wf90jpyWPt1z035Z38
- UmCspiUQ5HjJzXNXLbKp8oVKQ0yzQwbTWba5eanp9nPFBKUKtof79uV/nmO00QFK+krh9kFBW1Z
- lM+2PipLcPhrUlgXZKBucDBt5ZLW8y+WpX08IzaNs3cFAA==
+ bh=RSj/GL8gZoJdjbJyGkKZjzhqoxsZ6wLfYZiTk6CBwIc=;
+ b=owEBbQGS/pANAwAKAYs8ij4CKSjVAcsmYgBmlMKpemzG8GiCsYpbPT9S1Ojj9SgO+0jwg1X5y
+ 9EPZPxXbKOJATMEAAEKAB0WIQRMcISVXLJjVvC4lX+LPIo+Aiko1QUCZpTCqQAKCRCLPIo+Aiko
+ 1RfqCACEDU19Qkxz5DVPRYkK7fDdQdzCC7Ex3ixU9rJztEg0cYygQQ7/N1TTSfpbHd/6dnXTQqr
+ 1EgcPH6TE+tH9eXXMheeF1OS/bhTuKARxi2wWkdHQUGUtyMj8mcHkHdrusMxtne+ZhGO/FIJ2xq
+ Rbf1R+hLTh4esRtay58HxYpazr137omA9Gw8f5vvDWH+/fN0hvMicz3Eg/9i+0frpzphu+S7qVc
+ FVZeAPpLqP6gaJGOvTRZRx1keGxL2vn+faVwbgsOyaVmNQjvZ71zl4YXnlV8oqwC/teMLyW6umJ
+ AqBRzDQGS3iL3PzsMCTRPynE0PUtU41rhweY1t1X4Nq8Idxh
 X-Developer-Key: i=dmitry.baryshkov@linaro.org; a=openpgp;
  fpr=8F88381DD5C873E4AE487DA5199BF1243632046A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240714_233319_476421_30C94B63 
-X-CRM114-Status: GOOD (  11.32  )
+X-CRM114-CacheID: sfid-20240715_073324_598853_CEBB839E 
+X-CRM114-Status: GOOD (  12.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -145,35 +160,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-With the introduction of the HDMI Connector framework the driver might
-end up creating the max_bpc property with min = max = 8. IGT insists
-that such properties carry the 'immutable' flag. Automatically set the
-flag if the driver asks for the max_bpc property with min == max.
+On HDMI connectors which use drm_bridge_connector and DRM_BRIDGE_OP_HDMI
+IGT chokes on the max_bpc property in several kms_properties tests due
+to the drm_bridge_connector failing to reset HDMI-related
+properties.
 
-Fixes: aadb3e16b8f3 ("drm/connector: hdmi: Add output BPC to the connector state")
+Call __drm_atomic_helper_connector_hdmi_reset() if the
+drm_bridge_connector has bridge_hdmi.
+
+It is impossible to call this function from HDMI bridges, none of the
+bridge callbacks correspond to the drm_connector_funcs::reset().
+
+Fixes: 6b4468b0c6ba ("drm/bridge-connector: implement glue code for HDMI connector")
+Reviewed-by: Maxime Ripard <mripard@kernel.org>
 Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
 ---
- drivers/gpu/drm/drm_connector.c | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
+ drivers/gpu/drm/display/Kconfig                |  1 +
+ drivers/gpu/drm/display/drm_bridge_connector.c | 13 ++++++++++++-
+ 2 files changed, 13 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_connector.c
-index ab6ab7ff7ea8..33847fd63628 100644
---- a/drivers/gpu/drm/drm_connector.c
-+++ b/drivers/gpu/drm/drm_connector.c
-@@ -2610,7 +2610,12 @@ int drm_connector_attach_max_bpc_property(struct drm_connector *connector,
+diff --git a/drivers/gpu/drm/display/Kconfig b/drivers/gpu/drm/display/Kconfig
+index 8c174ceb0c4d..3763649ba251 100644
+--- a/drivers/gpu/drm/display/Kconfig
++++ b/drivers/gpu/drm/display/Kconfig
+@@ -15,6 +15,7 @@ if DRM_DISPLAY_HELPER
  
- 	prop = connector->max_bpc_property;
- 	if (!prop) {
--		prop = drm_property_create_range(dev, 0, "max bpc", min, max);
-+		u32 flags = 0;
-+
-+		if (min == max)
-+			flags |= DRM_MODE_PROP_IMMUTABLE;
-+
-+		prop = drm_property_create_range(dev, flags, "max bpc", min, max);
- 		if (!prop)
- 			return -ENOMEM;
+ config DRM_BRIDGE_CONNECTOR
+ 	bool
++	select DRM_DISPLAY_HDMI_STATE_HELPER
+ 	help
+ 	  DRM connector implementation terminating DRM bridge chains.
  
+diff --git a/drivers/gpu/drm/display/drm_bridge_connector.c b/drivers/gpu/drm/display/drm_bridge_connector.c
+index 0869b663f17e..7ebb35438459 100644
+--- a/drivers/gpu/drm/display/drm_bridge_connector.c
++++ b/drivers/gpu/drm/display/drm_bridge_connector.c
+@@ -216,8 +216,19 @@ static void drm_bridge_connector_debugfs_init(struct drm_connector *connector,
+ 	}
+ }
+ 
++static void drm_bridge_connector_reset(struct drm_connector *connector)
++{
++	struct drm_bridge_connector *bridge_connector =
++		to_drm_bridge_connector(connector);
++
++	drm_atomic_helper_connector_reset(connector);
++	if (bridge_connector->bridge_hdmi)
++		__drm_atomic_helper_connector_hdmi_reset(connector,
++							 connector->state);
++}
++
+ static const struct drm_connector_funcs drm_bridge_connector_funcs = {
+-	.reset = drm_atomic_helper_connector_reset,
++	.reset = drm_bridge_connector_reset,
+ 	.detect = drm_bridge_connector_detect,
+ 	.fill_modes = drm_helper_probe_single_connector_modes,
+ 	.atomic_duplicate_state = drm_atomic_helper_connector_duplicate_state,
 
 -- 
 2.39.2
