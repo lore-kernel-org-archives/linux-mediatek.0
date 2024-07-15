@@ -4,214 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84488C3DA59
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jul 2024 11:50:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EC56C3DA4B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jul 2024 12:05:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YpFBHMt+Fy60xVzmDX/x/B3L94Xn711xzkI7n5vpra0=; b=wDbq/VRjQ2tOwSnRTzpE20wT3m
-	XAfH98hjkwe+uCaP2zSwLbmGKdctQdeIERh4DMyAkjnYuaXc+ZpXm1R2o1PBbT/El2/B2diX3KDbJ
-	UdKvu70vVdSW/KPNBJzN5nZhK7m4qQpfi2tATLLqqDhV7NnPSfsMVMqW1OrkZx7wFLtoHUEuhymh2
-	pq+Z79fE0x6qoKY8KNGZ5kg/WQXLGu0sipjMe0Zoc6kgDoxIQ49pLUk4dWiNAiqN094AMAtV58oM5
-	U/eNPifn4OnbdTjHp6oL9L0YjExw1AdlHTt50rg7HYIT10I2MxNUJT9uJhlA0UDRPIMYJBH5juetR
-	YJfqmzrg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=guxoKGAvxv7swLiDFFbZ2Qi641S4peUtRF95jRbvJkk=; b=cVpM3WmnTcSdS3qSTwOooyy/po
+	vRTtY7iSsram8O3iOXJj7Z3uRrWdAs6wAX/Q8XWK3F27o0/WevxCCFGayPDV1evT3BN5539/5HS0Q
+	M9oW/FUxgxjonq5HKG41KfzpxXc76KGF1LudRphxxoLRnp94PW/Uw9JP2Y2lP8ExAif5SQ9kdQXyH
+	LDUSYg2kl8JVgyXcVNT6JlPL9uGT7J5N8RvMq6wWB4am60shYlIKwY9vgiLo90hJkVxH4dQywxr8g
+	pQpwy+r8wRTP7aWGlI5KEFeByky6BmlFPtDUVD9FbirAzthQK3TFIvGm8AFCu5bUcv/GZZsfgEjHu
+	T8sw0rhg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sTKDO-00000006vAl-1dY6;
-	Mon, 15 Jul 2024 11:49:58 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1sTKSH-00000006wxB-1hCB;
+	Mon, 15 Jul 2024 12:05:21 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sTKCZ-00000006unb-3Ojf
-	for linux-mediatek@lists.infradead.org;
-	Mon, 15 Jul 2024 11:49:09 +0000
-X-UUID: 3a6511ee42a011ef955bff358274dad2-20240715
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=YpFBHMt+Fy60xVzmDX/x/B3L94Xn711xzkI7n5vpra0=;
-	b=KTbtfbuwtH8vrcoOkQobKhZ8gaEFB2WuPI3s0ZVmlXp166sRBpEJFpxSYezjaCIwY+hzQm96mjeTun3izLT4X0cOVJJB5W7WL2zqu+I/adiVO0RWEDyzzIFOJQu8VP7TFIc5svyAN9A5hM/XtNoDW2XYwOMHBL+tOro78VXhCH8=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.40,REQID:bfd6d453-02b4-4647-8e76-6df6962c2b09,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:ba885a6,CLOUDID:35ea790d-46b0-425a-97d3-4623fe284021,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 3a6511ee42a011ef955bff358274dad2-20240715
-Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw02.mediatek.com
-	(envelope-from <peter.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 227442055; Mon, 15 Jul 2024 04:49:01 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 15 Jul 2024 19:48:59 +0800
-Received: from APC01-SG2-obe.outbound.protection.outlook.com (172.21.101.237)
- by mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 15 Jul 2024 19:48:58 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=HxGvj2UoLj5G6YaGT4wR8ULovq2CTUS4XlOuTpoYa6jYi4l25eXGfX2J3eb/kGw5iQC/4vPLm7XW1C2kh8EbD999z8YqT6T34ttwMidk5Xp/2scQpW/wIYnpXyRbcJ5t9nwet+QPLtJzLaUwfNc4JUYSF/sRSwr9jGG0F+HbbQOcXOSSjeFhs41FQTyrI+XrIBvjqmvXU7coFVzV2xUImPS8WiRutNo+oCLc3FM9nN0uOuvDtOknJQPPUzU0NE+IMhrI6NlPolJ++BQTVJ3s6d2BqqS/kGespCbOewFxG4Q/AH1ba8WlTR5LyLP7EvD9NtEWMWa3YKc/kvn7036Q0A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=YpFBHMt+Fy60xVzmDX/x/B3L94Xn711xzkI7n5vpra0=;
- b=xIF72/Ufv0b3XrY786BoxMYMwyd/mTnX2jh3TqzCCXmQBt68DYRG74ZO7nxS6rNTxsCWygWmA5GrmhrlUQK77egxwt3aobs2gQ7FOayicp8ZBMqvZlRM8rnasb5mzXxMwkYY93yq4nsWQJqVip2TQgkm05HRBf4SmQMH8tG1IufZyVFpmjy6sQZB+0Z3ElYL4E98MqCcL27XgVPlUNyyUVIDbbXOoWplwkZ6gu5Vkj0vde/tk8cedx5Np+jEBTuBf3R1/Te8NqmBjAVADLMUppfE7XbQEt23b/fzSADKDbL8bfk8n6An54Pjz+fZ6BhPbNt0lEbONthln2hMqDFsfA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=YpFBHMt+Fy60xVzmDX/x/B3L94Xn711xzkI7n5vpra0=;
- b=YNes5VbF718W294JV7rqmMkXSI+7MxHRAOXbVq8pCj2yDk8pGlTkPb8H0+TaWAwrpxVzXDqWFKHvcdNDfSS0a6zoToCx/XMVW+RFpqru9HEyxkrLBKn65e7w5X7H5g1kT5uhPPCN3o9xpxlDimSz9+rul/fpFp3D9WVDAS7qAAg=
-Received: from SI2PR03MB5609.apcprd03.prod.outlook.com (2603:1096:4:129::11)
- by KL1PR03MB7430.apcprd03.prod.outlook.com (2603:1096:820:cf::12) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7762.28; Mon, 15 Jul
- 2024 11:48:57 +0000
-Received: from SI2PR03MB5609.apcprd03.prod.outlook.com
- ([fe80::c4cf:543e:48b5:9432]) by SI2PR03MB5609.apcprd03.prod.outlook.com
- ([fe80::c4cf:543e:48b5:9432%6]) with mapi id 15.20.7762.027; Mon, 15 Jul 2024
- 11:48:57 +0000
-From: =?utf-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>
-To: "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
-	"huobean@gmail.com" <huobean@gmail.com>, "avri.altman@wdc.com"
-	<avri.altman@wdc.com>, "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
-	"alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
-	"martin.petersen@oracle.com" <martin.petersen@oracle.com>,
-	"beanhuo@micron.com" <beanhuo@micron.com>
-CC: "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	=?utf-8?B?SmlhamllIEhhbyAo6YOd5Yqg6IqCKQ==?= <jiajie.hao@mediatek.com>,
-	=?utf-8?B?Q0MgQ2hvdSAo5ZGo5b+X5p2wKQ==?= <cc.chou@mediatek.com>,
-	=?utf-8?B?RWRkaWUgSHVhbmcgKOm7g+aZuuWCkSk=?= <eddie.huang@mediatek.com>,
-	=?utf-8?B?QWxpY2UgQ2hhbyAo6LaZ54+u5Z2HKQ==?= <Alice.Chao@mediatek.com>,
-	wsd_upstream <wsd_upstream@mediatek.com>, "stable@vger.kernel.org"
-	<stable@vger.kernel.org>, =?utf-8?B?TGluIEd1aSAo5qGC5p6XKQ==?=
-	<Lin.Gui@mediatek.com>, =?utf-8?B?Q2h1bi1IdW5nIFd1ICjlt6vpp7/lro8p?=
-	<Chun-hung.Wu@mediatek.com>, =?utf-8?B?VHVuLXl1IFl1ICjmuLjmlabogb8p?=
-	<Tun-yu.Yu@mediatek.com>, "chu.stanley@gmail.com" <chu.stanley@gmail.com>,
-	=?utf-8?B?Q2hhb3RpYW4gSmluZyAo5LqV5pyd5aSpKQ==?=
-	<Chaotian.Jing@mediatek.com>, =?utf-8?B?UG93ZW4gS2FvICjpq5jkvK/mlocp?=
-	<Powen.Kao@mediatek.com>, =?utf-8?B?TmFvbWkgQ2h1ICjmnLHoqaDnlLAp?=
-	<Naomi.Chu@mediatek.com>, =?utf-8?B?UWlsaW4gVGFuICjosK3pupLpup8p?=
-	<Qilin.Tan@mediatek.com>
-Subject: Re: [PATCH v2] ufs: core: fix deadlock when rtc update
-Thread-Topic: [PATCH v2] ufs: core: fix deadlock when rtc update
-Thread-Index: AQHa1oGfHX9jD5TnakSNwh6noF9JO7H3iBYAgAAk2AA=
-Date: Mon, 15 Jul 2024 11:48:56 +0000
-Message-ID: <bcff11e743d564017787bfbe6e85a509576e8801.camel@mediatek.com>
-References: <20240715063831.29792-1-peter.wang@mediatek.com>
-	 <b547225a0315f1729c07a5d59f0db91c33af8e51.camel@gmail.com>
-In-Reply-To: <b547225a0315f1729c07a5d59f0db91c33af8e51.camel@gmail.com>
-Accept-Language: zh-TW, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SI2PR03MB5609:EE_|KL1PR03MB7430:EE_
-x-ms-office365-filtering-correlation-id: faf9cb7a-cfb8-4420-dcfd-08dca4c41c08
-x-ld-processed: a7687ede-7a6b-4ef6-bace-642f677fbe31,ExtAddr
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;ARA:13230040|7416014|376014|366016|1800799024|38070700018;
-x-microsoft-antispam-message-info: =?utf-8?B?Vkw3NlBUOFRDTmc5NmYxbDhOaDRNOGM3dkZ2Skg4ZE9YTnRkNzZLVXF0eWk2?=
- =?utf-8?B?TDExRTV1R1RvWmU0ZjMzVXMzK210Y21HMi9iTnRxeWpjeTUvSWxFcXdGbXhF?=
- =?utf-8?B?enA3RXVjMzBjQnM1ZUhyaFpSbERkMksxeFUrYzUrZjBydkNwaDBYb0VHZ0N0?=
- =?utf-8?B?RmhhaWovaXFkakRPQXdIaUk5SkJjamgyS2M1U1piOXpteU1EMlYxRFMvbElw?=
- =?utf-8?B?akIyVEtJUUgyamFwT1ppWmdXR2xISUxpNXVCZDA1cG9HV0FjZFBMU1NlZklz?=
- =?utf-8?B?WTBSci9ORmdFKzdHL1VZem81RXJhSWtDTWV4SXg5NUpWU1VrcDVjdDY3eHF1?=
- =?utf-8?B?aHFFWWppNEE5V05zV3dPMUwzaDkrTVJaYWNDZTF0NjlQZ2RUK3YyVG5qbHpy?=
- =?utf-8?B?RTJJVjZFb3Q5bUtvNVUxSDZKSnFnNzJCSEtBZmxxZ3RIdEVwZFZsOTU3YzVI?=
- =?utf-8?B?RHRyNnVsbUFRYTZLbktUNnJ3ZlNobjljTzE1QXU2TWE3ak1zU1NPNVA1Y2Nh?=
- =?utf-8?B?S3hCRHREMFFoemg5K3BBR1J0c1NyRkg5anc1WTFFQ2d2elZQY0duNVRQMFZJ?=
- =?utf-8?B?LzBBVkpUdmgxVncvY2NWYkswajZramlqa0thWWtBOUpDOG9DSE9uMTAxem5B?=
- =?utf-8?B?VWFFUnlFSzkzeVYyNGVJUmFzeWNzNFMyYTNiWlpualprWks4NzRZV0RQSmVi?=
- =?utf-8?B?L3BXOVZPdklxOXNybUFvVy94dUVYWDBtdUU3djI2R2VSOENFdFN2VkVNQWpC?=
- =?utf-8?B?K0p2ajdkdkk3MjhYMzJQQU04T1o3Y0dJQmlNWU1PZ3hzRjYzeFJIUHR5U0Z0?=
- =?utf-8?B?ZmU1RFNHS2EydTh1YVcwTjZ1bFloY0txMGpaTXpJcXREeGtGTVdmYWJVWXB1?=
- =?utf-8?B?SWg5MStEcElEU2ZidlFNMDNHK3A1TExTZG4zQU42ZmplRUtqNUlvcC9td3Zw?=
- =?utf-8?B?VjFRQXA4bko3dyt0TVk4Qi9EVkFCR0d6QXBKUlJJTzhWWE9zaGZhTlV2Nk55?=
- =?utf-8?B?RFhsYmtVK1lWNzErWVhjWkpVQlM5bFQyY2VRN0QzRWpKcUdlZ2hXdXFxMXNh?=
- =?utf-8?B?YjZzSDQ4SkdGSzNWQk1iUTdJelF5N0hDTmg3SmZlYjV0aTRzRmJWaTJYSy94?=
- =?utf-8?B?cEVUYW9UZ29iZm03L2xWcmRLWkR2QWZuV1Z2QjlkT0tkcW5sdW1Ua3Q4bENE?=
- =?utf-8?B?ZWxqQjdrN28wZ0cyWS9rREVpNHNVYkp5d25CN0VOVkxBQ0tzUWNzcGVEdktZ?=
- =?utf-8?B?dGE1UGxXVGlYNDR0Ly91bGNCNCtkam9JSTdQcno4dUNBQVN0YWNQSE9hTjdM?=
- =?utf-8?B?cE9CZmN0ZXhNT0wzNTNYNUd6bmtQQyszSEZXOXROYXl4MjYwZlRNUnNhcE5V?=
- =?utf-8?B?TVlQdUFUNE5DM3ZYMzMrZWQ1OWI1YXNCeFNMS1NlM09SZmlkdjNjdWRQZ2sx?=
- =?utf-8?B?RytYdnowRXZmelE2NlRRMzhkcE5KcEdVVmFXQjAwQlVySlJXYkN3SENtMFg4?=
- =?utf-8?B?aWcxQmM0RHdWN1VlTVVDeG9ldFZPU0Nxamx4bEMwcnFuT2c5NGlvSXRSSzF3?=
- =?utf-8?B?QlpKcUs4K2M3U1VDbGJLVmJsNEtKdFladlQ3cy8xOUZ5bzlGRHVOdXllcFdB?=
- =?utf-8?B?UVM3S0lFTFVrZ2dpR1o2eGVIbjZVLy9YQXJ3bUc4eGxWejZqRnYvTHhhcTVT?=
- =?utf-8?B?VWVUc1BwYU1haW03cm1BVVZRZnUxVEl6anVHWTd4VjZ6ZURlc3E4WWRCRDdJ?=
- =?utf-8?B?cHM4Nkp5ZlFmOEdGMEM2MnoxNVpDalhyeGJqNVVXc2YrckRLMExUdU1TMFhK?=
- =?utf-8?B?ZHpUZXFYUXg5djNyZGNzTnF3bmZ3dWVhNmRZTUtqQmN3TEFWSnlPUlRLeEtF?=
- =?utf-8?B?ZExhZGRUVVRKVU92V2xTVitBSjFoNEs4L2ZBK1hXR0VidEE9PQ==?=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SI2PR03MB5609.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(7416014)(376014)(366016)(1800799024)(38070700018);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?QXV2N25mQmtCL1g5OFdUbVRjdm1aUUdKSlo1YmlVZ0w4R3VNcCthWCtoUm9U?=
- =?utf-8?B?czg2ZVpuN1RLRWVaLzF1SGNlRUFteDB0R0N6bzVpWXZ0Q3BKOW1kM2NnTWl2?=
- =?utf-8?B?R05Ic1RaOE9KQkRpS25kL2cxUFJ3cG5qOGxheU1hbzV1aDhucGJibGMyTlky?=
- =?utf-8?B?VWNoOG1DYUs1bGJCS2tuQVYvTE96cm8rU2JzcUZMQzJ3d2RLUEdVdWVBWXlK?=
- =?utf-8?B?K3NiOGlMbEtuK3Fxcis3Q1BQdERSNUliY1FmNERCbHkyNjQ4Vm5IQk5wRC9y?=
- =?utf-8?B?dzRSaG9rdlBDVmZycktkdkVHVjZYYTVZdUZmWS9BdVlpaFhOUVpVTFowN0pl?=
- =?utf-8?B?R0pHQ3JpQnVJbE1oMlBLMm11Wk0zOEVvb1h2Z2FObEhzSjVnRTMvYXYzN00v?=
- =?utf-8?B?Y3cvZkhZNmVzQXdkd2RzbEJpUzlkNlNIcnorRzJieVdNN2NpQUNkZ2pkMVkr?=
- =?utf-8?B?cGRpck16Y2tETzhLeExmUGw4Y1d4bkpaSWdlMkFNS2U4QStXSTdWSzZ1WmdJ?=
- =?utf-8?B?dnQySWpsU3hZSmp6WVBzdHpOREx0ZGQxbllpOWt0bnc3MVFyNHJPUWxrOWxk?=
- =?utf-8?B?WHI2TGJhcHBJdlcxc0k4KzhaVjVBRlpTU1NRYVNmMWxrbWpRcU9QRkkyU0oz?=
- =?utf-8?B?UTMra1pOM2hJTEJnU3JKUXhaaUM4OGRlbUdZSURvcHB4cURvUUIxdXhlN3pZ?=
- =?utf-8?B?YzVKTnJjMmwrWDBRamhVMU5UNEc3ckRJYjQwTnhhL2s5U3ZEUDE5SXF3MFc0?=
- =?utf-8?B?eHdsUGpUYnBQOVI3Ky90N00vN3RqZFZxQkczeHYrd2hYeUsyMVR3ZXJaTmpq?=
- =?utf-8?B?RkFJRUVwb3F5blY3a3IzWUJQb3NiVFY5bEcrVXNJd2hqVytHcW8wbUFXM0Y4?=
- =?utf-8?B?K3VWS21pV2Rkak5tazZhbE85S0wxZkoreWRIaXlZa01WMWowMXhXdTJPQVUv?=
- =?utf-8?B?WEZBQk1admI3QUlPWEtTZTBaMXVkQWU2RVpXNVQ3SzBBTlBwb1J1S3FzWkhu?=
- =?utf-8?B?ZllVRmxCR2VvU1h6bXVrakp5TUd1VllmUitPT3NxWk9VTWlVeWg0amRvNHUr?=
- =?utf-8?B?V0hwRGQ4QXB4REcxTVdrRExIR1MyY2hUL1d6b1pBWThjVk5TaHVUUnZJQjR1?=
- =?utf-8?B?OXNIbU9TSnhSTXhYTHRlRmN1eFpieTdnMU9EZTdaR0VlMUVEcUVnMWpSSldV?=
- =?utf-8?B?eDlHSndZWGtDTTkzUndGazFQbXFtdUhSRktjSGloZThMQW1yVDRLaG9kSDFm?=
- =?utf-8?B?YWNEM2NHaGNQUnFRK3JvT0M1Q3JRbFltT0NCTkhmRGxPYWlCKzJSeDZrY3JD?=
- =?utf-8?B?M09ZTUNvRE9GenpZSzlTRm5pcEJkMFRWWElZSXpoMDJBV2xpTWlTSWNBazM4?=
- =?utf-8?B?dzcrZkVVeXUzZWVEd3B0K20ybGxaQnJDa3lWVER6M09HWDZOS28wVjZ1dVYv?=
- =?utf-8?B?OG1vYUFSR2pFRURHS2R3blp1YVdzVk5jMkhsckxBbjA4cTJYN2JCWVFneUxF?=
- =?utf-8?B?T0NuclQxNGJyMkdzYzYwN1A3eDgzc0JzYUtMMmFhRFdsdnB5NVRUNFdWdGVr?=
- =?utf-8?B?REFnYzl3Vk1LV2RxMndwc2ZObHl1a0F4a1IrcEtlWkhPUkRMZjdIUjd5eWtl?=
- =?utf-8?B?U2JoZHNiMjZHZ2NLUFpHM0FENlpzMTZwQlVHVjRXcUFDT0VSWEVQd1NSY0ZO?=
- =?utf-8?B?alZLWU8vRDV5SGxGa1BVdjRpODhYdzNvVDVDc0hHVnV0UjZ1d3ZhV3ZLWUVN?=
- =?utf-8?B?TUVmWmxTWjNkT2U3bUpWbEFNNjQ1bVprbXdVbWNOOERsdjBBK0pxMWZkbkpQ?=
- =?utf-8?B?L2h5QXVQMUx3aWl4Nm45dC91RW5CT3F0UDBhTm42aERoa1ZPZ2RFY2FucUpV?=
- =?utf-8?B?c2I0UDhuQzdEbDJEb1ZVa2JwVzgrdTRJRy9lYWpIVThPQlhtbzhTaHBCcmYx?=
- =?utf-8?B?b3JQd25wdko0YWc5WTNvMzgzNk90VEd0cjI3ZS9JV3lVRkNaeVJxdHQ1TE5E?=
- =?utf-8?B?VEQ3NDlBdWxZZXo0T1g1T1RUcEFkYzNHM01GTG1Qa3RNM1JhT2M1R2F2Rndj?=
- =?utf-8?B?T1ozT3RWNmJFVHF3YUJSb0RYcW5qa00rOVRaM1dnQkhJSmh3T0owQXhCV0Zz?=
- =?utf-8?B?TGVwUUlha3BFWlRRQkgzeHZTRUNueTRaZStxd1k5dVpvRG9kc3dTYXozL3lT?=
- =?utf-8?B?MGc9PQ==?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <59F5C85A786D134B89E328E470FA1D92@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+	id 1sTKRw-00000006wsP-21Gt;
+	Mon, 15 Jul 2024 12:05:02 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1721045096;
+	bh=U2VLmanL7DXu/z9+1aPR7W1ew1tkgEogGFMx7do8pqM=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Wfs5UoX4RAu5pkCYD0sjrZRZDfhgkddboDUlABs9gSYPOMRJTS37xMWQoDCGAfYdz
+	 WRX0Hx9jaz9h8aTV6SISMDRHelQE/Q1uIC22kBNb7k4mtk/t9MbUvhkKCGB7diuirf
+	 pGowEY5upPzBr2+JldMtMF6NVHkff6jGj2fEBqnW9K953BRIDhPG9HwhtanTTdHkG7
+	 UjuJJYNRgWAqKIPS4x3pouXw1lndC7P/dLBPMiIpR8ne3GFMZaz1cg5rw4m6Obae52
+	 y0ZDX+k8hNd1l1JFiUgY4lNYetasukdzwbwfb2Im+20FbHe76AmT04QRwX2tgAaJ89
+	 UCZTJbxa4hC1g==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 8D2B5378143B;
+	Mon, 15 Jul 2024 12:04:55 +0000 (UTC)
+Message-ID: <9f12777b-b8b6-4d34-b336-7637e551b552@collabora.com>
+Date: Mon, 15 Jul 2024 14:04:54 +0200
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SI2PR03MB5609.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: faf9cb7a-cfb8-4420-dcfd-08dca4c41c08
-X-MS-Exchange-CrossTenant-originalarrivaltime: 15 Jul 2024 11:48:57.0064
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 7FOmIy8cnsH2qvSi/EqLS6i1wyy9AjIc2R7oxEQMWqkdBE4XjdACkIA6375mO+6nzjjo0zVKfXqXjYK1Xm7rqw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: KL1PR03MB7430
-X-MTK: N
+User-Agent: Mozilla Thunderbird
+Subject: Re: Probe failure of usb controller @11290000 on MT8195 after
+ next-20231221
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
+Cc: Macpaul Lin <macpaul.lin@mediatek.com>,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, kernel@collabora.com,
+ Chen-Yu Tsai <wenst@chromium.org>, Bear Wang <bear.wang@mediatek.com>,
+ Pablo Sun <pablo.sun@mediatek.com>
+References: <9fce9838-ef87-4d1b-b3df-63e1ddb0ec51@notapiano>
+ <064935d8-fbda-4eda-b013-8c8fc63b561c@collabora.com>
+ <375b2345-657a-4b8f-b5e3-dc16784ffde9@notapiano>
+ <da27d957-866f-f055-9e83-cdc362d98dc7@mediatek.com>
+ <2dba1638-f155-463b-8f87-421101b8f4f2@collabora.com>
+ <521df3a8-5bc2-4e81-a819-02b755c88d3a@notapiano>
+ <ac0d1ba5-1ed0-4d4d-a287-1d3e6efadc0a@collabora.com>
+ <ea97fb15-684e-4009-b312-f39c2acdde5b@notapiano>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <ea97fb15-684e-4009-b312-f39c2acdde5b@notapiano>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240715_044907_900155_05D720A3 
-X-CRM114-Status: UNSURE (   9.75  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240715_050500_716188_9C5D69F7 
+X-CRM114-Status: GOOD (  53.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -226,16 +87,260 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCAyMDI0LTA3LTE1IGF0IDExOjM3ICswMjAwLCBCZWFuIEh1byB3cm90ZToNCj4gIAkg
-DQo+IEV4dGVybmFsIGVtYWlsIDogUGxlYXNlIGRvIG5vdCBjbGljayBsaW5rcyBvciBvcGVuIGF0
-dGFjaG1lbnRzIHVudGlsDQo+IHlvdSBoYXZlIHZlcmlmaWVkIHRoZSBzZW5kZXIgb3IgdGhlIGNv
-bnRlbnQuDQo+ICBPbiBNb24sIDIwMjQtMDctMTUgYXQgMTQ6MzggKzA4MDAsIHBldGVyLndhbmdA
-bWVkaWF0ZWsuY29tIHdyb3RlOg0KPiA+IEZpeGVzOiA2YmY5OTllMGViNDEgKCJzY3NpOiB1ZnM6
-IGNvcmU6IEFkZCBVRlMgUlRDIHN1cHBvcnQiKQ0KPiA+IENjOiA8c3RhYmxlQHZnZXIua2VybmVs
-Lm9yZz4gNi45LngNCj4gPiANCj4gPiBTaWduZWQtb2ZmLWJ5OiBQZXRlciBXYW5nIDxwZXRlci53
-YW5nQG1lZGlhdGVrLmNvbT4NCj4gDQo+IGlnbm9yZSBteSBwcmV2aW91cyB0d28gZW1haWxzLCBJ
-IHNhdyB5b3UgaGF2ZSBqdXN0IHNraXBwZWQgdXBkYXRlLA0KPiBub3QNCj4gc2tpcCBzY2hlZHVs
-ZSBpbiB0aGlzIHZlcnNpb24uDQo+IA0KPiBSZXZpZXdlZC1ieTogQmVhbiBIdW8gPGJlYW5odW9A
-bWljcm9uLmNvbT4NCg0KSGkgQmVhbiwNCg0KWWVzLCBqdXN0IHNraXAgdXBkYXRlIFJUQywgdGhh
-bmtzIGZvciByZXZpZXcuDQoNClBldGVyDQoNCg0K
+Il 12/07/24 17:58, Nícolas F. R. A. Prado ha scritto:
+> On Fri, Jul 12, 2024 at 10:12:39AM +0200, AngeloGioacchino Del Regno wrote:
+>> Il 11/07/24 18:33, Nícolas F. R. A. Prado ha scritto:
+>>> On Thu, Jul 11, 2024 at 11:21:14AM +0200, AngeloGioacchino Del Regno wrote:
+>>>> Il 11/07/24 06:13, Macpaul Lin ha scritto:
+>>>>>
+>>>>>
+>>>>> On 7/11/24 03:15, Nícolas F. R. A. Prado wrote:
+>>>>>> On Fri, Jan 19, 2024 at 10:12:07AM +0100, AngeloGioacchino Del Regno wrote:
+>>>>>>> Il 18/01/24 19:36, Nícolas F. R. A. Prado ha scritto:
+>>>>>>>> Hi,
+>>>>>>>>
+>>>>>>>> KernelCI has identified a failure in the probe of one of the USB controllers on
+>>>>>>>> the MT8195-Tomato Chromebook [1]:
+>>>>>>>>
+>>>>>>>> [   16.336840] xhci-mtk 11290000.usb: uwk - reg:0x400, version:104
+>>>>>>>> [   16.337081] xhci-mtk 11290000.usb: xHCI Host Controller
+>>>>>>>> [   16.337093] xhci-mtk 11290000.usb: new USB bus
+>>>>>>>> registered, assigned bus number 5
+>>>>>>>> [   16.357114] xhci-mtk 11290000.usb: clocks are not stable (0x1003d0f)
+>>>>>>>> [   16.357119] xhci-mtk 11290000.usb: can't setup: -110
+>>>>>>>> [   16.357128] xhci-mtk 11290000.usb: USB bus 5 deregistered
+>>>>>>>> [   16.359484] xhci-mtk: probe of 11290000.usb failed with error -110
+>>>>>>>>
+>>>>>>>> A previous message [2] suggests that a force-mode phy property that has been
+>>>>>>>> merged might help with addressing the issue, however it's not clear to me how,
+>>>>>>>> given that the controller at 1129000 uses a USB2 phy and the phy driver patch
+>>>>>>>> only looks for the property on USB3 phys.
+>>>>>>>>
+>>>>>>>> Worth noting that the issue doesn't always happen. For instance the test did
+>>>>>>>> pass for next-20240110 and then failed again on today's next [3]. But it does
+>>>>>>>> seem that the issue was introduced, or at least became much more likely, between
+>>>>>>>> next-20231221 and next-20240103, given that it never happened out of 10 runs
+>>>>>>>> before, and after that has happened 5 out of 7 times.
+>>>>>>>>
+>>>>>>>> Note: On the Tomato Chromebook specifically this USB controller is not connected
+>>>>>>>> to anything.
+>>>>>>>>
+>>>>>>>> [1] https://urldefense.com/v3/__https://linux.kernelci.org/test/case/id/659ce3506673076a8c52a428/__;!!CTRNKA9wMg0ARbw!jtg5drII8WUPwTiL4sWZiSRPXN-EBN8ctTGI85sirqvkmaUbA5z-wrLqPPfxlZZkQ7NItOWDT97OSdENT5oGHKY$
+>>>>>>>> [2] https://lore.kernel.org/all/239def9b-437b-9211-7844-af4332651df0@mediatek.com/
+>>>>>>>> [3] https://urldefense.com/v3/__https://linux.kernelci.org/test/case/id/65a8c66ee89acb56ac52a405/__;!!CTRNKA9wMg0ARbw!jtg5drII8WUPwTiL4sWZiSRPXN-EBN8ctTGI85sirqvkmaUbA5z-wrLqPPfxlZZkQ7NItOWDT97OSdENi-d0sVc$
+>>>>>>>>
+>>>>>>>> Thanks,
+>>>>>>>> Nícolas
+>>>>>>>
+>>>>>>> Hey Nícolas,
+>>>>>>>
+>>>>>>> I wonder if this is happening because of async probe... I have seen those happening
+>>>>>>> once in a (long) while on MT8186 as well with the same kind of flakiness and I am
+>>>>>>> not even able to reproduce anymore.
+>>>>>>>
+>>>>>>> For MT8195 Tomato, I guess we can simply disable that controller without any side
+>>>>>>> effects but, at the same time, I'm not sure that this would be the right thing to
+>>>>>>> do in this case.
+>>>>>>>
+>>>>>>> Besides, the controller at 11290000 is the only one that doesn't live behind MTU3,
+>>>>>>> but I don't know if that can ring any bell....
+>>>>>>
+>>>>>> An update on this issue: it looks like it only happens if "xhci-mtk
+>>>>>> 11290000.usb" probes before "mtk-pcie-gen3 112f8000.pcie". What they have in
+>>>>>> common is that both of those nodes use phys that share the same t-phy block:
+>>>>>> pcie uses the usb3 phy while xhci uses the usb2 phy. So it seems that some of
+>>>>>> the initialization done by the pcie controller might be implicitly needed by the
+>>>>>> usb controller.
+>>>>>>
+>>>>>> This should help to narrow down the issue and find a proper fix for it.
+>>>>>>
+>>>>>> Thanks,
+>>>>>> Nícolas
+>>>>>
+>>>>> 'force-mode' should only applied to the boards which require XHCI
+>>>>> function instead of a PCIE port.
+>>>>>
+>>>>> For example, mt8395-genio-1200-evk.dts requires property 'force-mode' to
+>>>>> fix probe issue for USBC @11290000.
+>>>>>
+>>>>> https://git.kernel.org/pub/scm/linux/kernel/git/mediatek/linux.git/commit/?h=v6.10-next/dts64&id=666e6f39faff05fe12bfc64c64aa9015135ce783
+>>>>>
+>>>>> 'force-mode' should be no need for tomato boards and the behavior should
+>>>>> be the same as before.
+>>>>>
+>>>>> Another possibility is the firmware change on tomato boards. I'm not
+>>>>> sure if there is any changes on tomato's recent firmware for tphy of
+>>>>> this port, which could also be a reason causes this kind of failure.
+>>>>> I don't have tomato boards on hand.
+>>>>>
+>>>>
+>>>> Hello Macpaul,
+>>>>
+>>>> it's just about the usb node missing a power domain: as the PCIE_MAC_P1 domain
+>>>> seems to be shared between USB and PCIe, adding it to the USB node fixes the
+>>>> setup phase.
+>>>>
+>>>> I'll send a devicetree fix soon.
+>>>
+>>> Hi,
+>>>
+>>> As I replied to that patch
+>>> (https://lore.kernel.org/all/20240711093230.118534-1-angelogioacchino.delregno@collabora.com)
+>>> it didn't fix the issue for me, but I have more updates:
+>>>
+>>> I confirmed the pcie was doing some required setup since disabling the pcie1
+>>> node made the issue always happen, and that also made it easier to test.
+>>>
+>>> I was able to track the issue down to the following clock:
+>>> <&infracfg_ao CLK_INFRA_AO_PCIE_P1_TL_96M>
+>>>
+>>> Adding it to the clocks property of the xhci1 node fixed the issue.
+>>>
+>>
+>> Clocks is what I tried first, and didn't do anything for me...
+>>
+>> ..anyway, can you at this point try to run that solution on the multiple
+>> devices that we have in the lab through KernelCI?
+>>
+>> That would help validating that you're not facing the same false positive
+>> as mine from yesterday...
+> 
+> Hi,
+> 
+> I've ran 10 times with and 10 times without the following patch:
+> 
+>    diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+>    index 2ee45752583c..611afe4de968 100644
+>    --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+>    +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+>    @@ -1453,9 +1453,10 @@ xhci1: usb@11290000 {
+>                                     <&topckgen CLK_TOP_SSUSB_P1_REF>,
+>                                     <&apmixedsys CLK_APMIXED_USB1PLL>,
+>                                     <&clk26m>,
+>    -                                <&pericfg_ao CLK_PERI_AO_SSUSB_1P_XHCI>;
+>    +                                <&pericfg_ao CLK_PERI_AO_SSUSB_1P_XHCI>,
+>    +                                <&infracfg_ao CLK_INFRA_AO_PCIE_P1_TL_96M>;
+>                            clock-names = "sys_ck", "ref_ck", "mcu_ck", "dma_ck",
+>    -                                     "xhci_ck";
+>    +                                     "xhci_ck", "frmcnt_ck";
+>                            mediatek,syscon-wakeup = <&pericfg 0x400 104>;
+>                            wakeup-source;
+>                            status = "disabled";
+> 
+> In both cases I also had
+> 
+>    diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+>    index fe5400e17b0f..e50be8a82d49 100644
+>    --- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+>    +++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+>    @@ -613,7 +613,7 @@ flash@0 {
+>     };
+>    
+>     &pcie1 {
+>    -       status = "okay";
+>    +       /* status = "okay"; */
+>    
+>            pinctrl-names = "default";
+>            pinctrl-0 = <&pcie1_pins_default>;
+> 
+> to make the issue always happen.
+> 
+> For reproducibility purposes, this was tested on next-20240703 with the
+> following config: http://0x0.st/XMGM.txt
+> 
+> And the results confirm that every run (10/10) with the patch didn't experience
+> the issue:
+> 
+>     https://lava.collabora.dev/scheduler/job/14805738
+>     https://lava.collabora.dev/scheduler/job/14805757
+>     https://lava.collabora.dev/scheduler/job/14805759
+>     https://lava.collabora.dev/scheduler/job/14805789
+>     https://lava.collabora.dev/scheduler/job/14805791
+>     https://lava.collabora.dev/scheduler/job/14805792
+>     https://lava.collabora.dev/scheduler/job/14805795
+>     https://lava.collabora.dev/scheduler/job/14805799
+>     https://lava.collabora.dev/scheduler/job/14805816
+>     https://lava.collabora.dev/scheduler/job/14805820
+> 
+> While every run (10/10) without the patch experienced the issue:
+> 
+>     https://lava.collabora.dev/scheduler/job/14805740
+>     https://lava.collabora.dev/scheduler/job/14805758
+>     https://lava.collabora.dev/scheduler/job/14805787
+>     https://lava.collabora.dev/scheduler/job/14805790
+>     https://lava.collabora.dev/scheduler/job/14805793
+>     https://lava.collabora.dev/scheduler/job/14805796
+>     https://lava.collabora.dev/scheduler/job/14805803
+>     https://lava.collabora.dev/scheduler/job/14805818
+>     https://lava.collabora.dev/scheduler/job/14805822
+>     https://lava.collabora.dev/scheduler/job/14805876
+> 
+> These runs are across different units of tomato-r2. I also tried on tomato-r3
+> with the same result:
+> without clock, fail: https://lava.collabora.dev/scheduler/job/14806546
+> with clock, pass: https://lava.collabora.dev/scheduler/job/14806547
+> 
+> So this definitely fixes it. Whether or not this is the right fix, or how to
+> describe this clock, I'll need your and MediaTek's help to figure out.
+> 
+
+I analyzed the situation and....
+well, it's right, this clock does indeed resolve the issue, also tested locally,
+but apparently there is no reference anywhere to why this happens to resolve it.
+
+So, after a bit of extensive research, the only realistic reason here is that
+there is some sort of hardware bug/quirk for the clocking of the secondary XHCI
+controller.
+Whether that is on the clock controller, on the internal paths or wherever else
+is curious to know, but I suspect that this would take a lot of time for MediaTek
+to perform the research.
+
+What counts is that MediaTek is aware of this situation so that they can internally
+understand what is going on with this and resolve that at a hardware level on new
+SoC models.
+
+As for what we can do about this, since this is a one-off, we can add that as
+the frmcnt_ck one, with a comment in DT saying that this is a bug, and eventually
+that we don't know if this has anything to do with the frame counter.
+
+Besides, I also noticed that the CLK_APMIXED_PLL_SSUSB26M is missing from u2port1
+and the reason why it works is because other u3phy0 should be enabling that before
+u3phy1 inits and/or before the USB controller using U3P1 tries to initialize, so
+while you're at it ... if you can please also add that to the u3p1, I appreciate.
+
+			u2port1: usb-phy@0 {
+				reg = <0x0 0x700>;
+				clocks = <&apmixedsys CLK_APMIXED_PLL_SSUSB26M>,
+					 <&topckgen CLK_TOP_SSUSB_PHY_P1_REF>;
+				clock-names = "ref", "da_ref";
+				#phy-cells = <1>;
+			};
+
+Anyway, nice catch! Waiting for your patch :-)
+
+Cheers,
+Angelo
+
+> Thanks,
+> Nícolas
+> 
+>>
+>>> I'm just not sure from a DT perspective what's the right way to describe this
+>>> clock. The node doesn't have the frmcnt_ck, is this that clock? Or is it
+>>> another clock that currently isn't described in the dt-bindings and driver?
+>>>
+>>
+>> That's the PCI-Express Root Port (RP) Transaction Layer (TL) clock... and I have
+>> no idea why this has anything to do with USB.
+>>
+>> MediaTek, is that a hardware quirk? What is the relation between this clock and
+>> the USB controller at 11290000?
+>>
+>> Thanks,
+>> Angelo
+>>
+>>> Thanks,
+>>> Nícolas
+>>
+
 
