@@ -4,69 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E584C3DA59
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jul 2024 16:13:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5E2CC3DA4A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jul 2024 17:18:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Nv19soFhNUV8ipqDT2/zdeWLsnE40qNxixGhgPAIJNI=; b=hv7Bj1za8CJMVlIyFYUcolIsnH
-	OD1drk5YhQblUflfmjqDARtfollQcemhyO0gPSNj9SX3X3Im5fV0yGVyCowAett8FQbROfht0oG53
-	rrenhDvmzzxfrJ2kE4ICX0Od8Ygo/UEU54J8ENshJ7VMATw4/0sViV1rTjRhqxmhl7WEEY4ilvZPc
-	tQcAIERRNj5CbhTfP+p7V7rk8F2CsC+XDiiXmTUdz5he8tQIbfjltrThvmGC80gTlDql2f6sp84zQ
-	6k1zC5Xr9ygCkjSbBI3DtOQwqLy6H0+plrvLbBWRXFv1vLiu5mCjDJY9/SZmoKQ6TdsgBYIZvmpwo
-	AAqRi03w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Kc6gbiGyEmsVnB1vPxC1tTwvIpD0gWXSMS/KS+dJzxA=; b=NPs/vf1eV/r5lIv/LaNTwoBFEd
+	vr+4Dh+u9M9qBJ8iKAm5AZY3ifwSIdfswpCyKtkAiFm3NGMJ4VVDVPpuODjpq7jSto5LkoZrRpz60
+	Fcpw5O/7KeU3/CtsNLKtEAeKTW3e3/c7XDEmMlSJvbYUHHKy8sfV/r/RC9BYcrUPDyNo6djjoCkKw
+	ML6FuIQkla0qQdeibSyumTEFkBJgwhKG5Sv/KRI4lBgUkPVObkKFYsqcW/saq5xgjHhyO5AcneFVI
+	xIRrep/jn6669DXyt2IOIxCJ7AouPAtr7KpSMt3tPBQiIfsqvaTVfGPUe6zPD/lWQictRdRUjpGJG
+	JKxnbVWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sTOKR-00000007hFP-24u8;
-	Mon, 15 Jul 2024 16:13:31 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1sTPKx-00000007pn3-2p0I;
+	Mon, 15 Jul 2024 17:18:07 +0000
+Received: from 009.lax.mailroute.net ([199.89.1.12])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sTOH6-00000007flp-3SO8;
-	Mon, 15 Jul 2024 16:10:06 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1721059803;
-	bh=TSg1Qn36aw8Oi8+lnfedWfNIgT3VJ099nZPKoyn36eA=;
-	h=From:Date:Subject:To:Cc:From;
-	b=qccw/SLAZwYlSe3zRD81SpyIe0tT0hHfZ+bkd1Q/ru0paghFBsCMcfR3Vo44HA6zC
-	 q8oDkJNtdWs/3vKhAAXLq0NSlFHy3Yz+2AyD67CjFQqF5ekMOb5e0v6DIePIP9mU6H
-	 O0z/XjFozyXI4k754D6SsfgnhKPfUPLmFejt02q+PvSytjIBSyUsh3F808RRh9wzvY
-	 xu5gPnkfOrXSZgCVBJk5i8pjP3n/M1XplZPsGhbvsCscf0QH4uRd1c8pxGRZlzLt7j
-	 rm7Bmyz3NHM6PKGYYW7pwGlNZY56oERfBybp0fqUxbKOK8N6ZlY6ykQ3UVksZi/6jD
-	 ATZ2Wtv0LC/tw==
-Received: from [192.168.1.62] (zone.collabora.co.uk [167.235.23.81])
+	id 1sTPKu-00000007pkZ-19to
+	for linux-mediatek@lists.infradead.org;
+	Mon, 15 Jul 2024 17:18:06 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by 009.lax.mailroute.net (Postfix) with ESMTP id 4WN86L5F5BzlgMVQ;
+	Mon, 15 Jul 2024 17:18:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
+	content-transfer-encoding:content-type:content-type:in-reply-to
+	:from:from:content-language:references:subject:subject
+	:user-agent:mime-version:date:date:message-id:received:received;
+	 s=mr01; t=1721063877; x=1723655878; bh=Kc6gbiGyEmsVnB1vPxC1tTwv
+	IpD0gWXSMS/KS+dJzxA=; b=F30Pq+UvVEfiLLMb5CzuwRCSNbWtz47LqN/b3x2a
+	e4BBGHhsb+s7Hbyu7S/AcIZfp1zM5ibyynLqUK6p+zU5TUPSB2cmg+AEpgks5M0S
+	wcKJB2JfczZZWjBpdHi5aJGYQoX7Z/w85MepNLb01JlGY4BuRrWYLMoJU2vcwBkD
+	S4Qgqi7AqpfmRb1qGXK8SiEiIyfxovoqBaen5tVMOrDK2Q2Ut+NMoTdZEC+elq9i
+	29j4SQc2cBcWGeDiVmASqr1q4zfHHUm7j24K3kxtcDp1SNlxTG7eLLMwecoohgly
+	Itjq1KVdWyuJvK5vxQlw6gEBtitVwHXsTMrKJsFrmGEItg==
+X-Virus-Scanned: by MailRoute
+Received: from 009.lax.mailroute.net ([127.0.0.1])
+ by localhost (009.lax [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
+ id R5oPzZTHmg02; Mon, 15 Jul 2024 17:17:57 +0000 (UTC)
+Received: from [IPV6:2a00:79e0:2e14:8:30c:88a5:456e:8b88] (unknown [104.135.204.80])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 3F31A378020A;
-	Mon, 15 Jul 2024 16:10:01 +0000 (UTC)
-From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Date: Mon, 15 Jul 2024 12:09:34 -0400
-Subject: [PATCH RFC] arm64: dts: mediatek: mt8195-cherry: Remove
- keyboard-backlight node
+	(Authenticated sender: bvanassche@acm.org)
+	by 009.lax.mailroute.net (Postfix) with ESMTPSA id 4WN86C1jNwzlgMVL;
+	Mon, 15 Jul 2024 17:17:55 +0000 (UTC)
+Message-ID: <814b2e3f-3386-45b6-ba72-7a1143e57e33@acm.org>
+Date: Mon, 15 Jul 2024 10:17:54 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20240715-cros-backlight-dt-probe-v1-1-0b5afe64c94b@collabora.com>
-X-B4-Tracking: v=1; b=H4sIAL5JlWYC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
- vPSU3UzU4B8JSMDIxMDc0NT3eSi/GLdpMTk7JzM9IwS3ZQS3YKi/KRUXXNzU5NEC2OjxBQzAyW
- g7oKi1LTMCrDJ0UpBbs5KsbW1AGKIYd5uAAAA
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- =?utf-8?q?Thomas_Wei=C3=9Fschuh?= <linux@weissschuh.net>, 
- Tzung-Bi Shih <tzungbi@kernel.org>, kernel@collabora.com, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-X-Mailer: b4 0.14.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] ufs: core: fix deadlock when rtc update
+To: peter.wang@mediatek.com, linux-scsi@vger.kernel.org,
+ martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com,
+ jejb@linux.ibm.com
+Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
+ chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
+ chaotian.jing@mediatek.com, jiajie.hao@mediatek.com, powen.kao@mediatek.com,
+ qilin.tan@mediatek.com, lin.gui@mediatek.com, tun-yu.yu@mediatek.com,
+ eddie.huang@mediatek.com, naomi.chu@mediatek.com, chu.stanley@gmail.com,
+ huobean@gmail.com, stable@vger.kernel.org
+References: <20240715063831.29792-1-peter.wang@mediatek.com>
+Content-Language: en-US
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <20240715063831.29792-1-peter.wang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240715_091005_045395_59B0BB82 
-X-CRM114-Status: GOOD (  13.43  )
+X-CRM114-CacheID: sfid-20240715_101804_381233_B513ED7A 
+X-CRM114-Status: UNSURE (   7.23  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,62 +90,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Commit 970c3a6b7aa3 ("mfd: cros_ec: Register keyboard backlight
-subdevice") introduced support for detecting keyboard backlight
-fuctionality through communication with the ChromeOS EC. This means that
-the DT node is no longer used. Remove the unneeded node.
+On 7/14/24 11:38 PM, peter.wang@mediatek.com wrote:
+> There is a deadlock when runtime suspend waits for the flush of RTC work,
+> and the RTC work calls ufshcd_rpm_get_sync to wait for runtime resume.
 
-Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
----
-Different CrosEC FW versions could potentially not support discovering
-the keyboard backlight functionality, but I've tested both a recent
+The above description is too brief - a description of how the fix works
+is missing. Please include a more detailed description in future
+patches.
 
-  tomato_v2.0.23149-099cd3e539 tomato_15699.72.0 2024-01-03
+Anyway:
 
-and an old
-
-  tomato_v2.0.10686-234e646fd8 tomato_14268.0.0 2021-10-07
-
-version on mt8195-cherry-tomato and on both relying only on the
-discoverability works. I've tested on both tomato-r2 and tomato-r3. I
-have not tested on dojo, however, as I don't have access to it.
-
-My motivation to remove the node is because the DT kselftest expects DT
-nodes that can match to a driver to be probed, and with the "breaking"
-commit, the DT node goes unprobed which results in a failure:
-
-  not ok 225 /soc/spi@1100a000/ec@0/keyboard-backlight
-
-I can also solve this in a different way, by adding this driver to the
-ignore list of the test. But this solution seemed better as the DT
-isn't meant to describe devices that can be discovered at run time
-anyway.
----
- arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi | 4 ----
- 1 file changed, 4 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-index fe5400e17b0f..20dfa18c9dda 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-@@ -1228,10 +1228,6 @@ cros_ec: ec@0 {
- 		spi-max-frequency = <3000000>;
- 		wakeup-source;
- 
--		keyboard-backlight {
--			compatible = "google,cros-kbd-led-backlight";
--		};
--
- 		i2c_tunnel: i2c-tunnel {
- 			compatible = "google,cros-ec-i2c-tunnel";
- 			google,remote-bus = <0>;
-
----
-base-commit: 91e3b24eb7d297d9d99030800ed96944b8652eaf
-change-id: 20240715-cros-backlight-dt-probe-7754a832ad60
-
-Best regards,
--- 
-Nícolas F. R. A. Prado <nfraprado@collabora.com>
-
+Reviewed-by: Bart Van Assche <bvanassche@acm.org>
 
