@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40AD6C3DA59
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jul 2024 14:27:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CF6EC3DA59
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jul 2024 14:29:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iF8V4fEqQM+EbqQ+lIqeJ9l6Y6H2C3B/XqAnugPKAx8=; b=iz7vyz9huAdQGyLzV4DDAX79ah
-	m1+Czqp63w9MoE5zog0z4bWUQSr8wSkMxAPY/2tkQ/hT71af8mCV01RYFL2N7hPSNHLcTosS0xLtN
-	keSlh3VZ4bBImq78YJyYnFzU19smgOWhrt2Kkxk8V12nStR6kSXwqMTTNM5EExkBmm3Ezlz8zSIPU
-	ZXQNW88lsPh7xpwTHmLQM97oroOgnOFbSM1e19Yh37cuTVYLBFBEuhXK4tCXIdrHzHlmB3j+hH2MP
-	FSPlTvijpa+QaQnon0L1ja+HjJXgwlYGCUb2jt2NlxXnaRu9PpCD0b7yjlwF6MQyMGdkS3CONKfP/
-	99T/OlAA==;
+	bh=iF8V4fEqQM+EbqQ+lIqeJ9l6Y6H2C3B/XqAnugPKAx8=; b=BGOuQL8kzA+QmT1NHhSOFAiVme
+	LlJpSMXclMGltfwAktNWGmYW110XkGaR3/w/e5h6K27E2OuSiy/n1PuKL9NX7WyTvIbFU41eNUbgk
+	INBXsGlCkCTO/71gBkey3EjE6bEw4crVS37jeHaDdBOppr9RVbO/pw0RzY2gpSgUKJ0U898LIqWo1
+	64skiBz6Fnof4khZwjjpjZ7sUNVo13QdJYepxgVqy9L7porFIZNBqV/6mvxIZcGMxk6AeVjJ2xnxr
+	PNbUTRnN3Qp3Mxa5rOHycKMNUYOYAv7yaeioDykLa8CgFnnFgT/D2RObEPbkQ4KL5DzGDSN6Jlhkf
+	+OagtBuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sTj9k-0000000AhOd-38ps;
-	Tue, 16 Jul 2024 14:27:52 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1sTjAt-0000000Ai4f-3W9c;
+	Tue, 16 Jul 2024 14:29:03 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sTj9N-0000000AhAV-2J9h;
-	Tue, 16 Jul 2024 14:27:30 +0000
+	id 1sTjAW-0000000Ahro-41Pj;
+	Tue, 16 Jul 2024 14:28:42 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 0111ECE12A3;
-	Tue, 16 Jul 2024 14:27:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E627CC4AF0E;
-	Tue, 16 Jul 2024 14:27:25 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 423FA60DF8;
+	Tue, 16 Jul 2024 14:28:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 60285C4AF0E;
+	Tue, 16 Jul 2024 14:28:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1721140047;
+	s=k20201202; t=1721140120;
 	bh=R2DMdjrSa3kuQt1wbmH93oKT3DWLTdFfmdRAmqb1P40=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=RooK46V5K9Iq5kQA7gKxdIUezVmLsCdLAE5AEi7f0TOEAh7HQouShpDRSZNQdljmV
-	 vzZbDE2rgBvHy6mBL5eXVlMFQ+C5KcbDqVpKJoVj2bNm51cV6xrDiECNqy9vD0XKcb
-	 aG9PSgv8P1Y3AIwYo7yRRRyYnaRge+AmwUTTiC8EN6yhQ/vr+oOouLI6VpldCGw/Vj
-	 oMdPBaU3q2mjmlS1YRwa+hIofj6w87sxu3ob1xg0ef1tNeuVmDN70MLemcTFFbbJHe
-	 W35PDQ8BAlEI6NoVgq2kOZK8ROMI87g6FSu7sVz04cxeO7nVso6cI8nMbXDd/0QsZk
-	 W9SB2L4D6CRQg==
+	b=TW/KJlIQHXZNRlG+Swru9f4S2Q0AmuU1C8M4itV9CBIf4tUa1AwbQ3cEyT1u8ZEYR
+	 SGDO90mIsWfFHhenuM06Fi6wCx3ArZJRH+A8j1X4lGNbHxyD1SOg3WMam0iHPyFMbg
+	 Y0LgKjLalIPUgfeIqDJimLjCyJdnYmZdd2eTkKujArhN/7/FKOVaeXVczYbtVCcv+/
+	 G/z4ZbBWe/4s0SP1nb+eIXC3zajR0ZLGvrtoWvbg/dq756Tgmf9R6E9IVgNV+FDL9t
+	 kmqLHumthSkxdhuODhHY7ola2jOH4mrznNXCvSmH9REqLk+rJrgF08VxqPjB/1i31V
+	 jG+ZXsJYpRmQw==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -53,19 +53,19 @@ Cc: Mark-PK Tsai <mark-pk.tsai@mediatek.com>,
 	op-tee@lists.trustedfirmware.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.6 05/18] tee: optee: ffa: Fix missing-field-initializers warning
-Date: Tue, 16 Jul 2024 10:26:40 -0400
-Message-ID: <20240716142713.2712998-5-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.1 05/15] tee: optee: ffa: Fix missing-field-initializers warning
+Date: Tue, 16 Jul 2024 10:28:02 -0400
+Message-ID: <20240716142825.2713416-5-sashal@kernel.org>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240716142713.2712998-1-sashal@kernel.org>
-References: <20240716142713.2712998-1-sashal@kernel.org>
+In-Reply-To: <20240716142825.2713416-1-sashal@kernel.org>
+References: <20240716142825.2713416-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.6.40
+X-stable-base: Linux 6.1.99
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240716_072729_790318_62D9E704 
+X-CRM114-CacheID: sfid-20240716_072841_070247_DE70D817 
 X-CRM114-Status: GOOD (  10.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
