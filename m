@@ -4,66 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50273C3DA49
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jul 2024 19:31:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3C9EC3DA59
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jul 2024 21:14:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=q4Fl1869OeleASeL1RKkFaYiGYxxnBqaxBHOHQl1Hg8=; b=rZwi63Rfpq0DSqnvWFMZRmogIa
-	FJWgjFvsq7KT9Nl1quUwTKs+Tzc8bzo6er/q0ZcwBnLZlgmfouCk8H3jAhs8oCwjTWLCs3XvGsyIC
-	YfPXQVAUoA2Q14ivcgAKWfRv3ItPsmOI5rWHOyL5AuVjpmm006EwIGmca7ajHa11iQiiN3qxFZXxp
-	05XWKviNd2hNj1tuq+AB0htUqPHdh1z9IQ5rUsbwsd/nObaX6hjmAIhXEfwCKcp3i4JgMy99tPErr
-	SJDRocikC38ef2Y9e0EKYx2F2q5y2mPt8boo3vWGwJbMbHy5lwRTPmUmnkkcta9AZnZ40q+Cn7Ixm
-	64/pTajw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Ag5NdJlDjgGBhuGOZDzJcu7IZkmLpKyxnSbjG+hkilc=; b=XrI9JFO6bzqdEU5URAFkyeD25u
+	Coeea+5BLImXjDWr/3z6Rx6c2/izr7/1QfQgaqzrtcZsxATEUezjUEdYcTObPurpcn3J0Lj5G1Fd+
+	vt2Jt5FPuSh2Eh4Pw7tByQo6CW0yiQgJgZdJ4BoZdIt/QqMqxoxKOFufRHE7jZ+lSPou0TPF2ry54
+	nxzzod4eL/9Ujz1DCEA81fYXwEGTBdkntYOL2U8FCEz88WRTXIYk/OI8lLNrx8NwDUOP4xxS+OPwY
+	GaidaEk0jAzEGRhzRs1x08RBn8FKa/1S/9ab2n6mKvHynpdc+TLV5dVNs/vExIKwqIxEkzP37WCD7
+	BZz8vL6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sTntc-0000000BWnG-0wJD;
-	Tue, 16 Jul 2024 19:31:32 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sTpUr-0000000BmjA-26yg;
+	Tue, 16 Jul 2024 21:14:05 +0000
+Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sTnsf-0000000BWQh-26Yh
-	for linux-mediatek@lists.infradead.org;
-	Tue, 16 Jul 2024 19:30:35 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id A1C3A61302;
-	Tue, 16 Jul 2024 19:30:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 57AFCC4AF0E;
-	Tue, 16 Jul 2024 19:30:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1721158232;
-	bh=0mb2nKjeB/LgNGshNrVxcD0GwoYd5a7HHsVx7CM727g=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=C5DzsGMHSVpOz++wsg1gKQdtOFMsbvdQBoIo8u0JIyRzuvqbxVJmxsZT/33W7KE6g
-	 35Q7asxyM/1eyOKlEZelNNRfZxXk0IZI+a2Rt57rntNHMuCRbQEWWn21Gb2K3r+yd8
-	 WHX9WXHe2IF9AYgBOh+8x8brWQ+NyIXcf5nlMC+sNCf33Ms1xl0AUDB9ufCdYx2kGK
-	 vgyQG/QCCbZJBWTi6gwLGFxk60CnweRyO3erjAUrV0ySZkzO2dUf2xxW11r4kg9s++
-	 4LbPJuv77xKLdl4M1cWfI76/uDg9qOqEH/b9yQpWb5S/WU6tkCDsXDp+2Wut5q05+s
-	 pHSY2x1Awv45Q==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 426FDC43336;
-	Tue, 16 Jul 2024 19:30:32 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1sTpUQ-0000000BmXp-2OwL;
+	Tue, 16 Jul 2024 21:13:40 +0000
+Received: by mail-pg1-x52b.google.com with SMTP id 41be03b00d2f7-75ee39f1ffbso4168019a12.2;
+        Tue, 16 Jul 2024 14:13:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1721164417; x=1721769217; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:sender:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=Ag5NdJlDjgGBhuGOZDzJcu7IZkmLpKyxnSbjG+hkilc=;
+        b=fCxNsl6e3LH2deyXYzZRirOfrL6FDzUo9oAOXM4hs9PvM4S5lKFwgh6av63jb89emX
+         w/U4BpznnwXHkeVGKbmnkUIM8kQn6Ed5OqiiRR2QdaimUf+XnSnRjuF4ZwGl+I4XI2Tt
+         bZzhGj+pZCjrMNbAX1Kd+M6keyFPOjCR2BZbyiTr+r+kp3rQrk0y3yYH89ruMUqezqdT
+         jDAvEzuUqriph1a1gfxUTxkJ/WRiK3DcGCjgrQxxO4A68u7n+EUKGtgCiWDQwXHgPOlM
+         b1T5ynVx7EYiVporUnyuKIivFYD8L75SAaA4Zfog5bOYxyUL4Be4gKH2qRW6uvn0ohd0
+         CJbg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1721164417; x=1721769217;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:sender:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Ag5NdJlDjgGBhuGOZDzJcu7IZkmLpKyxnSbjG+hkilc=;
+        b=hR+3AQiPLpRHb6fia5i1HPgWCUs9IKpVUzvMTaUZsf70/agW7QtqCqpt5WNSWZDe4/
+         um0B01GcLUGPrlCjtQttkKlz++3jziDWws+sx4oBvC2fPJhRUEDYO1tpSdRioRzNk9z4
+         q2XBzLc+NS+AK+lLLRg8A39AOdozts75auRAR+Ox8uNlxzJK7AzWys98AAnWFyrNlmvJ
+         ua63i9Av0ht3zr33ZSKt9ENVY3a5sWgGN+iPiMFRLHH+9lxRwewr9i70tWQ5ar66nBP7
+         zUsd7AalKQlgu3N/y0zAHvK8y6VgR3gRQHvJeaU/+qJ+Y+peXVYowZn0QjH9syLNuuxj
+         nW+A==
+X-Forwarded-Encrypted: i=1; AJvYcCXhkepgearqAUzbyo7jbJ0BUBVAaix6wJ9sOrr726AL+qn9uI+JRkWNJkqrszHQns7cn12i25kITKKuWKX1kkKVsttA+7EubfLq5h0kRgdT7EG9QRCr9MyD/TewCLW4KSlZx8BRIxRppzgoYaJLnXUUl5DFf+qQR54=
+X-Gm-Message-State: AOJu0Yw6o+xfbe/EA9XzmKyhsyn9LEqIeRrsww7n8HbTbBWvV5I4w/55
+	Y7ZGos8EHRneWFlLWg7xfy4czIPk+t3MiRevYPQb9YDqIWdhiPQd
+X-Google-Smtp-Source: AGHT+IEvPNah8o8ElhR2lXdjKaUmNu2BHdD7tWO6AdHw+HwAq26CaXaLi2pF9DM3SbCMdFzYQrtBvg==
+X-Received: by 2002:a05:6a20:729c:b0:1c1:89f8:8609 with SMTP id adf61e73a8af0-1c3f10e02d5mr4669359637.0.1721164417106;
+        Tue, 16 Jul 2024 14:13:37 -0700 (PDT)
+Received: from localhost (dhcp-141-239-149-160.hawaiiantel.net. [141.239.149.160])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-70b7eca7a7bsm6795727b3a.152.2024.07.16.14.13.36
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 16 Jul 2024 14:13:36 -0700 (PDT)
+Date: Tue, 16 Jul 2024 11:13:35 -1000
+From: Tejun Heo <tj@kernel.org>
+To: "boy.wu" <boy.wu@mediatek.com>
+Cc: Josef Bacik <josef@toxicpanda.com>, Jens Axboe <axboe@kernel.dk>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Boris Burkov <boris@bur.io>, cgroups@vger.kernel.org,
+	linux-block@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, iverlin.wang@mediatek.com
+Subject: Re: [PATCH v3] blk-cgroup: Replace u64 sync with spinlock for iostat
+ update
+Message-ID: <Zpbify32lel9J-5I@slm.duckdns.org>
+References: <20240716075206.23121-1-boy.wu@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH v1] Bluetooth: btmtk: Fix kernel crash when entering
- btmtk_usb_suspend
-From: patchwork-bot+bluetooth@kernel.org
-Message-Id: <172115823226.13786.2850053898867663349.git-patchwork-notify@kernel.org>
-Date: Tue, 16 Jul 2024 19:30:32 +0000
-References: <20240716074947.23073-1-chris.lu@mediatek.com>
-In-Reply-To: <20240716074947.23073-1-chris.lu@mediatek.com>
-To: =?utf-8?b?Q2hyaXMgTHUgKOmZuOeomuazkykgPGNocmlzLmx1QG1lZGlhdGVrLmNvbT4=?=@ci.codeaurora.org
-Cc: marcel@holtmann.org, johan.hedberg@gmail.com, luiz.dentz@gmail.com,
- sean.wang@mediatek.com, aaron.hou@mediatek.com, steve.lee@mediatek.com,
- linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240716075206.23121-1-boy.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240716_123033_660158_321DE952 
-X-CRM114-Status: UNSURE (   8.38  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240716_141338_638845_4911AF83 
+X-CRM114-Status: GOOD (  23.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,71 +97,123 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+Hello, Boy.
 
-This patch was applied to bluetooth/bluetooth-next.git (master)
-by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
+So, looking at the patch, I'm not sure per-blkg lock makes sense.
 
-On Tue, 16 Jul 2024 15:49:47 +0800 you wrote:
-> If MediaTek's Bluetooth setup is unsuccessful, a NULL pointer issue
-> occur when the system is suspended and the anchored kill function
-> is called. To avoid this, add protection to prevent executing the
-> anchored kill function if the setup is unsuccessful.
-> 
-> [    6.922106] Hardware name: Acer Tomato (rev2) board (DT)
-> [    6.922114] Workqueue: pm pm_runtime_work
-> [    6.922132] pstate: 804000c9
-> (Nzcv daIF +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
-> [    6.922147] pc : usb_kill_anchored_urbs+0x6c/0x1e0
-> [    6.922164] lr : usb_kill_anchored_urbs+0x48/0x1e0
-> [    6.922181] sp : ffff800080903b60
-> [    6.922187] x29: ffff800080903b60
-> x28: ffff2c7b85c32b80 x27: ffff2c7bbb370930
-> [    6.922211] x26: 00000000000f4240
-> x25: 00000000ffffffff x24: ffffd49ece2dcb48
-> [    6.922255] x20: ffffffffffffffd8
-> x19: 0000000000000000 x18: 0000000000000006
-> [    6.922276] x17: 6531656337386238
-> x16: 3632373862333863 x15: ffff800080903480
-> [    6.922297] x14: 0000000000000000
-> x13: 303278302f303178 x12: ffffd49ecf090e30
-> [    6.922318] x11: 0000000000000001
-> x10: 0000000000000001 x9 : ffffd49ecd2c5bb4
-> [    6.922339] x8 : c0000000ffffdfff
-> x7 : ffffd49ecefe0db8 x6 : 00000000000affa8
-> [    6.922360] x5 : ffff2c7bbb35dd48
-> x4 : 0000000000000000 x3 : 0000000000000000
-> [    6.922379] x2 : 0000000000000000
-> x1 : 0000000000000003 x0 : ffffffffffffffd8
-> [    6.922400] Call trace:
-> [    6.922405]  usb_kill_anchored_urbs+0x6c/0x1e0
-> [    6.922422]  btmtk_usb_suspend+0x20/0x38
-> [btmtk 5f200a97badbdfda4266773fee49acfc8e0224d5]
-> [    6.922444]  btusb_suspend+0xd0/0x210
-> [btusb 0bfbf19a87ff406c83b87268b87ce1e80e9a829b]
-> [    6.922469]  usb_suspend_both+0x90/0x288
-> [    6.922487]  usb_runtime_suspend+0x3c/0xa8
-> [    6.922507]  __rpm_callback+0x50/0x1f0
-> [    6.922523]  rpm_callback+0x70/0x88
-> [    6.922538]  rpm_suspend+0xe4/0x5a0
-> [    6.922553]  pm_runtime_work+0xd4/0xe0
-> [    6.922569]  process_one_work+0x18c/0x440
-> [    6.922588]  worker_thread+0x314/0x428
-> [    6.922606]  kthread+0x128/0x138
-> [    6.922621]  ret_from_fork+0x10/0x20
-> [    6.922644] Code: f100a274 54000520 d503201f d100a260 (b8370000)
-> [    6.922654] ---[ end trace 0000000000000000 ]---
-> 
-> [...]
+On Tue, Jul 16, 2024 at 03:52:06PM +0800, boy.wu wrote:
+> @@ -995,15 +995,13 @@ static void blkcg_iostat_update(struct blkcg_gq *blkg, struct blkg_iostat *cur,
+>  				struct blkg_iostat *last)
+>  {
+>  	struct blkg_iostat delta;
+> -	unsigned long flags;
+>  
+>  	/* propagate percpu delta to global */
+> -	flags = u64_stats_update_begin_irqsave(&blkg->iostat.sync);
+> +	guard(spinlock_irqsave)(&blkg->iostat.spinlock);
+>  	blkg_iostat_set(&delta, cur);
+>  	blkg_iostat_sub(&delta, last);
+>  	blkg_iostat_add(&blkg->iostat.cur, &delta);
+>  	blkg_iostat_add(last, &delta);
+> -	u64_stats_update_end_irqrestore(&blkg->iostat.sync, flags);
+>  }
 
-Here is the summary with links:
-  - [v1] Bluetooth: btmtk: Fix kernel crash when entering btmtk_usb_suspend
-    https://git.kernel.org/bluetooth/bluetooth-next/c/0c9b6e2f7742
+This is already called with blkg_stat_lock held.
 
-You are awesome, thank you!
+> @@ -1051,10 +1048,8 @@ static void __blkcg_rstat_flush(struct blkcg *blkcg, int cpu)
+>  			goto propagate_up; /* propagate up to parent only */
+>  
+>  		/* fetch the current per-cpu values */
+> -		do {
+> -			seq = u64_stats_fetch_begin(&bisc->sync);
+> +		scoped_guard(spinlock_irqsave, &bisc->spinlock)
+>  			blkg_iostat_set(&cur, &bisc->cur);
+> -		} while (u64_stats_fetch_retry(&bisc->sync, seq));
+
+This is per-cpu stat and we should keep using u64_sync for them.
+
+> @@ -1134,9 +1128,8 @@ static void blkcg_fill_root_iostats(void)
+>  				cpu_dkstats->sectors[STAT_DISCARD] << 9;
+>  		}
+>  
+> -		flags = u64_stats_update_begin_irqsave(&blkg->iostat.sync);
+> +		guard(spinlock_irqsave)(&blkg->iostat.spinlock);
+>  		blkg_iostat_set(&blkg->iostat.cur, &tmp);
+> -		u64_stats_update_end_irqrestore(&blkg->iostat.sync, flags);
+>  	}
+>  }
+...
+> @@ -1157,16 +1149,14 @@ static void blkcg_print_one_stat(struct blkcg_gq *blkg, struct seq_file *s)
+>  
+>  	seq_printf(s, "%s ", dname);
+>  
+> -	do {
+> -		seq = u64_stats_fetch_begin(&bis->sync);
+> -
+> +	scoped_guard(spinlock_irqsave, &bis->spinlock) {
+>  		rbytes = bis->cur.bytes[BLKG_IOSTAT_READ];
+>  		wbytes = bis->cur.bytes[BLKG_IOSTAT_WRITE];
+>  		dbytes = bis->cur.bytes[BLKG_IOSTAT_DISCARD];
+>  		rios = bis->cur.ios[BLKG_IOSTAT_READ];
+>  		wios = bis->cur.ios[BLKG_IOSTAT_WRITE];
+>  		dios = bis->cur.ios[BLKG_IOSTAT_DISCARD];
+> -	} while (u64_stats_fetch_retry(&bis->sync, seq));
+> +	}
+
+The above two are the only places which can potentially benefit from
+per-blkg lock but these aren't hot paths. I'd just use blkg_stat_lock for
+the above.
+
+> @@ -2152,30 +2141,29 @@ void blk_cgroup_bio_start(struct bio *bio)
+>  
+>  	cpu = get_cpu();
+>  	bis = per_cpu_ptr(bio->bi_blkg->iostat_cpu, cpu);
+> -	flags = u64_stats_update_begin_irqsave(&bis->sync);
+> -
+> -	/*
+> -	 * If the bio is flagged with BIO_CGROUP_ACCT it means this is a split
+> -	 * bio and we would have already accounted for the size of the bio.
+> -	 */
+> -	if (!bio_flagged(bio, BIO_CGROUP_ACCT)) {
+> -		bio_set_flag(bio, BIO_CGROUP_ACCT);
+> -		bis->cur.bytes[rwd] += bio->bi_iter.bi_size;
+> -	}
+> -	bis->cur.ios[rwd]++;
+> +	scoped_guard(spinlock_irqsave, &bis->spinlock) {
+> +		/*
+> +		 * If the bio is flagged with BIO_CGROUP_ACCT it means this is a split
+> +		 * bio and we would have already accounted for the size of the bio.
+> +		 */
+> +		if (!bio_flagged(bio, BIO_CGROUP_ACCT)) {
+> +			bio_set_flag(bio, BIO_CGROUP_ACCT);
+> +			bis->cur.bytes[rwd] += bio->bi_iter.bi_size;
+> +		}
+> +		bis->cur.ios[rwd]++;
+>  
+> -	/*
+> -	 * If the iostat_cpu isn't in a lockless list, put it into the
+> -	 * list to indicate that a stat update is pending.
+> -	 */
+> -	if (!READ_ONCE(bis->lqueued)) {
+> -		struct llist_head *lhead = this_cpu_ptr(blkcg->lhead);
+> +		/*
+> +		 * If the iostat_cpu isn't in a lockless list, put it into the
+> +		 * list to indicate that a stat update is pending.
+> +		 */
+> +		if (!READ_ONCE(bis->lqueued)) {
+> +			struct llist_head *lhead = this_cpu_ptr(blkcg->lhead);
+>  
+> -		llist_add(&bis->lnode, lhead);
+> -		WRITE_ONCE(bis->lqueued, true);
+> +			llist_add(&bis->lnode, lhead);
+> +			WRITE_ONCE(bis->lqueued, true);
+> +		}
+
+These are per-cpu stat updates which should keep using u64_sync. We don't
+want to incur locking overhead for stat updates in the hot issue path.
+
+Thanks.
+
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
-
+tejun
 
