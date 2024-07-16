@@ -4,85 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4AD22C3DA59
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jul 2024 09:43:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E972C3DA59
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jul 2024 12:17:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cb2kMyUZz+09TPxC7XSnOt+aHqAq3RB1JfOHowI1lTM=; b=ShHN5MQtrkRnVGj3YxQBY67yv5
-	KtbbgYPYK/g+lv5hC52fkG8XOEyV778mfa3f3C4BPyIMgMLlkbegupST6Y6t2U7A3JdC4Bvm4arVD
-	Mp9GPHTGnERkUv5EQ3kQ/cjt4ySKi6qVKskzmGJOf4xOBsupd3YXnbIjloo2zLwG+X6diY/Dsh3h2
-	RBycToSNBF0Hj2ykdrrhqoFkrEsBpbJaSM4PqCxOWypWnxIDQIp8wKjTuK0pdTteufTXwoE7oLKAo
-	BKMPZMZDfK28YuOHIBsMFyxYECo6ZMcDQytLE1ojJvDl6AeT96VakMZLIABXHRxzSs+CVanMG8Hkm
-	n6vjLi4w==;
+	bh=7epGewsS+mJ+mnJ3Go9v/2WOXqDjSVE0Sbhq0kgoFuE=; b=pMajt39tMt0/Hr5b+J6383kwV0
+	iSx4ur7aeHo9gDrM+K2bHpzvL3WNcQ/tP3ZNZxxwVxSWA3NuF8jNKZN5XcbERZzA5eKgMwg1fcBew
+	nhL28iXbdQybEKY9Qw+F9FNv+3EZNdwNUkNzmonwWr4EpBMe11xI52hr5OsZ1+nRNFoRZChiUbdIq
+	fV8lE0mzyXvu7LyYK7pjz1mQO0SXsGE1DQZaUvv+nj3LwXl3DG8kWRpucY7BHf7JXvYbN7LdGFVTM
+	8/yigyxzj6L/SQYLZagJYH3mWSsQw2K8VplQF4xjrYm/it2+ZEExURaKjpSM2aPcnBNF/btury85B
+	rPByAfwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sTeit-00000009vLj-49XJ;
-	Tue, 16 Jul 2024 09:43:51 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sTh7F-0000000ANqu-3lvh;
+	Tue, 16 Jul 2024 12:17:09 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sTeiq-00000009vJS-11uB;
-	Tue, 16 Jul 2024 09:43:49 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 593B060304;
-	Tue, 16 Jul 2024 09:43:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 82C0DC116B1;
-	Tue, 16 Jul 2024 09:43:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1721123027;
-	bh=cb2kMyUZz+09TPxC7XSnOt+aHqAq3RB1JfOHowI1lTM=;
+	id 1sTh6u-0000000ANks-1cAy;
+	Tue, 16 Jul 2024 12:16:49 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1721132204;
+	bh=rJCw4t9lWh++5hHyvwrQaAK5GI2g8BPbimI06KKCYCc=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=FqcYY9TUYD+gO1X/TCX0AUvnR4331B3UHqHC1W0kpktTNHpNsjf3Dp4YhLrqN9TkH
-	 PnBMqFqjM2H5F6O8v93th0cgBhzqMFZNFBaF5MbxY2qlckU6RkhM9Je0AqwhEO/lpb
-	 p2AhLDbcTzNI+wGb39KK8K573p/4ttCA92iEqW7F1Si7UanKBNm4uyCS+9w5vKkYl5
-	 9nTZi2UQhaDPrj3pnDIHA2AZLRLMdGunPZSIfJgKGE2KIYq7D6tQKaOdcFimxp0nLp
-	 As1I1B8WZsCguk8p+p3nnPMM7Uh1tBqwSjIArMzLbPk6uRAtouQYKRFi2nQRMG+pj4
-	 esxa//Keq3dSQ==
-Date: Tue, 16 Jul 2024 11:43:44 +0200
-From: Maxime Ripard <mripard@kernel.org>
-To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
-	Daniel Vetter <daniel@ffwll.ch>, Dave Stevenson <dave.stevenson@raspberrypi.com>, 
-	Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>, Lucas Stach <l.stach@pengutronix.de>, 
-	Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
-	Paul Cercueil <paul@crapouillou.net>, Anitha Chrisanthus <anitha.chrisanthus@intel.com>, 
-	Edmund Dea <edmund.j.dea@intel.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, Kevin Hilman <khilman@baylibre.com>, 
-	Jerome Brunet <jbrunet@baylibre.com>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
-	Sean Paul <sean@poorly.run>, Marijn Suijten <marijn.suijten@somainline.org>, 
-	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, 
-	Biju Das <biju.das.jz@bp.renesas.com>, Geert Uytterhoeven <geert+renesas@glider.be>, 
-	Sandy Huang <hjc@rock-chips.com>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, 
-	Andy Yan <andy.yan@rock-chips.com>, Thierry Reding <thierry.reding@gmail.com>, 
-	Mikko Perttunen <mperttunen@nvidia.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
-	Jyri Sarha <jyri.sarha@iki.fi>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Rob Clark <robdclark@gmail.com>, 
-	Abhinav Kumar <quic_abhinavk@quicinc.com>, dri-devel@lists.freedesktop.org, igt-dev@lists.freedesktop.org, 
-	freedreno@lists.freedesktop.org, linux-kernel@vger.kernel.org, imx@lists.linux.dev, 
-	linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-amlogic@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org
-Subject: Re: [PATCH v4 3/5] drm/connector: automatically set immutable flag
- for max_bpc property
-Message-ID: <20240716-majestic-vermilion-hornet-fd1cfb@houat>
-References: <20240715-drm-bridge-connector-fix-hdmi-reset-v4-0-61e6417cfd99@linaro.org>
- <20240715-drm-bridge-connector-fix-hdmi-reset-v4-3-61e6417cfd99@linaro.org>
+	b=w7m0k+SOd8zofuFtNtIc8DFMSoyULF4p95gUiJGeTIL5tw51TDAON077i/HMOsTU6
+	 zOdXEdeteWHcA02RTUO8Zp3feDbTDVuQjgBBHjO9TPxg+talhgoGiJmW9yMcrsd9HH
+	 gIP1Vm7UCtLOesfztNh+bgCCpMOrJ5HVxLnXtp5CNX3bRbHNzJXChaDnXcuhh3ntpl
+	 keGyoVsovW4QI+KO2k1cythhTcNMWGZ3bjcRDns/A6UzuhORe5q3Y8vFH2KEp296sR
+	 xQP8G3DP5PT2F904rJq9QPmA+mRSXWGMjUkG1VCi3UEY80gYUw6x9RwQ5gbbTxZ1Hl
+	 zHdqP2zFpdZTQ==
+Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id CDD2A3781185;
+	Tue, 16 Jul 2024 12:16:41 +0000 (UTC)
+Date: Tue, 16 Jul 2024 08:16:39 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Thomas =?utf-8?Q?Wei=C3=9Fschuh?= <linux@weissschuh.net>,
+	Tzung-Bi Shih <tzungbi@kernel.org>, kernel@collabora.com,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH RFC] arm64: dts: mediatek: mt8195-cherry: Remove
+ keyboard-backlight node
+Message-ID: <96f91c0a-e693-45db-a664-1c396b14999e@notapiano>
+References: <20240715-cros-backlight-dt-probe-v1-1-0b5afe64c94b@collabora.com>
+ <3dd2dcc9-5fbb-4384-985f-a61e26cc8a5f@collabora.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="fdsfmxhl5wgvjiuk"
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-In-Reply-To: <20240715-drm-bridge-connector-fix-hdmi-reset-v4-3-61e6417cfd99@linaro.org>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <3dd2dcc9-5fbb-4384-985f-a61e26cc8a5f@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240716_024348_491984_D2C938EB 
-X-CRM114-Status: GOOD (  11.63  )
+X-CRM114-CacheID: sfid-20240716_051648_590330_A421DEDE 
+X-CRM114-Status: GOOD (  31.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,39 +82,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Tue, Jul 16, 2024 at 11:24:44AM +0200, AngeloGioacchino Del Regno wrote:
+> Il 15/07/24 18:09, Nícolas F. R. A. Prado ha scritto:
+> > Commit 970c3a6b7aa3 ("mfd: cros_ec: Register keyboard backlight
+> > subdevice") introduced support for detecting keyboard backlight
+> > fuctionality through communication with the ChromeOS EC. This means that
+> > the DT node is no longer used. Remove the unneeded node.
+> > 
+> > Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> > ---
+> > Different CrosEC FW versions could potentially not support discovering
+> > the keyboard backlight functionality, but I've tested both a recent
+> > 
+> >    tomato_v2.0.23149-099cd3e539 tomato_15699.72.0 2024-01-03
+> > 
+> > and an old
+> > 
+> >    tomato_v2.0.10686-234e646fd8 tomato_14268.0.0 2021-10-07
+> > 
+> > version on mt8195-cherry-tomato and on both relying only on the
+> > discoverability works. I've tested on both tomato-r2 and tomato-r3. I
+> > have not tested on dojo, however, as I don't have access to it.
+> > 
+> 
+> Dojo will work anyway because those machines do share the same base FW... but
+> anyway, I'm not sure that this is the right thing to do.
+> 
+> The commit that you mentioned says that it is meant to make that "work on machines
+> without specific ACPI or OF support for the keyboard backlight", but not that the
+> intention is to stop using either ACPI nor DT nodes for that.
 
---fdsfmxhl5wgvjiuk
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Yes, because as I understand it not every EC might support this protocol. So
+that commit just added an additional way to probe the keyboard backlight.
 
-On Mon, Jul 15, 2024 at 09:33:03AM GMT, Dmitry Baryshkov wrote:
-> With the introduction of the HDMI Connector framework the driver might
-> end up creating the max_bpc property with min =3D max =3D 8. IGT insists
-> that such properties carry the 'immutable' flag. Automatically set the
-> flag if the driver asks for the max_bpc property with min =3D=3D max.
->=20
-> Fixes: aadb3e16b8f3 ("drm/connector: hdmi: Add output BPC to the connecto=
-r state")
-> Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+So we don't need to stop using the DT to probe it. But in practice we have
+already stopped, as long as the EC supports the protocol (which from my testing
+is always for these platforms), since that is tried first. Meaning the DT node
+is now useless.
 
-Assuming that someone on the uapi sides agrees to patch 3:
+The only point in keeping the DT node would be to use it as a fallback in case
+the discovery with the EC fails or breaks. But I have never seen a DT node be
+there just as fallback, so it doesn't feel right to me either.
 
-Acked-by: Maxime Ripard <mripard@kernel.org>
+> 
+> The DT kselftest is relatively young, and I suspect that anyway this is not the
+> only affected device, so the justification is only barely valid.
 
-Maxime
+I didn't include the failing test as part of the commit message proper as I
+don't think it should justify this change. I added it just to clarify my
+motivation. The test showed me that something unexpected was happening. After
+looking into it I thought that a DT node that is no longer used to probe has no
+point in staying around, so that's the justification that I added to the commit
+message.
 
---fdsfmxhl5wgvjiuk
-Content-Type: application/pgp-signature; name="signature.asc"
+> 
+> Don't misunderstand me, I'm not saying that I'm not okay with this, but I'd like to
+> have more opinions about this.
+> 
+> If we choose to go this way, ideally we should remove this from all of the upstream
+> Chromebook devicetrees (not only MediaTek, clearly!) so that would require a bit
+> more effort to test here and there.
 
------BEGIN PGP SIGNATURE-----
+Note that the cherry DT is the only DT upstream with the
+google,cros-kbd-led-backlight compatible. So it's really only tomato and dojo
+that need to be tested.
 
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZpZA0AAKCRAnX84Zoj2+
-dtNdAX9Ax2E/pR1JgBzBrUF/uMPOl1sAEeevA2aoMOeQhKfGs2BZhGJ77abapFvP
-xuT5sK8Bfjqe28CP8kHlRvXG2ER2YP8NG+nrxaw4u1WdmauMPDTJzHoGi2MW4dkH
-Czrtx7ncfw==
-=AL/r
------END PGP SIGNATURE-----
-
---fdsfmxhl5wgvjiuk--
+Thanks,
+Nícolas
 
