@@ -4,78 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1899CC3DA59
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jul 2024 09:43:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4AD22C3DA59
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jul 2024 09:43:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:Cc
-	:References:In-Reply-To:Subject:To:From:Date:Message-ID:Reply-To:MIME-Version
-	:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LE0se1f80ElC+S3eq8PsQCnApS/GMaT85l8NdsYXEhg=; b=vpX30+zSCihSMj4qe5Kb6VPUlC
-	ihvw6tGc8ssX01VeYi0Wk+H+VIAR8h4Kzre6oA2waNbVXii2IxND/KsagWIFBnQAS3SP/VJxlY7uy
-	GzTN2PQ84sT7x1FPhX7RnOTMjhJVIz8NE+iUoPtqrwHWTlmKmG4qgVgCWo+xSZTujew1aDdawevy0
-	j8R+P1hKEJCt+bJUv/Bf5t1DAbSFWgTJyL1SX+VorrN6HrzCNUl4v+kUcO7blcC3GmFaOxZ6KnnMr
-	s3dWJwIk1VF8FAVFK0nOdiOXOLPRfPhBUOukhG4uQNdgmroci6NQqgkXa/oEPELxivMYmD+PnkwNf
-	ruy44dQg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=cb2kMyUZz+09TPxC7XSnOt+aHqAq3RB1JfOHowI1lTM=; b=ShHN5MQtrkRnVGj3YxQBY67yv5
+	KtbbgYPYK/g+lv5hC52fkG8XOEyV778mfa3f3C4BPyIMgMLlkbegupST6Y6t2U7A3JdC4Bvm4arVD
+	Mp9GPHTGnERkUv5EQ3kQ/cjt4ySKi6qVKskzmGJOf4xOBsupd3YXnbIjloo2zLwG+X6diY/Dsh3h2
+	RBycToSNBF0Hj2ykdrrhqoFkrEsBpbJaSM4PqCxOWypWnxIDQIp8wKjTuK0pdTteufTXwoE7oLKAo
+	BKMPZMZDfK28YuOHIBsMFyxYECo6ZMcDQytLE1ojJvDl6AeT96VakMZLIABXHRxzSs+CVanMG8Hkm
+	n6vjLi4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sTeiB-00000009uxf-2K00;
-	Tue, 16 Jul 2024 09:43:07 +0000
+	id 1sTeit-00000009vLj-49XJ;
+	Tue, 16 Jul 2024 09:43:51 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sTei6-00000009uuM-3pUQ;
-	Tue, 16 Jul 2024 09:43:04 +0000
+	id 1sTeiq-00000009vJS-11uB;
+	Tue, 16 Jul 2024 09:43:49 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 4F71E611FD;
-	Tue, 16 Jul 2024 09:43:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9850EC4AF09;
-	Tue, 16 Jul 2024 09:43:01 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 593B060304;
+	Tue, 16 Jul 2024 09:43:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 82C0DC116B1;
+	Tue, 16 Jul 2024 09:43:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1721122982;
-	bh=eNChfPChigiUxAWMQ3GMxFV/+m9v/jfaNQ16NzY8u8s=;
-	h=Date:From:To:Subject:In-Reply-To:References:Cc:From;
-	b=QMEWyG/YnYqbz5SV4MXIBqUNls9iqmvOzFWQ1NTePO3AsSHLUkQXT1z6YSiKL17F2
-	 6Tzbn81TwwU63iI4bYx/ABq8c3EkqvY4F9UxyUw0Jp1YQO5Ph7u0MvCvPbHeCw9sIr
-	 DwP2I/gMCPV0KtQ2vB1cIlybHr4zZW6i92aKhE3tad6BsxgVp/StTJWSolS4rUzLqH
-	 IyUzsOU7CNx71PSDivf7y1kgYcsuXoT4no1Z4mIKPlyBAkDKKbfO7NrFmFDvWIsjKd
-	 uet+mQjUnQONjhoIVQlXfHH6ceZikM/2gZyyCH3g8P1VFpZRd9dsBK9hNKIc5/0lgP
-	 ro65TJyb6Fjyw==
-Message-ID: <b357f0ccad87752368a8514fe796e6b8@kernel.org>
-Date: Tue, 16 Jul 2024 09:42:58 +0000
-From: "Maxime Ripard" <mripard@kernel.org>
-To: "Dmitry Baryshkov" <dmitry.baryshkov@linaro.org>
-Subject: Re: [PATCH v4 4/5] drm/bridge-connector: move to DRM_DISPLAY_HELPER
- module
-In-Reply-To: <20240715-drm-bridge-connector-fix-hdmi-reset-v4-4-61e6417cfd99@linaro.org>
-References: <20240715-drm-bridge-connector-fix-hdmi-reset-v4-4-61e6417cfd99@linaro.org>
-Cc: dri-devel@lists.freedesktop.org, freedreno@lists.freedesktop.org, igt-dev@lists.freedesktop.org, imx@lists.linux.dev, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org, linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org, "Abhinav
- Kumar" <quic_abhinavk@quicinc.com>, "Andrzej Hajda" <andrzej.hajda@intel.com>, "Andy
- Yan" <andy.yan@rock-chips.com>, "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>, "Anitha
- Chrisanthus" <anitha.chrisanthus@intel.com>, "Biju Das" <biju.das.jz@bp.renesas.com>, "Chun-Kuang
- Hu" <chunkuang.hu@kernel.org>, "Daniel Vetter" <daniel@ffwll.ch>, "Dave
- Stevenson" <dave.stevenson@raspberrypi.com>, "David Airlie" <airlied@gmail.com>, "Edmund
- Dea" <edmund.j.dea@intel.com>, "Fabio Estevam" <festevam@gmail.com>, "Geert
- Uytterhoeven" <geert+renesas@glider.be>, =?utf-8?b?SGVpa28gU3TDvGJuZXI=?= <heiko@sntech.de>, "Jernej
- Skrabec" <jernej.skrabec@gmail.com>, "Jerome Brunet" <jbrunet@baylibre.com>, "Jonas
- Karlman" <jonas@kwiboo.se>, "Jonathan Hunter" <jonathanh@nvidia.com>, "Jyri
- Sarha" <jyri.sarha@iki.fi>, "Kevin Hilman" <khilman@baylibre.com>, "Kieran
- Bingham" <kieran.bingham+renesas@ideasonboard.com>, "Laurent Pinchart" <Laurent.pinchart@ideasonboard.com>, "Laurentiu
- Palcu" <laurentiu.palcu@oss.nxp.com>, "Lucas Stach" <l.stach@pengutronix.de>, "Maarten
- Lankhorst" <maarten.lankhorst@linux.intel.com>, "Marijn Suijten" <marijn.suijten@somainline.org>, "Martin
- Blumenstingl" <martin.blumenstingl@googlemail.com>, "Matthias Brugger" <matthias.bgg@gmail.com>, "Maxime
- Ripard" <mripard@kernel.org>, "Mikko Perttunen" <mperttunen@nvidia.com>, "Neil
- Armstrong" <neil.armstrong@linaro.org>, "Paul Cercueil" <paul@crapouillou.net>, "Pengutronix
- Kernel Team" <kernel@pengutronix.de>, "Philipp Zabel" <p.zabel@pengutronix.de>, "Rob
- Clark" <robdclark@gmail.com>, "Robert Foss" <rfoss@kernel.org>, "Sandy
- Huang" <hjc@rock-chips.com>, "Sascha Hauer" <s.hauer@pengutronix.de>, "Sean
- Paul" <sean@poorly.run>, "Shawn Guo" <shawnguo@kernel.org>, "Thierry Reding" <thierry.reding@gmail.com>, "Thomas
- Zimmermann" <tzimmermann@suse.de>, "Tomi Valkeinen" <tomi.valkeinen@ideasonboard.com>
-Content-Transfer-Encoding: 7bit
+	s=k20201202; t=1721123027;
+	bh=cb2kMyUZz+09TPxC7XSnOt+aHqAq3RB1JfOHowI1lTM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=FqcYY9TUYD+gO1X/TCX0AUvnR4331B3UHqHC1W0kpktTNHpNsjf3Dp4YhLrqN9TkH
+	 PnBMqFqjM2H5F6O8v93th0cgBhzqMFZNFBaF5MbxY2qlckU6RkhM9Je0AqwhEO/lpb
+	 p2AhLDbcTzNI+wGb39KK8K573p/4ttCA92iEqW7F1Si7UanKBNm4uyCS+9w5vKkYl5
+	 9nTZi2UQhaDPrj3pnDIHA2AZLRLMdGunPZSIfJgKGE2KIYq7D6tQKaOdcFimxp0nLp
+	 As1I1B8WZsCguk8p+p3nnPMM7Uh1tBqwSjIArMzLbPk6uRAtouQYKRFi2nQRMG+pj4
+	 esxa//Keq3dSQ==
+Date: Tue, 16 Jul 2024 11:43:44 +0200
+From: Maxime Ripard <mripard@kernel.org>
+To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+	Daniel Vetter <daniel@ffwll.ch>, Dave Stevenson <dave.stevenson@raspberrypi.com>, 
+	Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>, Lucas Stach <l.stach@pengutronix.de>, 
+	Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
+	Paul Cercueil <paul@crapouillou.net>, Anitha Chrisanthus <anitha.chrisanthus@intel.com>, 
+	Edmund Dea <edmund.j.dea@intel.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+	Philipp Zabel <p.zabel@pengutronix.de>, Kevin Hilman <khilman@baylibre.com>, 
+	Jerome Brunet <jbrunet@baylibre.com>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
+	Sean Paul <sean@poorly.run>, Marijn Suijten <marijn.suijten@somainline.org>, 
+	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, 
+	Biju Das <biju.das.jz@bp.renesas.com>, Geert Uytterhoeven <geert+renesas@glider.be>, 
+	Sandy Huang <hjc@rock-chips.com>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, 
+	Andy Yan <andy.yan@rock-chips.com>, Thierry Reding <thierry.reding@gmail.com>, 
+	Mikko Perttunen <mperttunen@nvidia.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
+	Jyri Sarha <jyri.sarha@iki.fi>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Rob Clark <robdclark@gmail.com>, 
+	Abhinav Kumar <quic_abhinavk@quicinc.com>, dri-devel@lists.freedesktop.org, igt-dev@lists.freedesktop.org, 
+	freedreno@lists.freedesktop.org, linux-kernel@vger.kernel.org, imx@lists.linux.dev, 
+	linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-amlogic@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org
+Subject: Re: [PATCH v4 3/5] drm/connector: automatically set immutable flag
+ for max_bpc property
+Message-ID: <20240716-majestic-vermilion-hornet-fd1cfb@houat>
+References: <20240715-drm-bridge-connector-fix-hdmi-reset-v4-0-61e6417cfd99@linaro.org>
+ <20240715-drm-bridge-connector-fix-hdmi-reset-v4-3-61e6417cfd99@linaro.org>
+MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="fdsfmxhl5wgvjiuk"
+Content-Disposition: inline
+In-Reply-To: <20240715-drm-bridge-connector-fix-hdmi-reset-v4-3-61e6417cfd99@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240716_024303_066750_43A62E72 
-X-CRM114-Status: UNSURE (   5.77  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240716_024348_491984_D2C938EB 
+X-CRM114-Status: GOOD (  11.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,17 +97,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 15 Jul 2024 09:33:04 +0300, Dmitry Baryshkov wrote:
-> drm_bridge_connector is a "leaf" driver, belonging to the display
-> helper, rather than the "CRTC" drm_kms_helper module. Move the driver
-> to the drm/display and add necessary Kconfig selection clauses.
-> 
-> Suggested-by: Maxime Ripard <mripard@kernel.org>
-> 
-> [ ... ]
+
+--fdsfmxhl5wgvjiuk
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Mon, Jul 15, 2024 at 09:33:03AM GMT, Dmitry Baryshkov wrote:
+> With the introduction of the HDMI Connector framework the driver might
+> end up creating the max_bpc property with min =3D max =3D 8. IGT insists
+> that such properties carry the 'immutable' flag. Automatically set the
+> flag if the driver asks for the max_bpc property with min =3D=3D max.
+>=20
+> Fixes: aadb3e16b8f3 ("drm/connector: hdmi: Add output BPC to the connecto=
+r state")
+> Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+
+Assuming that someone on the uapi sides agrees to patch 3:
 
 Acked-by: Maxime Ripard <mripard@kernel.org>
 
-Thanks!
 Maxime
+
+--fdsfmxhl5wgvjiuk
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZpZA0AAKCRAnX84Zoj2+
+dtNdAX9Ax2E/pR1JgBzBrUF/uMPOl1sAEeevA2aoMOeQhKfGs2BZhGJ77abapFvP
+xuT5sK8Bfjqe28CP8kHlRvXG2ER2YP8NG+nrxaw4u1WdmauMPDTJzHoGi2MW4dkH
+Czrtx7ncfw==
+=AL/r
+-----END PGP SIGNATURE-----
+
+--fdsfmxhl5wgvjiuk--
 
