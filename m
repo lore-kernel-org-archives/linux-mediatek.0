@@ -4,73 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18710C3DA59
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Jul 2024 22:36:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D33A2C3DA4B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Jul 2024 01:37:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9yclTzOLrpS5DgMC6kQnU1Cslv60j3BeLELT0RGWtkY=; b=xoo2fP0y8J7OLI9SDsOx3eSVXT
-	Zb0cFGrrwgWocSJUqGFZprNoDFD8Rmi3wWvY6cwZ9z3GWFfgn2erwhDxRNiJWAJFV2aoNWvsHhOlc
-	NKOdQE0DRJp8liEKDMyf0r4QQtmuQcFx5P1u5xCP/0ppyWkliQsWrkmDZxOFrYDPNM81oboAOISWp
-	abuic0IvbdCfQpPHeexcHtcv7HBLgbrn6J2wDsu4HoogSlzmHkka+yk+PBOWMzwuY+FijjrZ1BxM4
-	7wRoI2kz81FNLxO6pXUqtaB5kFqpbZ6urVI/KS4z6axLneKW8DUlqacnqtavTBLnkqUIgSlogMPGB
-	8Qdh47Uw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ecczJKhQmZrvgk6AQTQATT11lmeJ+vbOQtxp2jxvHEM=; b=EM14VvZWgXdOi7ZwdLCvmU9G8t
+	2nvD4fMfe8pvGsLe4c+6eR9T1ATDrJRMFjeuWuhFqrTy9b0ZkIg+BJDyFoVZ27dfk6yBSZwHOQG65
+	fmfhi5ZeegVE0xSU0uyeFT25oq0WErk0nMZX4VI4ThcmCEqpVGrI+TlKwwr7lDYWpiTX1X4udNkhN
+	lQmhAD4vbaoSLeUg3FJ8lrO/JZvFlqy6PJxN4ZD/DK4BE9JmUn2T1gUCVKtUc5hDPw2WL4sjl7zfQ
+	AIO0isUIYecq1Bhc/2CyG46JFQWahAbode5/9qtrXaGLPpFci+Dx++fH52LNYWo2LJXF49CHhokzJ
+	0CtxISyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sTUIw-00000008bba-2SBU;
-	Mon, 15 Jul 2024 22:36:22 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1sTX8A-00000008yq9-2ohp;
+	Tue, 16 Jul 2024 01:37:26 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sTUIt-00000008bar-2FSz
-	for linux-mediatek@lists.infradead.org;
-	Mon, 15 Jul 2024 22:36:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1721082977;
-	bh=Vnaz3yR8oLknVJ+XnauozoyHYn9J9p7r/V81IkxSeO8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=hl7CHqnFLvh66/oOSs4T+0uC4aTSHMVhfSR1k9tWu0vuXBx+Jz3F11eZ2OeDm/W71
-	 rewIdIDvqxMTeYhrPl6OhyGSDEloGZeTF7r6HpvljeHA0YqiNEsETq5VXsSsPZuaL/
-	 0xJx3pR/2KLFh1ZVqmOrmp9FH1X/ikuH7+GtvnE0HBCcfuwvx8hb452tpNQw7S0rSl
-	 Jnjzqt3iweClprMni/Ui7WO1FdeAGYCWWsm9r+u/DcvXEDRF/YLPK7/D+wV91koZ/M
-	 7LO6cFncldcZzfECUIQd0AUitbtWicGdf+Mr5CukJ5bXY+XSBKbJ215M346IxKpHTt
-	 XrUSxCYOfWoDw==
-Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 54C973781144;
-	Mon, 15 Jul 2024 22:36:14 +0000 (UTC)
-Date: Mon, 15 Jul 2024 18:36:12 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Chris Lu <chris.lu@mediatek.com>
-Cc: Marcel Holtmann <marcel@holtmann.org>,
-	Johan Hedberg <johan.hedberg@gmail.com>,
-	Luiz Von Dentz <luiz.dentz@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Aaron Hou <aaron.hou@mediatek.com>,
-	Steve Lee <steve.lee@mediatek.com>,
-	linux-bluetooth <linux-bluetooth@vger.kernel.org>,
-	linux-kernel <linux-kernel@vger.kernel.org>,
-	linux-mediatek <linux-mediatek@lists.infradead.org>,
-	regressions@lists.linux.dev, kernelci@lists.linux.dev,
-	kernel@collabora.com
-Subject: Re: [PATCH v7 8/8] Bluetooth: btusb: mediatek: add ISO data
- transmission functions
-Message-ID: <7851401b-e884-4ed4-998d-7651f427ad37@notapiano>
-References: <20240704060116.16600-1-chris.lu@mediatek.com>
- <20240704060116.16600-9-chris.lu@mediatek.com>
+	id 1sTX87-00000008ypV-3m9i;
+	Tue, 16 Jul 2024 01:37:25 +0000
+X-UUID: ef77e8ea431311efa6c87f6b4542ff6b-20240715
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=ecczJKhQmZrvgk6AQTQATT11lmeJ+vbOQtxp2jxvHEM=;
+	b=nEO5P307u69mZl6rmZ1EyoHzC45LoCh5rewn0HUlKAopIJK9jTgnLHGMrfAu+gPoDzw8ODlP2K9NnqoaEl8HR/ImIrSe67KQLVH0F7W9+t2IE1F0nnlGZCIw7RcgNU8ts9dP89Osgl1GoBI7ttGcKnmW+q1h0jxrpbCB6rdyLIc=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.40,REQID:a7a601c0-43e1-4e88-ae01-2d560b120523,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:ba885a6,CLOUDID:1cc57e0d-46b0-425a-97d3-4623fe284021,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: ef77e8ea431311efa6c87f6b4542ff6b-20240715
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+	(envelope-from <mengqi.zhang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1300138473; Mon, 15 Jul 2024 18:37:17 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Tue, 16 Jul 2024 09:37:14 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Tue, 16 Jul 2024 09:37:14 +0800
+From: Mengqi Zhang <mengqi.zhang@mediatek.com>
+To: <ulf.hansson@linaro.org>, <chaotian.jing@mediatek.com>,
+	<matthias.bgg@gmail.com>, <angelogioacchino.delregno@collabora.com>,
+	<wenbin.mei@mediatek.com>
+CC: <linux-mmc@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>, Mengqi
+ Zhang <mengqi.zhang@mediatek.com>, <stable@vger.stable.com>
+Subject: [v1, 1/1] mmc: mtk-sd: receive cmd8 data when hs400 tuning fail
+Date: Tue, 16 Jul 2024 09:37:04 +0800
+Message-ID: <20240716013704.10578-1-mengqi.zhang@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20240704060116.16600-9-chris.lu@mediatek.com>
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240715_153619_747653_FE294781 
-X-CRM114-Status: GOOD (  16.90  )
+X-CRM114-CacheID: sfid-20240715_183723_968277_56966DBC 
+X-CRM114-Status: GOOD (  11.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,126 +84,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 04, 2024 at 02:01:16PM +0800, Chris Lu wrote:
-> This patch implements functions for ISO data send and receive in btusb
-> driver for MediaTek's controller.
-> 
-> MediaTek defines a specific interrupt endpoint for ISO data transmissin
-> because the characteristics of interrupt endpoint are similar to the
-> application of ISO data which can support guaranteed transmissin
-> bandwidth, enough maximum data length and error checking mechanism.
-> 
-> Driver sets up ISO interface and endpoints in btusb_mtk_setup and clears
-> the setup in btusb_mtk_shutdown. These flow can't move to btmtk.c due to
-> btusb_driver is only defined in btusb.c when claiming/relaesing interface.
-> ISO packet anchor stops when driver suspending and resubmit interrupt urb
-> for ISO data when driver resuming.
-> 
-> Signed-off-by: Chris Lu <chris.lu@mediatek.com>
-> ---
+When we use cmd8 as the tuning command in hs400 mode, the command
+response sent back by some eMMC devices cannot be correctly sampled
+by MTK eMMC controller at some weak sample timing. In this case,
+command timeout error may occur. So we must receive the following
+data to make sure the next cmd8 send correctly.
 
-Hi,
+Signed-off-by: Mengqi Zhang <mengqi.zhang@mediatek.com>
+Fixes: c4ac38c6539b ("mmc: mtk-sd: Add HS400 online tuning support")
+Cc: stable@vger.stable.com
+---
+ drivers/mmc/host/mtk-sd.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-KernelCI has identified a boot regression originating from this patch. It
-affects the mt8195-cherry-tomato-r2 platform.
+diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+index a94835b8ab93..e386f78e3267 100644
+--- a/drivers/mmc/host/mtk-sd.c
++++ b/drivers/mmc/host/mtk-sd.c
+@@ -1230,7 +1230,7 @@ static bool msdc_cmd_done(struct msdc_host *host, int events,
+ 	}
+ 
+ 	if (!sbc_error && !(events & MSDC_INT_CMDRDY)) {
+-		if (events & MSDC_INT_CMDTMO ||
++		if ((events & MSDC_INT_CMDTMO && !host->hs400_tuning) ||
+ 		    (!mmc_op_tuning(cmd->opcode) && !host->hs400_tuning))
+ 			/*
+ 			 * should not clear fifo/interrupt as the tune data
+@@ -1323,9 +1323,9 @@ static void msdc_start_command(struct msdc_host *host,
+ static void msdc_cmd_next(struct msdc_host *host,
+ 		struct mmc_request *mrq, struct mmc_command *cmd)
+ {
+-	if ((cmd->error &&
+-	    !(cmd->error == -EILSEQ &&
+-	      (mmc_op_tuning(cmd->opcode) || host->hs400_tuning))) ||
++	if ((cmd->error && !host->hs400_tuning &&
++	     !(cmd->error == -EILSEQ &&
++	     mmc_op_tuning(cmd->opcode))) ||
+ 	    (mrq->sbc && mrq->sbc->error))
+ 		msdc_request_done(host, mrq);
+ 	else if (cmd == mrq->sbc)
+-- 
+2.25.1
 
-Through additional runs I've determined that it only happens when the bluetooth
-firmware (BT_RAM_CODE_MT7961_1_2_hdr.bin) isn't present. I realize the firmware
-should be present to make proper use of the bluetooth driver, and I'll add it to
-our testing images. Still, a panic shouldn't happen when it's missing, hence
-this report.
-
-Reverting this patch fixes the issue.
-
-This is the traceback:
-
-[    6.734214] BUG: spinlock bad magic on CPU#3, kworker/3:1/104
-[    6.740002]  lock: 0xffff2c7b8655f660, .magic: 00000000, .owner: <none>/-1, .owner_cpu: 0
-[    6.748207] CPU: 3 UID: 0 PID: 104 Comm: kworker/3:1 Not tainted 6.10.0-next-20240715 #1 35893202ca8f99b37129997821441a29d2b23f0a
-[    6.759874] Hardware name: Acer Tomato (rev2) board (DT)
-[    6.765195] Workqueue: pm pm_runtime_work
-[    6.769235] Call trace:
-[    6.771689]  dump_backtrace+0x9c/0x100
-[    6.775456]  show_stack+0x20/0x38
-[    6.778786]  dump_stack_lvl+0x80/0xf8
-[    6.782463]  dump_stack+0x18/0x28
-[    6.785791]  spin_bug+0x90/0xd8
-[    6.788950]  do_raw_spin_lock+0xf4/0x128
-[    6.792890]  _raw_spin_lock_irq+0x30/0x70
-[    6.796915]  usb_kill_anchored_urbs+0x48/0x1e0
-[    6.801378]  btmtk_usb_suspend+0x20/0x38 [btmtk 5f200a97badbdfda4266773fee49acfc8e0224d5]
-[    6.809578]  btusb_suspend+0xd0/0x210 [btusb 0bfbf19a87ff406c83b87268b87ce1e80e9a829b]
-[    6.817527]  usb_suspend_both+0x90/0x288
-[    6.821469]  usb_runtime_suspend+0x3c/0xa8
-[    6.825585]  __rpm_callback+0x50/0x1f0
-[    6.829351]  rpm_callback+0x70/0x88
-[    6.832856]  rpm_suspend+0xe4/0x5a0
-[    6.836361]  pm_runtime_work+0xd4/0xe0
-[    6.840126]  process_one_work+0x18c/0x440
-[    6.844156]  worker_thread+0x314/0x428
-[    6.847923]  kthread+0x128/0x138
-[    6.851167]  ret_from_fork+0x10/0x20
-[    6.854769] Unable to handle kernel paging request at virtual address ffffffffffffffd8
-[    6.862694] Mem abort info:
-[    6.865494]   ESR = 0x0000000096000006
-[    6.869249]   EC = 0x25: DABT (current EL), IL = 32 bits
-[    6.874571]   SET = 0, FnV = 0
-[    6.877632]   EA = 0, S1PTW = 0
-[    6.880780]   FSC = 0x06: level 2 translation fault
-[    6.885665] Data abort info:
-[    6.888553]   ISV = 0, ISS = 0x00000006, ISS2 = 0x00000000
-[    6.894044]   CM = 0, WnR = 0, TnD = 0, TagAccess = 0
-[    6.899103]   GCS = 0, Overlay = 0, DirtyBit = 0, Xs = 0
-[    6.904423] swapper pgtable: 4k pages, 48-bit VAs, pgdp=0000000042533000
-[    6.911134] [ffffffffffffffd8] pgd=0000000000000000, p4d=0000000042e94003, pud=0000000042e95003, pmd=0000000000000000
-lav[    6.921781] Internal error: Oops: 0000000096000006 [#1] PREEMPT SMP
-[    6.921794] Modules linked in: mt7921e mt7921_common mt792x_lib mt76_connac_lib mt76 mtk_vcodec_dec_hw mac80211 cros_ec_lid_angle cros_ec_sensors cros_ec_sensors_core industrialio_triggered_buffer cfg80211 kfifo_buf mtk_vcodec_dec mtk_jpeg v4l2_vp9 cros_ec_rpmsg mtk_vcodec_enc v4l2_h264 mtk_jpeg_enc_hw btusb mtk_vcodec_dbgfs mtk_jpeg_dec_hw mtk_dp mtk_vcodec_common btintel btbcm uvcvideo btmtk mtk_mdp3 videobuf2_vmalloc v4l2_mem2mem btrtl uvc joydev videobuf2_v4l2 videobuf2_dma_contig bluetooth elan_i2c videobuf2_memops ecdh_generic ecc videobuf2_common cros_ec_sensorhub cros_kbd_led_backlight mtk_scp snd_sof_mt8195 pcie_mediatek_gen3 mtk_rpmsg mtk_svs mtk_adsp_common snd_sof_xtensa_dsp rpmsg_core lvts_thermal snd_sof_of mtk_scp_ipi snd_soc_mt8195_afe snd_sof snd_sof_utils mtk_wdt mt6577_auxadc mt8195_mt6359
-[    6.922087] CPU: 3 UID: 0 PID: 104 Comm: kworker/3:1 Not tainted 6.10.0-next-20240715 #1 35893202ca8f99b37129997821441a29d2b23f0a
-[    6.922106] Hardware name: Acer Tomato (rev2) board (DT)
-[    6.922114] Workqueue: pm pm_runtime_work
-[    6.922132] pstate: 804000c9 (Nzcv daIF +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
-[    6.922147] pc : usb_kill_anchored_urbs+0x6c/0x1e0
-[    6.922164] lr : usb_kill_anchored_urbs+0x48/0x1e0
-[    6.922181] sp : ffff800080903b60
-[    6.922187] x29: ffff800080903b60 x28: ffff2c7b85c32b80 x27: ffff2c7bbb370930
-[    6.922211] x26: 00000000000f4240 x25: 00000000ffffffff x24: ffffd49ece2dcb48
-[    6.922233] x23: 0000000000000001 x22: ffff2c7b8655f660 x21: ffff2c7b8655f628
-[    6.922255] x20: ffffffffffffffd8 x19: 0000000000000000 x18: 0000000000000006
-[    6.922276] x17: 6531656337386238 x16: 3632373862333863 x15: ffff800080903480
-[    6.922297] x14: 0000000000000000 x13: 303278302f303178 x12: ffffd49ecf090e30
-[    6.922318] x11: 0000000000000001 x10: 0000000000000001 x9 : ffffd49ecd2c5bb4
-[    6.922339] x8 : c0000000ffffdfff x7 : ffffd49ecefe0db8 x6 : 00000000000affa8
-[    6.922360] x5 : ffff2c7bbb35dd48 x4 : 0000000000000000 x3 : 0000000000000000
-[    6.922379] x2 : 0000000000000000 x1 : 0000000000000003 x0 : ffffffffffffffd8
-[    6.922400] Call trace:
-[    6.922405]  usb_kill_anchored_urbs+0x6c/0x1e0
-[    6.922422]  btmtk_usb_suspend+0x20/0x38 [btmtk 5f200a97badbdfda4266773fee49acfc8e0224d5]
-[    6.922444]  btusb_suspend+0xd0/0x210 [btusb 0bfbf19a87ff406c83b87268b87ce1e80e9a829b]
-[    6.922469]  usb_suspend_both+0x90/0x288
-[    6.922487]  usb_runtime_suspend+0x3c/0xa8
-[    6.922507]  __rpm_callback+0x50/0x1f0
-[    6.922523]  rpm_callback+0x70/0x88
-[    6.922538]  rpm_suspend+0xe4/0x5a0
-[    6.922553]  pm_runtime_work+0xd4/0xe0
-[    6.922569]  process_one_work+0x18c/0x440
-[    6.922588]  worker_thread+0x314/0x428
-[    6.922606]  kthread+0x128/0x138
-[    6.922621]  ret_from_fork+0x10/0x20
-[    6.922644] Code: f100a274 54000520 d503201f d100a260 (b8370000)
-[    6.922654] ---[ end trace 0000000000000000 ]---
-a-148[    7.203910] Kernel panic - not syncing: Oops: Fatal exception
-[    7.209649] SMP: stopping secondary CPUs
-[    7.213713] Kernel Offset: 0x549e4c400000 from 0xffff800080000000
-[    7.219796] PHYS_OFFSET: 0xfff0d38580000000
-[    7.223969] CPU features: 0x04,0000000b,80140528,4200720b
-[    7.229360] Memory Limit: none
-
-Full kernel log: http://0x0.st/X9rx.txt
-Config: http://0x0.st/X9r2.txt
-
-#regzbot introduced: ee6bd4b95c66
-#regzbot title: usb_kill_anchored_urbs panic during boot on mt8195-cherry-tomato-r2
-
-Thanks,
-Nícolas
 
