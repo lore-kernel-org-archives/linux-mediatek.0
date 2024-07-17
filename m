@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4A70C3DA42
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jul 2024 12:54:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78003C3DA42
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jul 2024 12:54:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Rv5h5Afg1dhXQ63cMre+wMIfyIsc5/TOkQPTstUpFJ0=; b=i1QghArqxXtiPfjUh5ROzU6xcs
-	y/CtgJARzMlj9ncXM/K8JNYrMMgtXR6Qpt/KE+YRubcG774evmaFa3VLQI01xcdfPX6WpiDUAnfj7
-	5RAfFNlyJ2LA/q6xZN50nnFn4XuGyMUOVNA9c41DplP0+R5gZlio8/vVl632itlW+C80e87C0EN3A
-	KJB9PHoI3W6oyKi8zKfV5Ifd1HA9uULICHXdy8FNDn1tOfyWQ7D6zqdgPz5DrWzPoZSK45u29hj2O
-	lXarbjYKTEAjtaHB4TeeyrzLiHgeV7pma1O8jxdI0jH6DSoDfAs+d0a9yAJR+a9rmAtXmo6arKY/j
-	pP7gHHag==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=UFxsFxy+p6qngLI5V1N0rpnbRifRrEnu5xypjg+jAnY=; b=sWQyl/2qZ6qrT5fmwOFjLwOzCf
+	5a7FYPLUkY8kqLb5gnIytXhCPL2X9vbooNm5orhdcSPZ+WSqOwIlIGGi87Ju2Xtkj1Jt1RhNzAiuG
+	etilGlZGY9XW+3kXIdbsgOOWs593jJmYabVwjPeeDizGtZoIMzob8wTHALwsoXOb6q9Wdt2rqnDBP
+	ZhcZrRzeOeIBpuKkU9k0W38dyCblX1DkEvUoi6coElazpZS2t4M/970Ar9hv1OF3pGb//PG47sk+j
+	UjpjsprgElUt/1jcw0oIEMjZqrYl0fziR0zlZm9hvW85t1gbaHpEN3l2zd3KS9FpU8WxSntyCFQi/
+	BNgeHWYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sU4B6-0000000DoEv-0WpX;
-	Wed, 17 Jul 2024 12:54:40 +0000
+	id 1sU4BP-0000000DoLK-0Fbc;
+	Wed, 17 Jul 2024 12:54:59 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sU4B3-0000000DoDv-2T5T;
-	Wed, 17 Jul 2024 12:54:38 +0000
-X-UUID: b678fda8443b11ef955bff358274dad2-20240717
+	id 1sU4B3-0000000DoE2-21kA;
+	Wed, 17 Jul 2024 12:54:39 +0000
+X-UUID: b6e4e02c443b11ef955bff358274dad2-20240717
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=Rv5h5Afg1dhXQ63cMre+wMIfyIsc5/TOkQPTstUpFJ0=;
-	b=QEZmVU0iVaX6xJ05zvcBQRqy89zvJmyHiH0qhgtNgTVPjj5Uq1YFaX9FVkxd1dRUWlilZXzE0ECCxXnMQA0dj8eGnxrxltc4Kh8wEsF235Vr4TtBzNGrxDUtsoQAurvKN22UBQL1kp46Qz8YneKeShtVzt3ciHzVsInLiXNkWXY=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=UFxsFxy+p6qngLI5V1N0rpnbRifRrEnu5xypjg+jAnY=;
+	b=M0tywjZSuBR0O9usWCsnDdszsLPaNIsQmtKXDcyXk7/W1wx7xcrnrS6hvvPfPAD5B9xiiJDceJGY6dyacNdOF/mrFYENqwdfzxLksqz4A6bjh40daJuFNryy9qdIge4wqCK99uMyLqgRhw7dJiywF1TrQl8B7L7bZeBBrwXNlQU=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.40,REQID:09d4a949-6c31-40b4-94a5-5401949e25c9,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:ba885a6,CLOUDID:86aa74d5-0d68-4615-a20f-01d7bd41f0bb,B
+X-CID-O-INFO: VERSION:1.1.40,REQID:f5e019e7-2a27-4b5e-a6ec-cb651560b110,IP:0,U
+	RL:25,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:ba885a6,CLOUDID:370b6945-a117-4f46-a956-71ffeac67bfa,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
 	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: b678fda8443b11ef955bff358274dad2-20240717
+X-UUID: b6e4e02c443b11ef955bff358274dad2-20240717
 Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
 	(envelope-from <yelian.wang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2127155559; Wed, 17 Jul 2024 05:54:32 -0700
+	with ESMTP id 796156673; Wed, 17 Jul 2024 05:54:33 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
  MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.1118.26; Wed, 17 Jul 2024 05:54:30 -0700
 Received: from mszsdhlt06.gcn.mediatek.inc (10.16.6.206) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 17 Jul 2024 20:54:29 +0800
+ 15.2.1118.26 via Frontend Transport; Wed, 17 Jul 2024 20:54:30 +0800
 From: 20220614094956 created <yelian.wang@mediatek.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
@@ -65,17 +65,19 @@ CC: <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
 	<yaya.chang@mediatek.com>, <teddy.chen@mediatek.com>,
 	<hidenorik@chromium.org>
-Subject: [PATCH 0/3] media: mediatek: Add support MT8188 AIE
-Date: Wed, 17 Jul 2024 20:41:54 +0800
-Message-ID: <20240717125426.32660-1-yelian.wang@mediatek.com>
+Subject: [PATCH 1/3] media: dt-bindings: add MT8188 AIE
+Date: Wed, 17 Jul 2024 20:41:55 +0800
+Message-ID: <20240717125426.32660-2-yelian.wang@mediatek.com>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20240717125426.32660-1-yelian.wang@mediatek.com>
+References: <20240717125426.32660-1-yelian.wang@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240717_055437_655720_052E2860 
-X-CRM114-Status: GOOD (  11.34  )
+X-CRM114-CacheID: sfid-20240717_055437_557231_B5357B5B 
+X-CRM114-Status: GOOD (  14.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,39 +94,119 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Yelian Wang <yelian.wang@mediatek.com>
 
-*** BLURB HERE ***
+Add YAML device tree binding for MT8188 AIE.
 
-This patch series add YAML DT binding and V4L2 sub-device driver 
-for mediatek MT8188 AIE. AIE is the ISP unit in the SoC，it's used
-to detect faces on an image stored in dram. Mainly used for the 
-camera's Face Detection function of MT8188.
-
-This series is based on linux-next, tag: next-20240716
-
-Yelian Wang (3):
-  media: dt-bindings: add MT8188 AIE
-  uapi: linux: add MT8188 AIE
-  media: mediatek: add MT8188 AIE driver
-
- .../bindings/media/mediatek-aie.yaml          |   99 +
- drivers/media/platform/mediatek/Kconfig       |    1 +
- drivers/media/platform/mediatek/Makefile      |    1 +
- drivers/media/platform/mediatek/aie/Kconfig   |   13 +
- drivers/media/platform/mediatek/aie/Makefile  |    5 +
- drivers/media/platform/mediatek/aie/mtk_aie.h | 1012 +++++
- .../media/platform/mediatek/aie/mtk_aie_53.c  | 2031 +++++++++
- .../media/platform/mediatek/aie/mtk_aie_drv.c | 3613 +++++++++++++++++
- include/uapi/linux/mtk_aie_v4l2_controls.h    |  130 +
- include/uapi/linux/videodev2.h                |    6 +
- 10 files changed, 6911 insertions(+)
+Signed-off-by: Yelian Wang <yelian.wang@mediatek.com>
+---
+ .../bindings/media/mediatek-aie.yaml          | 99 +++++++++++++++++++
+ 1 file changed, 99 insertions(+)
  create mode 100644 Documentation/devicetree/bindings/media/mediatek-aie.yaml
- create mode 100644 drivers/media/platform/mediatek/aie/Kconfig
- create mode 100644 drivers/media/platform/mediatek/aie/Makefile
- create mode 100644 drivers/media/platform/mediatek/aie/mtk_aie.h
- create mode 100644 drivers/media/platform/mediatek/aie/mtk_aie_53.c
- create mode 100644 drivers/media/platform/mediatek/aie/mtk_aie_drv.c
- create mode 100644 include/uapi/linux/mtk_aie_v4l2_controls.h
 
+diff --git a/Documentation/devicetree/bindings/media/mediatek-aie.yaml b/Documentation/devicetree/bindings/media/mediatek-aie.yaml
+new file mode 100644
+index 000000000000..300aef43e02b
+--- /dev/null
++++ b/Documentation/devicetree/bindings/media/mediatek-aie.yaml
+@@ -0,0 +1,99 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/media/mediatek-aie.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: The AIE Unit of MediaTek Camera System
++
++maintainers:
++  - Yelian Wang <yelian.wang@mediatek.com>
++
++description:
++  MediaTek AIE is the ISP unit in MediaTek SoC.
++
++properties:
++  compatible:
++    items:
++      - const: mediatek,mt8188-aie
++      - enum:
++          - mediatek,aie-hw3.1
++          - mediatek,aie-hw3.0
++
++  "#address-cells":
++    const: 2
++
++  "#size-cells":
++    const: 2
++
++  reg:
++    maxItems: 2
++
++  interrupts:
++    maxItems: 1
++
++  mediatek,larb:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description:
++      Must contain the local arbiters in the current SoCs, see
++      Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
++      for details.
++
++  iommus:
++    maxItems: 4
++    description:
++      Points to the respective IOMMU block with master port as argument, see
++      Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml for details.
++      Ports are according to the HW.
++
++  power-domains:
++    maxItems: 1
++
++  clocks:
++    maxItems: 4
++    minItems: 4
++
++  clock-names:
++    items:
++      - const: IMG_IPE
++      - const: IPE_FDVT
++      - const: IPE_SMI_LARB12
++      - const: IPE_TOP
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - iommus
++  - power-domains
++  - clocks
++  - clock-names
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/memory/mediatek,mt8188-memory-port.h>
++    #include <dt-bindings/power/mediatek,mt8188-power.h>
++    #include <dt-bindings/clock/mediatek,mt8188-clk.h>
++    aie: aie@15310000 {
++      compatible = "mediatek,mt8188-aie", "mediatek,aie-hw3.1";
++      reg = <0 0x15310000 0 0x1000>;
++      interrupts = <GIC_SPI 787 IRQ_TYPE_LEVEL_HIGH 0>;
++      mediatek,larb = <&larb12>;
++      iommus = <&vpp_iommu M4U_PORT_L12_FDVT_RDA_0>,
++               <&vpp_iommu M4U_PORT_L12_FDVT_RDB_0>,
++               <&vpp_iommu M4U_PORT_L12_FDVT_WRA_0>,
++               <&vpp_iommu M4U_PORT_L12_FDVT_WRB_0>;
++      power-domains = <&spm MT8188_POWER_DOMAIN_IPE>;
++      clocks = <&imgsys CLK_IMGSYS_MAIN_IPE>,
++               <&ipesys CLK_IPE_FDVT>,
++               <&ipesys CLK_IPE_SMI_LARB12>,
++               <&ipesys CLK_IPESYS_TOP>;
++      clock-names = "IMG_IPE",
++                    "IPE_FDVT",
++                    "IPE_SMI_LARB12",
++                    "IPE_TOP";
++    };
 -- 
 2.34.1
 
