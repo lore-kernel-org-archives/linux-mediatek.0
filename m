@@ -4,102 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC742C3DA42
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jul 2024 16:18:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57B51C3DA60
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jul 2024 16:55:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nN1bLNl0BTZ9iy1K7Yp0WmZCTwJNvK8fshp2FGJokkQ=; b=Cknq/8zsVP3nPTcQ0lToSKseB6
-	AtVUFS8OPiTx8u3G/m2gu/wsaDQStPcIDKIXQYe0yn3B2aju8F8GMdYjVUgoNxCI3/dfcZSrvlqJS
-	HiHIX8i0QioIyJba/5f1dVh4BprN0CJg2pPRf4kQc3faLStSxIKuWkKFS8PbjrIhlYpJRnnqYjMKI
-	Z6V/6yeGG4JimLHRfY+6GmP9ZMtqFDBMfYPbSTRT8n63tiuPpssgWZtD1rg61I80OyxoXkRWptfs/
-	MTcYR01zLcJnc0KucK18eXqnPjQE1szZTQP//d6/27p5uoKW0b81aMTRw5MrBjkmYzt20zVVCWFuK
-	zWGMLRnA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=68LWjL5/SKjz0tO65i0BltVGGa8T/WWLEoQAHGMQU/Q=; b=0XL7B0xk8fhpuC58uwUThg1tIg
+	eVXP3/0zquNytE9eDS8CK20R1IYqHkhxjrnggyJsTAswVkTQiPNJ7o+/jef2YYpEGuWUcLcFZQ4lz
+	DeHUtzKk8iFeeyiNgH/oHkEI85n2g3PNYlQ1VG6iUa3g4DBR9j+xj+ot/MJ5ugvFGTk6Hiac/ep2z
+	6r0gmPJhby23N3qDK713zirRShnfx17vCqbiqPecpzaA0rdXMSV4BUUTqzjYiYCDxsEp7Ty7xvIRz
+	CiUd/+bVvpPk8bRvkhXvJEY9zSgYX5d1X3g4lwLEtCICzAKyQao9wlM1sUx07AiWZsrUgtTYYF1xw
+	ep/5fCsA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sU7M8-0000000EKQO-0PBp;
-	Wed, 17 Jul 2024 16:18:16 +0000
-Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
+	id 1sU7wW-0000000EPmO-3IAy;
+	Wed, 17 Jul 2024 16:55:52 +0000
+Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sU7M5-0000000EKOA-05ed;
-	Wed, 17 Jul 2024 16:18:14 +0000
-Received: by mail-lf1-x12a.google.com with SMTP id 2adb3069b0e04-52e9a920e73so7913406e87.2;
-        Wed, 17 Jul 2024 09:18:11 -0700 (PDT)
+	id 1sU7wT-0000000EPkH-2PD8;
+	Wed, 17 Jul 2024 16:55:51 +0000
+Received: by mail-pl1-x62b.google.com with SMTP id d9443c01a7336-1fbe6f83957so59020015ad.3;
+        Wed, 17 Jul 2024 09:55:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1721233090; x=1721837890; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=nN1bLNl0BTZ9iy1K7Yp0WmZCTwJNvK8fshp2FGJokkQ=;
-        b=b20yKrEdwgX2MTwFn0GVbVSL4LtFflhY0NUituy0PSmk3oXEAU/koo0TpOU0xMEPSm
-         WP4x0lq45I4Jt2SzPxaTbpZT/kxv4VKjzLgoGCAlSw6OvHLQW4l4kUACJbPEuH0tx7f3
-         EN35aJwSbGPQmAmUjoTLXbm1VmzJoS17u6vRX7PLfF91Sh3t/eXYxlTbGHO+lCJW9hHA
-         SPitf/ru5vayUJeNeQGI0/MGWhrgjA6mYTRkzzmtZW+2oNyGM9TPpDHKaKhj8+8Deqs5
-         LNvk5rxEtoZQIj0WXHvbiKPlmw8BZRw96rPzelKKq+sd9Ap4dfeYgehrBiaEtdBeXyte
-         sa5Q==
+        d=gmail.com; s=20230601; t=1721235348; x=1721840148; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:sender:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=68LWjL5/SKjz0tO65i0BltVGGa8T/WWLEoQAHGMQU/Q=;
+        b=LcoGslK6eeVL1f44sUTDd6qGU+Cs8SxXYvfAZTceWD4SrljzP21FIJ02wVA8VslJdR
+         23KG7aYDq1hVJZuydPwQIj49sSK7jm6l/Ss02GPaM3Llyb/YAgjevQX0Ttlqb/U74cRt
+         BYjGTe/F2isQg3q71dJ5lIa0JGEn8fAiEmzaNOtCcii86F9Qjjj/xrFD65V5p/OFgWG6
+         APCzLymNc/apWZatcE1dkQG8CjH3m8lH2YdAoo2KReIsiYMR64R1GyOU/lXKFV0b3g6q
+         sW/r6+7TCzjvId44OBp4ctT6p/d8RVrSgjGD2czRbrUDO8hSLYh9uhICqWyuKCN0vcv1
+         qM9g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1721233090; x=1721837890;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+        d=1e100.net; s=20230601; t=1721235348; x=1721840148;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:sender:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=nN1bLNl0BTZ9iy1K7Yp0WmZCTwJNvK8fshp2FGJokkQ=;
-        b=tLFMxWdfwOk/LAUiAUVrGWn/6FAgvnyVKjFoGfUq5VDF//TLN5rrB/wB9bAbswgsqP
-         3hg1YbCoI+d5BzJ3BZH74QEYoGtWgn321pppzSbpNlivfnhl/ZvBtVvjTs15xeYjTLVU
-         LKYT42hCokZle8iicF/a3uTTDN5YS6mtjhUSb3fT+0BX68zrfEUQ0Pqbb5g/oWBmrLBH
-         LNoAt4oH3Iz4bKGInx9wfBpoM+tvVP/q46inJtjRHlC68oe1nAe1RVvVQLEUempRRwcS
-         mADiMV0oUzKaz02p87XavDbdbfsG9u0Gqr/LQx7k/CY0+HNcwfk4X3/9B53cHPVIlDaI
-         iVDw==
-X-Forwarded-Encrypted: i=1; AJvYcCWTE0nDip73PnDf0536rt0Ay96vXzXFtbNXRqY94G6kZ4rrgrC4BpGMukCSXlOH9EkptHuRFiTsT0B47XrLsBfmtctjr2jvjzyVsOrmN455aeLkVZ1jIEyeooTdg0wonEJ0U72T0nDCATeG5qcrjIYU6LL10RfkI+M=
-X-Gm-Message-State: AOJu0Yxtjxv/4F0bEbAh5fIJyqBmmXaVZfXhUdATZmnV+oFzBgnwstqW
-	oT3LDYj7xjypomNPV2Ve2XBk4PV2YxBNNRRy6KiUNdxO3cjtVEywFm0/wiUoZoLiPlAriJEA/OS
-	obAcIF+pKaotEvXyo8BVIs3YHqhsMJGhA
-X-Google-Smtp-Source: AGHT+IHJKGB3isMbpiavmiRNgPprCHd6xCU2Zj9jAPGFncmg1lt1S1zutRUqS9ElJc7/eqF9zLYRwRvV9Y5PxGXjTlk=
-X-Received: by 2002:a05:6512:3d0c:b0:52e:be1f:bf7f with SMTP id
- 2adb3069b0e04-52ee53da928mr1592447e87.27.1721233089843; Wed, 17 Jul 2024
- 09:18:09 -0700 (PDT)
-MIME-Version: 1.0
-References: <20240614040133.24967-1-jason-jh.lin@mediatek.com>
- <20240614040133.24967-3-jason-jh.lin@mediatek.com> <CABb+yY2bwj2BcdJLGe1ZYwCrnXL3LtcePMb=wQPaBKorBSs2yA@mail.gmail.com>
- <fc92d51cc6e55301c081ea2d589e1ba6cdd295ee.camel@mediatek.com>
- <CABb+yY1L+YGjf6O9UgPYkS2gWAdo=7QoojSAUNWC_8o7XtZQSg@mail.gmail.com>
- <1f815ff8-2b7a-48de-8b47-0bc9b3cb67ab@collabora.com> <CABb+yY1Yy8o3ofAiC-uV+gDrO3QDTWz3_XTUMai_2uyrnj-VrQ@mail.gmail.com>
- <b7ebc021d391452eaf2149976ea2d53fba3d89fc.camel@mediatek.com>
- <CABb+yY3+pnuXDK_jZMDYOAzahdSZ5iig51VqzM=FFHrFpK+9LA@mail.gmail.com>
- <4e5d4362-4940-4ba0-95aa-627b82e21e41@collabora.com> <CABb+yY3eXvJRUq7MOqB8QZ9N4aiuogaUCTfP7MerKdNbAbLkvw@mail.gmail.com>
- <895af04e45d286c38d01f48b29ad41598b7dadb7.camel@mediatek.com>
- <CABb+yY1EZOsKUR7WUX0Ni0Ukbqz0+yRHswiu07tNXtY1A1gNUQ@mail.gmail.com>
- <d6f0e7072ec0e89e573e5720fb2b9c621eb9154c.camel@mediatek.com>
- <CABb+yY0+fFw7Bg578DFEdrigVFgf4-v3qo2JVruEa3ExtvRsMg@mail.gmail.com>
- <092d917b4cae2762317a8739c874855554ae913f.camel@mediatek.com>
- <CABb+yY2-KWYORo_-ZWafyM0VJnh8-2wefvCpeDsK204qB0TchQ@mail.gmail.com>
- <3f655bc4e1e60cd5e0dfc9baa018553fa8892826.camel@mediatek.com>
- <CABb+yY2zBY_3nEYajdhRNfwb+bPMpFOvbXrqY+jM9rB6qbjJNQ@mail.gmail.com>
- <e860d67f578f1963d785dcc0423936fe5de20547.camel@mediatek.com>
- <CABb+yY0mYrUyfpNLVKZt2aDdzZPf+VjawcwVSpMG8H_=pwKLbw@mail.gmail.com>
- <c8081a0bbfa2f60fc3d594bd0fadacf9354507b7.camel@mediatek.com> <74e15fceff5ef48ca18a6f3e8dac15ae9cff09b7.camel@mediatek.com>
-In-Reply-To: <74e15fceff5ef48ca18a6f3e8dac15ae9cff09b7.camel@mediatek.com>
-From: Jassi Brar <jassisinghbrar@gmail.com>
-Date: Wed, 17 Jul 2024 11:17:58 -0500
-Message-ID: <CABb+yY04wHaq3pU8tVOK51PeUHAMnUtPC+zi5gFkmykK05C+Vw@mail.gmail.com>
-Subject: Re: [PATCH 2/2] mailbox: mtk-cmdq: Move pm_runimte_get and put to
- mbox_chan_ops API
-To: =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
-	=?UTF-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>, 
-	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>, =?UTF-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>, 
-	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>, 
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, 
+        bh=68LWjL5/SKjz0tO65i0BltVGGa8T/WWLEoQAHGMQU/Q=;
+        b=iqa1zH0iHEUOHOXgSIzqsXP8D8pAHtlD1UuEPzLOJ92PSRaXlM3loLVbZHbn14iPAi
+         33u2vndEHKUL2YQBdgjgym2JI0Bp0ftWauT034hYQu1ZenrEsvKCQueHpib7B2VgAItT
+         y93VAawjovsvDpRnsIeJk8JL5EBjbo2hXKKCV26tu1C/Z2IfHFTT8ZVG6bBp9lRu30Al
+         yN3qUwBmdMc2c3F1ZshgJ9PRXxgDKrq+M6FuURKiUbSfZLSn/8yhYri9ZR/fjNdDct82
+         u5E40u5SNqO/BWAQxAX1DKwiSuhRZR+gK2vcB1z9HUnr3yOwW1aN6vuhmydGEIRa+3iM
+         7wQA==
+X-Forwarded-Encrypted: i=1; AJvYcCWDh7FxMqkDd8wYH6JgsKcI07IDAXsKO6YB7lEMAxYFQcdgBr6ac6l0RKBt2hqfbpGFIIUit1UO8pFFpsrYDOGU3vdYt4z1VtovlC5Yw3POasvxkkhrM1NNQMBvj10ZzHj4dRcp5i+wHO+nhv1GIfzisslsvvABZoo=
+X-Gm-Message-State: AOJu0YyT8pSrruHkxxiOygvGWZRdNbSV+fT41G/raeXm/cxkI71yNJpT
+	lGJuyuwB6tP9Pc3tlWXxGzHYzeM4dfkjggif04oabNaS2kUo8Ru7
+X-Google-Smtp-Source: AGHT+IEh/cgX/fwSr/Qf+rkCnE+FwhUG7QRMVZIlEKOXguTlAFPyDJHm9nWwN1jNvQkd90th0Ikb6Q==
+X-Received: by 2002:a17:903:234d:b0:1fb:67ee:6de7 with SMTP id d9443c01a7336-1fc4e131d9fmr23895775ad.23.1721235348035;
+        Wed, 17 Jul 2024 09:55:48 -0700 (PDT)
+Received: from localhost (dhcp-141-239-149-160.hawaiiantel.net. [141.239.149.160])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-1fc0bc384ecsm77469445ad.208.2024.07.17.09.55.47
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 17 Jul 2024 09:55:47 -0700 (PDT)
+Date: Wed, 17 Jul 2024 06:55:46 -1000
+From: "tj@kernel.org" <tj@kernel.org>
+To: Boy Wu =?utf-8?B?KOWQs+WLg+iqvCk=?= <Boy.Wu@mediatek.com>
+Cc: "boris@bur.io" <boris@bur.io>,
+	"linux-block@vger.kernel.org" <linux-block@vger.kernel.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"cgroups@vger.kernel.org" <cgroups@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"axboe@kernel.dk" <axboe@kernel.dk>,
+	Iverlin Wang =?utf-8?B?KOeOi+iLs+mclik=?= <Iverlin.Wang@mediatek.com>,
+	"josef@toxicpanda.com" <josef@toxicpanda.com>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
 	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v3] blk-cgroup: Replace u64 sync with spinlock for iostat
+ update
+Message-ID: <Zpf3ks2drDZ7ULTa@slm.duckdns.org>
+References: <20240716075206.23121-1-boy.wu@mediatek.com>
+ <Zpbify32lel9J-5I@slm.duckdns.org>
+ <c5bcbcbaeacdb805adc75c26f92ec69f26ad7706.camel@mediatek.com>
+ <5560c690cc6de67139a9b2e45c7a11938b70fc58.camel@mediatek.com>
+ <1b19b68adb34410bf6dc8fd3f50e4b82c1a014e4.camel@mediatek.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1b19b68adb34410bf6dc8fd3f50e4b82c1a014e4.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240717_091813_093509_4C7069CD 
-X-CRM114-Status: GOOD (  20.65  )
+X-CRM114-CacheID: sfid-20240717_095549_638701_61BC67DE 
+X-CRM114-Status: UNSURE (   9.80  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,53 +106,110 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 15, 2024 at 4:45=E2=80=AFAM Jason-JH Lin (=E6=9E=97=E7=9D=BF=E7=
-=A5=A5)
-<Jason-JH.Lin@mediatek.com> wrote:
->
-> Hi Jassi,
->
-> > > You mean _with_ the api patches. right? Because I had suggested
-> > > "Over
-> > > your patchset, apply the following diff ..."
-> >
-> > No matter __with__ or __without__ the api patches, autosuspend didn't
-> > work...
-> >
-> > We have to find out the reason __without__ the api patches, then see
-> > if
-> > we still need the api patches to fix "calling sleep in atomic
-> > context"
-> > problem.
-> >
->
-> I found that the reason autosuspend didn't work was that I added the
-> devece_add_link() locally between the drm device and the mbox device.
->
-> After removing that change, the mailbox device of display can
-> autosuspend as expected. So the current autosuspend function is fine.
->
-> And the mailbox device of display has the same BUG report like imgsys.
->
->
-> Here is the log after removing the local change of device link and
-> without the PM api patches:
->
-....
-That is the log of your some w.i.p code... it does not trace
-mbox_send_message() which is where users call the api.  You trace
-cmdq_mbox_send_data() , i.e, the api calls the driver.
+Hello,
 
-Even here, the minimum send_diff (time between two cmdq_mbox_send_data
-calls) is 32ms. The minimum resume_diff is 540ms, which means you
-suspend for at least 540ms.  Also you don't expect these times to
-change even with the changed api, do you?
+Does something like the following work for you?
 
-At these timescales, you could very well release-acquire the channel
-resource because that cost is ~0ms for your driver. That will not only
-be the right thing to do but also avoid opening another can of worms
-by adding some ad-hoc api that works only on your platform.
+Thanks.
 
-Thanks
-Jassi
+diff --git a/block/blk-cgroup.c b/block/blk-cgroup.c
+index 37e6cc91d576..ec1d191f5c83 100644
+--- a/block/blk-cgroup.c
++++ b/block/blk-cgroup.c
+@@ -329,7 +329,6 @@ static struct blkcg_gq *blkg_alloc(struct blkcg *blkcg, struct gendisk *disk,
+ 	INIT_WORK(&blkg->async_bio_work, blkg_async_bio_workfn);
+ #endif
+ 
+-	u64_stats_init(&blkg->iostat.sync);
+ 	for_each_possible_cpu(cpu) {
+ 		u64_stats_init(&per_cpu_ptr(blkg->iostat_cpu, cpu)->sync);
+ 		per_cpu_ptr(blkg->iostat_cpu, cpu)->blkg = blkg;
+@@ -632,24 +631,26 @@ static void blkg_iostat_set(struct blkg_iostat *dst, struct blkg_iostat *src)
+ static void __blkg_clear_stat(struct blkg_iostat_set *bis)
+ {
+ 	struct blkg_iostat cur = {0};
+-	unsigned long flags;
+ 
+-	flags = u64_stats_update_begin_irqsave(&bis->sync);
+ 	blkg_iostat_set(&bis->cur, &cur);
+ 	blkg_iostat_set(&bis->last, &cur);
+-	u64_stats_update_end_irqrestore(&bis->sync, flags);
+ }
+ 
+ static void blkg_clear_stat(struct blkcg_gq *blkg)
+ {
++	unsigned long flags;
+ 	int cpu;
+ 
++	raw_spin_lock_irqsave(&blkg_stat_lock, flags);
++
+ 	for_each_possible_cpu(cpu) {
+ 		struct blkg_iostat_set *s = per_cpu_ptr(blkg->iostat_cpu, cpu);
+ 
+ 		__blkg_clear_stat(s);
+ 	}
+ 	__blkg_clear_stat(&blkg->iostat);
++
++	raw_spin_unlock_irqrestore(&blkg_stat_lock, flags);
+ }
+ 
+ static int blkcg_reset_stats(struct cgroup_subsys_state *css,
+@@ -998,12 +999,10 @@ static void blkcg_iostat_update(struct blkcg_gq *blkg, struct blkg_iostat *cur,
+ 	unsigned long flags;
+ 
+ 	/* propagate percpu delta to global */
+-	flags = u64_stats_update_begin_irqsave(&blkg->iostat.sync);
+ 	blkg_iostat_set(&delta, cur);
+ 	blkg_iostat_sub(&delta, last);
+ 	blkg_iostat_add(&blkg->iostat.cur, &delta);
+ 	blkg_iostat_add(last, &delta);
+-	u64_stats_update_end_irqrestore(&blkg->iostat.sync, flags);
+ }
+ 
+ static void __blkcg_rstat_flush(struct blkcg *blkcg, int cpu)
+@@ -1134,9 +1133,9 @@ static void blkcg_fill_root_iostats(void)
+ 				cpu_dkstats->sectors[STAT_DISCARD] << 9;
+ 		}
+ 
+-		flags = u64_stats_update_begin_irqsave(&blkg->iostat.sync);
++		raw_spin_lock_irqsave(&blkg_stat_lock, flags);
+ 		blkg_iostat_set(&blkg->iostat.cur, &tmp);
+-		u64_stats_update_end_irqrestore(&blkg->iostat.sync, flags);
++		raw_spin_unlock_irqrestore(&blkg_stat_lock, flags);
+ 	}
+ }
+ 
+@@ -1145,7 +1144,6 @@ static void blkcg_print_one_stat(struct blkcg_gq *blkg, struct seq_file *s)
+ 	struct blkg_iostat_set *bis = &blkg->iostat;
+ 	u64 rbytes, wbytes, rios, wios, dbytes, dios;
+ 	const char *dname;
+-	unsigned seq;
+ 	int i;
+ 
+ 	if (!blkg->online)
+@@ -1157,16 +1155,14 @@ static void blkcg_print_one_stat(struct blkcg_gq *blkg, struct seq_file *s)
+ 
+ 	seq_printf(s, "%s ", dname);
+ 
+-	do {
+-		seq = u64_stats_fetch_begin(&bis->sync);
+-
+-		rbytes = bis->cur.bytes[BLKG_IOSTAT_READ];
+-		wbytes = bis->cur.bytes[BLKG_IOSTAT_WRITE];
+-		dbytes = bis->cur.bytes[BLKG_IOSTAT_DISCARD];
+-		rios = bis->cur.ios[BLKG_IOSTAT_READ];
+-		wios = bis->cur.ios[BLKG_IOSTAT_WRITE];
+-		dios = bis->cur.ios[BLKG_IOSTAT_DISCARD];
+-	} while (u64_stats_fetch_retry(&bis->sync, seq));
++	raw_spin_lock_irq(&blkg_stat_lock);
++	rbytes = bis->cur.bytes[BLKG_IOSTAT_READ];
++	wbytes = bis->cur.bytes[BLKG_IOSTAT_WRITE];
++	dbytes = bis->cur.bytes[BLKG_IOSTAT_DISCARD];
++	rios = bis->cur.ios[BLKG_IOSTAT_READ];
++	wios = bis->cur.ios[BLKG_IOSTAT_WRITE];
++	dios = bis->cur.ios[BLKG_IOSTAT_DISCARD];
++	raw_spin_unlock_irq(&blkg_stat_lock, flags);
+ 
+ 	if (rbytes || wbytes || rios || wios) {
+ 		seq_printf(s, "rbytes=%llu wbytes=%llu rios=%llu wios=%llu dbytes=%llu dios=%llu",
 
