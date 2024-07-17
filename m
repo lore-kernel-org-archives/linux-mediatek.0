@@ -4,88 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10153C3DA4B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jul 2024 15:26:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC742C3DA42
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jul 2024 16:18:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FiOun6x1iC6l5j5+Ox2pwXNVZiuOFB7a72cfTkX8a5Y=; b=uF/c8uA4uxKCss161BA2CDUjkQ
-	+PcgD9YpFRJf/EULksqg3BvQETtTLdXOBSbVNBpWOyNOk08PaGCdXyQMhVJQ2C0Dyx0IvJMWMfBQB
-	5ItAkG2Tyt/odw0HdXdHAan1n2gmyQ4K1aVNnxDWFb9V6RCY3I2JAYDeaqNVavUbf58p4TSgPP+Bo
-	uDZoWFGw+gujGLKF6KlhqkSXxvTMzOSAah9MlnD712uAgQ1wDTVrqwZvJRDFVmULJ1xLQWTDeHWmf
-	s/3grRzDkXDfDfaYuKRMkmuMRtGZzKgEWzCCi7HPUmU9uLCI9tkaORGl3y7EBMbpnzhjx+sOlXSsy
-	vGNngDKQ==;
+	bh=nN1bLNl0BTZ9iy1K7Yp0WmZCTwJNvK8fshp2FGJokkQ=; b=Cknq/8zsVP3nPTcQ0lToSKseB6
+	AtVUFS8OPiTx8u3G/m2gu/wsaDQStPcIDKIXQYe0yn3B2aju8F8GMdYjVUgoNxCI3/dfcZSrvlqJS
+	HiHIX8i0QioIyJba/5f1dVh4BprN0CJg2pPRf4kQc3faLStSxIKuWkKFS8PbjrIhlYpJRnnqYjMKI
+	Z6V/6yeGG4JimLHRfY+6GmP9ZMtqFDBMfYPbSTRT8n63tiuPpssgWZtD1rg61I80OyxoXkRWptfs/
+	MTcYR01zLcJnc0KucK18eXqnPjQE1szZTQP//d6/27p5uoKW0b81aMTRw5MrBjkmYzt20zVVCWFuK
+	zWGMLRnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sU6XZ-0000000EBtc-1Tti;
-	Wed, 17 Jul 2024 15:26:01 +0000
-Received: from nbd.name ([46.4.11.11])
+	id 1sU7M8-0000000EKQO-0PBp;
+	Wed, 17 Jul 2024 16:18:16 +0000
+Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sU6XW-0000000EBtE-2ict
-	for linux-mediatek@lists.infradead.org;
-	Wed, 17 Jul 2024 15:26:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
-	s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
-	References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=FiOun6x1iC6l5j5+Ox2pwXNVZiuOFB7a72cfTkX8a5Y=; b=cs77jfzeKQeE67N1rpmd6/mdmv
-	aBB5m41sPKD+zStEoOLRBwJBf4yywUZ9Y0wuBKu/ZvxVlPO5TTgITZDnJLZVK94itqmupsKfBbYvj
-	ctGYc8oc1U5ou/M77PHFUsmp8bZQRNxQwlZUXtg4gwr8wSLpiLsC7cJKEO/iHR8bKMec=;
-Received: from p4ff1339c.dip0.t-ipconnect.de ([79.241.51.156] helo=nf.local)
-	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-	(Exim 4.96)
-	(envelope-from <nbd@nbd.name>)
-	id 1sU6XS-0087IF-26;
-	Wed, 17 Jul 2024 17:25:54 +0200
-Message-ID: <2599b886-9c63-4989-a08a-7feab28f7c49@nbd.name>
-Date: Wed, 17 Jul 2024 17:25:54 +0200
+	id 1sU7M5-0000000EKOA-05ed;
+	Wed, 17 Jul 2024 16:18:14 +0000
+Received: by mail-lf1-x12a.google.com with SMTP id 2adb3069b0e04-52e9a920e73so7913406e87.2;
+        Wed, 17 Jul 2024 09:18:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1721233090; x=1721837890; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=nN1bLNl0BTZ9iy1K7Yp0WmZCTwJNvK8fshp2FGJokkQ=;
+        b=b20yKrEdwgX2MTwFn0GVbVSL4LtFflhY0NUituy0PSmk3oXEAU/koo0TpOU0xMEPSm
+         WP4x0lq45I4Jt2SzPxaTbpZT/kxv4VKjzLgoGCAlSw6OvHLQW4l4kUACJbPEuH0tx7f3
+         EN35aJwSbGPQmAmUjoTLXbm1VmzJoS17u6vRX7PLfF91Sh3t/eXYxlTbGHO+lCJW9hHA
+         SPitf/ru5vayUJeNeQGI0/MGWhrgjA6mYTRkzzmtZW+2oNyGM9TPpDHKaKhj8+8Deqs5
+         LNvk5rxEtoZQIj0WXHvbiKPlmw8BZRw96rPzelKKq+sd9Ap4dfeYgehrBiaEtdBeXyte
+         sa5Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1721233090; x=1721837890;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=nN1bLNl0BTZ9iy1K7Yp0WmZCTwJNvK8fshp2FGJokkQ=;
+        b=tLFMxWdfwOk/LAUiAUVrGWn/6FAgvnyVKjFoGfUq5VDF//TLN5rrB/wB9bAbswgsqP
+         3hg1YbCoI+d5BzJ3BZH74QEYoGtWgn321pppzSbpNlivfnhl/ZvBtVvjTs15xeYjTLVU
+         LKYT42hCokZle8iicF/a3uTTDN5YS6mtjhUSb3fT+0BX68zrfEUQ0Pqbb5g/oWBmrLBH
+         LNoAt4oH3Iz4bKGInx9wfBpoM+tvVP/q46inJtjRHlC68oe1nAe1RVvVQLEUempRRwcS
+         mADiMV0oUzKaz02p87XavDbdbfsG9u0Gqr/LQx7k/CY0+HNcwfk4X3/9B53cHPVIlDaI
+         iVDw==
+X-Forwarded-Encrypted: i=1; AJvYcCWTE0nDip73PnDf0536rt0Ay96vXzXFtbNXRqY94G6kZ4rrgrC4BpGMukCSXlOH9EkptHuRFiTsT0B47XrLsBfmtctjr2jvjzyVsOrmN455aeLkVZ1jIEyeooTdg0wonEJ0U72T0nDCATeG5qcrjIYU6LL10RfkI+M=
+X-Gm-Message-State: AOJu0Yxtjxv/4F0bEbAh5fIJyqBmmXaVZfXhUdATZmnV+oFzBgnwstqW
+	oT3LDYj7xjypomNPV2Ve2XBk4PV2YxBNNRRy6KiUNdxO3cjtVEywFm0/wiUoZoLiPlAriJEA/OS
+	obAcIF+pKaotEvXyo8BVIs3YHqhsMJGhA
+X-Google-Smtp-Source: AGHT+IHJKGB3isMbpiavmiRNgPprCHd6xCU2Zj9jAPGFncmg1lt1S1zutRUqS9ElJc7/eqF9zLYRwRvV9Y5PxGXjTlk=
+X-Received: by 2002:a05:6512:3d0c:b0:52e:be1f:bf7f with SMTP id
+ 2adb3069b0e04-52ee53da928mr1592447e87.27.1721233089843; Wed, 17 Jul 2024
+ 09:18:09 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: patch 46/47 causes NULL pointer deref on mt7921
-To: Bert Karwatzki <spasswolf@web.de>, Sean Wang <sean.wang@kernel.org>
-Cc: deren.wu@mediatek.com, linux-mediatek@lists.infradead.org,
- linux-wireless@vger.kernel.org, lorenzo.bianconi@redhat.com,
- mingyen.hsieh@mediatek.com, sean.wang@mediatek.com
-References: <20240711175156.4465-1-spasswolf@web.de>
- <CAGp9LzoXMoAW6dVZjTf-JcD_wiU4yXpGwkLaVyWXTkaV2MOKwg@mail.gmail.com>
- <adb192a59c44aa8708e80df30a6a47816a03e50f.camel@web.de>
- <4e943a62736f955af5d9cd1aff7e2b9c084c8885.camel@web.de>
-From: Felix Fietkau <nbd@nbd.name>
-Content-Language: en-US
-Autocrypt: addr=nbd@nbd.name; keydata=
- xsDiBEah5CcRBADIY7pu4LIv3jBlyQ/2u87iIZGe6f0f8pyB4UjzfJNXhJb8JylYYRzIOSxh
- ExKsdLCnJqsG1PY1mqTtoG8sONpwsHr2oJ4itjcGHfn5NJSUGTbtbbxLro13tHkGFCoCr4Z5
- Pv+XRgiANSpYlIigiMbOkide6wbggQK32tC20QxUIwCg4k6dtV/4kwEeiOUfErq00TVqIiEE
- AKcUi4taOuh/PQWx/Ujjl/P1LfJXqLKRPa8PwD4j2yjoc9l+7LptSxJThL9KSu6gtXQjcoR2
- vCK0OeYJhgO4kYMI78h1TSaxmtImEAnjFPYJYVsxrhay92jisYc7z5R/76AaELfF6RCjjGeP
- wdalulG+erWju710Bif7E1yjYVWeA/9Wd1lsOmx6uwwYgNqoFtcAunDaMKi9xVQW18FsUusM
- TdRvTZLBpoUAy+MajAL+R73TwLq3LnKpIcCwftyQXK5pEDKq57OhxJVv1Q8XkA9Dn1SBOjNB
- l25vJDFAT9ntp9THeDD2fv15yk4EKpWhu4H00/YX8KkhFsrtUs69+vZQwc0cRmVsaXggRmll
- dGthdSA8bmJkQG5iZC5uYW1lPsJgBBMRAgAgBQJGoeQnAhsjBgsJCAcDAgQVAggDBBYCAwEC
- HgECF4AACgkQ130UHQKnbvXsvgCgjsAIIOsY7xZ8VcSm7NABpi91yTMAniMMmH7FRenEAYMa
- VrwYTIThkTlQzsFNBEah5FQQCACMIep/hTzgPZ9HbCTKm9xN4bZX0JjrqjFem1Nxf3MBM5vN
- CYGBn8F4sGIzPmLhl4xFeq3k5irVg/YvxSDbQN6NJv8o+tP6zsMeWX2JjtV0P4aDIN1pK2/w
- VxcicArw0VYdv2ZCarccFBgH2a6GjswqlCqVM3gNIMI8ikzenKcso8YErGGiKYeMEZLwHaxE
- Y7mTPuOTrWL8uWWRL5mVjhZEVvDez6em/OYvzBwbkhImrryF29e3Po2cfY2n7EKjjr3/141K
- DHBBdgXlPNfDwROnA5ugjjEBjwkwBQqPpDA7AYPvpHh5vLbZnVGu5CwG7NAsrb2isRmjYoqk
- wu++3117AAMFB/9S0Sj7qFFQcD4laADVsabTpNNpaV4wAgVTRHKV/kC9luItzwDnUcsZUPdQ
- f3MueRJ3jIHU0UmRBG3uQftqbZJj3ikhnfvyLmkCNe+/hXhPu9sGvXyi2D4vszICvc1KL4RD
- aLSrOsROx22eZ26KqcW4ny7+va2FnvjsZgI8h4sDmaLzKczVRIiLITiMpLFEU/VoSv0m1F4B
- FtRgoiyjFzigWG0MsTdAN6FJzGh4mWWGIlE7o5JraNhnTd+yTUIPtw3ym6l8P+gbvfoZida0
- TspgwBWLnXQvP5EDvlZnNaKa/3oBes6z0QdaSOwZCRA3QSLHBwtgUsrT6RxRSweLrcabwkkE
- GBECAAkFAkah5FQCGwwACgkQ130UHQKnbvW2GgCeMncXpbbWNT2AtoAYICrKyX5R3iMAoMhw
- cL98efvrjdstUfTCP2pfetyN
-In-Reply-To: <4e943a62736f955af5d9cd1aff7e2b9c084c8885.camel@web.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20240614040133.24967-1-jason-jh.lin@mediatek.com>
+ <20240614040133.24967-3-jason-jh.lin@mediatek.com> <CABb+yY2bwj2BcdJLGe1ZYwCrnXL3LtcePMb=wQPaBKorBSs2yA@mail.gmail.com>
+ <fc92d51cc6e55301c081ea2d589e1ba6cdd295ee.camel@mediatek.com>
+ <CABb+yY1L+YGjf6O9UgPYkS2gWAdo=7QoojSAUNWC_8o7XtZQSg@mail.gmail.com>
+ <1f815ff8-2b7a-48de-8b47-0bc9b3cb67ab@collabora.com> <CABb+yY1Yy8o3ofAiC-uV+gDrO3QDTWz3_XTUMai_2uyrnj-VrQ@mail.gmail.com>
+ <b7ebc021d391452eaf2149976ea2d53fba3d89fc.camel@mediatek.com>
+ <CABb+yY3+pnuXDK_jZMDYOAzahdSZ5iig51VqzM=FFHrFpK+9LA@mail.gmail.com>
+ <4e5d4362-4940-4ba0-95aa-627b82e21e41@collabora.com> <CABb+yY3eXvJRUq7MOqB8QZ9N4aiuogaUCTfP7MerKdNbAbLkvw@mail.gmail.com>
+ <895af04e45d286c38d01f48b29ad41598b7dadb7.camel@mediatek.com>
+ <CABb+yY1EZOsKUR7WUX0Ni0Ukbqz0+yRHswiu07tNXtY1A1gNUQ@mail.gmail.com>
+ <d6f0e7072ec0e89e573e5720fb2b9c621eb9154c.camel@mediatek.com>
+ <CABb+yY0+fFw7Bg578DFEdrigVFgf4-v3qo2JVruEa3ExtvRsMg@mail.gmail.com>
+ <092d917b4cae2762317a8739c874855554ae913f.camel@mediatek.com>
+ <CABb+yY2-KWYORo_-ZWafyM0VJnh8-2wefvCpeDsK204qB0TchQ@mail.gmail.com>
+ <3f655bc4e1e60cd5e0dfc9baa018553fa8892826.camel@mediatek.com>
+ <CABb+yY2zBY_3nEYajdhRNfwb+bPMpFOvbXrqY+jM9rB6qbjJNQ@mail.gmail.com>
+ <e860d67f578f1963d785dcc0423936fe5de20547.camel@mediatek.com>
+ <CABb+yY0mYrUyfpNLVKZt2aDdzZPf+VjawcwVSpMG8H_=pwKLbw@mail.gmail.com>
+ <c8081a0bbfa2f60fc3d594bd0fadacf9354507b7.camel@mediatek.com> <74e15fceff5ef48ca18a6f3e8dac15ae9cff09b7.camel@mediatek.com>
+In-Reply-To: <74e15fceff5ef48ca18a6f3e8dac15ae9cff09b7.camel@mediatek.com>
+From: Jassi Brar <jassisinghbrar@gmail.com>
+Date: Wed, 17 Jul 2024 11:17:58 -0500
+Message-ID: <CABb+yY04wHaq3pU8tVOK51PeUHAMnUtPC+zi5gFkmykK05C+Vw@mail.gmail.com>
+Subject: Re: [PATCH 2/2] mailbox: mtk-cmdq: Move pm_runimte_get and put to
+ mbox_chan_ops API
+To: =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
+	=?UTF-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>, 
+	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>, =?UTF-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>, 
+	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>, 
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, 
+	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240717_082558_805480_D3DDE0A9 
-X-CRM114-Status: GOOD (  24.99  )
+X-CRM114-CacheID: sfid-20240717_091813_093509_4C7069CD 
+X-CRM114-Status: GOOD (  20.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,103 +114,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 17.07.24 16:38, Bert Karwatzki wrote:
-> Am Freitag, dem 12.07.2024 um 13:06 +0200 schrieb Bert Karwatzki:
->> Am Donnerstag, dem 11.07.2024 um 18:40 -0500 schrieb Sean Wang:
->> > Hi Bert,
->> >
->> > Thanks for the detailed debug log. I've quickly made a change to fix
->> > the issue. Right now, I can't access the test environment, but I'll
->> > test it and send it out as soon as possible. Here's the patch.
->> >
->> > diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
->> > b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
->> > index 2e6268cb06c0..1bab93d049df 100644
->> > --- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
->> > +++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
->> > @@ -303,6 +303,7 @@ mt7921_add_interface(struct ieee80211_hw *hw,
->> > struct ieee80211_vif *vif)
->> >
->> >         mvif->bss_conf.mt76.omac_idx = mvif->bss_conf.mt76.idx;
->> >         mvif->phy = phy;
->> > +       mvif->bss_conf.vif = mvif;
->> >         mvif->bss_conf.mt76.band_idx = 0;
->> >         mvif->bss_conf.mt76.wmm_idx = mvif->bss_conf.mt76.idx %
->> > MT76_CONNAC_MAX_WMM_SETS;
->> >
->>
->> I wrote earlier that this patch works fine with linux-next-20240711 and at first
->> it did, but then another NULL pointer error occured. I'm not sure if I can
->> bisect this as it does not trigger automatically it seems. Also I'm currently
->> bisecting the problem with linux-20240712
->>
->> Bert Karwatzki
-> 
-> Now the above mentioned NULL pointer dereference has happended again, this time
-> on linux-next-20240716. It cann be triggered by repeatedly turning the Wifi off
-> and on again. For further investigation I created this patch:
-> 
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-> b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-> index 2e6268cb06c0..3ecedf7bc9f3 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-> @@ -303,6 +303,8 @@ mt7921_add_interface(struct ieee80211_hw *hw, struct
-> ieee80211_vif *vif)
-> 
->   	mvif->bss_conf.mt76.omac_idx = mvif->bss_conf.mt76.idx;
->   	mvif->phy = phy;
-> +	WARN(!phy, "%s: phy = NULL\n", __func__);
-> +	mvif->bss_conf.vif = mvif;
->   	mvif->bss_conf.mt76.band_idx = 0;
->   	mvif->bss_conf.mt76.wmm_idx = mvif->bss_conf.mt76.idx %
-> MT76_CONNAC_MAX_WMM_SETS;
-> 
-> @@ -1182,6 +1184,12 @@ static void mt7921_ipv6_addr_change(struct ieee80211_hw
-> *hw,
->   				    struct inet6_dev *idev)
->   {
->   	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
-> +	printk(KERN_INFO "%s: mvif = %px\n", __func__, mvif);
-> +	printk(KERN_INFO "%s: mvif->phy = %px\n", __func__, mvif->phy);
-> +	if (!mvif->phy) {
-> +		printk(KERN_INFO "%s: mvif->phy = NULL\n", __func__);
-> +		return;
-> +	}
->   	struct mt792x_dev *dev = mvif->phy->dev;
->   	struct inet6_ifaddr *ifa;
->   	struct in6_addr ns_addrs[IEEE80211_BSS_ARP_ADDR_LIST_LEN];
-> 
-> And the result is this (the WARN in mt7921_add_interface did not trigger):
-> 
-> [  367.121740] [    T861] wlp4s0: deauthenticating from 54:67:51:3d:a2:d2 by
-> local choice (Reason: 3=DEAUTH_LEAVING)
-> [  367.209603] [    T861] mt7921_ipv6_addr_change: mvif = ffff954e7500de40
-> [  367.209615] [    T861] mt7921_ipv6_addr_change: mvif->phy = 0000000000000000
-> [  367.209621] [    T861] mt7921_ipv6_addr_change: mvif->phy = NULL
-> [  367.250026] [    T861] mt7921_ipv6_addr_change: mvif = ffff954e7500de40
-> [  367.250034] [    T861] mt7921_ipv6_addr_change: mvif->phy = ffff954e44427768
-> [  367.251537] [    T861] mt7921_ipv6_addr_change: mvif = ffff954e7500de40
-> [  367.251542] [    T861] mt7921_ipv6_addr_change: mvif->phy = ffff954e44427768
-> [  369.977123] [    T862] wlp4s0: authenticate with 54:67:51:3d:a2:d2 (local
-> address=c8:94:02:c1:bd:69)
-> [  369.984864] [    T862] wlp4s0: send auth to 54:67:51:3d:a2:d2 (try 1/3)
-> [  370.006199] [    T104] wlp4s0: authenticated
-> [  370.006680] [    T104] wlp4s0: associate with 54:67:51:3d:a2:d2 (try 1/3)
-> [  370.059080] [     T98] wlp4s0: RX AssocResp from 54:67:51:3d:a2:d2
-> (capab=0x511 status=0 aid=2)
-> [  370.064067] [     T98] wlp4s0: associated
-> 
-> So mvif->phy can be NULL at the start of mt7921_ipv6_addr_change. The early
-> return in that case avoids the NULL pointer and mvif->phy has its usual value
-> again on the next call to mt7921_ipv6_addr_change so Wifi is working again. I
-> don't know how this could happen but perhaps you have an idea.
+On Mon, Jul 15, 2024 at 4:45=E2=80=AFAM Jason-JH Lin (=E6=9E=97=E7=9D=BF=E7=
+=A5=A5)
+<Jason-JH.Lin@mediatek.com> wrote:
+>
+> Hi Jassi,
+>
+> > > You mean _with_ the api patches. right? Because I had suggested
+> > > "Over
+> > > your patchset, apply the following diff ..."
+> >
+> > No matter __with__ or __without__ the api patches, autosuspend didn't
+> > work...
+> >
+> > We have to find out the reason __without__ the api patches, then see
+> > if
+> > we still need the api patches to fix "calling sleep in atomic
+> > context"
+> > problem.
+> >
+>
+> I found that the reason autosuspend didn't work was that I added the
+> devece_add_link() locally between the drm device and the mbox device.
+>
+> After removing that change, the mailbox device of display can
+> autosuspend as expected. So the current autosuspend function is fine.
+>
+> And the mailbox device of display has the same BUG report like imgsys.
+>
+>
+> Here is the log after removing the local change of device link and
+> without the PM api patches:
+>
+....
+That is the log of your some w.i.p code... it does not trace
+mbox_send_message() which is where users call the api.  You trace
+cmdq_mbox_send_data() , i.e, the api calls the driver.
 
-This change should fix it: https://nbd.name/p/0747f54f
-Please test.
+Even here, the minimum send_diff (time between two cmdq_mbox_send_data
+calls) is 32ms. The minimum resume_diff is 540ms, which means you
+suspend for at least 540ms.  Also you don't expect these times to
+change even with the changed api, do you?
 
-Thanks,
+At these timescales, you could very well release-acquire the channel
+resource because that cost is ~0ms for your driver. That will not only
+be the right thing to do but also avoid opening another can of worms
+by adding some ad-hoc api that works only on your platform.
 
-- Felix
-
+Thanks
+Jassi
 
