@@ -4,94 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57B51C3DA60
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jul 2024 16:55:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7485BC3DA62
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jul 2024 17:06:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=68LWjL5/SKjz0tO65i0BltVGGa8T/WWLEoQAHGMQU/Q=; b=0XL7B0xk8fhpuC58uwUThg1tIg
-	eVXP3/0zquNytE9eDS8CK20R1IYqHkhxjrnggyJsTAswVkTQiPNJ7o+/jef2YYpEGuWUcLcFZQ4lz
-	DeHUtzKk8iFeeyiNgH/oHkEI85n2g3PNYlQ1VG6iUa3g4DBR9j+xj+ot/MJ5ugvFGTk6Hiac/ep2z
-	6r0gmPJhby23N3qDK713zirRShnfx17vCqbiqPecpzaA0rdXMSV4BUUTqzjYiYCDxsEp7Ty7xvIRz
-	CiUd/+bVvpPk8bRvkhXvJEY9zSgYX5d1X3g4lwLEtCICzAKyQao9wlM1sUx07AiWZsrUgtTYYF1xw
-	ep/5fCsA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=JS9l16PVBf3CPuE/IoF9QcmvRwbKgU8Emdyp10Gv804=; b=XMfwv3PMmEWUGQXRcccmxXjVbc
+	YKt50+GTVMn6Wa3c+BtJYvE6XLZInvFJrj9XO9PmlNsvq3mjua7cJNoe9iZGgL/bVu7yLmEiZ0ffT
+	tkaflpOwtaeWffpMdxYfiODVkKXeZrL73kkY6Hlt9k76kcuugzgyXW109J937pCdfSyiX5TrwY0Q2
+	klW97iCRR9rmqI6QT+tQJkPACFmG0JrrnABKYkQxeIom90VcvJsz3PVGawflw4ulErWO0OYBwOngx
+	I25bMxDG/EWBqZhHx6JPfc/7fuTHdidR9McJ/s12lGBm06LutPLxz4/i79+UGbyzpaJxsr39Dyg6X
+	19tUR7Iw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sU7wW-0000000EPmO-3IAy;
-	Wed, 17 Jul 2024 16:55:52 +0000
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
+	id 1sU86K-0000000EROT-3Oj8;
+	Wed, 17 Jul 2024 17:06:00 +0000
+Received: from mout.web.de ([217.72.192.78])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sU7wT-0000000EPkH-2PD8;
-	Wed, 17 Jul 2024 16:55:51 +0000
-Received: by mail-pl1-x62b.google.com with SMTP id d9443c01a7336-1fbe6f83957so59020015ad.3;
-        Wed, 17 Jul 2024 09:55:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1721235348; x=1721840148; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:sender:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=68LWjL5/SKjz0tO65i0BltVGGa8T/WWLEoQAHGMQU/Q=;
-        b=LcoGslK6eeVL1f44sUTDd6qGU+Cs8SxXYvfAZTceWD4SrljzP21FIJ02wVA8VslJdR
-         23KG7aYDq1hVJZuydPwQIj49sSK7jm6l/Ss02GPaM3Llyb/YAgjevQX0Ttlqb/U74cRt
-         BYjGTe/F2isQg3q71dJ5lIa0JGEn8fAiEmzaNOtCcii86F9Qjjj/xrFD65V5p/OFgWG6
-         APCzLymNc/apWZatcE1dkQG8CjH3m8lH2YdAoo2KReIsiYMR64R1GyOU/lXKFV0b3g6q
-         sW/r6+7TCzjvId44OBp4ctT6p/d8RVrSgjGD2czRbrUDO8hSLYh9uhICqWyuKCN0vcv1
-         qM9g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1721235348; x=1721840148;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:sender:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=68LWjL5/SKjz0tO65i0BltVGGa8T/WWLEoQAHGMQU/Q=;
-        b=iqa1zH0iHEUOHOXgSIzqsXP8D8pAHtlD1UuEPzLOJ92PSRaXlM3loLVbZHbn14iPAi
-         33u2vndEHKUL2YQBdgjgym2JI0Bp0ftWauT034hYQu1ZenrEsvKCQueHpib7B2VgAItT
-         y93VAawjovsvDpRnsIeJk8JL5EBjbo2hXKKCV26tu1C/Z2IfHFTT8ZVG6bBp9lRu30Al
-         yN3qUwBmdMc2c3F1ZshgJ9PRXxgDKrq+M6FuURKiUbSfZLSn/8yhYri9ZR/fjNdDct82
-         u5E40u5SNqO/BWAQxAX1DKwiSuhRZR+gK2vcB1z9HUnr3yOwW1aN6vuhmydGEIRa+3iM
-         7wQA==
-X-Forwarded-Encrypted: i=1; AJvYcCWDh7FxMqkDd8wYH6JgsKcI07IDAXsKO6YB7lEMAxYFQcdgBr6ac6l0RKBt2hqfbpGFIIUit1UO8pFFpsrYDOGU3vdYt4z1VtovlC5Yw3POasvxkkhrM1NNQMBvj10ZzHj4dRcp5i+wHO+nhv1GIfzisslsvvABZoo=
-X-Gm-Message-State: AOJu0YyT8pSrruHkxxiOygvGWZRdNbSV+fT41G/raeXm/cxkI71yNJpT
-	lGJuyuwB6tP9Pc3tlWXxGzHYzeM4dfkjggif04oabNaS2kUo8Ru7
-X-Google-Smtp-Source: AGHT+IEh/cgX/fwSr/Qf+rkCnE+FwhUG7QRMVZIlEKOXguTlAFPyDJHm9nWwN1jNvQkd90th0Ikb6Q==
-X-Received: by 2002:a17:903:234d:b0:1fb:67ee:6de7 with SMTP id d9443c01a7336-1fc4e131d9fmr23895775ad.23.1721235348035;
-        Wed, 17 Jul 2024 09:55:48 -0700 (PDT)
-Received: from localhost (dhcp-141-239-149-160.hawaiiantel.net. [141.239.149.160])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-1fc0bc384ecsm77469445ad.208.2024.07.17.09.55.47
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 17 Jul 2024 09:55:47 -0700 (PDT)
-Date: Wed, 17 Jul 2024 06:55:46 -1000
-From: "tj@kernel.org" <tj@kernel.org>
-To: Boy Wu =?utf-8?B?KOWQs+WLg+iqvCk=?= <Boy.Wu@mediatek.com>
-Cc: "boris@bur.io" <boris@bur.io>,
-	"linux-block@vger.kernel.org" <linux-block@vger.kernel.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"cgroups@vger.kernel.org" <cgroups@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"axboe@kernel.dk" <axboe@kernel.dk>,
-	Iverlin Wang =?utf-8?B?KOeOi+iLs+mclik=?= <Iverlin.Wang@mediatek.com>,
-	"josef@toxicpanda.com" <josef@toxicpanda.com>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v3] blk-cgroup: Replace u64 sync with spinlock for iostat
- update
-Message-ID: <Zpf3ks2drDZ7ULTa@slm.duckdns.org>
-References: <20240716075206.23121-1-boy.wu@mediatek.com>
- <Zpbify32lel9J-5I@slm.duckdns.org>
- <c5bcbcbaeacdb805adc75c26f92ec69f26ad7706.camel@mediatek.com>
- <5560c690cc6de67139a9b2e45c7a11938b70fc58.camel@mediatek.com>
- <1b19b68adb34410bf6dc8fd3f50e4b82c1a014e4.camel@mediatek.com>
+	id 1sU86H-0000000ERKw-0xh3
+	for linux-mediatek@lists.infradead.org;
+	Wed, 17 Jul 2024 17:05:59 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
+	s=s29768273; t=1721235947; x=1721840747; i=spasswolf@web.de;
+	bh=JS9l16PVBf3CPuE/IoF9QcmvRwbKgU8Emdyp10Gv804=;
+	h=X-UI-Sender-Class:Message-ID:Subject:From:To:Cc:Date:In-Reply-To:
+	 References:Content-Type:MIME-Version:Content-Transfer-Encoding:cc:
+	 content-transfer-encoding:content-type:date:from:message-id:
+	 mime-version:reply-to:subject:to;
+	b=g3XoKAhz9Q9NkOsGcMVY3z3gXVtSlVRjt1PKVhV7t22EhOnSj2e9I6FzfLGEwcNS
+	 Eao6HSjRiWfE1060q6/5FB2eixJwdfRJunu7Lkeztlre9twBC5U4IvL1Ko4InhGfD
+	 1t/iv1HPZGdebIsZCJg+OG5UKIlIT6yURS9T9guxqB3Rk6jJvYB4G8dtUk9qQfSD+
+	 WMepDGW7LjlV3DbPg0I/KAyQAgbURoNZ2ODShnqqNJ4FPB1eof6/JwdTdtpWeM3XM
+	 pdl4osKbvx8p7vVu1EokuKAxP6cLUOkOv3McNae4qpCg5yMTcdJBI2evY+wbMTvZk
+	 PQRV3va9xIUYZlRR5g==
+X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
+Received: from [192.168.0.101] ([84.119.92.193]) by smtp.web.de (mrweb106
+ [213.165.67.124]) with ESMTPSA (Nemesis) id 1Mx0Ij-1s9H3w0TtL-00wlrp; Wed, 17
+ Jul 2024 19:05:47 +0200
+Message-ID: <9fb7ac97d2ca472db469aefefbfeb94e0f886508.camel@web.de>
+Subject: Re: patch 46/47 causes NULL pointer deref on mt7921
+From: Bert Karwatzki <spasswolf@web.de>
+To: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@kernel.org>
+Cc: deren.wu@mediatek.com, linux-mediatek@lists.infradead.org, 
+	linux-wireless@vger.kernel.org, lorenzo.bianconi@redhat.com, 
+	mingyen.hsieh@mediatek.com, sean.wang@mediatek.com, spasswolf@web.de
+Date: Wed, 17 Jul 2024 19:05:45 +0200
+In-Reply-To: <2599b886-9c63-4989-a08a-7feab28f7c49@nbd.name>
+References: <20240711175156.4465-1-spasswolf@web.de>
+	 <CAGp9LzoXMoAW6dVZjTf-JcD_wiU4yXpGwkLaVyWXTkaV2MOKwg@mail.gmail.com>
+	 <adb192a59c44aa8708e80df30a6a47816a03e50f.camel@web.de>
+	 <4e943a62736f955af5d9cd1aff7e2b9c084c8885.camel@web.de>
+	 <2599b886-9c63-4989-a08a-7feab28f7c49@nbd.name>
+Content-Type: text/plain; charset="UTF-8"
+User-Agent: Evolution 3.52.3-1 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1b19b68adb34410bf6dc8fd3f50e4b82c1a014e4.camel@mediatek.com>
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:5Y0zIpG0dEUlu94qLZ2BTXfr7UbIgXbOKFrRqnfHQZE9mH+mRjm
+ BmvbJ3OQBjSwNwMoqJ2fbpkAyv0lGxffcYIjMNo/LIAudWMmKnCi5ilBqw1tmQyHI3lp356
+ 07FzFWxbQ2OZHwsuPhVnSuCyX2f6LNinQ1O/3DsgwQBCqqYr29Il03ZNDo/cxusUecx0pnG
+ X2sI0c0sYtKrbBgsXjZaQ==
+UI-OutboundReport: notjunk:1;M01:P0:Aj5SW7ozQHw=;rSwDhhEwSHY1/mjriirHhfFm06x
+ ay6BbyENr6BSjuHp0WyPa3dIDw3actF27zcLYJAHLokyMw+XAUn2by+KCbQuCXQqXFAaC6v80
+ qX+V1noW2cMQrbTdjWQU+lRvl9r4XOxBBitom8k61+orRvnehEdDAYqyxuhej//z9ojouqsLt
+ aIiVLLiJu/610cR4ZjF5hbJwhB2ZCYTNitj4Y/BoQBuCnMCFDYKI22VA9Pbcmug2AJFHvGsgP
+ k+XXBlCoNlsDUW2LTlmvHw8v8MEWAZljC/tazafm287sh8/jjBrmV2K6jyaOSnH0PiLlKTX5S
+ zBkqDbykUnfEvgOYFnhc/NGgODiYXhD1OCdF/2XJATExImWd92oEM2u+Enz/oSG0QOZWC2bh3
+ adOWLFQvo6ftgpKtaEXaWXisNuoTMHCQCOsAceTdw7Yjd2cew9MJgJ61YuQPknHQWFENigZJR
+ 9Ad7PTXzhSde5HePyKga22FEz8Tj497Tjm9R0phgoyJC8ZJcexHo+rznD/50ISYpdVEsiPoD0
+ sQ24WmAyZRb+wRx/8tVg+4i5nDSd4JtPPpNfeHihwkM3Z40nfS+OEKCaOTq6DweyFg4l74bXB
+ Bd43Qz1iabf9bqoMsfV4N5f+k5JCDfxYaquCQ1pvsmUBj4yUuZUZkC9wBEzdwzE+nYIsM6+O7
+ ox/yRGr8XwFj0fReRGSehaNuqleVuNJWz8+sUs639GMn0szdYc3vQf2BmaHLrMywGnMGFoJqY
+ 3b1bxd8QjtcQqG+eKZvHd5YymX5Bsh61wbIWZS/fJxdgNcjRvSaaDD1R+N0jP8PriDRdYLuPe
+ 4FPvT2z8yvZoCpYCUMxcaKiQ==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240717_095549_638701_61BC67DE 
-X-CRM114-Status: UNSURE (   9.80  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240717_100558_025402_1502AF58 
+X-CRM114-Status: GOOD (  27.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,110 +96,134 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello,
+Am Mittwoch, dem 17.07.2024 um 17:25 +0200 schrieb Felix Fietkau:
+> On 17.07.24 16:38, Bert Karwatzki wrote:
+> > Am Freitag, dem 12.07.2024 um 13:06 +0200 schrieb Bert Karwatzki:
+> > > Am Donnerstag, dem 11.07.2024 um 18:40 -0500 schrieb Sean Wang:
+> > > > Hi Bert,
+> > > >
+> > > > Thanks for the detailed debug log. I've quickly made a change to f=
+ix
+> > > > the issue. Right now, I can't access the test environment, but I'l=
+l
+> > > > test it and send it out as soon as possible. Here's the patch.
+> > > >
+> > > > diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+> > > > b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+> > > > index 2e6268cb06c0..1bab93d049df 100644
+> > > > --- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+> > > > +++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+> > > > @@ -303,6 +303,7 @@ mt7921_add_interface(struct ieee80211_hw *hw,
+> > > > struct ieee80211_vif *vif)
+> > > >
+> > > >         mvif->bss_conf.mt76.omac_idx =3D mvif->bss_conf.mt76.idx;
+> > > >         mvif->phy =3D phy;
+> > > > +       mvif->bss_conf.vif =3D mvif;
+> > > >         mvif->bss_conf.mt76.band_idx =3D 0;
+> > > >         mvif->bss_conf.mt76.wmm_idx =3D mvif->bss_conf.mt76.idx %
+> > > > MT76_CONNAC_MAX_WMM_SETS;
+> > > >
+> > >
+> > > I wrote earlier that this patch works fine with linux-next-20240711 =
+and at first
+> > > it did, but then another NULL pointer error occured. I'm not sure if=
+ I can
+> > > bisect this as it does not trigger automatically it seems. Also I'm =
+currently
+> > > bisecting the problem with linux-20240712
+> > >
+> > > Bert Karwatzki
+> >
+> > Now the above mentioned NULL pointer dereference has happended again, =
+this time
+> > on linux-next-20240716. It cann be triggered by repeatedly turning the=
+ Wifi off
+> > and on again. For further investigation I created this patch:
+> >
+> > diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+> > b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+> > index 2e6268cb06c0..3ecedf7bc9f3 100644
+> > --- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+> > +++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+> > @@ -303,6 +303,8 @@ mt7921_add_interface(struct ieee80211_hw *hw, stru=
+ct
+> > ieee80211_vif *vif)
+> >
+> >   	mvif->bss_conf.mt76.omac_idx =3D mvif->bss_conf.mt76.idx;
+> >   	mvif->phy =3D phy;
+> > +	WARN(!phy, "%s: phy =3D NULL\n", __func__);
+> > +	mvif->bss_conf.vif =3D mvif;
+> >   	mvif->bss_conf.mt76.band_idx =3D 0;
+> >   	mvif->bss_conf.mt76.wmm_idx =3D mvif->bss_conf.mt76.idx %
+> > MT76_CONNAC_MAX_WMM_SETS;
+> >
+> > @@ -1182,6 +1184,12 @@ static void mt7921_ipv6_addr_change(struct ieee=
+80211_hw
+> > *hw,
+> >   				    struct inet6_dev *idev)
+> >   {
+> >   	struct mt792x_vif *mvif =3D (struct mt792x_vif *)vif->drv_priv;
+> > +	printk(KERN_INFO "%s: mvif =3D %px\n", __func__, mvif);
+> > +	printk(KERN_INFO "%s: mvif->phy =3D %px\n", __func__, mvif->phy);
+> > +	if (!mvif->phy) {
+> > +		printk(KERN_INFO "%s: mvif->phy =3D NULL\n", __func__);
+> > +		return;
+> > +	}
+> >   	struct mt792x_dev *dev =3D mvif->phy->dev;
+> >   	struct inet6_ifaddr *ifa;
+> >   	struct in6_addr ns_addrs[IEEE80211_BSS_ARP_ADDR_LIST_LEN];
+> >
+> > And the result is this (the WARN in mt7921_add_interface did not trigg=
+er):
+> >
+> > [  367.121740] [    T861] wlp4s0: deauthenticating from 54:67:51:3d:a2=
+:d2 by
+> > local choice (Reason: 3=3DDEAUTH_LEAVING)
+> > [  367.209603] [    T861] mt7921_ipv6_addr_change: mvif =3D ffff954e75=
+00de40
+> > [  367.209615] [    T861] mt7921_ipv6_addr_change: mvif->phy =3D 00000=
+00000000000
+> > [  367.209621] [    T861] mt7921_ipv6_addr_change: mvif->phy =3D NULL
+> > [  367.250026] [    T861] mt7921_ipv6_addr_change: mvif =3D ffff954e75=
+00de40
+> > [  367.250034] [    T861] mt7921_ipv6_addr_change: mvif->phy =3D ffff9=
+54e44427768
+> > [  367.251537] [    T861] mt7921_ipv6_addr_change: mvif =3D ffff954e75=
+00de40
+> > [  367.251542] [    T861] mt7921_ipv6_addr_change: mvif->phy =3D ffff9=
+54e44427768
+> > [  369.977123] [    T862] wlp4s0: authenticate with 54:67:51:3d:a2:d2 =
+(local
+> > address=3Dc8:94:02:c1:bd:69)
+> > [  369.984864] [    T862] wlp4s0: send auth to 54:67:51:3d:a2:d2 (try =
+1/3)
+> > [  370.006199] [    T104] wlp4s0: authenticated
+> > [  370.006680] [    T104] wlp4s0: associate with 54:67:51:3d:a2:d2 (tr=
+y 1/3)
+> > [  370.059080] [     T98] wlp4s0: RX AssocResp from 54:67:51:3d:a2:d2
+> > (capab=3D0x511 status=3D0 aid=3D2)
+> > [  370.064067] [     T98] wlp4s0: associated
+> >
+> > So mvif->phy can be NULL at the start of mt7921_ipv6_addr_change. The =
+early
+> > return in that case avoids the NULL pointer and mvif->phy has its usua=
+l value
+> > again on the next call to mt7921_ipv6_addr_change so Wifi is working a=
+gain. I
+> > don't know how this could happen but perhaps you have an idea.
+>
+> This change should fix it: https://nbd.name/p/0747f54f
+> Please test.
+>
+> Thanks,
+>
+> - Felix
+>
 
-Does something like the following work for you?
+Your fix works. (I added a WARN() statement on the early return, to see if=
+ mvif-
+>phy actually was NULL during testing).
 
-Thanks.
+Bert Karwatzki
 
-diff --git a/block/blk-cgroup.c b/block/blk-cgroup.c
-index 37e6cc91d576..ec1d191f5c83 100644
---- a/block/blk-cgroup.c
-+++ b/block/blk-cgroup.c
-@@ -329,7 +329,6 @@ static struct blkcg_gq *blkg_alloc(struct blkcg *blkcg, struct gendisk *disk,
- 	INIT_WORK(&blkg->async_bio_work, blkg_async_bio_workfn);
- #endif
- 
--	u64_stats_init(&blkg->iostat.sync);
- 	for_each_possible_cpu(cpu) {
- 		u64_stats_init(&per_cpu_ptr(blkg->iostat_cpu, cpu)->sync);
- 		per_cpu_ptr(blkg->iostat_cpu, cpu)->blkg = blkg;
-@@ -632,24 +631,26 @@ static void blkg_iostat_set(struct blkg_iostat *dst, struct blkg_iostat *src)
- static void __blkg_clear_stat(struct blkg_iostat_set *bis)
- {
- 	struct blkg_iostat cur = {0};
--	unsigned long flags;
- 
--	flags = u64_stats_update_begin_irqsave(&bis->sync);
- 	blkg_iostat_set(&bis->cur, &cur);
- 	blkg_iostat_set(&bis->last, &cur);
--	u64_stats_update_end_irqrestore(&bis->sync, flags);
- }
- 
- static void blkg_clear_stat(struct blkcg_gq *blkg)
- {
-+	unsigned long flags;
- 	int cpu;
- 
-+	raw_spin_lock_irqsave(&blkg_stat_lock, flags);
-+
- 	for_each_possible_cpu(cpu) {
- 		struct blkg_iostat_set *s = per_cpu_ptr(blkg->iostat_cpu, cpu);
- 
- 		__blkg_clear_stat(s);
- 	}
- 	__blkg_clear_stat(&blkg->iostat);
-+
-+	raw_spin_unlock_irqrestore(&blkg_stat_lock, flags);
- }
- 
- static int blkcg_reset_stats(struct cgroup_subsys_state *css,
-@@ -998,12 +999,10 @@ static void blkcg_iostat_update(struct blkcg_gq *blkg, struct blkg_iostat *cur,
- 	unsigned long flags;
- 
- 	/* propagate percpu delta to global */
--	flags = u64_stats_update_begin_irqsave(&blkg->iostat.sync);
- 	blkg_iostat_set(&delta, cur);
- 	blkg_iostat_sub(&delta, last);
- 	blkg_iostat_add(&blkg->iostat.cur, &delta);
- 	blkg_iostat_add(last, &delta);
--	u64_stats_update_end_irqrestore(&blkg->iostat.sync, flags);
- }
- 
- static void __blkcg_rstat_flush(struct blkcg *blkcg, int cpu)
-@@ -1134,9 +1133,9 @@ static void blkcg_fill_root_iostats(void)
- 				cpu_dkstats->sectors[STAT_DISCARD] << 9;
- 		}
- 
--		flags = u64_stats_update_begin_irqsave(&blkg->iostat.sync);
-+		raw_spin_lock_irqsave(&blkg_stat_lock, flags);
- 		blkg_iostat_set(&blkg->iostat.cur, &tmp);
--		u64_stats_update_end_irqrestore(&blkg->iostat.sync, flags);
-+		raw_spin_unlock_irqrestore(&blkg_stat_lock, flags);
- 	}
- }
- 
-@@ -1145,7 +1144,6 @@ static void blkcg_print_one_stat(struct blkcg_gq *blkg, struct seq_file *s)
- 	struct blkg_iostat_set *bis = &blkg->iostat;
- 	u64 rbytes, wbytes, rios, wios, dbytes, dios;
- 	const char *dname;
--	unsigned seq;
- 	int i;
- 
- 	if (!blkg->online)
-@@ -1157,16 +1155,14 @@ static void blkcg_print_one_stat(struct blkcg_gq *blkg, struct seq_file *s)
- 
- 	seq_printf(s, "%s ", dname);
- 
--	do {
--		seq = u64_stats_fetch_begin(&bis->sync);
--
--		rbytes = bis->cur.bytes[BLKG_IOSTAT_READ];
--		wbytes = bis->cur.bytes[BLKG_IOSTAT_WRITE];
--		dbytes = bis->cur.bytes[BLKG_IOSTAT_DISCARD];
--		rios = bis->cur.ios[BLKG_IOSTAT_READ];
--		wios = bis->cur.ios[BLKG_IOSTAT_WRITE];
--		dios = bis->cur.ios[BLKG_IOSTAT_DISCARD];
--	} while (u64_stats_fetch_retry(&bis->sync, seq));
-+	raw_spin_lock_irq(&blkg_stat_lock);
-+	rbytes = bis->cur.bytes[BLKG_IOSTAT_READ];
-+	wbytes = bis->cur.bytes[BLKG_IOSTAT_WRITE];
-+	dbytes = bis->cur.bytes[BLKG_IOSTAT_DISCARD];
-+	rios = bis->cur.ios[BLKG_IOSTAT_READ];
-+	wios = bis->cur.ios[BLKG_IOSTAT_WRITE];
-+	dios = bis->cur.ios[BLKG_IOSTAT_DISCARD];
-+	raw_spin_unlock_irq(&blkg_stat_lock, flags);
- 
- 	if (rbytes || wbytes || rios || wios) {
- 		seq_printf(s, "rbytes=%llu wbytes=%llu rios=%llu wios=%llu dbytes=%llu dios=%llu",
 
