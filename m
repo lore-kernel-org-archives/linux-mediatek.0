@@ -4,77 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FC0EC3DA4B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jul 2024 13:28:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 955E6C3DA60
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Jul 2024 13:43:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xfkmCRGMXw0WTCj0IxGxZwgtdo9BDA8e2XyMDuwz2k4=; b=cpRpNOivcWmJ0o4dQRiwjTvaaX
-	MD5GvXyUKz1CzSce/7pHVI9cKjZCjeTbGfIMrLaipBgP6SuG4KAlZeNChSHVcYeB4f7D8m+cM9WZ5
-	IvhLQ2l/Io9whFz95ohVM84q5/IJWLMNl0DH0C8n4K3bFDVV/93cC04fJJTbzIOgVy6MgFjDyqa7P
-	qojY+yfQchOfSrB+W3D2Nd5c8Dh9kw+y8eCUrviRSA8fDjUHZDxqbNhrR9IZ4wyCv0/qcYcVyhqrE
-	1nFMd72eXWbGXaQsvw+vUVWRG0pdG5iz1b0PjHjH5UeJz8JDy2K+eInsIdgviKYU+jz8Pzpmuyl+1
-	KRoZ0uBg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=b6M2u0O/VcQWX4e8CRgM/0cmwdYjHB7jwSQO7Cq366U=; b=TAla8ySWoPvJMfHIXCUG788tHm
+	/vB/BMM8fHk3sV3G3oXfeQRB/lTN/P+b5NSAG1qcosU74do3OIre4d+XoTMa53f9oX33FfPsvGwXH
+	oeAD1yNAFjKZZZBXP7d7PGZ6pT/ViTcY4x2hwZNDZUOJjwsRtYBHhnJUcBDXvktULd96CBDIpisDM
+	agUOiRSUrQZpuYTg7Yf0xrq+tABLpNhxPvxZRBs992iKE7sHDCwrPsOiZKGiitnLw3d1cQuU5rkuz
+	WufqHBLMLkA/rCFrACOyKepMJY66XjCzN5y5rU7O+sqYDhlWo0KsbL25Fnh/9zWFAc89apdB58x0b
+	/ZDdzhrQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sU4iI-0000000DtSg-3FY6;
-	Wed, 17 Jul 2024 13:28:58 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1sU4vu-0000000Dw4m-0bpF;
+	Wed, 17 Jul 2024 13:43:02 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sU4hw-0000000DtLW-0hUC;
-	Wed, 17 Jul 2024 13:28:37 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1721222914;
-	bh=k4Lsi9TzISpSKVirxInoxjrE0QFIe83GF7y1SyUaTRs=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=exeJu63zcIjjr4WkG5mWgtT8xc/4/b3WRzy+dkUe6luE1hm4Qsz+YLGUhUWVnXGvk
-	 Qt6OCTdYE9UC0NV3aQKYsTjVuCiV8n1urSEnbVEzbu/EDyaS+ocyfi0AtMYbj0vm2t
-	 pJOL4kSs4oDw5lsYpWSVkaTi7hGrLNcjs69UAhY9j5kzjo3phmRmezPkmkohcU6DTi
-	 WVGBWhU/Kvgd2xllxW9OS+TDTQESbXNujEhPunxAN8Ofpq+csAX+oy0HmNZ9n575bV
-	 5bXmwbgXYXXiEHoR4+LRUC3nNRy+MuTSr00w6BrMWKVob0XP/zSFAYPWWSmSDbii0I
-	 TLRD+oUFBl3jg==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 63A7D37805D6;
-	Wed, 17 Jul 2024 13:28:33 +0000 (UTC)
-Message-ID: <aa1cfc45-b271-43fa-85fc-264ea16574d9@collabora.com>
-Date: Wed, 17 Jul 2024 15:28:32 +0200
+	id 1sU4vo-0000000Dw1L-1kYC;
+	Wed, 17 Jul 2024 13:42:58 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 2A9EDCE13DE;
+	Wed, 17 Jul 2024 13:42:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 87E96C32782;
+	Wed, 17 Jul 2024 13:42:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1721223769;
+	bh=b6M2u0O/VcQWX4e8CRgM/0cmwdYjHB7jwSQO7Cq366U=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=pbvj/YA1Gs/hjRDC0IXr3+tRYix4k2pKaNUcxopwUOt2F3ENxPAeCd7DoRcMp7O0B
+	 UtRs91T42G/Tgpa0EcWDxZUv+lc0rM4ypbkFy3zjVSDe8hbjRV8lOGcgAAws7/rWT2
+	 hMWfV99wFXGsid9gYH9JPJe+Gwp7nsq2+Ti798NJ4mv4beRMWBtHXM07O8c+D1ncb5
+	 3Na3BkeEPeVECGuoDdhPLJch/+W5um8v4lCcvbzDZnLj51nlSj0p8xOEqgfiFUbvG+
+	 3zkYm6sbagImtoDSlJXsv9/nR27VdgbTGY8ixgsZkEWeJB/1U5WF01yc3llYodPJSe
+	 LpWYqd26vKK/g==
+Date: Wed, 17 Jul 2024 15:42:46 +0200
+From: Maxime Ripard <mripard@kernel.org>
+To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+	Daniel Vetter <daniel@ffwll.ch>, Dave Stevenson <dave.stevenson@raspberrypi.com>, 
+	Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>, Lucas Stach <l.stach@pengutronix.de>, 
+	Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
+	Paul Cercueil <paul@crapouillou.net>, Anitha Chrisanthus <anitha.chrisanthus@intel.com>, 
+	Edmund Dea <edmund.j.dea@intel.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+	Philipp Zabel <p.zabel@pengutronix.de>, Kevin Hilman <khilman@baylibre.com>, 
+	Jerome Brunet <jbrunet@baylibre.com>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
+	Sean Paul <sean@poorly.run>, Marijn Suijten <marijn.suijten@somainline.org>, 
+	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, 
+	Biju Das <biju.das.jz@bp.renesas.com>, Geert Uytterhoeven <geert+renesas@glider.be>, 
+	Sandy Huang <hjc@rock-chips.com>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, 
+	Andy Yan <andy.yan@rock-chips.com>, Thierry Reding <thierry.reding@gmail.com>, 
+	Mikko Perttunen <mperttunen@nvidia.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
+	Jyri Sarha <jyri.sarha@iki.fi>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Rob Clark <robdclark@gmail.com>, 
+	Abhinav Kumar <quic_abhinavk@quicinc.com>, dri-devel@lists.freedesktop.org, igt-dev@lists.freedesktop.org, 
+	freedreno@lists.freedesktop.org, linux-kernel@vger.kernel.org, imx@lists.linux.dev, 
+	linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-amlogic@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org
+Subject: Re: [PATCH v4 2/5] drm/drm_property: require DRM_MODE_PROP_IMMUTABLE
+ for single-value props
+Message-ID: <20240717-bouncy-horned-mamba-5691b8@houat>
+References: <20240715-drm-bridge-connector-fix-hdmi-reset-v4-0-61e6417cfd99@linaro.org>
+ <20240715-drm-bridge-connector-fix-hdmi-reset-v4-2-61e6417cfd99@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] mailbox: mtk-cmdq: Add unregister mailbox controller in
- cmdq_remove()
-To: =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>,
- "jassisinghbrar@gmail.com" <jassisinghbrar@gmail.com>,
- "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
-Cc: "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- =?UTF-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- =?UTF-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>,
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-References: <20240613150626.25280-1-jason-jh.lin@mediatek.com>
- <8ef254cb-ac65-405d-bcee-d0990536fb32@collabora.com>
- <44f6308379a8b6c834df6ff0604c652bf1f7a4b7.camel@mediatek.com>
- <47f1c2c79ad03094ebf411e13516cca47054c962.camel@mediatek.com>
- <a681e496-4979-4f4a-9f79-9636d9496fa3@collabora.com>
- <470f96fc0dd48ad0ad6bedb235a2e510c808e3e7.camel@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <470f96fc0dd48ad0ad6bedb235a2e510c808e3e7.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="6ldj6ctz25xj6y7b"
+Content-Disposition: inline
+In-Reply-To: <20240715-drm-bridge-connector-fix-hdmi-reset-v4-2-61e6417cfd99@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240717_062836_363405_CF0CE120 
-X-CRM114-Status: GOOD (  25.63  )
+X-CRM114-CacheID: sfid-20240717_064256_844801_18C98CBB 
+X-CRM114-Status: GOOD (  13.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,154 +97,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 17/07/24 05:44, Jason-JH Lin (林睿祥) ha scritto:
-> On Tue, 2024-06-18 at 13:47 +0200, AngeloGioacchino Del Regno wrote:
->> Il 18/06/24 05:28, Jason-JH Lin (林睿祥) ha scritto:
->>> Hi Angelo,
->>>
->>> On Fri, 2024-06-14 at 00:52 +0800, Jason-JH.Lin wrote:
->>>> Hi Angelo,
->>>>
->>>> On Thu, 2024-06-13 at 17:10 +0200, AngeloGioacchino Del Regno
->>>> wrote:
->>>>> Il 13/06/24 17:06, Jason-JH.Lin ha scritto:
->>>>>> Add unregister mailbox controller in cmdq_remove to fix cmdq
->>>>>> unbind
->>>>>> WARN_ON message from pm_runtime_get_sync() in
->>>>>> cmdq_mbox_shutdown().
->>>>>>
->>>>>> Fixes: 623a6143a845 ("mailbox: mediatek: Add Mediatek CMDQ
->>>>>> driver")
->>>>>> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
->>>>>
->>>>> Hello,
->>>>>
->>>>> I think you forgot about...
->>>>>
->>>>>
->>>>
->>>>
->>>
->>>
-> https://lore.kernel.org/all/6fcd48b14e865c25e6db7559fe6b946537bfa0ce.camel@mediatek.com/
->>>>>
->>>>
->>>> I'll send this series next week after testing it.
->>>>
->>>>
->>>>> ...as that would also resolve this one without any hacks.
->>>>
->>>> I thought it was another problem, so I sent this patch.
->>>>
->>>> After looking to the kerneldoc of
->>>> devm_mbox_controller_unregister(),
->>>> I
->>>> found that it's not necessary to call this anywhere.
->>>>
->>>> I'll drop this patch. Thanks for the review.
->>>
->>> I found that the series of "Move pm_runimte_get and put to
->>> mbox_chan_ops API" can not fix this unbind crash issue.
->>>
->>> It seems they are 2 different issues.
->>>
->>> So I think calling devm_mbox_controller_unregister() in
->>> cmdq_remove()
->>> can ensure the CMDQ device is not removed and be paired to
->>> cmdq_probe().
->>>
->>
->> Can you please paste the stack trace of that warning that you're
->> seeing when
->> calling cmdq_remove()?
->>
->> I'm not convinced that this is the best solution - it might be, but I
->> have
->> a hunch that there might be a better way to address this issue.
->>
-> 
-> After tracing the stack trace again, I found this call trace warning is
-> caused in WARN_ON(pm_runtime_get_sync(cmdq->mbox.dev) < 0). The return
-> value of pm_runtime_get_sync() is -13(-EACCESS) that's caused by
-> calling pm_runtime_disable() before calling pm_runtime_get_sync().
-> 
-> CMDQ driver uses devm_mbox_controller_register() in cmdq_probe() to
-> bind the cmdq device to the mbox_controller, so
-> devm_mbox_controller_unregister() will automatically unregister the
-> device bound to the mailbox controller when the device-managed resource
-> is removed. That means devm_mbox_controller_unregister() and
-> cmdq_mbox_shoutdown() will be called after cmdq_remove().
-> 
-> CMDQ driver also uses devm_pm_runtime_enable() in cmdq_probe() after
-> devm_mbox_controller_register(), so that devm_pm_runtime_disable() will
-> be called after cmdq_remove(), but before
-> devm_mbox_controller_unregister().
-> 
-> 
-> To fix this problem, we need to make devm_pm_runtime_disable() be
-> called after devm_mbox_controller_unregister().
-> 
-> I've tried 2 ways can fix this problem:
-> - Swap the sequence of devm_mbox_controller_register() and
-> devm_pm_runtime_enable() in cmdq_probe()
-> - Change to use mbox_controller_register() in cmdq_probe() and use
-> mbox_controller_unregister() in cmdq_probe()
-> 
 
-Hey.
+--6ldj6ctz25xj6y7b
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-That's a nice conclusion here!
-If the first one has no issues, go for the first one: that's just about
-moving a call upwards, noiseless and pretty.
+Hi,
 
-Cheers!
-Angelo
+On Mon, Jul 15, 2024 at 09:33:02AM GMT, Dmitry Baryshkov wrote:
+> Document that DRM_MODE_PROP_IMMUTABLE must be set for the properties
+> that are immutable by definition - e.g. ranges with min =3D=3D max or enu=
+ms
+> with a single value. This matches the behaviour of the IGT tests, see
+> kms_properties.c / validate_range_prop(), validate_enum_prop(),
+> validate_bitmask_prop().
+>=20
+> Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
 
-> Which one do you think is better?
-> 
-> Regards,
-> Jason-JH.Lin
-> 
->> Thanks!
->> Angelo
->>
->>> Regards,
->>> Jason-JH.Lin
->>>
->>>>
->>>> Regards,
->>>> Jason-JH.Lin
->>>>
->>>>>
->>>>> Cheers,
->>>>> Angelo
->>>>>
->>>>>> ---
->>>>>>     drivers/mailbox/mtk-cmdq-mailbox.c | 2 ++
->>>>>>     1 file changed, 2 insertions(+)
->>>>>>
->>>>>> diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c
->>>>>> b/drivers/mailbox/mtk-cmdq-mailbox.c
->>>>>> index 4aa394e91109..1399e18a39a4 100644
->>>>>> --- a/drivers/mailbox/mtk-cmdq-mailbox.c
->>>>>> +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
->>>>>> @@ -371,6 +371,8 @@ static void cmdq_remove(struct
->>>>>> platform_device
->>>>>> *pdev)
->>>>>>     {
->>>>>>     	struct cmdq *cmdq = platform_get_drvdata(pdev);
->>>>>>     
->>>>>> +	devm_mbox_controller_unregister(&pdev->dev, &cmdq-
->>>>>>> mbox);
->>>>>> +
->>>>>>     	if (cmdq->pdata->sw_ddr_en)
->>>>>>     		cmdq_sw_ddr_enable(cmdq, false);
->>>>>>     
->>>>>
->>>>>
->>
->>
+We had a discussion yesterday about it on IRC with Sima, Simon and
+Xaver.
 
+https://oftc.irclog.whitequark.org/dri-devel/2024-07-16#33374622;
 
+The conclusion was that it would create an inconsistency between drivers
+on whether a given property is immutable or not, which will lead to more
+troubles for userspace.
 
+It's not clear why Ville added that check in the first place, so the
+best course of action is to remove the IGT test and get the discussion
+started there.
+
+Maxime
+
+--6ldj6ctz25xj6y7b
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCZpfKVgAKCRDj7w1vZxhR
+xYH7AQD8w8myEhco9CqAfjh20D1tXY/mlB+W4/bdaby3K0NuIQD/cGVo42JNkoo/
+jCNbgBRkiSwOXLi0a+whYQOE0kxTmwY=
+=bR0t
+-----END PGP SIGNATURE-----
+
+--6ldj6ctz25xj6y7b--
 
