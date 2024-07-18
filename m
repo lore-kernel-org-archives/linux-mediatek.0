@@ -4,65 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB180C3DA60
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jul 2024 08:26:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 860A0C3DA60
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jul 2024 08:40:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=CVYiSEH5TJLIq4sUrTIJQCgf6MT23Q8ADvzMXKrLVtc=; b=qy2BlelsmwNQeomWydDae+MbOy
-	xDQRUyJ7f/jWdtj2RX2C0GSO0wIhzkpNC43ZgZ/JHQu2FTK7utRxJ+1Qari/VCfOiquUdK9WBCK/Z
-	Mivds/8vXnlKr3kcKI0KiC9ADBLN3Zc3EQVar1srfK1dhEoKarW4+6vaRowmKNz8oJ9jyH9MYNyCH
-	/ZI+bSePJctDP20PDsQenPKDM/xGGh5SoSPIJrDBB2x/AI8TsPvAi9Xif1cPj1ZPIOd3TD/+qYxUq
-	Bm/lsxm+4N8ZWcrBhPDC0E1TMGBfJy64ggLFN79sA3quLbaPKuvSJDXgaPeOfHnSsK+1zetUgGAci
-	JAbRJPfg==;
+	bh=lAA7I2rz1o9xNBJg2p0wd7EKqXNavyBiAyPlNRK51HE=; b=PdKcXI6dTO+95iqxIwgyIqtfEY
+	QZC3BVNCfkVzgffbkPopa0zzoKg7gNibX/JetGe75HUGnsvY6y8Uu+MZZxnwzAqE19URntNE22S9d
+	+e1Ide8nqGNqWyvB7XITom0SkhvJhicpQ/JoVx1XZaqwOR2wAPr+on6KYJXockCKSvQoFqQt+KB3a
+	Qf4tqoG3CRG1WBXtUFJAgR40TL/8izgT7kIbEcQEeB2expim1jyRL7YxJ+5pveOfwLxomVA6pdAfi
+	RTVG3SeE2GXwKLxhinWITXOoXborjpIgb7Cw1rVjGUSlQrfpe6FYqI3F2lPCQRW8i7XG3qYDWocbD
+	uH/zcCwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sUMSn-0000000GNeA-2Mm5;
-	Thu, 18 Jul 2024 08:26:09 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1sUMgD-0000000GQEU-0Ozz;
+	Thu, 18 Jul 2024 08:40:01 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sUMSN-0000000GNTm-0oLJ;
-	Thu, 18 Jul 2024 08:25:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1721291142;
-	bh=gsCMyNCJn0oMPKaDDmmHARKMV4LsNOy2UpPcFy7z1+Q=;
-	h=From:To:Cc:Subject:Date:From;
-	b=Bn1Q1+n3935Q24tdB0qSaGoPihJ+Pw3KqLgeuYwoQn1b32OiRned5kV7aLOub5Dzy
-	 OtCMW974w6slBoRNpjBbenWyeBhnT3gWhJ323FG5FMhSZxOR4File5sy8QzVXVb2Nn
-	 4pMPSqnDA2wwmbwUZxtBejC/obffkzd5yhkg7r7OuXpu3n/C1WGvR8JLuWzed4fSti
-	 wnVGBbjibn1Q8yjPH2LfoP4G9GpXvwnrOB+h/KKqEV9YPLszo9R9fgtFD6/a11Xf2P
-	 m4a3JzhcBNAKZLL4EOh+6umsa5eQRnL4KG7Huy7mMcsXcF/W8Na9NPisazCVOh+SiY
-	 swdO4INnTw96Q==
-Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 632023782167;
-	Thu, 18 Jul 2024 08:25:41 +0000 (UTC)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: sboyd@kernel.org
-Cc: matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	mturquette@baylibre.com,
-	p.zabel@pengutronix.de,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-clk@vger.kernel.org,
-	kernel@collabora.com
-Subject: [PATCH] clk: mediatek: reset: Remove unused mtk_register_reset_controller()
-Date: Thu, 18 Jul 2024 10:25:28 +0200
-Message-ID: <20240718082528.220750-1-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.45.2
+	id 1sUMfq-0000000GQ6W-04aZ;
+	Thu, 18 Jul 2024 08:39:40 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 54AB4CE1931;
+	Thu, 18 Jul 2024 08:39:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 98BDBC116B1;
+	Thu, 18 Jul 2024 08:39:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1721291969;
+	bh=IkCKpGRcoNsDv8m1+yrQr3FUpbncEbNr7F7+noxanhk=;
+	h=From:Date:Subject:To:Cc:Reply-To:From;
+	b=kP6yYGunJWNWH3w9gV1dkszZSP5nSjqGWJrcaSonP659/O3Ug/5fB2Dzy4M43fXU1
+	 zXehiZz21aFHiRkwuLad54L9UQTCiLpUl+Lg5t276qrvrMfLtnujEFFix4HqryuZ0c
+	 dN9sMFCLY5ZC2jkAebUQuzw1ezEZHig4TwxAUGQfD7iGerw20cybgkVfeFT+KszP4a
+	 hr0XEaAh+xn5eZLECCoWMfjC4TPl93V3s15sK3zFuZaJicnsuUM0/CdPYRJl7wWux0
+	 Lc2WaoUvrma5HUbqaWvg3yV3M8WuRbypIeDY+FwDqifvMuQT6rQJmuf7lUxXAaTZZY
+	 1OClciHr9UyQw==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7A218C3DA49;
+	Thu, 18 Jul 2024 08:39:29 +0000 (UTC)
+From: "Jason-JH.Lin via B4 Relay" <devnull+jason-jh.lin.mediatek.com@kernel.org>
+Date: Thu, 18 Jul 2024 16:38:58 +0800
+Subject: [PATCH v2] mailbox: mtk-cmdq: Move devm_mbox_controller_register()
+ after devm_pm_runtime_enable()
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20240718-mtk-cmdq-fixup-v2-1-f6bb3c052a60@mediatek.com>
+X-B4-Tracking: v=1; b=H4sIAKHUmGYC/yWMQQ6CMBBFr2Jm7ZC2QAFX3sOwQBhlwLbYItEQ7
+ m7F5fs/760QyDMFOB1W8LRwYGcjqOMB2r6xd0LuIoMSKhOFLNHMI7ame+KN368JM5EWlc4FVfo
+ KUZo8xWMPXurIPYfZ+c/eX+Rv/ae0TGUutNKJylUpUOLQBGdx6JMH27OhjpuZxqR1Bupt274Qh
+ S42qQAAAA==
+To: Jassi Brar <jassisinghbrar@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ CK Hu <ck.hu@mediatek.com>
+Cc: Jassi Brar <jaswinder.singh@linaro.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ "Jason-JH.Lin" <jason-jh.lin@mediatek.com>, 
+ Singo Chang <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, 
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+X-Mailer: b4 0.14.0
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1721291968; l=4363;
+ i=jason-jh.lin@mediatek.com; s=20240718; h=from:subject:message-id;
+ bh=ygtphOut6HLHA8ydhy2hDmOMgR0COlbPJWasC/1Cw8I=;
+ b=Ze2pqM8+jGwXQ+JzInd9tLbwpk0U8NnJOUu2mhDLnYXcTK9Iat2UjLUrVE3ZhkMSLzur2jUch
+ fb7GXOkS/XeB8Kw3+dkHHWdN4XIn13qN8+l4YK18rZJKoXXYkRvhMVN
+X-Developer-Key: i=jason-jh.lin@mediatek.com; a=ed25519;
+ pk=7Hn+BnFBlPrluT5ks5tKVWb3f7O/bMBs6qEemVJwqOo=
+X-Endpoint-Received: by B4 Relay for jason-jh.lin@mediatek.com/20240718
+ with auth_id=187
+X-Original-From: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240718_012543_414918_FEA817D4 
-X-CRM114-Status: GOOD (  11.81  )
+X-CRM114-CacheID: sfid-20240718_013938_441530_658A8B54 
+X-CRM114-Status: GOOD (  13.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,111 +91,128 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: jason-jh.lin@mediatek.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Now that all clock controllers have been migrated to the new
-mtk_register_reset_controller_with_dev() function, the one taking
-struct device node is now unused: remove it.
+From: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+When mtk-cmdq unbinds, a WARN_ON message with condition
+pm_runtime_get_sync() < 0 occurs.
+
+According to the call tracei below:
+  cmdq_mbox_shutdown
+  mbox_free_channel
+  mbox_controller_unregister
+  __devm_mbox_controller_unregister
+  ...
+
+The root cause can be deduced to be calling pm_runtime_get_sync() after
+calling pm_runtime_disable() as observed below:
+1. CMDQ driver uses devm_mbox_controller_register() in cmdq_probe()
+   to bind the cmdq device to the mbox_controller, so
+   devm_mbox_controller_unregister() will automatically unregister
+   the device bound to the mailbox controller when the device-managed
+   resource is removed. That means devm_mbox_controller_unregister()
+   and cmdq_mbox_shoutdown() will be called after cmdq_remove().
+2. CMDQ driver also uses devm_pm_runtime_enable() in cmdq_probe() after
+   devm_mbox_controller_register(), so that devm_pm_runtime_disable()
+   will be called after cmdq_remove(), but before
+   devm_mbox_controller_unregister().
+
+To fix this problem, cmdq_probe() needs to move
+devm_mbox_controller_register() after devm_pm_runtime_enable() to make
+devm_pm_runtime_disable() be called after
+devm_mbox_controller_unregister().
+
+Fixes: 623a6143a845 ("mailbox: mediatek: Add Mediatek CMDQ driver")
+Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
 ---
- drivers/clk/mediatek/reset.c | 59 ------------------------------------
- drivers/clk/mediatek/reset.h | 10 ------
- 2 files changed, 69 deletions(-)
+When mtk-cmdq unbinds, a WARN_ON message with condition
+pm_runtime_get_sync() < 0 occurs.
 
-diff --git a/drivers/clk/mediatek/reset.c b/drivers/clk/mediatek/reset.c
-index 290ceda84ce4..069f9e909cb0 100644
---- a/drivers/clk/mediatek/reset.c
-+++ b/drivers/clk/mediatek/reset.c
-@@ -110,65 +110,6 @@ static int reset_xlate(struct reset_controller_dev *rcdev,
- 	return data->desc->rst_idx_map[reset_spec->args[0]];
+According to the call tracei below:
+  cmdq_mbox_shutdown
+  mbox_free_channel
+  mbox_controller_unregister
+  __devm_mbox_controller_unregister
+  ...
+
+The root cause can be deduced to be calling pm_runtime_get_sync() after
+calling pm_runtime_disable() as observed below:
+1. CMDQ driver uses devm_mbox_controller_register() in cmdq_probe()
+   to bind the cmdq device to the mbox_controller, so
+   devm_mbox_controller_unregister() will automatically unregister
+   the device bound to the mailbox controller when the device-managed
+   resource is removed. That means devm_mbox_controller_unregister()
+   and cmdq_mbox_shoutdown() will be called after cmdq_remove().
+2. CMDQ driver also uses devm_pm_runtime_enable() in cmdq_probe() after
+   devm_mbox_controller_register(), so that devm_pm_runtime_disable()
+   will be called after cmdq_remove(), but before
+   devm_mbox_controller_unregister().
+
+To fix this problem, cmdq_probe() needs to move
+devm_mbox_controller_register() after devm_pm_runtime_enable() to make
+devm_pm_runtime_disable() be called after
+devm_mbox_controller_unregister().
+
+Change-Id: I4f0e68eac5186fe8041ea2f16c8e852d52d71cb0
+---
+Changes in v2:
+- Change to move the calling sequence of devm_mbox_controller_register()
+  and devm_pm_runtime_enable().
+- Link to v1: https://lore.kernel.org/r/20240613150626.25280-1-jason-jh.lin@mediatek.com
+---
+ drivers/mailbox/mtk-cmdq-mailbox.c | 14 ++++++++------
+ 1 file changed, 8 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
+index f1dfce9e27f5..002003c3970a 100644
+--- a/drivers/mailbox/mtk-cmdq-mailbox.c
++++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+@@ -370,6 +370,8 @@ static void cmdq_remove(struct platform_device *pdev)
+ {
+ 	struct cmdq *cmdq = platform_get_drvdata(pdev);
+ 
++	devm_mbox_controller_unregister(&pdev->dev, &cmdq->mbox);
++
+ 	if (cmdq->pdata->sw_ddr_en)
+ 		cmdq_sw_ddr_enable(cmdq, false);
+ 
+@@ -689,12 +691,6 @@ static int cmdq_probe(struct platform_device *pdev)
+ 		cmdq->mbox.chans[i].con_priv = (void *)&cmdq->thread[i];
+ 	}
+ 
+-	err = devm_mbox_controller_register(dev, &cmdq->mbox);
+-	if (err < 0) {
+-		dev_err(dev, "failed to register mailbox: %d\n", err);
+-		return err;
+-	}
+-
+ 	platform_set_drvdata(pdev, cmdq);
+ 
+ 	WARN_ON(clk_bulk_prepare(cmdq->pdata->gce_num, cmdq->clocks));
+@@ -722,6 +718,12 @@ static int cmdq_probe(struct platform_device *pdev)
+ 	pm_runtime_set_autosuspend_delay(dev, CMDQ_MBOX_AUTOSUSPEND_DELAY_MS);
+ 	pm_runtime_use_autosuspend(dev);
+ 
++	err = devm_mbox_controller_register(dev, &cmdq->mbox);
++	if (err < 0) {
++		dev_err(dev, "failed to register mailbox: %d\n", err);
++		return err;
++	}
++
+ 	return 0;
  }
  
--int mtk_register_reset_controller(struct device_node *np,
--				  const struct mtk_clk_rst_desc *desc)
--{
--	struct regmap *regmap;
--	const struct reset_control_ops *rcops = NULL;
--	struct mtk_clk_rst_data *data;
--	int ret;
--
--	if (!desc) {
--		pr_err("mtk clock reset desc is NULL\n");
--		return -EINVAL;
--	}
--
--	switch (desc->version) {
--	case MTK_RST_SIMPLE:
--		rcops = &mtk_reset_ops;
--		break;
--	case MTK_RST_SET_CLR:
--		rcops = &mtk_reset_ops_set_clr;
--		break;
--	default:
--		pr_err("Unknown reset version %d\n", desc->version);
--		return -EINVAL;
--	}
--
--	regmap = device_node_to_regmap(np);
--	if (IS_ERR(regmap)) {
--		pr_err("Cannot find regmap for %pOF: %pe\n", np, regmap);
--		return -EINVAL;
--	}
--
--	data = kzalloc(sizeof(*data), GFP_KERNEL);
--	if (!data)
--		return -ENOMEM;
--
--	data->desc = desc;
--	data->regmap = regmap;
--	data->rcdev.owner = THIS_MODULE;
--	data->rcdev.ops = rcops;
--	data->rcdev.of_node = np;
--
--	if (data->desc->rst_idx_map_nr > 0) {
--		data->rcdev.of_reset_n_cells = 1;
--		data->rcdev.nr_resets = desc->rst_idx_map_nr;
--		data->rcdev.of_xlate = reset_xlate;
--	} else {
--		data->rcdev.nr_resets = desc->rst_bank_nr * RST_NR_PER_BANK;
--	}
--
--	ret = reset_controller_register(&data->rcdev);
--	if (ret) {
--		pr_err("could not register reset controller: %d\n", ret);
--		kfree(data);
--		return ret;
--	}
--
--	return 0;
--}
--
- int mtk_register_reset_controller_with_dev(struct device *dev,
- 					   const struct mtk_clk_rst_desc *desc)
- {
-diff --git a/drivers/clk/mediatek/reset.h b/drivers/clk/mediatek/reset.h
-index 6a58a3d59165..562ffd290a22 100644
---- a/drivers/clk/mediatek/reset.h
-+++ b/drivers/clk/mediatek/reset.h
-@@ -59,16 +59,6 @@ struct mtk_clk_rst_data {
- 	const struct mtk_clk_rst_desc *desc;
- };
- 
--/**
-- * mtk_register_reset_controller - Register MediaTek clock reset controller
-- * @np: Pointer to device node.
-- * @desc: Constant pointer to description of clock reset.
-- *
-- * Return: 0 on success and errorno otherwise.
-- */
--int mtk_register_reset_controller(struct device_node *np,
--				  const struct mtk_clk_rst_desc *desc);
--
- /**
-  * mtk_register_reset_controller - Register mediatek clock reset controller with device
-  * @np: Pointer to device.
+
+---
+base-commit: 797012914d2d031430268fe512af0ccd7d8e46ef
+change-id: 20240718-mtk-cmdq-fixup-40379650e96b
+
+Best regards,
 -- 
-2.45.2
+Jason-JH.Lin <jason-jh.lin@mediatek.com>
+
 
 
