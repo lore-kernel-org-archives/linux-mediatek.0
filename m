@@ -4,91 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 789E6C3DA49
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jul 2024 09:28:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9654DC3DA49
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jul 2024 09:42:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vIVo0OQ1EsBJVsYCtM25PmcXBbJ96Ax/6H8Xf2sBrfU=; b=kWcjeqYGs0yL5Vd/SJVfv2n4eC
-	UzmxT6nR9AYlcE/AJICf3v4iWDEEdRjNnEugJsI0L0BzCVV8tbDGgk/b6XnMvmiXHN4qcmkL5iGF/
-	nh6HU5Z7ttLHB+/l/s44GLKV5jP4bBopiEsFmSatOLhNaDhtFQqO0puvaCZLSTEqyVnmynNCtaeVX
-	ZiLeA9hy7b9bD6BYDFRWia5m8JU8OZQlgRTM5inhh9inAU+rksjEDj6NVFfJWj5jQDD6PdvRgqolk
-	I75XhIrwJDChKMnLZcO+7EzcXLH3QI/8YL4T2iEj47q3fGmnUPfZig6cEu8fki32y0enF7YCvRP3u
-	1zebohbQ==;
+	bh=WurLU3I0ZY0rwZGNbG1KQfDTWM2GScsE4+HGMoCekcE=; b=OywWkp/4BNLx82Wg+6HKmmRJRx
+	STv+51tYzYywwKSsSPzWMuCTvFC5D1VlW+Zf+n1d43qMt+fTOlSofEbbYZbuj6SMS/IX1MlubxdfJ
+	+jR1mp1GS8tYhUYYYi0piK3hKtUrfDMd86TMiRIePtn61ig3leK5JCV9HhrHGnv0POQzqcV2F8WMC
+	KGKfP4tdATdwQSbQG1PnhRMSfm++UCcetPDv0cr1Kz9VmWjZ4IJMeYxRuvMaOs+4ilhdvs01Xahpy
+	oswjrRkANipGWQN0iFujDDDMd9imzCrmA5a7NzTmtSjr1pUk0CGEwYfAds625fk5QGtldrGd8DiCY
+	yfNsB75A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sUNRD-0000000GYlm-46LH;
-	Thu, 18 Jul 2024 09:28:35 +0000
-Received: from mail-ua1-x936.google.com ([2607:f8b0:4864:20::936])
+	id 1sUNep-0000000Ganz-0yHU;
+	Thu, 18 Jul 2024 09:42:39 +0000
+Received: from mail-vk1-xa33.google.com ([2607:f8b0:4864:20::a33])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sUNQr-0000000GYgi-1ira
+	id 1sUNeT-0000000Gajb-3Sbi
 	for linux-mediatek@lists.infradead.org;
-	Thu, 18 Jul 2024 09:28:15 +0000
-Received: by mail-ua1-x936.google.com with SMTP id a1e0cc1a2514c-8101c661979so211445241.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 18 Jul 2024 02:28:13 -0700 (PDT)
+	Thu, 18 Jul 2024 09:42:19 +0000
+Received: by mail-vk1-xa33.google.com with SMTP id 71dfb90a1353d-4f481c2bc80so261502e0c.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 18 Jul 2024 02:42:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1721294892; x=1721899692; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1721295736; x=1721900536; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=vIVo0OQ1EsBJVsYCtM25PmcXBbJ96Ax/6H8Xf2sBrfU=;
-        b=CqQnwHYPko4KqKm9h0aCQg6gGyvozFX+pCNgFAt1emJGXwmLtYsGtNyc+cOJRZFaTi
-         uc9CxGmZbcyUChrzvleZNFWuhJgC5TU2q5Ev0Fw0WZvra6ESctKTKugxoW/JoTvif8RQ
-         GhMt4/zA87u525a+ii92o8UY8WcqxzAGRgRns=
+        bh=WurLU3I0ZY0rwZGNbG1KQfDTWM2GScsE4+HGMoCekcE=;
+        b=goKOCI5OEXAoMFmR1X5JysXuxQ5HEqMLus5iKa6r0o0dDez7yoGZO+zLwwP91l3i2v
+         piAE/sJWKALgtp7eac5Xqwtg3SkHT+jQ3UzFk5iTAn1aLpNbBFcIeXFtIpuvxbRvd3K0
+         OtiTV5p5z2HJlHFMiBERUDKv0EA9aQ1ivveOE=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1721294892; x=1721899692;
+        d=1e100.net; s=20230601; t=1721295736; x=1721900536;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=vIVo0OQ1EsBJVsYCtM25PmcXBbJ96Ax/6H8Xf2sBrfU=;
-        b=sjKFxLH+abEe8Hf4rsAIrw9RPG/mcECMJor2AM8fW7BnMEbi9F+9ugEyNlKjGXz13Z
-         Zh2JR6BmUh7rEEipik8yf1udOryapm5p7jOCFL26SV+eTJbBfuzWqUwJlrgi2FBLp5cP
-         Usb3FO1ZQGBUO6YRvjkbxB8qMr0Iwldx3cYpDnk+JMVyYsuACEqQYtW6ra+Vy29PfnXz
-         gc4kL4LlaDtv+ZS6cT7nXV8C2M11shp6XHW1dIARDJZ6ryRy7muqhz5Pk2RTrOALIOhP
-         BvkoHaeX1qMb3x0JufHKdl0kChkIGTJsjb4Sb56QxQlstKHty8iWkyxZbbCvyKhDynT2
-         T/GA==
-X-Forwarded-Encrypted: i=1; AJvYcCW8rPQtiA7q4laeof+NFoiswv8NblpkP7YWW8acSK0zxMJ7ZOoxICJWmVCpgTOn6NiFGn3O/55PfgUxE0GHXzkGcyc1yDO9ohdWoKOk3LbIy4uA
-X-Gm-Message-State: AOJu0YxOUdTrcdLEY0Omj3A6zdDnspIw83YA5xM024jAE4FqrY+go5DD
-	ddlVSCSUxwCKaI7FpvwsVK0lAnLf+R22rvHYdL9ZiUf3bYRUeUENlSTy3A6yYY1WjUj7hiFTI+l
-	F7A==
-X-Google-Smtp-Source: AGHT+IFhUanRwMTVsDBovcC48zlOqcIg2Fz1NBTnl4OX9gL947Zhvs2rH846IZ/NvhIZr5LlR+nJzA==
-X-Received: by 2002:a05:6102:149d:b0:48f:dec0:b6bf with SMTP id ada2fe7eead31-49159731806mr6185850137.4.1721294892008;
-        Thu, 18 Jul 2024 02:28:12 -0700 (PDT)
-Received: from mail-vk1-f178.google.com (mail-vk1-f178.google.com. [209.85.221.178])
-        by smtp.gmail.com with ESMTPSA id ada2fe7eead31-4915617d3a4sm787694137.26.2024.07.18.02.28.11
+        bh=WurLU3I0ZY0rwZGNbG1KQfDTWM2GScsE4+HGMoCekcE=;
+        b=CYPF71KLShSQuO2Oot4QC79DnvXFkrRIrxMg+2i5B2wydSiuouCdPUD21UA49a6yj2
+         50nzKodcY2m/NTmDcWjBY1zzqU0QwchEnev88e/YOYfaAE3EnJtR2FjnDOYu+8qAYHl5
+         DZbXBQrhKooNxLXDfWc6qKLGaJCAUhTWGrbw4SGCCx1IWYPKp2h/wvxV485TEyDs7rF1
+         sMCyeOXrzqiPRtkrYXUT1lFv9K+QiqjgEkCgVgEYDfsIvRxVvrFOe5QBK6qo5favN7Mq
+         GRrUBrONb3xNuY0GJZCgWdcn2n5EA+JrwocvHEpociJ5JnOXPcd+q2B97d2o37mkH2bC
+         n5IA==
+X-Forwarded-Encrypted: i=1; AJvYcCXhXpCTyxkYLFxZwek/EfJRXaijvswZOreXyITpnMcfuLZs6GlaiIY6zDUO0Md1kN0WYIebILAcNQEcMpIy5Fa0IoRWc/WSlVNGoFPZNsnjy02h
+X-Gm-Message-State: AOJu0Yx6HcHE5Q/GQ3sEZchn8uyF4yez0IAx2ria5kKrXnfZQGYnbTah
+	fgGhNfdQE0eGr2PtvIn30d/imYUADAmvddmyQBpBTntSaNl6pzNi2fIASazWfmRecb2agtC2iOI
+	2Zw==
+X-Google-Smtp-Source: AGHT+IFTH+YLHOLUhNF9LX38jAkvmoLKZ1deDxs7LOmSfMuTDfygtGIhyEI/LggJOw7q+t6JJD028w==
+X-Received: by 2002:a05:6122:3bcd:b0:4d3:cff6:79f0 with SMTP id 71dfb90a1353d-4f4df687dbcmr5798946e0c.4.1721295736337;
+        Thu, 18 Jul 2024 02:42:16 -0700 (PDT)
+Received: from mail-ua1-f45.google.com (mail-ua1-f45.google.com. [209.85.222.45])
+        by smtp.gmail.com with ESMTPSA id 71dfb90a1353d-4f4ee9a0284sm125796e0c.12.2024.07.18.02.42.15
         for <linux-mediatek@lists.infradead.org>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 18 Jul 2024 02:28:11 -0700 (PDT)
-Received: by mail-vk1-f178.google.com with SMTP id 71dfb90a1353d-4e1c721c040so208597e0c.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 18 Jul 2024 02:28:11 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCUOg8+ul5TeAfKI1fTcKsO7KzD8152IcsgHd/Rhr9x50yjbiT81btvoPkjSu8PCZAZu+c9bdTPb6djm79mstu8O5JoFl0foKxIggu60PsV9Ourp
-X-Received: by 2002:a05:6122:3684:b0:4ec:fc9b:a0bc with SMTP id
- 71dfb90a1353d-4f4df688191mr5774468e0c.4.1721294891079; Thu, 18 Jul 2024
- 02:28:11 -0700 (PDT)
+        Thu, 18 Jul 2024 02:42:15 -0700 (PDT)
+Received: by mail-ua1-f45.google.com with SMTP id a1e0cc1a2514c-820f047c4e4so196592241.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 18 Jul 2024 02:42:15 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCV9I5Kv/NVWJ4NqkuURW++Azo34M4r11uhLtyfInfdir7flqBxBf0xazwQL65AJ3a5yHFChPUDcMVvYCyTS7+VEWkjSqS9Qb3NBzzchOKHchCfo
+X-Received: by 2002:a05:6102:8014:b0:48f:bbf3:b8b5 with SMTP id
+ ada2fe7eead31-4915986a8afmr5862849137.7.1721295735028; Thu, 18 Jul 2024
+ 02:42:15 -0700 (PDT)
 MIME-Version: 1.0
-References: <20240718082410.204459-1-angelogioacchino.delregno@collabora.com> <CAGXv+5GBg73kWuiDt=9s7M4oJeHhWOF3bPY7Ju+qn1kJgNNaGw@mail.gmail.com>
-In-Reply-To: <CAGXv+5GBg73kWuiDt=9s7M4oJeHhWOF3bPY7Ju+qn1kJgNNaGw@mail.gmail.com>
+References: <20240718082528.220750-1-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20240718082528.220750-1-angelogioacchino.delregno@collabora.com>
 From: Fei Shao <fshao@chromium.org>
-Date: Thu, 18 Jul 2024 17:27:33 +0800
-X-Gmail-Original-Message-ID: <CAC=S1nigoJWAECBrm-Q=Co1-qd_yUhx3R4D9=dYeUV=gr5UYfQ@mail.gmail.com>
-Message-ID: <CAC=S1nigoJWAECBrm-Q=Co1-qd_yUhx3R4D9=dYeUV=gr5UYfQ@mail.gmail.com>
-Subject: Re: [PATCH] drm/mediatek: Set sensible cursor width/height values to
- fix crash
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, chunkuang.hu@kernel.org, 
-	p.zabel@pengutronix.de, airlied@gmail.com, daniel@ffwll.ch, 
-	matthias.bgg@gmail.com, shawn.sung@mediatek.com, ck.hu@mediatek.com, 
-	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	kernel@collabora.com
+Date: Thu, 18 Jul 2024 17:41:39 +0800
+X-Gmail-Original-Message-ID: <CAC=S1nhmuGfaQrK-3TZzY3-c1_cDbB5g_Zp2nXOzg6zQZ-j4Lw@mail.gmail.com>
+Message-ID: <CAC=S1nhmuGfaQrK-3TZzY3-c1_cDbB5g_Zp2nXOzg6zQZ-j4Lw@mail.gmail.com>
+Subject: Re: [PATCH] clk: mediatek: reset: Remove unused mtk_register_reset_controller()
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: sboyd@kernel.org, matthias.bgg@gmail.com, mturquette@baylibre.com, 
+	p.zabel@pengutronix.de, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-clk@vger.kernel.org, kernel@collabora.com
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240718_022813_458896_7C4D9260 
-X-CRM114-Status: GOOD (  24.83  )
+X-CRM114-CacheID: sfid-20240718_024217_876753_3B2E3FC9 
+X-CRM114-Status: GOOD (  21.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,77 +100,127 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 18, 2024 at 4:49=E2=80=AFPM Chen-Yu Tsai <wenst@chromium.org> w=
-rote:
+On Thu, Jul 18, 2024 at 4:26=E2=80=AFPM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
 >
-> (CC-ed Fei Shao)
+> Now that all clock controllers have been migrated to the new
+> mtk_register_reset_controller_with_dev() function, the one taking
+> struct device node is now unused: remove it.
 >
-> On Thu, Jul 18, 2024 at 4:24=E2=80=AFPM AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> wrote:
-> >
-> > Hardware-speaking, there is no feature-reduced cursor specific
-> > plane, so this driver reserves the last all Overlay plane as a
-> > Cursor plane, but sets the maximum cursor width/height to the
-> > maximum value that the full overlay plane can use.
-> >
-> > While this could be ok, it raises issues with common userspace
-> > using libdrm (especially Mutter, but other compositors too) which
-> > will crash upon performing allocations and/or using said cursor
-> > plane.
-> >
-> > Reduce the maximum width/height for the cursor to 512x512 pixels,
-> > value taken from IGT's maximum cursor size test, which succeeds.
-> >
-> > Fixes: a4c9410b31ca ("drm/mediatek: Set DRM mode configs accordingly")
-> > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@co=
-llabora.com>
-> > ---
-> >  drivers/gpu/drm/mediatek/mtk_drm_drv.c | 4 ++--
-> >  1 file changed, 2 insertions(+), 2 deletions(-)
-> >
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/m=
-ediatek/mtk_drm_drv.c
-> > index 6f0b415a978d..b96763664c4f 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> > @@ -540,8 +540,8 @@ static int mtk_drm_kms_init(struct drm_device *drm)
-> >         }
-> >
-> >         /* IGT will check if the cursor size is configured */
-> > -       drm->mode_config.cursor_width =3D drm->mode_config.max_width;
-> > -       drm->mode_config.cursor_height =3D drm->mode_config.max_height;
-> > +       drm->mode_config.cursor_width =3D 512;
-> > +       drm->mode_config.cursor_height =3D 512;
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
+> ---
+>  drivers/clk/mediatek/reset.c | 59 ------------------------------------
+>  drivers/clk/mediatek/reset.h | 10 ------
+>  2 files changed, 69 deletions(-)
 >
-> Fei already did the same (?) workaround downstream just recently.
+> diff --git a/drivers/clk/mediatek/reset.c b/drivers/clk/mediatek/reset.c
+> index 290ceda84ce4..069f9e909cb0 100644
+> --- a/drivers/clk/mediatek/reset.c
+> +++ b/drivers/clk/mediatek/reset.c
+> @@ -110,65 +110,6 @@ static int reset_xlate(struct reset_controller_dev *=
+rcdev,
+>         return data->desc->rst_idx_map[reset_spec->args[0]];
+>  }
+>
+> -int mtk_register_reset_controller(struct device_node *np,
+> -                                 const struct mtk_clk_rst_desc *desc)
+> -{
+> -       struct regmap *regmap;
+> -       const struct reset_control_ops *rcops =3D NULL;
+> -       struct mtk_clk_rst_data *data;
+> -       int ret;
+> -
+> -       if (!desc) {
+> -               pr_err("mtk clock reset desc is NULL\n");
+> -               return -EINVAL;
+> -       }
+> -
+> -       switch (desc->version) {
+> -       case MTK_RST_SIMPLE:
+> -               rcops =3D &mtk_reset_ops;
+> -               break;
+> -       case MTK_RST_SET_CLR:
+> -               rcops =3D &mtk_reset_ops_set_clr;
+> -               break;
+> -       default:
+> -               pr_err("Unknown reset version %d\n", desc->version);
+> -               return -EINVAL;
+> -       }
+> -
+> -       regmap =3D device_node_to_regmap(np);
+> -       if (IS_ERR(regmap)) {
+> -               pr_err("Cannot find regmap for %pOF: %pe\n", np, regmap);
+> -               return -EINVAL;
+> -       }
+> -
+> -       data =3D kzalloc(sizeof(*data), GFP_KERNEL);
+> -       if (!data)
+> -               return -ENOMEM;
+> -
+> -       data->desc =3D desc;
+> -       data->regmap =3D regmap;
+> -       data->rcdev.owner =3D THIS_MODULE;
+> -       data->rcdev.ops =3D rcops;
+> -       data->rcdev.of_node =3D np;
+> -
+> -       if (data->desc->rst_idx_map_nr > 0) {
+> -               data->rcdev.of_reset_n_cells =3D 1;
+> -               data->rcdev.nr_resets =3D desc->rst_idx_map_nr;
+> -               data->rcdev.of_xlate =3D reset_xlate;
+> -       } else {
+> -               data->rcdev.nr_resets =3D desc->rst_bank_nr * RST_NR_PER_=
+BANK;
+> -       }
+> -
+> -       ret =3D reset_controller_register(&data->rcdev);
+> -       if (ret) {
+> -               pr_err("could not register reset controller: %d\n", ret);
+> -               kfree(data);
+> -               return ret;
+> -       }
+> -
+> -       return 0;
+> -}
+> -
+>  int mtk_register_reset_controller_with_dev(struct device *dev,
+>                                            const struct mtk_clk_rst_desc =
+*desc)
 
-Well, so another userspace gets confused...
-I actually sent a separate userspace (i.e. Chrome) fix where I
-encountered the issue, so I didn't proceed with upstreaming it in the
-end.
-
-This matches my preference in [1], so of course I'd like to see it
-merged... if maintainers are okay with it.
-Given I've tested the exact same change before:
-Reviewed-by: Fei Shao <fshao@chromium.org>
-Tested-by: Fei Shao <fshao@chromium.org>
-
-[1]: https://lore.kernel.org/all/CAC=3DS1nhKPo5BUYJ_cHGz3OoPrWNh5eO8rhdyikL=
-imsqSOrZ5Xg@mail.gmail.com/
+I guess that means the "_with_dev" suffix here becomes redundant and
+therefore can be removed.
+Do you want to update it all together?
 
 Regards,
 Fei
+
+
+>  {
+> diff --git a/drivers/clk/mediatek/reset.h b/drivers/clk/mediatek/reset.h
+> index 6a58a3d59165..562ffd290a22 100644
+> --- a/drivers/clk/mediatek/reset.h
+> +++ b/drivers/clk/mediatek/reset.h
+> @@ -59,16 +59,6 @@ struct mtk_clk_rst_data {
+>         const struct mtk_clk_rst_desc *desc;
+>  };
 >
-> OOTH, Intel recently added a feature for enumerating "suggested"
-> cursor sizes. See https://patchwork.freedesktop.org/patch/583299/
+> -/**
+> - * mtk_register_reset_controller - Register MediaTek clock reset control=
+ler
+> - * @np: Pointer to device node.
+> - * @desc: Constant pointer to description of clock reset.
+> - *
+> - * Return: 0 on success and errorno otherwise.
+> - */
+> -int mtk_register_reset_controller(struct device_node *np,
+> -                                 const struct mtk_clk_rst_desc *desc);
+> -
+>  /**
+>   * mtk_register_reset_controller - Register mediatek clock reset control=
+ler with device
+>   * @np: Pointer to device.
+> --
+> 2.45.2
 >
-> Not sure if other compositors will end up using it or not.
 >
-> ChenYu
->
-> >         /* Use OVL device for all DMA memory allocations */
-> >         crtc =3D drm_crtc_from_index(drm, 0);
-> > --
-> > 2.45.2
-> >
 
