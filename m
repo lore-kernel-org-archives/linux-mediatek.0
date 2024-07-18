@@ -4,82 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 860A0C3DA60
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jul 2024 08:40:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F333C3DA49
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jul 2024 08:42:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=lAA7I2rz1o9xNBJg2p0wd7EKqXNavyBiAyPlNRK51HE=; b=PdKcXI6dTO+95iqxIwgyIqtfEY
-	QZC3BVNCfkVzgffbkPopa0zzoKg7gNibX/JetGe75HUGnsvY6y8Uu+MZZxnwzAqE19URntNE22S9d
-	+e1Ide8nqGNqWyvB7XITom0SkhvJhicpQ/JoVx1XZaqwOR2wAPr+on6KYJXockCKSvQoFqQt+KB3a
-	Qf4tqoG3CRG1WBXtUFJAgR40TL/8izgT7kIbEcQEeB2expim1jyRL7YxJ+5pveOfwLxomVA6pdAfi
-	RTVG3SeE2GXwKLxhinWITXOoXborjpIgb7Cw1rVjGUSlQrfpe6FYqI3F2lPCQRW8i7XG3qYDWocbD
-	uH/zcCwA==;
+	bh=7cJPIYBOZKxw9By0YCCiUkOLCsHVgJUmv6aYpcZa7dk=; b=3H65ywvfFrgy7766wbC9/8v6oK
+	at+cQwv335SVdlVmlDrpS0ujNuCM38ss1DE59WF5K0JCWEvtUplhkYzMm7dSgSa6jJF668JuXkOdF
+	XW3hbT7gGcSWwaZQhge+iB4xEvDpKr9YGX0ktGKhaNxxPJuwNEWgx2HjyJ7/oS9/+SrOStXcm9kK2
+	cOGzHDzkxNwe9mYOe+5bsqs0YqqrNCW+czLZ2wyWGJdcT7I9hVubhgKGfRgneoOhRienvzqEQi/2U
+	1n87AkG53yqvCocdBD8Pz9sWGXDlmE6iohqabpNeZAOPS1Pt9Tr6uySCFYQrq7WiHx29PYebFcekf
+	ikHq8/KA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sUMgD-0000000GQEU-0Ozz;
-	Thu, 18 Jul 2024 08:40:01 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1sUMiH-0000000GR44-3bpK;
+	Thu, 18 Jul 2024 08:42:09 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sUMfq-0000000GQ6W-04aZ;
-	Thu, 18 Jul 2024 08:39:40 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 54AB4CE1931;
-	Thu, 18 Jul 2024 08:39:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 98BDBC116B1;
-	Thu, 18 Jul 2024 08:39:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1721291969;
-	bh=IkCKpGRcoNsDv8m1+yrQr3FUpbncEbNr7F7+noxanhk=;
-	h=From:Date:Subject:To:Cc:Reply-To:From;
-	b=kP6yYGunJWNWH3w9gV1dkszZSP5nSjqGWJrcaSonP659/O3Ug/5fB2Dzy4M43fXU1
-	 zXehiZz21aFHiRkwuLad54L9UQTCiLpUl+Lg5t276qrvrMfLtnujEFFix4HqryuZ0c
-	 dN9sMFCLY5ZC2jkAebUQuzw1ezEZHig4TwxAUGQfD7iGerw20cybgkVfeFT+KszP4a
-	 hr0XEaAh+xn5eZLECCoWMfjC4TPl93V3s15sK3zFuZaJicnsuUM0/CdPYRJl7wWux0
-	 Lc2WaoUvrma5HUbqaWvg3yV3M8WuRbypIeDY+FwDqifvMuQT6rQJmuf7lUxXAaTZZY
-	 1OClciHr9UyQw==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7A218C3DA49;
-	Thu, 18 Jul 2024 08:39:29 +0000 (UTC)
-From: "Jason-JH.Lin via B4 Relay" <devnull+jason-jh.lin.mediatek.com@kernel.org>
-Date: Thu, 18 Jul 2024 16:38:58 +0800
-Subject: [PATCH v2] mailbox: mtk-cmdq: Move devm_mbox_controller_register()
- after devm_pm_runtime_enable()
+	id 1sUMiA-0000000GR1O-42co;
+	Thu, 18 Jul 2024 08:42:04 +0000
+X-UUID: 97c7c51444e111efa6c87f6b4542ff6b-20240718
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=7cJPIYBOZKxw9By0YCCiUkOLCsHVgJUmv6aYpcZa7dk=;
+	b=f7uD2/F7SkTFOfUYHRiR66c1Sk2Hi+FvaLxUyzevtOaezO80RN9BEmg9rJz0ekolP6FcjJKCmy60GT9YNMmNRLexmkAAKLL1IU6+2uEkN9hQuRq471+y4EiQKy4L4L7F6aKrVpqXMzhVQbP3pHW84cehEMVTCGJ5M5Da7rTWl4o=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.40,REQID:26868f27-772f-4e51-a7dc-af4e18a99d2c,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:ba885a6,CLOUDID:4e287ed5-0d68-4615-a20f-01d7bd41f0bb,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 97c7c51444e111efa6c87f6b4542ff6b-20240718
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
+	(envelope-from <boy.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 741784368; Thu, 18 Jul 2024 01:41:57 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Thu, 18 Jul 2024 16:41:53 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Thu, 18 Jul 2024 16:41:53 +0800
+From: boy.wu <boy.wu@mediatek.com>
+To: Tejun Heo <tj@kernel.org>, Josef Bacik <josef@toxicpanda.com>, Jens Axboe
+	<axboe@kernel.dk>
+CC: Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Boris Burkov <boris@bur.io>,
+	<cgroups@vger.kernel.org>, <linux-block@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <iverlin.wang@mediatek.com>, Boy Wu
+	<boy.wu@mediatek.com>
+Subject: [PATCH v4] blk-cgroup: Replace u64 sync with spinlock for iostat
+Date: Thu, 18 Jul 2024 16:41:12 +0800
+Message-ID: <20240718084112.12202-1-boy.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20240718-mtk-cmdq-fixup-v2-1-f6bb3c052a60@mediatek.com>
-X-B4-Tracking: v=1; b=H4sIAKHUmGYC/yWMQQ6CMBBFr2Jm7ZC2QAFX3sOwQBhlwLbYItEQ7
- m7F5fs/760QyDMFOB1W8LRwYGcjqOMB2r6xd0LuIoMSKhOFLNHMI7ame+KN368JM5EWlc4FVfo
- KUZo8xWMPXurIPYfZ+c/eX+Rv/ae0TGUutNKJylUpUOLQBGdx6JMH27OhjpuZxqR1Bupt274Qh
- S42qQAAAA==
-To: Jassi Brar <jassisinghbrar@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- CK Hu <ck.hu@mediatek.com>
-Cc: Jassi Brar <jaswinder.singh@linaro.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- "Jason-JH.Lin" <jason-jh.lin@mediatek.com>, 
- Singo Chang <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, 
- Project_Global_Chrome_Upstream_Group@mediatek.com
-X-Mailer: b4 0.14.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1721291968; l=4363;
- i=jason-jh.lin@mediatek.com; s=20240718; h=from:subject:message-id;
- bh=ygtphOut6HLHA8ydhy2hDmOMgR0COlbPJWasC/1Cw8I=;
- b=Ze2pqM8+jGwXQ+JzInd9tLbwpk0U8NnJOUu2mhDLnYXcTK9Iat2UjLUrVE3ZhkMSLzur2jUch
- fb7GXOkS/XeB8Kw3+dkHHWdN4XIn13qN8+l4YK18rZJKoXXYkRvhMVN
-X-Developer-Key: i=jason-jh.lin@mediatek.com; a=ed25519;
- pk=7Hn+BnFBlPrluT5ks5tKVWb3f7O/bMBs6qEemVJwqOo=
-X-Endpoint-Received: by B4 Relay for jason-jh.lin@mediatek.com/20240718
- with auth_id=187
-X-Original-From: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--7.618200-8.000000
+X-TMASE-MatchedRID: YZKi2GGnn9+ZtBi01n3C9xafLXbshfogcx5k3wffojOHwGEm+CpYGTEG
+	FjeZwyRUzbrWhbT2b8cTMOv2lZG8w2zFfXEzaNt8wCZxkTHxccn64i5lgawyBFSOymiJfTYXZmL
+	HoWzm2fS1hH+43GdK0QG2ORx9EyapCCk23kSAVszovZduO2AF9zQAp53S718HVo+424uIBNJYTM
+	99NlfBm1EXNKIgpuQj+9p3HcFJM3mVhIWL9FEuN54CIKY/Hg3AGdQnQSTrKGPEQdG7H66TyH4gK
+	q42LRYkpO8ojRYm4lcl4rDZgwtgKw3kTcv9FMbtpUElRFcYt7l+3BndfXUhXQ==
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--7.618200-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: F123CDD9A65F6182C8CF3180A6DA8AB398AC9F1B101EEA855735D2109E5C8CC32000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240718_013938_441530_658A8B54 
-X-CRM114-Status: GOOD (  13.60  )
+X-CRM114-CacheID: sfid-20240718_014203_076041_8A2DDA53 
+X-CRM114-Status: GOOD (  12.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,128 +95,164 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: jason-jh.lin@mediatek.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>
+From: Boy Wu <boy.wu@mediatek.com>
 
-When mtk-cmdq unbinds, a WARN_ON message with condition
-pm_runtime_get_sync() < 0 occurs.
+In 32bit SMP systems, if multiple CPUs call blkcg_print_stat,
+it may cause blkcg_fill_root_iostats to have a concurrent problem
+on the seqlock in u64_stats_update, which will cause a deadlock
+on u64_stats_fetch_begin in blkcg_print_one_stat.
 
-According to the call tracei below:
-  cmdq_mbox_shutdown
-  mbox_free_channel
-  mbox_controller_unregister
-  __devm_mbox_controller_unregister
-  ...
+Thus, replace u64 sync with spinlock to protect iostat.
 
-The root cause can be deduced to be calling pm_runtime_get_sync() after
-calling pm_runtime_disable() as observed below:
-1. CMDQ driver uses devm_mbox_controller_register() in cmdq_probe()
-   to bind the cmdq device to the mbox_controller, so
-   devm_mbox_controller_unregister() will automatically unregister
-   the device bound to the mailbox controller when the device-managed
-   resource is removed. That means devm_mbox_controller_unregister()
-   and cmdq_mbox_shoutdown() will be called after cmdq_remove().
-2. CMDQ driver also uses devm_pm_runtime_enable() in cmdq_probe() after
-   devm_mbox_controller_register(), so that devm_pm_runtime_disable()
-   will be called after cmdq_remove(), but before
-   devm_mbox_controller_unregister().
-
-To fix this problem, cmdq_probe() needs to move
-devm_mbox_controller_register() after devm_pm_runtime_enable() to make
-devm_pm_runtime_disable() be called after
-devm_mbox_controller_unregister().
-
-Fixes: 623a6143a845 ("mailbox: mediatek: Add Mediatek CMDQ driver")
-Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+Fixes: ef45fe470e1e ("blk-cgroup: show global disk stats in root cgroup io.stat")
+Signed-off-by: Boy Wu <boy.wu@mediatek.com>
 ---
-When mtk-cmdq unbinds, a WARN_ON message with condition
-pm_runtime_get_sync() < 0 occurs.
-
-According to the call tracei below:
-  cmdq_mbox_shutdown
-  mbox_free_channel
-  mbox_controller_unregister
-  __devm_mbox_controller_unregister
-  ...
-
-The root cause can be deduced to be calling pm_runtime_get_sync() after
-calling pm_runtime_disable() as observed below:
-1. CMDQ driver uses devm_mbox_controller_register() in cmdq_probe()
-   to bind the cmdq device to the mbox_controller, so
-   devm_mbox_controller_unregister() will automatically unregister
-   the device bound to the mailbox controller when the device-managed
-   resource is removed. That means devm_mbox_controller_unregister()
-   and cmdq_mbox_shoutdown() will be called after cmdq_remove().
-2. CMDQ driver also uses devm_pm_runtime_enable() in cmdq_probe() after
-   devm_mbox_controller_register(), so that devm_pm_runtime_disable()
-   will be called after cmdq_remove(), but before
-   devm_mbox_controller_unregister().
-
-To fix this problem, cmdq_probe() needs to move
-devm_mbox_controller_register() after devm_pm_runtime_enable() to make
-devm_pm_runtime_disable() be called after
-devm_mbox_controller_unregister().
-
-Change-Id: I4f0e68eac5186fe8041ea2f16c8e852d52d71cb0
+Change in v2:
+ - update commit message
+ - Remove u64_sync
+ - Replace spin_lock_irq with guard statement
+ - Replace blkg->q->queue_lock with blkg_stat_lock
+Change in v3:
+ - update commit message
+ - Add spinlock in blkg_iostat_set structure
+ - Replace all u64_sync with spinlock for iostat
+ - Replace blkg_stat_lock with iostat.spinlock
+Change in v4:
+ - update commit message
+ - Remove spinlock in blkg_iostat_set structure
+ - Replace iostat.spinlock with blkg_stat_lock
+ - Add 32-bit systems only define
 ---
-Changes in v2:
-- Change to move the calling sequence of devm_mbox_controller_register()
-  and devm_pm_runtime_enable().
-- Link to v1: https://lore.kernel.org/r/20240613150626.25280-1-jason-jh.lin@mediatek.com
----
- drivers/mailbox/mtk-cmdq-mailbox.c | 14 ++++++++------
- 1 file changed, 8 insertions(+), 6 deletions(-)
+ block/blk-cgroup.c | 34 +++++++++++++---------------------
+ 1 file changed, 13 insertions(+), 21 deletions(-)
 
-diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
-index f1dfce9e27f5..002003c3970a 100644
---- a/drivers/mailbox/mtk-cmdq-mailbox.c
-+++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-@@ -370,6 +370,8 @@ static void cmdq_remove(struct platform_device *pdev)
+diff --git a/block/blk-cgroup.c b/block/blk-cgroup.c
+index 37e6cc91d576..faa604c6fab9 100644
+--- a/block/blk-cgroup.c
++++ b/block/blk-cgroup.c
+@@ -329,7 +329,6 @@ static struct blkcg_gq *blkg_alloc(struct blkcg *blkcg, struct gendisk *disk,
+ 	INIT_WORK(&blkg->async_bio_work, blkg_async_bio_workfn);
+ #endif
+ 
+-	u64_stats_init(&blkg->iostat.sync);
+ 	for_each_possible_cpu(cpu) {
+ 		u64_stats_init(&per_cpu_ptr(blkg->iostat_cpu, cpu)->sync);
+ 		per_cpu_ptr(blkg->iostat_cpu, cpu)->blkg = blkg;
+@@ -632,18 +631,18 @@ static void blkg_iostat_set(struct blkg_iostat *dst, struct blkg_iostat *src)
+ static void __blkg_clear_stat(struct blkg_iostat_set *bis)
  {
- 	struct cmdq *cmdq = platform_get_drvdata(pdev);
+ 	struct blkg_iostat cur = {0};
+-	unsigned long flags;
  
-+	devm_mbox_controller_unregister(&pdev->dev, &cmdq->mbox);
-+
- 	if (cmdq->pdata->sw_ddr_en)
- 		cmdq_sw_ddr_enable(cmdq, false);
- 
-@@ -689,12 +691,6 @@ static int cmdq_probe(struct platform_device *pdev)
- 		cmdq->mbox.chans[i].con_priv = (void *)&cmdq->thread[i];
- 	}
- 
--	err = devm_mbox_controller_register(dev, &cmdq->mbox);
--	if (err < 0) {
--		dev_err(dev, "failed to register mailbox: %d\n", err);
--		return err;
--	}
--
- 	platform_set_drvdata(pdev, cmdq);
- 
- 	WARN_ON(clk_bulk_prepare(cmdq->pdata->gce_num, cmdq->clocks));
-@@ -722,6 +718,12 @@ static int cmdq_probe(struct platform_device *pdev)
- 	pm_runtime_set_autosuspend_delay(dev, CMDQ_MBOX_AUTOSUSPEND_DELAY_MS);
- 	pm_runtime_use_autosuspend(dev);
- 
-+	err = devm_mbox_controller_register(dev, &cmdq->mbox);
-+	if (err < 0) {
-+		dev_err(dev, "failed to register mailbox: %d\n", err);
-+		return err;
-+	}
-+
- 	return 0;
+-	flags = u64_stats_update_begin_irqsave(&bis->sync);
+ 	blkg_iostat_set(&bis->cur, &cur);
+ 	blkg_iostat_set(&bis->last, &cur);
+-	u64_stats_update_end_irqrestore(&bis->sync, flags);
  }
  
-
----
-base-commit: 797012914d2d031430268fe512af0ccd7d8e46ef
-change-id: 20240718-mtk-cmdq-fixup-40379650e96b
-
-Best regards,
+ static void blkg_clear_stat(struct blkcg_gq *blkg)
+ {
+ 	int cpu;
+ 
++#if BITS_PER_LONG == 32
++	guard(raw_spinlock_irqsave)(&blkg_stat_lock);
++#endif
+ 	for_each_possible_cpu(cpu) {
+ 		struct blkg_iostat_set *s = per_cpu_ptr(blkg->iostat_cpu, cpu);
+ 
+@@ -995,15 +994,12 @@ static void blkcg_iostat_update(struct blkcg_gq *blkg, struct blkg_iostat *cur,
+ 				struct blkg_iostat *last)
+ {
+ 	struct blkg_iostat delta;
+-	unsigned long flags;
+ 
+ 	/* propagate percpu delta to global */
+-	flags = u64_stats_update_begin_irqsave(&blkg->iostat.sync);
+ 	blkg_iostat_set(&delta, cur);
+ 	blkg_iostat_sub(&delta, last);
+ 	blkg_iostat_add(&blkg->iostat.cur, &delta);
+ 	blkg_iostat_add(last, &delta);
+-	u64_stats_update_end_irqrestore(&blkg->iostat.sync, flags);
+ }
+ 
+ static void __blkcg_rstat_flush(struct blkcg *blkcg, int cpu)
+@@ -1034,7 +1030,6 @@ static void __blkcg_rstat_flush(struct blkcg *blkcg, int cpu)
+ 		struct blkcg_gq *blkg = bisc->blkg;
+ 		struct blkcg_gq *parent = blkg->parent;
+ 		struct blkg_iostat cur;
+-		unsigned int seq;
+ 
+ 		/*
+ 		 * Order assignment of `next_bisc` from `bisc->lnode.next` in
+@@ -1051,10 +1046,7 @@ static void __blkcg_rstat_flush(struct blkcg *blkcg, int cpu)
+ 			goto propagate_up; /* propagate up to parent only */
+ 
+ 		/* fetch the current per-cpu values */
+-		do {
+-			seq = u64_stats_fetch_begin(&bisc->sync);
+-			blkg_iostat_set(&cur, &bisc->cur);
+-		} while (u64_stats_fetch_retry(&bisc->sync, seq));
++		blkg_iostat_set(&cur, &bisc->cur);
+ 
+ 		blkcg_iostat_update(blkg, &cur, &bisc->last);
+ 
+@@ -1112,7 +1104,6 @@ static void blkcg_fill_root_iostats(void)
+ 		struct blkcg_gq *blkg = bdev->bd_disk->queue->root_blkg;
+ 		struct blkg_iostat tmp;
+ 		int cpu;
+-		unsigned long flags;
+ 
+ 		memset(&tmp, 0, sizeof(tmp));
+ 		for_each_possible_cpu(cpu) {
+@@ -1133,10 +1124,10 @@ static void blkcg_fill_root_iostats(void)
+ 			tmp.bytes[BLKG_IOSTAT_DISCARD] +=
+ 				cpu_dkstats->sectors[STAT_DISCARD] << 9;
+ 		}
+-
+-		flags = u64_stats_update_begin_irqsave(&blkg->iostat.sync);
++#if BITS_PER_LONG == 32
++		guard(raw_spinlock_irqsave)(&blkg_stat_lock);
++#endif
+ 		blkg_iostat_set(&blkg->iostat.cur, &tmp);
+-		u64_stats_update_end_irqrestore(&blkg->iostat.sync, flags);
+ 	}
+ }
+ 
+@@ -1145,7 +1136,6 @@ static void blkcg_print_one_stat(struct blkcg_gq *blkg, struct seq_file *s)
+ 	struct blkg_iostat_set *bis = &blkg->iostat;
+ 	u64 rbytes, wbytes, rios, wios, dbytes, dios;
+ 	const char *dname;
+-	unsigned seq;
+ 	int i;
+ 
+ 	if (!blkg->online)
+@@ -1157,16 +1147,18 @@ static void blkcg_print_one_stat(struct blkcg_gq *blkg, struct seq_file *s)
+ 
+ 	seq_printf(s, "%s ", dname);
+ 
+-	do {
+-		seq = u64_stats_fetch_begin(&bis->sync);
+-
++#if BITS_PER_LONG == 32
++	scoped_guard(raw_spinlock_irqsave, &blkg_stat_lock) {
++#endif
+ 		rbytes = bis->cur.bytes[BLKG_IOSTAT_READ];
+ 		wbytes = bis->cur.bytes[BLKG_IOSTAT_WRITE];
+ 		dbytes = bis->cur.bytes[BLKG_IOSTAT_DISCARD];
+ 		rios = bis->cur.ios[BLKG_IOSTAT_READ];
+ 		wios = bis->cur.ios[BLKG_IOSTAT_WRITE];
+ 		dios = bis->cur.ios[BLKG_IOSTAT_DISCARD];
+-	} while (u64_stats_fetch_retry(&bis->sync, seq));
++#if BITS_PER_LONG == 32
++	}
++#endif
+ 
+ 	if (rbytes || wbytes || rios || wios) {
+ 		seq_printf(s, "rbytes=%llu wbytes=%llu rios=%llu wios=%llu dbytes=%llu dios=%llu",
 -- 
-Jason-JH.Lin <jason-jh.lin@mediatek.com>
-
+2.18.0
 
 
