@@ -4,84 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B31BCC3DA49
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jul 2024 21:15:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58665C3DA61
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jul 2024 22:08:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/0auihaX9QkuNb5Qm1JcvF0jC8t0q/ycofneQ+RbNug=; b=45+LHc3Dnr0RofHyya9pZSATed
-	tuPqaCrfwiCwJtEDEMvpJrLxxzyaIJki3+F2R+2rEusJa8hijIr5acZouZI5N9QchzDD88lTatOxv
-	o7koRgCeaO1Ctc0mwu7ur/iBez/UtBnNdlAoJF5lnj9vwMauTDzOZ9soSQ58Ex8o4DmDHmWhE5u82
-	k/VnoKZIloZuVoT2eGdjq4XVFo6RyKpbARS7TH6LXVyCDzCWihxYCLdgr4AQQEdMu7cM8w9W0zgdE
-	nfy4ufZyhMIbqeamM+19HzVLvZSUFH+fxj7ep2IehT//5+LkOTWwRCIEpiAuyotIKupv+akrarrDD
-	g2m5Xu5Q==;
+	bh=Oadz38JoIr7T8qEdl1qZy6h/lKoGcM2cLSz3E3Ktv6E=; b=eJPfKqk0FZaG0+dP/E2g9obunf
+	Lmco/ZijHIafwk+Uzp4A0u/znCVl8TGwXfh/lab/NolZYptvHiaPilONyu5uxNEn/Bn3V9/tO9eaC
+	XAa8BGFU7C7Pzz1BnXsfhdwTBPsciBzktlEwzAfeiiUMNBYUlhrdYplVEj64U/ofKcK2esiJK0yqk
+	XSmdLkXYsxiQ2HGfpqWa0X70NHC88B74X/99XPvvIwsGLa/lY01nASl4FcTjuqyOkc1qc8JegyamK
+	b2aHIJEHmV12nfVqzH4C4xI7gMcDy/L9B0aplSb+WMv3zVCHwFD9CrUSrdcc2zXAEUGmRrLpm6Vgd
+	QshLQ4IA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sUYTh-00000000g5C-2s4d;
-	Thu, 18 Jul 2024 21:15:53 +0000
-Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
+	id 1sUZII-00000000opL-3nbL;
+	Thu, 18 Jul 2024 22:08:10 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sUYTL-00000000fza-2oCI;
-	Thu, 18 Jul 2024 21:15:33 +0000
-Received: by mail-pf1-x42d.google.com with SMTP id d2e1a72fcca58-70af8062039so218944b3a.0;
-        Thu, 18 Jul 2024 14:15:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1721337330; x=1721942130; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:sender:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=/0auihaX9QkuNb5Qm1JcvF0jC8t0q/ycofneQ+RbNug=;
-        b=Oc/Uv0fxP8Cvm6P+V8dWtcjrF7QxV6hOlu3J78S00Fnc1sLmVjinVWb7dGBFbwCTT8
-         CARj6si2re6787vFkCMc//S0QHy/t9u5Fs7k+07hdhXJf1DpLfVCtfIZxuBOTOJ2lfTr
-         dRnhxjImY40kv1ReDvBHmxG94XKUWcQR7Va0LpKsOzo+EeR1wLb9E4i09Y+0kFZV2mtS
-         rioeEzDm+k2TZpFAY9VaF2LoRhgaHFWesL/RmPnRuC61hEJU6j8nceYn8CI/VtN05Vo4
-         /wf6tVRE3e9xCKNozuf4VfQ4U1YjpBHmvZ3B/kv5PjVKQXVB51C5NPw/X+WmNMJowabL
-         CU8Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1721337330; x=1721942130;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:sender:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=/0auihaX9QkuNb5Qm1JcvF0jC8t0q/ycofneQ+RbNug=;
-        b=N4pXAfTjtvuj5y+EJAMV/ioN0E9/ShVfmaOXnHcN/0MSDP4T78PvJE/lky5UgW63Io
-         ACDttmvpXDt4JLDDQghuZkIwg05Lrjz9lmDSSON3OemaV4rzZnUbQYEI2UlSXjIcsMt1
-         jjR/UwDXfFCDVWVwVoS4u2VYOWK4d5K9F1yZ+gq+oOsEAmAgJsasyWXecrzlAHbjj6ok
-         crk2NOjUoA3XFErgoJi8UbF94FsWe3AhDSWr15sADzg2CHyASXYsJvSDZeqqOpV7+VwH
-         EoOCzzztV+O2cnNnTjaQosFBVDr9P87hoKspN8dpaYHshu8eXs1LtmUjZl+4vXlhbyw1
-         yGlw==
-X-Forwarded-Encrypted: i=1; AJvYcCWRzwymBIjT6FKnzXoJkkbipm0ZaqtjFtiKKLZqrioLu/Cp9k2PbC2TQEFCL9ShpaEjyBVHalHBflhdPUGK0KjlINi2LNgdS5hPf8ltG8IvkYB34XUPCUprUPqtNbElVnp5pxJEI73eCtfpbQLpwdgWCf8Wiw5h+aI=
-X-Gm-Message-State: AOJu0Yx3oXeSS21ohnULm2fqlzlvv8n7MZLgSfxSCKBMfxjZPyrfzE4x
-	crsyG90xrNMzOtSou8zxl2xCJ9gWIfNx+C4mQ/SqERXCFF0pn19bBSEfwQ==
-X-Google-Smtp-Source: AGHT+IEzvKX6abFCuyAD2x0BS8ix3G4cXfdKksDDsoZuZtDnnZow0Vh1MnuqD3v6DJxjydy4SuuorQ==
-X-Received: by 2002:a05:6a20:c901:b0:1c3:b2da:cdff with SMTP id adf61e73a8af0-1c3fdb10556mr6962771637.0.1721337330009;
-        Thu, 18 Jul 2024 14:15:30 -0700 (PDT)
-Received: from localhost (dhcp-141-239-149-160.hawaiiantel.net. [141.239.149.160])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-1fd64b4a29bsm174255ad.15.2024.07.18.14.15.29
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 18 Jul 2024 14:15:29 -0700 (PDT)
-Date: Thu, 18 Jul 2024 11:15:28 -1000
-From: Tejun Heo <tj@kernel.org>
-To: "boy.wu" <boy.wu@mediatek.com>
-Cc: Josef Bacik <josef@toxicpanda.com>, Jens Axboe <axboe@kernel.dk>,
+	id 1sUZHv-00000000okz-20MN;
+	Thu, 18 Jul 2024 22:07:49 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1721340462;
+	bh=gzGiI2wvuZEYnzUMFQ5wGfxZiwKRMQdKAglWmCVvamQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=eGD9EUXebDntpI1lVGMqIM9QrrH1deaoVIzxKhENmh3W17tvtAp1fnPoZZb0wr7Jl
+	 7YDULidHqHeCU81e9AeYM5KVRmH7I57A+lUTHzegyr9GxRtMtkVGYBuGzXUJQ4rnhk
+	 mWfXIo1erYGSpQ5quJzjentVLKjx4JMq12TJr7JzN0thSKkKbdgt/WEtV8MMDdnyXq
+	 ird2tawtKmt2g3Ln2LOA9TUW1AXBEiaXxaXxGolYjC6Gvf0LlTk3hlgGW2oG0v7OD0
+	 ftz4bilWCdLC0EMfX4fd0dTfqazOT0++DZDBPDE3P11sfoSv+AUsCJVf+RcPL6gG9k
+	 Ab8CCBZTWz9iQ==
+Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 6BA5B3780520;
+	Thu, 18 Jul 2024 22:07:40 +0000 (UTC)
+Date: Thu, 18 Jul 2024 18:07:38 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Boris Burkov <boris@bur.io>, cgroups@vger.kernel.org,
-	linux-block@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, iverlin.wang@mediatek.com
-Subject: Re: [PATCH v4] blk-cgroup: Replace u64 sync with spinlock for iostat
-Message-ID: <ZpmF8HJsuefjC7Xr@slm.duckdns.org>
-References: <20240718084112.12202-1-boy.wu@mediatek.com>
+	Chen-Yu Tsai <wenst@chromium.org>, kernel@collabora.com,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v2] nvmem: mtk-efuse: Only register socinfo device if
+ needed cells are there
+Message-ID: <05dd24ec-d084-4708-a241-b4714391118a@notapiano>
+References: <20240708-mtk-socinfo-no-data-probe-err-v2-1-7ae252acbcc2@collabora.com>
+ <a1914f2b-93f2-4de4-9c4b-2e1f6b39cf3a@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-In-Reply-To: <20240718084112.12202-1-boy.wu@mediatek.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <a1914f2b-93f2-4de4-9c4b-2e1f6b39cf3a@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240718_141531_729356_D6DDF626 
-X-CRM114-Status: GOOD (  11.88  )
+X-CRM114-CacheID: sfid-20240718_150747_700984_BE300415 
+X-CRM114-Status: GOOD (  25.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,30 +78,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello,
+On Wed, Jul 10, 2024 at 11:31:11AM +0200, AngeloGioacchino Del Regno wrote:
+> Il 08/07/24 21:43, Nícolas F. R. A. Prado ha scritto:
+> > Not every efuse region has cells storing SoC information. Only register
+> > an socinfo device if the required cells are present.
+> > 
+> > This prevents the pointless process of creating an socinfo device,
+> > probing it with the socinfo driver only to ultimately error out like so
+> > 
+> >    mtk-socinfo mtk-socinfo.0.auto: error -ENOENT: Failed to get socinfo data
+> >    mtk-socinfo mtk-socinfo.0.auto: probe with driver mtk-socinfo failed with error -2
+> > 
+> > This issue is observed on the mt8183-kukui-jacuzzi-juniper-sku16
+> > platform, which has two efuse regions, but only one of them contains the
+> > SoC data.
+> > 
+> 
+> I think that we should rather remove or disable the first eFuse region, as
+> even though that is enabled:
+> 
+>  - This is the only SoC having two regions
+>    - I'm not even sure that the region at 0x8000000 is really efuse
+>    - Not even referenced in datasheets....
+>  - It's unused, as in, it's not exposing any information and no declared cells
+> 
+> Don't misunderstand me, this is not an invalid change, but I rather prefer
+> to resolve this by disabling that (effectively unused!) node, avoiding to
+> add more lines to this driver that would be useless after fixing that small
+> single thing.
 
-On Thu, Jul 18, 2024 at 04:41:12PM +0800, boy.wu wrote:
->  static void blkg_clear_stat(struct blkcg_gq *blkg)
->  {
->  	int cpu;
->  
-> +#if BITS_PER_LONG == 32
-> +	guard(raw_spinlock_irqsave)(&blkg_stat_lock);
-> +#endif
+I'm not confident that we can say that that efuse is not exposing any
+information. Indeed there are no cells so it's not used by any other driver, but
+the efuse contents are still exposed to userspace if CONFIG_NVMEM_SYSFS is
+enabled.
 
-Can you please collect the ifdefs into a single place? If guard can be used
-for that, that's great. If not, just spin_lock/unlock wrappers are fine too,
-but please collect them into a single place and add a comment explaining why
-this is necessary and why u64_sync isn't being used.
+I dumped it on one of the mt8183-kukui-jacuzzi-juniper-sku16 units:
 
-Also, for blkg_clear_stat(), we're running a slight chance of clearing of
-iostat_cpu racing against state updates from the hot path. Given the
-circumstances - stat reset is an cgroup1-only feature which isn't used
-widely and a problematic interface to begin with, I believe this is a valid
-choice but it needs to be noted.
+  $ ls -l /sys/bus/nvmem/devices/
+  total 0
+  lrwxrwxrwx    1 root     root             0 Jul 18 21:43 mmtd0 -> ../../../devices/platform/soc/11010000.spi/spi_master/spi1/spi1.0/mtd/mtd0/mtd0
+  lrwxrwxrwx    1 root     root             0 Jul 18 21:43 nvmem0 -> ../../../devices/platform/soc/8000000.efuse/nvmem0
+  lrwxrwxrwx    1 root     root             0 Jul 18 21:43 nvmem1 -> ../../../devices/platform/soc/11f10000.efuse/nvmem1
+  
+  $ hexdump -C /sys/bus/nvmem/devices/nvmem0/nvmem
+  00000000  88 07 00 00 00 8a 00 00  00 ca 00 00 00 00 00 00  |................|
+  00000010
 
-Thanks.
+I power cycled the unit and ran this again and it still showed the same
+contents. I also ran the same on a different unit of the same model and it
+showed the same contents. Of course this doesn't prove anything, but given that
+the contents seem to be constant across reboots and even different units, it
+does look like it could be an efuse to me. :)
 
--- 
-tejun
+As to whether the contents are useful at all, or if there are
+userspace applications making use of it I have no clue. But if in doubt,
+shouldn't we keep it around?
+
+Thanks,
+Nícolas
 
