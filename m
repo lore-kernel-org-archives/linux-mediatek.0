@@ -4,87 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10274C3DA49
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jul 2024 10:44:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EC7EC3DA49
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jul 2024 11:10:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9ehcEZ3ZqTGFKCqFJksb5S1t2k/S10rcVu5i9dkq9CY=; b=fjt0CUyu7en0CO3ZRuibV09g6r
-	Z9mEML7qoQsya5UQNeRdUmNB4irBVwF4fYwWKcJlGbVBnB1/gOwmQhqZR2g3VWtMeIktgQp228d9V
-	Nayw6FYoQRJIa9qBrLk0BDMeTiBxGQE4fMNznvp2U40gWsleY65OeGAKg8Z5vcbdDFLLzdORp1A+x
-	BL3PRoW5dYri7JNFUlfE1298RWk69t1bv6T0yfuckGSLUS17iEXUQzp7XNF8VF0rjlUkcQEWig0Cf
-	Wg05EEwtGdFOjB+DzpgbREPEobVREZ20NzXk0lgrHKJWROQmnJJajlVDlV37ti96q6+KyafBuBeox
-	ApTK3kHg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
+	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=g2difOvlWIEO63yHi+zzCArMOSeh2R/YOZyOxHPP5y8=; b=LRn4ogUqm/mrrjUWCF1SBJvHrd
+	prW41VzfodoeuTSxoUXIosmKlt5Cd2GbYMsqifwfY4BpMuo2reFCJcS5M5kgHm5V/ZiJrTAsYwjd3
+	7CQ8LofBQ0J7uB0vH0hpQ5b+zC0L6HW1mwv8qatuDPUJEuE+TJfFbkFVyGGpNfnbdwAkKOTiA9x31
+	FDEx/CyGCWNU/9NRNva9/wD3boOFjC62RJru/45UDVOWxIvWs8MyZ+EamLM+wFQLuYaZi9nvM73n+
+	Uae3WC3UNZqe2z0KzV3IALlIzkxRi07whv3lhRduy01zhpmnbyT2KJIPUxpY6zfKOU38xLxHRuxQ3
+	gRBVPEwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sUOcI-0000000Gj4P-1cwi;
-	Thu, 18 Jul 2024 10:44:06 +0000
-Received: from mout.web.de ([212.227.17.12])
+	id 1sUP28-0000000Gn1i-35bL;
+	Thu, 18 Jul 2024 11:10:48 +0000
+Received: from mail-qk1-x732.google.com ([2607:f8b0:4864:20::732])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sUOc5-0000000Gj3T-2QxH
+	id 1sUP25-0000000Gn0f-0hmZ
 	for linux-mediatek@lists.infradead.org;
-	Thu, 18 Jul 2024 10:44:04 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
-	s=s29768273; t=1721299424; x=1721904224; i=spasswolf@web.de;
-	bh=9ehcEZ3ZqTGFKCqFJksb5S1t2k/S10rcVu5i9dkq9CY=;
-	h=X-UI-Sender-Class:Message-ID:Subject:From:To:Cc:Date:In-Reply-To:
-	 References:Content-Type:MIME-Version:Content-Transfer-Encoding:cc:
-	 content-transfer-encoding:content-type:date:from:message-id:
-	 mime-version:reply-to:subject:to;
-	b=hAHI4cvDUQaOeImOBhCCDEctdEodeNgb7+iEID3OJLOei0AS7Ey6IXH6VdUsJMI3
-	 mMoUanCIJ0q/NIcAwXAILRPvXtWh9SPbcCvJxkl1sSNREfWx35F8Hhp8xEkkTTNgc
-	 nlZ+Fqb6sy85Li0EyqgMZAo6Usw1vCM/JlRvb1S+r3NjyyfSdDgj3pPDW9xAuB1X0
-	 Bzw/T5jKbuta4q9faXvQzNh958JXZnneNyORYy14S1MP0H/baVLs+ADzfr+9Jxcmr
-	 FyDYU+i9OdyFzai00wtsia1Bj+TpfAlxhTGcQ3s2xionSmqnb1iqR6ab0eZDGEgfb
-	 eOptZLn5itVKfnw/ow==
-X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
-Received: from [192.168.0.101] ([84.119.92.193]) by smtp.web.de (mrweb105
- [213.165.67.124]) with ESMTPSA (Nemesis) id 1MV2Ka-1swLaA2BU6-00SRgt; Thu, 18
- Jul 2024 12:43:44 +0200
-Message-ID: <2fee61f8c903d02a900ca3188c3742c7effd102e.camel@web.de>
-Subject: Re: patch 46/47 causes NULL pointer deref on mt7921
-From: Bert Karwatzki <spasswolf@web.de>
-To: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@kernel.org>
-Cc: deren.wu@mediatek.com, linux-mediatek@lists.infradead.org, 
-	linux-wireless@vger.kernel.org, lorenzo.bianconi@redhat.com, 
-	mingyen.hsieh@mediatek.com, sean.wang@mediatek.com, spasswolf@web.de
-Date: Thu, 18 Jul 2024 12:43:43 +0200
-In-Reply-To: <308958f4c5689fd920c3915f4878850a09310b18.camel@web.de>
-References: <20240711175156.4465-1-spasswolf@web.de>
-	 <CAGp9LzoXMoAW6dVZjTf-JcD_wiU4yXpGwkLaVyWXTkaV2MOKwg@mail.gmail.com>
-	 <adb192a59c44aa8708e80df30a6a47816a03e50f.camel@web.de>
-	 <4e943a62736f955af5d9cd1aff7e2b9c084c8885.camel@web.de>
-	 <2599b886-9c63-4989-a08a-7feab28f7c49@nbd.name>
-	 <9fb7ac97d2ca472db469aefefbfeb94e0f886508.camel@web.de>
-	 <308958f4c5689fd920c3915f4878850a09310b18.camel@web.de>
-Content-Type: text/plain; charset="UTF-8"
-User-Agent: Evolution 3.52.3-1 
+	Thu, 18 Jul 2024 11:10:46 +0000
+Received: by mail-qk1-x732.google.com with SMTP id af79cd13be357-79f178e62d1so11470885a.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 18 Jul 2024 04:10:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=fooishbar-org.20230601.gappssmtp.com; s=20230601; t=1721301043; x=1721905843; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=g2difOvlWIEO63yHi+zzCArMOSeh2R/YOZyOxHPP5y8=;
+        b=jfoPXNn4ctZCYVlRBFSxq9HjkRB0qSKS40IALNMfNgVkQnxXev15YYqe7i7CvEaxxK
+         mHbZ0jyhEx0tdxS7z4A1s1mvyk9wqqxlRbnHf/IHWX8PmQ6gIV1L+Vv0EdPJyd/FIA2o
+         EYee1BjwFt1ujycY3LulUGGdJUjTBFjAimssU5E2QQedCsWZJh/3eFwyMEjR50wEUV3E
+         C09ot7GHxlM7jaFzAhwHmUV272vgq9mXm4gw9WXVDaKXXhJlDTgYER7G4EoBA8pScHQ5
+         f09oNMuZQ/EdZSX0t8g20541iklNLawOUSAr8+n1GzDD6Dsy8RFX/JZt9X/dlNr+i0HK
+         7aFw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1721301043; x=1721905843;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=g2difOvlWIEO63yHi+zzCArMOSeh2R/YOZyOxHPP5y8=;
+        b=Ag8Sq3wRwWl7zM6u11DhGQnVlHAWspP/ee0eV+9QtqrMXK0uvkqxLRQ+WVOd4n8dOZ
+         zNi+WqNxQdzEaIDT2MlLY4T9zfwu6gRYQNBZEpdu6X7dGtgv9JA8XjNbUCMg1JJWAiDp
+         p54wI56bo9i6rBhtZ/I7hbOwDk66pkKKYHd50XENv2UDURogJ05Hpke5n6AqJjzAhWN+
+         xoDf+aclQIviMHn7ofcbppQngMb43YRCUzzaoCvaLGk662oSjG5DqqEFotz4GoSKQ5uL
+         Hq/rAY66J8rMz12SDsdoldiVD/oQrXtCJQ4NvnziepXLKCKTUhpnHBXJ4jV6qvJXq2GV
+         tDQw==
+X-Forwarded-Encrypted: i=1; AJvYcCVeIqcOxNnnOKuKjXJUInercp08ikUdn1KN4gHJfs/JTHxT2zvaoHXNWD9jwb4PJ3w8J10LRf/PQ8mPRD4HBbA9tg6zkQwxPdOGCAH6jC6HEXJn
+X-Gm-Message-State: AOJu0YxMDSxY/oHDJKmtGEeRQt5zVUiXYsS+WZDCBmyLF4Tu5S8uUTT8
+	e61JmomKntQZzsyBirxv/ieoB2gnd/er6T1OVxMxYt2mIqY8ImK0tNMdjHxY62NuCjQXyDZ2T9Y
+	EgsL808QGmi8bzrSnCFjnlZmReLzsR85VK0f5fA==
+X-Google-Smtp-Source: AGHT+IHkpXrj6tfe5GKUAxDloIykkCd7pSLfu610KYCjUhm0uSHpFNmHy8/JsbORj2vqFg5Eb30UAAlM+BNEUmR4XcM=
+X-Received: by 2002:a05:620a:29c6:b0:79b:ea85:9f9f with SMTP id
+ af79cd13be357-7a1938c1e9amr47232985a.2.1721301043317; Thu, 18 Jul 2024
+ 04:10:43 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:0TSoC0GQldjw10NePlY+xljFhTr7f/cL4xm+YTGY9RSJw+uv/nt
- Avr6ST0AF4l2w14rW6jjNu8kJUUKaZJ4s5N+hhCqcALws1xHtsMqw98NLsfqAah5fNmaNTS
- +5iNj8RAShkav2D2ZG3zIFE/0wYyxaKu7YyxHjNzQwf04yNmwjfsTny4SD5rECusIWN/TBl
- ZEt6F2TRd7P2+YSm7c0CA==
-UI-OutboundReport: notjunk:1;M01:P0:7u4UlcLKQfs=;GI3AbUFi+RhUQHtInBWIYjyYqXF
- d7j24FakUCvXi2Pi6WNLSgRHXHsQbhuNvnwEx72gW4/v4LHuqclcsEJcYEhb3ANGqDXDXwxmX
- fpdy0RC0X4zEkvXJ3/lZAtt5T1SjoQY5IB9A3JdiCFemVY4pxQ12P7BpVc5XSxVfKvfuH6rv2
- iOFz7kkZXJGlvYJkR9Io4xNkuZiPXPBe+WOEx+/2vFkChLmXWXGP1fi6yVaCork/QwJDcBhzb
- eFJDrGTmXL5xDdXUkA5/pHq94HuDmGeSR2sm4BAKNBhUu5BN828nrVMvou0zgdiZ+bN7c/Y2a
- +4/kGbVr6otqbeimdednvFUXGVv9lpil47hyevMU5ZFUZOOtfcsvuLriLo727F8SWI/AKspkY
- 6qO1wA7XolcSpxjcn2rwCX7kHa9c3Eq6RnT43zFTDExZw4310Fe8VcZiioZpLv1u537pOqxSF
- 43cAUdunLAtZ8m+HbGPPvcaBfc4MT1NXM2tcxQTTjSjv9fqM/a93jUpxu8X7Brqa9lFMfcpYd
- Lcbq1PGwlQebw/mwpFO56Wq0jfEOivZGGWPydLn8GJ3Qk7f80rgiqBDOqCIh7DinOd7rjVRMP
- 995vi+2Eavj/NlFNSwuc0y5NASN70PtcP6O63w17ya46EeGU7t2y8GlTasfxFXdiY/slYCeIg
- PE+aI/7po+yd2Jv0CA+0WmXPIJIi+TSakvvCIV2Bdu0PGbCGuNZcV4jt46Aa/O1Xv85nkRl5+
- s/Wcg/zo8PQRybLvriMvQV0KR9wINi1aQp2SSI+kFNorX9tZltVYVsix3VJ+0MD/S1pl2mbNF
- 6OaziLyxVQTF82Vp6r37E3Zw==
+References: <20240718082410.204459-1-angelogioacchino.delregno@collabora.com>
+ <CAGXv+5GBg73kWuiDt=9s7M4oJeHhWOF3bPY7Ju+qn1kJgNNaGw@mail.gmail.com>
+ <CAC=S1nigoJWAECBrm-Q=Co1-qd_yUhx3R4D9=dYeUV=gr5UYfQ@mail.gmail.com> <74e7477b-81c7-4713-80cc-1cb476185bc9@collabora.com>
+In-Reply-To: <74e7477b-81c7-4713-80cc-1cb476185bc9@collabora.com>
+From: Daniel Stone <daniel@fooishbar.org>
+Date: Thu, 18 Jul 2024 12:10:32 +0100
+Message-ID: <CAPj87rPZRjmMPjaOY-UH4auTuMS6mh9N7=maRBzxut2OgtALbw@mail.gmail.com>
+Subject: Re: [PATCH] drm/mediatek: Set sensible cursor width/height values to
+ fix crash
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240718_034353_934061_0948D75F 
-X-CRM114-Status: UNSURE (   3.87  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240718_041045_238000_67A75C22 
+X-CRM114-Status: GOOD (  22.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,51 +86,60 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: chunkuang.hu@kernel.org, kernel@collabora.com, p.zabel@pengutronix.de, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, ck.hu@mediatek.com, linux-mediatek@lists.infradead.org, daniel@ffwll.ch, Chen-Yu Tsai <wenst@chromium.org>, matthias.bgg@gmail.com, shawn.sung@mediatek.com, airlied@gmail.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-I looked more close at the call trace of the warning and it seems that the
-problems=C2=A0
-occur when shutting down the interface:
-[  T847] Call Trace:
-[  T847]  <TASK>
-[  T847]  ? __warn+0x6a/0xc0
-[  T847]  ? mt7921_ipv6_addr_change+0x1d0/0x1f0 [mt7921_common]
-[  T847]  ? report_bug+0x142/0x180
-[  T847]  ? handle_bug+0x3a/0x70
-[  T847]  ? exc_invalid_op+0x17/0x70
-[  T847]  ? asm_exc_invalid_op+0x1a/0x20
-[  T847]  ? mt7921_ipv6_addr_change+0x1d0/0x1f0 [mt7921_common]
-[  T847]  ? srso_alias_return_thunk+0x5/0xfbef5
-[  T847]  ? __ipv6_ifa_notify+0x16f/0x4d0
-[  T847]  ? ieee80211_ifa6_changed+0x5e/0x70 [mac80211]
-[  T847]  ? atomic_notifier_call_chain+0x51/0x80
-[  T847]  ? addrconf_ifdown.isra.0+0x43f/0x810
-[  T847]  ? srso_alias_return_thunk+0x5/0xfbef5
-[  T847]  ? addrconf_notify+0x15d/0x760
-[  T847]  ? __timer_delete_sync+0x70/0xd0
-[  T847]  ? raw_notifier_call_chain+0x43/0x60
-[  T847]  ? dev_close_many+0xea/0x160
-[  T847]  ? dev_close+0x65/0x80
-[  T847]  ? cfg80211_shutdown_all_interfaces+0x48/0xe0 [cfg80211]
-[  T847]  ? cfg80211_rfkill_set_block+0x25/0x40 [cfg80211]
-[  T847]  ? rfkill_set_block+0x8f/0x160 [rfkill]
-[  T847]  ? rfkill_fop_write+0x14e/0x1e0 [rfkill]
-[  T847]  ? vfs_write+0xf3/0x420
-[  T847]  ? srso_alias_return_thunk+0x5/0xfbef5
-[  T847]  ? ksys_write+0xae/0xe0
-[  T847]  ? do_syscall_64+0x5f/0x170
-[  T847]  ? entry_SYSCALL_64_after_hwframe+0x55/0x5d
-[  T847]  </TASK>
-[  T847] ---[ end trace 0000000000000000 ]---
+Hi all,
 
-I think there's a race happening on shutdown between ipv6_addr_change (whi=
-ch
-uses mvif->phy)
-and ieee80211_do_stop (which zeros the private data including mvif->phy).
+On Thu, 18 Jul 2024 at 11:24, AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+> Il 18/07/24 11:27, Fei Shao ha scritto:
+> > This matches my preference in [1], so of course I'd like to see it
+> > merged... if maintainers are okay with it.
+> > Given I've tested the exact same change before:
+> > Reviewed-by: Fei Shao <fshao@chromium.org>
+> > Tested-by: Fei Shao <fshao@chromium.org>
+>
+> Thanks!
 
-Resend with fixed formatting.
+And:
+Reviewed-by: Daniel Stone <daniels@collabora.com>
 
-Bert Karwatzki
+> >> OOTH, Intel recently added a feature for enumerating "suggested"
+> >> cursor sizes. See https://patchwork.freedesktop.org/patch/583299/
+> >>
+> >> Not sure if other compositors will end up using it or not.
+>
+> Yeah, that's good, and we might do that as well in MediaTek DRM... in a slightly
+> different way, as it looks like they are simply hinting the same values as the
+> mode_config is declaring... while we'd be adding a hint with a sensible size that
+> is less than the maximum supported one from the overlay.
+>
+> In reality, here, the issue is that the most popular compositors do not support
+> overlay planes (as in, they don't use them at all)... my first idea was to remove
+> the CURSOR plane entirely and declare it as per what it is for real (an OVERLAY),
+> but that would only give a performance penalty as that'd become yet another unused
+> plane and nothing else.
+>
+> If at least the most popular compositors did support overlay planes, I'd have done
+> that instead... but oh, well!
+>
+> And anyway I hope that the maintainers are okay with this because, well, otherwise
+> MediaTek SoCs won't be usable with any popular WM.
 
+Every compositor is going to use it, yeah. But until it does, people
+are just going to use cursor_width and cursor_size. A lot of older
+desktop hardware supports only a single fixed dimension for the cursor
+plane (hence the single values), so rather than guess if it needs to
+be 32x32 or 64x64 or whatever, people just allocate to the size. Not
+to mention that the old pre-atomic cursor ioctls actually require that
+you allocate for cursor_width x cursor_height.
+
+So yeah, this is the right fix - though you could even be more
+aggressive and reduce it to 256x256 - and supporting the CURSOR_SIZE
+property would be even more useful again.
+
+Cheers,
+Daniel
 
