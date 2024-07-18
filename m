@@ -4,66 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA0F9C3DA49
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jul 2024 11:11:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73461C3DA49
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jul 2024 11:15:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9Trii3+vrB/5zfPPQIh2e6IKmeSgZGAO8H8qq3ly+H8=; b=DYUIz/s17AuREDRf5EIwQbJXse
-	XDMEQD2CYRk0UvtA59Ryalj3J+ew0lZ7tc8Cq+kvLUzBHKLlu1bfkVhpPrKt5HdD2fKvHBtKt26JB
-	JyDE0CCq2FgjNTgPFcIJEwn9LzmrThipHwzJeLdVhXwFOph6mnZtxYY06TY36VIOxuMQXQTl8Zjz6
-	V1QItN4zHtmBo/hdO5RFpQn+6ofyQOTR2htVG4IBdgzf7Jl9hWTKqn1F41lwc69pVbPqYPs3g2OQF
-	aUivJp5pVyU/cQSwfozyv3hXy1QKXVC0rUi1YtRAR9J1hSQ1ouMaoz4fkUGdNleZONYkKjB+U51+R
-	36IJjfgA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=fvLtlvVLIc2uX9Mv4C24Hw1TFHGs1i0AqLl5Tk1HA1I=; b=mVrBPqXB8DKnPs89Ck9aEZe2kF
+	mPwD+YPWa3+qaqYQOQslIoGBXfICnMas9ed8+5df7+CT655+FXT7LHto9Cf0RWpI3sorCT57L/Tt2
+	MZBu6YK50FppWObQsR+1zlndoyjXY7g9GxL8nf4G51WFXiVZRsXoH7BplfC3VW6oT1ocMbDCiJAq8
+	sE6iUL6IxVTbUMeIhYZ3v8x7yw7/HSAqPgl6ZQJ/FmacjFfgyM3OPqNnRwjmTiJm+nrEaJhWtF/rH
+	nmLnsRs0YtSZgL3Zwnqk8dpksVJwFnDQg4YgmLYwZwKEEhzf/mkwh8dmJa/zWoRDyhnbTiTnmdfMU
+	vCXkPbfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sUP3E-0000000GnPy-1hdz;
-	Thu, 18 Jul 2024 11:11:56 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1sUP6k-0000000Go4z-0Wj3;
+	Thu, 18 Jul 2024 11:15:34 +0000
+Received: from mail-yw1-x112a.google.com ([2607:f8b0:4864:20::112a])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sUP2e-0000000GnBt-2Y05;
-	Thu, 18 Jul 2024 11:11:22 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id E87E6CE1A18;
-	Thu, 18 Jul 2024 11:11:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 2D0F0C4AF0B;
-	Thu, 18 Jul 2024 11:11:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1721301078;
-	bh=nHLQySi4Qxed3a4/EtilX7JDD87dxqGt+3hDiY7Wtu8=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=G9wXSFpfOk6/bFB10yskzWi/bfVXTA+9qS3SbgGLcdf5apD5riqhqrsyXkWqwwKGm
-	 0BVG3k1QwqXUuHyndwyg2jwgjK+9UARiifYIkJ/nfhpS/8/2OOPg73GVC66hJSr1hO
-	 4FuoygsFOjYLAigIlK8hc1mTiBIGfreHtHkijwEdv5m2ln+qq7H9Ykvjb8b6od0qx1
-	 6WIFifEUW4sqIxRdzgLmkQPHv2He7D0thqyZHuR700etSfovMS6N2ZHyWw15oBR3PS
-	 qO5jjVPpW1hi+fjvbV+Za3l2/EJmrJIzC2EMtBZp45zo9Bg3FBFmEzTZwG0TFPA2XW
-	 C3jRzgmf8hi8g==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 19D46C433E9;
-	Thu, 18 Jul 2024 11:11:18 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1sUP6O-0000000Gnyd-2umM
+	for linux-mediatek@lists.infradead.org;
+	Thu, 18 Jul 2024 11:15:14 +0000
+Received: by mail-yw1-x112a.google.com with SMTP id 00721157ae682-654cf0a069eso6588227b3.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 18 Jul 2024 04:15:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=fooishbar-org.20230601.gappssmtp.com; s=20230601; t=1721301311; x=1721906111; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=fvLtlvVLIc2uX9Mv4C24Hw1TFHGs1i0AqLl5Tk1HA1I=;
+        b=aRujxtvX72Q8Rwt0DZOFdsP9/c2WUuYJ22S65Gsa+MXz6V43D49nkOqO4idAPwgbYF
+         1Vd2SsjQRiahY7nauBPhLR1N2LvPMKECPMcsYHweCTFENMjYilOO1D4lxr5/6iaq/GwD
+         BviqRng1ENO2fgAA/UenDrZF3IDBwrR8V9xv7AmPgRAmRBgMYJZmxrSkbCh3u2+w0zlX
+         kHAAcLaftqqmRTRfU9lPtp+zG2e9FIb1H4o6mHA/PXI/vvT3ARBrNVXA3KU+qjtFXqAD
+         5BAJg7uMzySbm1S/dc9DiJZZflvPHU52emXcnEpjTH2DIPmlCiwGcE9raY1YOKp92JcE
+         6rLg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1721301311; x=1721906111;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=fvLtlvVLIc2uX9Mv4C24Hw1TFHGs1i0AqLl5Tk1HA1I=;
+        b=PoD6ZeOSihnF92YBk9fRHjj6S+aQwt6BycDEqOHfrMRkCyDoCuuwcI4kY0LE35aX7l
+         m61R7fWkjBGZK5f3fn2PhgBR6nSQ7UKdGmGRPDXNJwlHyUSFUW8PZ+qcS41cX9LS+B57
+         JJlQLxFt/k6XEIioiQwOkIg65wnYoWiCc4trb+QyBdtAnbp/P74EsnR7m9AwJrCkfwHn
+         jKe7Qex02+rhMO+2I+SJS5/l6B69MtN2eC8B8h8iE9AeaX3aaEwupD1hr9Pw1WiQ2caC
+         sMDPSPVpEzDAsJuU9BtLk1qrnZ36Ux2CUB//TwzaBSnikcZGGI5OWhoy1Iiri5tyqIxM
+         K2iQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXOR8tWuxDY2CnjNAEfXGYOZ1iGK72Bg6GtW8p21hCuMiXh7/6IzEmaPSFDY27Cc8ghEDqJU5xjwkbUPxdsLavJMdXBM/cXqli7PuDbxYFzEOz9
+X-Gm-Message-State: AOJu0YwKwuYPIGC6pcwgDPp+X/8EXsRoqGU1DKElcvPtsB64N9gzbmZL
+	WDRp3J6rAROq2OwL6R9+rHM2B457Fv2Nsgn47/2XYHSNJSdIzAEs12HGykP3+aySbv+AjF70TQ3
+	vwRm3PTT8s8pAQwp1QVkrxLe0vCfETgXpsBRzBA==
+X-Google-Smtp-Source: AGHT+IHg27/h28x8cH6RNystKqwtN9ObuunzW9wLXPCT62zkr9oqTMXzH3ODAVfWE0/MOqv8X7Ek5YsHXkLmGxcCKWA=
+X-Received: by 2002:a0d:da07:0:b0:64b:630f:9f85 with SMTP id
+ 00721157ae682-664fe45113fmr49718207b3.12.1721301311396; Thu, 18 Jul 2024
+ 04:15:11 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net] net: airoha: Fix NULL pointer dereference in
- airoha_qdma_cleanup_rx_queue()
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <172130107810.19541.15489798914514509660.git-patchwork-notify@kernel.org>
-Date: Thu, 18 Jul 2024 11:11:18 +0000
-References: <7330a41bba720c33abc039955f6172457a3a34f0.1721205981.git.lorenzo@kernel.org>
-In-Reply-To: <7330a41bba720c33abc039955f6172457a3a34f0.1721205981.git.lorenzo@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: netdev@vger.kernel.org, nbd@nbd.name, sean.wang@mediatek.com,
- Mark-MC.Lee@mediatek.com, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, angelogioacchino.delregno@collabora.com,
- lorenzo.bianconi83@gmail.com
+References: <20240718082507.216764-1-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20240718082507.216764-1-angelogioacchino.delregno@collabora.com>
+From: Daniel Stone <daniel@fooishbar.org>
+Date: Thu, 18 Jul 2024 12:15:00 +0100
+Message-ID: <CAPj87rM1dbawwtRnMzDRLLCt6FuOU+851hcJhKDsg1ioRM2Pqw@mail.gmail.com>
+Subject: Re: [PATCH] drm/mediatek: Declare Z Position for all planes
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com, 
+	daniel@ffwll.ch, matthias.bgg@gmail.com, shawn.sung@mediatek.com, 
+	ck.hu@mediatek.com, dri-devel@lists.freedesktop.org, 
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, kernel@collabora.com
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240718_041120_862149_E85735BB 
-X-CRM114-Status: UNSURE (   8.18  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240718_041512_740725_A1CEF2A5 
+X-CRM114-Status: GOOD (  13.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,30 +91,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+Hi,
 
-This patch was applied to netdev/net.git (main)
-by Paolo Abeni <pabeni@redhat.com>:
+On Thu, 18 Jul 2024 at 09:25, AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+> MediaTek SoCs support multiple planes, one of which is the primary
+> and all the others are overlays (and CURSOR is the last overlay).
+>
+> In all currently supported SoCs, the Z order of the overlays can't
+> be changed with any fast muxing action, and can only be changed by
+> swapping the contents of the entire register set of one overlay
+> with the other to internally reorder the layer properties, which
+> is indeed feasible, but probably more expensive than desired.
+>
+> Declare the Z position for all planes with an immutable property
+> at least for now, so that the userspace can take its decisions
+> accordingly.
 
-On Wed, 17 Jul 2024 10:47:19 +0200 you wrote:
-> Move page_pool_get_dma_dir() inside the while loop of
-> airoha_qdma_cleanup_rx_queue routine in order to avoid possible NULL
-> pointer dereference if airoha_qdma_init_rx_queue() fails before
-> properly allocating the page_pool pointer.
-> 
-> Fixes: 23020f049327 ("net: airoha: Introduce ethernet support for EN7581 SoC")
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> 
-> [...]
+Thanks a lot for this fix!
 
-Here is the summary with links:
-  - [net] net: airoha: Fix NULL pointer dereference in airoha_qdma_cleanup_rx_queue()
-    https://git.kernel.org/netdev/net/c/4e076ff6ad53
+If I understand your middle paragraph correctly, please don't ever do
+that though. I think what you're suggesting by 'swapping the contents
+of the entire register set' is:
+* plane ID 40 (normally) controls OVL1
+* plane ID 41 controls OVL2
+* userspace configures planes 40 & 41 with a zpos suggesting that 41
+should be below 40
+* the DRM driver 'swaps the contents of the entire register set' by
+making plane 40 control OVL2 instead and plane 41 control OVL1 instead
 
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
+If so - please no. Just declare an immutable zpos, because that
+actually matches the hardware, and then leave userspace to configure
+the planes in a way which makes sense. Looking at the zpos property is
+already required in order to handle overlapping overlay planes, and
+any userspace which supports overlays (including Weston) already looks
+at zpos, handles immutable properties, and will dtrt.
 
+Anyway, this is:
+Acked-by: Daniel Stone <daniels@collabora.com>
 
+Cheers,
+Daniel
 
