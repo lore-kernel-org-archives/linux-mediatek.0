@@ -4,66 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58665C3DA61
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jul 2024 22:08:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1612BC3DA61
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jul 2024 23:46:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Oadz38JoIr7T8qEdl1qZy6h/lKoGcM2cLSz3E3Ktv6E=; b=eJPfKqk0FZaG0+dP/E2g9obunf
-	Lmco/ZijHIafwk+Uzp4A0u/znCVl8TGwXfh/lab/NolZYptvHiaPilONyu5uxNEn/Bn3V9/tO9eaC
-	XAa8BGFU7C7Pzz1BnXsfhdwTBPsciBzktlEwzAfeiiUMNBYUlhrdYplVEj64U/ofKcK2esiJK0yqk
-	XSmdLkXYsxiQ2HGfpqWa0X70NHC88B74X/99XPvvIwsGLa/lY01nASl4FcTjuqyOkc1qc8JegyamK
-	b2aHIJEHmV12nfVqzH4C4xI7gMcDy/L9B0aplSb+WMv3zVCHwFD9CrUSrdcc2zXAEUGmRrLpm6Vgd
-	QshLQ4IA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=kumYOpt90WwIURjW83CrBNCxrFrm56wRKCJC8GtXD4I=; b=yJkGbABRg/9ESO1LbZiO0D7PCI
+	INxvXYy4gCUr6RhsCLltPzWwZ8TGIYMtVIvXnrIw5r8s+e9pGVzvgrAG8HXIyuQ+6I1BbAWf+3BfG
+	hbyTAi81t228vmY+qcOeLcirWxFiCa0jFiVoqJlHXuU1CiGZANFWaWYkj99Qrd6HEUTQfmcnQTdZv
+	dzbhoGDkpuyYz2H/mzRMIKggNgYIIX1Xtuld4jsEjNxQJPD+zHc7wLfq28+KZdT4osgdSI50IyUAP
+	TNYYeosThS5TE34Ssq16i1gTCVD5MN1Ij6lvs0uE0D7e8aG5DlkPf7E7fvaSWOS1ldUaY9/nvYbp8
+	/jkhZJWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sUZII-00000000opL-3nbL;
-	Thu, 18 Jul 2024 22:08:10 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1sUape-0000000124z-28FW;
+	Thu, 18 Jul 2024 23:46:42 +0000
+Received: from mail-oi1-f175.google.com ([209.85.167.175])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sUZHv-00000000okz-20MN;
-	Thu, 18 Jul 2024 22:07:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1721340462;
-	bh=gzGiI2wvuZEYnzUMFQ5wGfxZiwKRMQdKAglWmCVvamQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=eGD9EUXebDntpI1lVGMqIM9QrrH1deaoVIzxKhENmh3W17tvtAp1fnPoZZb0wr7Jl
-	 7YDULidHqHeCU81e9AeYM5KVRmH7I57A+lUTHzegyr9GxRtMtkVGYBuGzXUJQ4rnhk
-	 mWfXIo1erYGSpQ5quJzjentVLKjx4JMq12TJr7JzN0thSKkKbdgt/WEtV8MMDdnyXq
-	 ird2tawtKmt2g3Ln2LOA9TUW1AXBEiaXxaXxGolYjC6Gvf0LlTk3hlgGW2oG0v7OD0
-	 ftz4bilWCdLC0EMfX4fd0dTfqazOT0++DZDBPDE3P11sfoSv+AUsCJVf+RcPL6gG9k
-	 Ab8CCBZTWz9iQ==
-Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 6BA5B3780520;
-	Thu, 18 Jul 2024 22:07:40 +0000 (UTC)
-Date: Thu, 18 Jul 2024 18:07:38 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Chen-Yu Tsai <wenst@chromium.org>, kernel@collabora.com,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2] nvmem: mtk-efuse: Only register socinfo device if
- needed cells are there
-Message-ID: <05dd24ec-d084-4708-a241-b4714391118a@notapiano>
-References: <20240708-mtk-socinfo-no-data-probe-err-v2-1-7ae252acbcc2@collabora.com>
- <a1914f2b-93f2-4de4-9c4b-2e1f6b39cf3a@collabora.com>
+	id 1sUapa-0000000123b-282k
+	for linux-mediatek@lists.infradead.org;
+	Thu, 18 Jul 2024 23:46:40 +0000
+Received: by mail-oi1-f175.google.com with SMTP id 5614622812f47-3dab349342fso34043b6e.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 18 Jul 2024 16:46:37 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1721346396; x=1721951196;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=kumYOpt90WwIURjW83CrBNCxrFrm56wRKCJC8GtXD4I=;
+        b=FdrzlOHHrxrvXUKFBIt/MBbBBJ4Xh9v81Hr4qjpea9wDdQwJB19tXtdVK/a3RaXQq1
+         GIfheVKbQ8Ut44fm36ybJ5y9IYcostDuHGJr3RQ3luFgw+5O9JlxKpllA7e6u2B6Qbuv
+         Wf/6h5UhDylC3ziqIt8wAxG6cdCUeOQH4mQSnRa9ZYBvdOU4PHP4vm7Mwx5prroHRIc9
+         hejRHkKvTGjbhz22EJRf77CJ1iFUduBEl4fEuxP+okvS+wX/XwVmWJsrKtbvIGcQppXC
+         /AX1eV8mZuuG7j3jik7ndvx97ub8+iISRTotZLfiay9S6pIgtjHVH877etFsqoG1dZ1b
+         xl0g==
+X-Forwarded-Encrypted: i=1; AJvYcCVEq15DrB/jXjn0TCFnTi7DUDvZ77s+4DXAAU3neSo9Xkx6N/xI5DdJbg+JjGP/kuL1W4cFpSLPPGU8Tlh+IXXOFk40Vhm+qjHtGm/E+dHZLPHl
+X-Gm-Message-State: AOJu0YyFZ7os0q1XmYdSHU8jdqN8A+c5/YDrVgI2OVs3XOxAu5jKd1YB
+	DK4CjmJBbb8M97OQwnNcBkUbVZHDo1uoEJIVMCXO80oJbhzfRI4Y
+X-Google-Smtp-Source: AGHT+IFRf7TjBSxNEPCzpgioy5JjkDTiqmmUFLR3bozjk/syGEwERkAtjw3rXmpWtwdoOUzOIwQD1Q==
+X-Received: by 2002:a05:6808:10ce:b0:3d9:36ba:2ce with SMTP id 5614622812f47-3dadf4dfc21mr768420b6e.1.1721346396099;
+        Thu, 18 Jul 2024 16:46:36 -0700 (PDT)
+Received: from sean-ThinkPad-T450s.attlocal.net ([2600:1702:5083:7610:3c59:65c4:19fc:c2eb])
+        by smtp.gmail.com with ESMTPSA id 5614622812f47-3dae0978889sm70677b6e.13.2024.07.18.16.46.35
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 18 Jul 2024 16:46:35 -0700 (PDT)
+From: sean.wang@kernel.org
+To: nbd@nbd.name,
+	lorenzo.bianconi@redhat.com
+Cc: sean.wang@mediatek.com,
+	deren.wu@mediatek.com,
+	mingyen.hsieh@mediatek.com,
+	linux-wireless@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	Bert Karwatzki <spasswolf@web.de>
+Subject: [PATCH] wifi: mt76: mt7921: fix null pointer access in mt792x_mac_link_bss_remove
+Date: Thu, 18 Jul 2024 16:46:33 -0700
+Message-Id: <20240718234633.12737-1-sean.wang@kernel.org>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <a1914f2b-93f2-4de4-9c4b-2e1f6b39cf3a@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240718_150747_700984_BE300415 
-X-CRM114-Status: GOOD (  25.66  )
+X-CRM114-CacheID: sfid-20240718_164638_572315_68F17111 
+X-CRM114-Status: UNSURE (   8.72  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,62 +84,94 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 10, 2024 at 11:31:11AM +0200, AngeloGioacchino Del Regno wrote:
-> Il 08/07/24 21:43, Nícolas F. R. A. Prado ha scritto:
-> > Not every efuse region has cells storing SoC information. Only register
-> > an socinfo device if the required cells are present.
-> > 
-> > This prevents the pointless process of creating an socinfo device,
-> > probing it with the socinfo driver only to ultimately error out like so
-> > 
-> >    mtk-socinfo mtk-socinfo.0.auto: error -ENOENT: Failed to get socinfo data
-> >    mtk-socinfo mtk-socinfo.0.auto: probe with driver mtk-socinfo failed with error -2
-> > 
-> > This issue is observed on the mt8183-kukui-jacuzzi-juniper-sku16
-> > platform, which has two efuse regions, but only one of them contains the
-> > SoC data.
-> > 
-> 
-> I think that we should rather remove or disable the first eFuse region, as
-> even though that is enabled:
-> 
->  - This is the only SoC having two regions
->    - I'm not even sure that the region at 0x8000000 is really efuse
->    - Not even referenced in datasheets....
->  - It's unused, as in, it's not exposing any information and no declared cells
-> 
-> Don't misunderstand me, this is not an invalid change, but I rather prefer
-> to resolve this by disabling that (effectively unused!) node, avoiding to
-> add more lines to this driver that would be useless after fixing that small
-> single thing.
+From: Sean Wang <sean.wang@mediatek.com>
 
-I'm not confident that we can say that that efuse is not exposing any
-information. Indeed there are no cells so it's not used by any other driver, but
-the efuse contents are still exposed to userspace if CONFIG_NVMEM_SYSFS is
-enabled.
+Fix null pointer access in mt792x_mac_link_bss_remove.
 
-I dumped it on one of the mt8183-kukui-jacuzzi-juniper-sku16 units:
+To prevent null pointer access, we should assign the vif to bss_conf in
+mt7921_add_interface. This ensures that subsequent operations on the BSS
+can properly reference the correct vif.
 
-  $ ls -l /sys/bus/nvmem/devices/
-  total 0
-  lrwxrwxrwx    1 root     root             0 Jul 18 21:43 mmtd0 -> ../../../devices/platform/soc/11010000.spi/spi_master/spi1/spi1.0/mtd/mtd0/mtd0
-  lrwxrwxrwx    1 root     root             0 Jul 18 21:43 nvmem0 -> ../../../devices/platform/soc/8000000.efuse/nvmem0
-  lrwxrwxrwx    1 root     root             0 Jul 18 21:43 nvmem1 -> ../../../devices/platform/soc/11f10000.efuse/nvmem1
-  
-  $ hexdump -C /sys/bus/nvmem/devices/nvmem0/nvmem
-  00000000  88 07 00 00 00 8a 00 00  00 ca 00 00 00 00 00 00  |................|
-  00000010
+[  T843] Call Trace:
+[  T843]  <TASK>
+[  T843]  ? __die+0x1e/0x60
+[  T843]  ? page_fault_oops+0x157/0x450
+[  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
+[  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
+[  T843]  ? search_bpf_extables+0x5a/0x80
+[  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
+[  T843]  ? exc_page_fault+0x2bb/0x670
+[  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
+[  T843]  ? lock_timer_base+0x71/0x90
+[  T843]  ? asm_exc_page_fault+0x26/0x30
+[  T843]  ? mt792x_mac_link_bss_remove+0x24/0x110 [mt792x_lib]
+[  T843]  ? mt792x_remove_interface+0x6e/0x90 [mt792x_lib]
+[  T843]  ? ieee80211_do_stop+0x507/0x7e0 [mac80211]
+[  T843]  ? ieee80211_stop+0x53/0x190 [mac80211]
+[  T843]  ? __dev_close_many+0xa5/0x120
+[  T843]  ? __dev_change_flags+0x18c/0x220
+[  T843]  ? dev_change_flags+0x21/0x60
+[  T843]  ? do_setlink+0xdf9/0x11d0
+[  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
+[  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
+[  T843]  ? security_sock_rcv_skb+0x33/0x50
+[  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
+[  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
+[  T843]  ? __nla_validate_parse+0x61/0xd10
+[  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
+[  T843]  ? genl_done+0x53/0x80
+[  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
+[  T843]  ? netlink_dump+0x357/0x410
+[  T843]  ? __rtnl_newlink+0x5d6/0x980
+[  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
+[  T843]  ? genl_family_rcv_msg_dumpit+0xdf/0xf0
+[  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
+[  T843]  ? __kmalloc_cache_noprof+0x44/0x210
+[  T843]  ? rtnl_newlink+0x42/0x60
+[  T843]  ? rtnetlink_rcv_msg+0x152/0x3f0
+[  T843]  ? mptcp_pm_nl_dump_addr+0x180/0x180
+[  T843]  ? rtnl_calcit.isra.0+0x130/0x130
+[  T843]  ? netlink_rcv_skb+0x56/0x100
+[  T843]  ? netlink_unicast+0x199/0x290
+[  T843]  ? netlink_sendmsg+0x21d/0x490
+[  T843]  ? __sock_sendmsg+0x78/0x80
+[  T843]  ? ____sys_sendmsg+0x23f/0x2e0
+[  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
+[  T843]  ? copy_msghdr_from_user+0x68/0xa0
+[  T843]  ? ___sys_sendmsg+0x81/0xd0
+[  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
+[  T843]  ? crng_fast_key_erasure+0xbc/0xf0
+[  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
+[  T843]  ? get_random_bytes_user+0x126/0x140
+[  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
+[  T843]  ? __fdget+0xb1/0xe0
+[  T843]  ? __sys_sendmsg+0x56/0xa0
+[  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
+[  T843]  ? do_syscall_64+0x5f/0x170
+[  T843]  ? entry_SYSCALL_64_after_hwframe+0x55/0x5d
+[  T843]  </TASK>
 
-I power cycled the unit and ran this again and it still showed the same
-contents. I also ran the same on a different unit of the same model and it
-showed the same contents. Of course this doesn't prove anything, but given that
-the contents seem to be constant across reboots and even different units, it
-does look like it could be an efuse to me. :)
+Fixes: 1541d63c5fe2 ("wifi: mt76: mt7925: add mt7925_mac_link_bss_remove to remove per-link BSS")
+Reported-by: Bert Karwatzki <spasswolf@web.de>
+Closes: https://lore.kernel.org/linux-wireless/2fee61f8c903d02a900ca3188c3742c7effd102e.camel@web.de/#b
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7921/main.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-As to whether the contents are useful at all, or if there are
-userspace applications making use of it I have no clue. But if in doubt,
-shouldn't we keep it around?
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+index 2e6268cb06c0..1bab93d049df 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+@@ -303,6 +303,7 @@ mt7921_add_interface(struct ieee80211_hw *hw, struct ieee80211_vif *vif)
+ 
+ 	mvif->bss_conf.mt76.omac_idx = mvif->bss_conf.mt76.idx;
+ 	mvif->phy = phy;
++	mvif->bss_conf.vif = mvif;
+ 	mvif->bss_conf.mt76.band_idx = 0;
+ 	mvif->bss_conf.mt76.wmm_idx = mvif->bss_conf.mt76.idx % MT76_CONNAC_MAX_WMM_SETS;
+ 
+-- 
+2.25.1
 
-Thanks,
-Nícolas
 
