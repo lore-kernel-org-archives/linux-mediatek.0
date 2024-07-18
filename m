@@ -4,65 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77B1AC3DA60
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jul 2024 11:23:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1990C3DA63
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jul 2024 13:59:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AlWFrie2bA9M4+Zktuizvsch4+fR4sMHeS71KZmhtxE=; b=I74KgV7dWLwH9B
-	FRrN+hh3WbTbLuKqVOgDap6EsPT4ryp4GqrbJLOTbTfjiX+IeUXG3rGe+ozMpX0rp4G7nH5h8raTI
-	/l0Psjxvv9PjP6yqcpoVT9o6aX9z7ekLUZ1E70oVcWD1ZjjJKIKji4I1CkHrBIQES0wVuzleIB/fX
-	ELXrQXrwZWRXSFlADKYs/7sj7r3HFncCkiHfhcjFs7yRFGqQemP5l+j4ATjomJZlmA62ntE6DBUNy
-	VH10bJnTW9GvYWfdqhUoc7GK3nPcy0SVQ7PP1bHdZBMIxxKXlcX9ZpnSzUkHU/Dr9IpwQr/mFgumK
-	YmkWJlIiqnEXbrlhCsqA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=77DH8cGiyDVFUNLQZ2NQCtWvQsztffxtl4L3TNrSCBM=; b=dn2MeU0+rYVm07V0yB2IsmsdFq
+	R424SLSiKsX9ZDpjPXRXU2q3uR3grNw+hf5PY9ofVcRPwAm5IsqOYftJJtbC97Q/Tr8dSvbzhfgfQ
+	c7ijTH+33+jyCbFlq5P4kB8bpjtLfDt6V1zWIU7exMGIJmf+9zCqoeB/96Wl49JtK9vYUZMRG8+Yt
+	fPtxi9u7rAN0f5U8qAuq2yCqsNenSa0O0ef58wa1r6RP3/IQwY0DpAJ/Ur0NPpNiuto9mKqhzxRMy
+	x0uYMoPV/SUw0RcQmIv4t3tTw/Md+78HXKFteZUiTQpIZxYgRAEVWUI0beqkgsKNG2uSGu4a3MYdG
+	tIyUEirQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sUPER-0000000GpLs-41E0;
-	Thu, 18 Jul 2024 11:23:31 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1sURfb-0000000HD3q-2xcJ;
+	Thu, 18 Jul 2024 13:59:43 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sUPE4-0000000GpGH-3vNy;
-	Thu, 18 Jul 2024 11:23:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1721301787;
-	bh=Rhu+ivLN8i4cGGfuNKe45o1pJKIStecWgDqToMVnLUk=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=eRVtoGyNQfsWeg4dFxpH5wAPa+R0323lbfRdSK23/AWBENSv+IAO3XPjSge9THc/E
-	 PZqHjs4HABtU3UnGe0EYzgLA+quFty+o7HbaYM2ueuBQj/5vOKc2M2FXZidiTnCaU1
-	 lf5JhkTpiidnrL8ssxsLdxAivJhW0mij2wPJzPeDrVWRNno4+ZpKrxpCARnFrEEYbw
-	 s/JHlZ7qhswD4XVdqDl8KEh5CQjt8zqnTceRAKP2if5Op5phQV3RuBJBDJEnDi0BWR
-	 M0ibod+QQlL4Pu/12Y9YGAq53aIJJFDv+RZl/3iYWfsqjpuTRdASZYbUQCyfkV/v+Q
-	 gGySo5cAKzTbQ==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id A5FBB378202D;
-	Thu, 18 Jul 2024 11:23:06 +0000 (UTC)
-Message-ID: <d6f20609-5127-4010-b691-40cd3b253283@collabora.com>
-Date: Thu, 18 Jul 2024 13:23:05 +0200
+	id 1sURfZ-0000000HD1z-20UQ
+	for linux-mediatek@lists.infradead.org;
+	Thu, 18 Jul 2024 13:59:42 +0000
+X-UUID: f6977f40450d11efa6c87f6b4542ff6b-20240718
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=77DH8cGiyDVFUNLQZ2NQCtWvQsztffxtl4L3TNrSCBM=;
+	b=IqtNgQxMXUgldajOsFDLnz2WiUU6Z+EEzokxwj825XiAfD/Ns3Gh8bcqvNgtMrcsoiMCQBdDgbmKadzYbVhvGFirO5KBBF4pqDBFV9qtgTz+MA/wBHQ9yWPKb3gGc6SkfAKcHK7DJXbyB6Vb5ysclKqrNGTEMBKuUbQWOYuvLLM=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.40,REQID:54620c82-8060-47ab-bce1-06bbcfa002dd,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:ba885a6,CLOUDID:63b680d5-0d68-4615-a20f-01d7bd41f0bb,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: f6977f40450d11efa6c87f6b4542ff6b-20240718
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <quan.zhou@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1481028914; Thu, 18 Jul 2024 06:59:34 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Thu, 18 Jul 2024 21:49:31 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Thu, 18 Jul 2024 21:49:30 +0800
+From: Quan Zhou <quan.zhou@mediatek.com>
+To: Quan Zhou <quan.zhou@mediatek.com>, Felix Fietkau <nbd@nbd.name>, Lorenzo
+ Bianconi <lorenzo@kernel.org>
+CC: Sean Wang <sean.wang@mediatek.com>, Deren Wu <Deren.Wu@mediatek.com>,
+	Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
+	Leon Yen <Leon.Yen@mediatek.com>, Ming Yen Hsieh
+	<mingyen.hsieh@mediatek.com>, KM Lin <km.lin@mediatek.com>, Posh Sun
+	<posh.sun@mediatek.com>, Shengxi Xu <shengxi.xu@mediatek.com>, Eric-SY Chang
+	<Eric-SY.Chang@mediatek.com>, CH Yeh <ch.yeh@mediatek.com>, Robin Chiu
+	<robin.chiu@mediatek.com>, linux-wireless <linux-wireless@vger.kernel.org>,
+	linux-mediatek <linux-mediatek@lists.infradead.org>
+Subject: [PATCH] wifi: mt76: mt7921: fix a potential scan no APs
+Date: Thu, 18 Jul 2024 21:49:09 +0800
+Message-ID: <1ac1ae779db86d4012199a24ea2ca74050ed4af6.1721300411.git.quan.zhou@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] drm/mediatek: Set sensible cursor width/height values to
- fix crash
-To: Daniel Stone <daniel@fooishbar.org>
-References: <20240718082410.204459-1-angelogioacchino.delregno@collabora.com>
- <CAGXv+5GBg73kWuiDt=9s7M4oJeHhWOF3bPY7Ju+qn1kJgNNaGw@mail.gmail.com>
- <CAC=S1nigoJWAECBrm-Q=Co1-qd_yUhx3R4D9=dYeUV=gr5UYfQ@mail.gmail.com>
- <74e7477b-81c7-4713-80cc-1cb476185bc9@collabora.com>
- <CAPj87rPZRjmMPjaOY-UH4auTuMS6mh9N7=maRBzxut2OgtALbw@mail.gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <CAPj87rPZRjmMPjaOY-UH4auTuMS6mh9N7=maRBzxut2OgtALbw@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240718_042309_146534_BAB196B3 
-X-CRM114-Status: GOOD (  22.57  )
+X-CRM114-CacheID: sfid-20240718_065941_542137_29CFFC8F 
+X-CRM114-Status: UNSURE (   8.50  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,73 +88,46 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: chunkuang.hu@kernel.org, kernel@collabora.com, p.zabel@pengutronix.de, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, ck.hu@mediatek.com, linux-mediatek@lists.infradead.org, daniel@ffwll.ch, Chen-Yu Tsai <wenst@chromium.org>, matthias.bgg@gmail.com, shawn.sung@mediatek.com, airlied@gmail.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 18/07/24 13:10, Daniel Stone ha scritto:
-> Hi all,
-> 
-> On Thu, 18 Jul 2024 at 11:24, AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> wrote:
->> Il 18/07/24 11:27, Fei Shao ha scritto:
->>> This matches my preference in [1], so of course I'd like to see it
->>> merged... if maintainers are okay with it.
->>> Given I've tested the exact same change before:
->>> Reviewed-by: Fei Shao <fshao@chromium.org>
->>> Tested-by: Fei Shao <fshao@chromium.org>
->>
->> Thanks!
-> 
-> And:
-> Reviewed-by: Daniel Stone <daniels@collabora.com>
-> 
->>>> OOTH, Intel recently added a feature for enumerating "suggested"
->>>> cursor sizes. See https://patchwork.freedesktop.org/patch/583299/
->>>>
->>>> Not sure if other compositors will end up using it or not.
->>
->> Yeah, that's good, and we might do that as well in MediaTek DRM... in a slightly
->> different way, as it looks like they are simply hinting the same values as the
->> mode_config is declaring... while we'd be adding a hint with a sensible size that
->> is less than the maximum supported one from the overlay.
->>
->> In reality, here, the issue is that the most popular compositors do not support
->> overlay planes (as in, they don't use them at all)... my first idea was to remove
->> the CURSOR plane entirely and declare it as per what it is for real (an OVERLAY),
->> but that would only give a performance penalty as that'd become yet another unused
->> plane and nothing else.
->>
->> If at least the most popular compositors did support overlay planes, I'd have done
->> that instead... but oh, well!
->>
->> And anyway I hope that the maintainers are okay with this because, well, otherwise
->> MediaTek SoCs won't be usable with any popular WM.
-> 
-> Every compositor is going to use it, yeah. But until it does, people
-> are just going to use cursor_width and cursor_size. A lot of older
-> desktop hardware supports only a single fixed dimension for the cursor
-> plane (hence the single values), so rather than guess if it needs to
-> be 32x32 or 64x64 or whatever, people just allocate to the size. Not
-> to mention that the old pre-atomic cursor ioctls actually require that
-> you allocate for cursor_width x cursor_height.
-> 
-> So yeah, this is the right fix - though you could even be more
-> aggressive and reduce it to 256x256 - and supporting the CURSOR_SIZE
-> property would be even more useful again.
-> 
+In multi-channel scenarios, the granted channel must be aborted before
+station remove. Otherwise, the firmware will be put into a wrong state,
+resulting in have chance to make subsequence scan no APs.
+With this patch, the granted channel will be always aborted before
+station remove.
 
-I thought about being more aggressive, but then I saw that IGT tests for up to 512
-and that MSM also declares the same, so, making IGT happy because we can indeed
-support that much (since we can support even more, but doesn't make sense) :-)
+Signed-off-by: Quan Zhou <quan.zhou@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7921/main.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
-Regarding CURSOR_SIZE ... right, I can take a look at that a bit later, most
-probably not for this merge window, though.
-
-Cheers!
-
-> Cheers,
-> Daniel
-
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+index 2e6268cb06c0..84d6881eb4c9 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+@@ -359,9 +359,9 @@ void mt7921_roc_abort_sync(struct mt792x_dev *dev)
+ 	del_timer_sync(&phy->roc_timer);
+ 	cancel_work_sync(&phy->roc_work);
+ 	if (test_and_clear_bit(MT76_STATE_ROC, &phy->mt76->state))
+-		ieee80211_iterate_active_interfaces(mt76_hw(dev),
+-						    IEEE80211_IFACE_ITER_RESUME_ALL,
+-						    mt7921_roc_iter, (void *)phy);
++		ieee80211_iterate_interfaces(mt76_hw(dev),
++					     IEEE80211_IFACE_ITER_RESUME_ALL,
++					     mt7921_roc_iter, (void *)phy);
+ }
+ EXPORT_SYMBOL_GPL(mt7921_roc_abort_sync);
+ 
+@@ -861,6 +861,7 @@ void mt7921_mac_sta_remove(struct mt76_dev *mdev, struct ieee80211_vif *vif,
+ 	struct mt792x_dev *dev = container_of(mdev, struct mt792x_dev, mt76);
+ 	struct mt792x_sta *msta = (struct mt792x_sta *)sta->drv_priv;
+ 
++	mt7921_roc_abort_sync(dev);
+ 	mt76_connac_free_pending_tx_skbs(&dev->pm, &msta->deflink.wcid);
+ 	mt76_connac_pm_wake(&dev->mphy, &dev->pm);
+ 
+-- 
+2.18.0
 
 
