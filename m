@@ -4,67 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11C14C3DA49
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jul 2024 19:39:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B31BCC3DA49
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Jul 2024 21:15:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sSyz1UXloLsGQhTbwhmhx6SKNZwAnJjq8d5S3qsocC4=; b=EH2MwHxwG/Q3H/c7QHWA3+XZVI
-	j9oUDbh+xLmsXYxfPQw+tjzgOY9fMlkOgG+EEgxm0tmIyxnaOS2678p8J8byQIrRW6kZlVEadzGt2
-	PYph7fCu3dWWmdsA5JUJJjfq6Uh4KJRPK69QxeK6UImkWdIHtDybvoS1oDTeIWay9anplhf4V+ga7
-	KQT6YwcoRpo4Pfcdrx8ssO6wMqdWccFjcUpI12ocTTW/asOHbpMA3t7AJt769cNpI5flY9LLIRC3B
-	JfJVX5Y1JYttRwqMzzuERfXnnskueSZviiDReQdo5XpP7vQzCh1eC+vX3vSDw99nTRzl3jigFjT9V
-	/n2P9XWA==;
+	bh=/0auihaX9QkuNb5Qm1JcvF0jC8t0q/ycofneQ+RbNug=; b=45+LHc3Dnr0RofHyya9pZSATed
+	tuPqaCrfwiCwJtEDEMvpJrLxxzyaIJki3+F2R+2rEusJa8hijIr5acZouZI5N9QchzDD88lTatOxv
+	o7koRgCeaO1Ctc0mwu7ur/iBez/UtBnNdlAoJF5lnj9vwMauTDzOZ9soSQ58Ex8o4DmDHmWhE5u82
+	k/VnoKZIloZuVoT2eGdjq4XVFo6RyKpbARS7TH6LXVyCDzCWihxYCLdgr4AQQEdMu7cM8w9W0zgdE
+	nfy4ufZyhMIbqeamM+19HzVLvZSUFH+fxj7ep2IehT//5+LkOTWwRCIEpiAuyotIKupv+akrarrDD
+	g2m5Xu5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sUWyJ-00000000V6A-3gcT;
-	Thu, 18 Jul 2024 19:39:23 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1sUYTh-00000000g5C-2s4d;
+	Thu, 18 Jul 2024 21:15:53 +0000
+Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sUWyG-00000000V5E-0cCW
-	for linux-mediatek@lists.infradead.org;
-	Thu, 18 Jul 2024 19:39:21 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id C8501CE1AB0;
-	Thu, 18 Jul 2024 19:39:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8F869C116B1;
-	Thu, 18 Jul 2024 19:39:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1721331556;
-	bh=3Oxn/O8Cot8sA3M6dSYeBY2dym38XFOUgiLPyiITpck=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=lb0t5blWEsVxQMAAIsEkdkQ6FAA2H6U29yLkMKgjr09eRWHLM24YySj5Bx3vCEJs+
-	 eXOdL6XI//huQ6VT+Zwuj1+oRJTzcuVRO+fivhhU3lQ4iXCU7KQYo6ZEE1B/hmiLCH
-	 eE8+7vX8xtA6wxxCIWofG84Tzmwh4rdbjdqSly8dNDyGK38QB/pr/aLCFYUzNWjWDr
-	 o9P6C2oUUcdxGFNI+AHWe++viIwEYhunvjegAbRzVg9tzwc6pVbS1GikxphiqUrr1V
-	 AKXON1KB1sCUWx9scLQIV9J97zpmRgIwqBXmwCMpPFzQQZ9T+Jc1WIYZUd8mEYP36z
-	 RiZqdP4BKvULg==
-Date: Thu, 18 Jul 2024 21:39:12 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Dan Carpenter <dan.carpenter@linaro.org>
-Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	id 1sUYTL-00000000fza-2oCI;
+	Thu, 18 Jul 2024 21:15:33 +0000
+Received: by mail-pf1-x42d.google.com with SMTP id d2e1a72fcca58-70af8062039so218944b3a.0;
+        Thu, 18 Jul 2024 14:15:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1721337330; x=1721942130; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:sender:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=/0auihaX9QkuNb5Qm1JcvF0jC8t0q/ycofneQ+RbNug=;
+        b=Oc/Uv0fxP8Cvm6P+V8dWtcjrF7QxV6hOlu3J78S00Fnc1sLmVjinVWb7dGBFbwCTT8
+         CARj6si2re6787vFkCMc//S0QHy/t9u5Fs7k+07hdhXJf1DpLfVCtfIZxuBOTOJ2lfTr
+         dRnhxjImY40kv1ReDvBHmxG94XKUWcQR7Va0LpKsOzo+EeR1wLb9E4i09Y+0kFZV2mtS
+         rioeEzDm+k2TZpFAY9VaF2LoRhgaHFWesL/RmPnRuC61hEJU6j8nceYn8CI/VtN05Vo4
+         /wf6tVRE3e9xCKNozuf4VfQ4U1YjpBHmvZ3B/kv5PjVKQXVB51C5NPw/X+WmNMJowabL
+         CU8Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1721337330; x=1721942130;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:sender:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=/0auihaX9QkuNb5Qm1JcvF0jC8t0q/ycofneQ+RbNug=;
+        b=N4pXAfTjtvuj5y+EJAMV/ioN0E9/ShVfmaOXnHcN/0MSDP4T78PvJE/lky5UgW63Io
+         ACDttmvpXDt4JLDDQghuZkIwg05Lrjz9lmDSSON3OemaV4rzZnUbQYEI2UlSXjIcsMt1
+         jjR/UwDXfFCDVWVwVoS4u2VYOWK4d5K9F1yZ+gq+oOsEAmAgJsasyWXecrzlAHbjj6ok
+         crk2NOjUoA3XFErgoJi8UbF94FsWe3AhDSWr15sADzg2CHyASXYsJvSDZeqqOpV7+VwH
+         EoOCzzztV+O2cnNnTjaQosFBVDr9P87hoKspN8dpaYHshu8eXs1LtmUjZl+4vXlhbyw1
+         yGlw==
+X-Forwarded-Encrypted: i=1; AJvYcCWRzwymBIjT6FKnzXoJkkbipm0ZaqtjFtiKKLZqrioLu/Cp9k2PbC2TQEFCL9ShpaEjyBVHalHBflhdPUGK0KjlINi2LNgdS5hPf8ltG8IvkYB34XUPCUprUPqtNbElVnp5pxJEI73eCtfpbQLpwdgWCf8Wiw5h+aI=
+X-Gm-Message-State: AOJu0Yx3oXeSS21ohnULm2fqlzlvv8n7MZLgSfxSCKBMfxjZPyrfzE4x
+	crsyG90xrNMzOtSou8zxl2xCJ9gWIfNx+C4mQ/SqERXCFF0pn19bBSEfwQ==
+X-Google-Smtp-Source: AGHT+IEzvKX6abFCuyAD2x0BS8ix3G4cXfdKksDDsoZuZtDnnZow0Vh1MnuqD3v6DJxjydy4SuuorQ==
+X-Received: by 2002:a05:6a20:c901:b0:1c3:b2da:cdff with SMTP id adf61e73a8af0-1c3fdb10556mr6962771637.0.1721337330009;
+        Thu, 18 Jul 2024 14:15:30 -0700 (PDT)
+Received: from localhost (dhcp-141-239-149-160.hawaiiantel.net. [141.239.149.160])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-1fd64b4a29bsm174255ad.15.2024.07.18.14.15.29
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 18 Jul 2024 14:15:29 -0700 (PDT)
+Date: Thu, 18 Jul 2024 11:15:28 -1000
+From: Tejun Heo <tj@kernel.org>
+To: "boy.wu" <boy.wu@mediatek.com>
+Cc: Josef Bacik <josef@toxicpanda.com>, Jens Axboe <axboe@kernel.dk>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	kernel-janitors@vger.kernel.org
-Subject: Re: [PATCH net-next] net: airoha: Fix forever loops in error handling
-Message-ID: <ZplvYE1YDEUBTR4Q@lore-desk>
-References: <693c433a-cf72-4938-a1aa-58af2ff89479@stanley.mountain>
+	Boris Burkov <boris@bur.io>, cgroups@vger.kernel.org,
+	linux-block@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, iverlin.wang@mediatek.com
+Subject: Re: [PATCH v4] blk-cgroup: Replace u64 sync with spinlock for iostat
+Message-ID: <ZpmF8HJsuefjC7Xr@slm.duckdns.org>
+References: <20240718084112.12202-1-boy.wu@mediatek.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="k9Epfoq46wrPNTrg"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <693c433a-cf72-4938-a1aa-58af2ff89479@stanley.mountain>
+In-Reply-To: <20240718084112.12202-1-boy.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240718_123920_393886_163012F0 
-X-CRM114-Status: GOOD (  14.95  )
+X-CRM114-CacheID: sfid-20240718_141531_729356_D6DDF626 
+X-CRM114-Status: GOOD (  11.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,71 +96,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hello,
 
---k9Epfoq46wrPNTrg
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On Thu, Jul 18, 2024 at 04:41:12PM +0800, boy.wu wrote:
+>  static void blkg_clear_stat(struct blkcg_gq *blkg)
+>  {
+>  	int cpu;
+>  
+> +#if BITS_PER_LONG == 32
+> +	guard(raw_spinlock_irqsave)(&blkg_stat_lock);
+> +#endif
 
-> These loops have ++ where -- was intended.  It would end up looping until
-> the system died.
+Can you please collect the ifdefs into a single place? If guard can be used
+for that, that's great. If not, just spin_lock/unlock wrappers are fine too,
+but please collect them into a single place and add a comment explaining why
+this is necessary and why u64_sync isn't being used.
 
-Hi Dan,
+Also, for blkg_clear_stat(), we're running a slight chance of clearing of
+iostat_cpu racing against state updates from the hot path. Given the
+circumstances - stat reset is an cgroup1-only feature which isn't used
+widely and a problematic interface to begin with, I believe this is a valid
+choice but it needs to be noted.
 
-I have already posted a fix for it:
-https://git.kernel.org/pub/scm/linux/kernel/git/netdev/net.git/commit/?id=
-=3D1f038d5897fe6b439039fc28420842abcc0d126b
+Thanks.
 
-Regards,
-Lorenzo
-
->=20
-> Fixes: 23020f049327 ("net: airoha: Introduce ethernet support for EN7581 =
-SoC")
-> Signed-off-by: Dan Carpenter <dan.carpenter@linaro.org>
-> ---
->  drivers/net/ethernet/mediatek/airoha_eth.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->=20
-> diff --git a/drivers/net/ethernet/mediatek/airoha_eth.c b/drivers/net/eth=
-ernet/mediatek/airoha_eth.c
-> index 7967a92803c2..698835dc6da0 100644
-> --- a/drivers/net/ethernet/mediatek/airoha_eth.c
-> +++ b/drivers/net/ethernet/mediatek/airoha_eth.c
-> @@ -977,7 +977,7 @@ static int airoha_set_gdm_ports(struct airoha_eth *et=
-h, bool enable)
->  	return 0;
-> =20
->  error:
-> -	for (i--; i >=3D 0; i++)
-> +	while (--i >=3D 0)
->  		airoha_set_gdm_port(eth, port_list[i], false);
-> =20
->  	return err;
-> @@ -2431,7 +2431,7 @@ static netdev_tx_t airoha_dev_xmit(struct sk_buff *=
-skb,
->  	return NETDEV_TX_OK;
-> =20
->  error_unmap:
-> -	for (i--; i >=3D 0; i++)
-> +	while (--i >=3D 0)
->  		dma_unmap_single(dev->dev.parent, q->entry[i].dma_addr,
->  				 q->entry[i].dma_len, DMA_TO_DEVICE);
-> =20
-> --=20
-> 2.43.0
->=20
-
---k9Epfoq46wrPNTrg
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZplvYAAKCRA6cBh0uS2t
-rNC8AP9GO+whLkH0wsxQawNmzPqkNemW01FJwDdnGMfvvu+DYAD+Pt57+Q7JdTKW
-FfkVr1yCsZG5iaad7AAyQvlXrb7NmAw=
-=RvDK
------END PGP SIGNATURE-----
-
---k9Epfoq46wrPNTrg--
+-- 
+tejun
 
