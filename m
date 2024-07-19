@@ -4,94 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB61DC3DA59
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jul 2024 21:26:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6BB5C3DA5D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jul 2024 22:17:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rIUIudV3W4EelKHjVdbAz3TupXvxJb8HU8cRrgggIwc=; b=ylTcNf9Ktiv4OdOGdXn5QWv688
-	imHfpcMBUGN5Tk95ejG6qFL5zjpWuOBnKp0bRVcVldA108At+IZboFyVH+eCCNLYMZiBW5cujHpWu
-	oCfWPMrzz8TZ5tEhTCTw/SvRztT290FsYzwhq0x+6UXR63nHhXXwW2uDHWXFn2iYEpTabWawNkAWI
-	Ko6KxQQ+oeoZgr9+88hfjX+sAFV/WlKCXHvJDtI+YbkN6AvI3x4lO+l2pMqYDhd3UwhTp7WkPmjWD
-	DUvn8jplyMnVdCgpR1fgQOt/2als4cGO1jCn3b5jHtgk5b6ahb6cctCUcJsyx6tQ5p3XudI7SS3Hj
-	zWU+pw8A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=iKhqmKb4pLxr6ks4VHAGgseoWstMLoaNLLgWmMC/tQg=; b=vMse+BWQBJpIE1cdDBXFHFnW/6
+	UOuWWm2Rb4LXZV85QpECTgHFF+h3//4QUwJaXXFFD3hEN34y8mK8HR0np6vBcTRYo7IMMWVmQY6+p
+	pGq3ZXdwWTOhXRLC2OIUkRXbSmll6aqxjKqbud0kjNyZ44voAXSMUWkbDeGhBbHod3kDDkqibeEQE
+	jJy1VNVfWN8m4M4AnMXWnidGnvjUFWiSZx8jKOEom6bMsQS8hNlZAiWvVsxSzW4TtuDunkjd7cypu
+	334BWNveLkcQza3fQh38DZXGuFeS7qnPGjuOXWvwhmRO6BcUEmCCGOqBbbMf/fy+0EtkBN3f1fvah
+	Au3xeyWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sUv7A-00000003pCe-0QWT;
-	Fri, 19 Jul 2024 21:26:08 +0000
-Received: from mail-io1-xd32.google.com ([2607:f8b0:4864:20::d32])
+	id 1sUvv1-00000003tiK-36XH;
+	Fri, 19 Jul 2024 22:17:39 +0000
+Received: from mail-oo1-xc2c.google.com ([2607:f8b0:4864:20::c2c])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sUv77-00000003pCD-0w83
+	id 1sUvuz-00000003thm-0ZWo
 	for linux-mediatek@lists.infradead.org;
-	Fri, 19 Jul 2024 21:26:06 +0000
-Received: by mail-io1-xd32.google.com with SMTP id ca18e2360f4ac-80a2939265cso77832239f.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 19 Jul 2024 14:26:04 -0700 (PDT)
+	Fri, 19 Jul 2024 22:17:38 +0000
+Received: by mail-oo1-xc2c.google.com with SMTP id 006d021491bc7-5ce74defe43so1308552eaf.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 19 Jul 2024 15:17:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1721424364; x=1722029164; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=rIUIudV3W4EelKHjVdbAz3TupXvxJb8HU8cRrgggIwc=;
-        b=fYu2mn+fWU+I41aUcyIUdvdpqHKajDTzVhjP8KAANJpN04zv26Z45viXIDKccadzA9
-         2PkIhpDsD5r8v9xjvz2i0VvPMhc23arqkIB1Xo427pF9HI6W4eNsEe1ehE1Kz0V+eX6+
-         CTgW4/tmZo5EiM+9MF69Rlf/vQz0YlK+uWxN8=
+        d=linaro.org; s=google; t=1721427456; x=1722032256; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=iKhqmKb4pLxr6ks4VHAGgseoWstMLoaNLLgWmMC/tQg=;
+        b=I1o2GjMZzMtbdyhuEI1xP1XZ4cqHllqtLPCh0Gzq9BehyUIdPleIMxg11aeOJmE3+L
+         p0JzZYq+EehWIlenV3IFBe83gijNYzOfOMWjZADiZxtNCI/LwP6l4KPlXz2/8gkcmA1e
+         rsbNmSPV00rs002Q9RD+Y7HlaJNgRypK2/bNETvgcVmPIGl2977NvRMVjRaBeodvVMbI
+         GemlLgAhSkB433QdfwNLJSSjBmAc0bWFtDgl7PdWy0ANeSnj+ZOQPNakj+fjmPYihKBu
+         PZVkfqxZjNBVsyLx/rf4WRWLZpQFoSy5yB8VTM096ZoXSsHCf+/ZgDNcjwW0Se2maL6E
+         CHsw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1721424364; x=1722029164;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=rIUIudV3W4EelKHjVdbAz3TupXvxJb8HU8cRrgggIwc=;
-        b=hyHsSjP9PEZIuIrTP05Q7iGeJeuD6Z6T4DWHkcIgjpU6YxRcZGe7bPvM/rxlU9AYfm
-         cC3eRaqpAVT80/FX+dCqZzARQzUAy/j+wK0zvJN7UPpEePC35c4/Qy1+FkNhK7k9Yb9r
-         99suh4brX70WL3hyYLcrHaJO9kq2oHxvxkT0kO4RJyLFAf/CwJj9UYhANS13y652Jgf5
-         pziWrxZ9uC67haqngMMTaqE+LovXhYJJg7AlYBV91ku/gysR8Cw5dPewVfXHq13CWoSS
-         B2Gblw5Rg9eHGv1XNVXL+C4XSYsp0Y8vpQkHCq2uNrxh3gI4EDXzYvFvjuiILax0hVxw
-         bPkg==
-X-Forwarded-Encrypted: i=1; AJvYcCWmf6i8sTGqxJiGC5CytOnY4MFmHVXiz6g+xlut8pLagPa1B+Tof5UwZ2iZm/hH+Rix01nv81ldNMSL1GGQqkEoMRFNdL159L5BarQVm8NgcMsY
-X-Gm-Message-State: AOJu0YzM8S83d2q+iMVhhf2B6CNmh62sZrtSl94A8sbGmn08O49hUQAT
-	Gd7uSFjM3Dixp0ZIlnSqSp1y0ADIuluaqpKcbGBbzwDl4a3gMxU8Wv+QjmzB7Q==
-X-Google-Smtp-Source: AGHT+IEiTPDsV72AfgDxBbXkqBMrB1vv3zaXpnz+M6Y2UShrsiWah2qsgNBOmPFY5+0G0fmtM4R9tw==
-X-Received: by 2002:a05:6602:6c1c:b0:80d:19e4:9d63 with SMTP id ca18e2360f4ac-81aa4dc3a36mr144818839f.3.1721424364015;
-        Fri, 19 Jul 2024 14:26:04 -0700 (PDT)
-Received: from arowa.c.googlers.com.com (214.62.225.35.bc.googleusercontent.com. [35.225.62.214])
-        by smtp.gmail.com with ESMTPSA id 8926c6da1cb9f-4c2343ab449sm473825173.113.2024.07.19.14.26.03
+        d=1e100.net; s=20230601; t=1721427456; x=1722032256;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=iKhqmKb4pLxr6ks4VHAGgseoWstMLoaNLLgWmMC/tQg=;
+        b=tpj5EEBnqsIMS7eTHQxRzdU1cVWSDf8exVn5ovGF4Al5fwo+uFuBmMO2Yv9t1ddjbE
+         L2DxI5+xHeETpyoZqfZ42YssV8jSRLTLW0MaGpRSBUqvJkH489aIfHpUskx6S6L+sRau
+         t01sPav/DchxW1xuwQwkHjked2hj83QYS/wmdkI3lnc+5sUaOHzE97DaWTWc4LZsj7rR
+         hPOzp7oEBruWurnkTGHCMWcHxTOQLAjFOJmHsT7g1qcRdbwRWdsnePB7G181+Zkx83Ic
+         Mjwwcawhj+K7L4bjfZgac8gPRE678Fo/yPhf/0FFEyDzu/MCzIHPoTshjvq+U1ZnqYhs
+         IDYA==
+X-Gm-Message-State: AOJu0YzoW5q5995mPB8BkD2N6tICt+V+3FCcPE6O/aBcaG8jo7GH9Bru
+	/MwH7Rj3k3fA3mOVT3aLQp0WJHVoMR4RMBPIH0iFPeef0dMNgzLI4d8ub0nm75g=
+X-Google-Smtp-Source: AGHT+IGWwFUuXo/9q3+Dj1LP5RocAsc09F5iqW9biVqhnOAC8LgZZtzXcBq10YINMuQ78LRbZJWDgg==
+X-Received: by 2002:a4a:e901:0:b0:5c4:e8d:58be with SMTP id 006d021491bc7-5d564f6409bmr1744353eaf.3.1721427455730;
+        Fri, 19 Jul 2024 15:17:35 -0700 (PDT)
+Received: from localhost ([2603:8080:b800:f700:4528:a9e:1eaf:80c5])
+        by smtp.gmail.com with ESMTPSA id 006d021491bc7-5d55a830900sm401546eaf.11.2024.07.19.15.17.35
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 19 Jul 2024 14:26:03 -0700 (PDT)
-From: Arowa Suliman <arowa@chromium.org>
-X-Google-Original-From: Arowa Suliman <arowa@chromium.com>
-To: mingyen.hsieh@mediatek.com
-Cc: Eric-SY.Chang@mediatek.com,
-	Leon.Yen@mediatek.com,
-	Quan.Zhou@mediatek.com,
-	Ryder.Lee@mediatek.com,
-	Sean.Wang@mediatek.com,
-	Shayne.Chen@mediatek.com,
-	Soul.Huang@mediatek.com,
-	ch.yeh@mediatek.com,
-	deren.wu@mediatek.com,
-	km.lin@mediatek.com,
-	linux-mediatek@lists.infradead.org,
-	linux-wireless@vger.kernel.org,
-	lorenzo@kernel.org,
-	nbd@nbd.name,
-	posh.sun@mediatek.com,
-	robin.chiu@mediatek.com,
-	Arowa Suliman <arowa@chromium.org>
-Subject: Re: [v2] wifi: mt76: mt7921: introduce CSA support
-Date: Fri, 19 Jul 2024 21:25:48 +0000
-Message-ID: <20240719212548.1121903-1-arowa@chromium.com>
-X-Mailer: git-send-email 2.45.2.1089.g2a221341d9-goog
-In-Reply-To: <20240530084455.4290-1-mingyen.hsieh@mediatek.com>
-References: <20240530084455.4290-1-mingyen.hsieh@mediatek.com>
+        Fri, 19 Jul 2024 15:17:35 -0700 (PDT)
+Date: Fri, 19 Jul 2024 17:17:33 -0500
+From: Dan Carpenter <dan.carpenter@linaro.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: linux-mediatek@lists.infradead.org
+Subject: Re: [bug report] net: airoha: Introduce ethernet support for EN7581
+ SoC
+Message-ID: <2a1c1a25-8b89-43d0-b1df-6ffab7c2f3eb@suswa.mountain>
+References: <395b364b-8a37-40ce-ac24-4f0bd7eb0e2a@stanley.mountain>
+ <ZprPHlFgp1G2iTkM@lore-desk>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <ZprPHlFgp1G2iTkM@lore-desk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240719_142605_316150_577CE860 
-X-CRM114-Status: UNSURE (   3.91  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240719_151737_222691_FDB13C0F 
+X-CRM114-Status: GOOD (  13.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,6 +91,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Tested-by: Arowa Suliman <arowa@chromium.org>
+On Fri, Jul 19, 2024 at 10:39:58PM +0200, Lorenzo Bianconi wrote:
+> [...]
+> > drivers/net/ethernet/mediatek/airoha_eth.c
+> >     1134 static void airoha_fe_pse_ports_init(struct airoha_eth *eth)
+> >     1135 {
+> >     1136         const u32 pse_port_num_queues[] = {
+> >     1137                 [FE_PSE_PORT_CDM1] = 6,
+> >     1138                 [FE_PSE_PORT_GDM1] = 6,
+> >     1139                 [FE_PSE_PORT_GDM2] = 32,
+> >     1140                 [FE_PSE_PORT_GDM3] = 6,
+> >     1141                 [FE_PSE_PORT_PPE1] = 4,
+> >     1142                 [FE_PSE_PORT_CDM2] = 6,
+> >     1143                 [FE_PSE_PORT_CDM3] = 8,
+> >                          ^^^^^^^^^^^^^^^^^^^^^^^
+> > 
+> >     1144                 [FE_PSE_PORT_CDM4] = 10,
+> >     1145                 [FE_PSE_PORT_PPE2] = 4,
+> >     1146                 [FE_PSE_PORT_GDM4] = 2,
+> >     1147                 [FE_PSE_PORT_CDM5] = 2,
+> >     1148         };
+> >     1149         int q;
+> >     1150 
+> >     1151         /* hw misses PPE2 oq rsv */
+> >     1152         airoha_fe_set(eth, REG_FE_PSE_BUF_SET,
+> >     1153                       PSE_RSV_PAGES * pse_port_num_queues[FE_PSE_PORT_PPE2]);
+> >     1154 
+> >     1155         /* CMD1 */
+> >     1156         for (q = 0; q < pse_port_num_queues[FE_PSE_PORT_CDM1]; q++)
+> >     1157                 airoha_fe_set_pse_oq_rsv(eth, FE_PSE_PORT_CDM1, q,
+> >     1158                                          PSE_QUEUE_RSV_PAGES);
+> >     1159         /* GMD1 */
+> >     1160         for (q = 0; q < pse_port_num_queues[FE_PSE_PORT_GDM1]; q++)
+> >     1161                 airoha_fe_set_pse_oq_rsv(eth, FE_PSE_PORT_GDM1, q,
+> >     1162                                          PSE_QUEUE_RSV_PAGES);
+> >     1163         /* GMD2 */
+> >     1164         for (q = 6; q < pse_port_num_queues[FE_PSE_PORT_GDM2]; q++)
+> >     1165                 airoha_fe_set_pse_oq_rsv(eth, FE_PSE_PORT_GDM2, q, 0);
+> >     1166         /* GMD3 */
+> >     1167         for (q = 0; q < pse_port_num_queues[FE_PSE_PORT_GDM3]; q++)
+> >     1168                 airoha_fe_set_pse_oq_rsv(eth, FE_PSE_PORT_GDM3, q,
+> >     1169                                          PSE_QUEUE_RSV_PAGES);
+> >     1170         /* PPE1 */
+> >     1171         for (q = 0; q < pse_port_num_queues[FE_PSE_PORT_PPE1]; q++) {
+> >     1172                 if (q < pse_port_num_queues[FE_PSE_PORT_PPE1])
+> >     1173                         airoha_fe_set_pse_oq_rsv(eth, FE_PSE_PORT_PPE1, q,
+> >     1174                                                  PSE_QUEUE_RSV_PAGES);
+> >     1175                 else
+> >     1176                         airoha_fe_set_pse_oq_rsv(eth, FE_PSE_PORT_PPE1, q, 0);
+> >     1177         }
+> >     1178         /* CDM2 */
+> >     1179         for (q = 0; q < pse_port_num_queues[FE_PSE_PORT_CDM2]; q++)
+> >     1180                 airoha_fe_set_pse_oq_rsv(eth, FE_PSE_PORT_CDM2, q,
+> >     1181                                          PSE_QUEUE_RSV_PAGES);
+> >     1182         /* CDM3 */
+> > --> 1183         for (q = 0; q < pse_port_num_queues[FE_PSE_PORT_CDM3] - 1; q++)
+> >                                                                       ^^^^
+> > This - 1 doesn't look intentional.  It's the only time this value is used.
+> 
+> I checked the vendor sdk and this is fine.
+> 
+
+If there are 7 queues, just change [FE_PSE_PORT_CDM3] = 7.  If there are
+8 queues but the last one is not used, then add a comment.  /* The - 1 is
+because we are reserving the last queue for secret reasons. Shhhh... */
+That way people will know it's intentional.
+
+regards,
+dan carpenter
 
 
