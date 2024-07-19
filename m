@@ -4,81 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5DA9C3DA5D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jul 2024 11:26:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0C8BC3DA59
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jul 2024 15:09:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9FDPWtZa5BiBTQ3GHY8kUVw1DOEUjjH3tOcbPfWdgNw=; b=ibYsO5Ibr9uPACj/f9lSqXlewO
-	cyh4v4h24/cgjqkPJAwTrM7CEDu6FtirIEMJROuIBgug4lTl2ZMT8qjxnWYLWQP8zyxYRDGjVZQqC
-	8IY3OkxNRB1gfs77Nky2TBt2hIaIwECigFL/tId1My+CsVdk+0bVoFLco2GXpoogDlTu/PTmlQJNm
-	/Xm4iA2CF5RZEYa7bsEhp+0klrCbHG24/Op6R9ZV3Wd1c5kVD+ImLUpHiUoBIBy7uLOXE2nKVt+7Q
-	tdDKsuqQKSx819shZkCk6i00YKwG0VbzUZzl0nk7FzvvDmbjOcQQAozSU8q/wE+WC3+ooeV4FISVQ
-	1zvhNB3A==;
+	bh=pxJdvG4GHPuYd2T0/+njfFwbHisz/VRVz1QjmDGv7Rg=; b=wz/H1UfYBgFgKhN3VemVAJQC9v
+	Hc7F6ZJ7EQT3XNVttV9p8XsvXBxfb1YJLuGQgwiRTgjEnb4CHtj8O/Y4vgtl5umaLJjqnsrdyaCP0
+	WWYT0He1mnYzrWXjzjiLN2tB0IrzLT88YtAQw66GWpTOA2NIIbK3pKMk4AsRaAW/bSZwsrIcUvvu+
+	2HPAJ853VZelyQR3sdiApAOPuic/TYxApWW5fJ1OSi0B3AWs7BN6XP2r0zHJvXh7fG6TPrJ9pYQjR
+	5iIkZgEfIctBsAT5fGTlZKRrk0M7cGb/Ws+a9XHbAZNeSkhgtazL9c9IgRWGWwCcGO5/fX+Ninw62
+	1UGmVp3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sUllA-00000002VWa-1L6k;
-	Fri, 19 Jul 2024 11:26:48 +0000
-Received: from mout.web.de ([212.227.15.3])
+	id 1sUpEO-000000032ec-3bcU;
+	Fri, 19 Jul 2024 15:09:12 +0000
+Received: from mail-lj1-x22d.google.com ([2a00:1450:4864:20::22d])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sUll6-00000002VVm-10XY
-	for linux-mediatek@lists.infradead.org;
-	Fri, 19 Jul 2024 11:26:46 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
-	s=s29768273; t=1721388392; x=1721993192; i=spasswolf@web.de;
-	bh=9FDPWtZa5BiBTQ3GHY8kUVw1DOEUjjH3tOcbPfWdgNw=;
-	h=X-UI-Sender-Class:Message-ID:Subject:From:To:Cc:Date:In-Reply-To:
-	 References:Content-Type:MIME-Version:Content-Transfer-Encoding:cc:
-	 content-transfer-encoding:content-type:date:from:message-id:
-	 mime-version:reply-to:subject:to;
-	b=bAH24AYzAcxd+AwDKTLwlHBcSse5HmcY/uZFgMzaGN/zvNYKZtqi4oqFoeUEm2X/
-	 PgdSCwjAQuEKdo+PnDKyvslDFxwo5cr6n8xVGcnlaz3Fj3gkXyUdn0/ulQs3y/3Mk
-	 H+PyAj+XaVBpAN84RQyrRyw77mdUxumpBitRHf0lKe6LHzt0uIsQNw9V4J7bgVLmh
-	 1hOAd4P2yX11gvHaXIAbg759RSk/ScJv8sQa3zlsrAopFZuTzCLcfP4MA+r9Ees65
-	 nK0TuifYFDm40v7mq/jefTknb4tYJISyO9srMXOB2k1r/LGMO1nTBAc6AAZXGOUnO
-	 xuXb9AuNKmdospTDKw==
-X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
-Received: from [192.168.0.101] ([84.119.92.193]) by smtp.web.de (mrweb005
- [213.165.67.108]) with ESMTPSA (Nemesis) id 1MBjIG-1scURo05fg-0070pW; Fri, 19
- Jul 2024 13:26:32 +0200
-Message-ID: <7a4db04f7088a9d818037321412f7ac968d965cd.camel@web.de>
-Subject: Re: [PATCH] wifi: mt76: mt7921: fix null pointer access in
- mt792x_mac_link_bss_remove
-From: Bert Karwatzki <spasswolf@web.de>
-To: sean.wang@kernel.org, nbd@nbd.name, lorenzo.bianconi@redhat.com
-Cc: sean.wang@mediatek.com, deren.wu@mediatek.com,
- mingyen.hsieh@mediatek.com,  linux-wireless@vger.kernel.org,
- linux-mediatek@lists.infradead.org,  spasswolf@web.de
-Date: Fri, 19 Jul 2024 13:26:30 +0200
-In-Reply-To: <20240718234633.12737-1-sean.wang@kernel.org>
-References: <20240718234633.12737-1-sean.wang@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-User-Agent: Evolution 3.52.3-1 
+	id 1sUpE1-000000032XG-3ud1;
+	Fri, 19 Jul 2024 15:08:51 +0000
+Received: by mail-lj1-x22d.google.com with SMTP id 38308e7fff4ca-2eea8ea8bb0so39027671fa.1;
+        Fri, 19 Jul 2024 08:08:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1721401728; x=1722006528; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=pxJdvG4GHPuYd2T0/+njfFwbHisz/VRVz1QjmDGv7Rg=;
+        b=mZEyTeUH8C5sS3XyBGVtvGoCVflnhiqJXPvlPKQjm2bHFUxF8C35IC9sQ+9Ay2ZrXP
+         W7rOug/BAAATAhpyypQWid/4ETiFqQ1OkJU+2nxtu9/0rdfpkyBCRoKIJsVQryRUlJZr
+         hv7P1GGIwgGduPDHbrP9j9INZO8wdinYxe2oR0RHC0rqsgJVnCz0Sd2eqVupZYiE29u8
+         /O8chs/Bif839GPCgXOY4lYtzbDvpYq/BlzdDxy70MmSc2su8oQ/26QQ3QS3uHwJiSZW
+         6+WVVV+6K9dd4z9ov2BHpaFYOwvB5SY+9KjCYS3uZIIb1XW838olLLueD5QBRHRuAXkg
+         jHOw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1721401728; x=1722006528;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=pxJdvG4GHPuYd2T0/+njfFwbHisz/VRVz1QjmDGv7Rg=;
+        b=oGCyUSGDkjI7ARjBeP22IwwMsQJqmOpvQaCmK7Z6UJgL4pG+cgYcGGiVslj8UuhdzM
+         SfekKovJYfaSPSxUE3D72wGi/KT13+B1rAtH3IMgMa2yT9mar/E8zwt/V/YPfHHOfoqC
+         r0eHYezsYlHXolNyuCwOOqwMs2U8a+fifopTKA4n3WJakSMHPVs7tf4Fk4OkPhExTj6u
+         HSJOeb4rdG3KFSn7WLQ9LkkdB5hSMuEq7rq7mLSqk+WI1MDDhOxob0DypSXB9zrdFteQ
+         VSv1Nle3lDIK3U5uptWhplaFxie+v9Eh9P1pTS0lNZuWcgw8ng4nR7pLESWAZIkcyUqB
+         mg1w==
+X-Forwarded-Encrypted: i=1; AJvYcCXD4WPtK9DEZEez5rSxLqB+PRX1FqQXbU6o/NzUP4KSRyrGbo1rcJqHmpTpYDQWICM3Ms1Vwg49KzbycHR5GfH128UGwse8U61oaLen3zqqM8hWOe6aauXsNszFXK5NMK+HrlprS1VVQtFfgIply7nf5n6dTtBL1WI=
+X-Gm-Message-State: AOJu0YxuAk7rC6WIll4JZ/S6P4+8e59o+HdL8/GNkqLd2kyCx4l4D2xh
+	NxPFy2hxAnDfE+O8gPgknI7Jg7vdWuCFN9hLLT1RwaVub/nSDvgkCOOFgrXpEQk4prFOLV0dVcJ
+	24EW2UZk3aHZmoint+B0xb+/LUDI=
+X-Google-Smtp-Source: AGHT+IEKV6/lwbIVyxNP3HduGa6GJ48kF+FAfzn+2GtakQhGWGSSWW/vvNhiHswsej3AtB2nD3zNghHPoKfaW/ZXyxs=
+X-Received: by 2002:a2e:84ca:0:b0:2ee:8f3d:e68d with SMTP id
+ 38308e7fff4ca-2ef1685d099mr393111fa.44.1721401727500; Fri, 19 Jul 2024
+ 08:08:47 -0700 (PDT)
 MIME-Version: 1.0
+References: <20240719100554.4183635-1-arnd@kernel.org>
+In-Reply-To: <20240719100554.4183635-1-arnd@kernel.org>
+From: Luiz Augusto von Dentz <luiz.dentz@gmail.com>
+Date: Fri, 19 Jul 2024 11:08:34 -0400
+Message-ID: <CABBYNZKFD7axR5ZSGJL7mn=_mKufGnxopUeeZhL+AL40jWQjzQ@mail.gmail.com>
+Subject: Re: [PATCH] Bluetooth: btmtk: add USB dependencies
+To: Arnd Bergmann <arnd@kernel.org>
+Cc: Marcel Holtmann <marcel@holtmann.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Sean Wang <sean.wang@mediatek.com>, Arnd Bergmann <arnd@arndb.de>, Sven Peter <sven@svenpeter.dev>, 
+	Tedd Ho-Jeong An <tedd.an@intel.com>, Hector Martin <marcan@marcan.st>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Niklas Schnelle <schnelle@linux.ibm.com>, 
+	linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:ALX7alao3XcqIRK5g3lr4ihIgNWuUOosbfoXbMSwe9tamIny5My
- NrgORDm1xdVmF+4uUXA9N2OjXCqTM0NaHwtpomJTAKZAk09490KkyyRX6aSOEaTxRpxpspU
- whqQR4JKT401bVfhW0/VKYzFGwT1vV+6SjxVqK5MIEzRxjyH6A/zU90hoktJTMXXj2of0ZX
- sdaD2lZ/fJOksr6h41b+w==
-UI-OutboundReport: notjunk:1;M01:P0:HkluRDPJt8U=;xx4jJ3QJkve//VYTaJa1uiL5lo2
- C1U6hcpR4aEQ/pJnbh9hYdFWgKIMJ5JpIibdTLPY4e/l226zfzRifzKidsH0IxsHpzM6Gg6LK
- DG4T7V8HoghaYWk3Pf3FBs/dRxk8he5iwIQ9mLOawbwm9uOaYIbWnNP6sHJT65MhrSwY7SkWe
- HneRfglHpRZ/FvIqWzlfaVYjA5fl8M4VqzJfoOdGVJ7KudzwTQv/hf4+Ht4mpTjeMmPt0msos
- VsuAG7S8PXJnNNbnQwWlnZMq+cN8P2LHGKOwotUibBJoyUfnmvOjOulOF+DrrlW4FGwg4U7/g
- DIt0JHAoaogLah9YHlI9KaosYqgF8h+FFYGxbQ5GtoEjeVFlEoAQDi2uJYYmj9ff3q2zBHgnn
- yBl/zPxzMfuFxDBIueOwfguL37o6ss+KvL00dqhmMORuykoTLDc1WBRfYPhu7F5Lao1LSmZGV
- VLKTzhU6QL4eesVhtKQogAA3krdE/dTlptvyamMCwLuBOBeRaFESSTdkCamyqligvAm++HzF3
- kgSC52fPJ8Qfe9vQR/eTXP95Fp7N86d7RNtwW5TLGIei7Q5IsOdpVEE25OyyxvdKvz1Irh/ue
- mzw0jpQenY0/Jh5F/SGZJGl0fYAzjNHbQmjZ+KRgfM/TSKgBnGUc2OvopZXHKKcPFemEol/x2
- +dbkVEeIZwShtjEejfEGLaJl1kLMk5dNW/u6tq1ppy4MJvw7Ci7O8RlAC9dYr4ui/OqaQs8hy
- 3yC0PRlEcdcWuF3V+SiFGkb3jbz7LLIq3jkcK6hfBDsoD9HlxIEdZz1Esy1J6IXZltRZznU2r
- uvM3sz+wfg5028JGbSI3zryw==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240719_042644_677776_EC7D068E 
-X-CRM114-Status: GOOD (  13.28  )
+X-CRM114-CacheID: sfid-20240719_080849_994297_0838A8C3 
+X-CRM114-Status: GOOD (  19.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,103 +94,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am Donnerstag, dem 18.07.2024 um 16:46 -0700 schrieb sean.wang@kernel.org:
-> From: Sean Wang <sean.wang@mediatek.com>
+Hi Arnd,
+
+On Fri, Jul 19, 2024 at 6:06=E2=80=AFAM Arnd Bergmann <arnd@kernel.org> wro=
+te:
 >
-> Fix null pointer access in mt792x_mac_link_bss_remove.
+> From: Arnd Bergmann <arnd@arndb.de>
 >
-> To prevent null pointer access, we should assign the vif to bss_conf in
-> mt7921_add_interface. This ensures that subsequent operations on the BSS
-> can properly reference the correct vif.
+> The mediatek bluetooth drivers have a common portion that is now used for
+> all front-ends (usb, sdio, uart) but that internally relies on USB
+> interface functions:
 >
-> [  T843] Call Trace:
-> [  T843]  <TASK>
-> [  T843]  ? __die+0x1e/0x60
-> [  T843]  ? page_fault_oops+0x157/0x450
-> [  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
-> [  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
-> [  T843]  ? search_bpf_extables+0x5a/0x80
-> [  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
-> [  T843]  ? exc_page_fault+0x2bb/0x670
-> [  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
-> [  T843]  ? lock_timer_base+0x71/0x90
-> [  T843]  ? asm_exc_page_fault+0x26/0x30
-> [  T843]  ? mt792x_mac_link_bss_remove+0x24/0x110 [mt792x_lib]
-> [  T843]  ? mt792x_remove_interface+0x6e/0x90 [mt792x_lib]
-> [  T843]  ? ieee80211_do_stop+0x507/0x7e0 [mac80211]
-> [  T843]  ? ieee80211_stop+0x53/0x190 [mac80211]
-> [  T843]  ? __dev_close_many+0xa5/0x120
-> [  T843]  ? __dev_change_flags+0x18c/0x220
-> [  T843]  ? dev_change_flags+0x21/0x60
-> [  T843]  ? do_setlink+0xdf9/0x11d0
-> [  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
-> [  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
-> [  T843]  ? security_sock_rcv_skb+0x33/0x50
-> [  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
-> [  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
-> [  T843]  ? __nla_validate_parse+0x61/0xd10
-> [  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
-> [  T843]  ? genl_done+0x53/0x80
-> [  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
-> [  T843]  ? netlink_dump+0x357/0x410
-> [  T843]  ? __rtnl_newlink+0x5d6/0x980
-> [  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
-> [  T843]  ? genl_family_rcv_msg_dumpit+0xdf/0xf0
-> [  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
-> [  T843]  ? __kmalloc_cache_noprof+0x44/0x210
-> [  T843]  ? rtnl_newlink+0x42/0x60
-> [  T843]  ? rtnetlink_rcv_msg+0x152/0x3f0
-> [  T843]  ? mptcp_pm_nl_dump_addr+0x180/0x180
-> [  T843]  ? rtnl_calcit.isra.0+0x130/0x130
-> [  T843]  ? netlink_rcv_skb+0x56/0x100
-> [  T843]  ? netlink_unicast+0x199/0x290
-> [  T843]  ? netlink_sendmsg+0x21d/0x490
-> [  T843]  ? __sock_sendmsg+0x78/0x80
-> [  T843]  ? ____sys_sendmsg+0x23f/0x2e0
-> [  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
-> [  T843]  ? copy_msghdr_from_user+0x68/0xa0
-> [  T843]  ? ___sys_sendmsg+0x81/0xd0
-> [  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
-> [  T843]  ? crng_fast_key_erasure+0xbc/0xf0
-> [  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
-> [  T843]  ? get_random_bytes_user+0x126/0x140
-> [  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
-> [  T843]  ? __fdget+0xb1/0xe0
-> [  T843]  ? __sys_sendmsg+0x56/0xa0
-> [  T843]  ? srso_alias_return_thunk+0x5/0xfbef5
-> [  T843]  ? do_syscall_64+0x5f/0x170
-> [  T843]  ? entry_SYSCALL_64_after_hwframe+0x55/0x5d
-> [  T843]  </TASK>
+> ERROR: modpost: "usb_alloc_urb" [drivers/bluetooth/btmtk.ko] undefined!
+> ERROR: modpost: "usb_anchor_urb" [drivers/bluetooth/btmtk.ko] undefined!
+> ERROR: modpost: "usb_submit_urb" [drivers/bluetooth/btmtk.ko] undefined!
+> ERROR: modpost: "usb_free_urb" [drivers/bluetooth/btmtk.ko] undefined!
+> ERROR: modpost: "usb_unanchor_urb" [drivers/bluetooth/btmtk.ko] undefined=
+!
+> ERROR: modpost: "usb_kill_anchored_urbs" [drivers/bluetooth/btmtk.ko] und=
+efined!
+> ERROR: modpost: "usb_set_interface" [drivers/bluetooth/btmtk.ko] undefine=
+d!
+> ERROR: modpost: "usb_control_msg" [drivers/bluetooth/btmtk.ko] undefined!
 >
-> Fixes: 1541d63c5fe2 ("wifi: mt76: mt7925: add mt7925_mac_link_bss_remove=
- to remove per-link BSS")
-> Reported-by: Bert Karwatzki <spasswolf@web.de>
-> Closes: https://lore.kernel.org/linux-wireless/2fee61f8c903d02a900ca3188=
-c3742c7effd102e.camel@web.de/#b
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> It would be possible to split this up further, but in practice anything
+> that uses this driver will have USB enabled anyway and it only matters
+> for build testing, so just go with a much stricter dependency.
+>
+> Fixes: f5c3f98946e3 ("Bluetooth: btmtkuart: rely on BT_MTK module")
+> Fixes: 3a722044aacf ("Bluetooth: btmtksido: rely on BT_MTK module")
+> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
 > ---
->  drivers/net/wireless/mediatek/mt76/mt7921/main.c | 1 +
->  1 file changed, 1 insertion(+)
+>  drivers/bluetooth/Kconfig | 3 +++
+>  1 file changed, 3 insertions(+)
 >
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/=
-net/wireless/mediatek/mt76/mt7921/main.c
-> index 2e6268cb06c0..1bab93d049df 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-> @@ -303,6 +303,7 @@ mt7921_add_interface(struct ieee80211_hw *hw, struct=
- ieee80211_vif *vif)
+> diff --git a/drivers/bluetooth/Kconfig b/drivers/bluetooth/Kconfig
+> index 44a2de58337b..2894a345562c 100644
+> --- a/drivers/bluetooth/Kconfig
+> +++ b/drivers/bluetooth/Kconfig
+> @@ -21,6 +21,7 @@ config BT_QCA
 >
->  	mvif->bss_conf.mt76.omac_idx =3D mvif->bss_conf.mt76.idx;
->  	mvif->phy =3D phy;
-> +	mvif->bss_conf.vif =3D mvif;
->  	mvif->bss_conf.mt76.band_idx =3D 0;
->  	mvif->bss_conf.mt76.wmm_idx =3D mvif->bss_conf.mt76.idx % MT76_CONNAC_=
-MAX_WMM_SETS;
+>  config BT_MTK
+>         tristate
+> +       depends on USB
+>         select FW_LOADER
 >
-I've been testing this since you suggested it on 11.7.2024 and it works fi=
-ne.
+>  config BT_HCIBTUSB
+> @@ -413,6 +414,7 @@ config BT_ATH3K
+>  config BT_MTKSDIO
+>         tristate "MediaTek HCI SDIO driver"
+>         depends on MMC
+> +       depends on USB
+>         select BT_MTK
+>         help
+>           MediaTek Bluetooth HCI SDIO driver.
+> @@ -425,6 +427,7 @@ config BT_MTKSDIO
+>  config BT_MTKUART
+>         tristate "MediaTek HCI UART driver"
+>         depends on SERIAL_DEV_BUS
+> +       depends on USB
+>         select BT_MTK
+>         help
+>           MediaTek Bluetooth HCI UART driver.
+> --
+> 2.39.2
 
-Tested-by: Bert Karwatzki <spasswolf@web.de>
+Thanks for the fix, but we went with a different one:
+https://patchwork.kernel.org/project/bluetooth/patch/20240719033019.26767-1=
+-chris.lu@mediatek.com/
 
-Bert Karwatzki
+--=20
+Luiz Augusto von Dentz
 
