@@ -4,60 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B682FC3DA5D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jul 2024 20:40:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FE35C3DA59
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jul 2024 20:46:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Qi7C3B5QNlqNKB0Ffk+iV6UdT1R4F/g0ZZUbmQEcZUM=; b=Q59FOgjqIqalfXNnZ74/qO/pTi
-	x6CzCoNepuW9IQO73bg0xaUI2jJG86J194vgYQ+1RgS5NSLYkK7kujWkparqRDWwMFbn0e79givib
-	PJZcg36h+0ggstEbelGz7y9Rx9KveTNU6hNpLK8kdrS9wK+sDMcWvDOxoxRdwuAQaXIfQygbgvvyQ
-	Jav+DkZWTKmCm8YZaYMpiBzPkntN1wyVGc7fa38s5xKd1Lsb9AWWt/ciGej8SN7K0RFy/Bysjkv/u
-	YVGCnq6AUdElYpf8y2ipNai9SKtMDigaXGNQy4qXTsCbKkFPvFAX3FHPT+MiGIMGs89LNo6vHwe+l
-	DwrBjU6A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=; b=mKq0/f1cuzmqyCLwOOQIKa8n6Z
+	7D3rqEv+q8+flhfIHi4UAltRH418KsP7K75iGRzlgP6G1UmFcAVbsT1Vy4wSPT3jLzpaYXHkBhRJx
+	U/dFF7hfJXq37X43FlONhm3V6tRK6lWPFT7jvYx5BIoHU/5tQEo/KcteyH1ycpG+1NI+3a6wruYBy
+	/rFm/60s1WSHm+/yhncDOPgA3l+wJDlm29oNvA4A2n+pVo6FuU0knrwpLxyV+egWvxiStBBC+kW0/
+	k+15VvKDTBJP2kJJnZOtu0kSNPtfu8NUSn6pTtTURgvzPqZo9oSeJBOFM2e5EyWVBTcsdBiutZFva
+	g+u4gNmg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sUuOe-00000003lat-0wiO;
-	Fri, 19 Jul 2024 20:40:08 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1sUuUR-00000003mHB-18HF;
+	Fri, 19 Jul 2024 20:46:07 +0000
+Received: from mail-io1-xd2d.google.com ([2607:f8b0:4864:20::d2d])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sUuOb-00000003laK-1vGe
+	id 1sUuUL-00000003mGA-1IS3
 	for linux-mediatek@lists.infradead.org;
-	Fri, 19 Jul 2024 20:40:07 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 27301CE1C26;
-	Fri, 19 Jul 2024 20:40:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1D389C32782;
-	Fri, 19 Jul 2024 20:40:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1721421602;
-	bh=QDENLDTXpwvawrix7G7bkW73ja1cWQA27bKFoe1kOJg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Wpdmu6kK5JfAzNiFwkvwXSyLB63z3NjB2Fd56CHVeXRIMbaG6Y2IdNwv3owGDhZaU
-	 /eOFxjV2eqF2hY+2NxuGFl2wo8oPcyYA7gefcYQfkdoMOM2cauyyG13QEp98zYK4zm
-	 fjYFUvdnDyDoOMzV6ikzf7azW86lWS8RfCQZ6S0YaDLPiMnUqr4H5pkUG03lIcTi1P
-	 NKPfVlPJLDonjVVKcr5YP5Qx+FqEjts+GtsIIGOEj6hDbhlxaPz2rgiF/wlGy54rIz
-	 N0/9+gca/Qt1v/PnDicPbVVajFXMf+Xj4QpLasynOwxb4vz2LXwoVw0cAiv5UCsTAQ
-	 +648akjmqZyxg==
-Date: Fri, 19 Jul 2024 22:39:58 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Dan Carpenter <dan.carpenter@linaro.org>
-Cc: linux-mediatek@lists.infradead.org
-Subject: Re: [bug report] net: airoha: Introduce ethernet support for EN7581
- SoC
-Message-ID: <ZprPHlFgp1G2iTkM@lore-desk>
-References: <395b364b-8a37-40ce-ac24-4f0bd7eb0e2a@stanley.mountain>
+	Fri, 19 Jul 2024 20:46:05 +0000
+Received: by mail-io1-xd2d.google.com with SMTP id ca18e2360f4ac-816ca307407so79466039f.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 19 Jul 2024 13:46:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1721421959; x=1722026759; darn=lists.infradead.org;
+        h=content-transfer-encoding:tested-by:mime-version:references
+         :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=;
+        b=BAXw/dk/uBe6bXb/XMIAhtmTDkas1NrHFX7fUE1Y5papRUfu6cETgENTpYKNKnogw5
+         8X2eWdgd8pzonwkcrrHhcXYPvv8xWqwCeD6Nd/BtxPU5YrWwkQldCjycXWMciwxGGkdt
+         uds2gj6d4ecpiGkFfxb8eJI16QDS9EkkmlFz4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1721421959; x=1722026759;
+        h=content-transfer-encoding:tested-by:mime-version:references
+         :in-reply-to:message-id:date:subject:cc:to:from:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=;
+        b=s8Kn/x6MfJPbNBVhWp90J/U7GQu4qGn+pkf4xmQwMQnAibVDFG911tPjq9kjUM4JrR
+         oqK2U9yZnKc0Qe4qt/5NbUCtCe1OkXYCnt6RSGSybkrLy9ZM/5S94+7pcNmxWw/QfC9F
+         TFYVmMZo1SGRKjpe9LvI0g/GraZKobt7fCCixSHlyy8UEgH07IhKwf5WTJmzGfugGQHY
+         th1qHjN/gptZ69L0j216pQvEhRGgPqC5ClxEoEIept14ih8tqrXBJeSFSXUfMyk8dQ45
+         0EIqkAd/gR8tNCxLsn551Tk41qIBnNpyAQpCv90ZvNqYfhqpVQy91JCiYvlpZ/sjQ17s
+         F/0w==
+X-Forwarded-Encrypted: i=1; AJvYcCUZL+5f9FG0a6KOvw/KPKQQ/4QE6Jo1Hvfq9dgPN+mhbaBiMFbKod5ADTahgEBX4nU9XmQLqvGiA9E7hkD1WbEKxV30b+ClLpf823R/mQlnZ1Lm
+X-Gm-Message-State: AOJu0YzjBXkXJjNPS8kHtVDDCVg4O0m5601iHXT4wwuvIcHJ7JJotrHc
+	UVgwPzZRaPXFCicdpvL82ltQEno6P2MJe8At/DGu4FLLzgUaNfh6odgpqtsJ/A==
+X-Google-Smtp-Source: AGHT+IEWEky2R8AmLgCPI7m4VCZ1SzL/kd0LYvnZoSI1Au9xSLRjH3/gDGRwPRdrVeeIMeSHpOLBWg==
+X-Received: by 2002:a05:6602:3f91:b0:7f9:16da:ac79 with SMTP id ca18e2360f4ac-817125e31c2mr1240441339f.16.1721421959663;
+        Fri, 19 Jul 2024 13:45:59 -0700 (PDT)
+Received: from arowa.c.googlers.com.com (214.62.225.35.bc.googleusercontent.com. [35.225.62.214])
+        by smtp.gmail.com with ESMTPSA id 8926c6da1cb9f-4c234404f4esm471700173.162.2024.07.19.13.45.59
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 19 Jul 2024 13:45:59 -0700 (PDT)
+From: Arowa Suliman <arowa@chromium.org>
+X-Google-Original-From: Arowa Suliman <arowa@google.com>
+To: mingyen.hsieh@mediatek.com
+Cc: Eric-SY.Chang@mediatek.com,
+	Leon.Yen@mediatek.com,
+	Quan.Zhou@mediatek.com,
+	Ryder.Lee@mediatek.com,
+	Sean.Wang@mediatek.com,
+	Shayne.Chen@mediatek.com,
+	Soul.Huang@mediatek.com,
+	ch.yeh@mediatek.com,
+	deren.wu@mediatek.com,
+	km.lin@mediatek.com,
+	linux-mediatek@lists.infradead.org,
+	linux-wireless@vger.kernel.org,
+	lorenzo@kernel.org,
+	nbd@nbd.name,
+	posh.sun@mediatek.com,
+	robin.chiu@mediatek.com
+Subject: Re: [PATCH v2] wifi: mt76: mt7921: introduce CSA support
+Date: Fri, 19 Jul 2024 20:45:56 +0000
+Message-ID: <20240719204556.1029453-1-arowa@google.com>
+X-Mailer: git-send-email 2.45.2.1089.g2a221341d9-goog
+In-Reply-To: <20240530084455.4290-1-mingyen.hsieh@mediatek.com>
+References: <20240530084455.4290-1-mingyen.hsieh@mediatek.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="w3MCbIotanJ1tKKG"
-Content-Disposition: inline
-In-Reply-To: <395b364b-8a37-40ce-ac24-4f0bd7eb0e2a@stanley.mountain>
+Tested-by: Arowa Suliman <arowa@chromium.org>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240719_134005_878023_A20E2EE5 
-X-CRM114-Status: GOOD (  12.20  )
+X-CRM114-CacheID: sfid-20240719_134601_371276_9A5D8C89 
+X-CRM114-Status: UNSURE (   4.18  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,158 +106,4 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
---w3MCbIotanJ1tKKG
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-[...]
-> drivers/net/ethernet/mediatek/airoha_eth.c
->     1134 static void airoha_fe_pse_ports_init(struct airoha_eth *eth)
->     1135 {
->     1136         const u32 pse_port_num_queues[] =3D {
->     1137                 [FE_PSE_PORT_CDM1] =3D 6,
->     1138                 [FE_PSE_PORT_GDM1] =3D 6,
->     1139                 [FE_PSE_PORT_GDM2] =3D 32,
->     1140                 [FE_PSE_PORT_GDM3] =3D 6,
->     1141                 [FE_PSE_PORT_PPE1] =3D 4,
->     1142                 [FE_PSE_PORT_CDM2] =3D 6,
->     1143                 [FE_PSE_PORT_CDM3] =3D 8,
->                          ^^^^^^^^^^^^^^^^^^^^^^^
->=20
->     1144                 [FE_PSE_PORT_CDM4] =3D 10,
->     1145                 [FE_PSE_PORT_PPE2] =3D 4,
->     1146                 [FE_PSE_PORT_GDM4] =3D 2,
->     1147                 [FE_PSE_PORT_CDM5] =3D 2,
->     1148         };
->     1149         int q;
->     1150=20
->     1151         /* hw misses PPE2 oq rsv */
->     1152         airoha_fe_set(eth, REG_FE_PSE_BUF_SET,
->     1153                       PSE_RSV_PAGES * pse_port_num_queues[FE_PSE=
-_PORT_PPE2]);
->     1154=20
->     1155         /* CMD1 */
->     1156         for (q =3D 0; q < pse_port_num_queues[FE_PSE_PORT_CDM1];=
- q++)
->     1157                 airoha_fe_set_pse_oq_rsv(eth, FE_PSE_PORT_CDM1, =
-q,
->     1158                                          PSE_QUEUE_RSV_PAGES);
->     1159         /* GMD1 */
->     1160         for (q =3D 0; q < pse_port_num_queues[FE_PSE_PORT_GDM1];=
- q++)
->     1161                 airoha_fe_set_pse_oq_rsv(eth, FE_PSE_PORT_GDM1, =
-q,
->     1162                                          PSE_QUEUE_RSV_PAGES);
->     1163         /* GMD2 */
->     1164         for (q =3D 6; q < pse_port_num_queues[FE_PSE_PORT_GDM2];=
- q++)
->     1165                 airoha_fe_set_pse_oq_rsv(eth, FE_PSE_PORT_GDM2, =
-q, 0);
->     1166         /* GMD3 */
->     1167         for (q =3D 0; q < pse_port_num_queues[FE_PSE_PORT_GDM3];=
- q++)
->     1168                 airoha_fe_set_pse_oq_rsv(eth, FE_PSE_PORT_GDM3, =
-q,
->     1169                                          PSE_QUEUE_RSV_PAGES);
->     1170         /* PPE1 */
->     1171         for (q =3D 0; q < pse_port_num_queues[FE_PSE_PORT_PPE1];=
- q++) {
->     1172                 if (q < pse_port_num_queues[FE_PSE_PORT_PPE1])
->     1173                         airoha_fe_set_pse_oq_rsv(eth, FE_PSE_POR=
-T_PPE1, q,
->     1174                                                  PSE_QUEUE_RSV_P=
-AGES);
->     1175                 else
->     1176                         airoha_fe_set_pse_oq_rsv(eth, FE_PSE_POR=
-T_PPE1, q, 0);
->     1177         }
->     1178         /* CDM2 */
->     1179         for (q =3D 0; q < pse_port_num_queues[FE_PSE_PORT_CDM2];=
- q++)
->     1180                 airoha_fe_set_pse_oq_rsv(eth, FE_PSE_PORT_CDM2, =
-q,
->     1181                                          PSE_QUEUE_RSV_PAGES);
->     1182         /* CDM3 */
-> --> 1183         for (q =3D 0; q < pse_port_num_queues[FE_PSE_PORT_CDM3] =
-- 1; q++)
->                                                                       ^^^^
-> This - 1 doesn't look intentional.  It's the only time this value is used.
-
-I checked the vendor sdk and this is fine.
-
->=20
->     1184                 airoha_fe_set_pse_oq_rsv(eth, FE_PSE_PORT_CDM3, =
-q, 0);
->     1185         /* CDM4 */
->     1186         for (q =3D 4; q < pse_port_num_queues[FE_PSE_PORT_CDM4];=
- q++)
->     1187                 airoha_fe_set_pse_oq_rsv(eth, FE_PSE_PORT_CDM4, =
-q,
->     1188                                          PSE_QUEUE_RSV_PAGES);
->     1189         /* PPE2 */
->     1190         for (q =3D 0; q < pse_port_num_queues[FE_PSE_PORT_PPE2];=
- q++) {
->     1191                 if (q < pse_port_num_queues[FE_PSE_PORT_PPE2] / =
-2)
->     1192                         airoha_fe_set_pse_oq_rsv(eth, FE_PSE_POR=
-T_PPE2, q,
->     1193                                                  PSE_QUEUE_RSV_P=
-AGES);
->     1194                 else
->     1195                         airoha_fe_set_pse_oq_rsv(eth, FE_PSE_POR=
-T_PPE2, q, 0);
->     1196         }
->     1197         /* GMD4 */
->     1198         for (q =3D 0; q < pse_port_num_queues[FE_PSE_PORT_GDM4];=
- q++)
->     1199                 airoha_fe_set_pse_oq_rsv(eth, FE_PSE_PORT_GDM4, =
-q,
->     1200                                          PSE_QUEUE_RSV_PAGES);
->     1201         /* CDM5 */
->     1202         for (q =3D 0; q < pse_port_num_queues[FE_PSE_PORT_CDM5];=
- q++)
->     1203                 airoha_fe_set_pse_oq_rsv(eth, FE_PSE_PORT_CDM5, =
-q,
->     1204                                          PSE_QUEUE_RSV_PAGES);
->     1205 }
->=20
-> drivers/net/ethernet/mediatek/airoha_eth.c
->   1366          airoha_fe_set(eth, REG_FE_CPORT_CFG, FE_CPORT_PORT_XFC_MA=
-SK);
->   1367 =20
->   1368          /* default aging mode for mbi unlock issue */
->   1369          airoha_fe_rmw(eth, REG_GDM2_CHN_RLS,
->   1370                        MBI_RX_AGE_SEL_MASK | MBI_TX_AGE_SEL_MASK,
->=20
-> The RX and TX masks are identical.  Possibly correct but #Suspicious.
->=20
->   1371                        FIELD_PREP(MBI_RX_AGE_SEL_MASK, 3) |
->   1372                        FIELD_PREP(MBI_TX_AGE_SEL_MASK, 3));
-
-I posted a fix for it.
-
-Regards,
-Lorenzo
-
->   1373 =20
->   1374          /* disable IFC by default */
->=20
->=20
-> regards,
-> dan carpenter
-
---w3MCbIotanJ1tKKG
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZprPHgAKCRA6cBh0uS2t
-rGU4AQDL6f1zPbnuUFds6JhoYbyuG6q7DQDMMuxzKsX2ALheuwEA5xMiYSxaqoeM
-Glh5vq6/vg/pMLJwjL/dNvrwqIequg0=
-=VqTC
------END PGP SIGNATURE-----
-
---w3MCbIotanJ1tKKG--
 
