@@ -4,103 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC4ADC3DA5D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jul 2024 15:22:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DEA6C3DA5D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jul 2024 17:31:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Subject:Cc:To:From:Date:References:In-Reply-To:Message-Id:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=s+PzQcEGeZO72mJxLzVW32ROjmZ1iVcPKvrWAwSV2OQ=; b=MtXNKVGFiuOOLGHNsuLEb4/803
-	WCoK8TA252qIbVc+QNnkG84hiSudUkp2f7Hu32vRlFsZ/eUycJ7G8f1mv9Z6ymYpD3Pfl+Vrg3Jkl
-	Xm5d6ryQM40z/qlu5GYSg+mpZPmJOtq7Wxoksa0mGkEf6hAfVfGDFNzmDD29+dY3M5xS6lW+fZn6d
-	DuacK8tHOQIe6iBWXkrmXLYAebjhEuSG+ELRjt1L4hGaUyNzwbZ1i9yLzO16DeChELI7iqThfnr+F
-	rWErvveujFqZHKfXTRikDfDsG45CBeZlCuHXfmrvdVZMyueTgBVRDm739fd8rIVjilbtA1+sME/xo
-	i/934Oew==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6ZbMHz0p5DWuVseBb2N8rhX28Nxn5bBUC6D+VNe4hHM=; b=iag4NWzKSYe39aASVUrZsyufTP
+	TFKyLEMErcU+yhLfl3e+csuruutfHT2Wb6FzFE/SuHEOxwFJ1IIlrJ1L29zqgJsY7R+3WzCSJfJfd
+	+0KjDAFlIfz/o1APm6APRcU04in1+Nuq6mum1UmpveQ8ev39prfNyRoCId1m5fHKzitxoXpNO9QBQ
+	MKwC/1CHrXIdaaLarOQlAndjKGRFb2cnQIat0lLeYyvpbCXbJ8oQUwmDFPl7MmazTr+eRsP8uUi78
+	DTtgsjHP4B5TZp73xtLMYIO4P0b+pSUvfTnGzq2tHCCgXmNIEdidjMR94ES6pBC36TVivB82k+OMx
+	t+Zqn5Cw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sUpQu-000000034SQ-0svp;
-	Fri, 19 Jul 2024 15:22:08 +0000
-Received: from fhigh2-smtp.messagingengine.com ([103.168.172.153])
+	id 1sUrSY-00000003OYH-2831;
+	Fri, 19 Jul 2024 17:31:58 +0000
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sUpQW-000000034Nc-3dvX;
-	Fri, 19 Jul 2024 15:21:46 +0000
-Received: from compute6.internal (compute6.nyi.internal [10.202.2.47])
-	by mailfhigh.nyi.internal (Postfix) with ESMTP id 38C13114021C;
-	Fri, 19 Jul 2024 11:21:43 -0400 (EDT)
-Received: from imap51 ([10.202.2.101])
-  by compute6.internal (MEProxy); Fri, 19 Jul 2024 11:21:43 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arndb.de; h=cc
-	:cc:content-transfer-encoding:content-type:content-type:date
-	:date:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:subject:subject:to:to; s=fm2; t=1721402503;
-	 x=1721488903; bh=s+PzQcEGeZO72mJxLzVW32ROjmZ1iVcPKvrWAwSV2OQ=; b=
-	mi/qsxgnCXB+X5PlvJW2HoxMK6iujYQNBbYtxNFzebj/cyUrmAGm6Q9+l9nx/5SE
-	oo0jY3ypsJtMGVPZEpVpN31rmTd4nR04EWzNg8rFXIjC4YVmw/1/wXzDOzvgLBkg
-	UdBLQG7cZt7EgpWX/OYbbcU65XJn2E9GZ5nDoFcE9+ddjzn/3i9OhRIS9fKftDjA
-	FxJBVKaOlJZpYunUDejQo9+TcNi6ueXrRHYnK+7ck5f0by8DifPhifMBHltA7nYu
-	jPNvYlooPZWqoQh+yCtwv5A2EgIF+z+l1JmDlIiL0fQMfZkT7Gbkmfd31ux4N+KL
-	wefESr56pISi1mGpOyv0Ww==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:content-type:date:date:feedback-id:feedback-id
-	:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:subject:subject:to:to:x-me-proxy:x-me-proxy
-	:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1721402503; x=
-	1721488903; bh=s+PzQcEGeZO72mJxLzVW32ROjmZ1iVcPKvrWAwSV2OQ=; b=Y
-	XGrk/7aTnFZ+EZuy5agZQcH6DWudmBU1IvyPvmYWbzl22ETonHux1PYpqmQzPOkK
-	ThD7JTRvy4XXUBgExLj2qhOftENXm82nW23qJKQjtf9W8QhWbpus+wpadANkFeVH
-	cYrVqkgpXMzd8NDF8KZkaoojvdmFCuPTya4SVvY6TXNEta+iGQ5hXX1iUdik6gY/
-	qB/S4UsrAJo5csZ3I2ijB3kz10zJ8JnrtBABsdVH79YBMnPfUu9iYSvAECfj4cL9
-	blqIOwbYSpsqucUgOQrubdSfQ6qr2IMukjFaE1dK1rQ8l+CYgYdEHJclTGInLIsm
-	SGzPstvT0tBMBU/xZgeUw==
-X-ME-Sender: <xms:hoSaZmyhWqc-Ik-4xAvo11PPfGYmQr4prnvdDltyYlso31zSttRQwg>
-    <xme:hoSaZiTfI27ws5hDnT9-VJONajKJ11qjZHqQlwzwPs0UPXh183uev7W6Q7QFr2_H3
-    4MThR4ehiO_dMzvCWo>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeftddrhedugdekkecutefuodetggdotefrodftvf
-    curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
-    uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
-    fjughrpefofgggkfgjfhffhffvvefutgfgsehtqhertderreejnecuhfhrohhmpedftehr
-    nhguuceuvghrghhmrghnnhdfuceorghrnhgusegrrhhnuggsrdguvgeqnecuggftrfgrth
-    htvghrnhepgfekueelgeeigefhudduledtkeefffejueelheelfedutedttdfgveeufeef
-    ieegnecuffhomhgrihhnpehkvghrnhgvlhdrohhrghenucevlhhushhtvghrufhiiigvpe
-    dtnecurfgrrhgrmhepmhgrihhlfhhrohhmpegrrhhnugesrghrnhgusgdruggv
-X-ME-Proxy: <xmx:hoSaZoWyUAQAt7AwZD7hEr-HGwUz_6RhrsmPFS_LPWTZAHPTOc-INA>
-    <xmx:hoSaZsjsPoTE7qHxdTIznvIDOH8vAATrRcf8a6gcNlWy4xummeRe4Q>
-    <xmx:hoSaZoBFKsyFd3eqjw9JAj8CoT-QjkpFJDVgoERkc_fkAxb787bHoA>
-    <xmx:hoSaZtIzV3unhl-YENBJtjdDOu-0-aReAdWLxPvs3afoWE6u09nh4A>
-    <xmx:h4SaZgbK0E-cfIssxqqBF5O9Y5ZFVoL-omwzUK_avZ-b-GRPWFJl5WKk>
-Feedback-ID: i56a14606:Fastmail
-Received: by mailuser.nyi.internal (Postfix, from userid 501)
-	id 0CE24B6008D; Fri, 19 Jul 2024 11:21:41 -0400 (EDT)
-X-Mailer: MessagingEngine.com Webmail Interface
-User-Agent: Cyrus-JMAP/3.11.0-alpha0-568-g843fbadbe-fm-20240701.003-g843fbadb
+	id 1sUrSW-00000003OXZ-0c4A;
+	Fri, 19 Jul 2024 17:31:57 +0000
+Received: by mail-pl1-x62a.google.com with SMTP id d9443c01a7336-1fc4fcbb131so19994225ad.3;
+        Fri, 19 Jul 2024 10:31:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1721410315; x=1722015115; darn=lists.infradead.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:sender
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=6ZbMHz0p5DWuVseBb2N8rhX28Nxn5bBUC6D+VNe4hHM=;
+        b=HgrA4gyUTaZ/JseE2y4DLJlaXonQhhUJxnkyWfH/5/9ZHWWlzRgJG1xdecH+O1iche
+         YOLbmM93MPjobYdrbhZnMFd06L+dTdPvZBPmEyLMr2A2ieaSc8krP5orXYT8qij/C7fj
+         90/0+5HMfo7JvwBypq+HkDqYSLQjA6TbEpmYo1Jk+jDwQtu37q+12IQvFa6U0nEoq8H9
+         X85GHDm5GLkpXwGk57NV8NMIM/nVzb3ivtxzXpfRyC4kpBSQ5p/FudiBR0ib9NxELaux
+         BUU2maOMFbHU96yD2MLHYOukkqAMWriNAtBJrYPwLKR1ckouT8wHfDhZePypB7GfJq7T
+         RjgA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1721410315; x=1722015115;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:sender
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=6ZbMHz0p5DWuVseBb2N8rhX28Nxn5bBUC6D+VNe4hHM=;
+        b=cHhNSMVU7duKVs2H8G9dSqrdmYQVvFSud58HqOvB1NZtty7LJG99dgq0mC1skRmPrz
+         FumUQWCBHKTtfA0S3ywOMdSKO/GnPqty1TCqYbklNOK1WHUMvES3ZmdyCLa5D60P6FSO
+         l2dFmkVNUME+uUqrvWih3DvFpzWzxspynYXZ7e+JmZRrnVvUVk6kR24LuCIkhyQXQ0qd
+         G9QWKVfXYJE8Vrly7aoC98I/fo+CbnKSHMRa8MrLuRdYQsMl7ykC/MwFPRKOqdOKQVAJ
+         rwjHq+wvusnw6lhdXt0Mqeb+eLArk0qNKjJC4SHwxL7sSvRx8rT+jDGqcqXhwVuWjjLZ
+         v+3Q==
+X-Forwarded-Encrypted: i=1; AJvYcCWD1xnVOUythIs2O+VjHwzltok3xf5vkgGudt+C6iOvuZxmqmlqehN5MHKHjR0fhwagqS5rLyyqH1mEiR6mAnlYPrRtsehUCrdau7gYRF/yR3Oo54fMjxpScY1Kfu+YjzS9T/QCHpFIXtVxGo7yMqoNjINP73QGgvg=
+X-Gm-Message-State: AOJu0YxU7RN3CTNcvRUBG/HZrEAw4mVcIzoen8MsGHHT10nnSyXqL7Xm
+	hjcWL9KGf4WVESweUdNaACzZN/vw/sRBI1UH0RarbdUulLukqJEd
+X-Google-Smtp-Source: AGHT+IFsThoFkOXcqDTCyPseR9byS+0442uGUbWIB1NvdVDLi0q/DrexI8yvkm4IqTHzGS1Ss2DQJQ==
+X-Received: by 2002:a17:902:ec91:b0:1f9:d0da:5b2f with SMTP id d9443c01a7336-1fd745879femr4471445ad.39.1721410315354;
+        Fri, 19 Jul 2024 10:31:55 -0700 (PDT)
+Received: from localhost (dhcp-141-239-149-160.hawaiiantel.net. [141.239.149.160])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-1fd6f48875esm7196225ad.287.2024.07.19.10.31.54
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 19 Jul 2024 10:31:54 -0700 (PDT)
+Date: Fri, 19 Jul 2024 07:31:53 -1000
+From: "tj@kernel.org" <tj@kernel.org>
+To: Boy Wu =?utf-8?B?KOWQs+WLg+iqvCk=?= <Boy.Wu@mediatek.com>
+Cc: "boris@bur.io" <boris@bur.io>,
+	"linux-block@vger.kernel.org" <linux-block@vger.kernel.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"cgroups@vger.kernel.org" <cgroups@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"axboe@kernel.dk" <axboe@kernel.dk>,
+	Iverlin Wang =?utf-8?B?KOeOi+iLs+mclik=?= <Iverlin.Wang@mediatek.com>,
+	"josef@toxicpanda.com" <josef@toxicpanda.com>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v4] blk-cgroup: Replace u64 sync with spinlock for iostat
+Message-ID: <ZpqjCVxSAV-Q7Yhy@slm.duckdns.org>
+References: <20240718084112.12202-1-boy.wu@mediatek.com>
+ <ZpmF8HJsuefjC7Xr@slm.duckdns.org>
+ <00c595a16b4e96ae56973ac2ce586f6ad736059f.camel@mediatek.com>
 MIME-Version: 1.0
-Message-Id: <9facdbd7-66e5-4756-85c4-ededc55942e2@app.fastmail.com>
-In-Reply-To: <CABBYNZKFD7axR5ZSGJL7mn=_mKufGnxopUeeZhL+AL40jWQjzQ@mail.gmail.com>
-References: <20240719100554.4183635-1-arnd@kernel.org>
- <CABBYNZKFD7axR5ZSGJL7mn=_mKufGnxopUeeZhL+AL40jWQjzQ@mail.gmail.com>
-Date: Fri, 19 Jul 2024 17:21:21 +0200
-From: "Arnd Bergmann" <arnd@arndb.de>
-To: "Luiz Augusto von Dentz" <luiz.dentz@gmail.com>,
- "Arnd Bergmann" <arnd@kernel.org>
-Cc: "Marcel Holtmann" <marcel@holtmann.org>,
- "Matthias Brugger" <matthias.bgg@gmail.com>,
- "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>,
- "Sean Wang" <sean.wang@mediatek.com>, "Sven Peter" <sven@svenpeter.dev>,
- "Tedd Ho-Jeong An" <tedd.an@intel.com>, "Hector Martin" <marcan@marcan.st>,
- "Krzysztof Kozlowski" <krzysztof.kozlowski@linaro.org>,
- "Niklas Schnelle" <schnelle@linux.ibm.com>, linux-bluetooth@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] Bluetooth: btmtk: add USB dependencies
-Content-Type: text/plain;charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <00c595a16b4e96ae56973ac2ce586f6ad736059f.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240719_082144_996937_B67E2AC6 
-X-CRM114-Status: UNSURE (   8.91  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240719_103156_211142_4C93A0C9 
+X-CRM114-Status: GOOD (  23.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,19 +103,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 19, 2024, at 17:08, Luiz Augusto von Dentz wrote:
-> On Fri, Jul 19, 2024 at 6:06=E2=80=AFAM Arnd Bergmann <arnd@kernel.org=
-> wrote:
->
-> Thanks for the fix, but we went with a different one:
-> https://patchwork.kernel.org/project/bluetooth/patch/20240719033019.26=
-767-1-chris.lu@mediatek.com/
+Hello, Boy.
 
-I thought about doing that at first, but I believe this is still
-broken for a configuration with CONFIG_USB=3Dm, CONFIG_BT_HCIBTUSB=3Dm,
-CONFIG_MMC=3Dy, CONFIG_BT_MTKSDIO=3Dy. I haven't tried this, but I
-think this should result in a CONFIG_BT_MTK=3Dy with the common
-module being built-in but unable to link against the USB module.
+On Fri, Jul 19, 2024 at 01:47:35AM +0000, Boy Wu (吳勃誼) wrote:
+...
+> If it is for readability, I think keeping using u64 sync instead of
+> replacing it with spinlock is better, because what u64 sync protects is
+> 64-bit data for 32-bit systems, while spinlock can be used for many
+> other reasons. The root cause of this issue is just the incorrect use
 
-      Arnd
+Yeah, but it can't be used when there are multiple updaters.
+
+> of u64 sync. Adding back the missing spinlock for the correct usage of
+> u64 sync is simpler. Is there any benefit to replacing u64 sync with
+> spinlock?
+
+It doesn't make sense to protect u64_sync with a spinlock. Both are only
+needed on 32bit. What's the point of having both? Also, note that iostat_cpu
+is also updated from two paths - bio issue and stat reset. If you want to
+keep that u64_sync, the only way to avoid possible deadlocks is adding
+spinlock in the bio issue path too, which will be pretty expensive.
+
+> > Also, for blkg_clear_stat(), we're running a slight chance of
+> > clearing of
+> > iostat_cpu racing against state updates from the hot path. Given the
+> > circumstances - stat reset is an cgroup1-only feature which isn't
+> > used
+> > widely and a problematic interface to begin with, I believe this is a
+> > valid
+> > choice but it needs to be noted.
+> 
+> I don't get this part, but if this is another issue, maybe another
+> patch would be better?
+
+It's the same issue. Reset is another writer and whenever you have more than
+one writers w/ u64_sync, there's a chance of deadlocks. So, iostat_cpu also
+has two writers - bio issue and stat reset. If you want to keep using
+u64_sync in both places, the only way to do it is adding spinlock protection
+to both paths, which is an expensive thing to do for the bio issue path. So,
+here, we'd rather just give up and let stat resetting be racy on 32bit.
+
+Thanks.
+
+-- 
+tejun
 
