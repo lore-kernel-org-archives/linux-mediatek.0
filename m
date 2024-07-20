@@ -4,90 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DBEAC3DA49
-	for <linux-mediatek@archiver.kernel.org>; Sat, 20 Jul 2024 07:36:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9363C3DA49
+	for <linux-mediatek@archiver.kernel.org>; Sat, 20 Jul 2024 09:14:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ls8vv00ZGhvGA4qmFtrNDhCNt27OWvxlvD2BDSCrlIw=; b=Nbn2Vkw0anoIObXZdRIEF6n9H8
-	1G2fsRmyPVzf5VNwEgbeW4pYvjq3UtetNo4bhdqa9HWCTxEL0V6j+/JgxTsRtXEz8arAJWsqOvW4+
-	B7Ja29grkfFrV04KhZIaosryqfZwBDj+lHPsRXwXzXo5IMx97NE+dFxPbIvhNfmW+xoLI69IoIHVI
-	LeA0mWEIZWWukgw9aNbnfvKmLEWPXIxLCvVaCBObtokKRrkqAGMLnHCdsAuJ59GTN6cP1+q+srWif
-	aPbdXu3CLet1ScA5UM22SQHcgPQTjDPgD27JzpxgHJJKvvLbRnTxS0VS7XxWSp49vnHOqamCnJkuX
-	qsc5luIw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Pi+X2g2kJTDKQmnA1Db4zYkGS17i73/InmWu+9v9jSk=; b=LpQ10xM1jABVZuO/+QAPQfGzEz
+	EF68nhitG2B2hTO62ITfB3i7OrPBfO6SfWoSVkcC116LSXmds7pDRo4O0Gxgx32p4os9h6A2dgTzf
+	vll/CQkqOBZFmYQSgfJbGLn/IiXeLZBX6x24EmvpTMIbNYbRSUfjH4k0V4gH3f/jvarz1ZOEnukYO
+	5dpWGguKuQr3Dv3QFrGuIEhtgMbD5jgECT8Man4PpAQsbNDq2E8AJbb/pdvxT42EJIploRS0rJM+e
+	3OB7cbZwhI73a8tGBGKMpX14P59kito5c2om6Z4PRuN6QOTfeBGPjrQok8S/uubr4JlxwPxfFzqpp
+	qmoK1n9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sV4eI-00000004gxt-0ftO;
-	Sat, 20 Jul 2024 07:36:58 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1sV6AO-00000004oIs-46Zs;
+	Sat, 20 Jul 2024 09:14:12 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sV4eF-00000004gwk-35tp;
-	Sat, 20 Jul 2024 07:36:56 +0000
-X-UUID: d4eee37a466a11ef955bff358274dad2-20240720
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=ls8vv00ZGhvGA4qmFtrNDhCNt27OWvxlvD2BDSCrlIw=;
-	b=Ir6rsODJ2mSqWQx3KzUsNMwm6n1im5cbahYnRkuOIeRutrY+K6eaymB4RgrPSNNRCpswvDygF6z0hud5CtovrGcIFiXFGeKeZ7hMDXdPvTqLsoJii5BmWpziVb9ClrLgV+X4A2b7WHzYrqPwg+82FudTIZ532eAOL43Ca+xOPKQ=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.40,REQID:d0f44a5d-b3c5-4a24-9459-e839ef20589e,IP:0,U
-	RL:0,TC:0,Content:0,EDM:-25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:ba885a6,CLOUDID:9131b4d1-436f-4604-ad9d-558fa44a3bbe,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:1,IP:nil,UR
-	L:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,S
-	PR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: d4eee37a466a11ef955bff358274dad2-20240720
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <yunfei.dong@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1204957277; Sat, 20 Jul 2024 00:36:52 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Sat, 20 Jul 2024 00:16:48 -0700
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Sat, 20 Jul 2024 15:16:47 +0800
-From: Yunfei Dong <yunfei.dong@mediatek.com>
-To: Jeffrey Kardatzke <jkardatzke@google.com>,
-	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
-	<nfraprado@collabora.com>, Nathan Hebert <nhebert@chromium.org>, Nicolas
- Dufresne <nicolas.dufresne@collabora.com>, Hans Verkuil
-	<hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>, Sebastian Fricke
-	<sebastian.fricke@collabora.com>, Tomasz Figa <tfiga@chromium.org>, Mauro
- Carvalho Chehab <mchehab@kernel.org>, Marek Szyprowski
-	<m.szyprowski@samsung.com>
-CC: Chen-Yu Tsai <wenst@chromium.org>, Yong Wu <yong.wu@mediatek.com>, Hsin-Yi
- Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, Daniel
- Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>, Yunfei Dong
-	<yunfei.dong@mediatek.com>, Sumit Semwal <sumit.semwal@linaro.org>, Brian
- Starkey <Brian.Starkey@arm.com>, John Stultz <jstultz@google.com>, "T . J .
- Mercier" <tjmercier@google.com>, =?UTF-8?q?Christian=20K=C3=B6nig?=
-	<christian.koenig@amd.com>, Matthias Brugger <matthias.bgg@gmail.com>,
-	<linux-media@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v7 27/28] media: mediatek: vcodec: adding non extend struct
-Date: Sat, 20 Jul 2024 15:16:05 +0800
-Message-ID: <20240720071606.27930-28-yunfei.dong@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20240720071606.27930-1-yunfei.dong@mediatek.com>
-References: <20240720071606.27930-1-yunfei.dong@mediatek.com>
+	id 1sV6A2-00000004oE0-0Jzk;
+	Sat, 20 Jul 2024 09:13:51 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 95B3CCE021E;
+	Sat, 20 Jul 2024 09:13:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C2581C2BD10;
+	Sat, 20 Jul 2024 09:13:39 +0000 (UTC)
+Message-ID: <b09c8cd9-2e1e-48e1-a5c7-db020fc88808@xs4all.nl>
+Date: Sat, 20 Jul 2024 11:13:38 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v7 01/28] v4l2: add restricted memory flags
+To: Yunfei Dong <yunfei.dong@mediatek.com>,
+ Jeffrey Kardatzke <jkardatzke@google.com>,
+ =?UTF-8?Q?N=C3=ADcolas_F_=2E_R_=2E_A_=2E_Prado?= <nfraprado@collabora.com>,
+ Nathan Hebert <nhebert@chromium.org>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Sebastian Fricke <sebastian.fricke@collabora.com>,
+ Tomasz Figa <tfiga@chromium.org>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Marek Szyprowski <m.szyprowski@samsung.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>, Yong Wu <yong.wu@mediatek.com>,
+ Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
+ Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>,
+ Sumit Semwal <sumit.semwal@linaro.org>, Brian Starkey
+ <Brian.Starkey@arm.com>, John Stultz <jstultz@google.com>,
+ "T . J . Mercier" <tjmercier@google.com>,
+ =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-media@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20240720071606.27930-1-yunfei.dong@mediatek.com>
+ <20240720071606.27930-2-yunfei.dong@mediatek.com>
+Content-Language: en-US, nl
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+In-Reply-To: <20240720071606.27930-2-yunfei.dong@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240720_003655_787659_5614687F 
-X-CRM114-Status: GOOD (  13.07  )
+X-CRM114-CacheID: sfid-20240720_021350_470353_D1B9A361 
+X-CRM114-Status: GOOD (  25.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,116 +81,144 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Adding non extend struct to support two different architecture.
+Hi Yunfei,
 
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
----
- .../decoder/vdec/vdec_h264_req_multi_if.c     | 76 ++++++++++++++++++-
- 1 file changed, 73 insertions(+), 3 deletions(-)
+First a high-level comment:
 
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c
-index ed63430aca9d..8d88670c2f38 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c
-@@ -68,6 +68,29 @@ struct vdec_h264_slice_info_ex {
- 	u32 reserved;
- };
- 
-+/**
-+ * struct vdec_h264_slice_info - decode information
-+ *
-+ * @nal_info:		nal info of current picture
-+ * @timeout:		Decode timeout: 1 timeout, 0 no timeount
-+ * @bs_buf_size:	bitstream size
-+ * @bs_buf_addr:	bitstream buffer dma address
-+ * @y_fb_dma:		Y frame buffer dma address
-+ * @c_fb_dma:		C frame buffer dma address
-+ * @vdec_fb_va:	VDEC frame buffer struct virtual address
-+ * @crc:		Used to check whether hardware's status is right
-+ */
-+struct vdec_h264_slice_info {
-+	u16 nal_info;
-+	u16 timeout;
-+	u32 bs_buf_size;
-+	u64 bs_buf_addr;
-+	u64 y_fb_dma;
-+	u64 c_fb_dma;
-+	u64 vdec_fb_va;
-+	u32 crc[8];
-+};
-+
- /*
-  * struct vdec_h264_slice_mem - memory address and size
-  */
-@@ -128,6 +151,44 @@ struct vdec_h264_slice_vsi_ex {
- 	struct vdec_h264_slice_lat_dec_param h264_slice_params;
- };
- 
-+/**
-+ * struct vdec_h264_slice_vsi - shared memory for decode information exchange
-+ *        between SCP and Host.
-+ *
-+ * @wdma_err_addr:		wdma error dma address
-+ * @wdma_start_addr:		wdma start dma address
-+ * @wdma_end_addr:		wdma end dma address
-+ * @slice_bc_start_addr:	slice bc start dma address
-+ * @slice_bc_end_addr:		slice bc end dma address
-+ * @row_info_start_addr:	row info start dma address
-+ * @row_info_end_addr:		row info end dma address
-+ * @trans_start:		trans start dma address
-+ * @trans_end:			trans end dma address
-+ * @wdma_end_addr_offset:	wdma end address offset
-+ *
-+ * @mv_buf_dma:		HW working motion vector buffer
-+ *				dma address (AP-W, VPU-R)
-+ * @dec:			decode information (AP-R, VPU-W)
-+ * @h264_slice_params:		decode parameters for hw used
-+ */
-+struct vdec_h264_slice_vsi {
-+	/* LAT dec addr */
-+	u64 wdma_err_addr;
-+	u64 wdma_start_addr;
-+	u64 wdma_end_addr;
-+	u64 slice_bc_start_addr;
-+	u64 slice_bc_end_addr;
-+	u64 row_info_start_addr;
-+	u64 row_info_end_addr;
-+	u64 trans_start;
-+	u64 trans_end;
-+	u64 wdma_end_addr_offset;
-+
-+	u64 mv_buf_dma[H264_MAX_MV_NUM];
-+	struct vdec_h264_slice_info dec;
-+	struct vdec_h264_slice_lat_dec_param h264_slice_params;
-+};
-+
- /**
-  * struct vdec_h264_slice_share_info - shared information used to exchange
-  *                                     message between lat and core
-@@ -176,10 +237,19 @@ struct vdec_h264_slice_inst {
- 	struct mtk_vcodec_mem pred_buf;
- 	struct mtk_vcodec_mem mv_buf[H264_MAX_MV_NUM];
- 	struct vdec_vpu_inst vpu;
--	struct vdec_h264_slice_vsi_ex *vsi_ex;
--	struct vdec_h264_slice_vsi_ex *vsi_core_ex;
-+	union {
-+		struct vdec_h264_slice_vsi_ex *vsi_ex;
-+		struct vdec_h264_slice_vsi *vsi;
-+	};
-+	union {
-+		struct vdec_h264_slice_vsi_ex *vsi_core_ex;
-+		struct vdec_h264_slice_vsi *vsi_core;
-+	};
- 
--	struct vdec_h264_slice_vsi_ex vsi_ctx_ex;
-+	union {
-+		struct vdec_h264_slice_vsi_ex vsi_ctx_ex;
-+		struct vdec_h264_slice_vsi vsi_ctx;
-+	};
- 	struct vdec_h264_slice_lat_dec_param h264_slice_param;
- 
- 	unsigned int resolution_changed;
--- 
-2.18.0
+Adding a new V4L2 uAPI also requires patches to v4l-utils, specifically v4l2-ctl
+and v4l2-compliance (i.e. new tests are needed for this flag). This will also help
+you test the driver.
 
+Some more comments below:
+
+On 20/07/2024 09:15, Yunfei Dong wrote:
+> From: Jeffrey Kardatzke <jkardatzke@google.com>
+> 
+> Adds a V4L2 flag which indicates that a queue is using restricted
+> dmabufs and the corresponding capability flag.
+> 
+> Signed-off-by: Jeffrey Kardatzke <jkardatzke@google.com>
+> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+> [Yunfei: Change reviewer's comments]
+> ---
+>  Documentation/userspace-api/media/v4l/buffer.rst       | 10 +++++++++-
+>  .../userspace-api/media/v4l/vidioc-reqbufs.rst         |  6 ++++++
+>  include/media/videobuf2-core.h                         |  8 +++++++-
+>  include/uapi/linux/videodev2.h                         |  2 ++
+>  4 files changed, 24 insertions(+), 2 deletions(-)
+> 
+> diff --git a/Documentation/userspace-api/media/v4l/buffer.rst b/Documentation/userspace-api/media/v4l/buffer.rst
+> index 52bbee81c080..901eb007aae8 100644
+> --- a/Documentation/userspace-api/media/v4l/buffer.rst
+> +++ b/Documentation/userspace-api/media/v4l/buffer.rst
+> @@ -696,7 +696,7 @@ enum v4l2_memory
+>  
+>  .. _memory-flags:
+>  
+> -Memory Consistency Flags
+> +Memory Flags
+>  ------------------------
+>  
+>  .. raw:: latex
+> @@ -728,6 +728,14 @@ Memory Consistency Flags
+>  	only if the buffer is used for :ref:`memory mapping <mmap>` I/O and the
+>  	queue reports the :ref:`V4L2_BUF_CAP_SUPPORTS_MMAP_CACHE_HINTS
+>  	<V4L2-BUF-CAP-SUPPORTS-MMAP-CACHE-HINTS>` capability.
+> +    * .. _`V4L2-MEMORY-FLAG-RESTRICTED`:
+> +
+> +      - ``V4L2_MEMORY_FLAG_RESTRICTED``
+> +      - 0x00000002
+> +      - The queued buffers are expected to be in restricted memory. If not, an
+> +	error will be returned. This flag can only be used with ``V4L2_MEMORY_DMABUF``.
+> +	Typically restricted buffers are allocated using a restricted dma-heap. This flag
+> +	can only be specified if the :ref:`V4L2_BUF_CAP_SUPPORTS_RESTRICTED_MEM` is set.
+>  
+>  .. raw:: latex
+>  
+> diff --git a/Documentation/userspace-api/media/v4l/vidioc-reqbufs.rst b/Documentation/userspace-api/media/v4l/vidioc-reqbufs.rst
+> index bbc22dd76032..8a264ae08db1 100644
+> --- a/Documentation/userspace-api/media/v4l/vidioc-reqbufs.rst
+> +++ b/Documentation/userspace-api/media/v4l/vidioc-reqbufs.rst
+> @@ -122,6 +122,7 @@ aborting or finishing any DMA in progress, an implicit
+>  .. _V4L2-BUF-CAP-SUPPORTS-MMAP-CACHE-HINTS:
+>  .. _V4L2-BUF-CAP-SUPPORTS-MAX-NUM-BUFFERS:
+>  .. _V4L2-BUF-CAP-SUPPORTS-REMOVE-BUFS:
+> +.. _V4L2-BUF-CAP-SUPPORTS-RESTRICTED_MEM:
+>  
+>  .. raw:: latex
+>  
+> @@ -166,6 +167,11 @@ aborting or finishing any DMA in progress, an implicit
+>          :ref:`V4L2_BUF_FLAG_NO_CACHE_INVALIDATE <V4L2-BUF-FLAG-NO-CACHE-INVALIDATE>`,
+>          :ref:`V4L2_BUF_FLAG_NO_CACHE_CLEAN <V4L2-BUF-FLAG-NO-CACHE-CLEAN>` and
+>          :ref:`V4L2_MEMORY_FLAG_NON_COHERENT <V4L2-MEMORY-FLAG-NON-COHERENT>`.
+> +    * - ``V4L2_BUF_CAP_SUPPORTS_RESTRICTED_MEM``
+> +      - 0x00000100
+> +      - This capability is set by the driver to indicate the queue supports
+> +        restricted memory. See
+> +        :ref:`V4L2_MEMORY_FLAG_RESTRICTED <V4L2-MEMORY-FLAG-RESTRICTED>`.
+>  
+>  .. raw:: latex
+>  
+
+What is missing in this documentation is what error to expect if you queue a buffer
+from non-restricted memory to a driver configured for restricted memory. You probably
+want a specific error code for that (EACCES? EPERM?).
+
+Regards,
+
+	Hans
+
+> diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
+> index 955237ac503d..afd497e93a37 100644
+> --- a/include/media/videobuf2-core.h
+> +++ b/include/media/videobuf2-core.h
+> @@ -517,6 +517,9 @@ struct vb2_buf_ops {
+>   *		->finish().
+>   * @non_coherent_mem: when set queue will attempt to allocate buffers using
+>   *		non-coherent memory.
+> + * @allow_restricted_mem: when set user-space can pass the %V4L2_MEMORY_FLAG_RESTRICTED
+> + *		flag to indicate the dma bufs are restricted.
+> + * @restricted_mem: when set queue will verify that the dma bufs are restricted.
+>   * @lock:	pointer to a mutex that protects the &struct vb2_queue. The
+>   *		driver can set this to a mutex to let the v4l2 core serialize
+>   *		the queuing ioctls. If the driver wants to handle locking
+> @@ -621,6 +624,8 @@ struct vb2_queue {
+>  	unsigned int			uses_requests:1;
+>  	unsigned int			allow_cache_hints:1;
+>  	unsigned int			non_coherent_mem:1;
+> +	unsigned int			allow_restricted_mem:1;
+> +	unsigned int			restricted_mem:1;
+>  
+>  	struct mutex			*lock;
+>  	void				*owner;
+> @@ -792,7 +797,8 @@ void vb2_core_querybuf(struct vb2_queue *q, struct vb2_buffer *vb, void *pb);
+>   * @q:		pointer to &struct vb2_queue with videobuf2 queue.
+>   * @memory:	memory type, as defined by &enum vb2_memory.
+>   * @flags:	auxiliary queue/buffer management flags. Currently, the only
+> - *		used flag is %V4L2_MEMORY_FLAG_NON_COHERENT.
+> + *		used flags are %V4L2_MEMORY_FLAG_NON_COHERENT and
+> + *		%V4L2_MEMORY_FLAG_RESTRICTED.
+>   * @count:	requested buffer count.
+>   *
+>   * Videobuf2 core helper to implement VIDIOC_REQBUF() operation. It is called
+> diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
+> index 4e91362da6da..c4b1bc10af4c 100644
+> --- a/include/uapi/linux/videodev2.h
+> +++ b/include/uapi/linux/videodev2.h
+> @@ -1060,6 +1060,7 @@ struct v4l2_requestbuffers {
+>  };
+>  
+>  #define V4L2_MEMORY_FLAG_NON_COHERENT			(1 << 0)
+> +#define V4L2_MEMORY_FLAG_RESTRICTED			(1 << 1)
+>  
+>  /* capabilities for struct v4l2_requestbuffers and v4l2_create_buffers */
+>  #define V4L2_BUF_CAP_SUPPORTS_MMAP			(1 << 0)
+> @@ -1071,6 +1072,7 @@ struct v4l2_requestbuffers {
+>  #define V4L2_BUF_CAP_SUPPORTS_MMAP_CACHE_HINTS		(1 << 6)
+>  #define V4L2_BUF_CAP_SUPPORTS_MAX_NUM_BUFFERS		(1 << 7)
+>  #define V4L2_BUF_CAP_SUPPORTS_REMOVE_BUFS		(1 << 8)
+> +#define V4L2_BUF_CAP_SUPPORTS_RESTRICTED_MEM		(1 << 9)
+>  
+>  /**
+>   * struct v4l2_plane - plane info for multi-planar buffers
 
