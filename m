@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49213C3DA49
-	for <linux-mediatek@archiver.kernel.org>; Sat, 20 Jul 2024 07:20:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 661FCC3DA49
+	for <linux-mediatek@archiver.kernel.org>; Sat, 20 Jul 2024 07:20:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YKk4Fa5ga7eSZuwHvllppXgaLImiDdg00J3kssvSahY=; b=bCYdQjQib8j4T2g3HxpKgqbWpM
-	y0rkupYiDuzUb59628TewIDmJ9yClJeK6MAutO6c22TO4pPb23/bgoAZ8kUvK9zI13MZYxrjtnxtu
-	2q/qMmAiC9xgONsccnSNdTUldt4xJGOtss3XDwc7oSONzaO3WULlSwuzmJgPu8vNotXl9mQJR7ndM
-	QKtfF7FfNbNUX088ZGLWqBwly4PSChmonB5ScTsyr0nS6umOsbtTA4fscBGZWGlJC8iC9LjgMfAPn
-	rojREGHhUuZA17pvNzbzHq69l059+c8em3RE5P74vYHVXc/IaO0+qgk2Je5HS5vzcT0a1d/upjxfw
-	sC6mwdbQ==;
+	bh=TarmkAlYvvm8rcU+766mo6fKv+ctjpOeRN79edqsW9c=; b=boCvd8A8/f8XVR10mWDDPzZ9wz
+	arlJHQ9q/sX/mDFTAKVlHe+8ttFzItB2jeRcszO6f370DbJtMFI21gf8aA6sjazSTiUYHGbYb2gJx
+	SlofUdgDWLbJJc1jvXMUtgr6dLyRvqu7PR+IrZvNhcsE/sfMiAhKrTahmB3gjYf2cuCnuROq2k4wk
+	gqeJR88SzuXS2VOZGsgYkyNp4TA9n/QdDqRiKCAUA0cpMmxPKy6kAbH3/tqhXn2ovDJ50LpJCBLpl
+	k/ma64oj91i+3Y90EJdX3V3E+bE0IPZ2wB9Bhwn6x5POWqncG3lKdtxvtEetshuyac/fAJXUKQ+Js
+	CUuJ73Jg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sV4O3-00000004dhh-3mgt;
-	Sat, 20 Jul 2024 07:20:11 +0000
+	id 1sV4OU-00000004dv5-0M8H;
+	Sat, 20 Jul 2024 07:20:38 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sV4Kf-00000004cEa-2zQQ;
-	Sat, 20 Jul 2024 07:16:44 +0000
-X-UUID: 017dfff0466811efa6c87f6b4542ff6b-20240720
+	id 1sV4Kg-00000004cFn-33Qm;
+	Sat, 20 Jul 2024 07:16:46 +0000
+X-UUID: 00399f78466811efa6c87f6b4542ff6b-20240720
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=YKk4Fa5ga7eSZuwHvllppXgaLImiDdg00J3kssvSahY=;
-	b=UPGIfvSOXmrJ9f04MENWEGXwJ/dWFmHPGQhJ5ddTdZkSDIYKresxAd3lIDrL7UQo4j/9eVYonLMD9Ne/yA32tjGOKX8djHY47a2BPnLbvJdC2Fv4ctpRgLCwPGqIcVAfb0Mfhd64qIcTwT/yfpIBwoZV9vtByZMKBI1AL+7h3RE=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=TarmkAlYvvm8rcU+766mo6fKv+ctjpOeRN79edqsW9c=;
+	b=UhjL6umqCx2zD50ks46roCe8mqQO7wlrZ7JLi+ip7Njih44+VVbjuLFXYr/+ZO6NZATZxsZRv40/yVcMfXkUvJzAlVowoMWSbM+LygJR8GhyhbzH/F8MEMeNBfd9zNaIH7yQxjoclOBgpYOkI4DWrJhMV2FZ/oBfBqegAjOlGEg=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.40,REQID:b32eb966-127a-4d20-8609-ca2cdb336779,IP:0,U
+X-CID-O-INFO: VERSION:1.1.40,REQID:91c6b3e4-2b36-4189-8f4e-d29f6b09f1ff,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:ba885a6,CLOUDID:37e990d5-0d68-4615-a20f-01d7bd41f0bb,B
+X-CID-META: VersionHash:ba885a6,CLOUDID:38e990d5-0d68-4615-a20f-01d7bd41f0bb,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
 	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 0,NGT
 X-CID-BAS: 0,NGT,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 017dfff0466811efa6c87f6b4542ff6b-20240720
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
+X-UUID: 00399f78466811efa6c87f6b4542ff6b-20240720
+Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw01.mediatek.com
 	(envelope-from <yunfei.dong@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1608744630; Sat, 20 Jul 2024 00:16:38 -0700
+	with ESMTP id 314792675; Sat, 20 Jul 2024 00:16:36 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Sat, 20 Jul 2024 00:16:36 -0700
+ 15.2.1118.26; Sat, 20 Jul 2024 15:16:33 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Sat, 20 Jul 2024 15:16:35 +0800
+ 15.2.1118.26 via Frontend Transport; Sat, 20 Jul 2024 15:16:32 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Jeffrey Kardatzke <jkardatzke@google.com>,
 	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
@@ -75,9 +75,9 @@ CC: Chen-Yu Tsai <wenst@chromium.org>, Yong Wu <yong.wu@mediatek.com>, Hsin-Yi
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v7 19/28] media: mediatek: vcodec: disable wait interrupt for svp mode
-Date: Sat, 20 Jul 2024 15:15:57 +0800
-Message-ID: <20240720071606.27930-20-yunfei.dong@mediatek.com>
+Subject: [PATCH v7 17/28] media: mediatek: vcodec: re-construct h264 driver to support svp mode
+Date: Sat, 20 Jul 2024 15:15:55 +0800
+Message-ID: <20240720071606.27930-18-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20240720071606.27930-1-yunfei.dong@mediatek.com>
 References: <20240720071606.27930-1-yunfei.dong@mediatek.com>
@@ -86,8 +86,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240720_001641_893521_7E14B293 
-X-CRM114-Status: GOOD (  14.19  )
+X-CRM114-CacheID: sfid-20240720_001642_985663_88455CE1 
+X-CRM114-Status: GOOD (  19.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,172 +102,402 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Waiting interrupt in optee-os for svp mode, need to disable it in kernel
-in case of interrupt is cleaned.
+Need secure buffer size to convert secure handle to secure
+pa in optee-os, re-construct the vsi struct to store each
+secure buffer size.
+
+Separate svp and normal wait interrupt condition for svp mode
+waiting hardware interrupt in optee-os.
 
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 ---
- .../vcodec/decoder/mtk_vcodec_dec_hw.c        | 34 +++++------
- .../vcodec/decoder/mtk_vcodec_dec_pm.c        |  6 +-
- .../decoder/vdec/vdec_h264_req_multi_if.c     | 57 +++++++++++--------
- 3 files changed, 54 insertions(+), 43 deletions(-)
+ .../decoder/vdec/vdec_h264_req_multi_if.c     | 261 +++++++++++-------
+ .../mediatek/vcodec/decoder/vdec_msg_queue.c  |   9 +-
+ 2 files changed, 168 insertions(+), 102 deletions(-)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_hw.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_hw.c
-index 881d5de41e05..1982c088c6da 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_hw.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_hw.c
-@@ -72,26 +72,28 @@ static irqreturn_t mtk_vdec_hw_irq_handler(int irq, void *priv)
- 
- 	ctx = mtk_vcodec_get_curr_ctx(dev->main_dev, dev->hw_idx);
- 
--	/* check if HW active or not */
--	cg_status = readl(dev->reg_base[VDEC_HW_SYS] + VDEC_HW_ACTIVE_ADDR);
--	if (cg_status & VDEC_HW_ACTIVE_MASK) {
--		mtk_v4l2_vdec_err(ctx, "vdec active is not 0x0 (0x%08x)", cg_status);
--		return IRQ_HANDLED;
--	}
-+	if (!ctx->is_secure_playback) {
-+		/* check if HW active or not */
-+		cg_status = readl(dev->reg_base[VDEC_HW_SYS] + VDEC_HW_ACTIVE_ADDR);
-+		if (cg_status & VDEC_HW_ACTIVE_MASK) {
-+			mtk_v4l2_vdec_err(ctx, "vdec active is not 0x0 (0x%08x)", cg_status);
-+			return IRQ_HANDLED;
-+		}
- 
--	dec_done_status = readl(vdec_misc_addr);
--	if ((dec_done_status & MTK_VDEC_IRQ_STATUS_DEC_SUCCESS) !=
--	    MTK_VDEC_IRQ_STATUS_DEC_SUCCESS)
--		return IRQ_HANDLED;
-+		dec_done_status = readl(vdec_misc_addr);
-+		if ((dec_done_status & MTK_VDEC_IRQ_STATUS_DEC_SUCCESS) !=
-+		    MTK_VDEC_IRQ_STATUS_DEC_SUCCESS)
-+			return IRQ_HANDLED;
- 
--	/* clear interrupt */
--	writel(dec_done_status | VDEC_IRQ_CFG, vdec_misc_addr);
--	writel(dec_done_status & ~VDEC_IRQ_CLR, vdec_misc_addr);
-+		/* clear interrupt */
-+		writel(dec_done_status | VDEC_IRQ_CFG, vdec_misc_addr);
-+		writel(dec_done_status & ~VDEC_IRQ_CLR, vdec_misc_addr);
- 
--	wake_up_dec_ctx(ctx, MTK_INST_IRQ_RECEIVED, dev->hw_idx);
-+		wake_up_dec_ctx(ctx, MTK_INST_IRQ_RECEIVED, dev->hw_idx);
- 
--	mtk_v4l2_vdec_dbg(3, ctx, "wake up ctx %d, dec_done_status=%x",
--			  ctx->id, dec_done_status);
-+		mtk_v4l2_vdec_dbg(3, ctx, "wake up ctx %d, dec_done_status=%x",
-+				  ctx->id, dec_done_status);
-+	}
- 
- 	return IRQ_HANDLED;
- }
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_pm.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_pm.c
-index aefd3e9e3061..a94eda936f16 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_pm.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_pm.c
-@@ -238,7 +238,8 @@ void mtk_vcodec_dec_enable_hardware(struct mtk_vcodec_dec_ctx *ctx, int hw_idx)
- 		mtk_vcodec_dec_child_dev_on(ctx->dev, MTK_VDEC_LAT0);
- 	mtk_vcodec_dec_child_dev_on(ctx->dev, hw_idx);
- 
--	mtk_vcodec_dec_enable_irq(ctx->dev, hw_idx);
-+	if (!ctx->is_secure_playback)
-+		mtk_vcodec_dec_enable_irq(ctx->dev, hw_idx);
- 
- 	if (IS_VDEC_INNER_RACING(ctx->dev->dec_capability))
- 		mtk_vcodec_load_racing_info(ctx);
-@@ -250,7 +251,8 @@ void mtk_vcodec_dec_disable_hardware(struct mtk_vcodec_dec_ctx *ctx, int hw_idx)
- 	if (IS_VDEC_INNER_RACING(ctx->dev->dec_capability))
- 		mtk_vcodec_record_racing_info(ctx);
- 
--	mtk_vcodec_dec_disable_irq(ctx->dev, hw_idx);
-+	if (!ctx->is_secure_playback)
-+		mtk_vcodec_dec_disable_irq(ctx->dev, hw_idx);
- 
- 	mtk_vcodec_dec_child_dev_off(ctx->dev, hw_idx);
- 	if (IS_VDEC_LAT_ARCH(ctx->dev->vdec_pdata->hw_arch) &&
 diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c
-index 86ce8988c716..25e4a5236dcc 100644
+index dc7b69b22e89..68120dcfc494 100644
 --- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c
 +++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c
-@@ -592,14 +592,16 @@ static int vdec_h264_slice_core_decode(struct vdec_lat_buf *lat_buf)
- 		goto vdec_dec_end;
- 	}
- 
--	/* wait decoder done interrupt */
--	timeout = mtk_vcodec_wait_for_done_ctx(inst->ctx, MTK_INST_IRQ_RECEIVED,
--					       WAIT_INTR_TIMEOUT_MS, MTK_VDEC_CORE);
--	if (timeout)
--		mtk_vdec_err(ctx, "core decode timeout: pic_%d", ctx->decoded_frame_cnt);
--	inst->vsi_core->dec.timeout = !!timeout;
--
--	vpu_dec_core_end(vpu);
-+	if (!ctx->is_secure_playback) {
-+		/* wait decoder done interrupt */
-+		timeout = mtk_vcodec_wait_for_done_ctx(inst->ctx, MTK_INST_IRQ_RECEIVED,
-+						       WAIT_INTR_TIMEOUT_MS, MTK_VDEC_CORE);
-+		if (timeout)
-+			mtk_vdec_err(ctx, "core decode timeout: pic_%d", ctx->decoded_frame_cnt);
-+		inst->vsi_core->dec.timeout = !!timeout;
+@@ -60,14 +60,36 @@ struct vdec_h264_slice_lat_dec_param {
+  * @crc:		Used to check whether hardware's status is right
+  */
+ struct vdec_h264_slice_info {
++	u64 wdma_end_addr_offset;
+ 	u16 nal_info;
+ 	u16 timeout;
+-	u32 bs_buf_size;
+-	u64 bs_buf_addr;
+-	u64 y_fb_dma;
+-	u64 c_fb_dma;
+ 	u64 vdec_fb_va;
+ 	u32 crc[8];
++	u32 reserved;
++};
 +
-+		vpu_dec_core_end(vpu);
-+	}
- 	mtk_vdec_debug(ctx, "pic[%d] crc: 0x%x 0x%x 0x%x 0x%x 0x%x 0x%x 0x%x 0x%x",
- 		       ctx->decoded_frame_cnt,
- 		       inst->vsi_core->dec.crc[0], inst->vsi_core->dec.crc[1],
-@@ -723,14 +725,16 @@ static int vdec_h264_slice_lat_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
- 		vdec_msg_queue_qbuf(&inst->ctx->msg_queue.core_ctx, lat_buf);
- 	}
++/*
++ * struct vdec_h264_slice_mem - memory address and size
++ */
++struct vdec_h264_slice_mem {
++	union {
++		u64 buf;
++		u64 dma_addr;
++	};
++	union {
++		size_t size;
++		u64 dma_addr_end;
++	};
++};
++
++/**
++ * struct vdec_h264_slice_fb - frame buffer for decoding
++ * @y:  current y buffer address info
++ * @c:  current c buffer address info
++ */
++struct vdec_h264_slice_fb {
++	struct vdec_h264_slice_mem y;
++	struct vdec_h264_slice_mem c;
+ };
  
--	/* wait decoder done interrupt */
--	timeout = mtk_vcodec_wait_for_done_ctx(inst->ctx, MTK_INST_IRQ_RECEIVED,
--					       WAIT_INTR_TIMEOUT_MS, MTK_VDEC_LAT0);
--	if (timeout)
--		mtk_vdec_err(inst->ctx, "lat decode timeout: pic_%d", inst->slice_dec_num);
--	inst->vsi->dec.timeout = !!timeout;
-+	if (!inst->ctx->is_secure_playback) {
-+		/* wait decoder done interrupt */
-+		timeout = mtk_vcodec_wait_for_done_ctx(inst->ctx, MTK_INST_IRQ_RECEIVED,
-+						       WAIT_INTR_TIMEOUT_MS, MTK_VDEC_LAT0);
-+		if (timeout)
-+			mtk_vdec_err(inst->ctx, "lat decode timeout: pic_%d", inst->slice_dec_num);
-+		inst->vsi->dec.timeout = !!timeout;
+ /**
+@@ -92,18 +114,16 @@ struct vdec_h264_slice_info {
+  */
+ struct vdec_h264_slice_vsi {
+ 	/* LAT dec addr */
+-	u64 wdma_err_addr;
+-	u64 wdma_start_addr;
+-	u64 wdma_end_addr;
+-	u64 slice_bc_start_addr;
+-	u64 slice_bc_end_addr;
+-	u64 row_info_start_addr;
+-	u64 row_info_end_addr;
+-	u64 trans_start;
+-	u64 trans_end;
+-	u64 wdma_end_addr_offset;
++	struct vdec_h264_slice_mem bs;
++	struct vdec_h264_slice_fb fb;
  
--	err = vpu_dec_end(vpu);
-+		err = vpu_dec_end(vpu);
+-	u64 mv_buf_dma[H264_MAX_MV_NUM];
++	struct vdec_h264_slice_mem ube;
++	struct vdec_h264_slice_mem trans;
++	struct vdec_h264_slice_mem row_info;
++	struct vdec_h264_slice_mem err_map;
++	struct vdec_h264_slice_mem slice_bc;
++
++	struct vdec_h264_slice_mem mv_buf_dma[H264_MAX_MV_NUM];
+ 	struct vdec_h264_slice_info dec;
+ 	struct vdec_h264_slice_lat_dec_param h264_slice_params;
+ };
+@@ -392,6 +412,100 @@ static void vdec_h264_slice_get_crop_info(struct vdec_h264_slice_inst *inst,
+ 		       cr->left, cr->top, cr->width, cr->height);
+ }
+ 
++static void vdec_h264_slice_setup_lat_buffer(struct vdec_h264_slice_inst *inst,
++					     struct mtk_vcodec_mem *bs,
++					     struct vdec_lat_buf *lat_buf)
++{
++	struct mtk_vcodec_mem *mem;
++	int i;
++
++	inst->vsi->bs.dma_addr = (u64)bs->dma_addr;
++	inst->vsi->bs.size = bs->size;
++
++	for (i = 0; i < H264_MAX_MV_NUM; i++) {
++		mem = &inst->mv_buf[i];
++		inst->vsi->mv_buf_dma[i].dma_addr = mem->dma_addr;
++		inst->vsi->mv_buf_dma[i].size = mem->size;
 +	}
- 	if (err == SLICE_HEADER_FULL || err == TRANS_BUFFER_FULL) {
- 		if (!IS_VDEC_INNER_RACING(inst->ctx->dev->dec_capability))
- 			vdec_msg_queue_qbuf(&inst->ctx->msg_queue.lat_ctx, lat_buf);
-@@ -830,16 +834,19 @@ static int vdec_h264_slice_single_decode(void *h_vdec, struct mtk_vcodec_mem *bs
++	inst->vsi->ube.dma_addr = lat_buf->ctx->msg_queue.wdma_addr.dma_addr;
++	inst->vsi->ube.size = lat_buf->ctx->msg_queue.wdma_addr.size;
++
++	inst->vsi->row_info.dma_addr = 0;
++	inst->vsi->row_info.size = 0;
++
++	inst->vsi->err_map.dma_addr = lat_buf->wdma_err_addr.dma_addr;
++	inst->vsi->err_map.size = lat_buf->wdma_err_addr.size;
++
++	inst->vsi->slice_bc.dma_addr = lat_buf->slice_bc_addr.dma_addr;
++	inst->vsi->slice_bc.size = lat_buf->slice_bc_addr.size;
++
++	inst->vsi->trans.dma_addr_end = inst->ctx->msg_queue.wdma_rptr_addr;
++	inst->vsi->trans.dma_addr = inst->ctx->msg_queue.wdma_wptr_addr;
++}
++
++static int vdec_h264_slice_setup_core_buffer(struct vdec_h264_slice_inst *inst,
++					     struct vdec_h264_slice_share_info *share_info,
++					     struct vdec_lat_buf *lat_buf)
++{
++	struct mtk_vcodec_mem *mem;
++	struct mtk_vcodec_dec_ctx *ctx = inst->ctx;
++	struct vb2_v4l2_buffer *vb2_v4l2;
++	struct vdec_fb *fb;
++	u64 y_fb_dma, c_fb_dma = 0;
++	int i;
++
++	fb = ctx->dev->vdec_pdata->get_cap_buffer(ctx);
++	if (!fb) {
++		mtk_vdec_err(ctx, "fb buffer is NULL");
++		return -EBUSY;
++	}
++
++	y_fb_dma = (u64)fb->base_y.dma_addr;
++	if (!ctx->is_secure_playback) {
++		if (ctx->q_data[MTK_Q_DATA_DST].fmt->num_planes == 1)
++			c_fb_dma =
++				y_fb_dma + inst->ctx->picinfo.buf_w * inst->ctx->picinfo.buf_h;
++		else
++			c_fb_dma = (u64)fb->base_c.dma_addr;
++	}
++
++	mtk_vdec_debug(ctx, "[h264-core] y/c addr = 0x%llx 0x%llx", y_fb_dma, c_fb_dma);
++
++	inst->vsi_core->fb.y.dma_addr = y_fb_dma;
++	inst->vsi_core->fb.y.size = ctx->picinfo.fb_sz[0];
++	inst->vsi_core->fb.c.dma_addr = c_fb_dma;
++	inst->vsi_core->fb.c.size = ctx->picinfo.fb_sz[1];
++
++	inst->vsi_core->dec.vdec_fb_va = (unsigned long)fb;
++	inst->vsi_core->dec.nal_info = share_info->nal_info;
++
++	inst->vsi_core->ube.dma_addr = lat_buf->ctx->msg_queue.wdma_addr.dma_addr;
++	inst->vsi_core->ube.size = lat_buf->ctx->msg_queue.wdma_addr.size;
++
++	inst->vsi_core->err_map.dma_addr = lat_buf->wdma_err_addr.dma_addr;
++	inst->vsi_core->err_map.size = lat_buf->wdma_err_addr.size;
++
++	inst->vsi_core->slice_bc.dma_addr = lat_buf->slice_bc_addr.dma_addr;
++	inst->vsi_core->slice_bc.size = lat_buf->slice_bc_addr.size;
++
++	inst->vsi_core->row_info.dma_addr = 0;
++	inst->vsi_core->row_info.size = 0;
++
++	inst->vsi_core->trans.dma_addr = share_info->trans_start;
++	inst->vsi_core->trans.dma_addr_end = share_info->trans_end;
++
++	for (i = 0; i < H264_MAX_MV_NUM; i++) {
++		mem = &inst->mv_buf[i];
++		inst->vsi_core->mv_buf_dma[i].dma_addr = mem->dma_addr;
++		inst->vsi_core->mv_buf_dma[i].size = mem->size;
++	}
++
++	vb2_v4l2 = v4l2_m2m_next_dst_buf(ctx->m2m_ctx);
++	v4l2_m2m_buf_copy_metadata(&lat_buf->ts_info, vb2_v4l2, true);
++
++	return 0;
++}
++
+ static int vdec_h264_slice_init(struct mtk_vcodec_dec_ctx *ctx)
+ {
+ 	struct vdec_h264_slice_inst *inst;
+@@ -456,64 +570,22 @@ static void vdec_h264_slice_deinit(void *h_vdec)
+ 
+ static int vdec_h264_slice_core_decode(struct vdec_lat_buf *lat_buf)
+ {
+-	struct vdec_fb *fb;
+-	u64 vdec_fb_va;
+-	u64 y_fb_dma, c_fb_dma;
+-	int err, timeout, i;
++	int err, timeout;
+ 	struct mtk_vcodec_dec_ctx *ctx = lat_buf->ctx;
+ 	struct vdec_h264_slice_inst *inst = ctx->drv_handle;
+-	struct vb2_v4l2_buffer *vb2_v4l2;
+ 	struct vdec_h264_slice_share_info *share_info = lat_buf->private_data;
+-	struct mtk_vcodec_mem *mem;
+ 	struct vdec_vpu_inst *vpu = &inst->vpu;
+ 
+ 	mtk_vdec_debug(ctx, "[h264-core] vdec_h264 core decode");
+ 	memcpy(&inst->vsi_core->h264_slice_params, &share_info->h264_slice_params,
+ 	       sizeof(share_info->h264_slice_params));
+ 
+-	fb = ctx->dev->vdec_pdata->get_cap_buffer(ctx);
+-	if (!fb) {
+-		err = -EBUSY;
+-		mtk_vdec_err(ctx, "fb buffer is NULL");
++	err = vdec_h264_slice_setup_core_buffer(inst, share_info, lat_buf);
++	if (err)
+ 		goto vdec_dec_end;
+-	}
+-
+-	vdec_fb_va = (unsigned long)fb;
+-	y_fb_dma = (u64)fb->base_y.dma_addr;
+-	if (ctx->q_data[MTK_Q_DATA_DST].fmt->num_planes == 1)
+-		c_fb_dma =
+-			y_fb_dma + inst->ctx->picinfo.buf_w * inst->ctx->picinfo.buf_h;
+-	else
+-		c_fb_dma = (u64)fb->base_c.dma_addr;
+-
+-	mtk_vdec_debug(ctx, "[h264-core] y/c addr = 0x%llx 0x%llx", y_fb_dma, c_fb_dma);
+-
+-	inst->vsi_core->dec.y_fb_dma = y_fb_dma;
+-	inst->vsi_core->dec.c_fb_dma = c_fb_dma;
+-	inst->vsi_core->dec.vdec_fb_va = vdec_fb_va;
+-	inst->vsi_core->dec.nal_info = share_info->nal_info;
+-	inst->vsi_core->wdma_start_addr =
+-		lat_buf->ctx->msg_queue.wdma_addr.dma_addr;
+-	inst->vsi_core->wdma_end_addr =
+-		lat_buf->ctx->msg_queue.wdma_addr.dma_addr +
+-		lat_buf->ctx->msg_queue.wdma_addr.size;
+-	inst->vsi_core->wdma_err_addr = lat_buf->wdma_err_addr.dma_addr;
+-	inst->vsi_core->slice_bc_start_addr = lat_buf->slice_bc_addr.dma_addr;
+-	inst->vsi_core->slice_bc_end_addr = lat_buf->slice_bc_addr.dma_addr +
+-		lat_buf->slice_bc_addr.size;
+-	inst->vsi_core->trans_start = share_info->trans_start;
+-	inst->vsi_core->trans_end = share_info->trans_end;
+-	for (i = 0; i < H264_MAX_MV_NUM; i++) {
+-		mem = &inst->mv_buf[i];
+-		inst->vsi_core->mv_buf_dma[i] = mem->dma_addr;
+-	}
+-
+-	vb2_v4l2 = v4l2_m2m_next_dst_buf(ctx->m2m_ctx);
+-	v4l2_m2m_buf_copy_metadata(&lat_buf->ts_info, vb2_v4l2, true);
+ 
+ 	vdec_h264_slice_fill_decode_reflist(inst, &inst->vsi_core->h264_slice_params,
+ 					    share_info);
+-
+ 	err = vpu_dec_core(vpu);
+ 	if (err) {
+ 		mtk_vdec_err(ctx, "core decode err=%d", err);
+@@ -572,12 +644,11 @@ static int vdec_h264_slice_lat_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
+ 	struct vdec_h264_slice_inst *inst = h_vdec;
+ 	struct vdec_vpu_inst *vpu = &inst->vpu;
+ 	struct mtk_video_dec_buf *src_buf_info;
+-	int nal_start_idx, err, timeout = 0, i;
++	int nal_start_idx, err, timeout = 0;
+ 	unsigned int data[2];
+ 	struct vdec_lat_buf *lat_buf;
+ 	struct vdec_h264_slice_share_info *share_info;
+ 	unsigned char *buf;
+-	struct mtk_vcodec_mem *mem;
+ 
+ 	if (vdec_msg_queue_init(&inst->ctx->msg_queue, inst->ctx,
+ 				vdec_h264_slice_core_decode,
+@@ -616,11 +687,9 @@ static int vdec_h264_slice_lat_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
  	if (err)
  		goto err_free_fb_out;
  
--	/* wait decoder done interrupt */
--	err = mtk_vcodec_wait_for_done_ctx(inst->ctx, MTK_INST_IRQ_RECEIVED,
--					   WAIT_INTR_TIMEOUT_MS, MTK_VDEC_CORE);
--	if (err)
--		mtk_vdec_err(inst->ctx, "decode timeout: pic_%d", inst->ctx->decoded_frame_cnt);
+-	vdec_h264_insert_startcode(inst->ctx->dev, buf, &bs->size,
+-				   &share_info->h264_slice_params.pps);
 -
--	inst->vsi->dec.timeout = !!err;
--	err = vpu_dec_end(vpu);
--	if (err)
--		goto err_free_fb_out;
-+	if (!inst->ctx->is_secure_playback) {
-+		/* wait decoder done interrupt */
-+		err = mtk_vcodec_wait_for_done_ctx(inst->ctx, MTK_INST_IRQ_RECEIVED,
-+						   WAIT_INTR_TIMEOUT_MS, MTK_VDEC_CORE);
-+		if (err)
-+			mtk_vdec_err(inst->ctx, "decode timeout: pic_%d",
-+				     inst->ctx->decoded_frame_cnt);
+-	inst->vsi->dec.bs_buf_addr = (uint64_t)bs->dma_addr;
+-	inst->vsi->dec.bs_buf_size = bs->size;
++	if (!inst->ctx->is_secure_playback)
++		vdec_h264_insert_startcode(inst->ctx->dev, buf, &bs->size,
++					   &share_info->h264_slice_params.pps);
+ 
+ 	*res_chg = inst->resolution_changed;
+ 	if (inst->resolution_changed) {
+@@ -633,38 +702,27 @@ static int vdec_h264_slice_lat_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
+ 		}
+ 		inst->resolution_changed = false;
+ 	}
+-	for (i = 0; i < H264_MAX_MV_NUM; i++) {
+-		mem = &inst->mv_buf[i];
+-		inst->vsi->mv_buf_dma[i] = mem->dma_addr;
+-	}
+-	inst->vsi->wdma_start_addr = lat_buf->ctx->msg_queue.wdma_addr.dma_addr;
+-	inst->vsi->wdma_end_addr = lat_buf->ctx->msg_queue.wdma_addr.dma_addr +
+-		lat_buf->ctx->msg_queue.wdma_addr.size;
+-	inst->vsi->wdma_err_addr = lat_buf->wdma_err_addr.dma_addr;
+-	inst->vsi->slice_bc_start_addr = lat_buf->slice_bc_addr.dma_addr;
+-	inst->vsi->slice_bc_end_addr = lat_buf->slice_bc_addr.dma_addr +
+-		lat_buf->slice_bc_addr.size;
+-
+-	inst->vsi->trans_end = inst->ctx->msg_queue.wdma_rptr_addr;
+-	inst->vsi->trans_start = inst->ctx->msg_queue.wdma_wptr_addr;
+-	mtk_vdec_debug(inst->ctx, "lat:trans(0x%llx 0x%llx) err:0x%llx",
+-		       inst->vsi->wdma_start_addr,
+-		       inst->vsi->wdma_end_addr,
+-		       inst->vsi->wdma_err_addr);
+-
+-	mtk_vdec_debug(inst->ctx, "slice(0x%llx 0x%llx) rprt((0x%llx 0x%llx))",
+-		       inst->vsi->slice_bc_start_addr,
+-		       inst->vsi->slice_bc_end_addr,
+-		       inst->vsi->trans_start,
+-		       inst->vsi->trans_end);
 +
-+		inst->vsi->dec.timeout = !!err;
-+		err = vpu_dec_end(vpu);
-+		if (err)
-+			goto err_free_fb_out;
++	vdec_h264_slice_setup_lat_buffer(inst, bs, lat_buf);
++	mtk_vdec_debug(inst->ctx, "lat:trans(0x%llx 0x%lx) err:0x%llx",
++		       inst->vsi->ube.dma_addr, (unsigned long)inst->vsi->ube.size,
++		       inst->vsi->err_map.dma_addr);
++
++	mtk_vdec_debug(inst->ctx, "slice(0x%llx 0x%lx) rprt((0x%llx 0x%llx))",
++		       inst->vsi->slice_bc.dma_addr, (unsigned long)inst->vsi->slice_bc.size,
++		       inst->vsi->trans.dma_addr, inst->vsi->trans.dma_addr_end);
+ 	err = vpu_dec_start(vpu, data, 2);
+ 	if (err) {
+ 		mtk_vdec_debug(inst->ctx, "lat decode err: %d", err);
+ 		goto err_free_fb_out;
+ 	}
+ 
+-	share_info->trans_end = inst->ctx->msg_queue.wdma_addr.dma_addr +
+-		inst->vsi->wdma_end_addr_offset;
++	if (inst->ctx->is_secure_playback)
++		share_info->trans_end = inst->vsi->dec.wdma_end_addr_offset;
++	else
++		share_info->trans_end = inst->ctx->msg_queue.wdma_addr.dma_addr +
++			inst->vsi->dec.wdma_end_addr_offset;
++
+ 	share_info->trans_start = inst->ctx->msg_queue.wdma_wptr_addr;
+ 	share_info->nal_info = inst->vsi->dec.nal_info;
+ 
+@@ -690,8 +748,11 @@ static int vdec_h264_slice_lat_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
+ 		return -EINVAL;
+ 	}
+ 
+-	share_info->trans_end = inst->ctx->msg_queue.wdma_addr.dma_addr +
+-		inst->vsi->wdma_end_addr_offset;
++	if (inst->ctx->is_secure_playback)
++		share_info->trans_end = inst->vsi->dec.wdma_end_addr_offset;
++	else
++		share_info->trans_end = inst->ctx->msg_queue.wdma_addr.dma_addr +
++			inst->vsi->dec.wdma_end_addr_offset;
+ 	vdec_msg_queue_update_ube_wptr(&lat_buf->ctx->msg_queue, share_info->trans_end);
+ 
+ 	if (!IS_VDEC_INNER_RACING(inst->ctx->dev->dec_capability)) {
+@@ -736,10 +797,10 @@ static int vdec_h264_slice_single_decode(void *h_vdec, struct mtk_vcodec_mem *bs
+ 	mtk_vdec_debug(inst->ctx, "[h264-dec] [%d] y_dma=%llx c_dma=%llx",
+ 		       inst->ctx->decoded_frame_cnt, y_fb_dma, c_fb_dma);
+ 
+-	inst->vsi_ctx.dec.bs_buf_addr = (u64)bs->dma_addr;
+-	inst->vsi_ctx.dec.bs_buf_size = bs->size;
+-	inst->vsi_ctx.dec.y_fb_dma = y_fb_dma;
+-	inst->vsi_ctx.dec.c_fb_dma = c_fb_dma;
++	inst->vsi_ctx.bs.dma_addr = (u64)bs->dma_addr;
++	inst->vsi_ctx.bs.size = bs->size;
++	inst->vsi_ctx.fb.y.dma_addr = y_fb_dma;
++	inst->vsi_ctx.fb.c.dma_addr = c_fb_dma;
+ 	inst->vsi_ctx.dec.vdec_fb_va = (u64)(uintptr_t)fb;
+ 
+ 	v4l2_m2m_buf_copy_metadata(&src_buf_info->m2m_buf.vb,
+@@ -769,7 +830,7 @@ static int vdec_h264_slice_single_decode(void *h_vdec, struct mtk_vcodec_mem *bs
+ 
+ 		for (i = 0; i < H264_MAX_MV_NUM; i++) {
+ 			mem = &inst->mv_buf[i];
+-			inst->vsi_ctx.mv_buf_dma[i] = mem->dma_addr;
++			inst->vsi_ctx.mv_buf_dma[i].dma_addr = mem->dma_addr;
+ 		}
+ 	}
+ 
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec_msg_queue.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec_msg_queue.c
+index f283c4703dc6..c1310176ae05 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/vdec_msg_queue.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec_msg_queue.c
+@@ -308,8 +308,13 @@ int vdec_msg_queue_init(struct vdec_msg_queue *msg_queue,
+ 		msg_queue->wdma_addr.size = 0;
+ 		return -ENOMEM;
+ 	}
+-	msg_queue->wdma_rptr_addr = msg_queue->wdma_addr.dma_addr;
+-	msg_queue->wdma_wptr_addr = msg_queue->wdma_addr.dma_addr;
++	if (ctx->is_secure_playback) {
++		msg_queue->wdma_rptr_addr = 0;
++		msg_queue->wdma_wptr_addr = 0;
++	} else {
++		msg_queue->wdma_rptr_addr = msg_queue->wdma_addr.dma_addr;
++		msg_queue->wdma_wptr_addr = msg_queue->wdma_addr.dma_addr;
 +	}
  
- 	memcpy(&inst->vsi_ctx, inst->vpu.vsi, sizeof(inst->vsi_ctx));
- 	mtk_vdec_debug(inst->ctx, "pic[%d] crc: 0x%x 0x%x 0x%x 0x%x 0x%x 0x%x 0x%x 0x%x",
+ 	msg_queue->empty_lat_buf.ctx = ctx;
+ 	msg_queue->empty_lat_buf.core_decode = NULL;
 -- 
 2.18.0
 
