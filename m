@@ -4,101 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53605C3DA59
-	for <linux-mediatek@archiver.kernel.org>; Sat, 20 Jul 2024 15:14:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01FB6C3DA59
+	for <linux-mediatek@archiver.kernel.org>; Sat, 20 Jul 2024 16:47:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:Subject:References:Cc:To:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ANLLE1FZ2RR1WHzVhAMXGwQ0A90YNENVV09Nc6XgQhM=; b=KRCttaHBy46VefxaqmpE5o0zgK
-	VNyx+hiEfmKGuy2u5MLEqxkx0AmdKaUm08YIXIy9B8d3d5ZzAbGOl7Y5hzJE8ujgkpyNLJ2T0sKTY
-	1EcUmzdEn8HXGxzrLcVraq5lJmAOeFb5hg59hUL3mPLjCr8R1NMJ161shK+iFlVf7lIh0TTxVA1Pv
-	WpV5yCl24ztYTrm7zqWdyLbzjY9ejftKWsa1ccA0BOrqQrtY2+CevVcNGCowfjgOsssfcIkBJblgu
-	i5rl1gjQkTtazXYuZTGhmiEqxtfTzyGdDxUnwIKuL4FiYs3O/N9ldpRTBbSw2l+2LW9rp7m/F+/4r
-	8Jy+MTZQ==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=l6XmwiNF0U9ALABlmqNHLWtjd5nTEgsEVV0Hcqvx7zs=; b=YEKCKYD2zmAIE+JFZk24SAvW6U
+	NkQv5YGBHH6f/Z2Ta6jCRCmR5KX7WYAsk5TIxMtq+Du8gDkWrNpYrYbhOyRr1TEKll9JjPGgvw+HS
+	bIRs30h6aBkQstYyJ0O9xr2PlIfsvuLSASztI1vSB2Bzw8dbREA7wzlxjZu30w1l2UOsG/AOKXrgC
+	cEQW0D+ep1xcvjSWADr+DkJ9cbX1H/C0emTXXPifn5Cpv9D9FmxykL9OYrx3Mzfa+k+v7yQrW1aWY
+	ofnlhpDwvKMeHNjud6iE5jMsfB4xWHPtqKdnHyNpC8RjG3J99PdgEZRZHkV3SNDbYLh2XX7vb+eEf
+	pfbMM/0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sVBnB-00000005IBa-1GP8;
-	Sat, 20 Jul 2024 15:14:37 +0000
-Received: from mout.web.de ([212.227.15.14])
+	id 1sVDEq-00000005OII-2wZH;
+	Sat, 20 Jul 2024 16:47:16 +0000
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sVBmn-00000005I8a-3vUq;
-	Sat, 20 Jul 2024 15:14:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
-	s=s29768273; t=1721488426; x=1722093226; i=markus.elfring@web.de;
-	bh=ANLLE1FZ2RR1WHzVhAMXGwQ0A90YNENVV09Nc6XgQhM=;
-	h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:To:Cc:References:
-	 Subject:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:
-	 cc:content-transfer-encoding:content-type:date:from:message-id:
-	 mime-version:reply-to:subject:to;
-	b=niEuGOg7Z67VcGebyFHv3zykSxYdZG1fY+7vLDdpz1JGW6r4YueAX1G33SyKt+Tc
-	 83PGlnI5ZYSmAazeUUkGWWTJ6nlq6Z4TL2XC1qQJxRzG4rgpHmtIlw+VycNvf4gft
-	 k0aPq9W/9P9T5EhJqdG6+1VlFQnSWv/Dak6vV8HQJZ4+mCe02rHG9TYEa8ChaPmhO
-	 ads+Q7f/cvqQERJhd/TlTMppI/kbikZN/MrpRcGduAEYVyVJ6ok2UgvYIk1Dd+v5A
-	 a9O+1RsGm6UUHEOlRSHA36caPsiPca16KhpyqdQJo92cJJsbnnTDJIdluBLDC17/0
-	 m3rM9rwiZXWbuK3xaw==
-X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
-Received: from [192.168.178.21] ([94.31.89.95]) by smtp.web.de (mrweb005
- [213.165.67.108]) with ESMTPSA (Nemesis) id 1MK52w-1sl4lg1Eo2-00Y4JF; Sat, 20
- Jul 2024 17:13:46 +0200
-Message-ID: <2f5e5e81-21e1-421d-94ac-e4507b323680@web.de>
-Date: Sat, 20 Jul 2024 17:13:40 +0200
+	id 1sVDEU-00000005OEO-02Hs;
+	Sat, 20 Jul 2024 16:46:55 +0000
+Received: by mail-wr1-x42f.google.com with SMTP id ffacd0b85a97d-36844375001so1374408f8f.0;
+        Sat, 20 Jul 2024 09:46:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1721494012; x=1722098812; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=l6XmwiNF0U9ALABlmqNHLWtjd5nTEgsEVV0Hcqvx7zs=;
+        b=BxBdW/C8MmAT17EQyAvDUEEPHdlCC1E/NBhCx2CgIxT+SdyeYhWZMs9lDXtAhqH5g5
+         +5ZQ4R9naWf9YMADh/y1ot2/4wz0QBf5zKu+7sTzPV658YX5y//zasQxZDd2AHmW6SUh
+         6hytJSEQ2UGRu4spzT9ixQD+j2KHi8p4QWtVqp32sCrkNt1n9mnvXdpmhApnjdxf+z19
+         LR+aoCoXuxyzEJ9FdWQOkP/+/1lhVbpZUcr0JqzC+4CIRIpYbi8fpmPX3hlCGi7GPCoZ
+         zv4GkTpqMn3SiscKC3K1KHu/ZJs9BoMQtJCogBARuLxvbQRwkk6DQjsp1uCtg70Tke4d
+         mUEw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1721494012; x=1722098812;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=l6XmwiNF0U9ALABlmqNHLWtjd5nTEgsEVV0Hcqvx7zs=;
+        b=V6RQjYOU4m9BIVGyz/t4cxe1nYHmBwf9626zhqUnprORSXS/a6436+5w9ueC4Rg+nB
+         TfqWE5sCR9Ne3n3K8X2stWV1ul4SHw10MS0HIYwr52dyluw7Z1ARtOF2W7YQqVXX9dmC
+         3UcFTuI8n/kh72TABVQxmqnij5izhs9b614JHfTdEKss3KxeamcYhwuQN4FhgxgQK69K
+         z6q7Yfci9xff+aMgDgv/zmjIQa9j+KR/Yfj3mOoavjTE4na7MvGgN5fVckA9P2po4aFu
+         No8pIpHzEH3BvYDP/UBT6PHgGjZSqaULHyYU3AOFGa3V9Lg+O6TTotl/yC6jwkiHBQ97
+         SkDg==
+X-Forwarded-Encrypted: i=1; AJvYcCVvZnUYoF1fQfId1Z70rKO2KS/i/z21wUPOa3Y7aouqKESadgEAzAZQoI+Y5UFFmxO8FYCu8oXLAsyzHmLpCT1vTY9aY89eqIvx4Dx1/2cOZSZakYxl/fA4TmRFniFzVcEBsUtLuo0SdrOgcLgdt/y/y3S+CZkHQOc=
+X-Gm-Message-State: AOJu0YwIOtIpo3E31xi4zLbs6DzSTMbnfLVnWfdy/nEOIht+SYRIfn7W
+	I3Dr1clkKM+rr7ZsZwqcmw9cXigdMY6VUmmKrBai3jr6JduSu3vi
+X-Google-Smtp-Source: AGHT+IE5Pz7ugxkqfgR4dRjntSLua/ddvvNazQUyapOJH+FfafymKxtCwgQeo94JmRGb5cwc1ufI9w==
+X-Received: by 2002:adf:a15a:0:b0:367:4dce:1ff5 with SMTP id ffacd0b85a97d-369bae50e74mr1120538f8f.32.1721494011616;
+        Sat, 20 Jul 2024 09:46:51 -0700 (PDT)
+Received: from yifee.lan ([176.230.105.233])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-368787eda2fsm4293616f8f.108.2024.07.20.09.46.49
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 20 Jul 2024 09:46:51 -0700 (PDT)
+From: Elad Yifee <eladwf@gmail.com>
+To: 
+Cc: eladwf@gmail.com,
+	daniel@makrotopia.org,
+	Felix Fietkau <nbd@nbd.name>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Alexei Starovoitov <ast@kernel.org>,
+	Daniel Borkmann <daniel@iogearbox.net>,
+	Jesper Dangaard Brouer <hawk@kernel.org>,
+	John Fastabend <john.fastabend@gmail.com>,
+	netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	bpf@vger.kernel.org
+Subject: [PATCH net-next RFC] net: ethernet: mtk_eth_soc: use prefetch methods
+Date: Sat, 20 Jul 2024 19:46:18 +0300
+Message-ID: <20240720164621.1983-1-eladwf@gmail.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: John Stultz <jstultz@google.com>, "T. J. Mercier" <tjmercier@google.com>,
- Yong Wu <yong.wu@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-media@vger.kernel.org, dri-devel@lists.freedesktop.org,
- Angelo Gioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Jeffrey Kardatzke <jkardatzke@google.com>,
- Marek Szyprowski <m.szyprowski@samsung.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Nathan Hebert <nhebert@chromium.org>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- Sebastian Fricke <sebastian.fricke@collabora.com>,
- Tomasz Figa <tfiga@chromium.org>
-Cc: LKML <linux-kernel@vger.kernel.org>, Brian Starkey
- <Brian.Starkey@arm.com>, Chen-Yu Tsai <wenst@chromium.org>,
- =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>,
- Daniel Vetter <daniel@ffwll.ch>, =?UTF-8?Q?Fritz_K=C3=B6nig?=
- <frkoenig@chromium.org>, Hsin-yi Wang <hsinyi@chromium.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Steve Cho
- <stevecho@chromium.org>, Sumit Semwal <sumit.semwal@linaro.org>
-References: <20240720071606.27930-6-yunfei.dong@mediatek.com>
-Subject: Re: [PATCH v7 05/28] dma-heap: Add proper kref handling on dma-buf
- heaps
-Content-Language: en-GB
-From: Markus Elfring <Markus.Elfring@web.de>
-In-Reply-To: <20240720071606.27930-6-yunfei.dong@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:xCN5kVOJmi+99iZxV3ZaFC6z2tacIVcN87B7sFZUAIuVsvE+9jv
- va3LRkLSLMeceACmgBSFOUukvR38UNxFX/NlWYBwox7+fj26qbNooHxlk6pjhOuseQNeWnL
- /3+jMkhEj3ZKTq/IwIeY1nUIups/APFVOUGezCq2bLqs5N7p6eSG+gVqkMv/1p3PvzkCQFW
- Kw/AMe70ASauwualb0xxg==
-UI-OutboundReport: notjunk:1;M01:P0:fcstDclSA/c=;Ctdm7nJtr8AasI7Q1uuh4tDtijF
- 9crG4aP1nI9tsA386U6h4nJ4nl+QyJ74s4jG208s6DMRxby79tk8cqJJMXDWAcgLgJY/zECSk
- r4+qULjryDobIvcd6U1fo70kUgJvuTM+U9CsyCsjt/X9sSfXQ/6FJtLVxH00s0+9BTyjdkPSg
- cVJVaUIXHWRHC6XMOYDSvqdoMBpcsfJWIEhcIwnn/8vAlCowZYitX3WH4+r21ha5tLMtaaZwm
- Ppd8g6ucZ8C9nLezzOXaGyb9Upy+Q7UIsGHq38JmxfM9N563opDD+HC558mkAf3QSwQVV2qWe
- Fg/SlTkdK6g+r1WIQvy78XKG2rp/SvJ4gofIxzvryrB4Chl5g4I9xg0I+q+x4a/2GMy9nV5Dl
- 02+KmWYHGZA40OYYXhamroFBYKM9a2ibSAHI1b0+LJXs3AkaN3zbdZSSRvhGosBQ7y98S12Fq
- UMYWAiEhZtFfBCB4E020p1zDd3ye46noeNeNvWAT67NLDcjW/o8njm7XgaNipa/S69N6y2Hoc
- ep8QAGXO62ZFkUw4ndT65ch9qt2nfnVzP14T+V9eC8zVw2Nm0qGT1duSpiT8aPGwHHVGbEbue
- MzbvlaC8+GEFmeE3Nz6Vb9yeFrI0kAgHMNjis3L5SBxn99Fp9h1Ot0AAVARbH1AIXW7TNibDs
- 8RIjviyBlUwBbu2uBGfyxqzBdtU0tjF3xL+pDimUQkFD4EyzH1j143hboMXSWwIDPQ0CP5k0E
- pVK5CEoEoLmbKrIeqbpK6qsfNKsZ+kCDxKOIRpG98ucqt+TibYt5xyc/NDINRVvEockjhnhQ3
- hPxiYz5X+aASwg/7ShR7ehMA==
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240720_081414_269450_DF981EE6 
-X-CRM114-Status: UNSURE (   3.59  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240720_094654_070911_2AD98545 
+X-CRM114-Status: GOOD (  10.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,21 +107,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-=E2=80=A6
-> +++ b/drivers/dma-buf/dma-heap.c
-=E2=80=A6
-> +static void dma_heap_release(struct kref *ref)
-> +{
-=E2=80=A6
-> +	mutex_lock(&heap_list_lock);
-> +	list_del(&heap->list);
-> +	mutex_unlock(&heap_list_lock);
-=E2=80=A6
+Utilize kernel prefetch methods for faster cache line access.
+This change boosts driver performance,
+allowing the CPU to handle about 5% more packets/sec.
 
-Under which circumstances would you become interested to apply a statement
-like =E2=80=9Cguard(mutex)(&heap_list_lock);=E2=80=9D?
-https://elixir.bootlin.com/linux/v6.10/source/include/linux/mutex.h#L196
+Signed-off-by: Elad Yifee <eladwf@gmail.com>
+---
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
-Regards,
-Markus
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index 0cc2dd85652f..1a0704166103 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -1963,6 +1963,7 @@ static u32 mtk_xdp_run(struct mtk_eth *eth, struct mtk_rx_ring *ring,
+ 	if (!prog)
+ 		goto out;
+ 
++	prefetchw(xdp->data_hard_start);
+ 	act = bpf_prog_run_xdp(prog, xdp);
+ 	switch (act) {
+ 	case XDP_PASS:
+@@ -2039,7 +2040,7 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
+ 		idx = NEXT_DESP_IDX(ring->calc_idx, ring->dma_size);
+ 		rxd = ring->dma + idx * eth->soc->rx.desc_size;
+ 		data = ring->data[idx];
+-
++		prefetch(rxd);
+ 		if (!mtk_rx_get_desc(eth, &trxd, rxd))
+ 			break;
+ 
+@@ -2105,6 +2106,7 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
+ 			if (ret != XDP_PASS)
+ 				goto skip_rx;
+ 
++			net_prefetch(xdp.data_meta);
+ 			skb = build_skb(data, PAGE_SIZE);
+ 			if (unlikely(!skb)) {
+ 				page_pool_put_full_page(ring->page_pool,
+@@ -2113,6 +2115,7 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
+ 				goto skip_rx;
+ 			}
+ 
++			prefetchw(skb->data);
+ 			skb_reserve(skb, xdp.data - xdp.data_hard_start);
+ 			skb_put(skb, xdp.data_end - xdp.data);
+ 			skb_mark_for_recycle(skb);
+@@ -2143,6 +2146,7 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
+ 			dma_unmap_single(eth->dma_dev, ((u64)trxd.rxd1 | addr64),
+ 					 ring->buf_size, DMA_FROM_DEVICE);
+ 
++			net_prefetch(data);
+ 			skb = build_skb(data, ring->frag_size);
+ 			if (unlikely(!skb)) {
+ 				netdev->stats.rx_dropped++;
+@@ -2150,6 +2154,7 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
+ 				goto skip_rx;
+ 			}
+ 
++			prefetchw(skb->data);
+ 			skb_reserve(skb, NET_SKB_PAD + NET_IP_ALIGN);
+ 			skb_put(skb, pktlen);
+ 		}
+-- 
+2.45.2
+
 
