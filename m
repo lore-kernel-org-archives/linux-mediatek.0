@@ -4,77 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63129C3DA5D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Jul 2024 23:52:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CE60C3DA7F
+	for <linux-mediatek@archiver.kernel.org>; Sat, 20 Jul 2024 07:16:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=JaReLQUfE4IrabncSWk1xLybodLh/kWe0m74/xginYQ=; b=RLP4v5fdZkDKnFQNjfbRh8yt8A
-	xoZLNYV8TaFN828X/ms5Go3no4GfQFAswiTVsDm3T6FrMmfeBSeSv6azCYLI/Jbw2YLOvfbBAKkja
-	QL05rmWd1I2PJQrFzchhRifMl+fVRqTlx9Qvr6av1WZ7lk9wUhgmb9Fxge1XX+ld00y575vbLgGMH
-	1Sp+6MiuQhtKsDXuYpAdSLXWN7V8nr4C+NAIVkoXKIOD3EEZ/yW5YGOX5NHwwPhv0zfTP9hpZ8nad
-	ropNj16fs+gQ5CFZ+GuWPwrTIEx3pHWDrD5dyvolBCt8xXWZ3h0mrGIn5aJZneBbmv1zvK/u81rwB
-	BzeyBFuA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=LHC3o5V5lRo65fXxEL/oKhYnOszY3UdThDILHWsUQFg=; b=cNZgfUvxi8EDWSl0wjTTM96MIZ
+	6gs1EDg1R+d87n32dZjVCvj3nV1srJ6TXmgv5wZBi/7smkybqJiZ9Fsusqxp21VyuNZ1jVSAVUYZj
+	yQdFcAhx8do/TfJ4akkE4RgDxCH2R1dTBTBTXB6O9BDVffjpYxpVRgggfhE0sPeRIsH4CIW9uAOEZ
+	VXhZVmsuuJrkebZ+emNwwTJDYRL9PN3NW5UnKRTlf/kVNUt598zH5abYx4/wwGRNhNqdxg/cKzp08
+	O/aCUvGf4pA6ZPdKmcC3LNpgEfp9fJ05Tin7qIb824uEID9SPWvMVxsQ8PIpNY4su2b5zgAuEDKHd
+	VCvd2f7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sUxPE-000000042o8-0Lw0;
-	Fri, 19 Jul 2024 23:52:56 +0000
-Received: from mail-oa1-x31.google.com ([2001:4860:4864:20::31])
+	id 1sV4KL-00000004bzn-3mX7;
+	Sat, 20 Jul 2024 07:16:21 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sUxPC-000000042nQ-1mQe
-	for linux-mediatek@lists.infradead.org;
-	Fri, 19 Jul 2024 23:52:55 +0000
-Received: by mail-oa1-x31.google.com with SMTP id 586e51a60fabf-260209df55dso1066003fac.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 19 Jul 2024 16:52:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1721433173; x=1722037973; darn=lists.infradead.org;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=JaReLQUfE4IrabncSWk1xLybodLh/kWe0m74/xginYQ=;
-        b=vy2vLNcX12LENSaZUiwzBQMsJ5nTfQ/8hubCi6HbHgJNQyYFpgepQUY59c+ZBMWxNH
-         Rew3LyqdTnADlARZXgGJWnpGtal0RFhwDQJ7F8+yQXMjfY7ASk3NLWuJwW925eAlGsTp
-         FNQeJWCY6Guqsai4an06+On+3Plnf6Oi24D89NQH40dSEU3DNEylo4HGD1mIveB3BVll
-         Pel5ge2RMK7XAeW2S75MfZ1UxtADC4lJmb83pYrgmoGOGXLtOOjDVOpeqamJrnrtepBP
-         luyB49f2t4yrcuBkEzk0oyreK3R4Jl+xIv+wd1GWkwskgy1YgFo3fVHQqqoxRLpirp7P
-         vv8w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1721433173; x=1722037973;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=JaReLQUfE4IrabncSWk1xLybodLh/kWe0m74/xginYQ=;
-        b=OsDQqHwL3lMrslrl12nTTJB9/xkojXqcY2DJ2jRrzRlZEbF5agzaJHeed5Of7EbNx9
-         8DP2I4/4yQXqx5/wGot4oaq4c5VWTj/Dm6Y0iKTQPKAoyh1SOrJa4Wtnc7gX0yA9PaT7
-         rsp31pp22wImUBd3CNpptUTXzcM//qUqp7/vOVgLxoiMyzjPZe6lNbFp4id4tJz13RLV
-         UUHvCTbgcPWtpqS5Sf2OPlGb7SHtkSkprS+OqkJqAXmqjC7d9X+IZxVhMsQQfjNoV3YM
-         Y2NaJYarn4XqiJYtK3V1pX0E4eLJrUhd0RKSEOvH1AT1uQ+ztXbyzW/8K+TQGzhtNOG8
-         ZL3g==
-X-Gm-Message-State: AOJu0YxRAdZldgU7wmPI3W9KikiXTLTUU/fXYevzpKCgDtk0DrN4ry8K
-	qjJtwfiwo89jUxN+p0JfkseWitR0U1NTVC9sVcd2AbK+uXgbJzkTHs0aaLIsG/b0OHRF61/6dOv
-	+0/4=
-X-Google-Smtp-Source: AGHT+IHqp2guF8f6tH5KBwj84R9JPOxYleEzH+UlXr/iSKNho1HL+oUUSGXNmDIXSfYp8+0WTDmLqQ==
-X-Received: by 2002:a05:6870:449:b0:261:1eb4:dd8f with SMTP id 586e51a60fabf-2638dee5028mr84483fac.2.1721433172798;
-        Fri, 19 Jul 2024 16:52:52 -0700 (PDT)
-Received: from localhost ([2603:8080:b800:f700:739a:b665:7f57:d340])
-        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-2610c716a51sm534636fac.7.2024.07.19.16.52.52
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 19 Jul 2024 16:52:52 -0700 (PDT)
-Date: Fri, 19 Jul 2024 18:52:50 -0500
-From: Dan Carpenter <dan.carpenter@linaro.org>
-To: Breno Leitao <leitao@debian.org>
-Cc: linux-mediatek@lists.infradead.org
-Subject: [bug report] net: mediatek: mtk_eth_sock: allocate dummy net_device
- dynamically
-Message-ID: <4160f4e0-cbef-4a22-8b5d-42c4d399e1f7@stanley.mountain>
+	id 1sV4KI-00000004byD-4286;
+	Sat, 20 Jul 2024 07:16:20 +0000
+X-UUID: f21b5fee466711efa6c87f6b4542ff6b-20240720
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=LHC3o5V5lRo65fXxEL/oKhYnOszY3UdThDILHWsUQFg=;
+	b=FDkIGEpAdjUgSh6MzhFMeiVfLIwOuf1eTHTjNDikdi2GQ+ddlSRE7S3f5mXm2AR/26H27sgmUpC5E0XL8f/KCMkJbGwVJ69kf+QjFrSfT1SVEwZJzKkRwaMXcSpr98EAKBECH7cwKnyEQqZ53Zd6spBRMxP8phTfzABbWq7OcQI=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.40,REQID:7f7174c0-42df-41a0-8be0-bf3ab716ef67,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:-30,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACT
+	ION:release,TS:-55
+X-CID-META: VersionHash:ba885a6,CLOUDID:a63b8545-a117-4f46-a956-71ffeac67bfa,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:2,IP:nil,UR
+	L:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,S
+	PR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: f21b5fee466711efa6c87f6b4542ff6b-20240720
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
+	(envelope-from <yunfei.dong@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2044172715; Sat, 20 Jul 2024 00:16:12 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Sat, 20 Jul 2024 15:16:10 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Sat, 20 Jul 2024 15:16:08 +0800
+From: Yunfei Dong <yunfei.dong@mediatek.com>
+To: Jeffrey Kardatzke <jkardatzke@google.com>,
+	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
+	<nfraprado@collabora.com>, Nathan Hebert <nhebert@chromium.org>, Nicolas
+ Dufresne <nicolas.dufresne@collabora.com>, Hans Verkuil
+	<hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
+	<benjamin.gaignard@collabora.com>, Sebastian Fricke
+	<sebastian.fricke@collabora.com>, Tomasz Figa <tfiga@chromium.org>, Mauro
+ Carvalho Chehab <mchehab@kernel.org>, Marek Szyprowski
+	<m.szyprowski@samsung.com>
+CC: Chen-Yu Tsai <wenst@chromium.org>, Yong Wu <yong.wu@mediatek.com>, Hsin-Yi
+ Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, Daniel
+ Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>, Yunfei Dong
+	<yunfei.dong@mediatek.com>, Sumit Semwal <sumit.semwal@linaro.org>, Brian
+ Starkey <Brian.Starkey@arm.com>, John Stultz <jstultz@google.com>, "T . J .
+ Mercier" <tjmercier@google.com>, =?UTF-8?q?Christian=20K=C3=B6nig?=
+	<christian.koenig@amd.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+	<linux-media@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v7 01/28] v4l2: add restricted memory flags
+Date: Sat, 20 Jul 2024 15:15:39 +0800
+Message-ID: <20240720071606.27930-2-yunfei.dong@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20240720071606.27930-1-yunfei.dong@mediatek.com>
+References: <20240720071606.27930-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240719_165254_485286_E0963A11 
-X-CRM114-Status: UNSURE (   6.50  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240720_001619_044360_C1C79C22 
+X-CRM114-Status: GOOD (  17.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,60 +102,127 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Breno Leitao,
+From: Jeffrey Kardatzke <jkardatzke@google.com>
 
-Commit b209bd6d0bff ("net: mediatek: mtk_eth_sock: allocate dummy
-net_device dynamically") from Apr 22, 2024 (linux-next), leads to the
-following Smatch static checker warning:
+Adds a V4L2 flag which indicates that a queue is using restricted
+dmabufs and the corresponding capability flag.
 
-	drivers/net/ethernet/mediatek/mtk_eth_soc.c:5061 mtk_probe()
-	error: we previously assumed 'eth->dummy_dev' could be null (see line 5041)
+Signed-off-by: Jeffrey Kardatzke <jkardatzke@google.com>
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+[Yunfei: Change reviewer's comments]
+---
+ Documentation/userspace-api/media/v4l/buffer.rst       | 10 +++++++++-
+ .../userspace-api/media/v4l/vidioc-reqbufs.rst         |  6 ++++++
+ include/media/videobuf2-core.h                         |  8 +++++++-
+ include/uapi/linux/videodev2.h                         |  2 ++
+ 4 files changed, 24 insertions(+), 2 deletions(-)
 
-drivers/net/ethernet/mediatek/mtk_eth_soc.c
-    5037         /* we run 2 devices on the same DMA ring so we need a dummy device
-    5038          * for NAPI to work
-    5039          */
-    5040         eth->dummy_dev = alloc_netdev_dummy(0);
-    5041         if (!eth->dummy_dev) {
-                      ^^^^^^^^^^^^^^
-->dummy_dev is the last allocation
+diff --git a/Documentation/userspace-api/media/v4l/buffer.rst b/Documentation/userspace-api/media/v4l/buffer.rst
+index 52bbee81c080..901eb007aae8 100644
+--- a/Documentation/userspace-api/media/v4l/buffer.rst
++++ b/Documentation/userspace-api/media/v4l/buffer.rst
+@@ -696,7 +696,7 @@ enum v4l2_memory
+ 
+ .. _memory-flags:
+ 
+-Memory Consistency Flags
++Memory Flags
+ ------------------------
+ 
+ .. raw:: latex
+@@ -728,6 +728,14 @@ Memory Consistency Flags
+ 	only if the buffer is used for :ref:`memory mapping <mmap>` I/O and the
+ 	queue reports the :ref:`V4L2_BUF_CAP_SUPPORTS_MMAP_CACHE_HINTS
+ 	<V4L2-BUF-CAP-SUPPORTS-MMAP-CACHE-HINTS>` capability.
++    * .. _`V4L2-MEMORY-FLAG-RESTRICTED`:
++
++      - ``V4L2_MEMORY_FLAG_RESTRICTED``
++      - 0x00000002
++      - The queued buffers are expected to be in restricted memory. If not, an
++	error will be returned. This flag can only be used with ``V4L2_MEMORY_DMABUF``.
++	Typically restricted buffers are allocated using a restricted dma-heap. This flag
++	can only be specified if the :ref:`V4L2_BUF_CAP_SUPPORTS_RESTRICTED_MEM` is set.
+ 
+ .. raw:: latex
+ 
+diff --git a/Documentation/userspace-api/media/v4l/vidioc-reqbufs.rst b/Documentation/userspace-api/media/v4l/vidioc-reqbufs.rst
+index bbc22dd76032..8a264ae08db1 100644
+--- a/Documentation/userspace-api/media/v4l/vidioc-reqbufs.rst
++++ b/Documentation/userspace-api/media/v4l/vidioc-reqbufs.rst
+@@ -122,6 +122,7 @@ aborting or finishing any DMA in progress, an implicit
+ .. _V4L2-BUF-CAP-SUPPORTS-MMAP-CACHE-HINTS:
+ .. _V4L2-BUF-CAP-SUPPORTS-MAX-NUM-BUFFERS:
+ .. _V4L2-BUF-CAP-SUPPORTS-REMOVE-BUFS:
++.. _V4L2-BUF-CAP-SUPPORTS-RESTRICTED_MEM:
+ 
+ .. raw:: latex
+ 
+@@ -166,6 +167,11 @@ aborting or finishing any DMA in progress, an implicit
+         :ref:`V4L2_BUF_FLAG_NO_CACHE_INVALIDATE <V4L2-BUF-FLAG-NO-CACHE-INVALIDATE>`,
+         :ref:`V4L2_BUF_FLAG_NO_CACHE_CLEAN <V4L2-BUF-FLAG-NO-CACHE-CLEAN>` and
+         :ref:`V4L2_MEMORY_FLAG_NON_COHERENT <V4L2-MEMORY-FLAG-NON-COHERENT>`.
++    * - ``V4L2_BUF_CAP_SUPPORTS_RESTRICTED_MEM``
++      - 0x00000100
++      - This capability is set by the driver to indicate the queue supports
++        restricted memory. See
++        :ref:`V4L2_MEMORY_FLAG_RESTRICTED <V4L2-MEMORY-FLAG-RESTRICTED>`.
+ 
+ .. raw:: latex
+ 
+diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
+index 955237ac503d..afd497e93a37 100644
+--- a/include/media/videobuf2-core.h
++++ b/include/media/videobuf2-core.h
+@@ -517,6 +517,9 @@ struct vb2_buf_ops {
+  *		->finish().
+  * @non_coherent_mem: when set queue will attempt to allocate buffers using
+  *		non-coherent memory.
++ * @allow_restricted_mem: when set user-space can pass the %V4L2_MEMORY_FLAG_RESTRICTED
++ *		flag to indicate the dma bufs are restricted.
++ * @restricted_mem: when set queue will verify that the dma bufs are restricted.
+  * @lock:	pointer to a mutex that protects the &struct vb2_queue. The
+  *		driver can set this to a mutex to let the v4l2 core serialize
+  *		the queuing ioctls. If the driver wants to handle locking
+@@ -621,6 +624,8 @@ struct vb2_queue {
+ 	unsigned int			uses_requests:1;
+ 	unsigned int			allow_cache_hints:1;
+ 	unsigned int			non_coherent_mem:1;
++	unsigned int			allow_restricted_mem:1;
++	unsigned int			restricted_mem:1;
+ 
+ 	struct mutex			*lock;
+ 	void				*owner;
+@@ -792,7 +797,8 @@ void vb2_core_querybuf(struct vb2_queue *q, struct vb2_buffer *vb, void *pb);
+  * @q:		pointer to &struct vb2_queue with videobuf2 queue.
+  * @memory:	memory type, as defined by &enum vb2_memory.
+  * @flags:	auxiliary queue/buffer management flags. Currently, the only
+- *		used flag is %V4L2_MEMORY_FLAG_NON_COHERENT.
++ *		used flags are %V4L2_MEMORY_FLAG_NON_COHERENT and
++ *		%V4L2_MEMORY_FLAG_RESTRICTED.
+  * @count:	requested buffer count.
+  *
+  * Videobuf2 core helper to implement VIDIOC_REQBUF() operation. It is called
+diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
+index 4e91362da6da..c4b1bc10af4c 100644
+--- a/include/uapi/linux/videodev2.h
++++ b/include/uapi/linux/videodev2.h
+@@ -1060,6 +1060,7 @@ struct v4l2_requestbuffers {
+ };
+ 
+ #define V4L2_MEMORY_FLAG_NON_COHERENT			(1 << 0)
++#define V4L2_MEMORY_FLAG_RESTRICTED			(1 << 1)
+ 
+ /* capabilities for struct v4l2_requestbuffers and v4l2_create_buffers */
+ #define V4L2_BUF_CAP_SUPPORTS_MMAP			(1 << 0)
+@@ -1071,6 +1072,7 @@ struct v4l2_requestbuffers {
+ #define V4L2_BUF_CAP_SUPPORTS_MMAP_CACHE_HINTS		(1 << 6)
+ #define V4L2_BUF_CAP_SUPPORTS_MAX_NUM_BUFFERS		(1 << 7)
+ #define V4L2_BUF_CAP_SUPPORTS_REMOVE_BUFS		(1 << 8)
++#define V4L2_BUF_CAP_SUPPORTS_RESTRICTED_MEM		(1 << 9)
+ 
+ /**
+  * struct v4l2_plane - plane info for multi-planar buffers
+-- 
+2.18.0
 
-    5042                 err = -ENOMEM;
-    5043                 dev_err(eth->dev, "failed to allocated dummy device\n");
-    5044                 goto err_unreg_netdev;
-    5045         }
-    5046         netif_napi_add(eth->dummy_dev, &eth->tx_napi, mtk_napi_tx);
-    5047         netif_napi_add(eth->dummy_dev, &eth->rx_napi, mtk_napi_rx);
-    5048 
-    5049         platform_set_drvdata(pdev, eth);
-    5050         schedule_delayed_work(&eth->reset.monitor_work,
-    5051                               MTK_DMA_MONITOR_TIMEOUT);
-    5052 
-    5053         return 0;
-    5054 
-    5055 err_unreg_netdev:
-    5056         mtk_unreg_dev(eth);
-    5057 err_deinit_ppe:
-    5058         mtk_ppe_deinit(eth);
-    5059         mtk_mdio_cleanup(eth);
-    5060 err_free_dev:
---> 5061         mtk_free_dev(eth);
-                              ^^^
-But it's free here.  (NULL dereference).  I really would suggest moving the
-free_netdev() to the release function.  The probe and release function are
-easier to read if they're in mirrored order where every allocation has a
-matching free.
-
-    5062 err_deinit_hw:
-    5063         mtk_hw_deinit(eth);
-    5064 err_wed_exit:
-    5065         mtk_wed_exit();
-    5066 err_destroy_sgmii:
-    5067         mtk_sgmii_destroy(eth);
-    5068 
-    5069         return err;
-    5070 }
-
-regards,
-dan carpenter
 
