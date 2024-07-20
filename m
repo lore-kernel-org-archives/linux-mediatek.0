@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A57E4C3DA49
-	for <linux-mediatek@archiver.kernel.org>; Sat, 20 Jul 2024 07:26:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84CECC3DA59
+	for <linux-mediatek@archiver.kernel.org>; Sat, 20 Jul 2024 07:27:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=p+T/91DKPdqNSBBEBoJG5LDqiDs3jlbfJscwjtg0tng=; b=zla5OP+8teCg0b0pkWpSQJwuMH
-	rfSh05OE5kHFtQqi2QYp+mHeEt5zU69LyFCVrhEgtrfjWKt2Gf64+BeNGMuiYkZGGQVnoC8QDOkGn
-	trOMgyWdF2c3mRFKTc0yJaU1M0+xJjD5+rpEES3Zv3rJKrysCha8w4Vnm6gbhLKeDugy0ZiPVCMn3
-	lbpZIAD/kK1Th+fNeAGQLxzmK3+H84XAHZOGBcTxKFiM5XHdPPSFuXbrRF9TjhbpUXfrqTFJadCw3
-	ge/IblCITIdQ58RUY3aQXray6ZgADAmxLpz5lZIu8YLniZ80uAucUFrrt3lkeSlM4pAHmC3iNSdjy
-	QxEChCCw==;
+	bh=IWYaEro6qvOlTE7NmiiGvi91wiQIVcxNioPdAh6X7rg=; b=Yv1HvAcyri9q+ihKIg1DnhtLTE
+	MhBiUnT+IqUvaISu79S5PFX7REguxwTPrlpw9/R0uBTi4J3Xy7Czsa3yfXKxWgvtlmbL8WPy5oQaO
+	T30FLuidrZTp76SgRkacw4ViT4vvI6nBXTMXR9SZpGyRGzrhpqQa86ZWHnEhdpDMd8y2w9HMeJFQ3
+	PG6joqPXL5NBuhQVcyiZHYiGgcyIvJWoOwJ5AVGBDbHXZsjv/Jsj2kcxW2MQNwvEEmqBtuhk8ez6Q
+	4UtJLH5rUjP2e2KIwpnOCug5pQNQVw816H5pW4Wp81nJ6g3lTYZwlXnpMGMSMqDVRQ5U2HrhMbu+v
+	H/aJ+FXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sV4UU-00000004fPw-0rbm;
-	Sat, 20 Jul 2024 07:26:50 +0000
+	id 1sV4V9-00000004fcK-1185;
+	Sat, 20 Jul 2024 07:27:31 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sV4UC-00000004fN3-4B7i;
-	Sat, 20 Jul 2024 07:26:34 +0000
-X-UUID: 608e11dc466911efa6c87f6b4542ff6b-20240720
+	id 1sV4UJ-00000004fOZ-0rM1;
+	Sat, 20 Jul 2024 07:26:40 +0000
+X-UUID: 65122f36466911efa6c87f6b4542ff6b-20240720
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=p+T/91DKPdqNSBBEBoJG5LDqiDs3jlbfJscwjtg0tng=;
-	b=PcV1v94sS/zb5jRfr/gY+E3R+5G9os0roo/V+b67OSYezfywpVhSlMtc/zJbuCqqOh//1mHVqMUStSBwjGjzv4tfZQuhJLAWo4boU9yJQ61mESpDDAGu22gIKnha7ddoIWNG3Y2/Hw6VOj9E7KVAPFwTRzBGXKtOcgqojJZY9Dc=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=IWYaEro6qvOlTE7NmiiGvi91wiQIVcxNioPdAh6X7rg=;
+	b=tZ+iTRfs+Oj57hPBsuzl/BNEyyrlp6pPOicRxLDrtmgTw46SP7Y31oOLiBNgSru9JT+uEGvphztVLmSAtdiFxbaWKNjRp5QkYBacLr/9FT1hAModpTbdrBMIxrDOZlRHX2ReVRgZq4RxX1fqlB86GTtM2wpt9uOoFeQ/h/Odusg=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.40,REQID:6ec8297a-efd5-4b7c-b5bc-fb8c00e9f317,IP:0,U
+X-CID-O-INFO: VERSION:1.1.40,REQID:ec996703-c431-4c0f-821d-2c9be1cdf2f3,IP:0,U
 	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
 	N:release,TS:-25
-X-CID-META: VersionHash:ba885a6,CLOUDID:95f790d5-0d68-4615-a20f-01d7bd41f0bb,B
+X-CID-META: VersionHash:ba885a6,CLOUDID:ef4a8545-a117-4f46-a956-71ffeac67bfa,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 0,NGT
 X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 608e11dc466911efa6c87f6b4542ff6b-20240720
+X-CID-FACTOR: TF_CID_SPAM_ULN,TF_CID_SPAM_SNR
+X-UUID: 65122f36466911efa6c87f6b4542ff6b-20240720
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <yunfei.dong@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1532837779; Sat, 20 Jul 2024 00:26:27 -0700
+	with ESMTP id 588712392; Sat, 20 Jul 2024 00:26:35 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Sat, 20 Jul 2024 15:16:24 +0800
+ 15.2.1118.26; Sat, 20 Jul 2024 15:16:32 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Sat, 20 Jul 2024 15:16:23 +0800
+ 15.2.1118.26 via Frontend Transport; Sat, 20 Jul 2024 15:16:31 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Jeffrey Kardatzke <jkardatzke@google.com>,
 	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
@@ -75,9 +75,9 @@ CC: Chen-Yu Tsai <wenst@chromium.org>, Yong Wu <yong.wu@mediatek.com>, Hsin-Yi
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v7 11/28] media: mediatek: vcodec: initialize msg and vsi information
-Date: Sat, 20 Jul 2024 15:15:49 +0800
-Message-ID: <20240720071606.27930-12-yunfei.dong@mediatek.com>
+Subject: [PATCH v7 16/28] media: mediatek: vcodec: support single allocation buffer
+Date: Sat, 20 Jul 2024 15:15:54 +0800
+Message-ID: <20240720071606.27930-17-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20240720071606.27930-1-yunfei.dong@mediatek.com>
 References: <20240720071606.27930-1-yunfei.dong@mediatek.com>
@@ -86,8 +86,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240720_002633_069325_C48B757F 
-X-CRM114-Status: GOOD (  19.03  )
+X-CRM114-CacheID: sfid-20240720_002639_415728_BCBD280A 
+X-CRM114-Status: GOOD (  15.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,135 +102,140 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Initialize the msg and vsi information before send to optee, then
-calling tee invoke command to send.
+The buffer count of capture format V4L2_PIX_FMT_MS21 is different with
+V4L2_PIX_FMT_MM21. V4L2_PIX_FMT_MS21 has two memory to store luma and
+chrome planes, V4L2_PIX_FMT_MS21 only has one. Adding condition to
+separate them.
 
-For the optee communication interface is different with scp, adding
-condition to separate them.
+The dma address is secure handle for secure video playback, the handle
+may not aligned with 64.
 
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 ---
- .../vcodec/decoder/mtk_vcodec_dec_drv.h       |  2 +
- .../mediatek/vcodec/decoder/vdec_vpu_if.c     | 43 ++++++++++++++++---
- .../mediatek/vcodec/decoder/vdec_vpu_if.h     |  4 ++
- 3 files changed, 43 insertions(+), 6 deletions(-)
+ .../mediatek/vcodec/decoder/mtk_vcodec_dec.c  |  7 ++++-
+ .../vcodec/decoder/mtk_vcodec_dec_stateless.c | 26 ++++++++++---------
+ .../decoder/vdec/vdec_h264_req_common.c       | 18 ++++++-------
+ .../mediatek/vcodec/decoder/vdec_drv_if.c     |  4 +--
+ 4 files changed, 31 insertions(+), 24 deletions(-)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
-index dcab8a257380..459a3e269a6d 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
-@@ -175,6 +175,7 @@ struct mtk_vcodec_dec_pdata {
-  * @vpu_inst: vpu instance pointer.
-  *
-  * @is_10bit_bitstream: set to true if it's 10bit bitstream
-+ * @is_secure_playback: Secure Video Playback (SVP) mode
-  */
- struct mtk_vcodec_dec_ctx {
- 	enum mtk_instance_type type;
-@@ -220,6 +221,7 @@ struct mtk_vcodec_dec_ctx {
- 	void *vpu_inst;
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
+index c89c900f7d4d..d206b95dd8b7 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
+@@ -701,7 +701,12 @@ static int vidioc_vdec_g_fmt(struct file *file, void *priv,
+ 		 * So we just return picinfo yet, and update picinfo in
+ 		 * stop_streaming hook function
+ 		 */
+-		q_data->sizeimage[0] = ctx->picinfo.fb_sz[0];
++
++		if (ctx->q_data[MTK_Q_DATA_DST].fmt->num_planes == 1 || ctx->is_secure_playback)
++			q_data->sizeimage[0] = ctx->picinfo.fb_sz[0] + ctx->picinfo.fb_sz[1];
++		else
++			q_data->sizeimage[0] = ctx->picinfo.fb_sz[0];
++
+ 		q_data->sizeimage[1] = ctx->picinfo.fb_sz[1];
+ 		q_data->bytesperline[0] = ctx->last_decoded_picinfo.buf_w;
+ 		q_data->bytesperline[1] = ctx->last_decoded_picinfo.buf_w;
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
+index fbea00517565..a1a99878f2c6 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
+@@ -285,14 +285,14 @@ static struct vdec_fb *vdec_get_cap_buffer(struct mtk_vcodec_dec_ctx *ctx)
+ 	framebuf = container_of(vb2_v4l2, struct mtk_video_dec_buf, m2m_buf.vb);
  
- 	bool is_10bit_bitstream;
-+	bool is_secure_playback;
- };
+ 	pfb = &framebuf->frame_buffer;
+-	pfb->base_y.va = vb2_plane_vaddr(dst_buf, 0);
++	if (!ctx->is_secure_playback)
++		pfb->base_y.va = vb2_plane_vaddr(dst_buf, 0);
+ 	pfb->base_y.dma_addr = vb2_dma_contig_plane_dma_addr(dst_buf, 0);
+ 	pfb->base_y.size = ctx->q_data[MTK_Q_DATA_DST].sizeimage[0];
  
- /**
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
-index 145958206e38..6b34a0b52df4 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
-@@ -150,7 +150,10 @@ static void vpu_dec_ipi_handler(void *data, unsigned int len, void *priv)
+-	if (ctx->q_data[MTK_Q_DATA_DST].fmt->num_planes == 2) {
++	if (ctx->q_data[MTK_Q_DATA_DST].fmt->num_planes == 2 && !ctx->is_secure_playback) {
+ 		pfb->base_c.va = vb2_plane_vaddr(dst_buf, 1);
+-		pfb->base_c.dma_addr =
+-			vb2_dma_contig_plane_dma_addr(dst_buf, 1);
++		pfb->base_c.dma_addr = vb2_dma_contig_plane_dma_addr(dst_buf, 1);
+ 		pfb->base_c.size = ctx->q_data[MTK_Q_DATA_DST].sizeimage[1];
+ 	}
+ 	mtk_v4l2_vdec_dbg(1, ctx,
+@@ -339,16 +339,18 @@ static void mtk_vdec_worker(struct work_struct *work)
+ 	mtk_v4l2_vdec_dbg(3, ctx, "[%d] (%d) id=%d, vb=%p", ctx->id,
+ 			  vb2_src->vb2_queue->type, vb2_src->index, vb2_src);
  
- static int vcodec_vpu_send_msg(struct vdec_vpu_inst *vpu, void *msg, int len)
- {
--	int err, id, msgid;
-+	struct mtk_vdec_optee_data_to_shm *optee_data;
-+	int id, hw_id, msgid;
-+	void *ack_msg;
-+	int err;
- 
- 	msgid = *(uint32_t *)msg;
- 	mtk_vdec_debug(vpu->ctx, "id=%X", msgid);
-@@ -160,16 +163,39 @@ static int vcodec_vpu_send_msg(struct vdec_vpu_inst *vpu, void *msg, int len)
- 
- 	if (vpu->ctx->dev->vdec_pdata->hw_arch == MTK_VDEC_LAT_SINGLE_CORE) {
- 		if (msgid == AP_IPIMSG_DEC_CORE ||
--		    msgid == AP_IPIMSG_DEC_CORE_END)
-+		    msgid == AP_IPIMSG_DEC_CORE_END) {
-+			optee_data = &vpu->core_optee_info;
- 			id = vpu->core_id;
--		else
-+		} else {
-+			optee_data = &vpu->lat_optee_info;
- 			id = vpu->id;
+-	bs_src->va = vb2_plane_vaddr(vb2_src, 0);
+-	bs_src->dma_addr = vb2_dma_contig_plane_dma_addr(vb2_src, 0);
+-	bs_src->size = (size_t)vb2_src->planes[0].bytesused;
+-	if (!bs_src->va) {
+-		v4l2_m2m_job_finish(dev->m2m_dev_dec, ctx->m2m_ctx);
+-		mtk_v4l2_vdec_err(ctx, "[%d] id=%d source buffer is NULL", ctx->id,
+-				  vb2_src->index);
+-		return;
++	if (!ctx->is_secure_playback) {
++		bs_src->va = vb2_plane_vaddr(vb2_src, 0);
++		if (!bs_src->va) {
++			v4l2_m2m_job_finish(dev->m2m_dev_dec, ctx->m2m_ctx);
++			mtk_v4l2_vdec_err(ctx, "[%d] id=%d source buffer is NULL", ctx->id,
++					  vb2_src->index);
++			return;
 +		}
- 	} else {
-+		optee_data = &vpu->core_optee_info;
- 		id = vpu->id;
  	}
  
--	err = mtk_vcodec_fw_ipi_send(vpu->ctx->dev->fw_handler, id, msg,
--				     len, 2000);
-+	if (!vpu->ctx->is_secure_playback) {
-+		err = mtk_vcodec_fw_ipi_send(vpu->ctx->dev->fw_handler, id, msg, len, 2000);
-+	} else {
-+		hw_id = (id == SCP_IPI_VDEC_LAT) ? MTK_VDEC_LAT0 : MTK_VDEC_CORE;
-+
-+		mtk_vcodec_dec_optee_set_msg_info(optee_data, msg, len);
-+
-+		/*
-+		 * There is no need to copy the data (VSI) message to shared memory,
-+		 * but we still need to set the buffer size to a non-zero value.
-+		 */
-+		if (msgid == AP_IPIMSG_DEC_CORE || msgid == AP_IPIMSG_DEC_START)
-+			mtk_vcodec_dec_optee_set_data_info(optee_data, vpu->ctx->dev, hw_id);
-+
-+		err = mtk_vcodec_dec_optee_invokd_cmd(vpu->ctx->dev, hw_id, optee_data);
-+		vpu->failure = err;
-+
-+		ack_msg = mtk_vcodec_dec_get_shm_buffer_va(vpu->ctx->dev, hw_id, OPTEE_MSG_INDEX);
-+		vpu_dec_ipi_handler(ack_msg, 0, vpu->ctx->dev);
-+	}
-+
- 	if (err) {
- 		mtk_vdec_err(vpu->ctx, "send fail vpu_id=%d msg_id=%X status=%d",
- 			     id, msgid, err);
-@@ -215,7 +241,12 @@ int vpu_dec_init(struct vdec_vpu_inst *vpu)
- 		return err;
++	bs_src->dma_addr = vb2_dma_contig_plane_dma_addr(vb2_src, 0);
++	bs_src->size = (size_t)vb2_src->planes[0].bytesused;
+ 	mtk_v4l2_vdec_dbg(3, ctx, "[%d] Bitstream VA=%p DMA=%pad Size=%zx vb=%p",
+ 			  ctx->id, bs_src->va, &bs_src->dma_addr, bs_src->size, vb2_src);
+ 	/* Apply request controls. */
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_common.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_common.c
+index 5ca20d75dc8e..5e0d55218363 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_common.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_common.c
+@@ -79,15 +79,15 @@ void mtk_vdec_h264_fill_dpb_info(struct mtk_vcodec_dec_ctx *ctx,
+ 		vb2_v4l2 = container_of(vb, struct vb2_v4l2_buffer, vb2_buf);
+ 		h264_dpb_info[index].field = vb2_v4l2->field;
+ 
+-		h264_dpb_info[index].y_dma_addr =
+-			vb2_dma_contig_plane_dma_addr(vb, 0);
+-		if (ctx->q_data[MTK_Q_DATA_DST].fmt->num_planes == 2)
+-			h264_dpb_info[index].c_dma_addr =
+-				vb2_dma_contig_plane_dma_addr(vb, 1);
+-		else
+-			h264_dpb_info[index].c_dma_addr =
+-				h264_dpb_info[index].y_dma_addr +
+-				ctx->picinfo.fb_sz[0];
++		h264_dpb_info[index].y_dma_addr = vb2_dma_contig_plane_dma_addr(vb, 0);
++		if (!ctx->is_secure_playback) {
++			if (ctx->q_data[MTK_Q_DATA_DST].fmt->num_planes == 2)
++				h264_dpb_info[index].c_dma_addr =
++					vb2_dma_contig_plane_dma_addr(vb, 1);
++			else
++				h264_dpb_info[index].c_dma_addr =
++					h264_dpb_info[index].y_dma_addr + ctx->picinfo.fb_sz[0];
++		}
+ 	}
+ }
+ 
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec_drv_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec_drv_if.c
+index d0b459b1603f..fb3e4f75ed93 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/vdec_drv_if.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec_drv_if.c
+@@ -73,14 +73,14 @@ int vdec_if_decode(struct mtk_vcodec_dec_ctx *ctx, struct mtk_vcodec_mem *bs,
+ {
+ 	int ret = 0;
+ 
+-	if (bs) {
++	if (bs && !ctx->is_secure_playback) {
+ 		if ((bs->dma_addr & 63) != 0) {
+ 			mtk_v4l2_vdec_err(ctx, "bs dma_addr should 64 byte align");
+ 			return -EINVAL;
+ 		}
  	}
  
--	if (vpu->ctx->dev->vdec_pdata->hw_arch == MTK_VDEC_LAT_SINGLE_CORE) {
-+	/*
-+	 * Using tee interface to communicate with optee os directly for SVP mode,
-+	 * fw ipi interface is used for normal playback.
-+	 */
-+	if (vpu->ctx->dev->vdec_pdata->hw_arch == MTK_VDEC_LAT_SINGLE_CORE &&
-+	    !vpu->ctx->is_secure_playback) {
- 		err = mtk_vcodec_fw_ipi_register(vpu->ctx->dev->fw_handler,
- 						 vpu->core_id, vpu->handler,
- 						 "vdec", vpu->ctx->dev);
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.h b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.h
-index 57ed9b1f5eaa..8e9d4c2cbb88 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.h
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.h
-@@ -27,6 +27,8 @@ struct mtk_vcodec_dec_ctx;
-  * @codec_type     : use codec type to separate different codecs
-  * @capture_type:	used capture type to separate different capture format
-  * @fb_sz  : frame buffer size of each plane
-+ * @lat_optee_info  : used to send msg to optee shm buffer
-+ * @core_optee_info  : used to send msg to optee shm buffer
-  */
- struct vdec_vpu_inst {
- 	int id;
-@@ -43,6 +45,8 @@ struct vdec_vpu_inst {
- 	unsigned int codec_type;
- 	unsigned int capture_type;
- 	unsigned int fb_sz[2];
-+	struct mtk_vdec_optee_data_to_shm lat_optee_info;
-+	struct mtk_vdec_optee_data_to_shm core_optee_info;
- };
- 
- /**
+-	if (fb) {
++	if (fb && !ctx->is_secure_playback) {
+ 		if (((fb->base_y.dma_addr & 511) != 0) ||
+ 		    ((fb->base_c.dma_addr & 511) != 0)) {
+ 			mtk_v4l2_vdec_err(ctx, "frame buffer dma_addr should 512 byte align");
 -- 
 2.18.0
 
