@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A75AC3DA49
-	for <linux-mediatek@archiver.kernel.org>; Sat, 20 Jul 2024 07:22:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B95BC3DA59
+	for <linux-mediatek@archiver.kernel.org>; Sat, 20 Jul 2024 07:23:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=owE4938J6gKOCRTV85GSUEhgx3/7BhbCH2+WW5lVVZY=; b=bAf6uiyV8jdb/OfGPMKkeTV4I0
-	hj5BHlOAofODkipJO+YAL0x6b5zdW3Qs4zDMvpUSkZ+XVHciz4wz+fbeLzhI/a7v/IFXCDEmt2W3/
-	tk5dr13MhS82vc9/+u3ngXpbTj1otUygWvkrZkDKk7F384ZL1TuauVGvwxp782HqMPIApzARDOMwq
-	+T1rkpoWbmPHacyByiohm9+P4PrWfR+0/YGicZH/V8HwHCN/9+V2eU+elwZAaCzrkM7oJh1RMrvZ4
-	fci3d2F1AebZUv4ral6wQ7J0OWy0HThAjlHXSWZ7noY7uecYKPWzNzCGJP//Yf2MS4FmAhhOXhfK4
-	PeN+aiIg==;
+	bh=gHn2ChwZKGRaMh+JSWT5XthtUU/2bPNuLTqL9TaTM0I=; b=YcW3ya3VkElOfmTcVrxvI0mXNe
+	VWghfVQ57aMj13bSdKrWdliVjRU09jyWnrDV9hr8OMXNJPSZ1ula34DYfe7mJNDIARbBnXSTXmCqb
+	h39q82RhC87Qd8qBw6bu24bjDy1CRbSfN3xGRITY0htzZsKCqoMinFfaDZ+OzD18rLnyEPvHBZX+G
+	CiWJFoawMqNUuTP+JXHxku7PLGpwEFmcLNxVeRtv/HEQs7y5QH93UrfEwhpx0X4vAWGfRlnmLcyMG
+	/jB3Xx9DIGtzTEfgmwlvRfZIEEYGfBz77unz2lbNfw1UrCRTyo3e/GKARBZCYnyo9zGr2U8HzvSxo
+	ttMCJd5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sV4QU-00000004eh9-3FC6;
-	Sat, 20 Jul 2024 07:22:42 +0000
+	id 1sV4Qp-00000004elY-46HN;
+	Sat, 20 Jul 2024 07:23:03 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sV4LM-00000004ceh-2rX8;
-	Sat, 20 Jul 2024 07:17:26 +0000
-X-UUID: 1a7ff8a0466811efa6c87f6b4542ff6b-20240720
+	id 1sV4LN-00000004ceA-13rj;
+	Sat, 20 Jul 2024 07:17:27 +0000
+X-UUID: 19a6b0d6466811efa6c87f6b4542ff6b-20240720
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=owE4938J6gKOCRTV85GSUEhgx3/7BhbCH2+WW5lVVZY=;
-	b=J1SqQfKUNExy6d+tNBJDl0SkrveubAuAp3jf2VX8uI+jsfmCktn/P1cL8pY7702fJKG3BIQGUqOpbK2RmlOQyVAIHGnpR0KsdNcwFvo2vpMGNqpxerj2hacYihvDL/j0svO/aXg0vlvnrAsAtTkrXkbkVz6SlLF8Sbs3PKsy8fI=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=gHn2ChwZKGRaMh+JSWT5XthtUU/2bPNuLTqL9TaTM0I=;
+	b=AgQmFNkCIv2jkr8J0eLH1BBV+2lyhWK4E/xx+p5rQDYQneIgaraGUmcT9Rter3nryePWP8OAcWH3xm5xtsBhceOocaTbQazuw93iASjYnO/hgUs4ln4KYizravn04M02ByUFtvOF9dbJ7mywUtZdAhvJiJnLe8MEuDhYdSsI6Fo=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.40,REQID:dcf02688-d640-4955-807b-99b002006ad8,IP:0,U
+X-CID-O-INFO: VERSION:1.1.40,REQID:388456d1-107f-457b-84f5-bcf419e77039,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:ba885a6,CLOUDID:263d8545-a117-4f46-a956-71ffeac67bfa,B
+X-CID-META: VersionHash:ba885a6,CLOUDID:16ea90d5-0d68-4615-a20f-01d7bd41f0bb,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
 	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 0,NGT
 X-CID-BAS: 0,NGT,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 1a7ff8a0466811efa6c87f6b4542ff6b-20240720
+X-UUID: 19a6b0d6466811efa6c87f6b4542ff6b-20240720
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <yunfei.dong@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1292502879; Sat, 20 Jul 2024 00:17:20 -0700
+	with ESMTP id 1721714498; Sat, 20 Jul 2024 00:17:19 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Sat, 20 Jul 2024 15:16:41 +0800
+ 15.2.1118.26; Sat, 20 Jul 2024 15:16:30 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Sat, 20 Jul 2024 15:16:39 +0800
+ 15.2.1118.26 via Frontend Transport; Sat, 20 Jul 2024 15:16:29 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Jeffrey Kardatzke <jkardatzke@google.com>,
 	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
@@ -75,9 +75,9 @@ CC: Chen-Yu Tsai <wenst@chromium.org>, Yong Wu <yong.wu@mediatek.com>,
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v7 22/28] media: mediatek: vcodec: support hevc svp for mt8188
-Date: Sat, 20 Jul 2024 15:16:00 +0800
-Message-ID: <20240720071606.27930-23-yunfei.dong@mediatek.com>
+Subject: [PATCH v7 15/28] media: mediatek: vcodec: support single allocation format
+Date: Sat, 20 Jul 2024 15:15:53 +0800
+Message-ID: <20240720071606.27930-16-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20240720071606.27930-1-yunfei.dong@mediatek.com>
 References: <20240720071606.27930-1-yunfei.dong@mediatek.com>
@@ -85,21 +85,20 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--9.969000-8.000000
-X-TMASE-MatchedRID: jwcsoUSVK5uvVT6bfkFW/gI0yP/uoH+DHgnyJJNAX/iHlDUCu0I+XO2V
-	VVLUIzQwThbvLLI8RvOmGallF1XuaCGlT4FPpKFRpKSqN+Z3dp7bKTxp3+WtIDb9TB28UbkiqOl
-	iuKBSJDcMHdYgr1Lbr4LbE+EfcVAHf/ojZMms99/huXUWQoMQt8SgMQYKGHsJ2CEUkv53/lWjxY
-	yRBa/qJcFwgTvxipFa9xS3mVzWUuCgZHIBpyeFppaM6xiTB0RKK9Fij/Vokl/F41OM3SrO3RvTw
-	Vi7T+RCftwZ3X11IV0=
+X-TM-AS-Result: No-10--7.215200-8.000000
+X-TMASE-MatchedRID: 4YoTATPIqSy5p9aAyE1guQPZZctd3P4BK2i9pofGVSsKogmGusPLbxWM
+	l8ih/tVGrDROgF4X1mtRcP1M5l8Zq//Js/ghYmSKDB+ErBr0bAPmELBDcs0dnfHFoBcOsKezcam
+	vz988laL3cuxjGnQlwIAy6p60ZV62SwOSQ/fMiOrdB/CxWTRRu92KvEVWmYr1zVoOaGaIvLKCCq
+	bT1+76puXfz4RBoCYr+1rcjAfo8wwjfMugmw1MOA==
 X-TM-AS-User-Approved-Sender: No
 X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--9.969000-8.000000
+X-TMASE-Result: 10--7.215200-8.000000
 X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 654BFCFC0FCC8CAD18B9234A5882D6F9C03513A0AA6E119EEF7FF1B2EA0D32EB2000:8
+X-TM-SNTS-SMTP: 9B947E8B3233381C67960D3715F5C2F7C25664AC988CCCC5B21F29D77FF5DABE2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240720_001724_745991_6812ED2B 
-X-CRM114-Status: GOOD (  12.19  )
+X-CRM114-CacheID: sfid-20240720_001725_483585_8F68E5FF 
+X-CRM114-Status: GOOD (  12.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,175 +113,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Change hevc driver to support secure video playback(svp) for
-mt8188. Need to map shared memory with optee interface and
-wait interrupt in optee-os.
+Changing driver to support single allocation format V4L2_PIX_FMT_MS21.
 
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 ---
- .../decoder/vdec/vdec_hevc_req_multi_if.c     | 88 +++++++++++--------
- 1 file changed, 53 insertions(+), 35 deletions(-)
+ .../platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c    | 4 +++-
+ .../mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c   | 9 ++++++++-
+ 2 files changed, 11 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_hevc_req_multi_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_hevc_req_multi_if.c
-index aa721cc43647..c3ed2e4a5934 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_hevc_req_multi_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_hevc_req_multi_if.c
-@@ -415,11 +415,14 @@ static void vdec_hevc_fill_dpb_info(struct mtk_vcodec_dec_ctx *ctx,
- 		hevc_dpb_info[index].field = dpb->field_pic;
- 
- 		hevc_dpb_info[index].y_dma_addr = vb2_dma_contig_plane_dma_addr(vb, 0);
--		if (ctx->q_data[MTK_Q_DATA_DST].fmt->num_planes == 2)
--			hevc_dpb_info[index].c_dma_addr = vb2_dma_contig_plane_dma_addr(vb, 1);
--		else
--			hevc_dpb_info[index].c_dma_addr =
--				hevc_dpb_info[index].y_dma_addr + ctx->picinfo.fb_sz[0];
-+		if (!ctx->is_secure_playback) {
-+			if (ctx->q_data[MTK_Q_DATA_DST].fmt->num_planes == 2)
-+				hevc_dpb_info[index].c_dma_addr =
-+					vb2_dma_contig_plane_dma_addr(vb, 1);
-+			else
-+				hevc_dpb_info[index].c_dma_addr =
-+					hevc_dpb_info[index].y_dma_addr + ctx->picinfo.fb_sz[0];
-+		}
- 	}
- }
- 
-@@ -800,7 +803,7 @@ static int vdec_hevc_slice_setup_core_buffer(struct vdec_hevc_slice_inst *inst,
- 	struct mtk_vcodec_dec_ctx *ctx = inst->ctx;
- 	struct vb2_v4l2_buffer *vb2_v4l2;
- 	struct vdec_fb *fb;
--	u64 y_fb_dma, c_fb_dma;
-+	u64 y_fb_dma, c_fb_dma = 0;
- 	int i;
- 
- 	fb = ctx->dev->vdec_pdata->get_cap_buffer(ctx);
-@@ -810,18 +813,20 @@ static int vdec_hevc_slice_setup_core_buffer(struct vdec_hevc_slice_inst *inst,
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
+index 98838217b97d..c89c900f7d4d 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
+@@ -49,7 +49,9 @@ static bool mtk_vdec_get_cap_fmt(struct mtk_vcodec_dec_ctx *ctx, int format_inde
+ 		num_frame_count++;
  	}
  
- 	y_fb_dma = (u64)fb->base_y.dma_addr;
--	if (ctx->q_data[MTK_Q_DATA_DST].fmt->num_planes == 1)
--		c_fb_dma =
--			y_fb_dma + inst->ctx->picinfo.buf_w * inst->ctx->picinfo.buf_h;
--	else
--		c_fb_dma = (u64)fb->base_c.dma_addr;
-+	if (!ctx->is_secure_playback) {
-+		if (ctx->q_data[MTK_Q_DATA_DST].fmt->num_planes == 1)
-+			c_fb_dma =
-+				y_fb_dma + inst->ctx->picinfo.buf_w * inst->ctx->picinfo.buf_h;
-+		else
-+			c_fb_dma = (u64)fb->base_c.dma_addr;
-+	}
+-	if (num_frame_count == 1 || (!ctx->is_10bit_bitstream && fmt->fourcc == V4L2_PIX_FMT_MM21))
++	if ((!ctx->is_10bit_bitstream && fmt->fourcc == V4L2_PIX_FMT_MM21) ||
++	    (ctx->is_secure_playback && fmt->fourcc == V4L2_PIX_FMT_MS21) ||
++	    num_frame_count == 1)
+ 		return true;
  
- 	mtk_vdec_debug(inst->ctx, "[hevc-core] y/c addr = 0x%llx 0x%llx", y_fb_dma, c_fb_dma);
+ 	q_data = &ctx->q_data[MTK_Q_DATA_SRC];
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
+index b903e39fee89..fbea00517565 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
+@@ -229,7 +229,7 @@ static const struct mtk_stateless_control mtk_stateless_controls[] = {
  
- 	inst->vsi_core->fb.y.dma_addr = y_fb_dma;
- 	inst->vsi_core->fb.y.size = ctx->picinfo.fb_sz[0];
- 	inst->vsi_core->fb.c.dma_addr = c_fb_dma;
--	inst->vsi_core->fb.y.size = ctx->picinfo.fb_sz[1];
-+	inst->vsi_core->fb.c.size = ctx->picinfo.fb_sz[1];
+ #define NUM_CTRLS ARRAY_SIZE(mtk_stateless_controls)
  
- 	inst->vsi_core->dec.vdec_fb_va = (unsigned long)fb;
+-static struct mtk_video_fmt mtk_video_formats[9];
++static struct mtk_video_fmt mtk_video_formats[10];
  
-@@ -877,8 +882,12 @@ static int vdec_hevc_slice_init(struct mtk_vcodec_dec_ctx *ctx)
- 
- 	vsi_size = round_up(sizeof(struct vdec_hevc_slice_vsi), VCODEC_DEC_ALIGNED_64);
- 	inst->vsi = inst->vpu.vsi;
--	inst->vsi_core =
--		(struct vdec_hevc_slice_vsi *)(((char *)inst->vpu.vsi) + vsi_size);
-+	if (ctx->is_secure_playback)
-+		inst->vsi_core = mtk_vcodec_dec_get_shm_buffer_va(ctx->dev, MTK_VDEC_CORE,
-+								  OPTEE_DATA_INDEX);
-+	else
-+		inst->vsi_core =
-+			(struct vdec_hevc_slice_vsi *)(((char *)inst->vpu.vsi) + vsi_size);
- 
- 	inst->resolution_changed = true;
- 	inst->realloc_mv_buf = true;
-@@ -944,21 +953,22 @@ static int vdec_hevc_slice_core_decode(struct vdec_lat_buf *lat_buf)
- 		goto vdec_dec_end;
+ static struct mtk_video_fmt default_out_format;
+ static struct mtk_video_fmt default_cap_format;
+@@ -770,6 +770,11 @@ static void mtk_vcodec_add_formats(unsigned int fourcc,
+ 		mtk_video_formats[count_formats].type = MTK_FMT_FRAME;
+ 		mtk_video_formats[count_formats].num_planes = 2;
+ 		break;
++	case V4L2_PIX_FMT_MS21:
++		mtk_video_formats[count_formats].fourcc = fourcc;
++		mtk_video_formats[count_formats].type = MTK_FMT_FRAME;
++		mtk_video_formats[count_formats].num_planes = 1;
++		break;
+ 	default:
+ 		mtk_v4l2_vdec_err(ctx, "Can not add unsupported format type");
+ 		return;
+@@ -798,6 +803,8 @@ static void mtk_vcodec_get_supported_formats(struct mtk_vcodec_dec_ctx *ctx)
+ 		cap_format_count++;
  	}
- 
--	/* wait decoder done interrupt */
--	timeout = mtk_vcodec_wait_for_done_ctx(inst->ctx, MTK_INST_IRQ_RECEIVED,
--					       WAIT_INTR_TIMEOUT_MS, MTK_VDEC_CORE);
--	if (timeout)
--		mtk_vdec_err(ctx, "core decode timeout: pic_%d", ctx->decoded_frame_cnt);
--	inst->vsi_core->dec.timeout = !!timeout;
-+	if (!vpu->ctx->is_secure_playback) {
-+		/* wait decoder done interrupt */
-+		timeout = mtk_vcodec_wait_for_done_ctx(inst->ctx, MTK_INST_IRQ_RECEIVED,
-+						       WAIT_INTR_TIMEOUT_MS, MTK_VDEC_CORE);
-+		if (timeout)
-+			mtk_vdec_err(ctx, "core decode timeout: pic_%d", ctx->decoded_frame_cnt);
-+		inst->vsi_core->dec.timeout = !!timeout;
- 
--	vpu_dec_core_end(vpu);
--	mtk_vdec_debug(ctx, "pic[%d] crc: 0x%x 0x%x 0x%x 0x%x 0x%x 0x%x 0x%x 0x%x",
--		       ctx->decoded_frame_cnt,
-+		vpu_dec_core_end(vpu);
-+	}
-+	mtk_vdec_debug(ctx, "pic[%d] svp:%d crc: 0x%x 0x%x 0x%x 0x%x 0x%x 0x%x 0x%x 0x%x",
-+		       ctx->decoded_frame_cnt, ctx->is_secure_playback,
- 		       inst->vsi_core->dec.crc[0], inst->vsi_core->dec.crc[1],
- 		       inst->vsi_core->dec.crc[2], inst->vsi_core->dec.crc[3],
- 		       inst->vsi_core->dec.crc[4], inst->vsi_core->dec.crc[5],
- 		       inst->vsi_core->dec.crc[6], inst->vsi_core->dec.crc[7]);
--
- vdec_dec_end:
- 	vdec_msg_queue_update_ube_rptr(&lat_buf->ctx->msg_queue, share_info->trans.dma_addr_end);
- 	ctx->dev->vdec_pdata->cap_to_disp(ctx, !!err, lat_buf->src_buf_req);
-@@ -1015,14 +1025,17 @@ static int vdec_hevc_slice_lat_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
- 		vdec_msg_queue_qbuf(&inst->ctx->msg_queue.core_ctx, lat_buf);
+ 	if (ctx->dev->dec_capability & MTK_VDEC_FORMAT_MM21) {
++		mtk_vcodec_add_formats(V4L2_PIX_FMT_MS21, ctx);
++		cap_format_count++;
+ 		mtk_vcodec_add_formats(V4L2_PIX_FMT_MM21, ctx);
+ 		cap_format_count++;
  	}
- 
--	/* wait decoder done interrupt */
--	timeout = mtk_vcodec_wait_for_done_ctx(inst->ctx, MTK_INST_IRQ_RECEIVED,
--					       WAIT_INTR_TIMEOUT_MS, MTK_VDEC_LAT0);
--	if (timeout)
--		mtk_vdec_err(inst->ctx, "lat decode timeout: pic_%d", inst->slice_dec_num);
--	inst->vsi->dec.timeout = !!timeout;
-+	if (!inst->ctx->is_secure_playback) {
-+		/* wait decoder done interrupt */
-+		timeout = mtk_vcodec_wait_for_done_ctx(inst->ctx, MTK_INST_IRQ_RECEIVED,
-+						       WAIT_INTR_TIMEOUT_MS, MTK_VDEC_LAT0);
-+		if (timeout)
-+			mtk_vdec_err(inst->ctx, "lat decode timeout: pic_%d", inst->slice_dec_num);
-+		inst->vsi->dec.timeout = !!timeout;
-+
-+		err = vpu_dec_end(vpu);
-+	}
- 
--	err = vpu_dec_end(vpu);
- 	if (err == SLICE_HEADER_FULL || err == TRANS_BUFFER_FULL) {
- 		if (!IS_VDEC_INNER_RACING(inst->ctx->dev->dec_capability))
- 			vdec_msg_queue_qbuf(&inst->ctx->msg_queue.lat_ctx, lat_buf);
-@@ -1031,8 +1044,11 @@ static int vdec_hevc_slice_lat_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
- 		return -EINVAL;
- 	}
- 
--	share_info->trans.dma_addr_end = inst->ctx->msg_queue.wdma_addr.dma_addr +
--		inst->vsi->dec.wdma_end_addr_offset;
-+	if (inst->ctx->is_secure_playback)
-+		share_info->trans.dma_addr_end = inst->vsi->dec.wdma_end_addr_offset;
-+	else
-+		share_info->trans.dma_addr_end = inst->ctx->msg_queue.wdma_addr.dma_addr +
-+			inst->vsi->dec.wdma_end_addr_offset;
- 	vdec_msg_queue_update_ube_wptr(&lat_buf->ctx->msg_queue, share_info->trans.dma_addr_end);
- 
- 	if (!IS_VDEC_INNER_RACING(inst->ctx->dev->dec_capability)) {
-@@ -1040,8 +1056,10 @@ static int vdec_hevc_slice_lat_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
- 		       sizeof(share_info->hevc_slice_params));
- 		vdec_msg_queue_qbuf(&inst->ctx->msg_queue.core_ctx, lat_buf);
- 	}
--	mtk_vdec_debug(inst->ctx, "dec num: %d lat crc: 0x%x 0x%x 0x%x", inst->slice_dec_num,
--		       inst->vsi->dec.crc[0], inst->vsi->dec.crc[1], inst->vsi->dec.crc[2]);
-+
-+	mtk_vdec_debug(inst->ctx, "dec num: %d lat crc: 0x%x 0x%x 0x%x 0x%x size:%d",
-+		       inst->slice_dec_num, inst->vsi->dec.crc[0], inst->vsi->dec.crc[1],
-+		       inst->vsi->dec.crc[2], inst->vsi->dec.crc[3], (unsigned int)bs->size);
- 
- 	inst->slice_dec_num++;
- 	return 0;
 -- 
 2.18.0
 
