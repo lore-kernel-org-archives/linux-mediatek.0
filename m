@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6CC7C3DA59
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F003C3DA49
 	for <linux-mediatek@archiver.kernel.org>; Sat, 20 Jul 2024 07:18:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,82 +12,94 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RUz5ot+LaS7Lg1KmiTaf3FjChjpgDncj5aIQCsdvBSc=; b=JNEjb3cgkRGP1GOfEIci9mtnTk
-	noo0l7SikXRLh1jZQsVl2dkkuuHTxQlkiIeDsOrACrZBWTOscMLUnyZD8TdP3k4BHJMFupmSee+jo
-	IPkc5UCeNVg+0Xg8QAQJoCnfCI7LwR3SIVgCwMQ8lBLshfXNrzSwTSxUzrglJqO1kj4HShbgumeC+
-	ZD02UGZFUxhze3gzNfIowBUyu3b7ZEEFY/ogFA4XTWbWLfLe4tyQxIQ6IsnUfgmgppexS8y43J5e5
-	WWDKi/KPM4Z4pRxtYv1XIxaTk1f1IPkXVBKB5n0O7ReL8WkBHfP/bCVl4my6oFxK9mkcjFBylhG5N
-	4fJcZRmA==;
+	bh=G5Ua7lYvtev4qePlY6O+c2BJ7ykrV6jyDAJLqyMnz0w=; b=ZJAtMqeu+ZB9rid3NuhjhzJxv+
+	tkVydfusTWQBFzsD1ekcHE6FAuzZK3DfEBCNIo/YSFAxdWYdrUYMkoyjMtDwkUJWh6XlSg4E+iHkm
+	qcSHCwe6NbsEs17HCsCYMxWLfmGlUfURca91Y40IsI1CAFAHRz92bFZ19U8ZzcHxOJF/GSAHo5D7u
+	XPn/c9PzQZF6i0X45tcgsT8UwtkhWhQ1XuV9RapgCzzEvP5cJNxg38N3rCxRP2jVU7Q9XrgTR5g+2
+	OyDL/6NKzzfFwNu6mF7zw3DpP556TUN8rkzpCXpuMXKGpfMlUSu8IkhZHVzv0fN3qXtnhkAYWoRqx
+	AtkwqJwg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sV4MM-00000004d3j-16fN;
-	Sat, 20 Jul 2024 07:18:26 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1sV4ML-00000004d3R-3dMe;
+	Sat, 20 Jul 2024 07:18:25 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sV4KS-00000004c3q-2jxB;
+	id 1sV4KS-00000004c47-3ENX;
 	Sat, 20 Jul 2024 07:16:32 +0000
-X-UUID: f8490272466711ef955bff358274dad2-20240720
+X-UUID: fa394d9e466711efa6c87f6b4542ff6b-20240720
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=RUz5ot+LaS7Lg1KmiTaf3FjChjpgDncj5aIQCsdvBSc=;
-	b=WO+QWW9USltr2CdYtx+BTgMnPffKbD21miseHcyCqGDFjGWsw6BX5s9iLPINaOy80ta+CdFcs08XQp5dXUnLTcGNYuTLd77DT58DvBm3BVRNsRXk1nffe7A5lE+TwFmm/2kAhQR3B0QaCaUtwMfEMqu8ChHPjy1MlqG+1Ol6ZJc=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=G5Ua7lYvtev4qePlY6O+c2BJ7ykrV6jyDAJLqyMnz0w=;
+	b=X5STxMHoLedTKN7DVs0HsnenbGIlk+nKovI+x0mts4etsQwGo6qLmh7Sb1/rWiH7yPNvP8YMZo57uW/pC3UfJqKHqNH1F9gaPsDzu9gqoEA9R1+l9cLeT5UMcMZazYxtVZsfdnoMwdma6iA292UI4VbSVECtDebeWrAdYtWuc94=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.40,REQID:ba4ac716-cde2-4f9b-b857-61e8bb40fbe8,IP:0,U
-	RL:0,TC:0,Content:0,EDM:-25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:ba885a6,CLOUDID:6214b4d1-436f-4604-ad9d-558fa44a3bbe,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:1,IP:nil,UR
-	L:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,S
-	PR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
+X-CID-O-INFO: VERSION:1.1.40,REQID:3d3b9f55-9a20-4318-afcb-fec70f64f188,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:ba885a6,CLOUDID:f1e890d5-0d68-4615-a20f-01d7bd41f0bb,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:1,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: f8490272466711ef955bff358274dad2-20240720
-Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw02.mediatek.com
+X-UUID: fa394d9e466711efa6c87f6b4542ff6b-20240720
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
 	(envelope-from <yunfei.dong@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 664344307; Sat, 20 Jul 2024 00:16:23 -0700
+	with ESMTP id 702684424; Sat, 20 Jul 2024 00:16:26 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Sat, 20 Jul 2024 15:16:20 +0800
+ 15.2.1118.26; Sat, 20 Jul 2024 15:16:23 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Sat, 20 Jul 2024 15:16:19 +0800
+ 15.2.1118.26 via Frontend Transport; Sat, 20 Jul 2024 15:16:22 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Jeffrey Kardatzke <jkardatzke@google.com>,
 	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
-	<nfraprado@collabora.com>, Nathan Hebert <nhebert@chromium.org>, Nicolas
- Dufresne <nicolas.dufresne@collabora.com>, Hans Verkuil
+	<nfraprado@collabora.com>, Nathan Hebert <nhebert@chromium.org>, "Nicolas
+ Dufresne" <nicolas.dufresne@collabora.com>, Hans Verkuil
 	<hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
 	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
 	<benjamin.gaignard@collabora.com>, Sebastian Fricke
-	<sebastian.fricke@collabora.com>, Tomasz Figa <tfiga@chromium.org>, Mauro
- Carvalho Chehab <mchehab@kernel.org>, Marek Szyprowski
+	<sebastian.fricke@collabora.com>, Tomasz Figa <tfiga@chromium.org>, "Mauro
+ Carvalho Chehab" <mchehab@kernel.org>, Marek Szyprowski
 	<m.szyprowski@samsung.com>
-CC: Chen-Yu Tsai <wenst@chromium.org>, Yong Wu <yong.wu@mediatek.com>, Hsin-Yi
- Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, Daniel
- Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>, Yunfei Dong
-	<yunfei.dong@mediatek.com>, Sumit Semwal <sumit.semwal@linaro.org>, Brian
- Starkey <Brian.Starkey@arm.com>, John Stultz <jstultz@google.com>, "T . J .
- Mercier" <tjmercier@google.com>, =?UTF-8?q?Christian=20K=C3=B6nig?=
+CC: Chen-Yu Tsai <wenst@chromium.org>, Yong Wu <yong.wu@mediatek.com>,
+	"Hsin-Yi Wang" <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
+	"Daniel Vetter" <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>, Yunfei
+ Dong <yunfei.dong@mediatek.com>, Sumit Semwal <sumit.semwal@linaro.org>,
+	"Brian Starkey" <Brian.Starkey@arm.com>, John Stultz <jstultz@google.com>, "T
+ . J . Mercier" <tjmercier@google.com>, =?UTF-8?q?Christian=20K=C3=B6nig?=
 	<christian.koenig@amd.com>, Matthias Brugger <matthias.bgg@gmail.com>,
 	<linux-media@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v7 08/28] media: mediatek: vcodec: build decoder OPTEE driver as module
-Date: Sat, 20 Jul 2024 15:15:46 +0800
-Message-ID: <20240720071606.27930-9-yunfei.dong@mediatek.com>
+Subject: [PATCH v7 10/28] media: mediatek: vcodec: send share memory data to optee
+Date: Sat, 20 Jul 2024 15:15:48 +0800
+Message-ID: <20240720071606.27930-11-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20240720071606.27930-1-yunfei.dong@mediatek.com>
 References: <20240720071606.27930-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--12.299500-8.000000
+X-TMASE-MatchedRID: WwYPrb4hulWQG6Uyrf0PKFVN8laWo90MTJDl9FKHbrk1LB46LFAAkt6M
+	yUV+2+DZzKPeLlju3dvVDlcUGlyCB6YofNn3TZqQtw+xHnsmQjPaoFJAcCHymE4K0IMk2m3GVSd
+	AA6mVeIbLqCJZs0VuwI6aNvX7ROYGCNmyKN5cwZbJ5W6OZe5hhSGlZBSK0BYbW+jwVKpqvlJkiT
+	b3qnEXb7qtHHbrub22gDLqnrRlXrZ8nn9tnqel2MprJP8FBOIanzEbdasY8vR4AjMyulFZN5UaB
+	yt0CpwsfAS1qTKrn76DV0WvKd1Y3g==
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--12.299500-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 3376F95AEF5677CA4EC6E039F9D64A01A01FB7CC25C694F8AA4F7B5B2A9252102000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240720_001628_726274_0D0E1C38 
-X-CRM114-Status: GOOD (  15.44  )
+X-CRM114-CacheID: sfid-20240720_001628_987969_CFFBF67C 
+X-CRM114-Status: GOOD (  19.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,110 +114,291 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The tee_* function make the driver depends on the TEE driver, isolate
-the decoder OPTEE client into a separate module, and make it depends on
-CONFIG_TEE. The driver can open/close the TEE driver dynamically.
+Setting msg and vsi information to shared buffer, then call tee invoke
+function to send it to optee-os.
 
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 ---
- .../media/platform/mediatek/vcodec/Kconfig    | 12 ++++++++++++
- .../platform/mediatek/vcodec/decoder/Makefile |  5 ++++-
- .../vcodec/decoder/mtk_vcodec_dec_drv.h       |  2 ++
- .../vcodec/decoder/mtk_vcodec_dec_optee.h     | 19 +++++++++++++++++++
- 4 files changed, 37 insertions(+), 1 deletion(-)
+ .../vcodec/decoder/mtk_vcodec_dec_optee.c     | 156 +++++++++++++++++-
+ .../vcodec/decoder/mtk_vcodec_dec_optee.h     |  74 +++++++++
+ 2 files changed, 226 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/Kconfig b/drivers/media/platform/mediatek/vcodec/Kconfig
-index bc8292232530..ce63e1fa6118 100644
---- a/drivers/media/platform/mediatek/vcodec/Kconfig
-+++ b/drivers/media/platform/mediatek/vcodec/Kconfig
-@@ -34,3 +34,15 @@ config VIDEO_MEDIATEK_VCODEC
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.c
+index bcef86f54d84..8af9a81a02e1 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.c
+@@ -27,6 +27,13 @@ static int mtk_vcodec_dec_optee_match(struct tee_ioctl_version_data *ver_data, c
+ 	return ver_data->impl_id == TEE_IMPL_ID_OPTEE;
+ }
  
- 	  To compile this driver as modules, choose M here: the
- 	  modules will be called mtk-vcodec-dec and mtk-vcodec-enc.
++static inline
++struct mtk_vdec_optee_ca_info *get_ca_info(struct mtk_vdec_optee_private *optee_private,
++					   enum mtk_vdec_hw_id hw_id)
++{
++	return hw_id == MTK_VDEC_LAT0 ? &optee_private->lat_ca : &optee_private->core_ca;
++}
 +
-+config VIDEO_MEDIATEK_VCODEC_TEE
-+	bool "MediaTek Video Codec TEE driver"
-+	depends on OPTEE
-+	depends on TEE
-+	select VIDEO_MEDIATEK_VCODEC
-+	help
-+	  MediaTek video codec TEE driver provides interface to
-+	  communicate with secure os to process secure video.
+ int mtk_vcodec_dec_optee_private_init(struct mtk_vcodec_dec_dev *vcodec_dev)
+ {
+ 	vcodec_dev->optee_private = devm_kzalloc(&vcodec_dev->plat_dev->dev,
+@@ -164,10 +171,7 @@ static void mtk_vcodec_dec_optee_deinit_hw_info(struct mtk_vdec_optee_private *o
+ 	struct mtk_vdec_optee_ca_info *ca_info;
+ 	int i;
+ 
+-	if (hw_id == MTK_VDEC_LAT0)
+-		ca_info = &optee_private->lat_ca;
+-	else
+-		ca_info = &optee_private->core_ca;
++	ca_info = get_ca_info(optee_private, hw_id);
+ 
+ 	for (i = 0; i < OPTEE_MAX_INDEX; i++)
+ 		mtk_vcodec_dec_optee_deinit_memref(ca_info, i);
+@@ -241,3 +245,147 @@ void mtk_vcodec_dec_optee_close(struct mtk_vcodec_dec_dev *vcodec_dev)
+ 	mutex_unlock(&optee_private->tee_mutex);
+ }
+ EXPORT_SYMBOL_GPL(mtk_vcodec_dec_optee_close);
 +
-+	  Setting this config with Y when the driver need to support
-+	  secure video playback(SVP).
-\ No newline at end of file
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/Makefile b/drivers/media/platform/mediatek/vcodec/decoder/Makefile
-index 1624933dfd5e..797ad9ebafb6 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/Makefile
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/Makefile
-@@ -3,6 +3,8 @@
- obj-$(CONFIG_VIDEO_MEDIATEK_VCODEC) += mtk-vcodec-dec.o \
- 				       mtk-vcodec-dec-hw.o
- 
-+obj-$(CONFIG_VIDEO_MEDIATEK_VCODEC_TEE) += mtk-vcodec-optee.o
++static int mtk_vcodec_dec_optee_fill_shm(struct tee_param *command_params,
++					 struct mtk_vdec_optee_shm_memref *shm_memref,
++					 struct mtk_vdec_optee_data_to_shm *data,
++					 int index, struct device *dev)
++{
++	if (!data->msg_buf_size[index] || !data->msg_buf[index]) {
++		pr_err(MTK_DBG_VCODEC_STR "tee invalid buf param: %d.\n", index);
++		return -EINVAL;
++	}
 +
- mtk-vcodec-dec-y := vdec/vdec_h264_if.o \
- 		vdec/vdec_vp8_if.o \
- 		vdec/vdec_vp8_req_if.o \
-@@ -21,6 +23,7 @@ mtk-vcodec-dec-y := vdec/vdec_h264_if.o \
- 		mtk_vcodec_dec_stateful.o \
- 		mtk_vcodec_dec_stateless.o \
- 		mtk_vcodec_dec_pm.o \
--		mtk_vcodec_dec_optee.o \
- 
- mtk-vcodec-dec-hw-y := mtk_vcodec_dec_hw.o
++	*command_params = (struct tee_param) {
++		.attr = shm_memref->param_type,
++		.u.memref = {
++			.shm = shm_memref->msg_shm,
++			.size = data->msg_buf_size[index],
++			.shm_offs = 0,
++		},
++	};
 +
-+mtk-vcodec-optee-y := mtk_vcodec_dec_optee.o
-\ No newline at end of file
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
-index 0996a8d2a537..dcab8a257380 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
-@@ -309,7 +309,9 @@ struct mtk_vcodec_dec_dev {
- 
- 	enum mtk_vcodec_dec_chip_name chip_name;
- 
-+#ifdef CONFIG_VIDEO_MEDIATEK_VCODEC_TEE
- 	struct mtk_vdec_optee_private *optee_private;
-+#endif
- };
- 
- static inline struct mtk_vcodec_dec_ctx *fh_to_dec_ctx(struct v4l2_fh *fh)
++	if (!shm_memref->copy_to_ta) {
++		dev_dbg(dev, MTK_DBG_VCODEC_STR "share memref data: 0x%x param_type:%llu.\n",
++			*((unsigned int *)shm_memref->msg_shm_ca_buf), shm_memref->param_type);
++		return 0;
++	}
++
++	memset(shm_memref->msg_shm_ca_buf, 0, shm_memref->msg_shm_size);
++	memcpy(shm_memref->msg_shm_ca_buf, data->msg_buf[index], data->msg_buf_size[index]);
++
++	dev_dbg(dev, MTK_DBG_VCODEC_STR "share memref data => msg id:0x%x 0x%x param_type:%llu.\n",
++		*((unsigned int *)data->msg_buf[index]),
++		*((unsigned int *)shm_memref->msg_shm_ca_buf),
++		shm_memref->param_type);
++
++	return 0;
++}
++
++static int mtk_vcodec_dec_get_shm_buffer_size(struct mtk_vdec_optee_private *optee_private,
++					      enum mtk_vdec_hw_id hw_id,
++					      enum mtk_vdec_optee_data_index data_index)
++{
++	struct mtk_vdec_optee_ca_info *ca_info;
++
++	ca_info = get_ca_info(optee_private, hw_id);
++
++	return ca_info->shm_memref[data_index].msg_shm_size;
++}
++
++void mtk_vcodec_dec_optee_set_msg_info(struct mtk_vdec_optee_data_to_shm *data,
++				       void *buf, int buf_size)
++{
++	data->msg_buf[OPTEE_MSG_INDEX] = buf;
++	data->msg_buf_size[OPTEE_MSG_INDEX] = buf_size;
++}
++EXPORT_SYMBOL_GPL(mtk_vcodec_dec_optee_set_msg_info);
++
++void mtk_vcodec_dec_optee_set_data_info(struct mtk_vdec_optee_data_to_shm *data,
++					struct mtk_vcodec_dec_dev *vcodec_dev,
++					int hw_id)
++{
++	data->msg_buf[OPTEE_DATA_INDEX] =
++		mtk_vcodec_dec_get_shm_buffer_va(vcodec_dev, hw_id, OPTEE_DATA_INDEX);
++
++	data->msg_buf_size[OPTEE_DATA_INDEX] =
++		mtk_vcodec_dec_get_shm_buffer_size(vcodec_dev->optee_private,
++						   hw_id, OPTEE_DATA_INDEX);
++}
++EXPORT_SYMBOL_GPL(mtk_vcodec_dec_optee_set_data_info);
++
++int mtk_vcodec_dec_optee_invokd_cmd(struct mtk_vcodec_dec_dev *vcodec_dev,
++				    enum mtk_vdec_hw_id hw_id,
++				    struct mtk_vdec_optee_data_to_shm *data)
++{
++	struct mtk_vdec_optee_private *optee_private = vcodec_dev->optee_private;
++	struct device *dev = &optee_private->vcodec_dev->plat_dev->dev;
++	struct tee_ioctl_invoke_arg trans_args;
++	struct tee_param command_params[MTK_OPTEE_MAX_TEE_PARAMS];
++	struct mtk_vdec_optee_ca_info *ca_info;
++	struct mtk_vdec_optee_shm_memref *shm_memref;
++	int ret, index;
++
++	ca_info = get_ca_info(optee_private, hw_id);
++
++	memset(&trans_args, 0, sizeof(trans_args));
++	memset(command_params, 0, sizeof(command_params));
++
++	trans_args = (struct tee_ioctl_invoke_arg) {
++		.func = ca_info->vdec_session_func,
++		.session = ca_info->vdec_session_id,
++		.num_params = MTK_OPTEE_MAX_TEE_PARAMS,
++	};
++
++	/* Fill msg command parameters */
++	for (index = 0; index < MTK_OPTEE_MAX_TEE_PARAMS; index++) {
++		shm_memref = &ca_info->shm_memref[index];
++
++		if (shm_memref->param_type == TEE_IOCTL_PARAM_ATTR_TYPE_NONE ||
++		    data->msg_buf_size[index] == 0)
++			continue;
++
++		dev_dbg(dev, MTK_DBG_VCODEC_STR "tee share memory data size: %d -> %d.\n",
++			data->msg_buf_size[index], shm_memref->msg_shm_size);
++
++		if (data->msg_buf_size[index] > shm_memref->msg_shm_size) {
++			dev_err(dev, MTK_DBG_VCODEC_STR "tee buf size bigger than shm (%d->%d).\n",
++				data->msg_buf_size[index], shm_memref->msg_shm_size);
++			return -EINVAL;
++		}
++
++		ret = mtk_vcodec_dec_optee_fill_shm(&command_params[index], shm_memref,
++						    data, index, dev);
++		if (ret)
++			return ret;
++	}
++
++	ret = tee_client_invoke_func(optee_private->tee_vdec_ctx, &trans_args, command_params);
++	if (ret < 0 || trans_args.ret != 0) {
++		dev_err(dev, MTK_DBG_VCODEC_STR "tee submit command fail: 0x%x 0x%x.\n",
++			trans_args.ret, ret);
++
++		return (ret < 0) ? ret : trans_args.ret;
++	}
++
++	/* clear all attrs, set all command param to unused */
++	for (index = 0; index < MTK_OPTEE_MAX_TEE_PARAMS; index++) {
++		data->msg_buf[index] = NULL;
++		data->msg_buf_size[index] = 0;
++	}
++
++	return 0;
++}
++EXPORT_SYMBOL_GPL(mtk_vcodec_dec_optee_invokd_cmd);
++
++void *mtk_vcodec_dec_get_shm_buffer_va(struct mtk_vcodec_dec_dev *vcodec_dev,
++				       enum mtk_vdec_hw_id hw_id,
++				       enum mtk_vdec_optee_data_index data_index)
++{
++	struct mtk_vdec_optee_ca_info *ca_info;
++
++	ca_info = get_ca_info(vcodec_dev->optee_private, hw_id);
++
++	return ca_info->shm_memref[data_index].msg_shm_ca_buf;
++}
++EXPORT_SYMBOL_GPL(mtk_vcodec_dec_get_shm_buffer_va);
 diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.h b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.h
-index 33134cf0d5d5..8a2a82874597 100644
+index 271545a864d3..f9c4d0e8b9c7 100644
 --- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.h
 +++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.h
-@@ -52,6 +52,7 @@ struct mtk_vdec_optee_private {
- 	struct mutex tee_mutex;
+@@ -62,6 +62,16 @@ enum mtk_vdec_optee_data_index {
+ 	OPTEE_MAX_INDEX,
  };
  
-+#ifdef CONFIG_VIDEO_MEDIATEK_VCODEC_TEE
++/**
++ * struct mtk_vdec_optee_data_to_shm - shm data used for TA
++ * @msg_buf:      msg information to TA.
++ * @msg_buf_size: length of msg information.
++ */
++struct mtk_vdec_optee_data_to_shm {
++	void *msg_buf[MTK_OPTEE_MAX_TEE_PARAMS];
++	int msg_buf_size[MTK_OPTEE_MAX_TEE_PARAMS];
++};
++
  /**
-  * mtk_vcodec_dec_optee_open - setup the communication channels with TA.
-  * @vcodec_dev: pointer to the mtk_vcodec_dec_dev of the device
-@@ -70,4 +71,22 @@ int mtk_vcodec_dec_optee_private_init(struct mtk_vcodec_dec_dev *vcodec_dev);
+  * struct mtk_vdec_optee_private - optee private data
+  * @vcodec_dev:     pointer to the mtk_vcodec_dec_dev of the device
+@@ -103,6 +113,45 @@ int mtk_vcodec_dec_optee_private_init(struct mtk_vcodec_dec_dev *vcodec_dev);
   */
  void mtk_vcodec_dec_optee_close(struct mtk_vcodec_dec_dev *vcodec_dev);
  
-+#else
++/**
++ * mtk_vcodec_dec_optee_set_msg_info - set buffer to message shared memref.
++ * @data:     normal world data used to init optee shared memory
++ * @buf:      normal world buffer address
++ * @buf_size: buf size
++ */
++void mtk_vcodec_dec_optee_set_msg_info(struct mtk_vdec_optee_data_to_shm *data,
++				       void *buf, int buf_size);
 +
-+static inline int mtk_vcodec_dec_optee_open(struct mtk_vcodec_dec_dev *vcodec_dev)
++/**
++ * mtk_vcodec_dec_optee_set_data - set buffer to data shared memref.
++ * @data:       normal world data used to init optee shared memory
++ * @vcodec_dev: pointer to the mtk_vcodec_dec_dev of the device
++ * @hw_id:      hardware index
++ */
++void mtk_vcodec_dec_optee_set_data_info(struct mtk_vdec_optee_data_to_shm *data,
++					struct mtk_vcodec_dec_dev *vcodec_dev,
++					int hw_id);
++
++/**
++ * mtk_vcodec_dec_optee_invokd_cmd - send share memory data to optee.
++ * @vcodec_dev: pointer to the mtk_vcodec_dec_dev of the device
++ * @hw_id:      hardware index
++ * @data:       normal world data used to init optee share memory
++ */
++int mtk_vcodec_dec_optee_invokd_cmd(struct mtk_vcodec_dec_dev *vcodec_dev,
++				    enum mtk_vdec_hw_id hw_id,
++				    struct mtk_vdec_optee_data_to_shm *data);
++
++/**
++ * mtk_vcodec_dec_get_shm_buffer_va - get the shared memory virtual address
++ * @vcodec_dev: pointer to the mtk_vcodec_dec_dev of the device
++ * @hw_id:      hardware index
++ * @data_index: indentify each share memory informaiton
++ */
++void *mtk_vcodec_dec_get_shm_buffer_va(struct mtk_vcodec_dec_dev *vcodec_dev,
++				       enum mtk_vdec_hw_id hw_id,
++				       enum mtk_vdec_optee_data_index data_index);
++
+ #else
+ 
+ static inline int mtk_vcodec_dec_optee_open(struct mtk_vcodec_dec_dev *vcodec_dev)
+@@ -119,6 +168,31 @@ static inline void mtk_vcodec_dec_optee_close(struct mtk_vcodec_dec_dev *vcodec_
+ {
+ }
+ 
++static inline void mtk_vcodec_dec_optee_set_msg_info(struct mtk_vdec_optee_data_to_shm *data,
++						     void *buf, int buf_size)
++{
++}
++
++static inline void mtk_vcodec_dec_optee_set_data_info(struct mtk_vdec_optee_data_to_shm *data,
++						      struct mtk_vcodec_dec_dev *vcodec_dev,
++						      int hw_id)
++{
++}
++
++static inline int mtk_vcodec_dec_optee_invokd_cmd(struct mtk_vcodec_dec_dev *vcodec_dev,
++						  enum mtk_vdec_hw_id hw_id,
++						  struct mtk_vdec_optee_data_to_shm *data)
 +{
 +	return 0;
 +}
 +
-+static inline int mtk_vcodec_dec_optee_private_init(struct mtk_vcodec_dec_dev *vcodec_dev)
++static inline void *mtk_vcodec_dec_get_shm_buffer_va(struct mtk_vcodec_dec_dev *vcodec_dev,
++						     enum mtk_vdec_hw_id hw_id,
++						     enum mtk_vdec_optee_data_index data_index)
 +{
-+	return 0;
++	return NULL;
 +}
 +
-+static inline void mtk_vcodec_dec_optee_close(struct mtk_vcodec_dec_dev *vcodec_dev)
-+{
-+}
-+
-+#endif /* CONFIG_VIDEO_MEDIATEK_VCODEC_TEE */
-+
+ #endif /* CONFIG_VIDEO_MEDIATEK_VCODEC_TEE */
+ 
  #endif /* _MTK_VCODEC_DEC_OPTEE_H_ */
 -- 
 2.18.0
