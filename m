@@ -4,38 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9363C3DA49
-	for <linux-mediatek@archiver.kernel.org>; Sat, 20 Jul 2024 09:14:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE2B0C3DA59
+	for <linux-mediatek@archiver.kernel.org>; Sat, 20 Jul 2024 09:21:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Pi+X2g2kJTDKQmnA1Db4zYkGS17i73/InmWu+9v9jSk=; b=LpQ10xM1jABVZuO/+QAPQfGzEz
-	EF68nhitG2B2hTO62ITfB3i7OrPBfO6SfWoSVkcC116LSXmds7pDRo4O0Gxgx32p4os9h6A2dgTzf
-	vll/CQkqOBZFmYQSgfJbGLn/IiXeLZBX6x24EmvpTMIbNYbRSUfjH4k0V4gH3f/jvarz1ZOEnukYO
-	5dpWGguKuQr3Dv3QFrGuIEhtgMbD5jgECT8Man4PpAQsbNDq2E8AJbb/pdvxT42EJIploRS0rJM+e
-	3OB7cbZwhI73a8tGBGKMpX14P59kito5c2om6Z4PRuN6QOTfeBGPjrQok8S/uubr4JlxwPxfFzqpp
-	qmoK1n9w==;
+	bh=PCd4UwLLpgKK0XC0mH2KNRZVX/blgI25yCrKyhODJyw=; b=KrEQkfqQPa8AfRKWwOEEegamgC
+	PorlYSsOrOanrCsRI4QmDk+vn5KCQ2j5wV0f591tet/FEXeWymRE6+Z7EXB140Jc3Ixcd5XBuP3fr
+	wc5qg0hRvhgOgooWHWvhnRKhe4Lq0xGrDP7td6cErnJ7vaS3pY0LV2dN5vLQoH+to37NSLZAqCoQU
+	8RIKkz3GnI64d0wfezpHQXZI82KoPK7wAUfuVoYboml0i6CRSaZ0/L5HRc4/tCJnta6hn9q6ElY0I
+	rg2ujThiM9deETJ5s6282GmnuM/meyZA4vt6iUhgfrjUcJvSLloexG5iJUacnsmHB7ngrujPGxuJM
+	wYRAiIPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sV6AO-00000004oIs-46Zs;
-	Sat, 20 Jul 2024 09:14:12 +0000
+	id 1sV6H8-00000004p4G-1nuO;
+	Sat, 20 Jul 2024 09:21:10 +0000
 Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sV6A2-00000004oE0-0Jzk;
-	Sat, 20 Jul 2024 09:13:51 +0000
+	id 1sV6Gl-00000004oz1-2bjo;
+	Sat, 20 Jul 2024 09:20:49 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 95B3CCE021E;
-	Sat, 20 Jul 2024 09:13:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C2581C2BD10;
-	Sat, 20 Jul 2024 09:13:39 +0000 (UTC)
-Message-ID: <b09c8cd9-2e1e-48e1-a5c7-db020fc88808@xs4all.nl>
-Date: Sat, 20 Jul 2024 11:13:38 +0200
+	by sin.source.kernel.org (Postfix) with ESMTP id 6E5E3CE0219;
+	Sat, 20 Jul 2024 09:20:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0BB5EC2BD10;
+	Sat, 20 Jul 2024 09:20:38 +0000 (UTC)
+Message-ID: <0aea8161-4288-45b9-a834-a0ebb4904a8c@xs4all.nl>
+Date: Sat, 20 Jul 2024 11:20:37 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 01/28] v4l2: add restricted memory flags
+Subject: Re: [PATCH v7 02/28] v4l2: handle restricted memory flags in queue
+ setup
 To: Yunfei Dong <yunfei.dong@mediatek.com>,
  Jeffrey Kardatzke <jkardatzke@google.com>,
  =?UTF-8?Q?N=C3=ADcolas_F_=2E_R_=2E_A_=2E_Prado?= <nfraprado@collabora.com>,
@@ -58,15 +59,15 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>, Yong Wu <yong.wu@mediatek.com>,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  Project_Global_Chrome_Upstream_Group@mediatek.com
 References: <20240720071606.27930-1-yunfei.dong@mediatek.com>
- <20240720071606.27930-2-yunfei.dong@mediatek.com>
+ <20240720071606.27930-3-yunfei.dong@mediatek.com>
 Content-Language: en-US, nl
 From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <20240720071606.27930-2-yunfei.dong@mediatek.com>
+In-Reply-To: <20240720071606.27930-3-yunfei.dong@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240720_021350_470353_D1B9A361 
-X-CRM114-Status: GOOD (  25.82  )
+X-CRM114-CacheID: sfid-20240720_022048_044963_47770427 
+X-CRM114-Status: GOOD (  22.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,144 +82,144 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Yunfei,
-
-First a high-level comment:
-
-Adding a new V4L2 uAPI also requires patches to v4l-utils, specifically v4l2-ctl
-and v4l2-compliance (i.e. new tests are needed for this flag). This will also help
-you test the driver.
-
-Some more comments below:
-
 On 20/07/2024 09:15, Yunfei Dong wrote:
 > From: Jeffrey Kardatzke <jkardatzke@google.com>
 > 
-> Adds a V4L2 flag which indicates that a queue is using restricted
-> dmabufs and the corresponding capability flag.
+> Validates the restricted memory flags when setting up a queue and
+> ensures the queue has the proper capability.
 > 
 > Signed-off-by: Jeffrey Kardatzke <jkardatzke@google.com>
 > Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 > [Yunfei: Change reviewer's comments]
 > ---
->  Documentation/userspace-api/media/v4l/buffer.rst       | 10 +++++++++-
->  .../userspace-api/media/v4l/vidioc-reqbufs.rst         |  6 ++++++
->  include/media/videobuf2-core.h                         |  8 +++++++-
->  include/uapi/linux/videodev2.h                         |  2 ++
->  4 files changed, 24 insertions(+), 2 deletions(-)
+>  .../media/common/videobuf2/videobuf2-core.c   | 29 +++++++++++++++++++
+>  .../media/common/videobuf2/videobuf2-v4l2.c   |  4 ++-
+>  2 files changed, 32 insertions(+), 1 deletion(-)
 > 
-> diff --git a/Documentation/userspace-api/media/v4l/buffer.rst b/Documentation/userspace-api/media/v4l/buffer.rst
-> index 52bbee81c080..901eb007aae8 100644
-> --- a/Documentation/userspace-api/media/v4l/buffer.rst
-> +++ b/Documentation/userspace-api/media/v4l/buffer.rst
-> @@ -696,7 +696,7 @@ enum v4l2_memory
+> diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
+> index 0217392fcc0d..44080121f37e 100644
+> --- a/drivers/media/common/videobuf2/videobuf2-core.c
+> +++ b/drivers/media/common/videobuf2/videobuf2-core.c
+> @@ -830,6 +830,23 @@ static bool verify_coherency_flags(struct vb2_queue *q, bool non_coherent_mem)
+>  	return true;
+>  }
 >  
->  .. _memory-flags:
->  
-> -Memory Consistency Flags
-> +Memory Flags
->  ------------------------
->  
->  .. raw:: latex
-> @@ -728,6 +728,14 @@ Memory Consistency Flags
->  	only if the buffer is used for :ref:`memory mapping <mmap>` I/O and the
->  	queue reports the :ref:`V4L2_BUF_CAP_SUPPORTS_MMAP_CACHE_HINTS
->  	<V4L2-BUF-CAP-SUPPORTS-MMAP-CACHE-HINTS>` capability.
-> +    * .. _`V4L2-MEMORY-FLAG-RESTRICTED`:
+> +static bool verify_restricted_mem_flags(struct vb2_queue *q, bool restricted_mem)
+> +{
+> +	if (restricted_mem != q->restricted_mem) {
+> +		dprintk(q, 1, "restricted memory model mismatch\n");
+> +		return false;
+> +	}
 > +
-> +      - ``V4L2_MEMORY_FLAG_RESTRICTED``
-> +      - 0x00000002
-> +      - The queued buffers are expected to be in restricted memory. If not, an
-> +	error will be returned. This flag can only be used with ``V4L2_MEMORY_DMABUF``.
-> +	Typically restricted buffers are allocated using a restricted dma-heap. This flag
-> +	can only be specified if the :ref:`V4L2_BUF_CAP_SUPPORTS_RESTRICTED_MEM` is set.
->  
->  .. raw:: latex
->  
-> diff --git a/Documentation/userspace-api/media/v4l/vidioc-reqbufs.rst b/Documentation/userspace-api/media/v4l/vidioc-reqbufs.rst
-> index bbc22dd76032..8a264ae08db1 100644
-> --- a/Documentation/userspace-api/media/v4l/vidioc-reqbufs.rst
-> +++ b/Documentation/userspace-api/media/v4l/vidioc-reqbufs.rst
-> @@ -122,6 +122,7 @@ aborting or finishing any DMA in progress, an implicit
->  .. _V4L2-BUF-CAP-SUPPORTS-MMAP-CACHE-HINTS:
->  .. _V4L2-BUF-CAP-SUPPORTS-MAX-NUM-BUFFERS:
->  .. _V4L2-BUF-CAP-SUPPORTS-REMOVE-BUFS:
-> +.. _V4L2-BUF-CAP-SUPPORTS-RESTRICTED_MEM:
->  
->  .. raw:: latex
->  
-> @@ -166,6 +167,11 @@ aborting or finishing any DMA in progress, an implicit
->          :ref:`V4L2_BUF_FLAG_NO_CACHE_INVALIDATE <V4L2-BUF-FLAG-NO-CACHE-INVALIDATE>`,
->          :ref:`V4L2_BUF_FLAG_NO_CACHE_CLEAN <V4L2-BUF-FLAG-NO-CACHE-CLEAN>` and
->          :ref:`V4L2_MEMORY_FLAG_NON_COHERENT <V4L2-MEMORY-FLAG-NON-COHERENT>`.
-> +    * - ``V4L2_BUF_CAP_SUPPORTS_RESTRICTED_MEM``
-> +      - 0x00000100
-> +      - This capability is set by the driver to indicate the queue supports
-> +        restricted memory. See
-> +        :ref:`V4L2_MEMORY_FLAG_RESTRICTED <V4L2-MEMORY-FLAG-RESTRICTED>`.
->  
->  .. raw:: latex
->  
+> +	return true;
+> +}
+> +
+> +static inline int restricted_mem_mismatch(bool restricted_mem, struct vb2_queue *q,
+> +					  enum vb2_memory memory)
+> +{
+> +	return restricted_mem && (!q->allow_restricted_mem || memory != VB2_MEMORY_DMABUF) ?
+> +	       -1 : 0;
 
-What is missing in this documentation is what error to expect if you queue a buffer
-from non-restricted memory to a driver configured for restricted memory. You probably
-want a specific error code for that (EACCES? EPERM?).
+Returning -1 is odd, just return a bool here.
+
+> +}
+> +
+>  static int vb2_core_allocated_buffers_storage(struct vb2_queue *q)
+>  {
+>  	if (!q->bufs)
+> @@ -863,6 +880,7 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
+>  	unsigned int q_num_bufs = vb2_get_num_buffers(q);
+>  	unsigned plane_sizes[VB2_MAX_PLANES] = { };
+>  	bool non_coherent_mem = flags & V4L2_MEMORY_FLAG_NON_COHERENT;
+> +	bool restricted_mem = flags & V4L2_MEMORY_FLAG_RESTRICTED;
+>  	unsigned int i, first_index;
+>  	int ret = 0;
+>  
+> @@ -906,6 +924,9 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
+>  			return 0;
+>  	}
+>  
+> +	if (restricted_mem_mismatch(restricted_mem, q, memory))
+> +		return -EINVAL;
+> +
+>  	/*
+>  	 * Make sure the requested values and current defaults are sane.
+>  	 */
+> @@ -923,6 +944,7 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
+>  	if (ret)
+>  		return ret;
+>  	set_queue_coherency(q, non_coherent_mem);
+> +	q->restricted_mem = restricted_mem;
+>  
+>  	/*
+>  	 * Ask the driver how many buffers and planes per buffer it requires.
+> @@ -1031,6 +1053,7 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
+>  	unsigned plane_sizes[VB2_MAX_PLANES] = { };
+>  	bool non_coherent_mem = flags & V4L2_MEMORY_FLAG_NON_COHERENT;
+>  	unsigned int q_num_bufs = vb2_get_num_buffers(q);
+> +	bool restricted_mem = flags & V4L2_MEMORY_FLAG_RESTRICTED;
+>  	bool no_previous_buffers = !q_num_bufs;
+>  	int ret = 0;
+>  
+> @@ -1039,6 +1062,9 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
+>  		return -ENOBUFS;
+>  	}
+>  
+> +	if (restricted_mem_mismatch(restricted_mem, q, memory))
+> +		return -EINVAL;
+> +
+>  	if (no_previous_buffers) {
+>  		if (q->waiting_in_dqbuf && *count) {
+>  			dprintk(q, 1, "another dup()ped fd is waiting for a buffer\n");
+> @@ -1057,6 +1083,7 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
+>  			return ret;
+>  		q->waiting_for_buffers = !q->is_output;
+>  		set_queue_coherency(q, non_coherent_mem);
+> +		q->restricted_mem = restricted_mem;
+>  	} else {
+>  		if (q->memory != memory) {
+>  			dprintk(q, 1, "memory model mismatch\n");
+> @@ -1064,6 +1091,8 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
+>  		}
+>  		if (!verify_coherency_flags(q, non_coherent_mem))
+>  			return -EINVAL;
+> +		if (!verify_restricted_mem_flags(q, restricted_mem))
+> +			return -EINVAL;
+>  	}
+>  
+>  	num_buffers = min(*count, q->max_num_buffers - q_num_bufs);
+> diff --git a/drivers/media/common/videobuf2/videobuf2-v4l2.c b/drivers/media/common/videobuf2/videobuf2-v4l2.c
+> index 293f3d5f1c4e..9ee24e537e0c 100644
+> --- a/drivers/media/common/videobuf2/videobuf2-v4l2.c
+> +++ b/drivers/media/common/videobuf2/videobuf2-v4l2.c
+> @@ -682,7 +682,7 @@ static void vb2_set_flags_and_caps(struct vb2_queue *q, u32 memory,
+>  		*flags = 0;
+>  	} else {
+>  		/* Clear all unknown flags. */
+> -		*flags &= V4L2_MEMORY_FLAG_NON_COHERENT;
+> +		*flags &= V4L2_MEMORY_FLAG_NON_COHERENT | V4L2_MEMORY_FLAG_RESTRICTED;
+>  	}
+>  
+>  	*caps |= V4L2_BUF_CAP_SUPPORTS_ORPHANED_BUFS;
+> @@ -698,6 +698,8 @@ static void vb2_set_flags_and_caps(struct vb2_queue *q, u32 memory,
+>  		*caps |= V4L2_BUF_CAP_SUPPORTS_MMAP_CACHE_HINTS;
+>  	if (q->supports_requests)
+>  		*caps |= V4L2_BUF_CAP_SUPPORTS_REQUESTS;
+> +	if (q->allow_restricted_mem && q->io_modes & VB2_DMABUF)
+
+I think this io_modes test can be dropped.
+
+But it might be useful to add a WARN_ON in vb2_core_queue_init where
+this is checked. The WARN_ONs in that function really protect against
+driver bugs, making sure the driver doesn't pass incompatible combinations.
 
 Regards,
 
 	Hans
 
-> diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
-> index 955237ac503d..afd497e93a37 100644
-> --- a/include/media/videobuf2-core.h
-> +++ b/include/media/videobuf2-core.h
-> @@ -517,6 +517,9 @@ struct vb2_buf_ops {
->   *		->finish().
->   * @non_coherent_mem: when set queue will attempt to allocate buffers using
->   *		non-coherent memory.
-> + * @allow_restricted_mem: when set user-space can pass the %V4L2_MEMORY_FLAG_RESTRICTED
-> + *		flag to indicate the dma bufs are restricted.
-> + * @restricted_mem: when set queue will verify that the dma bufs are restricted.
->   * @lock:	pointer to a mutex that protects the &struct vb2_queue. The
->   *		driver can set this to a mutex to let the v4l2 core serialize
->   *		the queuing ioctls. If the driver wants to handle locking
-> @@ -621,6 +624,8 @@ struct vb2_queue {
->  	unsigned int			uses_requests:1;
->  	unsigned int			allow_cache_hints:1;
->  	unsigned int			non_coherent_mem:1;
-> +	unsigned int			allow_restricted_mem:1;
-> +	unsigned int			restricted_mem:1;
->  
->  	struct mutex			*lock;
->  	void				*owner;
-> @@ -792,7 +797,8 @@ void vb2_core_querybuf(struct vb2_queue *q, struct vb2_buffer *vb, void *pb);
->   * @q:		pointer to &struct vb2_queue with videobuf2 queue.
->   * @memory:	memory type, as defined by &enum vb2_memory.
->   * @flags:	auxiliary queue/buffer management flags. Currently, the only
-> - *		used flag is %V4L2_MEMORY_FLAG_NON_COHERENT.
-> + *		used flags are %V4L2_MEMORY_FLAG_NON_COHERENT and
-> + *		%V4L2_MEMORY_FLAG_RESTRICTED.
->   * @count:	requested buffer count.
->   *
->   * Videobuf2 core helper to implement VIDIOC_REQBUF() operation. It is called
-> diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
-> index 4e91362da6da..c4b1bc10af4c 100644
-> --- a/include/uapi/linux/videodev2.h
-> +++ b/include/uapi/linux/videodev2.h
-> @@ -1060,6 +1060,7 @@ struct v4l2_requestbuffers {
->  };
->  
->  #define V4L2_MEMORY_FLAG_NON_COHERENT			(1 << 0)
-> +#define V4L2_MEMORY_FLAG_RESTRICTED			(1 << 1)
->  
->  /* capabilities for struct v4l2_requestbuffers and v4l2_create_buffers */
->  #define V4L2_BUF_CAP_SUPPORTS_MMAP			(1 << 0)
-> @@ -1071,6 +1072,7 @@ struct v4l2_requestbuffers {
->  #define V4L2_BUF_CAP_SUPPORTS_MMAP_CACHE_HINTS		(1 << 6)
->  #define V4L2_BUF_CAP_SUPPORTS_MAX_NUM_BUFFERS		(1 << 7)
->  #define V4L2_BUF_CAP_SUPPORTS_REMOVE_BUFS		(1 << 8)
-> +#define V4L2_BUF_CAP_SUPPORTS_RESTRICTED_MEM		(1 << 9)
->  
->  /**
->   * struct v4l2_plane - plane info for multi-planar buffers
+> +		*caps |= V4L2_BUF_CAP_SUPPORTS_RESTRICTED_MEM;
+>  	if (max_num_bufs) {
+>  		*max_num_bufs = q->max_num_buffers;
+>  		*caps |= V4L2_BUF_CAP_SUPPORTS_MAX_NUM_BUFFERS;
+
 
