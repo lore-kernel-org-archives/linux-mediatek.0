@@ -4,64 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 188C4C3DA5D
-	for <linux-mediatek@archiver.kernel.org>; Sun, 21 Jul 2024 11:13:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC93DC3DA5D
+	for <linux-mediatek@archiver.kernel.org>; Sun, 21 Jul 2024 20:42:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nwvyPkKoKEo0cfBrIsBi5UCk/nlk8ZJ0MDuIcEGRLp8=; b=ASjQd+aqe7zVTGrVZWqbbIFXgC
-	qDnTreBPQSLYt1VceeyO6sHTsLJ/M3NM754WoJziHGsJF56WeSQae2K/SC30ZNffV/ZUZyq0+BBCL
-	kKI3ge11/U1MLav0kTXEb7HBgpUZ65D1zLIlIFYCMkNeRQjrNCN2AMNX3M8Dw/OCKegy6PkwCm/Du
-	YpgbVPt+Nia9C3u/RbC0F06i49022c7rEPYsPZumxtYPmmbqnxDK05freZ5XaeqA7w1z/ZGREOC2F
-	2N9VM5IaQlxmMy0hc5APVKDOTcE+VQ//PoVog9L9obWrM7RBnkQzE9BHbzavL58O5GkFjtcyEiGCR
-	5ubKCFgg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Y2Prf/IbMk4LMsyq34wH1row2ki7pR91wfPtg73kQoQ=; b=naeJspITLQHY0k7/7escpr312z
+	2w/O26JFZwzWe/65BbTnBT1SlOx1XDaDrtSumJFVfmJeXvfewyzCVhPdvYG218grSEBJ+UYJ3RzdI
+	ECNGyR5QpxhdvpzAdxxtgsnIPCk4VWNrtTbFpjlZ6gXyZ/AVbLnqpI0KUIWGvg7eeyvbKQdB2FTsa
+	5EAcU7TbOz3zhOMvmHSnFzyddz2+ddNYMK2jDjTRpj4Bv3wnfNRgaVQQIr5R1VwwISB3qQap7H95A
+	ZPCr46FW81baRRPg+VKlLfLYxkc9aYVr3jgaV2g3VSguokjp//Gyj24w59Djt5R+0Di55/tGuB5DE
+	ZwK0+EcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sVUVR-00000006heB-3wmY;
-	Sun, 21 Jul 2024 11:13:33 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1sVdOD-00000007X2b-2K4H;
+	Sun, 21 Jul 2024 20:42:41 +0000
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sVUV1-00000006hb6-3RBe;
-	Sun, 21 Jul 2024 11:13:12 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id B5BD6CE01B6;
-	Sun, 21 Jul 2024 11:13:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AC208C116B1;
-	Sun, 21 Jul 2024 11:12:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1721560383;
-	bh=G6cOPB+KBxo56wsOhn9rAt+ZnxMNBvnJZL52wCV3QKs=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=cAjdaxh/xvcVurWPVG1c1R5lqSMNjLGKRbfHTiANf1qon1kn3cuN4ntDRWzyDFcye
-	 LNKne2MNcyqPnRj7JP0klZPdBXrc3R16vFcv9d+CFPQSSMwSNEp0fcN6iW7nBj/VxC
-	 8fmBitXq0IRshQYw3W0wT7sLF0+5zwOfoWjoTRHU68Dg1kgJBL3I5fJbMc8CTDp9m3
-	 k0nRcKRFJq/1w3k7W/VeiQWoCX/onSeVInt6EJ43C9KgxhW1qFrSmJPd/OwKUNjhg1
-	 474/Ac1ShJ+3JNHOV4uyWrqjfYFz/xb2IRKxVziHLZEMSzEKHdsecC7bDesIBRKuI2
-	 w3RPoE0idi/jw==
-Date: Sun, 21 Jul 2024 12:12:56 +0100
-From: Simon Horman <horms@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: netdev@vger.kernel.org, nbd@nbd.name, sean.wang@mediatek.com,
-	Mark-MC.Lee@mediatek.com, davem@davemloft.net, edumazet@google.com,
-	kuba@kernel.org, pabeni@redhat.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	angelogioacchino.delregno@collabora.com,
-	lorenzo.bianconi83@gmail.com, dan.carpenter@linaro.org
-Subject: Re: [PATCH net] net: airoha: Fix MBI_RX_AGE_SEL_MASK definition
-Message-ID: <20240721111256.GE715661@kernel.org>
-References: <d27d0465be1bff3369e886e5f10c4d37fefc4934.1721419930.git.lorenzo@kernel.org>
+	id 1sVdO7-00000007X1h-1LD3;
+	Sun, 21 Jul 2024 20:42:36 +0000
+Received: by mail-wr1-x432.google.com with SMTP id ffacd0b85a97d-3684eb5be64so1592091f8f.3;
+        Sun, 21 Jul 2024 13:42:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1721594553; x=1722199353; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Y2Prf/IbMk4LMsyq34wH1row2ki7pR91wfPtg73kQoQ=;
+        b=j1NJukITQddtPsAje4wPStOyNshFayqNxlD34MM9Vqvn1EnNFYekQyHY9twei3APgQ
+         w2SMROB3yYruxmIPiOnDC2s9cNFlMhOvryxsuLAgn5yOvK8dNcRYc3JpRjZR22ZpKRQD
+         3mgFPmKxUR74JhzDBV58t6/X8Pcbmlwhfqn8qIxJAMYkP4DRIpqFRSdAO9RyOmTRMpfs
+         esuN49A+yeYN6sOAQBeoN8z4S6IHJDZ7eeriZpqlzuJUl6VZgKw92fTAVmbCLkW+J/kN
+         7P8jH5hjUBlhauu6ZmAYlhs6CSkuij9QR4qj6c6j4cG+NXdPjy31tNSTIGtwuoYejerB
+         /zjg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1721594553; x=1722199353;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Y2Prf/IbMk4LMsyq34wH1row2ki7pR91wfPtg73kQoQ=;
+        b=dHn/clkiO8dNsm3aJ1ivZtbo9xwUIgsYRipW7dUnnkmA5Od6L5PySBIiTSF9yV2I7H
+         R0sRDrasrecsAOcexosbhf8iwuMJBx5w2jAlybbROQl7gxc7LAg3HPu8xWkFQu06Coqr
+         f97yWY0RfFcLeM/9syqFeQg16FhZNhq6rciLxiMCrCYm08zkwJnRerAz0DAmJ5gkg8oA
+         mfPgdaQOLRxcfA9zWa8lMRQ7bcYlN7yVGYB5uk7r583ungWs2tf16uVTDuEb/djZHck5
+         OYW3lvYxk75u3I1mee4WqBu3ODoYHEotRXZf2SdNQtBjd4P50TclDAh8Dvsgo3mgpgfd
+         CtCQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWIJ8PZ30YFFH+SLg7W4qpBg/yit0xquwVpTDtusEsoGymieUb5pyehGC+bZASQg+qYkCL+Qj3xivme4dVE5XflPGRUEqpqXpmRUw8wT9AFo/xZ9M+/WGPA5JdStFkrmRIsMjBNMH6wlwEhlzMFrKQqohN2zD2pofTMSWc+Ju+1TcT/TlTKLPTEudO1xZowm9uHmo1VI6OuDndUikeU6UQCIJyG3hsYBZ2B0LhKlPrGSyCo3Qutme4=
+X-Gm-Message-State: AOJu0YxxxNRQmuSBVB8n3KuGEApcJjTthckSBDFl0sJvQbaiXgxb340w
+	o5vJMhi3RBiEPLlho0mlcQ90QrL1VUYPIRYp3ysLSw410eBtCBnuIIRU/P2En2mtmTtx9OK91kp
+	tjINqE7+sLZM3uPACI35wHb54MX4=
+X-Google-Smtp-Source: AGHT+IHzyJqN1Q0WaIfDKyj2SqhKg2oxhBaiBXCVTaoG5f0KmwGrOsY8JwrfF4zCan/VnZBfTxjvlG6f3HfT9iOc4L4=
+X-Received: by 2002:a5d:59a4:0:b0:366:e838:f5d4 with SMTP id
+ ffacd0b85a97d-369bbbb4b95mr3333434f8f.3.1721594552579; Sun, 21 Jul 2024
+ 13:42:32 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <d27d0465be1bff3369e886e5f10c4d37fefc4934.1721419930.git.lorenzo@kernel.org>
+References: <20240719093338.55117-1-linyunsheng@huawei.com> <20240719093338.55117-5-linyunsheng@huawei.com>
+In-Reply-To: <20240719093338.55117-5-linyunsheng@huawei.com>
+From: Alexander Duyck <alexander.duyck@gmail.com>
+Date: Sun, 21 Jul 2024 13:41:55 -0700
+Message-ID: <CAKgT0UcqELiXntRA_uD8eJGjt-OCLO64ax=YFXrCHNnaj9kD8g@mail.gmail.com>
+Subject: Re: [RFC v11 04/14] mm: page_frag: add '_va' suffix to page_frag API
+To: Yunsheng Lin <linyunsheng@huawei.com>
+Cc: davem@davemloft.net, kuba@kernel.org, pabeni@redhat.com, 
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	Subbaraya Sundeep <sbhatta@marvell.com>, Jeroen de Borst <jeroendb@google.com>, 
+	Praveen Kaligineedi <pkaligineedi@google.com>, Shailend Chand <shailend@google.com>, 
+	Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>, 
+	Przemek Kitszel <przemyslaw.kitszel@intel.com>, Sunil Goutham <sgoutham@marvell.com>, 
+	Geetha sowjanya <gakula@marvell.com>, hariprasad <hkelam@marvell.com>, Felix Fietkau <nbd@nbd.name>, 
+	Sean Wang <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, 
+	Lorenzo Bianconi <lorenzo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Keith Busch <kbusch@kernel.org>, 
+	Jens Axboe <axboe@kernel.dk>, Christoph Hellwig <hch@lst.de>, Sagi Grimberg <sagi@grimberg.me>, 
+	Chaitanya Kulkarni <kch@nvidia.com>, "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>, 
+	=?UTF-8?Q?Eugenio_P=C3=A9rez?= <eperezma@redhat.com>, 
+	Andrew Morton <akpm@linux-foundation.org>, Alexei Starovoitov <ast@kernel.org>, 
+	Daniel Borkmann <daniel@iogearbox.net>, Jesper Dangaard Brouer <hawk@kernel.org>, 
+	John Fastabend <john.fastabend@gmail.com>, Andrii Nakryiko <andrii@kernel.org>, 
+	Martin KaFai Lau <martin.lau@linux.dev>, Eduard Zingerman <eddyz87@gmail.com>, Song Liu <song@kernel.org>, 
+	Yonghong Song <yonghong.song@linux.dev>, KP Singh <kpsingh@kernel.org>, 
+	Stanislav Fomichev <sdf@fomichev.me>, Hao Luo <haoluo@google.com>, Jiri Olsa <jolsa@kernel.org>, 
+	David Howells <dhowells@redhat.com>, Marc Dionne <marc.dionne@auristor.com>, 
+	Trond Myklebust <trondmy@kernel.org>, Anna Schumaker <anna@kernel.org>, 
+	Chuck Lever <chuck.lever@oracle.com>, Jeff Layton <jlayton@kernel.org>, Neil Brown <neilb@suse.de>, 
+	Olga Kornievskaia <kolga@netapp.com>, Dai Ngo <Dai.Ngo@oracle.com>, Tom Talpey <tom@talpey.com>, 
+	intel-wired-lan@lists.osuosl.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-nvme@lists.infradead.org, 
+	kvm@vger.kernel.org, virtualization@lists.linux.dev, linux-mm@kvack.org, 
+	bpf@vger.kernel.org, linux-afs@lists.infradead.org, linux-nfs@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240721_041310_504283_DD6E3B10 
-X-CRM114-Status: UNSURE (   6.50  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240721_134235_384772_8811EF0F 
+X-CRM114-Status: GOOD (  17.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,12 +114,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 19, 2024 at 10:38:31PM +0200, Lorenzo Bianconi wrote:
-> Fix copy-paste error in MBI_RX_AGE_SEL_MASK macro definition
-> 
-> Fixes: 23020f049327 ("net: airoha: Introduce ethernet support for EN7581 SoC")
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+On Fri, Jul 19, 2024 at 2:37=E2=80=AFAM Yunsheng Lin <linyunsheng@huawei.co=
+m> wrote:
+>
+> Currently the page_frag API is returning 'virtual address'
+> or 'va' when allocing and expecting 'virtual address' or
+> 'va' as input when freeing.
+>
+> As we are about to support new use cases that the caller
+> need to deal with 'struct page' or need to deal with both
+> 'va' and 'struct page'. In order to differentiate the API
+> handling between 'va' and 'struct page', add '_va' suffix
+> to the corresponding API mirroring the page_pool_alloc_va()
+> API of the page_pool. So that callers expecting to deal with
+> va, page or both va and page may call page_frag_alloc_va*,
+> page_frag_alloc_pg*, or page_frag_alloc* API accordingly.
+>
+> CC: Alexander Duyck <alexander.duyck@gmail.com>
+> Signed-off-by: Yunsheng Lin <linyunsheng@huawei.com>
+> Reviewed-by: Subbaraya Sundeep <sbhatta@marvell.com>
 
-Reviewed-by: Simon Horman <horms@kernel.org>
+Rather than renaming the existing API I would rather see this follow
+the same approach as we use with the other memory subsystem functions.
+A specific example being that with free_page it is essentially passed
+a virtual address, while the double underscore version is passed a
+page. I would be more okay with us renaming the double underscore
+version of any functions we might have to address that rather than
+renaming all the functions with "va".
 
+In general I would say this patch is adding no value as what it is
+doing is essentially pushing the primary users of this API to change
+to support use cases that won't impact most of them. It is just
+creating a ton of noise in terms of changes with no added value so we
+can reuse the function names.
 
