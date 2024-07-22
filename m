@@ -4,65 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CC1FC3DA59
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Jul 2024 12:42:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A28CC3DA5D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Jul 2024 14:54:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DX1/mT1dvnQwQygkzXT4W77gjKkulQJoRxVwiGTk7RM=; b=4ill25EAG5z/G75wNtmA00ot5j
-	LoqRR7J2dXA78yz4Pdkzsm+frMj0Vbdj7U/esq69N/P594jNcPbLjA7lRV6QoC+/nLJaCRemxAq3H
-	hhjNeUL/uZnZX9ws3+FXNxGI20H+sL6t2yWVWU+94SvSEy11Mlsr77C4vVAM8depCkGeJJAOHm4nT
-	EoFiTGL+OwI/Lrtj9ea+SdZ7O1r8HCs5pPjUzx4hVsT/bxNY7qsVfYfXqNhFFOJG31Vqh4C5ITw4M
-	41Xn6o9YHOjIxOkLus9/M6pJQ/8DUY5MN1FxqAbgXm8B17kfk46s/6qYL/a3XhFR/i7e7/DZphzX0
-	slFHb+bQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=f63c3R5AaO3G4m+kG7QYQwof/dHA1YfJmkPVkwVDp3s=; b=Q6w1b1+gP45LyylDhjhpVk3HaW
+	fggwK0egJXs+flsmKt+L8in7Y8NzwJ15LR1o8DzMFFn0wGNwdnJalkAJKAIWmLa1ZV5mOJYwPUBf5
+	J44ZlXuAiPBY8aW6/goIYvyvwgbBNxGWih6klt7kUg3X8UtWPo4A/cwi0UlNtm4igTxyURi2zi7QZ
+	Fke21hwF1FhnR9uBF5YzCdUexhPOHo4UMuIRTb87UeOf81SPQQ9EU8/bbRqQVile1WeaumFluGNvm
+	4OoD/BqBW7kVa/n+yoPD7y39cMgeoLNYXA1Nn/2U9K0B9IkWpspNLUK8PXXVvHemDOWPmhZAGWpN1
+	ZOjUFpig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sVsN5-00000009YHm-10jT;
-	Mon, 22 Jul 2024 12:42:31 +0000
-Received: from szxga01-in.huawei.com ([45.249.212.187])
+	id 1sVuQW-00000009qRH-0lf5;
+	Mon, 22 Jul 2024 14:54:12 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sVsMg-00000009YBU-20NC;
-	Mon, 22 Jul 2024 12:42:08 +0000
-Received: from mail.maildlp.com (unknown [172.19.163.174])
-	by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4WSKXm07sdzxTln;
-	Mon, 22 Jul 2024 20:36:56 +0800 (CST)
-Received: from dggpemf200006.china.huawei.com (unknown [7.185.36.61])
-	by mail.maildlp.com (Postfix) with ESMTPS id A3AFB140414;
-	Mon, 22 Jul 2024 20:41:54 +0800 (CST)
-Received: from [10.67.120.129] (10.67.120.129) by
- dggpemf200006.china.huawei.com (7.185.36.61) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.11; Mon, 22 Jul 2024 20:41:54 +0800
-Message-ID: <b2001dba-a2d2-4b49-bc9f-59e175e7bba1@huawei.com>
-Date: Mon, 22 Jul 2024 20:41:53 +0800
+	id 1sVuQ7-00000009qJq-0yk6;
+	Mon, 22 Jul 2024 14:53:48 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1721660022;
+	bh=ReJ6PIw4rNKKvjtKFWY7U3j9FDNjTAGJ375FqNKVD1w=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=QE6SvFrZXY9RlL7OIqqF0pMEBZndfkhJcS49Wvl3dyWdMPjVDqoWFPTnE6C452FEP
+	 ZRe+0qzLzTJKR1XuZbZbiXzunsc/SiyBL0AsygI5DMztO2nxLHtQji0JgtG6juH/n7
+	 yhY4feI+mVqEZdxMMc/GDrUX8j4qLpXn9xy2oGY8sPqU0HiaOs6N18Mk6yqt138M9A
+	 LCnR7UacjOIcQRwXsaHpLt7Y+f/6zmErQCJhnp09ypYfFQuRbYICX+UGiSP217mep/
+	 zSSoOQFcV5WwAcEWihxAo0qaqwKur74BpWYPB5W49T9aFc36+KT+mpw0BUz7YblgUE
+	 L2x6ncpUeYHjQ==
+Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 6B6783780523;
+	Mon, 22 Jul 2024 14:53:40 +0000 (UTC)
+Date: Mon, 22 Jul 2024 10:53:38 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Macpaul Lin <macpaul.lin@mediatek.com>,
+	Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, kernel@collabora.com,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	Bear Wang <bear.wang@mediatek.com>,
+	Pablo Sun <pablo.sun@mediatek.com>
+Subject: Re: Probe failure of usb controller @11290000 on MT8195 after
+ next-20231221
+Message-ID: <fab8e144-e5ef-4ce8-a74a-89024cd95100@notapiano>
+References: <9fce9838-ef87-4d1b-b3df-63e1ddb0ec51@notapiano>
+ <064935d8-fbda-4eda-b013-8c8fc63b561c@collabora.com>
+ <375b2345-657a-4b8f-b5e3-dc16784ffde9@notapiano>
+ <da27d957-866f-f055-9e83-cdc362d98dc7@mediatek.com>
+ <2dba1638-f155-463b-8f87-421101b8f4f2@collabora.com>
+ <521df3a8-5bc2-4e81-a819-02b755c88d3a@notapiano>
+ <ac0d1ba5-1ed0-4d4d-a287-1d3e6efadc0a@collabora.com>
+ <ea97fb15-684e-4009-b312-f39c2acdde5b@notapiano>
+ <9f12777b-b8b6-4d34-b336-7637e551b552@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v11 00/14] Replace page_frag with page_frag_cache for
- sk_page_frag()
-To: Alexander Duyck <alexander.duyck@gmail.com>
-CC: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>,
-	<netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Alexei Starovoitov
-	<ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>, Jesper Dangaard
- Brouer <hawk@kernel.org>, John Fastabend <john.fastabend@gmail.com>, Matthias
- Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, <bpf@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-References: <20240719093338.55117-1-linyunsheng@huawei.com>
- <CAKgT0UcGvrS7=r0OCGZipzBv8RuwYtRwb2QDXqiF4qW5CNws4g@mail.gmail.com>
-Content-Language: en-US
-From: Yunsheng Lin <linyunsheng@huawei.com>
-In-Reply-To: <CAKgT0UcGvrS7=r0OCGZipzBv8RuwYtRwb2QDXqiF4qW5CNws4g@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.67.120.129]
-X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
- dggpemf200006.china.huawei.com (7.185.36.61)
+In-Reply-To: <9f12777b-b8b6-4d34-b336-7637e551b552@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240722_054206_888727_72708E4B 
-X-CRM114-Status: GOOD (  57.69  )
+X-CRM114-CacheID: sfid-20240722_075347_441438_0051082F 
+X-CRM114-Status: GOOD (  12.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,158 +89,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2024/7/22 7:49, Alexander Duyck wrote:
-> On Fri, Jul 19, 2024 at 2:36â€¯AM Yunsheng Lin <linyunsheng@huawei.com> wrote:
->>
->> After [1], there are still two implementations for page frag:
->>
->> 1. mm/page_alloc.c: net stack seems to be using it in the
->>    rx part with 'struct page_frag_cache' and the main API
->>    being page_frag_alloc_align().
->> 2. net/core/sock.c: net stack seems to be using it in the
->>    tx part with 'struct page_frag' and the main API being
->>    skb_page_frag_refill().
->>
->> This patchset tries to unfiy the page frag implementation
->> by replacing page_frag with page_frag_cache for sk_page_frag()
->> first. net_high_order_alloc_disable_key for the implementation
->> in net/core/sock.c doesn't seems matter that much now as pcp
->> is also supported for high-order pages:
->> commit 44042b449872 ("mm/page_alloc: allow high-order pages to
->> be stored on the per-cpu lists")
->>
->> As the related change is mostly related to networking, so
->> targeting the net-next. And will try to replace the rest
->> of page_frag in the follow patchset.
+On Mon, Jul 15, 2024 at 02:04:54PM +0200, AngeloGioacchino Del Regno wrote:
+[..]
+> Besides, I also noticed that the CLK_APMIXED_PLL_SSUSB26M is missing from u2port1
+> and the reason why it works is because other u3phy0 should be enabling that before
+> u3phy1 inits and/or before the USB controller using U3P1 tries to initialize, so
+> while you're at it ... if you can please also add that to the u3p1, I appreciate.
 > 
-> So in reality I would say something like the first 4 patches are
-> probably more applicable to mm than they are to the net-next tree.
-> Especially given that we are having to deal with the mm_task_types.h
-> in order to sort out the include order issues.
-> 
-> Given that I think it might make more sense to look at breaking this
-> into 2 or more patch sets with the first being more mm focused since
-> the test module and pulling the code out of page_alloc.c, gfp.h, and
-> mm_types.h would be pretty impactful on mm more than it is on the
-> networking stack. After those changes then I would agree that we are
-> mostly just impacting the network stack.
+> 			u2port1: usb-phy@0 {
+> 				reg = <0x0 0x700>;
+> 				clocks = <&apmixedsys CLK_APMIXED_PLL_SSUSB26M>,
+> 					 <&topckgen CLK_TOP_SSUSB_PHY_P1_REF>;
+> 				clock-names = "ref", "da_ref";
+> 				#phy-cells = <1>;
+> 			};
 
-I am sure there are plenty of good precedents about how to handling a
-patchset that affecting multi subsystems.
-Let's be more specific about what are the options here:
-1. Keeping all changing as one patchset targetting the net-next tree
-   as this version does.
-2. Breaking all changing into two patchsets, the one affecting current APIs
-   targetting the mm tree and the one supporting new APIs targetting
-   net-next tree.
-3. Breaking all changing into two patchset as option 2 does, but both patchsets
-   targetting net-next tree to aovid waiting for the changing in mm tree
-   to merged back to net-next tree for adding supporting of new APIs.
+I'm not familiar with the clock topology on MT8195, but I noticed the
+CLK_APMIXED_PLL_SSUSB26M clock is currently only present in the USB3 phy nodes:
+u3port1 and u3port0. You're suggesting to add it to a USB2 phy node here. Is it
+needed by all USB2 phy nodes (u2port0, u2port1, u2port2, u2port3) then? 
 
-I am not sure your perference is option 2 or option 3 here, or there are others
-options here, it would be better to be more specific about your option here. As
-option 2 doesn't seems to make much sense if all the existing users/callers of
-page_frag seems to be belonged to networking for testing reasons, and the original
-code seemed to go through net-next tree too:
-https://github.com/torvalds/linux/commit/b63ae8ca096dfdbfeef6a209c30a93a966518853
-
-And the main reason I chose option 1 over option 2 is: it is hard to tell how
-much changing needed to support the new usecase, so it is better to keep them
-in one patchset to have a bigger picture here. Yes, it may make the patchset
-harder to review, but that is the tradeoff we need to make here. As my
-understanding, option 1 seem to be the common practice to handle the changing
-affecting multi subsystems. Especially you had similar doubt about the changing
-affecting current APIs as below, it seems hard to explain it without a new case:
-
-https://lore.kernel.org/all/68d1c7d3dfcd780fa3bed0bb71e41d7fb0a8c15d.camel@gmail.com/
-
-> 
-
-...
-
-> 
-> So specifically I would like to see patches 1 (refactored as
-> selftest), 2, 3, 5, 7, 8, 13 (current APIs), and 14 done as more of an
-> mm focused set since many of the issues you seem to have are problems
-> building due to mm build issues, dependencies, and the like. That is
-> the foundation for this patch set and it seems like we keep seeing
-> issues there so that needs to be solid before we can do the new API
-> work. If focused on mm you might get more eyes on it as not many
-> networking folks are that familiar with the memory management side of
-> things.
-
-I am not sure if breaking it into more patchset is the common practice
-to 'get more eyes' here.
-Anyways, it is fair enough ask if there is more concrete reasoning
-behind the asking and it is common practice to do that, and I would
-love to break it to more patchsets to perhaps make the discussion
-easier.
-
-> 
-> As for the other patches, specifically 10, 11, 12, and 13 (prepare,
-> probe, commit API), they could then be spun up as a netdev centered
-> set. I took a brief look at them but they need some serious refactor
-> as I think they are providing page as a return value in several cases
-> where they don't need to.
-
-The above is one of the reason I am not willing to do the spliting.
-It is hard for someone to tell if the refactoring affecting current APIs
-will be enough for the new usecase without supporting the new usecase,
-isn't it possible that some refactoring may be proved to be unnecessary
-or wrong?
-
-It would be better to be more specific about what do you mean by
-'they are providing page as a return value in several cases where they
-don't need to' as above.
-
-> 
-> In my opinion with a small bit of refactoring patch 4 can just be
-> dropped. I don't think the renaming is necessary and it just adds
-> noise to the commit logs for the impacted drivers. It will require
-> tweaks to the other patches but I think it will be better that way in
-> the long run.
-
-It would be better to be more specific about above too so that we don't
-have to have more refactoring patchsets for the current APIs.
-
-> 
-> Looking at patch 6 I am left scratching my head and wondering if you
-> have another build issue of some sort that you haven't mentioned. I
-> really don't think it belongs in this patch set and should probably be
-> a fix on its own if you have some reason to justify it. Otherwise you
-> might also just look at refactoring it to take
-> "__builtin_constant_p(size)" into account by copying/pasting the first
-> bits from the generic version into the function since I am assuming
-> there is a performance benefit to doing it in assembler. It should be
-> a net win if you just add the accounting for constants.
-
-I am not sure if the commit log in patch 6 needs some rephasing to
-answer your question above:
-"As the get_order() implemented by xtensa supporting 'nsau'
-instruction seems be the same as the generic implementation
-in include/asm-generic/getorder.h when size is not a constant
-value as the generic implementation calling the fls*() is also
-utilizing the 'nsau' instruction for xtensa.
-
-So remove the get_order() implemented by xtensa, as using the
-generic implementation may enable the compiler to do the
-computing when size is a constant value instead of runtime
-computing and enable the using of get_order() in BUILD_BUG_ON()
-macro in next patch."
-
-See the below in the next patch, as the PAGE_FRAG_CACHE_MAX_ORDER
-is using the get_order():
-BUILD_BUG_ON(PAGE_FRAG_CACHE_MAX_ORDER > PAGE_FRAG_CACHE_ORDER_MASK);
-
-> 
-> Patch 9 could probably be a standalone patch or included in the more
-> mm centered set. However it would need to be redone to fix the
-> underlying issue rather than working around it by changing the
-> function called rather than fixing the function. No point in improving
-> it for one case when you can cover multiple cases with a single
-> change.
-
-Sure, it is just that there is only 24h a day for me to do things
-more generically. So perhaps I should remove patch 9 for now so
-that we can improve thing more generically.
+Thanks,
+Nícolas
 
