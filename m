@@ -4,74 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89AA4C3DA5D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Jul 2024 06:23:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F633C3DA70
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Jul 2024 06:53:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=bkvgIktChmzkooE5NvOvL26cQeo/bI5bJkOyPX+YUEQ=; b=BTbBG19E+KtmFysODb+ZBi+Qs3
-	oda+qTn/F8VWYViGhw3NldzkTrUiADzsJZuMb01JZDmbstWNytbGBNGU0rLLlBcHLJZnJ+JxVOudK
-	wXidBCUEaGk7aO0AXl3YQOBKVkBOTRWYhSgsqJplrEQEHVcF+4PN0KZVy/jGZXvDMjCoZLWWvJDd3
-	ijrPlQr0GQYX5p+0U0ZlfN620KOKFDJGhY6wtrvJqB0u6ZaXrQ2mmEsvr7hPblW8RrwKFac9pYQ/Q
-	i+/ww1sPkOi2ejtcmDtrQM+bz9/NUeQMVUALan8GDSIjZJztwtCwNbIAePvRpEBzwgI3wyyDg1ufa
-	PK9jT2HA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=BsrM127hygYKA5jk1G0EVcptPCJlWj0AZyBnpIgIvho=; b=xsMKZqzYKjYquR
+	wWlHX6k3PmfAFEdxOmypwf0jw2QhD0Z3ufs5LvHxcvAWovU5BOKMnxowNFidG10/ZSqiUMKy5RbFY
+	ObuEyAT4k22BPEi/7ESppfny4ruxqjUuEZcjWO/vppLKnfNaBHUvHBKxkfq0ngIA4fauZklKHxmK8
+	J299aciXn3+EuF3stngNt+fF30I23WZVQ1sN2Yz7DFtxNEVayRWBWBSfayVGyXhos7nGEJ+56GKH+
+	nu+xskqxE8Rr8U3PS76zJqls9iAWy6h1U58U3ToKETT13o7kJTsZdlpuVAJYcwqTR7dtBemOQXD5B
+	6alVnKNYXdft5e1GthNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sVmS7-00000008VAz-1eOj;
-	Mon, 22 Jul 2024 06:23:19 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1sVmvY-00000008aBZ-47AC;
+	Mon, 22 Jul 2024 06:53:44 +0000
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sVmS4-00000008VAU-0QwY
+	id 1sVmvU-00000008a8W-1XBx
 	for linux-mediatek@lists.infradead.org;
-	Mon, 22 Jul 2024 06:23:18 +0000
-X-UUID: dec24bd847f211ef955bff358274dad2-20240721
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=bkvgIktChmzkooE5NvOvL26cQeo/bI5bJkOyPX+YUEQ=;
-	b=Gn4f3PxTqaOq/WUPUHaceJAaHs5AFeIOeYvuFtjI4+uaPinobYg4Mon4rVrPDIbMIqU+pCqGJwVFCnYzHnLBrlSCMbZ826OuP85erPuyMqLJczTbQMKI6QGMt6qESJc9KGISsJpgMY8P15MUJblVorcEmMpFRFKkbEW0rvcAV3g=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.40,REQID:c241d2a0-4944-4330-adb9-fb98c19cc672,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:ba885a6,CLOUDID:06839fd5-0d68-4615-a20f-01d7bd41f0bb,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: dec24bd847f211ef955bff358274dad2-20240721
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
-	(envelope-from <chris.lu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 663540062; Sun, 21 Jul 2024 23:23:11 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 22 Jul 2024 14:22:35 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 22 Jul 2024 14:22:35 +0800
-From: Chris Lu <chris.lu@mediatek.com>
-To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
-	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
-CC: Sean Wang <sean.wang@mediatek.com>, Aaron Hou <aaron.hou@mediatek.com>,
-	Steve Lee <steve.lee@mediatek.com>, linux-bluetooth
-	<linux-bluetooth@vger.kernel.org>, linux-kernel
-	<linux-kernel@vger.kernel.org>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Chris Lu <chris.lu@mediatek.com>
-Subject: [PATCH] Bluetooth: btmtk: Fix function-declaration build error
-Date: Mon, 22 Jul 2024 14:22:16 +0800
-Message-ID: <20240722062216.16090-1-chris.lu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	Mon, 22 Jul 2024 06:53:42 +0000
+Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-a77c25beae1so323575466b.2
+        for <linux-mediatek@lists.infradead.org>; Sun, 21 Jul 2024 23:53:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1721631218; x=1722236018; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=BsrM127hygYKA5jk1G0EVcptPCJlWj0AZyBnpIgIvho=;
+        b=FvFgOB76gStkVtjKIQoSInEHLvrtszXuslnsMIYHNc99lP2M6DS0IC/61jRsvNKFtL
+         uqPPrSd4a9ORSyPIcZxn2m27SkRs8VNhi8Uj0/g8k1wHWo9zj9od9UCRZ6z+TinmrAga
+         w07m1ZgL/ImhqVI9ihHMVwX7xJuMuDNag5eW2RBpJfqGUiKmxuU+8fjJJoSGaSa2ppoF
+         9X7zQdsbw85chA0zMyC63j34XbFfFYTUNdY0wv1jsuRVUeaf1RV6yDrRY50iYbszTYth
+         U0giyqeuiRL88R7i06rxW0yNHkOQ/pBZp/NFkIuqXy1Fw19AIlA8St/+2Tc8kVaysEwB
+         XarA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1721631218; x=1722236018;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=BsrM127hygYKA5jk1G0EVcptPCJlWj0AZyBnpIgIvho=;
+        b=kG44CeqLx1RWEhZXPbNgi8bOSXWBhkLBLKgcV7/mEjOPDc8qoiF3nkRrYhbx5S4kHe
+         ih+aZhZdQxaw/q/gyZbLaPYffFBDwB5C0UT4SCM5h96hbmXfjWgjPAuOQptQCdlaiiOj
+         jiHTvzNuT/T6S53gVz2tf4Xk+vwE+IbozvD34ax/1PZWOVjbsYnHVLjyTb+0JMF0gFwv
+         13mhTgJjz1ipFU2A4haKGxtdBgljIB6IsxsgKlg2CLM2yppYGfglLpOcLtbhwfSzkYjf
+         WDeu+tZWYHUO/vDiFwGRZYphBHE1/qom5dJ2G2R8XIEBDCb4hayC8UHm9qsOXaNJfmYj
+         jvDw==
+X-Forwarded-Encrypted: i=1; AJvYcCXrJh691dnDPswXAf2a1AXNQjaiB+q7mjvQf80tIjui3K2G/vP1ABguPAVPs2Yi0bjl7ujf0QT/rpsiLvmhKKkb/adtmXLVZfz303G+M9ujBYUL
+X-Gm-Message-State: AOJu0YwWwEAfmXZYco71KDUOep2MzMI+IorNZmXCnbWDfruAbFDBaR/j
+	f6Ikg4tpzBXkOcg0mSnyH1jcjrN5XhLDVqcjtOhGkKvNKkTaxJFXUA8yTCPmbBg=
+X-Google-Smtp-Source: AGHT+IH3U3WRnoemJHGFKrE09/s6jiFcFzPvzOfWrRW2m3vaQHFJvKOZl0vjwbNGOkeCjY76dXDxjA==
+X-Received: by 2002:a17:907:7d86:b0:a75:35d3:e917 with SMTP id a640c23a62f3a-a7a4c010585mr381555766b.21.1721631217476;
+        Sun, 21 Jul 2024 23:53:37 -0700 (PDT)
+Received: from [127.0.1.1] (158.22.5.93.rev.sfr.net. [93.5.22.158])
+        by smtp.googlemail.com with ESMTPSA id 4fb4d7f45d1cf-5a69c1f56a0sm1982126a12.64.2024.07.21.23.53.36
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 21 Jul 2024 23:53:37 -0700 (PDT)
+From: Alexandre Mergnat <amergnat@baylibre.com>
+Subject: [PATCH v7 00/16] Add audio support for the MediaTek Genio 350-evk
+ board
+Date: Mon, 22 Jul 2024 08:53:29 +0200
+Message-Id: <20240226-audio-i350-v7-0-6518d953a141@baylibre.com>
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAOkBnmYC/3XOTW7CMBAF4Ksgr2uwx7+w6j0qVI3tCbEECXIgA
+ qHcvU6WVbJ8I33vzYcNVDIN7LT7sEJjHnLf1eC+diy22F2I51QzAwFaAFiOz5R7npURXJOUCYX
+ 3ZAyrIOBAPBTsYjsTvFG5dPg4jHbveYnysNjfeCXsnvdZ3As1+bXM/5xrbvPw6Mt7+WaU83V1e
+ JS8rjcoI6G01jXfAd/XHArtY39jc9MI2xqqVkKrpL1KJNKKVttaVS1tCBCPTkdjVrTe1rpq4SE
+ ASG+TjivabGtTNTkCY4+p0V6uaLutbdWNM5qiRGeV/qenafoDdocqZg8CAAA=
+To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+ Rob Herring <robh+dt@kernel.org>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Lee Jones <lee@kernel.org>, Flora Fu <flora.fu@mediatek.com>, 
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+ Sumit Semwal <sumit.semwal@linaro.org>, 
+ =?utf-8?q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
+ Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>
+Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org, 
+ dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org, 
+ Alexandre Mergnat <amergnat@baylibre.com>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
+ Nicolas Belin <nbelin@baylibre.com>
+X-Mailer: b4 0.12.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=6557; i=amergnat@baylibre.com;
+ h=from:subject:message-id; bh=DNv4ZvpOlWpDysr5DKYpSpPIgYpHmJC889rcRBRLbU4=;
+ b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBmngHwuwh7qZXwmjfRanNAgIDu5pCRf+Ul4LZePbfm
+ 8dUzdaCJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZp4B8AAKCRArRkmdfjHURc+4EA
+ CSeLRrWoEwL/hb7EReC/RrFi6zoHoKx4fGN5zO+WUatY02PYIwyeDNaq3hsVFEveyZCPcHjkMxHid6
+ WfsYNbgu7XqOXh/gQOHTzmDWV1BtVfp0d/aQbqIUWeDrWnRVBPAs9oj2Ny2fE3RE/2+5I9UMpaNtQA
+ KpC9tKpfmRCaXQrwFZF+4DXyOw9FjjacQ4tX0r0b7eNJaeikAXVjMCwY4fmwrz/567bdN8PKvroI2m
+ jvNfbVLtgeMt7MLAkqeOReL3lV/X3UWMXebEiC7JHx/YOswBYG4vmgyWhJWYJbP3+VwTIe+qTbiau+
+ n5RMDRnSuTTOwJrFOktXSLCLgpAgV0CSgVjg4x2Y+r7W5iTy7Fzs0exv/UZrqvGlpH/SlM1v0lMnKh
+ DOd6wLYs0VkFnTSHgmfO/C6xziqUkWTt15EVFxh45M3qCIkkZzsWpoAYZzJ2o0kdgcefU6HHe3Tor8
+ giFMQg0CQaQu8usz+ht0EU5lLT0m0QWcMlR1dnCnjbdcyl2kGJGg1Ck/9q5oREGxqr9f4xViGWzU8V
+ qxJD7bj/Ju8zPmyiik34RV0/puZ6gJu+JY/wYzOi9pMdfjNmpM4u24eBLmhFgl1qOqwbpkx/OxcHt7
+ pbjFJibpzcjYJh9xZcB9dDfatqqdMJJ0XXGaCHY8f13aROFNahnoIQCO3v1A==
+X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
+ fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240721_232316_154622_C473032D 
-X-CRM114-Status: UNSURE (   7.79  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240721_235340_769063_C99B6A14 
+X-CRM114-Status: GOOD (  18.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,86 +127,148 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Separate out the declaration of usb related function into another
-if/else condition in btmtk.h, avoiding function-declaration issue
-happened when CONFIG_BT_HCIBTUSB was defined but CONFIG_BT_HCIBTUSB_MTK
-wasn't.
+This serie aim to add the following audio support for the Genio 350-evk:
+- Playback
+  - 2ch Headset Jack (Earphone)
+  - 1ch Line-out Jack (Speaker)
+  - 8ch HDMI Tx
+- Capture
+  - 1ch DMIC (On-board Digital Microphone)
+  - 1ch AMIC (On-board Analogic Microphone)
+  - 1ch Headset Jack (External Analogic Microphone)
 
-'btmtk_usb_subsys_reset';
-ISO C99 and later do not support implicit
-function declarations [-Wimplicit-function-declaration]
-'alloc_mtk_intr_urb';
-ISO C99 and later do not support implicit
-function declarations [-Wimplicit-function-declaration]
-'btmtk_usb_setup';
-ISO C99 and later do not support implicit
-function declarations [-Wimplicit-function-declaration]
-'btmtk_usb_shutdown';ISO C99 and later do not support
-implicit function declarations [-Wimplicit-function-declaration]
+Of course, HDMI playback need the MT8365 display patches [1] and a DTS
+change documented in "mediatek,mt8365-mt6357.yaml".
 
-Fixes: 52828ea60dfd ("Bluetooth: btmtk: Fix btmtk.c undefined reference build error")
-Reported-by: kernel test robot <lkp@intel.com>
-Closes: https://lore.kernel.org/oe-kbuild-all/202407200904.hRqT3JKD-lkp@intel.com/
-Signed-off-by: Chris Lu <chris.lu@mediatek.com>
+Applied patch:
+- mfd: mt6397-core: register mt6357 sound codec
+
+Test passed:
+- mixer-test log: [3]
+- pcm-test log: [4]
+
+[1]: https://lore.kernel.org/all/20231023-display-support-v1-0-5c860ed5c33b@baylibre.com/
+[2]: https://lore.kernel.org/all/20240313110147.1267793-1-angelogioacchino.delregno@collabora.com/
+[3]: https://pastebin.com/pc43AVrT
+[4]: https://pastebin.com/cCtGhDpg
+[5]: https://gitlab.baylibre.com/baylibre/mediatek/bsp/linux/-/commits/sound/for-next/add-i350-audio-support
+
+Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 ---
- drivers/bluetooth/btmtk.h | 35 ++++++++++++++++++-----------------
- 1 file changed, 18 insertions(+), 17 deletions(-)
+Changes in v7:
+- Rebase to "sound/for-6.11" branch.
+- Move audio-codec properties to the parent node
+- Remove gain values change at init to keep HW default values.
+- Remove spurious function by inlining them directly.
+- Use standard adaptators for regmap.
+- Use "ARRAY_SIZE()" instead of defined value.
+- Remove unused variable which breaks an x86 allmodconfig build.
+- Link to v6: https://lore.kernel.org/r/20240226-audio-i350-v6-0-f754ec1a7634@baylibre.com
 
-diff --git a/drivers/bluetooth/btmtk.h b/drivers/bluetooth/btmtk.h
-index 6fc69cd8636b..fcc44800cf29 100644
---- a/drivers/bluetooth/btmtk.h
-+++ b/drivers/bluetooth/btmtk.h
-@@ -201,23 +201,6 @@ int btmtk_process_coredump(struct hci_dev *hdev, struct sk_buff *skb);
- 
- void btmtk_fw_get_filename(char *buf, size_t size, u32 dev_id, u32 fw_ver,
- 			   u32 fw_flavor);
--
--#if IS_ENABLED(CONFIG_BT_HCIBTUSB_MTK)
--int btmtk_usb_subsys_reset(struct hci_dev *hdev, u32 dev_id);
--
--int btmtk_usb_recv_acl(struct hci_dev *hdev, struct sk_buff *skb);
--
--struct urb *alloc_mtk_intr_urb(struct hci_dev *hdev, struct sk_buff *skb,
--			       usb_complete_t tx_complete);
--
--int btmtk_usb_resume(struct hci_dev *hdev);
--
--int btmtk_usb_suspend(struct hci_dev *hdev);
--
--int btmtk_usb_setup(struct hci_dev *hdev);
--
--int btmtk_usb_shutdown(struct hci_dev *hdev);
--#endif
- #else
- 
- static inline int btmtk_set_bdaddr(struct hci_dev *hdev,
-@@ -259,7 +242,25 @@ static inline void btmtk_fw_get_filename(char *buf, size_t size, u32 dev_id,
- 					 u32 fw_ver, u32 fw_flavor)
- {
- }
-+#endif
-+
-+/* USB interface related functions */
-+#if IS_ENABLED(CONFIG_BT_HCIBTUSB_MTK)
-+int btmtk_usb_subsys_reset(struct hci_dev *hdev, u32 dev_id);
-+
-+int btmtk_usb_recv_acl(struct hci_dev *hdev, struct sk_buff *skb);
-+
-+struct urb *alloc_mtk_intr_urb(struct hci_dev *hdev, struct sk_buff *skb,
-+			       usb_complete_t tx_complete);
- 
-+int btmtk_usb_resume(struct hci_dev *hdev);
-+
-+int btmtk_usb_suspend(struct hci_dev *hdev);
-+
-+int btmtk_usb_setup(struct hci_dev *hdev);
-+
-+int btmtk_usb_shutdown(struct hci_dev *hdev);
-+#else
- static inline int btmtk_usb_subsys_reset(struct hci_dev *hdev, u32 dev_id)
- {
- 	return -EOPNOTSUPP;
+Changes in v6:
+- Remove spurious defines
+- all files: replace "Mediatek" by "MediaTek"
+- dts: replace "pins" by "clk-dat-pins"
+- dts: drive-strength: use integer instead of define
+- Link to v5: https://lore.kernel.org/r/20240226-audio-i350-v5-0-e7e2569df481@baylibre.com
+
+Changes in v5:
+- Rebase to "next-20240523" branch.
+- bindings: power supply property moved to the parent node
+- Replace "SoC" by "ASoC" in the patch title (5/16)
+- Move and rename DAI I2S's defines
+- Improve code readability and cleanup
+- Link to v4: https://lore.kernel.org/r/20240226-audio-i350-v4-0-082b22186d4c@baylibre.com
+
+Changes in v4:
+- Rebase to "next-20240422" branch.
+- Re-pass dt_binding_check, functionnal tests, mixer test and pcm test.
+- Remove copyright changes.
+- Move mt6357 audio codec documention from mt6357.yaml
+  to mediatek,mt6357.yaml
+- Fix broken indentation in mt8365-evk.dts
+- Remove empty node.
+- Add more dai link name according to the HW capability.
+- Remove spurious property (mediatek,topckgen)
+  from mediatek,mt8365-afe.yaml
+- Rename "afe" to "audio-controller" in the documentation.
+- Link to v3: https://lore.kernel.org/r/20240226-audio-i350-v3-0-16bb2c974c55@baylibre.com
+
+Changes in v3:
+- Re-order documentation commit to fix dt_binding_check error.
+- Remove $ref and add "mediatek," prefix to vaud28-supply property.
+- Link to v2: https://lore.kernel.org/r/20240226-audio-i350-v2-0-3043d483de0d@baylibre.com
+
+Changes in v2:
+- Documentation fixed:
+  - Remove spurious description.
+  - Change property order to fit with dts coding style rules.
+  - micbias property: use microvolt value instead of index.
+  - mediatek,i2s-shared-clock property removed.
+  - mediatek,dmic-iir-on property removed.
+  - mediatek,dmic-irr-mode property removed.
+  - Change dmic-two-wire-mode => dmic-mode to be aligned with another SoC
+  - Remove the spurious 2nd reg of the afe.
+- Manage IIR filter feature using audio controls.
+- Fix audio controls to pass mixer-test and pcm-test.
+- Refactor some const name according to feedbacks.
+- Rework the codec to remove spurious driver data.
+- Use the new common MTK probe functions for AFE PCM and sound card.
+- Rework pinctrl probe in the soundcard driver.
+- Remove spurious "const" variables in all files.
+- Link to v1: https://lore.kernel.org/r/20240226-audio-i350-v1-0-4fa1cea1667f@baylibre.com
+
+---
+Alexandre Mergnat (14):
+      ASoC: dt-bindings: mediatek,mt8365-afe: Add audio afe document
+      ASoC: dt-bindings: mediatek,mt8365-mt6357: Add audio sound card document
+      dt-bindings: mfd: mediatek: Add codec property for MT6357 PMIC
+      ASoC: mediatek: mt8365: Add common header
+      ASoC: mediatek: mt8365: Add audio clock control support
+      ASoC: mediatek: mt8365: Add I2S DAI support
+      ASoC: mediatek: mt8365: Add ADDA DAI support
+      ASoC: mediatek: mt8365: Add DMIC DAI support
+      ASoC: mediatek: mt8365: Add PCM DAI support
+      ASoC: mediatek: mt8365: Add the AFE driver support
+      ASoC: mediatek: Add MT8365 support
+      arm64: defconfig: enable mt8365 sound
+      arm64: dts: mediatek: add afe support for mt8365 SoC
+      arm64: dts: mediatek: add audio support for mt8365-evk
+
+Nicolas Belin (2):
+      ASoc: mediatek: mt8365: Add a specific soundcard for EVK
+      ASoC: codecs: add MT6357 support
+
+ .../devicetree/bindings/mfd/mediatek,mt6357.yaml   |   21 +
+ .../bindings/sound/mediatek,mt8365-afe.yaml        |  130 ++
+ .../bindings/sound/mediatek,mt8365-mt6357.yaml     |  107 +
+ arch/arm64/boot/dts/mediatek/mt8365-evk.dts        |   86 +
+ arch/arm64/boot/dts/mediatek/mt8365.dtsi           |   43 +-
+ arch/arm64/configs/defconfig                       |    2 +
+ sound/soc/codecs/Kconfig                           |    7 +
+ sound/soc/codecs/Makefile                          |    2 +
+ sound/soc/codecs/mt6357.c                          | 1855 ++++++++++++++++
+ sound/soc/codecs/mt6357.h                          |  660 ++++++
+ sound/soc/mediatek/Kconfig                         |   20 +
+ sound/soc/mediatek/Makefile                        |    1 +
+ sound/soc/mediatek/mt8365/Makefile                 |   15 +
+ sound/soc/mediatek/mt8365/mt8365-afe-clk.c         |  421 ++++
+ sound/soc/mediatek/mt8365/mt8365-afe-clk.h         |   32 +
+ sound/soc/mediatek/mt8365/mt8365-afe-common.h      |  449 ++++
+ sound/soc/mediatek/mt8365/mt8365-afe-pcm.c         | 2275 ++++++++++++++++++++
+ sound/soc/mediatek/mt8365/mt8365-dai-adda.c        |  311 +++
+ sound/soc/mediatek/mt8365/mt8365-dai-dmic.c        |  340 +++
+ sound/soc/mediatek/mt8365/mt8365-dai-i2s.c         |  850 ++++++++
+ sound/soc/mediatek/mt8365/mt8365-dai-pcm.c         |  293 +++
+ sound/soc/mediatek/mt8365/mt8365-mt6357.c          |  345 +++
+ sound/soc/mediatek/mt8365/mt8365-reg.h             |  991 +++++++++
+ 23 files changed, 9254 insertions(+), 2 deletions(-)
+---
+base-commit: f2038c12e8133bf4c6bd4d1127a23310d55d9e21
+change-id: 20240226-audio-i350-4e11da088e55
+
+Best regards,
 -- 
-2.18.0
+Alexandre Mergnat <amergnat@baylibre.com>
 
 
