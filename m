@@ -4,67 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99686C3DA59
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Jul 2024 15:27:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 569ECC3DA59
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Jul 2024 15:28:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=yE/SqHTV1C34nGAmEjO8Ca/17uHkpN6zyQL0nSw3sRM=; b=5C1jBAfs91tTh9cgi6F6g6eaPj
-	aZwQzKm3N7qh1TBMCK7sy8X5OcBKNnqUEwtXC8kjjnD1fq1Mf60qy9fwb65wItQm1Qs2q7aCv3t2z
-	TuNdOws49D4mbKQacMC0cZPsjmbJTxZj8nibuUgEm4vpx5KO3HehkxgaLN5pPTBbfejpGpGU0xtSf
-	kXLvU9RbSS+DFgXcURV3HTejPuIqsdbXJYY1PruZEUPjd9NWK4Mq/uV7btXjtBWoBL0c4M9U70L9E
-	9jzu7k36STpistnQvT2i3+98qcpy67cRNnfz4XtCH1nYH2U5DVFuL9wGVe5LCdldjfxQG+tDQWhbL
-	YMJSsdcA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
+	In-Reply-To:Subject:CC:To:From:Date:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=9zzQ9qsjOrJKYJgiEf+Hw1iQEuR/+oJDdIA6G8lNnBA=; b=3tV7hdszK8HB25
+	Pxy+nZlGG7ZSJmbPvS8cC2wRmrAFgWq/dlzf6YHNajzG9Okb6wqIlkud76sSfvup9GKjsDRRtnXzJ
+	IFvHzXSisw9iRpWUhgC1wtmZ0Ismulam+I/8qfVjR1Wbdrs8hHxzaZIH7JgBZqz5lXqUd/WhyLZbW
+	1WNDob+OAiK3273xW24K25PAPPw78h1M5xBGqMn6jc9P+Q8LGfXe/824ClC6nRRfLM03xwx5gQBXp
+	Pzp86fLs0z4cGfNJQ/H2P7lZ3tq7m364KiNEOO0moZrn44A7yg//c+/EuawMddhjTzLJQeHTIpFTN
+	mn5qPG780ulyYUdTTlKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sVux8-00000009wiI-0gkV;
-	Mon, 22 Jul 2024 15:27:54 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1sVuxY-00000009wqC-2JTz;
+	Mon, 22 Jul 2024 15:28:20 +0000
+Received: from mout.gmx.net ([212.227.15.19])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sVuwj-00000009wY9-3zMm;
-	Mon, 22 Jul 2024 15:27:31 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1721662048;
-	bh=8F8AqL8+uz10xZlIRw115rqKTtHgjwv0e3CayfgJVno=;
-	h=From:Date:Subject:To:Cc:From;
-	b=SagOMCU94ZPPnQfyFh6zFI2khT9EEF4MUcPcSRe7pwncodoAfwvPKlKTBi9yQAADO
-	 phRE4ogpZoaWIS67EqGkT5cXNku33U0qSNmZfGImbPZbAML4kIHwJNdYiJv/JjGnEU
-	 tGsAIWVB3mTWMDkEVKAWimvOy9fu90EcHuysvsK7KbThlDu/1ukBj90l1635Ml1Mm3
-	 vIu/obugyqQ+s5XoBPIKDEfYK1kY1Wdvat6819IOoa+Eh+tPSVcsJQ7FMhrHq+69Uw
-	 5UAvItx7YQNxYN8QhkLjEeThmVHg1IpF9Rrkp45cRHzr9QcHUEDELUHVZzB2XYMjTa
-	 6w/ESdtIwWcxA==
-Received: from [192.168.1.217] (zone.collabora.co.uk [167.235.23.81])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 0CFC137800DE;
-	Mon, 22 Jul 2024 15:27:25 +0000 (UTC)
-From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Date: Mon, 22 Jul 2024 11:26:55 -0400
-Subject: [PATCH] arm64: dts: mediatek: mt8195: Add missing clock for xhci1
- controller
+	id 1sVuxV-00000009wpS-23Wn;
+	Mon, 22 Jul 2024 15:28:19 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
+	s=s31663417; t=1721662085; x=1722266885; i=frank-w@public-files.de;
+	bh=9zzQ9qsjOrJKYJgiEf+Hw1iQEuR/+oJDdIA6G8lNnBA=;
+	h=X-UI-Sender-Class:Date:From:To:CC:Subject:Reply-to:In-Reply-To:
+	 References:Message-ID:MIME-Version:Content-Type:
+	 Content-Transfer-Encoding:cc:content-transfer-encoding:
+	 content-type:date:from:message-id:mime-version:reply-to:subject:
+	 to;
+	b=TuOswZE7lxQA0wrf/MAx6jvQuGompBZifZdmZK/rvRFgKcohgY7xN3/2ryIixvZN
+	 57QKRirDJQa0r4lCqfkwrE/fU5bfE3t3PfrdrpCGIWWE19mGHs6vu01qrnHwFiTXP
+	 TbKPY/E9meLHv5TGg7JF+Y/jumEavDsodo6ELy0cDluj4EoK/j1xgwN6bhoewSYkP
+	 fW3LBgnKxokXqb1HVMrHJjGtHrbS2/lKkXRUmFWziZ4d85BMPuvLF0levZZCZpGiN
+	 mRf0+dX+cqwAlg+7qD6B9vPnOIDGrqsHkOOoVizxBiw9GKUdiQW++RF7ORCYtDDB6
+	 6WWYFBBGzNKq1cH6xw==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [127.0.0.1] ([217.61.158.78]) by mail.gmx.net (mrgmx004
+ [212.227.17.190]) with ESMTPSA (Nemesis) id 1MNKhs-1sgGqN1mF0-00Vvt5; Mon, 22
+ Jul 2024 17:28:05 +0200
+Date: Mon, 22 Jul 2024 17:28:05 +0200
+From: Frank Wunderlich <frank-w@public-files.de>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Frank Wunderlich <linux@fw-web.de>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ =?UTF-8?Q?Rafa=C5=82_Mi=C5=82ecki?= <rafal@milecki.pl>
+CC: Daniel Golle <daniel@makrotopia.org>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v1=5D_arm64=3A_dts=3A_mediatek=3A_?=
+ =?US-ASCII?Q?mt7988=3A_add_labels_for_different_nodes?=
+User-Agent: K-9 Mail for Android
+In-Reply-To: <89f6381b-8572-4d58-a8a9-0a3596efc627@collabora.com>
+References: <20240709081614.19993-1-linux@fw-web.de> <89f6381b-8572-4d58-a8a9-0a3596efc627@collabora.com>
+Message-ID: <C0F28241-DBD1-48F8-B09D-F41DB30E1678@public-files.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20240722-usb-1129-probe-pci-clk-fix-v1-1-99ea804228b6@collabora.com>
-X-B4-Tracking: v=1; b=H4sIAD56nmYC/x3MTQqAIBBA4avErBvIQeznKtHCbKyhKFGKILp70
- vJ7i/dA4iicoCseiHxJkmPPUGUBbrH7zChTNlBFuqqJ8EwjKkUthniMjMEJum1FLzeyb4w2Xht
- rHeRBiJzzP++H9/0Af+1nAWwAAAA=
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, kernel@collabora.com, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-X-Mailer: b4 0.14.0
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:OS5lTSGxKOymZirZZWv/F/jIcjpywbSkBtsJkIf7dA2AW96XtoR
+ BD+ta8ObDhoFgHw6UFejU8lURnQFELWBPyMtROyTjp7fxNlpxTpDA2qzcOCayYn42MauBzW
+ dCD6BSe++J1SVf0F1Tuv8ZlTCuDidJKayAQLqKBwBB6+iFsFpkXHd5rdOEZ0sNeM2AVUCpi
+ 13rcb4837ot81IkpsuR5w==
+UI-OutboundReport: notjunk:1;M01:P0:fgvbCBc82oU=;o6Y3dPGAbn8l29Gh9/34m4QZ+a4
+ bcCpe01vlSP9oAFdhLG8rAf6uFYud9aJT9sE1i0IRcowjZxwUFP3iKWMoH/XSmiOp87SDgLNW
+ uf6Xs0P1O8/Lv8MFJqQGIfB82yXxRsiSEs6ZcON1Qdtv4qp/K/MZZN5UEg0gx8436+V0CT949
+ 5bEYL+jNwL1iZ70eP0HBfuonvMUiriqhq8RHpjWJNOCpL2InXRlWqNdghO2xggzTE86CntmB4
+ hQmxPwVkUDOfYZydf+HEOqxV/Aw4Y7PcZkG2Y4rvHuFBLJ+i7qnhNuXctA880VaKxAeykJ24k
+ xwN29VYmp6xQCigWgdVu7o9J4L0h0ZND8zWg8kMvRLafECr5Uo7sJl144KB4bKWvcu2+jTgig
+ F6pIqdLFeW5W3DGtg/GtLvJvb9BeJQKYFB16nGqN/sACv9WFP3UXRHKFdOaFTO355B1BNR1PR
+ tZRDq7bOVq/3qjrlrqVfvuFOZO6dYTi6qX3V/hOdhQykoFTrGRWCOukmvO/II+urPAKmXhsUi
+ thRNT0B77+gjv+OB9+4kF/dEa8Xueu2c+n8BJIhV4RuU898t6mcKSZKYwfzWaFproGKsMNSzZ
+ iAl5N8sDW3lLcBig2KfbyPosN+AOY5W/Ybj0Yti/oZmWICHKVzqaP8yiuvDRFWzHHTNV6gzwo
+ jYgnL1P0vhbIjaFgiyy+w2lcZv0sqRFffcruhPcprRAwCIXEtI+dmrlSpMDX9QsqzaGlu1i0o
+ 1nVRon+HMGvceALGgwkrvI1FBWUCfxCXSF5g/DTzvpChT1N7HdOU2iI5Pi5bWwllIcO6qW+/o
+ L0zBpYuEfwRRYfYOK9CW4JYQ==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240722_082730_172474_EFD2DC38 
-X-CRM114-Status: GOOD (  12.83  )
+X-CRM114-CacheID: sfid-20240722_082817_918616_D9C2F0FE 
+X-CRM114-Status: GOOD (  14.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,57 +95,192 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: frank-w@public-files.de
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Currently if the xhci1 controller happens to probe before the pcie1
-controller then it fails with the following errors:
+Hi
+Am 22=2E Juli 2024 17:14:07 MESZ schrieb AngeloGioacchino Del Regno <angel=
+ogioacchino=2Edelregno@collabora=2Ecom>:
+>Il 09/07/24 10:16, Frank Wunderlich ha scritto:
+>> From: Frank Wunderlich <frank-w@public-files=2Ede>
+>>=20
+>> Current devicetree-nodes missing a label which allows to add apropertie=
+s
+>> or phandles to them, so add them=2E
+>>=20
+>> Signed-off-by: Frank Wunderlich <frank-w@public-files=2Ede>
+>> Fixes: 660c230bf302 ("arm64: dts: mediatek: mt7988: add I2C controllers=
+")
+>> Fixes: 09ff2216a035 ("arm64: dts: mediatek: mt7988: add PWM controller"=
+)
+>> Fixes: 09346afaba0a ("arm64: dts: mediatek: mt7988: add XHCI controller=
+s")
+>> Fixes: b616b403cbff ("arm64: dts: mediatek: mt7988: add clock controlle=
+rs")
+>> Fixes: 6c1d134a103f ("arm64: dts: mediatek: Add initial MT7988A and BPI=
+-R4")
+>
+>You're just only adding node labels, what does this actually fix?!?
+>
+>Besides, I could tell you to remove the Fixes tags, but then, there's sti=
+ll nothing
+>using those node labels - so there's nothing justifying this addition, at=
+ all=2E
+>
+>I guess that you want to use those (bar the cpu[0-3] labels, which you're=
+ adding
+>because=2E=2E=2E uhh=2E=2E why?) from some board DT=2E=2E=2E so please ju=
+st do that: send a commit
+>adding your board DT and adding the required node label(s) here as a cons=
+equence=2E
 
-xhci-mtk 11290000.usb: clocks are not stable (0x1003d0f)
-xhci-mtk 11290000.usb: can't setup: -110
-xhci-mtk: probe of 11290000.usb failed with error -110
+Currently i need these labels in uboot to add additional properties (e=2Eg=
+=2E hwver to cpu-nodes) and linking the existing nodes (clocks to eth node)=
+ to some added in uboot overlay=2E
 
-The issue has been tracked down to the CLK_INFRA_AO_PCIE_P1_TL_96M
-clock, although exactly why this pcie clock is needed for the usb
-controller is still unknown. Add the clock to the xhci1 controller so it
-always probes successfully and use a placeholder clock name for it.
+Currently we face some hen-egg issue as support is in mainline uboot and w=
+e forced to move to of_upstream to add pcie support and maybe more,but in m=
+ainline linux we miss nearly all nodes we have in our private repos=2E=2E=
+=2Ebut i'm busy in getting of_upstream in uboot working basicly=2E
 
-Reported-by: Nícolas F. R. A. Prado <nfraprado@collabora.com> #KernelCI
-Closes: https://lore.kernel.org/all/9fce9838-ef87-4d1b-b3df-63e1ddb0ec51@notapiano/
-Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+>Cheers,
+>Angelo
+>
+>> ---
+>>   arch/arm64/boot/dts/mediatek/mt7988a=2Edtsi | 32 +++++++++++---------=
 ---
- arch/arm64/boot/dts/mediatek/mt8195.dtsi | 10 ++++++++--
- 1 file changed, 8 insertions(+), 2 deletions(-)
+>>   1 file changed, 16 insertions(+), 16 deletions(-)
+>>=20
+>> diff --git a/arch/arm64/boot/dts/mediatek/mt7988a=2Edtsi b/arch/arm64/b=
+oot/dts/mediatek/mt7988a=2Edtsi
+>> index aa728331e876=2E=2E9ced005b1595 100644
+>> --- a/arch/arm64/boot/dts/mediatek/mt7988a=2Edtsi
+>> +++ b/arch/arm64/boot/dts/mediatek/mt7988a=2Edtsi
+>> @@ -14,28 +14,28 @@ cpus {
+>>   		#address-cells =3D <1>;
+>>   		#size-cells =3D <0>;
+>>   -		cpu@0 {
+>> +		cpu0: cpu@0 {
+>>   			compatible =3D "arm,cortex-a73";
+>>   			reg =3D <0x0>;
+>>   			device_type =3D "cpu";
+>>   			enable-method =3D "psci";
+>>   		};
+>>   -		cpu@1 {
+>> +		cpu1: cpu@1 {
+>>   			compatible =3D "arm,cortex-a73";
+>>   			reg =3D <0x1>;
+>>   			device_type =3D "cpu";
+>>   			enable-method =3D "psci";
+>>   		};
+>>   -		cpu@2 {
+>> +		cpu2: cpu@2 {
+>>   			compatible =3D "arm,cortex-a73";
+>>   			reg =3D <0x2>;
+>>   			device_type =3D "cpu";
+>>   			enable-method =3D "psci";
+>>   		};
+>>   -		cpu@3 {
+>> +		cpu3: cpu@3 {
+>>   			compatible =3D "arm,cortex-a73";
+>>   			reg =3D <0x3>;
+>>   			device_type =3D "cpu";
+>> @@ -43,7 +43,7 @@ cpu@3 {
+>>   		};
+>>   	};
+>>   -	oscillator-40m {
+>> +	system_clk: oscillator-40m {
+>>   		compatible =3D "fixed-clock";
+>>   		clock-frequency =3D <40000000>;
+>>   		#clock-cells =3D <0>;
+>> @@ -86,7 +86,7 @@ infracfg: clock-controller@10001000 {
+>>   			#clock-cells =3D <1>;
+>>   		};
+>>   -		clock-controller@1001b000 {
+>> +		topckgen: clock-controller@1001b000 {
+>>   			compatible =3D "mediatek,mt7988-topckgen", "syscon";
+>>   			reg =3D <0 0x1001b000 0 0x1000>;
+>>   			#clock-cells =3D <1>;
+>> @@ -99,13 +99,13 @@ watchdog: watchdog@1001c000 {
+>>   			#reset-cells =3D <1>;
+>>   		};
+>>   -		clock-controller@1001e000 {
+>> +		apmixedsys: clock-controller@1001e000 {
+>>   			compatible =3D "mediatek,mt7988-apmixedsys";
+>>   			reg =3D <0 0x1001e000 0 0x1000>;
+>>   			#clock-cells =3D <1>;
+>>   		};
+>>   -		pwm@10048000 {
+>> +		pwm: pwm@10048000 {
+>>   			compatible =3D "mediatek,mt7988-pwm";
+>>   			reg =3D <0 0x10048000 0 0x1000>;
+>>   			clocks =3D <&infracfg CLK_INFRA_66M_PWM_BCK>,
+>> @@ -124,7 +124,7 @@ pwm@10048000 {
+>>   			status =3D "disabled";
+>>   		};
+>>   -		i2c@11003000 {
+>> +		i2c0: i2c@11003000 {
+>>   			compatible =3D "mediatek,mt7981-i2c";
+>>   			reg =3D <0 0x11003000 0 0x1000>,
+>>   			      <0 0x10217080 0 0x80>;
+>> @@ -137,7 +137,7 @@ i2c@11003000 {
+>>   			status =3D "disabled";
+>>   		};
+>>   -		i2c@11004000 {
+>> +		i2c1: i2c@11004000 {
+>>   			compatible =3D "mediatek,mt7981-i2c";
+>>   			reg =3D <0 0x11004000 0 0x1000>,
+>>   			      <0 0x10217100 0 0x80>;
+>> @@ -150,7 +150,7 @@ i2c@11004000 {
+>>   			status =3D "disabled";
+>>   		};
+>>   -		i2c@11005000 {
+>> +		i2c2: i2c@11005000 {
+>>   			compatible =3D "mediatek,mt7981-i2c";
+>>   			reg =3D <0 0x11005000 0 0x1000>,
+>>   			      <0 0x10217180 0 0x80>;
+>> @@ -163,7 +163,7 @@ i2c@11005000 {
+>>   			status =3D "disabled";
+>>   		};
+>>   -		usb@11190000 {
+>> +		ssusb0: usb@11190000 {
+>>   			compatible =3D "mediatek,mt7988-xhci", "mediatek,mtk-xhci";
+>>   			reg =3D <0 0x11190000 0 0x2e00>,
+>>   			      <0 0x11193e00 0 0x0100>;
+>> @@ -177,7 +177,7 @@ usb@11190000 {
+>>   			clock-names =3D "sys_ck", "ref_ck", "mcu_ck", "dma_ck", "xhci_ck";
+>>   		};
+>>   -		usb@11200000 {
+>> +		ssusb1: usb@11200000 {
+>>   			compatible =3D "mediatek,mt7988-xhci", "mediatek,mtk-xhci";
+>>   			reg =3D <0 0x11200000 0 0x2e00>,
+>>   			      <0 0x11203e00 0 0x0100>;
+>> @@ -191,21 +191,21 @@ usb@11200000 {
+>>   			clock-names =3D "sys_ck", "ref_ck", "mcu_ck", "dma_ck", "xhci_ck";
+>>   		};
+>>   -		clock-controller@11f40000 {
+>> +		xfi_pll: clock-controller@11f40000 {
+>>   			compatible =3D "mediatek,mt7988-xfi-pll";
+>>   			reg =3D <0 0x11f40000 0 0x1000>;
+>>   			resets =3D <&watchdog 16>;
+>>   			#clock-cells =3D <1>;
+>>   		};
+>>   -		clock-controller@15000000 {
+>> +		ethsys: clock-controller@15000000 {
+>>   			compatible =3D "mediatek,mt7988-ethsys", "syscon";
+>>   			reg =3D <0 0x15000000 0 0x1000>;
+>>   			#clock-cells =3D <1>;
+>>   			#reset-cells =3D <1>;
+>>   		};
+>>   -		clock-controller@15031000 {
+>> +		ethwarp: clock-controller@15031000 {
+>>   			compatible =3D "mediatek,mt7988-ethwarp";
+>>   			reg =3D <0 0x15031000 0 0x1000>;
+>>   			#clock-cells =3D <1>;
+>
+>
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-index 2ee45752583c..cc5169871f1c 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-@@ -1453,9 +1453,15 @@ xhci1: usb@11290000 {
- 				 <&topckgen CLK_TOP_SSUSB_P1_REF>,
- 				 <&apmixedsys CLK_APMIXED_USB1PLL>,
- 				 <&clk26m>,
--				 <&pericfg_ao CLK_PERI_AO_SSUSB_1P_XHCI>;
-+				 <&pericfg_ao CLK_PERI_AO_SSUSB_1P_XHCI>,
-+				 /*
-+				  * This clock is required due to a hardware
-+				  * bug. The 'frmcnt_ck' clock name is used as a
-+				  * placeholder.
-+				  */
-+				 <&infracfg_ao CLK_INFRA_AO_PCIE_P1_TL_96M>;
- 			clock-names = "sys_ck", "ref_ck", "mcu_ck", "dma_ck",
--				      "xhci_ck";
-+				      "xhci_ck", "frmcnt_ck";
- 			mediatek,syscon-wakeup = <&pericfg 0x400 104>;
- 			wakeup-source;
- 			status = "disabled";
 
----
-base-commit: dee7f101b64219f512bb2f842227bd04c14efe30
-change-id: 20240722-usb-1129-probe-pci-clk-fix-ef8646f46aac
-
-Best regards,
--- 
-Nícolas F. R. A. Prado <nfraprado@collabora.com>
-
+regards Frank
 
