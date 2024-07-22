@@ -4,68 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F559C3DA59
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Jul 2024 09:11:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B40BC3DA5D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Jul 2024 09:28:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fKe8vs0sSE7I1XYwH13hJ92Casj6y0v1MtE8TO6otA0=; b=TwBX9a/FaoBYvvqhvczIMU0OBq
-	mHUqdnDSrPrAT3ZgsTQEjoteA3GybTSmq3qBC5s6kePaqc+LVUqdRS+Y8L4A5EiuXvOt3AXtd9nxh
-	Osks19jBxnPr9Ac41YmhNxpk9Pe5npygfSRD/NfQkmsP5dVOMM6Ru+8kt1NlIItan8FYBZi8V+S/M
-	aATWNKY+u9zLahVyOL5eRUGGCYR1ptE2EHqGIvCpty4hdXyEBfOH/FV67Xd3PlEpW9S6nJi9Zg1K4
-	GeYDukbInLtxrByadjF2QryKDCHwLOGnhhWK1PtIQymIUE4P7VYj2jz3o8UeAmcsD5bu7CGPdkmAy
-	C0BwzoIw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rqAxuPwHe6ewTOQqtnUshUdwOCuglZgMggOvLSlURPo=; b=mVAkJJ5pJosaDxI7zfOyoHf+Yi
+	BS2t7rzhAycciHoXIFSlH5S1BrEB9EBCwYexFkwXhwesCyYEIdz127GuqNOSvmKSgfnxbkQlmLonO
+	KYjGLBCDdmjKZQmZQgfFXFC0KpQjQSh+zNJf1QJhRr++ja+PCoinIV2t2kV4Gk80+DW/MGJoX/zyL
+	fL5cYYbynK4VPWasqB+MKl7MpRwiS5JZvXnN0MaOE4mYSvPCAb3AqFKcz5f7r7kU60q51KmiBKtlY
+	mrM5GLLyBGmfrL3ccHjBeoIo9cDyZQCOSdMArdRGckhc4+YzzHXT9mJxZU8QbGtGI/WJgzfcibrsV
+	bplteMWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sVp4d-00000008zcs-22sE;
-	Mon, 22 Jul 2024 09:11:15 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1sVpL6-000000092OM-3Prt;
+	Mon, 22 Jul 2024 09:28:16 +0000
+Received: from mail-lj1-f175.google.com ([209.85.208.175])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sVp3z-00000008zPh-1PEv;
-	Mon, 22 Jul 2024 09:10:36 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1721639432;
-	bh=0y+SSd3HzuVB5A6DL6ENAzZ5/ElbVtDZp3b9VkjVamI=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=2VGLy/jK8YVxqbFJktL3gY9D52LdEm31BRANHinVSGUKuJNyWn5MFnI57uXDPK4ML
-	 i8xFgjrLxYfKcEKOm0Y3+BSgbvhvrT2w2hQbZGMV10FtS+3PXEvVyn8ELtzQ3AVknF
-	 TAZ3DiXaVYdoDpMiIRPWN3Z7EXL+mrrCyAJosPNBrTWnqvDIS9OBBjxmlV6a2GnWQy
-	 dsBlDwlIvONpdj0C8LMokb2LxFBTrPq0kwJ3xaDCwGeoRJ+BhAOwm9Q+3Rtu35eXP9
-	 mqurhhY8ZpB983rjUR1WE27dH2gDOPxte2afuhHR9jm0RB8fBCeuIaSIjQbNgQn24c
-	 P4BxqVotUui/g==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 6FF0237800DE;
-	Mon, 22 Jul 2024 09:10:31 +0000 (UTC)
-Message-ID: <d39045cf-bcf5-4d9a-8347-752ff09ccc24@collabora.com>
-Date: Mon, 22 Jul 2024 11:10:30 +0200
+	id 1sVpL4-000000092NV-0Td2
+	for linux-mediatek@lists.infradead.org;
+	Mon, 22 Jul 2024 09:28:15 +0000
+Received: by mail-lj1-f175.google.com with SMTP id 38308e7fff4ca-2eeb1ba0468so54806731fa.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 22 Jul 2024 02:28:13 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1721640491; x=1722245291;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=rqAxuPwHe6ewTOQqtnUshUdwOCuglZgMggOvLSlURPo=;
+        b=LIOluBlMz23c9ADgJtejfrodqU0ly25bxX6U7gVgI6FU5uJ4VjUubPnV5Wqb5iyNxu
+         UXnbzJbmamfD10BihyLhvcmwRIonoje0aiGuxIAX4SWXxPdQdO6kF6wOZTqO677mbQ8I
+         jzrQzci4fQ9TNe1DbipI8nd3hv7Un8TtM2ICb/3RiN/rWEGMx+v1xnZ+kQqbzJmTLjf/
+         jaxzhns7YL6R7WIIqUcpvZS01QYT2WTZxmwguNQlwjiTBidn2esx0G2xjhyqI74zRd9q
+         Y1yZv2gq7ORgfq79E+MExROGXfAfT1QSxNybUN7IHODZompmQ58kMqBKR5pnzBqOY8RI
+         SY4Q==
+X-Gm-Message-State: AOJu0Yzu03h80eN3r0SfQpoBZb9KJCoXGsAeWEwL4159CmpAUl4Y0W/c
+	ChVHiqzS4wu4kCcoqX1x7jhjihV+X08QTy7eJ2cOh1tgtm8BbUrcW0OpTg==
+X-Google-Smtp-Source: AGHT+IHfSmzWVIDD8uWyohtLPIG/YOLFJx/XSErUoHXnaQkRWxoKR3Hg56MQAwTji9rX7dCIZIE+7Q==
+X-Received: by 2002:a2e:92c5:0:b0:2ee:7a3e:4721 with SMTP id 38308e7fff4ca-2ef16826a21mr39363401fa.39.1721640490632;
+        Mon, 22 Jul 2024 02:28:10 -0700 (PDT)
+Received: from gmail.com (fwdproxy-lla-008.fbsv.net. [2a03:2880:30ff:8::face:b00c])
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5a30c2f869dsm5833437a12.65.2024.07.22.02.28.10
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 22 Jul 2024 02:28:10 -0700 (PDT)
+Date: Mon, 22 Jul 2024 02:28:08 -0700
+From: Breno Leitao <leitao@debian.org>
+To: Dan Carpenter <dan.carpenter@linaro.org>
+Cc: linux-mediatek@lists.infradead.org
+Subject: Re: [bug report] net: mediatek: mtk_eth_sock: allocate dummy
+ net_device dynamically
+Message-ID: <Zp4mKL/X1HSrjufq@gmail.com>
+References: <4160f4e0-cbef-4a22-8b5d-42c4d399e1f7@stanley.mountain>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: mediatek: mt8186-corsola: Update ADSP
- reserved memory region
-To: Fei Shao <fshao@chromium.org>
-Cc: Chen-Yu Tsai <wenst@chromium.org>, Conor Dooley <conor+dt@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <20240719045823.3264974-1-fshao@chromium.org>
- <7edb3361-9e53-44ad-82ec-b2c81834b2ea@collabora.com>
- <CAC=S1nh0c4HL2uUcz_zMmtuJvk7+3iWT5mEtmtpDrp1+nWp2cQ@mail.gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <CAC=S1nh0c4HL2uUcz_zMmtuJvk7+3iWT5mEtmtpDrp1+nWp2cQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <4160f4e0-cbef-4a22-8b5d-42c4d399e1f7@stanley.mountain>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240722_021035_706962_86747393 
-X-CRM114-Status: GOOD (  15.63  )
+X-CRM114-CacheID: sfid-20240722_022814_172503_3894773D 
+X-CRM114-Status: GOOD (  12.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,68 +79,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 22/07/24 05:37, Fei Shao ha scritto:
-> On Fri, Jul 19, 2024 at 5:22 PM AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> wrote:
->>
->> Il 19/07/24 06:58, Fei Shao ha scritto:
->>> Corsola firmware reserves the memory region of [0x60000000, 0x61100000)
->>
->> Sorry but if the region is supposed to be 0x1100000 long....
->>
->>> exclusively for ADSP usage.
->>> But in fact, a 6 MB "hole" of [0x60A00000, 0x61000000) didn't get
->>> assigned to the ADSP node in the Corsola device tree, meaning no audio
->>> tasks can access and utilize that memory section.
->>>
->>> Update the reserved ADSP memory region to fill the gap.
->>>
->>> Fixes: 8855d01fb81f ("arm64: dts: mediatek: Add MT8186 Krabby platform based Tentacruel / Tentacool")
->>> Signed-off-by: Fei Shao <fshao@chromium.org>
->>> ---
->>>
->>>    arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi | 2 +-
->>>    1 file changed, 1 insertion(+), 1 deletion(-)
->>>
->>> diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi b/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
->>> index afdab5724eaa..0c4a26117428 100644
->>> --- a/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
->>> +++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
->>> @@ -169,7 +169,7 @@ adsp_dma_mem: memory@61000000 {
->>>
->>>                adsp_mem: memory@60000000 {
->>>                        compatible = "shared-dma-pool";
->>> -                     reg = <0 0x60000000 0 0xA00000>;
->>> +                     reg = <0 0x60000000 0 0x1000000>;
->>
->> ...why are you making it 0x1000000 long?
-> 
-> Because 0x61000000-0x61100000 belongs to another existing region,
-> `adsp_dma_mem`.
-> It's slightly confusing because the diff doesn't show that directly...
-> here's its snippet for ref:
-> 
+Hello Dan,
 
-Oh, sorry about that, that's right.
+On Fri, Jul 19, 2024 at 06:52:50PM -0500, Dan Carpenter wrote:
+> But it's free here.  (NULL dereference).  I really would suggest moving the
+> free_netdev() to the release function.  The probe and release function are
+> easier to read if they're in mirrored order where every allocation has a
+> matching free.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Thanks for reporting it. It seems a real problem at the error path,
+indeed.
 
-> adsp_dma_mem: memory@61000000 {
->          compatible = "shared-dma-pool";
->          reg = <0 0x61000000 0 0x100000>;
->          no-map;
-> };
-> 
-> Regards,
-> Fei
->>
->> Cheers,
->> Angelo
->>
->>>                        no-map;
->>>                };
->>>
->>
->>
+I've hacked a patch with your suggestion. how does it look like?
 
+
+Author: Breno Leitao <leitao@debian.org>
+Date:   Mon Jul 22 02:14:19 2024 -0700
+
+    net: mediatek: Fix potential NULL pointer dereference in dummy net_device handling
+    
+    Move the freeing of the dummy net_device from mtk_free_dev() to mtk_remove().
+    
+    Previously, if alloc_netdev_dummy() failed in mtk_probe(), eth->dummy_dev
+    would be NULL. The error path would then call mtk_free_dev(), which in turn
+    called free_netdev() assuming dummy_dev was allocated (but it was not),
+    potentially causing a NULL pointer dereference.
+    
+    By moving free_netdev() to mtk_remove(), we ensure it's only called when
+    mtk_probe() has succeeded and dummy_dev is fully allocated. This addresses
+    a potential NULL pointer dereference detected by Smatch[1].
+    
+    Link: https://lore.kernel.org/all/4160f4e0-cbef-4a22-8b5d-42c4d399e1f7@stanley.mountain/ [1]
+    Fixes: b209bd6d0bff ("net: mediatek: mtk_eth_sock: allocate dummy net_device dynamically")
+    Reported-by: Dan Carpenter <dan.carpenter@linaro.org>
+    Suggested-by: Dan Carpenter <dan.carpenter@linaro.org>
+    Signed-off-by: Breno Leitao <leitao@debian.org>
+
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index 0cc2dd85652f..16ca427cf4c3 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -4223,8 +4223,6 @@ static int mtk_free_dev(struct mtk_eth *eth)
+ 		metadata_dst_free(eth->dsa_meta[i]);
+ 	}
+ 
+-	free_netdev(eth->dummy_dev);
+-
+ 	return 0;
+ }
+ 
+@@ -5090,6 +5088,7 @@ static void mtk_remove(struct platform_device *pdev)
+ 	netif_napi_del(&eth->tx_napi);
+ 	netif_napi_del(&eth->rx_napi);
+ 	mtk_cleanup(eth);
++	free_netdev(eth->dummy_dev);
+ 	mtk_mdio_cleanup(eth);
+ }
+ 
 
