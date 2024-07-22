@@ -4,67 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B40BC3DA5D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Jul 2024 09:28:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBCBFC3DA59
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Jul 2024 09:28:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rqAxuPwHe6ewTOQqtnUshUdwOCuglZgMggOvLSlURPo=; b=mVAkJJ5pJosaDxI7zfOyoHf+Yi
-	BS2t7rzhAycciHoXIFSlH5S1BrEB9EBCwYexFkwXhwesCyYEIdz127GuqNOSvmKSgfnxbkQlmLonO
-	KYjGLBCDdmjKZQmZQgfFXFC0KpQjQSh+zNJf1QJhRr++ja+PCoinIV2t2kV4Gk80+DW/MGJoX/zyL
-	fL5cYYbynK4VPWasqB+MKl7MpRwiS5JZvXnN0MaOE4mYSvPCAb3AqFKcz5f7r7kU60q51KmiBKtlY
-	mrM5GLLyBGmfrL3ccHjBeoIo9cDyZQCOSdMArdRGckhc4+YzzHXT9mJxZU8QbGtGI/WJgzfcibrsV
-	bplteMWA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=5YicvWYDtzdD3kDkgPbvuiETzXe1eRDbQTVMWRQ080c=; b=Mda963neeWMLU365TkJoZ7243g
+	jfQXOPvuiJWH3vA3F4uOfeyrG2qEAk/NPvI+uIqorhEYwxLXullsxxDrq6a8lANZnRi8N7MA+TGt7
+	CTVwWmEtKpKr3ViAYLKGant5wdV3LXDxKPX0eow+gtl25cFtSSV1s+ZC0Rdf7UC7cavptUpQh2Ejj
+	7XUmmxuXO6bgyWdwKtCZ1izBDq18n7InqpjQtnQVt08ffNEHPk2f56Bvtt2jtkXNmx5Bs3fuZhFV2
+	/sWlA0thQVx3OoRglYEdNZBEfWHUPUPu0MmNuoVeyoDVvTjCd3K97KPq6YrCMtyEj0YERWbLuRwK9
+	LXxTQPnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sVpL6-000000092OM-3Prt;
-	Mon, 22 Jul 2024 09:28:16 +0000
-Received: from mail-lj1-f175.google.com ([209.85.208.175])
+	id 1sVpLA-000000092Pm-2bFM;
+	Mon, 22 Jul 2024 09:28:20 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sVpL4-000000092NV-0Td2
+	id 1sVpL7-000000092OE-2Ohi
 	for linux-mediatek@lists.infradead.org;
-	Mon, 22 Jul 2024 09:28:15 +0000
-Received: by mail-lj1-f175.google.com with SMTP id 38308e7fff4ca-2eeb1ba0468so54806731fa.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 22 Jul 2024 02:28:13 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1721640491; x=1722245291;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=rqAxuPwHe6ewTOQqtnUshUdwOCuglZgMggOvLSlURPo=;
-        b=LIOluBlMz23c9ADgJtejfrodqU0ly25bxX6U7gVgI6FU5uJ4VjUubPnV5Wqb5iyNxu
-         UXnbzJbmamfD10BihyLhvcmwRIonoje0aiGuxIAX4SWXxPdQdO6kF6wOZTqO677mbQ8I
-         jzrQzci4fQ9TNe1DbipI8nd3hv7Un8TtM2ICb/3RiN/rWEGMx+v1xnZ+kQqbzJmTLjf/
-         jaxzhns7YL6R7WIIqUcpvZS01QYT2WTZxmwguNQlwjiTBidn2esx0G2xjhyqI74zRd9q
-         Y1yZv2gq7ORgfq79E+MExROGXfAfT1QSxNybUN7IHODZompmQ58kMqBKR5pnzBqOY8RI
-         SY4Q==
-X-Gm-Message-State: AOJu0Yzu03h80eN3r0SfQpoBZb9KJCoXGsAeWEwL4159CmpAUl4Y0W/c
-	ChVHiqzS4wu4kCcoqX1x7jhjihV+X08QTy7eJ2cOh1tgtm8BbUrcW0OpTg==
-X-Google-Smtp-Source: AGHT+IHfSmzWVIDD8uWyohtLPIG/YOLFJx/XSErUoHXnaQkRWxoKR3Hg56MQAwTji9rX7dCIZIE+7Q==
-X-Received: by 2002:a2e:92c5:0:b0:2ee:7a3e:4721 with SMTP id 38308e7fff4ca-2ef16826a21mr39363401fa.39.1721640490632;
-        Mon, 22 Jul 2024 02:28:10 -0700 (PDT)
-Received: from gmail.com (fwdproxy-lla-008.fbsv.net. [2a03:2880:30ff:8::face:b00c])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5a30c2f869dsm5833437a12.65.2024.07.22.02.28.10
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 22 Jul 2024 02:28:10 -0700 (PDT)
-Date: Mon, 22 Jul 2024 02:28:08 -0700
-From: Breno Leitao <leitao@debian.org>
-To: Dan Carpenter <dan.carpenter@linaro.org>
-Cc: linux-mediatek@lists.infradead.org
-Subject: Re: [bug report] net: mediatek: mtk_eth_sock: allocate dummy
- net_device dynamically
-Message-ID: <Zp4mKL/X1HSrjufq@gmail.com>
-References: <4160f4e0-cbef-4a22-8b5d-42c4d399e1f7@stanley.mountain>
+	Mon, 22 Jul 2024 09:28:18 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 4603ACE0B1B;
+	Mon, 22 Jul 2024 09:28:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C6C57C4AF0A;
+	Mon, 22 Jul 2024 09:28:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1721640494;
+	bh=YhOXVRafcMg4tYD9zagl52iqpNlfOz9o9bO6OxtTXIs=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=th0NqCl/AHyOVJ+qH5Jn0cTR5xRpXoj9NUd7KC7xwvhbxq9Rlik6WyCrB5BCCyf84
+	 7qbANzTllFk6YVvXXhztKlJZc7JS4uV5z2RuuVPP3nE9+sYTfoNZXFvx/fuoJ6Nlni
+	 CjPex2FUiYGyhHoNf8K2HCTodsf4WYmpyRH+SP0jaoy/gRxGZCFGSX9rH/X+IYZvaG
+	 5r4fhX+inh27tRmsB0SM1jlYuRlEBcgmpSl238IG1MVlSZRXkDH8nQLczN3qR/3a4c
+	 4JRi2rVGmvqFxLwB9kxWrqlOKWzCyYEDDOZ7jBJzhLLerOYECdO5rjBG6GJxPr/NWv
+	 mgtfYEt1L3IJQ==
+From: Arnd Bergmann <arnd@kernel.org>
+To: Marcel Holtmann <marcel@holtmann.org>,
+	Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Chris Lu <chris.lu@mediatek.com>
+Cc: Arnd Bergmann <arnd@arndb.de>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Jing Cai <jing.cai@mediatek.com>,
+	Takashi Iwai <tiwai@suse.de>,
+	Peter Tsao <peter.tsao@mediatek.com>,
+	linux-bluetooth@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH 2/2] Bluetooth: btmtk: remove #ifdef around declarations
+Date: Mon, 22 Jul 2024 11:27:06 +0200
+Message-Id: <20240722092735.1109925-2-arnd@kernel.org>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20240722092735.1109925-1-arnd@kernel.org>
+References: <20240722092735.1109925-1-arnd@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <4160f4e0-cbef-4a22-8b5d-42c4d399e1f7@stanley.mountain>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240722_022814_172503_3894773D 
-X-CRM114-Status: GOOD (  12.17  )
+X-CRM114-CacheID: sfid-20240722_022817_839821_98F2EA15 
+X-CRM114-Status: GOOD (  10.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,61 +81,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Dan,
+From: Arnd Bergmann <arnd@arndb.de>
 
-On Fri, Jul 19, 2024 at 06:52:50PM -0500, Dan Carpenter wrote:
-> But it's free here.  (NULL dereference).  I really would suggest moving the
-> free_netdev() to the release function.  The probe and release function are
-> easier to read if they're in mirrored order where every allocation has a
-> matching free.
+The caller of these functions in btusb.c is guarded with an
+if(IS_ENABLED()) style check, so dead code is left out, but the
+declarations are still needed at compile time:
 
-Thanks for reporting it. It seems a real problem at the error path,
-indeed.
+drivers/bluetooth/btusb.c: In function 'btusb_mtk_reset':
+drivers/bluetooth/btusb.c:2705:15: error: implicit declaration of function 'btmtk_usb_subsys_reset' [-Wimplicit-function-declaration]
+ 2705 |         err = btmtk_usb_subsys_reset(hdev, btmtk_data->dev_id);
+      |               ^~~~~~~~~~~~~~~~~~~~~~
+drivers/bluetooth/btusb.c: In function 'btusb_send_frame_mtk':
+drivers/bluetooth/btusb.c:2720:23: error: implicit declaration of function 'alloc_mtk_intr_urb' [-Wimplicit-function-declaration]
+ 2720 |                 urb = alloc_mtk_intr_urb(hdev, skb, btusb_tx_complete);
+      |                       ^~~~~~~~~~~~~~~~~~
+drivers/bluetooth/btusb.c:2720:21: error: assignment to 'struct urb *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+ 2720 |                 urb = alloc_mtk_intr_urb(hdev, skb, btusb_tx_complete);
+      |                     ^
 
-I've hacked a patch with your suggestion. how does it look like?
+Fixes: 52828ea60dfd ("Bluetooth: btmtk: Fix btmtk.c undefined reference build error")
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+---
+ drivers/bluetooth/btmtk.h | 2 --
+ 1 file changed, 2 deletions(-)
 
-
-Author: Breno Leitao <leitao@debian.org>
-Date:   Mon Jul 22 02:14:19 2024 -0700
-
-    net: mediatek: Fix potential NULL pointer dereference in dummy net_device handling
-    
-    Move the freeing of the dummy net_device from mtk_free_dev() to mtk_remove().
-    
-    Previously, if alloc_netdev_dummy() failed in mtk_probe(), eth->dummy_dev
-    would be NULL. The error path would then call mtk_free_dev(), which in turn
-    called free_netdev() assuming dummy_dev was allocated (but it was not),
-    potentially causing a NULL pointer dereference.
-    
-    By moving free_netdev() to mtk_remove(), we ensure it's only called when
-    mtk_probe() has succeeded and dummy_dev is fully allocated. This addresses
-    a potential NULL pointer dereference detected by Smatch[1].
-    
-    Link: https://lore.kernel.org/all/4160f4e0-cbef-4a22-8b5d-42c4d399e1f7@stanley.mountain/ [1]
-    Fixes: b209bd6d0bff ("net: mediatek: mtk_eth_sock: allocate dummy net_device dynamically")
-    Reported-by: Dan Carpenter <dan.carpenter@linaro.org>
-    Suggested-by: Dan Carpenter <dan.carpenter@linaro.org>
-    Signed-off-by: Breno Leitao <leitao@debian.org>
-
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 0cc2dd85652f..16ca427cf4c3 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -4223,8 +4223,6 @@ static int mtk_free_dev(struct mtk_eth *eth)
- 		metadata_dst_free(eth->dsa_meta[i]);
- 	}
+diff --git a/drivers/bluetooth/btmtk.h b/drivers/bluetooth/btmtk.h
+index 6fc69cd8636b..5df7c3296624 100644
+--- a/drivers/bluetooth/btmtk.h
++++ b/drivers/bluetooth/btmtk.h
+@@ -202,7 +202,6 @@ int btmtk_process_coredump(struct hci_dev *hdev, struct sk_buff *skb);
+ void btmtk_fw_get_filename(char *buf, size_t size, u32 dev_id, u32 fw_ver,
+ 			   u32 fw_flavor);
  
--	free_netdev(eth->dummy_dev);
--
- 	return 0;
- }
+-#if IS_ENABLED(CONFIG_BT_HCIBTUSB_MTK)
+ int btmtk_usb_subsys_reset(struct hci_dev *hdev, u32 dev_id);
  
-@@ -5090,6 +5088,7 @@ static void mtk_remove(struct platform_device *pdev)
- 	netif_napi_del(&eth->tx_napi);
- 	netif_napi_del(&eth->rx_napi);
- 	mtk_cleanup(eth);
-+	free_netdev(eth->dummy_dev);
- 	mtk_mdio_cleanup(eth);
- }
+ int btmtk_usb_recv_acl(struct hci_dev *hdev, struct sk_buff *skb);
+@@ -217,7 +216,6 @@ int btmtk_usb_suspend(struct hci_dev *hdev);
+ int btmtk_usb_setup(struct hci_dev *hdev);
  
+ int btmtk_usb_shutdown(struct hci_dev *hdev);
+-#endif
+ #else
+ 
+ static inline int btmtk_set_bdaddr(struct hci_dev *hdev,
+-- 
+2.39.2
+
 
