@@ -4,93 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A25EC3DA59
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Jul 2024 18:08:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA889C3DA59
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Jul 2024 18:27:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HMK19Nn8t89hi1e3ly4VVQjOLnRO+D3abPmsW8/FOMM=; b=WfhprH1yFb3Qq1U9Cs8tZsTSsp
-	IqFPnwWgyLKvWRD0hoym7YyXSn/dFXRPNm9yyAj3JMpTfwhh1+e4pK/E2vLISINrBUR1oxyspRTAR
-	6CZk36F2dZ4J/b8/EIYbfkibdg6etjLh5GZzv2gJaqN7LzaIy38hGRMc1OQSut/EC/L8AO9I7p/5P
-	oakLhbcFFU7H2zp3qBqWLtkG57ci6PQNOfJQnqdzpUEKCx8M+QxDPHP/qDhbzwqMhBPXTYcQzDB93
-	cr3XF82lNl7XeGK/gZUPqW6ET3+uVRjQGGcId8pHYY5KGc5qNGpmASN95TiRtKEdKF3cSsLH9CiEZ
-	4qA1Djxw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9biYfsdlWUFfa2uPahdEjhFynqs7UpMUrewmhcvPcXA=; b=SvXCMsDFMHDu5hheudQ1vlx43h
+	vsYDH+L+AixG3sKtQFKby2pX7wRIT74ffdFT4tUst0pR8mPVVlSm017pnwIhS/e/vHrdfQUQ8znE7
+	iycazdwtjM+Q4QoWBTXxeM5QTt/Ya9F5O8wUGS9AxSYsURhObiN+K5ppMgxtd+Lr6GSM/PQ42XhtB
+	mulJ8EU/HqEkldOESD4QyRTS67alRqlW0nxsMs5IfMBVjbS8AX9JxVO/zBtE5KRbXMQARp6sO/oDa
+	1ZRCc7B0Wfj9Dt+gga2IioWbluL/2r98RtiPNUkVXaZJ0eHCsxYV/mOBoDE2kkPb3k05uTtylVsD5
+	FqK0eNdA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sVxSD-0000000AG4L-3S1S;
-	Mon, 22 Jul 2024 18:08:09 +0000
-Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
+	id 1sVxkX-0000000AH81-1n1s;
+	Mon, 22 Jul 2024 18:27:05 +0000
+Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sVxQZ-0000000AFub-1QPa
+	id 1sVxkA-0000000AH2G-25y9
 	for linux-mediatek@lists.infradead.org;
-	Mon, 22 Jul 2024 18:08:08 +0000
-Received: by mail-ed1-x52d.google.com with SMTP id 4fb4d7f45d1cf-5a869e3e9dfso1835a12.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 22 Jul 2024 11:06:26 -0700 (PDT)
+	Mon, 22 Jul 2024 18:26:44 +0000
+Received: by mail-pf1-x432.google.com with SMTP id d2e1a72fcca58-70d399da0b5so321022b3a.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 22 Jul 2024 11:26:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1721671585; x=1722276385; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=HMK19Nn8t89hi1e3ly4VVQjOLnRO+D3abPmsW8/FOMM=;
-        b=CKIvWPMLbiF1OSS3RqM7x+GYFd6w08Fsm61EfRS5ueY6CuosHTjxQ2fcXPMwLMFvSH
-         AkvxVoPKa5rUPPqQH9gXC4K7VSWQiLkPUVnWyDtQttqk8dR3/DCV37tRWl6grMmNCr0l
-         BCdik/2HWOh22dIegL3aNZibZh0qZHobxcQm9wk5EEplM6pyUK0zbF/U2GnYtx6wqITE
-         XSuRJ8izfC703XQIV4rgz/hD1O0eyHCEgECYT9zEGzKTobw5SkfvjzUsOXUxyVKd+CEQ
-         s96CUQyiIc7ZfSWCV9VQwHlvaL+xJVMWE+Ow/9INya1eQolOFsRmfUFTL3R3S5PN7OVZ
-         jvWw==
+        d=fastly.com; s=google; t=1721672801; x=1722277601; darn=lists.infradead.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:mail-followup-to:message-id:subject:cc:to
+         :from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=9biYfsdlWUFfa2uPahdEjhFynqs7UpMUrewmhcvPcXA=;
+        b=wdcu6p6ps/eKPY8iFRz2srp9MoZkVBRMDv0fSxhIDONEHRoGYHWkCQV8Qeiu21a7vQ
+         gZYS1Ip8RXZn/cc7PXYGGJU7NCF0obz7Rta8U3zoY/7gpKwjv8TEBv970llI8FGuL3PY
+         Bej6rFl5I28Jfv5yJrI20GA0tCJZ1NShhgjDU=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1721671585; x=1722276385;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=HMK19Nn8t89hi1e3ly4VVQjOLnRO+D3abPmsW8/FOMM=;
-        b=TF2FiTfrBqVHELl0uhNpNX/m7aCWocX0Kn8BB+4c2X2MI27zKajLqzI3u1XFe0XJu/
-         FDTFqTcKtWRrTybteMLGAW7m/Ol0+gz6ZrSIZG+A1vWWRmuZ4UiNQgCaSG4zzH8e/qNu
-         3yBDM7i3s/9rm/uMk0QmrTR6wbYtvZg1Virs5Pqr1vJkmjrLfTjEsbMd32zdcKfZPDlq
-         a48LkE1qVv25mQGo210u358e/bmtSvdIYdfCyhZDImUoC3y9iT8Xpq4e/ENWCRdzsI3V
-         wjSnTOCU0z4rpF9w+NEXn54wTe7Ygyej4DCwIiIuxucukjfFxGs+U870OE0gOuLnvsx8
-         TuJw==
-X-Forwarded-Encrypted: i=1; AJvYcCUXI4sluGLSw3ldQD5kJmxk3xKPgEqki+CHdZKfxVoUKmdLl52R2bBIQ1xZQdSNuj+yET6wP3DCdBayCr1r13DdawEMw2n7JgW/J8qHSnX2WzWz
-X-Gm-Message-State: AOJu0Yw3TqSI7YIELAHd7gAjD2yTE1PAdsiF2Fv/wose4cZ/F8R+KZyh
-	NtZ2cbggm1Yr8sH+CGbM54GKndo58HQiAr9UaAn4SFZBVuQbBfzkmGs+esnZh4E0+dvXq1yarE5
-	fCdpGUdhzNsTg/msmOf50TpHQl1YBONRbz/Z5xvhypCASxGcv
-X-Google-Smtp-Source: AGHT+IEl8zQov63qHRZlZmLKjP+SxF+AuxkB9AjZcfeGtwHxHIcLoa1XC0lM9boUyhzudCkZuPPMVUrlf0ByNKNURws=
-X-Received: by 2002:a05:6402:2747:b0:59e:9fb1:a0dc with SMTP id
- 4fb4d7f45d1cf-5a456a628aemr396556a12.6.1721671584394; Mon, 22 Jul 2024
- 11:06:24 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1721672801; x=1722277601;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:mail-followup-to:message-id:subject:cc:to
+         :from:date:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=9biYfsdlWUFfa2uPahdEjhFynqs7UpMUrewmhcvPcXA=;
+        b=BiYwiUC+C/4eb6AVj3K1dsyoixX+SHl4yqXqWJ+i4UsfkL3c0eOLmkAElwHAI+4RDT
+         sliG7GRFz9ws9Fu3NHTc9PZNyCoEbtXCHfoCC16WEsGErE/tENtWWxjvEsgFOIQ6luqc
+         be5wpInNZ5SOP94RqmiU5oC9tcQjx7r6y6eLhHOR0vJ0VWymhkRHI7rU4pQLkVfAjvWL
+         IYSjnByc/Zch1q27JM97aifSofzLHeSf13g5rMqlkJiC8v65m9sxzq4d73GkXsWz//qT
+         lA2fPS0wqEzhNU5lT9nGpDgWYaAHVNDtFXBUbiKt6YLaNdlsohBLEv8r47pLR6+WrV8b
+         m9Vg==
+X-Forwarded-Encrypted: i=1; AJvYcCUwMCInD5+UydxVK3Mc4rpwILLsMlFU82ZhsbxRmSinZk/5+7OHIlYNDgFQh7mKy87t8OUWsoSShTRckFGXL7Ta4it/19tndEyghuN45kZjNTwQ
+X-Gm-Message-State: AOJu0Yxr4yaPAlNtmgQhjJ8zlTG3/Q4YZDpr7M1DuwysIBdZXW5eW6MI
+	qjrDOJwsESKisqrmHMQneMGLY4cuA2WgEZTRA7lf8yXxUa7sLqsDrDta+RbsFA8=
+X-Google-Smtp-Source: AGHT+IHHHCDBMnxogaNQNY0v9bDW89ARG24TCy7ngJQcYGVhGfiHTIWN+aI+488Iott9h8yr0vfjFA==
+X-Received: by 2002:a05:6a20:cfa7:b0:1c3:b239:83e2 with SMTP id adf61e73a8af0-1c4285b767bmr9863586637.12.1721672800827;
+        Mon, 22 Jul 2024 11:26:40 -0700 (PDT)
+Received: from LQ3V64L9R2 (c-24-6-151-244.hsd1.ca.comcast.net. [24.6.151.244])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-1fd6f48f3ffsm57826685ad.285.2024.07.22.11.26.38
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 22 Jul 2024 11:26:40 -0700 (PDT)
+Date: Mon, 22 Jul 2024 11:26:37 -0700
+From: Joe Damato <jdamato@fastly.com>
+To: Elad Yifee <eladwf@gmail.com>
+Cc: daniel@makrotopia.org, Felix Fietkau <nbd@nbd.name>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Alexei Starovoitov <ast@kernel.org>,
+	Daniel Borkmann <daniel@iogearbox.net>,
+	Jesper Dangaard Brouer <hawk@kernel.org>,
+	John Fastabend <john.fastabend@gmail.com>, netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, bpf@vger.kernel.org
+Subject: Re: [PATCH net-next RFC] net: ethernet: mtk_eth_soc: use prefetch
+ methods
+Message-ID: <Zp6kXQkiOOI2IPT2@LQ3V64L9R2>
+Mail-Followup-To: Joe Damato <jdamato@fastly.com>,
+	Elad Yifee <eladwf@gmail.com>, daniel@makrotopia.org,
+	Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Alexei Starovoitov <ast@kernel.org>,
+	Daniel Borkmann <daniel@iogearbox.net>,
+	Jesper Dangaard Brouer <hawk@kernel.org>,
+	John Fastabend <john.fastabend@gmail.com>, netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, bpf@vger.kernel.org
+References: <20240720164621.1983-1-eladwf@gmail.com>
+ <Zp6GGzaJXhBcnGkC@LQ3V64L9R2>
+ <CA+SN3soUH9dxAkKD8AB64Ay48T=Dj-QFftMoMLZfVGH+Q1mjzA@mail.gmail.com>
 MIME-Version: 1.0
-References: <20240720071606.27930-6-yunfei.dong@mediatek.com> <2f5e5e81-21e1-421d-94ac-e4507b323680@web.de>
-In-Reply-To: <2f5e5e81-21e1-421d-94ac-e4507b323680@web.de>
-From: John Stultz <jstultz@google.com>
-Date: Mon, 22 Jul 2024 11:06:12 -0700
-Message-ID: <CANDhNCqzme0q7vey1jc84T0HJPiOSQF2fkyBfBLntdiyafEzYA@mail.gmail.com>
-Subject: Re: [PATCH v7 05/28] dma-heap: Add proper kref handling on dma-buf heaps
-To: Markus Elfring <Markus.Elfring@web.de>
-Cc: "T. J. Mercier" <tjmercier@google.com>, Yong Wu <yong.wu@mediatek.com>, 
-	Yunfei Dong <yunfei.dong@mediatek.com>, 
-	Project_Global_Chrome_Upstream_Group@mediatek.com, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-media@vger.kernel.org, dri-devel@lists.freedesktop.org, 
-	Angelo Gioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
-	Jeffrey Kardatzke <jkardatzke@google.com>, Marek Szyprowski <m.szyprowski@samsung.com>, 
-	Mauro Carvalho Chehab <mchehab@kernel.org>, Nathan Hebert <nhebert@chromium.org>, 
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
-	=?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>, 
-	Sebastian Fricke <sebastian.fricke@collabora.com>, Tomasz Figa <tfiga@chromium.org>, 
-	LKML <linux-kernel@vger.kernel.org>, Brian Starkey <Brian.Starkey@arm.com>, 
-	Chen-Yu Tsai <wenst@chromium.org>, =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
-	Daniel Vetter <daniel@ffwll.ch>, =?UTF-8?B?RnJpdHogS8O2bmln?= <frkoenig@chromium.org>, 
-	Hsin-yi Wang <hsinyi@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	Steve Cho <stevecho@chromium.org>, Sumit Semwal <sumit.semwal@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CA+SN3soUH9dxAkKD8AB64Ay48T=Dj-QFftMoMLZfVGH+Q1mjzA@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240722_110627_402432_D985FE0B 
-X-CRM114-Status: GOOD (  10.24  )
+X-CRM114-CacheID: sfid-20240722_112642_673688_7E728113 
+X-CRM114-Status: GOOD (  18.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,34 +123,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Jul 20, 2024 at 8:13=E2=80=AFAM Markus Elfring <Markus.Elfring@web.=
-de> wrote:
->
-> =E2=80=A6
-> > +++ b/drivers/dma-buf/dma-heap.c
-> =E2=80=A6
-> > +static void dma_heap_release(struct kref *ref)
-> > +{
-> =E2=80=A6
-> > +     mutex_lock(&heap_list_lock);
-> > +     list_del(&heap->list);
-> > +     mutex_unlock(&heap_list_lock);
-> =E2=80=A6
->
-> Under which circumstances would you become interested to apply a statemen=
-t
-> like =E2=80=9Cguard(mutex)(&heap_list_lock);=E2=80=9D?
-> https://elixir.bootlin.com/linux/v6.10/source/include/linux/mutex.h#L196
+On Mon, Jul 22, 2024 at 09:04:06PM +0300, Elad Yifee wrote:
+> On Mon, Jul 22, 2024 at 7:17 PM Joe Damato <jdamato@fastly.com> wrote:
+> >
+> > On Sat, Jul 20, 2024 at 07:46:18PM +0300, Elad Yifee wrote:
+> > > Utilize kernel prefetch methods for faster cache line access.
+> > > This change boosts driver performance,
+> > > allowing the CPU to handle about 5% more packets/sec.
+> >
+> > Nit: It'd be great to see before/after numbers and/or an explanation of
+> > how you measured this in the commit message.
+> Sure, I'll add iperf3 results in the next version.
 
-This strikes me as a strange place to apply it, as it seems like it
-would grow the lock hold time to the entire scope of the function
-unless one created a subscope for just the list_del, at which point
-you're not saving much or really improving readability.  I definitely
-think guard usage is very interesting in places where locks are
-released in multiple exit paths, etc. but this is a very trivial and
-straightforward lock/unlock usage, so I fret I don't quite understand
-the suggestion.
+Thanks, that'd be helpful!
 
-thanks
--john
+[...]
+
+> > > @@ -2039,7 +2040,7 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
+> > >               idx = NEXT_DESP_IDX(ring->calc_idx, ring->dma_size);
+> > >               rxd = ring->dma + idx * eth->soc->rx.desc_size;
+> > >               data = ring->data[idx];
+> > > -
+> > > +             prefetch(rxd);
+> >
+> > Maybe net_prefetch instead, as mentioned above?
+> This is the only case where I think prefetch should be used since it's
+> only the descriptor.
+
+I think you are implying that the optimization in the case of
+L1_CACHE_BYTES < 128 is unnecessary because because the
+mtk_rx_dma_v2 descriptors will be too far (i *
+eth->soc->rx.desc_size) apart to get any benefit from prefetching
+more data ?
+
+If my understanding is correct, then yes: I agree.
+
+> Thank you for your suggestions
+
+No problem!
 
