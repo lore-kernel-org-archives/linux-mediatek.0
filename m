@@ -4,65 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 660F6C3DA49
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jul 2024 13:49:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADA42C3DA63
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jul 2024 13:53:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hztw1JV07q0zcTn4ERx2MJW+nf9ib/hl2J0PmH8KVX8=; b=Hlmkr3nHGPog9UXE6JtiEzrNkA
-	4q2mN43exXHsYicflrrK7wGJ+8GnP355qfp2IfO4ukMQRGBcmIIsktC7tdstkxcs7VdJsxK+Ou1cC
-	OdzRHHTpmf0S36PXd07xssqkAMVe1cMsJwRLe4i1S8DhNLF9+OY/I24qiZDOLHAPc8xAC1ot/8rWt
-	cBafAXHx7DeAw7Lz4dVQTN8JYEdOdmmo9C/p78G29T689NX8ziy6TBngpXIuIsVNErvx08faX4pvE
-	zrGFMAmClucf+Lxtm6I8XzoCO9lpZjacPHd0QJ3cao7Qj3q+4QfqO2U+9w/G7hEmOeHT8ShoRZGGv
-	Clc7aTnw==;
+	bh=p1VwBMS/rxpbYYxRSZ+AtA5oTfFDoNKClUS+kuqTk2g=; b=laCnQedgnicC87WkLSrbuPtkiH
+	S81JNLi9B7peOxWzwbWo3OUvxS/8PD+lttocTwiGqU9C+xBbziAwglpl2CePI+f9/onAgL6wEmtmw
+	AqdMBdeo61xmGA0BEPzmBsd0vTzvxCYJH4AQBB7sNQeQx71eNdG3ugBRFGbrH3PgB3f3HRmRAqtJh
+	W/x1KQpkgAMLktiKY9Cl0z4uzbROXG/2fA4KkG/mSlH32RYBife/vahnHEP8sCturnfpFn/XFNau6
+	l2nGibb326m05I1JaUE8soiZhMYzrGuHYlFbYXFz4lit3i+7sPBjDKBWhxkPFImxOEjZDAmP6J5EB
+	ZShs4o/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sWFtF-0000000CbvX-3pnc;
-	Tue, 23 Jul 2024 13:49:17 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1sWFxP-0000000Ccga-1Z28;
+	Tue, 23 Jul 2024 13:53:35 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sWFsr-0000000Cbqv-49E5;
-	Tue, 23 Jul 2024 13:48:55 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1721742530;
-	bh=0101h3AR4t4tFHVUYl3vvkl6dP4t7mFrAs0dfnHYuhY=;
+	id 1sWFx1-0000000CcZI-0K8W;
+	Tue, 23 Jul 2024 13:53:12 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id F0C07CE0F77;
+	Tue, 23 Jul 2024 13:53:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 02239C4AF12;
+	Tue, 23 Jul 2024 13:53:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1721742788;
+	bh=fxKhJIaicZr9XSU5exxmSIrXP5l8HsTqwhyNNfNVshk=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Yqs/oV3d3A1c9LPaI+1J5zcGWIdbIDEd8yNoKJImvMjSIp6l/09WU08rOuXUhLqyl
-	 m9XQt16rECAQLjSLEJojCGwauE0Wc+HHvk8wlDyNEYGNzSNcXefQXGrg5tPrLXuYjn
-	 mJXYXOp0n+koAORglzN6PNWoSFc8HRcvX16VQQ9d7Jqk5UonTABPcqWD1TYcHjWcnz
-	 c8VvjbruG2l5h1T9ZQ0nWvBmIF/pgXn/PXswv7YI9SgZlXzDQF/VXmWV/ZuRWcG4h3
-	 5xVnvwVt7Kc3XtFMPwtqsLKlBCQxC2KtXe7XhFW24XqoHMDz24MbtFRp0k9xhzhCqP
-	 Az+w45WA3ZZKA==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 07829378143B;
-	Tue, 23 Jul 2024 13:48:49 +0000 (UTC)
-Message-ID: <229cecc5-33b9-4ab7-bd3b-3243415cfa4e@collabora.com>
-Date: Tue, 23 Jul 2024 15:48:49 +0200
+	b=mATW0goufYHNjHEiDWtrfrKzX/Q5hRt6Po4oJQ5p1/tIleic1z41KUCGNSMdwtJCj
+	 30wllJ790nUb4Qoh+VPUvWn7Z6JyQCMgT1P82L8oVZbYDINnOy0owGsrht5N4CQTYY
+	 aihUSaOmT1uThxsAZc3kz1zlyfU/coQ+rI6774OngQ7bM6C7ee8QQZaWQtSWm1hFIX
+	 WD3sfo/lnOjuIPGLQpWoOjX51OAeKLBoKjIRqMTafsCpNSAjU484CkZSX0uQuDavAN
+	 bdWtJPmkJ6lOYLzovHPpNhay/hDXzg0KmLXWcbmoILhcFZs988sejvW+/5Ocl7jnex
+	 Reg8kWr+jxvVQ==
+Message-ID: <2548bbdc-4e66-4caf-a76a-a3b3eda5268f@kernel.org>
+Date: Tue, 23 Jul 2024 15:53:04 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH] arm64: dts: mt8183: Add kukui-jacuzzi-cerise series
  boards
 To: Hsin-Te Yuan <yuanhsinte@chromium.org>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 References: <20240723-jacuzzi_dt-v1-1-3e994a2b5e24@chromium.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
 In-Reply-To: <20240723-jacuzzi_dt-v1-1-3e994a2b5e24@chromium.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240723_064854_196357_23F31D2E 
-X-CRM114-Status: GOOD (  18.76  )
+X-CRM114-CacheID: sfid-20240723_065311_518867_BBB29B9D 
+X-CRM114-Status: GOOD (  14.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,16 +119,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 23/07/24 11:56, Hsin-Te Yuan ha scritto:
+On 23/07/2024 11:56, Hsin-Te Yuan wrote:
 > Cerise is known as ASUS Chromebook CZ1.
 > Stern is known as ASUS Chromebook Flip CZ1.
 > 
 > Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
 > ---
->   .../dts/mediatek/mt8183-kukui-jacuzzi-cerise.dts   | 25 ++++++++++++++++
->   .../dts/mediatek/mt8183-kukui-jacuzzi-cerise.dtsi  | 21 +++++++++++++
->   .../dts/mediatek/mt8183-kukui-jacuzzi-stern.dts    | 35 ++++++++++++++++++++++
->   3 files changed, 81 insertions(+)
+>  .../dts/mediatek/mt8183-kukui-jacuzzi-cerise.dts   | 25 ++++++++++++++++
+
+How do you build this?
+
+This wasn't tested...
+
+>  .../dts/mediatek/mt8183-kukui-jacuzzi-cerise.dtsi  | 21 +++++++++++++
+>  .../dts/mediatek/mt8183-kukui-jacuzzi-stern.dts    | 35 ++++++++++++++++++++++
+>  3 files changed, 81 insertions(+)
 > 
 > diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cerise.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cerise.dts
 > new file mode 100644
@@ -106,118 +153,10 @@ Il 23/07/24 11:56, Hsin-Te Yuan ha scritto:
 > +/ {
 > +	model = "Google cerise board";
 > +	compatible = "google,cerise-sku0", "google,cerise", "mediatek,mt8183";
-> +};
-> +
-> +&mt6358codec {
-> +	mediatek,dmic-mode = <1>; /* one-wire */
-> +};
-> +
-> +&touchscreen {
-> +	status = "disabled";
-> +};
-> +
-> +&qca_wifi {
-> +	qcom,ath10k-calibration-variant = "GO_CERISE";
-> +};
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cerise.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cerise.dtsi
-> new file mode 100644
-> index 000000000000..087a0ef33e13
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cerise.dtsi
-> @@ -0,0 +1,21 @@
-> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-> +/*
-> + * Copyright 2021 Google LLC
-> + */
-> +
-> +/dts-v1/;
-> +#include "mt8183-kukui-jacuzzi.dtsi"
-> +
-> +&cpu_thermal {
-> +	sustainable-power = <4500>; /* milliwatts */
-> +};
-> +
-> +&mmc1_pins_uhs {
-> +	pins-clk {
-> +		drive-strength = <MTK_DRIVE_6mA>;
-> +	};
-> +};
-> +
-> +&i2c2 {
-> +	i2c-scl-internal-delay-ns = <13200>;
-> +};
 
-It's really just a few lines, unless more than two devicetrees use those, I'm
-more for just putting those in cerise.dts and stern.dts instead of having yet
-another dtsi to walk through...
+Where is the binding?
 
-
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-stern.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-stern.dts
-> new file mode 100644
-> index 000000000000..15e00feae3a9
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-stern.dts
-> @@ -0,0 +1,35 @@
-> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-> +/*
-> + * Copyright 2021 Google LLC
-> + */
-> +
-> +/dts-v1/;
-> +#include "mt8183-kukui-jacuzzi-cerise.dtsi"
-> +#include "mt8183-kukui-audio-da7219-rt1015p.dtsi"
-> +
-> +/ {
-> +	model = "Google stern board";
-> +	compatible = "google,cerise-sku1", "google,cerise", "mediatek,mt8183";
-> +};
-> +
-> +&mt6358codec {
-> +	mediatek,dmic-mode = <0>; /* two-wire */
-> +};
-> +
-> +&touchscreen {
-
-You are referencing to the touchscreen@10 node from mt8183-kukui-jacuzzi.dtsi...
-
-> +	status = "okay";
-
-...which is not disabled by default, so this property is useless, and
-
-> +
-> +	compatible = "hid-over-i2c";
-
-It's originally elan,ekth3500, you override it with hid-over-i2c, that's ok, but
-
-> +	reg = <0x10>;
-
-the node already has this property....
-
-> +	interrupt-parent = <&pio>; > +	interrupts = <155 IRQ_TYPE_LEVEL_LOW>;
-
-...and this one, actually even better, it's using interrupts-extended instead...
-
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&touchscreen_pins>;
-
-....and it's the same for this
-
-> +
-> +	post-power-on-delay-ms = <10>;
-> +	hid-descr-addr = <0x0001>;
-
-...but those two aren't present.
-
-So you only need three properties in here :-)
-
-> +};
-> +
-
-Apart from that, there's no google,cerise (nor the skus, of course) in the bindings
-so please add those to arm/mediatek.yaml between Burnet and Cozmo; only then I will
-be able to accept new board dts.
-
-Thanks!
-Angelo
+Best regards,
+Krzysztof
 
 
