@@ -4,102 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 681B2C3DA5D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Jul 2024 18:39:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CBDEC3DA7E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jul 2024 01:24:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZWBanF7ancu1eZNKQrcMwj3+MkIgAZbQm2LNdRgEOCs=; b=SphVaAomwK068wN4rWJ4Qt1JKy
-	nhVm1460C6sK/3rg7/wK5lv5enONldqvwaHgiI7cE/8f2ykyhoU3HQsjyfDBFVe0kkz2DjPoOj1zX
-	agRKuPw3Hc6/wdhDf2vaGhaJuvBr6niX3ildHOHzn4A4dAkmtEvHd/4/SuXHCsvbSnv/mKqAoU50B
-	+KnNnzvWtwwhPGQoEGIMX4Bl4oS0BaJI+9M8WdlHX0GvH7eCLO7USUTqky6oVkU0XaOjFphDGJOeD
-	dgnLIPbqNMJJTA8esCKrlDjoQv7WLDVU0pnQbDd0/m0bLkX4v008epOJu+iv15TlY4Y7MAXBQ5eUu
-	eAIb+pBA==;
+	bh=KNAjVtIqDfrC56Q8qhfNYmn0NMygk+muEkuMqdsJ15w=; b=ByqJxr9+JWQGogAOjJXrYgcaE8
+	QQSuJRQc/ZltzYQYPrT5CzbWJPLJyoBM+mdHswx+1vUO9k01/ebL1N36Haa8eO09f+FAxHg2om03y
+	48wRlGeeaeioExQcgt8u4MShGDOGT8YimSn7lM7ar8Bs3Qn692SFPfjT/y0BytXQm06IXmeJsXp/7
+	a0vf6b7vSksE46ZMB0fCLdGt8llzuctTYpXKSuuPWW8w3LQgg4y9WfD5+4RvobBD5lYqb22c3csuH
+	PCfSnCAlyUPAzVwl+DbWLfpnPuGMTOdxwAQTH94Mz8ySD8ivD/1xOxx+kNSRvp94h4GOAVDmUV3ri
+	vSwsWn6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sVxw3-0000000AI66-3B58;
-	Mon, 22 Jul 2024 18:38:59 +0000
-Received: from mout.web.de ([217.72.192.78])
+	id 1sW4GI-0000000B2By-1EzJ;
+	Tue, 23 Jul 2024 01:24:18 +0000
+Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sVxvz-0000000AI5C-3gOI;
-	Mon, 22 Jul 2024 18:38:58 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
-	s=s29768273; t=1721673507; x=1722278307; i=markus.elfring@web.de;
-	bh=ZWBanF7ancu1eZNKQrcMwj3+MkIgAZbQm2LNdRgEOCs=;
-	h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:Subject:To:Cc:
-	 References:From:In-Reply-To:Content-Type:
-	 Content-Transfer-Encoding:cc:content-transfer-encoding:
-	 content-type:date:from:message-id:mime-version:reply-to:subject:
-	 to;
-	b=I4iTSIAobGyOd+AymvOsGwuGnjZUqOv/TqDFglY00EC4Nkc3lIJVgH5Q1ouSe2br
-	 45pPLt3Uu9z3WboNK7hNKOGBRvEYo0WGIoHTO5CulEhiNpkU0LoboFH0erUEgpH91
-	 nCFBdPhy542VWyRoNy30j5R/tryZQ80XbE1u7ZXVE0EAPMxYA9wXlBvMNCMaw2W39
-	 QSMyYTjAM4/cXvH5ohnuNS48foxkbUqAz7fYC6eHfUH/GZgLpXEC8a3djDJf+xGnA
-	 88PbcOn7Lk2+0OvN20lkoYJPCPe6wAxxXy+CTCxtyTvGd2OZBy5EXdGgLjthYBXmN
-	 UjGruqdPANY4d/6Ecw==
-X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
-Received: from [192.168.178.21] ([94.31.89.95]) by smtp.web.de (mrweb105
- [213.165.67.124]) with ESMTPSA (Nemesis) id 1MxYbD-1s7zzu1CqP-00xc8g; Mon, 22
- Jul 2024 20:38:27 +0200
-Message-ID: <7c0e8a0e-3282-4d4e-a5b8-bcd979da3bfa@web.de>
-Date: Mon, 22 Jul 2024 20:38:23 +0200
+	id 1sW4GE-0000000B2B7-2luk
+	for linux-mediatek@lists.infradead.org;
+	Tue, 23 Jul 2024 01:24:16 +0000
+Received: from pps.filterd (m0246617.ppops.net [127.0.0.1])
+	by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 46MKtVic023808;
+	Tue, 23 Jul 2024 01:24:12 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=
+	from:to:cc:subject:date:message-id:in-reply-to:references
+	:mime-version:content-type:content-transfer-encoding; s=
+	corp-2023-11-20; bh=KNAjVtIqDfrC56Q8qhfNYmn0NMygk+muEkuMqdsJ15w=; b=
+	fV/J4p9bzSozIafa9O9NcfhWAxAdUDqiXwNd2WYX1/E1NSEZ54CjAl7asGR7eKQg
+	ERHUIBptpLkuNZMCUNld525YzFeo54N1fYHHIOhLaWZ/XbRN24iNoN5N6D/kigBe
+	zWASGoj6dVdni+eudb65IW9rsz4fbKmElc8/hWAQzh5IXRyP/Y5c3wYqx+vt3JaY
+	77wPvu4WjFKG1OofeJ8VUz9/qHHIjllsfdnASqINDTsRV+wDnBVA99pzMIL+DyuB
+	IA7c4OL6godPX3fClnC74vPGvyDRoFl4WraDVPIsI0jo/kRjTS+sT5DO4vhYtSeq
+	tyZIB8U24j057kMNPgWdNQ==
+Received: from phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta02.appoci.oracle.com [147.154.114.232])
+	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 40hfxpcg2b-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Tue, 23 Jul 2024 01:24:12 +0000 (GMT)
+Received: from pps.filterd (phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
+	by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (8.17.1.19/8.17.1.19) with ESMTP id 46N0nRcP018975;
+	Tue, 23 Jul 2024 01:24:11 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+	by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id 40h27xysrb-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Tue, 23 Jul 2024 01:24:11 +0000
+Received: from phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 46N1O685005270;
+	Tue, 23 Jul 2024 01:24:11 GMT
+Received: from ca-mkp2.ca.oracle.com.com (mpeterse-ol9.allregionaliads.osdevelopmeniad.oraclevcn.com [100.100.251.135])
+	by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTP id 40h27xysph-3;
+	Tue, 23 Jul 2024 01:24:11 +0000
+From: "Martin K. Petersen" <martin.petersen@oracle.com>
+To: linux-scsi@vger.kernel.org, avri.altman@wdc.com, alim.akhtar@samsung.com,
+        jejb@linux.ibm.com, peter.wang@mediatek.com
+Cc: "Martin K . Petersen" <martin.petersen@oracle.com>,
+        wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
+        chun-hung.wu@mediatek.com, alice.chao@mediatek.com,
+        cc.chou@mediatek.com, chaotian.jing@mediatek.com,
+        jiajie.hao@mediatek.com, powen.kao@mediatek.com,
+        qilin.tan@mediatek.com, lin.gui@mediatek.com, tun-yu.yu@mediatek.com,
+        eddie.huang@mediatek.com, naomi.chu@mediatek.com,
+        chu.stanley@gmail.com, huobean@gmail.com, stable@vger.kernel.org
+Subject: Re: [PATCH v2] ufs: core: fix deadlock when rtc update
+Date: Mon, 22 Jul 2024 21:23:22 -0400
+Message-ID: <172168235254.1161648.725788349992465796.b4-ty@oracle.com>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20240715063831.29792-1-peter.wang@mediatek.com>
+References: <20240715063831.29792-1-peter.wang@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 05/28] dma-heap: Add proper kref handling on dma-buf
- heaps
-To: John Stultz <jstultz@google.com>, "T. J. Mercier" <tjmercier@google.com>,
- Yong Wu <yong.wu@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-media@vger.kernel.org, dri-devel@lists.freedesktop.org
-Cc: Angelo Gioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Jeffrey Kardatzke <jkardatzke@google.com>,
- Marek Szyprowski <m.szyprowski@samsung.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Nathan Hebert <nhebert@chromium.org>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- Sebastian Fricke <sebastian.fricke@collabora.com>,
- Tomasz Figa <tfiga@chromium.org>, LKML <linux-kernel@vger.kernel.org>,
- Brian Starkey <Brian.Starkey@arm.com>, Chen-Yu Tsai <wenst@chromium.org>,
- =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>,
- Daniel Vetter <daniel@ffwll.ch>, =?UTF-8?Q?Fritz_K=C3=B6nig?=
- <frkoenig@chromium.org>, Hsin-yi Wang <hsinyi@chromium.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Steve Cho
- <stevecho@chromium.org>, Sumit Semwal <sumit.semwal@linaro.org>
-References: <20240720071606.27930-6-yunfei.dong@mediatek.com>
- <2f5e5e81-21e1-421d-94ac-e4507b323680@web.de>
- <CANDhNCqzme0q7vey1jc84T0HJPiOSQF2fkyBfBLntdiyafEzYA@mail.gmail.com>
-Content-Language: en-GB
-From: Markus Elfring <Markus.Elfring@web.de>
-In-Reply-To: <CANDhNCqzme0q7vey1jc84T0HJPiOSQF2fkyBfBLntdiyafEzYA@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:GUZxA/Aux5PMQCDi3hxau4Wsl2vvcaVXo8wngueekGYUSpLKpTZ
- SZ+IkMcGhDyOu7j4TOaus2e6WUeeytvl7jOYhQjntSgL0UusCDupvyPI0aSvEzrhTH+t2k1
- e1NVUTk+FeAJcAzHmGE9z+kk0ieRGaYH5NxGNR3jGF/f2iK9INYl2UO+y1UbNctEegCUcue
- ZHTwISnzOUpyr5bexuTFg==
-UI-OutboundReport: notjunk:1;M01:P0:bhFioqfY1wU=;Kv7lhJ+Q4TRnO+ldpI1Gz2iy26A
- pANDVEbpH4EydeHjXK71eW28xjh18xq5JfjQvHCQl+F17L4AyXNPsC6GcFLS9VFgb7kdjE5em
- QnAMeV/0La7mktwt+cl8iJS+dRSbb5ItdlNCUNGVB86sfJs4gCwhxWGZjXqV7x54GbJbMq0Kf
- fIqbNQE6vaxgOFXiyqSz+jqgfgVUhJqtZiW7erQpdiXSlthth7tMRQ9wkPjG5kcj2xEhudjOg
- pcmRtMhLRL9ti202DzpemmZkXAnYdvd3Vt/2dJuQ10ysPsHPEPweRmNVdHQlWATkm61WPn2PD
- 3KNyabzkSPAfHhIYDNKthb6N53EGpdEzmwVUCtIW2L2CW4+8Eyx8+Z/hNqwcsaHTGpHBbC7yg
- J0EOTOf/UqYoldI6LRKEjAWa+Un6X/BcSVGZiNPcyl5yY3Zoph64mlx8ptMjkm5NuqquJtukc
- YY7eDBFUkjUla+LYRuqiZTrube6fLqXb53czu/NilHVb0h0qbFwGKR7+CewhgqzYTZSYWNTta
- InM0lpqFxLJiZQWUcoFAp4xDPOD3MmCwUvs+0F0w7FoOd0cNdQ2WsVkS26ghFSJxYClfsXgq6
- BTCkzzJmjGwr2oHuFwHLM/Nlbx3trNTCQd2dIzm0yhwYSbPO9z1hb+NYxgoBCCGYNgtY6PN2C
- rDWGoLwKUpU7sVQJkOzTDxC+0o+Bp/rhKvsFXBQQC/hibLG+XHEa8g7d/nt7oyTzGs5zjs8EZ
- EKOVs9AH/OHOlWZYic6+E4pKHnqG1cFaq7ZJuZJ9iigQ595a6AP0AyEsk0lr5SOf2PS0Kx8/8
- 28KGCtFSpm6jv+2f2bDFVfaQ==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.28.16
+ definitions=2024-07-22_18,2024-07-22_01,2024-05-17_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0 suspectscore=0
+ mlxlogscore=999 adultscore=0 phishscore=0 spamscore=0 mlxscore=0
+ malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2407110000 definitions=main-2407230008
+X-Proofpoint-GUID: kglc_b6RXsbeUm-z8cUI3UkV97Fpgso1
+X-Proofpoint-ORIG-GUID: kglc_b6RXsbeUm-z8cUI3UkV97Fpgso1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240722_113856_234184_5FD97615 
-X-CRM114-Status: GOOD (  11.29  )
+X-CRM114-CacheID: sfid-20240722_182414_814435_88C4832A 
+X-CRM114-Status: UNSURE (   9.27  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,39 +104,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
->> =E2=80=A6
->>> +++ b/drivers/dma-buf/dma-heap.c
->> =E2=80=A6
->>> +static void dma_heap_release(struct kref *ref)
->>> +{
->> =E2=80=A6
->>> +     mutex_lock(&heap_list_lock);
->>> +     list_del(&heap->list);
->>> +     mutex_unlock(&heap_list_lock);
->> =E2=80=A6
->>
->> Under which circumstances would you become interested to apply a statem=
-ent
->> like =E2=80=9Cguard(mutex)(&heap_list_lock);=E2=80=9D?
->> https://elixir.bootlin.com/linux/v6.10/source/include/linux/mutex.h#L19=
-6
->
-> This strikes me as a strange place to apply it, as it seems like it
-> would grow the lock hold time to the entire scope of the function
-> unless one created a subscope for just the list_del, at which point
-> you're not saving much or really improving readability.  I definitely
-> think guard usage is very interesting in places where locks are
-> released in multiple exit paths, etc. but this is a very trivial and
-> straightforward lock/unlock usage, so I fret I don't quite understand
-> the suggestion.
+On Mon, 15 Jul 2024 14:38:31 +0800, peter.wang@mediatek.com wrote:
 
-I propose to take further design possibilities better into account for
-applications of scope-based resource management.
-Additional compound statements may be constructed on demand by adding
-extra curly brackets.
-You might occasionally find scoped guards more appealing.
-https://elixir.bootlin.com/linux/v6.10/source/include/linux/cleanup.h#L137
+> There is a deadlock when runtime suspend waits for the flush of RTC work,
+> and the RTC work calls ufshcd_rpm_get_sync to wait for runtime resume.
+> 
+> Here is deadlock backtrace
+> kworker/0:1     D 4892.876354 10 10971 4859 0x4208060 0x8 10 0 120 670730152367
+> ptr            f0ffff80c2e40000 0 1 0x00000001 0x000000ff 0x000000ff 0x000000ff
+> <ffffffee5e71ddb0> __switch_to+0x1a8/0x2d4
+> <ffffffee5e71e604> __schedule+0x684/0xa98
+> <ffffffee5e71ea60> schedule+0x48/0xc8
+> <ffffffee5e725f78> schedule_timeout+0x48/0x170
+> <ffffffee5e71fb74> do_wait_for_common+0x108/0x1b0
+> <ffffffee5e71efe0> wait_for_completion+0x44/0x60
+> <ffffffee5d6de968> __flush_work+0x39c/0x424
+> <ffffffee5d6decc0> __cancel_work_sync+0xd8/0x208
+> <ffffffee5d6dee2c> cancel_delayed_work_sync+0x14/0x28
+> <ffffffee5e2551b8> __ufshcd_wl_suspend+0x19c/0x480
+> <ffffffee5e255fb8> ufshcd_wl_runtime_suspend+0x3c/0x1d4
+> <ffffffee5dffd80c> scsi_runtime_suspend+0x78/0xc8
+> <ffffffee5df93580> __rpm_callback+0x94/0x3e0
+> <ffffffee5df90b0c> rpm_suspend+0x2d4/0x65c
+> <ffffffee5df91448> __pm_runtime_suspend+0x80/0x114
+> <ffffffee5dffd95c> scsi_runtime_idle+0x38/0x6c
+> <ffffffee5df912f4> rpm_idle+0x264/0x338
+> <ffffffee5df90f14> __pm_runtime_idle+0x80/0x110
+> <ffffffee5e24ce44> ufshcd_rtc_work+0x128/0x1e4
+> <ffffffee5d6e3a40> process_one_work+0x26c/0x650
+> <ffffffee5d6e65c8> worker_thread+0x260/0x3d8
+> <ffffffee5d6edec8> kthread+0x110/0x134
+> <ffffffee5d616b18> ret_from_fork+0x10/0x20
+> 
+> [...]
 
-Regards,
-Markus
+Applied to 6.11/scsi-queue, thanks!
+
+[1/1] ufs: core: fix deadlock when rtc update
+      https://git.kernel.org/mkp/scsi/c/3911af778f20
+
+-- 
+Martin K. Petersen	Oracle Linux Engineering
 
