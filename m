@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86732C3DA49
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jul 2024 13:33:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C058CC3DA49
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jul 2024 13:33:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rWMjNm/nU5DIb7kAzkcTKs8li33Qu7nlH6YpR7krqWA=; b=BuuXHH1VwL4v9meHmh3F4tfa58
-	BZoW/+Bi8cvu1SZoD443RCM207tkluXRLbojFrbIpoiroER4Md4xyYliGw64V8v8hzRCX0CJb8RSG
-	TmtrQ2iyzKpmWFa84TzCyOUeJ5dduNoRUreyzAkEWg+3KKKHKHVmEduw/uqBiepRb+YFgMCLJIUTg
-	Q6144ZCnBIFfvJwikN3Ie4AW5xtk50Om+lrIEdLbQkMPKe9aDq72DK3NhMjcDW23H0A9aT8Sz4kzD
-	aso0eK+bAT4nPV1oGjvqyz7ZiqcQo2aEksUdgKq8p9eFEY5zYDqw9Q2rn0+8JyvVwPnP04Nl1Qv2d
-	yxwtT7KA==;
+	bh=E5SmIVjWJ5aRwpjgPLfLTbpDUhNxuwjwJx199NaZrkA=; b=c2qR0vZ8mK0iD603TfD2bf6BZl
+	1sNRA4p3ezTnYh3AvrOumivWzkrqSalwDDHwzshp1sA87Tq1R0rqKibQBz+1lT/n0dbIvfLWE8wm4
+	8d6qUcpluSN0bCvQajcgp0booEsjkTqKr7v8AKqlfYvthvaLB3QrB6emBL56v9EebugeDliAU/EXE
+	5DS9yH9Klv5uexTSYr7gJ8dbt+KOeXWeMuxRn25R5XZDhyrIZrUQiGh61g9NP+otY/eO4862p/qlT
+	Ec4b7cqYJlMcp8TKnPtjEVpaNMJ491rIZGk0uvg2sLCBjOaPZ0iHW9RqmqkNLWMBcyYXFmkNohuuA
+	h46DZWgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sWFdb-0000000CYIV-0ecJ;
-	Tue, 23 Jul 2024 13:33:07 +0000
-Received: from mout-p-103.mailbox.org ([2001:67c:2050:0:465::103])
+	id 1sWFdn-0000000CYNk-158Z;
+	Tue, 23 Jul 2024 13:33:19 +0000
+Received: from mout-p-202.mailbox.org ([80.241.56.172])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sWFbj-0000000CXPk-18Bh;
-	Tue, 23 Jul 2024 13:31:13 +0000
-Received: from smtp2.mailbox.org (smtp2.mailbox.org [IPv6:2001:67c:2050:b231:465::2])
+	id 1sWFbo-0000000CXTE-2zwB;
+	Tue, 23 Jul 2024 13:31:18 +0000
+Received: from smtp2.mailbox.org (smtp2.mailbox.org [10.196.197.2])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mout-p-103.mailbox.org (Postfix) with ESMTPS id 4WSyhq6LBHz9sp5;
-	Tue, 23 Jul 2024 15:31:07 +0200 (CEST)
+	by mout-p-202.mailbox.org (Postfix) with ESMTPS id 4WSyhy2z1Yz9sWC;
+	Tue, 23 Jul 2024 15:31:14 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailbox.org; s=mail20150812;
-	t=1721741467;
+	t=1721741474;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=rWMjNm/nU5DIb7kAzkcTKs8li33Qu7nlH6YpR7krqWA=;
-	b=tfZO7v8evYgRtHCTpNUAAhPj4nuyBl1xgQXJGRL2ByKsB5/RN8LABaLZi1Sz+hJcLMTB+1
-	QsPL+L3/8gfk2gFOT1EJHXxM9lH+33/uGNMD8J90JKoXr0ABGMUZK4mplMltD0MbhXtMCs
-	vupeyTjjtxoy8EsjBGJlBE1qo4yCAqvTrI17ot2RM9pvUDPIx7UHKSIcWTAx4i4zl6rffH
-	TDgdokMZiL5MmSv7mWLcil7CwjdhW290nxIMlneqFnmD80I0LX/e60EBsyYfVp4++Re19r
-	tY2a3T8CiZO79tDdh7yxPbEdAD/B/UneK+VuvduyKs2Nigp5Ivr5Fkir8Vq05w==
+	bh=E5SmIVjWJ5aRwpjgPLfLTbpDUhNxuwjwJx199NaZrkA=;
+	b=Ctj/JtkXM6TOEcQy0rOqNUV82J1F0YuPG5IJBK+0+Xaye8omY7oIqnX+DAWZQsELd91Nvj
+	RCyC2in9O5loQ+K84NuVizR7UoJtda6ArgCO/l8X+PYSIVftuPhFU6agnveEBBVhz+zdvA
+	Jt5A+sS6SetZSkTcKy/k2Vo97P5uvIsQCAEHu4L3Pqhohd1sz6zXWXzDr3RtbuyZ5djCOY
+	SCAzsL9B5gd7AaZXU1mj2ia+yzrDqDBFcB2F90F43HoqqXFYp04iDxvBjkEGKup1zRtRzj
+	WFdAuUgjCQRXrWBeruE/wfrfX2qVBoNqzkmIx2SSWtrav5nOhMEw7279ilXMxA==
 From: Marek Vasut <marek.vasut+renesas@mailbox.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailbox.org; s=mail20150812;
-	t=1721741464;
+	t=1721741472;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=rWMjNm/nU5DIb7kAzkcTKs8li33Qu7nlH6YpR7krqWA=;
-	b=ppi8DBnPwXk5AX9ydq4fm42sZz4U5FbwBQW6Z3bf6tM/Qn7w65/4+Cv1rVv6mWfvlw9kej
-	p3G3JxC0CPgyO0S0NgumfJz6CRDa3tEdPKug4Xk/bfS03f7XRW88ubncqzkjGYVJ3hMgwJ
-	O9sZHq1RwBtRocZLo7f2BxzLiDZqZ2sgDAfWS6H3DgMzzZwbAKcf5ITEdCKL5P9dOGZ2Hj
-	Pm/5TRCt0jUDm1kl92/DecdyJbz+fMu1x6DCvu6eMqFesUxxNj4tGXuxRB1pgEdbv5m2ng
-	9sC5xPivJD6yBKv+cGF8uVorPTlkqs6wSaQBXrMw6zkMUeR5yUJ3P4htF+oalw==
+	bh=E5SmIVjWJ5aRwpjgPLfLTbpDUhNxuwjwJx199NaZrkA=;
+	b=X1wI0314yv1Qp/cvD9nMce9s8WSHsXbP0O9Go612qepuTbnbcIqsYyYLUbxx5vB6cv4a1K
+	ZYpkK7ay8A91YL6hKS/TGwD3ZqID11r0CHcIppDMFiZAFUBRR61spbP+U9guYECBhqUkNI
+	+TyOjQVu9ugOkxldUkdw/KvWeZki6tV5aaoJgOa4+70CM482fJemdO1nM+nbJk6ic+nuRm
+	QMkZHPlD24w/DnlYBUSYOBEGkBDUfV57vGBvnPHdNOYj2y3HOo8UX8iYjaZ63C0E2q+rKi
+	ND3ZhgEzzA+5cl6H2S0pTccSlxZ5zrmtaqYDuMiWHRDsuROfV4Hogn7Dq1BUlg==
 To: linux-pci@vger.kernel.org
 Cc: Marek Vasut <marek.vasut+renesas@mailbox.org>,
 	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
@@ -102,20 +102,19 @@ Cc: Marek Vasut <marek.vasut+renesas@mailbox.org>,
 	linux-renesas-soc@vger.kernel.org,
 	linux-rpi-kernel@lists.infradead.org,
 	linux-tegra@vger.kernel.org
-Subject: [PATCH v4 04/15] PCI: brcmstb: Silence set affinity failed warning
-Date: Tue, 23 Jul 2024 15:27:04 +0200
-Message-ID: <20240723132958.41320-5-marek.vasut+renesas@mailbox.org>
+Subject: [PATCH v4 05/15] PCI: dwc: Silence set affinity failed warning
+Date: Tue, 23 Jul 2024 15:27:05 +0200
+Message-ID: <20240723132958.41320-6-marek.vasut+renesas@mailbox.org>
 In-Reply-To: <20240723132958.41320-1-marek.vasut+renesas@mailbox.org>
 References: <20240723132958.41320-1-marek.vasut+renesas@mailbox.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-MBO-RS-ID: c273d39a1d80222af6a
-X-MBO-RS-META: myyuu3m7ze6oct9t5rutzgqaoje59518
-X-Rspamd-Queue-Id: 4WSyhq6LBHz9sp5
+X-MBO-RS-ID: 888163b2c446ff680e4
+X-MBO-RS-META: qa63b3rbiiyytyu5jopob41soabsroj7
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240723_063111_669917_A99B7798 
-X-CRM114-Status: GOOD (  11.43  )
+X-CRM114-CacheID: sfid-20240723_063116_986732_5D08F301 
+X-CRM114-Status: GOOD (  12.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -187,45 +186,72 @@ Cc: linux-tegra@vger.kernel.org
 ---
 V4: - New patch
 ---
- drivers/pci/controller/pcie-brcmstb.c | 11 ++---------
- 1 file changed, 2 insertions(+), 9 deletions(-)
+ drivers/pci/controller/dwc/pci-keystone.c         |  7 -------
+ drivers/pci/controller/dwc/pcie-designware-host.c | 12 +++---------
+ 2 files changed, 3 insertions(+), 16 deletions(-)
 
-diff --git a/drivers/pci/controller/pcie-brcmstb.c b/drivers/pci/controller/pcie-brcmstb.c
-index c08683febdd40..b9de3acec3753 100644
---- a/drivers/pci/controller/pcie-brcmstb.c
-+++ b/drivers/pci/controller/pcie-brcmstb.c
-@@ -445,8 +445,8 @@ static struct irq_chip brcm_msi_irq_chip = {
- };
- 
- static struct msi_domain_info brcm_msi_domain_info = {
--	.flags	= (MSI_FLAG_USE_DEF_DOM_OPS | MSI_FLAG_USE_DEF_CHIP_OPS |
--		   MSI_FLAG_MULTI_PCI_MSI),
-+	.flags	= MSI_FLAG_USE_DEF_DOM_OPS | MSI_FLAG_USE_DEF_CHIP_OPS |
-+		  MSI_FLAG_NO_AFFINITY | MSI_FLAG_MULTI_PCI_MSI,
- 	.chip	= &brcm_msi_irq_chip,
- };
- 
-@@ -484,12 +484,6 @@ static void brcm_msi_compose_msi_msg(struct irq_data *data, struct msi_msg *msg)
- 	msg->data = (0xffff & PCIE_MISC_MSI_DATA_CONFIG_VAL_32) | data->hwirq;
+diff --git a/drivers/pci/controller/dwc/pci-keystone.c b/drivers/pci/controller/dwc/pci-keystone.c
+index 52c6420ae2003..ce9d9e0a52609 100644
+--- a/drivers/pci/controller/dwc/pci-keystone.c
++++ b/drivers/pci/controller/dwc/pci-keystone.c
+@@ -189,12 +189,6 @@ static void ks_pcie_compose_msi_msg(struct irq_data *data, struct msi_msg *msg)
+ 		(int)data->hwirq, msg->address_hi, msg->address_lo);
  }
  
--static int brcm_msi_set_affinity(struct irq_data *irq_data,
--				 const struct cpumask *mask, bool force)
+-static int ks_pcie_msi_set_affinity(struct irq_data *irq_data,
+-				    const struct cpumask *mask, bool force)
 -{
 -	return -EINVAL;
 -}
 -
- static void brcm_msi_ack_irq(struct irq_data *data)
+ static void ks_pcie_msi_mask(struct irq_data *data)
  {
- 	struct brcm_msi *msi = irq_data_get_irq_chip_data(data);
-@@ -502,7 +496,6 @@ static void brcm_msi_ack_irq(struct irq_data *data)
- static struct irq_chip brcm_msi_bottom_irq_chip = {
- 	.name			= "BRCM STB MSI",
- 	.irq_compose_msi_msg	= brcm_msi_compose_msi_msg,
--	.irq_set_affinity	= brcm_msi_set_affinity,
- 	.irq_ack                = brcm_msi_ack_irq,
+ 	struct dw_pcie_rp *pp = irq_data_get_irq_chip_data(data);
+@@ -247,7 +241,6 @@ static struct irq_chip ks_pcie_msi_irq_chip = {
+ 	.name = "KEYSTONE-PCI-MSI",
+ 	.irq_ack = ks_pcie_msi_irq_ack,
+ 	.irq_compose_msi_msg = ks_pcie_compose_msi_msg,
+-	.irq_set_affinity = ks_pcie_msi_set_affinity,
+ 	.irq_mask = ks_pcie_msi_mask,
+ 	.irq_unmask = ks_pcie_msi_unmask,
+ };
+diff --git a/drivers/pci/controller/dwc/pcie-designware-host.c b/drivers/pci/controller/dwc/pcie-designware-host.c
+index a0822d5371bc5..3e41865c72904 100644
+--- a/drivers/pci/controller/dwc/pcie-designware-host.c
++++ b/drivers/pci/controller/dwc/pcie-designware-host.c
+@@ -48,8 +48,9 @@ static struct irq_chip dw_pcie_msi_irq_chip = {
  };
  
+ static struct msi_domain_info dw_pcie_msi_domain_info = {
+-	.flags	= (MSI_FLAG_USE_DEF_DOM_OPS | MSI_FLAG_USE_DEF_CHIP_OPS |
+-		   MSI_FLAG_PCI_MSIX | MSI_FLAG_MULTI_PCI_MSI),
++	.flags	= MSI_FLAG_USE_DEF_DOM_OPS | MSI_FLAG_USE_DEF_CHIP_OPS |
++		  MSI_FLAG_NO_AFFINITY | MSI_FLAG_PCI_MSIX |
++		  MSI_FLAG_MULTI_PCI_MSI,
+ 	.chip	= &dw_pcie_msi_irq_chip,
+ };
+ 
+@@ -116,12 +117,6 @@ static void dw_pci_setup_msi_msg(struct irq_data *d, struct msi_msg *msg)
+ 		(int)d->hwirq, msg->address_hi, msg->address_lo);
+ }
+ 
+-static int dw_pci_msi_set_affinity(struct irq_data *d,
+-				   const struct cpumask *mask, bool force)
+-{
+-	return -EINVAL;
+-}
+-
+ static void dw_pci_bottom_mask(struct irq_data *d)
+ {
+ 	struct dw_pcie_rp *pp = irq_data_get_irq_chip_data(d);
+@@ -177,7 +172,6 @@ static struct irq_chip dw_pci_msi_bottom_irq_chip = {
+ 	.name = "DWPCI-MSI",
+ 	.irq_ack = dw_pci_bottom_ack,
+ 	.irq_compose_msi_msg = dw_pci_setup_msi_msg,
+-	.irq_set_affinity = dw_pci_msi_set_affinity,
+ 	.irq_mask = dw_pci_bottom_mask,
+ 	.irq_unmask = dw_pci_bottom_unmask,
+ };
 -- 
 2.43.0
 
