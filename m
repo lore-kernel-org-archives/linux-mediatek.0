@@ -4,107 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADA42C3DA63
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jul 2024 13:53:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94679C3DA49
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jul 2024 15:08:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=p1VwBMS/rxpbYYxRSZ+AtA5oTfFDoNKClUS+kuqTk2g=; b=laCnQedgnicC87WkLSrbuPtkiH
-	S81JNLi9B7peOxWzwbWo3OUvxS/8PD+lttocTwiGqU9C+xBbziAwglpl2CePI+f9/onAgL6wEmtmw
-	AqdMBdeo61xmGA0BEPzmBsd0vTzvxCYJH4AQBB7sNQeQx71eNdG3ugBRFGbrH3PgB3f3HRmRAqtJh
-	W/x1KQpkgAMLktiKY9Cl0z4uzbROXG/2fA4KkG/mSlH32RYBife/vahnHEP8sCturnfpFn/XFNau6
-	l2nGibb326m05I1JaUE8soiZhMYzrGuHYlFbYXFz4lit3i+7sPBjDKBWhxkPFImxOEjZDAmP6J5EB
-	ZShs4o/A==;
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=a0PoTqjxhwfvNPHYUca3cz7Fhu03ZaGvIO7gfFZZJlk=; b=fL67V763qNrxFzD4Ra0E67SAu8
+	Unxozk7ZWiaJBoe8PBrxFE/f02tHlsWcD+8WxBCdGzkaRql4g/zuRyEn1mlIhseinVgBs8wz7JECm
+	tU/rKKqrmULJ+HSX6flpucGmAkqPxdyjNPIHGHnqX5ds+MRPwBUP5ZhMz3nDMNC+8bTuXkv/tRjET
+	L+DaZo/GWdy5VoIbHO5aoBa3DSIhuKvN6KNxf7bHbuIpkmQy7DwYBndaDv4vErhobq+0/ZduGh/RL
+	N0ewxh9dVwGFVRRFuiahcUgSbANJLFqXreGdKeCnV4EfuLeXwkRlkSuojZJE6u8vtteld1pUZEv4b
+	kf2SwzJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sWFxP-0000000Ccga-1Z28;
-	Tue, 23 Jul 2024 13:53:35 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1sWH7m-0000000Cpze-0CFW;
+	Tue, 23 Jul 2024 15:08:22 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sWFx1-0000000CcZI-0K8W;
-	Tue, 23 Jul 2024 13:53:12 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id F0C07CE0F77;
-	Tue, 23 Jul 2024 13:53:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 02239C4AF12;
-	Tue, 23 Jul 2024 13:53:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1721742788;
-	bh=fxKhJIaicZr9XSU5exxmSIrXP5l8HsTqwhyNNfNVshk=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=mATW0goufYHNjHEiDWtrfrKzX/Q5hRt6Po4oJQ5p1/tIleic1z41KUCGNSMdwtJCj
-	 30wllJ790nUb4Qoh+VPUvWn7Z6JyQCMgT1P82L8oVZbYDINnOy0owGsrht5N4CQTYY
-	 aihUSaOmT1uThxsAZc3kz1zlyfU/coQ+rI6774OngQ7bM6C7ee8QQZaWQtSWm1hFIX
-	 WD3sfo/lnOjuIPGLQpWoOjX51OAeKLBoKjIRqMTafsCpNSAjU484CkZSX0uQuDavAN
-	 bdWtJPmkJ6lOYLzovHPpNhay/hDXzg0KmLXWcbmoILhcFZs988sejvW+/5Ocl7jnex
-	 Reg8kWr+jxvVQ==
-Message-ID: <2548bbdc-4e66-4caf-a76a-a3b3eda5268f@kernel.org>
-Date: Tue, 23 Jul 2024 15:53:04 +0200
+	id 1sWH7M-0000000Cptr-2ICT;
+	Tue, 23 Jul 2024 15:07:58 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1721747273;
+	bh=/lVStPkNk6XMmx3e7OMYCyn50o2TQ7gMZ+zwB/HKA5o=;
+	h=Date:Subject:To:References:From:In-Reply-To:From;
+	b=awQ2ya2bSQM5g4rMsgBwjcHpedmVWy7S2vn4I/TlEgxgZmYVllKmGg5y/ecKYTzg4
+	 VQmlGS1vEwbDLnPwgCjAsw8Qx7xjJYDMBeB4JrE4sIJcDYg/xWfYMSQk9GXlTj6dWl
+	 sHi0on4OcVmNFC+fZDH77dfogZ2J8kwqHfJiEkrbSSknw2JxAQLK06Nkn4GQu1n8BD
+	 +KgG6Xy4/R9SgtMJihlJve/mvtH2Bl61svU+/xRIeHLfGscvrfZx0UZcD5wZq/LTFP
+	 jgK1kFazgmp2AwFucis9Ml2nLm+MKmtqx2jUHxwQu5R6IzLGsQImhpTXxGUKS7MO2i
+	 aprAzUYDaCbHw==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 3B0D637804D4;
+	Tue, 23 Jul 2024 15:07:52 +0000 (UTC)
+Message-ID: <207e558f-6f36-43cb-840c-7548d04d180a@collabora.com>
+Date: Tue, 23 Jul 2024 17:07:51 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: mt8183: Add kukui-jacuzzi-cerise series
- boards
-To: Hsin-Te Yuan <yuanhsinte@chromium.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20240723-jacuzzi_dt-v1-1-3e994a2b5e24@chromium.org>
-From: Krzysztof Kozlowski <krzk@kernel.org>
+Subject: Re: [PATCH net] net: ethernet: mtk_eth_soc: drop clocks unused by
+ Ethernet driver
+To: Daniel Golle <daniel@makrotopia.org>, Felix Fietkau <nbd@nbd.name>,
+ Sean Wang <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>,
+ Lorenzo Bianconi <lorenzo@kernel.org>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <38559102c729a811dc8a85f6c7cee07228cffd3e.1721739769.git.daniel@makrotopia.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <20240723-jacuzzi_dt-v1-1-3e994a2b5e24@chromium.org>
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <38559102c729a811dc8a85f6c7cee07228cffd3e.1721739769.git.daniel@makrotopia.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240723_065311_518867_BBB29B9D 
-X-CRM114-Status: GOOD (  14.16  )
+X-CRM114-CacheID: sfid-20240723_080756_926531_67FA7879 
+X-CRM114-Status: UNSURE (   7.44  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,44 +81,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 23/07/2024 11:56, Hsin-Te Yuan wrote:
-> Cerise is known as ASUS Chromebook CZ1.
-> Stern is known as ASUS Chromebook Flip CZ1.
+Il 23/07/24 15:04, Daniel Golle ha scritto:
+> Clocks for SerDes and PHY are going to be handled by standalone drivers
+> for each of those hardware components. Drop them from the Ethernet driver.
 > 
-> Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
-> ---
->  .../dts/mediatek/mt8183-kukui-jacuzzi-cerise.dts   | 25 ++++++++++++++++
+> Fixes: 445eb6448ed3 ("net: ethernet: mtk_eth_soc: add basic support for MT7988 SoC")
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 
-How do you build this?
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-This wasn't tested...
-
->  .../dts/mediatek/mt8183-kukui-jacuzzi-cerise.dtsi  | 21 +++++++++++++
->  .../dts/mediatek/mt8183-kukui-jacuzzi-stern.dts    | 35 ++++++++++++++++++++++
->  3 files changed, 81 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cerise.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cerise.dts
-> new file mode 100644
-> index 000000000000..b4f4ed701253
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cerise.dts
-> @@ -0,0 +1,25 @@
-> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-> +/*
-> + * Copyright 2021 Google LLC
-> + */
-> +
-> +/dts-v1/;
-> +#include "mt8183-kukui-jacuzzi-cerise.dtsi"
-> +#include "mt8183-kukui-audio-da7219-rt1015p.dtsi"
-> +
-> +/ {
-> +	model = "Google cerise board";
-> +	compatible = "google,cerise-sku0", "google,cerise", "mediatek,mt8183";
-
-Where is the binding?
-
-Best regards,
-Krzysztof
 
 
