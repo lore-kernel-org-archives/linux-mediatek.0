@@ -4,66 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0638C3DA63
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jul 2024 21:55:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 245E1C3DA49
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jul 2024 22:54:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kcLa2jTpm4Is2gyMHHjkhy4HabJS4w3rCAg3RdWHqC8=; b=tSW20Kj2zWj41zfn4mNAfUZ4Cd
-	uqL+vybQ+Ug1RNnnxCWoSzEJ0g8cpGRv93ZoODxP9u1i6KvxFNRHS+H+iUOiuoKLp1vzsR6XraotT
-	eyFTvuf9tSIGi5d/KxVeDgsfPUbHmQ+CFdY8KeVq34NhWg6F1tJKd4Pd+P3KjiuFDs1TKVdqoEAiu
-	AhkudnHR0WoSdl4SUxgLU6IHwzjTQXXvHRChMBJJI+V8vgHYa8VUsPnXmJaY1bum8OUsNWmorsjx+
-	OQxW9Jurn7N/Z8qfqHy8M+2RNN5TPX/aHD/HTSEspbfxSLgiF9+Nkt2YSIWSANJObVbbQANsH5WkQ
-	2cuq5lfQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=GBYO3YWDwS/Gcis8BVy4FNPMTbREVaMCJ9hAXFOVfZw=; b=tslFSaBSaw2uqWITWu99Gv/Qyt
+	S6i62Ht/lpa37/7jHLsfcaZczHI3LOgCC9BJu3zZ7/KzjLQElW01Z+ZdpZ0JKIed5wVbJiLc/vycU
+	fYT6JXJ8vdLnSU5zbagzh0z/Tjy9EugU5F/xhjM2J1X0Tn1yCzHYT37Amv7UeHpljLFt2DWzRShrs
+	GecOHnwlZNvLsTVrCzRxkYDYTGTDWYwRejGciRyPkU4qPkT97UckhOT0vaeKUmpAnj0mNsPdrNcQS
+	WVyFBUH61N0DSSu/kJr3JHDyx31lZU/xGFdIJGwZPU1DAxiisADR5HUDOFlGfzXXFeVNOcTyFcVrF
+	ML1jQUPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sWNTQ-0000000DcmH-0eHD;
-	Tue, 23 Jul 2024 21:55:08 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1sWOOO-0000000Dj4J-0RJf;
+	Tue, 23 Jul 2024 22:54:00 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sWNT1-0000000Dcgn-2e2s;
-	Tue, 23 Jul 2024 21:54:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=kcLa2jTpm4Is2gyMHHjkhy4HabJS4w3rCAg3RdWHqC8=; b=POdZ1Cd8AynOmoPH5N+GWyWNci
-	gPzqvcTJsqgnevmZ2S4olw0F4SItGvc1HnW0MWrXSkuVBy8ved3J2XtgJli7CjNNjAgUrC1O+xAHP
-	yzuINtNBgWw1iIP9ilaCkc+8JwmzGuDYLDghMstbf0Sv3VY3qWln/WtDLaTTHOgcv+o8=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1sWNSj-0035wz-64; Tue, 23 Jul 2024 23:54:25 +0200
-Date: Tue, 23 Jul 2024 23:54:25 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net] net: ethernet: mtk_eth_soc: drop clocks unused by
- Ethernet driver
-Message-ID: <af1d5373-6b88-488c-9b90-10c25cefd5d0@lunn.ch>
-References: <38559102c729a811dc8a85f6c7cee07228cffd3e.1721739769.git.daniel@makrotopia.org>
- <125775a6-42f2-4294-9593-518ad6c852f7@lunn.ch>
- <ZqAk1NW4_E9SRjUO@makrotopia.org>
+	id 1sWONy-0000000Dj1t-3mUL;
+	Tue, 23 Jul 2024 22:53:36 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 428E7CE0F25;
+	Tue, 23 Jul 2024 22:53:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7690FC4AF0A;
+	Tue, 23 Jul 2024 22:53:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1721775211;
+	bh=cHJbPDlIH0oCEqFdHMXc1f/SmzHKfHRg/D0V77IKE/s=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=sYN6yv+FHlTLQYks25mPie6POPe6J0L437WXBzUx2BVXXHSKQ/tcNWSqUUBRayhzC
+	 NEAMi+W+qkJ0iKbJWCx80P94jdwSRvxy9VRpaQBnuQhmxw/15M3E8ovoNJI3R8qA3i
+	 g+dEicUhSjbRL0mGXUPibqbkQRsqVWQuZj6LQtfla8lb6TXLMxnL1hPIlctls7nxau
+	 OBiKOsmRvtcDWqbf87Ul9l1zLNbJgvsJQSVyjHowgvhoUhr1fdgPK48DOUT+0zycHQ
+	 CSssFzuPELhamsa2kR92pf3IhgxaVaWaMfxpguhYzwEKzv0EqeG4XnIxa51iU0j1e9
+	 ampGEo3+E8tFg==
+Message-ID: <a49bb411-f96d-4574-96ec-5b03668cdf87@kernel.org>
+Date: Wed, 24 Jul 2024 07:53:21 +0900
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ZqAk1NW4_E9SRjUO@makrotopia.org>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 05/15] PCI: dwc: Silence set affinity failed warning
+To: Marek Vasut <marek.vasut+renesas@mailbox.org>, linux-pci@vger.kernel.org
+Cc: =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>,
+ =?UTF-8?Q?Pali_Roh=C3=A1r?= <pali@kernel.org>,
+ =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+ Aleksandr Mishin <amishin@t-argos.ru>,
+ Anna-Maria Behnsen <anna-maria@linutronix.de>,
+ Anup Patel <apatel@ventanamicro.com>, Bjorn Helgaas <bhelgaas@google.com>,
+ Broadcom internal kernel review list
+ <bcm-kernel-feedback-list@broadcom.com>,
+ Daire McNamara <daire.mcnamara@microchip.com>,
+ Florian Fainelli <florian.fainelli@broadcom.com>,
+ Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, Jianjun Wang
+ <jianjun.wang@mediatek.com>, Jim Quinlan <jim2101024@gmail.com>,
+ Jingoo Han <jingoohan1@gmail.com>,
+ Jisheng Zhang <Jisheng.Zhang@synaptics.com>,
+ Jon Hunter <jonathanh@nvidia.com>,
+ Jonathan Derrick <jonathan.derrick@linux.dev>,
+ Joyce Ooi <joyce.ooi@intel.com>,
+ Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>,
+ Kishon Vijay Abraham I <kishon@kernel.org>, Koichiro Den
+ <den@valinux.co.jp>, Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+ Marc Zyngier <maz@kernel.org>, Michal Simek <michal.simek@amd.com>,
+ Nicolas Saenz Julienne <nsaenz@kernel.org>, Niklas Cassel
+ <cassel@kernel.org>, Nipun Gupta <nipun.gupta@amd.com>,
+ Nirmal Patel <nirmal.patel@linux.intel.com>, Rob Herring <robh@kernel.org>,
+ Ryder Lee <ryder.lee@mediatek.com>,
+ Shivamurthy Shastri <shivamurthy.shastri@linutronix.de>,
+ Siddharth Vadapalli <s-vadapalli@ti.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Thomas Gleixner <tglx@linutronix.de>,
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-renesas-soc@vger.kernel.org, linux-rpi-kernel@lists.infradead.org,
+ linux-tegra@vger.kernel.org
+References: <20240723132958.41320-1-marek.vasut+renesas@mailbox.org>
+ <20240723132958.41320-6-marek.vasut+renesas@mailbox.org>
+Content-Language: en-US
+From: Damien Le Moal <dlemoal@kernel.org>
+Organization: Western Digital Research
+In-Reply-To: <20240723132958.41320-6-marek.vasut+renesas@mailbox.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240723_145443_689960_49C683ED 
-X-CRM114-Status: GOOD (  19.34  )
+X-CRM114-CacheID: sfid-20240723_155335_153925_83F5C1E7 
+X-CRM114-Status: UNSURE (   6.34  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,29 +108,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 23, 2024 at 10:47:00PM +0100, Daniel Golle wrote:
-> Hi Andrew,
+On 7/23/24 10:27 PM, Marek Vasut wrote:
+> Use newly introduced MSI_FLAG_NO_AFFINITY, which keeps .irq_set_affinity unset
+> and allows migrate_one_irq() code in cpuhotplug.c to exit right away, without
+> printing "IRQ...: set affinity failed(-22)" warning.
 > 
-> On Tue, Jul 23, 2024 at 08:35:16PM +0200, Andrew Lunn wrote:
-> > On Tue, Jul 23, 2024 at 02:04:02PM +0100, Daniel Golle wrote:
-> > > Clocks for SerDes and PHY are going to be handled by standalone drivers
-> > > for each of those hardware components. Drop them from the Ethernet driver.
-> > 
-> > Please could you explain in more details how this does not break
-> > backwards compatibility. Should there also be a depends on, to ensure
-> > the new driver is loaded? Will old DT blobs still work?
+> Remove .irq_set_affinity implementation which only return -EINVAL from this
+> controller driver.
 > 
-> At this stage the Ethernet driver only supports the first MAC which
-> is hard-wired to the built-in DSA switch.
+> Signed-off-by: Marek Vasut <marek.vasut+renesas@mailbox.org>
 
-> The clocks which are being removed for this patch are responsible for
-> the for the SerDes PCS and PHYs used for the 2nd and 3rd MAC which
-> are anyway not yet supported.
+Looks good to me.
 
-O.K. This last part, not yet supported, would of been good to have in
-the commit message. It then makes it clear backwards compatibility is
-not an issue, it never worked in the first place.
+Reviewed-by: Damien Le Moal <dlemoal@kernel.org>
 
-Thanks
-	Andrew
+-- 
+Damien Le Moal
+Western Digital Research
+
 
