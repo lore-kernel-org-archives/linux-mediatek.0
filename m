@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F6BCC3DA63
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jul 2024 13:36:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D32AC3DA63
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jul 2024 13:36:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OLz77LzvuSzxCXE91+r5praSW9rHB+IiCRvxOW5YTc0=; b=WYtZ17ohLLM5Zkjq11+KsvyLdz
-	Q8Iv2q1fXC3vpzIXN7ORQEeHDZZvy84LzezC0uOfm6Pr6Ysjo0+f6GxwTfjspP41g9j2VJkuQwATw
-	f9okjD/QmAZqDLcCYt5D6LxhN1Tz30SEGnUKwYVYk5ZxN0xRX7xQGUmcr7bIDTym7iVE4XEbSJSAH
-	AIGZj7Y4z0OHVeOhl24KPi/eEUcR9bThirL1L1MKykYrNG//1yf1CqkxO/k2mhfT1j6y3ARE0Zr5s
-	2AuBz9qSTg8JYDAk1TzY4jIzB83FhfzjRL9PgU1DgO+5sTPD2Fz/+6sYOvmjsnTYWgGkEbfUEkwTW
-	xfQ0nHwA==;
+	bh=eA1uXxjbGOzzpT24ze+IrA0OqFNjcT5R2k42oFbQUek=; b=rgb/zu0Y4eSm211no0IpHQ+WMF
+	ZoCH3uCZKGJ3W8GvhjLUPK8PlgXGW477WRHmwpoOgGQFin+15d+71xO9OeXamTxselhaDVQSvBwHj
+	0LpN1AWDJ3cV2N2KoVFzr6UQH2K+e1RZOH7R4DdzsCcKbZoTEjCKhgGl6/LTD/gPPRzdegzj3vM52
+	y7SyguxCceBiEhFZhCjVw5rPdpOOgYUwZyRhTRJYtygMWHXYwsNvactFz8Sz2zlt/tF3X/iOu+rqu
+	Rf61qZ5B3widHuYN054bTOyxWtk0TuMpwxeOSYa4E0egrE4RpAKwp3aBHzU/dbd/IaF1/PsA2952N
+	p/6kJRgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sWFgR-0000000CZ9d-08S8;
-	Tue, 23 Jul 2024 13:36:03 +0000
-Received: from mout-p-101.mailbox.org ([80.241.56.151])
+	id 1sWFgs-0000000CZGc-0Bbo;
+	Tue, 23 Jul 2024 13:36:30 +0000
+Received: from mout-p-201.mailbox.org ([2001:67c:2050:0:465::201])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sWFcT-0000000CXnk-1lyl;
-	Tue, 23 Jul 2024 13:31:59 +0000
-Received: from smtp2.mailbox.org (smtp2.mailbox.org [10.196.197.2])
+	id 1sWFcb-0000000CXrd-1zJ6;
+	Tue, 23 Jul 2024 13:32:07 +0000
+Received: from smtp2.mailbox.org (smtp2.mailbox.org [IPv6:2001:67c:2050:b231:465::2])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mout-p-101.mailbox.org (Postfix) with ESMTPS id 4WSyjl71sRz9scd;
-	Tue, 23 Jul 2024 15:31:55 +0200 (CEST)
+	by mout-p-201.mailbox.org (Postfix) with ESMTPS id 4WSyjt2qtqz9sSM;
+	Tue, 23 Jul 2024 15:32:02 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailbox.org; s=mail20150812;
-	t=1721741516;
+	t=1721741522;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=OLz77LzvuSzxCXE91+r5praSW9rHB+IiCRvxOW5YTc0=;
-	b=mtbTEVhxHpDuegouu9mRcxwzpifmYi2Uey1qrWqbnTqEMAsYDJHTXsjTvnKbWPACUX4VxS
-	c1sIU2z4mtRk3uwGpW/Hx4qCL2aFySb8w2ARSFYjjvcmIdJmziWkgLeILtyzADK6eygqDI
-	xYsMLhSGhIhT9Scq4TLYU5QQ03Ml4Bcx3cP06+bj52N4VMXG96T4vhlK/fmBvS11IpnHRy
-	JrBakZ5ydct41hYAskMI3TxG2AhM9v0zGhyBNxHV4szD8kHWrLevDZAxi68dNaByZPOszI
-	STPaeg/fjN/UtbmHb+VP0WJm34/eLYWqXLQQQGcN/fDGRMEj3ohb/g+8ryUq+A==
+	bh=eA1uXxjbGOzzpT24ze+IrA0OqFNjcT5R2k42oFbQUek=;
+	b=ox1KiXW148l4F3d0Dz2OxuQ9bUsDqjnUHF9EQ7iigUj2oDRTTafUgvkl/xCIHbgf3+Pbk6
+	sdFz53ACErHjD9XkaHTSat1BNsPc6Py8D5Ff+UgIx11FSKnBDnMslngYLD0FAWofj4PArK
+	dTiLyI5tpdbxz27NW95NBjbOVuf/CzkdrzLXQSHEMNvhSS+CQk65lTb1Ul2xRrHGWh6eU0
+	b/VBqSXLOcV0YO95a0ICut3EUmA9eztbkgHqdwYjcdSXtMi9NSoruN2IURf2yzxAEeu9tz
+	L8GUBIH7wn6a9OYZviWea0xCSyyRdjgJZeRbz1Hqu51JOkvoDhTyWfrGWOOZAQ==
 From: Marek Vasut <marek.vasut+renesas@mailbox.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailbox.org; s=mail20150812;
-	t=1721741513;
+	t=1721741519;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=OLz77LzvuSzxCXE91+r5praSW9rHB+IiCRvxOW5YTc0=;
-	b=Tub1hLxAqICbMLCpnaYJgw/JLeRn2mLDkwYUsQiRz5fgM8Th9nS47rSrxu5AmBKEZ7YINl
-	Q0nwuI9Odg3NX9UYKKQPUHi7wk/C3wOwpELbX+TzB8zliXUhW+xXZ6/+UneTaTaaAzeb5g
-	rfx58iX9B33qFDcDcLE6Y+RBqeqbkJFxHq0BgAI39MCM4WFrHvMYX5adH7J76M+s+QjggB
-	gHcYAc2B+0J3hi+QEHUn0j0vcd8lewHZv+W2b4zJaNmDwJRB4NUUL9CjfEuzwGQ+3vv4UL
-	oBi+un5uBis/s1a5/VDJ6Z4MJ7c/UnXzr9X9btXnaF7jvFfXWjouLPlLBrUG/g==
+	bh=eA1uXxjbGOzzpT24ze+IrA0OqFNjcT5R2k42oFbQUek=;
+	b=ydOfJD7p5+aBCJOAzNNDUc7UmMf3VtinnwOQA3afamQzjvtzmerCqadvF0ERhB+r2ibyX5
+	K23rrvapJfREqgHDGYGdUklNtSOvGtPy44EPObaE1D5gyhr9dPr8m7qf0wL+aTleTGxZkl
+	ZL94X2w/6s9IJuqKZA3hE6Ass9fvu7+4/GgltROQ/9TFaGxSFMf2xYt++uDgUvNqEOz2Mn
+	wVpE546rn+nb7YJFJVBU7xf67iO/hqXpN6AKlrgk9cTkOCyeV86gDx8Dh1COejUcDHhw7+
+	SgN1fvZI4usROh0L7e39nsDrP3pdSj5BAGG5xhL2JmYqGYlTGuBiG6PTWZ9gCg==
 To: linux-pci@vger.kernel.org
 Cc: Marek Vasut <marek.vasut+renesas@mailbox.org>,
 	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
@@ -102,19 +102,20 @@ Cc: Marek Vasut <marek.vasut+renesas@mailbox.org>,
 	linux-renesas-soc@vger.kernel.org,
 	linux-rpi-kernel@lists.infradead.org,
 	linux-tegra@vger.kernel.org
-Subject: [PATCH v4 11/15] PCI: tegra: Silence set affinity failed warning
-Date: Tue, 23 Jul 2024 15:27:11 +0200
-Message-ID: <20240723132958.41320-12-marek.vasut+renesas@mailbox.org>
+Subject: [PATCH v4 12/15] PCI: vmd: Silence set affinity failed warning
+Date: Tue, 23 Jul 2024 15:27:12 +0200
+Message-ID: <20240723132958.41320-13-marek.vasut+renesas@mailbox.org>
 In-Reply-To: <20240723132958.41320-1-marek.vasut+renesas@mailbox.org>
 References: <20240723132958.41320-1-marek.vasut+renesas@mailbox.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-MBO-RS-ID: 3d7cf31aa65081ec113
-X-MBO-RS-META: ub9drah4j7661adyzmydnonpna9ufioy
+X-MBO-RS-ID: 5a9f884bc81d1cd465b
+X-MBO-RS-META: hkjakcio33mjmt1uw4prdcpbxjnipa6d
+X-Rspamd-Queue-Id: 4WSyjt2qtqz9sSM
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240723_063157_705925_09674190 
-X-CRM114-Status: GOOD (  11.93  )
+X-CRM114-CacheID: sfid-20240723_063205_682907_1B2AFA05 
+X-CRM114-Status: GOOD (  11.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -184,47 +185,47 @@ Cc: linux-renesas-soc@vger.kernel.org
 Cc: linux-rpi-kernel@lists.infradead.org
 Cc: linux-tegra@vger.kernel.org
 ---
-V3: - New patch
-V4: No change
+V4: - New patch
 ---
- drivers/pci/controller/pci-tegra.c | 10 ++--------
- 1 file changed, 2 insertions(+), 8 deletions(-)
+ drivers/pci/controller/vmd.c | 13 +------------
+ 1 file changed, 1 insertion(+), 12 deletions(-)
 
-diff --git a/drivers/pci/controller/pci-tegra.c b/drivers/pci/controller/pci-tegra.c
-index 038d974a318ea..d7517c3976e7f 100644
---- a/drivers/pci/controller/pci-tegra.c
-+++ b/drivers/pci/controller/pci-tegra.c
-@@ -1629,11 +1629,6 @@ static void tegra_msi_irq_unmask(struct irq_data *d)
- 	spin_unlock_irqrestore(&msi->mask_lock, flags);
+diff --git a/drivers/pci/controller/vmd.c b/drivers/pci/controller/vmd.c
+index a726de0af011f..bc849b0d9e8dc 100644
+--- a/drivers/pci/controller/vmd.c
++++ b/drivers/pci/controller/vmd.c
+@@ -204,22 +204,11 @@ static void vmd_irq_disable(struct irq_data *data)
+ 	raw_spin_unlock_irqrestore(&list_lock, flags);
  }
  
--static int tegra_msi_set_affinity(struct irq_data *d, const struct cpumask *mask, bool force)
+-/*
+- * XXX: Stubbed until we develop acceptable way to not create conflicts with
+- * other devices sharing the same vector.
+- */
+-static int vmd_irq_set_affinity(struct irq_data *data,
+-				const struct cpumask *dest, bool force)
 -{
 -	return -EINVAL;
 -}
 -
- static void tegra_compose_msi_msg(struct irq_data *data, struct msi_msg *msg)
- {
- 	struct tegra_msi *msi = irq_data_get_irq_chip_data(data);
-@@ -1648,7 +1643,6 @@ static struct irq_chip tegra_msi_bottom_chip = {
- 	.irq_ack		= tegra_msi_irq_ack,
- 	.irq_mask		= tegra_msi_irq_mask,
- 	.irq_unmask		= tegra_msi_irq_unmask,
--	.irq_set_affinity 	= tegra_msi_set_affinity,
- 	.irq_compose_msi_msg	= tegra_compose_msi_msg,
+ static struct irq_chip vmd_msi_controller = {
+ 	.name			= "VMD-MSI",
+ 	.irq_enable		= vmd_irq_enable,
+ 	.irq_disable		= vmd_irq_disable,
+ 	.irq_compose_msi_msg	= vmd_compose_msi_msg,
+-	.irq_set_affinity	= vmd_irq_set_affinity,
  };
  
-@@ -1697,8 +1691,8 @@ static const struct irq_domain_ops tegra_msi_domain_ops = {
- };
+ static irq_hw_number_t vmd_get_hwirq(struct msi_domain_info *info,
+@@ -326,7 +315,7 @@ static struct msi_domain_ops vmd_msi_domain_ops = {
  
- static struct msi_domain_info tegra_msi_info = {
--	.flags	= (MSI_FLAG_USE_DEF_DOM_OPS | MSI_FLAG_USE_DEF_CHIP_OPS |
--		   MSI_FLAG_PCI_MSIX),
-+	.flags	= MSI_FLAG_USE_DEF_DOM_OPS | MSI_FLAG_USE_DEF_CHIP_OPS |
-+		  MSI_FLAG_NO_AFFINITY | MSI_FLAG_PCI_MSIX,
- 	.chip	= &tegra_msi_top_chip,
+ static struct msi_domain_info vmd_msi_domain_info = {
+ 	.flags		= MSI_FLAG_USE_DEF_DOM_OPS | MSI_FLAG_USE_DEF_CHIP_OPS |
+-			  MSI_FLAG_PCI_MSIX,
++			  MSI_FLAG_NO_AFFINITY | MSI_FLAG_PCI_MSIX,
+ 	.ops		= &vmd_msi_domain_ops,
+ 	.chip		= &vmd_msi_controller,
  };
- 
 -- 
 2.43.0
 
