@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8D5FC3DA49
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jul 2024 13:35:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9702C3DA63
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jul 2024 13:35:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9BciXjytzht5XgJaFZRe0Pz/cUqfoTd2M0DDEVlFYpM=; b=LsZgeIsrLOuWD+6VhQFSPxAFOz
-	+sUk+h/jAtaX0iOELPCV7nrKA+KfZEAciU565HpuTgy4bGng40NV7ONDbXSBXzbxAExFK0Bl8Fsxn
-	/OECP2ey8Cuz+vfKTAoTonb94K3u9XVQF9q+Jr77q357w4KSw5M/Kj6T5WiIbROA0E51jkQmKAJ2S
-	6phvyoAEnNKxDrrbiHM6OgsdEQ2Ds+oBBMizjOAzhqztmntkJZxNBfDFXrRBxSvgJ2NvcZtCCyhNq
-	jJILDDsdAi1AR45Lo755+DMAEPxxi5rJX4qeE+x3XTUo6oNvj2Ts3kB2dE0LD3PlNTQmrVbjx2fCI
-	ZDi4p08Q==;
+	bh=NQsLSdgAtKfoGwMEHaAZTOzrW2FekDkGx4i7qFpzRNk=; b=NOMJ0mUSHIE3Qq+jZAzwC4FUJP
+	65l7M2TUECj+d2wd+JXwyElyItZQ59bVTItan5yp+2TwNNcOZ1F2Z9aXseWQQfj5Chs6//RoBhvEb
+	xmhrMz+ywldVjK6lUjr9sdsXxu8f4uW6TcLzzBRXFiIin+xwDKvlGHs1jMumw94irF76lRhJyvqbT
+	Lg13bX4Yy2sFgG9nl5kP9hadlrE4+1KkpLLGdOz7lKbs5MkmqoMgTEWn89cTjXt8fSAPbC/zShxTt
+	kQp9AB1/nDR23zdTWtijM84UaM0ksdcIXurEXCZmw3kg+ENPmH7Cz1iAhUYm7SIjJroXPhUvTCOxj
+	Mrnkc2bQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sWFfV-0000000CYsz-2Pj7;
-	Tue, 23 Jul 2024 13:35:05 +0000
-Received: from mout-p-201.mailbox.org ([80.241.56.171])
+	id 1sWFfx-0000000CZ0N-2B8e;
+	Tue, 23 Jul 2024 13:35:33 +0000
+Received: from mout-p-202.mailbox.org ([2001:67c:2050:0:465::202])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sWFcG-0000000CXgr-0UsV;
-	Tue, 23 Jul 2024 13:31:45 +0000
-Received: from smtp2.mailbox.org (smtp2.mailbox.org [10.196.197.2])
+	id 1sWFcN-0000000CXkH-26n8;
+	Tue, 23 Jul 2024 13:31:53 +0000
+Received: from smtp2.mailbox.org (smtp2.mailbox.org [IPv6:2001:67c:2050:b231:465::2])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mout-p-201.mailbox.org (Postfix) with ESMTPS id 4WSyjV53zBz9sjB;
-	Tue, 23 Jul 2024 15:31:42 +0200 (CEST)
+	by mout-p-202.mailbox.org (Postfix) with ESMTPS id 4WSyjd0Y1Nz9sRn;
+	Tue, 23 Jul 2024 15:31:49 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailbox.org; s=mail20150812;
-	t=1721741502;
+	t=1721741509;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=9BciXjytzht5XgJaFZRe0Pz/cUqfoTd2M0DDEVlFYpM=;
-	b=wM7uhV0MjRihcHVjBqtqvB6kDIMLXJHoB3ibHeGZZoNzETFC/WqWfUCNCNBSYbhPQLA7/s
-	D2kdhbjm9B58Q7hcyuLH2oQcaEgtWZrNf7oapBnBISooKzv+Ywp53AVTUnvPdZyXeIS1Yw
-	t6dqfnk/Qs2Kezig6SomFL6vt3xcbvZwFQ+XOiu1u6Cy0H37OXVBHrpXbPdYMJA6KM5qDb
-	DZIZlj2RTx5eou+ZXjupNtrmXCsPnBw7Df3FDbrspwijzhmb5NnBfmIY0MHz/LTFhekRri
-	gggSe+s0sMyZIVexsE7Az4g7ulqB/u+AP/o4e8KhOSRJ5rVW6xkPCABHuY48Lw==
+	bh=NQsLSdgAtKfoGwMEHaAZTOzrW2FekDkGx4i7qFpzRNk=;
+	b=R/BvekQAftIvU2rbcc0RpB8AgkX1V5yLumjfqbX64k0muFpNg5PpJEh80fiuuL2RgnZKyC
+	jvxaJzDK7w6eGGbxnXF57qmExHGomlNhHR9m9j09K2+az2AVjdPxKjq4UMYy52p1mmI3y1
+	YWUTtL0rKJQfjcmp65Se/6Y76WqwJ+Um9i1iclTzSJ0x3PjmiNQ1MKCv7au3YbMZM47eMT
+	1uEtCh3OAefA4VAE2/4dLg4UXskketTcOZZllQG2VJdpvcwyPdmzme1zWxvWu74xuAsPJB
+	yCo/kmwz6XQbglcp0U8NSdVx+hh0ZXtPI3L7yz+olVnVbeVZC+Ld9zAHEmedtA==
 From: Marek Vasut <marek.vasut+renesas@mailbox.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailbox.org; s=mail20150812;
-	t=1721741500;
+	t=1721741506;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=9BciXjytzht5XgJaFZRe0Pz/cUqfoTd2M0DDEVlFYpM=;
-	b=P9rBYZKHAeMA0asUzBVdEyRl791xec9OXzaOS6Rd0rn6qKUDB+YvjBJ3fd9aB/4OagokY8
-	A5aN/swLPrVq2nwfoLAN5y5eFCPi+rHEO0tA8T8HFQJieVESSr0FOFCc/oA/x91e/JLX0Z
-	330ugHkZwx/mEXrSdauEv0JUCzm2HnkZw+chNQQtllPC8KW/XNGLol4X3nuI716pWWJNuf
-	gHXYkp3w7+CnxKIXe3w+c6Nc7AiljPR6UHMkMhvnlziEXokwjl8JVxhP0eeRUd6XqG2Pdx
-	qXSr14aKVdNhaWRmmFZ/x+WlfAbwMj5rXCYU9Y19ogn7YZhCNI42hHgeOmNRQQ==
+	bh=NQsLSdgAtKfoGwMEHaAZTOzrW2FekDkGx4i7qFpzRNk=;
+	b=jfytO0n8jZ1FWS5coJ7gF6dTSNLcjAYCmTPjgtTSMSHhU8S4RWg5r0ipfw1eR6tR2RFLhi
+	yvgRZmA4NkJvgL0kEZhXpI9SeusFese1cvbtM/FE4HOqAyEalL34UUdAfLo5x5OGralgcW
+	GAH4qIZG49tT2TqQKUpbp48dqlaHr+dGc+lGuFsyyYLEgFMy0ip77RsW0mk7hnd9j2aR/5
+	z/PQFpX2wlCJLJNGODbdAPQBLzpklV2HC2OcmL7f8F/zXVyawqi0Hhrn2D0Sf2+uook9Hn
+	M9Uwvce56tR5bQ1K9a4YVVr3zs7yIeMefj00w0EnQj2+ob8YTsofvNaPclvJ5Q==
 To: linux-pci@vger.kernel.org
 Cc: Marek Vasut <marek.vasut+renesas@mailbox.org>,
 	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
@@ -102,19 +102,20 @@ Cc: Marek Vasut <marek.vasut+renesas@mailbox.org>,
 	linux-renesas-soc@vger.kernel.org,
 	linux-rpi-kernel@lists.infradead.org,
 	linux-tegra@vger.kernel.org
-Subject: [PATCH v4 09/15] PCI: plda: Silence set affinity failed warning
-Date: Tue, 23 Jul 2024 15:27:09 +0200
-Message-ID: <20240723132958.41320-10-marek.vasut+renesas@mailbox.org>
+Subject: [PATCH v4 10/15] PCI: rcar-host: Silence set affinity failed warning
+Date: Tue, 23 Jul 2024 15:27:10 +0200
+Message-ID: <20240723132958.41320-11-marek.vasut+renesas@mailbox.org>
 In-Reply-To: <20240723132958.41320-1-marek.vasut+renesas@mailbox.org>
 References: <20240723132958.41320-1-marek.vasut+renesas@mailbox.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-MBO-RS-ID: 17d895ad134a4e761e2
-X-MBO-RS-META: putw83yttixkrxh1153wqef91f4k9ujp
+X-MBO-RS-ID: 5a4c2889652f8c2bd88
+X-MBO-RS-META: angdmgdfm99ya5hetaddg46hpta3erju
+X-Rspamd-Queue-Id: 4WSyjd0Y1Nz9sRn
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240723_063144_368461_98D313D5 
-X-CRM114-Status: GOOD (  11.44  )
+X-CRM114-CacheID: sfid-20240723_063151_838930_D1A20E8F 
+X-CRM114-Status: GOOD (  12.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -184,42 +185,45 @@ Cc: linux-renesas-soc@vger.kernel.org
 Cc: linux-rpi-kernel@lists.infradead.org
 Cc: linux-tegra@vger.kernel.org
 ---
-V4: - New patch
+V3: - New patch
+V4: - Update subject prefix
 ---
- drivers/pci/controller/plda/pcie-plda-host.c | 11 ++---------
- 1 file changed, 2 insertions(+), 9 deletions(-)
+ drivers/pci/controller/pcie-rcar-host.c | 10 ++--------
+ 1 file changed, 2 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/pci/controller/plda/pcie-plda-host.c b/drivers/pci/controller/plda/pcie-plda-host.c
-index a18923d7cea6e..8533dc618d45f 100644
---- a/drivers/pci/controller/plda/pcie-plda-host.c
-+++ b/drivers/pci/controller/plda/pcie-plda-host.c
-@@ -76,17 +76,10 @@ static void plda_compose_msi_msg(struct irq_data *data, struct msi_msg *msg)
- 		(int)data->hwirq, msg->address_hi, msg->address_lo);
+diff --git a/drivers/pci/controller/pcie-rcar-host.c b/drivers/pci/controller/pcie-rcar-host.c
+index c01efc6ea64f6..3dd653f3d7841 100644
+--- a/drivers/pci/controller/pcie-rcar-host.c
++++ b/drivers/pci/controller/pcie-rcar-host.c
+@@ -658,11 +658,6 @@ static void rcar_msi_irq_unmask(struct irq_data *d)
+ 	spin_unlock_irqrestore(&msi->mask_lock, flags);
  }
  
--static int plda_msi_set_affinity(struct irq_data *irq_data,
--				 const struct cpumask *mask, bool force)
+-static int rcar_msi_set_affinity(struct irq_data *d, const struct cpumask *mask, bool force)
 -{
 -	return -EINVAL;
 -}
 -
- static struct irq_chip plda_msi_bottom_irq_chip = {
- 	.name = "PLDA MSI",
- 	.irq_ack = plda_msi_bottom_irq_ack,
- 	.irq_compose_msi_msg = plda_compose_msi_msg,
--	.irq_set_affinity = plda_msi_set_affinity,
+ static void rcar_compose_msi_msg(struct irq_data *data, struct msi_msg *msg)
+ {
+ 	struct rcar_msi *msi = irq_data_get_irq_chip_data(data);
+@@ -678,7 +673,6 @@ static struct irq_chip rcar_msi_bottom_chip = {
+ 	.irq_ack		= rcar_msi_irq_ack,
+ 	.irq_mask		= rcar_msi_irq_mask,
+ 	.irq_unmask		= rcar_msi_irq_unmask,
+-	.irq_set_affinity 	= rcar_msi_set_affinity,
+ 	.irq_compose_msi_msg	= rcar_compose_msi_msg,
  };
  
- static int plda_irq_msi_domain_alloc(struct irq_domain *domain,
-@@ -146,8 +139,8 @@ static struct irq_chip plda_msi_irq_chip = {
+@@ -725,8 +719,8 @@ static const struct irq_domain_ops rcar_msi_domain_ops = {
  };
  
- static struct msi_domain_info plda_msi_domain_info = {
--	.flags = (MSI_FLAG_USE_DEF_DOM_OPS | MSI_FLAG_USE_DEF_CHIP_OPS |
--		  MSI_FLAG_PCI_MSIX),
-+	.flags = MSI_FLAG_USE_DEF_DOM_OPS | MSI_FLAG_USE_DEF_CHIP_OPS |
-+		 MSI_FLAG_NO_AFFINITY | MSI_FLAG_PCI_MSIX,
- 	.chip = &plda_msi_irq_chip,
+ static struct msi_domain_info rcar_msi_info = {
+-	.flags	= (MSI_FLAG_USE_DEF_DOM_OPS | MSI_FLAG_USE_DEF_CHIP_OPS |
+-		   MSI_FLAG_MULTI_PCI_MSI),
++	.flags	= MSI_FLAG_USE_DEF_DOM_OPS | MSI_FLAG_USE_DEF_CHIP_OPS |
++		  MSI_FLAG_NO_AFFINITY | MSI_FLAG_MULTI_PCI_MSI,
+ 	.chip	= &rcar_msi_top_chip,
  };
  
 -- 
