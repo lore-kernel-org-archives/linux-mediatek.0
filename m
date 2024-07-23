@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FD9EC3DA63
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jul 2024 13:34:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 704F2C3DA49
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jul 2024 13:34:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=B4jgFzmgpH9HfJI1SX0m63KtIzKiUEGwPMtC6Dcrb3Q=; b=Fy5q4M7jz0P6NZ/ZowPiJ8TyCq
-	B44a4zftHxvo8FZV/McG/r9oRTccOQsE6Q5Rh9PoIEdgxT22OwTKAHmMv6DYuBPiamJ3+GQbLSpjK
-	NN0F/6fPpiOJ5X+oLzmOSM9rBp0bM3pdH8wm8pf1Dna6oUvhbFy2L9tXUfE/GsQetFA3Ib87A43ld
-	LtW6psFhuT8XmXojr5IXxdvH8JzG0GeoX9re/tVGO/mqdlkxWD4oOywvcRF7AaCn/0dbQRtEvATlp
-	xaI11AXYYdWBEfxmysaGwx5bcXMTp0XCu8rYzRdhUuO/ARPvoATz6wBQAGLQaLXIZ1fSWm2Eswven
-	74LJpdkw==;
+	bh=+f8J5olEs152jVkbf58HPbxCknr0PVG9Ijj4ye6uxfw=; b=dtoWkzhs0AWUid8aiGOHitVql4
+	kjDIcuqEJ4l9/PmmCNuSiBS2fn1eLJ+4f+zTZWRDn8DjscGsXzsT8+ieuwy2q1zqc2KoJwZaXO2rv
+	Jjyqxxe8GvjGoqp+YnK3D8PdVSuXtHfyjtD5JfewT6XWf8PrBs3ebykXN6SCsASKxATyClI6BCWr+
+	DJKLXvZWiQGFMZNdtoE8fYXaNlMn+Dl1XHMhKF5OCgULy9vSgGiaBRlHhiRdm7VZbX1zVxxEzHpSA
+	4OJ9XEJuhP2/hZoFSTUbbCbeQZOgXI9OBmqwE55dGbRbwdsgnfoAbN0sa1e9yGsQmQxwYKKXJ3J71
+	hdjbZswA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sWFed-0000000CYhN-3iLJ;
-	Tue, 23 Jul 2024 13:34:11 +0000
+	id 1sWFf4-0000000CYms-0T0Z;
+	Tue, 23 Jul 2024 13:34:38 +0000
 Received: from mout-p-103.mailbox.org ([2001:67c:2050:0:465::103])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sWFc2-0000000CXcB-18Hf;
-	Tue, 23 Jul 2024 13:31:31 +0000
-Received: from smtp2.mailbox.org (smtp2.mailbox.org [IPv6:2001:67c:2050:b231:465::2])
+	id 1sWFc9-0000000CXe3-0vx7;
+	Tue, 23 Jul 2024 13:31:39 +0000
+Received: from smtp2.mailbox.org (smtp2.mailbox.org [10.196.197.2])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mout-p-103.mailbox.org (Postfix) with ESMTPS id 4WSyjD6D51z9spZ;
-	Tue, 23 Jul 2024 15:31:28 +0200 (CEST)
+	by mout-p-103.mailbox.org (Postfix) with ESMTPS id 4WSyjM6PWnz9sp5;
+	Tue, 23 Jul 2024 15:31:35 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailbox.org; s=mail20150812;
-	t=1721741488;
+	t=1721741495;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=B4jgFzmgpH9HfJI1SX0m63KtIzKiUEGwPMtC6Dcrb3Q=;
-	b=RhxBDRtapiqtAF+xyiTUj07jlpYGzo11Cn9rJLQk+JUoIB2TcLvqwqXen978N5KDTIbhnX
-	PcBpSXb5m7rgxJ8IkaeGPHxxN8MDtQ8hvgCr5sn6gotPo2I5GWG/EYakXjQqKZHuXUUkLX
-	ji5FuPHtw7mqx2MDjmdVKpjldsLSxE1cZd+gAGXVipYZpedv0nrYb01Df8wUTxNt3j7nR5
-	wA0t73n6zR0YgHbMNSZq8kKQFv6iksykQb1LBz5CE48yIRxiMVBeLSNe83HCUhlZqrkki4
-	wRYZf52KRCfg1Jx5ixLs0O2/xbSo+ATGYErDiuEz6nlI/agIYBQ6wSy6UUpvGQ==
+	bh=+f8J5olEs152jVkbf58HPbxCknr0PVG9Ijj4ye6uxfw=;
+	b=VEXJ6TX0Wq0v7yEAmggJdD+xAvLIPzSHjdlZw6Qo7BJcVbKCeGVp0Vh7NUmhjLJ4cL3My6
+	b9Mz/OHAlqtkgU/zsq4tVIpPi32KsLvNYtYpcyGjqWEO4Smzq61ALIHfvK6jd+YW32Zw2M
+	eqzWmqKCjUz+eOm29Hh738Cb5/UvJBAtbKyYkBbN51fblwliQveNfHWdOjX2eaBURkjZKz
+	7jg+LHQ8NsFKq7CWaNwHT1N6wTiQn3/f7X8j4lgZX8pWcVmb5uNDl2iSf1/4mukt7scIly
+	V0aPaD0Nt6Cu9owxafrpnvJuA3bwk2uwUljy2aHFa/lq2A/bXwg9xsQ7IXFxCQ==
 From: Marek Vasut <marek.vasut+renesas@mailbox.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailbox.org; s=mail20150812;
-	t=1721741486;
+	t=1721741493;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=B4jgFzmgpH9HfJI1SX0m63KtIzKiUEGwPMtC6Dcrb3Q=;
-	b=LUCMsla4cFjosSkQaF3lZQ4BQh51e5SEyicqvtQl6iPD58peqVg+U1CVyZ6enCRHD0X6ez
-	jSySuHUyFcNoO6nyRm7wXh5uLI3u8HHkzwCCKbCYIu0pk1qKcnbpoBedYcsa2l6DyIsL78
-	rPLfh3JqklfojJOH55xXMnPBUTsMC4phqo3FR2ikz7KyRgAHuHmTLm0fWb6ajGuZHyS/2W
-	Som9FZbfuFgSsSfk+zvUJ2PTX9G3A52yRYtuc7vPa9Y+4zsrgL1IlAWXs6YPKyVgwPI5WX
-	/I31nQ1TskiOUX9moSIST5roxrkTIx1do2xPaoNRNTMtBBVvmJnYccnpolfS8A==
+	bh=+f8J5olEs152jVkbf58HPbxCknr0PVG9Ijj4ye6uxfw=;
+	b=cb4ET9CKZ+ke8iBVBQq+EK3lURixdVKcN8ZtqOpxPI3tsSeCHH66xAdNQm3hqFeH3Y+qkW
+	caNtgswiAu7kMPKN1ref2UurHsLW3o9F1hNk7/os59nuQpkct9C1Km8dDxZuYota3Aqu8G
+	EAYoxyRThueZYO84VjQ0lRZj7uZlh8heZflReZf0xTnqHdmewPeKSGgs5mi4fq/d3YbAyN
+	bO7Vg5wMYUlKj+ZLckiDlIKWq8vrYqUhAbLKlNHf7bNL3i1siru2kd6DXfIr+SYDzGtvBp
+	Ycv4TTps0j7hZUjLIhVPUUK1O/EL+7CetdVeB36/ziuVm7c4qkH3h50asF5dcQ==
 To: linux-pci@vger.kernel.org
 Cc: Marek Vasut <marek.vasut+renesas@mailbox.org>,
 	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
@@ -102,20 +102,19 @@ Cc: Marek Vasut <marek.vasut+renesas@mailbox.org>,
 	linux-renesas-soc@vger.kernel.org,
 	linux-rpi-kernel@lists.infradead.org,
 	linux-tegra@vger.kernel.org
-Subject: [PATCH v4 07/15] PCI: mediatek: Silence set affinity failed warning
-Date: Tue, 23 Jul 2024 15:27:07 +0200
-Message-ID: <20240723132958.41320-8-marek.vasut+renesas@mailbox.org>
+Subject: [PATCH v4 08/15] PCI: mobiveil: Silence set affinity failed warning
+Date: Tue, 23 Jul 2024 15:27:08 +0200
+Message-ID: <20240723132958.41320-9-marek.vasut+renesas@mailbox.org>
 In-Reply-To: <20240723132958.41320-1-marek.vasut+renesas@mailbox.org>
 References: <20240723132958.41320-1-marek.vasut+renesas@mailbox.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-MBO-RS-ID: 90de5b6adc35cd1bc03
-X-MBO-RS-META: 1j865y9xe68wttsa8tg1r5gbxs99dxrc
-X-Rspamd-Queue-Id: 4WSyjD6D51z9spZ
+X-MBO-RS-ID: 58ab18f6a08e92cb725
+X-MBO-RS-META: dcjakeps5zyi6ganpama9cctw7rqsxoz
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240723_063130_503153_A01A642E 
-X-CRM114-Status: GOOD (  11.29  )
+X-CRM114-CacheID: sfid-20240723_063137_434733_4BE28D61 
+X-CRM114-Status: GOOD (  11.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -187,45 +186,41 @@ Cc: linux-tegra@vger.kernel.org
 ---
 V4: - New patch
 ---
- drivers/pci/controller/pcie-mediatek.c | 11 ++---------
+ drivers/pci/controller/mobiveil/pcie-mobiveil-host.c | 11 ++---------
  1 file changed, 2 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-index 7fc0d7709b7fb..9be3cebd862e2 100644
---- a/drivers/pci/controller/pcie-mediatek.c
-+++ b/drivers/pci/controller/pcie-mediatek.c
-@@ -407,12 +407,6 @@ static void mtk_compose_msi_msg(struct irq_data *data, struct msi_msg *msg)
- 		(int)data->hwirq, msg->address_hi, msg->address_lo);
- }
- 
--static int mtk_msi_set_affinity(struct irq_data *irq_data,
--				const struct cpumask *mask, bool force)
--{
--	 return -EINVAL;
--}
--
- static void mtk_msi_ack_irq(struct irq_data *data)
- {
- 	struct mtk_pcie_port *port = irq_data_get_irq_chip_data(data);
-@@ -424,7 +418,6 @@ static void mtk_msi_ack_irq(struct irq_data *data)
- static struct irq_chip mtk_msi_bottom_irq_chip = {
- 	.name			= "MTK MSI",
- 	.irq_compose_msi_msg	= mtk_compose_msi_msg,
--	.irq_set_affinity	= mtk_msi_set_affinity,
- 	.irq_ack		= mtk_msi_ack_irq,
+diff --git a/drivers/pci/controller/mobiveil/pcie-mobiveil-host.c b/drivers/pci/controller/mobiveil/pcie-mobiveil-host.c
+index 32951f7d6d6d6..0e088e74155d3 100644
+--- a/drivers/pci/controller/mobiveil/pcie-mobiveil-host.c
++++ b/drivers/pci/controller/mobiveil/pcie-mobiveil-host.c
+@@ -360,8 +360,8 @@ static struct irq_chip mobiveil_msi_irq_chip = {
  };
  
-@@ -486,8 +479,8 @@ static struct irq_chip mtk_msi_irq_chip = {
- };
- 
- static struct msi_domain_info mtk_msi_domain_info = {
+ static struct msi_domain_info mobiveil_msi_domain_info = {
 -	.flags	= (MSI_FLAG_USE_DEF_DOM_OPS | MSI_FLAG_USE_DEF_CHIP_OPS |
 -		   MSI_FLAG_PCI_MSIX),
 +	.flags	= MSI_FLAG_USE_DEF_DOM_OPS | MSI_FLAG_USE_DEF_CHIP_OPS |
 +		  MSI_FLAG_NO_AFFINITY | MSI_FLAG_PCI_MSIX,
- 	.chip	= &mtk_msi_irq_chip,
+ 	.chip	= &mobiveil_msi_irq_chip,
  };
  
+@@ -378,16 +378,9 @@ static void mobiveil_compose_msi_msg(struct irq_data *data, struct msi_msg *msg)
+ 		(int)data->hwirq, msg->address_hi, msg->address_lo);
+ }
+ 
+-static int mobiveil_msi_set_affinity(struct irq_data *irq_data,
+-				     const struct cpumask *mask, bool force)
+-{
+-	return -EINVAL;
+-}
+-
+ static struct irq_chip mobiveil_msi_bottom_irq_chip = {
+ 	.name			= "Mobiveil MSI",
+ 	.irq_compose_msi_msg	= mobiveil_compose_msi_msg,
+-	.irq_set_affinity	= mobiveil_msi_set_affinity,
+ };
+ 
+ static int mobiveil_irq_msi_domain_alloc(struct irq_domain *domain,
 -- 
 2.43.0
 
