@@ -4,119 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7B43C3DA61
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Jul 2024 08:06:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3874EC3DA63
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Jul 2024 09:03:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hXM9QZHOityecyB90WLppyXQXTGdwiJUz7fCC8KWklo=; b=ThKla5QfZZq/IiLsJ9E+bxihk1
-	TxjRiB1+lbF65RNhB8bv+7ERBADW6TDsewnid16OPsd8sN5AJIiwXKe2/4Wf/y5ftMzrcdkLUDrkM
-	mQ6FQyk1d3gvZGDx0x5aG8C3eKXbvO0RT5baBlxsSktUBwLHcH8Ed3Xo+MGIMwZFI332j7iBpelxX
-	/6WI1x/L56+Uiu1kJqywcxnAeHtQlBKf5F+phsiBTqaIOqXoxeCmZHlEqaz5PmIu5P+nGoLNYrdjV
-	+G1euBq+u4Re3FKpEwTkbK7avMf3M1nR18dnyKK2HivQBHIhNDc1XOYvXX4bp9/ZbKz9IMMRH5G5C
-	g7sGiiCA==;
+	bh=1HZ/AvePFKQufOPsS1Y7gxr1TS5yWwgKscIUn6jjFyk=; b=dIa7oLGAt8K2VqZhIVbFmP1f7w
+	YLX0qtsAeqaw5ymxow5NIq46zLbeL8hB99OwK9JBBn+iD0OBnVfhHKVeni90epnd/trdZ7Mlg2WFp
+	xl+s1TIMuygU6wmeVmufvknz1dtokwPwvXzfwMqIis5D/olU0bl2JK3K4JuL4uyBgorBcuFVfMJrW
+	7pMEfsjz98nQ50UN9APJtUflS821Q6XdQOi0nME0AztpL3B8CzdiW5+HAvA1FCdEZpC/pdoFVfbcB
+	W3j8bTMnB7GwdBBZvSTEwv25kE26sX2Dho/HPQIGUxOVl5aRaJeLThcfYI6Cn1DzJtEH3XPbd+NZg
+	3XCxJv6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sWX1I-0000000EifP-19Rx;
-	Wed, 24 Jul 2024 08:06:44 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1sWXuJ-0000000EqWf-2DVW;
+	Wed, 24 Jul 2024 09:03:35 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sWX14-0000000EiZa-0baD;
-	Wed, 24 Jul 2024 08:06:31 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 755F3CE0FAE;
-	Wed, 24 Jul 2024 08:06:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E6486C32782;
-	Wed, 24 Jul 2024 08:06:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1721808387;
-	bh=AKKM6ppMNxmC7UXJSSz3Ux9097zdWoX9DlJdSKA47D4=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=T2mKwvje3zz3Tu+q9/weTIFmMsr4waWW4t+NKBRQiPZd6QZucUTu2hjyLDyChR/EK
-	 XutvMGcA54ehmZslh+rwuxlKFSFQF4BPD6yKnZrejsEJwk/EVaDSZjJbBmTHIj13Km
-	 TawreHGT/6YVXpVSEem3JavFS0j6012pl+qKx1LB62owOFpWCwUeKniNG+JtclOYWb
-	 Q8EJYCs2otMvvQeu71KqPsGxWMexoVxYMuPU1RgRLBXo/KuFwq8IZi2G85Di4cVTAl
-	 tD0futDU6Y/0UVcaYkG55sg+0pjkd5MjhaFE3RfULjlWM6Mqqv4XxlLAWi29PsygKd
-	 Cv/j9peV3ENOA==
-Message-ID: <119c9a56-ada7-42b2-a0c4-93038950f325@kernel.org>
-Date: Wed, 24 Jul 2024 10:06:16 +0200
+	id 1sWXuG-0000000EqVq-1Juf
+	for linux-mediatek@lists.infradead.org;
+	Wed, 24 Jul 2024 09:03:33 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1721811810;
+	bh=OJBjcORicXMgqQr2wkkkceeE9D1kAAb+ffbZMaOnLWM=;
+	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
+	b=uJT4O6gXnTOqwHmu4Jry9ABRfunIvxna3bbUGScRjEb0t9oi7uhEosy5LAFToXQWY
+	 eqaEOHLjn1htc0ruypgaYAxFuK387ae16e9Gi6GNhtemgsZIEXB8aXUgNmfoo9b9mt
+	 so/QJTIMbnJjSSjPnOenvMrCQY6LGOrq8Ujdt/cPsYOGmuw1qQLS/wjeniRbhEmfdR
+	 xQZC2/g4sg3i/012up1L0FY+sT18Y1a7v9KNv98EJZHiwq9it6ydUO8uyRTR1vjzvE
+	 bwK9GAe/Kb/+ahIqygnBAud9PiC6UpHOFdPCQlXiLGQU9KrrNxpEls36nja/8xGjGo
+	 ZjK3jLgFZRhGw==
+Received: from [100.66.96.193] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: vignesh)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 21E533780BC2;
+	Wed, 24 Jul 2024 09:03:27 +0000 (UTC)
+Message-ID: <61c39125-9906-4b5e-8a83-8e0aa2c3ac0d@collabora.com>
+Date: Wed, 24 Jul 2024 14:33:26 +0530
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 03/16] dt-bindings: mfd: mediatek: Add codec property
- for MT6357 PMIC
-To: Alexandre Mergnat <amergnat@baylibre.com>,
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Lee Jones <lee@kernel.org>, Flora Fu <flora.fu@mediatek.com>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
- Sumit Semwal <sumit.semwal@linaro.org>,
- =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>,
- Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>
-Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org
-References: <20240226-audio-i350-v7-0-6518d953a141@baylibre.com>
- <20240226-audio-i350-v7-3-6518d953a141@baylibre.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
+Subject: Re: drm-ci: flaky tests for mediatek driver testing
 Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <20240226-audio-i350-v7-3-6518d953a141@baylibre.com>
-Content-Type: text/plain; charset=UTF-8
+From: Vignesh Raman <vignesh.raman@collabora.com>
+To: linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org
+Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ airlied@gmail.com, daniel@ffwll.ch, Daniel Stone <daniels@collabora.com>,
+ Helen Mae Koike Fornazier <helen.koike@collabora.com>,
+ Sergi Blanch Torne <sergi.blanch.torne@collabora.com>,
+ Guilherme Alcarde Gallo <guilherme.gallo@collabora.com>
+References: <0b2a1899-15dd-42fa-8f63-ea0ca28dbb17@collabora.com>
+In-Reply-To: <0b2a1899-15dd-42fa-8f63-ea0ca28dbb17@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240724_010630_575486_94FB4D72 
-X-CRM114-Status: UNSURE (   9.59  )
+X-CRM114-CacheID: sfid-20240724_020332_522526_DC45C6D8 
+X-CRM114-Status: UNSURE (   8.17  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -132,21 +80,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 22/07/2024 08:53, Alexandre Mergnat wrote:
-> Add the audio codec sub-device. This sub-device is used to set the
-> optional voltage values according to the hardware.
-> The properties are:
->   - Setup of microphone bias voltage.
->   - Setup of the speaker pin pull-down.
+Hi Maintainers,
+
+On 28/05/24 10:55, Vignesh Raman wrote:
+> Hi Maintainers,
 > 
-> Also, add the audio power supply property which is dedicated for
-> the audio codec sub-device.
+> There are some flaky tests reported for mediatek driver testing in drm-ci.
 > 
-> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+> # Board Name: mt8173-elm-hana
+> # IGT Version: 1.28-g0df7b9b97
+> # Linux Version: 6.9.0-rc7
+> # Failure Rate: 50
+> core_setmaster_vs_auth
+> dumb_buffer@create-clear
+> fbdev@unaligned-write
+> fbdev@write
+> kms_cursor_legacy@cursor-vs-flip-atomic-transitions
+> kms_prop_blob@invalid-set-prop
+> 
+> Will add these tests in 
+> drivers/gpu/drm/ci/xfails/mediatek-mt8173-flakes.txt 
+> (https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/Documentation/gpu/automated_testing.rst#n70)
+> 
+> Please could you have a look at these test results and let us know if 
+> you need more information. Thank you.
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+There are some flaky tests reported for mediatek driver testing for the 
+mt8183,
 
-Best regards,
-Krzysztof
+# Board Name: mt8183-kukui-jacuzzi-juniper-sku16
+# Failure Rate: 100
+# IGT Version: 1.28-gf13702b8e
+# Linux Version: 6.10.0-rc5
+kms_bw@linear-tiling-1-displays-2560x1440p
+kms_cursor_legacy@cursor-vs-flip-atomic-transitions
 
+Will add these tests in
+drivers/gpu/drm/ci/xfails/mediatek-mt8183-flakes.txt
+(https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/Documentation/gpu/automated_testing.rst#n70)
+
+Please could you have a look at these test results and let us know if
+you need more information. Thank you.
+
+Regards,
+Vignesh
 
