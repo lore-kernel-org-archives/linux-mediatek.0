@@ -4,48 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F53DC3DA63
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Jul 2024 22:55:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC0ABC3DA49
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Jul 2024 00:01:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OpW0bskG5q3qyL+LrwVKu2qCYzYjwo2y8gyMnHgYLP8=; b=yUd3aU9q6JaY0xB0QpSz+YLuNa
-	JU3mDSWXFDJOZ+9rnKsYOg9K+S9u35GWvqaweL4yPKfgB6s+xHQCgWN5Tj6yMwH3PFPG6I23jSbmB
-	+44Ry/eCOJyodnfXkMpu7KUYXvj5ZsJdgTDEIMMl6/mzry/QQhzIikzBtzMb6b6bjj4Kk1RK7tXzt
-	y0Fh74VqaySvN/AwQBgk7Yfs3da4TZtYNGINJhfD2SizzwuISTzncJ83wA3dorWjVirPwa9xNiV0z
-	vyt5tScMUycwf0OGQpz8wjV3xuC+W9vcnSI/YsZNb9imNL8QvqBkOl8aoA4sRq/3+d8odv+oA9yes
-	UqgmLK7g==;
+	bh=HjPcF3TBfRjPpVjOMK7/fpnxgVcc8VtkPZ4xX3JlhSM=; b=TdWQTPNIxQpGMAtOnm5QIjDF9n
+	bogQCCFrKMgTpIK1vfQC9tbwx14tPCTnFt2H/pH/n85vlmrAcHND4ql6gS7fKLySbsI1Uf8XvYSY+
+	HgFjOCsQSLIaK5XIW/q+r981pFT4n0epgTC5dKW6SD3Kyk6XmvgIRiHu3PdDwPNP1/sJScKyx/rHo
+	dOfwOs4Kd9eUz0TISOhj+hjBWOm+z9Khd4yJpznYuHdU1r6gSjOlrl/tPaPbyKIazwSk1Z2FtAUAs
+	9Nc/wbjqGY7ChEBMkDrikzqjAS583nfSblItV0WNzMdqkkQhf0jkOI1rmrjarJpvMOFmQBPbYnk1v
+	oO0v7ADg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sWOPg-0000000DjID-01xv;
-	Tue, 23 Jul 2024 22:55:20 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1sWPRm-0000000DqLs-2hwx;
+	Wed, 24 Jul 2024 00:01:34 +0000
+Received: from mail-qk1-x72e.google.com ([2607:f8b0:4864:20::72e])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sWOPH-0000000DjEJ-0eyp;
-	Tue, 23 Jul 2024 22:54:56 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 6189660EDE;
-	Tue, 23 Jul 2024 22:54:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 76859C4AF09;
-	Tue, 23 Jul 2024 22:54:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1721775294;
-	bh=7yl7pweRsUb/Cz4uzMnBbIvjB393ruYlONQQ/MK1d9U=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=cYxwu10z5OHmkGQRUgijf1f/SRxT0dVPX2MkHzZ+24lrUWB8pLFMqoBbZSJQe7ZqX
-	 TwQ8stHcyHiRpcsqYpgYWBMbWA0b80okC3O4iHaCpUCQqJsW3nXu6mwhv7ap2Jpslm
-	 3gu35oqshyEDpN6XdUCp4L0hvI9T+dDTQrZ0JpCLvooTmr7D9d8/GKj99xkadZMqcQ
-	 ZvFvAqC+aMnI2mTrS3zU8n0yQJsPLNVA5LHn/HQCRybrhnKNp3PaOhQYN6Kxego95b
-	 kieihj7tORN814FXDDg99GVwDban6fQojEoQ6iLhG5S37BWMVjaWU8g1MkRCSDTfc6
-	 947QCP7HuE3Gg==
-Message-ID: <b77f741f-24da-445b-99bc-8765dabdf820@kernel.org>
-Date: Wed, 24 Jul 2024 07:54:47 +0900
+	id 1sWPRN-0000000DqIl-0n13;
+	Wed, 24 Jul 2024 00:01:10 +0000
+Received: by mail-qk1-x72e.google.com with SMTP id af79cd13be357-79ef93865afso349244085a.1;
+        Tue, 23 Jul 2024 17:01:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1721779267; x=1722384067; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=HjPcF3TBfRjPpVjOMK7/fpnxgVcc8VtkPZ4xX3JlhSM=;
+        b=etVLtLgcRy0w4el0b6iZMBakylC2QBzRljMyTx6DVSrrjzPNqRkaw5AQPryjkEcl6h
+         xUBigbraoM3bm8DILn+zcqVuN1GGMEuAjlwzmM60zAtD5XgXbiFVUwI+i97zAIJHJWjh
+         m1k/7sNRV5JxDRKD2iCt0bhkuRORnhpqLMrAoiIChZGryOHk05ivRvpZBlsOEPjvgMHk
+         jOH/kS8f0L2KWbrcC8Y8t3KhWmTch3VE+omg2jkohCsWSpfp8CUFAdeBWCerE3qWlQJi
+         QkB9cyF4uRhniOBBJiwDdryRBp+RNgdQ4mElliioR2hFWfJO+wLiVXM377E0EfZUIbkg
+         /Ang==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1721779267; x=1722384067;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=HjPcF3TBfRjPpVjOMK7/fpnxgVcc8VtkPZ4xX3JlhSM=;
+        b=f2g8xQ+Z5rO1B846j6GkUm+3UZ1BnZywUfBg9AaBEAVOYucFfeF/99AhReel6/wTYZ
+         GiVU7sPInV+ipZlyeNrMKDiKe2sXOuPZtaKipTqXmFV1OxdgrXRv4wpMieBcdrNFCSfM
+         hcThY9F2vaukNYCJeEb0kLoIkw/dNalYQEpkN1QRixQcnd3dT+U08usI3+x/1wKJ+r3m
+         QbHLGZptRkdfQNwcWFhv/kuV2u/9+X5XB9bC2LJ+McjRcjZn1hyNxGNu9Ix9hpHcuX+H
+         ELS9B2CNpyALGWBIri1AMonW7OBqzcjuzS175pPdoSLQt6hiNdeActtbf7u/yqSGUfQY
+         5f+w==
+X-Forwarded-Encrypted: i=1; AJvYcCU0dtdFxAwFmVUgyuduIoWyCjtziWhkoMxglm/JRTgN/mS4BwH7mLHxEbQ3Sxcv2K8q67fhZoYUSrpG8dWeivfzWHw9kJypFWffaAGIjs8b3pQfY8xiZolaUxBY0snzCazJfsYeIJsjUTAtWYRik4XEsfp9H57wMSj4QGA/OcsmQ3R7BLwg1bhIQ/ItkNqlGvj2dd0i4i8qdjwVgfgadA==
+X-Gm-Message-State: AOJu0Yxeedkbp2BRpqePb1pCv82VsZWEfi3cnU5sFFkiUMkukcbln7JQ
+	JJCGG84RCq89Beb+Ej/S8xBLsFSVG3fp0DPeiyoRlFKZPjIEti+1
+X-Google-Smtp-Source: AGHT+IEmrijFPvlymDjiYvpgNdufWQdFfnX8iqTj46gVg2s6gl42hPf89eITjYUBUaoYa2+oQ9bIdw==
+X-Received: by 2002:a05:620a:2544:b0:7a1:c427:22e0 with SMTP id af79cd13be357-7a1c427267amr363339485a.41.1721779267163;
+        Tue, 23 Jul 2024 17:01:07 -0700 (PDT)
+Received: from [10.67.48.245] ([192.19.223.252])
+        by smtp.googlemail.com with ESMTPSA id af79cd13be357-7a198fae6d8sm523722485a.7.2024.07.23.17.00.57
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 23 Jul 2024 17:01:04 -0700 (PDT)
+Message-ID: <62c24823-fa95-46bc-8c7d-0d15cbddc4f6@gmail.com>
+Date: Tue, 23 Jul 2024 17:00:51 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 01/15] genirq/msi: Silence set affinity failed warning
+Subject: Re: [PATCH v4 04/15] PCI: brcmstb: Silence set affinity failed
+ warning
 To: Marek Vasut <marek.vasut+renesas@mailbox.org>, linux-pci@vger.kernel.org
 Cc: =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>,
  =?UTF-8?Q?Pali_Roh=C3=A1r?= <pali@kernel.org>,
@@ -56,6 +78,7 @@ Cc: =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>,
  Broadcom internal kernel review list
  <bcm-kernel-feedback-list@broadcom.com>,
  Daire McNamara <daire.mcnamara@microchip.com>,
+ Damien Le Moal <dlemoal@kernel.org>,
  Florian Fainelli <florian.fainelli@broadcom.com>,
  Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, Jianjun Wang
  <jianjun.wang@mediatek.com>, Jim Quinlan <jim2101024@gmail.com>,
@@ -83,16 +106,16 @@ Cc: =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>,
  linux-renesas-soc@vger.kernel.org, linux-rpi-kernel@lists.infradead.org,
  linux-tegra@vger.kernel.org
 References: <20240723132958.41320-1-marek.vasut+renesas@mailbox.org>
- <20240723132958.41320-2-marek.vasut+renesas@mailbox.org>
+ <20240723132958.41320-5-marek.vasut+renesas@mailbox.org>
 Content-Language: en-US
-From: Damien Le Moal <dlemoal@kernel.org>
-Organization: Western Digital Research
-In-Reply-To: <20240723132958.41320-2-marek.vasut+renesas@mailbox.org>
-Content-Type: text/plain; charset=UTF-8
+From: Florian Fainelli <f.fainelli@gmail.com>
+In-Reply-To: <20240723132958.41320-5-marek.vasut+renesas@mailbox.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240723_155455_372462_2DC80676 
-X-CRM114-Status: GOOD (  13.48  )
+X-CRM114-CacheID: sfid-20240723_170109_283740_10BBB31D 
+X-CRM114-Status: UNSURE (   7.44  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,47 +130,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7/23/24 10:27 PM, Marek Vasut wrote:
-> Various PCIe controllers that mux MSIs onto single IRQ line produce these
-> "IRQ%d: set affinity failed" warnings when entering suspend. This has been
-> discussed before [1] [2] and an example test case is included at the end
-> of this commit message.
+On 7/23/24 06:27, Marek Vasut wrote:
+> Use newly introduced MSI_FLAG_NO_AFFINITY, which keeps .irq_set_affinity unset
+> and allows migrate_one_irq() code in cpuhotplug.c to exit right away, without
+> printing "IRQ...: set affinity failed(-22)" warning.
 > 
-> Controller drivers which create MSI IRQ domain with MSI_FLAG_USE_DEF_CHIP_OPS
-> flag set and which do not override the .irq_set_affinity irqchip callback get
-> assigned default .irq_set_affinity = msi_domain_set_affinity() callback. That
-> is not desired on controllers where it is not possible to set affinity of each
-> MSI IRQ line to a specific CPU core due to hardware limitation.
-> 
-> Introduce dedicated flag MSI_FLAG_NO_AFFINITY, which keeps .irq_set_affinity
-> unset in case the controller driver did not assign the callback. This way, the
-> migrate_one_irq() code in cpuhotplug.c can exit right away, without printing
-> the aforementioned warning. The .irq_set_affinity implementations which only
-> return -EINVAL can be removed from multiple controller drivers.
-> 
-> ```
-> $ grep 25 /proc/interrupts
->  25:   0 0 0 0 0 0 0 0   PCIe MSI   0   Edge   PCIe PME
-> 
-> $ echo core > /sys/power/pm_test ; echo mem > /sys/power/state
-> ...
-> Disabling non-boot CPUs ...
-> IRQ25: set affinity failed(-22). <---------- This is being silenced here
-> psci: CPU7 killed (polled 4 ms)
-> ...
-> ```
-> 
-> [1] https://lore.kernel.org/all/d4a6eea3c5e33a3a4056885419df95a7@kernel.org/
-> [2] https://lore.kernel.org/all/5f4947b18bf381615a37aa81c2242477@kernel.org/
+> Remove .irq_set_affinity implementation which only return -EINVAL from this
+> controller driver.
 > 
 > Signed-off-by: Marek Vasut <marek.vasut+renesas@mailbox.org>
 
-Looks good to me.
-
-Reviewed-by: Damien Le Moal <dlemoal@kernel.org>
-
+Reviewed-by: Florian Fainelli <florian.fainelli@broadcom.com>
 -- 
-Damien Le Moal
-Western Digital Research
+Florian
 
 
