@@ -4,78 +4,120 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 981D9C3DA61
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Jul 2024 08:06:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7B43C3DA61
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Jul 2024 08:06:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=oHZ4tckbMHgCkPRX0CWgUyznqrPY7OlancEa6H16LW0=; b=rCd8GyLGZzctXKH962a3yn1UEn
-	N4qZYBHcZjf3DRbn540yCDUxPWqeGjE6K3U+557RSqPKZu2aiXQDz5YMhGrsJtrkwQTV9KW3ttbo8
-	JQMtUoQxbMHtyB5BUoSPDvP3SX7bZBGh1htosGxU4UXOYpizmpJbeXjm7mdOu6HUAcGDthpPOjiwH
-	Nzv3g3uw0SPCdAULN83rMf62mEtP/axhzDjKV25P8kygFZUehP54OG2V8JLp5dMjoDU1+Xg09V3s7
-	Bd9xOIHnY21G0E1t+OHFtZlrruE1IdK5lj85FGoLkjAO8BOjjCDvRGrZFsa2oiwVz6b2dnusuzxJ8
-	KpdTw2fQ==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hXM9QZHOityecyB90WLppyXQXTGdwiJUz7fCC8KWklo=; b=ThKla5QfZZq/IiLsJ9E+bxihk1
+	TxjRiB1+lbF65RNhB8bv+7ERBADW6TDsewnid16OPsd8sN5AJIiwXKe2/4Wf/y5ftMzrcdkLUDrkM
+	mQ6FQyk1d3gvZGDx0x5aG8C3eKXbvO0RT5baBlxsSktUBwLHcH8Ed3Xo+MGIMwZFI332j7iBpelxX
+	/6WI1x/L56+Uiu1kJqywcxnAeHtQlBKf5F+phsiBTqaIOqXoxeCmZHlEqaz5PmIu5P+nGoLNYrdjV
+	+G1euBq+u4Re3FKpEwTkbK7avMf3M1nR18dnyKK2HivQBHIhNDc1XOYvXX4bp9/ZbKz9IMMRH5G5C
+	g7sGiiCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sWX0i-0000000EiSm-1gKB;
-	Wed, 24 Jul 2024 08:06:08 +0000
-Received: from mail-lf1-f46.google.com ([209.85.167.46])
+	id 1sWX1I-0000000EifP-19Rx;
+	Wed, 24 Jul 2024 08:06:44 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sWX0J-0000000EiMN-2Tcs;
-	Wed, 24 Jul 2024 08:05:45 +0000
-Received: by mail-lf1-f46.google.com with SMTP id 2adb3069b0e04-52ed741fe46so7479359e87.0;
-        Wed, 24 Jul 2024 01:05:42 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1721808341; x=1722413141;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=oHZ4tckbMHgCkPRX0CWgUyznqrPY7OlancEa6H16LW0=;
-        b=T3vrSWVuj5dTbq5OEbYCo5WdZH6ieIkn4olfQN5ROcjQYBPVd0nw1RYp4euoSCz96d
-         RZn8mzmIJo6zBcbIeq/5mRRnoV/7eXgxYFhvtirJpPD0X/vg+EU8Mu2e6Tx+X4vZLGI2
-         2LyaITrvP0XvRh3CfmeTqL79KEhryYdn7jBaqje9/1PIca5GRDPi3Xo2Cne2epd97QPW
-         3/3hBugOwrjO0vv4PDDjmmAcYA9f9J9bHzd1IW5AFC3jRWkxVsM0rAzzBCa0vc20C3Q7
-         O8G3mapasIdYKBXCGPwtdeNAJRRuPLKOmiZCkCFILxGvE/XBMp7YmS21jyHrR8fWfnfk
-         M3QQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWIKvE7PiQsKCv91bwm24WLNDhZ4ocqV1j2U0SOSeVk1I0H5ttK3zQbGUP4Y2VnSPVJj1ZzUv2hnf4pJ1wJJ3UVBmdnMPQfZN6tarShQRFN4QAKG4PoMG+8adr4M74rRs4pOEvnX+I5FqZWEhRmNiptJx2R3Wbsrw8=
-X-Gm-Message-State: AOJu0Yz96Famgtm1aqgmnZMkiJvMQB72dU9xls7zLzaD74ZWnLQkZ/n1
-	KpVRx8DWgZdhl1WFngJ/DHJ3LEY8QA7bS3ePrmQvXLqItdej/xH5
-X-Google-Smtp-Source: AGHT+IGn3jI1OhP6bn56ZLvRBV1Y4cvAt/WWYK4Jk24kCcT86h9PesTBRJOe7jtfVpyw2W4M0I++iA==
-X-Received: by 2002:ac2:4e05:0:b0:52e:f463:977d with SMTP id 2adb3069b0e04-52efb79830emr7950836e87.20.1721808340979;
-        Wed, 24 Jul 2024 01:05:40 -0700 (PDT)
-Received: from localhost (fwdproxy-lla-004.fbsv.net. [2a03:2880:30ff:4::face:b00c])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a7ab04b31ddsm46320966b.60.2024.07.24.01.05.40
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 24 Jul 2024 01:05:40 -0700 (PDT)
-From: Breno Leitao <leitao@debian.org>
-To: Felix Fietkau <nbd@nbd.name>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: leit@meta.com,
-	Dan Carpenter <dan.carpenter@linaro.org>,
-	netdev@vger.kernel.org (open list:MEDIATEK ETHERNET DRIVER),
-	linux-kernel@vger.kernel.org (open list:ARM/Mediatek SoC support),
-	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
-	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
-Subject: [PATCH net] net: mediatek: Fix potential NULL pointer dereference in dummy net_device handling
-Date: Wed, 24 Jul 2024 01:05:23 -0700
-Message-ID: <20240724080524.2734499-1-leitao@debian.org>
-X-Mailer: git-send-email 2.43.0
+	id 1sWX14-0000000EiZa-0baD;
+	Wed, 24 Jul 2024 08:06:31 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 755F3CE0FAE;
+	Wed, 24 Jul 2024 08:06:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E6486C32782;
+	Wed, 24 Jul 2024 08:06:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1721808387;
+	bh=AKKM6ppMNxmC7UXJSSz3Ux9097zdWoX9DlJdSKA47D4=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=T2mKwvje3zz3Tu+q9/weTIFmMsr4waWW4t+NKBRQiPZd6QZucUTu2hjyLDyChR/EK
+	 XutvMGcA54ehmZslh+rwuxlKFSFQF4BPD6yKnZrejsEJwk/EVaDSZjJbBmTHIj13Km
+	 TawreHGT/6YVXpVSEem3JavFS0j6012pl+qKx1LB62owOFpWCwUeKniNG+JtclOYWb
+	 Q8EJYCs2otMvvQeu71KqPsGxWMexoVxYMuPU1RgRLBXo/KuFwq8IZi2G85Di4cVTAl
+	 tD0futDU6Y/0UVcaYkG55sg+0pjkd5MjhaFE3RfULjlWM6Mqqv4XxlLAWi29PsygKd
+	 Cv/j9peV3ENOA==
+Message-ID: <119c9a56-ada7-42b2-a0c4-93038950f325@kernel.org>
+Date: Wed, 24 Jul 2024 10:06:16 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v7 03/16] dt-bindings: mfd: mediatek: Add codec property
+ for MT6357 PMIC
+To: Alexandre Mergnat <amergnat@baylibre.com>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Lee Jones <lee@kernel.org>, Flora Fu <flora.fu@mediatek.com>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+ Sumit Semwal <sumit.semwal@linaro.org>,
+ =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>,
+ Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>
+Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org
+References: <20240226-audio-i350-v7-0-6518d953a141@baylibre.com>
+ <20240226-audio-i350-v7-3-6518d953a141@baylibre.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
+ cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
+ JMp7PSyMPzpUXfU12yfcRYVEMQrmplNZssmYhiTeVicuOOypWugZKVLGNm0IweVCaZ/DJDIH
+ gNbpvVwjcKYrx85m9cBVEBUGaQP6AT7qlVCkrf50v8bofSIyVa2xmubbAwwFA1oxoOusjPIE
+ J3iadrwpFvsZjF5uHAKS+7wHLoW9hVzOnLbX6ajk5Hf8Pb1m+VH/E8bPBNNYKkfTtypTDUCj
+ NYcd27tjnXfG+SDs/EXNUAIRefCyvaRG7oRYF3Ec+2RgQDRnmmjCjoQNbFrJvJkFHlPeHaeS
+ BosGY+XWKydnmsfY7SSnjAzLUGAFhLd/XDVpb1Een2XucPpKvt9ORF+48gy12FA5GduRLhQU
+ vK4tU7ojoem/G23PcowM1CwPurC8sAVsQb9KmwTGh7rVz3ks3w/zfGBy3+WmLg++C2Wct6nM
+ Pd8/6CBVjEWqD06/RjI2AnjIq5fSEH/BIfXXfC68nMp9BZoy3So4ZsbOlBmtAPvMYX6U8VwD
+ TNeBxJu5Ex0Izf1NV9CzC3nNaFUYOY8KfN01X5SExAoVTr09ewARAQABzSVLcnp5c3p0b2Yg
+ S296bG93c2tpIDxrcnprQGtlcm5lbC5vcmc+wsGVBBMBCgA/AhsDBgsJCAcDAgYVCAIJCgsE
+ FgIDAQIeAQIXgBYhBJvQfg4MUfjVlne3VBuTQ307QWKbBQJgPO8PBQkUX63hAAoJEBuTQ307
+ QWKbBn8P+QFxwl7pDsAKR1InemMAmuykCHl+XgC0LDqrsWhAH5TYeTVXGSyDsuZjHvj+FRP+
+ gZaEIYSw2Yf0e91U9HXo3RYhEwSmxUQ4Fjhc9qAwGKVPQf6YuQ5yy6pzI8brcKmHHOGrB3tP
+ /MODPt81M1zpograAC2WTDzkICfHKj8LpXp45PylD99J9q0Y+gb04CG5/wXs+1hJy/dz0tYy
+ iua4nCuSRbxnSHKBS5vvjosWWjWQXsRKd+zzXp6kfRHHpzJkhRwF6ArXi4XnQ+REnoTfM5Fk
+ VmVmSQ3yFKKePEzoIriT1b2sXO0g5QXOAvFqB65LZjXG9jGJoVG6ZJrUV1MVK8vamKoVbUEe
+ 0NlLl/tX96HLowHHoKhxEsbFzGzKiFLh7hyboTpy2whdonkDxpnv/H8wE9M3VW/fPgnL2nPe
+ xaBLqyHxy9hA9JrZvxg3IQ61x7rtBWBUQPmEaK0azW+l3ysiNpBhISkZrsW3ZUdknWu87nh6
+ eTB7mR7xBcVxnomxWwJI4B0wuMwCPdgbV6YDUKCuSgRMUEiVry10xd9KLypR9Vfyn1AhROrq
+ AubRPVeJBf9zR5UW1trJNfwVt3XmbHX50HCcHdEdCKiT9O+FiEcahIaWh9lihvO0ci0TtVGZ
+ MCEtaCE80Q3Ma9RdHYB3uVF930jwquplFLNF+IBCn5JRzsFNBFVDXDQBEADNkrQYSREUL4D3
+ Gws46JEoZ9HEQOKtkrwjrzlw/tCmqVzERRPvz2Xg8n7+HRCrgqnodIYoUh5WsU84N03KlLue
+ MNsWLJBvBaubYN4JuJIdRr4dS4oyF1/fQAQPHh8Thpiz0SAZFx6iWKB7Qrz3OrGCjTPcW6ei
+ OMheesVS5hxietSmlin+SilmIAPZHx7n242u6kdHOh+/SyLImKn/dh9RzatVpUKbv34eP1wA
+ GldWsRxbf3WP9pFNObSzI/Bo3kA89Xx2rO2roC+Gq4LeHvo7ptzcLcrqaHUAcZ3CgFG88CnA
+ 6z6lBZn0WyewEcPOPdcUB2Q7D/NiUY+HDiV99rAYPJztjeTrBSTnHeSBPb+qn5ZZGQwIdUW9
+ YegxWKvXXHTwB5eMzo/RB6vffwqcnHDoe0q7VgzRRZJwpi6aMIXLfeWZ5Wrwaw2zldFuO4Dt
+ 91pFzBSOIpeMtfgb/Pfe/a1WJ/GgaIRIBE+NUqckM+3zJHGmVPqJP/h2Iwv6nw8U+7Yyl6gU
+ BLHFTg2hYnLFJI4Xjg+AX1hHFVKmvl3VBHIsBv0oDcsQWXqY+NaFahT0lRPjYtrTa1v3tem/
+ JoFzZ4B0p27K+qQCF2R96hVvuEyjzBmdq2esyE6zIqftdo4MOJho8uctOiWbwNNq2U9pPWmu
+ 4vXVFBYIGmpyNPYzRm0QPwARAQABwsF8BBgBCgAmAhsMFiEEm9B+DgxR+NWWd7dUG5NDfTtB
+ YpsFAmA872oFCRRflLYACgkQG5NDfTtBYpvScw/9GrqBrVLuJoJ52qBBKUBDo4E+5fU1bjt0
+ Gv0nh/hNJuecuRY6aemU6HOPNc2t8QHMSvwbSF+Vp9ZkOvrM36yUOufctoqON+wXrliEY0J4
+ ksR89ZILRRAold9Mh0YDqEJc1HmuxYLJ7lnbLYH1oui8bLbMBM8S2Uo9RKqV2GROLi44enVt
+ vdrDvo+CxKj2K+d4cleCNiz5qbTxPUW/cgkwG0lJc4I4sso7l4XMDKn95c7JtNsuzqKvhEVS
+ oic5by3fbUnuI0cemeizF4QdtX2uQxrP7RwHFBd+YUia7zCcz0//rv6FZmAxWZGy5arNl6Vm
+ lQqNo7/Poh8WWfRS+xegBxc6hBXahpyUKphAKYkah+m+I0QToCfnGKnPqyYIMDEHCS/RfqA5
+ t8F+O56+oyLBAeWX7XcmyM6TGeVfb+OZVMJnZzK0s2VYAuI0Rl87FBFYgULdgqKV7R7WHzwD
+ uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
+ 7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
+ 5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
+In-Reply-To: <20240226-audio-i350-v7-3-6518d953a141@baylibre.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240724_010543_652522_E0C291E7 
-X-CRM114-Status: GOOD (  10.58  )
+X-CRM114-CacheID: sfid-20240724_010630_575486_94FB4D72 
+X-CRM114-Status: UNSURE (   9.59  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,51 +132,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Move the freeing of the dummy net_device from mtk_free_dev() to
-mtk_remove().
+On 22/07/2024 08:53, Alexandre Mergnat wrote:
+> Add the audio codec sub-device. This sub-device is used to set the
+> optional voltage values according to the hardware.
+> The properties are:
+>   - Setup of microphone bias voltage.
+>   - Setup of the speaker pin pull-down.
+> 
+> Also, add the audio power supply property which is dedicated for
+> the audio codec sub-device.
+> 
+> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 
-Previously, if alloc_netdev_dummy() failed in mtk_probe(),
-eth->dummy_dev would be NULL. The error path would then call
-mtk_free_dev(), which in turn called free_netdev() assuming dummy_dev
-was allocated (but it was not), potentially causing a NULL pointer
-dereference.
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-By moving free_netdev() to mtk_remove(), we ensure it's only called when
-mtk_probe() has succeeded and dummy_dev is fully allocated. This
-addresses a potential NULL pointer dereference detected by Smatch[1].
-
-Fixes: b209bd6d0bff ("net: mediatek: mtk_eth_sock: allocate dummy net_device dynamically")
-Reported-by: Dan Carpenter <dan.carpenter@linaro.org>
-Closes: https://lore.kernel.org/all/4160f4e0-cbef-4a22-8b5d-42c4d399e1f7@stanley.mountain/ [1]
-Suggested-by: Dan Carpenter <dan.carpenter@linaro.org>
-Reviewed-by: Dan Carpenter <dan.carpenter@linaro.org>
-Signed-off-by: Breno Leitao <leitao@debian.org>
----
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
-
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 0cc2dd85652f..16ca427cf4c3 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -4223,8 +4223,6 @@ static int mtk_free_dev(struct mtk_eth *eth)
- 		metadata_dst_free(eth->dsa_meta[i]);
- 	}
- 
--	free_netdev(eth->dummy_dev);
--
- 	return 0;
- }
- 
-@@ -5090,6 +5088,7 @@ static void mtk_remove(struct platform_device *pdev)
- 	netif_napi_del(&eth->tx_napi);
- 	netif_napi_del(&eth->rx_napi);
- 	mtk_cleanup(eth);
-+	free_netdev(eth->dummy_dev);
- 	mtk_mdio_cleanup(eth);
- }
- 
--- 
-2.43.0
+Best regards,
+Krzysztof
 
 
