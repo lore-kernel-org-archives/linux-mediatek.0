@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3874EC3DA63
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Jul 2024 09:03:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78DF5C3DA61
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Jul 2024 09:36:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1HZ/AvePFKQufOPsS1Y7gxr1TS5yWwgKscIUn6jjFyk=; b=dIa7oLGAt8K2VqZhIVbFmP1f7w
-	YLX0qtsAeqaw5ymxow5NIq46zLbeL8hB99OwK9JBBn+iD0OBnVfhHKVeni90epnd/trdZ7Mlg2WFp
-	xl+s1TIMuygU6wmeVmufvknz1dtokwPwvXzfwMqIis5D/olU0bl2JK3K4JuL4uyBgorBcuFVfMJrW
-	7pMEfsjz98nQ50UN9APJtUflS821Q6XdQOi0nME0AztpL3B8CzdiW5+HAvA1FCdEZpC/pdoFVfbcB
-	W3j8bTMnB7GwdBBZvSTEwv25kE26sX2Dho/HPQIGUxOVl5aRaJeLThcfYI6Cn1DzJtEH3XPbd+NZg
-	3XCxJv6w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=hjn9u+OdaMy0APR3lesVd6VwainbD/Tq9CR8YxQHmzo=; b=qShZqFZCSuMml5
+	CKvGqvKoTzA8zlc8GL56r7ppTWZZ24jm6k5fji/V3jCg31R0tNBUSHqFs/CSbUaphptCeja3FUQ7E
+	vXeuFeVcI/hjUOHs34AbAUJhzgpqWlh/0QUdEUySjoR0EOXhzSmlhFFnjKbuL51e2Wxw5ylGYrGY5
+	pmV/xVDF4rQam2hy+E8UZ8wtaPfaCl8/ZSdAdQyaz63hHtwnx0Ndk5EZ7AGu6lgIEDuH00RWAPfLK
+	M2H0Xu6otIIeUcvD0HjIaf0ot1CZXXOgI+DjEiPOpNS1hKT1/7jTcWQuZ6BfDyB7Oh/uLubN0S0PW
+	IrSjALbM5rojtsr9aDZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sWXuJ-0000000EqWf-2DVW;
-	Wed, 24 Jul 2024 09:03:35 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1sWYQS-0000000ExSv-24pm;
+	Wed, 24 Jul 2024 09:36:48 +0000
+Received: from wp530.webpack.hosteurope.de ([80.237.130.52])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sWXuG-0000000EqVq-1Juf
+	id 1sWYQO-0000000ExSH-3BsG
 	for linux-mediatek@lists.infradead.org;
-	Wed, 24 Jul 2024 09:03:33 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1721811810;
-	bh=OJBjcORicXMgqQr2wkkkceeE9D1kAAb+ffbZMaOnLWM=;
-	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
-	b=uJT4O6gXnTOqwHmu4Jry9ABRfunIvxna3bbUGScRjEb0t9oi7uhEosy5LAFToXQWY
-	 eqaEOHLjn1htc0ruypgaYAxFuK387ae16e9Gi6GNhtemgsZIEXB8aXUgNmfoo9b9mt
-	 so/QJTIMbnJjSSjPnOenvMrCQY6LGOrq8Ujdt/cPsYOGmuw1qQLS/wjeniRbhEmfdR
-	 xQZC2/g4sg3i/012up1L0FY+sT18Y1a7v9KNv98EJZHiwq9it6ydUO8uyRTR1vjzvE
-	 bwK9GAe/Kb/+ahIqygnBAud9PiC6UpHOFdPCQlXiLGQU9KrrNxpEls36nja/8xGjGo
-	 ZjK3jLgFZRhGw==
-Received: from [100.66.96.193] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: vignesh)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 21E533780BC2;
-	Wed, 24 Jul 2024 09:03:27 +0000 (UTC)
-Message-ID: <61c39125-9906-4b5e-8a83-8e0aa2c3ac0d@collabora.com>
-Date: Wed, 24 Jul 2024 14:33:26 +0530
+	Wed, 24 Jul 2024 09:36:46 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=leemhuis.info; s=he214686; h=Content-Transfer-Encoding:Content-Type:
+	In-Reply-To:From:References:Cc:To:Subject:Reply-To:MIME-Version:Date:
+	Message-ID:From:Sender:Reply-To:Subject:Date:Message-ID:To:Cc:MIME-Version:
+	Content-Type:Content-Transfer-Encoding:Content-ID:Content-Description:
+	In-Reply-To:References; bh=hjn9u+OdaMy0APR3lesVd6VwainbD/Tq9CR8YxQHmzo=;
+	t=1721813804; x=1722245804; b=WiQjVEd4/k/KYx09LBRUBn6Vh3dVfDJl8WyYhDzy5MiG8dJ
+	qOKCKxAmAJ7C5ltMAI75hP4Ga61P01L7ni1UZdjM9ufc9VbLLQ9UPqIBYz9Irfr9vn/H5pSX+Vluc
+	2oDqssXQweT03YO7BfgUVQd+Do1NdbwXNvytGljMRjD7V7MA9IGSgy2pai5Oul4NOP6MWnnq0hdnc
+	ZltduwlRpZrFyZbzZm9ZEAyBvLTLtS7FH+J3WUzgJK+feTbCtkiRnl+rwgQvG7ifNNOLPeOLp4SFB
+	sIBfLIwSUBs79+LjsLe4IZpk92mcoz5cBmxN5gbXip+bn/57wLdCIWj25exTA5jQ==;
+Received: from [2a02:8108:8980:2478:8cde:aa2c:f324:937e]; authenticated
+	by wp530.webpack.hosteurope.de running ExIM with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
+	id 1sWYQB-0006Zs-8l; Wed, 24 Jul 2024 11:36:31 +0200
+Message-ID: <0124ff39-7d63-49f8-bacd-3a40ce37ec4d@leemhuis.info>
+Date: Wed, 24 Jul 2024 11:36:30 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: drm-ci: flaky tests for mediatek driver testing
-Content-Language: en-US
-From: Vignesh Raman <vignesh.raman@collabora.com>
-To: linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org
-Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- airlied@gmail.com, daniel@ffwll.ch, Daniel Stone <daniels@collabora.com>,
- Helen Mae Koike Fornazier <helen.koike@collabora.com>,
- Sergi Blanch Torne <sergi.blanch.torne@collabora.com>,
- Guilherme Alcarde Gallo <guilherme.gallo@collabora.com>
-References: <0b2a1899-15dd-42fa-8f63-ea0ca28dbb17@collabora.com>
-In-Reply-To: <0b2a1899-15dd-42fa-8f63-ea0ca28dbb17@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Subject: Re: [PATCH] wifi: mt76: mt7921: fix null pointer access in
+ mt792x_mac_link_bss_remove
+To: sean.wang@kernel.org, nbd@nbd.name, lorenzo.bianconi@redhat.com
+Cc: sean.wang@mediatek.com, deren.wu@mediatek.com,
+ mingyen.hsieh@mediatek.com, linux-wireless@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, Bert Karwatzki <spasswolf@web.de>,
+ Mike Lothian <mike@fireburn.co.uk>,
+ Linux kernel regressions list <regressions@lists.linux.dev>
+References: <20240718234633.12737-1-sean.wang@kernel.org>
+From: "Linux regression tracking (Thorsten Leemhuis)"
+ <regressions@leemhuis.info>
+Content-Language: en-US, de-DE
+In-Reply-To: <20240718234633.12737-1-sean.wang@kernel.org>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
+X-bounce-key: webpack.hosteurope.de;regressions@leemhuis.info;1721813804;17ef7219;
+X-HE-SMSGID: 1sWYQB-0006Zs-8l
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240724_020332_522526_DC45C6D8 
-X-CRM114-Status: UNSURE (   8.17  )
+X-CRM114-CacheID: sfid-20240724_023645_004478_18D7FC3D 
+X-CRM114-Status: UNSURE (   8.06  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -77,51 +77,37 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: Linux regressions mailing list <regressions@lists.linux.dev>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Maintainers,
 
-On 28/05/24 10:55, Vignesh Raman wrote:
-> Hi Maintainers,
+
+On 19.07.24 01:46, sean.wang@kernel.org wrote:
+> From: Sean Wang <sean.wang@mediatek.com>
 > 
-> There are some flaky tests reported for mediatek driver testing in drm-ci.
+> Fix null pointer access in mt792x_mac_link_bss_remove.
 > 
-> # Board Name: mt8173-elm-hana
-> # IGT Version: 1.28-g0df7b9b97
-> # Linux Version: 6.9.0-rc7
-> # Failure Rate: 50
-> core_setmaster_vs_auth
-> dumb_buffer@create-clear
-> fbdev@unaligned-write
-> fbdev@write
-> kms_cursor_legacy@cursor-vs-flip-atomic-transitions
-> kms_prop_blob@invalid-set-prop
-> 
-> Will add these tests in 
-> drivers/gpu/drm/ci/xfails/mediatek-mt8173-flakes.txt 
-> (https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/Documentation/gpu/automated_testing.rst#n70)
-> 
-> Please could you have a look at these test results and let us know if 
-> you need more information. Thank you.
+> To prevent null pointer access, we should assign the vif to bss_conf in
+> mt7921_add_interface. This ensures that subsequent operations on the BSS
+> can properly reference the correct vif.
+>
+> [...]
+>> Fixes: 1541d63c5fe2 ("wifi: mt76: mt7925: add
+mt7925_mac_link_bss_remove to remove per-link BSS")
+> Reported-by: Bert Karwatzki <spasswolf@web.de>
+> Closes: https://lore.kernel.org/linux-wireless/2fee61f8c903d02a900ca3188c3742c7effd102e.camel@web.de/#b
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 
-There are some flaky tests reported for mediatek driver testing for the 
-mt8183,
+TWIMC, Mike (now CCed) ran into the problem and on bugzilla confirmed
+that this fixes the problem:
 
-# Board Name: mt8183-kukui-jacuzzi-juniper-sku16
-# Failure Rate: 100
-# IGT Version: 1.28-gf13702b8e
-# Linux Version: 6.10.0-rc5
-kms_bw@linear-tiling-1-displays-2560x1440p
-kms_cursor_legacy@cursor-vs-flip-atomic-transitions
+https://bugzilla.kernel.org/show_bug.cgi?id=219084
+https://lore.kernel.org/all/CAHbf0-HOS-jdRGvJOBmEgaaox3PDbDSTgnnZkZF9pz37Bmh2iw@mail.gmail.com/
 
-Will add these tests in
-drivers/gpu/drm/ci/xfails/mediatek-mt8183-flakes.txt
-(https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/Documentation/gpu/automated_testing.rst#n70)
-
-Please could you have a look at these test results and let us know if
-you need more information. Thank you.
-
-Regards,
-Vignesh
+Ciao, Thorsten (wearing his 'the Linux kernel's regression tracker' hat)
+--
+Everything you wanna know about Linux kernel regression tracking:
+https://linux-regtracking.leemhuis.info/about/#tldr
+If I did something stupid, please tell me, as explained on that page.
 
