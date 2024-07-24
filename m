@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53C93C3DA61
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Jul 2024 13:48:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B180FC3DA61
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Jul 2024 13:50:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SjlS3KeN9meLLfSQsSaPi/f/kHzcBW78TFSUcPryCjM=; b=3MpwQy+fDhMAH+bV75vk+754gh
-	WZ2UPzV4qVmqb9eUefHTTc0h5V3h8maQ0o1Lov6KtQPXsYPy6Pd9GFnCIcvqM4gxlR9FsjdD07Jh3
-	0rHPuUHrfJaX+ZCpn1t8xxR6z/dXJknCA1wPLulF5YUxYhYCeleI67i7Kne4DWCP1FJq8Cc6zain4
-	Ijir6Nj5oNr/jBjLNY4SWgZNgpAbFSZ1dapyTH8qClV/r9vq6vjFvB6qapo5DqZ2UjH1951BO1lPg
-	ZNRnWRBCBi7vMGUhUWrbY0ZkMUSKIyti9Dc6KG1bD3+Zy0MxmMpaVMCiEXq/08Rn4tDvYucZmK/4g
-	O0N3mo+g==;
+	bh=pbALP3QIjCL6mWz14PmpKACkxPrqfTSuSK7rkKg3La4=; b=pBZYF6ybDzS40AAv/oabf1XCD+
+	eb1C+kFO5HBbXJ63jvpgYfODDb+yNJxv3iIy+d4/rdhripy0TyxAeQdfPEhlBK0dARGXrIYOQc9x6
+	w8nrbOb/LXcwMO1g756Z8JcGOnF1O9J852ThtnHYK68ryZ86UCeF7ICWNdZe75FJtYowwBdoY81c3
+	A2pQqbk8EAv2DSm48yZ/DqyjbEUria/ouIZ+iBE0xV/EGIv1BzMoGv5oCOnidOzEsiyZ3I02PiTlN
+	ftgDyXHWsiKyqrzcUTjG+BlYAv32enzbBGooIdRgAK/mv5cpNWjfJ68lhgxU7bortg2ZFTQd3WPqc
+	nEiwpDTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sWcLY-0000000FUhh-0ZF3;
-	Wed, 24 Jul 2024 13:48:00 +0000
-Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
+	id 1sWcO4-0000000FV1Y-1LWd;
+	Wed, 24 Jul 2024 13:50:36 +0000
+Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sWcL9-0000000FUd0-0opT
+	id 1sWcO1-0000000FV0N-037b
 	for linux-mediatek@lists.infradead.org;
-	Wed, 24 Jul 2024 13:47:37 +0000
-Received: by mail-pl1-x636.google.com with SMTP id d9443c01a7336-1fd66cddd4dso18322645ad.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 24 Jul 2024 06:47:34 -0700 (PDT)
+	Wed, 24 Jul 2024 13:50:34 +0000
+Received: by mail-pf1-x42f.google.com with SMTP id d2e1a72fcca58-70d333d57cdso1990242b3a.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 24 Jul 2024 06:50:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1721828854; x=1722433654; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1721829032; x=1722433832; darn=lists.infradead.org;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=SjlS3KeN9meLLfSQsSaPi/f/kHzcBW78TFSUcPryCjM=;
-        b=ol3xxgdKNfItAkW97krY+DeieZe1jlUCJgaytS9t6O7NUwmRti4D+5NeWN+ivSEWPc
-         N4XnvNrokhvLHNVPL09XcFdGsScYCRh9tFYHqxGhHRcQ9h4UVQ+a8kWNk7UmkMdwx1Wa
-         BkYxmnRUM7G/jVRGEblyNIc5GLSs8SoaEQvDKA9BeuxFZSwrr1+Ru/c5yArfudoHesFE
-         +wJopAIRJ0ZzcpKwugan5tTEv6wrjAuRNx0DEswIsNAjB5vR/+UAKuAOZaa5PjjDWe4o
-         JZd0lkWpvrcNxeiOM+atqV2UdL8TnEZQrt7wttpJ988x0G5Pm6EY12QrzCc7SW06HMZy
-         99cw==
+        bh=pbALP3QIjCL6mWz14PmpKACkxPrqfTSuSK7rkKg3La4=;
+        b=nnU9yw3gAPjmkdYka5wiTq5riM9YQIaYWIAPLfU+ZojGGv2fc3W/LpkB2gccDLAX7j
+         iFHdSbyDDPb4RoeiZwOdDTfsHNBnr1dSMj7ITQDHDrCbP0ub0wmaQP3Nlfya3twenCzJ
+         4jnocpi+DBoNTXdtWM7eJLnBKHkJUItC1cWuV93ZYplwAts28/ZTHGWs13/yNwyuWWnh
+         PbqSlLzhrrJioXSnwCPlhpOP4XKnnFcDDk1+6BZ6o3BOutUWsEVLZyeKqpt2E7TCVUw8
+         5eJRLZ40GpnkSydfU4OVOoxT6r38V7Qhp8gjwhzQPWloXGPaB6+hiNvaqZIQFVj32jXq
+         O7dQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1721828854; x=1722433654;
+        d=1e100.net; s=20230601; t=1721829032; x=1722433832;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=SjlS3KeN9meLLfSQsSaPi/f/kHzcBW78TFSUcPryCjM=;
-        b=M7v9zwzGdRlCRsMw4/ziuGDeTZQgK0QB8n8fI3Elb5f4hMEwGgNM20SMQ211QA6TXr
-         US8hHZ+HDXW26AbfitUtWN2xuZQGLlruqZ8IeBQkkbofZ02tKnTg/GVx5dAVOcvkv2eo
-         LNWJmwsWAgp65jD4G3ArCMIpTVTeNR98KP3TP0RKjMUMRCGWZMFp/Pe8XxilP6x9GRBq
-         dvjjh9FOaV/nvn3ymFCHUJ3254IYc+BXrlX2Cqd+iAGQCMBsIGUrNj+0YL0Hk+KPza1R
-         uk3FG4Xmn6WTP0gWkryx1VwBmgbxp3QuJd0fsjdg+tI61PuRUHo7l5WNCxZ+1cW4sHrV
-         bAXQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWnKxJHhp+KGLgBekEf9tH/x+yrP1nM3ZenigLQuezmYsxULs014Z/HELZr7WqSlS7P5OV61A86JUDpsM0r7bnQoxDVce+1XUq77cWk5G6qn6ab
-X-Gm-Message-State: AOJu0Yw35ytHW2fudQk5U7oMvl957OVG8Ul2TT7gI/DSgnWoTTF6Fwx9
-	RE9Wd+bI1YByYq2qbMOIMG3syee3ICqIkh0iFW4XG9K9bYBl2g4ugW16IGi6xg==
-X-Google-Smtp-Source: AGHT+IGQ1pRozmQ8WsiHI1I3zmEDTN6hvlFln3KcelbKxSnwPg41LAbjogxZsXYR2+UZUvCxUcYACA==
-X-Received: by 2002:a17:903:244a:b0:1fc:2ee3:d45a with SMTP id d9443c01a7336-1fdd54f46f3mr24825785ad.8.1721828853831;
-        Wed, 24 Jul 2024 06:47:33 -0700 (PDT)
+        bh=pbALP3QIjCL6mWz14PmpKACkxPrqfTSuSK7rkKg3La4=;
+        b=wAPyu9diIqSOlTKcTW/ZpaUchtXmxVp1dByfKi6S8OWqITpSek+nR4walCmC4BwfDd
+         dtqffio7d0HesndC2+WL9HkoF+Vp3xjDi1J2sOGuqkArREPxa/t67nfOBZBO9swM8/Xc
+         y4npgrX07sC22GrVdv0PxtPHSRl2NC0UW4R5KytOc/fXtqp7u/IWYYFs+C4MIYm/HAXf
+         /b1tvjsg+hsdv141rLa9AqyOzyeO01fahKSX8m7dQlY5pXHKB8NKzYRK2MZqYL8RnZ1K
+         AQGiq3H/6O6NHfk+6Y3RSFXs7iXaGRLsIWFz7+DxNChZD3+wRDcUenitLf6WXKJhgRyT
+         +e/w==
+X-Forwarded-Encrypted: i=1; AJvYcCVVW1DCKWTRZ1EkAVrBpxCj4EFoEoM3IRrhaWuIAKFvC2zblgTS66E34FJ0rxFLtGeFphc1BIIQ3Po94h+S8+PakVvwQfvK9dW9037J5FRK+ORh
+X-Gm-Message-State: AOJu0Yztd19ovCBbg5n60nTDoymWgAs9wY7DYGVWeugFQkzwxfk47/eg
+	t4wzhrg9b2/laO4RXrLc4NXBS8i64VmDQiNn9KluDsqLva+1FKkF2takexHrRA==
+X-Google-Smtp-Source: AGHT+IG0YFoIL4lPnBLT+Aopu2jQ/kCeCrRtyAOg5jS+eqaqVK57qCofzoxxbC6rl3vwtZMbLKsHKg==
+X-Received: by 2002:a05:6a00:a82:b0:70d:3337:7820 with SMTP id d2e1a72fcca58-70e99689086mr3278241b3a.8.1721829032049;
+        Wed, 24 Jul 2024 06:50:32 -0700 (PDT)
 Received: from thinkpad ([103.244.168.26])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-1fd6f44f4c4sm94151845ad.224.2024.07.24.06.47.23
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-70d22f50f46sm5507795b3a.77.2024.07.24.06.50.22
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 24 Jul 2024 06:47:33 -0700 (PDT)
-Date: Wed, 24 Jul 2024 19:17:21 +0530
+        Wed, 24 Jul 2024 06:50:31 -0700 (PDT)
+Date: Wed, 24 Jul 2024 19:20:20 +0530
 From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
 To: Marek Vasut <marek.vasut+renesas@mailbox.org>
 Cc: linux-pci@vger.kernel.org,
@@ -106,18 +106,17 @@ Cc: linux-pci@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	linux-renesas-soc@vger.kernel.org,
 	linux-rpi-kernel@lists.infradead.org, linux-tegra@vger.kernel.org
-Subject: Re: [PATCH v4 05/15] PCI: dwc: Silence set affinity failed warning
-Message-ID: <20240724134721.GC3349@thinkpad>
+Subject: Re: [PATCH v4 00/15] genirq/msi: Silence set affinity failed warning
+Message-ID: <20240724135020.GD3349@thinkpad>
 References: <20240723132958.41320-1-marek.vasut+renesas@mailbox.org>
- <20240723132958.41320-6-marek.vasut+renesas@mailbox.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20240723132958.41320-6-marek.vasut+renesas@mailbox.org>
+In-Reply-To: <20240723132958.41320-1-marek.vasut+renesas@mailbox.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240724_064735_313383_99A08A3A 
-X-CRM114-Status: GOOD (  20.43  )
+X-CRM114-CacheID: sfid-20240724_065033_086378_5426A445 
+X-CRM114-Status: GOOD (  14.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -132,21 +131,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 23, 2024 at 03:27:05PM +0200, Marek Vasut wrote:
-> Use newly introduced MSI_FLAG_NO_AFFINITY, which keeps .irq_set_affinity unset
-> and allows migrate_one_irq() code in cpuhotplug.c to exit right away, without
-> printing "IRQ...: set affinity failed(-22)" warning.
+On Tue, Jul 23, 2024 at 03:27:00PM +0200, Marek Vasut wrote:
+> Various PCIe controllers that mux MSIs onto single IRQ line produce these
+> "IRQ%d: set affinity failed" warnings when entering suspend. Remove the
+> .irq_set_affinity callbacks and make sure they are NULL in all affected
+> controllers, so this warning in kernel/irq/msi.c is not triggered.
 > 
-> Remove .irq_set_affinity implementation which only return -EINVAL from this
-> controller driver.
+> This has been compile-tested only on all but the R-Car PCI controller.
 > 
-> Signed-off-by: Marek Vasut <marek.vasut+renesas@mailbox.org>
+> The clean ups are done per-driver so they can be easily reverted in case
+> they break something.
+> 
+
+Whole series looks good to me (PCI controller specific patches).
+
+FWIW,
 
 Reviewed-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
 
 - Mani
 
-> ---
+> Marek Vasut (15):
+>   genirq/msi: Silence set affinity failed warning
+>   PCI: aardvark: Silence set affinity failed warning
+>   PCI: altera-msi: Silence set affinity failed warning
+>   PCI: brcmstb: Silence set affinity failed warning
+>   PCI: dwc: Silence set affinity failed warning
+>   PCI: mediatek-gen3: Silence set affinity failed warning
+>   PCI: mediatek: Silence set affinity failed warning
+>   PCI: mobiveil: Silence set affinity failed warning
+>   PCI: plda: Silence set affinity failed warning
+>   PCI: rcar-host: Silence set affinity failed warning
+>   PCI: tegra: Silence set affinity failed warning
+>   PCI: vmd: Silence set affinity failed warning
+>   PCI: xilinx-nwl: Silence set affinity failed warning
+>   PCI: xilinx-xdma: Silence set affinity failed warning
+>   PCI: xilinx: Silence set affinity failed warning
+> 
+>  drivers/pci/controller/dwc/pci-keystone.c           |  7 -------
+>  drivers/pci/controller/dwc/pcie-designware-host.c   | 12 +++---------
+>  .../pci/controller/mobiveil/pcie-mobiveil-host.c    | 11 ++---------
+>  drivers/pci/controller/pci-aardvark.c               | 10 ++--------
+>  drivers/pci/controller/pci-tegra.c                  | 10 ++--------
+>  drivers/pci/controller/pcie-altera-msi.c            | 11 ++---------
+>  drivers/pci/controller/pcie-brcmstb.c               | 11 ++---------
+>  drivers/pci/controller/pcie-mediatek-gen3.c         | 13 +++----------
+>  drivers/pci/controller/pcie-mediatek.c              | 11 ++---------
+>  drivers/pci/controller/pcie-rcar-host.c             | 10 ++--------
+>  drivers/pci/controller/pcie-xilinx-dma-pl.c         | 11 ++---------
+>  drivers/pci/controller/pcie-xilinx-nwl.c            | 11 ++---------
+>  drivers/pci/controller/pcie-xilinx.c                |  9 ++-------
+>  drivers/pci/controller/plda/pcie-plda-host.c        | 11 ++---------
+>  drivers/pci/controller/vmd.c                        | 13 +------------
+>  include/linux/msi.h                                 |  2 ++
+>  kernel/irq/msi.c                                    |  2 +-
+>  17 files changed, 32 insertions(+), 133 deletions(-)
+> 
 > Cc: "Krzysztof Wilczyński" <kw@linux.com>
 > Cc: "Pali Rohár" <pali@kernel.org>
 > Cc: "Uwe Kleine-König" <u.kleine-koenig@pengutronix.de>
@@ -192,75 +232,7 @@ Reviewed-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
 > Cc: linux-renesas-soc@vger.kernel.org
 > Cc: linux-rpi-kernel@lists.infradead.org
 > Cc: linux-tegra@vger.kernel.org
-> ---
-> V4: - New patch
-> ---
->  drivers/pci/controller/dwc/pci-keystone.c         |  7 -------
->  drivers/pci/controller/dwc/pcie-designware-host.c | 12 +++---------
->  2 files changed, 3 insertions(+), 16 deletions(-)
 > 
-> diff --git a/drivers/pci/controller/dwc/pci-keystone.c b/drivers/pci/controller/dwc/pci-keystone.c
-> index 52c6420ae2003..ce9d9e0a52609 100644
-> --- a/drivers/pci/controller/dwc/pci-keystone.c
-> +++ b/drivers/pci/controller/dwc/pci-keystone.c
-> @@ -189,12 +189,6 @@ static void ks_pcie_compose_msi_msg(struct irq_data *data, struct msi_msg *msg)
->  		(int)data->hwirq, msg->address_hi, msg->address_lo);
->  }
->  
-> -static int ks_pcie_msi_set_affinity(struct irq_data *irq_data,
-> -				    const struct cpumask *mask, bool force)
-> -{
-> -	return -EINVAL;
-> -}
-> -
->  static void ks_pcie_msi_mask(struct irq_data *data)
->  {
->  	struct dw_pcie_rp *pp = irq_data_get_irq_chip_data(data);
-> @@ -247,7 +241,6 @@ static struct irq_chip ks_pcie_msi_irq_chip = {
->  	.name = "KEYSTONE-PCI-MSI",
->  	.irq_ack = ks_pcie_msi_irq_ack,
->  	.irq_compose_msi_msg = ks_pcie_compose_msi_msg,
-> -	.irq_set_affinity = ks_pcie_msi_set_affinity,
->  	.irq_mask = ks_pcie_msi_mask,
->  	.irq_unmask = ks_pcie_msi_unmask,
->  };
-> diff --git a/drivers/pci/controller/dwc/pcie-designware-host.c b/drivers/pci/controller/dwc/pcie-designware-host.c
-> index a0822d5371bc5..3e41865c72904 100644
-> --- a/drivers/pci/controller/dwc/pcie-designware-host.c
-> +++ b/drivers/pci/controller/dwc/pcie-designware-host.c
-> @@ -48,8 +48,9 @@ static struct irq_chip dw_pcie_msi_irq_chip = {
->  };
->  
->  static struct msi_domain_info dw_pcie_msi_domain_info = {
-> -	.flags	= (MSI_FLAG_USE_DEF_DOM_OPS | MSI_FLAG_USE_DEF_CHIP_OPS |
-> -		   MSI_FLAG_PCI_MSIX | MSI_FLAG_MULTI_PCI_MSI),
-> +	.flags	= MSI_FLAG_USE_DEF_DOM_OPS | MSI_FLAG_USE_DEF_CHIP_OPS |
-> +		  MSI_FLAG_NO_AFFINITY | MSI_FLAG_PCI_MSIX |
-> +		  MSI_FLAG_MULTI_PCI_MSI,
->  	.chip	= &dw_pcie_msi_irq_chip,
->  };
->  
-> @@ -116,12 +117,6 @@ static void dw_pci_setup_msi_msg(struct irq_data *d, struct msi_msg *msg)
->  		(int)d->hwirq, msg->address_hi, msg->address_lo);
->  }
->  
-> -static int dw_pci_msi_set_affinity(struct irq_data *d,
-> -				   const struct cpumask *mask, bool force)
-> -{
-> -	return -EINVAL;
-> -}
-> -
->  static void dw_pci_bottom_mask(struct irq_data *d)
->  {
->  	struct dw_pcie_rp *pp = irq_data_get_irq_chip_data(d);
-> @@ -177,7 +172,6 @@ static struct irq_chip dw_pci_msi_bottom_irq_chip = {
->  	.name = "DWPCI-MSI",
->  	.irq_ack = dw_pci_bottom_ack,
->  	.irq_compose_msi_msg = dw_pci_setup_msi_msg,
-> -	.irq_set_affinity = dw_pci_msi_set_affinity,
->  	.irq_mask = dw_pci_bottom_mask,
->  	.irq_unmask = dw_pci_bottom_unmask,
->  };
 > -- 
 > 2.43.0
 > 
