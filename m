@@ -4,66 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20A6DC3DA49
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Jul 2024 07:23:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FA5BC3DA49
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Jul 2024 07:51:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=pGclBDAWnif8WAiXaFHumrBxpluMRZL3KNK8ev19WD4=; b=W/zGOY7NfJMwLJq0GxyFVTshBI
-	/ngsajtn2/81IJk0WSgBeBeqDz4tLBAQN6OvGVR3unZz7YsaSH3R8pLaS4bxe4FV/yDIJ9yN8xImZ
-	pFO63x0jaSP1gS1qVVdz1sxnXSji3MsOeqvH6pXjMt8NcFoqfD6Kn9w2kKhWLLyFezhno3hp82l85
-	WpuFM9COK1lcvQ2kt0sk7APVjZKKrj9cdOO7NPiQhvRN2IltSwIOJRzN26GiSdyedsiv+Nx7e7ZNv
-	Bm4Bu4AXNxJa6J2Cn2GsMJdbfDs1gh7l1b2mMlnATwyIfkzPrUVqb3ViGHxSR2Dom80XMJVvMJWV0
-	+lZJ5agA==;
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:To:
+	From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6BDUA3g7qzdMr75+tkH81j14vsNLSoE6Dhwp2w2trfk=; b=xy/nBXhQEDJcxFUupsp6UQ8GUk
+	EopQZIKfkE2Efz7PAIys2Stk/UlIlMzTgj1+gHwiKNO1GhEoal86WmgGrjrORB0TTw4cxh07AIcoE
+	O+5Lf2N7JYqTe5rHfN/Lw9mGPiA19mOerJoUD7tTAL2+DQ5MT9jwzDW4RfeIzYd/oRX6MtT++kfty
+	jhfuQsks/IyQLB2jDM9zUTQ93PAF7c7gNTwCk2QWyG6tNAaKKsleciomBzPM2dMOnnx6MwxTrT/4U
+	D6YGRFmjohWJXedIsQ6Sr366gSjf8aRFj4TZnSnN6OEFfzmkCb6OYi8nsSJSiNB3EWpI8XTOwvpsi
+	DEO6fDWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sWspD-00000000A4c-2JUU;
-	Thu, 25 Jul 2024 07:23:43 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1sWtFj-00000000EJM-04xb;
+	Thu, 25 Jul 2024 07:51:07 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sWsol-000000009uF-1Uxu;
-	Thu, 25 Jul 2024 07:23:18 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1721892190;
-	bh=LybX6K9ckx8LWHxoZ8RF7U51lUc9uadONdKAka89nR8=;
-	h=From:To:Cc:Subject:Date:From;
-	b=oQcPRt0gV6n4RhWpSjX2OkdJhXIIy0qJSx1BiKa33V58VcISEGOS/6+rnSFlHlgbR
-	 EhpChXPIXtqLflIdzPrlrQBSzKz8xdVa3ZVsONDIFMuBcjVkZ/Gy9Nd8wrLmFJDgOb
-	 W/NdvgA7aMY3Pfs7bpV5TYvw3gMITgdc++x6JdBpywwoOx1KBaJKxLWdeDwWnr8GfJ
-	 hxSQS3osndlbfRrY+mZq9bXWLr8TTo10dslQp2nY+Umg8EvYYTWgTA/cYMiZYMa/DJ
-	 K1pNov4d76V5Vb8JSo0NNJkCZBZr0eWB6+0WDXRKRut+o0fJPzABHEc0N58O3t+1zl
-	 czYPPpZPws/kQ==
-Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id D514837808FA;
-	Thu, 25 Jul 2024 07:23:09 +0000 (UTC)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: linux-mediatek@lists.infradead.org
-Cc: robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	wenst@chromium.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	kernel@collabora.com
-Subject: [PATCH] arm64: dts: mediatek: mt8186: Fix supported-hw mask for GPU OPPs
-Date: Thu, 25 Jul 2024 09:22:43 +0200
-Message-ID: <20240725072243.173104-1-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.45.2
+	id 1sWtFK-00000000ECP-1ECn;
+	Thu, 25 Jul 2024 07:50:43 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 9F2DF61231;
+	Thu, 25 Jul 2024 07:50:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C8FB0C116B1;
+	Thu, 25 Jul 2024 07:50:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1721893841;
+	bh=u7UE1luUcIiiCdthGpXJeT1sBaHmsNt8cCi8bPyijUA=;
+	h=From:To:In-Reply-To:References:Subject:Date:From;
+	b=FzksCpuVshp8PjzNoSbGxFmNkc9kRIUDPZ1vIn8AhwSXjHozNV2STsSDKtk1mAb0g
+	 AHoOm6RI0lWcOeLOiNrHHm09wWH1OtDN7ydaCvIU2it/o0XSuXSdvPH8AffZ8JSfmu
+	 jnNpVySU/0AYcQEU4FKq3uZIyWtP4DmM0Tde5uu2mtht7iJOs0BoQsd5ZaTm/qYP2z
+	 4uSUBuwUfi/IhG1YfrOZ01yiOqv2MNMQNrOxb8xV2KiWCnZdAxHh6x3eHhrX9XDWYP
+	 8zragP0izeadLis5etSozk1fva1MUfcez+ADfcQbPvVcQSxVRpdjuxMoVuQhYIHWzO
+	 jJq05RcISculA==
+From: Lee Jones <lee@kernel.org>
+To: Lee Jones <lee@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Arnd Bergmann <arnd@arndb.de>, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20240707114823.9175-2-krzysztof.kozlowski@linaro.org>
+References: <20240707114823.9175-1-krzysztof.kozlowski@linaro.org>
+ <20240707114823.9175-2-krzysztof.kozlowski@linaro.org>
+Subject: Re: (subset) [PATCH 2/2] mfd: syscon: Simplify with cleanup.h
+Message-Id: <172189383955.837660.943433218904558392.b4-ty@kernel.org>
+Date: Thu, 25 Jul 2024 08:50:39 +0100
 MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
+X-Mailer: b4 0.13.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240725_002315_554138_D2B22567 
-X-CRM114-Status: GOOD (  10.47  )
+X-CRM114-CacheID: sfid-20240725_005042_403453_9A292536 
+X-CRM114-Status: UNSURE (   7.12  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,77 +75,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The speedbin eFuse reads a value 'x' from 0 to 7 and, in order to
-make that compatible with opp-supported-hw, it gets post processed
-as BIT(x).
+On Sun, 07 Jul 2024 13:48:23 +0200, Krzysztof Kozlowski wrote:
+> Allocate the memory with scoped/cleanup.h to reduce error handling and
+> make the code a bit simpler.
+> 
+> 
 
-Change all of the 0x30 supported-hw to 0x20 to avoid getting
-duplicate OPPs for speedbin 4, and also change all of the 0x8 to
-0xcf because speedbins different from 4 and 5 do support 900MHz,
-950MHz, 1000MHz with the higher voltage of 850mV, 900mV, 950mV
-respectively.
+Applied, thanks!
 
-Fixes: f38ea593ad0d ("arm64: dts: mediatek: mt8186: Wire up GPU voltage/frequency scaling")
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- arch/arm64/boot/dts/mediatek/mt8186.dtsi | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+[2/2] mfd: syscon: Simplify with cleanup.h
+      commit: c80c7dfec9d8514f1fcc34402124026e59d2e2cb
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8186.dtsi b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-index 4763ed5dc86c..d63a9defe73e 100644
---- a/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-@@ -731,7 +731,7 @@ opp-850000000 {
- 		opp-900000000-3 {
- 			opp-hz = /bits/ 64 <900000000>;
- 			opp-microvolt = <850000>;
--			opp-supported-hw = <0x8>;
-+			opp-supported-hw = <0xcf>;
- 		};
- 
- 		opp-900000000-4 {
-@@ -743,13 +743,13 @@ opp-900000000-4 {
- 		opp-900000000-5 {
- 			opp-hz = /bits/ 64 <900000000>;
- 			opp-microvolt = <825000>;
--			opp-supported-hw = <0x30>;
-+			opp-supported-hw = <0x20>;
- 		};
- 
- 		opp-950000000-3 {
- 			opp-hz = /bits/ 64 <950000000>;
- 			opp-microvolt = <900000>;
--			opp-supported-hw = <0x8>;
-+			opp-supported-hw = <0xcf>;
- 		};
- 
- 		opp-950000000-4 {
-@@ -761,13 +761,13 @@ opp-950000000-4 {
- 		opp-950000000-5 {
- 			opp-hz = /bits/ 64 <950000000>;
- 			opp-microvolt = <850000>;
--			opp-supported-hw = <0x30>;
-+			opp-supported-hw = <0x20>;
- 		};
- 
- 		opp-1000000000-3 {
- 			opp-hz = /bits/ 64 <1000000000>;
- 			opp-microvolt = <950000>;
--			opp-supported-hw = <0x8>;
-+			opp-supported-hw = <0xcf>;
- 		};
- 
- 		opp-1000000000-4 {
-@@ -779,7 +779,7 @@ opp-1000000000-4 {
- 		opp-1000000000-5 {
- 			opp-hz = /bits/ 64 <1000000000>;
- 			opp-microvolt = <875000>;
--			opp-supported-hw = <0x30>;
-+			opp-supported-hw = <0x20>;
- 		};
- 	};
- 
--- 
-2.45.2
+--
+Lee Jones [李琼斯]
 
 
