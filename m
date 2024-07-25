@@ -4,61 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FA5BC3DA49
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Jul 2024 07:51:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58215C3DA5D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Jul 2024 07:51:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:To:
 	From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6BDUA3g7qzdMr75+tkH81j14vsNLSoE6Dhwp2w2trfk=; b=xy/nBXhQEDJcxFUupsp6UQ8GUk
-	EopQZIKfkE2Efz7PAIys2Stk/UlIlMzTgj1+gHwiKNO1GhEoal86WmgGrjrORB0TTw4cxh07AIcoE
-	O+5Lf2N7JYqTe5rHfN/Lw9mGPiA19mOerJoUD7tTAL2+DQ5MT9jwzDW4RfeIzYd/oRX6MtT++kfty
-	jhfuQsks/IyQLB2jDM9zUTQ93PAF7c7gNTwCk2QWyG6tNAaKKsleciomBzPM2dMOnnx6MwxTrT/4U
-	D6YGRFmjohWJXedIsQ6Sr366gSjf8aRFj4TZnSnN6OEFfzmkCb6OYi8nsSJSiNB3EWpI8XTOwvpsi
-	DEO6fDWA==;
+	bh=6pHwcq8Z5PavF+Ent0ZqrtzxFZOHNSpY7+0qdU5c68U=; b=c2Ss8v0J9mlJ7XYSLEMeIXALyQ
+	xkDuBPpDL2kWQjHIRcuoRwhlpaBAYrBYwi0mD5Zf7R0HMH48Im84P/UgLx+3r9lBZXu0sIu+IwhMh
+	uh1SuBwSI73VGg+056A1oRGC8wNmRNARLvkyp8x6E4I2XBA8j8bmpm4h9JZcMdhlpLA/VkLfRrJns
+	ObgxRLVzR+pukouuEN0+9Qjld5oLnMSqc3jzuZLIXca9pVnasN4pQzkbXI4ez6jS9jYBYiWjGgpJS
+	5jaDml/2wkp6wN8ndPx164lEiOWhqpvxqsaLmmCgSFL6lEftBJjvZjOg+kNPgc5EIA9Z9zksuGh9+
+	7ZRMVDfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sWtFj-00000000EJM-04xb;
-	Thu, 25 Jul 2024 07:51:07 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sWtG7-00000000ERK-0BMk;
+	Thu, 25 Jul 2024 07:51:31 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sWtFK-00000000ECP-1ECn;
-	Thu, 25 Jul 2024 07:50:43 +0000
+	id 1sWtFN-00000000ECw-3lbR;
+	Thu, 25 Jul 2024 07:50:47 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 9F2DF61231;
+	by sin.source.kernel.org (Postfix) with ESMTP id 0193ECE12E2;
+	Thu, 25 Jul 2024 07:50:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BDAE7C32786;
 	Thu, 25 Jul 2024 07:50:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C8FB0C116B1;
-	Thu, 25 Jul 2024 07:50:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1721893841;
-	bh=u7UE1luUcIiiCdthGpXJeT1sBaHmsNt8cCi8bPyijUA=;
+	s=k20201202; t=1721893843;
+	bh=3AHuXOduCNHiVYwcs87eHPsuIAXODhLFLXa6d1iqs9M=;
 	h=From:To:In-Reply-To:References:Subject:Date:From;
-	b=FzksCpuVshp8PjzNoSbGxFmNkc9kRIUDPZ1vIn8AhwSXjHozNV2STsSDKtk1mAb0g
-	 AHoOm6RI0lWcOeLOiNrHHm09wWH1OtDN7ydaCvIU2it/o0XSuXSdvPH8AffZ8JSfmu
-	 jnNpVySU/0AYcQEU4FKq3uZIyWtP4DmM0Tde5uu2mtht7iJOs0BoQsd5ZaTm/qYP2z
-	 4uSUBuwUfi/IhG1YfrOZ01yiOqv2MNMQNrOxb8xV2KiWCnZdAxHh6x3eHhrX9XDWYP
-	 8zragP0izeadLis5etSozk1fva1MUfcez+ADfcQbPvVcQSxVRpdjuxMoVuQhYIHWzO
-	 jJq05RcISculA==
+	b=mD8HBntNl/x9wqfEhpqvpmnPC3U8r7rRRnmX8JK77/eIiTJAo3Kc/iJ/L5DfFZ7/a
+	 GOf2NJKUKRJSEMMkbDbavxuVPZoyR87fuzAluHShT5jmFvaWnfNwPMhc2RyR0kIF0M
+	 /d66Puri4UcznayccZLyyyIw6h3tb1wtu8cxipGcNwzh72dGu5kc/iPYKjctuE4vb2
+	 deil01zw0l/DuiDViA+TFB+X7zH2/8nwjErKc4ahGMinbso1ZYQXyo/L/ns92xKFMf
+	 tCX6AFeaQU6HfY9zv9F7+k5YmkDREYu8szKIm/XzoO5K7xBPjHwypYwT/xk/7glHsp
+	 1bsho4UVL98fQ==
 From: Lee Jones <lee@kernel.org>
 To: Lee Jones <lee@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
  Arnd Bergmann <arnd@arndb.de>, linux-kernel@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
  Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20240707114823.9175-2-krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20240707114823.9175-1-krzysztof.kozlowski@linaro.org>
 References: <20240707114823.9175-1-krzysztof.kozlowski@linaro.org>
- <20240707114823.9175-2-krzysztof.kozlowski@linaro.org>
-Subject: Re: (subset) [PATCH 2/2] mfd: syscon: Simplify with cleanup.h
-Message-Id: <172189383955.837660.943433218904558392.b4-ty@kernel.org>
-Date: Thu, 25 Jul 2024 08:50:39 +0100
+Subject: Re: [PATCH 1/2] mfd: mt6360: Simplify with cleanup.h
+Message-Id: <172189384152.837660.3590109373140262352.b4-ty@kernel.org>
+Date: Thu, 25 Jul 2024 08:50:41 +0100
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-Mailer: b4 0.13.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240725_005042_403453_9A292536 
+X-CRM114-CacheID: sfid-20240725_005046_126939_B6F08357 
 X-CRM114-Status: UNSURE (   7.12  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -75,7 +74,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, 07 Jul 2024 13:48:23 +0200, Krzysztof Kozlowski wrote:
+On Sun, 07 Jul 2024 13:48:22 +0200, Krzysztof Kozlowski wrote:
 > Allocate the memory with scoped/cleanup.h to reduce error handling and
 > make the code a bit simpler.
 > 
@@ -83,6 +82,8 @@ On Sun, 07 Jul 2024 13:48:23 +0200, Krzysztof Kozlowski wrote:
 
 Applied, thanks!
 
+[1/2] mfd: mt6360: Simplify with cleanup.h
+      commit: 05dd1b4a8d71b5c422bff8bf6ad22baf5722c2a2
 [2/2] mfd: syscon: Simplify with cleanup.h
       commit: c80c7dfec9d8514f1fcc34402124026e59d2e2cb
 
