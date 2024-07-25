@@ -4,90 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1282DC3DA5D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Jul 2024 12:22:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 695A7C3DA5D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Jul 2024 13:00:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BgSeWtp2yzQk2FRjPaDRrPwx0CpbQ2b/9NffTsqAfkI=; b=Bs7fO0sKWRBtamYTJY6EhmlKZe
-	zZ67vm2OtBLpeH6DEORMaRFde3FrYqKREChVkANN9ZJxDDtCMo1JnLhmPKQcNBXqckOxrQhL+vTVz
-	XWBv/Z0M3JFFm2wbUDRCaY0zxAHkem/4r2Ij7P9hySUe/GPQR5JPIJcfjMbGarAFvps+CybfukbIR
-	YkEVgT1bxE2cNYZH/RFGe+gmm9RLkI5eOM1JEgdy1CbpyjPQ/9wufBTk8ZwBGkTwdYPK/MUE9ROmo
-	Kfuy343ZesagJEQHWrn6Phj0xC0hvdLRMC2adP255yNLawf2bleQViUlnfIoPhgHEEwajCP2Ys+za
-	ksXzx6MQ==;
+	bh=uD3XGrqNc/LkHS1p+rIDmcZc8WV2188cZAdzBOYaQ10=; b=Elyeh15ZvbUDzuUIK00QTb2bM3
+	omZfp+5oPaU8vEUqv8392S5Id8trg09T9prPujv+R15iEkCpQRMBeYbSaGPMBkpJBJCY38q0hSQnP
+	xNKe4dJhQwdFMdmbTM6jzwdeVTB0t1yKWilaSC5f3n00o25u3muuAR9MK7QWYJCypKsAz3nkMqlXD
+	qa1iNeukAT0eejR7g2NS8IVcvnEpTwgiaS4No1AxM+nYr5tt6qGyMGZEaQSI8YX7MljqmIcRzcmsb
+	gYU4cjxXM7FL1k3VGcsKxTmoKWtQHI4spcBC235GiyhH7TIcMadovoeR93Ws4itNdqNH6odOHvJ5r
+	qcbGtqIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sWxTr-00000000teR-1kot;
-	Thu, 25 Jul 2024 12:21:59 +0000
-Received: from szxga01-in.huawei.com ([45.249.212.187])
+	id 1sWy4p-000000010CI-3Atp;
+	Thu, 25 Jul 2024 13:00:12 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sWxTm-00000000taH-0Jjn;
-	Thu, 25 Jul 2024 12:21:56 +0000
-Received: from mail.maildlp.com (unknown [172.19.163.174])
-	by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4WV93n3b0KzxVFN;
-	Thu, 25 Jul 2024 20:21:41 +0800 (CST)
-Received: from dggpemf200006.china.huawei.com (unknown [7.185.36.61])
-	by mail.maildlp.com (Postfix) with ESMTPS id 406D6140121;
-	Thu, 25 Jul 2024 20:21:45 +0800 (CST)
-Received: from [10.67.120.129] (10.67.120.129) by
- dggpemf200006.china.huawei.com (7.185.36.61) with Microsoft SMTP Server
+	id 1sWy4m-000000010A8-1dMM;
+	Thu, 25 Jul 2024 13:00:10 +0000
+X-UUID: ccf5ff2c4a8511ef955bff358274dad2-20240725
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:Message-ID; bh=uD3XGrqNc/LkHS1p+rIDmcZc8WV2188cZAdzBOYaQ10=;
+	b=RZi9Z04AA9NbVXJivsE5xOBxXcCGJKwaJN8XDke6OlBypKP/ol4X4DOfq8K5W8HbzObKZ4yY7UW8vst1tR5rSYTR8FpT1e0i832odj2aWdpitItjiSquE3LwWs9WiFdUhlmRBrQkpnn6FXMwA05Vt5biTGZ2+kb7NuG8wgGCqdQ=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.41,REQID:97ca72bf-e962-4f7d-9b7d-befc3e678e71,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6dc6a47,CLOUDID:418cdd0d-46b0-425a-97d3-4623fe284021,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-UUID: ccf5ff2c4a8511ef955bff358274dad2-20240725
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
+	(envelope-from <macpaul.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1749500710; Thu, 25 Jul 2024 06:00:00 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.11; Thu, 25 Jul 2024 20:21:44 +0800
-Message-ID: <11187fe4-9419-4341-97b5-6dad7583b5b6@huawei.com>
-Date: Thu, 25 Jul 2024 20:21:42 +0800
+ 15.2.1118.26; Thu, 25 Jul 2024 20:59:56 +0800
+Received: from [172.21.84.99] (172.21.84.99) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.1118.26 via Frontend
+ Transport; Thu, 25 Jul 2024 20:59:55 +0800
+Message-ID: <7603f704-caf2-a5b9-e84e-bfec210273b8@mediatek.com>
+Date: Thu, 25 Jul 2024 20:59:54 +0800
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v11 04/14] mm: page_frag: add '_va' suffix to page_frag API
-To: Alexander Duyck <alexander.duyck@gmail.com>
-CC: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>,
-	<netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Subbaraya Sundeep
-	<sbhatta@marvell.com>, Jeroen de Borst <jeroendb@google.com>, Praveen
- Kaligineedi <pkaligineedi@google.com>, Shailend Chand <shailend@google.com>,
-	Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
-	Przemek Kitszel <przemyslaw.kitszel@intel.com>, Sunil Goutham
-	<sgoutham@marvell.com>, Geetha sowjanya <gakula@marvell.com>, hariprasad
-	<hkelam@marvell.com>, Felix Fietkau <nbd@nbd.name>, Sean Wang
-	<sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, Lorenzo
- Bianconi <lorenzo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Keith
- Busch <kbusch@kernel.org>, Jens Axboe <axboe@kernel.dk>, Christoph Hellwig
-	<hch@lst.de>, Sagi Grimberg <sagi@grimberg.me>, Chaitanya Kulkarni
-	<kch@nvidia.com>, "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang
-	<jasowang@redhat.com>, =?UTF-8?Q?Eugenio_P=C3=A9rez?= <eperezma@redhat.com>,
-	Andrew Morton <akpm@linux-foundation.org>, Alexei Starovoitov
-	<ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>, Jesper Dangaard
- Brouer <hawk@kernel.org>, John Fastabend <john.fastabend@gmail.com>, Andrii
- Nakryiko <andrii@kernel.org>, Martin KaFai Lau <martin.lau@linux.dev>, Eduard
- Zingerman <eddyz87@gmail.com>, Song Liu <song@kernel.org>, Yonghong Song
-	<yonghong.song@linux.dev>, KP Singh <kpsingh@kernel.org>, Stanislav Fomichev
-	<sdf@fomichev.me>, Hao Luo <haoluo@google.com>, Jiri Olsa <jolsa@kernel.org>,
-	David Howells <dhowells@redhat.com>, Marc Dionne <marc.dionne@auristor.com>,
-	Trond Myklebust <trondmy@kernel.org>, Anna Schumaker <anna@kernel.org>, Chuck
- Lever <chuck.lever@oracle.com>, Jeff Layton <jlayton@kernel.org>, Neil Brown
-	<neilb@suse.de>, Olga Kornievskaia <kolga@netapp.com>, Dai Ngo
-	<Dai.Ngo@oracle.com>, Tom Talpey <tom@talpey.com>,
-	<intel-wired-lan@lists.osuosl.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-nvme@lists.infradead.org>,
-	<kvm@vger.kernel.org>, <virtualization@lists.linux.dev>,
-	<linux-mm@kvack.org>, <bpf@vger.kernel.org>, <linux-afs@lists.infradead.org>,
-	<linux-nfs@vger.kernel.org>
-References: <20240719093338.55117-1-linyunsheng@huawei.com>
- <20240719093338.55117-5-linyunsheng@huawei.com>
- <CAKgT0UcqELiXntRA_uD8eJGjt-OCLO64ax=YFXrCHNnaj9kD8g@mail.gmail.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.1
+Subject: Re: [PATCH] arm64: dts: mediatek: mt8195: Add missing clock for xhci1
+ controller
 Content-Language: en-US
-From: Yunsheng Lin <linyunsheng@huawei.com>
-In-Reply-To: <CAKgT0UcqELiXntRA_uD8eJGjt-OCLO64ax=YFXrCHNnaj9kD8g@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"
+To: Chen-Yu Tsai <wenst@chromium.org>,
+	=?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+	Chunfeng Yun <chunfeng.yun@mediatek.com>, Bear Wang <bear.wang@mediatek.com>,
+	Pablo Sun <pablo.sun@mediatek.com>, <chris-qj.chen@mediatek.com>
+CC: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+	<kernel@collabora.com>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>
+References: <20240722-usb-1129-probe-pci-clk-fix-v1-1-99ea804228b6@collabora.com>
+ <CAGXv+5H_pxR18sHeqdWPy9_FARrnLwyyOHV4VXCn9p5OExseiQ@mail.gmail.com>
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+In-Reply-To: <CAGXv+5H_pxR18sHeqdWPy9_FARrnLwyyOHV4VXCn9p5OExseiQ@mail.gmail.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.67.120.129]
-X-ClientProxiedBy: dggems701-chm.china.huawei.com (10.3.19.178) To
- dggpemf200006.china.huawei.com (7.185.36.61)
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--19.987100-8.000000
+X-TMASE-MatchedRID: fE0JoqABJp1jbyiFvYNuKLhzZI/dfrdOjLOy13Cgb4/n0eNPmPPe5KWz
+	WoIRiV9DM/Se/q/gEyf5MiS7M8c1eGmXMi7Ntyo23tJaKJZJX/V7rr6ndct5SEmVes1pwna5Q74
+	mZ61P8ptCXD2S19glPTl4fr3J7Ttwxgua8617TyWzI1v7J4hECvioIsi7Sa0gYdn5x3tXIpdSIS
+	RzTzrHdrK/yup2qeEYIMLBH+nQWgW2YiHNOjOnAwPZZctd3P4Bf2g6KJZtxl0NmPMcsvd5FpMfT
+	P6axk0NSGz7tVxwx8H2HBjYROMcHPWUZFWpEkltMKPrF7dK57M6XfbB1aMjXnzXuTu6yhVMtGMo
+	giL4BSQI0JEpLdHmfJPgDLTDkZJsS2vb/Rh+9IXAJnGRMfFxyb7VXHusOfivClyrX4tOmxSjxYy
+	RBa/qJaEwgORH8p/AjaPj0W1qn0SQZS2ujCtcuA==
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--19.987100-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 6A074A2B9F64AA60FDDFB2D755D15C379843814E42F72FF3BAA9532B519A11902000:8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240725_052154_501101_0B457A4C 
-X-CRM114-Status: GOOD (  25.35  )
+X-CRM114-CacheID: sfid-20240725_060008_464651_097EC9AB 
+X-CRM114-Status: GOOD (  29.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,108 +108,103 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2024/7/22 4:41, Alexander Duyck wrote:
-> On Fri, Jul 19, 2024 at 2:37 AM Yunsheng Lin <linyunsheng@huawei.com> wrote:
->>
->> Currently the page_frag API is returning 'virtual address'
->> or 'va' when allocing and expecting 'virtual address' or
->> 'va' as input when freeing.
->>
->> As we are about to support new use cases that the caller
->> need to deal with 'struct page' or need to deal with both
->> 'va' and 'struct page'. In order to differentiate the API
->> handling between 'va' and 'struct page', add '_va' suffix
->> to the corresponding API mirroring the page_pool_alloc_va()
->> API of the page_pool. So that callers expecting to deal with
->> va, page or both va and page may call page_frag_alloc_va*,
->> page_frag_alloc_pg*, or page_frag_alloc* API accordingly.
->>
->> CC: Alexander Duyck <alexander.duyck@gmail.com>
->> Signed-off-by: Yunsheng Lin <linyunsheng@huawei.com>
->> Reviewed-by: Subbaraya Sundeep <sbhatta@marvell.com>
+
+
+On 7/25/24 18:34, Chen-Yu Tsai wrote:
+> 	
 > 
-> Rather than renaming the existing API I would rather see this follow
-> the same approach as we use with the other memory subsystem functions.
-
-I am not sure if I understand what 'the other memory subsystem functions'
-is referring to, it would be better to be more specific about that.
-
-For allocation side:
-alloc_pages*()
-extern unsigned long get_free_page*(gfp_t gfp_mask, unsigned int order);
-
-For free side, it seems we have:
-extern void __free_pages(struct page *page, unsigned int order);
-extern void free_pages(unsigned long addr, unsigned int order);
-static inline void put_page(struct page *page)
-
-So there seems to be no clear pattern that the mm APIs with double
-underscore is dealing with 'struct page' and the one without double
-underscore is dealing with virtual address, at least not from the
-allocation side.
-
-> A specific example being that with free_page it is essentially passed
-> a virtual address, while the double underscore version is passed a
-> page. I would be more okay with us renaming the double underscore
-> version of any functions we might have to address that rather than
-> renaming all the functions with "va".
-
-Before this patchset, page_frag has the below APIs as below:
-
-void *__page_frag_alloc_align(struct page_frag_cache *nc, unsigned int fragsz,
-			      gfp_t gfp_mask, unsigned int align_mask);
-
-static inline void *page_frag_alloc_align(struct page_frag_cache *nc,
-					  unsigned int fragsz, gfp_t gfp_mask,
-					  unsigned int align)
-
-extern void page_frag_free(void *addr);
-
-It would be better to be more specific about what renaming does the above
-APIs need in order to support the new usecases.
-
+> External email : Please do not click links or open attachments until you 
+> have verified the sender or the content.
 > 
-> In general I would say this patch is adding no value as what it is
+> Hi,
+> 
+> On Mon, Jul 22, 2024 at 11:27 PM Nícolas F. R. A. Prado
+> <nfraprado@collabora.com> wrote:
+>>
+>> Currently if the xhci1 controller happens to probe before the pcie1
+>> controller then it fails with the following errors:
+>>
+>> xhci-mtk 11290000.usb: clocks are not stable (0x1003d0f)
+>> xhci-mtk 11290000.usb: can't setup: -110
+>> xhci-mtk: probe of 11290000.usb failed with error -110
+>>
+>> The issue has been tracked down to the CLK_INFRA_AO_PCIE_P1_TL_96M
+>> clock, although exactly why this pcie clock is needed for the usb
+>> controller is still unknown. Add the clock to the xhci1 controller so it
+>> always probes successfully and use a placeholder clock name for it.
+>>
+>> Reported-by: Nícolas F. R. A. Prado <nfraprado@collabora.com> #KernelCI
+>> Closes: https://lore.kernel.org/all/9fce9838-ef87-4d1b-b3df-63e1ddb0ec51@notapiano/
+>> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> 
+> So I asked MediaTek about this, and it seems the correct thing to do is
+> disable USB 3 on this host controller using the following snippet. The
+> snippet is copy-pasted from our issue tracker and won't apply directly.
+> 
+> This is also seen in mt8395-kontron-3-5-sbc-i1200.dts, on which xhci1
+> is used only for USB 2.0 on an M.2 slot.
+> 
+> 
+> ChenYu
+> 
+> index 8b7307cdefc6..2dac9f706a58
+> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> @@ -1447,6 +1447,7 @@
+>                                        "xhci_ck";
+>                          mediatek,syscon-wakeup = <&pericfg 0x400 104>;
+>                          wakeup-source;
+> +                       mediatek,u3p-dis-msk = <0x1>;
+>                          status = "disabled";
+>                  };
 
-As above, it would be better to give a more specific suggestion to
-back up the above somewhat abstract agrument, otherwise it is hard
-to tell if there is better option here, and why it is better than
-the one proposed in this patchset.
-
-> doing is essentially pushing the primary users of this API to change
-> to support use cases that won't impact most of them. It is just
-> creating a ton of noise in terms of changes with no added value so we
-> can reuse the function names.
+If this is the other final solution, please help to add it per-board 
+basis dts.
+mt8395-genio-1200-evk indeed uses USB3 XHCI function for this port.
+https://mediatek.gitlab.io/atio/doc/aiot-dev-guide/master_images/hw_evk_g1200-evk_ports.png.
+You can see a USB3 port at the left bottom in this picture.
+Otherwise, we need to check if it is possible to override
+mediatek,u3p-dis-msk = <0x1> with <0x0>;
 
 
-After this patchset, we have the below page_frag APIs:
+>> ---
+>>  arch/arm64/boot/dts/mediatek/mt8195.dtsi | 10 ++++++++--
+>>  1 file changed, 8 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+>> index 2ee45752583c..cc5169871f1c 100644
+>> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+>> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+>> @@ -1453,9 +1453,15 @@ xhci1: usb@11290000 {
+>>                                  <&topckgen CLK_TOP_SSUSB_P1_REF>,
+>>                                  <&apmixedsys CLK_APMIXED_USB1PLL>,
+>>                                  <&clk26m>,
+>> -                                <&pericfg_ao CLK_PERI_AO_SSUSB_1P_XHCI>;
+>> +                                <&pericfg_ao CLK_PERI_AO_SSUSB_1P_XHCI>,
+>> +                                /*
+>> +                                 * This clock is required due to a hardware
+>> +                                 * bug. The 'frmcnt_ck' clock name is used as a
+>> +                                 * placeholder.
+>> +                                 */
+>> +                                <&infracfg_ao CLK_INFRA_AO_PCIE_P1_TL_96M>;
+>>                         clock-names = "sys_ck", "ref_ck", "mcu_ck", "dma_ck",
+>> -                                     "xhci_ck";
+>> +                                     "xhci_ck", "frmcnt_ck";
+>>                         mediatek,syscon-wakeup = <&pericfg 0x400 104>;
+>>                         wakeup-source;
+>>                         status = "disabled";
+>>
+>> ---
+>> base-commit: dee7f101b64219f512bb2f842227bd04c14efe30
+>> change-id: 20240722-usb-1129-probe-pci-clk-fix-ef8646f46aac
+>>
+>> Best regards,
+>> --
+>> Nícolas F. R. A. Prado <nfraprado@collabora.com>
+>>
+>>
+> 
 
-For allocation side, we have below APIs:
-struct page *page_frag_alloc_pg*(struct page_frag_cache *nc,
-                                unsigned int *offset, unsigned int fragsz,
-                                gfp_t gfp);
-void *page_frag_alloc_va*(struct page_frag_cache *nc,
-                                 unsigned int fragsz, gfp_t gfp_mask,
-                                 unsigned int align_mask);
-struct page *page_frag_alloc*(struct page_frag_cache *nc,
-                                     unsigned int *offset,
-                                     unsigned int fragsz,
-                                     void **va, gfp_t gfp);
-
-For allocation side, we have below APIs:
-void page_frag_free_va(void *addr);
-
-The main rules for the about naming are:
-1. The API with 'align' suffix ensure the offset or va is aligned
-2. The API with double underscore has no checking for the algin parameter.
-3. The API with 'va' suffix is dealing with virtual address.
-4. The API with 'pg' suffix is dealing with 'struct page'.
-5. The API without 'pg' and 'va' suffix is dealing with both 'struct page'
-   and virtual address.
-
-Yes, I suppose it is not perfect mainly because we reuse some existing mm
-API for page_frag free API.
-
-As mentioned before, I would be happy to change it if what you are proposing
-is indeed the better option.
+Thanks
+Macpaul Lin
 
