@@ -4,78 +4,180 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD05AC3DA5D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Jul 2024 10:35:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0368BC3DA5D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Jul 2024 11:53:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oGl5c3HNmBBbaK/O1r5iTiZ1Nkq9wz0Q4rHARmEMwjs=; b=ZV4INpRLy1HJvSqnZQNo274obB
-	Tv1UYFIF+utt376txc+kTHvAHNUemJVT+T+I6C6YhTAcXfKawz+2R0LjGRJFBOlBLHk6cqbGqjThj
-	Q0sRu9Of61UOodsDhmcZOOsEtEYzXya9U9/5LrXIwY5UnqPkW+tvpmrcrOft848BLtHn2NnfJD4Wf
-	HPxlTRniWQjrhwORZv95+vwiCHh4PKnkvDQxe2o5G/obOWVAQHjdSt96Ornt/JZwK8V6T7UBwgbaP
-	Z0oTfBzpL6JT79KJskQEmJT9q5lt0rKqA3FeSLKwwTX8EYE6DkWRdWVk/Uzrlz+FUqn10Pdq+pFBY
-	xfLuxmew==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RSs6X33NSanPEP5CCoDKmshOlG10taomX3cw2dErWew=; b=gRXI7JCkewlAvfIER8FWP+hJ8P
+	V2FqYoo/qKEcYiaCFFbobZtzPOtpUcmjFhiuXwOgbmmRn9iBOp0/oWet3Nq3y5e5lLnR+g9/YLdGE
+	Co8fEojU09W/lqoX+cbjNpxthfSrRyxqx3PkohnwSUrmJZZ/yX2JqyB5Cxh51FTSMfwx26blc62pj
+	sx6rRJGNr+VXMICsEGf8Ew4Kirylpu+gveMiJurEnCwdx8gp0Um2piDAhKi7irtjCFXd13aR9Y93N
+	28M7EvPaddw1tWibNSpd/jjQyzV5pPCNkgGDMKl2HagjgG9vro1kkHgP5LhuvWTEej94ewFX7foK7
+	ozscrwVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sWvoQ-00000000dPr-0l79;
-	Thu, 25 Jul 2024 10:35:06 +0000
-Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
+	id 1sWx1q-00000000okr-01Nb;
+	Thu, 25 Jul 2024 11:53:02 +0000
+Received: from mail-dm3nam02on20600.outbound.protection.outlook.com ([2a01:111:f403:2405::600] helo=NAM02-DM3-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sWvoM-00000000dOR-2vNE
-	for linux-mediatek@lists.infradead.org;
-	Thu, 25 Jul 2024 10:35:04 +0000
-Received: by mail-lf1-x132.google.com with SMTP id 2adb3069b0e04-52fc4388a64so1134183e87.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 25 Jul 2024 03:35:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1721903700; x=1722508500; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=oGl5c3HNmBBbaK/O1r5iTiZ1Nkq9wz0Q4rHARmEMwjs=;
-        b=QFXatFh6FL99ylqsC7kswtlJtcrn9Y5dWOO6KVd0MukMqmeLxj4S0iFVH+dFeECzzF
-         ZRENrQ2DOHkDBnvPG6xBj8MvsE1qfOqmULt56+IMk9CC1M1tpatT4YY9rDH+F9MyUR7H
-         83n/rCNGl/ngKEcEPZ5td2rDIxywxN/zaVYHU=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1721903700; x=1722508500;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=oGl5c3HNmBBbaK/O1r5iTiZ1Nkq9wz0Q4rHARmEMwjs=;
-        b=A9yGc/2kubYEUpOsjTpkoAeXtPh/a6ZhOjvy5m+WJHX6sL6xaviGaVcNa6/VUJ1plX
-         9+jS4kR02tfOS26hkR7QpN0UZCtsxECOCQ1lZ6O0xBeJkakSaXNYg7/Iq8rw5jRguf6o
-         1oc5jyHtqEf2Lcg7rdkHT9D/J/MEaSWShpWpitOjY3vyOeAHcgUMdH6fkpEKjzg5lXaR
-         8p4PSMzF7PGplpHrSBSngzU87tpwnTAYTjZr5YWI8G+F47eg99VfNWkRj2V7ZG23dREK
-         Voa6C1XHn/0HIZJfB2bf0SKs71lH1RAQDVuvKtJPg6pnEQ3P4BRhi8JWXki0Q+46KSyM
-         WSSw==
-X-Forwarded-Encrypted: i=1; AJvYcCWzHs2410qJSvrxFmNV+Mghzbk2SxuaBRRxXIRrmpfg25+mA6lPYb8la6TD31wd9R/UL36v9ToC8uTWexvNZs4e1JqY/rgI+ppqQodvyoz9w1si
-X-Gm-Message-State: AOJu0YziM8UNF9ldKTCkoYOutvpgjLnYLts3HyUB42T5ACN7nIcO3aM/
-	Jm5kHW7gPJk7Q3TvfpelFLyc9nJAzjj1AtPBSHGExVSAF6Jb9vzxR6KVylkOpM6mDgDTseu1jY5
-	hcOewoKlKU/YOis8wSTG+bJuXHsPG64JPjBs9
-X-Google-Smtp-Source: AGHT+IHkE66wc/ZgxWkQgDaikOYMpwK+iI3oiC+hn7N1tRYSraZ86sG3P9nD/p1ufKpAexRHxLjoxCDlxy5nnXtmG6M=
-X-Received: by 2002:a05:6512:2035:b0:52e:9ab9:da14 with SMTP id
- 2adb3069b0e04-52fd60b6b10mr855792e87.31.1721903699732; Thu, 25 Jul 2024
- 03:34:59 -0700 (PDT)
+	id 1sWx1N-00000000of3-2G5c;
+	Thu, 25 Jul 2024 11:52:35 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=ZF8Kmum1DZgn55iU8Wt7/H7s3apNBEU4JcksUExnHaqQVpElM+btHJLUdTaAtFePx5uueaMwdCkqkZIxWTzEgnXpc/pe0URvUUe2vGToHWRp9bzBbqes67IbBBIk6FX/fP8XhjNwnzGYGvr+5SR706/Dvu49uf0VksXTbbg7l08Sangt/2ssGWC1EYrowPifoVZKxwO0yOsWxjNN4oqy1nfF9BUzD2WZZLkgQFXb3qgtOgXvaTl48hxrDHs2u+Ig+3EYmcdBAiIj2x89NY4feKaoxrHg4XkOg70sWdxaH1V7G4NJVZ6A/OzNXHjQPmhN7aORoSTqK7IYeG4tg/jCZw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=RSs6X33NSanPEP5CCoDKmshOlG10taomX3cw2dErWew=;
+ b=LUNFN/g+6vAcrlM1hxxEAtvLg0Wrr5zZEg3yNL1M71egp24k4dIu3tS65Cn5XYe9zTkzkNKBGYK4w6FLu9NGjv8h6j9XBZiN86ZWQZBIqYS3zRbHsu7b2MzDjzwzVx52vzaAthKmfMF0gY7npHTiqocGP75FV/FMKiU6BAfFCUudVai2nqJizRfbybhYdqVzR5fjGxqNKbAodhNPWqeKySD/LvjPoRFYVLmzSQQKuf9CJwAwnvixzyfWUk9qL0A1CHHUmDoy0N/6VDFUOcYaDQrDSb2uYB0l8GrKKsbXQgMlyxbCFNeCLtRu9jxus5ItuizkahFnLk963bhTc3Mdwg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
+ header.d=amd.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=RSs6X33NSanPEP5CCoDKmshOlG10taomX3cw2dErWew=;
+ b=vYEiypcBGos4mfi+6Wc6DsVERhMLuboAT6/9t5KUYxRXS7CVXr5xlB7R7nHO7PtXKn1gaCj+NqONl9KYpKUJ0GgTXLfh2f3WVdnX4QxZX+7xdHImg9iWIIpip2BTAtvbGUwTBHfjlPmb47Z4Q3WYwF4vqvhnJw2Pz4SyCfso5mw=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=amd.com;
+Received: from PH7PR12MB5685.namprd12.prod.outlook.com (2603:10b6:510:13c::22)
+ by DM4PR12MB5961.namprd12.prod.outlook.com (2603:10b6:8:68::21) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7784.20; Thu, 25 Jul
+ 2024 11:52:27 +0000
+Received: from PH7PR12MB5685.namprd12.prod.outlook.com
+ ([fe80::46fb:96f2:7667:7ca5]) by PH7PR12MB5685.namprd12.prod.outlook.com
+ ([fe80::46fb:96f2:7667:7ca5%4]) with mapi id 15.20.7784.017; Thu, 25 Jul 2024
+ 11:52:26 +0000
+Message-ID: <8b143d1c-edf9-4b2c-a382-75328156a7b0@amd.com>
+Date: Thu, 25 Jul 2024 13:52:17 +0200
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v7 04/28] dma-buf: heaps: Deduplicate docs and adopt
+ common format
+To: Yunfei Dong <yunfei.dong@mediatek.com>,
+ Jeffrey Kardatzke <jkardatzke@google.com>,
+ =?UTF-8?Q?N=C3=ADcolas_F_=2E_R_=2E_A_=2E_Prado?= <nfraprado@collabora.com>,
+ Nathan Hebert <nhebert@chromium.org>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Sebastian Fricke <sebastian.fricke@collabora.com>,
+ Tomasz Figa <tfiga@chromium.org>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Marek Szyprowski <m.szyprowski@samsung.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>, Yong Wu <yong.wu@mediatek.com>,
+ Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
+ Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>,
+ Sumit Semwal <sumit.semwal@linaro.org>, Brian Starkey
+ <Brian.Starkey@arm.com>, John Stultz <jstultz@google.com>,
+ "T . J . Mercier" <tjmercier@google.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-media@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20240720071606.27930-1-yunfei.dong@mediatek.com>
+ <20240720071606.27930-5-yunfei.dong@mediatek.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>
+In-Reply-To: <20240720071606.27930-5-yunfei.dong@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: FR4P281CA0271.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:d10:e6::20) To PH7PR12MB5685.namprd12.prod.outlook.com
+ (2603:10b6:510:13c::22)
 MIME-Version: 1.0
-References: <20240722-usb-1129-probe-pci-clk-fix-v1-1-99ea804228b6@collabora.com>
-In-Reply-To: <20240722-usb-1129-probe-pci-clk-fix-v1-1-99ea804228b6@collabora.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Thu, 25 Jul 2024 18:34:48 +0800
-Message-ID: <CAGXv+5H_pxR18sHeqdWPy9_FARrnLwyyOHV4VXCn9p5OExseiQ@mail.gmail.com>
-Subject: Re: [PATCH] arm64: dts: mediatek: mt8195: Add missing clock for xhci1 controller
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, kernel@collabora.com, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: PH7PR12MB5685:EE_|DM4PR12MB5961:EE_
+X-MS-Office365-Filtering-Correlation-Id: cab587f6-d86a-4406-967c-08dcaca0411c
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|7416014|366016|376014|1800799024|921020;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?bDh6dzA5VUUxazZiTmhaYVVPM3hTZStGY3Y2R0NlSDBVdERIMlMyYWVnRzlk?=
+ =?utf-8?B?Y0cycFZiK0JFeUJGTkdjTmVQSkhSVmh6aVFxWTBiRzVEU1NoZjZUVkw2Q2xE?=
+ =?utf-8?B?b1NrZ1RoMDlPMGErOXBkb2hXWWxIdUN6OEZFMTRoUEI4ajI3WlBraVJDMUtx?=
+ =?utf-8?B?Wk9LOXc4YlBqcVFzZjEyTW8yN2NFSmJOcGd3VHRKQWNDRG1vRTVLdXZJTXdt?=
+ =?utf-8?B?dzM4VURtWFhQNURoN09KamNuQ0IrR0J6TUVSSG9MK3orREVWUlZaeUZ0UTdo?=
+ =?utf-8?B?Q2xDendtT2xrWWF1WFB3TVFHb0x5M1o3S0t3Mi9mcWpKYUUwUW54NlI5Z0Ey?=
+ =?utf-8?B?RWFacDZwek5EbWh4UnVSM0IzOStlaEY3OWNPSzJIK0NjZTB4MHUrU082ZVFC?=
+ =?utf-8?B?bTQ0ZUFtUHAvSmZlOFd2Yk9UamJ2R0ZYTldMTTUvSFhzSWZhajkycnVBQXNL?=
+ =?utf-8?B?UTNtVlhqbkNGa0d6MFgrejVya1lOSW50dUJacSthV2tnS09VUFlIUzZyOEVK?=
+ =?utf-8?B?eUlkY0NuWHIrSWg2SGxuQk5lOGNzdlF1dzdsZVhxSVYvYW9USks2QksxQW9i?=
+ =?utf-8?B?K3psYTh3VS9nSFZMdzB3dGp4OWplSDcrek1TNjl2RGQyRW9Od3JXNXB4V01K?=
+ =?utf-8?B?L3pkU3poWStuS1BjUXlvS2wrcDVjRUxsQXlRTEIwVXh4T3RjRkxPLzM5RlVt?=
+ =?utf-8?B?anh2d1dvZmdFdjNwc1R1emJuSXk1YzAwTldVR2NEMCsrNkliKzg5MTFKaU1C?=
+ =?utf-8?B?TWpWZVFmblhwaTgvQzVjbnBKSWhzSFJpODNaZkdNckVaYXpOVm1RRXJRNDR4?=
+ =?utf-8?B?RWc3MEZPeGZaS1lqcWswNnRsczQ3U0ZRMTlzbzJZRThlRU1JNzBXcjFVSTRN?=
+ =?utf-8?B?a1dOaUNzTHd6VTQwTjdGNXlMTzd1M09SNkVOdDJaVEplc0U1SVdjWkx2c2lK?=
+ =?utf-8?B?WUxualVQVXIzeTErRU9JSlBHN25EOTFtOUpjRVBmK0hKTXNvcnlYZW1DWS9y?=
+ =?utf-8?B?bUdSdWZTU1BxbkEweU96NWpicjhqUmwyR0VYd2diRWlCM3UxMnoveVkzUlN1?=
+ =?utf-8?B?NTdXSHZENjN3cVJqaGtEVWdITmZaRmlJclFlTzR2NXdHdjl0dTIvSUpKMHE3?=
+ =?utf-8?B?NEZzbVRGQWNvRzJnaVZPQnRBRmlrNC9Xc1lUMHpwVjMxcUsxMGVsY2xyNE40?=
+ =?utf-8?B?VVJJNEJVY3pVYUlJeUR5NVVuQmdDZ3I3Tnh3QkVjR3M2b0dBZzh5cVhvUzNr?=
+ =?utf-8?B?SkpOa3lnL05ZNlNaem9sbVM2ZUFmOUk2RkV2bXh4c3Q5SFRPODNrTEhJV0M5?=
+ =?utf-8?B?Y2ZtZ2d3UHA3bklKOTExYlQxUnd2eThXZm9aaGZqUUVCQzlZYzM0MzBYeDd2?=
+ =?utf-8?B?L25LVkEwTEw0MDYvSXhKUlRPQVVzc0NEN1Fyb1NSd1hwY1ppYXV4b2dwR2Fz?=
+ =?utf-8?B?U2Z4eUV6eGlvMFFSNDhyaXVQMjlQV1hZazZEUlR1ZkpMNjN4N0NJd3Y5VllK?=
+ =?utf-8?B?eG1FeFNTSWxKcnUrQnhROGJseVkyTjVydWRVbURSNEtOdFFVcktEYnR6Y0RG?=
+ =?utf-8?B?T2JtNnVUUzVPYUw4UzByRVRaU3ZkRmo1c2p0VjVQQm5PZ1JuWUNpek9PZVpR?=
+ =?utf-8?B?dzdIOVZZMGt2U0twZ2kzeCtkcE9wcmVOWU5WQnV2dEZUS3BCM2NFVTNINjBQ?=
+ =?utf-8?B?M2UxaGVreUxuODNHd3JYY1QvdkwxcmhDNmJTY1J6aisyQ0RROEppa1F5S25k?=
+ =?utf-8?B?ZWlwbVptNGxWTU53L29LQStRci9GZSs3cnV3Ykd2Z09UV2Nwa2NTeXJUUy9l?=
+ =?utf-8?B?d2RhTTZRb1U5RE1EUWl6Q3ZNcE1ZZTFDbUhRZ0dGRmJZR0NmUXBra0syeDh2?=
+ =?utf-8?Q?9eTjc59wRz7OI?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH7PR12MB5685.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(7416014)(366016)(376014)(1800799024)(921020);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?eWN3Y3k1M0dLT0ZpanpLMU15Z3laQzhhMGd4eE9rRVVzY1dEZWR3YjVJK2RZ?=
+ =?utf-8?B?VlZOTExIOXJ3anBpT0srcnhXalhhZUgvemVNUGNEQmVuVUNkSFQ2NjNEaCtx?=
+ =?utf-8?B?TXFmV0JnV1RtK2ZBVjF1eXZLY3hVejd6YTNHZjMzYVRZMlRvRDRETllQaVdl?=
+ =?utf-8?B?c3N5Y0VaVk9FTWNJZ3NSYlc5eHU2c0pZNEdtWWFqTk1YblVxQ0lQanFHc3pN?=
+ =?utf-8?B?N1FheUFnTHpXMGtBUUJYZmk4cVBLaHlXKzRHMlBnKzQ3YUhvUmZyTCsvSnZX?=
+ =?utf-8?B?cnRCNTVHSkpwdHZ3a1NIWURTNUIrMC9Ia051NEhTcE5vb2pJVVY5N0JyVEhZ?=
+ =?utf-8?B?Unh2YmpKV3hUMUl4M2hWWkk4cEdGV1hWV0picU5CSkdSeGc4RTRWLzBLNWsz?=
+ =?utf-8?B?YU1rTjVCN3A4WkdoVDBuaWpiNUoyUlU4L04xdGQvVW5CdEtnTVl4cEJXd2xW?=
+ =?utf-8?B?UEc4bDNuSXRHeXp5M3R1emtIc3R3M2VZZnFNRWxhZDlhclBzVjlZanVkYjdN?=
+ =?utf-8?B?Y0RaL0JCQ0JQdGNzRUJpQndVRGlaQXdrc2YxY2w2OTRKTUJxSUw1ajFZdVZu?=
+ =?utf-8?B?bjlvRTFkTEQramJUeGx2aHJyd2VmWGZoV1BtWU54bFZtc2pYeXNaeStWczVu?=
+ =?utf-8?B?NEdKK0RLVG1Yb0Q4dHI0a3BrSVF3ZXNyQWxjVEVTOUtsM1lsZHMyWEZZTkxL?=
+ =?utf-8?B?K29oWWFWUWxuYzZMeU1uTmlQM3VIZFRxOEFUVXc1bnZINCt0ckdCRlorQjk1?=
+ =?utf-8?B?QmRvOEpUbnd6ZjYvdFZ3NWlWdEFmUnAzMW5MYUhhRk9vZDgrZnVpUXNwRkxS?=
+ =?utf-8?B?dXRLSVZId0R5Y29pS3NQdEp0S2Z1T2lhNlR5bWVmKzhaSFlkbWI4ZVFzZndC?=
+ =?utf-8?B?RVBWTnVSTkZnWWEyRitibHZjUktkREV4N3RkSmZEdmo0SHlEc2dzcmg5Tmto?=
+ =?utf-8?B?RXNhVXZra2dxbWVCVnJEWHM2M0JkTHVveXp1YTRSZGhNM243c3FqMW92K2s0?=
+ =?utf-8?B?ZXVKdmNibmtFeEVYL0orTkJYR1lXSnZJU2xYUWdrcGRNZUVRdEQ2bHdLR1FY?=
+ =?utf-8?B?SlZjUDVYWW5VL1Y2MExrQWdUckw1aWJIMTVzMVZTMXIvZEFRblkxWWwrK3Yz?=
+ =?utf-8?B?NTM3MFkwZ2svRElFMVJ4NXVFdzlxdS9SRW5GbjV4TFEyTGdUV0xlR3pZd2g0?=
+ =?utf-8?B?TVFSVDJLSHpPcEVyNWdvQmcvZ3ZRbWFaQTJLVHRNcldqY2JlaUhWM2pRQTFq?=
+ =?utf-8?B?R2R0a3crb3JWNXBmU0lta3hPUzJUbERCUGRpcytkb2JSeEtLdG5Dckc2RjVO?=
+ =?utf-8?B?Q3F5Y2pTMWVxaS8wdFUrckdqUy9GNDRFK1BaVUloV1RMVEVLU0pubHRQMm1J?=
+ =?utf-8?B?Y0FvYm1VU1JZUkVvMWc0UGY3ZmpjSmZqa1BGa1VxTGJYa2Y4ZnJ0RkYxSVNZ?=
+ =?utf-8?B?ZFB4VFdYN1ozR2VGVDNUUDFtdVFHNDh1L0V0RHFkamU2SmExV1k1RHg0Nnpk?=
+ =?utf-8?B?Y00rWXd0bGVQNVRxWkxwYmhGRDc1ME1Jc2NWa3BUTUxYMEgwck5YWUI0Z1gx?=
+ =?utf-8?B?eG9sSDZBZkY0Q3MveERybFFmbzFEOW5aR3JFMU5QQUs3Y3cwZkl2dklJenlu?=
+ =?utf-8?B?NGpoMU9mdTVyL3dWM1g4MHBSWGZwNzFabXdneE42N1d0RmlHanZEL1BpTDFW?=
+ =?utf-8?B?S2FCcWZTVUN0OE5FRStQWURQK1ExcldVVDYvRlRkVkptWjZVNGkyaUx6RGJZ?=
+ =?utf-8?B?RUtQUWo5SVJwaVBGWS9OVGJLTHIxWVl1QituR3pGYngzL3dlRXpJVCsza1BK?=
+ =?utf-8?B?cHh5S3JHT2tzdTBwQjlEZGM5YUo3R2Z3OTNuQ3lwTDhFVHVLVXlMNkFMMytQ?=
+ =?utf-8?B?QnpNMHh2UzczcjM5ak96ZkMxaXlhOXpRaGdsSU5Lam1senJLOGxWN2JaTWp0?=
+ =?utf-8?B?Tlp4YTU0bGgzL2hET2lDTGlRV0NmMjdNSlBWUTkwc2wvZVFESWRoQk9FcGNk?=
+ =?utf-8?B?TnNoeTNpaTJNbDMvTnVRQTcwR3NYZHY4eHRRMlNGN1NXSGNCdmFlNDdLWENY?=
+ =?utf-8?B?Y1ErWXJLcXRrSmdBOFFsQlkvZFZLVFZsSnBXczdLclpxZWo1RkFZYW9ib1d3?=
+ =?utf-8?Q?IcB6/HmphTcgeiwY0FNOiEAer?=
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: cab587f6-d86a-4406-967c-08dcaca0411c
+X-MS-Exchange-CrossTenant-AuthSource: PH7PR12MB5685.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 Jul 2024 11:52:26.8098
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 1T08tIDA70m7GjWFyvJvZh3WGpzvJIUxUo8/ao3lvFjn+jofavm7Su/kLMopX2G2
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR12MB5961
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240725_033503_408756_86EAA1DE 
-X-CRM114-Status: GOOD (  26.07  )
+X-CRM114-CacheID: sfid-20240725_045233_800292_3ABDFA6D 
+X-CRM114-Status: GOOD (  25.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,89 +192,156 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-On Mon, Jul 22, 2024 at 11:27=E2=80=AFPM N=C3=ADcolas F. R. A. Prado
-<nfraprado@collabora.com> wrote:
+Am 20.07.24 um 09:15 schrieb Yunfei Dong:
+> From: "T.J. Mercier" <tjmercier@google.com>
 >
-> Currently if the xhci1 controller happens to probe before the pcie1
-> controller then it fails with the following errors:
+> The docs for dma_heap_get_name were incorrect, and since they were
+> duplicated in the header they were wrong there too.
 >
-> xhci-mtk 11290000.usb: clocks are not stable (0x1003d0f)
-> xhci-mtk 11290000.usb: can't setup: -110
-> xhci-mtk: probe of 11290000.usb failed with error -110
+> The docs formatting was inconsistent so I tried to make it more
+> consistent across functions since I'm already in here doing cleanup.
 >
-> The issue has been tracked down to the CLK_INFRA_AO_PCIE_P1_TL_96M
-> clock, although exactly why this pcie clock is needed for the usb
-> controller is still unknown. Add the clock to the xhci1 controller so it
-> always probes successfully and use a placeholder clock name for it.
+> Remove multiple unused includes and alphabetize.
 >
-> Reported-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com> #Kerne=
-lCI
-> Closes: https://lore.kernel.org/all/9fce9838-ef87-4d1b-b3df-63e1ddb0ec51@=
-notapiano/
-> Signed-off-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
+> Signed-off-by: T.J. Mercier <tjmercier@google.com>
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> [Yong: Just add a comment for "priv" to mute build warning]
+> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 
-So I asked MediaTek about this, and it seems the correct thing to do is
-disable USB 3 on this host controller using the following snippet. The
-snippet is copy-pasted from our issue tracker and won't apply directly.
+Since this is essentially a complete independent documentation fix I've 
+gone ahead and pushed it to drm-misc-next.
 
-This is also seen in mt8395-kontron-3-5-sbc-i1200.dts, on which xhci1
-is used only for USB 2.0 on an M.2 slot.
-
-
-ChenYu
-
-index 8b7307cdefc6..2dac9f706a58
---- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-@@ -1447,6 +1447,7 @@
-                                      "xhci_ck";
-                        mediatek,syscon-wakeup =3D <&pericfg 0x400 104>;
-                        wakeup-source;
-+                       mediatek,u3p-dis-msk =3D <0x1>;
-                        status =3D "disabled";
-                };
+Regards,
+Christian.
 
 > ---
->  arch/arm64/boot/dts/mediatek/mt8195.dtsi | 10 ++++++++--
->  1 file changed, 8 insertions(+), 2 deletions(-)
+>   drivers/dma-buf/dma-heap.c | 27 +++++++++++++++------------
+>   include/linux/dma-heap.h   | 21 +--------------------
+>   2 files changed, 16 insertions(+), 32 deletions(-)
 >
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/d=
-ts/mediatek/mt8195.dtsi
-> index 2ee45752583c..cc5169871f1c 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> @@ -1453,9 +1453,15 @@ xhci1: usb@11290000 {
->                                  <&topckgen CLK_TOP_SSUSB_P1_REF>,
->                                  <&apmixedsys CLK_APMIXED_USB1PLL>,
->                                  <&clk26m>,
-> -                                <&pericfg_ao CLK_PERI_AO_SSUSB_1P_XHCI>;
-> +                                <&pericfg_ao CLK_PERI_AO_SSUSB_1P_XHCI>,
-> +                                /*
-> +                                 * This clock is required due to a hardw=
-are
-> +                                 * bug. The 'frmcnt_ck' clock name is us=
-ed as a
-> +                                 * placeholder.
-> +                                 */
-> +                                <&infracfg_ao CLK_INFRA_AO_PCIE_P1_TL_96=
-M>;
->                         clock-names =3D "sys_ck", "ref_ck", "mcu_ck", "dm=
-a_ck",
-> -                                     "xhci_ck";
-> +                                     "xhci_ck", "frmcnt_ck";
->                         mediatek,syscon-wakeup =3D <&pericfg 0x400 104>;
->                         wakeup-source;
->                         status =3D "disabled";
->
-> ---
-> base-commit: dee7f101b64219f512bb2f842227bd04c14efe30
-> change-id: 20240722-usb-1129-probe-pci-clk-fix-ef8646f46aac
->
-> Best regards,
-> --
-> N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
->
->
+> diff --git a/drivers/dma-buf/dma-heap.c b/drivers/dma-buf/dma-heap.c
+> index 84ae708fafe7..22f6c193db0d 100644
+> --- a/drivers/dma-buf/dma-heap.c
+> +++ b/drivers/dma-buf/dma-heap.c
+> @@ -7,17 +7,15 @@
+>    */
+>   
+>   #include <linux/cdev.h>
+> -#include <linux/debugfs.h>
+>   #include <linux/device.h>
+>   #include <linux/dma-buf.h>
+> +#include <linux/dma-heap.h>
+>   #include <linux/err.h>
+> -#include <linux/xarray.h>
+>   #include <linux/list.h>
+> -#include <linux/slab.h>
+>   #include <linux/nospec.h>
+> -#include <linux/uaccess.h>
+>   #include <linux/syscalls.h>
+> -#include <linux/dma-heap.h>
+> +#include <linux/uaccess.h>
+> +#include <linux/xarray.h>
+>   #include <uapi/linux/dma-heap.h>
+>   
+>   #define DEVNAME "dma_heap"
+> @@ -28,9 +26,10 @@
+>    * struct dma_heap - represents a dmabuf heap in the system
+>    * @name:		used for debugging/device-node name
+>    * @ops:		ops struct for this heap
+> - * @heap_devt		heap device node
+> - * @list		list head connecting to list of heaps
+> - * @heap_cdev		heap char device
+> + * @priv:		private data for this heap
+> + * @heap_devt:		heap device node
+> + * @list:		list head connecting to list of heaps
+> + * @heap_cdev:		heap char device
+>    *
+>    * Represents a heap of memory from which buffers can be made.
+>    */
+> @@ -193,11 +192,11 @@ static const struct file_operations dma_heap_fops = {
+>   };
+>   
+>   /**
+> - * dma_heap_get_drvdata() - get per-subdriver data for the heap
+> + * dma_heap_get_drvdata - get per-heap driver data
+>    * @heap: DMA-Heap to retrieve private data for
+>    *
+>    * Returns:
+> - * The per-subdriver data for the heap.
+> + * The per-heap data for the heap.
+>    */
+>   void *dma_heap_get_drvdata(struct dma_heap *heap)
+>   {
+> @@ -205,8 +204,8 @@ void *dma_heap_get_drvdata(struct dma_heap *heap)
+>   }
+>   
+>   /**
+> - * dma_heap_get_name() - get heap name
+> - * @heap: DMA-Heap to retrieve private data for
+> + * dma_heap_get_name - get heap name
+> + * @heap: DMA-Heap to retrieve the name of
+>    *
+>    * Returns:
+>    * The char* for the heap name.
+> @@ -216,6 +215,10 @@ const char *dma_heap_get_name(struct dma_heap *heap)
+>   	return heap->name;
+>   }
+>   
+> +/**
+> + * dma_heap_add - adds a heap to dmabuf heaps
+> + * @exp_info: information needed to register this heap
+> + */
+>   struct dma_heap *dma_heap_add(const struct dma_heap_export_info *exp_info)
+>   {
+>   	struct dma_heap *heap, *h, *err_ret;
+> diff --git a/include/linux/dma-heap.h b/include/linux/dma-heap.h
+> index 0c05561cad6e..fbe86ec889a8 100644
+> --- a/include/linux/dma-heap.h
+> +++ b/include/linux/dma-heap.h
+> @@ -9,14 +9,13 @@
+>   #ifndef _DMA_HEAPS_H
+>   #define _DMA_HEAPS_H
+>   
+> -#include <linux/cdev.h>
+>   #include <linux/types.h>
+>   
+>   struct dma_heap;
+>   
+>   /**
+>    * struct dma_heap_ops - ops to operate on a given heap
+> - * @allocate:		allocate dmabuf and return struct dma_buf ptr
+> + * @allocate:	allocate dmabuf and return struct dma_buf ptr
+>    *
+>    * allocate returns dmabuf on success, ERR_PTR(-errno) on error.
+>    */
+> @@ -41,28 +40,10 @@ struct dma_heap_export_info {
+>   	void *priv;
+>   };
+>   
+> -/**
+> - * dma_heap_get_drvdata() - get per-heap driver data
+> - * @heap: DMA-Heap to retrieve private data for
+> - *
+> - * Returns:
+> - * The per-heap data for the heap.
+> - */
+>   void *dma_heap_get_drvdata(struct dma_heap *heap);
+>   
+> -/**
+> - * dma_heap_get_name() - get heap name
+> - * @heap: DMA-Heap to retrieve private data for
+> - *
+> - * Returns:
+> - * The char* for the heap name.
+> - */
+>   const char *dma_heap_get_name(struct dma_heap *heap);
+>   
+> -/**
+> - * dma_heap_add - adds a heap to dmabuf heaps
+> - * @exp_info:		information needed to register this heap
+> - */
+>   struct dma_heap *dma_heap_add(const struct dma_heap_export_info *exp_info);
+>   
+>   #endif /* _DMA_HEAPS_H */
+
 
