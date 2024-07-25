@@ -4,92 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5ACBC3DA7E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Jul 2024 09:48:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD05AC3DA5D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Jul 2024 10:35:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=B7Af65Ifw7TKanB4wwNo6laQl5/PZds1eHFzU8LCja4=; b=KDaWyg8LdGGzLpdkPxd0fbexAq
-	dCgpbD3/36iDx94WzYExPzD6Y7AMNTOs43yVDfZIgT1CL/eHWAueqNE0kxODp+CnX+Uz2BSydbJaR
-	NrZjw8xHJa1UtPYUUjD+6LVhH/Zcz11pTilvMEBG3DOioAmIlub0O+GAKNflmRhz2jTCb79LqptUg
-	71cPXUKGxMs3R5keobc+NKnhma9avh9oYcN+AHC8vh/69R7t/pLOp3nA4p2WOy7WLmZBPxDiTxpQo
-	gFyS/BwnK6jj7cnmdNFnFFgVw1LYozKBBIPpBPg/tXX6aH9+HSssxjHbaDUnMmBuz09DH8IEs0AjK
-	kJJD/5jg==;
+	bh=oGl5c3HNmBBbaK/O1r5iTiZ1Nkq9wz0Q4rHARmEMwjs=; b=ZV4INpRLy1HJvSqnZQNo274obB
+	Tv1UYFIF+utt376txc+kTHvAHNUemJVT+T+I6C6YhTAcXfKawz+2R0LjGRJFBOlBLHk6cqbGqjThj
+	Q0sRu9Of61UOodsDhmcZOOsEtEYzXya9U9/5LrXIwY5UnqPkW+tvpmrcrOft848BLtHn2NnfJD4Wf
+	HPxlTRniWQjrhwORZv95+vwiCHh4PKnkvDQxe2o5G/obOWVAQHjdSt96Ornt/JZwK8V6T7UBwgbaP
+	Z0oTfBzpL6JT79KJskQEmJT9q5lt0rKqA3FeSLKwwTX8EYE6DkWRdWVk/Uzrlz+FUqn10Pdq+pFBY
+	xfLuxmew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sWv4w-00000000WuV-1cEB;
-	Thu, 25 Jul 2024 09:48:06 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1sWvoQ-00000000dPr-0l79;
+	Thu, 25 Jul 2024 10:35:06 +0000
+Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sWv3E-00000000WGM-0elD;
-	Thu, 25 Jul 2024 09:46:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1721900778;
-	bh=eVcMZmPHGjsXvZ6jmWDo4wyYZgXlv8P69QSZ2boy/lQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=atMIL/HFPJjpKX/J5VYV8nEY+fHo4OA51lyGDwdc2yeeG2++oRR9WrTfdphMDnEwK
-	 uGWyjf1OXw5GA0srqpZ1OuQVYbLDs1+TWLw8SpMQUkdN9m5UMaJsMwlYtVyk7ln3rP
-	 HjwHB+GUd7RwycLbwWUzu8+CSAo0VL3mwziYv3fqTF6U3gfd5+sl4ppuD0pojmjPBt
-	 SGQrTrArTVyTk8WK7+LNRqoEiKoYGhaf8jHtdmYg0Bz1mroVmgRJGHjjvWH8nGTswM
-	 Ybv5lJMSX3XAxOp0xsXaQEYJCgAlCI99R15iMvDhLv0CAFuTi/hAHBcGS3LVUPCCn+
-	 +kgOQoQ32rKSw==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id DF3EA37811F4;
-	Thu, 25 Jul 2024 09:46:16 +0000 (UTC)
-Message-ID: <1e5dd38c-db1f-47e3-887b-0831a14bee54@collabora.com>
-Date: Thu, 25 Jul 2024 11:46:16 +0200
+	id 1sWvoM-00000000dOR-2vNE
+	for linux-mediatek@lists.infradead.org;
+	Thu, 25 Jul 2024 10:35:04 +0000
+Received: by mail-lf1-x132.google.com with SMTP id 2adb3069b0e04-52fc4388a64so1134183e87.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 25 Jul 2024 03:35:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1721903700; x=1722508500; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=oGl5c3HNmBBbaK/O1r5iTiZ1Nkq9wz0Q4rHARmEMwjs=;
+        b=QFXatFh6FL99ylqsC7kswtlJtcrn9Y5dWOO6KVd0MukMqmeLxj4S0iFVH+dFeECzzF
+         ZRENrQ2DOHkDBnvPG6xBj8MvsE1qfOqmULt56+IMk9CC1M1tpatT4YY9rDH+F9MyUR7H
+         83n/rCNGl/ngKEcEPZ5td2rDIxywxN/zaVYHU=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1721903700; x=1722508500;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=oGl5c3HNmBBbaK/O1r5iTiZ1Nkq9wz0Q4rHARmEMwjs=;
+        b=A9yGc/2kubYEUpOsjTpkoAeXtPh/a6ZhOjvy5m+WJHX6sL6xaviGaVcNa6/VUJ1plX
+         9+jS4kR02tfOS26hkR7QpN0UZCtsxECOCQ1lZ6O0xBeJkakSaXNYg7/Iq8rw5jRguf6o
+         1oc5jyHtqEf2Lcg7rdkHT9D/J/MEaSWShpWpitOjY3vyOeAHcgUMdH6fkpEKjzg5lXaR
+         8p4PSMzF7PGplpHrSBSngzU87tpwnTAYTjZr5YWI8G+F47eg99VfNWkRj2V7ZG23dREK
+         Voa6C1XHn/0HIZJfB2bf0SKs71lH1RAQDVuvKtJPg6pnEQ3P4BRhi8JWXki0Q+46KSyM
+         WSSw==
+X-Forwarded-Encrypted: i=1; AJvYcCWzHs2410qJSvrxFmNV+Mghzbk2SxuaBRRxXIRrmpfg25+mA6lPYb8la6TD31wd9R/UL36v9ToC8uTWexvNZs4e1JqY/rgI+ppqQodvyoz9w1si
+X-Gm-Message-State: AOJu0YziM8UNF9ldKTCkoYOutvpgjLnYLts3HyUB42T5ACN7nIcO3aM/
+	Jm5kHW7gPJk7Q3TvfpelFLyc9nJAzjj1AtPBSHGExVSAF6Jb9vzxR6KVylkOpM6mDgDTseu1jY5
+	hcOewoKlKU/YOis8wSTG+bJuXHsPG64JPjBs9
+X-Google-Smtp-Source: AGHT+IHkE66wc/ZgxWkQgDaikOYMpwK+iI3oiC+hn7N1tRYSraZ86sG3P9nD/p1ufKpAexRHxLjoxCDlxy5nnXtmG6M=
+X-Received: by 2002:a05:6512:2035:b0:52e:9ab9:da14 with SMTP id
+ 2adb3069b0e04-52fd60b6b10mr855792e87.31.1721903699732; Thu, 25 Jul 2024
+ 03:34:59 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 2/3] dt-bindings: arm: mediatek: mmsys: Add OF graph
- support for board path
-To: =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
- "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "wenst@chromium.org" <wenst@chromium.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "tzimmermann@suse.de" <tzimmermann@suse.de>,
- =?UTF-8?B?U2hhd24gU3VuZyAo5a6L5a2d6KyZKQ==?= <Shawn.Sung@mediatek.com>,
- "mripard@kernel.org" <mripard@kernel.org>,
- =?UTF-8?B?Sml0YW8gU2hpICjnn7PorrDmtpsp?= <jitao.shi@mediatek.com>,
- "daniel@ffwll.ch" <daniel@ffwll.ch>,
- "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
- "conor+dt@kernel.org" <conor+dt@kernel.org>,
- "maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
- "robh@kernel.org" <robh@kernel.org>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- "airlied@gmail.com" <airlied@gmail.com>,
- "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
- "kernel@collabora.com" <kernel@collabora.com>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- =?UTF-8?B?WXUtY2hhbmcgTGVlICjmnY7nprnnkosp?= <Yu-chang.Lee@mediatek.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "amergnat@baylibre.com" <amergnat@baylibre.com>
-References: <20240521075717.50330-1-angelogioacchino.delregno@collabora.com>
- <20240521075717.50330-3-angelogioacchino.delregno@collabora.com>
- <e7845300fa822413f6308cb6297222cde89c39e0.camel@mediatek.com>
- <0e0fe86c-92da-43f5-89d7-8084274a908a@collabora.com>
- <0f20214ab3a86f68669ad1392398b16228e699ee.camel@mediatek.com>
- <47f05439-815e-4ca1-b20d-8e427fef0a2a@collabora.com>
- <ee0209dac731b36ffe2ee20a2ff537ce7758b01f.camel@mediatek.com>
- <aa991aa4-7e9e-4cc6-b6ae-69539700691f@collabora.com>
- <fbb00e4cc81d8e1e47fac01c3c9146148747fa55.camel@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <fbb00e4cc81d8e1e47fac01c3c9146148747fa55.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+References: <20240722-usb-1129-probe-pci-clk-fix-v1-1-99ea804228b6@collabora.com>
+In-Reply-To: <20240722-usb-1129-probe-pci-clk-fix-v1-1-99ea804228b6@collabora.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Thu, 25 Jul 2024 18:34:48 +0800
+Message-ID: <CAGXv+5H_pxR18sHeqdWPy9_FARrnLwyyOHV4VXCn9p5OExseiQ@mail.gmail.com>
+Subject: Re: [PATCH] arm64: dts: mediatek: mt8195: Add missing clock for xhci1 controller
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, kernel@collabora.com, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240725_024620_487402_3D1099D8 
-X-CRM114-Status: GOOD (  40.48  )
+X-CRM114-CacheID: sfid-20240725_033503_408756_86EAA1DE 
+X-CRM114-Status: GOOD (  26.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,297 +90,89 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 05/07/24 11:28, CK Hu (胡俊光) ha scritto:
-> On Tue, 2024-06-11 at 08:54 +0200, AngeloGioacchino Del Regno wrote:
->> Il 11/06/24 08:48, CK Hu (胡俊光) ha scritto:
->>> On Mon, 2024-06-10 at 10:28 +0200, AngeloGioacchino Del Regno wrote:
->>>> Il 06/06/24 07:29, CK Hu (胡俊光) ha scritto:
->>>>> Hi, Angelo:
->>>>>
->>>>> On Wed, 2024-06-05 at 13:15 +0200, AngeloGioacchino Del Regno wrote:
->>>>>> Il 05/06/24 03:38, CK Hu (胡俊光) ha scritto:
->>>>>>> Hi, Angelo:
->>>>>>>
->>>>>>> On Tue, 2024-05-21 at 09:57 +0200, AngeloGioacchino Del Regno wrote:
->>>>>>>> Document OF graph on MMSYS/VDOSYS: this supports up to three DDP paths
->>>>>>>> per HW instance (so potentially up to six displays for multi-vdo SoCs).
->>>>>>>>
->>>>>>>> The MMSYS or VDOSYS is always the first component in the DDP pipeline,
->>>>>>>> so it only supports an output port with multiple endpoints - where each
->>>>>>>> endpoint defines the starting point for one of the (currently three)
->>>>>>>> possible hardware paths.
->>>>>>>>
->>>>>>>> Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
->>>>>>>> Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
->>>>>>>> Tested-by: Alexandre Mergnat <amergnat@baylibre.com>
->>>>>>>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->>>>>>>> ---
->>>>>>>>      .../bindings/arm/mediatek/mediatek,mmsys.yaml | 28 +++++++++++++++++++
->>>>>>>>      1 file changed, 28 insertions(+)
->>>>>>>>
->>>>>>>> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
->>>>>>>> index b3c6888c1457..0ef67ca4122b 100644
->>>>>>>> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
->>>>>>>> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
->>>>>>>> @@ -93,6 +93,34 @@ properties:
->>>>>>>>        '#reset-cells':
->>>>>>>>          const: 1
->>>>>>>>      
->>>>>>>> +  port:
->>>>>>>> +    $ref: /schemas/graph.yaml#/properties/port
->>>>>>>> +    description:
->>>>>>>> +      Output port node. This port connects the MMSYS/VDOSYS output to
->>>>>>>> +      the first component of one display pipeline, for example one of
->>>>>>>> +      the available OVL or RDMA blocks.
->>>>>>>> +      Some MediaTek SoCs support multiple display outputs per MMSYS.
->>>>>>>
->>>>>>> This patch looks good to me. Just want to share another information for you.
->>>>>>> Here is an example that mmsys/vdosys could point to the display interface node.
->>>>>>>
->>>>>>> vdosys0: syscon@1c01a000 {
->>>>>>>               mmsys-display-interface = <&dsi0>, <&dsi1>, <&dp_intf0>;
->>>>>>> };
->>>>>>>      
->>>>>>> vdosys1: syscon@1c100000 {
->>>>>>>               mmsys-display-interface = <&dp_intf1>;
->>>>>>> };
->>>>>>>
->>>>>>> There is no conflict that mmsys/vdosys point to first component of one display pipeline or point to display interface.
->>>>>>> Both could co-exist.
->>>>>>>
->>>>>>
->>>>>> Hey CK,
->>>>>>
->>>>>> yes, this could be an alternative to the OF graphs, and I'm sure that it'd work,
->>>>>> even though this kind of solution would still require partial hardcoding of the
->>>>>> display paths up until mmsys-display-interface (so, up until DSI0, or DSI1, etc).
->>>>>>
->>>>>> The problem with a solution like this is that, well, even though it would work,
->>>>>> even if we ignore the suboptimal partial hardcoding, OF graphs are something
->>>>>> generic, while the mmsys-display-interface would be a MediaTek specific/custom
->>>>>> property.
->>>>>>
->>>>>> In the end, reusing generic kernel apis/interfaces/etc is always preferred
->>>>>> compared to custom solutions, especially in this case, in which the generic
->>>>>> stuff is on-par (or actually, depending purely on personal opinions, superior).
->>>>>>
->>>>>> As for the two to co-exist, I'm not sure that this is actually needed, as the
->>>>>> OF graphs are already (at the end of the graph) pointing to the display interface.
->>>>>>
->>>>>> In any case, just as a reminder: if there will be any need to add any custom
->>>>>> MediaTek specific properties later, it's ok and we can do that at any time.
->>>>>
->>>>> The alternative solution is using OF graphs to point display interface and use MediaTek specific property to first component:
->>>>>
->>>>> vdosys0: syscon@1c01a000 {
->>>>>              ports {
->>>>>                       port@0 {
->>>>>                                 endpoint {
->>>>>                                          remote-endpoint = <&dsi0_endpoint>;
->>>>>                                 };
->>>>>                       };
->>>>>     
->>>>>                       port@1 {
->>>>>                                 endpoint {
->>>>>                                          remote-endpoint = <&dsi1_endpoint>;
->>>>>                                 };
->>>>>                       };
->>>>>     
->>>>>                       port@2 {
->>>>>                                 endpoint {
->>>>>                                          remote-endpoint = <&dp_intf0_endpoint>;
->>>>>                                 };
->>>>>                       };
->>>>>              };
->>>>>     
->>>>>              display-first-component = <&ovl0>;
->>>>> };
->>>>>
->>>>> And I agree to it's better to keep only OF graphs property, so it would be
->>>>>
->>>>> vdosys0: syscon@1c01a000 {
->>>>>              ports {
->>>>>                       port@0 {
->>>>>                                 endpoint {
->>>>>                                          remote-endpoint = <&dsi0_endpoint>;
->>>>>                      
->>>>>               };
->>>>>                       };
->>>>>     
->>>>>                       port@1 {
->>>>>                                 endpoint {
->>>>>                                          remote-endpoint = <&dsi1_endpoint>;
->>>>>                              
->>>>>       };
->>>>>                       };
->>>>>     
->>>>>                       port@2 {
->>>>>                                 endpoint {
->>>>>                                          remote-endpoint = <&dp_intf0_endpoint>;
->>>>>                                 }
->>>>> ;
->>>>>                       };
->>>>>              };
->>>>> };
->>>>>
->>>>> Maybe we could use OF graphs for both first component and display interface and drop using MediaTek specific property.
->>>>>
->>>>
->>>> We could, or we can simply walk through the OF Graph in the driver and get the
->>>> display interface like that, as it's board-specific ;-)
->>>>
->>>> ...but anyway, let's see that later: after getting this series upstreamed, I will
->>>> convert all MediaTek boards (including Chromebooks) to use the graphs instead, and
->>>> you'll see that, at least for the currently supported boards, there's no need for
->>>> any custom property.
->>>>
->>>> Also, setting the DSI0/1/dpintf endpoint to VDO0 is technically wrong, as that is
->>>> supposed to be the last one, and a graph is conceptually supposed to go from the
->>>> first to the last in sequence.
->>>>
->>>> *if* we will ever need (probably not) to get the VDO0 node to point directly to
->>>> the last node for whatever reason, the right way would be the first one you said,
->>>> so, mediatek,mmsys-display-interface = <&dsi0>, <&dsi1>, etc etc
->>>>
->>>> ...or mediatek,mmsys-possible-displays = < ... phandles >
->>>>
->>>> ...or anyway, many other solutions are possible - but again, I think this is not
->>>> the right time to think about that. Knowing that there are eventual solutions for
->>>> any need that might arise in the future is enough, IMO :-)
->>>
->>> This is one routing of display pipeline and the relation of VDOSYS0 with display pipeline.
->>>
->>>                  +-- VDOSYS0 ---------------------------------------------+
->>>                  |                                                        |
->>>                  |                                                        |
->>> DRAM -> IOMMU ---> OVL0 -> RDMA0 -> ... -> DSC0 -> MERGE0 -> DP_INTF0 ---->
->>>                  |                                                        |
->>>                  |                                                        |
->>>                  +--------------------------------------------------------+
->>>
->>> Video data is read by IOMMU from DRAM and send to display pipeline. Then video data travel through first component to display interface.
->>> VDOSYS0 manage each component in the pipeline include first component and display interface.
->>> The management include clock gating, reset, video data input/output routing.
->>> The relationship of VDOSYTS0 with first component is the same as the relationship of VDOSYS0 with display interface.
->>> If VDOSYS0 is not suitable using OF graph point to display interface, VDOSYS0 is also not suitable using OF graph point to first component.
->>
->> In the cases in which VDO goes directly to the display, it *is* possible to make it
->> point directly to the display.
->>
->> In the cases in which the pipeline is larger, VDO still points to the display, but
->> only later in the pipeline.
-> 
+Hi,
 
-Sorry I have just noticed your reply while looking for the status of this series.
+On Mon, Jul 22, 2024 at 11:27=E2=80=AFPM N=C3=ADcolas F. R. A. Prado
+<nfraprado@collabora.com> wrote:
+>
+> Currently if the xhci1 controller happens to probe before the pcie1
+> controller then it fails with the following errors:
+>
+> xhci-mtk 11290000.usb: clocks are not stable (0x1003d0f)
+> xhci-mtk 11290000.usb: can't setup: -110
+> xhci-mtk: probe of 11290000.usb failed with error -110
+>
+> The issue has been tracked down to the CLK_INFRA_AO_PCIE_P1_TL_96M
+> clock, although exactly why this pcie clock is needed for the usb
+> controller is still unknown. Add the clock to the xhci1 controller so it
+> always probes successfully and use a placeholder clock name for it.
+>
+> Reported-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com> #Kerne=
+lCI
+> Closes: https://lore.kernel.org/all/9fce9838-ef87-4d1b-b3df-63e1ddb0ec51@=
+notapiano/
+> Signed-off-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
 
-> I mean VDOSYS0 is not suitable 'using OF graph' to point to both display interface and first component.
+So I asked MediaTek about this, and it seems the correct thing to do is
+disable USB 3 on this host controller using the following snippet. The
+snippet is copy-pasted from our issue tracker and won't apply directly.
 
-I seriously don't get why you're saying that VDOSYS0 is not suitable for OF Graphs
-and I'm sorry but I suspect that the reason is that you don't understand the
-concept of what a graph defines, other than how can it be walked through by design.
-
-> So VDOSYS0 should use specific property to point to both display interface and first component.
-> Maybe
-> 
-> vdosys0 {
-> 	dma-device = <ovl0>;
-> 	display-interface = <&dsi0>, <&dsi1>, <&dp_intf0>;
-> };
-
-What you just wrote here adds custom properties for no reason - as in, there is
-no reason for vdosys0 to have two properties pointing one to the first component
-and one to all of the possible display interfaces for vdosys0.
-Provided a graph, that graph does express the OVL0 relationship with VDO0, and
-it does express the relationship between OVL0 and the final display interface
--> through expressing the relationship between OVL0 and all of the middle
-    components until reaching the actual display interface. <-
-
-Anyway, the proposed snippet either:
-  a. Invalidates the point of this series entirely, as in, graphs in this case are
-     implemented in order to stop hardcoding display paths for each board into the
-     driver; or
-  b. It is exactly the same as a graph, except with different properties and without
-     ports and endpoints.
-
-Moreover, there is no advantage in setting all of the possible display interfaces
-that are connectable to VDOSYS0 in a display-interface property:
-from a board-specific perspective, the board cares only about the interfaces that
-are *available to that board*, and not about any other.
-
-If interfaces X and Y are available to a board, that board will have a graph for X
-and a graph for Y, so they are both perfectly described with ... graphs!
-
-...and even though the VDO0 (or the SoC, whatever) supports interface Z, if said
-display interface is *not* present on the board, that interface will not be
-described by any graph, because it does not pertain to that board, it's unused and
-it's useless to describe (even though it would be possible to add it regardless of
-whether it's usable or not on that board).
-
-Last thing - I don't know if you have this doubt or not, but for the sake of making
-the stream of information complete: even dual-dsi displays can be described with a
-graph without any issue.
+This is also seen in mt8395-kontron-3-5-sbc-i1200.dts, on which xhci1
+is used only for USB 2.0 on an M.2 slot.
 
 
-Regards,
-Angelo
+ChenYu
 
-> 
-> Regards,
-> CK
-> 
->>
->>> The job of the component in display pipeline is to process the video data,
->>> but the job of VDOSYS0 is to manage (clock gating, reset, routing) the pipeline.
->>> If the OF graph is to show the video data travel path, VDOSYS0 should not exist in the OF graph.
->>>
->>> Regards,
->>> CK
->>>
->>>>
->>>> Cheers,
->>>> Angelo
->>>>
->>>>> Regards,
->>>>> CK
->>>>>
->>>>>>
->>>>>> Cheers!
->>>>>> Angelo
->>>>>>
->>>>>>> Regards,
->>>>>>> CK
->>>>>>>
->>>>>>>> +    properties:
->>>>>>>> +      endpoint@0:
->>>>>>>> +        $ref: /schemas/graph.yaml#/properties/endpoint
->>>>>>>> +        description: Output to the primary display pipeline
->>>>>>>> +
->>>>>>>> +      endpoint@1:
->>>>>>>> +        $ref: /schemas/graph.yaml#/properties/endpoint
->>>>>>>> +        description: Output to the secondary display pipeline
->>>>>>>> +
->>>>>>>> +      endpoint@2:
->>>>>>>> +        $ref: /schemas/graph.yaml#/properties/endpoint
->>>>>>>> +        description: Output to the tertiary display pipeline
->>>>>>>> +
->>>>>>>> +    anyOf:
->>>>>>>> +      - required:
->>>>>>>> +          - endpoint@0
->>>>>>>> +      - required:
->>>>>>>> +          - endpoint@1
->>>>>>>> +      - required:
->>>>>>>> +          - endpoint@2
->>>>>>>> +
->>>>>>>>      required:
->>>>>>>>        - compatible
->>>>>>>>        - reg
->>>>>>
->>>>>>
->>>>
->>>>
->>
->>
->>
+index 8b7307cdefc6..2dac9f706a58
+--- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+@@ -1447,6 +1447,7 @@
+                                      "xhci_ck";
+                        mediatek,syscon-wakeup =3D <&pericfg 0x400 104>;
+                        wakeup-source;
++                       mediatek,u3p-dis-msk =3D <0x1>;
+                        status =3D "disabled";
+                };
 
-
+> ---
+>  arch/arm64/boot/dts/mediatek/mt8195.dtsi | 10 ++++++++--
+>  1 file changed, 8 insertions(+), 2 deletions(-)
+>
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/d=
+ts/mediatek/mt8195.dtsi
+> index 2ee45752583c..cc5169871f1c 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> @@ -1453,9 +1453,15 @@ xhci1: usb@11290000 {
+>                                  <&topckgen CLK_TOP_SSUSB_P1_REF>,
+>                                  <&apmixedsys CLK_APMIXED_USB1PLL>,
+>                                  <&clk26m>,
+> -                                <&pericfg_ao CLK_PERI_AO_SSUSB_1P_XHCI>;
+> +                                <&pericfg_ao CLK_PERI_AO_SSUSB_1P_XHCI>,
+> +                                /*
+> +                                 * This clock is required due to a hardw=
+are
+> +                                 * bug. The 'frmcnt_ck' clock name is us=
+ed as a
+> +                                 * placeholder.
+> +                                 */
+> +                                <&infracfg_ao CLK_INFRA_AO_PCIE_P1_TL_96=
+M>;
+>                         clock-names =3D "sys_ck", "ref_ck", "mcu_ck", "dm=
+a_ck",
+> -                                     "xhci_ck";
+> +                                     "xhci_ck", "frmcnt_ck";
+>                         mediatek,syscon-wakeup =3D <&pericfg 0x400 104>;
+>                         wakeup-source;
+>                         status =3D "disabled";
+>
+> ---
+> base-commit: dee7f101b64219f512bb2f842227bd04c14efe30
+> change-id: 20240722-usb-1129-probe-pci-clk-fix-ef8646f46aac
+>
+> Best regards,
+> --
+> N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
+>
+>
 
