@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16EE0C3DA49
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Jul 2024 16:29:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EC60C3DA49
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Jul 2024 16:29:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QdaA0luoIKh+C/Z+TfOYMNVRIVT4Fe68cfJZP8FEYi8=; b=hvg4MFYZ/F/8kpaYiHv/w2mvXB
-	nbEejGkgDQmVT/UeWQ7hEzE4s11FzUsmU/ZonZtOGpfZZ4kcnnjMo9s6QK8yitXYliIfXVpc+6Lzy
-	TZTFliVZbJr22f+HcVoChnSfvprXrIhH5OhBqSSlOsr6F26VHd8T3RU2KVWM1eMzC6TV4dttWv8Qv
-	EQkxdHtIFt9EtT9yEJOWJdpskrhGVayMkT4/2rWjxdnyTmfqbOYWteW60wvj0n0YRdVdT8UE/NDq6
-	GB6RG7z0tvZyidJgCdZPnl+/c1ND787hCj0mnhcl2E7ftdErKwPiNUlh/KPgueHRMRuGYXae7RGhF
-	58UQdu8Q==;
+	bh=zmDStrVcMg1PJoFyIiqGeUOMxT7YpT3H+JFfCjMerBo=; b=LMaLvqR5V73N0f9PLDbqv0kniK
+	EkBxNjyfDIUSol2mcEC+P+klbgh8qXTY8xgJku/k8r4tD9/e8rFGfPwBNM355Km41Gu3ze1w+Z88Q
+	kVb2vh7q99Mfh8A9QOf+C+MYGe/VeweFxcS4CTXI6QwdnxsjrFwI4siT6dBqz12gcsPKwCddClZYg
+	zoH/YTGkbmVK68QYskCoYj6v+IlXGz5FiQC4gMycYTDE39AlfDN2t9LBzkBBLQpWhhveZHJB984Ru
+	v2ff0iOKr1/PYDu2p7Upq3877pdF+oQKZrS0bqiZvB5Lr0p7kr+bp1h+EzAZPekwFa1GGyiqOha3g
+	22N8jIiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sX1LM-00000001YJz-1mCc;
-	Thu, 25 Jul 2024 16:29:28 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sX1Li-00000001YQH-0c6f;
+	Thu, 25 Jul 2024 16:29:50 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sX1Kv-00000001YCs-3MMl;
-	Thu, 25 Jul 2024 16:29:03 +0000
+	id 1sX1L3-00000001YEQ-3y3z;
+	Thu, 25 Jul 2024 16:29:11 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 32B55611C6;
+	by sin.source.kernel.org (Postfix) with ESMTP id F1B84CE13CE;
+	Thu, 25 Jul 2024 16:29:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 52E65C4AF07;
 	Thu, 25 Jul 2024 16:29:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2470FC116B1;
-	Thu, 25 Jul 2024 16:28:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1721924940;
-	bh=rA8r5GE2DmreSp4mzMERlx21Ozsy7idcGW/81EsYAjo=;
+	s=k20201202; t=1721924946;
+	bh=6M9VEwQ0bCBbEukoo/UWmk3UpgsSaKDRg0kAVMformg=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=CyMfYCjVimpSdrI/6NFuvB4RwQK2i2ehRHRAwXgwmifhEwwaPtfPhy/RarehoVDih
-	 m6tAo/0CyllD9poiPv69XdsODkaF1PDmZDmf/OnerivmewQKHipRxc6zKsk3Td9B5w
-	 8ehAkthL7Q9qtEmDTqC9LbMPsjfvbgQP1QEa8O9yw70+ESjjLkkJH8Fvcu5CWQSi17
-	 7bRAJ0GvSEFQWNFLyTFn4g18zKZH6A2Cvnca6l7Z74b7MfyuOZLQ54E0u9Xf3Slh3C
-	 2Rj+NwGKR7pZxhKZIU1vYDxaKMPkz7FTP1hVdIuvfwpkgR1R88GVfsQQw/Y1UuUGs8
-	 OlC1KbzaQB5mA==
+	b=T8eboKwt63bDwOUKiZpVQxR38fh1QOLlVI2F7pPUT9mbxxqyWa4EvKAxGnXp3/CbV
+	 n/Scg7QCtvteXcE5w/IHr87pLi4oVXk/ngNMgo0Rn4fYa8bj81/xOVUcM0IT+DRUIM
+	 0nNQ/NJZ628zHQdrwnbQ8mbRYdMwG+EirQiVeVKitq/yRyPjpXoYPeDQhJ89JxLpUD
+	 Kl6l+btIgr5OZZ6WKKpslw1c9LKaB/IC+xrnw5IQM8cgW1zGqsf56I+FEqfVhhRls5
+	 QhGGBlKzaxr2E2O/wRrA45cbF6fCq+rT2KQhAjP80z/YOMguStbJz3vP7RbvfbBEsQ
+	 g9db7e7JW4xew==
 From: Lee Jones <lee@kernel.org>
 To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
  Rob Herring <robh+dt@kernel.org>, 
@@ -59,20 +59,20 @@ Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org, 
  dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org
-In-Reply-To: <20240226-audio-i350-v5-3-54827318b453@baylibre.com>
-References: <20240226-audio-i350-v5-0-54827318b453@baylibre.com>
- <20240226-audio-i350-v5-3-54827318b453@baylibre.com>
-Subject: Re: (subset) [PATCH RESEND v5 03/16] dt-bindings: mfd: mediatek:
- Add codec property for MT6357 PMIC
-Message-Id: <172192493586.1054722.4853871002402475676.b4-ty@kernel.org>
-Date: Thu, 25 Jul 2024 17:28:55 +0100
+In-Reply-To: <20240226-audio-i350-v7-3-6518d953a141@baylibre.com>
+References: <20240226-audio-i350-v7-0-6518d953a141@baylibre.com>
+ <20240226-audio-i350-v7-3-6518d953a141@baylibre.com>
+Subject: Re: (subset) [PATCH v7 03/16] dt-bindings: mfd: mediatek: Add
+ codec property for MT6357 PMIC
+Message-Id: <172192494107.1054722.15668367028139729556.b4-ty@kernel.org>
+Date: Thu, 25 Jul 2024 17:29:01 +0100
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-Mailer: b4 0.13.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240725_092901_898774_27909E1B 
-X-CRM114-Status: UNSURE (   9.74  )
+X-CRM114-CacheID: sfid-20240725_092910_196741_0208D165 
+X-CRM114-Status: UNSURE (   9.73  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -88,7 +88,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 14 Jun 2024 09:27:46 +0200, Alexandre Mergnat wrote:
+On Mon, 22 Jul 2024 08:53:32 +0200, Alexandre Mergnat wrote:
 > Add the audio codec sub-device. This sub-device is used to set the
 > optional voltage values according to the hardware.
 > The properties are:
