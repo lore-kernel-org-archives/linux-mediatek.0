@@ -4,69 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C45B7C3DA49
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Jul 2024 10:07:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D43CC3DA49
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Jul 2024 11:48:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=h/Cwh7ScSjvMKvlJMWCFSmzOna/mEmAvLPbWdtox1gE=; b=oX/0Xsr1NbJa5Zrz4lEO9yb+bZ
-	94+JqdofrIDb0WymBwiX/PyjvB4706uwLlwZeBC1WfJiaMh6LKl2M5OYyQSzz49eMQyW50Er5uwPA
-	5R9JhiyXjaRNzP/K4vnBWSggKnDA8l85dM1cUGV35kvr97xbVqc+wN2UlY0U2/VMCUj1/YFkn+2oS
-	SgqnJjQuU9GNGfOON0pqnG5mr84nuI5rjR6XarC3thhr4FUgPI/tPtg/dkMDJTsiqObLjPZtpp2Yu
-	+PF/ybUO3Pv6m+pQ3F34YDk4tTngF9ve0mSp/LhU8llrZlgJ4ggWqfuSGXLjymab4sMfE/4DEGbY+
-	CKNYFPqQ==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=GXIIj0sazyuURoWnddMgP7HEAJMH/dRR4SOce0Ajk7w=; b=CnRcEdnGn1Elj4BT/0sljyLtwt
+	uFg3EYgeBMLsbmNAnw7EG7XYdubl4x17eHw1d1SpIN7KX8dNjpFfTbuPGic8D8hN5pUq8PMFLfCxF
+	9nFI45doUAllkf6VvtPRv0BIfTNf7vMZyNt2M7N2EfohqJOjuLWR8jwxN6hotBRAFqruL2tgqXupz
+	RV/q+PkCIvXKLvuBgEXogAG03INy7WcBaqPI9SftC1uQHxSdDo+idp1Arl5W+C3avdRLA1Yl4v+Lv
+	ZyexQpDkn/O1sdcVkew6WX6xS8Dhp7c5inrtCg2sAC7OFrgnO55e7YsI8ZRCkCVRqA1515LE1/qeH
+	/Ca/xoew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sXHrH-00000003WkK-0S8l;
-	Fri, 26 Jul 2024 10:07:31 +0000
+	id 1sXJQS-00000003lVM-2U3s;
+	Fri, 26 Jul 2024 11:47:56 +0000
 Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sXHrD-00000003WjW-3z4M;
-	Fri, 26 Jul 2024 10:07:29 +0000
+	id 1sXJQ2-00000003lPb-2QMF;
+	Fri, 26 Jul 2024 11:47:32 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1721988446;
-	bh=d6RAV3x+NFkqdpVb86ATPZjPs7X0Voj8XsmWJrljTJQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=2qaNsi32srLc1IjeuNAQNW4FjclHKcJH4eubhhwDHttyzpfCRX3fuKY8K1JZA4wRg
-	 qogbBjsOP/IcSAc+mhEhRKEq5yPYhI5Z3DquDZEvgK/meNnW0FWCtEfoSPJtFOXk/6
-	 h/FT9qKMqz4eugPJB7gNJcRPdk06dnUPwMrD0YpFH/v/H+Qq+n/oemyeRGS0O/ic71
-	 Ws1DmQ0emOCjrewj54u9q7/mOz+4QOBd3uUzpeSZAJq8a3pesHJxh5TyK4Q4k6VG2h
-	 B1ydv39K73z/eS+wlRe/+I8/uSBemdxr2Hyw1Qdo4FwO2OM3ircAJ7aeb3LsRj7KDY
-	 Rgj+XcRkrX8BQ==
-Received: from [100.66.96.193] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	s=mail; t=1721994445;
+	bh=xHeBzfe88Lxqzz7XBGzmzvrhqcFCgBdJRHwCZQajHPg=;
+	h=From:To:Cc:Subject:Date:From;
+	b=l3stOCYFhwCvRGjQIb69osB2bZL97PdI3TEBBqCbIR1mfhIHcuU/m/ZJ+ueomJlmO
+	 /znu1Kks2QmvcekDsPpICDqc0FshAZo4cN2Lw9jh+elRKAksu0+8Lf+/0zdPAKgt9b
+	 bZ1Et6skX42DfAc8PQVwczEpcsuHnAvg2XwkqswgXMVnXtS3osQHFNzBU0OOp18C40
+	 HHe+HfTIAZwrhLAdN2Ctf5YP0DKvJdFUSEIF7D7PAdo2mWjLPAHd6TlrHsVvQE7yvf
+	 7ErnTIcyiHQfg+aLQZ1uK7plo7uHZuBdK2Pbg26xwCDds26yaWGCG6DNB3QuQq0hLL
+	 D7WIt6PEJPi1A==
+Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: vignesh)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 696E03780BDB;
-	Fri, 26 Jul 2024 10:07:23 +0000 (UTC)
-Message-ID: <27bd3884-51d8-454f-9ddc-6b5765fd744b@collabora.com>
-Date: Fri, 26 Jul 2024 15:37:20 +0530
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 1C58537804C6;
+	Fri, 26 Jul 2024 11:47:25 +0000 (UTC)
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: broonie@kernel.org
+Cc: matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	linux-spi@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	kernel@collabora.com
+Subject: [PATCH] spi: spi-mt65xx: Use threaded interrupt for non-SPIMEM transfer
+Date: Fri, 26 Jul 2024 13:47:21 +0200
+Message-ID: <20240726114721.142196-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 5/5] drm/ci: rockchip: add tests for rockchip display
- driver
-Content-Language: en-US
-To: Daniel Stone <daniel@fooishbar.org>
-Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com,
- helen.koike@collabora.com, airlied@gmail.com, daniel@ffwll.ch,
- guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com,
- deborah.brouwer@collabora.com, robdclark@gmail.com,
- linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-amlogic@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20240724101015.523535-1-vignesh.raman@collabora.com>
- <20240724101015.523535-6-vignesh.raman@collabora.com>
- <CAPj87rMJUSRJ9G1uv-w5a_4qqS0R1dDaUEofoJf=ehbMszdfOw@mail.gmail.com>
-From: Vignesh Raman <vignesh.raman@collabora.com>
-In-Reply-To: <CAPj87rMJUSRJ9G1uv-w5a_4qqS0R1dDaUEofoJf=ehbMszdfOw@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240726_030728_159167_352D7C6B 
-X-CRM114-Status: GOOD (  25.08  )
+X-CRM114-CacheID: sfid-20240726_044730_793040_127D1F5D 
+X-CRM114-Status: GOOD (  13.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,102 +75,93 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Daniel,
+In order to avoid blocking for an excessive amount of time, eventually
+impacting on system responsiveness, interrupt handlers should finish
+executing in as little time as possible.
 
-On 26/07/24 13:06, Daniel Stone wrote:
-> Hi Vignesh,
-> 
-> On Wed, 24 Jul 2024 at 11:12, Vignesh Raman <vignesh.raman@collabora.com> wrote:
->> For rockchip rk3288 and rk3399, the display driver is rockchip
->> and gpu driver is panfrost. Currently, in drm-ci for rockchip
->> rk3288 and rk3399, only the gpu driver is tested. Refactor
->> the existing rockchip jobs to test both display and gpu driver
->> and update xfails.
-> 
-> Could you also please add RK3588 in a new series (no need to hold this
-> one up), with Rockchip KMS and Panthor GPU? You can use the
-> rk3588-rock5-b device type in LAVA.
+Use threaded interrupt and move the SPI transfer handling (both
+CPU and DMA) for the non-spimem case to an interrupt thread instead.
 
-Sure. I Will add and send it in a new series.
+For SPI-MEM (IPM) controllers, handling is kept in the blocking
+interrupt as it simply consists in signalling completion.
 
-> 
->> diff --git a/drivers/gpu/drm/ci/xfails/mediatek-mt8183-fails.txt b/drivers/gpu/drm/ci/xfails/mediatek-mt8183-fails.txt
->> index cf3a747f7cec..826cca5efbff 100644
->> --- a/drivers/gpu/drm/ci/xfails/mediatek-mt8183-fails.txt
->> +++ b/drivers/gpu/drm/ci/xfails/mediatek-mt8183-fails.txt
-> 
-> This is in the wrong patch?
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/spi/spi-mt65xx.c | 40 +++++++++++++++++++++++++---------------
+ 1 file changed, 25 insertions(+), 15 deletions(-)
 
-Yes, this needs to be dropped. Thanks for pointing that out.
+diff --git a/drivers/spi/spi-mt65xx.c b/drivers/spi/spi-mt65xx.c
+index 36c2f52cd6b8..dfee244fc317 100644
+--- a/drivers/spi/spi-mt65xx.c
++++ b/drivers/spi/spi-mt65xx.c
+@@ -743,25 +743,13 @@ static int mtk_spi_setup(struct spi_device *spi)
+ 	return 0;
+ }
+ 
+-static irqreturn_t mtk_spi_interrupt(int irq, void *dev_id)
++static irqreturn_t mtk_spi_interrupt_thread(int irq, void *dev_id)
+ {
+ 	u32 cmd, reg_val, cnt, remainder, len;
+ 	struct spi_controller *host = dev_id;
+ 	struct mtk_spi *mdata = spi_controller_get_devdata(host);
+ 	struct spi_transfer *xfer = mdata->cur_transfer;
+ 
+-	reg_val = readl(mdata->base + SPI_STATUS0_REG);
+-	if (reg_val & MTK_SPI_PAUSE_INT_STATUS)
+-		mdata->state = MTK_SPI_PAUSED;
+-	else
+-		mdata->state = MTK_SPI_IDLE;
+-
+-	/* SPI-MEM ops */
+-	if (mdata->use_spimem) {
+-		complete(&mdata->spimem_done);
+-		return IRQ_HANDLED;
+-	}
+-
+ 	if (!host->can_dma(host, NULL, xfer)) {
+ 		if (xfer->rx_buf) {
+ 			cnt = mdata->xfer_len / 4;
+@@ -845,6 +833,27 @@ static irqreturn_t mtk_spi_interrupt(int irq, void *dev_id)
+ 	return IRQ_HANDLED;
+ }
+ 
++static irqreturn_t mtk_spi_interrupt(int irq, void *dev_id)
++{
++	struct spi_controller *host = dev_id;
++	struct mtk_spi *mdata = spi_controller_get_devdata(host);
++	u32 reg_val;
++
++	reg_val = readl(mdata->base + SPI_STATUS0_REG);
++	if (reg_val & MTK_SPI_PAUSE_INT_STATUS)
++		mdata->state = MTK_SPI_PAUSED;
++	else
++		mdata->state = MTK_SPI_IDLE;
++
++	/* SPI-MEM ops */
++	if (mdata->use_spimem) {
++		complete(&mdata->spimem_done);
++		return IRQ_HANDLED;
++	}
++
++	return IRQ_WAKE_THREAD;
++}
++
+ static int mtk_spi_mem_adjust_op_size(struct spi_mem *mem,
+ 				      struct spi_mem_op *op)
+ {
+@@ -1255,8 +1264,9 @@ static int mtk_spi_probe(struct platform_device *pdev)
+ 		dev_notice(dev, "SPI dma_set_mask(%d) failed, ret:%d\n",
+ 			   addr_bits, ret);
+ 
+-	ret = devm_request_irq(dev, irq, mtk_spi_interrupt,
+-			       IRQF_TRIGGER_NONE, dev_name(dev), host);
++	ret = devm_request_threaded_irq(dev, irq, mtk_spi_interrupt,
++					mtk_spi_interrupt_thread,
++					IRQF_TRIGGER_NONE, dev_name(dev), host);
+ 	if (ret)
+ 		return dev_err_probe(dev, ret, "failed to register irq\n");
+ 
+-- 
+2.45.2
 
-> 
->> +++ b/drivers/gpu/drm/ci/xfails/panfrost-rk3288-skips.txt
->> @@ -0,0 +1,71 @@
->> +# Suspend to RAM seems to be broken on this machine
->> +.*suspend.*
->> +
->> +# Too unstable, machine ends up hanging after lots of Oopses
->> +kms_cursor_legacy.*
->> +
->> +# Started hanging the machine on Linux 5.19-rc2:
->> +#
->> +# [IGT] kms_plane_lowres: executing
->> +# [IGT] kms_plane_lowres: starting subtest pipe-F-tiling-y
->> +# [IGT] kms_plane_lowres: exiting, ret=77
-> 
-> ret 77 is a pure skip here, as you'd expect from a pipe F test,
-> because Rockchip doesn't have six CRTCs.
-> 
->> +# Console: switching to colour frame buffer device 170x48
->> +# rockchip-drm display-subsystem: [drm] *ERROR* flip_done timed out
->> +# rockchip-drm display-subsystem: [drm] *ERROR* [CRTC:35:crtc-0] commit wait timed out
->> +# BUG: spinlock bad magic on CPU#3, kms_plane_lowre/482
->> +# 8<--- cut here ---
->> +# Unable to handle kernel paging request at virtual address 7812078e
->> +# [7812078e] *pgd=00000000
->> +# Internal error: Oops: 5 [#1] SMP ARM
->> +# Modules linked in:
->> +# CPU: 3 PID: 482 Comm: kms_plane_lowre Tainted: G        W         5.19.0-rc2-323596-g00535de92171 #1
->> +# Hardware name: Rockchip (Device Tree)
->> +# Process kms_plane_lowre (pid: 482, stack limit = 0x1193ac2b)
->> +#  spin_dump from do_raw_spin_lock+0xa4/0xe8
->> +#  do_raw_spin_lock from wait_for_completion_timeout+0x2c/0x120
->> +#  wait_for_completion_timeout from drm_crtc_commit_wait+0x18/0x7c
->> +#  drm_crtc_commit_wait from drm_atomic_helper_wait_for_dependencies+0x44/0x168
->> +#  drm_atomic_helper_wait_for_dependencies from commit_tail+0x34/0x180
->> +#  commit_tail from drm_atomic_helper_commit+0x164/0x18c
->> +#  drm_atomic_helper_commit from drm_atomic_commit+0xac/0xe4
->> +#  drm_atomic_commit from drm_client_modeset_commit_atomic+0x23c/0x284
->> +#  drm_client_modeset_commit_atomic from drm_client_modeset_commit_locked+0x60/0x1c8
->> +#  drm_client_modeset_commit_locked from drm_client_modeset_commit+0x24/0x40
->> +#  drm_client_modeset_commit from drm_fbdev_client_restore+0x58/0x94
->> +#  drm_fbdev_client_restore from drm_client_dev_restore+0x70/0xbc
->> +#  drm_client_dev_restore from drm_release+0xf4/0x114
->> +#  drm_release from __fput+0x74/0x240
->> +#  __fput from task_work_run+0x84/0xb4
->> +#  task_work_run from do_exit+0x34c/0xa20
->> +#  do_exit from do_group_exit+0x34/0x98
-> 
-> So this is pointing to the error being that, when a client exits, the
-> kernel attempts to restore fbdev and then it's broken. Pinning
-> pipe-F-tiling-y as specifically responsible for this seems quite odd
-> to me, given that it doesn't do anything but only skips. Is that maybe
-> just because it's the last test running in the kms_plane_lowres group
-> before it exits? Or does it occur more wildly on other test groups?
-
-This was skipped for Linux 5.19-rc2. I will remove from skips and will 
-check the behavior.
-
-> 
->> +tools_test@tools_test,Fail
-> 
-> I keep noticing this failing everywhere. What's up with that? Have you
-> reported these logs to the igt list?
-
-I will check this issue and report to igt developers.
-
-Thanks.
-
-Regards,
-Vignesh
 
