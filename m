@@ -4,63 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D43CC3DA49
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Jul 2024 11:48:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66028C3DA49
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Jul 2024 12:10:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=GXIIj0sazyuURoWnddMgP7HEAJMH/dRR4SOce0Ajk7w=; b=CnRcEdnGn1Elj4BT/0sljyLtwt
-	uFg3EYgeBMLsbmNAnw7EG7XYdubl4x17eHw1d1SpIN7KX8dNjpFfTbuPGic8D8hN5pUq8PMFLfCxF
-	9nFI45doUAllkf6VvtPRv0BIfTNf7vMZyNt2M7N2EfohqJOjuLWR8jwxN6hotBRAFqruL2tgqXupz
-	RV/q+PkCIvXKLvuBgEXogAG03INy7WcBaqPI9SftC1uQHxSdDo+idp1Arl5W+C3avdRLA1Yl4v+Lv
-	ZyexQpDkn/O1sdcVkew6WX6xS8Dhp7c5inrtCg2sAC7OFrgnO55e7YsI8ZRCkCVRqA1515LE1/qeH
-	/Ca/xoew==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=PlMRijtqCm0MZ6n79QOvrnKsNAELqQTM+5n/uBS9kZA=; b=QcCujwJPWtVlrLdiCA/HB+zD79
+	xNmEmLqiS5PJlCHCzJ6J2WLxeup0rCRcGYpgd2FC77Z//piK5G1MXM2UdkpDjcrHoAsEY+h+lBsWi
+	au6ZTEZu61U0Oyk2GUM6H4BZgARiwLJFO7I194mWB+YHgyaHI9f4jwmjNvZ1G0kmrCMKkoIYjnZWi
+	ONAMzrbr3OloKlDQmrgt8bN6EZwOsbJ+9/fmLiT/ovMweusEzGYZFf7IakPlt7guvKTEuN2GPts8w
+	sLxsKq4WKdAgnsSbaawqCmDHT/6TLHA4cIc7GzLoOq9f0WfYh2r6AHxzukMeRHWJASAIgXsK5oEDx
+	9981O0vQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sXJQS-00000003lVM-2U3s;
-	Fri, 26 Jul 2024 11:47:56 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1sXJmM-00000003oc7-3Owt;
+	Fri, 26 Jul 2024 12:10:34 +0000
+Received: from galois.linutronix.de ([193.142.43.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sXJQ2-00000003lPb-2QMF;
-	Fri, 26 Jul 2024 11:47:32 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1721994445;
-	bh=xHeBzfe88Lxqzz7XBGzmzvrhqcFCgBdJRHwCZQajHPg=;
-	h=From:To:Cc:Subject:Date:From;
-	b=l3stOCYFhwCvRGjQIb69osB2bZL97PdI3TEBBqCbIR1mfhIHcuU/m/ZJ+ueomJlmO
-	 /znu1Kks2QmvcekDsPpICDqc0FshAZo4cN2Lw9jh+elRKAksu0+8Lf+/0zdPAKgt9b
-	 bZ1Et6skX42DfAc8PQVwczEpcsuHnAvg2XwkqswgXMVnXtS3osQHFNzBU0OOp18C40
-	 HHe+HfTIAZwrhLAdN2Ctf5YP0DKvJdFUSEIF7D7PAdo2mWjLPAHd6TlrHsVvQE7yvf
-	 7ErnTIcyiHQfg+aLQZ1uK7plo7uHZuBdK2Pbg26xwCDds26yaWGCG6DNB3QuQq0hLL
-	 D7WIt6PEJPi1A==
-Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 1C58537804C6;
-	Fri, 26 Jul 2024 11:47:25 +0000 (UTC)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: broonie@kernel.org
-Cc: matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	linux-spi@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	kernel@collabora.com
-Subject: [PATCH] spi: spi-mt65xx: Use threaded interrupt for non-SPIMEM transfer
-Date: Fri, 26 Jul 2024 13:47:21 +0200
-Message-ID: <20240726114721.142196-1-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.45.2
+	id 1sXJlv-00000003oXO-1qQs;
+	Fri, 26 Jul 2024 12:10:10 +0000
+From: Thomas Gleixner <tglx@linutronix.de>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
+	s=2020; t=1721995805;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=PlMRijtqCm0MZ6n79QOvrnKsNAELqQTM+5n/uBS9kZA=;
+	b=hMJHi9U+xbjwzcO3srL9iaOPH7Y2McTHyRrgfTZs3Wndxtaogpvsk4tCVs40q5um/oJLQ3
+	O6+2510Rm46HWKKYfW970fbKc6AXzyhTMofsK2vFdM7p1oRXAe7aix1HFoNLovkn3M5XE3
+	gLxe1ZkWXMZYWzbLpiVG6ISrcWYUEYf6EobQXEzO9+VTZBuJiG/aGdzcXpTTGPJ/MDtDjV
+	Sl4KRlUETXh9R6dt1hwlt+HeJ3KgQ2vcFHEA0+51fbVG72wkyR/kIfR3BU9xcI8fK457y+
+	TTOCJ9KMRj7tKsFsPpMU+2IqUEhxCZneLI1atXLNYVTX9WxNGbwMRbGJ1CcaVg==
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
+	s=2020e; t=1721995805;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=PlMRijtqCm0MZ6n79QOvrnKsNAELqQTM+5n/uBS9kZA=;
+	b=GUqgh+WZUy9cUP3jH6HAQmwLB6N/rSRN+ld5YbX5w3t7JPVliPs2jdOAEv/aETNlXUk4lg
+	EueW8xtjf15dmGCA==
+To: Bjorn Helgaas <helgaas@kernel.org>, Marek Vasut
+ <marek.vasut+renesas@mailbox.org>
+Cc: linux-pci@vger.kernel.org, Krzysztof =?utf-8?Q?Wilczy=C5=84ski?=
+ <kw@linux.com>, Pali
+ =?utf-8?Q?Roh=C3=A1r?= <pali@kernel.org>, Uwe =?utf-8?Q?Kleine-K=C3=B6nig?=
+ <u.kleine-koenig@pengutronix.de>, Aleksandr Mishin <amishin@t-argos.ru>,
+ Anna-Maria Behnsen <anna-maria@linutronix.de>, Anup Patel
+ <apatel@ventanamicro.com>, Bjorn Helgaas <bhelgaas@google.com>, Broadcom
+ internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Daire
+ McNamara <daire.mcnamara@microchip.com>, Damien Le Moal
+ <dlemoal@kernel.org>, Florian Fainelli <florian.fainelli@broadcom.com>,
+ Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, Jianjun Wang
+ <jianjun.wang@mediatek.com>, Jim Quinlan <jim2101024@gmail.com>, Jingoo
+ Han <jingoohan1@gmail.com>, Jisheng Zhang <Jisheng.Zhang@synaptics.com>,
+ Jon Hunter <jonathanh@nvidia.com>, Jonathan Derrick
+ <jonathan.derrick@linux.dev>, Joyce Ooi <joyce.ooi@intel.com>, Karthikeyan
+ Mitran <m.karthikeyan@mobiveil.co.in>, Kishon Vijay Abraham I
+ <kishon@kernel.org>, Koichiro Den <den@valinux.co.jp>, Lorenzo Pieralisi
+ <lpieralisi@kernel.org>, Manivannan Sadhasivam
+ <manivannan.sadhasivam@linaro.org>, Marc Zyngier <maz@kernel.org>, Michal
+ Simek <michal.simek@amd.com>, Nicolas Saenz Julienne <nsaenz@kernel.org>,
+ Niklas Cassel <cassel@kernel.org>, Nipun Gupta <nipun.gupta@amd.com>,
+ Nirmal Patel <nirmal.patel@linux.intel.com>, Rob Herring
+ <robh@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Shivamurthy Shastri
+ <shivamurthy.shastri@linutronix.de>, Siddharth Vadapalli
+ <s-vadapalli@ti.com>, Thierry Reding <thierry.reding@gmail.com>, Thomas
+ Petazzoni <thomas.petazzoni@bootlin.com>, Yoshihiro Shimoda
+ <yoshihiro.shimoda.uh@renesas.com>, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
+ linux-rpi-kernel@lists.infradead.org, linux-tegra@vger.kernel.org
+Subject: Re: [PATCH v4 00/15] genirq/msi: Silence set affinity failed warning
+In-Reply-To: <20240724154314.GA800620@bhelgaas>
+References: <20240724154314.GA800620@bhelgaas>
+Date: Fri, 26 Jul 2024 14:10:04 +0200
+Message-ID: <87wml8uzfn.ffs@tglx>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240726_044730_793040_127D1F5D 
-X-CRM114-Status: GOOD (  13.68  )
+X-CRM114-CacheID: sfid-20240726_051007_643459_6990F965 
+X-CRM114-Status: UNSURE (   4.15  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,93 +101,10 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In order to avoid blocking for an excessive amount of time, eventually
-impacting on system responsiveness, interrupt handlers should finish
-executing in as little time as possible.
+On Wed, Jul 24 2024 at 10:43, Bjorn Helgaas wrote:
+> Happy to apply this series via the PCI tree given an ack from Thomas.
 
-Use threaded interrupt and move the SPI transfer handling (both
-CPU and DMA) for the non-spimem case to an interrupt thread instead.
+Here you go:
 
-For SPI-MEM (IPM) controllers, handling is kept in the blocking
-interrupt as it simply consists in signalling completion.
-
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/spi/spi-mt65xx.c | 40 +++++++++++++++++++++++++---------------
- 1 file changed, 25 insertions(+), 15 deletions(-)
-
-diff --git a/drivers/spi/spi-mt65xx.c b/drivers/spi/spi-mt65xx.c
-index 36c2f52cd6b8..dfee244fc317 100644
---- a/drivers/spi/spi-mt65xx.c
-+++ b/drivers/spi/spi-mt65xx.c
-@@ -743,25 +743,13 @@ static int mtk_spi_setup(struct spi_device *spi)
- 	return 0;
- }
- 
--static irqreturn_t mtk_spi_interrupt(int irq, void *dev_id)
-+static irqreturn_t mtk_spi_interrupt_thread(int irq, void *dev_id)
- {
- 	u32 cmd, reg_val, cnt, remainder, len;
- 	struct spi_controller *host = dev_id;
- 	struct mtk_spi *mdata = spi_controller_get_devdata(host);
- 	struct spi_transfer *xfer = mdata->cur_transfer;
- 
--	reg_val = readl(mdata->base + SPI_STATUS0_REG);
--	if (reg_val & MTK_SPI_PAUSE_INT_STATUS)
--		mdata->state = MTK_SPI_PAUSED;
--	else
--		mdata->state = MTK_SPI_IDLE;
--
--	/* SPI-MEM ops */
--	if (mdata->use_spimem) {
--		complete(&mdata->spimem_done);
--		return IRQ_HANDLED;
--	}
--
- 	if (!host->can_dma(host, NULL, xfer)) {
- 		if (xfer->rx_buf) {
- 			cnt = mdata->xfer_len / 4;
-@@ -845,6 +833,27 @@ static irqreturn_t mtk_spi_interrupt(int irq, void *dev_id)
- 	return IRQ_HANDLED;
- }
- 
-+static irqreturn_t mtk_spi_interrupt(int irq, void *dev_id)
-+{
-+	struct spi_controller *host = dev_id;
-+	struct mtk_spi *mdata = spi_controller_get_devdata(host);
-+	u32 reg_val;
-+
-+	reg_val = readl(mdata->base + SPI_STATUS0_REG);
-+	if (reg_val & MTK_SPI_PAUSE_INT_STATUS)
-+		mdata->state = MTK_SPI_PAUSED;
-+	else
-+		mdata->state = MTK_SPI_IDLE;
-+
-+	/* SPI-MEM ops */
-+	if (mdata->use_spimem) {
-+		complete(&mdata->spimem_done);
-+		return IRQ_HANDLED;
-+	}
-+
-+	return IRQ_WAKE_THREAD;
-+}
-+
- static int mtk_spi_mem_adjust_op_size(struct spi_mem *mem,
- 				      struct spi_mem_op *op)
- {
-@@ -1255,8 +1264,9 @@ static int mtk_spi_probe(struct platform_device *pdev)
- 		dev_notice(dev, "SPI dma_set_mask(%d) failed, ret:%d\n",
- 			   addr_bits, ret);
- 
--	ret = devm_request_irq(dev, irq, mtk_spi_interrupt,
--			       IRQF_TRIGGER_NONE, dev_name(dev), host);
-+	ret = devm_request_threaded_irq(dev, irq, mtk_spi_interrupt,
-+					mtk_spi_interrupt_thread,
-+					IRQF_TRIGGER_NONE, dev_name(dev), host);
- 	if (ret)
- 		return dev_err_probe(dev, ret, "failed to register irq\n");
- 
--- 
-2.45.2
-
+Acked-by: Thomas Gleixner <tglx@linutronix.de>
 
