@@ -4,89 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66028C3DA49
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Jul 2024 12:10:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A11A0C3DA49
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Jul 2024 12:12:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PlMRijtqCm0MZ6n79QOvrnKsNAELqQTM+5n/uBS9kZA=; b=QcCujwJPWtVlrLdiCA/HB+zD79
-	xNmEmLqiS5PJlCHCzJ6J2WLxeup0rCRcGYpgd2FC77Z//piK5G1MXM2UdkpDjcrHoAsEY+h+lBsWi
-	au6ZTEZu61U0Oyk2GUM6H4BZgARiwLJFO7I194mWB+YHgyaHI9f4jwmjNvZ1G0kmrCMKkoIYjnZWi
-	ONAMzrbr3OloKlDQmrgt8bN6EZwOsbJ+9/fmLiT/ovMweusEzGYZFf7IakPlt7guvKTEuN2GPts8w
-	sLxsKq4WKdAgnsSbaawqCmDHT/6TLHA4cIc7GzLoOq9f0WfYh2r6AHxzukMeRHWJASAIgXsK5oEDx
-	9981O0vQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=JQD2q8RvWQuzXzosr+bWqo76imbRZ5nybrBnsTkCjsI=; b=pdfNOgANuj/CgpyUQ1IKAZEKut
+	zOdN76V1HHwEwTzhtj5roydT/91pG8Kwv+uN7HAgl64AvTX47BlDTRM1TqjsXLEj01CiHghxJluY/
+	4CD+3c3pcXpAFPL+YKRhJhMsufcWslOIKBwer1TtElDclyYGKy7Ezk7adyuKvobriFxddqHRPWFdn
+	Y/25pWUMxx27F55o1zaD7hs3Z71C40enU0UjKS7J7rG3Dk+coLiin76Ew8CziL8ZWtUiU1eG5BOsy
+	1fUy5ZFETKWsOIzexTg/hQIK/6wrw29KmPTmwWcfIo7yts4oluWY9Sqz6HXPOHZzZly21AFe2Higx
+	rVU9IbeA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sXJmM-00000003oc7-3Owt;
-	Fri, 26 Jul 2024 12:10:34 +0000
-Received: from galois.linutronix.de ([193.142.43.55])
+	id 1sXJo0-00000003oqz-1Ngn;
+	Fri, 26 Jul 2024 12:12:16 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sXJlv-00000003oXO-1qQs;
-	Fri, 26 Jul 2024 12:10:10 +0000
-From: Thomas Gleixner <tglx@linutronix.de>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
-	s=2020; t=1721995805;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=PlMRijtqCm0MZ6n79QOvrnKsNAELqQTM+5n/uBS9kZA=;
-	b=hMJHi9U+xbjwzcO3srL9iaOPH7Y2McTHyRrgfTZs3Wndxtaogpvsk4tCVs40q5um/oJLQ3
-	O6+2510Rm46HWKKYfW970fbKc6AXzyhTMofsK2vFdM7p1oRXAe7aix1HFoNLovkn3M5XE3
-	gLxe1ZkWXMZYWzbLpiVG6ISrcWYUEYf6EobQXEzO9+VTZBuJiG/aGdzcXpTTGPJ/MDtDjV
-	Sl4KRlUETXh9R6dt1hwlt+HeJ3KgQ2vcFHEA0+51fbVG72wkyR/kIfR3BU9xcI8fK457y+
-	TTOCJ9KMRj7tKsFsPpMU+2IqUEhxCZneLI1atXLNYVTX9WxNGbwMRbGJ1CcaVg==
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
-	s=2020e; t=1721995805;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=PlMRijtqCm0MZ6n79QOvrnKsNAELqQTM+5n/uBS9kZA=;
-	b=GUqgh+WZUy9cUP3jH6HAQmwLB6N/rSRN+ld5YbX5w3t7JPVliPs2jdOAEv/aETNlXUk4lg
-	EueW8xtjf15dmGCA==
-To: Bjorn Helgaas <helgaas@kernel.org>, Marek Vasut
- <marek.vasut+renesas@mailbox.org>
-Cc: linux-pci@vger.kernel.org, Krzysztof =?utf-8?Q?Wilczy=C5=84ski?=
- <kw@linux.com>, Pali
- =?utf-8?Q?Roh=C3=A1r?= <pali@kernel.org>, Uwe =?utf-8?Q?Kleine-K=C3=B6nig?=
- <u.kleine-koenig@pengutronix.de>, Aleksandr Mishin <amishin@t-argos.ru>,
- Anna-Maria Behnsen <anna-maria@linutronix.de>, Anup Patel
- <apatel@ventanamicro.com>, Bjorn Helgaas <bhelgaas@google.com>, Broadcom
- internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Daire
- McNamara <daire.mcnamara@microchip.com>, Damien Le Moal
- <dlemoal@kernel.org>, Florian Fainelli <florian.fainelli@broadcom.com>,
- Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, Jianjun Wang
- <jianjun.wang@mediatek.com>, Jim Quinlan <jim2101024@gmail.com>, Jingoo
- Han <jingoohan1@gmail.com>, Jisheng Zhang <Jisheng.Zhang@synaptics.com>,
- Jon Hunter <jonathanh@nvidia.com>, Jonathan Derrick
- <jonathan.derrick@linux.dev>, Joyce Ooi <joyce.ooi@intel.com>, Karthikeyan
- Mitran <m.karthikeyan@mobiveil.co.in>, Kishon Vijay Abraham I
- <kishon@kernel.org>, Koichiro Den <den@valinux.co.jp>, Lorenzo Pieralisi
- <lpieralisi@kernel.org>, Manivannan Sadhasivam
- <manivannan.sadhasivam@linaro.org>, Marc Zyngier <maz@kernel.org>, Michal
- Simek <michal.simek@amd.com>, Nicolas Saenz Julienne <nsaenz@kernel.org>,
- Niklas Cassel <cassel@kernel.org>, Nipun Gupta <nipun.gupta@amd.com>,
- Nirmal Patel <nirmal.patel@linux.intel.com>, Rob Herring
- <robh@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Shivamurthy Shastri
- <shivamurthy.shastri@linutronix.de>, Siddharth Vadapalli
- <s-vadapalli@ti.com>, Thierry Reding <thierry.reding@gmail.com>, Thomas
- Petazzoni <thomas.petazzoni@bootlin.com>, Yoshihiro Shimoda
- <yoshihiro.shimoda.uh@renesas.com>, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
- linux-rpi-kernel@lists.infradead.org, linux-tegra@vger.kernel.org
-Subject: Re: [PATCH v4 00/15] genirq/msi: Silence set affinity failed warning
-In-Reply-To: <20240724154314.GA800620@bhelgaas>
-References: <20240724154314.GA800620@bhelgaas>
-Date: Fri, 26 Jul 2024 14:10:04 +0200
-Message-ID: <87wml8uzfn.ffs@tglx>
+	id 1sXJnZ-00000003om7-3zXO;
+	Fri, 26 Jul 2024 12:11:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1721995908;
+	bh=GZxo54bJ3f7Sd7a1JaifGKOqZ+KwanL7RY55M2lnB/g=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=4ghq22hIr7fcrDa/seMdPi4r/UV0Ezaw3LfsT1qeXJdtLlHCSryyNyJHu9n+zb9H1
+	 p7FBhMMjPLUE78ce5iW82MMpYFCuHwX+kUOOJ4XqC28qg5P2Sq0U1+NPNJI1oOf5az
+	 OzVLZ5WSFixRy2yilz71K0OKguPwOCcc0JUJBYJuTsQOTcaHIFXI73j6idwR9gQTGY
+	 kVpwFg6RIHsGYeYQskcgTZyiTuxzA4Dq8lrjp7tAYI7q+bsG1qf6g3ChFkHf7o6343
+	 IJRqch/jf5qFoL38JTXCDsUTEHF0S3uR7c4/ifGhWLQ9kj71MBdeM5+ckeN1EePCTS
+	 k7jdWQe/2f+eQ==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 3F55837804C6;
+	Fri, 26 Jul 2024 12:11:47 +0000 (UTC)
+Message-ID: <f12ba385-090b-4772-8c52-e515e25b00ac@collabora.com>
+Date: Fri, 26 Jul 2024 14:11:46 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] arm64: dts: mediatek: mt8195: Add missing clock for xhci1
+ controller
+To: Chen-Yu Tsai <wenst@chromium.org>,
+ =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, kernel@collabora.com, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20240722-usb-1129-probe-pci-clk-fix-v1-1-99ea804228b6@collabora.com>
+ <CAGXv+5H_pxR18sHeqdWPy9_FARrnLwyyOHV4VXCn9p5OExseiQ@mail.gmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <CAGXv+5H_pxR18sHeqdWPy9_FARrnLwyyOHV4VXCn9p5OExseiQ@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240726_051007_643459_6990F965 
-X-CRM114-Status: UNSURE (   4.15  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240726_051150_303563_57F58855 
+X-CRM114-Status: GOOD (  27.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,10 +80,98 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 24 2024 at 10:43, Bjorn Helgaas wrote:
-> Happy to apply this series via the PCI tree given an ack from Thomas.
+Il 25/07/24 12:34, Chen-Yu Tsai ha scritto:
+> Hi,
+> 
+> On Mon, Jul 22, 2024 at 11:27 PM Nícolas F. R. A. Prado
+> <nfraprado@collabora.com> wrote:
+>>
+>> Currently if the xhci1 controller happens to probe before the pcie1
+>> controller then it fails with the following errors:
+>>
+>> xhci-mtk 11290000.usb: clocks are not stable (0x1003d0f)
+>> xhci-mtk 11290000.usb: can't setup: -110
+>> xhci-mtk: probe of 11290000.usb failed with error -110
+>>
+>> The issue has been tracked down to the CLK_INFRA_AO_PCIE_P1_TL_96M
+>> clock, although exactly why this pcie clock is needed for the usb
+>> controller is still unknown. Add the clock to the xhci1 controller so it
+>> always probes successfully and use a placeholder clock name for it.
+>>
+>> Reported-by: Nícolas F. R. A. Prado <nfraprado@collabora.com> #KernelCI
+>> Closes: https://lore.kernel.org/all/9fce9838-ef87-4d1b-b3df-63e1ddb0ec51@notapiano/
+>> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> 
+> So I asked MediaTek about this, and it seems the correct thing to do is
+> disable USB 3 on this host controller using the following snippet. The
+> snippet is copy-pasted from our issue tracker and won't apply directly.
+> 
+> This is also seen in mt8395-kontron-3-5-sbc-i1200.dts, on which xhci1
+> is used only for USB 2.0 on an M.2 slot.
+> 
 
-Here you go:
+Uhm, okay, but why should USB3 be disabled on a controller that supports USB3?
 
-Acked-by: Thomas Gleixner <tglx@linutronix.de>
+I agree about disabling it on specific boards that use only the USB 2.0 lines of
+this controller, but doing that globally looks wrong... and looks like being a
+workaround for an error that gets solved with adding a clock as well.
+
+In short, the question is: why would that be the correct thing to do?
+
+Cheers,
+Angelo
+
+> 
+> ChenYu
+> 
+> index 8b7307cdefc6..2dac9f706a58
+> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> @@ -1447,6 +1447,7 @@
+>                                        "xhci_ck";
+>                          mediatek,syscon-wakeup = <&pericfg 0x400 104>;
+>                          wakeup-source;
+> +                       mediatek,u3p-dis-msk = <0x1>;
+>                          status = "disabled";
+>                  };
+> 
+>> ---
+>>   arch/arm64/boot/dts/mediatek/mt8195.dtsi | 10 ++++++++--
+>>   1 file changed, 8 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+>> index 2ee45752583c..cc5169871f1c 100644
+>> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+>> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+>> @@ -1453,9 +1453,15 @@ xhci1: usb@11290000 {
+>>                                   <&topckgen CLK_TOP_SSUSB_P1_REF>,
+>>                                   <&apmixedsys CLK_APMIXED_USB1PLL>,
+>>                                   <&clk26m>,
+>> -                                <&pericfg_ao CLK_PERI_AO_SSUSB_1P_XHCI>;
+>> +                                <&pericfg_ao CLK_PERI_AO_SSUSB_1P_XHCI>,
+>> +                                /*
+>> +                                 * This clock is required due to a hardware
+>> +                                 * bug. The 'frmcnt_ck' clock name is used as a
+>> +                                 * placeholder.
+>> +                                 */
+>> +                                <&infracfg_ao CLK_INFRA_AO_PCIE_P1_TL_96M>;
+>>                          clock-names = "sys_ck", "ref_ck", "mcu_ck", "dma_ck",
+>> -                                     "xhci_ck";
+>> +                                     "xhci_ck", "frmcnt_ck";
+>>                          mediatek,syscon-wakeup = <&pericfg 0x400 104>;
+>>                          wakeup-source;
+>>                          status = "disabled";
+>>
+>> ---
+>> base-commit: dee7f101b64219f512bb2f842227bd04c14efe30
+>> change-id: 20240722-usb-1129-probe-pci-clk-fix-ef8646f46aac
+>>
+>> Best regards,
+>> --
+>> Nícolas F. R. A. Prado <nfraprado@collabora.com>
+>>
+>>
+
+
+
 
