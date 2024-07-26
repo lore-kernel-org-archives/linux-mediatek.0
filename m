@@ -4,81 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47344C3DA49
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Jul 2024 17:13:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9B8CC3DA49
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Jul 2024 18:57:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Date:Content-Type:Subject:Cc:To:From:Message-ID:MIME-Version:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=adbeiw8mhZXnVlqswKhVAzGjiOlGpKozbWfNjla6L4w=; b=C6+uQ8coOXCC9FXOxV4UmzzQCj
-	m2Q6AmlicqRrur8CNVsaMsLkAu+YIAPRM6d7xXVYXvF3vnWDPIh2FkmdblEiM430br1ypiEAUPEfm
-	/SDCE+DLXV0hyk87Hf0ycHDWSGR2Auk21OMbjj1SmMNlST/v71YUKHZ686aQaKNoQ6s3s+hNnRfyx
-	8S1J4iK0oMZYgMkOxtqg0WCPmsFuH1snD8ZqtMU0NDyrEQH20hu5gxLTp9L+giVOXWNZNy8Bh5G+E
-	RzhqpQD1mCrtVzJnE1JMIc2O4BpmzvoG6zKmVXoRjZ5sUossYdEozQrYJyAwzPzjW0DCRgE+GGkLb
-	9246C1rw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=0ZWoiOCM+0xAE6TqN2FuXSL0OE53i2Ls+VX6p34EY1g=; b=jj7CX1PclWPrMh
+	LLW5lF4mBA/mcFQ6SfTfPgIRnjivuqfVh6j7mF26XU/eFWUSkMMx/qg8d8U+AElPasCfJogwj2hry
+	SP233RoPGQ/iFfuGW6Sls1bbJ5zrFqyCWOQZ6sVSL8M0fzDLCeI62PrKfZXiGBokO+wIpBZBsNWuB
+	4qE/u3mJ2rV2A50O1FrOkSfJ0uGn3w+6Om8sT4prnqvEH+c3P4H6J6LvCclaOx8hjmqdjDGdHVHgp
+	P22aCdm3LeYDLoYfqPqzhM2onU7U29tCUo21xbL1LELLO38mv4jz7sJDSfcdjKl8vVa+2ymz8ZXQx
+	s6nxhzUwdP/S5OhQ1kZw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sXOVe-00000004Uti-0kVS;
-	Fri, 26 Jul 2024 17:13:38 +0000
-Received: from mout.gmx.net ([212.227.17.20])
+	id 1sXQ8I-00000004k0Q-3YJg;
+	Fri, 26 Jul 2024 18:57:38 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sXOVb-00000004Urm-1mzh;
-	Fri, 26 Jul 2024 17:13:37 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
-	s=s31663417; t=1722013999; x=1722618799; i=frank-w@public-files.de;
-	bh=adbeiw8mhZXnVlqswKhVAzGjiOlGpKozbWfNjla6L4w=;
-	h=X-UI-Sender-Class:MIME-Version:Message-ID:From:To:Cc:Subject:
-	 Content-Type:Date:Content-Transfer-Encoding:cc:
-	 content-transfer-encoding:content-type:date:from:message-id:
-	 mime-version:reply-to:subject:to;
-	b=Ix/RfOf2Dxisid/T5P8VR4OXu/Mu0DRIcquNwj8+BSDuqIJSxwS1VVGw5D3+qNf6
-	 nhAt0SGcH7A4CpIPEsl1Y9M0bpm6fNnMMP/HcaaPOn5VYNhW9CYDm46CQ8viNAvRs
-	 q9mcNkAPaWAshY4UFS5itYCxW8I6YIRWlLX++et78w+kkBN3JG3TtMVP08ATA6EQn
-	 4reFD/7XJ3zqtBcu9m+qvikGL1OmnQMO2QoORSBIvjSD25oyHXeeA+5LKgTZ3U7Td
-	 0cKPXjugQ0fDR4fol6QZM0LzzHkZoagXGg61O0IuKujHaAbv4MXIM44/3b6vnde/9
-	 upzOH44J/ZzpMbMnKg==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [217.61.150.223] ([217.61.150.223]) by web-mail.gmx.net
- (3c-app-gmx-bap12.server.lan [172.19.172.82]) (via HTTP); Fri, 26 Jul 2024
- 19:13:19 +0200
+	id 1sXQ7s-00000004ju9-3av3;
+	Fri, 26 Jul 2024 18:57:14 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id CBD0A61808;
+	Fri, 26 Jul 2024 18:57:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2F51DC32782;
+	Fri, 26 Jul 2024 18:57:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1722020231;
+	bh=Uvx/6FUt2w2n0+6JKlzy90R2S4AjzIQtW71B2uzDqM4=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=r2BOaxW+oeaI0t/luo31fVhWfq332hRgd8uSffX1taaJHF+otgFrMC8UrVgjxqpmr
+	 PKw9NNvznSbSSHI2d5+UsG9WP3T0TJ8CLee4wTUdFJe43ebAINXTIFnv/bWI+Eik0b
+	 z1+XANr/gsKATUGXENhm9RjB1L+FM6Q3q/c58Br+2QyUXOyDZbqE/FRGqNqbPcw2SG
+	 ia0Sddm+7Ir5JFSqUiX4qlDVhcliw7mGziqECJvdciJ8TJ2Il16ZopOaJged42mNwG
+	 s8P9BEPtCal2VvMeUdzWxPEtFIMXHswSsF7VkjgHtTahhHdDlk7d9s0EuIUzGu5Z4J
+	 q1Y0B6F4ReeFw==
+Date: Fri, 26 Jul 2024 13:57:09 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Marek Vasut <marek.vasut+renesas@mailbox.org>
+Cc: linux-pci@vger.kernel.org,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Pali =?utf-8?B?Um9ow6Fy?= <pali@kernel.org>,
+	Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+	Aleksandr Mishin <amishin@t-argos.ru>,
+	Anna-Maria Behnsen <anna-maria@linutronix.de>,
+	Anup Patel <apatel@ventanamicro.com>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Daire McNamara <daire.mcnamara@microchip.com>,
+	Damien Le Moal <dlemoal@kernel.org>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Hou Zhiqiang <Zhiqiang.Hou@nxp.com>,
+	Jianjun Wang <jianjun.wang@mediatek.com>,
+	Jim Quinlan <jim2101024@gmail.com>,
+	Jingoo Han <jingoohan1@gmail.com>,
+	Jisheng Zhang <Jisheng.Zhang@synaptics.com>,
+	Jon Hunter <jonathanh@nvidia.com>,
+	Jonathan Derrick <jonathan.derrick@linux.dev>,
+	Joyce Ooi <joyce.ooi@intel.com>,
+	Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Koichiro Den <den@valinux.co.jp>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Marc Zyngier <maz@kernel.org>, Michal Simek <michal.simek@amd.com>,
+	Nicolas Saenz Julienne <nsaenz@kernel.org>,
+	Niklas Cassel <cassel@kernel.org>,
+	Nipun Gupta <nipun.gupta@amd.com>,
+	Nirmal Patel <nirmal.patel@linux.intel.com>,
+	Rob Herring <robh@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>,
+	Shivamurthy Shastri <shivamurthy.shastri@linutronix.de>,
+	Siddharth Vadapalli <s-vadapalli@ti.com>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Thomas Gleixner <tglx@linutronix.de>,
+	Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-rpi-kernel@lists.infradead.org, linux-tegra@vger.kernel.org
+Subject: Re: [PATCH v4 00/15] genirq/msi: Silence set affinity failed warning
+Message-ID: <20240726185709.GA915987@bhelgaas>
 MIME-Version: 1.0
-Message-ID: <trinity-c8e0af34-2704-476a-9454-bf5001256eb9-1722013999541@3c-app-gmx-bap12>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: Mathias Nyman <mathias.nyman@intel.com>, Chunfeng Yun
- <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman
- <gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Daniel Golle <daniel@makrotopia.org>, John Crispin <john@phrozen.org>
-Cc: linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: mt7988 usb broken on 6.10
-Content-Type: text/plain; charset=UTF-8
-Date: Fri, 26 Jul 2024 19:13:19 +0200
-Importance: normal
-Sensitivity: Normal
-Content-Transfer-Encoding: quoted-printable
-X-Priority: 3
-X-Provags-ID: V03:K1:3rKMsO/Abw28KhJy7BtxmXg9Ite3PaZNCS5EXwfq70cWabR+1gYuODQOgQsAJsNTiL5TM
- ENZkaeKRQ4FzS9xwohL3cS03fRGvGnQxd55WBErLZNt6wsPDfP1AhpkZ2NYGHDkzN1lNzNk2pTWJ
- BQ9lk00eVDUpf1qNLT+YClEEOhHlTeX/P8+6D/C+Cl/j5M+0n2a/LM9UDfTK2AaZYUThwPAhCcm6
- yhxEH8DaNdn4lsv3c2tovFHtQUbC0hzcvN9dwsYD6tFzUl/DzLPKe7I+R+Bg3ad6uLyoQgnoZs/c
- Ug=
-UI-OutboundReport: notjunk:1;M01:P0:JnFneIi32xM=;QiickcppS5KUkwD/4RYxSSh7gtn
- /eTr0X3Zble+hw3aTYnlQxznaXVylljQND7MqOTrnpYFeBIxCo69Hryq81/VPAQuTyjPvTUSK
- 0s9cbs6CZJSOgnarPia1Q3JIsCxlAIy8qFm2NqEhKm/fTGZbK0z111RuhfZ43DsN4Zgs4eOZy
- ZiVuSTQcLgvXtNuP92xRWqs39Wn5BRM1LKlWpAZVH+8afdMLDSATSnOibSShcLjB5hIInywvw
- /WMeZl62T0QSsiPLRedMw4/GaMBYJnC1W52cjsq5eLkC5GUXWoNmpqPwDYgU/T3+2WpEnjaOZ
- BNvXqHC4OSm0BE0qr2uQMc7S3r3lJ0Wt3L6KHkAisAyX6Njd5fCKwUWFcC2dRjOlv5NfIXO61
- XD43ImcKpzx/mKVz5ihymk3p4dCnJLD/QkFOVJL3VgRf9IaiWNd9jims9VA3E6fTBYsGeu9Lw
- ggL7ic8HQh+vHFJH78ZOkVt8jZko+QsjR2ENmkr3hzqZttw/ZGCQr1XSWidtRySmzhVDiKqD6
- 2VAKTZVna6AUq8ql0iHdiOymv8o8XHCihAFNP9rDNJsZ+hs9nvlmRDEFnrSEze+V7tj7g1h0L
- c6DnioZXTAJxfy9YgsCmb4Ow7UbUGHqs05Q4KKGtuE8cQJAav4Y+7MKMDmlGqrDAUSSfT9EoE
- e6E4oxTd4/uCDJj+Nsg4MOYTa7aKVl6PPdeEdz1Rxw==
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240723132958.41320-1-marek.vasut+renesas@mailbox.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240726_101335_868537_AF0062C2 
-X-CRM114-Status: GOOD (  10.27  )
+X-CRM114-CacheID: sfid-20240726_115713_000749_EB9A408B 
+X-CRM114-Status: GOOD (  13.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,197 +108,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On Tue, Jul 23, 2024 at 03:27:00PM +0200, Marek Vasut wrote:
+> Various PCIe controllers that mux MSIs onto single IRQ line produce these
+> "IRQ%d: set affinity failed" warnings when entering suspend. Remove the
+> .irq_set_affinity callbacks and make sure they are NULL in all affected
+> controllers, so this warning in kernel/irq/msi.c is not triggered.
+> 
+> This has been compile-tested only on all but the R-Car PCI controller.
+> 
+> The clean ups are done per-driver so they can be easily reverted in case
+> they break something.
+> 
+> Marek Vasut (15):
+>   genirq/msi: Silence set affinity failed warning
+>   PCI: aardvark: Silence set affinity failed warning
+>   PCI: altera-msi: Silence set affinity failed warning
+>   PCI: brcmstb: Silence set affinity failed warning
+>   PCI: dwc: Silence set affinity failed warning
+>   PCI: mediatek-gen3: Silence set affinity failed warning
+>   PCI: mediatek: Silence set affinity failed warning
+>   PCI: mobiveil: Silence set affinity failed warning
+>   PCI: plda: Silence set affinity failed warning
+>   PCI: rcar-host: Silence set affinity failed warning
+>   PCI: tegra: Silence set affinity failed warning
+>   PCI: vmd: Silence set affinity failed warning
+>   PCI: xilinx-nwl: Silence set affinity failed warning
+>   PCI: xilinx-xdma: Silence set affinity failed warning
+>   PCI: xilinx: Silence set affinity failed warning
+> 
+>  drivers/pci/controller/dwc/pci-keystone.c           |  7 -------
+>  drivers/pci/controller/dwc/pcie-designware-host.c   | 12 +++---------
+>  .../pci/controller/mobiveil/pcie-mobiveil-host.c    | 11 ++---------
+>  drivers/pci/controller/pci-aardvark.c               | 10 ++--------
+>  drivers/pci/controller/pci-tegra.c                  | 10 ++--------
+>  drivers/pci/controller/pcie-altera-msi.c            | 11 ++---------
+>  drivers/pci/controller/pcie-brcmstb.c               | 11 ++---------
+>  drivers/pci/controller/pcie-mediatek-gen3.c         | 13 +++----------
+>  drivers/pci/controller/pcie-mediatek.c              | 11 ++---------
+>  drivers/pci/controller/pcie-rcar-host.c             | 10 ++--------
+>  drivers/pci/controller/pcie-xilinx-dma-pl.c         | 11 ++---------
+>  drivers/pci/controller/pcie-xilinx-nwl.c            | 11 ++---------
+>  drivers/pci/controller/pcie-xilinx.c                |  9 ++-------
+>  drivers/pci/controller/plda/pcie-plda-host.c        | 11 ++---------
+>  drivers/pci/controller/vmd.c                        | 13 +------------
+>  include/linux/msi.h                                 |  2 ++
+>  kernel/irq/msi.c                                    |  2 +-
+>  17 files changed, 32 insertions(+), 133 deletions(-)
 
-i've noticed that usb on mt7988 is broken in 6=2E10, was working on 6=2E9 =
-(with some additional patches like
-for pinctrl and dts as this chipset is not completely supported by mainlin=
-e yet)=2E
+Applied to pci/controller/affinity for v6.11, thank you very much for
+doing this work!
 
-i see this in my dmesg
-
-[    6=2E147068] irq 105: nobody cared (try booting with the "irqpoll" opt=
-ion)                                                                    =20
-[    6=2E153851] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 6=2E10=2E0-bpi-=
-r4-main #1                                                                 =
- =20
-[    6=2E160803] Hardware name: Banana Pi BPI-R4 (DT)                     =
-                                                                        =20
-[    6=2E165409] Call trace:                                              =
-                                                                        =20
-[    6=2E167846]  dump_backtrace+0x94/0x114                               =
-                                                                        =20
-[    6=2E171593]  show_stack+0x18/0x24                                    =
-                                                                        =20
-[    6=2E174898]  dump_stack_lvl+0x74/0x8c                                =
-                                                                        =20
-[    6=2E178553]  dump_stack+0x18/0x24                                    =
-                                                                        =20
-[    6=2E181859]  __report_bad_irq+0x38/0x120                             =
-                                                                        =20
-[    6=2E185775]  note_interrupt+0x308/0x358                              =
-                                                                        =20
-[    6=2E189601]  handle_irq_event+0xd8/0xec                              =
-                                                                        =20
-[    6=2E193427]  handle_fasteoi_irq+0xb0/0x284                           =
-                                                                        =20
-[    6=2E197515]  generic_handle_domain_irq+0x2c/0x44                     =
-                                                                        =20
-[    6=2E202121]  gic_handle_irq+0x4c/0x118                               =
-                                                                        =20
-[    6=2E205861]  call_on_irq_stack+0x24/0x4c                             =
-                                                                        =20
-[    6=2E209774]  do_interrupt_handler+0x80/0x84                          =
-                                                                        =20
-[    6=2E213947]  el1_interrupt+0x34/0x54                                 =
-                                                                        =20
-[    6=2E217514]  el1h_64_irq_handler+0x18/0x24                           =
-                                                                        =20
-[    6=2E221600]  el1h_64_irq+0x68/0x6c                                   =
-                                                                        =20
-[    6=2E224991]  default_idle_call+0x50/0xf0                             =
-                                                                        =20
-[    6=2E228905]  do_idle+0xac/0xfc                                       =
-                                                                        =20
-[    6=2E231952]  cpu_startup_entry+0x38/0x3c                             =
-                                                                        =20
-[    6=2E235865]  kernel_init+0x0/0x1d8                                   =
-                                                                        =20
-[    6=2E239259]  start_kernel+0x4ac/0x710                                =
-                                                                        =20
-[    6=2E242914]  __primary_switched+0x80/0x88                            =
-                                                                        =20
-[    6=2E246916] handlers:                                                =
-                                                                        =20
-[    6=2E249177] [<(____ptrval____)>] usb_hcd_irq                         =
-                                                                        =20
-[    6=2E253443] Disabling IRQ #105
-=2E=2E=2E
-[   45=2E305428] xhci-mtk 11200000=2Eusb: xHCI host not responding to stop=
- endpoint command                                                       =20
-[   45=2E351865] xhci-mtk 11200000=2Eusb: Host halt failed, -110          =
-                                                                          =
-=20
-[   45=2E357253] xhci-mtk 11200000=2Eusb: xHCI host controller not respond=
-ing, assume dead                                                          =
-=20
-[   45=2E364918] xhci-mtk 11200000=2Eusb: HC died; cleaning up=20
-
-maybe anybody can point me to possible rootcause? as this seem to happen s=
-omewhere in interrupt-handling i have no idea where to search
-
-this is what i did till now:
-
-# cat /proc/interrupts| grep xhci
-104:          0          0          0          0     GICv3 205 Level     x=
-hci-hcd:usb1
-105:     100201          0          0          0     GICv3 204 Level     x=
-hci-hcd:usb3
-
-mtk xhci driver itself seems unchanged so far
-
-$ git logone drivers/usb/host/xhci-mtk*
-06790c19086f 2024-02-29 xhci: replace real & fake port with pointer to roo=
-t hub port Niklas Neronin=20
-017dbfc05c31 2024-01-04 usb: xhci-mtk: fix a short packet issue of gen1 is=
-oc-in transfer Chunfeng Yun=20
-
-clocks seems also not the cause
-
-$ git logone drivers/clk/mediatek/
-878e845d8db0 2024-06-13 clk: mediatek: mt8183: Only enable runtime PM on m=
-t8183-mfgcfg Pin-yen Lin=20
-619b92b9c8fe 2024-05-18 Merge tag 'clk-for-linus' of git://git=2Ekernel=2E=
-org/pub/scm/linux/kernel/git/clk/linux Linus Torvalds=20
-4c0c087772d7 2024-04-18 clk: mediatek: mt8365-mm: fix DPI0 parent Alexandr=
-e Mergnat=20
-bb7b3c8e7180 2024-03-08 clk: mediatek: pllfh: Don't log error for missing =
-fhctl node N=C3=ADcolas F=2E R=2E A=2E Prado=20
-
-
-also when trying to find any error like pinctrl or similar seems not showi=
-ng any more like above related to usb
-
-root@bpi-r4-v11:~
-# dmesg | grep -i 'err\|fail\|unable'
-[    0=2E000000] CPU features: detected: ARM erratum 858921
-[    0=2E000000] arch_timer: Enabling local workaround for ARM erratum 858=
-921
-[    0=2E044091] cacheinfo: Unable to detect cache hierarchy for CPU 0
-[    0=2E070823] arch_timer: Enabling local workaround for ARM erratum 858=
-921
-[    0=2E071164] arch_timer: Enabling local workaround for ARM erratum 858=
-921
-[    0=2E071448] arch_timer: Enabling local workaround for ARM erratum 858=
-921
-[    0=2E330245] platform 11280000=2Epcie: Fixed dependency cycle(s) with =
-/soc/pcie@11280000/interrupt-controller
-[    0=2E340164] platform 11290000=2Epcie: Fixed dependency cycle(s) with =
-/soc/pcie@11290000/interrupt-controller
-[    0=2E350045] platform 11300000=2Epcie: Fixed dependency cycle(s) with =
-/soc/pcie@11300000/interrupt-controller
-[    0=2E359926] platform 11310000=2Epcie: Fixed dependency cycle(s) with =
-/soc/pcie@11310000/interrupt-controller
-[    0=2E671440] mtk-xsphy soc:xphy@11e10000: failed to get ref_clk(id-1)
-[    0=2E686306] mtk-socinfo mtk-socinfo=2E0=2Eauto: error -ENOENT: Failed=
- to get socinfo data
-[    0=2E694258] mtk-socinfo mtk-socinfo=2E0=2Eauto: probe with driver mtk=
--socinfo failed with error -2
-[    1=2E344755] ubi0 error: ubi_read_volume_table: the layout volume was =
-not found
-[    1=2E352050] ubi0 error: ubi_attach_mtd_dev: failed to attach mtd1, er=
-ror -22
-[    1=2E714508] rtc-pcf8563 2-0051: hctosys: unable to read the hardware =
-clock
-[    1=2E805626] mtk-msdc 11230000=2Emmc: msdc_track_cmd_data: cmd=3D52 ar=
-g=3D00000C00; host->error=3D0x00000002
-[    1=2E818727] mtk-msdc 11230000=2Emmc: msdc_track_cmd_data: cmd=3D52 ar=
-g=3D80000C08; host->error=3D0x00000002
-[    1=2E835940] mtk-msdc 11230000=2Emmc: msdc_track_cmd_data: cmd=3D5 arg=
-=3D00000000; host->error=3D0x00000002
-[    1=2E850219] mtk-msdc 11230000=2Emmc: msdc_track_cmd_data: cmd=3D5 arg=
-=3D00000000; host->error=3D0x00000002
-[    1=2E867994] mtk-msdc 11230000=2Emmc: msdc_track_cmd_data: cmd=3D5 arg=
-=3D00000000; host->error=3D0x00000002
-[    1=2E877061] mtk-msdc 11230000=2Emmc: msdc_track_cmd_data: cmd=3D5 arg=
-=3D00000000; host->error=3D0x00000002
-[    2=2E005070] GPT: Use GNU Parted to correct GPT errors=2E
-[    2=2E184228] mtk-pcie-gen3 11280000=2Epcie: probe with driver mtk-pcie=
--gen3 failed with error -110
-[    6=2E185775]  note_interrupt+0x308/0x358
-[    6=2E209774]  do_interrupt_handler+0x80/0x84
-[    6=2E213947]  el1_interrupt+0x34/0x54
-[    6=2E809767] systemd[1]: Failed to look up module alias 'autofs4': Fun=
-ction not implemented
-[    7=2E765542] systemd[1]: Arbitrary Executable File Formats File System=
- Automount Point was skipped because of a failed condition check (Condit=2E
-[    8=2E099430] systemd[1]: Journal Audit Socket was skipped because of a=
- failed condition check (ConditionSecurity=3Daudit)=2E
-[    8=2E285821] systemd[1]: Huge Pages File System was skipped because of=
- a failed condition check (ConditionPathExists=3D/sys/kernel/mm/hugepages)=
-=2E
-[    8=2E455617] systemd[1]: Create List of Static Device Nodes was skippe=
-d because of a failed condition check (ConditionFileNotEmpty=3D/lib/module=
-=2E
-[    8=2E685692] systemd[1]: Repartition Root Disk was skipped because all=
- trigger condition checks failed=2E
-[   45=2E351865] xhci-mtk 11200000=2Eusb: Host halt failed, -110
-
-because of the pcie interrupt messages i checked my nvme and wifi-card and=
- look sgood, so it seems no generic interrupt issue
-
-# lspci
-0000:00:00=2E0 PCI bridge: MEDIATEK Corp=2E Device 7988 (rev 01)
-0000:01:00=2E0 Network controller: MEDIATEK Corp=2E Device 7990
-0001:00:00=2E0 PCI bridge: MEDIATEK Corp=2E Device 7988 (rev 01)
-0001:01:00=2E0 Network controller: MEDIATEK Corp=2E Device 7991
-0002:00:00=2E0 PCI bridge: MEDIATEK Corp=2E Device 7988 (rev 01)
-0002:01:00=2E0 Non-Volatile memory controller: ADATA Technology Co=2E, Ltd=
-=2E ADATA XPG GAMMIXS1 1L Media (rev 01)
-
-full source is here:
-
-https://github=2Ecom/frank-w/BPI-Router-Linux/tree/6=2E10-main
-
-regards Frank
+I pushed this branch, but it won't show up in linux-next until after
+v6.12-rc1 is tagged.
 
