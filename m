@@ -4,79 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5F60C3DA49
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Jul 2024 15:12:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47344C3DA49
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Jul 2024 17:13:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kTcHH2j+s1hb1mCfRdNcGdP6fILWYb3lLn9HYz/KlSw=; b=GLczWGiw/1hAouO58GfzGGyxP6
-	8PlimsfJ3lpaLj/MG51VUCE98Jc0W2QgTyOW+w2ZIP+NiY3KpwCJVkOtj98cx9406STErxsAgxybB
-	P9Eg7slBcbkDiH+Rsa5AQfEH1147/IzVUt8IC6Lz2RAjWhbzBHTy/nZl3j8nvD14LBiOhwVGBjWr8
-	YFuTMQlGgazXzTp/3lbOeP8Nndd5TgmcrPjD6mKKo5ZVeCVQEnzDdOAbgXaew23nt7mK8RhwqkBU8
-	zjhKm+faRj8asiRugfOyw7rXHke3rzakAR/srvOPJyss/MshRllsUTBf22LaQ5pTqh+uX7jxd+y3V
-	42GyMC4w==;
+	Date:Content-Type:Subject:Cc:To:From:Message-ID:MIME-Version:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=adbeiw8mhZXnVlqswKhVAzGjiOlGpKozbWfNjla6L4w=; b=C6+uQ8coOXCC9FXOxV4UmzzQCj
+	m2Q6AmlicqRrur8CNVsaMsLkAu+YIAPRM6d7xXVYXvF3vnWDPIh2FkmdblEiM430br1ypiEAUPEfm
+	/SDCE+DLXV0hyk87Hf0ycHDWSGR2Auk21OMbjj1SmMNlST/v71YUKHZ686aQaKNoQ6s3s+hNnRfyx
+	8S1J4iK0oMZYgMkOxtqg0WCPmsFuH1snD8ZqtMU0NDyrEQH20hu5gxLTp9L+giVOXWNZNy8Bh5G+E
+	RzhqpQD1mCrtVzJnE1JMIc2O4BpmzvoG6zKmVXoRjZ5sUossYdEozQrYJyAwzPzjW0DCRgE+GGkLb
+	9246C1rw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sXMcF-00000004GB5-1Pdm;
-	Fri, 26 Jul 2024 15:12:19 +0000
-Received: from mail-lj1-x22b.google.com ([2a00:1450:4864:20::22b])
+	id 1sXOVe-00000004Uti-0kVS;
+	Fri, 26 Jul 2024 17:13:38 +0000
+Received: from mout.gmx.net ([212.227.17.20])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sXMbp-00000004G6e-0wgw
-	for linux-mediatek@lists.infradead.org;
-	Fri, 26 Jul 2024 15:11:54 +0000
-Received: by mail-lj1-x22b.google.com with SMTP id 38308e7fff4ca-2eecd2c6432so20099811fa.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 26 Jul 2024 08:11:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1722006711; x=1722611511; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=kTcHH2j+s1hb1mCfRdNcGdP6fILWYb3lLn9HYz/KlSw=;
-        b=UPycWlw+JKQRsJsPQ+h1K6NySHlT4h14lxXjyKghhy7nUmTxLe8KKyUyEec378L8of
-         OE/FwIshk+M74t/qQ9tFfKcDkgVFqWTJ/u75mEW0d/Q0Hb3K2VO9N8Jzr1/288rcObX1
-         6YNeAkzD5w960zLOPG5fde8gYKwi3B13fXUKQ=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1722006711; x=1722611511;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=kTcHH2j+s1hb1mCfRdNcGdP6fILWYb3lLn9HYz/KlSw=;
-        b=KoZyPbhb4G2dL5CwlZuz96lRkByyMYbJiqFb77LGd+U0xntzUWlVDgIEL1An781C+5
-         Mpw/kWL5yyTBVyRUbF21bXvnQV6mYPScGgwlY4Wvhxua4wuOaDZGGEhS1jigsLLvmxfM
-         09EhA23RYJDb4MkGmmj4pAGE3GAHQr+MAUEKuPKydXem1fhlkiC+Q5A9AlCZ5SKqdb/E
-         /Tn/z66hDxiys1U9FZ7YQM0dUpU4tReQUlmVD+n1xA11NMcKg/gjiEPkOmWlvtdoYW+v
-         O5+Xv4Cwvtv82phX7Hkjalw0gx+AQ4rvh3rYZ4oBZbOg/yt8p3R2Leew+/DCFDWmHAjo
-         7aig==
-X-Forwarded-Encrypted: i=1; AJvYcCU0HRv3h1OEaW19FQEm5sf32DDXnTCfR2q+dnLz8rP6S4ot+/zo5WhhrOvHcO4i/dv16Dt0nq8FBIzJFfYordzzX/Q00sUj1pAuK4EkJoalzGN6
-X-Gm-Message-State: AOJu0Yy0KcBXonAgq4swm4S8YNaTbT6fBxlBe8GsqU5O+wPVqq8nL7pT
-	EEwRUmhdNhrRX964lERwbFmV6plYABGtrjClJgiCy2HSL8ulIai58d1Ts9hLkdicBc74bf0+SMw
-	n4uUchtwfWGUT5Xx0qG+TGb2lb5dnVcv8M++NdmRbHITBpoo=
-X-Google-Smtp-Source: AGHT+IHDVcZ7KXLOAKMLyDwEWrD5j4fRyegkq6cGnhaUP9u+zy4o58+lxAm64v2kyV8TtF07McmVZ2yCfIFULN1rXkc=
-X-Received: by 2002:a2e:9786:0:b0:2ef:324f:c907 with SMTP id
- 38308e7fff4ca-2f03db562c7mr51360951fa.5.1722006710402; Fri, 26 Jul 2024
- 08:11:50 -0700 (PDT)
+	id 1sXOVb-00000004Urm-1mzh;
+	Fri, 26 Jul 2024 17:13:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
+	s=s31663417; t=1722013999; x=1722618799; i=frank-w@public-files.de;
+	bh=adbeiw8mhZXnVlqswKhVAzGjiOlGpKozbWfNjla6L4w=;
+	h=X-UI-Sender-Class:MIME-Version:Message-ID:From:To:Cc:Subject:
+	 Content-Type:Date:Content-Transfer-Encoding:cc:
+	 content-transfer-encoding:content-type:date:from:message-id:
+	 mime-version:reply-to:subject:to;
+	b=Ix/RfOf2Dxisid/T5P8VR4OXu/Mu0DRIcquNwj8+BSDuqIJSxwS1VVGw5D3+qNf6
+	 nhAt0SGcH7A4CpIPEsl1Y9M0bpm6fNnMMP/HcaaPOn5VYNhW9CYDm46CQ8viNAvRs
+	 q9mcNkAPaWAshY4UFS5itYCxW8I6YIRWlLX++et78w+kkBN3JG3TtMVP08ATA6EQn
+	 4reFD/7XJ3zqtBcu9m+qvikGL1OmnQMO2QoORSBIvjSD25oyHXeeA+5LKgTZ3U7Td
+	 0cKPXjugQ0fDR4fol6QZM0LzzHkZoagXGg61O0IuKujHaAbv4MXIM44/3b6vnde/9
+	 upzOH44J/ZzpMbMnKg==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [217.61.150.223] ([217.61.150.223]) by web-mail.gmx.net
+ (3c-app-gmx-bap12.server.lan [172.19.172.82]) (via HTTP); Fri, 26 Jul 2024
+ 19:13:19 +0200
 MIME-Version: 1.0
-References: <20240722-usb-1129-probe-pci-clk-fix-v1-1-99ea804228b6@collabora.com>
- <CAGXv+5H_pxR18sHeqdWPy9_FARrnLwyyOHV4VXCn9p5OExseiQ@mail.gmail.com> <f12ba385-090b-4772-8c52-e515e25b00ac@collabora.com>
-In-Reply-To: <f12ba385-090b-4772-8c52-e515e25b00ac@collabora.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Fri, 26 Jul 2024 23:11:37 +0800
-Message-ID: <CAGXv+5G92=-k5MDH4BPcM8tgPwcGTJ60trJwr7BwTGHD=wpnDw@mail.gmail.com>
-Subject: Re: [PATCH] arm64: dts: mediatek: mt8195: Add missing clock for xhci1 controller
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, kernel@collabora.com, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
+Message-ID: <trinity-c8e0af34-2704-476a-9454-bf5001256eb9-1722013999541@3c-app-gmx-bap12>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Mathias Nyman <mathias.nyman@intel.com>, Chunfeng Yun
+ <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman
+ <gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Daniel Golle <daniel@makrotopia.org>, John Crispin <john@phrozen.org>
+Cc: linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: mt7988 usb broken on 6.10
+Content-Type: text/plain; charset=UTF-8
+Date: Fri, 26 Jul 2024 19:13:19 +0200
+Importance: normal
+Sensitivity: Normal
 Content-Transfer-Encoding: quoted-printable
+X-Priority: 3
+X-Provags-ID: V03:K1:3rKMsO/Abw28KhJy7BtxmXg9Ite3PaZNCS5EXwfq70cWabR+1gYuODQOgQsAJsNTiL5TM
+ ENZkaeKRQ4FzS9xwohL3cS03fRGvGnQxd55WBErLZNt6wsPDfP1AhpkZ2NYGHDkzN1lNzNk2pTWJ
+ BQ9lk00eVDUpf1qNLT+YClEEOhHlTeX/P8+6D/C+Cl/j5M+0n2a/LM9UDfTK2AaZYUThwPAhCcm6
+ yhxEH8DaNdn4lsv3c2tovFHtQUbC0hzcvN9dwsYD6tFzUl/DzLPKe7I+R+Bg3ad6uLyoQgnoZs/c
+ Ug=
+UI-OutboundReport: notjunk:1;M01:P0:JnFneIi32xM=;QiickcppS5KUkwD/4RYxSSh7gtn
+ /eTr0X3Zble+hw3aTYnlQxznaXVylljQND7MqOTrnpYFeBIxCo69Hryq81/VPAQuTyjPvTUSK
+ 0s9cbs6CZJSOgnarPia1Q3JIsCxlAIy8qFm2NqEhKm/fTGZbK0z111RuhfZ43DsN4Zgs4eOZy
+ ZiVuSTQcLgvXtNuP92xRWqs39Wn5BRM1LKlWpAZVH+8afdMLDSATSnOibSShcLjB5hIInywvw
+ /WMeZl62T0QSsiPLRedMw4/GaMBYJnC1W52cjsq5eLkC5GUXWoNmpqPwDYgU/T3+2WpEnjaOZ
+ BNvXqHC4OSm0BE0qr2uQMc7S3r3lJ0Wt3L6KHkAisAyX6Njd5fCKwUWFcC2dRjOlv5NfIXO61
+ XD43ImcKpzx/mKVz5ihymk3p4dCnJLD/QkFOVJL3VgRf9IaiWNd9jims9VA3E6fTBYsGeu9Lw
+ ggL7ic8HQh+vHFJH78ZOkVt8jZko+QsjR2ENmkr3hzqZttw/ZGCQr1XSWidtRySmzhVDiKqD6
+ 2VAKTZVna6AUq8ql0iHdiOymv8o8XHCihAFNP9rDNJsZ+hs9nvlmRDEFnrSEze+V7tj7g1h0L
+ c6DnioZXTAJxfy9YgsCmb4Ow7UbUGHqs05Q4KKGtuE8cQJAav4Y+7MKMDmlGqrDAUSSfT9EoE
+ e6E4oxTd4/uCDJj+Nsg4MOYTa7aKVl6PPdeEdz1Rxw==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240726_081153_315896_36B3B445 
-X-CRM114-Status: GOOD (  34.25  )
+X-CRM114-CacheID: sfid-20240726_101335_868537_AF0062C2 
+X-CRM114-Status: GOOD (  10.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,120 +93,197 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 26, 2024 at 8:11=E2=80=AFPM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> Il 25/07/24 12:34, Chen-Yu Tsai ha scritto:
-> > Hi,
-> >
-> > On Mon, Jul 22, 2024 at 11:27=E2=80=AFPM N=C3=ADcolas F. R. A. Prado
-> > <nfraprado@collabora.com> wrote:
-> >>
-> >> Currently if the xhci1 controller happens to probe before the pcie1
-> >> controller then it fails with the following errors:
-> >>
-> >> xhci-mtk 11290000.usb: clocks are not stable (0x1003d0f)
-> >> xhci-mtk 11290000.usb: can't setup: -110
-> >> xhci-mtk: probe of 11290000.usb failed with error -110
-> >>
-> >> The issue has been tracked down to the CLK_INFRA_AO_PCIE_P1_TL_96M
-> >> clock, although exactly why this pcie clock is needed for the usb
-> >> controller is still unknown. Add the clock to the xhci1 controller so =
-it
-> >> always probes successfully and use a placeholder clock name for it.
-> >>
-> >> Reported-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com> #Ke=
-rnelCI
-> >> Closes: https://lore.kernel.org/all/9fce9838-ef87-4d1b-b3df-63e1ddb0ec=
-51@notapiano/
-> >> Signed-off-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
-> >
-> > So I asked MediaTek about this, and it seems the correct thing to do is
-> > disable USB 3 on this host controller using the following snippet. The
-> > snippet is copy-pasted from our issue tracker and won't apply directly.
-> >
-> > This is also seen in mt8395-kontron-3-5-sbc-i1200.dts, on which xhci1
-> > is used only for USB 2.0 on an M.2 slot.
-> >
->
-> Uhm, okay, but why should USB3 be disabled on a controller that supports =
-USB3?
->
-> I agree about disabling it on specific boards that use only the USB 2.0 l=
-ines of
-> this controller, but doing that globally looks wrong... and looks like be=
-ing a
-> workaround for an error that gets solved with adding a clock as well.
->
-> In short, the question is: why would that be the correct thing to do?
+Hi,
 
-We can disable it in mt8195-cherry.dtsi then?
+i've noticed that usb on mt7988 is broken in 6=2E10, was working on 6=2E9 =
+(with some additional patches like
+for pinctrl and dts as this chipset is not completely supported by mainlin=
+e yet)=2E
 
-ChenYu
+i see this in my dmesg
 
-> Cheers,
-> Angelo
->
-> >
-> > ChenYu
-> >
-> > index 8b7307cdefc6..2dac9f706a58
-> > --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> > @@ -1447,6 +1447,7 @@
-> >                                        "xhci_ck";
-> >                          mediatek,syscon-wakeup =3D <&pericfg 0x400 104=
->;
-> >                          wakeup-source;
-> > +                       mediatek,u3p-dis-msk =3D <0x1>;
-> >                          status =3D "disabled";
-> >                  };
-> >
-> >> ---
-> >>   arch/arm64/boot/dts/mediatek/mt8195.dtsi | 10 ++++++++--
-> >>   1 file changed, 8 insertions(+), 2 deletions(-)
-> >>
-> >> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boo=
-t/dts/mediatek/mt8195.dtsi
-> >> index 2ee45752583c..cc5169871f1c 100644
-> >> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> >> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> >> @@ -1453,9 +1453,15 @@ xhci1: usb@11290000 {
-> >>                                   <&topckgen CLK_TOP_SSUSB_P1_REF>,
-> >>                                   <&apmixedsys CLK_APMIXED_USB1PLL>,
-> >>                                   <&clk26m>,
-> >> -                                <&pericfg_ao CLK_PERI_AO_SSUSB_1P_XHC=
-I>;
-> >> +                                <&pericfg_ao CLK_PERI_AO_SSUSB_1P_XHC=
-I>,
-> >> +                                /*
-> >> +                                 * This clock is required due to a ha=
-rdware
-> >> +                                 * bug. The 'frmcnt_ck' clock name is=
- used as a
-> >> +                                 * placeholder.
-> >> +                                 */
-> >> +                                <&infracfg_ao CLK_INFRA_AO_PCIE_P1_TL=
-_96M>;
-> >>                          clock-names =3D "sys_ck", "ref_ck", "mcu_ck",=
- "dma_ck",
-> >> -                                     "xhci_ck";
-> >> +                                     "xhci_ck", "frmcnt_ck";
-> >>                          mediatek,syscon-wakeup =3D <&pericfg 0x400 10=
-4>;
-> >>                          wakeup-source;
-> >>                          status =3D "disabled";
-> >>
-> >> ---
-> >> base-commit: dee7f101b64219f512bb2f842227bd04c14efe30
-> >> change-id: 20240722-usb-1129-probe-pci-clk-fix-ef8646f46aac
-> >>
-> >> Best regards,
-> >> --
-> >> N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
-> >>
-> >>
->
->
->
+[    6=2E147068] irq 105: nobody cared (try booting with the "irqpoll" opt=
+ion)                                                                    =20
+[    6=2E153851] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 6=2E10=2E0-bpi-=
+r4-main #1                                                                 =
+ =20
+[    6=2E160803] Hardware name: Banana Pi BPI-R4 (DT)                     =
+                                                                        =20
+[    6=2E165409] Call trace:                                              =
+                                                                        =20
+[    6=2E167846]  dump_backtrace+0x94/0x114                               =
+                                                                        =20
+[    6=2E171593]  show_stack+0x18/0x24                                    =
+                                                                        =20
+[    6=2E174898]  dump_stack_lvl+0x74/0x8c                                =
+                                                                        =20
+[    6=2E178553]  dump_stack+0x18/0x24                                    =
+                                                                        =20
+[    6=2E181859]  __report_bad_irq+0x38/0x120                             =
+                                                                        =20
+[    6=2E185775]  note_interrupt+0x308/0x358                              =
+                                                                        =20
+[    6=2E189601]  handle_irq_event+0xd8/0xec                              =
+                                                                        =20
+[    6=2E193427]  handle_fasteoi_irq+0xb0/0x284                           =
+                                                                        =20
+[    6=2E197515]  generic_handle_domain_irq+0x2c/0x44                     =
+                                                                        =20
+[    6=2E202121]  gic_handle_irq+0x4c/0x118                               =
+                                                                        =20
+[    6=2E205861]  call_on_irq_stack+0x24/0x4c                             =
+                                                                        =20
+[    6=2E209774]  do_interrupt_handler+0x80/0x84                          =
+                                                                        =20
+[    6=2E213947]  el1_interrupt+0x34/0x54                                 =
+                                                                        =20
+[    6=2E217514]  el1h_64_irq_handler+0x18/0x24                           =
+                                                                        =20
+[    6=2E221600]  el1h_64_irq+0x68/0x6c                                   =
+                                                                        =20
+[    6=2E224991]  default_idle_call+0x50/0xf0                             =
+                                                                        =20
+[    6=2E228905]  do_idle+0xac/0xfc                                       =
+                                                                        =20
+[    6=2E231952]  cpu_startup_entry+0x38/0x3c                             =
+                                                                        =20
+[    6=2E235865]  kernel_init+0x0/0x1d8                                   =
+                                                                        =20
+[    6=2E239259]  start_kernel+0x4ac/0x710                                =
+                                                                        =20
+[    6=2E242914]  __primary_switched+0x80/0x88                            =
+                                                                        =20
+[    6=2E246916] handlers:                                                =
+                                                                        =20
+[    6=2E249177] [<(____ptrval____)>] usb_hcd_irq                         =
+                                                                        =20
+[    6=2E253443] Disabling IRQ #105
+=2E=2E=2E
+[   45=2E305428] xhci-mtk 11200000=2Eusb: xHCI host not responding to stop=
+ endpoint command                                                       =20
+[   45=2E351865] xhci-mtk 11200000=2Eusb: Host halt failed, -110          =
+                                                                          =
+=20
+[   45=2E357253] xhci-mtk 11200000=2Eusb: xHCI host controller not respond=
+ing, assume dead                                                          =
+=20
+[   45=2E364918] xhci-mtk 11200000=2Eusb: HC died; cleaning up=20
+
+maybe anybody can point me to possible rootcause? as this seem to happen s=
+omewhere in interrupt-handling i have no idea where to search
+
+this is what i did till now:
+
+# cat /proc/interrupts| grep xhci
+104:          0          0          0          0     GICv3 205 Level     x=
+hci-hcd:usb1
+105:     100201          0          0          0     GICv3 204 Level     x=
+hci-hcd:usb3
+
+mtk xhci driver itself seems unchanged so far
+
+$ git logone drivers/usb/host/xhci-mtk*
+06790c19086f 2024-02-29 xhci: replace real & fake port with pointer to roo=
+t hub port Niklas Neronin=20
+017dbfc05c31 2024-01-04 usb: xhci-mtk: fix a short packet issue of gen1 is=
+oc-in transfer Chunfeng Yun=20
+
+clocks seems also not the cause
+
+$ git logone drivers/clk/mediatek/
+878e845d8db0 2024-06-13 clk: mediatek: mt8183: Only enable runtime PM on m=
+t8183-mfgcfg Pin-yen Lin=20
+619b92b9c8fe 2024-05-18 Merge tag 'clk-for-linus' of git://git=2Ekernel=2E=
+org/pub/scm/linux/kernel/git/clk/linux Linus Torvalds=20
+4c0c087772d7 2024-04-18 clk: mediatek: mt8365-mm: fix DPI0 parent Alexandr=
+e Mergnat=20
+bb7b3c8e7180 2024-03-08 clk: mediatek: pllfh: Don't log error for missing =
+fhctl node N=C3=ADcolas F=2E R=2E A=2E Prado=20
+
+
+also when trying to find any error like pinctrl or similar seems not showi=
+ng any more like above related to usb
+
+root@bpi-r4-v11:~
+# dmesg | grep -i 'err\|fail\|unable'
+[    0=2E000000] CPU features: detected: ARM erratum 858921
+[    0=2E000000] arch_timer: Enabling local workaround for ARM erratum 858=
+921
+[    0=2E044091] cacheinfo: Unable to detect cache hierarchy for CPU 0
+[    0=2E070823] arch_timer: Enabling local workaround for ARM erratum 858=
+921
+[    0=2E071164] arch_timer: Enabling local workaround for ARM erratum 858=
+921
+[    0=2E071448] arch_timer: Enabling local workaround for ARM erratum 858=
+921
+[    0=2E330245] platform 11280000=2Epcie: Fixed dependency cycle(s) with =
+/soc/pcie@11280000/interrupt-controller
+[    0=2E340164] platform 11290000=2Epcie: Fixed dependency cycle(s) with =
+/soc/pcie@11290000/interrupt-controller
+[    0=2E350045] platform 11300000=2Epcie: Fixed dependency cycle(s) with =
+/soc/pcie@11300000/interrupt-controller
+[    0=2E359926] platform 11310000=2Epcie: Fixed dependency cycle(s) with =
+/soc/pcie@11310000/interrupt-controller
+[    0=2E671440] mtk-xsphy soc:xphy@11e10000: failed to get ref_clk(id-1)
+[    0=2E686306] mtk-socinfo mtk-socinfo=2E0=2Eauto: error -ENOENT: Failed=
+ to get socinfo data
+[    0=2E694258] mtk-socinfo mtk-socinfo=2E0=2Eauto: probe with driver mtk=
+-socinfo failed with error -2
+[    1=2E344755] ubi0 error: ubi_read_volume_table: the layout volume was =
+not found
+[    1=2E352050] ubi0 error: ubi_attach_mtd_dev: failed to attach mtd1, er=
+ror -22
+[    1=2E714508] rtc-pcf8563 2-0051: hctosys: unable to read the hardware =
+clock
+[    1=2E805626] mtk-msdc 11230000=2Emmc: msdc_track_cmd_data: cmd=3D52 ar=
+g=3D00000C00; host->error=3D0x00000002
+[    1=2E818727] mtk-msdc 11230000=2Emmc: msdc_track_cmd_data: cmd=3D52 ar=
+g=3D80000C08; host->error=3D0x00000002
+[    1=2E835940] mtk-msdc 11230000=2Emmc: msdc_track_cmd_data: cmd=3D5 arg=
+=3D00000000; host->error=3D0x00000002
+[    1=2E850219] mtk-msdc 11230000=2Emmc: msdc_track_cmd_data: cmd=3D5 arg=
+=3D00000000; host->error=3D0x00000002
+[    1=2E867994] mtk-msdc 11230000=2Emmc: msdc_track_cmd_data: cmd=3D5 arg=
+=3D00000000; host->error=3D0x00000002
+[    1=2E877061] mtk-msdc 11230000=2Emmc: msdc_track_cmd_data: cmd=3D5 arg=
+=3D00000000; host->error=3D0x00000002
+[    2=2E005070] GPT: Use GNU Parted to correct GPT errors=2E
+[    2=2E184228] mtk-pcie-gen3 11280000=2Epcie: probe with driver mtk-pcie=
+-gen3 failed with error -110
+[    6=2E185775]  note_interrupt+0x308/0x358
+[    6=2E209774]  do_interrupt_handler+0x80/0x84
+[    6=2E213947]  el1_interrupt+0x34/0x54
+[    6=2E809767] systemd[1]: Failed to look up module alias 'autofs4': Fun=
+ction not implemented
+[    7=2E765542] systemd[1]: Arbitrary Executable File Formats File System=
+ Automount Point was skipped because of a failed condition check (Condit=2E
+[    8=2E099430] systemd[1]: Journal Audit Socket was skipped because of a=
+ failed condition check (ConditionSecurity=3Daudit)=2E
+[    8=2E285821] systemd[1]: Huge Pages File System was skipped because of=
+ a failed condition check (ConditionPathExists=3D/sys/kernel/mm/hugepages)=
+=2E
+[    8=2E455617] systemd[1]: Create List of Static Device Nodes was skippe=
+d because of a failed condition check (ConditionFileNotEmpty=3D/lib/module=
+=2E
+[    8=2E685692] systemd[1]: Repartition Root Disk was skipped because all=
+ trigger condition checks failed=2E
+[   45=2E351865] xhci-mtk 11200000=2Eusb: Host halt failed, -110
+
+because of the pcie interrupt messages i checked my nvme and wifi-card and=
+ look sgood, so it seems no generic interrupt issue
+
+# lspci
+0000:00:00=2E0 PCI bridge: MEDIATEK Corp=2E Device 7988 (rev 01)
+0000:01:00=2E0 Network controller: MEDIATEK Corp=2E Device 7990
+0001:00:00=2E0 PCI bridge: MEDIATEK Corp=2E Device 7988 (rev 01)
+0001:01:00=2E0 Network controller: MEDIATEK Corp=2E Device 7991
+0002:00:00=2E0 PCI bridge: MEDIATEK Corp=2E Device 7988 (rev 01)
+0002:01:00=2E0 Non-Volatile memory controller: ADATA Technology Co=2E, Ltd=
+=2E ADATA XPG GAMMIXS1 1L Media (rev 01)
+
+full source is here:
+
+https://github=2Ecom/frank-w/BPI-Router-Linux/tree/6=2E10-main
+
+regards Frank
 
