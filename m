@@ -4,63 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B575C3DA61
-	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Jul 2024 12:15:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52A6CC3DA61
+	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Jul 2024 12:15:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=5i/RPAEt+X5RN+U7Llg8eBVQiQiZ0+jhsIvicw3bLk4=; b=Cx++eGKQtUlLQvF3GBo81+Ix0h
-	cVXTJiPNtgGYFJ9w+0Tp/IKt+mXSpk48qxugF8BludKntcn/qZHXw3VybSKiEog2dktHNufrSuqwc
-	jB5Rw+RvmkOrObIcewkCpKFzesdjQUj9dGl3a89IFjdBEJ1M8WvAizFIpLfqozdfEnWFJJKKZ5LWm
-	azJwWKewBO9miHcOPxYs+jbqgAdPcEub9G/EeXncQNPTtjz2XzTcuXZgxYGt7TuMzHOFezKmL+1//
-	Bm86Gg4fZ67FbDRu9U8m2evW+Ho/grMJa1NwiLFAvtu0cllZWuKun77uH3jHF74QJDhvAptqOxdwL
-	hIH2VFtQ==;
+	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=PXRD4T8Sdv60h0uyEFXaREU3np3ECNbip0ZEKAYODiY=; b=n6YuMLueQwESWTnEz6lVLfP1Lf
+	T6Yd7hzr7C5Li17iezKm9WLwlvV82Y6mxaRcVvvAW9jeZ5tqelKn4Z0stiEYfipBpwXfvVn16sVOC
+	hB/Mld5WWKYsHSCUyadKKemQ34/nIJESsMei/MNdXORrn7JH+hsDp46zeqKQfXyGhRQ+g1SvXUjFK
+	YH9CkqcrxlxZMCAZ5N5FJoCwOHV9LoW/7oh+xcJzsNFxC914fouFa7T5p5EOELptQPfKoY7+EeB9M
+	dCNPx+nXxLg58gE+TCoO5ibWILGBkzORziw3Kmc+ycvCGVefs+naG6ulfmb4mnCrP+H7SJiyWgU+5
+	bxtD12Jw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sXgKX-00000006fAB-3VPM;
-	Sat, 27 Jul 2024 12:15:21 +0000
-Received: from mail-lj1-x22f.google.com ([2a00:1450:4864:20::22f])
+	id 1sXgKu-00000006fFG-3SZC;
+	Sat, 27 Jul 2024 12:15:44 +0000
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sXgK7-00000006f70-24CH;
-	Sat, 27 Jul 2024 12:14:57 +0000
-Received: by mail-lj1-x22f.google.com with SMTP id 38308e7fff4ca-2f025b94e07so26175701fa.0;
-        Sat, 27 Jul 2024 05:14:54 -0700 (PDT)
+	id 1sXgK9-00000006f7Q-3mV4;
+	Sat, 27 Jul 2024 12:14:59 +0000
+Received: by mail-ed1-x534.google.com with SMTP id 4fb4d7f45d1cf-58ef19aa69dso2726521a12.3;
+        Sat, 27 Jul 2024 05:14:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1722082493; x=1722687293; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=5i/RPAEt+X5RN+U7Llg8eBVQiQiZ0+jhsIvicw3bLk4=;
-        b=ACXr6HOx5GkJE9Cq4gwoXjHzmclg64evywg744doVdAmFN6FVG/9LeJBb6RPWbqm+5
-         MirJfiVOrPguQfOfGvMMf78hP3nXVQMKyB5XIT0oYrIqFit35QsDrKYsws7IN7lqo2Dn
-         sEv9SSGHWsacw8vuvUT1v+iNN9T76uk1eOO0QKPwLVIUwGSyRHU0BK4blhzP/+aQ3PjL
-         ngocySkldOpXEwuaiRUs84vYcNXEq2cLK0LZNVUZJs9fta0aJCBjJup6m0doqhp9p4+5
-         cUnN41s8NFALGXTGa3i0fAwTG3iTf/ZebD4/obmwMjRq5pKlS22cf1pUQD9WV2tFSVoh
-         SxmQ==
+        d=gmail.com; s=20230601; t=1722082496; x=1722687296; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=PXRD4T8Sdv60h0uyEFXaREU3np3ECNbip0ZEKAYODiY=;
+        b=kkEmsMvQY0OSlUFr8YsGjv6G+rV9Zi0lSUsbNGsQzmMDWrBbI3GfjGzU5A8gg6vg4+
+         KFSU2pknxYFFBCarEQ7ewMG3EeD8Vgq2Z75EKlp4qt9th21P7uJsTB038Gncz1NUwqfS
+         uKeLK0gN0hMjdeYGP8k/hM8hXW68XPr7rdELS2SV+uO7Pt00GyK3/A3JCHdgn6HOJ70H
+         bAyeToeCosony5THVsFcjSnYM8QFMB1YBdXjR7m27tXHgKeUqqiFBfQJYkh6bE9YR12L
+         wOEtmK8yV9oSATbe1ySkD+BYhk0lX7MsEW4Fb37rvyTlaFoQrzL7Hce/JC6V59r3SAoV
+         F1fA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1722082493; x=1722687293;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=5i/RPAEt+X5RN+U7Llg8eBVQiQiZ0+jhsIvicw3bLk4=;
-        b=SQ1l8foZPug1n9WvEmx2QAQpPk0wN+wSRldTErBTJrLp0ouCQJ4oStzrEsNRtuC6U6
-         CkiU8man5OFN5gOYDdyYPl18S3BA53Qo2d/wMNk0TXuk2YpCdeFehQtD8I6svfOAgw50
-         PHILTqHoJTkoQvTckqEiE/n9D3abJoeuZqakGVnCxkEcKE4oRK3jztkUjsqbiTJM64Gm
-         6mUI3RiZNYwD7ZBqlFWnvtgiuh5eHKg476AWekSnVHjEAxOBxCvMJUirTD9Ul6SBGDz7
-         8uobRToUi0T/CD1r3xJA0wKb43L8IYx9ln+d1Z9kaqA0nzzx3N1S5MXwk13MkQqVTngm
-         VLjg==
-X-Forwarded-Encrypted: i=1; AJvYcCWck97+uPJk+XVbZ3OfIgIgNKwItfuPKVjz81zt8IRLGCctAHVileNbitI+DukQbO+2w95Xau/5uIdJEdC6CBZDlc1F0yZbse5UGuLnaCTpF0gsszH47qy3RBfYo3SvxEFl1VsNdThh5PFI4ZxfdS+LQWRvp/R8zco=
-X-Gm-Message-State: AOJu0YyJxAle+x9+RvScjA0KTiBLcjX4WFFs5hqXcXFBxdGmCyBKPVjx
-	VPYzf2o88i6QCIK9590k5aCqgmbfbz61uH93EzrSdOACNdat2/3KWMoxFA==
-X-Google-Smtp-Source: AGHT+IEk8TIJM9PpIVUJ/v4T39HeP7HfTLORM7kK3IUCwmiPBpyqRdBIiMVkQeuhuirbkSdQ/m5+KQ==
-X-Received: by 2002:ac2:4acb:0:b0:52c:d27b:ddcb with SMTP id 2adb3069b0e04-5309b269d13mr1645499e87.3.1722082493171;
-        Sat, 27 Jul 2024 05:14:53 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1722082496; x=1722687296;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=PXRD4T8Sdv60h0uyEFXaREU3np3ECNbip0ZEKAYODiY=;
+        b=XQUYbSQ+FZ+IVtdJoP08dusvOidHjJRLARf21pF9vIfmFAlXgNv9dJ99TrfJt+H+hv
+         FwsD9ZPgiTyZDMC21vtIRdpjRvlq9aQ4MFGqmniR9yuVTHUm30nbBcbIilwoWkWVEeDI
+         hk8AZnB307grelPRODU7N0VjZmM3EPQdG/flkQk/icwfSS1sfFdVpTeikt+AZb7Ytq+9
+         PzzAMVenSS1O/yYn6OsePDio+JkmxKYOV+qgYlEsyWPedIyhIXlfS+0koA/8DPLcXXY0
+         ehfOkjUud9QY8omjJLW1/EoN6WPq2mM94U4GSjHAfRSUhE5o5Z55vLU2vHwmj452WFuD
+         Z5+Q==
+X-Forwarded-Encrypted: i=1; AJvYcCUs1M/aGQLWjn4cTb728llytRXOHqaZcBvBeaEXF/vC1tZC5Lt23oSEdioqC1zaolmILgciB/P/2B9OobCMmJa9vwT7FijM7NeCgiLR0+LqtOD4L3lalpqBq1bffeCIM2B/qX2zXwiw2gLJJbQiAyc2L2HQIj335K8=
+X-Gm-Message-State: AOJu0YzkBIeYbZ8/UqHkMP8gGdIemeL03CBx2+3mqJYD1o9jzAGQGApx
+	2tq1aTPBkXwrZrVJz+CB+UmGqDRQylxGpslu8txCq4AqGkFH8/Ax
+X-Google-Smtp-Source: AGHT+IER/q48nsm2HXaWn1x7wbcIBLaFCPE9pn0FAuXkO7Bu1saORaSRwYXlWLaLbIV0bcZFhQUgbg==
+X-Received: by 2002:a05:6402:4303:b0:5a2:8c11:7e05 with SMTP id 4fb4d7f45d1cf-5b020102e6emr1627536a12.6.1722082495704;
+        Sat, 27 Jul 2024 05:14:55 -0700 (PDT)
 Received: from localhost.lan (031011218106.poznan.vectranet.pl. [31.11.218.106])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5ac63590e73sm3005180a12.35.2024.07.27.05.14.51
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5ac63590e73sm3005180a12.35.2024.07.27.05.14.54
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 27 Jul 2024 05:14:52 -0700 (PDT)
+        Sat, 27 Jul 2024 05:14:55 -0700 (PDT)
 From: =?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <zajec5@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
 	Jiri Slaby <jirislaby@kernel.org>,
@@ -76,17 +77,18 @@ Cc: linux-serial@vger.kernel.org,
 	John Crispin <john@phrozen.org>,
 	Daniel Golle <daniel@makrotopia.org>,
 	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>
-Subject: [PATCH 1/2] dt-bindings: serial: mediatek,uart: add MT7981
-Date: Sat, 27 Jul 2024 14:14:46 +0200
-Message-Id: <20240727121447.1016-1-zajec5@gmail.com>
+Subject: [PATCH 2/2] arm64: dts: mediatek: mt7981: add UART controllers
+Date: Sat, 27 Jul 2024 14:14:47 +0200
+Message-Id: <20240727121447.1016-2-zajec5@gmail.com>
 X-Mailer: git-send-email 2.35.3
+In-Reply-To: <20240727121447.1016-1-zajec5@gmail.com>
+References: <20240727121447.1016-1-zajec5@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240727_051455_555891_C231449C 
-X-CRM114-Status: UNSURE (   9.82  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240727_051457_966726_2EFEDA07 
+X-CRM114-Status: GOOD (  10.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,25 +105,57 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Rafał Miłecki <rafal@milecki.pl>
 
-Add compatible string for serial on MT7981 SoC.
+MT7981 has three on-SoC UART controllers.
 
 Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
 ---
- Documentation/devicetree/bindings/serial/mediatek,uart.yaml | 1 +
- 1 file changed, 1 insertion(+)
+ arch/arm64/boot/dts/mediatek/mt7981b.dtsi | 33 +++++++++++++++++++++++
+ 1 file changed, 33 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/serial/mediatek,uart.yaml b/Documentation/devicetree/bindings/serial/mediatek,uart.yaml
-index ff61ffdcad1d..1b02f0b197ff 100644
---- a/Documentation/devicetree/bindings/serial/mediatek,uart.yaml
-+++ b/Documentation/devicetree/bindings/serial/mediatek,uart.yaml
-@@ -36,6 +36,7 @@ properties:
-               - mediatek,mt7622-uart
-               - mediatek,mt7623-uart
-               - mediatek,mt7629-uart
-+              - mediatek,mt7981-uart
-               - mediatek,mt7986-uart
-               - mediatek,mt7988-uart
-               - mediatek,mt8127-uart
+diff --git a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
+index b096009ef99c..5cbea9cd411f 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
+@@ -94,6 +94,39 @@ pwm@10048000 {
+ 			#pwm-cells = <2>;
+ 		};
+ 
++		serial@11002000 {
++			compatible = "mediatek,mt7981-uart", "mediatek,mt6577-uart";
++			reg = <0 0x11002000 0 0x100>;
++			interrupts = <GIC_SPI 123 IRQ_TYPE_LEVEL_HIGH>;
++			interrupt-names = "uart", "wakeup";
++			clocks = <&infracfg CLK_INFRA_UART0_SEL>,
++				 <&infracfg CLK_INFRA_UART0_CK>;
++			clock-names = "baud", "bus";
++			status = "disabled";
++		};
++
++		serial@11003000 {
++			compatible = "mediatek,mt7981-uart", "mediatek,mt6577-uart";
++			reg = <0 0x11003000 0 0x100>;
++			interrupts = <GIC_SPI 124 IRQ_TYPE_LEVEL_HIGH>;
++			interrupt-names = "uart", "wakeup";
++			clocks = <&infracfg CLK_INFRA_UART1_SEL>,
++				 <&infracfg CLK_INFRA_UART1_CK>;
++			clock-names = "baud", "bus";
++			status = "disabled";
++		};
++
++		serial@11004000 {
++			compatible = "mediatek,mt7981-uart", "mediatek,mt6577-uart";
++			reg = <0 0x11004000 0 0x100>;
++			interrupts = <GIC_SPI 125 IRQ_TYPE_LEVEL_HIGH>;
++			interrupt-names = "uart", "wakeup";
++			clocks = <&infracfg CLK_INFRA_UART2_SEL>,
++				 <&infracfg CLK_INFRA_UART2_CK>;
++			clock-names = "baud", "bus";
++			status = "disabled";
++		};
++
+ 		i2c@11007000 {
+ 			compatible = "mediatek,mt7981-i2c";
+ 			reg = <0 0x11007000 0 0x1000>,
 -- 
 2.35.3
 
