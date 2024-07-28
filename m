@@ -4,59 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0D24C3DA64
-	for <linux-mediatek@archiver.kernel.org>; Sun, 28 Jul 2024 10:31:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9195C3DA64
+	for <linux-mediatek@archiver.kernel.org>; Sun, 28 Jul 2024 10:32:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Or9lWNWAOs3cB2A612UFoDdglPLYqzf1ohZZbicX5Gw=; b=VosMDIDtibfrysD9BpZckJfyVR
-	eZBKBsKtvXD0YB0o4P05giictkF99A0VG4gmhAbymX1+IZ9Uz+qtfostfCma1S+tqPgkUW6Cmw7k7
-	TLfQ5ALm+Rz1c6m/FI3dXhQXf63I7vjKOlyVyAEcCoX7UvhXRS02kUBVHGP33R8Na/2uNnvPWU1IR
-	XEill4P7pRKsx+R513VcQJYleIJfTl3eQ5y42xDvjuCHMvnulvaUC4OL7fn0LwcLNJfPHb+5N7wsi
-	UXFgKGRTIz3E07Yb9+3/mDucPDQsjrSIP2Es/wcBwPjDTX2M43MYJNTv7lhtpCYO++CWckIv22kpf
-	kW7Yhhdg==;
+	bh=+kA5q67tTUFhzvR4i4/PwXLnULggb3ibbYVdNe7jQas=; b=gMSfFLS0MMni+NYRbo4xiRozbR
+	5akqyM8/VDKjawmJSoquhnAjddHUWO6jLp5cxNs4MoxiokKTHNzgvrfA/KkSjg2xCwAYl3llNkS8m
+	RAr8ZDeqbm09FtOtNxxRD3cE4JfgTkGoWGzCRYQgjizB6+LyNWbfO4zMtnKBlkkfUAC+2fP/xXCow
+	3x8yB2Sk1oXH97bT0VGK/Rp3DCSweDxHi5/WMDYWQb6YAddmVlAE501cflZjlYzuIRDkEcc9Eo5Qu
+	UEb778+LGemLuGWfy2MrAV8qmwc5FygpikgZHLbAUpchUeub0rUfUmv8Xg8COgMwUfzh1m/sAZ0rB
+	YJPJ/KMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sY1Bl-00000008I5K-3s9s;
-	Sun, 28 Jul 2024 10:31:41 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1sY1C9-00000008I8j-27YR;
+	Sun, 28 Jul 2024 10:32:05 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sY1BM-00000008I2Y-0DGY;
-	Sun, 28 Jul 2024 10:31:17 +0000
+	id 1sY1BY-00000008I4C-20dw;
+	Sun, 28 Jul 2024 10:31:30 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id B6498CE0764;
-	Sun, 28 Jul 2024 10:31:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C4264C4AF09;
-	Sun, 28 Jul 2024 10:31:07 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 8E480CE016A;
+	Sun, 28 Jul 2024 10:31:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E101FC116B1;
+	Sun, 28 Jul 2024 10:31:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1722162672;
-	bh=17b1KmsZq4pAU+NvEPQVCR4iwJs15gGQjUnqpFafd7I=;
+	s=k20201202; t=1722162685;
+	bh=vdOfdbzQN8uEiVmLCwGmr1PmbBvmwZ3m81s7PpNeXj0=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=d3Lm4dQV3e4YLATou/cPITSifz+DThCJeeq2z50qYNb6Ma67yiMTu9ANq6+t9GvEq
-	 RIJEOIU1t41OLsPEFX/GL8ulHgIQN5TxIyNme2RuBsLir4KT8P28Pa1aOO7lohzelK
-	 jLdqWjqMkldOyE/W+6kRmqy82HwEpw7NKag5ZlWOSODWZqapWfl6FVe7DVSaMYiB9I
-	 ZwRzIT1gM2Uy28EF2/GgrRrS2KH0f03SVg8UlWYSs6qB2Ipc7+WXBs6MCb7HjNGMVR
-	 ZICMV7hhzqsoS5uFiC66AYZ8gl5/43MEDeTDLrEL0tnAP+2w9IuQh0upDdFLiw8Y5o
-	 YONv8115y4G4Q==
-Message-ID: <55c86b6a-0746-4e5e-b085-9bc33f95a78b@kernel.org>
-Date: Sun, 28 Jul 2024 12:31:06 +0200
+	b=HBwRCuPF4vF4dF8Se84UG2NaW5+gHZPd1ZhCFemovn8QOdKgNirC7HYW8ARMYdiW5
+	 x9ZqgvGdgRIza59xYj4W782Y6phIGAAYi/CgO2Y9G+coLclrkTOl7MqC4Zlxngpyqc
+	 Xiji32qM4DY4pYmkm59MPATP1GpkGTqBb/BebOkkadu552MvLW7An0PkdVogdDzDdX
+	 I0KT6rWhBzBYNM2VyPRDs6EipHQ3RTcnPsYEQ8iv7N2ieDUcQRrwW1/ghwtyePAr/h
+	 O2bVB9vFJmMTqbXRLvDaM8tp+uMiXHoWQacYpvOHTzdFS+1pswJ0JInKZcpq1SMY1Z
+	 8HW4dGteVOvAw==
+Message-ID: <d27972fb-33fc-4d90-8d9b-4bfd4aa9a693@kernel.org>
+Date: Sun, 28 Jul 2024 12:31:18 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] dt-bindings: serial: mediatek,uart: add MT7981
+Subject: Re: [PATCH 1/2] dt-bindings: spi: mediatek,spi-mt65xx: add compatible
+ for MT7981
 To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Jiri Slaby <jirislaby@kernel.org>, Rob Herring <robh@kernel.org>,
+ Mark Brown <broonie@kernel.org>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
  <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-serial@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- John Crispin <john@phrozen.org>, Daniel Golle <daniel@makrotopia.org>,
- =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
-References: <20240727121447.1016-1-zajec5@gmail.com>
+Cc: Leilk Liu <leilk.liu@mediatek.com>, linux-spi@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, John Crispin <john@phrozen.org>,
+ Daniel Golle <daniel@makrotopia.org>, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?=
+ <rafal@milecki.pl>
+References: <20240727114828.29558-1-zajec5@gmail.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -102,12 +103,12 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20240727121447.1016-1-zajec5@gmail.com>
+In-Reply-To: <20240727114828.29558-1-zajec5@gmail.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240728_033116_479165_CBE1F263 
-X-CRM114-Status: UNSURE (   4.58  )
+X-CRM114-CacheID: sfid-20240728_033128_880375_7433724B 
+X-CRM114-Status: UNSURE (   5.18  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -123,11 +124,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 27/07/2024 14:14, Rafał Miłecki wrote:
+On 27/07/2024 13:48, Rafał Miłecki wrote:
 > From: Rafał Miłecki <rafal@milecki.pl>
 > 
-> Add compatible string for serial on MT7981 SoC.
+> MT7981 has SPI controllers based on IPM design
 > 
+> Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
 
 Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
