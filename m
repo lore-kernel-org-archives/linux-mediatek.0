@@ -4,91 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52A6CC3DA61
-	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Jul 2024 12:15:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0D24C3DA64
+	for <linux-mediatek@archiver.kernel.org>; Sun, 28 Jul 2024 10:31:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PXRD4T8Sdv60h0uyEFXaREU3np3ECNbip0ZEKAYODiY=; b=n6YuMLueQwESWTnEz6lVLfP1Lf
-	T6Yd7hzr7C5Li17iezKm9WLwlvV82Y6mxaRcVvvAW9jeZ5tqelKn4Z0stiEYfipBpwXfvVn16sVOC
-	hB/Mld5WWKYsHSCUyadKKemQ34/nIJESsMei/MNdXORrn7JH+hsDp46zeqKQfXyGhRQ+g1SvXUjFK
-	YH9CkqcrxlxZMCAZ5N5FJoCwOHV9LoW/7oh+xcJzsNFxC914fouFa7T5p5EOELptQPfKoY7+EeB9M
-	dCNPx+nXxLg58gE+TCoO5ibWILGBkzORziw3Kmc+ycvCGVefs+naG6ulfmb4mnCrP+H7SJiyWgU+5
-	bxtD12Jw==;
+	bh=Or9lWNWAOs3cB2A612UFoDdglPLYqzf1ohZZbicX5Gw=; b=VosMDIDtibfrysD9BpZckJfyVR
+	eZBKBsKtvXD0YB0o4P05giictkF99A0VG4gmhAbymX1+IZ9Uz+qtfostfCma1S+tqPgkUW6Cmw7k7
+	TLfQ5ALm+Rz1c6m/FI3dXhQXf63I7vjKOlyVyAEcCoX7UvhXRS02kUBVHGP33R8Na/2uNnvPWU1IR
+	XEill4P7pRKsx+R513VcQJYleIJfTl3eQ5y42xDvjuCHMvnulvaUC4OL7fn0LwcLNJfPHb+5N7wsi
+	UXFgKGRTIz3E07Yb9+3/mDucPDQsjrSIP2Es/wcBwPjDTX2M43MYJNTv7lhtpCYO++CWckIv22kpf
+	kW7Yhhdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sXgKu-00000006fFG-3SZC;
-	Sat, 27 Jul 2024 12:15:44 +0000
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+	id 1sY1Bl-00000008I5K-3s9s;
+	Sun, 28 Jul 2024 10:31:41 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sXgK9-00000006f7Q-3mV4;
-	Sat, 27 Jul 2024 12:14:59 +0000
-Received: by mail-ed1-x534.google.com with SMTP id 4fb4d7f45d1cf-58ef19aa69dso2726521a12.3;
-        Sat, 27 Jul 2024 05:14:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1722082496; x=1722687296; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=PXRD4T8Sdv60h0uyEFXaREU3np3ECNbip0ZEKAYODiY=;
-        b=kkEmsMvQY0OSlUFr8YsGjv6G+rV9Zi0lSUsbNGsQzmMDWrBbI3GfjGzU5A8gg6vg4+
-         KFSU2pknxYFFBCarEQ7ewMG3EeD8Vgq2Z75EKlp4qt9th21P7uJsTB038Gncz1NUwqfS
-         uKeLK0gN0hMjdeYGP8k/hM8hXW68XPr7rdELS2SV+uO7Pt00GyK3/A3JCHdgn6HOJ70H
-         bAyeToeCosony5THVsFcjSnYM8QFMB1YBdXjR7m27tXHgKeUqqiFBfQJYkh6bE9YR12L
-         wOEtmK8yV9oSATbe1ySkD+BYhk0lX7MsEW4Fb37rvyTlaFoQrzL7Hce/JC6V59r3SAoV
-         F1fA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1722082496; x=1722687296;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=PXRD4T8Sdv60h0uyEFXaREU3np3ECNbip0ZEKAYODiY=;
-        b=XQUYbSQ+FZ+IVtdJoP08dusvOidHjJRLARf21pF9vIfmFAlXgNv9dJ99TrfJt+H+hv
-         FwsD9ZPgiTyZDMC21vtIRdpjRvlq9aQ4MFGqmniR9yuVTHUm30nbBcbIilwoWkWVEeDI
-         hk8AZnB307grelPRODU7N0VjZmM3EPQdG/flkQk/icwfSS1sfFdVpTeikt+AZb7Ytq+9
-         PzzAMVenSS1O/yYn6OsePDio+JkmxKYOV+qgYlEsyWPedIyhIXlfS+0koA/8DPLcXXY0
-         ehfOkjUud9QY8omjJLW1/EoN6WPq2mM94U4GSjHAfRSUhE5o5Z55vLU2vHwmj452WFuD
-         Z5+Q==
-X-Forwarded-Encrypted: i=1; AJvYcCUs1M/aGQLWjn4cTb728llytRXOHqaZcBvBeaEXF/vC1tZC5Lt23oSEdioqC1zaolmILgciB/P/2B9OobCMmJa9vwT7FijM7NeCgiLR0+LqtOD4L3lalpqBq1bffeCIM2B/qX2zXwiw2gLJJbQiAyc2L2HQIj335K8=
-X-Gm-Message-State: AOJu0YzkBIeYbZ8/UqHkMP8gGdIemeL03CBx2+3mqJYD1o9jzAGQGApx
-	2tq1aTPBkXwrZrVJz+CB+UmGqDRQylxGpslu8txCq4AqGkFH8/Ax
-X-Google-Smtp-Source: AGHT+IER/q48nsm2HXaWn1x7wbcIBLaFCPE9pn0FAuXkO7Bu1saORaSRwYXlWLaLbIV0bcZFhQUgbg==
-X-Received: by 2002:a05:6402:4303:b0:5a2:8c11:7e05 with SMTP id 4fb4d7f45d1cf-5b020102e6emr1627536a12.6.1722082495704;
-        Sat, 27 Jul 2024 05:14:55 -0700 (PDT)
-Received: from localhost.lan (031011218106.poznan.vectranet.pl. [31.11.218.106])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5ac63590e73sm3005180a12.35.2024.07.27.05.14.54
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 27 Jul 2024 05:14:55 -0700 (PDT)
-From: =?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <zajec5@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Jiri Slaby <jirislaby@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-serial@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	John Crispin <john@phrozen.org>,
-	Daniel Golle <daniel@makrotopia.org>,
-	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>
-Subject: [PATCH 2/2] arm64: dts: mediatek: mt7981: add UART controllers
-Date: Sat, 27 Jul 2024 14:14:47 +0200
-Message-Id: <20240727121447.1016-2-zajec5@gmail.com>
-X-Mailer: git-send-email 2.35.3
-In-Reply-To: <20240727121447.1016-1-zajec5@gmail.com>
-References: <20240727121447.1016-1-zajec5@gmail.com>
+	id 1sY1BM-00000008I2Y-0DGY;
+	Sun, 28 Jul 2024 10:31:17 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id B6498CE0764;
+	Sun, 28 Jul 2024 10:31:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C4264C4AF09;
+	Sun, 28 Jul 2024 10:31:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1722162672;
+	bh=17b1KmsZq4pAU+NvEPQVCR4iwJs15gGQjUnqpFafd7I=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=d3Lm4dQV3e4YLATou/cPITSifz+DThCJeeq2z50qYNb6Ma67yiMTu9ANq6+t9GvEq
+	 RIJEOIU1t41OLsPEFX/GL8ulHgIQN5TxIyNme2RuBsLir4KT8P28Pa1aOO7lohzelK
+	 jLdqWjqMkldOyE/W+6kRmqy82HwEpw7NKag5ZlWOSODWZqapWfl6FVe7DVSaMYiB9I
+	 ZwRzIT1gM2Uy28EF2/GgrRrS2KH0f03SVg8UlWYSs6qB2Ipc7+WXBs6MCb7HjNGMVR
+	 ZICMV7hhzqsoS5uFiC66AYZ8gl5/43MEDeTDLrEL0tnAP+2w9IuQh0upDdFLiw8Y5o
+	 YONv8115y4G4Q==
+Message-ID: <55c86b6a-0746-4e5e-b085-9bc33f95a78b@kernel.org>
+Date: Sun, 28 Jul 2024 12:31:06 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/2] dt-bindings: serial: mediatek,uart: add MT7981
+To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Jiri Slaby <jirislaby@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-serial@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ John Crispin <john@phrozen.org>, Daniel Golle <daniel@makrotopia.org>,
+ =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
+References: <20240727121447.1016-1-zajec5@gmail.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <20240727121447.1016-1-zajec5@gmail.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240727_051457_966726_2EFEDA07 
-X-CRM114-Status: GOOD (  10.59  )
+X-CRM114-CacheID: sfid-20240728_033116_479165_CBE1F263 
+X-CRM114-Status: UNSURE (   4.58  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,60 +123,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Rafał Miłecki <rafal@milecki.pl>
+On 27/07/2024 14:14, Rafał Miłecki wrote:
+> From: Rafał Miłecki <rafal@milecki.pl>
+> 
+> Add compatible string for serial on MT7981 SoC.
+> 
 
-MT7981 has three on-SoC UART controllers.
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
----
- arch/arm64/boot/dts/mediatek/mt7981b.dtsi | 33 +++++++++++++++++++++++
- 1 file changed, 33 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
-index b096009ef99c..5cbea9cd411f 100644
---- a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
-@@ -94,6 +94,39 @@ pwm@10048000 {
- 			#pwm-cells = <2>;
- 		};
- 
-+		serial@11002000 {
-+			compatible = "mediatek,mt7981-uart", "mediatek,mt6577-uart";
-+			reg = <0 0x11002000 0 0x100>;
-+			interrupts = <GIC_SPI 123 IRQ_TYPE_LEVEL_HIGH>;
-+			interrupt-names = "uart", "wakeup";
-+			clocks = <&infracfg CLK_INFRA_UART0_SEL>,
-+				 <&infracfg CLK_INFRA_UART0_CK>;
-+			clock-names = "baud", "bus";
-+			status = "disabled";
-+		};
-+
-+		serial@11003000 {
-+			compatible = "mediatek,mt7981-uart", "mediatek,mt6577-uart";
-+			reg = <0 0x11003000 0 0x100>;
-+			interrupts = <GIC_SPI 124 IRQ_TYPE_LEVEL_HIGH>;
-+			interrupt-names = "uart", "wakeup";
-+			clocks = <&infracfg CLK_INFRA_UART1_SEL>,
-+				 <&infracfg CLK_INFRA_UART1_CK>;
-+			clock-names = "baud", "bus";
-+			status = "disabled";
-+		};
-+
-+		serial@11004000 {
-+			compatible = "mediatek,mt7981-uart", "mediatek,mt6577-uart";
-+			reg = <0 0x11004000 0 0x100>;
-+			interrupts = <GIC_SPI 125 IRQ_TYPE_LEVEL_HIGH>;
-+			interrupt-names = "uart", "wakeup";
-+			clocks = <&infracfg CLK_INFRA_UART2_SEL>,
-+				 <&infracfg CLK_INFRA_UART2_CK>;
-+			clock-names = "baud", "bus";
-+			status = "disabled";
-+		};
-+
- 		i2c@11007000 {
- 			compatible = "mediatek,mt7981-i2c";
- 			reg = <0 0x11007000 0 0x1000>,
--- 
-2.35.3
+Best regards,
+Krzysztof
 
 
