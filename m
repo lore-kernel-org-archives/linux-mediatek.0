@@ -4,75 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFE42C3DA61
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jul 2024 07:07:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F6E7C3DA4A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jul 2024 07:16:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FXnNDF6yDezLz3N7gpsxVKnGxCExhEG+nxYgUEp9sPc=; b=2tarxHhfPXz7XyB+95ArM9osMc
-	la98PbL6zEIN6oDgPAKgpuAkRn47ZuwTjCB0fUKf7GvIxAN0AIoDgWEH4hJk5deSRQmg9x2PEM2jG
-	73cgZVCZAPSMCvTyHcn+sCWrGKV06McFAVUCyeQ6jkbmZ5o25ZTe0L6ZtQwL9rjlEH2pYG25tTPcc
-	Jdof+SyYbYHDWDu1lovjKoR8J3Gc9DvNJk30wI2XIw++8J6WoocJSDdCpSgx95GzaFfTlLCzCyRpz
-	uKYDbVqDT1sCzMIbXjzIqZsGtKiiDas7f3QJ4HP0VCtXLS+rHQKzt7P1wzQA21r3Ff/qX8as+JU0K
-	Sk08LuzQ==;
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=aIc4NRIeHEFygIQHKpa4gE3f3X/S5XUFpfK78RXhxpU=; b=1oml8abppmdENOcqBH8eYYx1g3
+	W74p/E1D4qKzZr5fdTx4S/uZSOqBXLW2xkaOaiobd77TS/+sKNrH5VSnNnXwDYHHhJhu/Il/c3jUf
+	uijppDfFqj3qx5TzkQc/pk2HhAn5Zu6Y2lhZgAFbDS6t19jrY+qkcX8XSoxeLisQ1756bmpjR0uQ9
+	BB8Leb6kisi/fZUYoLqLIE1iA8ammJ89z7OkOnENJfGW15GuCzO/S9ID4zo7xfhqdOxEj2eX5zEEg
+	E/fr7b1z+wKsRq48etnk9WRI+BVWQwd0v7i23bh0a+l3+YvTj1HrzoAl9mzVz8J9J2VuqmaZ3Wxr3
+	FvhAkOgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYKTe-0000000AGFB-1K58;
-	Mon, 29 Jul 2024 07:07:26 +0000
-Received: from esa.microchip.iphmx.com ([68.232.153.233])
+	id 1sYKcQ-0000000AJZC-3bFX;
+	Mon, 29 Jul 2024 07:16:30 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYKT9-0000000AG3x-3ayL;
-	Mon, 29 Jul 2024 07:06:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
-  t=1722236815; x=1753772815;
-  h=from:to:cc:subject:date:message-id:in-reply-to:
-   references:mime-version:content-transfer-encoding;
-  bh=iGJ3QLxUBx3lWaj8smL6i5Dofs/yvFBxdgR2BHeTifY=;
-  b=ZYQFE4HAeuGGH4Z5ivhZaVyjqPEMVnM0YIHcZTCSP1+0RSWnG+Ri0/E2
-   v3acYOkt0TCiS+JOW4YSb97MoyLXgPu7EEKbfTBx3sePkBgsb0lOSwfbe
-   zeJqFtRyElRWWP0FfDr8SjBJmCezNeXLVw+S3BHo8OfBGCgjOfM1j9OO5
-   dzd4SV2rK8hmVqxULaLpfQ/0p32UgX73u1VD20WN3d/EugNjf0ZQMxbXE
-   pu9u+DVEEcACFhNKKDpche2fByX1d1gUj2Q9Njg3nouydnp0hYGhIlWYX
-   Zl0AtUv4+YorQl7O7fJpsAUWS4te+soeBQV05wME8US0wh9DpndVJjNhs
-   w==;
-X-CSE-ConnectionGUID: MnTnLLroRF2oCkj0nuokmg==
-X-CSE-MsgGUID: 5TKxq8NwQEm1E1f6fiybtA==
-X-IronPort-AV: E=Sophos;i="6.09,245,1716274800"; 
-   d="scan'208";a="32596747"
-X-Amp-Result: SKIPPED(no attachment in message)
-Received: from unknown (HELO email.microchip.com) ([170.129.1.10])
-  by esa1.microchip.iphmx.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256; 29 Jul 2024 00:06:53 -0700
-Received: from chn-vm-ex04.mchp-main.com (10.10.85.152) by
- chn-vm-ex01.mchp-main.com (10.10.85.143) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35; Mon, 29 Jul 2024 00:06:28 -0700
-Received: from che-lt-i67070.microchip.com (10.10.85.11) by
- chn-vm-ex04.mchp-main.com (10.10.85.152) with Microsoft SMTP Server id
- 15.1.2507.35 via Frontend Transport; Mon, 29 Jul 2024 00:06:23 -0700
-From: Varshini Rajendran <varshini.rajendran@microchip.com>
-To: <lee@kernel.org>, <robh@kernel.org>, <krzk+dt@kernel.org>,
-	<conor+dt@kernel.org>, <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>, <ychuang3@nuvoton.com>,
-	<schung@nuvoton.com>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>
-CC: <varshini.rajendran@microchip.com>
-Subject: [PATCH v6 02/27] dt-bindings: mfd: syscon: add microchip's sam9x7 sfr
-Date: Mon, 29 Jul 2024 12:36:03 +0530
-Message-ID: <20240729070603.1990265-1-varshini.rajendran@microchip.com>
+	id 1sYKWh-0000000AHQl-1vm4
+	for linux-mediatek@lists.infradead.org;
+	Mon, 29 Jul 2024 07:10:37 +0000
+X-UUID: a431a6944d7911efa6c87f6b4542ff6b-20240729
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=aIc4NRIeHEFygIQHKpa4gE3f3X/S5XUFpfK78RXhxpU=;
+	b=Lw3Vzu6qNU15GtZD8NzNG6zoA0qJZN08s+t67n4nKqVQmZXoesqGL5f0Pa0YvW8cxnmp9wEXtt1pIXBcs33DkBWOGLfx4oabo/tH426lL5vqpsozyyYXdmWX17ehb+Vt+5QP6qNTR1w7D6gQihBRh88TBVN/Kmi6JjCJk66/gIU=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.41,REQID:3bd7ec7c-c669-441a-b68c-25a0c2123166,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:6dc6a47,CLOUDID:de1f04d2-436f-4604-ad9d-558fa44a3bbe,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: a431a6944d7911efa6c87f6b4542ff6b-20240729
+Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw01.mediatek.com
+	(envelope-from <xiangzhi.tang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1042060388; Mon, 29 Jul 2024 00:10:31 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Mon, 29 Jul 2024 15:10:28 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Mon, 29 Jul 2024 15:10:28 +0800
+From: Xiangzhi Tang <xiangzhi.tang@mediatek.com>
+To: <linux-firmware@kernel.org>
+CC: <linux-mediatek@lists.infradead.org>, <joe.cheng@xperi.com>,
+	<hailong.fan@mediatek.com>, <justin.yeh@mediatek.com>,
+	<howard-ch.wang@mediatek.com>, <sidney.chang@mediatek.com>,
+	<Jjian.zhou@mediatek.com>, Xiangzhi Tang <xiangzhi.tang@mediatek.com>
+Subject: [PATCH] mediatek: Update mt8195 SOF firmware
+Date: Mon, 29 Jul 2024 15:10:10 +0800
+Message-ID: <20240729071010.6129-1-xiangzhi.tang@mediatek.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20240729065603.1986074-1-varshini.rajendran@microchip.com>
-References: <20240729065603.1986074-1-varshini.rajendran@microchip.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240729_000655_927152_71C9D478 
-X-CRM114-Status: UNSURE (   8.61  )
+X-CRM114-CacheID: sfid-20240729_001035_570182_0B330870 
+X-CRM114-Status: UNSURE (   7.10  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -88,217 +85,82 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add compatible for sam9x7 SoC's SFR.
+    Update SOF version: sof/sof-mt8195.ldc
+    Release version: v0.4.2
 
-Signed-off-by: Varshini Rajendran <varshini.rajendran@microchip.com>
+Signed-off-by: Xiangzhi Tang <xiangzhi.tang@mediatek.com>
 ---
-Changes in v6:
+ mediatek/sof/sof-mt8195.ldc | Bin 51168 -> 40560 bytes
+ 1 file changed, 0 insertions(+), 0 deletions(-)
 
- - New patch in v6 as the syscon devices are moved to a new file
-   upstream.
----
- .../devicetree/bindings/mfd/syscon.yaml       | 188 +++++++++---------
- 1 file changed, 97 insertions(+), 91 deletions(-)
+diff --git a/mediatek/sof/sof-mt8195.ldc b/mediatek/sof/sof-mt8195.ldc
+index 0ae937dd0fd153d3169b90291836705126542dad..80c5394b3692b45ae3d9a54523049c0cdb198874 100644
+GIT binary patch
+delta 190
+zcmaFR&-`Hz6PHhZdNBjTii9WACvs`<nVTCJS~4&gFtGmQ6S%g~!NFs*K!}Xc<P~N-
+zo3}LYVc%TR?WbXCW~Q4CR%wuGkYr?#s!&{%tdNmdoS|S)p=w}Jp`ekI0vAXzGc+(r
+jO|zW*eRDi{IyZN3*~`Odu-WrqJL9Co2AdNOH?RNz0`5Mp
 
-diff --git a/Documentation/devicetree/bindings/mfd/syscon.yaml b/Documentation/devicetree/bindings/mfd/syscon.yaml
-index 9dc594ea3654..50392d091e70 100644
---- a/Documentation/devicetree/bindings/mfd/syscon.yaml
-+++ b/Documentation/devicetree/bindings/mfd/syscon.yaml
-@@ -120,97 +120,103 @@ select:
- 
- properties:
-   compatible:
--    items:
--      - enum:
--          - al,alpine-sysfabric-service
--          - allwinner,sun8i-a83t-system-controller
--          - allwinner,sun8i-h3-system-controller
--          - allwinner,sun8i-v3s-system-controller
--          - allwinner,sun50i-a64-system-controller
--          - altr,l3regs
--          - altr,sdr-ctl
--          - amd,pensando-elba-syscon
--          - amlogic,meson-mx-assist
--          - amlogic,meson-mx-bootrom
--          - amlogic,meson8-analog-top
--          - amlogic,meson8b-analog-top
--          - amlogic,meson8-pmu
--          - amlogic,meson8b-pmu
--          - apm,merlin-poweroff-mailbox
--          - apm,mustang-poweroff-mailbox
--          - apm,xgene-csw
--          - apm,xgene-efuse
--          - apm,xgene-mcb
--          - apm,xgene-rb
--          - apm,xgene-scu
--          - atmel,sama5d2-sfrbu
--          - atmel,sama5d3-nfc-io
--          - atmel,sama5d3-sfrbu
--          - atmel,sama5d4-sfrbu
--          - axis,artpec6-syscon
--          - brcm,cru-clkset
--          - brcm,sr-cdru
--          - brcm,sr-mhb
--          - cirrus,ep7209-syscon1
--          - cirrus,ep7209-syscon2
--          - cirrus,ep7209-syscon3
--          - cnxt,cx92755-uc
--          - freecom,fsg-cs2-system-controller
--          - fsl,imx93-aonmix-ns-syscfg
--          - fsl,imx93-wakeupmix-syscfg
--          - fsl,ls1088a-reset
--          - fsl,vf610-anatop
--          - fsl,vf610-mscm-cpucfg
--          - hisilicon,dsa-subctrl
--          - hisilicon,hi6220-sramctrl
--          - hisilicon,hip04-ppe
--          - hisilicon,pcie-sas-subctrl
--          - hisilicon,peri-subctrl
--          - hpe,gxp-sysreg
--          - loongson,ls1b-syscon
--          - loongson,ls1c-syscon
--          - lsi,axxia-syscon
--          - marvell,armada-3700-cpu-misc
--          - marvell,armada-3700-nb-pm
--          - marvell,armada-3700-avs
--          - marvell,armada-3700-usb2-host-misc
--          - marvell,dove-global-config
--          - mediatek,mt2701-pctl-a-syscfg
--          - mediatek,mt2712-pctl-a-syscfg
--          - mediatek,mt6397-pctl-pmic-syscfg
--          - mediatek,mt8135-pctl-a-syscfg
--          - mediatek,mt8135-pctl-b-syscfg
--          - mediatek,mt8173-pctl-a-syscfg
--          - mediatek,mt8365-syscfg
--          - microchip,lan966x-cpu-syscon
--          - microchip,sam9x60-sfr
--          - microchip,sama7g5-ddr3phy
--          - mscc,ocelot-cpu-syscon
--          - mstar,msc313-pmsleep
--          - nuvoton,ma35d1-sys
--          - nuvoton,wpcm450-shm
--          - rockchip,px30-qos
--          - rockchip,rk3036-qos
--          - rockchip,rk3066-qos
--          - rockchip,rk3128-qos
--          - rockchip,rk3228-qos
--          - rockchip,rk3288-qos
--          - rockchip,rk3368-qos
--          - rockchip,rk3399-qos
--          - rockchip,rk3568-qos
--          - rockchip,rk3588-qos
--          - rockchip,rv1126-qos
--          - st,spear1340-misc
--          - stericsson,nomadik-pmu
--          - starfive,jh7100-sysmain
--          - ti,am62-opp-efuse-table
--          - ti,am62-usb-phy-ctrl
--          - ti,am625-dss-oldi-io-ctrl
--          - ti,am62p-cpsw-mac-efuse
--          - ti,am654-dss-oldi-io-ctrl
--          - ti,j784s4-pcie-ctrl
--          - ti,keystone-pllctrl
--      - const: syscon
-+    oneOf:
-+      - items:
-+          - enum:
-+              - al,alpine-sysfabric-service
-+              - allwinner,sun8i-a83t-system-controller
-+              - allwinner,sun8i-h3-system-controller
-+              - allwinner,sun8i-v3s-system-controller
-+              - allwinner,sun50i-a64-system-controller
-+              - altr,l3regs
-+              - altr,sdr-ctl
-+              - amd,pensando-elba-syscon
-+              - amlogic,meson-mx-assist
-+              - amlogic,meson-mx-bootrom
-+              - amlogic,meson8-analog-top
-+              - amlogic,meson8b-analog-top
-+              - amlogic,meson8-pmu
-+              - amlogic,meson8b-pmu
-+              - apm,merlin-poweroff-mailbox
-+              - apm,mustang-poweroff-mailbox
-+              - apm,xgene-csw
-+              - apm,xgene-efuse
-+              - apm,xgene-mcb
-+              - apm,xgene-rb
-+              - apm,xgene-scu
-+              - atmel,sama5d2-sfrbu
-+              - atmel,sama5d3-nfc-io
-+              - atmel,sama5d3-sfrbu
-+              - atmel,sama5d4-sfrbu
-+              - axis,artpec6-syscon
-+              - brcm,cru-clkset
-+              - brcm,sr-cdru
-+              - brcm,sr-mhb
-+              - cirrus,ep7209-syscon1
-+              - cirrus,ep7209-syscon2
-+              - cirrus,ep7209-syscon3
-+              - cnxt,cx92755-uc
-+              - freecom,fsg-cs2-system-controller
-+              - fsl,imx93-aonmix-ns-syscfg
-+              - fsl,imx93-wakeupmix-syscfg
-+              - fsl,ls1088a-reset
-+              - fsl,vf610-anatop
-+              - fsl,vf610-mscm-cpucfg
-+              - hisilicon,dsa-subctrl
-+              - hisilicon,hi6220-sramctrl
-+              - hisilicon,hip04-ppe
-+              - hisilicon,pcie-sas-subctrl
-+              - hisilicon,peri-subctrl
-+              - hpe,gxp-sysreg
-+              - loongson,ls1b-syscon
-+              - loongson,ls1c-syscon
-+              - lsi,axxia-syscon
-+              - marvell,armada-3700-cpu-misc
-+              - marvell,armada-3700-nb-pm
-+              - marvell,armada-3700-avs
-+              - marvell,armada-3700-usb2-host-misc
-+              - marvell,dove-global-config
-+              - mediatek,mt2701-pctl-a-syscfg
-+              - mediatek,mt2712-pctl-a-syscfg
-+              - mediatek,mt6397-pctl-pmic-syscfg
-+              - mediatek,mt8135-pctl-a-syscfg
-+              - mediatek,mt8135-pctl-b-syscfg
-+              - mediatek,mt8173-pctl-a-syscfg
-+              - mediatek,mt8365-syscfg
-+              - microchip,lan966x-cpu-syscon
-+              - microchip,sam9x60-sfr
-+              - microchip,sam9x7-sfr
-+              - microchip,sama7g5-ddr3phy
-+              - mscc,ocelot-cpu-syscon
-+              - mstar,msc313-pmsleep
-+              - nuvoton,ma35d1-sys
-+              - nuvoton,wpcm450-shm
-+              - rockchip,px30-qos
-+              - rockchip,rk3036-qos
-+              - rockchip,rk3066-qos
-+              - rockchip,rk3128-qos
-+              - rockchip,rk3228-qos
-+              - rockchip,rk3288-qos
-+              - rockchip,rk3368-qos
-+              - rockchip,rk3399-qos
-+              - rockchip,rk3568-qos
-+              - rockchip,rk3588-qos
-+              - rockchip,rv1126-qos
-+              - st,spear1340-misc
-+              - stericsson,nomadik-pmu
-+              - starfive,jh7100-sysmain
-+              - ti,am62-opp-efuse-table
-+              - ti,am62-usb-phy-ctrl
-+              - ti,am625-dss-oldi-io-ctrl
-+              - ti,am62p-cpsw-mac-efuse
-+              - ti,am654-dss-oldi-io-ctrl
-+              - ti,j784s4-pcie-ctrl
-+              - ti,keystone-pllctrl
-+          - const: syscon
-+      - items:
-+          - const: microchip,sam9x7-sfr
-+          - const: microchip,sam9x60-sfr
-+          - const: syscon
- 
-   reg:
-     maxItems: 1
+delta 10115
+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
+E0}ttrg#Z8m
+
 -- 
 2.25.1
 
