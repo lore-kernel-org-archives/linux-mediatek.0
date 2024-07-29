@@ -4,82 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3690DC3DA4A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jul 2024 10:48:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A426C3DA61
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jul 2024 10:51:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=z/0x59CX402n1FHBQk1SZQEtizSNWtGdnpBxqm2a6U8=; b=oSOA9VqS128YvSS+OIQQQa4syX
-	R53cLxiDJh4Uy0ZmWBlXqzk9qlZoYUDdzRPARtRpuaPRXnReI/JtiZp50ee6upru9fw7dVej5hosf
-	V9DKcSPPp/aIr8h6w9Bl0fKhWls3Kec6PWmLFHvZjGfCYGL1bsVe+qrEB9/yVlMLgKddLErQs5q2r
-	AeaQb9EiA+gy1fOwgnoaa02QqUSPiIaAYiIpZFNL6JydMbkAzaWTZ1RAnPgLb2sy2f9O13AtaOfg4
-	vsk9ZRAMW5yOezF4fDQRvO/7TURH9McZ2Ya6UP1D9kt4YlG/AZCwK3Wsgc1u6I8PuwdLNX5PpCap5
-	RUv4Ugmg==;
+	bh=UKU0+6XQvE45shRp6oaLQnN0VhMCLZCW6ebTfIiQyNw=; b=aI1KgH8vGwkW6YB2CZCVKQ3RZm
+	ultzzA2XXX+rwAALrHAO2yiz1WP+yfacJFyjJSAxE5dZiERNtftAihNS43rHomw3c9H831uSQw2sN
+	9nBDe8aU1dEFTfE9mrllpumImemuaGFglqvdDOsIR7vn72IiJ6jBvziBuIqeji0LxYUeP+QxF81dX
+	a+GSZY0060Km/ODPLCI4kLHUllizhvukcBqn8XECXzuaAFi/qCoeXkgu2cVki2I0aMH63vgrWj9H2
+	vCcoxmoA0Ef2nYlzUx+/UtVHY7tPkxcetowa7wLbqzG0qk0YmM/wZ/twpztJ+SevOcjlHUFPxmNQd
+	2AO53T/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYNvr-0000000Ax19-0ifP;
-	Mon, 29 Jul 2024 10:48:47 +0000
-Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
+	id 1sYNyk-0000000AxTb-05kZ;
+	Mon, 29 Jul 2024 10:51:46 +0000
+Received: from mout.web.de ([212.227.15.14])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYNvQ-0000000Awv2-0p8G
+	id 1sYNyg-0000000AxRq-1PGI
 	for linux-mediatek@lists.infradead.org;
-	Mon, 29 Jul 2024 10:48:22 +0000
-Received: by mail-lf1-x12c.google.com with SMTP id 2adb3069b0e04-52efef496ccso3228216e87.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 29 Jul 2024 03:48:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1722250098; x=1722854898; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=z/0x59CX402n1FHBQk1SZQEtizSNWtGdnpBxqm2a6U8=;
-        b=Jdv05auSJ35o0dhP/rTMZ81Y3OsmrJToWnmFMe998E08P558a+a4N0GbKvKLfFnSJz
-         8Yxh9oWHyKfv6rnOHgFTY8zUkkrUfICj6jRMlWYQBsWdfLaGNLq+GFpbk5+zxmeH2Mo7
-         hTq6DsrMxcpMYgO3ZDOdRJYoHupVRUydR5qvc=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1722250098; x=1722854898;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=z/0x59CX402n1FHBQk1SZQEtizSNWtGdnpBxqm2a6U8=;
-        b=sRhUYnKzWQj4LO9j7sV/cUX4hpIVXhsqGKgcV8kyJmTdOeFKL6rQA2fY4VJM0OoAew
-         gUu9mk6NxIkswkzDVMEh0ZDaeREg4pRDf6GzVWoLCmy+ZuJ94MJtA+2xrwvvVLb7GtN3
-         HuxBjD3boeCiHQfzZFeLrFcS08IMhTv2IX2N5eENO+mVpLT/kslyHQFOJAaAKDA+xoGI
-         yGMq/iPchzfREAqSl8fkOOWyU51HmDE+7uPLBzavSeFbik6pK7O+8YIQ2VTVxlGyAdPV
-         CgVm700pFW8HEF/uJy4rtER0OiZyJ7yCiVCO22+A2EvvIfVwC9YBC5GUrm5Hi3QKipan
-         sO0w==
-X-Forwarded-Encrypted: i=1; AJvYcCWQ6B/6ZNZaJdYgvUdAoycPaxLKibQ0NPf9ab6xnGIKBKMQ9CaJ2weZN0J3hRBWXa1DvHAXBOrb45rLbJlPne7VB9fJI1zrJIIuHzOcA2z3d/fY
-X-Gm-Message-State: AOJu0YwlkHGo7uh0GDb94wYPU58CKw7vcAjxvJkNmXfAxQArQmBQIf5q
-	bB2Ac/x0qjcbKKc4hNJuk7KJ7FJd5dsLyfbHmJmHfWfRngszfTiys3vNz3Mw5IN6Gq+ve+JPf/h
-	48Vn2rMPRSP6MNQ1oHcNI8BqVeQrPwL2Ag/iB
-X-Google-Smtp-Source: AGHT+IHB5y8Efven0rM7568H5Q/7IIX0B75sAgumyMxO9pLVe7LTrTw+hIQBfTXynQiq2pmvum8YwhTKmZ6h1vTdBSA=
-X-Received: by 2002:a05:6512:4002:b0:52f:36a:f929 with SMTP id
- 2adb3069b0e04-5309b6d2e9amr1967665e87.4.1722250097727; Mon, 29 Jul 2024
- 03:48:17 -0700 (PDT)
-MIME-Version: 1.0
-References: <20240722-usb-1129-probe-pci-clk-fix-v1-1-99ea804228b6@collabora.com>
- <CAGXv+5H_pxR18sHeqdWPy9_FARrnLwyyOHV4VXCn9p5OExseiQ@mail.gmail.com>
- <f12ba385-090b-4772-8c52-e515e25b00ac@collabora.com> <CAGXv+5G92=-k5MDH4BPcM8tgPwcGTJ60trJwr7BwTGHD=wpnDw@mail.gmail.com>
- <51f0f4f3-11a5-4d74-981e-3f24f8475c7f@collabora.com> <CAGXv+5F-U6O3dQdU2L8bR5V+D=PLreACZYCh5sxBY3PFrex1zg@mail.gmail.com>
- <de0b0daa-2a35-4286-b4db-4f646073a04c@collabora.com>
-In-Reply-To: <de0b0daa-2a35-4286-b4db-4f646073a04c@collabora.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Mon, 29 Jul 2024 18:48:05 +0800
-Message-ID: <CAGXv+5EvzRr8h5vnuV2h=zkVwkVp3fShDP_45BpaO0HkivuDtQ@mail.gmail.com>
-Subject: Re: [PATCH] arm64: dts: mediatek: mt8195: Add missing clock for xhci1 controller
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, kernel@collabora.com, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+	Mon, 29 Jul 2024 10:51:44 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
+	s=s29768273; t=1722250289; x=1722855089; i=spasswolf@web.de;
+	bh=UKU0+6XQvE45shRp6oaLQnN0VhMCLZCW6ebTfIiQyNw=;
+	h=X-UI-Sender-Class:Message-ID:Subject:From:To:Cc:Date:In-Reply-To:
+	 References:Content-Type:MIME-Version:Content-Transfer-Encoding:cc:
+	 content-transfer-encoding:content-type:date:from:message-id:
+	 mime-version:reply-to:subject:to;
+	b=H6l7e0ngedySH2ri9PuAssVZli8MpOzeYijRMGHTjQYYLxQStp0URHKI5hJfgPCJ
+	 hhyzVfOaMm9UCwA/gm6rBulgMPT5lqcl7M+ooQ5PgrXwHL5QHfwdmDPFpUbd3pKzJ
+	 bHvXh1QDCFS8kWDCIUea00ED0Hq7suGhLZUhG9+2SYMLl0aXt6oiehupHhmCBf/77
+	 PdlUQVHQ1sWOklywUpjPMLPU82T7K4Ogj8WUWHYnbmdVx0GPZYjrrLSzaHtj8dj2G
+	 qDjFHr42vBsi9poBbkrV44Yx1muycrGtO8fR1eFDmKg4l+2H7EK3+Oal0GNeTZ3Ue
+	 YpeLuKA+YR26UtZ2vQ==
+X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
+Received: from [192.168.0.101] ([84.119.92.193]) by smtp.web.de (mrweb006
+ [213.165.67.108]) with ESMTPSA (Nemesis) id 1N9431-1sATl011fD-011Pg1; Mon, 29
+ Jul 2024 12:51:29 +0200
+Message-ID: <81a6dad7119069d446a982d1c7da4fff5726d26b.camel@web.de>
+Subject: Re: [PATCH] wifi: mt76: mt7921: fix null pointer access in
+ mt792x_mac_link_bss_remove
+From: Bert Karwatzki <spasswolf@web.de>
+To: Linux regressions mailing list <regressions@lists.linux.dev>, 
+	sean.wang@kernel.org, nbd@nbd.name, lorenzo.bianconi@redhat.com
+Cc: sean.wang@mediatek.com, deren.wu@mediatek.com,
+ mingyen.hsieh@mediatek.com,  linux-wireless@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, Mike Lothian <mike@fireburn.co.uk>,
+ spasswolf@web.de
+Date: Mon, 29 Jul 2024 12:51:27 +0200
+In-Reply-To: <0124ff39-7d63-49f8-bacd-3a40ce37ec4d@leemhuis.info>
+References: <20240718234633.12737-1-sean.wang@kernel.org>
+	 <0124ff39-7d63-49f8-bacd-3a40ce37ec4d@leemhuis.info>
 Content-Type: text/plain; charset="UTF-8"
+User-Agent: Evolution 3.52.3-1 
+MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:j1RMugOP/j6u4SMk77QS9vWWp21YeqQCRRQR5w5sswoDnCS/HGf
+ TMRB+c5xM73+mk9qC985oAETAFekn7Y2yYxa6hwcZrEo7TuxR3Mlz6lDdMzmPuVMmt7j1fY
+ J++Nb5l8kB9rv1OFTc9GfG/VT9zb4KpjGpjI56i0hZf+uv6FP0JoMHeq6/t0wTJ2J4LKdTf
+ fe7ar0YtWt0RpbcG1MRRg==
+UI-OutboundReport: notjunk:1;M01:P0:U8jKZwb7VWw=;kuRLRAvfIPSTU9UccI3eB9yRjgm
+ EAgFfyM//5gc2yiXQ+Nmm9bSootVdj77T5jnNCSJIb0Jv+/U9xb7mcOHWRGXcXQBtcD2nuC6V
+ dUXDXpwwyc7cxzklNHyCDOLELs/qeHpya+Jzj+djCi+H2fVSP8Y2n+n6Ot7jItKDhfjU+Q6Ym
+ Qm8L/xhq8T0CaHfG3i/wvjLI0FE2XkWXLAzQr/WPaoRhK8WujjZRAc8yTD/nTz5oot7koFave
+ y6haNdXpO8CA7aUiwrE3KrEFn2YMxZ4+MHsqzHFIB6k2Ag7bQpdDP//0LybgsXCTKHPks6OIZ
+ PdaCvdNsSqcAcTtp1+MxcdMiZCjGKDIkOuuVWt+nWEibLFoXRXWU52s5872x1ZtEAXxJ5sidg
+ R7dlQY86JjlnhinVHYsgfhyuqF3lHedZzo56HdH4T5y25Vb5bOLeNca0wb12ola2hK5RvwBaM
+ 890ZHWfhOFRUq+ZeLG034Idp5n8d8X+kX9mGGcBbc4xIgzJtLPKZskI1Xrfv3sSdcogeRUTH3
+ DS/ZchbGQs7WuSMoiV6TjOkwmIVD3exWSkyA1R+M08iAHbzvKbNzZImtFBOFtYlfveECHOrSX
+ 47sMsVxVCRr0+CBgzVvsJU64SfY6crSH4Pu5VK9JK7dbAbTodsM0R2220xTaZ40x0KFcW2D4M
+ b3O76BrC2VvXR1cnyHN5D7wOQG5iX+lVkf92QB4JUhbgH4mTrImmxPyxX+z1qw81ixEEninFJ
+ RoGTjaCTIYRlUogJ8gp86HxyZo7HOdSCivzPIiQieNZHh+M+6IyyGGkVc+us7crFUivshQky3
+ 1+p3zp+i/+KXiR8d8DDR+PFw==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240729_034820_284331_433F4C0E 
-X-CRM114-Status: GOOD (  60.17  )
+X-CRM114-CacheID: sfid-20240729_035142_762663_024CB277 
+X-CRM114-Status: GOOD (  11.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,252 +96,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 29, 2024 at 4:54=E2=80=AFPM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
+Am Mittwoch, dem 24.07.2024 um 11:36 +0200 schrieb Linux regression tracki=
+ng
+(Thorsten Leemhuis):
 >
-> Il 29/07/24 10:07, Chen-Yu Tsai ha scritto:
-> > On Mon, Jul 29, 2024 at 3:59=E2=80=AFPM AngeloGioacchino Del Regno
-> > <angelogioacchino.delregno@collabora.com> wrote:
-> >>
-> >> Il 26/07/24 17:11, Chen-Yu Tsai ha scritto:
-> >>> On Fri, Jul 26, 2024 at 8:11=E2=80=AFPM AngeloGioacchino Del Regno
-> >>> <angelogioacchino.delregno@collabora.com> wrote:
-> >>>>
-> >>>> Il 25/07/24 12:34, Chen-Yu Tsai ha scritto:
-> >>>>> Hi,
-> >>>>>
-> >>>>> On Mon, Jul 22, 2024 at 11:27=E2=80=AFPM N=C3=ADcolas F. R. A. Prad=
-o
-> >>>>> <nfraprado@collabora.com> wrote:
-> >>>>>>
-> >>>>>> Currently if the xhci1 controller happens to probe before the pcie=
-1
-> >>>>>> controller then it fails with the following errors:
-> >>>>>>
-> >>>>>> xhci-mtk 11290000.usb: clocks are not stable (0x1003d0f)
-> >>>>>> xhci-mtk 11290000.usb: can't setup: -110
-> >>>>>> xhci-mtk: probe of 11290000.usb failed with error -110
-> >>>>>>
-> >>>>>> The issue has been tracked down to the CLK_INFRA_AO_PCIE_P1_TL_96M
-> >>>>>> clock, although exactly why this pcie clock is needed for the usb
-> >>>>>> controller is still unknown. Add the clock to the xhci1 controller=
- so it
-> >>>>>> always probes successfully and use a placeholder clock name for it=
-.
-> >>>>>>
-> >>>>>> Reported-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>=
- #KernelCI
-> >>>>>> Closes: https://lore.kernel.org/all/9fce9838-ef87-4d1b-b3df-63e1dd=
-b0ec51@notapiano/
-> >>>>>> Signed-off-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.co=
-m>
-> >>>>>
-> >>>>> So I asked MediaTek about this, and it seems the correct thing to d=
-o is
-> >>>>> disable USB 3 on this host controller using the following snippet. =
-The
-> >>>>> snippet is copy-pasted from our issue tracker and won't apply direc=
-tly.
-> >>>>>
-> >>>>> This is also seen in mt8395-kontron-3-5-sbc-i1200.dts, on which xhc=
-i1
-> >>>>> is used only for USB 2.0 on an M.2 slot.
-> >>>>>
-> >>>>
-> >>>> Uhm, okay, but why should USB3 be disabled on a controller that supp=
-orts USB3?
-> >>>>
-> >>>> I agree about disabling it on specific boards that use only the USB =
-2.0 lines of
-> >>>> this controller, but doing that globally looks wrong... and looks li=
-ke being a
-> >>>> workaround for an error that gets solved with adding a clock as well=
-.
-> >>>>
-> >>>> In short, the question is: why would that be the correct thing to do=
-?
-> >>>
-> >>> We can disable it in mt8195-cherry.dtsi then?
-> >>
-> >> That device does not use this controller, so yes we can disable it, bu=
-t that still
-> >> doesn't resolve the issue pointed out by Nicolas...!
+> On 19.07.24 01:46, sean.wang@kernel.org wrote:
+> > From: Sean Wang <sean.wang@mediatek.com>
 > >
-> > No. I mean disable USB3 on this port. Also see the next paragraph.
+> > Fix null pointer access in mt792x_mac_link_bss_remove.
 > >
->
-> Yes, sorry I was meaning the same - but I effectively wrote "disable cont=
-roller"
-> instead, my bad.
->
-> >> Please note that the issue that he sees doesn't happen only on Tomato,=
- but also on
-> >> other MediaTek MT8195/MT8395 boards - and applying this commit makes d=
-isabling the
-> >> controller, or disabling the USB 3 lines on the controller, kinda redu=
-ndant, as
-> >> this will effectively fix probing it... but again, fixing the actual i=
-ssue with
-> >> this controller is something that must be done.
+> > To prevent null pointer access, we should assign the vif to bss_conf i=
+n
+> > mt7921_add_interface. This ensures that subsequent operations on the B=
+SS
+> > can properly reference the correct vif.
 > >
-> > If those other boards use the XHCI1 USB3 lines for ... USB3, then the U=
-SB3
-> > PHY should also be tied to XHCI1, right now due to the Cherry Chromeboo=
-k
-> > design, only the USB2 PHY is tied to it.
-> >
+> > [...]
+> > > Fixes: 1541d63c5fe2 ("wifi: mt76: mt7925: add
+> mt7925_mac_link_bss_remove to remove per-link BSS")
+> > Reported-by: Bert Karwatzki <spasswolf@web.de>
+> > Closes: https://lore.kernel.org/linux-wireless/2fee61f8c903d02a900ca31=
+88c3742c7effd102e.camel@web.de/#b
+> > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 >
-> Yes, I am aware of that.
+> TWIMC, Mike (now CCed) ran into the problem and on bugzilla confirmed
+> that this fixes the problem:
 >
-> >> Disabling the controller on Tomato is a different topic - here we are =
-discussing
-> >> about fixing the issue, and that will happen, again, on any board that=
- has this
-> >> controller enabled with USB3 lines. :-)
-> >>
-> >> So, unless there is any specific reason for which applying this commit=
- is a bad
-> >> idea, or any alternative fix to this that is better than the proposed =
-one, and
-> >> not a workaround... I'm applying this one.
-> >
-> > Didn't I just relay what MediaTek says is the correct fix? Disable USB3
-> > for this port on devices where the serial pairs are used for PCIe inste=
-ad
-> > of USB3.
-> >
+> https://bugzilla.kernel.org/show_bug.cgi?id=3D219084
+> https://lore.kernel.org/all/CAHbf0-HOS-jdRGvJOBmEgaaox3PDbDSTgnnZkZF9pz3=
+7Bmh2iw@mail.gmail.com/
 >
-> I think there must've been some misunderstanding here.
->
-> Yes you did relay what MediaTek is the correct fix, and I agree that the =
-USB3 must
-> be disabled on devices where those serial pairs are used for PCIe instead=
- of USB,
-> or on devices where those are completely unused.
+> Ciao, Thorsten (wearing his 'the Linux kernel's regression tracker' hat)
+> --
+> Everything you wanna know about Linux kernel regression tracking:
+> https://linux-regtracking.leemhuis.info/about/#tldr
+> If I did something stupid, please tell me, as explained on that page.
 
-OK. I will send a patch for Tomato as you asked.
+Unfortunately this NULL pointer dereference made it into linux-6.11-rc1.
 
-> This, though, will fix the issue only on those devices (because we are di=
-sabling
-> those lines entirely, so depending on how we see it, this might not be a =
-fix but
-> rather a workaround).
-
-I would say that is a more accurate description of the hardware, so a fix.
-
-> If we don't apply this fix, any board that uses those pairs for USB 3 ins=
-tead will
-> still show the same "clocks are not stable" error, leaving them with a br=
-oken port.
->
-> And I believe that because the clocks are not routed externally but rathe=
-r are
-> internal to the SoC, so, if INFRA_AO_PCIE_P1_TL_96M is necessary for that=
- USB 3
-> port to work, a board that intends to use those pairs for USB3 would stil=
-l need
-> this exact clock to actually get that port to work.
-
-I couldn't reproduce the issue by disabling pcie1 as Nicolas mentioned.
-I don't have any more to add to this though. Sorry for the noise.
-
-> As for Tomato itself - I agree that we must add the u3p-dis-msk=3D0x1 fla=
-g, yes,
-> and we will, but I'm purely talking about - again - an eventual board tha=
-t would
-> not have that property because USB3 is exposed/used for real.
-
-I think it would make more sense to fix the `phys =3D ` statement in mt8195=
-.dtsi
-to list both the USB2 and USB3 PHYs. At the board level, for boards only
-using USB2, we would have the overriding `phys =3D ` statement alongside th=
-e
-`mediatek,u3p-dis-mask` property. Does that make sense to you?
-
-
-Thanks
-ChenYu
-
-> Cheers,
-> Angelo
->
-> >
-> > Regards
-> > ChenYu
-> >
-> >> Cheers,
-> >> Angelo
-> >>
-> >>>
-> >>> ChenYu
-> >>>
-> >>>> Cheers,
-> >>>> Angelo
-> >>>>
-> >>>>>
-> >>>>> ChenYu
-> >>>>>
-> >>>>> index 8b7307cdefc6..2dac9f706a58
-> >>>>> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> >>>>> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> >>>>> @@ -1447,6 +1447,7 @@
-> >>>>>                                          "xhci_ck";
-> >>>>>                            mediatek,syscon-wakeup =3D <&pericfg 0x4=
-00 104>;
-> >>>>>                            wakeup-source;
-> >>>>> +                       mediatek,u3p-dis-msk =3D <0x1>;
-> >>>>>                            status =3D "disabled";
-> >>>>>                    };
-> >>>>>
-> >>>>>> ---
-> >>>>>>     arch/arm64/boot/dts/mediatek/mt8195.dtsi | 10 ++++++++--
-> >>>>>>     1 file changed, 8 insertions(+), 2 deletions(-)
-> >>>>>>
-> >>>>>> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64=
-/boot/dts/mediatek/mt8195.dtsi
-> >>>>>> index 2ee45752583c..cc5169871f1c 100644
-> >>>>>> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> >>>>>> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> >>>>>> @@ -1453,9 +1453,15 @@ xhci1: usb@11290000 {
-> >>>>>>                                     <&topckgen CLK_TOP_SSUSB_P1_RE=
-F>,
-> >>>>>>                                     <&apmixedsys CLK_APMIXED_USB1P=
-LL>,
-> >>>>>>                                     <&clk26m>,
-> >>>>>> -                                <&pericfg_ao CLK_PERI_AO_SSUSB_1P=
-_XHCI>;
-> >>>>>> +                                <&pericfg_ao CLK_PERI_AO_SSUSB_1P=
-_XHCI>,
-> >>>>>> +                                /*
-> >>>>>> +                                 * This clock is required due to =
-a hardware
-> >>>>>> +                                 * bug. The 'frmcnt_ck' clock nam=
-e is used as a
-> >>>>>> +                                 * placeholder.
-> >>>>>> +                                 */
-> >>>>>> +                                <&infracfg_ao CLK_INFRA_AO_PCIE_P=
-1_TL_96M>;
-> >>>>>>                            clock-names =3D "sys_ck", "ref_ck", "mc=
-u_ck", "dma_ck",
-> >>>>>> -                                     "xhci_ck";
-> >>>>>> +                                     "xhci_ck", "frmcnt_ck";
-> >>>>>>                            mediatek,syscon-wakeup =3D <&pericfg 0x=
-400 104>;
-> >>>>>>                            wakeup-source;
-> >>>>>>                            status =3D "disabled";
-> >>>>>>
-> >>>>>> ---
-> >>>>>> base-commit: dee7f101b64219f512bb2f842227bd04c14efe30
-> >>>>>> change-id: 20240722-usb-1129-probe-pci-clk-fix-ef8646f46aac
-> >>>>>>
-> >>>>>> Best regards,
-> >>>>>> --
-> >>>>>> N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
-> >>>>>>
-> >>>>>>
-> >>>>
-> >>>>
-> >>>>
-> >>
->
+Bert Karwatzki
 
