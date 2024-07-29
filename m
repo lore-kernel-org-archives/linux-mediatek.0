@@ -4,61 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCFE2C3DA4A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jul 2024 12:26:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF4D1C3DA61
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jul 2024 12:35:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=XXwes7uYYbILtz2YaxU+OjBVm5tu5Af3Y8gliVAX2RQ=; b=LtfHC4/DPteC5bzhOfev7YPi3N
-	mpCfqWOdygTQCiewZHXOlhSnBg3fDd73CwDa2NgHm7rKOxFqfQis3VvIP4bkbCwsnAW3ddgnIzy7w
-	b/PkHmjXVn4loj8MJ+IGf3570yUnIRj0AdSUQoGc6BnCZHlbjoFcOUEgTRZeQHoMHN8ZCZn5zgBmy
-	280hKq79LFZSwxe/Vwk12dR/3vJi5wBvSBRKBDd7YLI19wslNNUbDMwrMa3TUPHf0DMUo9pAsNE2d
-	5ZPDniEK6t8ifD5GJ/XOJQfoMIrKhr2JSwncPAyp8O7SWGGifOZei7WqcalL5BwTyAocaEcFLs8Y/
-	gMzyUcQg==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=y1+CVlgQ/pKCMn5w08JCWmd9H8Ous9ycnT16UVdH6Uk=; b=DfPxLtI0dOpqnCoNH67R2DB7qR
+	9KzYgRhp01g2kFbzh4UbXUMxhGSiUU04nfNSPloIsmE3SGMkHwiPu0l7tuHitUFGazTARHqHKsE08
+	00e1eZWeFNT3Fg2RCuPJnRmOfRqr6hNuUL806J3r60Z5XA8h7OmZsf3AlOYSyAqmoI6+FO2iyQy30
+	IuSmzHV4ml7CtvhnrmTGJS4OCdAORFsfZJCa72eiCAHC7TNymVJUGeFHsehnI9TCqjlqDH90vI5Oa
+	45b+VlP17p8itWmUx56ceHDQ+BFEwfY0JZuEDL8vNXj4w+mWM3k283EdGgYr5r852jXw3pbhozx9J
+	nfp4nu6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYPSI-0000000BDUi-3Vnq;
-	Mon, 29 Jul 2024 12:26:22 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1sYPaf-0000000BFK6-0lWr;
+	Mon, 29 Jul 2024 12:35:01 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYPRm-0000000BDLd-0sPy;
-	Mon, 29 Jul 2024 12:25:51 +0000
+	id 1sYPaA-0000000BF9y-2TMJ;
+	Mon, 29 Jul 2024 12:34:34 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1722255946;
-	bh=Ss4a9Tumgb/hU3BQ8LLOz+BBWNeTNWFKWPUbY0WPOFg=;
-	h=From:To:Cc:Subject:Date:From;
-	b=p2Tr3xUNZFQfJ5q+LPjnVzvPgS7ha9IBqvC26q0HbPhQGhctFcC1wjmFsTcDQhFiT
-	 xX4KYi/vxR+qgmkrckiTy5AvFOioZpU0/iKYlxEFuWyBO80iio7qZdgWdNw3Ig8Nuk
-	 avVVlNVnx8tk/VA0u/DvtJO8ItzGEXWIa3SEgpOwbdC7AuMSgDA9XPH3YMKcJGkFHc
-	 bCqyQBUy0TmQ2xl/qIuP5IHB4fQ1haGrEjKOttzg6IDA5xwAqh7IjFV75f68EJhwbA
-	 1tihIpJgK+tzaaqs3l1dZarxflmRr9b1YORrSEASjh2Eotjjg3oQPYT+iHgBWOUpmE
-	 BboGw+qjVAaaw==
-Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	s=mail; t=1722256468;
+	bh=UITJqYPFQ0UBpEFJQBghvMlRrEj2NhPURPP2f9omv4Y=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=LxcKquUF00FhdboZ6vslCL6q3b1+2tkTGLFvLiN1twWKtgmYaBeYl8mtVv8uBL48D
+	 /c+mhvYTJSehPVoX4vf5iAklgRoRKWkXsQKLxpVIOQSBlEHLIrXaECvwucpd2Woavs
+	 rFQbBcQTZxaTYY8byqLnrFS1uPAbbFFZOPNpljnbS2xIHvbg6e/OgqM8UATaFUfkj/
+	 CVzy3alXkgxVTd0ncTBC/QUocmhJJGk9CIXP/yf5/BDPaT+Gpi7++EpNvTp5ZOQCfg
+	 2uRU3RyWE4mec26H+/5mrCO189t4zoTx4aquEWmtZjlf4HbBcq8M00B+Y0QY0T640X
+	 x98Tnhx8EiLLQ==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 0239437804D4;
-	Mon, 29 Jul 2024 12:25:45 +0000 (UTC)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: linux-mediatek@lists.infradead.org
-Cc: matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	kernel@collabora.com
-Subject: [PATCH] soc: mediatek: mtk-mutex: Reduce type size for mtk_mutex_data members
-Date: Mon, 29 Jul 2024 14:25:38 +0200
-Message-ID: <20240729122538.989855-1-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.45.2
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id E30B037804D4;
+	Mon, 29 Jul 2024 12:34:27 +0000 (UTC)
+Message-ID: <c3e38dae-646f-471a-ae40-150b8f86cac0@collabora.com>
+Date: Mon, 29 Jul 2024 14:34:27 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] arm64: dts: mediatek: mt8195: Add missing clock for xhci1
+ controller
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, kernel@collabora.com, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20240722-usb-1129-probe-pci-clk-fix-v1-1-99ea804228b6@collabora.com>
+ <CAGXv+5H_pxR18sHeqdWPy9_FARrnLwyyOHV4VXCn9p5OExseiQ@mail.gmail.com>
+ <f12ba385-090b-4772-8c52-e515e25b00ac@collabora.com>
+ <CAGXv+5G92=-k5MDH4BPcM8tgPwcGTJ60trJwr7BwTGHD=wpnDw@mail.gmail.com>
+ <51f0f4f3-11a5-4d74-981e-3f24f8475c7f@collabora.com>
+ <CAGXv+5F-U6O3dQdU2L8bR5V+D=PLreACZYCh5sxBY3PFrex1zg@mail.gmail.com>
+ <de0b0daa-2a35-4286-b4db-4f646073a04c@collabora.com>
+ <CAGXv+5EvzRr8h5vnuV2h=zkVwkVp3fShDP_45BpaO0HkivuDtQ@mail.gmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <CAGXv+5EvzRr8h5vnuV2h=zkVwkVp3fShDP_45BpaO0HkivuDtQ@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240729_052550_438483_0705F144 
-X-CRM114-Status: GOOD (  11.16  )
+X-CRM114-CacheID: sfid-20240729_053430_808362_397CF003 
+X-CRM114-Status: GOOD (  47.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,243 +86,218 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-All of mutex_mod and mutex_table_mod contain an array of bit
-numbers, which can go from 0 to 63, it is hence not needed to
-use an unsigned 32-bits integer to store that: change them to
-unsigned 8-bits instead.
+Il 29/07/24 12:48, Chen-Yu Tsai ha scritto:
+> On Mon, Jul 29, 2024 at 4:54 PM AngeloGioacchino Del Regno
+> <angelogioacchino.delregno@collabora.com> wrote:
+>>
+>> Il 29/07/24 10:07, Chen-Yu Tsai ha scritto:
+>>> On Mon, Jul 29, 2024 at 3:59 PM AngeloGioacchino Del Regno
+>>> <angelogioacchino.delregno@collabora.com> wrote:
+>>>>
+>>>> Il 26/07/24 17:11, Chen-Yu Tsai ha scritto:
+>>>>> On Fri, Jul 26, 2024 at 8:11 PM AngeloGioacchino Del Regno
+>>>>> <angelogioacchino.delregno@collabora.com> wrote:
+>>>>>>
+>>>>>> Il 25/07/24 12:34, Chen-Yu Tsai ha scritto:
+>>>>>>> Hi,
+>>>>>>>
+>>>>>>> On Mon, Jul 22, 2024 at 11:27 PM Nícolas F. R. A. Prado
+>>>>>>> <nfraprado@collabora.com> wrote:
+>>>>>>>>
+>>>>>>>> Currently if the xhci1 controller happens to probe before the pcie1
+>>>>>>>> controller then it fails with the following errors:
+>>>>>>>>
+>>>>>>>> xhci-mtk 11290000.usb: clocks are not stable (0x1003d0f)
+>>>>>>>> xhci-mtk 11290000.usb: can't setup: -110
+>>>>>>>> xhci-mtk: probe of 11290000.usb failed with error -110
+>>>>>>>>
+>>>>>>>> The issue has been tracked down to the CLK_INFRA_AO_PCIE_P1_TL_96M
+>>>>>>>> clock, although exactly why this pcie clock is needed for the usb
+>>>>>>>> controller is still unknown. Add the clock to the xhci1 controller so it
+>>>>>>>> always probes successfully and use a placeholder clock name for it.
+>>>>>>>>
+>>>>>>>> Reported-by: Nícolas F. R. A. Prado <nfraprado@collabora.com> #KernelCI
+>>>>>>>> Closes: https://lore.kernel.org/all/9fce9838-ef87-4d1b-b3df-63e1ddb0ec51@notapiano/
+>>>>>>>> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+>>>>>>>
+>>>>>>> So I asked MediaTek about this, and it seems the correct thing to do is
+>>>>>>> disable USB 3 on this host controller using the following snippet. The
+>>>>>>> snippet is copy-pasted from our issue tracker and won't apply directly.
+>>>>>>>
+>>>>>>> This is also seen in mt8395-kontron-3-5-sbc-i1200.dts, on which xhci1
+>>>>>>> is used only for USB 2.0 on an M.2 slot.
+>>>>>>>
+>>>>>>
+>>>>>> Uhm, okay, but why should USB3 be disabled on a controller that supports USB3?
+>>>>>>
+>>>>>> I agree about disabling it on specific boards that use only the USB 2.0 lines of
+>>>>>> this controller, but doing that globally looks wrong... and looks like being a
+>>>>>> workaround for an error that gets solved with adding a clock as well.
+>>>>>>
+>>>>>> In short, the question is: why would that be the correct thing to do?
+>>>>>
+>>>>> We can disable it in mt8195-cherry.dtsi then?
+>>>>
+>>>> That device does not use this controller, so yes we can disable it, but that still
+>>>> doesn't resolve the issue pointed out by Nicolas...!
+>>>
+>>> No. I mean disable USB3 on this port. Also see the next paragraph.
+>>>
+>>
+>> Yes, sorry I was meaning the same - but I effectively wrote "disable controller"
+>> instead, my bad.
+>>
+>>>> Please note that the issue that he sees doesn't happen only on Tomato, but also on
+>>>> other MediaTek MT8195/MT8395 boards - and applying this commit makes disabling the
+>>>> controller, or disabling the USB 3 lines on the controller, kinda redundant, as
+>>>> this will effectively fix probing it... but again, fixing the actual issue with
+>>>> this controller is something that must be done.
+>>>
+>>> If those other boards use the XHCI1 USB3 lines for ... USB3, then the USB3
+>>> PHY should also be tied to XHCI1, right now due to the Cherry Chromebook
+>>> design, only the USB2 PHY is tied to it.
+>>>
+>>
+>> Yes, I am aware of that.
+>>
+>>>> Disabling the controller on Tomato is a different topic - here we are discussing
+>>>> about fixing the issue, and that will happen, again, on any board that has this
+>>>> controller enabled with USB3 lines. :-)
+>>>>
+>>>> So, unless there is any specific reason for which applying this commit is a bad
+>>>> idea, or any alternative fix to this that is better than the proposed one, and
+>>>> not a workaround... I'm applying this one.
+>>>
+>>> Didn't I just relay what MediaTek says is the correct fix? Disable USB3
+>>> for this port on devices where the serial pairs are used for PCIe instead
+>>> of USB3.
+>>>
+>>
+>> I think there must've been some misunderstanding here.
+>>
+>> Yes you did relay what MediaTek is the correct fix, and I agree that the USB3 must
+>> be disabled on devices where those serial pairs are used for PCIe instead of USB,
+>> or on devices where those are completely unused.
+> 
+> OK. I will send a patch for Tomato as you asked.
+> 
+>> This, though, will fix the issue only on those devices (because we are disabling
+>> those lines entirely, so depending on how we see it, this might not be a fix but
+>> rather a workaround).
+> 
+> I would say that is a more accurate description of the hardware, so a fix.
+> 
 
-As for the mutex_sof table since this directly contains the values
-to write to the DISP_MUTEXn_CTL register, which has only bits [13:0]
-(so this register is effectively 14 bits long), change that to use
-unsigned 16-bits.
+I can accept a patch for Tomato with a Fixes tag. Yes.
 
-The type of mutex_{mod,sof}_reg was also changed to 16 bits, as
-the maximum value that those will ever have is 0x800, because it
-calculates as 0x30 + (0x20 * n) where n's maximum value is 63.
+>> If we don't apply this fix, any board that uses those pairs for USB 3 instead will
+>> still show the same "clocks are not stable" error, leaving them with a broken port.
+>>
+>> And I believe that because the clocks are not routed externally but rather are
+>> internal to the SoC, so, if INFRA_AO_PCIE_P1_TL_96M is necessary for that USB 3
+>> port to work, a board that intends to use those pairs for USB3 would still need
+>> this exact clock to actually get that port to work.
+> 
+> I couldn't reproduce the issue by disabling pcie1 as Nicolas mentioned.
+> I don't have any more to add to this though. Sorry for the noise.
+> 
 
-This reduces module size and brings no functional changes.
+Sometimes the noise actually opens some eyes around (be it mine or whoever else's),
+so as long as it is constructive, I don't see it as noise.
 
-Before:
-   text	   data	    bss	    dec	    hex	filename
-   9929	    512	      0	  10441	   28c9	mtk-mutex.o
+In short: no worries! :-)
 
-After:
-   text	   data	    bss	    dec	    hex	filename
-   7425	    512	      0	   7937	   1f01	mtk-mutex.o
+>> As for Tomato itself - I agree that we must add the u3p-dis-msk=0x1 flag, yes,
+>> and we will, but I'm purely talking about - again - an eventual board that would
+>> not have that property because USB3 is exposed/used for real.
+> 
+> I think it would make more sense to fix the `phys = ` statement in mt8195.dtsi
+> to list both the USB2 and USB3 PHYs. At the board level, for boards only
+> using USB2, we would have the overriding `phys = ` statement alongside the
+> `mediatek,u3p-dis-mask` property. Does that make sense to you?
+> 
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/soc/mediatek/mtk-mutex.c | 52 ++++++++++++++++----------------
- 1 file changed, 26 insertions(+), 26 deletions(-)
+Yeah, that'd make sense, though I'm not sure if the driver can cope with that: in
+that case, we'd obviously need "two" patches and not one :-)
 
-diff --git a/drivers/soc/mediatek/mtk-mutex.c b/drivers/soc/mediatek/mtk-mutex.c
-index 0ad8754e4361..09bf9e9f29bc 100644
---- a/drivers/soc/mediatek/mtk-mutex.c
-+++ b/drivers/soc/mediatek/mtk-mutex.c
-@@ -327,11 +327,11 @@ enum mtk_mutex_sof_id {
- };
- 
- struct mtk_mutex_data {
--	const unsigned int *mutex_mod;
--	const unsigned int *mutex_sof;
--	const unsigned int mutex_mod_reg;
--	const unsigned int mutex_sof_reg;
--	const unsigned int *mutex_table_mod;
-+	const u8 *mutex_mod;
-+	const u8 *mutex_table_mod;
-+	const u16 *mutex_sof;
-+	const u16 mutex_mod_reg;
-+	const u16 mutex_sof_reg;
- 	const bool no_clk;
- };
- 
-@@ -345,7 +345,7 @@ struct mtk_mutex_ctx {
- 	struct cmdq_client_reg		cmdq_reg;
- };
- 
--static const unsigned int mt2701_mutex_mod[DDP_COMPONENT_ID_MAX] = {
-+static const u8 mt2701_mutex_mod[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_BLS] = MT2701_MUTEX_MOD_DISP_BLS,
- 	[DDP_COMPONENT_COLOR0] = MT2701_MUTEX_MOD_DISP_COLOR,
- 	[DDP_COMPONENT_OVL0] = MT2701_MUTEX_MOD_DISP_OVL,
-@@ -354,7 +354,7 @@ static const unsigned int mt2701_mutex_mod[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_WDMA0] = MT2701_MUTEX_MOD_DISP_WDMA,
- };
- 
--static const unsigned int mt2712_mutex_mod[DDP_COMPONENT_ID_MAX] = {
-+static const u8 mt2712_mutex_mod[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_AAL0] = MT2712_MUTEX_MOD_DISP_AAL0,
- 	[DDP_COMPONENT_AAL1] = MT2712_MUTEX_MOD2_DISP_AAL1,
- 	[DDP_COMPONENT_COLOR0] = MT2712_MUTEX_MOD_DISP_COLOR0,
-@@ -374,7 +374,7 @@ static const unsigned int mt2712_mutex_mod[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_WDMA1] = MT2712_MUTEX_MOD_DISP_WDMA1,
- };
- 
--static const unsigned int mt8167_mutex_mod[DDP_COMPONENT_ID_MAX] = {
-+static const u8 mt8167_mutex_mod[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_AAL0] = MT8167_MUTEX_MOD_DISP_AAL,
- 	[DDP_COMPONENT_CCORR] = MT8167_MUTEX_MOD_DISP_CCORR,
- 	[DDP_COMPONENT_COLOR0] = MT8167_MUTEX_MOD_DISP_COLOR,
-@@ -389,7 +389,7 @@ static const unsigned int mt8167_mutex_mod[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_WDMA0] = MT8167_MUTEX_MOD_DISP_WDMA0,
- };
- 
--static const unsigned int mt8173_mutex_mod[DDP_COMPONENT_ID_MAX] = {
-+static const u8 mt8173_mutex_mod[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_AAL0] = MT8173_MUTEX_MOD_DISP_AAL,
- 	[DDP_COMPONENT_COLOR0] = MT8173_MUTEX_MOD_DISP_COLOR0,
- 	[DDP_COMPONENT_COLOR1] = MT8173_MUTEX_MOD_DISP_COLOR1,
-@@ -407,7 +407,7 @@ static const unsigned int mt8173_mutex_mod[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_WDMA1] = MT8173_MUTEX_MOD_DISP_WDMA1,
- };
- 
--static const unsigned int mt8183_mutex_mod[DDP_COMPONENT_ID_MAX] = {
-+static const u8 mt8183_mutex_mod[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_AAL0] = MT8183_MUTEX_MOD_DISP_AAL0,
- 	[DDP_COMPONENT_CCORR] = MT8183_MUTEX_MOD_DISP_CCORR0,
- 	[DDP_COMPONENT_COLOR0] = MT8183_MUTEX_MOD_DISP_COLOR0,
-@@ -421,7 +421,7 @@ static const unsigned int mt8183_mutex_mod[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_WDMA0] = MT8183_MUTEX_MOD_DISP_WDMA0,
- };
- 
--static const unsigned int mt8183_mutex_table_mod[MUTEX_MOD_IDX_MAX] = {
-+static const u8 mt8183_mutex_table_mod[MUTEX_MOD_IDX_MAX] = {
- 	[MUTEX_MOD_IDX_MDP_RDMA0] = MT8183_MUTEX_MOD_MDP_RDMA0,
- 	[MUTEX_MOD_IDX_MDP_RSZ0] = MT8183_MUTEX_MOD_MDP_RSZ0,
- 	[MUTEX_MOD_IDX_MDP_RSZ1] = MT8183_MUTEX_MOD_MDP_RSZ1,
-@@ -432,7 +432,7 @@ static const unsigned int mt8183_mutex_table_mod[MUTEX_MOD_IDX_MAX] = {
- 	[MUTEX_MOD_IDX_MDP_CCORR0] = MT8183_MUTEX_MOD_MDP_CCORR0,
- };
- 
--static const unsigned int mt8186_mutex_mod[DDP_COMPONENT_ID_MAX] = {
-+static const u8 mt8186_mutex_mod[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_AAL0] = MT8186_MUTEX_MOD_DISP_AAL0,
- 	[DDP_COMPONENT_CCORR] = MT8186_MUTEX_MOD_DISP_CCORR0,
- 	[DDP_COMPONENT_COLOR0] = MT8186_MUTEX_MOD_DISP_COLOR0,
-@@ -445,7 +445,7 @@ static const unsigned int mt8186_mutex_mod[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_RDMA1] = MT8186_MUTEX_MOD_DISP_RDMA1,
- };
- 
--static const unsigned int mt8186_mdp_mutex_table_mod[MUTEX_MOD_IDX_MAX] = {
-+static const u8 mt8186_mdp_mutex_table_mod[MUTEX_MOD_IDX_MAX] = {
- 	[MUTEX_MOD_IDX_MDP_RDMA0] = MT8186_MUTEX_MOD_MDP_RDMA0,
- 	[MUTEX_MOD_IDX_MDP_RSZ0] = MT8186_MUTEX_MOD_MDP_RSZ0,
- 	[MUTEX_MOD_IDX_MDP_RSZ1] = MT8186_MUTEX_MOD_MDP_RSZ1,
-@@ -456,7 +456,7 @@ static const unsigned int mt8186_mdp_mutex_table_mod[MUTEX_MOD_IDX_MAX] = {
- 	[MUTEX_MOD_IDX_MDP_COLOR0] = MT8186_MUTEX_MOD_MDP_COLOR0,
- };
- 
--static const unsigned int mt8188_mutex_mod[DDP_COMPONENT_ID_MAX] = {
-+static const u8 mt8188_mutex_mod[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_OVL0] = MT8188_MUTEX_MOD_DISP_OVL0,
- 	[DDP_COMPONENT_WDMA0] = MT8188_MUTEX_MOD_DISP_WDMA0,
- 	[DDP_COMPONENT_RDMA0] = MT8188_MUTEX_MOD_DISP_RDMA0,
-@@ -496,7 +496,7 @@ static const unsigned int mt8188_mutex_mod[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_MERGE5] = MT8188_MUTEX_MOD_DISP1_VPP_MERGE4,
- };
- 
--static const unsigned int mt8188_mdp_mutex_table_mod[MUTEX_MOD_IDX_MAX] = {
-+static const u8 mt8188_mdp_mutex_table_mod[MUTEX_MOD_IDX_MAX] = {
- 	[MUTEX_MOD_IDX_MDP_RDMA0] = MT8195_MUTEX_MOD_MDP_RDMA0,
- 	[MUTEX_MOD_IDX_MDP_RDMA2] = MT8195_MUTEX_MOD_MDP_RDMA2,
- 	[MUTEX_MOD_IDX_MDP_RDMA3] = MT8195_MUTEX_MOD_MDP_RDMA3,
-@@ -530,7 +530,7 @@ static const unsigned int mt8188_mdp_mutex_table_mod[MUTEX_MOD_IDX_MAX] = {
- 	[MUTEX_MOD_IDX_MDP_WROT3] = MT8195_MUTEX_MOD_MDP_WROT3,
- };
- 
--static const unsigned int mt8192_mutex_mod[DDP_COMPONENT_ID_MAX] = {
-+static const u8 mt8192_mutex_mod[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_AAL0] = MT8192_MUTEX_MOD_DISP_AAL0,
- 	[DDP_COMPONENT_CCORR] = MT8192_MUTEX_MOD_DISP_CCORR0,
- 	[DDP_COMPONENT_COLOR0] = MT8192_MUTEX_MOD_DISP_COLOR0,
-@@ -544,7 +544,7 @@ static const unsigned int mt8192_mutex_mod[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_RDMA4] = MT8192_MUTEX_MOD_DISP_RDMA4,
- };
- 
--static const unsigned int mt8195_mutex_mod[DDP_COMPONENT_ID_MAX] = {
-+static const u8 mt8195_mutex_mod[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_OVL0] = MT8195_MUTEX_MOD_DISP_OVL0,
- 	[DDP_COMPONENT_WDMA0] = MT8195_MUTEX_MOD_DISP_WDMA0,
- 	[DDP_COMPONENT_RDMA0] = MT8195_MUTEX_MOD_DISP_RDMA0,
-@@ -575,7 +575,7 @@ static const unsigned int mt8195_mutex_mod[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_DP_INTF1] = MT8195_MUTEX_MOD_DISP1_DP_INTF0,
- };
- 
--static const unsigned int mt8195_mutex_table_mod[MUTEX_MOD_IDX_MAX] = {
-+static const u8 mt8195_mutex_table_mod[MUTEX_MOD_IDX_MAX] = {
- 	[MUTEX_MOD_IDX_MDP_RDMA0] = MT8195_MUTEX_MOD_MDP_RDMA0,
- 	[MUTEX_MOD_IDX_MDP_RDMA1] = MT8195_MUTEX_MOD_MDP_RDMA1,
- 	[MUTEX_MOD_IDX_MDP_RDMA2] = MT8195_MUTEX_MOD_MDP_RDMA2,
-@@ -621,7 +621,7 @@ static const unsigned int mt8195_mutex_table_mod[MUTEX_MOD_IDX_MAX] = {
- 	[MUTEX_MOD_IDX_MDP_WROT3] = MT8195_MUTEX_MOD_MDP_WROT3,
- };
- 
--static const unsigned int mt8365_mutex_mod[DDP_COMPONENT_ID_MAX] = {
-+static const u8 mt8365_mutex_mod[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_AAL0] = MT8365_MUTEX_MOD_DISP_AAL,
- 	[DDP_COMPONENT_CCORR] = MT8365_MUTEX_MOD_DISP_CCORR,
- 	[DDP_COMPONENT_COLOR0] = MT8365_MUTEX_MOD_DISP_COLOR0,
-@@ -637,7 +637,7 @@ static const unsigned int mt8365_mutex_mod[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_WDMA0] = MT8365_MUTEX_MOD_DISP_WDMA0,
- };
- 
--static const unsigned int mt2712_mutex_sof[DDP_MUTEX_SOF_MAX] = {
-+static const u16 mt2712_mutex_sof[DDP_MUTEX_SOF_MAX] = {
- 	[MUTEX_SOF_SINGLE_MODE] = MUTEX_SOF_SINGLE_MODE,
- 	[MUTEX_SOF_DSI0] = MUTEX_SOF_DSI0,
- 	[MUTEX_SOF_DSI1] = MUTEX_SOF_DSI1,
-@@ -647,14 +647,14 @@ static const unsigned int mt2712_mutex_sof[DDP_MUTEX_SOF_MAX] = {
- 	[MUTEX_SOF_DSI3] = MUTEX_SOF_DSI3,
- };
- 
--static const unsigned int mt6795_mutex_sof[DDP_MUTEX_SOF_MAX] = {
-+static const u16 mt6795_mutex_sof[DDP_MUTEX_SOF_MAX] = {
- 	[MUTEX_SOF_SINGLE_MODE] = MUTEX_SOF_SINGLE_MODE,
- 	[MUTEX_SOF_DSI0] = MUTEX_SOF_DSI0,
- 	[MUTEX_SOF_DSI1] = MUTEX_SOF_DSI1,
- 	[MUTEX_SOF_DPI0] = MUTEX_SOF_DPI0,
- };
- 
--static const unsigned int mt8167_mutex_sof[DDP_MUTEX_SOF_MAX] = {
-+static const u16 mt8167_mutex_sof[DDP_MUTEX_SOF_MAX] = {
- 	[MUTEX_SOF_SINGLE_MODE] = MUTEX_SOF_SINGLE_MODE,
- 	[MUTEX_SOF_DSI0] = MUTEX_SOF_DSI0,
- 	[MUTEX_SOF_DPI0] = MT8167_MUTEX_SOF_DPI0,
-@@ -662,13 +662,13 @@ static const unsigned int mt8167_mutex_sof[DDP_MUTEX_SOF_MAX] = {
- };
- 
- /* Add EOF setting so overlay hardware can receive frame done irq */
--static const unsigned int mt8183_mutex_sof[DDP_MUTEX_SOF_MAX] = {
-+static const u16 mt8183_mutex_sof[DDP_MUTEX_SOF_MAX] = {
- 	[MUTEX_SOF_SINGLE_MODE] = MUTEX_SOF_SINGLE_MODE,
- 	[MUTEX_SOF_DSI0] = MUTEX_SOF_DSI0 | MT8183_MUTEX_EOF_DSI0,
- 	[MUTEX_SOF_DPI0] = MT8183_MUTEX_SOF_DPI0 | MT8183_MUTEX_EOF_DPI0,
- };
- 
--static const unsigned int mt8186_mutex_sof[MUTEX_SOF_DSI3 + 1] = {
-+static const u16 mt8186_mutex_sof[MUTEX_SOF_DSI3 + 1] = {
- 	[MUTEX_SOF_SINGLE_MODE] = MUTEX_SOF_SINGLE_MODE,
- 	[MUTEX_SOF_DSI0] = MT8186_MUTEX_SOF_DSI0 | MT8186_MUTEX_EOF_DSI0,
- 	[MUTEX_SOF_DPI0] = MT8186_MUTEX_SOF_DPI0 | MT8186_MUTEX_EOF_DPI0,
-@@ -682,7 +682,7 @@ static const unsigned int mt8186_mutex_sof[MUTEX_SOF_DSI3 + 1] = {
-  * but also detect the error at end of frame(EAEOF) when EOF signal
-  * arrives.
-  */
--static const unsigned int mt8188_mutex_sof[DDP_MUTEX_SOF_MAX] = {
-+static const u16 mt8188_mutex_sof[DDP_MUTEX_SOF_MAX] = {
- 	[MUTEX_SOF_SINGLE_MODE] = MUTEX_SOF_SINGLE_MODE,
- 	[MUTEX_SOF_DSI0] =
- 		MT8188_MUTEX_SOF_DSI0 | MT8188_MUTEX_EOF_DSI0,
-@@ -692,7 +692,7 @@ static const unsigned int mt8188_mutex_sof[DDP_MUTEX_SOF_MAX] = {
- 		MT8188_MUTEX_SOF_DP_INTF1 | MT8188_MUTEX_EOF_DP_INTF1,
- };
- 
--static const unsigned int mt8195_mutex_sof[DDP_MUTEX_SOF_MAX] = {
-+static const u16 mt8195_mutex_sof[DDP_MUTEX_SOF_MAX] = {
- 	[MUTEX_SOF_SINGLE_MODE] = MUTEX_SOF_SINGLE_MODE,
- 	[MUTEX_SOF_DSI0] = MT8195_MUTEX_SOF_DSI0 | MT8195_MUTEX_EOF_DSI0,
- 	[MUTEX_SOF_DSI1] = MT8195_MUTEX_SOF_DSI1 | MT8195_MUTEX_EOF_DSI1,
--- 
-2.45.2
+Cheers!
+
+> 
+> Thanks
+> ChenYu
+> 
+>> Cheers,
+>> Angelo
+>>
+>>>
+>>> Regards
+>>> ChenYu
+>>>
+>>>> Cheers,
+>>>> Angelo
+>>>>
+>>>>>
+>>>>> ChenYu
+>>>>>
+>>>>>> Cheers,
+>>>>>> Angelo
+>>>>>>
+>>>>>>>
+>>>>>>> ChenYu
+>>>>>>>
+>>>>>>> index 8b7307cdefc6..2dac9f706a58
+>>>>>>> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+>>>>>>> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+>>>>>>> @@ -1447,6 +1447,7 @@
+>>>>>>>                                           "xhci_ck";
+>>>>>>>                             mediatek,syscon-wakeup = <&pericfg 0x400 104>;
+>>>>>>>                             wakeup-source;
+>>>>>>> +                       mediatek,u3p-dis-msk = <0x1>;
+>>>>>>>                             status = "disabled";
+>>>>>>>                     };
+>>>>>>>
+>>>>>>>> ---
+>>>>>>>>      arch/arm64/boot/dts/mediatek/mt8195.dtsi | 10 ++++++++--
+>>>>>>>>      1 file changed, 8 insertions(+), 2 deletions(-)
+>>>>>>>>
+>>>>>>>> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+>>>>>>>> index 2ee45752583c..cc5169871f1c 100644
+>>>>>>>> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+>>>>>>>> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+>>>>>>>> @@ -1453,9 +1453,15 @@ xhci1: usb@11290000 {
+>>>>>>>>                                      <&topckgen CLK_TOP_SSUSB_P1_REF>,
+>>>>>>>>                                      <&apmixedsys CLK_APMIXED_USB1PLL>,
+>>>>>>>>                                      <&clk26m>,
+>>>>>>>> -                                <&pericfg_ao CLK_PERI_AO_SSUSB_1P_XHCI>;
+>>>>>>>> +                                <&pericfg_ao CLK_PERI_AO_SSUSB_1P_XHCI>,
+>>>>>>>> +                                /*
+>>>>>>>> +                                 * This clock is required due to a hardware
+>>>>>>>> +                                 * bug. The 'frmcnt_ck' clock name is used as a
+>>>>>>>> +                                 * placeholder.
+>>>>>>>> +                                 */
+>>>>>>>> +                                <&infracfg_ao CLK_INFRA_AO_PCIE_P1_TL_96M>;
+>>>>>>>>                             clock-names = "sys_ck", "ref_ck", "mcu_ck", "dma_ck",
+>>>>>>>> -                                     "xhci_ck";
+>>>>>>>> +                                     "xhci_ck", "frmcnt_ck";
+>>>>>>>>                             mediatek,syscon-wakeup = <&pericfg 0x400 104>;
+>>>>>>>>                             wakeup-source;
+>>>>>>>>                             status = "disabled";
+>>>>>>>>
+>>>>>>>> ---
+>>>>>>>> base-commit: dee7f101b64219f512bb2f842227bd04c14efe30
+>>>>>>>> change-id: 20240722-usb-1129-probe-pci-clk-fix-ef8646f46aac
+>>>>>>>>
+>>>>>>>> Best regards,
+>>>>>>>> --
+>>>>>>>> Nícolas F. R. A. Prado <nfraprado@collabora.com>
+>>>>>>>>
+>>>>>>>>
+>>>>>>
+>>>>>>
+>>>>>>
+>>>>
+>>
+
+
 
 
