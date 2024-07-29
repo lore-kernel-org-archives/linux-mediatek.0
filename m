@@ -4,70 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AAC2DC3DA61
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jul 2024 15:09:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D8FAC3DA4A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jul 2024 15:41:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JFLVB8HdF8dNTAoPRJXzl3MWq25JNQkttRQ8C6QzyVg=; b=XpvKSiJWYHzc83diZpsQs2PQco
-	m7yskptdXZnYlbAtlFI46le888u7kwU/ETUAgJlNEI+rRfv35xU3bRQ+cie1ZM9Qjcqzoy/Xu7Ll0
-	HeyrGq0C2wo1S3sA5EPF4dS44X7Nipczz6dFJqvUBZuGVGinWWarKPFmEU6MJH73fCVYl7zjJfUwL
-	nQSVQqoZBg4ZF0HX4u7ZCLfenYqO+l8q1195D0M69YFveJZa0sdHAcGSp+YfINhYf5qLmnZZut0le
-	Mm7T+S8gpQwhbsfKv1jinwgi+r5fw/dowLjrbgqVbi93Nnhdb/FomSgpSH+NFzalLVpv39eyrq/1l
-	keQ0C4RQ==;
+	bh=XyV0MJ0TVJDgT/cxM8+1zyKKrqjeBp+cCUkpRvDgAI0=; b=AWQ82W+XfhxP06YyOsykq5x1jn
+	qvcry/1ZukcwjayoMJIfvMm6q9Cy58sUVtSLL7pkT1lUFfkTggz0ZR4x5GX2Qwq7KIvO2atSNO5/j
+	L6jIZEFKT9D0+satZWGV93cpYoKvvDvPjMjJ/7e5zJuAr9q+eYwzFmAPwXhb+CF7t2zy8TR8EopJw
+	pLl2d278O/3Bxe9HHH89rutsWymwDhpoxmIIvvvtpJW3YSqXZqecQoAIi4MD07Z8s2e33UFdagXEr
+	IfeyCPeWRmgjCVglqN5uhfsMb1GRElIMnM4n0CQ/ZtGrraekXOEgYRFcoXxw3pWN9TFdiqn7YXXJd
+	eOyZbxEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYS0C-0000000Bol6-1h8b;
-	Mon, 29 Jul 2024 15:09:32 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1sYSUl-0000000Btkq-01mr;
+	Mon, 29 Jul 2024 15:41:07 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYRza-0000000BoZu-1wwg;
-	Mon, 29 Jul 2024 15:08:55 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1722265733;
-	bh=aAbjuBpvIUGViH+nWkjTxRXW47KgMyjW6ht1VbHNVVo=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=K0d48MAFOsPJPuZxzUKierWTMxK6/6DD+ZV1qG1R++MQ9J2Ri0x7CqK2zaZSXRYdP
-	 ablxsWAO3YD2/HNTwWbNeP4uBlQrzfEEJKgLAHGQpFtP4pJCIvWb2/42Ggg72+9HV8
-	 ufdZ2cq0F2w5DHdukuqPRQhRxkmLmqkZCm/Rk/j3pYUGADab7p0anbLZ2PyFLoU6qc
-	 K36kvascrBDl6QZGiFDt8jpjGjMZsFRrQc4SQ9S8n4z7f7ry9RHutm1hUxYOnhxwzH
-	 WHStHbIV/LDFj1BLy4DFGuQmzA2xirXlS3zm55YKkADa0IZRpzLZPNtfvOuP8oxan9
-	 tWvEaQllSt2Mg==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 603D63780C11;
-	Mon, 29 Jul 2024 15:08:50 +0000 (UTC)
-Message-ID: <f2e4d8a1-f683-415d-853f-b55abdb8c27c@collabora.com>
-Date: Mon, 29 Jul 2024 17:08:48 +0200
+	id 1sYSTy-0000000BteY-2Nhp;
+	Mon, 29 Jul 2024 15:40:18 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:To:From:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=XyV0MJ0TVJDgT/cxM8+1zyKKrqjeBp+cCUkpRvDgAI0=; b=fXnLsOSxYp1z3HKCymURonYb7F
+	TyPEo1hARoCLDSSX+nRcnTRyl5WcWjxY8U7YrBSR7HqvK+s7Alf14w1T2AEZd7SxPrur4OSNxWpPj
+	Gp6nwRxe26d6Pv21Lr4AlDv8DHTUoq170rClqa8yZaXT/Kq1uUObOSS0cdYpEm7ynVOw9lrAAmVuU
+	tNFQRvu940j+eA3jATmP45eUzRponllOHeKeHX5sg4z96QHccAsofyjJvagJ9RXmSa4Q/X8yUu/TX
+	l9qN+0CioI7QhuifiFLHZziW1cDGv0dJlcnjWcKo1qYDKJ8oPRiCEtFDOL01DSUNSX9lNFf6wODFx
+	j6lTzdJg==;
+Received: from dfw.source.kernel.org ([139.178.84.217])
+	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1sYSTv-00000004oHU-03Wy;
+	Mon, 29 Jul 2024 15:40:17 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 82DAC61B41;
+	Mon, 29 Jul 2024 15:40:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7F44DC4AF0A;
+	Mon, 29 Jul 2024 15:40:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1722267613;
+	bh=uylFLwNOYdKjfLJ3Fcuo4VxUycGhddVAuVf2ch5UZX0=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=Ucr7hsEPKCdBT5GMa8bR6DoDPo0ZlbNg/B1UXakUVJm5ulmVOHBnqYA/u8O702hcu
+	 w9smP9bznSPE6OKHPpSV1P4X3GfTa53pA4suOKgpstIF2+M1leEwTaABKDiFaC3pT3
+	 etdEkkDTb9kMSVB1fjd+ECacCuxq4EIs1WZdiNGZHblrjimntG0H1TeNpXJ6cfW9+5
+	 pQwEnYbBAVAiFfCbDa1S2Nlqh9AUK0jxf7v6U8Qhu2V5ZbBQlB1/iuYNJgYQIq0RrE
+	 30PEypX5QLJ1n+WR90g2Yy0uNraJQesl1kXtADmR5V2lE8uCHVd/zaP87sS7u6pWJ4
+	 XDugO+1O2fZZQ==
+From: Mark Brown <broonie@kernel.org>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ =?utf-8?q?Rafa=C5=82_Mi=C5=82ecki?= <zajec5@gmail.com>
+Cc: Leilk Liu <leilk.liu@mediatek.com>, linux-spi@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, John Crispin <john@phrozen.org>, 
+ Daniel Golle <daniel@makrotopia.org>, 
+ =?utf-8?q?Rafa=C5=82_Mi=C5=82ecki?= <rafal@milecki.pl>
+In-Reply-To: <20240727114828.29558-1-zajec5@gmail.com>
+References: <20240727114828.29558-1-zajec5@gmail.com>
+Subject: Re: (subset) [PATCH 1/2] dt-bindings: spi: mediatek,spi-mt65xx:
+ add compatible for MT7981
+Message-Id: <172226761022.71144.306390741868262406.b4-ty@kernel.org>
+Date: Mon, 29 Jul 2024 16:40:10 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 5/5] arm64: dts: mediatek: mt8365: Add support for
- camera
-To: Julien Stephan <jstephan@baylibre.com>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Andy Hsieh <andy.hsieh@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20240729-add-mtk-isp-3-0-support-v6-0-c374c9e0c672@baylibre.com>
- <20240729-add-mtk-isp-3-0-support-v6-5-c374c9e0c672@baylibre.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20240729-add-mtk-isp-3-0-support-v6-5-c374c9e0c672@baylibre.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-Mailer: b4 0.15-dev-37811
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240729_080854_736947_B0385E6D 
-X-CRM114-Status: GOOD (  15.44  )
+X-CRM114-CacheID: sfid-20240729_164015_305343_A73552EB 
+X-CRM114-Status: UNSURE (   9.97  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,110 +94,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 29/07/24 16:48, Julien Stephan ha scritto:
-> Add base support for cameras for mt8365 platforms. This requires nodes
-> for the sensor interface, camsv, and CSI receivers.
+On Sat, 27 Jul 2024 13:48:27 +0200, Rafał Miłecki wrote:
+> MT7981 has SPI controllers based on IPM design
 > 
-> Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> Signed-off-by: Julien Stephan <jstephan@baylibre.com>
-> ---
->   arch/arm64/boot/dts/mediatek/mt8365.dtsi | 125 +++++++++++++++++++++++++++++++
->   1 file changed, 125 insertions(+)
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8365.dtsi b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-> index 24581f7410aa..cabdb51f4041 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-> @@ -10,6 +10,7 @@
->   #include <dt-bindings/interrupt-controller/irq.h>
->   #include <dt-bindings/phy/phy.h>
->   #include <dt-bindings/power/mediatek,mt8365-power.h>
-> +#include <dt-bindings/memory/mediatek,mt8365-larb-port.h>
->   
->   / {
->   	compatible = "mediatek,mt8365";
-> @@ -703,6 +704,23 @@ ethernet: ethernet@112a0000 {
->   			status = "disabled";
->   		};
->   
-> +		mipi_csi0: mipi-csi0@11c10000 {
 
-Names must be generic. This is mipi-csi-phy@xyz or csi-phy@xyz as it looks
-like it's not the entire CSI interface but just its PHY. Am I wrong?
+Applied to
 
-> +			compatible = "mediatek,mt8365-csi-rx";
-> +			reg = <0 0x11c10000 0 0x2000>;
-> +			status = "disabled";
-> +			num-lanes = <4>;
-> +			#phy-cells = <1>;
-> +		};
-> +
-> +		mipi_csi1: mipi-csi1@11c12000 {
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
 
-Same for this one.
+Thanks!
 
-> +			compatible = "mediatek,mt8365-csi-rx";
-> +			reg = <0 0x11c12000 0 0x2000>;
-> +			phy-type = <PHY_TYPE_DPHY>;
+[1/2] dt-bindings: spi: mediatek,spi-mt65xx: add compatible for MT7981
+      commit: 158678bea637020dd6fc521536c5b07701447777
 
-...so the secondary CSIPHY only supports DPHY, while the first one supports either
-C or D?
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
 
-> +			status = "disabled";
-> +			num-lanes = <4>;
-> +			#phy-cells = <0>;
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
-...and then, it's confusing, one CSI has got one PHY cell, one has got two?
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
 
-> +		};
-> +
->   		u3phy: t-phy@11cc0000 {
->   			compatible = "mediatek,mt8365-tphy", "mediatek,generic-tphy-v2";
->   			#address-cells = <1>;
-> @@ -773,6 +791,113 @@ larb2: larb@15001000 {
->   			mediatek,larb-id = <2>;
->   		};
->   
-> +		seninf: seninf@15040000 {
-> +			compatible = "mediatek,mt8365-seninf";
-> +			reg = <0 0x15040000 0 0x6000>;
-> +			interrupts = <GIC_SPI 210 IRQ_TYPE_LEVEL_LOW>;
-> +			clocks = <&camsys CLK_CAM_SENIF>,
-> +				 <&topckgen CLK_TOP_SENIF_SEL>;
-> +			clock-names = "camsys", "top_mux";
-> +
-> +			power-domains = <&spm MT8365_POWER_DOMAIN_CAM>;
-> +
-> +			phys = <&mipi_csi0 PHY_TYPE_DPHY>, <&mipi_csi1>;
-> +			phy-names = "csi0", "csi1";
-> +
-> +			status = "disabled";
-> +
-> +			ports {
-> +				#address-cells = <1>;
-> +				#size-cells = <0>;
-> +
-> +				port@0 {
-> +					reg = <0>;
-> +				};
-> +
-> +				port@1 {
-> +					reg = <1>;
-> +				};
-> +
-> +				port@2 {
-> +					reg = <2>;
-> +				};
-> +
-> +				port@3 {
-> +					reg = <3>;
-> +				};
-> +
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
 
-Empty ports, why?
-
-Regards,
-Angelo
-
+Thanks,
+Mark
 
 
