@@ -4,64 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8A16C3DA61
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jul 2024 12:42:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A36A3C3DA4A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jul 2024 12:47:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qiLbjMB01LOnFnPEifsGIaFUfHw5df24MQCQIrXCMcM=; b=VcxkWHJZgRdnG7uOobDvB3+vIO
-	QDYna4fB1YidTnTVtL+WfJz1/miIM34UsE4qcNVqIl3mAfM4EeMQm6Xr8QULxTm7qFVa7IKmm9dh3
-	khEGK5l54WuzhFTBQvaAqK8XQnRigWRnISZzvbHDLBZ7dQDnDWMqXMddN/+nlzyX7wY2EGWa8raI8
-	ruYa+47k5jXUrmnzINgpxnL2Sn389MZ46cJV5fo3OWjlIjPer4qop9QR9DlE+ihWLz8v9t1kToFoz
-	KdOJWJ4SPwmbU8jbR+mTYTOd9wHETeL9YKD1kz3LNgcKdsh1DzlSXu51t8XznV0ZEyVdfBWENMbxH
-	ynicE+kA==;
+	bh=Xw9owQO3ke8d+y01UUou/ic5P0UC0KrCWnrceDha0Ug=; b=VmLobhlKFzVXsAuEZCCHj8hEsa
+	GhToQd36JxM3SaXPMPIDE3K62+xWwH2zf8KvzYzBiRyAEwip+cnqjA2AP1t4eqCVQGPS76rrnNtqq
+	qJbpAb4YT54kzn1wLBsFDh+8QeMXYuUrML1vUQrUzegbh/bah62MPGWVntA1vJrAxtBm+3ank9JiA
+	ygS+OaOArFDiBNVLiUstMj4uh0HhvZsyIs8un5VCDUJMLZU/+0JnKvpr6tglf9E4/5Y0nn1XjCf1K
+	t6bKGoR/lPh97C3HzXVLzfT8NSrFw/vscjtfZSC/v7XNaERE9KrKFMACFEFNCSvRwOdB3KwNBM3z4
+	yohXjqiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYPht-0000000BHDD-0oF9;
-	Mon, 29 Jul 2024 12:42:29 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1sYPmj-0000000BIUg-0zr8;
+	Mon, 29 Jul 2024 12:47:29 +0000
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYPhQ-0000000BH5s-4BCZ;
-	Mon, 29 Jul 2024 12:42:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1722256919;
-	bh=X2u0PrWontZeldcDpL+njEQwMDia9hCQv81wis8dBZM=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=zDIMeh0KQ57DH7NdTsBL1i5R22tUOSs33l+APLxNicDEnocmlSDFe7YGBKzUhQsYg
-	 KcJi6lIdBhrDlPPF9PBtsPqmPO8GrtyPjQlDGVCSh/Q7bkax57y1k4/fXgVbqY/Mv7
-	 22BxG+F7nw9zuefRiT0dbbI/N/dZdgAZNF1OM58yJiQSIzCowrJuUntD3t/VeicCd/
-	 T3/875y2VBHgiOEbd4msgw5NsVLZaz0k8YGO+sFLiK64kwM5ovVQhXn3aqOii8+u9q
-	 FykHVw409xZoImd55I5O6WJMv7EhWZP/4VDWi8pbNYxkXBwGhvOT6Ij4iFh/dqRLbG
-	 WgkpulPZQudQA==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 194A437804D4;
-	Mon, 29 Jul 2024 12:41:59 +0000 (UTC)
-Message-ID: <ae3a3925-0c34-4e05-8786-f76debadab9a@collabora.com>
-Date: Mon, 29 Jul 2024 14:41:58 +0200
+	id 1sYPm0-0000000BIGD-3VSa
+	for linux-mediatek@lists.infradead.org;
+	Mon, 29 Jul 2024 12:46:46 +0000
+Received: by mail-ed1-x52c.google.com with SMTP id 4fb4d7f45d1cf-5a2a90243c9so4420132a12.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 29 Jul 2024 05:46:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1722257202; x=1722862002; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Xw9owQO3ke8d+y01UUou/ic5P0UC0KrCWnrceDha0Ug=;
+        b=3JhX01iywZSADOp/rLWB4FzeZ0WowY22jKNFlh0SmCGMH3LpFu1OTCv2Nl6d0VH2Gk
+         UqMkDzDXVRYl2OdOpEo7fGitmpKmiQof4R/Pgl30Z15wF//X4qpuFjOsaq/iq+lEUm3U
+         ZdJfs98U/kzjJmxkMGj50dsKdF754nYPDyuEKViTYeNXfLHtvkoDj5kw1KrKqyZzpHst
+         f7+WVC/i9DYxNG3kzbqy9nEJbwkEeONaf+UjYtSs7Ux1WkvAF24RE6AWSZd36HjzspTh
+         GmBTJnCIhaF1w8RZCf2VR9C3zXEcLC13mMpYk3YpK9hIBeLyzz9b8pNYc3fxQ9VllGqd
+         AW3w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1722257202; x=1722862002;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Xw9owQO3ke8d+y01UUou/ic5P0UC0KrCWnrceDha0Ug=;
+        b=FwLHNsIMR7hOrNEPTibYDUFOvUP4qiXRF6qoA+3oA8DSvZFgUXL/Rb5hFgoG41sSLr
+         PExjHewTsMcPgRGxCJI9Lu6+K+dxA69vPRUWDmu5gPNQHUggsF30LbjMAyHdBMlQD+CQ
+         It0lYVpjhWSfIXOvv9g9/QqeHhIovcTgUmC2e6fCubv0DQf2Li7/cTDxld481YnEv/Cm
+         wp3pUBvsfGgrM93LptjJNy5RgoHnqs5LJvuBorJAMkbI9qyOxBLCrySsy5dYpqUztSnO
+         t/2grsV/JCuz44HQiDfQk7vpBiV/oJqm2tPquAK1nfVPjHf5AsDNi7GSjXXDA+TihI74
+         QmDA==
+X-Forwarded-Encrypted: i=1; AJvYcCWVu4vLI6MfSGlBtNJX9dxFitM51rTZTM8l3VXUJTH/kqrusGilEAuhH/oeHbGkNmXtTzrPdqa88VmOwTjQFw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyTGqW+w5FTTQYVRySXNeQjmbjckkGyi/UPYTEgRY/N895BwFmf
+	LCfUPiElF1wBhUVoLiPE/v4qQOInmr+X5Zxd03jfsiGHjUHRmCfJSwxhPcHQEqHs+LyXHzzzpGG
+	sXtGSRJYWfeFwjRCr1mEfe+nb7KeYZ3eaIC/feg==
+X-Google-Smtp-Source: AGHT+IHinY1JfNv/mvpMM5Yfya33RSJgmSSwyZAu9jSx+bnpuWuKGvwHZZBD/MV0VUfT3CqvD4NAwzRkoPIdWhAyZ+w=
+X-Received: by 2002:a17:907:2d86:b0:a77:b0a4:7d88 with SMTP id
+ a640c23a62f3a-a7d3fdb79e8mr659217566b.10.1722257202254; Mon, 29 Jul 2024
+ 05:46:42 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 1/1] media: mediatek: jpeg: support 34bits
-To: Jianhua Lin <jianhua.lin@mediatek.com>, daniel.almeida@collabora.com,
- mchehab@kernel.org
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20240728120140.25135-1-jianhua.lin@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20240728120140.25135-1-jianhua.lin@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20240704-add-mtk-isp-3-0-support-v5-0-bfccccc5ec21@baylibre.com>
+ <20240704-add-mtk-isp-3-0-support-v5-3-bfccccc5ec21@baylibre.com> <647738c5c776a9ec07615e67094c4141fdf051eb.camel@mediatek.com>
+In-Reply-To: <647738c5c776a9ec07615e67094c4141fdf051eb.camel@mediatek.com>
+From: Julien Stephan <jstephan@baylibre.com>
+Date: Mon, 29 Jul 2024 14:46:29 +0200
+Message-ID: <CAEHHSvYqT5-s57FijOf+SfLYF4znjaseazxiY-07jVHs09iK6Q@mail.gmail.com>
+Subject: Re: [PATCH v5 3/5] media: platform: mediatek: isp_30: add mediatek
+ ISP3.0 sensor interface
+To: =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>
+Cc: "mchehab@kernel.org" <mchehab@kernel.org>, "conor+dt@kernel.org" <conor+dt@kernel.org>, 
+	"robh@kernel.org" <robh@kernel.org>, =?UTF-8?B?QW5keSBIc2llaCAo6Kyd5pm655qTKQ==?= <Andy.Hsieh@mediatek.com>, 
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, 
+	"laurent.pinchart@ideasonboard.com" <laurent.pinchart@ideasonboard.com>, 
+	"krzk+dt@kernel.org" <krzk+dt@kernel.org>, 
+	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>, 
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
+	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>, 
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, 
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
+	=?UTF-8?B?TG91aXMgS3VvICjpg63lvrflr6cp?= <louis.kuo@mediatek.com>, 
+	"fsylvestre@baylibre.com" <fsylvestre@baylibre.com>, "pnguyen@baylibre.com" <pnguyen@baylibre.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240729_054201_227814_A8B0F3D2 
-X-CRM114-Status: GOOD (  22.62  )
+X-CRM114-CacheID: sfid-20240729_054644_974598_D59A914F 
+X-CRM114-Status: GOOD (  24.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,111 +103,101 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 28/07/24 14:01, Jianhua Lin ha scritto:
-> the iommu HW supported 34bits iova space(16GB),
-> but mediatek jpeg enc/dec driver still is 32bit,
-> then need to set the bit32/bit33 iova to jpeg HW.
-> 
-> Signed-off-by: Jianhua Lin <jianhua.lin@mediatek.com>
-> ---
-> Changes compared with v2:
-> - remove dev_info() to print 34bits support info.
-> - keep of_property_read_bool() to check 34bits status,
->    because need to compatible old soc.
-> - use FIELD_PREP() and GENMASK() to generate bit mask.
-> - remove rdma pandig enable code, because the code not
->    related to 34bit support.
->   
->   .../platform/mediatek/jpeg/mtk_jpeg_core.c    |  8 ++-
->   .../platform/mediatek/jpeg/mtk_jpeg_core.h    |  4 ++
->   .../platform/mediatek/jpeg/mtk_jpeg_dec_hw.c  | 59 +++++++++++++++----
->   .../platform/mediatek/jpeg/mtk_jpeg_dec_hw.h  |  1 +
->   .../platform/mediatek/jpeg/mtk_jpeg_dec_reg.h |  8 +++
->   .../platform/mediatek/jpeg/mtk_jpeg_enc_hw.c  | 44 ++++++++++++--
->   .../platform/mediatek/jpeg/mtk_jpeg_enc_hw.h  |  7 ++-
->   7 files changed, 111 insertions(+), 20 deletions(-)
-> 
-> diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-> index ac48658e2de4..abee5ee5c6e3 100644
-> --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-> +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-> @@ -1030,6 +1030,7 @@ static void mtk_jpeg_dec_device_run(void *priv)
->   	spin_lock_irqsave(&jpeg->hw_lock, flags);
->   	mtk_jpeg_dec_reset(jpeg->reg_base);
->   	mtk_jpeg_dec_set_config(jpeg->reg_base,
-> +				jpeg->support_34bit,
->   				&jpeg_src_buf->dec_param,
->   				jpeg_src_buf->bs_size,
->   				&bs,
-> @@ -1317,6 +1318,9 @@ static int mtk_jpeg_probe(struct platform_device *pdev)
->   		return -EINVAL;
->   	}
->   
-> +	if (of_property_read_bool(pdev->dev.of_node, "mediatek,34bits"))
+Le jeu. 18 juil. 2024 =C3=A0 04:44, CK Hu (=E8=83=A1=E4=BF=8A=E5=85=89) <ck=
+.hu@mediatek.com> a =C3=A9crit :
+>
+> Hi, Julien:
+>
+> On Thu, 2024-07-04 at 15:36 +0200, Julien Stephan wrote:
+> >
+> > External email : Please do not click links or open attachments until yo=
+u have verified the sender or the content.
+> >  From: Louis Kuo <louis.kuo@mediatek.com>
+> >
+> > This will add the mediatek ISP3.0 seninf (sensor interface) driver foun=
+d
+> > on several Mediatek SoCs such as the mt8365.
+> >
+> > Then seninf module has 4 physical CSI-2 inputs. Depending on the soc th=
+ey
+> > may not be all connected.
+> >
+> > Signed-off-by: Louis Kuo <louis.kuo@mediatek.com>
+> > Signed-off-by: Phi-bang Nguyen <pnguyen@baylibre.com>
+> > Signed-off-by: Florian Sylvestre <fsylvestre@baylibre.com>
+> > Co-developed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> > Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> > Co-developed-by: Julien Stephan <jstephan@baylibre.com>
+> > Signed-off-by: Julien Stephan <jstephan@baylibre.com>
+> > ---
+>
+> [snip]
+>
+> > +static const struct mtk_seninf_conf seninf_8365_conf =3D {
+> > +.model =3D "mtk-camsys-3.0",
+> > +.nb_inputs =3D 4,
+> > +.nb_muxes =3D 6,
+> > +.nb_outputs =3D 4,
+> > +};
+> > +
+>
+> I think you should directly define these value as symbols because now
+> only support one SoC.
+>
+> #define MODEL     "mtk-camsys-3.0"
+> #define INPUT_NR  4
+> #define MUTEX_NR  6
+> #define OUTPUT_NR 4
+>
+> Because we don't know which SoC would be upstream later, maybe the next
+> SoC would be
+>
+> static const struct mtk_seninf_conf seninf_83xx_conf =3D {
+>         .model =3D "mtk-camsys-3.0",
+>         .nb_inputs =3D 4,
+>         .nb_muxes =3D 6,
+>         .nb_outputs =3D 4,
+>         .support_xxx =3D true;
+> };
+>
+> then model, nb_inputs, nb_muxes, and nb_outputs has no difference, so
+> it's not necessary to define them as variable. So define them as
+> constant now, and when next SoC upstream, then we know which one would
+> be variable.
+>
 
-I seem to remember that I already reviewed this part and said that this is a SoC
-capability, meaning that one SoC either always does, or always doesn't support
-34-bits IOVA.
+Hi CK,
 
-This means that this **shall not** be a devicetree property, but *must* be set in
-the platform data (mtk_jpeg_variant) for the specific SoC supporting that.
+Thank you for your feedback on this series.
+We already discussed this in an early version of the series (see
+https://lore.kernel.org/all/2dd412f0-86cb-3ae0-305d-0e8192b9128a@collabora.=
+com/).
+I also discussed with internal teams in Mediatek about the folder
+architecture. If this is not a red flag for you, I 'll let it as is.
 
-> +		jpeg->support_34bit = true;
-> +
->   	if (!jpeg->variant->multi_core) {
->   		ret = mtk_jpeg_single_core_init(pdev, jpeg);
->   		if (ret) {
-> @@ -1564,7 +1568,8 @@ static irqreturn_t mtk_jpeg_enc_done(struct mtk_jpeg_dev *jpeg)
->   	src_buf = v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
->   	dst_buf = v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
->   
-> -	result_size = mtk_jpeg_enc_get_file_size(jpeg->reg_base);
-> +	result_size = mtk_jpeg_enc_get_file_size(jpeg->reg_base,
-> +			ctx->jpeg->support_34bit);
->   	vb2_set_plane_payload(&dst_buf->vb2_buf, 0, result_size);
->   
->   	buf_state = VB2_BUF_STATE_DONE;
-> @@ -1764,6 +1769,7 @@ static void mtk_jpegdec_worker(struct work_struct *work)
->   	ctx->total_frame_num++;
->   	mtk_jpeg_dec_reset(comp_jpeg[hw_id]->reg_base);
->   	mtk_jpeg_dec_set_config(comp_jpeg[hw_id]->reg_base,
-> +				jpeg->support_34bit,
->   				&jpeg_src_buf->dec_param,
->   				jpeg_src_buf->bs_size,
->   				&bs,
-> diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
-> index 8ba6e757e11a..bf65bb54a035 100644
-> --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
-> +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
-> @@ -34,6 +34,8 @@
->   
->   #define MTK_JPEG_MAX_EXIF_SIZE	(64 * 1024)
->   
-> +#define MTK_JPEG_ADDR_MASK GENMASK(1, 0)
-> +
->   /**
->    * enum mtk_jpeg_ctx_state - states of the context state machine
->    * @MTK_JPEG_INIT:		current state is initialized
-> @@ -209,6 +211,7 @@ struct mtk_jpegdec_comp_dev {
->    * @reg_decbase:	jpg decode register base addr
->    * @dec_hw_dev:	jpg decode hardware device
->    * @hw_index:		jpg hw index
-> + * @support_34bit:	flag to check if support dma_address 34bit
->    */
->   struct mtk_jpeg_dev {
->   	struct mutex		lock;
-> @@ -231,6 +234,7 @@ struct mtk_jpeg_dev {
->   	void __iomem *reg_decbase[MTK_JPEGDEC_HW_MAX];
->   	struct mtk_jpegdec_comp_dev *dec_hw_dev[MTK_JPEGDEC_HW_MAX];
->   	atomic_t hw_index;
-> +	bool support_34bit;
+I will fix other comments you did and that I forgot to add in previous vers=
+ions.
 
-...and you don't need to add this member here, as struct mtk_jpeg_dev
-already has a pointer to mtk_jpeg_variant, which will contain the same
-member from platform data.
+Cheers
+Julien
 
-Regards,
-Angelo
-
-
+> Regards,
+> CK
+>
+>
+>
+> ************* MEDIATEK Confidentiality Notice ********************
+> The information contained in this e-mail message (including any
+> attachments) may be confidential, proprietary, privileged, or otherwise
+> exempt from disclosure under applicable laws. It is intended to be
+> conveyed only to the designated recipient(s). Any use, dissemination,
+> distribution, printing, retaining or copying of this e-mail (including it=
+s
+> attachments) by unintended recipient(s) is strictly prohibited and may
+> be unlawful. If you are not an intended recipient of this e-mail, or beli=
+eve
+> that you have received this e-mail in error, please notify the sender
+> immediately (by replying to this e-mail), delete any and all copies of
+> this e-mail (including any attachments) from your system, and do not
+> disclose the content of this e-mail to any other person. Thank you!
 
