@@ -4,84 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20EC9C3DA61
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jul 2024 11:12:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCFE2C3DA4A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jul 2024 12:26:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=373Xd6dyy934ztzDW+fda1E/9NFwuo6oroUTGcI7MXg=; b=iTnirGb6dAdfE7DVSw71FZImom
-	IwbZmq5VYTO420L5OotE5XAOtNKGr5CJ6q7Dw/hcb1U7kmZNrpOaMjYmH7/4nnBYVuNoakq6oTqSj
-	SoH3ZqoJLKbkp67kJIddYdUb7H+j28i9xFzX8+3XCrCCtx+h1I9XqeiEADvguFgripw4Tit52ITSO
-	syC4J7OcKfQh2cAIpztePcH+8lL4q6r9gGIpzAL6EYj6zqTDxz6kF47Az1soUU3pySNffqDqBBISj
-	RurRCkC8SqLzmojSBD8FogB7uX1AlEWjjF57OC2OI0VgDoIvVU33InaOjWgX+iobrgESbTRzYhf6D
-	wX/Vpqjg==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=XXwes7uYYbILtz2YaxU+OjBVm5tu5Af3Y8gliVAX2RQ=; b=LtfHC4/DPteC5bzhOfev7YPi3N
+	mpCfqWOdygTQCiewZHXOlhSnBg3fDd73CwDa2NgHm7rKOxFqfQis3VvIP4bkbCwsnAW3ddgnIzy7w
+	b/PkHmjXVn4loj8MJ+IGf3570yUnIRj0AdSUQoGc6BnCZHlbjoFcOUEgTRZeQHoMHN8ZCZn5zgBmy
+	280hKq79LFZSwxe/Vwk12dR/3vJi5wBvSBRKBDd7YLI19wslNNUbDMwrMa3TUPHf0DMUo9pAsNE2d
+	5ZPDniEK6t8ifD5GJ/XOJQfoMIrKhr2JSwncPAyp8O7SWGGifOZei7WqcalL5BwTyAocaEcFLs8Y/
+	gMzyUcQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYOIo-0000000B0fj-2oaX;
-	Mon, 29 Jul 2024 11:12:30 +0000
-Received: from mout.web.de ([212.227.17.11])
+	id 1sYPSI-0000000BDUi-3Vnq;
+	Mon, 29 Jul 2024 12:26:22 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYOIk-0000000B0eV-2Bkc
-	for linux-mediatek@lists.infradead.org;
-	Mon, 29 Jul 2024 11:12:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
-	s=s29768273; t=1722251537; x=1722856337; i=spasswolf@web.de;
-	bh=373Xd6dyy934ztzDW+fda1E/9NFwuo6oroUTGcI7MXg=;
-	h=X-UI-Sender-Class:Message-ID:Subject:From:To:Cc:Date:In-Reply-To:
-	 References:Content-Type:MIME-Version:Content-Transfer-Encoding:cc:
-	 content-transfer-encoding:content-type:date:from:message-id:
-	 mime-version:reply-to:subject:to;
-	b=E8kFx1dmqU/5hhqZRYOJ0oH3vTlF/wIIA9vtFBMhKOTj6hia0XQddovVC9kYIFox
-	 xxiDOw/3e4VFOEeNJoYp42Z6/WRm0qWNN/TP4UsUjbOxEgZK6LOh5K3raww01+E/B
-	 cZaakANEk58vxepPjOPqBFstcFp8htrZHsOgou3O/+OfMEX7KOB7vzzCKCDQQF88A
-	 k3riYMnKYQ6CVj8p2DWNXsOz9oVBEqiqx3My8FnOaa3kaCtRx0OH4+wg0rfQYHh5J
-	 oPvG7FALalqlGVEcmk7LG+i7qUWVNnYCd1O8nJaoKGDOh5Q4HyMuGHeDqH4H+xinw
-	 4xdNaZHg/r6Nsg5qhA==
-X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
-Received: from [192.168.0.101] ([84.119.92.193]) by smtp.web.de (mrweb106
- [213.165.67.124]) with ESMTPSA (Nemesis) id 1MBS6v-1sPpSo0i23-009CB3; Mon, 29
- Jul 2024 13:12:17 +0200
-Message-ID: <65621cad9a22df881745e9333a5c3696bdbb8df3.camel@web.de>
-Subject: Re: patch 46/47 causes NULL pointer deref on mt7921
-From: Bert Karwatzki <spasswolf@web.de>
-To: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@kernel.org>
-Cc: deren.wu@mediatek.com, linux-mediatek@lists.infradead.org, 
-	linux-wireless@vger.kernel.org, lorenzo.bianconi@redhat.com, 
-	mingyen.hsieh@mediatek.com, sean.wang@mediatek.com, spasswolf@web.de
-Date: Mon, 29 Jul 2024 13:12:15 +0200
-In-Reply-To: <2599b886-9c63-4989-a08a-7feab28f7c49@nbd.name>
-References: <20240711175156.4465-1-spasswolf@web.de>
-	 <CAGp9LzoXMoAW6dVZjTf-JcD_wiU4yXpGwkLaVyWXTkaV2MOKwg@mail.gmail.com>
-	 <adb192a59c44aa8708e80df30a6a47816a03e50f.camel@web.de>
-	 <4e943a62736f955af5d9cd1aff7e2b9c084c8885.camel@web.de>
-	 <2599b886-9c63-4989-a08a-7feab28f7c49@nbd.name>
-Content-Type: text/plain; charset="UTF-8"
-User-Agent: Evolution 3.52.3-1 
+	id 1sYPRm-0000000BDLd-0sPy;
+	Mon, 29 Jul 2024 12:25:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1722255946;
+	bh=Ss4a9Tumgb/hU3BQ8LLOz+BBWNeTNWFKWPUbY0WPOFg=;
+	h=From:To:Cc:Subject:Date:From;
+	b=p2Tr3xUNZFQfJ5q+LPjnVzvPgS7ha9IBqvC26q0HbPhQGhctFcC1wjmFsTcDQhFiT
+	 xX4KYi/vxR+qgmkrckiTy5AvFOioZpU0/iKYlxEFuWyBO80iio7qZdgWdNw3Ig8Nuk
+	 avVVlNVnx8tk/VA0u/DvtJO8ItzGEXWIa3SEgpOwbdC7AuMSgDA9XPH3YMKcJGkFHc
+	 bCqyQBUy0TmQ2xl/qIuP5IHB4fQ1haGrEjKOttzg6IDA5xwAqh7IjFV75f68EJhwbA
+	 1tihIpJgK+tzaaqs3l1dZarxflmRr9b1YORrSEASjh2Eotjjg3oQPYT+iHgBWOUpmE
+	 BboGw+qjVAaaw==
+Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 0239437804D4;
+	Mon, 29 Jul 2024 12:25:45 +0000 (UTC)
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: linux-mediatek@lists.infradead.org
+Cc: matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	kernel@collabora.com
+Subject: [PATCH] soc: mediatek: mtk-mutex: Reduce type size for mtk_mutex_data members
+Date: Mon, 29 Jul 2024 14:25:38 +0200
+Message-ID: <20240729122538.989855-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:dRjJ0/4GnlWP4i7mxWW0JtIIwxqBxnqKBQc4z14H6z2OB4gl0Fr
- uYyphgoUY1ZuD1hESd7Giz+5rP2lXxn3jpg7yWgqnevX6wBgtwd1cz53WSIeGPmtXFceZ04
- nfPc4DItEzZ7IGvUToCBRgmb2o816uIWdcDbU2XYuP8nv8zQcIp0oSzohq0xmDZ57v5FVPC
- KPyNKUnkl5Y2sXY4rt11w==
-UI-OutboundReport: notjunk:1;M01:P0:UalprcfjusQ=;BTzDiMugZoYzOUWdOD5ImiS4BI/
- oR6DXOZslIzQn3vlmqodqPGmEB6Cy9RFT0p5IvXwwm3irxHkt5sPRUwgYfbuddgafOrD+usiV
- H7YPmCz4ueKsgd0mGxqNqfmo2HnSxs6W79K6lx4sENIuXfCr2P9+x8zdMOXNbmPqr9qdxn4Gm
- 27tUukP9evL7IZ8YTzqgN2h3/PDrxk7pDFoKoZe0+uKZdzKuyIqNWccOZlCOz+jmvWAVbs5Gt
- fRDOk6z/gNkP36R1gUy8oLujvCApArKRIBRl+MtnIvH2h8pXrnhGV7rsVLNMf6taXBjNXY2jq
- LzuQI5Og/87K8Xr8WX2CtRwA9b2xHA6Q3Si0wszAoqNLqxsInKXMkjm7524/uX6n4SInfQqUx
- l4bHtz+YVsnyJGSyPi+SbeJeeIiO1Tcx1pOHLbpptzowo6AR34yZ0UVT1pCdaxLXR/AsFBsQM
- 8UQ23RsVHSP0ufs0gymERhVL6czzwQfD2QUo8wMg1fWJdHMhxe+Y566FMcYx6q/zWOw5rHkbf
- 1Vil4kdhPugboDS7qUCXxYiLRpq32g9hlor0bTEerctYeLdGnxCvwzrSei5DmHS4dPAHqTsRp
- q7tyFwoDViyAJeBOdnCryoilOBpYg1TzcMnw/p7+JHQNT9/hM0u+Iyd9no30/sE5YuQV4/Tt9
- NvXQ2qqqCfvPhLIpVg4q1qUEH1TpyhS65VLq2GNwB85hJHOnzvuDtMlRD8E8KTUl1A2Ggka1s
- 0kDfzM2PYfn3relg/7JS963p1LOIbFV64FWXYkyqVuYoSUByaLMEa10a0v0PAZwIwivSumgM4
- ltkelWlzbpO5e7pxiepYxuUg==
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240729_041226_876757_BC36B466 
-X-CRM114-Status: GOOD (  28.54  )
+X-CRM114-CacheID: sfid-20240729_052550_438483_0705F144 
+X-CRM114-Status: GOOD (  11.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,131 +73,243 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am Mittwoch, dem 17.07.2024 um 17:25 +0200 schrieb Felix Fietkau:
-> On 17.07.24 16:38, Bert Karwatzki wrote:
-> > Am Freitag, dem 12.07.2024 um 13:06 +0200 schrieb Bert Karwatzki:
-> > > Am Donnerstag, dem 11.07.2024 um 18:40 -0500 schrieb Sean Wang:
-> > > > Hi Bert,
-> > > >
-> > > > Thanks for the detailed debug log. I've quickly made a change to f=
-ix
-> > > > the issue. Right now, I can't access the test environment, but I'l=
-l
-> > > > test it and send it out as soon as possible. Here's the patch.
-> > > >
-> > > > diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-> > > > b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-> > > > index 2e6268cb06c0..1bab93d049df 100644
-> > > > --- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-> > > > +++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-> > > > @@ -303,6 +303,7 @@ mt7921_add_interface(struct ieee80211_hw *hw,
-> > > > struct ieee80211_vif *vif)
-> > > >
-> > > >         mvif->bss_conf.mt76.omac_idx =3D mvif->bss_conf.mt76.idx;
-> > > >         mvif->phy =3D phy;
-> > > > +       mvif->bss_conf.vif =3D mvif;
-> > > >         mvif->bss_conf.mt76.band_idx =3D 0;
-> > > >         mvif->bss_conf.mt76.wmm_idx =3D mvif->bss_conf.mt76.idx %
-> > > > MT76_CONNAC_MAX_WMM_SETS;
-> > > >
-> > >
-> > > I wrote earlier that this patch works fine with linux-next-20240711 =
-and at first
-> > > it did, but then another NULL pointer error occured. I'm not sure if=
- I can
-> > > bisect this as it does not trigger automatically it seems. Also I'm =
-currently
-> > > bisecting the problem with linux-20240712
-> > >
-> > > Bert Karwatzki
-> >
-> > Now the above mentioned NULL pointer dereference has happended again, =
-this time
-> > on linux-next-20240716. It cann be triggered by repeatedly turning the=
- Wifi off
-> > and on again. For further investigation I created this patch:
-> >
-> > diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-> > b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-> > index 2e6268cb06c0..3ecedf7bc9f3 100644
-> > --- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-> > +++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-> > @@ -303,6 +303,8 @@ mt7921_add_interface(struct ieee80211_hw *hw, stru=
-ct
-> > ieee80211_vif *vif)
-> >
-> >   	mvif->bss_conf.mt76.omac_idx =3D mvif->bss_conf.mt76.idx;
-> >   	mvif->phy =3D phy;
-> > +	WARN(!phy, "%s: phy =3D NULL\n", __func__);
-> > +	mvif->bss_conf.vif =3D mvif;
-> >   	mvif->bss_conf.mt76.band_idx =3D 0;
-> >   	mvif->bss_conf.mt76.wmm_idx =3D mvif->bss_conf.mt76.idx %
-> > MT76_CONNAC_MAX_WMM_SETS;
-> >
-> > @@ -1182,6 +1184,12 @@ static void mt7921_ipv6_addr_change(struct ieee=
-80211_hw
-> > *hw,
-> >   				    struct inet6_dev *idev)
-> >   {
-> >   	struct mt792x_vif *mvif =3D (struct mt792x_vif *)vif->drv_priv;
-> > +	printk(KERN_INFO "%s: mvif =3D %px\n", __func__, mvif);
-> > +	printk(KERN_INFO "%s: mvif->phy =3D %px\n", __func__, mvif->phy);
-> > +	if (!mvif->phy) {
-> > +		printk(KERN_INFO "%s: mvif->phy =3D NULL\n", __func__);
-> > +		return;
-> > +	}
-> >   	struct mt792x_dev *dev =3D mvif->phy->dev;
-> >   	struct inet6_ifaddr *ifa;
-> >   	struct in6_addr ns_addrs[IEEE80211_BSS_ARP_ADDR_LIST_LEN];
-> >
-> > And the result is this (the WARN in mt7921_add_interface did not trigg=
-er):
-> >
-> > [  367.121740] [    T861] wlp4s0: deauthenticating from 54:67:51:3d:a2=
-:d2 by
-> > local choice (Reason: 3=3DDEAUTH_LEAVING)
-> > [  367.209603] [    T861] mt7921_ipv6_addr_change: mvif =3D ffff954e75=
-00de40
-> > [  367.209615] [    T861] mt7921_ipv6_addr_change: mvif->phy =3D 00000=
-00000000000
-> > [  367.209621] [    T861] mt7921_ipv6_addr_change: mvif->phy =3D NULL
-> > [  367.250026] [    T861] mt7921_ipv6_addr_change: mvif =3D ffff954e75=
-00de40
-> > [  367.250034] [    T861] mt7921_ipv6_addr_change: mvif->phy =3D ffff9=
-54e44427768
-> > [  367.251537] [    T861] mt7921_ipv6_addr_change: mvif =3D ffff954e75=
-00de40
-> > [  367.251542] [    T861] mt7921_ipv6_addr_change: mvif->phy =3D ffff9=
-54e44427768
-> > [  369.977123] [    T862] wlp4s0: authenticate with 54:67:51:3d:a2:d2 =
-(local
-> > address=3Dc8:94:02:c1:bd:69)
-> > [  369.984864] [    T862] wlp4s0: send auth to 54:67:51:3d:a2:d2 (try =
-1/3)
-> > [  370.006199] [    T104] wlp4s0: authenticated
-> > [  370.006680] [    T104] wlp4s0: associate with 54:67:51:3d:a2:d2 (tr=
-y 1/3)
-> > [  370.059080] [     T98] wlp4s0: RX AssocResp from 54:67:51:3d:a2:d2
-> > (capab=3D0x511 status=3D0 aid=3D2)
-> > [  370.064067] [     T98] wlp4s0: associated
-> >
-> > So mvif->phy can be NULL at the start of mt7921_ipv6_addr_change. The =
-early
-> > return in that case avoids the NULL pointer and mvif->phy has its usua=
-l value
-> > again on the next call to mt7921_ipv6_addr_change so Wifi is working a=
-gain. I
-> > don't know how this could happen but perhaps you have an idea.
->
-> This change should fix it: https://nbd.name/p/0747f54f
-> Please test.
->
-> Thanks,
->
-> - Felix
->
+All of mutex_mod and mutex_table_mod contain an array of bit
+numbers, which can go from 0 to 63, it is hence not needed to
+use an unsigned 32-bits integer to store that: change them to
+unsigned 8-bits instead.
 
-The BUG is still present in linux-6.11-rc1.
+As for the mutex_sof table since this directly contains the values
+to write to the DISP_MUTEXn_CTL register, which has only bits [13:0]
+(so this register is effectively 14 bits long), change that to use
+unsigned 16-bits.
 
-Bert Karwatzki
+The type of mutex_{mod,sof}_reg was also changed to 16 bits, as
+the maximum value that those will ever have is 0x800, because it
+calculates as 0x30 + (0x20 * n) where n's maximum value is 63.
+
+This reduces module size and brings no functional changes.
+
+Before:
+   text	   data	    bss	    dec	    hex	filename
+   9929	    512	      0	  10441	   28c9	mtk-mutex.o
+
+After:
+   text	   data	    bss	    dec	    hex	filename
+   7425	    512	      0	   7937	   1f01	mtk-mutex.o
+
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/soc/mediatek/mtk-mutex.c | 52 ++++++++++++++++----------------
+ 1 file changed, 26 insertions(+), 26 deletions(-)
+
+diff --git a/drivers/soc/mediatek/mtk-mutex.c b/drivers/soc/mediatek/mtk-mutex.c
+index 0ad8754e4361..09bf9e9f29bc 100644
+--- a/drivers/soc/mediatek/mtk-mutex.c
++++ b/drivers/soc/mediatek/mtk-mutex.c
+@@ -327,11 +327,11 @@ enum mtk_mutex_sof_id {
+ };
+ 
+ struct mtk_mutex_data {
+-	const unsigned int *mutex_mod;
+-	const unsigned int *mutex_sof;
+-	const unsigned int mutex_mod_reg;
+-	const unsigned int mutex_sof_reg;
+-	const unsigned int *mutex_table_mod;
++	const u8 *mutex_mod;
++	const u8 *mutex_table_mod;
++	const u16 *mutex_sof;
++	const u16 mutex_mod_reg;
++	const u16 mutex_sof_reg;
+ 	const bool no_clk;
+ };
+ 
+@@ -345,7 +345,7 @@ struct mtk_mutex_ctx {
+ 	struct cmdq_client_reg		cmdq_reg;
+ };
+ 
+-static const unsigned int mt2701_mutex_mod[DDP_COMPONENT_ID_MAX] = {
++static const u8 mt2701_mutex_mod[DDP_COMPONENT_ID_MAX] = {
+ 	[DDP_COMPONENT_BLS] = MT2701_MUTEX_MOD_DISP_BLS,
+ 	[DDP_COMPONENT_COLOR0] = MT2701_MUTEX_MOD_DISP_COLOR,
+ 	[DDP_COMPONENT_OVL0] = MT2701_MUTEX_MOD_DISP_OVL,
+@@ -354,7 +354,7 @@ static const unsigned int mt2701_mutex_mod[DDP_COMPONENT_ID_MAX] = {
+ 	[DDP_COMPONENT_WDMA0] = MT2701_MUTEX_MOD_DISP_WDMA,
+ };
+ 
+-static const unsigned int mt2712_mutex_mod[DDP_COMPONENT_ID_MAX] = {
++static const u8 mt2712_mutex_mod[DDP_COMPONENT_ID_MAX] = {
+ 	[DDP_COMPONENT_AAL0] = MT2712_MUTEX_MOD_DISP_AAL0,
+ 	[DDP_COMPONENT_AAL1] = MT2712_MUTEX_MOD2_DISP_AAL1,
+ 	[DDP_COMPONENT_COLOR0] = MT2712_MUTEX_MOD_DISP_COLOR0,
+@@ -374,7 +374,7 @@ static const unsigned int mt2712_mutex_mod[DDP_COMPONENT_ID_MAX] = {
+ 	[DDP_COMPONENT_WDMA1] = MT2712_MUTEX_MOD_DISP_WDMA1,
+ };
+ 
+-static const unsigned int mt8167_mutex_mod[DDP_COMPONENT_ID_MAX] = {
++static const u8 mt8167_mutex_mod[DDP_COMPONENT_ID_MAX] = {
+ 	[DDP_COMPONENT_AAL0] = MT8167_MUTEX_MOD_DISP_AAL,
+ 	[DDP_COMPONENT_CCORR] = MT8167_MUTEX_MOD_DISP_CCORR,
+ 	[DDP_COMPONENT_COLOR0] = MT8167_MUTEX_MOD_DISP_COLOR,
+@@ -389,7 +389,7 @@ static const unsigned int mt8167_mutex_mod[DDP_COMPONENT_ID_MAX] = {
+ 	[DDP_COMPONENT_WDMA0] = MT8167_MUTEX_MOD_DISP_WDMA0,
+ };
+ 
+-static const unsigned int mt8173_mutex_mod[DDP_COMPONENT_ID_MAX] = {
++static const u8 mt8173_mutex_mod[DDP_COMPONENT_ID_MAX] = {
+ 	[DDP_COMPONENT_AAL0] = MT8173_MUTEX_MOD_DISP_AAL,
+ 	[DDP_COMPONENT_COLOR0] = MT8173_MUTEX_MOD_DISP_COLOR0,
+ 	[DDP_COMPONENT_COLOR1] = MT8173_MUTEX_MOD_DISP_COLOR1,
+@@ -407,7 +407,7 @@ static const unsigned int mt8173_mutex_mod[DDP_COMPONENT_ID_MAX] = {
+ 	[DDP_COMPONENT_WDMA1] = MT8173_MUTEX_MOD_DISP_WDMA1,
+ };
+ 
+-static const unsigned int mt8183_mutex_mod[DDP_COMPONENT_ID_MAX] = {
++static const u8 mt8183_mutex_mod[DDP_COMPONENT_ID_MAX] = {
+ 	[DDP_COMPONENT_AAL0] = MT8183_MUTEX_MOD_DISP_AAL0,
+ 	[DDP_COMPONENT_CCORR] = MT8183_MUTEX_MOD_DISP_CCORR0,
+ 	[DDP_COMPONENT_COLOR0] = MT8183_MUTEX_MOD_DISP_COLOR0,
+@@ -421,7 +421,7 @@ static const unsigned int mt8183_mutex_mod[DDP_COMPONENT_ID_MAX] = {
+ 	[DDP_COMPONENT_WDMA0] = MT8183_MUTEX_MOD_DISP_WDMA0,
+ };
+ 
+-static const unsigned int mt8183_mutex_table_mod[MUTEX_MOD_IDX_MAX] = {
++static const u8 mt8183_mutex_table_mod[MUTEX_MOD_IDX_MAX] = {
+ 	[MUTEX_MOD_IDX_MDP_RDMA0] = MT8183_MUTEX_MOD_MDP_RDMA0,
+ 	[MUTEX_MOD_IDX_MDP_RSZ0] = MT8183_MUTEX_MOD_MDP_RSZ0,
+ 	[MUTEX_MOD_IDX_MDP_RSZ1] = MT8183_MUTEX_MOD_MDP_RSZ1,
+@@ -432,7 +432,7 @@ static const unsigned int mt8183_mutex_table_mod[MUTEX_MOD_IDX_MAX] = {
+ 	[MUTEX_MOD_IDX_MDP_CCORR0] = MT8183_MUTEX_MOD_MDP_CCORR0,
+ };
+ 
+-static const unsigned int mt8186_mutex_mod[DDP_COMPONENT_ID_MAX] = {
++static const u8 mt8186_mutex_mod[DDP_COMPONENT_ID_MAX] = {
+ 	[DDP_COMPONENT_AAL0] = MT8186_MUTEX_MOD_DISP_AAL0,
+ 	[DDP_COMPONENT_CCORR] = MT8186_MUTEX_MOD_DISP_CCORR0,
+ 	[DDP_COMPONENT_COLOR0] = MT8186_MUTEX_MOD_DISP_COLOR0,
+@@ -445,7 +445,7 @@ static const unsigned int mt8186_mutex_mod[DDP_COMPONENT_ID_MAX] = {
+ 	[DDP_COMPONENT_RDMA1] = MT8186_MUTEX_MOD_DISP_RDMA1,
+ };
+ 
+-static const unsigned int mt8186_mdp_mutex_table_mod[MUTEX_MOD_IDX_MAX] = {
++static const u8 mt8186_mdp_mutex_table_mod[MUTEX_MOD_IDX_MAX] = {
+ 	[MUTEX_MOD_IDX_MDP_RDMA0] = MT8186_MUTEX_MOD_MDP_RDMA0,
+ 	[MUTEX_MOD_IDX_MDP_RSZ0] = MT8186_MUTEX_MOD_MDP_RSZ0,
+ 	[MUTEX_MOD_IDX_MDP_RSZ1] = MT8186_MUTEX_MOD_MDP_RSZ1,
+@@ -456,7 +456,7 @@ static const unsigned int mt8186_mdp_mutex_table_mod[MUTEX_MOD_IDX_MAX] = {
+ 	[MUTEX_MOD_IDX_MDP_COLOR0] = MT8186_MUTEX_MOD_MDP_COLOR0,
+ };
+ 
+-static const unsigned int mt8188_mutex_mod[DDP_COMPONENT_ID_MAX] = {
++static const u8 mt8188_mutex_mod[DDP_COMPONENT_ID_MAX] = {
+ 	[DDP_COMPONENT_OVL0] = MT8188_MUTEX_MOD_DISP_OVL0,
+ 	[DDP_COMPONENT_WDMA0] = MT8188_MUTEX_MOD_DISP_WDMA0,
+ 	[DDP_COMPONENT_RDMA0] = MT8188_MUTEX_MOD_DISP_RDMA0,
+@@ -496,7 +496,7 @@ static const unsigned int mt8188_mutex_mod[DDP_COMPONENT_ID_MAX] = {
+ 	[DDP_COMPONENT_MERGE5] = MT8188_MUTEX_MOD_DISP1_VPP_MERGE4,
+ };
+ 
+-static const unsigned int mt8188_mdp_mutex_table_mod[MUTEX_MOD_IDX_MAX] = {
++static const u8 mt8188_mdp_mutex_table_mod[MUTEX_MOD_IDX_MAX] = {
+ 	[MUTEX_MOD_IDX_MDP_RDMA0] = MT8195_MUTEX_MOD_MDP_RDMA0,
+ 	[MUTEX_MOD_IDX_MDP_RDMA2] = MT8195_MUTEX_MOD_MDP_RDMA2,
+ 	[MUTEX_MOD_IDX_MDP_RDMA3] = MT8195_MUTEX_MOD_MDP_RDMA3,
+@@ -530,7 +530,7 @@ static const unsigned int mt8188_mdp_mutex_table_mod[MUTEX_MOD_IDX_MAX] = {
+ 	[MUTEX_MOD_IDX_MDP_WROT3] = MT8195_MUTEX_MOD_MDP_WROT3,
+ };
+ 
+-static const unsigned int mt8192_mutex_mod[DDP_COMPONENT_ID_MAX] = {
++static const u8 mt8192_mutex_mod[DDP_COMPONENT_ID_MAX] = {
+ 	[DDP_COMPONENT_AAL0] = MT8192_MUTEX_MOD_DISP_AAL0,
+ 	[DDP_COMPONENT_CCORR] = MT8192_MUTEX_MOD_DISP_CCORR0,
+ 	[DDP_COMPONENT_COLOR0] = MT8192_MUTEX_MOD_DISP_COLOR0,
+@@ -544,7 +544,7 @@ static const unsigned int mt8192_mutex_mod[DDP_COMPONENT_ID_MAX] = {
+ 	[DDP_COMPONENT_RDMA4] = MT8192_MUTEX_MOD_DISP_RDMA4,
+ };
+ 
+-static const unsigned int mt8195_mutex_mod[DDP_COMPONENT_ID_MAX] = {
++static const u8 mt8195_mutex_mod[DDP_COMPONENT_ID_MAX] = {
+ 	[DDP_COMPONENT_OVL0] = MT8195_MUTEX_MOD_DISP_OVL0,
+ 	[DDP_COMPONENT_WDMA0] = MT8195_MUTEX_MOD_DISP_WDMA0,
+ 	[DDP_COMPONENT_RDMA0] = MT8195_MUTEX_MOD_DISP_RDMA0,
+@@ -575,7 +575,7 @@ static const unsigned int mt8195_mutex_mod[DDP_COMPONENT_ID_MAX] = {
+ 	[DDP_COMPONENT_DP_INTF1] = MT8195_MUTEX_MOD_DISP1_DP_INTF0,
+ };
+ 
+-static const unsigned int mt8195_mutex_table_mod[MUTEX_MOD_IDX_MAX] = {
++static const u8 mt8195_mutex_table_mod[MUTEX_MOD_IDX_MAX] = {
+ 	[MUTEX_MOD_IDX_MDP_RDMA0] = MT8195_MUTEX_MOD_MDP_RDMA0,
+ 	[MUTEX_MOD_IDX_MDP_RDMA1] = MT8195_MUTEX_MOD_MDP_RDMA1,
+ 	[MUTEX_MOD_IDX_MDP_RDMA2] = MT8195_MUTEX_MOD_MDP_RDMA2,
+@@ -621,7 +621,7 @@ static const unsigned int mt8195_mutex_table_mod[MUTEX_MOD_IDX_MAX] = {
+ 	[MUTEX_MOD_IDX_MDP_WROT3] = MT8195_MUTEX_MOD_MDP_WROT3,
+ };
+ 
+-static const unsigned int mt8365_mutex_mod[DDP_COMPONENT_ID_MAX] = {
++static const u8 mt8365_mutex_mod[DDP_COMPONENT_ID_MAX] = {
+ 	[DDP_COMPONENT_AAL0] = MT8365_MUTEX_MOD_DISP_AAL,
+ 	[DDP_COMPONENT_CCORR] = MT8365_MUTEX_MOD_DISP_CCORR,
+ 	[DDP_COMPONENT_COLOR0] = MT8365_MUTEX_MOD_DISP_COLOR0,
+@@ -637,7 +637,7 @@ static const unsigned int mt8365_mutex_mod[DDP_COMPONENT_ID_MAX] = {
+ 	[DDP_COMPONENT_WDMA0] = MT8365_MUTEX_MOD_DISP_WDMA0,
+ };
+ 
+-static const unsigned int mt2712_mutex_sof[DDP_MUTEX_SOF_MAX] = {
++static const u16 mt2712_mutex_sof[DDP_MUTEX_SOF_MAX] = {
+ 	[MUTEX_SOF_SINGLE_MODE] = MUTEX_SOF_SINGLE_MODE,
+ 	[MUTEX_SOF_DSI0] = MUTEX_SOF_DSI0,
+ 	[MUTEX_SOF_DSI1] = MUTEX_SOF_DSI1,
+@@ -647,14 +647,14 @@ static const unsigned int mt2712_mutex_sof[DDP_MUTEX_SOF_MAX] = {
+ 	[MUTEX_SOF_DSI3] = MUTEX_SOF_DSI3,
+ };
+ 
+-static const unsigned int mt6795_mutex_sof[DDP_MUTEX_SOF_MAX] = {
++static const u16 mt6795_mutex_sof[DDP_MUTEX_SOF_MAX] = {
+ 	[MUTEX_SOF_SINGLE_MODE] = MUTEX_SOF_SINGLE_MODE,
+ 	[MUTEX_SOF_DSI0] = MUTEX_SOF_DSI0,
+ 	[MUTEX_SOF_DSI1] = MUTEX_SOF_DSI1,
+ 	[MUTEX_SOF_DPI0] = MUTEX_SOF_DPI0,
+ };
+ 
+-static const unsigned int mt8167_mutex_sof[DDP_MUTEX_SOF_MAX] = {
++static const u16 mt8167_mutex_sof[DDP_MUTEX_SOF_MAX] = {
+ 	[MUTEX_SOF_SINGLE_MODE] = MUTEX_SOF_SINGLE_MODE,
+ 	[MUTEX_SOF_DSI0] = MUTEX_SOF_DSI0,
+ 	[MUTEX_SOF_DPI0] = MT8167_MUTEX_SOF_DPI0,
+@@ -662,13 +662,13 @@ static const unsigned int mt8167_mutex_sof[DDP_MUTEX_SOF_MAX] = {
+ };
+ 
+ /* Add EOF setting so overlay hardware can receive frame done irq */
+-static const unsigned int mt8183_mutex_sof[DDP_MUTEX_SOF_MAX] = {
++static const u16 mt8183_mutex_sof[DDP_MUTEX_SOF_MAX] = {
+ 	[MUTEX_SOF_SINGLE_MODE] = MUTEX_SOF_SINGLE_MODE,
+ 	[MUTEX_SOF_DSI0] = MUTEX_SOF_DSI0 | MT8183_MUTEX_EOF_DSI0,
+ 	[MUTEX_SOF_DPI0] = MT8183_MUTEX_SOF_DPI0 | MT8183_MUTEX_EOF_DPI0,
+ };
+ 
+-static const unsigned int mt8186_mutex_sof[MUTEX_SOF_DSI3 + 1] = {
++static const u16 mt8186_mutex_sof[MUTEX_SOF_DSI3 + 1] = {
+ 	[MUTEX_SOF_SINGLE_MODE] = MUTEX_SOF_SINGLE_MODE,
+ 	[MUTEX_SOF_DSI0] = MT8186_MUTEX_SOF_DSI0 | MT8186_MUTEX_EOF_DSI0,
+ 	[MUTEX_SOF_DPI0] = MT8186_MUTEX_SOF_DPI0 | MT8186_MUTEX_EOF_DPI0,
+@@ -682,7 +682,7 @@ static const unsigned int mt8186_mutex_sof[MUTEX_SOF_DSI3 + 1] = {
+  * but also detect the error at end of frame(EAEOF) when EOF signal
+  * arrives.
+  */
+-static const unsigned int mt8188_mutex_sof[DDP_MUTEX_SOF_MAX] = {
++static const u16 mt8188_mutex_sof[DDP_MUTEX_SOF_MAX] = {
+ 	[MUTEX_SOF_SINGLE_MODE] = MUTEX_SOF_SINGLE_MODE,
+ 	[MUTEX_SOF_DSI0] =
+ 		MT8188_MUTEX_SOF_DSI0 | MT8188_MUTEX_EOF_DSI0,
+@@ -692,7 +692,7 @@ static const unsigned int mt8188_mutex_sof[DDP_MUTEX_SOF_MAX] = {
+ 		MT8188_MUTEX_SOF_DP_INTF1 | MT8188_MUTEX_EOF_DP_INTF1,
+ };
+ 
+-static const unsigned int mt8195_mutex_sof[DDP_MUTEX_SOF_MAX] = {
++static const u16 mt8195_mutex_sof[DDP_MUTEX_SOF_MAX] = {
+ 	[MUTEX_SOF_SINGLE_MODE] = MUTEX_SOF_SINGLE_MODE,
+ 	[MUTEX_SOF_DSI0] = MT8195_MUTEX_SOF_DSI0 | MT8195_MUTEX_EOF_DSI0,
+ 	[MUTEX_SOF_DSI1] = MT8195_MUTEX_SOF_DSI1 | MT8195_MUTEX_EOF_DSI1,
+-- 
+2.45.2
+
 
