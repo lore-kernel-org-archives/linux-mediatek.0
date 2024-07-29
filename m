@@ -4,48 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10D2CC3DA4A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jul 2024 07:38:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96C87C3DA61
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jul 2024 07:40:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6VrBUZLfeqEVYKfqMZ4SHoKLBCN8QwyfM8kuYu//koY=; b=33cGxx5ZKjo2LCmprm/FJzoXGR
-	2NbNkuHgXrP+NVWlk9NpA9BRqgc/75Dq4kS/Fyii0oSIcLzKSvHajxKnEvYgA9Eo4wte1f4LKhfwo
-	eoTiPeCxwrC4yky7G0sjmgVIpPkFQJh32jw5yiSyDmJvNl2/XaHhePYaemuSsa/yKgEr2IiGcpE18
-	y+ZrZS/r074Itqhy3HrIatDLFd0e9P47uca7yYRMqItLRTmbnB1tpzUryaNaEYblnROOszV2XlQdb
-	h4y2wBR70fIBOEv5caV4VoHQzvmzpzANDvn1OGrVp/58z5DuwUxsXL6p/anZJqMVCtscTzrR6VAqB
-	MH52TH1Q==;
+	bh=YMxHYOp8Oh4zMPFyBezHpfDaJlVyE6c1x7geeCh2YQ4=; b=jZyHzkDJrrC6W/Xk4u96xsv/Zi
+	YkGqlnG+aACUxg56YXu72faOQqF7/cv2TTMB3FroI3XCICEFizA+wPhclfMZBCxMYwLnHsnPcRun+
+	DCr07vGtrhlREiaIZ6NV7F6zoKmlJSwh2eI9YWW6VwZ3d2NXkj9b9Ex5sbAgvvWo+qSwYqY4gBoaU
+	mJMHwyaSrIXJTJgWt+1MediEPimoW7l++qH3VCRVjQk5kxa33NumwBa8pWe64rNXVMHfXzrO5fmdS
+	N810AM7TmigWtlY/wz44PGviLwfdE1vayKqzWFhKAY/BymBm0wYgcBgrruAOU2nDHCIfvjMVzpUv5
+	JD6ZTFNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYKxX-0000000ANPm-30gt;
-	Mon, 29 Jul 2024 07:38:19 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1sYKzJ-0000000ANms-1Aif;
+	Mon, 29 Jul 2024 07:40:09 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYKvq-0000000AMiE-44yN;
-	Mon, 29 Jul 2024 07:36:36 +0000
+	id 1sYKys-0000000ANgT-1HHo;
+	Mon, 29 Jul 2024 07:39:43 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 14FE3CE010D;
-	Mon, 29 Jul 2024 07:36:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B43FBC4AF60;
-	Mon, 29 Jul 2024 07:36:26 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 9F784CE010D;
+	Mon, 29 Jul 2024 07:39:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 149FFC4AF0B;
+	Mon, 29 Jul 2024 07:39:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1722238592;
-	bh=XosIECa9dwDc/SeeYGOHoU+Fn74A7HJoCXZZbfGRZFg=;
+	s=k20201202; t=1722238779;
+	bh=YMxHYOp8Oh4zMPFyBezHpfDaJlVyE6c1x7geeCh2YQ4=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=j6enCwsVQxxlnY1e9z84CpSYf/8pmAqCtE1N5yic67wkXsxY9dX7qPCdwZvnjYFAb
-	 MXBUvjaGIoOYHt0TW4ro1e4bKK6vaHEgIxOCIaz/p1O+/vUaQ7n7y06gaAoPAJHC9O
-	 dLATESsLY8XJyzlZFDgE3vlrw5i7tTEbBwsec2CaUQXdptO5MfhYjFaDPM2fty5YZb
-	 E4tOKUBlCjj33W7tMGOXzSQHCLO/yzo5yK9uoLeCqJAM1TY12L+mUUoUcr8MXkKSny
-	 +TR6yUSL3HUPhUI8XokUTFgdHb9Xp1LAHp9TnnOzcctPnwg5tVPAdz8FdOEEcsUiRm
-	 ZSYNq2jYSVyoQ==
-Message-ID: <dceb85da-0518-4215-9963-2d577b183021@kernel.org>
-Date: Mon, 29 Jul 2024 09:36:24 +0200
+	b=Y0erdnr6/J7yFWlDV9Qr4eEgsIf5QNE1tppk4zBiSqGhjksfqaWEUmUBkfwcnDRcB
+	 jFmIcuk/fUDlVN0NuX4EtVBXjU2bS+MViD7jbFWt8ZxEEbpJe7VXDQp4UDkX00Pgjw
+	 bqvwRoOjIDly92g0fbqS8Kfst/ErHAqvrlmrpO5wDOIewcqaslKHBkM4ypsJnnVG92
+	 s9LKd5NqrwWGvsy08PUHLN+8mNZHExL5CZkLq2OPXPcbGPImD9juh6+aUJaw4CeJtz
+	 2Td52W9zmGTh/SP6hlVGoLaGEn7xE0x0dvD60Bi9KKJfLmB/e2va2KrKFbBCA7c9Zg
+	 gA87r0WJXVgSQ==
+Message-ID: <aada1945-6351-4f5e-9f98-0d6640ba3b6b@kernel.org>
+Date: Mon, 29 Jul 2024 09:39:31 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/5] dt-bindings: clock: mt6765: Add missing PMIC clock
+Subject: Re: [PATCH 4/5] dt-bindings: pinctrl: mediatek: Add bindings for
+ MT6765 pin controller
 To: Arseniy Velikanov <me@adomerle.xyz>, mturquette@baylibre.com,
  sboyd@kernel.org, matthias.bgg@gmail.com,
  angelogioacchino.delregno@collabora.com, sean.wang@kernel.org,
@@ -57,7 +58,7 @@ Cc: linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-gpio@vger.kernel.org, devicetree@vger.kernel.org
 References: <20240729073428.28983-1-me@adomerle.xyz>
- <20240729073428.28983-2-me@adomerle.xyz>
+ <20240729073428.28983-5-me@adomerle.xyz>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -103,12 +104,13 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20240729073428.28983-2-me@adomerle.xyz>
+In-Reply-To: <20240729073428.28983-5-me@adomerle.xyz>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240729_003635_419757_02DC4D4B 
-X-CRM114-Status: GOOD (  10.24  )
+X-CRM114-CacheID: sfid-20240729_003942_723696_D15C7264 
+X-CRM114-Status: UNSURE (   6.13  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,29 +126,16 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 29/07/2024 09:34, Arseniy Velikanov wrote:
-> Add PWRAP clock binding and shift the following ones
-> 
-> Fixes: eb7beb65ac30 ("clk: mediatek: add mt6765 clock IDs")
+> Add DT bindings for the MT6765 pin controller, which consist of macros
 
-Please describe the bug and its observable impact.
+By bindings we usually understand something else, which is clearly
+missing here: the documentation or bindings expressed as DT schema.
 
-> Signed-off-by: Arseniy Velikanov <me@adomerle.xyz>
-> ---
->  include/dt-bindings/clock/mt6765-clk.h | 131 +++++++++++++------------
->  1 file changed, 66 insertions(+), 65 deletions(-)
-> 
-> diff --git a/include/dt-bindings/clock/mt6765-clk.h b/include/dt-bindings/clock/mt6765-clk.h
-> index eb97e568518e..5d3a603a0d36 100644
-> --- a/include/dt-bindings/clock/mt6765-clk.h
-> +++ b/include/dt-bindings/clock/mt6765-clk.h
-> @@ -161,71 +161,72 @@
->  #define CLK_TOP_NR_CLK			126
->  
->  /* INFRACFG */
-> -#define CLK_IFR_ICUSB			0
+So where are the bindings, except header constants?
 
-NAK, you cannot change the bindings. Especially without bigger
-description where the bug is.
+Also, why are these exactly bindings? I do not see them being used in
+the driver, so probably you placed them in wrong directory - you wanted
+DTS header constants?
 
 Best regards,
 Krzysztof
