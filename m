@@ -4,69 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3339C3DA49
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jul 2024 09:22:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CDE2C3DA61
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jul 2024 09:42:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bEZXzgndfBib0QRZELmnoO/zzw1ProQpwB2Ta/DGik4=; b=siIUPB2yC/lnPKOmyJEHy0dlrY
-	v54ooftvxwkmHCFAK7STa6iQ4j5XCICD+Zb+fyiSlc3IlzwfZIGgrP5bYLdGPAk4vhK96YT/M74bz
-	fFUUxmG3FvTMbaYSkrRu9/pkU0AsqLUZW1c1OJWyRP3tNm/iTC3v/1Pof2nl8wPAqEC1KSuhWWaJi
-	Gg5CsIwHhCZJj0hnpgV6z31/BUQNkRGjYuDXlYd3LrkoFsPycOdyjeUqNerGrZiUc7bqolz2V3pB1
-	PTqluDFQn19kXG8NxePmfeicFdk9K9uN6it5IeJkua2WtBkXyHGV8vgX9PP8eCbng5p6JQPCaIq/R
-	Rj1deVDw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=VV96taJ5hcvEW4epTbrcrRfCiSxyJ6kU90yPMveB54o=; b=FNYmoSg4vhPInE
+	siXxLXDd+FdETvmvAWU0AcMXCgD+iGvrS3KvbQrpEzKkvjiC2rxEXvjcRjBBLcBb2lEUmiXg5r0j7
+	eIiCO9c/svS8HQkUlF0fNxRo0dB1ly7xHjzs+XXPf4vz70Vv0DmluE7YQ5mFNOlW3vpa4iS+lTYUk
+	Zguo1Db+dDzYQFlQqh3D41K26/1fa84xs6vvLuJr0CtaIkjDiFyzlb2lAlGKhMULNNlS6xZ0zYimO
+	hCQmxgcfRAOCp+/WQnbPhEqY1unxkCH2Ag8fQQb4hRjpT9yhxKFuB21ubiF4FgroeEDXkS3oAzuTU
+	TeZnDg614qj6aofbGMLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYj3a-0000000EUXO-0SS6;
-	Tue, 30 Jul 2024 09:22:10 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1sYjN0-0000000EZwZ-3pwr;
+	Tue, 30 Jul 2024 09:42:14 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYj2k-0000000EUMB-1lWT;
-	Tue, 30 Jul 2024 09:21:19 +0000
+	id 1sYjMV-0000000EZnS-2pHp;
+	Tue, 30 Jul 2024 09:41:45 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1722331277;
-	bh=FA/UiuJmaG/0m1HKe1f4r8URUvynzRUD987l4lNhaGI=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=ap9kGuPraYlNzIGlcqUovaMUjtN8M5j8QrbITHjdVKvG4VsXgVP9xeruhmyuflNkx
-	 Tq8dNkCqWWeI/eVCVAAcP7Eue5e6xQiIC5gDb18a6hFiEDSU/c8tAYdZjFQuKLe6Rw
-	 M0BtUXGQB2VSI6CI7TIbrhI624bTA3bY4Pat5q/GYq347IYesG9Uqxcer9k2zP7tMk
-	 P6bFjGW9uumighprO8neBoVe6BWT9KK4V50TFaGWyVjQf12r+KS1y6n0bOLh9VlTJv
-	 yOif8LPZsqxPTs0n2/MdhXLJsQm5DVuGAm9sWpYFViBw8RK8YG8vXZHBsydQKTLr4W
-	 Ip+NT1wszSV4A==
-Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	s=mail; t=1722332502;
+	bh=hgNqnU4Er33p+LqqcZgo595E37aXhaKnOBZSc3IoLZ4=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Uor3g7kK6v9AlBioKHDcqkhdlnieTcyYn3qckI4rk6+5sXc81Gz2+lksR4tytnMY2
+	 uXWTq4OLNv6r46AZt7vDdXrhM33klHA7KuauybDtyJIs5UwM1RpUn8q+tfDf01L+D/
+	 TSlIl7gUmyZOej7bei8TpGrCWTUxAxkpFLxjrBh4Asr8v5On4cesJaIIX8d6d5/kvq
+	 Gvo18xarfxaF53LYuv5+HcOkCsMpHt8qYmPLw8MhYAZY3DI0BJPu50QMdLzzHwWQKm
+	 6M0GHl/uCrZ5vUjw2w0Jv8ZgEtbfluOpr01A9sItS5rn5+UZ3k5uM9Ik+Zz41gTUi4
+	 Wh3nS5xL7dsdA==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 573D83782190;
-	Tue, 30 Jul 2024 09:21:16 +0000 (UTC)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, 
- =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- =?utf-8?q?Thomas_Wei=C3=9Fschuh?= <linux@weissschuh.net>, 
- Tzung-Bi Shih <tzungbi@kernel.org>, kernel@collabora.com, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Chen-Yu Tsai <wenst@chromium.org>
-In-Reply-To: <20240722-cros-backlight-dt-probe-v2-1-d77cdf7018ec@collabora.com>
-References: <20240722-cros-backlight-dt-probe-v2-1-d77cdf7018ec@collabora.com>
-Subject: Re: [PATCH v2] arm64: dts: mediatek: mt8195-cherry: Remove
- keyboard-backlight node
-Message-Id: <172233127627.66997.14875341590066505765.b4-ty@collabora.com>
-Date: Tue, 30 Jul 2024 11:21:16 +0200
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 13D4E37821ED;
+	Tue, 30 Jul 2024 09:41:41 +0000 (UTC)
+Message-ID: <b3fa66cc-516b-4d78-aee5-62a47b52a3b1@collabora.com>
+Date: Tue, 30 Jul 2024 11:41:40 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] arm64: dts: mt7622: fix switch probe on bananapi-r64
+To: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
+ Linux regressions mailing list <regressions@lists.linux.dev>,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>,
+ Jakub Kicinski <kuba@kernel.org>
+References: <20240516204847.171029-1-linux@fw-web.de>
+ <0cba095c-3d55-416a-a7ad-b359129731cf@arinc9.com>
+ <714da201-654b-4183-8e5e-8ff0b64fe621@leemhuis.info>
+ <2cac4cf68304e81abffbd9ff0387ee100323c2b7.camel@redhat.com>
+ <b49c801c-6628-40a6-8294-0876d8871ba7@leemhuis.info>
+ <e92c3ca0-c9be-44ac-a4fc-57ca5ebedbc5@leemhuis.info>
+ <1807a142-1534-4fa4-ad4b-d1c03af014c2@arinc9.com>
+ <58d8ddea-71cc-427a-94cc-a95f6bce61d2@collabora.com>
+ <16e9c06e-9908-455d-a387-614fefe5bcf8@arinc9.com>
+ <5e87d31c-b059-4f9a-93f7-dc87465ed14a@collabora.com>
+ <4416ef22-78cc-4ce5-b61d-69ff0903811e@arinc9.com>
+ <bd6b6929-d34d-4bd5-9cb0-bc8fe850ee46@leemhuis.info>
+ <af561268-9793-4b5d-aa0f-d09698fd6fb0@arinc9.com>
+ <750a60a6-4585-4bd2-97be-cf944e51fbdb@leemhuis.info>
+ <9c498e37-df8b-469e-818a-9b1c9f2b1a3c@collabora.com>
+ <cebb10b8-b0bf-4cb7-bba4-c3f941ba2b82@leemhuis.info>
+ <1aedb1d4-8dc3-4e17-aff1-7cc417465967@arinc9.com>
+ <130518e2-d6dd-49ed-9cc2-ca9cdec93b98@leemhuis.info>
+ <aeb255ff-3755-4f76-a8f8-cda27a67f818@arinc9.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <aeb255ff-3755-4f76-a8f8-cda27a67f818@arinc9.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Mailer: b4 0.13.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240730_022118_608277_39D21253 
-X-CRM114-Status: UNSURE (   6.29  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240730_024144_030609_54E99CED 
+X-CRM114-Status: GOOD (  25.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,24 +90,99 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Frank Wunderlich <linux@fw-web.de>, Rob Herring <robh@kernel.org>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 22 Jul 2024 11:34:25 -0400, Nícolas F. R. A. Prado wrote:
-> Commit 970c3a6b7aa3 ("mfd: cros_ec: Register keyboard backlight
-> subdevice") introduced support for detecting keyboard backlight
-> fuctionality through communication with the ChromeOS EC. This means that
-> the DT node is no longer used. Remove the unneeded node.
+Il 01/07/24 10:15, Arınç ÜNAL ha scritto:
+> On 01/07/2024 11:04, Linux regression tracking (Thorsten Leemhuis) wrote:
+>> On 01.07.24 09:44, Arınç ÜNAL wrote:
+>>> On 01/07/2024 09:16, Linux regression tracking (Thorsten Leemhuis) wrote:
+>>>> [CCing the other net maintainers]
+>>>>
+>>>> On 25.06.24 10:51, AngeloGioacchino Del Regno wrote:
+>>>>> Il 25/06/24 07:56, Linux regression tracking (Thorsten Leemhuis) ha
+>>>>> scritto:
+>>>>>> On 17.06.24 13:08, Arınç ÜNAL wrote:
+>>>>>>> On 17/06/2024 11:33, Linux regression tracking (Thorsten Leemhuis)
+>>>>>>> wrote:
+>>>>>>> [...]
+>>>>>> It looks more and more like we are stuck here (or was there progress
+>>>>>> and
+>>>>>> I just missed it?) while the 6.10 final is slowly getting closer.
+>>>>>> Hence:
+>>>>>>
+>>>>>> AngeloGioacchino, should we ask the net maintainers to revert
+>>>>>> 868ff5f4944aa9 ("net: dsa: mt7530-mdio: read PHY address of switch from
+>>>>>> device tree") for now to resolve this regression? Reminder, there is
+>>>>>> nothing wrong with that commit per se afaik, it just exposes a problem
+>>>>>> that needs to be fixed first before it can be reapplied.
+>>>>>
+>>>>> To be clear on this: I asked for the commit to be fixed such that it
+>>>>> guarantees
+>>>>> backwards compatibility with older device trees.
+>>>>>
+>>>>> If no fix comes,
+>>>>
+>>>> I haven't see any since that mail, did you? If not, I think...
+>>>>
+>>>>> then I guess that we should ask them to revert this commit
+>>>>> until a fix is available.
+>>>>
+>>>> ...it's time to ask them for the revert to resolve this for -rc7 (and
+>>>> avoid a last minute revert), or what do you think?
+>>>
+>>> This is quite frustrating. I absolutely won't consent to a revert. [...]
+>>
+>> Reminder: try to not see a revert as a bad thing. It's just means "not
+>> ready yet, revert and we'll try again later" -- that's actually
+>> something Linus wrote just a few hours ago:
+>> https://lore.kernel.org/lkml/CAHk-=wgQMOscLeeA3QXOs97xOz_CTxdqJjpC20tJ-7bUdHWtSA@mail.gmail.com/
 > 
+> Except it is ready and trying again is my responsibility, which means
+> unnecessary work for me to do. I've already got a ton of things to do.
+> Applying the device tree patch resolves this regression; no reverts needed.
+> And then there's the patch in the works by Daniel that will address all the
+> remaining cases outside of the reported regression.
 > 
 
-Applied to v6.11-next/dts64, thanks!
+The commit that fixes your breakage in a way that does *not* please me
+(because of older devicetrees being still broken with the new driver) was
+picked and it is in v6.11-rc1.
 
-[1/1] arm64: dts: mediatek: mt8195-cherry: Remove keyboard-backlight node
-      commit: 4c03a44e266887190bdaacc7010970ae2b26b852
+I had to do this because I value the community (in this case, the users) much
+more than trying to make an arrogant developer to act in a community-friendly
+manner while leaving things completely broken.
 
-Cheers,
+That said, remembering that we're humans and, as such, it's normal to get something
+wrong during the development process, I want to remind you that:
+
+  1. A series that creates regressions is *not* good and *not* ready to be
+     upstreamed; and
+  2. As a maintainer, you have the responsibility of not breaking the kernel,
+     not breaking devices and not breaking currently working functionality; and
+  3. Devicetrees being wrong (but working) since day 0 is not an excuse to break
+     functionality; and
+  4. Blaming the one who introduced the devicetree (you're doing that, since you
+     are blaming the devicetree being wrong) isn't solving anything and will not
+     magically make your code acceptable or good; and
+  5. If you push a wrong commit, there's nothing to be ashamed of; and
+  6. If you make a mistake, you should recognize that and find a way to
+     make things right, that should be done for the community, not for
+     yourself; and
+  7. You shall respect the community: in this case, with your arrogant behavior
+     you did *not* respect the users.
+
+P.S.: The right way of making such change is to:
+       1. Avoid breaking currently working devices by making sure that their DT
+          still works with the new driver; and
+       2. If breakage is unavoidable, make it so one kernel version has a fix that
+          works with both old and new driver, and the next version introduces the
+          breakage. N.2 should ideally never happen, anyway.
+
+Let's wrap up this matter now - I don't want to spend any more word, nor time,
+on this, as I really have nothing else to say.
+
+Best regards,
 Angelo
-
-
 
