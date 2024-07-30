@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72201C3DA49
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jul 2024 07:47:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42702C3DA61
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jul 2024 07:47:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=wGwdKAjImIXASit/mAmbUhDlNFKej1STAbay87C6U3c=; b=BgR4Ncc5+opHu/vnkpyzK9DOnf
-	W92Sg3b2i+vcAdQ/+7y/CCJvQKaR3SaX5pGKWnOLCLBO/sG1UkCYRUrCO4SdXoUR+r8Xo92NjVRPG
-	XwbWqRsa79T1rXfDs8uetjGKIqhfncISs60ovoOpgn931c2ikfjkQTcUwU0H1mM/VyzA/P8uDYapo
-	6Gc+1eBBqu1iil1Hb8LR7MxJQ5JZ44G3WsMtecdNx9P6h89y9wOgIpjfd1mYz79kqDtlK2yI46OLs
-	304BVI70NoUysC4GVmNXNNnYuvIGXY9hO4pZzbGX5KYbze8l0RB9Tj7CQQoG6FnyGr/aIg2Ps1dLF
-	kWcel7tQ==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WezfmknizvYRsGFofh0x0uAf86VCroElHp8yktpX8m4=; b=cWvAqV0ORXHBHwzOz7Ap3KLqoH
+	+QGKCDPkARHVnL5SeUjhXDU8+JDDSZCSr7yyuT2MqhpIhxRU9dK9nzizl0IFKYmScD6aOPw1jRs7h
+	TN5QDDzlf9YYxrItqgDwbwEubE+9VljDmGWaTB+p3wOToibGfoJWfFkWSy3ShnNmoeOEdMyxZiDRx
+	S3QbtlTja2qWhyL/gzWqLzXDHVbc42scE92Riu6Ky5YFyYx0rI0ycLNbifjy+cWpS3sw1Ol28O1s4
+	u1gU4Wj244SfJenS1eQA4Ya0SLtD1cKRLp93DjEQj9fjTSKh+dz8ylXe+ewdQfSrJAhdc3JQcP21N
+	43un1OQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYhZc-0000000E521-3luO;
-	Tue, 30 Jul 2024 07:47:08 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sYha2-0000000E58z-42OC;
+	Tue, 30 Jul 2024 07:47:34 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYhZA-0000000E4uA-2g5R;
-	Tue, 30 Jul 2024 07:46:42 +0000
+	id 1sYhZE-0000000E4uf-2K0A;
+	Tue, 30 Jul 2024 07:46:46 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id E2D7261DA4;
-	Tue, 30 Jul 2024 07:46:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1BB59C4AF09;
-	Tue, 30 Jul 2024 07:46:38 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id D786061E19;
+	Tue, 30 Jul 2024 07:46:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 10014C32782;
+	Tue, 30 Jul 2024 07:46:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1722325599;
-	bh=nDicdgSbC0TQTXrWxg5z3pQYKzM9enTJkO+htwH+xSs=;
-	h=From:To:Cc:Subject:Date:From;
-	b=L1aqt+UN3W87SncD+wV6yppB8O62mdYsv7JoPokK1hdmOhgkKbu2+lykxCgGlctLj
-	 wSKJ0pDCbnp5jC/2hdBsRKWbzJ0H5pXEN1LVuzbApLcxwfMb38fOclMZ93Xirh4coC
-	 3FqdjVLXItkikL3A7MdpjAF7W5aIFBhgAI+vvAZI9oj0GOvhQbGRVhZgZ+FG/SvUgp
-	 J9/wjRUBUndz2l05+5uSkQdTKhJnqKjpgm/Pft+GHvlOVLNSuaoBfmoh4yVd228sHv
-	 flKt3le4C1Yj7UOdmkznbjfUTFMlPGgjwPWJiuk6zObVmlXNuE1jFLH9ZvP5H8yQ2V
-	 dzKM1Vrk5EZ9w==
+	s=k20201202; t=1722325603;
+	bh=/1UyRDxDBbUGDXPzIHV51t98DfSsIxNOuwNCDXhMy8Q=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=hXKCgQVUgiMD5DnjrQb/DEV0shSrPRhqhFWAtn5UXtlH2T3H/uPDfIdnLZRJUf7wl
+	 bahgfr4dJTU7ghCKtPujgbllaURpJgo2MW4pewmQhrEf6MnuKRPe4NSBVAfYxiCjCr
+	 apLGIfQ9+9AWyM4TCg2LysicG+oulsMtA4JQwhNvAnBTrM56J9SvY3vWwOBnl2S3g1
+	 WtEnebNB2r6NvFfgHwWV95wagZfho/z4Zzdo9G42QQYF5NBbR5MYJ6RBDR+zOBberx
+	 1qBH2UbgDoxBqc0yLxyvTs6JX7gpcdqru2ZmwlMrx/X90dkfw7H33Hs1lb/vcEyzsB
+	 TSMVt7IQVl5uw==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: netdev@vger.kernel.org
 Cc: arinc.unal@arinc9.com,
@@ -64,15 +64,17 @@ Cc: arinc.unal@arinc9.com,
 	conor+dt@kernel.org,
 	devicetree@vger.kernel.org,
 	upstream@airoha.com
-Subject: [PATCH net-next 0/2] Add support for EN7581 to mt7530 driver
-Date: Tue, 30 Jul 2024 09:46:31 +0200
-Message-ID: <cover.1722325265.git.lorenzo@kernel.org>
+Subject: [PATCH net-next 1/2] dt-bindings: net: dsa: mediatek,mt7530: Add airoha,en7581-switch
+Date: Tue, 30 Jul 2024 09:46:32 +0200
+Message-ID: <63f5d56a0d8c81d70f720c9ad2ca3861c7ce85e8.1722325265.git.lorenzo@kernel.org>
 X-Mailer: git-send-email 2.45.2
+In-Reply-To: <cover.1722325265.git.lorenzo@kernel.org>
+References: <cover.1722325265.git.lorenzo@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240730_004640_993239_C4E49BA8 
-X-CRM114-Status: UNSURE (   6.65  )
+X-CRM114-CacheID: sfid-20240730_004644_676529_398A1AD9 
+X-CRM114-Status: UNSURE (   8.73  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -88,18 +90,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add EN7581 support to MT7530 DSA driver.
+Add documentation for the built-in switch which can be found in the
+Airoha EN7581 SoC.
 
-Lorenzo Bianconi (2):
-  dt-bindings: net: dsa: mediatek,mt7530: Add airoha,en7581-switch
-  net: dsa: mt7530: Add EN7581 support
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ .../devicetree/bindings/net/dsa/mediatek,mt7530.yaml     | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
 
- .../bindings/net/dsa/mediatek,mt7530.yaml     |  9 ++++-
- drivers/net/dsa/mt7530-mmio.c                 |  1 +
- drivers/net/dsa/mt7530.c                      | 38 +++++++++++++++++--
- drivers/net/dsa/mt7530.h                      | 16 +++++---
- 4 files changed, 54 insertions(+), 10 deletions(-)
-
+diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+index 7e405ad96eb2..aa89bc89eb45 100644
+--- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
++++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+@@ -92,6 +92,10 @@ properties:
+           Built-in switch of the MT7988 SoC
+         const: mediatek,mt7988-switch
+ 
++      - description:
++          Built-in switch of the Airoha EN7581 SoC
++        const: airoha,en7581-switch
++
+   reg:
+     maxItems: 1
+ 
+@@ -284,7 +288,10 @@ allOf:
+   - if:
+       properties:
+         compatible:
+-          const: mediatek,mt7988-switch
++          contains:
++            enum:
++              - mediatek,mt7988-switch
++              - airoha,en7581-switch
+     then:
+       $ref: "#/$defs/mt7530-dsa-port"
+       properties:
 -- 
 2.45.2
 
