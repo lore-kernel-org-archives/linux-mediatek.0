@@ -4,65 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D33AFC3DA49
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jul 2024 08:58:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DE1AC3DA61
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jul 2024 08:58:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2goZEcSDINmw6G5tpttMPUVmBa3N0E7X3ZqHvzQaE6g=; b=NCz0bavMtre7FNzjzj8WQK5ART
-	n7G1sbe8+ASXtZQjEQ2Hu5awTfNzWUF9IA4Hb5DEjTnfUCFftIMwER2TGd/n4A2BgNaDZye/w5DCq
-	WnRusDexvFIebOMlVfs65O80hFu58dkJNAB46Ytm6i9MUMjDD5M5rcb/xGPzzxDXW8Yq67bz/XU3u
-	VlqYcdapFi1gPnSQnZewshJs/rNzVXePpidH1jD+1jzL3SG/Lm98eGmRoooeGJ38IkVws6RpWsNyx
-	4NPpS6zRLgFp3c+yvRzifIGMILhnWu0AVUmCUeThVIhmb1GNje2JmhkY65JUaknrLGEoAQEq3j9sZ
-	ZgJKCpxQ==;
+	bh=n2VJWHRifEiKGRApncgX7oEiPpK9ubdZKSTgq0xJ+2o=; b=OUKBs0matcKc2JKgpIzqW76j+h
+	dbntbBqAgYHJRi3fXVpdivchLkG98ZyHJodqrjCVxyBb7PQ/6N5IEiVGmz6xYn3WNv+tskRnU9HMS
+	39wqYz29GEKRqkvbRfxdg96Raqm116vrCNZ6UkFckqPX4bhrlyoQfVgBKmOnRFpwXTHbls2Ss9vjQ
+	Jv/Zhx1n6GdpStE1GKY9qb8f9RvZQhacuo+Zvt/iI6JIlZ6Hs4fRe854y3qDsTXL4zPuUGS7pu4nl
+	HVj6c+dkWg2i3duoNmYqyf7c1CLveQCTcHv24yh8di1QJnOWMf9TUkDmwgBsn7L3Hhp2gVNc7tUas
+	E//7/9PQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYigL-0000000EOlE-2Cs2;
+	id 1sYigL-0000000EOlb-3eao;
 	Tue, 30 Jul 2024 08:58:09 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+Received: from relay2-d.mail.gandi.net ([2001:4b98:dc4:8::222])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYifs-0000000EOcW-05cp;
-	Tue, 30 Jul 2024 08:57:41 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1722329855;
-	bh=9Eq45pApsAjGd9ob3SvORkeALA6iNVKRtX/3ghNH1tk=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=jyD9Wwo9AighdQk8GfBbN4SfFtXssLFmEYHBCYT6rPnOlOFDWgnkBAEBtx9eMn/dc
-	 KYKqJ1qgZG7Kn+hY7PwxOQHiJSpsDrOFRQjRJKNejOTowEH81QhCCCWU8nz30Rub+l
-	 5MEtiWx3WPq2zxZUuVwyBy1EtoBvFpT0bOLZ7GQ+JCpndfklVpBtiebpq6/kK0YlcF
-	 +jZSliscbVVDRG9s4wudWZPsqzu0YV75Nt8f/UoAlEuwYc+skgrVqH5XqpsWMbMRnB
-	 13MN9SrXfJSHiK536N+yy1kclgoeK/nYkIZszc/Fvu2DbMzdQ3zV3zcgMuMa6a8e5E
-	 +HLcL6ti7qtxg==
-Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id D4C0E3780BC9;
-	Tue, 30 Jul 2024 08:57:34 +0000 (UTC)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: matthias.bgg@gmail.com, fchiby@baylibre.com, fparent@baylibre.com, 
- s.hauer@pengutronix.de, Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
- kernel-janitors@vger.kernel.org
-In-Reply-To: <cover.1720331018.git.christophe.jaillet@wanadoo.fr>
-References: <cover.1720331018.git.christophe.jaillet@wanadoo.fr>
-Subject: Re: [PATCH v2 0/3] soc: mediatek: pwrap: Constify some data and
- other improvements
-Message-Id: <172232985478.56643.13436869801664543083.b4-ty@collabora.com>
-Date: Tue, 30 Jul 2024 10:57:34 +0200
+	id 1sYig0-0000000EOd1-1clF;
+	Tue, 30 Jul 2024 08:57:50 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 3BA8E40005;
+	Tue, 30 Jul 2024 08:57:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
+	t=1722329861;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=n2VJWHRifEiKGRApncgX7oEiPpK9ubdZKSTgq0xJ+2o=;
+	b=fCxrDxVUm1f+Zwa3unaOLYjwweb9sg9AwmaoF6WdWlhzV13ieQUJElK0NCDx7Os2TYO/Oz
+	DUEP0VH2IYYw4Q6jNwSrfcyFRfFyc2ir2NvmDFyzNrtQMRFmVXJGTj61pxw0RclYcsLgED
+	XHmrds4xWupsH3ThdGAB2fB6fDB9uD0ozEpojfc9HpRNPXsJzf6nwG6brZzOwnvEgnApJ9
+	1rwbRYkCIA2GUrAKtI30zPDRduL1sqQ0cA1gVDvhHB0YwiEPXKkd3URPfhs+xkWa28p9Bm
+	JDmURk/6rlul3wRL9dsfF0w6PnXFc4/HwaxJo66XOK3eZU4atQgUGQTOsRHjuw==
+Message-ID: <3d0e39a3-02e9-42b4-ad49-7c1778bfa874@arinc9.com>
+Date: Tue, 30 Jul 2024 11:57:36 +0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.13.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net-next 1/2] dt-bindings: net: dsa: mediatek,mt7530: Add
+ airoha,en7581-switch
+To: Lorenzo Bianconi <lorenzo@kernel.org>, netdev@vger.kernel.org
+Cc: daniel@makrotopia.org, dqfext@gmail.com, sean.wang@mediatek.com,
+ andrew@lunn.ch, f.fainelli@gmail.com, olteanv@gmail.com,
+ davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+ pabeni@redhat.com, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ lorenzo.bianconi83@gmail.com, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, devicetree@vger.kernel.org, upstream@airoha.com
+References: <cover.1722325265.git.lorenzo@kernel.org>
+ <63f5d56a0d8c81d70f720c9ad2ca3861c7ce85e8.1722325265.git.lorenzo@kernel.org>
+Content-Language: en-US
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <63f5d56a0d8c81d70f720c9ad2ca3861c7ce85e8.1722325265.git.lorenzo@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-GND-Spam-Score: 400
+X-GND-Status: SPAM
+X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240730_015740_229233_83476205 
-X-CRM114-Status: UNSURE (   9.73  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240730_015748_639460_D1CC67AD 
+X-CRM114-Status: GOOD (  11.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,29 +82,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, 07 Jul 2024 07:47:19 +0200, Christophe JAILLET wrote:
-> This series is motivated by patch 1. The 2 other patches are some
-> additionnal goodies spotted while looking at the code.
+On 30/07/2024 10:46, Lorenzo Bianconi wrote:
+> Add documentation for the built-in switch which can be found in the
+> Airoha EN7581 SoC.
 > 
-> Patch 1 constifies struct pmic_wrapper_type to move some data to a
-> read-only section, in order to increase safety.
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> ---
+>   .../devicetree/bindings/net/dsa/mediatek,mt7530.yaml     | 9 ++++++++-
+>   1 file changed, 8 insertions(+), 1 deletion(-)
 > 
-> Patch 2 does the same for some int arrays. This helps move about 7 ko of
-> data to a read-only section. Not that bad!
-> 
-> [...]
+> diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+> index 7e405ad96eb2..aa89bc89eb45 100644
+> --- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+> +++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+> @@ -92,6 +92,10 @@ properties:
+>             Built-in switch of the MT7988 SoC
+>           const: mediatek,mt7988-switch
+>   
+> +      - description:
+> +          Built-in switch of the Airoha EN7581 SoC
+> +        const: airoha,en7581-switch
+> +
+>     reg:
+>       maxItems: 1
+>   
+> @@ -284,7 +288,10 @@ allOf:
+>     - if:
+>         properties:
+>           compatible:
+> -          const: mediatek,mt7988-switch
+> +          contains:
+> +            enum:
+> +              - mediatek,mt7988-switch
+> +              - airoha,en7581-switch
 
-Applied to v6.11-next/soc, thanks!
+The compatible string won't be more than one item. So this would be a
+better description:
 
-[1/3] soc: mediatek: pwrap: Constify struct pmic_wrapper_type
-      commit: ded525f8ac5db53286b0eabb679ecf7edb974eaa
-[2/3] soc: mediatek: pwrap: Constify some struct int[]
-      commit: 10c1ea1eaf4d107c323321e92237ba67848de291
-[3/3] soc: mediatek: pwrap: Use devm_clk_bulk_get_all_enable()
-      commit: 1c28c9452d521bf21dc5d2c50a47c2e43002728d
+compatible:
+   oneOf:
+     - const: mediatek,mt7988-switch
+     - const: airoha,en7581-switch
 
-Cheers,
-Angelo
-
-
+Arınç
 
