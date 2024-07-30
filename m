@@ -4,70 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DE1AC3DA61
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jul 2024 08:58:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B10EBC3DA61
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jul 2024 09:00:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=n2VJWHRifEiKGRApncgX7oEiPpK9ubdZKSTgq0xJ+2o=; b=OUKBs0matcKc2JKgpIzqW76j+h
-	dbntbBqAgYHJRi3fXVpdivchLkG98ZyHJodqrjCVxyBb7PQ/6N5IEiVGmz6xYn3WNv+tskRnU9HMS
-	39wqYz29GEKRqkvbRfxdg96Raqm116vrCNZ6UkFckqPX4bhrlyoQfVgBKmOnRFpwXTHbls2Ss9vjQ
-	Jv/Zhx1n6GdpStE1GKY9qb8f9RvZQhacuo+Zvt/iI6JIlZ6Hs4fRe854y3qDsTXL4zPuUGS7pu4nl
-	HVj6c+dkWg2i3duoNmYqyf7c1CLveQCTcHv24yh8di1QJnOWMf9TUkDmwgBsn7L3Hhp2gVNc7tUas
-	E//7/9PQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+PyYxHAAjKY94HrEwTuVrgQc3+br0mLRkqh/sY77Zbs=; b=Exl9RRz6kZQImiIdBHKCXCohBm
+	hJN+gWZG5thjJtX3ePs8qkKCwDS2B0Sb8h7qRxDe4M0eMB3X8Teqp5WUxEoGiBWU4dGdRKqAQIJmZ
+	m9n+cOHIQWqD3e+h7A/jVXiaNYg4ElLGjgcFuT9E3UXGRf4qyQV7qyBJwgIsMUJbIENaP+cevezAv
+	NHC8o8n0qminzVJ8P1lSC3Fmq0apJOrzxEeoo+uZDuCcGMh14+D3oefJamm4PO5m5b2nIxPRt67Jw
+	O7HtsBwzikhuquq7yv/Cf+FOjeRNhrYzyeIh5WtpiIB6FzSYuVGvr8f6y4bJ6GEtLQgKycGf5qOoo
+	RvFBS+6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYigL-0000000EOlb-3eao;
-	Tue, 30 Jul 2024 08:58:09 +0000
-Received: from relay2-d.mail.gandi.net ([2001:4b98:dc4:8::222])
+	id 1sYiiB-0000000EPhe-49dH;
+	Tue, 30 Jul 2024 09:00:03 +0000
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYig0-0000000EOd1-1clF;
-	Tue, 30 Jul 2024 08:57:50 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 3BA8E40005;
-	Tue, 30 Jul 2024 08:57:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1722329861;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=n2VJWHRifEiKGRApncgX7oEiPpK9ubdZKSTgq0xJ+2o=;
-	b=fCxrDxVUm1f+Zwa3unaOLYjwweb9sg9AwmaoF6WdWlhzV13ieQUJElK0NCDx7Os2TYO/Oz
-	DUEP0VH2IYYw4Q6jNwSrfcyFRfFyc2ir2NvmDFyzNrtQMRFmVXJGTj61pxw0RclYcsLgED
-	XHmrds4xWupsH3ThdGAB2fB6fDB9uD0ozEpojfc9HpRNPXsJzf6nwG6brZzOwnvEgnApJ9
-	1rwbRYkCIA2GUrAKtI30zPDRduL1sqQ0cA1gVDvhHB0YwiEPXKkd3URPfhs+xkWa28p9Bm
-	JDmURk/6rlul3wRL9dsfF0w6PnXFc4/HwaxJo66XOK3eZU4atQgUGQTOsRHjuw==
-Message-ID: <3d0e39a3-02e9-42b4-ad49-7c1778bfa874@arinc9.com>
-Date: Tue, 30 Jul 2024 11:57:36 +0300
+	id 1sYihG-0000000EPB2-0WB1
+	for linux-mediatek@lists.infradead.org;
+	Tue, 30 Jul 2024 08:59:08 +0000
+Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-4280bca3960so25018935e9.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 30 Jul 2024 01:59:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=fastly.com; s=google; t=1722329943; x=1722934743; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references
+         :mail-followup-to:message-id:subject:cc:to:from:date:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=+PyYxHAAjKY94HrEwTuVrgQc3+br0mLRkqh/sY77Zbs=;
+        b=okR+SkuBD3ajQbT48DzZ7apwPanPvDZdG/oCXu2UQ+b+4Kx7MtpCcPW5iAAOeX3nJG
+         9hUWY+XU/wBzHOumyWe2Z0NFda2D7e64dSmb8e1x7erDnvRbAMJcqayEGbI1WMWbz5Tz
+         bEIGUl1xA9UfLXX1pYGi3+YJBWKCzKo5sPfJg=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1722329943; x=1722934743;
+        h=in-reply-to:content-disposition:mime-version:references
+         :mail-followup-to:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=+PyYxHAAjKY94HrEwTuVrgQc3+br0mLRkqh/sY77Zbs=;
+        b=vYJccOURkGvqAnHDCrBNe+R2NBn8o0xY1U/asfLKO4rw3WiqAqxU3LEpT+BVt3popI
+         062aaEkFOHLYZLseKRGuoIOMBOm2F+hX9eK+4VvC5glaCWq/HoOhJ6ZYI2aruC7cGmqX
+         Uu62Wsw0QtBwj+qV8tQI1QTklQGkG8QGaB6ayFgbYmvtFOu1N61JTE1eFICOM1HfS1dk
+         e2Gb1A4BN7It6DnBDsKYeNXOk6I+BQOfPyi6Gyf6IR66ZtJ2dFCzT3CVydIjHEQ2mb8w
+         +c8Ziw4AWq55yoAwLAqwF+fCa1zomWb5VvNZFZ9WgW8dGq6tng/4ZsaZ6q9l9n+UCmG9
+         oxuA==
+X-Forwarded-Encrypted: i=1; AJvYcCW5zYT834CBkcSdIX872Z0tk1aTT5Vi4mI36ebyJHbzLcKOAhokPNt0HpAc4pY5ff6bBPMVpTYlPY20vn81MQW+00NOPXns5Du7n8EVotug+6ep
+X-Gm-Message-State: AOJu0YwWUkUU9JClKD1skODGDNCQBOp9Q5pFcg18V5Bkyk/Oa2KrxYS2
+	PI1EVdz26/RogK2/PS8xONzfL8Y16GUkiNkbEg8qKpIdOPHTR3BFOu8gc2P/3jY=
+X-Google-Smtp-Source: AGHT+IF/ePhGnUz5oRY8da3ygbH+O32+pdLnV9wMLAT92Wkbz17fdqBPIg9jUaaUhazOspOKL0yp8Q==
+X-Received: by 2002:a05:600c:1d9b:b0:426:5f7d:addc with SMTP id 5b1f17b1804b1-42811df6daamr52383965e9.37.1722329943453;
+        Tue, 30 Jul 2024 01:59:03 -0700 (PDT)
+Received: from LQ3V64L9R2 ([80.208.222.2])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-428218a3934sm28986935e9.45.2024.07.30.01.59.02
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 30 Jul 2024 01:59:03 -0700 (PDT)
+Date: Tue, 30 Jul 2024 09:59:01 +0100
+From: Joe Damato <jdamato@fastly.com>
+To: Elad Yifee <eladwf@gmail.com>
+Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Daniel Golle <daniel@makrotopia.org>
+Subject: Re: [PATCH net-next v2 1/2] net: ethernet: mtk_eth_soc: use prefetch
+ methods
+Message-ID: <ZqirVSHTM42983Qr@LQ3V64L9R2>
+Mail-Followup-To: Joe Damato <jdamato@fastly.com>,
+	Elad Yifee <eladwf@gmail.com>, Felix Fietkau <nbd@nbd.name>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Daniel Golle <daniel@makrotopia.org>
+References: <20240729183038.1959-1-eladwf@gmail.com>
+ <20240729183038.1959-2-eladwf@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next 1/2] dt-bindings: net: dsa: mediatek,mt7530: Add
- airoha,en7581-switch
-To: Lorenzo Bianconi <lorenzo@kernel.org>, netdev@vger.kernel.org
-Cc: daniel@makrotopia.org, dqfext@gmail.com, sean.wang@mediatek.com,
- andrew@lunn.ch, f.fainelli@gmail.com, olteanv@gmail.com,
- davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
- pabeni@redhat.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- lorenzo.bianconi83@gmail.com, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, devicetree@vger.kernel.org, upstream@airoha.com
-References: <cover.1722325265.git.lorenzo@kernel.org>
- <63f5d56a0d8c81d70f720c9ad2ca3861c7ce85e8.1722325265.git.lorenzo@kernel.org>
-Content-Language: en-US
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <63f5d56a0d8c81d70f720c9ad2ca3861c7ce85e8.1722325265.git.lorenzo@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-GND-Spam-Score: 400
-X-GND-Status: SPAM
-X-GND-Sasl: arinc.unal@arinc9.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240729183038.1959-2-eladwf@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240730_015748_639460_D1CC67AD 
-X-CRM114-Status: GOOD (  11.91  )
+X-CRM114-CacheID: sfid-20240730_015906_356954_567AF84A 
+X-CRM114-Status: GOOD (  22.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,47 +115,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 30/07/2024 10:46, Lorenzo Bianconi wrote:
-> Add documentation for the built-in switch which can be found in the
-> Airoha EN7581 SoC.
+On Mon, Jul 29, 2024 at 09:29:54PM +0300, Elad Yifee wrote:
+> Utilize kernel prefetch methods for faster cache line access.
+> This change boosts driver performance,
+> allowing the CPU to handle about 5% more packets/sec.
 > 
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> Signed-off-by: Elad Yifee <eladwf@gmail.com>
 > ---
->   .../devicetree/bindings/net/dsa/mediatek,mt7530.yaml     | 9 ++++++++-
->   1 file changed, 8 insertions(+), 1 deletion(-)
+> Changes in v2:
+> 	- use net_prefetchw as suggested by Joe Damato
+> 	- add (NET_SKB_PAD + eth->ip_align) offset to prefetched data
+> 	- use eth->ip_align instead of NET_IP_ALIGN as it could be 0,
+> 	depending on the platform 
+> ---
+>  drivers/net/ethernet/mediatek/mtk_eth_soc.c | 8 +++++++-
+>  1 file changed, 7 insertions(+), 1 deletion(-)
 > 
-> diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-> index 7e405ad96eb2..aa89bc89eb45 100644
-> --- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-> +++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-> @@ -92,6 +92,10 @@ properties:
->             Built-in switch of the MT7988 SoC
->           const: mediatek,mt7988-switch
->   
-> +      - description:
-> +          Built-in switch of the Airoha EN7581 SoC
-> +        const: airoha,en7581-switch
-> +
->     reg:
->       maxItems: 1
->   
-> @@ -284,7 +288,10 @@ allOf:
->     - if:
->         properties:
->           compatible:
-> -          const: mediatek,mt7988-switch
-> +          contains:
-> +            enum:
-> +              - mediatek,mt7988-switch
-> +              - airoha,en7581-switch
+> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> index 16ca427cf4c3..4d0052dbe3f4 100644
+> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
 
-The compatible string won't be more than one item. So this would be a
-better description:
+[...]
 
-compatible:
-   oneOf:
-     - const: mediatek,mt7988-switch
-     - const: airoha,en7581-switch
+> @@ -2143,6 +2147,7 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
+>  			dma_unmap_single(eth->dma_dev, ((u64)trxd.rxd1 | addr64),
+>  					 ring->buf_size, DMA_FROM_DEVICE);
+>  
+> +			net_prefetch(data + NET_SKB_PAD + eth->ip_align);
+>  			skb = build_skb(data, ring->frag_size);
+>  			if (unlikely(!skb)) {
+>  				netdev->stats.rx_dropped++;
+> @@ -2150,7 +2155,8 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
+>  				goto skip_rx;
+>  			}
+>  
+> -			skb_reserve(skb, NET_SKB_PAD + NET_IP_ALIGN);
+> +			net_prefetchw(skb->data);
+> +			skb_reserve(skb, NET_SKB_PAD + eth->ip_align);
 
-Arınç
+Based on the code in mtk_probe, I am guessing that only
+MTK_SOC_MT7628 can DMA to unaligned addresses, because for
+everything else eth->ip_align would be 0.
+
+Is that right?
+
+I am asking because the documentation in
+Documentation/core-api/unaligned-memory-access.rst refers to the
+case you mention, NET_IP_ALIGN = 0, suggesting that this is
+intentional for performance reasons on powerpc:
+
+  One notable exception here is powerpc which defines NET_IP_ALIGN to
+  0 because DMA to unaligned addresses can be very expensive and dwarf
+  the cost of unaligned loads.
+
+It goes on to explain that some devices cannot DMA to unaligned
+addresses and I assume that for your driver that is everything which
+is not MTK_SOC_MT7628 ?
 
