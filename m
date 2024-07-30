@@ -4,71 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA813C3DA70
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jul 2024 18:34:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9619BC3DA70
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jul 2024 18:35:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=2Fp9sY+KsYLEoL++6nfL7qEAWDNCH4f1pH2g10lY6LQ=; b=1BQjX2aRzHfJ1pDU8LGTB62/xo
-	sNDaSJJzmC8YUSGG0jaec4W6y7natwfTf+qdMNIe9ETaNiHkemQJiTzc1GNjNpgGSnAR6NEYcHAXi
-	uloxLpGz+dfNANLXrlRptPKNzMcvs8HG3MYKpcorYUA7TtqyhomnY4qTXNzymFm46wvOjecEzbIXU
-	TX/fJzTjnZFgk8bY5Dn1PY/MtdaiKKBA2WPZ8C+ItOAX3goNIBD8lYCnq+T8EgRwlgaax7N5rU4pO
-	GSkdEc/V6/f4asNvVCM86gvDtLjFJvr+6xucPXYI5q2/J4CxkBCelJ4wU3JzkK2j4QTDiPgUm+T9G
-	QYm/06GA==;
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Duz+R7OD5yozyO0xOdsWZmjZsXtc7sydmF+n4fo7yxk=; b=WoQDwE/vfJOCryPjJlVzQ0a+YQ
+	O0/+w4jwQQXyCU1NzEQnjIZjMM4xj4MvBTZ1ScWwyTSBWyU6dVdRzFj5LXGAJt4IFDnadPzYaMuDt
+	qr/GDMRBQyoJPf9fihvshJ4/4rJqOsWFeWWMoVqdTZavCgSNFf1oAepTNoAnkVuVSnKsLDp92KDwI
+	K1uyeMQlJ7ALI3QUuVfTj1t7M6AWXRLw7WVD2YGGD6e7jB72WY9aeDHuwZOWjK4VHT0ARLNWUnibD
+	Nm+B5QLIBudE1VqR5U/cQOdL+FbszrXl3CBUD6PE2sTSl3Yt3wcJMpxZLr7fCJevNZaGjLpRcx3/P
+	zeLEu8Ug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYrgP-0000000G9Oq-1ydG;
-	Tue, 30 Jul 2024 18:34:49 +0000
-Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
+	id 1sYrhH-0000000G9gs-0cHR;
+	Tue, 30 Jul 2024 18:35:43 +0000
+Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYrfn-0000000G9HN-0XDi;
-	Tue, 30 Jul 2024 18:34:22 +0000
-Received: by mail-pf1-x42e.google.com with SMTP id d2e1a72fcca58-70b703eda27so3007157b3a.3;
-        Tue, 30 Jul 2024 11:34:10 -0700 (PDT)
+	id 1sYrgP-0000000G9On-4Az8;
+	Tue, 30 Jul 2024 18:35:15 +0000
+Received: by mail-pf1-x42a.google.com with SMTP id d2e1a72fcca58-70d1d6369acso130049b3a.0;
+        Tue, 30 Jul 2024 11:34:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1722364450; x=1722969250; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=2Fp9sY+KsYLEoL++6nfL7qEAWDNCH4f1pH2g10lY6LQ=;
-        b=l+QisNlqpOnylBFwsfuxLCRn1WM4/4B76g4Z1vcojyje8dloYmh8TthTj5zxlKJkm/
-         p8w0+L0jFymfgltDD4AAW658fsSWWe0hj6bXobkdyx+mndjYgMQfJOQvG0vdN3jLi6wX
-         HTmkaSuxBwAegh9W2FOLpr14I1bTYDFc6Fu4GqEohER+CwLD3t4uoSQVc1OMzkRRzfEG
-         YolNVrwF3rOY9WP5pCKSRmRcmv4EdWKvFqrp7uC5VPpaCQgnm/CE8PvQzO8003xbS2O1
-         puJJseo91P8IrP1igCwxOWuN+RH8IoxEj+riIb6QfWqc5qP1z1uKIkr528egwkKgmrWF
-         dQiw==
+        d=gmail.com; s=20230601; t=1722364489; x=1722969289; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Duz+R7OD5yozyO0xOdsWZmjZsXtc7sydmF+n4fo7yxk=;
+        b=khnN0WuRqd5b0cnMeEorUEAxtLx+JDESBIjqfsobdmHHz3y0/1dbaYVSb06XwzzPfv
+         XQEGJEd56NwTjg/okLTEcrZBntECB6gEh2Boq0100ym/uxvzy5pH3VB/64n4/BKHqd8t
+         XPZw1BiDzpLrtHGGNN6aqM3ElJ7LQNMNyzf0V2dbn0NixRjO0FjAALEfqdRQlyuLknvP
+         i8AYxbXYzl9+Zw6m8vGODRP95d5LpB81dniBOL7BwmEIRNezXpmO3jDq+9DaiPqwQ8vr
+         1jSZxEzBQH0s4cVNRjlUIowv2lD9DdpzZdK9aZ0xSwjhnQNwbk0SQmxGa14PjgYH0c9C
+         rKWA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1722364450; x=1722969250;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=2Fp9sY+KsYLEoL++6nfL7qEAWDNCH4f1pH2g10lY6LQ=;
-        b=PngGDFP0k77CxSbCA7TE2u8XRfOV4xy4AmvtxKyyCliT2yChjQpev5LC8E9KwUBlLh
-         86bqexvGTe0GT+38LPftFmhiDo4V+EiR058dkprfFaPCnZ3bQ+v1pGpfEY5+PTX69XPk
-         znmmfsd2CLj+e0+wqErOlRXoAJAeGMwmA7W95TFo6fVl2iTNW8qF4mUDYoD9n5+RrcFx
-         glRTf5Hdz5FheR75A8tc4nKezdwUhCvZ3Whk+hsoiYrKGQsGzNVe7V01HCqi6Sc4/YBR
-         kVs5b/FlFcGc8pvecQ9YmuoUuJldkgOvTJ1v6909+R/PlOjHyiV1eZewutdEZ+iER0lc
-         Ms/g==
-X-Forwarded-Encrypted: i=1; AJvYcCV09AX5Q5DDyIcOeskGXVEYwLsrqorka4Xzo+jXadF1UoPJxZiGtv48DiUbbws3Bk5hFgn7sO9SEUBMA1Nrqg2EX0LoQU78STuHI5TQy3Qu0KxQDXoNSPdcS3Iuq8i62ywr+cT5Vwmgf8FrX5Cfvtt7CKTCQHCrOM8=
-X-Gm-Message-State: AOJu0YyNnaUmqdLf5fILex/NuVsj5Qg3EHJt3hC1gZPoVH39lr/ycdVm
-	kbytmAFyyS1mZosrFWhlS6OaTO0yhWbblPKJycfxdBh+TP7BWdzfgCSwpw==
-X-Google-Smtp-Source: AGHT+IEwvW3IZW0hcDRfGFY4bnSHj92tWdAy2P6O4KTjmH4xJdoIfxE1/aHVwTk9k0ym5kG1irSowA==
-X-Received: by 2002:a05:6a00:b45:b0:70d:26f3:e5cb with SMTP id d2e1a72fcca58-70ece9fae78mr12592731b3a.3.1722364449528;
-        Tue, 30 Jul 2024 11:34:09 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1722364489; x=1722969289;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Duz+R7OD5yozyO0xOdsWZmjZsXtc7sydmF+n4fo7yxk=;
+        b=LwlbwvNGp7J1hPLBKAfI2ltwR+dmeH84rAjmA8ciZTLJbAojJ88X0NL1jrEP6J5yZD
+         2l1bIacSNt4Pu4DQ+mUeXs+kBLpvUqOFJSbjFqTAc5q1yfczxE9x1eH1tdzZIuvk16QV
+         TG14Ql7Gi1QQEqW9OnTscDqgfR5LangObpVptiVZ3ou7PRIZi/HmADKqK/8AHUi1YNgv
+         O9fBX+PMYR2TaBpR8Wj+oVlTo0/2EssjlVzDRAbu6pdsFfHdthwW2CuB0OmEtPISvsYn
+         fftkLHfDmD34npmTszxl6G953PHLAmioLIb+NJaXHF8PLOm/IV5pWVRQ3UhHaJdyO8aN
+         3nAQ==
+X-Forwarded-Encrypted: i=1; AJvYcCV1FzMObCR0K2M6CHhIwx//6VOR0NvnBBbRhdkVnb4BAGsqzTsgw4glD4IWTIHN6Jt0p4LF6AXJyUvtGf99/M/iH/GbuymasYYkUzVdez9LJXi6yXkCUnm+R9k5HQMx9oNRKOukWeWg35G1Defv+8F1CtgjXAGky38=
+X-Gm-Message-State: AOJu0YyNBgvQtJgUYRqtHxMlPlWzpjk+XhXcAOoHLeWldq0eayygG9GM
+	O5nQbIdcn5K7x9qpYRn8pWcsY0eO8p7sLjS+AkcULLA8g/IN1ArT
+X-Google-Smtp-Source: AGHT+IGxxd98poQZ5VsvVAwrejG7muttGAGaSqTTcastI4KpGM1zGNrfIl2gMAD8HKtiDAx4TeEmCQ==
+X-Received: by 2002:a05:6a20:8425:b0:1c4:8294:95da with SMTP id adf61e73a8af0-1c4e4883b4cmr4197746637.26.1722364488814;
+        Tue, 30 Jul 2024 11:34:48 -0700 (PDT)
 Received: from apais-devbox.. ([2001:569:766d:6500:f2df:af9:e1f6:390e])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-7a9f817f5a2sm7837763a12.24.2024.07.30.11.34.08
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-7a9f817f5a2sm7837763a12.24.2024.07.30.11.34.47
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 30 Jul 2024 11:34:08 -0700 (PDT)
+        Tue, 30 Jul 2024 11:34:48 -0700 (PDT)
 From: Allen Pais <allen.lkml@gmail.com>
 To: kuba@kernel.org,
+	Felix Fietkau <nbd@nbd.name>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Paolo Abeni <pabeni@redhat.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: jes@trained-monkey.org,
-	davem@davemloft.net,
-	edumazet@google.com,
-	pabeni@redhat.com,
 	kda@linux-powerpc.org,
 	cai.huoqing@linux.dev,
 	dougmill@linux.ibm.com,
@@ -82,10 +87,6 @@ Cc: jes@trained-monkey.org,
 	marcin.s.wojtas@gmail.com,
 	mlindner@marvell.com,
 	stephen@networkplumber.org,
-	nbd@nbd.name,
-	sean.wang@mediatek.com,
-	Mark-MC.Lee@mediatek.com,
-	lorenzo@kernel.org,
 	borisp@nvidia.com,
 	bryan.whitehead@microchip.com,
 	UNGLinuxDriver@microchip.com,
@@ -99,15 +100,17 @@ Cc: jes@trained-monkey.org,
 	Allen Pais <allen.lkml@gmail.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [net-next v3 00/15] ethernet: Convert from tasklet to BH workqueue
-Date: Tue, 30 Jul 2024 11:33:48 -0700
-Message-Id: <20240730183403.4176544-1-allen.lkml@gmail.com>
+Subject: [net-next v3 15/15] net: mtk-wed: Convert tasklet API to new bottom half workqueue mechanism
+Date: Tue, 30 Jul 2024 11:34:03 -0700
+Message-Id: <20240730183403.4176544-16-allen.lkml@gmail.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240730183403.4176544-1-allen.lkml@gmail.com>
+References: <20240730183403.4176544-1-allen.lkml@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240730_113411_191828_896089EE 
-X-CRM114-Status: GOOD (  13.87  )
+X-CRM114-CacheID: sfid-20240730_113450_056841_97CC1B21 
+X-CRM114-Status: GOOD (  12.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,106 +125,87 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The only generic interface to execute asynchronously in the BH context is
-tasklet; however, it's marked deprecated and has some design flaws. To
-replace tasklets, BH workqueue support was recently added. A BH workqueue
-behaves similarly to regular workqueues except that the queued work items
-are executed in the BH context.
+Migrate tasklet APIs to the new bottom half workqueue mechanism. It
+replaces all occurrences of tasklet usage with the appropriate workqueue
+APIs throughout the mtk-wed driver. This transition ensures compatibility
+with the latest design and enhances performance.
 
-This patch converts a few drivers in drivers/ethernet/* from tasklet
-to BH workqueue. The next set will be sent out after the next -rc is
-out.
+Signed-off-by: Allen Pais <allen.lkml@gmail.com>
+---
+ drivers/net/ethernet/mediatek/mtk_wed_wo.c | 12 ++++++------
+ drivers/net/ethernet/mediatek/mtk_wed_wo.h |  3 ++-
+ 2 files changed, 8 insertions(+), 7 deletions(-)
 
-This series is based on
-1722389b0d86 (Merge tag 'net-6.11-rc1' of git://git.kernel.org/pub/scm/linux/kernel/git/netdev/net)
-
-[v3]:
-  - Include Reviewed-by signature
-  - hinic: can show work_pending() as a partial replacement for the tasklet state.
-  - mvpp2: retain and re-word comment.
-  - fix rxempty_bh_work() which will emit 'RX Queue Full!'
-     message, so the change should be visibile to the user.
-
-
-[v2]:
-https://lore.kernel.org/all/20240621183947.4105278-1-allen.lkml@gmail.com/
-
-[v1]:
-First version converting all the drivers can be found at:
-https://lore.kernel.org/all/20240507190111.16710-2-apais@linux.microsoft.com/
-
-
-Allen Pais (15):
-  net: alteon: Convert tasklet API to new bottom half workqueue
-    mechanism
-  net: xgbe: Convert tasklet API to new bottom half workqueue mechanism
-  net: cnic: Convert tasklet API to new bottom half workqueue mechanism
-  net: macb: Convert tasklet API to new bottom half workqueue mechanism
-  net: cavium/liquidio: Convert tasklet API to new bottom half workqueue
-    mechanism
-  net: octeon: Convert tasklet API to new bottom half workqueue
-    mechanism
-  net: thunderx: Convert tasklet API to new bottom half workqueue
-    mechanism
-  net: chelsio: Convert tasklet API to new bottom half workqueue
-    mechanism
-  net: sundance: Convert tasklet API to new bottom half workqueue
-    mechanism
-  net: hinic: Convert tasklet API to new bottom half workqueue mechanism
-  net: ehea: Convert tasklet API to new bottom half workqueue mechanism
-  net: ibmvnic: Convert tasklet API to new bottom half workqueue
-    mechanism
-  net: jme: Convert tasklet API to new bottom half workqueue mechanism
-  net: marvell: Convert tasklet API to new bottom half workqueue
-    mechanism
-  net: mtk-wed: Convert tasklet API to new bottom half workqueue
-    mechanism
-
- drivers/net/ethernet/alteon/acenic.c          | 26 +++---
- drivers/net/ethernet/alteon/acenic.h          |  8 +-
- drivers/net/ethernet/amd/xgbe/xgbe-drv.c      | 30 +++----
- drivers/net/ethernet/amd/xgbe/xgbe-i2c.c      | 16 ++--
- drivers/net/ethernet/amd/xgbe/xgbe-mdio.c     | 16 ++--
- drivers/net/ethernet/amd/xgbe/xgbe-pci.c      |  4 +-
- drivers/net/ethernet/amd/xgbe/xgbe.h          | 10 +--
- drivers/net/ethernet/broadcom/cnic.c          | 19 ++---
- drivers/net/ethernet/broadcom/cnic.h          |  2 +-
- drivers/net/ethernet/cadence/macb.h           |  3 +-
- drivers/net/ethernet/cadence/macb_main.c      | 10 +--
- .../net/ethernet/cavium/liquidio/lio_core.c   |  4 +-
- .../net/ethernet/cavium/liquidio/lio_main.c   | 24 +++---
- .../ethernet/cavium/liquidio/lio_vf_main.c    | 10 +--
- .../ethernet/cavium/liquidio/octeon_droq.c    |  4 +-
- .../ethernet/cavium/liquidio/octeon_main.h    |  4 +-
- .../net/ethernet/cavium/octeon/octeon_mgmt.c  | 13 +--
- drivers/net/ethernet/cavium/thunder/nic.h     |  5 +-
- .../net/ethernet/cavium/thunder/nicvf_main.c  | 24 +++---
- .../ethernet/cavium/thunder/nicvf_queues.c    |  4 +-
- .../ethernet/cavium/thunder/nicvf_queues.h    |  2 +-
- drivers/net/ethernet/chelsio/cxgb/sge.c       | 19 ++---
- drivers/net/ethernet/chelsio/cxgb4/cxgb4.h    |  9 ++-
- .../net/ethernet/chelsio/cxgb4/cxgb4_main.c   |  2 +-
- .../ethernet/chelsio/cxgb4/cxgb4_tc_mqprio.c  |  4 +-
- .../net/ethernet/chelsio/cxgb4/cxgb4_uld.c    |  2 +-
- drivers/net/ethernet/chelsio/cxgb4/sge.c      | 40 +++++-----
- drivers/net/ethernet/chelsio/cxgb4vf/sge.c    |  6 +-
- drivers/net/ethernet/dlink/sundance.c         | 41 +++++-----
- .../net/ethernet/huawei/hinic/hinic_hw_cmdq.c |  2 +-
- .../net/ethernet/huawei/hinic/hinic_hw_eqs.c  | 18 ++---
- .../net/ethernet/huawei/hinic/hinic_hw_eqs.h  |  2 +-
- drivers/net/ethernet/ibm/ehea/ehea.h          |  3 +-
- drivers/net/ethernet/ibm/ehea/ehea_main.c     | 14 ++--
- drivers/net/ethernet/ibm/ibmvnic.c            | 24 +++---
- drivers/net/ethernet/ibm/ibmvnic.h            |  2 +-
- drivers/net/ethernet/jme.c                    | 80 ++++++++++---------
- drivers/net/ethernet/jme.h                    |  9 ++-
- .../net/ethernet/marvell/mvpp2/mvpp2_main.c   |  9 ++-
- drivers/net/ethernet/marvell/skge.c           | 12 +--
- drivers/net/ethernet/marvell/skge.h           |  3 +-
- drivers/net/ethernet/mediatek/mtk_wed_wo.c    | 12 +--
- drivers/net/ethernet/mediatek/mtk_wed_wo.h    |  3 +-
- 43 files changed, 288 insertions(+), 266 deletions(-)
-
+diff --git a/drivers/net/ethernet/mediatek/mtk_wed_wo.c b/drivers/net/ethernet/mediatek/mtk_wed_wo.c
+index 7063c78bd35f..acca9ec67fcf 100644
+--- a/drivers/net/ethernet/mediatek/mtk_wed_wo.c
++++ b/drivers/net/ethernet/mediatek/mtk_wed_wo.c
+@@ -71,7 +71,7 @@ static void
+ mtk_wed_wo_irq_enable(struct mtk_wed_wo *wo, u32 mask)
+ {
+ 	mtk_wed_wo_set_isr_mask(wo, 0, mask, false);
+-	tasklet_schedule(&wo->mmio.irq_tasklet);
++	queue_work(system_bh_wq, &wo->mmio.irq_bh_work);
+ }
+ 
+ static void
+@@ -227,14 +227,14 @@ mtk_wed_wo_irq_handler(int irq, void *data)
+ 	struct mtk_wed_wo *wo = data;
+ 
+ 	mtk_wed_wo_set_isr(wo, 0);
+-	tasklet_schedule(&wo->mmio.irq_tasklet);
++	queue_work(system_bh_wq, &wo->mmio.irq_bh_work);
+ 
+ 	return IRQ_HANDLED;
+ }
+ 
+-static void mtk_wed_wo_irq_tasklet(struct tasklet_struct *t)
++static void mtk_wed_wo_irq_bh_work(struct work_struct *work)
+ {
+-	struct mtk_wed_wo *wo = from_tasklet(wo, t, mmio.irq_tasklet);
++	struct mtk_wed_wo *wo = from_work(wo, work, mmio.irq_bh_work);
+ 	u32 intr, mask;
+ 
+ 	/* disable interrupts */
+@@ -395,7 +395,7 @@ mtk_wed_wo_hardware_init(struct mtk_wed_wo *wo)
+ 	wo->mmio.irq = irq_of_parse_and_map(np, 0);
+ 	wo->mmio.irq_mask = MTK_WED_WO_ALL_INT_MASK;
+ 	spin_lock_init(&wo->mmio.lock);
+-	tasklet_setup(&wo->mmio.irq_tasklet, mtk_wed_wo_irq_tasklet);
++	INIT_WORK(&wo->mmio.irq_bh_work, mtk_wed_wo_irq_bh_work);
+ 
+ 	ret = devm_request_irq(wo->hw->dev, wo->mmio.irq,
+ 			       mtk_wed_wo_irq_handler, IRQF_TRIGGER_HIGH,
+@@ -449,7 +449,7 @@ mtk_wed_wo_hw_deinit(struct mtk_wed_wo *wo)
+ 	/* disable interrupts */
+ 	mtk_wed_wo_set_isr(wo, 0);
+ 
+-	tasklet_disable(&wo->mmio.irq_tasklet);
++	disable_work_sync(&wo->mmio.irq_bh_work);
+ 
+ 	disable_irq(wo->mmio.irq);
+ 	devm_free_irq(wo->hw->dev, wo->mmio.irq, wo);
+diff --git a/drivers/net/ethernet/mediatek/mtk_wed_wo.h b/drivers/net/ethernet/mediatek/mtk_wed_wo.h
+index 87a67fa3868d..50d619fa213a 100644
+--- a/drivers/net/ethernet/mediatek/mtk_wed_wo.h
++++ b/drivers/net/ethernet/mediatek/mtk_wed_wo.h
+@@ -6,6 +6,7 @@
+ 
+ #include <linux/skbuff.h>
+ #include <linux/netdevice.h>
++#include <linux/workqueue.h>
+ 
+ struct mtk_wed_hw;
+ 
+@@ -247,7 +248,7 @@ struct mtk_wed_wo {
+ 		struct regmap *regs;
+ 
+ 		spinlock_t lock;
+-		struct tasklet_struct irq_tasklet;
++		struct work_struct irq_bh_work;
+ 		int irq;
+ 		u32 irq_mask;
+ 	} mmio;
 -- 
 2.34.1
 
