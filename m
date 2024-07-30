@@ -4,83 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89954C3DA49
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jul 2024 05:30:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31DACC3DA49
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jul 2024 07:26:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:Subject:References:Cc:To:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=t/7aU9sDpYwQXeoJM1CArP5cEatPpjsDcOLesviOAhg=; b=jjUmXR8Tzc2Dy9tpz5TI3Kuz2N
-	+S4GcFh+KW4Vco2zYjMttkQB3bHiXZXCABlglYxwkvHMZwqUSFKgni8pjqby5mZGNrS7FkfjET37w
-	9zsFhp6SFvf4mxP34d8vgIepom/p3lNgzsVCR7n5hHBAGUOY7nP0wYpvepk0EBa6/9sDM7yjtRTST
-	JYtw9W5GgOeH31AzO4DhDIYTuueilEXSCOmunIvLgm83noJOv/facn42fa+ldgDD43KXI0sy1OW9u
-	YkhPE0JwQiytbrZaBUQmBwtOupXrHCXkiRrEVQolBtPMglrDbLeFyCyKfxGc767KZ3hhKM+5yADzy
-	SJAoJkGw==;
+	bh=Y29Cu3aNgFt3lRUAJtHfjwbzXHmscrTrGrCYF6YO//0=; b=idlL41572ldERXUz01sLSLWc+4
+	9cMXe4jPl9YHAbV/L/0ODx9nXmLkz3W8C9Dkekvkj31l/rauKsB8IO9IrSP+hEuKMInDMOq6uK7ly
+	Hh6Zk1beyAKXkjt0craKq5blm1KZ0KSA0MIWMWkMZFYphS2dlr3N/UmZ7a/G76OUUDIc0Qs94McSP
+	+HiH2XAmuVI5kodtppUZgvrhH/tiSbzkjZ9AWZ+P+oXlnQNDAS4TS6jskDr2RLDK9fuxKO/jK8BV0
+	Ry5bCNJO8Hawb8zWuzngIo1N5Z51HkDB4I0Zto5VLXvbw020lVFgpvDtCKp+u7i0foHp0RFULwjqr
+	76TWTZkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYfRW-0000000DiqX-2oHg;
-	Tue, 30 Jul 2024 05:30:38 +0000
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+	id 1sYhFP-0000000E1Sq-0NgX;
+	Tue, 30 Jul 2024 07:26:15 +0000
+Received: from mout.web.de ([212.227.17.11])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYfR4-0000000Dika-0xej;
-	Tue, 30 Jul 2024 05:30:12 +0000
-Received: by mail-wr1-x42a.google.com with SMTP id ffacd0b85a97d-36887ca3da2so1800285f8f.2;
-        Mon, 29 Jul 2024 22:30:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1722317408; x=1722922208; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=t/7aU9sDpYwQXeoJM1CArP5cEatPpjsDcOLesviOAhg=;
-        b=EYH05WJEl8D4V8gI6v9OJdp+jY9Yrtf8KZFVg8NXGlo2cetIqunHeCFUwEBuUTaaR2
-         Sq4zDa5jrzPtLdIPX41FT2J9jdx9szICdtLvy8d9a2n4XHc+Djbi+DFXpZ65fqcyJGht
-         K+yeBjjdRv1dfkamsE1RuZUPxBqfZ/TlLPVu85wKnxThOukUKP0FkZcSjlHbaNtmD3h2
-         j4slNBJA/I98ZR4duDqrPPEW+4njmQIJD5dSWKn1mMWP9bPREhVx2McVp1OjuynVxQdT
-         dRBH+Kky9yWzTkIjVxeaSb/cOUwgB7KP6t+Si7H6SPf1Y69mffP3yLyC2mc3IJlYZSqg
-         LxdA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1722317408; x=1722922208;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=t/7aU9sDpYwQXeoJM1CArP5cEatPpjsDcOLesviOAhg=;
-        b=ThL/7ilbL1EzS8RUePulKFV3yZs7nng5gNHDmjM/u/OBq1f6ARJSDcAOeSvwqb06i+
-         xCG8yZ4Ipm3mj+rJOcVbfUeuqvjo7FBjzdJW/Pa5qHiOIZLbxyZYia1w3blVYvb/K5VY
-         VFQl3F6X0robsf0FW++BeMyG2pXHB/2945yfOrBQhVknmgS6nItrpIaFPDV80pkDY7NJ
-         rhY+Km82jRY3mP00K9QsMUYIocUom/L3m2i7EhTzFr/mDOXx/IzQVqGkw4Q5+9yv3pqp
-         tLUqtcjaGobQ/H88I8syLsfpA1eMupY2n7mFmY5i48KOL4EdF/JHAsvpJI1uDOIOX2jJ
-         D5Kw==
-X-Forwarded-Encrypted: i=1; AJvYcCXJbJTf3g1yWSgzgiAgVx64Yx6RW4KOYA8xFfFdVPOl80M1p5C/C34trWAmXD5yYW3MxSbL1xKSmkTkI8WfvMS+2luRauPFlwPHo+VuyYQLcMxlyqgJgHmkjnbzV050+sIPwEpWu/MkrnH9HBUF7T9cADvfCNr0KtY=
-X-Gm-Message-State: AOJu0YwjlK4w9cyd2dO7u8kmF1PQyt7osXu0JIIBLEK4+PsQBULj+o9y
-	rZb/mJBOBcdHSNV7zaG3Fss5Raof566PqtkyOmyrKXdg82fSZZsqCFPrOSrkcqd0hzsKIceUFII
-	ja2QuMlD0GNiyaROuKyMc6oM3qm4=
-X-Google-Smtp-Source: AGHT+IHFHRVcyzkdry4aJQCeC/O2MYafFRyK4dAEMqxvOWlqfqEifF0pIrhi4TgeD3Hldw/g6fzElAg6Io6qXofmcmY=
-X-Received: by 2002:adf:e585:0:b0:368:3f6a:1de8 with SMTP id
- ffacd0b85a97d-36b5cee4ce8mr6504099f8f.11.1722317408110; Mon, 29 Jul 2024
- 22:30:08 -0700 (PDT)
+	id 1sYhFK-0000000E1RB-3v8s;
+	Tue, 30 Jul 2024 07:26:13 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
+	s=s29768273; t=1722324362; x=1722929162; i=markus.elfring@web.de;
+	bh=Y29Cu3aNgFt3lRUAJtHfjwbzXHmscrTrGrCYF6YO//0=;
+	h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:To:Cc:References:
+	 Subject:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:
+	 cc:content-transfer-encoding:content-type:date:from:message-id:
+	 mime-version:reply-to:subject:to;
+	b=HzYzVsWOtT7f+UfbZ+pTB4befjGK7iWGD5ZGbGSzJCLHS44J8K2pg75PXHbpUjRG
+	 IgonXxtCzlYCeH0evgN5LlQcDh/mRWxibv/9Z4rZBc/zKmmLwtKHb/B6a9H0DcJK4
+	 kBtWeF8glZY5Ms7yqr/VwLwFp6OwPaJyUIcmJWxT2qKYt5s+IIGUyFcuK4/HEJVpj
+	 hORzFBmb+t+EU/P6CSVcQJGNMtaLJALejP/XetYS0g3CHIW7yvmEQ3i/jvX3QxdQ6
+	 Ebbgi6B96uoYBUcCh2byMtjZ2d87WL7+fVQyj4vwOVXHelYaiUUZldqeZqzCSCo1d
+	 BAcu4kNWV/ckDbbZdA==
+X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
+Received: from [192.168.178.21] ([94.31.90.95]) by smtp.web.de (mrweb106
+ [213.165.67.124]) with ESMTPSA (Nemesis) id 1MODiN-1sspUp1WBt-00Nvj2; Tue, 30
+ Jul 2024 09:26:02 +0200
+Message-ID: <6bccc366-7b21-48a7-895e-d6693bac809d@web.de>
+Date: Tue, 30 Jul 2024 09:25:45 +0200
 MIME-Version: 1.0
-References: <20240729183038.1959-1-eladwf@gmail.com> <ZqfpGVhBe3zt0x-K@lore-desk>
-In-Reply-To: <ZqfpGVhBe3zt0x-K@lore-desk>
-From: Elad Yifee <eladwf@gmail.com>
-Date: Tue, 30 Jul 2024 08:29:58 +0300
-Message-ID: <CA+SN3soFwyPs2YhvY+x33B6WsHHahu6hbKM-0TpdkquJwzD7Gw@mail.gmail.com>
-Subject: Re: [PATCH net-next v2 0/2] net: ethernet: mtk_eth_soc: improve RX performance
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>, 
-	Mark Lee <Mark-MC.Lee@mediatek.com>, "David S. Miller" <davem@davemloft.net>, 
-	Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, Daniel Golle <daniel@makrotopia.org>, 
-	Joe Damato <jdamato@fastly.com>
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla Thunderbird
+To: Florian Sylvestre <fsylvestre@baylibre.com>,
+ Julien Stephan <jstephan@baylibre.com>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Paul Elder <paul.elder@ideasonboard.com>,
+ Phi-bang Nguyen <pnguyen@baylibre.com>, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, Andy Hsieh <andy.hsieh@mediatek.com>,
+ Angelo Gioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Conor Dooley <conor+dt@kernel.org>, Krzysztof Kozlowski
+ <krzk+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>
+Cc: LKML <linux-kernel@vger.kernel.org>
+References: <20240704-add-mtk-isp-3-0-support-v5-4-bfccccc5ec21@baylibre.com>
+Subject: Re: [PATCH v5 4/5] media: platform: mediatek: isp_30: add mediatek
+ ISP3.0 camsv
+Content-Language: en-GB
+From: Markus Elfring <Markus.Elfring@web.de>
+In-Reply-To: <20240704-add-mtk-isp-3-0-support-v5-4-bfccccc5ec21@baylibre.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:yvPCQKrKXBCoDamMmIKaF729ETlr5jjPPSiqGwUVUeJt8P75TyN
+ OG2ePZ2Kh2QWizHR51/Ed8zsDlVH/pEgjI2BWaRW6cIfMDUb9rnmVRRSTRcKUm/r1netZki
+ pu6CbiuPuV8xRamEqTnSEtedOGZnLV1QMIKgPZrAd88K6MAghc8529Idl12rXXoq+eNhouL
+ 9BnUD8mxibuK2JdcWQs9Q==
+UI-OutboundReport: notjunk:1;M01:P0:F5C1DnPzew8=;YgqK+iYHl2KVBnza3FawQVr13aP
+ QSQeEPgRTv8d/HiQoSSUkH33WdfeCKBP49vFLS898Ni1XGeVwBBghRndtgWXHvxj9N0OzgDVP
+ WVq46FLsdoLi256Sg8rHNoKkt+fNWfzfPTZ7j/AZzVSEncowxGsNjb3dKtwI74RucYlZilK9i
+ 7e9tL1uhivn8AlWFNEh0V3fdN9BYyZfC3CM46Pg0GiGHgfVeuhSkP0Y2NnILYBU3vPc76ovf0
+ btBlEV+wd3lTFJEFkreqim5MphVtaAYbiC2abHd5xFToi0kiQSN+1I8XPkkmiCOL6q7O/1m0E
+ 1CPab4Z3faLDw2C/3fdAVqiBaYyj8rg2RXzfAb4rhuSqheHs6k3t3cIB16Nu0ZoDozkMGi8WF
+ /IU4iqLcataQEdv77yD/XEx7luhECCHCVwypHPxLHWV3a5KixBoFXReXaZWhh3Lj+i7YaXo3W
+ o0T1aDT4TG6gN6nWLWUD8Ylihi/CaTvdIrXnUa8pBLn8bWZQR6d4sz4H6f+N0L9iU7d+rBla3
+ Oj7vqqGRqJ3TaiindStvhV5hK1kfcbSUJOS8RPFGnZ0fyr8LETzm04qgWgg7d8DwYRZFM/thy
+ Q1jYfTo5NhBbE7A7o59jmnwuujLQFAILRBbZTqV0YsmaNGVFvMjAri0NZa1VpbQ6A4O18rjWl
+ W0yZdt45bR4RAfAQjYIUx/XSjrqiIh+QDGQHlVonAVbjNAXNtQ2lLxoLe0aCH9fP0aMe2UpsB
+ DLoQUjsaQA0xNEIFY8txTozJkul/bcUaxZNK1TX728nnd1InHv6mca1poCK6NWYx5wdjvQdwI
+ aIhgsEWVjl4w5ynfcb8gHsvg==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240729_223010_295080_300089A2 
-X-CRM114-Status: GOOD (  15.21  )
+X-CRM114-CacheID: sfid-20240730_002611_359571_8B1AD2F3 
+X-CRM114-Status: UNSURE (   5.98  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,31 +102,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 29, 2024 at 10:10=E2=80=AFPM Lorenzo Bianconi <lorenzo@kernel.o=
-rg> wrote:
->
-> > This small series includes two short and simple patches to improve RX p=
-erformance
-> > on this driver.
->
-> Hi Elad,
->
-> What is the chip revision you are running?
-> If you are using a device that does not support HW-LRO (e.g. MT7986 or
-> MT7988), I guess we can try to use page_pool_dev_alloc_frag() APIs and
-> request a 2048B buffer. Doing so, we can use use a single page for two
-> rx buffers improving recycling with page_pool. What do you think?
->
-> Regards,
-> Lorenzo
->
-Hey Lorenzo,
-It's Rev0. why, do you have any info on the revisions?
-Since it's probably the reason for the performance hit,
-allocating full pages every time, I think your suggestion would improve the
-performance and probably match it with the napi_alloc_frag path.
-I'll give it a try when I have time.
-You also mentioned HW-LRO, which makes me think we also need the second pat=
-ch
-if we want to allow HW-LRO to co-exists with XDP on NETSYS2/3 devices.
+=E2=80=A6
+> +++ b/drivers/media/platform/mediatek/isp/isp_30/camsv/mtk_camsv30_hw.c
+> @@ -0,0 +1,413 @@
+=E2=80=A6
+> +static int mtk_camsv30_runtime_suspend(struct device *dev)
+> +{
+=E2=80=A6
+> +	if (vb2_is_streaming(vbq)) {
+> +		mutex_lock(&cam_dev->op_lock);
+> +		v4l2_subdev_call(&cam_dev->subdev, video, s_stream, 0);
+> +		mutex_unlock(&cam_dev->op_lock);
+> +	}
+=E2=80=A6
+
+Under which circumstances would you become interested to apply a statement
+like =E2=80=9Cguard(mutex)(&cam_dev->op_lock);=E2=80=9D?
+https://elixir.bootlin.com/linux/v6.10.2/source/include/linux/mutex.h#L196
+
+Regards,
+Markus
 
