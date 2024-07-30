@@ -4,84 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECBD8C3DA49
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jul 2024 18:36:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFF3BC3DA49
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jul 2024 19:38:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wrUl/QqE0nKjd66nMZZSf0qwwi0vmfglBhqvBDkOk1w=; b=pvPd1OgjqxY6YZKVy3yjxNL+r3
-	u5Q94xsIkGhfsSmWo/9gx5TLpnOaGlD4mR8K7Iw9HkOCoEP5uuUCJfGeisoT0oAuMNxs+eXxhP+Y1
-	+2PwaTekK6PG2iUhBGEtOvhN9RzOzUZ+TQiSVLOLuskRJrlzMl/LRyE7Nx6eXcmeVQWf7+7xGAXfX
-	MvwlagOu7tHHtIIphcXs7UYgUqfJYY2SKRtBXiVNXL7nrHOb5LrIgN1TaQOdXjVZeCu+/AImW/WKh
-	ZUSkyCHPcNDEq7bMNOkqGkjqPFBovIHzGgzq7x3vZ18ZcXdGPBxNWn+fGN3llnFC9nnmOrZ/zA9os
-	sV3bBYLA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=x++DWFWe8TS8FFmql2+e3J46YR6D57ZTFoc3LTUBZOU=; b=sQF6hL9uXgFHQ4kjp9T3mKj6Dy
+	F0ea22no0cw+c+9YekUudj8YXkLU8GbGP6bmAoSU8MTfa5zrVMr/Gy5Zegy2r6O2AtNQP8yxoFZsw
+	7bVAP96CohbpJW1u7qhLk7Su+awLk7IPK4k40eSSrfXNmB0GEQMDQCwLY+6mhnX3SJD9o87P0l9pS
+	Kjao4GMHhnsX5gJb/Qn9CwNXFlqm8z9fYeZwNPS+ZDTnhVyek86Y5L913bUuuFEoJExGnoSmtwINH
+	sii6LI7CrnVXaZ+zi5fjXEO+xGreh+7kXwJwlT2+6gQhLqT9a6vW9KMJ2aI+AHheTAiksEygDc2vN
+	kyHzpFDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYri3-0000000G9vr-2gKk;
-	Tue, 30 Jul 2024 18:36:31 +0000
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+	id 1sYsgG-0000000GIsS-35mI;
+	Tue, 30 Jul 2024 19:38:44 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYrgw-0000000G9Zx-26Ru;
-	Tue, 30 Jul 2024 18:36:00 +0000
-Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-4281ca54fd3so22001095e9.2;
-        Tue, 30 Jul 2024 11:35:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1722364520; x=1722969320; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=wrUl/QqE0nKjd66nMZZSf0qwwi0vmfglBhqvBDkOk1w=;
-        b=TzTR27GVS+AzNIc2DPsKM6IaP6GaMTGwe5r1XdOJZgyWNgpubFnm3grDirT6y0PT04
-         fZgk45+zC0g2KxS7XBfgUHei4Us1WE8BD7uJG5XC8pdWITOGt5agm9RH80po3BEl4ROo
-         h4UWjODvfN+kDaLuyePBOMNfhb3bx9On4ojtX16gIMveM2+is157xfg795z+ztR+zYjP
-         Qc1YqJStIK9vyeBDzOqSotRFw8yz8yPrnVRjd3CeDiyWe7Q1WcGi3kjyMsQ5WBGB2dOg
-         QbasEYhS4qBhrjNh0ccHnN8yJyZcgbWA5hlfGjD08zpJYMARwzQ18G8ZEHbicZ0Dtf5Z
-         eIjw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1722364520; x=1722969320;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=wrUl/QqE0nKjd66nMZZSf0qwwi0vmfglBhqvBDkOk1w=;
-        b=hf3WV8IWyYzC5cbN8YumgKDCgzcBtZnP4jlCS7AGWXu1GWZaXDYkkZwpmf3GWBMvLq
-         HL2aMDus15oK5c2ZoTqVAJuCAtIAV8Zv3tz9XY5YXMXK2noBFPz+XtQyzEii80dK8n/C
-         tNF55cjWBUqzu+mnwLBtTR/NaZ+3Ea9/qHJiKAYltE/yMBeagJrznRiNApGc/oNtym0m
-         1qRFF8zh8OVOMlNb/O83LiBafrICi1eoLabcaE6h2lavbgbvliTcNwWbfCkqS5f1aWh5
-         w8KuJUaUGzXVV/grZCgd8sVJZnEZhs1BaZXigC5HONwIs26fhDNYvgZtX43Bv6TDPNFB
-         DnRA==
-X-Forwarded-Encrypted: i=1; AJvYcCU2qh+l0U1hrdrOEqMvQdSGm3M4qUiIKvaQ5t2KnP6vD3NW5VjSEG7FWhqBeACWPWBMSUn7XFB4HAS6M07ZGOHdySkc6wx0GdS00M/bcBHMDS5DAI2s2XbtnEz6CHkeVPpLGl7Jybu5/4QQEcrrHg8V4GeQiBoixOk=
-X-Gm-Message-State: AOJu0YyBvJ7VScZwVXcv0LHmYs3KRpQV994Itd7ZIuIkbUX73JeHZVfq
-	FDkGJsCmPnk0/3WWtf7ngzBQoUFEzievxXWuGhMNa8cQfIbLx8cPWEfU81B9K8SsYya5dwMcZ5N
-	AcEA7E1i0KHLWxAn901MlHXk7Xe4=
-X-Google-Smtp-Source: AGHT+IGUMs3KJS+FkWbup/9qo//aVW8oevFDm36CcNuXhST2ddPZ2LgWixjb4GV1XYV/LixtZssTKYD7kfUBQo+vK48=
-X-Received: by 2002:adf:fbcc:0:b0:369:f664:ff4a with SMTP id
- ffacd0b85a97d-36b5d073da8mr8311007f8f.38.1722364519826; Tue, 30 Jul 2024
- 11:35:19 -0700 (PDT)
+	id 1sYsfo-0000000GInD-2LRw;
+	Tue, 30 Jul 2024 19:38:17 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 9529DCE111D;
+	Tue, 30 Jul 2024 19:38:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 81FADC4AF0A;
+	Tue, 30 Jul 2024 19:38:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1722368293;
+	bh=1Q3oYDiFwiET51QQHldopTOPb7rykWbwFZNGKpQ8i2I=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=b5SNfnZWVKNhTbqkDx8vzpcjMhB1J8B0pmubW1Ic5UpwesI+PoYUgdb6lHpjZ3ovN
+	 8G4sbzmEGw6Fa9pDq3kEk5ykliyFEgJhdzoUBp3N8cbxUmwBGcL237rdlZ+iON7U7d
+	 go9TrVciOn6kRgo+MNe/t1BAhpD8YI72Beyl8toTfQ0475Rea3PRxXxi4Uc+msrn9D
+	 qOjJM+06Fn7BOkE3EFuQ+MBXdr963OkncsOU61vh99Np3ucn+hTmvQt35e4w4nskUt
+	 fm0e560NO6rtQ+/Dr0IPH5B/Oj+YW3cNAqBFXiS83UkP2WbhD5NEg+j44S56ix13V+
+	 mhidA5T1hWglA==
+Date: Tue, 30 Jul 2024 13:38:12 -0600
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Julien Stephan <jstephan@baylibre.com>
+Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Andy Hsieh <andy.hsieh@mediatek.com>, linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	linux-arm-kernel@lists.infradead.org,
+	Phi-Bang Nguyen <pnguyen@baylibre.com>,
+	Louis Kuo <louis.kuo@mediatek.com>,
+	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v6 1/5] dt-bindings: media: add mediatek ISP3.0 sensor
+ interface
+Message-ID: <172236829078.2026749.11343043764808466079.robh@kernel.org>
+References: <20240729-add-mtk-isp-3-0-support-v6-0-c374c9e0c672@baylibre.com>
+ <20240729-add-mtk-isp-3-0-support-v6-1-c374c9e0c672@baylibre.com>
 MIME-Version: 1.0
-References: <20240729183038.1959-1-eladwf@gmail.com> <20240729183038.1959-2-eladwf@gmail.com>
- <ZqirVSHTM42983Qr@LQ3V64L9R2>
-In-Reply-To: <ZqirVSHTM42983Qr@LQ3V64L9R2>
-From: Elad Yifee <eladwf@gmail.com>
-Date: Tue, 30 Jul 2024 21:35:08 +0300
-Message-ID: <CA+SN3soUmtYfM_qVQ7L1gHMSLYe2bDm=6U9UwFLvj35odT0Feg@mail.gmail.com>
-Subject: Re: [PATCH net-next v2 1/2] net: ethernet: mtk_eth_soc: use prefetch methods
-To: Joe Damato <jdamato@fastly.com>, Elad Yifee <eladwf@gmail.com>, Felix Fietkau <nbd@nbd.name>, 
-	Sean Wang <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, 
-	Lorenzo Bianconi <lorenzo@kernel.org>, "David S. Miller" <davem@davemloft.net>, 
-	Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, Daniel Golle <daniel@makrotopia.org>
-Cc: Stefan Roese <sr@denx.de>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240729-add-mtk-isp-3-0-support-v6-1-c374c9e0c672@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240730_113522_563360_ACE428A5 
-X-CRM114-Status: GOOD (  15.31  )
+X-CRM114-CacheID: sfid-20240730_123816_780584_4E1C82F6 
+X-CRM114-Status: GOOD (  10.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,31 +82,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 30, 2024 at 11:59=E2=80=AFAM Joe Damato <jdamato@fastly.com> wr=
-ote:
->
-> Based on the code in mtk_probe, I am guessing that only
-> MTK_SOC_MT7628 can DMA to unaligned addresses, because for
-> everything else eth->ip_align would be 0.
->
-> Is that right?
->
-> I am asking because the documentation in
-> Documentation/core-api/unaligned-memory-access.rst refers to the
-> case you mention, NET_IP_ALIGN =3D 0, suggesting that this is
-> intentional for performance reasons on powerpc:
->
->   One notable exception here is powerpc which defines NET_IP_ALIGN to
->   0 because DMA to unaligned addresses can be very expensive and dwarf
->   the cost of unaligned loads.
->
-> It goes on to explain that some devices cannot DMA to unaligned
-> addresses and I assume that for your driver that is everything which
-> is not MTK_SOC_MT7628 ?
 
-I have no explanation for this partial use of 'eth->ip_align', it
-could be a mistake
-or maybe I'm missing something.
-Perhaps Stefan Roese, who wrote this part, has an explanation.
-(adding Stefan to CC)
+On Mon, 29 Jul 2024 16:48:00 +0200, Julien Stephan wrote:
+> From: Louis Kuo <louis.kuo@mediatek.com>
+> 
+> This adds the bindings, for the mediatek ISP3.0 SENINF module embedded in
+> some Mediatek SoC, such as the mt8365
+> 
+> Signed-off-by: Louis Kuo <louis.kuo@mediatek.com>
+> Signed-off-by: Phi-Bang Nguyen <pnguyen@baylibre.com>
+> Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> Signed-off-by: Julien Stephan <jstephan@baylibre.com>
+> ---
+>  .../bindings/media/mediatek,mt8365-seninf.yaml     | 259 +++++++++++++++++++++
+>  MAINTAINERS                                        |   7 +
+>  2 files changed, 266 insertions(+)
+> 
+
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+
 
