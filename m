@@ -4,83 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F9F7C3DA61
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jul 2024 08:40:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C016DC3DA61
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jul 2024 08:53:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+0H8XR6/6gnQfW06sc06bIyBs/qL70M7zEHtdbRpeZI=; b=Tn4Ga+qClCMif4nvzasJPp2TSQ
-	YX5PXR6hP5vGhTAMYyAUG7kEFwbcj9cIowNokW/NQMQh//vsQolHcJccA0c+yp8gjudl2DNZThr7V
-	wxf/7oAcVUQ5KvglZgD8X3DC+eENPhvRAjfw+UObnL1EpH2c4vk4M93xoA4UhyrCThja0xN3fsvUl
-	BfBp1SvX9Z1havjC0JcDSxt6idiNuT7Hqqca0EmnhVmDeKuZ4c/4Aep+YjkCfLvUP38dx910IA8Uf
-	Ko3UThg4rnHA5iOoDhA5hcYW0UFG4kjloz4OWmSFPM2q4As+UM7fVJ0fr5PLVNyAahuaed1XBnJNN
-	zKMzSuWw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=YnacwdNXQeiYAN/vyHCjqJ3Z55j/qGrBpNl88GFWc6Q=; b=YllSCoBxwzdRtKqrdncXWUSYV7
+	hrsQBhBPPaEHsVmmTyQf+9MNa7zfRbTxHtTCfa+cquMbmh4+0+BVrK0ZSPjA25XNkcQpOQBSUehIk
+	QK021zO8P+Ri9JujPFud7iOLWmJp6SyPK81yIFaMSuczyCsqX/4xFDSJdkizoiFuESvSwDxhI05jn
+	Q9x91Lgb201RFfHAQA4l7kEOlpE5RziVCZlA3ffFxRqPlVzrMwx1AOBbNytFqyn81UE2Xl3W3KvGH
+	dm+FEKeEe/a1CgwzbIAMKqBcW0XorrlR5O2/9+lZZQ9zO+D4JowBtL/jzmZ9/cC3cI4OT+vJXEcxp
+	ZHrPiOTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYiP8-0000000EKYC-2Y0h;
-	Tue, 30 Jul 2024 08:40:22 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1sYicH-0000000EOD9-0m2j;
+	Tue, 30 Jul 2024 08:53:57 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYiOv-0000000EKUT-0Pk1;
-	Tue, 30 Jul 2024 08:40:10 +0000
-X-UUID: 2b69b01a4e4d11ef955bff358274dad2-20240730
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=+0H8XR6/6gnQfW06sc06bIyBs/qL70M7zEHtdbRpeZI=;
-	b=OewOJkR51YFhiLBWOCctBgULaxQe2w4sXRYXqNxLPD4ttCdCMuyVwTF9YgnKN0TQVZa1NyfjykwCBv5fetHAi4gAcM2kkQ9oNJvStZs0FYGbYW43Q4AJQF80HO2pL4ggfUvBNGhZoai1BiaDUf3nNi2o4UJ+Y97kfFeLN+8KZWg=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:6f8cfe1d-687e-47b4-9b1b-b9af43177a0f,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:-25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACT
-	ION:release,TS:-50
-X-CID-META: VersionHash:6dc6a47,CLOUDID:7e970a0e-46b0-425a-97d3-4623fe284021,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:1,IP:nil,UR
-	L:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,S
-	PR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 2b69b01a4e4d11ef955bff358274dad2-20240730
-Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw02.mediatek.com
-	(envelope-from <liju-clr.chen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 272638814; Tue, 30 Jul 2024 01:24:41 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 30 Jul 2024 16:24:40 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 30 Jul 2024 16:24:39 +0800
-From: Liju-clr Chen <liju-clr.chen@mediatek.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Jonathan Corbet <corbet@lwn.net>, Catalin
- Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, Steven
- Rostedt <rostedt@goodmis.org>, Masami Hiramatsu <mhiramat@kernel.org>,
-	Mathieu Desnoyers <mathieu.desnoyers@efficios.com>, Richard Cochran
-	<richardcochran@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Liju-clr Chen <Liju-clr.Chen@mediatek.com>, Yingshiuan Pan
-	<Yingshiuan.Pan@mediatek.com>, Ze-yu Wang <Ze-yu.Wang@mediatek.com>
-CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-doc@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-trace-kernel@vger.kernel.org>, <netdev@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, Shawn Hsiao <shawn.hsiao@mediatek.com>,
-	PeiLun Suei <PeiLun.Suei@mediatek.com>, Chi-shen Yeh
-	<Chi-shen.Yeh@mediatek.com>, Kevenny Hsieh <Kevenny.Hsieh@mediatek.com>
-Subject: [PATCH v12 20/24] virt: geniezone: Add tracing support for hyp call and vcpu exit_reason
-Date: Tue, 30 Jul 2024 16:24:32 +0800
-Message-ID: <20240730082436.9151-21-liju-clr.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20240730082436.9151-1-liju-clr.chen@mediatek.com>
-References: <20240730082436.9151-1-liju-clr.chen@mediatek.com>
+	id 1sYibp-0000000EO7s-1LrB
+	for linux-mediatek@lists.infradead.org;
+	Tue, 30 Jul 2024 08:53:31 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1722329607;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=YnacwdNXQeiYAN/vyHCjqJ3Z55j/qGrBpNl88GFWc6Q=;
+	b=Ca71Jd6JrQnZO06iqbveJo7GLkXoI3yR75FDNyQ6RUh2qen61q+eamWGY3ecAx+Vw6oA6m
+	t7LcWvWMsrgg/uzb8dmepK6FDxZ1J2ZUsbzvC+J/fcXFO3/T5c4Z+fCiPUWiy2YsWcsMcG
+	WjKBUnmtSWw1ITnLNw/BU5GYXY6ucZg=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-499-JIEtRKsuNS6k8Ln3zeUMog-1; Tue, 30 Jul 2024 04:53:23 -0400
+X-MC-Unique: JIEtRKsuNS6k8Ln3zeUMog-1
+Received: by mail-wm1-f70.google.com with SMTP id 5b1f17b1804b1-4281e72db54so2949155e9.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 30 Jul 2024 01:53:22 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1722329602; x=1722934402;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=YnacwdNXQeiYAN/vyHCjqJ3Z55j/qGrBpNl88GFWc6Q=;
+        b=f5zsyt7Q8R9gJo0yApliZw3y2UxAoQZbaaYF+r15TQJJ2MZ82DNVV1tB0sKHT8qErs
+         goz//K23zC3GWP8yxrHf13YkU0Y8VtUeBcRzcWgmiJvsuMme4Mba8Ihzwu0JraG+xGLk
+         EI4/i8Uj6cDYE83rYfgqDwjZYpiXvVd9ad0OnTdhbsbP+peg5alOQX38/zNlK4qemqdQ
+         CDR/Z7bsGuqQoo7fpOe4zGXcvNdZ5LnD4hL2ajoD1XHlrkOpSmmt1eYaRZ1xAbvOaRD8
+         /5ZuQlJ2Sm0oUvRIwfqbo/QfKSs7Q0KS9vkAOdJUuocalHU1EtJlD3STQj3A4TACnLBm
+         p3iw==
+X-Forwarded-Encrypted: i=1; AJvYcCW8J+TpHn+UexjRYm73MyRiLicdOKohgQeKsIX+WYBgQE8ytQuLaYVLnKPtApU6OZJqkExbm3O8LBFo+9zy7A==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwdZzRfMSLHNLfVGPEbbLJbEc53/75W8DD8M7VW6isuJUnwKyWQ
+	OXgR6VfE1JVz8H+ozrBcwCnyVHKN88hr0o2E0sVZJ0puEBI7+XDNGEnPtagAcQXzBAqyKsm7mpy
+	rDD3Dv3Mej3K7ByiqaupiHHbOTNW0RsPlmaKC1Zkgl2AsGVqNRjPV3tB5rCnWTUsglfUgJA==
+X-Received: by 2002:a05:600c:4fc2:b0:427:9f6c:e4bd with SMTP id 5b1f17b1804b1-42805713af0mr69580125e9.6.1722329601924;
+        Tue, 30 Jul 2024 01:53:21 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFe5skEumfC7OwYco+fwnLjIRX5mFiP+wG2g0HwUfV8HU5TLSTPaOIm8pjlpNbR0ZWFSuDj1w==
+X-Received: by 2002:a05:600c:4fc2:b0:427:9f6c:e4bd with SMTP id 5b1f17b1804b1-42805713af0mr69579945e9.6.1722329601387;
+        Tue, 30 Jul 2024 01:53:21 -0700 (PDT)
+Received: from ?IPV6:2a0d:3344:1712:4410:9110:ce28:b1de:d919? ([2a0d:3344:1712:4410:9110:ce28:b1de:d919])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-428089c28f0sm191284215e9.28.2024.07.30.01.53.20
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 30 Jul 2024 01:53:20 -0700 (PDT)
+Message-ID: <738f69e6-1e8d-4acc-adfa-9592505723fe@redhat.com>
+Date: Tue, 30 Jul 2024 10:53:19 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net v2] net: ethernet: mtk_eth_soc: drop clocks unused by
+ Ethernet driver
+To: Jakub Kicinski <kuba@kernel.org>, Daniel Golle <daniel@makrotopia.org>
+Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
+ Mark Lee <Mark-MC.Lee@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Andrew Lunn <andrew@lunn.ch>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <5f7fc409ecae7794e4f09d90437db1dd9e4e7132.1722207277.git.daniel@makrotopia.org>
+ <20240729190634.33c50e2a@kernel.org>
+From: Paolo Abeni <pabeni@redhat.com>
+In-Reply-To: <20240729190634.33c50e2a@kernel.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240730_014009_175272_4467AA2C 
-X-CRM114-Status: GOOD (  17.33  )
+X-CRM114-CacheID: sfid-20240730_015329_442065_C1370FD7 
+X-CRM114-Status: GOOD (  10.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,190 +110,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Liju Chen <liju-clr.chen@mediatek.com>
+On 7/30/24 04:06, Jakub Kicinski wrote:
+> On Mon, 29 Jul 2024 00:00:23 +0100 Daniel Golle wrote:
+>> Clocks for SerDes and PHY are going to be handled by standalone drivers
+>> for each of those hardware components. Drop them from the Ethernet driver.
+>>
+>> The clocks which are being removed for this patch are responsible for
+>> the for the SerDes PCS and PHYs used for the 2nd and 3rd MAC which are
+>> anyway not yet supported. Hence backwards compatibility is not an issue.
+> 
+> What user visible issue is it fixing, then?
 
-Add tracepoints for hypervisor calls and VCPU exit reasons in GenieZone
-driver. It aids performance debugging by providing more information
-about hypervisor operations and VCPU behavior.
+Indeed this looks like more a cleanup than a fix. @Daniel why net-next 
+without fixes tag is not a suitable target here?
 
-Command Usage:
-echo geniezone:* >> /sys/kernel/tracing/set_event
-echo 1 > /sys/kernel/tracing/tracing_on
-echo 0 > /sys/kernel/tracing/tracing_on
-cat /sys/kernel/tracing/trace
+Thanks!
 
-For example:
-crosvm_vcpu0-4874    [007] .....    94.757349: mtk_hypcall_enter: id=0xfb001005
-crosvm_vcpu0-4874    [007] .....    94.760902: mtk_hypcall_leave: id=0xfb001005 invalid=0
-crosvm_vcpu0-4874    [007] .....    94.760902: mtk_vcpu_exit: vcpu exit_reason=IRQ(0x92920003)
-
-This example tracks a hypervisor function call by an ID (`0xbb001005`)
-from initiation to termination, which is supported (invalid=0). A vCPU
-exit is triggered by an Interrupt Request (IRQ) (exit reason: 0x92920003).
-
-/* VM exit reason */
-enum {
-	GZVM_EXIT_UNKNOWN = 0x92920000,
-	GZVM_EXIT_MMIO = 0x92920001,
-	GZVM_EXIT_HYPERCALL = 0x92920002,
-	GZVM_EXIT_IRQ = 0x92920003,
-	GZVM_EXIT_EXCEPTION = 0x92920004,
-	GZVM_EXIT_DEBUG = 0x92920005,
-	GZVM_EXIT_FAIL_ENTRY = 0x92920006,
-	GZVM_EXIT_INTERNAL_ERROR = 0x92920007,
-	GZVM_EXIT_SYSTEM_EVENT = 0x92920008,
-	GZVM_EXIT_SHUTDOWN = 0x92920009,
-	GZVM_EXIT_GZ = 0x9292000a,
-};
-
-Signed-off-by: Yi-De Wu <yi-de.wu@mediatek.com>
-Signed-off-by: Liju Chen <liju-clr.chen@mediatek.com>
----
- arch/arm64/geniezone/vm.c          |  4 ++
- drivers/virt/geniezone/gzvm_vcpu.c |  3 ++
- include/trace/events/geniezone.h   | 84 ++++++++++++++++++++++++++++++
- 3 files changed, 91 insertions(+)
- create mode 100644 include/trace/events/geniezone.h
-
-diff --git a/arch/arm64/geniezone/vm.c b/arch/arm64/geniezone/vm.c
-index 62ffb415354c..618de2ff9471 100644
---- a/arch/arm64/geniezone/vm.c
-+++ b/arch/arm64/geniezone/vm.c
-@@ -7,6 +7,8 @@
- #include <linux/err.h>
- #include <linux/uaccess.h>
- 
-+#define CREATE_TRACE_POINTS
-+#include <trace/events/geniezone.h>
- #include <linux/gzvm.h>
- #include <linux/soc/mediatek/gzvm_drv.h>
- #include "gzvm_arch_common.h"
-@@ -44,11 +46,13 @@ int gzvm_hypcall_wrapper(unsigned long a0, unsigned long a1,
- 		.a6 = a6,
- 		.a7 = a7,
- 	};
-+	trace_mtk_hypcall_enter(a0);
- 	arm_smccc_1_2_hvc(&args, &res_1_2);
- 	res->a0 = res_1_2.a0;
- 	res->a1 = res_1_2.a1;
- 	res->a2 = res_1_2.a2;
- 	res->a3 = res_1_2.a3;
-+	trace_mtk_hypcall_leave(a0, (res->a0 != ERR_NOT_SUPPORTED) ? 0 : 1);
- 
- 	return gzvm_err_to_errno(res->a0);
- }
-diff --git a/drivers/virt/geniezone/gzvm_vcpu.c b/drivers/virt/geniezone/gzvm_vcpu.c
-index b0dc3e4f47d7..3b146148abf3 100644
---- a/drivers/virt/geniezone/gzvm_vcpu.c
-+++ b/drivers/virt/geniezone/gzvm_vcpu.c
-@@ -9,6 +9,8 @@
- #include <linux/mm.h>
- #include <linux/platform_device.h>
- #include <linux/slab.h>
-+
-+#include <trace/events/geniezone.h>
- #include <linux/soc/mediatek/gzvm_drv.h>
- 
- /* maximum size needed for holding an integer */
-@@ -102,6 +104,7 @@ static long gzvm_vcpu_run(struct gzvm_vcpu *vcpu, void __user *argp)
- 
- 	while (!need_userspace && !signal_pending(current)) {
- 		gzvm_arch_vcpu_run(vcpu, &exit_reason);
-+		trace_mtk_vcpu_exit(exit_reason);
- 
- 		switch (exit_reason) {
- 		case GZVM_EXIT_MMIO:
-diff --git a/include/trace/events/geniezone.h b/include/trace/events/geniezone.h
-new file mode 100644
-index 000000000000..4fffd826ba67
---- /dev/null
-+++ b/include/trace/events/geniezone.h
-@@ -0,0 +1,84 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+/*
-+ * Copyright (c) 2023 MediaTek Inc.
-+ */
-+
-+#undef TRACE_SYSTEM
-+#define TRACE_SYSTEM geniezone
-+
-+#define _TRACE_GENIEZONE_H
-+
-+#include <linux/gzvm.h>
-+#include <linux/tracepoint.h>
-+
-+#define GZVM_EXIT_REASONS \
-+EM(UNKNOWN)\
-+EM(MMIO)\
-+EM(HYPERCALL)\
-+EM(IRQ)\
-+EM(EXCEPTION)\
-+EM(DEBUG)\
-+EM(FAIL_ENTRY)\
-+EM(INTERNAL_ERROR)\
-+EM(SYSTEM_EVENT)\
-+EM(SHUTDOWN)\
-+EMe(GZ)
-+
-+#undef EM
-+#undef EMe
-+#define EM(a) TRACE_DEFINE_ENUM(GZVM_EXIT_##a);
-+#define EMe(a) TRACE_DEFINE_ENUM(GZVM_EXIT_##a);
-+
-+GZVM_EXIT_REASONS
-+
-+#undef EM
-+#undef EMe
-+
-+#define EM(a)       { GZVM_EXIT_##a, #a },
-+#define EMe(a)      { GZVM_EXIT_##a, #a }
-+
-+TRACE_EVENT(mtk_hypcall_enter,
-+	    TP_PROTO(unsigned long id),
-+
-+	    TP_ARGS(id),
-+
-+	    TP_STRUCT__entry(__field(unsigned long, id)),
-+
-+	    TP_fast_assign(__entry->id = id;),
-+
-+	    TP_printk("id=0x%lx", __entry->id)
-+);
-+
-+TRACE_EVENT(mtk_hypcall_leave,
-+	    TP_PROTO(unsigned long id, unsigned long invalid),
-+
-+	    TP_ARGS(id, invalid),
-+
-+	    TP_STRUCT__entry(__field(unsigned long, id)
-+			     __field(unsigned long, invalid)
-+	    ),
-+
-+	    TP_fast_assign(__entry->id = id;
-+			   __entry->invalid = invalid;
-+	    ),
-+
-+	    TP_printk("id=0x%lx invalid=%lu", __entry->id, __entry->invalid)
-+);
-+
-+TRACE_EVENT(mtk_vcpu_exit,
-+	    TP_PROTO(unsigned long exit_reason),
-+
-+	    TP_ARGS(exit_reason),
-+
-+	    TP_STRUCT__entry(__field(unsigned long, exit_reason)),
-+
-+	    TP_fast_assign(__entry->exit_reason = exit_reason;),
-+
-+	    TP_printk("vcpu exit_reason=%s(0x%lx)",
-+		      __print_symbolic(__entry->exit_reason, GZVM_EXIT_REASONS),
-+		      __entry->exit_reason)
-+
-+);
-+
-+/* This part must be outside protection */
-+#include <trace/define_trace.h>
--- 
-2.18.0
+Paolo
 
 
