@@ -4,208 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74D9FC3DA4A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jul 2024 02:50:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11636C3DA61
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jul 2024 04:17:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=O4y5SZmL8/6CZgmPC0545t6vbwIQqanHRxNuOR3HAf0=; b=esR7C9RbBbmV3KaUH4MBv5TGmu
-	EuAkC8VG37bXajE/gF/DX5JgWXwp6y96fVAzzrfa/Os+jSDa4wvTWbQYrQyE4/kzbO6gQ26vJYS3+
-	bq53+FpeUvVmM/4Y2KH+iQZ4EKVkUMYOhoJDq1KGR3b6yorLN3thHGqhA1lgowUG8Iqxw61IwgiMY
-	gBw6gDsTNssfkLwHlXAlWwCiaXk6ou2wSTW8YFAzaXOnAuZlms0uoHuAdqBaaEv908GASfkEiXpsz
-	G6+/6aJyZFUcXhJ+d1MQ6XFGtjEZHrFGMLjHyYk8h2iapjxFzZsPpIkNe/n71M2kBnw+Tu8r5X312
-	JP0qx+uA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OgGP1ucTPfcv4IyFkymcgQIfN0PbeyLZRnIeoFwlKQM=; b=1YZndn0Ywx7YGusuBknVtbKrMB
+	I5xedZNR8OcG0WIuEbolpuXbu/ZuD4hji6/sHjhpNj58u3Tx9G1zj2f+U0zJDvfygOMrQ/eIxdRkv
+	adp9sVIINKtJDKzmBie7uc52yEUvrjiuVQmtDRwepsLHZXUEE3oftMfZDEIzrMrUprc6ZfZbjd0/T
+	LlGx1vSjFns0ILOVmrO/rv3oLbqyQJ+DH5I4nhHbdgy32N6tuPFhnHhg4xdXezoD6zOCFHgEaEP0L
+	AOORb3zE8ryvvSKf/4qNMr72kDD5QuOALkqiColaeQEGTmhuHZ9qUiosPt5gXRvTmEBCb9jz7TXtk
+	WWp0PAig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYcw9-0000000DQ4q-48Ki;
-	Tue, 30 Jul 2024 02:50:05 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1sYeIl-0000000DZde-2Z4k;
+	Tue, 30 Jul 2024 04:17:32 +0000
+Received: from mail-lj1-x230.google.com ([2a00:1450:4864:20::230])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYcvh-0000000DQ0d-3vI6;
-	Tue, 30 Jul 2024 02:49:40 +0000
-X-UUID: 59b48c264e1e11efa6c87f6b4542ff6b-20240729
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=O4y5SZmL8/6CZgmPC0545t6vbwIQqanHRxNuOR3HAf0=;
-	b=ntRFXwQToaFfklPI/qv98XnOx3HxQ/9pUesXWyKulmOvw7v6/7E4ZFIcsgcZ5K0+/1qoR0xNsNWROgIKIG+o9D0atFZlRHEVP4kkcb92f61TvDIealpAhZAVPLvMDALHttJi5XiIQEY4gJg3FkjhEAb+u0UGOFmFkoq/0LkhucE=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:49645879-830f-43ef-ac18-c1d666b5c769,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:6dc6a47,CLOUDID:89c8e9d5-0d68-4615-a20f-01d7bd41f0bb,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_ULN,TF_CID_SPAM_SNR
-X-UUID: 59b48c264e1e11efa6c87f6b4542ff6b-20240729
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <ck.hu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 550151272; Mon, 29 Jul 2024 19:49:33 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 30 Jul 2024 10:39:30 +0800
-Received: from APC01-SG2-obe.outbound.protection.outlook.com (172.21.101.237)
- by mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 30 Jul 2024 10:39:30 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=b6W/Xey/pmC8jT5BJneWDxh8lb6EZFsTSMDSFJhtE7p9arEbFVjGI5pqlRjVJN98aaGqCwa57HfN2NenFU6M6EkRhPzG8z7wiwy+UwCq7l/2dMa/7lTsFyUmQpxQrVtlX4b3mfQM0DHTs/XpbkkPAM9IPnkOUiCGk/FyuJ/WVQPvis8wlSZRJBfasLh5X3AAdJP15GXRMAcsfs2rsFCwZLwJkNQQ+/lvZKfxa6ZOU4oK3SUyUjClnKYrOiGlxSUuHFMpNvjzDYfUhTu26zHzVVtDLe6ledxNl9Hn3XaJitJ13bRCtJcUBRql8Xvoy5yor5zQoEBl8ngdSLwdqYYTMw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=O4y5SZmL8/6CZgmPC0545t6vbwIQqanHRxNuOR3HAf0=;
- b=j2rPhs9+AGL5UZ3y6mgoIqNXKS6BaQbownTwAzur5W2bMYscmmF0in6l0DoViw2PsRIAd1mv8DaiWuoNY92y38PK+XoU9vmQEbNRCUx14uzuHgqiWCWxypSCm7sAyloUINILK5Bst6SuvT0hNVVElBvCw9y0qtWBZ1QNJQQf283sY8g7iuLN08QieDUYImiLR1BZSsGPPcn/6ZWArppxuG/7YUFTybq3Pkvg3Q0cG/LRGSl+aHo/o9hDiEqckl8OHSlsT/u3ZFkmXpybyUOddzpLthoab5BcZbHy2RjBi378tX/0GC0bek7KIvizSYlppuywvtOqtIeW8AnWz1t1YQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
+	id 1sYeIX-0000000DZbg-3fdy
+	for linux-mediatek@lists.infradead.org;
+	Tue, 30 Jul 2024 04:17:29 +0000
+Received: by mail-lj1-x230.google.com with SMTP id 38308e7fff4ca-2ef2d96164aso47935101fa.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 29 Jul 2024 21:17:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=O4y5SZmL8/6CZgmPC0545t6vbwIQqanHRxNuOR3HAf0=;
- b=ihNBZN52guq8SG0pbLmvHxQ2nnvUltTdO8KVqJEd78sigh+FP22nkXDOQcXw0iDZp6XZu6NlkXMBb4PtWUsB8YiGTBp7sHwNU2P3KvBIPs2J5cQgfP2mfj6lGGvpFIcjp3lOvqXZP2bYVbhOK58sK3LfqfwOwcp5gxKvQmUZVko=
-Received: from TYZPR03MB6624.apcprd03.prod.outlook.com (2603:1096:400:1f4::13)
- by TYSPR03MB7990.apcprd03.prod.outlook.com (2603:1096:400:47c::12) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7807.28; Tue, 30 Jul
- 2024 02:39:27 +0000
-Received: from TYZPR03MB6624.apcprd03.prod.outlook.com
- ([fe80::9ce6:1e85:c4a7:2a54]) by TYZPR03MB6624.apcprd03.prod.outlook.com
- ([fe80::9ce6:1e85:c4a7:2a54%4]) with mapi id 15.20.7807.026; Tue, 30 Jul 2024
- 02:39:26 +0000
-From: =?utf-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>
-To: "jstephan@baylibre.com" <jstephan@baylibre.com>
-CC: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	"paul.elder@ideasonboard.com" <paul.elder@ideasonboard.com>,
-	"mchehab@kernel.org" <mchehab@kernel.org>, "conor+dt@kernel.org"
-	<conor+dt@kernel.org>, "robh@kernel.org" <robh@kernel.org>,
-	=?utf-8?B?QW5keSBIc2llaCAo6Kyd5pm655qTKQ==?= <Andy.Hsieh@mediatek.com>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "matthias.bgg@gmail.com"
-	<matthias.bgg@gmail.com>, "laurent.pinchart@ideasonboard.com"
-	<laurent.pinchart@ideasonboard.com>, "krzk+dt@kernel.org"
-	<krzk+dt@kernel.org>, "fsylvestre@baylibre.com" <fsylvestre@baylibre.com>,
-	"angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>, "pnguyen@baylibre.com"
-	<pnguyen@baylibre.com>
-Subject: Re: [PATCH v5 4/5] media: platform: mediatek: isp_30: add mediatek
- ISP3.0 camsv
-Thread-Topic: [PATCH v5 4/5] media: platform: mediatek: isp_30: add mediatek
- ISP3.0 camsv
-Thread-Index: AQHazhdkyJtqWsdLFUSbwSAjf5xgNbH731aAgBH+I4CAANm5gA==
-Date: Tue, 30 Jul 2024 02:39:26 +0000
-Message-ID: <72bfcfad956efb64ba50a3bd9438e3a09a0fea6f.camel@mediatek.com>
-References: <20240704-add-mtk-isp-3-0-support-v5-0-bfccccc5ec21@baylibre.com>
-	 <20240704-add-mtk-isp-3-0-support-v5-4-bfccccc5ec21@baylibre.com>
-	 <85c54f0b1b8bb5d9026c67109a3526fd95cc013b.camel@mediatek.com>
-	 <CAEHHSvZ2etjPKq0MqHYD=hjs19Yy+DJLwXGGorJK7q2tW2dfRQ@mail.gmail.com>
-In-Reply-To: <CAEHHSvZ2etjPKq0MqHYD=hjs19Yy+DJLwXGGorJK7q2tW2dfRQ@mail.gmail.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYZPR03MB6624:EE_|TYSPR03MB7990:EE_
-x-ms-office365-filtering-correlation-id: f5b9b36c-a08a-478b-9e17-08dcb040d447
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;ARA:13230040|366016|376014|7416014|1800799024|38070700018;
-x-microsoft-antispam-message-info: =?utf-8?B?Y3JXZ1Vob3lqY0c0cjBwa0Zlcjlpb1dVcmhFdCtOTG5mYjBhOGo2TitXeGcr?=
- =?utf-8?B?NEp0QVBNTVFHT0NPUmwzY3J2RW5DVDBXeXBWRkdWSitmY1ZvQm5ycjdBL3Iv?=
- =?utf-8?B?Z21EbzUxVEg2NkY3UDl1cTdDUnpuSFBTK1lFK3cwRmZ2djhrY1NyVnlYS0xJ?=
- =?utf-8?B?UEUxMy9vQ2VYUDN6dzR2T3Y3R1kySktVRnFMckZSWFErd1ZtbTYxV3J5ZXo2?=
- =?utf-8?B?UVBzMlRqNlpTRnpCYkxtWFcxRHFMRHF6VXUvaE5XYis4NTNGZlRQVVBJVWxs?=
- =?utf-8?B?MWh0RGtBa3RkYlcxVWp5WUxYdThXdDFkdUR6b0JDdzFJb09rN05FdmdsamtM?=
- =?utf-8?B?MUtNK3ZDVlNSZDVGZnBoeEtmS25pKzEvVTJnQjFyY2EzV3VBemQ0eStINW8x?=
- =?utf-8?B?dE01Tk56Q1RaY3Y3VWVBM3RjbVdFS2JrTXdKb0RZU2R1WDhUT0RlcTl5aXlH?=
- =?utf-8?B?b0lGUU94bk9KY3l2SHdjakVqQUxtaUQ1L2E3ODdKU2k3eG9nMHVQMlBmRUpx?=
- =?utf-8?B?UDRjL0F3S1JLSDdjWFlBd3JaUTBMWjlJeUp2RmVLZ1kwTG9pOHd3N1JqNWwy?=
- =?utf-8?B?OUJhelAvZmNJeDJjNzQvV1BNVklpQ0hvT0hseWNYUHZYdWlsbFgveHp2TDNt?=
- =?utf-8?B?TXFjMkhhbFVYSkNqL0Q3ekp1TUdVRkxUbnlTc245UTJTMUlHa0pydGdGUmdK?=
- =?utf-8?B?aGJCOE44TkxybnBYRmhKNWVJQit3U0IxU0drQ1pIYk5pYWFsRSt3K05iTEVF?=
- =?utf-8?B?Skx5bnZhTWtPbkVTUkk2UXB3b0UrTGhoQzNHUi9IUmV0ZEN1amlydkJYZXpi?=
- =?utf-8?B?aHBTUWdlazZQRUl4UTlvcUxDeGp2SUNtZHpzR2xHYnR5cFRUaXdST2JOM1R1?=
- =?utf-8?B?VGRRS25hcUxTeDdyS2RHV2ltUjlWT2ZVOUt2SWhnQ2pxL1JhSkJ1Q1E5SFJt?=
- =?utf-8?B?KzZwYnAyTlhCeldTRUZvZDFoaFpQM3Bqd3ZTU0tQaUNIajdLNHJBazc0QUFq?=
- =?utf-8?B?Wm8wZE05QnlJOVA5MlJNK3EwV2FOUjhaMnN4cU9EVUNJQXFORnNwK1RnMnIy?=
- =?utf-8?B?OVlkSml6OUQ3WG1zQmdENlVTV09qNlVDRUd1QnZ5cnpFK0VhL2x0THd4OHBJ?=
- =?utf-8?B?dFo2NDNiaG9mRndNQk9qN0NhZFYxTUoyWWN5R1VjTWd6YThWL0txdW8wQm1p?=
- =?utf-8?B?U0kwYWZrd0ZFYUE1aEQ0TlE1d0lpYm9TaGZWY1lzMy85MUFZdm5yV2o1RDBv?=
- =?utf-8?B?bDE1TExmRjJkeGVJUTlNbUE0aENpazJhWDZWazgvOTQxLzZaeHVPN3lKY3cr?=
- =?utf-8?B?MmY5dlQrSUR2UTllYStWbjYrVWZKRldoUEtZWURmVXA5WnpoVlhkeFVQR0pp?=
- =?utf-8?B?VCs4TUdiK2k2dk4wZHJ0WEF0VFh1NlpQeEdlRThmM1NrMlBnK21HZkgyRURn?=
- =?utf-8?B?SHBsRHBjc3BTWVNSSEJPK2d3NFdwYlpReE00TDlxbk0vOG9RVWJKN3lXZXFT?=
- =?utf-8?B?eHhRTzlIdklPdXBnZkV0YURqeHpMR3BGYzVJZGQwSEN6MnV6Z2h2VDRBSHg2?=
- =?utf-8?B?VGR6cXRaWE5ISnFLcDB1dlIybTE0cURSNWQyWmRaYzNNMENCWHNxRWsxUmh2?=
- =?utf-8?B?UVExemM0amdQay9BaUF6KzRsYkxWODZmbWVpR1cvMUtZUHE0aWNDczc5MS94?=
- =?utf-8?B?UUFoM1RVeXlSQ2N3SkEwWWFoZDRKdHRGRXc2TWI0WCtheGJqaURoQVRDU3dW?=
- =?utf-8?B?eWN1L1NnT3J2YTh4MmpCSUtqbGJzckFwV3diUml0amFtUTE0d0EyS2dkbHRR?=
- =?utf-8?B?Y20vclpuRXRZYVhRak42UjV2VytaRzdsUUdVMVY5WGNIMjBFNE1aMGVUY1pK?=
- =?utf-8?B?MnJvNUFYYXJpWTd1U3M2SENkaUFNb3NZZGo3a3JHUlRTcXc9PQ==?=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB6624.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(376014)(7416014)(1800799024)(38070700018);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?S0VxK0RDNEZySzc1RDMzaGlxY1BCRTRnZU54RlU5VDdQS0ZZd0dHUXF3S2tI?=
- =?utf-8?B?dEo1aktYTzBUYnlyMEhoeU9NZTJabitRWXM4bU56MjZMMUc0Rk1OWlBMNjA2?=
- =?utf-8?B?ODVKcWh3bnhFeVgwbVRNaGYvWDRqd3czV3JYUnN5QUxRanI2WHUwdDJxb2dS?=
- =?utf-8?B?dVJVQ2pQdi95SE9vSGljTlhQRjBqdDJuNVlMZEFLeUhNV3dSVWJyUC9ib2Qv?=
- =?utf-8?B?c3Z6OUd0MHUrem5paGtwb0YyUVJmSXo5OS9XaGNVcHJ3eHpHOERZNVp6czQ1?=
- =?utf-8?B?K2dDUFdmK1AwQ3lWOEFYcGtFQkp4WDlqUkNzKzQwVlp5c0ZYUFNFZDRoeVAv?=
- =?utf-8?B?Z2hBT1Bka2FLZDRoWFhKbFdDNlFGVjRmQkdSSWlNS2Nob3BVMVJITi94QmI2?=
- =?utf-8?B?SjhXdG5KNWVBWVlqYlozM2h0QmhNdDlnSHppLzdpa2FlUzJqSjEwUWtxVHZn?=
- =?utf-8?B?eXVpUXlsbktsZENiNmNnckowUlZwNEZ0bExHdklWWmd0VjB6ZHRQcVZNbEhr?=
- =?utf-8?B?dmZPeXVXZXFlWUJxN0V6TWlJaDBuMTFQZ050NVFiSEVjcUFCVEsrQ2RoblVX?=
- =?utf-8?B?eWpvN2VEMHc1ZS8vN09RSk5LNmFNdG8wbGs3dDlwbUxpZzAydkFGQjRFdHpS?=
- =?utf-8?B?cGdXa2VGelFPTDk3UTJweEVBd1FBRE91ZjFoYUZLa0NBalNCcEZhWGM4YXBa?=
- =?utf-8?B?S2lzQU9DUStFbkNWdVpuWkZySlMyWlIyMUVlNXRYa2dBM0NEQWV2MUxib0Nr?=
- =?utf-8?B?aVhLRFZUcm9ieXlaZDVBNklkR2l2Mmt6NUpxMVVKWjFQOFJTcTloRFRUcWNV?=
- =?utf-8?B?bWMyTm85Q1M2M3VuOWg3UkZBY1NyS25ITmZSZHBEbzVleHA3TmNVN1VjQ0VK?=
- =?utf-8?B?b3BYeUdMUXZDaG84OTBBMlVid2FvcFErL0pqdkJIeWp0MzZYbHJZbkJrZ2Ix?=
- =?utf-8?B?OTRXZGpCRWpHcnFiY0lwVndMelpFQlJXWDBxUHJvTVVpMTZLQmhOdTI1ZW1Z?=
- =?utf-8?B?a0NjOGFvVmlmQkVnZnZvWkdDYzh2TGl2Y3BydzFNcVJiT3l0WG8wdGd3S0dF?=
- =?utf-8?B?ZzRUU29UVWgydEpsL3JuUXhxbXV2S2xETE5PdXR0NUs3MmJZOVFuM08rMW1k?=
- =?utf-8?B?VjJTWmMySTRWUC9jMTRaNTVaUHBwV2FzK2tuRHR3RzQ1WDlVcXh3U0ozTklE?=
- =?utf-8?B?KzBUTmR3aXp2TnFMNXluVHhOWG42alhHZTduRVBSZkV6djJYSnlZYmIrZkZh?=
- =?utf-8?B?RytEWlBid0JlZlNmZitGdGcyQUhvVjJCK1FPWUxKYklTU29PRll3ZndQY1kw?=
- =?utf-8?B?dmZnaXl0TmV3eGdDVFhzMXBNYkdxWEFjMDlnOHUwWTcxSHJwc3FLRnE1bEJZ?=
- =?utf-8?B?cU1VM1NwQ3VseDVVaVJPUndtRkJxM3YzQ0dDc3JBT2lzSEtmdldQTU5sS1Zo?=
- =?utf-8?B?NVp5L3ZxRGtmS2sxMTZmVGpFZ1JmRytDeWY2ZjdBdTdBSEFnOG5xVFYvNnRt?=
- =?utf-8?B?bGRzY3JMWENBSzVWSDkyV2piZm4rK1M5cVFHZmNVWHM5ZG5iTTRJV1Exbi9M?=
- =?utf-8?B?UDRKK1VYLzZOckZoS3R0dzh4UkJVUUtiUkQrdG1VN3g2MHhCWXRMUUJTd0ps?=
- =?utf-8?B?MDJpaDlwRHYrRjNIZXh6Vjd6clFCa2NGUTM5dVZaeXdNbDcvMVlLUDcrcU54?=
- =?utf-8?B?V1l3bmlMSlI5R0JxNDZ5UVlSb01ydmw2YytYdXdvdmwvZHpqSU1Wc1cyUm50?=
- =?utf-8?B?ekczNEpYYXE1Z21oUHVPNmdrcWRUQkxVVkZYbzB5Z3dzQ0lBbGFmWGJXRURX?=
- =?utf-8?B?MW1qcElZZS9yNlhBbFBjaHZQRm9zeG9xWmxWRDlOQ2NRNzNBdzVVanFOSEdp?=
- =?utf-8?B?L0VxbzNBWmpnL2tJVERqRUhLK3RDM2ZYRzNoZXBrKzhWN1JlZCtqVk0yMTFt?=
- =?utf-8?B?Z29aeXBJKzJFRzNkVVRDUzhla2tGWEM5Mi82ZG9aZjlZSDY0UVR0ME9yTDB6?=
- =?utf-8?B?bGY2Vlc4ZGtQMHRWY2ZWbnlMb0ZqMXhBaStIOFRLODJyYTMvbVVGYnBIYmlo?=
- =?utf-8?B?d3BLaEprZmF4dHRXc0t1SzlpcEVZaEZWKzdSck5hTWl1VnZJYlZtWjR4TGJ1?=
- =?utf-8?Q?cvzD/lrP8eMKiFqifh1eRWY1F?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <53E9D2A573F88246AB5652B85E3A79C0@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+        d=chromium.org; s=google; t=1722313036; x=1722917836; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=OgGP1ucTPfcv4IyFkymcgQIfN0PbeyLZRnIeoFwlKQM=;
+        b=XibULACuxjf1P4vMij9Ry+tiFzT1ZtFQVMzlwj1stcOhUEImU9QOT7py49I5SR3g6z
+         douDqDF1roOXdDiO3hnsBoGF6agsh9HZMgpaySRvhRhf9fUdgXk86IGsuqZyJ0xVM+q8
+         ILkTRbESw9jS9R1pL8l6TpKUtf8iSD8kRQo7U=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1722313036; x=1722917836;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=OgGP1ucTPfcv4IyFkymcgQIfN0PbeyLZRnIeoFwlKQM=;
+        b=jQHB8BKOsFimAdkiMAwzOXovPciPqCb/70Nx7s3gDJTDDmpkSK9Zhe9IqXxEVzc/47
+         bEGEsRuNgdg1nLkp0wl1IKofu1YV34gjwMCWx87927eKod50SnjPOwCE+Q/LFow3zI7f
+         XmY6EpVFMMKjmqiUaVRZClseE3nI+70UZ4jmkSVRP+vtDUU9ErgAsJBicke8ltEQSeeQ
+         lH0Do2V1Vz+bY8aKO3Gje+pUXluHWnH1x1Jwfx02lKt9k4q3iyh60KJiW3U9KYlHSeNO
+         8jRcn16S5diwVCLM95I65cMUSxJpe1k7EkEORJn74G+hCUIxhn+CVm9cVUkZfiUJwec4
+         Unbg==
+X-Forwarded-Encrypted: i=1; AJvYcCVgX758lhR0UihTZHwPhuq47AqgRRbfeTc6N/vdfBBULtkAfCikMIZwPdJ3QdGPu6ktoUX8sVePSMl0kJ7go+VSD8FVIrEWncRd3FjnhveSt8sr
+X-Gm-Message-State: AOJu0YyK+uq5u23qB9ojaT5ulJwWBLuobIVHkI53+jdImMqULIXxSMZS
+	/y8H3btH+eLZWl0XHvuK1MlTWSa5BOWMMWa0qeLekTfcy1rrxAgcyaDr0qcegARez16HhCQQuB1
+	WTZNfFMk10DG9oo6tEa2Qc5h7rPqvf1kr7uNn
+X-Google-Smtp-Source: AGHT+IGfiA0+QZ9Kb6Y4YqqZvxoYTPMWzVGbPjJzPBkYhPspR8Xa0o5mt/jjmatQ4v/8mnzKWm+4pAxAxR9srNb4oU8=
+X-Received: by 2002:a05:651c:545:b0:2f0:1fd5:2f29 with SMTP id
+ 38308e7fff4ca-2f12edfef11mr69164661fa.19.1722313035624; Mon, 29 Jul 2024
+ 21:17:15 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB6624.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: f5b9b36c-a08a-478b-9e17-08dcb040d447
-X-MS-Exchange-CrossTenant-originalarrivaltime: 30 Jul 2024 02:39:26.5524
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: aaW7NsbEEMJZ9f3qm2jXYukNjFcoJA1hDdtltJv78JcDsfihNDoSC9hxh39pLLQh/bFhphrGL27H31NI4lqbgw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYSPR03MB7990
+References: <20240722-usb-1129-probe-pci-clk-fix-v1-1-99ea804228b6@collabora.com>
+ <CAGXv+5H_pxR18sHeqdWPy9_FARrnLwyyOHV4VXCn9p5OExseiQ@mail.gmail.com>
+ <f12ba385-090b-4772-8c52-e515e25b00ac@collabora.com> <CAGXv+5G92=-k5MDH4BPcM8tgPwcGTJ60trJwr7BwTGHD=wpnDw@mail.gmail.com>
+ <51f0f4f3-11a5-4d74-981e-3f24f8475c7f@collabora.com> <CAGXv+5F-U6O3dQdU2L8bR5V+D=PLreACZYCh5sxBY3PFrex1zg@mail.gmail.com>
+ <de0b0daa-2a35-4286-b4db-4f646073a04c@collabora.com> <CAGXv+5EvzRr8h5vnuV2h=zkVwkVp3fShDP_45BpaO0HkivuDtQ@mail.gmail.com>
+ <c3e38dae-646f-471a-ae40-150b8f86cac0@collabora.com> <be8a0047-3a37-4e25-b4aa-ab34adff4418@notapiano>
+In-Reply-To: <be8a0047-3a37-4e25-b4aa-ab34adff4418@notapiano>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Tue, 30 Jul 2024 12:17:04 +0800
+Message-ID: <CAGXv+5EybBNiapMDcnvW5kMKm_ig8kta6-XsGYAFss8EOyKCCg@mail.gmail.com>
+Subject: Re: [PATCH] arm64: dts: mediatek: mt8195: Add missing clock for xhci1 controller
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, kernel@collabora.com, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	Macpaul Lin <macpaul.lin@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240729_194938_001134_1EC69C11 
-X-CRM114-Status: GOOD (  17.16  )
+X-CRM114-CacheID: sfid-20240729_211717_935439_0E1EC08A 
+X-CRM114-Status: GOOD (  82.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -220,117 +96,376 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCAyMDI0LTA3LTI5IGF0IDE1OjQwICswMjAwLCBKdWxpZW4gU3RlcGhhbiB3cm90ZToN
-Cj4gIAkgDQo+IEV4dGVybmFsIGVtYWlsIDogUGxlYXNlIGRvIG5vdCBjbGljayBsaW5rcyBvciBv
-cGVuIGF0dGFjaG1lbnRzIHVudGlsIHlvdSBoYXZlIHZlcmlmaWVkIHRoZSBzZW5kZXIgb3IgdGhl
-IGNvbnRlbnQuDQo+ICBMZSBqZXUuIDE4IGp1aWwuIDIwMjQgw6AgMDQ6NTQsIENLIEh1ICjog6Hk
-v4rlhYkpIDxjay5odUBtZWRpYXRlay5jb20+IGEgw6ljcml0IDoNCj4gPg0KPiA+IEhpLCBKdWxp
-ZW46DQo+ID4NCj4gPiBPbiBUaHUsIDIwMjQtMDctMDQgYXQgMTU6MzYgKzAyMDAsIEp1bGllbiBT
-dGVwaGFuIHdyb3RlOg0KPiA+ID4NCj4gPiA+IEV4dGVybmFsIGVtYWlsIDogUGxlYXNlIGRvIG5v
-dCBjbGljayBsaW5rcyBvciBvcGVuIGF0dGFjaG1lbnRzIHVudGlsIHlvdSBoYXZlIHZlcmlmaWVk
-IHRoZSBzZW5kZXIgb3IgdGhlIGNvbnRlbnQuDQo+ID4gPiAgRnJvbTogUGhpLWJhbmcgTmd1eWVu
-IDxwbmd1eWVuQGJheWxpYnJlLmNvbT4NCj4gPiA+DQo+ID4gPiBUaGlzIGRyaXZlciBwcm92aWRl
-cyBhIHBhdGggdG8gYnlwYXNzIHRoZSBTb0MgSVNQIHNvIHRoYXQgaW1hZ2UgZGF0YQ0KPiA+ID4g
-Y29taW5nIGZyb20gdGhlIFNFTklORiBjYW4gZ28gZGlyZWN0bHkgaW50byBtZW1vcnkgd2l0aG91
-dCBhbnkgaW1hZ2UNCj4gPiA+IHByb2Nlc3NpbmcuIFRoaXMgYWxsb3dzIHRoZSB1c2Ugb2YgYW4g
-ZXh0ZXJuYWwgSVNQLg0KPiA+ID4NCj4gPiA+IFNpZ25lZC1vZmYtYnk6IFBoaS1iYW5nIE5ndXll
-biA8cG5ndXllbkBiYXlsaWJyZS5jb20+DQo+ID4gPiBTaWduZWQtb2ZmLWJ5OiBGbG9yaWFuIFN5
-bHZlc3RyZSA8ZnN5bHZlc3RyZUBiYXlsaWJyZS5jb20+DQo+ID4gPiBbUGF1bCBFbGRlciBmaXgg
-aXJxIGxvY2tpbmddDQo+ID4gPiBTaWduZWQtb2ZmLWJ5OiBQYXVsIEVsZGVyIDxwYXVsLmVsZGVy
-QGlkZWFzb25ib2FyZC5jb20+DQo+ID4gPiBDby1kZXZlbG9wZWQtYnk6IExhdXJlbnQgUGluY2hh
-cnQgPGxhdXJlbnQucGluY2hhcnRAaWRlYXNvbmJvYXJkLmNvbT4NCj4gPiA+IFNpZ25lZC1vZmYt
-Ynk6IExhdXJlbnQgUGluY2hhcnQgPGxhdXJlbnQucGluY2hhcnRAaWRlYXNvbmJvYXJkLmNvbT4N
-Cj4gPiA+IENvLWRldmVsb3BlZC1ieTogSnVsaWVuIFN0ZXBoYW4gPGpzdGVwaGFuQGJheWxpYnJl
-LmNvbT4NCj4gPiA+IFNpZ25lZC1vZmYtYnk6IEp1bGllbiBTdGVwaGFuIDxqc3RlcGhhbkBiYXls
-aWJyZS5jb20+DQo+ID4gPiAtLS0NCj4gPg0KPiA+IFtzbmlwXQ0KPiA+DQo+ID4gPiArc3RhdGlj
-IGludCBtdGtfY2FtX3ZiMl9zdGFydF9zdHJlYW1pbmcoc3RydWN0IHZiMl9xdWV1ZSAqdnEsDQo+
-ID4gPiArICAgICAgIHVuc2lnbmVkIGludCBjb3VudCkNCj4gPiA+ICt7DQo+ID4gPiArc3RydWN0
-IG10a19jYW1fZGV2ICpjYW0gPSB2YjJfZ2V0X2Rydl9wcml2KHZxKTsNCj4gPiA+ICtzdHJ1Y3Qg
-bXRrX2NhbV9kZXZfYnVmZmVyICpidWY7DQo+ID4gPiArc3RydWN0IG10a19jYW1fdmlkZW9fZGV2
-aWNlICp2ZGV2ID0NCj4gPiA+ICt2YjJfcXVldWVfdG9fbXRrX2NhbV92aWRlb19kZXZpY2UodnEp
-Ow0KPiA+ID4gK3N0cnVjdCBkZXZpY2UgKmRldiA9IGNhbS0+ZGV2Ow0KPiA+ID4gK2NvbnN0IHN0
-cnVjdCB2NGwyX3BpeF9mb3JtYXRfbXBsYW5lICpmbXQgPSAmdmRldi0+Zm9ybWF0Ow0KPiA+ID4g
-K2ludCByZXQ7DQo+ID4gPiArdW5zaWduZWQgbG9uZyBmbGFnczsNCj4gPiA+ICsNCj4gPiA+ICtp
-ZiAocG1fcnVudGltZV9nZXRfc3luYyhkZXYpIDwgMCkgew0KPiA+ID4gK2Rldl9lcnIoZGV2LCAi
-ZmFpbGVkIHRvIGdldCBwbV9ydW50aW1lXG4iKTsNCj4gPiA+ICtwbV9ydW50aW1lX3B1dF9hdXRv
-c3VzcGVuZChkZXYpOw0KPiA+ID4gK3JldHVybiAtMTsNCj4gPiA+ICt9DQo+ID4gPiArDQo+ID4g
-PiArKCpjYW0tPmh3X2Z1bmN0aW9ucy0+bXRrX2NhbV9zZXR1cCkoY2FtLCBmbXQtPndpZHRoLCBm
-bXQtPmhlaWdodCwNCj4gPiA+ICtmbXQtPnBsYW5lX2ZtdFswXS5ieXRlc3BlcmxpbmUsIHZkZXYt
-PmZtdGluZm8tPmNvZGUpOw0KPiA+ID4gKw0KPiA+ID4gKw0KPiA+ID4gKy8qIEVuYWJsZSBDTU9T
-IGFuZCBWRiAqLw0KPiA+ID4gK210a19jYW1fY21vc192Zl9lbmFibGUoY2FtLCB0cnVlLCB0cnVl
-KTsNCj4gPiA+ICsNCj4gPiA+ICttdXRleF9sb2NrKCZjYW0tPm9wX2xvY2spOw0KPiA+ID4gKw0K
-PiA+ID4gK3JldCA9IG10a19jYW1fdmVyaWZ5X2Zvcm1hdChjYW0pOw0KPiA+ID4gK2lmIChyZXQg
-PCAwKQ0KPiA+ID4gK2dvdG8gZmFpbF91bmxvY2s7DQo+ID4gPiArDQo+ID4gPiArLyogU3RhcnQg
-c3RyZWFtaW5nIG9mIHRoZSB3aG9sZSBwaXBlbGluZSBub3cqLw0KPiA+ID4gK2lmICghY2FtLT5w
-aXBlbGluZS5zdGFydF9jb3VudCkgew0KPiA+ID4gK3JldCA9IG1lZGlhX3BpcGVsaW5lX3N0YXJ0
-KHZkZXYtPnZkZXYuZW50aXR5LnBhZHMsDQo+ID4gPiArICAgJmNhbS0+cGlwZWxpbmUpOw0KPiA+
-ID4gK2lmIChyZXQpIHsNCj4gPiA+ICtkZXZfZXJyKGRldiwgImZhaWxlZCB0byBzdGFydCBwaXBl
-bGluZTolZFxuIiwgcmV0KTsNCj4gPiA+ICtnb3RvIGZhaWxfdW5sb2NrOw0KPiA+ID4gK30NCj4g
-PiA+ICt9DQo+ID4gPiArDQo+ID4gPiArLyogTWVkaWEgbGlua3MgYXJlIGZpeGVkIGFmdGVyIG1l
-ZGlhX3BpcGVsaW5lX3N0YXJ0ICovDQo+ID4gPiArY2FtLT5zdHJlYW1fY291bnQrKzsNCj4gPiA+
-ICsNCj4gPiA+ICtjYW0tPnNlcXVlbmNlID0gKHVuc2lnbmVkIGludCktMTsNCj4gPiA+ICsNCj4g
-PiA+ICsvKiBTdHJlYW0gb24gdGhlIHN1Yi1kZXZpY2UgKi8NCj4gPiA+ICtyZXQgPSB2NGwyX3N1
-YmRldl9jYWxsKCZjYW0tPnN1YmRldiwgdmlkZW8sIHNfc3RyZWFtLCAxKTsNCj4gPiA+ICtpZiAo
-cmV0KQ0KPiA+ID4gK2dvdG8gZmFpbF9ub19zdHJlYW07DQo+ID4gPiArDQo+ID4gPiArbXV0ZXhf
-dW5sb2NrKCZjYW0tPm9wX2xvY2spOw0KPiA+ID4gKw0KPiA+ID4gKy8qIENyZWF0ZSBkdW1teSBi
-dWZmZXIgKi8NCj4gPiA+ICtjYW0tPmR1bW15X3NpemUgPSBmbXQtPnBsYW5lX2ZtdFswXS5zaXpl
-aW1hZ2U7DQo+ID4gPiArDQo+ID4gPiArY2FtLT5kdW1teS52YWRkciA9IGRtYV9hbGxvY19jb2hl
-cmVudChjYW0tPmRldiwgY2FtLT5kdW1teV9zaXplLA0KPiA+ID4gKyAgICAgICZjYW0tPmR1bW15
-LmRhZGRyLCBHRlBfS0VSTkVMKTsNCj4gPg0KPiA+IER1bW15IGJ1ZmZlciBjb3N0IG11Y2ggaW4g
-RFJBTSBmb290cHJpbnQuIEkgdGhpbmsgd2UgY2FuIGdldCByaWQgb2YNCj4gPiB0aGlzIGR1bW15
-IGJ1ZmZlci4gSWYgbm8gYnVmZmVyIGlzIHF1ZXVlZCBmcm9tIHVzZXIgc3BhY2UsIGNhbGwNCj4g
-PiBtdGtfY2Ftc3YzMF9jbW9zX3ZmX2h3X2Rpc2FibGUoKSB0byBzdG9wIHdyaXRlIGRhdGEgaW50
-byBEUkFNLiBBZnRlcg0KPiA+IGJ1ZmZlciBpcyBxdWV1ZWQgZnJvbSB1c2VyIHNwYWNlLCBjYWxs
-IG10a19jYW1zdjMwX2Ntb3NfdmZfaHdfZW5hYmxlKCkNCj4gPiB0byBzdGFydCB3cml0ZSBkYXRh
-IGludG8gRFJBTS4NCj4gPg0KPiANCj4gSGkgQ0ssDQo+IA0KPiBJTUhPIGl0IGRvZXMgbm90IGNv
-c3QgdGhhdCBtdWNoLiBBIGxvbmcgdGltZSBhZ28sIHdlIHRyaWVkIHRvIHJlbW92ZQ0KPiBpdCwg
-YnV0IHdlIGZhY2VkIGFuIGlzc3VlIChjYW4ndCByZW1lbWJlciB3aGF0IDovKS4NCg0KNTM3NiAq
-IDQwMzIgKiAyID0gNDMzNTIwNjQgKGJ5dGVzKSBpcyBhIGxhcmdlIHNpemUgZm9yIG1lLg0KDQpJ
-ZiB0aGlzIGlzIGEgc29mdHdhcmUgaXNzdWUsIGZpeCBpdC4NCklmIHRoaXMgaXMgYSBoYXJkd2Fy
-ZSBsaW1pdGF0aW9uLCBhZGQgY29tbWVudCB0byBkZXNjcmliZSBob3cgaGFyZHdhcmUgd29yayBz
-byBuZWVkIHRoaXMgZHVtbXkgYnVmZmVyLg0KSWYgbmV4dCBTb0MgaGFzIG5vIHRoaXMgaGFyZHdh
-cmUgbGltaXRhdGlvbiwgd2UgY291bGQgZHJvcCBkdW1teSBidWZmZXIgaW4gbmV4dCBTb0MuDQoN
-Cj4gTW9yZW92ZXIsIHNvbWUgb3RoZXIgZHJpdmVyIGFscmVhZHkgdXNlcyB0aGUgZHVtbXkgYnVm
-ZmVyDQo+IGltcGxlbWVudGF0aW9uLCBpZiBJIGFtIG5vdCB3cm9uZy4NCg0KSSB0aGluayBldmVy
-eSBkcml2ZXIgaGFzIGRpZmZlcmVudCByZWFzb24gdG8gdXNlIGR1bW15IGJ1ZmZlci4NClNvIHdl
-IGNvdWxkIG5vdCBkaXJlY3RseSBpbmZlciB0aGF0IHRoaXMgZHJpdmVyIG5lZWQgZHVtbXkgYnVm
-ZmVyLg0KDQpSZWdhcmRzLA0KQ0sNCg0KPiANCj4gQ2hlZXJzDQo+IEp1bGllbg0KPiANCj4gPiBS
-ZWdhcmRzLA0KPiA+IENLDQo+ID4NCj4gPiA+ICtpZiAoIWNhbS0+ZHVtbXkudmFkZHIpIHsNCj4g
-PiA+ICtyZXQgPSAtRU5PTUVNOw0KPiA+ID4gK2dvdG8gZmFpbF9ub19idWZmZXI7DQo+ID4gPiAr
-fQ0KPiA+ID4gKw0KPiA+ID4gKy8qIHVwZGF0ZSBmaXJzdCBidWZmZXIgYWRkcmVzcyAqLw0KPiA+
-ID4gKw0KPiA+ID4gKy8qIGFkZGVkIHRoZSBidWZmZXIgaW50byB0aGUgdHJhY2tpbmcgbGlzdCAq
-Lw0KPiA+ID4gK3NwaW5fbG9ja19pcnFzYXZlKCZjYW0tPmlycWxvY2ssIGZsYWdzKTsNCj4gPiA+
-ICtpZiAobGlzdF9lbXB0eSgmY2FtLT5idWZfbGlzdCkpIHsNCj4gPiA+ICsoKmNhbS0+aHdfZnVu
-Y3Rpb25zLT5tdGtfY2FtX3VwZGF0ZV9idWZmZXJzX2FkZCkoY2FtLCAmY2FtLT5kdW1teSk7DQo+
-ID4gPiArY2FtLT5pc19kdW1teV91c2VkID0gdHJ1ZTsNCj4gPiA+ICt9IGVsc2Ugew0KPiA+ID4g
-K2J1ZiA9IGxpc3RfZmlyc3RfZW50cnlfb3JfbnVsbCgmY2FtLT5idWZfbGlzdCwNCj4gPiA+ICsg
-ICAgICAgc3RydWN0IG10a19jYW1fZGV2X2J1ZmZlciwNCj4gPiA+ICsgICAgICAgbGlzdCk7DQo+
-ID4gPiArKCpjYW0tPmh3X2Z1bmN0aW9ucy0+bXRrX2NhbV91cGRhdGVfYnVmZmVyc19hZGQpKGNh
-bSwgYnVmKTsNCj4gPiA+ICtjYW0tPmlzX2R1bW15X3VzZWQgPSBmYWxzZTsNCj4gPiA+ICt9DQo+
-ID4gPiArc3Bpbl91bmxvY2tfaXJxcmVzdG9yZSgmY2FtLT5pcnFsb2NrLCBmbGFncyk7DQo+ID4g
-PiArDQo+ID4gPiArcmV0dXJuIDA7DQo+ID4gPiArDQo+ID4gPiArZmFpbF9ub19idWZmZXI6DQo+
-ID4gPiArbXV0ZXhfbG9jaygmY2FtLT5vcF9sb2NrKTsNCj4gPiA+ICt2NGwyX3N1YmRldl9jYWxs
-KCZjYW0tPnN1YmRldiwgdmlkZW8sIHNfc3RyZWFtLCAwKTsNCj4gPiA+ICtmYWlsX25vX3N0cmVh
-bToNCj4gPiA+ICtjYW0tPnN0cmVhbV9jb3VudC0tOw0KPiA+ID4gK2lmIChjYW0tPnN0cmVhbV9j
-b3VudCA9PSAwKQ0KPiA+ID4gK21lZGlhX3BpcGVsaW5lX3N0b3AodmRldi0+dmRldi5lbnRpdHku
-cGFkcyk7DQo+ID4gPiArZmFpbF91bmxvY2s6DQo+ID4gPiArbXV0ZXhfdW5sb2NrKCZjYW0tPm9w
-X2xvY2spOw0KPiA+ID4gK210a19jYW1fdmIyX3JldHVybl9hbGxfYnVmZmVycyhjYW0sIFZCMl9C
-VUZfU1RBVEVfUVVFVUVEKTsNCj4gPiA+ICsNCj4gPiA+ICtyZXR1cm4gcmV0Ow0KPiA+ID4gK30N
-Cj4gPiA+ICsNCj4gPg0KPiA+ICoqKioqKioqKioqKiogTUVESUFURUsgQ29uZmlkZW50aWFsaXR5
-IE5vdGljZSAqKioqKioqKioqKioqKioqKioqKg0KPiA+IFRoZSBpbmZvcm1hdGlvbiBjb250YWlu
-ZWQgaW4gdGhpcyBlLW1haWwgbWVzc2FnZSAoaW5jbHVkaW5nIGFueQ0KPiA+IGF0dGFjaG1lbnRz
-KSBtYXkgYmUgY29uZmlkZW50aWFsLCBwcm9wcmlldGFyeSwgcHJpdmlsZWdlZCwgb3Igb3RoZXJ3
-aXNlDQo+ID4gZXhlbXB0IGZyb20gZGlzY2xvc3VyZSB1bmRlciBhcHBsaWNhYmxlIGxhd3MuIEl0
-IGlzIGludGVuZGVkIHRvIGJlDQo+ID4gY29udmV5ZWQgb25seSB0byB0aGUgZGVzaWduYXRlZCBy
-ZWNpcGllbnQocykuIEFueSB1c2UsIGRpc3NlbWluYXRpb24sDQo+ID4gZGlzdHJpYnV0aW9uLCBw
-cmludGluZywgcmV0YWluaW5nIG9yIGNvcHlpbmcgb2YgdGhpcyBlLW1haWwgKGluY2x1ZGluZyBp
-dHMNCj4gPiBhdHRhY2htZW50cykgYnkgdW5pbnRlbmRlZCByZWNpcGllbnQocykgaXMgc3RyaWN0
-bHkgcHJvaGliaXRlZCBhbmQgbWF5DQo+ID4gYmUgdW5sYXdmdWwuIElmIHlvdSBhcmUgbm90IGFu
-IGludGVuZGVkIHJlY2lwaWVudCBvZiB0aGlzIGUtbWFpbCwgb3IgYmVsaWV2ZQ0KPiA+IHRoYXQg
-eW91IGhhdmUgcmVjZWl2ZWQgdGhpcyBlLW1haWwgaW4gZXJyb3IsIHBsZWFzZSBub3RpZnkgdGhl
-IHNlbmRlcg0KPiA+IGltbWVkaWF0ZWx5IChieSByZXBseWluZyB0byB0aGlzIGUtbWFpbCksIGRl
-bGV0ZSBhbnkgYW5kIGFsbCBjb3BpZXMgb2YNCj4gPiB0aGlzIGUtbWFpbCAoaW5jbHVkaW5nIGFu
-eSBhdHRhY2htZW50cykgZnJvbSB5b3VyIHN5c3RlbSwgYW5kIGRvIG5vdA0KPiA+IGRpc2Nsb3Nl
-IHRoZSBjb250ZW50IG9mIHRoaXMgZS1tYWlsIHRvIGFueSBvdGhlciBwZXJzb24uIFRoYW5rIHlv
-dSENCj4gDQo=
+On Tue, Jul 30, 2024 at 2:14=E2=80=AFAM N=C3=ADcolas F. R. A. Prado
+<nfraprado@collabora.com> wrote:
+>
+> On Mon, Jul 29, 2024 at 02:34:27PM +0200, AngeloGioacchino Del Regno wrot=
+e:
+> > Il 29/07/24 12:48, Chen-Yu Tsai ha scritto:
+> > > On Mon, Jul 29, 2024 at 4:54=E2=80=AFPM AngeloGioacchino Del Regno
+> > > <angelogioacchino.delregno@collabora.com> wrote:
+> > > >
+> > > > Il 29/07/24 10:07, Chen-Yu Tsai ha scritto:
+> > > > > On Mon, Jul 29, 2024 at 3:59=E2=80=AFPM AngeloGioacchino Del Regn=
+o
+> > > > > <angelogioacchino.delregno@collabora.com> wrote:
+> > > > > >
+> > > > > > Il 26/07/24 17:11, Chen-Yu Tsai ha scritto:
+> > > > > > > On Fri, Jul 26, 2024 at 8:11=E2=80=AFPM AngeloGioacchino Del =
+Regno
+> > > > > > > <angelogioacchino.delregno@collabora.com> wrote:
+> > > > > > > >
+> > > > > > > > Il 25/07/24 12:34, Chen-Yu Tsai ha scritto:
+> > > > > > > > > Hi,
+> > > > > > > > >
+> > > > > > > > > On Mon, Jul 22, 2024 at 11:27=E2=80=AFPM N=C3=ADcolas F. =
+R. A. Prado
+> > > > > > > > > <nfraprado@collabora.com> wrote:
+> > > > > > > > > >
+> > > > > > > > > > Currently if the xhci1 controller happens to probe befo=
+re the pcie1
+> > > > > > > > > > controller then it fails with the following errors:
+> > > > > > > > > >
+> > > > > > > > > > xhci-mtk 11290000.usb: clocks are not stable (0x1003d0f=
+)
+> > > > > > > > > > xhci-mtk 11290000.usb: can't setup: -110
+> > > > > > > > > > xhci-mtk: probe of 11290000.usb failed with error -110
+> > > > > > > > > >
+> > > > > > > > > > The issue has been tracked down to the CLK_INFRA_AO_PCI=
+E_P1_TL_96M
+> > > > > > > > > > clock, although exactly why this pcie clock is needed f=
+or the usb
+> > > > > > > > > > controller is still unknown. Add the clock to the xhci1=
+ controller so it
+> > > > > > > > > > always probes successfully and use a placeholder clock =
+name for it.
+> > > > > > > > > >
+> > > > > > > > > > Reported-by: N=C3=ADcolas F. R. A. Prado <nfraprado@col=
+labora.com> #KernelCI
+> > > > > > > > > > Closes: https://lore.kernel.org/all/9fce9838-ef87-4d1b-=
+b3df-63e1ddb0ec51@notapiano/
+> > > > > > > > > > Signed-off-by: N=C3=ADcolas F. R. A. Prado <nfraprado@c=
+ollabora.com>
+> > > > > > > > >
+> > > > > > > > > So I asked MediaTek about this, and it seems the correct =
+thing to do is
+> > > > > > > > > disable USB 3 on this host controller using the following=
+ snippet. The
+> > > > > > > > > snippet is copy-pasted from our issue tracker and won't a=
+pply directly.
+> > > > > > > > >
+> > > > > > > > > This is also seen in mt8395-kontron-3-5-sbc-i1200.dts, on=
+ which xhci1
+> > > > > > > > > is used only for USB 2.0 on an M.2 slot.
+> > > > > > > > >
+> > > > > > > >
+> > > > > > > > Uhm, okay, but why should USB3 be disabled on a controller =
+that supports USB3?
+> > > > > > > >
+> > > > > > > > I agree about disabling it on specific boards that use only=
+ the USB 2.0 lines of
+> > > > > > > > this controller, but doing that globally looks wrong... and=
+ looks like being a
+> > > > > > > > workaround for an error that gets solved with adding a cloc=
+k as well.
+> > > > > > > >
+> > > > > > > > In short, the question is: why would that be the correct th=
+ing to do?
+> > > > > > >
+> > > > > > > We can disable it in mt8195-cherry.dtsi then?
+> > > > > >
+> > > > > > That device does not use this controller, so yes we can disable=
+ it, but that still
+> > > > > > doesn't resolve the issue pointed out by Nicolas...!
+> > > > >
+> > > > > No. I mean disable USB3 on this port. Also see the next paragraph=
+.
+> > > > >
+> > > >
+> > > > Yes, sorry I was meaning the same - but I effectively wrote "disabl=
+e controller"
+> > > > instead, my bad.
+> > > >
+> > > > > > Please note that the issue that he sees doesn't happen only on =
+Tomato, but also on
+> > > > > > other MediaTek MT8195/MT8395 boards - and applying this commit =
+makes disabling the
+> > > > > > controller, or disabling the USB 3 lines on the controller, kin=
+da redundant, as
+> > > > > > this will effectively fix probing it... but again, fixing the a=
+ctual issue with
+> > > > > > this controller is something that must be done.
+> > > > >
+> > > > > If those other boards use the XHCI1 USB3 lines for ... USB3, then=
+ the USB3
+> > > > > PHY should also be tied to XHCI1, right now due to the Cherry Chr=
+omebook
+> > > > > design, only the USB2 PHY is tied to it.
+> > > > >
+> > > >
+> > > > Yes, I am aware of that.
+> > > >
+> > > > > > Disabling the controller on Tomato is a different topic - here =
+we are discussing
+> > > > > > about fixing the issue, and that will happen, again, on any boa=
+rd that has this
+> > > > > > controller enabled with USB3 lines. :-)
+> > > > > >
+> > > > > > So, unless there is any specific reason for which applying this=
+ commit is a bad
+> > > > > > idea, or any alternative fix to this that is better than the pr=
+oposed one, and
+> > > > > > not a workaround... I'm applying this one.
+> > > > >
+> > > > > Didn't I just relay what MediaTek says is the correct fix? Disabl=
+e USB3
+> > > > > for this port on devices where the serial pairs are used for PCIe=
+ instead
+> > > > > of USB3.
+> > > > >
+> > > >
+> > > > I think there must've been some misunderstanding here.
+> > > >
+> > > > Yes you did relay what MediaTek is the correct fix, and I agree tha=
+t the USB3 must
+> > > > be disabled on devices where those serial pairs are used for PCIe i=
+nstead of USB,
+> > > > or on devices where those are completely unused.
+> > >
+> > > OK. I will send a patch for Tomato as you asked.
+> > >
+> > > > This, though, will fix the issue only on those devices (because we =
+are disabling
+> > > > those lines entirely, so depending on how we see it, this might not=
+ be a fix but
+> > > > rather a workaround).
+> > >
+> > > I would say that is a more accurate description of the hardware, so a=
+ fix.
+> > >
+> >
+> > I can accept a patch for Tomato with a Fixes tag. Yes.
+> >
+> > > > If we don't apply this fix, any board that uses those pairs for USB=
+ 3 instead will
+> > > > still show the same "clocks are not stable" error, leaving them wit=
+h a broken port.
+> > > >
+> > > > And I believe that because the clocks are not routed externally but=
+ rather are
+> > > > internal to the SoC, so, if INFRA_AO_PCIE_P1_TL_96M is necessary fo=
+r that USB 3
+> > > > port to work, a board that intends to use those pairs for USB3 woul=
+d still need
+> > > > this exact clock to actually get that port to work.
+> > >
+> > > I couldn't reproduce the issue by disabling pcie1 as Nicolas mentione=
+d.
+> > > I don't have any more to add to this though. Sorry for the noise.
+>
+> Huh, that's surprising. FWIW I just reproduced with kernel next-20240729,
+> upstream defconfig (besides a CONFIG_USB_ONBOARD_DEV=3Dn to be able to bo=
+ot from
+> my USB drive), and the pcie1 node in mt8195-cherry.dtsi disabled. Hardwar=
+e is
+> mt8195-cherry-tomato-r2.
+>
+> Also, I just tested adding
+>
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64=
+/boot/dts/mediatek/mt8195-cherry.dtsi
+> index fe5400e17b0f..a60c4d1419df 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+> @@ -1401,6 +1401,7 @@ &xhci0 {
+>  &xhci1 {
+>         status =3D "okay";
+>
+> +       mediatek,u3p-dis-msk =3D <0x1>;
+>         rx-fifo-depth =3D <3072>;
+>         vusb33-supply =3D <&mt6359_vusb_ldo_reg>;
+>         vbus-supply =3D <&usb_vbus>;
+>
+> And that fixed the issue as well. So as far as fixing the error on Tomato=
+, this
+> patch works too, and makes more sense.
+
+Could you also try adding the USB3 PHY instead of disabling U3 on the
+controller? As:
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+index 2ee45752583c..61b3c202a8cd 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+@@ -1444,7 +1444,7 @@ xhci1: usb@11290000 {
+                              <0 0x11293e00 0 0x0100>;
+                        reg-names =3D "mac", "ippc";
+                        interrupts =3D <GIC_SPI 530 IRQ_TYPE_LEVEL_HIGH 0>;
+-                       phys =3D <&u2port1 PHY_TYPE_USB2>;
++                       phys =3D <&u2port1 PHY_TYPE_USB2>, <&u3port1
+PHY_TYPE_USB3>;
+                        assigned-clocks =3D <&topckgen CLK_TOP_USB_TOP_1P>,
+                                          <&topckgen CLK_TOP_SSUSB_XHCI_1P>=
+;
+                        assigned-clock-parents =3D <&topckgen
+CLK_TOP_UNIVPLL_D5_D4>,
+
+I wanted to test this, but I couldn't actually reproduce the error.
+
+> However I agree with Angelo that a board that does use USB3 on this contr=
+oller
+> would still need the original patch adding the PCIE clock to work. But su=
+ch a
+> board doesn't currently exist, does it? And we don't actually know if USB=
+3
+> really works in that case. Or why this clock is needed. So there are a fe=
+w
+> unknowns...
+
+MacPaul seems to have one. He mentioned to me that he doesn't need the patc=
+h
+adding the PCIE clock, but needs "mediatek,force-mode" instead.
+
+Looking at the comments around "mediatek,force-mode" in the driver, it
+seems that the PHY defaults to PCIe mode. A combination of not initializing
+the PHY to USB3 and turning on the PCIe related clock might be what is
+allowing the PHY to respond to the controller? This is just a guess though.
+
+> Anyway, I really don't know what option would be better. Just let me know=
+ if I
+> should resend a patch or CC me in any alternative patch.
+
+I'll send the patches to fix up pure USB2 usage. Given we have conflicting
+reports on whether the PCIe clock is needed, I ask that you try the PHY
+assignment change first.
+
+
+Thanks
+ChenYu
+
+> Thanks,
+> N=C3=ADcolas
+>
+> > >
+> >
+> > Sometimes the noise actually opens some eyes around (be it mine or whoe=
+ver else's),
+> > so as long as it is constructive, I don't see it as noise.
+> >
+> > In short: no worries! :-)
+> >
+> > > > As for Tomato itself - I agree that we must add the u3p-dis-msk=3D0=
+x1 flag, yes,
+> > > > and we will, but I'm purely talking about - again - an eventual boa=
+rd that would
+> > > > not have that property because USB3 is exposed/used for real.
+> > >
+> > > I think it would make more sense to fix the `phys =3D ` statement in =
+mt8195.dtsi
+> > > to list both the USB2 and USB3 PHYs. At the board level, for boards o=
+nly
+> > > using USB2, we would have the overriding `phys =3D ` statement alongs=
+ide the
+> > > `mediatek,u3p-dis-mask` property. Does that make sense to you?
+> > >
+> >
+> > Yeah, that'd make sense, though I'm not sure if the driver can cope wit=
+h that: in
+> > that case, we'd obviously need "two" patches and not one :-)
+> >
+> > Cheers!
+> >
+> > >
+> > > Thanks
+> > > ChenYu
+> > >
+> > > > Cheers,
+> > > > Angelo
+> > > >
+> > > > >
+> > > > > Regards
+> > > > > ChenYu
+> > > > >
+> > > > > > Cheers,
+> > > > > > Angelo
+> > > > > >
+> > > > > > >
+> > > > > > > ChenYu
+> > > > > > >
+> > > > > > > > Cheers,
+> > > > > > > > Angelo
+> > > > > > > >
+> > > > > > > > >
+> > > > > > > > > ChenYu
+> > > > > > > > >
+> > > > > > > > > index 8b7307cdefc6..2dac9f706a58
+> > > > > > > > > --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> > > > > > > > > +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> > > > > > > > > @@ -1447,6 +1447,7 @@
+> > > > > > > > >                                           "xhci_ck";
+> > > > > > > > >                             mediatek,syscon-wakeup =3D <&=
+pericfg 0x400 104>;
+> > > > > > > > >                             wakeup-source;
+> > > > > > > > > +                       mediatek,u3p-dis-msk =3D <0x1>;
+> > > > > > > > >                             status =3D "disabled";
+> > > > > > > > >                     };
+> > > > > > > > >
+> > > > > > > > > > ---
+> > > > > > > > > >      arch/arm64/boot/dts/mediatek/mt8195.dtsi | 10 ++++=
+++++--
+> > > > > > > > > >      1 file changed, 8 insertions(+), 2 deletions(-)
+> > > > > > > > > >
+> > > > > > > > > > diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b=
+/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> > > > > > > > > > index 2ee45752583c..cc5169871f1c 100644
+> > > > > > > > > > --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> > > > > > > > > > +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> > > > > > > > > > @@ -1453,9 +1453,15 @@ xhci1: usb@11290000 {
+> > > > > > > > > >                                      <&topckgen CLK_TOP=
+_SSUSB_P1_REF>,
+> > > > > > > > > >                                      <&apmixedsys CLK_A=
+PMIXED_USB1PLL>,
+> > > > > > > > > >                                      <&clk26m>,
+> > > > > > > > > > -                                <&pericfg_ao CLK_PERI_=
+AO_SSUSB_1P_XHCI>;
+> > > > > > > > > > +                                <&pericfg_ao CLK_PERI_=
+AO_SSUSB_1P_XHCI>,
+> > > > > > > > > > +                                /*
+> > > > > > > > > > +                                 * This clock is requi=
+red due to a hardware
+> > > > > > > > > > +                                 * bug. The 'frmcnt_ck=
+' clock name is used as a
+> > > > > > > > > > +                                 * placeholder.
+> > > > > > > > > > +                                 */
+> > > > > > > > > > +                                <&infracfg_ao CLK_INFR=
+A_AO_PCIE_P1_TL_96M>;
+> > > > > > > > > >                             clock-names =3D "sys_ck", "=
+ref_ck", "mcu_ck", "dma_ck",
+> > > > > > > > > > -                                     "xhci_ck";
+> > > > > > > > > > +                                     "xhci_ck", "frmcn=
+t_ck";
+> > > > > > > > > >                             mediatek,syscon-wakeup =3D =
+<&pericfg 0x400 104>;
+> > > > > > > > > >                             wakeup-source;
+> > > > > > > > > >                             status =3D "disabled";
+> > > > > > > > > >
+> > > > > > > > > > ---
+> > > > > > > > > > base-commit: dee7f101b64219f512bb2f842227bd04c14efe30
+> > > > > > > > > > change-id: 20240722-usb-1129-probe-pci-clk-fix-ef8646f4=
+6aac
+> > > > > > > > > >
+> > > > > > > > > > Best regards,
+> > > > > > > > > > --
+> > > > > > > > > > N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
+> > > > > > > > > >
+> > > > > > > > > >
+> > > > > > > >
+> > > > > > > >
+> > > > > > > >
+> > > > > >
+> > > >
+> >
+> >
+> >
 
