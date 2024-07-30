@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42702C3DA61
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jul 2024 07:47:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06AA4C3DA61
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jul 2024 07:47:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WezfmknizvYRsGFofh0x0uAf86VCroElHp8yktpX8m4=; b=cWvAqV0ORXHBHwzOz7Ap3KLqoH
-	+QGKCDPkARHVnL5SeUjhXDU8+JDDSZCSr7yyuT2MqhpIhxRU9dK9nzizl0IFKYmScD6aOPw1jRs7h
-	TN5QDDzlf9YYxrItqgDwbwEubE+9VljDmGWaTB+p3wOToibGfoJWfFkWSy3ShnNmoeOEdMyxZiDRx
-	S3QbtlTja2qWhyL/gzWqLzXDHVbc42scE92Riu6Ky5YFyYx0rI0ycLNbifjy+cWpS3sw1Ol28O1s4
-	u1gU4Wj244SfJenS1eQA4Ya0SLtD1cKRLp93DjEQj9fjTSKh+dz8ylXe+ewdQfSrJAhdc3JQcP21N
-	43un1OQg==;
+	bh=43oQvBeunaeAh5AS7D6ZUww5MwQHEx75b8WVJ1cfYHc=; b=gh25tprPMgoLit6HXJBKwZOPQH
+	mn8BGnzM8Dpf9QdbBnJ7Af1UG9znRlQkqPaVn7Z4j76qrOML3elcf/Lvfj+CGFcLy+lycB6HvhxSi
+	7f3lYoJc7mwI5tB7B2EhReJWJPTa0G/yRHNpNklZg3RI+fbIV48uyB1Z4PlFsD2AOS71oHKAqSFY6
+	I5Q+22Hz4W8+fgpyacJX8QXD17Gp5h2EvF8GNDneu3EaMhZkmfiKENnONFLXd1ZKwL6cflPx3Iuuh
+	ytMxd1gVvwm0DbK/wJW3s7jNM21cJ7xKMNJp532+kFaN3LWJB/LfRHQyxaos5QpSH/HOxRdbajYYl
+	ofBJ4yYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYha2-0000000E58z-42OC;
-	Tue, 30 Jul 2024 07:47:34 +0000
+	id 1sYhaQ-0000000E5EV-2xfb;
+	Tue, 30 Jul 2024 07:47:58 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sYhZE-0000000E4uf-2K0A;
-	Tue, 30 Jul 2024 07:46:46 +0000
+	id 1sYhZI-0000000E4vA-1M1Q;
+	Tue, 30 Jul 2024 07:46:49 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id D786061E19;
-	Tue, 30 Jul 2024 07:46:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 10014C32782;
-	Tue, 30 Jul 2024 07:46:42 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id A416361D64;
+	Tue, 30 Jul 2024 07:46:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 06247C32782;
+	Tue, 30 Jul 2024 07:46:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1722325603;
-	bh=/1UyRDxDBbUGDXPzIHV51t98DfSsIxNOuwNCDXhMy8Q=;
+	s=k20201202; t=1722325607;
+	bh=Ge1qXWycU3RZHie50w6y1C7XhkEEn3eUfsxEc5Ssx5g=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=hXKCgQVUgiMD5DnjrQb/DEV0shSrPRhqhFWAtn5UXtlH2T3H/uPDfIdnLZRJUf7wl
-	 bahgfr4dJTU7ghCKtPujgbllaURpJgo2MW4pewmQhrEf6MnuKRPe4NSBVAfYxiCjCr
-	 apLGIfQ9+9AWyM4TCg2LysicG+oulsMtA4JQwhNvAnBTrM56J9SvY3vWwOBnl2S3g1
-	 WtEnebNB2r6NvFfgHwWV95wagZfho/z4Zzdo9G42QQYF5NBbR5MYJ6RBDR+zOBberx
-	 1qBH2UbgDoxBqc0yLxyvTs6JX7gpcdqru2ZmwlMrx/X90dkfw7H33Hs1lb/vcEyzsB
-	 TSMVt7IQVl5uw==
+	b=AZWWBLQ/6EjW+zX4+ud4xFCOVtkWyHiqhYEy91ZdPCiGvkJ3uibwLBBEUBy7YIyOZ
+	 hSSP4PuBCBnIg1UovfS9jzqqaQZoNffT1HyNyeWBU1SxGmoVEbMoRxIaP/+o7M/OLV
+	 ZhFxj9PEIIHzWB1WvKhHez7epB5aWCCCquC0IOu+5IrhYV+bkHQuWowaDfKlp3r+7T
+	 zbrvZHmsM3bnZe0l/fCdEZ1BusMdJM/DZCRfPd6sK7029GVEmv3ZxyrgF2XaEuDtIX
+	 JOrHCecQFrsDD9bsCCvXBc8vMLGRFB5Egeyxk8Yahh4LOfW9ZnBnsUfY3elutPsbsI
+	 oi9VI4++jtgjw==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: netdev@vger.kernel.org
 Cc: arinc.unal@arinc9.com,
@@ -64,18 +64,17 @@ Cc: arinc.unal@arinc9.com,
 	conor+dt@kernel.org,
 	devicetree@vger.kernel.org,
 	upstream@airoha.com
-Subject: [PATCH net-next 1/2] dt-bindings: net: dsa: mediatek,mt7530: Add airoha,en7581-switch
-Date: Tue, 30 Jul 2024 09:46:32 +0200
-Message-ID: <63f5d56a0d8c81d70f720c9ad2ca3861c7ce85e8.1722325265.git.lorenzo@kernel.org>
+Subject: [PATCH net-next 2/2] net: dsa: mt7530: Add EN7581 support
+Date: Tue, 30 Jul 2024 09:46:33 +0200
+Message-ID: <04a0f38a37e2a38438cdcd8d23ee4d80048e39da.1722325265.git.lorenzo@kernel.org>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <cover.1722325265.git.lorenzo@kernel.org>
 References: <cover.1722325265.git.lorenzo@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240730_004644_676529_398A1AD9 
-X-CRM114-Status: UNSURE (   8.73  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240730_004648_517177_D7167D21 
+X-CRM114-Status: GOOD (  16.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,41 +89,163 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add documentation for the built-in switch which can be found in the
-Airoha EN7581 SoC.
+Introduce support for the DSA built-in switch available on the EN7581
+development board. EN7581 support is similar to MT7988 one except
+it requires to set MT7530_FORCE_MODE bit in MT753X_PMCR_P register
+for on cpu port.
 
+Tested-by: Benjamin Larsson <benjamin.larsson@genexis.eu>
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- .../devicetree/bindings/net/dsa/mediatek,mt7530.yaml     | 9 ++++++++-
- 1 file changed, 8 insertions(+), 1 deletion(-)
+ drivers/net/dsa/mt7530-mmio.c |  1 +
+ drivers/net/dsa/mt7530.c      | 38 +++++++++++++++++++++++++++++++----
+ drivers/net/dsa/mt7530.h      | 16 ++++++++++-----
+ 3 files changed, 46 insertions(+), 9 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-index 7e405ad96eb2..aa89bc89eb45 100644
---- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-+++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-@@ -92,6 +92,10 @@ properties:
-           Built-in switch of the MT7988 SoC
-         const: mediatek,mt7988-switch
+diff --git a/drivers/net/dsa/mt7530-mmio.c b/drivers/net/dsa/mt7530-mmio.c
+index b74a230a3f13..10dc49961f15 100644
+--- a/drivers/net/dsa/mt7530-mmio.c
++++ b/drivers/net/dsa/mt7530-mmio.c
+@@ -11,6 +11,7 @@
+ #include "mt7530.h"
  
-+      - description:
-+          Built-in switch of the Airoha EN7581 SoC
-+        const: airoha,en7581-switch
+ static const struct of_device_id mt7988_of_match[] = {
++	{ .compatible = "airoha,en7581-switch", .data = &mt753x_table[ID_EN7581], },
+ 	{ .compatible = "mediatek,mt7988-switch", .data = &mt753x_table[ID_MT7988], },
+ 	{ /* sentinel */ },
+ };
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index ec18e68bf3a8..8adc4561c5b2 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -1152,7 +1152,8 @@ mt753x_cpu_port_enable(struct dsa_switch *ds, int port)
+ 	 * the MT7988 SoC. Trapped frames will be forwarded to the CPU port that
+ 	 * is affine to the inbound user port.
+ 	 */
+-	if (priv->id == ID_MT7531 || priv->id == ID_MT7988)
++	if (priv->id == ID_MT7531 || priv->id == ID_MT7988 ||
++	    priv->id == ID_EN7581)
+ 		mt7530_set(priv, MT7531_CFC, MT7531_CPU_PMAP(BIT(port)));
+ 
+ 	/* CPU port gets connected to all user ports of
+@@ -2207,7 +2208,7 @@ mt7530_setup_irq(struct mt7530_priv *priv)
+ 		return priv->irq ? : -EINVAL;
+ 	}
+ 
+-	if (priv->id == ID_MT7988)
++	if (priv->id == ID_MT7988 || priv->id == ID_EN7581)
+ 		priv->irq_domain = irq_domain_add_linear(np, MT7530_NUM_PHYS,
+ 							 &mt7988_irq_domain_ops,
+ 							 priv);
+@@ -2766,7 +2767,7 @@ static void mt7988_mac_port_get_caps(struct dsa_switch *ds, int port,
+ {
+ 	switch (port) {
+ 	/* Ports which are connected to switch PHYs. There is no MII pinout. */
+-	case 0 ... 3:
++	case 0 ... 4:
+ 		__set_bit(PHY_INTERFACE_MODE_INTERNAL,
+ 			  config->supported_interfaces);
+ 
+@@ -2850,6 +2851,23 @@ mt7531_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
+ 	}
+ }
+ 
++static void
++en7581_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
++		  phy_interface_t interface)
++{
++	/* BIT(31-27): reserved
++	 * BIT(26): TX_CRC_EN: enable(0)/disable(1) CRC insertion
++	 * BIT(25): RX_CRC_EN: enable(0)/disable(1) CRC insertion
++	 * Since the bits above have a different meaning with respect to the
++	 * one described in mt7530.h, set default values.
++	 */
++	mt7530_clear(ds->priv, MT753X_PMCR_P(port), MT7531_FORCE_MODE_MASK);
++	if (dsa_is_cpu_port(ds, port)) {
++		/* enable MT7530_FORCE_MODE on cpu port */
++		mt7530_set(ds->priv, MT753X_PMCR_P(port), MT7530_FORCE_MODE);
++	}
++}
 +
-   reg:
-     maxItems: 1
+ static struct phylink_pcs *
+ mt753x_phylink_mac_select_pcs(struct phylink_config *config,
+ 			      phy_interface_t interface)
+@@ -2880,7 +2898,8 @@ mt753x_phylink_mac_config(struct phylink_config *config, unsigned int mode,
  
-@@ -284,7 +288,10 @@ allOf:
-   - if:
-       properties:
-         compatible:
--          const: mediatek,mt7988-switch
-+          contains:
-+            enum:
-+              - mediatek,mt7988-switch
-+              - airoha,en7581-switch
-     then:
-       $ref: "#/$defs/mt7530-dsa-port"
-       properties:
+ 	priv = ds->priv;
+ 
+-	if ((port == 5 || port == 6) && priv->info->mac_port_config)
++	if ((port == 5 || port == 6 || priv->id == ID_EN7581) &&
++	    priv->info->mac_port_config)
+ 		priv->info->mac_port_config(ds, port, mode, state->interface);
+ 
+ 	/* Are we connected to external phy */
+@@ -3220,6 +3239,17 @@ const struct mt753x_info mt753x_table[] = {
+ 		.phy_write_c45 = mt7531_ind_c45_phy_write,
+ 		.mac_port_get_caps = mt7988_mac_port_get_caps,
+ 	},
++	[ID_EN7581] = {
++		.id = ID_EN7581,
++		.pcs_ops = &mt7530_pcs_ops,
++		.sw_setup = mt7988_setup,
++		.phy_read_c22 = mt7531_ind_c22_phy_read,
++		.phy_write_c22 = mt7531_ind_c22_phy_write,
++		.phy_read_c45 = mt7531_ind_c45_phy_read,
++		.phy_write_c45 = mt7531_ind_c45_phy_write,
++		.mac_port_get_caps = mt7988_mac_port_get_caps,
++		.mac_port_config = en7581_mac_config,
++	},
+ };
+ EXPORT_SYMBOL_GPL(mt753x_table);
+ 
+diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
+index 28592123070b..d77b898b7187 100644
+--- a/drivers/net/dsa/mt7530.h
++++ b/drivers/net/dsa/mt7530.h
+@@ -19,6 +19,7 @@ enum mt753x_id {
+ 	ID_MT7621 = 1,
+ 	ID_MT7531 = 2,
+ 	ID_MT7988 = 3,
++	ID_EN7581 = 4,
+ };
+ 
+ #define	NUM_TRGMII_CTRL			5
+@@ -64,25 +65,30 @@ enum mt753x_id {
+ #define  MT7531_CPU_PMAP(x)		FIELD_PREP(MT7531_CPU_PMAP_MASK, x)
+ 
+ #define MT753X_MIRROR_REG(id)		((id == ID_MT7531 || \
+-					  id == ID_MT7988) ? \
++					  id == ID_MT7988 || \
++					  id == ID_EN7581) ? \
+ 					 MT7531_CFC : MT753X_MFC)
+ 
+ #define MT753X_MIRROR_EN(id)		((id == ID_MT7531 || \
+-					  id == ID_MT7988) ? \
++					  id == ID_MT7988 || \
++					  id == ID_EN7581) ? \
+ 					 MT7531_MIRROR_EN : MT7530_MIRROR_EN)
+ 
+ #define MT753X_MIRROR_PORT_MASK(id)	((id == ID_MT7531 || \
+-					  id == ID_MT7988) ? \
++					  id == ID_MT7988 || \
++					  id == ID_EN7581) ? \
+ 					 MT7531_MIRROR_PORT_MASK : \
+ 					 MT7530_MIRROR_PORT_MASK)
+ 
+ #define MT753X_MIRROR_PORT_GET(id, val)	((id == ID_MT7531 || \
+-					  id == ID_MT7988) ? \
++					  id == ID_MT7988 || \
++					  id == ID_EN7581) ? \
+ 					 MT7531_MIRROR_PORT_GET(val) : \
+ 					 MT7530_MIRROR_PORT_GET(val))
+ 
+ #define MT753X_MIRROR_PORT_SET(id, val)	((id == ID_MT7531 || \
+-					  id == ID_MT7988) ? \
++					  id == ID_MT7988 || \
++					  id == ID_EN7581) ? \
+ 					 MT7531_MIRROR_PORT_SET(val) : \
+ 					 MT7530_MIRROR_PORT_SET(val))
+ 
 -- 
 2.45.2
 
