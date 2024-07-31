@@ -4,108 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D371C3DA7F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 31 Jul 2024 08:17:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 808EAC3DA64
+	for <linux-mediatek@archiver.kernel.org>; Wed, 31 Jul 2024 08:20:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dlvOpppBnbDY6cCSN9zniu2QiUbgn35Ig8P9FfhNsR0=; b=QhppfPPZf2pPyC/Ff6yFTt9pSI
-	i5rJq+cQV6C3nlTk56a66+OT9M8yDrJmST3W4o2pV4x/jHX8fYfjjrM+Pc7u3QPtTnAyLsL9CZnQ5
-	MAZ26+oY33r9aIb/wBUGQN5ulRxkO8+dHp0ExjNQfutG6GmIOaC4VLC/3StieR2MVqaVrulg4KcvP
-	3OnjJqs8dFgimPtHAYdOXmyJdcL7Zb1Rz2g2IW76LtcE/0gabKOIjD4Scuv3Gc3KHEKmsrPbJ5hNe
-	/rde7CioZukGiS0Iwg5n+yoR0tyri1BcC/TsQxnH13lRUt1EcpZxpTOtlrRwHdpQz5V3urikCwVk6
-	2zDkttWg==;
+	bh=1VBbC48pWLPQSIElVzx5CEv4C1CqgS+AJ/KHZrsXmRk=; b=bdj8oc0SQeixcyWRZMmotzeSVM
+	Jpplto7eKgviP0pB7Nf1onV2hbGJhLfncMb+BDVuC785VoHsJTfmM8m9g5RnqmD3fAmMu8bngzY87
+	3anxEzqSUYFhxbpXQdFOdSdj2JY5YC7BbjsCKdxfi7Nj3EOFymx2OQX2VbHxcqYFVBm0Qt4PyWZRO
+	V8vV4OTws00h7i0r7IqoFBBsoLYF975GrtHw74uq1MxqM3h8wGYCVtfPqdJNITOkejEVAMBYh7R72
+	L37EpO2BlROErjBf+06XPmiEdIVC16WRIWBovV1ycl6xEzw8t49NW3dxlQWwefbE3yDpGKUbNFwyu
+	OZdCKKRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZ4WE-00000000Hlv-2SRF;
-	Wed, 31 Jul 2024 08:17:10 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1sZ4ZG-00000000IDW-0YGg;
+	Wed, 31 Jul 2024 08:20:18 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZ4Vf-00000000HZB-0Glt;
-	Wed, 31 Jul 2024 08:16:36 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 0FEF262235;
-	Wed, 31 Jul 2024 08:16:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 98A5BC4AF0B;
-	Wed, 31 Jul 2024 08:16:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1722413793;
-	bh=5oRKcekbyt486+TVjpwgoDMS2097DCQbNNHp9RC330U=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Pp5Iksg8yMhKHR3IBfURNqMVd5UzchffW65fqmBMfGE7BShyrt7sLA1NxhWvnoFAE
-	 zFaVcULFslmd+KJR8GdU1dL4LJsKmxaY5ww+Cb9BR5M0j3X3MujHqW7tQ8Nql8N5MP
-	 W82jiMj1O7THB90SjCI3qBtzAJyMlob81gb0tBXTnNVyAj1uMgPg/LWZnvbEJkZSrY
-	 aIwTIo72ekX8yGc6lhjZZjUGaaGxvAXq3zSUYfSPNLsNhO7Wre1Mbt3PuNHFTuX66D
-	 Vp+O62JomYGvDZpWfMF1L7WUy8Gl7iZdcsO7BMGanqtuqwdCMK3ldokt0cT01h363x
-	 0vWx4Vc4F28lA==
-Message-ID: <bb696e60-642f-43f1-9ccf-972e1d839bcd@kernel.org>
-Date: Wed, 31 Jul 2024 10:16:29 +0200
+	id 1sZ4Ym-00000000I7F-05VW;
+	Wed, 31 Jul 2024 08:19:49 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1722413984;
+	bh=KLZUCxzeOJ7bmWokWFva6t7JItSJeH9Na9Ou99VElKo=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=pXEd/Tc/d44O5iXg1PN+3/mP91j0XIABoTKN5Ng/BuNkTB6sdOo0og8Lj1RHQPw5k
+	 TIuW9bQseNthbgIPNxWLP2yd6ppMfQOifVUkUF0KxAlHggs1K2ASm6WIAEBZqB06Hr
+	 OUi+6dJyYYTvU0rRYEYE57U9tO+M6VdwjDu5uplHuCF6QdGyKR7/I1L/vFyLqVk0li
+	 O5nyaO3D31cUpLyQvf8Ke7Z8I6Erehzxvv0cJTwjoU2SHD0Es3GbrmUEzqRypFCISW
+	 D/wTwC1NGEs8TQrjmI3UevVs+oV/f8qf8KdrLTTeUUXZwoB7Iuf3OVBceU7EF8iRgH
+	 nnfq6+icpUiuA==
+Received: from IcarusMOD.eternityproject.eu (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 2A011378000B;
+	Wed, 31 Jul 2024 08:19:44 +0000 (UTC)
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, 
+ Chen-Yu Tsai <wenst@chromium.org>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ =?utf-8?q?N=C3=ADcolas_F_=2E_R_=2E_A_=2E_Prado?= <nfraprado@collabora.com>
+In-Reply-To: <20240731034411.371178-1-wenst@chromium.org>
+References: <20240731034411.371178-1-wenst@chromium.org>
+Subject: Re: [PATCH 0/3] arm64: dts: mediatek: mt8195: Fix and clean up
+ xhci1
+Message-Id: <172241398409.37591.6997026723129845017.b4-ty@collabora.com>
+Date: Wed, 31 Jul 2024 10:19:44 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/2] dt-bindings: arm64: mediatek: Add
- kukui-jacuzzi-cerise board
-To: Hsin-Te Yuan <yuanhsinte@chromium.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20240731-jacuzzi_dt-v2-0-4995335daa30@chromium.org>
- <20240731-jacuzzi_dt-v2-2-4995335daa30@chromium.org>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <20240731-jacuzzi_dt-v2-2-4995335daa30@chromium.org>
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.13.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240731_011635_275228_48894236 
-X-CRM114-Status: GOOD (  15.96  )
+X-CRM114-CacheID: sfid-20240731_011948_229263_97F294D9 
+X-CRM114-Status: UNSURE (   8.46  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,45 +77,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 31/07/2024 08:26, Hsin-Te Yuan wrote:
-> Cerise is known as ASUS Chromebook CZ1.
-> Stern is known as ASUS Chromebook Flip CZ1.
+On Wed, 31 Jul 2024 11:44:07 +0800, Chen-Yu Tsai wrote:
+> This series fixes and cleans up the representation of xhci1, whether
+> used in USB 2.0 only or USB 2.0 + 3.0 designs. This work is a result
+> of discussions from the original Kernel CI report [1] on xhci1 failing
+> to probe, and subsequent patches [2][3].
 > 
-> They are almost identical. The only difference is that Cerise is a
-> clamshell device without touchscreen and Stern is a convertible device.
+> Patch 1 explicitly disables USB 3.0 on the Cherry design. The super
+> speed pairs are used for PCIe instead.
 > 
-> Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
-> ---
->  Documentation/devicetree/bindings/arm/mediatek.yaml | 14 ++++++++++++++
->  1 file changed, 14 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
-> index 1d4bb50fcd8d..087773a43673 100644
-> --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
-> +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
-> @@ -146,6 +146,20 @@ properties:
->          items:
->            - const: google,burnet
->            - const: mediatek,mt8183
-> +      - description: Google Cerise (ASUS Chromebook CZ1)
-> +        items:
-> +          - enum:
-> +              - google,cerise-sku0
-> +              - google,cerise-rev3-sku0
-> +          - const: google,cerise
-> +          - const: mediatek,mt8183
-> +      - description: Google Stern (ASUS Chromebook Flip CZ1)
-> +        items:
-> +          - enum:
-> +              - google,cerise-sku1
-> +              - google,cerise-rev3-sku1
-> +          - const: google,cerise
+> [...]
 
-Why not google,stern? If this is not compatible with cerise and has
-different name, I think logical would be to have different compatible -
-either here or the first one.
+Applied to v6.11-next/dts64, thanks!
 
-Best regards,
-Krzysztof
+[1/3] arm64: dts: mediatek: mt8195-cherry: Mark USB 3.0 on xhci1 as disabled
+      commit: 09d385679487c58f0859c1ad4f404ba3df2f8830
+[2/3] arm64: dts: mediatek: mt8395-nio-12l: Mark USB 3.0 on xhci1 as disabled
+      commit: be985531a5dd9ca50fc9f3f85b8adeb2a4a75a58
+[3/3] arm64: dts: mediatek: mt8195: Assign USB 3.0 PHY to xhci1 by default
+      commit: fe035fa6f56c5b8146fcfe4253edbb9e9399ce2d
+
+Cheers,
+Angelo
+
 
 
