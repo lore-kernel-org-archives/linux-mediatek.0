@@ -4,71 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EFA1C3DA7F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 31 Jul 2024 08:30:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90933C3DA7F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 31 Jul 2024 08:48:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uEl6O//DUpdv2s/2pwbjZMQDv+rK2gjzp+kZQ0XuskY=; b=anth9GS7bptC8AjfSPMZitMimz
-	raoX9SLBeY2WOYGDHJn3JAsRwvwP4R25qjSzt1XjFRxkFjW0X8Qnct56pbmsoWUays3mXINs4aT9M
-	MMdCmCHa8T3mINVL70z9KfkP4fQLPYVl+tWKjeTk2z/QnpVS32gioAiD22ydvcx0Mt6uRYVnoj32R
-	yBPquNVuCrLLlL/epOLD1g6WIH22EIdh7Dmi5nfAyCWWnCWEUVfjMoJUwUSCq5m0YhMA8sxCYh5cL
-	721ZVHpxQLxqDsrTvIcRHk9icIhakuld6F//cmIQJ/eVnaaxjpErQAMJDSSAf2UhCmyUh3QE712J4
-	jRw27mhg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vtPvUhcKt38IEwJhnL5ko32Kjhs/HoglrRIMkXvAOas=; b=Ov7r5VzKe5HwD/7+OtmftNYq41
+	+APHNzysqNLgp9YOrRhylSQbC6rlRWgcJtXO2uvaR5BtUGQ4hxntRFZIygM4/kurjxwDi6psblzhw
+	mNil0Xl3uElHUXMmJ4O+TjqQiuS7z0HVV/tGno0PAa8xHrzMBcqOg4gt3eFQpuFm6uWfdjyZQh0cF
+	p/iQ5rY5su3aUMSKD7MuL5Kos+myKFbbU+YrQuKUNIH7f0XQphCwhJL/yg7F6+EUukalvonKQFLJL
+	JupUxxuCXH/6+1GpBLZiBNs5dCChdilwNG+fa44jON4Yxfcs3Mb3zdXo7BmKaARwIDBF8kKo6bUUL
+	LcvcKbsA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZ4jS-00000000KNQ-2LBR;
-	Wed, 31 Jul 2024 08:30:50 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1sZ50U-00000000NJn-2WMG;
+	Wed, 31 Jul 2024 08:48:26 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZ4iz-00000000KCi-1WOX;
-	Wed, 31 Jul 2024 08:30:22 +0000
-Received: from pendragon.ideasonboard.com (81-175-209-231.bb.dnainternet.fi [81.175.209.231])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 61D527E4;
-	Wed, 31 Jul 2024 10:29:31 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1722414571;
-	bh=pjw/UlZpX9tFuIUC4j7+LvlinTu1b35XlaxhKH1fHqU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=cRDIygWWqC6vaEQRZBb28o6at6wEtrrWEUJ4QwiDEn7WmDD+3T4tZGivw207OGM39
-	 0HJAABhxW8BfhBQ4r+WGCwI96gUYTL6SgnAEyljLrjNPw1s+pQxMEaG0D9JKvYvPc/
-	 TzHaCvbqEYDICyL1i4392/aZtvtO3BKnPcKa7iK4=
-Date: Wed, 31 Jul 2024 11:29:58 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: CK Hu =?utf-8?B?KOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>
-Cc: "mchehab@kernel.org" <mchehab@kernel.org>,
-	"conor+dt@kernel.org" <conor+dt@kernel.org>,
-	"robh@kernel.org" <robh@kernel.org>,
-	Andy Hsieh =?utf-8?B?KOisneaZuueakyk=?= <Andy.Hsieh@mediatek.com>,
-	"jstephan@baylibre.com" <jstephan@baylibre.com>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"krzk+dt@kernel.org" <krzk+dt@kernel.org>,
-	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	"paul.elder@ideasonboard.com" <paul.elder@ideasonboard.com>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"fsylvestre@baylibre.com" <fsylvestre@baylibre.com>,
-	"pnguyen@baylibre.com" <pnguyen@baylibre.com>
-Subject: Re: [PATCH v6 4/5] media: platform: mediatek: isp_30: add mediatek
- ISP3.0 camsv
-Message-ID: <20240731082958.GM8146@pendragon.ideasonboard.com>
-References: <20240729-add-mtk-isp-3-0-support-v6-0-c374c9e0c672@baylibre.com>
- <20240729-add-mtk-isp-3-0-support-v6-4-c374c9e0c672@baylibre.com>
- <6a7467cde347600015078fe7aa25c4b46c45e96d.camel@mediatek.com>
+	id 1sZ501-00000000NDR-1j0h;
+	Wed, 31 Jul 2024 08:47:58 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1722415676;
+	bh=J1sOSME0u6roc/a+qPwtB9E24QMzJiJjbIjiPdJuLEI=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=eHF1CUo9Tpz2SIqoHSYcs7456H81OBUsVZLx6BNkBU5BriLDzbv62GM84XOQ1dzGl
+	 Y30xAP/z+AyVTY4DWsdsWAIGJy9OlnfBQU2O303CXN3N4GynXCTPoaeuwTjGRF4i9T
+	 kZ/LgLmap5rPeNHh6WESYaaAKkEzujwmVF22odyF7324oQ30NS4XpXGkVkIGAFv5eM
+	 5uJvvujNubK9V/svOMfHnt3ZAfkLba3xI3kuihe+4f1Cq5hgQqSDqcGRfyThYtUgtC
+	 bmCnmoj29+HsxDRfZ+hnYk3Mx8yAQLMP/zGV6WqYt7W4AEk/BH/llZw3hxI/wypzNL
+	 r+Jr1JNEIiDrg==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 6E9F8378000B;
+	Wed, 31 Jul 2024 08:47:55 +0000 (UTC)
+Message-ID: <909d4058-e3e9-4b59-b476-8f78e668c73b@collabora.com>
+Date: Wed, 31 Jul 2024 10:47:54 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <6a7467cde347600015078fe7aa25c4b46c45e96d.camel@mediatek.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 2/2] dt-bindings: arm64: mediatek: Add
+ kukui-jacuzzi-cerise board
+To: Krzysztof Kozlowski <krzk@kernel.org>,
+ Hsin-Te Yuan <yuanhsinte@chromium.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20240731-jacuzzi_dt-v2-0-4995335daa30@chromium.org>
+ <20240731-jacuzzi_dt-v2-2-4995335daa30@chromium.org>
+ <bb696e60-642f-43f1-9ccf-972e1d839bcd@kernel.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <bb696e60-642f-43f1-9ccf-972e1d839bcd@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240731_013021_565630_DEEB2FD5 
-X-CRM114-Status: GOOD (  17.16  )
+X-CRM114-CacheID: sfid-20240731_014757_619757_F37F4F83 
+X-CRM114-Status: GOOD (  16.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,65 +80,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi CK,
-
-On Wed, Jul 31, 2024 at 02:59:51AM +0000, CK Hu (胡俊光) wrote:
-> On Mon, 2024-07-29 at 16:48 +0200, Julien Stephan wrote:
-> >  From: Phi-bang Nguyen <pnguyen@baylibre.com>
-> >
-> > This driver provides a path to bypass the SoC ISP so that image data
-> > coming from the SENINF can go directly into memory without any image
-> > processing. This allows the use of an external ISP.
-> >
-> > Signed-off-by: Phi-bang Nguyen <pnguyen@baylibre.com>
-> > Signed-off-by: Florian Sylvestre <fsylvestre@baylibre.com>
-> > [Paul Elder fix irq locking]
-> > Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
-> > Co-developed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> > Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> > Co-developed-by: Julien Stephan <jstephan@baylibre.com>
-> > Signed-off-by: Julien Stephan <jstephan@baylibre.com>
-> > ---
+Il 31/07/24 10:16, Krzysztof Kozlowski ha scritto:
+> On 31/07/2024 08:26, Hsin-Te Yuan wrote:
+>> Cerise is known as ASUS Chromebook CZ1.
+>> Stern is known as ASUS Chromebook Flip CZ1.
+>>
+>> They are almost identical. The only difference is that Cerise is a
+>> clamshell device without touchscreen and Stern is a convertible device.
+>>
+>> Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
+>> ---
+>>   Documentation/devicetree/bindings/arm/mediatek.yaml | 14 ++++++++++++++
+>>   1 file changed, 14 insertions(+)
+>>
+>> diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
+>> index 1d4bb50fcd8d..087773a43673 100644
+>> --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
+>> +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
+>> @@ -146,6 +146,20 @@ properties:
+>>           items:
+>>             - const: google,burnet
+>>             - const: mediatek,mt8183
+>> +      - description: Google Cerise (ASUS Chromebook CZ1)
+>> +        items:
+>> +          - enum:
+>> +              - google,cerise-sku0
+>> +              - google,cerise-rev3-sku0
+>> +          - const: google,cerise
+>> +          - const: mediatek,mt8183
+>> +      - description: Google Stern (ASUS Chromebook Flip CZ1)
+>> +        items:
+>> +          - enum:
+>> +              - google,cerise-sku1
+>> +              - google,cerise-rev3-sku1
+>> +          - const: google,cerise
 > 
-> [snip]
+> Why not google,stern? If this is not compatible with cerise and has
+> different name, I think logical would be to have different compatible -
+> either here or the first one.
 > 
-> > +
-> > +static void mtk_cam_cmos_vf_enable(struct mtk_cam_dev *cam_dev,
-> > +   bool enable, bool pak_en)
-> > +{
-> > +struct device *dev = cam_dev->dev;
-> > +
-> > +if (pm_runtime_get_sync(dev) < 0) {
-> > +dev_err(dev, "failed to get pm_runtime\n");
-> > +goto out;
-> > +}
-> > +
-> > +if (enable)
-> > +cam_dev->hw_functions->mtk_cam_cmos_vf_hw_enable(cam_dev);
-> 
-> Directly call mtk_camsv30_cmos_vf_hw_enable().
 
-The goal, when this was developed, was to support multiple generations
-of hardware with a single driver. I think it's a worthwhile goal, but at
-the same time, I'm not sure that will ever happen as I'm not aware of
-plans to upstream Genio 350 and 500 support (which is a bad sad, as it's
-more or less working out-of-tree). I'm thus fine either way, and if we
-think the most likely outcome is that this driver will only support
-Genio 300, I'm fine dropping the abstraction layer.
+They're both compatible, but the commercial names are different because one
+is convertible, one is not... and the bootloader still checks for cerise
+even on stern - that's how I read it, and it's not the first time...
 
-> > +else
-> > +cam_dev->hw_functions->mtk_cam_cmos_vf_hw_disable(cam_dev);
-> 
-> Directly call mtk_camsv30_cmos_vf_hw_disable().
-> 
-> > +
-> > +out:
-> > +pm_runtime_put_autosuspend(dev);
-> > +}
-> > +
+...but it doesn't hurt to have a "google,stern" compatible added to the mix,
+it's just one more const to add... and I don't have any strong opinion about
+that, so, Hsin-Te, it's your call. :-)
 
--- 
-Regards,
+Cheers,
+Angelo
 
-Laurent Pinchart
+
 
