@@ -4,88 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E61AEC49EA1
-	for <linux-mediatek@archiver.kernel.org>; Wed, 31 Jul 2024 12:52:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E487AC3DA64
+	for <linux-mediatek@archiver.kernel.org>; Wed, 31 Jul 2024 13:34:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=S5DNHTsppvNsSGV5MXpytjEHr6t1PwiptEQtzs7gaFA=; b=EmGUy4DOX6VybRJIpJhtaSLeKJ
-	8as7CJbnLwZT8P4wxBWCi10IOW/cUBPS+WnFwEmXiTa02Sr7qOxPtJWtgR0y7riK2f3qvQkG5R63G
-	fc3z+jRoRljRaONySOkneraJ/BX81vqNjm3LU4pUAw6vHw4JfCar3K5079hoESamd/i6BZjTU43uu
-	PAa9Q0grirf0WEI6ln/BwofX1RZl14HJmRN5X0muRMcpSK7KEpjqLq2+9oz575iooSv8a3DZSs4bG
-	GbjgGDkIEvrstd2pGOjDcSEN1MhzniqhYhwonWT3QZi4oZDnmUD8CZiIc0xCi3ajuTfRw6+hy4345
-	AztgSykQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=PKzhOvv4Abaz8jSctlqaD1OdNMDkG+LKvEGdcxBnLFs=; b=u0ezxoWMywJbNArUWN+kijpMFh
+	agMG7yYmYuOk4AGZs0wp14FTtg2i84rGYVvMFef+/GbLt3+9THrVhbBzKcgkAbH4D37m30O3nF3mK
+	z9Rp2q8PqB/qQSPJkjDia19P2NUFjMIJvV8KWQb6QFqJabLT1JNF5aspEpz5c+JGLnl/D6k0LYGSs
+	Bjv1nEIznhiJOBE+HAo+Y+/iOHeG975ne6OPbju7dOFqIzJ/O+FVojDfC8P0G5RG5DEUBSDDaGD4U
+	qExVeBNCgG+nYRIMyMduLZ+plIOVGvnMFJTLjGoGxNt5N+24SiJzBgGw7v3F/TotsBxxILeBLf9uZ
+	BONiBsGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZ8oP-00000001B5E-1F4f;
-	Wed, 31 Jul 2024 12:52:13 +0000
-Received: from szxga01-in.huawei.com ([45.249.212.187])
+	id 1sZ9T9-00000001JbN-0YAM;
+	Wed, 31 Jul 2024 13:34:19 +0000
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZ8n8-00000001AU7-0b6V;
-	Wed, 31 Jul 2024 12:50:57 +0000
-Received: from mail.maildlp.com (unknown [172.19.163.252])
-	by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4WYsQQ4j58zxVyV;
-	Wed, 31 Jul 2024 20:50:38 +0800 (CST)
-Received: from dggpemf200006.china.huawei.com (unknown [7.185.36.61])
-	by mail.maildlp.com (Postfix) with ESMTPS id 5679F180AE3;
-	Wed, 31 Jul 2024 20:50:50 +0800 (CST)
-Received: from localhost.localdomain (10.90.30.45) by
- dggpemf200006.china.huawei.com (7.185.36.61) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.11; Wed, 31 Jul 2024 20:50:49 +0800
-From: Yunsheng Lin <linyunsheng@huawei.com>
-To: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>
-CC: <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Yunsheng Lin
-	<linyunsheng@huawei.com>, Alexander Duyck <alexander.duyck@gmail.com>,
-	Subbaraya Sundeep <sbhatta@marvell.com>, Jeroen de Borst
-	<jeroendb@google.com>, Praveen Kaligineedi <pkaligineedi@google.com>,
-	Shailend Chand <shailend@google.com>, Eric Dumazet <edumazet@google.com>,
-	Tony Nguyen <anthony.l.nguyen@intel.com>, Przemek Kitszel
-	<przemyslaw.kitszel@intel.com>, Sunil Goutham <sgoutham@marvell.com>, Geetha
- sowjanya <gakula@marvell.com>, hariprasad <hkelam@marvell.com>, Felix Fietkau
-	<nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>, Mark Lee
-	<Mark-MC.Lee@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>, Matthias
- Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Keith Busch <kbusch@kernel.org>,
-	Jens Axboe <axboe@kernel.dk>, Christoph Hellwig <hch@lst.de>, Sagi Grimberg
-	<sagi@grimberg.me>, Chaitanya Kulkarni <kch@nvidia.com>, "Michael S. Tsirkin"
-	<mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
-	=?UTF-8?q?Eugenio=20P=C3=A9rez?= <eperezma@redhat.com>, Andrew Morton
-	<akpm@linux-foundation.org>, Alexei Starovoitov <ast@kernel.org>, Daniel
- Borkmann <daniel@iogearbox.net>, Jesper Dangaard Brouer <hawk@kernel.org>,
-	John Fastabend <john.fastabend@gmail.com>, Andrii Nakryiko
-	<andrii@kernel.org>, Martin KaFai Lau <martin.lau@linux.dev>, Eduard
- Zingerman <eddyz87@gmail.com>, Song Liu <song@kernel.org>, Yonghong Song
-	<yonghong.song@linux.dev>, KP Singh <kpsingh@kernel.org>, Stanislav Fomichev
-	<sdf@fomichev.me>, Hao Luo <haoluo@google.com>, Jiri Olsa <jolsa@kernel.org>,
-	David Howells <dhowells@redhat.com>, Marc Dionne <marc.dionne@auristor.com>,
-	Chuck Lever <chuck.lever@oracle.com>, Jeff Layton <jlayton@kernel.org>, Neil
- Brown <neilb@suse.de>, Olga Kornievskaia <kolga@netapp.com>, Dai Ngo
-	<Dai.Ngo@oracle.com>, Tom Talpey <tom@talpey.com>, Trond Myklebust
-	<trondmy@kernel.org>, Anna Schumaker <anna@kernel.org>,
-	<intel-wired-lan@lists.osuosl.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-nvme@lists.infradead.org>,
-	<kvm@vger.kernel.org>, <virtualization@lists.linux.dev>,
-	<linux-mm@kvack.org>, <bpf@vger.kernel.org>, <linux-afs@lists.infradead.org>,
-	<linux-nfs@vger.kernel.org>
-Subject: [PATCH net-next v12 04/14] mm: page_frag: add '_va' suffix to page_frag API
-Date: Wed, 31 Jul 2024 20:44:54 +0800
-Message-ID: <20240731124505.2903877-5-linyunsheng@huawei.com>
-X-Mailer: git-send-email 2.30.0
-In-Reply-To: <20240731124505.2903877-1-linyunsheng@huawei.com>
-References: <20240731124505.2903877-1-linyunsheng@huawei.com>
+	id 1sZ9T5-00000001JZk-1PF5
+	for linux-mediatek@lists.infradead.org;
+	Wed, 31 Jul 2024 13:34:17 +0000
+Received: by mail-ed1-x533.google.com with SMTP id 4fb4d7f45d1cf-5a1c49632deso7931941a12.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 31 Jul 2024 06:34:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1722432853; x=1723037653; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=PKzhOvv4Abaz8jSctlqaD1OdNMDkG+LKvEGdcxBnLFs=;
+        b=Djf9zWqErdlD73g3yCfJRARR5+HhCwi40qO5PX18ji7EhXfz8T2vQ/EHxLT9+Weps4
+         yuOqOah1AkpIRl9YRJ6PVaTBwfaVaSvp8ntRz5tdj7EMLuJ6uyMyrV/i9YYye3UnL8cv
+         xGAFrEs7XNKcMGo6vlTPyOjB8EU1u0uydlvjrEOLJcgV4gLpmR0ey8w/FVDgpR23+qBR
+         QJpRVKdk5v4mBcgFSGGQN5t5T4qgKjdDJM0TUjefG1nZRBX04KKdJLemIyM8ONBWusHU
+         ZocscpBg6zEaelYSdr+/yxnj3rht5kBA5KwR6DRfh65JM1BQNNEDZk8fhgTzd2rv5qkX
+         WWGA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1722432853; x=1723037653;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=PKzhOvv4Abaz8jSctlqaD1OdNMDkG+LKvEGdcxBnLFs=;
+        b=SjQA1C6VY37BdnW9/OWCM/TLS1QihU/NdVKtZMPMIXlH7xnZl9ek9/3yuRpOfFMbTA
+         maMD9FO0LqcsNxUdP2pjDb5LwMhx4PSC0q5o5wXY7XhnRJZx6m+d3bb3yujadw7+UlNu
+         GuIT59h2O1Nte/cf6lkZoSouFALB0vMcIPbsiHWrwuO9W0pqjVAcucgAoAV6jcByM+98
+         fbYVYjzh6G70maWgpXZX1OKaslQYfI51j1XiUoN89Uj3KS0n+emQagSctY1AGBJeystN
+         lwRgRJ7MGmJQeISuKHQxCMJtgO0+PQwGmQOdToWq6vZVQls+RJNdvyBLPs1WDMwhuqg/
+         WRnA==
+X-Forwarded-Encrypted: i=1; AJvYcCUirAMIl4s/7IM4gPR4CQMaz+XaKHELWv3KndcfFRtTEJZotbdrXy0FmK+jd5myVC0VKLmwtZmfZBKJew1dm44u/86pul69X5nNoE5hvENA84kZ
+X-Gm-Message-State: AOJu0Yytu/vFyDr8V6A1cIhAvhoZyZeSoJLJOGAGMOxKVEKDn1wQwviX
+	/1XRyaLbqNZsvdCFDAUAu6oGzzKChIakxLTZ5bY/I3941EHQt5l3L2brW3bZ7E4i5MU5fI2Pb7W
+	xkuTWIscA+zTzfWUBMZPrRdu4sry3fACy/EMqyw==
+X-Google-Smtp-Source: AGHT+IFHvxPdbTDsZZkkxlis80B3oC61RFhzRsWcsCjpR0wdyqzatcOGn114x/eJAhMWwICdWqSTklgUbqDvFUAd6CU=
+X-Received: by 2002:a17:906:c10f:b0:a7a:bae8:f292 with SMTP id
+ a640c23a62f3a-a7d40101a57mr1007576866b.41.1722432852685; Wed, 31 Jul 2024
+ 06:34:12 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.90.30.45]
-X-ClientProxiedBy: dggems705-chm.china.huawei.com (10.3.19.182) To
- dggpemf200006.china.huawei.com (7.185.36.61)
+References: <20240729-add-mtk-isp-3-0-support-v6-0-c374c9e0c672@baylibre.com>
+ <20240729-add-mtk-isp-3-0-support-v6-3-c374c9e0c672@baylibre.com> <20240730132931.GM1552@pendragon.ideasonboard.com>
+In-Reply-To: <20240730132931.GM1552@pendragon.ideasonboard.com>
+From: Julien Stephan <jstephan@baylibre.com>
+Date: Wed, 31 Jul 2024 15:33:59 +0200
+Message-ID: <CAEHHSvaiwBWnV+kmjNG=RzPk3W9Y25saNQv5-KiU8EtampUbZQ@mail.gmail.com>
+Subject: Re: [PATCH v6 3/5] media: platform: mediatek: isp_30: add mediatek
+ ISP3.0 sensor interface
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: Andy Hsieh <andy.hsieh@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-media@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	Louis Kuo <louis.kuo@mediatek.com>, Florian Sylvestre <fsylvestre@baylibre.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240731_055054_626512_ED5F52DA 
-X-CRM114-Status: GOOD (  18.03  )
+X-CRM114-CacheID: sfid-20240731_063415_396852_8F07138B 
+X-CRM114-Status: GOOD (  12.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,561 +97,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Currently the page_frag API is returning 'virtual address'
-or 'va' when allocing and expecting 'virtual address' or
-'va' as input when freeing.
+Le mar. 30 juil. 2024 =C3=A0 15:29, Laurent Pinchart
+<laurent.pinchart@ideasonboard.com> a =C3=A9crit :
+[...]
+> > +             mtk_seninf_update(priv, SENINF_TOP_PHY_SENINF_CTL_CSI0, D=
+PHY_MODE, 0 /* 4D1C*/);
+>
+> As this is a V4L2 driver, I'm pretty sure someone will ask for
+>
+>                 mtk_seninf_update(priv, SENINF_TOP_PHY_SENINF_CTL_CSI0,
+>                                   DPHY_MODE, 0 /* 4D1C*/);
+>
+> I wouldn't care too much about going slightly over 80 characters, but
+> getting close to 100 where lines could be wrapped without hindering
+> readability will likely upset some people. Same in other places where
+> applicable.
+>
 
-As we are about to support new use cases that the caller
-need to deal with 'struct page' or need to deal with both
-'va' and 'struct page'. In order to differentiate the API
-handling between 'va' and 'struct page', add '_va' suffix
-to the corresponding API mirroring the page_pool_alloc_va()
-API of the page_pool. So that callers expecting to deal with
-va, page or both va and page may call page_frag_alloc_va*,
-page_frag_alloc_pg*, or page_frag_alloc* API accordingly.
+Hi Laurent,
 
-CC: Alexander Duyck <alexander.duyck@gmail.com>
-Signed-off-by: Yunsheng Lin <linyunsheng@huawei.com>
-Reviewed-by: Subbaraya Sundeep <sbhatta@marvell.com>
----
- drivers/net/ethernet/google/gve/gve_rx.c      |  4 ++--
- drivers/net/ethernet/intel/ice/ice_txrx.c     |  2 +-
- drivers/net/ethernet/intel/ice/ice_txrx.h     |  2 +-
- drivers/net/ethernet/intel/ice/ice_txrx_lib.c |  2 +-
- .../net/ethernet/intel/ixgbevf/ixgbevf_main.c |  4 ++--
- .../marvell/octeontx2/nic/otx2_common.c       |  2 +-
- drivers/net/ethernet/mediatek/mtk_wed_wo.c    |  4 ++--
- drivers/nvme/host/tcp.c                       |  8 +++----
- drivers/nvme/target/tcp.c                     | 22 +++++++++----------
- drivers/vhost/net.c                           |  6 ++---
- include/linux/page_frag_cache.h               | 21 +++++++++---------
- include/linux/skbuff.h                        |  2 +-
- kernel/bpf/cpumap.c                           |  2 +-
- mm/page_frag_cache.c                          | 12 +++++-----
- mm/page_frag_test.c                           | 13 ++++++-----
- net/core/skbuff.c                             | 14 ++++++------
- net/core/xdp.c                                |  2 +-
- net/rxrpc/txbuf.c                             | 15 +++++++------
- net/sunrpc/svcsock.c                          |  6 ++---
- 19 files changed, 74 insertions(+), 69 deletions(-)
+On an early version of this series, Angelo asked me to un-wrap lines
+that can fit into 100 chars...
+Both are fine for me, we just need to agree on something here ....
 
-diff --git a/drivers/net/ethernet/google/gve/gve_rx.c b/drivers/net/ethernet/google/gve/gve_rx.c
-index acb73d4d0de6..b6c10100e462 100644
---- a/drivers/net/ethernet/google/gve/gve_rx.c
-+++ b/drivers/net/ethernet/google/gve/gve_rx.c
-@@ -729,7 +729,7 @@ static int gve_xdp_redirect(struct net_device *dev, struct gve_rx_ring *rx,
- 
- 	total_len = headroom + SKB_DATA_ALIGN(len) +
- 		SKB_DATA_ALIGN(sizeof(struct skb_shared_info));
--	frame = page_frag_alloc(&rx->page_cache, total_len, GFP_ATOMIC);
-+	frame = page_frag_alloc_va(&rx->page_cache, total_len, GFP_ATOMIC);
- 	if (!frame) {
- 		u64_stats_update_begin(&rx->statss);
- 		rx->xdp_alloc_fails++;
-@@ -742,7 +742,7 @@ static int gve_xdp_redirect(struct net_device *dev, struct gve_rx_ring *rx,
- 
- 	err = xdp_do_redirect(dev, &new, xdp_prog);
- 	if (err)
--		page_frag_free(frame);
-+		page_frag_free_va(frame);
- 
- 	return err;
- }
-diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c b/drivers/net/ethernet/intel/ice/ice_txrx.c
-index 8bb743f78fcb..399b317c509d 100644
---- a/drivers/net/ethernet/intel/ice/ice_txrx.c
-+++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
-@@ -126,7 +126,7 @@ ice_unmap_and_free_tx_buf(struct ice_tx_ring *ring, struct ice_tx_buf *tx_buf)
- 		dev_kfree_skb_any(tx_buf->skb);
- 		break;
- 	case ICE_TX_BUF_XDP_TX:
--		page_frag_free(tx_buf->raw_buf);
-+		page_frag_free_va(tx_buf->raw_buf);
- 		break;
- 	case ICE_TX_BUF_XDP_XMIT:
- 		xdp_return_frame(tx_buf->xdpf);
-diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.h b/drivers/net/ethernet/intel/ice/ice_txrx.h
-index feba314a3fe4..6379f57d8228 100644
---- a/drivers/net/ethernet/intel/ice/ice_txrx.h
-+++ b/drivers/net/ethernet/intel/ice/ice_txrx.h
-@@ -148,7 +148,7 @@ static inline int ice_skb_pad(void)
-  * @ICE_TX_BUF_DUMMY: dummy Flow Director packet, unmap and kfree()
-  * @ICE_TX_BUF_FRAG: mapped skb OR &xdp_buff frag, only unmap DMA
-  * @ICE_TX_BUF_SKB: &sk_buff, unmap and consume_skb(), update stats
-- * @ICE_TX_BUF_XDP_TX: &xdp_buff, unmap and page_frag_free(), stats
-+ * @ICE_TX_BUF_XDP_TX: &xdp_buff, unmap and page_frag_free_va(), stats
-  * @ICE_TX_BUF_XDP_XMIT: &xdp_frame, unmap and xdp_return_frame(), stats
-  * @ICE_TX_BUF_XSK_TX: &xdp_buff on XSk queue, xsk_buff_free(), stats
-  */
-diff --git a/drivers/net/ethernet/intel/ice/ice_txrx_lib.c b/drivers/net/ethernet/intel/ice/ice_txrx_lib.c
-index 2719f0e20933..a1a41a14df0d 100644
---- a/drivers/net/ethernet/intel/ice/ice_txrx_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_txrx_lib.c
-@@ -250,7 +250,7 @@ ice_clean_xdp_tx_buf(struct device *dev, struct ice_tx_buf *tx_buf,
- 
- 	switch (tx_buf->type) {
- 	case ICE_TX_BUF_XDP_TX:
--		page_frag_free(tx_buf->raw_buf);
-+		page_frag_free_va(tx_buf->raw_buf);
- 		break;
- 	case ICE_TX_BUF_XDP_XMIT:
- 		xdp_return_frame_bulk(tx_buf->xdpf, bq);
-diff --git a/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c b/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
-index 149911e3002a..eef16a909f85 100644
---- a/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
-+++ b/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
-@@ -302,7 +302,7 @@ static bool ixgbevf_clean_tx_irq(struct ixgbevf_q_vector *q_vector,
- 
- 		/* free the skb */
- 		if (ring_is_xdp(tx_ring))
--			page_frag_free(tx_buffer->data);
-+			page_frag_free_va(tx_buffer->data);
- 		else
- 			napi_consume_skb(tx_buffer->skb, napi_budget);
- 
-@@ -2412,7 +2412,7 @@ static void ixgbevf_clean_tx_ring(struct ixgbevf_ring *tx_ring)
- 
- 		/* Free all the Tx ring sk_buffs */
- 		if (ring_is_xdp(tx_ring))
--			page_frag_free(tx_buffer->data);
-+			page_frag_free_va(tx_buffer->data);
- 		else
- 			dev_kfree_skb_any(tx_buffer->skb);
- 
-diff --git a/drivers/net/ethernet/marvell/octeontx2/nic/otx2_common.c b/drivers/net/ethernet/marvell/octeontx2/nic/otx2_common.c
-index 87d5776e3b88..a485e988fa1d 100644
---- a/drivers/net/ethernet/marvell/octeontx2/nic/otx2_common.c
-+++ b/drivers/net/ethernet/marvell/octeontx2/nic/otx2_common.c
-@@ -553,7 +553,7 @@ static int __otx2_alloc_rbuf(struct otx2_nic *pfvf, struct otx2_pool *pool,
- 	*dma = dma_map_single_attrs(pfvf->dev, buf, pool->rbsize,
- 				    DMA_FROM_DEVICE, DMA_ATTR_SKIP_CPU_SYNC);
- 	if (unlikely(dma_mapping_error(pfvf->dev, *dma))) {
--		page_frag_free(buf);
-+		page_frag_free_va(buf);
- 		return -ENOMEM;
- 	}
- 
-diff --git a/drivers/net/ethernet/mediatek/mtk_wed_wo.c b/drivers/net/ethernet/mediatek/mtk_wed_wo.c
-index 7063c78bd35f..c4228719f8a4 100644
---- a/drivers/net/ethernet/mediatek/mtk_wed_wo.c
-+++ b/drivers/net/ethernet/mediatek/mtk_wed_wo.c
-@@ -142,8 +142,8 @@ mtk_wed_wo_queue_refill(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q,
- 		dma_addr_t addr;
- 		void *buf;
- 
--		buf = page_frag_alloc(&q->cache, q->buf_size,
--				      GFP_ATOMIC | GFP_DMA32);
-+		buf = page_frag_alloc_va(&q->cache, q->buf_size,
-+					 GFP_ATOMIC | GFP_DMA32);
- 		if (!buf)
- 			break;
- 
-diff --git a/drivers/nvme/host/tcp.c b/drivers/nvme/host/tcp.c
-index a2a47d3ab99f..86906bc505de 100644
---- a/drivers/nvme/host/tcp.c
-+++ b/drivers/nvme/host/tcp.c
-@@ -506,7 +506,7 @@ static void nvme_tcp_exit_request(struct blk_mq_tag_set *set,
- {
- 	struct nvme_tcp_request *req = blk_mq_rq_to_pdu(rq);
- 
--	page_frag_free(req->pdu);
-+	page_frag_free_va(req->pdu);
- }
- 
- static int nvme_tcp_init_request(struct blk_mq_tag_set *set,
-@@ -520,7 +520,7 @@ static int nvme_tcp_init_request(struct blk_mq_tag_set *set,
- 	struct nvme_tcp_queue *queue = &ctrl->queues[queue_idx];
- 	u8 hdgst = nvme_tcp_hdgst_len(queue);
- 
--	req->pdu = page_frag_alloc(&queue->pf_cache,
-+	req->pdu = page_frag_alloc_va(&queue->pf_cache,
- 		sizeof(struct nvme_tcp_cmd_pdu) + hdgst,
- 		GFP_KERNEL | __GFP_ZERO);
- 	if (!req->pdu)
-@@ -1337,7 +1337,7 @@ static void nvme_tcp_free_async_req(struct nvme_tcp_ctrl *ctrl)
- {
- 	struct nvme_tcp_request *async = &ctrl->async_req;
- 
--	page_frag_free(async->pdu);
-+	page_frag_free_va(async->pdu);
- }
- 
- static int nvme_tcp_alloc_async_req(struct nvme_tcp_ctrl *ctrl)
-@@ -1346,7 +1346,7 @@ static int nvme_tcp_alloc_async_req(struct nvme_tcp_ctrl *ctrl)
- 	struct nvme_tcp_request *async = &ctrl->async_req;
- 	u8 hdgst = nvme_tcp_hdgst_len(queue);
- 
--	async->pdu = page_frag_alloc(&queue->pf_cache,
-+	async->pdu = page_frag_alloc_va(&queue->pf_cache,
- 		sizeof(struct nvme_tcp_cmd_pdu) + hdgst,
- 		GFP_KERNEL | __GFP_ZERO);
- 	if (!async->pdu)
-diff --git a/drivers/nvme/target/tcp.c b/drivers/nvme/target/tcp.c
-index 5bff0d5464d1..560df3db2f82 100644
---- a/drivers/nvme/target/tcp.c
-+++ b/drivers/nvme/target/tcp.c
-@@ -1463,24 +1463,24 @@ static int nvmet_tcp_alloc_cmd(struct nvmet_tcp_queue *queue,
- 	c->queue = queue;
- 	c->req.port = queue->port->nport;
- 
--	c->cmd_pdu = page_frag_alloc(&queue->pf_cache,
-+	c->cmd_pdu = page_frag_alloc_va(&queue->pf_cache,
- 			sizeof(*c->cmd_pdu) + hdgst, GFP_KERNEL | __GFP_ZERO);
- 	if (!c->cmd_pdu)
- 		return -ENOMEM;
- 	c->req.cmd = &c->cmd_pdu->cmd;
- 
--	c->rsp_pdu = page_frag_alloc(&queue->pf_cache,
-+	c->rsp_pdu = page_frag_alloc_va(&queue->pf_cache,
- 			sizeof(*c->rsp_pdu) + hdgst, GFP_KERNEL | __GFP_ZERO);
- 	if (!c->rsp_pdu)
- 		goto out_free_cmd;
- 	c->req.cqe = &c->rsp_pdu->cqe;
- 
--	c->data_pdu = page_frag_alloc(&queue->pf_cache,
-+	c->data_pdu = page_frag_alloc_va(&queue->pf_cache,
- 			sizeof(*c->data_pdu) + hdgst, GFP_KERNEL | __GFP_ZERO);
- 	if (!c->data_pdu)
- 		goto out_free_rsp;
- 
--	c->r2t_pdu = page_frag_alloc(&queue->pf_cache,
-+	c->r2t_pdu = page_frag_alloc_va(&queue->pf_cache,
- 			sizeof(*c->r2t_pdu) + hdgst, GFP_KERNEL | __GFP_ZERO);
- 	if (!c->r2t_pdu)
- 		goto out_free_data;
-@@ -1495,20 +1495,20 @@ static int nvmet_tcp_alloc_cmd(struct nvmet_tcp_queue *queue,
- 
- 	return 0;
- out_free_data:
--	page_frag_free(c->data_pdu);
-+	page_frag_free_va(c->data_pdu);
- out_free_rsp:
--	page_frag_free(c->rsp_pdu);
-+	page_frag_free_va(c->rsp_pdu);
- out_free_cmd:
--	page_frag_free(c->cmd_pdu);
-+	page_frag_free_va(c->cmd_pdu);
- 	return -ENOMEM;
- }
- 
- static void nvmet_tcp_free_cmd(struct nvmet_tcp_cmd *c)
- {
--	page_frag_free(c->r2t_pdu);
--	page_frag_free(c->data_pdu);
--	page_frag_free(c->rsp_pdu);
--	page_frag_free(c->cmd_pdu);
-+	page_frag_free_va(c->r2t_pdu);
-+	page_frag_free_va(c->data_pdu);
-+	page_frag_free_va(c->rsp_pdu);
-+	page_frag_free_va(c->cmd_pdu);
- }
- 
- static int nvmet_tcp_alloc_cmds(struct nvmet_tcp_queue *queue)
-diff --git a/drivers/vhost/net.c b/drivers/vhost/net.c
-index f16279351db5..6691fac01e0d 100644
---- a/drivers/vhost/net.c
-+++ b/drivers/vhost/net.c
-@@ -686,8 +686,8 @@ static int vhost_net_build_xdp(struct vhost_net_virtqueue *nvq,
- 		return -ENOSPC;
- 
- 	buflen += SKB_DATA_ALIGN(len + pad);
--	buf = page_frag_alloc_align(&net->pf_cache, buflen, GFP_KERNEL,
--				    SMP_CACHE_BYTES);
-+	buf = page_frag_alloc_va_align(&net->pf_cache, buflen, GFP_KERNEL,
-+				       SMP_CACHE_BYTES);
- 	if (unlikely(!buf))
- 		return -ENOMEM;
- 
-@@ -734,7 +734,7 @@ static int vhost_net_build_xdp(struct vhost_net_virtqueue *nvq,
- 	return 0;
- 
- err:
--	page_frag_free(buf);
-+	page_frag_free_va(buf);
- 	return ret;
- }
- 
-diff --git a/include/linux/page_frag_cache.h b/include/linux/page_frag_cache.h
-index a758cb65a9b3..ef038a07925c 100644
---- a/include/linux/page_frag_cache.h
-+++ b/include/linux/page_frag_cache.h
-@@ -9,23 +9,24 @@
- 
- void page_frag_cache_drain(struct page_frag_cache *nc);
- void __page_frag_cache_drain(struct page *page, unsigned int count);
--void *__page_frag_alloc_align(struct page_frag_cache *nc, unsigned int fragsz,
--			      gfp_t gfp_mask, unsigned int align_mask);
-+void *__page_frag_alloc_va_align(struct page_frag_cache *nc,
-+				 unsigned int fragsz, gfp_t gfp_mask,
-+				 unsigned int align_mask);
- 
--static inline void *page_frag_alloc_align(struct page_frag_cache *nc,
--					  unsigned int fragsz, gfp_t gfp_mask,
--					  unsigned int align)
-+static inline void *page_frag_alloc_va_align(struct page_frag_cache *nc,
-+					     unsigned int fragsz,
-+					     gfp_t gfp_mask, unsigned int align)
- {
- 	WARN_ON_ONCE(!is_power_of_2(align));
--	return __page_frag_alloc_align(nc, fragsz, gfp_mask, -align);
-+	return __page_frag_alloc_va_align(nc, fragsz, gfp_mask, -align);
- }
- 
--static inline void *page_frag_alloc(struct page_frag_cache *nc,
--				    unsigned int fragsz, gfp_t gfp_mask)
-+static inline void *page_frag_alloc_va(struct page_frag_cache *nc,
-+				       unsigned int fragsz, gfp_t gfp_mask)
- {
--	return __page_frag_alloc_align(nc, fragsz, gfp_mask, ~0u);
-+	return __page_frag_alloc_va_align(nc, fragsz, gfp_mask, ~0u);
- }
- 
--void page_frag_free(void *addr);
-+void page_frag_free_va(void *addr);
- 
- #endif
-diff --git a/include/linux/skbuff.h b/include/linux/skbuff.h
-index e057db1c63e9..8d50cb3b161e 100644
---- a/include/linux/skbuff.h
-+++ b/include/linux/skbuff.h
-@@ -3381,7 +3381,7 @@ static inline struct sk_buff *netdev_alloc_skb_ip_align(struct net_device *dev,
- 
- static inline void skb_free_frag(void *addr)
- {
--	page_frag_free(addr);
-+	page_frag_free_va(addr);
- }
- 
- void *__napi_alloc_frag_align(unsigned int fragsz, unsigned int align_mask);
-diff --git a/kernel/bpf/cpumap.c b/kernel/bpf/cpumap.c
-index fbdf5a1aabfe..3b70b6b071b9 100644
---- a/kernel/bpf/cpumap.c
-+++ b/kernel/bpf/cpumap.c
-@@ -323,7 +323,7 @@ static int cpu_map_kthread_run(void *data)
- 
- 			/* Bring struct page memory area to curr CPU. Read by
- 			 * build_skb_around via page_is_pfmemalloc(), and when
--			 * freed written by page_frag_free call.
-+			 * freed written by page_frag_free_va call.
- 			 */
- 			prefetchw(page);
- 		}
-diff --git a/mm/page_frag_cache.c b/mm/page_frag_cache.c
-index c5bc72cf018a..70fb6dead624 100644
---- a/mm/page_frag_cache.c
-+++ b/mm/page_frag_cache.c
-@@ -59,9 +59,9 @@ void __page_frag_cache_drain(struct page *page, unsigned int count)
- }
- EXPORT_SYMBOL(__page_frag_cache_drain);
- 
--void *__page_frag_alloc_align(struct page_frag_cache *nc,
--			      unsigned int fragsz, gfp_t gfp_mask,
--			      unsigned int align_mask)
-+void *__page_frag_alloc_va_align(struct page_frag_cache *nc,
-+				 unsigned int fragsz, gfp_t gfp_mask,
-+				 unsigned int align_mask)
- {
- #if (PAGE_SIZE < PAGE_FRAG_CACHE_MAX_SIZE)
- 	unsigned int size = nc->size;
-@@ -130,16 +130,16 @@ void *__page_frag_alloc_align(struct page_frag_cache *nc,
- 
- 	return nc->va + (size - remaining);
- }
--EXPORT_SYMBOL(__page_frag_alloc_align);
-+EXPORT_SYMBOL(__page_frag_alloc_va_align);
- 
- /*
-  * Frees a page fragment allocated out of either a compound or order 0 page.
-  */
--void page_frag_free(void *addr)
-+void page_frag_free_va(void *addr)
- {
- 	struct page *page = virt_to_head_page(addr);
- 
- 	if (unlikely(put_page_testzero(page)))
- 		free_unref_page(page, compound_order(page));
- }
--EXPORT_SYMBOL(page_frag_free);
-+EXPORT_SYMBOL(page_frag_free_va);
-diff --git a/mm/page_frag_test.c b/mm/page_frag_test.c
-index b7a5affb92f2..9eaa3ab74b29 100644
---- a/mm/page_frag_test.c
-+++ b/mm/page_frag_test.c
-@@ -276,7 +276,7 @@ static int page_frag_pop_thread(void *arg)
- 
- 		if (obj) {
- 			nr--;
--			page_frag_free(obj);
-+			page_frag_free_va(obj);
- 		} else {
- 			cond_resched();
- 		}
-@@ -304,13 +304,16 @@ static int page_frag_push_thread(void *arg)
- 		int ret;
- 
- 		if (test_align) {
--			va = page_frag_alloc_align(&test_frag, test_alloc_len,
--						   GFP_KERNEL, SMP_CACHE_BYTES);
-+			va = page_frag_alloc_va_align(&test_frag,
-+						      test_alloc_len,
-+						      GFP_KERNEL,
-+						      SMP_CACHE_BYTES);
- 
- 			WARN_ONCE((unsigned long)va & (SMP_CACHE_BYTES - 1),
- 				  "unaligned va returned\n");
- 		} else {
--			va = page_frag_alloc(&test_frag, test_alloc_len, GFP_KERNEL);
-+			va = page_frag_alloc_va(&test_frag, test_alloc_len,
-+						GFP_KERNEL);
- 		}
- 
- 		if (!va)
-@@ -318,7 +321,7 @@ static int page_frag_push_thread(void *arg)
- 
- 		ret = objpool_push(va, pool);
- 		if (ret) {
--			page_frag_free(va);
-+			page_frag_free_va(va);
- 			cond_resched();
- 		} else {
- 			nr--;
-diff --git a/net/core/skbuff.c b/net/core/skbuff.c
-index 83f8cd8aa2d1..4b8acd967793 100644
---- a/net/core/skbuff.c
-+++ b/net/core/skbuff.c
-@@ -314,8 +314,8 @@ void *__napi_alloc_frag_align(unsigned int fragsz, unsigned int align_mask)
- 	fragsz = SKB_DATA_ALIGN(fragsz);
- 
- 	local_lock_nested_bh(&napi_alloc_cache.bh_lock);
--	data = __page_frag_alloc_align(&nc->page, fragsz, GFP_ATOMIC,
--				       align_mask);
-+	data = __page_frag_alloc_va_align(&nc->page, fragsz, GFP_ATOMIC,
-+					  align_mask);
- 	local_unlock_nested_bh(&napi_alloc_cache.bh_lock);
- 	return data;
- 
-@@ -330,8 +330,8 @@ void *__netdev_alloc_frag_align(unsigned int fragsz, unsigned int align_mask)
- 		struct page_frag_cache *nc = this_cpu_ptr(&netdev_alloc_cache);
- 
- 		fragsz = SKB_DATA_ALIGN(fragsz);
--		data = __page_frag_alloc_align(nc, fragsz, GFP_ATOMIC,
--					       align_mask);
-+		data = __page_frag_alloc_va_align(nc, fragsz, GFP_ATOMIC,
-+						  align_mask);
- 	} else {
- 		local_bh_disable();
- 		data = __napi_alloc_frag_align(fragsz, align_mask);
-@@ -748,14 +748,14 @@ struct sk_buff *__netdev_alloc_skb(struct net_device *dev, unsigned int len,
- 
- 	if (in_hardirq() || irqs_disabled()) {
- 		nc = this_cpu_ptr(&netdev_alloc_cache);
--		data = page_frag_alloc(nc, len, gfp_mask);
-+		data = page_frag_alloc_va(nc, len, gfp_mask);
- 		pfmemalloc = nc->pfmemalloc;
- 	} else {
- 		local_bh_disable();
- 		local_lock_nested_bh(&napi_alloc_cache.bh_lock);
- 
- 		nc = this_cpu_ptr(&napi_alloc_cache.page);
--		data = page_frag_alloc(nc, len, gfp_mask);
-+		data = page_frag_alloc_va(nc, len, gfp_mask);
- 		pfmemalloc = nc->pfmemalloc;
- 
- 		local_unlock_nested_bh(&napi_alloc_cache.bh_lock);
-@@ -845,7 +845,7 @@ struct sk_buff *napi_alloc_skb(struct napi_struct *napi, unsigned int len)
- 	} else {
- 		len = SKB_HEAD_ALIGN(len);
- 
--		data = page_frag_alloc(&nc->page, len, gfp_mask);
-+		data = page_frag_alloc_va(&nc->page, len, gfp_mask);
- 		pfmemalloc = nc->page.pfmemalloc;
- 	}
- 	local_unlock_nested_bh(&napi_alloc_cache.bh_lock);
-diff --git a/net/core/xdp.c b/net/core/xdp.c
-index bcc5551c6424..7d4e09fb478f 100644
---- a/net/core/xdp.c
-+++ b/net/core/xdp.c
-@@ -387,7 +387,7 @@ void __xdp_return(void *data, struct xdp_mem_info *mem, bool napi_direct,
- 		page_pool_put_full_page(page->pp, page, napi_direct);
- 		break;
- 	case MEM_TYPE_PAGE_SHARED:
--		page_frag_free(data);
-+		page_frag_free_va(data);
- 		break;
- 	case MEM_TYPE_PAGE_ORDER0:
- 		page = virt_to_page(data); /* Assumes order0 page*/
-diff --git a/net/rxrpc/txbuf.c b/net/rxrpc/txbuf.c
-index c3913d8a50d3..dccb0353ee84 100644
---- a/net/rxrpc/txbuf.c
-+++ b/net/rxrpc/txbuf.c
-@@ -33,8 +33,8 @@ struct rxrpc_txbuf *rxrpc_alloc_data_txbuf(struct rxrpc_call *call, size_t data_
- 
- 	data_align = umax(data_align, L1_CACHE_BYTES);
- 	mutex_lock(&call->conn->tx_data_alloc_lock);
--	buf = page_frag_alloc_align(&call->conn->tx_data_alloc, total, gfp,
--				    data_align);
-+	buf = page_frag_alloc_va_align(&call->conn->tx_data_alloc, total, gfp,
-+				       data_align);
- 	mutex_unlock(&call->conn->tx_data_alloc_lock);
- 	if (!buf) {
- 		kfree(txb);
-@@ -96,17 +96,18 @@ struct rxrpc_txbuf *rxrpc_alloc_ack_txbuf(struct rxrpc_call *call, size_t sack_s
- 	if (!txb)
- 		return NULL;
- 
--	buf = page_frag_alloc(&call->local->tx_alloc,
--			      sizeof(*whdr) + sizeof(*ack) + 1 + 3 + sizeof(*trailer), gfp);
-+	buf = page_frag_alloc_va(&call->local->tx_alloc,
-+				 sizeof(*whdr) + sizeof(*ack) + 1 + 3 + sizeof(*trailer), gfp);
- 	if (!buf) {
- 		kfree(txb);
- 		return NULL;
- 	}
- 
- 	if (sack_size) {
--		buf2 = page_frag_alloc(&call->local->tx_alloc, sack_size, gfp);
-+		buf2 = page_frag_alloc_va(&call->local->tx_alloc, sack_size,
-+					  gfp);
- 		if (!buf2) {
--			page_frag_free(buf);
-+			page_frag_free_va(buf);
- 			kfree(txb);
- 			return NULL;
- 		}
-@@ -180,7 +181,7 @@ static void rxrpc_free_txbuf(struct rxrpc_txbuf *txb)
- 			  rxrpc_txbuf_free);
- 	for (i = 0; i < txb->nr_kvec; i++)
- 		if (txb->kvec[i].iov_base)
--			page_frag_free(txb->kvec[i].iov_base);
-+			page_frag_free_va(txb->kvec[i].iov_base);
- 	kfree(txb);
- 	atomic_dec(&rxrpc_nr_txbuf);
- }
-diff --git a/net/sunrpc/svcsock.c b/net/sunrpc/svcsock.c
-index 6b3f01beb294..42d20412c1c3 100644
---- a/net/sunrpc/svcsock.c
-+++ b/net/sunrpc/svcsock.c
-@@ -1222,8 +1222,8 @@ static int svc_tcp_sendmsg(struct svc_sock *svsk, struct svc_rqst *rqstp,
- 	/* The stream record marker is copied into a temporary page
- 	 * fragment buffer so that it can be included in rq_bvec.
- 	 */
--	buf = page_frag_alloc(&svsk->sk_frag_cache, sizeof(marker),
--			      GFP_KERNEL);
-+	buf = page_frag_alloc_va(&svsk->sk_frag_cache, sizeof(marker),
-+				 GFP_KERNEL);
- 	if (!buf)
- 		return -ENOMEM;
- 	memcpy(buf, &marker, sizeof(marker));
-@@ -1235,7 +1235,7 @@ static int svc_tcp_sendmsg(struct svc_sock *svsk, struct svc_rqst *rqstp,
- 	iov_iter_bvec(&msg.msg_iter, ITER_SOURCE, rqstp->rq_bvec,
- 		      1 + count, sizeof(marker) + rqstp->rq_res.len);
- 	ret = sock_sendmsg(svsk->sk_sock, &msg);
--	page_frag_free(buf);
-+	page_frag_free_va(buf);
- 	if (ret < 0)
- 		return ret;
- 	*sentp += ret;
--- 
-2.33.0
+[...]
+> > +     /* Configure timestamp */
+> > +     writel(SENINF_TIMESTAMP_STEP, input->base + SENINF_TG1_TM_STP);
+>
+> Can we have a mtk_seninf_input_write(), the same way we have
+> mtk_seninf_mux_write() ? Same for writes to priv->base below, with a
+> mtk_seninf_write() inline function.
+>
 
+... and here :) In an early review Angelo also  asked me to remove
+these accessors.
+
+I can add them back and reduce line chars if needed.
+
+Cheers
+Julien
 
