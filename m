@@ -4,67 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54D7AC3DA64
-	for <linux-mediatek@archiver.kernel.org>; Wed, 31 Jul 2024 08:51:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B42DC3DA7F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 31 Jul 2024 08:58:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:In-Reply-To:Date:References:Subject:Cc:To:From:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VvgFnLYSK3MCyItSwxElnfVP3fMzx1qE71NJQ+jaiE4=; b=A41S+PRg1ESoHA3u5M44J+swTG
-	pT4HqfdkmoFsFGVmrDcTncMmdeb0ElWDzfvdMyEy/7uPtxFhErCBrWc9FeaP3EKQelJvIKyjfMQqZ
-	O0nvBm4z0kG/UgIVS6op8Rs1Cau1YAlEjH+vEeAK5AAcQRoclxfbINPxYuXZ7hoIJY5Eq2ORzdtsh
-	XsL7fL1JDcmA6z+towQJhNvRn9oFAyRREGYgFm85sr2g9VOxuDtzVhW5fEYDIMYK5WVq+N2vGIwm1
-	QO7ADvRFXP3BkHROY4xoWmc4/yamJaIUm5/XuWkNFZLnuYCrGweiF1rThjDeaRMchrOMuLYNV9YpR
-	Hm/wXKTQ==;
+	bh=uQZx3HYYVNB5vITecawH5G+5vDqAKVo5qs6yg+kY8es=; b=u6r3ucyxTAZaLpj0QPQdJdFLBV
+	uFXhvo3ou1SepKGMokkgsHMw43SlaVYwBEGqIJddMzHZxKGq7FxoIxnMKO29xsyGyGfEmKO7vR6mz
+	aVgBD0F6jg3Er9iqYdaPeWkDPM+3okV2QpkIqpk6M+I7hXd1yN0Yj0fxFBaNrEw4JB6G76vARgeof
+	nTMh1EZWR6UFJMIUJHaF9n3ZwVpw24LGKsEpnMlioBnqG+TS5DGG3pwuKo2kb7krfXrMgzA2h6/6F
+	Ha6SCDexbTuWqquqB1WB0Ag+qSSpQf1koCcYkuP2EdS/NIOg0eGJ4+HGiFDDjnjWKqF9LlTUa2k3u
+	K28OVJTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZ53s-00000000NvI-3vP8;
-	Wed, 31 Jul 2024 08:51:56 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sZ5A6-00000000P8J-1hri;
+	Wed, 31 Jul 2024 08:58:22 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZ53q-00000000NtJ-0Wnl
-	for linux-mediatek@lists.infradead.org;
-	Wed, 31 Jul 2024 08:51:55 +0000
+	id 1sZ59X-00000000OuD-0JLG;
+	Wed, 31 Jul 2024 08:57:48 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 10C1762283;
-	Wed, 31 Jul 2024 08:51:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0C6D7C4AF0E;
-	Wed, 31 Jul 2024 08:51:50 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 5B75762295;
+	Wed, 31 Jul 2024 08:57:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5DC84C116B1;
+	Wed, 31 Jul 2024 08:57:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1722415912;
-	bh=eq6ZbUjCp8yGbWbk+wUwlkkjoHUI0f5wvuxs5k0tigE=;
-	h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
-	b=V9SkYUnFJq677ztCX6/2lYBJMv7eaeT/1xWxCqFjlEKd/ysfKPMBllkmI1H4KNjJ0
-	 I5pTbW2SziHqGgW08Isvty/RSlpW4iVq+v50h1UH08X3ZghSlCCEj9xjEys7dBlF0J
-	 msz2YMvJ8BS0AhOT8za2h1To27sK0t5qtjyYS/pdo5Cx7flqCAaSCvWhXTGYBD6ELN
-	 NppBFfdaLbY9xNf+8LqsfCuZIPN652buyc/I2yOEZddGSSQtvUpLJpSkYy4/m07jl5
-	 O3YTh39sLPPD02RLDU9wx4VTHwu5gbM2oqBez6W/XhE1Xn1mQYHrddjBuzyyrrnhSy
-	 uv/dVhcZNsItQ==
-From: Kalle Valo <kvalo@kernel.org>
-To: Bert Karwatzki <spasswolf@web.de>
-Cc: Felix Fietkau <nbd@nbd.name>,  Sean Wang <sean.wang@kernel.org>,
-  deren.wu@mediatek.com,  linux-mediatek@lists.infradead.org,
-  linux-wireless@vger.kernel.org,  lorenzo.bianconi@redhat.com,
-  mingyen.hsieh@mediatek.com,  sean.wang@mediatek.com
-Subject: Re: patch 46/47 causes NULL pointer deref on mt7921
-References: <20240711175156.4465-1-spasswolf@web.de>
-	<CAGp9LzoXMoAW6dVZjTf-JcD_wiU4yXpGwkLaVyWXTkaV2MOKwg@mail.gmail.com>
-	<adb192a59c44aa8708e80df30a6a47816a03e50f.camel@web.de>
-	<4e943a62736f955af5d9cd1aff7e2b9c084c8885.camel@web.de>
-	<2599b886-9c63-4989-a08a-7feab28f7c49@nbd.name>
-	<65621cad9a22df881745e9333a5c3696bdbb8df3.camel@web.de>
-Date: Wed, 31 Jul 2024 11:51:49 +0300
-In-Reply-To: <65621cad9a22df881745e9333a5c3696bdbb8df3.camel@web.de> (Bert
-	Karwatzki's message of "Mon, 29 Jul 2024 13:12:15 +0200")
-Message-ID: <87frrqkkpm.fsf@kernel.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
+	s=k20201202; t=1722416266;
+	bh=hopejYkFDlRXosQSrN9FNvd2qXYNt97CgMPgExHWjLE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=kgcv9F/j4hbv4sY33GK6d58MNdprg7Tk6x7Afte7Yvm+pO9ukFm6JSZHFhVrQctV8
+	 HCJvnQ2SmAqj0sAQJBgaQF2tt0TOI5PcJu9v2fmRxV2XUWaFGKRqLMu52qnFc79kh9
+	 OZIH/2SJJc8An60ZA3qB06AemJlpRn3qE0hIldQMIveR5FOpyQA8u8NtVxm3+jHQKb
+	 ZIR6/5PDzOSoOQ9rfNdotTn6qFvjblvNuBAip+B091FmD2fG07ijLMGLRyGcJCwF7M
+	 F0eioAeNeRBymaNwU7QnKVLzgg6Jy9Kkg6kC/bxm0G3R6V0OdCYTZd0D5ASDSWuS9d
+	 gv5IYS+rqKdFw==
+Date: Wed, 31 Jul 2024 09:57:39 +0100
+From: Simon Horman <horms@kernel.org>
+To: Liju-clr Chen <liju-clr.chen@mediatek.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Jonathan Corbet <corbet@lwn.net>,
+	Catalin Marinas <catalin.marinas@arm.com>,
+	Will Deacon <will@kernel.org>, Steven Rostedt <rostedt@goodmis.org>,
+	Masami Hiramatsu <mhiramat@kernel.org>,
+	Mathieu Desnoyers <mathieu.desnoyers@efficios.com>,
+	Richard Cochran <richardcochran@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Yingshiuan Pan <Yingshiuan.Pan@mediatek.com>,
+	Ze-yu Wang <Ze-yu.Wang@mediatek.com>, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-doc@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-trace-kernel@vger.kernel.org, netdev@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	Shawn Hsiao <shawn.hsiao@mediatek.com>,
+	PeiLun Suei <PeiLun.Suei@mediatek.com>,
+	Chi-shen Yeh <Chi-shen.Yeh@mediatek.com>,
+	Kevenny Hsieh <Kevenny.Hsieh@mediatek.com>
+Subject: Re: [PATCH v12 11/24] virt: geniezone: Add ioeventfd support
+Message-ID: <20240731085739.GO1967603@kernel.org>
+References: <20240730082436.9151-1-liju-clr.chen@mediatek.com>
+ <20240730082436.9151-12-liju-clr.chen@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240730082436.9151-12-liju-clr.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240731_015154_239824_0B9B3A56 
-X-CRM114-Status: GOOD (  14.98  )
+X-CRM114-CacheID: sfid-20240731_015747_206022_661687E7 
+X-CRM114-Status: GOOD (  12.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,33 +89,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Bert Karwatzki <spasswolf@web.de> writes:
+On Tue, Jul 30, 2024 at 04:24:23PM +0800, Liju-clr Chen wrote:
+> From: Yingshiuan Pan <yingshiuan.pan@mediatek.com>
+> 
+> Ioeventfd leverages eventfd to provide asynchronous notification
+> mechanism for VMM. VMM can register a mmio address and bind with an
+> eventfd. Once a mmio trap occurs on this registered region, its
+> corresponding eventfd will be notified.
+> 
+> Signed-off-by: Yingshiuan Pan <yingshiuan.pan@mediatek.com>
+> Signed-off-by: Yi-De Wu <yi-de.wu@mediatek.com>
+> Signed-off-by: Liju Chen <liju-clr.chen@mediatek.com>
 
-> Am Mittwoch, dem 17.07.2024 um 17:25 +0200 schrieb Felix Fietkau:
->
->> On 17.07.24 16:38, Bert Karwatzki wrote:
->>
->> > So mvif->phy can be NULL at the start of mt7921_ipv6_addr_change. The early
->> > return in that case avoids the NULL pointer and mvif->phy has its usual value
->> > again on the next call to mt7921_ipv6_addr_change so Wifi is working again. I
->> > don't know how this could happen but perhaps you have an idea.
->>
->> This change should fix it: https://nbd.name/p/0747f54f
->> Please test.
->
-> The BUG is still present in linux-6.11-rc1.
+...
 
-I'm not sure what's the status with this. There's one mt76 patch going
-to v6.11-rc2:
+> diff --git a/drivers/virt/geniezone/gzvm_ioeventfd.c b/drivers/virt/geniezone/gzvm_ioeventfd.c
 
-https://git.kernel.org/pub/scm/linux/kernel/git/wireless/wireless.git/commit/?id=6557a28f3e3a54cff4f0dcdd1dfa649b26557ab3
+...
 
-But that looks to be a fix for a different problem, right? Felix, are
-you planning to submit that 0747f54f as a proper patch? I could then
-take it to wireless tree.
+> +/**
+> + * ioeventfd_check_collision() - Check collison assumes gzvm->ioevent_lock held.
 
--- 
-https://patchwork.kernel.org/project/linux-wireless/list/
+nit: collision
 
-https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
+     Likewise elsewhere in this patch.
+
+     Flagged by checkpatch.pl --codespell
+
+> + * @gzvm: Pointer to gzvm.
+> + * @p: Pointer to gzvm_ioevent.
+> + *
+> + * Return:
+> + * * true			- collison found
+> + * * false			- no collison
+> + */
+
+...
 
