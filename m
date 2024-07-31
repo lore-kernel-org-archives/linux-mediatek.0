@@ -4,77 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23B05C3DA64
-	for <linux-mediatek@archiver.kernel.org>; Wed, 31 Jul 2024 07:56:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D371C3DA7F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 31 Jul 2024 08:17:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5cuuYq4B4A2tJJ88qvDkr4pnPIMR7Qh0bCqjvCxUpLM=; b=LzaCdo20pyYWL8
-	5EYPWtfOB3FuXNtuzdNUqeepuwWauotgKx9XPIIzUlp9Q5XOxc4MBOmkSeng3ffULndFqq9WFmU6x
-	0FrJoER+5sCQaG3muAF1TAUcVIIlwAiHc0j72GVsfD7YXa5SoUE9O+KS6lWN3Hj2wfBnHgIJreXeF
-	HotUwRUdqcNEB0c7fX0K8AhCxb7CPYimtvwaEL5m94khN0tkzmPIUN5HvhwJfzaaxL3Pp/1bhd5Zz
-	MmIIn1qqiQR4f9Xd1wyZl4svVJvgMyDxhPdDIu3WBd2NOibNP8DqemKk7ujlrtcY2Caq2HnAvw9uK
-	PHoTSnVGX/6UEt0wRT3g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=dlvOpppBnbDY6cCSN9zniu2QiUbgn35Ig8P9FfhNsR0=; b=QhppfPPZf2pPyC/Ff6yFTt9pSI
+	i5rJq+cQV6C3nlTk56a66+OT9M8yDrJmST3W4o2pV4x/jHX8fYfjjrM+Pc7u3QPtTnAyLsL9CZnQ5
+	MAZ26+oY33r9aIb/wBUGQN5ulRxkO8+dHp0ExjNQfutG6GmIOaC4VLC/3StieR2MVqaVrulg4KcvP
+	3OnjJqs8dFgimPtHAYdOXmyJdcL7Zb1Rz2g2IW76LtcE/0gabKOIjD4Scuv3Gc3KHEKmsrPbJ5hNe
+	/rde7CioZukGiS0Iwg5n+yoR0tyri1BcC/TsQxnH13lRUt1EcpZxpTOtlrRwHdpQz5V3urikCwVk6
+	2zDkttWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZ4C0-00000000D1c-2psj;
-	Wed, 31 Jul 2024 07:56:16 +0000
-Received: from relay1-d.mail.gandi.net ([2001:4b98:dc4:8::221])
+	id 1sZ4WE-00000000Hlv-2SRF;
+	Wed, 31 Jul 2024 08:17:10 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZ4BW-00000000Cuq-301w;
-	Wed, 31 Jul 2024 07:55:48 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id B2AD4240002;
-	Wed, 31 Jul 2024 07:55:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1722412544;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=5cuuYq4B4A2tJJ88qvDkr4pnPIMR7Qh0bCqjvCxUpLM=;
-	b=IIiGcgyWSrvUnfZN1McrAfgoL2uGDkBB2gqXhFkPZdYNjfz/4DVKGhlj3GlkgDgQucKCdq
-	MO+tOqjNrytj2uyKieU3ut5WHrLpkV07PpG0RqWgRONbcXWOKtJ8bL9ywRyt240fXLsUym
-	RMopYc4XZHg0bhHMFRV3zFbSfHa6FTAHuxTSjWsx1TvZk0JGGkZ+20M0+VVnrVskrC9qje
-	8M0d07KxNszNj1uIlLkT1TNTrpAwt1eAacBLlcQrt/havZ63mQgXc/fzXKt3qmhinY5q6c
-	jq35KsMQzR20Hx1cesRubvoiSxOEAPVFKifurYwVfHoQKCygWnkbnTwP9kuRZA==
-Message-ID: <8f2343cc-125c-4877-b7be-bfe4134870be@arinc9.com>
-Date: Wed, 31 Jul 2024 10:55:38 +0300
+	id 1sZ4Vf-00000000HZB-0Glt;
+	Wed, 31 Jul 2024 08:16:36 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 0FEF262235;
+	Wed, 31 Jul 2024 08:16:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 98A5BC4AF0B;
+	Wed, 31 Jul 2024 08:16:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1722413793;
+	bh=5oRKcekbyt486+TVjpwgoDMS2097DCQbNNHp9RC330U=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Pp5Iksg8yMhKHR3IBfURNqMVd5UzchffW65fqmBMfGE7BShyrt7sLA1NxhWvnoFAE
+	 zFaVcULFslmd+KJR8GdU1dL4LJsKmxaY5ww+Cb9BR5M0j3X3MujHqW7tQ8Nql8N5MP
+	 W82jiMj1O7THB90SjCI3qBtzAJyMlob81gb0tBXTnNVyAj1uMgPg/LWZnvbEJkZSrY
+	 aIwTIo72ekX8yGc6lhjZZjUGaaGxvAXq3zSUYfSPNLsNhO7Wre1Mbt3PuNHFTuX66D
+	 Vp+O62JomYGvDZpWfMF1L7WUy8Gl7iZdcsO7BMGanqtuqwdCMK3ldokt0cT01h363x
+	 0vWx4Vc4F28lA==
+Message-ID: <bb696e60-642f-43f1-9ccf-972e1d839bcd@kernel.org>
+Date: Wed, 31 Jul 2024 10:16:29 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: mt7622: fix switch probe on bananapi-r64
-To: Krzysztof Kozlowski <krzk@kernel.org>,
+Subject: Re: [PATCH v2 2/2] dt-bindings: arm64: mediatek: Add
+ kukui-jacuzzi-cerise board
+To: Hsin-Te Yuan <yuanhsinte@chromium.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-References: <20240516204847.171029-1-linux@fw-web.de>
- <1807a142-1534-4fa4-ad4b-d1c03af014c2@arinc9.com>
- <58d8ddea-71cc-427a-94cc-a95f6bce61d2@collabora.com>
- <16e9c06e-9908-455d-a387-614fefe5bcf8@arinc9.com>
- <5e87d31c-b059-4f9a-93f7-dc87465ed14a@collabora.com>
- <4416ef22-78cc-4ce5-b61d-69ff0903811e@arinc9.com>
- <bd6b6929-d34d-4bd5-9cb0-bc8fe850ee46@leemhuis.info>
- <af561268-9793-4b5d-aa0f-d09698fd6fb0@arinc9.com>
- <750a60a6-4585-4bd2-97be-cf944e51fbdb@leemhuis.info>
- <9c498e37-df8b-469e-818a-9b1c9f2b1a3c@collabora.com>
- <cebb10b8-b0bf-4cb7-bba4-c3f941ba2b82@leemhuis.info>
- <1aedb1d4-8dc3-4e17-aff1-7cc417465967@arinc9.com>
- <130518e2-d6dd-49ed-9cc2-ca9cdec93b98@leemhuis.info>
- <aeb255ff-3755-4f76-a8f8-cda27a67f818@arinc9.com>
- <b3fa66cc-516b-4d78-aee5-62a47b52a3b1@collabora.com>
- <2076f699540c3c9d10effdb8b55d3f89@arinc9.com>
- <921f448b-4085-4c8d-85f8-478318d9c054@kernel.org>
- <0f417818-3009-4476-88fb-47a9ca15d525@arinc9.com>
- <cf031c05-4082-4cfe-9a4a-0c855764ee04@kernel.org>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20240731-jacuzzi_dt-v2-0-4995335daa30@chromium.org>
+ <20240731-jacuzzi_dt-v2-2-4995335daa30@chromium.org>
+From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <cf031c05-4082-4cfe-9a4a-0c855764ee04@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-GND-Sasl: arinc.unal@arinc9.com
+Autocrypt: addr=krzk@kernel.org; keydata=
+ xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
+ cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
+ JMp7PSyMPzpUXfU12yfcRYVEMQrmplNZssmYhiTeVicuOOypWugZKVLGNm0IweVCaZ/DJDIH
+ gNbpvVwjcKYrx85m9cBVEBUGaQP6AT7qlVCkrf50v8bofSIyVa2xmubbAwwFA1oxoOusjPIE
+ J3iadrwpFvsZjF5uHAKS+7wHLoW9hVzOnLbX6ajk5Hf8Pb1m+VH/E8bPBNNYKkfTtypTDUCj
+ NYcd27tjnXfG+SDs/EXNUAIRefCyvaRG7oRYF3Ec+2RgQDRnmmjCjoQNbFrJvJkFHlPeHaeS
+ BosGY+XWKydnmsfY7SSnjAzLUGAFhLd/XDVpb1Een2XucPpKvt9ORF+48gy12FA5GduRLhQU
+ vK4tU7ojoem/G23PcowM1CwPurC8sAVsQb9KmwTGh7rVz3ks3w/zfGBy3+WmLg++C2Wct6nM
+ Pd8/6CBVjEWqD06/RjI2AnjIq5fSEH/BIfXXfC68nMp9BZoy3So4ZsbOlBmtAPvMYX6U8VwD
+ TNeBxJu5Ex0Izf1NV9CzC3nNaFUYOY8KfN01X5SExAoVTr09ewARAQABzSVLcnp5c3p0b2Yg
+ S296bG93c2tpIDxrcnprQGtlcm5lbC5vcmc+wsGVBBMBCgA/AhsDBgsJCAcDAgYVCAIJCgsE
+ FgIDAQIeAQIXgBYhBJvQfg4MUfjVlne3VBuTQ307QWKbBQJgPO8PBQkUX63hAAoJEBuTQ307
+ QWKbBn8P+QFxwl7pDsAKR1InemMAmuykCHl+XgC0LDqrsWhAH5TYeTVXGSyDsuZjHvj+FRP+
+ gZaEIYSw2Yf0e91U9HXo3RYhEwSmxUQ4Fjhc9qAwGKVPQf6YuQ5yy6pzI8brcKmHHOGrB3tP
+ /MODPt81M1zpograAC2WTDzkICfHKj8LpXp45PylD99J9q0Y+gb04CG5/wXs+1hJy/dz0tYy
+ iua4nCuSRbxnSHKBS5vvjosWWjWQXsRKd+zzXp6kfRHHpzJkhRwF6ArXi4XnQ+REnoTfM5Fk
+ VmVmSQ3yFKKePEzoIriT1b2sXO0g5QXOAvFqB65LZjXG9jGJoVG6ZJrUV1MVK8vamKoVbUEe
+ 0NlLl/tX96HLowHHoKhxEsbFzGzKiFLh7hyboTpy2whdonkDxpnv/H8wE9M3VW/fPgnL2nPe
+ xaBLqyHxy9hA9JrZvxg3IQ61x7rtBWBUQPmEaK0azW+l3ysiNpBhISkZrsW3ZUdknWu87nh6
+ eTB7mR7xBcVxnomxWwJI4B0wuMwCPdgbV6YDUKCuSgRMUEiVry10xd9KLypR9Vfyn1AhROrq
+ AubRPVeJBf9zR5UW1trJNfwVt3XmbHX50HCcHdEdCKiT9O+FiEcahIaWh9lihvO0ci0TtVGZ
+ MCEtaCE80Q3Ma9RdHYB3uVF930jwquplFLNF+IBCn5JRzsFNBFVDXDQBEADNkrQYSREUL4D3
+ Gws46JEoZ9HEQOKtkrwjrzlw/tCmqVzERRPvz2Xg8n7+HRCrgqnodIYoUh5WsU84N03KlLue
+ MNsWLJBvBaubYN4JuJIdRr4dS4oyF1/fQAQPHh8Thpiz0SAZFx6iWKB7Qrz3OrGCjTPcW6ei
+ OMheesVS5hxietSmlin+SilmIAPZHx7n242u6kdHOh+/SyLImKn/dh9RzatVpUKbv34eP1wA
+ GldWsRxbf3WP9pFNObSzI/Bo3kA89Xx2rO2roC+Gq4LeHvo7ptzcLcrqaHUAcZ3CgFG88CnA
+ 6z6lBZn0WyewEcPOPdcUB2Q7D/NiUY+HDiV99rAYPJztjeTrBSTnHeSBPb+qn5ZZGQwIdUW9
+ YegxWKvXXHTwB5eMzo/RB6vffwqcnHDoe0q7VgzRRZJwpi6aMIXLfeWZ5Wrwaw2zldFuO4Dt
+ 91pFzBSOIpeMtfgb/Pfe/a1WJ/GgaIRIBE+NUqckM+3zJHGmVPqJP/h2Iwv6nw8U+7Yyl6gU
+ BLHFTg2hYnLFJI4Xjg+AX1hHFVKmvl3VBHIsBv0oDcsQWXqY+NaFahT0lRPjYtrTa1v3tem/
+ JoFzZ4B0p27K+qQCF2R96hVvuEyjzBmdq2esyE6zIqftdo4MOJho8uctOiWbwNNq2U9pPWmu
+ 4vXVFBYIGmpyNPYzRm0QPwARAQABwsF8BBgBCgAmAhsMFiEEm9B+DgxR+NWWd7dUG5NDfTtB
+ YpsFAmA872oFCRRflLYACgkQG5NDfTtBYpvScw/9GrqBrVLuJoJ52qBBKUBDo4E+5fU1bjt0
+ Gv0nh/hNJuecuRY6aemU6HOPNc2t8QHMSvwbSF+Vp9ZkOvrM36yUOufctoqON+wXrliEY0J4
+ ksR89ZILRRAold9Mh0YDqEJc1HmuxYLJ7lnbLYH1oui8bLbMBM8S2Uo9RKqV2GROLi44enVt
+ vdrDvo+CxKj2K+d4cleCNiz5qbTxPUW/cgkwG0lJc4I4sso7l4XMDKn95c7JtNsuzqKvhEVS
+ oic5by3fbUnuI0cemeizF4QdtX2uQxrP7RwHFBd+YUia7zCcz0//rv6FZmAxWZGy5arNl6Vm
+ lQqNo7/Poh8WWfRS+xegBxc6hBXahpyUKphAKYkah+m+I0QToCfnGKnPqyYIMDEHCS/RfqA5
+ t8F+O56+oyLBAeWX7XcmyM6TGeVfb+OZVMJnZzK0s2VYAuI0Rl87FBFYgULdgqKV7R7WHzwD
+ uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
+ 7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
+ 5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
+In-Reply-To: <20240731-jacuzzi_dt-v2-2-4995335daa30@chromium.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240731_005547_252449_48E91983 
-X-CRM114-Status: GOOD (  44.31  )
+X-CRM114-CacheID: sfid-20240731_011635_275228_48894236 
+X-CRM114-Status: GOOD (  15.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,180 +117,48 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Linux regressions mailing list <regressions@lists.linux.dev>, linux-kernel@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Frank Wunderlich <linux@fw-web.de>, Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 31/07/2024 08:29, Krzysztof Kozlowski wrote:
-> On 30/07/2024 18:38, Arınç ÜNAL wrote:
->> On 30/07/2024 19:04, Krzysztof Kozlowski wrote:
->>> On 30/07/2024 13:22, arinc.unal@arinc9.com wrote:
->>>>>>>
->>>>>>> Reminder: try to not see a revert as a bad thing. It's just means
->>>>>>> "not
->>>>>>> ready yet, revert and we'll try again later" -- that's actually
->>>>>>> something Linus wrote just a few hours ago:
->>>>>>> https://lore.kernel.org/lkml/CAHk-=wgQMOscLeeA3QXOs97xOz_CTxdqJjpC20tJ-7bUdHWtSA@mail.gmail.com/
->>>>>>
->>>>>> Except it is ready and trying again is my responsibility, which means
->>>>>> unnecessary work for me to do. I've already got a ton of things to do.
->>>>>> Applying the device tree patch resolves this regression; no reverts
->>>>>> needed.
->>>>>> And then there's the patch in the works by Daniel that will address
->>>>>> all the
->>>>>> remaining cases outside of the reported regression.
->>>>>>
->>>>>
->>>>> The commit that fixes your breakage in a way that does *not* please me
->>>>> (because of older devicetrees being still broken with the new driver)
->>>>> was
->>>>> picked and it is in v6.11-rc1.
->>>>>
->>>>> I had to do this because I value the community (in this case, the
->>>>> users) much
->>>>> more than trying to make an arrogant developer to act in a
->>>>> community-friendly
->>>>> manner while leaving things completely broken.
->>>>>
->>>>> That said, remembering that we're humans and, as such, it's normal to
->>>>> get something
->>>>> wrong during the development process, I want to remind you that:
->>>>>
->>>>>    1. A series that creates regressions is *not* good and *not* ready to
->>>>> be
->>>>>       upstreamed; and
->>>>>    2. As a maintainer, you have the responsibility of not breaking the
->>>>> kernel,
->>>>>       not breaking devices and not breaking currently working
->>>>> functionality; and
->>>>>    3. Devicetrees being wrong (but working) since day 0 is not an excuse
->>>>> to break
->>>>>       functionality; and
->>>>>    4. Blaming the one who introduced the devicetree (you're doing that,
->>>>> since you
->>>>>       are blaming the devicetree being wrong) isn't solving anything and
->>>>> will not
->>>>>       magically make your code acceptable or good; and
->>>>>    5. If you push a wrong commit, there's nothing to be ashamed of; and
->>>>>    6. If you make a mistake, you should recognize that and find a way to
->>>>>       make things right, that should be done for the community, not for
->>>>>       yourself; and
->>>>>    7. You shall respect the community: in this case, with your arrogant
->>>>> behavior
->>>>>       you did *not* respect the users.
->>>>>
->>>>> P.S.: The right way of making such change is to:
->>>>>         1. Avoid breaking currently working devices by making sure that
->>>>> their DT
->>>>>            still works with the new driver; and
->>>>>         2. If breakage is unavoidable, make it so one kernel version has
->>>>> a fix that
->>>>>            works with both old and new driver, and the next version
->>>>> introduces the
->>>>>            breakage. N.2 should ideally never happen, anyway.
->>>>>
->>>>> Let's wrap up this matter now - I don't want to spend any more word,
->>>>> nor time,
->>>>> on this, as I really have nothing else to say.
->>>>>
->>>>> Best regards,
->>>>> Angelo
->>>>
->>>> To be clear, I only became aware that my patch was picked by reading
->>>> this
->>>> email. It is clear that we have different views. To that extend, all of
->>>> what you have written above can be answered to by reading what I have
->>>> already written in this thread. Therefore, I don't see any wrongdoing
->>>> from
->>>> my side and invite everyone to fully read this thread to draw their own
->>>> conclusions; something you seem not to have done. And I'm not the one,
->>>> calling people names here. I can only offer my respect for hard working
->>>> people.
->>>>
->>>> In my view, your behaviour of not applying a devicetree patch before a
->>>> Linux driver patch was applied, and then not replying to any arguments
->>>> whatsoever, was keeping the devicetree files hostage until your demands
->>>
->>> Hm, why ever DTS patch should be applied before driver patch is? This
->>> clearly suggests ABI break. You proposed to fix ABI issue by fixing DTS,
->>> which is not the way, because it literally fixes nothing. You got
->>> comments - fix the driver to be backwards compatible.
->>
->> As I argued in this thread, I see no ABI issue here. I proposed to fix
->> broken devicetrees, nothing more. Please read the full thread to understand
->> where I'm coming from.
+On 31/07/2024 08:26, Hsin-Te Yuan wrote:
+> Cerise is known as ASUS Chromebook CZ1.
+> Stern is known as ASUS Chromebook Flip CZ1.
 > 
-> I read most of it and it does suggest ABI break. But even if you do not
-> focus on that aspect, your suggestion that DTS should be applied before
-> driver patch is just wrong. It was never like this and it must not be
-> like this.
+> They are almost identical. The only difference is that Cerise is a
+> clamshell device without touchscreen and Stern is a convertible device.
 > 
-> Best regards,
-> Krzysztof
+> Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
+> ---
+>  Documentation/devicetree/bindings/arm/mediatek.yaml | 14 ++++++++++++++
+>  1 file changed, 14 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
+> index 1d4bb50fcd8d..087773a43673 100644
+> --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
+> +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
+> @@ -146,6 +146,20 @@ properties:
+>          items:
+>            - const: google,burnet
+>            - const: mediatek,mt8183
+> +      - description: Google Cerise (ASUS Chromebook CZ1)
+> +        items:
+> +          - enum:
+> +              - google,cerise-sku0
+> +              - google,cerise-rev3-sku0
+> +          - const: google,cerise
+> +          - const: mediatek,mt8183
+> +      - description: Google Stern (ASUS Chromebook Flip CZ1)
+> +        items:
+> +          - enum:
+> +              - google,cerise-sku1
+> +              - google,cerise-rev3-sku1
+> +          - const: google,cerise
 
-I will use the ABI, bindings, and dt-bindings terms synonymously here.
+Why not google,stern? If this is not compatible with cerise and has
+different name, I think logical would be to have different compatible -
+either here or the first one.
 
-Let's discuss the Devicetree Specification Releasev0.4. In 2.1, it is
-stated that DTSpec specifies a construct called a devicetree to describe
-system hardware. A boot program loads a devicetree into a client program’s
-memory and passes a pointer to the devicetree to the client.
+Best regards,
+Krzysztof
 
-A devicetree is a tree data structure with nodes that describe the devices
-in a system. Each node has property/value pairs that describe the
-characteristics of the device being represented. Each node has exactly one
-parent except for the root node, which has no parent. A device in this
-context may be an actual hardware device, such as a UART. It may be part of
-a hardware device, such as the random-number generator in a TPM. It may
-also be a device provided through virtualisation, such as a protocol
-providing access to an I2C device attached to a remote CPU. A device may
-include functions implemented by firmware running in higher privilege
-levels or remote processors. There is no requirement that nodes in a device
-tree be a physical hardware device, but generally they have some
-correlation to physical hardware devices. Nodes should not be designed for
-OS- or project- specific purposes. They should describe something which can
-be implemented by any OS or project.
-
-As read here, devicetree design is not to be influenced by any project.
-That would mean that bindings and devicetree source files are described
-first, then the implementation is made by any OS or project. To be specific
-to the case here, it makes no sense to hold a patch that fixes a devicetree
-source file until a Linux driver patch is taken in.
-
-I think the dt-bindings and the DT source files being hosted on the Linux
-repository greatly contributes to this false impression that Linux drivers
-have any influence over the design of bindings or fixing DT source files
-that did not comply with the bindings. That is why I'm looking forward to
-the efforts to take dt-bindings and DT source files out of the Linux
-repository into its own, separate repository. This would be a great step in
-addressing all the project-dependent bindings of Linux, U-Boot, OpenWrt,
-and all other projects, to have a single, unified repository to describe
-all the hardware that exists in the world.
-
-One of the concepts of the devicetree architecture is that a boot program
-can describe and communicate system hardware information to a client
-program, thus eliminating the need for the client program to have
-hard-coded descriptions of system hardware. Not only eliminate the need of
-that, but allow hardware with a different value for the description than
-what was hard-coded.
-
-A driver change cannot possibly break ABI because it's the implementation
-being changed, not the bindings. The implementation change can be so that
-it breaks compliance with the bindings. Which is not the case with the
-change made in the Linux driver in question. I have eliminated the
-hard-coded description from the Linux driver. That did not break compliance
-with the bindings. Instead, the implementation change made the driver
-compliant with the bindings; specifically, the description where the reg
-value represents the PHY address of the switch.
-
-It is important to note that old devicetrees that abided to the bindings
-still work after the Linux driver change. This is also, of course, the case
-for any DT source files hosted out of the Linux repository.
-
-Therefore, the correct path forward was to correct the DT source files that
-include values for descriptions that do not reflect the hardware it
-describes. Which is eventually what happened here. To be more specific, we
-fixed the incorrect description of the switch's PHY address on the DT
-source file as, on the hardware, the switch listens on PHY address 0x1f.
-
-Arınç
 
