@@ -4,92 +4,127 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BA1AC3DA7F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 31 Jul 2024 15:35:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96111C3DA64
+	for <linux-mediatek@archiver.kernel.org>; Wed, 31 Jul 2024 16:50:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0haZW6xREx05oo/OttdLfNmKhaLURqoiJ3M1lL9b6hs=; b=3RlHqw6XUcbLN4uc6U6FRRQlYe
-	zlRF3WEzKHWF54zRK0/CjE3T+/Kexts0gQW9aqumoNhEbQPWmCIxSrkoJ8oRacFN/KAP8ad7QLSRs
-	jQVE+/zAvvtY6W/RBuvO8N0q7EKjHllchbzRe7eJ7wKsbLiJTKHXldy5/jC1E6CjWVLjHN+4NgThS
-	PkIZ5wVb791jH6dDHmikshBtBpgNmcqx5pMLXK0jXKI6xqOyPuZsiz3DszQCpktfLBZs0AeVeslqU
-	sPxM3+Bsk/+JJzmZXyF9Xr7YnkGF+TLbrpA3DVGosA5IEFl7RI6UVvVjwvzg0m9dF09enSS8zcD08
-	kw2n71TQ==;
+	bh=i4FOrfV1l7BKxCPZUoQf3NPiZFza4ZSAF1h06EoweTg=; b=Y3vLtRC2sfmGYlY9bMchbS+5Rr
+	+MIZuLBNgv9ZpQdly1xb+zH4mPqPWgunnj1wBTZNhAsX6AfGfV1RmUFSpHs16oTFKe+HiqL5PYPeS
+	ljlo2jVLoOSuBF4wUTLFE1Q3/kRaKbk/Sr+62WBx3XuTgdNQZ5VmPo5dEQjr1vkCsIlGu6GbuEsMA
+	+lbTcUr75T3HG/QaDCPXw3BY6RavkphLmR33F5xXUT4H54vWQbQeDkmcpYmYGLce8gIvzkWOcCfsT
+	EZRZfaSnxuC6Z91GZrjcuNCJ9zQDU9YUmEfXqBJc3Nvu2yzh9Mu/pJkG9HuzxxZMFL7DfDTuVxQ4j
+	d8i/6sKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZBMQ-00000001k4s-3Dzs;
-	Wed, 31 Jul 2024 15:35:30 +0000
-Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
+	id 1sZCWp-00000001uek-2L32;
+	Wed, 31 Jul 2024 16:50:19 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZBLj-00000001jpB-3sT1
-	for linux-mediatek@lists.infradead.org;
-	Wed, 31 Jul 2024 15:35:08 +0000
-Received: by mail-ej1-x62d.google.com with SMTP id a640c23a62f3a-a7a9185e1c0so576817766b.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 31 Jul 2024 08:34:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1722440085; x=1723044885; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=0haZW6xREx05oo/OttdLfNmKhaLURqoiJ3M1lL9b6hs=;
-        b=dCLBHuNas81Nt86ipQ71Fp0Evun0YHovPdBQK0lZqad94ypDF4SQ3RJ1wQt7+gd1hQ
-         K3gzpuKnQrhWThUs9UNcraYxM3Ms320HXbHebGBuJI7dC2o7ZSV2znUqMX/4FlKtaRvO
-         xskWszsTSDD76idgwW6eLFGxzsHT0Ec4jQD559kKCmT6jeyBUJFRQu0embvzEUqCgib3
-         Pc0n9ADtqAwp5tmfncvzXEwMpYbCHP3ycBv+EeVIBzm6n8EEEDEmwDojHVnJ9QErCU6V
-         TMWaT+8Ek7JTNE/+HJ7nW055Sc9khTrKyhWZQ/vtxF4ieK4w5jAnwvYQ5S7BhFd4ULIh
-         Mf8Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1722440085; x=1723044885;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=0haZW6xREx05oo/OttdLfNmKhaLURqoiJ3M1lL9b6hs=;
-        b=ZX6oamp/fkeBEWbBCN+qvtB8S8gkrJ887sfax1JIz61/i1W5TG9uopUjVi7VqTI0dk
-         uD5257qJS1/HnZYgaTzhH4IuLqZEk2d4uOFK+6bVwMQTEqyKx8+QZR0nSKLxcTkjHJmj
-         bItqInMgcYqqcXG6qggWELsxLxOp7Ek+8XobU75/4Zntz7iXiO2cS3sGxsXW1wRUEbDD
-         iKPr3RdJFA5Iw3RpWtIa58oSg7MZUTzwge+vAUfWvh6yOr9NcxnjnGxcp2n9G94E5fib
-         lTFXm8Gd9IexavGDfDs6mjygXQoRSc5wM66guTuvrmVCItT5q4ejENbKpnyKGWXLahJm
-         DGqg==
-X-Forwarded-Encrypted: i=1; AJvYcCV3JG4J7xIZTh0z7vuTL7lu7OtzjQoYHaFlP8IK/IHGQI90m0VnOdgiKsNjUVEjTPuxkfrd5YqUbKh9EY5cTQ4OIJ2z/+TwMOI95Ll7aqM70RCC
-X-Gm-Message-State: AOJu0YxCh/Q9AwV+LoRsysFtx7Fbqysvn96BdsXCWygH7amnz/RrYDv9
-	7nTMSN12GzHGM8ErcZTqATte8X0qRo9fFCy7UESqnK/ogoqc3at4kZdz7iDebZA=
-X-Google-Smtp-Source: AGHT+IGEPSvbY32kvTP+Dedi5GlwS7ioq6a9GjXU2i8Z1P0SOaRgOy+7IlOcspRR43306XeEquyROQ==
-X-Received: by 2002:a17:907:7286:b0:a77:f2c5:84a9 with SMTP id a640c23a62f3a-a7d3fffb6f5mr1155473266b.18.1722440085443;
-        Wed, 31 Jul 2024 08:34:45 -0700 (PDT)
-Received: from [192.168.1.68] (120.205.87.79.rev.sfr.net. [79.87.205.120])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a7acab22bfdsm782913866b.34.2024.07.31.08.34.43
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 31 Jul 2024 08:34:44 -0700 (PDT)
-Message-ID: <abefa449-c0bc-4b58-89b8-d4272f7774f6@baylibre.com>
-Date: Wed, 31 Jul 2024 17:34:43 +0200
+	id 1sZCWK-00000001uXa-2xX3;
+	Wed, 31 Jul 2024 16:49:50 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 642D4CE1799;
+	Wed, 31 Jul 2024 16:49:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1CC70C4AF0B;
+	Wed, 31 Jul 2024 16:49:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1722444584;
+	bh=GoGpfDsJGUlLUHeMRPIkNHxSgCdvJq6sAO0/AHmn9kc=;
+	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
+	b=DQhUvlL4lyKEOyf7PSa65UIn9YtO73CaiIY8uAs+7T8zGVjsjk3L14LeklnKlDwsz
+	 MsZXsUXVOKQmOnKtoyMBajTQ2Lq2qqgAjaxaQEAQ4lL1W5e9TarX9XUMLOsRPwJ7vY
+	 Tqa00LO384iHUPg8CKwhC8i/z7mS5PJoRxkGur8tWrdZ8PX/7bHXj4dE5I1r2n8zPt
+	 gVre/6LdJ/i/O4x02eh580/sHzCN6f+L2FKAqwlW6YQj1RUqEXnsnjq441pL5X+l6y
+	 4eRTek8JnpDrnEHkbsvRmvXChpn+53tULNC4Z8Ia+76+9CXEV5aiONJAewGviuUkrl
+	 ewafshKjc3Bgw==
+Message-ID: <42335d10-50a4-439b-b112-ca27c48aca6d@kernel.org>
+Date: Wed, 31 Jul 2024 18:49:35 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: (subset) [PATCH v7 0/6] Mediatek thermal sensor driver support
- for MT8186 and MT8188
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Daniel Lezcano <daniel.lezcano@linaro.org>,
- Nicolas Pitre <npitre@baylibre.com>, "Rafael J. Wysocki"
- <rafael@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
- Lukasz Luba <lukasz.luba@arm.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-pm@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>,
- Conor Dooley <conor.dooley@microchip.com>
-References: <20240603-mtk-thermal-mt818x-dtsi-v7-0-8c8e3c7a3643@baylibre.com>
- <171826604410.51825.14935271158174620262.b4-ty@collabora.com>
+Subject: Re: [PATCH v2 1/2] dt-bindings: remoteproc: Support multiple reserved
+ memory regions
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: =?UTF-8?B?U2h1bi1ZaSBXYW5nICjnjovpoIblhIQp?= <Shun-Yi.Wang@mediatek.com>,
+ "robh@kernel.org" <robh@kernel.org>,
+ "mathieu.poirier@linaro.org" <mathieu.poirier@linaro.org>,
+ "andersson@kernel.org" <andersson@kernel.org>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "linux-remoteproc@vger.kernel.org" <linux-remoteproc@vger.kernel.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ =?UTF-8?B?SmFzb24tY2ggQ2hlbiAo6Zmz5bu66LGqKQ==?=
+ <Jason-ch.Chen@mediatek.com>, =?UTF-8?B?WWF5YSBDaGFuZyAo5by16ZuF5riFKQ==?=
+ <Yaya.Chang@mediatek.com>, "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ =?UTF-8?B?VGVkZHkgQ2hlbiAo6Zmz5Lm+5YWDKQ==?= <Teddy.Chen@mediatek.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
+ "angelogioacchino.delregno@collabora.com"
+ <angelogioacchino.delregno@collabora.com>,
+ =?UTF-8?B?VGluZ0hhbiBTaGVuICjmsojlu7fnv7Ap?= <TingHan.Shen@mediatek.com>
+References: <20240731121730.1196-1-shun-yi.wang@mediatek.com>
+ <20240731121730.1196-2-shun-yi.wang@mediatek.com>
+ <daadc099-4c07-4dda-9caa-662583629cde@kernel.org>
+ <6163500e4457715e04d520b7287517acf2ab1dc7.camel@mediatek.com>
+ <428063ec-44a8-4dca-8891-4a35e6d29056@kernel.org>
 Content-Language: en-US
-From: Julien Panis <jpanis@baylibre.com>
-In-Reply-To: <171826604410.51825.14935271158174620262.b4-ty@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Autocrypt: addr=krzk@kernel.org; keydata=
+ xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
+ cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
+ JMp7PSyMPzpUXfU12yfcRYVEMQrmplNZssmYhiTeVicuOOypWugZKVLGNm0IweVCaZ/DJDIH
+ gNbpvVwjcKYrx85m9cBVEBUGaQP6AT7qlVCkrf50v8bofSIyVa2xmubbAwwFA1oxoOusjPIE
+ J3iadrwpFvsZjF5uHAKS+7wHLoW9hVzOnLbX6ajk5Hf8Pb1m+VH/E8bPBNNYKkfTtypTDUCj
+ NYcd27tjnXfG+SDs/EXNUAIRefCyvaRG7oRYF3Ec+2RgQDRnmmjCjoQNbFrJvJkFHlPeHaeS
+ BosGY+XWKydnmsfY7SSnjAzLUGAFhLd/XDVpb1Een2XucPpKvt9ORF+48gy12FA5GduRLhQU
+ vK4tU7ojoem/G23PcowM1CwPurC8sAVsQb9KmwTGh7rVz3ks3w/zfGBy3+WmLg++C2Wct6nM
+ Pd8/6CBVjEWqD06/RjI2AnjIq5fSEH/BIfXXfC68nMp9BZoy3So4ZsbOlBmtAPvMYX6U8VwD
+ TNeBxJu5Ex0Izf1NV9CzC3nNaFUYOY8KfN01X5SExAoVTr09ewARAQABzSVLcnp5c3p0b2Yg
+ S296bG93c2tpIDxrcnprQGtlcm5lbC5vcmc+wsGVBBMBCgA/AhsDBgsJCAcDAgYVCAIJCgsE
+ FgIDAQIeAQIXgBYhBJvQfg4MUfjVlne3VBuTQ307QWKbBQJgPO8PBQkUX63hAAoJEBuTQ307
+ QWKbBn8P+QFxwl7pDsAKR1InemMAmuykCHl+XgC0LDqrsWhAH5TYeTVXGSyDsuZjHvj+FRP+
+ gZaEIYSw2Yf0e91U9HXo3RYhEwSmxUQ4Fjhc9qAwGKVPQf6YuQ5yy6pzI8brcKmHHOGrB3tP
+ /MODPt81M1zpograAC2WTDzkICfHKj8LpXp45PylD99J9q0Y+gb04CG5/wXs+1hJy/dz0tYy
+ iua4nCuSRbxnSHKBS5vvjosWWjWQXsRKd+zzXp6kfRHHpzJkhRwF6ArXi4XnQ+REnoTfM5Fk
+ VmVmSQ3yFKKePEzoIriT1b2sXO0g5QXOAvFqB65LZjXG9jGJoVG6ZJrUV1MVK8vamKoVbUEe
+ 0NlLl/tX96HLowHHoKhxEsbFzGzKiFLh7hyboTpy2whdonkDxpnv/H8wE9M3VW/fPgnL2nPe
+ xaBLqyHxy9hA9JrZvxg3IQ61x7rtBWBUQPmEaK0azW+l3ysiNpBhISkZrsW3ZUdknWu87nh6
+ eTB7mR7xBcVxnomxWwJI4B0wuMwCPdgbV6YDUKCuSgRMUEiVry10xd9KLypR9Vfyn1AhROrq
+ AubRPVeJBf9zR5UW1trJNfwVt3XmbHX50HCcHdEdCKiT9O+FiEcahIaWh9lihvO0ci0TtVGZ
+ MCEtaCE80Q3Ma9RdHYB3uVF930jwquplFLNF+IBCn5JRzsFNBFVDXDQBEADNkrQYSREUL4D3
+ Gws46JEoZ9HEQOKtkrwjrzlw/tCmqVzERRPvz2Xg8n7+HRCrgqnodIYoUh5WsU84N03KlLue
+ MNsWLJBvBaubYN4JuJIdRr4dS4oyF1/fQAQPHh8Thpiz0SAZFx6iWKB7Qrz3OrGCjTPcW6ei
+ OMheesVS5hxietSmlin+SilmIAPZHx7n242u6kdHOh+/SyLImKn/dh9RzatVpUKbv34eP1wA
+ GldWsRxbf3WP9pFNObSzI/Bo3kA89Xx2rO2roC+Gq4LeHvo7ptzcLcrqaHUAcZ3CgFG88CnA
+ 6z6lBZn0WyewEcPOPdcUB2Q7D/NiUY+HDiV99rAYPJztjeTrBSTnHeSBPb+qn5ZZGQwIdUW9
+ YegxWKvXXHTwB5eMzo/RB6vffwqcnHDoe0q7VgzRRZJwpi6aMIXLfeWZ5Wrwaw2zldFuO4Dt
+ 91pFzBSOIpeMtfgb/Pfe/a1WJ/GgaIRIBE+NUqckM+3zJHGmVPqJP/h2Iwv6nw8U+7Yyl6gU
+ BLHFTg2hYnLFJI4Xjg+AX1hHFVKmvl3VBHIsBv0oDcsQWXqY+NaFahT0lRPjYtrTa1v3tem/
+ JoFzZ4B0p27K+qQCF2R96hVvuEyjzBmdq2esyE6zIqftdo4MOJho8uctOiWbwNNq2U9pPWmu
+ 4vXVFBYIGmpyNPYzRm0QPwARAQABwsF8BBgBCgAmAhsMFiEEm9B+DgxR+NWWd7dUG5NDfTtB
+ YpsFAmA872oFCRRflLYACgkQG5NDfTtBYpvScw/9GrqBrVLuJoJ52qBBKUBDo4E+5fU1bjt0
+ Gv0nh/hNJuecuRY6aemU6HOPNc2t8QHMSvwbSF+Vp9ZkOvrM36yUOufctoqON+wXrliEY0J4
+ ksR89ZILRRAold9Mh0YDqEJc1HmuxYLJ7lnbLYH1oui8bLbMBM8S2Uo9RKqV2GROLi44enVt
+ vdrDvo+CxKj2K+d4cleCNiz5qbTxPUW/cgkwG0lJc4I4sso7l4XMDKn95c7JtNsuzqKvhEVS
+ oic5by3fbUnuI0cemeizF4QdtX2uQxrP7RwHFBd+YUia7zCcz0//rv6FZmAxWZGy5arNl6Vm
+ lQqNo7/Poh8WWfRS+xegBxc6hBXahpyUKphAKYkah+m+I0QToCfnGKnPqyYIMDEHCS/RfqA5
+ t8F+O56+oyLBAeWX7XcmyM6TGeVfb+OZVMJnZzK0s2VYAuI0Rl87FBFYgULdgqKV7R7WHzwD
+ uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
+ 7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
+ 5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
+In-Reply-To: <428063ec-44a8-4dca-8891-4a35e6d29056@kernel.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240731_083448_009070_07A2BC2A 
-X-CRM114-Status: GOOD (  13.62  )
+X-CRM114-CacheID: sfid-20240731_094949_132640_A7FCA331 
+X-CRM114-Status: UNSURE (   9.47  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,47 +139,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 6/13/24 10:07, AngeloGioacchino Del Regno wrote:
-> On Mon, 03 Jun 2024 12:50:47 +0200, Julien Panis wrote:
->> This is a bunch of patches to support the MT8186 and MT8188 thermal
->> sensor configurations.
+On 31/07/2024 15:54, Krzysztof Kozlowski wrote:
+> On 31/07/2024 15:41, Shun-Yi Wang (王順億) wrote:
+>> Hi Krzysztof,
 >>
->> Since the patches of v3 were applied except those related to the SoC
->> device trees, this series includes mainly patches for 'mt8186.dtsi'
->> and 'mt8188.dtsi'. Due to some thermal zone renaming in these 2 device
->> trees, the related definitions were also renamed in the dt-bindings and
->> in the driver.
+>> Thanks for the reviews.
 >>
->> [...]
-> Applied to v6.10-next/dts64, thanks!
->
-> [3/6] arm64: dts: mediatek: mt8186: add lvts definitions
->        commit: 0c598e50e6c823c1057ddad17c546e368a415d6a
-> [4/6] arm64: dts: mediatek: mt8186: add default thermal zones
->        commit: d7c1bde38bf37a59551cfd52cfdb5bd974b17431
-> [5/6] arm64: dts: mediatek: mt8188: add lvts definitions
->        commit: 7e3e18f2ed40ea9018590b4533fa148954a725bc
-> [6/6] arm64: dts: mediatek: mt8188: add default thermal zones
->        commit: 2f950510411a33d98eea28c22d7880eeb48adb61
->
-> Cheers,
-> Angelo
->
+>> On Wed, 2024-07-31 at 14:40 +0200, Krzysztof Kozlowski wrote:
+>>>  	 
+>>> External email : Please do not click links or open attachments until
+>>> you have verified the sender or the content.
+>>>  On 31/07/2024 14:17, Shun-yi Wang wrote:
+>>>> From: "shun-yi.wang" <shun-yi.wang@mediatek.com>
+>>>>
+>>>> Remove the maximum number of 1 for memory regions.
+>>>
+>>> Why?
+>>>
+>>
+>> For future applications, MTK SCP will reserve multiple regions for
+>> specific hardware use.
+> 
+> That's not a reason to drop constrain on an entry.
 
-Hello Angelo,
+Maybe I was not that clear, so to explain more - entries must be
+constrained, so provide widest constraints in top-level properties place
+and narrow the constrains per variant in allOf:if:then: like:
 
-About this series, the DT patches were initially applied, but removed
-due to missing dt-bindings in linux-next[1].
+https://elixir.bootlin.com/linux/v6.8/source/Documentation/devicetree/bindings/ufs/qcom,ufs.yaml#L132
 
-But now the dt-bindings patches are applied in mainline[2].
+Best regards,
+Krzysztof
 
-Would it be possible to re-apply the dts patches please ?
-
-[1] https://lore.kernel.org/all/ZnBn-vSj-ssrJFr2@sirena.org.uk/
-
-[2] https://git.kernel.org/pub/scm/linux/kernel/git/thermal/linux.git/log/?h=thermal/linux-next
-4262b8d782a7 ("dt-bindings: thermal: mediatek: Fix thermal zone definition for MT8186")
-744ca11f52e5 ("dt-bindings: thermal: mediatek: Fix thermal zone definitions for MT8188")
-
-Julien
 
