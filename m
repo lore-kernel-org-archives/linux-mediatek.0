@@ -4,85 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1ED51C3DA64
-	for <linux-mediatek@archiver.kernel.org>; Wed, 31 Jul 2024 10:48:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C00A1C3DA64
+	for <linux-mediatek@archiver.kernel.org>; Wed, 31 Jul 2024 11:06:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3qem02ElTOfIEGBZ9hs4Pgv/bXYxn4uT7NZSUdA1BxY=; b=qytCYZYxAaaaUq3cYg9mYVu27V
-	/lcwDFtN/PAVFSjAhKVIf6LwA2n6eGeAIPWOpofxY/5KTEG80t7PuHigQy+79qXAKFP4Hp6zjoExV
-	2hKnebLA3mViF8D5c4cmgTlHIEqCz3gefpR0Qsl7JCmX/vZlD5Przbj3SEEvW36dJOVTNjWXV/Hyb
-	ShghyGis2rMndFFTYWsfd3ymm0S7NVrJfh5D3AKyKFiflA5LSgfqhGex5zsR+3wWX4jI27JQshXSe
-	JAY6fX+YNQUrosDBB6idLYOzWwYx2rtQ3IOMKlu/vlaAq7MH3In+BoYl1p4wxIBhL6KvKEWyUectF
-	zTpMbV3Q==;
+	bh=uGAy4secy6bjfj6YJhl17c7xYg/NMC5HfF3Bj9KpL5A=; b=arS9Gs0B77laxMJtVvZODSZekY
+	K35BowqfAbIrVbUXJFUUIzc1erjNVqr5RtG/KjNXE0MrLwXPt42Wfd7RC8QFdD/Jz5PD6DyDDWqso
+	9W1Il4ciagq4qePS1X3JfyrIGF3or3oolgshTSRO5fgrL4fqixRrFvdSu4V5Fgfc9GZvCfL4ZgY+h
+	P7Hnmtm4l+HxPmEj6F/zRiSQ1K4n2V1Z3rlYEbdY2W1UzmOukhlXL9M9gF+nR9uAUPi3QMSnIuNZu
+	Yx30UtzEYlheh/KZyiRj+jUM0Eyr/kT8kEs7xgHpzwNg8lPHKZfj86tgr2+5pj+eMG3PCSl5/BC0/
+	CyrjdPNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZ6sd-00000000mfW-2w7Q;
-	Wed, 31 Jul 2024 10:48:27 +0000
-Received: from mail-oi1-x233.google.com ([2607:f8b0:4864:20::233])
+	id 1sZ79n-00000000pYT-0JGo;
+	Wed, 31 Jul 2024 11:06:11 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZ6rn-00000000mQM-2Fuo
-	for linux-mediatek@lists.infradead.org;
-	Wed, 31 Jul 2024 10:47:36 +0000
-Received: by mail-oi1-x233.google.com with SMTP id 5614622812f47-3db1e21b0e4so3562278b6e.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 31 Jul 2024 03:47:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1722422854; x=1723027654; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=3qem02ElTOfIEGBZ9hs4Pgv/bXYxn4uT7NZSUdA1BxY=;
-        b=msit7je+ThGnPK6P+agMkPCzn8nht9ElkUiOi6EsyM8EE2OtDMszhnUjqGQdeidgar
-         ZkzAnpLXKnD8UUS4egSq6I5yWDMu2oduYblCmIzTVpeRw4iOON32NXTpkpM5TFGxB+Gy
-         Ij0tja9jlAo/uDFd+raK7taa9clMTUWIBSf54=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1722422854; x=1723027654;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=3qem02ElTOfIEGBZ9hs4Pgv/bXYxn4uT7NZSUdA1BxY=;
-        b=w1mnG89BcCg8Ps4ybDrXS2Ahcr/+CZuO8+pGk1UbIETyU/nW9+Yk66aDz2qcL3v6zZ
-         NSdcZub1f4Q64LQEHpcAFcWyvIik8HllKY5fn63H35jKg7y3Mz++HNiokbnQw4f/IF72
-         CYX+fdLN5T2pYwMaf09d7a6ETAR4elw9EGnvNgo3fBVurDPcD3ryrPEeJGewmACAbefs
-         7W/SG7ZsiIR7FSB2t+1INUpzkjX/9sAfFOxCzX3NPM3fDFjAjb2NdRKYwRn+joygUVXZ
-         vHZ7UuPhTArsYjYnS/altf5VF9beMUn+ByWEcvFVrlDolI+4ym11Wp/7hZNuLtWwuFIF
-         iKOg==
-X-Forwarded-Encrypted: i=1; AJvYcCXPNRPBkBF6ugsficDeQygLEsVGBJ16k5jLQFBLIB8qPzMWRxv7fD2NMLlSE8S4ek4noOWcYbx2OqjR3DK1i975e+cU7p1zEJBgnuwgWA8fK8Z6
-X-Gm-Message-State: AOJu0YwElTI5XmOpZm3//RuycJKEJxuktug/7yj8lrWZPbVaQ1Bu68G5
-	+JB9LEAIOzk43H07CFmjAPQL0yD4Xc/6wG7h06NmGzUls1dM8tIlu3qQ8CpSFg==
-X-Google-Smtp-Source: AGHT+IH5bC6y2xO5nokTVAVKXYLk/DLl9mJhg1O6q+f7058Iueo2iMjXfYVgLff9hn3UfbyamVgNaQ==
-X-Received: by 2002:a05:6808:2185:b0:3db:1db4:5b1d with SMTP id 5614622812f47-3db23a640d1mr14284005b6e.48.1722422854540;
-        Wed, 31 Jul 2024 03:47:34 -0700 (PDT)
-Received: from yuanhsinte.c.googlers.com (46.165.189.35.bc.googleusercontent.com. [35.189.165.46])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-7a9fa5a0bcesm8788400a12.89.2024.07.31.03.47.32
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 31 Jul 2024 03:47:33 -0700 (PDT)
-From: Hsin-Te Yuan <yuanhsinte@chromium.org>
-Date: Wed, 31 Jul 2024 10:47:26 +0000
-Subject: [PATCH v3 2/2] dt-bindings: arm64: mediatek: Add
- kukui-jacuzzi-cerise board
+	id 1sZ79K-00000000pQM-0Fpr;
+	Wed, 31 Jul 2024 11:05:43 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 35091CE137F;
+	Wed, 31 Jul 2024 11:05:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E00F7C116B1;
+	Wed, 31 Jul 2024 11:05:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1722423939;
+	bh=xFeWmt0lCu7DCurnFG/E+GW2S+Doc2pe0dmmRONG6gE=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=tMNWaVYrcnPMbF2LTmtTyA7nF3B4Fih0u2TeHD7mbbZirqAhpdA6KWNCo6NBC08f1
+	 HoXnBDTQy/th9PBv10On+yYijjdkh0IpY9gN5XIjUvvIwTACBExrXJiLPe5hbs0l1u
+	 w5uvYKzZ0/IcLp8SiU5alEBZpi/aQzrbPawexByNePA/AUVgBYK7e9ITo2fY5E7ccN
+	 ETAThn2fMB1STEKMCVPxGpvjePivno2v0LV3hvTMa1DB2i5pP8KSOCHP2ZHzzVINSR
+	 ZULUQCcmBKCAGLQpcuEgesYJuzUnE8DsHDO6+grTlLmnLXCLpBi3DS4iQzmqZcIh3J
+	 ixsFIQK/kPP8A==
+Message-ID: <ec80640b-2f50-4857-b957-1008a87617e5@kernel.org>
+Date: Wed, 31 Jul 2024 13:05:34 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20240731-jacuzzi_dt-v3-2-1c4314e8962f@chromium.org>
-References: <20240731-jacuzzi_dt-v3-0-1c4314e8962f@chromium.org>
-In-Reply-To: <20240731-jacuzzi_dt-v3-0-1c4314e8962f@chromium.org>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 2/2] dt-bindings: arm64: mediatek: Add
+ kukui-jacuzzi-cerise board
+To: Hsin-Te Yuan <yuanhsinte@chromium.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  Sean Wang <sean.wang@mediatek.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Hsin-Te Yuan <yuanhsinte@chromium.org>
-X-Mailer: b4 0.15-dev-a9570
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20240731-jacuzzi_dt-v3-0-1c4314e8962f@chromium.org>
+ <20240731-jacuzzi_dt-v3-2-1c4314e8962f@chromium.org>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
+ cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
+ JMp7PSyMPzpUXfU12yfcRYVEMQrmplNZssmYhiTeVicuOOypWugZKVLGNm0IweVCaZ/DJDIH
+ gNbpvVwjcKYrx85m9cBVEBUGaQP6AT7qlVCkrf50v8bofSIyVa2xmubbAwwFA1oxoOusjPIE
+ J3iadrwpFvsZjF5uHAKS+7wHLoW9hVzOnLbX6ajk5Hf8Pb1m+VH/E8bPBNNYKkfTtypTDUCj
+ NYcd27tjnXfG+SDs/EXNUAIRefCyvaRG7oRYF3Ec+2RgQDRnmmjCjoQNbFrJvJkFHlPeHaeS
+ BosGY+XWKydnmsfY7SSnjAzLUGAFhLd/XDVpb1Een2XucPpKvt9ORF+48gy12FA5GduRLhQU
+ vK4tU7ojoem/G23PcowM1CwPurC8sAVsQb9KmwTGh7rVz3ks3w/zfGBy3+WmLg++C2Wct6nM
+ Pd8/6CBVjEWqD06/RjI2AnjIq5fSEH/BIfXXfC68nMp9BZoy3So4ZsbOlBmtAPvMYX6U8VwD
+ TNeBxJu5Ex0Izf1NV9CzC3nNaFUYOY8KfN01X5SExAoVTr09ewARAQABzSVLcnp5c3p0b2Yg
+ S296bG93c2tpIDxrcnprQGtlcm5lbC5vcmc+wsGVBBMBCgA/AhsDBgsJCAcDAgYVCAIJCgsE
+ FgIDAQIeAQIXgBYhBJvQfg4MUfjVlne3VBuTQ307QWKbBQJgPO8PBQkUX63hAAoJEBuTQ307
+ QWKbBn8P+QFxwl7pDsAKR1InemMAmuykCHl+XgC0LDqrsWhAH5TYeTVXGSyDsuZjHvj+FRP+
+ gZaEIYSw2Yf0e91U9HXo3RYhEwSmxUQ4Fjhc9qAwGKVPQf6YuQ5yy6pzI8brcKmHHOGrB3tP
+ /MODPt81M1zpograAC2WTDzkICfHKj8LpXp45PylD99J9q0Y+gb04CG5/wXs+1hJy/dz0tYy
+ iua4nCuSRbxnSHKBS5vvjosWWjWQXsRKd+zzXp6kfRHHpzJkhRwF6ArXi4XnQ+REnoTfM5Fk
+ VmVmSQ3yFKKePEzoIriT1b2sXO0g5QXOAvFqB65LZjXG9jGJoVG6ZJrUV1MVK8vamKoVbUEe
+ 0NlLl/tX96HLowHHoKhxEsbFzGzKiFLh7hyboTpy2whdonkDxpnv/H8wE9M3VW/fPgnL2nPe
+ xaBLqyHxy9hA9JrZvxg3IQ61x7rtBWBUQPmEaK0azW+l3ysiNpBhISkZrsW3ZUdknWu87nh6
+ eTB7mR7xBcVxnomxWwJI4B0wuMwCPdgbV6YDUKCuSgRMUEiVry10xd9KLypR9Vfyn1AhROrq
+ AubRPVeJBf9zR5UW1trJNfwVt3XmbHX50HCcHdEdCKiT9O+FiEcahIaWh9lihvO0ci0TtVGZ
+ MCEtaCE80Q3Ma9RdHYB3uVF930jwquplFLNF+IBCn5JRzsFNBFVDXDQBEADNkrQYSREUL4D3
+ Gws46JEoZ9HEQOKtkrwjrzlw/tCmqVzERRPvz2Xg8n7+HRCrgqnodIYoUh5WsU84N03KlLue
+ MNsWLJBvBaubYN4JuJIdRr4dS4oyF1/fQAQPHh8Thpiz0SAZFx6iWKB7Qrz3OrGCjTPcW6ei
+ OMheesVS5hxietSmlin+SilmIAPZHx7n242u6kdHOh+/SyLImKn/dh9RzatVpUKbv34eP1wA
+ GldWsRxbf3WP9pFNObSzI/Bo3kA89Xx2rO2roC+Gq4LeHvo7ptzcLcrqaHUAcZ3CgFG88CnA
+ 6z6lBZn0WyewEcPOPdcUB2Q7D/NiUY+HDiV99rAYPJztjeTrBSTnHeSBPb+qn5ZZGQwIdUW9
+ YegxWKvXXHTwB5eMzo/RB6vffwqcnHDoe0q7VgzRRZJwpi6aMIXLfeWZ5Wrwaw2zldFuO4Dt
+ 91pFzBSOIpeMtfgb/Pfe/a1WJ/GgaIRIBE+NUqckM+3zJHGmVPqJP/h2Iwv6nw8U+7Yyl6gU
+ BLHFTg2hYnLFJI4Xjg+AX1hHFVKmvl3VBHIsBv0oDcsQWXqY+NaFahT0lRPjYtrTa1v3tem/
+ JoFzZ4B0p27K+qQCF2R96hVvuEyjzBmdq2esyE6zIqftdo4MOJho8uctOiWbwNNq2U9pPWmu
+ 4vXVFBYIGmpyNPYzRm0QPwARAQABwsF8BBgBCgAmAhsMFiEEm9B+DgxR+NWWd7dUG5NDfTtB
+ YpsFAmA872oFCRRflLYACgkQG5NDfTtBYpvScw/9GrqBrVLuJoJ52qBBKUBDo4E+5fU1bjt0
+ Gv0nh/hNJuecuRY6aemU6HOPNc2t8QHMSvwbSF+Vp9ZkOvrM36yUOufctoqON+wXrliEY0J4
+ ksR89ZILRRAold9Mh0YDqEJc1HmuxYLJ7lnbLYH1oui8bLbMBM8S2Uo9RKqV2GROLi44enVt
+ vdrDvo+CxKj2K+d4cleCNiz5qbTxPUW/cgkwG0lJc4I4sso7l4XMDKn95c7JtNsuzqKvhEVS
+ oic5by3fbUnuI0cemeizF4QdtX2uQxrP7RwHFBd+YUia7zCcz0//rv6FZmAxWZGy5arNl6Vm
+ lQqNo7/Poh8WWfRS+xegBxc6hBXahpyUKphAKYkah+m+I0QToCfnGKnPqyYIMDEHCS/RfqA5
+ t8F+O56+oyLBAeWX7XcmyM6TGeVfb+OZVMJnZzK0s2VYAuI0Rl87FBFYgULdgqKV7R7WHzwD
+ uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
+ 7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
+ 5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
+In-Reply-To: <20240731-jacuzzi_dt-v3-2-1c4314e8962f@chromium.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240731_034735_623635_060E8D65 
-X-CRM114-Status: UNSURE (   9.61  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240731_040542_503358_10DE4E2F 
+X-CRM114-Status: GOOD (  13.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,47 +121,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Cerise is known as ASUS Chromebook CZ1.
-Stern is known as ASUS Chromebook Flip CZ1.
+On 31/07/2024 12:47, Hsin-Te Yuan wrote:
+> Cerise is known as ASUS Chromebook CZ1.
+> Stern is known as ASUS Chromebook Flip CZ1.
+> 
+> They are almost identical. The only difference is that Cerise is a
+> clamshell device without touchscreen and Stern is a convertible device.
+> 
+> Although the commercial names are different, the bootloader still
+> expects these cerise compatible strings even on stern.
+> 
+> Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
 
-They are almost identical. The only difference is that Cerise is a
-clamshell device without touchscreen and Stern is a convertible device.
+<form letter>
+This is a friendly reminder during the review process.
 
-Although the commercial names are different, the bootloader still
-expects these cerise compatible strings even on stern.
+It looks like you received a tag and forgot to add it.
 
-Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
----
- Documentation/devicetree/bindings/arm/mediatek.yaml | 14 ++++++++++++++
- 1 file changed, 14 insertions(+)
+If you do not know the process, here is a short explanation:
+Please add Acked-by/Reviewed-by/Tested-by tags when posting new
+versions, under or above your Signed-off-by tag. Tag is "received", when
+provided in a message replied to you on the mailing list. Tools like b4
+can help here. However, there's no need to repost patches *only* to add
+the tags. The upstream maintainer will do that for tags received on the
+version they apply.
 
-diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
-index 1d4bb50fcd8d..087773a43673 100644
---- a/Documentation/devicetree/bindings/arm/mediatek.yaml
-+++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
-@@ -146,6 +146,20 @@ properties:
-         items:
-           - const: google,burnet
-           - const: mediatek,mt8183
-+      - description: Google Cerise (ASUS Chromebook CZ1)
-+        items:
-+          - enum:
-+              - google,cerise-sku0
-+              - google,cerise-rev3-sku0
-+          - const: google,cerise
-+          - const: mediatek,mt8183
-+      - description: Google Stern (ASUS Chromebook Flip CZ1)
-+        items:
-+          - enum:
-+              - google,cerise-sku1
-+              - google,cerise-rev3-sku1
-+          - const: google,cerise
-+          - const: mediatek,mt8183
-       - description: Google Cozmo (Acer Chromebook 314)
-         items:
-           - const: google,cozmo
+https://elixir.bootlin.com/linux/v6.5-rc3/source/Documentation/process/submitting-patches.rst#L577
 
--- 
-2.46.0.rc1.232.g9752f9e123-goog
+If a tag was not added on purpose, please state why and what changed.
+</form letter>
+
+Best regards,
+Krzysztof
 
 
