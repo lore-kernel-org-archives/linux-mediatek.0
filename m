@@ -4,68 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90933C3DA7F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 31 Jul 2024 08:48:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54D7AC3DA64
+	for <linux-mediatek@archiver.kernel.org>; Wed, 31 Jul 2024 08:51:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vtPvUhcKt38IEwJhnL5ko32Kjhs/HoglrRIMkXvAOas=; b=Ov7r5VzKe5HwD/7+OtmftNYq41
-	+APHNzysqNLgp9YOrRhylSQbC6rlRWgcJtXO2uvaR5BtUGQ4hxntRFZIygM4/kurjxwDi6psblzhw
-	mNil0Xl3uElHUXMmJ4O+TjqQiuS7z0HVV/tGno0PAa8xHrzMBcqOg4gt3eFQpuFm6uWfdjyZQh0cF
-	p/iQ5rY5su3aUMSKD7MuL5Kos+myKFbbU+YrQuKUNIH7f0XQphCwhJL/yg7F6+EUukalvonKQFLJL
-	JupUxxuCXH/6+1GpBLZiBNs5dCChdilwNG+fa44jON4Yxfcs3Mb3zdXo7BmKaARwIDBF8kKo6bUUL
-	LcvcKbsA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:In-Reply-To:Date:References:Subject:Cc:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VvgFnLYSK3MCyItSwxElnfVP3fMzx1qE71NJQ+jaiE4=; b=A41S+PRg1ESoHA3u5M44J+swTG
+	pT4HqfdkmoFsFGVmrDcTncMmdeb0ElWDzfvdMyEy/7uPtxFhErCBrWc9FeaP3EKQelJvIKyjfMQqZ
+	O0nvBm4z0kG/UgIVS6op8Rs1Cau1YAlEjH+vEeAK5AAcQRoclxfbINPxYuXZ7hoIJY5Eq2ORzdtsh
+	XsL7fL1JDcmA6z+towQJhNvRn9oFAyRREGYgFm85sr2g9VOxuDtzVhW5fEYDIMYK5WVq+N2vGIwm1
+	QO7ADvRFXP3BkHROY4xoWmc4/yamJaIUm5/XuWkNFZLnuYCrGweiF1rThjDeaRMchrOMuLYNV9YpR
+	Hm/wXKTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZ50U-00000000NJn-2WMG;
-	Wed, 31 Jul 2024 08:48:26 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1sZ53s-00000000NvI-3vP8;
+	Wed, 31 Jul 2024 08:51:56 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZ501-00000000NDR-1j0h;
-	Wed, 31 Jul 2024 08:47:58 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1722415676;
-	bh=J1sOSME0u6roc/a+qPwtB9E24QMzJiJjbIjiPdJuLEI=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=eHF1CUo9Tpz2SIqoHSYcs7456H81OBUsVZLx6BNkBU5BriLDzbv62GM84XOQ1dzGl
-	 Y30xAP/z+AyVTY4DWsdsWAIGJy9OlnfBQU2O303CXN3N4GynXCTPoaeuwTjGRF4i9T
-	 kZ/LgLmap5rPeNHh6WESYaaAKkEzujwmVF22odyF7324oQ30NS4XpXGkVkIGAFv5eM
-	 5uJvvujNubK9V/svOMfHnt3ZAfkLba3xI3kuihe+4f1Cq5hgQqSDqcGRfyThYtUgtC
-	 bmCnmoj29+HsxDRfZ+hnYk3Mx8yAQLMP/zGV6WqYt7W4AEk/BH/llZw3hxI/wypzNL
-	 r+Jr1JNEIiDrg==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 6E9F8378000B;
-	Wed, 31 Jul 2024 08:47:55 +0000 (UTC)
-Message-ID: <909d4058-e3e9-4b59-b476-8f78e668c73b@collabora.com>
-Date: Wed, 31 Jul 2024 10:47:54 +0200
+	id 1sZ53q-00000000NtJ-0Wnl
+	for linux-mediatek@lists.infradead.org;
+	Wed, 31 Jul 2024 08:51:55 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 10C1762283;
+	Wed, 31 Jul 2024 08:51:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0C6D7C4AF0E;
+	Wed, 31 Jul 2024 08:51:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1722415912;
+	bh=eq6ZbUjCp8yGbWbk+wUwlkkjoHUI0f5wvuxs5k0tigE=;
+	h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
+	b=V9SkYUnFJq677ztCX6/2lYBJMv7eaeT/1xWxCqFjlEKd/ysfKPMBllkmI1H4KNjJ0
+	 I5pTbW2SziHqGgW08Isvty/RSlpW4iVq+v50h1UH08X3ZghSlCCEj9xjEys7dBlF0J
+	 msz2YMvJ8BS0AhOT8za2h1To27sK0t5qtjyYS/pdo5Cx7flqCAaSCvWhXTGYBD6ELN
+	 NppBFfdaLbY9xNf+8LqsfCuZIPN652buyc/I2yOEZddGSSQtvUpLJpSkYy4/m07jl5
+	 O3YTh39sLPPD02RLDU9wx4VTHwu5gbM2oqBez6W/XhE1Xn1mQYHrddjBuzyyrrnhSy
+	 uv/dVhcZNsItQ==
+From: Kalle Valo <kvalo@kernel.org>
+To: Bert Karwatzki <spasswolf@web.de>
+Cc: Felix Fietkau <nbd@nbd.name>,  Sean Wang <sean.wang@kernel.org>,
+  deren.wu@mediatek.com,  linux-mediatek@lists.infradead.org,
+  linux-wireless@vger.kernel.org,  lorenzo.bianconi@redhat.com,
+  mingyen.hsieh@mediatek.com,  sean.wang@mediatek.com
+Subject: Re: patch 46/47 causes NULL pointer deref on mt7921
+References: <20240711175156.4465-1-spasswolf@web.de>
+	<CAGp9LzoXMoAW6dVZjTf-JcD_wiU4yXpGwkLaVyWXTkaV2MOKwg@mail.gmail.com>
+	<adb192a59c44aa8708e80df30a6a47816a03e50f.camel@web.de>
+	<4e943a62736f955af5d9cd1aff7e2b9c084c8885.camel@web.de>
+	<2599b886-9c63-4989-a08a-7feab28f7c49@nbd.name>
+	<65621cad9a22df881745e9333a5c3696bdbb8df3.camel@web.de>
+Date: Wed, 31 Jul 2024 11:51:49 +0300
+In-Reply-To: <65621cad9a22df881745e9333a5c3696bdbb8df3.camel@web.de> (Bert
+	Karwatzki's message of "Mon, 29 Jul 2024 13:12:15 +0200")
+Message-ID: <87frrqkkpm.fsf@kernel.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/2] dt-bindings: arm64: mediatek: Add
- kukui-jacuzzi-cerise board
-To: Krzysztof Kozlowski <krzk@kernel.org>,
- Hsin-Te Yuan <yuanhsinte@chromium.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20240731-jacuzzi_dt-v2-0-4995335daa30@chromium.org>
- <20240731-jacuzzi_dt-v2-2-4995335daa30@chromium.org>
- <bb696e60-642f-43f1-9ccf-972e1d839bcd@kernel.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <bb696e60-642f-43f1-9ccf-972e1d839bcd@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240731_014757_619757_F37F4F83 
-X-CRM114-Status: GOOD (  16.68  )
+X-CRM114-CacheID: sfid-20240731_015154_239824_0B9B3A56 
+X-CRM114-Status: GOOD (  14.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,56 +79,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 31/07/24 10:16, Krzysztof Kozlowski ha scritto:
-> On 31/07/2024 08:26, Hsin-Te Yuan wrote:
->> Cerise is known as ASUS Chromebook CZ1.
->> Stern is known as ASUS Chromebook Flip CZ1.
+Bert Karwatzki <spasswolf@web.de> writes:
+
+> Am Mittwoch, dem 17.07.2024 um 17:25 +0200 schrieb Felix Fietkau:
+>
+>> On 17.07.24 16:38, Bert Karwatzki wrote:
 >>
->> They are almost identical. The only difference is that Cerise is a
->> clamshell device without touchscreen and Stern is a convertible device.
+>> > So mvif->phy can be NULL at the start of mt7921_ipv6_addr_change. The early
+>> > return in that case avoids the NULL pointer and mvif->phy has its usual value
+>> > again on the next call to mt7921_ipv6_addr_change so Wifi is working again. I
+>> > don't know how this could happen but perhaps you have an idea.
 >>
->> Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
->> ---
->>   Documentation/devicetree/bindings/arm/mediatek.yaml | 14 ++++++++++++++
->>   1 file changed, 14 insertions(+)
->>
->> diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
->> index 1d4bb50fcd8d..087773a43673 100644
->> --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
->> +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
->> @@ -146,6 +146,20 @@ properties:
->>           items:
->>             - const: google,burnet
->>             - const: mediatek,mt8183
->> +      - description: Google Cerise (ASUS Chromebook CZ1)
->> +        items:
->> +          - enum:
->> +              - google,cerise-sku0
->> +              - google,cerise-rev3-sku0
->> +          - const: google,cerise
->> +          - const: mediatek,mt8183
->> +      - description: Google Stern (ASUS Chromebook Flip CZ1)
->> +        items:
->> +          - enum:
->> +              - google,cerise-sku1
->> +              - google,cerise-rev3-sku1
->> +          - const: google,cerise
-> 
-> Why not google,stern? If this is not compatible with cerise and has
-> different name, I think logical would be to have different compatible -
-> either here or the first one.
-> 
+>> This change should fix it: https://nbd.name/p/0747f54f
+>> Please test.
+>
+> The BUG is still present in linux-6.11-rc1.
 
-They're both compatible, but the commercial names are different because one
-is convertible, one is not... and the bootloader still checks for cerise
-even on stern - that's how I read it, and it's not the first time...
+I'm not sure what's the status with this. There's one mt76 patch going
+to v6.11-rc2:
 
-...but it doesn't hurt to have a "google,stern" compatible added to the mix,
-it's just one more const to add... and I don't have any strong opinion about
-that, so, Hsin-Te, it's your call. :-)
+https://git.kernel.org/pub/scm/linux/kernel/git/wireless/wireless.git/commit/?id=6557a28f3e3a54cff4f0dcdd1dfa649b26557ab3
 
-Cheers,
-Angelo
+But that looks to be a fix for a different problem, right? Felix, are
+you planning to submit that 0747f54f as a proper patch? I could then
+take it to wireless tree.
 
+-- 
+https://patchwork.kernel.org/project/linux-wireless/list/
 
+https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
 
