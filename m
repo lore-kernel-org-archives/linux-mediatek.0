@@ -4,77 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B42DC3DA7F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 31 Jul 2024 08:58:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 408E6C3DA7F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 31 Jul 2024 09:28:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uQZx3HYYVNB5vITecawH5G+5vDqAKVo5qs6yg+kY8es=; b=u6r3ucyxTAZaLpj0QPQdJdFLBV
-	uFXhvo3ou1SepKGMokkgsHMw43SlaVYwBEGqIJddMzHZxKGq7FxoIxnMKO29xsyGyGfEmKO7vR6mz
-	aVgBD0F6jg3Er9iqYdaPeWkDPM+3okV2QpkIqpk6M+I7hXd1yN0Yj0fxFBaNrEw4JB6G76vARgeof
-	nTMh1EZWR6UFJMIUJHaF9n3ZwVpw24LGKsEpnMlioBnqG+TS5DGG3pwuKo2kb7krfXrMgzA2h6/6F
-	Ha6SCDexbTuWqquqB1WB0Ag+qSSpQf1koCcYkuP2EdS/NIOg0eGJ4+HGiFDDjnjWKqF9LlTUa2k3u
-	K28OVJTA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:In-Reply-To:Date:References:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/3R4JD6Tjd475Qumsa4iw4LEYhuHFObHwh0GA6axpJg=; b=zHDE/cLhBQOgh6hQMGNs65RJDf
+	IW9CzG5/eHZZtBu/2tw6OaX8r1dwxhKXGhE4IZyitwNxVNoWbuB5Xz4LRcI7/scZUW4+abVLqS1/M
+	9rfQm8+ui9sSi7i1sYpheC0UhWSSY05Rc5kje3wGJWopckoBlZfyc71KwXhlbPAT1JnBZrPHMjtIM
+	GCaU8lslnPsmWyv4hKT80ynEggAkPeP0zKD1eWpCs41a5w/HQidgSfPKuAXr5TKNi2Vw3VvR6CWS7
+	rWd8qyNe4d4v4CVkO2ee00kX9RkvOKJTB42leYUtxJ5wRHoY9xvRG0jsd7k2/Nax3vv34pu2A1A0v
+	/7wHxtqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZ5A6-00000000P8J-1hri;
-	Wed, 31 Jul 2024 08:58:22 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1sZ5cs-00000000V0C-3KCF;
+	Wed, 31 Jul 2024 09:28:06 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZ59X-00000000OuD-0JLG;
-	Wed, 31 Jul 2024 08:57:48 +0000
+	id 1sZ5cl-00000000Ux7-0Hcm
+	for linux-mediatek@lists.infradead.org;
+	Wed, 31 Jul 2024 09:28:05 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 5B75762295;
-	Wed, 31 Jul 2024 08:57:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5DC84C116B1;
-	Wed, 31 Jul 2024 08:57:41 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 2C73B61E01;
+	Wed, 31 Jul 2024 09:27:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E5396C116B1;
+	Wed, 31 Jul 2024 09:27:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1722416266;
-	bh=hopejYkFDlRXosQSrN9FNvd2qXYNt97CgMPgExHWjLE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=kgcv9F/j4hbv4sY33GK6d58MNdprg7Tk6x7Afte7Yvm+pO9ukFm6JSZHFhVrQctV8
-	 HCJvnQ2SmAqj0sAQJBgaQF2tt0TOI5PcJu9v2fmRxV2XUWaFGKRqLMu52qnFc79kh9
-	 OZIH/2SJJc8An60ZA3qB06AemJlpRn3qE0hIldQMIveR5FOpyQA8u8NtVxm3+jHQKb
-	 ZIR6/5PDzOSoOQ9rfNdotTn6qFvjblvNuBAip+B091FmD2fG07ijLMGLRyGcJCwF7M
-	 F0eioAeNeRBymaNwU7QnKVLzgg6Jy9Kkg6kC/bxm0G3R6V0OdCYTZd0D5ASDSWuS9d
-	 gv5IYS+rqKdFw==
-Date: Wed, 31 Jul 2024 09:57:39 +0100
-From: Simon Horman <horms@kernel.org>
-To: Liju-clr Chen <liju-clr.chen@mediatek.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Jonathan Corbet <corbet@lwn.net>,
-	Catalin Marinas <catalin.marinas@arm.com>,
-	Will Deacon <will@kernel.org>, Steven Rostedt <rostedt@goodmis.org>,
-	Masami Hiramatsu <mhiramat@kernel.org>,
-	Mathieu Desnoyers <mathieu.desnoyers@efficios.com>,
-	Richard Cochran <richardcochran@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Yingshiuan Pan <Yingshiuan.Pan@mediatek.com>,
-	Ze-yu Wang <Ze-yu.Wang@mediatek.com>, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-doc@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-trace-kernel@vger.kernel.org, netdev@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	Shawn Hsiao <shawn.hsiao@mediatek.com>,
-	PeiLun Suei <PeiLun.Suei@mediatek.com>,
-	Chi-shen Yeh <Chi-shen.Yeh@mediatek.com>,
-	Kevenny Hsieh <Kevenny.Hsieh@mediatek.com>
-Subject: Re: [PATCH v12 11/24] virt: geniezone: Add ioeventfd support
-Message-ID: <20240731085739.GO1967603@kernel.org>
-References: <20240730082436.9151-1-liju-clr.chen@mediatek.com>
- <20240730082436.9151-12-liju-clr.chen@mediatek.com>
+	s=k20201202; t=1722418077;
+	bh=Rn6na6PNCFTWkJ1lJK9Ax3UMrRw5R8x+o7r/bX2fhTU=;
+	h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
+	b=V4onOUniYD3dw6fMeiEEAumaQePjQ9qOkgVALtEprEYpOzPLP7Ed7n9vE4H2f6kHa
+	 z1S5FFXn7qiDUPKbIElvVvWvcOE0/d5gv2ROZShOUrTccAqxCXWiLNGbug2SHSnI6g
+	 Fcf0Bm/xKT94yyKGb4U9t1gBdYndUmFHSII4MccK3g0ZEMtYPZp3MFYjATaQQx5P/P
+	 CDGq9XcngiIzCOLpLbXaflULOaaJljRdQE69yFnNcsQUrS6jtDh9I/PoOdAJtJvpv5
+	 gxtEShSWQ4G+yS97F7pK0Zyl8btc2YZX+g4WIxcP0zJGqR+jR9ajtZPaX27n6Dj3pZ
+	 euhA7QKALFPrQ==
+From: Kalle Valo <kvalo@kernel.org>
+To: =?utf-8?Q?Bj=C3=B8rn?= Mork <bjorn@mork.no>
+Cc: linux-wireless@vger.kernel.org,  linux-mediatek@lists.infradead.org,
+  Felix Fietkau <nbd@nbd.name>
+Subject: Re: [PATCH] wifi: mt76: fix oops on non-dbdc mt7986
+References: <20240713130010.516037-1-bjorn@mork.no>
+Date: Wed, 31 Jul 2024 12:27:54 +0300
+In-Reply-To: <20240713130010.516037-1-bjorn@mork.no> (=?utf-8?Q?=22Bj?=
+ =?utf-8?Q?=C3=B8rn?= Mork"'s message
+	of "Sat, 13 Jul 2024 15:00:10 +0200")
+Message-ID: <877cd1lxlx.fsf@kernel.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240730082436.9151-12-liju-clr.chen@mediatek.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240731_015747_206022_661687E7 
-X-CRM114-Status: GOOD (  12.76  )
+X-CRM114-CacheID: sfid-20240731_022759_223491_21DFD0BB 
+X-CRM114-Status: GOOD (  10.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,40 +74,92 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 30, 2024 at 04:24:23PM +0800, Liju-clr Chen wrote:
-> From: Yingshiuan Pan <yingshiuan.pan@mediatek.com>
-> 
-> Ioeventfd leverages eventfd to provide asynchronous notification
-> mechanism for VMM. VMM can register a mmio address and bind with an
-> eventfd. Once a mmio trap occurs on this registered region, its
-> corresponding eventfd will be notified.
-> 
-> Signed-off-by: Yingshiuan Pan <yingshiuan.pan@mediatek.com>
-> Signed-off-by: Yi-De Wu <yi-de.wu@mediatek.com>
-> Signed-off-by: Liju Chen <liju-clr.chen@mediatek.com>
+Bj=C3=B8rn Mork <bjorn@mork.no> writes:
 
-...
+> mt7915_band_config() sets band_idx =3D 1 on the main phy for mt7986
+> with MT7975_ONE_ADIE or MT7976_ONE_ADIE.
+>
+> Commit 0335c034e726 ("wifi: mt76: fix race condition related to
+> checking tx queue fill status") introduced a dereference of the
+> phys array indirectly indexed by band_idx via wcid->phy_idx in
+> mt76_wcid_cleanup(). This caused the following Oops on affected
+> mt7986 devices:
+>
+>  Unable to handle kernel read from unreadable memory at virtual address 0=
+000000000000024
+>  Mem abort info:
+>    ESR =3D 0x0000000096000005
+>    EC =3D 0x25: DABT (current EL), IL =3D 32 bits
+>    SET =3D 0, FnV =3D 0
+>    EA =3D 0, S1PTW =3D 0
+>    FSC =3D 0x05: level 1 translation fault
+>  Data abort info:
+>    ISV =3D 0, ISS =3D 0x00000005
+>    CM =3D 0, WnR =3D 0
+>  user pgtable: 4k pages, 39-bit VAs, pgdp=3D0000000042545000
+>  [0000000000000024] pgd=3D0000000000000000, p4d=3D0000000000000000, pud=
+=3D0000000000000000
+>  Internal error: Oops: 0000000096000005 [#1] SMP
+>  Modules linked in: ... mt7915e mt76_connac_lib mt76 mac80211 cfg80211 ...
+>  CPU: 2 PID: 1631 Comm: hostapd Not tainted 5.15.150 #0
+>  Hardware name: ZyXEL EX5700 (Telenor) (DT)
+>  pstate: 80400005 (Nzcv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=3D--)
+>  pc : mt76_wcid_cleanup+0x84/0x22c [mt76]
+>  lr : mt76_wcid_cleanup+0x64/0x22c [mt76]
+>  sp : ffffffc00a803700
+>  x29: ffffffc00a803700 x28: ffffff80008f7300 x27: ffffff80003f3c00
+>  x26: ffffff80000a7880 x25: ffffffc008c26e00 x24: 0000000000000001
+>  x23: ffffffc000a68114 x22: 0000000000000000 x21: ffffff8004172cc8
+>  x20: ffffffc00a803748 x19: ffffff8004152020 x18: 0000000000000000
+>  x17: 00000000000017c0 x16: ffffffc008ef5000 x15: 0000000000000be0
+>  x14: ffffff8004172e28 x13: ffffff8004172e28 x12: 0000000000000000
+>  x11: 0000000000000000 x10: ffffff8004172e30 x9 : ffffff8004172e28
+>  x8 : 0000000000000000 x7 : ffffff8004156020 x6 : 0000000000000000
+>  x5 : 0000000000000031 x4 : 0000000000000000 x3 : 0000000000000001
+>  x2 : 0000000000000000 x1 : ffffff80008f7300 x0 : 0000000000000024
+>  Call trace:
+>   mt76_wcid_cleanup+0x84/0x22c [mt76]
+>   __mt76_sta_remove+0x70/0xbc [mt76]
+>   mt76_sta_state+0x8c/0x1a4 [mt76]
+>   mt7915_eeprom_get_power_delta+0x11e4/0x23a0 [mt7915e]
+>   drv_sta_state+0x144/0x274 [mac80211]
+>   sta_info_move_state+0x1cc/0x2a4 [mac80211]
+>   sta_set_sinfo+0xaf8/0xc24 [mac80211]
+>   sta_info_destroy_addr_bss+0x4c/0x6c [mac80211]
+>
+>   ieee80211_color_change_finish+0x1c08/0x1e70 [mac80211]
+>   cfg80211_check_station_change+0x1360/0x4710 [cfg80211]
+>   genl_family_rcv_msg_doit+0xb4/0x110
+>   genl_rcv_msg+0xd0/0x1bc
+>   netlink_rcv_skb+0x58/0x120
+>   genl_rcv+0x34/0x50
+>   netlink_unicast+0x1f0/0x2ec
+>   netlink_sendmsg+0x198/0x3d0
+>   ____sys_sendmsg+0x1b0/0x210
+>   ___sys_sendmsg+0x80/0xf0
+>   __sys_sendmsg+0x44/0xa0
+>   __arm64_sys_sendmsg+0x20/0x30
+>   invoke_syscall.constprop.0+0x4c/0xe0
+>   do_el0_svc+0x40/0xd0
+>   el0_svc+0x14/0x4c
+>   el0t_64_sync_handler+0x100/0x110
+>   el0t_64_sync+0x15c/0x160
+>  Code: d2800002 910092c0 52800023 f9800011 (885f7c01)
+>  ---[ end trace 7e42dd9a39ed2281 ]---
+>
+> Fix by using mt76_dev_phy() which will map band_idx to the correct phy
+> for all hardware combinations.
+>
+> Fixes: 0335c034e726 ("wifi: mt76: fix race condition related to checking =
+tx queue fill status")
+> Link: https://github.com/openwrt/openwrt/issues/14548
+> Signed-off-by: Bj=C3=B8rn Mork <bjorn@mork.no>
 
-> diff --git a/drivers/virt/geniezone/gzvm_ioeventfd.c b/drivers/virt/geniezone/gzvm_ioeventfd.c
+Should this go to wireless tree?
 
-...
+--=20
+https://patchwork.kernel.org/project/linux-wireless/list/
 
-> +/**
-> + * ioeventfd_check_collision() - Check collison assumes gzvm->ioevent_lock held.
-
-nit: collision
-
-     Likewise elsewhere in this patch.
-
-     Flagged by checkpatch.pl --codespell
-
-> + * @gzvm: Pointer to gzvm.
-> + * @p: Pointer to gzvm_ioevent.
-> + *
-> + * Return:
-> + * * true			- collison found
-> + * * false			- no collison
-> + */
-
-...
+https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatc=
+hes
 
