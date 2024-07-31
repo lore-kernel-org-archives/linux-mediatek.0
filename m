@@ -4,84 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DD69C3DA64
-	for <linux-mediatek@archiver.kernel.org>; Wed, 31 Jul 2024 06:27:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BAC44C3DA64
+	for <linux-mediatek@archiver.kernel.org>; Wed, 31 Jul 2024 07:47:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GodjSzZjglvIcZivuCk4eEiWLuu6d/Fu0dSIBqFwyU0=; b=E1Qy3E/YJIqmt+RQLPIdxCtasD
-	jzSf8i2NvxfGwBKajyOAeUeHL9S3BYi++gJ6TC8NfSj6Qgc26g4qU5kGfTSxnrmMioJJPrYPPXxaJ
-	iCfaz7xF7AYlgYrVZGcoOe5RsR0onf0imEB3wsQBu4aB9KMEIM/8iJd2rIZ+hWpQfmMUxifSXZ8Bm
-	be4ZpqoMoh5akJP+oi1O2jgoVNZTOrq14j7bGksIGQXG1h9G/xRq6DQM5oswVb1oGlWXnHOg4e76U
-	jBnpMvdJNl59VuXT4nol//bs8fj+EWWOq0fveGVc2NoesJ0dqb0uaqjAYl3eFWl5w25AvRnQ5G3QA
-	Z0xyrPcw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=niuXEqqR8RnV+jmqddfR0pqtgAFtRJIUEsYODsA2d0w=; b=WB51ISd2oHPG/LFtcRcOhS7IUJ
+	FgoHhaAvYqEu+CK3XakfFy/lHiQeEuQvlYz1cZerRUy1ZgRql1PVCEpsTCHgdQcCIJ1DdNdQrYZ0q
+	zkeqSWBb+uwdVe/aNRtANMqkc6epyTma31Q6v5OkdeNOPjSMqI+doGPo8mduNz3sHI/qI8/wOnZHD
+	QQ6+CTKSxPlBR9U6YKvN/Mu47JdMkMjE17717+YXJVpebzutVipTR/FzLp4PcGGNI75rLm46m5ksf
+	l9u/8azb8yiybARteVOU8Dn8EbmMjBOX0+ZvPGuQh8x9y6OSzoRUZlnKdh7GI96uHte68U/v/K/bQ
+	BOdtPtuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZ2oI-0000000HXX4-0BLu;
-	Wed, 31 Jul 2024 06:27:42 +0000
-Received: from mail-oa1-x2e.google.com ([2001:4860:4864:20::2e])
+	id 1sZ43Y-00000000CAY-1Ypy;
+	Wed, 31 Jul 2024 07:47:32 +0000
+Received: from mail.tradeharmony.pl ([5.196.29.197])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZ2nM-0000000HX59-1nFm
+	id 1sZ43V-00000000C9h-2PeA
 	for linux-mediatek@lists.infradead.org;
-	Wed, 31 Jul 2024 06:26:45 +0000
-Received: by mail-oa1-x2e.google.com with SMTP id 586e51a60fabf-260e208e126so3347131fac.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 30 Jul 2024 23:26:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1722407203; x=1723012003; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=GodjSzZjglvIcZivuCk4eEiWLuu6d/Fu0dSIBqFwyU0=;
-        b=e2lPnUdlVdnEHK2/wtHs4Xykqwd58B/LwypK/lT6LtkREmpXYnMykwjlbsfgZ4pl9t
-         RJo/JpZo/t3gyeuyvO134bhW2QguBFO7B6Edzus0diLKVfm4uIZ07rN5rccqOFimjBUt
-         cY/u5Qc16wrORMKmQ6sYKZzqyyyxfsTw1gNik=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1722407203; x=1723012003;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=GodjSzZjglvIcZivuCk4eEiWLuu6d/Fu0dSIBqFwyU0=;
-        b=J+uSgbJoZWyRl/fXhQ7YHWy7M2Zwkaoifg5cFP7pVVrwB98AaaNioAXPqfBAGhHxaL
-         zm+CjQK5A1MYUgCypSoJDQkAB/1d0KBxU4vYCKq+5oOwtQ8KQb4egfmzKVEgjDC+R9g7
-         cG/+qOlqGDQtXpJaZ2I95ezswkHb+QUgOSEGlPzTk+jyIgJbrkfKZ36ku5QqoNqiNs5f
-         QFKgX9k6lz5ywW7F/GbxSfW9FY9tC2/95ztWqMur4/ZoTAEijXQ0A3UWk3fDfNZSmquw
-         1hXQ+rBbrs+Ou9cVLHfsBygcQ/SutUe8mlRZwhkQe4Lxro81HJuIiTnS/oBFTuzssU98
-         tm7w==
-X-Forwarded-Encrypted: i=1; AJvYcCWc+SfQthpkQlvw/ZCTHTR0/NGSuJVZaweJw2RU92gzvNYUQ9SBwOgkHf+T/oEMBLppG+FJYPsALjJjQm7YSCcXjySWYp8w4llJZWjkGCPl0KB9
-X-Gm-Message-State: AOJu0YziN3fi+EpP+CYXV65nx68Z5ZJtNAM3ku1hr9N9PvcyrDKBIYM+
-	MG+F1H2cXH9Rrmjw1Ki8mJpfOgiTYX2k9P03gJsFOF8hdSRBjFyC6MEvop8uYeVQ1uOlObk/ZrQ
-	=
-X-Google-Smtp-Source: AGHT+IE5cO6elkp+RbpkElRPUZQpfS6+qxtX7GtiU4GBwza51W+DWB1Oh82y74IN1jB769y+tJoF5g==
-X-Received: by 2002:a05:6870:440d:b0:261:1177:6a62 with SMTP id 586e51a60fabf-267d4f41835mr15988146fac.49.1722407202879;
-        Tue, 30 Jul 2024 23:26:42 -0700 (PDT)
-Received: from yuanhsinte.c.googlers.com (46.165.189.35.bc.googleusercontent.com. [35.189.165.46])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-70ead6e1084sm9322308b3a.25.2024.07.30.23.26.40
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 30 Jul 2024 23:26:42 -0700 (PDT)
-From: Hsin-Te Yuan <yuanhsinte@chromium.org>
-Date: Wed, 31 Jul 2024 06:26:35 +0000
-Subject: [PATCH v2 1/2] arm64: dts: mt8183: Add kukui-jacuzzi-cerise series
- boards
+	Wed, 31 Jul 2024 07:47:31 +0000
+Received: by mail.tradeharmony.pl (Postfix, from userid 1002)
+	id AE19F260BB; Wed, 31 Jul 2024 09:46:03 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tradeharmony.pl;
+	s=mail; t=1722412005;
+	bh=niuXEqqR8RnV+jmqddfR0pqtgAFtRJIUEsYODsA2d0w=;
+	h=Date:From:To:Subject:From;
+	b=LqWQvMvHqOpcF6PZ41hcXMTP1g9yJiGIJvM5+zEA7yMDii2bnkXxGNw4caQdcKoVA
+	 ota5VGFd9lRROD+MO4/esjLabJMENMbrEoItwOBvy9Mq/G3cKCWMkd9sHNGJQbhFou
+	 wwW6p7nQO80HBV9Id1D/aLOkJs+nKNTNhudRWorDsJdaN10trjxwC6lF125h8bhAQW
+	 EbZxzhloxu9XTX/z1qWr9dAtC93kl/sbuK+dtG/Ze9vRXD6bSsOytPwUE7CPaVWX1w
+	 I9na6q8BABuOYZlX826nInDe0nQu00Ec+QXqiCyzWVg9JCupfeisfKOPddERMQ+2jw
+	 DGrvWRXTfPBZA==
+Received: by mail.tradeharmony.pl for <linux-mediatek@lists.infradead.org>; Wed, 31 Jul 2024 07:45:59 GMT
+Message-ID: <20240731084500-0.1.7s.2scxp.0.fsk7xek8k9@tradeharmony.pl>
+Date: Wed, 31 Jul 2024 07:45:59 GMT
+From: "Karol Michun" <karol.michun@tradeharmony.pl>
+To: <linux-mediatek@lists.infradead.org>
+Subject: W sprawie samochodu 
+X-Mailer: mail.tradeharmony.pl
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20240731-jacuzzi_dt-v2-1-4995335daa30@chromium.org>
-References: <20240731-jacuzzi_dt-v2-0-4995335daa30@chromium.org>
-In-Reply-To: <20240731-jacuzzi_dt-v2-0-4995335daa30@chromium.org>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Hsin-Te Yuan <yuanhsinte@chromium.org>
-X-Mailer: b4 0.13.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240730_232644_484967_BDA57191 
-X-CRM114-Status: GOOD (  13.94  )
+X-CRM114-CacheID: sfid-20240731_004729_776859_6A9EBE78 
+X-CRM114-Status: UNSURE (   0.53  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,207 +67,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Cerise is known as ASUS Chromebook CZ1.
-Stern is known as ASUS Chromebook Flip CZ1.
+Dzie=C5=84 dobry,
 
-They are almost identical. The only difference is that Cerise is a
-clamshell device without touchscreen and Stern is a convertible device.
+chcieliby=C5=9Bmy zapewni=C4=87 Pa=C5=84stwu kompleksowe rozwi=C4=85zania=
+, je=C5=9Bli chodzi o system monitoringu GPS.
 
-Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
----
- arch/arm64/boot/dts/mediatek/Makefile              |  4 +++
- .../mediatek/mt8183-kukui-jacuzzi-cerise-rev3.dts  | 26 +++++++++++++++++++
- .../dts/mediatek/mt8183-kukui-jacuzzi-cerise.dts   | 26 +++++++++++++++++++
- .../dts/mediatek/mt8183-kukui-jacuzzi-cerise.dtsi  | 21 ++++++++++++++++
- .../mediatek/mt8183-kukui-jacuzzi-stern-rev3.dts   | 29 ++++++++++++++++++++++
- .../dts/mediatek/mt8183-kukui-jacuzzi-stern.dts    | 29 ++++++++++++++++++++++
- 6 files changed, 135 insertions(+)
+Precyzyjne monitorowanie pojazd=C3=B3w na mapach cyfrowych, =C5=9Bledzeni=
+e ich parametr=C3=B3w eksploatacyjnych w czasie rzeczywistym oraz kontrol=
+a paliwa to kluczowe funkcjonalno=C5=9Bci naszego systemu.=20
 
-diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-index 8fd7b2bb7a15..17fbe495e4ee 100644
---- a/arch/arm64/boot/dts/mediatek/Makefile
-+++ b/arch/arm64/boot/dts/mediatek/Makefile
-@@ -28,6 +28,8 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-elm-hana-rev7.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-evb.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-evb.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-burnet.dtb
-+dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-cerise.dtb
-+dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-cerise-rev3.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-cozmo.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-damu.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-fennel-sku1.dtb
-@@ -42,6 +44,8 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-makomo-sku0.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-makomo-sku1.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-pico.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-pico6.dtb
-+dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-stern.dtb
-+dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-stern-rev3.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-willow-sku0.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-willow-sku1.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-kakadu.dtb
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cerise-rev3.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cerise-rev3.dts
-new file mode 100644
-index 000000000000..c511dd1cc171
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cerise-rev3.dts
-@@ -0,0 +1,26 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-+/*
-+ * Copyright 2021 Google LLC
-+ */
-+
-+/dts-v1/;
-+#include "mt8183-kukui-jacuzzi-cerise.dtsi"
-+#include "mt8183-kukui-audio-ts3a227e-rt1015p.dtsi"
-+
-+/ {
-+	model = "Google cerise board";
-+	chassis-type = "laptop";
-+	compatible = "google,cerise-rev3-sku0", "google,cerise", "mediatek,mt8183";
-+};
-+
-+&mt6358codec {
-+	mediatek,dmic-mode = <1>; /* one-wire */
-+};
-+
-+&touchscreen {
-+	status = "disabled";
-+};
-+
-+&qca_wifi {
-+	qcom,ath10k-calibration-variant = "GO_CERISE";
-+};
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cerise.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cerise.dts
-new file mode 100644
-index 000000000000..12b97dcaa74a
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cerise.dts
-@@ -0,0 +1,26 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-+/*
-+ * Copyright 2021 Google LLC
-+ */
-+
-+/dts-v1/;
-+#include "mt8183-kukui-jacuzzi-cerise.dtsi"
-+#include "mt8183-kukui-audio-da7219-rt1015p.dtsi"
-+
-+/ {
-+	model = "Google cerise board";
-+	chassis-type = "laptop";
-+	compatible = "google,cerise-sku0", "google,cerise", "mediatek,mt8183";
-+};
-+
-+&mt6358codec {
-+	mediatek,dmic-mode = <1>; /* one-wire */
-+};
-+
-+&touchscreen {
-+	status = "disabled";
-+};
-+
-+&qca_wifi {
-+	qcom,ath10k-calibration-variant = "GO_CERISE";
-+};
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cerise.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cerise.dtsi
-new file mode 100644
-index 000000000000..087a0ef33e13
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cerise.dtsi
-@@ -0,0 +1,21 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-+/*
-+ * Copyright 2021 Google LLC
-+ */
-+
-+/dts-v1/;
-+#include "mt8183-kukui-jacuzzi.dtsi"
-+
-+&cpu_thermal {
-+	sustainable-power = <4500>; /* milliwatts */
-+};
-+
-+&mmc1_pins_uhs {
-+	pins-clk {
-+		drive-strength = <MTK_DRIVE_6mA>;
-+	};
-+};
-+
-+&i2c2 {
-+	i2c-scl-internal-delay-ns = <13200>;
-+};
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-stern-rev3.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-stern-rev3.dts
-new file mode 100644
-index 000000000000..19e09da1d166
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-stern-rev3.dts
-@@ -0,0 +1,29 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-+/*
-+ * Copyright 2021 Google LLC
-+ */
-+
-+/dts-v1/;
-+#include "mt8183-kukui-jacuzzi-cerise.dtsi"
-+#include "mt8183-kukui-audio-ts3a227e-rt1015p.dtsi"
-+
-+/ {
-+	model = "Google stern board";
-+	chassis-type = "convertible";
-+	compatible = "google,cerise-rev3-sku1", "google,cerise", "mediatek,mt8183";
-+};
-+
-+&mt6358codec {
-+	mediatek,dmic-mode = <0>; /* two-wire */
-+};
-+
-+&touchscreen {
-+	compatible = "hid-over-i2c";
-+
-+	post-power-on-delay-ms = <10>;
-+	hid-descr-addr = <0x0001>;
-+};
-+
-+&qca_wifi {
-+	qcom,ath10k-calibration-variant = "GO_STERN";
-+};
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-stern.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-stern.dts
-new file mode 100644
-index 000000000000..72de05ffea86
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-stern.dts
-@@ -0,0 +1,29 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-+/*
-+ * Copyright 2021 Google LLC
-+ */
-+
-+/dts-v1/;
-+#include "mt8183-kukui-jacuzzi-cerise.dtsi"
-+#include "mt8183-kukui-audio-da7219-rt1015p.dtsi"
-+
-+/ {
-+	model = "Google stern board";
-+	chassis-type = "convertible";
-+	compatible = "google,cerise-sku1", "google,cerise", "mediatek,mt8183";
-+};
-+
-+&mt6358codec {
-+	mediatek,dmic-mode = <0>; /* two-wire */
-+};
-+
-+&touchscreen {
-+	compatible = "hid-over-i2c";
-+
-+	post-power-on-delay-ms = <10>;
-+	hid-descr-addr = <0x0001>;
-+};
-+
-+&qca_wifi {
-+	qcom,ath10k-calibration-variant = "GO_STERN";
-+};
+Organizowanie pracy pracownik=C3=B3w jest dzi=C4=99ki temu prostsze i bar=
+dziej efektywne, a oszcz=C4=99dno=C5=9Bci i optymalizacja w zakresie pono=
+szonych koszt=C3=B3w, maj=C4=85 dla ka=C5=BCdego przedsi=C4=99biorcy ogro=
+mne znaczenie.
 
--- 
-2.46.0.rc1.232.g9752f9e123-goog
+Dopasujemy nasz=C4=85 ofert=C4=99 do Pa=C5=84stwa oczekiwa=C5=84 i potrze=
+b organizacji. Czy mogliby=C5=9Bmy porozmawia=C4=87 o naszej propozycji?=20
 
+
+Pozdrawiam
+Karol Michun
 
