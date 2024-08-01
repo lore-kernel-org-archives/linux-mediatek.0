@@ -4,105 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EDF1C3DA64
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Aug 2024 13:17:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7397AC3DA4A
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Aug 2024 13:20:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Fno7jynlRhR0MntB4PTcUruVkbDLRUwqhL/TfFy6/AQ=; b=ODxUjcWX+vUYmH7Ohz43fn83ZF
-	Y4+2rZXgVAqj6IxTHAbusdzCGM07rJjTlnKMZrS0Gf5NqLznH1H2gUWXXeRC2kCR1vF/J8gGCJ06h
-	m6caPyw6ePj5BZYisGshAJJxF1BOW6FzWRqq9v+jMJyVC+3XGwYDIF8YhtP5113qQJt81XRPBiVjs
-	3I3E+HtWkhTlHNg+ReZ3Su+Ryxe5nxFqBT9LHKObxDplBLXy+hreibD5XdCLOYRF8+0/BG4DnCKz4
-	VOPz7f/QGAwd92OWJL4N+f7itPcL1kO65af0hPxJmxB2UFW5zP506yyqxKNpY+aMkd20gfxqSqIAj
-	uULDgj/A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=C1zAq2A8tIjO2hNDIqGfuwyFl2KKWufIdH/9uRMO7aA=; b=AF1qMJ3Fmhj+KPLkufO0bewzQG
+	xbPo4VK638ArMtO09htqFfBE9edQSs4SVpuwDnOaOxtdIXCZvtoxvuEd9IWzf9k6A0w3192enVnpE
+	MlNeAIk0An+LC7MLfoc6fc74pNa2QpywNPcuXmICNqgGFz4Enu+2SYKQTXVfOu88mBidCnApnn6Mr
+	SygHlAD54I568m3TJqsUXEk67GGeJI2TiEQPlVDGGYrDOLEOfrYJP5GlCPF8tv/44+GiRWoYtEjvt
+	wdG/fSclZJ7xfpIDsKxuubNEeElPnHTNNVtldZt6e6VAN10PAXQL/h5Re0SQ5h3+RCm1c7GaImbnH
+	j8az7AUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZVgn-00000005T9k-2O8K;
-	Thu, 01 Aug 2024 13:17:53 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1sZVjA-00000005U62-0eOu;
+	Thu, 01 Aug 2024 13:20:20 +0000
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZVR9-00000005KSc-0XcO;
-	Thu, 01 Aug 2024 13:01:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:Message-ID:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=Fno7jynlRhR0MntB4PTcUruVkbDLRUwqhL/TfFy6/AQ=; b=jJDmbnezSHm4bGr3rHuiw06y4E
-	kw2zWfntpOrkr35dcH9ZAsjpOmgLqWgG2I5JHeyUWrlJSjIxPP+H7NHvdKDSbnYuvyEtW2vXz7nX7
-	XaEMp0kDZYM1oj7l/4dGNXKRNSbouL1yofp6ohKTjViuJ1JCafCR3XsVChjx6qjlBQOjUUpE5Q4qc
-	yLZhekhu3s3uHnyf4uD9BfO1RP9Ne5W51CCTECbWYiEKh2vstcMZQV/7rUKgFZca3MeX25s3R4gmb
-	+P2FWheO0ZlHjKXZ+ZlgNrHD/VRdExAHpQ+zSjF9PTdycTdEr+Zb3IBPJSD0Dhyp1kQBryroqmqrx
-	Jbfq0eeA==;
-Received: from szxga01-in.huawei.com ([45.249.212.187])
-	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZVR4-00000005T7v-0EXe;
-	Thu, 01 Aug 2024 13:01:41 +0000
-Received: from mail.maildlp.com (unknown [172.19.163.174])
-	by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4WZTc54FXfzxW3F;
-	Thu,  1 Aug 2024 21:01:09 +0800 (CST)
-Received: from dggpemf200006.china.huawei.com (unknown [7.185.36.61])
-	by mail.maildlp.com (Postfix) with ESMTPS id 996A7140109;
-	Thu,  1 Aug 2024 21:01:22 +0800 (CST)
-Received: from [10.67.120.129] (10.67.120.129) by
- dggpemf200006.china.huawei.com (7.185.36.61) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.11; Thu, 1 Aug 2024 21:01:22 +0800
-Message-ID: <22fda86c-d688-42e7-99e8-e2f8fcf1a5ba@huawei.com>
-Date: Thu, 1 Aug 2024 21:01:21 +0800
+	id 1sZVdC-00000005RGs-1dBC
+	for linux-mediatek@lists.infradead.org;
+	Thu, 01 Aug 2024 13:14:11 +0000
+Received: by mail-wr1-x42c.google.com with SMTP id ffacd0b85a97d-368526b1333so1299653f8f.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 01 Aug 2024 06:14:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=fastly.com; s=google; t=1722518048; x=1723122848; darn=lists.infradead.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:mail-followup-to:message-id:subject:cc:to
+         :from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=C1zAq2A8tIjO2hNDIqGfuwyFl2KKWufIdH/9uRMO7aA=;
+        b=AO0+kmIj+pZKauDzwa76QmKBaswybqZIWBaJyYO1aAfF8v2fYzoF2evoEosiSjJiDV
+         y2VtFRdyNXZFEzKV3BlE60qFE354T4mkOYhlIivVoyGtd+4vzytRTOHFQxiFXk0OOS+u
+         je43NN8lDUVN4VUQ46NXNidDkGiar4CAvKZTY=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1722518048; x=1723122848;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:mail-followup-to:message-id:subject:cc:to
+         :from:date:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=C1zAq2A8tIjO2hNDIqGfuwyFl2KKWufIdH/9uRMO7aA=;
+        b=JX8KtbwlSvpe8whhm0rOrvGOT/XzIr0pOk4tSYFxF7EimU3T4UiAadxhlIiUr6mugk
+         Qduy4tAqiInYS5a7Ej9JPyAkrOkUI0FYHkyPJLMSejaZdrORznAi6SrnnGsg5p17Sui/
+         +GvS2sDhUiZZLdwkw5cnb8jjqVDs0QVdg6zQR+4wCIGfNwITdpYOcmZ1OUy50+oeditf
+         h7nB+qHxCD00lub/rWw9+ca2XZOjVUFnmvcda0n/Eeqmzmk1vPaqjAw6ZHPf+HrNX88m
+         PgwXSg0h35ECqHjuepMm+huN39G+o3kMLoV38thkbOY8WvToaPMGNEsrIzF/DiOtalhf
+         hsZA==
+X-Forwarded-Encrypted: i=1; AJvYcCWNNvgn6+hJWN9JaQ+wZ0WlqDYOGVGojryb/E77Z8NhnAIbOdQ6HDucj6kRlmKkLhXqD0Eqh30PEk1s+1OV9vwFcxrOwQhL7FNwQftfnINhDwNG
+X-Gm-Message-State: AOJu0YzNdhH0b4iaWTofCMRvN0DzW0dVezSpYkWLcZT6GAQCbAZ8P4Wb
+	7udPMTXxjHF6RZ5bs3MNSBf2DLd2POgnJ64HS7CA9tEVIov0+g6h8qM/7pSpHLk=
+X-Google-Smtp-Source: AGHT+IGY6C6HxMfYIEbuN5skOyWJua94QhKtVofdw583XyL2PipegA2/E/h1+XhGjqNYBfKRCf4SUQ==
+X-Received: by 2002:a5d:4251:0:b0:367:9048:e952 with SMTP id ffacd0b85a97d-36bb35c63f5mr1373341f8f.18.1722518048015;
+        Thu, 01 Aug 2024 06:14:08 -0700 (PDT)
+Received: from LQ3V64L9R2 ([80.208.222.2])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4282bb1dfd6sm56904175e9.42.2024.08.01.06.14.07
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 01 Aug 2024 06:14:07 -0700 (PDT)
+Date: Thu, 1 Aug 2024 14:14:06 +0100
+From: Joe Damato <jdamato@fastly.com>
+To: Stefan Roese <sr@denx.de>
+Cc: Elad Yifee <eladwf@gmail.com>, Felix Fietkau <nbd@nbd.name>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Daniel Golle <daniel@makrotopia.org>
+Subject: Re: [PATCH net-next v2 1/2] net: ethernet: mtk_eth_soc: use prefetch
+ methods
+Message-ID: <ZquKHioPb6SMpztT@LQ3V64L9R2>
+Mail-Followup-To: Joe Damato <jdamato@fastly.com>,
+	Stefan Roese <sr@denx.de>, Elad Yifee <eladwf@gmail.com>,
+	Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Daniel Golle <daniel@makrotopia.org>
+References: <20240729183038.1959-1-eladwf@gmail.com>
+ <20240729183038.1959-2-eladwf@gmail.com>
+ <ZqirVSHTM42983Qr@LQ3V64L9R2>
+ <CA+SN3soUmtYfM_qVQ7L1gHMSLYe2bDm=6U9UwFLvj35odT0Feg@mail.gmail.com>
+ <17deb48c-6148-4e3d-aa0b-6c840f55302d@denx.de>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next v12 04/14] mm: page_frag: add '_va' suffix to
- page_frag API
-To: Alexander Duyck <alexander.duyck@gmail.com>
-CC: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>,
-	<netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Subbaraya Sundeep
-	<sbhatta@marvell.com>, Jeroen de Borst <jeroendb@google.com>, Praveen
- Kaligineedi <pkaligineedi@google.com>, Shailend Chand <shailend@google.com>,
-	Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
-	Przemek Kitszel <przemyslaw.kitszel@intel.com>, Sunil Goutham
-	<sgoutham@marvell.com>, Geetha sowjanya <gakula@marvell.com>, hariprasad
-	<hkelam@marvell.com>, Felix Fietkau <nbd@nbd.name>, Sean Wang
-	<sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, Lorenzo
- Bianconi <lorenzo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Keith
- Busch <kbusch@kernel.org>, Jens Axboe <axboe@kernel.dk>, Christoph Hellwig
-	<hch@lst.de>, Sagi Grimberg <sagi@grimberg.me>, Chaitanya Kulkarni
-	<kch@nvidia.com>, "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang
-	<jasowang@redhat.com>, =?UTF-8?Q?Eugenio_P=C3=A9rez?= <eperezma@redhat.com>,
-	Andrew Morton <akpm@linux-foundation.org>, Alexei Starovoitov
-	<ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>, Jesper Dangaard
- Brouer <hawk@kernel.org>, John Fastabend <john.fastabend@gmail.com>, Andrii
- Nakryiko <andrii@kernel.org>, Martin KaFai Lau <martin.lau@linux.dev>, Eduard
- Zingerman <eddyz87@gmail.com>, Song Liu <song@kernel.org>, Yonghong Song
-	<yonghong.song@linux.dev>, KP Singh <kpsingh@kernel.org>, Stanislav Fomichev
-	<sdf@fomichev.me>, Hao Luo <haoluo@google.com>, Jiri Olsa <jolsa@kernel.org>,
-	David Howells <dhowells@redhat.com>, Marc Dionne <marc.dionne@auristor.com>,
-	Chuck Lever <chuck.lever@oracle.com>, Jeff Layton <jlayton@kernel.org>, Neil
- Brown <neilb@suse.de>, Olga Kornievskaia <kolga@netapp.com>, Dai Ngo
-	<Dai.Ngo@oracle.com>, Tom Talpey <tom@talpey.com>, Trond Myklebust
-	<trondmy@kernel.org>, Anna Schumaker <anna@kernel.org>,
-	<intel-wired-lan@lists.osuosl.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-nvme@lists.infradead.org>,
-	<kvm@vger.kernel.org>, <virtualization@lists.linux.dev>,
-	<linux-mm@kvack.org>, <bpf@vger.kernel.org>, <linux-afs@lists.infradead.org>,
-	<linux-nfs@vger.kernel.org>
-References: <20240731124505.2903877-1-linyunsheng@huawei.com>
- <20240731124505.2903877-5-linyunsheng@huawei.com>
- <CAKgT0UcqdeSJdjZ_FfwyCnT927TwOkE4zchHLOkrBEmhGzex9g@mail.gmail.com>
-Content-Language: en-US
-From: Yunsheng Lin <linyunsheng@huawei.com>
-In-Reply-To: <CAKgT0UcqdeSJdjZ_FfwyCnT927TwOkE4zchHLOkrBEmhGzex9g@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.67.120.129]
-X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
- dggpemf200006.china.huawei.com (7.185.36.61)
+In-Reply-To: <17deb48c-6148-4e3d-aa0b-6c840f55302d@denx.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240801_140139_116499_60D71D4B 
-X-CRM114-Status: GOOD (  24.36  )
+X-CRM114-CacheID: sfid-20240801_061410_562077_814EE3F9 
+X-CRM114-Status: GOOD (  30.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,81 +121,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2024/8/1 2:13, Alexander Duyck wrote:
-> On Wed, Jul 31, 2024 at 5:50 AM Yunsheng Lin <linyunsheng@huawei.com> wrote:
->>
->> Currently the page_frag API is returning 'virtual address'
->> or 'va' when allocing and expecting 'virtual address' or
->> 'va' as input when freeing.
->>
->> As we are about to support new use cases that the caller
->> need to deal with 'struct page' or need to deal with both
->> 'va' and 'struct page'. In order to differentiate the API
->> handling between 'va' and 'struct page', add '_va' suffix
->> to the corresponding API mirroring the page_pool_alloc_va()
->> API of the page_pool. So that callers expecting to deal with
->> va, page or both va and page may call page_frag_alloc_va*,
->> page_frag_alloc_pg*, or page_frag_alloc* API accordingly.
->>
->> CC: Alexander Duyck <alexander.duyck@gmail.com>
->> Signed-off-by: Yunsheng Lin <linyunsheng@huawei.com>
->> Reviewed-by: Subbaraya Sundeep <sbhatta@marvell.com>
+On Thu, Aug 01, 2024 at 09:09:27AM +0200, Stefan Roese wrote:
+> On 7/30/24 20:35, Elad Yifee wrote:
+> > On Tue, Jul 30, 2024 at 11:59 AM Joe Damato <jdamato@fastly.com> wrote:
+> > > 
+> > > Based on the code in mtk_probe, I am guessing that only
+> > > MTK_SOC_MT7628 can DMA to unaligned addresses, because for
+> > > everything else eth->ip_align would be 0.
+> > > 
+> > > Is that right?
+> > > 
+> > > I am asking because the documentation in
+> > > Documentation/core-api/unaligned-memory-access.rst refers to the
+> > > case you mention, NET_IP_ALIGN = 0, suggesting that this is
+> > > intentional for performance reasons on powerpc:
+> > > 
+> > >    One notable exception here is powerpc which defines NET_IP_ALIGN to
+> > >    0 because DMA to unaligned addresses can be very expensive and dwarf
+> > >    the cost of unaligned loads.
+> > > 
+> > > It goes on to explain that some devices cannot DMA to unaligned
+> > > addresses and I assume that for your driver that is everything which
+> > > is not MTK_SOC_MT7628 ?
+> > 
+> > I have no explanation for this partial use of 'eth->ip_align', it
+> > could be a mistake
+> > or maybe I'm missing something.
+> > Perhaps Stefan Roese, who wrote this part, has an explanation.
+> > (adding Stefan to CC)
 > 
-> I am naking this patch. It is a pointless rename that is just going to
-> obfuscate the git history for these callers.
+> Sorry, I can't answer this w/o digging deeper into this driver and
+> SoC again. And I didn't use it for a few years now. It might be a
+> mistake.
 
-I responded to your above similar comment in v2, and then responded more
-detailedly in v11, both got not direct responding, it would be good to
-have more concrete feedback here instead of abstract argument.
+I asked about it because it was added in v2 of the patch, see the
+changelog from the patch:
 
-https://lore.kernel.org/all/74e7259a-c462-e3c1-73ac-8e3f49fb80b8@huawei.com/
-https://lore.kernel.org/all/11187fe4-9419-4341-97b5-6dad7583b5b6@huawei.com/
+  - use eth->ip_align instead of NET_IP_ALIGN as it could be 0,
+  depending on the platform 
 
-> 
-> As I believe I said before I would prefer to see this work more like
-> the handling of __get_free_pages and __free_pages in terms of the use
-
-I am not even sure why are you bringing up  __get_free_pages() and
-__free_pages() here, as the declaration of them is something like below:
-
-unsigned long __get_free_pages(gfp_t gfp_mask, unsigned int order);
-void __free_pages(struct page *page, unsigned int order);
-
-And I add another related one for completeness here:
-extern void free_pages(unsigned long addr, unsigned int order);
-
-I am failing to see there is any pattern or rule for the above API
-naming. If there is some pattern for the above existing APIs, please
-describe them in detail so that we have common understanding.
-
-After the renaming, the declaration for both new and old APIs is
-below, please be more specific about what exactly is the confusion
-about them, what is the better naming for the below APIs in your
-mind:
-struct page *page_frag_alloc_pg(struct page_frag_cache *nc,
-                               unsigned int *offset, unsigned int fragsz,
-                               gfp_t gfp);
-void *page_frag_alloc_va(struct page_frag_cache *nc,
-                         unsigned int fragsz, gfp_t gfp_mask);
-struct page *page_frag_alloc(struct page_frag_cache *nc,
-                             unsigned int *offset,
-                             unsigned int fragsz,
-                             void **va, gfp_t gfp);
-
-> of pages versus pointers and/or longs. Pushing this API aside because
-> you want to reuse the name for something different isn't a valid
-> reason to rename an existing API and will just lead to confusion.
-
-Before this patchset, all the page_frag API renamed with a '_va' suffix
-in this patch are dealing with virtual address, it would be better to be
-more specific about what exactly is the confusion here by adding a explicit
-'va' suffix for them in this patch?
-
-I would argue that the renaming may avoid some confusion about whether
-page_frag_alloc() returning a 'struct page' or returning a virtual address
-instead of leading to confusion.
-
-Anyway, naming is always hard, any better naming is welcome. But don't deny
-any existing API renaming when we have not really started doing detailed
-comparison between different API naming options yet.
+It seemed like from the changelog some one decided adding that made
+sense and I was just confirming the reasoning above.
 
