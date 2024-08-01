@@ -4,109 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7397AC3DA4A
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Aug 2024 13:20:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 415D2C52D54
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Aug 2024 15:22:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=C1zAq2A8tIjO2hNDIqGfuwyFl2KKWufIdH/9uRMO7aA=; b=AF1qMJ3Fmhj+KPLkufO0bewzQG
-	xbPo4VK638ArMtO09htqFfBE9edQSs4SVpuwDnOaOxtdIXCZvtoxvuEd9IWzf9k6A0w3192enVnpE
-	MlNeAIk0An+LC7MLfoc6fc74pNa2QpywNPcuXmICNqgGFz4Enu+2SYKQTXVfOu88mBidCnApnn6Mr
-	SygHlAD54I568m3TJqsUXEk67GGeJI2TiEQPlVDGGYrDOLEOfrYJP5GlCPF8tv/44+GiRWoYtEjvt
-	wdG/fSclZJ7xfpIDsKxuubNEeElPnHTNNVtldZt6e6VAN10PAXQL/h5Re0SQ5h3+RCm1c7GaImbnH
-	j8az7AUA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8Dx2Bv0d2od3Km7MjoXRYzhl1VfhP4WqwsY5gBZHcjc=; b=Y3yjEh/Gc6y/WatAKn51vOEWev
+	ocj62Mfq309dR4giJ8N6uW2ibSlQrDdzUgIhyc2qAeUl71i0BqqrEJSeU8q1Y/8nLt4COu8RNQmS+
+	hSNl1Sb08bWx1/aYPOjS6s7tK4rYt0D1f+ohfSUX9hEyigoaRXrYLCousdi/TwqfIFfghrTEcXvBo
+	mGq/cUjgVyKwDZI3Y2BJNtZbmCv1Oq/laGIZN8MgYX7B38peMQHnzQXuvWGPqQR/ardY3mkZ9kXOK
+	fX5MCPh61dlNv4Qm7l+d80N4TfeEbPNc1Yg+pWwPV5qnuTNswsxG3ZfIx3aqcyjqIyTvR4/YKYQTS
+	eT7LbjCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZVjA-00000005U62-0eOu;
-	Thu, 01 Aug 2024 13:20:20 +0000
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+	id 1sZXdb-00000005qRg-0nGg;
+	Thu, 01 Aug 2024 15:22:43 +0000
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZVdC-00000005RGs-1dBC
-	for linux-mediatek@lists.infradead.org;
-	Thu, 01 Aug 2024 13:14:11 +0000
-Received: by mail-wr1-x42c.google.com with SMTP id ffacd0b85a97d-368526b1333so1299653f8f.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 01 Aug 2024 06:14:09 -0700 (PDT)
+	id 1sZXdW-00000005qP3-2xXc;
+	Thu, 01 Aug 2024 15:22:40 +0000
+Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-428e0d184b4so6439285e9.2;
+        Thu, 01 Aug 2024 08:22:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=fastly.com; s=google; t=1722518048; x=1723122848; darn=lists.infradead.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:mail-followup-to:message-id:subject:cc:to
-         :from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=C1zAq2A8tIjO2hNDIqGfuwyFl2KKWufIdH/9uRMO7aA=;
-        b=AO0+kmIj+pZKauDzwa76QmKBaswybqZIWBaJyYO1aAfF8v2fYzoF2evoEosiSjJiDV
-         y2VtFRdyNXZFEzKV3BlE60qFE354T4mkOYhlIivVoyGtd+4vzytRTOHFQxiFXk0OOS+u
-         je43NN8lDUVN4VUQ46NXNidDkGiar4CAvKZTY=
+        d=gmail.com; s=20230601; t=1722525756; x=1723130556; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=8Dx2Bv0d2od3Km7MjoXRYzhl1VfhP4WqwsY5gBZHcjc=;
+        b=XslYqm01ZuG2hwiK/ltovYDhfbTwtLb0VeUHlz4ZeXoV/+D80vafzv3i/+jXe/S85U
+         lsqvjcQI8UIuSXJGT9XpKVCWC2j+nVrEb+J0FlqgX9OOZCD5eRJ/USReWfbSIGex+BtK
+         014saqBbLcEkjFFUnNsdHQ1Gq7aT3TSoh9Y+sgGqEGqO48i9wggD5zVMBD0HUiwIYOhU
+         cyX5H5Z/LiZVTbcG6MrrMnBqyRfesv9vKESZ333BLjJLYYJFqKetbI9s++up0u2DJGDU
+         RQCqwBHxQEYZbskakBEPUCgtdy1jRHhriIqGUjzSlsq7nxRLP4Rzbc0oOGbh44XC4F7Z
+         etbg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1722518048; x=1723122848;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:mail-followup-to:message-id:subject:cc:to
-         :from:date:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=C1zAq2A8tIjO2hNDIqGfuwyFl2KKWufIdH/9uRMO7aA=;
-        b=JX8KtbwlSvpe8whhm0rOrvGOT/XzIr0pOk4tSYFxF7EimU3T4UiAadxhlIiUr6mugk
-         Qduy4tAqiInYS5a7Ej9JPyAkrOkUI0FYHkyPJLMSejaZdrORznAi6SrnnGsg5p17Sui/
-         +GvS2sDhUiZZLdwkw5cnb8jjqVDs0QVdg6zQR+4wCIGfNwITdpYOcmZ1OUy50+oeditf
-         h7nB+qHxCD00lub/rWw9+ca2XZOjVUFnmvcda0n/Eeqmzmk1vPaqjAw6ZHPf+HrNX88m
-         PgwXSg0h35ECqHjuepMm+huN39G+o3kMLoV38thkbOY8WvToaPMGNEsrIzF/DiOtalhf
-         hsZA==
-X-Forwarded-Encrypted: i=1; AJvYcCWNNvgn6+hJWN9JaQ+wZ0WlqDYOGVGojryb/E77Z8NhnAIbOdQ6HDucj6kRlmKkLhXqD0Eqh30PEk1s+1OV9vwFcxrOwQhL7FNwQftfnINhDwNG
-X-Gm-Message-State: AOJu0YzNdhH0b4iaWTofCMRvN0DzW0dVezSpYkWLcZT6GAQCbAZ8P4Wb
-	7udPMTXxjHF6RZ5bs3MNSBf2DLd2POgnJ64HS7CA9tEVIov0+g6h8qM/7pSpHLk=
-X-Google-Smtp-Source: AGHT+IGY6C6HxMfYIEbuN5skOyWJua94QhKtVofdw583XyL2PipegA2/E/h1+XhGjqNYBfKRCf4SUQ==
-X-Received: by 2002:a5d:4251:0:b0:367:9048:e952 with SMTP id ffacd0b85a97d-36bb35c63f5mr1373341f8f.18.1722518048015;
-        Thu, 01 Aug 2024 06:14:08 -0700 (PDT)
-Received: from LQ3V64L9R2 ([80.208.222.2])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4282bb1dfd6sm56904175e9.42.2024.08.01.06.14.07
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 01 Aug 2024 06:14:07 -0700 (PDT)
-Date: Thu, 1 Aug 2024 14:14:06 +0100
-From: Joe Damato <jdamato@fastly.com>
-To: Stefan Roese <sr@denx.de>
-Cc: Elad Yifee <eladwf@gmail.com>, Felix Fietkau <nbd@nbd.name>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Daniel Golle <daniel@makrotopia.org>
-Subject: Re: [PATCH net-next v2 1/2] net: ethernet: mtk_eth_soc: use prefetch
- methods
-Message-ID: <ZquKHioPb6SMpztT@LQ3V64L9R2>
-Mail-Followup-To: Joe Damato <jdamato@fastly.com>,
-	Stefan Roese <sr@denx.de>, Elad Yifee <eladwf@gmail.com>,
-	Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Daniel Golle <daniel@makrotopia.org>
-References: <20240729183038.1959-1-eladwf@gmail.com>
- <20240729183038.1959-2-eladwf@gmail.com>
- <ZqirVSHTM42983Qr@LQ3V64L9R2>
- <CA+SN3soUmtYfM_qVQ7L1gHMSLYe2bDm=6U9UwFLvj35odT0Feg@mail.gmail.com>
- <17deb48c-6148-4e3d-aa0b-6c840f55302d@denx.de>
+        d=1e100.net; s=20230601; t=1722525756; x=1723130556;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=8Dx2Bv0d2od3Km7MjoXRYzhl1VfhP4WqwsY5gBZHcjc=;
+        b=IYn4JbP2PWYvSwYppZF7w2nNIYEWlxFMGUqv5Zaf25mZqQQeaw2F2xRosKVE4s3Fys
+         P8cPWwitW4hPiffUh5/JDMGiUR+czpqtvO/AZxjckNBvwcoK/xDhZgte1shwTMyNr2cc
+         gBpXJpFzLxEl7byEVDLd+dMDZAOxvWv9UVVWybA5I4KzRjqUeM3gsmrtDo7obl/m0Xuw
+         vUlqFUzS58NG9vVWNkIeVeXtQyel+v160F+fhneCZbrwLqndNapzEgwPd6EpTKdMG0LY
+         zvlqn+Z5Zzwv24HmanWq93X2b7TvC/r0D15FHqpO4I8JKLMqeBfYhu8q8y6Xk8COVyyx
+         lD4w==
+X-Forwarded-Encrypted: i=1; AJvYcCUDzPaQ5kqBysrvWT69JYfGHq+Qblcv20nTLQMtwMZ+K7DtmrLG+IXDNEfETBQDm/2iwSInby5NLTPipXzD/6yhjuVE6ngJDV/Q9sxpGE6eHL7XOg9NrCfZ8HjUWHQQjW50Fa9QDFdKVVWUxMftzshSrDQuwFYAOozjMgfGlcozBpL2MWC9zOIHfBmHkzbBVywI7yaTaZnMwoqR/nl4OexsGb4pTIeU4h8qq8m3iWrh7DSmV7mrsXM=
+X-Gm-Message-State: AOJu0YzW8ZNBImhCDaAf4jRANGQjpsJdJrzgssyHJ77eKHNadmsPqlsb
+	7fcuTsVf99QNhK49FrruaJ8bvcBCS2xDkRtb2KvaXPeDINNIEhsCmKlMq6u2SltZzCp9kdDzNsW
+	CAoiCLcLrRiS0oFYKZhHTVE5j+eU=
+X-Google-Smtp-Source: AGHT+IHJwpMJUuvVBDGd0+iVwndbV1UbEfs+MYBNb+0c/veShsqCR+fklPSjDi/gK00dEDB9UQYZf/nj06+15imHIwM=
+X-Received: by 2002:adf:f14d:0:b0:368:4bc0:9211 with SMTP id
+ ffacd0b85a97d-36bbc0f3459mr125871f8f.17.1722525756248; Thu, 01 Aug 2024
+ 08:22:36 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <17deb48c-6148-4e3d-aa0b-6c840f55302d@denx.de>
+References: <20240731124505.2903877-1-linyunsheng@huawei.com>
+ <20240731124505.2903877-5-linyunsheng@huawei.com> <CAKgT0UcqdeSJdjZ_FfwyCnT927TwOkE4zchHLOkrBEmhGzex9g@mail.gmail.com>
+ <22fda86c-d688-42e7-99e8-e2f8fcf1a5ba@huawei.com>
+In-Reply-To: <22fda86c-d688-42e7-99e8-e2f8fcf1a5ba@huawei.com>
+From: Alexander Duyck <alexander.duyck@gmail.com>
+Date: Thu, 1 Aug 2024 08:21:59 -0700
+Message-ID: <CAKgT0UcuGj8wvC87=A+hkarRupfhjGM0BPzLUT2AJc8Ovg_TFg@mail.gmail.com>
+Subject: Re: [PATCH net-next v12 04/14] mm: page_frag: add '_va' suffix to
+ page_frag API
+To: Yunsheng Lin <linyunsheng@huawei.com>
+Cc: davem@davemloft.net, kuba@kernel.org, pabeni@redhat.com, 
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	Subbaraya Sundeep <sbhatta@marvell.com>, Jeroen de Borst <jeroendb@google.com>, 
+	Praveen Kaligineedi <pkaligineedi@google.com>, Shailend Chand <shailend@google.com>, 
+	Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>, 
+	Przemek Kitszel <przemyslaw.kitszel@intel.com>, Sunil Goutham <sgoutham@marvell.com>, 
+	Geetha sowjanya <gakula@marvell.com>, hariprasad <hkelam@marvell.com>, Felix Fietkau <nbd@nbd.name>, 
+	Sean Wang <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, 
+	Lorenzo Bianconi <lorenzo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Keith Busch <kbusch@kernel.org>, 
+	Jens Axboe <axboe@kernel.dk>, Christoph Hellwig <hch@lst.de>, Sagi Grimberg <sagi@grimberg.me>, 
+	Chaitanya Kulkarni <kch@nvidia.com>, "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>, 
+	=?UTF-8?Q?Eugenio_P=C3=A9rez?= <eperezma@redhat.com>, 
+	Andrew Morton <akpm@linux-foundation.org>, Alexei Starovoitov <ast@kernel.org>, 
+	Daniel Borkmann <daniel@iogearbox.net>, Jesper Dangaard Brouer <hawk@kernel.org>, 
+	John Fastabend <john.fastabend@gmail.com>, Andrii Nakryiko <andrii@kernel.org>, 
+	Martin KaFai Lau <martin.lau@linux.dev>, Eduard Zingerman <eddyz87@gmail.com>, Song Liu <song@kernel.org>, 
+	Yonghong Song <yonghong.song@linux.dev>, KP Singh <kpsingh@kernel.org>, 
+	Stanislav Fomichev <sdf@fomichev.me>, Hao Luo <haoluo@google.com>, Jiri Olsa <jolsa@kernel.org>, 
+	David Howells <dhowells@redhat.com>, Marc Dionne <marc.dionne@auristor.com>, 
+	Chuck Lever <chuck.lever@oracle.com>, Jeff Layton <jlayton@kernel.org>, Neil Brown <neilb@suse.de>, 
+	Olga Kornievskaia <kolga@netapp.com>, Dai Ngo <Dai.Ngo@oracle.com>, Tom Talpey <tom@talpey.com>, 
+	Trond Myklebust <trondmy@kernel.org>, Anna Schumaker <anna@kernel.org>, intel-wired-lan@lists.osuosl.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-nvme@lists.infradead.org, kvm@vger.kernel.org, 
+	virtualization@lists.linux.dev, linux-mm@kvack.org, bpf@vger.kernel.org, 
+	linux-afs@lists.infradead.org, linux-nfs@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240801_061410_562077_814EE3F9 
-X-CRM114-Status: GOOD (  30.87  )
+X-CRM114-CacheID: sfid-20240801_082238_766551_3F955A80 
+X-CRM114-Status: GOOD (  21.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,45 +117,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Aug 01, 2024 at 09:09:27AM +0200, Stefan Roese wrote:
-> On 7/30/24 20:35, Elad Yifee wrote:
-> > On Tue, Jul 30, 2024 at 11:59 AM Joe Damato <jdamato@fastly.com> wrote:
-> > > 
-> > > Based on the code in mtk_probe, I am guessing that only
-> > > MTK_SOC_MT7628 can DMA to unaligned addresses, because for
-> > > everything else eth->ip_align would be 0.
-> > > 
-> > > Is that right?
-> > > 
-> > > I am asking because the documentation in
-> > > Documentation/core-api/unaligned-memory-access.rst refers to the
-> > > case you mention, NET_IP_ALIGN = 0, suggesting that this is
-> > > intentional for performance reasons on powerpc:
-> > > 
-> > >    One notable exception here is powerpc which defines NET_IP_ALIGN to
-> > >    0 because DMA to unaligned addresses can be very expensive and dwarf
-> > >    the cost of unaligned loads.
-> > > 
-> > > It goes on to explain that some devices cannot DMA to unaligned
-> > > addresses and I assume that for your driver that is everything which
-> > > is not MTK_SOC_MT7628 ?
-> > 
-> > I have no explanation for this partial use of 'eth->ip_align', it
-> > could be a mistake
-> > or maybe I'm missing something.
-> > Perhaps Stefan Roese, who wrote this part, has an explanation.
-> > (adding Stefan to CC)
-> 
-> Sorry, I can't answer this w/o digging deeper into this driver and
-> SoC again. And I didn't use it for a few years now. It might be a
-> mistake.
+On Thu, Aug 1, 2024 at 6:01=E2=80=AFAM Yunsheng Lin <linyunsheng@huawei.com=
+> wrote:
+>
+> On 2024/8/1 2:13, Alexander Duyck wrote:
+> > On Wed, Jul 31, 2024 at 5:50=E2=80=AFAM Yunsheng Lin <linyunsheng@huawe=
+i.com> wrote:
+> >>
+> >> Currently the page_frag API is returning 'virtual address'
+> >> or 'va' when allocing and expecting 'virtual address' or
+> >> 'va' as input when freeing.
+> >>
+> >> As we are about to support new use cases that the caller
+> >> need to deal with 'struct page' or need to deal with both
+> >> 'va' and 'struct page'. In order to differentiate the API
+> >> handling between 'va' and 'struct page', add '_va' suffix
+> >> to the corresponding API mirroring the page_pool_alloc_va()
+> >> API of the page_pool. So that callers expecting to deal with
+> >> va, page or both va and page may call page_frag_alloc_va*,
+> >> page_frag_alloc_pg*, or page_frag_alloc* API accordingly.
+> >>
+> >> CC: Alexander Duyck <alexander.duyck@gmail.com>
+> >> Signed-off-by: Yunsheng Lin <linyunsheng@huawei.com>
+> >> Reviewed-by: Subbaraya Sundeep <sbhatta@marvell.com>
+> >
+> > I am naking this patch. It is a pointless rename that is just going to
+> > obfuscate the git history for these callers.
+>
+> I responded to your above similar comment in v2, and then responded more
+> detailedly in v11, both got not direct responding, it would be good to
+> have more concrete feedback here instead of abstract argument.
+>
+> https://lore.kernel.org/all/74e7259a-c462-e3c1-73ac-8e3f49fb80b8@huawei.c=
+om/
+> https://lore.kernel.org/all/11187fe4-9419-4341-97b5-6dad7583b5b6@huawei.c=
+om/
 
-I asked about it because it was added in v2 of the patch, see the
-changelog from the patch:
+I will make this much more understandable. This patch is one of the
+ones that will permanently block this set in my opinion. As such I
+will never ack this patch as I see no benefit to it. Arguing with me
+on this is moot as you aren't going to change my mind, and I don't
+have all day to argue back and forth with you on every single patch.
 
-  - use eth->ip_align instead of NET_IP_ALIGN as it could be 0,
-  depending on the platform 
-
-It seemed like from the changelog some one decided adding that made
-sense and I was just confirming the reasoning above.
+As far as your API extension and naming maybe you should look like
+something like bio_vec and borrow the naming from that since that is
+essentially what you are passing back and forth is essentially that
+instead of a page frag which is normally a virtual address.
 
