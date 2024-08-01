@@ -4,74 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D55EFC3DA64
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Aug 2024 07:30:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF093C49EA1
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Aug 2024 07:36:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WzBD7IMujxoOrTLMylUbrnQpAGsXY6JVI23pi1Z1PkI=; b=Zw3eDS+m9f8k9IfjC0alOS9aEb
-	aRrpPsIfM+V6d006JmpJrfcCS5HtjkF9y8kxkQnuTnRz00hKLbH/dPA/D0P0lefa2xP6B5hVhsr0o
-	Yt0EZUQcnZR7fuiVDxIFKyeYJ3bkQPSnjVIxg4BhU1RhDnv9CWL88mokL+BovYza5X8JXsH7PfWe4
-	8nhsf3WNuly5RdNCbRPaZdlyKhd6RwTZmdtwAhtepZKE95W0zY3s8Z4BgKnn3xHUn1GO6C4eo/aLc
-	iUYYX06WIFnyeY/8RQnt7dY5Gv+XBPXTFkVEOYOhctRPY8u+L2Azg442GYjP6eZRqxt/n9Ou8ubhu
-	WkHQsT+w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=kXOXSbmIHL1MTNjuA4k+v44MM2DH7Ay+UHWKUBdQDu4=; b=fNTOcyBzTeBEB2CrzlAF+5Kwxw
+	aQl0rMACQ9XiPvwQ5ImccjO3z+PEHwaFVUNvuP4yuhTTQt2oq7z7HV4s9sobvD/myqcCbSs9TK6iK
+	Qv+n8JwFeyZG4PIRUUIEStWekxgnTZmmRSu8WdrPb4XlwDq1VfRjfkY2x7M57aBODZItZGIVKocpJ
+	JN0vcabHqupAha0WMMVrzDOxgSe6wiSC7fZ9RV4NoFtVFaqFOirEDou74WrjDZ1uLtIIO7zwL2TIm
+	zMXq4JI6Tys8c63u4hdEulb+YTIzBLi9ewAbV7Uedjfq4pYeQSTvDjv8eLcmw9uT3oUN3bdwvPUyG
+	PvFueLPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZQGu-00000004AjN-2ABX;
-	Thu, 01 Aug 2024 07:30:48 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sZQMK-00000004C95-4AiM;
+	Thu, 01 Aug 2024 07:36:24 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZQGQ-00000004AdV-3NFX;
-	Thu, 01 Aug 2024 07:30:20 +0000
+	id 1sZQLn-00000004BvM-3LQe;
+	Thu, 01 Aug 2024 07:35:55 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id E31036276A;
-	Thu,  1 Aug 2024 07:30:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1CE09C4AF0A;
-	Thu,  1 Aug 2024 07:30:16 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id DB54F62799;
+	Thu,  1 Aug 2024 07:35:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 59E86C4AF0C;
+	Thu,  1 Aug 2024 07:35:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1722497417;
-	bh=WzBD7IMujxoOrTLMylUbrnQpAGsXY6JVI23pi1Z1PkI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=jukcYLVtOi9LIv2gj0gl9XwGfAEC28HOav2+AeGJ3J5KdJDQrD+NIMDsIWQXtGJQk
-	 DW65asz/5fiPWSvZTR2UAoQvuNYP2I+RwhVYgnUI20XCj8aEjnk5Vc2ktQl1glZXZm
-	 Q37TVZU5U8NurGvlmUwNLrc9tmsZkwsjxbEhfoEpM/eVWkrdMZmbePjLuYwPiUu1kL
-	 aPaY7fZMp7owGCecDgyo0kjyYK7OC9j7MTy/qj1vH/5j11airUkYcMiaOqhxm+405h
-	 kVaE9p3dTxP4IWqEcAJn43qQ0enM7neb6Oyz5XJgYTpbyFuqvp++MsoeOch76ON5ev
-	 nrXUtL73v+TWw==
-Date: Thu, 1 Aug 2024 09:30:13 +0200
+	s=k20201202; t=1722497750;
+	bh=hmwI99xOs957wahotfiYm89IpJoEa6sHrmucbJj3bao=;
+	h=From:To:Cc:Subject:Date:From;
+	b=P7ikYXovUv0Gabizyy89I2S4Zy74Ob0bxM+1z26KGLh2UyoSHHfWdTC/eNzxZeyJf
+	 d2L7r6/V2wRmuGy19NUWm/O80O5vAGB+ig7aWJK0jAZYuF1noLUfHpqs4zQ7B0zmDu
+	 Sfv2X+FRgiODaqO9cIRIUra3jNGM+UtwkcMhgK+GpPVTcEVljp7q+ajrqUe2an//Jv
+	 9InFimQK4nig32lNRW494dAAbjNOGC/mFxT08j875BeqoDYxLXeuWElhoJ+Ws8xLDW
+	 W/RtroltWeYJpQ7bRIsZf26kJw2a9WXc2eKw/b/MTWkl4VxlAQqXjxfpnUceXpQHKQ
+	 PFAXkCbgOeHqg==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Elad Yifee <eladwf@gmail.com>
-Cc: Jakub Kicinski <kuba@kernel.org>, Felix Fietkau <nbd@nbd.name>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+To: netdev@vger.kernel.org
+Cc: arinc.unal@arinc9.com,
+	daniel@makrotopia.org,
+	dqfext@gmail.com,
+	sean.wang@mediatek.com,
+	andrew@lunn.ch,
+	f.fainelli@gmail.com,
+	olteanv@gmail.com,
+	davem@davemloft.net,
+	edumazet@google.com,
+	kuba@kernel.org,
+	pabeni@redhat.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	Daniel Golle <daniel@makrotopia.org>,
-	Joe Damato <jdamato@fastly.com>
-Subject: Re: [PATCH net-next v2 0/2] net: ethernet: mtk_eth_soc: improve RX
- performance
-Message-ID: <Zqs5hcFMx1g42Zrd@lore-desk>
-References: <20240729183038.1959-1-eladwf@gmail.com>
- <ZqfpGVhBe3zt0x-K@lore-desk>
- <CA+SN3soFwyPs2YhvY+x33B6WsHHahu6hbKM-0TpdkquJwzD7Gw@mail.gmail.com>
- <20240731183718.1278048e@kernel.org>
- <CA+SN3srMPLcmQ4h_iNst71OkQPFcCYxBRL0Q9hR=7LjJ86TFFA@mail.gmail.com>
+	lorenzo.bianconi83@gmail.com,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	upstream@airoha.com
+Subject: [PATCH v2 net-next 0/2] Add support for EN7581 to mt7530 driver
+Date: Thu,  1 Aug 2024 09:35:10 +0200
+Message-ID: <cover.1722496682.git.lorenzo@kernel.org>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="5rYSnn6hAqwxzEyp"
-Content-Disposition: inline
-In-Reply-To: <CA+SN3srMPLcmQ4h_iNst71OkQPFcCYxBRL0Q9hR=7LjJ86TFFA@mail.gmail.com>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240801_003018_952380_DBFDA09C 
-X-CRM114-Status: GOOD (  22.85  )
+X-CRM114-CacheID: sfid-20240801_003551_926417_F32F42A8 
+X-CRM114-Status: UNSURE (   7.85  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,63 +88,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Add EN7581 support to MT7530 DSA driver.
 
---5rYSnn6hAqwxzEyp
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Changes since v1:
+- get rid of mac_port_config callback for EN7581
+- introduce en7581_mac_port_get_caps callback
+- introduce MT753X_FORCE_MODE(id) macro
+- fix compatible property in mt7530.yaml
 
-> On Thu, Aug 1, 2024 at 4:37=E2=80=AFAM Jakub Kicinski <kuba@kernel.org> w=
-rote:
-> >
-> > On Tue, 30 Jul 2024 08:29:58 +0300 Elad Yifee wrote:
-> > > Since it's probably the reason for the performance hit,
-> > > allocating full pages every time, I think your suggestion would impro=
-ve the
-> > > performance and probably match it with the napi_alloc_frag path.
-> > > I'll give it a try when I have time.
-> >
-> > This is a better direction than disabling PP.
-> > Feel free to repost patch 1 separately.
-> > --
-> > pw-bot: cr
-> In this driver, the existence of PP is the condition to execute all
-> XDP-related operations which aren't necessary
-> on this hot path, so we anyway wouldn't want that. on XDP program
-> setup the rings are reallocated and the PP
-> would be created.
+Lorenzo Bianconi (2):
+  dt-bindings: net: dsa: mediatek,mt7530: Add airoha,en7581-switch
+  net: dsa: mt7530: Add EN7581 support
 
-nope, I added page_pool support even for non-XDP mode for hw that does
-not support HW-LRO. I guess mtk folks can correct me if I am wrong but
-IIRC there were some hw limirations on mt7986/mt7988 for HW-LRO, so I am
-not sure if it can be supported.
+ .../bindings/net/dsa/mediatek,mt7530.yaml     |  8 ++-
+ drivers/net/dsa/mt7530-mmio.c                 |  1 +
+ drivers/net/dsa/mt7530.c                      | 49 ++++++++++++++++---
+ drivers/net/dsa/mt7530.h                      | 20 ++++++--
+ 4 files changed, 66 insertions(+), 12 deletions(-)
 
-> Other than that, for HWLRO we need contiguous pages of different order
-> than the PP, so the creation of PP
-> basically prevents the use of HWLRO.
-> So we solve this LRO problem and get a performance boost with this
-> simple change.
->=20
-> Lorenzo's suggestion would probably improve the performance of the XDP
-> path and we should try that nonetheless.
+-- 
+2.45.2
 
-nope, I mean to improve peformances even for non-XDP case with page_pool fr=
-ag
-APIs.
-
-Regards,
-Lorenzo
-
---5rYSnn6hAqwxzEyp
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZqs5hQAKCRA6cBh0uS2t
-rNZrAP0eoKULRJ3mk5g+ma9i4CaSGMfF3dbb7VK1e4BzjNQvzQD/W6jl6gOfuYuJ
-K3hcqA1i0ABxgAdLVpxeoE6H4UBzzwA=
-=7+zW
------END PGP SIGNATURE-----
-
---5rYSnn6hAqwxzEyp--
 
