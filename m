@@ -4,66 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CBA4C3DA4A
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Aug 2024 08:24:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E25A8C3DA4A
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Aug 2024 08:43:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gGtEXTV8Q1xasiMva0WIQTBFdS4zoxRcCYwoJdz/tJc=; b=dnTSKqhAatiapG1dAMqGSA+0Ba
-	e3BWT9iBRKm4XjGE5Lq5eRWOmsKwvqisoXALMqDY6037avrYwWP00YgrL700P5L6kiuZY2vaZw/eK
-	lLcM+by0dnqMow6YD9vvxW2GWXEjovxRwGugKstA2myaladi7DOqZWtw1Xy9i0+5GZNFyFz0L5FFr
-	bYSHP6khF1Ye1T3Az8fSQHVZzl51jiTsdzUOWx8cCIbTxyuqPW0xRAVzWEMFlyKm2kaOyfJBJz0fu
-	GhEahaTmK46Ie1wb3Q3zeQAOdSqmCRYkPFis2jesN5Hq6+f7wTDRlHuFR/vK7jBQnxMJVaXSbcGJe
-	HyhB1/XQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=wxNcnqQo5NU+fObOUqkwuDhDALZigjO5uaz8LMLm0ok=; b=FedDoym5LXkRdjZY0/suuuZ1u/
+	ijdI9+zkqnEdFg8jZ3uwCRFvZ4Av40/Xoh2UHj7rmk96I/GtdNMC/GHmCFsDNavetOx861Hyz7AKy
+	F5SfYXgbQuuJu2li7Gid9M9Ca/VnSU6tbXxpDHiVQRWoB+Lf97uH9nmSkj/2qJ+IyGE5n9x9vHN4g
+	FTgltH1iusvjCaH9+FUhaFlV8tsyrzq4tfmB6GfUpM/PjfahNSN2F48jOiVlRQFJsqjJ0r6F3NmC6
+	pt4lNg/xFNsZjzQOP1DyX2CxwhrxRE27GeA1C57I34yXdi5pRQFrf6V3uQuEo6gpSt+ZT6b+z42Q5
+	4GZDN3xw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZR6s-00000004L0k-16yy;
-	Thu, 01 Aug 2024 08:24:30 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1sZRPa-00000004PDU-1qFW;
+	Thu, 01 Aug 2024 08:43:50 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZR6M-00000004Koa-0fc7;
-	Thu, 01 Aug 2024 08:24:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1722500635;
-	bh=suyOYv7hGoiKkqAOfnYjT40wA9uY4wMwWjlg+hdAcxE=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=4cpvwBuXeiF1IJKFI61G5oN7nxTdHUhz/ATQiukTCYP7ygTEAJEViNVhCBO8d/I4B
-	 QpDNmQU6A8v5JCUALTlaeg7a/JIQZPxpkPfKTfWltlQWWGhd8kJgEtBXHYAVQbLJuw
-	 vgZjJsdn6wfXzGYwM0nwbPlvwo6LYk4pft6wc4xpGB1Q+sm6V/a38TjGWfLQLhiLyp
-	 pkw8tHVzQLMaO1f/IryRxW+S9Le7pBxrISaruD+P9bGK2VB4W9lyMOT5kmMBjPf/Fc
-	 hJkrduG+PbIKam7blYf+oMx4L7HCyPmfGPTXNroZT7rHu9I3RtvtVTAXLP+HpEqdvk
-	 HsjxrUu0ONiag==
-Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 46888378220A;
-	Thu,  1 Aug 2024 08:23:55 +0000 (UTC)
-Message-ID: <9b983add-45a4-497d-ab95-188f8ca1c0d1@collabora.com>
-Date: Thu, 1 Aug 2024 10:23:54 +0200
+	id 1sZRPV-00000004PA3-0X62;
+	Thu, 01 Aug 2024 08:43:47 +0000
+X-UUID: 275cbf3a4fe211efa6c87f6b4542ff6b-20240801
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=wxNcnqQo5NU+fObOUqkwuDhDALZigjO5uaz8LMLm0ok=;
+	b=TEehCUiiQoZMz79Roef6y92CyPotL/HQ8a0V9nVZNupRlUiqckHdgaziYVV7txugMQxJ0lqdBJbL8pO9Z/1c3/ePk2PVBhIcHqxAI5ZqVHvnsonyD/0+eBxqCDqohWApTDBwc9kblpg3QNauC7o/KM0oxolOxAzwshbzxa58Qs4=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.41,REQID:50a6b1c4-40cf-4cc8-a053-715243b18224,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6dc6a47,CLOUDID:14be06d6-0d68-4615-a20f-01d7bd41f0bb,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-UUID: 275cbf3a4fe211efa6c87f6b4542ff6b-20240801
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+	(envelope-from <yr.yang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1835343298; Thu, 01 Aug 2024 01:43:41 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Thu, 1 Aug 2024 16:43:38 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Thu, 1 Aug 2024 16:43:37 +0800
+From: yr.yang <yr.yang@mediatek.com>
+To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: <linux-sound@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, YR Yang
+	<yr.yang@mediatek.com>
+Subject: [PATCH v2] ASoC: mediatek: mt8188: Mark AFE_DAC_CON0 register as volatile
+Date: Thu, 1 Aug 2024 16:43:26 +0800
+Message-ID: <20240801084326.1472-1-yr.yang@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] drm: mediatek: Drop unnecessary check for property
- presence
-To: "Rob Herring (Arm)" <robh@kernel.org>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
- Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-References: <20240731201407.1838385-1-robh@kernel.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20240731201407.1838385-1-robh@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240801_012358_365108_F266381D 
-X-CRM114-Status: GOOD (  10.07  )
+X-CRM114-CacheID: sfid-20240801_014345_209488_ED3F84DA 
+X-CRM114-Status: GOOD (  11.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,20 +86,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 31/07/24 22:13, Rob Herring (Arm) ha scritto:
-> of_property_read_u32() returns -EINVAL if a property is not present, so
-> the preceeding check for presence with of_find_property() can be
-> dropped. Really, what the errno is shouldn't matter. Either the property
-> can be read and used or it can't and is ignored.
-> 
-> This is part of a larger effort to remove callers of of_find_property()
-> and similar functions. of_find_property() leaks the DT struct property
-> and data pointers which is a problem for dynamically allocated nodes
-> which may be freed.
-> 
-> Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
+From: YR Yang <yr.yang@mediatek.com>
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Add AFE Control Register 0 to the volatile_register.
+AFE_DAC_CON0 can be modified by both the SOF and ALSA drivers.
+If this register is read and written in cache mode, the cached value
+might not reflect the actual value when the register is modified by
+another driver. It can cause playback or capture failures. Therefore,
+it is necessary to add AFE_DAC_CON0 to the list of volatile registers.
 
+Signed-off-by: YR Yang <yr.yang@mediatek.com>
+---
+Changes in v2:
+- Modify commit message.
+- Link to v1: https://patchwork.kernel.org/project/linux-mediatek/patch/20240801031030.31114-1-yr.yang@mediatek.com/
+---
+ sound/soc/mediatek/mt8188/mt8188-afe-pcm.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/sound/soc/mediatek/mt8188/mt8188-afe-pcm.c b/sound/soc/mediatek/mt8188/mt8188-afe-pcm.c
+index ccb6c1f3adc7..73e5c63aeec8 100644
+--- a/sound/soc/mediatek/mt8188/mt8188-afe-pcm.c
++++ b/sound/soc/mediatek/mt8188/mt8188-afe-pcm.c
+@@ -2748,6 +2748,7 @@ static bool mt8188_is_volatile_reg(struct device *dev, unsigned int reg)
+ 	case AFE_ASRC12_NEW_CON9:
+ 	case AFE_LRCK_CNT:
+ 	case AFE_DAC_MON0:
++	case AFE_DAC_CON0:
+ 	case AFE_DL2_CUR:
+ 	case AFE_DL3_CUR:
+ 	case AFE_DL6_CUR:
+-- 
+2.34.1
 
 
