@@ -4,60 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3D0EC3DA4A
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Aug 2024 07:10:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D55EFC3DA64
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Aug 2024 07:30:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=o4hAv10eTczG/p9L7z/itYfE+K0OeUaX4itGH10J/gU=; b=i4nmheMlSlrTNwIAe1rdkPVol2
-	51hfFCduJkKM8AhiSnQtGGnC82Vq8K1VM5MlyAtygoOkOmBlVw4vGBfAAibGfsvzaC1w/7XaDdpKk
-	ybWIMi4P6sDoTLrW67nmZC0D6VVsSgt5pNg53fnReFfSrFtJvNM6ZiF+MU+xcE/uEnBVNF9FY/WRE
-	ANXR3flJCX8otnGLQw8ngRPnM6TGLLo3cXLEmihGBbKOJJGb/nGTt9b+faD5PcFORv55cSe/hrlJ0
-	zao7FZYaPLnrWs07P3Wr98MMYpIHjyKgXmymHTlPairoGPN+haVtqOhnNYpkxKiaU1ZTpecsN5/qT
-	fvthewBg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WzBD7IMujxoOrTLMylUbrnQpAGsXY6JVI23pi1Z1PkI=; b=Zw3eDS+m9f8k9IfjC0alOS9aEb
+	aRrpPsIfM+V6d006JmpJrfcCS5HtjkF9y8kxkQnuTnRz00hKLbH/dPA/D0P0lefa2xP6B5hVhsr0o
+	Yt0EZUQcnZR7fuiVDxIFKyeYJ3bkQPSnjVIxg4BhU1RhDnv9CWL88mokL+BovYza5X8JXsH7PfWe4
+	8nhsf3WNuly5RdNCbRPaZdlyKhd6RwTZmdtwAhtepZKE95W0zY3s8Z4BgKnn3xHUn1GO6C4eo/aLc
+	iUYYX06WIFnyeY/8RQnt7dY5Gv+XBPXTFkVEOYOhctRPY8u+L2Azg442GYjP6eZRqxt/n9Ou8ubhu
+	WkHQsT+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZPwv-000000047R4-0vuD;
-	Thu, 01 Aug 2024 07:10:09 +0000
-Received: from mout-u-204.mailbox.org ([80.241.59.204])
+	id 1sZQGu-00000004AjN-2ABX;
+	Thu, 01 Aug 2024 07:30:48 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZPwR-000000047K2-08y3;
-	Thu, 01 Aug 2024 07:09:40 +0000
-Received: from smtp102.mailbox.org (smtp102.mailbox.org [10.196.197.102])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mout-u-204.mailbox.org (Postfix) with ESMTPS id 4WZKpM35cdz9shY;
-	Thu,  1 Aug 2024 09:09:31 +0200 (CEST)
-Message-ID: <17deb48c-6148-4e3d-aa0b-6c840f55302d@denx.de>
-Date: Thu, 1 Aug 2024 09:09:27 +0200
-MIME-Version: 1.0
-Subject: Re: [PATCH net-next v2 1/2] net: ethernet: mtk_eth_soc: use prefetch
- methods
-To: Elad Yifee <eladwf@gmail.com>, Joe Damato <jdamato@fastly.com>,
- Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
- Mark Lee <Mark-MC.Lee@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Daniel Golle <daniel@makrotopia.org>
+	id 1sZQGQ-00000004AdV-3NFX;
+	Thu, 01 Aug 2024 07:30:20 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id E31036276A;
+	Thu,  1 Aug 2024 07:30:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1CE09C4AF0A;
+	Thu,  1 Aug 2024 07:30:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1722497417;
+	bh=WzBD7IMujxoOrTLMylUbrnQpAGsXY6JVI23pi1Z1PkI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=jukcYLVtOi9LIv2gj0gl9XwGfAEC28HOav2+AeGJ3J5KdJDQrD+NIMDsIWQXtGJQk
+	 DW65asz/5fiPWSvZTR2UAoQvuNYP2I+RwhVYgnUI20XCj8aEjnk5Vc2ktQl1glZXZm
+	 Q37TVZU5U8NurGvlmUwNLrc9tmsZkwsjxbEhfoEpM/eVWkrdMZmbePjLuYwPiUu1kL
+	 aPaY7fZMp7owGCecDgyo0kjyYK7OC9j7MTy/qj1vH/5j11airUkYcMiaOqhxm+405h
+	 kVaE9p3dTxP4IWqEcAJn43qQ0enM7neb6Oyz5XJgYTpbyFuqvp++MsoeOch76ON5ev
+	 nrXUtL73v+TWw==
+Date: Thu, 1 Aug 2024 09:30:13 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Elad Yifee <eladwf@gmail.com>
+Cc: Jakub Kicinski <kuba@kernel.org>, Felix Fietkau <nbd@nbd.name>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Daniel Golle <daniel@makrotopia.org>,
+	Joe Damato <jdamato@fastly.com>
+Subject: Re: [PATCH net-next v2 0/2] net: ethernet: mtk_eth_soc: improve RX
+ performance
+Message-ID: <Zqs5hcFMx1g42Zrd@lore-desk>
 References: <20240729183038.1959-1-eladwf@gmail.com>
- <20240729183038.1959-2-eladwf@gmail.com> <ZqirVSHTM42983Qr@LQ3V64L9R2>
- <CA+SN3soUmtYfM_qVQ7L1gHMSLYe2bDm=6U9UwFLvj35odT0Feg@mail.gmail.com>
-Content-Language: en-US
-From: Stefan Roese <sr@denx.de>
-In-Reply-To: <CA+SN3soUmtYfM_qVQ7L1gHMSLYe2bDm=6U9UwFLvj35odT0Feg@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+ <ZqfpGVhBe3zt0x-K@lore-desk>
+ <CA+SN3soFwyPs2YhvY+x33B6WsHHahu6hbKM-0TpdkquJwzD7Gw@mail.gmail.com>
+ <20240731183718.1278048e@kernel.org>
+ <CA+SN3srMPLcmQ4h_iNst71OkQPFcCYxBRL0Q9hR=7LjJ86TFFA@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="5rYSnn6hAqwxzEyp"
+Content-Disposition: inline
+In-Reply-To: <CA+SN3srMPLcmQ4h_iNst71OkQPFcCYxBRL0Q9hR=7LjJ86TFFA@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240801_000939_234758_E4E4BDE8 
-X-CRM114-Status: GOOD (  17.27  )
+X-CRM114-CacheID: sfid-20240801_003018_952380_DBFDA09C 
+X-CRM114-Status: GOOD (  22.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,39 +86,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7/30/24 20:35, Elad Yifee wrote:
-> On Tue, Jul 30, 2024 at 11:59 AM Joe Damato <jdamato@fastly.com> wrote:
->>
->> Based on the code in mtk_probe, I am guessing that only
->> MTK_SOC_MT7628 can DMA to unaligned addresses, because for
->> everything else eth->ip_align would be 0.
->>
->> Is that right?
->>
->> I am asking because the documentation in
->> Documentation/core-api/unaligned-memory-access.rst refers to the
->> case you mention, NET_IP_ALIGN = 0, suggesting that this is
->> intentional for performance reasons on powerpc:
->>
->>    One notable exception here is powerpc which defines NET_IP_ALIGN to
->>    0 because DMA to unaligned addresses can be very expensive and dwarf
->>    the cost of unaligned loads.
->>
->> It goes on to explain that some devices cannot DMA to unaligned
->> addresses and I assume that for your driver that is everything which
->> is not MTK_SOC_MT7628 ?
-> 
-> I have no explanation for this partial use of 'eth->ip_align', it
-> could be a mistake
-> or maybe I'm missing something.
-> Perhaps Stefan Roese, who wrote this part, has an explanation.
-> (adding Stefan to CC)
 
-Sorry, I can't answer this w/o digging deeper into this driver and
-SoC again. And I didn't use it for a few years now. It might be a
-mistake.
+--5rYSnn6hAqwxzEyp
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Thanks,
-Stefan
+> On Thu, Aug 1, 2024 at 4:37=E2=80=AFAM Jakub Kicinski <kuba@kernel.org> w=
+rote:
+> >
+> > On Tue, 30 Jul 2024 08:29:58 +0300 Elad Yifee wrote:
+> > > Since it's probably the reason for the performance hit,
+> > > allocating full pages every time, I think your suggestion would impro=
+ve the
+> > > performance and probably match it with the napi_alloc_frag path.
+> > > I'll give it a try when I have time.
+> >
+> > This is a better direction than disabling PP.
+> > Feel free to repost patch 1 separately.
+> > --
+> > pw-bot: cr
+> In this driver, the existence of PP is the condition to execute all
+> XDP-related operations which aren't necessary
+> on this hot path, so we anyway wouldn't want that. on XDP program
+> setup the rings are reallocated and the PP
+> would be created.
 
+nope, I added page_pool support even for non-XDP mode for hw that does
+not support HW-LRO. I guess mtk folks can correct me if I am wrong but
+IIRC there were some hw limirations on mt7986/mt7988 for HW-LRO, so I am
+not sure if it can be supported.
+
+> Other than that, for HWLRO we need contiguous pages of different order
+> than the PP, so the creation of PP
+> basically prevents the use of HWLRO.
+> So we solve this LRO problem and get a performance boost with this
+> simple change.
+>=20
+> Lorenzo's suggestion would probably improve the performance of the XDP
+> path and we should try that nonetheless.
+
+nope, I mean to improve peformances even for non-XDP case with page_pool fr=
+ag
+APIs.
+
+Regards,
+Lorenzo
+
+--5rYSnn6hAqwxzEyp
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZqs5hQAKCRA6cBh0uS2t
+rNZrAP0eoKULRJ3mk5g+ma9i4CaSGMfF3dbb7VK1e4BzjNQvzQD/W6jl6gOfuYuJ
+K3hcqA1i0ABxgAdLVpxeoE6H4UBzzwA=
+=7+zW
+-----END PGP SIGNATURE-----
+
+--5rYSnn6hAqwxzEyp--
 
