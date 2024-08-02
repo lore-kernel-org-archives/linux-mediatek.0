@@ -4,72 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 099C2C3DA49
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Aug 2024 10:53:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DE75C52D6F
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Aug 2024 17:01:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QgAnTzCp8eEzomrj8ewm+47pD4cRBX96G0mhCFGASRY=; b=5G6vlzxNXa1/8+HZ+YpVpvyKsP
-	We3pNBDzBTPzrl78qY5v6i4bhDKG2Y3JHOV5C+nmq2wAuNC7JkC+PkFb/QlLHVPIyoISO6kzubGys
-	AtLf6qRtYtD0LFlM20RYPNxkSzh+lZ5n6YzJKmoXYZFEWZfRiYqZH9rnT2R0CcmuLaSeUXhn4oUA0
-	+4aGrcc5Yu6BxUoT3sd4c3ZU3+xL2f3NiA9JxPf3Ju/jRJNzKwi/n3Nu3wzuCcvSbxc1so8DBFhUd
-	xdg9/lWFHgXm9urC8neItc3keX1wCwu34R6diRE+0r549rZ2T8JRMXVXTGq6zE7fCG/WCOgmRHwG8
-	QUQznBXQ==;
+	bh=vpcsgqmtuPo+pz6tWtSNKqkTo9JxSymPCppu91onA2Q=; b=4BfBwe4x7u5+X7/MgIwE/X+8XB
+	vp93wOj4dYDV5rzK4/0MmuRp1ix546JSN2/mt2wOsV4jKXYWDjdccgaHLHPX99jqH9rxiVjNP/TCU
+	8kfmDNpNOQH/oLZLStDUsXyXdZ5y9/BGzRtBsKG9A06HmlMyYxe1lc5MIg/2qFNYRCP7th5Uf6EgT
+	l/DuH3iScsFbs1zISCvYnXwnMYbWt1DJH4CioIcQkmTVSHwj6G+azz37LkXRbPg7D7waCuhkDv9sb
+	5TLnRb4qpfeX6V516SV9sEUSvJXMgKCzgpKeJ5m1UN7YDJpIq7rdAdnOY/evkBYldjqzjb7iLOzcm
+	9FqAEVGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZpuA-00000008ZCc-0XgA;
-	Fri, 02 Aug 2024 10:53:02 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1sZved-00000009YLJ-1ZLe;
+	Fri, 02 Aug 2024 17:01:23 +0000
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZpu6-00000008ZAk-3lVj
-	for linux-mediatek@lists.infradead.org;
-	Fri, 02 Aug 2024 10:53:00 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id E25D7629D9
-	for <linux-mediatek@lists.infradead.org>; Fri,  2 Aug 2024 10:52:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9AC0DC4AF0E
-	for <linux-mediatek@lists.infradead.org>; Fri,  2 Aug 2024 10:52:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1722595977;
-	bh=iQMzad7kELPKfYfZYzFJ19ATnCtIUZ3I0vtOF7oMT4c=;
-	h=References:In-Reply-To:From:Date:Subject:To:List-Id:Cc:From;
-	b=fJaWjMAW4cM42G0a2ACRnfyu7WhTguZVbWD09iTOdFrgktEjfc/SwQknhw/C7LJ0v
-	 yLAS3GxQcMyW+ag2qW1ZvDpHZ9d42ZbO35ae4Ga0QnbB75zvjR1RE9Ehq/FrmtxS5i
-	 uKmQWwaHMEc1/WhVyTIsFXYHo6dFzrgmMne6Nq9myg2WfT+azOJl+St7o1cydjWTDN
-	 O7Fh5WtbJPbzaHYJbWt3PzYK2HX45LpQv33mTbezbW/Dx2lMlgTgslKMUdRISuLOlh
-	 JZZwZMDjvQ4KkSNjiO4mMcPjqFda1wSuHXJOskFP1XrNDW5oymL5TRO0Wu7lvrFk2e
-	 os+OZAQayS5PQ==
-Received: by mail-yw1-f173.google.com with SMTP id 00721157ae682-661d7e68e89so25738077b3.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 02 Aug 2024 03:52:57 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCUR/DckHyKfITQScXe8L5ICzA+Z0wZYPv089Lp7BMReh2Mx4sbCsgWcJ2MDZL47qpnBTXUM3sB03F7+GR90IICau2E8WXHDldYQ9F0mDYbUhDjs
-X-Gm-Message-State: AOJu0Yx4nghywyLKuOfPXS0jceGqQ6IB9u+UmTsECm1oRp/xzUlt4DU4
-	qKg2o7+/+GvGNFw3HB4CIOX4B1B9Tf35bGXKpJTC4haBKe0/9yRWdWh7x93k7bBxf3k1VycjNHH
-	IqHmo4WOhSbuuy/lSJzGI1RGlqtY=
-X-Google-Smtp-Source: AGHT+IH9jkA5SQiI2/cQG6X7OkaPUp+PZO7osj0d7kUIy3MXdrgHegJudVZPDKKY8fCID9RZdWAtImvzV2zxOM5MH6M=
-X-Received: by 2002:a0d:f781:0:b0:66a:bf53:e077 with SMTP id
- 00721157ae682-68962d6401cmr28005607b3.16.1722595976808; Fri, 02 Aug 2024
- 03:52:56 -0700 (PDT)
+	id 1sZveY-00000009YJn-3FpD;
+	Fri, 02 Aug 2024 17:01:20 +0000
+Received: by mail-wr1-x431.google.com with SMTP id ffacd0b85a97d-3685a564bafso4082089f8f.3;
+        Fri, 02 Aug 2024 10:01:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1722618077; x=1723222877; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=vpcsgqmtuPo+pz6tWtSNKqkTo9JxSymPCppu91onA2Q=;
+        b=c6KUhB+wfCXTw94QzW8dgOJUWhwXbzSItahmX0L03jGz8gy2zIg45Q5IXPYiA0ym8c
+         6T66cIIFJKjYXO0iA29DCjhkl8YGLVgUTzxtPRsTAeC0ppC/Z44kMRdETR300Xir7NL8
+         /zdeZw5BusdpSA1AeJRv5m79Q4lK10QRJZTTiVtF8oogKYaccqrlRnViGXkqWm+dlA4P
+         6u4nZe8C/ssBRe9sxJDQRFDRTvZ6Xo+QW6dd5DqP4S36A2+2VLDaCvt4dFWxk2hFiY48
+         2m0+3Wt5tcJSLTF6Z6ptoB41janXNmRF0kf8gb7tye2xPBVqWHIo3xkXfocSSfoqQkSo
+         nQng==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1722618077; x=1723222877;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=vpcsgqmtuPo+pz6tWtSNKqkTo9JxSymPCppu91onA2Q=;
+        b=fGVtQT5BQ3BpPnlBQYt93anyQDzQNyGt6mJgvHX6/WAzhbxEwp9gg6LS0hvlTBLX0A
+         2wYtasfKZ5QoD6LHtdosbM258DYkpxkZUJoaWpGYqisA1ShPZfD31NQxd/qzRnBdoJDk
+         pfnAoJYBLkS5/XTEakWufdLiEd2boHxxaA6ZZrxylFyCCyqqD7EaNzTB+u4ACYSt+ouQ
+         hLcbRGY6D1s4s9B1quyY4IIgkqQLV7OstX5XXparmDtxq+2Fafgaa8BX6UWdGTbHKqCL
+         wOUqM32LcL/moXU4kLNf9NnLAanJ89oB2UAtZn7Zf012HD7vHXkL30wpO0oA1yvWDlVF
+         rhug==
+X-Forwarded-Encrypted: i=1; AJvYcCW4HbPZhiB6S8lfUnVkMk/s2nnnKudUk7mB+Jb/979fvudQfGEBB9s73JWRElA2BF5iAvh1OOHdzt6bHJbj2WOUN8H9aVC0uDLZNegiwgyYL5CE/2wlWsNwRFda7r/f/ByoPMKql4o4SSkE98SRrN3Np6+VCY4vO9p0uCu+NdKZLn+4nhELHZhCX39O+HEb7VSyiOtQv8F4YrOXmjScJE1jCrp5fROMYBBbg1Ozgl7LKz361cOye/g=
+X-Gm-Message-State: AOJu0YzD04+nt50MtHOvVsOhCRa8c0huCqdCnxgDaUNmYqbg4gWjFuCH
+	emoLpkrPGlQecegsujEWlnxiJJUR/r8gdnwZhvrJ6Ms7oCuxSdcGc8pKxlF/5wpqN3ykGHPhrwj
+	MoOttBzaorAMuwDouUXk6xQZWVAQ=
+X-Google-Smtp-Source: AGHT+IH75FU4JpBvhRKVqmFn8me2clEuJ7/a5V8Xhv6OElYPF/ofyi1s2L5ZzsGAeeZuvfLRALy59I0v9WsGM6Mhk90=
+X-Received: by 2002:adf:e98a:0:b0:368:4d33:9aac with SMTP id
+ ffacd0b85a97d-36bbc0fc757mr2416504f8f.31.1722618076415; Fri, 02 Aug 2024
+ 10:01:16 -0700 (PDT)
 MIME-Version: 1.0
-References: <20240729071010.6129-1-xiangzhi.tang@mediatek.com>
-In-Reply-To: <20240729071010.6129-1-xiangzhi.tang@mediatek.com>
-From: Josh Boyer <jwboyer@kernel.org>
-Date: Fri, 2 Aug 2024 06:52:45 -0400
-X-Gmail-Original-Message-ID: <CA+5PVA6OhgYt0jqF7M2FRzBYffO6XUig0KLzCiC1Ufo7H1qxUg@mail.gmail.com>
-Message-ID: <CA+5PVA6OhgYt0jqF7M2FRzBYffO6XUig0KLzCiC1Ufo7H1qxUg@mail.gmail.com>
-Subject: Re: [PATCH] mediatek: Update mt8195 SOF firmware
-To: Xiangzhi Tang <xiangzhi.tang@mediatek.com>
-Cc: linux-firmware@kernel.org, linux-mediatek@lists.infradead.org, 
-	joe.cheng@xperi.com, hailong.fan@mediatek.com, justin.yeh@mediatek.com, 
-	howard-ch.wang@mediatek.com, sidney.chang@mediatek.com, 
-	Jjian.zhou@mediatek.com
+References: <20240731124505.2903877-1-linyunsheng@huawei.com>
+ <20240731124505.2903877-5-linyunsheng@huawei.com> <CAKgT0UcqdeSJdjZ_FfwyCnT927TwOkE4zchHLOkrBEmhGzex9g@mail.gmail.com>
+ <22fda86c-d688-42e7-99e8-e2f8fcf1a5ba@huawei.com> <CAKgT0UcuGj8wvC87=A+hkarRupfhjGM0BPzLUT2AJc8Ovg_TFg@mail.gmail.com>
+ <877efebe-f316-4192-aada-dd2657b74125@huawei.com>
+In-Reply-To: <877efebe-f316-4192-aada-dd2657b74125@huawei.com>
+From: Alexander Duyck <alexander.duyck@gmail.com>
+Date: Fri, 2 Aug 2024 10:00:39 -0700
+Message-ID: <CAKgT0UfUkqR2TJQt6cSEdANNxQEOkjGqpPXhaXmrrxB0KwXmEQ@mail.gmail.com>
+Subject: Re: [PATCH net-next v12 04/14] mm: page_frag: add '_va' suffix to
+ page_frag API
+To: Yunsheng Lin <linyunsheng@huawei.com>
+Cc: davem@davemloft.net, kuba@kernel.org, pabeni@redhat.com, 
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	Subbaraya Sundeep <sbhatta@marvell.com>, Jeroen de Borst <jeroendb@google.com>, 
+	Praveen Kaligineedi <pkaligineedi@google.com>, Shailend Chand <shailend@google.com>, 
+	Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>, 
+	Przemek Kitszel <przemyslaw.kitszel@intel.com>, Sunil Goutham <sgoutham@marvell.com>, 
+	Geetha sowjanya <gakula@marvell.com>, hariprasad <hkelam@marvell.com>, Felix Fietkau <nbd@nbd.name>, 
+	Sean Wang <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, 
+	Lorenzo Bianconi <lorenzo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Keith Busch <kbusch@kernel.org>, 
+	Jens Axboe <axboe@kernel.dk>, Christoph Hellwig <hch@lst.de>, Sagi Grimberg <sagi@grimberg.me>, 
+	Chaitanya Kulkarni <kch@nvidia.com>, "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>, 
+	=?UTF-8?Q?Eugenio_P=C3=A9rez?= <eperezma@redhat.com>, 
+	Andrew Morton <akpm@linux-foundation.org>, Alexei Starovoitov <ast@kernel.org>, 
+	Daniel Borkmann <daniel@iogearbox.net>, Jesper Dangaard Brouer <hawk@kernel.org>, 
+	John Fastabend <john.fastabend@gmail.com>, Andrii Nakryiko <andrii@kernel.org>, 
+	Martin KaFai Lau <martin.lau@linux.dev>, Eduard Zingerman <eddyz87@gmail.com>, Song Liu <song@kernel.org>, 
+	Yonghong Song <yonghong.song@linux.dev>, KP Singh <kpsingh@kernel.org>, 
+	Stanislav Fomichev <sdf@fomichev.me>, Hao Luo <haoluo@google.com>, Jiri Olsa <jolsa@kernel.org>, 
+	David Howells <dhowells@redhat.com>, Marc Dionne <marc.dionne@auristor.com>, 
+	Chuck Lever <chuck.lever@oracle.com>, Jeff Layton <jlayton@kernel.org>, Neil Brown <neilb@suse.de>, 
+	Olga Kornievskaia <kolga@netapp.com>, Dai Ngo <Dai.Ngo@oracle.com>, Tom Talpey <tom@talpey.com>, 
+	Trond Myklebust <trondmy@kernel.org>, Anna Schumaker <anna@kernel.org>, intel-wired-lan@lists.osuosl.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-nvme@lists.infradead.org, kvm@vger.kernel.org, 
+	virtualization@lists.linux.dev, linux-mm@kvack.org, bpf@vger.kernel.org, 
+	linux-afs@lists.infradead.org, linux-nfs@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240802_035259_096112_064187DF 
-X-CRM114-Status: GOOD (  13.49  )
+X-CRM114-CacheID: sfid-20240802_100118_841590_70570F43 
+X-CRM114-Status: GOOD (  42.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,97 +118,125 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Applied and pushed out.
-
-https://gitlab.com/kernel-firmware/linux-firmware/-/merge_requests/265
-
-josh
-
-
-
-josh
-
-On Mon, Jul 29, 2024 at 3:10=E2=80=AFAM Xiangzhi Tang
-<xiangzhi.tang@mediatek.com> wrote:
+On Fri, Aug 2, 2024 at 3:05=E2=80=AFAM Yunsheng Lin <linyunsheng@huawei.com=
+> wrote:
 >
->     Update SOF version: sof/sof-mt8195.ldc
->     Release version: v0.4.2
+> On 2024/8/1 23:21, Alexander Duyck wrote:
+> > On Thu, Aug 1, 2024 at 6:01=E2=80=AFAM Yunsheng Lin <linyunsheng@huawei=
+.com> wrote:
+> >>
+> >> On 2024/8/1 2:13, Alexander Duyck wrote:
+> >>> On Wed, Jul 31, 2024 at 5:50=E2=80=AFAM Yunsheng Lin <linyunsheng@hua=
+wei.com> wrote:
+> >>>>
+> >>>> Currently the page_frag API is returning 'virtual address'
+> >>>> or 'va' when allocing and expecting 'virtual address' or
+> >>>> 'va' as input when freeing.
+> >>>>
+> >>>> As we are about to support new use cases that the caller
+> >>>> need to deal with 'struct page' or need to deal with both
+> >>>> 'va' and 'struct page'. In order to differentiate the API
+> >>>> handling between 'va' and 'struct page', add '_va' suffix
+> >>>> to the corresponding API mirroring the page_pool_alloc_va()
+> >>>> API of the page_pool. So that callers expecting to deal with
+> >>>> va, page or both va and page may call page_frag_alloc_va*,
+> >>>> page_frag_alloc_pg*, or page_frag_alloc* API accordingly.
+> >>>>
+> >>>> CC: Alexander Duyck <alexander.duyck@gmail.com>
+> >>>> Signed-off-by: Yunsheng Lin <linyunsheng@huawei.com>
+> >>>> Reviewed-by: Subbaraya Sundeep <sbhatta@marvell.com>
+> >>>
+> >>> I am naking this patch. It is a pointless rename that is just going t=
+o
+> >>> obfuscate the git history for these callers.
+> >>
+> >> I responded to your above similar comment in v2, and then responded mo=
+re
+> >> detailedly in v11, both got not direct responding, it would be good to
+> >> have more concrete feedback here instead of abstract argument.
+> >>
+> >> https://lore.kernel.org/all/74e7259a-c462-e3c1-73ac-8e3f49fb80b8@huawe=
+i.com/
+> >> https://lore.kernel.org/all/11187fe4-9419-4341-97b5-6dad7583b5b6@huawe=
+i.com/
+> >
+> > I will make this much more understandable. This patch is one of the
+> > ones that will permanently block this set in my opinion. As such I
+> > will never ack this patch as I see no benefit to it. Arguing with me
+> > on this is moot as you aren't going to change my mind, and I don't
+> > have all day to argue back and forth with you on every single patch.
 >
-> Signed-off-by: Xiangzhi Tang <xiangzhi.tang@mediatek.com>
-> ---
->  mediatek/sof/sof-mt8195.ldc | Bin 51168 -> 40560 bytes
->  1 file changed, 0 insertions(+), 0 deletions(-)
+> Let's move on to more specific technical discussion then.
 >
-> diff --git a/mediatek/sof/sof-mt8195.ldc b/mediatek/sof/sof-mt8195.ldc
-> index 0ae937dd0fd153d3169b90291836705126542dad..80c5394b3692b45ae3d9a5452=
-3049c0cdb198874 100644
-> GIT binary patch
-> delta 190
-> zcmaFR&-`Hz6PHhZdNBjTii9WACvs`<nVTCJS~4&gFtGmQ6S%g~!NFs*K!}Xc<P~N-
-> zo3}LYVc%TR?WbXCW~Q4CR%wuGkYr?#s!&{%tdNmdoS|S)p=3Dw}Jp`ekI0vAXzGc+(r
-> jO|zW*eRDi{IyZN3*~`Odu-WrqJL9Co2AdNOH?RNz0`5Mp
+> >
+> > As far as your API extension and naming maybe you should look like
+> > something like bio_vec and borrow the naming from that since that is
+> > essentially what you are passing back and forth is essentially that
+> > instead of a page frag which is normally a virtual address.
 >
-> delta 10115
-> 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
-> E0}ttrg#Z8m
+> I thought about adding something like bio_vec before, but I am not sure
+> what you have in mind is somthing like I considered before?
+> Let's say that we reuse bio_vec like something below for the new APIs:
 >
-> --
-> 2.25.1
+> struct bio_vec {
+>         struct page     *bv_page;
+>         void            *va;
+>         unsigned int    bv_len;
+>         unsigned int    bv_offset;
+> };
+
+I wasn't suggesting changing the bio_vec. I was suggesting that be
+what you pass as a pointer reference instead of the offset. Basically
+your use case is mostly just for populating bio_vec style structures
+anyway.
+
+> It seems we have the below options for the new API:
 >
+> option 1, it seems like a better option from API naming point of view, bu=
+t
+> it needs to return a bio_vec pointer to the caller, it seems we need to h=
+ave
+> extra space for the pointer, I am not sure how we can avoid the memory wa=
+ste
+> for sk_page_frag() case in patch 12:
+> struct bio_vec *page_frag_alloc_bio(struct page_frag_cache *nc,
+>                                     unsigned int fragsz, gfp_t gfp_mask);
+>
+> option 2, it need both the caller and callee to have a its own local spac=
+e
+> for 'struct bio_vec ', I am not sure if passing the content instead of
+> the pointer of a struct through the function returning is the common patt=
+ern
+> and if it has any performance impact yet:
+> struct bio_vec page_frag_alloc_bio(struct page_frag_cache *nc,
+>                                    unsigned int fragsz, gfp_t gfp_mask);
+>
+> option 3, the caller passes the pointer of 'struct bio_vec ' to the calle=
+e,
+> and page_frag_alloc_bio() fills in the data, I am not sure what is the po=
+int
+> of indirect using 'struct bio_vec ' instead of passing 'va' & 'fragsz' &
+> 'offset' through pointers directly:
+> bool page_frag_alloc_bio(struct page_frag_cache *nc,
+>                          unsigned int fragsz, gfp_t gfp_mask, struct bio_=
+vec *bio);
+>
+> If one of the above option is something in your mind? Yes, please be more=
+ specific
+> about which one is the prefer option, and why it is the prefer option tha=
+n the one
+> introduced in this patchset?
+>
+> If no, please be more specific what that is in your mind?
+
+Option 3 is more or less what I had in mind. Basically you would
+return an int to indicate any errors and you would be populating a
+bio_vec during your allocation. In addition you would use the bio_vec
+as a tracker of the actual fragsz so when you commit you are
+committing with the fragsz as it was determined at the time of putting
+the bio_vec together so you can theoretically catch things like if the
+underlying offset had somehow changed from the time you setup the
+allocation. It would fit well into your probe routines since they are
+all essentially passing the page, offset, and fragsz throughout the
+code.
 
