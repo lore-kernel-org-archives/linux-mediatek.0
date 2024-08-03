@@ -4,70 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E327C49EA1
-	for <linux-mediatek@archiver.kernel.org>; Sat,  3 Aug 2024 14:34:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAA60C49EA1
+	for <linux-mediatek@archiver.kernel.org>; Sat,  3 Aug 2024 14:35:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=aJHoKAB11Ae/2wa8twupEAFotnxUJVnsciLUvRiPVy4=; b=AqWNfovdPpMGw1YtW39xtMe+51
-	DQDcgAZw8ap8Fd9E12SDsBXNDa9IjoiEWyrHJ0YeTl8XBOqib1OQSfHtEApKPnL/Gsv01Rz2udnyb
-	Mt2FyCr1teE9G41/jVc5ObA8U8puFV3Z2WLoXbUfFA1QGgHanprasNnrfXzzVgpGK2gqnnP8k3YJV
-	oqJOdxlSgK5dT9XsRZtxh1Dawh93fOgaQd/cT+cBJzvCV2aQOG227ReRBTdaAkOJwhjJo+JT1HWcG
-	VUn1RCb/K4zLKCd9ZmjaPMoQBz2Aa0U98PLO/oJIFRyFyIP7lBvGRAiy3akD6IYWAe+Nd/Z/pOO0D
-	owCOlReg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=1Q5nU1v/FI+ZPdAxUYyXUenZ9BSvhp++60D9UPyDNvI=; b=zee9TjgFf8iir1DtqIg/MebSUv
+	3xV9gu2ctE+19L/+d4DNcwVJixoBM3SAPstepfa3s8vbWlVTNaoeaVeatAqS8FdU4Al1j+70NqmqT
+	ZGYJc3AfLpvKoRPEkSmvSy125uh9ixREQwjEXMdN5Ge9tFUD5yW+AAEhnnRRhD3cnUZyL+T5owVuU
+	MEdrUiJlrXZeVpMtQHoveRF4rnVxPU7Xg2/qoL8vBvxro5rKiCUdRVfEFosi6qFKGVljn17F1ax2W
+	LHGP6+H72LHehrH/yG0/sLGJLeJdt9lJnG9daBN5Y5mQUxR2pGhJ0XFG+v6y2B2LS6lxJctI/ANS1
+	i0G0ZABw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1saFqG-0000000BYcd-0WJq;
-	Sat, 03 Aug 2024 14:34:44 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1saFr5-0000000BYo5-2BSF;
+	Sat, 03 Aug 2024 14:35:35 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1saFpk-0000000BYYE-0iWy;
-	Sat, 03 Aug 2024 14:34:14 +0000
+	id 1saFqY-0000000BYem-2cEG;
+	Sat, 03 Aug 2024 14:35:04 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1722695647;
-	bh=owOHmulNCYiFLR9S5cHIHYrchcu6rmh/Rs/wsMUcUNI=;
-	h=From:Date:Subject:To:Cc:From;
-	b=wBAcmHgHiJsDWuOYvZphH6cDoDrjqrvyB/fdB7/Eroxv1CKLF24N7pCy3U7iNZ4B0
-	 Jl0bztbbX/zMMRHzZsDPQ9fQzJpnIfi6r1c48LEkjh6+Fu7MRE/VPLBciCfGWwLN24
-	 vGV6GTAB0oiAdtlZEQLHybq/bzshmOD6xrSMZsB1T1Y100iSbb/pseC0DQAI/8+HD7
-	 d1bzbhHdUtiup+qSeOA7unNqLAbUNeBeXYvkPfjGLuCOAb/0fiaEksUTzaaNRwuSum
-	 yCmwPJ9qLrh+ZJrDYNU/rCc3LU57GIW56OyrVtY34BFmQ+MCU2blUqRD8euzPU+4/J
-	 mZ6JoXxlYG6kw==
-Received: from [192.168.1.67] (zone.collabora.co.uk [167.235.23.81])
+	s=mail; t=1722695700;
+	bh=5pFFzSTcujJdisegGS8FWdXFpF2D46MNMhS2XZUFveE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=pZgrmZ/FnfVa0pBoimKJdixtWO2F255W1Rwof4O6C0HD7pOnvBp7v/sC12kvjaS1i
+	 ycnSd5+ygRrmaY0fX7u/7l+HYPCRT1eWYyCj0cTEowuTi//t8WrgEkEbalTSnTWdpN
+	 aSnONEUJuVLxK9xJS6XcGb1dK57ZU+ozgCIrgZaQ6ZsqcUCThCQWiTVMM6C4cchtHh
+	 Pj+mEE1rzqrjmlf95e4MFnOepQXk07/zRlhmV/SnE+rw905vwCdOhtL7J8/gendJhh
+	 x4LGKvXAfKWac13InTa9zmNtZoT+hxC6YC01MDOt+D9rYTDpKChVXQ6JJoXByZhjpi
+	 GTwgYtUHAA3CQ==
+Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nfraprado)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id C2E133781480;
-	Sat,  3 Aug 2024 14:34:04 +0000 (UTC)
-From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Date: Sat, 03 Aug 2024 10:33:25 -0400
-Subject: [PATCH v3] arm64: dts: mediatek: mt8183-kukui: Disable unused
- efuse at 8000000
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 06CFF3781480;
+	Sat,  3 Aug 2024 14:34:57 +0000 (UTC)
+Date: Sat, 3 Aug 2024 10:34:55 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: William-tw Lin <william-tw.lin@mediatek.com>,
+	Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Chen-Yu Tsai <wenst@chromium.org>, kernel@collabora.com,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v2] nvmem: mtk-efuse: Only register socinfo device if
+ needed cells are there
+Message-ID: <f52d33ec-a003-48f8-b74d-080b9b29eb67@notapiano>
+References: <20240708-mtk-socinfo-no-data-probe-err-v2-1-7ae252acbcc2@collabora.com>
+ <a1914f2b-93f2-4de4-9c4b-2e1f6b39cf3a@collabora.com>
+ <05dd24ec-d084-4708-a241-b4714391118a@notapiano>
+ <e1e1b618-b505-482a-b556-99c6d42fd581@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Message-Id: <20240803-mtk-socinfo-no-data-probe-err-v3-1-09cfffc7241a@collabora.com>
-X-B4-Tracking: v=1; b=H4sIALQ/rmYC/5XNvQ6CMBSG4VshnT0GWkiJk/dhHPpzKo3QQ1rSa
- Aj3bmF00vH9hudbWcLoMbFLtbKI2SdPoYQ4VcwMKjwQvC3NeM3bWtY9TMsTEhkfHEEgsGpRMEf
- SCBgjWNl1vWiFNT1nxZgjOv86/Nu99ODTQvF93OVmX3+VcwMNOM2VsUK1UruroXFUmqI6G5rYr
- mf+l8iLKBXyrqDaGP4tbtv2AXSn/7sgAQAA
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, 
- Chen-Yu Tsai <wenst@chromium.org>, kernel@collabora.com, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
- =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-X-Mailer: b4 0.14.0
+In-Reply-To: <e1e1b618-b505-482a-b556-99c6d42fd581@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240803_073412_527890_8D495D72 
-X-CRM114-Status: GOOD (  11.90  )
+X-CRM114-CacheID: sfid-20240803_073502_831864_C2CE1273 
+X-CRM114-Status: GOOD (  38.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,57 +81,79 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MT8183's Devicetree describes two eFuse regions: one at 8000000 and
-another at 11f10000.
+On Fri, Jul 19, 2024 at 11:29:03AM +0200, AngeloGioacchino Del Regno wrote:
+> Il 19/07/24 00:07, Nícolas F. R. A. Prado ha scritto:
+> > On Wed, Jul 10, 2024 at 11:31:11AM +0200, AngeloGioacchino Del Regno wrote:
+> > > Il 08/07/24 21:43, Nícolas F. R. A. Prado ha scritto:
+> > > > Not every efuse region has cells storing SoC information. Only register
+> > > > an socinfo device if the required cells are present.
+> > > > 
+> > > > This prevents the pointless process of creating an socinfo device,
+> > > > probing it with the socinfo driver only to ultimately error out like so
+> > > > 
+> > > >     mtk-socinfo mtk-socinfo.0.auto: error -ENOENT: Failed to get socinfo data
+> > > >     mtk-socinfo mtk-socinfo.0.auto: probe with driver mtk-socinfo failed with error -2
+> > > > 
+> > > > This issue is observed on the mt8183-kukui-jacuzzi-juniper-sku16
+> > > > platform, which has two efuse regions, but only one of them contains the
+> > > > SoC data.
+> > > > 
+> > > 
+> > > I think that we should rather remove or disable the first eFuse region, as
+> > > even though that is enabled:
+> > > 
+> > >   - This is the only SoC having two regions
+> > >     - I'm not even sure that the region at 0x8000000 is really efuse
+> > >     - Not even referenced in datasheets....
+> > >   - It's unused, as in, it's not exposing any information and no declared cells
+> > > 
+> > > Don't misunderstand me, this is not an invalid change, but I rather prefer
+> > > to resolve this by disabling that (effectively unused!) node, avoiding to
+> > > add more lines to this driver that would be useless after fixing that small
+> > > single thing.
+> > 
+> > I'm not confident that we can say that that efuse is not exposing any
+> > information. Indeed there are no cells so it's not used by any other driver, but
+> > the efuse contents are still exposed to userspace if CONFIG_NVMEM_SYSFS is
+> > enabled.
+> > 
+> > I dumped it on one of the mt8183-kukui-jacuzzi-juniper-sku16 units:
+> > 
+> >    $ ls -l /sys/bus/nvmem/devices/
+> >    total 0
+> >    lrwxrwxrwx    1 root     root             0 Jul 18 21:43 mmtd0 -> ../../../devices/platform/soc/11010000.spi/spi_master/spi1/spi1.0/mtd/mtd0/mtd0
+> >    lrwxrwxrwx    1 root     root             0 Jul 18 21:43 nvmem0 -> ../../../devices/platform/soc/8000000.efuse/nvmem0
+> >    lrwxrwxrwx    1 root     root             0 Jul 18 21:43 nvmem1 -> ../../../devices/platform/soc/11f10000.efuse/nvmem1
+> >    $ hexdump -C /sys/bus/nvmem/devices/nvmem0/nvmem
+> >    00000000  88 07 00 00 00 8a 00 00  00 ca 00 00 00 00 00 00  |................|
+> >    00000010
+> > 
+> > I power cycled the unit and ran this again and it still showed the same
+> > contents. I also ran the same on a different unit of the same model and it
+> > showed the same contents. Of course this doesn't prove anything, but given that
+> > the contents seem to be constant across reboots and even different units, it
+> > does look like it could be an efuse to me. :)
+> > 
+> > As to whether the contents are useful at all, or if there are
+> > userspace applications making use of it I have no clue. But if in doubt,
+> > shouldn't we keep it around?
+> 
+> (Added William-tw Lin from MediaTek to the loop)
+> 
+> I'll say yes only if MediaTek (please!) says that this region has useful
+> information, and only if MediaTek actually tells us what those fuses are.
+> 
+> The reason is that sometimes when SoCs have multiple efuse regions, one contains
+> uncalibrated data for factory calibration (etc etc), one contains data that derives
+> from the uncalibrated regions and that is supposed to be used by the OS.
+> 
+> If we got the uncalibrated data that is *not* for OS usage in the MT8183 DT, then
+> we can as well just remove it.
+> 
+> Besides, I have no concern about any userspace application using that.
 
-The efuse at 8000000, unlike the one at 11f10000 and the efuse on all
-other MediaTek SoCs, does not define any cell, including the
-socinfo-data ones which the mtk-efuse driver expects to always be
-present, resulting in the following errors in the log:
+No reply, so I've sent v3.
 
-  mtk-socinfo mtk-socinfo.0.auto: error -ENOENT: Failed to get socinfo data
-  mtk-socinfo mtk-socinfo.0.auto: probe with driver mtk-socinfo failed with error -2
-
-The efuse at 8000000 is disabled by default but enabled on mt8183-kukui.
-Since it is unused, and to prevent the errors from being thrown, disable
-it on mt8183-kukui.
-
-Signed-off-by: NÃ­colas F. R. A. Prado <nfraprado@collabora.com>
----
-Changes in v3:
-- Switched to removing the node from MT8183-kukui's DT instead of
-  controlling whether the mtk-socinfo device was registered by mtk-efuse
-- Link to v2: https://lore.kernel.org/r/20240708-mtk-socinfo-no-data-probe-err-v2-1-7ae252acbcc2@collabora.com
-
-Changes in v2:
-- Added missing include for of.h
-- Link to v1: https://lore.kernel.org/r/20240708-mtk-socinfo-no-data-probe-err-v1-1-fb2acd3a47bf@collabora.com
----
- arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 4 ----
- 1 file changed, 4 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-index 6345e969efae..7c8221fe62eb 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-@@ -868,10 +868,6 @@ &mfg {
- 	domain-supply = <&mt6358_vgpu_reg>;
- };
- 
--&soc_data {
--	status = "okay";
--};
--
- &spi0 {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&spi0_pins>;
-
----
-base-commit: f524a5e4dfb75b277c9a5ad819ca5f035f490f14
-change-id: 20240708-mtk-socinfo-no-data-probe-err-d7558343dc82
-
-Best regards,
--- 
-NÃ­colas F. R. A. Prado <nfraprado@collabora.com>
-
+Thanks,
+Nícolas
 
