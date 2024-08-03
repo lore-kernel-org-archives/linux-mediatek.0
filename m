@@ -4,106 +4,127 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DE75C52D6F
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Aug 2024 17:01:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA095C3DA4A
+	for <linux-mediatek@archiver.kernel.org>; Sat,  3 Aug 2024 07:59:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vpcsgqmtuPo+pz6tWtSNKqkTo9JxSymPCppu91onA2Q=; b=4BfBwe4x7u5+X7/MgIwE/X+8XB
-	vp93wOj4dYDV5rzK4/0MmuRp1ix546JSN2/mt2wOsV4jKXYWDjdccgaHLHPX99jqH9rxiVjNP/TCU
-	8kfmDNpNOQH/oLZLStDUsXyXdZ5y9/BGzRtBsKG9A06HmlMyYxe1lc5MIg/2qFNYRCP7th5Uf6EgT
-	l/DuH3iScsFbs1zISCvYnXwnMYbWt1DJH4CioIcQkmTVSHwj6G+azz37LkXRbPg7D7waCuhkDv9sb
-	5TLnRb4qpfeX6V516SV9sEUSvJXMgKCzgpKeJ5m1UN7YDJpIq7rdAdnOY/evkBYldjqzjb7iLOzcm
-	9FqAEVGQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=+dDgiw26H7CL8PUNPKTEDkan3UIJI1OgZQQPNVQiHSc=; b=fMbM864LtgTTvNh4TVpDMyjdpt
+	wBmJm0Uyme1TZtnJGkYX12QBU8FPXIN/uIrt9+Q2z7n5M8lOSLGP0Gma78Bj1Apa1cH0J9ml0SB/i
+	BT4KSLERm0jmgo/vjJLX2dR0a5aurPNEVBIkp2F4MuWNZtz+iwJs1MgvN88CH58Z+RRjalpc7mmiI
+	iGNyhxdRn6/HHWsOqWEAzCAfk81S/Du+cjFFpmWI+W9xr0Wo5evVu0MRYE4vjZDEEDUdYcGfP5QxT
+	lq7Lf42FKhWzKc0Z79dDeHEjE0eENyyfK+Lm9ZIBakrRjeU4qitAlREFrDhZd8cgXWN0OelngGlfw
+	NUa4I97g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZved-00000009YLJ-1ZLe;
-	Fri, 02 Aug 2024 17:01:23 +0000
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+	id 1sa9fb-0000000B158-3R1n;
+	Sat, 03 Aug 2024 07:59:19 +0000
+Received: from mail-japanwestazolkn190100000.outbound.protection.outlook.com ([2a01:111:f403:d406::] helo=OS0P286CU011.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sZveY-00000009YJn-3FpD;
-	Fri, 02 Aug 2024 17:01:20 +0000
-Received: by mail-wr1-x431.google.com with SMTP id ffacd0b85a97d-3685a564bafso4082089f8f.3;
-        Fri, 02 Aug 2024 10:01:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1722618077; x=1723222877; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=vpcsgqmtuPo+pz6tWtSNKqkTo9JxSymPCppu91onA2Q=;
-        b=c6KUhB+wfCXTw94QzW8dgOJUWhwXbzSItahmX0L03jGz8gy2zIg45Q5IXPYiA0ym8c
-         6T66cIIFJKjYXO0iA29DCjhkl8YGLVgUTzxtPRsTAeC0ppC/Z44kMRdETR300Xir7NL8
-         /zdeZw5BusdpSA1AeJRv5m79Q4lK10QRJZTTiVtF8oogKYaccqrlRnViGXkqWm+dlA4P
-         6u4nZe8C/ssBRe9sxJDQRFDRTvZ6Xo+QW6dd5DqP4S36A2+2VLDaCvt4dFWxk2hFiY48
-         2m0+3Wt5tcJSLTF6Z6ptoB41janXNmRF0kf8gb7tye2xPBVqWHIo3xkXfocSSfoqQkSo
-         nQng==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1722618077; x=1723222877;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=vpcsgqmtuPo+pz6tWtSNKqkTo9JxSymPCppu91onA2Q=;
-        b=fGVtQT5BQ3BpPnlBQYt93anyQDzQNyGt6mJgvHX6/WAzhbxEwp9gg6LS0hvlTBLX0A
-         2wYtasfKZ5QoD6LHtdosbM258DYkpxkZUJoaWpGYqisA1ShPZfD31NQxd/qzRnBdoJDk
-         pfnAoJYBLkS5/XTEakWufdLiEd2boHxxaA6ZZrxylFyCCyqqD7EaNzTB+u4ACYSt+ouQ
-         hLcbRGY6D1s4s9B1quyY4IIgkqQLV7OstX5XXparmDtxq+2Fafgaa8BX6UWdGTbHKqCL
-         wOUqM32LcL/moXU4kLNf9NnLAanJ89oB2UAtZn7Zf012HD7vHXkL30wpO0oA1yvWDlVF
-         rhug==
-X-Forwarded-Encrypted: i=1; AJvYcCW4HbPZhiB6S8lfUnVkMk/s2nnnKudUk7mB+Jb/979fvudQfGEBB9s73JWRElA2BF5iAvh1OOHdzt6bHJbj2WOUN8H9aVC0uDLZNegiwgyYL5CE/2wlWsNwRFda7r/f/ByoPMKql4o4SSkE98SRrN3Np6+VCY4vO9p0uCu+NdKZLn+4nhELHZhCX39O+HEb7VSyiOtQv8F4YrOXmjScJE1jCrp5fROMYBBbg1Ozgl7LKz361cOye/g=
-X-Gm-Message-State: AOJu0YzD04+nt50MtHOvVsOhCRa8c0huCqdCnxgDaUNmYqbg4gWjFuCH
-	emoLpkrPGlQecegsujEWlnxiJJUR/r8gdnwZhvrJ6Ms7oCuxSdcGc8pKxlF/5wpqN3ykGHPhrwj
-	MoOttBzaorAMuwDouUXk6xQZWVAQ=
-X-Google-Smtp-Source: AGHT+IH75FU4JpBvhRKVqmFn8me2clEuJ7/a5V8Xhv6OElYPF/ofyi1s2L5ZzsGAeeZuvfLRALy59I0v9WsGM6Mhk90=
-X-Received: by 2002:adf:e98a:0:b0:368:4d33:9aac with SMTP id
- ffacd0b85a97d-36bbc0fc757mr2416504f8f.31.1722618076415; Fri, 02 Aug 2024
- 10:01:16 -0700 (PDT)
+	id 1sa9fY-0000000B13F-23Cl;
+	Sat, 03 Aug 2024 07:59:18 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=iri7tt+Ifcro90ZU6kFrjgWjDZu3N0IeYvWiqShpcr0cMl+serXaL/rKTa80vn+FhVJbQXpuDO7iGeNR/sz2bDcsiYspH4eu96aeK2B8CXIiEjbnbCS2fd6fMooGZmrDi7NhLQLRSpKWmYm1aQ8vlkGco4N1QiXYPGBDJ7JuNvLWNaOfyohQ4OvRUUBlZ+GFFQN6loPcVIHWWhhNv9tOsB9uCvT9LkHMwPMMBkMmbjpmA+zF+fQtmdlMtusAO5G0QW/Fi610XSlBuzKcgctaaY9W6NhIjsBuLYhTMqSr54ckGmlU32TieSJENMEJc4QQWPA7YaHIyYf3hBtVTLIC7g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=+dDgiw26H7CL8PUNPKTEDkan3UIJI1OgZQQPNVQiHSc=;
+ b=jI065XLzHAdQ7fu755AHlVZiOcr1lTfFy/xg5AUT9UkkznWIcCDgD6WHzMO4GaxnZp30xdmYE5G/XACGHBVJpL/Ky/PO5e+NaGbT17/WIoHztkq8q1zn3GcFjFrAw0TMOvAjrn0+7yC08x/dK7zVQ//hJr2BMS3Omz2sAueSAzrNbsLn/bYz7RwxxNfgRJqcZYEuXqseqdNVk5nCE8PMtHJeHM8rYsGwSmw31+fcwuMLJK7MItrXLenDySyhx3RdKSEgV3lFUEMLOPamMC8oJLg+5iFnaB7XzghMyrp7WsV6z69S/yTO5qUZG2elcTGtRKimh4SP1hUb6aJcOWSoow==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=outlook.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=+dDgiw26H7CL8PUNPKTEDkan3UIJI1OgZQQPNVQiHSc=;
+ b=grgxsmDEh832FzgTC+8w9lcrsEamIX4zpdklIvlQBb376nv4fd5I855KeOOb0DHJ/AKcevcWevupO9hPfiWiX4UYYNenDzQ5XF6gBQu11UrNx1D7vFyiA7+OxQ9s9e3E/OIKBM31cEhwmz3tHxjusq3JeR0E+Ypg6r4Ap62pg3udlhWr1OZ9QSfP1FQEjXrPngEEE7YarmoG6M8icr+54W28zmpH5oItrHwwhzUgNhuvyb22qkZCXdUeDbNLoX/xblukpEh5SHev7Aecs8y42ip8nwY6S6nKuRJCHperIv/t6viI8D0zvFFkBqcokVWFv+4cA4qz1gFpj+FXjsSt/w==
+Received: from TY3P286MB2611.JPNP286.PROD.OUTLOOK.COM (2603:1096:400:23e::10)
+ by OS3P286MB3193.JPNP286.PROD.OUTLOOK.COM (2603:1096:604:20f::5) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7828.22; Sat, 3 Aug
+ 2024 07:58:54 +0000
+Received: from TY3P286MB2611.JPNP286.PROD.OUTLOOK.COM
+ ([fe80::85b8:3d49:3d3e:2b3]) by TY3P286MB2611.JPNP286.PROD.OUTLOOK.COM
+ ([fe80::85b8:3d49:3d3e:2b3%6]) with mapi id 15.20.7828.023; Sat, 3 Aug 2024
+ 07:58:54 +0000
+From: Shengyu Qu <wiagn233@outlook.com>
+To: nbd@nbd.name,
+	lorenzo@kernel.org,
+	ryder.lee@mediatek.com,
+	shayne.chen@mediatek.com,
+	sean.wang@mediatek.com,
+	kvalo@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	chui-hao.chiu@mediatek.com,
+	emmanuel.grumbach@intel.com,
+	StanleyYP.Wang@mediatek.com,
+	meichia.chiu@mediatek.com,
+	johannes.berg@intel.com,
+	quic_adisi@quicinc.com,
+	allen.ye@mediatek.com,
+	bo.jiao@mediatek.com,
+	linux-wireless@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Cc: Shengyu Qu <wiagn233@outlook.com>,
+	Sujuan Chen <sujuan.chen@mediatek.com>
+Subject: [PATCH v5] wifi: mt76: mt7915: add wds support when wed is enabled
+Date: Sat,  3 Aug 2024 15:58:15 +0800
+Message-ID: <TY3P286MB2611CB2F4F5FA27D782AA80A98BC2@TY3P286MB2611.JPNP286.PROD.OUTLOOK.COM>
+X-Mailer: git-send-email 2.34.1
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-TMN: [c+oOAfQHr8hOBzn6C1UvxpAD1i5lwb6u]
+X-ClientProxiedBy: SG2P153CA0051.APCP153.PROD.OUTLOOK.COM (2603:1096:4:c6::20)
+ To TY3P286MB2611.JPNP286.PROD.OUTLOOK.COM (2603:1096:400:23e::10)
+X-Microsoft-Original-Message-ID: <20240803075815.19128-1-wiagn233@outlook.com>
 MIME-Version: 1.0
-References: <20240731124505.2903877-1-linyunsheng@huawei.com>
- <20240731124505.2903877-5-linyunsheng@huawei.com> <CAKgT0UcqdeSJdjZ_FfwyCnT927TwOkE4zchHLOkrBEmhGzex9g@mail.gmail.com>
- <22fda86c-d688-42e7-99e8-e2f8fcf1a5ba@huawei.com> <CAKgT0UcuGj8wvC87=A+hkarRupfhjGM0BPzLUT2AJc8Ovg_TFg@mail.gmail.com>
- <877efebe-f316-4192-aada-dd2657b74125@huawei.com>
-In-Reply-To: <877efebe-f316-4192-aada-dd2657b74125@huawei.com>
-From: Alexander Duyck <alexander.duyck@gmail.com>
-Date: Fri, 2 Aug 2024 10:00:39 -0700
-Message-ID: <CAKgT0UfUkqR2TJQt6cSEdANNxQEOkjGqpPXhaXmrrxB0KwXmEQ@mail.gmail.com>
-Subject: Re: [PATCH net-next v12 04/14] mm: page_frag: add '_va' suffix to
- page_frag API
-To: Yunsheng Lin <linyunsheng@huawei.com>
-Cc: davem@davemloft.net, kuba@kernel.org, pabeni@redhat.com, 
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	Subbaraya Sundeep <sbhatta@marvell.com>, Jeroen de Borst <jeroendb@google.com>, 
-	Praveen Kaligineedi <pkaligineedi@google.com>, Shailend Chand <shailend@google.com>, 
-	Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>, 
-	Przemek Kitszel <przemyslaw.kitszel@intel.com>, Sunil Goutham <sgoutham@marvell.com>, 
-	Geetha sowjanya <gakula@marvell.com>, hariprasad <hkelam@marvell.com>, Felix Fietkau <nbd@nbd.name>, 
-	Sean Wang <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, 
-	Lorenzo Bianconi <lorenzo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Keith Busch <kbusch@kernel.org>, 
-	Jens Axboe <axboe@kernel.dk>, Christoph Hellwig <hch@lst.de>, Sagi Grimberg <sagi@grimberg.me>, 
-	Chaitanya Kulkarni <kch@nvidia.com>, "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>, 
-	=?UTF-8?Q?Eugenio_P=C3=A9rez?= <eperezma@redhat.com>, 
-	Andrew Morton <akpm@linux-foundation.org>, Alexei Starovoitov <ast@kernel.org>, 
-	Daniel Borkmann <daniel@iogearbox.net>, Jesper Dangaard Brouer <hawk@kernel.org>, 
-	John Fastabend <john.fastabend@gmail.com>, Andrii Nakryiko <andrii@kernel.org>, 
-	Martin KaFai Lau <martin.lau@linux.dev>, Eduard Zingerman <eddyz87@gmail.com>, Song Liu <song@kernel.org>, 
-	Yonghong Song <yonghong.song@linux.dev>, KP Singh <kpsingh@kernel.org>, 
-	Stanislav Fomichev <sdf@fomichev.me>, Hao Luo <haoluo@google.com>, Jiri Olsa <jolsa@kernel.org>, 
-	David Howells <dhowells@redhat.com>, Marc Dionne <marc.dionne@auristor.com>, 
-	Chuck Lever <chuck.lever@oracle.com>, Jeff Layton <jlayton@kernel.org>, Neil Brown <neilb@suse.de>, 
-	Olga Kornievskaia <kolga@netapp.com>, Dai Ngo <Dai.Ngo@oracle.com>, Tom Talpey <tom@talpey.com>, 
-	Trond Myklebust <trondmy@kernel.org>, Anna Schumaker <anna@kernel.org>, intel-wired-lan@lists.osuosl.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-nvme@lists.infradead.org, kvm@vger.kernel.org, 
-	virtualization@lists.linux.dev, linux-mm@kvack.org, bpf@vger.kernel.org, 
-	linux-afs@lists.infradead.org, linux-nfs@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+X-MS-Exchange-MessageSentRepresentingType: 1
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: TY3P286MB2611:EE_|OS3P286MB3193:EE_
+X-MS-Office365-Filtering-Correlation-Id: e9fb4d5c-3ffa-426c-e171-08dcb3921e0d
+X-Microsoft-Antispam: BCL:0;ARA:14566002|19110799003|5072599009|8060799006|461199028|3412199025|440099028|1710799026;
+X-Microsoft-Antispam-Message-Info: 9QIW7MGR/Odxc3fPlIT7WybcIjscMq4k8Kabo4AjhDxnCOuFjJWOM5yIiy2KIv9XRLm0HOKBcJpUBNHwY/uZtBFHp9906BQk8jhOsxe+sExUaYS3KHH3yT74dWN7cLqLcKzUFzrFllVDQU1+bnMU0ss6HJ7E9hOI3zh4lCjSTkI1p3/0VsnKVHycblLpZfq7pl9rqwaKZ/D8Pu01HcMh1EyONcLu6Rwj2TLNcZdrc4m3kHadBtp3t2dWy8sBexqJKyaV5V0AFtfrZGIyvmmhz9J92CQju3XiobmUb8sccEYwor2xLbLv6YHhxlKkC0yngXVAGISQ+gNDxICw9U9kuc/u6FyDFkV53UkQxRLCSZO+qxsEJCY0KG3NdTilFpAVF8cdCxHaw9hNsFTznH4Kon9FblYTWUszIZvrynW1f1MibsYVe07CRVqzTgM3HzZsG9pzZ9r1lGi8FV8Bu60yUTKYl8gY/oui6EdxVrMDdV6JSrfhGOP0HIY5iYBUyU/SpYO3dHrIfcVPnZgJEi8wn0tu8DxkGE+uFPMQ2u7/5lg7GSdzvBDA5mSd/J9lLtsmv6wyo5+1txiVYcScWiwhToRuU+seFpQoB/9BEQf1Mt8tmD935dqGbXmUBOanP2f0Bp31EYav7D/N3ff+JYmHRsSZ0yqBA8eBMHFhC+KcRLzV8Gg0uTX/et4GTprkRaSsNfFeAI479g/fS/Nla+aBfA==
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?2juLM487vmBeBZi/UT16Iach9OdT2bJyFROGy0IlK+VPKj5dmGcb+zNN1qaF?=
+ =?us-ascii?Q?AmX5P2djgDHsBh4onlGG5IyZppaRNnr6eMGqMHv4KlK/cqpntGEU2oC9h0CG?=
+ =?us-ascii?Q?GbwWF3e+ptVTf55eCK31sfV7G2NUg8/gsihQjGkYWqV+IR+O4iaJzXiomMD+?=
+ =?us-ascii?Q?1CuHLjudYv/8szJCxQ50Ef2l9fuGIK/k5UKA0VnHwbU0Z4/cOtsFQqzWHnSE?=
+ =?us-ascii?Q?vz4TuMgqo8h0n05IFQoNVZMQcrfye9OGkaE/oa224m6+6IxaiHOzbBxgTKHe?=
+ =?us-ascii?Q?isZIhUp/J7UKHq1+MReQnDJhNypouJvupeQXwcliJuGxlX22VRzAO2LHhRHq?=
+ =?us-ascii?Q?1RLa55NL7bFL6+RjfhnYwXB8sViYULCMap2R7qfTR+3YBLPkiIzjQr9wmiwT?=
+ =?us-ascii?Q?qldP4Hf2g17BCDB5dSDCsy67xupCj2gooj2oS1IhIJANWTU11o7EhjCSE5k9?=
+ =?us-ascii?Q?W3dYC7wDNg9ND8xOZBJRG14ND1iwKh6QTPhA1JPcQN2PkE43cABRUZb9Ktco?=
+ =?us-ascii?Q?FEmEO0AswrgTkTYw8hTc8bN18HFVkzOOhqYwNcONWPEtYBSLMLsCbTIWCiT+?=
+ =?us-ascii?Q?51Abs9BSbWCpUQyMdYPwM3fa08Ew+NpQ1xqwA7MSU2wWGkBLWChjQim8cvgn?=
+ =?us-ascii?Q?NO8TrbZbOXxf7IpWA0NjygiKe/iVOauEoM/JhHRa13DLL17jsqLv3+xjnQt8?=
+ =?us-ascii?Q?Hbh3rJZpyrw5ev3MQITpdwtmteq8bioIiaLVICkgyg1zfGH8br6JxB+VxCZJ?=
+ =?us-ascii?Q?j757eSbwqPTE708rb5lbOSjailPkowFfLOvs5Qskv4+WwQtJdzdwr1kNFNyQ?=
+ =?us-ascii?Q?nlCOHCK9SknImz7Xl/TTfwhk/QQz90jX33BBhSgtQ7MseBsBP/QkLrypch2i?=
+ =?us-ascii?Q?434XN1Bd4EIBgeAtARjCeSUYTpNfDfB2imqS32r0tNNgoXOYs3eC8rK7L8Y1?=
+ =?us-ascii?Q?49gtsvNlbBzlLzteQCfWlKZ5SUaEfktwzx8RAvMnXu87n2Koyu5EZfMyPcAd?=
+ =?us-ascii?Q?k4lKJaBTDzg6ykkcjEAVRbwSuDQtD4irGjPZspYH0EAaFkUNhRgYu5N6Z4SB?=
+ =?us-ascii?Q?ODSUKIRD+/boOm1BFKTcuGnWMxCNQNcLU5tfziu4s1nhno+6GhxyfNiUBM8i?=
+ =?us-ascii?Q?gX8gBv9P7JCapv5Zl89rtIt8V3dodujs3pC9djtyxwXxf6qGWCwAdryXmdfM?=
+ =?us-ascii?Q?O288KRVt/ozjf/tY2tf+RXFqhH/T02ap+VqXpZsHpEpbUeNU3IrZrpVBmy8?=
+ =?us-ascii?Q?=3D?=
+X-OriginatorOrg: outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: e9fb4d5c-3ffa-426c-e171-08dcb3921e0d
+X-MS-Exchange-CrossTenant-AuthSource: TY3P286MB2611.JPNP286.PROD.OUTLOOK.COM
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Aug 2024 07:58:54.5049
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: OS3P286MB3193
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240802_100118_841590_70570F43 
-X-CRM114-Status: GOOD (  42.39  )
+X-CRM114-CacheID: sfid-20240803_005917_060918_26E71F1E 
+X-CRM114-Status: GOOD (  20.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,125 +139,265 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Aug 2, 2024 at 3:05=E2=80=AFAM Yunsheng Lin <linyunsheng@huawei.com=
-> wrote:
->
-> On 2024/8/1 23:21, Alexander Duyck wrote:
-> > On Thu, Aug 1, 2024 at 6:01=E2=80=AFAM Yunsheng Lin <linyunsheng@huawei=
-.com> wrote:
-> >>
-> >> On 2024/8/1 2:13, Alexander Duyck wrote:
-> >>> On Wed, Jul 31, 2024 at 5:50=E2=80=AFAM Yunsheng Lin <linyunsheng@hua=
-wei.com> wrote:
-> >>>>
-> >>>> Currently the page_frag API is returning 'virtual address'
-> >>>> or 'va' when allocing and expecting 'virtual address' or
-> >>>> 'va' as input when freeing.
-> >>>>
-> >>>> As we are about to support new use cases that the caller
-> >>>> need to deal with 'struct page' or need to deal with both
-> >>>> 'va' and 'struct page'. In order to differentiate the API
-> >>>> handling between 'va' and 'struct page', add '_va' suffix
-> >>>> to the corresponding API mirroring the page_pool_alloc_va()
-> >>>> API of the page_pool. So that callers expecting to deal with
-> >>>> va, page or both va and page may call page_frag_alloc_va*,
-> >>>> page_frag_alloc_pg*, or page_frag_alloc* API accordingly.
-> >>>>
-> >>>> CC: Alexander Duyck <alexander.duyck@gmail.com>
-> >>>> Signed-off-by: Yunsheng Lin <linyunsheng@huawei.com>
-> >>>> Reviewed-by: Subbaraya Sundeep <sbhatta@marvell.com>
-> >>>
-> >>> I am naking this patch. It is a pointless rename that is just going t=
-o
-> >>> obfuscate the git history for these callers.
-> >>
-> >> I responded to your above similar comment in v2, and then responded mo=
-re
-> >> detailedly in v11, both got not direct responding, it would be good to
-> >> have more concrete feedback here instead of abstract argument.
-> >>
-> >> https://lore.kernel.org/all/74e7259a-c462-e3c1-73ac-8e3f49fb80b8@huawe=
-i.com/
-> >> https://lore.kernel.org/all/11187fe4-9419-4341-97b5-6dad7583b5b6@huawe=
-i.com/
-> >
-> > I will make this much more understandable. This patch is one of the
-> > ones that will permanently block this set in my opinion. As such I
-> > will never ack this patch as I see no benefit to it. Arguing with me
-> > on this is moot as you aren't going to change my mind, and I don't
-> > have all day to argue back and forth with you on every single patch.
->
-> Let's move on to more specific technical discussion then.
->
-> >
-> > As far as your API extension and naming maybe you should look like
-> > something like bio_vec and borrow the naming from that since that is
-> > essentially what you are passing back and forth is essentially that
-> > instead of a page frag which is normally a virtual address.
->
-> I thought about adding something like bio_vec before, but I am not sure
-> what you have in mind is somthing like I considered before?
-> Let's say that we reuse bio_vec like something below for the new APIs:
->
-> struct bio_vec {
->         struct page     *bv_page;
->         void            *va;
->         unsigned int    bv_len;
->         unsigned int    bv_offset;
-> };
+The current WED only supports 256 wcid, whereas mt7986 can support up to
+512 entries, so firmware provides a rule to get sta_info by DA when wcid
+is set to 0x3ff by txd. Also, WED provides a register to overwrite txd
+wcid, that is, wcid[9:8] can be overwritten by 0x3 and wcid[7:0] is set
+to 0xff by host driver.
 
-I wasn't suggesting changing the bio_vec. I was suggesting that be
-what you pass as a pointer reference instead of the offset. Basically
-your use case is mostly just for populating bio_vec style structures
-anyway.
+However, firmware is unable to get sta_info from DA as DA != RA for
+4addr cases, so firmware and wifi host driver both use wcid (256 - 271)
+and (768 ~ 783) for sync up to get correct sta_info.
 
-> It seems we have the below options for the new API:
->
-> option 1, it seems like a better option from API naming point of view, bu=
-t
-> it needs to return a bio_vec pointer to the caller, it seems we need to h=
-ave
-> extra space for the pointer, I am not sure how we can avoid the memory wa=
-ste
-> for sk_page_frag() case in patch 12:
-> struct bio_vec *page_frag_alloc_bio(struct page_frag_cache *nc,
->                                     unsigned int fragsz, gfp_t gfp_mask);
->
-> option 2, it need both the caller and callee to have a its own local spac=
-e
-> for 'struct bio_vec ', I am not sure if passing the content instead of
-> the pointer of a struct through the function returning is the common patt=
-ern
-> and if it has any performance impact yet:
-> struct bio_vec page_frag_alloc_bio(struct page_frag_cache *nc,
->                                    unsigned int fragsz, gfp_t gfp_mask);
->
-> option 3, the caller passes the pointer of 'struct bio_vec ' to the calle=
-e,
-> and page_frag_alloc_bio() fills in the data, I am not sure what is the po=
-int
-> of indirect using 'struct bio_vec ' instead of passing 'va' & 'fragsz' &
-> 'offset' through pointers directly:
-> bool page_frag_alloc_bio(struct page_frag_cache *nc,
->                          unsigned int fragsz, gfp_t gfp_mask, struct bio_=
-vec *bio);
->
-> If one of the above option is something in your mind? Yes, please be more=
- specific
-> about which one is the prefer option, and why it is the prefer option tha=
-n the one
-> introduced in this patchset?
->
-> If no, please be more specific what that is in your mind?
+Currently WDS+WED config is completely broken on MT7986/7981 devices if
+without this patch.
 
-Option 3 is more or less what I had in mind. Basically you would
-return an int to indicate any errors and you would be populating a
-bio_vec during your allocation. In addition you would use the bio_vec
-as a tracker of the actual fragsz so when you commit you are
-committing with the fragsz as it was determined at the time of putting
-the bio_vec together so you can theoretically catch things like if the
-underlying offset had somehow changed from the time you setup the
-allocation. It would fit well into your probe routines since they are
-all essentially passing the page, offset, and fragsz throughout the
-code.
+Tested-by: Sujuan Chen <sujuan.chen@mediatek.com>
+Co-developed-by: Bo Jiao <bo.jiao@mediatek.com>
+Signed-off-by: Bo Jiao <bo.jiao@mediatek.com>
+Signed-off-by: Sujuan Chen <sujuan.chen@mediatek.com>
+Signed-off-by: Shengyu Qu <wiagn233@outlook.com>
+---
+Changes since v1:
+ - Drop duplicate setting in mmio
+ - Reduce the patch size by redefining mt76_wcid_alloc
+Changes since v2:
+ - Rework wds wcid getting flow
+Changes since v3:
+ - Rebase to next-20240703
+ - Sync with downstream patch
+Changes since v4:
+ - Rebase to next-20240802
+---
+ drivers/net/wireless/mediatek/mt76/mt76.h     |  9 +++++
+ .../net/wireless/mediatek/mt76/mt7915/main.c  | 32 ++++++++++++++--
+ .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 16 ++++++--
+ .../net/wireless/mediatek/mt76/mt7915/mcu.h   |  1 +
+ drivers/net/wireless/mediatek/mt76/util.c     | 37 +++++++++++++++++--
+ drivers/net/wireless/mediatek/mt76/util.h     |  7 +++-
+ 6 files changed, 91 insertions(+), 11 deletions(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index 4a58a78d5ed25..1186a4998faff 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -28,6 +28,9 @@
+ 
+ #define MT76_TOKEN_FREE_THR	64
+ 
++#define MT76_WED_WDS_MIN    256
++#define MT76_WED_WDS_MAX    272
++
+ #define MT_QFLAG_WED_RING	GENMASK(1, 0)
+ #define MT_QFLAG_WED_TYPE	GENMASK(4, 2)
+ #define MT_QFLAG_WED		BIT(5)
+@@ -71,6 +74,12 @@ enum mt76_wed_type {
+ 	MT76_WED_RRO_Q_IND,
+ };
+ 
++enum mt76_wed_state {
++	MT76_WED_DEFAULT,
++	MT76_WED_ACTIVE,
++	MT76_WED_WDS_ACTIVE,
++};
++
+ struct mt76_bus_ops {
+ 	u32 (*rr)(struct mt76_dev *dev, u32 offset);
+ 	void (*wr)(struct mt76_dev *dev, u32 offset, u32 val);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/main.c b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
+index 049223df9beb1..dc4d87e004a0f 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
+@@ -745,8 +745,15 @@ int mt7915_mac_sta_add(struct mt76_dev *mdev, struct ieee80211_vif *vif,
+ 	bool ext_phy = mvif->phy != &dev->phy;
+ 	int ret, idx;
+ 	u32 addr;
++	u8 flags = MT76_WED_DEFAULT;
+ 
+-	idx = mt76_wcid_alloc(dev->mt76.wcid_mask, MT7915_WTBL_STA);
++	if (mtk_wed_device_active(&dev->mt76.mmio.wed) &&
++	    !is_mt7915(&dev->mt76)) {
++		flags = test_bit(MT_WCID_FLAG_4ADDR, &msta->wcid.flags) ?
++		       MT76_WED_WDS_ACTIVE : MT76_WED_ACTIVE;
++	}
++
++	idx = __mt76_wcid_alloc(mdev->wcid_mask, MT7915_WTBL_STA, flags);
+ 	if (idx < 0)
+ 		return -ENOSPC;
+ 
+@@ -1201,12 +1208,27 @@ static void mt7915_sta_set_4addr(struct ieee80211_hw *hw,
+ {
+ 	struct mt7915_dev *dev = mt7915_hw_dev(hw);
+ 	struct mt7915_sta *msta = (struct mt7915_sta *)sta->drv_priv;
++	int min = MT76_WED_WDS_MIN, max = MT76_WED_WDS_MAX;
+ 
+ 	if (enabled)
+ 		set_bit(MT_WCID_FLAG_4ADDR, &msta->wcid.flags);
+ 	else
+ 		clear_bit(MT_WCID_FLAG_4ADDR, &msta->wcid.flags);
+ 
++	if (mtk_wed_device_active(&dev->mt76.mmio.wed) &&
++	    !is_mt7915(&dev->mt76) &&
++	    (msta->wcid.idx < min || msta->wcid.idx > max - 1)) {
++		struct ieee80211_sta *pre_sta;
++
++		pre_sta = kzalloc(sizeof(*sta) + sizeof(*msta), GFP_KERNEL);
++		mt76_sta_pre_rcu_remove(hw, vif, sta);
++		memmove(pre_sta, sta, sizeof(*sta) + sizeof(*msta));
++		mt7915_sta_add(hw, vif, sta);
++		synchronize_rcu();
++		mt7915_sta_remove(hw, vif, pre_sta);
++		kfree(pre_sta);
++	}
++
+ 	mt76_connac_mcu_wtbl_update_hdr_trans(&dev->mt76, vif, sta);
+ }
+ 
+@@ -1644,15 +1666,19 @@ mt7915_net_fill_forward_path(struct ieee80211_hw *hw,
+ 	if (!mtk_wed_device_active(wed))
+ 		return -ENODEV;
+ 
+-	if (msta->wcid.idx > 0xff)
++	if (msta->wcid.idx > MT7915_WTBL_STA)
+ 		return -EIO;
+ 
+ 	path->type = DEV_PATH_MTK_WDMA;
+ 	path->dev = ctx->dev;
+ 	path->mtk_wdma.wdma_idx = wed->wdma_idx;
+ 	path->mtk_wdma.bss = mvif->mt76.idx;
+-	path->mtk_wdma.wcid = is_mt7915(&dev->mt76) ? msta->wcid.idx : 0x3ff;
+ 	path->mtk_wdma.queue = phy != &dev->phy;
++	if (test_bit(MT_WCID_FLAG_4ADDR, &msta->wcid.flags) ||
++	    is_mt7915(&dev->mt76))
++		path->mtk_wdma.wcid = msta->wcid.idx;
++	else
++		path->mtk_wdma.wcid = 0x3ff;
+ 
+ 	ctx->dev = NULL;
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+index 2185cd24e2e1c..0f715a4c21ada 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+@@ -2352,10 +2352,18 @@ int mt7915_mcu_init_firmware(struct mt7915_dev *dev)
+ 	if (ret)
+ 		return ret;
+ 
+-	if ((mtk_wed_device_active(&dev->mt76.mmio.wed) &&
+-	     is_mt7915(&dev->mt76)) ||
+-	    !mtk_wed_get_rx_capa(&dev->mt76.mmio.wed))
+-		mt7915_mcu_wa_cmd(dev, MCU_WA_PARAM_CMD(CAPABILITY), 0, 0, 0);
++	if (mtk_wed_device_active(&dev->mt76.mmio.wed)) {
++		if (is_mt7915(&dev->mt76) ||
++		    !mtk_wed_get_rx_capa(&dev->mt76.mmio.wed))
++			ret = mt7915_mcu_wa_cmd(dev, MCU_WA_PARAM_CMD(CAPABILITY),
++						0, 0, 0);
++		else
++			ret = mt7915_mcu_wa_cmd(dev, MCU_WA_PARAM_CMD(SET),
++						MCU_WA_PARAM_WED_VERSION,
++						dev->mt76.mmio.wed.rev_id, 0);
++		if (ret)
++			return ret;
++	}
+ 
+ 	ret = mt7915_mcu_set_mwds(dev, 1);
+ 	if (ret)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
+index b41ac4aaced7f..b2bf5472b2d70 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
+@@ -279,6 +279,7 @@ enum {
+ 	MCU_WA_PARAM_CPU_UTIL = 0x0b,
+ 	MCU_WA_PARAM_RED = 0x0e,
+ 	MCU_WA_PARAM_RED_SETTING = 0x40,
++	MCU_WA_PARAM_WED_VERSION = 0x32,
+ };
+ 
+ enum mcu_mmps_mode {
+diff --git a/drivers/net/wireless/mediatek/mt76/util.c b/drivers/net/wireless/mediatek/mt76/util.c
+index d6c01a2dd1988..461b74068fc30 100644
+--- a/drivers/net/wireless/mediatek/mt76/util.c
++++ b/drivers/net/wireless/mediatek/mt76/util.c
+@@ -42,9 +42,11 @@ bool ____mt76_poll_msec(struct mt76_dev *dev, u32 offset, u32 mask, u32 val,
+ }
+ EXPORT_SYMBOL_GPL(____mt76_poll_msec);
+ 
+-int mt76_wcid_alloc(u32 *mask, int size)
++int __mt76_wcid_alloc(u32 *mask, int size, u8 flag)
+ {
+ 	int i, idx = 0, cur;
++	int min = MT76_WED_WDS_MIN;
++	int max = MT76_WED_WDS_MAX;
+ 
+ 	for (i = 0; i < DIV_ROUND_UP(size, 32); i++) {
+ 		idx = ffs(~mask[i]);
+@@ -53,16 +55,45 @@ int mt76_wcid_alloc(u32 *mask, int size)
+ 
+ 		idx--;
+ 		cur = i * 32 + idx;
+-		if (cur >= size)
++
++		switch (flag) {
++		case MT76_WED_ACTIVE:
++			if (cur >= min && cur < max)
++				continue;
++
++			if (cur >= size) {
++				u32 end = max - min - 1;
++
++				i = min / 32;
++				idx = ffs(~mask[i] & GENMASK(end, 0));
++				if (!idx)
++					goto error;
++				idx--;
++				cur = min + idx;
++			}
++
+ 			break;
++		case MT76_WED_WDS_ACTIVE:
++			if (cur < min)
++				continue;
++			if (cur >= max)
++				goto error;
++
++			break;
++		default:
++			if (cur >= size)
++				goto error;
++			break;
++		}
+ 
+ 		mask[i] |= BIT(idx);
+ 		return cur;
+ 	}
+ 
++error:
+ 	return -1;
+ }
+-EXPORT_SYMBOL_GPL(mt76_wcid_alloc);
++EXPORT_SYMBOL_GPL(__mt76_wcid_alloc);
+ 
+ int mt76_get_min_avg_rssi(struct mt76_dev *dev, bool ext_phy)
+ {
+diff --git a/drivers/net/wireless/mediatek/mt76/util.h b/drivers/net/wireless/mediatek/mt76/util.h
+index 260965dde94cf..99b7263c0a205 100644
+--- a/drivers/net/wireless/mediatek/mt76/util.h
++++ b/drivers/net/wireless/mediatek/mt76/util.h
+@@ -27,7 +27,12 @@ enum {
+ #define MT76_INCR(_var, _size) \
+ 	(_var = (((_var) + 1) % (_size)))
+ 
+-int mt76_wcid_alloc(u32 *mask, int size);
++int __mt76_wcid_alloc(u32 *mask, int size, u8 flags);
++
++static inline int mt76_wcid_alloc(u32 *mask, int size)
++{
++	return __mt76_wcid_alloc(mask, size, 0);
++}
+ 
+ static inline void
+ mt76_wcid_mask_set(u32 *mask, int idx)
+-- 
+2.34.1
+
 
