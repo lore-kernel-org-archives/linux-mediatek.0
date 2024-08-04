@@ -4,84 +4,123 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA734C3DA4A
-	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Aug 2024 02:46:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52F99C3DA7F
+	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Aug 2024 04:30:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ofk3ttt9Z17RBVQzFM9I9nqKGgMe8AXETtHvfhuz1LQ=; b=AMwhJ/n+WQFGBRFx+H3ErBQUvs
-	z3h4tsVDMIAB1vk9gD6aKLH9zgNdARguthvK+gfJDrEtcOGcJaoRT3wTuHIewWNJxhvd5C3ikJq/d
-	c1x60DGjlW7uiebAN344VjFAqPfa/pEBGiXBIb7UtFyqwo7uUiHFd1QeY9UDtJpStrpmXofqipb3n
-	3IEs55IJgiU8OA3b1HGLG2bKqKEe1d+DNn6zv/4d6fsWRHdHCfFhsJli6q6cJ7vAcxKLeSvhKeYfI
-	5S1q/Agc0UG7dSozZ2i4DF0DO0Os7TTwmHq6i3mu19dU+fliHY6qnp/4trwLZQIRSjA/VdkXL0VWJ
-	bykrUsQA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xlk57dWXqV77ALqJZrDySJJvovhv9kbwJVS4WA6M5w0=; b=2mGcCVpZrBhwawTEAVpvvpyIFf
+	BFPTZ2mtZHDs3H0f8OGXc8BKptiKoGhdqTpIOCEUoG8XreicxNm0+mO0Ed8QoUUfy7LRAknZRiMdx
+	XD+rO7jTyUWeyUQ3rr/g3koCiBWA3WgxERCDe1Vg2mxsdFIx/31JwrtDnAmNRnsFi8kY9G46pvT8x
+	jk7elW7lfRliu3G01m9DFzumi6TowJgXWjg25YAcYhrlHhbrSQ97O7pAoBGr2Uh+5devNDkjBwM5j
+	39ygLYE9OMsgoA1gTnxDUH1YFPzoypMkBD/4GeIkhYjzRSH6h4MBd+Zm/de7cl6ZafM924RbuoIs4
+	uKXUYhTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1saRGf-0000000CWKh-40lk;
-	Sun, 04 Aug 2024 02:46:46 +0000
-Received: from mgamail.intel.com ([198.175.65.11])
+	id 1saStI-0000000CcJx-45z4;
+	Sun, 04 Aug 2024 04:30:44 +0000
+Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1saRGc-0000000CWKC-1Cf3;
-	Sun, 04 Aug 2024 02:46:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1722739602; x=1754275602;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=UZPIB9k/6HryMcopKOFaXfW3Di8l2l4XGoixC2YRSz8=;
-  b=Kt5Wtm+oaMKcMT2tQzgN8INXS+cnyPk89kvwTbqF/K5ItGPOCxpRtuFH
-   ggXakjEs2UwPxE94y61ImYTwvoGx1Pe5l/9RCDTBh7n0c8vDLohR8FHdh
-   /L3AaQM26a310pJW+6tfu2m3MGlBnH2TLXH9ZtfD0mEnBIHb3uxmQvMia
-   jN/GAk9XAtwZ0N9pWopEYfi16KFjC62xDCCkrGRgycGjBwzjabOVrJcOu
-   EK7McUfvUAxEtsmV1SjCg8Z/AVRaQCj0WIePWahIawxTUecvTC+9z9DAl
-   nvyQySVzPLF/1UM45B9U7gN1BGmUrwNsYNa5kXOf7X7jtgTQWqhSe5s6n
-   A==;
-X-CSE-ConnectionGUID: pJ1VveQ1RVi3551gli+EyA==
-X-CSE-MsgGUID: jLRVHCNWRY+OU8P6xNshYA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11153"; a="31305313"
-X-IronPort-AV: E=Sophos;i="6.09,261,1716274800"; 
-   d="scan'208";a="31305313"
-Received: from fmviesa010.fm.intel.com ([10.60.135.150])
-  by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Aug 2024 19:46:12 -0700
-X-CSE-ConnectionGUID: tUdbOXShQoy0NydWwrTSUQ==
-X-CSE-MsgGUID: oWFehfiCQXOYzSahTnzoKw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,261,1716274800"; 
-   d="scan'208";a="55909432"
-Received: from unknown (HELO b6bf6c95bbab) ([10.239.97.151])
-  by fmviesa010.fm.intel.com with ESMTP; 03 Aug 2024 19:46:08 -0700
-Received: from kbuild by b6bf6c95bbab with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1saRG1-000163-1x;
-	Sun, 04 Aug 2024 02:46:05 +0000
-Date: Sun, 4 Aug 2024 10:43:33 +0800
-From: kernel test robot <lkp@intel.com>
-To: Shengyu Qu <wiagn233@outlook.com>, nbd@nbd.name, lorenzo@kernel.org,
-	ryder.lee@mediatek.com, shayne.chen@mediatek.com,
-	sean.wang@mediatek.com, kvalo@kernel.org, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com, chui-hao.chiu@mediatek.com,
-	emmanuel.grumbach@intel.com, StanleyYP.Wang@mediatek.com,
-	meichia.chiu@mediatek.com, johannes.berg@intel.com,
-	quic_adisi@quicinc.com, allen.ye@mediatek.com, bo.jiao@mediatek.com,
-	linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: oe-kbuild-all@lists.linux.dev, Shengyu Qu <wiagn233@outlook.com>,
-	Sujuan Chen <sujuan.chen@mediatek.com>
-Subject: Re: [PATCH v5] wifi: mt76: mt7915: add wds support when wed is
- enabled
-Message-ID: <202408041039.BqVRJOqp-lkp@intel.com>
-References: <TY3P286MB2611CB2F4F5FA27D782AA80A98BC2@TY3P286MB2611.JPNP286.PROD.OUTLOOK.COM>
+	id 1saStD-0000000CcJ0-2G5O;
+	Sun, 04 Aug 2024 04:30:41 +0000
+Received: by mail-pg1-x541.google.com with SMTP id 41be03b00d2f7-7a1be7b5d70so3307795a12.0;
+        Sat, 03 Aug 2024 21:30:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1722745838; x=1723350638; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=xlk57dWXqV77ALqJZrDySJJvovhv9kbwJVS4WA6M5w0=;
+        b=MTfrCJcf4UWwuLwkz2v+2BUe9EDCYiFsXKm6SSBE8GK3nmVv6tUDMDjroxrhGtkdDN
+         2HuadNRN7uTlO3oMhQJxwIrqZXdO30ewZSeYASuyySMO7K1raHQBbO6QdbkK9wx/aBB5
+         +OLPNqb2vzY3w5nmtTlnqyBFCg0x07DHs0JuP4fq04a615AWzJgWS2fI/4XrpOJDuW41
+         XemTCbrYrkLd5RKsysN5CB1PdbWZLt3L3kjaXvGMu2ZeMJJkOM7yO11NaokmE7hAiyb0
+         4rfz08XhsXXsKIIv5ZEH9ENEhizQnzxbKhm47R8WcCaeM2RUzBd8RITh0A9S0PaWBT53
+         H8tg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1722745838; x=1723350638;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=xlk57dWXqV77ALqJZrDySJJvovhv9kbwJVS4WA6M5w0=;
+        b=oVL8wLrK2SKQaiddm4ETwlZI7KlQWCJ2+tF9eFOtmR/32nPJm5U5RW3MaLI4UEEVEk
+         V3+5WLFJkrX0HjRUyyVxOP4/ucCDLA7QT9CyFSg9XbSD3cP4OMQanCsIFHqBQmzYf+Yd
+         TZw8TWYMdu+x0I3zpu+6YbhAkp8mistzCbzvLheaoiHy1BNnvsU9byEFJGAFGqrpLOpr
+         OwTy95C1Yi+5tIfnSib0fgFxkHEhmw65axgG1e44Uk2f2i8akQH2eVlhj/honGWRWtzw
+         lHdnG2yD/0+uE7duaIvDBMLg5nFZvTQ9J+abvB13CFzqRqv0IYXKIWebnjK7Lgll1fJ8
+         HYXw==
+X-Forwarded-Encrypted: i=1; AJvYcCXn7sRAG+VcXFMa1E434nlnW8yJATIGTPCjHqpTlA+0SDPxTgz4B1GWhG4S5oVkO2ATzjtc+aqwhfaKtNbEo/zhRK+wA69paq2kEfT9l3u+WWu+/etLO1fYnagFVtg2C9gxR1E+m+DT5fF+aJfWRa1QKfiviBzq3owzr52CESV6X0YAQfke91mQ5ITHe6wtLF9ET5GFzRmJmdC9iBdMtC/RqvSL6lQofWzRejXAthKLFZGd7PohQxU=
+X-Gm-Message-State: AOJu0YyVXd/OT+3DUdmNsBxxlcrYPfeNhkEHqSIi12lxqKeb4+MAuy/X
+	7JnY3g+ymb0d92kjO/ypUVpruFQtUS7tDWH9QbcKpKbr6eTeqQqF
+X-Google-Smtp-Source: AGHT+IGsvTDJ4EYqxMHnrnabL29RSd4zV3sYpylbcRFlgCkQFp8MTku4ddABSnqWe2wodzlqv0aHUA==
+X-Received: by 2002:a05:6a21:3d8b:b0:1c6:9968:f4f4 with SMTP id adf61e73a8af0-1c699690eacmr14086917637.11.1722745837611;
+        Sat, 03 Aug 2024 21:30:37 -0700 (PDT)
+Received: from ?IPV6:2409:8a55:301b:e120:f82c:57ba:8bf:3093? ([2409:8a55:301b:e120:f82c:57ba:8bf:3093])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-7b764fb4994sm3417427a12.62.2024.08.03.21.30.26
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 03 Aug 2024 21:30:37 -0700 (PDT)
+Message-ID: <2a29ce61-7136-4b9b-9940-504228b10cba@gmail.com>
+Date: Sun, 4 Aug 2024 12:30:22 +0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <TY3P286MB2611CB2F4F5FA27D782AA80A98BC2@TY3P286MB2611.JPNP286.PROD.OUTLOOK.COM>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net-next v12 04/14] mm: page_frag: add '_va' suffix to
+ page_frag API
+To: Alexander Duyck <alexander.duyck@gmail.com>,
+ Yunsheng Lin <linyunsheng@huawei.com>
+Cc: davem@davemloft.net, kuba@kernel.org, pabeni@redhat.com,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Subbaraya Sundeep <sbhatta@marvell.com>,
+ Jeroen de Borst <jeroendb@google.com>,
+ Praveen Kaligineedi <pkaligineedi@google.com>,
+ Shailend Chand <shailend@google.com>, Eric Dumazet <edumazet@google.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Sunil Goutham <sgoutham@marvell.com>, Geetha sowjanya <gakula@marvell.com>,
+ hariprasad <hkelam@marvell.com>, Felix Fietkau <nbd@nbd.name>,
+ Sean Wang <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>,
+ Lorenzo Bianconi <lorenzo@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Keith Busch <kbusch@kernel.org>, Jens Axboe <axboe@kernel.dk>,
+ Christoph Hellwig <hch@lst.de>, Sagi Grimberg <sagi@grimberg.me>,
+ Chaitanya Kulkarni <kch@nvidia.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Jason Wang <jasowang@redhat.com>, =?UTF-8?Q?Eugenio_P=C3=A9rez?=
+ <eperezma@redhat.com>, Andrew Morton <akpm@linux-foundation.org>,
+ Alexei Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ John Fastabend <john.fastabend@gmail.com>,
+ Andrii Nakryiko <andrii@kernel.org>, Martin KaFai Lau
+ <martin.lau@linux.dev>, Eduard Zingerman <eddyz87@gmail.com>,
+ Song Liu <song@kernel.org>, Yonghong Song <yonghong.song@linux.dev>,
+ KP Singh <kpsingh@kernel.org>, Stanislav Fomichev <sdf@fomichev.me>,
+ Hao Luo <haoluo@google.com>, Jiri Olsa <jolsa@kernel.org>,
+ David Howells <dhowells@redhat.com>, Marc Dionne <marc.dionne@auristor.com>,
+ Chuck Lever <chuck.lever@oracle.com>, Jeff Layton <jlayton@kernel.org>,
+ Neil Brown <neilb@suse.de>, Olga Kornievskaia <kolga@netapp.com>,
+ Dai Ngo <Dai.Ngo@oracle.com>, Tom Talpey <tom@talpey.com>,
+ Trond Myklebust <trondmy@kernel.org>, Anna Schumaker <anna@kernel.org>,
+ intel-wired-lan@lists.osuosl.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-nvme@lists.infradead.org,
+ kvm@vger.kernel.org, virtualization@lists.linux.dev, linux-mm@kvack.org,
+ bpf@vger.kernel.org, linux-afs@lists.infradead.org, linux-nfs@vger.kernel.org
+References: <20240731124505.2903877-1-linyunsheng@huawei.com>
+ <20240731124505.2903877-5-linyunsheng@huawei.com>
+ <CAKgT0UcqdeSJdjZ_FfwyCnT927TwOkE4zchHLOkrBEmhGzex9g@mail.gmail.com>
+ <22fda86c-d688-42e7-99e8-e2f8fcf1a5ba@huawei.com>
+ <CAKgT0UcuGj8wvC87=A+hkarRupfhjGM0BPzLUT2AJc8Ovg_TFg@mail.gmail.com>
+ <877efebe-f316-4192-aada-dd2657b74125@huawei.com>
+ <CAKgT0UfUkqR2TJQt6cSEdANNxQEOkjGqpPXhaXmrrxB0KwXmEQ@mail.gmail.com>
+Content-Language: en-US
+From: Yunsheng Lin <yunshenglin0825@gmail.com>
+In-Reply-To: <CAKgT0UfUkqR2TJQt6cSEdANNxQEOkjGqpPXhaXmrrxB0KwXmEQ@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240803_194642_401053_1F42A751 
-X-CRM114-Status: GOOD (  11.65  )
+X-CRM114-CacheID: sfid-20240803_213039_610444_2008FAA4 
+X-CRM114-Status: GOOD (  35.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,103 +135,110 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Shengyu,
+On 8/3/2024 1:00 AM, Alexander Duyck wrote:
 
-kernel test robot noticed the following build errors:
+>>
+>>>
+>>> As far as your API extension and naming maybe you should look like
+>>> something like bio_vec and borrow the naming from that since that is
+>>> essentially what you are passing back and forth is essentially that
+>>> instead of a page frag which is normally a virtual address.
+>>
+>> I thought about adding something like bio_vec before, but I am not sure
+>> what you have in mind is somthing like I considered before?
+>> Let's say that we reuse bio_vec like something below for the new APIs:
+>>
+>> struct bio_vec {
+>>          struct page     *bv_page;
+>>          void            *va;
+>>          unsigned int    bv_len;
+>>          unsigned int    bv_offset;
+>> };
+> 
+> I wasn't suggesting changing the bio_vec. I was suggesting that be
+> what you pass as a pointer reference instead of the offset. Basically
+> your use case is mostly just for populating bio_vec style structures
+> anyway.
 
-[auto build test ERROR on wireless-next/main]
-[also build test ERROR on wireless/main linus/master v6.11-rc1 next-20240802]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+I wasn't trying/going to reuse/change bio_vec for page_frag, I was just
+having a hard time coming with a good new name for it.
+The best one I came up with is pfrag_vec, but I am not sure about the
+'vec' as the "vec" portion of the name would suggest, iovec structures 
+tend to come in arrays, mentioned in the below article:
+https://lwn.net/Articles/625077/
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Shengyu-Qu/wifi-mt76-mt7915-add-wds-support-when-wed-is-enabled/20240803-231632
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/wireless/wireless-next.git main
-patch link:    https://lore.kernel.org/r/TY3P286MB2611CB2F4F5FA27D782AA80A98BC2%40TY3P286MB2611.JPNP286.PROD.OUTLOOK.COM
-patch subject: [PATCH v5] wifi: mt76: mt7915: add wds support when wed is enabled
-config: x86_64-buildonly-randconfig-003-20240804 (https://download.01.org/0day-ci/archive/20240804/202408041039.BqVRJOqp-lkp@intel.com/config)
-compiler: gcc-12 (Debian 12.2.0-14) 12.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240804/202408041039.BqVRJOqp-lkp@intel.com/reproduce)
+Anther one is page_frag, which is currently in use.
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202408041039.BqVRJOqp-lkp@intel.com/
+Or any better one in your mind?
 
-All errors (new ones prefixed by >>):
+> 
+>> It seems we have the below options for the new API:
+>>
+>> option 1, it seems like a better option from API naming point of view, but
+>> it needs to return a bio_vec pointer to the caller, it seems we need to have
+>> extra space for the pointer, I am not sure how we can avoid the memory waste
+>> for sk_page_frag() case in patch 12:
+>> struct bio_vec *page_frag_alloc_bio(struct page_frag_cache *nc,
+>>                                      unsigned int fragsz, gfp_t gfp_mask);
+>>
+>> option 2, it need both the caller and callee to have a its own local space
+>> for 'struct bio_vec ', I am not sure if passing the content instead of
+>> the pointer of a struct through the function returning is the common pattern
+>> and if it has any performance impact yet:
+>> struct bio_vec page_frag_alloc_bio(struct page_frag_cache *nc,
+>>                                     unsigned int fragsz, gfp_t gfp_mask);
+>>
+>> option 3, the caller passes the pointer of 'struct bio_vec ' to the callee,
+>> and page_frag_alloc_bio() fills in the data, I am not sure what is the point
+>> of indirect using 'struct bio_vec ' instead of passing 'va' & 'fragsz' &
+>> 'offset' through pointers directly:
+>> bool page_frag_alloc_bio(struct page_frag_cache *nc,
+>>                           unsigned int fragsz, gfp_t gfp_mask, struct bio_vec *bio);
+>>
+>> If one of the above option is something in your mind? Yes, please be more specific
+>> about which one is the prefer option, and why it is the prefer option than the one
+>> introduced in this patchset?
+>>
+>> If no, please be more specific what that is in your mind?
+> 
+> Option 3 is more or less what I had in mind. Basically you would
+> return an int to indicate any errors and you would be populating a
+> bio_vec during your allocation. In addition you would use the bio_vec
 
-   drivers/net/wireless/mediatek/mt76/mt7915/mcu.c: In function 'mt7915_mcu_init_firmware':
->> drivers/net/wireless/mediatek/mt76/mt7915/mcu.c:2363:67: error: 'struct mtk_wed_device' has no member named 'rev_id'
-    2363 |                                                 dev->mt76.mmio.wed.rev_id, 0);
-         |                                                                   ^
+Actually using this new bio_vec style structures does not seem to solve
+the APIs naming issue this patch is trying to solve as my understanding,
+as the new struct is only about passing one pointer or multi-pointers
+from API naming perspective. It is part of the API naming, but not all
+of it.
+
+> as a tracker of the actual fragsz so when you commit you are
+> committing with the fragsz as it was determined at the time of putting
+> the bio_vec together so you can theoretically catch things like if the
+> underlying offset had somehow changed from the time you setup the
+
+I think we might need a stronger argument than the above to use the new
+*vec thing other than the above debugging feature.
+
+I looked throught the bio_vec related info, and come along somewhat not
+really related, but really helpful "What’s all this get us" section:
+https://docs.kernel.org/block/biovecs.html
+
+So the question seems to be: what is this new struct for page_frag get
+us?
+
+Generally, I am argeed with the new struct thing if it does bring us
+something other than the above debugging feature. Otherwise we should
+avoid introducing a new thing which is hard to argue about its existent.
+
+> allocation. It would fit well into your probe routines since they are
+> all essentially passing the page, offset, and fragsz throughout the
+> code.
+
+For the current probe routines, the 'va' need to be passed, do you
+expect the 'va' to be passed by function return, double pointer, or
+new the *_vec pointer?
+
+> 
 
 
-vim +2363 drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-
-  2322	
-  2323	int mt7915_mcu_init_firmware(struct mt7915_dev *dev)
-  2324	{
-  2325		int ret;
-  2326	
-  2327		/* force firmware operation mode into normal state,
-  2328		 * which should be set before firmware download stage.
-  2329		 */
-  2330		mt76_wr(dev, MT_SWDEF_MODE, MT_SWDEF_NORMAL_MODE);
-  2331	
-  2332		ret = mt7915_driver_own(dev, 0);
-  2333		if (ret)
-  2334			return ret;
-  2335		/* set driver own for band1 when two hif exist */
-  2336		if (dev->hif2) {
-  2337			ret = mt7915_driver_own(dev, 1);
-  2338			if (ret)
-  2339				return ret;
-  2340		}
-  2341	
-  2342		ret = mt7915_load_firmware(dev);
-  2343		if (ret)
-  2344			return ret;
-  2345	
-  2346		set_bit(MT76_STATE_MCU_RUNNING, &dev->mphy.state);
-  2347		ret = mt7915_mcu_fw_log_2_host(dev, MCU_FW_LOG_WM, 0);
-  2348		if (ret)
-  2349			return ret;
-  2350	
-  2351		ret = mt7915_mcu_fw_log_2_host(dev, MCU_FW_LOG_WA, 0);
-  2352		if (ret)
-  2353			return ret;
-  2354	
-  2355		if (mtk_wed_device_active(&dev->mt76.mmio.wed)) {
-  2356			if (is_mt7915(&dev->mt76) ||
-  2357			    !mtk_wed_get_rx_capa(&dev->mt76.mmio.wed))
-  2358				ret = mt7915_mcu_wa_cmd(dev, MCU_WA_PARAM_CMD(CAPABILITY),
-  2359							0, 0, 0);
-  2360			else
-  2361				ret = mt7915_mcu_wa_cmd(dev, MCU_WA_PARAM_CMD(SET),
-  2362							MCU_WA_PARAM_WED_VERSION,
-> 2363							dev->mt76.mmio.wed.rev_id, 0);
-  2364			if (ret)
-  2365				return ret;
-  2366		}
-  2367	
-  2368		ret = mt7915_mcu_set_mwds(dev, 1);
-  2369		if (ret)
-  2370			return ret;
-  2371	
-  2372		ret = mt7915_mcu_set_muru_ctrl(dev, MURU_SET_PLATFORM_TYPE,
-  2373					       MURU_PLATFORM_TYPE_PERF_LEVEL_2);
-  2374		if (ret)
-  2375			return ret;
-  2376	
-  2377		ret = mt7915_mcu_init_rx_airtime(dev);
-  2378		if (ret)
-  2379			return ret;
-  2380	
-  2381		return mt7915_mcu_set_red(dev, mtk_wed_device_active(&dev->mt76.mmio.wed));
-  2382	}
-  2383	
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
 
