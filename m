@@ -4,169 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72580C3DA64
-	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Aug 2024 12:18:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C910EC3DA4A
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Aug 2024 06:02:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	In-Reply-To:From:References:To:Subject:Cc:Date:Message-ID:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=F0czT4grHPklh1XcL8KQrk6WBvDcggOV49yoVDkE9Ko=; b=DY1QgqtCd/dbLxU6l1w9nF2JYs
-	Cx4XvsR+U5KYbm64VHplih2S60ln8axcSEuuvpoCyP72+OQR7QDq22wBFejklMfmrj0Efh//zu5KJ
-	Rw9hjtz6kxDUOr1fHLtWA+ROqg5XExwok2xDWt8NENT96x8RbJZAXcofTSUZr8ribA+RqObmVJAOy
-	XaMdRK3POtTqvILmwzFVn/VFQIpNuKMU/hNhf2/dpFBawF13penEZBPrM/a+KDMtitLK6MNmKlxZz
-	KpU9C0uhW2t5LVxBw7bhNKsR/vwlW4oxt+km6ralpL31f8/Zl+L5zqC659wty7lG+taWpd5Dtecsc
-	D4dTHF/g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=KCCE+7BB5PHXZJjrX/rPFtOvm22mgzZ/W4Yze4U9Lr4=; b=wVg8a5xR1qTQ2P9gY0U6V4nfX/
+	fq58EIJJEQy70eItpi2sX3vEpwOPcEzc19GgNEUKqBoDq65kdRFlUqsL+oYvbqffzqfv1e5L6mK3X
+	xB8oY1ghGJSSYg9uVcr5RNL6a+CsEd35/WtPfOmfJoF6GzBE7sHUhgzbM/AZ5Qby32RWPN7ft7hqR
+	a+gJc3JNWCLuBJVONWOXNbCNO4azdYayXcSmKeZv5RN1aYrXYZwx4SXcWSKPiqHTYjIrieE1fInU8
+	Hep2gasaQgh5uOp3y7uvRGk6G0yLBU+xguYBqYSORP5sov6UdfhCwCKucS63tOArG0xVz4icORXSO
+	0CMEO50g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1saaBX-0000000DDeq-0Vnq;
-	Sun, 04 Aug 2024 12:18:03 +0000
-Received: from mail-japaneastazolkn190110001.outbound.protection.outlook.com ([2a01:111:f403:d405::1] helo=TYVP286CU001.outbound.protection.outlook.com)
+	id 1saqnY-0000000Ekpc-3iQ3;
+	Mon, 05 Aug 2024 06:02:24 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1saaBU-0000000DDeJ-1F2m;
-	Sun, 04 Aug 2024 12:18:01 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=WjBNWHrS5ZVHGXptTf003Dwd7FuSI7z6ydGsme37raK6ecppUKUw2OFlyBNe4oDWqQyvb+4DbypttR5pNdUVdK5zNwBVpCMmVgpuHHY/Hql1EgvoHsuewJ+dOvAbZL8Odu5ckRcTflDLNOO7WsOgm4sUE/V+ryBE9oqO+Z5NxaB1gBJDtm+ykQ792J6U9F9M+tn7hqhYcnte533wCvzi6ZiD7heIFYJdIaqo8H8F/9La416//C3tcEpNvMkVXrOj6NP+7y3Fw2OxGYA2HtoYFTW2ykpBaNvmtic8g7Hlgab4ejivHpTic08K1Fn/ekAqThUr+0qY7azGGaWN9sUIvQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=F0czT4grHPklh1XcL8KQrk6WBvDcggOV49yoVDkE9Ko=;
- b=OynulTgsaAuPdvu0ZsW78dJ+5dtv3SHlDNNdaUSQOCN3cIgediL78Ax7j54Ub9I0DHtbS1niNvaD8FxPMdtSKj+KslI9rXH0hEFp4PTCZ286hNUP3M+WdhAgvgus7L81GX7DkimvXpnH+0Dh/QOdzKRx/56/68G5/OfRE6hxRvkXwKMURvYzNuwWwhHQDTyozjnbr+3GS5CVuSgaK0q+WywZibEdQoZxSfoJMYkkKL/wDc53O4GK822yMru0zHYZ/McTcMYs3UuLfP85azTj33pKPbSvSl0+Nuzbxgz1S8o9QTdouEEmDpV8s3cCLtWvMAIGN6HBH8mlvPVfGRveEQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=outlook.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=F0czT4grHPklh1XcL8KQrk6WBvDcggOV49yoVDkE9Ko=;
- b=dXhftE7EaCuVmtuQfD99HZizwUq0DSqqkrIAGz87VU2c+PhonHoAqG8i19P+K6MaNi9MVcHBS+L8ZFvQtVcPdJJt36PJGm06vKQViAn7hg7TakuoidUT/8RbJlFDDHQapUCC7ns60oTz5v1t4efLnrY7Gj+0+5dCOkxGCyYPg0q1bVueQBQHowYFyRPx5F4dl0xEwMVtPrjlgXbpDtL/9UW370reewj5tdEKvRv3w9Isgr8i1Q68jNyx8WvMBA6ryK93JQxGQVUgrLXfHHTWrbTL949AdHDgvn/pnrMoqp9NP8RzJJ7Uc2tHSMKzBhSpUKsj9pF+d2vC9MqfdHsZ6Q==
-Received: from TY3P286MB2611.JPNP286.PROD.OUTLOOK.COM (2603:1096:400:23e::10)
- by TYVP286MB3715.JPNP286.PROD.OUTLOOK.COM (2603:1096:400:369::7) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7828.25; Sun, 4 Aug
- 2024 12:17:49 +0000
-Received: from TY3P286MB2611.JPNP286.PROD.OUTLOOK.COM
- ([fe80::85b8:3d49:3d3e:2b3]) by TY3P286MB2611.JPNP286.PROD.OUTLOOK.COM
- ([fe80::85b8:3d49:3d3e:2b3%6]) with mapi id 15.20.7828.023; Sun, 4 Aug 2024
- 12:17:49 +0000
-Message-ID: <TY3P286MB261189441C7AF5E7FBA0634298BD2@TY3P286MB2611.JPNP286.PROD.OUTLOOK.COM>
-Date: Sun, 4 Aug 2024 20:17:44 +0800
-User-Agent: Mozilla Thunderbird
-Cc: wiagn233@outlook.com, kernel test robot <lkp@intel.com>, nbd@nbd.name,
- lorenzo@kernel.org, ryder.lee@mediatek.com, shayne.chen@mediatek.com,
- sean.wang@mediatek.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, chui-hao.chiu@mediatek.com,
- emmanuel.grumbach@intel.com, StanleyYP.Wang@mediatek.com,
- meichia.chiu@mediatek.com, johannes.berg@intel.com, quic_adisi@quicinc.com,
- allen.ye@mediatek.com, bo.jiao@mediatek.com, linux-wireless@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, oe-kbuild-all@lists.linux.dev,
- Sujuan Chen <sujuan.chen@mediatek.com>
-Subject: Re: [PATCH v5] wifi: mt76: mt7915: add wds support when wed is
- enabled
-To: Kalle Valo <kvalo@kernel.org>
-References: <TY3P286MB2611CB2F4F5FA27D782AA80A98BC2@TY3P286MB2611.JPNP286.PROD.OUTLOOK.COM>
- <202408041039.BqVRJOqp-lkp@intel.com>
- <TY3P286MB2611C363575C77278946A4B498BD2@TY3P286MB2611.JPNP286.PROD.OUTLOOK.COM>
- <87o7687gso.fsf@kernel.org>
-From: Shengyu Qu <wiagn233@outlook.com>
-Content-Language: en-US
-Autocrypt: addr=wiagn233@outlook.com; keydata=
- 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
-In-Reply-To: <87o7687gso.fsf@kernel.org>
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="------------9DzjvMbE1ntcwDxmK6QPD0DA"
-X-TMN: [2Cxea8Et09x6i7MdywB/Wlu95aDP0v0naWFsvWO2Abvd1KUhCjVvpspfi6U/hLBxYqjzr7BLS+w=]
-X-ClientProxiedBy: SG2PR04CA0216.apcprd04.prod.outlook.com
- (2603:1096:4:187::18) To TY3P286MB2611.JPNP286.PROD.OUTLOOK.COM
- (2603:1096:400:23e::10)
-X-Microsoft-Original-Message-ID: <811c11e5-1083-4d03-97f8-60b5c809a4cd@outlook.com>
+	id 1saqnW-0000000Ekol-0kXB
+	for linux-mediatek@lists.infradead.org;
+	Mon, 05 Aug 2024 06:02:23 +0000
+X-UUID: 44f53e7652f011efa6c87f6b4542ff6b-20240804
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=KCCE+7BB5PHXZJjrX/rPFtOvm22mgzZ/W4Yze4U9Lr4=;
+	b=PCJWrEZ+eirVfFlx/rQUoxdkZMYvYGaeGKBaWzTkw69yznHBzbQ05YXmUZzWoxyoW8hyA39h5s/ka+N25ohrm6B0sKvF4I2hk99edIsOiFXT7IGG20ZbN7PkX+mDPGTVWh6Zk6WCaDBv09mLzAAjKttE5hqNN8Wlq+6eksluj1A=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.41,REQID:485e1972-1391-4b29-adf9-d7dee5189d3a,IP:0,U
+	RL:0,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-20
+X-CID-META: VersionHash:6dc6a47,CLOUDID:7978a672-cb85-40d0-97b5-772ada27139a,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:1,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 44f53e7652f011efa6c87f6b4542ff6b-20240804
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+	(envelope-from <tze-nan.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1925145474; Sun, 04 Aug 2024 23:02:17 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Sun, 4 Aug 2024 23:01:44 -0700
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Mon, 5 Aug 2024 14:01:44 +0800
+From: Tze-nan Wu <Tze-nan.Wu@mediatek.com>
+To: Steven Rostedt <rostedt@goodmis.org>, Masami Hiramatsu
+	<mhiramat@kernel.org>
+CC: Mathieu Desnoyers <mathieu.desnoyers@efficios.com>,
+	<linux-kernel@vger.kernel.org>, <linux-trace-kernel@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, <bobule.chang@mediatek.com>,
+	<eric-yc.wu@mediatek.com>, <wsd_upstream@mediatek.com>, Tze-nan Wu
+	<Tze-nan.Wu@mediatek.com>, Cheng-Jui Wang <cheng-jui.wang@mediatek.com>
+Subject: [PATCH RESEND] tracing: Fix overflow in get_free_elt()
+Date: Mon, 5 Aug 2024 13:59:22 +0800
+Message-ID: <20240805055922.6277-1-Tze-nan.Wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: TY3P286MB2611:EE_|TYVP286MB3715:EE_
-X-MS-Office365-Filtering-Correlation-Id: 80fa82b2-96fa-4556-f40e-08dcb47f74c7
-X-MS-Exchange-SLBlob-MailProps: AZnQBsB9Xmqyyf+cGoeQ3Ulm4AiLwQwdQS05wrRZe3hUm2ps3yRMvBKIbUfe9kBCPeAXY8ESq25wy5litdCn01d7T0etJ3Q7RcAmR956L8JQCJdSu6TRIamSf4qmTOBn/xEktnL2mvFmMHuiOjXd9iMfSmF40+zlTS+gFF+CieWbRmKTKcFItyO24w17SuKMpHONK0iETI6FEkU2iF/lzbre/0kPjsaFBHg9blMFla1J69LPfqpudBx9JieVlWH9YyK2ZrreF+qtlxFkkU6LCNlads+v2Z5LpNNzbJ9Fj5f/hV0nW5YFqXQOEUCnkaV+bxjZ3PCEnuHK+mZxX1CQa66ltNvFyg0Y3ooiDysJFpkgqHX3gKlLFCbyoEWmcl3255vdps3cRmuijufqsVJFwzFdgmUMzv5nxnSwTNovwTyGcWhuxYbllEe8Vg6PXQ3vobxOdqhEC3EMuZdDfaYZq9W7oQEzofimiDdfBCQom6lmeGdXj/N4qQ+Fw0eGxTUx/cLrjJNOjqVsc7PZlpMBgedhkpBm8N1Gr+Vf9ijpHfkmf8ldi/TXMOz9iZQGmFjMa2pNExY4iNSaZ7EPPM1Tm5KVZIeZL6yol/2GyLQlQzoahqlwlBtBahJ3xSmjc1t3TNppQQDACk/9LJUuAayJB6cSFn5F/uR/pVQ+kNnEZpo+dxqawDEVaNRxXKkauG8pF2ND+RTbYmZHC2yJEIlyuTOzJ3SoflbUIISXOLleES0x0kOmbeCyikTTN8MS8RXJyC2zNjx6n+A=
-X-Microsoft-Antispam: BCL:0;ARA:14566002|6092099012|19110799003|8060799006|5072599009|461199028|3412199025|440099028|1710799026;
-X-Microsoft-Antispam-Message-Info: +p+bNxUj3neHOx1tgn1qdxXczfLFh8xpRNJcAd1lf8zMiuZ7JKM13mXiW1SqvPA1+zXfxaeaFLyz5lDKyI3ukjmyxdi4iZxTpW+c1Ph0JS4JO6JERSVUX3Fw0AjXWtHHSscmh0Y0l3m03Ss+oW6CON9y/juv4ufN7zsQ/AsGikbZ5jwSFuRSHoaWWnoGP01f2L2ecnZGHxWZUCI3DjnIRsZ9VfFGUr8HO5oF3aOgs/vPcfP9Sa2Qh2oYKtBp5c3HnlRzHjGxBVj8DQTB+LvMpJwTjBaY3mpeAwMmP/j68EDfKGoS+Y4tzUdLdw/1L3jVflJc5HXygvDE8V+Y+UxtVkOXsZVJRjG4XtJ8Seb0QUo5GbizwF1jPE6a9/baI5QRUV4iHUIOlIRLVi9NfgQkg4XlzwJ9U26DOtTcPBtQ0syPZEj9ADvhuOCLF1TCnh5vTSvoernTweEQbygfz6hf4yr9Z5+tjiWtzEU3drKN/2yOpvjOY40pZ7xECeQ7k9/MmsfEsYjX8t0NRiFzs2J6xRMkT7/VTle2al25vHvQeNAjrWj/OGjexOva6nqLOElOR6oDq1xT8yDAmAs9p1WKptdx8E3aUVaU37oAVI82A8eDis/Z+aEwa+BbmsI+V9kgC6vfk7AfkKy7rfbaMD0Pw8w9laqXQg3IMJTxOfEZyQKC2bsdoC2iqhaLH2/Zcq936jACweoy5+JzBi/kSzzgIjNjWpkZu5vDDWobHVvjU0w=
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?dfIHrZSy2OZAOqwLShRnA2eoSc/TXk9XIoqQqSMCmOoD4gKRHJrZ1gIyGoCh?=
- =?us-ascii?Q?LqR6NeV0T/fRzKW8Wz+sClH/SskTTIg6oQ9QKtWNEou/3rthpsz/IwZQqPuz?=
- =?us-ascii?Q?tO0uySxSN6LcD3UoA6KZTm6jzkec6xOVg6Y7EfSuTessBcxwHFdo9fwQpZgl?=
- =?us-ascii?Q?HZJuhR2OWENf2y8mEeiY85UZNaHyy8fi7467s97b3hjjp711eJUIItqXqMb/?=
- =?us-ascii?Q?BYlEq3y+hs7oVEHn9vJJo7zWIBDOukcRxu+bWxwV6jsgw1rkDr5dfFQMiUgR?=
- =?us-ascii?Q?H7k0KOuT2yXE1mGwR3r7oz1jgSZyV/lwcZAugi+WobKX9W9Zvzbe3kCL7vgu?=
- =?us-ascii?Q?/xfiH/BPE20rMJ/5wRl5Uyp/wLQ1yLMDFhTaQr1OzGgnL6BUcwFC+pre1lXP?=
- =?us-ascii?Q?SnwPg36edm4EJVkPO0BaOvfcC6UijM4N+MzUhMI0kBvM46IsaA1YaqETj/Ys?=
- =?us-ascii?Q?mI3lRSG4mEHLrgCuPjLkRqddS2iOnH8rgaBEo6ZW1mWcoFyFsp/HHkJsoWAa?=
- =?us-ascii?Q?r+TIwBGRvK4xcyvzNNHQ8Q/a2rooRfiHe6j8kd7nlRGIGX1bfcI/J2V5JX/P?=
- =?us-ascii?Q?alXEOLaVqy/vdssQ8v3JBi/PDaYEnolpZp4yL9gvi5oN8urMDs9BmsnjnTtj?=
- =?us-ascii?Q?nlFsuSX1bPMMrvKSmKmxk6pYjAAxJP8ICXj1BTIHypHE8ZOcY9od1+aH3q+k?=
- =?us-ascii?Q?eU/g00PR6DdcTCJnZIqDRKCrADBi5AUEVwzRVgrYfS0KRARioIMAXt/Qyeb1?=
- =?us-ascii?Q?jn+jbC8DlzdmKlBnqaLOMionP+SQsflLBO3hcNoeLD984CsK5muPIaNqEtis?=
- =?us-ascii?Q?f9Exdn/zz2THCbv05kJaenzz0JZ6t10Mem/5+SYmh2OK0j6GAEDbsj/BJpgQ?=
- =?us-ascii?Q?oQyma5b80qo2J4glUxblmHrCtZdS6vGI/W8wLoPzh9cRDI40qRvqn5LinmPl?=
- =?us-ascii?Q?3qL6XZYFAFdNejhUt2w7/bh9fCzsqYiweXibnx5MJt6ORcqcGhyob7Qk8Hrg?=
- =?us-ascii?Q?0026ReJVZAtNuKkSoQCkAQrdRw4wZsnx0fPARYo9DxD9ikwYQAVE429TcuFv?=
- =?us-ascii?Q?TZYaf88v8hrYdK6r5j+tyVqO2nuhZzlio4CJn7X9hHSaMJ+FiuD83gEsiWE3?=
- =?us-ascii?Q?q0X8sdWstTm4o0fIPpRx80vREr/dKV2YzjV4KXcE0ezj1WmgxC+MBaWa9p9o?=
- =?us-ascii?Q?2E/Gk7pPoOXlUS/i7WNmbrwyN51QvZiAfgcN4bhUkmwgSC1k6MiQhLsSkTwc?=
- =?us-ascii?Q?KbV4nJ1mKp+NloOoCfsrAjoaFiP6RSyUy0DRzyBlUjXFhN4eDDJQvwdU+NJy?=
- =?us-ascii?Q?4B4=3D?=
-X-OriginatorOrg: outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 80fa82b2-96fa-4556-f40e-08dcb47f74c7
-X-MS-Exchange-CrossTenant-AuthSource: TY3P286MB2611.JPNP286.PROD.OUTLOOK.COM
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Aug 2024 12:17:49.5008
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYVP286MB3715
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240804_051800_499029_1384130D 
-X-CRM114-Status: GOOD (  10.08  )
+X-CRM114-CacheID: sfid-20240804_230222_227369_C86AB426 
+X-CRM114-Status: GOOD (  14.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -181,196 +85,99 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---------------9DzjvMbE1ntcwDxmK6QPD0DA
-Content-Type: multipart/mixed; boundary="------------k9UuR6m47P2rz2qUqKHzynG9";
- protected-headers="v1"
-From: Shengyu Qu <wiagn233@outlook.com>
-To: Kalle Valo <kvalo@kernel.org>
-Cc: wiagn233@outlook.com, kernel test robot <lkp@intel.com>, nbd@nbd.name,
- lorenzo@kernel.org, ryder.lee@mediatek.com, shayne.chen@mediatek.com,
- sean.wang@mediatek.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, chui-hao.chiu@mediatek.com,
- emmanuel.grumbach@intel.com, StanleyYP.Wang@mediatek.com,
- meichia.chiu@mediatek.com, johannes.berg@intel.com, quic_adisi@quicinc.com,
- allen.ye@mediatek.com, bo.jiao@mediatek.com, linux-wireless@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, oe-kbuild-all@lists.linux.dev,
- Sujuan Chen <sujuan.chen@mediatek.com>
-Message-ID: <811c11e5-1083-4d03-97f8-60b5c809a4cd@outlook.com>
-Subject: Re: [PATCH v5] wifi: mt76: mt7915: add wds support when wed is
- enabled
-References: <TY3P286MB2611CB2F4F5FA27D782AA80A98BC2@TY3P286MB2611.JPNP286.PROD.OUTLOOK.COM>
- <202408041039.BqVRJOqp-lkp@intel.com>
- <TY3P286MB2611C363575C77278946A4B498BD2@TY3P286MB2611.JPNP286.PROD.OUTLOOK.COM>
- <87o7687gso.fsf@kernel.org>
-In-Reply-To: <87o7687gso.fsf@kernel.org>
+"tracing_map->next_elt" in get_free_elt() is at risk of overflowing.
 
---------------k9UuR6m47P2rz2qUqKHzynG9
-Content-Type: multipart/mixed; boundary="------------v0VOlPgFtxI0Ac0pCyCYFLbR"
+Once it overflows, new elements can still be inserted into the tracing_map
+even though the maximum number of elements (`max_elts`) has been reached.
+Continuing to insert elements after the overflow could result in the
+tracing_map containing "tracing_map->max_size" elements, leaving no empty
+entries.
+If any attempt is made to insert an element into a full tracing_map using
+`__tracing_map_insert()`, it will cause an infinite loop with preemption
+disabled, leading to a CPU hang problem.
 
---------------v0VOlPgFtxI0Ac0pCyCYFLbR
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: base64
+Fix this by preventing any further increments to "tracing_map->next_elt"
+once it reaches "tracing_map->max_elt".
 
-WW91IGFyZSByaWdodC4gSSdtIHRoaW5raW5nIGFib3V0IGNoYW5naW5nIHRoZSBjb2RlIGxp
-a2UgdGhpczoNCg0KI2lmZGVmIENPTkZJR19ORVRfTUVESUFURUtfU09DX1dFRA0KCWlmICht
-dGtfd2VkX2RldmljZV9hY3RpdmUoJmRldi0+bXQ3Ni5tbWlvLndlZCkpIHsNCgkJaWYgKGlz
-X210NzkxNSgmZGV2LT5tdDc2KSB8fA0KCQkgICAgIW10a193ZWRfZ2V0X3J4X2NhcGEoJmRl
-di0+bXQ3Ni5tbWlvLndlZCkpDQoJCQlyZXQgPSBtdDc5MTVfbWN1X3dhX2NtZChkZXYsIE1D
-VV9XQV9QQVJBTV9DTUQoQ0FQQUJJTElUWSksDQoJCQkJCQkwLCAwLCAwKTsNCgkJZWxzZQ0K
-CQkJcmV0ID0gbXQ3OTE1X21jdV93YV9jbWQoZGV2LCBNQ1VfV0FfUEFSQU1fQ01EKFNFVCks
-DQoJCQkJCQlNQ1VfV0FfUEFSQU1fV0VEX1ZFUlNJT04sDQoJCQkJCQlkZXYtPm10NzYubW1p
-by53ZWQucmV2X2lkLCAwKTsNCgkJaWYgKHJldCkNCgkJCXJldHVybiByZXQ7DQoJfQ0KI2Vu
-ZGlmDQoNCkRvIHlvdSB0aGluayB0aGlzIGlzIG9rPw0KDQpCZXN0IHJlZ2FyZHMsDQpTaGVu
-Z3l1DQoNCuWcqCAyMDI0LzgvNCAxNzo1NiwgS2FsbGUgVmFsbyDlhpnpgZM6DQo+IFNoZW5n
-eXUgUXUgPHdpYWduMjMzQG91dGxvb2suY29tPiB3cml0ZXM6DQo+IA0KPj4gVGhpcyBlcnJv
-ciByZXBvcnQgaXMgYSBmYWxzZSB3YXJuaW5nLiAic3RydWN0IG10a193ZWRfZGV2aWNlIiBu
-ZWVkcw0KPj4gIkNPTkZJR19ORVRfTUVESUFURUtfU09DX1dFRCIgdG8gYmUgZGVmaW5lZC4N
-Cj4gDQo+IEkgZGlkbid0IGludmVzdGlnYXRlIGFueXRoaW5nIGJ1dCBiYXNlZCBvbiB5b3Vy
-IGRlc2NyaXB0aW9uIHRoYXQgc291bmRzDQo+IHdyb25nLiBUaGUgY29kZSBzaG91bGQgc2hv
-dWxkIG5vdCBiZSBjb21waWxlZCBpZiBpdCBkZXBlbmRzIG9uDQo+IENPTkZJR19ORVRfTUVE
-SUFURUtfU09DX1dFRCBidXQgdGhhdCdzIG5vdCBzZXQuIFdlIGhhdmUgemVybyBydWxlIGZv
-cg0KPiBjb21waWxhdGlvbiBlcnJvcnMgb3Igd2FybmluZ3MuDQo+IA0K
---------------v0VOlPgFtxI0Ac0pCyCYFLbR
-Content-Type: application/pgp-keys; name="OpenPGP_0xE3520CC91929C8E7.asc"
-Content-Disposition: attachment; filename="OpenPGP_0xE3520CC91929C8E7.asc"
-Content-Description: OpenPGP public key
-Content-Transfer-Encoding: quoted-printable
+Co-developed-by: Cheng-Jui Wang <cheng-jui.wang@mediatek.com>
+Signed-off-by: Cheng-Jui Wang <cheng-jui.wang@mediatek.com>
+Signed-off-by: Tze-nan Wu <Tze-nan.Wu@mediatek.com>
+---
+We have encountered this issue internally after enabling the
+throttle_rss_stat feature provided by Perfetto in background for more than
+two days, during which `rss_stat` tracepoint was invoked over 2^32 times.
+After tracing_map->next_elt overflow, new elements can continue to be 
+inserted to the tracing_map belong to `rss_stat`.
+Then the CPU could hang inside the while dead loop in function
+`__tracing_map_insert()` by calling it after the tracing_map left no empty
+entry.
 
------BEGIN PGP PUBLIC KEY BLOCK-----
+Call trace during hang:
+  __tracing_map_insert()
+  tracing_map_insert()
+  event_hist_trigger()
+  event_triggers_call()
+  __event_trigger_test_discard()
+  trace_event_buffer_commit()
+  trace_event_raw_event_rss_stat()
+  __traceiter_rss_stat()
+  trace_rss_stat()
+  mm_trace_rss_stat()
+  inc_mm_counter()
+  do_swap_page()
 
-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
-lMSoVV3z1s8dA1DK95ykSdIFtVZT
-=3Dr4B8
------END PGP PUBLIC KEY BLOCK-----
+throttle_rss_stat is literally a synthetic event triggered by `rss_stat`
+with condition:
+ 1. $echo "rss_stat_throttled unsigned int mm_id unsigned int curr int
+    member long size" >> /sys/kernel/tracing/synthetic_events
+ 2. $echo
+    'hist:keys=mm_id,member:bucket=size/0x80000:onchange($bucket).rss_stat_
+    throttled(mm_id,curr,member,size)' >
+    /sys/kernel/tracing/events/kmem/rss_stat/trigger
 
---------------v0VOlPgFtxI0Ac0pCyCYFLbR--
+The hang issue could also be reproduced easily by calling a customize
+trace event `myevent(u64 mycount)` for more than 2^32+(map_size-max_elts)
+times during its histogram enabled with the key set to variable "mycount".
+While we call `myevent` with different argument "mycount" everytime.
 
---------------k9UuR6m47P2rz2qUqKHzynG9--
+BTW, I added Cheng-jui to Co-developed because we have a lot of discussions
+during debugging this.
+---
+ kernel/trace/tracing_map.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
---------------9DzjvMbE1ntcwDxmK6QPD0DA
-Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="OpenPGP_signature.asc"
+diff --git a/kernel/trace/tracing_map.c b/kernel/trace/tracing_map.c
+index a4dcf0f24352..3a56e7c8aa4f 100644
+--- a/kernel/trace/tracing_map.c
++++ b/kernel/trace/tracing_map.c
+@@ -454,7 +454,7 @@ static struct tracing_map_elt *get_free_elt(struct tracing_map *map)
+ 	struct tracing_map_elt *elt = NULL;
+ 	int idx;
+ 
+-	idx = atomic_inc_return(&map->next_elt);
++	idx = atomic_fetch_add_unless(&map->next_elt, 1, map->max_elts);
+ 	if (idx < map->max_elts) {
+ 		elt = *(TRACING_MAP_ELT(map->elts, idx));
+ 		if (map->ops && map->ops->elt_init)
+@@ -699,7 +699,7 @@ void tracing_map_clear(struct tracing_map *map)
+ {
+ 	unsigned int i;
+ 
+-	atomic_set(&map->next_elt, -1);
++	atomic_set(&map->next_elt, 0);
+ 	atomic64_set(&map->hits, 0);
+ 	atomic64_set(&map->drops, 0);
+ 
+@@ -783,7 +783,7 @@ struct tracing_map *tracing_map_create(unsigned int map_bits,
+ 
+ 	map->map_bits = map_bits;
+ 	map->max_elts = (1 << map_bits);
+-	atomic_set(&map->next_elt, -1);
++	atomic_set(&map->next_elt, 0);
+ 
+ 	map->map_size = (1 << (map_bits + 1));
+ 	map->ops = ops;
+-- 
+2.18.0
 
------BEGIN PGP SIGNATURE-----
-
-wsF5BAABCAAjFiEET/yoGP3p5Zl+RKVuX75KBAfJsRkFAmavcWgFAwAAAAAACgkQX75KBAfJsRly
-bg/+MwPTlfJI/XXtqUnD1IqWybwBIstw+2EmSrUX+2CUI1pmzyG8N8Xmk/POmpAY8X3OPYWgVHEl
-6Xq4tdvPAmsueRYrWdPZd1qcDQ0+AH2k690q+LM69Ey4BAXVt9WVB5f7zZjH8kVnfu3+fglIN0YZ
-Bz79pK/wX6Wk3X5F+pP98hMO2ogmPN3BC24gnV2pe/pWG+7xFLJC18wbj7Iar2Bnh091WGltgr+z
-4xzenVSQpBez9LlyHln8sV6Zv8HJUiNvy4adNA8aUSlaOPRa9uWMViCfzSUu/Q9o6IS4AEuM3mDX
-gA4o8cyFANBe9SrQyG+CMyTjkYpFaswVqR/OPhvOy4XuY6NxJ654fmcsIpVomr2nzx9qrRmHAhdp
-Lz7dUWU90J4YGGfaGRU0hSzKGM6cn1xeuYSGYMAxbAKbxoG8cz3XUnqNi1WYmJEQ9M92NudWGZE2
-1Bzw56hFtrciEqMVlpfP6T0OCM4xQPbnZDwi54UEtKUxNHMMP/oHbqkoJGbX6pLUeXQ07PJYSeAQ
-CQJzxHBfZidaWbjWqTXgyjsoUaktzOfXADnDgBtOY6M61LiOslZ8ZYAPtfGf2eU9PaAYEmNbzVah
-CKay8saBZtrEMvEO1xuoDfGUhFN9VeHK8M8VFwTUFzdPb0YEPQ8ZQjU1LUiBzmqag+CDl2EDOeQ1
-AJU=
-=x755
------END PGP SIGNATURE-----
-
---------------9DzjvMbE1ntcwDxmK6QPD0DA--
 
