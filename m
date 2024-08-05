@@ -4,86 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0318DC3DA7F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Aug 2024 06:51:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A749C3DA7F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Aug 2024 11:03:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=6p/MeCAGJmUZEzkpiAKS5tn4Lz8oeVbtRys6Pcnb/O8=; b=hg4xMHlH+gkG92U3cOzflt4Y8E
-	Jhq9jdjnpoSvgfUuNxHayCkhUept7qYmCOBAPMRz+bmPwW/0Zp0gz1KFES/oxjTwTRP7OX+pBnQ/w
-	7IUnVS+1luqj+km5pMEi3VsfRh795dKRf2tKGtuF+IxdI3VyC+JHZuHeuLb25JT+U/tRLc6hOEWbY
-	YPughtiDFeNFGBp/yYy0vpAOZsUJiwP58ItOHecCQC7t7wb03nViyP4EqU/D4gzW9XU2OYjWNbygu
-	oDjn8XaIbciVdkhTYh/T72Bhm34UPuPArFnoaqedr2Ksw/OOv2Jo1Lj3P9oxounbdVcfDtAR5g1tA
-	YcmafdzQ==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3F55AsMRhAsPWlg76OYcgmZE2JHxgl3YpIg0irEUe+k=; b=RTGbwVMsfy19SBzfxcu44gdADg
+	D+YHD3KVSQ5FKAgSEAjo9AAdTb+cSfEQrVuIXiiWHi9pUZBR0vxpSzrAGs/UKebZmVgTp34DvrgpW
+	IOsXHV5n+N86ual37pfd+SYoLZDlUfiENPyVnNUm3E5CyS5xN9iLeJsbgZJ9zfW6waJcFWHk0JhOo
+	uG7e2PHhwSTnlXQVKPO3aWHW77WVF4FMEJ/obuaWUdRJ0rpilwWLfvVV0O+NIJFeeRUVJ4lKusJgA
+	Sur4cvwXncpWANGsGcKvShqEdqsnuFkmN/jfPonyOZ1Zv4eAAZiZK2AVXrMl7hL+nuj8TN2fGhC9m
+	1Zn+zTwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sarYj-0000000Eqk6-13Ix;
-	Mon, 05 Aug 2024 06:51:09 +0000
-Received: from mail-oi1-x22e.google.com ([2607:f8b0:4864:20::22e])
+	id 1savUu-0000000FcoB-1FoW;
+	Mon, 05 Aug 2024 11:03:28 +0000
+Received: from sender4-op-o14.zoho.com ([136.143.188.14])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sarYe-0000000Eqil-0FgW
-	for linux-mediatek@lists.infradead.org;
-	Mon, 05 Aug 2024 06:51:08 +0000
-Received: by mail-oi1-x22e.google.com with SMTP id 5614622812f47-3db13410adfso5747329b6e.2
-        for <linux-mediatek@lists.infradead.org>; Sun, 04 Aug 2024 23:51:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1722840662; x=1723445462; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=6p/MeCAGJmUZEzkpiAKS5tn4Lz8oeVbtRys6Pcnb/O8=;
-        b=aTri5pzPaeXURtT7aim9aUa4YsPKdt4ffmAAnaGWd3O8Rfp+T8dZ5/V13a0M3Bcpvp
-         ezhsupaUsed5MpipgMnsH089f/ZaxrOivFVuQRxK8U3RoECnJMtQPrMcRgv0Zcd3REx9
-         0GqdlPTYcfOBTKCIi5tLBmH9GrU7zQLj7Be1I=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1722840662; x=1723445462;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=6p/MeCAGJmUZEzkpiAKS5tn4Lz8oeVbtRys6Pcnb/O8=;
-        b=goU3+NDbTg4AR5sTXmXVVXq8s0VotFmA5TQIanHg10QNNwnuVvpdLI3abnR2142Gke
-         vj0OJ5RbPhoeCetM2iffsCSQM6YbFwYXPd6hxFf0Gw1stTl1wBRodeB+Xvh2+YkhHVLC
-         RKce2ntDUbMVlhK3WWKNjLdvM1dCKl6dzv1b3+BWsMk1NApsZzGTaiPs7ERqD8KPwBcs
-         dd300CFVYhNfMOgJtnG8z6Ut2QAsgRzes7e7as4tE1z15v4fT+MzvNncExnMabSMmqgW
-         MnDoK6yPkMeS/LQ+p5SuPBSvYq+kZPPvbb9Gy8E/QdUFabTUX4cXVHANJcF5OaAWt7yG
-         9iuA==
-X-Forwarded-Encrypted: i=1; AJvYcCUTrKaQHwdl562BtPHUXkR/VH3mO4AtIZF/pm0yd1LhcSMU3k+sPaz9iSCX/z8kX4ppRstBLszfJe5Hnt6xjghQixCBBOML8iIJvP9YuRP+XJPg
-X-Gm-Message-State: AOJu0YxdY0sVgtG71hdDw8HeJTV6CJ0S9ZCvZKfVYwcCjRob04JILSWO
-	FCMHF+rxFfhW7gP5E2WLMHiNYChBeJ0lSbBdAN2DJXquCsftWx/dHpYmlwbr7w==
-X-Google-Smtp-Source: AGHT+IFeX6wpUnZrmWE5aZV2NCgOET8WAh/Xbg6xnvw90WG92Ej9Zh6Sd8ao06GrQ3VZ/X84x6+vsw==
-X-Received: by 2002:a05:6871:582a:b0:268:880c:9de3 with SMTP id 586e51a60fabf-26891a9aea9mr14453542fac.14.1722840662294;
-        Sun, 04 Aug 2024 23:51:02 -0700 (PDT)
-Received: from treapking.tpe.corp.google.com ([2401:fa00:1:10:b430:a369:61a6:ec2])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7106ecdffe4sm4779788b3a.128.2024.08.04.23.50.59
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 04 Aug 2024 23:51:01 -0700 (PDT)
-From: Pin-yen Lin <treapking@chromium.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Rob Herring <robh@kernel.org>,
-	Kiwi Liu <kiwi.liu@mediatek.corp-partner.google.com>,
-	Conor Dooley <conor+dt@kernel.org>,
-	devicetree@vger.kernel.org,
-	Enric Balletbo i Serra <eballetbo@kernel.org>,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Hsin-Te Yuan <yuanhsinte@chromium.org>,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	Pin-yen Lin <treapking@chromium.org>
-Subject: [PATCH] arm64: dts: mediatek: mt8183: Remove clock from mfg_async power domain
-Date: Mon,  5 Aug 2024 14:50:23 +0800
-Message-ID: <20240805065051.3129354-1-treapking@chromium.org>
-X-Mailer: git-send-email 2.46.0.rc2.264.g509ed76dc8-goog
+	id 1savUq-0000000Fcna-2AcE;
+	Mon, 05 Aug 2024 11:03:25 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1722855801; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=nMI1pHC0citcabjOHWLJOKFR43yjr/ljcaEIDwGsgTw4wXGgAdEdgBNrtijEhN4buKCIAiS0nm9lSyCkXi7t/xxQe/ntZkLzJ7HjykPsgEr9+7DFh7VucLzdV2RJOgTNaaPULK4tHKhjS0ObRHE7O9H5eJltHhfZitjwoXjNF6g=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1722855801; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=3F55AsMRhAsPWlg76OYcgmZE2JHxgl3YpIg0irEUe+k=; 
+	b=bTVp260vS3+wv3l+qRFpIMfSOS3qderuE3T4+8HrZAfmInGBwz49h4fdIvCzXhVsO4xkOALVPKArYLbIQ6gQCC32GQLQHa1l21oT5cMFae6pCJL0A6PnivRgCWHnzgawsvwBl0vM98AdqlnRETgQMXQ8avHTUIPC5FkNqcN99CI=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=angelogioacchino.delregno@collabora.com;
+	dmarc=pass header.from=<angelogioacchino.delregno@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1722855801;
+	s=zohomail; d=collabora.com;
+	i=angelogioacchino.delregno@collabora.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=3F55AsMRhAsPWlg76OYcgmZE2JHxgl3YpIg0irEUe+k=;
+	b=MA9vZ0KSYrRVoFH/4CjU6YrPRgIbjGybHaCUmrfxjpfGN7maLQmlWB4JMX+yggTY
+	dXo/SSQ+vuoQs3WeY2GQy78oaXYGXKwX/xZXwlK1nYoYPk3acTxmy4nk5d35qC02KPS
+	MS2o7ozyU21AwgPj4KUcGpmYyksHHSHXkKfFsHYU=
+Received: by mx.zohomail.com with SMTPS id 1722855800152913.3061181095068;
+	Mon, 5 Aug 2024 04:03:20 -0700 (PDT)
+Message-ID: <2035c6ef-ff91-43d6-8270-7dcb3ae6fbfc@collabora.com>
+Date: Mon, 5 Aug 2024 13:03:07 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 1/1] media: mediatek: jpeg: support 34bits
+To: Jianhua Lin <jianhua.lin@mediatek.com>, daniel.almeida@collabora.com,
+ mchehab@kernel.org
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20240801031012.31053-1-jianhua.lin@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20240801031012.31053-1-jianhua.lin@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240804_235104_109978_D8BEE28A 
-X-CRM114-Status: UNSURE (   8.99  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240805_040324_645744_59E7D391 
+X-CRM114-Status: GOOD (  16.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,32 +81,113 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This clock dependency introduced a mutual dependency between mfg_async
-power domain and mt8183-mfgcfg clock, and Mediatek has confirmed that
-this dependency is not needed. Remove this to avoid potential deadlock.
+Il 01/08/24 05:10, Jianhua Lin ha scritto:
+> the iommu HW supported 34bits iova space(16GB),
+> but mediatek jpeg enc/dec driver still is 32bit,
+> then need to set the bit32/bit33 iova to jpeg HW.
+> 
+> Signed-off-by: Jianhua Lin <jianhua.lin@mediatek.com>
+> ---
+> Changes compared with v3:
+> - remove of_property_read_bool() for 34bit supporting check.
+> - move the support_34bit into the platform data(mtk_jpeg_variant)
+>    for the specific SoC supporting.
+> - add mtk8188 SoC to compatible list.
+> 
+>   .../platform/mediatek/jpeg/mtk_jpeg_core.c    | 55 ++++++++++++++++-
+>   .../platform/mediatek/jpeg/mtk_jpeg_core.h    |  4 ++
+>   .../platform/mediatek/jpeg/mtk_jpeg_dec_hw.c  | 59 +++++++++++++++----
+>   .../platform/mediatek/jpeg/mtk_jpeg_dec_hw.h  |  1 +
+>   .../platform/mediatek/jpeg/mtk_jpeg_dec_reg.h |  8 +++
+>   .../platform/mediatek/jpeg/mtk_jpeg_enc_hw.c  | 44 ++++++++++++--
+>   .../platform/mediatek/jpeg/mtk_jpeg_enc_hw.h  |  7 ++-
+>   7 files changed, 158 insertions(+), 20 deletions(-)
+> 
+> diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> index ac48658e2de4..101c509ab2ab 100644
+> --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
 
-Signed-off-by: Pin-yen Lin <treapking@chromium.org>
-Fixes: 37fb78b9aeb7 ("arm64: dts: mediatek: Add mt8183 power domains controller")
+..snip..
 
----
+> @@ -1860,6 +1863,10 @@ static struct clk_bulk_data mtk_jpeg_clocks[] = {
+>       { .id = "jpgenc" },
+>   };
+>   +static struct clk_bulk_data mtk_jpeg_dec_clocks[] = {
+> +    { .id = "jpgdec" },
+> +};
+> +
+>   static struct clk_bulk_data mt8173_jpeg_dec_clocks[] = {
+>       { .id = "jpgdec-smi" },
+>       { .id = "jpgdec" },
+> @@ -1878,6 +1885,7 @@ static const struct mtk_jpeg_variant mt8173_jpeg_drvdata = {
+>       .ioctl_ops = &mtk_jpeg_dec_ioctl_ops,
+>       .out_q_default_fourcc = V4L2_PIX_FMT_JPEG,
+>       .cap_q_default_fourcc = V4L2_PIX_FMT_YUV420M,
+> +    .support_34bit = false,
 
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 2 --
- 1 file changed, 2 deletions(-)
+You don't need to set this to false, as the default value is already 0 (false).
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index fbf145639b8c..267378fa46c0 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -872,8 +872,6 @@ power-domain@MT8183_POWER_DOMAIN_CONN {
- 
- 				mfg_async: power-domain@MT8183_POWER_DOMAIN_MFG_ASYNC {
- 					reg = <MT8183_POWER_DOMAIN_MFG_ASYNC>;
--					clocks = <&topckgen CLK_TOP_MUX_MFG>;
--					clock-names = "mfg";
- 					#address-cells = <1>;
- 					#size-cells = <0>;
- 					#power-domain-cells = <1>;
--- 
-2.46.0.rc2.264.g509ed76dc8-goog
+Please remove all instances of `.support_34bit = false`, and keep only the true
+assignments, after which, and *only after*, on your v5:
 
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+>   };
+>     static const struct mtk_jpeg_variant mtk_jpeg_drvdata = {
+> @@ -1894,6 +1902,7 @@ static const struct mtk_jpeg_variant mtk_jpeg_drvdata = {
+>       .out_q_default_fourcc = V4L2_PIX_FMT_YUYV,
+>       .cap_q_default_fourcc = V4L2_PIX_FMT_JPEG,
+>       .multi_core = false,
+> +    .support_34bit = false,
+>   };
+>     static struct mtk_jpeg_variant mtk8195_jpegenc_drvdata = {
+> @@ -1907,6 +1916,7 @@ static struct mtk_jpeg_variant mtk8195_jpegenc_drvdata = {
+>       .cap_q_default_fourcc = V4L2_PIX_FMT_JPEG,
+>       .multi_core = true,
+>       .jpeg_worker = mtk_jpegenc_worker,
+> +    .support_34bit = false,
+>   };
+>     static const struct mtk_jpeg_variant mtk8195_jpegdec_drvdata = {
+> @@ -1920,6 +1930,41 @@ static const struct mtk_jpeg_variant mtk8195_jpegdec_drvdata = {
+>       .cap_q_default_fourcc = V4L2_PIX_FMT_YUV420M,
+>       .multi_core = true,
+>       .jpeg_worker = mtk_jpegdec_worker,
+> +    .support_34bit = false,
+> +};
+> +
+> +static const struct mtk_jpeg_variant mtk8188_jpegenc_drvdata = {
+> +    .clks = mtk_jpeg_clocks,
+> +    .num_clks = ARRAY_SIZE(mtk_jpeg_clocks),
+> +    .formats = mtk_jpeg_enc_formats,
+> +    .num_formats = MTK_JPEG_ENC_NUM_FORMATS,
+> +    .qops = &mtk_jpeg_enc_qops,
+> +    .irq_handler = mtk_jpeg_enc_irq,
+> +    .hw_reset = mtk_jpeg_enc_reset,
+> +    .m2m_ops = &mtk_jpeg_enc_m2m_ops,
+> +    .dev_name = "mtk-jpeg-enc",
+> +    .ioctl_ops = &mtk_jpeg_enc_ioctl_ops,
+> +    .out_q_default_fourcc = V4L2_PIX_FMT_YUYV,
+> +    .cap_q_default_fourcc = V4L2_PIX_FMT_JPEG,
+> +    .multi_core = false,
+> +    .support_34bit = true,
+> +};
+> +
+> +static const struct mtk_jpeg_variant mtk8188_jpegdec_drvdata = {
+> +    .clks = mtk_jpeg_dec_clocks,
+> +    .num_clks = ARRAY_SIZE(mtk_jpeg_dec_clocks),
+> +    .formats = mtk_jpeg_dec_formats,
+> +    .num_formats = MTK_JPEG_DEC_NUM_FORMATS,
+> +    .qops = &mtk_jpeg_dec_qops,
+> +    .irq_handler = mtk_jpeg_dec_irq,
+> +    .hw_reset = mtk_jpeg_dec_reset,
+> +    .m2m_ops = &mtk_jpeg_dec_m2m_ops,
+> +    .dev_name = "mtk-jpeg-dec",
+> +    .ioctl_ops = &mtk_jpeg_dec_ioctl_ops,
+> +    .out_q_default_fourcc = V4L2_PIX_FMT_JPEG,
+> +    .cap_q_default_fourcc = V4L2_PIX_FMT_YUV420M,
+> +    .multi_core = false,
+> +    .support_34bit = true,
+>   };
+>   
 
