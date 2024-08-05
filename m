@@ -4,73 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C910EC3DA4A
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Aug 2024 06:02:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0318DC3DA7F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Aug 2024 06:51:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=KCCE+7BB5PHXZJjrX/rPFtOvm22mgzZ/W4Yze4U9Lr4=; b=wVg8a5xR1qTQ2P9gY0U6V4nfX/
-	fq58EIJJEQy70eItpi2sX3vEpwOPcEzc19GgNEUKqBoDq65kdRFlUqsL+oYvbqffzqfv1e5L6mK3X
-	xB8oY1ghGJSSYg9uVcr5RNL6a+CsEd35/WtPfOmfJoF6GzBE7sHUhgzbM/AZ5Qby32RWPN7ft7hqR
-	a+gJc3JNWCLuBJVONWOXNbCNO4azdYayXcSmKeZv5RN1aYrXYZwx4SXcWSKPiqHTYjIrieE1fInU8
-	Hep2gasaQgh5uOp3y7uvRGk6G0yLBU+xguYBqYSORP5sov6UdfhCwCKucS63tOArG0xVz4icORXSO
-	0CMEO50g==;
+	bh=6p/MeCAGJmUZEzkpiAKS5tn4Lz8oeVbtRys6Pcnb/O8=; b=hg4xMHlH+gkG92U3cOzflt4Y8E
+	Jhq9jdjnpoSvgfUuNxHayCkhUept7qYmCOBAPMRz+bmPwW/0Zp0gz1KFES/oxjTwTRP7OX+pBnQ/w
+	7IUnVS+1luqj+km5pMEi3VsfRh795dKRf2tKGtuF+IxdI3VyC+JHZuHeuLb25JT+U/tRLc6hOEWbY
+	YPughtiDFeNFGBp/yYy0vpAOZsUJiwP58ItOHecCQC7t7wb03nViyP4EqU/D4gzW9XU2OYjWNbygu
+	oDjn8XaIbciVdkhTYh/T72Bhm34UPuPArFnoaqedr2Ksw/OOv2Jo1Lj3P9oxounbdVcfDtAR5g1tA
+	YcmafdzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1saqnY-0000000Ekpc-3iQ3;
-	Mon, 05 Aug 2024 06:02:24 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1sarYj-0000000Eqk6-13Ix;
+	Mon, 05 Aug 2024 06:51:09 +0000
+Received: from mail-oi1-x22e.google.com ([2607:f8b0:4864:20::22e])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1saqnW-0000000Ekol-0kXB
+	id 1sarYe-0000000Eqil-0FgW
 	for linux-mediatek@lists.infradead.org;
-	Mon, 05 Aug 2024 06:02:23 +0000
-X-UUID: 44f53e7652f011efa6c87f6b4542ff6b-20240804
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=KCCE+7BB5PHXZJjrX/rPFtOvm22mgzZ/W4Yze4U9Lr4=;
-	b=PCJWrEZ+eirVfFlx/rQUoxdkZMYvYGaeGKBaWzTkw69yznHBzbQ05YXmUZzWoxyoW8hyA39h5s/ka+N25ohrm6B0sKvF4I2hk99edIsOiFXT7IGG20ZbN7PkX+mDPGTVWh6Zk6WCaDBv09mLzAAjKttE5hqNN8Wlq+6eksluj1A=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:485e1972-1391-4b29-adf9-d7dee5189d3a,IP:0,U
-	RL:0,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-20
-X-CID-META: VersionHash:6dc6a47,CLOUDID:7978a672-cb85-40d0-97b5-772ada27139a,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:1,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 44f53e7652f011efa6c87f6b4542ff6b-20240804
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
-	(envelope-from <tze-nan.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1925145474; Sun, 04 Aug 2024 23:02:17 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Sun, 4 Aug 2024 23:01:44 -0700
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 5 Aug 2024 14:01:44 +0800
-From: Tze-nan Wu <Tze-nan.Wu@mediatek.com>
-To: Steven Rostedt <rostedt@goodmis.org>, Masami Hiramatsu
-	<mhiramat@kernel.org>
-CC: Mathieu Desnoyers <mathieu.desnoyers@efficios.com>,
-	<linux-kernel@vger.kernel.org>, <linux-trace-kernel@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, <bobule.chang@mediatek.com>,
-	<eric-yc.wu@mediatek.com>, <wsd_upstream@mediatek.com>, Tze-nan Wu
-	<Tze-nan.Wu@mediatek.com>, Cheng-Jui Wang <cheng-jui.wang@mediatek.com>
-Subject: [PATCH RESEND] tracing: Fix overflow in get_free_elt()
-Date: Mon, 5 Aug 2024 13:59:22 +0800
-Message-ID: <20240805055922.6277-1-Tze-nan.Wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	Mon, 05 Aug 2024 06:51:08 +0000
+Received: by mail-oi1-x22e.google.com with SMTP id 5614622812f47-3db13410adfso5747329b6e.2
+        for <linux-mediatek@lists.infradead.org>; Sun, 04 Aug 2024 23:51:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1722840662; x=1723445462; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=6p/MeCAGJmUZEzkpiAKS5tn4Lz8oeVbtRys6Pcnb/O8=;
+        b=aTri5pzPaeXURtT7aim9aUa4YsPKdt4ffmAAnaGWd3O8Rfp+T8dZ5/V13a0M3Bcpvp
+         ezhsupaUsed5MpipgMnsH089f/ZaxrOivFVuQRxK8U3RoECnJMtQPrMcRgv0Zcd3REx9
+         0GqdlPTYcfOBTKCIi5tLBmH9GrU7zQLj7Be1I=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1722840662; x=1723445462;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=6p/MeCAGJmUZEzkpiAKS5tn4Lz8oeVbtRys6Pcnb/O8=;
+        b=goU3+NDbTg4AR5sTXmXVVXq8s0VotFmA5TQIanHg10QNNwnuVvpdLI3abnR2142Gke
+         vj0OJ5RbPhoeCetM2iffsCSQM6YbFwYXPd6hxFf0Gw1stTl1wBRodeB+Xvh2+YkhHVLC
+         RKce2ntDUbMVlhK3WWKNjLdvM1dCKl6dzv1b3+BWsMk1NApsZzGTaiPs7ERqD8KPwBcs
+         dd300CFVYhNfMOgJtnG8z6Ut2QAsgRzes7e7as4tE1z15v4fT+MzvNncExnMabSMmqgW
+         MnDoK6yPkMeS/LQ+p5SuPBSvYq+kZPPvbb9Gy8E/QdUFabTUX4cXVHANJcF5OaAWt7yG
+         9iuA==
+X-Forwarded-Encrypted: i=1; AJvYcCUTrKaQHwdl562BtPHUXkR/VH3mO4AtIZF/pm0yd1LhcSMU3k+sPaz9iSCX/z8kX4ppRstBLszfJe5Hnt6xjghQixCBBOML8iIJvP9YuRP+XJPg
+X-Gm-Message-State: AOJu0YxdY0sVgtG71hdDw8HeJTV6CJ0S9ZCvZKfVYwcCjRob04JILSWO
+	FCMHF+rxFfhW7gP5E2WLMHiNYChBeJ0lSbBdAN2DJXquCsftWx/dHpYmlwbr7w==
+X-Google-Smtp-Source: AGHT+IFeX6wpUnZrmWE5aZV2NCgOET8WAh/Xbg6xnvw90WG92Ej9Zh6Sd8ao06GrQ3VZ/X84x6+vsw==
+X-Received: by 2002:a05:6871:582a:b0:268:880c:9de3 with SMTP id 586e51a60fabf-26891a9aea9mr14453542fac.14.1722840662294;
+        Sun, 04 Aug 2024 23:51:02 -0700 (PDT)
+Received: from treapking.tpe.corp.google.com ([2401:fa00:1:10:b430:a369:61a6:ec2])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7106ecdffe4sm4779788b3a.128.2024.08.04.23.50.59
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 04 Aug 2024 23:51:01 -0700 (PDT)
+From: Pin-yen Lin <treapking@chromium.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Rob Herring <robh@kernel.org>,
+	Kiwi Liu <kiwi.liu@mediatek.corp-partner.google.com>,
+	Conor Dooley <conor+dt@kernel.org>,
+	devicetree@vger.kernel.org,
+	Enric Balletbo i Serra <eballetbo@kernel.org>,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Hsin-Te Yuan <yuanhsinte@chromium.org>,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	Pin-yen Lin <treapking@chromium.org>
+Subject: [PATCH] arm64: dts: mediatek: mt8183: Remove clock from mfg_async power domain
+Date: Mon,  5 Aug 2024 14:50:23 +0800
+Message-ID: <20240805065051.3129354-1-treapking@chromium.org>
+X-Mailer: git-send-email 2.46.0.rc2.264.g509ed76dc8-goog
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240804_230222_227369_C86AB426 
-X-CRM114-Status: GOOD (  14.23  )
+X-CRM114-CacheID: sfid-20240804_235104_109978_D8BEE28A 
+X-CRM114-Status: UNSURE (   8.99  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,99 +98,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-"tracing_map->next_elt" in get_free_elt() is at risk of overflowing.
+This clock dependency introduced a mutual dependency between mfg_async
+power domain and mt8183-mfgcfg clock, and Mediatek has confirmed that
+this dependency is not needed. Remove this to avoid potential deadlock.
 
-Once it overflows, new elements can still be inserted into the tracing_map
-even though the maximum number of elements (`max_elts`) has been reached.
-Continuing to insert elements after the overflow could result in the
-tracing_map containing "tracing_map->max_size" elements, leaving no empty
-entries.
-If any attempt is made to insert an element into a full tracing_map using
-`__tracing_map_insert()`, it will cause an infinite loop with preemption
-disabled, leading to a CPU hang problem.
+Signed-off-by: Pin-yen Lin <treapking@chromium.org>
+Fixes: 37fb78b9aeb7 ("arm64: dts: mediatek: Add mt8183 power domains controller")
 
-Fix this by preventing any further increments to "tracing_map->next_elt"
-once it reaches "tracing_map->max_elt".
-
-Co-developed-by: Cheng-Jui Wang <cheng-jui.wang@mediatek.com>
-Signed-off-by: Cheng-Jui Wang <cheng-jui.wang@mediatek.com>
-Signed-off-by: Tze-nan Wu <Tze-nan.Wu@mediatek.com>
 ---
-We have encountered this issue internally after enabling the
-throttle_rss_stat feature provided by Perfetto in background for more than
-two days, during which `rss_stat` tracepoint was invoked over 2^32 times.
-After tracing_map->next_elt overflow, new elements can continue to be 
-inserted to the tracing_map belong to `rss_stat`.
-Then the CPU could hang inside the while dead loop in function
-`__tracing_map_insert()` by calling it after the tracing_map left no empty
-entry.
 
-Call trace during hang:
-  __tracing_map_insert()
-  tracing_map_insert()
-  event_hist_trigger()
-  event_triggers_call()
-  __event_trigger_test_discard()
-  trace_event_buffer_commit()
-  trace_event_raw_event_rss_stat()
-  __traceiter_rss_stat()
-  trace_rss_stat()
-  mm_trace_rss_stat()
-  inc_mm_counter()
-  do_swap_page()
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi | 2 --
+ 1 file changed, 2 deletions(-)
 
-throttle_rss_stat is literally a synthetic event triggered by `rss_stat`
-with condition:
- 1. $echo "rss_stat_throttled unsigned int mm_id unsigned int curr int
-    member long size" >> /sys/kernel/tracing/synthetic_events
- 2. $echo
-    'hist:keys=mm_id,member:bucket=size/0x80000:onchange($bucket).rss_stat_
-    throttled(mm_id,curr,member,size)' >
-    /sys/kernel/tracing/events/kmem/rss_stat/trigger
-
-The hang issue could also be reproduced easily by calling a customize
-trace event `myevent(u64 mycount)` for more than 2^32+(map_size-max_elts)
-times during its histogram enabled with the key set to variable "mycount".
-While we call `myevent` with different argument "mycount" everytime.
-
-BTW, I added Cheng-jui to Co-developed because we have a lot of discussions
-during debugging this.
----
- kernel/trace/tracing_map.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
-diff --git a/kernel/trace/tracing_map.c b/kernel/trace/tracing_map.c
-index a4dcf0f24352..3a56e7c8aa4f 100644
---- a/kernel/trace/tracing_map.c
-+++ b/kernel/trace/tracing_map.c
-@@ -454,7 +454,7 @@ static struct tracing_map_elt *get_free_elt(struct tracing_map *map)
- 	struct tracing_map_elt *elt = NULL;
- 	int idx;
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+index fbf145639b8c..267378fa46c0 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+@@ -872,8 +872,6 @@ power-domain@MT8183_POWER_DOMAIN_CONN {
  
--	idx = atomic_inc_return(&map->next_elt);
-+	idx = atomic_fetch_add_unless(&map->next_elt, 1, map->max_elts);
- 	if (idx < map->max_elts) {
- 		elt = *(TRACING_MAP_ELT(map->elts, idx));
- 		if (map->ops && map->ops->elt_init)
-@@ -699,7 +699,7 @@ void tracing_map_clear(struct tracing_map *map)
- {
- 	unsigned int i;
- 
--	atomic_set(&map->next_elt, -1);
-+	atomic_set(&map->next_elt, 0);
- 	atomic64_set(&map->hits, 0);
- 	atomic64_set(&map->drops, 0);
- 
-@@ -783,7 +783,7 @@ struct tracing_map *tracing_map_create(unsigned int map_bits,
- 
- 	map->map_bits = map_bits;
- 	map->max_elts = (1 << map_bits);
--	atomic_set(&map->next_elt, -1);
-+	atomic_set(&map->next_elt, 0);
- 
- 	map->map_size = (1 << (map_bits + 1));
- 	map->ops = ops;
+ 				mfg_async: power-domain@MT8183_POWER_DOMAIN_MFG_ASYNC {
+ 					reg = <MT8183_POWER_DOMAIN_MFG_ASYNC>;
+-					clocks = <&topckgen CLK_TOP_MUX_MFG>;
+-					clock-names = "mfg";
+ 					#address-cells = <1>;
+ 					#size-cells = <0>;
+ 					#power-domain-cells = <1>;
 -- 
-2.18.0
+2.46.0.rc2.264.g509ed76dc8-goog
 
 
