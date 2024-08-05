@@ -4,74 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC3B1C3DA7F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Aug 2024 11:46:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FBAEC3DA4A
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Aug 2024 13:09:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=X4Ff1KkmwJm2DOFKLyyKLVFzHm+3uoyXpl1wKGlTGBM=; b=oMnRFOKCi2tyvsYX62Mv1pLffX
-	f6Y1k7VY6usnnTfk7jp3xSd8Dr2Voux/CW2VGTPAbY2zuEa1TaA4jNZiu8jvQIVBksrvbJuQ9b2Wq
-	A1m05m4gsXKxnj96ADYRanykBZsPZ0dwuKoxuZFIhisbUTdknTCjPQwM22BICxVndUlqmhQyXGZgK
-	umr24ZnD4TyZDAce5yY/MnTEC0XQF/PkHelr1/28x+L+bFRLCY4KBAFLPcjQ8bwApq77KdTxFe8i7
-	koNlGmx358lw/3lKIfZrgXkoFwRxE84VQs2Jf57ozDGpcArFJIcszhCJxM0n09oMR8cTKh7dEpBt7
-	E0TCCjeQ==;
+	bh=VQdZwOVeHf7udvthWkMPGVSKsH0hrajNPr+Zg+3h0zc=; b=QE/ka89Pbq9r1AYnr7NO6VPEHm
+	Nr2KoK76hUX9I3cBhOIEpj8gk8b6NMH7vxyYlI69F9dvTZ5xMKykljtXL5iuNwCVkE3Zw06+PiFgq
+	25ydaMXeTfPtZMc8HN+/YlMJWDaFX+eDtok4aBSqY8Hc577jJFct4vSKtzjhwqidE29wHHL0mGGUB
+	afmW2yThxbZq1Xn56ir5waKewfIe5vgHy9sax7Fn3cM4mr7WUZwMjlxHcF55Qe0DmTH28X0YNRLp2
+	VN1gVC0cwbj9wPQ1yoH5helxmalVFjePGRAsGlpTpwylczlBuJOcccfHz+VuQWcTg71GB/XZiPKiV
+	+vNC234g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sawAc-0000000FiZB-1OqY;
-	Mon, 05 Aug 2024 11:46:34 +0000
-Received: from sender4-op-o12.zoho.com ([136.143.188.12])
+	id 1saxTB-0000000Ftcg-3Xa3;
+	Mon, 05 Aug 2024 13:09:49 +0000
+Received: from sender4-op-o14.zoho.com ([136.143.188.14])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sawAZ-0000000FiYh-1gEC;
-	Mon, 05 Aug 2024 11:46:32 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1722858388; cv=none; 
+	id 1saxT8-0000000Ftc0-0cyV;
+	Mon, 05 Aug 2024 13:09:47 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1722863372; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=htvigfJC5EE5OUW4sYp3r5WBLqdNXcFAmIPRyp1SE9DlZ1c7gxDV62g1HfApsKF63nP9eboL/Mz/sgheTr/5nq8VLOeOm9HPJCcgIxM0XzDcOuCSU9RD52xh8iQOaOgZ/8wCd2KKxh3o4qdr3+fdqeKepz3LKgNkW2sqleCoiqI=
+	b=E/+z2c/rbcBMKfwFkjoxLcGsAmpp2sifRxR2aZzmQt7TybbcxmC7osGbZG9Mx2UKSMx6Xrd5zbphSDvwKE4L0w7KoyfpjCMBhVDFd8yHHxxGGcOHRNg4ziT0y9/Lne9DsGioWX8eQ4956HtFQZGCpgs9mz7RmWgHLdA6UXOjl+U=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1722858388; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=X4Ff1KkmwJm2DOFKLyyKLVFzHm+3uoyXpl1wKGlTGBM=; 
-	b=QAdToZY6fesMjZctA4OtfUOm1ouu1PXwuNaoXg4MLQPOFLnoRBKfhl7d6id8l3c564BB2uuOPRICzppaEiURh/cdVCvGUtdQ4Nr8JHFYCsXilYZAIptM0NPPquLod7OoyeL3H7h4ttlocrQ2vSopRGohDYGfqeJzujW1z9ZTkf0=
+	t=1722863372; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=VQdZwOVeHf7udvthWkMPGVSKsH0hrajNPr+Zg+3h0zc=; 
+	b=QmNUuM/E63RgQV8j7SD/TwNHzlTePvdQxi9xH5W+e5RI88rCR0Q2ChhqDyRq8xv85+LiVAOF+ppA/EVEm68kLp/X3h2WwSwr04Kqdc1bDOmK0krHTfif7DUq3YKhSGg1HqAwZ3xvDD5FudJHdtViXRU//RcRMtWkIb2aBqTqr8g=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=angelogioacchino.delregno@collabora.com;
 	dmarc=pass header.from=<angelogioacchino.delregno@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1722858388;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1722863372;
 	s=zohomail; d=collabora.com;
 	i=angelogioacchino.delregno@collabora.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=X4Ff1KkmwJm2DOFKLyyKLVFzHm+3uoyXpl1wKGlTGBM=;
-	b=XDfhqTdlISYLqA4ixKVW7Y7gbbMAkBx7gr27w681BTZeNhM6zNNj6bSwthcEYVce
-	rzCVttxHDVF1KPO5f1OftyGFth25N46u/sqzo85aRIthpIw/gZbxXLaMKXV0rKJoHoN
-	XKbDlwNQHLhh+a40VEjF43hiTlMNho9HcFI1MZTQ=
-Received: by mx.zohomail.com with SMTPS id 1722858386516862.2880586091179;
-	Mon, 5 Aug 2024 04:46:26 -0700 (PDT)
-Message-ID: <8e089dc0-9342-480f-ac8a-93b5bfe1241e@collabora.com>
-Date: Mon, 5 Aug 2024 13:46:22 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: mediatek: mt8183: Remove clock from mfg_async
- power domain
-To: Pin-yen Lin <treapking@chromium.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Rob Herring <robh@kernel.org>,
- Kiwi Liu <kiwi.liu@mediatek.corp-partner.google.com>,
- Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
- Enric Balletbo i Serra <eballetbo@kernel.org>,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Hsin-Te Yuan <yuanhsinte@chromium.org>, Chen-Yu Tsai <wenst@chromium.org>
-References: <20240805065051.3129354-1-treapking@chromium.org>
+	h=From:From:To:To:Cc:Cc:In-Reply-To:References:Subject:Subject:Message-Id:Message-Id:Date:Date:MIME-Version:Content-Type:Content-Transfer-Encoding:Reply-To;
+	bh=VQdZwOVeHf7udvthWkMPGVSKsH0hrajNPr+Zg+3h0zc=;
+	b=jhZjNKYzskUl5AR2tRoOrGFrPG0ufWPv8VdswbSResCliIZTlJDQF6usyr65LA5D
+	BxKt7OG6xyNVmecST78Ux/HhgXWM3FPikzTzJya/FDOKKm2RD6ythrQfHRNmYOjNT4d
+	FE7KGbSE7BnTK4L+7UI6v1P11IHX1NfBoIUCPG2o=
+Received: by mx.zohomail.com with SMTPS id 1722863370677901.5009092360644;
+	Mon, 5 Aug 2024 06:09:30 -0700 (PDT)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20240805065051.3129354-1-treapking@chromium.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+To: Mark Brown <broonie@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ =?utf-8?q?Rafa=C5=82_Mi=C5=82ecki?= <zajec5@gmail.com>
+Cc: Leilk Liu <leilk.liu@mediatek.com>, linux-spi@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, John Crispin <john@phrozen.org>, 
+ Daniel Golle <daniel@makrotopia.org>, 
+ =?utf-8?q?Rafa=C5=82_Mi=C5=82ecki?= <rafal@milecki.pl>
+In-Reply-To: <20240727114828.29558-1-zajec5@gmail.com>
+References: <20240727114828.29558-1-zajec5@gmail.com>
+Subject: Re: (subset) [PATCH 1/2] dt-bindings: spi: mediatek,spi-mt65xx:
+ add compatible for MT7981
+Message-Id: <172286336774.159349.11641344023226558770.b4-ty@collabora.com>
+Date: Mon, 05 Aug 2024 15:09:27 +0200
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-Mailer: b4 0.13.0
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240805_044631_527147_1559D451 
-X-CRM114-Status: GOOD (  12.03  )
+X-CRM114-CacheID: sfid-20240805_060946_433235_B68C9F4F 
+X-CRM114-Status: UNSURE (   5.86  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,38 +87,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 05/08/24 08:50, Pin-yen Lin ha scritto:
-> This clock dependency introduced a mutual dependency between mfg_async
-> power domain and mt8183-mfgcfg clock, and Mediatek has confirmed that
-> this dependency is not needed. Remove this to avoid potential deadlock.
+On Sat, 27 Jul 2024 13:48:27 +0200, Rafał Miłecki wrote:
+> From: Rafał Miłecki <rafal@milecki.pl>
+> 
+> MT7981 has SPI controllers based on IPM design
+> 
 > 
 
-Uhm, have you tested this upstream with Panfrost, or only downstream with the
-proprietary Mali stack?
+Applied to v6.11-next/dts64, thanks!
 
-Regards,
+[2/2] arm64: dts: mediatek: mt7981: add SPI controllers
+      commit: 64b1cbad62cb11ab25ef87ed71561bad92ab93e2
+
+Cheers,
 Angelo
 
-> Signed-off-by: Pin-yen Lin <treapking@chromium.org>
-> Fixes: 37fb78b9aeb7 ("arm64: dts: mediatek: Add mt8183 power domains controller")
-> 
-> ---
-> 
->   arch/arm64/boot/dts/mediatek/mt8183.dtsi | 2 --
->   1 file changed, 2 deletions(-)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> index fbf145639b8c..267378fa46c0 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> @@ -872,8 +872,6 @@ power-domain@MT8183_POWER_DOMAIN_CONN {
->   
->   				mfg_async: power-domain@MT8183_POWER_DOMAIN_MFG_ASYNC {
->   					reg = <MT8183_POWER_DOMAIN_MFG_ASYNC>;
-> -					clocks = <&topckgen CLK_TOP_MUX_MFG>;
-> -					clock-names = "mfg";
->   					#address-cells = <1>;
->   					#size-cells = <0>;
->   					#power-domain-cells = <1>;
 
 
